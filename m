@@ -4,88 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AF38CCD1BF
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 18:13:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BAB8CCF9E0
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 18:14:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDoCL-0006aF-0D; Tue, 28 Oct 2025 14:13:33 -0400
+	id 1vDoDa-0007Ax-Hl; Tue, 28 Oct 2025 14:14:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDoCE-0006Ur-Vk
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:13:27 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDoD7-000705-PE
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:14:33 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDoBy-0001X5-Mk
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:13:26 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-475dc6029b6so35361205e9.0
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 11:13:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDoCv-0001fI-VY
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:14:21 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-427015003eeso5612320f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 11:14:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761675183; x=1762279983; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=O0GGiZXrm4OzHdOc+19/N23vVvY3UXsMWqAq/zS3aok=;
- b=qajfihQZ3lc8367o1KJYvf8AnhMbt5b81oJBI9h4ArZBTmt+miX1zJVgTLrDj3dGNr
- vCeCuq+UV+ZpcXcV5av7cX4DQ0TfI36WQmU7rLHGO1IoKlbSsYEWYBiRzenyqDmod9CY
- a66G5T0aB9q/RvdjNuqPs1QmVsgOUaLliZ75G5BC/yCQYxiRn/y0lCR1DEFrpKQH4IXm
- TsZNOucR9LfNsAAnZKwh4on+MSdQuwJVVIWYiLnXi/Ezj44q9LqKLQ5P2iqj3bxJW3QM
- SOUgAr5eLH4l5T/BPaP/Kgcpqj5UwVAmg6TC0vsmKJGG8xxOzo9MgVSDHOQSWMkwsJLU
- nKFQ==
+ d=linaro.org; s=google; t=1761675245; x=1762280045; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=RGm17n3GNDykAs4UeW0nI6eNRzRj+Ya0fbeg5mVxNeE=;
+ b=sC9/aATb1oTLFCmiUQmN0XFGPc1CVbxzXBCP0txLTTWgZIZ/OEMXWa7o3Bu7fDGIjG
+ DZab6hrXetfOhvs0f3gZXNJ+/hBxiEVZ8gFB9zT6Nhcg5MOrMEwIU7GeRVpWxyPmYNBb
+ +cFsxey6xO9+MbFnHlGSy8uY4961RJmUtCkuuXJMB3JFbmG38eMqBCaN6AL83MdHIiKI
+ 1z0zXGImSU/20mAePbOc6BZ6V89Up26eAuIDM5LxQVjqDJc1RAbBzF2BNWIfy9lvVf4U
+ h6biidzBPU23ltTzJYObge9MoVKT+ElMSwk+0ejIsTWe9ztsMd0+o6+Bp3dMyYkVlvmG
+ wGUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761675183; x=1762279983;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=O0GGiZXrm4OzHdOc+19/N23vVvY3UXsMWqAq/zS3aok=;
- b=T49qbgwNXoSQ/kohombLvgQVECoodBwyDIrq3RNyus/SH+oTwASDUNJR3H2ETQtXqa
- ca+LTSlFDNw9v+J2QqnYsyztNRM8aaQYljIBpbutlkpKWp8+ReMHoSGm1kjfA6XIKCh1
- s3Ni38jvq9AFeYaxtnmauNzomS5vuYAVX34Q3xWjLAuMHGJeSnaU8KtdLtekGY7cLvFw
- fAbRg9AZruWbxaN42ABYbfzYnU3w5M9xwjFCxHHDEnDKcHfmfOL1Z9VlVSrvjte6PooO
- 6epSuM77LrmSHd7WM1dx8qjZibtQkRNzBo4T30oFV8uIi1XQ/Vhi0hpqMgPn/fXzjz/X
- 28wg==
+ d=1e100.net; s=20230601; t=1761675245; x=1762280045;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=RGm17n3GNDykAs4UeW0nI6eNRzRj+Ya0fbeg5mVxNeE=;
+ b=qCjqX7SB/Lo2g351b+EfFhnx6fBKfmF77Jpn3pcI/EaTqPN++JzUfAuu0pIZp/lc4z
+ fOD5ZOqAra1Cvj5CXakvzTXjCuYo0b8PepCH3kN3o3ovqfvu1XiB/2nQALSySdQhEnpi
+ etUX5YCClM/gh1nD15t7m1rGrusXurHpNbKGNFG6vr6lo4Tdja+5f1vsEbmPu+2ZSFmR
+ gdeS+wjhwlE8bozjtpcTJvZX03ZJp+lFkpGLWSrJ+FeQ8OFsLN5+HyuoGJC+k7yKKH0U
+ hpLLISF0B25PUYVPDLR5uIwO+sCTcqTi67WrZsu6I2JUCRF13pUKIGeNTQlCLBXQq7BI
+ 689w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWi8REqJnIEPVJU9t8+5Tkklo4YeGzbuICd6efdABuEnhjdk6a62sdPLaZdlBeAGC1k1farNtDH6A==@nongnu.org
-X-Gm-Message-State: AOJu0Yz6dMBfo+f/XQvCmqusyVspuu4AxDKw9HyE5ounUYFHsE5pwFzC
- 4VglIILkBTBQPMrMIKMI8j08LyJXPnRjPstyLZuAKjgTNghk2OUiaylf2V6N+mtbRjY=
-X-Gm-Gg: ASbGncujcYgMdHpJGnilfy8/o+Ic/PTn60SlAK3FNb0xsUrO+lYzRvw0rpzFgkFAH5E
- 8rRKbGZXsvW6VMu6Z6oWbwkYeiaHNPi9D3PMPo3lvmZuYkm2NjA0SZWSOdRcPlSIdQYdhMOF2SL
- BATfpHcUz5HzW8hCyIbgxhaJ4yPeWL4cJNh0SKd8obL0wJE5QcCmrdCYXSykFP6ocPcwEAESw6G
- 5S3LXcdsB7blXIKY/n+9/59SHZZ7SYDV6mhZne3VgEjuhVYuYestNBU0WZD2wWOJc9DFgjqM/KX
- rIozhKzbx1j4Ld+355fbFpUqnawYD483aZUN07vSVz6EXyu0hnBK8tymABCVLAmJG2QwhxnuFbH
- BfL//+ZYebDB1JfKBmFFe7Sic503Qp43W47q38TmFbBcMsT0eVtQV83w2utToFkHc9rUOovDkRJ
- 7o5YOB0O5xmPX4WM4vNHyWNF7UEU35svtIg6xEVjQqo1rEBFedCw==
-X-Google-Smtp-Source: AGHT+IFjK2ci8BodYlqQsw4T7KtvfGXcZAulUk9EPCLZXihdGhzOdLZjWG//I7VzhVMwGc/dq8M4Qg==
-X-Received: by 2002:a05:600c:3b23:b0:475:de12:d3b5 with SMTP id
- 5b1f17b1804b1-4771e1e3abemr4503435e9.34.1761675182854; 
- Tue, 28 Oct 2025 11:13:02 -0700 (PDT)
+ AJvYcCVE+eTILQw0nedfdoLB6w857oZPLdJR9dNTgxhLg8M2yMMA4jczBYLkzzI85GriGYqT+TA1oFGBRw==@nongnu.org
+X-Gm-Message-State: AOJu0YyYt2zJa5A34grUUAJXqc+ZnP/WuMEc4ZCKRCZcHuUXBkfhMelP
+ qQcV05R6we0MRLLuQZC4jaJdvtP/k6uvwQbHB8KggOtXFYa1pWQSmauPK0iYRgfdk0w=
+X-Gm-Gg: ASbGncts0uMundCAfR3xT4VvM0zQbUB3vBDUcKIXS5KZA4bRN/RSFRIbU8sM5EIzqwM
+ EBrr1npZSID27Ya8LxAptbKD5wT00y+OIVcIyalIt23YlNB///iBnAPG4cPlQ/HBFpZC1AuExVF
+ GHNdLuqkiFQE2i1T7PHG5J2JRS3ZIu9ocNDO0nt4+DH54+PnOBvVxRs2G4F1QP7WP0sDLc9P9Y8
+ 3mfS4lsEgA6+XCtSnxm1kU/5e0PmnVseTlIqlqP3aOk2zSnS4IyKosnZ6l7I/FkAHBjJK1JlWKa
+ 7gJMo0+/OVI7YvG+KovF8XoiLxUw6zl1xIm7OA/D/EE65ksm6OsD/JY+sxaoM0dC0sqg7b6JTnT
+ lZKptO3m2oKOmd6C8ZziiSviU7ye7ls2PUyz3caHQ6U+hZrb4RXaVSLQpv2ipw/sDj9uaH4tCZy
+ 9Js3k8+YniDaR/FugK5WmP0tDIx8N5LY/OC6zPbN7BkrxlTuJPxQ==
+X-Google-Smtp-Source: AGHT+IEn6BXLgcLqz8vdSXbRpjSkU44daKaJ2dzVUTotYkB7GlMJyzAOsTXte1or1dBi5x1pPqxwOQ==
+X-Received: by 2002:a05:6000:2c05:b0:427:9e6:3a64 with SMTP id
+ ffacd0b85a97d-429a7e91ea7mr4547478f8f.47.1761675245209; 
+ Tue, 28 Oct 2025 11:14:05 -0700 (PDT)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4771e387aa9sm3683645e9.4.2025.10.28.11.13.01
+ ffacd0b85a97d-429952db99asm22057430f8f.32.2025.10.28.11.14.03
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 28 Oct 2025 11:13:02 -0700 (PDT)
+ Tue, 28 Oct 2025 11:14:04 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-ppc@nongnu.org,
  qemu-riscv@nongnu.org, qemu-block@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 00/25] hw/sysbus: Spring cleanups (part 1)
-Date: Tue, 28 Oct 2025 19:12:34 +0100
-Message-ID: <20251028181300.41475-1-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>
+Subject: [PATCH v3 01/25] hw/i386/microvm: Use proper SysBus accessors
+Date: Tue, 28 Oct 2025 19:12:35 +0100
+Message-ID: <20251028181300.41475-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20251028181300.41475-1-philmd@linaro.org>
+References: <20251028181300.41475-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -102,61 +109,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-- Use sysbus_mmio_get_region() instead of SysBusDevice::mmio[].memory
-- Use memory_region_name() instead of MemoryRegion::name
-- Use memory_region_size() instead of int128_get64(MemoryRegion::size)
-- Add memory_region_get_address()
-- Use memory_region_get_address() instead of MemoryRegion::addr
-- Remove SysBusDevice::mmio[].addr
-- Simplify SysBusDevice::mmio[]
+SysBusDevice::mmio[] is private data of SysBusDevice, use
+sysbus_mmio_get_region() to access it.
 
-Philippe Mathieu-Daudé (25):
-  hw/i386/microvm: Use proper SysBus accessors
-  hw/i386/ioapic: Use proper SysBus accessors
-  hw/timer/hpet: Use proper SysBus accessors
-  hw/acpi/cxl: Use proper SysBus accessors
-  hw/ppc/e500: Use proper SysBus accessors
-  hw/pci-bridge: Use proper SysBus accessors
-  hw/sysbus: Use memory_region_name()
-  hw/nvme/ctrl: Use memory_region_size()
-  hw/s390x: Use memory_region_size()
-  system/memory: Have memory_region_size() take a const argument
-  system/memory: Introduce memory_region_get_address()
-  migration/ram: Use memory_region_get_address()
-  hw/acpi: Use memory_region_get_address()
-  hw/fdt: Use memory_region_get_address()
-  hw/nvme: Use memory_region_get_address()
-  hw/s390x: Use memory_region_get_address()
-  hw/timer/hpet: Use memory_region_get_address()
-  hw/watchdog/aspeed: Use memory_region_get_address()
-  hw/pci-bridge: Use memory_region_get_address()
-  system/ioport: Use memory_region_get_address()
-  hw/sysbus: Use memory_region_get_address()
-  hw/sysbus: Hoist MemoryRegion in sysbus_mmio_map_common()
-  hw/sysbus: Remove sysbus_mmio_map_common() @may_overlap argument
-  hw/sysbus: Use memory_region_is_mapped() to check for mapped region
-  hw/sysbus: Simplify SysBusDevice::mmio
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/i386/microvm-dt.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
- include/hw/sysbus.h                 |  5 +--
- include/system/memory.h             |  9 ++++-
- hw/acpi/cxl.c                       | 10 +++--
- hw/core/sysbus.c                    | 57 ++++++++++++-----------------
- hw/i386/acpi-build.c                |  8 ++--
- hw/i386/kvm/ioapic.c                |  3 +-
- hw/i386/microvm-dt.c                |  6 ++-
- hw/loongarch/virt-acpi-build.c      |  4 +-
- hw/loongarch/virt-fdt-build.c       |  4 +-
- hw/nvme/ctrl.c                      | 15 +++++---
- hw/pci-bridge/pci_expander_bridge.c |  6 ++-
- hw/ppc/e500.c                       |  2 +-
- hw/s390x/s390-pci-inst.c            | 23 ++++++++----
- hw/timer/hpet.c                     |  4 +-
- hw/watchdog/wdt_aspeed.c            |  2 +-
- migration/ram.c                     | 11 +++---
- system/ioport.c                     | 21 +++++++----
- system/memory.c                     |  7 +++-
- 18 files changed, 113 insertions(+), 84 deletions(-)
-
+diff --git a/hw/i386/microvm-dt.c b/hw/i386/microvm-dt.c
+index cb27dfd732e..d7f49bc1b5f 100644
+--- a/hw/i386/microvm-dt.c
++++ b/hw/i386/microvm-dt.c
+@@ -71,7 +71,8 @@ static void dt_add_virtio(MicrovmMachineState *mms, VirtIOMMIOProxy *mmio)
+         return;
+     }
+ 
+-    hwaddr base = dev->mmio[0].addr;
++    MemoryRegion *mr = sysbus_mmio_get_region(dev, 0);
++    hwaddr base = mr->addr;
+     hwaddr size = 512;
+     unsigned index = (base - VIRTIO_MMIO_BASE) / size;
+     uint32_t irq = mms->virtio_irq_base + index;
+@@ -150,7 +151,8 @@ static void dt_add_pcie(MicrovmMachineState *mms)
+ 
+ static void dt_add_ioapic(MicrovmMachineState *mms, SysBusDevice *dev)
+ {
+-    hwaddr base = dev->mmio[0].addr;
++    MemoryRegion *mr = sysbus_mmio_get_region(dev, 0);
++    hwaddr base = mr->addr;
+     char *nodename;
+     uint32_t ph;
+     int index;
 -- 
 2.51.0
 

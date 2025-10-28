@@ -4,86 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8CE2CCD1BF
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 11:13:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBBF5CCF9E0
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 11:17:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDhcj-0003v5-8w; Tue, 28 Oct 2025 07:12:21 -0400
+	id 1vDhh7-0005Ky-2o; Tue, 28 Oct 2025 07:16:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDhcf-0003tZ-6e
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 07:12:17 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vDhh5-0005Kj-Oq
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 07:16:52 -0400
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDhcU-00018t-Qq
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 07:12:16 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-4710683a644so48894195e9.0
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 04:12:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vDhgv-0002Fw-NZ
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 07:16:50 -0400
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-783fa3aa122so72708097b3.0
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 04:16:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761649922; x=1762254722; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=xJyDe36il24B8sHiFvFIFNoNSBcoJYvI1h9pUm1P3RY=;
- b=sboEoPSwkOZ04zuHEonm+P65EEaW2LvF1bnpdx4RjHICwmDXnCUGvYWhHGcI9OSPzd
- SivB0WRsSCzLyt4S77EPx2eZ5oRer3OqDqgsdddG1LBAg3G+t3IsQYxLLli0XZ8wXRhb
- D/nHLHFYma5qw/lrZHpnU6dSxYdIiguAf3r+VpF7/S4CvdNGHndGlwgWtiGfWhUNfzl/
- Nf/4vBTSTQwjQNDjk/+LNgJT+HjxlFvJZND7sSaM7dc+5WaKJHsXxc9lu+FYsRYqaldy
- nPAnV1yKSkAoRzggqwHg7LRU/RF7ieP55bXEFxKChl/pZsz7toRRuzLt5McM8zeEJxS5
- h8/w==
+ d=linaro.org; s=google; t=1761650197; x=1762254997; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=qq19yoNokeRIKV6QsVUrrWcYPH3C20bsjt6gVhyqZd4=;
+ b=of3VAYevfrcQ+pD9Fl/zrjZX1q432Yb8DnMxJbaIvUR8XBjZIiUAlopjIyOMFcq9vO
+ zuIe5S+mKtGXXexVz8T+XC79QDap8N8mWqe74euygUW/3g5g6o7Yh+O4aEmzOlbgVrg0
+ RnON/ZJpfEPtEYJ+//AlANp6h56aOoWqvAzegDBmjnVXPc47irAM2oqM5MOQt40BSmUu
+ 3E+0DSJCyZ8X4b50iW9C0w377HNmouICxgv7SstHDNhuyMFSercbqNx3ykLrzS8hHMly
+ NiJRW6kB0HsvrO1j7OTSuh/D5KG2pfFCpZieESBD7bZNDv0wVMjxTYPvrynKR6Ee4WPP
+ kbwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761649922; x=1762254722;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=xJyDe36il24B8sHiFvFIFNoNSBcoJYvI1h9pUm1P3RY=;
- b=dCAKPDtE8AFmx1Jw+xwlZw4GNJlbB8kGoj2H0DjV171Gp7KKjD3P0OsRVQ6k6xpPKi
- O1Bn7J73NR3y+ijIVXn+bX9++Yx00EFFmcNCQyy1plBD0LFS1iaBm5U+qpT8A9V9Wy2g
- mU3EuErmGop/gicgPJKfywSgdBCXVqZN4w83Cl2SPOAVapAqcH9SeEOAPkpeeVE2b4yE
- Dk4jdIbksfTHOXlH7cDXSm6tV5R4iZDXpszW99Gi8XugxH79zZMIk7v6/fyRzHIkCt/i
- DToGO3jTbS64JB9FU1POEkRhHTRYh/xC08g1RXXHOT0WWFrRrwJYN5XHeGfSqf7NHGAL
- DcFQ==
+ d=1e100.net; s=20230601; t=1761650197; x=1762254997;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=qq19yoNokeRIKV6QsVUrrWcYPH3C20bsjt6gVhyqZd4=;
+ b=P3B6svIM+MLVO5IXf+0tQFJMmWpIdL8wAJJdZUrSaawoRQUXhw/tDFJQE4xDytisyD
+ BsyS8911ilfAGx9evUki1X711E8EXYjvwrZSb9c5tvpPYWJG41VlMUU5Dng4qUuYB1Q0
+ dWEhQhNFxtPMysONMOwvwQa9mhGJ8TrS/uGft8NaiBFhFlYn/ZgZakuzNcKtLRZ3c58Z
+ kpmMnezDd5TKRF41oc7JmjuVMfANJ15v7eKDVG9dakSoh+yEjl+G7zS5tckduqbfAvBy
+ o76XgHLy9IBLIjPBACEXqRV7yk1j6QGKndrQ6zUZHYsoiM2EGOLYgT3kR3Gs8++wMCh1
+ 8nrQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWScc8HgmNdgi1o6aYdwhaKwTh+hjddAH0yAGPNftI1cQBPal4C2OqVrFDhWBZr9d585lwoC97lGQ==@nongnu.org
-X-Gm-Message-State: AOJu0Ywt254AdvAmvR4XWLUunVcrDwBMXQSYyq6dGG3/vs+hyKF3abyy
- aSdbq3HLBeiGFNWAUgxW+UHDzj9W+l9WWbMGG0VYVCmkbFZW6iMYDhwdG1fhmtW2f58=
-X-Gm-Gg: ASbGncuFEOGzJqMW8zbjP4XRtGrhkMReG9N1Zh9VO8wImtdximPWuxLoaHhQMpDvv4J
- cUMz6Oqkkal67hyzlyq0LRekHuAmHxI7pei0Vkn1J+sK9L4KoPTekvdKQQV0cwao/NcpspHdJzs
- NNngsNqvHqW0fzmreRzHf8wNU2HTXMxLHc5/qrsPMmO6toka9LUj3pEA80DS430y2A5Nufmkpm5
- ZR5NInwBcqTP1riIgzZepnZIDICYS2Zn1LDhD4YJ4fJg/rpbeDAoBVcIwk49qL6b+JM/pBnJuWi
- 1D8ro0sfl/wUN041QaX7Ny/a4104yJ4wWrq1u1QZJ2IY50sXS53VJoaIOy02yTj1PfvJByGANt5
- 8UwYnfVbNN2/9/QVm24yjxKZ8Slw87xygJYIooFwVvvdl+V5qEXxPERi2oaXyxEexfISO6O98+k
- tzXYFT6rBADuuhGxHEU2vUkAbfFcm2WwqkbbRtGUa3IIWuGwHB
-X-Google-Smtp-Source: AGHT+IFe0Jziub8Wkt6LRYvZxNA1eoqQ+qP4ZgX/WCg11/8ilB/4Wi9IcsvRs9aJGN2mdW6ilHaNSA==
-X-Received: by 2002:a05:600c:5246:b0:46e:6339:79c5 with SMTP id
- 5b1f17b1804b1-4771812e415mr29792195e9.5.1761649921716; 
- Tue, 28 Oct 2025 04:12:01 -0700 (PDT)
-Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475dd4a5cc4sm187031775e9.11.2025.10.28.04.12.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Oct 2025 04:12:01 -0700 (PDT)
-Message-ID: <262b5b0b-ad9e-4a69-a5e8-f8948bc14d62@linaro.org>
-Date: Tue, 28 Oct 2025 12:11:59 +0100
+ AJvYcCVzrXMgQxfeBxyeQrfegmKVQHD0dz4kxQKO3OkzD1wo++hx7SLhA3Q5nMXKPEeYUhCfGJr5bvoAcg==@nongnu.org
+X-Gm-Message-State: AOJu0YwwjDy4FA/RkNl5LCCiKzY3EjOpmPBKyRgLo5tqv/a46BKFl0G8
+ n78ou294HfUaIAFknuqlmybQAsW94lE7Sfsqi7O4QGz/eMtwJ+qFVJPShMp8O3xe0kagQNlpqAW
+ 9VAd1ljNMZpBdDQczSVAUbeH8CPEd6dskN+XcoaSBCg==
+X-Gm-Gg: ASbGnctl3kMfWm+oRY5yuCr8Z8JD8+qO8d/VS0NMzEfzYLJ89ZsQw9i8GL8X/u8E6CC
+ FfsdHphhZJUGpufvGCqs27CDrvZ0RDRJ0Ykiqs49/5e7lqpVu6RGg9umLb7Wofh9AloxqcWX1MK
+ 4EKQR/8N3SwSs82o8IEAT0u2FJvJ+Dge8XNzH11EZj/ZDrwS8H7gj40zS0I3VA07+dpFQ3r3pR/
+ 0p1AGP6NcI4I44dAJyUhBHv6IneRbUZ1+zlgzHbDMxJp6FSQoReK3HU8/6mKQ==
+X-Google-Smtp-Source: AGHT+IEGi7F3q6pF1+zy6W59GTZtx+d3+8rlBr38Jem1dg6LCa08F1GP3RrekLa6nf+9gdiLLCgBLS4Q3hoxSR9teOY=
+X-Received: by 2002:a05:690c:92:b0:780:f3f3:b56c with SMTP id
+ 00721157ae682-786190062fbmr24081327b3.9.1761650197646; Tue, 28 Oct 2025
+ 04:16:37 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/7] hw/sysbus: Spring cleanups (part 1)
-Content-Language: en-US
-To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Bernhard Beschow <shentey@gmail.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-ppc@nongnu.org,
- qemu-block@nongnu.org
-References: <20251028080258.23309-1-philmd@linaro.org>
- <CAJ+F1CJYxKD23TFCy1-rbZf0Y_mSMdyVH=nFDM6eomDhVpmHYA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAJ+F1CJYxKD23TFCy1-rbZf0Y_mSMdyVH=nFDM6eomDhVpmHYA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+References: <20251028054238.14949-1-philmd@linaro.org>
+ <20251028054238.14949-16-philmd@linaro.org>
+In-Reply-To: <20251028054238.14949-16-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 Oct 2025 11:16:26 +0000
+X-Gm-Features: AWmQ_bk6ZxSNt6FtSF_vfFnFHQfrQUny8bk3kq42fEzvXoDzNsArGBKJh9YxbYE
+Message-ID: <CAFEAcA_uxT5CAZ4bdXjgV2hUe6o626Fg4X6hTDufo3ffSsn=sQ@mail.gmail.com>
+Subject: Re: [PATCH v3 15/59] target/arm/hvf: Simplify
+ hvf_arm_get_host_cpu_features()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Mads Ynddal <mads@ynddal.dk>, 
+ Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
+ Roman Bolshakov <rbolshakov@ddn.com>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, 
+ Mohamed Mediouni <mohamed@unpredictable.fr>,
+ Peter Collingbourne <pcc@google.com>, Alexander Graf <agraf@csgraf.de>,
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,30 +105,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 28/10/25 09:49, Marc-André Lureau wrote:
-> Hi
-> 
-> On Tue, Oct 28, 2025 at 12:04 PM Philippe Mathieu-Daudé
-> <philmd@linaro.org> wrote:
->>
->> - Use proper SysBus accessors
->>
->> Since v1:
->> - Reduce series
->>
->> Philippe Mathieu-Daudé (7):
->>    hw/sysbus: Use memory_region_name()
->>    hw/i386/microvm: Use proper SysBus accessors
->>    hw/i386/ioapic: Use proper SysBus accessors
->>    hw/timer/hpet: Use proper SysBus accessors
->>    hw/acpi/cxl: Use proper SysBus accessors
->>    hw/ppc/e500: Use proper SysBus accessors
->>    hw/pci-bridge/pci_expander_bridge: Use proper SysBus accessors
->>
-> 
-> There are a bunch of compilation issues that I will let you address for v3.
+On Tue, 28 Oct 2025 at 05:53, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> Use index in the structure, dereference &host_isar.idregs[] once.
+>
+> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-Sorry, this is based on my latest PR:
-https://github.com/philmd/qemu/releases/tag/hw-misc-20251028
-Based-on: <20251028074901.22062-1-philmd@linaro.org>
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM
 

@@ -4,103 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEF70CCF9E0
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 10:59:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2616FCCF9E0
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 11:03:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDhPj-0006J7-0S; Tue, 28 Oct 2025 06:58:55 -0400
+	id 1vDhTW-00086x-NK; Tue, 28 Oct 2025 07:02:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDhPZ-0006Hy-A6
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 06:58:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vDhT6-00083b-8e
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 07:02:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDhPQ-0007CT-La
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 06:58:44 -0400
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vDhSy-0007Zs-Du
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 07:02:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761649112;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
+ s=mimecast20190719; t=1761649329;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=prRvxur3E09D3IkNRG6V84C1UldRa36MdV8O+6OSW04=;
- b=WB6AkEClwETYTZUXR5tzi59B83ZnwAqHf+USWfw4g0o9tX5KuneCx8+QExSvAYXWQM2h+U
- XPdBGcEtSLdLcAgyTkR2J+kFxFxuc1oCMis3WLgj45a6/vEJTBSi2dI09jMsNvxJJqtr1p
- K3BAE8sYHvqYGaC4tA1TWAHjQ1bTNH0=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=nxmOHwHxmZMLpzf1uqdrSlEJ/+f2PvodAb00eauIdqA=;
+ b=f4h9Be+pZWvQ8Qn3g80hCJDVQNL0+yZY7+AQmFDiFqRqsZkeQ74K90q8pmaeniQUz+NnZw
+ mQuhhs5vx225NBy8QKHUfw+zUC0tsks2B211DyhE2Ze9LtSshx8GVumbIXjJcVVH3x0gMP
+ kF35tSXjD9kLJP/1Z+5167bi6bWhV2E=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-433-5ZA0cN_jPpiR6xvGd8vwKQ-1; Tue, 28 Oct 2025 06:58:31 -0400
-X-MC-Unique: 5ZA0cN_jPpiR6xvGd8vwKQ-1
-X-Mimecast-MFC-AGG-ID: 5ZA0cN_jPpiR6xvGd8vwKQ_1761649110
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-4298da9effcso3642517f8f.2
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 03:58:31 -0700 (PDT)
+ us-mta-373-wUtiq4fpM_KwOoY8t_Fqdg-1; Tue, 28 Oct 2025 07:00:57 -0400
+X-MC-Unique: wUtiq4fpM_KwOoY8t_Fqdg-1
+X-Mimecast-MFC-AGG-ID: wUtiq4fpM_KwOoY8t_Fqdg_1761649256
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-475ddf7e925so4355415e9.2
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 04:00:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761649110; x=1762253910;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=prRvxur3E09D3IkNRG6V84C1UldRa36MdV8O+6OSW04=;
- b=Bo+QaeKl6TeHjYplGqqD5HIFgJhK6EAU17+MmW9nc46W9BGZ/jlgt5awclZLHlvEDH
- +r76HazddTzdBT79oQ9e/tCz8zekrlS1Io7ucousBkbwe+hUMD997mJxEGAmuVMF5nKk
- y1ioeQYStmW0MdI1bSP5Zc7tjalm8eEAvvvU6hagQHBWM6N1r+Bu4sZFljvcQRmXGA8f
- otmMA3CJv+DpBwbb2DpbIFZ95NzZ/OqlqricutU/Dz6mwQWAD5rsnJijmHfCm+FxGKyV
- 66nN7z7Sfwl+o+PH/4cN81pyLymwhnh88hwuaUsj4mZwypXW/TznP9CRxfJ3U7+c3G6a
- 48vg==
+ d=1e100.net; s=20230601; t=1761649255; x=1762254055;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=nxmOHwHxmZMLpzf1uqdrSlEJ/+f2PvodAb00eauIdqA=;
+ b=ejjDMLtsL379nf2ggL/tKGLnS9R8rIRcn9QCLEwivhHXaEs/HekIS7kXgAvDtXgrYR
+ CZnaNz9a4BNSmBd2znk4kleK2m0Qj9zjON03+8Bkt21gx+GtfCjmQ9h9Y+QBNWs3XmPd
+ iVUxSXS/9P4hSyCMyAi6QiSDmcl+dOperoEXCr77OF3rvVTVGyy/DXcWOax4hPg+RJzT
+ K0Ib4tqrrAPSDccjKmbYmJfaiOPY+sfsqON5rCtQdvBVtW8qVG0h/BvjTSma8fFnXB6S
+ +EwHfbNgrtteUvuDsY4SdlGNqAOjC7a1mboxA4N11o4NdOufFF5HE2DBt2wLsIjeBoIW
+ AYuA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVAv3T8o2oYZS5NeOavqQX6hWqzJbPZkWd1wCvdkgoY5gf1Gsv4DbYZNMhHt5JFhuzg652yxp6xpw==@nongnu.org
-X-Gm-Message-State: AOJu0Yxk4D1lI4FvEVCiMDfKYOZJ8y/3iBGvu+tQ7REUZ2dP4fdd87a6
- fFHFiJ02PzZYw9j2RE/5Wbr0O+vtNKfYNVDzSaUFRWh6b4rcl6mm9JbvhlGnxyf5y8nrSz9RyQM
- 5CoTP6SgVLH3/zucNwVy/b3uDCwQdl5G0gldodRzBN+AFRfEJvexp9A==
-X-Gm-Gg: ASbGncv+2Z5WT9iCxh+HIrcp9GFqhxS4ZdhdAlt/2QvBUjFZgvBiYNYIqiT+5P8Z6eQ
- /fTt6JvJGE9/nA6x2i98/uR/Xmt8hbk5dMTMLMZNpqiFeJSS+krjwavjtX1dp6LsklEB+L3NcKq
- DsMJHqOTkYmD/oN+y+w4ZtIuVCD4JFaIDehxXp/Eb7lGfKiV5PdCkyBfLOn0v7y5+mR3afnx75/
- NUpQoxL1Jd+GWGdNK5kB2mHROBZT0jbxsHaqXxfLiW8VHu35kuxFC/iHBV/qeIa+KvuQQkzlns+
- CotPs3eOKzCp9O8ZUqk3Y47LZ1jtSgp/ahmiize4eYoaRiaTuJxsgAJekGvX06U5CwnrPAeli/m
- eyiKYvncM3oUdxxnJ2AONXl1JhVPn29Nb+YDZ87VxJZ54Cw==
-X-Received: by 2002:a05:6000:1862:b0:426:fec1:a58e with SMTP id
- ffacd0b85a97d-429a7e7e29cmr2915644f8f.53.1761649110291; 
- Tue, 28 Oct 2025 03:58:30 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHp9rVNkQq6idh2RrGzpwdv2s8cE6DDoLxXmMMG8w+B4E/MdwFmM2cx1whPMyJ+wD1m7USDNg==
-X-Received: by 2002:a05:6000:1862:b0:426:fec1:a58e with SMTP id
- ffacd0b85a97d-429a7e7e29cmr2915615f8f.53.1761649109848; 
- Tue, 28 Oct 2025 03:58:29 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ AJvYcCUTTuUw25Yz30fpij3yQ7UunqcAJAxkZ3EBNucLYlISFmLIZbEnHDceWDRF3kH9GOxbcsi3XLEBDw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy7av2X724MpH49ThHKd9VuC/nvMrzT7akQEwbMYKiQIMz9Dncx
+ 04P2/jspmfgd5olPKGZaLPzGXfyQ8v1RiJlBW4lXjwK/TaFB1bqiFKwAro/7wZZKizNjLdihfFr
+ 9LuqSS4eXIeY6z9K2mGGV6y/1SQow031oCpLidbm4cYHVWOxn/tn4vA==
+X-Gm-Gg: ASbGncs7Cn0s5q36+nIsFv4ESazlCn7eMC2bs0uxhPGdY1NAI9kaXlsJG+CyVijJTT5
+ xcAlolOyLwiN+ylCdgxu29kaCW+xGBqj29gMOLne7icbEPeXMVO5VUmcvL+XGvfhXyUIbHU+VKZ
+ l1FpfzBypC1L4th28TssG8eCWq/Ye2S8o/OEmiZzE96D3hZDbap+QdEe9nzPmlcdj9vSJthU51+
+ ZgHq9pcuBAru3EdGDhkSxNFNjEER4AoiPBgNSI7LihIIrfkzko+RCB6silDOmwxrMrWjUO79QLi
+ HTQ/ke0SSvFlz9vUjPZFXL0HUVFAPMXG+M5zZjXccWgpyirQ5aub2T/LikbT26Q4Mebvne7uYD/
+ tYGLl2vCzLtCz9paULCUruhE43qvhXWMVmpKn9SEHJ+K7PhVZ
+X-Received: by 2002:a05:600c:3493:b0:46f:b42e:edce with SMTP id
+ 5b1f17b1804b1-47717e67cd3mr23267005e9.39.1761649255552; 
+ Tue, 28 Oct 2025 04:00:55 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFFVAEQZBrj6XxR1esAB3vvNknSrAGxc5wuX0loLWB2sKQiYoi+ajmuIkxNcYXcTJ8iSZx7ug==
+X-Received: by 2002:a05:600c:3493:b0:46f:b42e:edce with SMTP id
+ 5b1f17b1804b1-47717e67cd3mr23266575e9.39.1761649255026; 
+ Tue, 28 Oct 2025 04:00:55 -0700 (PDT)
+Received: from rh (p200300f6af131a0027bd20bfc18c447d.dip0.t-ipconnect.de.
+ [2003:f6:af13:1a00:27bd:20bf:c18c:447d])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429952cbc16sm19084918f8f.15.2025.10.28.03.58.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Oct 2025 03:58:29 -0700 (PDT)
-Message-ID: <628c0b08-dd53-475b-be43-fa5085a32cda@redhat.com>
-Date: Tue, 28 Oct 2025 11:58:28 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH 3/7] target/arm/kvm: Introduce the concept of
- enforced/fake registers
+ 5b1f17b1804b1-475dd48942dsm192647185e9.4.2025.10.28.04.00.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 28 Oct 2025 04:00:54 -0700 (PDT)
+Date: Tue, 28 Oct 2025 12:00:53 +0100 (CET)
+From: Sebastian Ott <sebott@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- cohuck@redhat.com, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, gshan@redhat.com, ddutile@redhat.com, peterx@redhat.com,
- philmd@linaro.org, pbonzini@redhat.com
-References: <20251016140039.250111-1-eric.auger@redhat.com>
- <20251016140039.250111-4-eric.auger@redhat.com>
- <CAFEAcA8=01a34UyL6NFiiYxFP-hd5Bdi7Y0ZQqKFnO8bUX+XqQ@mail.gmail.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CAFEAcA8=01a34UyL6NFiiYxFP-hd5Bdi7Y0ZQqKFnO8bUX+XqQ@mail.gmail.com>
+cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org, kvm@vger.kernel.org, kvmarm@lists.linux.dev
+Subject: Re: [PATCH 2/2] target/arm/kvm: add kvm-psci-version vcpu property
+In-Reply-To: <CAFEAcA-urFX=V7kuRA3cRik7PifFQER5eoXC_CZ2jKg7OZz9iA@mail.gmail.com>
+Message-ID: <ba03c952-e567-eb2b-f4c8-b1818ee127d6@redhat.com>
+References: <20250911144923.24259-1-sebott@redhat.com>
+ <20250911144923.24259-3-sebott@redhat.com>
+ <CAFEAcA-urFX=V7kuRA3cRik7PifFQER5eoXC_CZ2jKg7OZz9iA@mail.gmail.com>
+MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: u9TKtrGNuBgtCu8y-mK1ssP3L-3X3jpIMMSBiu8HvQM_1761649110
+X-Mimecast-MFC-PROC-ID: kXdqecddVHV74iTPo-o25NcXEcMPKbFLKj74n3PcNY8_1761649256
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,61 +109,121 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Peter,
-On 10/28/25 11:35 AM, Peter Maydell wrote:
-> On Thu, 16 Oct 2025 at 15:01, Eric Auger <eric.auger@redhat.com> wrote:
->> Newer kernels may revoke exposure of KVM regs to userspace. This can
->> happen when one notices that some registers were unconditionnally
->> exposed whether they shall be conditionnally exposed for example.
+On Mon, 27 Oct 2025, Peter Maydell wrote:
+> On Thu, 11 Sept 2025 at 15:49, Sebastian Ott <sebott@redhat.com> wrote:
 >>
->> An example of such situation is: TCR2_EL1, PIRE0_EL1,  PIR_EL1.
->> Associated kernel commits were:
->> 0fcb4eea5345  KVM: arm64: Hide TCR2_EL1 from userspace when disabled for guests
->> a68cddbe47ef  KVM: arm64: Hide S1PIE registers from userspace when disabled for guests
+>> Provide a kvm specific vcpu property to override the default
+>> (as of kernel v6.13 that would be PSCI v1.3) PSCI version emulated
+>> by kvm. Current valid values are: 0.1, 0.2, 1.0, 1.1, 1.2, and 1.3
 >>
->> Those commits were actual fixes but the cons is that is breaks forward
->> migration on some HW. Indeed when migrating from an old kernel that
->> does not feature those commits to a more recent one, destination
->> qemu detects there are more KVM regs in the input migration stream than
->> exposed by the destination host and the migration fails with:
->> "failed to load cpu:cpreg_vmstate_array_len"
+>> Signed-off-by: Sebastian Ott <sebott@redhat.com>
+>> ---
+>>  docs/system/arm/cpu-features.rst |  5 +++
+>>  target/arm/cpu.h                 |  6 +++
+>>  target/arm/kvm.c                 | 70 +++++++++++++++++++++++++++++++-
+>>  3 files changed, 80 insertions(+), 1 deletion(-)
 >>
->> This patchs adds the capability to defined an array of enforced
->> register indexes that teaches QEMU that some registers must exist.
->> If they are not exposed by KVM qemu fakes their presence in the
->> preload phase by adjusting the size of the cpreg_vmstate arrays.
->> On postload we make sure to ignore them when analyzing potential
->> mismatch between registers. The actual cpreg array is never altered
->> meaning those registers are never accessed nor saved.
-> It's not really clear to me what we mean by "faking" these
-> registers. It's definitely not the case that we want QEMU
-> to think these registers must exist -- they really don't,
-> and for migration from a new kernel to a new kernel we
-> shouldn't include these registers. We just would like to be
-> able to ignore them in the input migration stream so we can
-> handle the inbound migration from an older kernel.
-
-yes maybe I should use a different terminology. Those registers are
-"faked" from a migration pov only.
-
-among the provided enforced regs, we first identify those which are not
-actually exposed by KVM. For those only, which I named "fake regs", we
-tag them as "they will be missing in the input mig stream but that's
-expected and OK". We make sure we provision extra space for them in
-cpu->cpreg_vmstate_indexes/values on preload. And in post load when we
-compare the input stream indices with available inidices, if they are
-identified as missing, we just ignore the error. That's it.
-
-Hope this helps
-
-Eric
+>> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+>> index 37d5dfd15b..1d32ce0fee 100644
+>> --- a/docs/system/arm/cpu-features.rst
+>> +++ b/docs/system/arm/cpu-features.rst
+>> @@ -204,6 +204,11 @@ the list of KVM VCPU features and their descriptions.
+>>    the guest scheduler behavior and/or be exposed to the guest
+>>    userspace.
+>>
+>> +``kvm-psci-version``
+>> +  Override the default (as of kernel v6.13 that would be PSCI v1.3)
+>> +  PSCI version emulated by the kernel. Current valid values are:
+>> +  0.1, 0.2, 1.0, 1.1, 1.2, and 1.3
+>> +
+>>  TCG VCPU Features
+>>  =================
+>>
+>> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+>> index c15d79a106..44292aab32 100644
+>> --- a/target/arm/cpu.h
+>> +++ b/target/arm/cpu.h
+>> @@ -974,6 +974,12 @@ struct ArchCPU {
+>>       */
+>>      uint32_t psci_version;
+>>
+>> +    /*
+>> +     * Intermediate value used during property parsing.
+>> +     * Once finalized, the value should be read from psci_version.
+>> +     */
+>> +    uint32_t prop_psci_version;
+>> +
+>>      /* Current power state, access guarded by BQL */
+>>      ARMPSCIState power_state;
+>>
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index 6672344855..bc6073f395 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -483,6 +483,59 @@ static void kvm_steal_time_set(Object *obj, bool value, Error **errp)
+>>      ARM_CPU(obj)->kvm_steal_time = value ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
+>>  }
+>>
+>> +static char *kvm_get_psci_version(Object *obj, Error **errp)
+>> +{
+>> +    ARMCPU *cpu = ARM_CPU(obj);
+>> +    const char *val;
+>> +
+>> +    switch (cpu->prop_psci_version) {
+>> +    case QEMU_PSCI_VERSION_0_1:
+>> +        val = "0.1";
+>> +        break;
+>> +    case QEMU_PSCI_VERSION_0_2:
+>> +        val = "0.2";
+>> +        break;
+>> +    case QEMU_PSCI_VERSION_1_0:
+>> +        val = "1.0";
+>> +        break;
+>> +    case QEMU_PSCI_VERSION_1_1:
+>> +        val = "1.1";
+>> +        break;
+>> +    case QEMU_PSCI_VERSION_1_2:
+>> +        val = "1.2";
+>> +        break;
+>> +    case QEMU_PSCI_VERSION_1_3:
+>> +        val = "1.3";
+>> +        break;
+>> +    default:
+>> +        val = "0.2";
+>> +        break;
+>> +    }
+>> +    return g_strdup(val);
+>> +}
+>> +
+>> +static void kvm_set_psci_version(Object *obj, const char *value, Error **errp)
+>> +{
+>> +    ARMCPU *cpu = ARM_CPU(obj);
+>> +
+>> +    if (!strcmp(value, "0.1")) {
+>> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_0_1;
+>> +    } else if (!strcmp(value, "0.2")) {
+>> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_0_2;
+>> +    } else if (!strcmp(value, "1.0")) {
+>> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_1_0;
+>> +    } else if (!strcmp(value, "1.1")) {
+>> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_1_1;
+>> +    } else if (!strcmp(value, "1.2")) {
+>> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_1_2;
+>> +    } else if (!strcmp(value, "1.3")) {
+>> +        cpu->prop_psci_version = QEMU_PSCI_VERSION_1_3;
 >
-> thanks
-> -- PMM
->
+> We already have six values here and it's not implausible
+> we might end up with more in future; maybe we should make the
+> mapping between string and constant data-driven rather
+> than having code written out longhand in the get and set
+> functions?
+
+Yes, sure. I'll send out a V2.
+
+Thanks!
+Sebastian
 
 

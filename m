@@ -4,96 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0617CCCD1BF
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 06:28:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF1EACCF9E0
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 06:28:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDd7o-0007eB-Nx; Tue, 28 Oct 2025 02:24:08 -0400
+	id 1vDd90-0001ea-LC; Tue, 28 Oct 2025 02:25:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDd7k-0007QB-Dg
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 02:24:04 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDd7i-0000bM-5i
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 02:24:04 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-47118259fd8so41913585e9.3
- for <qemu-arm@nongnu.org>; Mon, 27 Oct 2025 23:24:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761632639; x=1762237439; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=9r9PbSxEc5vkW3NMHjI0QVQXtgDxRcrfGpveD6M8q14=;
- b=xViHHJuJmL4FiQDEtOC+NFAOzgtulS49F21wQq5CNP9tUbOmnH64QOsjWe5IJUoTR/
- cPww4maCperenJcN7CB6+ksKavq1E747re28lXDF3b4/PJK6m/XqjyGdtmJ/PKT0LlVM
- LsR83tdkVYX3ARu3Ua/Y1aj7iUX+gDY1eQLcO3BXFGoQU1s4szgSvD36Jvqs5corFN1+
- /yBF6t7v84HmgrR4OGKxBjl6oE3Hfoh0V2bie+oZ4uqvYrxNQ+oLhTw/6A00b/Mwg/bh
- bG8/UbOW+1ptkr+cUI4oMOk7hDEQX9RBnALmpUdyWZIa3sduUKaUB2z0IeXgYvcwEfbt
- RvLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761632639; x=1762237439;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=9r9PbSxEc5vkW3NMHjI0QVQXtgDxRcrfGpveD6M8q14=;
- b=h2VHsjAc4+iqCw/7FT6gNRrh8erVbNbe72c1E+tdB135KdjV8inJVOdKa7hGhASHUy
- n4DDEuffgphzxS2cc6iElNStAT2ZkURFrMM+qx0K24xtWt8AIU6+kcykLWgROqpDG5gB
- zMBe3wJiPKnuWnJ9Re9HPNkkcl8WS6i/cr0VPTDcnaDJMFjpUfDE+D1c+G4OSDZHrcfo
- HLBqstQdxWFuQHBXYdf27yNHC5bzWc82DePdR5s+mOE6+4LtvHc9nZ9rqREx3hX3ncJ6
- 4L4XsCydGRKhvX4srbbEBAlco/MN47CLNrQOZJAOIIQI4gXK4pa/bCe5gcrRxaJo3V10
- k6Vg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWSQJSQwRHhzMhN2tV8LVYqPbqQ0NdQ2gzln9WezIFGSBIKOE5rPt7Klczym9o5IDIvCy8VaVLDIA==@nongnu.org
-X-Gm-Message-State: AOJu0Yxm5D3/MydS1cQe767fPnMfEyvRvLT2yf30QfxJmiUKGYB9KK2Y
- WF9pFeFu/VJZ+MK7MVY49tBoab50lvj/KQemQ/Q+7MUp8TNNoVrpw7m1SYMyRJOa5Rs=
-X-Gm-Gg: ASbGnct7/Ym6Wj5TXQJOJues9lGsZDtVnN0Dqdsz268a7wfQijx5Q7GAMenqrcT0AVt
- rilZkUIJahSD/nFrYI1UF9hbKHBR7F8VeZyyVfYhsipclrutnTr2a7exrzRMD8OHVPR1me+ahXu
- +2rlnahHwlMjFPlnWTYtbYL6Mf2gcZggbpW5gjiZk3hxOiiVdAn9rUu8GcN6QJWIo6/Jz2y+O4r
- X0j92q9DkonXaNC0LU/rX9yqJpwqjxiXkRbNueGsW2EG5u+RgbW2cbHEh4akMhWg7d9Vr8DLLFI
- HxuqSw/kAAWq7qT2qbpauaJcwiuEXyFWS/iHIW2w2nQh1Vd+9OeUps1naZUDC9ZDi1bt7Y8q2E+
- PT0iqmAdO5DmoZ+UNCCE8b2wWaclcm8ipzpKqSxnK9KH41AdTIJ3UNOPFC61IsJo4Dw7sn8cX5b
- RcP9yEV9E3u86VTuU1J/mhYmgOIed7nTdST4gfL5gvciOLQKYmYpeIelk=
-X-Google-Smtp-Source: AGHT+IHVpoikpIYvHguAxwl+ojwpfr84RrZQqfwvBbRZQ/v9FUNcKjrLABeFbnw+hXNPR4eozlW99A==
-X-Received: by 2002:a05:600c:540d:b0:46f:b42e:e366 with SMTP id
- 5b1f17b1804b1-47717e6ae77mr18617665e9.40.1761632639025; 
- Mon, 27 Oct 2025 23:23:59 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475dd478202sm175898915e9.14.2025.10.27.23.23.57
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 27 Oct 2025 23:23:58 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
- qemu-arm@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Peter Collingbourne <pcc@google.com>,
- Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 58/59] target/arm/hvf: Emulate Monitor Debug registers
-Date: Tue, 28 Oct 2025 06:42:34 +0100
-Message-ID: <20251028054238.14949-59-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251028054238.14949-1-philmd@linaro.org>
-References: <20251028054238.14949-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1vDd8H-0000kN-NI; Tue, 28 Oct 2025 02:24:39 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1vDd8B-0000d4-38; Tue, 28 Oct 2025 02:24:37 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 28 Oct
+ 2025 14:23:14 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Tue, 28 Oct 2025 14:23:14 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <kane_chen@aspeedtech.com>
+Subject: [PATCH v1 13/16] hw/arm/aspeed: Split AST2600 EVB machine into a
+ separate source file for maintainability
+Date: Tue, 28 Oct 2025 14:22:57 +0800
+Message-ID: <20251028062307.2410346-14-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20251028062307.2410346-1-jamin_lin@aspeedtech.com>
+References: <20251028062307.2410346-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,31 +62,196 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
-TODO: audit it is safe
----
- target/arm/hvf/hvf.c | 3 +++
- 1 file changed, 3 insertions(+)
+This commit moves the Aspeed AST2600 EVB machine implementation out of
+aspeed.c into a new standalone file aspeed_ast2600_evb.c.
 
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 639eef3b800..113f1415011 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -1616,6 +1616,9 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
-         }
-         break;
-     case SYSREG_MDSCR_EL1:
-+        if (hvf_sysreg_write_cp(cpu, "Monitor Debug", reg, val)) {
-+            return 0;
-+        }
-         env->cp15.mdscr_el1 = val;
-         return 0;
-     case SYSREG_DBGBVR0_EL1:
+This refactor continues the modularization effort of the Aspeed platform
+machine definitions, separating each board’s initialization logic into its
+own dedicated source file. It improves code maintainability, readability,
+and reduces clutter in aspeed.c, simplifying future platform extensions.
+
+Key updates include:
+- Removed AST2600_EVB_HW_STRAP1 and AST2600_EVB_HW_STRAP2 macro definitions.
+- Moved ast2600_evb_i2c_init() and related device initialization code into
+  the new aspeed_ast2600_evb.c file.
+- Moved aspeed_machine_ast2600_evb_class_init() and type registration logic
+  out of aspeed.c.
+- Added aspeed_ast2600_evb.c to the Meson build system (meson.build).
+- Cleaned up all AST2600 EVB-specific code and macros from aspeed.c.
+
+No functional changes.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ hw/arm/aspeed.c             | 43 -------------------------
+ hw/arm/aspeed_ast2600_evb.c | 64 +++++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build          |  1 +
+ 3 files changed, 65 insertions(+), 43 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast2600_evb.c
+
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 81099e56b5..74d35021db 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -32,10 +32,6 @@ static struct arm_boot_info aspeed_board_binfo = {
+     .board_id = -1, /* device-tree-only board */
+ };
+ 
+-/* AST2600 evb hardware value */
+-#define AST2600_EVB_HW_STRAP1 0x000000C0
+-#define AST2600_EVB_HW_STRAP2 0x00000003
+-
+ #ifdef TARGET_AARCH64
+ /* AST2700 evb hardware value */
+ /* SCU HW Strap1 */
+@@ -267,19 +263,6 @@ static void aspeed_machine_init(MachineState *machine)
+     arm_load_kernel(ARM_CPU(first_cpu), machine, &aspeed_board_binfo);
+ }
+ 
+-static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
+-{
+-    AspeedSoCState *soc = bmc->soc;
+-    uint8_t *eeprom_buf = g_malloc0(8 * 1024);
+-
+-    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50,
+-                          eeprom_buf);
+-
+-    /* LM75 is compatible with TMP105 driver */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8),
+-                     TYPE_TMP105, 0x4d);
+-}
+-
+ void create_pca9552(AspeedSoCState *soc, int bus_id, int addr)
+ {
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, bus_id),
+@@ -448,28 +431,6 @@ static void aspeed_machine_class_init(ObjectClass *oc, const void *data)
+     aspeed_machine_class_props_init(oc);
+ }
+ 
+-static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
+-                                                  const void *data)
+-{
+-    MachineClass *mc = MACHINE_CLASS(oc);
+-    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+-
+-    mc->desc       = "Aspeed AST2600 EVB (Cortex-A7)";
+-    amc->soc_name  = "ast2600-a3";
+-    amc->hw_strap1 = AST2600_EVB_HW_STRAP1;
+-    amc->hw_strap2 = AST2600_EVB_HW_STRAP2;
+-    amc->fmc_model = "w25q512jv";
+-    amc->spi_model = "w25q512jv";
+-    amc->num_cs    = 1;
+-    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON |
+-                     ASPEED_MAC3_ON;
+-    amc->sdhci_wp_inverted = true;
+-    amc->i2c_init  = ast2600_evb_i2c_init;
+-    mc->default_ram_size = 1 * GiB;
+-    aspeed_machine_class_init_cpus_defaults(mc);
+-    aspeed_machine_ast2600_class_emmc_init(oc);
+-};
+-
+ #define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
+ /* Main SYSCLK frequency in Hz (200MHz) */
+ #define SYSCLK_FRQ 200000000ULL
+@@ -606,10 +567,6 @@ static void aspeed_machine_ast2700a1_evb_class_init(ObjectClass *oc,
+ 
+ static const TypeInfo aspeed_machine_types[] = {
+     {
+-        .name          = MACHINE_TYPE_NAME("ast2600-evb"),
+-        .parent        = TYPE_ASPEED_MACHINE,
+-        .class_init    = aspeed_machine_ast2600_evb_class_init,
+-    }, {
+         .name           = MACHINE_TYPE_NAME("ast1030-evb"),
+         .parent         = TYPE_ASPEED_MACHINE,
+         .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
+diff --git a/hw/arm/aspeed_ast2600_evb.c b/hw/arm/aspeed_ast2600_evb.c
+new file mode 100644
+index 0000000000..07c46b7826
+--- /dev/null
++++ b/hw/arm/aspeed_ast2600_evb.c
+@@ -0,0 +1,64 @@
++/*
++ * ASPEED AST2600 EVB
++ *
++ * Copyright (C) 2025 ASPEED Technology Inc.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/arm/aspeed.h"
++#include "hw/arm/aspeed_soc.h"
++#include "hw/i2c/smbus_eeprom.h"
++#include "hw/sensor/tmp105.h"
++
++/* AST2600 evb hardware value */
++#define AST2600_EVB_HW_STRAP1 0x000000C0
++#define AST2600_EVB_HW_STRAP2 0x00000003
++
++static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = bmc->soc;
++    uint8_t *eeprom_buf = g_malloc0(8 * 1024);
++
++    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50,
++                          eeprom_buf);
++
++    /* LM75 is compatible with TMP105 driver */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8),
++                     TYPE_TMP105, 0x4d);
++}
++
++static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
++                                                  const void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Aspeed AST2600 EVB (Cortex-A7)";
++    amc->soc_name  = "ast2600-a3";
++    amc->hw_strap1 = AST2600_EVB_HW_STRAP1;
++    amc->hw_strap2 = AST2600_EVB_HW_STRAP2;
++    amc->fmc_model = "w25q512jv";
++    amc->spi_model = "w25q512jv";
++    amc->num_cs    = 1;
++    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON |
++                     ASPEED_MAC3_ON;
++    amc->sdhci_wp_inverted = true;
++    amc->i2c_init  = ast2600_evb_i2c_init;
++    mc->default_ram_size = 1 * GiB;
++    aspeed_machine_class_init_cpus_defaults(mc);
++    aspeed_machine_ast2600_class_emmc_init(oc);
++};
++
++static const TypeInfo aspeed_ast2600_evb_types[] = {
++    {
++        .name          = MACHINE_TYPE_NAME("ast2600-evb"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_ast2600_evb_class_init,
++    },
++};
++
++DEFINE_TYPES(aspeed_ast2600_evb_types)
++
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 75d25626d1..c3c054b74e 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -59,6 +59,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_ast2600.c',
+   'aspeed_ast2600_bletchley.c',
+   'aspeed_ast2600_catalina.c',
++  'aspeed_ast2600_evb.c',
+   'aspeed_ast2600_fby35.c',
+   'aspeed_ast2600_fuji.c',
+   'aspeed_ast2600_gb200nvl.c',
 -- 
-2.51.0
+2.43.0
 
 

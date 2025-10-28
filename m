@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB21CCCD1BF
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 16:10:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AF38CCD1BF
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 18:13:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDmH5-00082O-Ol; Tue, 28 Oct 2025 12:10:20 -0400
+	id 1vDoCL-0006aF-0D; Tue, 28 Oct 2025 14:13:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vDmH2-00081W-DV
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 12:10:17 -0400
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDoCE-0006Ur-Vk
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:13:27 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vDmGr-0000AJ-Fm
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 12:10:14 -0400
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-7847f4265e3so64907677b3.3
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 09:10:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDoBy-0001X5-Mk
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:13:26 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-475dc6029b6so35361205e9.0
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 11:13:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761667802; x=1762272602; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=U9ZHRIMFILeDoUiwpfNy+ePpTc4uTSo2+a8pn42yp2k=;
- b=iYs8ngWR0b1EUwReIkLe9juP0hVbpTz0DOXI/yIorzha917TaBImagalW1cs9qBZzm
- 2/R4a//heKzMkoqggJKHqO/dHyMoFrqLlMqmutSNqxotiwdarp4CUNXsr/3RmIwJdxDn
- u9V4hc4WwMwNGe0aEgkbFMhFoEjtT+YUvlEzl2Jfm1hfW+ZK2j54xOvAPgDSw4yc7AgJ
- jWQwiA00rVAeGQDEAaa2/nSyooykNJm0Dtqp+YZBklLeFTdCT2TbRopffD2fFeB/fY5b
- wViX18cp77cVALRVSvmePnLCNQoG2u+b8SfHJN4uKAqY1st4S8mMqVlaGP3UMQmEYDek
- 9BIQ==
+ d=linaro.org; s=google; t=1761675183; x=1762279983; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=O0GGiZXrm4OzHdOc+19/N23vVvY3UXsMWqAq/zS3aok=;
+ b=qajfihQZ3lc8367o1KJYvf8AnhMbt5b81oJBI9h4ArZBTmt+miX1zJVgTLrDj3dGNr
+ vCeCuq+UV+ZpcXcV5av7cX4DQ0TfI36WQmU7rLHGO1IoKlbSsYEWYBiRzenyqDmod9CY
+ a66G5T0aB9q/RvdjNuqPs1QmVsgOUaLliZ75G5BC/yCQYxiRn/y0lCR1DEFrpKQH4IXm
+ TsZNOucR9LfNsAAnZKwh4on+MSdQuwJVVIWYiLnXi/Ezj44q9LqKLQ5P2iqj3bxJW3QM
+ SOUgAr5eLH4l5T/BPaP/Kgcpqj5UwVAmg6TC0vsmKJGG8xxOzo9MgVSDHOQSWMkwsJLU
+ nKFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761667802; x=1762272602;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=U9ZHRIMFILeDoUiwpfNy+ePpTc4uTSo2+a8pn42yp2k=;
- b=mhmstYinjNQyWtDKlqz1I6PpR+XgYjHFtYnLo56I8Oip11rRDaFyOQp0I36t2mLUC4
- tZQvZtetJNAilWcMWWbCyGOt4XfKvdeWVAYmB8ykG7TEQKAyy9UQzl+Qcj9Ww68osXlv
- OJSJh6VZFLVfUtdS+ioDl0/jwnzvdA8Y35yD+7/CVAFoa4l1GDaAKBbyl1R96+cwJfhD
- C0i02t+tnFq3YSnWFyun2HY8UyEPmfeqNFHs307W2LIopn5eJDK80sSX+LdTC3ydOG1B
- lkWX+1srSEw/mCfmccBh602mbbGIqzG2tue8Z2HPd+KgmEiiMN7ubjcLF0USRPZHoR89
- 6Lzw==
+ d=1e100.net; s=20230601; t=1761675183; x=1762279983;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=O0GGiZXrm4OzHdOc+19/N23vVvY3UXsMWqAq/zS3aok=;
+ b=T49qbgwNXoSQ/kohombLvgQVECoodBwyDIrq3RNyus/SH+oTwASDUNJR3H2ETQtXqa
+ ca+LTSlFDNw9v+J2QqnYsyztNRM8aaQYljIBpbutlkpKWp8+ReMHoSGm1kjfA6XIKCh1
+ s3Ni38jvq9AFeYaxtnmauNzomS5vuYAVX34Q3xWjLAuMHGJeSnaU8KtdLtekGY7cLvFw
+ fAbRg9AZruWbxaN42ABYbfzYnU3w5M9xwjFCxHHDEnDKcHfmfOL1Z9VlVSrvjte6PooO
+ 6epSuM77LrmSHd7WM1dx8qjZibtQkRNzBo4T30oFV8uIi1XQ/Vhi0hpqMgPn/fXzjz/X
+ 28wg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUPnJP86eNtoUno57t3UgUpZj6MmQtqv/vz70ML2x1aUA9yCYNLH0RF/00jRFPQBcAQIUW+9mV5sA==@nongnu.org
-X-Gm-Message-State: AOJu0Yze5fRhedCX98uSxhhUHPDTGcYHdDSloA3khthp+TBVVLGoT93X
- Ou5tSYbwRy92JhQTSPUKzwkQm92ZDQ0xuJkdkko6hP2KT4bAC2gTHCz20sSfqQylzCE+d9mH43J
- H9qqtwPbwfur7P8GJgyzX6kvqjbnnidS2TZCKlGTraQ==
-X-Gm-Gg: ASbGncu1PiNAh4iYnwCgK2WByQseefUe00FJeP27DAk84uo5dNPAkRnTFy6UhkU1TCP
- eWCXGeVlc+q7olcSWhuvdxhCfE9Q41uZ8nqgb1LO+ZLtZ0bw+XIS+6rqJDL8D/BByPlUhMYc39r
- SCKXv96vM77mNmmzgs9FmpVMfpRwntG1Eu68+U2IDvCBbhxEQYF3uGgwayQVx30N8kWufQFg845
- VZF+AalB0+zMMvFPamQJnRZAM9nfhhx7e3veSKiJQE88gjI/agVLx6jPKj1DA==
-X-Google-Smtp-Source: AGHT+IH/aoobYfdlAS7tajjgRZ/JvSo1ft5Kd4OAaN2GLjwq1iSa+ULvF/rHvDduGe/yDzVz1s4Fxs/gFG1cWsHzZGs=
-X-Received: by 2002:a05:690c:3388:b0:780:d2cc:3c2d with SMTP id
- 00721157ae682-78617e4be5emr37809467b3.1.1761667801979; Tue, 28 Oct 2025
- 09:10:01 -0700 (PDT)
+ AJvYcCWi8REqJnIEPVJU9t8+5Tkklo4YeGzbuICd6efdABuEnhjdk6a62sdPLaZdlBeAGC1k1farNtDH6A==@nongnu.org
+X-Gm-Message-State: AOJu0Yz6dMBfo+f/XQvCmqusyVspuu4AxDKw9HyE5ounUYFHsE5pwFzC
+ 4VglIILkBTBQPMrMIKMI8j08LyJXPnRjPstyLZuAKjgTNghk2OUiaylf2V6N+mtbRjY=
+X-Gm-Gg: ASbGncujcYgMdHpJGnilfy8/o+Ic/PTn60SlAK3FNb0xsUrO+lYzRvw0rpzFgkFAH5E
+ 8rRKbGZXsvW6VMu6Z6oWbwkYeiaHNPi9D3PMPo3lvmZuYkm2NjA0SZWSOdRcPlSIdQYdhMOF2SL
+ BATfpHcUz5HzW8hCyIbgxhaJ4yPeWL4cJNh0SKd8obL0wJE5QcCmrdCYXSykFP6ocPcwEAESw6G
+ 5S3LXcdsB7blXIKY/n+9/59SHZZ7SYDV6mhZne3VgEjuhVYuYestNBU0WZD2wWOJc9DFgjqM/KX
+ rIozhKzbx1j4Ld+355fbFpUqnawYD483aZUN07vSVz6EXyu0hnBK8tymABCVLAmJG2QwhxnuFbH
+ BfL//+ZYebDB1JfKBmFFe7Sic503Qp43W47q38TmFbBcMsT0eVtQV83w2utToFkHc9rUOovDkRJ
+ 7o5YOB0O5xmPX4WM4vNHyWNF7UEU35svtIg6xEVjQqo1rEBFedCw==
+X-Google-Smtp-Source: AGHT+IFjK2ci8BodYlqQsw4T7KtvfGXcZAulUk9EPCLZXihdGhzOdLZjWG//I7VzhVMwGc/dq8M4Qg==
+X-Received: by 2002:a05:600c:3b23:b0:475:de12:d3b5 with SMTP id
+ 5b1f17b1804b1-4771e1e3abemr4503435e9.34.1761675182854; 
+ Tue, 28 Oct 2025 11:13:02 -0700 (PDT)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4771e387aa9sm3683645e9.4.2025.10.28.11.13.01
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 28 Oct 2025 11:13:02 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, qemu-block@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v3 00/25] hw/sysbus: Spring cleanups (part 1)
+Date: Tue, 28 Oct 2025 19:12:34 +0100
+Message-ID: <20251028181300.41475-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-References: <20250629204851.1778-1-shentey@gmail.com>
- <20250629204851.1778-3-shentey@gmail.com>
- <CAFEAcA9Rvvymu7oS0pPx00v9SdXzwr27vy1VmnZmwQ7ayZK+yQ@mail.gmail.com>
- <2F14E49B-D152-470C-A87C-525853EB8ED5@gmail.com>
-In-Reply-To: <2F14E49B-D152-470C-A87C-525853EB8ED5@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Oct 2025 16:09:50 +0000
-X-Gm-Features: AWmQ_bkCiTiH_nxLkQFcKmhdwK831S0y0xjg3NKwJVODTTx27brGsecw6nAun08
-Message-ID: <CAFEAcA9RBxs3C068BRgzKCqFxQh2K5rmXwyiph4_imOiy7JxLg@mail.gmail.com>
-Subject: Re: [PATCH 2/2] hw/arm/imx8mp-evk: Add KVM support
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Phil_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,85 +102,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 28 Oct 2025 at 14:41, Bernhard Beschow <shentey@gmail.com> wrote:
->
->
->
-> Am 28. Oktober 2025 12:46:34 UTC schrieb Peter Maydell <peter.maydell@lin=
-aro.org>:
-> >On Sun, 29 Jun 2025 at 21:49, Bernhard Beschow <shentey@gmail.com> wrote=
-:
-> >>
-> >> Allows the imx8mp-evk machine to be run with KVM acceleration as a gue=
-st.
-> >>
-> >> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> >> ---
-> >>  docs/system/arm/imx8mp-evk.rst |  7 +++++++
-> >>  hw/arm/fsl-imx8mp.c            | 33 ++++++++++++++++++++++++++++-----
-> >>  hw/arm/imx8mp-evk.c            | 11 +++++++++++
-> >>  hw/arm/Kconfig                 |  3 ++-
-> >>  hw/arm/meson.build             |  2 +-
-> >>  5 files changed, 49 insertions(+), 7 deletions(-)
-> >>
-> >> diff --git a/docs/system/arm/imx8mp-evk.rst b/docs/system/arm/imx8mp-e=
-vk.rst
-> >> index b2f7d29ade..1399820163 100644
-> >> --- a/docs/system/arm/imx8mp-evk.rst
-> >> +++ b/docs/system/arm/imx8mp-evk.rst
-> >> @@ -60,3 +60,10 @@ Now that everything is prepared the machine can be =
-started as follows:
-> >>        -dtb imx8mp-evk.dtb \
-> >>        -append "root=3D/dev/mmcblk2p2" \
-> >>        -drive file=3Dsdcard.img,if=3Dsd,bus=3D2,format=3Draw,id=3Dmmcb=
-lk2
-> >> +
-> >> +
-> >> +KVM Virtualization
-> >> +------------------
-> >> +
-> >> +To enable hardware-assisted acceleration via KVM, append
-> >> +``-accel kvm -cpu host`` to the command line.
-> >
-> >Coming back to this now we've resolved the "does this put
-> >things inside our security-promises that we don't want"
-> >question...
-> >
-> >I think we should be a bit clearer in the documentation
-> >about what tradeoffs the user is making here when they select
-> >KVM. Specifically:
-> >
-> > * we should note that this is intended only to improve
-> >   performance, and is not covered by QEMU's security policy
->
-> Sure, I'll add it.
->
-> > * we should say that you will not get a Cortex-A53, so any
-> >   guest code with tight dependencies on the host CPU type
-> >   might not work correctly
->
-> Ack. I'd also hardcode the CPU type to host since asking for a Cortex-A53=
- always failed on me with KVM.
+- Use sysbus_mmio_get_region() instead of SysBusDevice::mmio[].memory
+- Use memory_region_name() instead of MemoryRegion::name
+- Use memory_region_size() instead of int128_get64(MemoryRegion::size)
+- Add memory_region_get_address()
+- Use memory_region_get_address() instead of MemoryRegion::addr
+- Remove SysBusDevice::mmio[].addr
+- Simplify SysBusDevice::mmio[]
 
-Yes, this is the right thing (at least until some distant
-day when we add support for having KVM give the guest a vcpu
-that looks like a particular cpu type). The 'cortex-a53'
-cpu type with KVM will only work if the host happens to be
-that, which isn't very useful for most people.
+Philippe Mathieu-Daudé (25):
+  hw/i386/microvm: Use proper SysBus accessors
+  hw/i386/ioapic: Use proper SysBus accessors
+  hw/timer/hpet: Use proper SysBus accessors
+  hw/acpi/cxl: Use proper SysBus accessors
+  hw/ppc/e500: Use proper SysBus accessors
+  hw/pci-bridge: Use proper SysBus accessors
+  hw/sysbus: Use memory_region_name()
+  hw/nvme/ctrl: Use memory_region_size()
+  hw/s390x: Use memory_region_size()
+  system/memory: Have memory_region_size() take a const argument
+  system/memory: Introduce memory_region_get_address()
+  migration/ram: Use memory_region_get_address()
+  hw/acpi: Use memory_region_get_address()
+  hw/fdt: Use memory_region_get_address()
+  hw/nvme: Use memory_region_get_address()
+  hw/s390x: Use memory_region_get_address()
+  hw/timer/hpet: Use memory_region_get_address()
+  hw/watchdog/aspeed: Use memory_region_get_address()
+  hw/pci-bridge: Use memory_region_get_address()
+  system/ioport: Use memory_region_get_address()
+  hw/sysbus: Use memory_region_get_address()
+  hw/sysbus: Hoist MemoryRegion in sysbus_mmio_map_common()
+  hw/sysbus: Remove sysbus_mmio_map_common() @may_overlap argument
+  hw/sysbus: Use memory_region_is_mapped() to check for mapped region
+  hw/sysbus: Simplify SysBusDevice::mmio
 
-> > * we should say that the guest will only be able to run
-> >   at EL1, and (unlike TCG) there is no EL2 or EL3
->
-> Real U-Boot calls back into the on-chip ROM which isn't implemented yet. =
-Furthermore, there are some unimplemented USDHC extensions which prevent co=
-mplete loading of binaries into RAM by U-Boot (similar limitation exists fo=
-r e500 boards). Therefore the board documentation only advertises direct ke=
-rnel boot. AFAIU EL2 and EL3 aren't usable there anyway. Correct? Do we nee=
-d to mention this limitation regardless?
+ include/hw/sysbus.h                 |  5 +--
+ include/system/memory.h             |  9 ++++-
+ hw/acpi/cxl.c                       | 10 +++--
+ hw/core/sysbus.c                    | 57 ++++++++++++-----------------
+ hw/i386/acpi-build.c                |  8 ++--
+ hw/i386/kvm/ioapic.c                |  3 +-
+ hw/i386/microvm-dt.c                |  6 ++-
+ hw/loongarch/virt-acpi-build.c      |  4 +-
+ hw/loongarch/virt-fdt-build.c       |  4 +-
+ hw/nvme/ctrl.c                      | 15 +++++---
+ hw/pci-bridge/pci_expander_bridge.c |  6 ++-
+ hw/ppc/e500.c                       |  2 +-
+ hw/s390x/s390-pci-inst.c            | 23 ++++++++----
+ hw/timer/hpet.c                     |  4 +-
+ hw/watchdog/wdt_aspeed.c            |  2 +-
+ migration/ram.c                     | 11 +++---
+ system/ioport.c                     | 21 +++++++----
+ system/memory.c                     |  7 +++-
+ 18 files changed, 113 insertions(+), 84 deletions(-)
 
-I think it's worth mentioning anyway -- not every EL3
-payload is necessarily u-boot.
+-- 
+2.51.0
 
-thanks
--- PMM
 

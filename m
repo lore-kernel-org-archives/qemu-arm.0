@@ -4,52 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C833ACCF9EA
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 06:28:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20102CCF9E0
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 07:17:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDd9D-0002Sh-V7; Tue, 28 Oct 2025 02:25:36 -0400
+	id 1vDdws-0000qa-1y; Tue, 28 Oct 2025 03:16:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vDd8W-00017w-Lz; Tue, 28 Oct 2025 02:25:01 -0400
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vDd8P-0000d4-Pl; Tue, 28 Oct 2025 02:24:51 -0400
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 28 Oct
- 2025 14:23:15 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 28 Oct 2025 14:23:15 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 16/16] hw/arm/aspeed: Split AST1030 EVB machine into a
- separate source file for maintainability
-Date: Tue, 28 Oct 2025 14:23:00 +0800
-Message-ID: <20251028062307.2410346-17-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251028062307.2410346-1-jamin_lin@aspeedtech.com>
-References: <20251028062307.2410346-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1vDdwq-0000qI-IJ
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 03:16:52 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1vDdwn-0002i4-JP
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 03:16:52 -0400
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-b3c2c748bc8so722768966b.2
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 00:16:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1761635807; x=1762240607; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=zB+81qr5fyzRi3t9mH0+KlO4414dUIRjUl8O7kRsM+k=;
+ b=ND28aKaq3bADjhJVytKcvnTxTEH85qIQoyRBV7HBYIrZhNpar8mywnxnyT7Vh6vbra
+ zGiFX0rM/jzmbQnC7ypSMOosOMfqzhFyxTYMJm+E5RiqgpPTZfDbYPnVVAUeLX+SCtJx
+ MjFHGdulPRjmNavfwTprqPjycXBWhgKnASDRCKSIlExWtEzPpYvJoDDuh2BR3feA2twx
+ SEvXZpzMIQlaaM3m93lEwvcApey2wgOBT0PqF/dUWoFvSQF0BegkdguLd75YnqXljx/5
+ jKTbdHDISC4JuVXOt4b69PS6sixdzu464WFwhsm/nam5YI5IAuK0S5YLOZdmLqy5BEJ3
+ VeRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761635807; x=1762240607;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=zB+81qr5fyzRi3t9mH0+KlO4414dUIRjUl8O7kRsM+k=;
+ b=gu/6/rLwUNnlspNnW0X3uFACImnPTbJc7hisFZycVcGzNl80BAIFcXdmwJ5h37JYZK
+ LpGlBaU2NYMUumpLb4PkcICS1+Kjc6gamZXwgUlu4wQkl2AdbuqmIclVKPtOT0jDhNcy
+ lWgN6YIjTVm58L2GOCBp3tIyTzjFWzi/1R6a1+k84U+tqbfbJJpWjELhxKCd4YllRxJ3
+ 1Jj8t9x/0EWR6IgCprDaqZvC55/xdusUFstI745MQ5lliKS3kXMIrWTzGP51FvIxHFhO
+ /EXpuwwxQBHW1e12j+Ioifas74OUR7YjCC2EeIAPy+QJM4st5LxhAhR/6aSWkQ41ywE7
+ PSLg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXOaLI1ySpVwJMtu0vOYi2jI9xE3DjVhGICgt1jutDXNtbqGP33Gt7ta0jJfAH+dcNdWZth18yEng==@nongnu.org
+X-Gm-Message-State: AOJu0YwinnC1FrhUTsrJU51Mne/ZW/LIJOQPdhSS0GoZfDFFAd67zpow
+ 9jSNbXJR9zkKG0rdqXOXH1GZqBuKMTIsMSMv7FFD1HXCLDc3PGl2N1eI88e9gIiUDURvGwfkwT/
+ sVlKuSPZV76Q2JmEmEMxOaYz7klLWeQ0=
+X-Gm-Gg: ASbGncs5B2k7Yfx2NNJGi1RcIkE54iIH+zLt4xAXUGAPr2QMNXd80biFeG8oZe7LzoF
+ A9VtNyvXGoZn0QuHnaG5Am5/xVdv7f1bO2qHPfEU3hxZpX86b0xUyjYL14kd/HtARoU5Ar0gLf4
+ FuOY0wHF0V8jy4azgRFV/qgDZMSGSIXxJD+6TFqIDPSlcHVNbs9vdwIVj7LAABPOk/NF0FKaVW0
+ 0qjWarSuAMKmjH60iPfo18tt1gHf9Lx06dVQ7l0M5h384gz8q2NCauRgXRdAuqMBo42a/f0Wt4A
+ bR2vcyP191mP4kyoyAET9mLuZcM=
+X-Google-Smtp-Source: AGHT+IGUT0mUMBlAFpIk7Uw371kmagbxrKKwUGJQVOvWp2MTBTBhvoA7xFVx57DkJg2tsgUwltvTZj9rcB3vX+ZyBbw=
+X-Received: by 2002:a17:907:1b22:b0:b42:9840:eac1 with SMTP id
+ a640c23a62f3a-b6dba55c48fmr268141066b.49.1761635806450; Tue, 28 Oct 2025
+ 00:16:46 -0700 (PDT)
 MIME-Version: 1.0
+References: <20251027112306.57634-1-philmd@linaro.org>
+In-Reply-To: <20251027112306.57634-1-philmd@linaro.org>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Tue, 28 Oct 2025 11:16:30 +0400
+X-Gm-Features: AWmQ_bkROYGAvMhgKZM_C4h-8F7-NuAcB_I38QjM8k4bTkHHodupVhTJTizl7Qc
+Message-ID: <CAJ+F1CKRRQY9w=e8XnxxMNTLoJqWiN-TBtu7qV_+2pAaEhM5fA@mail.gmail.com>
+Subject: Re: [PATCH] hw/pci-host: Set DEVICE_CATEGORY_BRIDGE once in parent
+ class_init()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Glenn Miles <milesg@linux.ibm.com>, 
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Paul Burton <paulburton@kernel.org>, Joel Stanley <joel@jms.id.au>, 
+ Jagannathan Raman <jag.raman@oracle.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
+ Aurelien Jarno <aurelien@aurel32.net>, BALATON Zoltan <balaton@eik.bme.hu>, 
+ Aditya Gupta <adityag@linux.ibm.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Aleksandar Rikalo <arikalo@gmail.com>, Bernhard Beschow <shentey@gmail.com>,
+ qemu-arm@nongnu.org, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Steven Lee <steven_lee@aspeedtech.com>, 
+ Nicholas Piggin <npiggin@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-ppc@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-ej1-x631.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,276 +111,310 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit moves the Aspeed AST1030 MiniBMC machine
-implementation out of aspeed.c into a new standalone file
-aspeed_ast10x0_evb.c.
+On Mon, Oct 27, 2025 at 3:37=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
+<philmd@linaro.org> wrote:
+>
+> No need to set DEVICE_CATEGORY_BRIDGE for each device
+> implementing TYPE_PCI_HOST_BRIDGE: set it once in the
+> parent.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-This refactor continues the modularization effort for Aspeed platform
-support, placing each board’s logic and initialization sequence in its
-own dedicated source file. It improves maintainability, readability, and
-makes it easier to extend support for additional AST10x0-based variants.
+this will also categorize a bunch of devices
 
-Key updates include:
-- Moved aspeed_minibmc_machine_init() and
-  aspeed_minibmc_machine_ast1030_evb_class_init() from aspeed.c to
-  aspeed_ast10x0_evb.c.
-- Moved ast1030_evb_i2c_init() and associated I2C setup code.
-- Removed AST1030 EVB machine type registration from aspeed.c.
-- Added aspeed_ast10x0_evb.c to the Meson build system (meson.build).
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
-No functional changes.
+> ---
+>  hw/pci-host/articia.c     | 1 -
+>  hw/pci-host/aspeed_pcie.c | 1 -
+>  hw/pci-host/designware.c  | 3 ---
+>  hw/pci-host/gpex.c        | 2 --
+>  hw/pci-host/grackle.c     | 1 -
+>  hw/pci-host/gt64120.c     | 1 -
+>  hw/pci-host/mv64361.c     | 1 -
+>  hw/pci-host/pnv_phb.c     | 1 -
+>  hw/pci-host/ppce500.c     | 1 -
+>  hw/pci-host/q35.c         | 1 -
+>  hw/pci-host/raven.c       | 1 -
+>  hw/pci-host/remote.c      | 1 -
+>  hw/pci-host/sabre.c       | 1 -
+>  hw/pci-host/uninorth.c    | 4 ----
+>  hw/pci-host/xilinx-pcie.c | 2 --
+>  hw/pci/pci_host.c         | 1 +
+>  16 files changed, 1 insertion(+), 22 deletions(-)
+>
+> diff --git a/hw/pci-host/articia.c b/hw/pci-host/articia.c
+> index cc65aac2a87..47f223879f0 100644
+> --- a/hw/pci-host/articia.c
+> +++ b/hw/pci-host/articia.c
+> @@ -200,7 +200,6 @@ static void articia_class_init(ObjectClass *klass, co=
+nst void *data)
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>
+>      dc->realize =3D articia_realize;
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>  }
+>
+>  /* TYPE_ARTICIA_PCI_HOST */
+> diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
+> index f7593444fc4..2499d3fe680 100644
+> --- a/hw/pci-host/aspeed_pcie.c
+> +++ b/hw/pci-host/aspeed_pcie.c
+> @@ -312,7 +312,6 @@ static void aspeed_pcie_rc_class_init(ObjectClass *kl=
+ass, const void *data)
+>      dc->desc =3D "ASPEED PCIe RC";
+>      dc->realize =3D aspeed_pcie_rc_realize;
+>      dc->fw_name =3D "pci";
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>
+>      hc->root_bus_path =3D aspeed_pcie_rc_root_bus_path;
+>      device_class_set_props(dc, aspeed_pcie_rc_props);
+> diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
+> index f6e49ce9b8d..b0b51ad9517 100644
+> --- a/hw/pci-host/designware.c
+> +++ b/hw/pci-host/designware.c
+> @@ -593,8 +593,6 @@ static void designware_pcie_root_class_init(ObjectCla=
+ss *klass,
+>      PCIDeviceClass *k =3D PCI_DEVICE_CLASS(klass);
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+> -
+>      k->vendor_id =3D PCI_VENDOR_ID_SYNOPSYS;
+>      k->device_id =3D 0xABCD;
+>      k->revision =3D 0;
+> @@ -736,7 +734,6 @@ static void designware_pcie_host_class_init(ObjectCla=
+ss *klass,
+>
+>      hc->root_bus_path =3D designware_pcie_host_root_bus_path;
+>      dc->realize =3D designware_pcie_host_realize;
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->fw_name =3D "pci";
+>      dc->vmsd =3D &vmstate_designware_pcie_host;
+>  }
+> diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+> index b806a2286f7..5f809028be2 100644
+> --- a/hw/pci-host/gpex.c
+> +++ b/hw/pci-host/gpex.c
+> @@ -200,7 +200,6 @@ static void gpex_host_class_init(ObjectClass *klass, =
+const void *data)
+>      hc->root_bus_path =3D gpex_host_root_bus_path;
+>      dc->realize =3D gpex_host_realize;
+>      dc->unrealize =3D gpex_host_unrealize;
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->fw_name =3D "pci";
+>      device_class_set_props(dc, gpex_host_properties);
+>  }
+> @@ -242,7 +241,6 @@ static void gpex_root_class_init(ObjectClass *klass, =
+const void *data)
+>      PCIDeviceClass *k =3D PCI_DEVICE_CLASS(klass);
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->desc =3D "QEMU generic PCIe host bridge";
+>      dc->vmsd =3D &vmstate_gpex_root;
+>      k->vendor_id =3D PCI_VENDOR_ID_REDHAT;
+> diff --git a/hw/pci-host/grackle.c b/hw/pci-host/grackle.c
+> index f9da5a908c1..fa872c17e3b 100644
+> --- a/hw/pci-host/grackle.c
+> +++ b/hw/pci-host/grackle.c
+> @@ -140,7 +140,6 @@ static void grackle_class_init(ObjectClass *klass, co=
+nst void *data)
+>
+>      dc->realize =3D grackle_realize;
+>      device_class_set_props(dc, grackle_properties);
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->fw_name =3D "pci";
+>      sbc->explicit_ofw_unit_address =3D grackle_ofw_unit_address;
+>  }
+> diff --git a/hw/pci-host/gt64120.c b/hw/pci-host/gt64120.c
+> index b1d96f62fe9..bffa1165580 100644
+> --- a/hw/pci-host/gt64120.c
+> +++ b/hw/pci-host/gt64120.c
+> @@ -1298,7 +1298,6 @@ static void gt64120_class_init(ObjectClass *klass, =
+const void *data)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      device_class_set_props(dc, gt64120_properties);
+>      dc->realize =3D gt64120_realize;
+>      device_class_set_legacy_reset(dc, gt64120_reset);
+> diff --git a/hw/pci-host/mv64361.c b/hw/pci-host/mv64361.c
+> index e05b6770102..e5e6614b139 100644
+> --- a/hw/pci-host/mv64361.c
+> +++ b/hw/pci-host/mv64361.c
+> @@ -108,7 +108,6 @@ static void mv64361_pcihost_class_init(ObjectClass *k=
+lass, const void *data)
+>
+>      dc->realize =3D mv64361_pcihost_realize;
+>      device_class_set_props(dc, mv64361_pcihost_props);
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>  }
+>
+>  static const TypeInfo mv64361_pcihost_info =3D {
+> diff --git a/hw/pci-host/pnv_phb.c b/hw/pci-host/pnv_phb.c
+> index 4b0ced79b08..e07cf8a0d0f 100644
+> --- a/hw/pci-host/pnv_phb.c
+> +++ b/hw/pci-host/pnv_phb.c
+> @@ -202,7 +202,6 @@ static void pnv_phb_class_init(ObjectClass *klass, co=
+nst void *data)
+>      hc->root_bus_path =3D pnv_phb_root_bus_path;
+>      dc->realize =3D pnv_phb_realize;
+>      device_class_set_props(dc, pnv_phb_properties);
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->user_creatable =3D true;
+>  }
+>
+> diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
+> index 975d191ccb8..edadc35384c 100644
+> --- a/hw/pci-host/ppce500.c
+> +++ b/hw/pci-host/ppce500.c
+> @@ -516,7 +516,6 @@ static void e500_pcihost_class_init(ObjectClass *klas=
+s, const void *data)
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>
+>      dc->realize =3D e500_pcihost_realize;
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      device_class_set_props(dc, pcihost_properties);
+>      dc->vmsd =3D &vmstate_ppce500_pci;
+>  }
+> diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+> index 1951ae440cc..c134679fa0c 100644
+> --- a/hw/pci-host/q35.c
+> +++ b/hw/pci-host/q35.c
+> @@ -194,7 +194,6 @@ static void q35_host_class_init(ObjectClass *klass, c=
+onst void *data)
+>      device_class_set_props(dc, q35_host_props);
+>      /* Reason: needs to be wired up by pc_q35_init */
+>      dc->user_creatable =3D false;
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->fw_name =3D "pci";
+>  }
+>
+> diff --git a/hw/pci-host/raven.c b/hw/pci-host/raven.c
+> index eacffc86d84..661a4223d69 100644
+> --- a/hw/pci-host/raven.c
+> +++ b/hw/pci-host/raven.c
+> @@ -365,7 +365,6 @@ static void raven_pcihost_class_init(ObjectClass *kla=
+ss, const void *data)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->realize =3D raven_pcihost_realizefn;
+>      dc->fw_name =3D "pci";
+>  }
+> diff --git a/hw/pci-host/remote.c b/hw/pci-host/remote.c
+> index e6d2af4502a..959beb5c301 100644
+> --- a/hw/pci-host/remote.c
+> +++ b/hw/pci-host/remote.c
+> @@ -55,7 +55,6 @@ static void remote_pcihost_class_init(ObjectClass *klas=
+s, const void *data)
+>      dc->realize =3D remote_pcihost_realize;
+>
+>      dc->user_creatable =3D false;
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->fw_name =3D "pci";
+>  }
+>
+> diff --git a/hw/pci-host/sabre.c b/hw/pci-host/sabre.c
+> index 538624c5079..f95e5db583a 100644
+> --- a/hw/pci-host/sabre.c
+> +++ b/hw/pci-host/sabre.c
+> @@ -505,7 +505,6 @@ static void sabre_class_init(ObjectClass *klass, cons=
+t void *data)
+>      dc->realize =3D sabre_realize;
+>      device_class_set_legacy_reset(dc, sabre_reset);
+>      device_class_set_props(dc, sabre_properties);
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->fw_name =3D "pci";
+>      sbc->explicit_ofw_unit_address =3D sabre_ofw_unit_address;
+>  }
+> diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
+> index 194037d6e75..d337a2fd62c 100644
+> --- a/hw/pci-host/uninorth.c
+> +++ b/hw/pci-host/uninorth.c
+> @@ -435,7 +435,6 @@ static void pci_unin_main_class_init(ObjectClass *kla=
+ss, const void *data)
+>
+>      dc->realize =3D pci_unin_main_realize;
+>      device_class_set_props(dc, pci_unin_main_pci_host_props);
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->fw_name =3D "pci";
+>      sbc->explicit_ofw_unit_address =3D pci_unin_main_ofw_unit_address;
+>  }
+> @@ -453,7 +452,6 @@ static void pci_u3_agp_class_init(ObjectClass *klass,=
+ const void *data)
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>
+>      dc->realize =3D pci_u3_agp_realize;
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>  }
+>
+>  static const TypeInfo pci_u3_agp_info =3D {
+> @@ -469,7 +467,6 @@ static void pci_unin_agp_class_init(ObjectClass *klas=
+s, const void *data)
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>
+>      dc->realize =3D pci_unin_agp_realize;
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>  }
+>
+>  static const TypeInfo pci_unin_agp_info =3D {
+> @@ -485,7 +482,6 @@ static void pci_unin_internal_class_init(ObjectClass =
+*klass, const void *data)
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>
+>      dc->realize =3D pci_unin_internal_realize;
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>  }
+>
+>  static const TypeInfo pci_unin_internal_info =3D {
+> diff --git a/hw/pci-host/xilinx-pcie.c b/hw/pci-host/xilinx-pcie.c
+> index c71492de9e7..1540533223c 100644
+> --- a/hw/pci-host/xilinx-pcie.c
+> +++ b/hw/pci-host/xilinx-pcie.c
+> @@ -172,7 +172,6 @@ static void xilinx_pcie_host_class_init(ObjectClass *=
+klass, const void *data)
+>
+>      hc->root_bus_path =3D xilinx_pcie_host_root_bus_path;
+>      dc->realize =3D xilinx_pcie_host_realize;
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->fw_name =3D "pci";
+>      device_class_set_props(dc, xilinx_pcie_host_props);
+>  }
+> @@ -291,7 +290,6 @@ static void xilinx_pcie_root_class_init(ObjectClass *=
+klass, const void *data)
+>      PCIDeviceClass *k =3D PCI_DEVICE_CLASS(klass);
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>
+> -    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>      dc->desc =3D "Xilinx AXI-PCIe Host Bridge";
+>      k->vendor_id =3D PCI_VENDOR_ID_XILINX;
+>      k->device_id =3D 0x7021;
+> diff --git a/hw/pci/pci_host.c b/hw/pci/pci_host.c
+> index 7179d99178b..b5c624e12e8 100644
+> --- a/hw/pci/pci_host.c
+> +++ b/hw/pci/pci_host.c
+> @@ -245,6 +245,7 @@ static void pci_host_class_init(ObjectClass *klass, c=
+onst void *data)
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>      device_class_set_props(dc, pci_host_properties_common);
+>      dc->vmsd =3D &vmstate_pcihost;
+> +    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+>  }
+>
+>  static const TypeInfo pci_host_type_info =3D {
+> --
+> 2.51.0
+>
+>
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/arm/aspeed.c             |  89 ------------------------------
- hw/arm/aspeed_ast10x0_evb.c | 107 ++++++++++++++++++++++++++++++++++++
- hw/arm/meson.build          |   1 +
- 3 files changed, 108 insertions(+), 89 deletions(-)
- create mode 100644 hw/arm/aspeed_ast10x0_evb.c
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index c5e8a0608d..8bf32cb220 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -15,14 +15,9 @@
- #include "hw/arm/aspeed.h"
- #include "hw/arm/aspeed_soc.h"
- #include "hw/block/flash.h"
--#include "hw/i2c/smbus_eeprom.h"
- #include "hw/gpio/pca9552.h"
- #include "hw/gpio/pca9554.h"
--#include "hw/sensor/tmp105.h"
--#include "hw/misc/led.h"
--#include "hw/qdev-properties.h"
- #include "system/block-backend.h"
--#include "system/reset.h"
- #include "qemu/error-report.h"
- #include "qemu/units.h"
- #include "hw/qdev-clock.h"
-@@ -423,92 +418,8 @@ static void aspeed_machine_class_init(ObjectClass *oc, const void *data)
-     aspeed_machine_class_props_init(oc);
- }
- 
--#define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
--/* Main SYSCLK frequency in Hz (200MHz) */
--#define SYSCLK_FRQ 200000000ULL
--
--static void aspeed_minibmc_machine_init(MachineState *machine)
--{
--    AspeedMachineState *bmc = ASPEED_MACHINE(machine);
--    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
--    Clock *sysclk;
--
--    sysclk = clock_new(OBJECT(machine), "SYSCLK");
--    clock_set_hz(sysclk, SYSCLK_FRQ);
--
--    bmc->soc = ASPEED_SOC(object_new(amc->soc_name));
--    object_property_add_child(OBJECT(machine), "soc", OBJECT(bmc->soc));
--    object_unref(OBJECT(bmc->soc));
--    qdev_connect_clock_in(DEVICE(bmc->soc), "sysclk", sysclk);
--
--    object_property_set_link(OBJECT(bmc->soc), "memory",
--                             OBJECT(get_system_memory()), &error_abort);
--    connect_serial_hds_to_uarts(bmc);
--    qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
--
--    if (defaults_enabled()) {
--        aspeed_board_init_flashes(&bmc->soc->fmc,
--                            bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
--                            amc->num_cs,
--                            0);
--
--        aspeed_board_init_flashes(&bmc->soc->spi[0],
--                            bmc->spi_model ? bmc->spi_model : amc->spi_model,
--                            amc->num_cs, amc->num_cs);
--
--        aspeed_board_init_flashes(&bmc->soc->spi[1],
--                            bmc->spi_model ? bmc->spi_model : amc->spi_model,
--                            amc->num_cs, (amc->num_cs * 2));
--    }
--
--    if (amc->i2c_init) {
--        amc->i2c_init(bmc);
--    }
--
--    armv7m_load_kernel(ARM_CPU(first_cpu),
--                       machine->kernel_filename,
--                       0,
--                       AST1030_INTERNAL_FLASH_SIZE);
--}
--
--static void ast1030_evb_i2c_init(AspeedMachineState *bmc)
--{
--    AspeedSoCState *soc = bmc->soc;
--
--    /* U10 24C08 connects to SDA/SCL Group 1 by default */
--    uint8_t *eeprom_buf = g_malloc0(32 * 1024);
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50, eeprom_buf);
--
--    /* U11 LM75 connects to SDA/SCL Group 2 by default */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4d);
--}
--
--static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
--                                                          const void *data)
--{
--    MachineClass *mc = MACHINE_CLASS(oc);
--    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
--
--    mc->desc = "Aspeed AST1030 MiniBMC (Cortex-M4)";
--    amc->soc_name = "ast1030-a1";
--    amc->hw_strap1 = 0;
--    amc->hw_strap2 = 0;
--    mc->init = aspeed_minibmc_machine_init;
--    amc->i2c_init = ast1030_evb_i2c_init;
--    mc->default_ram_size = 0;
--    amc->fmc_model = "w25q80bl";
--    amc->spi_model = "w25q256";
--    amc->num_cs = 2;
--    amc->macs_mask = 0;
--    aspeed_machine_class_init_cpus_defaults(mc);
--}
--
- static const TypeInfo aspeed_machine_types[] = {
-     {
--        .name           = MACHINE_TYPE_NAME("ast1030-evb"),
--        .parent         = TYPE_ASPEED_MACHINE,
--        .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
--    }, {
-         .name          = TYPE_ASPEED_MACHINE,
-         .parent        = TYPE_MACHINE,
-         .instance_size = sizeof(AspeedMachineState),
-diff --git a/hw/arm/aspeed_ast10x0_evb.c b/hw/arm/aspeed_ast10x0_evb.c
-new file mode 100644
-index 0000000000..fb34a47dbd
---- /dev/null
-+++ b/hw/arm/aspeed_ast10x0_evb.c
-@@ -0,0 +1,107 @@
-+/*
-+ * ASPEED AST10x0 EVB
-+ *
-+ * Copyright (C) 2025 ASPEED Technology Inc.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/arm/boot.h"
-+#include "hw/arm/aspeed.h"
-+#include "hw/arm/aspeed_soc.h"
-+#include "hw/qdev-clock.h"
-+#include "system/system.h"
-+#include "hw/i2c/smbus_eeprom.h"
-+
-+#define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
-+/* Main SYSCLK frequency in Hz (200MHz) */
-+#define SYSCLK_FRQ 200000000ULL
-+
-+static void aspeed_minibmc_machine_init(MachineState *machine)
-+{
-+    AspeedMachineState *bmc = ASPEED_MACHINE(machine);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
-+    Clock *sysclk;
-+
-+    sysclk = clock_new(OBJECT(machine), "SYSCLK");
-+    clock_set_hz(sysclk, SYSCLK_FRQ);
-+
-+    bmc->soc = ASPEED_SOC(object_new(amc->soc_name));
-+    object_property_add_child(OBJECT(machine), "soc", OBJECT(bmc->soc));
-+    object_unref(OBJECT(bmc->soc));
-+    qdev_connect_clock_in(DEVICE(bmc->soc), "sysclk", sysclk);
-+
-+    object_property_set_link(OBJECT(bmc->soc), "memory",
-+                             OBJECT(get_system_memory()), &error_abort);
-+    connect_serial_hds_to_uarts(bmc);
-+    qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
-+
-+    if (defaults_enabled()) {
-+        aspeed_board_init_flashes(&bmc->soc->fmc,
-+                            bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
-+                            amc->num_cs,
-+                            0);
-+
-+        aspeed_board_init_flashes(&bmc->soc->spi[0],
-+                            bmc->spi_model ? bmc->spi_model : amc->spi_model,
-+                            amc->num_cs, amc->num_cs);
-+
-+        aspeed_board_init_flashes(&bmc->soc->spi[1],
-+                            bmc->spi_model ? bmc->spi_model : amc->spi_model,
-+                            amc->num_cs, (amc->num_cs * 2));
-+    }
-+
-+    if (amc->i2c_init) {
-+        amc->i2c_init(bmc);
-+    }
-+
-+    armv7m_load_kernel(ARM_CPU(first_cpu),
-+                       machine->kernel_filename,
-+                       0,
-+                       AST1030_INTERNAL_FLASH_SIZE);
-+}
-+
-+static void ast1030_evb_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = bmc->soc;
-+
-+    /* U10 24C08 connects to SDA/SCL Group 1 by default */
-+    uint8_t *eeprom_buf = g_malloc0(32 * 1024);
-+    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50, eeprom_buf);
-+
-+    /* U11 LM75 connects to SDA/SCL Group 2 by default */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4d);
-+}
-+
-+static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
-+                                                          const void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc = "Aspeed AST1030 MiniBMC (Cortex-M4)";
-+    amc->soc_name = "ast1030-a1";
-+    amc->hw_strap1 = 0;
-+    amc->hw_strap2 = 0;
-+    mc->init = aspeed_minibmc_machine_init;
-+    amc->i2c_init = ast1030_evb_i2c_init;
-+    mc->default_ram_size = 0;
-+    amc->fmc_model = "w25q80bl";
-+    amc->spi_model = "w25q256";
-+    amc->num_cs = 2;
-+    amc->macs_mask = 0;
-+    aspeed_machine_class_init_cpus_defaults(mc);
-+}
-+
-+static const TypeInfo aspeed_ast10x0_evb_types[] = {
-+    {
-+        .name           = MACHINE_TYPE_NAME("ast1030-evb"),
-+        .parent         = TYPE_ASPEED_MACHINE,
-+        .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
-+    },
-+};
-+
-+DEFINE_TYPES(aspeed_ast10x0_evb_types)
-+
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 8e568e21b5..f46f3a1c84 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -67,6 +67,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_ast2600_qcom-firework.c',
-   'aspeed_ast2600_rainier.c',
-   'aspeed_ast10x0.c',
-+  'aspeed_ast10x0_evb.c',
-   'fby35.c'))
- arm_common_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files(
-   'aspeed_ast27x0.c',
--- 
-2.43.0
-
+--=20
+Marc-Andr=C3=A9 Lureau
 

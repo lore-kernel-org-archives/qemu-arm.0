@@ -4,111 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 836F9CCD1BF
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 11:10:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8CE2CCD1BF
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 11:13:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDha6-0002Z2-L6; Tue, 28 Oct 2025 07:09:38 -0400
+	id 1vDhcj-0003v5-8w; Tue, 28 Oct 2025 07:12:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDha2-0002WI-9F
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 07:09:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDhZs-0000DA-Ud
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 07:09:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761649761;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fapeBS9BlMiWanMAmjo5FOfv9HzZKkc/WpK7c6FKcGc=;
- b=A21y0snpXmioW1ueLBDGHNt4lR8w8E2By2zvaTVmH5MRo77aamhY1kQOnrxtEiCF30YmWF
- prYAn6ZEKsLzlls/CuUktx+LxR72yBkolrt76hxHNEVVCVL77e/PHn802pcDFu00T2nFJd
- 3Ydgeb7ST+cm8qEshiIxg/zJVJpobpA=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-550-c7N9hxQWMAqjBEmOfGQYvA-1; Tue, 28 Oct 2025 07:09:20 -0400
-X-MC-Unique: c7N9hxQWMAqjBEmOfGQYvA-1
-X-Mimecast-MFC-AGG-ID: c7N9hxQWMAqjBEmOfGQYvA_1761649758
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-475ddd57999so26814155e9.1
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 04:09:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761649758; x=1762254558;
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDhcf-0003tZ-6e
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 07:12:17 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDhcU-00018t-Qq
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 07:12:16 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-4710683a644so48894195e9.0
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 04:12:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1761649922; x=1762254722; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=fapeBS9BlMiWanMAmjo5FOfv9HzZKkc/WpK7c6FKcGc=;
- b=rB834JoSJ+MgCCeJQ0GnXS5k1R7go49Iv0kUPMkx3Uz0UcPrV8AbhFnTYozlRqywI1
- B7ge11UyMp6v9HO9WPkVtebtY/BXpu24hRrA3brckM3UET+hhI3Qc7bcU0suL15M5oqj
- 3VXc/0wcWwyVgPoHhtdHZkd0XTzE56L7nJWZWD2T/A6RY0S2g3/HLba5C0MiqFWqlAGZ
- fPPt2IyQeuv/aTnzlEJtdn3lQTg4D5wKCvbSLgZn90QU5aVq4fwLoHYtUQkBBkTylGlH
- IU3OMRjKZCnDsZ3BIze4+1dMt5kdLBY8uvtDkDC9qJQfhcL4Yxmb3mGqNMd9Y+5fTFHC
- ta7A==
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=xJyDe36il24B8sHiFvFIFNoNSBcoJYvI1h9pUm1P3RY=;
+ b=sboEoPSwkOZ04zuHEonm+P65EEaW2LvF1bnpdx4RjHICwmDXnCUGvYWhHGcI9OSPzd
+ SivB0WRsSCzLyt4S77EPx2eZ5oRer3OqDqgsdddG1LBAg3G+t3IsQYxLLli0XZ8wXRhb
+ D/nHLHFYma5qw/lrZHpnU6dSxYdIiguAf3r+VpF7/S4CvdNGHndGlwgWtiGfWhUNfzl/
+ Nf/4vBTSTQwjQNDjk/+LNgJT+HjxlFvJZND7sSaM7dc+5WaKJHsXxc9lu+FYsRYqaldy
+ nPAnV1yKSkAoRzggqwHg7LRU/RF7ieP55bXEFxKChl/pZsz7toRRuzLt5McM8zeEJxS5
+ h8/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761649922; x=1762254722;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=xJyDe36il24B8sHiFvFIFNoNSBcoJYvI1h9pUm1P3RY=;
+ b=dCAKPDtE8AFmx1Jw+xwlZw4GNJlbB8kGoj2H0DjV171Gp7KKjD3P0OsRVQ6k6xpPKi
+ O1Bn7J73NR3y+ijIVXn+bX9++Yx00EFFmcNCQyy1plBD0LFS1iaBm5U+qpT8A9V9Wy2g
+ mU3EuErmGop/gicgPJKfywSgdBCXVqZN4w83Cl2SPOAVapAqcH9SeEOAPkpeeVE2b4yE
+ Dk4jdIbksfTHOXlH7cDXSm6tV5R4iZDXpszW99Gi8XugxH79zZMIk7v6/fyRzHIkCt/i
+ DToGO3jTbS64JB9FU1POEkRhHTRYh/xC08g1RXXHOT0WWFrRrwJYN5XHeGfSqf7NHGAL
+ DcFQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXt9fWJrxq8JXiBNmSeCe4W1eIMQ6amouRXr/jOcEdAh39JLq53vHIERdegsuNEMJ7fEsdEBIKEqQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yzb1tSAgOKg7VKO88bDSGMqI6uOB50D2o7E1sLQhZ36YB1fiHxL
- UYrlkFrbdQtNEJafn3mkDmzdLgDZmIJlt4ygA4GdD8/OIApF8sLH+p+8n3eYRECeyslnwEikLlS
- BkPf4+E1D8YeCNMlx+GnAHmpjzjj1BaOID+A5e8scMeHPs1ZMbaijjw==
-X-Gm-Gg: ASbGncsFrDu5jpPVUcWwQiI2f+WFEwc73conRDqRA3dzOqHb+keI4HbmaLtMtMBEjQe
- 8gxwjtU/gK0xAX6rFr7gwc6wUgwD+zmCziMCUa1CEM4SR7/tfPzl1AGFGN+rRurEiTxk1Fv/ukK
- NbNas7uUWUYTP2Afzk88x/Mae02VSbXrZaH+/Nk1qVNGWPH+p99OpAKbOANjrgYyzy+A/9Iv93U
- CUYLaD6PqZgGbsxu8q9pfUEDEew7R7Zw9qTrhkcDiRHkI1vKWxfRBrjvKKpBMsOzqKSR+eGG60J
- 9GN+lQMYLvYXyhe9pm10UwhE1WFtglIBak6IwRtOBuZu59it6aGBIjIR+JlhtS7oOeFcXp2pHRd
- uk2wcbd8cOOiqf3wl0cV+4FJtoZrOVQPABjxjVHeeWhAD/w==
-X-Received: by 2002:a05:600c:1e0f:b0:471:9b5:6fd3 with SMTP id
- 5b1f17b1804b1-47717d48706mr22441185e9.0.1761649757847; 
- Tue, 28 Oct 2025 04:09:17 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEY9PtLRhmhOJVgaKLuJAd1yQ3XJUdvEIF9JnQKeEWI8/jDORg2dqxJeXrB8HT4Jx/+n8WWNA==
-X-Received: by 2002:a05:600c:1e0f:b0:471:9b5:6fd3 with SMTP id
- 5b1f17b1804b1-47717d48706mr22440925e9.0.1761649757415; 
- Tue, 28 Oct 2025 04:09:17 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475dd02cbc6sm194271915e9.1.2025.10.28.04.09.16
+ AJvYcCWScc8HgmNdgi1o6aYdwhaKwTh+hjddAH0yAGPNftI1cQBPal4C2OqVrFDhWBZr9d585lwoC97lGQ==@nongnu.org
+X-Gm-Message-State: AOJu0Ywt254AdvAmvR4XWLUunVcrDwBMXQSYyq6dGG3/vs+hyKF3abyy
+ aSdbq3HLBeiGFNWAUgxW+UHDzj9W+l9WWbMGG0VYVCmkbFZW6iMYDhwdG1fhmtW2f58=
+X-Gm-Gg: ASbGncuFEOGzJqMW8zbjP4XRtGrhkMReG9N1Zh9VO8wImtdximPWuxLoaHhQMpDvv4J
+ cUMz6Oqkkal67hyzlyq0LRekHuAmHxI7pei0Vkn1J+sK9L4KoPTekvdKQQV0cwao/NcpspHdJzs
+ NNngsNqvHqW0fzmreRzHf8wNU2HTXMxLHc5/qrsPMmO6toka9LUj3pEA80DS430y2A5Nufmkpm5
+ ZR5NInwBcqTP1riIgzZepnZIDICYS2Zn1LDhD4YJ4fJg/rpbeDAoBVcIwk49qL6b+JM/pBnJuWi
+ 1D8ro0sfl/wUN041QaX7Ny/a4104yJ4wWrq1u1QZJ2IY50sXS53VJoaIOy02yTj1PfvJByGANt5
+ 8UwYnfVbNN2/9/QVm24yjxKZ8Slw87xygJYIooFwVvvdl+V5qEXxPERi2oaXyxEexfISO6O98+k
+ tzXYFT6rBADuuhGxHEU2vUkAbfFcm2WwqkbbRtGUa3IIWuGwHB
+X-Google-Smtp-Source: AGHT+IFe0Jziub8Wkt6LRYvZxNA1eoqQ+qP4ZgX/WCg11/8ilB/4Wi9IcsvRs9aJGN2mdW6ilHaNSA==
+X-Received: by 2002:a05:600c:5246:b0:46e:6339:79c5 with SMTP id
+ 5b1f17b1804b1-4771812e415mr29792195e9.5.1761649921716; 
+ Tue, 28 Oct 2025 04:12:01 -0700 (PDT)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-475dd4a5cc4sm187031775e9.11.2025.10.28.04.12.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Oct 2025 04:09:16 -0700 (PDT)
-Message-ID: <96597d95-f338-46e8-b353-567a10913e57@redhat.com>
-Date: Tue, 28 Oct 2025 12:09:15 +0100
+ Tue, 28 Oct 2025 04:12:01 -0700 (PDT)
+Message-ID: <262b5b0b-ad9e-4a69-a5e8-f8948bc14d62@linaro.org>
+Date: Tue, 28 Oct 2025 12:11:59 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RESEND PATCH 7/7] hw/arm/virt: [DO NOT UPSTREAM] Enforce
- compatibility with older kernels
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- cohuck@redhat.com, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, gshan@redhat.com, ddutile@redhat.com, peterx@redhat.com,
- philmd@linaro.org, pbonzini@redhat.com
-References: <20251016140039.250111-1-eric.auger@redhat.com>
- <20251016140039.250111-8-eric.auger@redhat.com>
- <CAFEAcA_DSo7COpwXF_W4sMiwwmGvZy21GON7UbKWm4H5uDxb4A@mail.gmail.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CAFEAcA_DSo7COpwXF_W4sMiwwmGvZy21GON7UbKWm4H5uDxb4A@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: jtygVBdYEls9ZcuZeSu381bGAagccS2ZWeiY0pxBiXs_1761649758
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v2 0/7] hw/sysbus: Spring cleanups (part 1)
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Bernhard Beschow <shentey@gmail.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-ppc@nongnu.org,
+ qemu-block@nongnu.org
+References: <20251028080258.23309-1-philmd@linaro.org>
+ <CAJ+F1CJYxKD23TFCy1-rbZf0Y_mSMdyVH=nFDM6eomDhVpmHYA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAJ+F1CJYxKD23TFCy1-rbZf0Y_mSMdyVH=nFDM6eomDhVpmHYA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,68 +103,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 28/10/25 09:49, Marc-André Lureau wrote:
+> Hi
+> 
+> On Tue, Oct 28, 2025 at 12:04 PM Philippe Mathieu-Daudé
+> <philmd@linaro.org> wrote:
+>>
+>> - Use proper SysBus accessors
+>>
+>> Since v1:
+>> - Reduce series
+>>
+>> Philippe Mathieu-Daudé (7):
+>>    hw/sysbus: Use memory_region_name()
+>>    hw/i386/microvm: Use proper SysBus accessors
+>>    hw/i386/ioapic: Use proper SysBus accessors
+>>    hw/timer/hpet: Use proper SysBus accessors
+>>    hw/acpi/cxl: Use proper SysBus accessors
+>>    hw/ppc/e500: Use proper SysBus accessors
+>>    hw/pci-bridge/pci_expander_bridge: Use proper SysBus accessors
+>>
+> 
+> There are a bunch of compilation issues that I will let you address for v3.
 
-
-On 10/28/25 11:37 AM, Peter Maydell wrote:
-> On Thu, 16 Oct 2025 at 15:01, Eric Auger <eric.auger@redhat.com> wrote:
->> This is an example on how to use the new CPU options. This catters to
->> distributions who want machines to be migratable (forward and backward)
->> accross different host kernel versions in case KVM registers exposed
->> to qemu vary accross kernels. This patch is not meant to be upstreamed
->> as it is really kernel dependent. The goal is to illustrate how this
->> would be used.
->>
->> In this example, For 10_1 machines types and older we apply the following
->> host kernel related compats:
->>
->> 1) Make sure the KVM_REG_ARM_VENDOR_HYP_BMAP_2 exposed from v6.15 onwards
->>    is ignored/hidden.
->> 2) Make sure TCR_EL1, PIRE0_EL1, PIR_EL1 are always seen by qemu
->>    although not exposed by KVM. They were unconditionnally exposed before
->>    v6.13 while from v6.13 they are only exposed if supported by the guest.
->>
->> This will allow 10_1 machines types and older machines to migrate
->> forward and backward from old downstream kernels that do not feature
->> those changes to newer kernels (>= v6.15).
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>  hw/arm/virt.c | 19 +++++++++++++++++++
->>  1 file changed, 19 insertions(+)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 175023897a..c4f9b82c38 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -97,6 +97,23 @@ static GlobalProperty arm_virt_compat[] = {
->>  };
->>  static const size_t arm_virt_compat_len = G_N_ELEMENTS(arm_virt_compat);
->>
->> +/*
->> + * if a 10_1 machine type or older is used:
->> + * 1) make sure TCR_EL1, PIRE0_EL1, PIR_EL1 are enforced, even if they are not
->> + *    exposed by the kernel
->> + * 2) hide KVM_REG_ARM_VENDOR_HYP_BMAP_2
->> + */
->> +static GlobalProperty arm_virt_kernel_compat_10_1[] = {
->> +    /* KVM_REG_ARM_VENDOR_HYP_BMAP_2 */
->> +    { TYPE_ARM_CPU, "kvm-hidden-regs", "0x6030000000160003" },
->> +    /* TCR_EL1, PIRE0_EL1, PIR_EL1 */
->> +    { TYPE_ARM_CPU, "kvm-enforced-regs",
->> +      "0x603000000013c103, 0x603000000013c512, 0x603000000013c513" },
-> Strings which are lists of long hex numbers? Is there a
-> more readable way to do this?
-
-forgot to mention that we could use x- prefix for those properties to
-enphasize they are rather experimental and not meant to be used commonly.
-
-Eric
->
-> -- PMM
->
-
+Sorry, this is based on my latest PR:
+https://github.com/philmd/qemu/releases/tag/hw-misc-20251028
+Based-on: <20251028074901.22062-1-philmd@linaro.org>
 

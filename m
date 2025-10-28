@@ -4,120 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 178A9CCD1BF
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 14:59:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C061ECCD1BF
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 15:05:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDlAO-0008Gr-7D; Tue, 28 Oct 2025 10:59:20 -0400
+	id 1vDlG9-0001Q8-S1; Tue, 28 Oct 2025 11:05:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDlAM-0008GE-RJ
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 10:59:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vDlAH-0006eK-Fo
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 10:59:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761663549;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=rxGGz+2X4ypdTnDUgnXV0gyvH8gT2giV+hULMQqRzOU=;
- b=gwdaQxiPwG4Mei1NE0Yaf17UO1z1O1JZcW5dgHHI49Gqv4vy1u0NSeufJ91C4Hib3HHMZW
- y4vn3c16xP3HeGVX+feq++pF2gKtn0NFhkWUuzOz981ztA3GWOmrlQs+Rcyl52yurzlB3A
- EQKolqScmdJhUVU4t1DT8d+p5iIgdwk=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-62-At18kf0NON2YWWdr5NvMwQ-1; Tue, 28 Oct 2025 10:59:05 -0400
-X-MC-Unique: At18kf0NON2YWWdr5NvMwQ-1
-X-Mimecast-MFC-AGG-ID: At18kf0NON2YWWdr5NvMwQ_1761663544
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-471201dc0e9so35907375e9.2
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 07:59:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1vDlG4-0001P1-GP
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 11:05:14 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1vDlFz-0007Ms-I3
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 11:05:11 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-3ece1102998so4411727f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 08:05:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1761663903; x=1762268703; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=gI+dIqitN4u0DNNL5JuKfWcUJoQZ5ChExIyW5psLpFo=;
+ b=VTSEXhWuxku3xkpzVD1GEhKx3p1L5AN217E1AjO2WWTTvi+AsOow4d93B+vhm1tNy+
+ LU50D4CV9/3L5IxNb5ri3e/6fCVm2OvwfSuM0PtvjDvR7qGhc3wy894ErvkHXpMWwbl1
+ wG174fjaOHmlhIulQnHtS8k9q6WHtwNTLG48iMf+2sM9bUubP93YuEA50Zv7M22cway2
+ IYRo8oGrVAf46/7sNJMxBEdaX7JbIQfDw+beuMV8NMYLZQr9UfU0NPWEe3NJ0XeQKMfd
+ MLOQaGCLoi2K49vjh0ecMinbkEpm2j9CQkJb46pLiCRiL6TCfdzWkACDXfm1M6KUysGV
+ EbZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761663544; x=1762268344;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=rxGGz+2X4ypdTnDUgnXV0gyvH8gT2giV+hULMQqRzOU=;
- b=Depx/cNGySLKH9CW9f3iDA7ijP2RZW5j71hEqYbjt+iac+/XOgT24x6xnIKhWA1urv
- +uBLlmdNF489nLNPCgY+h9DfcfrZB3zzmUwr8EV2u10cG5b5KkwcLfaweneNmkYUpZBa
- V1+x6DJbuVmBTu8fLtpt/2gtKETyGTCfeEDzmZZDLFF2B0QTvh++k7ubJDMRzVuGyfxK
- l0TfGxbMiomMgG0pKjlxFK48ngJl008V+db6zrOBdhmTSET6hKhck5TohgCY4poQQhnO
- /u1P1GyFtxvmTXqxe6Q/P6xiwf2FvxfLxH/SKs5ljjx+WwKmyJJMw95Q70RHTIFDIHRa
- xxDg==
+ d=1e100.net; s=20230601; t=1761663903; x=1762268703;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=gI+dIqitN4u0DNNL5JuKfWcUJoQZ5ChExIyW5psLpFo=;
+ b=f3NJ0oHHc6NrkA3g047OQAhasjShVHB2YoZ+NGOXMy3xBZRvoYReFG3aY4HLBNELAz
+ Fg2hDY5jS1CDlVhjW4v2N2MGPUaIYuo+WH16CkbAQgif2JDvOtd7IOFgUUPfMFYnWVei
+ 3odDauszoVJHZkEjGbBQ1NBfb7EwhLuKGrQPAbKrLkU3Y5dL4vLa7XS6/NW409zrOcQf
+ 9cIEe/Asor+K4LzopsFEmYwTFNgvE49kqL48Jf48X3vkwtvTA+nPQ7tOBeyMn0+nVo9G
+ qPe76XWPAYPVA0Ua9NpUxj1S+xT4wWKVyw577EH7rfG40Qbv+ksXDSaltaaQUAVR0p/L
+ qY8A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUMhCkaJbc4pUdVmCNVwpXhJFDUXlm7RS+FAV2wBZxiHOT0SKReRYxyPk26cWaEgX7FcaIEb127Tg==@nongnu.org
-X-Gm-Message-State: AOJu0YwUniBDx/epr8OyEfK49/qBgQOeiXrYK1F/xT20HG4g0VTCocVT
- 4zdEQIovjnuIgh89rBdX3QgONgQRQTg/fB3VsT3MDi0waPoW9wIlWdhq5G462fQgMA6ljpCodmO
- Ra25Xrnw3Ya1YCAsI3HSDwLKgqLpeidIuW7/untImWaujP7DkDyG1jw==
-X-Gm-Gg: ASbGncuTfJyV4AlmUNCoWCT+akJF3izIhy4Y12rYG0vJrx+DJ2oLny4Ke2oNYBFMc3/
- WwS/Avz4sT9bHSsEUwzaeWhsmMwpPsPo8gRcsgLV364yFYjMNZItKJXJohFvpnr5JBzkvCkZMKL
- K7webkmmCMbPmgrnT/ozAGpUW2ZJj0c6voQmLMqlwNxKxgQIRCWcrwJjBRP0XYoQGXoZ5PleXI2
- rCrySbsQ47OpUbEWHPCmHenD5SAEjJLlqY1XpXoL9TvHJ2gGlEBgvahAl89bx7NL6d4CRYWy9jS
- 2kc/aWOG01qIw+muTewW7ZSYJx6rcGwFOzDQrB+sw4hncnD5Nnf2bDlOm5xY2YZwaSqw1P+YJEf
- oL5sHOJ5+JeUvA89t43W02ePFfspiKKkw5ckjJ+WwBENZaA==
-X-Received: by 2002:a05:600c:6217:b0:475:dd05:93f with SMTP id
- 5b1f17b1804b1-47717e70407mr32744395e9.36.1761663544454; 
- Tue, 28 Oct 2025 07:59:04 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH74yGoEhY2aDD4HnZqnmznjBzv85hjfmkrBMmFCge9XyPmj3iGHUFbmh+R7p9HZHtBXlKveg==
-X-Received: by 2002:a05:600c:6217:b0:475:dd05:93f with SMTP id
- 5b1f17b1804b1-47717e70407mr32744095e9.36.1761663544028; 
- Tue, 28 Oct 2025 07:59:04 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ AJvYcCVRdTH/R91XYx+NOYoWQlDrfkaf1GcCRpePZVfbaJBtMIlrL9MNcb8RnCdr8aAX5ayGuC0Zw5n/Ww==@nongnu.org
+X-Gm-Message-State: AOJu0Yw9pVnsaQUmzjUVQmHqXP9lE5Z0MdlRJU8IfdkWzA2GeWgTlLnG
+ Rmj0LDzWHBU44quSYohxF29punC1eE1dfB3pAHX5eIJOv4u8tlSIARrWJdsUBZiuHfVOAO5qpxG
+ 3A3SpeV0=
+X-Gm-Gg: ASbGncvE98hFEOAK8W1vVe3RimPA9d+AVThOySkCE99N43Vaq2PLABuDM23B5F/XUuT
+ lUe4nqOHfbdGS9Vp303SJ7BxmoaUPi8Upw3GvCshALBEAU3WFoy5WULEB/2/x9Lf1eEmYXRhIO/
+ x+DXSC5LMhOQbOOl1j8+Ml/CaE0rb3ShoVkP1Ymxm6ur1IMHoDlE1SzYRDHRuBn5gf30mMDik7d
+ D7+aRoRYupvMJ4ongUFmL+X4x7NMYxMXYywRqBg81BDGZw1ZwZDn+gMnFTjEAn2FQ3WrL4S2WV/
+ kWUIIxlaCgshm7Uc3hJgMzYKm8VgWtGOxZBV9W1LwyPYtd8YkHByYCRKjvanYiAUdkXYtRs96Xd
+ lObzy13KiWNmtpflcfifCZNF4yiodhacKc/J1ybz+G+FGTVloDhluF22UDGAdZBoNxquf+dEcMh
+ DhELXmaQMCJAFJ4rfY
+X-Google-Smtp-Source: AGHT+IEKWXrJBed/MYax/lJdKB7Tn390MplIlxHLTGPuiWsQi/VlMeIvaYUJRm51EmX5D9BDTRkvEA==
+X-Received: by 2002:a05:6000:40df:b0:429:66bd:3c97 with SMTP id
+ ffacd0b85a97d-429a7e8236dmr3515670f8f.46.1761663903174; 
+ Tue, 28 Oct 2025 08:05:03 -0700 (PDT)
+Received: from [10.240.88.227] ([212.144.248.67])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-475dd4894c9sm194591435e9.5.2025.10.28.07.59.02
+ ffacd0b85a97d-429952df473sm20846449f8f.42.2025.10.28.08.05.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Oct 2025 07:59:03 -0700 (PDT)
-Message-ID: <30630f4c-0d77-42da-8df9-97e737c5c515@redhat.com>
-Date: Tue, 28 Oct 2025 15:59:02 +0100
+ Tue, 28 Oct 2025 08:05:02 -0700 (PDT)
+Message-ID: <b72c66dd-11a1-47e3-b909-9c4641e4d361@linaro.org>
+Date: Tue, 28 Oct 2025 16:05:01 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 22/27] hw/arm/smmuv3-accel: Add support for ATS
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Nicolin Chen <nicolinc@nvidia.com>,
- Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, peter.maydell@linaro.org, ddutile@redhat.com,
- berrange@redhat.com, nathanc@nvidia.com, mochs@nvidia.com,
- smostafa@google.com, wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, yi.l.liu@intel.com, shameerkolothum@gmail.com
-References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-23-skolothumtho@nvidia.com>
- <26f4d9b2-75be-4913-bb60-01e647a7ec83@redhat.com>
- <aP+oRLu/BYNaAPHG@Asurada-Nvidia>
- <25d22f06-69e2-4954-9bd9-f73f899fc114@redhat.com>
- <aP+xhmLCRu6y0eQm@Asurada-Nvidia> <20251028121625.GF1018328@nvidia.com>
- <9748e922-057b-4e7c-ad6b-b83f5591290a@redhat.com>
- <20251028134148.GH1018328@nvidia.com>
- <15e0d683-e524-44ed-b253-c6221585d9bd@redhat.com>
- <20251028140340.GI1018328@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251028140340.GI1018328@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Q6xw7rcULzsZYOrMvAB-ds8zDZ2pWq1y2a1YoPjVUNA_1761663544
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v2 20/37] target/arm: Consolidate definitions of PAR
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20251014200718.422022-1-richard.henderson@linaro.org>
+ <20251014200718.422022-21-richard.henderson@linaro.org>
+ <CAFEAcA-tVBn3g185gzs2uOCnYLeqWN_zwfeQ0DccLf0n8BN5PQ@mail.gmail.com>
+ <686b4a77-cf53-45e8-9b75-2b8dd9c4a67f@linaro.org>
+ <CAFEAcA_gczP+RbKUx_p28AWN=s279rPLYaZCXjy0Bpr0NqPnPw@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <CAFEAcA_gczP+RbKUx_p28AWN=s279rPLYaZCXjy0Bpr0NqPnPw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,55 +106,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-On 10/28/25 3:03 PM, Jason Gunthorpe wrote:
-> On Tue, Oct 28, 2025 at 02:51:29PM +0100, Eric Auger wrote:
+On 10/28/25 15:41, Peter Maydell wrote:
+> On Tue, 28 Oct 2025 at 14:39, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
 >>
->> On 10/28/25 2:41 PM, Jason Gunthorpe wrote:
->>> On Tue, Oct 28, 2025 at 02:21:32PM +0100, Eric Auger wrote:
->>>> On 10/28/25 1:16 PM, Jason Gunthorpe wrote:
->>>>> On Mon, Oct 27, 2025 at 10:53:10AM -0700, Nicolin Chen wrote:
->>>>>
->>>>>> Hmm, that sounds a legit reason, though adding the ATS support to
->>>>>> the emulated SMMUv3 isn't seemingly a small effort...
->>>>> What is "emulated ATS" anyhow?
->>>> I guess it means implementing ATS translation requests and capability to
->>>> send ATS invalidations. something like:
+>> On 10/20/25 15:31, Peter Maydell wrote:
+>>> On Tue, 14 Oct 2025 at 21:11, Richard Henderson
+>>> <richard.henderson@linaro.org> wrote:
 >>>>
->>>> https://lore.kernel.org/all/20250628180226.133285-1-clement.mathieu--drif@eviden.com/
->>> Why would you even want this? The cover letter didn't explain what the
->>> point was.
->> well I am just concerned about exposing ATS support to emulated EPs
->> while we actually do not support it.
-> Sure, that shouldn't be done. There is ACPI/DT tables indicating if the
-> each device supports ATS and qemu should not be marking the emulated
-> EPs as ATS capable in the first place..
->
-> However, there is no big work with showing EPs as ATS capable. They
-> don't implement an ATC and there is no concept of "translated address"
-> inside qemu so the only requirement to make it "work" is to just NOP
-> the ATC invalidation SMMU commands for those EPs.
-For the record, there is some form of ATS support in virtio-pci devices.
-They have an ats property. See hw/virtio/virtio-pci.c and
-virtio_pci_ats_ctrl_trigger/pcie_ats_config_write
+>>>> Create a function define_par_register which handles the 3
+>>>> distinct cases for PAR.  It is easier to understand with
+>>>> the definitions all in one place.
+>>>>
+>>>> Make the aarch64 to be the primary definition, when present,
+>>>> rather than being an alias of the 64-bit non-secure aa32 reg.
+>>>
+>>> Doesn't that break tcg-to-tcg migration across this commit?
+>>
+>> I don't know... possibly?
+>> I guess we have a test for this somewhere, but it needs setup?
+> 
+> I don't have a test specifically -- I tend to use one
+> of my usual lying-around "boot linux" setups that has
+> a qcow2 disk file, and then connect the monitor and
+> use 'savevm foo' to save, and then check that -loadvm foo
+> with the new QEMU works.
 
-vhost can be seen as implementing an ATC cache on kernel side.
+You're right, it doesn't work.  It'll make the 128-bit version more complicated, but I 
+guess there's no avoiding it.
 
-https://lore.kernel.org/all/20230512135122.70403-1-viktor@daynix.com/
->
->>> qemu emulating two levels of IOTLB caching in software, with a
->>> software page table walk?? Why??
->> About the actual use case for ATS emulation you'd rather ask the
->> contributor, early SW development, IP development?
-> I guess, I assume some OOT driver is trying to model their ATC with
-> more accuracy. Maybe to bolt qemu onto a chip emulator.
->
-> Jason
->
 
+r~
 

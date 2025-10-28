@@ -4,92 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 121C6CCD1BF
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 15:45:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB21CCCD1BF
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 16:10:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDlt5-0008Nb-8n; Tue, 28 Oct 2025 11:45:35 -0400
+	id 1vDmH5-00082O-Ol; Tue, 28 Oct 2025 12:10:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vDlt3-0008NA-AZ
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 11:45:29 -0400
-Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
+ id 1vDmH2-00081W-DV
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 12:10:17 -0400
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vDlsw-0004cK-HS
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 11:45:28 -0400
-Received: by mail-yx1-xb12a.google.com with SMTP id
- 956f58d0204a3-63f5c80eebdso2817269d50.0
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 08:45:21 -0700 (PDT)
+ id 1vDmGr-0000AJ-Fm
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 12:10:14 -0400
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-7847f4265e3so64907677b3.3
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 09:10:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761666318; x=1762271118; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761667802; x=1762272602; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=knnT1ftdmTMJx/XyavOPGJh2UCADWh3KX8LeDc7hUa8=;
- b=HfaEyvitMxhO7ov9QvNgd6Nnw1OWdbyccwFniaUvi1HGYiqfM74PRP/AQziLvUjNaw
- Kdg1t4aFIHs2WWxBQPmOX6iTMJA4+ma7EG6NX6+I+7fXDb2VQoZE5y3dh2I2R10nczpU
- grkZcoyJW4fyClA+5kMhSPt48myfIEQnPgnsZOp2YMRFH3EC6SVMhD89UaWm/lSxQHl7
- X2yI/0vYWLhtEjMvc0t8GrtsouXWf3HYw8r4YfMDn9DAby4qmD8yCgEPfkiG05Jl0Rz4
- q4ZZiMfBXMpPQ4gYiqWZ2jxDKH+j0ZNho1vnE8dS1P+CaWaQ2n0FcW6gykwDMT/69rf3
- JU9Q==
+ bh=U9ZHRIMFILeDoUiwpfNy+ePpTc4uTSo2+a8pn42yp2k=;
+ b=iYs8ngWR0b1EUwReIkLe9juP0hVbpTz0DOXI/yIorzha917TaBImagalW1cs9qBZzm
+ 2/R4a//heKzMkoqggJKHqO/dHyMoFrqLlMqmutSNqxotiwdarp4CUNXsr/3RmIwJdxDn
+ u9V4hc4WwMwNGe0aEgkbFMhFoEjtT+YUvlEzl2Jfm1hfW+ZK2j54xOvAPgDSw4yc7AgJ
+ jWQwiA00rVAeGQDEAaa2/nSyooykNJm0Dtqp+YZBklLeFTdCT2TbRopffD2fFeB/fY5b
+ wViX18cp77cVALRVSvmePnLCNQoG2u+b8SfHJN4uKAqY1st4S8mMqVlaGP3UMQmEYDek
+ 9BIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761666318; x=1762271118;
+ d=1e100.net; s=20230601; t=1761667802; x=1762272602;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=knnT1ftdmTMJx/XyavOPGJh2UCADWh3KX8LeDc7hUa8=;
- b=i9bsOj/b8ohAjm4xT43cPbf6qTZx37txaaBp2nrbet0DvhaaYrFPScGi5+Uplvi/ys
- 95I1dflUIUfVW55rxb8LsxqdNvc2zT4QlXcx7WMikqVGcdseS1XiWGysQz4erHUNwqA9
- 6BwofsYNujtOaJEi0IkDPcTSeGuHC55Gqn33LD2t8ROeRDq4WCiGV0/K4RiLXvVA03hB
- Gv07zDJ6JgUToeyOgQkQEzjJYSNOEuhfMTdN6JdhWeZvsKKLHeGEHDDBEsWSrGhKpnfl
- pVWcU6CJ9n/CmYD0zyyN6Y7WY2QXS2wAASYq78Mx/I3RtDY2l5dT3hvpS/ImDuyx9a+k
- k7Hw==
+ bh=U9ZHRIMFILeDoUiwpfNy+ePpTc4uTSo2+a8pn42yp2k=;
+ b=mhmstYinjNQyWtDKlqz1I6PpR+XgYjHFtYnLo56I8Oip11rRDaFyOQp0I36t2mLUC4
+ tZQvZtetJNAilWcMWWbCyGOt4XfKvdeWVAYmB8ykG7TEQKAyy9UQzl+Qcj9Ww68osXlv
+ OJSJh6VZFLVfUtdS+ioDl0/jwnzvdA8Y35yD+7/CVAFoa4l1GDaAKBbyl1R96+cwJfhD
+ C0i02t+tnFq3YSnWFyun2HY8UyEPmfeqNFHs307W2LIopn5eJDK80sSX+LdTC3ydOG1B
+ lkWX+1srSEw/mCfmccBh602mbbGIqzG2tue8Z2HPd+KgmEiiMN7ubjcLF0USRPZHoR89
+ 6Lzw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXvbrWop66RgodwzsoJANrRgdsyfWMREegyJExbKLd7WqHUcZqZ/NrfF2tDyzn5EEpJr6UT3jxuow==@nongnu.org
-X-Gm-Message-State: AOJu0Yznw12Ambi8vhEfNRddUjj9kd/0weKgwTQIZdlB8sTER4Ypy92r
- bxR7NFEkdWGwxVC1Vv0xjfGvCDXHF50dekIvJCyHD1hlfdOgjk14zf3tcF0PGWFpHGABYznwwu0
- f5BFdfFnfKV3TVUQfJqcUVNCnaKzlj3/lecOXomRNvw==
-X-Gm-Gg: ASbGncvhp8FPHAY0a/3mkDpo6ENrMj9TeyMaILUe/hSa7Qib2Uccn0JE1qY0wGXbKR2
- emC670n100FVI/mMRl9nW+gw9XYiqoYL9XWJzUEYww2TKr3OKxP/5nC/pSJUr8ASwks81Nhc7xH
- CAxO8EnTDvccA9Kvo1OSJHMQoSVSW20REnXA2OP7JxOjpR+SHgVLR5uQdPAfJDd9meMWbrzx1Rl
- 9Cbww6RrWY4zxmjD2OjRDQq0T+3+ZTnfWsXb0hLaRZnb2kpOHCN2ZUSs717BQ==
-X-Google-Smtp-Source: AGHT+IF1tsX8B8ODvnmAHDIpvh2LJFczDiQsY2ee0V5DVnxa/M0OLoTOk4GaJaUAbc5VTbFhhWy+XTA3Ul09ajY2ZPQ=
-X-Received: by 2002:a05:690e:dcd:b0:63e:3a34:7bac with SMTP id
- 956f58d0204a3-63f6baa0f6emr3042756d50.62.1761666316772; Tue, 28 Oct 2025
- 08:45:16 -0700 (PDT)
+ AJvYcCUPnJP86eNtoUno57t3UgUpZj6MmQtqv/vz70ML2x1aUA9yCYNLH0RF/00jRFPQBcAQIUW+9mV5sA==@nongnu.org
+X-Gm-Message-State: AOJu0Yze5fRhedCX98uSxhhUHPDTGcYHdDSloA3khthp+TBVVLGoT93X
+ Ou5tSYbwRy92JhQTSPUKzwkQm92ZDQ0xuJkdkko6hP2KT4bAC2gTHCz20sSfqQylzCE+d9mH43J
+ H9qqtwPbwfur7P8GJgyzX6kvqjbnnidS2TZCKlGTraQ==
+X-Gm-Gg: ASbGncu1PiNAh4iYnwCgK2WByQseefUe00FJeP27DAk84uo5dNPAkRnTFy6UhkU1TCP
+ eWCXGeVlc+q7olcSWhuvdxhCfE9Q41uZ8nqgb1LO+ZLtZ0bw+XIS+6rqJDL8D/BByPlUhMYc39r
+ SCKXv96vM77mNmmzgs9FmpVMfpRwntG1Eu68+U2IDvCBbhxEQYF3uGgwayQVx30N8kWufQFg845
+ VZF+AalB0+zMMvFPamQJnRZAM9nfhhx7e3veSKiJQE88gjI/agVLx6jPKj1DA==
+X-Google-Smtp-Source: AGHT+IH/aoobYfdlAS7tajjgRZ/JvSo1ft5Kd4OAaN2GLjwq1iSa+ULvF/rHvDduGe/yDzVz1s4Fxs/gFG1cWsHzZGs=
+X-Received: by 2002:a05:690c:3388:b0:780:d2cc:3c2d with SMTP id
+ 00721157ae682-78617e4be5emr37809467b3.1.1761667801979; Tue, 28 Oct 2025
+ 09:10:01 -0700 (PDT)
 MIME-Version: 1.0
-References: <20251028054238.14949-1-philmd@linaro.org>
- <CAFEAcA-3SzHPmLc-huMnyNbZBnEwi5+fbPNuvCYJcvY7gYboEA@mail.gmail.com>
- <0d2fcc9b-ad42-4668-a8bd-9ecb70c9822e@linaro.org>
-In-Reply-To: <0d2fcc9b-ad42-4668-a8bd-9ecb70c9822e@linaro.org>
+References: <20250629204851.1778-1-shentey@gmail.com>
+ <20250629204851.1778-3-shentey@gmail.com>
+ <CAFEAcA9Rvvymu7oS0pPx00v9SdXzwr27vy1VmnZmwQ7ayZK+yQ@mail.gmail.com>
+ <2F14E49B-D152-470C-A87C-525853EB8ED5@gmail.com>
+In-Reply-To: <2F14E49B-D152-470C-A87C-525853EB8ED5@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Oct 2025 15:45:04 +0000
-X-Gm-Features: AWmQ_bnFyegvKgNoRM11TRUoBuIr3K__VeiCDYbNWOQn3uB_WvI8Z4KPJOly3Rc
-Message-ID: <CAFEAcA9GNmtQUUCVg-o4MsJ78saaiH69VHrLcJCQSBWsEE_eBA@mail.gmail.com>
-Subject: Re: [PATCH v3 00/59] target/arm/hvf: Consolidate
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Mads Ynddal <mads@ynddal.dk>, 
- Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
- Roman Bolshakov <rbolshakov@ddn.com>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Phil Dennis-Jordan <phil@philjordan.eu>, 
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Peter Collingbourne <pcc@google.com>, Alexander Graf <agraf@csgraf.de>,
- Richard Henderson <richard.henderson@linaro.org>
+Date: Tue, 28 Oct 2025 16:09:50 +0000
+X-Gm-Features: AWmQ_bkCiTiH_nxLkQFcKmhdwK831S0y0xjg3NKwJVODTTx27brGsecw6nAun08
+Message-ID: <CAFEAcA9RBxs3C068BRgzKCqFxQh2K5rmXwyiph4_imOiy7JxLg@mail.gmail.com>
+Subject: Re: [PATCH 2/2] hw/arm/imx8mp-evk: Add KVM support
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Phil_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,30 +102,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 28 Oct 2025 at 15:41, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
+On Tue, 28 Oct 2025 at 14:41, Bernhard Beschow <shentey@gmail.com> wrote:
 >
-> On 28/10/25 14:10, Peter Maydell wrote:
-> > On Tue, 28 Oct 2025 at 05:42, Philippe Mathieu-Daud=C3=A9 <philmd@linar=
-o.org> wrote:
+>
+>
+> Am 28. Oktober 2025 12:46:34 UTC schrieb Peter Maydell <peter.maydell@lin=
+aro.org>:
+> >On Sun, 29 Jun 2025 at 21:49, Bernhard Beschow <shentey@gmail.com> wrote=
+:
 > >>
-> >> Missing review: 15, 18, 26, 32, 33, 38 (up to #41 could be merged)
-> >>                  42, 43 (up to #49 could be merged)
-> >>                  50+
+> >> Allows the imx8mp-evk machine to be run with KVM acceleration as a gue=
+st.
 > >>
-> >> Since v2:
-> >> - Improve host page size/mask uses (rth)
-> >> - Remove cpu_test_interrupt in hvf_wfi (rth)
+> >> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> >> ---
+> >>  docs/system/arm/imx8mp-evk.rst |  7 +++++++
+> >>  hw/arm/fsl-imx8mp.c            | 33 ++++++++++++++++++++++++++++-----
+> >>  hw/arm/imx8mp-evk.c            | 11 +++++++++++
+> >>  hw/arm/Kconfig                 |  3 ++-
+> >>  hw/arm/meson.build             |  2 +-
+> >>  5 files changed, 49 insertions(+), 7 deletions(-)
+> >>
+> >> diff --git a/docs/system/arm/imx8mp-evk.rst b/docs/system/arm/imx8mp-e=
+vk.rst
+> >> index b2f7d29ade..1399820163 100644
+> >> --- a/docs/system/arm/imx8mp-evk.rst
+> >> +++ b/docs/system/arm/imx8mp-evk.rst
+> >> @@ -60,3 +60,10 @@ Now that everything is prepared the machine can be =
+started as follows:
+> >>        -dtb imx8mp-evk.dtb \
+> >>        -append "root=3D/dev/mmcblk2p2" \
+> >>        -drive file=3Dsdcard.img,if=3Dsd,bus=3D2,format=3Draw,id=3Dmmcb=
+lk2
+> >> +
+> >> +
+> >> +KVM Virtualization
+> >> +------------------
+> >> +
+> >> +To enable hardware-assisted acceleration via KVM, append
+> >> +``-accel kvm -cpu host`` to the command line.
 > >
-> > Richard found an issue with patch 32, so I'm going to
+> >Coming back to this now we've resolved the "does this put
+> >things inside our security-promises that we don't want"
+> >question...
+> >
+> >I think we should be a bit clearer in the documentation
+> >about what tradeoffs the user is making here when they select
+> >KVM. Specifically:
+> >
+> > * we should note that this is intended only to improve
+> >   performance, and is not covered by QEMU's security policy
 >
-> IIUC this is not an issue, just a worry about performance,
-> whether getpagesize() implementation calls a syscall.
-> Anyway I'll cache the value locally -- or better, maybe
-> have qemu_real_host_page_size() doing that --.
+> Sure, I'll add it.
+>
+> > * we should say that you will not get a Cortex-A53, so any
+> >   guest code with tight dependencies on the host CPU type
+> >   might not work correctly
+>
+> Ack. I'd also hardcode the CPU type to host since asking for a Cortex-A53=
+ always failed on me with KVM.
 
-I just meant to note "the patch needs some change before
-it can be applied"; I agree that the changes are minor.
+Yes, this is the right thing (at least until some distant
+day when we add support for having KVM give the guest a vcpu
+that looks like a particular cpu type). The 'cortex-a53'
+cpu type with KVM will only work if the host happens to be
+that, which isn't very useful for most people.
 
+> > * we should say that the guest will only be able to run
+> >   at EL1, and (unlike TCG) there is no EL2 or EL3
+>
+> Real U-Boot calls back into the on-chip ROM which isn't implemented yet. =
+Furthermore, there are some unimplemented USDHC extensions which prevent co=
+mplete loading of binaries into RAM by U-Boot (similar limitation exists fo=
+r e500 boards). Therefore the board documentation only advertises direct ke=
+rnel boot. AFAIU EL2 and EL3 aren't usable there anyway. Correct? Do we nee=
+d to mention this limitation regardless?
+
+I think it's worth mentioning anyway -- not every EL3
+payload is necessarily u-boot.
+
+thanks
 -- PMM
 

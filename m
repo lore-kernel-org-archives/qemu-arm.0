@@ -4,95 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B01CCCD1BF
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 18:43:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB5F2CCD1BF
+	for <qemu-arm@archiver.kernel.org>; Tue, 28 Oct 2025 18:43:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDoeF-0005j6-Iz; Tue, 28 Oct 2025 14:42:23 -0400
+	id 1vDoeH-0005mt-Vg; Tue, 28 Oct 2025 14:42:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDodo-0005IQ-8X
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:41:56 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vDodP-0005oE-DQ
- for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:41:55 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-427091cd4fdso3678983f8f.1
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 11:41:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761676885; x=1762281685; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=lIoBZbv7mBqCNJwjBiHWOo22r8zKTe2GN0MeWBRTiMU=;
- b=RGWToCDLWr1Q/lPxNTpG7oizwf2ZUPmyRjaVW9rSCLhTOiA2HxHUa9KhdVEm2Gx3W8
- x7qO/4+Ip4/jBGSvWlvqWQJUVinZT+vf5390X1jAD2LG90mnx1KWCe44tN0k2TBYFlAO
- ZLBJgQ2q0i3Y+E0JMVq+6Y2PNQIN0tpOJbnYVhKVn3Kzwts/CV8DthPo7FY10crbGS7a
- tUMuSn4E21PTXt/AlqV/8SzcbBRBtZeRL5PABr07LvVn1AG1mCsSqx2qdfqFX+Mbv+zZ
- /c3kwxI9bAEYpksHDjNkI/0F7LIyYP6VUL8s5J/vUw8uNPRoAxQZga/MhidhbGiO2dM2
- pb8g==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1vDoe0-0005Mz-5T
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:42:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1vDodW-0005r2-9J
+ for qemu-arm@nongnu.org; Tue, 28 Oct 2025 14:42:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1761676893;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8JE18ZjWlXAwit2z6n1ZQ+ilWG96/G0LXLXd9ZdiuWQ=;
+ b=iZEUSRjxZdJ7kGdgEiSlEFFpd9/ZtvPpyws7xr+BMTqC78OV0z1mdiIfXhIT3OxKj8GNCQ
+ 4tcnAkad0hNAK4UbqRUA0qRHBbiyny60JHpMbW/glc0M0595D6LU9wDUtmcXNw5zg1uKdd
+ EiEhu+Wa61BHq/s8VCqWTI8riRlEt0E=
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-616-9hs7PZL-OCa32Uy3EpJWng-1; Tue, 28 Oct 2025 14:41:30 -0400
+X-MC-Unique: 9hs7PZL-OCa32Uy3EpJWng-1
+X-Mimecast-MFC-AGG-ID: 9hs7PZL-OCa32Uy3EpJWng_1761676890
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-89ee646359cso1364660785a.1
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 11:41:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761676885; x=1762281685;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=lIoBZbv7mBqCNJwjBiHWOo22r8zKTe2GN0MeWBRTiMU=;
- b=XsZdenpM8aH8axWUCH7Wu1KbsvdCe1Dskbnw3B5GiKVB2deFPCYuwl0eIuSO1ZBx/g
- SWwHyhnHXFOTqjQY2eu9n8XSf8219tyxOKX0OK7UM4Z6gcG+bj/TGUoQXHEPoaWDb3Bf
- fExEpI7xHDPFtt8wHx9//Qhrkq6vRY2zVVKrxPe+viIz5HhxXj+0jVubCvjSswW5Fb36
- hs/Vt/Y/TqOKU5YSga1sY609kGSX1dplv//Py6PrEj9IORKCrg91u8/fIeR3W+c9ScsS
- xUv4dRBCkKDWUoCFed1Tymfv5OViOZ9WvjIU+0IUIdCM4IFCEfiuipaHlittPswDpdt+
- SM8A==
+ d=1e100.net; s=20230601; t=1761676890; x=1762281690;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=8JE18ZjWlXAwit2z6n1ZQ+ilWG96/G0LXLXd9ZdiuWQ=;
+ b=cWIsCiZHGTp100EYczgiV9dzb85Hr36EnehJ55P6hdZDPc35XZqqa0xKt3oBYiRwE/
+ 0OjTxu+XF2SvIykZCDJkiaS9wPY/ktZ2gG3Gk4LualXfLWLKcioXZ45615pPrwhITMvI
+ S9VmF7pop8lbicfdr+oGR/jDv+oNRtjb6fBv9GTh+VUf3mG7osb/zezc72lKuY+25Dcc
+ VDKvCW+DqWJTY6i9r/0Itl4Nbjd4dNq466XU+VQ+SoubPZC0tOL+76ipl/EPncnlYAV8
+ CTd7NxbfVzYfJhWaJnIFWAMX7f27CFB5bDPuc/aqFGAguWmFfvnnWjO3mCq8m2LY/o4B
+ 5nXw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUj3Q2MWzE1DHJImGFFCvh66gbfvqnWJaeaWFkXMkyiBeCy/ShNOgIfaJG5RaTbzSykY7pM891dlQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwCq3G/KszXnjrswi+KMro9Mny5ulFYZiXAQUuwFb2rfb2Dxe5/
- fjeA1J+Xm0Ybhv9EnGZkIj7dswTPzUC79flAL3Orvn8J2nF8Pnou1yAISXysiYyDxls=
-X-Gm-Gg: ASbGncvNUtmogD5gd+U3p18fEsBpzh7+7ttFOcG98NhlBCdITX6Hif3ZE2UYOEzHAVC
- DUpoozMQ5HifjxXSWh9V2yUcVJ4VoYn66uAlPcipADSp+yx3Swmz0m/kufIQ+k7M3nJhfkk+tjl
- izkze+nijxkoilc/nD10t9MGiXrCQgnEjVOI0nqwp26OYyAKCNUgu1LzNLd9XcYvouMh6KHt+Xu
- Xk2e1tjGR/m4NQs0qJQNF/xwLW0Q6MvO/kJ/zgQDE5h77RdgHUcpbQsxUCiS99eUtC5XOGncBZm
- bDySHlkdBr1tUp/vW4e3EoKLsc/W5qvg1tVOzFBfdRkpqjo8K7bj+ym5SEouxVD/iyH4IcJqg0w
- s8VyjZosfe5PBQ6KvUoQB49Q/uEEwu5FH+wI+XYMjecHEIidAfeHeKxrEfC7ncvGK8Dkk2pvarx
- /dgQf0bjsQ5qZhVQeH6bnFtLZH9bXf18XUX0kMaCvy9J+yJdYtSQ==
-X-Google-Smtp-Source: AGHT+IE9Bg27htI7e9/HI71s8ONLKbXXTD8QFcUk7hl9xI6nX05rgKMPsTlhPJM2WGdvc6SN+XjgAw==
-X-Received: by 2002:a05:6000:40e1:b0:429:8b01:c08c with SMTP id
- ffacd0b85a97d-429aef82eb8mr76573f8f.19.1761676884736; 
- Tue, 28 Oct 2025 11:41:24 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429952b7b22sm21462186f8f.9.2025.10.28.11.41.23
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 28 Oct 2025 11:41:24 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, qemu-block@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>
-Subject: [PATCH v3 25/25] hw/sysbus: Simplify SysBusDevice::mmio
-Date: Tue, 28 Oct 2025 19:12:59 +0100
-Message-ID: <20251028181300.41475-26-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251028181300.41475-1-philmd@linaro.org>
+ AJvYcCVzHrHGu2XErs9JGFjAxO8BrFtAXv9oeHDXUzcMbmTEku1w4WXcREE5wt0kut7oBK0FD2obMjpMkw==@nongnu.org
+X-Gm-Message-State: AOJu0YxckhyPftC/Y7YxEFfUBwOJr0cxA1DU8c1jw81+YQH0jvIL0axc
+ b/Q7pb1TgjdPXI556a/7CgcNrtuYYGS7nTCh3h6yzHGHjKtRNOXliK5EblsubfZe+Xidi3rfs4z
+ C08Fo46qdSRPi9d8otsaivXzmOGEyPoHXCCz7KNOIqkk/yMLc8JUu+w==
+X-Gm-Gg: ASbGncu6MGlLUqEys2r7zKVvXupvBToSYqotqdfQ0QUGzekcAd9ve83rHD8WNZMqg2n
+ 1LHZtHSyrgW5/zpammLCInggxb8OMqQByS0EfezZDgzwEdFV2FsMlBrV2Q4CSK1HtRN4VTPGtiN
+ FXbkUmdLfxlOi9+TP39jnkxfu0NvRnPtUQNGyxYU/BPSH6+7DqNt7dv3G0zdO9t/q/x8YrNBUiS
+ q54jPdr74ONbKS1wwcr6d7OC8ilireaLOEW3J/yIRobFtfeMFh9SgBNlCaH7go+pH9A61gwNOcG
+ CVjG9XGipvGaCZBkSxMFhqjzrSMnAdLd1hkK/F9vBc0+hvSp6j139f8TjLQJ1qFyJLM=
+X-Received: by 2002:a05:6214:27c9:b0:798:acd7:2bb with SMTP id
+ 6a1803df08f44-88009c0b912mr1037266d6.51.1761676889843; 
+ Tue, 28 Oct 2025 11:41:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGz9dR8kMz0S6e9uZHFhtek7D0C9LNsYC8wL8XSrLNCkrY/ca31qp0JCfvcV3KUiInSS0KnQg==
+X-Received: by 2002:a05:6214:27c9:b0:798:acd7:2bb with SMTP id
+ 6a1803df08f44-88009c0b912mr1036896d6.51.1761676889279; 
+ Tue, 28 Oct 2025 11:41:29 -0700 (PDT)
+Received: from x1.local ([142.188.210.50]) by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-87fc49204dfsm82115346d6.30.2025.10.28.11.41.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 28 Oct 2025 11:41:28 -0700 (PDT)
+Date: Tue, 28 Oct 2025 14:41:27 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-block@nongnu.org,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ qemu-arm@nongnu.org, qemu-s390x@nongnu.org, Fabiano Rosas <farosas@suse.de>
+Subject: Re: [PATCH v3 12/25] migration/ram: Use memory_region_get_address()
+Message-ID: <aQEOV2ucE_77LJD7@x1.local>
 References: <20251028181300.41475-1-philmd@linaro.org>
+ <20251028181300.41475-13-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20251028181300.41475-13-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: vm8jFRA09qS-IcajzhvcaFuUtbvpPpq8VErW_qKnIzs_1761676890
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,69 +114,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Directly access the MemoryRegion array, removing
-the need for the embedded structure.
+On Tue, Oct 28, 2025 at 07:12:46PM +0100, Philippe Mathieu-Daudé wrote:
+> MemoryRegion::addr is private data of MemoryRegion, use
+> memory_region_get_address() to access it.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/hw/sysbus.h | 4 +---
- hw/core/sysbus.c    | 8 ++++----
- 2 files changed, 5 insertions(+), 7 deletions(-)
+Acked-by: Peter Xu <peterx@redhat.com>
 
-diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
-index b2a2ea507ea..2cee5bcd44f 100644
---- a/include/hw/sysbus.h
-+++ b/include/hw/sysbus.h
-@@ -59,9 +59,7 @@ struct SysBusDevice {
-     /*< public >*/
- 
-     int num_mmio;
--    struct {
--        MemoryRegion *memory;
--    } mmio[QDEV_MAX_MMIO];
-+    MemoryRegion *mmio[QDEV_MAX_MMIO];
-     int num_pio;
-     uint32_t pio[QDEV_MAX_PIO];
- };
-diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
-index b3060e02484..188a6ab055e 100644
---- a/hw/core/sysbus.c
-+++ b/hw/core/sysbus.c
-@@ -125,7 +125,7 @@ static void sysbus_mmio_map_common(SysBusDevice *dev, int n, hwaddr addr,
-     MemoryRegion *mr;
- 
-     assert(n >= 0 && n < dev->num_mmio);
--    mr = dev->mmio[n].memory;
-+    mr = dev->mmio[n];
- 
-     if (memory_region_is_mapped(mr)) {
-         /* Unregister previous mapping.  */
-@@ -143,7 +143,7 @@ void sysbus_mmio_map(SysBusDevice *dev, int n, hwaddr addr)
- int sysbus_mmio_map_name(SysBusDevice *dev, const char *name, hwaddr addr)
- {
-     for (int i = 0; i < dev->num_mmio; i++) {
--        if (!strcmp(memory_region_name(dev->mmio[i].memory), name)) {
-+        if (!strcmp(memory_region_name(dev->mmio[i]), name)) {
-             sysbus_mmio_map(dev, i, addr);
-             return i;
-         }
-@@ -175,13 +175,13 @@ void sysbus_init_mmio(SysBusDevice *dev, MemoryRegion *memory)
- 
-     assert(dev->num_mmio < QDEV_MAX_MMIO);
-     n = dev->num_mmio++;
--    dev->mmio[n].memory = memory;
-+    dev->mmio[n] = memory;
- }
- 
- MemoryRegion *sysbus_mmio_get_region(const SysBusDevice *dev, int n)
- {
-     assert(n >= 0 && n < QDEV_MAX_MMIO);
--    return dev->mmio[n].memory;
-+    return dev->mmio[n];
- }
- 
- void sysbus_init_ioports(SysBusDevice *dev, uint32_t ioport, uint32_t size)
 -- 
-2.51.0
+Peter Xu
 
 

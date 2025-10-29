@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E21BCCF9F3
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 08:18:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8B6BCCF9EE
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 08:18:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vE1NI-0002Rd-D2; Wed, 29 Oct 2025 04:17:44 -0400
+	id 1vE1O9-0002mt-Al; Wed, 29 Oct 2025 04:18:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1vE1Ml-0002Nm-Pn
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 04:17:15 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1vE1O6-0002lf-SE
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 04:18:35 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1vE1Mb-0005T9-3z
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 04:17:10 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-475dd559a83so24494695e9.1
- for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 01:16:58 -0700 (PDT)
+ id 1vE1O3-0005XV-71
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 04:18:33 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-475c9881821so4374275e9.0
+ for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 01:18:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761725816; x=1762330616; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761725907; x=1762330707; darn=nongnu.org;
  h=mime-version:message-id:in-reply-to:references:user-agent:subject
  :cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=YxQRC4UrmMOgqQYvgIteCmpj9E+7gKkG8cgAX3dkD+8=;
- b=MSjzrdEgeqqG0pxHTpc1tUlulCC0L+ngNl9L4B6N1Onxur0byL1pOlbV6zhlf2x1DS
- LdhVkkrp4AQmOQM1cHaukZ3dHl1O/SmLVla2GNQBjf48pkFWb499Pg0CTP2+9fQ14nu5
- ox7qsLyriBbuAlqnKfgaEUePMSYF0xPwIpXWe5/9ckSAAzYT/Sl8QBx5v03kS8UHPQzM
- D3b9SgMCiwVOp8fRTa4SCHjQs0auip/xtrsGdQqJJGhqFchgU+R0OZ7PNrqRhLbwbLP7
- nm9yISjd+bkOCTBPQzc/3rKi7u4pMm6HGRjd3MTYAyfkckXW/zavb6KWRo+7E8j5R1td
- 7BOw==
+ bh=q9tdhi6SMCKrV/uMVORoNV2nyNe/atRzmSSLlvNiQ1I=;
+ b=dIwnn606EWVx4cNBVXnhzjIiIXB7JGNhDsn86YNFui5KHSKRiBML6Y/9jGj0hs1aUF
+ 55jm7QySpR3WRH19xl/k9TPlubqM/eCPEInqoWMZq5H92ftRi9jXS8OYp6lm9m40Se3l
+ +nBWAt8uMZBMUlCeXG+9CA3NIoCx27/uwXNoOOH0sfGyFRQ1k+ohKzyuIX4ix6fpCcSB
+ OPbVszohMOhxpfDDueRUwCYo8IVmOHmjxKCf9rF0GNrn7KJL+MKkHHImkUFio2GkGsYx
+ FEQRPI8triBaGyWwGXkjhf7swuk4eve53GM6Jd8kZSkCF4+uw2JsboC9hK4UK2dKTPbK
+ Q58g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761725816; x=1762330616;
+ d=1e100.net; s=20230601; t=1761725907; x=1762330707;
  h=mime-version:message-id:in-reply-to:references:user-agent:subject
  :cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YxQRC4UrmMOgqQYvgIteCmpj9E+7gKkG8cgAX3dkD+8=;
- b=wsgLye+0yR1GMMCYBwoeuTYZsZbLCUP1h9rD7ccHHfHVJOBi5oSmsVJAiP/g08C7jJ
- gyLzbtg5WGDLV7fAhhrCUtWzjAg+Hm+oU4mdpeAilh1uq6kuPPjAUa5Fcl4pysFkdooq
- bQlOx9BhpeGGB3ceJghN3SSwRSDyEzmvcqaF+GaKTmYoMzX8s8rxYEri2Q3Iktc8aggs
- PvgxcIzkhKZ1ZO9iwtCRofP9M4fiEaFy1Uez8irdGV6pf6Xi5G4GYz4ub9SJrsfQt2Ou
- uqv15P1jnpbAJMjT9c6B4kCQlc3uqF5OHysBagMUGUAWDFBdnOin9kGznmu5rq+CiFVn
- sBZA==
+ bh=q9tdhi6SMCKrV/uMVORoNV2nyNe/atRzmSSLlvNiQ1I=;
+ b=HjVYD/L4mIjClMVsWTZUpiYytH4vvD+n3sSeFpqDLWE7UI9clVPQLX0iYfELuif4dx
+ mrosqa4y46JWLQIwTqxD7L3iKaO063lQ8pKaS6PeeewkwazU6EGg5ls8ayC5c4d6VAje
+ 2mo5iME9cicbywQ17g7QhoAAkAseCuCu66CfxHGZFD63tffWrh7E/o2ZPjtkGy5LPMOj
+ 7XmkiijecJud54otI4znB2qkE8GoQhePQ3O68bimx36hiqGTeJ9UFTyH3N5dnzfHN9yX
+ 34NoPYWRZuvoU5/SFqa0N/dWskQdl2DelhS1QbHtXj1qs/0vYe91nn0ZypsB4aKFWG2e
+ Iomw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWEyfQArQfzQ0Se7FyBPM9gpAmpO2M+WMGnVZReJpvaGS6SXTLpkF05BSLyjOXyxoS9xrsM3nfxiA==@nongnu.org
-X-Gm-Message-State: AOJu0YxEce0rKBCXUW+yaLkrj66rrROI8bfWPcyU37CmQdSOdIbV3fnt
- SiFfexZzhZ9TeCNGix9T5Beha2VctjaUkG3AKwb6K5lGkp77RpLHXe9iu43rgu957Po=
-X-Gm-Gg: ASbGncs1W8ZUt6zSiMAje/WHIeeHdxQhyXIeIdZMJWHyR2WruVP38poRcpOVMRaLkWS
- wTKAOkzOxjLKsM7nMpX4r4wnqYA99WaehAzHw2mKc3T8nIkbIDfZd17PMgdB1MKyCXdF+3IHGqb
- lWYPMGd3/pmw0YKGIXIcjKSCpkKHwHN1V/tMpACyzpJF9+DSQzZCwKjAHpJamUXVdZciwtu9URC
- lSeGuO5viDl4cD0R395MVc7ujU1Cdl9ypBir0pwjjKUti8nj1wMUEFA/R1MQI+gv80lrJyRYp8A
- NDrJ+n7qFfwchHsUcaBOSndkMPqKNRBPGbpURA3sAz/ew+OAfOZX6HrDS4SX/mi/JJxxzlXbOg4
- TOBdsWrme1TF+MoBecinRG8NtftvTVgboewgnzQcMPK1U6ckaI2pYRrHl8jSdIyzdh8hR014EZY
- lPlNg3FKOM+t3MsybZyH+peecyp9Eut/98Tv6nbceYavjX1LWa
-X-Google-Smtp-Source: AGHT+IFlDrSi4rn7Ftsb0G+wmoOP6fTxQAO0wwjl+SzJSDE8rDAL45qear5Vd+eD5ECiZ8NDtmiSiw==
-X-Received: by 2002:a05:600c:608b:b0:475:de12:d3b2 with SMTP id
- 5b1f17b1804b1-4771e1f1dc2mr19314655e9.36.1761725815406; 
- Wed, 29 Oct 2025 01:16:55 -0700 (PDT)
+ AJvYcCXs+mUujnXFHKKKRfutNj5g2XqEKhlkOPloIjG0R3i3lKW4X5gcarNy4kZP1eqJos65TR5gxK2NLg==@nongnu.org
+X-Gm-Message-State: AOJu0YyHlc2KDyXTnRGUYZM9a6D9kfH0jVyTdUJTNQONPigUeE5HZZgG
+ yJkzGOyumvpz6BiBdFVNzAlW1sIoMztnKmeKbhV4TDfkL4ADOvUUK7/zoS5sf5LJ8iI=
+X-Gm-Gg: ASbGncslmgtvwpqp0G4SnUutNOI91tByp2CE2KKA4H5Plp47+7Y8Rv3yoVF3g5qjgkw
+ 35jfk/CWFiAhKqEs9ifEKS0vXGPweuovtSeyI5PhPBhuwIGwqp/H4heGEImoCNrpayOgUf8BOjN
+ CpmSH0jtFluF0yppi2oh9GLFhBI7ojcQi6ovljJpXKybmyK2GZJ/iDNxd6mhT2Rm+k4+spTULG5
+ gCzOp1OCX6iYb9CT+J3E/mW5E8KjweblTQ4NY/uvmH7LCrGua4BuMGM4WmH0jdHQehAJz4gIntd
+ O67uXkOerb5Smi6vRrDputk9XUi4MebI2vlJncFSaJvw070JwoG4KvdzHUxF6L1oJ2iuZm2bkej
+ HKNc/ET4hCn82pMdwd9UXGME33Qpar56OmtzeDIaB76+4jFQSaarKpgDLSd7DUOSZ5V2eujp/vs
+ GPJAXvOm2G+HvdlZzN4PvU++l5GweIgFp748pF0TuEGh7WSZnX
+X-Google-Smtp-Source: AGHT+IEsCo/W9/+yo8JioFVxnZTLzWLV8k7mkG3ielvycXUyNkeBRZZ16dKPk8K32YpyrR9zHmKjHA==
+X-Received: by 2002:a05:600d:1:b0:477:1b2f:1190 with SMTP id
+ 5b1f17b1804b1-4771b2f153amr27628895e9.18.1761725906788; 
+ Wed, 29 Oct 2025 01:18:26 -0700 (PDT)
 Received: from meli-email.org (athedsl-4440624.home.otenet.gr. [79.129.178.32])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4771e202182sm40171705e9.10.2025.10.29.01.16.54
+ 5b1f17b1804b1-4771e387baesm34215625e9.2.2025.10.29.01.18.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Oct 2025 01:16:55 -0700 (PDT)
-Date: Wed, 29 Oct 2025 10:14:37 +0200
+ Wed, 29 Oct 2025 01:18:26 -0700 (PDT)
+Date: Wed, 29 Oct 2025 10:18:09 +0200
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-devel@nongnu.org, Alex Benn=?UTF-8?B?w6k=?=e <alex.bennee@linaro.org>
 Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
@@ -96,17 +96,17 @@ Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Rolnik <mrolnik@gmail.com>, 
  Song Gao <gaosong@loongson.cn>, qemu-riscv@nongnu.org, 
  Aleksandar Rikalo <arikalo@gmail.com>
-Subject: Re: [PATCH 05/35] tests/lcitool: generate a yaml file for the ppc64le
- runner
+Subject: Re: [PATCH 04/35] scripts/ci: allow both Ubuntu or Debian to run
+ upgrade
 User-Agent: meli/0.8.12
 References: <20251027110344.2289945-1-alex.bennee@linaro.org>
- <20251027110344.2289945-6-alex.bennee@linaro.org>
-In-Reply-To: <20251027110344.2289945-6-alex.bennee@linaro.org>
-Message-ID: <t4vwc6.2u78l7gx232vv@linaro.org>
+ <20251027110344.2289945-5-alex.bennee@linaro.org>
+In-Reply-To: <20251027110344.2289945-5-alex.bennee@linaro.org>
+Message-ID: <t4vwep.178r78l9ikkwn@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -13
 X-Spam_score: -1.4
 X-Spam_bar: -
@@ -130,206 +130,30 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Mon, 27 Oct 2025 13:03, Alex Bennée <alex.bennee@linaro.org> wrote:
->Unlike the Aarch64 runners this comes with pure Debian out of the box.
->We need a minor tweak to build-environment to deal with the
->differences in naming convention.
+>There is no practical difference between the systems when it comes to
+>updating the installed system.
 >
 >Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 >---
 
 Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-> scripts/ci/setup/build-environment.yml        |  10 +-
-> .../ci/setup/debian/debian-13-ppc64le.yaml    | 134 ++++++++++++++++++
-> tests/lcitool/refresh                         |   1 +
-> 3 files changed, 143 insertions(+), 2 deletions(-)
-> create mode 100644 scripts/ci/setup/debian/debian-13-ppc64le.yaml
+> scripts/ci/setup/build-environment.yml | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
 >
 >diff --git a/scripts/ci/setup/build-environment.yml b/scripts/ci/setup/build-environment.yml
->index 253d0b759bc..528150dce78 100644
+>index 66bde188755..253d0b759bc 100644
 >--- a/scripts/ci/setup/build-environment.yml
 >+++ b/scripts/ci/setup/build-environment.yml
->@@ -27,20 +27,26 @@
->         - ansible_facts['distribution'] in ['Ubuntu', 'Debian']
+>@@ -24,7 +24,7 @@
+>         update_cache: yes
+>         upgrade: yes
+>       when:
+>-        - ansible_facts['distribution'] == 'Ubuntu'
+>+        - ansible_facts['distribution'] in ['Ubuntu', 'Debian']
 > 
 >     # the package lists are updated by "make lcitool-refresh"
->-    - name: Define package list file path
->+    - name: Define package list file path for Ubuntu
->       set_fact:
->         package_file: "ubuntu/ubuntu-2404-{{ ansible_facts['architecture'] }}.yaml"
->       when:
->         - ansible_facts['distribution'] == 'Ubuntu'
->         - ansible_facts['distribution_version'] == '24.04'
-> 
->+    - name: Define package list file path for Debian
->+      set_fact:
->+        package_file: "debian/debian-{{ ansible_facts['distribution_major_version'] }}-{{ ansible_facts['architecture'] }}.yaml"
->+      when:
->+        - ansible_facts['distribution'] == 'Debian'
->+
->     - name: Include package lists based on OS and architecture
->       include_vars:
->         file: "{{ package_file }}"
->       when:
->         - package_file is exists
-> 
->-    - name: Install packages for QEMU on Ubuntu 24.04
->+    - name: Install packages for QEMU on Ubuntu/Debian
->       package:
->         name: "{{ packages }}"
->       when:
->diff --git a/scripts/ci/setup/debian/debian-13-ppc64le.yaml b/scripts/ci/setup/debian/debian-13-ppc64le.yaml
->new file mode 100644
->index 00000000000..e29c9c18403
->--- /dev/null
->+++ b/scripts/ci/setup/debian/debian-13-ppc64le.yaml
->@@ -0,0 +1,134 @@
->+# THIS FILE WAS AUTO-GENERATED
->+#
->+#  $ lcitool variables --host-arch ppc64le debian-13 qemu
->+#
->+# https://gitlab.com/libvirt/libvirt-ci
->+
->+packages:
->+  - bash
->+  - bc
->+  - bindgen
->+  - bison
->+  - bsdextrautils
->+  - bzip2
->+  - ca-certificates
->+  - ccache
->+  - clang
->+  - dbus
->+  - debianutils
->+  - diffutils
->+  - exuberant-ctags
->+  - findutils
->+  - flex
->+  - gcc
->+  - gcovr
->+  - gettext
->+  - git
->+  - hostname
->+  - libaio-dev
->+  - libasan8
->+  - libasound2-dev
->+  - libattr1-dev
->+  - libbpf-dev
->+  - libbrlapi-dev
->+  - libbz2-dev
->+  - libc6-dev
->+  - libcacard-dev
->+  - libcap-ng-dev
->+  - libcapstone-dev
->+  - libcbor-dev
->+  - libclang-rt-dev
->+  - libcmocka-dev
->+  - libcurl4-gnutls-dev
->+  - libdaxctl-dev
->+  - libdrm-dev
->+  - libepoxy-dev
->+  - libfdt-dev
->+  - libffi-dev
->+  - libfuse3-dev
->+  - libgbm-dev
->+  - libgcrypt20-dev
->+  - libglib2.0-dev
->+  - libglusterfs-dev
->+  - libgnutls28-dev
->+  - libgtk-3-dev
->+  - libgtk-vnc-2.0-dev
->+  - libibverbs-dev
->+  - libiscsi-dev
->+  - libjemalloc-dev
->+  - libjpeg62-turbo-dev
->+  - libjson-c-dev
->+  - liblttng-ust-dev
->+  - liblzo2-dev
->+  - libncursesw5-dev
->+  - libnfs-dev
->+  - libnuma-dev
->+  - libpam0g-dev
->+  - libpcre2-dev
->+  - libpipewire-0.3-dev
->+  - libpixman-1-dev
->+  - libpng-dev
->+  - libpulse-dev
->+  - librbd-dev
->+  - librdmacm-dev
->+  - libsasl2-dev
->+  - libsdl2-dev
->+  - libsdl2-image-dev
->+  - libseccomp-dev
->+  - libselinux1-dev
->+  - libslirp-dev
->+  - libsnappy-dev
->+  - libsndio-dev
->+  - libspice-protocol-dev
->+  - libspice-server-dev
->+  - libssh-dev
->+  - libstd-rust-dev
->+  - libsystemd-dev
->+  - libtasn1-6-dev
->+  - libubsan1
->+  - libudev-dev
->+  - liburing-dev
->+  - libusb-1.0-0-dev
->+  - libusbredirhost-dev
->+  - libvdeplug-dev
->+  - libvirglrenderer-dev
->+  - libvte-2.91-dev
->+  - libxdp-dev
->+  - libzstd-dev
->+  - llvm
->+  - locales
->+  - make
->+  - mtools
->+  - multipath-tools
->+  - ncat
->+  - nettle-dev
->+  - ninja-build
->+  - openssh-client
->+  - pkgconf
->+  - python3
->+  - python3-numpy
->+  - python3-opencv
->+  - python3-pillow
->+  - python3-pip
->+  - python3-setuptools
->+  - python3-sphinx
->+  - python3-sphinx-rtd-theme
->+  - python3-tomli
->+  - python3-venv
->+  - python3-wheel
->+  - python3-yaml
->+  - rpm2cpio
->+  - rustc
->+  - sed
->+  - socat
->+  - sparse
->+  - swtpm
->+  - systemtap-sdt-dev
->+  - tar
->+  - tesseract-ocr
->+  - tesseract-ocr-eng
->+  - vulkan-tools
->+  - xorriso
->+  - zlib1g-dev
->+  - zstd
->+
->diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
->index 056cfb6e9d7..7fbdf6f340b 100755
->--- a/tests/lcitool/refresh
->+++ b/tests/lcitool/refresh
->@@ -272,6 +272,7 @@ try:
->     #
->     generate_yaml("ubuntu", "ubuntu-2404", "aarch64")
->     generate_yaml("ubuntu", "ubuntu-2404", "s390x")
->+    generate_yaml("debian", "debian-13", "ppc64le")
-> 
-> 
->     sys.exit(0)
+>     - name: Define package list file path
 >-- 
 >2.47.3
 >

@@ -4,156 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FC08CCF9EE
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 08:30:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E34E8CCF9EB
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 10:08:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vE1YE-0000Gj-EI; Wed, 29 Oct 2025 04:29:02 -0400
+	id 1vE36a-0006CJ-0D; Wed, 29 Oct 2025 06:08:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1vE1YA-0000Fa-PN
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 04:28:59 -0400
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1vE36R-000692-FR
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 06:08:28 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1vE1Xw-00077i-Pv
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 04:28:58 -0400
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1vE36G-0004c9-R6
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 06:08:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761726523;
+ s=mimecast20190719; t=1761732491;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=kyjVsMl1eSjjHZkpjfWsuFiTuc3rIZwFQPjqzSBA0qY=;
- b=BJExQqIJk7V5RICRnzM2NGeTB8HupUKZhIet1XpF5vlKiS2B7I4oohkd5HtXsnuGU5k92A
- NZ2PSePLpq0XzjzljEK433BjL+duZ4I6slBwmUjp2ab3Ibzpp781j0/RscAzE+b9TL+E5a
- R6RFEQ7xRLqq8Mc4auA09QsMaoVgTuw=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references;
+ bh=6AlAHYI3Q37iozbNQgfd3TyCrOZzmJ2h6bRZWdszOXs=;
+ b=NqGEIZKuqsNhF/HdkDgwafJ3MQRaPjz3hTEWnRUh80JrGjiWbvxwgbs77b13e3vi/KLdh9
+ Y4F6qND8CQybfHnZITyvJ2RI4nfvrjJtKeVDd0wKHdS9orBiezRmlqvb4MizMBOQZpwjUt
+ hFdmTCTUWTJIfdLY62RoD/VPKgklJ4I=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-217-IplyBQB7OFa8Z3iRiv1d3w-1; Wed, 29 Oct 2025 04:28:39 -0400
-X-MC-Unique: IplyBQB7OFa8Z3iRiv1d3w-1
-X-Mimecast-MFC-AGG-ID: IplyBQB7OFa8Z3iRiv1d3w_1761726518
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-477113a50fcso27998835e9.1
- for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 01:28:39 -0700 (PDT)
+ us-mta-369-bN3tBAcNOSWcZiAcEFNjcA-1; Wed, 29 Oct 2025 06:08:08 -0400
+X-MC-Unique: bN3tBAcNOSWcZiAcEFNjcA-1
+X-Mimecast-MFC-AGG-ID: bN3tBAcNOSWcZiAcEFNjcA_1761732487
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-475ddd57999so36327875e9.1
+ for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 03:08:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761726518; x=1762331318;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=kyjVsMl1eSjjHZkpjfWsuFiTuc3rIZwFQPjqzSBA0qY=;
- b=BmC2vnsJXupCkDH/3iTEw5CJJRypjJTUOhd4Xo5sW5igj6Z13hUzyOgxcwIeHDKtJL
- msEdc/dKPz0xZfcqUZzJcRtG5X8KDNB2oivAEbOJAllW6ewph/3drVmW612ujA1gRrg0
- 2rIi58bjudJia5RcKcyoPcDW3N/0le6VFklcqPY0g9PeVddvIlxWg5FqOdZtwKZdN3wo
- dRFPmAThoofoHUEwoGNU1/ZclPxn6lz92HPO+maO9r0cIXcaPv+7eTaFLtMly54S9vG7
- zgu8FZ9eG0G5OTW4WqOYokKkXCv23B8FueOYWtF6XeGYiWokw2ZHM3Ptr5hZcVzYDPLa
- I2PQ==
+ d=1e100.net; s=20230601; t=1761732487; x=1762337287;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=6AlAHYI3Q37iozbNQgfd3TyCrOZzmJ2h6bRZWdszOXs=;
+ b=h7jWi0KxDM18ULc88VA0/XLraG0qBzREEfB3napfz8LT18X+ISs01b9ALZET/1NX2C
+ jdwRlHlp5mY3QZcigKQEZ/yL88DltA8wmmy6KTzidVGEb+WmsjDkBiDaypxz3+j/yOv1
+ IUItgzAsjdZmxShn3yT3qb9KiO2aHtCxGjfjTYv/+YJC5pnpWGpqeIYaD94SKsPY8/4P
+ rRchIaNOzGjbrHAkuVlN+mnWfzZRYbycld4Ro/ofg9bHuhXFMMoMCJB2GEba/l/+Zb4D
+ Id3pLHfZp/91PJD+trWyTnu5W+vE1EGVrpVuRBdYHJ8N6v74dSjCYFIwC7tcCDciDrID
+ 1Jog==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUljm064b9wCg6erzuRn3KaN7VgkSC/t+u4t/Cja0zG74Fpq785U9EAjpp3lSbIjg8BCLxuKdWCYQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxXGdrnNaO+SfoG4ewGrQcXjIKCPbuM9ZY67GzVI9r64Bp/YIje
- r+/TxMpchshJ/wK2b5H8oWQ82RZYe7V/8jruAklU+URLfvvs4UgI8zlXFcy0GTVwNSKa/1AvtHM
- BFjWRJrBRp+C++ZBiQLHIMCNNWijJmqyYmZ/+SlYhEczqZpgHljr+cQ==
-X-Gm-Gg: ASbGncsuwBkn4fgJ+vNID6TglAV093cNCjE2olTlD2DPHLdIhRiqShSpm57CDhVlhfM
- 1j7QFGqXrsu1UKxth1SY4afImIF8kXI0sgrfxhv/YCki8TjksNIRsZj/Kr+QTrVDbtRoJxOL2b5
- MTaEfAG3+ggRHc/T0kOhdekPdvPfI5EpsvftexdvJqz5eRQAlipEeX1I4dHk8F/f28mKgr24SBa
- TakLa8GKoLLVlzFm9i1KC1nLtHF1P57N2QXsgj707AtF2eEd1Ryc/v1ySPMwfCLJVJoQKA/0tf/
- 9qM/30vEgR2j5P3IQK+qeT3a+Zvwag8XcqXtqt4dsTkoZYBe0kg4g5kGYm3PbpZ0V+LNKsNKGrI
- X/oZBvPp2sTBowmesTxecFQ==
-X-Received: by 2002:a05:600c:46ce:b0:471:15c1:45b9 with SMTP id
- 5b1f17b1804b1-4771e3b84c0mr19996275e9.29.1761726518495; 
- Wed, 29 Oct 2025 01:28:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGwH5iYlR3CCOII9CX1s2YW9mYg5eVnuX9ag5pm3FcjObAoRCGOd+6CNkhXP35RGWKSwOIIjg==
-X-Received: by 2002:a05:600c:46ce:b0:471:15c1:45b9 with SMTP id
- 5b1f17b1804b1-4771e3b84c0mr19995995e9.29.1761726518045; 
- Wed, 29 Oct 2025 01:28:38 -0700 (PDT)
-Received: from [10.32.64.156] (nat-pool-muc-t.redhat.com. [149.14.88.26])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4771e27f7b8sm36443235e9.0.2025.10.29.01.28.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Oct 2025 01:28:37 -0700 (PDT)
-Message-ID: <f99989f4-88bd-4167-b9e3-fe4a249a2c99@redhat.com>
-Date: Wed, 29 Oct 2025 09:28:36 +0100
+ AJvYcCX+Doj6MIKSQy+8ArJyucupXI29ODFKCTfcp6qRUSnMCiIPHqwfo0nhR64PENFuMrRPuNeurLy1QQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwmBNoD9y33GJKmZfI0ZIwlVMeVrGupfx/6AANv+ee1gEJhUo1U
+ BswuDorvPDxvUiIQo0bh1qvsq3wFzf634l9erglqiag2fhtgamUY17nirUl3WVucV3IJcW8L7Mz
+ 4QvtKIFVsMmxOWZCwEUa/9d65F57lRCgdCOgoReuVXdmyFH9s/MJreg==
+X-Gm-Gg: ASbGncuKZkTPQlcIiwF21ydxLwPqyo4HyFgO+ZDcAYVmd0ZgEkkPKskEWGkk2VNGMUx
+ B0iIhQn6FI5FaBSuo0Bse65UnMZX9KzcwGUL3IaH1SjC3US1Rep0W25+cf8nhyWpbFS+DQYIHaT
+ Tu5E4VtHvYk19gXXsvKwrwXxANrdUzp6ds8rGahu2qXGvt0fQFI/gKO7V0CTLjqVCX+NILR8PmO
+ PfAEDojBmLMArc8VT70VVGrDEqwsUtkZ/rZgp8GLTVQ4obqe1ArbIWHgzxd+6K5JB9y4/wgfx5G
+ V3ea+Etv4CmNFpxdQx/r41x5SPGFJp4/x5as890drfwsDHYxVnUw7k6i6lJQiXwn5A==
+X-Received: by 2002:a05:600c:4e90:b0:46f:b42e:ed87 with SMTP id
+ 5b1f17b1804b1-4771e20e3f5mr20262995e9.40.1761732487176; 
+ Wed, 29 Oct 2025 03:08:07 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHgrnupOSXqOCR3NSmEuuaYcK5eHUvG3WM+ycFSheDoi3gOzbJuD1arFHEXB6b1218sc/o1Ww==
+X-Received: by 2002:a05:600c:4e90:b0:46f:b42e:ed87 with SMTP id
+ 5b1f17b1804b1-4771e20e3f5mr20262585e9.40.1761732486598; 
+ Wed, 29 Oct 2025 03:08:06 -0700 (PDT)
+Received: from fedora ([85.93.96.130]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4771902981esm39177935e9.9.2025.10.29.03.08.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Oct 2025 03:08:05 -0700 (PDT)
+Date: Wed, 29 Oct 2025 11:08:02 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: salil.mehta@opnsrc.net, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ mst@redhat.com, salil.mehta@huawei.com, maz@kernel.org,
+ jean-philippe@linaro.org, jonathan.cameron@huawei.com,
+ lpieralisi@kernel.org, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, andrew.jones@linux.dev, david@redhat.com,
+ philmd@linaro.org, eric.auger@redhat.com, will@kernel.org, ardb@kernel.org,
+ oliver.upton@linux.dev, pbonzini@redhat.com, gshan@redhat.com,
+ rafael@kernel.org, borntraeger@linux.ibm.com, alex.bennee@linaro.org,
+ gustavo.romero@linaro.org, npiggin@gmail.com, harshpb@linux.ibm.com,
+ linux@armlinux.org.uk, darren@os.amperecomputing.com,
+ ilkka@os.amperecomputing.com, vishnu@os.amperecomputing.com,
+ gankulkarni@os.amperecomputing.com, karl.heubaum@oracle.com,
+ miguel.luis@oracle.com, zhukeqian1@huawei.com, wangxiongfeng2@huawei.com,
+ wangyanan55@huawei.com, wangzhou1@hisilicon.com, linuxarm@huawei.com,
+ jiakernel2@gmail.com, maobibo@loongson.cn, lixianglai@loongson.cn,
+ shahuang@redhat.com, zhao1.liu@intel.com, devel@lists.libvirt.org
+Subject: Re: [PATCH RFC V6 22/24] monitor,qdev: Introduce 'device_set' to
+ change admin state of existing devices
+Message-ID: <20251029110802.2ffa51e4@fedora>
+In-Reply-To: <87v7k96cnz.fsf@pond.sub.org>
+References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
+ <20251001010127.3092631-23-salil.mehta@opnsrc.net>
+ <87plawh2sz.fsf@pond.sub.org> <20251009145125.6583a24a@fedora>
+ <87wm54nmyt.fsf@pond.sub.org> <20251017165044.76b39f5c@fedora>
+ <87v7k96cnz.fsf@pond.sub.org>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 16/25] hw/s390x: Use memory_region_get_address()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, qemu-block@nongnu.org,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- Matthew Rosato <mjrosato@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>
-References: <20251028181300.41475-1-philmd@linaro.org>
- <20251028181300.41475-17-philmd@linaro.org>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- qIws/H2t
-In-Reply-To: <20251028181300.41475-17-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ZXZHQSfi-eg3Yu--IlVwgpTct7dgBnRnaKNXvBdUSa0_1761726518
+X-Mimecast-MFC-PROC-ID: fGUiPSiBPIJiddI8jEZZuNcNdz_BDGCpDUEw0sd2gf4_1761732487
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -169,46 +132,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Mon, 20 Oct 2025 13:22:08 +0200
+Markus Armbruster <armbru@redhat.com> wrote:
 
-> @@ -510,11 +514,12 @@ static MemTxResult zpci_write_bar(S390PCIBusDevice *pbdev, uint8_t pcias,
->                                     uint64_t offset, uint64_t data, uint8_t len)
->   {
->       MemoryRegion *mr;
-> +    hwaddr subregion_base_addr;
->   
->       mr = pbdev->pdev->io_regions[pcias].memory;
->       mr = s390_get_subregion(mr, offset, len);
-> -    offset -= mr->addr;
-> -    return memory_region_dispatch_write(mr, offset, data,
-> +    subregion_base_addr = memory_region_get_address(mr);
+> Igor Mammedov <imammedo@redhat.com> writes:
+> 
+> > On Thu, 09 Oct 2025 16:55:54 +0200
+> > Markus Armbruster <armbru@redhat.com> wrote:
+> >  
+> >> Igor Mammedov <imammedo@redhat.com> writes:  
+> 
+> [...]
+> 
+> >> > It's likely /me who to blame for asking to invent generic
+> >> > device-set QMP command.
+> >> > I see another application (beside ARM CPU power-on/off) for it,
+> >> > PCI devices to simulate powering on/off them at runtime without
+> >> > actually removing device.    
+> >> 
+> >> I prefer generic commands over collecting ad hoc single-purpose
+> >> commands, too.  Getting the design right can be difficult.
+> >>   
+> >> > wrt command,
+> >> > I'd use only 'id' with it to identify target device
+> >> > (i.e. no template matching nor QMP path either).
+> >> > To enforce rule, what user hasn't named explicitly by providing 'id'
+> >> > isn't meant to be accessed/manged by user later on.     
+> >> 
+> >> Works well, except when we need to access / manage onboard devices.
+> >> That's still an unsolved problem.
+> >>   
+> >> > potentially we can invent specialized power_set/get command as
+> >> > an alternative if it makes design easier.
+> >> > But then we would be spawning similar commands for other things,
+> >> > where as device-set would cover it all. But then I might be
+> >> > over-complicating things by suggesting a generic approach.     
+> >> 
+> >> Unclear.
+> >> 
+> >> I feel it's best to start the design process with ensvisaged uses.  Can
+> >> you tell me a bit more about the uses you have in mind?  
+> >
+> > We have nic failover 'feature'
+> >    https://www.qemu.org/docs/master/system/virtio-net-failover.html
+> > to make it work we do abuse hotplug and that poses problem
+> > during migration, since:
+> >   - unplugging primary device releases resources (which might not be
+> >     possible to claim back in case migration failure)  
+> 
+> Serious reliability issue with no work-around.
+> 
+> >   - it's similar on destination side, where attempt to hotplug
+> >     primary might fail die to insufficient resources leaving guest
+> >     on 'degraded' virtio-net link.  
+> 
+> Obvious work-around is failing the migration.  Same as we do when we
+> can't create devices.
+> 
+> > Idea was that instead of hotplug we can power off primary device,
+> > (it will still exist and keep resources), initiate migration,
+> > and then on target do the same starting with primary fully realized
+> > but powered of (and failing migration early if it can't claim resources,
+> > safely resuming QEMU on source incl. primary link), and then guest
+> > failover driver on destination would power primary on as part of
+> > switching to primary link.  
+> 
+> I can see how power on / off makes more sense than hot plug / unplug.
+> 
+> > Above would require -device/device_add support for specifying device's
+> > power state as minimum.  
+> 
+> The obvious way to control a device's power state with -device /
+> device_add is a qdev property.  Easy enough.
+> 
+> Do we need to control a device's power state after it's created?  If I
+> understand your use case correctly, the answer is yes.  -device /
+> device_add can't do that.
 
-Any partixular reason for the temp variable?
-
-> +    return memory_region_dispatch_write(mr, offset - subregion_base_addr, data,
->                                           size_memop(len) | MO_BE,
->                                           MEMTXATTRS_UNSPECIFIED);
->   }
-> @@ -832,6 +837,7 @@ int pcistb_service_call(S390CPU *cpu, uint8_t r1, uint8_t r3, uint64_t gaddr,
->       S390PCIBusDevice *pbdev;
->       MemoryRegion *mr;
->       MemTxResult result;
-> +    hwaddr subregion_base_addr;
->       uint64_t offset;
->       int i;
->       uint32_t fh;
-> @@ -900,7 +906,8 @@ int pcistb_service_call(S390CPU *cpu, uint8_t r1, uint8_t r3, uint64_t gaddr,
->   
->       mr = pbdev->pdev->io_regions[pcias].memory;
->       mr = s390_get_subregion(mr, offset, len);
-> -    offset -= mr->addr;
-> +    subregion_base_addr = memory_region_get_address(mr);
-
-Dito
+Could you elaborate why why -device/device_add can't do that?
 
 
--- 
-Cheers
-
-David / dhildenb
+> 
+> qom-set could, but friends don't let friends use it in production.
+> 
+> Any other prior art for controlling device state at run time via QMP?
+> 
+> [...]
+> 
 
 

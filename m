@@ -4,90 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CB95CCF9E9
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 05:53:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54F54CCD1BF
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 05:55:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDz7C-0001m8-OZ; Wed, 29 Oct 2025 01:52:58 -0400
+	id 1vDz8i-0002VS-5m; Wed, 29 Oct 2025 01:54:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vDz6z-0001il-DW
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 01:52:48 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vDz8e-0002UB-1w
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 01:54:28 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vDz6r-0004L3-QB
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 01:52:44 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vDz8U-0004OE-KK
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 01:54:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761717156;
+ s=mimecast20190719; t=1761717255;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=/MBB53E6jQVTMYPCl8CTn4dnFxSZi7f//4x5EZ8PTmE=;
- b=X557WHCSo270Fscn/CmGPip/oQeXvpYbvIxStdoCZydmHhnEDsKk9lj1iKOPqSwaZGabMi
- AEw19eJfqfAHnICwVz7nugwZ/PQX7E0WeYE0FVB280pLsz/C+mLsZK8Sh+VfWNsO62fDQ0
- Uvvle8iLvAD9NWz1jfgxkx7v4/wMDCA=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=UX50O7T+6CxtK81aShDu/YtHqTLIzDtu/vk5nKaFd/E=;
+ b=dgHPAzNai45aTYKzFaeKOcn3YlFxmyhZ56dPz5Pgoaz83A2077rwzYzZHvIuTsK82Kw44a
+ dn6BrVxDfo38dLy2fESRkDvGfCR5TDrEqaoJHhZ2+lqQc5pNp8O4kKDz5HIppTfm840wVv
+ 4A83Pjs5mNnHQbheiTLVvAA5R/VnD+Y=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-179-VG6tkKLTNsmqwLjZ88sWDw-1; Wed, 29 Oct 2025 01:52:31 -0400
-X-MC-Unique: VG6tkKLTNsmqwLjZ88sWDw-1
-X-Mimecast-MFC-AGG-ID: VG6tkKLTNsmqwLjZ88sWDw_1761717150
-Received: by mail-ej1-f71.google.com with SMTP id
- a640c23a62f3a-b6d546f68a0so634048766b.1
- for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 22:52:30 -0700 (PDT)
+ us-mta-353-BcJMGl3NMtOiZCgoFqxRdw-1; Wed, 29 Oct 2025 01:54:14 -0400
+X-MC-Unique: BcJMGl3NMtOiZCgoFqxRdw-1
+X-Mimecast-MFC-AGG-ID: BcJMGl3NMtOiZCgoFqxRdw_1761717253
+Received: by mail-ej1-f69.google.com with SMTP id
+ a640c23a62f3a-b6d580e3fc3so264072566b.1
+ for <qemu-arm@nongnu.org>; Tue, 28 Oct 2025 22:54:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761717150; x=1762321950;
+ d=1e100.net; s=20230601; t=1761717253; x=1762322053;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=/MBB53E6jQVTMYPCl8CTn4dnFxSZi7f//4x5EZ8PTmE=;
- b=LOoOFDWmSjmnBS5euko/lUDr39Rsex2NJcATiMogc/XzWqNYaj8NNeKxHcym4n1PBZ
- Jzf/4BhvB4vRRM4jyEYOSnF3HPdoaS0Ar16vU/Q+o663P2E8ick1DW3pcXUd5R/ooOuY
- LFZEK8HyOwOx2o3/z0/R63hqn2+nmQ8u/trKIA42SVjm3IsQow6eX6vNhsvZdGECa3tk
- AGA0SsIzTIHLYnSWHun+3D3yBea86+UYPG/jyqFur3XJYW8NTxyMWK4qKKJQ07TZshPY
- n+ETK/sAtqY5o74ptYvx7LzSg5kxTXXuJoH0EmnKMNouydMzbfd7zS6NIGDtt/YEI8Kh
- 2sTg==
+ bh=UX50O7T+6CxtK81aShDu/YtHqTLIzDtu/vk5nKaFd/E=;
+ b=gMUj2IseS3NMk7G1Su6atWOy4kGDNTzKlZSMG7BPKceR9+RcIWxypjTe5yXru0aKFl
+ 2N7xOxQVgzdlgBi5sOqZ5BYtauxITcbJJHc5W6uHWnxh3Tm047LaJDdJmB1F9MLU7cob
+ F3qiYXqnI+tNnzoafwUk6g0IrfNoqmYlD00ujvEm7ZCEy6+qTMqaRNSs+d9OWe/gpYNn
+ EDTrEcEggjgDtvomKb4f/lfrtLHxsmnk9eE537eCGi+X3MA/dx4f3oJP24SS2QZMcu6u
+ JFw9iugRHFz3q80r9AW2cjFeG/7L6EhQVt2OPeu2QA3ds+j2hff/KVrPljM0mIQWQza+
+ cXyg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW2U5jzxXFaUxKZu5J1Rrm5JjjqKhBLueA63KvjLs5HN4YqYq96Vo4RixakE3frEk8Nh8nWD/bOWQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxgYnB7SJFlAFD/hoXfg/vOb1vD5IHuC6TefU0wu+ZnudCQ3V74
- yUVvTvdTRPJYAR+5mUeFdYrfYj98xM9me9fqXL7NIYmhR96X6QPRCtwX5xSuNIlOLvRp8ZwImPx
- 7WI05ymh4QBTaXYHr9OKzeuGFqTjeNAZwegxG3iVcapCUcZdVHVaJQUbbOuuipQ==
-X-Gm-Gg: ASbGncstli6QN2PF7zBDjaE9WNsTNNmQ5Lrapyr0YPgMEw69ciphLaFJeVuA+j3KSjj
- 1aag6RCdHyHQ9+pRi7/J/xHDd+ELYpAbduu4RGCMHTBFATXTZBxUhvoSZ4DuVBIMOoR3N8oNP05
- wcbgAX+iJYnXAZ866vx3hd881x8ACrYqcPufMqWfiNHsWbEUHfHU7J+6Z2Cdy8plJ3rQu4Ycy8D
- li6p8UyEhGXlhy5t5a6r1YgGKzLDC4ouxVgZBOscPGDGk9DED47ssfK6mQkm3wboFcFHnKAF+/q
- wEM9O4uw0ghbVc2sXxIlZYWVClK6P+wqcRz9TA90qZX+/IPY0D1LU1npSpNW9miwDBSGcEA=
-X-Received: by 2002:a17:907:3f1a:b0:b4a:d0cf:8748 with SMTP id
- a640c23a62f3a-b703d2dea85mr153961366b.13.1761717149770; 
- Tue, 28 Oct 2025 22:52:29 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFuexwD9zxE+ut76bdDfLSlj7wg0gnzJEg9pVEBn8B6WM4F/jLdP6NRGUTNpKucwyCd8eqIhQ==
-X-Received: by 2002:a17:907:3f1a:b0:b4a:d0cf:8748 with SMTP id
- a640c23a62f3a-b703d2dea85mr153958566b.13.1761717149360; 
- Tue, 28 Oct 2025 22:52:29 -0700 (PDT)
+ AJvYcCV5LMS8YM8Jy4FvOW3RFn33HFDPIBkA5L95VdncRDLC2BG0GTuxmykEKYsQc1JHJBpNeuHeZJEl5w==@nongnu.org
+X-Gm-Message-State: AOJu0YyTVPjoD0CxYvCvdmF0jQ8e5Utno81YhPQLJCS0BAtLq77OTRdw
+ 8RGBHCx9v1l2YCQd1NBodltzM4675VBR2NGIDMQDFrashdOiiEXvgHod75pWn5AB6KLou/OZ29w
+ XPBZ3o/EML672O3/1PXSpVgThZc8VTV6gLKyVlw8jWBBGxGu7mmJwzA==
+X-Gm-Gg: ASbGnctgJnMvs9mdo1cwdwvESoM5bQouCv9zSbLySnz5Dkm/uvhk7/NMZ695E9KPh4V
+ Kl7Ey0PHtyoJ4TGIBf9jdWbv1Ti625nz3JXcn/4u+7IW4ydedCQ6fHcv4o6/vgDsSW6s09WOu8N
+ mCBaRMQUPQ0Bz0ZB3aLAmUJWibw6dVDIrUj5fhKdyb8xnP40lilAWuT8JAuEijHDDSHtYKtbVRj
+ XvDTDQ55ybrXyFw8gkbJpASwBBDif4IIClzuqoq0Cx1RP09hhn84eKA2SLxZMRU1mXTM7bgSQSY
+ OEt3TMQl+JgmJ4mYZn1ge6KtMkP4Z0an4/fcDzjEkUIalJNaLE0bCa98etA9lvAmRJoXF4o=
+X-Received: by 2002:a17:907:7f05:b0:b40:b6a9:f70f with SMTP id
+ a640c23a62f3a-b703d2df135mr166788266b.4.1761717253030; 
+ Tue, 28 Oct 2025 22:54:13 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFik65qdjmueHclY9gon6Wx4R5zrHjc6TQ224JHpzE5acyhDtwvh87X29lDry6wm5gcTHGf4w==
+X-Received: by 2002:a17:907:7f05:b0:b40:b6a9:f70f with SMTP id
+ a640c23a62f3a-b703d2df135mr166786366b.4.1761717252608; 
+ Tue, 28 Oct 2025 22:54:12 -0700 (PDT)
 Received: from [192.168.0.7] ([47.64.112.33]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-63e7efb97b3sm10789660a12.30.2025.10.28.22.52.27
+ 4fb4d7f45d1cf-64043e05a5esm1201107a12.4.2025.10.28.22.54.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Oct 2025 22:52:28 -0700 (PDT)
-Message-ID: <114dfc30-6f87-4a54-8fd1-091545f07f1b@redhat.com>
-Date: Wed, 29 Oct 2025 06:52:26 +0100
+ Tue, 28 Oct 2025 22:54:11 -0700 (PDT)
+Message-ID: <179d3e89-91e5-4845-a415-a136ef36fdc3@redhat.com>
+Date: Wed, 29 Oct 2025 06:54:09 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 11/25] system/memory: Introduce
- memory_region_get_address()
+Subject: Re: [PATCH v3 01/25] hw/i386/microvm: Use proper SysBus accessors
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-ppc@nongnu.org,
  qemu-riscv@nongnu.org, qemu-block@nongnu.org,
  =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>
 References: <20251028181300.41475-1-philmd@linaro.org>
- <20251028181300.41475-12-philmd@linaro.org>
+ <20251028181300.41475-2-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -131,9 +132,9 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20251028181300.41475-12-philmd@linaro.org>
+In-Reply-To: <20251028181300.41475-2-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: GZwuSqLcBpBDHQp7WVdCZAnlFuRCmEq4U8WdZ52r_HI_1761717150
+X-Mimecast-MFC-PROC-ID: uherR6XdFtyfrkQJt5z6AqhhZ8gbICDXnK4pBhmYKYo_1761717253
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -164,17 +165,42 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 28/10/2025 19.12, Philippe Mathieu-Daudé wrote:
-> MemoryRegion::addr is private data of MemoryRegion.
-> Introduce memory_region_get_address() to get it,
-> similar to memory_region_set_address() to set it.
+> SysBusDevice::mmio[] is private data of SysBusDevice, use
+> sysbus_mmio_get_region() to access it.
 > 
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   include/system/memory.h | 7 +++++++
->   system/memory.c         | 5 +++++
->   2 files changed, 12 insertions(+)
+>   hw/i386/microvm-dt.c | 6 ++++--
+>   1 file changed, 4 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/i386/microvm-dt.c b/hw/i386/microvm-dt.c
+> index cb27dfd732e..d7f49bc1b5f 100644
+> --- a/hw/i386/microvm-dt.c
+> +++ b/hw/i386/microvm-dt.c
+> @@ -71,7 +71,8 @@ static void dt_add_virtio(MicrovmMachineState *mms, VirtIOMMIOProxy *mmio)
+>           return;
+>       }
+>   
+> -    hwaddr base = dev->mmio[0].addr;
+> +    MemoryRegion *mr = sysbus_mmio_get_region(dev, 0);
+> +    hwaddr base = mr->addr;
+>       hwaddr size = 512;
+>       unsigned index = (base - VIRTIO_MMIO_BASE) / size;
+>       uint32_t irq = mms->virtio_irq_base + index;
+> @@ -150,7 +151,8 @@ static void dt_add_pcie(MicrovmMachineState *mms)
+>   
+>   static void dt_add_ioapic(MicrovmMachineState *mms, SysBusDevice *dev)
+>   {
+> -    hwaddr base = dev->mmio[0].addr;
+> +    MemoryRegion *mr = sysbus_mmio_get_region(dev, 0);
+> +    hwaddr base = mr->addr;
+>       char *nodename;
+>       uint32_t ph;
+>       int index;
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Wouldn't it make sense to move patch 11 before this patch, and then to use 
+memory_region_get_address() here directly?
+
+  Thomas
 
 

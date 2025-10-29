@@ -4,48 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6C1ECCF9EE
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 17:14:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AFD1CCF9F0
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 17:33:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vE9kS-0004Eg-GI; Wed, 29 Oct 2025 13:14:12 -0400
+	id 1vEA3L-00029r-TG; Wed, 29 Oct 2025 13:33:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1vE9kN-0004C4-Sl; Wed, 29 Oct 2025 13:14:08 -0400
-Received: from 4.mo552.mail-out.ovh.net ([178.33.43.201])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vEA3I-00029K-4Q
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:33:40 -0400
+Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1vE9jz-0007tp-E0; Wed, 29 Oct 2025 13:14:07 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.110.43.51])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4cxYjn6Gfsz6PY1;
- Wed, 29 Oct 2025 17:13:33 +0000 (UTC)
-Received: from kaod.org (37.59.142.112) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vEA37-0002hL-LS
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:33:39 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.254.168])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4cxZ8g1zhTz5wtN;
+ Wed, 29 Oct 2025 17:33:23 +0000 (UTC)
+Received: from kaod.org (37.59.142.101) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Wed, 29 Oct
- 2025 18:13:29 +0100
+ 2025 18:33:21 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-112S0062fc5632d-2f71-445a-8394-6aa69e11570c,
+ (GARM-101G0042658c076-996f-49a8-96cc-2bcdd87ca72a,
  1C4C5A15D30C5F2C89D761F8A9BCD43732F6FBF1) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 92.184.104.153
-Message-ID: <2630c169-ff36-4ab9-97cc-a56467e3e008@kaod.org>
-Date: Wed, 29 Oct 2025 18:13:26 +0100
+X-OVh-ClientIp: 92.184.123.57
+Message-ID: <c5f916f9-8384-4870-b053-f56fb88363ef@kaod.org>
+Date: Wed, 29 Oct 2025 18:33:20 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 18/25] hw/watchdog/aspeed: Use
- memory_region_get_address()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- <qemu-devel@nongnu.org>
-CC: Mark Cave-Ayland <mark.caveayland@nutanix.com>, <qemu-ppc@nongnu.org>,
- <qemu-riscv@nongnu.org>, <qemu-block@nongnu.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- <qemu-arm@nongnu.org>, <qemu-s390x@nongnu.org>, Peter Maydell
+Subject: Re: [SPAM] [PATCH v2 16/17] hw/arm/aspeed: Promote
+ connect_serial_hds_to_uarts() to public machine API
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
-References: <20251028181300.41475-1-philmd@linaro.org>
- <20251028181300.41475-19-philmd@linaro.org>
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
+References: <20251029043710.1486573-1-jamin_lin@aspeedtech.com>
+ <20251029043710.1486573-17-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -90,35 +87,35 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251028181300.41475-19-philmd@linaro.org>
+In-Reply-To: <20251029043710.1486573-17-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.112]
-X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG8EX2.mxp5.local
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.101]
+X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: 3f70ee5e-6cfe-4562-804e-71105a359015
-X-Ovh-Tracer-Id: 5421489529146084225
+X-Ovh-Tracer-GUID: f8bea801-6d0b-4b55-aae6-7f3191be5205
+X-Ovh-Tracer-Id: 5756444751781596082
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFrlEBFEaJnAIMdOg0T3r7ccDE6CPAY9DdJHQESU6Cr/k4HORmfaUWxrctFgkkcO6Ql385Tonw6WYsjRKHSrTIMBjeIfVvcwj5IkWv5cc+hNfbj3qH5hqZGNoj/5lHFTJxuaZRdtUTQRs1XGBGMlN1FlYBaTHieBmhNe7UMWkxb2DWslPgQlMvng4CMm13oj7U3l9OsfP39iDh4HDnUrab44Vb2C1Q6pCToca03y7I5LdmqB7x0XdqGsDzwCZ/22zk8jgpNcTbBuF3BzfsaB13QduQiR0PAQBlLo8hpNnZKSZELjxp+aNpOEqC5VHZ6tOJAQvIY0cqd9jDmGo8uAzpokYiIA2hb/gMNQBS5mbZ064otzaUPmCc7j02dvdshuBedr1XWGo8CXYY6Hm7texUMvbG4JI+CqB755Kph7BE7YF6barf2s3SH6IwvI5Kt5QmAqmDtf3Z2AiJxmTAu8ZZXPlBfLVlwNEClcuRYbFAx68dEfxbfoqZHqHdtJLtv8sotUDaX0wWhjL7UEjq9PEUz5eu7B+n8bJEJYSML6RALq33hmpup51RYZQ95JX1SgsF+KUJ/MpROAlqG+xRoXJralWx13hjv/CuaOvG4HxUjbsMWHtzjWoyiNxKNkCz+XwDQ0fTTFRtZljP3JpP/fgEqxjjllqD/ztRbCNQouLNMaQ
-DKIM-Signature: a=rsa-sha256; bh=iW59dX+LWGq0xo2vVQELfd9qq2ouNwjqbPBofotZjmk=; 
+X-VR-SPAMCAUSE: dmFkZTF4DyJiOhhkeFTMdzEqjMN1tWIPW5bT4CF9E9Ioac3/Xcxe4vkyqPQUTK42Kl48Jjgr6DKHIuOx/nZETIFDMyvZKzrsQCeLYKwe9W7QmcQ0R2vaPKnkszENQ/7jAGHoI4PyiVBTu8R0LkSaOvy8KU+UeSV5j8aKn5JjuuWhkaj95pqT8uGItZ+LveKFz82lLJksn/DUQZ3ccTLcVANmJxB9tuclPAlwMvPMTisJ8ILqWcwv9eRsgKu91jwbGCf+Gd4OtvaBXseT7Yt3eoU6v/qFBT/SIuVMTqED2diBx87abcJRkZZOUo8SG2Smp/72+oOHZmIUpKQapAjW/Mxz8KZfZvT4bDPeQ78EiRA+9rKK6+aXbL9gMhIdpjZQsh//7vkZjfvQhCe2OIqgDxwwL8SHfLwsMKpghWabGLcUCNd5hhpXHYobJALUEtEwNyfEgXu2rwMASV5gQ660aTt+K/MMj/bZ2/UGVfwmtPmmkF9me6PFsU50iZF0rHnZf3aTzDNxAk56SOuJVNZQXb4+TyQPz83Q+uSJTyZ0AY3xBKfRjqDQ1DLRVofltaWUKUfuKmxtZW38dVa+oUUAhVcdCR27cYUa5akJF1gOYJYV298EbvNKxYOh/BtgZ5gCPZiUfZ1xBLyRV0R1DQL9ae/LDZqI4Nau8+t7PSNs4bkt3vn5TA
+DKIM-Signature: a=rsa-sha256; bh=L/9gwPgpYXioz66D+tEmX/kTP0W8eO0KFw2kaGmielY=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1761758014; v=1;
- b=lcnr/gEcgTwBjOthQdVZdFNeV3qvET+VrwsIb4ICqjkQ3sA7TXTceVZSjyrHWB+mVOmyVhLM
- t9Ry3e/SY4XiPdnF8TH0un9e5tffxLorgPDInOG1l7AX/EU5kt4W31PnHxBGXEU0o11oXQUAQW9
- kv9Z+1rPwtMrIMkXJmq/6PiR6rVkmaLkZYmUbaKAoSjrsgqe/Z3YD5lUyPRRE0al7u+HcrTeG0h
- M/Uv9dqjcHFuwZXv8NsKOai0mnVAzl5FNUdNtw3E1i1NbnMoHXpelV1ycbq95MvYyJCeLMVZxfi
- l/Ox4yOxCTfiDtqb5CLL8Fjx1bjU1PlMnH7BONlOYmTWA==
-Received-SPF: pass client-ip=178.33.43.201; envelope-from=clg@kaod.org;
- helo=4.mo552.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ t=1761759203; v=1;
+ b=t/d+R4YcxUsNEih514byH3hYEk46jAHTys2lb0B0rt53YyfQ4mx7DMvTPOpIHpg0zMBHRvxo
+ 22yVM5htftMnIt8YLOTUNeRMN2T6GuoHD3BCbZbgAS6yiOTzqQt7CZIByfnwGVlB8kwUADHSUa2
+ dmIwxUEWtTOcStNgYZNrUokn3suAes8WlPtOkEqjtjx7AmgTe1E9jMDj8QzA2M4CsBC17bWvvZu
+ YzC8eXRdCsBGvZforRrpwkT2ih8fzsMZh2kt/KbI7kpx52RC/6bGUyMmBlxuprN75MkevuHZp3N
+ 359wR+UHu18Hdn4Hyioub+3nf/njn8wt1NPni1ek1XqsA==
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo529.mail-out.ovh.net
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,32 +131,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/28/25 19:12, Philippe Mathieu-Daudé wrote:
-> MemoryRegion::addr is private data of MemoryRegion, use
-> memory_region_get_address() to access it.
+On 10/29/25 05:37, Jamin Lin wrote:
+> This commit promotes connect_serial_hds_to_uarts() to a public Aspeed
+> machine API, allowing board-specific implementations to use it for
+> connecting serial host devices to the SoC UARTs.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Previously, this function was declared static within aspeed.c and used
+> only internally. Making this function a public API standardizes that
+> process and avoids code duplication.
+> 
+> No functional changes.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/watchdog/wdt_aspeed.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   include/hw/arm/aspeed.h | 1 +
+>   hw/arm/aspeed.c         | 2 +-
+>   2 files changed, 2 insertions(+), 1 deletion(-)
 > 
-> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-> index 30226435efc..f842d8e973a 100644
-> --- a/hw/watchdog/wdt_aspeed.c
-> +++ b/hw/watchdog/wdt_aspeed.c
-> @@ -274,7 +274,7 @@ static void aspeed_wdt_timer_expired(void *dev)
->       }
+> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+> index 02f0ea5522..1546d2952f 100644
+> --- a/include/hw/arm/aspeed.h
+> +++ b/include/hw/arm/aspeed.h
+> @@ -70,5 +70,6 @@ void aspeed_machine_class_init_cpus_defaults(MachineClass *mc);
+>   void create_pca9552(AspeedSoCState *soc, int bus_id, int addr);
+>   I2CSlave *create_pca9554(AspeedSoCState *soc, int bus_id, int addr);
+>   void aspeed_machine_ast2600_class_emmc_init(ObjectClass *oc);
+> +void connect_serial_hds_to_uarts(AspeedMachineState *bmc);
 >   
->       qemu_log_mask(CPU_LOG_RESET, "Watchdog timer %" HWADDR_PRIx " expired.\n",
-> -                  s->iomem.addr);
-> +                  memory_region_get_address(&s->iomem));
->       watchdog_perform_action();
->       timer_del(s->timer);
+>   #endif
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index fc37f48802..c5e8a0608d 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -117,7 +117,7 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, bool emmc,
+>                                  &error_fatal);
 >   }
+>   
+> -static void connect_serial_hds_to_uarts(AspeedMachineState *bmc)
+> +void connect_serial_hds_to_uarts(AspeedMachineState *bmc)
+>   {
+>       AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
+>       AspeedSoCState *s = bmc->soc;
 
 
+Please add an 'aspeed_' prefix and consider documentation.
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 

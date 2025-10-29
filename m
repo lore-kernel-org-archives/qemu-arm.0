@@ -4,94 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53027CCF9EB
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 13:14:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6824CCCF9EB
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 13:19:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vE60C-00031W-G1; Wed, 29 Oct 2025 09:14:12 -0400
+	id 1vE64i-0004Na-PG; Wed, 29 Oct 2025 09:18:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vE60B-00031K-LJ
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:14:11 -0400
-Received: from mail-io1-xd2f.google.com ([2607:f8b0:4864:20::d2f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vE64h-0004Mx-CV
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:18:51 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vE608-0006u7-Aw
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:14:11 -0400
-Received: by mail-io1-xd2f.google.com with SMTP id
- ca18e2360f4ac-9459db1337cso430162839f.0
- for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 06:14:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vE64b-0007Ot-T0
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:18:51 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-4770c34ca8eso33433245e9.0
+ for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 06:18:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761743641; x=1762348441; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
+ d=linaro.org; s=google; t=1761743920; x=1762348720; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=8CwDeQgHWOU78qj3vwExfKImRfRzicchWo0CiASgO6U=;
- b=Ewc81KU4qA96UNEZJ31UPfNjialmkR9ypklbFfonU8tVhmVCz6xGQh5yKki8bnia1n
- dg1yk/6rUz1L1GTgZrMRQlNIvZD4UySCNR3WK6YkqmSJ3c10sfwufxpeHkMamLklY4FZ
- +mJcVpyBMMRZVItVUtQlefp9pAnQdg92t3lOMBr3eDKlB4wTVqAfLOtZt7rt1sb0Hny4
- kB8kcM6knlPW+J3HW99vcw3MwuwcJxs+h2Pki7ADLi4yRvGFIr7orfaWHAvyXUhkyira
- 2YIJJ2Xx5Hbogn8iJoN7p3vKSIgMUCsS9DpBkQUZY+ahm/wU+WDpqHhLfqazPIiJTAQ6
- gUBw==
+ bh=bbBhe7Jqme4xLw7q/N3DTDLYkblUqkjEodwvETnzT40=;
+ b=j4uYM9/nRk5RqmYgsMCxUY7VR/1V1NBHs04eDhSRxgbP9Wq5E3pfXTZ2sBZf5KQxNw
+ nNmnW73MrdM3fmAFqUKbYbVQLIbNRBLTpHeYqaqTSGlxh70RKUbLrFHpU/EYbcKqAZ82
+ t2peRHdrFrmN/kn1x+ad1wNrDGWIo36iT28hrJ1GloIVg4o5JVjU58t/v6UmBSzhoAXz
+ 0OTKCmpquZULDb07h71NuXy+60w9YtIfFRDfbWvvtWlsyZPFJ/nx0ETw6XE6ghVy0u9F
+ +APmWXXLQRF1b6v5+CYzWCPP/0MzNUwLGo1iYkbjKKGLApE608maZEmrUGq0FCOTXQhV
+ cf3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761743641; x=1762348441;
- h=content-transfer-encoding:in-reply-to:content-language:from
+ d=1e100.net; s=20230601; t=1761743920; x=1762348720;
+ h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=8CwDeQgHWOU78qj3vwExfKImRfRzicchWo0CiASgO6U=;
- b=OzvKfKG5uyZdoqLPfiygYW+BXsSfT3ReK/OATLGjpapspZKp1dBO60UoiJKDM8Zr/i
- OFk6YBJFS0YYPhppNgUSBwKdgqpPjx3cHuJINTXxuoKw+cNYiG25cBPXhWzFocAJn7TD
- i/iziyRm3kLej2WX4o3AYtrOSFDMyw352ETIJ/+e1tvPnCFrvPTnsp4aeiZM5d0YLg0N
- R/u4SZWoSujAN+aK0Q6TWBa3ZR7Dg+fkqhcRubhOioOebxJrBwTktvO4ifdBSfpG9BKx
- OELw7FjjWPhRXs7wG3xQe8CvwEeyuDnsrk5xwlL26LhSdG8oJOOSxim6XsAmJ/o4k4Nm
- 4Jlg==
+ bh=bbBhe7Jqme4xLw7q/N3DTDLYkblUqkjEodwvETnzT40=;
+ b=Ff5XfCer/rEqbTRg850J5JIdxBAFw+mt6fL7QuX4FC+w9jfYcqV5T8JWg7s0Jx9iGr
+ +2ATIf7SVCMke0oaxM7n9xLz2Z6FAfJOoTQkKZz6NUmkBhzNPSr4zse11P06pyCQB9/7
+ 5kYkPAW1uKs0rXBYCsT2ql/vqR7UWhLacIX/wPtPao+P1OIisshVJ3mlYPWexnF5dpwe
+ mJJRy2ONTs5goc/jo9OWkcstUFa7k79UwnlaMLS6xvxnSwbY+jCkB0FwMC2n8PedeQbV
+ 28mAbIHoINj84b727rlcSPOlNcGSNT7SGy9Vc5h0/WSFdb/wkiTWott8VU/5vry7ZF0S
+ xMnQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWu6t4am0QU0x9JpKpGIFLQ80PTif8tL+zCzwaGNwd6mS7hoveolSuy8c12JT2iCjqWSYR0fMZG+w==@nongnu.org
-X-Gm-Message-State: AOJu0YzpRDD51FwaIwJ6m2AM+6IWIOka6THi9wcW3vK+ZXxnC5jJeVML
- jzM/oyoga4FZjqd6KGBF2dhRmJWKS6Y8RN4hI43pp1ZkmTPekEjo31Ge3Cy5B0rBBtw=
-X-Gm-Gg: ASbGncsS+CySOfWWO6S3yR3+O3dtpk31IoDEbOuxfFxqubQNwZWwIFYM/E/Ti8cbxgA
- NzvNvxa15NjWvhU0fZBFlyHjKgV733Ozm4IRmQ4HCgleTfOqL/ET3NSdCz0Az7P/cwroJ70+AEf
- EJF8WNVdwy4DD3Jkwdmqtz2Gg/vdOAmPXikVCndcK4OHLd4SzYiccy3ED5QNlt5QEQpfp9dCAmT
- TsnLkfZjKdHJCSJpQCkJ/zBmlmFoI0puotHcLdqY2oetABiEHX0RtuE3F8VtCMlillbYcJqYI1k
- sQa1zlmXXQ0fkpfmd1A/XfIgOKRjViN/R6/kC8FApX+gZx5X6H9P3GYF6FEbg7LlTlzK1/p3lfR
- okQ6/8G9ls7kMcpRoJtXccdx1IKVf9EXPd2TtlNSQao95XTA0jBU6ey+bT+UuQzAfEWZdGK7X3z
- pyg7OgfD4LC06GoRIMMiKii7+untBRUwUze/8O/lHHHuAMyOjP0Zpe1i8Adgs8bFjf/A==
-X-Google-Smtp-Source: AGHT+IEWvN7p+//FBA0ZWuYE/ju84/9e7kbleh7+rVusIpr2gqwtw5rmDBj/w5lml3Dwrmd+cYa4fw==
-X-Received: by 2002:a05:6602:6088:b0:940:d6df:3b19 with SMTP id
- ca18e2360f4ac-945c97a0686mr416324639f.12.1761743640638; 
- Wed, 29 Oct 2025 06:14:00 -0700 (PDT)
-Received: from [10.240.88.227] ([172.56.16.75])
- by smtp.gmail.com with ESMTPSA id
- 8926c6da1cb9f-5aea78e2fd4sm5585459173.26.2025.10.29.06.13.59
+ AJvYcCXx7oIHS+A4t2dGeABCnSnOqo6s8KavcW8mmcH+FFcemJLshRjnytxlJHYvG/qm3i88pJEvVPNULQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyxQ5QyRu8xRbwalyxC56WQlSBVSvdzEZFbFa6fq74AhQR/aPMl
+ xGkBdLzM8zKADj3wg7Anw2lQUbgXqilYizLkck9PgZWYAbkEkfEUOJCNS5LDgh43K04=
+X-Gm-Gg: ASbGncsGD3r3E7ryAaDtbe2cBIhwsZQ77UZqAcC8+2PD7Rv4X9oApvypAtYI00cKQ/N
+ /eAEBMSH2uCEhkpkRufSTmxz/TkrdToJShBQpBwn9pabIwmbAVPwL/PIAlFvBuLy8lkEYc2fLob
+ P40QGJSuzAO37S9gUysf00uDqfmIDIO4jNE7IcVNiREnf3UM1GxgObuw4KQoc5yMjHOeWEWq1dC
+ HyVBA95DKIxQ2EXE6+rgXKf89Po5orq6yzAdxIl73EyF/c+5eoVEF189zMCJPZYTuNRmpmvarq9
+ S00yRD7HVY5EHr/iUwOerFsyw+YvbCjv8dEfpuLpGFfA1eInLs0hFKoPAyw99grVXZSSMR1LGJa
+ 9/cXJxIylL9HK+e0SHIzDwxkfzDIU+vm4iWWPpF4CVhsZQUpDbx27tEzsWSmos258coI1enCrtO
+ Kmxt6Qy/2V+5hfVmSMldoWSUP5yRqZOU1cg/uFLvM8n7g=
+X-Google-Smtp-Source: AGHT+IEMBHugsNYOma8f2/rsZ6jwMDfJvaKdC7qaYRPPFatsYFYUZNyqOyrnr5aU+Wuff07IpogmmQ==
+X-Received: by 2002:a05:600c:6818:b0:46f:b42e:e3a0 with SMTP id
+ 5b1f17b1804b1-4771e3df22fmr24017395e9.41.1761743920557; 
+ Wed, 29 Oct 2025 06:18:40 -0700 (PDT)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-429952db9c6sm26820345f8f.36.2025.10.29.06.18.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Oct 2025 06:14:00 -0700 (PDT)
-Message-ID: <3cdafcc5-dc91-4612-b53b-8b6ad92de7b2@linaro.org>
-Date: Wed, 29 Oct 2025 14:13:56 +0100
+ Wed, 29 Oct 2025 06:18:39 -0700 (PDT)
+Message-ID: <99870dc8-830c-4ce9-a25a-5aa7c47e074f@linaro.org>
+Date: Wed, 29 Oct 2025 14:18:38 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 24/37] target/arm: Use flush_if_asid_change in
- vmsa_ttbr_write
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20251014200718.422022-1-richard.henderson@linaro.org>
- <20251014200718.422022-25-richard.henderson@linaro.org>
- <CAFEAcA83Tgv5CV+EjMDemEb5FQkfAj0en7dq1g4JkxHZ1kKOdQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [PATCH v3 16/25] hw/s390x: Use memory_region_get_address()
+To: David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org
+Cc: Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, qemu-block@nongnu.org,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>
+References: <20251028181300.41475-1-philmd@linaro.org>
+ <20251028181300.41475-17-philmd@linaro.org>
+ <f99989f4-88bd-4167-b9e3-fe4a249a2c99@redhat.com>
 Content-Language: en-US
-In-Reply-To: <CAFEAcA83Tgv5CV+EjMDemEb5FQkfAj0en7dq1g4JkxHZ1kKOdQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <f99989f4-88bd-4167-b9e3-fe4a249a2c99@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2f;
- envelope-from=richard.henderson@linaro.org; helo=mail-io1-xd2f.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,55 +113,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/20/25 16:08, Peter Maydell wrote:
-> On Tue, 14 Oct 2025 at 21:17, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> Only flush the subset of tlbs that are affected by the ttbr
->> register to which we are writing.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   target/arm/helper.c | 19 ++++++++++++++-----
->>   1 file changed, 14 insertions(+), 5 deletions(-)
->>
->> diff --git a/target/arm/helper.c b/target/arm/helper.c
->> index c6d290ce7c..2b55e219c2 100644
->> --- a/target/arm/helper.c
->> +++ b/target/arm/helper.c
->> @@ -2943,11 +2943,20 @@ static void flush_if_asid_change(CPUARMState *env, const ARMCPRegInfo *ri,
->>   static void vmsa_ttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
->>                               uint64_t value)
->>   {
->> -    /* If the ASID changes (with a 64-bit write), we must flush the TLB.  */
->> -    if (cpreg_field_type(ri) == MO_64 &&
->> -        extract64(raw_read(env, ri) ^ value, 48, 16) != 0) {
->> -        ARMCPU *cpu = env_archcpu(env);
->> -        tlb_flush(CPU(cpu));
->> +    /*
->> +     * If the ASID changes (with a 64-bit write), we must flush the TLB.
->> +     * The non-secure ttbr registers affect the EL1 regime;
->> +     * the secure ttbr registers affect the AA32 EL3 regime.
->> +     */
->> +    if (cpreg_field_type(ri) == MO_64) {
->> +        flush_if_asid_change(env, ri, value,
->> +                             ri->secure & ARM_CP_SECSTATE_S
->> +                             ? (ARMMMUIdxBit_E30_0 |
->> +                                ARMMMUIdxBit_E30_3_PAN |
->> +                                ARMMMUIdxBit_E3)
->> +                             : (ARMMMUIdxBit_E10_1 |
->> +                                ARMMMUIdxBit_E10_1_PAN |
->> +                                ARMMMUIdxBit_E10_0));
->>       }
+On 29/10/25 09:28, David Hildenbrand wrote:
 > 
-> What's the value of ri->secure here for the case where EL3 is
-> AArch64 and we're in Secure EL1 at AArch32 ?
+>> @@ -510,11 +514,12 @@ static MemTxResult 
+>> zpci_write_bar(S390PCIBusDevice *pbdev, uint8_t pcias,
+>>                                     uint64_t offset, uint64_t data, 
+>> uint8_t len)
+>>   {
+>>       MemoryRegion *mr;
+>> +    hwaddr subregion_base_addr;
+>>       mr = pbdev->pdev->io_regions[pcias].memory;
+>>       mr = s390_get_subregion(mr, offset, len);
+>> -    offset -= mr->addr;
+>> -    return memory_region_dispatch_write(mr, offset, data,
+>> +    subregion_base_addr = memory_region_get_address(mr);
+> 
+> Any partixular reason for the temp variable?
 
-Um.. the state of the cpu doesn't apply.
-ri->secure is true only for TTBR[01]_S.
+To fit the 72-80 chars per line limit. Since various people
+asked the same, I'll just replace in place, ignoring the
+checkpatch.pl warnings.
 
-I'm not sure what the question is?
+> 
+>> +    return memory_region_dispatch_write(mr, offset - 
+>> subregion_base_addr, data,
+>>                                           size_memop(len) | MO_BE,
+>>                                           MEMTXATTRS_UNSPECIFIED);
+>>   }
+>> @@ -832,6 +837,7 @@ int pcistb_service_call(S390CPU *cpu, uint8_t r1, 
+>> uint8_t r3, uint64_t gaddr,
+>>       S390PCIBusDevice *pbdev;
+>>       MemoryRegion *mr;
+>>       MemTxResult result;
+>> +    hwaddr subregion_base_addr;
+>>       uint64_t offset;
+>>       int i;
+>>       uint32_t fh;
+>> @@ -900,7 +906,8 @@ int pcistb_service_call(S390CPU *cpu, uint8_t r1, 
+>> uint8_t r3, uint64_t gaddr,
+>>       mr = pbdev->pdev->io_regions[pcias].memory;
+>>       mr = s390_get_subregion(mr, offset, len);
+>> -    offset -= mr->addr;
+>> +    subregion_base_addr = memory_region_get_address(mr);
+> 
+> Dito
+> 
+> 
 
-
-r~
 

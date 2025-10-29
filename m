@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BD13CCF9EB
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 13:49:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8568CCF9EB
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 13:50:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vE6Y7-0007pz-58; Wed, 29 Oct 2025 09:49:15 -0400
+	id 1vE6Yc-00087z-3j; Wed, 29 Oct 2025 09:49:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vE6Xi-0007hU-VX
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:48:55 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vE6YZ-00086o-58
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:49:44 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vE6Xb-0003dI-SF
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:48:50 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-475dd54d7cdso18169505e9.1
- for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 06:48:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vE6YS-0003qe-Ew
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:49:42 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-471b80b994bso99800745e9.3
+ for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 06:49:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761745717; x=1762350517; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761745773; x=1762350573; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=fTMVR8gw3EuZ3Za34lHf85PKBf7x5FlDWGpsot4bzmM=;
- b=XkFjobWO4Qdk9gOfj7L99h7Q6CyliBJ4QLNqplvS4N/OrHbuNqoFGx+besFd4QHdi5
- p9Y49n437qDFzuquLgPhThV65oYSRTOIQX07nsPzBnbthSQDhgjLGwpB9+P/0+19zSOJ
- zDkwEfWAZQEP9tPGQxquEKkhrHyISMoYypdhE1ogiZc6DHxm3BPNqM/NMYqRDcm9hndl
- 2Xpu+erTwvcwOBWsDWiEEVjpBcM8ExvKmXD0ifBjpi3Xi8Qp9ZNBH3Hqkur5a2NTxDGC
- ZBnfh0ZaGyOC4SLj7H8TRFIfCBwqrkh1vZr5n1n40Q8uNrwATUvsuCzORQESmEYHgzDq
- odxQ==
+ bh=bFG8gwDo2dMIA+dlMTwwaXhTvZBM52R0Qxu7TU/qj7Q=;
+ b=JwlKJb1385LKVKX49BazKQkAlRfYkCeGY0m6YCstsqRkPd2FsB8BmJiuOxOzk9FvfR
+ HoGbACF5zeuhAl2risDhg9YccHTPmZooRe5I5BjsQsmZr5v53onBegQ6O4KaSzKbZAIs
+ 4vvQeJkq8wSEcXtpv6jcHBHaCovfmC+DbiGQJKb40LTwvtN0FVS5HOmDCCiwx9rL3FpU
+ kv824BKVpb6J/Sqha9AHezR04spmWeQ+iBACGmrMs+CeUmt9RY/cmKP0W1oLLmHqZQ8E
+ Q0SCz9d5cZ/S1vvPV4BnL0drP9WSUqwgaeEZbuJGI6IZG4eYX4nJquBQ+HYQ0MuIOXbX
+ 6IRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761745717; x=1762350517;
+ d=1e100.net; s=20230601; t=1761745773; x=1762350573;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=fTMVR8gw3EuZ3Za34lHf85PKBf7x5FlDWGpsot4bzmM=;
- b=VlNN66CH8GLWDp4fky0FfsICJP+v/VwwWb22Y90fcDSH3GVg2OZFDAnZn1D92bDmxo
- p3T22Kw97nHaEJjTEF+aRojlKapMdmTjdQ1Ns7S8nD0mhG94dFRGGsWxRGO8ISfslEuL
- LSGCS41yFUPsU0YiYsU5mRhBBQydylNi2eqn15P/CLYW7FdvkLimLVIfqR+3xIoWwl8J
- qj9OTk17Re789Xr9sZCqcDYPqNrisYhq0dBSAmCym7AbP/lUfevbWDNhdad6wIgVw436
- gu2WI0+X4QkUubxtyxPQvhmbWW1s6fezaV+446iMfkcZYQ91fVBmCt13ZusTnsTnV/1F
- znXw==
+ bh=bFG8gwDo2dMIA+dlMTwwaXhTvZBM52R0Qxu7TU/qj7Q=;
+ b=TbGhbs/mqfgxbeFpQP03BhLUN4BLHRtVpqkjTwXUh8+8ZrFT8XsTyNIWbeOSqI9hr+
+ RHotIc7WlZfBnQF7SJM8aHJTtMQwhNhszv6Av1zSHsbSVTlMA0PkhVY9gErzOmoSayok
+ g7r1VFIK8U1MBCQVfxc4Rj+T893VQRliddNbzM7J5ehcuz3HdnLyxiFn6EKEsT08a4eb
+ zhSU8LAHojj6Dx8o1ic6HpTY9HRc6sBJy6UUt/rbt3FI6n8ZEZMzI2EEGryLTUIUjzzD
+ /RN6+Lcjp2/gQihy8RezyamUbmY2z+/rSQLZyes/qNhdFzr7uxgMCoe7P3wO+EcG7lnL
+ ipRw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVaJxAlrOzUxYqid6x+yGwsoiu0qpstFc09KXC/3R0mp3REBLWbF9VblqjtjHjw3jv2eA1lDiUpnw==@nongnu.org
-X-Gm-Message-State: AOJu0Yyxq4KYElFgQDYPzw3U0tATb+XBciLZoxmtPbX4xpBURI4cWMu9
- mSOLtJmDtASQiAtrn50hUz8uMnzwd9XFNyf2k8uNTcieWyjavrnoJ+pyNoKnn4bb6y4=
-X-Gm-Gg: ASbGncuT12Kw5mEc+6JtmKZUklEIl6+d437E3NvTKDOgZLbeM51NLZLmVLCEYz2oJEh
- h8C4Zmb9UaatBACHpGPqJp61DXtLdim1nh+X1bTPpQtAaICIEpDOW1isodHcnetZqWhh3b91Ynr
- HTvhy890fGU7+26oEHwQFPr6yzlGN1W6Nwlk/VM/p+0p9w5pjxW5stztJZQee3GtJunlZWXkVnZ
- Jo5teOWd0C+ssSDfvn4hmiQ1azDonHXnI8jC7cxU/bfDYWQ+mY2806Z66Lnzj+ZxI8vtO6SYO9X
- ooh0KFF7Hf4tgDQmHddZrXaQzJPM6EthrAqpwQfmXPbPvd8FjUvWZSpmby0eaS0uD45kx0XcaWe
- cZKCHotYAND/Sd8yW8kH/BTPiT6jXq8FWqsmGH9fP8FRv/2cifodsCztICsUw8m9KO78bbgOBvM
- 30DnYOlvxULXFok/NTCEAC+xgAlQOZf2iZugHPiBt3KJw=
-X-Google-Smtp-Source: AGHT+IEE4OerG0k8FqsWudZC+pY8KvgGj74uKL0ULy4gArPNCrKvEZ+60g57Yp+UyWKoksKXPKE+tA==
-X-Received: by 2002:a05:600c:608e:b0:46e:4a13:e6c6 with SMTP id
- 5b1f17b1804b1-4771e3f0102mr32000785e9.19.1761745717216; 
- Wed, 29 Oct 2025 06:48:37 -0700 (PDT)
+ AJvYcCX5UHMawnrzgf5ml4nEK0PrU8IgqOsGw+s0C93YkzlZ99s31R31KMcuNGsGNXMTxGRCJ1HF2O2nxQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yz6iO4Ue9T5pPrFldSK6q5u5VitycHqHbZUzHHHs896NiF1znfH
+ yLnX3tFb/4bGMMrzSmJVoguvo2uoTWmh1Ja+VLfFcRgO1wwPuMHq2Tp1mKEDKI4/Lc8=
+X-Gm-Gg: ASbGncvrLXhZRBHpP+CeL9j9ojrI1cRgVVhePKsnFmGcwE0Q5nAIm61mBKJrJduoOir
+ Bz7TXCXrm8an6w7wDv0vW/czVyc2xt78XItjnvmAKzRD5NjazQrLU130EhoN2XNWw8V+Vq/nYUx
+ kWWAxkU7cyblgAAWdbHCY1zX3WHfvSeJWVu2Btrq8iNh/t2gL7KuHDU4mxBgJ6pTx/c4QY0HDY0
+ 2YMZyzHpNIoYv8NKo7EAfLnbmxeRIkaXn15IYNbuhITeB0ETOUSwkwFWtfsT/7NDNvkXWHwreLA
+ gcOT3or5vZgHr46Jtt4nROnHvxFNjoefKTHjDKdobXo500bBUlhH9x0kgxSUg1WYl0hOrbzpvq8
+ qPTur7BIUntJJjltPjUw3KeoawYg7Qs33WI9lyUroG+zDz3HcGSZuy99WIz6xY4P0qGLYo3oFVs
+ ZoG6Ros3sf+yOfyIbATxs5rBNtcRuH7tZ5KHv9vkOw1ew=
+X-Google-Smtp-Source: AGHT+IGW7vqGhnc32I0Hvi6ZMqV8kemWcyz0ay9PLO7I7j3Jy5wubYCgZ12VZOnfsmtjMwQ8zfCklQ==
+X-Received: by 2002:a05:600c:a087:b0:477:58:7cf4 with SMTP id
+ 5b1f17b1804b1-4771e16e3a3mr28569825e9.4.1761745772558; 
+ Wed, 29 Oct 2025 06:49:32 -0700 (PDT)
 Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4771e39380dsm47474515e9.7.2025.10.29.06.48.35
+ 5b1f17b1804b1-47718427409sm45422115e9.1.2025.10.29.06.49.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Oct 2025 06:48:36 -0700 (PDT)
-Message-ID: <ba89ca04-c4fa-4181-80ee-ec74b8a4da37@linaro.org>
-Date: Wed, 29 Oct 2025 14:48:35 +0100
+ Wed, 29 Oct 2025 06:49:31 -0700 (PDT)
+Message-ID: <fbdafda9-642d-4010-a9c4-881189065ea0@linaro.org>
+Date: Wed, 29 Oct 2025 14:49:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 20/35] audio: initialize card_head during object init
+Subject: Re: [PATCH v3 26/35] audio: rename AudioState -> AudioBackend
 Content-Language: en-US
 To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
 Cc: Alexandre Ratchov <alex@caoua.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
@@ -91,13 +91,13 @@ Cc: Alexandre Ratchov <alex@caoua.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
 References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
- <20251027151045.2863176-21-marcandre.lureau@redhat.com>
+ <20251027151045.2863176-27-marcandre.lureau@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251027151045.2863176-21-marcandre.lureau@redhat.com>
+In-Reply-To: <20251027151045.2863176-27-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,10 +123,33 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 27/10/25 16:10, marcandre.lureau@redhat.com wrote:
 > From: Marc-André Lureau <marcandre.lureau@redhat.com>
 > 
+> Naming is hard. But in general in QEMU, a host "backend" is the term
+> used to fullfill the request made by the device or frontend.
+> 
+> AudioBackend will become an abstract base class in a follow-up series.
+> 
+> Currently the frontend is QEMUSoundCard, we are going to drop that next.
+> 
+> Note that "audiodev" is the corresponding QAPI type name (or configuration).
+> 
 > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 > ---
->   audio/audio.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   audio/audio.h                    | 16 +++---
+>   audio/audio_int.h                | 20 +++----
+>   audio/audio_template.h           | 20 +++----
+>   ui/vnc.h                         |  2 +-
+>   audio/alsaaudio.c                |  2 +-
+>   audio/audio-hmp-cmds.c           |  2 +-
+>   audio/audio.c                    | 90 ++++++++++++++++----------------
+>   audio/dbusaudio.c                |  8 +--
+>   audio/ossaudio.c                 |  4 +-
+>   audio/wavcapture.c               |  2 +-
+>   hw/audio/pcspk.c                 |  2 +-
+>   hw/core/machine.c                |  2 +-
+>   hw/core/qdev-properties-system.c |  6 +--
+>   ui/dbus.c                        |  8 +--
+>   ui/vnc.c                         | 10 ++--
+>   15 files changed, 97 insertions(+), 97 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F1EECCF9F0
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 17:10:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99AC0CCF9F7
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 17:10:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vE9gM-0005dl-Cz; Wed, 29 Oct 2025 13:09:58 -0400
+	id 1vE9ft-0005LI-8k; Wed, 29 Oct 2025 13:09:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vE9gK-0005d8-GA
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:09:56 -0400
-Received: from 6.mo548.mail-out.ovh.net ([188.165.58.48])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vE9fq-0005Gk-IH
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:09:26 -0400
+Received: from 7.mo552.mail-out.ovh.net ([188.165.59.253])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vE9gB-0006yz-Lo
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:09:56 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.110.37.14])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4cxYdL6tk8z5yFC;
- Wed, 29 Oct 2025 17:09:42 +0000 (UTC)
-Received: from kaod.org (37.59.142.106) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vE9fl-0006t4-Ln
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:09:26 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.231.234])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4cxYcn6zVZz6PXF;
+ Wed, 29 Oct 2025 17:09:13 +0000 (UTC)
+Received: from kaod.org (37.59.142.105) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Wed, 29 Oct
- 2025 18:09:39 +0100
+ 2025 18:09:11 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-106R0061be39716-26fd-4231-8f62-553c70b8665e,
+ (GARM-105G0067f123388-2675-4696-9e3b-1f8ae28c5b50,
  1C4C5A15D30C5F2C89D761F8A9BCD43732F6FBF1) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 92.184.104.153
-Message-ID: <10087d38-6c73-454b-9425-51d74077c35a@kaod.org>
-Date: Wed, 29 Oct 2025 18:09:39 +0100
+Message-ID: <2db09441-b13b-47ec-b269-5fdf36da858e@kaod.org>
+Date: Wed, 29 Oct 2025 18:09:09 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Subject: Re: [SPAM] [PATCH v1 08/13] hw/arm/aspeed: Split YosemiteV2 machine
- into a separate source file for maintainability
+Subject: Re: [SPAM] [PATCH v1 04/13] hw/arm/aspeed: Make create_pca9554()
+ available for use by other Aspeed machines
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
@@ -43,7 +43,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
 References: <20251023100150.295370-1-jamin_lin@aspeedtech.com>
- <20251023100150.295370-9-jamin_lin@aspeedtech.com>
+ <20251023100150.295370-5-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -87,27 +87,27 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251023100150.295370-9-jamin_lin@aspeedtech.com>
+In-Reply-To: <20251023100150.295370-5-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.106]
-X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG8EX2.mxp5.local
+X-Originating-IP: [37.59.142.105]
+X-ClientProxiedBy: DAG1EX2.mxp5.local (172.16.2.2) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: e283bf11-6fb3-4a29-afdb-c7c6f8c4bfa5
-X-Ovh-Tracer-Id: 5356468809033747378
+X-Ovh-Tracer-GUID: ffa8c5b2-e322-45c5-9b2a-918f5e246948
+X-Ovh-Tracer-Id: 5348306034841455538
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGvqICiuChEvCHRDpMcNOLDxJaHqbe5F0x1ZmQ+idEGrrtQUHJoxGU579WKuvCmhuR6+SFAA0znV6rhdPGfYAdnkfOYRkFWg5GHtZYcpVambL1MBPj1HGIXYRxRglk0Cxobc6+nJG6p08UeNFDcqT1NysoUKpd4Pw++G72d2URPlmPk9H9VkQqiSUnlDVYA54nP22LpGou160umQ9FHl5l3/RH626ZNIy4rTNtftvqcHlmqvygY9jcWmY2aIXsmtxvh/QPcCeJmhBRxgITnoK/ffEQ2oxrT4VAMPm/j9SwvzPIUjnp+AC++01LPLdxTvEzyhH6y3nm6VQM3/x3eA4+3Gx8AJcm9Ht/ZFm77pR04VT6cwkmFQclJg08ia4ruaDpHMTuP9eSo5M9DPoTLXAsoB/uJPqV7GeGXRE8jh6JKtZ0dyj7VoSFAU89DKyjadkMovShFiSVegd0S/LpJ0+dfOF1E6or/QPq/SKMa9+MSMhLhPLryEXNPK0ENQe2xGpVJskNbVgodWPpTI3jehBiO/9030qFgm0JhHiYf/IExUhOjV5b4prrYHr+19oG71JCBedHZf9NNn0eMJmn7A2rbG/OKbmeh7cf5rfi9FPlGPgk/tSU7BkmA2HRtqa8ZUvvEXPurD/qxSOneA/SCDU/PZGtAqDVL5P0zWfaXeoFVBQ
-DKIM-Signature: a=rsa-sha256; bh=YyFZM9BZMhbrt1fxTXi3eVYQ5psdGR9P8AbORIKGTNY=; 
+X-VR-SPAMCAUSE: dmFkZTGKmpEiFvpSjmg8NB87fP2zMCjlQ5aIaVcJ0olTAjSj21mZENFIQcLk17FhzR47KS8LgsnK48P6Ix8BDziBxtEQIcenzHT1afTRHnOjjP1YQn9mPC5Z4v4lFoXse17yd1RWBZojCCJvkZkQ9JUxqKwrzyJBMlsA6/763rer9KMcT4G/0huPo5NMgbwtaotnbpaOwFUb3CX7DKj6HGrDmV0z9JGNfZl5CPiP7HgOUFRyZ5vsjmvPUsl3DbBJnMg7x7Mydxf7WPgVnPl+JYwdYSbXKbY2R2qnUjpC930H69/m/Fm8eHC9bGMTknN+BS3aGgv3DJP/T+sHnAatSZNovAUHobv8Y+9GK0FK3OuRrswkidrqhmxaHiisQVIlus+3PUiljBh1/CCRHAB/fTq/Ebn251YU9EyErvtIuAKfUrWSZ6/D2ZdLEnXDzJksTZH702DJI5sM+Pbme9MULI8r0eFp4S3BNJq6yff6IEf7tK3TKhNLaWOk5Fs1SPXlBOYplTIWb/TjMrjoiN6iXpMCSOiFFPeTw80gn3IFUebmYjEho2vXrsXqRRuLJcjoeoQI/N3rYj35yE8ob1HI5gG9DUF8G3mTC4Thk/8Kd4YD+Mcbht0sgdr7I/YU+9UdvfnC2nRvqmef/QV1XsEZh2acLeZg0YTBPdqSgD26uG3grnqWAQ
+DKIM-Signature: a=rsa-sha256; bh=+sGVYEMTbdfPFdDXn3aK+77QN/qNb0SpPmD1sq3pxAg=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1761757783; v=1;
- b=WnAlKFGtw8w6QH+z5Uo3gL9aykUYTDX6JaNRsaBR+M3uy+O/pkbGt7m753rjhoD5oN64KMLY
- eNvtObHaY7s1VpWReftlz8wNyTc28Wvxi9RGSY8+hkCNNyf6XYby11AP+taoVZuukKtcpYNS+/q
- pMh9MidPVpQV+mPWArRY/bK6YkYUOtxmB0jWk4JCJ4CvFXJTuiAzXe7bd0jK9leMDFQ/6pVJA9V
- tQeXt7RCecAMD6BICElgBZncFcz/tnhcWhbWELi3RsqCTucJG2IyyDTGhZObxtC/yC6M8lp8KFe
- RpdH1DKiJojdggpK2qFgjgGvHwvstyg91NePQN9Wyc0vg==
-Received-SPF: pass client-ip=188.165.58.48; envelope-from=clg@kaod.org;
- helo=6.mo548.mail-out.ovh.net
+ t=1761757754; v=1;
+ b=gZuLN72ggYU4o/SBFCDX0Wq9bOE/c1gQodTMcDhN4MrBnguAUxnXpZf1Kjs8JttKQJj6q3lJ
+ 8IrX5HdEw3o8y7e9SbnFKoE6UGEungquoo58AkR0b/MtvMZCvUW43BtfND8WI1t6A8TX7SGAqNa
+ S9itpjtyHOI7p2lAmqDJNX4tmaNzj/Kq8E5Vg8OemPY1S7j3E5kJWQ4CIvU7Q8kP9zfiEBtMPGi
+ r30BfmliGgqnT2PosgIr/3hjZq8Z4Z/Fsty2Fu3e2uPxAES0B+3vNxXjN7odEEKFj4lkwnKr/kW
+ hkLYGefc8+LjkjGlbKiWTOO3hVgvNLbWP+Q5ElniSD5Xg==
+Received-SPF: pass client-ip=188.165.59.253; envelope-from=clg@kaod.org;
+ helo=7.mo552.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,50 +132,59 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 10/23/25 12:01, Jamin Lin wrote:
-> This commit moves the YosemiteV2 BMC machine implementation from
-> aspeed.c into a new standalone file aspeed_ast2500_yosemitev2.c.
+> The function create_pca9554() is now made globally accessible so that
+> it can be reused by different Aspeed machine source files.
 > 
-> To support splitting YosemiteV2 into a dedicated source file,
-> a new YOSEMITEV2_BMC_HW_STRAP1 macro is added as a copy of
-> AST2500_EVB_HW_STRAP1.
+> Originally, this helper was declared static inside aspeed.c,
+> restricting its visibility. As future Aspeed machine implementations
+> will also require PCA9554 I²C device setup, the function has been
+> exported by removing the static keyword and adding its prototype
+> to aspeed.h.
 > 
-> The refactor is part of an ongoing effort to modularize Aspeed
-> machine definitions by separating each board into its own source
-> file. This improves code readability, maintainability, and simplifies
-> future platform-specific changes.
-> 
-> Key updates include:
-> 
-> - Moved yosemitev2_bmc_i2c_init() and its FRU data into a new file.
-> - Removed aspeed_machine_yosemitev2_class_init() and type registration
-> from aspeed.c.
-> - Removed YosemiteV2 FRUID data and declarations from
-> aspeed_eeprom.c and aspeed_eeprom.h.
-> - Added aspeed_ast2500_yosemitev2.c to the build system
-> (meson.build).
+> This change promotes better code reuse and consistency across
+> machine initialization code.
 > 
 > No functional changes.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/arm/aspeed_eeprom.h             |  3 -
->   hw/arm/aspeed.c                    | 36 ------------
->   hw/arm/aspeed_ast2500_yosemitev2.c | 90 ++++++++++++++++++++++++++++++
->   hw/arm/aspeed_eeprom.c             | 22 --------
->   hw/arm/meson.build                 |  1 +
->   5 files changed, 91 insertions(+), 61 deletions(-)
->   create mode 100644 hw/arm/aspeed_ast2500_yosemitev2.c
+>   include/hw/arm/aspeed.h | 1 +
+>   hw/arm/aspeed.c         | 2 +-
+>   2 files changed, 2 insertions(+), 1 deletion(-)
 > 
+> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+> index d4d63996a6..fbe684d505 100644
+> --- a/include/hw/arm/aspeed.h
+> +++ b/include/hw/arm/aspeed.h
+> @@ -61,5 +61,6 @@ struct AspeedMachineClass {
+>   
+>   void aspeed_machine_class_init_cpus_defaults(MachineClass *mc);
+>   void create_pca9552(AspeedSoCState *soc, int bus_id, int addr);
+> +I2CSlave *create_pca9554(AspeedSoCState *soc, int bus_id, int addr);
 
+Please add an 'aspeed_' prefix.
 
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
 
 
+>   
+>   #endif
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 2695f0c11b..8a22696da9 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -542,7 +542,7 @@ void create_pca9552(AspeedSoCState *soc, int bus_id, int addr)
+>                               TYPE_PCA9552, addr);
+>   }
+>   
+> -static I2CSlave *create_pca9554(AspeedSoCState *soc, int bus_id, int addr)
+> +I2CSlave *create_pca9554(AspeedSoCState *soc, int bus_id, int addr)
+>   {
+>       return i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, bus_id),
+>                               TYPE_PCA9554, addr);
 
 
 

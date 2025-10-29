@@ -4,46 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06151CCF9F0
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 17:13:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6C1ECCF9EE
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 17:14:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vE9gm-00063s-Jn; Wed, 29 Oct 2025 13:10:25 -0400
+	id 1vE9kS-0004Eg-GI; Wed, 29 Oct 2025 13:14:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vE9gg-0005wq-0v
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:10:18 -0400
-Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1vE9kN-0004C4-Sl; Wed, 29 Oct 2025 13:14:08 -0400
+Received: from 4.mo552.mail-out.ovh.net ([178.33.43.201])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vE9gU-00073Q-Q3
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:10:16 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.254.134])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4cxYdg68f7z5w3n;
- Wed, 29 Oct 2025 17:09:59 +0000 (UTC)
-Received: from kaod.org (37.59.142.106) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1vE9jz-0007tp-E0; Wed, 29 Oct 2025 13:14:07 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.110.43.51])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4cxYjn6Gfsz6PY1;
+ Wed, 29 Oct 2025 17:13:33 +0000 (UTC)
+Received: from kaod.org (37.59.142.112) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Wed, 29 Oct
- 2025 18:09:56 +0100
+ 2025 18:13:29 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-106R0069c2c03e3-7137-4f04-b0f4-1da529f23ccb,
+ (GARM-112S0062fc5632d-2f71-445a-8394-6aa69e11570c,
  1C4C5A15D30C5F2C89D761F8A9BCD43732F6FBF1) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 92.184.104.153
-Message-ID: <5dde8ae1-397c-4aa1-9bb0-134146829041@kaod.org>
-Date: Wed, 29 Oct 2025 18:09:56 +0100
+Message-ID: <2630c169-ff36-4ab9-97cc-a56467e3e008@kaod.org>
+Date: Wed, 29 Oct 2025 18:13:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Subject: Re: [SPAM] [PATCH v1 11/13] hw/arm/aspeed: Split Romulus machine into
- a separate source file for maintainability
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
+Subject: Re: [PATCH v3 18/25] hw/watchdog/aspeed: Use
+ memory_region_get_address()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ <qemu-devel@nongnu.org>
+CC: Mark Cave-Ayland <mark.caveayland@nutanix.com>, <qemu-ppc@nongnu.org>,
+ <qemu-riscv@nongnu.org>, <qemu-block@nongnu.org>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ <qemu-arm@nongnu.org>, <qemu-s390x@nongnu.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
-References: <20251023100150.295370-1-jamin_lin@aspeedtech.com>
- <20251023100150.295370-12-jamin_lin@aspeedtech.com>
+ <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+References: <20251028181300.41475-1-philmd@linaro.org>
+ <20251028181300.41475-19-philmd@linaro.org>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -87,27 +90,27 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251023100150.295370-12-jamin_lin@aspeedtech.com>
+In-Reply-To: <20251028181300.41475-19-philmd@linaro.org>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.106]
-X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG8EX2.mxp5.local
+X-Originating-IP: [37.59.142.112]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: cea70023-d35a-4a36-a06b-8bb4f9b89a95
-X-Ovh-Tracer-Id: 5361253884891007922
+X-Ovh-Tracer-GUID: 3f70ee5e-6cfe-4562-804e-71105a359015
+X-Ovh-Tracer-Id: 5421489529146084225
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGJtndeWzAcVmR3XQqv252AeEKBLpnCW+HIMR3QhdhXHEsRNZmTBWFtDuU6G+K6XLtB/XeQtVkaVEIms8z9pRt1yRQt5qfUQRWa1vgO4ljZG7KmZQIpeYzfsufFgQguJNkamwBp8BU5mKpdVzsE4CJJYW+iPhQhTOSpXMqHQ5Uas9wmwwo0I2RlKcjPHbwdNzRInedZEzld+taO0Ma/RRGS9Ram7OQgXGdQlRhrogme9kqwmVbSsmaQ2zYV/ByLPjk7mGrz07y/gMJmTxHLVoOA97IjGia3ClVPINkGCFkzHQhoyDv8PBvWtxprOEDa09El/jlk1VPGy6oBC4ZR2S8ypXocOqwP8vDzIwwOvfE3b+5lGe8ah+ErIbnPqhrLIt3u2Du3QXy6dUFc/alk8DL9KEvJwStpSCZkh/mmbKCL0nSGbVInMkDffBtZlRZ2kRNMmYxwtUfLOFShWpLCmsWq9xvGJvEoLNGSoCAFnJ09R6vzOQsuTuUdf3ljSHWRmvl7fPAoBa7taKBOrQRPVgcsKWTfdJBAzEtRbh4Ym7CBFJywfgYOulrRPcKlbAP1HRiUy3gVF8njJvm80y2XvBy/HJS4PD01lMfn7wdoVdVnw4N8fQGA9Iub8XwmdhQ+85BYw8SArlpup1jUPY0NwiSlX+nQQHdpRY8qNsTsHWXjmA
-DKIM-Signature: a=rsa-sha256; bh=FfvgtSbZOhYBv9FRD8XVFEQ07LdixyR9Vl1F2KX1WyI=; 
+X-VR-SPAMCAUSE: dmFkZTFrlEBFEaJnAIMdOg0T3r7ccDE6CPAY9DdJHQESU6Cr/k4HORmfaUWxrctFgkkcO6Ql385Tonw6WYsjRKHSrTIMBjeIfVvcwj5IkWv5cc+hNfbj3qH5hqZGNoj/5lHFTJxuaZRdtUTQRs1XGBGMlN1FlYBaTHieBmhNe7UMWkxb2DWslPgQlMvng4CMm13oj7U3l9OsfP39iDh4HDnUrab44Vb2C1Q6pCToca03y7I5LdmqB7x0XdqGsDzwCZ/22zk8jgpNcTbBuF3BzfsaB13QduQiR0PAQBlLo8hpNnZKSZELjxp+aNpOEqC5VHZ6tOJAQvIY0cqd9jDmGo8uAzpokYiIA2hb/gMNQBS5mbZ064otzaUPmCc7j02dvdshuBedr1XWGo8CXYY6Hm7texUMvbG4JI+CqB755Kph7BE7YF6barf2s3SH6IwvI5Kt5QmAqmDtf3Z2AiJxmTAu8ZZXPlBfLVlwNEClcuRYbFAx68dEfxbfoqZHqHdtJLtv8sotUDaX0wWhjL7UEjq9PEUz5eu7B+n8bJEJYSML6RALq33hmpup51RYZQ95JX1SgsF+KUJ/MpROAlqG+xRoXJralWx13hjv/CuaOvG4HxUjbsMWHtzjWoyiNxKNkCz+XwDQ0fTTFRtZljP3JpP/fgEqxjjllqD/ztRbCNQouLNMaQ
+DKIM-Signature: a=rsa-sha256; bh=iW59dX+LWGq0xo2vVQELfd9qq2ouNwjqbPBofotZjmk=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1761757800; v=1;
- b=FGpazUpKTHXSWeaABYUx2l9N3bfqXR1hsM0TIA8X36OxhNiRubTj1MBHaNbGVHiYa5kTYTea
- vedkQBA4hl0GVRNk1977KQmQwVm2mhMWmDCWqUaifnVqAlIeqNSshE8tCHx+uOuWmuaNuhBbH31
- P2u7Mx3J6XK+jWeUVt3824KAtDHsuKXe8rF2KNKwVMA2ON5cUaQiIlEE90RNDynH63rvfanO6jJ
- 6oz4kHE7PnGgHOLv1Zxr8qKHjTkAPuydJ5mz2jGWIRPyy7TY9SjGZ6eQtkLtL/+WHJSuvn0uh/q
- JL87Bib6uz9GwSPYwAqnRC9lz6Y3P2yRyFt8x01lIvk/g==
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout2.mo529.mail-out.ovh.net
+ t=1761758014; v=1;
+ b=lcnr/gEcgTwBjOthQdVZdFNeV3qvET+VrwsIb4ICqjkQ3sA7TXTceVZSjyrHWB+mVOmyVhLM
+ t9Ry3e/SY4XiPdnF8TH0un9e5tffxLorgPDInOG1l7AX/EU5kt4W31PnHxBGXEU0o11oXQUAQW9
+ kv9Z+1rPwtMrIMkXJmq/6PiR6rVkmaLkZYmUbaKAoSjrsgqe/Z3YD5lUyPRRE0al7u+HcrTeG0h
+ M/Uv9dqjcHFuwZXv8NsKOai0mnVAzl5FNUdNtw3E1i1NbnMoHXpelV1ycbq95MvYyJCeLMVZxfi
+ l/Ox4yOxCTfiDtqb5CLL8Fjx1bjU1PlMnH7BONlOYmTWA==
+Received-SPF: pass client-ip=178.33.43.201; envelope-from=clg@kaod.org;
+ helo=4.mo552.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,33 +134,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 10/23/25 12:01, Jamin Lin wrote:
-> This commit moves the Romulus BMC machine implementation out of
-> aspeed.c into a new standalone file aspeed_ast2500_romulus.c.
+On 10/28/25 19:12, Philippe Mathieu-Daudé wrote:
+> MemoryRegion::addr is private data of MemoryRegion, use
+> memory_region_get_address() to access it.
 > 
-> The refactor continues the modularization of Aspeed platform
-> definitions, separating each board into its own C source file to
-> improve maintainability, readability, and reduce code clutter in
-> aspeed.c.
-> 
-> Key updates include:
-> - Moved ROMULUS_BMC_HW_STRAP1 definition to the new file.
-> - Moved romulus_bmc_i2c_init() and related I²C device setup.
-> - Moved aspeed_machine_romulus_class_init() and type registration
-> to aspeed_ast2500_romulus.c.
-> - Added the new file to the build system (meson.build).
-> - Removed all Romulus-specific code from aspeed.c.
-> 
-> No functional changes.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   hw/arm/aspeed.c                 | 42 -----------------------
->   hw/arm/aspeed_ast2500_romulus.c | 61 +++++++++++++++++++++++++++++++++
->   hw/arm/meson.build              |  1 +
->   3 files changed, 62 insertions(+), 42 deletions(-)
->   create mode 100644 hw/arm/aspeed_ast2500_romulus.c
+>   hw/watchdog/wdt_aspeed.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
+> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+> index 30226435efc..f842d8e973a 100644
+> --- a/hw/watchdog/wdt_aspeed.c
+> +++ b/hw/watchdog/wdt_aspeed.c
+> @@ -274,7 +274,7 @@ static void aspeed_wdt_timer_expired(void *dev)
+>       }
+>   
+>       qemu_log_mask(CPU_LOG_RESET, "Watchdog timer %" HWADDR_PRIx " expired.\n",
+> -                  s->iomem.addr);
+> +                  memory_region_get_address(&s->iomem));
+>       watchdog_perform_action();
+>       timer_del(s->timer);
+>   }
 
 
 
@@ -166,8 +164,6 @@ Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Thanks,
 
 C.
-
-
 
 
 

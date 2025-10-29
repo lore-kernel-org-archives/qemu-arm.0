@@ -4,97 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9009DCCF9EB
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 14:34:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28F2DCCF9EB
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 15:54:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vE7FS-00021n-BI; Wed, 29 Oct 2025 10:34:02 -0400
+	id 1vE8SK-0004Tu-Rf; Wed, 29 Oct 2025 11:51:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vE7FP-00021V-S9
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 10:34:00 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vE8SD-0004I6-Ax
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 11:51:18 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vE7FF-0000sR-M4
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 10:33:59 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-475dae5d473so45797755e9.2
- for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 07:33:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vE8S0-0002tH-8o
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 11:51:17 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-b6d83bf1077so2192866b.3
+ for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 08:50:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1761748425; x=1762353225; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1761753056; x=1762357856; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4P4RFdLWn7OSvy3yHrhLcnspeuf0oqHmgGpCZpxEaHI=;
- b=MWP7xtqPxLYYnqUDzUZxfs4QM+okrOeYuV7hfnw07sLy5GVtokqdj+wgGACJpHf0+K
- N7AQYRKq0YkkSNIQNqJcUPQnxXS7Xjg4RvJekPMrHYjla1+7Xc1z0Z8jZWvGf7B2Hu+E
- 9K5dx6BMusCInz9x4d5p0vX8exjr/pqMuCJk4ejQugDf5bPUb0KKLNTKJGNhpwc9fNDR
- 4HM58W+WMmiTZNuZyajons6hz71plwGNoUJlt2fHMLJaEOduzra3MzvwwgN5zclJaTRf
- Kha/Baw5SKjmuslnB/YVCFt7cVW+sKfHITmpTo5Lg/Qv0sIKc+lYNEnWfgRnZBERe9aQ
- LkQQ==
+ bh=qIODdnohFbYXb1XCHQq9SFU/QmlMM/ak2DXbJVzwyRg=;
+ b=gHiLX0J35QbIMJBdFRVQOWwkzhB2T1soIvLBrLr2FDge5PdcTBHrJbCu2zuipeVGa1
+ GGPPZVvLr2LSzsVaoRde/Z9JxaU5YpgsDxS9/048yzywbmTpNkpaPhi6hxh2K4ybUIxW
+ yV4SgLXQf02J4zD66BEcsmRH2M4SR5+2xGwehxkTpfWC45b/lcaISXXqphGUscfEJ/jw
+ zbTEwbKA0MU9oA8RoZWrzCFH0r2HvPgAKBykP57/KDQIA+kQ/BoDUNs+kN2wR04vsrjM
+ OrdNwb/rol7zuwhZTp9E26EemPMHmB3pb8aB6NfaigVYpI2deHBOWXbCiLokqVhI1fCO
+ gzmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761748425; x=1762353225;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1761753056; x=1762357856;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=4P4RFdLWn7OSvy3yHrhLcnspeuf0oqHmgGpCZpxEaHI=;
- b=bTUbC/pDuREB1tWFtK6OasIooyYLoiT/dBKH1G0VsbVxHmBH+tIHPPYzOVl2n5I4jU
- bRqz2WIEuoTTxaQh9zQf5NjQiiYNUgrqIYYvAhsfP+aOfJ8jPfsk9ogEO1H1wle1SqZL
- WM3VOpxKLvIMxdbTWIosaCJM23PxT2xgf+LEqBCK8AJkC7vsJLo6EpE2KVNOsLOgHnm7
- EXRT2b24Dj2fLIJtVxt9rZSHtnATMNBXXXeFv7UblY2LcEmn+plBQhtyudgTPKywyhI0
- s9unHJXC/x03P2Cz1Zps/CpBI35k6xrrnq2cWv07hZl3Ra9ehLWHjiu2KovSW4SeHrTq
- F3og==
+ bh=qIODdnohFbYXb1XCHQq9SFU/QmlMM/ak2DXbJVzwyRg=;
+ b=NUTAc/kyj8htfQDPAZtPyGmv89mqmoz+q0+KjKT3ccEv9ut96+QiR5p5pUOxZS72xP
+ I0zSxYc9s+bDAAsGgpKRkuplWzKez2cRDEC/MCJLylcShW6AOVMvI1J9kRx8kKV+a3dG
+ 7rsL/zdWYVGKeZaPQaN0HbUoHXL2C7HJ04bO4jK6Rnr38ESRZ0tXkfeaHb1IBO11ptGG
+ A+jgWTfM0UOEB6rsFO8S7vqeyuWDopUWT814EFltFYawaKycO1xMqD7dPlZiX8zA62ic
+ B4zXqlqxD9Aa0UFkw3CC2xr6YmijZpWOCKDjcAn/+VtGV/RSPJR+22qACGNp2pNkc0um
+ peGg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV0gkJrQPpiYJR/9W0xRm8KBZbkWF1lFSrpDNIU7zEUeAWIKITTPRHj3Ti5EH+M6uZccxvOgEvLKQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzwFelCq093bXYjywvFmUfZMc2gYhyj5d6p1IuLRlEN0uQpmCgS
- vrOH4wkTXx3y1yINUzI112Hbmg/MpeKuNs62B/ffPMgDGuwJwSy7ag/M
-X-Gm-Gg: ASbGncvqwCIeRQkhw0JIy+btBpXaZ51yztvnotdQwXJbHiShQ4deMf5GIN460gCrZSx
- p4QUq6mo1iRObU7kHlCzVBDIhDxvb+maQAqSNTmkYvJW72T01tj/H41OeNtp0BqbDK1XRvgbvrJ
- MoSQGWdbcb30gd/fNDrjDL4BAe3AgA9yiC56OEEnRyvdK/UywkGzMbnWW2nMX4FYbOUpk2urMrm
- pPjxJ2ELiGRTxzBrLJ6vQ6u0Nfxiladwpx8iH6RCAn2p2HKzM2ZazK0+AkD4DCz/gCiLxuhRnif
- MmPVRrR5fRWp46BtJdkv+Z9hl4Lq5X2z2zGwUzqJhJF5z3T813Tl+BkcwtGhVqGy7OlaPIfUpda
- hORiJiCtAW/97iCIKaCCbQTHBjXsyq4aZJsQr2tn0uOmR6uEBAk9cFhXSQQvtjQ05yxuzKOxraV
- B+Q3mu+gmDtdh4NOv4ToVMeAQju92dmmLXD78MbjB64ymnMoFTpCxVjfwZrS0o7FQk8cGdjOmV
-X-Google-Smtp-Source: AGHT+IHIZ8iOInjlv0lPfmqS1VVt2E/SJEWfrZbljStqXredFswBxYMSY6vT8h3UHkeRjxevcgR83g==
-X-Received: by 2002:a05:600d:8389:b0:475:da13:256b with SMTP id
- 5b1f17b1804b1-4771e3cb77cmr15763455e9.38.1761748424376; 
- Wed, 29 Oct 2025 07:33:44 -0700 (PDT)
-Received: from ehlo.thunderbird.net
- (p200300faaf271400c439911fd9f45c3c.dip0.t-ipconnect.de.
- [2003:fa:af27:1400:c439:911f:d9f4:5c3c])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429952da645sm25428038f8f.30.2025.10.29.07.33.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Oct 2025 07:33:43 -0700 (PDT)
-Date: Wed, 29 Oct 2025 14:33:40 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?ISO-8859-1?Q?Phil_Mathieu-Daud=E9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: Re: [PATCH 2/2] hw/arm/imx8mp-evk: Add KVM support
-In-Reply-To: <CAFEAcA9RBxs3C068BRgzKCqFxQh2K5rmXwyiph4_imOiy7JxLg@mail.gmail.com>
-References: <20250629204851.1778-1-shentey@gmail.com>
- <20250629204851.1778-3-shentey@gmail.com>
- <CAFEAcA9Rvvymu7oS0pPx00v9SdXzwr27vy1VmnZmwQ7ayZK+yQ@mail.gmail.com>
- <2F14E49B-D152-470C-A87C-525853EB8ED5@gmail.com>
- <CAFEAcA9RBxs3C068BRgzKCqFxQh2K5rmXwyiph4_imOiy7JxLg@mail.gmail.com>
-Message-ID: <D242944E-FB0E-4BD4-859E-998CC5D607EC@gmail.com>
+ AJvYcCUQcfeljE18eK74Mr/uQ3FPFROMjwM4ChUl6/HkEDMtSIZjrYVvtMhymfOwOXtbqKIBU2DmDGR+fw==@nongnu.org
+X-Gm-Message-State: AOJu0YzL/mkwTdRbQS9H2dJlF3gN1M9+6VSu3CcoMgGXce61smdYPiBm
+ UEZy392IFD14BZVZr0xJhQAb7XuXHomJ8kMABop7J9BfgyDbD5zXm3MUS+Q6na5eL+o=
+X-Gm-Gg: ASbGncvsFgqqJYHYGB11KM+mWfBHcndYQ8u+RZuelH8ZbF1yhzyEcmX3QiUuVWHpujY
+ 7mZ2WnULIwysNF7qZWlzFzRpVTzAlE802WTdx1At/wXFqYZVFbuovith1tB7xxBCcLmmCGPUnW4
+ z8/VgE9whrYIsrmSs2Y5gnxJ4SwssT4NiyriDH6iUwlr9ne7bj+wjh+kuX10nG9bqZo38C11Bbh
+ 69dgvKLa8/QibzIw6ednhlkf8ZDRPymc0FHt63iSSCKnqw0l2rE/Un76MPNlEuimoxMzp/Bqm+0
+ UMJI3AapHm/uPZ17oFa4h3wNn8rpw70QteJzjkunmVdKsKKhfN5JA3iQSEAxzOm/y6fJGcIWhzp
+ LPQ5eXAVKEXYuJAa4otDm0HNkP8/ULFJopiWQ1WvtOC+/Rh0wk/yGPhWedEPkqYUO7VUvc4ypQS
+ oq
+X-Google-Smtp-Source: AGHT+IFCWeSvhoYvfENgzQIjctgQyyRRSeGsIdurd/PASyGDzgk4V/SYVKDEiQUQP47LkhwCuowwRg==
+X-Received: by 2002:a17:907:728c:b0:b63:2000:72c8 with SMTP id
+ a640c23a62f3a-b703d5f7bb1mr363351066b.62.1761753055607; 
+ Wed, 29 Oct 2025 08:50:55 -0700 (PDT)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-64043e05a5esm2512798a12.4.2025.10.29.08.50.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Oct 2025 08:50:54 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 0C6DB609B7;
+ Wed, 29 Oct 2025 15:50:47 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Julian Ganz <neither@nut.email>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PULL 12/35] target/arm: call plugin trap callbacks
+Date: Wed, 29 Oct 2025 15:50:21 +0000
+Message-ID: <20251029155045.257802-13-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20251029155045.257802-1-alex.bennee@linaro.org>
+References: <20251029155045.257802-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x332.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,97 +109,142 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+From: Julian Ganz <neither@nut.email>
 
+We recently introduced API for registering callbacks for trap related
+events as well as the corresponding hook functions. Due to differences
+between architectures, the latter need to be called from target specific
+code.
 
-Am 28=2E Oktober 2025 16:09:50 UTC schrieb Peter Maydell <peter=2Emaydell@=
-linaro=2Eorg>:
->On Tue, 28 Oct 2025 at 14:41, Bernhard Beschow <shentey@gmail=2Ecom> wrot=
-e:
->>
->>
->>
->> Am 28=2E Oktober 2025 12:46:34 UTC schrieb Peter Maydell <peter=2Emayde=
-ll@linaro=2Eorg>:
->> >On Sun, 29 Jun 2025 at 21:49, Bernhard Beschow <shentey@gmail=2Ecom> w=
-rote:
->> >>
->> >> Allows the imx8mp-evk machine to be run with KVM acceleration as a g=
-uest=2E
->> >>
->> >> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> >> ---
->> >>  docs/system/arm/imx8mp-evk=2Erst |  7 +++++++
->> >>  hw/arm/fsl-imx8mp=2Ec            | 33 ++++++++++++++++++++++++++++-=
-----
->> >>  hw/arm/imx8mp-evk=2Ec            | 11 +++++++++++
->> >>  hw/arm/Kconfig                 |  3 ++-
->> >>  hw/arm/meson=2Ebuild             |  2 +-
->> >>  5 files changed, 49 insertions(+), 7 deletions(-)
->> >>
->> >> diff --git a/docs/system/arm/imx8mp-evk=2Erst b/docs/system/arm/imx8=
-mp-evk=2Erst
->> >> index b2f7d29ade=2E=2E1399820163 100644
->> >> --- a/docs/system/arm/imx8mp-evk=2Erst
->> >> +++ b/docs/system/arm/imx8mp-evk=2Erst
->> >> @@ -60,3 +60,10 @@ Now that everything is prepared the machine can b=
-e started as follows:
->> >>        -dtb imx8mp-evk=2Edtb \
->> >>        -append "root=3D/dev/mmcblk2p2" \
->> >>        -drive file=3Dsdcard=2Eimg,if=3Dsd,bus=3D2,format=3Draw,id=3D=
-mmcblk2
->> >> +
->> >> +
->> >> +KVM Virtualization
->> >> +------------------
->> >> +
->> >> +To enable hardware-assisted acceleration via KVM, append
->> >> +``-accel kvm -cpu host`` to the command line=2E
->> >
->> >Coming back to this now we've resolved the "does this put
->> >things inside our security-promises that we don't want"
->> >question=2E=2E=2E
->> >
->> >I think we should be a bit clearer in the documentation
->> >about what tradeoffs the user is making here when they select
->> >KVM=2E Specifically:
->> >
->> > * we should note that this is intended only to improve
->> >   performance, and is not covered by QEMU's security policy
->>
->> Sure, I'll add it=2E
->>
->> > * we should say that you will not get a Cortex-A53, so any
->> >   guest code with tight dependencies on the host CPU type
->> >   might not work correctly
->>
->> Ack=2E I'd also hardcode the CPU type to host since asking for a Cortex=
--A53 always failed on me with KVM=2E
->
->Yes, this is the right thing (at least until some distant
->day when we add support for having KVM give the guest a vcpu
->that looks like a particular cpu type)=2E The 'cortex-a53'
->cpu type with KVM will only work if the host happens to be
->that, which isn't very useful for most people=2E
->
->> > * we should say that the guest will only be able to run
->> >   at EL1, and (unlike TCG) there is no EL2 or EL3
->>
->> Real U-Boot calls back into the on-chip ROM which isn't implemented yet=
-=2E Furthermore, there are some unimplemented USDHC extensions which preven=
-t complete loading of binaries into RAM by U-Boot (similar limitation exist=
-s for e500 boards)=2E Therefore the board documentation only advertises dir=
-ect kernel boot=2E AFAIU EL2 and EL3 aren't usable there anyway=2E Correct?=
- Do we need to mention this limitation regardless?
->
->I think it's worth mentioning anyway -- not every EL3
->payload is necessarily u-boot=2E
+This change places hooks for ARM (and Aarch64) targets. We decided to
+treat the (V)IRQ, (VI/VF)NMI, (V)FIQ and VSERR exceptions as interrupts
+since they are, presumably, async in nature.
 
-Thanks for=2Ethe feedback! Version 2 is out=2E
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Julian Ganz <neither@nut.email>
+Message-ID: <20251027110344.2289945-13-alex.bennee@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-Best regards,
-Bernhard
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index f86f421a3db..6fbf7e1ca49 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -375,6 +375,7 @@ static inline int r14_bank_number(int mode)
+ 
+ void arm_cpu_register(const ARMCPUInfo *info);
+ 
++void arm_do_plugin_vcpu_discon_cb(CPUState *cs, uint64_t from);
+ void register_cp_regs_for_features(ARMCPU *cpu);
+ void init_cpreg_list(ARMCPU *cpu);
+ 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 2ef9c178147..ef6435c3efb 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -34,6 +34,7 @@
+ #endif
+ #include "cpregs.h"
+ #include "target/arm/gtimer.h"
++#include "qemu/plugin.h"
+ 
+ #define HELPER_H "tcg/helper.h"
+ #include "exec/helper-proto.h.inc"
+@@ -8783,6 +8784,24 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
+     }
+ }
+ 
++void arm_do_plugin_vcpu_discon_cb(CPUState *cs, uint64_t from)
++{
++    switch (cs->exception_index) {
++    case EXCP_IRQ:
++    case EXCP_VIRQ:
++    case EXCP_NMI:
++    case EXCP_VINMI:
++    case EXCP_FIQ:
++    case EXCP_VFIQ:
++    case EXCP_VFNMI:
++    case EXCP_VSERR:
++        qemu_plugin_vcpu_interrupt_cb(cs, from);
++        break;
++    default:
++        qemu_plugin_vcpu_exception_cb(cs, from);
++    }
++}
++
+ static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
+ {
+     /*
+@@ -9473,6 +9492,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+     unsigned int new_el = env->exception.target_el;
++    uint64_t last_pc = cs->cc->get_pc(cs);
+ 
+     assert(!arm_feature(env, ARM_FEATURE_M));
+ 
+@@ -9489,6 +9509,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+     if (tcg_enabled() && arm_is_psci_call(cpu, cs->exception_index)) {
+         arm_handle_psci_call(cpu);
+         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
++        qemu_plugin_vcpu_hostcall_cb(cs, last_pc);
+         return;
+     }
+ 
+@@ -9500,6 +9521,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+ #ifdef CONFIG_TCG
+     if (cs->exception_index == EXCP_SEMIHOST) {
+         tcg_handle_semihosting(cs);
++        qemu_plugin_vcpu_hostcall_cb(cs, last_pc);
+         return;
+     }
+ #endif
+@@ -9525,6 +9547,8 @@ void arm_cpu_do_interrupt(CPUState *cs)
+     if (!kvm_enabled()) {
+         cpu_set_interrupt(cs, CPU_INTERRUPT_EXITTB);
+     }
++
++    arm_do_plugin_vcpu_discon_cb(cs, last_pc);
+ }
+ #endif /* !CONFIG_USER_ONLY */
+ 
+diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+index d856e3bc8e2..3fb24c77900 100644
+--- a/target/arm/tcg/m_helper.c
++++ b/target/arm/tcg/m_helper.c
+@@ -23,6 +23,7 @@
+ #if !defined(CONFIG_USER_ONLY)
+ #include "hw/intc/armv7m_nvic.h"
+ #endif
++#include "qemu/plugin.h"
+ 
+ static void v7m_msr_xpsr(CPUARMState *env, uint32_t mask,
+                          uint32_t reg, uint32_t val)
+@@ -2194,6 +2195,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+     CPUARMState *env = &cpu->env;
+     uint32_t lr;
+     bool ignore_stackfaults;
++    uint64_t last_pc = env->regs[15];
+ 
+     arm_log_exception(cs);
+ 
+@@ -2361,6 +2363,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+         g_assert_not_reached();
+ #endif
+         env->regs[15] += env->thumb ? 2 : 4;
++        qemu_plugin_vcpu_hostcall_cb(cs, last_pc);
+         return;
+     case EXCP_BKPT:
+         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_DEBUG, false);
+@@ -2427,6 +2430,8 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+ 
+     ignore_stackfaults = v7m_push_stack(cpu);
+     v7m_exception_taken(cpu, lr, false, ignore_stackfaults);
++
++    arm_do_plugin_vcpu_discon_cb(cs, last_pc);
+ }
+ 
+ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
+-- 
+2.47.3
 
->
->thanks
->-- PMM
 

@@ -4,80 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39AEECCF9EB
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 21:41:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E0C0CCF9EE
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 21:42:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vEDv8-0005Pp-H1; Wed, 29 Oct 2025 17:41:31 -0400
+	id 1vEDw3-0005fJ-PH; Wed, 29 Oct 2025 17:42:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEDv6-0005P9-Vm
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 17:41:29 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEDw1-0005dy-6v
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 17:42:25 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEDuw-0005m8-B2
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 17:41:26 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-475dc6029b6so3570515e9.0
- for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 14:41:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEDvp-0005oO-Pm
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 17:42:24 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4770c34ca8eso2666165e9.0
+ for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 14:42:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761774065; x=1762378865; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=vMg20FGEN3XAffg6y9kZVfeDy5BlDMnMkEI0JSirbJQ=;
- b=VBmOQtfoAkGv+DxrYOXCW1hOpPwEWcT9cqXpsiaeQLZWANtGu2570ANJWg6lv7tQeK
- PDStrPGqf0PQT5mQj79DBkM1teTaQubK9ngxiD4PTyHzZjT5ycBgrMtJYdzDv89/SOwA
- c2fmCPVySab4zSCzk2nm+R5N1HGPGhA9Wfj0c5QsWJVjzIoeJdgms020S+n1fWviqqAP
- u8r7jG3e3dBayrIh0PeK1T7Ju2ybKsdBj+owyBBxdstzg1LYFiyq7vKx9UUyhhQuA8pg
- rg5yvDQzq98rH77sMN7lnxhKMOrtflNiMiNfxFNVGK/X8P0RdPaAxAyQgQamQizuq7YY
- 5BFw==
+ d=linaro.org; s=google; t=1761774123; x=1762378923; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=QAAOCxQ3njC9sd38gRl2lcX4tyoH13t+XkOmzilp5O8=;
+ b=Va5r2qcmCXfmpQsPB57lxY23RulNHd1mKi7HhdRQBp9Cc23Kz83ttVrHF2P+3ZFB/U
+ 5MhCWnUWiX+GHe44Wz4jTWSE5Wvw7/NySVmtCTl1nIre22Zb9wv6b0nejQJlA8/86ssE
+ +CyP8UNRgJCUNZ0NgiJJiSBmQUFHjv1NntfBRI3WKIdfDlxCNA5sIaFpN4V63rgIGSGf
+ BD/79lp5ZLt8xGhGSS6wpwOsPBoRK2DAWvsigMfmQ8Q/o9sRlJytTzG7acPDCt2f80M2
+ KiBH8XQKBWLKcQx0gNrKDPkjV/q1jvMXJr6r0l6KtZOG0Hs4Gchqn1xVI03LJFhFrSuF
+ cC0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761774065; x=1762378865;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=vMg20FGEN3XAffg6y9kZVfeDy5BlDMnMkEI0JSirbJQ=;
- b=W//mtPapWT55/zkqSFT+OMb47hUBc+F4Mcw58UIfLn9b/33aTDCqpPdDWxZGzeqeuP
- iMuLjbu51AatD7MXXB6kRjpsoZNmZ9yrbtek4o49lh9VJVpT3qahGITDFPzO/3a9DWS7
- HLCvbBIXENGa9FeLw19SWlNAA+GLprW1SefM4vyeoI9zfkMd4CTnN69DvwwSqu6Bxb7t
- AGUGeyptwVZH4jWkJpSSc86jhXTfX84GbWuDVP84tY1ZTOhmYWNAaEf8k/1nB/34xXN5
- KXf33r5CWNVfrkYp3pOchS8Mjl2/bnPXae8bnrCgFMqBCagntVcBCMIuCssvVrQ66K2C
- TAfg==
-X-Gm-Message-State: AOJu0YxVYhHQbY+dfjRYgueGNDwW3hL2LNpsP+eN+eGdhoaujHsgDCA+
- CN8qzU8H95hS/T9Lht80AHajdsHZvQrmTk/YtmFk84I8fL2+76gOs4BaDv32OaboQk0=
-X-Gm-Gg: ASbGnctKFbxKJWTUUKH7AaxQNNW5aPpklgSEyNlBaJg8Vwp+YdjDANlmTcZ3SMeODxm
- LyG9LPOPGvyqIidDVnVEbT0x4Vl839IKVChATkdyDn6auwzAXo41LV5mMOuQw1iU4Oe2qSxYpE8
- aGC8VvyYo3lKXFB6VH+eL1i+8ScFB1d7DOOobn0yQYJuBUQFWvQm5+Kpw/d6xK9tJ1CCuCbzjnI
- 6AXgKviplNF4/Rz7SyOttq2IqyZ73gmfslVbr41uCeu72502DP94EWmKc5b5Fj4uzl964iup/Bs
- CSRMCdyN5iBbA80V89s7mz12INmyM0dzAPap+44sRCoqZalJ00toz6NT29ZTk/4t4cSB/E0jXDE
- cHE1y0HTophKRldYQ8XuOVya1RzQ4o0JMmPO4ut2ciK6JgPujnOaVbFTNASUvg6uYnYlInF3Uzr
- xEOmcbWY6TsFx0J5501k9GYv5Jinit8XrWLTg/1xNXe4Pw9LKPrA==
-X-Google-Smtp-Source: AGHT+IE7Lu3fGHzxbo/6N5YEa9X70DPvJIqq2b1ZhV/fEfuhXaleik+8opbS0kP8kIN8QkTDkqgGNQ==
-X-Received: by 2002:a05:600c:608b:b0:475:de12:d3b2 with SMTP id
- 5b1f17b1804b1-4771e1f1dc2mr44058035e9.36.1761774064708; 
- Wed, 29 Oct 2025 14:41:04 -0700 (PDT)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ d=1e100.net; s=20230601; t=1761774123; x=1762378923;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=QAAOCxQ3njC9sd38gRl2lcX4tyoH13t+XkOmzilp5O8=;
+ b=XrRy8kEHeEw0Iv/F2+zF/cynGGOh1Ow1HG+mikJD/5IjUhI1GHuitrcdpiDH6DQPR+
+ o18CLF8lBOSk3FEvKS24px9Yr4zIaZ9azaU0/o3h8lz6XPlV1EGV8NsLDzWkSYEBpZFB
+ 2M6/iXKSd4kZMLRze4Lq0uBlnj3Ftf+DgJAB1szqgJtrw9B5T0DnlyJ4QJUDTyTw/fwL
+ Xk79b4oXmHpGgb/YV+y+W3OiX4wvmv5mLingSBiQRCtAZ9+E6fJ9xFTCxuQsNQ+ASPyW
+ SGwZwOzKtICS6WHC6MqzP5S8DjRnd1z3uEg/kHz0FVFa6YL4gON7YOWH71IlfQgRzlT9
+ SsUg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVqeb+Dz2KLDeGuYJZA/EJRweHCLEB6TDG1szx49+DGO5JTkPxIQfOg8dF5KFQL+Ok1CF6sxf0inQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxjYC9AhqwFXMgkg9QtU5ZfkcTPKZV78C5qBlXBbRJ1OSRW7Bns
+ K4c57Qp3foVIf2BO/Pu7jr9tmX4Xj/+b7ur3VAWmey7yzdrcrvD/AYbxi0xXPOzfeY0=
+X-Gm-Gg: ASbGncsJasFAxzMZ6yxmOjqISEuiJzOkMlnpKk0tbAjZT8c5VopIpVkPwQYDEy4zON+
+ Jj0ZrfUkToplYPNQCDAjzkajZa/4xridVoD+lDXUg5T/z6JMPtZE3eKvn0PL042Fl6GXCwrs3NK
+ 1UDnsmvmmv1ucqsi0HjvRmXkvw5lfFcx7Qnz+xepcusX7zPbCEn9FhTnKa5CvvX5mH3roxHR+l7
+ EnsfecQ5EP4ubwivVTGI1z3w67IWjSA0CAFVy9sCNLnsFCypI+2v9n31WG3U9kguwFgRZZd0glS
+ aCk2Cxz46YHBmyi0IkUycrlWnvCzmzu1MdPR0gn2Kn59AiecLxg1bMHlo31xyYJRslA+9zOqNfE
+ H4KcZ5VM3pSImcftD4L9pBCqlkyMnf5k2Rbm4DHULB8BTH0TmOhbQFGC+rAExZzH4gyiW7CR7F3
+ w03+zF0I2t/UjysZLEq7kH/igvdjJ5QW+CdwWj4/sThW4=
+X-Google-Smtp-Source: AGHT+IGnB4KRWCBDbIHVNsOMOSYmdoSFBuOFopMo/r5gQ8CYOJ7qC/h5Z0Tfdef5fEmjqZd0Aw4EyQ==
+X-Received: by 2002:a05:600c:46ce:b0:471:15c1:45b9 with SMTP id
+ 5b1f17b1804b1-4771e3b84c0mr47555425e9.29.1761774122790; 
+ Wed, 29 Oct 2025 14:42:02 -0700 (PDT)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4772899fdfbsm4184555e9.4.2025.10.29.14.41.03
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 29 Oct 2025 14:41:04 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PULL 01/23] hw/arm: Register TYPE_TARGET_ARM/AARCH64_MACHINE QOM
- interfaces
-Date: Wed, 29 Oct 2025 22:39:38 +0100
-Message-ID: <20251029214001.99824-2-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251029214001.99824-1-philmd@linaro.org>
-References: <20251029214001.99824-1-philmd@linaro.org>
+ 5b1f17b1804b1-4771832e857sm55417945e9.0.2025.10.29.14.42.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 29 Oct 2025 14:42:02 -0700 (PDT)
+Message-ID: <adbf6cd9-72b0-4ce9-93a6-4f83338ca8a3@linaro.org>
+Date: Wed, 29 Oct 2025 22:42:00 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 19/35] audio: register and unregister vmstate with
+ AudioState
+Content-Language: en-US
+To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@gmail.com>,
+ Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>
+Cc: qemu-devel@nongnu.org, Alexandre Ratchov <alex@caoua.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Jan Kiszka <jan.kiszka@web.de>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Thomas Huth <huth@tuxfamily.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-ppc@nongnu.org,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ Zhao Liu <zhao1.liu@intel.com>, =?UTF-8?Q?Volker_R=C3=BCmelin?=
+ <vr_qemu@t-online.de>, Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
+References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
+ <20251027151045.2863176-20-marcandre.lureau@redhat.com>
+ <ffab95ce-9b5d-43ea-93a7-611de6044ad8@linaro.org>
+ <CAJ+F1C+qnkm=F1q0YSHZ9WbAMcz+-NJo5mzj1b-DcU24dNpRLQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAJ+F1C+qnkm=F1q0YSHZ9WbAMcz+-NJo5mzj1b-DcU24dNpRLQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,93 +124,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Define the TYPE_TARGET_ARM_MACHINE and TYPE_TARGET_AARCH64_MACHINE
-QOM interface names to allow machines to implement them.
+On 29/10/25 20:00, Marc-André Lureau wrote:
+> Hi
+> 
+> On Wed, Oct 29, 2025 at 5:51 PM Philippe Mathieu-Daudé
+> <philmd@linaro.org> wrote:
+>>
+>> On 27/10/25 16:10, marcandre.lureau@redhat.com wrote:
+>>> From: Marc-André Lureau <marcandre.lureau@redhat.com>
+>>>
+>>> Proper lifecycle management with QOM state.
+>>>
+>>> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+>>> ---
+>>>    audio/audio.c | 7 ++++++-
+>>>    1 file changed, 6 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/audio/audio.c b/audio/audio.c
+>>> index 4c3c3fd52f..853930bb48 100644
+>>> --- a/audio/audio.c
+>>> +++ b/audio/audio.c
+>>> @@ -1614,6 +1614,8 @@ static void audio_vm_change_state_handler (void *opaque, bool running,
+>>>        audio_reset_timer (s);
+>>>    }
+>>>
+>>> +static const VMStateDescription vmstate_audio;
+>>> +
+>>>    static void audio_state_init(Object *obj)
+>>>    {
+>>>        AudioState *s = AUDIO_STATE(obj);
+>>> @@ -1625,6 +1627,8 @@ static void audio_state_init(Object *obj)
+>>>
+>>>        s->vmse = qemu_add_vm_change_state_handler(audio_vm_change_state_handler, s);
+>>>        assert(s->vmse != NULL);
+>>> +
+>>> +    vmstate_register_any(NULL, &vmstate_audio, s);
+>>
+>> Please avoid legacy APIs:
+>>
+>> /**
+>>    * vmstate_register_any() - legacy function to register state
+>>    * serialisation description and let the function choose the id
+>>    *
+>>    * New code shouldn't be using this function as QOM-ified devices have
+>>    * dc->vmsd to store the serialisation description.
+>>    *
+>>    * Returns: 0 on success, -1 on failure
+>>    */
+>>
+> 
+> qdev/Device have vmsd, but not plain Object (or legacy code without object).
 
-Register these interfaces in common code in target_info-qom.c used
-by all binaries because QOM interfaces must be registered before
-being checked (see next commit with the 'none' machine).
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Acked-by: Peter Maydell <peter.maydell@linaro.org>
-Message-Id: <20251021205741.57109-2-philmd@linaro.org>
----
- meson.build                   |  1 +
- include/hw/arm/machines-qom.h | 18 ++++++++++++++++++
- target-info-qom.c             | 24 ++++++++++++++++++++++++
- 3 files changed, 43 insertions(+)
- create mode 100644 include/hw/arm/machines-qom.h
- create mode 100644 target-info-qom.c
-
-diff --git a/meson.build b/meson.build
-index 8ad37c992b1..de95da32699 100644
---- a/meson.build
-+++ b/meson.build
-@@ -3911,6 +3911,7 @@ common_ss.add(pagevary)
- specific_ss.add(files('page-vary-target.c'))
- 
- common_ss.add(files('target-info.c'))
-+system_ss.add(files('target-info-qom.c'))
- specific_ss.add(files('target-info-stub.c'))
- 
- subdir('backends')
-diff --git a/include/hw/arm/machines-qom.h b/include/hw/arm/machines-qom.h
-new file mode 100644
-index 00000000000..a17225f5f92
---- /dev/null
-+++ b/include/hw/arm/machines-qom.h
-@@ -0,0 +1,18 @@
-+/*
-+ * QOM type definitions for ARM / Aarch64 machines
-+ *
-+ *  Copyright (c) Linaro
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef HW_ARM_MACHINES_QOM_H
-+#define HW_ARM_MACHINES_QOM_H
-+
-+#define TYPE_TARGET_ARM_MACHINE \
-+        "target-info-arm-machine"
-+
-+#define TYPE_TARGET_AARCH64_MACHINE \
-+        "target-info-aarch64-machine"
-+
-+#endif
-diff --git a/target-info-qom.c b/target-info-qom.c
-new file mode 100644
-index 00000000000..7fd58d24818
---- /dev/null
-+++ b/target-info-qom.c
-@@ -0,0 +1,24 @@
-+/*
-+ * QEMU binary/target API (QOM types)
-+ *
-+ *  Copyright (c) Linaro
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qom/object.h"
-+#include "hw/arm/machines-qom.h"
-+
-+static const TypeInfo target_info_types[] = {
-+    {
-+        .name           = TYPE_TARGET_ARM_MACHINE,
-+        .parent         = TYPE_INTERFACE,
-+    },
-+    {
-+        .name           = TYPE_TARGET_AARCH64_MACHINE,
-+        .parent         = TYPE_INTERFACE,
-+    },
-+};
-+
-+DEFINE_TYPES(target_info_types)
--- 
-2.51.0
-
+Hmm right. Cc'ing Peter & Fabiano.
 

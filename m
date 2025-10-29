@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC517CCF9F0
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 17:13:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06151CCF9F0
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 17:13:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vE9gV-0005lb-L1; Wed, 29 Oct 2025 13:10:08 -0400
+	id 1vE9gm-00063s-Jn; Wed, 29 Oct 2025 13:10:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vE9gS-0005jQ-Oz
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:10:05 -0400
-Received: from 7.mo552.mail-out.ovh.net ([188.165.59.253])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vE9gg-0005wq-0v
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:10:18 -0400
+Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vE9gJ-00070S-Ro
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:10:03 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.110.58.110])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4cxYdS45Rnz5yh7;
- Wed, 29 Oct 2025 17:09:48 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vE9gU-00073Q-Q3
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:10:16 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.254.134])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4cxYdg68f7z5w3n;
+ Wed, 29 Oct 2025 17:09:59 +0000 (UTC)
 Received: from kaod.org (37.59.142.106) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Wed, 29 Oct
- 2025 18:09:45 +0100
+ 2025 18:09:56 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-106R0069d3c29ee-ea1c-4833-b376-e5e8eab47fce,
+ (GARM-106R0069c2c03e3-7137-4f04-b0f4-1da529f23ccb,
  1C4C5A15D30C5F2C89D761F8A9BCD43732F6FBF1) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 92.184.104.153
-Message-ID: <53f3d7e0-16f4-43fc-ac3d-c6dfa8ac7d43@kaod.org>
-Date: Wed, 29 Oct 2025 18:09:45 +0100
+Message-ID: <5dde8ae1-397c-4aa1-9bb0-134146829041@kaod.org>
+Date: Wed, 29 Oct 2025 18:09:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Subject: Re: [SPAM] [PATCH v1 09/13] hw/arm/aspeed: Split Witherspoon machine
- into a separate source file for maintainability
+Subject: Re: [SPAM] [PATCH v1 11/13] hw/arm/aspeed: Split Romulus machine into
+ a separate source file for maintainability
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
@@ -43,7 +43,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
 References: <20251023100150.295370-1-jamin_lin@aspeedtech.com>
- <20251023100150.295370-10-jamin_lin@aspeedtech.com>
+ <20251023100150.295370-12-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -87,27 +87,27 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251023100150.295370-10-jamin_lin@aspeedtech.com>
+In-Reply-To: <20251023100150.295370-12-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.106]
 X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: 9f14e0c2-743c-4cf6-9068-e5cfcd318a3a
-X-Ovh-Tracer-Id: 5358157657433017266
+X-Ovh-Tracer-GUID: cea70023-d35a-4a36-a06b-8bb4f9b89a95
+X-Ovh-Tracer-Id: 5361253884891007922
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGJtndeWzAcVmR3XQqv252AeEKBLpnCW+HIMR3QhdhXHEsRNZmTBWFtDuU6G+K6XLtB/XeQtVkaVEIms8z9pRt1yRQt5qfUQRWa1vgO4ljZG7KmZQIpeYzfsufFgQguJNkamwBp8BU5mKpdVzsE4CJJYW+iPhQhTOSpXMqHQ5Uas9wmwwo0I2RlKcjPHbwdNzRInedZEzld+taO0Ma/RRGS9Ram7OQgXGdQlRhrogme9kqwmVbSsmaQ2zYV/ByLPjk7mGrz07y/gMJmTxHLVoOA97IjGia3ClVPINkGCFkzHQhoyDv8PBvWtxprOEDa09El/jlk1VPGy6oBC4ZR2S8yBs0BneN0E6zmtBdByWb4DtoSqSvXTeKCU+U9sWCum5/JDswF49MBkZRl5tFCD/3ZGbM7F8hH0d+Yg36oaR2D7NCGD9tjFH+p1MuQB27ngQHpcXOVmCjYuZJfA42J7wW85IOR0ICcEMDtdTWk0eSXPpD5zNlihX1n87JPl8e9DnkWJ5TBYBkmZNFrXVwoU6zbAkphCp/btrh1jvJeQ84zk1nolBHtFdtPGxnnjNYnPMF34zLbo1jMTpSEjdd8CL/EpSssx7MeWN8H5LInHLvYyXJi2fPWHx30wVFdq1GsyLy4MPyAkbwfZ05YDrI3tZ8p6Kb6xhpgykoqbBt67XR/4w
-DKIM-Signature: a=rsa-sha256; bh=49Quk4wfVjVvkIi10eICyYRNpyEevpD5m5lPOfjP9SA=; 
+X-VR-SPAMCAUSE: dmFkZTGJtndeWzAcVmR3XQqv252AeEKBLpnCW+HIMR3QhdhXHEsRNZmTBWFtDuU6G+K6XLtB/XeQtVkaVEIms8z9pRt1yRQt5qfUQRWa1vgO4ljZG7KmZQIpeYzfsufFgQguJNkamwBp8BU5mKpdVzsE4CJJYW+iPhQhTOSpXMqHQ5Uas9wmwwo0I2RlKcjPHbwdNzRInedZEzld+taO0Ma/RRGS9Ram7OQgXGdQlRhrogme9kqwmVbSsmaQ2zYV/ByLPjk7mGrz07y/gMJmTxHLVoOA97IjGia3ClVPINkGCFkzHQhoyDv8PBvWtxprOEDa09El/jlk1VPGy6oBC4ZR2S8ypXocOqwP8vDzIwwOvfE3b+5lGe8ah+ErIbnPqhrLIt3u2Du3QXy6dUFc/alk8DL9KEvJwStpSCZkh/mmbKCL0nSGbVInMkDffBtZlRZ2kRNMmYxwtUfLOFShWpLCmsWq9xvGJvEoLNGSoCAFnJ09R6vzOQsuTuUdf3ljSHWRmvl7fPAoBa7taKBOrQRPVgcsKWTfdJBAzEtRbh4Ym7CBFJywfgYOulrRPcKlbAP1HRiUy3gVF8njJvm80y2XvBy/HJS4PD01lMfn7wdoVdVnw4N8fQGA9Iub8XwmdhQ+85BYw8SArlpup1jUPY0NwiSlX+nQQHdpRY8qNsTsHWXjmA
+DKIM-Signature: a=rsa-sha256; bh=FfvgtSbZOhYBv9FRD8XVFEQ07LdixyR9Vl1F2KX1WyI=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1761757788; v=1;
- b=ZwQ0JsXt1ZTZjy3WZba4yMs3Zr3i6qbRRnyXL1kILCw3moqQEAzWy/aiKN2Y6Wmnt6rzksVj
- wlM/kzdu7LGJzKKT8E6235b2/UkZ5aHU//W+EPiWPEvbbfegu6qq0TTn91pej8Z9+FmiXN1Dfs4
- 6bODwxZ25meQ46AeHcnh+fESHQHm85JfXyAMbEUr8UfsVCIPZQXLBym8M77iGgrJU3uvD8njycr
- MKIgV4ECAxXAaUTDvwpNwgGWTGtnG8A6bH6Z2DJ6QMIwJOKHKlHKZpggGyX0rrXumENFdPg9ft8
- sAzhWUw4KYGfUw6bSpoEwdAvHFifu0B/1DVSiot+CjwNg==
-Received-SPF: pass client-ip=188.165.59.253; envelope-from=clg@kaod.org;
- helo=7.mo552.mail-out.ovh.net
+ t=1761757800; v=1;
+ b=FGpazUpKTHXSWeaABYUx2l9N3bfqXR1hsM0TIA8X36OxhNiRubTj1MBHaNbGVHiYa5kTYTea
+ vedkQBA4hl0GVRNk1977KQmQwVm2mhMWmDCWqUaifnVqAlIeqNSshE8tCHx+uOuWmuaNuhBbH31
+ P2u7Mx3J6XK+jWeUVt3824KAtDHsuKXe8rF2KNKwVMA2ON5cUaQiIlEE90RNDynH63rvfanO6jJ
+ 6oz4kHE7PnGgHOLv1Zxr8qKHjTkAPuydJ5mz2jGWIRPyy7TY9SjGZ6eQtkLtL/+WHJSuvn0uh/q
+ JL87Bib6uz9GwSPYwAqnRC9lz6Y3P2yRyFt8x01lIvk/g==
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo529.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,37 +132,34 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 10/23/25 12:01, Jamin Lin wrote:
-> This commit moves the Witherspoon BMC machine implementation out of
-> aspeed.c and into a new dedicated file aspeed_ast2500_witherspoon.c.
+> This commit moves the Romulus BMC machine implementation out of
+> aspeed.c into a new standalone file aspeed_ast2500_romulus.c.
 > 
-> To support splitting Witherspoon into a dedicated source file,
-> a new WITHERSPOON_BMC_HW_STRAP1 macro is added as a copy of
-> ROMULUS_BMC_HW_STRAP1.
-> 
-> The change is part of a broader effort to modularize Aspeed board
-> definitions, allowing each machine type to be maintained and updated
-> independently. By isolating Witherspoon logic, the aspeed.c file
-> becomes cleaner and easier to manage as more platforms are added.
+> The refactor continues the modularization of Aspeed platform
+> definitions, separating each board into its own C source file to
+> improve maintainability, readability, and reduce code clutter in
+> aspeed.c.
 > 
 > Key updates include:
-> 
-> - Moved witherspoon_bmc_i2c_init() and related LED setup code into
-> aspeed_ast2500_witherspoon.c.
-> - Added WITHERSPOON_BMC_HW_STRAP1 replacement macro for local use.
-> - Removed aspeed_machine_witherspoon_class_init() and type
-> registration from aspeed.c.
-> - Added the new file to meson.build for compilation.
+> - Moved ROMULUS_BMC_HW_STRAP1 definition to the new file.
+> - Moved romulus_bmc_i2c_init() and related I²C device setup.
+> - Moved aspeed_machine_romulus_class_init() and type registration
+> to aspeed_ast2500_romulus.c.
+> - Added the new file to the build system (meson.build).
+> - Removed all Romulus-specific code from aspeed.c.
 > 
 > No functional changes.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/arm/aspeed.c                     |  81 --------------------
->   hw/arm/aspeed_ast2500_witherspoon.c | 111 ++++++++++++++++++++++++++++
->   hw/arm/meson.build                  |   1 +
->   3 files changed, 112 insertions(+), 81 deletions(-)
->   create mode 100644 hw/arm/aspeed_ast2500_witherspoon.c
+>   hw/arm/aspeed.c                 | 42 -----------------------
+>   hw/arm/aspeed_ast2500_romulus.c | 61 +++++++++++++++++++++++++++++++++
+>   hw/arm/meson.build              |  1 +
+>   3 files changed, 62 insertions(+), 42 deletions(-)
+>   create mode 100644 hw/arm/aspeed_ast2500_romulus.c
 > 
+
+
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 

@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5684CCCF9EE
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 17:39:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10387CCF9EE
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 17:41:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vEA6U-0004Ti-EC; Wed, 29 Oct 2025 13:36:58 -0400
+	id 1vEA5h-0003gd-A8; Wed, 29 Oct 2025 13:36:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vEA66-000466-Je
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:36:37 -0400
-Received: from p-east2-cluster4-host5-snip4-5.eps.apple.com ([57.103.78.196]
+ id 1vEA5g-0003gE-4b
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:36:08 -0400
+Received: from p-east2-cluster1-host9-snip4-2.eps.apple.com ([57.103.76.105]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vEA5b-0003Vi-5q
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:36:33 -0400
+ id 1vEA5N-0003PL-L2
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:36:07 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-10 (Postfix) with ESMTPS id
- 36FAD18270CA; Wed, 29 Oct 2025 17:35:51 +0000 (UTC)
+ CF1C91819DFB; Wed, 29 Oct 2025 17:35:32 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=RQfGDhZ4RUZHZEjwdTSwWBJnMpGjZt55WjAucF76QqE=;
+ s=sig1; bh=6QHLe7sI/ta/TpnlofGbhZSXfY72nxkqv2tu61id1Xw=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=Og0lpMSAMT6wNRUOD7q7KKlcN4NmvQ5VKPRconC5MGn4v2iYnIQd5SaR1eFjzPUApKfT3dHha8o5aTIwzm/bOwBuE5AbFtXnAbgvwtUeLiPLH8OktuAr7vCi78jRf5Hs8XyjHG525W9HS/jey4IlU5Y76A0hcN6KPvva2yj1Not9xIdvNBKEfiC4ZVizHWn2nPJEhzikFrdHfcW6Gj69EocZ5tTL8I3ZVR5t8XuhTnIdwGAGtH5RPbmQK2ORH7tmS6lDfXFEmfAutKctCioPzjOuukHTk8AbwesFxhK4um9QZfRMELsDIppOWSdQnjSfOKaqNZFbU46Oz13MTH2w0A==
+ b=ACmYPaOK3wlGjvAw7EvZwc3GPi9M6yUHeduX0TArOzYayJqx2WN4hhQ1/eVEcUhDWN68CUoIQ/jJqCsbIt86WyMpwAJtWCE1qoBlRsVGUXgMBEj4TrC/bWmhdWXGKbXR+xdI2v4IIjLwXqFV1VevdimfPuBRwc+0Tipz530Xe/vVlXoCq8bMVwbhDmH7VaUvjdnKIvtBERUN9lcrdl760Y4r+Ywfbjm6tnuOsBLq/fB0JzWMszv8fXnArahqScbWZwmJjZMJbGYFmpji386OZ76DfXlTDwEac6WBOTmfQ9YDK+AXyQXdMrYGPOUS+yz3tLoeXE22wJ+1s6iH46E5Mw==
 mail-alias-created-date: 1752046281608
 Received: from mac.home (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-10 (Postfix) with ESMTPSA id
- 935F1182A805; Wed, 29 Oct 2025 16:56:10 +0000 (UTC)
+ 8FB58185FF7E; Wed, 29 Oct 2025 16:55:49 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org,
 	mohamed@unpredictable.fr
@@ -41,38 +41,40 @@ Cc: Pedro Barbuda <pbarbuda@microsoft.com>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v10 25/28] MAINTAINERS: update maintainers for WHPX
-Date: Wed, 29 Oct 2025 17:55:07 +0100
-Message-ID: <20251029165510.45824-26-mohamed@unpredictable.fr>
+Subject: [PATCH v10 18/28] docs: arm: update virt machine model description
+Date: Wed, 29 Oct 2025 17:55:00 +0100
+Message-ID: <20251029165510.45824-19-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20251029165510.45824-1-mohamed@unpredictable.fr>
 References: <20251029165510.45824-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: u_BLb492WGui8n-_TSGCe-N85hjru3_9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDI5MDE0MCBTYWx0ZWRfX01J0gTkD/B7a
- mR5aE5y2WwmYlVvBfmn2HydI3m7yWzWZvNwLk6ifNRoEL76ADQiJFnuBqe/ZIk/AYSwMpfr4yTP
- FR7WvR0OTLAoxqznPjjJVGstifjIr4Wtcfd2ZwTtin9jxajBr7RZleuLByFh2aXbvX8WdQ6iN1z
- lFP/M8wAqo5Lwtf9KSPg4Yc8kTqtfZ3Xi4pA0EG2lSfhguBxi6Q6A2mhfmrLFDo4CfrSJGc8XDg
- AwwmH3MjPp6QZXGrzN7aWHJoqaA0FykKNQgkCk2edNLRNFNPWSKdduYPr2la6ksJePDH1aPyA=
-X-Proofpoint-GUID: u_BLb492WGui8n-_TSGCe-N85hjru3_9
+X-Proofpoint-GUID: 09__zpetjAVAmnjb9JSUTN-KIG__7UPg
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDI5MDE0MCBTYWx0ZWRfX6ZnYYUI/zEGM
+ ZqSFf7B4pEv9lGkP/n1Eu4fWwRx7qUq+3m2bbWDY9X0yhU9aBXFvV83CYjWgB8BQFn33tfKZbmi
+ 0JJ7GHoia9Sq6Lw7gry0rW1ZdHahRQxBdmI+NwMIusBcWhV4IvW+hqx2IFF2gEo524gJzRTdG4y
+ xjVeofpCTOOCqKwE8/FXMJ9n7EbMmvk5Ku2Ir305Z+Lzx7BDkE5Iv1Y8a9z7fT28ahYLwhuNJ11
+ c7qXzCuHivM4IEaYt0bKV7KKaNHYbt0f2hQ3V8Q1S6ApiDOZTdYm03O4rIqxvHN7+wGFseu24=
+X-Proofpoint-ORIG-GUID: 09__zpetjAVAmnjb9JSUTN-KIG__7UPg
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2025-10-29_07,2025-10-29_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
- suspectscore=0 bulkscore=0 spamscore=0 mlxlogscore=611 malwarescore=0
- phishscore=0 mlxscore=0 adultscore=0 classifier=spam adjust=0 reason=mlx
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ adultscore=0 phishscore=0 clxscore=1030 mlxscore=0
+ mlxlogscore=810
+ bulkscore=0 suspectscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.22.0-2506270000 definitions=main-2510290140
-X-JNJ: AAAAAAABhEdBocgLw5z/lTUEAjHxoDxoYPL38zcwLZuVQDTWY8jHATlSWVc0bdGyylpTpXr4DSDStAjL3Bm72OZsQi4QrhHIBqTCVyMxGAGaCbVnNLgg+YwIzHypYr7Pv5bju1z3hrmxTAFAYCXdTV2FS7bRzOYQYfxCGtsdXNxkZN0T/dRuElEcTIK25xTqqHgT/XjotWCVAeYtVGK9jodt4sxKLxq2IUXDZzAdFOOOT27ZbcWI1UIt/uAV5GgpTZEKdQpuwSKG3U3fm/9v6e0fcEOywW30VXC9tfbqvdAQiQ5PeSNiLB/ciuNspPXBdmsdsg61lFG0KD5OYrcWlt14UlyWRr6Wpr8vgzaSip5uZqgz8fUeZ92UlVJVv1rFVx2+WgsAdXuk4o7NoDXbEJfXWplXehXT2+7HQL+L8fObUksZ+MGzkePbjT3E5MPCzDDjqJl5OiREkLqHiRLpksNxXp0xjXJT+jKseM5vdjqg8aDyvczi5gL0mkZcJctTcuoBxEMpOiF8kE38warwUTagF6W+wUhSPBUQY/ZTnMACRYOuwRDUF1KddY8R77huIOlx657SongoUnxV7zJbbUTQWh4rpvzk12d4J8Fp7aRHQMCVFhVFm0Yl7ohuG1haOMe96cqDEMOGI42lMZBTPJWo2tvZX9+DcSkzHZNjwKYZ/Ys4D5UFioIu0aji6BZOQLpNVzPhsTXLiB6Jn2lzc1ACZynQvLTYOsd2En0Thahca2xrBwIVfC5nORdf
-Received-SPF: pass client-ip=57.103.78.196;
+X-JNJ: AAAAAAABO9Iz7HPx/694WUVTKGEvYK73zyEiPiyWIZNVWm+usUBa6BbBQcBTidc3q8tycRfv/30ARlc/rcAA4I7ECnr3/48tVGCw732HwktasRgComaY19RftBVJ1r0qDcoZdA7Nd5554jggJLJZkVxqHdv2kWgLOjM671vzQfA2NOyIw/CBgyxGirNT/2iyoVFoGEjN157w7J5GRUE3A+8DOvOAfhHHf8B0jsXKmm8vAcWLNXpCmYAtq9tD0MVKaCp4b/fDcyqBSL4HsdueJu2SREZb/o44d1aPsEWXOoQO7kT81R7IxTWPDfqDduZrowhL5Pi/VSseXN+ZBnXh/Ynd0njdwFYCjDA0FSOCaL4+OXfpMDfRaZcCf36NiGHDZnlhDVrZerubvJwADRzW7xR1imDxnsu/CMoWEwCtO/u36FXRErcZJWib6YMjcUds5unX076OA9yBtfkiN/Wpst2QuWZqyC01ZnmpZUZge53j0EMIDcBaM+31eqG1wqXxHBbQE2AxouNQeyBdr4W2m32/wc3QPZllit9bjtM+fve3C9e2W9jHvXFYtbZEgcNjx+1WScV+zzikbdtLbZzOZ+lmJDnbUiQr1sIadenzdnNeWe4A7DvDGxfQP5l/yE0Ed7ms3GRG0w0Ji1P1fVBi56fsuFaLsFfnLysacMLmjehnsFLsNbRQj9Ujn3tbXkSkHnHWWf0nxG7xIO7+s5x1TDME7omVVgJIt28AADsu3gNs/6WFgfZFqYFdBkFoqo8=
+Received-SPF: pass client-ip=57.103.76.105;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,38 +90,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-And add arm64 files.
+Update the documentation to match current QEMU.
 
-From Pedro Barbuda (on Teams):
-
-> we meant to have that switched a while back. you can add me as the maintainer. Pedro Barbuda (pbarbuda@microsoft.com)
+Remove the mention of pre-2.7 machine models as those aren't provided
+anymore.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- MAINTAINERS | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ docs/system/arm/virt.rst | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c6b7f45459..0e7288116f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -546,11 +546,14 @@ F: accel/stubs/hvf-stub.c
- F: include/system/hvf.h
- F: include/system/hvf_int.h
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 10cbffc8a7..fe95be991e 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -40,9 +40,10 @@ The virt board supports:
+ - An optional SMMUv3 IOMMU
+ - hotpluggable DIMMs
+ - hotpluggable NVDIMMs
+-- An MSI controller (GICv2M or ITS). GICv2M is selected by default along
+-  with GICv2. ITS is selected by default with GICv3 (>= virt-2.7). Note
+-  that ITS is not modeled in TCG mode.
++- An MSI controller (GICv2m or ITS).
++  - When using a GICv3, ITS is selected by default when available on the platform.
++  - If using a GICv2 or when ITS is not available, a GICv2m is provided by default instead.
++  - Before virt-10.2, a GICv2m is not provided when the ITS is disabled.
+ - 32 virtio-mmio transport devices
+ - running guests using the KVM accelerator on aarch64 hardware
+ - large amounts of RAM (at least 255GB, and more if using highmem)
+@@ -167,8 +168,7 @@ gic-version
+     ``4`` if ``virtualization`` is ``on``, but this may change in future)
  
--WHPX CPUs
--M: Sunil Muthuswamy <sunilmut@microsoft.com>
-+WHPX
-+M: Pedro Barbuda <pbarbuda@microsoft.com>
-+M: Mohamed Mediouni <mohamed@unpredictable.fr>
- S: Supported
- F: accel/whpx/
- F: target/i386/whpx/
-+F: target/arm/whpx_arm.h
-+F: target/arm/whpx/
- F: accel/stubs/whpx-stub.c
- F: include/system/whpx.h
- F: include/system/whpx-accel-ops.h
+ its
+-  Set ``on``/``off`` to enable/disable ITS instantiation. The default is ``on``
+-  for machine types later than ``virt-2.7``.
++  Set ``on``/``off``/``auto`` to control ITS instantiation. The default is ``auto``.
+ 
+ iommu
+   Set the IOMMU type to create for the guest. Valid values are:
 -- 
 2.50.1 (Apple Git-155)
 

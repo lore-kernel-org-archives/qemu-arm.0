@@ -4,147 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2562CCD1BF
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 08:03:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DB7BCCF9EE
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 08:11:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vE18Q-0003DD-HH; Wed, 29 Oct 2025 04:02:22 -0400
+	id 1vE1HB-0007XH-PN; Wed, 29 Oct 2025 04:11:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vE17W-0002mS-W1
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 04:01:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vE17M-0003HU-3x
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 04:01:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761724872;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=uLXSoRHam4XODuFX6V9SmzU5hdolKnRMNDurEhPR/zM=;
- b=V8Gm7O/jU+F4QOK98elRdwwcZ4ctzySYMFuSG2jNVn2VJO91au+/aRU074yGK5AD8eK9W2
- 9MBUvozVkC1ENMDwN6UDJyGYXikfwsVWcu4GMRz02Z4xS2Xk8R7mqA7fB1Ef8vc9UOtx6N
- FOJGfqMmPkf419E8+ZOhKEZITVtWDsA=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-150-l7xyINfNM7q9aZoMGPCjpg-1; Wed, 29 Oct 2025 04:01:10 -0400
-X-MC-Unique: l7xyINfNM7q9aZoMGPCjpg-1
-X-Mimecast-MFC-AGG-ID: l7xyINfNM7q9aZoMGPCjpg_1761724869
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-47111dc7c5dso3438455e9.0
- for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 01:01:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1vE1Gj-0007OX-2J
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 04:11:01 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1vE1Gc-0004bK-Ip
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 04:10:56 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-4298b49f103so2431549f8f.2
+ for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 01:10:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1761725447; x=1762330247; darn=nongnu.org;
+ h=mime-version:message-id:in-reply-to:references:user-agent:subject
+ :cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=WMZtSrVCQzr0uAODDe4WO0RNkp8rQj/Tb5xXoORj8fQ=;
+ b=HTqGdX1b9cYtzfLe/lXs/E6s9TXDsizysHRc164jLydnkpCjF0HkRKSnbmuAMMbr7R
+ yIYVxMIWxAcUyE66zveT8eAs5wLtIZ3AS+g+dLCjiE0nsvKQuhy9EKhqUyXMPvqizmC/
+ Eiz4OEsglIIw7vK+DSCDw9310tLx9qupDbLRPLtNPj2q7Cdp1T2KjEFn641xolLkHSJ/
+ C4ySjcwOSqQbxeRjnqcJQNkdhLW2Lkh1DKKcx4R5xOyrfsuDyi/k1knPSveKn7NuTJc1
+ AIufqP+h+KrkMav0XLJPouYg9PQ5BFdbaBH3I9qWyOfEHFlhaDS2vPXuxFDiGVX0t1qU
+ xAgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761724869; x=1762329669;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=uLXSoRHam4XODuFX6V9SmzU5hdolKnRMNDurEhPR/zM=;
- b=Q8GHTWAJT5NWocFx7SeGBhNWj78MV4pbv8vw3hCLZrXRACs6IqmlfnTNaL/J+H53va
- 4u2NJD/O2E2T4y3Qy2baoSHPfyfuJqM6Jw/7LFIIFGSVYkqM03Ze+808NIZhFaQSo4dZ
- Qx+Y8tjzDLfbLj0XAOPympguDw6HA0Wj3veQZax+Fxij3wQM8Vf1ogX1VVsB2yRPAjtO
- rDJPMlvQpK7b6V5aF+5C54db8LmwVbZM7jUnSDTC9e2SaipsGw+5NderZ3VOS9lorNCe
- unTs4L/fw3kD/WIGERhBGgV3WqQ6UhZ0pnk7snIdMVMeaymUDXBQtqQ/96bKRXClgnW4
- XBIA==
+ d=1e100.net; s=20230601; t=1761725447; x=1762330247;
+ h=mime-version:message-id:in-reply-to:references:user-agent:subject
+ :cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=WMZtSrVCQzr0uAODDe4WO0RNkp8rQj/Tb5xXoORj8fQ=;
+ b=sz5cMdX6h70RrRpM+Pta42o+0I0eYv+wCnxlf9loINWaHQrixJSOQckcttztizAzUL
+ vfvagc8uLNVGsUNTUQqG6u1y/VFBNRLWobRJlRzbMdRxiNLPj6sf4ZoG9MLDgmIcDCWG
+ FU26eoGvFzP2BdMPl3dr0DQPgf8oIWASyUwZCZkyj7ZgUPD30EJGXKpuvr2iCPw7hPn+
+ QLJk4LBtHfIOcfOIm/3UGy1TPq0HnZAz8r2/9O/1HECZ89Vo+/V0XNX0euzSivD11QYL
+ k/uBl21z8Q7XqjAdlbcFTKR84FTVUhGb6KTGx7dy4Cz/RM88n61YNAmFfkZ7Gan2pldi
+ IpMQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWNp6u4SVQxl47FNWA3uIQO+P/Yjo1iwyrCLcRPU2H36qsTl2n/AB7T49jzEyNNnZXsmckP0fs60A==@nongnu.org
-X-Gm-Message-State: AOJu0YwIWAsD+rMNalPNPOSwbQ36cps96bk88yecmerw62TaX6q4ts8w
- ec9hQ4fLivVO+eWBN72g2DclgXU7Zp5Q/S0JPXawWrkyj4pZQOK1S6pNnTben3lG71+cNctYWbx
- nh2np1LVyxAvwXu4mMCiHj5yPddvusDwk4fI3R7u5rvo6tbyEcBABTA==
-X-Gm-Gg: ASbGncsZeZOtB9W5U8baofKTvTBELQluG2NweCJ+iTFiY6bc1o7+fojutI82wQhMXQD
- hJz+4emfE5EImRXfxUuuxuZkAyECGQMsl+uhXGtM6UesX9W5u2YxmA1ZyOnvd5HlrHY4NwVD3Ra
- w06dBORjtnqRTF+6zfoafd8RfXnKgBM/TQa4IiCpUco1X7G2OyMuyNdg+TWGiy+kik7MHnWbPYn
- +YkhX81mY503EdDCDHQSldV25bik9I6e1kX0mfbYfxt8qWrg5K0vKydzjzPPidmRAPgfDPIu7xw
- 00mzhlAeRwAwPRkKt2v6GZxQ/wjWB/DOlcOAc8vEfSzBeljy4e5EQglVAO1l8wv1pAVkDzQ=
-X-Received: by 2002:a05:600c:6d06:b0:475:de06:dbaf with SMTP id
- 5b1f17b1804b1-477181a46e6mr34152835e9.17.1761724868909; 
- Wed, 29 Oct 2025 01:01:08 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE5MyaZE3wF3ALC7Ez5Ufg67ebvu+/KhqekXlwQFwxluqxyur3m+SZ14Xg8tVPDKpjaxQJfsQ==
-X-Received: by 2002:a05:600c:6d06:b0:475:de06:dbaf with SMTP id
- 5b1f17b1804b1-477181a46e6mr34152595e9.17.1761724868419; 
- Wed, 29 Oct 2025 01:01:08 -0700 (PDT)
-Received: from [192.168.0.7] ([47.64.112.33]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429952da12dsm25281621f8f.29.2025.10.29.01.01.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Oct 2025 01:01:08 -0700 (PDT)
-Message-ID: <0a951fde-2ea9-4707-b80a-26d33475d35f@redhat.com>
-Date: Wed, 29 Oct 2025 09:01:06 +0100
+ AJvYcCVERZslp9Vk7eEPKoVzWY3oc9vaRGWhhJwGsmrLF82wKNfUai+bVlFy00bNcr+XonIRtvrlZVIzvw==@nongnu.org
+X-Gm-Message-State: AOJu0YxGxQL9zsxH+6sfHInOeRUY0mhNZeZyD3PfySUdP6Sfd1DvIHfG
+ Xw/1GQPG1v9Rx/1UqMMxkoTm81hsks7NBLEVKOkhofphhSKw9y2dnb4Luigo9+DtOqk=
+X-Gm-Gg: ASbGncu5B0cByWksujCZZ7FulP+wGhnwQRcKXDfR5ijf7nFZ2I6YM8M94Iz91jbmnVP
+ yPSGFc2i8kIBjvd4GyQ3w8+qNQlZo7EPsPRL2VRSzuf+p23OWlf9A6CI2q6w5CU0H9oFjTWMmWH
+ ecV4LuU8hrqgEL9IPZBd91LKHh9OKkqxRY6DCz7O8afepiSD2l13Hgr12zXezu5ktdEMUft5OrT
+ j1OyJjUQul7zOeKg7rUde5oQwqERDFnLUDt50OyfJ/dPg4N3hPIAe++BalehQlxqOhovJiA6x6D
+ Dz4cSHU20W6akrl5yq44ZRnpmtC1B6meeMRaolEq/z/BkTHYltsl5jrgha4JVSphb9naZPYzvB/
+ 4jqE/RjozDE9WlXBbkU7pBmNiU8wJFTfBr4KNFVaBJeTU4P0OnKEk+3Wq+KKef+dEg+JmopRWmO
+ QGf3Hh8SUmXQ4ynjJnt9Qu2YyknD7+rTGM99KSc7Bast39YD0F
+X-Google-Smtp-Source: AGHT+IGT7zOS85s9tlg3jilcN9QYaJKuyN0sURC4ERCaHbjy3qjLqWlaD+DPUcv8eJq6jQcxMchs9A==
+X-Received: by 2002:a05:6000:1846:b0:429:8d8b:fef7 with SMTP id
+ ffacd0b85a97d-429aefca3a0mr1393034f8f.49.1761725447248; 
+ Wed, 29 Oct 2025 01:10:47 -0700 (PDT)
+Received: from meli-email.org (athedsl-4440624.home.otenet.gr. [79.129.178.32])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-429952d5c9dsm25987917f8f.26.2025.10.29.01.10.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Oct 2025 01:10:46 -0700 (PDT)
+Date: Wed, 29 Oct 2025 10:10:24 +0200
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: qemu-devel@nongnu.org, Alex Benn=?UTF-8?B?w6k=?=e <alex.bennee@linaro.org>
+Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Alexandre Iooss <erdnaxe@crans.org>, 
+ Chinmay Rath <rathc@linux.ibm.com>, qemu-arm@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>, Nicholas Piggin <npiggin@gmail.com>, 
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ qemu-ppc@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Helge Deller <deller@gmx.de>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Stafford Horne <shorne@gmail.com>, Mahmoud Mandour <ma.mandourr@gmail.com>, 
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, 
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Laurent Vivier <laurent@vivier.eu>, Weiwei Li <liwei1518@gmail.com>, 
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>, 
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9_?= <philmd@linaro.org>, 
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Michael Rolnik <mrolnik@gmail.com>, 
+ Song Gao <gaosong@loongson.cn>, qemu-riscv@nongnu.org, 
+ Aleksandar Rikalo <arikalo@gmail.com>
+Subject: Re: [PATCH 06/35] scripts/ci: modify gitlab runner deb setup
+User-Agent: meli/0.8.12
+References: <20251027110344.2289945-1-alex.bennee@linaro.org>
+ <20251027110344.2289945-7-alex.bennee@linaro.org>
+In-Reply-To: <20251027110344.2289945-7-alex.bennee@linaro.org>
+Message-ID: <t4vw1x.1ndc8wjayp8ac@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/bcm283x: Initialize CPU objects in SoC common
- DeviceRealize()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-References: <20251029075257.63635-1-philmd@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20251029075257.63635-1-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 0HPE_gw2_D57wJl-d-dxt37cgPyVqbu0cDR9o1gNIjg_1761724869
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Content-Type: text/plain; charset="utf-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, CTE_8BIT_MISMATCH=0.737,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -160,75 +128,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 29/10/2025 08.52, Philippe Mathieu-Daudé wrote:
-> QOM .instance_init() handler can not fail. QDev DeviceRealize
-> can.
-> 
-> The device-introspect QTest enumerates all QDev types and
-> instantiate each one, without realizing it, then introspects
-> the instance properties.
-> 
-> When switching to a single QEMU binary, all QDev types are
-> available in the binary, but only a filtered subset might be
-> available, depending on which previous target the binary is
-> trying to mimic.
-> 
-> In particular with the Raspi machines, the TYPE_RASPI4B_MACHINE
-> and ARM_CPU_TYPE_NAME("cortex-a72") will be built in the
-> qemu-system-arm binary, while not available (because filtered
-> as being 64-bit, for the qemu-system-aarch64 binary).
-> 
-> However the TYPE_BCM2838 SoC is not filtered out, and will
-> abort when being initialized, because the "cortex-a72" CPU type
-> is filtered out, leading to device-introspect failure:
-> 
->    1/1 qemu:qtest+qtest-arm / qtest-arm/device-introspect-test        ERROR            2.46s   killed by signal 6 SIGABRT
->    stderr:
->    unknown type 'cortex-a72-arm-cpu'
->    Broken pipe
->    ../../tests/qtest/libqtest.c:199: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
->    (test program exited with status code -6)
->    TAP parsing error: Too few tests run (expected 167, got 5)
-> 
-> In order to avoid that, move the CPU *initialization* in the
-> SoC DeviceRealize handler, so the SoC initialization won't
-> fail, while realization still will.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/arm/bcm2836.c | 10 +++++-----
->   1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-> index cd61ba15054..6e4066f137d 100644
-> --- a/hw/arm/bcm2836.c
-> +++ b/hw/arm/bcm2836.c
-> @@ -25,12 +25,7 @@ static void bcm283x_base_init(Object *obj)
->   {
->       BCM283XBaseState *s = BCM283X_BASE(obj);
->       BCM283XBaseClass *bc = BCM283X_BASE_GET_CLASS(obj);
-> -    int n;
->   
-> -    for (n = 0; n < bc->core_count; n++) {
-> -        object_initialize_child(obj, "cpu[*]", &s->cpu[n].core,
-> -                                bc->cpu_type);
-> -    }
->       if (bc->core_count > 1) {
->           qdev_property_add_static(DEVICE(obj), &bcm2836_enabled_cores_property);
->           qdev_prop_set_uint32(DEVICE(obj), "enabled-cpus", bc->core_count);
-> @@ -65,6 +60,11 @@ bool bcm283x_common_realize(DeviceState *dev, BCMSocPeripheralBaseState *ps,
->       BCM283XBaseClass *bc = BCM283X_BASE_GET_CLASS(dev);
->       Object *obj;
->   
-> +    for (int n = 0; n < bc->core_count; n++) {
-> +        object_initialize_child(OBJECT(dev), "cpu[*]", &s->cpu[n].core,
-> +                                bc->cpu_type);
-> +    }
-> +
->       /* common peripherals from bcm2835 */
->   
->       obj = object_property_get_link(OBJECT(dev), "ram", &error_abort);
+On Mon, 27 Oct 2025 13:03, Alex Bennée <alex.bennee@linaro.org> wrote:
+>Both Debian and Ubuntu are setup the same way.
+>
+>Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>---
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
+> scripts/ci/setup/gitlab-runner.yml | 6 +++---
+> 1 file changed, 3 insertions(+), 3 deletions(-)
+>
+>diff --git a/scripts/ci/setup/gitlab-runner.yml b/scripts/ci/setup/gitlab-runner.yml
+>index 7025935487a..76aeaf4ee95 100644
+>--- a/scripts/ci/setup/gitlab-runner.yml
+>+++ b/scripts/ci/setup/gitlab-runner.yml
+>@@ -56,12 +56,12 @@
+>         url: "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh"
+>         mode: 0755
+>       when:
+>-        - ansible_facts['distribution'] == 'Ubuntu'
+>+        - ansible_facts['distribution'] in ['Ubuntu', 'Debian']
+> 
+>     - name: Run gitlab-runner repo setup script (DEB)
+>       shell: "/root/script.deb.sh"
+>       when:
+>-        - ansible_facts['distribution'] == 'Ubuntu'
+>+        - ansible_facts['distribution'] in ['Ubuntu', 'Debian']
+> 
+>     - name: Install gitlab-runner (DEB)
+>       ansible.builtin.apt:
+>@@ -69,7 +69,7 @@
+>           update_cache: yes
+>           state: present
+>       when:
+>-        - ansible_facts['distribution'] == 'Ubuntu'
+>+        - ansible_facts['distribution'] in ['Ubuntu', 'Debian']
+> 
+>     # RPM setup
+>     - name: Get gitlab-runner repo setup script (RPM)
+>-- 
+>2.47.3
+>
+>
 

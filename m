@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0091CCF9EE
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 13:47:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23E30CCF9E9
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 13:49:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vE6Vp-0006iv-Fj; Wed, 29 Oct 2025 09:46:53 -0400
+	id 1vE6Y3-0007ns-7F; Wed, 29 Oct 2025 09:49:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vE6Vf-0006Wl-OW
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:46:43 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vE6XV-0007eU-Nz
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:48:44 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vE6Vb-0003EV-Fc
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:46:42 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-47112edf9f7so48128135e9.0
- for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 06:46:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vE6XG-0003Zq-Sa
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:48:33 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-4770c34ca8eso33722545e9.0
+ for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 06:48:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761745594; x=1762350394; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761745697; x=1762350497; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=z28ZgmiJC98xG744tnvm/mLyRQR8+/6a2JjELzwEK+8=;
- b=uDvUx0p6lKpAHEB3skcFw22s5kFji73b2XQ3oiQEFdQF7eWEdotxNnzRUNQTRk+DHy
- jdT9OatZWeSoI6U87Da/Ksn3Ukw3djylkUHk2CR45878tjHWDYFLv4rmXlTIVzKDpO/t
- boQaweBGStZMo/s9RO3TfTfSxPkpoEfVUhCimxP8ESY4nZBFLnk9NHpyu1jTW8+YjYEe
- 3u+AUNpvnTU0aMVe5/yDinZJl+xLUwSTBycbmKqtmyqGEQGx3hyWRDvBHpMgUrp7NTee
- 8yectzepwgIw5JmAuvrQnYNhQ/hjgawZKK5jmV1pb6WB75IbaY17T6gGn477smwLWpaH
- PZbA==
+ bh=c1qQvbqi4yBxcPcwn4iVcr8K3QLP8jEh1kZNbm4KrPQ=;
+ b=Nifd+fhdhxIqnyfYDT3hCwwT1tkekHjaG+74xjVk6L9KVQApQ8p8mnWYlwLeeT1BMM
+ MBixYTCc3SpOnoI4H4Dn5GZkiUPfpSVXhVxfRa/gjzyJJU7ATUoIebu+ZJSi1uNyZSqj
+ L1nsu9o1ryTt8Z28/MJZ+qiAXtfw82fMNrFRoFEy/1NqdQOYfuthX7xZlIDrhJTsoObc
+ 45cF2p3CuD5HBK2efrNTKNDEWxQq6zdaCPGVzuTsg7zXOsJ12FAaFwSOoF2PhnEQXpSk
+ u4UOr7XB7XW0ol3A4prYyE7OoU+dxAKBQaGKrms7X95V/DBWmIwy0WZXNrUdPyYc/Yyz
+ 13Aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761745594; x=1762350394;
+ d=1e100.net; s=20230601; t=1761745697; x=1762350497;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=z28ZgmiJC98xG744tnvm/mLyRQR8+/6a2JjELzwEK+8=;
- b=l2L85S+0rwcYefgTE9c4xzUx+N6NN/X0pyDWCkUCSTgT2ewOuMpatDZVvP0VXnRGBH
- IE49TguVl3kAKVGKf5T91Xd6AfFEbUIqK5yp0WB4vk2jK21jsx2Bsx0JX1CwxR3buV06
- l7LjYRdoapx21TsrjCOXJBAT4sudUMpoF7CvRQlBoFWN0gkKJ1j5XE7FbxqLwsE/ytHj
- Y93sIkBCpXwRFn/+9/jL/mBFSi+Lofl3b0k5YvXawWVvzDJPiujJrEYmFfsY8UdAv75N
- yzJGX/fmai1yqEshrqfyU6y+EQpzS3e7+2FAxHksTlAnaVRFaX6ZgmmyyhLGlMZJyUlk
- kPug==
+ bh=c1qQvbqi4yBxcPcwn4iVcr8K3QLP8jEh1kZNbm4KrPQ=;
+ b=LwoHeXJ8bFZ8QEtj0Ci0h4Gni8uE5DmwwScfizz5CGsVvlQ/iYDeP5nHt/4yd9G+9M
+ o0ieWe3Ggbzb1P+diGK0ELTA11wtwKYX58OipNPN5BFZn3Z4Azht9CR9sqYMkFEp/yg9
+ h1qtp50yQNSy2FEkVQGn0qelHscuVJVbtLnunzfgsuQdX8O48offncEUp8L9SL3oszmQ
+ HXjbEt7HdkYMMG93kHXv7lXDloVnL51la+H+xxGHHEasmmURplBUnHJ6R+URwuvi3QMW
+ x8xyJ6i+3sPVsITuhLwNwKnXrKNvnxat6DUJ1Ne05ML+sgjAYBMUVNT3m0gjVItmXdAL
+ hf/A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVIKII0P0N31zxqXf43gX47eAhSea84JVOD/SqDnKZV1RjtcsyS6+igSP8K0LWEd/iP4w1eZowYMA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz/O+2A1INVGfumz8SSNC0cq/h23UEuVKYzCdSjdxNeQSDqywgV
- w9hg47wwakqL0xLqK4DV0UbmcjUtbev2FnvWnDFoic644pygg/sidT7OcXFJqhvrCR8=
-X-Gm-Gg: ASbGncttPfa7hVxnzHj9wCw+fIs4678Fe+gwOjidvZcRD7g2m3x4iTboyqC2iKOtqHw
- UcgGPURcr5OxxcK667+j1Eultk35zayNHNouA3DH00U1jcojqXnFQx+M5GjeYP6AB33LsYkFEg5
- 6ht9lMzQk7bH9NSFfheQhAdmiFM3XhkZdsacav7SChLnH2p1+be/ZlmppEM2vtTqruaQ3rfO30H
- uctSWbnqjkr1Kywm01orXMALEoSMQ76gowtplmqb6uU0WsWsQRJymlV7dtM2g/yyDXjwyWvCf9g
- zmr0essPTF8mKyrULPDRKFfEwrM8NqICb46GOA6A3JjrnaQs8CBbJXnJuKAIuaePPnw0Z+tVijy
- IIxEHMsCyz/TRQKoYV+32L9UnKW9WNb/6PpGOXiDr5ItXsktPjFiweuJkFcq4sOHBqo7Q8qQnkG
- qBcWjzvpgnngTgMc0IFG4xH/F94o4kdzwvDzEb4c+8T80=
-X-Google-Smtp-Source: AGHT+IFIu73iiIADnrroCFGtvADc8jRFxaiWtlWiDzbPB81VMgN4QXbSZR1uA8Q2DELznMuRB4CHTQ==
-X-Received: by 2002:a05:600c:530e:b0:475:d8f3:71c1 with SMTP id
- 5b1f17b1804b1-4771e1e01a2mr26474835e9.27.1761745594359; 
- Wed, 29 Oct 2025 06:46:34 -0700 (PDT)
+ AJvYcCUGUKtzgIRq2VVxKujqtF6PH3/Zdly7w9aMXBwUjMu5cIVmw8NGOdXE2SJd/Si2v4bSOyVWxuMMUA==@nongnu.org
+X-Gm-Message-State: AOJu0Ywn9FYN7qskRhOrBrfjI0972CnBcskuxNTMI9eGypToeldtEiRW
+ M9sOAxxU01+A523zbywgQSLrAAxl1GaRyHpYUsIQKudfVHKbuV1Adheot8rZJjOjazg=
+X-Gm-Gg: ASbGncsBsDbWUc9oZ2O+y4UX95qWGA6rjQs8SPlKlKYjyM5bJd/xfe7jJ/l4COLLZ7Z
+ GFDtfGxKJwimTgso7BN4HT6Kr8/N3JDPzC7/yoU62gZ7jLdmjIouAYbG6SYO0HMRo+oi9xBYPIN
+ IBpoJL8FHuxqzX/YnDzU5qyAmlXxZfQi7+1wrU+DuZhuOh8z/m1m2kEEnqaLxEROBUJyUrjhsAX
+ d0DBkHhjbmR3rjSmInr7tXjdPF0cOOQNeFA9YL3cBiLfabFhybLdzEbQqBRAWIIEPqoFeeVdawv
+ ZDSaKMShU6BKygZ4uwr7gmIJ89UbtMfSN+K5qh91ysnawyANgLhN1QnoUVowA0hUNelUhrv9wBu
+ TdsB0LUDsIHXGsG2mKlsGug9OZePStLtMRMj4D1Wd6h7YEER6H3LMVNnBcA8VisiL4EnnOivOxI
+ bpoPEDVgXLXddw1M7ZYfYUAECUMcN8OX2fyVnHqHGPn0M9O+Q+ddttrA==
+X-Google-Smtp-Source: AGHT+IHbgr0INbXg6avQXJ3yz2hy02sD0qNDWaG3WATmfNqpeCTn4IE1Ha92zFGz3/IV2Xd7qcbGEQ==
+X-Received: by 2002:a05:600c:6207:b0:45d:f83b:96aa with SMTP id
+ 5b1f17b1804b1-477208d1be0mr21824675e9.7.1761745697226; 
+ Wed, 29 Oct 2025 06:48:17 -0700 (PDT)
 Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4771e20205esm48034695e9.12.2025.10.29.06.46.32
+ ffacd0b85a97d-429952b7b6fsm26617361f8f.1.2025.10.29.06.48.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Oct 2025 06:46:33 -0700 (PDT)
-Message-ID: <75120e9b-9362-4898-96d3-dec9cd7e137d@linaro.org>
-Date: Wed, 29 Oct 2025 14:46:32 +0100
+ Wed, 29 Oct 2025 06:48:16 -0700 (PDT)
+Message-ID: <ffab95ce-9b5d-43ea-93a7-611de6044ad8@linaro.org>
+Date: Wed, 29 Oct 2025 14:48:15 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 18/35] audio: keep vmstate handle with AudioState
+Subject: Re: [PATCH v3 19/35] audio: register and unregister vmstate with
+ AudioState
 Content-Language: en-US
 To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
 Cc: Alexandre Ratchov <alex@caoua.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
@@ -91,20 +92,20 @@ Cc: Alexandre Ratchov <alex@caoua.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
 References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
- <20251027151045.2863176-19-marcandre.lureau@redhat.com>
+ <20251027151045.2863176-20-marcandre.lureau@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251027151045.2863176-19-marcandre.lureau@redhat.com>
+In-Reply-To: <20251027151045.2863176-20-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,43 +124,43 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 27/10/25 16:10, marcandre.lureau@redhat.com wrote:
 > From: Marc-André Lureau <marcandre.lureau@redhat.com>
 > 
-> QOM-ification continues.
+> Proper lifecycle management with QOM state.
 > 
 > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 > ---
->   audio/audio_int.h |  1 +
->   audio/audio.c     | 12 ++++++++----
->   2 files changed, 9 insertions(+), 4 deletions(-)
-
-
+>   audio/audio.c | 7 ++++++-
+>   1 file changed, 6 insertions(+), 1 deletion(-)
+> 
 > diff --git a/audio/audio.c b/audio/audio.c
-> index 155809dee7..4c3c3fd52f 100644
+> index 4c3c3fd52f..853930bb48 100644
 > --- a/audio/audio.c
 > +++ b/audio/audio.c
-> @@ -1622,6 +1622,9 @@ static void audio_state_init(Object *obj)
->       QLIST_INIT(&s->hw_head_in);
->       QLIST_INIT(&s->cap_head);
->       s->ts = timer_new_ns(QEMU_CLOCK_VIRTUAL, audio_timer, s);
-> +
-> +    s->vmse = qemu_add_vm_change_state_handler(audio_vm_change_state_handler, s);
-> +    assert(s->vmse != NULL);
+> @@ -1614,6 +1614,8 @@ static void audio_vm_change_state_handler (void *opaque, bool running,
+>       audio_reset_timer (s);
 >   }
 >   
->   static void audio_state_finalize(Object *obj)
-> @@ -1671,6 +1674,11 @@ static void audio_state_finalize(Object *obj)
->           timer_free(s->ts);
->           s->ts = NULL;
->       }
+> +static const VMStateDescription vmstate_audio;
 > +
-> +    if (s->vmse) {
+>   static void audio_state_init(Object *obj)
+>   {
+>       AudioState *s = AUDIO_STATE(obj);
+> @@ -1625,6 +1627,8 @@ static void audio_state_init(Object *obj)
+>   
+>       s->vmse = qemu_add_vm_change_state_handler(audio_vm_change_state_handler, s);
+>       assert(s->vmse != NULL);
+> +
+> +    vmstate_register_any(NULL, &vmstate_audio, s);
 
-Already asserted as non-NULL?
+Please avoid legacy APIs:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-> +        qemu_del_vm_change_state_handler(s->vmse);
-> +        s->vmse = NULL;
-> +    }
->   }
+/**
+  * vmstate_register_any() - legacy function to register state
+  * serialisation description and let the function choose the id
+  *
+  * New code shouldn't be using this function as QOM-ified devices have
+  * dc->vmsd to store the serialisation description.
+  *
+  * Returns: 0 on success, -1 on failure
+  */
 
 

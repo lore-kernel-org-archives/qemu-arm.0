@@ -4,93 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89BD8CCF9E9
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 11:38:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53027CCF9EB
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 13:14:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vE4Vc-00013y-DN; Wed, 29 Oct 2025 07:38:32 -0400
+	id 1vE60C-00031W-G1; Wed, 29 Oct 2025 09:14:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vE4Va-00013L-P7
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 07:38:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vE4VT-0001Bx-Jo
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 07:38:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761737897;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=SCwgMDbPhJ0O3yx3UAnDBd+d108vD5e4HbzP0kHopYI=;
- b=dnR7Eg4qyQYfUJJ6UV0eGEErvMiMr4BL267Mv052M2T5qblpSHZJt8sh/0IqsCz8/wwy4D
- l2Qxyy+/rMA9RjNIes0I6MzT59WzWWp1twO6xzDJ0MdexsCaszEqTc+zBHzEWvSJawE534
- wlPyI9nCDvldcG/HdbgUkFr6volX66w=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-465-BSVWgjFNOiSFJp_VHw0bjA-1; Wed,
- 29 Oct 2025 07:38:15 -0400
-X-MC-Unique: BSVWgjFNOiSFJp_VHw0bjA-1
-X-Mimecast-MFC-AGG-ID: BSVWgjFNOiSFJp_VHw0bjA_1761737890
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5EFD11808998; Wed, 29 Oct 2025 11:38:08 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.18])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6728F19560B4; Wed, 29 Oct 2025 11:38:05 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 5CD5221E6A27; Wed, 29 Oct 2025 12:38:02 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>,  salil.mehta@opnsrc.net,
- qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  mst@redhat.com,
- salil.mehta@huawei.com,  maz@kernel.org,  jean-philippe@linaro.org,
- jonathan.cameron@huawei.com,  lpieralisi@kernel.org,
- peter.maydell@linaro.org,  richard.henderson@linaro.org,
- andrew.jones@linux.dev,  david@redhat.com,  philmd@linaro.org,
- eric.auger@redhat.com,  will@kernel.org,  ardb@kernel.org,
- oliver.upton@linux.dev,  pbonzini@redhat.com,  gshan@redhat.com,
- rafael@kernel.org,  borntraeger@linux.ibm.com,  alex.bennee@linaro.org,
- gustavo.romero@linaro.org,  npiggin@gmail.com,  harshpb@linux.ibm.com,
- linux@armlinux.org.uk,  darren@os.amperecomputing.com,
- ilkka@os.amperecomputing.com,  vishnu@os.amperecomputing.com,
- gankulkarni@os.amperecomputing.com,  karl.heubaum@oracle.com,
- miguel.luis@oracle.com,  zhukeqian1@huawei.com,
- wangxiongfeng2@huawei.com,  wangyanan55@huawei.com,
- wangzhou1@hisilicon.com,  linuxarm@huawei.com,  jiakernel2@gmail.com,
- maobibo@loongson.cn,  lixianglai@loongson.cn,  shahuang@redhat.com,
- zhao1.liu@intel.com,  devel@lists.libvirt.org
-Subject: Re: [PATCH RFC V6 22/24] monitor,qdev: Introduce 'device_set' to
- change admin state of existing devices
-In-Reply-To: <20251029110802.2ffa51e4@fedora> (Igor Mammedov's message of
- "Wed, 29 Oct 2025 11:08:02 +0100")
-References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
- <20251001010127.3092631-23-salil.mehta@opnsrc.net>
- <87plawh2sz.fsf@pond.sub.org> <20251009145125.6583a24a@fedora>
- <87wm54nmyt.fsf@pond.sub.org> <20251017165044.76b39f5c@fedora>
- <87v7k96cnz.fsf@pond.sub.org> <20251029110802.2ffa51e4@fedora>
-Date: Wed, 29 Oct 2025 12:38:02 +0100
-Message-ID: <878qguos4l.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1vE60B-00031K-LJ
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:14:11 -0400
+Received: from mail-io1-xd2f.google.com ([2607:f8b0:4864:20::d2f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1vE608-0006u7-Aw
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 09:14:11 -0400
+Received: by mail-io1-xd2f.google.com with SMTP id
+ ca18e2360f4ac-9459db1337cso430162839f.0
+ for <qemu-arm@nongnu.org>; Wed, 29 Oct 2025 06:14:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1761743641; x=1762348441; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=8CwDeQgHWOU78qj3vwExfKImRfRzicchWo0CiASgO6U=;
+ b=Ewc81KU4qA96UNEZJ31UPfNjialmkR9ypklbFfonU8tVhmVCz6xGQh5yKki8bnia1n
+ dg1yk/6rUz1L1GTgZrMRQlNIvZD4UySCNR3WK6YkqmSJ3c10sfwufxpeHkMamLklY4FZ
+ +mJcVpyBMMRZVItVUtQlefp9pAnQdg92t3lOMBr3eDKlB4wTVqAfLOtZt7rt1sb0Hny4
+ kB8kcM6knlPW+J3HW99vcw3MwuwcJxs+h2Pki7ADLi4yRvGFIr7orfaWHAvyXUhkyira
+ 2YIJJ2Xx5Hbogn8iJoN7p3vKSIgMUCsS9DpBkQUZY+ahm/wU+WDpqHhLfqazPIiJTAQ6
+ gUBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761743641; x=1762348441;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=8CwDeQgHWOU78qj3vwExfKImRfRzicchWo0CiASgO6U=;
+ b=OzvKfKG5uyZdoqLPfiygYW+BXsSfT3ReK/OATLGjpapspZKp1dBO60UoiJKDM8Zr/i
+ OFk6YBJFS0YYPhppNgUSBwKdgqpPjx3cHuJINTXxuoKw+cNYiG25cBPXhWzFocAJn7TD
+ i/iziyRm3kLej2WX4o3AYtrOSFDMyw352ETIJ/+e1tvPnCFrvPTnsp4aeiZM5d0YLg0N
+ R/u4SZWoSujAN+aK0Q6TWBa3ZR7Dg+fkqhcRubhOioOebxJrBwTktvO4ifdBSfpG9BKx
+ OELw7FjjWPhRXs7wG3xQe8CvwEeyuDnsrk5xwlL26LhSdG8oJOOSxim6XsAmJ/o4k4Nm
+ 4Jlg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWu6t4am0QU0x9JpKpGIFLQ80PTif8tL+zCzwaGNwd6mS7hoveolSuy8c12JT2iCjqWSYR0fMZG+w==@nongnu.org
+X-Gm-Message-State: AOJu0YzpRDD51FwaIwJ6m2AM+6IWIOka6THi9wcW3vK+ZXxnC5jJeVML
+ jzM/oyoga4FZjqd6KGBF2dhRmJWKS6Y8RN4hI43pp1ZkmTPekEjo31Ge3Cy5B0rBBtw=
+X-Gm-Gg: ASbGncsS+CySOfWWO6S3yR3+O3dtpk31IoDEbOuxfFxqubQNwZWwIFYM/E/Ti8cbxgA
+ NzvNvxa15NjWvhU0fZBFlyHjKgV733Ozm4IRmQ4HCgleTfOqL/ET3NSdCz0Az7P/cwroJ70+AEf
+ EJF8WNVdwy4DD3Jkwdmqtz2Gg/vdOAmPXikVCndcK4OHLd4SzYiccy3ED5QNlt5QEQpfp9dCAmT
+ TsnLkfZjKdHJCSJpQCkJ/zBmlmFoI0puotHcLdqY2oetABiEHX0RtuE3F8VtCMlillbYcJqYI1k
+ sQa1zlmXXQ0fkpfmd1A/XfIgOKRjViN/R6/kC8FApX+gZx5X6H9P3GYF6FEbg7LlTlzK1/p3lfR
+ okQ6/8G9ls7kMcpRoJtXccdx1IKVf9EXPd2TtlNSQao95XTA0jBU6ey+bT+UuQzAfEWZdGK7X3z
+ pyg7OgfD4LC06GoRIMMiKii7+untBRUwUze/8O/lHHHuAMyOjP0Zpe1i8Adgs8bFjf/A==
+X-Google-Smtp-Source: AGHT+IEWvN7p+//FBA0ZWuYE/ju84/9e7kbleh7+rVusIpr2gqwtw5rmDBj/w5lml3Dwrmd+cYa4fw==
+X-Received: by 2002:a05:6602:6088:b0:940:d6df:3b19 with SMTP id
+ ca18e2360f4ac-945c97a0686mr416324639f.12.1761743640638; 
+ Wed, 29 Oct 2025 06:14:00 -0700 (PDT)
+Received: from [10.240.88.227] ([172.56.16.75])
+ by smtp.gmail.com with ESMTPSA id
+ 8926c6da1cb9f-5aea78e2fd4sm5585459173.26.2025.10.29.06.13.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 29 Oct 2025 06:14:00 -0700 (PDT)
+Message-ID: <3cdafcc5-dc91-4612-b53b-8b6ad92de7b2@linaro.org>
+Date: Wed, 29 Oct 2025 14:13:56 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 24/37] target/arm: Use flush_if_asid_change in
+ vmsa_ttbr_write
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20251014200718.422022-1-richard.henderson@linaro.org>
+ <20251014200718.422022-25-richard.henderson@linaro.org>
+ <CAFEAcA83Tgv5CV+EjMDemEb5FQkfAj0en7dq1g4JkxHZ1kKOdQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <CAFEAcA83Tgv5CV+EjMDemEb5FQkfAj0en7dq1g4JkxHZ1kKOdQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-io1-xd2f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,68 +107,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Igor Mammedov <imammedo@redhat.com> writes:
+On 10/20/25 16:08, Peter Maydell wrote:
+> On Tue, 14 Oct 2025 at 21:17, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Only flush the subset of tlbs that are affected by the ttbr
+>> register to which we are writing.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   target/arm/helper.c | 19 ++++++++++++++-----
+>>   1 file changed, 14 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/target/arm/helper.c b/target/arm/helper.c
+>> index c6d290ce7c..2b55e219c2 100644
+>> --- a/target/arm/helper.c
+>> +++ b/target/arm/helper.c
+>> @@ -2943,11 +2943,20 @@ static void flush_if_asid_change(CPUARMState *env, const ARMCPRegInfo *ri,
+>>   static void vmsa_ttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+>>                               uint64_t value)
+>>   {
+>> -    /* If the ASID changes (with a 64-bit write), we must flush the TLB.  */
+>> -    if (cpreg_field_type(ri) == MO_64 &&
+>> -        extract64(raw_read(env, ri) ^ value, 48, 16) != 0) {
+>> -        ARMCPU *cpu = env_archcpu(env);
+>> -        tlb_flush(CPU(cpu));
+>> +    /*
+>> +     * If the ASID changes (with a 64-bit write), we must flush the TLB.
+>> +     * The non-secure ttbr registers affect the EL1 regime;
+>> +     * the secure ttbr registers affect the AA32 EL3 regime.
+>> +     */
+>> +    if (cpreg_field_type(ri) == MO_64) {
+>> +        flush_if_asid_change(env, ri, value,
+>> +                             ri->secure & ARM_CP_SECSTATE_S
+>> +                             ? (ARMMMUIdxBit_E30_0 |
+>> +                                ARMMMUIdxBit_E30_3_PAN |
+>> +                                ARMMMUIdxBit_E3)
+>> +                             : (ARMMMUIdxBit_E10_1 |
+>> +                                ARMMMUIdxBit_E10_1_PAN |
+>> +                                ARMMMUIdxBit_E10_0));
+>>       }
+> 
+> What's the value of ri->secure here for the case where EL3 is
+> AArch64 and we're in Secure EL1 at AArch32 ?
 
-> On Mon, 20 Oct 2025 13:22:08 +0200
-> Markus Armbruster <armbru@redhat.com> wrote:
->
->> Igor Mammedov <imammedo@redhat.com> writes:
->> 
->> > On Thu, 09 Oct 2025 16:55:54 +0200
->> > Markus Armbruster <armbru@redhat.com> wrote:
+Um.. the state of the cpu doesn't apply.
+ri->secure is true only for TTBR[01]_S.
 
-[...]
+I'm not sure what the question is?
 
->> >> I feel it's best to start the design process with ensvisaged uses.  Can
->> >> you tell me a bit more about the uses you have in mind?  
->> >
->> > We have nic failover 'feature'
->> >    https://www.qemu.org/docs/master/system/virtio-net-failover.html
->> > to make it work we do abuse hotplug and that poses problem
->> > during migration, since:
->> >   - unplugging primary device releases resources (which might not be
->> >     possible to claim back in case migration failure)  
->> 
->> Serious reliability issue with no work-around.
->> 
->> >   - it's similar on destination side, where attempt to hotplug
->> >     primary might fail die to insufficient resources leaving guest
->> >     on 'degraded' virtio-net link.  
->> 
->> Obvious work-around is failing the migration.  Same as we do when we
->> can't create devices.
->> 
->> > Idea was that instead of hotplug we can power off primary device,
->> > (it will still exist and keep resources), initiate migration,
->> > and then on target do the same starting with primary fully realized
->> > but powered of (and failing migration early if it can't claim resources,
->> > safely resuming QEMU on source incl. primary link), and then guest
->> > failover driver on destination would power primary on as part of
->> > switching to primary link.  
->> 
->> I can see how power on / off makes more sense than hot plug / unplug.
->> 
->> > Above would require -device/device_add support for specifying device's
->> > power state as minimum.  
->> 
->> The obvious way to control a device's power state with -device /
->> device_add is a qdev property.  Easy enough.
->> 
->> Do we need to control a device's power state after it's created?  If I
->> understand your use case correctly, the answer is yes.  -device /
->> device_add can't do that.
->
-> Could you elaborate why why -device/device_add can't do that?
 
--device / device_add create, configure, and realize a new device.
-
-They can't reconfigure an existing device.  In particular, they can't be
-used to control an existing device's power state.
-
->> qom-set could, but friends don't let friends use it in production.
->> 
->> Any other prior art for controlling device state at run time via QMP?
->> 
->> [...]
-
+r~
 

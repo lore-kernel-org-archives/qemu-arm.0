@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDB57CCD1BF
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 04:38:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B1E4CCF9E9
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 04:38:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vDxwR-0007Bs-Dv; Wed, 29 Oct 2025 00:37:47 -0400
+	id 1vDxww-0007c1-Gs; Wed, 29 Oct 2025 00:38:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vDxwQ-0007BT-6t; Wed, 29 Oct 2025 00:37:46 -0400
+ id 1vDxwr-0007VI-1m; Wed, 29 Oct 2025 00:38:13 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vDxwM-0004M3-Rc; Wed, 29 Oct 2025 00:37:45 -0400
+ id 1vDxwn-0004M3-4T; Wed, 29 Oct 2025 00:38:12 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Wed, 29 Oct
- 2025 12:37:11 +0800
+ 2025 12:37:13 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Wed, 29 Oct 2025 12:37:11 +0800
+ Transport; Wed, 29 Oct 2025 12:37:13 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -32,10 +32,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v2 02/17] hw/arm/aspeed: Split Supermicro X11 machine into a
+Subject: [PATCH v2 06/17] hw/arm/aspeed: Split FBY35 BMC machine into a
  separate source file for maintainability
-Date: Wed, 29 Oct 2025 12:36:48 +0800
-Message-ID: <20251029043710.1486573-3-jamin_lin@aspeedtech.com>
+Date: Wed, 29 Oct 2025 12:36:52 +0800
+Message-ID: <20251029043710.1486573-7-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251029043710.1486573-1-jamin_lin@aspeedtech.com>
 References: <20251029043710.1486573-1-jamin_lin@aspeedtech.com>
@@ -67,102 +67,164 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit moves the Supermicro X11 BMC machine implementation out of
-aspeed.c into a new standalone file aspeed_ast2400_supermicrox11.c and
-removes its dependency on the Palmetto platform’s I²C initialization.
+This commit moves the Facebook fby35 BMC machine implementation out of
+aspeed.c into a new standalone file aspeed_ast2600_fby35.c.
 
 This refactor continues the modularization effort for Aspeed platform support,
-ensuring that each board’s configuration resides in its own dedicated source file.
-By duplicating and renaming the palmetto_bmc_i2c_init() logic into
-supermicrox11_bmc_i2c_init(), this change removes unwanted coupling between
-the two board definitions.
+placing each board’s logic in its own dedicated source file.
+It improves maintainability, readability, and simplifies future development for
+new platforms without cluttering aspeed.c.
 
 Key updates include:
-- Removed SUPERMICROX11_BMC_HW_STRAP1 macro definition from aspeed.c.
-- Moved aspeed_machine_supermicrox11_bmc_class_init() and type registration into a new file.
-- Added a dedicated supermicrox11_bmc_i2c_init() function (copied and renamed from Palmetto’s version).
-- Added the new file aspeed_ast2400_supermicrox11.c to the build system (meson.build).
-- Removed all Supermicro X11–specific code and macros from aspeed.c.
+- Moved fby35_i2c_init() and fby35_reset() to the new file.
+- Moved aspeed_machine_fby35_class_init() and machine registration to the new file.
+- Removed fby35 FRU data (fby35_nic_fruid, fby35_bb_fruid, fby35_bmc_fruid) and their size definitions from aspeed_eeprom.[ch].
+- Added aspeed_ast2600_fby35.c to the build system (meson.build).
+- Cleaned up all fby35-specific code and declarations from aspeed.c and aspeed_eeprom.*.
+- Introduced FBY35_BMC_RAM_SIZE macro based on FUJI_BMC_RAM_SIZE to remove
+  inter-file dependency.
 
 No functional changes.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/arm/aspeed.c                       | 36 ------------
- hw/arm/aspeed_ast2400_supermicrox11.c | 80 +++++++++++++++++++++++++++
- hw/arm/meson.build                    |  1 +
- 3 files changed, 81 insertions(+), 36 deletions(-)
- create mode 100644 hw/arm/aspeed_ast2400_supermicrox11.c
+ hw/arm/aspeed_eeprom.h        |   7 --
+ hw/arm/aspeed.c               |  78 ---------------
+ hw/arm/aspeed_ast2600_fby35.c | 177 ++++++++++++++++++++++++++++++++++
+ hw/arm/aspeed_eeprom.c        |  74 --------------
+ hw/arm/meson.build            |   1 +
+ 5 files changed, 178 insertions(+), 159 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast2600_fby35.c
 
+diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+index 5448eeeab7..7207bb2cbd 100644
+--- a/hw/arm/aspeed_eeprom.h
++++ b/hw/arm/aspeed_eeprom.h
+@@ -7,13 +7,6 @@
+ #ifndef ASPEED_EEPROM_H
+ #define ASPEED_EEPROM_H
+ 
+-extern const uint8_t fby35_nic_fruid[];
+-extern const uint8_t fby35_bb_fruid[];
+-extern const uint8_t fby35_bmc_fruid[];
+-extern const size_t fby35_nic_fruid_len;
+-extern const size_t fby35_bb_fruid_len;
+-extern const size_t fby35_bmc_fruid_len;
+-
+ extern const uint8_t rainier_bb_fruid[];
+ extern const size_t rainier_bb_fruid_len;
+ extern const uint8_t rainier_bmc_fruid[];
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 3eb1d19373..f6e9d5cda1 100644
+index 6458798c2c..d9b38fcc36 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -56,20 +56,6 @@ static struct arm_boot_info aspeed_board_binfo = {
-         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-         SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
+@@ -718,38 +718,6 @@ static void gb200nvl_bmc_i2c_init(AspeedMachineState *bmc)
+                           gb200nvl_bmc_fruid_len);
+ }
  
--/* TODO: Find the actual hardware value */
--#define SUPERMICROX11_BMC_HW_STRAP1 (                                   \
--        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
--        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2) |                           \
--        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
--        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       \
--        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
--        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
--        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |                \
--        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1) | \
--        SCU_HW_STRAP_SPI_WIDTH |                                        \
--        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
--        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
+-static void fby35_i2c_init(AspeedMachineState *bmc)
+-{
+-    AspeedSoCState *soc = bmc->soc;
+-    I2CBus *i2c[16];
 -
- /* AST2600 evb hardware value */
- #define AST2600_EVB_HW_STRAP1 0x000000C0
- #define AST2600_EVB_HW_STRAP2 0x00000003
-@@ -1072,24 +1058,6 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc,
-     aspeed_machine_class_init_cpus_defaults(mc);
- };
+-    for (int i = 0; i < 16; i++) {
+-        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
+-    }
+-
+-    i2c_slave_create_simple(i2c[2], TYPE_LM75, 0x4f);
+-    i2c_slave_create_simple(i2c[8], TYPE_TMP421, 0x1f);
+-    /* Hotswap controller is actually supposed to be mp5920 or ltc4282. */
+-    i2c_slave_create_simple(i2c[11], "adm1272", 0x44);
+-    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4e);
+-    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4f);
+-
+-    at24c_eeprom_init(i2c[4], 0x51, 128 * KiB);
+-    at24c_eeprom_init(i2c[6], 0x51, 128 * KiB);
+-    at24c_eeprom_init_rom(i2c[8], 0x50, 32 * KiB, fby35_nic_fruid,
+-                          fby35_nic_fruid_len);
+-    at24c_eeprom_init_rom(i2c[11], 0x51, 128 * KiB, fby35_bb_fruid,
+-                          fby35_bb_fruid_len);
+-    at24c_eeprom_init_rom(i2c[11], 0x54, 128 * KiB, fby35_bmc_fruid,
+-                          fby35_bmc_fruid_len);
+-
+-    /*
+-     * TODO: There is a multi-master i2c connection to an AST1030 MiniBMC on
+-     * buses 0, 1, 2, 3, and 9. Source address 0x10, target address 0x20 on
+-     * each.
+-     */
+-}
+-
+ static void qcom_dc_scm_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc = bmc->soc;
+@@ -1052,48 +1020,6 @@ static void aspeed_machine_gb200nvl_class_init(ObjectClass *oc,
+     aspeed_machine_ast2600_class_emmc_init(oc);
+ }
  
--static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
--                                                        const void *data)
+-static void fby35_reset(MachineState *state, ResetType type)
+-{
+-    AspeedMachineState *bmc = ASPEED_MACHINE(state);
+-    AspeedGPIOState *gpio = &bmc->soc->gpio;
+-
+-    qemu_devices_reset(type);
+-
+-    /* Board ID: 7 (Class-1, 4 slots) */
+-    object_property_set_bool(OBJECT(gpio), "gpioV4", true, &error_fatal);
+-    object_property_set_bool(OBJECT(gpio), "gpioV5", true, &error_fatal);
+-    object_property_set_bool(OBJECT(gpio), "gpioV6", true, &error_fatal);
+-    object_property_set_bool(OBJECT(gpio), "gpioV7", false, &error_fatal);
+-
+-    /* Slot presence pins, inverse polarity. (False means present) */
+-    object_property_set_bool(OBJECT(gpio), "gpioH4", false, &error_fatal);
+-    object_property_set_bool(OBJECT(gpio), "gpioH5", true, &error_fatal);
+-    object_property_set_bool(OBJECT(gpio), "gpioH6", true, &error_fatal);
+-    object_property_set_bool(OBJECT(gpio), "gpioH7", true, &error_fatal);
+-
+-    /* Slot 12v power pins, normal polarity. (True means powered-on) */
+-    object_property_set_bool(OBJECT(gpio), "gpioB2", true, &error_fatal);
+-    object_property_set_bool(OBJECT(gpio), "gpioB3", false, &error_fatal);
+-    object_property_set_bool(OBJECT(gpio), "gpioB4", false, &error_fatal);
+-    object_property_set_bool(OBJECT(gpio), "gpioB5", false, &error_fatal);
+-}
+-
+-static void aspeed_machine_fby35_class_init(ObjectClass *oc, const void *data)
 -{
 -    MachineClass *mc = MACHINE_CLASS(oc);
 -    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 -
--    mc->desc       = "Supermicro X11 BMC (ARM926EJ-S)";
--    amc->soc_name  = "ast2400-a1";
--    amc->hw_strap1 = SUPERMICROX11_BMC_HW_STRAP1;
--    amc->fmc_model = "mx25l25635e";
--    amc->spi_model = "mx25l25635e";
--    amc->num_cs    = 1;
--    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
--    amc->i2c_init  = palmetto_bmc_i2c_init;
--    mc->default_ram_size = 256 * MiB;
+-    mc->desc       = "Facebook fby35 BMC (Cortex-A7)";
+-    mc->reset      = fby35_reset;
+-    amc->fmc_model = "mx66l1g45g";
+-    amc->num_cs    = 2;
+-    amc->macs_mask = ASPEED_MAC3_ON;
+-    amc->i2c_init  = fby35_i2c_init;
+-    /* FIXME: Replace this macro with something more general */
+-    mc->default_ram_size = FUJI_BMC_RAM_SIZE;
 -    aspeed_machine_class_init_cpus_defaults(mc);
 -}
 -
- static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
-                                                   const void *data)
- {
-@@ -1439,10 +1407,6 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+ #define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
+ /* Main SYSCLK frequency in Hz (200MHz) */
+ #define SYSCLK_FRQ 200000000ULL
+@@ -1297,10 +1223,6 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("catalina-bmc"),
          .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_palmetto_class_init,
+         .class_init    = aspeed_machine_catalina_class_init,
 -    }, {
--        .name          = MACHINE_TYPE_NAME("supermicrox11-bmc"),
--        .parent        = TYPE_ASPEED_MACHINE,
--        .class_init    = aspeed_machine_supermicrox11_bmc_class_init,
+-        .name          = MACHINE_TYPE_NAME("fby35-bmc"),
+-        .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
+-        .class_init    = aspeed_machine_fby35_class_init,
      }, {
-         .name          = MACHINE_TYPE_NAME("ast2600-evb"),
-         .parent        = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_ast2400_supermicrox11.c b/hw/arm/aspeed_ast2400_supermicrox11.c
+         .name           = MACHINE_TYPE_NAME("ast1030-evb"),
+         .parent         = TYPE_ASPEED_MACHINE,
+diff --git a/hw/arm/aspeed_ast2600_fby35.c b/hw/arm/aspeed_ast2600_fby35.c
 new file mode 100644
-index 0000000000..168a3251f0
+index 0000000000..f836be4d6d
 --- /dev/null
-+++ b/hw/arm/aspeed_ast2400_supermicrox11.c
-@@ -0,0 +1,80 @@
++++ b/hw/arm/aspeed_ast2600_fby35.c
+@@ -0,0 +1,177 @@
 +/*
-+ * Supermicro X11
++ * Facebook fby35
 + *
 + * Copyright (C) 2025 ASPEED Technology Inc.
 + *
@@ -173,86 +235,275 @@ index 0000000000..168a3251f0
 +#include "qapi/error.h"
 +#include "hw/arm/aspeed.h"
 +#include "hw/arm/aspeed_soc.h"
-+#include "hw/i2c/smbus_eeprom.h"
++#include "hw/nvram/eeprom_at24c.h"
++#include "hw/sensor/tmp105.h"
++#include "system/reset.h"
 +
-+/* TODO: Find the actual hardware value */
-+#define SUPERMICROX11_BMC_HW_STRAP1 (                                   \
-+        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
-+        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2) |                           \
-+        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
-+        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       \
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
-+        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |                \
-+        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1) | \
-+        SCU_HW_STRAP_SPI_WIDTH |                                        \
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-+        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
++#define TYPE_LM75 TYPE_TMP105
++#define TYPE_TMP421 "tmp421"
++#define FBY35_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
 +
-+static void supermicrox11_bmc_i2c_init(AspeedMachineState *bmc)
++static const uint8_t fby35_nic_fruid[] = {
++    0x01, 0x00, 0x00, 0x01, 0x0f, 0x20, 0x00, 0xcf, 0x01, 0x0e, 0x19, 0xd7,
++    0x5e, 0xcf, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xdd,
++    0x4d, 0x65, 0x6c, 0x6c, 0x61, 0x6e, 0x6f, 0x78, 0x20, 0x43, 0x6f, 0x6e,
++    0x6e, 0x65, 0x63, 0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0x20, 0x4f,
++    0x43, 0x50, 0x33, 0x2e, 0x30, 0xd8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd5, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0xcc, 0x46, 0x52, 0x55, 0x20, 0x56, 0x65, 0x72,
++    0x20, 0x30, 0x2e, 0x30, 0x32, 0xc0, 0xc0, 0xc0, 0xc1, 0x00, 0x00, 0x2f,
++    0x01, 0x11, 0x19, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0xdd, 0x4d, 0x65, 0x6c, 0x6c, 0x61, 0x6e, 0x6f, 0x78, 0x20, 0x43, 0x6f,
++    0x6e, 0x6e, 0x65, 0x63, 0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0x20,
++    0x4f, 0x43, 0x50, 0x33, 0x2e, 0x30, 0xd5, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0xd3, 0x41, 0x39, 0x20, 0x20, 0x20, 0x20, 0x20,
++    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
++    0xd8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0xc0, 0xc0, 0xc0, 0xc0, 0xcd, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63,
++    0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0xc1, 0x00, 0x00, 0x00, 0x00,
++    0x00, 0x00, 0x00, 0xdb, 0xc0, 0x82, 0x30, 0x15, 0x79, 0x7f, 0xa6, 0x00,
++    0x01, 0x18, 0x0b, 0xff, 0x08, 0x00, 0xff, 0xff, 0x64, 0x00, 0x00, 0x00,
++    0x00, 0x03, 0x20, 0x01, 0xff, 0xff, 0x04, 0x46, 0x00, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0x01, 0x81, 0x09, 0x15, 0xb3, 0x10, 0x1d, 0x00,
++    0x24, 0x15, 0xb3, 0x00, 0x02, 0xeb, 0x8a, 0x95, 0x5c,
++};
++static const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
++
++static const uint8_t fby35_bb_fruid[] = {
++    0x01, 0x00, 0x01, 0x03, 0x10, 0x00, 0x00, 0xeb, 0x01, 0x02, 0x17, 0xc3,
++    0x4e, 0x2f, 0x41, 0xc3, 0x4e, 0x2f, 0x41, 0xc1, 0x00, 0x00, 0x00, 0x23,
++    0x01, 0x0d, 0x00, 0xb6, 0xd2, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0xd5, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74,
++    0x20, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x20, 0x77, 0x42, 0x4d, 0x43, 0xcd,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa8, 0x01, 0x0c, 0x00, 0xc6,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
++    0x69, 0x74, 0x65, 0x20, 0x56, 0x33, 0x2e, 0x35, 0x20, 0x45, 0x56, 0x54,
++    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x4e, 0x2f,
++    0x41, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43,
++};
++static const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
++
++static const uint8_t fby35_bmc_fruid[] = {
++    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
++    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
++    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
++    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
++    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
++    0x69, 0x74, 0x65, 0x20, 0x56, 0x33, 0x2e, 0x35, 0x20, 0x45, 0x56, 0x54,
++    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
++    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
++};
++static const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
++
++static void fby35_i2c_init(AspeedMachineState *bmc)
 +{
 +    AspeedSoCState *soc = bmc->soc;
-+    DeviceState *dev;
-+    uint8_t *eeprom_buf = g_malloc0(32 * 1024);
++    I2CBus *i2c[16];
++
++    for (int i = 0; i < 16; i++) {
++        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
++    }
++
++    i2c_slave_create_simple(i2c[2], TYPE_LM75, 0x4f);
++    i2c_slave_create_simple(i2c[8], TYPE_TMP421, 0x1f);
++    /* Hotswap controller is actually supposed to be mp5920 or ltc4282. */
++    i2c_slave_create_simple(i2c[11], "adm1272", 0x44);
++    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4e);
++    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4f);
++
++    at24c_eeprom_init(i2c[4], 0x51, 128 * KiB);
++    at24c_eeprom_init(i2c[6], 0x51, 128 * KiB);
++    at24c_eeprom_init_rom(i2c[8], 0x50, 32 * KiB, fby35_nic_fruid,
++                          fby35_nic_fruid_len);
++    at24c_eeprom_init_rom(i2c[11], 0x51, 128 * KiB, fby35_bb_fruid,
++                          fby35_bb_fruid_len);
++    at24c_eeprom_init_rom(i2c[11], 0x54, 128 * KiB, fby35_bmc_fruid,
++                          fby35_bmc_fruid_len);
 +
 +    /*
-+     * The palmetto platform expects a ds3231 RTC but a ds1338 is
-+     * enough to provide basic RTC features. Alarms will be missing
++     * TODO: There is a multi-master i2c connection to an AST1030 MiniBMC on
++     * buses 0, 1, 2, 3, and 9. Source address 0x10, target address 0x20 on
++     * each.
 +     */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
-+
-+    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
-+                          eeprom_buf);
-+
-+    /* add a TMP423 temperature sensor */
-+    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
-+                                         "tmp423", 0x4c));
-+    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature3", 110000, &error_abort);
 +}
 +
-+static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
-+                                                        const void *data)
++static void fby35_reset(MachineState *state, ResetType type)
++{
++    AspeedMachineState *bmc = ASPEED_MACHINE(state);
++    AspeedGPIOState *gpio = &bmc->soc->gpio;
++
++    qemu_devices_reset(type);
++
++    /* Board ID: 7 (Class-1, 4 slots) */
++    object_property_set_bool(OBJECT(gpio), "gpioV4", true, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioV5", true, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioV6", true, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioV7", false, &error_fatal);
++
++    /* Slot presence pins, inverse polarity. (False means present) */
++    object_property_set_bool(OBJECT(gpio), "gpioH4", false, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioH5", true, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioH6", true, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioH7", true, &error_fatal);
++
++    /* Slot 12v power pins, normal polarity. (True means powered-on) */
++    object_property_set_bool(OBJECT(gpio), "gpioB2", true, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioB3", false, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioB4", false, &error_fatal);
++    object_property_set_bool(OBJECT(gpio), "gpioB5", false, &error_fatal);
++}
++
++static void aspeed_machine_fby35_class_init(ObjectClass *oc, const void *data)
 +{
 +    MachineClass *mc = MACHINE_CLASS(oc);
 +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+    mc->desc       = "Supermicro X11 BMC (ARM926EJ-S)";
-+    amc->soc_name  = "ast2400-a1";
-+    amc->hw_strap1 = SUPERMICROX11_BMC_HW_STRAP1;
-+    amc->fmc_model = "mx25l25635e";
-+    amc->spi_model = "mx25l25635e";
-+    amc->num_cs    = 1;
-+    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
-+    amc->i2c_init  = supermicrox11_bmc_i2c_init;
-+    mc->default_ram_size = 256 * MiB;
++    mc->desc       = "Facebook fby35 BMC (Cortex-A7)";
++    mc->reset      = fby35_reset;
++    amc->fmc_model = "mx66l1g45g";
++    amc->num_cs    = 2;
++    amc->macs_mask = ASPEED_MAC3_ON;
++    amc->i2c_init  = fby35_i2c_init;
++    mc->default_ram_size = FBY35_BMC_RAM_SIZE;
 +    aspeed_machine_class_init_cpus_defaults(mc);
 +}
 +
-+static const TypeInfo aspeed_ast2400_supermicrox11_types[] = {
++static const TypeInfo aspeed_ast2600_fby35_types[] = {
 +    {
-+        .name          = MACHINE_TYPE_NAME("supermicrox11-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_supermicrox11_bmc_class_init,
++        .name          = MACHINE_TYPE_NAME("fby35-bmc"),
++        .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
++        .class_init    = aspeed_machine_fby35_class_init,
 +    },
 +};
 +
-+DEFINE_TYPES(aspeed_ast2400_supermicrox11_types)
++DEFINE_TYPES(aspeed_ast2600_fby35_types)
 +
+diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+index 124277eaca..53c9b0d56f 100644
+--- a/hw/arm/aspeed_eeprom.c
++++ b/hw/arm/aspeed_eeprom.c
+@@ -7,77 +7,6 @@
+ #include "qemu/osdep.h"
+ #include "aspeed_eeprom.h"
+ 
+-const uint8_t fby35_nic_fruid[] = {
+-    0x01, 0x00, 0x00, 0x01, 0x0f, 0x20, 0x00, 0xcf, 0x01, 0x0e, 0x19, 0xd7,
+-    0x5e, 0xcf, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xdd,
+-    0x4d, 0x65, 0x6c, 0x6c, 0x61, 0x6e, 0x6f, 0x78, 0x20, 0x43, 0x6f, 0x6e,
+-    0x6e, 0x65, 0x63, 0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0x20, 0x4f,
+-    0x43, 0x50, 0x33, 0x2e, 0x30, 0xd8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd5, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0xcc, 0x46, 0x52, 0x55, 0x20, 0x56, 0x65, 0x72,
+-    0x20, 0x30, 0x2e, 0x30, 0x32, 0xc0, 0xc0, 0xc0, 0xc1, 0x00, 0x00, 0x2f,
+-    0x01, 0x11, 0x19, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0xdd, 0x4d, 0x65, 0x6c, 0x6c, 0x61, 0x6e, 0x6f, 0x78, 0x20, 0x43, 0x6f,
+-    0x6e, 0x6e, 0x65, 0x63, 0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0x20,
+-    0x4f, 0x43, 0x50, 0x33, 0x2e, 0x30, 0xd5, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0xd3, 0x41, 0x39, 0x20, 0x20, 0x20, 0x20, 0x20,
+-    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
+-    0xd8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0xc0, 0xc0, 0xc0, 0xc0, 0xcd, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63,
+-    0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0xc1, 0x00, 0x00, 0x00, 0x00,
+-    0x00, 0x00, 0x00, 0xdb, 0xc0, 0x82, 0x30, 0x15, 0x79, 0x7f, 0xa6, 0x00,
+-    0x01, 0x18, 0x0b, 0xff, 0x08, 0x00, 0xff, 0xff, 0x64, 0x00, 0x00, 0x00,
+-    0x00, 0x03, 0x20, 0x01, 0xff, 0xff, 0x04, 0x46, 0x00, 0xff, 0xff, 0xff,
+-    0xff, 0xff, 0xff, 0xff, 0x01, 0x81, 0x09, 0x15, 0xb3, 0x10, 0x1d, 0x00,
+-    0x24, 0x15, 0xb3, 0x00, 0x02, 0xeb, 0x8a, 0x95, 0x5c,
+-};
+-
+-const uint8_t fby35_bb_fruid[] = {
+-    0x01, 0x00, 0x01, 0x03, 0x10, 0x00, 0x00, 0xeb, 0x01, 0x02, 0x17, 0xc3,
+-    0x4e, 0x2f, 0x41, 0xc3, 0x4e, 0x2f, 0x41, 0xc1, 0x00, 0x00, 0x00, 0x23,
+-    0x01, 0x0d, 0x00, 0xb6, 0xd2, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0xd5, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74,
+-    0x20, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x20, 0x77, 0x42, 0x4d, 0x43, 0xcd,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa8, 0x01, 0x0c, 0x00, 0xc6,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
+-    0x69, 0x74, 0x65, 0x20, 0x56, 0x33, 0x2e, 0x35, 0x20, 0x45, 0x56, 0x54,
+-    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x4e, 0x2f,
+-    0x41, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43,
+-};
+-
+-const uint8_t fby35_bmc_fruid[] = {
+-    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
+-    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
+-    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
+-    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
+-    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
+-    0x69, 0x74, 0x65, 0x20, 0x56, 0x33, 0x2e, 0x35, 0x20, 0x45, 0x56, 0x54,
+-    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
+-    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
+-};
+-
+ const uint8_t rainier_bb_fruid[] = {
+     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x84,
+     0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 0x44, 0x02,
+@@ -139,9 +68,6 @@ const uint8_t gb200nvl_bmc_fruid[] = {
+ 
+ };
+ 
+-const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
+-const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
+-const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
+ const size_t rainier_bb_fruid_len = sizeof(rainier_bb_fruid);
+ const size_t rainier_bmc_fruid_len = sizeof(rainier_bmc_fruid);
+ const size_t gb200nvl_bmc_fruid_len = sizeof(gb200nvl_bmc_fruid);
 diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 4475807e11..9411e27d78 100644
+index 06e27d94b9..82ab04ff1c 100644
 --- a/hw/arm/meson.build
 +++ b/hw/arm/meson.build
-@@ -45,6 +45,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_soc_common.c',
-   'aspeed_ast2400.c',
-   'aspeed_ast2400_quanta-q71l.c',
-+  'aspeed_ast2400_supermicrox11.c',
-   'aspeed_ast2500_evb.c',
-   'aspeed_ast2500_fp5280g2.c',
-   'aspeed_ast2500_g220a.c',
+@@ -58,6 +58,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_ast2500_yosemitev2.c',
+   'aspeed_ast2600.c',
+   'aspeed_ast2600_bletchley.c',
++  'aspeed_ast2600_fby35.c',
+   'aspeed_ast10x0.c',
+   'aspeed_eeprom.c',
+   'fby35.c'))
 -- 
 2.43.0
 

@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F10CCCF9EE
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 17:36:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50ED6CCF9F0
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Oct 2025 17:36:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vEA5Q-0003XK-DJ; Wed, 29 Oct 2025 13:35:52 -0400
+	id 1vEA5F-0003RM-KK; Wed, 29 Oct 2025 13:35:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vEA5M-0003Ui-PB
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:35:49 -0400
-Received: from p-east2-cluster1-host9-snip4-10.eps.apple.com ([57.103.76.113]
+ id 1vEA5C-0003Og-Ca
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:35:38 -0400
+Received: from p-east2-cluster1-host2-snip4-3.eps.apple.com ([57.103.76.36]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vEA59-0003IR-Q3
- for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:35:48 -0400
+ id 1vEA4x-0003Fd-6w
+ for qemu-arm@nongnu.org; Wed, 29 Oct 2025 13:35:37 -0400
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-10 (Postfix) with ESMTPS id
- 323C71821F70; Wed, 29 Oct 2025 17:35:20 +0000 (UTC)
+ B7CB71819DFF; Wed, 29 Oct 2025 17:35:18 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=9vYko/DI2RK+OqhuWK0dyFWYB5OCgm45PuZW5dC4nJ8=;
+ s=sig1; bh=lE935EhSo6eiiRGBTf1TCzdO8HBh375WWDyS664DB/c=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=RXA040iNMR9mhe6xWo+BYg3EsWEgVsAscx3Np9uc90SMa/wXzxaQWnrNH8Ucusoi1D09pSQ5NAwrjr0nd90IB368L8/Jqt1bm4uQm7X66HvsHx114mV3oULhxFTG6lEOkBgv3Tsva8Z87px21AvBJiNf5ELnKUFUDRhV52ddms0zpNRPoX1nESmcCv4i+i0bSeawWkwtl9qaukl0eQvjCGLtRyLQM71n9hGvKoJD3Nu1zzcMNAymPhwMy8LrxPBZThMgqSMmpM0cP7pKKX6BBr6gfOtbvPVWrAu9SGe2U6bWDI6dw5YLWzBk3iqUL9A1lrZlZHA63M+mRGmr/qJEhw==
+ b=UstOJnhK/+7HSOCeSb3QX26LdpoZlBq9oWD/6OBgmCNxCNFBCE0qECtkjAtNu8iY7lNRBEt+Fvb2TWyurncRemuHaWk9m3p4SoRUKPkafR3CPlo/ISAUu7tBNYbSoVg9mAJ6l+BXlFfbOV3VqY5tvSxr3QDsuwiTMbCJsszYwuRjW3LGMNPsNHBPSPVVaLUfgdFFAhDgllR8HaWK6nM/niVrbvxZ09y/GhXL3nokYnsfbibArPGA3dlX441rpe3XHA4mUnM9gZ4zzMhF3CU4jxq9JO8bFSt/oyp1lOR8UFggkotrJ09OiVStT//botiYW7xF/jjDBg86C8FWxnk1mw==
 mail-alias-created-date: 1752046281608
 Received: from mac.home (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-10 (Postfix) with ESMTPSA id
- CAE8E180C460; Wed, 29 Oct 2025 16:55:24 +0000 (UTC)
+ 3AEAB1859E4B; Wed, 29 Oct 2025 16:55:21 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org,
 	mohamed@unpredictable.fr
@@ -40,41 +40,41 @@ Cc: Pedro Barbuda <pbarbuda@microsoft.com>,
  Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v10 05/28] tests: data: update AArch64 ACPI tables
-Date: Wed, 29 Oct 2025 17:54:47 +0100
-Message-ID: <20251029165510.45824-6-mohamed@unpredictable.fr>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v10 03/28] qtest: hw/arm: virt: skip ACPI test for ITS off
+Date: Wed, 29 Oct 2025 17:54:45 +0100
+Message-ID: <20251029165510.45824-4-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20251029165510.45824-1-mohamed@unpredictable.fr>
 References: <20251029165510.45824-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: UcrQvaXpqse_96mAUSlS8lDmIMMyg1aB
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDI5MDE0MCBTYWx0ZWRfX+S8CLRJeU8fp
- E6vJTQBT/h3KLOxb6jQNETL2EzEnkg31t8uJT3Mut5+J+XIH/qsVsZlmMex5e6NTWZIZejhFalc
- FEv5LdNW/fGjrPDvNcpGfbtmkxloH7rOYVKMsIskhqttJ7mTOyslXlabMlwFwyejLGcjqwEh+3I
- IIIh0PCriaYJNQe7b8eDSVshH5OkncVvK1s+JLSm/nur84CRYoSvpFuLp1/mqCVVe7tEWuDbykv
- qwAMzARu1lSOzfx4mTqro+iBjcWEMrgSmYeWtQVvDwILE7BZBg91wwlNa2duS+UHuqrSTFKYI=
-X-Proofpoint-ORIG-GUID: UcrQvaXpqse_96mAUSlS8lDmIMMyg1aB
+X-Proofpoint-GUID: xTADgFWmv7xhy2aejrbm0uVmCKHXaiEc
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDI5MDE0MCBTYWx0ZWRfXye64S+Kio2Pw
+ dld5bpAium1xHbktoqFuhNpu+t7cQZU8PKM4GRCphgdFAmGXrdZtxFsypzcD7kZEH9j68A4F562
+ sqlQ3faR7xyqZ4QsTzdebPaDyAMyQiqh6G6QqHA9thluLkT91JZkm/q15ijPMbXcXFItwhmwStk
+ hvWplKKmp+MFvu5p/bhtuloFE67B/8DHG+tQTkWDYxAZxsMITUPr7q3clXTdXGLpDzsJ6wG+krs
+ 12e78bQscpgyLscqBRoOPY5COLKbmRbU13SDHRehzaJl0gT2yZobo58rUGKVQ2NDEvNNHrdL0=
+X-Proofpoint-ORIG-GUID: xTADgFWmv7xhy2aejrbm0uVmCKHXaiEc
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2025-10-29_07,2025-10-29_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- suspectscore=0 bulkscore=0 adultscore=0
- clxscore=1030 phishscore=0
- mlxlogscore=723 mlxscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx
+ mlxscore=0 clxscore=1030 adultscore=0 bulkscore=0
+ suspectscore=0
+ mlxlogscore=774 spamscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.22.0-2506270000 definitions=main-2510290140
-X-JNJ: AAAAAAABhw7wmrWWSVFddaSHDKGI3UZK4G6cM3DURXcUk+XcP8h34Dvlw2oNkO1uW9qh4BwKHim7/0ORJjkVbgbPAwmcJBew9kFLxfFVfBxQPSSVjC8tL0zU09wj758OP5hhEzZGvJQ2s69h+kw2QyI19UxrVCNx1M0PmEplAbYocHHG5xQJ8JxNwT6lv+1vEFJJFU2OqAIYRmI7Vv3ECO6Wzdng+bnLxLqvKTOtz+wGlasFpguYxKVr08bfTSoaSUmAd5bPsHR9TOd4yTXU1IjJmpfq6yBw+xQ8YLH1LqP/2uXSOmkjFkSs6YqAgpSMrHkVKUdcpOoR+iIS8p8BiXP/xBxdVcYGS76w5faeMikNa19xcBC3a7YlYPFxiKa0vfBOPb2uYJFXBfAVUk7vPxbsu4n1wCGqq8+xb/ZF7xEdlE3Sugs7QWUcb4dp68EBezETX3tYI+jPyrlqGrWV9VDh42Y+9hN2Y+CaeFN+ufOeAMXr/fqZVanS5V8Ni9xZ3kCtNot0naHqMvrq7eDJ/lpqmxN+9TbBGI2SiwjrpSBRbbLbyqYIKOH0qp4I2CymCBjLLVzCFx/RpuaaxwWjziFpLFY62eLjzR8mdyk5PZpIqQzQimeqeOT7VHkyIkZjjQESdLrAOG71QFyGz75XVK6Kqz3mlkkigFZNPLf+AlmsvVnDHuwKZRAy/2fuvWpTLrZw/V5BA5sUG4/k+lX5mJK6T798sqek0uRPjlXIZv+zLZB3oEnW2vmZVl1kVrT/XbU=
-Received-SPF: pass client-ip=57.103.76.113;
+X-JNJ: AAAAAAABVZ9HcTW9oAxeUbUrQ1o27a5PgxkR3/USwiNQGPoeSpy3OcmGZO0w8LyEr8e6UGPiTfoUVYQSCFGK1PiAC1vZckjesYlmi7+0OKF80q/33DhKwVOjxqroe6Cmx2erts8H6kfdow8trUUVnLpPIdCrkkiW8x8cNDL66tjTj/0Fp9reQLt+cKPgMk7pJ82V3IWlJkecnPJ86+my9gsWGHm+HBaYr/Ria/Cme7dy/uUpoXSrTL2sOPSYkttVPVAybOA/6ljonqvAs/JJsdctsYukp2B3BaAY/2Ojto3l3KrRWS5W7ueBOtU7TVj0965Gvr6jyIFbH9b+88oj27HiODCf0qmAWK0mW8/Hpw0iO9A2lsKOuroz0LT+i3chA//dN9FAwprCezGoeBW7jz21KwZ1a6VZ2msHwa8QDj1DM7MNHQRZqCERYYd1/20Lr9NgMiquHRgVeRciuNsPaAK85lr8jQZrt0PqkQy/Kuy5hUVRHJnY56lpY32ZsP2a+w0NSotYgFjDfh5XPJY5Emz04xycqZZZuBjjqSvWX2Zf9qQ/zzPG637Gx57U5bwvO4HDcBZozwYH4wgmAYLxOUNptRhreZ9RR+LdDNbVk9tweJvenL3EaU1rf2jMeIcaSxZcPNlzAuIk2v+j9ePzoxJJ1y8r5F3hyWnZIKuRytH1/odemQrvHM7k5M8aLOSEgQclcaCedJTxbh+CR6Nn0RX4AGXTJjnSdX5tzMV40g4OUP7I66UJ+KwmbIyLcWTHdsxZU58kfi5GZrR3nT+Ylh8=
+Received-SPF: pass client-ip=57.103.76.36;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_PASS=-0.001, T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,31 +90,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-After the previous commit introducing GICv3 + GICv2m configurations,
-update the AArch64 ACPI table for the its=off case.
-
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 164 -> 188 bytes
- tests/qtest/bios-tables-test-allowed-diff.h |   1 -
- 2 files changed, 1 deletion(-)
-
-diff --git a/tests/data/acpi/aarch64/virt/APIC.its_off b/tests/data/acpi/aarch64/virt/APIC.its_off
-index 6130cb7d07103b326feb4dcd7034f85808bebadf..16a01a17c0af605daf64f3cd2de3572be9e60cab 100644
-GIT binary patch
-delta 43
-qcmZ3&xQCI;F~HM#4+8@Oi@`*$SrWVwKqeS4aeydBAa-B~U;qHCpaq8j
-
-delta 18
-ZcmdnPxP+0*F~HM#2?GNI3&%vRSpY3v1aANU
+ tests/qtest/bios-tables-test-allowed-diff.h | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index bfc4d60124..dfb8523c8b 100644
+index dfb8523c8b..bfc4d60124 100644
 --- a/tests/qtest/bios-tables-test-allowed-diff.h
 +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,2 +1 @@
+@@ -1 +1,2 @@
  /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/aarch64/virt/APIC.its_off",
++"tests/data/acpi/aarch64/virt/APIC.its_off",
 -- 
 2.50.1 (Apple Git-155)
 

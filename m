@@ -4,146 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF420CCF9F0
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 09:55:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFC60CCF9F1
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 10:15:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vEPMQ-0002Jd-O2; Thu, 30 Oct 2025 05:54:28 -0400
+	id 1vEPgW-00084w-5u; Thu, 30 Oct 2025 06:15:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vEPML-0002Ga-L7
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 05:54:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vEPMG-0000dr-Jk
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 05:54:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761818051;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=6XdgfQxluwBcLDe1xFkj4ry8yZVXVpGUg4q+UPa18g0=;
- b=h+yYS+MC16hTm1OgmEmpE0YpcmjH4VGhM6BGb+iUYjezSZ/aHHa1oo/6BVQD0Hefcarh2h
- tlXQAV8tZcITGrSYHC1xyuklx8f8HD+uqXzDp+9cF/uWxvJ73YksRQvHK54iGjJntqxerT
- aSL7qiArmRtf8+jnzbBMGK+oXiVhJMM=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-12-QD7F2Fs_P_-BlwRUMb2HZw-1; Thu, 30 Oct 2025 05:54:09 -0400
-X-MC-Unique: QD7F2Fs_P_-BlwRUMb2HZw-1
-X-Mimecast-MFC-AGG-ID: QD7F2Fs_P_-BlwRUMb2HZw_1761818048
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-4711899ab0aso5561785e9.2
- for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 02:54:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEPgU-00084a-R5
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 06:15:11 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEPgQ-0003PT-4Z
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 06:15:10 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-b4f323cf89bso197440066b.2
+ for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 03:15:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1761819301; x=1762424101; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ntmEVStypM9NDMxv0Zbv2tSchJPgKLUTExE5J8/D70I=;
+ b=L5yEe7MfHvYPRDPoRGJbPYvVEM9Ys8pfi5p1InoCZX0KmOgi+jCmi0g11gYOKhEyui
+ IHKoug0gfOUs1oFNTK+2QKUPPYQSU28dLtmeVpSIQ6odvKkVggykH2w5UgaNO2f7Ua0h
+ ZnHOTCa6K1neewUN11b1Hf7AQ7PeaRiA6hDGDax5nZG2NoLKsxq12B7oHnG2rjEmYMye
+ RtDwtdZjqwo37yvXUb13GjaqqSSCTNF4F69F6AxVincqjVptGirHSbQKJilhvIL1xdAk
+ keVABQCEJeq5Umkc3m/claEQGkjoPy5hmgvUicp7LM1dg8V+JHG6Y4tcOPymu3Sht2st
+ FLwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761818048; x=1762422848;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=6XdgfQxluwBcLDe1xFkj4ry8yZVXVpGUg4q+UPa18g0=;
- b=vZzCc/sgj/xs9gkc3CsAi3dUyu3r5PFXjpAoT5zqKkI2wnY7L38LdBMA0vgmCQSNSd
- KYJQ0K9uDO7Joj7cSK7i5ry3blFv6cJQ51bH/WoMuZ47GvSmYf0uaTT7WeTNu1711GqE
- kT24p8uxKP9Tr7/Xpk01+LJUwBCrvPGy8Qma/S1ULJt4AL7FX19rtjSY0luhR+EUXO0y
- 7WKvPVmwD0T+V+7C55LvE7rLlgjQ1Kfcosyl1Rs+pohVw6qYOZZbxKJe4Iix9VpNHqMV
- iH6ms8ILQZBOKA0+O3nHLSxhV4MnYSC6Fl9JAVpI4UCOh01l6lcyJ6Gmdusdgm/50TBN
- oNhQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVOvD3BfabT2fvkObfiJ3BDX1uiV1L0xvZiKM4PgvHiQhe/FZbcp/3rOpjJ3+rmLf0CE9EEsNSoFg==@nongnu.org
-X-Gm-Message-State: AOJu0YyXwUvgtHSsKyzmckrwQpYAlIKFF0cdEvD9yWUgLRRnMlYkrXYS
- nYNtTBBx42/OLGtPDXGbRyJECGVt3abb3wlR6xqqsav66hchQiBJfu6X49js9PmbkwXIobGYmLo
- 2P0yMHID9onKpppqALc6nH3SMkRF5UO7tex+YPuMx0winPFxtK7ENeA==
-X-Gm-Gg: ASbGnctQw9vv+D6PKy1lq5OSkBmJTp09DG0l+z3sEGSw2OIsDR4DXCDkinffi095Enq
- X7sm4iaCUxJDnvjlVyypV+dfi+Mh9YJAkUfoDpVUKpYs3YrYQP4KYwzRoCf3BfAQbn/PBEn5WMI
- /zpHL82N3hUEnM3C4Ttft//5ccOj7jNhsEBurwPZSY9eeoy54aKApLKDM16wbMrOmFY0LdS8NY9
- BAdlLL5xnGjrl5IeTMjTsM8OtRKnDY1x9nbA8kEuZyAIXkt8A78a2DFaka7X8rloiO8kahK1ORy
- tdVhgdkSrxf1Jiq3j8E8i2uPIybgdc/I7v6C4qp+sJua7txkkX/v/iIlC9OMiwf5MjA+BGk=
-X-Received: by 2002:a05:600c:4589:b0:46e:38f7:625f with SMTP id
- 5b1f17b1804b1-477267cba4cmr19188275e9.10.1761818048125; 
- Thu, 30 Oct 2025 02:54:08 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEiKnsTMRwnEykoX7nPL335mVoGXcmgw5oh565MUBk2izNxIBlvGI3Zzs/AFgkI8nYoxDqwpA==
-X-Received: by 2002:a05:600c:4589:b0:46e:38f7:625f with SMTP id
- 5b1f17b1804b1-477267cba4cmr19187955e9.10.1761818047685; 
- Thu, 30 Oct 2025 02:54:07 -0700 (PDT)
-Received: from [192.168.0.7] ([47.64.112.33]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429b6bc5907sm3040024f8f.13.2025.10.30.02.54.06
+ d=1e100.net; s=20230601; t=1761819301; x=1762424101;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ntmEVStypM9NDMxv0Zbv2tSchJPgKLUTExE5J8/D70I=;
+ b=ndfr4sVEFhQ9UvLSP8f24MvQPULTn/Gf9PpmIp5Jzp1514vJ9rV9SIZk27MqkJEGhz
+ w3XPeWymiG10nceoTLiqbX/MzBpbIhhj+E2vbtLxX7vSleL0MvVu6p4X2tOQxEt7orJC
+ kU1ouOk+uoDjiztXTxR3hISUnYFoqJfIL6CdI11YewjfUgqhxcZPQmrq21D0vyVQ7gCi
+ LG6JEyZz54wOGfAhArcRfQ9yPj0MvNaHAH8mMI6ZICBOz//H19QPFmr5c9jJocoB6Z4h
+ XyBWXWZuQkEoK7nUDDSUXhwL2BLGlLhAYtne4UNO2cGU96Mf8ZzqYmVTPCqRyYPGHjyj
+ 7sjg==
+X-Gm-Message-State: AOJu0Yyukwglsmgc3xKPRHnBv3BMFwxxbuei9KoSgnUgEMQ7COO1qTlH
+ u5303R24vx8cdZBwo0bfeUy4kcJ0lV3g53dd1VOhjvz+YaFA9kbRRRhOkKv1tJ4OErdhDxkItTu
+ nm1Bl1LE=
+X-Gm-Gg: ASbGncv+oYkFlO2rZl25JdZu/aCGfkbwIN2Y6mvJWp5rAy5bOpNHVFLwCdFT+gsrE05
+ eTAHblT3uEBO9fze56J/vp1xiHbnxxsehjmF5klEw+RwhaopTOID4nxG1s0JoF0lsRj56UMBak7
+ rXf+fPfeWyFh4HtOQHyppaxzXYnQJBc0ht4fmV4WZO4NJfzfwsgsOOrTE1vHdu4cjmjDnTq1VFF
+ 12KqFhzhW/HZeZGn9ZBgYEW0Ks2rBSsqxXyC2c4oaDpeNoeL1b4aYeUzlTLA8WGOTHnRWAGjgUr
+ AZTt+YLc0+0te2G83spiMMvxw6JDM6o6vjFV7QgobA7sm9R+stUmSI1bocHMnOAqzPzJz5oIciR
+ 8yXOi2kukn4umtcytIMCH3rQOuhOIbmwoxmh86AStxSprFdTttkXSxpEje6R9B3RbxDQFJcBwyk
+ 4Np1WRw86YkELsB1Jw9fYL2EWFKgYq8rUkDtriK/akytA=
+X-Google-Smtp-Source: AGHT+IEGw4Ywpux4O8bfMDSY3XVnc5ypPQCKw0vHJzyiI039l/8CxJl5jWtsdGlAsklJwyPVkDpMHw==
+X-Received: by 2002:a05:6000:601:b0:427:699:a9cf with SMTP id
+ ffacd0b85a97d-429aefb9ca4mr5669215f8f.33.1761818662403; 
+ Thu, 30 Oct 2025 03:04:22 -0700 (PDT)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-429952d3532sm31956528f8f.20.2025.10.30.03.04.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Oct 2025 02:54:07 -0700 (PDT)
-Message-ID: <55d74476-4697-464f-91d1-202b26627d2c@redhat.com>
-Date: Thu, 30 Oct 2025 10:54:06 +0100
+ Thu, 30 Oct 2025 03:04:21 -0700 (PDT)
+Message-ID: <80d9f994-dda4-42dc-8214-a0134798f732@linaro.org>
+Date: Thu, 30 Oct 2025 11:04:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/bcm283x: Initialize CPU objects in SoC common
- DeviceRealize()
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>
-References: <20251029075257.63635-1-philmd@linaro.org>
- <CAFEAcA961WKB4fxwAS0WHXXKwYEO7TnmovD4z-BPGehr6sxBQw@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <CAFEAcA961WKB4fxwAS0WHXXKwYEO7TnmovD4z-BPGehr6sxBQw@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Z0WjG1pmaqntxl2LQmvt0o_G1nRhxnvPQ34uy99DWAg_1761818048
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PULL 00/23] Misc single binary patches for 2025-10-29
 Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20251029214001.99824-1-philmd@linaro.org>
+In-Reply-To: <20251029214001.99824-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -160,100 +101,137 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 29/10/2025 15.14, Peter Maydell wrote:
-> On Wed, 29 Oct 2025 at 07:53, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> QOM .instance_init() handler can not fail. QDev DeviceRealize
->> can.
->>
->> The device-introspect QTest enumerates all QDev types and
->> instantiate each one, without realizing it, then introspects
->> the instance properties.
->>
->> When switching to a single QEMU binary, all QDev types are
->> available in the binary, but only a filtered subset might be
->> available, depending on which previous target the binary is
->> trying to mimic.
->>
->> In particular with the Raspi machines, the TYPE_RASPI4B_MACHINE
->> and ARM_CPU_TYPE_NAME("cortex-a72") will be built in the
->> qemu-system-arm binary, while not available (because filtered
->> as being 64-bit, for the qemu-system-aarch64 binary).
->>
->> However the TYPE_BCM2838 SoC is not filtered out, and will
->> abort when being initialized, because the "cortex-a72" CPU type
->> is filtered out, leading to device-introspect failure:
->>
->>    1/1 qemu:qtest+qtest-arm / qtest-arm/device-introspect-test        ERROR            2.46s   killed by signal 6 SIGABRT
->>    stderr:
->>    unknown type 'cortex-a72-arm-cpu'
->>    Broken pipe
->>    ../../tests/qtest/libqtest.c:199: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
->>    (test program exited with status code -6)
->>    TAP parsing error: Too few tests run (expected 167, got 5)
->>
->> In order to avoid that, move the CPU *initialization* in the
->> SoC DeviceRealize handler, so the SoC initialization won't
->> fail, while realization still will.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   hw/arm/bcm2836.c | 10 +++++-----
->>   1 file changed, 5 insertions(+), 5 deletions(-)
->>
->> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
->> index cd61ba15054..6e4066f137d 100644
->> --- a/hw/arm/bcm2836.c
->> +++ b/hw/arm/bcm2836.c
->> @@ -25,12 +25,7 @@ static void bcm283x_base_init(Object *obj)
->>   {
->>       BCM283XBaseState *s = BCM283X_BASE(obj);
->>       BCM283XBaseClass *bc = BCM283X_BASE_GET_CLASS(obj);
->> -    int n;
->>
->> -    for (n = 0; n < bc->core_count; n++) {
->> -        object_initialize_child(obj, "cpu[*]", &s->cpu[n].core,
->> -                                bc->cpu_type);
->> -    }
->>       if (bc->core_count > 1) {
->>           qdev_property_add_static(DEVICE(obj), &bcm2836_enabled_cores_property);
->>           qdev_prop_set_uint32(DEVICE(obj), "enabled-cpus", bc->core_count);
->> @@ -65,6 +60,11 @@ bool bcm283x_common_realize(DeviceState *dev, BCMSocPeripheralBaseState *ps,
->>       BCM283XBaseClass *bc = BCM283X_BASE_GET_CLASS(dev);
->>       Object *obj;
->>
->> +    for (int n = 0; n < bc->core_count; n++) {
->> +        object_initialize_child(OBJECT(dev), "cpu[*]", &s->cpu[n].core,
->> +                                bc->cpu_type);
->> +    }
->> +
+On 29/10/25 22:39, Philippe Mathieu-Daudé wrote:
+> The following changes since commit e090e0312dc9030d94e38e3d98a88718d3561e4e:
 > 
-> This seems a bit odd to me. Yes, object instance_init isn't
-> allowed to fail. But it's OK for one object to init another
-> in its own init method, exactly because of this. And even
-> if we do move this, the failure won't cause the realize
-> method to fail cleanly, because object_initialize_child()
-> doesn't return a failure message.
+>    Merge tag 'pull-trivial-patches' of https://gitlab.com/mjt0k/qemu into staging (2025-10-29 10:44:15 +0100)
 > 
-> The problem as described in the commit message seems to be
-> fairly general: we have effectively blacklisted some types
-> as "not really creatable", but we haven't got a mechanism for
-> propagating that to other types that unconditionally use those.
-> Working around this problem by moving child init from
-> init to realize in parent classes is going to result in
-> a lot of weird parent classes that do work in realize that
-> ought to be in init.
+> are available in the Git repository at:
 > 
-> I think we should either:
-> (1) find a way to propagate the "this type doesn't really
-> exist for this binary" downwards
-> (2) allow the "shouldn't really exist types" to be created
-> programmatically, but just don't advertise them to the user.
+>    https://github.com/philmd/qemu.git tags/single-binary-20251029
+> 
+> for you to fetch changes up to e5c542fa16b0a7d47070692481db301736a0ac7b:
+> 
+>    hw/riscv: Replace target_ulong uses (2025-10-29 19:16:24 +0100)
+> 
+> ----------------------------------------------------------------
+> Various patches related to single binary work:
+> 
+> - Make hw/arm/ common by adding a QOM type to machines to
+>    tag in which binary (32 or 64-bit) they can be used.
+>    Convert the Virt and SBSA-Ref machines.
+> - Build Xen files once
+> 
+> ----------------------------------------------------------------
 
-Maybe we could have a DEFINE_TYPES_IF_ARCH(arch, ...) macro that uses
-"if (qemu_arch_available(arch)) { ... }" internally, and then replace the 
-DEFINE_TYPES() in hw/arm/bcm2836.c with that macro?
+I'm seeing a failure on mainstream pipeline:
 
-  Thomas
+https://gitlab.com/qemu-project/qemu/-/jobs/11906335084
+▶  5/68 test_bpim2u.BananaPiMachine.test_arm_bpim2u 
+                FAIL
+▶  5/68 test_bpim2u.BananaPiMachine.test_arm_bpim2u_gmac 
+                FAIL
+▶  5/68 test_bpim2u.BananaPiMachine.test_arm_bpim2u_initrd 
+                FAIL
+
+which I failed to notice locally in part because Darwin LLVM 'ar'
+doesn't not work like the GNU equivalent:
+
+$ pyvenv/bin/meson test --print-errorlogs --setup thorough func-arm-bpim2u
+ninja: Entering directory `/build'
+[1301/1301] Generating qemu-system-arm with a custom command
+▶ 1/1 test_bpim2u.BananaPiMachine.test_arm_bpim2u 
+   FAIL
+▶ 1/1 test_bpim2u.BananaPiMachine.test_arm_bpim2u_gmac 
+   FAIL
+▶ 1/1 test_bpim2u.BananaPiMachine.test_arm_bpim2u_initrd 
+   FAIL
+1/1 qemu:func-thorough+func-arm-thorough+thorough / func-arm-bpim2u 
+   ERROR            1.24s   exit status 1
+―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― 
+✀ 
+――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+stderr:
+Traceback (most recent call last):
+   File "/src/qemu/tests/functional/arm/test_bpim2u.py", line 41, in 
+test_arm_bpim2u
+     kernel_path = self.archive_extract(
+         self.ASSET_DEB, member='boot/vmlinuz-6.6.16-current-sunxi')
+   File "/src/qemu/tests/functional/qemu_test/testcase.py", line 83, in 
+archive_extract
+     archive_extract(archive, self.scratch_file(), format, member)
+     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   File "/src/qemu/tests/functional/qemu_test/archive.py", line 92, in 
+archive_extract
+     deb_extract(archive, dest_dir, "./" + member)
+     ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   File "/src/qemu/tests/functional/qemu_test/archive.py", line 57, in 
+deb_extract
+     check_call(['ar', 'x', archive, file_path],
+     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                stdout=DEVNULL, stderr=DEVNULL)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   File 
+"/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", 
+line 419, in check_call
+     raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['ar', 'x', 
+'~/.cache/qemu/download/3d968c15b121ede871dce49d13ee7644d6f74b6b121b84c9a40f51b0c80d6d22', 
+'data.tar.xz/']' returned non-zero exit status 1.
+
+Traceback (most recent call last):
+   File "/src/qemu/tests/functional/arm/test_bpim2u.py", line 98, in 
+test_arm_bpim2u_gmac
+     kernel_path = self.archive_extract(
+         self.ASSET_DEB, member='boot/vmlinuz-6.6.16-current-sunxi')
+   File "/src/qemu/tests/functional/qemu_test/testcase.py", line 83, in 
+archive_extract
+     archive_extract(archive, self.scratch_file(), format, member)
+     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   File "/src/qemu/tests/functional/qemu_test/archive.py", line 92, in 
+archive_extract
+     deb_extract(archive, dest_dir, "./" + member)
+     ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   File "/src/qemu/tests/functional/qemu_test/archive.py", line 57, in 
+deb_extract
+     check_call(['ar', 'x', archive, file_path],
+     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                stdout=DEVNULL, stderr=DEVNULL)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   File 
+"/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", 
+line 419, in check_call
+     raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['ar', 'x', 
+'~/.cache/qemu/download/3d968c15b121ede871dce49d13ee7644d6f74b6b121b84c9a40f51b0c80d6d22', 
+'data.tar.xz/']' returned non-zero exit status 1.
+
+Traceback (most recent call last):
+   File "/src/qemu/tests/functional/arm/test_bpim2u.py", line 62, in 
+test_arm_bpim2u_initrd
+     kernel_path = self.archive_extract(
+         self.ASSET_DEB, member='boot/vmlinuz-6.6.16-current-sunxi')
+   File "/src/qemu/tests/functional/qemu_test/testcase.py", line 83, in 
+archive_extract
+     archive_extract(archive, self.scratch_file(), format, member)
+     ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   File "/src/qemu/tests/functional/qemu_test/archive.py", line 92, in 
+archive_extract
+     deb_extract(archive, dest_dir, "./" + member)
+     ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   File "/src/qemu/tests/functional/qemu_test/archive.py", line 57, in 
+deb_extract
+     check_call(['ar', 'x', archive, file_path],
+     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                stdout=DEVNULL, stderr=DEVNULL)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   File 
+"/opt/homebrew/Cellar/python@3.13/3.13.7/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", 
+line 419, in check_call
+     raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['ar', 'x', 
+'~/.cache/qemu/download/3d968c15b121ede871dce49d13ee7644d6f74b6b121b84c9a40f51b0c80d6d22', 
+'data.tar.xz/']' returned non-zero exit status 1.
+
 
 

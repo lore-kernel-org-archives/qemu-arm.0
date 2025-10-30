@@ -4,165 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 446E2CCF9F0
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 13:03:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFEC1CCF9F0
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 13:44:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vESIY-0000Ag-Kf; Thu, 30 Oct 2025 09:02:39 -0400
+	id 1vESwX-0005l0-Oe; Thu, 30 Oct 2025 09:43:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
- id 1vESIW-0000AU-CY; Thu, 30 Oct 2025 09:02:37 -0400
-Received: from mail-westus2azlp170120002.outbound.protection.outlook.com
- ([2a01:111:f403:c007::2] helo=MW6PR02CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
- id 1vESIR-00026u-4H; Thu, 30 Oct 2025 09:02:34 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=GjeZDShBTcMqy1P1dnsvVjcT87BhX7x7fcOdhlf6ym98pH6HYDeVrN7RlnmEs1Ts5IhMx2SSv+pFojmmuklSmH336Chquv9rcZXVYolTHbCdpPHGK4fq68T3U+Jk7HhurNm2Ixe9iUUEuNp7KeUH6kgNnyhgi7MAPkGuzNAxX3VD3Vqo/FXTAn6y+86mDSVyvwi5MZQ94trqAjTC+TmYDBOxY3ElCu88rO8qUO7mWFhHaYl11B5osMM43loKOmL0Ex/98Bf2mWRIzsPEC92DJQvgvD1pMbF1gapUuFuInuSzQGqsYckLifRHPcYokdBhnKqNviefc5z9pCkCpyck5w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=liiS6VB6v/4l+avz/umLd5Dwd8RLvvk526Do8bS0XMY=;
- b=A36lnC6mWaCoBgFNPLwxOhRYf1lOZn5gx3egziUkp2gBd0wYIcpRBPgOCfo8gwSLFrao1NgPhR2bAk90kw4lPwEfQJJHqjyOyhRTlggRTVxbSclboPXQSZ279zU6w7C5tbbFtgWZMcMwdtB6gKosYJQSRpLHXZl/gxj/WsTxzkAwj3dj+sNufUWAUzghFKSbGRwKKws3Y4rmCU1482tFSA2yi69ao4diw63ePO13zQAM6Nkt3Z7YqSUALPcq/IFkq5DgU8twCsBcjx/gCT30qZQd6nBza+jmh5mI6xwMOpUbHfD7A/0F+6oOD5UwQnqV2nP3CBkFA3ChufJMQSnN/Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=liiS6VB6v/4l+avz/umLd5Dwd8RLvvk526Do8bS0XMY=;
- b=h6atxLs09qOey/k6DOkvkV4hXImj+nSlOmmrDxNK0cDf+sR/Jzzjanblgk9uBfiZT8cJXJ13/LJvc21+omFJuv/QYs5dh7fxBIsJo1W6KcflpAdhm3ZvF2NCKKHksFUq77g5YHFEPPL19yO/pLfz/BT1rnq44GZ2TNX9lIDEofVZkbH0N2wrN2EoomipMD1HJRGxg/J8KWxguvQnN0IXjKGUtKSgszW3Oxi0RMe1ZqUSjgNuWilBeVUz13AEqHoLROBRtyoBTHMNrAq/HEK4Mc9BXHFABp47554gW/9cEIui0eYo62lbyXLCQpOCweCJsTLYp5bD6uzQyWz+xGE7Tw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from MN2PR12MB3613.namprd12.prod.outlook.com (2603:10b6:208:c1::17)
- by IA0PR12MB7650.namprd12.prod.outlook.com (2603:10b6:208:436::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.14; Thu, 30 Oct
- 2025 13:02:09 +0000
-Received: from MN2PR12MB3613.namprd12.prod.outlook.com
- ([fe80::1b3b:64f5:9211:608b]) by MN2PR12MB3613.namprd12.prod.outlook.com
- ([fe80::1b3b:64f5:9211:608b%4]) with mapi id 15.20.9275.011; Thu, 30 Oct 2025
- 13:02:09 +0000
-Date: Thu, 30 Oct 2025 10:02:08 -0300
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: Shameer Kolothum <skolothumtho@nvidia.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "ddutile@redhat.com" <ddutile@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- Nathan Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>,
- "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
- "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
- "shameerkolothum@gmail.com" <shameerkolothum@gmail.com>
-Subject: Re: [PATCH v4 19/27] hw/arm/smmuv3-accel: Install S1 bypass hwpt on
- reset
-Message-ID: <20251030130208.GP1018328@nvidia.com>
-References: <20250929133643.38961-1-skolothumtho@nvidia.com>
- <20250929133643.38961-20-skolothumtho@nvidia.com>
- <aPF9l5GwctGN0tqT@Asurada-Nvidia>
- <76ce5b05-98fe-4682-a5ca-2f87b7535f35@redhat.com>
- <CH3PR12MB75480062975BA40AD454742CABFCA@CH3PR12MB7548.namprd12.prod.outlook.com>
- <aQGXibWAiMpXAQlF@Asurada-Nvidia>
- <CH3PR12MB7548FB14A0D0F08688DE9CCDABFAA@CH3PR12MB7548.namprd12.prod.outlook.com>
- <aQL3gNT+1Ehgi1pn@Asurada-Nvidia> <aQMVT5BN6kLq6+cJ@Asurada-Nvidia>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aQMVT5BN6kLq6+cJ@Asurada-Nvidia>
-X-ClientProxiedBy: MN2PR12CA0030.namprd12.prod.outlook.com
- (2603:10b6:208:a8::43) To MN2PR12MB3613.namprd12.prod.outlook.com
- (2603:10b6:208:c1::17)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1vESwW-0005kO-TK
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 09:43:56 -0400
+Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1vESwP-0000Er-1v
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 09:43:55 -0400
+Received: by mail-qt1-x831.google.com with SMTP id
+ d75a77b69052e-4ed0aef49abso11231721cf.3
+ for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 06:43:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1761831826; x=1762436626; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=7SM6iVZ8tIoRmPPhiv2mZYf+U/m9GFpGEhVIn4YYxVY=;
+ b=nh/GTaPheyd3/HxFUhY8+3BS/xOkhmu8uN1tEeChu3Fk8apPwzJQp/Zf2B21mjy3yz
+ 5c+ZK5rzmM7zCoCD3hudHJnVBAdzs2AK9w3oXr6yQ1+uiPl/6JcM4jTD3yFPK3HN7M2R
+ +QjlS1WdgxnDofjhfm/0DqPthOrT4OpcGZRvXN2cflSZ3njij2CIfd4elQbZ12MDjo92
+ FCHkCuWL/qSl6MUDjDjElZt6O4AKIzVKB0kXrE+xJo0kL3SECk2sD025KMRI5V4HjJfZ
+ SbDZcVNbP+ZqWz00oAS3BXPtHI/Nhb1nSYg0kKVl0jH3UxJMZuJEcseqsM2TjnMtGJen
+ eVsQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761831826; x=1762436626;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=7SM6iVZ8tIoRmPPhiv2mZYf+U/m9GFpGEhVIn4YYxVY=;
+ b=h7gt7mqHmcQFj0v+FM3efCBYnbVNXmNzO9IDneAWvH50C6ap6ewozngD61TQUM9lxO
+ LLsbtZLWAgDLwdSqIawDJTNPKFyHvhhhcCn8ZWg0gfvJvvqMFC+XmzPcpDAu/gUE0jXg
+ +65aB+E7CrE400DHuCP5W/U5sMmb+4Ivj/+KRfycK1lsMg0bv8gS50ZV3BrtW+x/Oh6g
+ mBI6xnKIuBxP1l9OKvkfIp7spmc84MA3+tnsALwyUTgInllXAPisZsTAgYIeQ0c98Ifj
+ 4aCFtfVe1E/ftWPkQ35yRY93L7d659yRec4wgBSAe7HHedW5UDV/UipYJKIfFLa1pK82
+ X0lg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWj55gtv1oRv+g48dIiyK+rpFz/EZTHsu7G433fsLneneMdwLk7dEaup3JqAgBeK+hl1BFjWJ7zQw==@nongnu.org
+X-Gm-Message-State: AOJu0YwFdAFJFGzwTxxd1/LVzc/0tKNH0l2ccwaelRGHricdwcz3Vk2O
+ bqboauWOnEt5uvHSCTpaW1TGtRQH9CQgcULx1XONdoJXCpeMrGLBaMGkMPN7Ozt0+lMD6LI2ELR
+ i6UQcwVtS69jzV/Ob6/pdzmj6P2ftpzM=
+X-Gm-Gg: ASbGnctzCdP9EJi/LtB84CsoKOLmXV7OMuhbDbAkszih0WnyBIUDYyMTKWuEbEvpCca
+ rG4QGZ7nrgiSgn/Gi1HAsTFKYQOJ5Tvore2pY383tfURLtqs/kyoA/kDVAxYLaWpBvq6wwIDjgR
+ ZusK+MNoo6aq/MVzOuXhGmi1gSc7LEORvhzHObC+WiB8FqL9buwxVev3YFqysPPiLmPQvdOn2LM
+ 6wl8STwx919vDcU3sdVHW7HXPQv0G7ypE7izVodE54VIvaBk8p8tUyrwUJN3k6ulkvaRX6V4jM1
+ S/MClaPYrtFQIPH4
+X-Google-Smtp-Source: AGHT+IH8RR95azdak4Ftt/D03nnvFI4Tgx//KgS7dMUYFcyYcenqUI2v0FEDBeDinPuBfk5H5pT4Q5a/1pDxOg+gYmA=
+X-Received: by 2002:ac8:7d13:0:b0:4b3:475a:e2fc with SMTP id
+ d75a77b69052e-4ed2211bd0amr34852471cf.3.1761831825559; Thu, 30 Oct 2025
+ 06:43:45 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN2PR12MB3613:EE_|IA0PR12MB7650:EE_
-X-MS-Office365-Filtering-Correlation-Id: f22299df-851f-4876-123a-08de17b48931
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?q6T8luQUvmAg0mKrrie7k0AaL2BNbRrynSHZeL9Zk7LtZ1j6buXks5V8ImWK?=
- =?us-ascii?Q?ZmrfDbZ7lLNIRIe+isA47JVHgWShBmhBF0x61kGgZz0FWmpBiabmGSlPccu/?=
- =?us-ascii?Q?R9KRG2TCwYkyXxdry8VTy4P5bcXBE+gdUwKzCB7yyz/s3MdttKAiuGXB7hb6?=
- =?us-ascii?Q?gEZRI8najyFjXCI9YvYDeEO+x3sMFlvzrlmfO6X8GykVu/dDTcVQI91drSA0?=
- =?us-ascii?Q?q+EECdBlVUM8uqM1cLRW7q92BqAP4OIcYPmNKyvUSTxcIo71gJDSSCPZzW20?=
- =?us-ascii?Q?wOkprJ4+nfR/UoiieILqI73h3BhRKU9iK/hGfW9CBGhcZ8V22e/jMEVlV7Ks?=
- =?us-ascii?Q?5GVWM/GAk3SGHIoMguIz5fWBSzSH2KA5C4z70lwBRO3DxrXCUGUrkhunFq8O?=
- =?us-ascii?Q?tAslpSkzupj5R+pFUmlRnh7QqO5a2+u3c3DJiDsaeNldN4YcY6tbMMcyRp0G?=
- =?us-ascii?Q?T3aCVUCM/aFkC/wes1BA9Ue0qpDwX5TRjMdUsFY2tvR6GvsI0ufmAihpTKc6?=
- =?us-ascii?Q?AAJw4j+epaRq73/meLk/EqEVWiy6lUlV81nNvAo/caKcTu1k+sXk+dV8BnfN?=
- =?us-ascii?Q?LvWwYreg8wsjIUrWxgHtC2DJMx4WuOQaFkvw2e/mKtuV0+vbMSSq9vuDHQb1?=
- =?us-ascii?Q?RzQjubhs9DazEIEvTyyVeOvwxu/huoUoCxo9v8WEYEGBSbTud+OcqgChVqJm?=
- =?us-ascii?Q?/8DUAcn1j7vTQEbXyANG4w7n3HgIGZwccQ5sefpJWP9S/9HG4LNk7oGFNeHt?=
- =?us-ascii?Q?QcPHwKqXQjPT4VbmJLOX1/DI5gwd/pELMl6DvFPc8Fa8dqK/pfsR/xjQXKah?=
- =?us-ascii?Q?ONdIOj3WPPzhbPpXLzoNG0RWGt3XkW3vC7e9i5CbK6IdpqQ/COod56ammjLN?=
- =?us-ascii?Q?+VT72x9mhLL4g97itKngZZs4eJ5p2sWXTEOU6tIYOAUN3V6lHM6SZ3Efevsi?=
- =?us-ascii?Q?3ZZfXlnJP8vVYGq+xQnKvYXTwwaM41MRar6pCXzdCD9yRn89hua8afyMazkR?=
- =?us-ascii?Q?1vIjBkn6fMlomgWpsM00+gNvA4kyfB8wSKaNbspny0OzRRwf3fJZNX2ftKrb?=
- =?us-ascii?Q?pbfzatgu7tvJPujGdiunBzW8WdfZUD9s1n7FIoPtIGmQSt3KdbnuIEdnTUcI?=
- =?us-ascii?Q?IdET8R5oZwphS8yGJWezyq2W9d1zD2+dbOcMhmI+xHdHPOiH0sf8zHDVZBEt?=
- =?us-ascii?Q?U27H7Qn0fhj4KbDInO9ocPeCFrNLFCbCOV9KGAoeCrmcOJxOg6CTNXg+JV2s?=
- =?us-ascii?Q?wnm7ls0tNfUhjv0FXhyTQZfUwNy3AsC9Dnn82S/JEviRFVyt1UvyXFF8a8h9?=
- =?us-ascii?Q?H91y7dPkzZ/lVF17LvdAPKWg7RA8jjdv4EOd08xoOmIIOiRp7uySxMmXVFSe?=
- =?us-ascii?Q?1p9Vh549t/sp39B5OaDYeFa8fsBBxizbPWkOMvK1rhDxKHtO3x7z8Ha9YQoz?=
- =?us-ascii?Q?29lSkKB7WanDUPLsaSF8nCgDjGysuwDz?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB3613.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(1800799024)(366016); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?agz0YiG/F99yINNoKD2Bfcx5wRZbzLoEan7KANaV+CZ7kGmkN94pkGTPL2Yf?=
- =?us-ascii?Q?ZAEnX+0hiddaC1RUYcVhJgdvDqPXohhXWFhSgVHjty8xild4PvO9JlWEjEUL?=
- =?us-ascii?Q?iGwWxLnUiafawhp8jDaWiOaEH/CwQdRsJ4313O67xKLJkthtOFcGTWW7qJ4x?=
- =?us-ascii?Q?Blzh7rdwXI9efkHFx4pa7AqKfja8xANKbRlAekcLBWjzEbCgWhL+5wie4HwI?=
- =?us-ascii?Q?+Bmu2TFtQrOHkSEwIeTAuNjBMasOyZwk/tyLh7uNpEGVhYjS34HIBjM4OSCW?=
- =?us-ascii?Q?RIbuGk6lc2Pm+GBH84n8SkokRJesgFpA0qIujEU4y5STII4J6iQfWKahYZAC?=
- =?us-ascii?Q?0iDjUdVpMtkHfS8iKtwfeBHj9PZNOIBY65kI/0Y//JIRYOLBJHDG7UP/QnQN?=
- =?us-ascii?Q?MQRkO440s1xC4W3UdzwI6kgOLFgViahgsw9nw50RLzxDHBSZlwpH8QTXMLwp?=
- =?us-ascii?Q?k1WWEjSsykufp1Ud4zzOoKeS6kenSeufcNHKQhF7W48+L+YbZz2CDy5X7uDt?=
- =?us-ascii?Q?TmFBa/9h+ZzcRqoX1jy763UOxqIyfkFgEW+CuFm7650uXdY/k3cY7cTiVivv?=
- =?us-ascii?Q?22DBVDW/asTZuNXafs+1RPjOAIsqyVNmftH9/TjC9z65UpvqGOpWeyI/iAC8?=
- =?us-ascii?Q?ZZZLHo9aFORJDo4ZrvsNTwrvfsaD6hy/9REBOH99KNWnWXWaYoz6PhTB8mfL?=
- =?us-ascii?Q?03gEPc1I/nk9Y0/EbiuDETuOHZV9rZ3MNd0Rc81eP2GwqGKOWRHrnHnAMGfG?=
- =?us-ascii?Q?1no7NN3cuebBtHXV4Mi2uPEiA07NCkn8mw1CB0ydhEdesUgNBIx9CZYycP9V?=
- =?us-ascii?Q?a5eRIO3rJp0ZHxsCYFvHMg8hkoxXGPYWc3/5ztSFtM55K3M8sr5P4R00cHU3?=
- =?us-ascii?Q?jl75glKnfK2gOsLLNvGMGjthiIM8Z4RlPy7xzbffe0c9ug9fheCfRGuu6o3r?=
- =?us-ascii?Q?BcrBsM59bANVwFXeoOOTNYkF6aAR2qkMWT8A0ZnwN8Ca9zw4HphHTxcmZIdN?=
- =?us-ascii?Q?JtoCfd+dkUmfAXt63lVshwyax8dZv6KialoLgaG+NriHJE8cmq4uQHDzP+zX?=
- =?us-ascii?Q?kcJHIDNSjy49mR6SCRYWiV+Bn60k+eObHDZZL89I2lKxJ1F3XKknbVVLTdRd?=
- =?us-ascii?Q?NSGQQ5tyuPte90ntc7kKehbkCHtlAh7VPAs7b+KrGFopMVjf54sZhDV+vvgj?=
- =?us-ascii?Q?7I7GWPUHfW4flPzbdQbJIa7Ks6nh81HzKDUcZt+ru5Ii7jxFF3Gw8I+dviRs?=
- =?us-ascii?Q?nFTII87aGLYbwbmFyw9k0YsTbmMKiJzSYW/ERyZygRdrU9PMiP8QF1QqeF8v?=
- =?us-ascii?Q?qk3LSK7nzhVQ31xJ3ZN7jgJ/KxZK80bWZ0mTWhxtILfVtk7On9+DJhS6BEND?=
- =?us-ascii?Q?bJcIbTnsOmpINoMRzhQVEvA/RULeBEC9x3FB1LgGt/q1l0RCn5qpdjHjs3vF?=
- =?us-ascii?Q?EWp8bfDkfzLYZXlHmzEdHfgwU+2Nkqg5U4FXmAOifZG58rGwlAAiDjNcY4gJ?=
- =?us-ascii?Q?9fIjIkC3X4FtYv5m3J4VyPJGEGjm2/DiLs5wUp2eE7JIX94pa4+Y3IPqrqk+?=
- =?us-ascii?Q?hHQHFWpserhU/KJorFI=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f22299df-851f-4876-123a-08de17b48931
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3613.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Oct 2025 13:02:09.7760 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: H7+Iq0utLCeXfmX9KkyLtLfRPQU+eJL8GSQ7u1f522vKONgY5YUkICh0xEKg5bQG
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR12MB7650
-Received-SPF: permerror client-ip=2a01:111:f403:c007::2;
- envelope-from=jgg@nvidia.com;
- helo=MW6PR02CU001.outbound.protection.outlook.com
+References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
+In-Reply-To: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Thu, 30 Oct 2025 17:43:32 +0400
+X-Gm-Features: AWmQ_bkFzEZH-GdWJh91jMb701YRULFFGmm_DUllXAxJ4nf7FQYk0HHyYxYR-1o
+Message-ID: <CAJ+F1CLN_iozWRN96qQ=ckkvzt6bvyN6LyGhTOSn+wmVfN+hSQ@mail.gmail.com>
+Subject: Re: [PATCH v3 00/35] Audio clean-ups
+To: qemu-devel@nongnu.org
+Cc: Alexandre Ratchov <alex@caoua.org>,
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Jan Kiszka <jan.kiszka@web.de>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Thomas Huth <huth@tuxfamily.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, 
+ qemu-ppc@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
+ qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>, 
+ Zhao Liu <zhao1.liu@intel.com>,
+ =?UTF-8?Q?Volker_R=C3=BCmelin?= <vr_qemu@t-online.de>, 
+ Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::831;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-qt1-x831.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -178,11 +116,173 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Oct 30, 2025 at 12:35:43AM -0700, Nicolin Chen wrote:
+Hi
 
-> However, we have CPU like Grace that doesn't have S2FWB..
+On Mon, Oct 27, 2025 at 7:13=E2=80=AFPM <marcandre.lureau@redhat.com> wrote=
+:
+>
+> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+>
+> Hi,
+>
+> This is part of continuous and overdue clean up / modernization effort fo=
+r the
+> audio subsystem. (there is more in the pipe)
+>
+> v3:
+> - rebased and dropped applied patches
+> - fix some checkpatch formatting errors
+> - tweak commit message
+> - added r-b tags
+>
+> v2:
+> - renamed AudioBE AudioBackend
+> - "qdev: add qdev_find_default_bus()" report different error for full bus
+> - added "remove QEMUSoundCard" & drop AudioFE renaming patch
+> - added "docs: Update mentions of removed '-soundhw' command line option"=
+ patch from philmd
+> - added r-b tags
+>
+> thanks
+>
+> Marc-Andr=C3=A9 Lureau (33):
+>   qdev: add qdev_find_default_bus()
+>   hw/audio: look up the default bus from the device class
+>   audio: rename audio_define->audio_add_audiodev()
+>   hw/audio: use better naming for -audio model handling code
+>   hw/audio/virtio-snd-pci: remove custom model callback
+>   hw/audio: simplify 'hda' audio init code
+>   hw/audio: generalize audio_model.init()
+>   hw/audio: drop audio_model.isa
+>   audio: start making AudioState a QOM Object
+>   audio: register backends in /audiodevs container
+>   audio: use /audiodevs QOM container
+>   audio/paaudio: remove needless return value
+>   audio/dsound: simplify init()
+>   audio/dsound: report init error via **errp
+>   audio: simplify audio_driver_init()
+>   audio: move period tick initialization
+>   audio: drop needless error message
+>   audio: keep vmstate handle with AudioState
+>   audio: register and unregister vmstate with AudioState
+>   audio: initialize card_head during object init
+>   audio: remove some needless headers
+>   audio: remove AUDIO_HOST_ENDIANNESS
+>   audio: introduce AUD_set_volume_{in,out}_lr()
+>   audio/replay: fix type punning
+>   audio: move internal APIs to audio_int.h
+>   audio: rename AudioState -> AudioBackend
+>   audio: remove QEMUSoundCard
+>   audio/dbus: use a helper function to set the backend dbus server
+>   audio: move audio.h under include/qemu/
+>   audio: remove dependency on spice header
+>   audio: cleanup, use bool for booleans
+>   audio: move capture API to own header
+>   audio: drop needless audio_driver "descr" field
+>
+> Philippe Mathieu-Daud=C3=A9 (2):
+>   audio: Remove pointless local variables
+>   audio: Rename @endianness argument as @big_endian for clarity
 
-Those CPUs basically ignore all of these cachability attributes.
+Only 3/4 patches are missing reviews:
 
-Jason
+audio: register and unregister vmstate with AudioState
+audio: remove QEMUSoundCard
+audio/dbus: use a helper function to set the backend dbus server
+audio: move capture API to own header
+
+thanks for the help!
+
+
+>
+>  MAINTAINERS                                   |   1 +
+>  audio/audio_int.h                             |  67 ++--
+>  audio/audio_template.h                        |  44 ++-
+>  audio/mixeng.h                                |   1 -
+>  hw/audio/lm4549.h                             |   4 +-
+>  include/hw/audio/asc.h                        |   4 +-
+>  include/hw/audio/model.h                      |  14 +
+>  include/hw/audio/soundhw.h                    |  13 -
+>  include/hw/audio/virtio-snd.h                 |   4 +-
+>  include/hw/display/xlnx_dp.h                  |   4 +-
+>  include/hw/isa/vt82c686.h                     |   4 +-
+>  include/hw/qdev-properties-system.h           |   2 +-
+>  include/monitor/qdev.h                        |   3 +
+>  include/qemu/audio-capture.h                  |  43 +++
+>  {audio =3D> include/qemu}/audio.h               | 137 +++-----
+>  include/system/replay.h                       |   3 +-
+>  ui/vnc.h                                      |   4 +-
+>  audio/alsaaudio.c                             |  37 +--
+>  audio/audio-hmp-cmds.c                        |   4 +-
+>  audio/audio.c                                 | 313 +++++++++---------
+>  audio/audio_win_int.c                         |   2 +-
+>  audio/dbusaudio.c                             |  20 +-
+>  audio/dsoundaudio.c                           | 213 +++++-------
+>  audio/jackaudio.c                             |   3 +-
+>  audio/mixeng.c                                |  12 +-
+>  audio/noaudio.c                               |   5 +-
+>  audio/ossaudio.c                              |  33 +-
+>  audio/paaudio.c                               |  24 +-
+>  audio/pwaudio.c                               |  15 +-
+>  audio/sdlaudio.c                              |  15 +-
+>  audio/sndioaudio.c                            |   3 +-
+>  audio/spiceaudio.c                            |   7 +-
+>  audio/wavaudio.c                              |   6 +-
+>  audio/wavcapture.c                            |   5 +-
+>  hw/arm/integratorcp.c                         |   2 +-
+>  hw/arm/musicpal.c                             |   2 +-
+>  hw/arm/realview.c                             |   2 +-
+>  hw/arm/versatilepb.c                          |   2 +-
+>  hw/arm/vexpress.c                             |   2 +-
+>  hw/arm/xlnx-zcu102.c                          |   2 +-
+>  hw/audio/ac97.c                               |  36 +-
+>  hw/audio/adlib.c                              |  17 +-
+>  hw/audio/asc.c                                |  15 +-
+>  hw/audio/cs4231a.c                            |  16 +-
+>  hw/audio/es1370.c                             |  30 +-
+>  hw/audio/gus.c                                |  17 +-
+>  hw/audio/hda-codec.c                          |  21 +-
+>  hw/audio/intel-hda.c                          |  22 +-
+>  hw/audio/lm4549.c                             |  12 +-
+>  hw/audio/marvell_88w8618.c                    |   2 +-
+>  hw/audio/{soundhw.c =3D> model.c}               |  86 ++---
+>  hw/audio/pcspk.c                              |  13 +-
+>  hw/audio/pl041.c                              |   2 +-
+>  hw/audio/sb16.c                               |  23 +-
+>  hw/audio/via-ac97.c                           |  11 +-
+>  hw/audio/virtio-snd-pci.c                     |  18 +-
+>  hw/audio/virtio-snd.c                         |  17 +-
+>  hw/audio/wm8750.c                             |  37 +--
+>  hw/core/machine.c                             |   4 +-
+>  hw/core/qdev-properties-system.c              |  17 +-
+>  hw/display/xlnx_dp.c                          |   8 +-
+>  hw/ppc/prep.c                                 |   2 +-
+>  hw/usb/dev-audio.c                            |  17 +-
+>  qom/object.c                                  |   1 +
+>  replay/replay-audio.c                         |   4 +-
+>  replay/stubs-system.c                         |   2 +-
+>  system/qdev-monitor.c                         |  25 +-
+>  system/runstate.c                             |   2 +-
+>  system/vl.c                                   |  14 +-
+>  ui/dbus.c                                     |  13 +-
+>  ui/vnc.c                                      |  10 +-
+>  audio/coreaudio.m                             |   3 +-
+>  audio/meson.build                             |   2 +-
+>  hw/audio/meson.build                          |   2 +-
+>  .../codeconverter/test_regexps.py             |   4 +-
+>  75 files changed, 758 insertions(+), 848 deletions(-)
+>  create mode 100644 include/hw/audio/model.h
+>  delete mode 100644 include/hw/audio/soundhw.h
+>  create mode 100644 include/qemu/audio-capture.h
+>  rename {audio =3D> include/qemu}/audio.h (50%)
+>  rename hw/audio/{soundhw.c =3D> model.c} (54%)
+>
+> --
+> 2.51.0
+>
+>
+
+
+--=20
+Marc-Andr=C3=A9 Lureau
 

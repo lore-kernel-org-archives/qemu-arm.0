@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9650ECCF9E3
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 16:31:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B56DCCF9F8
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 16:32:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vEVYI-00030F-9P; Thu, 30 Oct 2025 12:31:07 -0400
+	id 1vEVZ6-0003K3-BA; Thu, 30 Oct 2025 12:31:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEVYG-0002xQ-8d
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:31:04 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEVYs-0003Fh-BP
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:31:50 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEVY3-0002DP-T2
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:31:01 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-63c3d7e2217so2092949a12.3
- for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 09:30:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEVYg-0002HH-Or
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:31:40 -0400
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-b3c2c748bc8so171259366b.2
+ for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 09:31:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761841844; x=1762446644; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761841885; x=1762446685; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:references:cc:to:from
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=DQEefFoXOGbbclOSElXowMt4zbsVDwOKRTZCZG0/hcQ=;
- b=pZ7vmbT6OL0VGlHMm0uI1vovHhBjWf9/wplkO+Fa8pookrP1Svc2fra/lNx90QUEjp
- qjhRmD4QgbK68JVa8b5ChEhF2D1Eum2NoFBNfLC2lDi9DgQeY1mdTKRtrEF8uejFGMsn
- ybBVkTOug7mpeAYYVMsDhG9n8VU6VJn/9IU8boVm74HsesWOyY+fmMhjEOOrW80OVKAO
- qpQFoeK8PpTnInQUefZ/o8/D6UaK63aqDaS+csE6Z2tx6C3lAtPA/86zu5eX5TmhOEyI
- FhExKNrQqiIxsu2miqMzpzHxZQSnQ0CiLowDdk7mrsIXrLPA/2WmQOFTBmS61NaDvW/Q
- i4Jg==
+ bh=JgscATsSSMPRhIE7wz4646HaTTG/bQuticFNhSwlNrE=;
+ b=FVirLy0BHNI5tFETiNN0sHu157Xr4aJXoZERNkspSvVlEBwrcBJ4tDGnxGse1jZ6HH
+ FvXl4hTBBUO1f0OuqlhxMuQzFafDfI+PApVHOq4Tz8I5rsivzRhzmqzsEl8E8uaOnoIJ
+ wsEmH7XNpmabokkTpZlyPQq6JfcCbPmJhfOOJXeaiFgBO9cke2p4rE6g2B2BeXLKh4tb
+ MKQ9sI9KAkxBUi3jEObZypqSFrfaauMO4mfb0JWACmAeblODX7LFKjBzzAJdaTP+b7Mb
+ OfOq41FFrk60RwSljH54d4My41YuDYobgSp/DvGdF6KcrVQmlqW8NjToo2J5RM6aKKiJ
+ z3Zw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761841844; x=1762446644;
+ d=1e100.net; s=20230601; t=1761841885; x=1762446685;
  h=content-transfer-encoding:in-reply-to:references:cc:to:from
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=DQEefFoXOGbbclOSElXowMt4zbsVDwOKRTZCZG0/hcQ=;
- b=VdFPGi0cmQ0NV5Q8gGQ7lstRj7FqQXxRpvYzVo37AA7O7aNNsPHe2ewK/Xq49bdFfM
- mAKAu01ruhUMw7sC7Mjyyfl4HLrp395WPbsnv2s/LbtJCEAhyAZR9I5nAtl1V8TWKJQ+
- iyyU+hTVVCmGcRJXkjkw+0C40118NjBk8f/FCbMIdIrF+OXSXDuzicBWdIDhyim6yyKC
- QKYvPRY8uDxzL4Y5IZd1b0HP5UYGzYOounbO7mVc7JrcypdY87JF0bSgXRcDgVIUKlo0
- yl67IDEfNRz2nm1rgKO/1mBaxH6gwqwTUtadrmtjOZdie1C9qC37dG7oZAAU25LGbgZP
- FPYg==
+ bh=JgscATsSSMPRhIE7wz4646HaTTG/bQuticFNhSwlNrE=;
+ b=j4gO9N+UXU5wIFdO6glmaRAWrwd7ArrO7I7fdwYkkoADL7gsgLDL7tGoP4OEi13Vpu
+ 2+GlLdLMgxUO6hVDYA5qmdhxQJzW2rPwcfz4lYF3xOQ/F4UXdSqEtCqDmgkeYfsCTUWb
+ Qkdx9gj2a2Ik4BObnD7ldmAd4Uu/CrH5GOPja2sDwpkQnC715qYOVeY6A+cIzOgrQrOh
+ GTIhvLjdIsTjKimaEwq7QW/37MfHR2yyi0xNkAC6yV7e6YNocAuUyAjn5WZA8djHtmMh
+ VFy7Z7J0hqVHvr/DY8SKZ88SsK6jSggCuIpJLHDLQY+7Tx2KEuqgIZPfiWCAd8gwa51N
+ Ca0w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXJWk5b3NSmElZbyJcKGR6KTOKtacm4GcLMwGt4yDaJ+BhJxhES53NWHICxNV1rYYmIUjp+goyBRg==@nongnu.org
-X-Gm-Message-State: AOJu0YwmVivBFl6ARP3vY9HCQA5ZMWAEhI82EPxpbeIC8XdzMr6f7k61
- mtmV9jCMa1NGkRQ0ZEH+09xo07+glNgnRAYEZfWPRQw1RSOZz6cn2t7C9TbO4ZtX1Zw=
-X-Gm-Gg: ASbGncvPOscerBLOWjeRVntfD/GigquHrH1H4DQQsfYjPiObCQzrfpGKPXZmURKbdH1
- 73AXsU7PcZD5WpcF1eDT9zAc+m4uRkkif2JpgaR9xT0d3iRT3HrMC4+o9uay1rbzSxXkZAEAgG6
- +aWDLFPAH1mPw0b/fEjX9uqkJF6Gs0KjJuArqF3SRI8Qkb7U3RswkPVOQ5Kz2T5LPIT9kKCNHGD
- +Oe9En1JdjQQzPaNXHWZO1gmUdMvaqjHZtKdE26129fJ1ohpH+iUdhXBbRuYB1Wkw8Xar61Dg2m
- oN+i9xo/p2r24SO0CAXetx7i/iTrPGGVdYNjhuWSDPFRYApmxm3yLoMYcKXlC6mMjJA9XYau8kE
- ddpIcksOgRsBIevdb7L+j4wV1fA9U/TYJ9B70TOwybZfV8PIUOzt9yUCd/qQTPhxWc48DiRisiA
- 2BpTKJGRzQ+C6Exqoa4WyZWOzuxunus0opEnqr2zY0Iw==
-X-Google-Smtp-Source: AGHT+IHnYrNZxUyWoONL46qOnJ/BGUoKXVfQ7thK/SUZQb9c4PzRPL9w091Lk5JnMfm++vOfoSJnzg==
-X-Received: by 2002:a05:6402:5353:20b0:63e:19ec:c8e4 with SMTP id
- 4fb4d7f45d1cf-64077025460mr44521a12.28.1761841844306; 
- Thu, 30 Oct 2025 09:30:44 -0700 (PDT)
+ AJvYcCVXuT0WfBKD/heQ8xHsEDgBwCjgOmtgZ9eJM9JfvLFjj8UJ7BTYx4uu3oAGPu56Ew8jiQBP1nmXjw==@nongnu.org
+X-Gm-Message-State: AOJu0YyTRLErq2ayagy41qXbt/HflaqfpJa2RLmaVrZI6geDIrnUR1Xr
+ bOnfa1rvDJj9sCTbyR1irdLiBDnIJoXFvarobsoQksyQ4dBUo4Yuy39l/4XCI9ss3Q4=
+X-Gm-Gg: ASbGncsSqJfzjA95/rASbDi/GBDi4jxKPM9vXSGOrHcyFUzwY1SC8loia/gnsUBo4+j
+ bgnbzAlAatYzIpA+8J5oFW/9fbQS58o9ur0KMR0FGj0L5DPa1B5AeO/hTYgbY4Rb0twR26R4jI5
+ LqXtFC9bg0Xhtn7nRMb8tw9Fp6nrf0Jr0XVx+/M27jiSvJx4YtplSZsu4IqAjf7FVv6Q0mndKcC
+ yUt81a9nuZioYdRs8EEYuP8EsjYzMaM5q0OKNXaB11xnpJen/gy2QunqeoCZpmESP7ChVJeBXsz
+ xWul/ZHfahGflBG2ApvJHPT+DQHjNgvhMS07tB5MVLWgqCoQIKUanCU03yvmCCjuf0x3JblZ+ix
+ vRuaeONPOqfbkW6n2RE5S9JhCukXmj57Jj/laMjoxm3ZDIaqEVWoXIkSUZ+IvbgiaoXUXrHSWNG
+ qJ+FWWh9tRBzrTcKIP+Ieiclu90cmq2+wYKgeLIrjUrg==
+X-Google-Smtp-Source: AGHT+IEaR40rPReIDElPoY/lykrSRr94vSFRr8kIjKRRLKYlHa3IYGcn1UCdkaHGEnqXb3oADxWolg==
+X-Received: by 2002:a17:907:6d26:b0:b6d:5cc5:89d9 with SMTP id
+ a640c23a62f3a-b7070631082mr6705066b.47.1761841884855; 
+ Thu, 30 Oct 2025 09:31:24 -0700 (PDT)
 Received: from [10.180.230.213] (183.105.204.77.rev.sfr.net. [77.204.105.183])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-64068f74a56sm1888001a12.15.2025.10.30.09.30.42
+ a640c23a62f3a-b6d853f3851sm1791968366b.48.2025.10.30.09.31.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Oct 2025 09:30:43 -0700 (PDT)
-Message-ID: <d0b66630-40ea-40a3-9da4-d817b9febc88@linaro.org>
-Date: Thu, 30 Oct 2025 17:30:41 +0100
+ Thu, 30 Oct 2025 09:31:24 -0700 (PDT)
+Message-ID: <100e6967-9090-4531-871a-1118ef83dd65@linaro.org>
+Date: Thu, 30 Oct 2025 17:31:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 19/35] audio: register and unregister vmstate with
@@ -101,15 +101,14 @@ References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
 In-Reply-To: <adbf6cd9-72b0-4ce9-93a6-4f83338ca8a3@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -183,4 +182,13 @@ On 29/10/25 22:42, Philippe Mathieu-Daudé wrote:
 > Hmm right. Cc'ing Peter & Fabiano.
 
 Not blocking, so:
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+But please consider an alternative. We really ought to remove this
+legacy API.
+
+Thanks,
+
+Phil.
 

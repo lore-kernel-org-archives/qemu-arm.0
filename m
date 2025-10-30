@@ -4,101 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6949FCCF9F8
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 07:59:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF420CCF9F0
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 09:55:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vENZ8-0003qZ-SD; Thu, 30 Oct 2025 03:59:26 -0400
+	id 1vEPMQ-0002Jd-O2; Thu, 30 Oct 2025 05:54:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1vENZ7-0003pW-BQ; Thu, 30 Oct 2025 03:59:25 -0400
-Received: from fout-a7-smtp.messagingengine.com ([103.168.172.150])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vEPML-0002Ga-L7
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 05:54:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1vENZ5-0000MP-0u; Thu, 30 Oct 2025 03:59:25 -0400
-Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
- by mailfout.phl.internal (Postfix) with ESMTP id 4418DEC00FF;
- Thu, 30 Oct 2025 03:59:19 -0400 (EDT)
-Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-04.internal (MEProxy); Thu, 30 Oct 2025 03:59:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1761811159; x=
- 1761897559; bh=rgBdBTUlayjkuNUuoGOCZg+/F5LhGbCJmCRiUCgKzRc=; b=Y
- iiT0yxpFSGgu67MNslZ3jb5vWkAgvpIZ942QRZ19QZoruaUQ/INOTcjXS71LD1Xp
- 23w8/kr3isp5+U+0rHNi54iimkz25yhluH12MdyPFili6ve3ELu3JUYkdywAoGt5
- AzGkhEoJqZKrv802ZFIpANj6FKPzmXhHqgCHH/spJ4RMZiwvXwAUE/GgO2K3h3Le
- tMDAluwNdBgx7VBpEwDMlXjOlSZx+Haghh8QxHoxyL1wAdOKodDkq4uekLySw1ts
- RCOEUh/JQA3l+MFlllA99hPPq7V8LWZUDZX9j8teSkHSA4g9GwAVhY4ReqPKFIEz
- tpBQOtumt6bfZ9mnZudtw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
- 1761811159; x=1761897559; bh=rgBdBTUlayjkuNUuoGOCZg+/F5LhGbCJmCR
- iUCgKzRc=; b=t5Dl1YxoAYTCsxqU21t3Ilj3r443/g/H3aoMMkExD9c3d4FJcz5
- oO3n6UeolbJOemt7WiGtm5fYhAWLX4H1QEZw3SXzkUjs2OyDQbIKlXMV2rSL0du5
- sCM7JMJda0uKWGglZH7e7gFMGllj5FpRYcdtcFaiSiJi4qa+Isi8Wvqf+Yy5x5Xd
- C29Rw7CNJj7tbgl6KC0Ia58FhbC/RnlbtM/JyCAZyz0zmfjJtzVZLGvefq3iVsUO
- TwolylFsk2lfBZJ/jXD1qMGoUYpATEOPjU/ToxEokIPtUxTyqWujaqbe+a97SP8h
- YruJryulDbub1tfDNawV1FpKWQ1+crzODSA==
-X-ME-Sender: <xms:1hoDaUQTOot0NDsDYkBYOgWGhNC61BCiJrviw8wb2pI0RkbZaQfQCw>
- <xme:1hoDadoeniZ5aN4kKRKn-d6Wy13wyMFsNQ89FjYzfPeJpmQFs_TSbmv_Pj8WhS-7P
- qIPqtyjGq9qKpD-mceJ6wQMBnBnDQrNmXZcn-mvj-N577R3jrtXL0s>
-X-ME-Received: <xmr:1hoDae0Zzs2YrpXAQnb4ODWU7lwL5conqbE67TSDmq51-Ep5fKJUXwNmivZqh6Eaxs30QSAiMGBDJOR5IveeLnqhC6GT8ynt5MKRQOzF5hCi>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeffedrtdeggdduieeitdejucetufdoteggodetrf
- dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
- rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
- gurhepfffhvfevuffkfhggtggujgesghdtreertddtjeenucfhrhhomhepmfhlrghushcu
- lfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrdgukheqnecuggftrfgrthhtvg
- hrnhepjefgjeefffdvuefhieefhffggfeuleehudekveejvedtuddugeeigeetffffjeev
- necuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepihhtsh
- esihhrrhgvlhgvvhgrnhhtrdgukhdpnhgspghrtghpthhtohepuddvpdhmohguvgepshhm
- thhpohhuthdprhgtphhtthhopehphhhilhhmugeslhhinhgrrhhordhorhhgpdhrtghpth
- htohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdprhgtphhtthhopehmrghr
- khdrtggrvhgvrgihlhgrnhgusehnuhhtrghnihigrdgtohhmpdhrtghpthhtohepqhgvmh
- huqdhpphgtsehnohhnghhnuhdrohhrghdprhgtphhtthhopehqvghmuhdqrhhishgtvhes
- nhhonhhgnhhurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgslhhotghksehnohhnghhnuh
- drohhrghdprhgtphhtthhopehmrghrtggrnhgurhgvrdhluhhrvggruhesrhgvughhrght
- rdgtohhmpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdprhgtph
- htthhopehqvghmuhdqshefledtgiesnhhonhhgnhhurdhorhhg
-X-ME-Proxy: <xmx:1hoDac5iufXrvViM64FuVenRsQ_zrobl9Kb9aeBxm88fWQL-cZgHsg>
- <xmx:1hoDaSRf7bCv2UTPgUwOEyhCgkMtBZBFaQIAjnHX6mbluTpkkWYSfA>
- <xmx:1hoDaZUXarj3hjhi54xa_zOK5ivUpta7bEHNlKCumkLr5-olPZZUDQ>
- <xmx:1hoDafF-QhBwmKMSGcjY3XyLmCbGz2iMPIc46qeLmvQn5bYhlp1u8g>
- <xmx:1xoDaTa8GeqW93MmUfFADEFlizx-Bl0xGLIScIGy8W-Fp1ftTpNjdWEd>
-Feedback-ID: idc91472f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 30 Oct 2025 03:59:18 -0400 (EDT)
-Date: Thu, 30 Oct 2025 08:59:17 +0100
-From: Klaus Jensen <its@irrelevant.dk>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Mark Cave-Ayland <mark.caveayland@nutanix.com>,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-block@nongnu.org,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- Keith Busch <kbusch@kernel.org>, Jesper Devantier <foss@defmacro.it>
-Subject: Re: [PATCH v3 08/25] hw/nvme/ctrl: Use memory_region_size()
-Message-ID: <aQMa1bECP5oZQMKr@AALNPWKJENSEN.aal.scsc.local>
-References: <20251028181300.41475-1-philmd@linaro.org>
- <20251028181300.41475-9-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vEPMG-0000dr-Jk
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 05:54:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1761818051;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=6XdgfQxluwBcLDe1xFkj4ry8yZVXVpGUg4q+UPa18g0=;
+ b=h+yYS+MC16hTm1OgmEmpE0YpcmjH4VGhM6BGb+iUYjezSZ/aHHa1oo/6BVQD0Hefcarh2h
+ tlXQAV8tZcITGrSYHC1xyuklx8f8HD+uqXzDp+9cF/uWxvJ73YksRQvHK54iGjJntqxerT
+ aSL7qiArmRtf8+jnzbBMGK+oXiVhJMM=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-12-QD7F2Fs_P_-BlwRUMb2HZw-1; Thu, 30 Oct 2025 05:54:09 -0400
+X-MC-Unique: QD7F2Fs_P_-BlwRUMb2HZw-1
+X-Mimecast-MFC-AGG-ID: QD7F2Fs_P_-BlwRUMb2HZw_1761818048
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4711899ab0aso5561785e9.2
+ for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 02:54:09 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761818048; x=1762422848;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=6XdgfQxluwBcLDe1xFkj4ry8yZVXVpGUg4q+UPa18g0=;
+ b=vZzCc/sgj/xs9gkc3CsAi3dUyu3r5PFXjpAoT5zqKkI2wnY7L38LdBMA0vgmCQSNSd
+ KYJQ0K9uDO7Joj7cSK7i5ry3blFv6cJQ51bH/WoMuZ47GvSmYf0uaTT7WeTNu1711GqE
+ kT24p8uxKP9Tr7/Xpk01+LJUwBCrvPGy8Qma/S1ULJt4AL7FX19rtjSY0luhR+EUXO0y
+ 7WKvPVmwD0T+V+7C55LvE7rLlgjQ1Kfcosyl1Rs+pohVw6qYOZZbxKJe4Iix9VpNHqMV
+ iH6ms8ILQZBOKA0+O3nHLSxhV4MnYSC6Fl9JAVpI4UCOh01l6lcyJ6Gmdusdgm/50TBN
+ oNhQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVOvD3BfabT2fvkObfiJ3BDX1uiV1L0xvZiKM4PgvHiQhe/FZbcp/3rOpjJ3+rmLf0CE9EEsNSoFg==@nongnu.org
+X-Gm-Message-State: AOJu0YyXwUvgtHSsKyzmckrwQpYAlIKFF0cdEvD9yWUgLRRnMlYkrXYS
+ nYNtTBBx42/OLGtPDXGbRyJECGVt3abb3wlR6xqqsav66hchQiBJfu6X49js9PmbkwXIobGYmLo
+ 2P0yMHID9onKpppqALc6nH3SMkRF5UO7tex+YPuMx0winPFxtK7ENeA==
+X-Gm-Gg: ASbGnctQw9vv+D6PKy1lq5OSkBmJTp09DG0l+z3sEGSw2OIsDR4DXCDkinffi095Enq
+ X7sm4iaCUxJDnvjlVyypV+dfi+Mh9YJAkUfoDpVUKpYs3YrYQP4KYwzRoCf3BfAQbn/PBEn5WMI
+ /zpHL82N3hUEnM3C4Ttft//5ccOj7jNhsEBurwPZSY9eeoy54aKApLKDM16wbMrOmFY0LdS8NY9
+ BAdlLL5xnGjrl5IeTMjTsM8OtRKnDY1x9nbA8kEuZyAIXkt8A78a2DFaka7X8rloiO8kahK1ORy
+ tdVhgdkSrxf1Jiq3j8E8i2uPIybgdc/I7v6C4qp+sJua7txkkX/v/iIlC9OMiwf5MjA+BGk=
+X-Received: by 2002:a05:600c:4589:b0:46e:38f7:625f with SMTP id
+ 5b1f17b1804b1-477267cba4cmr19188275e9.10.1761818048125; 
+ Thu, 30 Oct 2025 02:54:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEiKnsTMRwnEykoX7nPL335mVoGXcmgw5oh565MUBk2izNxIBlvGI3Zzs/AFgkI8nYoxDqwpA==
+X-Received: by 2002:a05:600c:4589:b0:46e:38f7:625f with SMTP id
+ 5b1f17b1804b1-477267cba4cmr19187955e9.10.1761818047685; 
+ Thu, 30 Oct 2025 02:54:07 -0700 (PDT)
+Received: from [192.168.0.7] ([47.64.112.33]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-429b6bc5907sm3040024f8f.13.2025.10.30.02.54.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 30 Oct 2025 02:54:07 -0700 (PDT)
+Message-ID: <55d74476-4697-464f-91d1-202b26627d2c@redhat.com>
+Date: Thu, 30 Oct 2025 10:54:06 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="co6+pYaLvIJ9a2Ks"
-Content-Disposition: inline
-In-Reply-To: <20251028181300.41475-9-philmd@linaro.org>
-Received-SPF: pass client-ip=103.168.172.150; envelope-from=its@irrelevant.dk;
- helo=fout-a7-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/arm/bcm283x: Initialize CPU objects in SoC common
+ DeviceRealize()
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20251029075257.63635-1-philmd@linaro.org>
+ <CAFEAcA961WKB4fxwAS0WHXXKwYEO7TnmovD4z-BPGehr6sxBQw@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <CAFEAcA961WKB4fxwAS0WHXXKwYEO7TnmovD4z-BPGehr6sxBQw@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Z0WjG1pmaqntxl2LQmvt0o_G1nRhxnvPQ34uy99DWAg_1761818048
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -116,34 +160,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 29/10/2025 15.14, Peter Maydell wrote:
+> On Wed, 29 Oct 2025 at 07:53, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> QOM .instance_init() handler can not fail. QDev DeviceRealize
+>> can.
+>>
+>> The device-introspect QTest enumerates all QDev types and
+>> instantiate each one, without realizing it, then introspects
+>> the instance properties.
+>>
+>> When switching to a single QEMU binary, all QDev types are
+>> available in the binary, but only a filtered subset might be
+>> available, depending on which previous target the binary is
+>> trying to mimic.
+>>
+>> In particular with the Raspi machines, the TYPE_RASPI4B_MACHINE
+>> and ARM_CPU_TYPE_NAME("cortex-a72") will be built in the
+>> qemu-system-arm binary, while not available (because filtered
+>> as being 64-bit, for the qemu-system-aarch64 binary).
+>>
+>> However the TYPE_BCM2838 SoC is not filtered out, and will
+>> abort when being initialized, because the "cortex-a72" CPU type
+>> is filtered out, leading to device-introspect failure:
+>>
+>>    1/1 qemu:qtest+qtest-arm / qtest-arm/device-introspect-test        ERROR            2.46s   killed by signal 6 SIGABRT
+>>    stderr:
+>>    unknown type 'cortex-a72-arm-cpu'
+>>    Broken pipe
+>>    ../../tests/qtest/libqtest.c:199: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
+>>    (test program exited with status code -6)
+>>    TAP parsing error: Too few tests run (expected 167, got 5)
+>>
+>> In order to avoid that, move the CPU *initialization* in the
+>> SoC DeviceRealize handler, so the SoC initialization won't
+>> fail, while realization still will.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   hw/arm/bcm2836.c | 10 +++++-----
+>>   1 file changed, 5 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+>> index cd61ba15054..6e4066f137d 100644
+>> --- a/hw/arm/bcm2836.c
+>> +++ b/hw/arm/bcm2836.c
+>> @@ -25,12 +25,7 @@ static void bcm283x_base_init(Object *obj)
+>>   {
+>>       BCM283XBaseState *s = BCM283X_BASE(obj);
+>>       BCM283XBaseClass *bc = BCM283X_BASE_GET_CLASS(obj);
+>> -    int n;
+>>
+>> -    for (n = 0; n < bc->core_count; n++) {
+>> -        object_initialize_child(obj, "cpu[*]", &s->cpu[n].core,
+>> -                                bc->cpu_type);
+>> -    }
+>>       if (bc->core_count > 1) {
+>>           qdev_property_add_static(DEVICE(obj), &bcm2836_enabled_cores_property);
+>>           qdev_prop_set_uint32(DEVICE(obj), "enabled-cpus", bc->core_count);
+>> @@ -65,6 +60,11 @@ bool bcm283x_common_realize(DeviceState *dev, BCMSocPeripheralBaseState *ps,
+>>       BCM283XBaseClass *bc = BCM283X_BASE_GET_CLASS(dev);
+>>       Object *obj;
+>>
+>> +    for (int n = 0; n < bc->core_count; n++) {
+>> +        object_initialize_child(OBJECT(dev), "cpu[*]", &s->cpu[n].core,
+>> +                                bc->cpu_type);
+>> +    }
+>> +
+> 
+> This seems a bit odd to me. Yes, object instance_init isn't
+> allowed to fail. But it's OK for one object to init another
+> in its own init method, exactly because of this. And even
+> if we do move this, the failure won't cause the realize
+> method to fail cleanly, because object_initialize_child()
+> doesn't return a failure message.
+> 
+> The problem as described in the commit message seems to be
+> fairly general: we have effectively blacklisted some types
+> as "not really creatable", but we haven't got a mechanism for
+> propagating that to other types that unconditionally use those.
+> Working around this problem by moving child init from
+> init to realize in parent classes is going to result in
+> a lot of weird parent classes that do work in realize that
+> ought to be in init.
+> 
+> I think we should either:
+> (1) find a way to propagate the "this type doesn't really
+> exist for this binary" downwards
+> (2) allow the "shouldn't really exist types" to be created
+> programmatically, but just don't advertise them to the user.
 
---co6+pYaLvIJ9a2Ks
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Maybe we could have a DEFINE_TYPES_IF_ARCH(arch, ...) macro that uses
+"if (qemu_arch_available(arch)) { ... }" internally, and then replace the 
+DEFINE_TYPES() in hw/arm/bcm2836.c with that macro?
 
-On Oct 28 19:12, Philippe Mathieu-Daud=C3=A9 wrote:
-> MemoryRegion::size is private data of MemoryRegion,
-> use the proper memory_region_size() getter to get it.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+  Thomas
 
-Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
-
---co6+pYaLvIJ9a2Ks
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmkDGtUACgkQTeGvMW1P
-DenRjQf/ZbbBjslUkCM2TBVssTYLG3NiFvDGPEizoepZ1lNaw/TKZEtTFgG49KF3
-TesHPAMz1JQ8CGkn/qbgCzgygQflczoDkyfSzzfv+A6zflWCUEjWifJ+mXK6AmZw
-7nGzfqWbftGNN4RYprILJbfAHyFc5PdBmZNy3ZggSO967CHYJBvqEeQ47/ZlVsgW
-NYBeTCAwGOy3qk46Se6uewUC9iHeNYXHEqvp4GtqIWRnySudysnw+DwlSDPv1Ohc
-+2HNILI1p5D7vvF0on6xWfozY+yfNX+ays4AvtrWmEXYM3Z9ObPfNeTQ/q0KFP/i
-H3KRiJo9RAJY3U6PfWObIjUBd4d/bA==
-=3Qt6
------END PGP SIGNATURE-----
-
---co6+pYaLvIJ9a2Ks--
 

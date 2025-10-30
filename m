@@ -4,107 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE717CCFA00
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 16:43:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B5C2CCF9F0
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 17:00:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vEVkN-0003oB-Cp; Thu, 30 Oct 2025 12:43:40 -0400
+	id 1vEVzz-0002Ne-Dh; Thu, 30 Oct 2025 12:59:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEVkE-0003aJ-76
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:43:26 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEVk6-0003Vy-Ai
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:43:25 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-b4f323cf89bso293679866b.2
- for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 09:43:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761842592; x=1762447392; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=G8eV1FRR47sZH5kygZofNxOHp940E7AT+ZsoVqkmAXs=;
- b=qkmyq0UCufu/qzSPQshizBse80ude720cAkba3ynASbTIHgf7YGINjv4ZwT8WM6W8D
- B61NM9V4AqKqu7rYEwbQilOE5sLIELhjECwAHMsE2mi3u1QBZtkHBFlW+ZbhCotl4lft
- 0J0RBV+GWLoCIxANXjeYa4jsu75bwGWnsPERwJ0S+i24EiLNxYz7xUMscAp5VukUnVpJ
- Dlhp5/Q+yvDjUouKiGBWx3BuBJISiOWqjC5ccJtRN+waBfHAHD5nXT5yF3Xu+vvj2eTY
- ufE7QAW4+a7sbMsjdIr3KKJMqJz6OlBbUJ6DC4EQdGthCyutGXO9AqOU07jRNYTcrsBO
- rK0g==
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vEVzt-0002MG-AL
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:59:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vEVzh-0005HB-NY
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:59:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1761843552;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=c4skaTSZXHQuIRmGbiy2gxynizyJICG1cT+Q8yDgioM=;
+ b=hovY4EVeTfQicubJKAktVHlICc1a+eZQr3MHGdXCtcWcYou4IoD+bbdL/+lZQFZPhY461r
+ buHK/B7hHgXru/M9xO4cA96SH/t4/moHrr2pYtarm9s5Nbe+vYnZkP8VNxsFcAJgQsAhW+
+ hiuNncVIZZVKCmCFmLfpOgEzFAFAXNk=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-455-ZYcl9B2UP22oxdT0PPkzEA-1; Thu, 30 Oct 2025 12:59:10 -0400
+X-MC-Unique: ZYcl9B2UP22oxdT0PPkzEA-1
+X-Mimecast-MFC-AGG-ID: ZYcl9B2UP22oxdT0PPkzEA_1761843550
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-4298da9effcso1271512f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 09:59:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761842592; x=1762447392;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=G8eV1FRR47sZH5kygZofNxOHp940E7AT+ZsoVqkmAXs=;
- b=QThGrgNmijhEyfmJ26xtsZ1NcFpRXE3dKjlcmXWMmkbUo4X2yPYH7AeLd1Ke1bsp92
- ehF0ByRME7J8bCa6P0V6oOUiLuV5ZDQhnBwkWm0l4ehvVsN2ZLWRdmFPTOWvwW/J/e7N
- 4jRFlwdy2LELskdTXQYqFAsjkHmMZCe9dNA5BrWOU0FL525vpPLFS50QCUaMPu7XMQVW
- 0kD+1/Marm8z50wgR+okrthX6VBvRQx1fmYet1DbzyCxGRPtbjs7tbLzckafj0VixCuU
- rnDiQ+qX4iT1bHasvzfBZHnpxPPlqu88NET9+J3Pdglk1JqxjzdZrTCITRSxkTxKB92F
- pAiQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWpwh4PsIzKpzyVpIINDHesMYcAfMB8Q+81d38WCK2kFF0hPZYe4suljqNp1On6g2bO0epz0Cd0bw==@nongnu.org
-X-Gm-Message-State: AOJu0YyqDyfl7/+YgR7l19Xjkf6MycUsPBeftbYPhS3Q7tQ+RkBe384L
- TCeYnm2pOcEY7Wb2xK6kRnV694FdH/mfRnWCamuRYXNaWjF2hWAbK1CsjERsqa1eD5I=
-X-Gm-Gg: ASbGncthgGsSBiHwaqmls5NDZMhdDD307n1xCuh+IuMpdWADg//Qbl+0oTxp69O+rAt
- O+levc43yQ6K3dIomnYG/STG6XTb1nI7CcA4CRkqCBnN7wMNbd1ha3Cse9Q491yKpS8Uo9yO8H6
- h3isLVojeYK8uW2qMEo9gohqcWxMUDKmvMZkFgsNr+nIv77t0KuJZvr1lciaI5i5BU0f+1snD3L
- z+RPVoISWQij7NxHqyM05yt6oQTuyJhwRub1WLf4Yufqk7RbjY+EjU9BHG+ywviiwokpSJ7AFFz
- hMOkiPWQDuBAq8vAP4xrJzOH0opi7h6AlNAt/xZAt9jxI/U5lh2G4y/3h5wZmGrNpiMRYFgscv8
- XYAkGGs95IPVnZLuFsvSeh1uzI22htGBZ4Jr9GvE6gfT3R37e3eIZXhBiq3oTfiIVCQHRHc0xJQ
- 9uuEVdYok3pARuwQaK6d7tXtAdy5FIgsppNR9yGnHYOA==
-X-Google-Smtp-Source: AGHT+IGiDbPZ99yBxB1j7NrjlcPTsIGQehP2K0HeszKtG7jVCDOKxyyjE+XdOld1snxt59DGqdBh1Q==
-X-Received: by 2002:a17:907:2d0a:b0:b6d:5f52:eee8 with SMTP id
- a640c23a62f3a-b7070199ee4mr16828766b.29.1761842592353; 
- Thu, 30 Oct 2025 09:43:12 -0700 (PDT)
-Received: from [10.180.230.213] (183.105.204.77.rev.sfr.net. [77.204.105.183])
+ d=1e100.net; s=20230601; t=1761843549; x=1762448349;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=c4skaTSZXHQuIRmGbiy2gxynizyJICG1cT+Q8yDgioM=;
+ b=BgdzXHMqI2WEUGdJ8aHBWwSUvbYGHXVk/OYUHe9nstOfbcEkHxsHQ0zvUkAmexVFYk
+ cy4vOUxGM3HarZfz36crntyhfEoZ4Obkl94t7VsUqxM45STqtATrX/BjPpb6+CZyvTLV
+ uIEWs07GJhiCEdJ2EJHMlNhw6LhAehw6P1X2/CwVvQ44RiqFZHM7InUF8O5kM+Cgtq8S
+ xu8kM2fsvnUNaQhRI1vEbVemKFI/thNwRGegy6LEOaLbH11TukFDAQjc7wqF2E1UONCO
+ IMXRvLlDgxuQvHja7lzcsQx1HORWkyCUfvnZYy05n0kShbafYc2plfgZ50bV6iqzc2ZW
+ ai+Q==
+X-Gm-Message-State: AOJu0YxIwEecd1zhsXolGm5yMYSo6YG4SRtfo9QuGBsg6v4w2XTS87Ig
+ iK8L1jS7uMcbxZgZnNuI2LzBHTmgYP0yqFuqjgRRxGOdzKwUOOPCHZQsBSO3u3xtPveXmTqqdqt
+ gMfdb554dCGje7L0rSCw4aD1alRBU9T15x0IsJnPpRNpnBktcViYWYA==
+X-Gm-Gg: ASbGncvifY32GTQkWMZhPYj418459r2lEj4gR+y6y2EsdMMJz5XpwwYB8sIMCI6pPWt
+ Cn9gHpbbatqZlVjXd8B2nwbWl5GYXJMvu6ZqJEmq3gU/L9rDnEKDH82ENlUtUQcET/hkKK7eEso
+ hJYiRQjC2CwQe6utvKgfeQ80BJGklpdbHgnYHafVqx6acI7rSnCJVXj542U9Px/k5gPU9Io3PHv
+ AwySUfaF5NqlIKLoknyUz3PFpMhCGnty21stge6ECCe0st7eP6y6Cv31vmhalFdsbXq3aFc3GTL
+ KaEIBAcrqtsl0SLglKpYWLZobkkEBiksjalTVm6xz5fAmB4oMm2fhm9fJ9v8S/X7T6Z/9+lvcSF
+ cR14iCcspMUS911gIO4ayhnIMnD/cUtcnlXoPIP268g+Q4QA1tqevSUkSxjD6w/4=
+X-Received: by 2002:a05:600c:841a:b0:471:672:3486 with SMTP id
+ 5b1f17b1804b1-477307d7648mr5007415e9.15.1761843549523; 
+ Thu, 30 Oct 2025 09:59:09 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEt7B6ojHr/3JYckmLT4sLA4gFFjBs0ue4eJPWN4fnRoRr5RGdu8WPcg8CocqfFNx1nXc9tQQ==
+X-Received: by 2002:a05:600c:841a:b0:471:672:3486 with SMTP id
+ 5b1f17b1804b1-477307d7648mr5007155e9.15.1761843549096; 
+ Thu, 30 Oct 2025 09:59:09 -0700 (PDT)
+Received: from rh.redhat.com
+ (p200300f6af131a0027bd20bfc18c447d.dip0.t-ipconnect.de.
+ [2003:f6:af13:1a00:27bd:20bf:c18c:447d])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b6d8992aa28sm1758610666b.41.2025.10.30.09.43.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Oct 2025 09:43:11 -0700 (PDT)
-Message-ID: <0ed9cb4e-7d72-43f8-9408-bcc3dae0e429@linaro.org>
-Date: Thu, 30 Oct 2025 17:43:09 +0100
+ 5b1f17b1804b1-477289e7cf5sm51104085e9.14.2025.10.30.09.59.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 Oct 2025 09:59:08 -0700 (PDT)
+From: Sebastian Ott <sebott@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
+ kvmarm@lists.linux.dev, Sebastian Ott <sebott@redhat.com>
+Subject: [PATCH v2 0/2] arm: add kvm-psci-version vcpu property
+Date: Thu, 30 Oct 2025 17:59:03 +0100
+Message-ID: <20251030165905.73295-1-sebott@redhat.com>
+X-Mailer: git-send-email 2.51.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 27/35] audio: remove QEMUSoundCard
-Content-Language: en-US
-To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
-Cc: Alexandre Ratchov <alex@caoua.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Thomas Huth <huth@tuxfamily.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-ppc@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
- Zhao Liu <zhao1.liu@intel.com>, =?UTF-8?Q?Volker_R=C3=BCmelin?=
- <vr_qemu@t-online.de>, Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
-References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
- <20251027151045.2863176-28-marcandre.lureau@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251027151045.2863176-28-marcandre.lureau@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: bmrJiveYjdGM5bz8rTFjMpKceV2F38Q7Yc9m87tRsdU_1761843550
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,105 +111,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 27/10/25 16:10, marcandre.lureau@redhat.com wrote:
-> From: Marc-André Lureau <marcandre.lureau@redhat.com>
-> 
-> There is no clear need for this extra intermediary structure between
-> the audio backend and its user.
-> 
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->   audio/audio.h                       | 18 ++++++------------
->   audio/audio_int.h                   |  3 ---
->   audio/audio_template.h              | 22 ++++++++++------------
->   hw/audio/lm4549.h                   |  2 +-
->   include/hw/audio/asc.h              |  2 +-
->   include/hw/audio/virtio-snd.h       |  2 +-
->   include/hw/display/xlnx_dp.h        |  2 +-
->   include/hw/isa/vt82c686.h           |  2 +-
->   include/hw/qdev-properties-system.h |  2 +-
->   audio/audio.c                       | 29 ++++++++++-------------------
->   hw/audio/ac97.c                     | 25 ++++++++++++-------------
->   hw/audio/adlib.c                    |  9 ++++-----
->   hw/audio/asc.c                      |  9 +++------
->   hw/audio/cs4231a.c                  |  8 ++++----
->   hw/audio/es1370.c                   | 23 +++++++++++------------
->   hw/audio/gus.c                      |  9 ++++-----
->   hw/audio/hda-codec.c                | 15 +++++++--------
->   hw/audio/lm4549.c                   |  8 ++++----
->   hw/audio/pcspk.c                    |  9 +++++----
->   hw/audio/pl041.c                    |  2 +-
->   hw/audio/sb16.c                     | 16 ++++++++--------
->   hw/audio/via-ac97.c                 |  9 ++++-----
->   hw/audio/virtio-snd.c               | 13 ++++++-------
->   hw/audio/wm8750.c                   | 23 +++++++++++------------
->   hw/core/qdev-properties-system.c    | 11 +++++------
->   hw/display/xlnx_dp.c                |  6 +++---
->   hw/usb/dev-audio.c                  | 11 +++++------
->   27 files changed, 129 insertions(+), 161 deletions(-)
-> 
-> diff --git a/audio/audio.h b/audio/audio.h
-> index 1d56f111ea..fdbc33ae0c 100644
-> --- a/audio/audio.h
-> +++ b/audio/audio.h
-> @@ -69,18 +69,12 @@ struct AudioBackendClass {
->   };
->   
->   typedef struct AudioBackend AudioBackend;
-> -typedef struct QEMUSoundCard {
-> -    char *name;
-> -    AudioBackend *be;
-> -    QLIST_ENTRY (QEMUSoundCard) entries;
-> -} QEMUSoundCard;
->   
->   typedef struct QEMUAudioTimeStamp {
->       uint64_t old_ts;
->   } QEMUAudioTimeStamp;
->   
-> -bool AUD_register_card (const char *name, QEMUSoundCard *card, Error **errp);
-> -void AUD_remove_card (QEMUSoundCard *card);
-> +bool AUD_backend_check (AudioBackend **be, Error **errp);
->   CaptureVoiceOut *AUD_add_capture(
->       AudioBackend *s,
->       struct audsettings *as,
-> @@ -90,7 +84,7 @@ CaptureVoiceOut *AUD_add_capture(
->   void AUD_del_capture (CaptureVoiceOut *cap, void *cb_opaque);
->   
->   SWVoiceOut *AUD_open_out (
-> -    QEMUSoundCard *card,
-> +    AudioBackend *be,
->       SWVoiceOut *sw,
->       const char *name,
->       void *callback_opaque,
-> @@ -98,7 +92,7 @@ SWVoiceOut *AUD_open_out (
->       struct audsettings *settings
->       );
->   
-> -void AUD_close_out (QEMUSoundCard *card, SWVoiceOut *sw);
-> +void AUD_close_out (AudioBackend *be, SWVoiceOut *sw);
->   size_t AUD_write (SWVoiceOut *sw, void *pcm_buf, size_t size);
->   int  AUD_get_buffer_size_out (SWVoiceOut *sw);
->   void AUD_set_active_out (SWVoiceOut *sw, int on);
-> @@ -132,7 +126,7 @@ AUD_set_volume_in_lr(SWVoiceIn *sw, bool mut, uint8_t lvol, uint8_t rvol) {
->   }
->   
->   SWVoiceIn *AUD_open_in (
-> -    QEMUSoundCard *card,
-> +    AudioBackend *be,
->       SWVoiceIn *sw,
->       const char *name,
->       void *callback_opaque,
-> @@ -140,7 +134,7 @@ SWVoiceIn *AUD_open_in (
->       struct audsettings *settings
->       );
->   
-> -void AUD_close_in (QEMUSoundCard *card, SWVoiceIn *sw);
-> +void AUD_close_in (AudioBackend *be, SWVoiceIn *sw);
+This series adds a vcpu knob to request a specific PSCI version
+from KVM via the KVM_REG_ARM_PSCI_VERSION FW register.
 
-I know this is painful, but please fix ./checkpatch.pl errors before
-posting your pull request.
+The use case for this is to support migration between host kernels
+that differ in their default (a.k.a. most recent) PSCI version.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Note: in order to support PSCI v0.1 we need to drop vcpu
+initialization with KVM_CAP_ARM_PSCI_0_2 in that case.
+Alternatively we could limit support to versions >=0.2 .
+
+Changes since V1 [1]:
+* incorporated feedback from Peter and Eric
+
+[1] https://lore.kernel.org/kvmarm/20250911144923.24259-1-sebott@redhat.com/
+
+Sebastian Ott (2):
+  target/arm/kvm: add constants for new PSCI versions
+  target/arm/kvm: add kvm-psci-version vcpu property
+
+ docs/system/arm/cpu-features.rst |  5 +++
+ target/arm/cpu.h                 |  6 ++++
+ target/arm/kvm-consts.h          |  2 ++
+ target/arm/kvm.c                 | 60 +++++++++++++++++++++++++++++++-
+ 4 files changed, 72 insertions(+), 1 deletion(-)
+
+-- 
+2.42.0
 
 

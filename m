@@ -4,89 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 245ECCCF9FC
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 13:45:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41802CCF9FC
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 13:52:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vESxp-0006FW-UQ; Thu, 30 Oct 2025 09:45:25 -0400
+	id 1vET4L-00085N-03; Thu, 30 Oct 2025 09:52:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vESxm-0006Es-T5
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 09:45:14 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vET4I-00084b-U2
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 09:51:58 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vESxd-0000J0-2m
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 09:45:14 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-427015003eeso925121f8f.0
- for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 06:44:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vET4C-0001Au-Az
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 09:51:58 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-47721743fd0so6042125e9.2
+ for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 06:51:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761831896; x=1762436696; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=gkyjKmNCu+65Pj8bIu/kye/9Y3EB+0wOeDHE6t/vBDQ=;
- b=pWM2YyKknt9mhRx4iPV9EhRP8sGAv1nd06fGRufkn5UkaMNQsJQzJdR+mh4KUjSj3z
- 5sfIU+PvuWdzAfhwjHsmTzm8laM/Qawcg56tkOvwfSD+bUI9dPSRlGKJefP3bSqAAxgt
- qviUq/ihkEBv36MO4PB5krsxFcBa2tQK/bssoGyuL8qhSIZzgocLVgkkfxjc+05P2X4q
- fRdnx86aWcIKvAo4rx6IbT9bFZXIznjaY7Ne2g3dGLBVFMGM03yAma78a37CR8RFLaea
- /1ONcCQxkGjDopSTK23YRiepnhdickeAlVFT3YOquoCWJ/OmRISQPE56KAtTcguLjuIN
- XW2w==
+ d=linaro.org; s=google; t=1761832303; x=1762437103; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ykwCFAYsBsKgu2ziaoNlAW6KMhB99vj38MdcSPNoy8o=;
+ b=YXomgM/E+Gt4F2VKwRHlIXn76SS9Rqu86EFGzzYUoEnC2+DzAIYPlBYPY/0lczByv9
+ hNKOeaFvmrQd9PqHZOIDQ7m7Yx3h/wNKg3HOhH1LtKqgR95ax/SvbG59Pi9eld+d/ZpM
+ F8BAlFqrTcZLASvxKknETrudsqzHrQP5hif9ewyz9yfB0KYTj2mco7vod861KofmNq1J
+ /09tjFFmrcH7J50LCoR/VtEW9CnKO/FF7yYEqNhSdxeWseWue9EDfq8wVJki7w6YlCkI
+ O1uIDqcLtBl3jnlTuPDQHX8VzdfeSyIx3nh7cJD4C1NpPEIamlCkdkkFbd/vANkFkK/T
+ AgLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761831896; x=1762436696;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=gkyjKmNCu+65Pj8bIu/kye/9Y3EB+0wOeDHE6t/vBDQ=;
- b=YJZ5oYdfJEveAgHubX2ziFd9isVjTwfLIHKJ1wq93WaIiEnyHrInTnGyMFWIzQTai7
- ijTkK6Oe7fBaTP5Dm3rHHmyCrlL8zq3cFn9u5T2lwT/wfhKxAEBB8EhkVlkhrbGCpCcQ
- 9AkLkYHxxF+o742R5kCEvOzHU6Jv+ctdap8PsoyDEhl92n/Kpvk7p5ZYgA+9GxGshJxN
- rkH4965PBeQcfcdfHYUbCIc2/0rM1262FddYbfohBimCJr9dVlem83pvHVMk2//dotMy
- qLVN5G/bEVBSfHsIhNzxwb1LwUPBulJMK9QFm25jEYUT6A0mAPlK59X36f8drNYoEasv
- 9gOA==
-X-Gm-Message-State: AOJu0YzhlOsFmuG2cIm2B9xs3MCgQ3CKj9aZaO3nfjDFnP1YPvpnowuT
- sr7uIPpL2tZfdQRgRQkL62O4wg5TiyuVsS3/+Bhgb+eycRO/2VNd6wtV+DjzQKc9XBF3uTVfAP5
- ilW6QpTs=
-X-Gm-Gg: ASbGncuqEqDMVRdBlBe0H0BItk+6bOu94veQqLd4RSB5kaQcrkVJuVSD02ZN0zV6xLM
- 2jbP50PwdDMuKiYJeAu0uFWcMPyvoD9RCFhzaL6JkwSa3lSK6PLrNcuBsmtzRJwmKU+EYm79ZS6
- AeM/490vp6qKpCaNpXowqInLzjJkUbnON94/WU9lZ/gX/jnEeJovtEbLVqWMRZyGBSn2Qa3Bpk+
- 1vL1r3eiT8vhmpi0d3agdgiL/6I0yJl6NW89aZ44+PTf1ZPPzZ4xlyQlcEly3j5Aol68WBDGrau
- 2LaQ8z+nyEapDEngaBv869UTdrynzcKJsoaP6SalJgObiEIqx5w9JkyvTehTgmByjUBeuqD0R9U
- vQadcb7M2zNs5cBCkixm56bRJDT/vRst13vBSTaOY1WzLhwJl/lDAVRAYCqA6tPVuzT6SOc3f1f
- gAworctrfJaGIEQxESLVB1R5TK9OY7MZcyQ+RnjMrVZsbiFyfrTQs=
-X-Google-Smtp-Source: AGHT+IHGb5szLyZijZcBEVejW4R4v3aRMchCYavwFdnCK5cxy+FIp4u2C/P2WBo8AB3EudnrszctMQ==
-X-Received: by 2002:a05:6000:461c:b0:426:ff46:93b8 with SMTP id
- ffacd0b85a97d-429aef735b3mr4457579f8f.8.1761831895619; 
- Thu, 30 Oct 2025 06:44:55 -0700 (PDT)
-Received: from [10.180.230.213] (124.149.216.82.rev.sfr.net. [82.216.149.124])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-477289be3f9sm43701005e9.12.2025.10.30.06.44.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Oct 2025 06:44:54 -0700 (PDT)
-Message-ID: <d96eb786-e603-4d11-96ff-3721666540e8@linaro.org>
-Date: Thu, 30 Oct 2025 14:44:53 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 00/23] Misc single binary patches for 2025-10-29
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1761832303; x=1762437103;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ykwCFAYsBsKgu2ziaoNlAW6KMhB99vj38MdcSPNoy8o=;
+ b=SvtidaMiNVnNuBrgcaDcYvw73gz72VOMSjvZCHEFTzGe4WLM52snlfdlVTPgvSIxU4
+ XLdtfIC86LlC3eJoaSuaUljaoNvraOAEbqdDnUSzM9nYWKVUiya7MEUfnvEe2rOo5THc
+ Z7mK2bCJtAuktjsefYIAxY4KaZR9RfhDgggZm3n3qehSX2lpGfDPS9KJQLdVO1Q5fCqW
+ MzvmZffIT96p81HBHINgAXbxk3QFUyds/pHpqlwqWrcIvc2DIhpVBTFIZmyKWpiM9AR0
+ CUSruiJmwukTjiD9iAlgNS32ubf7rFiRaqdG/4x5p5n7Bnr21eGE6ItQCF7c5Vps1ynO
+ fhrg==
+X-Gm-Message-State: AOJu0YyGmfi9ZfwafGZS0ftR1qdaxlpmuzpThX1329g04DtQQULevV2N
+ iL5HE1DQENjpnsZ7Ikv97eaKgX2zy67zHPmxEjksiSsFfgr+o6Ohlsxmo4CnXMCWYOM5V2JQ720
+ iLrcKXXs=
+X-Gm-Gg: ASbGncuo0a7qv1WUnT/7I5cWd2W5uPI0fBpAq8rI4isjXRKC0RrJk/Z7CuyvjQ8OP+a
+ 0KXTb8Vs5P7DV95w0aTc1rBfVyDNhEE/MTTpxms3gcO4DGmFf6+dTEBMntZUpbFCaNeus/ct82z
+ djs/sP1k//JxOQ3tIrRRU3xqdDeQFJ75fBER7Yi3+fkzyij+B9U4Sy07ryuxqvgALQlDJuxoaXV
+ IK5yRHKEBHtQXWXM5vvXYlYOL/wAhOtSrFfn5Pl5F/pzTDyvf0TdJt9F6sxJz5RaoqlWHNsDy7z
+ AUC4ePv02hJNAk7Zc34i4FXD2/wBRSmNkkTNfx3eQNEexgt1AFuxBRWIF17xbaCH8OJko3kuoow
+ k4w+lifJCeJ57OifUpUrZE0pu54ZEIoNiBbObfd5/7O+OIzschYM2wTU53896wV51f0z9dfogZY
+ CYW/8oak+S37dkHQOjEjR+ETplrEJxMXQVslv54dWWXy6pS/c=
+X-Google-Smtp-Source: AGHT+IGPQ64KbJSYbIRALouiCJWO/SaetMCtibx3tOa0e7fJ2Stv540RHziOcN3jwIfrJZccRp+rgA==
+X-Received: by 2002:a05:600c:6748:b0:475:dbb5:2397 with SMTP id
+ 5b1f17b1804b1-4772668eb39mr26015075e9.0.1761832302877; 
+ Thu, 30 Oct 2025 06:51:42 -0700 (PDT)
+Received: from localhost.localdomain (124.149.216.82.rev.sfr.net.
+ [82.216.149.124]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4772899fdf0sm40471005e9.3.2025.10.30.06.51.41
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 30 Oct 2025 06:51:42 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-References: <20251029214001.99824-1-philmd@linaro.org>
- <80d9f994-dda4-42dc-8214-a0134798f732@linaro.org>
-In-Reply-To: <80d9f994-dda4-42dc-8214-a0134798f732@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Subject: [PULL v2 00/23] Misc single binary patches for 2025-10-29
+Date: Thu, 30 Oct 2025 14:51:38 +0100
+Message-ID: <20251030135139.20433-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.51.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,50 +97,125 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 30/10/25 11:04, Philippe Mathieu-Daudé wrote:
-> On 29/10/25 22:39, Philippe Mathieu-Daudé wrote:
->> The following changes since commit 
->> e090e0312dc9030d94e38e3d98a88718d3561e4e:
->>
->>    Merge tag 'pull-trivial-patches' of https://gitlab.com/mjt0k/qemu 
->> into staging (2025-10-29 10:44:15 +0100)
->>
->> are available in the Git repository at:
->>
->>    https://github.com/philmd/qemu.git tags/single-binary-20251029
->>
->> for you to fetch changes up to e5c542fa16b0a7d47070692481db301736a0ac7b:
->>
->>    hw/riscv: Replace target_ulong uses (2025-10-29 19:16:24 +0100)
->>
->> ----------------------------------------------------------------
->> Various patches related to single binary work:
->>
->> - Make hw/arm/ common by adding a QOM type to machines to
->>    tag in which binary (32 or 64-bit) they can be used.
->>    Convert the Virt and SBSA-Ref machines.
->> - Build Xen files once
->>
->> ----------------------------------------------------------------
-> 
-> I'm seeing a failure on mainstream pipeline:
-> 
-> https://gitlab.com/qemu-project/qemu/-/jobs/11906335084
-> ▶  5/68 test_bpim2u.BananaPiMachine.test_arm_bpim2u                FAIL
-> ▶  5/68 test_bpim2u.BananaPiMachine.test_arm_bpim2u_gmac                
-> FAIL
-> ▶  5/68 test_bpim2u.BananaPiMachine.test_arm_bpim2u_initrd 
->                 FAIL
+The following changes since commit e090e0312dc9030d94e38e3d98a88718d3561e4e:
 
-Thanksfully the fix is very easy, since this is likely due to a typo:
+  Merge tag 'pull-trivial-patches' of https://gitlab.com/mjt0k/qemu into staging (2025-10-29 10:44:15 +0100)
 
----
-diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
-index b5070b46666..0f6d98684b9 100644
---- a/hw/arm/bananapi_m2u.c
-+++ b/hw/arm/bananapi_m2u.c
-@@ -148 +148 @@ static void bpim2u_machine_init(MachineClass *mc)
--DEFINE_MACHINE_ARM("bpim2u-pdk", bpim2u_machine_init)
-+DEFINE_MACHINE_ARM("bpim2u", bpim2u_machine_init)
----
+are available in the Git repository at:
+
+  https://github.com/philmd/qemu.git tags/single-binary-20251030
+
+for you to fetch changes up to dfbf7775403db6fdd3e298bf7664b6149d7d6f77:
+
+  hw/riscv: Replace target_ulong uses (2025-10-30 14:48:26 +0100)
+
+----------------------------------------------------------------
+Various patches related to single binary work:
+
+- Make hw/arm/ common by adding a QOM type to machines to
+  tag in which binary (32 or 64-bit) they can be used.
+  Convert the Virt and SBSA-Ref machines.
+- Build Xen files once
+
+----------------------------------------------------------------
+
+Anton Johansson (1):
+  hw/riscv: Replace target_ulong uses
+
+Philippe Mathieu-Daudé (22):
+  hw/arm: Register TYPE_TARGET_ARM/AARCH64_MACHINE QOM interfaces
+  hw/core: Allow ARM/Aarch64 binaries to use the 'none' machine
+  hw/arm: Add DEFINE_MACHINE_ARM() / DEFINE_MACHINE_AARCH64() macros
+  hw/arm: Filter machine types for qemu-system-arm/aarch64 binaries
+  meson: Prepare to accept per-binary TargetInfo structure
+    implementation
+  config/target: Implement per-binary TargetInfo structure (ARM,
+    AARCH64)
+  hw/arm/virt: Register valid CPU types dynamically
+  hw/arm/virt: Check accelerator availability at runtime
+  qemu/target_info: Add target_arm() helper
+  qemu/target_info: Add target_aarch64() helper
+  qemu/target_info: Add target_base_arm() helper
+  hw/arm/virt: Replace TARGET_AARCH64 -> target_aarch64()
+  hw/arm/virt: Get default CPU type at runtime
+  hw/arm/sbsa-ref: Include missing 'cpu.h' header
+  hw/arm/sbsa-ref: Build only once
+  hw/arm/virt-acpi-build: Include missing 'cpu.h' header
+  hw/arm/virt-acpi-build: Build only once
+  hw/arm/virt: Build only once
+  hw/arm/meson: Move Xen files to arm_common_ss[]
+  hw/xen: Use BITS_PER_BYTE & MAKE_64BIT_MASK() in req_size_bits()
+  hw/xen: Replace target_ulong by agnostic target_long_bits()
+  hw/xen: Build only once
+
+ MAINTAINERS                       |  1 +
+ meson.build                       | 10 ++++-
+ include/hw/arm/machines-qom.h     | 46 +++++++++++++++++++
+ include/qemu/target-info.h        | 21 +++++++++
+ configs/targets/aarch64-softmmu.c | 26 +++++++++++
+ configs/targets/arm-softmmu.c     | 26 +++++++++++
+ hw/arm/aspeed.c                   | 27 ++++++++++-
+ hw/arm/aspeed_ast27x0-fc.c        |  2 +
+ hw/arm/b-l475e-iot01a.c           |  2 +
+ hw/arm/bananapi_m2u.c             |  3 +-
+ hw/arm/collie.c                   |  2 +
+ hw/arm/cubieboard.c               |  3 +-
+ hw/arm/digic_boards.c             |  3 +-
+ hw/arm/exynos4_boards.c           |  3 ++
+ hw/arm/fby35.c                    |  2 +
+ hw/arm/highbank.c                 |  3 ++
+ hw/arm/imx25_pdk.c                |  3 +-
+ hw/arm/imx8mp-evk.c               |  4 +-
+ hw/arm/integratorcp.c             |  3 +-
+ hw/arm/kzm.c                      |  3 +-
+ hw/arm/mcimx6ul-evk.c             |  4 +-
+ hw/arm/mcimx7d-sabre.c            |  4 +-
+ hw/arm/microbit.c                 |  2 +
+ hw/arm/mps2-tz.c                  |  5 +++
+ hw/arm/mps2.c                     |  5 +++
+ hw/arm/mps3r.c                    |  2 +
+ hw/arm/msf2-som.c                 |  3 +-
+ hw/arm/musca.c                    |  3 ++
+ hw/arm/musicpal.c                 |  3 +-
+ hw/arm/netduino2.c                |  3 +-
+ hw/arm/netduinoplus2.c            |  3 +-
+ hw/arm/npcm7xx_boards.c           |  6 +++
+ hw/arm/npcm8xx_boards.c           |  2 +
+ hw/arm/olimex-stm32-h405.c        |  3 +-
+ hw/arm/omap_sx1.c                 |  3 ++
+ hw/arm/orangepi.c                 |  3 +-
+ hw/arm/raspi.c                    |  6 +++
+ hw/arm/raspi4b.c                  |  2 +
+ hw/arm/realview.c                 |  5 +++
+ hw/arm/sabrelite.c                |  3 +-
+ hw/arm/sbsa-ref.c                 |  3 ++
+ hw/arm/stellaris.c                |  3 ++
+ hw/arm/stm32vldiscovery.c         |  3 +-
+ hw/arm/versatilepb.c              |  3 ++
+ hw/arm/vexpress.c                 |  3 ++
+ hw/arm/virt-acpi-build.c          |  1 +
+ hw/arm/virt.c                     | 74 ++++++++++++++++++-------------
+ hw/arm/xilinx_zynq.c              |  2 +
+ hw/arm/xlnx-versal-virt.c         |  3 ++
+ hw/arm/xlnx-zcu102.c              |  2 +
+ hw/core/null-machine.c            |  6 ++-
+ hw/riscv/riscv-iommu.c            |  6 ++-
+ hw/riscv/riscv_hart.c             |  2 +-
+ hw/xen/xen-hvm-common.c           |  9 ++--
+ target-info-qom.c                 | 24 ++++++++++
+ target-info.c                     | 21 +++++++++
+ target/arm/machine.c              | 18 ++++++++
+ configs/targets/meson.build       |  5 +++
+ hw/arm/meson.build                |  8 ++--
+ hw/xen/meson.build                | 22 ++++-----
+ 60 files changed, 406 insertions(+), 75 deletions(-)
+ create mode 100644 include/hw/arm/machines-qom.h
+ create mode 100644 configs/targets/aarch64-softmmu.c
+ create mode 100644 configs/targets/arm-softmmu.c
+ create mode 100644 target-info-qom.c
+ create mode 100644 configs/targets/meson.build
+
+-- 
+2.51.0
+
 

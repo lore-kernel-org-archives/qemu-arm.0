@@ -4,103 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFEC1CCF9F0
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 13:44:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 245ECCCF9FC
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 13:45:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vESwX-0005l0-Oe; Thu, 30 Oct 2025 09:43:58 -0400
+	id 1vESxp-0006FW-UQ; Thu, 30 Oct 2025 09:45:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1vESwW-0005kO-TK
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 09:43:56 -0400
-Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vESxm-0006Es-T5
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 09:45:14 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1vESwP-0000Er-1v
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 09:43:55 -0400
-Received: by mail-qt1-x831.google.com with SMTP id
- d75a77b69052e-4ed0aef49abso11231721cf.3
- for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 06:43:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vESxd-0000J0-2m
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 09:45:14 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-427015003eeso925121f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 06:44:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1761831826; x=1762436626; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7SM6iVZ8tIoRmPPhiv2mZYf+U/m9GFpGEhVIn4YYxVY=;
- b=nh/GTaPheyd3/HxFUhY8+3BS/xOkhmu8uN1tEeChu3Fk8apPwzJQp/Zf2B21mjy3yz
- 5c+ZK5rzmM7zCoCD3hudHJnVBAdzs2AK9w3oXr6yQ1+uiPl/6JcM4jTD3yFPK3HN7M2R
- +QjlS1WdgxnDofjhfm/0DqPthOrT4OpcGZRvXN2cflSZ3njij2CIfd4elQbZ12MDjo92
- FCHkCuWL/qSl6MUDjDjElZt6O4AKIzVKB0kXrE+xJo0kL3SECk2sD025KMRI5V4HjJfZ
- SbDZcVNbP+ZqWz00oAS3BXPtHI/Nhb1nSYg0kKVl0jH3UxJMZuJEcseqsM2TjnMtGJen
- eVsQ==
+ d=linaro.org; s=google; t=1761831896; x=1762436696; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=gkyjKmNCu+65Pj8bIu/kye/9Y3EB+0wOeDHE6t/vBDQ=;
+ b=pWM2YyKknt9mhRx4iPV9EhRP8sGAv1nd06fGRufkn5UkaMNQsJQzJdR+mh4KUjSj3z
+ 5sfIU+PvuWdzAfhwjHsmTzm8laM/Qawcg56tkOvwfSD+bUI9dPSRlGKJefP3bSqAAxgt
+ qviUq/ihkEBv36MO4PB5krsxFcBa2tQK/bssoGyuL8qhSIZzgocLVgkkfxjc+05P2X4q
+ fRdnx86aWcIKvAo4rx6IbT9bFZXIznjaY7Ne2g3dGLBVFMGM03yAma78a37CR8RFLaea
+ /1ONcCQxkGjDopSTK23YRiepnhdickeAlVFT3YOquoCWJ/OmRISQPE56KAtTcguLjuIN
+ XW2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761831826; x=1762436626;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=7SM6iVZ8tIoRmPPhiv2mZYf+U/m9GFpGEhVIn4YYxVY=;
- b=h7gt7mqHmcQFj0v+FM3efCBYnbVNXmNzO9IDneAWvH50C6ap6ewozngD61TQUM9lxO
- LLsbtZLWAgDLwdSqIawDJTNPKFyHvhhhcCn8ZWg0gfvJvvqMFC+XmzPcpDAu/gUE0jXg
- +65aB+E7CrE400DHuCP5W/U5sMmb+4Ivj/+KRfycK1lsMg0bv8gS50ZV3BrtW+x/Oh6g
- mBI6xnKIuBxP1l9OKvkfIp7spmc84MA3+tnsALwyUTgInllXAPisZsTAgYIeQ0c98Ifj
- 4aCFtfVe1E/ftWPkQ35yRY93L7d659yRec4wgBSAe7HHedW5UDV/UipYJKIfFLa1pK82
- X0lg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWj55gtv1oRv+g48dIiyK+rpFz/EZTHsu7G433fsLneneMdwLk7dEaup3JqAgBeK+hl1BFjWJ7zQw==@nongnu.org
-X-Gm-Message-State: AOJu0YwFdAFJFGzwTxxd1/LVzc/0tKNH0l2ccwaelRGHricdwcz3Vk2O
- bqboauWOnEt5uvHSCTpaW1TGtRQH9CQgcULx1XONdoJXCpeMrGLBaMGkMPN7Ozt0+lMD6LI2ELR
- i6UQcwVtS69jzV/Ob6/pdzmj6P2ftpzM=
-X-Gm-Gg: ASbGnctzCdP9EJi/LtB84CsoKOLmXV7OMuhbDbAkszih0WnyBIUDYyMTKWuEbEvpCca
- rG4QGZ7nrgiSgn/Gi1HAsTFKYQOJ5Tvore2pY383tfURLtqs/kyoA/kDVAxYLaWpBvq6wwIDjgR
- ZusK+MNoo6aq/MVzOuXhGmi1gSc7LEORvhzHObC+WiB8FqL9buwxVev3YFqysPPiLmPQvdOn2LM
- 6wl8STwx919vDcU3sdVHW7HXPQv0G7ypE7izVodE54VIvaBk8p8tUyrwUJN3k6ulkvaRX6V4jM1
- S/MClaPYrtFQIPH4
-X-Google-Smtp-Source: AGHT+IH8RR95azdak4Ftt/D03nnvFI4Tgx//KgS7dMUYFcyYcenqUI2v0FEDBeDinPuBfk5H5pT4Q5a/1pDxOg+gYmA=
-X-Received: by 2002:ac8:7d13:0:b0:4b3:475a:e2fc with SMTP id
- d75a77b69052e-4ed2211bd0amr34852471cf.3.1761831825559; Thu, 30 Oct 2025
- 06:43:45 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1761831896; x=1762436696;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=gkyjKmNCu+65Pj8bIu/kye/9Y3EB+0wOeDHE6t/vBDQ=;
+ b=YJZ5oYdfJEveAgHubX2ziFd9isVjTwfLIHKJ1wq93WaIiEnyHrInTnGyMFWIzQTai7
+ ijTkK6Oe7fBaTP5Dm3rHHmyCrlL8zq3cFn9u5T2lwT/wfhKxAEBB8EhkVlkhrbGCpCcQ
+ 9AkLkYHxxF+o742R5kCEvOzHU6Jv+ctdap8PsoyDEhl92n/Kpvk7p5ZYgA+9GxGshJxN
+ rkH4965PBeQcfcdfHYUbCIc2/0rM1262FddYbfohBimCJr9dVlem83pvHVMk2//dotMy
+ qLVN5G/bEVBSfHsIhNzxwb1LwUPBulJMK9QFm25jEYUT6A0mAPlK59X36f8drNYoEasv
+ 9gOA==
+X-Gm-Message-State: AOJu0YzhlOsFmuG2cIm2B9xs3MCgQ3CKj9aZaO3nfjDFnP1YPvpnowuT
+ sr7uIPpL2tZfdQRgRQkL62O4wg5TiyuVsS3/+Bhgb+eycRO/2VNd6wtV+DjzQKc9XBF3uTVfAP5
+ ilW6QpTs=
+X-Gm-Gg: ASbGncuqEqDMVRdBlBe0H0BItk+6bOu94veQqLd4RSB5kaQcrkVJuVSD02ZN0zV6xLM
+ 2jbP50PwdDMuKiYJeAu0uFWcMPyvoD9RCFhzaL6JkwSa3lSK6PLrNcuBsmtzRJwmKU+EYm79ZS6
+ AeM/490vp6qKpCaNpXowqInLzjJkUbnON94/WU9lZ/gX/jnEeJovtEbLVqWMRZyGBSn2Qa3Bpk+
+ 1vL1r3eiT8vhmpi0d3agdgiL/6I0yJl6NW89aZ44+PTf1ZPPzZ4xlyQlcEly3j5Aol68WBDGrau
+ 2LaQ8z+nyEapDEngaBv869UTdrynzcKJsoaP6SalJgObiEIqx5w9JkyvTehTgmByjUBeuqD0R9U
+ vQadcb7M2zNs5cBCkixm56bRJDT/vRst13vBSTaOY1WzLhwJl/lDAVRAYCqA6tPVuzT6SOc3f1f
+ gAworctrfJaGIEQxESLVB1R5TK9OY7MZcyQ+RnjMrVZsbiFyfrTQs=
+X-Google-Smtp-Source: AGHT+IHGb5szLyZijZcBEVejW4R4v3aRMchCYavwFdnCK5cxy+FIp4u2C/P2WBo8AB3EudnrszctMQ==
+X-Received: by 2002:a05:6000:461c:b0:426:ff46:93b8 with SMTP id
+ ffacd0b85a97d-429aef735b3mr4457579f8f.8.1761831895619; 
+ Thu, 30 Oct 2025 06:44:55 -0700 (PDT)
+Received: from [10.180.230.213] (124.149.216.82.rev.sfr.net. [82.216.149.124])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-477289be3f9sm43701005e9.12.2025.10.30.06.44.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 30 Oct 2025 06:44:54 -0700 (PDT)
+Message-ID: <d96eb786-e603-4d11-96ff-3721666540e8@linaro.org>
+Date: Thu, 30 Oct 2025 14:44:53 +0100
 MIME-Version: 1.0
-References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
-In-Reply-To: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Thu, 30 Oct 2025 17:43:32 +0400
-X-Gm-Features: AWmQ_bkFzEZH-GdWJh91jMb701YRULFFGmm_DUllXAxJ4nf7FQYk0HHyYxYR-1o
-Message-ID: <CAJ+F1CLN_iozWRN96qQ=ckkvzt6bvyN6LyGhTOSn+wmVfN+hSQ@mail.gmail.com>
-Subject: Re: [PATCH v3 00/35] Audio clean-ups
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PULL 00/23] Misc single binary patches for 2025-10-29
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Alexandre Ratchov <alex@caoua.org>,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Jan Kiszka <jan.kiszka@web.de>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Thomas Huth <huth@tuxfamily.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, 
- qemu-ppc@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
- qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>, 
- Zhao Liu <zhao1.liu@intel.com>,
- =?UTF-8?Q?Volker_R=C3=BCmelin?= <vr_qemu@t-online.de>, 
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::831;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-qt1-x831.google.com
+Cc: qemu-arm@nongnu.org
+References: <20251029214001.99824-1-philmd@linaro.org>
+ <80d9f994-dda4-42dc-8214-a0134798f732@linaro.org>
+In-Reply-To: <80d9f994-dda4-42dc-8214-a0134798f732@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,173 +102,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi
+On 30/10/25 11:04, Philippe Mathieu-Daudé wrote:
+> On 29/10/25 22:39, Philippe Mathieu-Daudé wrote:
+>> The following changes since commit 
+>> e090e0312dc9030d94e38e3d98a88718d3561e4e:
+>>
+>>    Merge tag 'pull-trivial-patches' of https://gitlab.com/mjt0k/qemu 
+>> into staging (2025-10-29 10:44:15 +0100)
+>>
+>> are available in the Git repository at:
+>>
+>>    https://github.com/philmd/qemu.git tags/single-binary-20251029
+>>
+>> for you to fetch changes up to e5c542fa16b0a7d47070692481db301736a0ac7b:
+>>
+>>    hw/riscv: Replace target_ulong uses (2025-10-29 19:16:24 +0100)
+>>
+>> ----------------------------------------------------------------
+>> Various patches related to single binary work:
+>>
+>> - Make hw/arm/ common by adding a QOM type to machines to
+>>    tag in which binary (32 or 64-bit) they can be used.
+>>    Convert the Virt and SBSA-Ref machines.
+>> - Build Xen files once
+>>
+>> ----------------------------------------------------------------
+> 
+> I'm seeing a failure on mainstream pipeline:
+> 
+> https://gitlab.com/qemu-project/qemu/-/jobs/11906335084
+> ▶  5/68 test_bpim2u.BananaPiMachine.test_arm_bpim2u                FAIL
+> ▶  5/68 test_bpim2u.BananaPiMachine.test_arm_bpim2u_gmac                
+> FAIL
+> ▶  5/68 test_bpim2u.BananaPiMachine.test_arm_bpim2u_initrd 
+>                 FAIL
 
-On Mon, Oct 27, 2025 at 7:13=E2=80=AFPM <marcandre.lureau@redhat.com> wrote=
-:
->
-> From: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
->
-> Hi,
->
-> This is part of continuous and overdue clean up / modernization effort fo=
-r the
-> audio subsystem. (there is more in the pipe)
->
-> v3:
-> - rebased and dropped applied patches
-> - fix some checkpatch formatting errors
-> - tweak commit message
-> - added r-b tags
->
-> v2:
-> - renamed AudioBE AudioBackend
-> - "qdev: add qdev_find_default_bus()" report different error for full bus
-> - added "remove QEMUSoundCard" & drop AudioFE renaming patch
-> - added "docs: Update mentions of removed '-soundhw' command line option"=
- patch from philmd
-> - added r-b tags
->
-> thanks
->
-> Marc-Andr=C3=A9 Lureau (33):
->   qdev: add qdev_find_default_bus()
->   hw/audio: look up the default bus from the device class
->   audio: rename audio_define->audio_add_audiodev()
->   hw/audio: use better naming for -audio model handling code
->   hw/audio/virtio-snd-pci: remove custom model callback
->   hw/audio: simplify 'hda' audio init code
->   hw/audio: generalize audio_model.init()
->   hw/audio: drop audio_model.isa
->   audio: start making AudioState a QOM Object
->   audio: register backends in /audiodevs container
->   audio: use /audiodevs QOM container
->   audio/paaudio: remove needless return value
->   audio/dsound: simplify init()
->   audio/dsound: report init error via **errp
->   audio: simplify audio_driver_init()
->   audio: move period tick initialization
->   audio: drop needless error message
->   audio: keep vmstate handle with AudioState
->   audio: register and unregister vmstate with AudioState
->   audio: initialize card_head during object init
->   audio: remove some needless headers
->   audio: remove AUDIO_HOST_ENDIANNESS
->   audio: introduce AUD_set_volume_{in,out}_lr()
->   audio/replay: fix type punning
->   audio: move internal APIs to audio_int.h
->   audio: rename AudioState -> AudioBackend
->   audio: remove QEMUSoundCard
->   audio/dbus: use a helper function to set the backend dbus server
->   audio: move audio.h under include/qemu/
->   audio: remove dependency on spice header
->   audio: cleanup, use bool for booleans
->   audio: move capture API to own header
->   audio: drop needless audio_driver "descr" field
->
-> Philippe Mathieu-Daud=C3=A9 (2):
->   audio: Remove pointless local variables
->   audio: Rename @endianness argument as @big_endian for clarity
+Thanksfully the fix is very easy, since this is likely due to a typo:
 
-Only 3/4 patches are missing reviews:
-
-audio: register and unregister vmstate with AudioState
-audio: remove QEMUSoundCard
-audio/dbus: use a helper function to set the backend dbus server
-audio: move capture API to own header
-
-thanks for the help!
-
-
->
->  MAINTAINERS                                   |   1 +
->  audio/audio_int.h                             |  67 ++--
->  audio/audio_template.h                        |  44 ++-
->  audio/mixeng.h                                |   1 -
->  hw/audio/lm4549.h                             |   4 +-
->  include/hw/audio/asc.h                        |   4 +-
->  include/hw/audio/model.h                      |  14 +
->  include/hw/audio/soundhw.h                    |  13 -
->  include/hw/audio/virtio-snd.h                 |   4 +-
->  include/hw/display/xlnx_dp.h                  |   4 +-
->  include/hw/isa/vt82c686.h                     |   4 +-
->  include/hw/qdev-properties-system.h           |   2 +-
->  include/monitor/qdev.h                        |   3 +
->  include/qemu/audio-capture.h                  |  43 +++
->  {audio =3D> include/qemu}/audio.h               | 137 +++-----
->  include/system/replay.h                       |   3 +-
->  ui/vnc.h                                      |   4 +-
->  audio/alsaaudio.c                             |  37 +--
->  audio/audio-hmp-cmds.c                        |   4 +-
->  audio/audio.c                                 | 313 +++++++++---------
->  audio/audio_win_int.c                         |   2 +-
->  audio/dbusaudio.c                             |  20 +-
->  audio/dsoundaudio.c                           | 213 +++++-------
->  audio/jackaudio.c                             |   3 +-
->  audio/mixeng.c                                |  12 +-
->  audio/noaudio.c                               |   5 +-
->  audio/ossaudio.c                              |  33 +-
->  audio/paaudio.c                               |  24 +-
->  audio/pwaudio.c                               |  15 +-
->  audio/sdlaudio.c                              |  15 +-
->  audio/sndioaudio.c                            |   3 +-
->  audio/spiceaudio.c                            |   7 +-
->  audio/wavaudio.c                              |   6 +-
->  audio/wavcapture.c                            |   5 +-
->  hw/arm/integratorcp.c                         |   2 +-
->  hw/arm/musicpal.c                             |   2 +-
->  hw/arm/realview.c                             |   2 +-
->  hw/arm/versatilepb.c                          |   2 +-
->  hw/arm/vexpress.c                             |   2 +-
->  hw/arm/xlnx-zcu102.c                          |   2 +-
->  hw/audio/ac97.c                               |  36 +-
->  hw/audio/adlib.c                              |  17 +-
->  hw/audio/asc.c                                |  15 +-
->  hw/audio/cs4231a.c                            |  16 +-
->  hw/audio/es1370.c                             |  30 +-
->  hw/audio/gus.c                                |  17 +-
->  hw/audio/hda-codec.c                          |  21 +-
->  hw/audio/intel-hda.c                          |  22 +-
->  hw/audio/lm4549.c                             |  12 +-
->  hw/audio/marvell_88w8618.c                    |   2 +-
->  hw/audio/{soundhw.c =3D> model.c}               |  86 ++---
->  hw/audio/pcspk.c                              |  13 +-
->  hw/audio/pl041.c                              |   2 +-
->  hw/audio/sb16.c                               |  23 +-
->  hw/audio/via-ac97.c                           |  11 +-
->  hw/audio/virtio-snd-pci.c                     |  18 +-
->  hw/audio/virtio-snd.c                         |  17 +-
->  hw/audio/wm8750.c                             |  37 +--
->  hw/core/machine.c                             |   4 +-
->  hw/core/qdev-properties-system.c              |  17 +-
->  hw/display/xlnx_dp.c                          |   8 +-
->  hw/ppc/prep.c                                 |   2 +-
->  hw/usb/dev-audio.c                            |  17 +-
->  qom/object.c                                  |   1 +
->  replay/replay-audio.c                         |   4 +-
->  replay/stubs-system.c                         |   2 +-
->  system/qdev-monitor.c                         |  25 +-
->  system/runstate.c                             |   2 +-
->  system/vl.c                                   |  14 +-
->  ui/dbus.c                                     |  13 +-
->  ui/vnc.c                                      |  10 +-
->  audio/coreaudio.m                             |   3 +-
->  audio/meson.build                             |   2 +-
->  hw/audio/meson.build                          |   2 +-
->  .../codeconverter/test_regexps.py             |   4 +-
->  75 files changed, 758 insertions(+), 848 deletions(-)
->  create mode 100644 include/hw/audio/model.h
->  delete mode 100644 include/hw/audio/soundhw.h
->  create mode 100644 include/qemu/audio-capture.h
->  rename {audio =3D> include/qemu}/audio.h (50%)
->  rename hw/audio/{soundhw.c =3D> model.c} (54%)
->
-> --
-> 2.51.0
->
->
-
-
---=20
-Marc-Andr=C3=A9 Lureau
+---
+diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
+index b5070b46666..0f6d98684b9 100644
+--- a/hw/arm/bananapi_m2u.c
++++ b/hw/arm/bananapi_m2u.c
+@@ -148 +148 @@ static void bpim2u_machine_init(MachineClass *mc)
+-DEFINE_MACHINE_ARM("bpim2u-pdk", bpim2u_machine_init)
++DEFINE_MACHINE_ARM("bpim2u", bpim2u_machine_init)
+---
 

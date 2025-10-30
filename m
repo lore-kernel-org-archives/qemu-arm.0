@@ -4,123 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55FC5CCF9E3
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 16:39:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFC5ACCF9E3
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 16:39:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vEVf7-0006HJ-LW; Thu, 30 Oct 2025 12:38:10 -0400
+	id 1vEVgL-0006wQ-J6; Thu, 30 Oct 2025 12:39:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1vEVf6-0006Gm-0K
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:38:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1vEVeo-0002u6-TR
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:38:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761842261;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=f5GWk18a/VA/4RMIoI7ifBwmIEmAQLQHusjUKulED2o=;
- b=DyM6t8jXPNsDF4DWryqCGhBwxswdo96oWGn3Om1f8SRNcgFupvM8jiMKm/HIY8YM+6vvmY
- /pnloUnc+2xv7Sa5j6mXcygyQynIhKOrRZNb8Wi6Ao/0q0rO88Drl7h7OhtvF8NXmHWilY
- gIG1nuX5n5oU+Olotdi6sr/CF3iORxw=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-516-_uaXlUcMPZ67_0lZDbWojQ-1; Thu, 30 Oct 2025 12:37:38 -0400
-X-MC-Unique: _uaXlUcMPZ67_0lZDbWojQ-1
-X-Mimecast-MFC-AGG-ID: _uaXlUcMPZ67_0lZDbWojQ_1761842258
-Received: by mail-qv1-f69.google.com with SMTP id
- 6a1803df08f44-87fe7c9134fso16704666d6.0
- for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 09:37:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEVg9-0006sL-Gy
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:39:18 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEVg4-0002xx-13
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:39:11 -0400
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-b4aed12cea3so228344466b.1
+ for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 09:39:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1761842339; x=1762447139; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ENvi7hvzKl7DHWnpguSuO6Lc6/9k4AkjfN10PNykDM4=;
+ b=l+ILUiDk27TebWcyfbvSGIOqGTVj63MxBvkIJ6o8V6ZjLaU6JtFJxnny55nZRzsCgE
+ yxW8cueVRXjLbmneu22z/T2Xj1sQrUJDUye/Wkemaw1rd9aAktOu1V4kdfKG07WjWe4c
+ QDhUzxy4w3lP6WURKQgtNjPDELwmLf+BODIN+1tZp/iYXjplmZgEvnpl7IdnBYHNSVgy
+ DNY6APJf59PXDRMaR/9TqOWxW3jOKeqYbAQJglhczxUvymGLbDUbGJwmk6SiaooR68e3
+ zEjyu+Cr401VRTrydz/XFsGTNxh+dePXKKs/N4XRFUL6JYIQ3P/rZPCkBcworUs4iHoh
+ TwkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761842258; x=1762447058;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
+ d=1e100.net; s=20230601; t=1761842339; x=1762447139;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=f5GWk18a/VA/4RMIoI7ifBwmIEmAQLQHusjUKulED2o=;
- b=DB133i00Oai0Hp7/RWTCGIa83SZ1LJ/Z1DIEZizXtDBtRfaycyPNo8T+zW5tdNAJrB
- Tu//dQEdaMxURBKnBdv67DZTXBmIxCVyk2OYazqzxMHOtXM3sKEuOBZhWQrDSU2fY1fZ
- im8W/tcv3+zrCeMvTqGD0V+hKYtOBoGuvHtGhg/PPGfRlUxVu6gch/fvGJR1CF+k4+V1
- GVXZh2V/R64vN56FDvdCd0kBHdgmUlrX3NNlMTVZyTXfvv4fK0V6Aga1Q5NLdTHAiDts
- ZHuhhdCNZTX5VC828Ox0/luyxr4uO5hUeruJCaIW1gpnBM1vZ7dhRAftLVlQ37k5NFTy
- UGBg==
+ bh=ENvi7hvzKl7DHWnpguSuO6Lc6/9k4AkjfN10PNykDM4=;
+ b=oQboG9KSVn/6ZD8BV+uk9GvvciminaioyxZz40ME5S8PVtqWtYGBvDD2zFi280yRyw
+ +c9BV1U3gVBhQu3DvgNMJKxm3QCkaRat3gAgU095QbWC1EQ8NBRbBJ7qiLebiEqBT7PE
+ VQuH2ysADTRy9VTu7jEOcLQ9x4jyZWNeJZluCxYGBux95o+YQGu/ZJr3vQy20t7jWfrj
+ H68BycMtviZJ4sF8P26Z60KozXfRXZtl1b+Kcd2DNkCiIf3e6/EZjgXdm1Wf3z2PF13C
+ mAPpKhaEYbsNNU+9NuLqw6BmJPjIYhFzH1HDnWjjmzEXBjGNUA8ddGbRvGG3TZ2GeVVb
+ sg+g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUSosSKFnkuHup/pQq9vsrt3FPRfMAKrgfwNC2Js3czdOEktoxtfBD4CobfvQ82MWgRleDKfe8lfA==@nongnu.org
-X-Gm-Message-State: AOJu0YwfOx+MU0gthLI/G0RAjlu8UjkH9IyThBJUPuX5ncarLwGWNkBg
- 9Z9x5wFBUPuEm7UqRfftZ3+MiMNDuCbdPpK40kgHjTPTFLaZhFXqq6IM05d9X4MrOC0YjilS320
- 8Wmvqf8erXoB7sS1sRW0CaZ+MbD1qw5rwMA3vblwWSoDkNUsw1Qo7Og==
-X-Gm-Gg: ASbGncs52KTt/qisCUkqzUGiRyLdThH9pxp5R/MHAED1inv0GKZcb/THTYKRGGzfgyP
- PWu+UH1rsCB+W4ocHnWqvZ0nzI4gp4F5Wd909J11R6PYVFisb/xM6cdxxk4a+2fYCOuVGJlEQQj
- CcBulw8Kx48VDVp7+YMZ+KQpsKHORLww5qr1kEe4I0y4qJ46iylGSapHMvryan1bq0bnavxUXLe
- b2gNa1epPKcOQO9ne5x3KbfymsrUZRWuUFbkQBA5/kpcr/aqVWw7+CKjQg5qat9rDi1aUaRN0wc
- MMtwdYIVaM/LE02JmiWLFeiktlcx5CuihZD94ij4M5WKquoZnjimMgXcve+3n+R1Tbs=
-X-Received: by 2002:ad4:5dc6:0:b0:880:2254:36a4 with SMTP id
- 6a1803df08f44-8802f51a221mr2259186d6.63.1761842258037; 
- Thu, 30 Oct 2025 09:37:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IECJD9TgfT/YKeT2Wh3bDcLgKYB8ORBrpVG12HNnDI1GZXwYpMmBWbiaa3R362AT9zFypoT6g==
-X-Received: by 2002:ad4:5dc6:0:b0:880:2254:36a4 with SMTP id
- 6a1803df08f44-8802f51a221mr2258746d6.63.1761842257513; 
- Thu, 30 Oct 2025 09:37:37 -0700 (PDT)
-Received: from x1.local ([142.188.210.50]) by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-87fc4944d57sm122956836d6.35.2025.10.30.09.37.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Oct 2025 09:37:36 -0700 (PDT)
-Date: Thu, 30 Oct 2025 12:37:34 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@gmail.com>,
- Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org,
- Alexandre Ratchov <alex@caoua.org>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Jan Kiszka <jan.kiszka@web.de>, "Michael S. Tsirkin" <mst@redhat.com>,
+ AJvYcCVTIWEJa2S3Juc2Wv1FhmboCq+gMx/ad37Bj5R8pphZvFtWhHI01Jn755MKJZYyUVW9Lgvb24TS6A==@nongnu.org
+X-Gm-Message-State: AOJu0Yzh99MUTH2HoV6rM8g+YuGeTQezTR20LzQTSy9URshG5l2YQoq0
+ N/eGvsVALulMLvyH5BcfaI/clu4AuecIVJBzxMs6xECXdgJPlhmdwUDiU12HZNSwuiY=
+X-Gm-Gg: ASbGncu4M5NPzeOvIXIpYegPbUPEo0MyzBGKKphQI7oJ1GoYcSfqQDi5b862Sx3Zpwb
+ H10GwvS3PNNHimjuqWadcL95vYBEM8fsU00Wndt3+9tJZmjbyvtNr1JvgrO0499vdBIKn3vDjZk
+ bKxQgCann2lhw+L6uMyIQe705PMPppwhbiW8OKaKgh+Q+JglOi+peJSYYFmnLFiOXF6CjwLuySi
+ fBElbQ9GJpmx734EMKsycETKzK0HOePXuozkAQCkQxYsSJ3OVqX/LOvEZ/6AQburTTvPaaNeQZb
+ SzJqheJGs5muUNfdTfg9YO9IQ4Qg1JGAyuPuxZQcPokM2lYjHZvgQWVz8NOfd8YMfy55MyzNh5/
+ tQr7grT/h5G69HAqMLp/3Hv/Y7FLqYJvzBKZmAAApTMUh9/fXNrJG9UPb7PyqUFJbARAj/AzP5m
+ 2fcihuu0XM1U88N6yJUt0Khj0tiKYmCXGEsOMecKYViPRRXv5WkE3a
+X-Google-Smtp-Source: AGHT+IFTD26vRmotglD6f5FMl51+1zYl8TM8Z+YV6DyeEFPfbeXvtdFnq/HDjAXHmOU97YgnKYqPDw==
+X-Received: by 2002:a17:907:728c:b0:b6d:2f3f:3f98 with SMTP id
+ a640c23a62f3a-b70704bc291mr11019266b.41.1761842339438; 
+ Thu, 30 Oct 2025 09:38:59 -0700 (PDT)
+Received: from [10.180.230.213] (183.105.204.77.rev.sfr.net. [77.204.105.183])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b6d853f9a0fsm1777593766b.50.2025.10.30.09.38.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 30 Oct 2025 09:38:58 -0700 (PDT)
+Message-ID: <7ce76bec-757d-4541-a08a-4b77c2d85c6f@linaro.org>
+Date: Thu, 30 Oct 2025 17:38:56 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 28/35] audio/dbus: use a helper function to set the
+ backend dbus server
+Content-Language: en-US
+To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+Cc: Alexandre Ratchov <alex@caoua.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Jan Kiszka <jan.kiszka@web.de>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>,
- Thomas Huth <huth@tuxfamily.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Thomas Huth <huth@tuxfamily.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- qemu-ppc@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-ppc@nongnu.org,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
  qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
- Zhao Liu <zhao1.liu@intel.com>,
- Volker =?utf-8?Q?R=C3=BCmelin?= <vr_qemu@t-online.de>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ Zhao Liu <zhao1.liu@intel.com>, =?UTF-8?Q?Volker_R=C3=BCmelin?=
+ <vr_qemu@t-online.de>, Christian Schoenebeck <qemu_oss@crudebyte.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>,
- "Dr. David Alan Gilbert" <dave@treblig.org>
-Subject: Re: [PATCH v3 19/35] audio: register and unregister vmstate with
- AudioState
-Message-ID: <aQOUTmDMzvKePrIW@x1.local>
+ BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
 References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
- <20251027151045.2863176-20-marcandre.lureau@redhat.com>
- <ffab95ce-9b5d-43ea-93a7-611de6044ad8@linaro.org>
- <CAJ+F1C+qnkm=F1q0YSHZ9WbAMcz+-NJo5mzj1b-DcU24dNpRLQ@mail.gmail.com>
- <adbf6cd9-72b0-4ce9-93a6-4f83338ca8a3@linaro.org>
-MIME-Version: 1.0
-In-Reply-To: <adbf6cd9-72b0-4ce9-93a6-4f83338ca8a3@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 384sHCm-A5XmpJY1vKbGy5f-k6DtGMCKA-M_2buMbng_1761842258
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+ <20251027151045.2863176-29-marcandre.lureau@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20251027151045.2863176-29-marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,74 +121,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Oct 29, 2025 at 10:42:00PM +0100, Philippe Mathieu-Daudé wrote:
-> On 29/10/25 20:00, Marc-André Lureau wrote:
-> > Hi
-> > 
-> > On Wed, Oct 29, 2025 at 5:51 PM Philippe Mathieu-Daudé
-> > <philmd@linaro.org> wrote:
-> > > 
-> > > On 27/10/25 16:10, marcandre.lureau@redhat.com wrote:
-> > > > From: Marc-André Lureau <marcandre.lureau@redhat.com>
-> > > > 
-> > > > Proper lifecycle management with QOM state.
-> > > > 
-> > > > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> > > > ---
-> > > >    audio/audio.c | 7 ++++++-
-> > > >    1 file changed, 6 insertions(+), 1 deletion(-)
-> > > > 
-> > > > diff --git a/audio/audio.c b/audio/audio.c
-> > > > index 4c3c3fd52f..853930bb48 100644
-> > > > --- a/audio/audio.c
-> > > > +++ b/audio/audio.c
-> > > > @@ -1614,6 +1614,8 @@ static void audio_vm_change_state_handler (void *opaque, bool running,
-> > > >        audio_reset_timer (s);
-> > > >    }
-> > > > 
-> > > > +static const VMStateDescription vmstate_audio;
-> > > > +
-> > > >    static void audio_state_init(Object *obj)
-> > > >    {
-> > > >        AudioState *s = AUDIO_STATE(obj);
-> > > > @@ -1625,6 +1627,8 @@ static void audio_state_init(Object *obj)
-> > > > 
-> > > >        s->vmse = qemu_add_vm_change_state_handler(audio_vm_change_state_handler, s);
-> > > >        assert(s->vmse != NULL);
-> > > > +
-> > > > +    vmstate_register_any(NULL, &vmstate_audio, s);
-> > > 
-> > > Please avoid legacy APIs:
-> > > 
-> > > /**
-> > >    * vmstate_register_any() - legacy function to register state
-> > >    * serialisation description and let the function choose the id
-> > >    *
-> > >    * New code shouldn't be using this function as QOM-ified devices have
-> > >    * dc->vmsd to store the serialisation description.
-> > >    *
-> > >    * Returns: 0 on success, -1 on failure
-> > >    */
-> > > 
-> > 
-> > qdev/Device have vmsd, but not plain Object (or legacy code without object).
+On 27/10/25 16:10, marcandre.lureau@redhat.com wrote:
+> From: Marc-André Lureau <marcandre.lureau@redhat.com>
 > 
-> Hmm right. Cc'ing Peter & Fabiano.
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> ---
+>   audio/audio.h     |  9 +++++++++
+>   audio/audio_int.h |  5 ++++-
+>   audio/audio.c     | 17 +++++++++++++++++
+>   audio/dbusaudio.c |  9 +++++++--
+>   ui/dbus.c         |  8 +-------
+>   5 files changed, 38 insertions(+), 10 deletions(-)
 
-Thanks, yeah this looks fine when it was already there.
-
-When looking at it, what's interesting is vmstate_audio is actually empty..
-
-Explanation in da77adbaf61, since 2021.  Maybe we could drop it completely
-at some point as I know we start to deprecate machines over 6(?)  years.
-But I don't know when is proper.
-
-We also hit similar issue with TAP device where there was a demand to add
-compat properties to TAP however it was not a qdev, hence it cannot use
-compat properties mechanism..  I wonder if these devices will be (at some
-point) be converted to be type device.
-
--- 
-Peter Xu
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 

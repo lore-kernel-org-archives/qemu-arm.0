@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFC5ACCF9E3
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 16:39:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5508CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Oct 2025 16:40:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vEVgL-0006wQ-J6; Thu, 30 Oct 2025 12:39:29 -0400
+	id 1vEVhB-0007RT-M6; Thu, 30 Oct 2025 12:40:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEVg9-0006sL-Gy
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:39:18 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEVh8-0007PQ-Nv
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:40:15 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEVg4-0002xx-13
- for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:39:11 -0400
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-b4aed12cea3so228344466b.1
- for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 09:39:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEVgz-000329-Eg
+ for qemu-arm@nongnu.org; Thu, 30 Oct 2025 12:40:13 -0400
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-63c09141cabso2070410a12.0
+ for <qemu-arm@nongnu.org>; Thu, 30 Oct 2025 09:40:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761842339; x=1762447139; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761842399; x=1762447199; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=ENvi7hvzKl7DHWnpguSuO6Lc6/9k4AkjfN10PNykDM4=;
- b=l+ILUiDk27TebWcyfbvSGIOqGTVj63MxBvkIJ6o8V6ZjLaU6JtFJxnny55nZRzsCgE
- yxW8cueVRXjLbmneu22z/T2Xj1sQrUJDUye/Wkemaw1rd9aAktOu1V4kdfKG07WjWe4c
- QDhUzxy4w3lP6WURKQgtNjPDELwmLf+BODIN+1tZp/iYXjplmZgEvnpl7IdnBYHNSVgy
- DNY6APJf59PXDRMaR/9TqOWxW3jOKeqYbAQJglhczxUvymGLbDUbGJwmk6SiaooR68e3
- zEjyu+Cr401VRTrydz/XFsGTNxh+dePXKKs/N4XRFUL6JYIQ3P/rZPCkBcworUs4iHoh
- TwkA==
+ bh=EwLZaMQ2xkYLb8CZxVsf81o4GwM6pprJR6dDncgMZCI=;
+ b=P0TwnlSySemosWYjNblTGF3shklD/VNPMz15ipuTIexShTtqYoSPy+EYRS3cojNqaP
+ RWW8FSbV1ZljJDY3Yh58nKlSWJp7sZTx5RiRI/ijmo7hcmAO+Rf8ZeuIkINlc88UWWuJ
+ rY/Hm6pMPM/0FN4ug9WPOUegpM7C1bP0d95wSFbAqvXOodMsqk6MrlPXlmnduKHHQi6W
+ CeArGKweGLPO3fe3J4lg9XXzBVplZJyvd9AdAi0EwmwNJm/q2pBRJ/MGgw1UEQQM2q0k
+ Alp0Y9ncX+Q7W7DxXlp5p+rXNeD2Qmy8irQsV5zO2p+9dN0yPCvowp2cYmknT+359mNJ
+ q8qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761842339; x=1762447139;
+ d=1e100.net; s=20230601; t=1761842399; x=1762447199;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ENvi7hvzKl7DHWnpguSuO6Lc6/9k4AkjfN10PNykDM4=;
- b=oQboG9KSVn/6ZD8BV+uk9GvvciminaioyxZz40ME5S8PVtqWtYGBvDD2zFi280yRyw
- +c9BV1U3gVBhQu3DvgNMJKxm3QCkaRat3gAgU095QbWC1EQ8NBRbBJ7qiLebiEqBT7PE
- VQuH2ysADTRy9VTu7jEOcLQ9x4jyZWNeJZluCxYGBux95o+YQGu/ZJr3vQy20t7jWfrj
- H68BycMtviZJ4sF8P26Z60KozXfRXZtl1b+Kcd2DNkCiIf3e6/EZjgXdm1Wf3z2PF13C
- mAPpKhaEYbsNNU+9NuLqw6BmJPjIYhFzH1HDnWjjmzEXBjGNUA8ddGbRvGG3TZ2GeVVb
- sg+g==
+ bh=EwLZaMQ2xkYLb8CZxVsf81o4GwM6pprJR6dDncgMZCI=;
+ b=cz/OUBogeAGJuTaeJ8CqkiY7uA5YhE1Bzm5WU0VUBLVqdvyKU1udJwri+COUPWFaMg
+ 3VT6G8Fbpbfcfr+mDbBaGUCtCgz7Sr24l/YCoI0mc/o2Am8mCUZMceHqJJ69KA+7nt7B
+ S6koSgDVdapu6VRRPwfMZKY8M6iyCnKKiaryzSPDox5GWrFvCPJtcMCNHR+pNb/vSd+h
+ xwa5Yntmq54SlL5D+ELlUYh+C5ghwV4udeZbpDnK6XzSZ+WSYcASvuOPpsmmSBaNmI5v
+ tXFTuEbw+7g9j3jN5HHkh5e8SP/XEi+5xps/g+FfpLUGQ2ZiPJy2cOS3vvAsF/qXgKi9
+ sqPw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVTIWEJa2S3Juc2Wv1FhmboCq+gMx/ad37Bj5R8pphZvFtWhHI01Jn755MKJZYyUVW9Lgvb24TS6A==@nongnu.org
-X-Gm-Message-State: AOJu0Yzh99MUTH2HoV6rM8g+YuGeTQezTR20LzQTSy9URshG5l2YQoq0
- N/eGvsVALulMLvyH5BcfaI/clu4AuecIVJBzxMs6xECXdgJPlhmdwUDiU12HZNSwuiY=
-X-Gm-Gg: ASbGncu4M5NPzeOvIXIpYegPbUPEo0MyzBGKKphQI7oJ1GoYcSfqQDi5b862Sx3Zpwb
- H10GwvS3PNNHimjuqWadcL95vYBEM8fsU00Wndt3+9tJZmjbyvtNr1JvgrO0499vdBIKn3vDjZk
- bKxQgCann2lhw+L6uMyIQe705PMPppwhbiW8OKaKgh+Q+JglOi+peJSYYFmnLFiOXF6CjwLuySi
- fBElbQ9GJpmx734EMKsycETKzK0HOePXuozkAQCkQxYsSJ3OVqX/LOvEZ/6AQburTTvPaaNeQZb
- SzJqheJGs5muUNfdTfg9YO9IQ4Qg1JGAyuPuxZQcPokM2lYjHZvgQWVz8NOfd8YMfy55MyzNh5/
- tQr7grT/h5G69HAqMLp/3Hv/Y7FLqYJvzBKZmAAApTMUh9/fXNrJG9UPb7PyqUFJbARAj/AzP5m
- 2fcihuu0XM1U88N6yJUt0Khj0tiKYmCXGEsOMecKYViPRRXv5WkE3a
-X-Google-Smtp-Source: AGHT+IFTD26vRmotglD6f5FMl51+1zYl8TM8Z+YV6DyeEFPfbeXvtdFnq/HDjAXHmOU97YgnKYqPDw==
-X-Received: by 2002:a17:907:728c:b0:b6d:2f3f:3f98 with SMTP id
- a640c23a62f3a-b70704bc291mr11019266b.41.1761842339438; 
- Thu, 30 Oct 2025 09:38:59 -0700 (PDT)
+ AJvYcCX9LHnlrT9zFhJXr73GvnX9j5udfVWfvYFlh5fAwEJ2zt21JELBxL9hjegl7n8K3KkSSGw1Bb3lFw==@nongnu.org
+X-Gm-Message-State: AOJu0YwFCbGzJdRQ2blfSzPZG3iRypcK1b3YkwAq6ydxKvuljwcLjSK7
+ hPosK1R/3vo9fx6pr3NALTWJuCPZxkApLaEYQrOGiXobmkza4sxbMLbCPsFDwMrJP/I=
+X-Gm-Gg: ASbGncsHhOfab/XHZHdSZ1NLnAtls9NXNEcUwigW8W5khLL02bDc5kFQevsOxS7Ssoi
+ eStBtLwcOStNc1vWg4FxGfES6eqi6waWvqynERCoG6eHCb0t6xnbqEWXi1Qoni9j7O7tvXpq3Pl
+ vOdYDkXOscT0ADM2G0Coe91PjXYu1cYpLwBJw8ICrvfeBgWKY6kW/JcIug9oEcUexOog6sEqM8h
+ +jsjXujUornFslMKso2zWvxBT7Ta1HkSO+PQF7/+efxliwyn5pNy8D79zIpha/MMLNrdfDeSlsb
+ delWtIfkfEbqrru91V/WwQhsJ2LnhH7ueYDgGOX61zLQmyBqP3pSOk8Xt2SuXMMb9WnUQOsVVTA
+ 8z7t35umcB1oRY0exOFdJHgvYZenMUJufI5LPOHncNojd0A7D0OpF6SciHfz02g1RxSJomezfnU
+ LFxGXo0Tl4KWhW5fY24zVFOi6pRYJ1IEv6OI1W7SxsWQ==
+X-Google-Smtp-Source: AGHT+IGgyheceNatEFPKSZgnNYvP+OIpOEbIJH7SFWR4ihk3foSYIZgt79Ewlk923QElIXMO0Xuivg==
+X-Received: by 2002:a17:907:2d87:b0:b32:2b60:f13 with SMTP id
+ a640c23a62f3a-b7070834a6fmr11532766b.54.1761842399399; 
+ Thu, 30 Oct 2025 09:39:59 -0700 (PDT)
 Received: from [10.180.230.213] (183.105.204.77.rev.sfr.net. [77.204.105.183])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b6d853f9a0fsm1777593766b.50.2025.10.30.09.38.57
+ a640c23a62f3a-b6d85353ff7sm1796403466b.22.2025.10.30.09.39.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Oct 2025 09:38:58 -0700 (PDT)
-Message-ID: <7ce76bec-757d-4541-a08a-4b77c2d85c6f@linaro.org>
-Date: Thu, 30 Oct 2025 17:38:56 +0100
+ Thu, 30 Oct 2025 09:39:58 -0700 (PDT)
+Message-ID: <39eac421-7ced-4d48-ad59-e615bed8e31a@linaro.org>
+Date: Thu, 30 Oct 2025 17:39:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 28/35] audio/dbus: use a helper function to set the
- backend dbus server
+Subject: Re: [PATCH v3 29/35] audio: move audio.h under include/qemu/
 Content-Language: en-US
 To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
 Cc: Alexandre Ratchov <alex@caoua.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
@@ -92,20 +91,20 @@ Cc: Alexandre Ratchov <alex@caoua.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Laurent Vivier <laurent@vivier.eu>
 References: <20251027151045.2863176-1-marcandre.lureau@redhat.com>
- <20251027151045.2863176-29-marcandre.lureau@redhat.com>
+ <20251027151045.2863176-30-marcandre.lureau@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251027151045.2863176-29-marcandre.lureau@redhat.com>
+In-Reply-To: <20251027151045.2863176-30-marcandre.lureau@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x635.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,14 +124,67 @@ On 27/10/25 16:10, marcandre.lureau@redhat.com wrote:
 > From: Marc-André Lureau <marcandre.lureau@redhat.com>
 > 
 > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 > ---
->   audio/audio.h     |  9 +++++++++
->   audio/audio_int.h |  5 ++++-
->   audio/audio.c     | 17 +++++++++++++++++
->   audio/dbusaudio.c |  9 +++++++--
->   ui/dbus.c         |  8 +-------
->   5 files changed, 38 insertions(+), 10 deletions(-)
+>   MAINTAINERS                                         | 1 +
+>   audio/audio_int.h                                   | 2 +-
+>   hw/audio/lm4549.h                                   | 2 +-
+>   include/hw/audio/asc.h                              | 2 +-
+>   include/hw/audio/virtio-snd.h                       | 2 +-
+>   include/hw/display/xlnx_dp.h                        | 2 +-
+>   include/hw/isa/vt82c686.h                           | 2 +-
+>   {audio => include/qemu}/audio.h                     | 0
+>   include/system/replay.h                             | 2 +-
+>   ui/vnc.h                                            | 2 +-
+>   audio/alsaaudio.c                                   | 2 +-
+>   audio/audio.c                                       | 2 +-
+>   audio/audio_win_int.c                               | 2 +-
+>   audio/dbusaudio.c                                   | 2 +-
+>   audio/dsoundaudio.c                                 | 2 +-
+>   audio/jackaudio.c                                   | 2 +-
+>   audio/mixeng.c                                      | 2 +-
+>   audio/noaudio.c                                     | 2 +-
+>   audio/ossaudio.c                                    | 2 +-
+>   audio/paaudio.c                                     | 2 +-
+>   audio/pwaudio.c                                     | 2 +-
+>   audio/sdlaudio.c                                    | 2 +-
+>   audio/sndioaudio.c                                  | 2 +-
+>   audio/spiceaudio.c                                  | 2 +-
+>   audio/wavaudio.c                                    | 2 +-
+>   hw/arm/integratorcp.c                               | 2 +-
+>   hw/arm/musicpal.c                                   | 2 +-
+>   hw/arm/realview.c                                   | 2 +-
+>   hw/arm/versatilepb.c                                | 2 +-
+>   hw/arm/vexpress.c                                   | 2 +-
+>   hw/arm/xlnx-zcu102.c                                | 2 +-
+>   hw/audio/ac97.c                                     | 2 +-
+>   hw/audio/adlib.c                                    | 2 +-
+>   hw/audio/asc.c                                      | 2 +-
+>   hw/audio/cs4231a.c                                  | 2 +-
+>   hw/audio/es1370.c                                   | 2 +-
+>   hw/audio/gus.c                                      | 2 +-
+>   hw/audio/hda-codec.c                                | 2 +-
+>   hw/audio/lm4549.c                                   | 2 +-
+>   hw/audio/marvell_88w8618.c                          | 2 +-
+>   hw/audio/pcspk.c                                    | 2 +-
+>   hw/audio/sb16.c                                     | 2 +-
+>   hw/audio/wm8750.c                                   | 2 +-
+>   hw/core/machine.c                                   | 2 +-
+>   hw/core/qdev-properties-system.c                    | 2 +-
+>   hw/ppc/prep.c                                       | 2 +-
+>   hw/usb/dev-audio.c                                  | 2 +-
+>   replay/replay-audio.c                               | 2 +-
+>   system/runstate.c                                   | 2 +-
+>   system/vl.c                                         | 2 +-
+
+Alternatively "system/audio.h". Regardless,
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+>   ui/dbus.c                                           | 3 +--
+>   audio/coreaudio.m                                   | 2 +-
+>   scripts/codeconverter/codeconverter/test_regexps.py | 2 +-
+>   53 files changed, 52 insertions(+), 52 deletions(-)
+>   rename {audio => include/qemu}/audio.h (100%)
 
 

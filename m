@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0B98CCF9F8
-	for <qemu-arm@archiver.kernel.org>; Fri, 31 Oct 2025 10:55:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C47D8CCF9FE
+	for <qemu-arm@archiver.kernel.org>; Fri, 31 Oct 2025 10:55:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vEmmQ-0005uN-Rs; Fri, 31 Oct 2025 06:54:50 -0400
+	id 1vEmmf-0006wz-8m; Fri, 31 Oct 2025 06:55:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vEmlt-0004bP-1l; Fri, 31 Oct 2025 06:54:19 -0400
-Received: from mail-southcentralusazlp170130001.outbound.protection.outlook.com
- ([2a01:111:f403:c10c::1] helo=SA9PR02CU001.outbound.protection.outlook.com)
+ id 1vEmmV-0006IM-8j; Fri, 31 Oct 2025 06:54:56 -0400
+Received: from mail-eastus2azlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c110::1] helo=BN1PR04CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vEmlo-0002zi-T6; Fri, 31 Oct 2025 06:54:16 -0400
+ id 1vEmmK-00032w-Ki; Fri, 31 Oct 2025 06:54:54 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=KdDsSrG/Mztal2lKG9f0O9l2KhqoyweXOGBkNoz0US4NSUaI5UnH5K7bfRnfnYdG30qVFkdmvIHB3dY7pUkzgkf9vJYRBh8NaUEompdmZ8WVLfpuCT2qKCX+4zM3uh4suzywozRxz26cOnUfit1nTZ1hspN4xo6bfR44NySH3BK8twF5hk/qkuFkVqB+NvDN85Gq81NQnKXTJ5kCeXBgF7D5sEpe+aAxlXou3pdyCeKXrWpL7EqhAKq6QgzLhKBCh+GQ1rUy/LwPZp8TlSb/Lxwyx5VzFLsokbZzRvygsudj5XqjL9HThUWOm8fUlgkRMo/XunX/KIqs9hKJytjAQA==
+ b=L4+giRZ5L4btU7OPXNeQ70Lei4Bdgf6UWv7sP3OEhjtgpRxDP95tg/AP0AC85m9opAfn+5toQH6hSJH0CLFODagZX+E6Juw5DWzHvDKNJkO9Lx29hedZQJiR33Oij3uo6tbxQbh5OAa8c+GoZu4hXP7TP7CkGqE9N4Pay2gKVdLt3ganSGAMeHBXOeZ3B3i1bRGc+QgOamLIKNurZKzmkdFgwarFHzHyyOVA6oCCVim862zlmMNKKXXKUj6CxjFSvI516KrxmXgj480e/dasurA4Kb3VGn2AC77WGWMoXxguEGN9ttpphMfKzDkOcV9jv5OmRAVz5XdYerlIEnGh0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=V1564gZWsiX8wsj62jsFc/NIGNl9IxdjAXWZ7sqBwtA=;
- b=nhh+QMjvFMN+xQF0EF2I3ZplpA3m6fmHQdFHRVPoS5R2SEV0pnIUDp3Zd6PAVNSHQPedYxvGhE7ViW5TAtph4EyVRzE7klYEKMdS9m1Q0RLmfin7veXVuq3Wki++0wWQu+Ha0gX/Mo32OU+OomagIU5eq8xL7/6OJnQLj+cos8ZWh5Jnx5WXvpp5LJGX1SB9DuMrwh7nnj5dQYFf2FCr1lmS+v7SMTwEQmf4I/zr6ZW3vejy13BJU+EsI+tOhdYKE5cuNzgdP1+EASwxPF+4r22mn5AgCgsgitRjq1OKMTNymUcJa1tvBSLMmb6S+UquENHQNF3gvzsepQPqJfliVQ==
+ bh=qaScdJr3eH2L7EPTd/PvjT91oOc9w27F4/RJzlgAEcc=;
+ b=cnMFrFJnq820dYOwCzf26PybwJsE26S+WidGdBtyZCvO/q1e/aJN5aHEIfHmQ9beQsPIu1C86wZEeEqJWwLswtWr6tbksXyRmQcyUokZ+jBqBOiAKSo83iEDanaNh4Qs6umxemToUMZPexJ8QJspk/65n4KS/023nQGcdxztq8L0zAWHAAXHAhbfqTFmFCyGU9U6LockCVhvKXipt4O1nLF5OcseTg4zBqZc5SRgZKxQMKphL4ZS1KILMaNhFrY3KzJm4k5XJDmPCfluuHb9eQYkL6zRsLRIoZAVmrgiFMLKGCTcwZVESZ4imPb9nVySGDYYpQUYT/geY8d1Jp3rBQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=V1564gZWsiX8wsj62jsFc/NIGNl9IxdjAXWZ7sqBwtA=;
- b=XaolbOgP3VIjlFU6xW9VkdsPE+IvQ8TkPGHzzi7/XCNlvHVTN+m64CJBdgVGMf80wIgnRuV+EgL+US3AOwGVg92R7utuV/OiLyL1aQacxcErlu35HYc6bfJOWEI7QhvDM8VGIR8rSIixZE4V+c8WFOhbv0jtwRA6MbfNwsixXpnJm8v7R1OIKOH+pYMZtl1gHWVwTvFEZynJK3VD7kCj8QljSbGaUhUXQ2s9L31tZy9y4hMr7yZphx6uGZ76sXSyDPRvZ0ofAiqZRDZESMS50VMwvUfQNz2Sf8K/uqD9ih6UILnrdTEUKCUR5pT1Q1MiVk16FEErsOapR7yYJ8tyQA==
-Received: from BLAPR03CA0178.namprd03.prod.outlook.com (2603:10b6:208:32f::32)
- by SN7PR12MB6790.namprd12.prod.outlook.com (2603:10b6:806:269::15)
+ bh=qaScdJr3eH2L7EPTd/PvjT91oOc9w27F4/RJzlgAEcc=;
+ b=UueM2ePr0w99Av70EaCX6gmK3RfoZfmBdFuYeUFTp8p0E6nMyMiufvEsNsuUUPulZIQ4KPYdDZhQ0pipR23IYUJ6NvB/g3JOUSTe4DlkugmD2gwTu9DmmnCJAoGUI+hYL0NW+laoohCCezNooCYDS/5R1mDQpEr2N/rlehjHM6VTejpaKRsa960AbqLejdOsFtDALN/dKDsN3DUDci6vTUnd2N3iY9EDVoVdWe5xiKqWooavFU2c6wsoCo/NQVDgIUQxzp1x7M82sC4RHzwgVSNBhU+m2wWKKwL3FY0x2cDn7wtHqUg5kjW5PfduiiPwW7o4k47GUwvigdV6Wt84hQ==
+Received: from MN0PR03CA0011.namprd03.prod.outlook.com (2603:10b6:208:52f::13)
+ by CY5PR12MB6347.namprd12.prod.outlook.com (2603:10b6:930:20::10)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9253.17; Fri, 31 Oct
- 2025 10:54:06 +0000
-Received: from BL02EPF0001A103.namprd05.prod.outlook.com
- (2603:10b6:208:32f:cafe::b) by BLAPR03CA0178.outlook.office365.com
- (2603:10b6:208:32f::32) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.14; Fri, 31 Oct
+ 2025 10:54:33 +0000
+Received: from BL02EPF0001A0FD.namprd03.prod.outlook.com
+ (2603:10b6:208:52f:cafe::7e) by MN0PR03CA0011.outlook.office365.com
+ (2603:10b6:208:52f::13) with Microsoft SMTP Server (version=TLS1_3,
  cipher=TLS_AES_256_GCM_SHA384) id 15.20.9275.15 via Frontend Transport; Fri,
- 31 Oct 2025 10:53:54 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ 31 Oct 2025 10:54:31 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=nvidia.com;
 Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- BL02EPF0001A103.mail.protection.outlook.com (10.167.241.133) with Microsoft
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ BL02EPF0001A0FD.mail.protection.outlook.com (10.167.242.104) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9275.10 via Frontend Transport; Fri, 31 Oct 2025 10:54:05 +0000
+ 15.20.9275.10 via Frontend Transport; Fri, 31 Oct 2025 10:54:33 +0000
 Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Fri, 31 Oct
- 2025 03:53:57 -0700
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 31 Oct
+ 2025 03:54:24 -0700
 Received: from NV-2Y5XW94.nvidia.com (10.126.231.35) by rnnvmail201.nvidia.com
  (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Fri, 31 Oct
- 2025 03:53:54 -0700
+ 2025 03:54:21 -0700
 From: Shameer Kolothum <skolothumtho@nvidia.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
@@ -72,10 +72,10 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
  <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
  <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>, <kjaju@nvidia.com>
-Subject: [PATCH v5 18/32] hw/arm/smmuv3: Initialize ID registers early during
- realize()
-Date: Fri, 31 Oct 2025 10:49:51 +0000
-Message-ID: <20251031105005.24618-19-skolothumtho@nvidia.com>
+Subject: [PATCH v5 24/32] tests/qtest/bios-tables-test: Update IORT blobs
+ after revision upgrade
+Date: Fri, 31 Oct 2025 10:49:57 +0000
+Message-ID: <20251031105005.24618-25-skolothumtho@nvidia.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251031105005.24618-1-skolothumtho@nvidia.com>
 References: <20251031105005.24618-1-skolothumtho@nvidia.com>
@@ -87,62 +87,62 @@ X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
  rnnvmail201.nvidia.com (10.129.68.8)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL02EPF0001A103:EE_|SN7PR12MB6790:EE_
-X-MS-Office365-Filtering-Correlation-Id: a696c65b-18b6-46e6-0716-08de186bcfa0
+X-MS-TrafficTypeDiagnostic: BL02EPF0001A0FD:EE_|CY5PR12MB6347:EE_
+X-MS-Office365-Filtering-Correlation-Id: e93bc0a7-78c1-43a1-42fc-08de186be059
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|36860700013|1800799024|7416014|376014; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?s7oL04oeZNQP1tG3PIJ482WGciAW3wNmUVr6Z8OEjphFLXVyY+LBm9zrJIYq?=
- =?us-ascii?Q?gLaeCS5hXZCSJcExwrfoSmsmxhDJOCxOpcHUuSYWq3ctEA1S+4RpI7rZk3PB?=
- =?us-ascii?Q?9J6Wheghq8Mpxra5fjcwv69tPCHZsxUwl5g18V7JHy0WbAY6YT7GHMKvbH5w?=
- =?us-ascii?Q?isPePRsVDFcoCah5EFpJ41wKk+g5Bx37sBXJqB0DUatu2rtQ3SOxbVKC3iyg?=
- =?us-ascii?Q?g65rei7itu9umqLgLLc+qjjjWB49I92/e/27lXIPF/FuiSddzUAF4meY+tf2?=
- =?us-ascii?Q?UQ2Cx7Tl2BnbcmWa1sGETtaLwi3pAL2n+96mRazLvjb/KvuE6n5pZIJ74Amq?=
- =?us-ascii?Q?30Rd3a//BuWtlFtDacu2c5lDRiIO+kXnKAhr3zOyC/PvEvWhcKvmV49S4JDI?=
- =?us-ascii?Q?8I6SzmooW0y17XnsPYKkVm4ARmB9Z3DzF7405H/JX6blv9H4uRLGbH5C5mnA?=
- =?us-ascii?Q?PmJiEY7WgRzlwegJT0ARDvOtZ/csF5gUpFEc4HY/1a7fXnsknEr3iGZ16D8f?=
- =?us-ascii?Q?FWzOx+BU+HKIExwb4ObuXK77RlFoB2SzmmqXckCZXblGLhI/UKuJaOqvT+kN?=
- =?us-ascii?Q?B5JF1hI4DarCm9rkpg9+RdQBbAXSlReoaXbf9ey6ua+5c+ruVlDYGjw2e0sC?=
- =?us-ascii?Q?FWUTk+ackMIVqtfNEJNW6bZ1ejlxa8FrfCQoyIXb7e6IY8lHCAP/sUnyO56t?=
- =?us-ascii?Q?nxsZivB52T/2WVQc2XuaRlC1uFAxQroJVvCkFX06pqdFbX+TnJx8tbkPW7Dg?=
- =?us-ascii?Q?tpZzTPnXL1k97t3c3m+GS+h3u2go5uQhrM6sj/hn898PykgFEibmHr3UIkvH?=
- =?us-ascii?Q?wVy5KkCEQny6/EWJrG7E2qHjTPANleHs+6O9/qJ10DdwB1BGNPeU3TMX8CQj?=
- =?us-ascii?Q?8wXlLwcdzKI97WRqJo0Ff9ds3BgUh2Az6WOQaZrJS/RPddTv7WaqAS9s35bq?=
- =?us-ascii?Q?l2HtY/Cuug3/bEzKFvw8hlfJ97P6xrwqO4RFNwJ2x4vfrgaYkcSt3oJvnlKC?=
- =?us-ascii?Q?dJkGDbjsq0A5S9/uCTOURoZQaA+h1RuwXVFi68UXSpwoqp/OD04fgDyODh3F?=
- =?us-ascii?Q?60yn+EkVkmTAhqYzzZBiW9wnc/zWkzOM68ES+9XDz+MVkP4aXk2dDuJ2v5Ck?=
- =?us-ascii?Q?W/27n39/d/vhaU6ep4wWxqVJLS0H3APzFWOoP4NmDdaKiX/nUOIErJM9RQok?=
- =?us-ascii?Q?MSx/s9Uq+JYWE3Erva/Pi2zywUR6gxUQ736SFRgRTLy1fbYeXNmMpFINiaB0?=
- =?us-ascii?Q?EYmNKcH8fuj3aoMUGOsjd/a6mEahHeOtQNzdKnUz3RP/FelggkLI2MH4CN+e?=
- =?us-ascii?Q?CcIyE7D8sRyZD/k+qyCHPzEniYGZBiPbGCl4SXUMXavQ0ELFLVS1wtKq0TLu?=
- =?us-ascii?Q?R9/6UrK5RjnulJU/+fd5j2K9/08YIVHLg1KqzhEmPD1g5XXhDahhEacEizSO?=
- =?us-ascii?Q?5+09/eqJS0dugmoUyIkA1fUck6O07m//f6z+1JVYhMgKlbT9yhNJ8iMUPyqa?=
- =?us-ascii?Q?H5XIgHoYaDF2dleCOqFxZ6fzsiSh6jPijx3ZlEjgxO9rdkIV7fiwV4d0YkIp?=
- =?us-ascii?Q?qLzt0yzq5Z3RIMJZpzI=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(82310400026)(36860700013)(1800799024)(7416014)(376014); DIR:OUT;
+ ARA:13230040|82310400026|376014|7416014|1800799024|36860700013; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?VVk1CuxutBHHzdKrrFI6xMm0rFw2qe3Pdkk5lmBZOm7qWwBG97+USRbQtpxk?=
+ =?us-ascii?Q?vIdNICSSLwGxtWxpl3h1BVWizdkgixrblFT9hq9+Lu/DDLDqg25vbxvFvYcD?=
+ =?us-ascii?Q?NieBYKxFvM1N5bdCdvMJu3VLUsSXYtCuUoCvT+H9eomDiLu46/BGmpPfmcTv?=
+ =?us-ascii?Q?HyKibopbLXnKZWerxkdyV+uSwgbTBdm4uKpbbHFUO45cZARASp3HynvDbn8m?=
+ =?us-ascii?Q?NUqkqKl3nS3wnwiB9ckksNjUJ5gM+0CPxKGGEb+ZVWPqvQXRhbBpW8xMZB4w?=
+ =?us-ascii?Q?KTfpK5npIBrDo4yn+h223JVsKzsPiXEO5vBoldSWXwJfbDcgu+qzqgxU0VHi?=
+ =?us-ascii?Q?z8H1CYNMtRaj7DE2eAiS5zpBp8Jm+c0TM6uVVWGxKvemWp4IdqWu5b2ocvRb?=
+ =?us-ascii?Q?12cJunJpvab1VrECCY5cuCjwjcRLfVidZNddUBlcXxYui1uVBUjjsdsiMMJk?=
+ =?us-ascii?Q?Y8BWwtUT7mo6L+JatNoYEDT7/45ku6rhe2qL2FcLQyIX5nGT/a8yxHP4LLLi?=
+ =?us-ascii?Q?RMq8raqRuFE+feadbXa2G7+wuH2/DbRppDSmE56Jmu8KlnJVUIolS55LJvE/?=
+ =?us-ascii?Q?Nh2Bz1glZcEgJApTZ2t+LAwnOpJz8pWb2IlsaMnJgcCI9KY7jjzG3kY/4q7T?=
+ =?us-ascii?Q?m1AaL28GCCZJ1deDQkjQGv972DeTB+fQTkIDOhfYQHpgCyXvA27pumghhFyK?=
+ =?us-ascii?Q?aEmnWyZ0zPiMhrxtHYxEkJA+j8gTu4pS/fpEnhjQWejR/Dmyb2qIc4+19c8C?=
+ =?us-ascii?Q?maodp0e7Hrrnhfy+ThWr0LS2DF7kBTSGvupk1U8Ho1Ld50qrlGTSe9gVFe6p?=
+ =?us-ascii?Q?2isnlHScSCEdx92opcvlQwybM/RB0QGrFYH+XUvHL7UNQmvPbf/rVGhDRc8V?=
+ =?us-ascii?Q?kN1eNALt0+9SQYTAxV0oNI5o+gN3oMaJlqETOrj3ddOp5RV26X64Nx9WwXkv?=
+ =?us-ascii?Q?Ub5kGu8VaQefEjAo/eLWYnTgOen0fRlS8KG6VjBcsyqk4Ws1JBg5FN/iUNFK?=
+ =?us-ascii?Q?aYE3umw5mTPf6JooXTmOekT2321p8v7BEWQF2Y6P6Mlpu/Wror6S0RDIx3A/?=
+ =?us-ascii?Q?JiLgeVRiMBlexWW65+dMe3fzf3lB6p7f4FG/MMBqaXCQ/bJCnGnhMb0a6u7v?=
+ =?us-ascii?Q?dhpgXNmaMoOI1HDynvPvFrlziYE3hosppJDF3h4vaHHRpFyo5i4Tvoim4h+U?=
+ =?us-ascii?Q?0pzg/3QtraljBc5cP9X1m/66AJiN74bkqmUOXr10Hw2NU3+AC4yxRXF2wBq0?=
+ =?us-ascii?Q?urImxuZlidwZtQCeE3xRWPzOvefwIAT542dvsb9ijgqj/KOZQkSujUVl9c/0?=
+ =?us-ascii?Q?oKXpscdpP2G1M0J7EuBlC/YnMHKjVJByH3lgNCmUjuhcsRe3FZDaOz0Exbzz?=
+ =?us-ascii?Q?UE00JgYzefDxg9tq7UXi74p4WYDRj6VG+yHPrBg67EWUO0tHChodfALXXQXW?=
+ =?us-ascii?Q?Q+edcGtkaLK/LysmxlsGpf1qlAYYkRwq38T3N8vsS2KThP46WKA44ZBYKfDn?=
+ =?us-ascii?Q?GIw6+7g/g45ggVqaLj9JV65YEjkVpYdvtksgcQdv9HQrT7I5wUFHhh66H1PS?=
+ =?us-ascii?Q?XZiP+aA3851knF+qtuw=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(82310400026)(376014)(7416014)(1800799024)(36860700013); DIR:OUT;
  SFP:1101; 
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Oct 2025 10:54:05.5415 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: a696c65b-18b6-46e6-0716-08de186bcfa0
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Oct 2025 10:54:33.5987 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e93bc0a7-78c1-43a1-42fc-08de186be059
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL02EPF0001A103.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: BL02EPF0001A0FD.namprd03.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB6790
-Received-SPF: permerror client-ip=2a01:111:f403:c10c::1;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR12MB6347
+Received-SPF: permerror client-ip=2a01:111:f403:c110::1;
  envelope-from=skolothumtho@nvidia.com;
- helo=SA9PR02CU001.outbound.protection.outlook.com
+ helo=BN1PR04CU002.outbound.protection.outlook.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
 X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -159,72 +159,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Factor out ID register init into smmuv3_init_id_regs() and call it from
-realize(). This ensures ID registers are initialized early for use in the
-accelerated SMMUv3 path and will be utilized in subsequent patch.
+Update the reference IORT blobs after revision upgrade for RMR node
+support. This affects the aarch64 'virt' IORT tests.
 
-Other registers remain initialized in smmuv3_reset().
+IORT diff is the same for all the tests:
+
+ /*
+  * Intel ACPI Component Architecture
+  * AML/ASL+ Disassembler version 20230628 (64-bit version)
+  * Copyright (c) 2000 - 2023 Intel Corporation
+  *
+- * Disassembly of tests/data/acpi/aarch64/virt/IORT, Mon Oct 20 14:42:41 2025
++ * Disassembly of /tmp/aml-B4ZRE3, Mon Oct 20 14:42:41 2025
+  *
+  * ACPI Data Table [IORT]
+  *
+  * Format: [HexOffset DecimalOffset ByteLength]  FieldName : FieldValue (in hex)
+  */
+
+ [000h 0000 004h]                   Signature : "IORT"    [IO Remapping Table]
+ [004h 0004 004h]                Table Length : 00000080
+-[008h 0008 001h]                    Revision : 03
+-[009h 0009 001h]                    Checksum : B3
++[008h 0008 001h]                    Revision : 05
++[009h 0009 001h]                    Checksum : B1
+ [00Ah 0010 006h]                      Oem ID : "BOCHS "
+ [010h 0016 008h]                Oem Table ID : "BXPC    "
+ [018h 0024 004h]                Oem Revision : 00000001
+ [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
+ [020h 0032 004h]       Asl Compiler Revision : 00000001
+ ...
 
 Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 ---
- hw/arm/smmuv3.c | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+ tests/data/acpi/aarch64/virt/IORT               | Bin 128 -> 128 bytes
+ tests/data/acpi/aarch64/virt/IORT.its_off       | Bin 172 -> 172 bytes
+ tests/data/acpi/aarch64/virt/IORT.smmuv3-dev    | Bin 364 -> 364 bytes
+ tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 276 -> 276 bytes
+ tests/qtest/bios-tables-test-allowed-diff.h     |   4 ----
+ 5 files changed, 4 deletions(-)
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 15173ddc9c..fae545f35c 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -258,7 +258,12 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
-     info->recorded = true;
- }
- 
--static void smmuv3_init_regs(SMMUv3State *s)
-+/*
-+ * Called during realize(), as the ID registers will be accessed early in the
-+ * SMMUv3 accel path for feature compatibility checks. The remaining registers
-+ * are initialized later in smmuv3_reset().
-+ */
-+static void smmuv3_init_id_regs(SMMUv3State *s)
- {
-     /* Based on sys property, the stages supported in smmu will be advertised.*/
-     if (s->stage && !strcmp("2", s->stage)) {
-@@ -298,7 +303,11 @@ static void smmuv3_init_regs(SMMUv3State *s)
-     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, 1);
-     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN16K, 1);
-     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN64K, 1);
-+    s->aidr = 0x1;
-+}
- 
-+static void smmuv3_reset(SMMUv3State *s)
-+{
-     s->cmdq.base = deposit64(s->cmdq.base, 0, 5, SMMU_CMDQS);
-     s->cmdq.prod = 0;
-     s->cmdq.cons = 0;
-@@ -310,7 +319,6 @@ static void smmuv3_init_regs(SMMUv3State *s)
- 
-     s->features = 0;
-     s->sid_split = 0;
--    s->aidr = 0x1;
-     s->cr[0] = 0;
-     s->cr0ack = 0;
-     s->irq_ctrl = 0;
-@@ -1915,7 +1923,7 @@ static void smmu_reset_exit(Object *obj, ResetType type)
-         c->parent_phases.exit(obj, type);
-     }
- 
--    smmuv3_init_regs(s);
-+    smmuv3_reset(s);
-     smmuv3_accel_reset(s);
- }
- 
-@@ -1947,6 +1955,7 @@ static void smmu_realize(DeviceState *d, Error **errp)
-     sysbus_init_mmio(dev, &sys->iomem);
- 
-     smmu_init_irq(s, dev);
-+    smmuv3_init_id_regs(s);
- }
- 
- static const VMStateDescription vmstate_smmuv3_queue = {
+diff --git a/tests/data/acpi/aarch64/virt/IORT b/tests/data/acpi/aarch64/virt/IORT
+index 7efd0ce8a6b3928efa7e1373f688ab4c5f50543b..a234aae4c2d04668d34313836d32ca20e19c0880 100644
+GIT binary patch
+delta 18
+ZcmZo*Y+&T_^bZPYU|?Wi-8hk}3;-#Q1d;#%
+
+delta 18
+ZcmZo*Y+&T_^bZPYU|?Wi-aL`33;-#O1d;#%
+
+diff --git a/tests/data/acpi/aarch64/virt/IORT.its_off b/tests/data/acpi/aarch64/virt/IORT.its_off
+index c10da4e61dd00e7eb062558a2735d49ca0b20620..0cf52b52f671637bf4dbc9e0fc80c3c73d0b01d3 100644
+GIT binary patch
+delta 18
+ZcmZ3(xQ3C-(?2L=4FdxM>(q%{ivTdM1ttIh
+
+delta 18
+ZcmZ3(xQ3C-(?2L=4FdxM^Yn>aivTdK1ttIh
+
+diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev b/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
+index 67be268f62afbf2d9459540984da5e9340afdaaa..43a15fe2bf6cc650ffcbceff86919ea892928c0e 100644
+GIT binary patch
+delta 19
+acmaFE^oEJc(?2LAhmnDS^~6T5Bt`%|fCYU3
+
+delta 19
+acmaFE^oEJc(?2LAhmnDS`P4?PBt`%|eg%C1
+
+diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy b/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
+index 41981a449fc306b80cccd87ddec3c593a8d72c07..5779d0e225a62b9cd70bebbacb7fd1e519c9e3c4 100644
+GIT binary patch
+delta 19
+acmbQjG=+)F(?2Lggpq-P)oUXc7b5^FiUXej
+
+delta 19
+acmbQjG=+)F(?2Lggpq-P*=Hjc7b5^Fhy$Mh
+
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index 3279638ad0..dfb8523c8b 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,5 +1 @@
+ /* List of comma-separated changed AML files to ignore */
+-"tests/data/acpi/aarch64/virt/IORT",
+-"tests/data/acpi/aarch64/virt/IORT.its_off",
+-"tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy",
+-"tests/data/acpi/aarch64/virt/IORT.smmuv3-dev",
 -- 
 2.43.0
 

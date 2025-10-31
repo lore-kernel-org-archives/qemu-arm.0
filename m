@@ -4,90 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 671C0CCFA02
-	for <qemu-arm@archiver.kernel.org>; Fri, 31 Oct 2025 18:30:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07CE0CCFA02
+	for <qemu-arm@archiver.kernel.org>; Fri, 31 Oct 2025 21:11:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vEttN-0002eF-RI; Fri, 31 Oct 2025 14:30:31 -0400
+	id 1vEwOv-0007AO-1a; Fri, 31 Oct 2025 17:11:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vEttK-0002dx-VA
- for qemu-arm@nongnu.org; Fri, 31 Oct 2025 14:30:27 -0400
-Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vEttF-0005oI-SJ
- for qemu-arm@nongnu.org; Fri, 31 Oct 2025 14:30:26 -0400
-Received: by mail-yx1-xb134.google.com with SMTP id
- 956f58d0204a3-63f5c80eebdso2957548d50.0
- for <qemu-arm@nongnu.org>; Fri, 31 Oct 2025 11:30:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761935413; x=1762540213; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Yce9kG3WCCPS7KgQ5TmpoUJOI415Pn1nKPG8ztlcxKU=;
- b=RzE0lHa33TiAZY4oAOug69Ts+AOJdr6q0N9SA8vdNgwErYbAmgA161l1vs+MADkOmy
- +TXJLGgEYOkGu+1ICgVUcu2zBRlTzoxu5vl5qQmbBBZl6a9cSZydO8utIXTmtlysWwPE
- 6HMkpssmvAYSlTBbQFIRagohORucC2nTAZPIpgPDofbyBYv47cGzRqcoPe+XFbiotKOd
- 7GuBg6zGJwyHmCszbE0wNImJ8gqJj7nKGRCXCjDicglVh11mDaXK7o02Il8HFIGZecWo
- 8RGvY+DaMIITFljhWCDmuGxM86BYyMP8CMcouslCdPQbvRetLsD7pD3Iiw6hOb9tItc2
- ao/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761935413; x=1762540213;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Yce9kG3WCCPS7KgQ5TmpoUJOI415Pn1nKPG8ztlcxKU=;
- b=GeFB9P0erYcXqS8e8iXbphDbOTlphS0xH1VKEJy1A0LBQFIC6gHPgsAuJN+haKTeF1
- k6ylgfP7fBk+cNsGdKam/jccP9a4GQ8dtvXf3r5GFWAWKzWVyZLC+K6GoFr1bLX7qrAE
- 3hPsZJVhV1is8o+1PIa2nAE7MmnDwWxAZv3bUg0HSTyN4SUf5sjI38gj9OyCKscpk/aE
- iWRC/PLVGDW/u7vPQVtPONbIXyZuvNiGjuODbSr4V31lnsbtESkmxvMS8y3ZcHrQfqpj
- juR3W+b5koRlwKnfmRHH/NIwUxHG6vlJu2uuXzDO1O3Elinak7G60ZpopWqEYF9fr69L
- Jc0w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXXVWO49kf7cM4dymvlTKfZVWE8fae23/WOmp+V6aeOQbS2U3CgjQJqFNmA5DyvNxrgJ3xxcNtNxw==@nongnu.org
-X-Gm-Message-State: AOJu0YxWp8g0RdnxR6um3atu/YLl3mhd+tJa1OrieA2hPBg1M60Hu8rn
- rDAjuv3kh7tcei7adM8zAJZrSnY3wleW5bTpYBCIqqRqKzSK3ZRtZDjEMJH+1tpTa4LxiOElXj/
- FFsNIQEiWkonPhanh7XuW//vqoL4FhCo5WrY43FC4HQ==
-X-Gm-Gg: ASbGncuBMni/vbG+c2YSo/cwVkJkIap3kq1EcVJJp5NaoAn7GYFw4Srmf50Hx7AMvvH
- N5fi7TgW5QZ6Y93iXHAXP2T854fTY8ZNJ/dbQ65LAKWCRNDswXS9WMg05+G6UapamcQsLlRt3Wd
- 1/CyEJ6V/lj+IPek0nHm0FZEE7AAGQo40KpZjmshea5atgC2+yn8lmdc9th69OE1gLs3z89clIA
- vJO6z2C4CPX8D7TKafyCisjcuL0SWPTjD38u/Cl+7BNiY31iAUgCn0ksOEUgRshRuo0JAAr
-X-Google-Smtp-Source: AGHT+IGhMPGWy6khEf0ta92V6QMmBH1G3tDe78XoC+Mhpk4wKdWSy/h5T38n+kwEmoGXQtz55xL7auagtVz2jkej1Uw=
-X-Received: by 2002:a53:c059:0:20b0:63e:22b1:21a0 with SMTP id
- 956f58d0204a3-63f92271f90mr3131274d50.9.1761935413360; Fri, 31 Oct 2025
- 11:30:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1vEwOt-00078G-BV; Fri, 31 Oct 2025 17:11:12 -0400
+Received: from mail-westusazlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c000::1] helo=BYAPR05CU005.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1vEwOk-000104-Ij; Fri, 31 Oct 2025 17:11:10 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=yTrhiSAiXVUGEs76WvWxQbJRvnUMtuQd5DNECDPPScWnIc56YcAraeKDErdKBwGeJ9ATXQ6woywqMV41BY0QIh/QgJ1h3kuKEMW8xIvXLYL+mR7wOmUF1Wi3eR16y5rccEcPBgPEluFm+jXhcOLm1qy+0jhtjVpGU/9+vkU5IORWJGyAyBXKa/iTIRnsNMxyoTietQ+vGUjX6FCZTMbHuo4WcblraGb9UbapK73mM+iaGUXN/eLXv5FjgPD3zqlTQum/YUluS2wZYS86sNOrOJx2jkzr/pjnT7EYUlX2rLAdxUUt3ckLOd/7SZl+mxkJhW67pyNUfVoO0CvzQUBPMA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=EPGLtVt6Uh6JkpMA9nNpKCEcIGHhQedbkd1HRqA/r7M=;
+ b=C+AmL5QcWkVGWbAfUSiI2f64UjlSPaLwdtbFvDr82xtWjY3mHc3lOLjeH+qk/nABPEkH7zfXRo41VWolzPa8lLV3lCajv4afUKbBKd/Td2bPJsfmjVOsIk4j0YUz8+qsGaABb1wObjQ8FblhLL4/Gkx9tmyxNd/XCsFWT7/MyiG3TLXZiZDEsW0QoFhZuWj/A5Z/6RxN2kZnVVK7Wp02SmQqcPB9cuo4k0fiM4SpTKhlHlz5p2vEvBYoX6H5k6oltXSnGoKzXNjr8x7+uLuBPAO/UdaJAAtv/Uoqo5IXQ+Q6O/mXv3YYGXk7mwCXIojQ03rlweHS10Rw/SkjshV3Lw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.232) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=EPGLtVt6Uh6JkpMA9nNpKCEcIGHhQedbkd1HRqA/r7M=;
+ b=Pa5rJ0i5sdTMRzewW5nC2wxw7b3dOImxoJX4vThvpcbDO6tDSN702rxIqV7FETPSWZLEyqp6pmDpoB9O63BHSAMtKg/D4FJqoT+L3fabkeT51PWpx2X6ndsXiBqugC8IE2Rz8wxg0KAiVbbmJtU737NcLO06WOBxt2yS23JqbiIqZSAvW83uVVMq4bTv5VWE4R+reM9Ek1+/wWdcETCtzUvjyI56xYBR7V5v9w1+XVvlv88E2XN4c1960+hYZR2sflj1kgbeZHZwrVP8BNxTxhZouHGVnxeJTzJ7VnggbkUaGrG867nx5dqP8fHtBXmwPlAGr2VMiDcuwndyFiUQGw==
+Received: from BYAPR02CA0038.namprd02.prod.outlook.com (2603:10b6:a03:54::15)
+ by SN7PR12MB6671.namprd12.prod.outlook.com (2603:10b6:806:26d::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.15; Fri, 31 Oct
+ 2025 21:10:50 +0000
+Received: from MWH0EPF000A672F.namprd04.prod.outlook.com
+ (2603:10b6:a03:54:cafe::c9) by BYAPR02CA0038.outlook.office365.com
+ (2603:10b6:a03:54::15) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9275.15 via Frontend Transport; Fri,
+ 31 Oct 2025 21:10:52 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.232) by
+ MWH0EPF000A672F.mail.protection.outlook.com (10.167.249.21) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9275.10 via Frontend Transport; Fri, 31 Oct 2025 21:10:50 +0000
+Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
+ (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 31 Oct
+ 2025 14:10:37 -0700
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.20; Fri, 31 Oct 2025 14:10:36 -0700
+Received: from Asurada-Nvidia (10.127.8.13) by mail.nvidia.com
+ (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
+ Transport; Fri, 31 Oct 2025 14:10:36 -0700
+Date: Fri, 31 Oct 2025 14:10:34 -0700
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameer Kolothum <skolothumtho@nvidia.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <jgg@nvidia.com>, <ddutile@redhat.com>,
+ <berrange@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <smostafa@google.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
+ <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>, <kjaju@nvidia.com>
+Subject: Re: [PATCH v5 06/32] hw/arm/smmuv3-accel: Initialize shared system
+ address space
+Message-ID: <aQUlypv8TqmZM0PU@Asurada-Nvidia>
+References: <20251031105005.24618-1-skolothumtho@nvidia.com>
+ <20251031105005.24618-7-skolothumtho@nvidia.com>
 MIME-Version: 1.0
-References: <20251029142311.2986-1-shentey@gmail.com>
- <CAFEAcA-CGQ2JwDoBVZNhQyBMNKXbZsy2Ds+=m0MAPq0hrsWHhA@mail.gmail.com>
- <CAFEAcA_sbvMEJ-oTxTYOutgUrH0iapNcJrsZd3=Ov6wNn-NE3w@mail.gmail.com>
- <a7f5d348-1243-4c52-8dc1-66e2c3da40ae@linaro.org>
-In-Reply-To: <a7f5d348-1243-4c52-8dc1-66e2c3da40ae@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 31 Oct 2025 18:30:02 +0000
-X-Gm-Features: AWmQ_bmyzSqXOjI_5lqTovyn34HNCDRzT95MEicduE6UtrcoGug9An2nTPSNN2g
-Message-ID: <CAFEAcA8+=_8peJR37xoM4zarUu9cy+56rOkyF7iONFb866Ebtg@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] KVM Support for imx8mp-evk Machine
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20251031105005.24618-7-skolothumtho@nvidia.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MWH0EPF000A672F:EE_|SN7PR12MB6671:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4e2c70ba-3e72-4654-8dac-08de18c1f842
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|82310400026|36860700013|376014|7416014|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Jss3jtMVFZg/4LS1CnECgUFY2TxPJnKcbQmmvdXPsQuCpfQwDZgk9uytnxvd?=
+ =?us-ascii?Q?pC1m2JsMfzt/EYN5+V3uIu7zeXcS42OqrSmtSdBiyFwSM4OxmA5e/6Hh96lN?=
+ =?us-ascii?Q?KOsNsm3sg6wP1vtGOofcE/gxcRYvcwOT2vP7mVZv1STSQ4kIjqtrFcTm2a76?=
+ =?us-ascii?Q?JAWnExVgQJ8V4oEZ7atiGVDD7ZWfAFJHAvFGTims3IcSU4gVUjtztgWOvXuo?=
+ =?us-ascii?Q?/cRNIbQihM9DsZ1051XhyLHuDCUawf1aZKoZvnUW7QQsYR7kNPypi2KuWSH7?=
+ =?us-ascii?Q?M3iWqZP7/can0LP5A9N1Y/QXbP3Iws9CLPYpEUCOt1TjxbfXNFWPN0hfq+iI?=
+ =?us-ascii?Q?S+ztcFUAvwNOQA36uWw+uvURysrWGzoN4nSlcdI5TbVBab9yaVTpXvb6ZN9O?=
+ =?us-ascii?Q?1KnbEwqFKOGx6Tsr7ZF45x4jlIB2JvDPe6JbQQURkLzPSDuPHKdQJIXbjN0A?=
+ =?us-ascii?Q?kLFUlvQK+VE4H+rliOYX9diU8ub4NSJo1vPc2vz3N0t7+KHLDrfJgbHLZqPd?=
+ =?us-ascii?Q?Z0j/4xIp2RfIilMd8F0tM0hFjsyKeyo84LWgRrLpeeKZSoH9k/RTO41/QQpa?=
+ =?us-ascii?Q?jiku7IOTsM+aY9B+VUIOTcfc7MC+Lzkvo4SCFf2aKy9rYMgnbKLzIaOyAOzT?=
+ =?us-ascii?Q?1Q/lmdVyb//eqE2OsOBPMzvCi5srgAnKBp42MuioMMGJSmZGbJZu40o0j28G?=
+ =?us-ascii?Q?iwX8pSn+cU2P/h411cOu3tzATBarO96WNVDSy+RDelR6czWAc0URwNZc7jxE?=
+ =?us-ascii?Q?d04TVwJkQgu1WJow32H8vWHaKxfMaLFOobtp9QogkAXotl3BNwxadS6wPku2?=
+ =?us-ascii?Q?3TzXr7ynHODecvojgv+cHi8RFM09F5tl0GjFKl8EqoW0wHPNLQxaqvX1WRdJ?=
+ =?us-ascii?Q?jJAn9IiioI7RZtjdeO/f2QKzzsJrMkoYzYU1xDmm+sEeaeDZbcVraoKoqR5q?=
+ =?us-ascii?Q?G/a81r+5ibvcDu29/ygddABQ4S0r5ZktNlMw/IzJsfdoJwwpMTLRoZf5aFVt?=
+ =?us-ascii?Q?yNGUMITOeWBjifn6hzGYGyVuEMQS0cDstnYAv79KHqgNGzO2vHkpQH9cFdzM?=
+ =?us-ascii?Q?EeaeU2texMCRkVoE27G0xu8ztzdiXaelOhYdgign4RPtqze56urj+Y+pRNsR?=
+ =?us-ascii?Q?hisMg/bTUcvqwyds4ebmri43kXEvOzPoGS0JUv83i+azqU/lqWmEdSQH6GKg?=
+ =?us-ascii?Q?Qs0ATBpr9Ac8F2hxPU4sPRaZE+WCGVzovbHxdsLwfhUzU0l92AoZaoEoKw1P?=
+ =?us-ascii?Q?R05X1AsE5cSfZrUpHCdOPKiXv7u6Sws7A6HzrXxuIJHF2aJ4X4XASMP8BrVA?=
+ =?us-ascii?Q?+CBBOI78Dn1JmDJCkDFShehWuinMYmHHTnUEgmRPcBQvJxzGfQMHlQyl5zeO?=
+ =?us-ascii?Q?bzYot3vNIwX3KeWI6iBVdful3ifYljsASJBhoSP+LmMwowr36XhBFBlrv/yI?=
+ =?us-ascii?Q?HJoKGFYxfzigwF47MCXjyTwe6lWrMbKD65OKF7qcthQUmndkyULRymtouj62?=
+ =?us-ascii?Q?IAFuSmxBSIdDN3Vw+odMul5bmmZRSuz2adwfy6j5LwASwmsE7PK94vV6it/U?=
+ =?us-ascii?Q?oLkh5cV9H+h0KmH7aWo=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(82310400026)(36860700013)(376014)(7416014)(1800799024); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Oct 2025 21:10:50.4011 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4e2c70ba-3e72-4654-8dac-08de18c1f842
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: MWH0EPF000A672F.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB6671
+Received-SPF: permerror client-ip=2a01:111:f403:c000::1;
+ envelope-from=nicolinc@nvidia.com;
+ helo=BYAPR05CU005.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,109 +161,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 31 Oct 2025 at 18:18, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> On 31/10/25 18:12, Peter Maydell wrote:
-> > On Fri, 31 Oct 2025 at 16:57, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
-> >>
-> >> On Wed, 29 Oct 2025 at 14:23, Bernhard Beschow <shentey@gmail.com> wro=
-te:
-> >>>
-> >>> This series adds KVM support to the imx8mp-evk machine, allowing it t=
-o run
-> >>> guests with KVM acceleration. Inspiration was taken from the virt mac=
-hine. This
-> >>> required a device tree quirk for the guest clock to be kept in sync w=
-ith the
-> >>> host. Without this quirk the guest's clock would advance with factor =
-<host
-> >>> system counter> / 8Mhz.
-> >>>
-> >>> Testing done:
-> >>> * Run `qemu-system-aarch64 -M imx8mp-evk -accel kvm -smp 4` under
-> >>>    `qemu-system-aarch64 -M virt,secure=3Don,virtualization=3Don,gic-v=
-ersion=3D4 \
-> >>>    -cpu cortex-a72 -smp 4 -accel tcg` and `qemu-system-aarch64 -M imx=
-8mp-evk \
-> >>>    -accel tcg -smp 4". Observe that the `date` command reflects the h=
-ost's date.
-> >>>
-> >>> v2:
-> >>> * Mention various tradeoffs in the board documentation (Peter)
-> >>> * Accommodate for single-binary (Peter, Pierrick) by having CPU defau=
-lts
-> >>>
-> >>> Bernhard Beschow (2):
-> >>>    hw/arm/imx8mp-evk: Add KVM support
-> >>>    hw/arm/imx8mp-evk: Fix guest time in KVM mode
-> >>
-> >> Thanks, I've applied this to target-arm.next.
-> >
-> > ...I've had to un-queue it, as it breaks "make check":
-> >
-> > test:         qemu:qtest+qtest-aarch64 / qtest-aarch64/device-introspec=
-t-test
-> > start time:   17:06:52
-> > duration:     3.70s
-> > result:       killed by signal 6 SIGABRT
-> > command:      MALLOC_PERTURB_=3D155
-> > UBSAN_OPTIONS=3Dhalt_on_error=3D1:abort_on_error=3D1:print_summary=3D1:=
-print_stacktrace=3D1
-> > PYTHON=3D/data_nvme1n1/linaro/qemu-from-laptop/qemu/build/arm-clang/pyv=
-env/bin/python3
-> > G_TEST_DBUS_DAEMON=3D/data_nvme1n1/linaro/qemu-from-laptop/qemu/tests/d=
-bus-vmstate-daemon.sh
-> > RUST_BACKTRACE=3D1
-> > MSAN_OPTIONS=3Dhalt_on_error=3D1:abort_on_error=3D1:print_summary=3D1:p=
-rint_stacktrace=3D1
-> > QTEST_QEMU_BINARY=3D./qemu-system-aarch64
-> > QTEST_QEMU_STORAGE_DAEMON_BINARY=3D./storage-daemon/qemu-storage-daemon
-> > ASAN_OPTIONS=3Dhalt_on_error=3D1:abort_on_error=3D1:print_summary=3D1
-> > QTEST_QEMU_IMG=3D./qemu-img MESON_TEST_ITERATION=3D1
-> > /data_nvme1n1/linaro/qemu-from-laptop/qemu/build/arm-clang/tests/qtest/=
-device-introspect-test
-> > --tap -k
-> > ----------------------------------- stdout ----------------------------=
--------
-> > [...]
-> > # Testing device 'fsl-imx8mp'
-> > ----------------------------------- stderr ----------------------------=
--------
-> > unknown type '(null)'
-> > Broken pipe
-> > ../../tests/qtest/libqtest.c:199: kill_qemu() tried to terminate QEMU
-> > process but encountered exit status 1 (expected 0)
-> >
-> >
-> > I think the problem is that you're trying to use ms->cpu_type
-> > in the fsl_imx8mp_init() function. This doesn't work in the
-> > device-introspect-test setup, because it is just instantiating
-> > each device for test, not running a full machine.
-> >
-> > I think the way we usually avoid this is that if an SoC
-> > device object needs to know what CPU type to instantiate
-> > it has a QOM property, and the board model tells it.
-> > (Annoyingly this then means the CPU instantiation has to
-> > move into the realize method where the property value is known.)
->
-> Correct, this is the same issue I tried to address with the Raspi
-> machines and I noted your comments:
-> https://lore.kernel.org/qemu-devel/CAFEAcA961WKB4fxwAS0WHXXKwYEO7TnmovD4z=
--BPGehr6sxBQw@mail.gmail.com/
+On Fri, Oct 31, 2025 at 10:49:39AM +0000, Shameer Kolothum wrote:
+> To support accelerated SMMUv3 instances, introduce a shared system-wide
+> AddressSpace (shared_as_sysmem) that aliases the global system memory.
+> This shared AddressSpace will be used in a subsequent patch for all
+> vfio-pci devices behind all accelerated SMMUv3 instances within a VM.
+> 
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 
-I think it's different, because for the raspi case the SoC
-object is trying to create a CPU type that it can't:
-  unknown type 'cortex-a72-arm-cpu'
-(because it's the arm device-introspect-test and that CPU
-is an aarch64 one)
-whereas for this one we are in the aarch64 test, but trying to
-use a NULL pointer as our type string:
-  unknown type '(null)'
+Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
 
-Single binary vs compile-everything is probably a red herring here.
+> +/*
+> + * The root region aliases the global system memory, and shared_as_sysmem
+> + * provides a shared Address Space referencing it. This Address Space is used
+> + * by all vfio-pci devices behind all accelerated SMMUv3 instances within a VM.
+> + */
+> +MemoryRegion root;
+> +MemoryRegion sysmem;
+> +static AddressSpace *shared_as_sysmem;
 
-thanks
--- PMM
+static MemoryRegion root, sysmem; ?
 

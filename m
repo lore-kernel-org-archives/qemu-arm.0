@@ -4,174 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62F5BCCF9EB
-	for <qemu-arm@archiver.kernel.org>; Fri, 31 Oct 2025 06:46:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53F3ACCF9EE
+	for <qemu-arm@archiver.kernel.org>; Fri, 31 Oct 2025 06:49:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vEitL-0004QI-Re; Fri, 31 Oct 2025 02:45:44 -0400
+	id 1vEix0-00010j-3Y; Fri, 31 Oct 2025 02:49:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vEitK-0004Pq-Bj; Fri, 31 Oct 2025 02:45:42 -0400
-Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1vEiws-0000IS-CW
+ for qemu-arm@nongnu.org; Fri, 31 Oct 2025 02:49:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vEitC-0003Wo-A4; Fri, 31 Oct 2025 02:45:41 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=N28J2O+EhQdEkxfSZccGciA6wQ+EI1AlABatTR3lmKRWStxX1O8ow4YQG1DLvmMDdo3RVTcS+1RW0Mu9mirTIdk726xtgNaWs+f4vfHgJN1kv/h1WUmcBOYXnMA377VIBfzoxrwU3tMgwVYOEEX0FesU7SNw3rvBBt2L66pSJmIcnesOaB0rU9UngaoTOxg9LbLclBU/9/wZEymMQ+DFPGsKtDPJm0CdXeio1CWyUi91WfqTfiHjEd2449+LDTIpZsWs9m18qHzkzHdbf06y7GjO8oNFOIc8YTomiWNIb14dlyFEZOOFtQx676+TdUhKe5Rm33Msha/vLm5sbMrKwA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zaAbDb4eLXd5yCEP+s+4aYfo9q9wSyIlO+kYyuL7QRY=;
- b=jdLK2X/hiDGqxdM7iDepUcIeVdt8/mWmCwr9ws7yXuT8C3VeyffLzvfRSQu/oOqWc3tyYhQ996Oy2s6Q6Kzo08/aNgx9frqhQorHOLbF625ur9fCQwOBG7uPlWyhN10NWT0n71gpW9X7S84In/MlSgXqkQ/qp39n2+rSfkxnFp1fnJBsd6xT0hfcMOSRTt2xbz+TENG5PEJd9JS07sO6EVTDTnOp36cwOCg/DNu2BTKjHPKE4ZEuK+/KJUWhXMFbal93oq1Finr5kuA4EJCv0H3o5Q0mWvi6MUZFHd1n16skC/2DoQHdVHfoEQ9ui5QKUpk4WaHEzM6h9t6pd4KRbA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zaAbDb4eLXd5yCEP+s+4aYfo9q9wSyIlO+kYyuL7QRY=;
- b=rKDuZDgGZGxMDxKw18M1OxARyqkd1DcqMYP5KHV8Rxix6YTeixcUvO563pQxp5ODcTDXCRBvnkKR+aYJQltMffaWZ8JKzIoCfGdiofTJvfXGcbYHKHiQD8dZVJWuCIq3T20CcI7LKm0e9SR4xhI8rw+WK5OzCZUCU7c+JB5jTAw5KZ/dQd+5w2a/iThiVQp2Im2YLpz9d5OihOakRGUStRlZRMTqr4kQVkwuI3Qs+WVM1ReoZCOJcicXRH+xGUBEUNgyX5jN4Kpfy3cvwlFPkUYSZ7o/UXoWNB2lkoau2llCbrVKtmZ0LWixsJzP42lKTFVB0jO2lqoWKTV/T/3yKg==
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
- by TY0PR06MB5442.apcprd06.prod.outlook.com (2603:1096:400:31e::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.15; Fri, 31 Oct
- 2025 06:45:20 +0000
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::b420:4392:6eb0:91e5]) by TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::b420:4392:6eb0:91e5%3]) with mapi id 15.20.9253.017; Fri, 31 Oct 2025
- 06:45:20 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
-Subject: RE: [SPAM] [PATCH v1 03/13] hw/arm/aspeed: Make create_pca9552()
- globally accessible for reuse
-Thread-Topic: [SPAM] [PATCH v1 03/13] hw/arm/aspeed: Make create_pca9552()
- globally accessible for reuse
-Thread-Index: AQHcRAQRFYH8ewlI4UWlZk+HTMDL2LTZZWaAgAJ1LvA=
-Date: Fri, 31 Oct 2025 06:45:20 +0000
-Message-ID: <TYPPR06MB82063447974895D3C4C7703CFCF8A@TYPPR06MB8206.apcprd06.prod.outlook.com>
-References: <20251023100150.295370-1-jamin_lin@aspeedtech.com>
- <20251023100150.295370-4-jamin_lin@aspeedtech.com>
- <b622dd42-1e36-453e-954f-c2aa07cb5d1a@kaod.org>
-In-Reply-To: <b622dd42-1e36-453e-954f-c2aa07cb5d1a@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|TY0PR06MB5442:EE_
-x-ms-office365-filtering-correlation-id: 3468b237-c9e7-46cb-ffcd-08de18490f45
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|1800799024|376014|38070700021|217643003; 
-x-microsoft-antispam-message-info: =?utf-8?B?K29ZT3N5akp5VlBza1ExamgraGRiQ0o2Q243NGVaNHoxMkZ5Rjg4dHJXb2lZ?=
- =?utf-8?B?OFRWRmpGRktZR2FZWHZpbjRDcEUzQmJmLytiM1R0YnBzM1JNSkRCYXl0QnY2?=
- =?utf-8?B?T2dwWnhZaXAwQmJzMlJYczZjQ3h2MW5sTkk2VURVMkwyNHB6SUtYVnRZa3NS?=
- =?utf-8?B?OC82NVpEY3p2Ynd5NTlLcjFvRGtLeU1BTW4ydzgzb3Y1bnUxaitNbmtFbGkv?=
- =?utf-8?B?ZnVmNDZnUjg4TEdFOUZidnV1RUpNUVBMeUdNcXV3T0N2SDFGRGFuT1pmOWw0?=
- =?utf-8?B?RGVueXFzeXFxeXoyMEpTL3F0blVCOWExNHRDNWxBUWV2SkdlZEFsQm84OXdZ?=
- =?utf-8?B?WGUwaWdNQzdqNVQzZ0twQUxBZWZtZlU4QzdxWjJhdkVRWWtZSElyelkzMnlE?=
- =?utf-8?B?R3hRN0hXbU5UQkFJWklTWjlpa0VBQ2FIU0FsR2laUGxDZnFjWGVwSGthMUVz?=
- =?utf-8?B?Sy9FeUcvbmdnME9SQWd2dVVlL3Z4KzZRV29TRnJ2VVArY25KZDcvb0s2Q20y?=
- =?utf-8?B?M0kxWGFISjVKUjV5Vk1wNVp0NmQ1aGM5dURXaFc4L0k3ZWlhUUJFY2Q5NndJ?=
- =?utf-8?B?OVllYjA0NG1IUTRTUVNDT3B2Qy9TdlpHWmNtcVJoR08zYzBLLzhiTlNKbnN3?=
- =?utf-8?B?eWMwU0l3ZDFoY2g4ZEdUY1o2WGhGWldNL25VN0ZhRGRDc2hnQjQwRG1OQWNJ?=
- =?utf-8?B?VW5Kb0kyUWJYcHpjN3Q0Z3FnVmUxRW5nOXUzN0VGY09yWXZtTWpLT0ttcDBI?=
- =?utf-8?B?VDNCQ21nMzNnbTNMYm5VSXBZc01xVmcxN3IyRXVPRXZCRmhQNzVSS1NGWDlh?=
- =?utf-8?B?RmdyRmEwRS9sOS9mREwxMXoxSGtpOUlpbUI4eEFoV0NvYldsVnZqcHU3SHVI?=
- =?utf-8?B?aWkxNWFNclVKakV5Qmx0RjVBOE9zcjFjSmlncjdpOHdsVFUwNDRUd2xuYUVT?=
- =?utf-8?B?UXpHc01ZNVNrUmx2SDllU1E5aG9qWGxOR1JyOWwyMGI1eWxmdVN2eUtITlRr?=
- =?utf-8?B?SDY2R0o0ZXJOdHpoMTlsZzExbHdQNUtqQ1BrYm1mS2JnVksvK1RvY1libWRi?=
- =?utf-8?B?VGNZcGk2SVFoVElLVkkzZGNXeHhIWHRGOVJySVhZblpBQ1VEMmF4a3E5UU85?=
- =?utf-8?B?YW1SRDl3NVliL09tSVBKM09ZL3l0WThTSHVHOEwwRytEaUNkMkNQa0RkQ3FB?=
- =?utf-8?B?QTZGRmJ4WExieG5PeXBFQmM1YTJQMFNCcGc2bWpMQldRalNDREtRSDlVVEtE?=
- =?utf-8?B?SDhJRVNXRWxnWVN6TGFxNEtnb1pvdTJuclRiUmxwelhNc28zN1owbVRoVDU3?=
- =?utf-8?B?VGxRRFFFVEhsMTRESFp5dnlJV3pKU1ZZQjFNem0relJzWmJCK1I5NXhpRTFT?=
- =?utf-8?B?T2kyUkRKNnpJbVFnaFJtTFRObzZkYitKMThxbDdYaGErbjRucW1BZFVQalp1?=
- =?utf-8?B?QmpPZWtDS29ZQk9ZYm1QZWI2M1IvMk1BckY4b1BGTlJvdjlUb2dtNEJSWGQr?=
- =?utf-8?B?VDNuaWJzVjVGK2IwR2dYM3RvMSs5ZzNXMDZrWi9nbUFKaTJJZHJaRnZoOHVR?=
- =?utf-8?B?cTBtdHNhRE5Meml6bXcxR0Z0M3hnN0xOL3BxL21sd2xEWHRnVk9NMGFlODBP?=
- =?utf-8?B?MG5kMWs3TC9EU0kvRm9kMlVBeDZocDlNcGRXc3JzN2VZWCt4M2xWMXI1UEVx?=
- =?utf-8?B?VXJNek0yWUEvVGcyeHQvZDVaMmd2UnowYVpxVUkvL1U0OTFvQmdqakFwcE4v?=
- =?utf-8?B?T3hydkhzUGc0OFZoK01Qcy9QRy8rejhBV0RPekVNaWZYNFdmUFlCVTJ3ZE9Y?=
- =?utf-8?B?WWFxbzhlMndKaktvN2JWZFY5WDZrUTUxZ0hkbWE5N3FmWFJiNXB0Unh6dzFy?=
- =?utf-8?B?RmVBc3BSc1ozbXZIMEdLU2VnR0E1bEVNbmZEYkZvSC9peGV3NXlRclhuVlpy?=
- =?utf-8?B?YnRnQWRMQVNieTJUWHMreHBaMllHMUdNeVNjWlo4ZitWOXJpRzVpTEd6RzFp?=
- =?utf-8?B?R1pvQU9MY3U1TC8wL3p0c1kzZ3dIbVNFNFBNNVRkUGZUem9WUHFYbkp6R01S?=
- =?utf-8?B?TDh2NG5XV0FTbnhaNDdlalQxUXdtbUJ6Ujl6UT09?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE; SFS:(13230040)(366016)(1800799024)(376014)(38070700021)(217643003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?TW1nZGQ0ZjEveXVlNkwva0MyaDRMWFNJby81alhhL2xldTZscmNuRUxmWDJB?=
- =?utf-8?B?c21TdmJOK0R3RVRFYjFqRWNSL01IVytjenZ6MzR1cXdVekdJeDVLQnFoMTNZ?=
- =?utf-8?B?WVBRbmxsc2pJaUVlcGNBUXozcDVUNEtGazBuQy9rdnlJMytnLzd4NVNZZms3?=
- =?utf-8?B?SkFvcUlDUXhqc3lxSzFKeEtmcktCdG1YT1RzT0w1M1lpanJXUHhaZWhNRUll?=
- =?utf-8?B?dzd4UkRsaTA3M1NiR3FnWEMyTjZITURORnQ3NERmcUp2dmRRbDNOYTZGV1Ra?=
- =?utf-8?B?dGF4bUZQTFNDUVJYc0pqL1JCS1RPdGdvNHNUR0t2Tlp0YTFLZCtaSE9pOElj?=
- =?utf-8?B?S3FxYjc4My9Hem8zbFZsSzB3YTBUamxJdkl4ckIwZ2NuaUJZMnRzT04wVTJE?=
- =?utf-8?B?cWZ0UjcyLzd0ZENvRmMrY1FpZWtyeFlvaU0ydzdNUEV6QStoTGlJTmQ4Z2o1?=
- =?utf-8?B?dTdRd0I3WklFaCtPQjM1azBvaW5ZcndsU3J3ak5rUFcxc0xHY1hyeXNQRFNk?=
- =?utf-8?B?azNQQitqb1hjUkVsNklNY0sxdXRaeE5oQUNTN2dMWFRka1lZeFhxeGIyK2M4?=
- =?utf-8?B?R29xcXZlWXhRN3lhNUdST1BBLzI2RFk4N1dwbk83d21WL3lJNGJHMTRtbHVZ?=
- =?utf-8?B?SFF3cVg5WjlmUWh2UHBpeHBDbTBzVnMwaFpaSWZmdXVBYWErUXpXN1pwbDQ1?=
- =?utf-8?B?c0xkR3JYL1c1dmNZT1JrNkFqSDVWeUN0bVQvVmphL2J6UXVCZUFwY0dXeUda?=
- =?utf-8?B?TTRldVVhKzVXQUxEb2tvUmJ3Wktmcy9YVlh1bFNGNWFOVnIzWWdDczdsaWVW?=
- =?utf-8?B?dVFVdjlHN05qUFZXKzZLc29MclVoWFVDenVWTklVV3IxRTQ2WGQreFlzMHNF?=
- =?utf-8?B?OXJsUTllbUQ4b0FsMU9zWWhHbTVBNVoxWG1tdGNOeGVYOGs1SWNvL1JGclpJ?=
- =?utf-8?B?Y1FHYXVoU2FzWk5CVjJzK0hselNEVDBwclgrYTluL0RaMUV2QVlBb3J6K1FV?=
- =?utf-8?B?NlhPTklSNzVnU0ZOUmtQaW9DN0FqSTlMZnpoY25leThUeFNOOE1OYmdNR01k?=
- =?utf-8?B?bWhwK1RVZHJzQldTNmZtblZMdDZOakNSdHV4REllWjVvTlYzL0xzc0NXL29G?=
- =?utf-8?B?UWFOTkJZSlhnMmJ0Z1BDVm8yVnptWmp3blR4QVR4c0F6Nm55Zm9NeHFYN1ZE?=
- =?utf-8?B?ZFhLKzFNWjZVTmdqMVdnY1luUXM4TDU2TjljVi9TeElaMVN1dndMSGZkZTBY?=
- =?utf-8?B?RHZEdzRxZTBvZ1E2QkVpTlQxUnAzSDAvcDI1SE9jYUFZNU4rdTZwem9KM2RH?=
- =?utf-8?B?VFFZaitTa1prV1RHT3JBVzRjSTQ4c2l4QWpQUkdXaFpoMmRkclR4Q0hOZjVl?=
- =?utf-8?B?aytPc1lqc2R6YTQxVTNXajVPRmJROGJtc0FveTBrWklsaDVjV2lHTlp1TDNJ?=
- =?utf-8?B?RHdVRHFSUXpQemxQMXY1b3RDblFtSVBYMkw0MFdVL2VXSEVQeUlVbCtHWWdq?=
- =?utf-8?B?c1NyNWwyMkpzdndna0Vnc1NQalBJcXptYVBWcW4wZkExVzh1bzlhWkVBZ0ZX?=
- =?utf-8?B?UHBwUS9WR3h3Y2dYc2dzeCtJdEdpMmQyRTU1SjBVRXRPOVpwOUZCUUdtQnNh?=
- =?utf-8?B?OWJSRElwVi9DdVlvczBVLzZKMUlCM0VTa3ArYVduNTEzQjNlVFloUFpqaVJP?=
- =?utf-8?B?bkN0NXA1c0VTVUs2ZXRYeURPNzduQjd0ZTRsbVp4aUdqQ3d1NGphaWpISmY2?=
- =?utf-8?B?TU1kSzlhMlovc2R1N0dpWFZPaUJwYnhSYWw4RTFhSmcvRWFHU2hHZklqVWhp?=
- =?utf-8?B?ZXBZcmhOT0lCUHBJMHRpeUNTck1OTUlKeFhxNzBQYVp3aFQ0V25OVmRCL0U0?=
- =?utf-8?B?LzQ1WnpxbTY2NjE4Z1pOOUZ5eGE1aGtpOFFaUjVRZkVZR3FUNDlvUkM2aFN4?=
- =?utf-8?B?Q0JSOEdRQi9mSEk2Q3Z5TlFLbjc4MS8xRGxGV1ZLSWFxNjBoYy93N05QNTNl?=
- =?utf-8?B?amQveDRjV3p1Nmo0OHpQOFJ3Q2RoQ0tkY0JBQllmSy9mZ3RWYzdwcGtodXNo?=
- =?utf-8?B?a2pPd3Q5QkJEYXUvcnhRQThVb3VDNVkyK2o5YjhXdDlCb0UzQmt3Sy9WTHI2?=
- =?utf-8?Q?kvzgEE+3gTrdil4HMjRphmjRL?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1vEiwj-0003yW-Le
+ for qemu-arm@nongnu.org; Fri, 31 Oct 2025 02:49:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1761893351;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=BbcjwYUzdo/9wvqYfOowpJlCwXjvUjVjrsTbK4qbdnM=;
+ b=AEK4Qu97dbeQ2gvdtXDl9ISAXfaguVunTxLJx98nd6YilUeoVinzf3+IWDWGl77SWgalag
+ cNkj7ZWxj/pVgZKW+T+aw2WgMbTSPkX8dMrtYsVbXB3KInybjev4hfj+oI8hFbRFSATVvq
+ HaNsSfBPdEWrmlELnWYh4lBFW3kIkFQ=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-340-BsneB1qjMcaLoA0y8Ape_w-1; Fri,
+ 31 Oct 2025 02:49:08 -0400
+X-MC-Unique: BsneB1qjMcaLoA0y8Ape_w-1
+X-Mimecast-MFC-AGG-ID: BsneB1qjMcaLoA0y8Ape_w_1761893346
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A71D11953977; Fri, 31 Oct 2025 06:49:06 +0000 (UTC)
+Received: from localhost (unknown [10.45.242.5])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 2B8751955BE3; Fri, 31 Oct 2025 06:49:04 +0000 (UTC)
+From: marcandre.lureau@redhat.com
+To: qemu-devel@nongnu.org
+Cc: richard.henderson@linaro.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:Xilinx ZynqMP and...)
+Subject: [PULL 23/36] audio: introduce AUD_set_volume_{in,out}_lr()
+Date: Fri, 31 Oct 2025 10:46:16 +0400
+Message-ID: <20251031064631.134651-24-marcandre.lureau@redhat.com>
+In-Reply-To: <20251031064631.134651-1-marcandre.lureau@redhat.com>
+References: <20251031064631.134651-1-marcandre.lureau@redhat.com>
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3468b237-c9e7-46cb-ffcd-08de18490f45
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Oct 2025 06:45:20.0980 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: z+tOm0cXkhZoCMH66db3TtQt+iWHjTXur8EgM589+umvP70bYRmpvh1CoaxBkqQ8Xfyt2tGr+FlO8LgIh3Bj2M5pyT2eqcPLrdHALLppcys=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR06MB5442
-Received-SPF: pass client-ip=2a01:111:f403:c405::7;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=TYDPR03CU002.outbound.protection.outlook.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -187,46 +93,279 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgQ8OpZHJpYw0KDQo+IFN1YmplY3Q6IFJlOiBbU1BBTV0gW1BBVENIIHYxIDAzLzEzXSBody9h
-cm0vYXNwZWVkOiBNYWtlIGNyZWF0ZV9wY2E5NTUyKCkNCj4gZ2xvYmFsbHkgYWNjZXNzaWJsZSBm
-b3IgcmV1c2UNCj4gDQo+IE9uIDEwLzIzLzI1IDEyOjAxLCBKYW1pbiBMaW4gd3JvdGU6DQo+ID4g
-VGhlIGhlbHBlciBmdW5jdGlvbiBjcmVhdGVfcGNhOTU1MigpIGlzIG5vdyBtYWRlIGdsb2JhbGx5
-IHZpc2libGUgc28NCj4gPiBpdCBjYW4gYmUgcmV1c2VkIGJ5IGRpZmZlcmVudCBBc3BlZWQgbWFj
-aGluZSBzb3VyY2UgZmlsZXMuDQo+ID4NCj4gPiBQcmV2aW91c2x5LCB0aGUgZnVuY3Rpb24gd2Fz
-IGRlY2xhcmVkIHN0YXRpYywgbGltaXRpbmcgaXRzIHNjb3BlIHRvDQo+ID4gYXNwZWVkLmMuIFNp
-bmNlIG11bHRpcGxlIEFzcGVlZCBtYWNoaW5lIGltcGxlbWVudGF0aW9ucyB3aWxsIHJlcXVpcmUN
-Cj4gPiBJwrJDIGRldmljZSBpbml0aWFsaXphdGlvbiB1c2luZyBQQ0E5NTUyIEdQSU8gZXhwYW5k
-ZXJzLCB0aGlzIGZ1bmN0aW9uDQo+ID4gaGFzIGJlZW4gcHJvbW90ZWQgdG8gZ2xvYmFsIHZpc2li
-aWxpdHkuDQo+ID4NCj4gPiBUaGlzIGNoYW5nZSBpbXByb3ZlcyBjb2RlIHNoYXJpbmcgYW5kIHJl
-ZHVjZXMgZHVwbGljYXRpb24gYWNyb3NzDQo+ID4gbWFjaGluZS1zcGVjaWZpYyBpbml0aWFsaXph
-dGlvbiBmaWxlcy4NCj4gPg0KPiA+IE5vIGZ1bmN0aW9uYWwgY2hhbmdlcy4NCj4gPg0KPiA+IFNp
-Z25lZC1vZmYtYnk6IEphbWluIExpbiA8amFtaW5fbGluQGFzcGVlZHRlY2guY29tPg0KPiA+IC0t
-LQ0KPiA+ICAgaW5jbHVkZS9ody9hcm0vYXNwZWVkLmggfCAxICsNCj4gPiAgIGh3L2FybS9hc3Bl
-ZWQuYyAgICAgICAgIHwgMiArLQ0KPiA+ICAgMiBmaWxlcyBjaGFuZ2VkLCAyIGluc2VydGlvbnMo
-KyksIDEgZGVsZXRpb24oLSkNCj4gPg0KPiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2h3L2FybS9h
-c3BlZWQuaCBiL2luY2x1ZGUvaHcvYXJtL2FzcGVlZC5oIGluZGV4DQo+ID4gNzc0M2FkMmZiMC4u
-ZDRkNjM5OTZhNiAxMDA2NDQNCj4gPiAtLS0gYS9pbmNsdWRlL2h3L2FybS9hc3BlZWQuaA0KPiA+
-ICsrKyBiL2luY2x1ZGUvaHcvYXJtL2FzcGVlZC5oDQo+ID4gQEAgLTYwLDUgKzYwLDYgQEAgc3Ry
-dWN0IEFzcGVlZE1hY2hpbmVDbGFzcyB7DQo+ID4gICB9Ow0KPiA+DQo+ID4gICB2b2lkIGFzcGVl
-ZF9tYWNoaW5lX2NsYXNzX2luaXRfY3B1c19kZWZhdWx0cyhNYWNoaW5lQ2xhc3MgKm1jKTsNCj4g
-PiArdm9pZCBjcmVhdGVfcGNhOTU1MihBc3BlZWRTb0NTdGF0ZSAqc29jLCBpbnQgYnVzX2lkLCBp
-bnQgYWRkcik7DQo+IA0KPiANCj4gUGxlYXNlIGFkZCBhbiAnYXNwZWVkXycgcHJlZml4LiBXZSBz
-aG91bGQgc3RhcnQgZG9jdW1lbnRpbmcgdGhlIGFzcGVlZA0KPiByb3V0aW5lcyB0b28uDQo+IA0K
-SSB3aWxsIGFkZCB0aGUgYXNwZWVkXyBwcmVmaXggdG8gdGhlIGNvbW1vbiBBUElzLg0KUmVnYXJk
-aW5nIHRoZSBkb2N1bWVudGF0aW9uIG9mIHRoZSBBc3BlZWQgcm91dGluZXMgLSBkbyB5b3UgbWVh
-biBhZGRpbmcgdXNhZ2UgZGVzY3JpcHRpb25zDQphdCB0aGUgYmVnaW5uaW5nIG9mIGVhY2ggZnVu
-Y3Rpb24sIG9yIGNvdWxkIHlvdSBwbGVhc2UgYWR2aXNlIHdoZXJlIHlvdeKAmWQgbGlrZSB0aGVz
-ZSB0byBiZSBhZGRlZD8NCg0KVGhhbmtzLA0KSmFtaW4NCj4gDQo+IFRoYW5rcywNCj4gDQo+IEMu
-DQo+IA0KPiANCj4gDQo+ICAgID4NCj4gPiAgICNlbmRpZg0KPiA+IGRpZmYgLS1naXQgYS9ody9h
-cm0vYXNwZWVkLmMgYi9ody9hcm0vYXNwZWVkLmMgaW5kZXgNCj4gPiA1ZGEyMWE0ZDZhLi4yNjk1
-ZjBjMTFiIDEwMDY0NA0KPiA+IC0tLSBhL2h3L2FybS9hc3BlZWQuYw0KPiA+ICsrKyBiL2h3L2Fy
-bS9hc3BlZWQuYw0KPiA+IEBAIC01MzYsNyArNTM2LDcgQEAgc3RhdGljIHZvaWQNCj4gdGlvZ2Fw
-YXNzX2JtY19pMmNfaW5pdChBc3BlZWRNYWNoaW5lU3RhdGUgKmJtYykNCj4gPiAgICAgICBpMmNf
-c2xhdmVfY3JlYXRlX3NpbXBsZShhc3BlZWRfaTJjX2dldF9idXMoJnNvYy0+aTJjLCA2KSwNCj4g
-InRtcDQyMSIsIDB4NGUpOw0KPiA+ICAgfQ0KPiA+DQo+ID4gLXN0YXRpYyB2b2lkIGNyZWF0ZV9w
-Y2E5NTUyKEFzcGVlZFNvQ1N0YXRlICpzb2MsIGludCBidXNfaWQsIGludCBhZGRyKQ0KPiA+ICt2
-b2lkIGNyZWF0ZV9wY2E5NTUyKEFzcGVlZFNvQ1N0YXRlICpzb2MsIGludCBidXNfaWQsIGludCBh
-ZGRyKQ0KPiA+ICAgew0KPiA+ICAgICAgIGkyY19zbGF2ZV9jcmVhdGVfc2ltcGxlKGFzcGVlZF9p
-MmNfZ2V0X2J1cygmc29jLT5pMmMsIGJ1c19pZCksDQo+ID4gICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgVFlQRV9QQ0E5NTUyLCBhZGRyKTsNCj4gDQoNCg==
+From: Marc-André Lureau <marcandre.lureau@redhat.com>
+
+There are 2 sets of functions since the introduction of multi-channel
+Volume structure: AUD_set_volume_{in,out} and audio_set_volume_{in,out}.
+
+Use the AUD_ prefix for consistency with other audio.c functions. Rename
+the stereo function with "_lr" suffix.
+
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ audio/audio.h         | 21 ++++++++++++++++-----
+ audio/audio.c         | 16 ++--------------
+ hw/audio/ac97.c       |  4 ++--
+ hw/audio/asc.c        |  2 +-
+ hw/audio/hda-codec.c  |  4 ++--
+ hw/audio/lm4549.c     |  2 +-
+ hw/audio/via-ac97.c   |  2 +-
+ hw/audio/virtio-snd.c |  4 ++--
+ hw/audio/wm8750.c     | 12 ++++++------
+ hw/display/xlnx_dp.c  |  2 +-
+ hw/usb/dev-audio.c    |  4 ++--
+ 11 files changed, 36 insertions(+), 37 deletions(-)
+
+diff --git a/audio/audio.h b/audio/audio.h
+index 0af911fd9a..c8515afcd2 100644
+--- a/audio/audio.h
++++ b/audio/audio.h
+@@ -119,9 +119,6 @@ int  AUD_is_active_out (SWVoiceOut *sw);
+ void     AUD_init_time_stamp_out (SWVoiceOut *sw, QEMUAudioTimeStamp *ts);
+ uint64_t AUD_get_elapsed_usec_out (SWVoiceOut *sw, QEMUAudioTimeStamp *ts);
+ 
+-void AUD_set_volume_out (SWVoiceOut *sw, int mute, uint8_t lvol, uint8_t rvol);
+-void AUD_set_volume_in (SWVoiceIn *sw, int mute, uint8_t lvol, uint8_t rvol);
+-
+ #define AUDIO_MAX_CHANNELS 16
+ typedef struct Volume {
+     bool mute;
+@@ -129,8 +126,22 @@ typedef struct Volume {
+     uint8_t vol[AUDIO_MAX_CHANNELS];
+ } Volume;
+ 
+-void audio_set_volume_out(SWVoiceOut *sw, Volume *vol);
+-void audio_set_volume_in(SWVoiceIn *sw, Volume *vol);
++void AUD_set_volume_out(SWVoiceOut *sw, Volume *vol);
++void AUD_set_volume_in(SWVoiceIn *sw, Volume *vol);
++
++static inline void
++AUD_set_volume_out_lr(SWVoiceOut *sw, bool mut, uint8_t lvol, uint8_t rvol) {
++    AUD_set_volume_out(sw, &(Volume) {
++        .mute = mut, .channels = 2, .vol = { lvol, rvol }
++    });
++}
++
++static inline void
++AUD_set_volume_in_lr(SWVoiceIn *sw, bool mut, uint8_t lvol, uint8_t rvol) {
++    AUD_set_volume_in(sw, &(Volume) {
++        .mute = mut, .channels = 2, .vol = { lvol, rvol }
++    });
++}
+ 
+ SWVoiceIn *AUD_open_in (
+     QEMUSoundCard *card,
+diff --git a/audio/audio.c b/audio/audio.c
+index 18bc9188db..8723f4e66e 100644
+--- a/audio/audio.c
++++ b/audio/audio.c
+@@ -1949,13 +1949,7 @@ void AUD_del_capture (CaptureVoiceOut *cap, void *cb_opaque)
+     }
+ }
+ 
+-void AUD_set_volume_out (SWVoiceOut *sw, int mute, uint8_t lvol, uint8_t rvol)
+-{
+-    Volume vol = { .mute = mute, .channels = 2, .vol = { lvol, rvol } };
+-    audio_set_volume_out(sw, &vol);
+-}
+-
+-void audio_set_volume_out(SWVoiceOut *sw, Volume *vol)
++void AUD_set_volume_out(SWVoiceOut *sw, Volume *vol)
+ {
+     if (sw) {
+         HWVoiceOut *hw = sw->hw;
+@@ -1971,13 +1965,7 @@ void audio_set_volume_out(SWVoiceOut *sw, Volume *vol)
+     }
+ }
+ 
+-void AUD_set_volume_in (SWVoiceIn *sw, int mute, uint8_t lvol, uint8_t rvol)
+-{
+-    Volume vol = { .mute = mute, .channels = 2, .vol = { lvol, rvol } };
+-    audio_set_volume_in(sw, &vol);
+-}
+-
+-void audio_set_volume_in(SWVoiceIn *sw, Volume *vol)
++void AUD_set_volume_in(SWVoiceIn *sw, Volume *vol)
+ {
+     if (sw) {
+         HWVoiceIn *hw = sw->hw;
+diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
+index 6b9013ebb8..c3e5f9c8bb 100644
+--- a/hw/audio/ac97.c
++++ b/hw/audio/ac97.c
+@@ -416,7 +416,7 @@ static void update_combined_volume_out(AC97LinkState *s)
+     lvol = (lvol * plvol) / 255;
+     rvol = (rvol * prvol) / 255;
+ 
+-    AUD_set_volume_out(s->voice_po, mute, lvol, rvol);
++    AUD_set_volume_out_lr(s->voice_po, mute, lvol, rvol);
+ }
+ 
+ static void update_volume_in(AC97LinkState *s)
+@@ -427,7 +427,7 @@ static void update_volume_in(AC97LinkState *s)
+     get_volume(mixer_load(s, AC97_Record_Gain_Mute), 0x0f, 0,
+                &mute, &lvol, &rvol);
+ 
+-    AUD_set_volume_in(s->voice_pi, mute, lvol, rvol);
++    AUD_set_volume_in_lr(s->voice_pi, mute, lvol, rvol);
+ }
+ 
+ static void set_volume(AC97LinkState *s, int index, uint32_t val)
+diff --git a/hw/audio/asc.c b/hw/audio/asc.c
+index 41472dc2e3..991316e984 100644
+--- a/hw/audio/asc.c
++++ b/hw/audio/asc.c
+@@ -489,7 +489,7 @@ static void asc_write(void *opaque, hwaddr addr, uint64_t value,
+         {
+             int vol = (value & 0xe0);
+ 
+-            AUD_set_volume_out(s->voice, 0, vol, vol);
++            AUD_set_volume_out_lr(s->voice, 0, vol, vol);
+             break;
+         }
+     }
+diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
+index 66edad280f..cc87557954 100644
+--- a/hw/audio/hda-codec.c
++++ b/hw/audio/hda-codec.c
+@@ -466,9 +466,9 @@ static void hda_audio_set_amp(HDAAudioStream *st)
+         return;
+     }
+     if (st->output) {
+-        AUD_set_volume_out(st->voice.out, muted, left, right);
++        AUD_set_volume_out_lr(st->voice.out, muted, left, right);
+     } else {
+-        AUD_set_volume_in(st->voice.in, muted, left, right);
++        AUD_set_volume_in_lr(st->voice.in, muted, left, right);
+     }
+ }
+ 
+diff --git a/hw/audio/lm4549.c b/hw/audio/lm4549.c
+index a4a77c8dc6..dccbf56068 100644
+--- a/hw/audio/lm4549.c
++++ b/hw/audio/lm4549.c
+@@ -308,7 +308,7 @@ void lm4549_init(lm4549_state *s, lm4549_callback data_req_cb, void* opaque,
+         &as
+     );
+ 
+-    AUD_set_volume_out(s->voice, 0, 255, 255);
++    AUD_set_volume_out_lr(s->voice, 0, 255, 255);
+ 
+     s->voice_is_active = 0;
+ 
+diff --git a/hw/audio/via-ac97.c b/hw/audio/via-ac97.c
+index d5231e1cf2..62341e5600 100644
+--- a/hw/audio/via-ac97.c
++++ b/hw/audio/via-ac97.c
+@@ -53,7 +53,7 @@ static void codec_volume_set_out(ViaAC97State *s)
+     rvol /= 255;
+     mute = CODEC_REG(s, AC97_Master_Volume_Mute) >> MUTE_SHIFT;
+     mute |= CODEC_REG(s, AC97_PCM_Out_Volume_Mute) >> MUTE_SHIFT;
+-    AUD_set_volume_out(s->vo, mute, lvol, rvol);
++    AUD_set_volume_out_lr(s->vo, mute, lvol, rvol);
+ }
+ 
+ static void codec_reset(ViaAC97State *s)
+diff --git a/hw/audio/virtio-snd.c b/hw/audio/virtio-snd.c
+index eca3319e59..88777977a9 100644
+--- a/hw/audio/virtio-snd.c
++++ b/hw/audio/virtio-snd.c
+@@ -463,7 +463,7 @@ static uint32_t virtio_snd_pcm_prepare(VirtIOSound *s, uint32_t stream_id)
+                                          stream,
+                                          virtio_snd_pcm_out_cb,
+                                          &as);
+-        AUD_set_volume_out(stream->voice.out, 0, 255, 255);
++        AUD_set_volume_out_lr(stream->voice.out, 0, 255, 255);
+     } else {
+         stream->voice.in = AUD_open_in(&s->card,
+                                         stream->voice.in,
+@@ -471,7 +471,7 @@ static uint32_t virtio_snd_pcm_prepare(VirtIOSound *s, uint32_t stream_id)
+                                         stream,
+                                         virtio_snd_pcm_in_cb,
+                                         &as);
+-        AUD_set_volume_in(stream->voice.in, 0, 255, 255);
++        AUD_set_volume_in_lr(stream->voice.in, 0, 255, 255);
+     }
+ 
+     return cpu_to_le32(VIRTIO_SND_S_OK);
+diff --git a/hw/audio/wm8750.c b/hw/audio/wm8750.c
+index 2846b55fe2..7a36c4bd3f 100644
+--- a/hw/audio/wm8750.c
++++ b/hw/audio/wm8750.c
+@@ -145,30 +145,30 @@ static void wm8750_vol_update(WM8750State *s)
+ {
+     /* FIXME: multiply all volumes by s->invol[2], s->invol[3] */
+ 
+-    AUD_set_volume_in(s->adc_voice[0], s->mute,
++    AUD_set_volume_in_lr(s->adc_voice[0], s->mute,
+                     s->inmute[0] ? 0 : WM8750_INVOL_TRANSFORM(s->invol[0]),
+                     s->inmute[1] ? 0 : WM8750_INVOL_TRANSFORM(s->invol[1]));
+-    AUD_set_volume_in(s->adc_voice[1], s->mute,
++    AUD_set_volume_in_lr(s->adc_voice[1], s->mute,
+                     s->inmute[0] ? 0 : WM8750_INVOL_TRANSFORM(s->invol[0]),
+                     s->inmute[1] ? 0 : WM8750_INVOL_TRANSFORM(s->invol[1]));
+-    AUD_set_volume_in(s->adc_voice[2], s->mute,
++    AUD_set_volume_in_lr(s->adc_voice[2], s->mute,
+                     s->inmute[0] ? 0 : WM8750_INVOL_TRANSFORM(s->invol[0]),
+                     s->inmute[1] ? 0 : WM8750_INVOL_TRANSFORM(s->invol[1]));
+ 
+     /* FIXME: multiply all volumes by s->outvol[0], s->outvol[1] */
+ 
+     /* Speaker: LOUT2VOL ROUT2VOL */
+-    AUD_set_volume_out(s->dac_voice[0], s->mute,
++    AUD_set_volume_out_lr(s->dac_voice[0], s->mute,
+                     s->outmute[0] ? 0 : WM8750_OUTVOL_TRANSFORM(s->outvol[4]),
+                     s->outmute[1] ? 0 : WM8750_OUTVOL_TRANSFORM(s->outvol[5]));
+ 
+     /* Headphone: LOUT1VOL ROUT1VOL */
+-    AUD_set_volume_out(s->dac_voice[1], s->mute,
++    AUD_set_volume_out_lr(s->dac_voice[1], s->mute,
+                     s->outmute[0] ? 0 : WM8750_OUTVOL_TRANSFORM(s->outvol[2]),
+                     s->outmute[1] ? 0 : WM8750_OUTVOL_TRANSFORM(s->outvol[3]));
+ 
+     /* MONOOUT: MONOVOL MONOVOL */
+-    AUD_set_volume_out(s->dac_voice[2], s->mute,
++    AUD_set_volume_out_lr(s->dac_voice[2], s->mute,
+                     s->outmute[0] ? 0 : WM8750_OUTVOL_TRANSFORM(s->outvol[6]),
+                     s->outmute[1] ? 0 : WM8750_OUTVOL_TRANSFORM(s->outvol[6]));
+ }
+diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+index ef73e1815f..882ae3c4b4 100644
+--- a/hw/display/xlnx_dp.c
++++ b/hw/display/xlnx_dp.c
+@@ -1334,7 +1334,7 @@ static void xlnx_dp_realize(DeviceState *dev, Error **errp)
+                                            s,
+                                            xlnx_dp_audio_callback,
+                                            &as);
+-    AUD_set_volume_out(s->amixer_output_stream, 0, 255, 255);
++    AUD_set_volume_out_lr(s->amixer_output_stream, 0, 255, 255);
+     xlnx_dp_audio_activate(s);
+     s->vblank = ptimer_init(vblank_hit, s, DP_VBLANK_PTIMER_POLICY);
+     ptimer_transaction_begin(s->vblank);
+diff --git a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
+index 26af709f31..f59e5a53f0 100644
+--- a/hw/usb/dev-audio.c
++++ b/hw/usb/dev-audio.c
+@@ -805,7 +805,7 @@ static int usb_audio_set_control(USBAudioState *s, uint8_t attrib,
+             }
+             fprintf(stderr, "\n");
+         }
+-        audio_set_volume_out(s->out.voice, &s->out.vol);
++        AUD_set_volume_out(s->out.voice, &s->out.vol);
+     }
+ 
+     return ret;
+@@ -981,7 +981,7 @@ static void usb_audio_reinit(USBDevice *dev, unsigned channels)
+ 
+     s->out.voice = AUD_open_out(&s->card, s->out.voice, TYPE_USB_AUDIO,
+                                 s, output_callback, &s->out.as);
+-    audio_set_volume_out(s->out.voice, &s->out.vol);
++    AUD_set_volume_out(s->out.voice, &s->out.vol);
+     AUD_set_active_out(s->out.voice, 0);
+ }
+ 
+-- 
+2.51.1
+
 

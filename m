@@ -4,93 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D97AACCF9FE
-	for <qemu-arm@archiver.kernel.org>; Fri, 31 Oct 2025 13:18:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF35BCCF9FE
+	for <qemu-arm@archiver.kernel.org>; Fri, 31 Oct 2025 13:26:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vEp0v-0000Od-4o; Fri, 31 Oct 2025 09:18:05 -0400
+	id 1vEp90-00038D-S7; Fri, 31 Oct 2025 09:26:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vEp0n-0000No-A4
- for qemu-arm@nongnu.org; Fri, 31 Oct 2025 09:17:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vEp8v-00034e-Qj
+ for qemu-arm@nongnu.org; Fri, 31 Oct 2025 09:26:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vEp0a-0003lj-HI
- for qemu-arm@nongnu.org; Fri, 31 Oct 2025 09:17:44 -0400
+ id 1vEp8j-0005AG-TU
+ for qemu-arm@nongnu.org; Fri, 31 Oct 2025 09:26:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761916649;
+ s=mimecast20190719; t=1761917151;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=k4nZN04g0fpHzGnnakyzUEsMbyKPI2T16hrZiR3jQVA=;
- b=Fb2JMMBP4t3NWJB4W397DIz+KECJl2zNjLLOa8uE30cN6ZFiDzrGTmwdsyS9mJ7XqLXiaB
- fx6vC1aJb3uC1CwVbLo15vwjVn5tWrRptYBRxZFfp0lWcHku/40FxroTrK63t8HxM67vRC
- sAbY6DbgckD6gkGP2LvbCo/GUr1vnn8=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=5A4vcIXrO0+DoGsgFR10gkswUrJvj7BksF5ooRCR8QA=;
+ b=CPp9WQROWCynhBBJ8OqpYsqzG0+yAMovxNFIUe+Yi9zGPQ6OYs1+CXZnAjEX8H+ebSkGpW
+ 1C82IbBO7mv4i9n7JtfCyAvELIKMWhZsZmwtxhhCcSOLoUSxiOOesltTezPih9Ebz4N+yW
+ u/adgd7hQKn2Qyq+/Qm7iDA5JyMbJXg=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-624-cElr8r-kNT2QvjhVuliI5g-1; Fri, 31 Oct 2025 09:17:25 -0400
-X-MC-Unique: cElr8r-kNT2QvjhVuliI5g-1
-X-Mimecast-MFC-AGG-ID: cElr8r-kNT2QvjhVuliI5g_1761916645
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-476b8c02445so19592385e9.1
- for <qemu-arm@nongnu.org>; Fri, 31 Oct 2025 06:17:25 -0700 (PDT)
+ us-mta-575-oLxLMc3CPES6Tw7Q4qs8lQ-1; Fri, 31 Oct 2025 09:25:49 -0400
+X-MC-Unique: oLxLMc3CPES6Tw7Q4qs8lQ-1
+X-Mimecast-MFC-AGG-ID: oLxLMc3CPES6Tw7Q4qs8lQ_1761917148
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4721b4f3afbso7073325e9.0
+ for <qemu-arm@nongnu.org>; Fri, 31 Oct 2025 06:25:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761916644; x=1762521444;
+ d=1e100.net; s=20230601; t=1761917148; x=1762521948;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=k4nZN04g0fpHzGnnakyzUEsMbyKPI2T16hrZiR3jQVA=;
- b=tx2wHf9SyksBE130hkqZJHTeSLov6vh/3611G/6nkkxz0WTYvN0s5oj4C5zfxkVL6i
- 7zTM1ezzZOEhbSJM1JfzcEqQd2wtx5jb5HY0MeiAqtPGiXmsEczs2LhvDf4XxQlHcX9Q
- rswVnOzksUKZEnAuwKx9ojXXZokeB2w9IW2PWYr0+mMDwgobkC6k7G6yVMKiFeYlakhQ
- F2OYHcy0UmnsOwyk6PzEm01tgbR3mnl1zAFkj/yiWN7NlJo8/eZOlgeAp5swCz8mHKYE
- 8dd8zxsL0ZQA570dxaNrlY0o52j6vdJIbF0z/jY4OT0RuO5UC5uojbAbus2Elwcyg7Pu
- uPOQ==
-X-Gm-Message-State: AOJu0YxHPR40AF5VeM02ihMUd7HK61EXGAKIvg93gWvVTHQcFCviF/kB
- dVQKEoRTGdHSND7beRnSOPl2x6wt0I7oz1txT2r5lleHA+J6zIK+9gzfaUC8GsL0DuIbMlqCFa3
- nXAUWK9r/eET1invLhHg/XH7WwlE27Xyg2waXgSWaCJ635Sk7wNzp5Q==
-X-Gm-Gg: ASbGncszS2BluSgXdER8cscV+kzXi8mbh0Bao1lwl4cgwhMwIKlUz3MX8fwb5aiihEG
- fi/y1tBVLzWXtD3fDimg1XRkmxFRbzFDPuOacr0/J1HWVa+UrL+NDN0wCFBDYbdroiJVtkLK0lL
- B2eWkTeIqWvBHQdkfcRGdBdJd5fWUfJhy5XZM1MRFiiGE9hXO3nQgzp5wUUGMMKi5q8So92pLLa
- DzELjBIo43n3pKk0huvAgRjXuiLjYF2s2qEmpT+CzzfEwf6ncCnWR5ELciN0TEtuALVkFoF2njs
- M1uF7EQtoYSKtjxJucNHqjm884bz565S+uBCYujxnChOXKEzhm3SNPqbhGfa212T5A==
-X-Received: by 2002:a05:600c:828f:b0:46e:3d41:6001 with SMTP id
- 5b1f17b1804b1-477308a7b5emr40871095e9.34.1761916644493; 
- Fri, 31 Oct 2025 06:17:24 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHsY3ncpfw8eiQh4KIaiJCPOMuF2F81dtFS+n1DSrptFNRtWHjcGxfDnmVPK0rRJeGLJsxTQQ==
-X-Received: by 2002:a05:600c:828f:b0:46e:3d41:6001 with SMTP id
- 5b1f17b1804b1-477308a7b5emr40870635e9.34.1761916644052; 
- Fri, 31 Oct 2025 06:17:24 -0700 (PDT)
+ bh=5A4vcIXrO0+DoGsgFR10gkswUrJvj7BksF5ooRCR8QA=;
+ b=TsZS0C2wchnRtdCrMF77BiqASvWZdBigdsWf+iOKoaKcX4AHwgN7QK6ZPJSDJSaFA2
+ aoJ/ov55VwlOvYFSVMY7JMhpbtW9eL8I0v0OETqRH7JxWeDNDSMYi3UFTdo5KiG9+r1B
+ zyJNt4jy571MPqRqd0BU2BVd51uj4drwLl9XDVw+7GXsnib+TY5IKMQNbDQpBvaVT6WQ
+ abWAGBfOyeFCbQK9cd6W4N1UiSAth4GijqRp1tLnK8XjdPRDkiZusF6IpyvTkJ4JTYpS
+ lt3sXGdXZaxsK7Z4tm71/iLEt46FDdqZCpOsRBqkkl0mfpypA4518ADCWe2rXkEse1pT
+ te1w==
+X-Gm-Message-State: AOJu0Yxj8UB7W7HRc8+KyD7JlmOcnbGAzS4WToxnvq4hm0WERCuNy+wk
+ 3dzn/Q97KfOj+V+nsrK2LXpgvRDIX/DCw0u8cjo2kwDZ45Yetzosbks6eX+rgknONfWn85NJRc3
+ WcZ0pMaIqzEfrjAms33DprJLfkw2lJpydp866WGoEV9FJD1hHUmN34A==
+X-Gm-Gg: ASbGncu6eEF3zezDmSdXJh25ExJyPuVxRrPScfd4RfDFffplFMtMBgdgVSHqgrDpdDS
+ AfRKA6pgP6XwlyLuoc9e4Fp1c0u50NgXhx/cLPXYtUJwAzCy72acqzfJzvrgz5kAOheN51GXhBz
+ Jh1PAv9a08mbrGkclmQK6a+x3cYePnQadKG7dp53jwKthMUNrBiqgpbgbE9tox5IXeDUYFq8Bh3
+ 2K7jwhgfMdBR81rb8YNpXQMBmgM0U0j7FNajO+ssjvOqzIlLXAd22cJQU/8vPoI0k+P6bf9PnCu
+ 0g6YhICPsSb4hqqMk4aMr4fc+MxzROoDgrQMh0SvPwyb37Mm4AdE15JdQ3f3xJvycw==
+X-Received: by 2002:a05:600c:a0b:b0:476:57b4:72b6 with SMTP id
+ 5b1f17b1804b1-477305a6db5mr38026065e9.8.1761917148395; 
+ Fri, 31 Oct 2025 06:25:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE64A1nYxU+3C6WFnvizMo5GJ9zyOxs5/ZmTCKYp1O6Q4tIVv35LCWO0zuHlCSSEOOxgBluyA==
+X-Received: by 2002:a05:600c:a0b:b0:476:57b4:72b6 with SMTP id
+ 5b1f17b1804b1-477305a6db5mr38025705e9.8.1761917147913; 
+ Fri, 31 Oct 2025 06:25:47 -0700 (PDT)
 Received: from fedora ([85.93.96.130]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4772ff83182sm21996875e9.4.2025.10.31.06.17.22
+ 5b1f17b1804b1-47728aa915asm91132635e9.16.2025.10.31.06.25.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 31 Oct 2025 06:17:23 -0700 (PDT)
-Date: Fri, 31 Oct 2025 14:17:21 +0100
+ Fri, 31 Oct 2025 06:25:47 -0700 (PDT)
+Date: Fri, 31 Oct 2025 14:25:43 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Gavin Shan <gshan@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
  anisinha@redhat.com, gengdongjiu1@gmail.com, peter.maydell@linaro.org,
  pbonzini@redhat.com, mchehab+huawei@kernel.org,
  Jonathan.Cameron@huawei.com, shan.gavin@gmail.com
-Subject: Re: [PATCH RESEND v2 1/3] acpi/ghes: Extend
- acpi_ghes_memory_errors() to support multiple CPERs
-Message-ID: <20251031141721.4d336189@fedora>
-In-Reply-To: <20251007060810.258536-2-gshan@redhat.com>
+Subject: Re: [PATCH RESEND v2 2/3] kvm/arm/kvm: Introduce helper
+ push_ghes_memory_errors()
+Message-ID: <20251031142543.0c7d384f@fedora>
+In-Reply-To: <20251007060810.258536-3-gshan@redhat.com>
 References: <20251007060810.258536-1-gshan@redhat.com>
- <20251007060810.258536-2-gshan@redhat.com>
+ <20251007060810.258536-3-gshan@redhat.com>
 X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: yHSJaHYUvhx6MClHr9QNVwUoC0fAYI6_V_0vdNVAMRc_1761916645
+X-Mimecast-MFC-PROC-ID: XinEHa3y-C0vO_Nu0YCADwCiOHg4Nn781CpZE4-xOGg_1761917148
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -99,7 +99,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,166 +115,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue,  7 Oct 2025 16:08:08 +1000
+On Tue,  7 Oct 2025 16:08:09 +1000
 Gavin Shan <gshan@redhat.com> wrote:
 
-> In the situation where host and guest has 64KB and 4KB page sizes, one
-> error on the host's page affects 16 guest's pages. we need to send 16
-> consective errors in this specific case.
-> 
-> Extend acpi_ghes_memory_errors() to support multiple CPERs after the
-> hunk of code to generate the GHES error status is pulled out from
-> ghes_gen_err_data_uncorrectable_recoverable().
+> Introduce helper push_ghes_memory_errors(), which sends ACPI GHES memory
+> errors, injects SEA exception or aborts on errors. This function will
+> be extended to support multiple ACPI GHES memory errors in the next
+> path.
 > 
 > No functional changes intended.
 > 
 > Signed-off-by: Gavin Shan <gshan@redhat.com>
 > ---
->  hw/acpi/ghes-stub.c    |  2 +-
->  hw/acpi/ghes.c         | 27 ++++++++++++++-------------
->  include/hw/acpi/ghes.h |  2 +-
->  target/arm/kvm.c       |  7 ++++++-
->  4 files changed, 22 insertions(+), 16 deletions(-)
+>  target/arm/kvm.c | 36 ++++++++++++++++++++++++------------
+>  1 file changed, 24 insertions(+), 12 deletions(-)
 > 
-> diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
-> index 40f660c246..c1f8c9bec9 100644
-> --- a/hw/acpi/ghes-stub.c
-> +++ b/hw/acpi/ghes-stub.c
-> @@ -12,7 +12,7 @@
->  #include "hw/acpi/ghes.h"
->  
->  int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
-> -                            uint64_t physical_address)
-> +                            GArray *addresses)
->  {
->      return -1;
->  }
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index 06555905ce..045b77715f 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -214,18 +214,13 @@ static void acpi_ghes_build_append_mem_cper(GArray *table,
->  
->  static void
->  ghes_gen_err_data_uncorrectable_recoverable(GArray *block,
-> -                                            const uint8_t *section_type,
-> -                                            int data_length)
-> +                                            const uint8_t *section_type)
->  {
->      /* invalid fru id: ACPI 4.0: 17.3.2.6.1 Generic Error Data,
->       * Table 17-13 Generic Error Data Entry
->       */
->      QemuUUID fru_id = {};
->  
-> -    /* Build the new generic error status block header */
-> -    acpi_ghes_generic_error_status(block, ACPI_GEBS_UNCORRECTABLE,
-> -        0, 0, data_length, ACPI_CPER_SEV_RECOVERABLE);
-> -
->      /* Build this new generic error data entry header */
->      acpi_ghes_generic_error_data(block, section_type,
->          ACPI_CPER_SEV_RECOVERABLE, 0, 0,
-> @@ -557,19 +552,20 @@ void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
->  }
->  
->  int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
-> -                            uint64_t physical_address)
-> +                            GArray *addresses)
->  {
->      /* Memory Error Section Type */
->      const uint8_t guid[] =
->            UUID_LE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
->                    0xED, 0x7C, 0x83, 0xB1);
->      Error *errp = NULL;
-> -    int data_length;
-> +    int data_length, i;
->      GArray *block;
->  
->      block = g_array_new(false, true /* clear */, 1);
->  
-> -    data_length = ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH;
-> +    data_length = addresses->len *
-> +                  (ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH);
->      /*
->       * It should not run out of the preallocated memory if adding a new generic
->       * error data entry
-> @@ -577,10 +573,15 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->      assert((data_length + ACPI_GHES_GESB_SIZE) <=
->              ACPI_GHES_MAX_RAW_DATA_LENGTH);
->  
-> -    ghes_gen_err_data_uncorrectable_recoverable(block, guid, data_length);
-> -
-> -    /* Build the memory section CPER for above new generic error data entry */
-> -    acpi_ghes_build_append_mem_cper(block, physical_address);
-> +    /* Build the new generic error status block header */
-> +    acpi_ghes_generic_error_status(block, ACPI_GEBS_UNCORRECTABLE, 0, 0,
-                                             ^^^^^
-with following loop, it might be no enough. See ACPI6.5 Tables 18.11: Status field
-
-Don't we need to set multiple_foo bit(s) and also fix 'Error Data Entry Count' bits?
-
-
-> +                                   data_length, ACPI_CPER_SEV_RECOVERABLE);
-> +    for (i = 0; i < addresses->len; i++) {
-> +        ghes_gen_err_data_uncorrectable_recoverable(block, guid);
-> +        /* Memory section CPER on top of the generic error data entry */
-> +        acpi_ghes_build_append_mem_cper(block,
-> +                                        g_array_index(addresses, uint64_t, i));
-> +    }
-
->  
->      /* Report the error */
->      ghes_record_cper_errors(ags, block->data, block->len, source_id, &errp);
-> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-> index df2ecbf6e4..a8cbc520d5 100644
-> --- a/include/hw/acpi/ghes.h
-> +++ b/include/hw/acpi/ghes.h
-> @@ -99,7 +99,7 @@ void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
->  void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
->                            GArray *hardware_errors);
->  int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
-> -                            uint64_t error_physical_addr);
-> +                            GArray *addresses);
->  void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
->                               uint16_t source_id, Error **errp);
->  
 > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 4f769d69b3..9a47ac9e3a 100644
+> index 9a47ac9e3a..c5d5b3b16e 100644
 > --- a/target/arm/kvm.c
 > +++ b/target/arm/kvm.c
-> @@ -2434,6 +2434,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+> @@ -2429,12 +2429,34 @@ int kvm_arch_get_registers(CPUState *cs, Error **errp)
+>      return ret;
+>  }
+>  
+> +static void push_ghes_memory_errors(CPUState *c, AcpiGhesState *ags,
+> +                                    uint64_t paddr)
+> +{
+> +    GArray *addresses = g_array_new(false, false, sizeof(paddr));
+> +    int ret;
+> +
+> +    kvm_cpu_synchronize_state(c);
+> +    g_array_append_vals(addresses, &paddr, 1);
+> +    ret = acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC, addresses);
+> +    if (ret) {
+> +        goto error;
+
+perhaps use &error_abort and use it right here instead of goto
+or even more cleaner: pass  &error_abort as arg to acpi_ghes_memory_errors()
+and drop not needed 'if's & return value
+
+> +    }
+> +
+> +    kvm_inject_arm_sea(c);
+> +
+> +    g_array_free(addresses, true);
+> +
+> +    return;
+> +error:
+> +    error_report("failed to record the error");
+> +    abort();
+> +}
+> +
+>  void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+>  {
 >      ram_addr_t ram_addr;
 >      hwaddr paddr;
 >      AcpiGhesState *ags;
-> +    GArray *addresses;
+> -    GArray *addresses;
 >  
 >      assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
 >  
-> @@ -2442,6 +2443,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+> @@ -2443,7 +2465,6 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
 >          ram_addr = qemu_ram_addr_from_host(addr);
 >          if (ram_addr != RAM_ADDR_INVALID &&
 >              kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-> +            addresses = g_array_new(false, false, sizeof(paddr));
+> -            addresses = g_array_new(false, false, sizeof(paddr));
 >              kvm_hwpoison_page_add(ram_addr);
 >              /*
 >               * If this is a BUS_MCEERR_AR, we know we have been called
-> @@ -2454,16 +2456,19 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+> @@ -2456,19 +2477,10 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
 >               * later from the main thread, so doing the injection of
 >               * the error would be more complicated.
 >               */
-> +            g_array_append_vals(addresses, &paddr, 1);
+> -            g_array_append_vals(addresses, &paddr, 1);
 >              if (code == BUS_MCEERR_AR) {
->                  kvm_cpu_synchronize_state(c);
->                  if (!acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
-> -                                             paddr)) {
-> +                                             addresses)) {
->                      kvm_inject_arm_sea(c);
->                  } else {
->                      error_report("failed to record the error");
->                      abort();
->                  }
+> -                kvm_cpu_synchronize_state(c);
+> -                if (!acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
+> -                                             addresses)) {
+> -                    kvm_inject_arm_sea(c);
+> -                } else {
+> -                    error_report("failed to record the error");
+> -                    abort();
+> -                }
+> +                push_ghes_memory_errors(c, ags, paddr);
 >              }
-> +
-> +            g_array_free(addresses, true);
+>  
+> -            g_array_free(addresses, true);
 >              return;
 >          }
 >          if (code == BUS_MCEERR_AO) {

@@ -4,148 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5C4CCCF9F8
-	for <qemu-arm@archiver.kernel.org>; Sat,  1 Nov 2025 00:50:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AA04CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Sat,  1 Nov 2025 12:03:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vEzoN-0002t4-Bf; Fri, 31 Oct 2025 20:49:43 -0400
+	id 1vFAJU-0000v9-2R; Sat, 01 Nov 2025 08:02:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1vEzoB-0002p7-Pb; Fri, 31 Oct 2025 20:49:33 -0400
-Received: from mail-northcentralusazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c105::7] helo=CH4PR04CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1vEzo3-0007yC-C1; Fri, 31 Oct 2025 20:49:30 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=vKSdBHXA1SWGWv3Q8b/X9kR/bMZCX319n5HoqQQbbOQQY6pdIDAbJqsDPTzvfeAQ5jHEuIRnQdZYxDF1paJ4SGQFvYDBo1zI/QsNTRArhnMvpepPC7SdqXc0k/oFVwCxKiZJJciPOvBM3AHQu/skVz8HUcI+pHlEdDvSrvP2M83hjO6+kRsDLNL9prBjWhbhw/GjTZtvjPtMtP5z1TLJezVqxjSS76m2oV2PTmRS8/zOA4rZhjb+h0VODqoIArtBLNzYA/GBxalibZ+Go5rUBIRN9r65dAsgxOw+FjQ5tGck3LjZjZnuKy89Lnjj8zEcMR8tj79B1C4Pv7yuIyP00Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=M4RyY/IXI6DjCDXe2vu7QguiZrGcsSkU5oVyUqy8gUA=;
- b=n+vLUpqYq8iY3v5lxOivIvjuhned3l9opBCUyo9mQZbFKro190f26pA5EPfgJgmLRS3E/b4vWaFnwF8mD6rQQkDr6XUmz/uCRjZg4zeJtWImaFTc8J8RXk4GV7sLb0knt+k2Nvt9Ek+2NNovg1r65NgVS3xPwWh5Cfk2wEXyBPmAQhHup2WPV/Nfd9wNPYdt+htuly6HibVUnL7umpCA/qbl+K01cCEyEWHby39H1fhq6ak5tMnv5UjabXHs5vU1yqJHDJUO5U02kegcx00tW2TQD1Uphs9M2zwhl/QDaYIFcfDaWOA1X0s08UBrW4bH1NY90Bm9QM8NaCn2I68+6w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.232) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=M4RyY/IXI6DjCDXe2vu7QguiZrGcsSkU5oVyUqy8gUA=;
- b=GSxhdflI5N4IbxAYxfkesSHF4PYianuspHnrHMkEqUMTsuf8JmoZMfHHe5s8nR5l7qUMa48RKJwrF/wOb/emJ9hKcrguUMwRxjOeO32WWBR7P+wH5SDYffWfs/RsngQPsg3NYgwYXKKIYQulLoSjJU1wi1rE4H15o70Esd4+0d2/KamnAZ8dav3ltghtRKqyEGNPl4CxQS3owVNowN/OlXRaErLcQK+OP2O3gx7aVixVt7jgANlrCGG249FKpFnxq+tYo6elMXws4wYZd/62xfNL4XdY2cbV9ZWDx1eNfC4Qlk/0vLLLbwxRvxEJrPCWDuQAO/DUgQk7s6THc42FpQ==
-Received: from SJ0PR03CA0052.namprd03.prod.outlook.com (2603:10b6:a03:33e::27)
- by SN7PR12MB6911.namprd12.prod.outlook.com (2603:10b6:806:261::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.15; Sat, 1 Nov
- 2025 00:49:11 +0000
-Received: from SJ1PEPF000023D2.namprd02.prod.outlook.com
- (2603:10b6:a03:33e:cafe::ac) by SJ0PR03CA0052.outlook.office365.com
- (2603:10b6:a03:33e::27) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9275.14 via Frontend Transport; Sat,
- 1 Nov 2025 00:49:11 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.232) by
- SJ1PEPF000023D2.mail.protection.outlook.com (10.167.244.9) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9275.10 via Frontend Transport; Sat, 1 Nov 2025 00:49:11 +0000
-Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
- (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.14; Fri, 31 Oct
- 2025 17:49:04 -0700
-Received: from drhqmail203.nvidia.com (10.126.190.182) by
- drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.20; Fri, 31 Oct 2025 17:49:04 -0700
-Received: from Asurada-Nvidia (10.127.8.13) by mail.nvidia.com
- (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
- Transport; Fri, 31 Oct 2025 17:49:03 -0700
-Date: Fri, 31 Oct 2025 17:49:02 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Shameer Kolothum <skolothumtho@nvidia.com>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
- <peter.maydell@linaro.org>, <jgg@nvidia.com>, <ddutile@redhat.com>,
- <berrange@redhat.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
- <smostafa@google.com>, <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
- <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>, <kjaju@nvidia.com>
-Subject: Re: [PATCH v5 19/32] hw/arm/smmuv3-accel: Get host SMMUv3 hw info
- and validate
-Message-ID: <aQVY/q1XVBwbAov3@Asurada-Nvidia>
-References: <20251031105005.24618-1-skolothumtho@nvidia.com>
- <20251031105005.24618-20-skolothumtho@nvidia.com>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vFAJK-0000tW-77
+ for qemu-arm@nongnu.org; Sat, 01 Nov 2025 08:02:23 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vFAJH-00051I-9p
+ for qemu-arm@nongnu.org; Sat, 01 Nov 2025 08:02:21 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-4770c34ca8eso25134335e9.0
+ for <qemu-arm@nongnu.org>; Sat, 01 Nov 2025 05:02:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1761998535; x=1762603335; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=khfVYY1UJRANfTe3uSdDUlTmZ2chbclm/a9R8cDFm5Y=;
+ b=J4nGF3yumZ+t7PBZuZ9UsmvJO/meguY0FnYyS//FC6S7mtkaNgIas9TwMl9gCEYaex
+ 8D7GnkNl26XRL+c/RNQYqKLEW8RdGH5iWrbvqh1bQvFnfrO2VRip6mM3NaemlrvPIrdl
+ oH1ZkPYsTZk07yx8GaOz3pdrocQIvTIA1Sr6VZTimNLRMrIW2W+40BDo0fLb3EUPnWRY
+ /WMhcdXi+TrSyTLyTkFTLtyDekK6NsahjlvaI6XKE8EKeuK/h0Vb4hwEabORtJ9Xl+Iy
+ ev8Pm1HD5zQnTNBb9u21JkQcQYBMEgQ+Jndv7t4mCJFnLdTUJTaEWsekZph0Dtc2DyjY
+ e/DA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761998535; x=1762603335;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=khfVYY1UJRANfTe3uSdDUlTmZ2chbclm/a9R8cDFm5Y=;
+ b=inYIpJ3cgWHum+MGub31t1k9Ou8uhT2GSz9GfZHo1dmm7TFKUTTOqqWb4WlwS3T5XF
+ MmMs/AqrIYIZpWSjMR3S/hk6UFRkxrPV9BPLArkKaS0+B2JQFcpnWLDppYNtcNWUmIX0
+ y6eTXitQO7nEwYEUD4neBWoamCGzJzVEEA4DvHHGCyvZfA/XxW8pPOB/MCorwYNjHrqc
+ nVq5amoRQKz7N/q5zeDevoMF1kefzuboUvIIDBYsQJ7QrdIr0W7e8MHGlCwc7FjY7FM1
+ r0/n5vhHt3BPV9JYSNiS0KqBQs8HJq+i5a7rI3C/VZTg6VhK8qBPWObZ3HhLMjLP3YWX
+ qyCg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUDp7DS8bklNiaLYojDTZf6dnzaEUoKHfyxFqqXcOybM9XopxctZR72pdKenkoxqTyfL1t+sRtxng==@nongnu.org
+X-Gm-Message-State: AOJu0YwOH50C2Q43jK1mjf8y1l9amwKH9wNvpFCRVzDjrUr8+4SAGiPj
+ phKG6RlShem20hcHKhTFq8DC2e9njnXxzmU8Ss0st+4xnEDdS4CuJO+M
+X-Gm-Gg: ASbGncs1tAnTd/G9rz3rwllbKNVO3k7+tvyRRSY3JgjE4VODdfhdZSYYlCKX7gJfMGx
+ Ku5y9ro5h0ZFtlcHWp0ylU1gkJLhi0OSEkBPHa662MKXwwEEX7vrhXbcQisyn7Yqq7GBdFsFI3E
+ hrHnbSo8fDOAUTotrxT11KzRIFDUNnynT4/F8kC1TipDs8IZfXiLzG16/tAwVWYAwl6KZmNM5ay
+ EzGiTeVOjAaNseq29Ae2HcpCx6E0LjepwfGbxRN2mf4PaZ3K+7cPSm26DQuX74ETkUMtL4wvyUJ
+ cKfuOt2aBP72LWVySYwDbaGHspettSLCV5j/otR1Rb4awUctYi5FxvsjfModJRukBGis3p7wizs
+ o8nu/gml8SoESzDpxFbxAltb87S2nXZArURRIlf2r26dkXBKVve5TwtDVyY1B9E/u2xwddc+93L
+ Hu3QVTaEe4FeinZEGfGREpG9vAs9EztpcI/v43QITgYg+VZjAmVHxyBg==
+X-Google-Smtp-Source: AGHT+IGbfE+9R23E1GbgdTQciHz1+9Wfy8YL4qUH4+qCo4L8kmVaAp4pyxBfdhqvkVhUkvZOL7c5/A==
+X-Received: by 2002:a05:600c:8b6b:b0:477:fcb:2267 with SMTP id
+ 5b1f17b1804b1-477307c1fc6mr76940705e9.8.1761998534564; 
+ Sat, 01 Nov 2025 05:02:14 -0700 (PDT)
+Received: from archlinux (pd95edc07.dip0.t-ipconnect.de. [217.94.220.7])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4772ff83182sm40734215e9.4.2025.11.01.05.02.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 01 Nov 2025 05:02:13 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v3 2/2] hw/arm/imx8mp-evk: Fix guest time in KVM mode
+Date: Sat,  1 Nov 2025 13:01:30 +0100
+Message-ID: <20251101120130.236721-3-shentey@gmail.com>
+X-Mailer: git-send-email 2.51.2
+In-Reply-To: <20251101120130.236721-1-shentey@gmail.com>
+References: <20251101120130.236721-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20251031105005.24618-20-skolothumtho@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ1PEPF000023D2:EE_|SN7PR12MB6911:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1aadb691-8e9d-4a47-9a7d-08de18e078c7
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|36860700013|376014|7416014|1800799024; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?VMXbgM/GoqtabRU7DhpegyIooUJ+TMb4gS54LJKJV0iHmht9xubw1foH1IAc?=
- =?us-ascii?Q?D63T60qH9tVW6gojbyTSiERvJQKn6Gd5i/QgtOGXDv+8sDulwei2Fj0x9btu?=
- =?us-ascii?Q?q7CRZWlsoNrOpXpJcFnPxKWDDltoh9uJVdyU+T0PtsCgahWAw9rl+F62KpYC?=
- =?us-ascii?Q?jGtv773Ptf8jXDDeMEPtgBVp+3dfVy/RO8kctz3mQ7kJomT/o3zyYsVf2IGG?=
- =?us-ascii?Q?5DjrC8gg5p+5Aa3F+r+1QndBkSDF8dle2hDmsEYU419mPrkaoJPDgTaV2O77?=
- =?us-ascii?Q?Br7kcTrdzJXcHjNQ2I2Ovf5O11fDNm2MSupULy2+rb3UhcPptaa/D+PlnqQl?=
- =?us-ascii?Q?0IeE75rC468vL/Q3i6RSwR0mFaU0SELp1h+1jgvkdyWbmazlhQYxll+I2nHZ?=
- =?us-ascii?Q?04ysAKxIEeCPwvtQuEOlZJ0bNcT2mUj98knIXK4hD9/izAQ5+UtZplWfAuL9?=
- =?us-ascii?Q?0kGRbqUkOg9QDiqjf6WGgJbx1hrk1dOwJxhdoff1LN7MJC13sHlJJLCHwvYi?=
- =?us-ascii?Q?6Y3nyDRwSN+TcMSwhmyKWWxje+hvwD2gCibigO8XzjQFTRHqV+dkIiKOfXba?=
- =?us-ascii?Q?DaC9OCzmI5yharPI+CNYcOEZpuUVHEzaILvxmuZ+OIKy9NPGY+t9sDnXrwkg?=
- =?us-ascii?Q?PsKNgEtLMMyf04KZTyL2Dxwq8EoiwojrvFUwkdHFSTRhrcPI4MTWGTRHxBZD?=
- =?us-ascii?Q?41f3iFrmk/R90yEoWEwNbH6uR4ufgIkzIM6FcZ/mNe/15CeYGbChO9wkPyU2?=
- =?us-ascii?Q?dt/+16Knm4BAAt6PFxcop9a/tikOLL5r2Vh4JAk/tVBq6GZtR0OsOAzOGCt+?=
- =?us-ascii?Q?fiEsOkuOv9bgzzUWLF24fi6iL9IIa5nM2tqaiqLkuU/oFy/3MFordXeD1Luj?=
- =?us-ascii?Q?ttpRKaCNpY96AWUpEHjezEG6QNZ4Ry3j/1J52IK8crI9raC3QlhbjoiW9lVs?=
- =?us-ascii?Q?SeagaUoLISFis/lQcwDFwmc4NazZrcIKk3LTXa6dzU1B3LTP6Az8zrjH8odR?=
- =?us-ascii?Q?Jbk3pa5pe+4vZ6MlBeWVTGv42ZWiatfBJEkwa2o62hLQ2PBpm8RTMAybXnx2?=
- =?us-ascii?Q?XavjH9w54Ul6V9g+9jLQ4/brwih5wDU6bHa4pke+skdkmDxJR+v+LU6N/1DQ?=
- =?us-ascii?Q?/DQoffb1oxtUjza2h6Fii5038yei2LRn360+Qqp0FOx/UYcj4aXXKldMFKws?=
- =?us-ascii?Q?9m1j2joqyBrXDLKPg3jiLvP1d5bAa09HEIif0pTQPdKzMTaY9h1ZnXhAgy9u?=
- =?us-ascii?Q?KTDdXy7Lfv5QM6mfRhisiqH0gdWG4eVaiTk4OznSiaxL9gaK7JfxfptFL2/7?=
- =?us-ascii?Q?lehYKifur2J8MAGtdtCq8H/xxJizGEdYLtXYpTxS1dbBms6wc0yvjZcLPG0j?=
- =?us-ascii?Q?mSheBCic4hz7j5v+nV+L3l/OiGQRm8Wc8ZnHeh1/euewqvc4ooRxFIwRuXXN?=
- =?us-ascii?Q?JVDztRCiBqPBHXG1AWpT+emIikXrFn1tFuinOYpfmMKy8KtDFcln4LvAxmdN?=
- =?us-ascii?Q?PCi3YDU8642EiuBHYf01RbyYk7S2BhqWI519jWbZCounUn5TQlbpe+MBl6QN?=
- =?us-ascii?Q?Yj6BWf39CgcxiV4vd7g=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(82310400026)(36860700013)(376014)(7416014)(1800799024); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Nov 2025 00:49:11.0975 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1aadb691-8e9d-4a47-9a7d-08de18e078c7
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF000023D2.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB6911
-Received-SPF: permerror client-ip=2a01:111:f403:c105::7;
- envelope-from=nicolinc@nvidia.com;
- helo=CH4PR04CU002.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -161,77 +104,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Oct 31, 2025 at 10:49:52AM +0000, Shameer Kolothum wrote:
-> Just before the device gets attached to the SMMUv3, make sure QEMU SMMUv3
-> features are compatible with the host SMMUv3.
-> 
-> Not all fields in the host SMMUv3 IDR registers are meaningful for userspace.
-> Only the following fields can be used:
-> 
->   - IDR0: ST_LEVEL, TERM_MODEL, STALL_MODEL, TTENDIAN, CD2L, ASID16, TTF
->   - IDR1: SIDSIZE, SSIDSIZE
->   - IDR3: BBML, RIL
->   - IDR5: VAX, GRAN64K, GRAN16K, GRAN4K
-> 
-> For now, the check is to make sure the features are in sync to enable
-> basic accelerated SMMUv3 support.
+The imx8mp DTB hardcodes the clock frequency of the system counter to 8MHz.
+In KVM mode, the host CPU is used whose system counter runs at a different
+frequency, resulting in the guest clock running slower or faster. Fix this
+by not hardcoding the clock frequency which makes the Linux driver read
+the real clock frequency from the register.
 
-Note that SSIDSIZE will be added in the follow-up PASID support.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/arm/imx8mp-evk.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
+index 3ddcf1af5a..44e0601967 100644
+--- a/hw/arm/imx8mp-evk.c
++++ b/hw/arm/imx8mp-evk.c
+@@ -44,6 +44,15 @@ static void imx8mp_evk_modify_dtb(const struct arm_boot_info *info, void *fdt)
+         fdt_nop_property(fdt, offset, "cpu-idle-states");
+         offset = fdt_node_offset_by_compatible(fdt, offset, "arm,cortex-a53");
+     }
++
++    if (kvm_enabled()) {
++        /* Use system counter frequency from host CPU to fix time in guest */
++        offset = fdt_node_offset_by_compatible(fdt, -1, "arm,armv8-timer");
++        while (offset >= 0) {
++            fdt_nop_property(fdt, offset, "clock-frequency");
++            offset = fdt_node_offset_by_compatible(fdt, offset, "arm,armv8-timer");
++        }
++    }
+ }
+ 
+ static void imx8mp_evk_init(MachineState *machine)
+-- 
+2.51.2
 
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index a2deda3c32..8b9f88dd8e 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -28,6 +28,98 @@ MemoryRegion root;
->  MemoryRegion sysmem;
->  static AddressSpace *shared_as_sysmem;
->  
-> +static bool
-> +smmuv3_accel_check_hw_compatible(SMMUv3State *s,
-
-Maybe rename to:
-    SMMUv3State *smmu
-
-then...
-
-> +                                 struct iommu_hw_info_arm_smmuv3 *info,
-> +                                 Error **errp)
-> +{
-> +    /* QEMU SMMUv3 supports both linear and 2-level stream tables */
-> +    if (FIELD_EX32(info->idr[0], IDR0, STLEVEL) !=
-> +                FIELD_EX32(s->idr[0], IDR0, STLEVEL)) {
-
-this looks nicer:
-
-    if (FIELD_EX32(info->idr[0], IDR0, STLEVEL) !=
-        FIELD_EX32(smmu->idr[0], IDR0, STLEVEL)) {
-
-> +static bool
-> +smmuv3_accel_hw_compatible(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
-> +                           Error **errp)
-> +{
-> +    struct iommu_hw_info_arm_smmuv3 info;
-> +    uint32_t data_type;
-> +    uint64_t caps;
-> +
-> +    if (!iommufd_backend_get_device_info(idev->iommufd, idev->devid, &data_type,
-> +                                         &info, sizeof(info), &caps, errp)) {
-> +        return false;
-> +    }
-> +
-> +    if (data_type != IOMMU_HW_INFO_TYPE_ARM_SMMUV3) {
-> +        error_setg(errp, "Wrong data type (%d) for Host SMMUv3 device info",
-> +                     data_type);
-> +        return false;
-> +    }
-> +
-> +    if (!smmuv3_accel_check_hw_compatible(s, &info, errp)) {
-
-Nit: it doesn't seem to be necessary to have a wrapper?
-
-Nicolin
 

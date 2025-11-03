@@ -4,96 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CA8ECCFA04
-	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 10:14:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA4DCCCF9F8
+	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 10:14:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vFrZp-00069L-9v; Mon, 03 Nov 2025 05:14:17 -0500
+	id 1vFra7-0006OP-4X; Mon, 03 Nov 2025 05:14:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vFrZo-00067i-6B
- for qemu-arm@nongnu.org; Mon, 03 Nov 2025 05:14:16 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vFrZk-00031E-3E
- for qemu-arm@nongnu.org; Mon, 03 Nov 2025 05:14:14 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-47721293fd3so22617085e9.1
- for <qemu-arm@nongnu.org>; Mon, 03 Nov 2025 02:14:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1762164849; x=1762769649; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=hhmyK4oEIpSWjXpku9unHriewKy+XN/2ZADa1rxHLbo=;
- b=dpN9WfvGd09DT3LiiUHQce1eN+9ZRzVhXa9Y25Yb4dCVr1lwORgKAFwQznrwvOtWjo
- NOtBFu9s6oFkWDcC6Wo7FyGrL0mXWbmlAXuW0q+DZv2jH+pezuuqP25gTIXDdmaAvYYp
- UDrLYD/FYiDjT/QTNBZmxOm31BIXgjv6QzbPgpsBGPW2QAQA/Liln00IuXP18rTKPGqH
- zbBWlAQ5O0xNSqBu97QtkvDh0Y+T8lTEZrT7rSSybWE51suh2GxQ5g4jgjjZHDVxQp6j
- dqOe8gqnsUVVDh1Zo7cG1Yw3U4gafHNB/fFgo/b49I7Ic4dtEv6JlFiDFvu9qis11BNO
- u9Mg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762164849; x=1762769649;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=hhmyK4oEIpSWjXpku9unHriewKy+XN/2ZADa1rxHLbo=;
- b=t+hXqB2AdcRf+L/E9Um3mzuZuy1e9JzBIAYGBHDLaBSJCia1cLOk+d/AwEYwJZJ+OH
- /XAhi8iY9x7LLi93+EjPCIh036zNb8dQG9vBm5aAeNpl3Qmt8ddzSyYrW4YgLy83x2XF
- P3NJ74Wo15c3Bw/oRO5FoKkAhq26xTTZ/xpDL1zxBn+XmRrXHDO9Uet0V8m6s50DQuxx
- JRMtCG3SvY4HecUdIYi9TAg7jt21GQ64N5MjpaqNhN9sQ6vx002STbT17VMeSvlRzEo9
- vprWXuM281YjOFAsc4oWgE0DRGNpxgRzOd0CZ0bq/9YyIe0Mx14p7zL4QRj6PeGc5Q52
- NoYQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV9JWYy+gJhSdNinntjH2w4W6WkWPkpzYehyx/6KP8PmeRuGoc3fFiNRBegjhPCHMabAiBRTuUCVg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx1PyGhaO88Isz4FdvEiwp/6+e8HFG4A+cqTDuj/mepM5JeU/HJ
- EX8lcHcwjoo3f5rrNnEGtyjZOIxFhklsECr8YZbMyBnOc3ColHNj6u4xmHphaOPkFWg=
-X-Gm-Gg: ASbGncsih6oDd6FmdHuzDNqgWpba7D776jUIf95h3AaDU7lbKfzibK5Vn3W9ersQh0/
- uXPjLpIyjkveQ9SlkULE8DgOAsPHcomxYYv7cb2I8sW7NFgiL9nxkCLgwhcrbYyJHh/iWrWREqx
- 3TeX1DuqqprzrehQbNhDv5YbsB7M22xpUPpERNJL9so7Nay0+AhTFwzbbfvDHe6ul/FZdG4ta03
- xCD4SHbjsr78mhSr4jMHIVeExSAxWJGMDj/Wu8LhFUYP7PeuKCbLUX8TUw1K5i0sZbNVDD0eFDF
- jrZ8Wwh1N0UNuZx6T/2amYfbikzLZcLWK3hmDpKOm9vPTVU++P/MyMhyC/arOUGL/gHk0rXkI/H
- FOtXyAh29iW42Xs8vqGMlmjgT4sSq94CuX/4Dp49PnoBH2ZPjxR7xa4g6qEoUvf5CJCCUP4l7q8
- WVvQ6OMiESWdsbamLyDRh0IwK1TuuWRvx9y3oIQmhAymDehrevP8H/D/50vsU=
-X-Google-Smtp-Source: AGHT+IHBSr31da1TwutqIu8czWMLdsq8PZHoB7esZKvm/GO3vd2GN0EgTC9gtfSBf2Eq4K6O+eHExQ==
-X-Received: by 2002:a05:600c:358f:b0:477:25c0:798c with SMTP id
- 5b1f17b1804b1-47730175fcfmr133189035e9.20.1762164848706; 
- Mon, 03 Nov 2025 02:14:08 -0800 (PST)
-Received: from localhost.localdomain (ip-185-104-138-122.ptr.icomera.net.
- [185.104.138.122]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4773c583d91sm147214345e9.17.2025.11.03.02.14.06
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 03 Nov 2025 02:14:07 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
- Phil Dennis-Jordan <phil@philjordan.eu>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Peter Collingbourne <pcc@google.com>, Cameron Esfahani <dirty@apple.com>,
- Mads Ynddal <mads@ynddal.dk>, Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v4 08/23] accel/hvf: Simplify hvf_set_phys_mem
-Date: Mon,  3 Nov 2025 11:10:17 +0100
-Message-ID: <20251103101034.59039-9-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251103101034.59039-1-philmd@linaro.org>
-References: <20251103101034.59039-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vFra4-0006Mf-OI
+ for qemu-arm@nongnu.org; Mon, 03 Nov 2025 05:14:32 -0500
+Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vFrZu-00032i-P5
+ for qemu-arm@nongnu.org; Mon, 03 Nov 2025 05:14:32 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.37.198])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4d0S9V2RVHz5yNQ;
+ Mon,  3 Nov 2025 10:14:06 +0000 (UTC)
+Received: from kaod.org (37.59.142.108) by DAG8EX2.mxp5.local (172.16.2.72)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Mon, 3 Nov
+ 2025 11:14:01 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-108S002d0b5348c-599b-4a22-b30c-9a89a23502c5,
+ 25720A756895FCE40C516A1A344E2045610AA209) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <a4c3ebb7-a189-493c-a60c-6e51d4d02aff@kaod.org>
+Date: Mon, 3 Nov 2025 11:14:00 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [SPAM] [PATCH v3 04/30] hw/arm/aspeed: Rename and export
+ create_pca9554() as aspeed_create_pca9554()
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
+References: <20251103092801.1282602-1-jamin_lin@aspeedtech.com>
+ <20251103092801.1282602-5-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20251103092801.1282602-5-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Originating-IP: [37.59.142.108]
+X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG8EX2.mxp5.local
+ (172.16.2.72)
+X-Ovh-Tracer-GUID: e6b278a0-6938-408c-bde8-5ca3cf5b865b
+X-Ovh-Tracer-Id: 9253208386508786610
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTFPH3mapZWBF5xMOjMVRdrKpHhd4hodaHZE2u2Zk3eWq74ZWB25x/Z7nDAdtTQoLA+mLzRfsdmxRSngZ7B0XiAvgizlA4gX61dReej8Aa18P3kW1GEWZDCickeQHP4ZxUPxz2+kyb+4zcgTcYm2t18TblVObTS8rBi8O6pTgvFWfjDlVDkmLlNgcHM0YXwJ5/9UeX8ByzCIiaFsBULYQAjNrMg3Nc0cU60CpvavtoG7xaNAfNlYV2NbithVOKHbEFz2WFQaErXkB5Db7z6HZR3ScwaGCNL+ag4yPq7lH55sSrZ0MKMzix+8siM0PqGitTFUDsM9v20q6nsKYdt7gYiEXgjNhOwgotUlF2kYvoPgM5+scSmy9T6KGXTEdWtG2iZtOKi2wD6Saor380ESebXMp9tFv91InlquT4phFROiQfodCRTnkna/MWYMVbGqX3gDRwoMax3uRaej1Zi3dkd2z015j2Hovqcg2ufLYszCcYjwnUP+5QPhywt4RVbzvHgZ5va7WtK3NDmxqrBQneX+mueSf64Unc7ZuDLblL4MkNtZKNmBf+3eDMxCE4+XgaZxDH1WKR16QSzu/5dQI9mwIvQZLLLq28rBshAyewKmEVn/5U5VIj1X1bTKryQGRPWo6UXmjNuoxOKP3AepUKELyLb/kGRojlFJpxDEUpUjjA
+DKIM-Signature: a=rsa-sha256; bh=4gvJSErS0fRnC9WWrFz+Qr2xdS5rkoP01KCi9rK7trQ=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1762164856; v=1;
+ b=CXl6SQBdzpCUm7C8w8kKVMmasDVM/yQJaU6yx1+WwrtwnvCLhZhvzvafmMHJjd/8QYTRzRRk
+ MveF+7UX8WQMHTTcSmozQnx7wCE8SWkggz49b0bzoJxg7+v/bP3gcZtHm2PNG5vYYyYJGBg15dq
+ 3b/2u4wjDnPzHCFHvU1p+BSWtaatGWlDMQXGtfDCud4EpUj1JsNfdVQX/HLsthJNHpdJuNSlyBq
+ 9T7dwVlwJlYlnb2m/J0EG+xtK9k+AOO0zYeJhMBAdgOa3v4vptu6LMRCm6ia0hYYcaLQ85Lo5Mf
+ pdDTqhDN0lIZTFNdKR79Kweouyf80d2MZ4PfXRGds97tg==
+Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
+ helo=6.mo552.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,177 +131,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Richard Henderson <richard.henderson@linaro.org>
+On 11/3/25 10:27, Jamin Lin wrote:
+> The helper function create_pca9554() has been renamed to
+> aspeed_create_pca9554() and made globally available.
+> 
+> Previously, the function was declared static inside aspeed.c, restricting
+> its visibility to that file. As more Aspeed machine implementations
+> require PCA9554 I²C expander setup, it makes sense to rename it with the
+> aspeed_ prefix and export its declaration in aspeed.h for shared use.
+> 
+> No functional changes.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   include/hw/arm/aspeed.h | 14 ++++++++++++++
+>   hw/arm/aspeed.c         |  8 ++++----
+>   2 files changed, 18 insertions(+), 4 deletions(-)
+> 
+> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+> index 3afb964088..d2d9e49a39 100644
+> --- a/include/hw/arm/aspeed.h
+> +++ b/include/hw/arm/aspeed.h
+> @@ -80,4 +80,18 @@ void aspeed_machine_class_init_cpus_defaults(MachineClass *mc);
+>    */
+>   void aspeed_create_pca9552(AspeedSoCState *soc, int bus_id, int addr);
+>   
+> +/*
+> + * aspeed_create_pca9554:
+> + * @soc: pointer to the #AspeedSoCState.
+> + * @bus_id: the I²C bus index to attach the device.
+> + * @addr: the I²C address of the PCA9554 device.
 
-All of the complicated parts of updating the address space
-are handled by address_space_update_topology_pass.
-Do not create or use hvf_slot structures.
+I will change I²C to I2C.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- accel/hvf/hvf-all.c | 111 +++++++-------------------------------------
- 1 file changed, 17 insertions(+), 94 deletions(-)
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
-diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
-index f203a6251f0..76b8d4d4068 100644
---- a/accel/hvf/hvf-all.c
-+++ b/accel/hvf/hvf-all.c
-@@ -87,45 +87,16 @@ void hvf_unprotect_dirty_range(hwaddr addr, size_t size)
-                      HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC);
- }
- 
--static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
--{
--    struct mac_slot *macslot;
--    hv_return_t ret;
--
--    macslot = &mac_slots[slot->slot_id];
--
--    if (macslot->present) {
--        if (macslot->size != slot->size) {
--            macslot->present = 0;
--            trace_hvf_vm_unmap(macslot->gpa_start, macslot->size);
--            ret = hv_vm_unmap(macslot->gpa_start, macslot->size);
--            assert_hvf_ok(ret);
--        }
--    }
--
--    if (!slot->size) {
--        return 0;
--    }
--
--    macslot->present = 1;
--    macslot->gpa_start = slot->start;
--    macslot->size = slot->size;
--    trace_hvf_vm_map(slot->start, slot->size, slot->mem, flags,
--                     flags & HV_MEMORY_READ ?  'R' : '-',
--                     flags & HV_MEMORY_WRITE ? 'W' : '-',
--                     flags & HV_MEMORY_EXEC ?  'X' : '-');
--    ret = hv_vm_map(slot->mem, slot->start, slot->size, flags);
--    assert_hvf_ok(ret);
--    return 0;
--}
--
- static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
- {
--    hvf_slot *mem;
-     MemoryRegion *area = section->mr;
-     bool writable = !area->readonly && !area->rom_device;
-     hv_memory_flags_t flags;
-     uint64_t page_size = qemu_real_host_page_size();
-+    uint64_t gva = section->offset_within_address_space;
-+    uint64_t size = int128_get64(section->size);
-+    hv_return_t ret;
-+    void *mem;
- 
-     if (!memory_region_is_ram(area)) {
-         if (writable) {
-@@ -139,69 +110,28 @@ static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
-         }
-     }
- 
--    if (!QEMU_IS_ALIGNED(int128_get64(section->size), page_size) ||
--        !QEMU_IS_ALIGNED(section->offset_within_address_space, page_size)) {
-+    if (!QEMU_IS_ALIGNED(size, page_size) ||
-+        !QEMU_IS_ALIGNED(gva, page_size)) {
-         /* Not page aligned, so we can not map as RAM */
-         add = false;
-     }
- 
--    mem = hvf_find_overlap_slot(
--            section->offset_within_address_space,
--            int128_get64(section->size));
--
--    if (mem && add) {
--        if (mem->size == int128_get64(section->size) &&
--            mem->start == section->offset_within_address_space &&
--            mem->mem == (memory_region_get_ram_ptr(area) +
--            section->offset_within_region)) {
--            return; /* Same region was attempted to register, go away. */
--        }
--    }
--
--    /* Region needs to be reset. set the size to 0 and remap it. */
--    if (mem) {
--        mem->size = 0;
--        if (do_hvf_set_memory(mem, 0)) {
--            error_report("Failed to reset overlapping slot");
--            abort();
--        }
--    }
--
-     if (!add) {
-+        trace_hvf_vm_unmap(gva, size);
-+        ret = hv_vm_unmap(gva, size);
-+        assert_hvf_ok(ret);
-         return;
-     }
- 
--    if (area->readonly ||
--        (!memory_region_is_ram(area) && memory_region_is_romd(area))) {
--        flags = HV_MEMORY_READ | HV_MEMORY_EXEC;
--    } else {
--        flags = HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC;
--    }
-+    flags = HV_MEMORY_READ | HV_MEMORY_EXEC | (writable ? HV_MEMORY_WRITE : 0);
-+    mem = memory_region_get_ram_ptr(area) + section->offset_within_region;
- 
--    /* Now make a new slot. */
--    int x;
--
--    for (x = 0; x < hvf_state->num_slots; ++x) {
--        mem = &hvf_state->slots[x];
--        if (!mem->size) {
--            break;
--        }
--    }
--
--    if (x == hvf_state->num_slots) {
--        error_report("No free slots");
--        abort();
--    }
--
--    mem->size = int128_get64(section->size);
--    mem->mem = memory_region_get_ram_ptr(area) + section->offset_within_region;
--    mem->start = section->offset_within_address_space;
--    mem->region = area;
--
--    if (do_hvf_set_memory(mem, flags)) {
--        error_report("Error registering new memory slot");
--        abort();
--    }
-+    trace_hvf_vm_map(gva, size, mem, flags,
-+                     flags & HV_MEMORY_READ ?  'R' : '-',
-+                     flags & HV_MEMORY_WRITE ? 'W' : '-',
-+                     flags & HV_MEMORY_EXEC ?  'X' : '-');
-+    ret = hv_vm_map(mem, gva, size, flags);
-+    assert_hvf_ok(ret);
- }
- 
- static void hvf_log_start(MemoryListener *listener,
-@@ -260,7 +190,6 @@ static MemoryListener hvf_memory_listener = {
- 
- static int hvf_accel_init(AccelState *as, MachineState *ms)
- {
--    int x;
-     hv_return_t ret;
-     HVFState *s = HVF_STATE(as);
-     int pa_range = 36;
-@@ -281,12 +210,6 @@ static int hvf_accel_init(AccelState *as, MachineState *ms)
-     }
-     assert_hvf_ok(ret);
- 
--    s->num_slots = ARRAY_SIZE(s->slots);
--    for (x = 0; x < s->num_slots; ++x) {
--        s->slots[x].size = 0;
--        s->slots[x].slot_id = x;
--    }
--
-     QTAILQ_INIT(&s->hvf_sw_breakpoints);
- 
-     hvf_state = s;
--- 
-2.51.0
+Thanks,
+
+C.
+
+
+
+
+
+> + *
+> + * Create and attach a PCA9554 I/O expander to the specified I²C bus
+> + * of the given Aspeed SoC. The device is created via
+> + * i2c_slave_create_simple() and returned as an #I2CSlave pointer.
+> + *
+> + * Returns: a pointer to the newly created #I2CSlave instance.
+> + */
+> +I2CSlave *aspeed_create_pca9554(AspeedSoCState *soc, int bus_id, int addr);
+> +
+>   #endif
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index c6f272d986..59416eb5ae 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -543,7 +543,7 @@ void aspeed_create_pca9552(AspeedSoCState *soc, int bus_id, int addr)
+>                               TYPE_PCA9552, addr);
+>   }
+>   
+> -static I2CSlave *create_pca9554(AspeedSoCState *soc, int bus_id, int addr)
+> +I2CSlave *aspeed_create_pca9554(AspeedSoCState *soc, int bus_id, int addr)
+>   {
+>       return i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, bus_id),
+>                               TYPE_PCA9554, addr);
+> @@ -1142,7 +1142,7 @@ static void gb200nvl_bmc_i2c_init(AspeedMachineState *bmc)
+>       }
+>   
+>       /* Bus 5 Expander */
+> -    create_pca9554(soc, 4, 0x21);
+> +    aspeed_create_pca9554(soc, 4, 0x21);
+>   
+>       /* Mux I2c Expanders */
+>       i2c_slave_create_simple(i2c[5], "pca9546", 0x71);
+> @@ -1153,12 +1153,12 @@ static void gb200nvl_bmc_i2c_init(AspeedMachineState *bmc)
+>       i2c_slave_create_simple(i2c[5], "pca9546", 0x77);
+>   
+>       /* Bus 10 */
+> -    dev = DEVICE(create_pca9554(soc, 9, 0x20));
+> +    dev = DEVICE(aspeed_create_pca9554(soc, 9, 0x20));
+>   
+>       /* Set FPGA_READY */
+>       object_property_set_str(OBJECT(dev), "pin1", "high", &error_fatal);
+>   
+> -    create_pca9554(soc, 9, 0x21);
+> +    aspeed_create_pca9554(soc, 9, 0x21);
+>       at24c_eeprom_init(i2c[9], 0x50, 64 * KiB);
+>       at24c_eeprom_init(i2c[9], 0x51, 64 * KiB);
+>   
 
 

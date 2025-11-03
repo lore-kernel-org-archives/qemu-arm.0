@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED58BCCFA06
-	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 10:18:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC794CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 10:19:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vFrdv-0002on-HW; Mon, 03 Nov 2025 05:18:34 -0500
+	id 1vFreE-0003UP-35; Mon, 03 Nov 2025 05:18:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vFrdP-0002Nw-C0
- for qemu-arm@nongnu.org; Mon, 03 Nov 2025 05:18:03 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vFrdj-0002ib-C0
+ for qemu-arm@nongnu.org; Mon, 03 Nov 2025 05:18:23 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vFrd9-0003gU-Fb
- for qemu-arm@nongnu.org; Mon, 03 Nov 2025 05:17:55 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-47112edf9f7so34078925e9.0
- for <qemu-arm@nongnu.org>; Mon, 03 Nov 2025 02:17:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vFrdd-0003iM-0n
+ for qemu-arm@nongnu.org; Mon, 03 Nov 2025 05:18:18 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-47118259fd8so30627185e9.3
+ for <qemu-arm@nongnu.org>; Mon, 03 Nov 2025 02:18:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1762165057; x=1762769857; darn=nongnu.org;
+ d=linaro.org; s=google; t=1762165088; x=1762769888; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=I/Gn6pj9/95Lzbm+SIWtnMyaV4WJR3oCGo7MQI4hS50=;
- b=XJnnEzck6eMss9mezEbv3edbPX5v3f72Iwh7ATUDQAJDV/LTbi9n1KF3QUYNtSQtA1
- M1ePtgJE46hCReXbGcLcHuLQ1kTE2NimHKRoas+gJmj79diYTt/DWMHzSgfmu+54pwsp
- rnYSdxAFkkHwAeiL4Ieusd3W7Aq1t1dbQ9gq4p7NP+O8hq1ioOEb50tPHpqNosf+xXrN
- s7XEML6yWagNVRcjfNHCqADrbV+2yOHG8L17kVtAVLYaSUBlJWhiHGHHwrhEZ0HO37BN
- bxh39sDBqeLUU/wWvXmcGmSYHfAzM+TwXlYsto4SjRD8UcDHx7731qN2FeUt7JLdiGYY
- 1hpQ==
+ bh=R3F2C6kHHPWBiLc/P72P8z+qmvtuhzoJzLzlQGryUqk=;
+ b=JrXWm2i9sbKlmU/fHc334+I5nClMLqz9Bg41QWiBktGFaiI0UXO0GiUkC60J7mJkZf
+ 9xFV892SKWeBelg2hSVHGQ4gyvvqxnP3PRN76//2qFzvj94jzYZ6mf0LKqwqUsY3ynAa
+ ysX4v1svlNIJakK5M3Lt2UKAKc91+UElxsJeneDvi6A3G8pB6MlptNnc5AVzfWaUHkgx
+ jVAN64gfi94Opf6SEoPkzWHRXVorM6zddlc6Cl9rGhQW2GO+r4Eq6/iSFkAxUnTOhPka
+ 0VEHWmbN4st43GC85UzH4XhKcEU112MtlZ/82rWs6nJydqfUFJLqoJvwz8pfQfxQIjq5
+ mvNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762165057; x=1762769857;
+ d=1e100.net; s=20230601; t=1762165088; x=1762769888;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=I/Gn6pj9/95Lzbm+SIWtnMyaV4WJR3oCGo7MQI4hS50=;
- b=SFbw+HWcFsnEQaHMALC+mJG3cGAJGPotP0CKBREoe3/y6P8+8DhlqIdcQoPnazGAtp
- ySf2T1AX6LsGIvMw2hBQFi/2D60Fe31osvocEgKizuxkByArvztXQ/hmPhOAfHFkcVbU
- U6hjshQOxSkX1OT9EYF19iFqBoRcGSwgDoTOc6vkelFucgSM2FYjgxOmJMS2KZysQOGX
- +pXZX51stJ04VU5bR+D/EkXGKWw58AmZFJukrRG1bbFMYc6Ooxkcs6QiWHmlPdqRmkeD
- HnUBm0d1EaqQkFPAfabyFx9oJTWl4NV2Ue4aMP2MC96P0AJUp0oavgXhd1QPq441RHAa
- 5tfg==
+ bh=R3F2C6kHHPWBiLc/P72P8z+qmvtuhzoJzLzlQGryUqk=;
+ b=KFlTdqB6/iz3y+iMjG47RSubjTovRedLEqD9aq5Wgbd0GsxAjJ+uxBUqr3YuKEfaUk
+ sqgZ7o9pPVwiUIah4swnxIuiZx7gRBH2qDn7UiE8dsaHHPfW4tXOl6eRSPrnKDqf3/je
+ xmhyNM6NU99J2IIza7o4GwrKMJgSRlFRSIHcBzRsV4bgND4xxqP7l06PwqlYoITp0qn9
+ WqiOavoumN9svR42pXSdelFdZK6XBYbVfM/uTyAdGtzNtCQvdS7Ev0wn2VkuEgEhwhof
+ I8T3y3VZnu23ahk35bbk+45hs3uRxgkFdSmq7eGTy4EsxZiIO4y/fioH1qxKgtIYUZr8
+ EvkA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVGVh5uHWRnWULweQ+HZwD/0KiFdA/wTxK3L/q1dXASVlJATKoCJ8TDsIqI0foM8vpELU5wSbFwSA==@nongnu.org
-X-Gm-Message-State: AOJu0Yw4w610ReyXaa8Ynb3K9YwBWgPPfeVbTp0y6OF7oaWiBBvrLObk
- 2aLBRwb8Yfe7bZVQSh5pk6MfSBlcE1YYhECvku06f6XWToVVPJ4IIdUsEp2asdwSDZU=
-X-Gm-Gg: ASbGncub9esuCMB9z086iuChLc0HSE0rf5UYP5tNhI4o6nPClJn0sg06VJxs2kvJ+Jh
- TrxnkFJPMZj26BBtZneVmsClRl41X+k9KFU/Nx6lhBeH5p/uZXfOZKs109yt8r6tDFU7sCuliEQ
- d6qhDisWXKF9MMfznnpUYx9Ivb20zy2d4ggu9ep2XueIhhckDNHkEhA8oRlahGPBw2C19eKhR/Z
- nWs7yTnYZaohadReOhw3QnVj1A36yrmMdeUlVLPePOWkhKK2a1GY/G4RqPYpERGHX/5nss7yMyC
- 8IJmeiuHQbXIo69leXMyneCvnX2saU4Sd4n+W6OE0oGN7RJeG9Kb5EOgpTF25TAU46RhjUBMMek
- rze5LwZ8LPLA2X3wA/evtQT8Z4sDqWldqlPuxN8HxD1tRpEPY2sQAmCQOc5w0pDnhWG85am431h
- XDJP+fW2sabwA2HtLDkWCCaJac7h72kx/gJonpHRDFoDBNXuKfV2mDKeanq/4mHMJbVlFF+Q==
-X-Google-Smtp-Source: AGHT+IGGchD+wIOw2aXOqsLwke9vqYQ4Lq3oeeRPMPF/DZTBQlrrQs8n9AoCfzHlckli0oZf++JqFg==
-X-Received: by 2002:a05:600c:1c1d:b0:46e:39e1:fc27 with SMTP id
- 5b1f17b1804b1-477307d740cmr104585555e9.5.1762165056739; 
- Mon, 03 Nov 2025 02:17:36 -0800 (PST)
+ AJvYcCWxgwmdYfaRWU3HETU81fcYcjVsAP1cYuZMtQpQyqxxo0uPGVpzF2zc9EL+t9S+sCI+NtmIdRX7vg==@nongnu.org
+X-Gm-Message-State: AOJu0YyYgo75a1N1n1JBbiT9encXw0E4M9eFE6ONWVNGJpp8bMwELKFS
+ +/ahCIh18zDHxItm/VyTlg1iVi6UkjhV21tTlC9A5dxiD52wU4730FF6+6UGAWiQPh0=
+X-Gm-Gg: ASbGnctpZbuV8bAdSj0h+DbpSBbZeiWPBLw6IBjGloQUpzKgAHSTJCd3M6uGWvFLB+t
+ vMfNBnuOSA6tQOhTCaS4NEhUcHccf/2R1GrgtTX/NXPpXNbSuR0pXPnFPwA3/hW14jwXoDRs/GG
+ ugv/NA7qbTJWujKTej3gZekMUPQf5AflC+g2KkeZ951Zs0TqmRuQp8vmCMosOXuYGg07gIoMCVs
+ Z42gZ/Ul11jScIAFWMz+8pZw2/v1Q2nLE/76RnjMGwo28BT88TzEabR7S60fhUpGHi6xhx/tcZN
+ PalSOVp1A/eg/OwcZ77uqvmTvS5qtmBbuzm1Vvc1wfxkcSoGkxkc97Oag1YfYXmwAeGgjgfTac6
+ 8Ceb2OclroA8sqVa97JRtg0QkgCal25nmC0W6G1kgmGnQiko9smh3TyXNr8etdIxGle4xMa9X1v
+ Xc1/vht5QbJI6GC+CZXyARg4iGX1xn8lyadJFlavhrp+vDc7Ojs+jb9dmux9olOqZJd5k2sA==
+X-Google-Smtp-Source: AGHT+IEHuBq/wFHmCFTx2774ySWL/Ys5ewUJW7M2q5VLL+eU7EDIg5S4F5865RPivRb2YxgNsYDZ9w==
+X-Received: by 2002:a05:600c:1f8b:b0:477:a9e:859a with SMTP id
+ 5b1f17b1804b1-477308a06e8mr99471905e9.22.1762165088224; 
+ Mon, 03 Nov 2025 02:18:08 -0800 (PST)
 Received: from localhost.localdomain (ip-185-104-138-122.ptr.icomera.net.
  [185.104.138.122]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4773c383b45sm148535425e9.9.2025.11.03.02.17.33
+ ffacd0b85a97d-429c9737830sm13128551f8f.16.2025.11.03.02.18.00
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 03 Nov 2025 02:17:36 -0800 (PST)
+ Mon, 03 Nov 2025 02:18:07 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
@@ -76,23 +76,25 @@ Cc: Roman Bolshakov <rbolshakov@ddn.com>, Alexander Graf <agraf@csgraf.de>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
  Peter Collingbourne <pcc@google.com>, Cameron Esfahani <dirty@apple.com>,
  Mads Ynddal <mads@ynddal.dk>, Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v4 16/23] accel/hvf: Add hvf_arch_cpu_realize() stubs
-Date: Mon,  3 Nov 2025 11:10:25 +0100
-Message-ID: <20251103101034.59039-17-philmd@linaro.org>
+Subject: [PATCH v4 17/23] target/arm: Create GTimers *after* features
+ finalized / accel realized
+Date: Mon,  3 Nov 2025 11:10:26 +0100
+Message-ID: <20251103101034.59039-18-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251103101034.59039-1-philmd@linaro.org>
 References: <20251103101034.59039-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,75 +110,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Implement HVF AccelOpsClass::cpu_target_realize() hook as
-empty stubs. Target implementations will come separately.
+Call generic (including accelerator) cpu_realize() handlers
+*before* setting @gt_cntfrq_hz default
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/system/hvf_int.h  | 2 ++
- accel/hvf/hvf-accel-ops.c | 2 ++
- target/arm/hvf/hvf.c      | 5 +++++
- target/i386/hvf/hvf.c     | 5 +++++
- 4 files changed, 14 insertions(+)
+ target/arm/cpu.c | 65 ++++++++++++++++++++++++------------------------
+ 1 file changed, 33 insertions(+), 32 deletions(-)
 
-diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
-index c8e407a1463..96790b49386 100644
---- a/include/system/hvf_int.h
-+++ b/include/system/hvf_int.h
-@@ -106,4 +106,6 @@ int hvf_update_guest_debug(CPUState *cpu);
-  */
- bool hvf_arch_supports_guest_debug(void);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 39292fb9bc1..b392374df98 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1636,26 +1636,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         return;
+     }
  
-+bool hvf_arch_cpu_realize(CPUState *cpu, Error **errp);
+-    if (!cpu->gt_cntfrq_hz) {
+-        /*
+-         * 0 means "the board didn't set a value, use the default". (We also
+-         * get here for the CONFIG_USER_ONLY case.)
+-         * ARMv8.6 and later CPUs architecturally must use a 1GHz timer; before
+-         * that it was an IMPDEF choice, and QEMU initially picked 62.5MHz,
+-         * which gives a 16ns tick period.
+-         *
+-         * We will use the back-compat value:
+-         *  - for QEMU CPU types added before we standardized on 1GHz
+-         *  - for versioned machine types with a version of 9.0 or earlier
+-         */
+-        if (arm_feature(env, ARM_FEATURE_BACKCOMPAT_CNTFRQ) ||
+-            cpu->backcompat_cntfrq) {
+-            cpu->gt_cntfrq_hz = GTIMER_BACKCOMPAT_HZ;
+-        } else {
+-            cpu->gt_cntfrq_hz = GTIMER_DEFAULT_HZ;
+-        }
+-    }
+-
+ #ifndef CONFIG_USER_ONLY
+     /* The NVIC and M-profile CPU are two halves of a single piece of
+      * hardware; trying to use one without the other is a command line
+@@ -1702,7 +1682,40 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+             return;
+         }
+     }
++#endif
+ 
++    cpu_exec_realizefn(cs, &local_err);
++    if (local_err != NULL) {
++        error_propagate(errp, local_err);
++        return;
++    }
 +
++    arm_cpu_finalize_features(cpu, &local_err);
++    if (local_err != NULL) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    if (!cpu->gt_cntfrq_hz) {
++        /*
++         * 0 means "the board didn't set a value, use the default". (We also
++         * get here for the CONFIG_USER_ONLY case.)
++         * ARMv8.6 and later CPUs architecturally must use a 1GHz timer; before
++         * that it was an IMPDEF choice, and QEMU initially picked 62.5MHz,
++         * which gives a 16ns tick period.
++         *
++         * We will use the back-compat value:
++         *  - for QEMU CPU types added before we standardized on 1GHz
++         *  - for versioned machine types with a version of 9.0 or earlier
++         */
++        if (arm_feature(env, ARM_FEATURE_BACKCOMPAT_CNTFRQ) ||
++            cpu->backcompat_cntfrq) {
++            cpu->gt_cntfrq_hz = GTIMER_BACKCOMPAT_HZ;
++        } else {
++            cpu->gt_cntfrq_hz = GTIMER_DEFAULT_HZ;
++        }
++    }
++#ifndef CONFIG_USER_ONLY
+     {
+         uint64_t scale = gt_cntfrq_period_ns(cpu);
+ 
+@@ -1723,18 +1736,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     }
  #endif
-diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
-index 5922eb02e70..02c5d01670d 100644
---- a/accel/hvf/hvf-accel-ops.c
-+++ b/accel/hvf/hvf-accel-ops.c
-@@ -356,6 +356,8 @@ static void hvf_accel_ops_class_init(ObjectClass *oc, const void *data)
- {
-     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
  
-+    ops->cpu_target_realize = hvf_arch_cpu_realize;
-+
-     ops->create_vcpu_thread = hvf_start_vcpu_thread;
-     ops->kick_vcpu_thread = hvf_kick_vcpu_thread;
-     ops->handle_interrupt = generic_handle_interrupt;
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index 59a2ef53629..8208d345daa 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -972,6 +972,11 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-     return 0;
- }
- 
-+bool hvf_arch_cpu_realize(CPUState *cs, Error **errp)
-+{
-+    return true;
-+}
-+
- void hvf_kick_vcpu_thread(CPUState *cpu)
- {
-     hv_return_t ret;
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index d0ee00425f0..1b189efb4c7 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -370,6 +370,11 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-     return 0;
- }
- 
-+bool hvf_arch_cpu_realize(CPUState *cs, Error **errp)
-+{
-+    return true;
-+}
-+
- static void hvf_store_events(CPUState *cpu, uint32_t ins_len, uint64_t idtvec_info)
- {
-     X86CPU *x86_cpu = X86_CPU(cpu);
+-    cpu_exec_realizefn(cs, &local_err);
+-    if (local_err != NULL) {
+-        error_propagate(errp, local_err);
+-        return;
+-    }
+-
+-    arm_cpu_finalize_features(cpu, &local_err);
+-    if (local_err != NULL) {
+-        error_propagate(errp, local_err);
+-        return;
+-    }
+-
+ #ifdef CONFIG_USER_ONLY
+     /*
+      * User mode relies on IC IVAU instructions to catch modification of
 -- 
 2.51.0
 

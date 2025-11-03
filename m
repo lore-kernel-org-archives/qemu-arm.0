@@ -4,123 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 514B1CCF9F8
-	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 16:26:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 675B3CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 16:31:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vFxNu-0002Bv-QO; Mon, 03 Nov 2025 11:26:23 -0500
+	id 1vFxSJ-00046l-QB; Mon, 03 Nov 2025 11:30:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vFxNi-000226-CI
- for qemu-arm@nongnu.org; Mon, 03 Nov 2025 11:26:10 -0500
+ id 1vFxSI-00046Y-7w
+ for qemu-arm@nongnu.org; Mon, 03 Nov 2025 11:30:54 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vFxNb-0005r5-H4
- for qemu-arm@nongnu.org; Mon, 03 Nov 2025 11:26:09 -0500
+ id 1vFxS7-0007Ob-HA
+ for qemu-arm@nongnu.org; Mon, 03 Nov 2025 11:30:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762187157;
+ s=mimecast20190719; t=1762187438;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=eFJK3Zd/MdURPZNDXI9ZshaDaPsZkvrxmLcHXXS1V0c=;
- b=iAeYTL81cAmPvXBG4N+jrnLqLNuBbooy/wzpXw7xwrQJwuDQ3mzTpJgLHGl+6mkh936BHU
- 6eZf7XQ8TR+Cp25ECGVeeEc/unT+Z1+vd7WrxCyOWWEmumxRXeCbyH5kshv5Npr0cl6G4a
- QxqwYp9f8/6SuLwpATOOpG/bClVQ174=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=AMOfvYfaYou6zeuCdAKRJlXrsqctEUARD6uEDmcr3sA=;
+ b=fi0qng+NZ42siEz2uUjtcHjZbS08gdoPSWl8UPrlwaITpsumLaumr/PlG+0XSqXYiqs4hU
+ Z1xJvarhGv5TEyXlZ7Mebn1KSWYhgAnY+Y8ZKg9aR2o+DI12Oo5GbtdkMqo6paTy6D3ev/
+ zOCm5UtT2X6r38flnSQ+/2TJkxvot1w=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-135-HPmGuWghNZS67FhRL-abuA-1; Mon, 03 Nov 2025 11:25:56 -0500
-X-MC-Unique: HPmGuWghNZS67FhRL-abuA-1
-X-Mimecast-MFC-AGG-ID: HPmGuWghNZS67FhRL-abuA_1762187155
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-4711899ab0aso41008975e9.2
- for <qemu-arm@nongnu.org>; Mon, 03 Nov 2025 08:25:56 -0800 (PST)
+ us-mta-119-e5AuB1dkOQaT1b-TSwlD9w-1; Mon, 03 Nov 2025 11:30:37 -0500
+X-MC-Unique: e5AuB1dkOQaT1b-TSwlD9w-1
+X-Mimecast-MFC-AGG-ID: e5AuB1dkOQaT1b-TSwlD9w_1762187437
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-429be5aeea2so1895345f8f.2
+ for <qemu-arm@nongnu.org>; Mon, 03 Nov 2025 08:30:37 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762187155; x=1762791955;
+ d=1e100.net; s=20230601; t=1762187436; x=1762792236;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=eFJK3Zd/MdURPZNDXI9ZshaDaPsZkvrxmLcHXXS1V0c=;
- b=g05CCJQ9qDVlPR+h3nBIMagsiF7bBSrCThjiN/I/0SOB+fHmFKkn/8t46jtTa2Kn+d
- GOUrT1jeNtz1hKAsLO8cuBwT8qjzjBlbeoWgZt361awF3gsKHWXLeHoafJ8XPi1G1Cl8
- 6h6DBF+IEjXJJ22V3+Z/p7sWLnnLTeHeQ4MLtZOkjs1hdYlx+2eun+jcy75sjlCdulRP
- KmBoeV6zNI3zsZtQ7npfrbpuYi49NrCdSZK2Gd6+N0YwBcsYCIt1eC51xd+SaAp2t7z3
- LNDteRv9AIAyEBVvz3I0FMwdVo3B44Kl1X3+AIe2umHz0n5JOEJerVjaeRWs8iRu4Ykb
- iO3Q==
+ bh=AMOfvYfaYou6zeuCdAKRJlXrsqctEUARD6uEDmcr3sA=;
+ b=Tb1b3n/PJyNueK9O/hR4G/yWCB8C+3K4jasN+Hxi9fbBSyv7JQGU31VQuNCgrzWLkt
+ vXbQb09H1EtpmIQXz5eIkAC29qy9hDR9wxpUb3FdK+DZ+WfcYmOWapkOJ3YmljmQ3/zZ
+ lwHh2GKxL7B6Sh0uX5uEPQjSn3JGLt4mT+o3+hRQLKD2a54N9SxEUOBFXHGsxx5SWDGC
+ I02coQEHqAhWwwjMdsbeKnyIESbISl/RTRBaLa6H+u8DoxDsLyw5l3Vw9+Zp86uOErZG
+ 8nRRcRMLQrrSGflOFv3QhFbJbVFuVBDjhkmpKIIJzYDWVudFHeOWoIwixT8JlAK3O8On
+ EMlQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU8v23IhFkGrX12K5lsxF2jwgNqhXfJxRUb+7hkO3HsZFvt6eZ9vVgjLc9TLcgvCjR+WnVc9ei/Yg==@nongnu.org
-X-Gm-Message-State: AOJu0YzkvkEXhq3ukEOasgd/MNnIZ6dbNa6WIT3GM+MGIuaf2RuZ2/sf
- YQEY7lf6oJA0kTFxJjM7v7AMVtfuvrBU84MWra/bdzIKWYjt8hxt5Sr3rPCcr0EO7Hz67yOnlrV
- wh0yweinZZYX2V+05QUs+Tm2Aic94kvIOUKN7PNAAuFC6dF0puVILdQ==
-X-Gm-Gg: ASbGncuQOZrme0fCOQWVcjHzYD/o2owbn9wVOIND27SYXQ9y83Ce5XVEpC5hzlRVwje
- wv2Y8FGD9KixvbY/Dw/WMHylDjt9fdczUqybLy5MtTgGIxcS0PK/WYfhG+fUu59GvrJiAnUWKPx
- yLXc+OREB+rs51jK5uoKHzSolz1oOhEvq4+SXNzjTOhavyqWn0G4IBuWrdVAciaDCiH5eOsWV9K
- wOhk70/Xqtjm6FWCEmog+CeDiwZL/j5l71gF913QPpr93KOkV+BY5MoCfEaj4an7wwAvYypmPBu
- u9lDlXkJYGif9YDQuruCsfCXj8ELNJi7WuBj/RrjcxAwU9Zl4M16o5gBOVMbMXG/wl5mIbP3bms
- 7vm7jJfO1xjCyEdJoc+8IMaZHcsm93e9qkdZEdJIBMSdT5A==
-X-Received: by 2002:a05:600c:5021:b0:45d:e28c:875a with SMTP id
- 5b1f17b1804b1-477308b515cmr117450395e9.31.1762187155089; 
- Mon, 03 Nov 2025 08:25:55 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFn+uAJoQetdBB+i301NjK0js0SUYTkzUq3wdhvbVbqhV4CsF0S0rY591u/12NE7dfUaLUhxQ==
-X-Received: by 2002:a05:600c:5021:b0:45d:e28c:875a with SMTP id
- 5b1f17b1804b1-477308b515cmr117450065e9.31.1762187154672; 
- Mon, 03 Nov 2025 08:25:54 -0800 (PST)
+ AJvYcCXS1qTem6p0bRe7WN8GfoqAchNwGkuwYOIXnRG3FC3qxYW7mJdHWoMtjHN8Q2ej/AMQWBSDZWkdpw==@nongnu.org
+X-Gm-Message-State: AOJu0YxYrWx/GiXSJ/rYRXxV3ECPfx3B9f5c9ZhXIN5XIo2HZienRl8k
+ j2uERd3Ltke6GnShgAroZqwM3gK87WDOtW1A700LRXAADS/6ZE1fOhv5nUMPdx1ryLM1pnAkdhQ
+ sRz734d/Hk9FkqXKOO8YgrQHBGHoNqw8TwGP1mWXr2qW5BxE55XrRvg==
+X-Gm-Gg: ASbGncvPNGmv0NSQDu7QLZSI05j8m5LvMLjcEkxyjZ0MyUx9tdXt6SxOrVtzeBIEU01
+ QtuYCpxrZ1Y9F3SwDALEOhSGGIckd7v873MYBr2o20yS1OCPXTmn4rQTJ0VSh4ApkY7X76nIaD8
+ r/Tbrb2Ww4h7p+0dLBkEI/TSRbQegmr9soLmjsHSwOQ/ZTlyxmBgwt//mofm1EpclllWTq1ISGu
+ Td2jf+32J1hLc+/hvjK3MIIi9r+Erkwhp218MztyaoLoupQZEYIhZPR6fCvUrqmDeUirc1FjraV
+ P2aNNxXEyeVu30D2PB4ZiYnqu1BZ7fF7qeLqNywwJUulZzmK/OW+ylUdD0Moe65EcxxyqJLX1wu
+ K7MvYeOLxIvREwb1aB6l16ZTKGgBXsKEhEvClXCbA2UyTtw==
+X-Received: by 2002:a05:6000:2387:b0:429:b751:7935 with SMTP id
+ ffacd0b85a97d-429bd6b1fbemr11615930f8f.56.1762187436492; 
+ Mon, 03 Nov 2025 08:30:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFPB7L4RnPIaLDr20ydsswmq05dPX7C+uIKYMYA7+0CXCfUAlrAuaclnEPhp7aVaGqcJbCwOA==
+X-Received: by 2002:a05:6000:2387:b0:429:b751:7935 with SMTP id
+ ffacd0b85a97d-429bd6b1fbemr11615889f8f.56.1762187436060; 
+ Mon, 03 Nov 2025 08:30:36 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429ce80ded1sm10663397f8f.4.2025.11.03.08.25.53
+ 5b1f17b1804b1-4773c2e677csm163887905e9.3.2025.11.03.08.30.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Nov 2025 08:25:54 -0800 (PST)
-Message-ID: <02ee0143-1da2-4e71-af50-b1dc2b920c05@redhat.com>
-Date: Mon, 3 Nov 2025 17:25:52 +0100
+ Mon, 03 Nov 2025 08:30:35 -0800 (PST)
+Message-ID: <1d2570cc-02f4-41c5-ba5a-0ceca8a732e5@redhat.com>
+Date: Mon, 3 Nov 2025 17:30:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 26/32] hw/arm/smmuv3-accel: Add a property to specify
- RIL support
-To: Shameer Kolothum <skolothumtho@nvidia.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Jason Gunthorpe <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
- <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>,
- "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
- "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
- Krishnakant Jaju <kjaju@nvidia.com>
+Subject: Re: [PATCH v5 06/32] hw/arm/smmuv3-accel: Initialize shared system
+ address space
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+ ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
+ kjaju@nvidia.com, Peter Xu <peterx@redhat.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>
 References: <20251031105005.24618-1-skolothumtho@nvidia.com>
- <20251031105005.24618-27-skolothumtho@nvidia.com>
- <2e8bd9fe-2434-443e-ae4e-e15352ff112a@redhat.com>
- <CH3PR12MB754840F7A332AE3A6ED3648AABC7A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <20251031105005.24618-7-skolothumtho@nvidia.com>
+ <ea91137e-e5af-414b-86e2-2de7373bcb05@linaro.org>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB754840F7A332AE3A6ED3648AABC7A@CH3PR12MB7548.namprd12.prod.outlook.com>
+In-Reply-To: <ea91137e-e5af-414b-86e2-2de7373bcb05@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: D8-8Oiqvn7u68yuAKmxeWkFKy946kJ-HTV0laSYi63E_1762187155
+X-Mimecast-MFC-PROC-ID: x6OYgwikWs6zGIRWBZ50YC7dbo5pSDiuKIpIn6q-GVE_1762187437
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_PASS=-0.001, T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,64 +132,82 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-On 11/3/25 5:08 PM, Shameer Kolothum wrote:
-> Hi Eric,
+On 11/3/25 2:39 PM, Philippe Mathieu-Daudé wrote:
+> Hi,
 >
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 03 November 2025 15:07
->> To: Shameer Kolothum <skolothumtho@nvidia.com>; qemu-
->> arm@nongnu.org; qemu-devel@nongnu.org
->> Cc: peter.maydell@linaro.org; Jason Gunthorpe <jgg@nvidia.com>; Nicolin
->> Chen <nicolinc@nvidia.com>; ddutile@redhat.com; berrange@redhat.com;
->> Nathan Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
->> smostafa@google.com; wangzhou1@hisilicon.com;
->> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
->> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
->> Krishnakant Jaju <kjaju@nvidia.com>
->> Subject: Re: [PATCH v5 26/32] hw/arm/smmuv3-accel: Add a property to
->> specify RIL support
+> On 31/10/25 11:49, Shameer Kolothum wrote:
+>> To support accelerated SMMUv3 instances, introduce a shared system-wide
+>> AddressSpace (shared_as_sysmem) that aliases the global system memory.
+>> This shared AddressSpace will be used in a subsequent patch for all
+>> vfio-pci devices behind all accelerated SMMUv3 instances within a VM.
 >>
->> External email: Use caution opening links or attachments
+>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+>> ---
+>>   hw/arm/smmuv3-accel.c | 27 +++++++++++++++++++++++++++
+>>   1 file changed, 27 insertions(+)
 >>
->>
->> Hi Shameer,
->>
->> On 10/31/25 11:49 AM, Shameer Kolothum wrote:
->>> Currently QEMU SMMUv3 has RIL support by default. But if accelerated
->>> mode is enabled, RIL has to be compatible with host SMMUv3 support.
->>>
->>> Add a property so that the user can specify this.
->>>
->>> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
->>> Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
->>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
->> I have not seen any reply on
->> https://lore.kernel.org/all/b6105534-4a17-4700-bb0b-
->> e961babd10bb@redhat.com/
-> Sorry, looks like I missed to reply.
->  
->> I guess you chose to restrict RIL to accel only.
-> Yes. I have updated the description. 
+>> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+>> index 99ef0db8c4..f62b6cf2c9 100644
+>> --- a/hw/arm/smmuv3-accel.c
+>> +++ b/hw/arm/smmuv3-accel.c
+>> @@ -11,6 +11,15 @@
+>>   #include "hw/arm/smmuv3.h"
+>>   #include "smmuv3-accel.h"
+>>   +/*
+>> + * The root region aliases the global system memory, and
+>> shared_as_sysmem
+>> + * provides a shared Address Space referencing it. This Address
+>> Space is used
+>> + * by all vfio-pci devices behind all accelerated SMMUv3 instances
+>> within a VM.
+>> + */
+>> +MemoryRegion root;
+>> +MemoryRegion sysmem;
 >
->  About AIDR consistency check,
->> did you have a look?
-> I have added that check in patch #19. But Zhangfei has reported a problem
-> with that as his hardware reports AIDR = 0. . Please take a look that
-> discussion.
+> Why can't we store that in SMMUv3State?
+>
+>> +static AddressSpace *shared_as_sysmem;
 
-OK Thanks. I still think it may be relevant to support disabling RIL for
-non accel mode but this can be added later on.
-
-feel free to add my
-
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+We will have several instances of SMMUv3State which all share the same
+as, hence the choice of having a global.
 
 Eric
-
 >
-> Thanks,
-> Shameer
->  
+> FYI we have object_resolve_type_unambiguous() to check whether an
+> instance exists only once (singleton).
+>
+>> +
+>>   static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs,
+>> SMMUPciBus *sbus,
+>>                                                  PCIBus *bus, int devfn)
+>>   {
+>> @@ -51,9 +60,27 @@ static const PCIIOMMUOps smmuv3_accel_ops = {
+>>       .get_address_space = smmuv3_accel_find_add_as,
+>>   };
+>>   +static void smmuv3_accel_as_init(SMMUv3State *s)
+>> +{
+>> +
+>> +    if (shared_as_sysmem) {
+>> +        return;
+>> +    }
+>> +
+>> +    memory_region_init(&root, OBJECT(s), "root", UINT64_MAX);
+>> +    memory_region_init_alias(&sysmem, OBJECT(s), "smmuv3-accel-sysmem",
+>> +                             get_system_memory(), 0,
+>> +                             memory_region_size(get_system_memory()));
+>> +    memory_region_add_subregion(&root, 0, &sysmem);
+>> +
+>> +    shared_as_sysmem = g_new0(AddressSpace, 1);
+>> +    address_space_init(shared_as_sysmem, &root,
+>> "smmuv3-accel-as-sysmem");
+>> +}
+>> +
+>>   void smmuv3_accel_init(SMMUv3State *s)
+>>   {
+>>       SMMUState *bs = ARM_SMMU(s);
+>>         bs->iommu_ops = &smmuv3_accel_ops;
+>> +    smmuv3_accel_as_init(s);
+>>   }
+>
 
 

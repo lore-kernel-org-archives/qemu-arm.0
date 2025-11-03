@@ -4,52 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F138CCF9F8
-	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 09:36:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11B74CCFA04
+	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 09:45:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vFqsV-0001KE-Bn; Mon, 03 Nov 2025 04:29:31 -0500
+	id 1vFr7i-0001Ka-6x; Mon, 03 Nov 2025 04:45:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vFqsU-0001IP-91; Mon, 03 Nov 2025 04:29:30 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1vFr7g-0001KG-Fs
+ for qemu-arm@nongnu.org; Mon, 03 Nov 2025 04:45:12 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vFqsR-0001r9-7c; Mon, 03 Nov 2025 04:29:29 -0500
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 3 Nov
- 2025 17:28:12 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Mon, 3 Nov 2025 17:28:12 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <kane_chen@aspeedtech.com>
-Subject: [PATCH v3 15/30] hw/arm/aspeed: Split Supermicro X11 machine into a
- separate source file for maintainability
-Date: Mon, 3 Nov 2025 17:27:26 +0800
-Message-ID: <20251103092801.1282602-16-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251103092801.1282602-1-jamin_lin@aspeedtech.com>
-References: <20251103092801.1282602-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1vFr7e-00063c-5S
+ for qemu-arm@nongnu.org; Mon, 03 Nov 2025 04:45:12 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1762163108;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qtBIKTpv4o1EKAk97fV4bR7w0PUyneRCBxrQbcM9y+w=;
+ b=jAMN31gDyCkOczNLs0vUhHNA7hzEr9uenG56oTdckWR4NXR4XaR7zsd0PQ2us40FzS35+G
+ xMbenvGILoNPkvH8oqvuGMB6+IPcB5EkumoZu3Oe/RDHE8Nz5SvqXZFTBDKppU9iYU2ZwH
+ d7VqD+NT2LQGxUunD0xPco8pdfuo4wY=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-222--C-lTLpNP6-AGoOClRIZcw-1; Mon, 03 Nov 2025 04:45:07 -0500
+X-MC-Unique: -C-lTLpNP6-AGoOClRIZcw-1
+X-Mimecast-MFC-AGG-ID: -C-lTLpNP6-AGoOClRIZcw_1762163105
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-429ce8ac89bso527562f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 03 Nov 2025 01:45:06 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1762163105; x=1762767905;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=qtBIKTpv4o1EKAk97fV4bR7w0PUyneRCBxrQbcM9y+w=;
+ b=HWBZW+UeO0PiFEgCpXGNLREb4jAcSWU962qUfjRRzE+YZseXTBrj/ib2QgIZseGWSo
+ fVuuDpxcVyHrlqHOL6ahJJqoeNWI4+oUS0k3D/iFfhMvYhI9+yZMZgYBYjtCvF7bVzZL
+ RgEG81s4tOLq8C0XGgpuyrICqTLizsrx/9LPlJP0bE9Kl3lXYlghLpL2sRSeTx2rYf8B
+ 9arO9W2fyfIVbAX5Jj8gGR9te8tpwF1YuhR1Ev9arAjGtdaO40/45n6zZ1nkoPcxJAj/
+ b90Vgz4WQvry3aoqIN6jm+jy1PEWJ09qcwTL0qlibTsgJD9fXfgLaKY+fzzpBzrAqaio
+ if0g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUYmXAKPFJMkRYPnOdvYgbCmozkcSlW+UnqyLgB/X/9cnuFKoMmFywGDb1l74M16dk8HlvIRWmqGg==@nongnu.org
+X-Gm-Message-State: AOJu0YxDOAbo1tyxmD17NH1GUmy5G/deHZJP9qoIzDHPDfIytV7tdW6D
+ r75nt51H6n9jw7RWVW9E2d2eWuWeCWaGo0fKjXtKSTxADQC0MvNtAMNtvkXYanzcppPlz3YBlI5
+ 2rtUBybTX4ieeN9VjxGQgKetLum1VNOsdH7z0RKvQZIY41sJMmuV4fA==
+X-Gm-Gg: ASbGncs5JbtLhEpK8Koa/JvEpRrEQpzF1nVmGTesngRdJM2s0bN8ROyz7l/wiBzsIGK
+ CvW6mMjQ1BbFsdSB8NLHVZmADgQpkW7Z4xLj3x4gAFi2KoZNxKVWDY40Pr5eWgxlw++1FxWNq6T
+ 7Q+4rBs3Y145UQNBhIF17GJFCqDgxXoh8EbyKnCLYhmlfHzt/jkd6Fh5DrXD6ARsnfoODdpYhtA
+ Y+AO4LQvva7tzNoGR2QvTH/jMAnJPuD+ohdIhXwsCKtbfde1NZUAlcSIKNVVYJTRDyEyd9omheK
+ RH71sEFYlE4LbMUj7NNRvMGubYUq7tMUZCGe39tBqFI45YoGw252Gp6Ep+wjEwBwoQ==
+X-Received: by 2002:a5d:64e7:0:b0:429:9323:2bec with SMTP id
+ ffacd0b85a97d-429bd6a4bf4mr10227657f8f.40.1762163105418; 
+ Mon, 03 Nov 2025 01:45:05 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFI/Isnfg5IO61hQnMfkvDjvv0RDoI80m7l4TDxEsJsZtZEY/2w9MLpoLR0XQPsOEC69ZDByg==
+X-Received: by 2002:a5d:64e7:0:b0:429:9323:2bec with SMTP id
+ ffacd0b85a97d-429bd6a4bf4mr10227619f8f.40.1762163104889; 
+ Mon, 03 Nov 2025 01:45:04 -0800 (PST)
+Received: from fedora ([85.93.96.130]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-429c5e19103sm16181204f8f.28.2025.11.03.01.45.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 03 Nov 2025 01:45:04 -0800 (PST)
+Date: Mon, 3 Nov 2025 10:45:03 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Cc: Jonathan Cameron <jonathan.cameron@huawei.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, mst@redhat.com, anisinha@redhat.com,
+ gengdongjiu1@gmail.com, peter.maydell@linaro.org, pbonzini@redhat.com,
+ mchehab+huawei@kernel.org, shan.gavin@gmail.com
+Subject: Re: [PATCH RESEND v2 2/3] kvm/arm/kvm: Introduce helper
+ push_ghes_memory_errors()
+Message-ID: <20251103104503.748381a4@fedora>
+In-Reply-To: <fcf84423-9675-4293-9552-ac5f09acf171@redhat.com>
+References: <20251007060810.258536-1-gshan@redhat.com>
+ <20251007060810.258536-3-gshan@redhat.com>
+ <20251031100901.00000ccf@huawei.com>
+ <fcf84423-9675-4293-9552-ac5f09acf171@redhat.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: -jVQKPsqfa3vKUcaKhqAGvnDHaansnDXE_vu_MbLq60_1762163105
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,201 +116,95 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit moves the Supermicro X11 BMC machine implementation out of
-aspeed.c into a new standalone file aspeed_ast2400_supermicrox11.c and
-removes its dependency on the Palmetto platform’s I²C initialization.
+On Mon, 3 Nov 2025 09:39:50 +1000
+Gavin Shan <gshan@redhat.com> wrote:
 
-This refactor continues the modularization effort for Aspeed platform support,
-ensuring that each board’s configuration resides in its own dedicated source file.
-By duplicating and renaming the palmetto_bmc_i2c_init() logic into
-supermicrox11_bmc_i2c_init(), this change removes unwanted coupling between
-the two board definitions.
+> On 10/31/25 8:09 PM, Jonathan Cameron wrote:
+> > On Tue,  7 Oct 2025 16:08:09 +1000
+> > Gavin Shan <gshan@redhat.com> wrote:
+> >   
+> >> Introduce helper push_ghes_memory_errors(), which sends ACPI GHES memory
+> >> errors, injects SEA exception or aborts on errors. This function will
+> >> be extended to support multiple ACPI GHES memory errors in the next
+> >> path.
+> >>
+> >> No functional changes intended.
+> >>
+> >> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> >> ---
+> >>   target/arm/kvm.c | 36 ++++++++++++++++++++++++------------
+> >>   1 file changed, 24 insertions(+), 12 deletions(-)
+> >>
+> >> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> >> index 9a47ac9e3a..c5d5b3b16e 100644
+> >> --- a/target/arm/kvm.c
+> >> +++ b/target/arm/kvm.c
+> >> @@ -2429,12 +2429,34 @@ int kvm_arch_get_registers(CPUState *cs, Error **errp)
+> >>       return ret;
+> >>   }
+> >>   
+> >> +static void push_ghes_memory_errors(CPUState *c, AcpiGhesState *ags,
+> >> +                                    uint64_t paddr)  
+> > 
+> > Why not hwaddr paddr?
+> >   
+> 
+> Because acpi_ghes_memory_errors() accepts it as uint64_t.
 
-Key updates include:
-- Moved SUPERMICROX11_BMC_HW_STRAP1 macro definition into a new file.
-- Moved aspeed_machine_supermicrox11_bmc_class_init() and type registration into a new file.
-- Added a dedicated supermicrox11_bmc_i2c_init() function (copied and renamed from Palmetto’s version).
-- Added the new file aspeed_ast2400_supermicrox11.c to the build system (meson.build).
-- Removed all Supermicro X11–specific code and macros from aspeed.c.
+ack to that, it's uint64_t in spec so I'd stick to that.
 
-No functional changes.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/arm/aspeed.c                       | 37 ------------
- hw/arm/aspeed_ast2400_supermicrox11.c | 82 +++++++++++++++++++++++++++
- hw/arm/meson.build                    |  1 +
- 3 files changed, 83 insertions(+), 37 deletions(-)
- create mode 100644 hw/arm/aspeed_ast2400_supermicrox11.c
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index f9e6d8c4c6..fbd27020bd 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -57,20 +57,6 @@ static struct arm_boot_info aspeed_board_binfo = {
-         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-         SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
- 
--/* TODO: Find the actual hardware value */
--#define SUPERMICROX11_BMC_HW_STRAP1 (                                   \
--        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
--        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2) |                           \
--        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
--        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       \
--        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
--        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
--        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |                \
--        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1) | \
--        SCU_HW_STRAP_SPI_WIDTH |                                        \
--        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
--        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
--
- /* AST2600 evb hardware value */
- #define AST2600_EVB_HW_STRAP1 0x000000C0
- #define AST2600_EVB_HW_STRAP2 0x00000003
-@@ -1073,24 +1059,6 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc,
-     aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
--static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
--                                                        const void *data)
--{
--    MachineClass *mc = MACHINE_CLASS(oc);
--    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
--
--    mc->desc       = "Supermicro X11 BMC (ARM926EJ-S)";
--    amc->soc_name  = "ast2400-a1";
--    amc->hw_strap1 = SUPERMICROX11_BMC_HW_STRAP1;
--    amc->fmc_model = "mx25l25635e";
--    amc->spi_model = "mx25l25635e";
--    amc->num_cs    = 1;
--    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
--    amc->i2c_init  = palmetto_bmc_i2c_init;
--    mc->default_ram_size = 256 * MiB;
--    aspeed_machine_class_init_cpus_defaults(mc);
--}
--
- static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
-                                                   const void *data)
- {
-@@ -1441,11 +1409,6 @@ static const TypeInfo aspeed_machine_types[] = {
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_palmetto_class_init,
-         .interfaces    = arm_machine_interfaces,
--    }, {
--        .name          = MACHINE_TYPE_NAME("supermicrox11-bmc"),
--        .parent        = TYPE_ASPEED_MACHINE,
--        .class_init    = aspeed_machine_supermicrox11_bmc_class_init,
--        .interfaces    = arm_machine_interfaces,
-     }, {
-         .name          = MACHINE_TYPE_NAME("ast2600-evb"),
-         .parent        = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_ast2400_supermicrox11.c b/hw/arm/aspeed_ast2400_supermicrox11.c
-new file mode 100644
-index 0000000000..db88318450
---- /dev/null
-+++ b/hw/arm/aspeed_ast2400_supermicrox11.c
-@@ -0,0 +1,82 @@
-+/*
-+ * Supermicro X11
-+ *
-+ * Copyright (C) 2025 ASPEED Technology Inc.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/arm/machines-qom.h"
-+#include "hw/arm/aspeed.h"
-+#include "hw/arm/aspeed_soc.h"
-+#include "hw/i2c/smbus_eeprom.h"
-+
-+/* TODO: Find the actual hardware value */
-+#define SUPERMICROX11_BMC_HW_STRAP1 (                                   \
-+        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
-+        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2) |                           \
-+        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
-+        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       \
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
-+        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |                \
-+        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1) | \
-+        SCU_HW_STRAP_SPI_WIDTH |                                        \
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-+        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
-+
-+static void supermicrox11_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = bmc->soc;
-+    DeviceState *dev;
-+    uint8_t *eeprom_buf = g_malloc0(32 * 1024);
-+
-+    /*
-+     * The palmetto platform expects a ds3231 RTC but a ds1338 is
-+     * enough to provide basic RTC features. Alarms will be missing
-+     */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
-+
-+    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
-+                          eeprom_buf);
-+
-+    /* add a TMP423 temperature sensor */
-+    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
-+                                         "tmp423", 0x4c));
-+    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature3", 110000, &error_abort);
-+}
-+
-+static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
-+                                                        const void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       = "Supermicro X11 BMC (ARM926EJ-S)";
-+    amc->soc_name  = "ast2400-a1";
-+    amc->hw_strap1 = SUPERMICROX11_BMC_HW_STRAP1;
-+    amc->fmc_model = "mx25l25635e";
-+    amc->spi_model = "mx25l25635e";
-+    amc->num_cs    = 1;
-+    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
-+    amc->i2c_init  = supermicrox11_bmc_i2c_init;
-+    mc->default_ram_size = 256 * MiB;
-+    aspeed_machine_class_init_cpus_defaults(mc);
-+}
-+
-+static const TypeInfo aspeed_ast2400_supermicrox11_types[] = {
-+    {
-+        .name          = MACHINE_TYPE_NAME("supermicrox11-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_supermicrox11_bmc_class_init,
-+        .interfaces    = arm_machine_interfaces,
-+    }
-+};
-+
-+DEFINE_TYPES(aspeed_ast2400_supermicrox11_types)
-+
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 5467ee673d..ea2d24af88 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -45,6 +45,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_soc_common.c',
-   'aspeed_ast2400.c',
-   'aspeed_ast2400_quanta-q71l.c',
-+  'aspeed_ast2400_supermicrox11.c',
-   'aspeed_ast2500_evb.c',
-   'aspeed_ast2500_fp5280g2.c',
-   'aspeed_ast2500_g220a.c',
--- 
-2.43.0
+> >> +{
+> >> +    GArray *addresses = g_array_new(false, false, sizeof(paddr));  
+> > 
+> > As in previous I'd just have
+> > 	hwaddr paddrs[16];
+> > 
+> > rather than bothering with a g_array.
+> >   
+> 
+> Ok.
+> 
+> >> +    int ret;
+> >> +
+> >> +    kvm_cpu_synchronize_state(c);
+> >> +    g_array_append_vals(addresses, &paddr, 1);
+> >> +    ret = acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC, addresses);
+> >> +    if (ret) {
+> >> +        goto error;
+> >> +    }
+> >> +
+> >> +    kvm_inject_arm_sea(c);
+> >> +
+> >> +    g_array_free(addresses, true);
+> >> +
+> >> +    return;
+> >> +error:
+> >> +    error_report("failed to record the error");  
+> > 
+> > I'd just do this inline at the error case. In the next
+> > patch you add a more specific report of why to another path
+> > that would then be followed by this.
+> >   
+> 
+> Ok.
+> 
+> >> +    abort();  
+> > 
+> > If you do the above with the message, just duplicate this in the
+> > two error paths (by end of next patch).
+> >   
+> 
+> Will correct this in next revision if we still take current design. Igor suggested
+> to have individual error source per vCPU in another thread.
+> 
+> >> +}  
+> >   
+> 
+> Thanks,
+> Gavin
+> 
 
 

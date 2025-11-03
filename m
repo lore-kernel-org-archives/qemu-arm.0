@@ -4,181 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8794BCCFA03
-	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 16:08:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 514B1CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 16:26:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vFx6e-0005AV-Lc; Mon, 03 Nov 2025 11:08:33 -0500
+	id 1vFxNu-0002Bv-QO; Mon, 03 Nov 2025 11:26:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vFx6a-00058z-9K; Mon, 03 Nov 2025 11:08:28 -0500
-Received: from mail-eastusazlp170120007.outbound.protection.outlook.com
- ([2a01:111:f403:c101::7] helo=BL0PR03CU003.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vFxNi-000226-CI
+ for qemu-arm@nongnu.org; Mon, 03 Nov 2025 11:26:10 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vFx6T-0000dl-IX; Mon, 03 Nov 2025 11:08:27 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=oAHoOcCjUVQcUivHaXD9P5ysLn6n4OXHm3JbTOupHPU0TCDMue3rRW4HWWRyYvQQG1RpY/peEVSlN+JAD5dTphagg8vgPhGbOChGHpmh1CdBb9+wq1m5IrCxfWRufx8piRqdA+sU7mcJHGY6T1eHCaE2a34GClai6LdT/zWuTsciToLP0qG+0ypSZEqtCFvFgpJUvGcvPEdQp7l+gxzun9Y1/DwsRqLmqg6SitEUBNzkZF8q3usyfXySHALgdK+56ylXtfDsG8WqltZLMjZZUYujVKwJtMEI0J0fGpwrb+0uhAGFhgcbn8QyEE6vYPj/j4rj9/VDJsQuODbU8R46sA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VVzlXiW8cHUYxjSj9jafU5P5oB/4PVypTGuElxAKJU8=;
- b=o2AQo/dlcqpDwUxRoaZC6c6lg0DT3061vjw5tNgXNOsGFFBPii5diAwzxxgwHaYjYbbL+jn4koRk8YFWbajuRnfw5UKupdS3jzAA3oBgR5euqN1tbVnxUD/vR0n40vYW7S5U+56g+TMCtMRQisShqchS5W09Yxl1x0iBybq+gH0gsLuasfR/VRajH6pPIoVikpULolso16nHlJPnef00N1vwvTsDcwjLe9ujKIatMYn9ELiAHFBQHY4O/7mt5lCjj4fTJFggdm7JptMmd84OVbOILklNTvacIOyKgnzSRUIngQge6xOyYMn4P+xm6M+J4LZrzP0jNgGCzLxoT1eIEg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VVzlXiW8cHUYxjSj9jafU5P5oB/4PVypTGuElxAKJU8=;
- b=JFxx018DVG5ECjBH9+vCNNbIBo/rmyK2F1EMoIYwmeXvGZ1MKOi0I6sNVMYlli2plBI6oAbancM235LL3X7Cne3Yh/0K8kCNjccpt/hS+hgWg2BlkoP4V2Wkz6Xb6xSk9BTJOEGFd9plkgZF8Y5K7+YRJsb5G/rcX19UMr7Qj/ITWWug/RDeuyWHceyvUuTPP7BdFthlJY1CtNRNHvdNUcE77dGYvDqmlQDsAWDP+TufD1BsqtZklxU6DZNPE+FkKLTDvnn0oWtWDds3LOkK86XDRPPTxivYYcjPD981/jSyDh1vm3qQsSyFr6leYbDXtIDIjCgaaWF/CYnksyx74w==
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
- by CH3PR12MB7545.namprd12.prod.outlook.com (2603:10b6:610:146::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.16; Mon, 3 Nov
- 2025 16:08:06 +0000
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::e8c:e992:7287:cb06]) by CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::e8c:e992:7287:cb06%5]) with mapi id 15.20.9275.015; Mon, 3 Nov 2025
- 16:08:06 +0000
-From: Shameer Kolothum <skolothumtho@nvidia.com>
-To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Jason Gunthorpe
- <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>, "ddutile@redhat.com"
- <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>, Nathan
- Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>, "wangzhou1@hisilicon.com"
- <wangzhou1@hisilicon.com>, "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>, 
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vFxNb-0005r5-H4
+ for qemu-arm@nongnu.org; Mon, 03 Nov 2025 11:26:09 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1762187157;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=eFJK3Zd/MdURPZNDXI9ZshaDaPsZkvrxmLcHXXS1V0c=;
+ b=iAeYTL81cAmPvXBG4N+jrnLqLNuBbooy/wzpXw7xwrQJwuDQ3mzTpJgLHGl+6mkh936BHU
+ 6eZf7XQ8TR+Cp25ECGVeeEc/unT+Z1+vd7WrxCyOWWEmumxRXeCbyH5kshv5Npr0cl6G4a
+ QxqwYp9f8/6SuLwpATOOpG/bClVQ174=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-135-HPmGuWghNZS67FhRL-abuA-1; Mon, 03 Nov 2025 11:25:56 -0500
+X-MC-Unique: HPmGuWghNZS67FhRL-abuA-1
+X-Mimecast-MFC-AGG-ID: HPmGuWghNZS67FhRL-abuA_1762187155
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4711899ab0aso41008975e9.2
+ for <qemu-arm@nongnu.org>; Mon, 03 Nov 2025 08:25:56 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1762187155; x=1762791955;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=eFJK3Zd/MdURPZNDXI9ZshaDaPsZkvrxmLcHXXS1V0c=;
+ b=g05CCJQ9qDVlPR+h3nBIMagsiF7bBSrCThjiN/I/0SOB+fHmFKkn/8t46jtTa2Kn+d
+ GOUrT1jeNtz1hKAsLO8cuBwT8qjzjBlbeoWgZt361awF3gsKHWXLeHoafJ8XPi1G1Cl8
+ 6h6DBF+IEjXJJ22V3+Z/p7sWLnnLTeHeQ4MLtZOkjs1hdYlx+2eun+jcy75sjlCdulRP
+ KmBoeV6zNI3zsZtQ7npfrbpuYi49NrCdSZK2Gd6+N0YwBcsYCIt1eC51xd+SaAp2t7z3
+ LNDteRv9AIAyEBVvz3I0FMwdVo3B44Kl1X3+AIe2umHz0n5JOEJerVjaeRWs8iRu4Ykb
+ iO3Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU8v23IhFkGrX12K5lsxF2jwgNqhXfJxRUb+7hkO3HsZFvt6eZ9vVgjLc9TLcgvCjR+WnVc9ei/Yg==@nongnu.org
+X-Gm-Message-State: AOJu0YzkvkEXhq3ukEOasgd/MNnIZ6dbNa6WIT3GM+MGIuaf2RuZ2/sf
+ YQEY7lf6oJA0kTFxJjM7v7AMVtfuvrBU84MWra/bdzIKWYjt8hxt5Sr3rPCcr0EO7Hz67yOnlrV
+ wh0yweinZZYX2V+05QUs+Tm2Aic94kvIOUKN7PNAAuFC6dF0puVILdQ==
+X-Gm-Gg: ASbGncuQOZrme0fCOQWVcjHzYD/o2owbn9wVOIND27SYXQ9y83Ce5XVEpC5hzlRVwje
+ wv2Y8FGD9KixvbY/Dw/WMHylDjt9fdczUqybLy5MtTgGIxcS0PK/WYfhG+fUu59GvrJiAnUWKPx
+ yLXc+OREB+rs51jK5uoKHzSolz1oOhEvq4+SXNzjTOhavyqWn0G4IBuWrdVAciaDCiH5eOsWV9K
+ wOhk70/Xqtjm6FWCEmog+CeDiwZL/j5l71gF913QPpr93KOkV+BY5MoCfEaj4an7wwAvYypmPBu
+ u9lDlXkJYGif9YDQuruCsfCXj8ELNJi7WuBj/RrjcxAwU9Zl4M16o5gBOVMbMXG/wl5mIbP3bms
+ 7vm7jJfO1xjCyEdJoc+8IMaZHcsm93e9qkdZEdJIBMSdT5A==
+X-Received: by 2002:a05:600c:5021:b0:45d:e28c:875a with SMTP id
+ 5b1f17b1804b1-477308b515cmr117450395e9.31.1762187155089; 
+ Mon, 03 Nov 2025 08:25:55 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFn+uAJoQetdBB+i301NjK0js0SUYTkzUq3wdhvbVbqhV4CsF0S0rY591u/12NE7dfUaLUhxQ==
+X-Received: by 2002:a05:600c:5021:b0:45d:e28c:875a with SMTP id
+ 5b1f17b1804b1-477308b515cmr117450065e9.31.1762187154672; 
+ Mon, 03 Nov 2025 08:25:54 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-429ce80ded1sm10663397f8f.4.2025.11.03.08.25.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 03 Nov 2025 08:25:54 -0800 (PST)
+Message-ID: <02ee0143-1da2-4e71-af50-b1dc2b920c05@redhat.com>
+Date: Mon, 3 Nov 2025 17:25:52 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 26/32] hw/arm/smmuv3-accel: Add a property to specify
+ RIL support
+To: Shameer Kolothum <skolothumtho@nvidia.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Jason Gunthorpe <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>,
+ "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
+ <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>,
+ "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
  "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
  "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, "yi.l.liu@intel.com"
- <yi.l.liu@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>
-Subject: RE: [PATCH v5 26/32] hw/arm/smmuv3-accel: Add a property to specify
- RIL support
-Thread-Topic: [PATCH v5 26/32] hw/arm/smmuv3-accel: Add a property to specify
- RIL support
-Thread-Index: AQHcTNOLiavZ9UoVTEW/OfUpbLSEXrThHLrw
-Date: Mon, 3 Nov 2025 16:08:06 +0000
-Message-ID: <CH3PR12MB754840F7A332AE3A6ED3648AABC7A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>
 References: <20251031105005.24618-1-skolothumtho@nvidia.com>
  <20251031105005.24618-27-skolothumtho@nvidia.com>
  <2e8bd9fe-2434-443e-ae4e-e15352ff112a@redhat.com>
-In-Reply-To: <2e8bd9fe-2434-443e-ae4e-e15352ff112a@redhat.com>
-Accept-Language: en-US, en-GB
+ <CH3PR12MB754840F7A332AE3A6ED3648AABC7A@CH3PR12MB7548.namprd12.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CH3PR12MB754840F7A332AE3A6ED3648AABC7A@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: D8-8Oiqvn7u68yuAKmxeWkFKy946kJ-HTV0laSYi63E_1762187155
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|CH3PR12MB7545:EE_
-x-ms-office365-filtering-correlation-id: 2df68f04-5528-4fc9-7803-08de1af32cce
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|7416014|376014|366016|1800799024|38070700021; 
-x-microsoft-antispam-message-info: =?utf-8?B?Q2k4bFBjSjJGNER0M3BLVzJKRjdpN2NhMTZTd0lKMW5SYkdEWklTZ1FtN213?=
- =?utf-8?B?UW9KZmppZTZRQmM0VHNxa0gxa01oaHNreVg2Yy9QUTVHZ2RRUGI2aWFseXFi?=
- =?utf-8?B?cGRKS1ZZeWZOOG15N1h0RmtQZzZvTGhKWGJoNENvUVJkU0RPd0MvTm1YMFhp?=
- =?utf-8?B?dkUvbXFWZmJNcXFzLzVsdnl1YW5kV2FwcjRJTlZNODJxVDlXRnJyTWlqNWtO?=
- =?utf-8?B?QnVPT0xYS2lMNGs0b2ZBMEV5clV5Q0FlTkF4VnBId2dCS3VXWEIwTlIvWmRi?=
- =?utf-8?B?bS91VU8zbFhxNUxlb0YwdE5MYmNpaklVRVZxanVVN3BvOVVLVml0aUxId3dO?=
- =?utf-8?B?ekk3a0JCbGdQMFBWLzFoNlc0ckRjMDh3QWRwSnRtK0VYdW9PWXc4MEpXMm5i?=
- =?utf-8?B?VlNyeG9SdVhqeXhiVExXZ1NOUkFQZ08vd3dHR2VSa2RFdDkwWmRQc2Q1UEx5?=
- =?utf-8?B?Wll5VG1aSWdocnZEK1Naa0lBUkRKT1pjdFBXV1hiNkZBcVplZnBsSkVIK0xa?=
- =?utf-8?B?UmNWOVRGUmZFMVU3VksvVmpwSlZVb2NEWWdFc3RJWXhOaXE5Y0NpenR0b1hx?=
- =?utf-8?B?TDBqZ2JMMDZ6SFFpRkJzUzNLWkYxR2t4RmpTT3MwMUMwKzJRVmoxSmxJNmx5?=
- =?utf-8?B?QUtVRTJtQk9JSk1qNk9CS3lyQlNvUjIzZDl3WFVveVhibnlnemxhK2FDOVUr?=
- =?utf-8?B?enJJWWIrK0NBeG56SFM0cGZpS2FDWlF0MS9rKzNNZUJLZGd2MU0zMFM1TTN2?=
- =?utf-8?B?R05pL3NyMGNEcXZpUkpmK2hGazcwSXdyNExRUkQzamdZVEFRZnY4VkhhYm5s?=
- =?utf-8?B?ZXI1TXN0bVFUR3N5UjMvSnhjWE9WcFRTemczRU9wVjR6UURydEQwRmsrRmEv?=
- =?utf-8?B?R2Y1UE1RMFZvVDJZeEQzSGVGa2ZLYkRMSklaMW5EZzQvbWZVZ2s2RWk0ZzlN?=
- =?utf-8?B?VzBrYjJJak9XSkoreVBtWUpUMng3c3RaNDlsWncxQ25KTDZaQWg2cEI0RURx?=
- =?utf-8?B?c0FkQ3pXK3dKT2RNYjBEK3FaQnNxck1heE9Ic0tMYXlWWEhMK3ZWQUZFWVZB?=
- =?utf-8?B?bmFNcnRPR1NhUndXa3o0NVlQU3RIVVpLZno4ZW52UmtjTU5TbVpEcll3aDRY?=
- =?utf-8?B?WjhjZmJSTWVWMDBidGtvcGlVLzFwWklaV3pUcG5Qa2NHUU0xaXRHR1RKaGRU?=
- =?utf-8?B?QjNrREVTZEpQZ2g4UkRhMks3b0pscitIWitnTVowVWlzUG4rL0NBN0NMNjA1?=
- =?utf-8?B?MXBYUk1vNnBSWUlBak4zRnpxWGI2cnVoZC9mTW1rUXBRRVpHTHU1emVQOXFy?=
- =?utf-8?B?VlBsUnFkYXYxVnJETWxUWjZDWjdzL25xWE1lQno4TlZzQnNQK2k4anF0alhM?=
- =?utf-8?B?SjNJR3Ruc1RkamprdC9TTTRsTHpXNnZIdU5QNkdLMVB6WUxEWTU3STdKU2tr?=
- =?utf-8?B?ZHpIcXVzaDBickY5WEx6ZkkvZk9RdytEQ3BUZmJWZ3QxdVE5QU9BRG5LcWR4?=
- =?utf-8?B?Q29SUGdBWGtDSlZhWTJKWFgzaUY1MlNWWnRmVjdMNENjZEtkSmtVeEhDVWVx?=
- =?utf-8?B?eE1jcmZDcWVYV3pneTFSUkc1d1Z5YnlXeURwVjFNY25oa01DSlBUVnE2Y0FR?=
- =?utf-8?B?RmNlcEt3T2QzRFVHY25lT0NZU3hha29OL3NUSmxFeTVXLzVIVmthbGdEWDZK?=
- =?utf-8?B?VldiM1BTc2ZHcmRETERWZlRvYXFRTFJOaWtmdXU1MmxBRWtYUTNCb0JpYVhH?=
- =?utf-8?B?azJBTll3Nnk5ekNHZng2WXdxb21PdjZJUk5JazUxSjVMS3F5em1XY3c2TGN3?=
- =?utf-8?B?NE1OSUVuZzhSTDM0dlhJbkRnRkY1NGpaeGJhMUdPN21XQkRjdlB1ZUovV1pz?=
- =?utf-8?B?UGtpcjZIVDgrMTRObys0bWNOMU85L3h4d2thWGZHaEY1TUVBbkIrdlJFVXdO?=
- =?utf-8?B?ZldLK3pzNXF0ZUhWc1RJbW4yQUdENG9rcHU4ZklUZDFNaVNmcDJZaHlKQVhN?=
- =?utf-8?B?dEJHemRQUldXVFRRVUQ0VVdYZWk4U0FaQjZsWHBFdVllSXhRQmRhOFp4a0ZI?=
- =?utf-8?Q?K+ofwo?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(366016)(1800799024)(38070700021); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?bzRyQytyTEVZZ1BlLzFvUmx1aUdZb0NOdlllL1BJR0lBSStKaE9xVWlvL0hh?=
- =?utf-8?B?WlArdzBjN1JPRUZndGZOTUVUVEMyUm5vYkR2dXRLR09zUVNCT2VJYUQrd21K?=
- =?utf-8?B?M2ZZcHRXbU5ITFB2eTMzVDRvOVNhSUVUMS9pd0FCKytBWFB5VEFvSUltc3hw?=
- =?utf-8?B?dklnaVdlZ0dTbFVNSmljS0ZNcXB0eFc5dno1ajllbGdhV0ZDMmRnczFjZkVW?=
- =?utf-8?B?ajdpMHhTV1lpUzJqU1d5b2h5emZvaDdrQXdocVVsWjNrTjZpQTZiWFZoYS91?=
- =?utf-8?B?emNVNUlqeFhnK1hrUS9IRXBkeW1pNHM2UzhhUitjQzdoNEpnMTcrbFYzL3M4?=
- =?utf-8?B?VDRTMFREaS92WFl3Q0trbWVhMHVPUDI1ZDJ3K0srYmFMMS9FSmVLWDZPem9z?=
- =?utf-8?B?K3daU0ZOTVNyZWttNFdDeVgvMlU2TUtsbGZrVVVqbXRuaFo3ckdVYmZMWlB0?=
- =?utf-8?B?K1VHR29idXByVjVaUVBndllkMFVweE1TdTN3YVRCWlQrWE9FWllaVnhKcVVF?=
- =?utf-8?B?d3kvN2twUmJlY09JYjVuKzNMV0pDa2w0dkJCRTNYaTBXWWlYNUNjZVJGMXZ1?=
- =?utf-8?B?dW0vaGZ2SHBkVGJPUWpxdzZsVXlud2NMK2RIcUttRDdhZnRHRS81RlIvLzI0?=
- =?utf-8?B?UzY3Q2RPcS9NOWlSN1dJZUlHTVJoMTNUT1lMTHF1SHlLak0xR0V3YzRxUTM1?=
- =?utf-8?B?VFZDTHkwTVNIS0xqU0FEZjVtbTR2cDlVUVJMcGRqZmxvV2U5cGt3Rmd2dDYy?=
- =?utf-8?B?RlpQK092TVpCT3lJemwyeWVnWFlMNmprWi9pM3JEWU9XdEQweEw2SVJaUWtr?=
- =?utf-8?B?b0ZlbCt3blN4cTdISFJLb2xjWE1EVkNZQUg3elpNbDNrdThMMjBsNE1mRSt6?=
- =?utf-8?B?bkxCSWN1RkJUbGVoaXhyVHZpQzZXWDl5ekJXVHhwVFB2UERLVDZGUFBtZi9T?=
- =?utf-8?B?a21oNTFEZlJjOTJGS3FkSGZOUnVEbzVJNkp0Zm9oVTFzajVMNnA4WGNtWXk4?=
- =?utf-8?B?enZDU3liL09va1dmcEZPZjNhSjczQm9uZHkwRlBCcDV2QjNqdzdiQmFWRDVz?=
- =?utf-8?B?UURRWGtaQmVIMko3aDhqeXFPbzBDUWRMSVVMRk5VRTc4dTE1L2dTUC9pdm0z?=
- =?utf-8?B?SlBDTDd0dm9kb3NmdFJGVmV3Yk5wRW5malZZZ2haeXFVM3pKd0VrRExqVnVw?=
- =?utf-8?B?UnI0emFNdDFpeGFLdVYyTTk5MFROcmdzRnhGQXZneUxkMUZrSFdUbnBPWmlZ?=
- =?utf-8?B?UHFxY1UyNGdnT3hCS0RRVVF1M25GVjFWdmYyRVhad0NqUGlMMUhneFJ3Mi96?=
- =?utf-8?B?TE9LamtJTWcwdDJMY3VlNmxVK1JoSjEzZE5RRWdtWlFRR01JM0hWQ2kyRkgr?=
- =?utf-8?B?NVovMUNuQzhlaWd3RE9UbFMrYTUwTGwwd1cyMFRNMUR1azE3SzE0Skl1OWpF?=
- =?utf-8?B?VFJlVHdvWjNUOVpuNVdEelV1bzBWWkFSUmRmbzRET0kwUmVpMXBTcndSRnhE?=
- =?utf-8?B?RjlPMzRmN2hJdzBFS3BSclFHOGxTdVZoRE5POG9ldGlBcXJVYzI1UzBxZkdw?=
- =?utf-8?B?ZkRJMTJmdm1kbDJDdHlraXRseU5CUVVHejA3bkZxQzFyVzlGOTEyYUVLYXB3?=
- =?utf-8?B?NnUwZS9zZVlFZUUyK1hYSTZYamVWOVBnTnhpU3ppNE5COG1ZTnNXM0wrcG9N?=
- =?utf-8?B?ZnpzU0t0Y2JGVDVsUmFQdVFQLzYxQ2ljRnc2ZU5vdEVGdnNCc3l4UDQ1T2FB?=
- =?utf-8?B?aURoalB6N2w1WkdvYUVCT1JoT3dTOGdoQm54eGtaWGpEUjRTZHlnRXpZV1Rs?=
- =?utf-8?B?OTBNMUVvalVUMDJ0cWhyYUJ4Wk1YeVRKNklWMmhQVU95bXpaeFc1M0xSR3pB?=
- =?utf-8?B?M1cybHdxazZZK2ZLTUNuNU1MVENITHJneGt0VnFSR01pRTRoWUF1MWNaRGZY?=
- =?utf-8?B?ZVpuMER6RzBXKzBsSTlOYzc4R21KZm5SYVVUMFFMcG82MlpiN096RDFteFBz?=
- =?utf-8?B?VDY3T3lSMCtKdjlUM3RtaEh0N2JBRW81RzRpL3VidjhJb2JlMzBSdWFJcmRm?=
- =?utf-8?B?QVNyazNxYzAvUE1xMHZ4dURrRE9lQ0RIVXc1dldDaGVINzFwdmorR2lTTkR6?=
- =?utf-8?Q?OBcF/DxX8/o/Y0ytQYVnJegT2?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2df68f04-5528-4fc9-7803-08de1af32cce
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Nov 2025 16:08:06.3659 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: W/es2doPwEaPvYHGj4+RF61gLWbCILdzp9SSt4d/Wm4vU1y2pWq9LgRaYmppvHdjwdr02Ux1f2+0zyttLBpSYA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB7545
-Received-SPF: permerror client-ip=2a01:111:f403:c101::7;
- envelope-from=skolothumtho@nvidia.com;
- helo=BL0PR03CU003.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -191,39 +133,70 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBFcmljIEF1
-Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+IFNlbnQ6IDAzIE5vdmVtYmVyIDIwMjUgMTU6
-MDcNCj4gVG86IFNoYW1lZXIgS29sb3RodW0gPHNrb2xvdGh1bXRob0BudmlkaWEuY29tPjsgcWVt
-dS0NCj4gYXJtQG5vbmdudS5vcmc7IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZw0KPiBDYzogcGV0ZXIu
-bWF5ZGVsbEBsaW5hcm8ub3JnOyBKYXNvbiBHdW50aG9ycGUgPGpnZ0BudmlkaWEuY29tPjsgTmlj
-b2xpbg0KPiBDaGVuIDxuaWNvbGluY0BudmlkaWEuY29tPjsgZGR1dGlsZUByZWRoYXQuY29tOyBi
-ZXJyYW5nZUByZWRoYXQuY29tOw0KPiBOYXRoYW4gQ2hlbiA8bmF0aGFuY0BudmlkaWEuY29tPjsg
-TWF0dCBPY2hzIDxtb2Noc0BudmlkaWEuY29tPjsNCj4gc21vc3RhZmFAZ29vZ2xlLmNvbTsgd2Fu
-Z3pob3UxQGhpc2lsaWNvbi5jb207DQo+IGppYW5na3Vua3VuQGh1YXdlaS5jb207IGpvbmF0aGFu
-LmNhbWVyb25AaHVhd2VpLmNvbTsNCj4gemhhbmdmZWkuZ2FvQGxpbmFyby5vcmc7IHpoZW56aG9u
-Zy5kdWFuQGludGVsLmNvbTsgeWkubC5saXVAaW50ZWwuY29tOw0KPiBLcmlzaG5ha2FudCBKYWp1
-IDxramFqdUBudmlkaWEuY29tPg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHY1IDI2LzMyXSBody9h
-cm0vc21tdXYzLWFjY2VsOiBBZGQgYSBwcm9wZXJ0eSB0bw0KPiBzcGVjaWZ5IFJJTCBzdXBwb3J0
-DQo+IA0KPiBFeHRlcm5hbCBlbWFpbDogVXNlIGNhdXRpb24gb3BlbmluZyBsaW5rcyBvciBhdHRh
-Y2htZW50cw0KPiANCj4gDQo+IEhpIFNoYW1lZXIsDQo+IA0KPiBPbiAxMC8zMS8yNSAxMTo0OSBB
-TSwgU2hhbWVlciBLb2xvdGh1bSB3cm90ZToNCj4gPiBDdXJyZW50bHkgUUVNVSBTTU1VdjMgaGFz
-IFJJTCBzdXBwb3J0IGJ5IGRlZmF1bHQuIEJ1dCBpZiBhY2NlbGVyYXRlZA0KPiA+IG1vZGUgaXMg
-ZW5hYmxlZCwgUklMIGhhcyB0byBiZSBjb21wYXRpYmxlIHdpdGggaG9zdCBTTU1VdjMgc3VwcG9y
-dC4NCj4gPg0KPiA+IEFkZCBhIHByb3BlcnR5IHNvIHRoYXQgdGhlIHVzZXIgY2FuIHNwZWNpZnkg
-dGhpcy4NCj4gPg0KPiA+IFJldmlld2VkLWJ5OiBKb25hdGhhbiBDYW1lcm9uIDxqb25hdGhhbi5j
-YW1lcm9uQGh1YXdlaS5jb20+DQo+ID4gVGVzdGVkLWJ5OiBaaGFuZ2ZlaSBHYW8gPHpoYW5nZmVp
-Lmdhb0BsaW5hcm8ub3JnPg0KPiA+IFNpZ25lZC1vZmYtYnk6IFNoYW1lZXIgS29sb3RodW0gPHNr
-b2xvdGh1bXRob0BudmlkaWEuY29tPg0KPiANCj4gSSBoYXZlIG5vdCBzZWVuIGFueSByZXBseSBv
-bg0KPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvYjYxMDU1MzQtNGExNy00NzAwLWJiMGIt
-DQo+IGU5NjFiYWJkMTBiYkByZWRoYXQuY29tLw0KDQpTb3JyeSwgbG9va3MgbGlrZSBJIG1pc3Nl
-ZCB0byByZXBseS4NCiANCj4gSSBndWVzcyB5b3UgY2hvc2UgdG8gcmVzdHJpY3QgUklMIHRvIGFj
-Y2VsIG9ubHkuDQoNClllcy4gSSBoYXZlIHVwZGF0ZWQgdGhlIGRlc2NyaXB0aW9uLiANCg0KIEFi
-b3V0IEFJRFIgY29uc2lzdGVuY3kgY2hlY2ssDQo+IGRpZCB5b3UgaGF2ZSBhIGxvb2s/DQoNCkkg
-aGF2ZSBhZGRlZCB0aGF0IGNoZWNrIGluIHBhdGNoICMxOS4gQnV0IFpoYW5nZmVpIGhhcyByZXBv
-cnRlZCBhIHByb2JsZW0NCndpdGggdGhhdCBhcyBoaXMgaGFyZHdhcmUgcmVwb3J0cyBBSURSID0g
-MC4gLiBQbGVhc2UgdGFrZSBhIGxvb2sgdGhhdA0KZGlzY3Vzc2lvbi4NCg0KVGhhbmtzLA0KU2hh
-bWVlcg0KIA0K
+
+
+On 11/3/25 5:08 PM, Shameer Kolothum wrote:
+> Hi Eric,
+>
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: 03 November 2025 15:07
+>> To: Shameer Kolothum <skolothumtho@nvidia.com>; qemu-
+>> arm@nongnu.org; qemu-devel@nongnu.org
+>> Cc: peter.maydell@linaro.org; Jason Gunthorpe <jgg@nvidia.com>; Nicolin
+>> Chen <nicolinc@nvidia.com>; ddutile@redhat.com; berrange@redhat.com;
+>> Nathan Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
+>> smostafa@google.com; wangzhou1@hisilicon.com;
+>> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
+>> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
+>> Krishnakant Jaju <kjaju@nvidia.com>
+>> Subject: Re: [PATCH v5 26/32] hw/arm/smmuv3-accel: Add a property to
+>> specify RIL support
+>>
+>> External email: Use caution opening links or attachments
+>>
+>>
+>> Hi Shameer,
+>>
+>> On 10/31/25 11:49 AM, Shameer Kolothum wrote:
+>>> Currently QEMU SMMUv3 has RIL support by default. But if accelerated
+>>> mode is enabled, RIL has to be compatible with host SMMUv3 support.
+>>>
+>>> Add a property so that the user can specify this.
+>>>
+>>> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+>>> Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
+>>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+>> I have not seen any reply on
+>> https://lore.kernel.org/all/b6105534-4a17-4700-bb0b-
+>> e961babd10bb@redhat.com/
+> Sorry, looks like I missed to reply.
+>  
+>> I guess you chose to restrict RIL to accel only.
+> Yes. I have updated the description. 
+>
+>  About AIDR consistency check,
+>> did you have a look?
+> I have added that check in patch #19. But Zhangfei has reported a problem
+> with that as his hardware reports AIDR = 0. . Please take a look that
+> discussion.
+
+OK Thanks. I still think it may be relevant to support disabling RIL for
+non accel mode but this can be added later on.
+
+feel free to add my
+
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Eric
+
+>
+> Thanks,
+> Shameer
+>  
+
 

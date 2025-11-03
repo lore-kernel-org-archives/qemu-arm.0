@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5350CCCFA06
-	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 09:34:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F4E7CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 09:34:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vFquz-0005mi-BR; Mon, 03 Nov 2025 04:32:06 -0500
+	id 1vFqru-0000ry-IQ; Mon, 03 Nov 2025 04:28:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vFquU-00059g-NQ; Mon, 03 Nov 2025 04:31:38 -0500
+ id 1vFqrr-0000qm-LC; Mon, 03 Nov 2025 04:28:51 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vFquQ-0002z3-5S; Mon, 03 Nov 2025 04:31:34 -0500
+ id 1vFqrn-0001r9-P1; Mon, 03 Nov 2025 04:28:50 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 3 Nov
- 2025 17:28:19 +0800
+ 2025 17:28:07 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Mon, 3 Nov 2025 17:28:19 +0800
+ Transport; Mon, 3 Nov 2025 17:28:07 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <kane_chen@aspeedtech.com>
-Subject: [PATCH v3 25/30] hw/arm/aspeed: Split Rainier machine into a separate
- source file for maintainability
-Date: Mon, 3 Nov 2025 17:27:36 +0800
-Message-ID: <20251103092801.1282602-26-jamin_lin@aspeedtech.com>
+ <kane_chen@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
+ <clg@redhat.com>
+Subject: [PATCH v3 09/30] hw/arm/aspeed: Split Witherspoon machine into a
+ separate source file for maintainability
+Date: Mon, 3 Nov 2025 17:27:20 +0800
+Message-ID: <20251103092801.1282602-10-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251103092801.1282602-1-jamin_lin@aspeedtech.com>
 References: <20251103092801.1282602-1-jamin_lin@aspeedtech.com>
@@ -67,240 +68,160 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit moves the IBM Rainier BMC machine implementation out of
-aspeed.c into a new standalone file aspeed_ast2600_rainier.c.
+This commit moves the Witherspoon BMC machine implementation out of
+aspeed.c and into a new dedicated file aspeed_ast2500_witherspoon.c.
 
-This refactor continues the modularization effort for Aspeed platform
-support, placing each board’s logic and FRUID data in its own dedicated
-source file. It improves maintainability, readability, and simplifies
-future development for new Aspeed-based systems without cluttering
-aspeed.c.
+To support splitting Witherspoon into a dedicated source file,
+a new WITHERSPOON_BMC_HW_STRAP1 macro is added as a copy of
+ROMULUS_BMC_HW_STRAP1.
+
+The change is part of a broader effort to modularize Aspeed board
+definitions, allowing each machine type to be maintained and updated
+independently. By isolating Witherspoon logic, the aspeed.c file
+becomes cleaner and easier to manage as more platforms are added.
 
 Key updates include:
-- Removed RAINIER_BMC_HW_STRAP1 and RAINIER_BMC_HW_STRAP2 macro definitions.
-- Moved rainier_bmc_i2c_init() and all related I2C device setup code
-  into the new aspeed_ast2600_rainier.c file.
-- Moved aspeed_machine_rainier_class_init() and type registration logic
-  out of aspeed.c.
-- Deleted aspeed_eeprom.h and aspeed_eeprom.c; their FRUID data and
-  length definitions are now handled directly in the new Rainier file.
-- Added aspeed_ast2600_rainier.c to the Meson build system (meson.build).
+
+- Moved witherspoon_bmc_i2c_init() and related LED setup code into
+aspeed_ast2500_witherspoon.c.
+- Added WITHERSPOON_BMC_HW_STRAP1 replacement macro for local use.
+- Removed aspeed_machine_witherspoon_class_init() and type
+registration from aspeed.c.
+- Added the new file to meson.build for compilation.
 
 No functional changes.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_eeprom.h          |  15 ---
- hw/arm/aspeed.c                 | 133 ---------------------
- hw/arm/aspeed_ast2600_rainier.c | 199 ++++++++++++++++++++++++++++++++
- hw/arm/aspeed_eeprom.c          |  54 ---------
- hw/arm/meson.build              |   2 +-
- 5 files changed, 200 insertions(+), 203 deletions(-)
- delete mode 100644 hw/arm/aspeed_eeprom.h
- create mode 100644 hw/arm/aspeed_ast2600_rainier.c
- delete mode 100644 hw/arm/aspeed_eeprom.c
+ hw/arm/aspeed.c                     |  82 --------------------
+ hw/arm/aspeed_ast2500_witherspoon.c | 113 ++++++++++++++++++++++++++++
+ hw/arm/meson.build                  |   1 +
+ 3 files changed, 114 insertions(+), 82 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast2500_witherspoon.c
 
-diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
-deleted file mode 100644
-index 86b97e4c6d..0000000000
---- a/hw/arm/aspeed_eeprom.h
-+++ /dev/null
-@@ -1,15 +0,0 @@
--/*
-- * Copyright (c) Meta Platforms, Inc. and affiliates.
-- *
-- * SPDX-License-Identifier: GPL-2.0-only
-- */
--
--#ifndef ASPEED_EEPROM_H
--#define ASPEED_EEPROM_H
--
--extern const uint8_t rainier_bb_fruid[];
--extern const size_t rainier_bb_fruid_len;
--extern const uint8_t rainier_bmc_fruid[];
--extern const size_t rainier_bmc_fruid_len;
--
--#endif
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 77a4095f7d..56600be916 100644
+index 731ca7a1aa..74eb8077da 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -14,7 +14,6 @@
- #include "hw/arm/boot.h"
- #include "hw/arm/aspeed.h"
- #include "hw/arm/aspeed_soc.h"
--#include "hw/arm/aspeed_eeprom.h"
- #include "hw/arm/machines-qom.h"
- #include "hw/block/flash.h"
- #include "hw/i2c/i2c_mux_pca954x.h"
-@@ -48,10 +47,6 @@ static struct arm_boot_info aspeed_board_binfo = {
- #define AST2700_EVB_HW_STRAP2 0x00000700
- #endif
+@@ -117,9 +117,6 @@ static struct arm_boot_info aspeed_board_binfo = {
+         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
+         SCU_AST2500_HW_STRAP_RESERVED1)
  
--/* Rainier hardware value: (QEMU prototype) */
--#define RAINIER_BMC_HW_STRAP1 (0x00422016 | SCU_AST2600_HW_STRAP_BOOT_SRC_EMMC)
--#define RAINIER_BMC_HW_STRAP2 0x80000848
+-/* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
+-#define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
 -
- #define AST_SMP_MAILBOX_BASE            0x1e6e2180
- #define AST_SMP_MBOX_FIELD_ENTRY        (AST_SMP_MAILBOX_BASE + 0x0)
- #define AST_SMP_MBOX_FIELD_GOSIGN       (AST_SMP_MAILBOX_BASE + 0x4)
-@@ -300,110 +295,6 @@ I2CSlave *aspeed_create_pca9554(AspeedSoCState *soc, int bus_id, int addr)
-                             TYPE_PCA9554, addr);
+ /* Quanta-Q71l hardware value */
+ #define QUANTA_Q71L_BMC_HW_STRAP1 (                                     \
+         SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
+@@ -537,63 +534,6 @@ static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+ 
  }
  
--static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+-static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
 -{
+-    static const struct {
+-        unsigned gpio_id;
+-        LEDColor color;
+-        const char *description;
+-        bool gpio_polarity;
+-    } pca1_leds[] = {
+-        {13, LED_COLOR_GREEN, "front-fault-4",  GPIO_POLARITY_ACTIVE_LOW},
+-        {14, LED_COLOR_GREEN, "front-power-3",  GPIO_POLARITY_ACTIVE_LOW},
+-        {15, LED_COLOR_GREEN, "front-id-5",     GPIO_POLARITY_ACTIVE_LOW},
+-    };
 -    AspeedSoCState *soc = bmc->soc;
--    I2CSlave *i2c_mux;
+-    uint8_t *eeprom_buf = g_malloc0(8 * 1024);
+-    DeviceState *dev;
+-    LEDState *led;
 -
--    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 0), 0x51, 32 * KiB);
+-    /* Bus 3: TODO bmp280@77 */
+-    dev = DEVICE(i2c_slave_new(TYPE_PCA9552, 0x60));
+-    qdev_prop_set_string(dev, "description", "pca1");
+-    i2c_slave_realize_and_unref(I2C_SLAVE(dev),
+-                                aspeed_i2c_get_bus(&soc->i2c, 3),
+-                                &error_fatal);
 -
--    aspeed_create_pca9552(soc, 3, 0x61);
+-    for (size_t i = 0; i < ARRAY_SIZE(pca1_leds); i++) {
+-        led = led_create_simple(OBJECT(bmc),
+-                                pca1_leds[i].gpio_polarity,
+-                                pca1_leds[i].color,
+-                                pca1_leds[i].description);
+-        qdev_connect_gpio_out(dev, pca1_leds[i].gpio_id,
+-                              qdev_get_gpio_in(DEVICE(led), 0));
+-    }
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "dps310", 0x76);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "max31785", 0x52);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "tmp423", 0x4c);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), "tmp423", 0x4c);
 -
--    /* The rainier expects a TMP275 but a TMP105 is compatible */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
--                     0x48);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
--                     0x49);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
+-    /* The Witherspoon expects a TMP275 but a TMP105 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), TYPE_TMP105,
 -                     0x4a);
--    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4),
--                                      "pca9546", 0x70);
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x52, 64 * KiB);
--    aspeed_create_pca9552(soc, 4, 0x60);
 -
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
--                     0x48);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
--                     0x49);
--    aspeed_create_pca9552(soc, 5, 0x60);
--    aspeed_create_pca9552(soc, 5, 0x61);
--    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5),
--                                      "pca9546", 0x70);
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
+-    /*
+-     * The witherspoon board expects Epson RX8900 I2C RTC but a ds1338 is
+-     * good enough
+-     */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
 -
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
--                     0x48);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
--                     0x4a);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
--                     0x4b);
--    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6),
--                                      "pca9546", 0x70);
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x50, 64 * KiB);
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 3), 0x51, 64 * KiB);
--
--    aspeed_create_pca9552(soc, 7, 0x30);
--    aspeed_create_pca9552(soc, 7, 0x31);
--    aspeed_create_pca9552(soc, 7, 0x32);
--    aspeed_create_pca9552(soc, 7, 0x33);
--    aspeed_create_pca9552(soc, 7, 0x60);
--    aspeed_create_pca9552(soc, 7, 0x61);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "dps310", 0x76);
--    /* Bus 7: TODO si7021-a20@20 */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP105,
--                     0x48);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "max31785", 0x52);
--    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50, 64 * KiB);
--    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x51, 64 * KiB);
--
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
--                     0x48);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
--                     0x4a);
--    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50,
--                          64 * KiB, rainier_bb_fruid, rainier_bb_fruid_len);
--    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51,
--                          64 * KiB, rainier_bmc_fruid, rainier_bmc_fruid_len);
--    aspeed_create_pca9552(soc, 8, 0x60);
--    aspeed_create_pca9552(soc, 8, 0x61);
--    /* Bus 8: ucd90320@11 */
--    /* Bus 8: ucd90320@b */
--    /* Bus 8: ucd90320@c */
--
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4d);
--    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 9), 0x50, 128 * KiB);
--
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4c);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4d);
--    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 10), 0x50, 128 * KiB);
--
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
--                     0x48);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
--                     0x49);
--    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11),
--                                      "pca9546", 0x70);
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
--    aspeed_create_pca9552(soc, 11, 0x60);
--
--
--    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 13), 0x50, 64 * KiB);
--    aspeed_create_pca9552(soc, 13, 0x60);
--
--    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 14), 0x50, 64 * KiB);
--    aspeed_create_pca9552(soc, 14, 0x60);
--
--    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB);
--    aspeed_create_pca9552(soc, 15, 0x60);
+-    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 11), 0x51,
+-                          eeprom_buf);
+-    dev = DEVICE(i2c_slave_new(TYPE_PCA9552, 0x60));
+-    qdev_prop_set_string(dev, "description", "pca0");
+-    i2c_slave_realize_and_unref(I2C_SLAVE(dev),
+-                                aspeed_i2c_get_bus(&soc->i2c, 11),
+-                                &error_fatal);
+-    /* Bus 11: TODO ucd90160@64 */
 -}
 -
- #define TYPE_LM75 TYPE_TMP105
- #define TYPE_TMP75 TYPE_TMP105
- #define TYPE_TMP421 "tmp421"
-@@ -760,25 +651,6 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
-     aspeed_machine_ast2600_class_emmc_init(oc);
+ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc = bmc->soc;
+@@ -1397,23 +1337,6 @@ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc,
+     aspeed_machine_class_init_cpus_defaults(mc);
  };
  
--static void aspeed_machine_rainier_class_init(ObjectClass *oc, const void *data)
+-static void aspeed_machine_witherspoon_class_init(ObjectClass *oc,
+-                                                  const void *data)
 -{
 -    MachineClass *mc = MACHINE_CLASS(oc);
 -    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 -
--    mc->desc       = "IBM Rainier BMC (Cortex-A7)";
--    amc->soc_name  = "ast2600-a3";
--    amc->hw_strap1 = RAINIER_BMC_HW_STRAP1;
--    amc->hw_strap2 = RAINIER_BMC_HW_STRAP2;
--    amc->fmc_model = "mx66l1g45g";
+-    mc->desc       = "OpenPOWER Witherspoon BMC (ARM1176)";
+-    amc->soc_name  = "ast2500-a1";
+-    amc->hw_strap1 = WITHERSPOON_BMC_HW_STRAP1;
+-    amc->fmc_model = "mx25l25635f";
 -    amc->spi_model = "mx66l1g45g";
 -    amc->num_cs    = 2;
--    amc->macs_mask  = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
--    amc->i2c_init  = rainier_bmc_i2c_init;
--    mc->default_ram_size = 1 * GiB;
+-    amc->i2c_init  = witherspoon_bmc_i2c_init;
+-    mc->default_ram_size = 512 * MiB;
 -    aspeed_machine_class_init_cpus_defaults(mc);
--    aspeed_machine_ast2600_class_emmc_init(oc);
 -};
 -
- static void aspeed_machine_catalina_class_init(ObjectClass *oc,
-                                                const void *data)
+ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
+                                                   const void *data)
  {
-@@ -939,11 +811,6 @@ static const TypeInfo aspeed_machine_types[] = {
+@@ -1789,11 +1712,6 @@ static const TypeInfo aspeed_machine_types[] = {
          .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_ast2600_evb_class_init,
+         .class_init    = aspeed_machine_sonorapass_class_init,
          .interfaces    = arm_machine_interfaces,
 -    }, {
--        .name          = MACHINE_TYPE_NAME("rainier-bmc"),
+-        .name          = MACHINE_TYPE_NAME("witherspoon-bmc"),
 -        .parent        = TYPE_ASPEED_MACHINE,
--        .class_init    = aspeed_machine_rainier_class_init,
+-        .class_init    = aspeed_machine_witherspoon_class_init,
 -        .interfaces    = arm_machine_interfaces,
      }, {
-         .name          = MACHINE_TYPE_NAME("catalina-bmc"),
+         .name          = MACHINE_TYPE_NAME("ast2600-evb"),
          .parent        = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_ast2600_rainier.c b/hw/arm/aspeed_ast2600_rainier.c
+diff --git a/hw/arm/aspeed_ast2500_witherspoon.c b/hw/arm/aspeed_ast2500_witherspoon.c
 new file mode 100644
-index 0000000000..3929a221fe
+index 0000000000..7a3f2c018c
 --- /dev/null
-+++ b/hw/arm/aspeed_ast2600_rainier.c
-@@ -0,0 +1,199 @@
++++ b/hw/arm/aspeed_ast2500_witherspoon.c
+@@ -0,0 +1,113 @@
 +/*
-+ * IBM Rainier
++ * OpenPOWER Witherspoon
 + *
 + * Copyright (C) 2025 ASPEED Technology Inc.
 + *
@@ -312,266 +233,118 @@ index 0000000000..3929a221fe
 +#include "hw/arm/machines-qom.h"
 +#include "hw/arm/aspeed.h"
 +#include "hw/arm/aspeed_soc.h"
-+#include "hw/nvram/eeprom_at24c.h"
-+#include "hw/i2c/i2c_mux_pca954x.h"
++#include "hw/misc/led.h"
 +#include "hw/sensor/tmp105.h"
++#include "hw/i2c/smbus_eeprom.h"
++#include "hw/gpio/pca9552.h"
 +
-+/* Rainier hardware value: (QEMU prototype) */
-+#define RAINIER_BMC_HW_STRAP1 (0x00422016 | SCU_AST2600_HW_STRAP_BOOT_SRC_EMMC)
-+#define RAINIER_BMC_HW_STRAP2 0x80000848
++/* Witherspoon hardware value: 0xF10AD216 */
++#define WITHERSPOON_BMC_HW_STRAP1 (                                     \
++        AST2500_HW_STRAP1_DEFAULTS |                                    \
++        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
++        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
++        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
++        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
++        SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
++        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
 +
-+static const uint8_t rainier_bb_fruid[] = {
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x84,
-+    0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 0x44, 0x02,
-+    0x01, 0x00, 0x50, 0x54, 0x0e, 0x56, 0x54, 0x4f, 0x43, 0x00, 0x00, 0x37,
-+    0x00, 0x4a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x08, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 0x52, 0x54,
-+    0x04, 0x56, 0x54, 0x4f, 0x43, 0x50, 0x54, 0x38, 0x56, 0x49, 0x4e, 0x49,
-+    0x00, 0x00, 0x81, 0x00, 0x3a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x56, 0x53,
-+    0x59, 0x53, 0x00, 0x00, 0xbb, 0x00, 0x27, 0x00, 0x00, 0x00, 0x00, 0x00,
-+    0x56, 0x43, 0x45, 0x4e, 0x00, 0x00, 0xe2, 0x00, 0x27, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x56, 0x53, 0x42, 0x50, 0x00, 0x00, 0x09, 0x01, 0x19, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x01, 0x00, 0x00, 0x00, 0x36, 0x00,
-+    0x52, 0x54, 0x04, 0x56, 0x49, 0x4e, 0x49, 0x44, 0x52, 0x04, 0x44, 0x45,
-+    0x53, 0x43, 0x48, 0x57, 0x02, 0x30, 0x31, 0x43, 0x43, 0x04, 0x33, 0x34,
-+    0x35, 0x36, 0x46, 0x4e, 0x04, 0x46, 0x52, 0x34, 0x39, 0x53, 0x4e, 0x04,
-+    0x53, 0x52, 0x31, 0x32, 0x50, 0x4e, 0x04, 0x50, 0x52, 0x39, 0x39, 0x50,
-+    0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x23, 0x00, 0x52, 0x54,
-+    0x04, 0x56, 0x53, 0x59, 0x53, 0x53, 0x45, 0x07, 0x49, 0x42, 0x4d, 0x53,
-+    0x59, 0x53, 0x31, 0x54, 0x4d, 0x08, 0x32, 0x32, 0x32, 0x32, 0x2d, 0x32,
-+    0x32, 0x32, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x23,
-+    0x00, 0x52, 0x54, 0x04, 0x56, 0x43, 0x45, 0x4e, 0x53, 0x45, 0x07, 0x31,
-+    0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x46, 0x43, 0x08, 0x31, 0x31, 0x31,
-+    0x31, 0x2d, 0x31, 0x31, 0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x15, 0x00, 0x52, 0x54, 0x04, 0x56, 0x53, 0x42, 0x50, 0x49,
-+    0x4d, 0x04, 0x50, 0x00, 0x10, 0x01, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00,
-+    0x00, 0x00,
-+};
-+static const size_t rainier_bb_fruid_len = sizeof(rainier_bb_fruid);
-+
-+/* Rainier BMC FRU */
-+static const uint8_t rainier_bmc_fruid[] = {
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x84,
-+    0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 0x44, 0x02,
-+    0x01, 0x00, 0x50, 0x54, 0x0e, 0x56, 0x54, 0x4f, 0x43, 0x00, 0x00, 0x37,
-+    0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x08, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1c, 0x00, 0x52, 0x54,
-+    0x04, 0x56, 0x54, 0x4f, 0x43, 0x50, 0x54, 0x0e, 0x56, 0x49, 0x4e, 0x49,
-+    0x00, 0x00, 0x57, 0x00, 0x1e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46,
-+    0x01, 0x00, 0x00, 0x00, 0x1a, 0x00, 0x52, 0x54, 0x04, 0x56, 0x49, 0x4e,
-+    0x49, 0x44, 0x52, 0x04, 0x44, 0x45, 0x53, 0x43, 0x48, 0x57, 0x02, 0x30,
-+    0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
-+};
-+static const size_t rainier_bmc_fruid_len = sizeof(rainier_bmc_fruid);
-+
-+static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
++static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
 +{
++    static const struct {
++        unsigned gpio_id;
++        LEDColor color;
++        const char *description;
++        bool gpio_polarity;
++    } pca1_leds[] = {
++        {13, LED_COLOR_GREEN, "front-fault-4",  GPIO_POLARITY_ACTIVE_LOW},
++        {14, LED_COLOR_GREEN, "front-power-3",  GPIO_POLARITY_ACTIVE_LOW},
++        {15, LED_COLOR_GREEN, "front-id-5",     GPIO_POLARITY_ACTIVE_LOW},
++    };
 +    AspeedSoCState *soc = bmc->soc;
-+    I2CSlave *i2c_mux;
++    uint8_t *eeprom_buf = g_malloc0(8 * 1024);
++    DeviceState *dev;
++    LEDState *led;
 +
-+    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 0), 0x51, 32 * KiB);
++    /* Bus 3: TODO bmp280@77 */
++    dev = DEVICE(i2c_slave_new(TYPE_PCA9552, 0x60));
++    qdev_prop_set_string(dev, "description", "pca1");
++    i2c_slave_realize_and_unref(I2C_SLAVE(dev),
++                                aspeed_i2c_get_bus(&soc->i2c, 3),
++                                &error_fatal);
 +
-+    aspeed_create_pca9552(soc, 3, 0x61);
++    for (size_t i = 0; i < ARRAY_SIZE(pca1_leds); i++) {
++        led = led_create_simple(OBJECT(bmc),
++                                pca1_leds[i].gpio_polarity,
++                                pca1_leds[i].color,
++                                pca1_leds[i].description);
++        qdev_connect_gpio_out(dev, pca1_leds[i].gpio_id,
++                              qdev_get_gpio_in(DEVICE(led), 0));
++    }
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "dps310", 0x76);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3), "max31785", 0x52);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "tmp423", 0x4c);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), "tmp423", 0x4c);
 +
-+    /* The rainier expects a TMP275 but a TMP105 is compatible */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
-+                     0x49);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), TYPE_TMP105,
++    /* The Witherspoon expects a TMP275 but a TMP105 is compatible */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), TYPE_TMP105,
 +                     0x4a);
-+    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4),
-+                                      "pca9546", 0x70);
-+    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
-+    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
-+    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x52, 64 * KiB);
-+    aspeed_create_pca9552(soc, 4, 0x60);
 +
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), TYPE_TMP105,
-+                     0x49);
-+    aspeed_create_pca9552(soc, 5, 0x60);
-+    aspeed_create_pca9552(soc, 5, 0x61);
-+    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5),
-+                                      "pca9546", 0x70);
-+    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
-+    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
++    /*
++     * The witherspoon board expects Epson RX8900 I2C RTC but a ds1338 is
++     * good enough
++     */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
 +
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
-+                     0x4a);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), TYPE_TMP105,
-+                     0x4b);
-+    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6),
-+                                      "pca9546", 0x70);
-+    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
-+    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
-+    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 2), 0x50, 64 * KiB);
-+    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 3), 0x51, 64 * KiB);
-+
-+    aspeed_create_pca9552(soc, 7, 0x30);
-+    aspeed_create_pca9552(soc, 7, 0x31);
-+    aspeed_create_pca9552(soc, 7, 0x32);
-+    aspeed_create_pca9552(soc, 7, 0x33);
-+    aspeed_create_pca9552(soc, 7, 0x60);
-+    aspeed_create_pca9552(soc, 7, 0x61);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "dps310", 0x76);
-+    /* Bus 7: TODO si7021-a20@20 */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), TYPE_TMP105,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "max31785", 0x52);
-+    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x50, 64 * KiB);
-+    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x51, 64 * KiB);
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), TYPE_TMP105,
-+                     0x4a);
-+    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50,
-+                          64 * KiB, rainier_bb_fruid, rainier_bb_fruid_len);
-+    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51,
-+                          64 * KiB, rainier_bmc_fruid, rainier_bmc_fruid_len);
-+    aspeed_create_pca9552(soc, 8, 0x60);
-+    aspeed_create_pca9552(soc, 8, 0x61);
-+    /* Bus 8: ucd90320@11 */
-+    /* Bus 8: ucd90320@b */
-+    /* Bus 8: ucd90320@c */
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4d);
-+    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 9), 0x50, 128 * KiB);
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4c);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4d);
-+    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 10), 0x50, 128 * KiB);
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
-+                     0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_TMP105,
-+                     0x49);
-+    i2c_mux = i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11),
-+                                      "pca9546", 0x70);
-+    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 0), 0x50, 64 * KiB);
-+    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 1), 0x51, 64 * KiB);
-+    aspeed_create_pca9552(soc, 11, 0x60);
-+
-+
-+    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 13), 0x50, 64 * KiB);
-+    aspeed_create_pca9552(soc, 13, 0x60);
-+
-+    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 14), 0x50, 64 * KiB);
-+    aspeed_create_pca9552(soc, 14, 0x60);
-+
-+    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 15), 0x50, 64 * KiB);
-+    aspeed_create_pca9552(soc, 15, 0x60);
++    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 11), 0x51,
++                          eeprom_buf);
++    dev = DEVICE(i2c_slave_new(TYPE_PCA9552, 0x60));
++    qdev_prop_set_string(dev, "description", "pca0");
++    i2c_slave_realize_and_unref(I2C_SLAVE(dev),
++                                aspeed_i2c_get_bus(&soc->i2c, 11),
++                                &error_fatal);
++    /* Bus 11: TODO ucd90160@64 */
 +}
 +
-+static void aspeed_machine_rainier_class_init(ObjectClass *oc, const void *data)
++static void aspeed_machine_witherspoon_class_init(ObjectClass *oc,
++                                                  const void *data)
 +{
 +    MachineClass *mc = MACHINE_CLASS(oc);
 +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+    mc->desc       = "IBM Rainier BMC (Cortex-A7)";
-+    amc->soc_name  = "ast2600-a3";
-+    amc->hw_strap1 = RAINIER_BMC_HW_STRAP1;
-+    amc->hw_strap2 = RAINIER_BMC_HW_STRAP2;
-+    amc->fmc_model = "mx66l1g45g";
++    mc->desc       = "OpenPOWER Witherspoon BMC (ARM1176)";
++    amc->soc_name  = "ast2500-a1";
++    amc->hw_strap1 = WITHERSPOON_BMC_HW_STRAP1;
++    amc->fmc_model = "mx25l25635f";
 +    amc->spi_model = "mx66l1g45g";
 +    amc->num_cs    = 2;
-+    amc->macs_mask  = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
-+    amc->i2c_init  = rainier_bmc_i2c_init;
-+    mc->default_ram_size = 1 * GiB;
++    amc->i2c_init  = witherspoon_bmc_i2c_init;
++    mc->default_ram_size = 512 * MiB;
 +    aspeed_machine_class_init_cpus_defaults(mc);
-+    aspeed_machine_ast2600_class_emmc_init(oc);
 +};
 +
-+static const TypeInfo aspeed_ast2600_rainier_types[] = {
++static const TypeInfo aspeed_ast2500_witherspoon_types[] = {
 +    {
-+        .name          = MACHINE_TYPE_NAME("rainier-bmc"),
++        .name          = MACHINE_TYPE_NAME("witherspoon-bmc"),
 +        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_rainier_class_init,
++        .class_init    = aspeed_machine_witherspoon_class_init,
 +        .interfaces    = arm_machine_interfaces,
 +    }
 +};
 +
-+DEFINE_TYPES(aspeed_ast2600_rainier_types)
++DEFINE_TYPES(aspeed_ast2500_witherspoon_types)
 +
-diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
-deleted file mode 100644
-index 85a2aa4036..0000000000
---- a/hw/arm/aspeed_eeprom.c
-+++ /dev/null
-@@ -1,54 +0,0 @@
--/*
-- * Copyright (c) Meta Platforms, Inc. and affiliates.
-- *
-- * SPDX-License-Identifier: GPL-2.0-only
-- */
--
--#include "qemu/osdep.h"
--#include "aspeed_eeprom.h"
--
--const uint8_t rainier_bb_fruid[] = {
--    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x84,
--    0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 0x44, 0x02,
--    0x01, 0x00, 0x50, 0x54, 0x0e, 0x56, 0x54, 0x4f, 0x43, 0x00, 0x00, 0x37,
--    0x00, 0x4a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x08, 0x00, 0x00,
--    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x00, 0x52, 0x54,
--    0x04, 0x56, 0x54, 0x4f, 0x43, 0x50, 0x54, 0x38, 0x56, 0x49, 0x4e, 0x49,
--    0x00, 0x00, 0x81, 0x00, 0x3a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x56, 0x53,
--    0x59, 0x53, 0x00, 0x00, 0xbb, 0x00, 0x27, 0x00, 0x00, 0x00, 0x00, 0x00,
--    0x56, 0x43, 0x45, 0x4e, 0x00, 0x00, 0xe2, 0x00, 0x27, 0x00, 0x00, 0x00,
--    0x00, 0x00, 0x56, 0x53, 0x42, 0x50, 0x00, 0x00, 0x09, 0x01, 0x19, 0x00,
--    0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x01, 0x00, 0x00, 0x00, 0x36, 0x00,
--    0x52, 0x54, 0x04, 0x56, 0x49, 0x4e, 0x49, 0x44, 0x52, 0x04, 0x44, 0x45,
--    0x53, 0x43, 0x48, 0x57, 0x02, 0x30, 0x31, 0x43, 0x43, 0x04, 0x33, 0x34,
--    0x35, 0x36, 0x46, 0x4e, 0x04, 0x46, 0x52, 0x34, 0x39, 0x53, 0x4e, 0x04,
--    0x53, 0x52, 0x31, 0x32, 0x50, 0x4e, 0x04, 0x50, 0x52, 0x39, 0x39, 0x50,
--    0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x23, 0x00, 0x52, 0x54,
--    0x04, 0x56, 0x53, 0x59, 0x53, 0x53, 0x45, 0x07, 0x49, 0x42, 0x4d, 0x53,
--    0x59, 0x53, 0x31, 0x54, 0x4d, 0x08, 0x32, 0x32, 0x32, 0x32, 0x2d, 0x32,
--    0x32, 0x32, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x23,
--    0x00, 0x52, 0x54, 0x04, 0x56, 0x43, 0x45, 0x4e, 0x53, 0x45, 0x07, 0x31,
--    0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x46, 0x43, 0x08, 0x31, 0x31, 0x31,
--    0x31, 0x2d, 0x31, 0x31, 0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00,
--    0x00, 0x00, 0x15, 0x00, 0x52, 0x54, 0x04, 0x56, 0x53, 0x42, 0x50, 0x49,
--    0x4d, 0x04, 0x50, 0x00, 0x10, 0x01, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00,
--    0x00, 0x00,
--};
--
--/* Rainier BMC FRU */
--const uint8_t rainier_bmc_fruid[] = {
--    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x84,
--    0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 0x44, 0x02,
--    0x01, 0x00, 0x50, 0x54, 0x0e, 0x56, 0x54, 0x4f, 0x43, 0x00, 0x00, 0x37,
--    0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x08, 0x00, 0x00,
--    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1c, 0x00, 0x52, 0x54,
--    0x04, 0x56, 0x54, 0x4f, 0x43, 0x50, 0x54, 0x0e, 0x56, 0x49, 0x4e, 0x49,
--    0x00, 0x00, 0x57, 0x00, 0x1e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46,
--    0x01, 0x00, 0x00, 0x00, 0x1a, 0x00, 0x52, 0x54, 0x04, 0x56, 0x49, 0x4e,
--    0x49, 0x44, 0x52, 0x04, 0x44, 0x45, 0x53, 0x43, 0x48, 0x57, 0x02, 0x30,
--    0x31, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00,
--};
--
--const size_t rainier_bb_fruid_len = sizeof(rainier_bb_fruid);
--const size_t rainier_bmc_fruid_len = sizeof(rainier_bmc_fruid);
--
 diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index d229e48500..d7e4d87dc8 100644
+index 8d9f1e1609..c235c8aed3 100644
 --- a/hw/arm/meson.build
 +++ b/hw/arm/meson.build
-@@ -63,8 +63,8 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_ast2600_gb200nvl.c',
-   'aspeed_ast2600_qcom-dc-scm-v1.c',
-   'aspeed_ast2600_qcom-firework.c',
-+  'aspeed_ast2600_rainier.c',
+@@ -47,6 +47,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_ast2500_fp5280g2.c',
+   'aspeed_ast2500_g220a.c',
+   'aspeed_ast2500_tiogapass.c',
++  'aspeed_ast2500_witherspoon.c',
+   'aspeed_ast2500_yosemitev2.c',
+   'aspeed_ast2600.c',
    'aspeed_ast10x0.c',
--  'aspeed_eeprom.c',
-   'fby35.c'))
- arm_common_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files(
-   'aspeed_ast27x0.c',
 -- 
 2.43.0
 

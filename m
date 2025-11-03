@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66FA5CCFA03
-	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 09:29:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42EF3CCFA04
+	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 09:30:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vFqri-0000ne-6q; Mon, 03 Nov 2025 04:28:42 -0500
+	id 1vFqsD-0000vw-0a; Mon, 03 Nov 2025 04:29:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vFqrg-0000mn-5e; Mon, 03 Nov 2025 04:28:40 -0500
+ id 1vFqs4-0000uK-3V; Mon, 03 Nov 2025 04:29:04 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vFqrb-0001r9-Q7; Mon, 03 Nov 2025 04:28:38 -0500
+ id 1vFqs1-0001jn-MX; Mon, 03 Nov 2025 04:29:03 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 3 Nov
- 2025 17:28:05 +0800
+ 2025 17:28:10 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Mon, 3 Nov 2025 17:28:05 +0800
+ Transport; Mon, 3 Nov 2025 17:28:10 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -33,10 +33,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
  <clg@redhat.com>
-Subject: [PATCH v3 06/30] hw/arm/aspeed: Split G220A machine into a separate
- source file for better maintenance
-Date: Mon, 3 Nov 2025 17:27:17 +0800
-Message-ID: <20251103092801.1282602-7-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 13/30] hw/arm/aspeed: Split AST2500 EVB machine into a
+ separate source file for maintainability
+Date: Mon, 3 Nov 2025 17:27:24 +0800
+Message-ID: <20251103092801.1282602-14-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251103092801.1282602-1-jamin_lin@aspeedtech.com>
 References: <20251103092801.1282602-1-jamin_lin@aspeedtech.com>
@@ -68,147 +68,119 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit refactors the Bytedance G220A BMC machine by moving its
-implementation from aspeed.c into a new dedicated file
-aspeed_ast2500_g220a.c.
+This commit moves the AST2500 EVB machine implementation out of
+aspeed.c into a new standalone file aspeed_ast2500_evb.c.
 
-The goal is to improve modularity and maintainability of Aspeed
-machine definitions by isolating each platform into its own source
-file. This aligns with ongoing efforts to simplify aspeed.c,
-which previously contained all machine configurations.
+This refactor continues the modularization effort for Aspeed platform
+support, placing each board’s logic in its own dedicated source file.
+It improves maintainability, readability, and simplifies future
+development for new platforms without cluttering aspeed.c.
 
 Key updates include:
 
-- Moved G220A_BMC_HW_STRAP1 definition and
-g220a_bmc_i2c_init() function into aspeed_ast2500_g220a.c.
-- Moved aspeed_machine_g220a_class_init() and related type
-registration to the new file.
-- Added the new file to the build system (meson.build).
-- Removed all G220A-specific code from aspeed.c.
+- Moved AST2500_EVB_HW_STRAP1 macro definition into the new file.
+- Moved ast2500_evb_i2c_init() I²C initialization logic.
+- Moved aspeed_machine_ast2500_evb_class_init() and type registration.
+- Added aspeed_ast2500_evb.c to the build system (meson.build).
+- Removed all AST2500 EVB–specific code and macros from aspeed.c.
 
 No functional changes.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed.c               | 72 ---------------------------
- hw/arm/aspeed_ast2500_g220a.c | 93 +++++++++++++++++++++++++++++++++++
- hw/arm/meson.build            |  1 +
- 3 files changed, 94 insertions(+), 72 deletions(-)
- create mode 100644 hw/arm/aspeed_ast2500_g220a.c
+ hw/arm/aspeed.c             | 46 -------------------------
+ hw/arm/aspeed_ast2500_evb.c | 68 +++++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build          |  1 +
+ 3 files changed, 69 insertions(+), 46 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast2500_evb.c
 
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 3dcd5fc540..ed8ef6a2d0 100644
+index e1fa95b2c3..7d26d9241c 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -117,20 +117,6 @@ static struct arm_boot_info aspeed_board_binfo = {
+@@ -71,17 +71,6 @@ static struct arm_boot_info aspeed_board_binfo = {
          SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-         SCU_AST2500_HW_STRAP_RESERVED1)
+         SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
  
--#define G220A_BMC_HW_STRAP1 (                                      \
+-/* AST2500 evb hardware value: 0xF100C2E6 */
+-#define AST2500_EVB_HW_STRAP1 ((                                        \
+-        AST2500_HW_STRAP1_DEFAULTS |                                    \
 -        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
 -        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
 -        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
--        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
 -        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
--        SCU_HW_STRAP_2ND_BOOT_WDT |                                     \
--        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
--        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
--        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
--        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
--        SCU_HW_STRAP_VGA_SIZE_SET(VGA_64M_DRAM) |                       \
--        SCU_AST2500_HW_STRAP_RESERVED1)
+-        SCU_HW_STRAP_MAC1_RGMII |                                       \
+-        SCU_HW_STRAP_MAC0_RGMII) &                                      \
+-        ~SCU_HW_STRAP_2ND_BOOT_WDT)
 -
- /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
- #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
- 
-@@ -635,42 +621,6 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
-     /* Bus 11: TODO ucd90160@64 */
+ /* Quanta-Q71l hardware value */
+ #define QUANTA_Q71L_BMC_HW_STRAP1 (                                     \
+         SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
+@@ -406,19 +395,6 @@ static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
+     /* TODO: i2c-8: Add BMC FRU eeprom@50 */
  }
  
--static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+-static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
 -{
 -    AspeedSoCState *soc = bmc->soc;
--    DeviceState *dev;
+-    uint8_t *eeprom_buf = g_malloc0(8 * 1024);
 -
--    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3),
--                                         "emc1413", 0x4c));
--    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
--
--    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12),
--                                         "emc1413", 0x4c));
--    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
--
--    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 13),
--                                         "emc1413", 0x4c));
--    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
--
--    static uint8_t eeprom_buf[2 * 1024] = {
--            0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0xfe,
--            0x01, 0x06, 0x00, 0xc9, 0x42, 0x79, 0x74, 0x65,
--            0x64, 0x61, 0x6e, 0x63, 0x65, 0xc5, 0x47, 0x32,
--            0x32, 0x30, 0x41, 0xc4, 0x41, 0x41, 0x42, 0x42,
--            0xc4, 0x43, 0x43, 0x44, 0x44, 0xc4, 0x45, 0x45,
--            0x46, 0x46, 0xc4, 0x48, 0x48, 0x47, 0x47, 0xc1,
--            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa7,
--    };
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x57,
+-    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 3), 0x50,
 -                          eeprom_buf);
+-
+-    /* The AST2500 EVB expects a LM75 but a TMP105 is compatible */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7),
+-                     TYPE_TMP105, 0x4d);
 -}
 -
- static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
  {
      AspeedSoCState *soc = bmc->soc;
-@@ -1549,23 +1499,6 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
-     aspeed_machine_ast2600_class_emmc_init(oc);
- };
+@@ -1177,23 +1153,6 @@ static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
+     aspeed_machine_class_init_cpus_defaults(mc);
+ }
  
--static void aspeed_machine_g220a_class_init(ObjectClass *oc, const void *data)
+-static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc,
+-                                                  const void *data)
 -{
 -    MachineClass *mc = MACHINE_CLASS(oc);
 -    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 -
--    mc->desc       = "Bytedance G220A BMC (ARM1176)";
+-    mc->desc       = "Aspeed AST2500 EVB (ARM1176)";
 -    amc->soc_name  = "ast2500-a1";
--    amc->hw_strap1 = G220A_BMC_HW_STRAP1;
--    amc->fmc_model = "n25q512a";
--    amc->spi_model = "mx25l25635e";
--    amc->num_cs    = 2;
--    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
--    amc->i2c_init  = g220a_bmc_i2c_init;
--    mc->default_ram_size = 1024 * MiB;
+-    amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
+-    amc->fmc_model = "mx25l25635e";
+-    amc->spi_model = "mx25l25635f";
+-    amc->num_cs    = 1;
+-    amc->i2c_init  = ast2500_evb_i2c_init;
+-    mc->default_ram_size       = 512 * MiB;
 -    aspeed_machine_class_init_cpus_defaults(mc);
 -};
 -
- static void aspeed_machine_rainier_class_init(ObjectClass *oc, const void *data)
+ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
+                                                   const void *data)
  {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -1939,11 +1872,6 @@ static const TypeInfo aspeed_machine_types[] = {
+@@ -1549,11 +1508,6 @@ static const TypeInfo aspeed_machine_types[] = {
          .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_tiogapass_class_init,
+         .class_init    = aspeed_machine_supermicrox11_bmc_class_init,
          .interfaces    = arm_machine_interfaces,
 -    }, {
--        .name          = MACHINE_TYPE_NAME("g220a-bmc"),
+-        .name          = MACHINE_TYPE_NAME("ast2500-evb"),
 -        .parent        = TYPE_ASPEED_MACHINE,
--        .class_init    = aspeed_machine_g220a_class_init,
+-        .class_init    = aspeed_machine_ast2500_evb_class_init,
 -        .interfaces    = arm_machine_interfaces,
      }, {
-         .name          = MACHINE_TYPE_NAME("qcom-dc-scm-v1-bmc"),
+         .name          = MACHINE_TYPE_NAME("ast2600-evb"),
          .parent        = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_ast2500_g220a.c b/hw/arm/aspeed_ast2500_g220a.c
+diff --git a/hw/arm/aspeed_ast2500_evb.c b/hw/arm/aspeed_ast2500_evb.c
 new file mode 100644
-index 0000000000..c7899ed1df
+index 0000000000..3131ed6856
 --- /dev/null
-+++ b/hw/arm/aspeed_ast2500_g220a.c
-@@ -0,0 +1,93 @@
++++ b/hw/arm/aspeed_ast2500_evb.c
+@@ -0,0 +1,68 @@
 +/*
-+ * Bytedance G220A
++ * ASPEED AST2500 EVB
 + *
 + * Copyright (C) 2025 ASPEED Technology Inc.
 + *
@@ -221,97 +193,72 @@ index 0000000000..c7899ed1df
 +#include "hw/arm/aspeed.h"
 +#include "hw/arm/aspeed_soc.h"
 +#include "hw/i2c/smbus_eeprom.h"
++#include "hw/sensor/tmp105.h"
 +
-+#define G220A_BMC_HW_STRAP1 (                                      \
++/* AST2500 evb hardware value: 0xF100C2E6 */
++#define AST2500_EVB_HW_STRAP1 ((                                        \
++        AST2500_HW_STRAP1_DEFAULTS |                                    \
 +        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
 +        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
 +        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
-+        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
 +        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
-+        SCU_HW_STRAP_2ND_BOOT_WDT |                                     \
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
-+        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
-+        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_64M_DRAM) |                       \
-+        SCU_AST2500_HW_STRAP_RESERVED1)
++        SCU_HW_STRAP_MAC1_RGMII |                                       \
++        SCU_HW_STRAP_MAC0_RGMII) &                                      \
++        ~SCU_HW_STRAP_2ND_BOOT_WDT)
 +
-+static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
++static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
 +{
 +    AspeedSoCState *soc = bmc->soc;
-+    DeviceState *dev;
++    uint8_t *eeprom_buf = g_malloc0(8 * 1024);
 +
-+    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3),
-+                                         "emc1413", 0x4c));
-+    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
-+
-+    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12),
-+                                         "emc1413", 0x4c));
-+    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
-+
-+    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 13),
-+                                         "emc1413", 0x4c));
-+    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
-+
-+    static uint8_t eeprom_buf[2 * 1024] = {
-+            0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0xfe,
-+            0x01, 0x06, 0x00, 0xc9, 0x42, 0x79, 0x74, 0x65,
-+            0x64, 0x61, 0x6e, 0x63, 0x65, 0xc5, 0x47, 0x32,
-+            0x32, 0x30, 0x41, 0xc4, 0x41, 0x41, 0x42, 0x42,
-+            0xc4, 0x43, 0x43, 0x44, 0x44, 0xc4, 0x45, 0x45,
-+            0x46, 0x46, 0xc4, 0x48, 0x48, 0x47, 0x47, 0xc1,
-+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa7,
-+    };
-+    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x57,
++    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 3), 0x50,
 +                          eeprom_buf);
++
++    /* The AST2500 EVB expects a LM75 but a TMP105 is compatible */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7),
++                     TYPE_TMP105, 0x4d);
 +}
 +
-+static void aspeed_machine_g220a_class_init(ObjectClass *oc, const void *data)
++static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc,
++                                                  const void *data)
 +{
 +    MachineClass *mc = MACHINE_CLASS(oc);
 +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+    mc->desc       = "Bytedance G220A BMC (ARM1176)";
++    mc->desc       = "Aspeed AST2500 EVB (ARM1176)";
 +    amc->soc_name  = "ast2500-a1";
-+    amc->hw_strap1 = G220A_BMC_HW_STRAP1;
-+    amc->fmc_model = "n25q512a";
-+    amc->spi_model = "mx25l25635e";
-+    amc->num_cs    = 2;
-+    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
-+    amc->i2c_init  = g220a_bmc_i2c_init;
-+    mc->default_ram_size = 1024 * MiB;
++    amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
++    amc->fmc_model = "mx25l25635e";
++    amc->spi_model = "mx25l25635f";
++    amc->num_cs    = 1;
++    amc->i2c_init  = ast2500_evb_i2c_init;
++    mc->default_ram_size       = 512 * MiB;
 +    aspeed_machine_class_init_cpus_defaults(mc);
 +};
 +
-+static const TypeInfo aspeed_ast2500_g220a_types[] = {
++static const TypeInfo aspeed_ast2500_evb_types[] = {
 +    {
-+        .name          = MACHINE_TYPE_NAME("g220a-bmc"),
++        .name          = MACHINE_TYPE_NAME("ast2500-evb"),
 +        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_g220a_class_init,
++        .class_init    = aspeed_machine_ast2500_evb_class_init,
 +        .interfaces    = arm_machine_interfaces,
 +    }
 +};
 +
-+DEFINE_TYPES(aspeed_ast2500_g220a_types)
++DEFINE_TYPES(aspeed_ast2500_evb_types)
 +
 diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index ed637f2687..91bdefd203 100644
+index 76a456c33f..021daba286 100644
 --- a/hw/arm/meson.build
 +++ b/hw/arm/meson.build
-@@ -45,6 +45,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+@@ -44,6 +44,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed.c',
    'aspeed_soc_common.c',
    'aspeed_ast2400.c',
++  'aspeed_ast2500_evb.c',
    'aspeed_ast2500_fp5280g2.c',
-+  'aspeed_ast2500_g220a.c',
-   'aspeed_ast2600.c',
-   'aspeed_ast10x0.c',
-   'aspeed_eeprom.c',
+   'aspeed_ast2500_g220a.c',
+   'aspeed_ast2500_romulus.c',
 -- 
 2.43.0
 

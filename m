@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6315CCCF9F8
-	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 09:31:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BDE4CCFA04
+	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 09:31:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vFqsI-000143-Uj; Mon, 03 Nov 2025 04:29:18 -0500
+	id 1vFqrm-0000pk-PA; Mon, 03 Nov 2025 04:28:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vFqs8-0000vT-Ii; Mon, 03 Nov 2025 04:29:09 -0500
+ id 1vFqrl-0000pM-I4; Mon, 03 Nov 2025 04:28:45 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vFqs5-0001jn-68; Mon, 03 Nov 2025 04:29:07 -0500
+ id 1vFqri-0001r9-SJ; Mon, 03 Nov 2025 04:28:45 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 3 Nov
- 2025 17:28:11 +0800
+ 2025 17:28:06 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Mon, 3 Nov 2025 17:28:11 +0800
+ Transport; Mon, 3 Nov 2025 17:28:06 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <kane_chen@aspeedtech.com>
-Subject: [PATCH v3 14/30] hw/arm/aspeed: Split Quanta-Q71L machine into a
- separate source file for maintainability
-Date: Mon, 3 Nov 2025 17:27:25 +0800
-Message-ID: <20251103092801.1282602-15-jamin_lin@aspeedtech.com>
+ <kane_chen@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
+ <clg@redhat.com>
+Subject: [PATCH v3 07/30] hw/arm/aspeed: Split Tiogapass machine into a
+ separate source file for cleanup
+Date: Mon, 3 Nov 2025 17:27:18 +0800
+Message-ID: <20251103092801.1282602-8-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251103092801.1282602-1-jamin_lin@aspeedtech.com>
 References: <20251103092801.1282602-1-jamin_lin@aspeedtech.com>
@@ -67,139 +68,122 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit moves the Quanta-Q71L BMC machine implementation out of
-aspeed.c into a new standalone file aspeed_ast2400_quanta-q71l.c.
+This commit moves the Tiogapass BMC machine implementation out of
+aspeed.c into a new dedicated file aspeed_ast2500_tiogapass.c.
 
-This refactor continues the modularization effort for Aspeed platform
-support, placing each board’s logic in its own dedicated source file.
-It improves maintainability, readability, and simplifies future
-development for new platforms without cluttering aspeed.c
+To support splitting Tiogapass into a dedicated source file,
+a new TIOGAPASS_BMC_HW_STRAP1 macro is added as a copy of
+AST2500_EVB_HW_STRAP1.
+
+The change follows the ongoing effort to modularize Aspeed platform
+support by splitting each machine definition into its own source file.
+This makes aspeed.c cleaner, easier to maintain, and simplifies
+future feature additions or refactoring for individual machines.
 
 Key updates include:
-
-- Moved QUANTA_Q71L_BMC_HW_STRAP1 macro definition into the new file.
-- Moved quanta_q71l_bmc_i2c_init() I²C initialization logic into the new file.
-- Moved aspeed_machine_quanta_q71l_class_init() and type registration.
-- Added aspeed_ast2400_quanta-q71l.c to the build system (meson.build).
-- Removed all Quanta-Q71L–specific code and macros from aspeed.c.
+- Removed tiogapass_bmc_i2c_init() and its FRU data from aspeed.c
+and aspeed_eeprom.c.
+- Removed Tiogapass type registration from aspeed_machine_types[].
+- Added new source file aspeed_ast2500_tiogapass.c to meson.build.
+- Removed unused Tiogapass FRUID declarations from aspeed_eeprom.h.
 
 No functional changes.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed.c                     | 67 ----------------------
- hw/arm/aspeed_ast2400_quanta-q71l.c | 87 +++++++++++++++++++++++++++++
- hw/arm/meson.build                  |  1 +
- 3 files changed, 88 insertions(+), 67 deletions(-)
- create mode 100644 hw/arm/aspeed_ast2400_quanta-q71l.c
+ hw/arm/aspeed_eeprom.h            |  4 --
+ hw/arm/aspeed.c                   | 36 ------------
+ hw/arm/aspeed_ast2500_tiogapass.c | 91 +++++++++++++++++++++++++++++++
+ hw/arm/aspeed_eeprom.c            | 22 --------
+ hw/arm/meson.build                |  1 +
+ 5 files changed, 92 insertions(+), 62 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast2500_tiogapass.c
 
+diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+index 3ed9bc1d9a..a9ae95940c 100644
+--- a/hw/arm/aspeed_eeprom.h
++++ b/hw/arm/aspeed_eeprom.h
+@@ -7,10 +7,6 @@
+ #ifndef ASPEED_EEPROM_H
+ #define ASPEED_EEPROM_H
+ 
+-
+-extern const uint8_t tiogapass_bmc_fruid[];
+-extern const size_t tiogapass_bmc_fruid_len;
+-
+ extern const uint8_t fby35_nic_fruid[];
+ extern const uint8_t fby35_bb_fruid[];
+ extern const uint8_t fby35_bmc_fruid[];
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 7d26d9241c..f9e6d8c4c6 100644
+index ed8ef6a2d0..42f4203f9d 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -71,19 +71,6 @@ static struct arm_boot_info aspeed_board_binfo = {
-         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-         SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
- 
--/* Quanta-Q71l hardware value */
--#define QUANTA_Q71L_BMC_HW_STRAP1 (                                     \
--        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
--        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2/* DDR3 with CL=6, CWL=5 */) | \
--        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
--        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_24M_IN) |       \
--        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
--        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_PASS_THROUGH) |          \
--        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1) | \
--        SCU_HW_STRAP_SPI_WIDTH |                                        \
--        SCU_HW_STRAP_VGA_SIZE_SET(VGA_8M_DRAM) |                        \
--        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
--
- /* AST2600 evb hardware value */
- #define AST2600_EVB_HW_STRAP1 0x000000C0
- #define AST2600_EVB_HW_STRAP2 0x00000003
-@@ -363,38 +350,6 @@ static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
-     object_property_set_int(OBJECT(dev), "temperature3", 110000, &error_abort);
+@@ -495,19 +495,6 @@ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
  }
  
--static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
+-static void tiogapass_bmc_i2c_init(AspeedMachineState *bmc)
 -{
 -    AspeedSoCState *soc = bmc->soc;
 -
--    /*
--     * The quanta-q71l platform expects tmp75s which are compatible with
--     * tmp105s.
--     */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4c);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4e);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4f);
--
--    /* TODO: i2c-1: Add baseboard FRU eeprom@54 24c64 */
--    /* TODO: i2c-1: Add Frontpanel FRU eeprom@57 24c64 */
--    /* TODO: Add Memory Riser i2c mux and eeproms. */
--
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9546", 0x74);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9548", 0x77);
--
--    /* TODO: i2c-3: Add BIOS FRU eeprom@56 24c64 */
--
--    /* i2c-7 */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9546", 0x70);
--    /*        - i2c@0: pmbus@59 */
--    /*        - i2c@1: pmbus@58 */
--    /*        - i2c@2: pmbus@58 */
--    /*        - i2c@3: pmbus@59 */
--
--    /* TODO: i2c-7: Add PDB FRU eeprom@52 */
--    /* TODO: i2c-8: Add BMC FRU eeprom@50 */
+-    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x54, 128 * KiB);
+-    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 6), 0x54, 128 * KiB,
+-                          tiogapass_bmc_fruid, tiogapass_bmc_fruid_len);
+-    /* TMP421 */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "tmp421", 0x1f);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp421", 0x4f);
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp421", 0x4e);
 -}
 -
- static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
+ void aspeed_create_pca9552(AspeedSoCState *soc, int bus_id, int addr)
  {
-     AspeedSoCState *soc = bmc->soc;
-@@ -1118,23 +1073,6 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc,
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, bus_id),
+@@ -1424,24 +1411,6 @@ static void aspeed_machine_romulus_class_init(ObjectClass *oc,
      aspeed_machine_class_init_cpus_defaults(mc);
  };
  
--static void aspeed_machine_quanta_q71l_class_init(ObjectClass *oc,
--                                                  const void *data)
+-static void aspeed_machine_tiogapass_class_init(ObjectClass *oc,
+-                                                const void *data)
 -{
 -    MachineClass *mc = MACHINE_CLASS(oc);
 -    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 -
--    mc->desc       = "Quanta-Q71l BMC (ARM926EJ-S)";
--    amc->soc_name  = "ast2400-a1";
--    amc->hw_strap1 = QUANTA_Q71L_BMC_HW_STRAP1;
+-    mc->desc       = "Facebook Tiogapass BMC (ARM1176)";
+-    amc->soc_name  = "ast2500-a1";
+-    amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
+-    amc->hw_strap2 = 0;
 -    amc->fmc_model = "n25q256a";
 -    amc->spi_model = "mx25l25635e";
--    amc->num_cs    = 1;
--    amc->i2c_init  = quanta_q71l_bmc_i2c_init;
--    mc->default_ram_size       = 128 * MiB;
+-    amc->num_cs    = 2;
+-    amc->i2c_init  = tiogapass_bmc_i2c_init;
+-    mc->default_ram_size       = 1 * GiB;
 -    aspeed_machine_class_init_cpus_defaults(mc);
--}
+-};
 -
- static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
-                                                         const void *data)
+ static void aspeed_machine_sonorapass_class_init(ObjectClass *oc,
+                                                  const void *data)
  {
-@@ -1523,11 +1461,6 @@ static const TypeInfo aspeed_machine_types[] = {
+@@ -1867,11 +1836,6 @@ static const TypeInfo aspeed_machine_types[] = {
          .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_qcom_firework_class_init,
+         .class_init    = aspeed_machine_yosemitev2_class_init,
          .interfaces    = arm_machine_interfaces,
 -    }, {
--        .name          = MACHINE_TYPE_NAME("quanta-q71l-bmc"),
+-        .name          = MACHINE_TYPE_NAME("tiogapass-bmc"),
 -        .parent        = TYPE_ASPEED_MACHINE,
--        .class_init    = aspeed_machine_quanta_q71l_class_init,
+-        .class_init    = aspeed_machine_tiogapass_class_init,
 -        .interfaces    = arm_machine_interfaces,
      }, {
-         .name          = MACHINE_TYPE_NAME("rainier-bmc"),
+         .name          = MACHINE_TYPE_NAME("qcom-dc-scm-v1-bmc"),
          .parent        = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_ast2400_quanta-q71l.c b/hw/arm/aspeed_ast2400_quanta-q71l.c
+diff --git a/hw/arm/aspeed_ast2500_tiogapass.c b/hw/arm/aspeed_ast2500_tiogapass.c
 new file mode 100644
-index 0000000000..b9dc2fa3c1
+index 0000000000..33c1342bf2
 --- /dev/null
-+++ b/hw/arm/aspeed_ast2400_quanta-q71l.c
-@@ -0,0 +1,87 @@
++++ b/hw/arm/aspeed_ast2500_tiogapass.c
+@@ -0,0 +1,91 @@
 +/*
-+ * Quanta Q71l
++ * Facebook Tiogapass
 + *
 + * Copyright (C) 2025 ASPEED Technology Inc.
 + *
@@ -211,92 +195,136 @@ index 0000000000..b9dc2fa3c1
 +#include "hw/arm/machines-qom.h"
 +#include "hw/arm/aspeed.h"
 +#include "hw/arm/aspeed_soc.h"
++#include "hw/nvram/eeprom_at24c.h"
 +
-+/* Quanta-Q71l hardware value */
-+#define QUANTA_Q71L_BMC_HW_STRAP1 (                                     \
-+        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
-+        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2/* DDR3 with CL=6, CWL=5 */) | \
-+        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
-+        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_24M_IN) |       \
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_PASS_THROUGH) |          \
-+        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1) | \
-+        SCU_HW_STRAP_SPI_WIDTH |                                        \
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_8M_DRAM) |                        \
-+        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
++/* value: 0xF100C2E6 */
++#define TIOGAPASS_BMC_HW_STRAP1 ((                                        \
++        AST2500_HW_STRAP1_DEFAULTS |                                    \
++        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
++        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
++        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
++        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
++        SCU_HW_STRAP_MAC1_RGMII |                                       \
++        SCU_HW_STRAP_MAC0_RGMII) &                                      \
++        ~SCU_HW_STRAP_2ND_BOOT_WDT)
 +
-+static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
++/* Tiogapass BMC FRU */
++static const uint8_t tiogapass_bmc_fruid[] = {
++    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
++    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
++    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
++    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
++    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x54, 0x69, 0x6f, 0x67, 0x61,
++    0x20, 0x50, 0x61, 0x73, 0x73, 0x20, 0x53, 0x69, 0x6e, 0x67, 0x6c, 0x65,
++    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0xc4, 0x58, 0x58, 0x58, 0x32, 0xcd, 0x58, 0x58,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
++    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
++    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
++};
++
++static const size_t tiogapass_bmc_fruid_len = sizeof(tiogapass_bmc_fruid);
++
++static void tiogapass_bmc_i2c_init(AspeedMachineState *bmc)
 +{
 +    AspeedSoCState *soc = bmc->soc;
 +
-+    /*
-+     * The quanta-q71l platform expects tmp75s which are compatible with
-+     * tmp105s.
-+     */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4c);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4e);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4f);
-+
-+    /* TODO: i2c-1: Add baseboard FRU eeprom@54 24c64 */
-+    /* TODO: i2c-1: Add Frontpanel FRU eeprom@57 24c64 */
-+    /* TODO: Add Memory Riser i2c mux and eeproms. */
-+
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9546", 0x74);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9548", 0x77);
-+
-+    /* TODO: i2c-3: Add BIOS FRU eeprom@56 24c64 */
-+
-+    /* i2c-7 */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9546", 0x70);
-+    /*        - i2c@0: pmbus@59 */
-+    /*        - i2c@1: pmbus@58 */
-+    /*        - i2c@2: pmbus@58 */
-+    /*        - i2c@3: pmbus@59 */
-+
-+    /* TODO: i2c-7: Add PDB FRU eeprom@52 */
-+    /* TODO: i2c-8: Add BMC FRU eeprom@50 */
++    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 4), 0x54, 128 * KiB);
++    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 6), 0x54, 128 * KiB,
++                          tiogapass_bmc_fruid, tiogapass_bmc_fruid_len);
++    /* TMP421 */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 8), "tmp421", 0x1f);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp421", 0x4f);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp421", 0x4e);
 +}
 +
-+static void aspeed_machine_quanta_q71l_class_init(ObjectClass *oc,
-+                                                  const void *data)
++static void aspeed_machine_tiogapass_class_init(ObjectClass *oc,
++                                                const void *data)
 +{
 +    MachineClass *mc = MACHINE_CLASS(oc);
 +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+    mc->desc       = "Quanta-Q71l BMC (ARM926EJ-S)";
-+    amc->soc_name  = "ast2400-a1";
-+    amc->hw_strap1 = QUANTA_Q71L_BMC_HW_STRAP1;
++    mc->desc       = "Facebook Tiogapass BMC (ARM1176)";
++    amc->soc_name  = "ast2500-a1";
++    amc->hw_strap1 = TIOGAPASS_BMC_HW_STRAP1;
++    amc->hw_strap2 = 0;
 +    amc->fmc_model = "n25q256a";
 +    amc->spi_model = "mx25l25635e";
-+    amc->num_cs    = 1;
-+    amc->i2c_init  = quanta_q71l_bmc_i2c_init;
-+    mc->default_ram_size       = 128 * MiB;
++    amc->num_cs    = 2;
++    amc->i2c_init  = tiogapass_bmc_i2c_init;
++    mc->default_ram_size       = 1 * GiB;
 +    aspeed_machine_class_init_cpus_defaults(mc);
-+}
++};
 +
-+static const TypeInfo aspeed_ast2400_quanta_q71l_types[] = {
++static const TypeInfo aspeed_ast2500_tiogapass_types[] = {
 +    {
-+        .name          = MACHINE_TYPE_NAME("quanta-q71l-bmc"),
++        .name          = MACHINE_TYPE_NAME("tiogapass-bmc"),
 +        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_quanta_q71l_class_init,
++        .class_init    = aspeed_machine_tiogapass_class_init,
 +        .interfaces    = arm_machine_interfaces,
 +    }
 +};
 +
-+DEFINE_TYPES(aspeed_ast2400_quanta_q71l_types)
++DEFINE_TYPES(aspeed_ast2500_tiogapass_types)
 +
+diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+index 8bbbdec834..f0ced29cf1 100644
+--- a/hw/arm/aspeed_eeprom.c
++++ b/hw/arm/aspeed_eeprom.c
+@@ -7,27 +7,6 @@
+ #include "qemu/osdep.h"
+ #include "aspeed_eeprom.h"
+ 
+-/* Tiogapass BMC FRU */
+-const uint8_t tiogapass_bmc_fruid[] = {
+-    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
+-    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
+-    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
+-    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
+-    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x54, 0x69, 0x6f, 0x67, 0x61,
+-    0x20, 0x50, 0x61, 0x73, 0x73, 0x20, 0x53, 0x69, 0x6e, 0x67, 0x6c, 0x65,
+-    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0xc4, 0x58, 0x58, 0x58, 0x32, 0xcd, 0x58, 0x58,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
+-    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
+-    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
+-};
+-
+ const uint8_t fby35_nic_fruid[] = {
+     0x01, 0x00, 0x00, 0x01, 0x0f, 0x20, 0x00, 0xcf, 0x01, 0x0e, 0x19, 0xd7,
+     0x5e, 0xcf, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xdd,
+@@ -181,7 +160,6 @@ const uint8_t gb200nvl_bmc_fruid[] = {
+ 
+ };
+ 
+-const size_t tiogapass_bmc_fruid_len = sizeof(tiogapass_bmc_fruid);
+ const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
+ const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
+ const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
 diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 021daba286..5467ee673d 100644
+index 91bdefd203..870202ce85 100644
 --- a/hw/arm/meson.build
 +++ b/hw/arm/meson.build
-@@ -44,6 +44,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed.c',
-   'aspeed_soc_common.c',
+@@ -46,6 +46,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
    'aspeed_ast2400.c',
-+  'aspeed_ast2400_quanta-q71l.c',
-   'aspeed_ast2500_evb.c',
    'aspeed_ast2500_fp5280g2.c',
    'aspeed_ast2500_g220a.c',
++  'aspeed_ast2500_tiogapass.c',
+   'aspeed_ast2600.c',
+   'aspeed_ast10x0.c',
+   'aspeed_eeprom.c',
 -- 
 2.43.0
 

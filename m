@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A6ACCF9F8
-	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 14:48:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0F24CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 14:49:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vFvr7-0002JJ-HA; Mon, 03 Nov 2025 09:48:27 -0500
+	id 1vFvrt-0002ZG-LI; Mon, 03 Nov 2025 09:49:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vFvr0-0002In-Dr; Mon, 03 Nov 2025 09:48:19 -0500
+ id 1vFvrr-0002Yr-Es; Mon, 03 Nov 2025 09:49:11 -0500
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vFvqt-0005sj-Qe; Mon, 03 Nov 2025 09:48:18 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4d0ZF74345zJ46cT;
- Mon,  3 Nov 2025 22:47:39 +0800 (CST)
+ id 1vFvre-0006Bf-DN; Mon, 03 Nov 2025 09:49:10 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4d0ZGP6HqQzHnGjk;
+ Mon,  3 Nov 2025 22:48:45 +0800 (CST)
 Received: from dubpeml100005.china.huawei.com (unknown [7.214.146.113])
- by mail.maildlp.com (Postfix) with ESMTPS id 947D71402F8;
- Mon,  3 Nov 2025 22:47:57 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 71A1B1402EA;
+ Mon,  3 Nov 2025 22:48:47 +0800 (CST)
 Received: from localhost (10.203.177.15) by dubpeml100005.china.huawei.com
  (7.214.146.113) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Mon, 3 Nov
- 2025 14:47:56 +0000
-Date: Mon, 3 Nov 2025 14:47:55 +0000
+ 2025 14:48:46 +0000
+Date: Mon, 3 Nov 2025 14:48:45 +0000
 To: Shameer Kolothum <skolothumtho@nvidia.com>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
  <peter.maydell@linaro.org>, <jgg@nvidia.com>, <nicolinc@nvidia.com>,
@@ -36,16 +36,16 @@ CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
  <mochs@nvidia.com>, <smostafa@google.com>, <wangzhou1@hisilicon.com>,
  <jiangkunkun@huawei.com>, <zhangfei.gao@linaro.org>,
  <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>, <kjaju@nvidia.com>
-Subject: Re: [PATCH v5 19/32] hw/arm/smmuv3-accel: Get host SMMUv3 hw info
- and validate
-Message-ID: <20251103144755.00003ff9@huawei.com>
-In-Reply-To: <20251031105005.24618-20-skolothumtho@nvidia.com>
+Subject: Re: [PATCH v5 22/32] tests/qtest/bios-tables-test: Prepare for IORT
+ revison upgrade
+Message-ID: <20251103144845.0000790b@huawei.com>
+In-Reply-To: <20251031105005.24618-23-skolothumtho@nvidia.com>
 References: <20251031105005.24618-1-skolothumtho@nvidia.com>
- <20251031105005.24618-20-skolothumtho@nvidia.com>
+ <20251031105005.24618-23-skolothumtho@nvidia.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
 X-Originating-IP: [10.203.177.15]
 X-ClientProxiedBy: lhrpeml100011.china.huawei.com (7.191.174.247) To
  dubpeml100005.china.huawei.com (7.214.146.113)
@@ -77,24 +77,33 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 31 Oct 2025 10:49:52 +0000
+On Fri, 31 Oct 2025 10:49:55 +0000
 Shameer Kolothum <skolothumtho@nvidia.com> wrote:
 
-> Just before the device gets attached to the SMMUv3, make sure QEMU SMMUv3
-> features are compatible with the host SMMUv3.
-> 
-> Not all fields in the host SMMUv3 IDR registers are meaningful for userspace.
-> Only the following fields can be used:
-> 
->   - IDR0: ST_LEVEL, TERM_MODEL, STALL_MODEL, TTENDIAN, CD2L, ASID16, TTF
->   - IDR1: SIDSIZE, SSIDSIZE
->   - IDR3: BBML, RIL
->   - IDR5: VAX, GRAN64K, GRAN16K, GRAN4K
-> 
-> For now, the check is to make sure the features are in sync to enable
-> basic accelerated SMMUv3 support.
-> 
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-LGTM
+> Subsequent patch will upgrade IORT revision to 5 to add support
+> for IORT RMR nodes.
+>=20
+> Add the affected IORT blobs to=A0allowed-diff list for bios-table
+> tests.
+>=20
+FWIW
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  tests/qtest/bios-tables-test-allowed-diff.h | 4 ++++
+>  1 file changed, 4 insertions(+)
+>=20
+> diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bi=
+os-tables-test-allowed-diff.h
+> index dfb8523c8b..3279638ad0 100644
+> --- a/tests/qtest/bios-tables-test-allowed-diff.h
+> +++ b/tests/qtest/bios-tables-test-allowed-diff.h
+> @@ -1 +1,5 @@
+>  /* List of comma-separated changed AML files to ignore */
+> +"tests/data/acpi/aarch64/virt/IORT",
+> +"tests/data/acpi/aarch64/virt/IORT.its_off",
+> +"tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy",
+> +"tests/data/acpi/aarch64/virt/IORT.smmuv3-dev",
+
 

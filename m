@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38089CCF9F8
-	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 13:13:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F7CBCCF9FE
+	for <qemu-arm@archiver.kernel.org>; Mon,  3 Nov 2025 13:25:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vFuMi-0000Fs-KD; Mon, 03 Nov 2025 08:12:57 -0500
+	id 1vFuYL-0007R2-Fe; Mon, 03 Nov 2025 08:24:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vFuMg-0000EZ-Ky; Mon, 03 Nov 2025 08:12:54 -0500
+ id 1vFuYD-0007O0-MU; Mon, 03 Nov 2025 08:24:54 -0500
 Received: from [185.176.79.56] (helo=frasgout.his.huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vFuMa-0007g7-BG; Mon, 03 Nov 2025 08:12:53 -0500
+ id 1vFuY8-0002WJ-3L; Mon, 03 Nov 2025 08:24:48 -0500
 Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4d0X2q4K9Cz6L5Qv;
- Mon,  3 Nov 2025 21:08:35 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4d0XP06jNgzHnHF1;
+ Mon,  3 Nov 2025 21:24:20 +0800 (CST)
 Received: from dubpeml100005.china.huawei.com (unknown [7.214.146.113])
- by mail.maildlp.com (Postfix) with ESMTPS id 49920140373;
- Mon,  3 Nov 2025 21:12:22 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 6223914033F;
+ Mon,  3 Nov 2025 21:24:22 +0800 (CST)
 Received: from localhost (10.203.177.15) by dubpeml100005.china.huawei.com
  (7.214.146.113) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Mon, 3 Nov
- 2025 13:12:21 +0000
-Date: Mon, 3 Nov 2025 13:12:19 +0000
+ 2025 13:24:21 +0000
+Date: Mon, 3 Nov 2025 13:24:19 +0000
 To: Shameer Kolothum <skolothumtho@nvidia.com>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
  <peter.maydell@linaro.org>, <jgg@nvidia.com>, <nicolinc@nvidia.com>,
@@ -36,18 +36,18 @@ CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
  <mochs@nvidia.com>, <smostafa@google.com>, <wangzhou1@hisilicon.com>,
  <jiangkunkun@huawei.com>, <zhangfei.gao@linaro.org>,
  <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>, <kjaju@nvidia.com>
-Subject: Re: [PATCH v5 06/32] hw/arm/smmuv3-accel: Initialize shared system
- address space
-Message-ID: <20251103131219.000079ca@huawei.com>
-In-Reply-To: <20251031105005.24618-7-skolothumtho@nvidia.com>
+Subject: Re: [PATCH v5 07/32] hw/pci/pci: Move pci_init_bus_master() after
+ adding device to bus
+Message-ID: <20251103132419.00004abc@huawei.com>
+In-Reply-To: <20251031105005.24618-8-skolothumtho@nvidia.com>
 References: <20251031105005.24618-1-skolothumtho@nvidia.com>
- <20251031105005.24618-7-skolothumtho@nvidia.com>
+ <20251031105005.24618-8-skolothumtho@nvidia.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.203.177.15]
-X-ClientProxiedBy: lhrpeml100009.china.huawei.com (7.191.174.83) To
+X-ClientProxiedBy: lhrpeml500012.china.huawei.com (7.191.174.4) To
  dubpeml100005.china.huawei.com (7.214.146.113)
 X-Host-Lookup-Failed: Reverse DNS lookup failed for 185.176.79.56 (deferred)
 Received-SPF: pass client-ip=185.176.79.56;
@@ -56,7 +56,6 @@ X-Spam_score_int: -33
 X-Spam_score: -3.4
 X-Spam_bar: ---
 X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
@@ -77,18 +76,58 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 31 Oct 2025 10:49:39 +0000
+On Fri, 31 Oct 2025 10:49:40 +0000
 Shameer Kolothum <skolothumtho@nvidia.com> wrote:
 
-> To support accelerated SMMUv3 instances, introduce a shared system-wide
-> AddressSpace (shared_as_sysmem) that aliases the global system memory.
-> This shared AddressSpace will be used in a subsequent patch for all
-> vfio-pci devices behind all accelerated SMMUv3 instances within a VM.
-No problem with the patch, but perhaps this description could mention
-something about 'why' this address space is useful thing to have?
-
+> During PCI hotplug, in do_pci_register_device(), pci_init_bus_master()
+> is called before storing the pci_dev pointer in bus->devices[devfn].
 > 
+> This causes a problem if pci_init_bus_master() (via its
+> get_address_space() callback) attempts to retrieve the device using
+> pci_find_device(), since the PCI device is not yet visible on the bus.
+> 
+> Fix this by moving the pci_init_bus_master() call to after the device
+> has been added to bus->devices[devfn].
+> 
+> This prepares for a subsequent patch where the accel SMMUv3
+> get_address_space() callback retrieves the pci_dev to identify the
+> attached device type.
+> 
+> No functional change intended.
+> 
+> Cc: Michael S. Tsirkin <mst@redhat.com>
 > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+Seems harmless.
+
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+
+> ---
+>  hw/pci/pci.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> index c9932c87e3..9693d7f10c 100644
+> --- a/hw/pci/pci.c
+> +++ b/hw/pci/pci.c
+> @@ -1370,9 +1370,6 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
+>      pci_dev->bus_master_as.max_bounce_buffer_size =
+>          pci_dev->max_bounce_buffer_size;
+>  
+> -    if (phase_check(PHASE_MACHINE_READY)) {
+> -        pci_init_bus_master(pci_dev);
+> -    }
+>      pci_dev->irq_state = 0;
+>      pci_config_alloc(pci_dev);
+>  
+> @@ -1416,6 +1413,9 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
+>      pci_dev->config_write = config_write;
+>      bus->devices[devfn] = pci_dev;
+>      pci_dev->version_id = 2; /* Current pci device vmstate version */
+> +    if (phase_check(PHASE_MACHINE_READY)) {
+> +        pci_init_bus_master(pci_dev);
+> +    }
+>      return pci_dev;
+>  }
+>  
 
 

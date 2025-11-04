@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89B66CCF9E3
-	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 08:34:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D041CCF9E3
+	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 08:34:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGCSl-0000Yc-62; Tue, 04 Nov 2025 03:32:23 -0500
+	id 1vGCUS-0002x1-9w; Tue, 04 Nov 2025 03:34:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSg-0000W2-RZ
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:19 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCTB-0001Br-Qy
+ for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:51 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSe-0003TY-QF
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:18 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCT9-0003ba-8Y
+ for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762245135;
+ s=mimecast20190719; t=1762245166;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8u4I1GqOE0j33vBDxsm9fJKnbZ6jvTLb/MOmjtBDH0w=;
- b=Bxopd8UvV4JE1vvwr41sAA9tNKxF55S9efZbeOPSOuyU58goBvmhibl1HbSwpUqnW3/T79
- DEJTfGwf08E2Z/ykEs1QntJDR/WkkSDObAqp6X/aXB8E5nonx0/pEqJKNyKKC+fpChiILb
- 94YZ8iabN7z7lVqNYwumpks0wIRu/Tk=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=XLmaK9CaRduXldH/PhkEzo7M3x5D/0OEZxUcZFFlML4=;
+ b=HFSaDDjKV+pM6bXAXQJr+/7WNR03yZ7xUQCu1XnoNvTXUc+m8MaKpN3xyfrPBdN49T/g5d
+ RCgFA/O57F3Zmk2O5POHzyDvqX9LFoPCCvZWxGWZEhANItPnptWlzGoe7KIZEuHJt7DY5N
+ QOfu268qyJlJDOW5pNPfmp18QO1Bg/c=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-117-Zv6KWiEGON28E9sxG37Y4Q-1; Tue,
- 04 Nov 2025 03:32:12 -0500
-X-MC-Unique: Zv6KWiEGON28E9sxG37Y4Q-1
-X-Mimecast-MFC-AGG-ID: Zv6KWiEGON28E9sxG37Y4Q_1762245131
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-223-oMXogLlrMBWauzAmWJMVkQ-1; Tue,
+ 04 Nov 2025 03:32:40 -0500
+X-MC-Unique: oMXogLlrMBWauzAmWJMVkQ-1
+X-Mimecast-MFC-AGG-ID: oMXogLlrMBWauzAmWJMVkQ_1762245159
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9850318002C0; Tue,  4 Nov 2025 08:32:11 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B8DF91956095; Tue,  4 Nov 2025 08:32:39 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.33.250])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id F112019560A2; Tue,  4 Nov 2025 08:32:09 +0000 (UTC)
+ id D528A19560B2; Tue,  4 Nov 2025 08:32:37 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 10/30] hw/arm/aspeed: Split Sonorapass machine into a separate
- source file for maintainability
-Date: Tue,  4 Nov 2025 09:31:24 +0100
-Message-ID: <20251104083144.187806-11-clg@redhat.com>
+Subject: [PULL 22/30] hw/arm/aspeed: Split QCOM DC-SCM V1 machine into a
+ separate source file for maintainability
+Date: Tue,  4 Nov 2025 09:31:36 +0100
+Message-ID: <20251104083144.187806-23-clg@redhat.com>
 In-Reply-To: <20251104083144.187806-1-clg@redhat.com>
 References: <20251104083144.187806-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -87,158 +87,111 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-This commit moves the Sonorapass BMC machine implementation out of
-aspeed.c and into a new standalone file aspeed_ast2500_sonorapass.c.
+This commit moves the QCOM DC-SCM V1 BMC machine implementation out of
+aspeed.c into a new standalone file aspeed_ast2600_qcom-dc-scm-v1.c.
 
-The refactor continues the effort to modularize Aspeed platform support
-by separating each board’s implementation into its own source file.
-This improves maintainability, readability, and simplifies future
-updates to individual machine configurations.
+This refactor continues the modularization effort for Aspeed platform support,
+placing each board’s logic in its own dedicated source file. It improves
+maintainability, readability, and simplifies future development for new
+platforms without cluttering aspeed.c.
 
 Key updates include:
-- Moved SONORAPASS_BMC_HW_STRAP1 definition into the new file.
-- Moved sonorapass_bmc_i2c_init() and all I²C device initialization
-logic from aspeed.c into aspeed_ast2500_sonorapass.c.
-- Moved aspeed_machine_sonorapass_class_init() and type registration
-into the new file.
-- Added the new file to the build system (meson.build).
-- Removed all Sonorapass-specific code and definitions from aspeed.c
+- Moved QCOM_DC_SCM_V1_BMC_HW_STRAP1 and QCOM_DC_SCM_V1_BMC_HW_STRAP2 macro
+  into the new file aspeed_ast2600_qcom-dc-scm-v1.c.
+- Moved qcom_dc_scm_bmc_i2c_init() and aspeed_machine_qcom_dc_scm_v1_class_init()
+  into the new file aspeed_ast2600_qcom-dc-scm-v1.c.
+- Moved "qcom-dc-scm-v1-bmc" machine type registration from aspeed.c to the new file.
+- Updated hw/arm/meson.build to include aspeed_ast2600_qcom-dc-scm-v1.c.
+- Cleaned up all QCOM DC-SCM V1-specific code from aspeed.c.
 
 No functional changes.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20251104031325.146374-11-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20251104031325.146374-23-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed.c                    |  82 -----------------------
- hw/arm/aspeed_ast2500_sonorapass.c | 102 +++++++++++++++++++++++++++++
- hw/arm/meson.build                 |   1 +
- 3 files changed, 103 insertions(+), 82 deletions(-)
- create mode 100644 hw/arm/aspeed_ast2500_sonorapass.c
+ hw/arm/aspeed.c                        | 36 -----------------
+ hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c | 55 ++++++++++++++++++++++++++
+ hw/arm/meson.build                     |  1 +
+ 3 files changed, 56 insertions(+), 36 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c
 
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 74eb8077da7d..df1a37ca3df7 100644
+index f72b1e2eeac7..89a463242567 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -102,21 +102,6 @@ static struct arm_boot_info aspeed_board_binfo = {
-         SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
-         SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
+@@ -56,10 +56,6 @@ static struct arm_boot_info aspeed_board_binfo = {
+ #define GB200NVL_BMC_HW_STRAP1 AST2600_EVB_HW_STRAP1
+ #define GB200NVL_BMC_HW_STRAP2 AST2600_EVB_HW_STRAP2
  
--/* Sonorapass hardware value: 0xF100D216 */
--#define SONORAPASS_BMC_HW_STRAP1 (                                      \
--        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
--        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
--        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
--        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
--        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
--        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
--        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
--        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
--        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
--        SCU_HW_STRAP_VGA_BIOS_ROM |                                     \
--        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
--        SCU_AST2500_HW_STRAP_RESERVED1)
+-/* Qualcomm DC-SCM hardware value */
+-#define QCOM_DC_SCM_V1_BMC_HW_STRAP1  0x00000000
+-#define QCOM_DC_SCM_V1_BMC_HW_STRAP2  0x00000041
 -
- /* Quanta-Q71l hardware value */
- #define QUANTA_Q71L_BMC_HW_STRAP1 (                                     \
-         SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
-@@ -490,50 +475,6 @@ I2CSlave *aspeed_create_pca9554(AspeedSoCState *soc, int bus_id, int addr)
-                             TYPE_PCA9554, addr);
+ #define AST_SMP_MAILBOX_BASE            0x1e6e2180
+ #define AST_SMP_MBOX_FIELD_ENTRY        (AST_SMP_MAILBOX_BASE + 0x0)
+ #define AST_SMP_MBOX_FIELD_GOSIGN       (AST_SMP_MAILBOX_BASE + 0x4)
+@@ -628,13 +624,6 @@ static void gb200nvl_bmc_i2c_init(AspeedMachineState *bmc)
+                           gb200nvl_bmc_fruid_len);
  }
  
--static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+-static void qcom_dc_scm_bmc_i2c_init(AspeedMachineState *bmc)
 -{
 -    AspeedSoCState *soc = bmc->soc;
 -
--    /* bus 2 : */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "tmp105", 0x48);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "tmp105", 0x49);
--    /* bus 2 : pca9546 @ 0x73 */
--
--    /* bus 3 : pca9548 @ 0x70 */
--
--    /* bus 4 : */
--    uint8_t *eeprom4_54 = g_malloc0(8 * 1024);
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x54,
--                          eeprom4_54);
--    /* PCA9539 @ 0x76, but PCA9552 is compatible */
--    aspeed_create_pca9552(soc, 4, 0x76);
--    /* PCA9539 @ 0x77, but PCA9552 is compatible */
--    aspeed_create_pca9552(soc, 4, 0x77);
--
--    /* bus 6 : */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp105", 0x48);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp105", 0x49);
--    /* bus 6 : pca9546 @ 0x73 */
--
--    /* bus 8 : */
--    uint8_t *eeprom8_56 = g_malloc0(8 * 1024);
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 8), 0x56,
--                          eeprom8_56);
--    aspeed_create_pca9552(soc, 8, 0x60);
--    aspeed_create_pca9552(soc, 8, 0x61);
--    /* bus 8 : adc128d818 @ 0x1d */
--    /* bus 8 : adc128d818 @ 0x1f */
--
--    /*
--     * bus 13 : pca9548 @ 0x71
--     *      - channel 3:
--     *          - tmm421 @ 0x4c
--     *          - tmp421 @ 0x4e
--     *          - tmp421 @ 0x4f
--     */
--
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 15), "tmp105", 0x4d);
 -}
 -
- static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+ static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
  {
-     AspeedSoCState *soc = bmc->soc;
-@@ -1319,24 +1260,6 @@ static void aspeed_machine_romulus_class_init(ObjectClass *oc,
-     aspeed_machine_class_init_cpus_defaults(mc);
- };
+     return ASPEED_MACHINE(obj)->mmio_exec;
+@@ -1011,37 +1000,12 @@ static void aspeed_machine_ast2700a1_evb_class_init(ObjectClass *oc,
+ }
+ #endif
  
--static void aspeed_machine_sonorapass_class_init(ObjectClass *oc,
--                                                 const void *data)
+-static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
+-                                                     const void *data)
 -{
 -    MachineClass *mc = MACHINE_CLASS(oc);
 -    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 -
--    mc->desc       = "OCP SonoraPass BMC (ARM1176)";
--    mc->deprecation_reason = "use 'ast2500-evb' instead";
--    amc->soc_name  = "ast2500-a1";
--    amc->hw_strap1 = SONORAPASS_BMC_HW_STRAP1;
--    amc->fmc_model = "mx66l1g45g";
--    amc->spi_model = "mx66l1g45g";
+-    mc->desc       = "Qualcomm DC-SCM V1 BMC (Cortex A7)";
+-    mc->deprecation_reason = "use 'ast2600-evb' instead";
+-    amc->soc_name  = "ast2600-a3";
+-    amc->hw_strap1 = QCOM_DC_SCM_V1_BMC_HW_STRAP1;
+-    amc->hw_strap2 = QCOM_DC_SCM_V1_BMC_HW_STRAP2;
+-    amc->fmc_model = "n25q512a";
+-    amc->spi_model = "n25q512a";
 -    amc->num_cs    = 2;
--    amc->i2c_init  = sonorapass_bmc_i2c_init;
--    mc->default_ram_size       = 512 * MiB;
+-    amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
+-    amc->i2c_init  = qcom_dc_scm_bmc_i2c_init;
+-    mc->default_ram_size = 1 * GiB;
 -    aspeed_machine_class_init_cpus_defaults(mc);
 -};
 -
- static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
-                                                   const void *data)
- {
-@@ -1707,11 +1630,6 @@ static const TypeInfo aspeed_machine_types[] = {
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_romulus_class_init,
-         .interfaces    = arm_machine_interfaces,
--    }, {
--        .name          = MACHINE_TYPE_NAME("sonorapass-bmc"),
--        .parent        = TYPE_ASPEED_MACHINE,
--        .class_init    = aspeed_machine_sonorapass_class_init,
--        .interfaces    = arm_machine_interfaces,
-     }, {
+ static const TypeInfo aspeed_machine_types[] = {
+     {
          .name          = MACHINE_TYPE_NAME("ast2600-evb"),
          .parent        = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_ast2500_sonorapass.c b/hw/arm/aspeed_ast2500_sonorapass.c
+         .class_init    = aspeed_machine_ast2600_evb_class_init,
+         .interfaces    = arm_machine_interfaces,
+-    }, {
+-        .name          = MACHINE_TYPE_NAME("qcom-dc-scm-v1-bmc"),
+-        .parent        = TYPE_ASPEED_MACHINE,
+-        .class_init    = aspeed_machine_qcom_dc_scm_v1_class_init,
+-        .interfaces    = arm_machine_interfaces,
+     }, {
+         .name          = MACHINE_TYPE_NAME("rainier-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+diff --git a/hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c b/hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c
 new file mode 100644
-index 000000000000..84de4f56b376
+index 000000000000..bbdeb6023686
 --- /dev/null
-+++ b/hw/arm/aspeed_ast2500_sonorapass.c
-@@ -0,0 +1,102 @@
++++ b/hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c
+@@ -0,0 +1,55 @@
 +/*
-+ * OCP SonoraPass
++ * Qualcomm DC-SCM V1
 + *
 + * Copyright 2016 IBM Corp.
 + *
@@ -250,107 +203,60 @@ index 000000000000..84de4f56b376
 +#include "hw/arm/machines-qom.h"
 +#include "hw/arm/aspeed.h"
 +#include "hw/arm/aspeed_soc.h"
-+#include "hw/i2c/smbus_eeprom.h"
 +
-+/* Sonorapass hardware value: 0xF100D216 */
-+#define SONORAPASS_BMC_HW_STRAP1 (                                      \
-+        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
-+        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
-+        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
-+        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
-+        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
-+        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
-+        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
-+        SCU_HW_STRAP_VGA_BIOS_ROM |                                     \
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-+        SCU_AST2500_HW_STRAP_RESERVED1)
++/* Qualcomm DC-SCM hardware value */
++#define QCOM_DC_SCM_V1_BMC_HW_STRAP1  0x00000000
++#define QCOM_DC_SCM_V1_BMC_HW_STRAP2  0x00000041
 +
-+static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
++static void qcom_dc_scm_bmc_i2c_init(AspeedMachineState *bmc)
 +{
 +    AspeedSoCState *soc = bmc->soc;
 +
-+    /* bus 2 : */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "tmp105", 0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "tmp105", 0x49);
-+    /* bus 2 : pca9546 @ 0x73 */
-+
-+    /* bus 3 : pca9548 @ 0x70 */
-+
-+    /* bus 4 : */
-+    uint8_t *eeprom4_54 = g_malloc0(8 * 1024);
-+    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x54,
-+                          eeprom4_54);
-+    /* PCA9539 @ 0x76, but PCA9552 is compatible */
-+    aspeed_create_pca9552(soc, 4, 0x76);
-+    /* PCA9539 @ 0x77, but PCA9552 is compatible */
-+    aspeed_create_pca9552(soc, 4, 0x77);
-+
-+    /* bus 6 : */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp105", 0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp105", 0x49);
-+    /* bus 6 : pca9546 @ 0x73 */
-+
-+    /* bus 8 : */
-+    uint8_t *eeprom8_56 = g_malloc0(8 * 1024);
-+    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 8), 0x56,
-+                          eeprom8_56);
-+    aspeed_create_pca9552(soc, 8, 0x60);
-+    aspeed_create_pca9552(soc, 8, 0x61);
-+    /* bus 8 : adc128d818 @ 0x1d */
-+    /* bus 8 : adc128d818 @ 0x1f */
-+
-+    /*
-+     * bus 13 : pca9548 @ 0x71
-+     *      - channel 3:
-+     *          - tmm421 @ 0x4c
-+     *          - tmp421 @ 0x4e
-+     *          - tmp421 @ 0x4f
-+     */
-+
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 15), "tmp105", 0x4d);
 +}
 +
-+static void aspeed_machine_sonorapass_class_init(ObjectClass *oc,
-+                                                 const void *data)
++static void aspeed_machine_qcom_dc_scm_v1_class_init(ObjectClass *oc,
++                                                     const void *data)
 +{
 +    MachineClass *mc = MACHINE_CLASS(oc);
 +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+    mc->desc       = "OCP SonoraPass BMC (ARM1176)";
-+    mc->deprecation_reason = "use 'ast2500-evb' instead";
-+    amc->soc_name  = "ast2500-a1";
-+    amc->hw_strap1 = SONORAPASS_BMC_HW_STRAP1;
-+    amc->fmc_model = "mx66l1g45g";
-+    amc->spi_model = "mx66l1g45g";
++    mc->desc       = "Qualcomm DC-SCM V1 BMC (Cortex A7)";
++    mc->deprecation_reason = "use 'ast2600-evb' instead";
++    amc->soc_name  = "ast2600-a3";
++    amc->hw_strap1 = QCOM_DC_SCM_V1_BMC_HW_STRAP1;
++    amc->hw_strap2 = QCOM_DC_SCM_V1_BMC_HW_STRAP2;
++    amc->fmc_model = "n25q512a";
++    amc->spi_model = "n25q512a";
 +    amc->num_cs    = 2;
-+    amc->i2c_init  = sonorapass_bmc_i2c_init;
-+    mc->default_ram_size       = 512 * MiB;
++    amc->macs_mask = ASPEED_MAC2_ON | ASPEED_MAC3_ON;
++    amc->i2c_init  = qcom_dc_scm_bmc_i2c_init;
++    mc->default_ram_size = 1 * GiB;
 +    aspeed_machine_class_init_cpus_defaults(mc);
 +};
 +
-+static const TypeInfo aspeed_ast2500_sonorapass_types[] = {
++static const TypeInfo aspeed_ast2600_qcom_dc_scm_v1_types[] = {
 +    {
-+        .name          = MACHINE_TYPE_NAME("sonorapass-bmc"),
++        .name          = MACHINE_TYPE_NAME("qcom-dc-scm-v1-bmc"),
 +        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_sonorapass_class_init,
++        .class_init    = aspeed_machine_qcom_dc_scm_v1_class_init,
 +        .interfaces    = arm_machine_interfaces,
 +    }
 +};
 +
-+DEFINE_TYPES(aspeed_ast2500_sonorapass_types)
++DEFINE_TYPES(aspeed_ast2600_qcom_dc_scm_v1_types)
 diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index c235c8aed34d..f59bfe5029dc 100644
+index fbe063cf0bd4..588a72bdf28d 100644
 --- a/hw/arm/meson.build
 +++ b/hw/arm/meson.build
-@@ -46,6 +46,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_ast2400.c',
-   'aspeed_ast2500_fp5280g2.c',
-   'aspeed_ast2500_g220a.c',
-+  'aspeed_ast2500_sonorapass.c',
-   'aspeed_ast2500_tiogapass.c',
-   'aspeed_ast2500_witherspoon.c',
-   'aspeed_ast2500_yosemitev2.c',
+@@ -60,6 +60,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_ast2600_bletchley.c',
+   'aspeed_ast2600_fby35.c',
+   'aspeed_ast2600_fuji.c',
++  'aspeed_ast2600_qcom-dc-scm-v1.c',
+   'aspeed_ast2600_qcom-firework.c',
+   'aspeed_ast10x0.c',
+   'aspeed_eeprom.c',
 -- 
 2.51.1
 

@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6CD6CCF9F8
-	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 03:15:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C130CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 03:15:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vG7VZ-000493-1x; Mon, 03 Nov 2025 22:14:57 -0500
+	id 1vG7VB-00034P-Ln; Mon, 03 Nov 2025 22:14:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vG7VW-0003wq-9o; Mon, 03 Nov 2025 22:14:54 -0500
+ id 1vG7V9-0002nj-0N; Mon, 03 Nov 2025 22:14:31 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vG7VU-00034Q-4A; Mon, 03 Nov 2025 22:14:53 -0500
+ id 1vG7V6-00034Q-Qa; Mon, 03 Nov 2025 22:14:30 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 4 Nov
@@ -32,10 +32,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v4 16/30] hw/arm/aspeed: Split Palmetto machine into a
+Subject: [PATCH v4 15/30] hw/arm/aspeed: Split Supermicro X11 machine into a
  separate source file for maintainability
-Date: Tue, 4 Nov 2025 11:12:54 +0800
-Message-ID: <20251104031325.146374-17-jamin_lin@aspeedtech.com>
+Date: Tue, 4 Nov 2025 11:12:53 +0800
+Message-ID: <20251104031325.146374-16-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251104031325.146374-1-jamin_lin@aspeedtech.com>
 References: <20251104031325.146374-1-jamin_lin@aspeedtech.com>
@@ -67,43 +67,45 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit moves the OpenPOWER Palmetto BMC machine implementation out of
-aspeed.c into a new standalone file aspeed_ast2400_palmetto.c.
+This commit moves the Supermicro X11 BMC machine implementation out of
+aspeed.c into a new standalone file aspeed_ast2400_supermicrox11.c and
+removes its dependency on the Palmetto platform’s I²C initialization.
 
 This refactor continues the modularization effort for Aspeed platform support,
-placing each board’s logic in its own dedicated source file.
-It improves maintainability, readability, and simplifies future development for
-new platforms without cluttering aspeed.c.
+ensuring that each board’s configuration resides in its own dedicated source file.
+By duplicating and renaming the palmetto_bmc_i2c_init() logic into
+supermicrox11_bmc_i2c_init(), this change removes unwanted coupling between
+the two board definitions.
 
 Key updates include:
-- Moved PALMETTO_BMC_HW_STRAP1 macro definition from into the new file.
-- Moved palmetto_bmc_i2c_init() I²C initialization logic into the new file.
-- Moved aspeed_machine_palmetto_class_init() and type registration.
-- Added aspeed_ast2400_palmetto.c to the build system (meson.build).
-- Removed all Palmetto-specific code and macros from aspeed.c.
+- Moved SUPERMICROX11_BMC_HW_STRAP1 macro definition into a new file.
+- Moved aspeed_machine_supermicrox11_bmc_class_init() and type registration into a new file.
+- Added a dedicated supermicrox11_bmc_i2c_init() function (copied and renamed from Palmetto’s version).
+- Added the new file aspeed_ast2400_supermicrox11.c to the build system (meson.build).
+- Removed all Supermicro X11–specific code and macros from aspeed.c.
 
 No functional changes.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/arm/aspeed.c                  | 60 -----------------------
- hw/arm/aspeed_ast2400_palmetto.c | 81 ++++++++++++++++++++++++++++++++
- hw/arm/meson.build               |  1 +
- 3 files changed, 82 insertions(+), 60 deletions(-)
- create mode 100644 hw/arm/aspeed_ast2400_palmetto.c
+ hw/arm/aspeed.c                       | 37 ------------
+ hw/arm/aspeed_ast2400_supermicrox11.c | 82 +++++++++++++++++++++++++++
+ hw/arm/meson.build                    |  1 +
+ 3 files changed, 83 insertions(+), 37 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast2400_supermicrox11.c
 
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index fbd27020bd..15d3b045ac 100644
+index f9e6d8c4c6..fbd27020bd 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -43,20 +43,6 @@ static struct arm_boot_info aspeed_board_binfo = {
- #define ASPEED_RAM_SIZE(sz) (sz)
- #endif
+@@ -57,20 +57,6 @@ static struct arm_boot_info aspeed_board_binfo = {
+         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
+         SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
  
--/* Palmetto hardware value: 0x120CE416 */
--#define PALMETTO_BMC_HW_STRAP1 (                                        \
--        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_256MB) |               \
--        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2 /* DDR3 with CL=6, CWL=5 */) | \
+-/* TODO: Find the actual hardware value */
+-#define SUPERMICROX11_BMC_HW_STRAP1 (                                   \
+-        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
+-        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2) |                           \
 -        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
 -        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       \
 -        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
@@ -117,81 +119,51 @@ index fbd27020bd..15d3b045ac 100644
  /* AST2600 evb hardware value */
  #define AST2600_EVB_HW_STRAP1 0x000000C0
  #define AST2600_EVB_HW_STRAP2 0x00000003
-@@ -312,30 +298,6 @@ static void aspeed_machine_init(MachineState *machine)
-     arm_load_kernel(ARM_CPU(first_cpu), machine, &aspeed_board_binfo);
- }
+@@ -1073,24 +1059,6 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc,
+     aspeed_machine_class_init_cpus_defaults(mc);
+ };
  
--static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
--{
--    AspeedSoCState *soc = bmc->soc;
--    DeviceState *dev;
--    uint8_t *eeprom_buf = g_malloc0(32 * 1024);
--
--    /*
--     * The palmetto platform expects a ds3231 RTC but a ds1338 is
--     * enough to provide basic RTC features. Alarms will be missing
--     */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
--
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
--                          eeprom_buf);
--
--    /* add a TMP423 temperature sensor */
--    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
--                                         "tmp423", 0x4c));
--    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
--    object_property_set_int(OBJECT(dev), "temperature3", 110000, &error_abort);
--}
--
- static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = bmc->soc;
-@@ -1042,23 +1004,6 @@ static void aspeed_machine_class_init(ObjectClass *oc, const void *data)
-     aspeed_machine_class_props_init(oc);
- }
- 
--static void aspeed_machine_palmetto_class_init(ObjectClass *oc,
--                                               const void *data)
+-static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
+-                                                        const void *data)
 -{
 -    MachineClass *mc = MACHINE_CLASS(oc);
 -    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 -
--    mc->desc       = "OpenPOWER Palmetto BMC (ARM926EJ-S)";
+-    mc->desc       = "Supermicro X11 BMC (ARM926EJ-S)";
 -    amc->soc_name  = "ast2400-a1";
--    amc->hw_strap1 = PALMETTO_BMC_HW_STRAP1;
--    amc->fmc_model = "n25q256a";
--    amc->spi_model = "mx25l25635f";
+-    amc->hw_strap1 = SUPERMICROX11_BMC_HW_STRAP1;
+-    amc->fmc_model = "mx25l25635e";
+-    amc->spi_model = "mx25l25635e";
 -    amc->num_cs    = 1;
+-    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
 -    amc->i2c_init  = palmetto_bmc_i2c_init;
--    mc->default_ram_size       = 256 * MiB;
+-    mc->default_ram_size = 256 * MiB;
 -    aspeed_machine_class_init_cpus_defaults(mc);
--};
+-}
 -
  static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
                                                    const void *data)
  {
-@@ -1405,11 +1350,6 @@ static void aspeed_machine_qcom_firework_class_init(ObjectClass *oc,
- 
- static const TypeInfo aspeed_machine_types[] = {
-     {
--        .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
--        .parent        = TYPE_ASPEED_MACHINE,
--        .class_init    = aspeed_machine_palmetto_class_init,
--        .interfaces    = arm_machine_interfaces,
+@@ -1441,11 +1409,6 @@ static const TypeInfo aspeed_machine_types[] = {
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_palmetto_class_init,
+         .interfaces    = arm_machine_interfaces,
 -    }, {
+-        .name          = MACHINE_TYPE_NAME("supermicrox11-bmc"),
+-        .parent        = TYPE_ASPEED_MACHINE,
+-        .class_init    = aspeed_machine_supermicrox11_bmc_class_init,
+-        .interfaces    = arm_machine_interfaces,
+     }, {
          .name          = MACHINE_TYPE_NAME("ast2600-evb"),
          .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_ast2600_evb_class_init,
-diff --git a/hw/arm/aspeed_ast2400_palmetto.c b/hw/arm/aspeed_ast2400_palmetto.c
+diff --git a/hw/arm/aspeed_ast2400_supermicrox11.c b/hw/arm/aspeed_ast2400_supermicrox11.c
 new file mode 100644
-index 0000000000..1f49fdaab4
+index 0000000000..fe2f886825
 --- /dev/null
-+++ b/hw/arm/aspeed_ast2400_palmetto.c
-@@ -0,0 +1,81 @@
++++ b/hw/arm/aspeed_ast2400_supermicrox11.c
+@@ -0,0 +1,82 @@
 +/*
-+ * OpenPOWER Palmetto
++ * Supermicro X11
 + *
 + * Copyright 2016 IBM Corp.
 + *
@@ -205,10 +177,10 @@ index 0000000000..1f49fdaab4
 +#include "hw/arm/aspeed_soc.h"
 +#include "hw/i2c/smbus_eeprom.h"
 +
-+/* Palmetto hardware value: 0x120CE416 */
-+#define PALMETTO_BMC_HW_STRAP1 (                                        \
-+        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_256MB) |               \
-+        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2 /* DDR3 with CL=6, CWL=5 */) | \
++/* TODO: Find the actual hardware value */
++#define SUPERMICROX11_BMC_HW_STRAP1 (                                   \
++        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
++        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2) |                           \
 +        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
 +        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       \
 +        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
@@ -219,7 +191,7 @@ index 0000000000..1f49fdaab4
 +        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
 +        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
 +
-+static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
++static void supermicrox11_bmc_i2c_init(AspeedMachineState *bmc)
 +{
 +    AspeedSoCState *soc = bmc->soc;
 +    DeviceState *dev;
@@ -243,46 +215,47 @@ index 0000000000..1f49fdaab4
 +    object_property_set_int(OBJECT(dev), "temperature3", 110000, &error_abort);
 +}
 +
-+static void aspeed_machine_palmetto_class_init(ObjectClass *oc,
-+                                               const void *data)
++static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
++                                                        const void *data)
 +{
 +    MachineClass *mc = MACHINE_CLASS(oc);
 +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+    mc->desc       = "OpenPOWER Palmetto BMC (ARM926EJ-S)";
++    mc->desc       = "Supermicro X11 BMC (ARM926EJ-S)";
 +    amc->soc_name  = "ast2400-a1";
-+    amc->hw_strap1 = PALMETTO_BMC_HW_STRAP1;
-+    amc->fmc_model = "n25q256a";
-+    amc->spi_model = "mx25l25635f";
++    amc->hw_strap1 = SUPERMICROX11_BMC_HW_STRAP1;
++    amc->fmc_model = "mx25l25635e";
++    amc->spi_model = "mx25l25635e";
 +    amc->num_cs    = 1;
-+    amc->i2c_init  = palmetto_bmc_i2c_init;
-+    mc->default_ram_size       = 256 * MiB;
++    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
++    amc->i2c_init  = supermicrox11_bmc_i2c_init;
++    mc->default_ram_size = 256 * MiB;
 +    aspeed_machine_class_init_cpus_defaults(mc);
-+};
++}
 +
-+static const TypeInfo aspeed_ast2400_palmetto_types[] = {
++static const TypeInfo aspeed_ast2400_supermicrox11_types[] = {
 +    {
-+        .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
++        .name          = MACHINE_TYPE_NAME("supermicrox11-bmc"),
 +        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_palmetto_class_init,
++        .class_init    = aspeed_machine_supermicrox11_bmc_class_init,
 +        .interfaces    = arm_machine_interfaces,
 +    }
 +};
 +
-+DEFINE_TYPES(aspeed_ast2400_palmetto_types)
++DEFINE_TYPES(aspeed_ast2400_supermicrox11_types)
 +
 diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index ea2d24af88..e52901108b 100644
+index 5467ee673d..ea2d24af88 100644
 --- a/hw/arm/meson.build
 +++ b/hw/arm/meson.build
-@@ -44,6 +44,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed.c',
+@@ -45,6 +45,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
    'aspeed_soc_common.c',
    'aspeed_ast2400.c',
-+  'aspeed_ast2400_palmetto.c',
    'aspeed_ast2400_quanta-q71l.c',
-   'aspeed_ast2400_supermicrox11.c',
++  'aspeed_ast2400_supermicrox11.c',
    'aspeed_ast2500_evb.c',
+   'aspeed_ast2500_fp5280g2.c',
+   'aspeed_ast2500_g220a.c',
 -- 
 2.43.0
 

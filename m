@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B5BBCCF9E3
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 212DDCCFA07
 	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 08:35:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGCUb-0003Xt-3J; Tue, 04 Nov 2025 03:34:17 -0500
+	id 1vGCSV-0000RN-2l; Tue, 04 Nov 2025 03:32:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCTN-0001rV-LQ
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:33:01 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSU-0000Oq-0x
+ for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:06 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCTL-0003g5-NY
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:33:01 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSR-0003QW-Fa
+ for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762245179;
+ s=mimecast20190719; t=1762245122;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/9iufskJQQ++QRyMnAKC1ep4sYPcH7RhHFstsir2oBA=;
- b=PGg6/Zdf16hSQPYnRwbx8tfPP3g10VpOJyGAf/4/5T1Tlef78a+WkDRCEnLoC8TGjMbbY6
- 2wbnYmTbuwV7/hYt8j7giAcsmSI0ZEqpleHZyUIvRJf70VCUlrzC8wBIIRQArvGO0QP5q/
- jiKqTsSiNsQloV2xPd08kC1SxetuLgA=
+ bh=81BgKlRJTVoj7USuocovf/NBDfJv5OHsbVzpCIGcWLY=;
+ b=aflDKtZuUiMqqxW55VGbnXj/rZ2vJPcTBFb+9BadqUxjLCNCMlo1nmb1+NDhzUGUEw2IIM
+ QORUirPHLCutegRWHQWHfd/rH5p9V2O2HoP7ceBalDkoSuzUdLxZj8wgt8PO9GxWpQAzyd
+ GONC1ATFYqzyQcG+7oiSAHxJYuCPIgc=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-608-2Jnsl_f1N4mwxkcybpdPTQ-1; Tue,
- 04 Nov 2025 03:32:56 -0500
-X-MC-Unique: 2Jnsl_f1N4mwxkcybpdPTQ-1
-X-Mimecast-MFC-AGG-ID: 2Jnsl_f1N4mwxkcybpdPTQ_1762245175
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-688-45iNF-SZNemJNfVk_i-JDw-1; Tue,
+ 04 Nov 2025 03:31:59 -0500
+X-MC-Unique: 45iNF-SZNemJNfVk_i-JDw-1
+X-Mimecast-MFC-AGG-ID: 45iNF-SZNemJNfVk_i-JDw_1762245118
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 25EF01800637; Tue,  4 Nov 2025 08:32:55 +0000 (UTC)
+ id 41D1D18001D1; Tue,  4 Nov 2025 08:31:58 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.33.250])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 353E719560A2; Tue,  4 Nov 2025 08:32:52 +0000 (UTC)
+ id 9517919560BC; Tue,  4 Nov 2025 08:31:56 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 29/30] hw/arm/aspeed: Rename and export
- connect_serial_hds_to_uarts() as aspeed_connect_serial_hds_to_uarts()
-Date: Tue,  4 Nov 2025 09:31:43 +0100
-Message-ID: <20251104083144.187806-30-clg@redhat.com>
+Subject: [PULL 04/30] hw/arm/aspeed: Rename and export create_pca9554() as
+ aspeed_create_pca9554()
+Date: Tue,  4 Nov 2025 09:31:18 +0100
+Message-ID: <20251104083144.187806-5-clg@redhat.com>
 In-Reply-To: <20251104083144.187806-1-clg@redhat.com>
 References: <20251104083144.187806-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -69,7 +69,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,81 +87,85 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The helper function connect_serial_hds_to_uarts() has been renamed to
-aspeed_connect_serial_hds_to_uarts() and promoted to a public Aspeed
-machine API.
+The helper function create_pca9554() has been renamed to
+aspeed_create_pca9554() and made globally available.
 
-Previously, this function was declared static within aspeed.c and only
-used internally. Renaming it with the aspeed_ prefix and exporting its
-declaration in aspeed.h makes the function accessible to other Aspeed
-machine implementations that need to attach host serial devices to SoC
-UARTs.
+Previously, the function was declared static inside aspeed.c, restricting
+its visibility to that file. As more Aspeed machine implementations
+require PCA9554 I2C expander setup, it makes sense to rename it with the
+aspeed_ prefix and export its declaration in aspeed.h for shared use.
 
 No functional changes.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20251104031325.146374-30-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20251104031325.146374-5-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
  include/hw/arm/aspeed.h | 14 ++++++++++++++
- hw/arm/aspeed.c         |  6 +++---
- 2 files changed, 17 insertions(+), 3 deletions(-)
+ hw/arm/aspeed.c         |  8 ++++----
+ 2 files changed, 18 insertions(+), 4 deletions(-)
 
 diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index 87dcadab264f..714bbd326c48 100644
+index 9b765295d906..16b24e68870a 100644
 --- a/include/hw/arm/aspeed.h
 +++ b/include/hw/arm/aspeed.h
-@@ -111,4 +111,18 @@ I2CSlave *aspeed_create_pca9554(AspeedSoCState *soc, int bus_id, int addr);
+@@ -80,4 +80,18 @@ void aspeed_machine_class_init_cpus_defaults(MachineClass *mc);
   */
- void aspeed_machine_ast2600_class_emmc_init(ObjectClass *oc);
+ void aspeed_create_pca9552(AspeedSoCState *soc, int bus_id, int addr);
  
 +/*
-+ * aspeed_connect_serial_hds_to_uarts:
-+ * @bmc: pointer to the #AspeedMachineState.
++ * aspeed_create_pca9554:
++ * @soc: pointer to the #AspeedSoCState.
++ * @bus_id: the I2C bus index to attach the device.
++ * @addr: the I2C address of the PCA9554 device.
 + *
-+ * Connect host serial backends (character devices) to the UART interfaces
-+ * of the Aspeed SoC used by the given BMC machine.
++ * Create and attach a PCA9554 I/O expander to the specified I2C bus
++ * of the given Aspeed SoC. The device is created via
++ * i2c_slave_create_simple() and returned as an #I2CSlave pointer.
 + *
-+ * The function assigns `serial_hd(0)` to the primary UART channel
-+ * (either chosen via `bmc->uart_chosen` or the machine class default),
-+ * and iteratively connects remaining serial ports to other available UARTs
-+ * on the SoC based on their index.
++ * Returns: a pointer to the newly created #I2CSlave instance.
 + */
-+void aspeed_connect_serial_hds_to_uarts(AspeedMachineState *bmc);
++I2CSlave *aspeed_create_pca9554(AspeedSoCState *soc, int bus_id, int addr);
 +
  #endif
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 924c02bcb8c8..7e9cd532d136 100644
+index c6f272d9865d..59416eb5ae6c 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -118,7 +118,7 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, bool emmc,
-                                &error_fatal);
+@@ -543,7 +543,7 @@ void aspeed_create_pca9552(AspeedSoCState *soc, int bus_id, int addr)
+                             TYPE_PCA9552, addr);
  }
  
--static void connect_serial_hds_to_uarts(AspeedMachineState *bmc)
-+void aspeed_connect_serial_hds_to_uarts(AspeedMachineState *bmc)
+-static I2CSlave *create_pca9554(AspeedSoCState *soc, int bus_id, int addr)
++I2CSlave *aspeed_create_pca9554(AspeedSoCState *soc, int bus_id, int addr)
  {
-     AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(bmc);
-     AspeedSoCState *s = bmc->soc;
-@@ -189,7 +189,7 @@ static void aspeed_machine_init(MachineState *machine)
-         object_property_set_int(OBJECT(bmc->soc), "hw-prot-key",
-                                 ASPEED_SCU_PROT_KEY, &error_abort);
+     return i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, bus_id),
+                             TYPE_PCA9554, addr);
+@@ -1142,7 +1142,7 @@ static void gb200nvl_bmc_i2c_init(AspeedMachineState *bmc)
      }
--    connect_serial_hds_to_uarts(bmc);
-+    aspeed_connect_serial_hds_to_uarts(bmc);
-     qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
  
-     if (defaults_enabled()) {
-@@ -444,7 +444,7 @@ static void aspeed_minibmc_machine_init(MachineState *machine)
+     /* Bus 5 Expander */
+-    create_pca9554(soc, 4, 0x21);
++    aspeed_create_pca9554(soc, 4, 0x21);
  
-     object_property_set_link(OBJECT(bmc->soc), "memory",
-                              OBJECT(get_system_memory()), &error_abort);
--    connect_serial_hds_to_uarts(bmc);
-+    aspeed_connect_serial_hds_to_uarts(bmc);
-     qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
+     /* Mux I2c Expanders */
+     i2c_slave_create_simple(i2c[5], "pca9546", 0x71);
+@@ -1153,12 +1153,12 @@ static void gb200nvl_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(i2c[5], "pca9546", 0x77);
  
-     if (defaults_enabled()) {
+     /* Bus 10 */
+-    dev = DEVICE(create_pca9554(soc, 9, 0x20));
++    dev = DEVICE(aspeed_create_pca9554(soc, 9, 0x20));
+ 
+     /* Set FPGA_READY */
+     object_property_set_str(OBJECT(dev), "pin1", "high", &error_fatal);
+ 
+-    create_pca9554(soc, 9, 0x21);
++    aspeed_create_pca9554(soc, 9, 0x21);
+     at24c_eeprom_init(i2c[9], 0x50, 64 * KiB);
+     at24c_eeprom_init(i2c[9], 0x51, 64 * KiB);
+ 
 -- 
 2.51.1
 

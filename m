@@ -4,175 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C630CCF9F8
-	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 02:02:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9662CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 03:13:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vG6NV-0001rX-Qf; Mon, 03 Nov 2025 21:02:33 -0500
+	id 1vG7UG-0002R5-Pp; Mon, 03 Nov 2025 22:13:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vG6NR-0001lX-2O; Mon, 03 Nov 2025 21:02:29 -0500
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ id 1vG7UF-0002Qo-Ar; Mon, 03 Nov 2025 22:13:35 -0500
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vG6NO-0000NL-G8; Mon, 03 Nov 2025 21:02:28 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=QEHz18ijcYKZIXl9zFPtcO2yYB27gPR+LNzjZ9lCNKrtdrQ2NcmEWDOheOqG/Pi2ItOP+9bDVd7DCttv9hYAkYifo5ARF4lgQGvPq3hBBY5LUQseh/Ftrz92yXV4IvqINyEVRknFfmBBQR4tHU7mmxb2kW5h2mNO3pXaPqW3PxzsYDH+LBAT7I1sZOQlKLdh0LUbVKCTfnxctfV7UeJPkX1kWiI/0VeoNh3tz3yywaxT2YwcrwmtNUV1Ya+gH7H874yOACIMu6gUyF94ZLiX6D69uUZs4VBTrgUWIokj4wLbuYjIS5sNfaGQinVDOYK8HcCj/VdS/uGQBqeciLJChw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=lDMnpDWw6mdG6JXWM46L2LqcGtsQuvVLqMllggb3gcc=;
- b=CAcKg8acZ6u82ktugYUlcFGUJtyhFZ7WIEgPpNXq8GIvNtXaQoYMGMtms7Kg6xUihsbVx2W5b7IH1DZcwtf0QnD2Y/SrPwJ/QAcnNhC8ICiGzppG50CtgACGsJF3LHcOJ4798y/hwiENX/rWtcUAIq7n0hL4moUs9YfVb4j/DpEgGe0Jyk5EorMwrriRZcatnFvyFge42uJryjJbah+KcbxXBCAAOdk4ep+/u4sG2Uo3MeUCWpYykoqBUo0TldtzSbzoo6WxpZTLDg54WsP2RsGjB/Y8Ydezb/7XcnxDWn+YQX+G/zMR2jAjZTatFr+eS2wZZx0gNQ/03QNlUYzqLw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=lDMnpDWw6mdG6JXWM46L2LqcGtsQuvVLqMllggb3gcc=;
- b=as62nvZZgqqrIv8RsiftFGEUdyzZdRPrulWfrT6EVBskk/mi3Tp9zPJeITlCIMhqoJqvOQqhehjwHalY+eizbknyD5zy4pphcs1OzQTBKzWKWiipkAFB/kG/FybhUpBUBN/ISLNRxUdqmUa1iG1kK+exISzTUwOJ8ayTi997bVERL5bpOjhKYs0Khsd99yxwYJ0kf3GvMA76N6RKLe58zOnbMSzz4hQHcnqcevrUMxr6upONVSje2Sj7PvmRTfN1ue0y584Bi1+mytBGFAcY2gdIcZhbWm5CxqG0peqo+dZK3WGELO7GpTBftUkI/rhXrHdNpmQHx4ShBZjD//Jlsw==
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
- by SG2PR06MB5033.apcprd06.prod.outlook.com (2603:1096:4:1c4::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.16; Tue, 4 Nov
- 2025 02:02:19 +0000
-Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::b420:4392:6eb0:91e5]) by TYPPR06MB8206.apcprd06.prod.outlook.com
- ([fe80::b420:4392:6eb0:91e5%3]) with mapi id 15.20.9275.013; Tue, 4 Nov 2025
- 02:02:19 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
+ id 1vG7UC-00031V-LV; Mon, 03 Nov 2025 22:13:35 -0500
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 4 Nov
+ 2025 11:13:25 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Tue, 4 Nov 2025 11:13:25 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:All patches CC here"
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
-Subject: RE: [SPAM] [PATCH v3 00/30] Split AST2400, AST2500, AST2600, AST2700
- and AST1030 SoC machines into separate source files for
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <kane_chen@aspeedtech.com>
+Subject: [PATCH v4 00/30] Split AST2400, AST2500, AST2600,
+ AST2700 and AST1030 SoC machines into separate source files for
  maintainability
-Thread-Topic: [SPAM] [PATCH v3 00/30] Split AST2400, AST2500, AST2600, AST2700
- and AST1030 SoC machines into separate source files for
- maintainability
-Thread-Index: AQHcTKQokSWe8EX7u0y7G22SxvC4tLTgvoWAgAEGFtA=
-Date: Tue, 4 Nov 2025 02:02:19 +0000
-Message-ID: <TYPPR06MB820669473C2AC9A710632CA6FCC4A@TYPPR06MB8206.apcprd06.prod.outlook.com>
-References: <20251103092801.1282602-1-jamin_lin@aspeedtech.com>
- <731294a8-bc5d-4cc8-be7e-1354db393d0f@kaod.org>
-In-Reply-To: <731294a8-bc5d-4cc8-be7e-1354db393d0f@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|SG2PR06MB5033:EE_
-x-ms-office365-filtering-correlation-id: 7a4488be-860e-4283-4446-08de1b462fd2
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|1800799024|376014|38070700021|217643003; 
-x-microsoft-antispam-message-info: =?utf-8?B?aGFzQmVsUDRHYkJpeFJzWlQwR2NyTFVyNG1SbVMyb0lHc3dsc2xoOHlVWlM2?=
- =?utf-8?B?aWw2ZVJZS29HYTlVTU56cXR0WGd3NTRza1I0bVZzK0tOTmxMNmVIWGE4MFI1?=
- =?utf-8?B?b0dDM3htREp4SUY3ZWpIZVNvYm0yQ2JxUVFVWldUTTJScE94dEtCZFRRWVBT?=
- =?utf-8?B?RUUyaXdjc20rYm5JSEtDRGxBRGpyMTZ2NmZ5VzZhZWxraVI2M2g5OW5xT2lY?=
- =?utf-8?B?VGg2KzgrdzNOMldHVlEvU1FudXp3Njk2RG5Bd0FkdTFCVUo1aUZaSUhLVGVl?=
- =?utf-8?B?UksxSzhRS0Y3SjJjcWdPYzVyc2RqUlI2bWZjaEpUSlRPMlZaVUEyRWhXeFpi?=
- =?utf-8?B?cHBraUkyaCtwNlhpbHhkNXErYmRlOWtRUTk3cVlZOE12eG9OeWlMRE4ySVZn?=
- =?utf-8?B?UmZkaEthMFFGMENhbnJYRFREUnMzUXh2ejBIZGhUY2NXVEZCVlRkc081WjZp?=
- =?utf-8?B?OEJOZzUzVGdBemlsTHdyS0Y4RWxEYld1UDlyUVVBUDFTb0thK3pJMGlIQ3Jt?=
- =?utf-8?B?YWNhYTJHbnQvNjN4YlAvQnp2cXloRmlGVmhJM05tWGFvRGE1bmxlUklXUENV?=
- =?utf-8?B?L3BxR0kzdzBtSlJwcDFpRGVZZU1uM2ZRYkZSRHVrU2FhSjF1bnlQRmJNUDlp?=
- =?utf-8?B?QXFNQ1l6Q0o5aDRCVXNub0FxbitsWGZSREtnVVhqVGVzcXduaGFhRUczclIx?=
- =?utf-8?B?MDl3MHorTk53eUJoNGRXTFV5V0JJajcwS1d0aHNRSURNMHk2RWk0czlmN1Rp?=
- =?utf-8?B?OTZsNytsN1owY1dWR2h1SUFBdTUzUVJRdDZIbTlLSUUrOUxubHdUb041V0VM?=
- =?utf-8?B?cHQ2Y0JURS9CcVZ3L01YZWZMak9kTGNpc2EzSXhhUUdsN01qQUhxK0hQcGVN?=
- =?utf-8?B?ajNmK0RMTW1ubmpjMkVTcURlRnhoT3V5MEQ3QmphRFlpd3lNNzMyektLdnFL?=
- =?utf-8?B?TzJta0VjMXV5TEw5RzhBdVpXYXErWUJXNHplbG5Wb1Y4aTh3RWFkbUpscWdE?=
- =?utf-8?B?d0l6Y1k4Y1gwaG5SZlJvMGlKcWNIb1d2STlVQit3VWdKYTRHcUpoZVNWS09Q?=
- =?utf-8?B?UmwxN3ZzeVJ4TGgyM1Vod1E3NDg3UDgrdkJlb0lzQ2NVU2hWOVRLRUVZeGlj?=
- =?utf-8?B?dTdYUlk2QkFCcGxTRHlQamJhcGQ5NzArYjhxN3FJaHZiUHo5cjF1VFNVY002?=
- =?utf-8?B?WUUxUXJ2SkZ5dGhoNGJ2OUZRMDZib09ESExiRnE0QWc4T2hEbGE5Y2tkeFFh?=
- =?utf-8?B?MUtxV0ZubTZhdW1qS0x0UHFUNU5MS2s1d2hjWlNiY1FaaG1aRE9wN3FOYndL?=
- =?utf-8?B?SWJNSEdocHRjRlRaUmNjZ1dlcmNmMTMyMnJLelg1UnpGNUoyTG9MUmJVNDlQ?=
- =?utf-8?B?UUUvNjdveUhadDJ6TUlXd3VtZGx5emhBY1NsT0IwYnNlRFVEOWhKaHFJTjFl?=
- =?utf-8?B?YU5Cd3E2dzJoRHNLbUhOOG1xZWY1OEFoZnE3OXgwY0E0eWdhajhVQnQ4ZC9U?=
- =?utf-8?B?dUdIK2ZZTjlSQ2UzUFRxd0MwSzlMOW1lYjZGRGJ6eXJDbHpqMFdMWFVJdU40?=
- =?utf-8?B?SVNYdUNJRGQ0dlJpWkhvbUV3MEd4WWR5bGRhVmZ3WTZ1a29ESWpVYVdKRC9x?=
- =?utf-8?B?RU82RXY4NGZhVGw1Z0F4UFRobElKWUpwRkUvNkFEVW9zUzJUMVFYdWZoWDg4?=
- =?utf-8?B?MEFmVXJraGRtUXpCMGx5K05WckQyekRsMGlyRnQxMmtObmdOaWt5OCthK0Jj?=
- =?utf-8?B?Z0huZ2o3eE1JM2tNb2tqVWpDS0pjTFFNSU00WWFJc3lkdVlERjFPT011OS9U?=
- =?utf-8?B?MzRJb3M5MnlvMEJ2UWtEaC9oaTNmTFVFZDZvMTNMZkVHSDhYazFDUEVJWkt5?=
- =?utf-8?B?ZU1iTi9mNFJsVGtUeC9sTnNQS1VjTWlCOTV4a1lUUUNiNXY1cnhzTEhYM0ti?=
- =?utf-8?B?ZWh3YmNXT0J5WWdWbzhnaGhiVEpHWUs4ekczN3BySER3OTdMVmN3MmtzWGpj?=
- =?utf-8?B?L0ZxK0VMeWE1OE5uVTdac1ZqWHRpakphVHFiUnh6MWpYdjVmOWg4WmU5Ukdr?=
- =?utf-8?B?d2o2Z0hRL081RlRCZnB0UFJYUjlPVUF3YTM2QT09?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE; SFS:(13230040)(366016)(1800799024)(376014)(38070700021)(217643003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?NnEycXdodzlFc25nOWVDTlJ1K0VDam9SVk00dm5ib09Bd283NU80eUFyWnYy?=
- =?utf-8?B?S3BZbGFBWlpTVmI5Q2hYTmZuUnpUOVFGczIxQVdES2pFU1NWNkFvb05mVytT?=
- =?utf-8?B?MFlSYVVHVVhKamNlTW1TVDRYMC9NMzgrWUY5SUI2NWZBRDVSWUZvMTJFcUFU?=
- =?utf-8?B?ZkJqSXpXNThiQnRQY1F0eCtQVFY2eUpFbUtPaFNjR1BpUFZ3cEViQ3E5YXJT?=
- =?utf-8?B?VU96OEwxcVkrQ2ZDS1JmRUdXZUJ1SUtqY1JSQUhxYXNPOTl5RzF6czh6bENH?=
- =?utf-8?B?Rk5qd1VwWWZONlJ4dlZBamxoT3QzRUl0YW1IbHJFOHBjQkpWYmtTa2U0QkJD?=
- =?utf-8?B?UHkrQWs2THBEQ3hRRUJmU2FUTkVUWWJSZ2hqTVJwNUhkb0RlQTZNa05RL01n?=
- =?utf-8?B?R3lCaEoyYWErczdFcXNpbmxPR1dnUzRscmpiVjRLYWtEN2NnaGh3TTdEVi94?=
- =?utf-8?B?SGo2N3NzZFkyRy9GRUp2MWkxaUFKSWlGYXRRalZRQ0c0N2pITC9LcVVha0dT?=
- =?utf-8?B?Z042WTJBUUhXcHhkS2pXQWU1Ti9TNWZpSTNEMkhhU1VNTWxrV3k3SjRLWUhm?=
- =?utf-8?B?Qnh1Rm8vSVJ4MmJMdFRKWlpQOWx5bGNWRXZVWEJ6TUFPbGpvVlltdTRRU2FV?=
- =?utf-8?B?VE81b0lZYUp3NmJNZ1JFclBXalJ5Z2lMTTNRb0xZT2JkVGd1cXo3MFM3UWFn?=
- =?utf-8?B?UWMwVDV3cWh6eUQ2OEJUbG1tcmtoUEFObGt3TTJEVzNqVURud3E5dk9QN05z?=
- =?utf-8?B?UWdEbHJ0NUpHclFKdzhESUlneTQ0ZTJtTXcrZ0dXUHUzOGpSSGprcWd5c1BX?=
- =?utf-8?B?Sm9qN1VqS2NBV1JJeVA3V0NKT3JjTEhGV2plTExNZDV4dzY4ZUpyakJRbnlx?=
- =?utf-8?B?aTBNYTYxLzhUTEp3ZkZUTlJuekhaU0VLcnlscmNmR0hxWVZrZm15d0MySkZF?=
- =?utf-8?B?RjVTcDNtRUZyNnluQnl0UWI2SHJvQlYwNXNqcXZRSkVmT3NLeUVWdGZ6VC9k?=
- =?utf-8?B?Mm5kZ2J1clZDZUNOdmlGYThBTCtQUGd3Z1lJSWxOQjVZQlp0c2dhMXUvRVE4?=
- =?utf-8?B?YVAxRm9ZSVd3aHp4NDRDTzlCSGR1Y0pJZW9mcitYMG8vN25kVWtGcVRnalF3?=
- =?utf-8?B?d08xaDYwSTBtcnR5Mml3eC9lMTJvM0tWdlhiYkpSMTZKSTVlSXBoR1lOOGE3?=
- =?utf-8?B?M2pka1JPTDViR3JwR2ZEOUNsNnBlUDdvdFc1S1FwaDdjSEFkeHVZeExKZlZ3?=
- =?utf-8?B?U1UzcHRwUm1JY3QzU0FkN0VHcFo0NlgzYmZNb2NSZ041dWcwY0pUNkNMZEtF?=
- =?utf-8?B?cmNSNGpicXdNbTZJWkUrMUpUaEhsamluQ1pjZ25hcXg4K0FDUEMyWVZlcmVG?=
- =?utf-8?B?NmlXQlJUclJ3dWhKZVpNalNwa3U4RSs3TzByQXF4d2thTGxOdDQzb29IL0ZI?=
- =?utf-8?B?ZkVadmNWN09kUjZQaFluWS8xYWgyRWE4Rmh5dDFiNXBGa0hkWjdBKzNyaFd5?=
- =?utf-8?B?NUNFclo2ZXJiVkVWb3VqdUhtZ0pFVnh5TE1WWmdCQzl6d21UWEFMem5TMFZw?=
- =?utf-8?B?bDRCdjNyaVVNUklFLzYwSUw3bE1XVCtwY09ML1c5dlhSRXE0aWlRNm1GWmh5?=
- =?utf-8?B?YUV3MkhxdnA5VitvRlBrTlQ4VDh2cjlVMzcvM2QwYUk3TU5MNFlpR216WFRl?=
- =?utf-8?B?cnRNMlVGcjM4cDk2V3dXb2Q2TTUzTEpnWjVRN2pzZWVFRGw4QnBnaGJzeE51?=
- =?utf-8?B?SnJib2xlSmJtSUsxcTcvY0Z2Nk4rOFlWaFY0NTZockVDeHJneXVVVVB0S1ZW?=
- =?utf-8?B?Q3krS0JEQlVrM3dXVERXcVlYWEw5V1VNZmJ6Rm1qK056U25UdUYyYWJhMHd5?=
- =?utf-8?B?ZVNVVjlZSTNvSkdTSjhRVkFqWko0QVFpN3pNSHJ3S29ueU54bXA3aTRWL095?=
- =?utf-8?B?NmZqVTlxVFlhejQwZDBLME1xVWM3Yk81Mmo1T281cWFuNzEzOC9iUDRoQk9U?=
- =?utf-8?B?T0JFYmo0TzE4M1hBWFE2YkhDUlJTM0t6NVY1WUsraTNvNnFmSDA0bytWbDMw?=
- =?utf-8?B?ZzYwNGFNeGNTWXRnZ3ZBcFVjeHNmNllSMURQUzFMQ0krRzhpWHp2L25iVVhQ?=
- =?utf-8?Q?iD+yFLk4NqNgrEVRF0qbO7gDa?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Date: Tue, 4 Nov 2025 11:12:38 +0800
+Message-ID: <20251104031325.146374-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7a4488be-860e-4283-4446-08de1b462fd2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Nov 2025 02:02:19.6830 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Sjj0tsQi3WzVoYtcdbLnDHI24/KhTBT3mnhNTC55cVMdYRR85s6TFA7t0u7HRD5epdhylVpi8eswloyPy4PxVFsa9mCbBIQfL2oO3QiXrDA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR06MB5033
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -185,148 +61,174 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgQ8OpZHJpYywNCg0KPiBTdWJqZWN0OiBSZTogW1NQQU1dIFtQQVRDSCB2MyAwMC8zMF0gU3Bs
-aXQgQVNUMjQwMCwgQVNUMjUwMCwgQVNUMjYwMCwNCj4gQVNUMjcwMCBhbmQgQVNUMTAzMCBTb0Mg
-bWFjaGluZXMgaW50byBzZXBhcmF0ZSBzb3VyY2UgZmlsZXMgZm9yDQo+IG1haW50YWluYWJpbGl0
-eQ0KPiANCj4gSmFtaW4sDQo+IA0KPiBPbiAxMS8zLzI1IDEwOjI3LCBKYW1pbiBMaW4gd3JvdGU6
-DQo+ID4gdjE6DQo+ID4gICAxLiBTcGxpdCBlYWNoIEFzcGVlZCBtYWNoaW5lIGludG8gaXRzIG93
-biBzb3VyY2UgZmlsZSBmb3IgYmV0dGVyDQo+ID4gICAgICByZWFkYWJpbGl0eSBhbmQgbWFpbnRh
-aW5hYmlsaXR5Og0KPiA+ICAgICAgLSBRdWFudGEtUTcxTA0KPiA+ICAgICAgLSBTdXBlcm1pY3Jv
-IFgxMQ0KPiA+ICAgICAgLSBQYWxtZXR0bw0KPiA+ICAgICAgLSBCbGV0Y2hsZXkNCj4gPiAgICAg
-IC0gZmJ5MzUgQk1DDQo+ID4gICAgICAtIEZhY2Vib29rIEZ1amkNCj4gPiAgICAgIC0gUUNPTSBG
-aXJld29yaw0KPiA+ICAgICAgLSBRQ09NIERDLVNDTSBWMQ0KPiA+ICAgICAgLSBHQjIwME5WTA0K
-PiA+ICAgICAgLSBSYWluaWVyDQo+ID4gICAgICAtIENhdGFsaW5hDQo+ID4gICAgICAtIEFTVDI2
-MDAgRVZCDQo+ID4gICAgICAtIEFTVDI3MDAgRVZCDQo+ID4gICAgICAtIEFTVDEwMzAgRVZCDQo+
-ID4gICAyLiBNYWtlIGFzcGVlZF9tYWNoaW5lX2FzdDI2MDBfY2xhc3NfZW1tY19pbml0KCkgYSBz
-aGFyZWQgQVBJDQo+ID4gICAgICBmb3IgZU1NQyBib290IHNldHVwLg0KPiA+ICAgMy4gUHJvbW90
-ZSBjb25uZWN0X3NlcmlhbF9oZHNfdG9fdWFydHMoKSB0byBhIHB1YmxpYyBtYWNoaW5lIEFQSQ0K
-PiA+ICAgICAgZm9yIHJldXNlIGFjcm9zcyBwbGF0Zm9ybXMuDQo+ID4NCj4gPiB2MjoNCj4gPiAg
-IDEuIFJlc3RvcmUgQVNQRUVEX1JBTV9TSVpFKCkgbWFjcm8NCj4gPg0KPiA+IHYzOg0KPiA+ICAg
-IDEuIE1lcmdlZCBBU1QyNTAwIFNvQyBtYWNoaW5lIGNoYW5nZXMgaW50byB0aGlzIHBhdGNoIHNl
-cmllcy4NCj4gPiAgICAgU3BsaXQgZWFjaCBBU1QyNTAwIG1hY2hpbmUgaW50byBpdHMgb3duIHNv
-dXJjZSBmaWxlOg0KPiA+ICAgICAtIEZQNTI4MEcyDQo+ID4gICAgIC0gRzIyMEENCj4gPiAgICAg
-LSBUaW9nYXBhc3MNCj4gPiAgICAgLSBZb3NlbWl0ZVYyDQo+ID4gICAgIC0gV2l0aGVyc3Bvb24N
-Cj4gPiAgICAgLSBTb25vcmFwYXNzDQo+ID4gICAgIC0gUm9tdWx1cw0KPiA+ICAgICAtIFN1cGVy
-bWljcm8gWDExU1BJDQo+ID4gICAgIC0gQVNUMjUwMCBFVkINCj4gPiAgICAyLiBSZW5hbWVkIGNv
-bW1vbiBBUEkgZnVuY3Rpb25zIHdpdGggdGhlIGFzcGVlZF8gcHJlZml4IGZvcg0KPiBjb25zaXN0
-ZW5jeS4NCj4gPiAgICAzLiBBZGRlZCBkZXRhaWxlZCBkZXNjcmlwdGlvbnMgZm9yIHRoZSBjb21t
-b24gQVBJIGZ1bmN0aW9ucy4NCj4gPg0KPiA+IEphbWluIExpbiAoMzApOg0KPiA+ICAgIGh3L2Fy
-bS9hc3BlZWQ6IE1vdmUgQXNwZWVkTWFjaGluZVN0YXRlIGRlZmluaXRpb24gdG8gY29tbW9uDQo+
-IGhlYWRlciBmb3INCj4gPiAgICAgIHJldXNlDQo+ID4gICAgaHcvYXJtL2FzcGVlZDogTWFrZSBh
-c3BlZWRfbWFjaGluZV9jbGFzc19pbml0X2NwdXNfZGVmYXVsdHMoKQ0KPiBnbG9iYWxseQ0KPiA+
-ICAgICAgYWNjZXNzaWJsZQ0KPiA+ICAgIGh3L2FybS9hc3BlZWQ6IEV4cG9ydCBhbmQgcmVuYW1l
-IGNyZWF0ZV9wY2E5NTUyKCkgZm9yIHJldXNlDQo+ID4gICAgaHcvYXJtL2FzcGVlZDogUmVuYW1l
-IGFuZCBleHBvcnQgY3JlYXRlX3BjYTk1NTQoKSBhcw0KPiA+ICAgICAgYXNwZWVkX2NyZWF0ZV9w
-Y2E5NTU0KCkNCj4gPiAgICBody9hcm0vYXNwZWVkOiBTcGxpdCBGUDUyODBHMiBtYWNoaW5lIGlu
-dG8gYSBzZXBhcmF0ZSBzb3VyY2UgZmlsZSBmb3INCj4gPiAgICAgIG1haW50ZW5hbmNlDQo+ID4g
-ICAgaHcvYXJtL2FzcGVlZDogU3BsaXQgRzIyMEEgbWFjaGluZSBpbnRvIGEgc2VwYXJhdGUgc291
-cmNlIGZpbGUgZm9yDQo+ID4gICAgICBiZXR0ZXIgbWFpbnRlbmFuY2UNCj4gPiAgICBody9hcm0v
-YXNwZWVkOiBTcGxpdCBUaW9nYXBhc3MgbWFjaGluZSBpbnRvIGEgc2VwYXJhdGUgc291cmNlIGZp
-bGUgZm9yDQo+ID4gICAgICBjbGVhbnVwDQo+ID4gICAgaHcvYXJtL2FzcGVlZDogU3BsaXQgWW9z
-ZW1pdGVWMiBtYWNoaW5lIGludG8gYSBzZXBhcmF0ZSBzb3VyY2UgZmlsZQ0KPiA+ICAgICAgZm9y
-IG1haW50YWluYWJpbGl0eQ0KPiA+ICAgIGh3L2FybS9hc3BlZWQ6IFNwbGl0IFdpdGhlcnNwb29u
-IG1hY2hpbmUgaW50byBhIHNlcGFyYXRlIHNvdXJjZSBmaWxlDQo+ID4gICAgICBmb3IgbWFpbnRh
-aW5hYmlsaXR5DQo+ID4gICAgaHcvYXJtL2FzcGVlZDogU3BsaXQgU29ub3JhcGFzcyBtYWNoaW5l
-IGludG8gYSBzZXBhcmF0ZSBzb3VyY2UgZmlsZQ0KPiA+ICAgICAgZm9yIG1haW50YWluYWJpbGl0
-eQ0KPiA+ICAgIGh3L2FybS9hc3BlZWQ6IFNwbGl0IFJvbXVsdXMgbWFjaGluZSBpbnRvIGEgc2Vw
-YXJhdGUgc291cmNlIGZpbGUgZm9yDQo+ID4gICAgICBtYWludGFpbmFiaWxpdHkNCj4gPiAgICBo
-dy9hcm0vYXNwZWVkOiBTcGxpdCBTdXBlcm1pY3JvIFgxMVNQSSBtYWNoaW5lIGludG8gYSBzZXBh
-cmF0ZSBmaWxlDQo+ID4gICAgICBmb3IgbWFpbnRhaW5hYmlsaXR5DQo+ID4gICAgaHcvYXJtL2Fz
-cGVlZDogU3BsaXQgQVNUMjUwMCBFVkIgbWFjaGluZSBpbnRvIGEgc2VwYXJhdGUgc291cmNlIGZp
-bGUNCj4gPiAgICAgIGZvciBtYWludGFpbmFiaWxpdHkNCj4gPiAgICBody9hcm0vYXNwZWVkOiBT
-cGxpdCBRdWFudGEtUTcxTCBtYWNoaW5lIGludG8gYSBzZXBhcmF0ZSBzb3VyY2UgZmlsZQ0KPiA+
-ICAgICAgZm9yIG1haW50YWluYWJpbGl0eQ0KPiA+ICAgIGh3L2FybS9hc3BlZWQ6IFNwbGl0IFN1
-cGVybWljcm8gWDExIG1hY2hpbmUgaW50byBhIHNlcGFyYXRlIHNvdXJjZQ0KPiA+ICAgICAgZmls
-ZSBmb3IgbWFpbnRhaW5hYmlsaXR5DQo+ID4gICAgaHcvYXJtL2FzcGVlZDogU3BsaXQgUGFsbWV0
-dG8gbWFjaGluZSBpbnRvIGEgc2VwYXJhdGUgc291cmNlIGZpbGUgZm9yDQo+ID4gICAgICBtYWlu
-dGFpbmFiaWxpdHkNCj4gPiAgICBody9hcm0vYXNwZWVkOiBNb3ZlIEFTUEVFRF9SQU1fU0laRSgp
-IG1hY3JvIHRvIGNvbW1vbiBoZWFkZXINCj4gZm9yIHJldXNlDQo+ID4gICAgaHcvYXJtL2FzcGVl
-ZDogU3BsaXQgQmxldGNobGV5IG1hY2hpbmUgaW50byBhIHNlcGFyYXRlIHNvdXJjZSBmaWxlIGZv
-cg0KPiA+ICAgICAgbWFpbnRhaW5hYmlsaXR5DQo+ID4gICAgaHcvYXJtL2FzcGVlZDogU3BsaXQg
-RkJZMzUgQk1DIG1hY2hpbmUgaW50byBhIHNlcGFyYXRlIHNvdXJjZSBmaWxlDQo+IGZvcg0KPiA+
-ICAgICAgbWFpbnRhaW5hYmlsaXR5DQo+ID4gICAgaHcvYXJtL2FzcGVlZDogU3BsaXQgRnVqaSBt
-YWNoaW5lIGludG8gYSBzZXBhcmF0ZSBzb3VyY2UgZmlsZSBmb3INCj4gPiAgICAgIG1haW50YWlu
-YWJpbGl0eQ0KPiA+ICAgIGh3L2FybS9hc3BlZWQ6IFNwbGl0IFFDT00gRmlyZXdvcmsgbWFjaGlu
-ZSBpbnRvIGEgc2VwYXJhdGUgc291cmNlDQo+IGZpbGUNCj4gPiAgICAgIGZvciBtYWludGFpbmFi
-aWxpdHkNCj4gPiAgICBody9hcm0vYXNwZWVkOiBTcGxpdCBRQ09NIERDLVNDTSBWMSBtYWNoaW5l
-IGludG8gYSBzZXBhcmF0ZQ0KPiBzb3VyY2UNCj4gPiAgICAgIGZpbGUgZm9yIG1haW50YWluYWJp
-bGl0eQ0KPiA+ICAgIGh3L2FybS9hc3BlZWQ6IE1ha2UgYXNwZWVkX21hY2hpbmVfYXN0MjYwMF9j
-bGFzc19lbW1jX2luaXQoKSBhDQo+IGNvbW1vbg0KPiA+ICAgICAgQVBJIGZvciBlTU1DIGJvb3Qg
-c2V0dXANCj4gPiAgICBody9hcm0vYXNwZWVkOiBTcGxpdCBHQjIwME5WTCBtYWNoaW5lIGludG8g
-YSBzZXBhcmF0ZSBzb3VyY2UgZmlsZSBmb3INCj4gPiAgICAgIG1haW50YWluYWJpbGl0eQ0KPiA+
-ICAgIGh3L2FybS9hc3BlZWQ6IFNwbGl0IFJhaW5pZXIgbWFjaGluZSBpbnRvIGEgc2VwYXJhdGUg
-c291cmNlIGZpbGUgZm9yDQo+ID4gICAgICBtYWludGFpbmFiaWxpdHkNCj4gPiAgICBody9hcm0v
-YXNwZWVkOiBTcGxpdCBDYXRhbGluYSBtYWNoaW5lIGludG8gYSBzZXBhcmF0ZSBzb3VyY2UgZmls
-ZSBmb3INCj4gPiAgICAgIG1haW50YWluYWJpbGl0eQ0KPiA+ICAgIGh3L2FybS9hc3BlZWQ6IFNw
-bGl0IEFTVDI2MDAgRVZCIG1hY2hpbmUgaW50byBhIHNlcGFyYXRlIHNvdXJjZSBmaWxlDQo+ID4g
-ICAgICBmb3IgbWFpbnRhaW5hYmlsaXR5DQo+ID4gICAgaHcvYXJtL2FzcGVlZDogU3BsaXQgQVNU
-MjcwMCBFVkIgbWFjaGluZSBpbnRvIGEgc2VwYXJhdGUgc291cmNlIGZpbGUNCj4gPiAgICAgIGZv
-ciBtYWludGFpbmFiaWxpdHkNCj4gPiAgICBody9hcm0vYXNwZWVkOiBSZW5hbWUgYW5kIGV4cG9y
-dCBjb25uZWN0X3NlcmlhbF9oZHNfdG9fdWFydHMoKSBhcw0KPiA+ICAgICAgYXNwZWVkX2Nvbm5l
-Y3Rfc2VyaWFsX2hkc190b191YXJ0cygpDQo+ID4gICAgaHcvYXJtL2FzcGVlZDogU3BsaXQgQVNU
-MTAzMCBFVkIgbWFjaGluZSBpbnRvIGEgc2VwYXJhdGUgc291cmNlIGZpbGUNCj4gPiAgICAgIGZv
-ciBtYWludGFpbmFiaWxpdHkNCj4gPg0KPiA+ICAgaHcvYXJtL2FzcGVlZF9lZXByb20uaCAgICAg
-ICAgICAgICAgICAgICAgfCAgIDMyIC0NCj4gPiAgIGluY2x1ZGUvaHcvYXJtL2FzcGVlZC5oICAg
-ICAgICAgICAgICAgICAgIHwgICA3OSArDQo+ID4gICBody9hcm0vYXNwZWVkLmMgICAgICAgICAg
-ICAgICAgICAgICAgICAgICB8IDE2NzgNCj4gKy0tLS0tLS0tLS0tLS0tLS0tLS0tDQo+ID4gICBo
-dy9hcm0vYXNwZWVkX2FzdDEweDBfZXZiLmMgICAgICAgICAgICAgICB8ICAxMDkgKysNCj4gPiAg
-IGh3L2FybS9hc3BlZWRfYXN0MjQwMF9wYWxtZXR0by5jICAgICAgICAgIHwgICA4MSArDQo+ID4g
-ICBody9hcm0vYXNwZWVkX2FzdDI0MDBfcXVhbnRhLXE3MWwuYyAgICAgICB8ICAgODcgKysNCj4g
-PiAgIGh3L2FybS9hc3BlZWRfYXN0MjQwMF9zdXBlcm1pY3JveDExLmMgICAgIHwgICA4MiArDQo+
-ID4gICBody9hcm0vYXNwZWVkX2FzdDI1MDBfZXZiLmMgICAgICAgICAgICAgICB8ICAgNjggKw0K
-PiA+ICAgaHcvYXJtL2FzcGVlZF9hc3QyNTAwX2ZwNTI4MGcyLmMgICAgICAgICAgfCAgIDg5ICsr
-DQo+ID4gICBody9hcm0vYXNwZWVkX2FzdDI1MDBfZzIyMGEuYyAgICAgICAgICAgICB8ICAgOTMg
-KysNCj4gPiAgIGh3L2FybS9hc3BlZWRfYXN0MjUwMF9yb211bHVzLmMgICAgICAgICAgIHwgICA2
-MyArDQo+ID4gICBody9hcm0vYXNwZWVkX2FzdDI1MDBfc29ub3JhcGFzcy5jICAgICAgICB8ICAx
-MDMgKysNCj4gPiAgIGh3L2FybS9hc3BlZWRfYXN0MjUwMF9zdXBlcm1pY3JvLXgxMXNwaS5jIHwg
-ICA3OCArDQo+ID4gICBody9hcm0vYXNwZWVkX2FzdDI1MDBfdGlvZ2FwYXNzLmMgICAgICAgICB8
-ICAgOTEgKysNCj4gPiAgIGh3L2FybS9hc3BlZWRfYXN0MjUwMF93aXRoZXJzcG9vbi5jICAgICAg
-IHwgIDExMyArKw0KPiA+ICAgaHcvYXJtL2FzcGVlZF9hc3QyNTAwX3lvc2VtaXRldjIuYyAgICAg
-ICAgfCAgIDkyICsrDQo+ID4gICBody9hcm0vYXNwZWVkX2FzdDI2MDBfYmxldGNobGV5LmMgICAg
-ICAgICB8ICAgOTggKysNCj4gPiAgIGh3L2FybS9hc3BlZWRfYXN0MjYwMF9jYXRhbGluYS5jICAg
-ICAgICAgIHwgIDIyNiArKysNCj4gPiAgIGh3L2FybS9hc3BlZWRfYXN0MjYwMF9ldmIuYyAgICAg
-ICAgICAgICAgIHwgICA2NiArDQo+ID4gICBody9hcm0vYXNwZWVkX2FzdDI2MDBfZmJ5MzUuYyAg
-ICAgICAgICAgICB8ICAxNzkgKysrDQo+ID4gICBody9hcm0vYXNwZWVkX2FzdDI2MDBfZnVqaS5j
-ICAgICAgICAgICAgICB8ICAxNDEgKysNCj4gPiAgIGh3L2FybS9hc3BlZWRfYXN0MjYwMF9nYjIw
-MG52bC5jICAgICAgICAgIHwgIDExMiArKw0KPiA+ICAgaHcvYXJtL2FzcGVlZF9hc3QyNjAwX3Fj
-b20tZGMtc2NtLXYxLmMgICAgfCAgIDU2ICsNCj4gPiAgIGh3L2FybS9hc3BlZWRfYXN0MjYwMF9x
-Y29tLWZpcmV3b3JrLmMgICAgIHwgICA5MiArKw0KPiA+ICAgaHcvYXJtL2FzcGVlZF9hc3QyNjAw
-X3JhaW5pZXIuYyAgICAgICAgICAgfCAgMTk5ICsrKw0KPiA+ICAgaHcvYXJtL2FzcGVlZF9hc3Qy
-N3gwX2V2Yi5jICAgICAgICAgICAgICAgfCAgIDg5ICsrDQo+ID4gICBody9hcm0vYXNwZWVkX2Vl
-cHJvbS5jICAgICAgICAgICAgICAgICAgICB8ICAxOTIgLS0tDQo+ID4gICBody9hcm0vbWVzb24u
-YnVpbGQgICAgICAgICAgICAgICAgICAgICAgICB8ICAgMjQgKy0NCj4gPiAgIDI4IGZpbGVzIGNo
-YW5nZWQsIDI1MTUgaW5zZXJ0aW9ucygrKSwgMTg5NyBkZWxldGlvbnMoLSkNCj4gPiAgIGRlbGV0
-ZSBtb2RlIDEwMDY0NCBody9hcm0vYXNwZWVkX2VlcHJvbS5oDQo+ID4gICBjcmVhdGUgbW9kZSAx
-MDA2NDQgaHcvYXJtL2FzcGVlZF9hc3QxMHgwX2V2Yi5jDQo+ID4gICBjcmVhdGUgbW9kZSAxMDA2
-NDQgaHcvYXJtL2FzcGVlZF9hc3QyNDAwX3BhbG1ldHRvLmMNCj4gPiAgIGNyZWF0ZSBtb2RlIDEw
-MDY0NCBody9hcm0vYXNwZWVkX2FzdDI0MDBfcXVhbnRhLXE3MWwuYw0KPiA+ICAgY3JlYXRlIG1v
-ZGUgMTAwNjQ0IGh3L2FybS9hc3BlZWRfYXN0MjQwMF9zdXBlcm1pY3JveDExLmMNCj4gPiAgIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBody9hcm0vYXNwZWVkX2FzdDI1MDBfZXZiLmMNCj4gPiAgIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBody9hcm0vYXNwZWVkX2FzdDI1MDBfZnA1MjgwZzIuYw0KPiA+ICAgY3Jl
-YXRlIG1vZGUgMTAwNjQ0IGh3L2FybS9hc3BlZWRfYXN0MjUwMF9nMjIwYS5jDQo+ID4gICBjcmVh
-dGUgbW9kZSAxMDA2NDQgaHcvYXJtL2FzcGVlZF9hc3QyNTAwX3JvbXVsdXMuYw0KPiA+ICAgY3Jl
-YXRlIG1vZGUgMTAwNjQ0IGh3L2FybS9hc3BlZWRfYXN0MjUwMF9zb25vcmFwYXNzLmMNCj4gPiAg
-IGNyZWF0ZSBtb2RlIDEwMDY0NCBody9hcm0vYXNwZWVkX2FzdDI1MDBfc3VwZXJtaWNyby14MTFz
-cGkuYw0KPiA+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGh3L2FybS9hc3BlZWRfYXN0MjUwMF90aW9n
-YXBhc3MuYw0KPiA+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGh3L2FybS9hc3BlZWRfYXN0MjUwMF93
-aXRoZXJzcG9vbi5jDQo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgaHcvYXJtL2FzcGVlZF9hc3Qy
-NTAwX3lvc2VtaXRldjIuYw0KPiA+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGh3L2FybS9hc3BlZWRf
-YXN0MjYwMF9ibGV0Y2hsZXkuYw0KPiA+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGh3L2FybS9hc3Bl
-ZWRfYXN0MjYwMF9jYXRhbGluYS5jDQo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgaHcvYXJtL2Fz
-cGVlZF9hc3QyNjAwX2V2Yi5jDQo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgaHcvYXJtL2FzcGVl
-ZF9hc3QyNjAwX2ZieTM1LmMNCj4gPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBody9hcm0vYXNwZWVk
-X2FzdDI2MDBfZnVqaS5jDQo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgaHcvYXJtL2FzcGVlZF9h
-c3QyNjAwX2diMjAwbnZsLmMNCj4gPiAgIGNyZWF0ZSBtb2RlIDEwMDY0NCBody9hcm0vYXNwZWVk
-X2FzdDI2MDBfcWNvbS1kYy1zY20tdjEuYw0KPiA+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGh3L2Fy
-bS9hc3BlZWRfYXN0MjYwMF9xY29tLWZpcmV3b3JrLmMNCj4gPiAgIGNyZWF0ZSBtb2RlIDEwMDY0
-NCBody9hcm0vYXNwZWVkX2FzdDI2MDBfcmFpbmllci5jDQo+ID4gICBjcmVhdGUgbW9kZSAxMDA2
-NDQgaHcvYXJtL2FzcGVlZF9hc3QyN3gwX2V2Yi5jDQo+ID4gICBkZWxldGUgbW9kZSAxMDA2NDQg
-aHcvYXJtL2FzcGVlZF9lZXByb20uYw0KPiA+DQo+IA0KPiBJdCBsb29rcyBnb29kLg0KPiANCj4g
-Q291bGQgeW91IHBsZWFzZSBtYWludGFpbiA6DQo+IA0KPiAgICBDb3B5cmlnaHQgMjAxNiBJQk0g
-Q29ycC4NCj4gDQo+IGluIHRoZSBuZXcgZmlsZXMgc2luY2UgdGhlIGNvZGUgaXMgY29waWVkIGZy
-b20gYXNwZWVkLmMuDQo+IA0KV2lsbCBkbw0KDQpUaGFua3MsDQpKYW1pbg0KPiBUaGFua3MsDQo+
-IA0KPiBDLg0KPiANCg0K
+v1:
+ 1. Split each Aspeed machine into its own source file for better
+    readability and maintainability:
+    - Quanta-Q71L
+    - Supermicro X11
+    - Palmetto
+    - Bletchley
+    - fby35 BMC
+    - Facebook Fuji
+    - QCOM Firework
+    - QCOM DC-SCM V1
+    - GB200NVL
+    - Rainier
+    - Catalina
+    - AST2600 EVB
+    - AST2700 EVB
+    - AST1030 EVB
+ 2. Make aspeed_machine_ast2600_class_emmc_init() a shared API
+    for eMMC boot setup.
+ 3. Promote connect_serial_hds_to_uarts() to a public machine API
+    for reuse across platforms.
+
+v2:
+ 1. Restore ASPEED_RAM_SIZE() macro
+
+v3:
+  1. Merged AST2500 SoC machine changes into this patch series.
+   Split each AST2500 machine into its own source file:
+   - FP5280G2
+   - G220A
+   - Tiogapass
+   - YosemiteV2
+   - Witherspoon
+   - Sonorapass
+   - Romulus
+   - Supermicro X11SPI
+   - AST2500 EVB
+  2. Renamed common API functions with the aspeed_ prefix for consistency.
+  3. Added detailed descriptions for the common API functions.
+
+v4:
+  1. maintain :
+    Copyright 2016 IBM Corp.
+
+    in the new files since the code is copied from aspeed.c
+  2.  Use I2C instead of I2C
+
+Jamin Lin (30):
+  hw/arm/aspeed: Move AspeedMachineState definition to common header for
+    reuse
+  hw/arm/aspeed: Make aspeed_machine_class_init_cpus_defaults() globally
+    accessible
+  hw/arm/aspeed: Export and rename create_pca9552() for reuse
+  hw/arm/aspeed: Rename and export create_pca9554() as
+    aspeed_create_pca9554()
+  hw/arm/aspeed: Split FP5280G2 machine into a separate source file for
+    maintenance
+  hw/arm/aspeed: Split G220A machine into a separate source file for
+    better maintenance
+  hw/arm/aspeed: Split Tiogapass machine into a separate source file for
+    cleanup
+  hw/arm/aspeed: Split YosemiteV2 machine into a separate source file
+    for maintainability
+  hw/arm/aspeed: Split Witherspoon machine into a separate source file
+    for maintainability
+  hw/arm/aspeed: Split Sonorapass machine into a separate source file
+    for maintainability
+  hw/arm/aspeed: Split Romulus machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Split Supermicro X11SPI machine into a separate file
+    for maintainability
+  hw/arm/aspeed: Split AST2500 EVB machine into a separate source file
+    for maintainability
+  hw/arm/aspeed: Split Quanta-Q71L machine into a separate source file
+    for maintainability
+  hw/arm/aspeed: Split Supermicro X11 machine into a separate source
+    file for maintainability
+  hw/arm/aspeed: Split Palmetto machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Move ASPEED_RAM_SIZE() macro to common header for reuse
+  hw/arm/aspeed: Split Bletchley machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Split FBY35 BMC machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Split Fuji machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Split QCOM Firework machine into a separate source file
+    for maintainability
+  hw/arm/aspeed: Split QCOM DC-SCM V1 machine into a separate source
+    file for maintainability
+  hw/arm/aspeed: Make aspeed_machine_ast2600_class_emmc_init() a common
+    API for eMMC boot setup
+  hw/arm/aspeed: Split GB200NVL machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Split Rainier machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Split Catalina machine into a separate source file for
+    maintainability
+  hw/arm/aspeed: Split AST2600 EVB machine into a separate source file
+    for maintainability
+  hw/arm/aspeed: Split AST2700 EVB machine into a separate source file
+    for maintainability
+  hw/arm/aspeed: Rename and export connect_serial_hds_to_uarts() as
+    aspeed_connect_serial_hds_to_uarts()
+  hw/arm/aspeed: Split AST1030 EVB machine into a separate source file
+    for maintainability
+
+ hw/arm/aspeed_eeprom.h                    |   32 -
+ include/hw/arm/aspeed.h                   |   79 +
+ hw/arm/aspeed.c                           | 1678 +--------------------
+ hw/arm/aspeed_ast10x0_evb.c               |  109 ++
+ hw/arm/aspeed_ast2400_palmetto.c          |   81 +
+ hw/arm/aspeed_ast2400_quanta-q71l.c       |   87 ++
+ hw/arm/aspeed_ast2400_supermicrox11.c     |   82 +
+ hw/arm/aspeed_ast2500_evb.c               |   68 +
+ hw/arm/aspeed_ast2500_fp5280g2.c          |   89 ++
+ hw/arm/aspeed_ast2500_g220a.c             |   93 ++
+ hw/arm/aspeed_ast2500_romulus.c           |   63 +
+ hw/arm/aspeed_ast2500_sonorapass.c        |  103 ++
+ hw/arm/aspeed_ast2500_supermicro-x11spi.c |   78 +
+ hw/arm/aspeed_ast2500_tiogapass.c         |   91 ++
+ hw/arm/aspeed_ast2500_witherspoon.c       |  113 ++
+ hw/arm/aspeed_ast2500_yosemitev2.c        |   92 ++
+ hw/arm/aspeed_ast2600_bletchley.c         |   98 ++
+ hw/arm/aspeed_ast2600_catalina.c          |  226 +++
+ hw/arm/aspeed_ast2600_evb.c               |   66 +
+ hw/arm/aspeed_ast2600_fby35.c             |  179 +++
+ hw/arm/aspeed_ast2600_fuji.c              |  141 ++
+ hw/arm/aspeed_ast2600_gb200nvl.c          |  112 ++
+ hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c    |   56 +
+ hw/arm/aspeed_ast2600_qcom-firework.c     |   92 ++
+ hw/arm/aspeed_ast2600_rainier.c           |  199 +++
+ hw/arm/aspeed_ast27x0_evb.c               |   89 ++
+ hw/arm/aspeed_eeprom.c                    |  192 ---
+ hw/arm/meson.build                        |   24 +-
+ 28 files changed, 2515 insertions(+), 1897 deletions(-)
+ delete mode 100644 hw/arm/aspeed_eeprom.h
+ create mode 100644 hw/arm/aspeed_ast10x0_evb.c
+ create mode 100644 hw/arm/aspeed_ast2400_palmetto.c
+ create mode 100644 hw/arm/aspeed_ast2400_quanta-q71l.c
+ create mode 100644 hw/arm/aspeed_ast2400_supermicrox11.c
+ create mode 100644 hw/arm/aspeed_ast2500_evb.c
+ create mode 100644 hw/arm/aspeed_ast2500_fp5280g2.c
+ create mode 100644 hw/arm/aspeed_ast2500_g220a.c
+ create mode 100644 hw/arm/aspeed_ast2500_romulus.c
+ create mode 100644 hw/arm/aspeed_ast2500_sonorapass.c
+ create mode 100644 hw/arm/aspeed_ast2500_supermicro-x11spi.c
+ create mode 100644 hw/arm/aspeed_ast2500_tiogapass.c
+ create mode 100644 hw/arm/aspeed_ast2500_witherspoon.c
+ create mode 100644 hw/arm/aspeed_ast2500_yosemitev2.c
+ create mode 100644 hw/arm/aspeed_ast2600_bletchley.c
+ create mode 100644 hw/arm/aspeed_ast2600_catalina.c
+ create mode 100644 hw/arm/aspeed_ast2600_evb.c
+ create mode 100644 hw/arm/aspeed_ast2600_fby35.c
+ create mode 100644 hw/arm/aspeed_ast2600_fuji.c
+ create mode 100644 hw/arm/aspeed_ast2600_gb200nvl.c
+ create mode 100644 hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c
+ create mode 100644 hw/arm/aspeed_ast2600_qcom-firework.c
+ create mode 100644 hw/arm/aspeed_ast2600_rainier.c
+ create mode 100644 hw/arm/aspeed_ast27x0_evb.c
+ delete mode 100644 hw/arm/aspeed_eeprom.c
+
+-- 
+2.43.0
+
 

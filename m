@@ -4,53 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACB13CCF9E3
-	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 08:32:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACC4ECCF9E3
+	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 08:32:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGCSN-0000HK-Cu; Tue, 04 Nov 2025 03:32:00 -0500
+	id 1vGCSc-0000Te-Ty; Tue, 04 Nov 2025 03:32:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSL-0000Fx-Cl
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:31:57 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSZ-0000SU-7s
+ for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:11 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSI-0003OH-9i
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:31:57 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSW-0003RO-7l
+ for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:10 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762245112;
+ s=mimecast20190719; t=1762245127;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=Swd1O68GyBddhiY3gOAJBYm7+QWL5XItAHPH67PsRYk=;
- b=XmXuupJCqUf7YYKYiDM2ye+ICcmUaLex8VRiWW9/L3r6Uy1ahDpT29bkamFMRRtrs+RlX+
- mNTIk0wrYiLdm4dzPPijyP3Kpgtysf5RrqJeVqKFjf5rzAcwWlpjKnZp0P+ugtlD5KzY/O
- b8NgfsreJO9sajc4NA1Q7h8dz/b+Fqo=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/UlMBJMI6k+1EwpGdwlj77X9GcwpWUJE5k3i8o5Ljpg=;
+ b=WgVxNyKu0J9AeOAwvmuRFwveKi1GIMEKOcgSEDmHfvOtLmILwYOtRQt5j3JSEPLmpRfNBn
+ Ji4q/TsE3Icm4gKlqrcGHxM01wRub8yBc77yVf5C8H34HLdxK8FJj1XVQAW9jRPG/rEdE2
+ g/l6iG600eRHbJAF+nd9LIHV6cO+84Y=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-590-0yksE5WQPSCKo0_zXUgBZA-1; Tue,
- 04 Nov 2025 03:31:50 -0500
-X-MC-Unique: 0yksE5WQPSCKo0_zXUgBZA-1
-X-Mimecast-MFC-AGG-ID: 0yksE5WQPSCKo0_zXUgBZA_1762245109
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-112-5WqaNt98NQ690nXFOPQZgw-1; Tue,
+ 04 Nov 2025 03:32:03 -0500
+X-MC-Unique: 5WqaNt98NQ690nXFOPQZgw-1
+X-Mimecast-MFC-AGG-ID: 5WqaNt98NQ690nXFOPQZgw_1762245122
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3E0D6180057A; Tue,  4 Nov 2025 08:31:49 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8E1D319560B2; Tue,  4 Nov 2025 08:32:02 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.33.250])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 57C4D19560A2; Tue,  4 Nov 2025 08:31:46 +0000 (UTC)
+ id E7BAF19560A2; Tue,  4 Nov 2025 08:32:00 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 00/30] aspeed queue
-Date: Tue,  4 Nov 2025 09:31:14 +0100
-Message-ID: <20251104083144.187806-1-clg@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 06/30] hw/arm/aspeed: Split G220A machine into a separate
+ source file for better maintenance
+Date: Tue,  4 Nov 2025 09:31:20 +0100
+Message-ID: <20251104083144.187806-7-clg@redhat.com>
+In-Reply-To: <20251104083144.187806-1-clg@redhat.com>
+References: <20251104083144.187806-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -64,7 +69,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,109 +85,254 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The following changes since commit a8e63c013016f9ff981689189c5b063551d04559:
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-  Merge tag 'igvm-20251103--pull-request' of https://gitlab.com/kraxel/qemu into staging (2025-11-03 10:21:01 +0100)
+This commit refactors the Bytedance G220A BMC machine by moving its
+implementation from aspeed.c into a new dedicated file
+aspeed_ast2500_g220a.c.
 
-are available in the Git repository at:
+The goal is to improve modularity and maintainability of Aspeed
+machine definitions by isolating each platform into its own source
+file. This aligns with ongoing efforts to simplify aspeed.c,
+which previously contained all machine configurations.
 
-  https://github.com/legoater/qemu/ tags/pull-aspeed-20251104
+Key updates include:
 
-for you to fetch changes up to 1d2a5f8f5d6478504e80be0fcee5ca88adac5921:
+- Moved G220A_BMC_HW_STRAP1 definition and
+g220a_bmc_i2c_init() function into aspeed_ast2500_g220a.c.
+- Moved aspeed_machine_g220a_class_init() and related type
+registration to the new file.
+- Added the new file to the build system (meson.build).
+- Removed all G220A-specific code from aspeed.c.
 
-  hw/arm/aspeed: Split AST1030 EVB machine into a separate source file for maintainability (2025-11-04 09:27:59 +0100)
+No functional changes.
 
-----------------------------------------------------------------
-aspeed queue:
-
-* Move Aspeed machine models in separate source files to ease maintenance
-
-----------------------------------------------------------------
-Jamin Lin (30):
-      hw/arm/aspeed: Move AspeedMachineState definition to common header for reuse
-      hw/arm/aspeed: Make aspeed_machine_class_init_cpus_defaults() globally accessible
-      hw/arm/aspeed: Export and rename create_pca9552() for reuse
-      hw/arm/aspeed: Rename and export create_pca9554() as aspeed_create_pca9554()
-      hw/arm/aspeed: Split FP5280G2 machine into a separate source file for maintenance
-      hw/arm/aspeed: Split G220A machine into a separate source file for better maintenance
-      hw/arm/aspeed: Split Tiogapass machine into a separate source file for cleanup
-      hw/arm/aspeed: Split YosemiteV2 machine into a separate source file for maintainability
-      hw/arm/aspeed: Split Witherspoon machine into a separate source file for maintainability
-      hw/arm/aspeed: Split Sonorapass machine into a separate source file for maintainability
-      hw/arm/aspeed: Split Romulus machine into a separate source file for maintainability
-      hw/arm/aspeed: Split Supermicro X11SPI machine into a separate file for maintainability
-      hw/arm/aspeed: Split AST2500 EVB machine into a separate source file for maintainability
-      hw/arm/aspeed: Split Quanta-Q71L machine into a separate source file for maintainability
-      hw/arm/aspeed: Split Supermicro X11 machine into a separate source file for maintainability
-      hw/arm/aspeed: Split Palmetto machine into a separate source file for maintainability
-      hw/arm/aspeed: Move ASPEED_RAM_SIZE() macro to common header for reuse
-      hw/arm/aspeed: Split Bletchley machine into a separate source file for maintainability
-      hw/arm/aspeed: Split FBY35 BMC machine into a separate source file for maintainability
-      hw/arm/aspeed: Split Fuji machine into a separate source file for maintainability
-      hw/arm/aspeed: Split QCOM Firework machine into a separate source file for maintainability
-      hw/arm/aspeed: Split QCOM DC-SCM V1 machine into a separate source file for maintainability
-      hw/arm/aspeed: Make aspeed_machine_ast2600_class_emmc_init() a common API for eMMC boot setup
-      hw/arm/aspeed: Split GB200NVL machine into a separate source file for maintainability
-      hw/arm/aspeed: Split Rainier machine into a separate source file for maintainability
-      hw/arm/aspeed: Split Catalina machine into a separate source file for maintainability
-      hw/arm/aspeed: Split AST2600 EVB machine into a separate source file for maintainability
-      hw/arm/aspeed: Split AST2700 EVB machine into a separate source file for maintainability
-      hw/arm/aspeed: Rename and export connect_serial_hds_to_uarts() as aspeed_connect_serial_hds_to_uarts()
-      hw/arm/aspeed: Split AST1030 EVB machine into a separate source file for maintainability
-
- hw/arm/aspeed_eeprom.h                    |   32 -
- include/hw/arm/aspeed.h                   |   79 ++
- hw/arm/aspeed.c                           | 1678 +----------------------------
- hw/arm/aspeed_ast10x0_evb.c               |  108 ++
- hw/arm/aspeed_ast2400_palmetto.c          |   80 ++
- hw/arm/aspeed_ast2400_quanta-q71l.c       |   86 ++
- hw/arm/aspeed_ast2400_supermicrox11.c     |   81 ++
- hw/arm/aspeed_ast2500_evb.c               |   67 ++
- hw/arm/aspeed_ast2500_fp5280g2.c          |   88 ++
- hw/arm/aspeed_ast2500_g220a.c             |   92 ++
- hw/arm/aspeed_ast2500_romulus.c           |   62 ++
- hw/arm/aspeed_ast2500_sonorapass.c        |  102 ++
- hw/arm/aspeed_ast2500_supermicro-x11spi.c |   77 ++
- hw/arm/aspeed_ast2500_tiogapass.c         |   90 ++
- hw/arm/aspeed_ast2500_witherspoon.c       |  112 ++
- hw/arm/aspeed_ast2500_yosemitev2.c        |   91 ++
- hw/arm/aspeed_ast2600_bletchley.c         |   97 ++
- hw/arm/aspeed_ast2600_catalina.c          |  225 ++++
- hw/arm/aspeed_ast2600_evb.c               |   65 ++
- hw/arm/aspeed_ast2600_fby35.c             |  178 +++
- hw/arm/aspeed_ast2600_fuji.c              |  140 +++
- hw/arm/aspeed_ast2600_gb200nvl.c          |  111 ++
- hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c    |   55 +
- hw/arm/aspeed_ast2600_qcom-firework.c     |   91 ++
- hw/arm/aspeed_ast2600_rainier.c           |  198 ++++
- hw/arm/aspeed_ast27x0_evb.c               |   88 ++
- hw/arm/aspeed_eeprom.c                    |  192 ----
- hw/arm/meson.build                        |   24 +-
- 28 files changed, 2492 insertions(+), 1897 deletions(-)
- delete mode 100644 hw/arm/aspeed_eeprom.h
- create mode 100644 hw/arm/aspeed_ast10x0_evb.c
- create mode 100644 hw/arm/aspeed_ast2400_palmetto.c
- create mode 100644 hw/arm/aspeed_ast2400_quanta-q71l.c
- create mode 100644 hw/arm/aspeed_ast2400_supermicrox11.c
- create mode 100644 hw/arm/aspeed_ast2500_evb.c
- create mode 100644 hw/arm/aspeed_ast2500_fp5280g2.c
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20251104031325.146374-7-jamin_lin@aspeedtech.com
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ hw/arm/aspeed.c               | 72 ---------------------------
+ hw/arm/aspeed_ast2500_g220a.c | 92 +++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build            |  1 +
+ 3 files changed, 93 insertions(+), 72 deletions(-)
  create mode 100644 hw/arm/aspeed_ast2500_g220a.c
- create mode 100644 hw/arm/aspeed_ast2500_romulus.c
- create mode 100644 hw/arm/aspeed_ast2500_sonorapass.c
- create mode 100644 hw/arm/aspeed_ast2500_supermicro-x11spi.c
- create mode 100644 hw/arm/aspeed_ast2500_tiogapass.c
- create mode 100644 hw/arm/aspeed_ast2500_witherspoon.c
- create mode 100644 hw/arm/aspeed_ast2500_yosemitev2.c
- create mode 100644 hw/arm/aspeed_ast2600_bletchley.c
- create mode 100644 hw/arm/aspeed_ast2600_catalina.c
- create mode 100644 hw/arm/aspeed_ast2600_evb.c
- create mode 100644 hw/arm/aspeed_ast2600_fby35.c
- create mode 100644 hw/arm/aspeed_ast2600_fuji.c
- create mode 100644 hw/arm/aspeed_ast2600_gb200nvl.c
- create mode 100644 hw/arm/aspeed_ast2600_qcom-dc-scm-v1.c
- create mode 100644 hw/arm/aspeed_ast2600_qcom-firework.c
- create mode 100644 hw/arm/aspeed_ast2600_rainier.c
- create mode 100644 hw/arm/aspeed_ast27x0_evb.c
- delete mode 100644 hw/arm/aspeed_eeprom.c
+
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 3dcd5fc54040..ed8ef6a2d01a 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -117,20 +117,6 @@ static struct arm_boot_info aspeed_board_binfo = {
+         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
+         SCU_AST2500_HW_STRAP_RESERVED1)
+ 
+-#define G220A_BMC_HW_STRAP1 (                                      \
+-        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
+-        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
+-        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
+-        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
+-        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
+-        SCU_HW_STRAP_2ND_BOOT_WDT |                                     \
+-        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
+-        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
+-        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
+-        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
+-        SCU_HW_STRAP_VGA_SIZE_SET(VGA_64M_DRAM) |                       \
+-        SCU_AST2500_HW_STRAP_RESERVED1)
+-
+ /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
+ #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
+ 
+@@ -635,42 +621,6 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+     /* Bus 11: TODO ucd90160@64 */
+ }
+ 
+-static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+-{
+-    AspeedSoCState *soc = bmc->soc;
+-    DeviceState *dev;
+-
+-    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3),
+-                                         "emc1413", 0x4c));
+-    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
+-    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
+-    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
+-
+-    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12),
+-                                         "emc1413", 0x4c));
+-    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
+-    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
+-    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
+-
+-    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 13),
+-                                         "emc1413", 0x4c));
+-    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
+-    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
+-    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
+-
+-    static uint8_t eeprom_buf[2 * 1024] = {
+-            0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0xfe,
+-            0x01, 0x06, 0x00, 0xc9, 0x42, 0x79, 0x74, 0x65,
+-            0x64, 0x61, 0x6e, 0x63, 0x65, 0xc5, 0x47, 0x32,
+-            0x32, 0x30, 0x41, 0xc4, 0x41, 0x41, 0x42, 0x42,
+-            0xc4, 0x43, 0x43, 0x44, 0x44, 0xc4, 0x45, 0x45,
+-            0x46, 0x46, 0xc4, 0x48, 0x48, 0x47, 0x47, 0xc1,
+-            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa7,
+-    };
+-    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x57,
+-                          eeprom_buf);
+-}
+-
+ static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     AspeedSoCState *soc = bmc->soc;
+@@ -1549,23 +1499,6 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
+     aspeed_machine_ast2600_class_emmc_init(oc);
+ };
+ 
+-static void aspeed_machine_g220a_class_init(ObjectClass *oc, const void *data)
+-{
+-    MachineClass *mc = MACHINE_CLASS(oc);
+-    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+-
+-    mc->desc       = "Bytedance G220A BMC (ARM1176)";
+-    amc->soc_name  = "ast2500-a1";
+-    amc->hw_strap1 = G220A_BMC_HW_STRAP1;
+-    amc->fmc_model = "n25q512a";
+-    amc->spi_model = "mx25l25635e";
+-    amc->num_cs    = 2;
+-    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
+-    amc->i2c_init  = g220a_bmc_i2c_init;
+-    mc->default_ram_size = 1024 * MiB;
+-    aspeed_machine_class_init_cpus_defaults(mc);
+-};
+-
+ static void aspeed_machine_rainier_class_init(ObjectClass *oc, const void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -1939,11 +1872,6 @@ static const TypeInfo aspeed_machine_types[] = {
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_tiogapass_class_init,
+         .interfaces    = arm_machine_interfaces,
+-    }, {
+-        .name          = MACHINE_TYPE_NAME("g220a-bmc"),
+-        .parent        = TYPE_ASPEED_MACHINE,
+-        .class_init    = aspeed_machine_g220a_class_init,
+-        .interfaces    = arm_machine_interfaces,
+     }, {
+         .name          = MACHINE_TYPE_NAME("qcom-dc-scm-v1-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+diff --git a/hw/arm/aspeed_ast2500_g220a.c b/hw/arm/aspeed_ast2500_g220a.c
+new file mode 100644
+index 000000000000..3f979a78e572
+--- /dev/null
++++ b/hw/arm/aspeed_ast2500_g220a.c
+@@ -0,0 +1,92 @@
++/*
++ * Bytedance G220A
++ *
++ * Copyright 2016 IBM Corp.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/arm/machines-qom.h"
++#include "hw/arm/aspeed.h"
++#include "hw/arm/aspeed_soc.h"
++#include "hw/i2c/smbus_eeprom.h"
++
++#define G220A_BMC_HW_STRAP1 (                                      \
++        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
++        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
++        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
++        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
++        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
++        SCU_HW_STRAP_2ND_BOOT_WDT |                                     \
++        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
++        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
++        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
++        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
++        SCU_HW_STRAP_VGA_SIZE_SET(VGA_64M_DRAM) |                       \
++        SCU_AST2500_HW_STRAP_RESERVED1)
++
++static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = bmc->soc;
++    DeviceState *dev;
++
++    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3),
++                                         "emc1413", 0x4c));
++    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
++
++    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12),
++                                         "emc1413", 0x4c));
++    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
++
++    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 13),
++                                         "emc1413", 0x4c));
++    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
++
++    static uint8_t eeprom_buf[2 * 1024] = {
++            0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0xfe,
++            0x01, 0x06, 0x00, 0xc9, 0x42, 0x79, 0x74, 0x65,
++            0x64, 0x61, 0x6e, 0x63, 0x65, 0xc5, 0x47, 0x32,
++            0x32, 0x30, 0x41, 0xc4, 0x41, 0x41, 0x42, 0x42,
++            0xc4, 0x43, 0x43, 0x44, 0x44, 0xc4, 0x45, 0x45,
++            0x46, 0x46, 0xc4, 0x48, 0x48, 0x47, 0x47, 0xc1,
++            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa7,
++    };
++    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x57,
++                          eeprom_buf);
++}
++
++static void aspeed_machine_g220a_class_init(ObjectClass *oc, const void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Bytedance G220A BMC (ARM1176)";
++    amc->soc_name  = "ast2500-a1";
++    amc->hw_strap1 = G220A_BMC_HW_STRAP1;
++    amc->fmc_model = "n25q512a";
++    amc->spi_model = "mx25l25635e";
++    amc->num_cs    = 2;
++    amc->macs_mask  = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
++    amc->i2c_init  = g220a_bmc_i2c_init;
++    mc->default_ram_size = 1024 * MiB;
++    aspeed_machine_class_init_cpus_defaults(mc);
++};
++
++static const TypeInfo aspeed_ast2500_g220a_types[] = {
++    {
++        .name          = MACHINE_TYPE_NAME("g220a-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_g220a_class_init,
++        .interfaces    = arm_machine_interfaces,
++    }
++};
++
++DEFINE_TYPES(aspeed_ast2500_g220a_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index ed637f268725..91bdefd2037f 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -45,6 +45,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_soc_common.c',
+   'aspeed_ast2400.c',
+   'aspeed_ast2500_fp5280g2.c',
++  'aspeed_ast2500_g220a.c',
+   'aspeed_ast2600.c',
+   'aspeed_ast10x0.c',
+   'aspeed_eeprom.c',
+-- 
+2.51.1
 
 

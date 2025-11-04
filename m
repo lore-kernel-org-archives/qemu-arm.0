@@ -4,39 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6836CCF9F8
-	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 03:19:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43106CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 03:20:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vG7V6-0002i2-WD; Mon, 03 Nov 2025 22:14:29 -0500
+	id 1vG7XL-0000l4-1u; Mon, 03 Nov 2025 22:16:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vG7Up-0002XX-IC; Mon, 03 Nov 2025 22:14:13 -0500
+ id 1vG7Wq-00088x-As; Mon, 03 Nov 2025 22:16:21 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vG7Uj-00031V-RO; Mon, 03 Nov 2025 22:14:08 -0500
+ id 1vG7Wn-0004m7-3N; Mon, 03 Nov 2025 22:16:14 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 4 Nov
- 2025 11:13:32 +0800
+ 2025 11:13:44 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 4 Nov 2025 11:13:32 +0800
+ Transport; Tue, 4 Nov 2025 11:13:44 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
  Stanley" <joel@jms.id.au>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <kane_chen@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
- <clg@redhat.com>
-Subject: [PATCH v4 10/30] hw/arm/aspeed: Split Sonorapass machine into a
+ <kane_chen@aspeedtech.com>
+Subject: [PATCH v4 30/30] hw/arm/aspeed: Split AST1030 EVB machine into a
  separate source file for maintainability
-Date: Tue, 4 Nov 2025 11:12:48 +0800
-Message-ID: <20251104031325.146374-11-jamin_lin@aspeedtech.com>
+Date: Tue, 4 Nov 2025 11:13:08 +0800
+Message-ID: <20251104031325.146374-31-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251104031325.146374-1-jamin_lin@aspeedtech.com>
 References: <20251104031325.146374-1-jamin_lin@aspeedtech.com>
@@ -68,156 +67,153 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit moves the Sonorapass BMC machine implementation out of
-aspeed.c and into a new standalone file aspeed_ast2500_sonorapass.c.
+This commit moves the Aspeed AST1030 MiniBMC machine
+implementation out of aspeed.c into a new standalone file
+aspeed_ast10x0_evb.c.
 
-The refactor continues the effort to modularize Aspeed platform support
-by separating each board’s implementation into its own source file.
-This improves maintainability, readability, and simplifies future
-updates to individual machine configurations.
+This refactor continues the modularization effort for Aspeed platform
+support, placing each board’s logic and initialization sequence in its
+own dedicated source file. It improves maintainability, readability, and
+makes it easier to extend support for additional AST10x0-based variants.
 
 Key updates include:
-- Moved SONORAPASS_BMC_HW_STRAP1 definition into the new file.
-- Moved sonorapass_bmc_i2c_init() and all I²C device initialization
-logic from aspeed.c into aspeed_ast2500_sonorapass.c.
-- Moved aspeed_machine_sonorapass_class_init() and type registration
-into the new file.
-- Added the new file to the build system (meson.build).
-- Removed all Sonorapass-specific code and definitions from aspeed.c
+- Moved aspeed_minibmc_machine_init() and
+  aspeed_minibmc_machine_ast1030_evb_class_init() from aspeed.c to
+  aspeed_ast10x0_evb.c.
+- Moved ast1030_evb_i2c_init() and associated I2C setup code.
+- Removed AST1030 EVB machine type registration from aspeed.c.
+- Added aspeed_ast10x0_evb.c to the Meson build system (meson.build).
 
 No functional changes.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed.c                    |  82 -----------------------
- hw/arm/aspeed_ast2500_sonorapass.c | 103 +++++++++++++++++++++++++++++
- hw/arm/meson.build                 |   1 +
- 3 files changed, 104 insertions(+), 82 deletions(-)
- create mode 100644 hw/arm/aspeed_ast2500_sonorapass.c
+ hw/arm/aspeed.c             |  89 -----------------------------
+ hw/arm/aspeed_ast10x0_evb.c | 109 ++++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build          |   1 +
+ 3 files changed, 110 insertions(+), 89 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast10x0_evb.c
 
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 74eb8077da..df1a37ca3d 100644
+index 7e9cd532d1..3a5071a384 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -102,21 +102,6 @@ static struct arm_boot_info aspeed_board_binfo = {
-         SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
-         SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
- 
--/* Sonorapass hardware value: 0xF100D216 */
--#define SONORAPASS_BMC_HW_STRAP1 (                                      \
--        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
--        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
--        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
--        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
--        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
--        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
--        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
--        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
--        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
--        SCU_HW_STRAP_VGA_BIOS_ROM |                                     \
--        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
--        SCU_AST2500_HW_STRAP_RESERVED1)
--
- /* Quanta-Q71l hardware value */
- #define QUANTA_Q71L_BMC_HW_STRAP1 (                                     \
-         SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
-@@ -490,50 +475,6 @@ I2CSlave *aspeed_create_pca9554(AspeedSoCState *soc, int bus_id, int addr)
-                             TYPE_PCA9554, addr);
+@@ -16,14 +16,9 @@
+ #include "hw/arm/aspeed_soc.h"
+ #include "hw/arm/machines-qom.h"
+ #include "hw/block/flash.h"
+-#include "hw/i2c/smbus_eeprom.h"
+ #include "hw/gpio/pca9552.h"
+ #include "hw/gpio/pca9554.h"
+-#include "hw/sensor/tmp105.h"
+-#include "hw/misc/led.h"
+-#include "hw/qdev-properties.h"
+ #include "system/block-backend.h"
+-#include "system/reset.h"
+ #include "qemu/error-report.h"
+ #include "qemu/units.h"
+ #include "hw/qdev-clock.h"
+@@ -424,92 +419,8 @@ static void aspeed_machine_class_init(ObjectClass *oc, const void *data)
+     aspeed_machine_class_props_init(oc);
  }
  
--static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+-#define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
+-/* Main SYSCLK frequency in Hz (200MHz) */
+-#define SYSCLK_FRQ 200000000ULL
+-
+-static void aspeed_minibmc_machine_init(MachineState *machine)
+-{
+-    AspeedMachineState *bmc = ASPEED_MACHINE(machine);
+-    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
+-    Clock *sysclk;
+-
+-    sysclk = clock_new(OBJECT(machine), "SYSCLK");
+-    clock_set_hz(sysclk, SYSCLK_FRQ);
+-
+-    bmc->soc = ASPEED_SOC(object_new(amc->soc_name));
+-    object_property_add_child(OBJECT(machine), "soc", OBJECT(bmc->soc));
+-    object_unref(OBJECT(bmc->soc));
+-    qdev_connect_clock_in(DEVICE(bmc->soc), "sysclk", sysclk);
+-
+-    object_property_set_link(OBJECT(bmc->soc), "memory",
+-                             OBJECT(get_system_memory()), &error_abort);
+-    aspeed_connect_serial_hds_to_uarts(bmc);
+-    qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
+-
+-    if (defaults_enabled()) {
+-        aspeed_board_init_flashes(&bmc->soc->fmc,
+-                            bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
+-                            amc->num_cs,
+-                            0);
+-
+-        aspeed_board_init_flashes(&bmc->soc->spi[0],
+-                            bmc->spi_model ? bmc->spi_model : amc->spi_model,
+-                            amc->num_cs, amc->num_cs);
+-
+-        aspeed_board_init_flashes(&bmc->soc->spi[1],
+-                            bmc->spi_model ? bmc->spi_model : amc->spi_model,
+-                            amc->num_cs, (amc->num_cs * 2));
+-    }
+-
+-    if (amc->i2c_init) {
+-        amc->i2c_init(bmc);
+-    }
+-
+-    armv7m_load_kernel(ARM_CPU(first_cpu),
+-                       machine->kernel_filename,
+-                       0,
+-                       AST1030_INTERNAL_FLASH_SIZE);
+-}
+-
+-static void ast1030_evb_i2c_init(AspeedMachineState *bmc)
 -{
 -    AspeedSoCState *soc = bmc->soc;
 -
--    /* bus 2 : */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "tmp105", 0x48);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "tmp105", 0x49);
--    /* bus 2 : pca9546 @ 0x73 */
+-    /* U10 24C08 connects to SDA/SCL Group 1 by default */
+-    uint8_t *eeprom_buf = g_malloc0(32 * 1024);
+-    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50, eeprom_buf);
 -
--    /* bus 3 : pca9548 @ 0x70 */
--
--    /* bus 4 : */
--    uint8_t *eeprom4_54 = g_malloc0(8 * 1024);
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x54,
--                          eeprom4_54);
--    /* PCA9539 @ 0x76, but PCA9552 is compatible */
--    aspeed_create_pca9552(soc, 4, 0x76);
--    /* PCA9539 @ 0x77, but PCA9552 is compatible */
--    aspeed_create_pca9552(soc, 4, 0x77);
--
--    /* bus 6 : */
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp105", 0x48);
--    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp105", 0x49);
--    /* bus 6 : pca9546 @ 0x73 */
--
--    /* bus 8 : */
--    uint8_t *eeprom8_56 = g_malloc0(8 * 1024);
--    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 8), 0x56,
--                          eeprom8_56);
--    aspeed_create_pca9552(soc, 8, 0x60);
--    aspeed_create_pca9552(soc, 8, 0x61);
--    /* bus 8 : adc128d818 @ 0x1d */
--    /* bus 8 : adc128d818 @ 0x1f */
--
--    /*
--     * bus 13 : pca9548 @ 0x71
--     *      - channel 3:
--     *          - tmm421 @ 0x4c
--     *          - tmp421 @ 0x4e
--     *          - tmp421 @ 0x4f
--     */
--
+-    /* U11 LM75 connects to SDA/SCL Group 2 by default */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4d);
 -}
 -
- static void rainier_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     AspeedSoCState *soc = bmc->soc;
-@@ -1319,24 +1260,6 @@ static void aspeed_machine_romulus_class_init(ObjectClass *oc,
-     aspeed_machine_class_init_cpus_defaults(mc);
- };
- 
--static void aspeed_machine_sonorapass_class_init(ObjectClass *oc,
--                                                 const void *data)
+-static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
+-                                                          const void *data)
 -{
 -    MachineClass *mc = MACHINE_CLASS(oc);
 -    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 -
--    mc->desc       = "OCP SonoraPass BMC (ARM1176)";
--    mc->deprecation_reason = "use 'ast2500-evb' instead";
--    amc->soc_name  = "ast2500-a1";
--    amc->hw_strap1 = SONORAPASS_BMC_HW_STRAP1;
--    amc->fmc_model = "mx66l1g45g";
--    amc->spi_model = "mx66l1g45g";
--    amc->num_cs    = 2;
--    amc->i2c_init  = sonorapass_bmc_i2c_init;
--    mc->default_ram_size       = 512 * MiB;
+-    mc->desc = "Aspeed AST1030 MiniBMC (Cortex-M4)";
+-    amc->soc_name = "ast1030-a1";
+-    amc->hw_strap1 = 0;
+-    amc->hw_strap2 = 0;
+-    mc->init = aspeed_minibmc_machine_init;
+-    amc->i2c_init = ast1030_evb_i2c_init;
+-    mc->default_ram_size = 0;
+-    amc->fmc_model = "w25q80bl";
+-    amc->spi_model = "w25q256";
+-    amc->num_cs = 2;
+-    amc->macs_mask = 0;
 -    aspeed_machine_class_init_cpus_defaults(mc);
--};
+-}
 -
- static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
-                                                   const void *data)
- {
-@@ -1707,11 +1630,6 @@ static const TypeInfo aspeed_machine_types[] = {
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_romulus_class_init,
-         .interfaces    = arm_machine_interfaces,
+ static const TypeInfo aspeed_machine_types[] = {
+     {
+-        .name           = MACHINE_TYPE_NAME("ast1030-evb"),
+-        .parent         = TYPE_ASPEED_MACHINE,
+-        .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
 -    }, {
--        .name          = MACHINE_TYPE_NAME("sonorapass-bmc"),
--        .parent        = TYPE_ASPEED_MACHINE,
--        .class_init    = aspeed_machine_sonorapass_class_init,
--        .interfaces    = arm_machine_interfaces,
-     }, {
-         .name          = MACHINE_TYPE_NAME("ast2600-evb"),
-         .parent        = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_ast2500_sonorapass.c b/hw/arm/aspeed_ast2500_sonorapass.c
+         .name          = TYPE_ASPEED_MACHINE,
+         .parent        = TYPE_MACHINE,
+         .instance_size = sizeof(AspeedMachineState),
+diff --git a/hw/arm/aspeed_ast10x0_evb.c b/hw/arm/aspeed_ast10x0_evb.c
 new file mode 100644
-index 0000000000..dca9aa9206
+index 0000000000..856b268b82
 --- /dev/null
-+++ b/hw/arm/aspeed_ast2500_sonorapass.c
-@@ -0,0 +1,103 @@
++++ b/hw/arm/aspeed_ast10x0_evb.c
+@@ -0,0 +1,109 @@
 +/*
-+ * OCP SonoraPass
++ * ASPEED AST10x0 EVB
 + *
 + * Copyright 2016 IBM Corp.
 + *
@@ -226,111 +222,117 @@ index 0000000000..dca9aa9206
 +
 +#include "qemu/osdep.h"
 +#include "qapi/error.h"
++#include "hw/arm/boot.h"
 +#include "hw/arm/machines-qom.h"
 +#include "hw/arm/aspeed.h"
 +#include "hw/arm/aspeed_soc.h"
++#include "hw/qdev-clock.h"
++#include "system/system.h"
 +#include "hw/i2c/smbus_eeprom.h"
 +
-+/* Sonorapass hardware value: 0xF100D216 */
-+#define SONORAPASS_BMC_HW_STRAP1 (                                      \
-+        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
-+        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
-+        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
-+        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
-+        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
-+        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
-+        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
-+        SCU_HW_STRAP_VGA_BIOS_ROM |                                     \
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
-+        SCU_AST2500_HW_STRAP_RESERVED1)
++#define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
++/* Main SYSCLK frequency in Hz (200MHz) */
++#define SYSCLK_FRQ 200000000ULL
 +
-+static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
++static void aspeed_minibmc_machine_init(MachineState *machine)
++{
++    AspeedMachineState *bmc = ASPEED_MACHINE(machine);
++    AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
++    Clock *sysclk;
++
++    sysclk = clock_new(OBJECT(machine), "SYSCLK");
++    clock_set_hz(sysclk, SYSCLK_FRQ);
++
++    bmc->soc = ASPEED_SOC(object_new(amc->soc_name));
++    object_property_add_child(OBJECT(machine), "soc", OBJECT(bmc->soc));
++    object_unref(OBJECT(bmc->soc));
++    qdev_connect_clock_in(DEVICE(bmc->soc), "sysclk", sysclk);
++
++    object_property_set_link(OBJECT(bmc->soc), "memory",
++                             OBJECT(get_system_memory()), &error_abort);
++    aspeed_connect_serial_hds_to_uarts(bmc);
++    qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
++
++    if (defaults_enabled()) {
++        aspeed_board_init_flashes(&bmc->soc->fmc,
++                            bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
++                            amc->num_cs,
++                            0);
++
++        aspeed_board_init_flashes(&bmc->soc->spi[0],
++                            bmc->spi_model ? bmc->spi_model : amc->spi_model,
++                            amc->num_cs, amc->num_cs);
++
++        aspeed_board_init_flashes(&bmc->soc->spi[1],
++                            bmc->spi_model ? bmc->spi_model : amc->spi_model,
++                            amc->num_cs, (amc->num_cs * 2));
++    }
++
++    if (amc->i2c_init) {
++        amc->i2c_init(bmc);
++    }
++
++    armv7m_load_kernel(ARM_CPU(first_cpu),
++                       machine->kernel_filename,
++                       0,
++                       AST1030_INTERNAL_FLASH_SIZE);
++}
++
++static void ast1030_evb_i2c_init(AspeedMachineState *bmc)
 +{
 +    AspeedSoCState *soc = bmc->soc;
 +
-+    /* bus 2 : */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "tmp105", 0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "tmp105", 0x49);
-+    /* bus 2 : pca9546 @ 0x73 */
++    /* U10 24C08 connects to SDA/SCL Group 1 by default */
++    uint8_t *eeprom_buf = g_malloc0(32 * 1024);
++    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50, eeprom_buf);
 +
-+    /* bus 3 : pca9548 @ 0x70 */
-+
-+    /* bus 4 : */
-+    uint8_t *eeprom4_54 = g_malloc0(8 * 1024);
-+    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x54,
-+                          eeprom4_54);
-+    /* PCA9539 @ 0x76, but PCA9552 is compatible */
-+    aspeed_create_pca9552(soc, 4, 0x76);
-+    /* PCA9539 @ 0x77, but PCA9552 is compatible */
-+    aspeed_create_pca9552(soc, 4, 0x77);
-+
-+    /* bus 6 : */
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp105", 0x48);
-+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp105", 0x49);
-+    /* bus 6 : pca9546 @ 0x73 */
-+
-+    /* bus 8 : */
-+    uint8_t *eeprom8_56 = g_malloc0(8 * 1024);
-+    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 8), 0x56,
-+                          eeprom8_56);
-+    aspeed_create_pca9552(soc, 8, 0x60);
-+    aspeed_create_pca9552(soc, 8, 0x61);
-+    /* bus 8 : adc128d818 @ 0x1d */
-+    /* bus 8 : adc128d818 @ 0x1f */
-+
-+    /*
-+     * bus 13 : pca9548 @ 0x71
-+     *      - channel 3:
-+     *          - tmm421 @ 0x4c
-+     *          - tmp421 @ 0x4e
-+     *          - tmp421 @ 0x4f
-+     */
-+
++    /* U11 LM75 connects to SDA/SCL Group 2 by default */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4d);
 +}
 +
-+static void aspeed_machine_sonorapass_class_init(ObjectClass *oc,
-+                                                 const void *data)
++static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
++                                                          const void *data)
 +{
 +    MachineClass *mc = MACHINE_CLASS(oc);
 +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+    mc->desc       = "OCP SonoraPass BMC (ARM1176)";
-+    mc->deprecation_reason = "use 'ast2500-evb' instead";
-+    amc->soc_name  = "ast2500-a1";
-+    amc->hw_strap1 = SONORAPASS_BMC_HW_STRAP1;
-+    amc->fmc_model = "mx66l1g45g";
-+    amc->spi_model = "mx66l1g45g";
-+    amc->num_cs    = 2;
-+    amc->i2c_init  = sonorapass_bmc_i2c_init;
-+    mc->default_ram_size       = 512 * MiB;
++    mc->desc = "Aspeed AST1030 MiniBMC (Cortex-M4)";
++    amc->soc_name = "ast1030-a1";
++    amc->hw_strap1 = 0;
++    amc->hw_strap2 = 0;
++    mc->init = aspeed_minibmc_machine_init;
++    amc->i2c_init = ast1030_evb_i2c_init;
++    mc->default_ram_size = 0;
++    amc->fmc_model = "w25q80bl";
++    amc->spi_model = "w25q256";
++    amc->num_cs = 2;
++    amc->macs_mask = 0;
 +    aspeed_machine_class_init_cpus_defaults(mc);
-+};
++}
 +
-+static const TypeInfo aspeed_ast2500_sonorapass_types[] = {
++static const TypeInfo aspeed_ast10x0_evb_types[] = {
 +    {
-+        .name          = MACHINE_TYPE_NAME("sonorapass-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_sonorapass_class_init,
-+        .interfaces    = arm_machine_interfaces,
++        .name           = MACHINE_TYPE_NAME("ast1030-evb"),
++        .parent         = TYPE_ASPEED_MACHINE,
++        .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
++        .interfaces     = arm_machine_interfaces,
 +    }
 +};
 +
-+DEFINE_TYPES(aspeed_ast2500_sonorapass_types)
++DEFINE_TYPES(aspeed_ast10x0_evb_types)
 +
 diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index c235c8aed3..f59bfe5029 100644
+index 1467a2034c..aeaf654790 100644
 --- a/hw/arm/meson.build
 +++ b/hw/arm/meson.build
-@@ -46,6 +46,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_ast2400.c',
-   'aspeed_ast2500_fp5280g2.c',
-   'aspeed_ast2500_g220a.c',
-+  'aspeed_ast2500_sonorapass.c',
-   'aspeed_ast2500_tiogapass.c',
-   'aspeed_ast2500_witherspoon.c',
-   'aspeed_ast2500_yosemitev2.c',
+@@ -67,6 +67,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_ast2600_qcom-firework.c',
+   'aspeed_ast2600_rainier.c',
+   'aspeed_ast10x0.c',
++  'aspeed_ast10x0_evb.c',
+   'fby35.c'))
+ arm_common_ss.add(when: ['CONFIG_ASPEED_SOC', 'TARGET_AARCH64'], if_true: files(
+   'aspeed_ast27x0.c',
 -- 
 2.43.0
 

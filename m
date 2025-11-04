@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EE93CCF9E3
-	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 08:35:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 591B7CCFA04
+	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 08:35:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGCTG-0001So-84; Tue, 04 Nov 2025 03:32:54 -0500
+	id 1vGCTK-0001lM-KL; Tue, 04 Nov 2025 03:32:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCT1-0000my-7z
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSw-0000eW-BE
  for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:39 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSy-0003YW-3U
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:38 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSr-0003X1-3l
+ for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:33 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762245155;
+ s=mimecast20190719; t=1762245148;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rb4umdGMgGKpe4k2h0HfAAjh+VRjunYpi6Z/IcG1P/4=;
- b=DWHgQfiNWXJ85GZugpm0bndtEYGwxKQB9748d/Dw1qhM0zIGZAFDB+akpvAHJrTScVTB/m
- awrRjEm/z623/OoIFcXWj2iwYwVcBuA24+jUsMK4RJP60gILa6KtiuqqrdNTerqnnubrNf
- MqBwmE84Mf326hjLO/LEReV8/SpD9EU=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=JGbxK9zq5GxFA12ijW9fLMcAXtmiPZpiixW4WSdcj9I=;
+ b=e7gCtqWYTudsI6hd3ZH8Yf5ZT+xJfH43m/MbJ2H+ZR/ACPL1UTIuTgdZLknMrgd5R21Wx+
+ MbXeiJsLIKI/iYJruhhbQ+hDRcUINc9eLn4TjmqXuR8w59LdFGryG0T3SZZP2kApneCYOd
+ JOr99CbJe089aUV/PsARD1aadfEMNDI=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-490-80To5fPlNPGHoPug2AtDEQ-1; Tue,
- 04 Nov 2025 03:32:33 -0500
-X-MC-Unique: 80To5fPlNPGHoPug2AtDEQ-1
-X-Mimecast-MFC-AGG-ID: 80To5fPlNPGHoPug2AtDEQ_1762245152
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-258-Uk4JV9OuM72wX9jGzojxMw-1; Tue,
+ 04 Nov 2025 03:32:26 -0500
+X-MC-Unique: Uk4JV9OuM72wX9jGzojxMw-1
+X-Mimecast-MFC-AGG-ID: Uk4JV9OuM72wX9jGzojxMw_1762245146
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C280D1800743; Tue,  4 Nov 2025 08:32:32 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D671119560B6; Tue,  4 Nov 2025 08:32:25 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.33.250])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D9B8219560A2; Tue,  4 Nov 2025 08:32:30 +0000 (UTC)
+ id 0124E19540DE; Tue,  4 Nov 2025 08:32:23 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 19/30] hw/arm/aspeed: Split FBY35 BMC machine into a separate
+Subject: [PULL 16/30] hw/arm/aspeed: Split Palmetto machine into a separate
  source file for maintainability
-Date: Tue,  4 Nov 2025 09:31:33 +0100
-Message-ID: <20251104083144.187806-20-clg@redhat.com>
+Date: Tue,  4 Nov 2025 09:31:30 +0100
+Message-ID: <20251104083144.187806-17-clg@redhat.com>
 In-Reply-To: <20251104083144.187806-1-clg@redhat.com>
 References: <20251104083144.187806-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -87,8 +87,8 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-This commit moves the Facebook fby35 BMC machine implementation out of
-aspeed.c into a new standalone file aspeed_ast2600_fby35.c.
+This commit moves the OpenPOWER Palmetto BMC machine implementation out of
+aspeed.c into a new standalone file aspeed_ast2400_palmetto.c.
 
 This refactor continues the modularization effort for Aspeed platform support,
 placing each board’s logic in its own dedicated source file.
@@ -96,159 +96,125 @@ It improves maintainability, readability, and simplifies future development for
 new platforms without cluttering aspeed.c.
 
 Key updates include:
-- Moved fby35_i2c_init() and fby35_reset() to the new file.
-- Moved aspeed_machine_fby35_class_init() and machine registration to the new file.
-- Removed fby35 FRU data (fby35_nic_fruid, fby35_bb_fruid, fby35_bmc_fruid) and their size definitions from aspeed_eeprom.[ch].
-- Added aspeed_ast2600_fby35.c to the build system (meson.build).
-- Cleaned up all fby35-specific code and declarations from aspeed.c and aspeed_eeprom.*.
-- Introduced FBY35_BMC_RAM_SIZE macro based on FUJI_BMC_RAM_SIZE to remove
-  inter-file dependency.
+- Moved PALMETTO_BMC_HW_STRAP1 macro definition from into the new file.
+- Moved palmetto_bmc_i2c_init() I²C initialization logic into the new file.
+- Moved aspeed_machine_palmetto_class_init() and type registration.
+- Added aspeed_ast2400_palmetto.c to the build system (meson.build).
+- Removed all Palmetto-specific code and macros from aspeed.c.
 
 No functional changes.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20251104031325.146374-20-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20251104031325.146374-17-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_eeprom.h        |   7 --
- hw/arm/aspeed.c               |  79 ---------------
- hw/arm/aspeed_ast2600_fby35.c | 178 ++++++++++++++++++++++++++++++++++
- hw/arm/aspeed_eeprom.c        |  74 --------------
- hw/arm/meson.build            |   1 +
- 5 files changed, 179 insertions(+), 160 deletions(-)
- create mode 100644 hw/arm/aspeed_ast2600_fby35.c
+ hw/arm/aspeed.c                  | 60 ------------------------
+ hw/arm/aspeed_ast2400_palmetto.c | 80 ++++++++++++++++++++++++++++++++
+ hw/arm/meson.build               |  1 +
+ 3 files changed, 81 insertions(+), 60 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast2400_palmetto.c
 
-diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
-index 5448eeeab7ab..7207bb2cbd39 100644
---- a/hw/arm/aspeed_eeprom.h
-+++ b/hw/arm/aspeed_eeprom.h
-@@ -7,13 +7,6 @@
- #ifndef ASPEED_EEPROM_H
- #define ASPEED_EEPROM_H
- 
--extern const uint8_t fby35_nic_fruid[];
--extern const uint8_t fby35_bb_fruid[];
--extern const uint8_t fby35_bmc_fruid[];
--extern const size_t fby35_nic_fruid_len;
--extern const size_t fby35_bb_fruid_len;
--extern const size_t fby35_bmc_fruid_len;
--
- extern const uint8_t rainier_bb_fruid[];
- extern const size_t rainier_bb_fruid_len;
- extern const uint8_t rainier_bmc_fruid[];
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 3acb45b22c28..e44aec69bd2b 100644
+index fbd27020bd2d..15d3b045ac44 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -719,38 +719,6 @@ static void gb200nvl_bmc_i2c_init(AspeedMachineState *bmc)
-                           gb200nvl_bmc_fruid_len);
+@@ -43,20 +43,6 @@ static struct arm_boot_info aspeed_board_binfo = {
+ #define ASPEED_RAM_SIZE(sz) (sz)
+ #endif
+ 
+-/* Palmetto hardware value: 0x120CE416 */
+-#define PALMETTO_BMC_HW_STRAP1 (                                        \
+-        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_256MB) |               \
+-        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2 /* DDR3 with CL=6, CWL=5 */) | \
+-        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
+-        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       \
+-        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
+-        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
+-        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |                \
+-        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1) | \
+-        SCU_HW_STRAP_SPI_WIDTH |                                        \
+-        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
+-        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
+-
+ /* AST2600 evb hardware value */
+ #define AST2600_EVB_HW_STRAP1 0x000000C0
+ #define AST2600_EVB_HW_STRAP2 0x00000003
+@@ -312,30 +298,6 @@ static void aspeed_machine_init(MachineState *machine)
+     arm_load_kernel(ARM_CPU(first_cpu), machine, &aspeed_board_binfo);
  }
  
--static void fby35_i2c_init(AspeedMachineState *bmc)
+-static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
 -{
 -    AspeedSoCState *soc = bmc->soc;
--    I2CBus *i2c[16];
--
--    for (int i = 0; i < 16; i++) {
--        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
--    }
--
--    i2c_slave_create_simple(i2c[2], TYPE_LM75, 0x4f);
--    i2c_slave_create_simple(i2c[8], TYPE_TMP421, 0x1f);
--    /* Hotswap controller is actually supposed to be mp5920 or ltc4282. */
--    i2c_slave_create_simple(i2c[11], "adm1272", 0x44);
--    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4e);
--    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4f);
--
--    at24c_eeprom_init(i2c[4], 0x51, 128 * KiB);
--    at24c_eeprom_init(i2c[6], 0x51, 128 * KiB);
--    at24c_eeprom_init_rom(i2c[8], 0x50, 32 * KiB, fby35_nic_fruid,
--                          fby35_nic_fruid_len);
--    at24c_eeprom_init_rom(i2c[11], 0x51, 128 * KiB, fby35_bb_fruid,
--                          fby35_bb_fruid_len);
--    at24c_eeprom_init_rom(i2c[11], 0x54, 128 * KiB, fby35_bmc_fruid,
--                          fby35_bmc_fruid_len);
+-    DeviceState *dev;
+-    uint8_t *eeprom_buf = g_malloc0(32 * 1024);
 -
 -    /*
--     * TODO: There is a multi-master i2c connection to an AST1030 MiniBMC on
--     * buses 0, 1, 2, 3, and 9. Source address 0x10, target address 0x20 on
--     * each.
+-     * The palmetto platform expects a ds3231 RTC but a ds1338 is
+-     * enough to provide basic RTC features. Alarms will be missing
 -     */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
+-
+-    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
+-                          eeprom_buf);
+-
+-    /* add a TMP423 temperature sensor */
+-    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
+-                                         "tmp423", 0x4c));
+-    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
+-    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
+-    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
+-    object_property_set_int(OBJECT(dev), "temperature3", 110000, &error_abort);
 -}
 -
- static void qcom_dc_scm_bmc_i2c_init(AspeedMachineState *bmc)
+ static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
  {
      AspeedSoCState *soc = bmc->soc;
-@@ -1053,48 +1021,6 @@ static void aspeed_machine_gb200nvl_class_init(ObjectClass *oc,
-     aspeed_machine_ast2600_class_emmc_init(oc);
+@@ -1042,23 +1004,6 @@ static void aspeed_machine_class_init(ObjectClass *oc, const void *data)
+     aspeed_machine_class_props_init(oc);
  }
  
--static void fby35_reset(MachineState *state, ResetType type)
--{
--    AspeedMachineState *bmc = ASPEED_MACHINE(state);
--    AspeedGPIOState *gpio = &bmc->soc->gpio;
--
--    qemu_devices_reset(type);
--
--    /* Board ID: 7 (Class-1, 4 slots) */
--    object_property_set_bool(OBJECT(gpio), "gpioV4", true, &error_fatal);
--    object_property_set_bool(OBJECT(gpio), "gpioV5", true, &error_fatal);
--    object_property_set_bool(OBJECT(gpio), "gpioV6", true, &error_fatal);
--    object_property_set_bool(OBJECT(gpio), "gpioV7", false, &error_fatal);
--
--    /* Slot presence pins, inverse polarity. (False means present) */
--    object_property_set_bool(OBJECT(gpio), "gpioH4", false, &error_fatal);
--    object_property_set_bool(OBJECT(gpio), "gpioH5", true, &error_fatal);
--    object_property_set_bool(OBJECT(gpio), "gpioH6", true, &error_fatal);
--    object_property_set_bool(OBJECT(gpio), "gpioH7", true, &error_fatal);
--
--    /* Slot 12v power pins, normal polarity. (True means powered-on) */
--    object_property_set_bool(OBJECT(gpio), "gpioB2", true, &error_fatal);
--    object_property_set_bool(OBJECT(gpio), "gpioB3", false, &error_fatal);
--    object_property_set_bool(OBJECT(gpio), "gpioB4", false, &error_fatal);
--    object_property_set_bool(OBJECT(gpio), "gpioB5", false, &error_fatal);
--}
--
--static void aspeed_machine_fby35_class_init(ObjectClass *oc, const void *data)
+-static void aspeed_machine_palmetto_class_init(ObjectClass *oc,
+-                                               const void *data)
 -{
 -    MachineClass *mc = MACHINE_CLASS(oc);
 -    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 -
--    mc->desc       = "Facebook fby35 BMC (Cortex-A7)";
--    mc->reset      = fby35_reset;
--    amc->fmc_model = "mx66l1g45g";
--    amc->num_cs    = 2;
--    amc->macs_mask = ASPEED_MAC3_ON;
--    amc->i2c_init  = fby35_i2c_init;
--    /* FIXME: Replace this macro with something more general */
--    mc->default_ram_size = FUJI_BMC_RAM_SIZE;
+-    mc->desc       = "OpenPOWER Palmetto BMC (ARM926EJ-S)";
+-    amc->soc_name  = "ast2400-a1";
+-    amc->hw_strap1 = PALMETTO_BMC_HW_STRAP1;
+-    amc->fmc_model = "n25q256a";
+-    amc->spi_model = "mx25l25635f";
+-    amc->num_cs    = 1;
+-    amc->i2c_init  = palmetto_bmc_i2c_init;
+-    mc->default_ram_size       = 256 * MiB;
 -    aspeed_machine_class_init_cpus_defaults(mc);
--}
+-};
 -
- #define AST1030_INTERNAL_FLASH_SIZE (1024 * 1024)
- /* Main SYSCLK frequency in Hz (200MHz) */
- #define SYSCLK_FRQ 200000000ULL
-@@ -1305,11 +1231,6 @@ static const TypeInfo aspeed_machine_types[] = {
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_catalina_class_init,
-         .interfaces    = arm_machine_interfaces,
--    }, {
--        .name          = MACHINE_TYPE_NAME("fby35-bmc"),
--        .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
--        .class_init    = aspeed_machine_fby35_class_init,
+ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc,
+                                                   const void *data)
+ {
+@@ -1405,11 +1350,6 @@ static void aspeed_machine_qcom_firework_class_init(ObjectClass *oc,
+ 
+ static const TypeInfo aspeed_machine_types[] = {
+     {
+-        .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+-        .parent        = TYPE_ASPEED_MACHINE,
+-        .class_init    = aspeed_machine_palmetto_class_init,
 -        .interfaces    = arm_machine_interfaces,
-     }, {
-         .name           = MACHINE_TYPE_NAME("ast1030-evb"),
-         .parent         = TYPE_ASPEED_MACHINE,
-diff --git a/hw/arm/aspeed_ast2600_fby35.c b/hw/arm/aspeed_ast2600_fby35.c
+-    }, {
+         .name          = MACHINE_TYPE_NAME("ast2600-evb"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_ast2600_evb_class_init,
+diff --git a/hw/arm/aspeed_ast2400_palmetto.c b/hw/arm/aspeed_ast2400_palmetto.c
 new file mode 100644
-index 000000000000..f62442707040
+index 000000000000..776aa43a45de
 --- /dev/null
-+++ b/hw/arm/aspeed_ast2600_fby35.c
-@@ -0,0 +1,178 @@
++++ b/hw/arm/aspeed_ast2400_palmetto.c
+@@ -0,0 +1,80 @@
 +/*
-+ * Facebook fby35
++ * OpenPOWER Palmetto
 + *
 + * Copyright 2016 IBM Corp.
 + *
@@ -260,275 +226,85 @@ index 000000000000..f62442707040
 +#include "hw/arm/machines-qom.h"
 +#include "hw/arm/aspeed.h"
 +#include "hw/arm/aspeed_soc.h"
-+#include "hw/nvram/eeprom_at24c.h"
-+#include "hw/sensor/tmp105.h"
-+#include "system/reset.h"
++#include "hw/i2c/smbus_eeprom.h"
 +
-+#define TYPE_LM75 TYPE_TMP105
-+#define TYPE_TMP421 "tmp421"
-+#define FBY35_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
++/* Palmetto hardware value: 0x120CE416 */
++#define PALMETTO_BMC_HW_STRAP1 (                                        \
++        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_256MB) |               \
++        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2 /* DDR3 with CL=6, CWL=5 */) | \
++        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
++        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       \
++        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
++        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
++        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |                \
++        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1) | \
++        SCU_HW_STRAP_SPI_WIDTH |                                        \
++        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
++        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
 +
-+static const uint8_t fby35_nic_fruid[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x0f, 0x20, 0x00, 0xcf, 0x01, 0x0e, 0x19, 0xd7,
-+    0x5e, 0xcf, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xdd,
-+    0x4d, 0x65, 0x6c, 0x6c, 0x61, 0x6e, 0x6f, 0x78, 0x20, 0x43, 0x6f, 0x6e,
-+    0x6e, 0x65, 0x63, 0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0x20, 0x4f,
-+    0x43, 0x50, 0x33, 0x2e, 0x30, 0xd8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd5, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0xcc, 0x46, 0x52, 0x55, 0x20, 0x56, 0x65, 0x72,
-+    0x20, 0x30, 0x2e, 0x30, 0x32, 0xc0, 0xc0, 0xc0, 0xc1, 0x00, 0x00, 0x2f,
-+    0x01, 0x11, 0x19, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0xdd, 0x4d, 0x65, 0x6c, 0x6c, 0x61, 0x6e, 0x6f, 0x78, 0x20, 0x43, 0x6f,
-+    0x6e, 0x6e, 0x65, 0x63, 0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0x20,
-+    0x4f, 0x43, 0x50, 0x33, 0x2e, 0x30, 0xd5, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0xd3, 0x41, 0x39, 0x20, 0x20, 0x20, 0x20, 0x20,
-+    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-+    0xd8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0xc0, 0xc0, 0xc0, 0xc0, 0xcd, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63,
-+    0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0xc1, 0x00, 0x00, 0x00, 0x00,
-+    0x00, 0x00, 0x00, 0xdb, 0xc0, 0x82, 0x30, 0x15, 0x79, 0x7f, 0xa6, 0x00,
-+    0x01, 0x18, 0x0b, 0xff, 0x08, 0x00, 0xff, 0xff, 0x64, 0x00, 0x00, 0x00,
-+    0x00, 0x03, 0x20, 0x01, 0xff, 0xff, 0x04, 0x46, 0x00, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0x01, 0x81, 0x09, 0x15, 0xb3, 0x10, 0x1d, 0x00,
-+    0x24, 0x15, 0xb3, 0x00, 0x02, 0xeb, 0x8a, 0x95, 0x5c,
-+};
-+static const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
-+
-+static const uint8_t fby35_bb_fruid[] = {
-+    0x01, 0x00, 0x01, 0x03, 0x10, 0x00, 0x00, 0xeb, 0x01, 0x02, 0x17, 0xc3,
-+    0x4e, 0x2f, 0x41, 0xc3, 0x4e, 0x2f, 0x41, 0xc1, 0x00, 0x00, 0x00, 0x23,
-+    0x01, 0x0d, 0x00, 0xb6, 0xd2, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0xd5, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74,
-+    0x20, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x20, 0x77, 0x42, 0x4d, 0x43, 0xcd,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa8, 0x01, 0x0c, 0x00, 0xc6,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
-+    0x69, 0x74, 0x65, 0x20, 0x56, 0x33, 0x2e, 0x35, 0x20, 0x45, 0x56, 0x54,
-+    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x4e, 0x2f,
-+    0x41, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43,
-+};
-+static const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
-+
-+static const uint8_t fby35_bmc_fruid[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
-+    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
-+    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
-+    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
-+    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
-+    0x69, 0x74, 0x65, 0x20, 0x56, 0x33, 0x2e, 0x35, 0x20, 0x45, 0x56, 0x54,
-+    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
-+    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
-+    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
-+};
-+static const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
-+
-+static void fby35_i2c_init(AspeedMachineState *bmc)
++static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
 +{
 +    AspeedSoCState *soc = bmc->soc;
-+    I2CBus *i2c[16];
-+
-+    for (int i = 0; i < 16; i++) {
-+        i2c[i] = aspeed_i2c_get_bus(&soc->i2c, i);
-+    }
-+
-+    i2c_slave_create_simple(i2c[2], TYPE_LM75, 0x4f);
-+    i2c_slave_create_simple(i2c[8], TYPE_TMP421, 0x1f);
-+    /* Hotswap controller is actually supposed to be mp5920 or ltc4282. */
-+    i2c_slave_create_simple(i2c[11], "adm1272", 0x44);
-+    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4e);
-+    i2c_slave_create_simple(i2c[12], TYPE_LM75, 0x4f);
-+
-+    at24c_eeprom_init(i2c[4], 0x51, 128 * KiB);
-+    at24c_eeprom_init(i2c[6], 0x51, 128 * KiB);
-+    at24c_eeprom_init_rom(i2c[8], 0x50, 32 * KiB, fby35_nic_fruid,
-+                          fby35_nic_fruid_len);
-+    at24c_eeprom_init_rom(i2c[11], 0x51, 128 * KiB, fby35_bb_fruid,
-+                          fby35_bb_fruid_len);
-+    at24c_eeprom_init_rom(i2c[11], 0x54, 128 * KiB, fby35_bmc_fruid,
-+                          fby35_bmc_fruid_len);
++    DeviceState *dev;
++    uint8_t *eeprom_buf = g_malloc0(32 * 1024);
 +
 +    /*
-+     * TODO: There is a multi-master i2c connection to an AST1030 MiniBMC on
-+     * buses 0, 1, 2, 3, and 9. Source address 0x10, target address 0x20 on
-+     * each.
++     * The palmetto platform expects a ds3231 RTC but a ds1338 is
++     * enough to provide basic RTC features. Alarms will be missing
 +     */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
++
++    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
++                          eeprom_buf);
++
++    /* add a TMP423 temperature sensor */
++    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
++                                         "tmp423", 0x4c));
++    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature3", 110000, &error_abort);
 +}
 +
-+static void fby35_reset(MachineState *state, ResetType type)
-+{
-+    AspeedMachineState *bmc = ASPEED_MACHINE(state);
-+    AspeedGPIOState *gpio = &bmc->soc->gpio;
-+
-+    qemu_devices_reset(type);
-+
-+    /* Board ID: 7 (Class-1, 4 slots) */
-+    object_property_set_bool(OBJECT(gpio), "gpioV4", true, &error_fatal);
-+    object_property_set_bool(OBJECT(gpio), "gpioV5", true, &error_fatal);
-+    object_property_set_bool(OBJECT(gpio), "gpioV6", true, &error_fatal);
-+    object_property_set_bool(OBJECT(gpio), "gpioV7", false, &error_fatal);
-+
-+    /* Slot presence pins, inverse polarity. (False means present) */
-+    object_property_set_bool(OBJECT(gpio), "gpioH4", false, &error_fatal);
-+    object_property_set_bool(OBJECT(gpio), "gpioH5", true, &error_fatal);
-+    object_property_set_bool(OBJECT(gpio), "gpioH6", true, &error_fatal);
-+    object_property_set_bool(OBJECT(gpio), "gpioH7", true, &error_fatal);
-+
-+    /* Slot 12v power pins, normal polarity. (True means powered-on) */
-+    object_property_set_bool(OBJECT(gpio), "gpioB2", true, &error_fatal);
-+    object_property_set_bool(OBJECT(gpio), "gpioB3", false, &error_fatal);
-+    object_property_set_bool(OBJECT(gpio), "gpioB4", false, &error_fatal);
-+    object_property_set_bool(OBJECT(gpio), "gpioB5", false, &error_fatal);
-+}
-+
-+static void aspeed_machine_fby35_class_init(ObjectClass *oc, const void *data)
++static void aspeed_machine_palmetto_class_init(ObjectClass *oc,
++                                               const void *data)
 +{
 +    MachineClass *mc = MACHINE_CLASS(oc);
 +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+    mc->desc       = "Facebook fby35 BMC (Cortex-A7)";
-+    mc->reset      = fby35_reset;
-+    amc->fmc_model = "mx66l1g45g";
-+    amc->num_cs    = 2;
-+    amc->macs_mask = ASPEED_MAC3_ON;
-+    amc->i2c_init  = fby35_i2c_init;
-+    mc->default_ram_size = FBY35_BMC_RAM_SIZE;
++    mc->desc       = "OpenPOWER Palmetto BMC (ARM926EJ-S)";
++    amc->soc_name  = "ast2400-a1";
++    amc->hw_strap1 = PALMETTO_BMC_HW_STRAP1;
++    amc->fmc_model = "n25q256a";
++    amc->spi_model = "mx25l25635f";
++    amc->num_cs    = 1;
++    amc->i2c_init  = palmetto_bmc_i2c_init;
++    mc->default_ram_size       = 256 * MiB;
 +    aspeed_machine_class_init_cpus_defaults(mc);
-+}
++};
 +
-+static const TypeInfo aspeed_ast2600_fby35_types[] = {
++static const TypeInfo aspeed_ast2400_palmetto_types[] = {
 +    {
-+        .name          = MACHINE_TYPE_NAME("fby35-bmc"),
-+        .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
-+        .class_init    = aspeed_machine_fby35_class_init,
++        .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_palmetto_class_init,
 +        .interfaces    = arm_machine_interfaces,
 +    }
 +};
 +
-+DEFINE_TYPES(aspeed_ast2600_fby35_types)
-diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
-index 124277eaca1a..53c9b0d56f03 100644
---- a/hw/arm/aspeed_eeprom.c
-+++ b/hw/arm/aspeed_eeprom.c
-@@ -7,77 +7,6 @@
- #include "qemu/osdep.h"
- #include "aspeed_eeprom.h"
- 
--const uint8_t fby35_nic_fruid[] = {
--    0x01, 0x00, 0x00, 0x01, 0x0f, 0x20, 0x00, 0xcf, 0x01, 0x0e, 0x19, 0xd7,
--    0x5e, 0xcf, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xdd,
--    0x4d, 0x65, 0x6c, 0x6c, 0x61, 0x6e, 0x6f, 0x78, 0x20, 0x43, 0x6f, 0x6e,
--    0x6e, 0x65, 0x63, 0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0x20, 0x4f,
--    0x43, 0x50, 0x33, 0x2e, 0x30, 0xd8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd5, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0xcc, 0x46, 0x52, 0x55, 0x20, 0x56, 0x65, 0x72,
--    0x20, 0x30, 0x2e, 0x30, 0x32, 0xc0, 0xc0, 0xc0, 0xc1, 0x00, 0x00, 0x2f,
--    0x01, 0x11, 0x19, 0xc8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0xdd, 0x4d, 0x65, 0x6c, 0x6c, 0x61, 0x6e, 0x6f, 0x78, 0x20, 0x43, 0x6f,
--    0x6e, 0x6e, 0x65, 0x63, 0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0x20,
--    0x4f, 0x43, 0x50, 0x33, 0x2e, 0x30, 0xd5, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0xd3, 0x41, 0x39, 0x20, 0x20, 0x20, 0x20, 0x20,
--    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
--    0xd8, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0xc0, 0xc0, 0xc0, 0xc0, 0xcd, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63,
--    0x74, 0x58, 0x2d, 0x36, 0x20, 0x44, 0x58, 0xc1, 0x00, 0x00, 0x00, 0x00,
--    0x00, 0x00, 0x00, 0xdb, 0xc0, 0x82, 0x30, 0x15, 0x79, 0x7f, 0xa6, 0x00,
--    0x01, 0x18, 0x0b, 0xff, 0x08, 0x00, 0xff, 0xff, 0x64, 0x00, 0x00, 0x00,
--    0x00, 0x03, 0x20, 0x01, 0xff, 0xff, 0x04, 0x46, 0x00, 0xff, 0xff, 0xff,
--    0xff, 0xff, 0xff, 0xff, 0x01, 0x81, 0x09, 0x15, 0xb3, 0x10, 0x1d, 0x00,
--    0x24, 0x15, 0xb3, 0x00, 0x02, 0xeb, 0x8a, 0x95, 0x5c,
--};
--
--const uint8_t fby35_bb_fruid[] = {
--    0x01, 0x00, 0x01, 0x03, 0x10, 0x00, 0x00, 0xeb, 0x01, 0x02, 0x17, 0xc3,
--    0x4e, 0x2f, 0x41, 0xc3, 0x4e, 0x2f, 0x41, 0xc1, 0x00, 0x00, 0x00, 0x23,
--    0x01, 0x0d, 0x00, 0xb6, 0xd2, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0xd5, 0x4d, 0x61, 0x6e, 0x61, 0x67, 0x65, 0x6d, 0x65, 0x6e, 0x74,
--    0x20, 0x42, 0x6f, 0x61, 0x72, 0x64, 0x20, 0x77, 0x42, 0x4d, 0x43, 0xcd,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa8, 0x01, 0x0c, 0x00, 0xc6,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
--    0x69, 0x74, 0x65, 0x20, 0x56, 0x33, 0x2e, 0x35, 0x20, 0x45, 0x56, 0x54,
--    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x4e, 0x2f,
--    0x41, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x43,
--};
--
--const uint8_t fby35_bmc_fruid[] = {
--    0x01, 0x00, 0x00, 0x01, 0x0d, 0x00, 0x00, 0xf1, 0x01, 0x0c, 0x00, 0x36,
--    0xe6, 0xd0, 0xc6, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x42, 0x4d,
--    0x43, 0x20, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x20, 0x4d, 0x6f,
--    0x64, 0x75, 0x6c, 0x65, 0xcd, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e,
--    0x30, 0xc9, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc1, 0x39, 0x01, 0x0c, 0x00, 0xc6,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xd2, 0x59, 0x6f, 0x73, 0x65, 0x6d,
--    0x69, 0x74, 0x65, 0x20, 0x56, 0x33, 0x2e, 0x35, 0x20, 0x45, 0x56, 0x54,
--    0x32, 0xce, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0xc4, 0x45, 0x56, 0x54, 0x32, 0xcd, 0x58, 0x58,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc7,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc3, 0x31, 0x2e, 0x30, 0xc9,
--    0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0x58, 0xc8, 0x43, 0x6f,
--    0x6e, 0x66, 0x69, 0x67, 0x20, 0x41, 0xc1, 0x45,
--};
--
- const uint8_t rainier_bb_fruid[] = {
-     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x84,
-     0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 0x44, 0x02,
-@@ -139,9 +68,6 @@ const uint8_t gb200nvl_bmc_fruid[] = {
- 
- };
- 
--const size_t fby35_nic_fruid_len = sizeof(fby35_nic_fruid);
--const size_t fby35_bb_fruid_len = sizeof(fby35_bb_fruid);
--const size_t fby35_bmc_fruid_len = sizeof(fby35_bmc_fruid);
- const size_t rainier_bb_fruid_len = sizeof(rainier_bb_fruid);
- const size_t rainier_bmc_fruid_len = sizeof(rainier_bmc_fruid);
- const size_t gb200nvl_bmc_fruid_len = sizeof(gb200nvl_bmc_fruid);
++DEFINE_TYPES(aspeed_ast2400_palmetto_types)
 diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 6d80e2caf9c5..4abfbffb45fa 100644
+index ea2d24af88a0..e52901108be2 100644
 --- a/hw/arm/meson.build
 +++ b/hw/arm/meson.build
-@@ -58,6 +58,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_ast2500_yosemitev2.c',
-   'aspeed_ast2600.c',
-   'aspeed_ast2600_bletchley.c',
-+  'aspeed_ast2600_fby35.c',
-   'aspeed_ast10x0.c',
-   'aspeed_eeprom.c',
-   'fby35.c'))
+@@ -44,6 +44,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed.c',
+   'aspeed_soc_common.c',
+   'aspeed_ast2400.c',
++  'aspeed_ast2400_palmetto.c',
+   'aspeed_ast2400_quanta-q71l.c',
+   'aspeed_ast2400_supermicrox11.c',
+   'aspeed_ast2500_evb.c',
 -- 
 2.51.1
 

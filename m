@@ -4,102 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 469F4CCF9E3
-	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 21:04:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29640CCFA04
+	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 23:38:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGOCg-0000ar-F9; Tue, 04 Nov 2025 16:04:34 -0500
+	id 1vGQb5-00020o-SY; Tue, 04 Nov 2025 18:37:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vGNzg-0005Ud-Cp
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 15:51:08 -0500
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+ (Exim 4.90_1) (envelope-from
+ <3SY4KaQwKCN4NABIHESTEFANGOOGLE.COMQEMU-ARMNONGNU.ORG@flex--nabihestefan.bounces.google.com>)
+ id 1vGQb1-00020G-PC
+ for qemu-arm@nongnu.org; Tue, 04 Nov 2025 18:37:51 -0500
+Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vGNze-0000pG-IO
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 15:51:08 -0500
-Received: by mail-qk1-x72d.google.com with SMTP id
- af79cd13be357-8b144ec3aa8so121749785a.2
- for <qemu-arm@nongnu.org>; Tue, 04 Nov 2025 12:51:05 -0800 (PST)
+ (Exim 4.90_1) (envelope-from
+ <3SY4KaQwKCN4NABIHESTEFANGOOGLE.COMQEMU-ARMNONGNU.ORG@flex--nabihestefan.bounces.google.com>)
+ id 1vGQay-0005BS-Cs
+ for qemu-arm@nongnu.org; Tue, 04 Nov 2025 18:37:50 -0500
+Received: by mail-pf1-x44a.google.com with SMTP id
+ d2e1a72fcca58-7a9a8e76543so5349016b3a.3
+ for <qemu-arm@nongnu.org>; Tue, 04 Nov 2025 15:37:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1762289465; x=1762894265; darn=nongnu.org;
- h=cc:to:message-id:content-transfer-encoding:mime-version:subject
- :date:from:from:to:cc:subject:date:message-id:reply-to;
- bh=HwpoKRNQubiQXOMEiN9Sz+GbWi7OVAAuwKAREllNUqU=;
- b=L8FRl9/TUs5v9BJJpi6/+kdMlBYW0VrokYQOMbrjN7RXgjSGjRFaBI0ow8iyMkfZ98
- cdjwg8A8QLK8l6PYTRjygw4RZD6CDTTXwl/CNr56BLCAiJ8cgsT1j3gJC791Wu18qBlg
- NdA8OLHNvLTNry7IibCRGctTwp3nJRR0PuAfsF4x4knbnN63V6DA55IN0S6t+VZxtUOy
- gKU/A1ojclL1eY56ot7g5IhYyQ/QsZ6+k4Jb0rmyqNn+/yFuwlx92peoNDw4I6SOkydo
- EL89AmBPFWT1Jfxf57jaJyqMVrxhL3NIR+IHq0WbKsTpaYPOiMKq0T2N943rRAuI6YU1
- N4Ug==
+ d=google.com; s=20230601; t=1762299465; x=1762904265; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=YU0uSHcPrYiF3ZdbzJ9P1EwGSlz9hc7xoEWUvhDGKI0=;
+ b=whzed4/7eOicvSGAXqiwecX7RFR1Yj7oghnlu6bjFnBXR+Sxs4DIs1FG9WYOwcQNIh
+ X3fXxbAs/e3NXoZpJZcFfVylP6a5at7DeJy0grhQaF7bMa+/5UEfiSGacVObfobw7GOR
+ +gu2o1Hcp6iwS92P5ed3nieOHfj0G1K6SnObnJIERendmLTMK8fn7MTW81e/ImLuyh81
+ MiVTV39OyxFIkC4Radp+VoWc5+LG8gqxXr7tRiBQkBM7p7+4bBKvLyzz4sHErll/CX9F
+ tdmsth/8yJHdwaE4fMY+RNCpRvj/YDUjRgkUK8KLSEDa/xdLJNAfSH/mLtvTJQSgIPIY
+ IKvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762289465; x=1762894265;
- h=cc:to:message-id:content-transfer-encoding:mime-version:subject
- :date:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=HwpoKRNQubiQXOMEiN9Sz+GbWi7OVAAuwKAREllNUqU=;
- b=wXNfy9LWqq4Tx5efZhhWhP6r0a3/bcgQhnu0XyAda1ZVgPGFmR1AdBytV5OVKDgM0l
- V0F8pEc5OkzoZ3tAx+JuETIu3UkBvQA43p2b8yTfG2PskHmnCCJVfOdjs9qO454kggCO
- U4jY2eNzsFq4Xs/oQuOY4oB4CaqZMdhANlR4yE96YXmkUwWBJq9MrRx3nSiGVMJi1zYG
- rqJmJuBPV/JAuoWrYaCpnNMsOHyjkjeOaRndaNWLIuko08suQH9n0yMi3Avsn2+fcc8g
- 5qPgdVHxod2QEpn/x1CFGzpvzEKgNyZ7BCTQ4HVSLl+iHZ0NP0L62DXzNwwcZ5GbhTsG
- M3HQ==
+ d=1e100.net; s=20230601; t=1762299465; x=1762904265;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=YU0uSHcPrYiF3ZdbzJ9P1EwGSlz9hc7xoEWUvhDGKI0=;
+ b=mEJZrFrQXq9iIJhsjC7ULulY6gOhXZccXMHJXW1Kre15r1X/NWctlEThC1OoYI7GD9
+ z3rRI4XSa3lUCLkDjJPJrq4/0sOty/9qU3WK0PJYG2RIBKgOtCroyxLt0DykXQAWRsMb
+ pCM6aaDmRtvzcWu+CxzytQ9JgaLY2izcl7yONaRgMWBTAQ+bIWTaYYvm8cdcj3SQHF0I
+ ZaK/MX4eyyOXCtHSyKsu1ErJV8JmARpCelj4/ZjyGFHkLRQwN0hdeHxqDaWI8dVSu+7C
+ f66yc70lw6LIpfZtJHG6iaHQNqzCLN8k5zKmcIMOoIJrryOd4e2d6iPOfsDPioYpGhiX
+ uugQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUxWbp/SCrEk72qlB7V8XQQ6OlV0wXrf+qSB3DW9PdqzSUPQSIoFAnI3BYfVYABfKUzxjW2bco0ng==@nongnu.org
-X-Gm-Message-State: AOJu0YyM/sA3RIaE/uVEZF7cHsrKEste7LLTyIbmbStVsG2glLqEfd8I
- 2/F/QQmDVStstp0oT2CqFC/4ZHTxaom/vgtHjG3qVtsfW0Fl0cGBb+C4
-X-Gm-Gg: ASbGncspY4DqOmb4g+6goLMQQgGyw5euGtfkBZBlgQNmuCaqNZ2LuNlZ5sM9hMsD2ia
- UpOKPwyC62Cejn7Pr3rkz7UiNY4g2S/OdCvVeLzvHZfzQaC4EA7+FQF2MWBkRBHvK44r/CVbFgu
- shVOA6YVYIiynVVE0anvz2i0X8Hy/+WhX4OPcPjeqZZ5lHU0xm7Ichmj+cp/70lZMMk0qOwS/NJ
- iO6wk6e1ZChO52NuXCYGJz7eyi4nTzESeoRi2fIHGDQyx4beAXp3zzM7TgdJ8OJq/BUXEtJMq9O
- I/IBVVdFN+G1jNVZumax+FRVjxKJ4lKEI6xszfFb6JPRT0Xb/9ak8jLcHmZEDfnNzD+RsiAGfRx
- hPoGnwAfBPWUhM9ZSyVAByHk6gTkOMaQeDx6qd9RBrvVSfMX/eP3DikIVph5yoMTgFYtEZ56CfU
- y7dfQqEmTICG/175HBTLdxBz1R
-X-Google-Smtp-Source: AGHT+IHn+L3zCfByUl/Niw82n/+LOrjv4axpM5Dow0VFCtnqR8C/XGM5sCaXxwCLvjEFo5Io/JsNLA==
-X-Received: by 2002:a05:620a:4483:b0:8b1:83b:e5a6 with SMTP id
- af79cd13be357-8b220af1abamr131051185a.75.1762289464499; 
- Tue, 04 Nov 2025 12:51:04 -0800 (PST)
-Received: from [10.50.205.198] ([185.213.193.149])
- by smtp.gmail.com with ESMTPSA id
- af79cd13be357-8b0f8478b9csm263788085a.52.2025.11.04.12.51.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Nov 2025 12:51:04 -0800 (PST)
-From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Tue, 04 Nov 2025 15:50:00 -0500
-Subject: [PATCH] target/arm: add support for FEAT_MTE_TAGGED_FAR
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20251104-feat-mte-tagged-far-v1-1-cdfd7db40397@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAPdmCmkC/x3MQQqAIBBA0avIrBtQK5CuEi2GHG0WWahEEN09a
- fkW/z9QOAsXmNQDmS8pcqQG0ylYN0qRUXwzWG1HY/SAganiXhkrxcgeA2Vcne+1JecceWjlmTn
- I/V/n5X0/koOOuGUAAAA=
-X-Change-ID: 20251104-feat-mte-tagged-far-c8d302a888ad
+ AJvYcCUpmd14orpSpuVMATdmCoswmv/b6D4ftmnHJ9RwAAzFOzuIsJwY+lNJJPbYL/WCA2iTVLAQwmyDew==@nongnu.org
+X-Gm-Message-State: AOJu0YwibHqJY1KybK5zTxVxSyH8e+zC94o3baB/qSNtfbI7nd4WxZcO
+ i1kHSYIksjoHic7Zc9NuQ/u03E220kkUWOcD/e2XRTH1EkOR1B+XRLy8RIDtYM1PQKJ0bFw+pdR
+ H/NzI7ORK54THWXDH9V0L4uNJUQnvng==
+X-Google-Smtp-Source: AGHT+IFRS6jXbhIVJDOyrmhvgadCce/I3QfLB0EvF7tGNGWKSHhPhczRtLKLUw3QFLqSzq48zYVY++CpubReCWhFg/s=
+X-Received: from dlbsw2.prod.google.com ([2002:a05:7022:3a82:b0:119:49ca:6bae])
+ (user=nabihestefan job=prod-delivery.src-stubby-dispatcher) by
+ 2002:a05:6a21:338c:b0:343:70a2:bca9 with SMTP id
+ adf61e73a8af0-34f863015bcmr1292965637.53.1762299465369; 
+ Tue, 04 Nov 2025 15:37:45 -0800 (PST)
+Date: Tue,  4 Nov 2025 23:37:42 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.51.2.1006.ga50a493c49-goog
+Message-ID: <20251104233742.2147367-1-nabihestefan@google.com>
+Subject: [PATCH] hw/arm/ast27x0: Fix typo in LTPI address
+From: Nabih Estefan <nabihestefan@google.com>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, 
- Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org, 
- Gabriel Brookman <brookmangabriel@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1762289463; l=3805;
- i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=AmAGdnlPNeY/wfLgYtaHqGABhjeGNyiiTYow65UsP1E=;
- b=dO9yd/A9m+bfodyCw8TDAnw2vCJ4XrQM7sM+qr+6wYfycD+bkLtM7tuZYw6Ns3MFz7yF04NKk
- tX9c1ENtssTD+2Dynrw3kYpAX9iwtJiZqrgAm/GB7vPlMdoanYYOXWx
-X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
- pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72d;
- envelope-from=brookmangabriel@gmail.com; helo=mail-qk1-x72d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Cc: clg@kaod.org, peter.maydell@linaro.org, steven_lee@aspeedtech.com, 
+ leetroy@gmail.com, jamin_lin@aspeedtech.com, qemu-arm@nongnu.org, 
+ Nabih Estefan <nabihestefan@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
+ envelope-from=3SY4KaQwKCN4NABIHESTEFANGOOGLE.COMQEMU-ARMNONGNU.ORG@flex--nabihestefan.bounces.google.com;
+ helo=mail-pf1-x44a.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 04 Nov 2025 16:04:32 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,96 +94,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-FEAT_MTE_TAGGED_FAR is a feature required for MTE4. The feature
-guarantees that the full address (including tag bits) is reported after
-a SEGV_MTESERR, and advertises itself in the ID_AA64PFR2_EL1 system
-register. QEMU was already reporting the full address, so this commit
-simply advertises the feature by setting that register, and unsets the
-register if MTE is disabled.
+The address for LTPI has one more 0 that it should, bug introduced in
+commit 91064bea6b2d747a981cb3bd2904e56f443e6c67.
 
-Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
+Signed-off-by: Nabih Estefan <nabihestefan@google.com>
 ---
-This patch is the first step toward implementing ARM's Enhanced Memory
-Tagging Extension (MTE4). MTE4 guarantees the presence of several
-subfeatures: FEAT_MTE_CANONICAL_TAGS, FEAT_MTE_TAGGED_FAR,
-FEAT_MTE_STORE_ONLY, FEAT_MTE_NO_ADDRESS_TAGS, and FEAT_MTE_PERM,
-none of which are currently implemented in QEMU.
+ hw/arm/aspeed_ast27x0.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-According to the ARM ARM, the presence of any of these features (except
-FEAT_MTE_PERM) implies the presence of all the others. For simplicity
-and ease of review, I plan to introduce them one at a time. This first
-patch focuses on FEAT_MTE_TAGGED_FAR.
-
-FEAT_MTE_TAGGED_FAR guarantees that the full fault address (including
-tag bits) is reported after a SEGV_MTESERR, and exposes itself in the
-ID_AA64PFR2_EL1 register. QEMU already reports the full address in this
-case, so this change only advertises the feature by setting the
-appropriate field in ID_AA64PFR2_EL1. The field is cleared when MTE
-support is disabled or rolled back to instruction-only.
-
-Testing:
-- Verified in system mode that the MTEFAR field in ID_AA64PFR2_EL1
-is set to 1 when running with mte=on and cleared with mte=off.
-- Verified in user mode test that SEGV_MTESERR faults report the full
-tagged address as expected.
-
-I didn’t include these checks as formal tests since the functionality is
-simple, but I can add them in follow-up versions if reviewers prefer.
-
-Follow-up patches will implement the remaining MTE4 subfeatures listed
-above.
-
-Thanks,
-Gabriel Brookman
----
- target/arm/cpu.c       | 4 +++-
- target/arm/tcg/cpu64.c | 4 ++++
- 2 files changed, 7 insertions(+), 1 deletion(-)
-
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 39292fb9bc..804e70b235 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2020,6 +2020,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-          */
-         if (tcg_enabled() && cpu->tag_memory == NULL) {
-             FIELD_DP64_IDREG(isar, ID_AA64PFR1, MTE, 1);
-+            FIELD_DP64_IDREG(isar, ID_AA64PFR2, MTEFAR, 0);
-         }
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index c484bcd4e2..1e6f469538 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -87,11 +87,11 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_UART11]    =  0x14C33A00,
+     [ASPEED_DEV_UART12]    =  0x14C33B00,
+     [ASPEED_DEV_WDT]       =  0x14C37000,
++    [ASPEED_DEV_LTPI]      =  0x30000000,
+     [ASPEED_DEV_PCIE_MMIO0] = 0x60000000,
+     [ASPEED_DEV_PCIE_MMIO1] = 0x80000000,
+     [ASPEED_DEV_PCIE_MMIO2] = 0xA0000000,
+     [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
+-    [ASPEED_DEV_LTPI]      =  0x300000000,
+     [ASPEED_DEV_SDRAM]     =  0x400000000,
+ };
  
-         /*
-@@ -2027,7 +2028,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-          * enabled on the guest (i.e mte=off), clear guest's MTE bits."
-          */
-         if (kvm_enabled() && !cpu->kvm_mte) {
--                FIELD_DP64_IDREG(isar, ID_AA64PFR1, MTE, 0);
-+            FIELD_DP64_IDREG(isar, ID_AA64PFR1, MTE, 0);
-+            FIELD_DP64_IDREG(isar, ID_AA64PFR2, MTEFAR, 0);
-         }
- #endif
-     }
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 6871956382..27f0b43256 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1283,6 +1283,10 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64PFR1, GCS, 1);       /* FEAT_GCS */
-     SET_IDREG(isar, ID_AA64PFR1, t);
- 
-+    t = GET_IDREG(isar, ID_AA64PFR2);
-+    t = FIELD_DP64(t, ID_AA64PFR2, MTEFAR, 1);    /* FEAT_MTE_TAGGED_FAR */
-+    SET_IDREG(isar, ID_AA64PFR2, t);
-+
-     t = GET_IDREG(isar, ID_AA64MMFR0);
-     t = FIELD_DP64(t, ID_AA64MMFR0, PARANGE, 6); /* FEAT_LPA: 52 bits */
-     t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN16, 1);   /* 16k pages supported */
-
----
-base-commit: e9c692eabbbb7f395347605a6ef33a32d398ea25
-change-id: 20251104-feat-mte-tagged-far-c8d302a888ad
-
-Best regards,
 -- 
-Gabriel Brookman <brookmangabriel@gmail.com>
+2.51.2.1006.ga50a493c49-goog
 
 

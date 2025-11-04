@@ -4,113 +4,181 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DB35CCF9E3
-	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 11:06:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86354CCFA04
+	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 12:27:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGErA-00082e-0N; Tue, 04 Nov 2025 06:05:45 -0500
+	id 1vGG7x-0003JD-Pm; Tue, 04 Nov 2025 07:27:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vGEr8-00082N-Fj
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 06:05:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vGG7u-0003Iw-Of; Tue, 04 Nov 2025 07:27:07 -0500
+Received: from mail-centralusazlp170100005.outbound.protection.outlook.com
+ ([2a01:111:f403:c111::5] helo=DM1PR04CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vGEr6-0003PK-3u
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 06:05:42 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762254339;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=E7GjGt6L+B5t4neiSwCTkQBTpy3wFSKYPXCWBla0q8U=;
- b=U1JmfE6bW5XeLj16f+iTW/N6PgbXlgXf0KgoTl+ClznwcbIHO/XVsZ+VQzAZj3XCmBi4Sb
- kTOC5M4SSwaZKYqttTaXrH5UHq3bukgeXOBSQ8oPbZoIRlH5CYtr6C64rMg4/9+P3Danb+
- LbXRn+Qex1tW+/255MZWVj2XGNCPKoQ=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-433-bh4B73BRPp-WRWYMToIFXg-1; Tue, 04 Nov 2025 06:05:38 -0500
-X-MC-Unique: bh4B73BRPp-WRWYMToIFXg-1
-X-Mimecast-MFC-AGG-ID: bh4B73BRPp-WRWYMToIFXg_1762254337
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-477563e531cso4964115e9.1
- for <qemu-arm@nongnu.org>; Tue, 04 Nov 2025 03:05:37 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762254337; x=1762859137;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=E7GjGt6L+B5t4neiSwCTkQBTpy3wFSKYPXCWBla0q8U=;
- b=nZywlFKgZtchVus3dykxTqyj6MnLGNR9pMu2BoQUI5Ro1T4ygz23bap3nsRarALf+C
- SnLYldT2eGEixBAxFTnxuNcP8Swbd1r6mWgFpALnUR/WBgh3AEp2Hkhn4V3Av2Uwa4sU
- 55K5XuNw64fIlGqkPPfhAuhaC7f0Yp7NB80QnN7Kx8CjfDFC5C1brXAeXKBb548z+L0p
- M70vX1w1T3yn1MXDM3xF2UX7K50u93IVGSiGfWnod1Mud7c7xABGtdUBvuq3j/SIqsdj
- hg6rGVQkCLNIJVtRUAs8+3JwirHIGgqy3n0hijVlysT0BK0UXvFzhDfhGqZYG+MvoDwR
- nPzA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUbx5X/hXAC/SgDUvWPtTGs8Wf4oFLbSMwyEx7/EEQKE/UoDDLtNJbDQpWY3KJ30fsWVkq96BeHOA==@nongnu.org
-X-Gm-Message-State: AOJu0YwdYzAosVOs8Ts8oVIcqkCCoq4ktngkkQWyvwszuzdRM0PNsYMT
- lqbft5BvjqVD3dkHWw4axfllp9dasyReWbVf7oYjy3PRa5dK4Dq18UKZLyDf4D1qc//ybVKwFq9
- Z8xkmLBqqOjjKhZnxjWj+ZcOyJlvXrGJAOK/AaSheaK3U5g63kmR2wg==
-X-Gm-Gg: ASbGncsKeRe4fxWtuYwzllmFQvsjdtnrcBmqe7F0JdlH44VE6ctRAPttSFs0wWztcvw
- VFDupfmESBMBs1AXua5B2QZwteTumiVOechtfqNvlo/I2TacMgtfI2C6LDMm+Vyk4O9d+AGuWXE
- 9UAt7MwVYM+nqBoinO9E845zkxEJrwhW2gJ+cTT+eerGBrjecR9zua3L55yXm5V5aJGmh7S/th9
- rNzkvIpHDlM5Jz3j+dMWSQtfHdvzMltzyj3OFn7XXTLz3V5QFFyGv1s8n9XvwCIYqOxvrRI18cO
- EgL7Qrt2NDAk8k4YgZSQQVGlADic7OsrnS/CglfFbEUbgOeeLOE9BiUYHeVa4uEj5urCLFFf7jT
- 6fDuuA7DeR0EcZJkVMv6MzCkbWmOndYVZkPP4EZB8iWAv/g==
-X-Received: by 2002:a05:600c:4ece:b0:46e:4586:57e4 with SMTP id
- 5b1f17b1804b1-4773087b2dbmr136719225e9.24.1762254336592; 
- Tue, 04 Nov 2025 03:05:36 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF9UFDNwNgiRpYBVWhh17JDsY3zMuRSW4YoXaJbAdGlDr2U5HdOWTziROmkW+zfZeybAcsecQ==
-X-Received: by 2002:a05:600c:4ece:b0:46e:4586:57e4 with SMTP id
- 5b1f17b1804b1-4773087b2dbmr136718765e9.24.1762254336032; 
- Tue, 04 Nov 2025 03:05:36 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429dc1f5bc0sm4109155f8f.29.2025.11.04.03.05.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Nov 2025 03:05:35 -0800 (PST)
-Message-ID: <987614d8-de6b-4cb5-b5a8-1723e24502f3@redhat.com>
-Date: Tue, 4 Nov 2025 12:05:34 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 13/32] hw/arm/smmuv3-accel: Add nested vSTE
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vGG7r-0002VD-FL; Tue, 04 Nov 2025 07:27:06 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=BruWcFJXYQA1uU5yjrJSbFWLTqRajoUWhYf+Ikyrrav+o2XEIXYYlosinTTl4MCMFECegcfU/ajWW9I49N1VezKmhsu5TUl0r8Xj4c8SEgwxyUFUc10K0KMKjSXYAGFGps2qt5FvgWjtBnenL3dOOoJi7arzx2KKS+qd1nR0CKIH8O9dchKW5pcYtghBPDiUROZMQiPtPmapfwwlaR0cc+aY4vReL4DecZk0Kds+cvVaNd/Q0aMHDimkL3Fd3PE5oLv6Wu1xI4+8Pb6BLZiNTpw481+Ikso0OOr5WhlpJScmi7le/SeBao1HxikmbfO3qROsYoMarOWEicYGfWDV1w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=CAV9pWnYPiJVPZzqKuomCR/vzjf47BnKLj47DZzZBH4=;
+ b=CPlrwiOzxYlSiUqqU06ryiB2gkphSr44ZSYVBKgxEC+jSmc7VwHbN0CGp9kLYEeV4RO795NrCRxb/ngTbmrA2QKpSFHwGn+038TMWSoBU+8XyIQ6wTLVV+lxnOlEWzIdRoRlSDU2jkEVDy9CFJXfZbIT5Xcxb0PXxVKunMddsdLrlf8aIdsAR+8hpWVZUvfNTQX55SopEoLzlx86MetoQ3HzYMt963roSX0K2PK92j6X5uORaCZlTLsoNZsJ2cGGIZg6CMjwm85AKCxZcUjQ04IO5lyR48Z5UPlVPp6P8UiJFyBTzh5HuyFdh74nXC1W2A6PRXIglSD9Y+maLZY6qw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=CAV9pWnYPiJVPZzqKuomCR/vzjf47BnKLj47DZzZBH4=;
+ b=hvXixieGCGAZOpkvUD8g8zKH9OfLFlKv5vvUINAvIUXKXYxQpAi2cMKCL/FHdqe3e8bmSZdRk2sqd2lf7Tq6ii/L/ZQUA2UDcrmXO8UvJiKP76gjZbSdoyLRo0kSC2SQC0R+IxG3BHomX5kpN9mUMbsf0JFbj3KoKpjymkrGeh6h550EWWOQJgIdnplSJ1UBZsTrPBzctnN7q1MSOADGtTX3Q2y+dT93JVe8II0uVcq2FX/qu75k22WEHO9WPzP5V8mvYbBpMaeapAmvIojOaOUV+0kSuOTgEIMKMGxoagqiVGsrKqFToanqkI8pqJUKEoZ6Euge++rFcDqFmmGeAw==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by CH3PR12MB8283.namprd12.prod.outlook.com (2603:10b6:610:12a::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.16; Tue, 4 Nov
+ 2025 12:26:56 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::e8c:e992:7287:cb06]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::e8c:e992:7287:cb06%5]) with mapi id 15.20.9275.015; Tue, 4 Nov 2025
+ 12:26:56 +0000
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Jason Gunthorpe
+ <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>, Nathan
+ Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, "wangzhou1@hisilicon.com"
+ <wangzhou1@hisilicon.com>, "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>, 
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, "yi.l.liu@intel.com"
+ <yi.l.liu@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>
+Subject: RE: [PATCH v5 13/32] hw/arm/smmuv3-accel: Add nested vSTE
  install/uninstall support
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
- mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
- zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
- kjaju@nvidia.com
+Thread-Topic: [PATCH v5 13/32] hw/arm/smmuv3-accel: Add nested vSTE
+ install/uninstall support
+Thread-Index: AQHcTXrxWekDcEWtlEyXTKUl3fhckbTiZ5yQ
+Date: Tue, 4 Nov 2025 12:26:56 +0000
+Message-ID: <CH3PR12MB7548B864AF133DEFFCFCBB2BABC4A@CH3PR12MB7548.namprd12.prod.outlook.com>
 References: <20251031105005.24618-1-skolothumtho@nvidia.com>
  <20251031105005.24618-14-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251031105005.24618-14-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Mt5omebBA7wbYJxv7k-bqhtqus8_awyWsVWD-iti338_1762254337
-X-Mimecast-Originator: redhat.com
+ <987614d8-de6b-4cb5-b5a8-1723e24502f3@redhat.com>
+In-Reply-To: <987614d8-de6b-4cb5-b5a8-1723e24502f3@redhat.com>
+Accept-Language: en-US, en-GB
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|CH3PR12MB8283:EE_
+x-ms-office365-filtering-correlation-id: e8aa61c2-9c3c-4ac5-44ba-08de1b9d71b9
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|7416014|376014|366016|1800799024|38070700021; 
+x-microsoft-antispam-message-info: =?utf-8?B?TjJwaWR1dXBiTWN3WlhtK0orMEU1K3JCZWNlR09JZ2Y5YmJweTJTcXRrbXZJ?=
+ =?utf-8?B?bGt5M05RTFlIS3BraVo1TnhmVThRbU9iUUJjL1BCT0E4Z2FZSmM5bk90bm1E?=
+ =?utf-8?B?T0VYWmdZU25vSC82dVZYRHVmZEJGREtnOHZISGRkZFRBc1lHK2RqTzJTc2E5?=
+ =?utf-8?B?UEZmd1pEOU00eXY5OURoeSt0cXh4N1VGVHpFZzdBWmw5NHR4ZmM3Z3poWjBn?=
+ =?utf-8?B?MCtRaDBram9pT2c0RjRXeFVuUmlDOFNsTGErRXBGQ25XRWRpZm9uSFlzTGhx?=
+ =?utf-8?B?MEswanV4NUlKNUNnN3hMRXhKay9CRDNZdDVYdHU2R2JQUk5wc29INTBoU1Vt?=
+ =?utf-8?B?YnZxVDEzdWVNNXZGZ3A0blQ1WlYybWZhSThpUmxtcVAvMG5YMDBYbGg4YVdi?=
+ =?utf-8?B?ZThSWWRpNUJ3RzdscVFhR2EwRzRjTFZtQWxjdHQ5M2FPeGdUV0dJbE0xUE5o?=
+ =?utf-8?B?TEJveGIrRXlKODQ2MXc2VVgvdkhTdnplVUZwVVUvcjZpcXlKUU5RY3hhdnVx?=
+ =?utf-8?B?SThaZHpDb0E0SGxpTENpWlY3akZySEljQlQ1enhWUVJLSHQzTmNEN1NTblc5?=
+ =?utf-8?B?Z0laZm42ak1MOE16U0ZTU0JQSWpQZXlsd2FQU0VBbEVWcEJXV1NzMVZHcnRC?=
+ =?utf-8?B?eGJIbGtRR1NrT2tFdzJPS2ZqbmtJRkdQZzVQNUUwTnFWQmg0QXBTNVdOZll2?=
+ =?utf-8?B?ZEQ2bk0wbVdtSEtCOWFtYnJTKzFYR05qeC9GTHA5TUpaUldPNzJxR0YxcVB6?=
+ =?utf-8?B?V2JwYzA2cDFIcnpoL2ExbnEyc0FRSlVMbEdjWnRGaXRBSzBxelA5aEVwUlVR?=
+ =?utf-8?B?R0NVNVRiTS9JOHFnTnhneFNLb2xTNnZITlpqL3owYjE5R1hvNWV6azRGVkRO?=
+ =?utf-8?B?YlpKajBYUzdyTFlHNDl2dGUxbkR0bjBQUHpnOHNhYk4wUExjL3FWNUVYbERp?=
+ =?utf-8?B?YVBTMDVyUTVla0VhQndxNmpmdWFyK1FURGQwQ3FmZnpUcmEwRk0xblpWRXRF?=
+ =?utf-8?B?THVzWEdtcm9HSWpRYmlGcitZVUlaR0RKN2s4RFhrVjljOS9rcXJtNFdjaGdS?=
+ =?utf-8?B?UjVPbm9XQWpxeVNJUUtpTUlmSGNJSHgybStFbTU5SkNFeS9mTVhOMXNEdlE2?=
+ =?utf-8?B?UVVZMWsva0N2L0hGTU1HeWZhTHVVbEkvTHFSNk5CZDFlZzlYeUNNdmpYc2NM?=
+ =?utf-8?B?UmtrdzR2YmtKZElkcWtiSkNFOGFMZnRDMzBvQ1BsTCsvdlRYS2pTZy9IMzRQ?=
+ =?utf-8?B?ZXFTM1BmbVVDMVFiNW40WkIyU2tCSW5ZSnlRdUV5cGNob3Myb1NVK2xUUVFp?=
+ =?utf-8?B?SzI5U0RHTm52MWRDK0RKcVphTlZ0ckFUVWJNTkRvZS9nV0piY05Ndll1c000?=
+ =?utf-8?B?cjRHcHMyZzVFRE5obVNhY2VScDZyQVRVQjBGZEhJQVh2RU9ZOWl3RzFnSnpJ?=
+ =?utf-8?B?WFAvNEJtLy9KeDMzMG0xaEY4L1Y5alk0VHpOWk14ODd4ZnhVTGlDSUJCY1hG?=
+ =?utf-8?B?WU1DOVYvTGt4NmNTaGkveHYrR1ZPbm40RitORmVlK09nTEt4bElsbHNPanZt?=
+ =?utf-8?B?TTRzUS9JWS96OGdkYzQwRmFSZWtHS1hUeGhranRRUTZ6QVp5aHczeXc3MTY1?=
+ =?utf-8?B?TFd6Q3A4TDczODNJOEptSlNtK0pqMXMrZkZxZmxuL1lPbFN0bmE0TVBhNkkw?=
+ =?utf-8?B?bmFOZ0lrN3ptTjd0NHR1S2xqNkxxa0ZieitzclU4SzAxdkpHMkhtc1JONldR?=
+ =?utf-8?B?ZUlQbzZLemN2Rll1QzZvNDNqWEVIZFZHeWZucWNEN2cySGU3cVBtTUtYTEt3?=
+ =?utf-8?B?UjBUUGR3a1h1UUt3b0hTaXdTUXZ5dVNzY2JLSnFQcWI5cHh2K1JsRGlTNTBh?=
+ =?utf-8?B?ZThKM3Zzby9ockxjTG55Q0xjY1ZkemtyV2FrdU8xam1UQWxtMDY0TWFuNXFU?=
+ =?utf-8?B?RGRkWVk3WkRSeERIQnlDQUVDK1RaZTR4dWt4eUlaSTE4aEdUYWgyaEFPSkRV?=
+ =?utf-8?B?TGltUWVEbHlaQW5Td1N6WGxnVWxKd3N2VFVyalpBdUpIL1VDTXI4Yit5QnJW?=
+ =?utf-8?Q?vUQnl5?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(366016)(1800799024)(38070700021); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?aTlEdEExelY5YS93QVNsL0xHaG1UbTViYWc4Q3I3NHdLV1EyVWYvRGxKZkNW?=
+ =?utf-8?B?SjJTeVZPWG5jWlM3SmJJaTliYUFmcDR3R2V1N0RIYmlVTk1sanhPaVE4UDlW?=
+ =?utf-8?B?N0NoVm92VTVtSHNzcDdTODJGWHBkQ2UzTEdXUmtEa2VxQmtTYlIwQ1hvc0Z2?=
+ =?utf-8?B?aVpFdUV0REdpNHpPNmE4Zi9EZGEwRlFKTE1yeGdnNFdNL2Uzb04yZjYra3FG?=
+ =?utf-8?B?TDQ4dm1DU0FNb3NITVFRNkxGMFRiOFNtKzNNaFFsMUwzbTZMWGhFMUtjZkhU?=
+ =?utf-8?B?eTRLUXUzV1dTWDJVdFJQVCt5ZW16c0o5UDlucDhiK1F1aVhOQnpsdU04QmRx?=
+ =?utf-8?B?OGlObXJLY01jN1NiS2pWMnovZGhmSk82VEd6eUk3RG10SHF5OWFuVEd5V2hC?=
+ =?utf-8?B?MDVLdUdTeEl0YkdheHVHejNKTGlyZytUNmNhZ0pML2YrK25QTHV5ZU5xTXJ4?=
+ =?utf-8?B?ME53UjlBa1BJblovcEdETXlrZ1JCZWJEeWlpSnl4dDBCcDJldVVDWWtZaWJs?=
+ =?utf-8?B?bXhrdVZ2NzV5Z3I5NkVCZm16YmE0OGRVZ3BXcjF6dDNad0xLY1EvRkJxWGo1?=
+ =?utf-8?B?YjBvb1BhbGdiQlZoMzluS29Wc2g1YWk3czhDODAvWHFJckZRUjU0YXVBaDFE?=
+ =?utf-8?B?cytNMm9LRjYrS2pGdFRrbzk2QU5aejZXV3UrOStjN3pEcytCZWxmS1hNb3RQ?=
+ =?utf-8?B?TFg2TENhQ1NWYzN4b21kbG1rU2VEVWdLMG8xcU5GQi9FUWNublNpeG1odVg1?=
+ =?utf-8?B?YnZEK3MyOVBodGJ5RkZIY2w1dGN0RkZ1U0k5azJWdit0V1NUd09yd08zNFIw?=
+ =?utf-8?B?bjg2dWQ5TzR5NjdnT2Y2TEFFb01oSjBCVDdDK09vSUc1VmRUYmtNd2Y4T2V5?=
+ =?utf-8?B?NWVyZkhmNjMvS0R2ZEVFSThTencyRkZGam1jamdtbHE0bXc3UUpxNTF3dzZ3?=
+ =?utf-8?B?bWI2K2FXd0t2bzNIekZaTUFUM0UybGhVZXB4S0k0VmZKcE9yZnAvYktrQ09W?=
+ =?utf-8?B?cDg3M3ZRakhDTGpBdzdFSlJsWkpCb0szOUZEU1pBNE9CUHFNV2tHV0Z3ZUJS?=
+ =?utf-8?B?TEc2TDhoQWs5WnR1aURNYW4ySU9TaGRITFhZbzM1bGFCcXJvZ3pRM2Y1RUdS?=
+ =?utf-8?B?ZkRWM3lzQzQwdlBwNXBkL0c5VndiU2p2S05scXNFQy9BZFpuejB1WkZySXNM?=
+ =?utf-8?B?L3ZIeERBQ0hCRFNxV3drbVdaRC9LTEJaVWI0aHdFQndOalcybDJLekxURmVk?=
+ =?utf-8?B?bTRvdkJLL2I4VjZ1NHh0enZPK2t6WkFBaU91T2h5L1RWMjJ1cXhwdElMR3Ni?=
+ =?utf-8?B?MjhpZk85SUVWYks1WFZmOGF5Q3ZTUXJWOHVKMjJjVkdjL0l3TmxBTlJUUVI5?=
+ =?utf-8?B?MGtTS3hHeURhSzFDbHU3KzlnWUwza01zTndiTk05V0VtK2tRLzZzWldOS2Ft?=
+ =?utf-8?B?S0pWZ2tvaVpsUXY0aWtsZFh2ZHBSU21rdnhSTkwrQVdJQkVBOVNUcUlJblhW?=
+ =?utf-8?B?c3F4VTVWWW1oVXlsdVJLaTNMSHI3dXp4ZXVOMm82VyttQlV5YnNIdDg0K25R?=
+ =?utf-8?B?T0MzUjZ5bWR2c3BHemZ4Zko4SUpBWTlFNU9JUGFqdGVjaEtlTVg5eHhjTlhl?=
+ =?utf-8?B?Lytac3k0dDltcncwQmlBZ0xPRnRlSWFuMmFXTzR6RWVWWUtFSUdTNThRbEc1?=
+ =?utf-8?B?Z3ZoNGxKakJWajhUbWdCVGhlMmxzUXVFb3I0ajBoS3J4R1lhTG93MGdzVndX?=
+ =?utf-8?B?b25ZYytvZG1pQmFzYUtEYTgzclQvZHVkaS8zK2xWeUs0ZGxta1pKaWRPMkht?=
+ =?utf-8?B?SW0wd2VtUWRhU1dRc0E4SW1ZQk1DRFZ1WjBsaTV0LytEVXR4RW1UbmptSWdm?=
+ =?utf-8?B?dFFVWk5Vc2Y0c0FaaFpjdXFUNC9BUlRiUlVLdXVwR0NYWWF3aWRmMjNwMzJo?=
+ =?utf-8?B?WjI2QkVYMVJFcGFiVDllZythcTgvazUzR2tpYkVxdFRZNllZdmtxS0FUM2RK?=
+ =?utf-8?B?V2kxYlhhelJPNHZKamNQOXBnTzNXQVRyaHUwbjQ1VFhxTTF5am1hdXBYaDNu?=
+ =?utf-8?B?NUJiNlgxcEMrb1FKMkxUSFFKMzZTaWRERG56eEZhT0FRMDk0elRxd0NNMVNW?=
+ =?utf-8?Q?FxLekWCOw3luywi4DQBObEQaR?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e8aa61c2-9c3c-4ac5-44ba-08de1b9d71b9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Nov 2025 12:26:56.4427 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 9mHnsOw+gqD5Sz953e1TrzfmRyrTgm7P1krpikd8dTwNdYHhxC8EcArcgB8lzO01xe1g8EcRF7W0oi2voWERkg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB8283
+Received-SPF: permerror client-ip=2a01:111:f403:c111::5;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=DM1PR04CU001.outbound.protection.outlook.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.788,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,434 +191,183 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
-
-On 10/31/25 11:49 AM, Shameer Kolothum wrote:
-> From: Nicolin Chen <nicolinc@nvidia.com>
->
-> A device placed behind a vSMMU instance must have corresponding vSTEs
-> (bypass, abort, or translate) installed. The bypass and abort proxy nested
-> HWPTs are pre-allocated.
->
-> For translat HWPT, a vDEVICE object is allocated and associated with the
-> vIOMMU for each guest device. This allows the host kernel to establish a
-> virtual SID to physical SID mapping, which is required for handling
-> invalidations and event reporting.
->
-> An translate HWPT is allocated based on the guest STE configuration and
-> attached to the device when the guest issues SMMU_CMD_CFGI_STE or
-> SMMU_CMD_CFGI_STE_RANGE, provided the STE enables S1 translation.
->
-> If the guest STE is invalid or S1 translation is disabled, the device is
-> attached to one of the pre-allocated ABORT or BYPASS HWPTs instead.
->
-> While at it, export both smmu_find_ste() and smmuv3_flush_config() for
-> use here.
->
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  hw/arm/smmuv3-accel.c    | 193 +++++++++++++++++++++++++++++++++++++++
->  hw/arm/smmuv3-accel.h    |  23 +++++
->  hw/arm/smmuv3-internal.h |  20 ++++
->  hw/arm/smmuv3.c          |  18 +++-
->  hw/arm/trace-events      |   2 +
->  5 files changed, 253 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index d4d65299a8..c74e95a0ea 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -28,6 +28,191 @@ MemoryRegion root;
->  MemoryRegion sysmem;
->  static AddressSpace *shared_as_sysmem;
->  
-> +static bool
-> +smmuv3_accel_alloc_vdev(SMMUv3AccelDevice *accel_dev, int sid, Error **errp)
-> +{
-> +    SMMUViommu *vsmmu = accel_dev->vsmmu;
-> +    IOMMUFDVdev *vdev;
-> +    uint32_t vdevice_id;
-> +
-> +    if (!accel_dev->idev || accel_dev->vdev) {
-> +        return true;
-> +    }
-> +
-> +    if (!iommufd_backend_alloc_vdev(vsmmu->iommufd, accel_dev->idev->devid,
-> +                                    vsmmu->viommu.viommu_id, sid,
-> +                                    &vdevice_id, errp)) {
-> +            return false;
-> +    }
-> +    if (!host_iommu_device_iommufd_attach_hwpt(accel_dev->idev,
-> +                                               vsmmu->bypass_hwpt_id, errp)) {
-> +        iommufd_backend_free_id(vsmmu->iommufd, vdevice_id);
-> +        return false;
-> +    }
-> +
-> +    vdev = g_new(IOMMUFDVdev, 1);
-> +    vdev->vdevice_id = vdevice_id;
-> +    vdev->virt_id = sid;
-> +    accel_dev->vdev = vdev;
-> +    return true;
-> +}
-> +
-> +static bool
-> +smmuv3_accel_dev_uninstall_nested_ste(SMMUv3AccelDevice *accel_dev, bool abort,
-> +                                      Error **errp)+{
-> +    HostIOMMUDeviceIOMMUFD *idev = accel_dev->idev;
-> +    SMMUS1Hwpt *s1_hwpt = accel_dev->s1_hwpt;
-> +    uint32_t hwpt_id;
-> +
-> +    if (!s1_hwpt || !accel_dev->vsmmu) {
-> +        return true;
-> +    }
-> +
-> +    if (abort) {
-> +        hwpt_id = accel_dev->vsmmu->abort_hwpt_id;
-> +    } else {
-> +        hwpt_id = accel_dev->vsmmu->bypass_hwpt_id;
-> +    }
-> +
-> +    if (!host_iommu_device_iommufd_attach_hwpt(idev, hwpt_id, errp)) {
-> +        return false;
-> +    }
-> +    trace_smmuv3_accel_uninstall_nested_ste(smmu_get_sid(&accel_dev->sdev),
-> +                                            abort ? "abort" : "bypass",
-> +                                            hwpt_id);
-> +
-> +    iommufd_backend_free_id(s1_hwpt->iommufd, s1_hwpt->hwpt_id);
-> +    accel_dev->s1_hwpt = NULL;
-> +    g_free(s1_hwpt);
-> +    return true;
-> +}
-> +
-> +static bool
-> +smmuv3_accel_dev_install_nested_ste(SMMUv3AccelDevice *accel_dev,
-> +                                    uint32_t data_type, uint32_t data_len,
-> +                                    void *data, Error **errp)
-the name is very close to the caller function, ie.
-smmuv3_accel_install_nested_ste which also takes a sdev.
-I would rename to smmuv3_accel_install_hwpt() or something alike
-> +{
-> +    SMMUViommu *vsmmu = accel_dev->vsmmu;
-> +    SMMUS1Hwpt *s1_hwpt = accel_dev->s1_hwpt;
-> +    HostIOMMUDeviceIOMMUFD *idev = accel_dev->idev;
-> +    uint32_t flags = 0;
-> +
-> +    if (!idev || !vsmmu) {
-> +        error_setg(errp, "Device 0x%x has no associated IOMMU dev or vIOMMU",
-> +                   smmu_get_sid(&accel_dev->sdev));
-> +        return false;
-> +    }
-> +
-> +    if (s1_hwpt) {
-> +        if (!smmuv3_accel_dev_uninstall_nested_ste(accel_dev, true, errp)) {
-> +            return false;
-> +        }
-> +    }
-> +
-> +    s1_hwpt = g_new0(SMMUS1Hwpt, 1);
-> +    s1_hwpt->iommufd = idev->iommufd;
-> +    if (!iommufd_backend_alloc_hwpt(idev->iommufd, idev->devid,
-> +                                    vsmmu->viommu.viommu_id, flags,
-> +                                    data_type, data_len, data,
-> +                                    &s1_hwpt->hwpt_id, errp)) {
-> +        return false;
-> +    }
-> +
-> +    if (!host_iommu_device_iommufd_attach_hwpt(idev, s1_hwpt->hwpt_id, errp)) {
-> +        iommufd_backend_free_id(idev->iommufd, s1_hwpt->hwpt_id);
-> +        return false;
-> +    }
-> +    accel_dev->s1_hwpt = s1_hwpt;
-> +    return true;
-> +}
-> +
-> +bool
-> +smmuv3_accel_install_nested_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
-> +                                Error **errp)
-> +{
-> +    SMMUv3AccelDevice *accel_dev;
-> +    SMMUEventInfo event = {.type = SMMU_EVT_NONE, .sid = sid,
-> +                           .inval_ste_allowed = true};
-> +    struct iommu_hwpt_arm_smmuv3 nested_data = {};
-> +    uint64_t ste_0, ste_1;
-> +    uint32_t config;
-> +    STE ste;
-> +    int ret;
-> +
-> +    if (!s->accel) {
-don't you want to check !s->vsmmu as well done in
-smmuv3_accel_install_nested_ste_range()
-> +        return true;
-> +    }
-> +
-> +    accel_dev = container_of(sdev, SMMUv3AccelDevice, sdev);
-> +    if (!accel_dev->vsmmu) {
-> +        return true;
-> +    }
-> +
-> +    if (!smmuv3_accel_alloc_vdev(accel_dev, sid, errp)) {
-> +        return false;
-> +    }
-> +
-> +    ret = smmu_find_ste(sdev->smmu, sid, &ste, &event);
-> +    if (ret) {
-> +        error_setg(errp, "Failed to find STE for Device 0x%x", sid);
-> +        return true;
-returning true while setting errp looks wrong to me.
-> +    }
-> +
-> +    config = STE_CONFIG(&ste);
-> +    if (!STE_VALID(&ste) || !STE_CFG_S1_ENABLED(config)) {
-> +        if (!smmuv3_accel_dev_uninstall_nested_ste(accel_dev,
-> +                                                   STE_CFG_ABORT(config),
-> +                                                   errp)) {
-> +            return false;
-> +        }
-> +        smmuv3_flush_config(sdev);
-> +        return true;
-> +    }
-> +
-> +    ste_0 = (uint64_t)ste.word[0] | (uint64_t)ste.word[1] << 32;
-> +    ste_1 = (uint64_t)ste.word[2] | (uint64_t)ste.word[3] << 32;
-> +    nested_data.ste[0] = cpu_to_le64(ste_0 & STE0_MASK);
-> +    nested_data.ste[1] = cpu_to_le64(ste_1 & STE1_MASK);
-> +
-> +    if (!smmuv3_accel_dev_install_nested_ste(accel_dev,
-> +                                             IOMMU_HWPT_DATA_ARM_SMMUV3,
-> +                                             sizeof(nested_data),
-> +                                             &nested_data, errp)) {
-> +        error_append_hint(errp, "Unable to install sid=0x%x nested STE="
-> +                          "0x%"PRIx64":=0x%"PRIx64"", sid,
-nit: why ":=" between both 64b?
-> +                          (uint64_t)le64_to_cpu(nested_data.ste[1]),
-> +                          (uint64_t)le64_to_cpu(nested_data.ste[0]));
-> +        return false;
-in case of various failure cases, do we need to free the vdev?
-> +    }
-> +    trace_smmuv3_accel_install_nested_ste(sid, nested_data.ste[1],
-> +                                          nested_data.ste[0]);
-> +    return true;
-> +}
-> +
-> +bool smmuv3_accel_install_nested_ste_range(SMMUv3State *s, SMMUSIDRange *range,
-> +                                           Error **errp)
-> +{
-> +    SMMUv3AccelState *s_accel = s->s_accel;
-> +    SMMUv3AccelDevice *accel_dev;
-> +
-> +    if (!s_accel || !s_accel->vsmmu) {
-> +        return true;
-> +    }
-> +
-> +    QLIST_FOREACH(accel_dev, &s_accel->vsmmu->device_list, next) {
-> +        uint32_t sid = smmu_get_sid(&accel_dev->sdev);
-> +
-> +        if (sid >= range->start && sid <= range->end) {
-> +            if (!smmuv3_accel_install_nested_ste(s, &accel_dev->sdev,
-> +                                                 sid, errp)) {
-> +                return false;
-> +            }
-> +        }
-> +    }
-> +    return true;
-> +}
-> +
->  static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
->                                                 PCIBus *bus, int devfn)
->  {
-> @@ -154,6 +339,7 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
->      SMMUv3State *s = ARM_SMMUV3(bs);
->      SMMUPciBus *sbus = g_hash_table_lookup(bs->smmu_pcibus_by_busptr, bus);
->      SMMUv3AccelDevice *accel_dev;
-> +    IOMMUFDVdev *vdev;
->      SMMUViommu *vsmmu;
->      SMMUDevice *sdev;
->      uint16_t sid;
-> @@ -182,6 +368,13 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
->      trace_smmuv3_accel_unset_iommu_device(devfn, sid);
->  
->      vsmmu = s->s_accel->vsmmu;
-> +    vdev = accel_dev->vdev;
-> +    if (vdev) {
-> +        iommufd_backend_free_id(vsmmu->iommufd, vdev->vdevice_id);
-> +        g_free(vdev);
-> +        accel_dev->vdev = NULL;
-> +    }
-> +
->      if (QLIST_EMPTY(&vsmmu->device_list)) {
->          iommufd_backend_free_id(vsmmu->iommufd, vsmmu->bypass_hwpt_id);
->          iommufd_backend_free_id(vsmmu->iommufd, vsmmu->abort_hwpt_id);
-> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
-> index d81f90c32c..73b44cd7be 100644
-> --- a/hw/arm/smmuv3-accel.h
-> +++ b/hw/arm/smmuv3-accel.h
-> @@ -27,9 +27,16 @@ typedef struct SMMUViommu {
->      QLIST_HEAD(, SMMUv3AccelDevice) device_list;
->  } SMMUViommu;
->  
-> +typedef struct SMMUS1Hwpt {
-> +    IOMMUFDBackend *iommufd;
-> +    uint32_t hwpt_id;
-> +} SMMUS1Hwpt;
-> +
->  typedef struct SMMUv3AccelDevice {
->      SMMUDevice sdev;
->      HostIOMMUDeviceIOMMUFD *idev;
-> +    SMMUS1Hwpt *s1_hwpt;
-> +    IOMMUFDVdev *vdev;
->      SMMUViommu *vsmmu;
->      QLIST_ENTRY(SMMUv3AccelDevice) next;
->  } SMMUv3AccelDevice;
-> @@ -40,10 +47,26 @@ typedef struct SMMUv3AccelState {
->  
->  #ifdef CONFIG_ARM_SMMUV3_ACCEL
->  void smmuv3_accel_init(SMMUv3State *s);
-> +bool smmuv3_accel_install_nested_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
-> +                                     Error **errp);
-> +bool smmuv3_accel_install_nested_ste_range(SMMUv3State *s, SMMUSIDRange *range,
-> +                                           Error **errp);
->  #else
->  static inline void smmuv3_accel_init(SMMUv3State *s)
->  {
->  }
-> +static inline bool
-> +smmuv3_accel_install_nested_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
-> +                                Error **errp)
-> +{
-> +    return true;
-> +}
-> +static inline bool
-> +smmuv3_accel_install_nested_ste_range(SMMUv3State *s, SMMUSIDRange *range,
-> +                                      Error **errp)
-> +{
-> +    return true;
-> +}
->  #endif
->  
->  #endif /* HW_ARM_SMMUV3_ACCEL_H */
-> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> index 03d86cfc5c..5fd88b4257 100644
-> --- a/hw/arm/smmuv3-internal.h
-> +++ b/hw/arm/smmuv3-internal.h
-> @@ -547,6 +547,9 @@ typedef struct CD {
->      uint32_t word[16];
->  } CD;
->  
-> +int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste, SMMUEventInfo *event);
-> +void smmuv3_flush_config(SMMUDevice *sdev);
-> +
->  /* STE fields */
->  
->  #define STE_VALID(x)   extract32((x)->word[0], 0, 1)
-> @@ -586,6 +589,23 @@ typedef struct CD {
->  #define SMMU_STE_VALID      (1ULL << 0)
->  #define SMMU_STE_CFG_BYPASS (1ULL << 3)
->  
-> +#define STE0_V       MAKE_64BIT_MASK(0, 1)
-> +#define STE0_CONFIG  MAKE_64BIT_MASK(1, 3)
-> +#define STE0_S1FMT   MAKE_64BIT_MASK(4, 2)
-> +#define STE0_CTXPTR  MAKE_64BIT_MASK(6, 50)
-> +#define STE0_S1CDMAX MAKE_64BIT_MASK(59, 5)
-> +#define STE0_MASK    (STE0_S1CDMAX | STE0_CTXPTR | STE0_S1FMT | STE0_CONFIG | \
-> +                      STE0_V)
-> +
-> +#define STE1_S1DSS    MAKE_64BIT_MASK(0, 2)
-> +#define STE1_S1CIR    MAKE_64BIT_MASK(2, 2)
-> +#define STE1_S1COR    MAKE_64BIT_MASK(4, 2)
-> +#define STE1_S1CSH    MAKE_64BIT_MASK(6, 2)
-> +#define STE1_S1STALLD MAKE_64BIT_MASK(27, 1)
-> +#define STE1_EATS     MAKE_64BIT_MASK(28, 2)
-> +#define STE1_MASK     (STE1_EATS | STE1_S1STALLD | STE1_S1CSH | STE1_S1COR | \
-> +                       STE1_S1CIR | STE1_S1DSS)
-> +
->  #define SMMU_GBPA_ABORT (1UL << 20)
->  
->  static inline int oas2bits(int oas_field)
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index ef991cb7d8..1fd8aaa0c7 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -630,8 +630,7 @@ bad_ste:
->   * Supports linear and 2-level stream table
->   * Return 0 on success, -EINVAL otherwise
->   */
-> -static int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste,
-> -                         SMMUEventInfo *event)
-> +int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste, SMMUEventInfo *event)
->  {
->      dma_addr_t addr, strtab_base;
->      uint32_t log2size;
-> @@ -900,7 +899,7 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event)
->      return cfg;
->  }
->  
-> -static void smmuv3_flush_config(SMMUDevice *sdev)
-> +void smmuv3_flush_config(SMMUDevice *sdev)
->  {
->      SMMUv3State *s = sdev->smmu;
->      SMMUState *bc = &s->smmu_state;
-> @@ -1330,6 +1329,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->          {
->              uint32_t sid = CMD_SID(&cmd);
->              SMMUDevice *sdev = smmu_find_sdev(bs, sid);
-> +            Error *local_err = NULL;
->  
->              if (CMD_SSEC(&cmd)) {
->                  cmd_error = SMMU_CERROR_ILL;
-> @@ -1341,6 +1341,11 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->              }
->  
->              trace_smmuv3_cmdq_cfgi_ste(sid);
-> +            if (!smmuv3_accel_install_nested_ste(s, sdev, sid, &local_err)) {
-> +                error_report_err(local_err);
-> +                cmd_error = SMMU_CERROR_ILL;
-> +                break;
-> +            }
->              smmuv3_flush_config(sdev);
->  
->              break;
-> @@ -1350,6 +1355,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->              uint32_t sid = CMD_SID(&cmd), mask;
->              uint8_t range = CMD_STE_RANGE(&cmd);
->              SMMUSIDRange sid_range;
-> +            Error *local_err = NULL;
->  
->              if (CMD_SSEC(&cmd)) {
->                  cmd_error = SMMU_CERROR_ILL;
-> @@ -1361,6 +1367,12 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->              sid_range.end = sid_range.start + mask;
->  
->              trace_smmuv3_cmdq_cfgi_ste_range(sid_range.start, sid_range.end);
-> +            if (!smmuv3_accel_install_nested_ste_range(s, &sid_range,
-> +                                                       &local_err)) {
-> +                error_report_err(local_err);
-> +                cmd_error = SMMU_CERROR_ILL;
-> +                break;
-> +            }
->              smmu_configs_inv_sid_range(bs, sid_range);
->              break;
->          }
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index 49c0460f30..2e0b1f8f6f 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -69,6 +69,8 @@ smmu_reset_exit(void) ""
->  #smmuv3-accel.c
->  smmuv3_accel_set_iommu_device(int devfn, uint32_t sid) "devfn=0x%x (idev devid=0x%x)"
->  smmuv3_accel_unset_iommu_device(int devfn, uint32_t sid) "devfn=0x%x (idev devid=0x%x)"
-> +smmuv3_accel_install_nested_ste(uint32_t sid, uint64_t ste_1, uint64_t ste_0) "sid=%d ste=%"PRIx64":%"PRIx64
-> +smmuv3_accel_uninstall_nested_ste(uint32_t sid, const char *ste_cfg, uint32_t hwpt_id) "sid=%d attached %s hwpt_id=%u"
->  
->  # strongarm.c
->  strongarm_uart_update_parameters(const char *label, int speed, char parity, int data_bits, int stop_bits) "%s speed=%d parity=%c data=%d stop=%d"
-Eric
-
+SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBFcmljIEF1
+Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+IFNlbnQ6IDA0IE5vdmVtYmVyIDIwMjUgMTE6
+MDYNCj4gVG86IFNoYW1lZXIgS29sb3RodW0gPHNrb2xvdGh1bXRob0BudmlkaWEuY29tPjsgcWVt
+dS0NCj4gYXJtQG5vbmdudS5vcmc7IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZw0KPiBDYzogcGV0ZXIu
+bWF5ZGVsbEBsaW5hcm8ub3JnOyBKYXNvbiBHdW50aG9ycGUgPGpnZ0BudmlkaWEuY29tPjsgTmlj
+b2xpbg0KPiBDaGVuIDxuaWNvbGluY0BudmlkaWEuY29tPjsgZGR1dGlsZUByZWRoYXQuY29tOyBi
+ZXJyYW5nZUByZWRoYXQuY29tOw0KPiBOYXRoYW4gQ2hlbiA8bmF0aGFuY0BudmlkaWEuY29tPjsg
+TWF0dCBPY2hzIDxtb2Noc0BudmlkaWEuY29tPjsNCj4gc21vc3RhZmFAZ29vZ2xlLmNvbTsgd2Fu
+Z3pob3UxQGhpc2lsaWNvbi5jb207DQo+IGppYW5na3Vua3VuQGh1YXdlaS5jb207IGpvbmF0aGFu
+LmNhbWVyb25AaHVhd2VpLmNvbTsNCj4gemhhbmdmZWkuZ2FvQGxpbmFyby5vcmc7IHpoZW56aG9u
+Zy5kdWFuQGludGVsLmNvbTsgeWkubC5saXVAaW50ZWwuY29tOw0KPiBLcmlzaG5ha2FudCBKYWp1
+IDxramFqdUBudmlkaWEuY29tPg0KPiBTdWJqZWN0OiBSZTogW1BBVENIIHY1IDEzLzMyXSBody9h
+cm0vc21tdXYzLWFjY2VsOiBBZGQgbmVzdGVkIHZTVEUNCj4gaW5zdGFsbC91bmluc3RhbGwgc3Vw
+cG9ydA0KPiANCj4gRXh0ZXJuYWwgZW1haWw6IFVzZSBjYXV0aW9uIG9wZW5pbmcgbGlua3Mgb3Ig
+YXR0YWNobWVudHMNCj4gDQo+IA0KPiBIaSBTaGFtZWVyLA0KPiANCj4gT24gMTAvMzEvMjUgMTE6
+NDkgQU0sIFNoYW1lZXIgS29sb3RodW0gd3JvdGU6DQo+ID4gRnJvbTogTmljb2xpbiBDaGVuIDxu
+aWNvbGluY0BudmlkaWEuY29tPg0KPiA+DQo+ID4gQSBkZXZpY2UgcGxhY2VkIGJlaGluZCBhIHZT
+TU1VIGluc3RhbmNlIG11c3QgaGF2ZSBjb3JyZXNwb25kaW5nIHZTVEVzDQo+ID4gKGJ5cGFzcywg
+YWJvcnQsIG9yIHRyYW5zbGF0ZSkgaW5zdGFsbGVkLiBUaGUgYnlwYXNzIGFuZCBhYm9ydCBwcm94
+eQ0KPiA+IG5lc3RlZCBIV1BUcyBhcmUgcHJlLWFsbG9jYXRlZC4NCj4gPg0KPiA+IEZvciB0cmFu
+c2xhdCBIV1BULCBhIHZERVZJQ0Ugb2JqZWN0IGlzIGFsbG9jYXRlZCBhbmQgYXNzb2NpYXRlZCB3
+aXRoDQo+ID4gdGhlIHZJT01NVSBmb3IgZWFjaCBndWVzdCBkZXZpY2UuIFRoaXMgYWxsb3dzIHRo
+ZSBob3N0IGtlcm5lbCB0bw0KPiA+IGVzdGFibGlzaCBhIHZpcnR1YWwgU0lEIHRvIHBoeXNpY2Fs
+IFNJRCBtYXBwaW5nLCB3aGljaCBpcyByZXF1aXJlZCBmb3INCj4gPiBoYW5kbGluZyBpbnZhbGlk
+YXRpb25zIGFuZCBldmVudCByZXBvcnRpbmcuDQo+ID4NCj4gPiBBbiB0cmFuc2xhdGUgSFdQVCBp
+cyBhbGxvY2F0ZWQgYmFzZWQgb24gdGhlIGd1ZXN0IFNURSBjb25maWd1cmF0aW9uDQo+ID4gYW5k
+IGF0dGFjaGVkIHRvIHRoZSBkZXZpY2Ugd2hlbiB0aGUgZ3Vlc3QgaXNzdWVzIFNNTVVfQ01EX0NG
+R0lfU1RFIG9yDQo+ID4gU01NVV9DTURfQ0ZHSV9TVEVfUkFOR0UsIHByb3ZpZGVkIHRoZSBTVEUg
+ZW5hYmxlcyBTMSB0cmFuc2xhdGlvbi4NCj4gPg0KPiA+IElmIHRoZSBndWVzdCBTVEUgaXMgaW52
+YWxpZCBvciBTMSB0cmFuc2xhdGlvbiBpcyBkaXNhYmxlZCwgdGhlIGRldmljZQ0KPiA+IGlzIGF0
+dGFjaGVkIHRvIG9uZSBvZiB0aGUgcHJlLWFsbG9jYXRlZCBBQk9SVCBvciBCWVBBU1MgSFdQVHMg
+aW5zdGVhZC4NCj4gPg0KPiA+IFdoaWxlIGF0IGl0LCBleHBvcnQgYm90aCBzbW11X2ZpbmRfc3Rl
+KCkgYW5kIHNtbXV2M19mbHVzaF9jb25maWcoKSBmb3INCj4gPiB1c2UgaGVyZS4NCj4gPg0KPiA+
+IFNpZ25lZC1vZmYtYnk6IE5pY29saW4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNvbT4NCj4gPiBT
+aWduZWQtb2ZmLWJ5OiBTaGFtZWVyIEtvbG90aHVtDQo+IDxzaGFtZWVyYWxpLmtvbG90aHVtLnRo
+b2RpQGh1YXdlaS5jb20+DQo+ID4gUmV2aWV3ZWQtYnk6IEpvbmF0aGFuIENhbWVyb24gPGpvbmF0
+aGFuLmNhbWVyb25AaHVhd2VpLmNvbT4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBTaGFtZWVyIEtvbG90
+aHVtIDxza29sb3RodW10aG9AbnZpZGlhLmNvbT4NCj4gPiAtLS0NCj4gPiAgaHcvYXJtL3NtbXV2
+My1hY2NlbC5jICAgIHwgMTkzDQo+ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKw0KPiA+ICBody9hcm0vc21tdXYzLWFjY2VsLmggICAgfCAgMjMgKysrKysNCj4gPiAgaHcv
+YXJtL3NtbXV2My1pbnRlcm5hbC5oIHwgIDIwICsrKysNCj4gPiAgaHcvYXJtL3NtbXV2My5jICAg
+ICAgICAgIHwgIDE4ICsrKy0NCj4gPiAgaHcvYXJtL3RyYWNlLWV2ZW50cyAgICAgIHwgICAyICsN
+Cj4gPiAgNSBmaWxlcyBjaGFuZ2VkLCAyNTMgaW5zZXJ0aW9ucygrKSwgMyBkZWxldGlvbnMoLSkN
+Cj4gPg0KPiA+IGRpZmYgLS1naXQgYS9ody9hcm0vc21tdXYzLWFjY2VsLmMgYi9ody9hcm0vc21t
+dXYzLWFjY2VsLmMgaW5kZXgNCj4gPiBkNGQ2NTI5OWE4Li5jNzRlOTVhMGVhIDEwMDY0NA0KPiA+
+IC0tLSBhL2h3L2FybS9zbW11djMtYWNjZWwuYw0KPiA+ICsrKyBiL2h3L2FybS9zbW11djMtYWNj
+ZWwuYw0KPiA+IEBAIC0yOCw2ICsyOCwxOTEgQEAgTWVtb3J5UmVnaW9uIHJvb3Q7ICBNZW1vcnlS
+ZWdpb24gc3lzbWVtOw0KPiBzdGF0aWMNCj4gPiBBZGRyZXNzU3BhY2UgKnNoYXJlZF9hc19zeXNt
+ZW07DQo+ID4NCj4gPiArc3RhdGljIGJvb2wNCj4gPiArc21tdXYzX2FjY2VsX2FsbG9jX3ZkZXYo
+U01NVXYzQWNjZWxEZXZpY2UgKmFjY2VsX2RldiwgaW50IHNpZCwgRXJyb3INCj4gPiArKiplcnJw
+KSB7DQo+ID4gKyAgICBTTU1VVmlvbW11ICp2c21tdSA9IGFjY2VsX2Rldi0+dnNtbXU7DQo+ID4g
+KyAgICBJT01NVUZEVmRldiAqdmRldjsNCj4gPiArICAgIHVpbnQzMl90IHZkZXZpY2VfaWQ7DQo+
+ID4gKw0KPiA+ICsgICAgaWYgKCFhY2NlbF9kZXYtPmlkZXYgfHwgYWNjZWxfZGV2LT52ZGV2KSB7
+DQo+ID4gKyAgICAgICAgcmV0dXJuIHRydWU7DQo+ID4gKyAgICB9DQo+ID4gKw0KPiA+ICsgICAg
+aWYgKCFpb21tdWZkX2JhY2tlbmRfYWxsb2NfdmRldih2c21tdS0+aW9tbXVmZCwgYWNjZWxfZGV2
+LT5pZGV2LQ0KPiA+ZGV2aWQsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIHZzbW11LT52aW9tbXUudmlvbW11X2lkLCBzaWQsDQo+ID4gKyAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICZ2ZGV2aWNlX2lkLCBlcnJwKSkgew0KPiA+ICsgICAgICAgICAg
+ICByZXR1cm4gZmFsc2U7DQo+ID4gKyAgICB9DQo+ID4gKyAgICBpZiAoIWhvc3RfaW9tbXVfZGV2
+aWNlX2lvbW11ZmRfYXR0YWNoX2h3cHQoYWNjZWxfZGV2LT5pZGV2LA0KPiA+ICsgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHZzbW11LT5ieXBhc3NfaHdwdF9p
+ZCwgZXJycCkpIHsNCj4gPiArICAgICAgICBpb21tdWZkX2JhY2tlbmRfZnJlZV9pZCh2c21tdS0+
+aW9tbXVmZCwgdmRldmljZV9pZCk7DQo+ID4gKyAgICAgICAgcmV0dXJuIGZhbHNlOw0KPiA+ICsg
+ICAgfQ0KPiA+ICsNCj4gPiArICAgIHZkZXYgPSBnX25ldyhJT01NVUZEVmRldiwgMSk7DQo+ID4g
+KyAgICB2ZGV2LT52ZGV2aWNlX2lkID0gdmRldmljZV9pZDsNCj4gPiArICAgIHZkZXYtPnZpcnRf
+aWQgPSBzaWQ7DQo+ID4gKyAgICBhY2NlbF9kZXYtPnZkZXYgPSB2ZGV2Ow0KPiA+ICsgICAgcmV0
+dXJuIHRydWU7DQo+ID4gK30NCj4gPiArDQo+ID4gK3N0YXRpYyBib29sDQo+ID4gK3NtbXV2M19h
+Y2NlbF9kZXZfdW5pbnN0YWxsX25lc3RlZF9zdGUoU01NVXYzQWNjZWxEZXZpY2UgKmFjY2VsX2Rl
+diwNCj4gYm9vbCBhYm9ydCwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBFcnJvciAqKmVycnApK3sNCj4gPiArICAgIEhvc3RJT01NVURldmljZUlPTU1VRkQgKmlk
+ZXYgPSBhY2NlbF9kZXYtPmlkZXY7DQo+ID4gKyAgICBTTU1VUzFId3B0ICpzMV9od3B0ID0gYWNj
+ZWxfZGV2LT5zMV9od3B0Ow0KPiA+ICsgICAgdWludDMyX3QgaHdwdF9pZDsNCj4gPiArDQo+ID4g
+KyAgICBpZiAoIXMxX2h3cHQgfHwgIWFjY2VsX2Rldi0+dnNtbXUpIHsNCj4gPiArICAgICAgICBy
+ZXR1cm4gdHJ1ZTsNCj4gPiArICAgIH0NCj4gPiArDQo+ID4gKyAgICBpZiAoYWJvcnQpIHsNCj4g
+PiArICAgICAgICBod3B0X2lkID0gYWNjZWxfZGV2LT52c21tdS0+YWJvcnRfaHdwdF9pZDsNCj4g
+PiArICAgIH0gZWxzZSB7DQo+ID4gKyAgICAgICAgaHdwdF9pZCA9IGFjY2VsX2Rldi0+dnNtbXUt
+PmJ5cGFzc19od3B0X2lkOw0KPiA+ICsgICAgfQ0KPiA+ICsNCj4gPiArICAgIGlmICghaG9zdF9p
+b21tdV9kZXZpY2VfaW9tbXVmZF9hdHRhY2hfaHdwdChpZGV2LCBod3B0X2lkLCBlcnJwKSkgew0K
+PiA+ICsgICAgICAgIHJldHVybiBmYWxzZTsNCj4gPiArICAgIH0NCj4gPiArICAgIHRyYWNlX3Nt
+bXV2M19hY2NlbF91bmluc3RhbGxfbmVzdGVkX3N0ZShzbW11X2dldF9zaWQoJmFjY2VsX2Rldi0N
+Cj4gPnNkZXYpLA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgIGFib3J0ID8gImFib3J0IiA6ICJieXBhc3MiLA0KPiA+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIGh3cHRfaWQpOw0KPiA+ICsNCj4gPiArICAgIGlvbW11
+ZmRfYmFja2VuZF9mcmVlX2lkKHMxX2h3cHQtPmlvbW11ZmQsIHMxX2h3cHQtPmh3cHRfaWQpOw0K
+PiA+ICsgICAgYWNjZWxfZGV2LT5zMV9od3B0ID0gTlVMTDsNCj4gPiArICAgIGdfZnJlZShzMV9o
+d3B0KTsNCj4gPiArICAgIHJldHVybiB0cnVlOw0KPiA+ICt9DQo+ID4gKw0KPiA+ICtzdGF0aWMg
+Ym9vbA0KPiA+ICtzbW11djNfYWNjZWxfZGV2X2luc3RhbGxfbmVzdGVkX3N0ZShTTU1VdjNBY2Nl
+bERldmljZSAqYWNjZWxfZGV2LA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICB1aW50MzJfdCBkYXRhX3R5cGUsIHVpbnQzMl90IGRhdGFfbGVuLA0KPiA+ICsgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICB2b2lkICpkYXRhLCBFcnJvciAqKmVycnApDQo+
+IHRoZSBuYW1lIGlzIHZlcnkgY2xvc2UgdG8gdGhlIGNhbGxlciBmdW5jdGlvbiwgaWUuDQo+IHNt
+bXV2M19hY2NlbF9pbnN0YWxsX25lc3RlZF9zdGUgd2hpY2ggYWxzbyB0YWtlcyBhIHNkZXYuDQo+
+IEkgd291bGQgcmVuYW1lIHRvIHNtbXV2M19hY2NlbF9pbnN0YWxsX2h3cHQoKSBvciBzb21ldGhp
+bmcgYWxpa2UNCg0KVGhpcyBvbmUgaXMgZ29pbmcgdG8gY2hhbmdlIGEgYml0IGJhc2VkIG9uIE5p
+Y29saW4ncyBmZWVkYmFjayBvbiB0YWtpbmcgDQpjYXJlIG9mIFNNTVVFTi9HQlBBIHZhbHVlcy4N
+Cmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC9hUVZMemZheHhTZncxSEJMQEFzdXJhZGEtTnZp
+ZGlhLw0KDQpQcm9iYWJseSBzbW11djNfYWNjZWxfYXR0YWNoX25lc3RlZF9od3B0KCkgc3VpdHMg
+YmV0dGVyIGNvbnNpZGVyaW5nDQp0aGF04oCZcyB3aGF0IGl0IGZpbmFsbHkgZW5kcyB1cCBkb2lu
+Zy4NCg0KPiA+ICt7DQo+ID4gKyAgICBTTU1VVmlvbW11ICp2c21tdSA9IGFjY2VsX2Rldi0+dnNt
+bXU7DQo+ID4gKyAgICBTTU1VUzFId3B0ICpzMV9od3B0ID0gYWNjZWxfZGV2LT5zMV9od3B0Ow0K
+PiA+ICsgICAgSG9zdElPTU1VRGV2aWNlSU9NTVVGRCAqaWRldiA9IGFjY2VsX2Rldi0+aWRldjsN
+Cj4gPiArICAgIHVpbnQzMl90IGZsYWdzID0gMDsNCj4gPiArDQo+ID4gKyAgICBpZiAoIWlkZXYg
+fHwgIXZzbW11KSB7DQo+ID4gKyAgICAgICAgZXJyb3Jfc2V0ZyhlcnJwLCAiRGV2aWNlIDB4JXgg
+aGFzIG5vIGFzc29jaWF0ZWQgSU9NTVUgZGV2IG9yDQo+IHZJT01NVSIsDQo+ID4gKyAgICAgICAg
+ICAgICAgICAgICBzbW11X2dldF9zaWQoJmFjY2VsX2Rldi0+c2RldikpOw0KPiA+ICsgICAgICAg
+IHJldHVybiBmYWxzZTsNCj4gPiArICAgIH0NCj4gPiArDQo+ID4gKyAgICBpZiAoczFfaHdwdCkg
+ew0KPiA+ICsgICAgICAgIGlmICghc21tdXYzX2FjY2VsX2Rldl91bmluc3RhbGxfbmVzdGVkX3N0
+ZShhY2NlbF9kZXYsIHRydWUsIGVycnApKSB7DQo+ID4gKyAgICAgICAgICAgIHJldHVybiBmYWxz
+ZTsNCj4gPiArICAgICAgICB9DQo+ID4gKyAgICB9DQo+ID4gKw0KPiA+ICsgICAgczFfaHdwdCA9
+IGdfbmV3MChTTU1VUzFId3B0LCAxKTsNCj4gPiArICAgIHMxX2h3cHQtPmlvbW11ZmQgPSBpZGV2
+LT5pb21tdWZkOw0KPiA+ICsgICAgaWYgKCFpb21tdWZkX2JhY2tlbmRfYWxsb2NfaHdwdChpZGV2
+LT5pb21tdWZkLCBpZGV2LT5kZXZpZCwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgdnNtbXUtPnZpb21tdS52aW9tbXVfaWQsIGZsYWdzLA0KPiA+ICsgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICBkYXRhX3R5cGUsIGRhdGFfbGVuLCBkYXRhLA0KPiA+
+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAmczFfaHdwdC0+aHdwdF9pZCwg
+ZXJycCkpIHsNCj4gPiArICAgICAgICByZXR1cm4gZmFsc2U7DQo+ID4gKyAgICB9DQo+ID4gKw0K
+PiA+ICsgICAgaWYgKCFob3N0X2lvbW11X2RldmljZV9pb21tdWZkX2F0dGFjaF9od3B0KGlkZXYs
+IHMxX2h3cHQtDQo+ID5od3B0X2lkLCBlcnJwKSkgew0KPiA+ICsgICAgICAgIGlvbW11ZmRfYmFj
+a2VuZF9mcmVlX2lkKGlkZXYtPmlvbW11ZmQsIHMxX2h3cHQtPmh3cHRfaWQpOw0KPiA+ICsgICAg
+ICAgIHJldHVybiBmYWxzZTsNCj4gPiArICAgIH0NCj4gPiArICAgIGFjY2VsX2Rldi0+czFfaHdw
+dCA9IHMxX2h3cHQ7DQo+ID4gKyAgICByZXR1cm4gdHJ1ZTsNCj4gPiArfQ0KPiA+ICsNCj4gPiAr
+Ym9vbA0KPiA+ICtzbW11djNfYWNjZWxfaW5zdGFsbF9uZXN0ZWRfc3RlKFNNTVV2M1N0YXRlICpz
+LCBTTU1VRGV2aWNlICpzZGV2LA0KPiBpbnQgc2lkLA0KPiA+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIEVycm9yICoqZXJycCkgew0KPiA+ICsgICAgU01NVXYzQWNjZWxEZXZpY2Ug
+KmFjY2VsX2RldjsNCj4gPiArICAgIFNNTVVFdmVudEluZm8gZXZlbnQgPSB7LnR5cGUgPSBTTU1V
+X0VWVF9OT05FLCAuc2lkID0gc2lkLA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAu
+aW52YWxfc3RlX2FsbG93ZWQgPSB0cnVlfTsNCj4gPiArICAgIHN0cnVjdCBpb21tdV9od3B0X2Fy
+bV9zbW11djMgbmVzdGVkX2RhdGEgPSB7fTsNCj4gPiArICAgIHVpbnQ2NF90IHN0ZV8wLCBzdGVf
+MTsNCj4gPiArICAgIHVpbnQzMl90IGNvbmZpZzsNCj4gPiArICAgIFNURSBzdGU7DQo+ID4gKyAg
+ICBpbnQgcmV0Ow0KPiA+ICsNCj4gPiArICAgIGlmICghcy0+YWNjZWwpIHsNCj4gZG9uJ3QgeW91
+IHdhbnQgdG8gY2hlY2sgIXMtPnZzbW11IGFzIHdlbGwgZG9uZSBpbg0KPiBzbW11djNfYWNjZWxf
+aW5zdGFsbF9uZXN0ZWRfc3RlX3JhbmdlKCkNCg0KTmljb2xpbiBoYXMgYSBzdWdnZXN0aW9uIHRv
+IG1lcmdlIHN0cnVjdCBTTU1VVmlvbW11IGFuZA0KU01NVXYzQWNjZWxTdGF0ZSBpbnRvIG9uZSBh
+bmQgYXZvaWQgdGhlIGV4dHJhIGxheWVyaW5nLiBJIHdpbGwNCmF0dGVtcHQgdGhhdCBhbmQgYWxs
+IHRoZXNlIGNoZWNraW5nIG1pZ2h0IGNoYW5nZSBhcyBhIHJlc3VsdC4NCg0KPiA+ICsgICAgICAg
+IHJldHVybiB0cnVlOw0KPiA+ICsgICAgfQ0KPiA+ICsNCj4gPiArICAgIGFjY2VsX2RldiA9IGNv
+bnRhaW5lcl9vZihzZGV2LCBTTU1VdjNBY2NlbERldmljZSwgc2Rldik7DQo+ID4gKyAgICBpZiAo
+IWFjY2VsX2Rldi0+dnNtbXUpIHsNCj4gPiArICAgICAgICByZXR1cm4gdHJ1ZTsNCj4gPiArICAg
+IH0NCj4gPiArDQo+ID4gKyAgICBpZiAoIXNtbXV2M19hY2NlbF9hbGxvY192ZGV2KGFjY2VsX2Rl
+diwgc2lkLCBlcnJwKSkgew0KPiA+ICsgICAgICAgIHJldHVybiBmYWxzZTsNCj4gPiArICAgIH0N
+Cj4gPiArDQo+ID4gKyAgICByZXQgPSBzbW11X2ZpbmRfc3RlKHNkZXYtPnNtbXUsIHNpZCwgJnN0
+ZSwgJmV2ZW50KTsNCj4gPiArICAgIGlmIChyZXQpIHsNCj4gPiArICAgICAgICBlcnJvcl9zZXRn
+KGVycnAsICJGYWlsZWQgdG8gZmluZCBTVEUgZm9yIERldmljZSAweCV4Iiwgc2lkKTsNCj4gPiAr
+ICAgICAgICByZXR1cm4gdHJ1ZTsNCj4gcmV0dXJuaW5nIHRydWUgd2hpbGUgc2V0dGluZyBlcnJw
+IGxvb2tzIHdyb25nIHRvIG1lLg0KDQpSaWdodCwgd2lsbCBqdXN0IHJldHVybiB0cnVlIGZyb20g
+aGVyZS4gSSBhbSBub3Qgc3VyZSB1bmRlciB3aGF0IGNpcmN1bXN0YW5jZXMNCndlIHdpbGwgaGl0
+IGhlcmUgdGhvdWdoLg0KDQo+ICsgICAgfQ0KPiArDQo+ICsgICAgY29uZmlnID0gU1RFX0NPTkZJ
+Rygmc3RlKTsNCj4gKyAgICBpZiAoIVNURV9WQUxJRCgmc3RlKSB8fCAhU1RFX0NGR19TMV9FTkFC
+TEVEKGNvbmZpZykpIHsNCj4gKyAgICAgICAgaWYgKCFzbW11djNfYWNjZWxfZGV2X3VuaW5zdGFs
+bF9uZXN0ZWRfc3RlKGFjY2VsX2RldiwNCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIFNURV9DRkdfQUJPUlQoY29uZmlnKSwNCj4gKyAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVycnApKSB7DQo+ICsg
+ICAgICAgICAgICByZXR1cm4gZmFsc2U7DQo+ICsgICAgICAgIH0NCj4gKyAgICAgICAgc21tdXYz
+X2ZsdXNoX2NvbmZpZyhzZGV2KTsNCj4gKyAgICAgICAgcmV0dXJuIHRydWU7DQo+ICsgICAgfQ0K
+PiArDQo+ICsgICAgc3RlXzAgPSAodWludDY0X3Qpc3RlLndvcmRbMF0gfCAodWludDY0X3Qpc3Rl
+LndvcmRbMV0gPDwgMzI7DQo+ICsgICAgc3RlXzEgPSAodWludDY0X3Qpc3RlLndvcmRbMl0gfCAo
+dWludDY0X3Qpc3RlLndvcmRbM10gPDwgMzI7DQo+ICsgICAgbmVzdGVkX2RhdGEuc3RlWzBdID0g
+Y3B1X3RvX2xlNjQoc3RlXzAgJiBTVEUwX01BU0spOw0KPiArICAgIG5lc3RlZF9kYXRhLnN0ZVsx
+XSA9IGNwdV90b19sZTY0KHN0ZV8xICYgU1RFMV9NQVNLKTsNCj4gKw0KPiArICAgIGlmICghc21t
+dXYzX2FjY2VsX2Rldl9pbnN0YWxsX25lc3RlZF9zdGUoYWNjZWxfZGV2LA0KPiArICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgSU9NTVVfSFdQVF9EQVRBX0FSTV9T
+TU1VVjMsDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBz
+aXplb2YobmVzdGVkX2RhdGEpLA0KPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgJm5lc3RlZF9kYXRhLCBlcnJwKSkgew0KPiArICAgICAgICBlcnJvcl9hcHBl
+bmRfaGludChlcnJwLCAiVW5hYmxlIHRvIGluc3RhbGwgc2lkPTB4JXggbmVzdGVkIFNURT0iDQo+
+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICIweCUiUFJJeDY0Ijo9MHglIlBSSXg2NCIiLCBz
+aWQsDQpuaXQ6IHdoeSAiOj0iIGJldHdlZW4gYm90aCA2NGI/DQo+ICsgICAgICAgICAgICAgICAg
+ICAgICAgICAgICh1aW50NjRfdClsZTY0X3RvX2NwdShuZXN0ZWRfZGF0YS5zdGVbMV0pLA0KPiAr
+ICAgICAgICAgICAgICAgICAgICAgICAgICAodWludDY0X3QpbGU2NF90b19jcHUobmVzdGVkX2Rh
+dGEuc3RlWzBdKSk7DQo+ICsgICAgICAgIHJldHVybiBmYWxzZTsNCmluIGNhc2Ugb2YgdmFyaW91
+cyBmYWlsdXJlIGNhc2VzLCBkbyB3ZSBuZWVkIHRvIGZyZWUgdGhlIHZkZXY/DQoNCkkgZG9uJ3Qg
+dGhpbmsgd2UgbmVlZCB0byBmZWUgdGhlIHZkZXYgY29ycmVzcG9uZGluZyB0byB0aGlzIHZTSUQg
+b24gZmFpbHVyZXMNCmhlcmUuIEkgdGhpbmsgdGhlIGFzc29jaWF0aW9uIGJldHdlZW4gdlNJRCBh
+bmQgaG9zdCBTSUQgY2FuIHJlbWFpbg0KaW50YWN0IGV2ZW4gaWYgdGhlIG5lc3RlZCBIV1BUIGFs
+bG9jL2F0dGFjaCBmYWlscyBmb3Igd2hhdGV2ZXIgcmVhc29uLg0KDQpUaGFua3MsDQpTaGFtZWVy
+DQo=
 

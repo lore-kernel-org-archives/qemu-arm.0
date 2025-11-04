@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BF34CCF9E3
-	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 08:35:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81DE1CCFA00
+	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 08:36:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGCTN-0001pT-BG; Tue, 04 Nov 2025 03:33:01 -0500
+	id 1vGCTH-0001Xh-Ed; Tue, 04 Nov 2025 03:32:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSy-0000fT-3x
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:39 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSl-0000ZB-U1
+ for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:33 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSw-0003Xl-3u
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:35 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGCSj-0003VM-IG
+ for qemu-arm@nongnu.org; Tue, 04 Nov 2025 03:32:23 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762245152;
+ s=mimecast20190719; t=1762245140;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rPCqiLTQQE310HcnmT1m3xCqvzQZL2w2H/+HGs21hNA=;
- b=AdH2kFSaoEK8wYMXPsq2HQTzfWPYu+C+xteTv0F0D3lSKBms2/qtyDUiHFQS/wX52jx7UB
- /0Wcn/tnlS4DSnUMuGzhnA/nCygDg86NVVs2v7vgD+SnrLAlHaq7hnFxoA32Rmfp4LbyYa
- S8NzLMxxsdGgTA8/noTw54Oi6CV2Dto=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=u7gZL+OK0C2ji6060tBOPwDL2oOebsUaAm7KpdEf+vI=;
+ b=hcEf8xg+I+Z6Jr1UQNk6vSdpe7264JFXNqhJZOHawhpjUDAQWwVbyP25qxtVVz6hx4FMoe
+ FRKGhnw63DSlk4tx03f4kpxWMlKERz80jFxZCZH5rYNRDMkq+X0I/BvQpZZ+3iIP3W8i9D
+ Ct244dZntn+hEeTWB8LgJiJcxXdRX5w=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-288-pnqRixtOPYuJgLbRidg-aQ-1; Tue,
- 04 Nov 2025 03:32:29 -0500
-X-MC-Unique: pnqRixtOPYuJgLbRidg-aQ-1
-X-Mimecast-MFC-AGG-ID: pnqRixtOPYuJgLbRidg-aQ_1762245148
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-294-_GzTAGXBO-m7qiv0q7cvsg-1; Tue,
+ 04 Nov 2025 03:32:17 -0500
+X-MC-Unique: _GzTAGXBO-m7qiv0q7cvsg-1
+X-Mimecast-MFC-AGG-ID: _GzTAGXBO-m7qiv0q7cvsg_1762245136
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0661618002C1; Tue,  4 Nov 2025 08:32:28 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 20DEE195608F; Tue,  4 Nov 2025 08:32:16 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.33.250])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5E1F61955F01; Tue,  4 Nov 2025 08:32:26 +0000 (UTC)
+ id 79D2819560A2; Tue,  4 Nov 2025 08:32:14 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 17/30] hw/arm/aspeed: Move ASPEED_RAM_SIZE() macro to common
- header for reuse
-Date: Tue,  4 Nov 2025 09:31:31 +0100
-Message-ID: <20251104083144.187806-18-clg@redhat.com>
+Subject: [PULL 12/30] hw/arm/aspeed: Split Supermicro X11SPI machine into a
+ separate file for maintainability
+Date: Tue,  4 Nov 2025 09:31:26 +0100
+Message-ID: <20251104083144.187806-13-clg@redhat.com>
 In-Reply-To: <20251104083144.187806-1-clg@redhat.com>
 References: <20251104083144.187806-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -69,7 +69,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,57 +87,196 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Moving it into aspeed.h allows all Aspeed machine source files
-(AST2400, AST2500, AST2600, AST2700, etc.) to reuse the same macro
-definition for consistent behavior and maintainability.
+This commit moves the Supermicro X11SPI BMC machine definition from
+aspeed.c into a new standalone file aspeed_ast2500_supermicro-x11spi.c,
+and adds a dedicated I²C initialization function for the platform.
+
+The refactor continues the effort to modularize Aspeed platform support,
+ensuring each machine model is defined in its own source file. This improves
+code organization, readability, and simplifies maintenance when adding or
+modifying platform-specific behavior.
+
+Previously, the Supermicro X11SPI machine reused
+palmetto_bmc_i2c_init() for its I²C setup. To make the machine
+definition fully self-contained, the function was copied and renamed
+to supermicro_x11spi_bmc_i2c_init(). This ensures that the machine
+can evolve independently without depending on Palmetto’s board logi
+
+Key updates include:
+- Moved SUPERMICRO_X11SPI_BMC_HW_STRAP1 macro and machine class init
+(aspeed_machine_supermicro_x11spi_bmc_class_init) into a new file.
+- Added new function supermicro_x11spi_bmc_i2c_init() copied from
+palmetto_bmc_i2c_init() for independent control.
+- Updated the machine definition to use the new I²C init function.
+- Registered the new source file in meson.build.
+- Removed all Supermicro X11SPI-related definitions from aspeed.c.
 
 No functional changes.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20251104031325.146374-18-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20251104031325.146374-13-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed.h | 7 +++++++
- hw/arm/aspeed.c         | 7 -------
- 2 files changed, 7 insertions(+), 7 deletions(-)
+ hw/arm/aspeed.c                           | 33 ----------
+ hw/arm/aspeed_ast2500_supermicro-x11spi.c | 77 +++++++++++++++++++++++
+ hw/arm/meson.build                        |  1 +
+ 3 files changed, 78 insertions(+), 33 deletions(-)
+ create mode 100644 hw/arm/aspeed_ast2500_supermicro-x11spi.c
 
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index 16b24e68870a..84620f49ed2d 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -25,6 +25,13 @@ DECLARE_OBJ_CHECKERS(AspeedMachineState, AspeedMachineClass,
- #define ASPEED_MAC2_ON   (1 << 2)
- #define ASPEED_MAC3_ON   (1 << 3)
- 
-+/* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
-+#if HOST_LONG_BITS == 32
-+#define ASPEED_RAM_SIZE(sz) MIN((sz), 1 * GiB)
-+#else
-+#define ASPEED_RAM_SIZE(sz) (sz)
-+#endif
-+
- struct AspeedMachineState {
-     MachineState parent_obj;
- 
 diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 15d3b045ac44..ba0c9a62ff66 100644
+index c31b281f5584..e1fa95b2c3ae 100644
 --- a/hw/arm/aspeed.c
 +++ b/hw/arm/aspeed.c
-@@ -36,13 +36,6 @@ static struct arm_boot_info aspeed_board_binfo = {
-     .board_id = -1, /* device-tree-only board */
- };
+@@ -71,16 +71,6 @@ static struct arm_boot_info aspeed_board_binfo = {
+         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
+         SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
  
--/* On 32-bit hosts, lower RAM to 1G because of the 2047 MB limit */
--#if HOST_LONG_BITS == 32
--#define ASPEED_RAM_SIZE(sz) MIN((sz), 1 * GiB)
--#else
--#define ASPEED_RAM_SIZE(sz) (sz)
--#endif
+-/* TODO: Find the actual hardware value */
+-#define SUPERMICRO_X11SPI_BMC_HW_STRAP1 (                               \
+-        AST2500_HW_STRAP1_DEFAULTS |                                    \
+-        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
+-        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
+-        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
+-        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
+-        SCU_HW_STRAP_SPI_WIDTH |                                        \
+-        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN))
 -
- /* AST2600 evb hardware value */
- #define AST2600_EVB_HW_STRAP1 0x000000C0
- #define AST2600_EVB_HW_STRAP2 0x00000003
+ /* AST2500 evb hardware value: 0xF100C2E6 */
+ #define AST2500_EVB_HW_STRAP1 ((                                        \
+         AST2500_HW_STRAP1_DEFAULTS |                                    \
+@@ -1187,24 +1177,6 @@ static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
+     aspeed_machine_class_init_cpus_defaults(mc);
+ }
+ 
+-static void aspeed_machine_supermicro_x11spi_bmc_class_init(ObjectClass *oc,
+-                                                            const void *data)
+-{
+-    MachineClass *mc = MACHINE_CLASS(oc);
+-    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+-
+-    mc->desc       = "Supermicro X11 SPI BMC (ARM1176)";
+-    amc->soc_name  = "ast2500-a1";
+-    amc->hw_strap1 = SUPERMICRO_X11SPI_BMC_HW_STRAP1;
+-    amc->fmc_model = "mx25l25635e";
+-    amc->spi_model = "mx25l25635e";
+-    amc->num_cs    = 1;
+-    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
+-    amc->i2c_init  = palmetto_bmc_i2c_init;
+-    mc->default_ram_size = 512 * MiB;
+-    aspeed_machine_class_init_cpus_defaults(mc);
+-}
+-
+ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc,
+                                                   const void *data)
+ {
+@@ -1577,11 +1549,6 @@ static const TypeInfo aspeed_machine_types[] = {
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_supermicrox11_bmc_class_init,
+         .interfaces    = arm_machine_interfaces,
+-    }, {
+-        .name          = MACHINE_TYPE_NAME("supermicro-x11spi-bmc"),
+-        .parent        = TYPE_ASPEED_MACHINE,
+-        .class_init    = aspeed_machine_supermicro_x11spi_bmc_class_init,
+-        .interfaces    = arm_machine_interfaces,
+     }, {
+         .name          = MACHINE_TYPE_NAME("ast2500-evb"),
+         .parent        = TYPE_ASPEED_MACHINE,
+diff --git a/hw/arm/aspeed_ast2500_supermicro-x11spi.c b/hw/arm/aspeed_ast2500_supermicro-x11spi.c
+new file mode 100644
+index 000000000000..a2450aa96239
+--- /dev/null
++++ b/hw/arm/aspeed_ast2500_supermicro-x11spi.c
+@@ -0,0 +1,77 @@
++/*
++ * Supermicro X11 SPI
++ *
++ * Copyright 2016 IBM Corp.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/arm/machines-qom.h"
++#include "hw/arm/aspeed.h"
++#include "hw/arm/aspeed_soc.h"
++#include "hw/i2c/smbus_eeprom.h"
++
++/* TODO: Find the actual hardware value */
++#define SUPERMICRO_X11SPI_BMC_HW_STRAP1 (                               \
++        AST2500_HW_STRAP1_DEFAULTS |                                    \
++        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
++        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
++        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
++        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
++        SCU_HW_STRAP_SPI_WIDTH |                                        \
++        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN))
++
++static void supermicro_x11spi_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = bmc->soc;
++    DeviceState *dev;
++    uint8_t *eeprom_buf = g_malloc0(32 * 1024);
++
++    /*
++     * The palmetto platform expects a ds3231 RTC but a ds1338 is
++     * enough to provide basic RTC features. Alarms will be missing
++     */
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
++
++    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
++                          eeprom_buf);
++
++    /* add a TMP423 temperature sensor */
++    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
++                                         "tmp423", 0x4c));
++    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature3", 110000, &error_abort);
++}
++
++static void aspeed_machine_supermicro_x11spi_bmc_class_init(ObjectClass *oc,
++                                                            const void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Supermicro X11 SPI BMC (ARM1176)";
++    amc->soc_name  = "ast2500-a1";
++    amc->hw_strap1 = SUPERMICRO_X11SPI_BMC_HW_STRAP1;
++    amc->fmc_model = "mx25l25635e";
++    amc->spi_model = "mx25l25635e";
++    amc->num_cs    = 1;
++    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
++    amc->i2c_init  = supermicro_x11spi_bmc_i2c_init;
++    mc->default_ram_size = 512 * MiB;
++    aspeed_machine_class_init_cpus_defaults(mc);
++}
++
++static const TypeInfo aspeed_ast2500_supermicro_x11spi_types[] = {
++    {
++        .name          = MACHINE_TYPE_NAME("supermicro-x11spi-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_supermicro_x11spi_bmc_class_init,
++        .interfaces    = arm_machine_interfaces,
++    }
++};
++
++DEFINE_TYPES(aspeed_ast2500_supermicro_x11spi_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index ff6a856523d9..76a456c33fc7 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -48,6 +48,7 @@ arm_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_ast2500_g220a.c',
+   'aspeed_ast2500_romulus.c',
+   'aspeed_ast2500_sonorapass.c',
++  'aspeed_ast2500_supermicro-x11spi.c',
+   'aspeed_ast2500_tiogapass.c',
+   'aspeed_ast2500_witherspoon.c',
+   'aspeed_ast2500_yosemitev2.c',
 -- 
 2.51.1
 

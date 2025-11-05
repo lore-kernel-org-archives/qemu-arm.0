@@ -4,60 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E2C0CCF9F8
-	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 11:46:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B01EBCCF9F8
+	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 11:46:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGbxq-0005Z4-6z; Wed, 05 Nov 2025 06:46:10 -0500
+	id 1vGbxz-0005dl-Rp; Wed, 05 Nov 2025 06:46:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vGbxo-0005Um-0d
- for qemu-arm@nongnu.org; Wed, 05 Nov 2025 06:46:08 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vGbxt-0005ay-Dz
+ for qemu-arm@nongnu.org; Wed, 05 Nov 2025 06:46:15 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vGbxl-0001hu-5h
- for qemu-arm@nongnu.org; Wed, 05 Nov 2025 06:46:07 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vGbxs-000214-0Y
+ for qemu-arm@nongnu.org; Wed, 05 Nov 2025 06:46:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762343163;
+ s=mimecast20190719; t=1762343171;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=h6qiOvnT4caE2aUUMlaO+sPYkn6fZYHMWXxvHV29T5E=;
- b=EB/j5jV51AjvuX0wP+wt0Qo+w0cSYhz/zRFCGL3PIo5Vg7TcvlUZGkqJ0zuP3oDkHqv476
- 1MPP996GjPqsCgH4ehTd3q6wqkeHbneXVvh0DwwiZFwpzneyZRhL6i8MAk/9C8k01Tfv/S
- Jr7Ealy2JQdysagO29QQAKY218SMKmw=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Yjjbg+s9qvG83ORkq479+/aXcqzaSJRLowKnK8IK7JE=;
+ b=QNAu2TdWcoloWB7yNshhjhYDQYiMWh6SAJ3qE7uiQQvsG61Y5DVG/l8kiqwuAIDlAR6mW7
+ VT7Uv09IJ1Ptw67Mr4c/uzKlVcutaEheBOtL5QKiCcJHL0JvJ0/fMkekB2jEsAv/RuVTKx
+ caA8nGy40rekhDsa0vOM6jjGIBXsW9o=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-571-pQun26u3NWy_TKv3BZoZmg-1; Wed,
- 05 Nov 2025 06:46:01 -0500
-X-MC-Unique: pQun26u3NWy_TKv3BZoZmg-1
-X-Mimecast-MFC-AGG-ID: pQun26u3NWy_TKv3BZoZmg_1762343160
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-304-zwkiTcclOUKD7CmdeNJAkg-1; Wed,
+ 05 Nov 2025 06:46:07 -0500
+X-MC-Unique: zwkiTcclOUKD7CmdeNJAkg-1
+X-Mimecast-MFC-AGG-ID: zwkiTcclOUKD7CmdeNJAkg_1762343166
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 77076195605F; Wed,  5 Nov 2025 11:46:00 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 653E519560A3; Wed,  5 Nov 2025 11:46:06 +0000 (UTC)
 Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.5])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F24861800451; Wed,  5 Nov 2025 11:45:54 +0000 (UTC)
+ id 27D721800367; Wed,  5 Nov 2025 11:46:00 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, jonathan.cameron@huawei.com,
  mchehab+huawei@kernel.org, gengdongjiu1@gmail.com, mst@redhat.com,
  imammedo@redhat.com, anisinha@redhat.com, peter.maydell@linaro.org,
  pbonzini@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v3 0/8] target/arm/kvm: Improve memory error handling
-Date: Wed,  5 Nov 2025 21:44:45 +1000
-Message-ID: <20251105114453.2164073-1-gshan@redhat.com>
+Subject: [PATCH v3 1/8] tests/qtest/bios-tables-test: Prepare for changes in
+ the HEST table
+Date: Wed,  5 Nov 2025 21:44:46 +1000
+Message-ID: <20251105114453.2164073-2-gshan@redhat.com>
+In-Reply-To: <20251105114453.2164073-1-gshan@redhat.com>
+References: <20251105114453.2164073-1-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -25
 X-Spam_score: -2.6
@@ -82,61 +86,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the combination of 64KiB host and 4KiB guest, a problematic host
-page affects 16x guest pages. Those 16x guest pages are most likely
-owned by separate threads and accessed by the threads in parallel.
-It means 16x memory errors can be raised at once. However, we're
-unable to handle this situation because the only error source has
-one read acknowledgement register in current design. QEMU has to
-crash in the following path due to the previously delivered error
-isn't acknowledged by the guest on attempt to deliver another error.
+Adds HEST blob to the whilelist, preparing for the increased GHES raw
+data maximal length (ACPI_GHES_MAX_RAW_DATA_LENGTH) from 1KiB to 4KiB,
+because we need to send 16 consective errors in case a problematic 64KiB
+host page affects 16 4KiB guest pages.
 
-  kvm_vcpu_thread_fn
-    kvm_cpu_exec
-      kvm_arch_on_sigbus_vcpu
-        kvm_cpu_synchronize_state
-        acpi_ghes_memory_errors
-        abort
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+---
+ tests/qtest/bios-tables-test-allowed-diff.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-This series fixes the issue by sending 16x consective CPER errors
-which are contained in a single GHES error block.
-
-PATCH[1-3] Increases GHES raw data maximal length from 1KiB to 4KiB
-PATCH[4]   Supports multiple error records in a single error block
-PATCH[5-6] Improves the error handling in the error delivery path
-PATCH[7]   Introduces helper push_ghes_memory_errors()
-PATCH[8]   Delivers 16x consective CPERs in a single error block
-
-Changelog
-=========
-v3:
-  * v2: https://lists.nongnu.org/archive/html/qemu-arm/2025-10/msg00372.html
-  * Code and changelog improvements                            (Jonathan)
-  * Fixed GHES error block status field and improved error
-    handling in the error delivery path                        (Igor)
-  * Fixed ACPI HEST table and document                         (Mauro)
-v2:
-  * v1: https://lists.nongnu.org/archive/html/qemu-arm/2025-02/msg00897.html
-  * Send 16x memory errors for the specific case               (Jonathan)
-
-Gavin Shan (8):
-  tests/qtest/bios-tables-test: Prepare for changes in the HEST table
-  acpi/ghes: Increase GHES raw data maximal length to 4KiB
-  tests/qtest/bios-tables-test: Update HEST table
-  acpi/ghes: Extend acpi_ghes_memory_errors() to support multiple CPERs
-  acpi/ghes: Bail early on error from get_ghes_source_offsets()
-  acpi/ghes: Use error_abort in acpi_ghes_memory_errors()
-  kvm/arm/kvm: Introduce helper push_ghes_memory_errors()
-  target/arm/kvm: Support multiple memory CPERs injection
-
- docs/specs/acpi_hest_ghes.rst     |   2 +-
- hw/acpi/ghes-stub.c               |   6 +--
- hw/acpi/ghes.c                    |  78 +++++++++++++++---------------
- include/hw/acpi/ghes.h            |   5 +-
- target/arm/kvm.c                  |  69 +++++++++++++++++++++++---
- tests/data/acpi/aarch64/virt/HEST | Bin 224 -> 224 bytes
- 6 files changed, 108 insertions(+), 52 deletions(-)
-
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..39901c58d6 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,2 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/aarch64/virt/HEST",
 -- 
 2.51.0
 

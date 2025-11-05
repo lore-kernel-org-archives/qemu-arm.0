@@ -4,52 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5EBCCCF9F8
-	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 04:03:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59D32CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 07:48:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGUh2-0008Un-Dd; Tue, 04 Nov 2025 23:00:20 -0500
+	id 1vGYFS-0007BV-Vo; Wed, 05 Nov 2025 02:48:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vGUgz-0008Tb-Ls; Tue, 04 Nov 2025 23:00:17 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vGYFS-0007Am-5t
+ for qemu-arm@nongnu.org; Wed, 05 Nov 2025 02:48:06 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vGUgy-0000YI-6V; Tue, 04 Nov 2025 23:00:17 -0500
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Wed, 5 Nov
- 2025 11:59:05 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Wed, 5 Nov 2025 11:59:05 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>
-Subject: [PATCH v2 17/17] hw/arm/aspeed: Model AST1700 PWM block as
- unimplemented device
-Date: Wed, 5 Nov 2025 11:58:55 +0800
-Message-ID: <20251105035859.3709907-18-kane_chen@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251105035859.3709907-1-kane_chen@aspeedtech.com>
-References: <20251105035859.3709907-1-kane_chen@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vGYFP-0004yY-CE
+ for qemu-arm@nongnu.org; Wed, 05 Nov 2025 02:48:05 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1762328881;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=/+URNvpmOhOpLByQMwBQsqRi6zQqDbVw1Rv4S1E6+8Y=;
+ b=hGO8BP4DucXEhAz5g798PFcCjiQtKMxLUw01VbDEVEd8h+Fw8o+XeEfg11CWSMlk2A6x07
+ MA0xUD9wAaGTqOuenAVYbNyxpKP+exiICRjW9atHgg+vxPeBNLLmlS1NB3lxggr9kjRjwc
+ xobu68YA5WE3+j/mg4AUzSargCLKX5Q=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-74-rklDXlDuPIWgrzpHgF7JRw-1; Wed, 05 Nov 2025 02:48:00 -0500
+X-MC-Unique: rklDXlDuPIWgrzpHgF7JRw-1
+X-Mimecast-MFC-AGG-ID: rklDXlDuPIWgrzpHgF7JRw_1762328879
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-42814749a6fso4615291f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 04 Nov 2025 23:48:00 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1762328879; x=1762933679;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=/+URNvpmOhOpLByQMwBQsqRi6zQqDbVw1Rv4S1E6+8Y=;
+ b=ovgzxK6h1I66dzw+gnYMq2zXnrvCZpsDHM7Skz24el/uMJsAuzsOWJY565oG8OG0H0
+ DnJnHb8Q+t0ae8mXkZAPVnKdMgvup6r2ITvKQLsVykWTa9tu8GatlzHABsXg9iZTXdv8
+ N8yflj+J9tft6dh9XRPx8ztdx2/kI+aWiTDRuhKzU1WvPyt7FA4q+5HoLssEVU++8Gux
+ c1rl+sRWwpRdkXJLCXmI0+v7/skRDuVjuVaC/mChXmXZy9NLEqtmaaGzk51PIoB+edNS
+ /o2HNFiyPb4fV57y1o2PyBuuPwLkw84eG+Zn7EWLvhExsYhHpv5Hqqi8hHTtGyxAL4yZ
+ uLiQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV9T3+XwfZTBqfMJGwqj7bJvBI34418C5AWSAGqhfcMkkM2md3GPHl4yhZztGXwZSp6euyBxF22IQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwjyR9PcLixQYbtcw16zwiopY1+t8XST8TkIEBHmEkzKbMX4qLg
+ cQBPSSgFrh9SEq/j6klNDRz+8Z2r/q6ROcUUiR3BMyVwn7vAircxRSYE+/9Hnw7rr0AYgBVmEEs
+ GqSL2yZEuOXfF7fEwwUjUbHskFxopF5PMAt6r2wfGD2ND1a8D+9NPUw==
+X-Gm-Gg: ASbGncv0tinbFmv8KmIMMm4e0Kjy9xiJp5IwZxU4f4hyildtI8yp5VZp6h3mEYsIYvv
+ RuQzqoUb1s17XvHAPa9HudRswYLggFqep2lyKS0RnvI4x1qhL2/QI4haABZB572A3yVyjcXhN9x
+ n+m5CIrZx9f4aUdCds1QFbl7qEDeBIr/gvYiF+fwqd0JfVan8xiDHwDu1fzrBw+53Y81zT6bF4Y
+ VjRdH/rcyRbVKB7Axw2lS04VBPXZUiDu7i07fMEmJr+F8Ek322WqGVbjp70b84ty0RnQXWDNXZG
+ RjXGO5l/moiKz7UoAekPIsNjla7kiYjLk1fNIxAi+TLmfzwZ5xo01gsUU/6xbTBNXp8Wh+8HtnL
+ CegzgiJOMzyhaRhSIlwu8FeSQZ8D4vPFCv/sgTW2np7nfXQ==
+X-Received: by 2002:a05:6000:616:b0:3ec:dd12:54d3 with SMTP id
+ ffacd0b85a97d-429e33063cbmr1659855f8f.35.1762328878888; 
+ Tue, 04 Nov 2025 23:47:58 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHQzeV1UkXf5f8N0jjf5Sf+vsSXULrwOZNuNgFNVC6CZXahXUeBACfWQzHlL4hyh6rEKei1sg==
+X-Received: by 2002:a05:6000:616:b0:3ec:dd12:54d3 with SMTP id
+ ffacd0b85a97d-429e33063cbmr1659829f8f.35.1762328878355; 
+ Tue, 04 Nov 2025 23:47:58 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-429dc1fbeadsm8856800f8f.37.2025.11.04.23.47.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 04 Nov 2025 23:47:57 -0800 (PST)
+Message-ID: <413ca488-1301-4f0c-90bf-ab3ef5a0791e@redhat.com>
+Date: Wed, 5 Nov 2025 08:47:56 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 15/32] hw/pci/pci: Introduce optional
+ get_msi_address_space() callback
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: Shameer Kolothum <skolothumtho@nvidia.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Jason Gunthorpe <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
+ <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>,
+ "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>
+References: <20251031105005.24618-1-skolothumtho@nvidia.com>
+ <20251031105005.24618-16-skolothumtho@nvidia.com>
+ <318947de-4467-4ced-a5d2-929e3df210ef@redhat.com>
+ <CH3PR12MB754815B9B902E7EF66B0A1B9ABC4A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <85f315a2-e49a-4330-9419-48a8a3a4a3e3@redhat.com>
+ <CH3PR12MB754844745DF256D7FF2CB07AABC4A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <3c9e00f5-de9e-4e5c-8312-75eb4fcef81b@redhat.com>
+ <aQo8MPCrr82wh3LI@Asurada-Nvidia>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <aQo8MPCrr82wh3LI@Asurada-Nvidia>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: vAnckSryOAPdgvLCKgyUQCCgCyvDZE4I2e_Bxp0SeO4_1762328879
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=kane_chen@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.788,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,88 +137,116 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Kane Chen <kane_chen@aspeedtech.com>
-From:  Kane Chen via <qemu-arm@nongnu.org>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+Hi Nicolin,
 
-AST1700 includes an PWM block, but QEMU has no functional model for
-aspeed product yet. Expose it as an unimplemented device so the
-address space is reserved and the missing functionality is explicit
-to users/guests.
+On 11/4/25 6:47 PM, Nicolin Chen wrote:
+> On Tue, Nov 04, 2025 at 05:01:57PM +0100, Eric Auger wrote:
+>>>>>> On 10/31/25 11:49 AM, Shameer Kolothum wrote:
+>>>>>>> On ARM, devices behind an IOMMU have their MSI doorbell addresses
+>>>>>>> translated by the IOMMU. In nested mode, this translation happens in
+>>>>>>> two stages (gIOVA → gPA → ITS page).
+>>>>>>>
+>>>>>>> In accelerated SMMUv3 mode, both stages are handled by hardware, so
+>>>>>>> get_address_space() returns the system address space so that VFIO
+>>>>>>> can setup stage-2 mappings for system address space.
+>>>>>> Sorry but I still don't catch the above. Can you explain (most probably
+>>>>>> again) why this is a requirement to return the system as so that VFIO
+>>>>>> can setup stage-2 mappings for system address space. I am sorry for
+>>>>>> insisting (at the risk of being stubborn or dumb) but I fail to
+>>>>>> understand the requirement. As far as I remember the way I integrated it
+>>>>>> at the old times did not require that change:
+>>>>>> https://lore.kernel.org/all/20210411120912.15770-1-
+>>>>>> eric.auger@redhat.com/
+>>>>>> I used a vfio_prereg_listener to force the S2 mapping.
+>>>>> Yes I remember that.
+>>>>>
+>>>>>> What has changed that forces us now to have this gym
+>>>>> This approach achieves the same outcome, but through a
+>>>>> different mechanism. Returning the system address space
+>>>>> here ensures that VFIO sets up the Stage-2 mappings for
+>>>>> devices behind the accelerated SMMUv3.
+>>>>>
+>>>>> I think, this makes sense because, in the accelerated case, the
+>>>>> device is no longer managed by QEMU’s SMMUv3 model. The
+>>>> On the other hand, as we discussed on v4 by returning system as you
+>>>> pretend there is no translation in place which is not true. Now we use
+>>>> an alias for it but it has not really removed its usage. Also it forces
+>>>> use to hack around the MSI mapping and introduce new PCIIOMMUOps.
+>>>> Have
+>>>> you assessed the feasability of using vfio_prereg_listener to force the
+>>>> S2 mapping. Is it simply not relevant anymore or could it be used also
+>>>> with the iommufd be integration? Eric
+>>> IIUC, the prereg_listener mechanism just enables us to setup the s2
+>>> mappings. For MSI, In your version, I see that smmu_find_add_as()
+>>> always returns IOMMU as. How is that supposed to work if the Guest
+>>> has s1 bypass mode STE for the device?
+>> I need to delve into it again as I forgot the details. Will come back to
+>> you ...
+> We aligned with Intel previously about this system address space.
+> You might know these very well, yet here are the breakdowns:
+>
+> 1. VFIO core has a container that manages an HWPT. By default, it
+>    allocates a stage-1 normal HWPT, unless vIOMMU requests for a
+You may precise this stage-1 normal HWPT is used to map GPA to HPA (so
+eventually implements stage 2).
+>    nesting parent HWPT for accelerated cases.
+> 2. VFIO core adds a listener for that HWPT and sets up a handler
+>    vfio_container_region_add() where it checks the memory region
+>    whether it is iommu or not.
+>    a. In case of !IOMMU as (i.e. system address space), it treats
+>       the address space as a RAM region, and handles all stage-2
+>       mappings for the core allocated nesting parent HWPT.
+>    b. In case of IOMMU as (i.e. a translation type) it sets up
+>       the IOTLB notifier and translation replay while bypassing
+>       the listener for RAM region.
+yes S1+S2 are combined through vfio_iommu_map_notify()
+>
+> In an accelerated case, we need stage-2 mappings to match with the
+> nesting parent HWPT. So, returning system address space or an alias
+> of that notifies the vfio core to take the 2.a path.
+>
+> If we take 2.b path by returning IOMMU as in smmu_find_add_as, the
+> VFIO core would no longer listen to the RAM region for us, i.e. no
+> stage-2 HWPT nor mappings. vIOMMU would have to allocate a nesting
+except if you change the VFIO common.c as I did the past to force the S2
+mapping in the nested config.
+See
+https://lore.kernel.org/all/20210411120912.15770-16-eric.auger@redhat.com/
+and vfio_prereg_listener()
+Again I do not say this is the right way to do but using system address
+space is not the "only" implementation choice I think and it needs to be
+properly justified, especially has it has at least 2 side effects:
+- somehow abusing the semantic of returned address space and pretends
+there is no IOMMU translation in place and
+- also impacting the way MSIs are handled (introduction of a new
+PCIIOMMUOps).
+This kind of explanation you wrote is absolutely needed in the commit
+msg for reviewers to understand the design choice I think.
 
-Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
----
- include/hw/misc/aspeed_ast1700.h |  1 +
- hw/misc/aspeed_ast1700.c         | 16 ++++++++++++++++
- 2 files changed, 17 insertions(+)
-
-diff --git a/include/hw/misc/aspeed_ast1700.h b/include/hw/misc/aspeed_ast1700.h
-index 8ada3a7775..9d432a7db0 100644
---- a/include/hw/misc/aspeed_ast1700.h
-+++ b/include/hw/misc/aspeed_ast1700.h
-@@ -45,6 +45,7 @@ struct AspeedAST1700SoCState {
- 
-     UnimplementedDeviceState i3c;
-     UnimplementedDeviceState sgpiom;
-+    UnimplementedDeviceState pwm;
- };
- 
- #endif /* ASPEED_AST1700_H */
-diff --git a/hw/misc/aspeed_ast1700.c b/hw/misc/aspeed_ast1700.c
-index 66a5f21d27..3d9a920a7a 100644
---- a/hw/misc/aspeed_ast1700.c
-+++ b/hw/misc/aspeed_ast1700.c
-@@ -20,9 +20,11 @@
- #define AST1700_SOC_SRAM_SIZE        0x00040000
- #define AST1700_SOC_I3C_SIZE         0x00010000
- #define AST1700_SOC_SGPIOM_SIZE      0x00002000
-+#define AST1700_SOC_PWM_SIZE         0x00000200
- 
- enum {
-     ASPEED_AST1700_DEV_SPI0,
-+    ASPEED_AST1700_DEV_PWM,
-     ASPEED_AST1700_DEV_SRAM,
-     ASPEED_AST1700_DEV_ADC,
-     ASPEED_AST1700_DEV_SCU,
-@@ -38,6 +40,7 @@ enum {
- 
- static const hwaddr aspeed_ast1700_io_memmap[] = {
-     [ASPEED_AST1700_DEV_SPI0]      =  0x00030000,
-+    [ASPEED_AST1700_DEV_PWM]       =  0x000C0000,
-     [ASPEED_AST1700_DEV_SRAM]      =  0x00BC0000,
-     [ASPEED_AST1700_DEV_ADC]       =  0x00C00000,
-     [ASPEED_AST1700_DEV_SCU]       =  0x00C02000,
-@@ -174,6 +177,15 @@ static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
-                         sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->sgpiom), 0),
-                         -1000);
- 
-+    /* PWM */
-+    qdev_prop_set_string(DEVICE(&s->pwm), "name", "ioexp-pwm");
-+    qdev_prop_set_uint64(DEVICE(&s->pwm), "size", AST1700_SOC_PWM_SIZE);
-+    sysbus_realize(SYS_BUS_DEVICE(&s->pwm), errp);
-+    memory_region_add_subregion_overlap(&s->iomem,
-+                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_PWM],
-+                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pwm), 0),
-+                        -1000);
-+
-     /* WDT */
-     for (i = 0; i < AST1700_WDT_NUM; i++) {
-         AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
-@@ -241,6 +253,10 @@ static void aspeed_ast1700_instance_init(Object *obj)
-     object_initialize_child(obj, "ioexp-sgpiom[*]", &s->sgpiom,
-                             TYPE_UNIMPLEMENTED_DEVICE);
- 
-+    /* PWM */
-+    object_initialize_child(obj, "ioexp-pwm", &s->pwm,
-+                            TYPE_UNIMPLEMENTED_DEVICE);
-+
-     /* WDT */
-     for (i = 0; i < AST1700_WDT_NUM; i++) {
-         snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
--- 
-2.43.0
+Eric
+> parent and manage the stage-2 mappings by adding a listener in its
+> own code, which is largely duplicated with the core code.
+>
+> -------------- so far this works for Intel and ARM--------------
+>
+> 3. On ARM, vPCI device is programmed with gIOVA, so KVM has to
+>    follow what the vPCI is told to inject vIRQs. This requires
+>    a translation at the nested stage-1 address space. Note that
+>    vSMMU in this case doesn't manage translation as it doesn't
+>    need to. But there is no other sane way for KVM to know the
+>    vITS page corresponding to the given gIOVA. So, we invented
+>    the get_msi_address_space op.
+>
+> (3) makes sense because there is a complication in the MSI that
+> does a 2-stage translation on ARM and KVM must follow the stage-1
+> input address, leaving us no choice to have two address spaces.
+>
+> Thanks
+> Nicolin
+>
 
 

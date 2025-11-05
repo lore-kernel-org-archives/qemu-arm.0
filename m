@@ -4,81 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29640CCFA04
-	for <qemu-arm@archiver.kernel.org>; Tue,  4 Nov 2025 23:38:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AEFFCCFA04
+	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 00:40:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGQb5-00020o-SY; Tue, 04 Nov 2025 18:37:56 -0500
+	id 1vGRZa-0000tf-Rz; Tue, 04 Nov 2025 19:40:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3SY4KaQwKCN4NABIHESTEFANGOOGLE.COMQEMU-ARMNONGNU.ORG@flex--nabihestefan.bounces.google.com>)
- id 1vGQb1-00020G-PC
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 18:37:51 -0500
-Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3SY4KaQwKCN4NABIHESTEFANGOOGLE.COMQEMU-ARMNONGNU.ORG@flex--nabihestefan.bounces.google.com>)
- id 1vGQay-0005BS-Cs
- for qemu-arm@nongnu.org; Tue, 04 Nov 2025 18:37:50 -0500
-Received: by mail-pf1-x44a.google.com with SMTP id
- d2e1a72fcca58-7a9a8e76543so5349016b3a.3
- for <qemu-arm@nongnu.org>; Tue, 04 Nov 2025 15:37:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1762299465; x=1762904265; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=YU0uSHcPrYiF3ZdbzJ9P1EwGSlz9hc7xoEWUvhDGKI0=;
- b=whzed4/7eOicvSGAXqiwecX7RFR1Yj7oghnlu6bjFnBXR+Sxs4DIs1FG9WYOwcQNIh
- X3fXxbAs/e3NXoZpJZcFfVylP6a5at7DeJy0grhQaF7bMa+/5UEfiSGacVObfobw7GOR
- +gu2o1Hcp6iwS92P5ed3nieOHfj0G1K6SnObnJIERendmLTMK8fn7MTW81e/ImLuyh81
- MiVTV39OyxFIkC4Radp+VoWc5+LG8gqxXr7tRiBQkBM7p7+4bBKvLyzz4sHErll/CX9F
- tdmsth/8yJHdwaE4fMY+RNCpRvj/YDUjRgkUK8KLSEDa/xdLJNAfSH/mLtvTJQSgIPIY
- IKvQ==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vGRZZ-0000tP-EW
+ for qemu-arm@nongnu.org; Tue, 04 Nov 2025 19:40:25 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vGRZX-0005jj-1m
+ for qemu-arm@nongnu.org; Tue, 04 Nov 2025 19:40:25 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1762303220;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+X1Y7+76mLQNegt/yJAOJ1vteZEhNdBaCtKfYGDBYd0=;
+ b=VlB/Yj9AejZGLUXrP3/DkDANgJmQjtVa9bJZ2JHvJOjbokqFZYtOPLK+LcHGY8HVe41gMR
+ njEToi0sFVjQ5qpSoW1EGAIMGc5saV0CpkyDlsp9+YV1QQqHrfTAcmR19r5uYTn2Hj+oTy
+ 2oK+QbkhHrS5TJHIjDCnrVnRR/Ljql4=
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
+ [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-687-gAOo41X-N6a6sQsAr_mniA-1; Tue, 04 Nov 2025 19:40:19 -0500
+X-MC-Unique: gAOo41X-N6a6sQsAr_mniA-1
+X-Mimecast-MFC-AGG-ID: gAOo41X-N6a6sQsAr_mniA_1762303218
+Received: by mail-pl1-f200.google.com with SMTP id
+ d9443c01a7336-29598910dd2so67653945ad.1
+ for <qemu-arm@nongnu.org>; Tue, 04 Nov 2025 16:40:18 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762299465; x=1762904265;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=YU0uSHcPrYiF3ZdbzJ9P1EwGSlz9hc7xoEWUvhDGKI0=;
- b=mEJZrFrQXq9iIJhsjC7ULulY6gOhXZccXMHJXW1Kre15r1X/NWctlEThC1OoYI7GD9
- z3rRI4XSa3lUCLkDjJPJrq4/0sOty/9qU3WK0PJYG2RIBKgOtCroyxLt0DykXQAWRsMb
- pCM6aaDmRtvzcWu+CxzytQ9JgaLY2izcl7yONaRgMWBTAQ+bIWTaYYvm8cdcj3SQHF0I
- ZaK/MX4eyyOXCtHSyKsu1ErJV8JmARpCelj4/ZjyGFHkLRQwN0hdeHxqDaWI8dVSu+7C
- f66yc70lw6LIpfZtJHG6iaHQNqzCLN8k5zKmcIMOoIJrryOd4e2d6iPOfsDPioYpGhiX
- uugQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUpmd14orpSpuVMATdmCoswmv/b6D4ftmnHJ9RwAAzFOzuIsJwY+lNJJPbYL/WCA2iTVLAQwmyDew==@nongnu.org
-X-Gm-Message-State: AOJu0YwibHqJY1KybK5zTxVxSyH8e+zC94o3baB/qSNtfbI7nd4WxZcO
- i1kHSYIksjoHic7Zc9NuQ/u03E220kkUWOcD/e2XRTH1EkOR1B+XRLy8RIDtYM1PQKJ0bFw+pdR
- H/NzI7ORK54THWXDH9V0L4uNJUQnvng==
-X-Google-Smtp-Source: AGHT+IFRS6jXbhIVJDOyrmhvgadCce/I3QfLB0EvF7tGNGWKSHhPhczRtLKLUw3QFLqSzq48zYVY++CpubReCWhFg/s=
-X-Received: from dlbsw2.prod.google.com ([2002:a05:7022:3a82:b0:119:49ca:6bae])
- (user=nabihestefan job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6a21:338c:b0:343:70a2:bca9 with SMTP id
- adf61e73a8af0-34f863015bcmr1292965637.53.1762299465369; 
- Tue, 04 Nov 2025 15:37:45 -0800 (PST)
-Date: Tue,  4 Nov 2025 23:37:42 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.51.2.1006.ga50a493c49-goog
-Message-ID: <20251104233742.2147367-1-nabihestefan@google.com>
-Subject: [PATCH] hw/arm/ast27x0: Fix typo in LTPI address
-From: Nabih Estefan <nabihestefan@google.com>
-To: qemu-devel@nongnu.org
-Cc: clg@kaod.org, peter.maydell@linaro.org, steven_lee@aspeedtech.com, 
- leetroy@gmail.com, jamin_lin@aspeedtech.com, qemu-arm@nongnu.org, 
- Nabih Estefan <nabihestefan@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
- envelope-from=3SY4KaQwKCN4NABIHESTEFANGOOGLE.COMQEMU-ARMNONGNU.ORG@flex--nabihestefan.bounces.google.com;
- helo=mail-pf1-x44a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ d=1e100.net; s=20230601; t=1762303218; x=1762908018;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=+X1Y7+76mLQNegt/yJAOJ1vteZEhNdBaCtKfYGDBYd0=;
+ b=UEpO/lMlsNJXFhZ5APgsTb+DEvqputsPSXuGnVfG1KXKPzmQM8Fo00SAXRW9RlVb25
+ O5lZlPa/0731P3oJwcrL/Z8/B1BEA6/1NLQ3FiwVLGjBmlmPcfxMVBccZPmDemtrPMN3
+ snteJITK9EHMNUdtrt02glj7FusoCnbsz/yiKbGo/lheT/AKFqBQPLqfdhEe1UyHwk4A
+ XTzCxdDOLxuYo8Pcm/Xa9o5JVMWpM5shPOz8tobPojD9TrWAF2TvadmTjOCnbTvacx4R
+ D5R+9GMN1JSvVHNjUStllfMZr1AJJ+MQ7FrBr9WrEVKU681UUlV+YLtLLaDicrvuBzui
+ FDVg==
+X-Gm-Message-State: AOJu0YyLOU5VjLnMWoasNNrNd9iIuqJu8B+w6fUTA4iDJyLAAf8PS8kl
+ SIH+PW3EIxetzd7q4k+FSTjfE9nZPpqJ8CF4hbTmlPeRXkkxnx0J7+odPxNvcARKqTJxgubYXJ4
+ MYmVqmNU/s2G4yilp5yC0mt+xUK0n2inlwYympLgrYe1mBqZFKsvf3w==
+X-Gm-Gg: ASbGnctDiT1UZ5gWtBgjvXYVt6eKcPfYoZVn4R9KKDarJEER0W0vM//3TMXaEjAyHew
+ 846N8NEcO0yL3DAy7aQmipF+v93ksiziGNnztKtRRPVAhsmceJnyAE8kOB5TCtXzYyGxhGYfJn7
+ iaSPmKqJxpY6T7N7XQhl18Ms0fxN+IjsO19zgb2Y/Hpw6Kk9MWBb+STjXq96bZ8/vRQXdAYi2ct
+ 8HVrXfc7gu2zq7jIebpiZRHXrCpnNAXWni+RynbccciT2K25PgJ3E6KNo+1NXF2ZxtjIzchGqqX
+ J10XzCKKjQbJleqVooQuB4743k2aRPO7fjUOH1Q0EFYGpXefBCxjPuzUJNK4n+mbmNEsbmafyL7
+ OBpWJMVJD4pxqKKVAddc1GGHlVZE84YAx3sJVl2E=
+X-Received: by 2002:a17:903:2305:b0:295:2276:6704 with SMTP id
+ d9443c01a7336-2962adcffe8mr17385795ad.51.1762303217908; 
+ Tue, 04 Nov 2025 16:40:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFkVifaosXPerBJhaIhyI6XjVoHNxOP5J7y/neRpVOOFWjBO1h998NP6t3Q14ooBdBehzkBjQ==
+X-Received: by 2002:a17:903:2305:b0:295:2276:6704 with SMTP id
+ d9443c01a7336-2962adcffe8mr17385475ad.51.1762303217523; 
+ Tue, 04 Nov 2025 16:40:17 -0800 (PST)
+Received: from [192.168.68.51] (n175-34-62-5.mrk21.qld.optusnet.com.au.
+ [175.34.62.5]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-29601998deasm40722475ad.39.2025.11.04.16.40.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 04 Nov 2025 16:40:16 -0800 (PST)
+Message-ID: <a4960b41-dd92-408f-a5e8-620b35be212b@redhat.com>
+Date: Wed, 5 Nov 2025 10:40:10 +1000
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH RESEND v2 3/3] target/arm/kvm: Support multiple memory
+ CPERs injection
+To: Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
+ anisinha@redhat.com, gengdongjiu1@gmail.com, peter.maydell@linaro.org,
+ pbonzini@redhat.com, mchehab+huawei@kernel.org, shan.gavin@gmail.com
+References: <20251007060810.258536-1-gshan@redhat.com>
+ <20251007060810.258536-4-gshan@redhat.com> <20251017162746.2a99015b@fedora>
+ <a635de53-71fa-4edb-87c0-8775722c284d@redhat.com>
+ <20251031145539.3551b0a5@fedora>
+ <88a41137-d5fb-4b61-a3f2-dd73133c17ec@redhat.com>
+ <20251103105216.1f4241d7@fedora> <20251104122151.00006feb@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20251104122151.00006feb@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: wwY8JtrvyG7tf7z84TCHv8ea2t_9cyHaVlsHUHCHvuw_1762303218
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.788,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,32 +120,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The address for LTPI has one more 0 that it should, bug introduced in
-commit 91064bea6b2d747a981cb3bd2904e56f443e6c67.
+Hi Jonathan and Igor,
 
-Signed-off-by: Nabih Estefan <nabihestefan@google.com>
----
- hw/arm/aspeed_ast27x0.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 11/4/25 10:21 PM, Jonathan Cameron wrote:
+> On Mon, 3 Nov 2025 10:52:16 +0100
+> Igor Mammedov <imammedo@redhat.com> wrote:
+> 
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index c484bcd4e2..1e6f469538 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -87,11 +87,11 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
-     [ASPEED_DEV_UART11]    =  0x14C33A00,
-     [ASPEED_DEV_UART12]    =  0x14C33B00,
-     [ASPEED_DEV_WDT]       =  0x14C37000,
-+    [ASPEED_DEV_LTPI]      =  0x30000000,
-     [ASPEED_DEV_PCIE_MMIO0] = 0x60000000,
-     [ASPEED_DEV_PCIE_MMIO1] = 0x80000000,
-     [ASPEED_DEV_PCIE_MMIO2] = 0xA0000000,
-     [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
--    [ASPEED_DEV_LTPI]      =  0x300000000,
-     [ASPEED_DEV_SDRAM]     =  0x400000000,
- };
- 
--- 
-2.51.2.1006.ga50a493c49-goog
+[...]
+
+>> My idea using per cpu source is just a speculation based on spec
+>> on how workaround the problem,
+>> I don't really know if guest OS will be able to handle it (aka,
+>> need to be tested is it's viable). That also probably was a reason
+>> in previous review, why should've waited for multiple sources
+>> support be be merged first before this series.
+> 
+> Per vCPU should work fine but I do like the approach here of reporting
+> all the related errors in one go as they represent the underlying nature
+> of the error granularity tracking. If anyone ever poisons at the 1GiB level
+> on the host they are on their own - so I think that it will only ever be
+> the finest granularity supported (so worse case 64KiB).
+> 
+
+Well, I don't have strong opinions, but I intend to agree with Jonathan
+to report all 16x errors at once. One reason is one as Jonathan mentioned.
+Another reason is per vCPU error source is a bit heavy for the improvement.
+
+So I'm going to improve (v2) series to address all received comments and
+post a (v3) series.
+
+I already had the prototype of error source per vcpu, which works fine for
+64KB-host-4KB-guest. However, it doesn't work for huge pages. For example,
+a problematic 512MB huge page can cause heavy memory error storm to QEMU
+where we absolutely can't handle.
+
+1. Start the VM with hugetlb pages
+
+/home/gavin/sandbox/qemu.main/build/qemu-system-aarch64                                     \
+-accel kvm -machine virt,gic-version=host,nvdimm=on,ras=on                                  \
+-cpu host -smp maxcpus=8,cpus=8,sockets=2,clusters=2,cores=2,threads=1                      \
+-m 4096M,slots=16,maxmem=128G                                                               \
+-object memory-backend-file,id=mem0,prealloc=on,mem-path=/dev/hugepages-524288kB,size=4096M \
+-numa node,nodeid=0,cpus=0-7,memdev=mem0                                                    \
+
+2. Run 'victim -d' on guest
+
+guest$ ./victim -d
+physical address of (0xffff889d6000) = 0x11a7da000
+Hit any key to trigger error:
+
+3. Inject error from host
+
+host$ errinjct 0x11a7da000
+
+4. QEMU crashes with error message "Bus error (core dumped)", which is triggered
+the following path.
+
+sigbus_handler
+   kvm_on_sigbus_vcpu           // have_sigbus_pending = 1
+   sigbus_reraise
+
+Thanks,
+Gavin
 
 

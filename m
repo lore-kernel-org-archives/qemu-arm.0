@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14EEECCFA0D
-	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 17:25:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F347CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 17:33:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGhG0-0006py-P8; Wed, 05 Nov 2025 12:25:16 -0500
+	id 1vGhNQ-0000NJ-UR; Wed, 05 Nov 2025 12:32:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vGhFz-0006pP-6U
- for qemu-arm@nongnu.org; Wed, 05 Nov 2025 12:25:15 -0500
+ id 1vGhNM-0000MM-6q
+ for qemu-arm@nongnu.org; Wed, 05 Nov 2025 12:32:52 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vGhFx-0005LY-HL
- for qemu-arm@nongnu.org; Wed, 05 Nov 2025 12:25:14 -0500
+ id 1vGhNJ-0006H5-M7
+ for qemu-arm@nongnu.org; Wed, 05 Nov 2025 12:32:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762363511;
+ s=mimecast20190719; t=1762363968;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=F7kvwDLXFkP0drhhbVeUYkZax+HxH2jYez81iitq5qY=;
- b=Mrdm9AAQmluhlJh4I98ls3rC4SCVH7LFqCn27AufcDr0m9HuHmxdH7wo/cF/ivIsWn9wb4
- +oE2Y42aMlYqX6eCKU1B25ZIwkeTH+A+xV0d/iRQ/Sf0Xpg4Tdqk/d4rTMi5CEjV6ECuPw
- 818HKymdERXsbtLSkAHY6MmKmz2y+QQ=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ETut4KkNWT/BCT5wy0gh0ieCKE10jSt3ObhCH+eQVFo=;
+ b=ADV1CBbywAu8WnWfNbBj1nLZZDNTIvecU+4SSDmCg6OIkikuuypuMJbYqee+mRNz0+TAhm
+ SN0/krBqsGQ2DbXowgt801Vx9eL2L5eIw0xXiTZFkkVO58qUqJ/FYkvFQ58cuk4KpJI10T
+ XY2If9bzz/AeCqsg0StGXbZh6mgTyqY=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-629-xI50AgKmO5OHvXnl2d4Pbw-1; Wed, 05 Nov 2025 12:25:10 -0500
-X-MC-Unique: xI50AgKmO5OHvXnl2d4Pbw-1
-X-Mimecast-MFC-AGG-ID: xI50AgKmO5OHvXnl2d4Pbw_1762363508
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-470fd92ad57so409295e9.3
- for <qemu-arm@nongnu.org>; Wed, 05 Nov 2025 09:25:10 -0800 (PST)
+ us-mta-613-xwo9cR7bNuqlOovPKvYcXA-1; Wed, 05 Nov 2025 12:32:44 -0500
+X-MC-Unique: xwo9cR7bNuqlOovPKvYcXA-1
+X-Mimecast-MFC-AGG-ID: xwo9cR7bNuqlOovPKvYcXA_1762363964
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-475dabb63f2so244225e9.3
+ for <qemu-arm@nongnu.org>; Wed, 05 Nov 2025 09:32:44 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762363508; x=1762968308;
+ d=1e100.net; s=20230601; t=1762363964; x=1762968764;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=F7kvwDLXFkP0drhhbVeUYkZax+HxH2jYez81iitq5qY=;
- b=uJTtUzaN1h/ji763c6qfTt4ooA25P3/wBZE3I1EnNPfBLWxjcWfCuKYBV3wqaiPz6z
- vpMC7uBytNkSuNbHyGJkA06tD9ApRx3QWt1ms1xMr+uWYWfCFNYVRuzMNMHCsZclxoX8
- pS0L7tGfoZEAvRAsFtIjIR7Q3A8pzdQ3Bz865KBtp8AOrqaZ3BAncmJ2wSb6VDV/TWyJ
- xMOrUpTqg58TADEhUERF9Y1QmhEh3ZMwlGUKDh8N843s+NXOzJIELfvsD20URNJk7eQn
- B67HOzg9j3+030QsHOydGAjAR33M/l7fZl8jOMrMVlMYYN0Zw3jyAXY9IGOUhPGxiOXz
- /eWA==
+ bh=ETut4KkNWT/BCT5wy0gh0ieCKE10jSt3ObhCH+eQVFo=;
+ b=BfgVQatihTrCei6dW6jQ6Wabp+TqW8gW3IumCxZhvVgbc9vRAr+00NQ26ZOMEQZRjI
+ RLBjp9tEQ/tilUV0xvjKYxgiISlsbVQZh1Tk7XNbolFFY6FRgIiDUrPurj6OCoaOfnJE
+ wh+DNhDoUNwGJUMWGOU+ouD8/9y28n08cMg4SEflRIwkjbSJFTmFWxdbElIMCf99gUGp
+ zs8rVijU8+EuSbtAJxmoQMiZHZkvtO2iNvr1l5glxhQTx1zpVQL7KAfAVqrdZOJXa1tI
+ lX1+vMnf+Th/ZM0cBK9j0PyzX/gZ20d84UK2xAcXuaGrWUEKSYxoYzxx2JOFj4DmnAQo
+ wcdQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXl+tki8tva0Wq2cph35QWD+ObdYovlI1EJaPuEeI60ppmzBRYQ2SPIRZwTkgHxn2nNEKPdYZeubg==@nongnu.org
-X-Gm-Message-State: AOJu0Ywaq5AtkThWnr8eY1qKuXPRnxfGKgjFWUmp9aCDEO7YIWpTI7bT
- 7zy+juE2vRMLh+fISjffdQ/R8k+TgNWPZFdTMEh2x0XHdFn95fhWSvmMD3x6i9UfggHftskOWOa
- AWEDgAi0KMAHKP5AUIpvrtusvnZpNbiOaIm9eT+qpIdEfp0bHYqiFvw==
-X-Gm-Gg: ASbGncscHnN/c3mjmLLptCBcGWg9Q1ltl8VeQ+1kJUkGUiG81YS/YwZAbRxhWYhhZ5c
- aapbhNRSbXRlzF3ahCosbFtjGxFexdtQ267oSZG55JLAuk3ua8CV0a4gYOJqEzdMkIia6Pmx/MI
- x4DkGYoDDBzTCziTWQk4g6EO9XG6kn38es0/drJuzdTVraAmhS4OHX12Qh47dNvLNgjp0d2F8ye
- SkCFsGm+9rmd8LJmgP0KwvRPezK44ceX7VRyyML0q/CyI3N7sPdmgFfix5bAhVLX9bA93o/YHT5
- Yqp23ujDeIpCMsTTDJFF3/YQ15JJ8LJbQzAEg9ZE0HgqAU/1AU0OmVDhtYS4KJCtzXBCZlZSvEG
- m5SuFKsecwTCwtephYMw+J9j4AV8DPpDSAfG8IJJgbsvHkA==
-X-Received: by 2002:a05:600c:4e88:b0:477:fcb:2267 with SMTP id
- 5b1f17b1804b1-4775cdad1edmr31847235e9.8.1762363507938; 
- Wed, 05 Nov 2025 09:25:07 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFU++5s7kTrEHO9Vp8w9FCtiSLdXLMaNfAfBPgzQ9szxug3ri0KZkJvmJv8mLgUlL75KIxZcg==
-X-Received: by 2002:a05:600c:4e88:b0:477:fcb:2267 with SMTP id
- 5b1f17b1804b1-4775cdad1edmr31846895e9.8.1762363507526; 
- Wed, 05 Nov 2025 09:25:07 -0800 (PST)
+ AJvYcCVu00tVeIbUajVjMXMHLW/uDUJ5MgFrM2qq0fWmwW8fodXQ9niZ+rf9YUOq9rdRlRyTP9RNTsXq/w==@nongnu.org
+X-Gm-Message-State: AOJu0YxpnY281NQ6qss4+++rT5pfpBXCT5cOXy3YaInq1GuuyndwJg10
+ k8w3fRjqNcoZZN/+Kx2drg7lIABaMiZQ4Q9J6j/zKahpUCcw+iOOsPTtASsYExtDyEbXnmL2OmC
+ suJhgMud5PHltPJOT2Wg5CgJP4zxwmJ/rbuGalInShnT3QcGkcX1j4A==
+X-Gm-Gg: ASbGncuZ0/CfJIhqv+CbEuj+Go8gW2A81qkG5BF9WKW2tarjBmVdYddc2ifpsC9NLG7
+ o9OmF9RJHvOYghTACGqLatkwIm1/UBNqCBpqNk9Woxl44rThK4IaWt1hRLI1r0lRWTFP3AeotWP
+ Y55y8sRFvAGChfv1znvmRyDn6hjMIBncJ1NR84Dlc1U74me3Xqqdz9f3G0rftd/93L+UzzKjBKw
+ SWDKXgUi7d8jAo6KRA7MMRZUMwahY0GWaE6M24fvQrvwdmwKyzZYjAYfT7pNbUixN0wMLbhJZGs
+ taP8mqlZ9hLu21P7muidrhe09Wm1p8rz7OwalS2kb8fXXmLCrm1na+jiSBiqRfvxbHbn+2uDxzp
+ i9edxsJwC/zNeqWK0uh7W7vIEMnWFL+fJpMY4vTqD/lhbzA==
+X-Received: by 2002:a05:600c:348f:b0:477:54f9:6ac2 with SMTP id
+ 5b1f17b1804b1-4775cd3bd61mr43957875e9.0.1762363963598; 
+ Wed, 05 Nov 2025 09:32:43 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG2gTPfMaLwxZaRw0Z4Nl7Bp9jmdrjyUSPZTDYdLSX9khLuz+6HeMLAlGkR+PPci8tJzlc8IA==
+X-Received: by 2002:a05:600c:348f:b0:477:54f9:6ac2 with SMTP id
+ 5b1f17b1804b1-4775cd3bd61mr43957475e9.0.1762363963190; 
+ Wed, 05 Nov 2025 09:32:43 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429dc20198csm11976889f8f.47.2025.11.05.09.25.06
+ 5b1f17b1804b1-4775592eeaasm49683145e9.3.2025.11.05.09.32.41
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 05 Nov 2025 09:25:07 -0800 (PST)
-Message-ID: <7ac24d9a-0caf-48cb-832c-812fecc5c82c@redhat.com>
-Date: Wed, 5 Nov 2025 18:25:05 +0100
+ Wed, 05 Nov 2025 09:32:42 -0800 (PST)
+Message-ID: <e9d5300a-6aab-4b17-828f-3d3a4d3071df@redhat.com>
+Date: Wed, 5 Nov 2025 18:32:41 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v5 15/32] hw/pci/pci: Introduce optional
  get_msi_address_space() callback
-To: Shameer Kolothum <skolothumtho@nvidia.com>,
+To: Jason Gunthorpe <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>
+Cc: Shameer Kolothum <skolothumtho@nvidia.com>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Jason Gunthorpe <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
  "ddutile@redhat.com" <ddutile@redhat.com>,
  "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
  <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
@@ -99,18 +99,20 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
  "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
  "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
  Krishnakant Jaju <kjaju@nvidia.com>
-References: <20251031105005.24618-1-skolothumtho@nvidia.com>
- <20251031105005.24618-16-skolothumtho@nvidia.com>
+References: <20251031105005.24618-16-skolothumtho@nvidia.com>
  <318947de-4467-4ced-a5d2-929e3df210ef@redhat.com>
- <CH3PR12MB754815B9B902E7EF66B0A1B9ABC4A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <85f315a2-e49a-4330-9419-48a8a3a4a3e3@redhat.com>
- <CH3PR12MB754844745DF256D7FF2CB07AABC4A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <e4fd6d1e-3fca-457b-ac6a-69e721d799f4@redhat.com>
- <CH3PR12MB75489F2161213432D34688D2ABC5A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <20251104142052.GD1537560@nvidia.com>
+ <CH3PR12MB7548E5E1A2DFE297C4C65E0AABC4A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <20251104145157.GF1537560@nvidia.com>
+ <CH3PR12MB7548379E64E7A12904B5BF7AABC4A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <20251104151234.GG1537560@nvidia.com>
+ <CH3PR12MB754877D400D19E57AFB16D0BABC4A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <20251104153535.GH1537560@nvidia.com> <aQoz2+bLMJWNoVwx@Asurada-Nvidia>
+ <20251104174152.GI1537560@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB75489F2161213432D34688D2ABC5A@CH3PR12MB7548.namprd12.prod.outlook.com>
+In-Reply-To: <20251104174152.GI1537560@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: FV_H8B4ekAhrBolQzgFTtZPdujg6T4BP7TOf4CbU9qo_1762363508
+X-Mimecast-MFC-PROC-ID: lT4LSsVLBnyR2Sp4OOwfLU2nS8T-320HRRK6al3CqpE_1762363964
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -124,7 +126,7 @@ X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.517,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,60 +145,49 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-On 11/5/25 12:41 PM, Shameer Kolothum wrote:
-> Hi Eric,
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: 05 November 2025 08:57
->> To: Shameer Kolothum <skolothumtho@nvidia.com>; qemu-
->> arm@nongnu.org; qemu-devel@nongnu.org
->> Cc: peter.maydell@linaro.org; Jason Gunthorpe <jgg@nvidia.com>; Nicolin
->> Chen <nicolinc@nvidia.com>; ddutile@redhat.com; berrange@redhat.com;
->> Nathan Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
->> smostafa@google.com; wangzhou1@hisilicon.com;
->> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
->> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
->> Krishnakant Jaju <kjaju@nvidia.com>
->> Subject: Re: [PATCH v5 15/32] hw/pci/pci: Introduce optional
->> get_msi_address_space() callback
-> [...]
->>> IIUC, the prereg_listener mechanism just enables us to setup the s2
->>> mappings. For MSI, In your version, I see that smmu_find_add_as()
->>> always returns IOMMU as. How is that supposed to work if the Guest
->>> has s1 bypass mode STE for the device?
->> in kvm_arch_fixup_msi_route(), as we have as != &address_space_memory in
->> my case, we proceed with the actual translation for the doorbell gIOVA
->> using address_space_translate(). I  guess if the S1 is in bypass mode
->> you get the flat translation, no?
-> Yes, I noted that and replied as well.
->
-> Again, coming back to kvm_arch_fixup_msi_route(), I see that this was introduced
-> as part of your " ARM SMMUv3 Emulation Support" here,
-> https://lore.kernel.org/qemu-devel/1523518688-26674-12-git-send-email-eric.auger@redhat.com/
->
-> The VFIO support was not there at that time. I am trying to understand why
-> we need this MSI translation for vfio-pci in this accelerated case. My understanding
-> was that this is to setup the KVM MSI routings via KVM_SET_GSI_ROUTING ioctl.
+On 11/4/25 6:41 PM, Jason Gunthorpe wrote:
+> On Tue, Nov 04, 2025 at 09:11:55AM -0800, Nicolin Chen wrote:
+>> On Tue, Nov 04, 2025 at 11:35:35AM -0400, Jason Gunthorpe wrote:
+>>> On Tue, Nov 04, 2025 at 03:20:59PM +0000, Shameer Kolothum wrote:
+>>>>> On Tue, Nov 04, 2025 at 02:58:44PM +0000, Shameer Kolothum wrote:
+>>>>>>> Sure it is trapped, but nothing should be looking at the MSI address
+>>>>>>> from the guest, it is meaningless and wrong information. Just ignore
+>>>>>>> it.
+>>>>>> Hmm.. we need to setup the doorbell address correctly.
+>>>>>> If we don't do the translation here, it will use the Guest IOVA
+>>>>>> address. Remember, we are using the IORT RMR identity mapping to get
+>>>>>> MSI working.
+>>>>> Either you use the RMR value, which is forced by the kernel into the
+>>>>> physical MSI through iommufd and kernel ignores anything qemu
+>>>>> does. So fully ignore the guest's vMSI address.
+>>>> Well, we are sort of trying to do the same through this patch here. 
+>>>> But to avoid a "translation" completely it will involve some changes to
+>>>> Qemu pci subsystem. I think this is the least intrusive path I can think
+>>>> of now. And this is a one time setup mostly.
+>>> Should be explained in the commit message that the translation is
+>>> pointless. I'm not sure about this, any translation seems risky
+>>> because it could fail. The guest can use any IOVA for MSI and none may
+>>> fail.
+in general the translation is not pointless (I mean when RMR are not
+applied). In case a vhost device (virtio-net) for instance is protected
+by SMMU, vhost triggers irqfds upon which a gsi is injected in vgic.
+This latter does irq_routing mapping and this gsi is associated to an
+MSI address/data. If the MSI address is wrong, ie. not corresponding to
+the vITS gpa doorbell, kernel kvm/vgic/vgic-its.c vgic_its_trigger_msi
+will fail to inject the MSI on guest since
+vgic_msi_to_its/__vgic_doorbell_to_its will fail to find the ITS
+instance to inject in.
 
-yes that's correct. This was first needed for vhost integration. And
-obviously this is also needed for VFIO.
-
-allows vhost irqfd to trigger a gsi that will be routed by KVM to the
-actual guest doorbell. On top of that it registers the guest PCI BDF for
-GiCv2m or GICv3 MSI translation setup.
-if the guest doorbell address is wrong because not properly translated,
-vgic_msi_to_its() will fail to identify the ITS to inject the MSI in.
-See kernel kvm/vgic/vgic-its.c vgic_msi_to_its and vgic_its_inject_msi
+Thanks
 
 Eric
+>> In the current design of KVM in QEMU, it does a generic translation
+>> from gIOVA->gPA for the doorbell location to inject IRQ, whether VM
+>> has an accelerated IOMMU or an emulated IOMMU.
+> And what happens if the translation fails because there is no mapping?
+> It should be ignored for this case and not ignored for others.
 >
-> Is that right?
->
-> Thanks,
-> Shameer
->
->
+> Jason
 >
 
 

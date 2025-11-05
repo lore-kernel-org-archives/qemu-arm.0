@@ -4,80 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2239CCF9F8
-	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 20:56:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96618CCFA0D
+	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 21:20:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGkY3-0002PS-Nb; Wed, 05 Nov 2025 15:56:11 -0500
+	id 1vGkvo-0000cI-M3; Wed, 05 Nov 2025 16:20:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <i.repko@syntacore.com>)
- id 1vGjcK-0005LC-7F; Wed, 05 Nov 2025 14:56:28 -0500
-Received: from m.syntacore.com ([178.249.69.228])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <i.repko@syntacore.com>)
- id 1vGjcI-0000uk-Ii; Wed, 05 Nov 2025 14:56:27 -0500
-Received: from MRN-SC-KSMG-01.corp.syntacore.com (localhost [127.0.0.1])
- by m.syntacore.com (Postfix) with ESMTP id CB4EC1A0004;
- Wed,  5 Nov 2025 19:56:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 m.syntacore.com CB4EC1A0004
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=syntacore.com; s=m;
- t=1762372575; bh=G1q86/DgqPNjCWBa7TyF1koxVFpglV1ohFFAZyKfyBs=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:From;
- b=HZkAzBDjqtvmZxgoj7TCx8vxmWwbZnW9IkwQpg2uvNMkj0WIljLmgs/RUTBEGAsS9
- YrhEY9jFoLaLc69PIrocOBwUgj3Ty+GdAEcDCQvPs9kaxzNxN6pp7XJSxlQPsOXUvd
- G8HRPoDAKHHzjJLa5bMJfRr92LztP34dn+xB8UWJL6heSWEHAgsJM0vbYBHwfrgnI1
- r7uV1ppGgUIHtKS1119OyqV/8GfmgmBgz93KDFz0wnWCWzohKDxFg8KPZF8b4vdhAv
- Rmfu79lzWmiV0XR+zVBBI4E0HQHyGv+91JCEL+wWTzT6heJ7bl6C6ba+JddZyTRt0Y
- 1FLGw3pXofpZA==
-Received: from S-SC-EXCH-01.corp.syntacore.com (mail.syntacore.com
- [10.76.202.20])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by m.syntacore.com (Postfix) with ESMTPS;
- Wed,  5 Nov 2025 19:56:15 +0000 (UTC)
-Received: from NB-8361.lan (172.27.13.83) by S-SC-EXCH-01.corp.syntacore.com
- (10.76.202.20) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Wed, 5 Nov
- 2025 22:55:22 +0300
-From: Ilya Repko <i.repko@syntacore.com>
-To: 
-CC: Ilya Repko <i.repko@syntacore.com>, "Edgar E. Iglesias"
- <edgar.iglesias@gmail.com>, Alistair Francis <alistair@alistair23.me>, Peter
- Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>, "open
- list:Xilinx Zynq" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-Subject: [PATCH] Revert "hw/net: Fix the transmission return size"
-Date: Wed, 5 Nov 2025 22:55:30 +0300
-Message-ID: <20251105195532.347555-1-i.repko@syntacore.com>
-X-Mailer: git-send-email 2.51.1
+ (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
+ id 1vGkvn-0000bE-C7
+ for qemu-arm@nongnu.org; Wed, 05 Nov 2025 16:20:39 -0500
+Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
+ id 1vGkvl-0008TQ-QX
+ for qemu-arm@nongnu.org; Wed, 05 Nov 2025 16:20:39 -0500
+Received: by mail-qt1-x831.google.com with SMTP id
+ d75a77b69052e-4ea12242d2eso20161cf.1
+ for <qemu-arm@nongnu.org>; Wed, 05 Nov 2025 13:20:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1762377635; x=1762982435; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=PhEhkTq+LWTFHumUurvyRKjhtRaQVEgS+gmAOWh95t8=;
+ b=nM7PCSUCZX6dsAosBll1kEYMuAwo/Mn8elQmhVcjqJ72mQmlix5N08L8r8+qhR/ht8
+ HQJm5LXvVtpK48T0dlzMGzGO5CXxnn72jNFHdT4NykX+gz6go8Jiev0+TkCPCIAkmdQ2
+ PI8VUHvJDxmWDnixi24SEtM0h/TdgTY59md7M9I6d2fAjR9LKOPWK7rC1qluJko9jhhq
+ S9n4WmMydMBdmneLMA/sYlBwwfef6O5/kp+DW7HdkEdI2+HRGdnJC0LCicodAGEO1Q7O
+ H+1sFoMPz2q92Te6nYTTkjLmX8pgESLLa8cMq4ETWNwuIDw4qKtt1Dw+32lpGSaIBWKD
+ EvTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1762377635; x=1762982435;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=PhEhkTq+LWTFHumUurvyRKjhtRaQVEgS+gmAOWh95t8=;
+ b=XzEFV+9t/hqMpsIP8uwRLq9XqNKweJqwyKWdZAgtpIhTbztGtnQ02ugX1wXk69TpST
+ 6v5ZFDjq+fdgTr3heZCvs0hWiC1iibf7XEGaS1gdnL64CyznrLZG6yewYV6WmdeclvKI
+ ncSSFEyM/7ZsXqGZ1M/GjtFp5Nel9MTDcbT/U12qLTa8OT3sBbk3GcF6GxArF+GliO6k
+ AdEgyTbl+cTFlTktBvzY3graBJbmCAlOr7pv4mGo3RPj5lPcTY/mhHp98InVV5Vy8cBl
+ 8ecB2amXsn7l9AXiocwHfNrNiX5lB/RgZl49T8dkeV75FIvRdEE9a+5+C7HXIXWOtpje
+ b9Vg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWC1NauSeZNqRKXNJ8lWbcLe9WXlBDUQMq4jV/rRlph44/EHe1gnl0Xm+D3BomB5M5HYzsc/X3sXg==@nongnu.org
+X-Gm-Message-State: AOJu0Yymw7+sZt+Lc5aDGbhcUu+PJkjGoOBHahD2nS5+8c/lOy9QGiHw
+ MKWsVRg4TKzmWBzRCBi4E94wFcb5F5ktXSf9YWScDfmf+e2+ES1gFmvbFXZVoQ4eM7ezGGAvXlk
+ Ujky6zH8+3EyxVgJvIwEZEtI/2W+1cMB1QKySJECS
+X-Gm-Gg: ASbGnctOl+7jqN164DjWBr7lmMu6z6Br5wXv5SAOCBFsS6g31aqC8uD8yp9w2C7PbE6
+ Ek2Cb0cWlzEyUECwPhwN711bSqRKkvcDu4yB/FXAHi4Zfk79gLm+E/8Yie9epT363PpX4hDP5+2
+ k0w0EG+zliLuNoIWmJ0WK5cDxEguk33Jq3WRFjaPfxxctMVr0bkQZpLGdX5PFncKL5hEUbOgHlB
+ iNQfFIsBuFH1VqTIb+bU+HZMSjNm9UxqOq1pwOsvyAQq2pKIXvriIkL99vll++4trL64VkP1Yx2
+ vpnu/u1NdcKvzjk=
+X-Google-Smtp-Source: AGHT+IEfM+v9iGGdx1BYEBwrRxtuS1IfwFGY7+A9Bzfd7OccCZyoCqyFApq6x9U8ocZGZEY1QDlFrRUSsgzipV8XIDA=
+X-Received: by 2002:ac8:5810:0:b0:4b7:9c77:6ba5 with SMTP id
+ d75a77b69052e-4ed82c07764mr197451cf.15.1762377635248; Wed, 05 Nov 2025
+ 13:20:35 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [172.27.13.83]
-X-ClientProxiedBy: S-SC-EXCH-01.corp.syntacore.com (10.76.202.20) To
- S-SC-EXCH-01.corp.syntacore.com (10.76.202.20)
-X-KSMG-AntiPhishing: not scanned, disabled by settings
-X-KSMG-AntiSpam-Interceptor-Info: not scanned
-X-KSMG-AntiSpam-Status: not scanned, disabled by settings
-X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.1.1.8310,
- bases: 2025/11/05 19:22:00 #27886012
-X-KSMG-AntiVirus-Status: NotDetected, skipped
-X-KSMG-LinksScanning: NotDetected
-X-KSMG-Message-Action: skipped
-X-KSMG-Rule-ID: 5
-Received-SPF: pass client-ip=178.249.69.228;
- envelope-from=i.repko@syntacore.com; helo=m.syntacore.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20251105035859.3709907-1-kane_chen@aspeedtech.com>
+ <20251105035859.3709907-10-kane_chen@aspeedtech.com>
+In-Reply-To: <20251105035859.3709907-10-kane_chen@aspeedtech.com>
+From: Nabih Estefan <nabihestefan@google.com>
+Date: Wed, 5 Nov 2025 13:20:22 -0800
+X-Gm-Features: AWmQ_bnP7JNqj7KbVxp3ah6m6IwtsK35PCrb5dKXPq7p42YEX2kdxz3PVMsGt2I
+Message-ID: <CA+QoejUqmspVZG=-T8TRbbc5nRXy0YQsLg6A4M54o6k=EkW6kA@mail.gmail.com>
+Subject: Re: [PATCH v2 09/17] hw/arm/aspeed: Attach SPI device to AST1700 model
+To: Kane Chen <kane_chen@aspeedtech.com>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, 
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ troy_lee@aspeedtech.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::831;
+ envelope-from=nabihestefan@google.com; helo=mail-qt1-x831.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 05 Nov 2025 15:56:00 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,42 +106,164 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This reverts commit 3a6d374b754b4b345195ff6846eeaffedc96a7c5.
+This patch seems to break qtest-arm
+```
+37/56 qemu:qtest+qtest-arm / qtest-arm/device-introspect-test ERROR
+5.18s killed by signal 6 SIGABRT
+>>> QTEST_QEMU_IMG=3D./qemu-img G_TEST_DBUS_DAEMON=3D/b/f/w/src/git/qemu/te=
+sts/dbus-vmstate-daemon.sh QTEST_QEMU_BINARY=3D./qemu-system-arm PYTHON=3D/=
+b/f/w/src/git/qemu/build/pyvenv/bin/python3 MSAN_OPTIONS=3Dhalt_on_error=3D=
+1:abort_on_error=3D1:print_summary=3D1:print_stacktrace=3D1 MESON_TEST_ITER=
+ATION=3D1 UBSAN_OPTIONS=3Dhalt_on_error=3D1:abort_on_error=3D1:print_summar=
+y=3D1:print_stacktrace=3D1 QTEST_QEMU_STORAGE_DAEMON_BINARY=3D./storage-dae=
+mon/qemu-storage-daemon RUST_BACKTRACE=3D1 ASAN_OPTIONS=3Dhalt_on_error=3D1=
+:abort_on_error=3D1:print_summary=3D1 MALLOC_PERTURB_=3D175 /b/f/w/src/git/=
+qemu/build/tests/qtest/device-introspect-test --tap -k
+=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
+=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
+=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95 =E2=9C=80 =E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
+=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
+=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
+=95
+stderr:
+**
+ERROR:../hw/misc/aspeed_ast1700.c:113:aspeed_ast1700_instance_init:
+code should not be reached
+Broken pipe
+../tests/qtest/libqtest.c:208: kill_qemu() detected QEMU death from
+signal 6 (Aborted) (core dumped)
 
-During axienet_eth_rx_notify(), s->rxpos is modified to indicate how much
-data was pushed to AXI DMA. eth_rx() would then return this value.
-If at 0, network subsystem would consider packet reception as failed
-and put the packet in a queue for later.
+(test program exited with status code -6)
+```
 
-Before we attempt to push packet data to AXI DMA, the packet is stored
-in s->rxmem buffer. If an attempt to push data fails, we will reattempt
-to deliver it from s->rxmem buffer once s2mm stream gets a new descriptor.
-s->rxmem would not be overwritten by a subsequent eth_rx() call, because
-eth_can_rx() protects it in case it has any data at all. Leaving the packet
-in a NetQueue though effectively duplicates it.
+Failed by running:
+```
+./configure \
+  --target-list=3Darm-softmmu,arm-linux-user,aarch64-softmmu,aarch64-linux-=
+user,i386-softmmu
+\
+  --cc=3Dclang-18 --extra-cflags=3D-Wno-deprecated-declarations \
+  --cxx=3Dclang++-18 --extra-cxxflags=3D-Wno-deprecated-declarations
+make -j 32 all check-report-unit.junit.xml
+check-report-qtest-arm.junit.xml check-report-qtest-aarch64.junit.xml
+check-report-qtest-i386.junit.xml
 
-Therefore, eth_rx() must indicate successful packet reception in case
-data push to AXI DMA fails.
+Thanks,
+Nabih
 
-Signed-off-by: Ilya Repko <i.repko@syntacore.com>
----
- hw/net/xilinx_axienet.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Nabih Estefan (he/him) |  Software Engineer |
+nabihestefan@google.com |  857-308-9574
 
-diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-index 31e7708082..101b3f260a 100644
---- a/hw/net/xilinx_axienet.c
-+++ b/hw/net/xilinx_axienet.c
-@@ -867,7 +867,7 @@ static ssize_t eth_rx(NetClientState *nc, const uint8_t *buf, size_t size)
-     axienet_eth_rx_notify(s);
- 
-     enet_update_irq(s);
--    return s->rxpos;
-+    return size;
- }
- 
- static size_t
--- 
-2.51.1
 
+
+On Tue, Nov 4, 2025 at 8:03=E2=80=AFPM Kane Chen via <qemu-devel@nongnu.org=
+> wrote:
+>
+> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+>
+> Connect the SPI device to AST1700 model.
+>
+> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> ---
+>  include/hw/misc/aspeed_ast1700.h |  1 +
+>  hw/misc/aspeed_ast1700.c         | 28 ++++++++++++++++++++++++++++
+>  2 files changed, 29 insertions(+)
+>
+> diff --git a/include/hw/misc/aspeed_ast1700.h b/include/hw/misc/aspeed_as=
+t1700.h
+> index 391c8687f5..e55deea67a 100644
+> --- a/include/hw/misc/aspeed_ast1700.h
+> +++ b/include/hw/misc/aspeed_ast1700.h
+> @@ -33,6 +33,7 @@ struct AspeedAST1700SoCState {
+>      AspeedLTPIState ltpi;
+>      SerialMM uart;
+>      MemoryRegion sram;
+> +    AspeedSMCState spi;
+>  };
+>
+>  #endif /* ASPEED_AST1700_H */
+> diff --git a/hw/misc/aspeed_ast1700.c b/hw/misc/aspeed_ast1700.c
+> index 6f7ff625b5..ba44e484e8 100644
+> --- a/hw/misc/aspeed_ast1700.c
+> +++ b/hw/misc/aspeed_ast1700.c
+> @@ -20,15 +20,19 @@
+>  #define AST1700_SOC_SRAM_SIZE        0x00040000
+>
+>  enum {
+> +    ASPEED_AST1700_DEV_SPI0,
+>      ASPEED_AST1700_DEV_SRAM,
+>      ASPEED_AST1700_DEV_UART12,
+>      ASPEED_AST1700_DEV_LTPI_CTRL,
+> +    ASPEED_AST1700_DEV_SPI0_MEM,
+>  };
+>
+>  static const hwaddr aspeed_ast1700_io_memmap[] =3D {
+> +    [ASPEED_AST1700_DEV_SPI0]      =3D  0x00030000,
+>      [ASPEED_AST1700_DEV_SRAM]      =3D  0x00BC0000,
+>      [ASPEED_AST1700_DEV_UART12]    =3D  0x00C33B00,
+>      [ASPEED_AST1700_DEV_LTPI_CTRL] =3D  0x00C34000,
+> +    [ASPEED_AST1700_DEV_SPI0_MEM]  =3D  0x04000000,
+>  };
+>  static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
+>  {
+> @@ -76,6 +80,20 @@ static void aspeed_ast1700_realize(DeviceState *dev, E=
+rror **errp)
+>                          aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_UART=
+12],
+>                          sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart),=
+ 0));
+>
+> +    /* SPI */
+> +    object_property_set_link(OBJECT(&s->spi), "dram",
+> +                             OBJECT(&s->iomem), &error_abort);
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi), errp)) {
+> +        return;
+> +    }
+> +    memory_region_add_subregion(&s->iomem,
+> +                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_SPI0=
+],
+> +                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->spi), =
+0));
+> +
+> +    memory_region_add_subregion(&s->iomem,
+> +                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_SPI0=
+_MEM],
+> +                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->spi), =
+1));
+> +
+>      /* LTPI controller */
+>      if (!sysbus_realize(SYS_BUS_DEVICE(&s->ltpi), errp)) {
+>          return;
+> @@ -88,11 +106,21 @@ static void aspeed_ast1700_realize(DeviceState *dev,=
+ Error **errp)
+>  static void aspeed_ast1700_instance_init(Object *obj)
+>  {
+>      AspeedAST1700SoCState *s =3D ASPEED_AST1700(obj);
+> +    char socname[8];
+> +    char typename[64];
+> +
+> +    if (sscanf(object_get_typename(obj), "aspeed.ast1700-%7s", socname) =
+!=3D 1) {
+> +        g_assert_not_reached();
+> +    }
+>
+>      /* UART */
+>      object_initialize_child(obj, "uart[*]", &s->uart,
+>                              TYPE_SERIAL_MM);
+>
+> +    /* SPI */
+> +    snprintf(typename, sizeof(typename), "aspeed.spi%d-%s", 0, socname);
+> +    object_initialize_child(obj, "ioexp-spi[*]", &s->spi,
+> +                            typename);
+>      /* LTPI controller */
+>      object_initialize_child(obj, "ltpi-ctrl",
+>                              &s->ltpi, TYPE_ASPEED_LTPI);
+> --
+> 2.43.0
+>
+>
 

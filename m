@@ -4,72 +4,167 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71BCCCCF9F8
-	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 11:49:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8599BCCF9F8
+	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 12:53:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGbyu-0006Mc-Np; Wed, 05 Nov 2025 06:47:17 -0500
+	id 1vGd0O-0004v0-P9; Wed, 05 Nov 2025 07:52:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vGbya-00063C-Mt
- for qemu-arm@nongnu.org; Wed, 05 Nov 2025 06:46:59 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
+ id 1vGd0J-0004uh-Aa; Wed, 05 Nov 2025 07:52:49 -0500
+Received: from mail-northcentralusazlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c105::1] helo=CH1PR05CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vGbyZ-00045y-2g
- for qemu-arm@nongnu.org; Wed, 05 Nov 2025 06:46:56 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762343214;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=29LUfHiShuavtJENtMDfqPVZdMKOAjQ5KT9Nqx8YzVU=;
- b=YipcYHaeo9WYTBPl7dXxGvjcaYifYogXoWg4ySbiMkFxIqRYQk44kC95V9AeeeEthFFy5O
- JuOq/cv9RLjW/NdxOJDWswucUziWZiPifNPZxGp5Fjzew0FX99La+Qar8gHwfrWrtBXRC+
- sR9k13Cl8yf3x+Soq7QhdkYzEbyt6RY=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-53-JHugRRm5P_qQes0t7qSjWg-1; Wed,
- 05 Nov 2025 06:46:51 -0500
-X-MC-Unique: JHugRRm5P_qQes0t7qSjWg-1
-X-Mimecast-MFC-AGG-ID: JHugRRm5P_qQes0t7qSjWg_1762343209
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B2A1719560B7; Wed,  5 Nov 2025 11:46:49 +0000 (UTC)
-Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.5])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A8B641800451; Wed,  5 Nov 2025 11:46:44 +0000 (UTC)
-From: Gavin Shan <gshan@redhat.com>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, jonathan.cameron@huawei.com,
- mchehab+huawei@kernel.org, gengdongjiu1@gmail.com, mst@redhat.com,
- imammedo@redhat.com, anisinha@redhat.com, peter.maydell@linaro.org,
- pbonzini@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v3 8/8] target/arm/kvm: Support multiple memory CPERs injection
-Date: Wed,  5 Nov 2025 21:44:53 +1000
-Message-ID: <20251105114453.2164073-9-gshan@redhat.com>
-In-Reply-To: <20251105114453.2164073-1-gshan@redhat.com>
-References: <20251105114453.2164073-1-gshan@redhat.com>
+ (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
+ id 1vGd0H-00081w-L4; Wed, 05 Nov 2025 07:52:47 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=YaAAzpilOUx/yDsP+aOhC5oIOjmRP0/Bf9kMW1NopbTTIeFIIjpbao0f0OyRAb69G/wo5nmPzsUbNiDWkOOJ/g5fTdNRLxzZk34RbpIwiXFkaSPUb3EhpGamkeIgt90SqLRUkl/QTl0HqcIcaDni486n2NPI3yeOWYdoY7ih6rBFq6r+Nyr+p6z9bO12YiQs59HHS4iq0wEXqf5nYS4pCAJnV+WGfwzYijAmIdqXm1oSGb5ZAGHnCm5vpu6+0jbMywgAXcpiq30u0QYwR1TjOpBk1YCwy+A1pkaRn/sZM7xeKoDSxUVWqGMpBW6uYaLlH1wUHLZZT3ANJzcWuoRJfg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=QTwQtFnoUsvcLXdSMcdmm1qXgOF/RlMa6kZFapVgDi4=;
+ b=PmWQecAp0jmAoXOHFdMh80DzsZspKxDk5GIYGpRfJ8L3AREH5mUPa1g2BTzZLhb3oC2fvEvnOshPZMzv/jNs+wu9LMAt7rsGHpq6C5lXAeY/abQi8pYCivd60E4+vFSD5TQ9GHp0b9GX8dOU41xezl30Lzy0kFZ98B2tNsbIIbXBMNRcGdeen5noZUiBwcOaElx53RfOzdbcm4knusPB/9YQyYr6YH1v9fy6KwD9QEmshcsw5uZzqw42Piqo6UKwR3/hIRtkFY9E8PZjHW9uPgAPXh464jei879KjI7HzMymOMC3jysHOD1fj0BUeFT3DXf0JwTKKg82wo8IJ+xILQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=QTwQtFnoUsvcLXdSMcdmm1qXgOF/RlMa6kZFapVgDi4=;
+ b=BXtNxsQmeQeacs/YszLosjAaQWbcQAF6j45gyzmRaqr28gT9aiSbH3jUxDQCwHZg02wtfOw5dufJA7C7Rv18ZUmppRJmREPIXpwPeWhMY5NszO94I4TWoFR0qcdeNQny2aD/uT56LnJ35eBWvDRdXHiQ4wtmeLavp8axe0G7bVbGpgfgqI54exjsqnUvfZa5QD0x5/ucgfezxyODscbjK9rsZHOmquC8XjXYvWjHGtqwhq/JbBW6ws/AYYFnRN+f+xCKbpaKMdtHJNMxR4j1MHggHRoZvJxHFKjXIk54U0cCLp5JSxKdXWPWjqDVwsXmk4TULorByR4Gab7H8deu8g==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com (2603:10b6:208:c1::17)
+ by DS5PPFDF2DDE6CD.namprd12.prod.outlook.com (2603:10b6:f:fc00::665)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9275.16; Wed, 5 Nov
+ 2025 12:52:39 +0000
+Received: from MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b]) by MN2PR12MB3613.namprd12.prod.outlook.com
+ ([fe80::1b3b:64f5:9211:608b%4]) with mapi id 15.20.9298.006; Wed, 5 Nov 2025
+ 12:52:39 +0000
+Date: Wed, 5 Nov 2025 08:52:38 -0400
+From: Jason Gunthorpe <jgg@nvidia.com>
+To: Shameer Kolothum <skolothumtho@nvidia.com>
+Cc: Nicolin Chen <nicolinc@nvidia.com>, Eric Auger <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ Nathan Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>,
+ "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>
+Subject: Re: [PATCH v5 15/32] hw/pci/pci: Introduce optional
+ get_msi_address_space() callback
+Message-ID: <20251105125238.GQ1537560@nvidia.com>
+References: <20251104153535.GH1537560@nvidia.com>
+ <aQoz2+bLMJWNoVwx@Asurada-Nvidia>
+ <20251104174152.GI1537560@nvidia.com>
+ <aQo+oT0GvhDqtTuT@Asurada-Nvidia>
+ <20251104180928.GK1537560@nvidia.com>
+ <aQpJi37XslsYV+Ez@Asurada-Nvidia>
+ <20251104185651.GL1537560@nvidia.com>
+ <aQpUpv3Rde0PCCIv@Asurada-Nvidia>
+ <20251104193521.GM1537560@nvidia.com>
+ <CH3PR12MB75487B28A865028A45757447ABC4A@CH3PR12MB7548.namprd12.prod.outlook.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CH3PR12MB75487B28A865028A45757447ABC4A@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-ClientProxiedBy: MN2PR17CA0031.namprd17.prod.outlook.com
+ (2603:10b6:208:15e::44) To MN2PR12MB3613.namprd12.prod.outlook.com
+ (2603:10b6:208:c1::17)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.517,
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN2PR12MB3613:EE_|DS5PPFDF2DDE6CD:EE_
+X-MS-Office365-Filtering-Correlation-Id: 1869affc-20ec-4432-e2ed-08de1c6a33c0
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?TuLcq5B59Z4fChw8EgAuEvsc180kWMtJ4sV/AthzoCwI3DHcK3iF0wuXhMaB?=
+ =?us-ascii?Q?AZaf90u9DFP2FlsNgNKFdsTYF6gQ1L0a6sctlbhosO70yMNpuu98wZOEbMWo?=
+ =?us-ascii?Q?/MqvLmwjWvRxWH8bvG9TPnAqNPIiMdZcq9nZ1DwPcgFaKS9+F/pNfi9wPfUa?=
+ =?us-ascii?Q?0BTIStctB9mfW2GplgL+nGUcu1ZMTFViZ0q7Djwa480CACjm9iabzsgsBb+p?=
+ =?us-ascii?Q?qbFSbg1dH3g1/xacxGS6MohKK6Bcn4LXO1+s0HaBT0ZazV3vXu5JiMkZsk23?=
+ =?us-ascii?Q?PTTfxJXtu0vDzMqVw+htM96fl4ZDGQXyKQ0wyejv1b7cOMeBNd35FpY+9YZW?=
+ =?us-ascii?Q?QDyKO1UTfAebfVmEArflfJU0ZvGUVz/AOaGPOrvoDWQp0IpS7A1gJW26MWZF?=
+ =?us-ascii?Q?f/Ksrg1oi2AN3wJXp6DsVnsm2gCRFZH3PDVJANZ+3LM+iOjV0p91yw4xZcIF?=
+ =?us-ascii?Q?ckR97RsGoyYPpadft2Id9lPLfDiz0XS827HpkUmwvNhuZYyVFF5yrHx9ZiCG?=
+ =?us-ascii?Q?wn/u6MPVMRQoSkvtlEpSrPjhB6Z+SYAdwARwGx9b9ud/9vwFcIuck0NiV+Yn?=
+ =?us-ascii?Q?AwmzR8AF2NgWcPRDzIT4DsPD2G1Ta8y5srKS0X3fhE33yb/vtKQwcuqECtRi?=
+ =?us-ascii?Q?y4Nsf0sT6nDPu6AK6tcM9NVF28K9xt418nqJkYMyjRCEGFvlGWAMAp3/2e3i?=
+ =?us-ascii?Q?Sedpep3vvqtEA+F+Q0piT5LDmqlxX9VFKynI2BqiGCdOYs6jyeIxsYBQ8YAr?=
+ =?us-ascii?Q?tcHMMR77+BKy69d0tZgi2R9tUqaFv0/TWqrPnCE7LKdXKp/2dUekcf8NitHh?=
+ =?us-ascii?Q?9woIG7fxThk+hwLsIgkU/wCgQzLXDgB2iBbmz176j2IrXGClsggkRh6+cgCk?=
+ =?us-ascii?Q?Cml9x7NRUVRB3H3MfxehvU+3g+7msfQl+oyftEomaRmzEOQxFWT1EYr9JFni?=
+ =?us-ascii?Q?qb3SJHnsIjXLoSc6TNbiuK8dgnye7w71iY01ImFdN0Poe5Js8BxArnos4j1A?=
+ =?us-ascii?Q?2QUKcGlwikQNEaQVXO7KX8Cvmwme0Fpd84geKLJ7X8lgqKUwgG0ojD/HCP5z?=
+ =?us-ascii?Q?fWumvp9cqwtokUw24v58D7HiKuGCqgDzFGm28hzdNjD0/7RBGqxX6j2ZvQ1d?=
+ =?us-ascii?Q?xQDWln9NQcIbuPyyHME7KgkBF7D0ugIZQyh8OtmsuNPg/g7nXb2kxlDwFsEr?=
+ =?us-ascii?Q?ESoCUjoaArapsaauwNDgRS9hkl9bgOKTXx1piAIzEv6dV0RGF5473hx/NQdp?=
+ =?us-ascii?Q?z8oc36SqMGI8JIpD8yFe+19TDEqgSY2RruidvVMzKrBtTwOzEkNMsQPQyQzR?=
+ =?us-ascii?Q?596GIZifC5GvzVQHyS926cSKChf+ozgtYdHuUKXYLUSMCu6874xAhshqwJMP?=
+ =?us-ascii?Q?zVvsV0USvL/aF0GWGBmOSbSgy6t1fFjYzZox9niLxQ66vhE8jVAc9qhiwA8Q?=
+ =?us-ascii?Q?L8shAj+AGFO8xt+cOtsrH9fIIid2hW3h?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MN2PR12MB3613.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(7416014)(366016); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?gWRL1z3CoM68EiYMIL63+RIZG6JHqvxDMnFX7BJ7TjaIFQ5H+S1/q03Pr3ug?=
+ =?us-ascii?Q?RTnERgBQyFAM/cVqEsxH9bbqAEguVZiQ3nueukdBj/yULcnFydJIDzKt46Q7?=
+ =?us-ascii?Q?1V92+xQIFWu+vBRidLYvO1O2D6Gls5UYVTXjJVhpQZNqpWSqHruuyMHOmiZK?=
+ =?us-ascii?Q?CT8e1SKnv2HI9LyEywSy/dD3rJGVlZ6UubzhX4k0/q2f179CNk/bFSZBEv9F?=
+ =?us-ascii?Q?LaZYljUmB1BpBucasOdZdh8J/F4Jngm0/OiVNrDhK7B/UQgr+Pxa9SClFoBe?=
+ =?us-ascii?Q?p9852enB/Oz6hkMNM75NSYFify+iQKGpQtoIBJhbsLd71Cnd6Cpsr6iUxSs5?=
+ =?us-ascii?Q?hcG5duMLiFIugI3RIqybbDq/sRBTDWU62115vqEXZvRKK7QNoYZ/iCy5y5HC?=
+ =?us-ascii?Q?CMDzOYjZAZBBDMzxeRxysMhB+SmQtM4ZqZn6eHD8+7j8BCakQFEs0ojF6lrF?=
+ =?us-ascii?Q?OKVuuHVn9S4kYZWa33NcMsQ1lf3Wi76ce9XbO5dWesFUcx1jAMlVKu4nQrmi?=
+ =?us-ascii?Q?Nxaj98SvORSHp0RJuWCLlU2Smq99QQB3FJK3SJA6/Yrk+zI53wubXXZ1fOru?=
+ =?us-ascii?Q?5stuuiGpVP6OsYy3QuFEWXwtU7+LqXMK7uX3EB8HAbqiSm1N22QR8fV668bS?=
+ =?us-ascii?Q?pUIRyOJ/wsZALxFrpAWfeh9JEWgZ7hWlE2D5R1YhRPzsztUMQCVheE0Pyg1p?=
+ =?us-ascii?Q?+QQ6n/Akg05LKIkyPwavb2sz8vlJAa+cA6tatXnU2TmiWbGgBo3fj2PetBch?=
+ =?us-ascii?Q?NDGhTccoyxLQIe/jYu7B639Tj4s6bqcmjtTB8Ke0CYkIJCuW2Phr0md6PE1X?=
+ =?us-ascii?Q?ouQmXxChZla02s//OL93fiGzXxbB9CgxnlmGzBtcv41aP/7kdBHYiCV/s+Oy?=
+ =?us-ascii?Q?mGk9SHXEZSyD6jUpH5U5VWnWVJ3+zJl52BZvHXpvA3KpMsIhx3u2yis5xPpi?=
+ =?us-ascii?Q?iHKPO2VrXilIC30oooipG/T+AT+4RNnW9gExxlIefcg41nXajAsVruc1SWRQ?=
+ =?us-ascii?Q?Nq3TnjtTdsQlCTq/tasdTN7SmuDBqmNtlsg7dpRwSQzPHvgDcYx1XgI+hUcz?=
+ =?us-ascii?Q?Lu2ZY1GiHb5bQ0WO6xy/Dp+Yej81YotWfY0mb/SGgPsyRCSW78xtS0SQAhCM?=
+ =?us-ascii?Q?JVxqnxGRmY3srgVucr/Amfyr5in3dAveh1rCxw82B0GKC5SSQKFp6vw5JcfI?=
+ =?us-ascii?Q?aOMOBdAnfws4+7YLvEKMEsRb1HROwFx/HqeLYFLoTifvyVc4kmQfDULq3BTr?=
+ =?us-ascii?Q?lperVVxxkURfQA4pMXeq1XVnrBw89ZhBShFg+h7zi3f+E41js9xHexfazNlX?=
+ =?us-ascii?Q?Y/b6jOE1IyR2yJVC/e4mFXN6Vdf06OUSGILzHaTyYbVXvsehE0/eBVxb4VNI?=
+ =?us-ascii?Q?oeHLSNgk+ZNJ97pWofZ1wEGwQ0X6WY2qkhXX8Vu4UJsxdO/tJcgzRDTVoXm/?=
+ =?us-ascii?Q?ieq/ynWElvkCqZ6iagN0mZqtqqY8c4gt1jkITiCQCCnVIW+0D/DccekZptJW?=
+ =?us-ascii?Q?RDtBbWDmku/+D6kI2Sqacd/UMj8srVMD4NcgAt3pfJ4d/JBaQh18B0f3Pg2Z?=
+ =?us-ascii?Q?D1kg+R5nXszgEHbg+p8=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1869affc-20ec-4432-e2ed-08de1c6a33c0
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3613.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Nov 2025 12:52:39.5135 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 880cm/1CjvigWOtRvBW/XvYfH7diHh0byjClXWSeB/Utx4epwqLyJ6gvdQ9UjAFM
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS5PPFDF2DDE6CD
+Received-SPF: permerror client-ip=2a01:111:f403:c105::1;
+ envelope-from=jgg@nvidia.com;
+ helo=CH1PR05CU001.outbound.protection.outlook.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.517,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,100 +180,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the combination of 64KiB host and 4KiB guest, a problematic host
-page affects 16x guest pages that can be owned by different threads.
-It means 16x memory errors can be raised at once due to the parallel
-accesses to those 16x guest pages on the guest. Unfortunately, QEMU
-can't deliver them one by one because we just one GHES error block,
-corresponding one read acknowledgement register. It can eventually
-cause QEMU crash dump due to the contention on that register, meaning
-the current memory error can't be delivered before the previous error
-isn't acknowledged.
+On Tue, Nov 04, 2025 at 07:46:46PM +0000, Shameer Kolothum wrote:
 
-Imporve push_ghes_memory_errors() to push 16x consecutive memory errors
-under this situation to avoid the contention on the read acknowledgement
-register.
+> If we ignore and don't return the correct doorbell (gPA) here, 
+> Qemu will end up invoking KVM_SET_GSI_ROUTING with wrong doorbell
+> which sets up the in-kernel vgic irq routing information. And when HW
+> raises the IRQ, KVM can't inject it properly.
 
-Signed-off-by: Gavin Shan <gshan@redhat.com>
----
- target/arm/kvm.c | 52 ++++++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 50 insertions(+), 2 deletions(-)
+That cannot be true.
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 5b151eda3c..d7de8262da 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -11,6 +11,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include <sys/ioctl.h>
- 
- #include <linux/kvm.h>
-@@ -2432,12 +2433,59 @@ int kvm_arch_get_registers(CPUState *cs, Error **errp)
- static void push_ghes_memory_errors(CPUState *c, AcpiGhesState *ags,
-                                     uint64_t paddr, Error **errp)
- {
-+    uint64_t val, start, end, guest_pgsz, host_pgsz;
-     uint64_t addresses[16];
-+    uint32_t num_of_addresses;
-+    int ret;
-+
-+    /*
-+     * Sort out the guest page size from TCR_EL1, which can be modified
-+     * by the guest from time to time. So we have to sort it out dynamically.
-+     */
-+    ret = read_sys_reg64(c->kvm_fd, &val, ARM64_SYS_REG(3, 0, 2, 0, 2));
-+    if (ret) {
-+        error_setg(errp, "Error %" PRId32 " to read TCR_EL1 register", ret);
-+        return;
-+    }
-+
-+    switch (extract64(val, 14, 2)) {
-+    case 0:
-+        guest_pgsz = 4 * KiB;
-+        break;
-+    case 1:
-+        guest_pgsz = 64 * KiB;
-+        break;
-+    case 2:
-+        guest_pgsz = 16 * KiB;
-+        break;
-+    default:
-+        error_setg(errp, "Unknown page size from TCR_EL1 (0x%" PRIx64 ")", val);
-+        return;
-+    }
-+
-+    host_pgsz = qemu_real_host_page_size();
-+    start = paddr & ~(host_pgsz - 1);
-+    end = start + host_pgsz;
-+    num_of_addresses = 0;
- 
--    addresses[0] = paddr;
-+    while (start < end) {
-+        /*
-+         * The precise physical address is provided for the affected
-+         * guest page that contains @paddr. Otherwise, the starting
-+         * address of the guest page is provided.
-+         */
-+        if (paddr >= start && paddr < (start + guest_pgsz)) {
-+            addresses[num_of_addresses++] = paddr;
-+        } else {
-+            addresses[num_of_addresses++] = start;
-+        }
-+
-+        start += guest_pgsz;
-+    }
- 
-     kvm_cpu_synchronize_state(c);
--    acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC, addresses, 1, errp);
-+    acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
-+                            addresses, num_of_addresses, errp);
-     kvm_inject_arm_sea(c);
- }
- 
--- 
-2.51.0
+Again, there is no way for qmeu to put something meaningful into the
+'struct kvm_irq_routing_msi' address_lo/hi. It cannot walk the page
+tables so it just ends up with some random meaningless guest IOVA.
 
+Qemu MUST ignore the vMSI's address information.
+
+So either the kernel ignores address_lo/high
+
+OR qemu should match the vPCI device to its single vGIC and put in the
+kernel expected address_lo/high always.
+
+It should never, ever use the value from the guest once nesting is
+enabled, and it should never be trying to translate the vMSI through
+some S2, or any other, address space.
+
+Translation is OK for non-nesting only.
+
+Jason
 

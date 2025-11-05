@@ -4,66 +4,152 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6A37CCF9F8
-	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 09:03:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6575CCCFA0D
+	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 10:27:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGZPr-0005Cp-NT; Wed, 05 Nov 2025 04:02:55 -0500
+	id 1vGajZ-0008UW-6o; Wed, 05 Nov 2025 05:27:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vGZPp-0005By-EC; Wed, 05 Nov 2025 04:02:53 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGajX-0008U0-0W
+ for qemu-arm@nongnu.org; Wed, 05 Nov 2025 05:27:19 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vGZPk-00078i-GG; Wed, 05 Nov 2025 04:02:53 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4d1fV73J7XzHnH97;
- Wed,  5 Nov 2025 17:02:39 +0800 (CST)
-Received: from dubpeml100005.china.huawei.com (unknown [7.214.146.113])
- by mail.maildlp.com (Postfix) with ESMTPS id 796A91402FB;
- Wed,  5 Nov 2025 17:02:44 +0800 (CST)
-Received: from localhost (10.203.177.15) by dubpeml100005.china.huawei.com
- (7.214.146.113) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Wed, 5 Nov
- 2025 09:02:43 +0000
-Date: Wed, 5 Nov 2025 09:02:42 +0000
-To: Gavin Shan <gshan@redhat.com>
-CC: Igor Mammedov <imammedo@redhat.com>, <qemu-arm@nongnu.org>,
- <qemu-devel@nongnu.org>, <mst@redhat.com>, <anisinha@redhat.com>,
- <gengdongjiu1@gmail.com>, <peter.maydell@linaro.org>, <pbonzini@redhat.com>,
- <mchehab+huawei@kernel.org>, <shan.gavin@gmail.com>, James Houghton
- <jthoughton@google.com>
-Subject: Re: [PATCH RESEND v2 3/3] target/arm/kvm: Support multiple memory
- CPERs injection
-Message-ID: <20251105090242.00004f93@huawei.com>
-In-Reply-To: <a4960b41-dd92-408f-a5e8-620b35be212b@redhat.com>
-References: <20251007060810.258536-1-gshan@redhat.com>
- <20251007060810.258536-4-gshan@redhat.com>
- <20251017162746.2a99015b@fedora>
- <a635de53-71fa-4edb-87c0-8775722c284d@redhat.com>
- <20251031145539.3551b0a5@fedora>
- <88a41137-d5fb-4b61-a3f2-dd73133c17ec@redhat.com>
- <20251103105216.1f4241d7@fedora>
- <20251104122151.00006feb@huawei.com>
- <a4960b41-dd92-408f-a5e8-620b35be212b@redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vGajT-0001sY-5I
+ for qemu-arm@nongnu.org; Wed, 05 Nov 2025 05:27:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1762338433;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=UnZQXnRZTyOFsbACApF2SNHIrXKgGwFGrsQwhjKWgwI=;
+ b=QVMyO+5PxE2MCj1FGskW0ZjU39H158mBYuxuY+gZZTkbCkR5dhpabhoaK4LOxn2z6QQDun
+ 5L6AJrYbcpT7wn3jtlLgTgFqpahl+psQOIXFOkkXFCyLSjgMJbspmBK/c/wPG9wsrcgBlT
+ 7+E7BgzukbQOIFT1ie7/C1l7LO9n3TY=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-112-bEuUXsQQMTCi1dJEkFJtSg-1; Wed, 05 Nov 2025 05:27:11 -0500
+X-MC-Unique: bEuUXsQQMTCi1dJEkFJtSg-1
+X-Mimecast-MFC-AGG-ID: bEuUXsQQMTCi1dJEkFJtSg_1762338431
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-47106a388cfso49782245e9.0
+ for <qemu-arm@nongnu.org>; Wed, 05 Nov 2025 02:27:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1762338431; x=1762943231;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UnZQXnRZTyOFsbACApF2SNHIrXKgGwFGrsQwhjKWgwI=;
+ b=LSvQ8aNef26/H6QfONRPUe935lpdqSPzctgW05QncbBtASI+fecSQchnOwXJZtXUVp
+ F1ASQn+rSAL8fx2HzlRd1iNlqNYkOIEAoEIB1iDDFBUsPpiy/P2zdWfZtFEPrSan0mxR
+ QU4OMJz1f9LxJs3e4ES2MJ1cMFD74KcLyxu7Wpqjb59zwIGxHlmSYZIYDOkuk9yLiXtW
+ yEpERNHfqBTWOHlR7UJizBrywhn4W+/5ZhLA8rxFIe0tSrQsW2w/ytmIvtMjPVlpjp0z
+ HsXoHb9Qw00pH/g8oMLVwLVnUF9pEqHknKsdX8DRHfQZMFdnQ3erx40UD28BgXcb4elf
+ oCjQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVdcuBrZQwds65P4gh88D2bIpLv7Ol/d4Nfo1rgIsTKvJVf9eTt9Y57WZ0cYz9G6CsdbLJ64uBkEg==@nongnu.org
+X-Gm-Message-State: AOJu0Yxd9NsbxqhOVT1bN4uaBWfytHKdZ8m6mFz43dDDJRfrC9O0/lLn
+ 1jybw1iNA/dWs4XR4GvDws+yxiFebrXqyl9aKSr33HFSlO3K33n0Tnu1axs/XN06+iO8vHJ3mNI
+ mLLNEmnqauEvO77aP63LG8ZefKbRAFvoQyEpjKEk5+41EhTJmNU9Wwg==
+X-Gm-Gg: ASbGncsZGjjXJR5wk4dTK58ndVGKH1mphW/QayoKhMopvVtLDL8R2askTOvriDWbXMf
+ MbuVROZbSwLakmVzGbD/2Ws6NuAB45fL9rMh4MtMiBSp8nltOncvAEASX9lKdxLIaCa4gM+Dk7P
+ dM9EFSLl+JdxkUHNO7eoPvKPbDVWdU2VQ4axbAlTL8xfX/cp5oZvl5fySym001NkL0a7LlVxxtX
+ z6g0oF3nHKpt9JL8fdyylJX3Nl9+0iINOodA0C/yKG+1LFZP3bnSrkQgg5aJaBIWzhXwhTjpSP6
+ U5MsJ/Z/L5ZpNhCUS9v0rH/zNyDsRwznex8sSLTQro+yIjufy1FLkZcH+ucskWivORAXHNunzGp
+ m14dr1ZtPtLnSi6arla2sRbkWBosatCfRo8EqDw==
+X-Received: by 2002:a05:600c:8b77:b0:471:7a:791a with SMTP id
+ 5b1f17b1804b1-4775cdbe2bemr21285805e9.7.1762338430533; 
+ Wed, 05 Nov 2025 02:27:10 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG7QBmyEMy7IuUwX0Z7DeqgLvwYeTauMNQBs+RrlrAdgoaSE7pow6l9RDSaiUYtnQa7fwRM2Q==
+X-Received: by 2002:a05:600c:8b77:b0:471:7a:791a with SMTP id
+ 5b1f17b1804b1-4775cdbe2bemr21285515e9.7.1762338430034; 
+ Wed, 05 Nov 2025 02:27:10 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4775ce211d8sm41895315e9.11.2025.11.05.02.27.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 05 Nov 2025 02:27:08 -0800 (PST)
+Message-ID: <5e69d550-fc52-43e0-9437-cc8600fc65c7@redhat.com>
+Date: Wed, 5 Nov 2025 11:27:08 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 00/17] hw/arm/aspeed: AST1700 LTPI support and device
+ hookups
+To: Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com
+References: <20251105035859.3709907-1-kane_chen@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20251105035859.3709907-1-kane_chen@aspeedtech.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: CI3834SUNtUZin-2dq9hzaQ7u4EF9i_M4iiel69GTHc_1762338431
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.15]
-X-ClientProxiedBy: lhrpeml500012.china.huawei.com (7.191.174.4) To
- dubpeml100005.china.huawei.com (7.214.146.113)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.788,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,92 +162,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 5 Nov 2025 10:40:10 +1000
-Gavin Shan <gshan@redhat.com> wrote:
+On 11/5/25 04:58, Kane Chen wrote:
+> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> 
+> Hi all,
+> 
+> LTPI (LVDS Tunneling Protocol & Interface) is defined in the OCP DC-SCM
+> 2.0 specification (see Figure 2):
+> https://www.opencompute.org/documents/ocp-dc-scm-2-0-ltpi-ver-1-0-pdf
+> 
+> LTPI provides a protocol and physical interface for tunneling various
+> low-speed signals between the Host Processor Module (HPM) and the
+> Satellite Controller Module (SCM). In Figure 2 of the specification,
+> the AST27x0 SoC (left) integrates two LTPI controllers, allowing it to
+> connect to up to two AST1700 boards. On the other side, the AST1700
+> consolidates HPM FPGA functions and multiple peripheral interfaces
+> (GPIO, UART, I2C, I3C, etc.) onto a single board.
+> 
+> Because the AST1700 exposes additional I/O interfaces (GPIO, I2C, I3C,
+> and others), it acts as an I/O expander. Once connected over LTPI,
+> the AST27x0 can control additional downstream devices through this link.
+> 
+> This patch series introduces a basic LTPI controller model and wires it
+> into the AST27x0 SoC. It also adds the AST1700-specific LTPI expander
+> device and gradually connects common peripherals on the AST1700 model.
+> For blocks that are not yet functionally implemented (I3C, SGPIOM, PWM),
+> their MMIO regions are modeled as unimplemented devices to reserve
+> address space and make the missing functionality explicit, ensuring that
+> guest probing remains stable.
+> 
+> In the official release images, the AST1700 functions are not included
+> by default. To test the AST1700-related functionality, please include
+> the following DTS files for probing:
+> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm64/boot/dts/aspeed/aspeed-ltpi0.dtsi
+> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm64/boot/dts/aspeed/aspeed-ltpi1.dtsi
+> 
+> After including these DTS files in the BMC image, you can verify LTPI
+> functionality using the following scenarios:
+> 
+> 1. In U-Boot:
+>     Run the ltpi command to trigger the LTPI connection and display the
+>     current connection status.
+> 2. In BMC Linux:
+>     Run i2cdetect -y <16-38> to scan and test the I2C buses exposed by
+>     the AST1700.
+> 
+> Any feedback or suggestions are appreciated!
+> 
 
-> Hi Jonathan and Igor,
-> 
-> On 11/4/25 10:21 PM, Jonathan Cameron wrote:
-> > On Mon, 3 Nov 2025 10:52:16 +0100
-> > Igor Mammedov <imammedo@redhat.com> wrote:
-> >   
-> 
-> [...]
-> 
-> >> My idea using per cpu source is just a speculation based on spec
-> >> on how workaround the problem,
-> >> I don't really know if guest OS will be able to handle it (aka,
-> >> need to be tested is it's viable). That also probably was a reason
-> >> in previous review, why should've waited for multiple sources
-> >> support be be merged first before this series.  
-> > 
-> > Per vCPU should work fine but I do like the approach here of reporting
-> > all the related errors in one go as they represent the underlying nature
-> > of the error granularity tracking. If anyone ever poisons at the 1GiB level
-> > on the host they are on their own - so I think that it will only ever be
-> > the finest granularity supported (so worse case 64KiB).
-> >   
-> 
-> Well, I don't have strong opinions, but I intend to agree with Jonathan
-> to report all 16x errors at once. One reason is one as Jonathan mentioned.
-> Another reason is per vCPU error source is a bit heavy for the improvement.
-> 
-> So I'm going to improve (v2) series to address all received comments and
-> post a (v3) series.
-> 
-> I already had the prototype of error source per vcpu, which works fine for
-> 64KB-host-4KB-guest. However, it doesn't work for huge pages. For example,
-> a problematic 512MB huge page can cause heavy memory error storm to QEMU
-> where we absolutely can't handle.
-> 
-> 1. Start the VM with hugetlb pages
-> 
-> /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64                                     \
-> -accel kvm -machine virt,gic-version=host,nvdimm=on,ras=on                                  \
-> -cpu host -smp maxcpus=8,cpus=8,sockets=2,clusters=2,cores=2,threads=1                      \
-> -m 4096M,slots=16,maxmem=128G                                                               \
-> -object memory-backend-file,id=mem0,prealloc=on,mem-path=/dev/hugepages-524288kB,size=4096M \
-> -numa node,nodeid=0,cpus=0-7,memdev=mem0                                                    \
-> 
-> 2. Run 'victim -d' on guest
-> 
-> guest$ ./victim -d
-> physical address of (0xffff889d6000) = 0x11a7da000
-> Hit any key to trigger error:
-> 
-> 3. Inject error from host
-> 
-> host$ errinjct 0x11a7da000
-> 
-> 4. QEMU crashes with error message "Bus error (core dumped)", which is triggered
-> the following path.
-> 
-> sigbus_handler
->    kvm_on_sigbus_vcpu           // have_sigbus_pending = 1
->    sigbus_reraise
+Thanks for the update. The models look better. Let's consider them
+for QEMU 11.0.
 
-To me this sounds like something that should not be happening on the host unless
-a real memory error is detected that blows away the whole of / most of a huge page.
-I'm not sure we care about surviving that case if it isn't mapped using hugetlb/DAX or
-similar in the guest (so contiguous in both with contained impact in both).
 
-I assume the issue is backing with hugetlbfs which doesn't have a sub huge page granularity
-for poison tracking.  I vaguely recall an effort to solve that
-https://lore.kernel.org/linux-mm/20220624173656.2033256-1-jthoughton@google.com/
-was the first thing google threw me. Looks like it got to v2.
-https://lore.kernel.org/linux-mm/20230218002819.1486479-1-jthoughton@google.com/
+Did you run "make check" and "make check-functional" ?
 
-+CC James.
+Thanks,
 
-> 
-> Thanks,
-> Gavin
-> 
-> 
+C.
 
 

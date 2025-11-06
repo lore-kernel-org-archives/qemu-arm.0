@@ -4,91 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A3B0CCFA13
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 14:53:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE2ECCCFA05
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 15:35:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vH1LX-0006Hk-B2; Thu, 06 Nov 2025 09:52:19 -0500
+	id 1vH217-0000IT-Ab; Thu, 06 Nov 2025 10:35:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vH1LV-0006Gq-Nt
- for qemu-arm@nongnu.org; Thu, 06 Nov 2025 09:52:17 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ id 1vH215-0000Hn-JF
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 10:35:15 -0500
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vH1LT-0006c9-PB
- for qemu-arm@nongnu.org; Thu, 06 Nov 2025 09:52:17 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-47109187c32so5006085e9.2
- for <qemu-arm@nongnu.org>; Thu, 06 Nov 2025 06:52:15 -0800 (PST)
+ id 1vH213-0002NC-41
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 10:35:15 -0500
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-787ab220b1cso17792407b3.0
+ for <qemu-arm@nongnu.org>; Thu, 06 Nov 2025 07:35:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1762440733; x=1763045533; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=IKfGG8WVNqNZfFZk1k6i3v3Lr9Uq/tsY8S+cA/a7uyA=;
- b=Uh1YqubzaMGNnQia3ygb9l5iIfyd4WvD04uxKkKotup147RAznumuiXpfZLOrYuNN0
- CbOgvkkk/ArSAiA3WTXCAodZAtvedD2bB+vfKW6Tad9tJuoMOKrTZ1Q2l0WF9Q0XQRZz
- 3I0zCTkVsNbz5fa9ujD3BgQ3GpswDedgEwlRxys9FBRqvtLKS0v4/eLXxYt50ktRswzj
- hzD4Qg0ZeKqoIRZq6oB844nD9Si+zp5QmRr12GBmJ03zDW1WDUvLhofpVnZCPQGmR4SH
- b9E/Vbcnwn7elvSdvTvHUtE2xWj+yP5chlyfoOIdG4xyKdYhGyIaEPTb5hKo04Z7pzFT
- CkMQ==
+ d=linaro.org; s=google; t=1762443312; x=1763048112; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=5AK2aKciqy3kVqhJTGYTxKPvrDhyGUIMBQdaapbIEHw=;
+ b=Aa83KQvcJy/qZl9eUN4rs+YuH++KY8D4ObjqK9ctPBYk63E3R8dSXYf/n0Ae+f4uSX
+ U/a9sukZgPk2Af+AOyfFEeMVn9i014V/eA7KrhF3PBZaUBz9GfISAtJBdhFKfsXy//gq
+ WOyPOnFGYyqdQNar8QX9dXFtcANRa1iYin99xsANHg1oe9xN5oa8n3doAw14W7NAG2LK
+ TlkR2QX3MJKwCjWl8UHsDiJVPnBSMOMWvp0m9tDW5NOyZ369R5zrp0qpqNrIpVa88Zhi
+ pqORD4ybSTL822xMsUKQcdnVDM4D2aJuLcBhC2JZ+Gl7iGPvWGiWmJLR9OqqqI7EHlUR
+ S6JQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762440733; x=1763045533;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=IKfGG8WVNqNZfFZk1k6i3v3Lr9Uq/tsY8S+cA/a7uyA=;
- b=pmfdt59fDNCvEjJPIrocB/gB4uHD6vA+tL7rPC3TtU8F761GW/m1ajBskV6y1nCNQH
- aIlfDxP8WyNO7+3uF0A5KULwhmuB61BLpp5OYI7TIGr0B2s/qeU+yD1MbewxHPALvAMd
- DF9zlTnSYlOaJ3e6yQZ88iBWWj6oc9WcIEnavhe3Dcuj7zK+mnQGxo1pYgZly6tO0RB7
- y6E98TYjbth/gbDPtg9P3N2CiHwKyECg+jkPG7i0+IWFYLp8CZcXs0usjeEeGWytTQ2L
- k6DyfLmJnPGaSUtJTro920tZqxf/rXPVxwaqEm1hlAZWwC4Fg6JkWzGmlMNkNcXl+V6k
- hzbw==
-X-Gm-Message-State: AOJu0Yw9R6/NMl1JobSPQYFnFSKj+xtOcpm1AJV3uuwzbqoA8058/VR7
- +ew5qcpocoPZGlX5+/8xyULuR4e0JtrxsDRuMVinw0MPjisjI3N/FHmhekmcZFb6olUZ3EvATV1
- JdbxM
-X-Gm-Gg: ASbGncsgj1TFh1ryE+Dm++xAmNjyfWF5M9+RLl2DQp5kQLoDh83vLcUHWI2huKiYFlQ
- 7ZVEx3L71zwQ/n+nzMW7cVF6kM+U+MiEx0F5DCQGXHPM6mLTlXA1dDSoKmg1Ymztmd02r60MV/Y
- X4XK/JPmVGLQGsmaKY+MiLTuMIjWBS4Gusjnwk2842R8TwtFz80ygKxAYcvCKUCLed9EAQ0kFVE
- 5leET89rNkC/8nnWPg7KpOfiPdw0wfZGVuxVsZqZ8Sgd44h4TQdpgQKZEMyxtnN1iWsvEd6FWI3
- YpeYpFOYLsbEKnKdwKpXlnMz78lmaXBVHLVUlr50DAxoEE4q1Qz3a/wVUy8JDMnj1qrQclMjJWa
- fGtivUjpEoOouFw3UtJDkMLdUu9Q/KP3AeL2tkh0rKWiz+4UwW6tmRjKaK+2Svc1e34rUPVKV/o
- gbIu1YVw==
-X-Google-Smtp-Source: AGHT+IHrUnXNTboMwEy6K8qkByy9T1L6SjfDoI8enMrKRBk+COkRTdXL0Trghf+prklqWM/Nb29Asw==
-X-Received: by 2002:a05:600c:4e41:b0:46f:b42e:e392 with SMTP id
- 5b1f17b1804b1-4775ce51fc6mr64683235e9.39.1762440733112; 
- Thu, 06 Nov 2025 06:52:13 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429eb47721bsm5694891f8f.25.2025.11.06.06.52.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Nov 2025 06:52:12 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: [PATCH 1/2] hw/display/xlnx_dp.c: Don't abort on AUX FIFO
- overrun/underrun
-Date: Thu,  6 Nov 2025 14:52:08 +0000
-Message-ID: <20251106145209.1083998-2-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251106145209.1083998-1-peter.maydell@linaro.org>
-References: <20251106145209.1083998-1-peter.maydell@linaro.org>
+ d=1e100.net; s=20230601; t=1762443312; x=1763048112;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=5AK2aKciqy3kVqhJTGYTxKPvrDhyGUIMBQdaapbIEHw=;
+ b=i47I2xMT9oO7ZRAmONXHpVryzrhPCcPpdPbOVQwpES1PHXcEv+Xy6tClxY5d64odys
+ w05dtMGd9ywH3tjpelentzboRomSbpfRQtktOG0PssQU1/4aao1xh3sWuwUrKTaZSDq3
+ 4dXcEMpOEKnEEyFo6tcE1J0unwQjxGE/KEvTUeUyVnhe7FjiOR1NWgdLdj82w4wHHj1r
+ 3//893sILb7baJ0VuSDS9MPQvNxECRQh8sx7iR+SN965goKTer1OwOsxfn1dLVy9ThKu
+ VxyBekmkIERHZPSsBseI7EW8N71oGp+QNi1B65rMAYu1S6QAkS0HXx7Dwb845Mpp8+c4
+ IpdQ==
+X-Gm-Message-State: AOJu0Yz8EWq+Y5addu7yIhcBVtXgpq0g7MxC6HPsnmUbkytjG7vwyvr+
+ 7187h6G0q9EQhYFxZENgS/1x2Id7N5HtVg4t8Lvy4oqQHVzMCr28kBK1XnyPKjNrAbPZ2SRgl4S
+ hy7Qt+2q1ib/0I7ocjmC84Lbcrh66VmTakWVBMxMysDLPWbnMwNzgN3Y=
+X-Gm-Gg: ASbGncsquNcz1EryUHzSV84Dqqt4wDy/jR0FBxUkDefHgDrlSyc9Gr6Hwu46Ki9kb60
+ AiFL8KC895jrpKTN1K1i3DiAI8E7ru9KsV1kTTRLImSua/o3rbZugZuLO+xFZbgKgQgiUrFlLaN
+ qZFLHqsb7euTPCBd17H1edK83lObYScK1VhjsSaQ5dYSrrJZ+FGg5MK0J9hKarHFkTeKfD+A6Vd
+ 46oeIxwRQJ9YC6gZrQGVldS97/JXr/wtMoTWMMk57U3OCLipOPuEN+QIodIRw==
+X-Google-Smtp-Source: AGHT+IHN+auJax1uWfWAEw27+ddpWWeTVGsXEup7OP+cBs+oSdCpr/ex3vYyZOQxTfR0NzIdE/Smllz7EDaovm1j6JE=
+X-Received: by 2002:a05:690e:1249:b0:63f:9b56:f5c8 with SMTP id
+ 956f58d0204a3-640b53db765mr3125025d50.2.1762443311706; Thu, 06 Nov 2025
+ 07:35:11 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
+References: <20210108190945.949196-1-wuhaotsh@google.com>
+ <20210108190945.949196-4-wuhaotsh@google.com>
+In-Reply-To: <20210108190945.949196-4-wuhaotsh@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 6 Nov 2025 15:35:00 +0000
+X-Gm-Features: AWmQ_bnfugMgacnS3jYrPAcHTkA3HnMsP5PQdl4c_wvcnVYTbhlD_vl2ER3Lfi4
+Message-ID: <CAFEAcA93eSO8sQf7gXGTQsjjuKf6HfQfF4JJpUk=A3dWYSgYZw@mail.gmail.com>
+Subject: Re: [PATCH v5 3/6] hw/adc: Add an ADC module for NPCM7XX
+To: Hao Wu <wuhaotsh@google.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
+ kfting@nuvoton.com, minyard@acm.org, hskinnemoen@google.com, 
+ venture@google.com, f4bug@amsat.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,85 +95,111 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The documentation of the Xilinx DisplayPort subsystem at
-https://www.xilinx.com/support/documents/ip_documentation/v_dp_txss1/v3_1/pg299-v-dp-txss1.pdf
-doesn't say what happens if a guest tries to issue an AUX write
-command with a length greater than the amount of data in the AUX
-write FIFO, or tries to write more data to the write FIFO than it can
-hold, or issues multiple commands that put data into the AUX read
-FIFO without reading it such that it overflows.
+On Fri, 8 Jan 2021 at 19:10, Hao Wu <wuhaotsh@google.com> wrote:
+>
+> The ADC is part of NPCM7XX Module. Its behavior is controled by the
+> ADC_CON register. It converts one of the eight analog inputs into a
+> digital input and stores it in the ADC_DATA register when enabled.
+>
+> Users can alter input value by using qom-set QMP command.
+>
+> Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
 
-Currently QEMU will abort() in these guest-error situations, either
-in xlnx_dp.c itself or in the fifo8 code.  Make these cases all be
-logged as guest errors instead.  We choose to ignore the new data on
-overflow, and return 0 on underflow. This is in line with how we handled
-the "read from empty RX FIFO" case in commit a09ef5040477.
+Hi; I was looking at a division-by-zero bug in the
+NPCM7xx ADC device which was reported ages ago and
+is still present:
 
-Cc: qemu-stable@nongnu.org
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1418
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1419
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1424
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/display/xlnx_dp.c | 28 ++++++++++++++++++++++++++--
- 1 file changed, 26 insertions(+), 2 deletions(-)
+https://gitlab.com/qemu-project/qemu/-/issues/550
 
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index 96cbb1b3a7d..c2bf692e7b1 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -435,7 +435,18 @@ static void xlnx_dp_aux_clear_rx_fifo(XlnxDPState *s)
- 
- static void xlnx_dp_aux_push_rx_fifo(XlnxDPState *s, uint8_t *buf, size_t len)
- {
-+    size_t avail = fifo8_num_free(&s->rx_fifo);
-     DPRINTF("Push %u data in rx_fifo\n", (unsigned)len);
-+    if (len > avail) {
-+        /*
-+         * Data sheet doesn't specify behaviour here: we choose to ignore
-+         * the excess data.
-+         */
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: ignoring %zu bytes pushed to full RX_FIFO\n",
-+                      __func__, len - avail);
-+        len = avail;
-+    }
-     fifo8_push_all(&s->rx_fifo, buf, len);
- }
- 
-@@ -466,7 +477,18 @@ static void xlnx_dp_aux_clear_tx_fifo(XlnxDPState *s)
- 
- static void xlnx_dp_aux_push_tx_fifo(XlnxDPState *s, uint8_t *buf, size_t len)
- {
-+    size_t avail = fifo8_num_free(&s->tx_fifo);
-     DPRINTF("Push %u data in tx_fifo\n", (unsigned)len);
-+    if (len > avail) {
-+        /*
-+         * Data sheet doesn't specify behaviour here: we choose to ignore
-+         * the excess data.
-+         */
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: ignoring %zu bytes pushed to full TX_FIFO\n",
-+                      __func__, len - avail);
-+        len = avail;
-+    }
-     fifo8_push_all(&s->tx_fifo, buf, len);
- }
- 
-@@ -475,8 +497,10 @@ static uint8_t xlnx_dp_aux_pop_tx_fifo(XlnxDPState *s)
-     uint8_t ret;
- 
-     if (fifo8_is_empty(&s->tx_fifo)) {
--        error_report("%s: TX_FIFO underflow", __func__);
--        abort();
-+        /* Data sheet doesn't specify behaviour here: we choose to return 0 */
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: attempt to read empty TX_FIFO\n",
-+                      __func__);
-+        return 0;
-     }
-     ret = fifo8_pop(&s->tx_fifo);
-     DPRINTF("pop 0x%2.2X from tx_fifo.\n", ret);
--- 
-2.43.0
+The problem is that the guest requests an ADC conversion
+using the "vref" reference, but vref is zero.
 
+Could a Nuvoton-aware person say what is supposed to happen
+here ?
+
+> +static uint32_t npcm7xx_adc_convert(uint32_t input, uint32_t ref)
+> +{
+> +    uint32_t result;
+> +
+> +    result = input * (NPCM7XX_ADC_MAX_RESULT + 1) / ref;
+
+In this function we divide by ref...
+
+> +    if (result > NPCM7XX_ADC_MAX_RESULT) {
+> +        result = NPCM7XX_ADC_MAX_RESULT;
+> +    }
+> +
+> +    return result;
+> +}
+
+> +static void npcm7xx_adc_convert_done(void *opaque)
+> +{
+> +    NPCM7xxADCState *s = opaque;
+> +    uint32_t input = NPCM7XX_ADC_CON_MUX(s->con);
+> +    uint32_t ref = (s->con & NPCM7XX_ADC_CON_REFSEL)
+> +        ? s->iref : s->vref;
+
+...which we set to either s->iref or s->vref, depending
+on whether the guest set the REFSEL bit in the register
+or not...
+
+> +
+> +    if (input >= NPCM7XX_ADC_NUM_INPUTS) {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid input: %u\n",
+> +                      __func__, input);
+> +        return;
+> +    }
+> +    s->data = npcm7xx_adc_convert(s->adci[input], ref);
+> +    if (s->con & NPCM7XX_ADC_CON_INT_EN) {
+> +        s->con |= NPCM7XX_ADC_CON_INT;
+> +        qemu_irq_raise(s->irq);
+> +    }
+> +    s->con &= ~NPCM7XX_ADC_CON_CONV;
+> +}
+
+> +static void npcm7xx_adc_init(Object *obj)
+> +{
+> +    NPCM7xxADCState *s = NPCM7XX_ADC(obj);
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+> +    int i;
+> +
+> +    sysbus_init_irq(sbd, &s->irq);
+> +
+> +    timer_init_ns(&s->conv_timer, QEMU_CLOCK_VIRTUAL,
+> +            npcm7xx_adc_convert_done, s);
+> +    memory_region_init_io(&s->iomem, obj, &npcm7xx_adc_ops, s,
+> +                          TYPE_NPCM7XX_ADC, 4 * KiB);
+> +    sysbus_init_mmio(sbd, &s->iomem);
+> +    s->clock = qdev_init_clock_in(DEVICE(s), "clock", NULL, NULL);
+> +
+> +    for (i = 0; i < NPCM7XX_ADC_NUM_INPUTS; ++i) {
+> +        object_property_add_uint32_ptr(obj, "adci[*]",
+> +                &s->adci[i], OBJ_PROP_FLAG_WRITE);
+> +    }
+> +    object_property_add_uint32_ptr(obj, "vref",
+> +            &s->vref, OBJ_PROP_FLAG_WRITE);
+
+...but we don't do anything here to arrange for the "vref"
+property to have a default value. The board doesn't set
+"vref" on the device, so it is zero, and if the guest
+tries to do a conversion with the vref clock QEMU crashes.
+
+> +static Property npcm7xx_timer_properties[] = {
+> +    DEFINE_PROP_UINT32("iref", NPCM7xxADCState, iref, NPCM7XX_ADC_DEFAULT_IREF),
+
+Here we set a default value for "iref", so that doesn't
+have the same problem.
+
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+
+We should also define a realize method so that we can
+sanity check the iref and vref property values (notably
+not allowing them to be set to zero, but also any other
+sanitization that makes sense for the hardware.)
+
+thanks
+-- PMM
 

@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCDC6CCFA03
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 08:52:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2636FCCFA03
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 08:52:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGvh3-0003lI-JZ; Thu, 06 Nov 2025 03:50:09 -0500
+	id 1vGvgX-0002vQ-GT; Thu, 06 Nov 2025 03:49:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vGvh1-0003j9-WB; Thu, 06 Nov 2025 03:50:08 -0500
+ id 1vGvgW-0002vE-3V; Thu, 06 Nov 2025 03:49:36 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vGvh0-0005ZE-7P; Thu, 06 Nov 2025 03:50:07 -0500
+ id 1vGvgT-0005Sg-So; Thu, 06 Nov 2025 03:49:35 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 6 Nov
- 2025 16:49:29 +0800
+ 2025 16:49:25 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 6 Nov 2025 16:49:29 +0800
+ Transport; Thu, 6 Nov 2025 16:49:25 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -34,13 +34,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 10/12] tests/functional/arm/test_aspeed_ast1060: Add
- functional tests for Aspeed AST1060 SoC
-Date: Thu, 6 Nov 2025 16:49:19 +0800
-Message-ID: <20251106084925.1253704-11-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 00/12] hw/arm/aspeed: Add AST1060 SoC and EVB support
+Date: Thu, 6 Nov 2025 16:49:09 +0800
+Message-ID: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
-References: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
@@ -69,88 +66,46 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add functional tests for the Aspeed AST1060 SoC and its evaluation board.
-The new test test_aspeed_ast1060.py validates booting the AST1060 EVB
-machine using the Zephyr OS and ASPEED PROT application (ast1060_prot_v03.02.tgz)
-and ensures basic console functionality.
+v1:
+  1. Add SFDP table for Winbond W25Q02JVM flash
+  2. Add AST1060 SoC and EVB support
+  3. Fix missing SPI IRQ connection causing DMA interrupt failure
+  4. Fix the revision ID cannot be set in the SOC layer for AST2600 and AST1030
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- tests/functional/arm/meson.build            |  1 +
- tests/functional/arm/test_aspeed_ast1060.py | 52 +++++++++++++++++++++
- 2 files changed, 53 insertions(+)
+Jamin Lin (12):
+  hw/arm/aspeed: Fix missing SPI IRQ connection causing DMA interrupt
+    failure
+  hw/block/m25p80: Add SFDP table for Winbond W25Q02JVM flash
+  hw/misc/aspeed_scu: Fix the revision ID cannot be set in the SOC layer
+    for AST2600 and AST1030
+  hhw/misc/aspeed_scu: Add AST1060 A2 silicon revision definition
+  hw/arm/aspeed_ast10x0: Add common init function for AST10x0 SoCs
+  hw/arm/aspeed_ast10x0: Add common realize function for AST10x0 SoCs
+  hw/arm/aspeed_ast10x0: Pass SoC name to common init for AST10x0 family
+    reuse
+  hw/arm/aspeed_ast10x0: Add AST1060 SoC support
+  hw/arm/aspeed_ast10x0_evb: Add AST1060 EVB machine support
+  tests/functional/arm/test_aspeed_ast1060: Add functional tests for
+    Aspeed AST1060 SoC
+  docs/system/arm/aspeed: Update Aspeed and 2700 family boards list
+  docs/system/arm/aspeed: Update Aspeed MiniBMC section to include
+    AST1060 PFR processor
+
+ docs/system/arm/aspeed.rst                  |  28 ++-
+ hw/block/m25p80_sfdp.h                      |   1 +
+ include/hw/misc/aspeed_scu.h                |   1 +
+ hw/arm/aspeed_ast10x0.c                     | 216 +++++++++++++-------
+ hw/arm/aspeed_ast10x0_evb.c                 |  23 +++
+ hw/arm/aspeed_ast2600.c                     |   2 +
+ hw/arm/aspeed_ast27x0.c                     |   2 +
+ hw/block/m25p80.c                           |   2 +
+ hw/block/m25p80_sfdp.c                      |  36 ++++
+ hw/misc/aspeed_scu.c                        |   5 +-
+ tests/functional/arm/meson.build            |   1 +
+ tests/functional/arm/test_aspeed_ast1060.py |  52 +++++
+ 12 files changed, 287 insertions(+), 82 deletions(-)
  create mode 100644 tests/functional/arm/test_aspeed_ast1060.py
 
-diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
-index d1ed076a6a..1762a49604 100644
---- a/tests/functional/arm/meson.build
-+++ b/tests/functional/arm/meson.build
-@@ -28,6 +28,7 @@ tests_arm_system_quick = [
- 
- tests_arm_system_thorough = [
-   'aspeed_ast1030',
-+  'aspeed_ast1060',
-   'aspeed_palmetto',
-   'aspeed_romulus',
-   'aspeed_witherspoon',
-diff --git a/tests/functional/arm/test_aspeed_ast1060.py b/tests/functional/arm/test_aspeed_ast1060.py
-new file mode 100644
-index 0000000000..034efa5342
---- /dev/null
-+++ b/tests/functional/arm/test_aspeed_ast1060.py
-@@ -0,0 +1,52 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots the ASPEED SoCs with firmware
-+#
-+# Copyright (C) 2025 ASPEED Technology Inc
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+from aspeed import AspeedTest
-+from qemu_test import Asset, exec_command_and_wait_for_pattern
-+
-+
-+class AST1060Machine(AspeedTest):
-+    ASSET_ASPEED_AST1060_PROT_3_02 = Asset(
-+        ('https://github.com/AspeedTech-BMC'
-+         '/aspeed-zephyr-project/releases/download/v03.02'
-+         '/ast1060_prot_v03.02.tgz'),
-+         'dd5f1adc935316ddd1906506a02e15567bd7290657b52320f1a225564cc175bd')
-+
-+    def test_arm_ast1060_prot_3_02(self):
-+        self.set_machine('ast1060-evb')
-+
-+        kernel_name = "ast1060_prot/zephyr.bin"
-+        kernel_file = self.archive_extract(
-+            self.ASSET_ASPEED_AST1060_PROT_3_02, member=kernel_name)
-+
-+        self.vm.set_console()
-+        self.vm.add_args('-kernel', kernel_file, '-nographic')
-+        self.vm.launch()
-+        self.wait_for_console_pattern("Booting Zephyr OS")
-+        exec_command_and_wait_for_pattern(self, "help",
-+                                          "Available commands")
-+
-+    def test_arm_ast1060_otp_blockdev_device(self):
-+        self.vm.set_machine("ast1060-evb")
-+
-+        kernel_name = "ast1060_prot/zephyr.bin"
-+        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_02,
-+                                           member=kernel_name)
-+        otp_img = self.generate_otpmem_image()
-+
-+        self.vm.set_console()
-+        self.vm.add_args(
-+            "-kernel", kernel_file,
-+            "-blockdev", f"driver=file,filename={otp_img},node-name=otp",
-+            "-global", "aspeed-otp.drive=otp",
-+        )
-+        self.vm.launch()
-+        self.wait_for_console_pattern("Booting Zephyr OS")
-+
-+if __name__ == '__main__':
-+    AspeedTest.main()
 -- 
 2.43.0
 

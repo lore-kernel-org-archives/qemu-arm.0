@@ -4,100 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D18C1CCFA03
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 07:58:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9F21CCFA03
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 08:46:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGusZ-0007WT-Vr; Thu, 06 Nov 2025 02:58:00 -0500
+	id 1vGvdD-0001ns-3c; Thu, 06 Nov 2025 03:46:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vGusY-0007VW-KE
- for qemu-arm@nongnu.org; Thu, 06 Nov 2025 02:57:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vGvdB-0001n4-7V
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 03:46:09 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vGusW-0001QR-Gc
- for qemu-arm@nongnu.org; Thu, 06 Nov 2025 02:57:58 -0500
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vGvd5-0000ve-8V
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 03:46:08 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762415874;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1762418760;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=QnqGOoBBs6TE2c0mh+SOxY2RQrVewAJeKPAP2OzNiO4=;
- b=ir1nvn/3w0F8PuAkQOo+Rf6jxcQa2E8aNRa3ZQirYWa2wDGE8mxDeD3F6O1qtimAhIT1cq
- 9Jf78Ws6F6mFVO/5kHUFRDTbdmF4WRD29QI+cBbZIMGZmbVyNp/jJA9NlUAFooXXRKgfi4
- 49EfQU7OwZJv5K4MkWuYZd4VNiF4TKY=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=L1Hvu5InP1NiVOb7qGH8XRbwDQN1L1qk73OrVYDw2B8=;
+ b=EwJvmW9Rx9iAMbRm5+i9qDQ5fUjF/YpZf9iz+GT2wPWmBQ0WYqqpq+hJaa8L13c8EdWZyQ
+ Kq0JiZkjaXmsrgV4NZ4kT40rvgGwQ20Gpw8TzLK8dig8TPAklqudJW4Odx4ETfYJsZzYAx
+ SI8ycfTGmILOp+Een3YHEFcX9opUe3U=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-90-q_pydj7yM0eXZ_mufCaRqA-1; Thu, 06 Nov 2025 02:57:52 -0500
-X-MC-Unique: q_pydj7yM0eXZ_mufCaRqA-1
-X-Mimecast-MFC-AGG-ID: q_pydj7yM0eXZ_mufCaRqA_1762415872
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-475e032d81bso4120845e9.3
- for <qemu-arm@nongnu.org>; Wed, 05 Nov 2025 23:57:52 -0800 (PST)
+ us-mta-267-xn0Gc1gxPw2FnKoqgr2w9Q-1; Thu, 06 Nov 2025 03:45:59 -0500
+X-MC-Unique: xn0Gc1gxPw2FnKoqgr2w9Q-1
+X-Mimecast-MFC-AGG-ID: xn0Gc1gxPw2FnKoqgr2w9Q_1762418758
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-46e47d14dceso3028155e9.2
+ for <qemu-arm@nongnu.org>; Thu, 06 Nov 2025 00:45:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762415871; x=1763020671;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=QnqGOoBBs6TE2c0mh+SOxY2RQrVewAJeKPAP2OzNiO4=;
- b=JuamWbH589QP6uv6I1YH4n0ssZ9Z+8nd+1OyIxGNpELnp8OMF/q4O2A0TtRTeXNKO1
- fovpxEcegx4bNcBL3PlbpHIkCatGa+cXQShavtxbNp756SO6KO70dH/LKsItorHNzWJN
- i9VDswpZmhDfcC8rWovmThwBCWadl1qC3wh6i0TdoT+2x0gEpEq1O+lkcnE+hnNQW2VF
- AYisObGJTXEIkMCH0ECIGZkiliyxmupXvGtEpTASFi4amj8qUjf/oiYr/nnt3DIajvph
- y2pvefgBcco0JQApoeOPU7b15ei+dWwlqONFWJUlPki9s7oX2s8akAYxlID4IKTC015P
- zq+w==
-X-Gm-Message-State: AOJu0YzmZEascmatJTM+QJRT087XCSDTy6WpumnHt+r9L+ggvH17fhUi
- FXV2v2BAdfYeK2G5qce5VQbpBUsl/Wz2f0WueJqix0EzH7OEHdn9pOdBqd7ofixz8YbFn08iG1Z
- W6uRFiEW6HkcvXserDAkKwZjr4rPnyXuPEbAjweBZVs9HsvvZf5qBpA==
-X-Gm-Gg: ASbGncsOqaW8UskfsYty0NDu5eeyhNPn7HHnOLjNAEwS/YzvYP9pqxg0z1xGmtCNSrQ
- xktNXp42aiXfmx7byIBRnuLtIJhDs5aArBoicFU7qoVoLtZpPVRxsxQGqeQ5Ec19Xbxd+AcV2SU
- 1/mGBNzfFmWSOWc+/IQYT1HcCosFOkAG3xHfszxPKMl2VuFL+SiAQ2zYa3dX1q8/Iu25zx8NKlM
- mxpWhezVxC8LFUiCEw4OHMYNt1N+KMUrji2+lrWiPe3GdNL8qN5NTe6abjl+F/58KZYbrWY4AKR
- 7AOjeT9CTMrvHo5ZwFwpOU24wiSDG94kp7etQI7JTtTvehoX2r14sVX4grh3Knh/9A==
-X-Received: by 2002:a05:600c:46ce:b0:477:1af2:f40a with SMTP id
- 5b1f17b1804b1-4775cdc9053mr55585665e9.17.1762415871427; 
- Wed, 05 Nov 2025 23:57:51 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEXVz6gtrcVTjVrzHeAZ+4ijzRBvSi8AV++A8EAVgdMQjL4T+CQu+M97yyqqUXJAM0nxyPpvA==
-X-Received: by 2002:a05:600c:46ce:b0:477:1af2:f40a with SMTP id
- 5b1f17b1804b1-4775cdc9053mr55585435e9.17.1762415870942; 
- Wed, 05 Nov 2025 23:57:50 -0800 (PST)
-Received: from fedora ([85.93.96.130]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-429eb4ad537sm3384567f8f.42.2025.11.05.23.57.49
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Nov 2025 23:57:50 -0800 (PST)
-Date: Thu, 6 Nov 2025 08:57:48 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com,
- anisinha@redhat.com, gengdongjiu1@gmail.com, peter.maydell@linaro.org,
- pbonzini@redhat.com, mchehab+huawei@kernel.org,
- Jonathan.Cameron@huawei.com, shan.gavin@gmail.com
-Subject: Re: [PATCH RESEND v2 3/3] target/arm/kvm: Support multiple memory
- CPERs injection
-Message-ID: <20251106085748.2e5f6681@fedora>
-In-Reply-To: <1cde8845-d72f-494f-b7b2-3d7329a7d1c0@redhat.com>
-References: <20251007060810.258536-1-gshan@redhat.com>
- <20251007060810.258536-4-gshan@redhat.com>
- <20251017162746.2a99015b@fedora>
- <a635de53-71fa-4edb-87c0-8775722c284d@redhat.com>
- <20251031145539.3551b0a5@fedora>
- <88a41137-d5fb-4b61-a3f2-dd73133c17ec@redhat.com>
- <20251103105216.1f4241d7@fedora>
- <1cde8845-d72f-494f-b7b2-3d7329a7d1c0@redhat.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+ d=1e100.net; s=20230601; t=1762418758; x=1763023558;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=L1Hvu5InP1NiVOb7qGH8XRbwDQN1L1qk73OrVYDw2B8=;
+ b=bmcb8XPMb9FttjMkx3PZdsFx8frfSKx+JiwnMQPOdb3ma/2+YO/LdskgIgz+DHzsOc
+ +1/6/Kzl9bQchrGBgWBo/4mM/wb/koI2P+lGSSduVpnKbL77W5Dj7uFjWLWfmQWcoSXB
+ rLtS+F3+dMXZj4xckGtVJVOTXfHnimjzSybFL8xD4OJsE3nXpi738Hu+VmAsnKsdjjeS
+ B02xVWpvA/QWcgzmCXF/fwKgEKv6q01ORk3dsWOTCiJ3sroXSVd1b+ns2A6QpTT1brLp
+ Dz/vvlF0kwe5tGzNMwoIiRaNDpJNacq2YappLSo5GpGxFLlyWimrc0fotY6eY4lsE2vi
+ UWJQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVHlBLi8nWRbek8X2dseOK4bkQfVfJ9Vt8U30mEFNtb22Qq+6EIgOp8SREJ/ijahfem+D3E2CzyDg==@nongnu.org
+X-Gm-Message-State: AOJu0YxHLYET3K1dsUr1WmZ1LB2niM8WSX+t7GUbqHqilJwGUHAKz5cm
+ P5bSjqmR1v862O0KTokSrUgrPTs5PhcgIOy8QCQv0/8A9HzijuSW+jiVDLX2lnvjjoGdMpxgJyJ
+ QA59MD7e7dAGc7LDKR34rFPiDOU9aNlF65A3BZl2eW5IyJI6pZfRQ2Q==
+X-Gm-Gg: ASbGncu17BgCczLlEOF0NWxTm6HzgPQczFGOkx+yho1sCI0K/ZY/UC9I7n9ImSBM9K/
+ tS1rH95S3YgqR/qXcMJjbC+O2IxcLC9lZuLAbJj4rqO/8tXeVRrICvWhnjbqOOcfCBSTrv6Sc/M
+ vaAofWhZ3gb/VxvaXChrHc5vIEhiSLLiewT08PhrMobG8gnjPLy/1GOK9tzcac53n0dugvI1ImK
+ K3jrUjfYXvj7RoYO8qNf80gGvjuJ3cgdCO4vRfFI6fySbJJNqRcqwJlxbAeBE9ggYmY31i4lfnq
+ ngWNTtfshktlDtEvnM9XPSLW2fG9rXmqqfUoYNJ0NEFG0JcK/QvCmVwMWUgDtrn2AATAvEFtclE
+ W0Vwf3M+51/gTGsrhmOU07wjRbnYW4ldMT0kLCr8VPrBPng==
+X-Received: by 2002:a05:600c:45c7:b0:477:19c2:9765 with SMTP id
+ 5b1f17b1804b1-4775cdad684mr58104305e9.4.1762418758257; 
+ Thu, 06 Nov 2025 00:45:58 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGRsJ/vUrRvb6R51p9yDw2mUterNInMI9xJbtNzCEsIig1yamvxe62pvURMCrgSultJhDo8vA==
+X-Received: by 2002:a05:600c:45c7:b0:477:19c2:9765 with SMTP id
+ 5b1f17b1804b1-4775cdad684mr58103995e9.4.1762418757802; 
+ Thu, 06 Nov 2025 00:45:57 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-429ef2d58c2sm1723932f8f.16.2025.11.06.00.45.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Nov 2025 00:45:57 -0800 (PST)
+Message-ID: <518b7ace-f71c-43d4-bd85-7dc485c19649@redhat.com>
+Date: Thu, 6 Nov 2025 09:45:56 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 30/32] Extend get_cap() callback to support PASID
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+ ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
+ kjaju@nvidia.com
+References: <20251031105005.24618-1-skolothumtho@nvidia.com>
+ <20251031105005.24618-31-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20251031105005.24618-31-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: eXnifnJryyVLV3mIiRqQHokjBDTwohdLSyIkLzcmjMo_1762415872
+X-Mimecast-MFC-PROC-ID: azRZkukYX-pQTz84VEtV1-v9uOdfiiBmGQF1Tf8rbtY_1762418758
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -25
 X-Spam_score: -2.6
 X-Spam_bar: --
@@ -118,245 +122,157 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 4 Nov 2025 09:51:42 +1000
-Gavin Shan <gshan@redhat.com> wrote:
 
-> On 11/3/25 7:52 PM, Igor Mammedov wrote:
-> > On Mon, 3 Nov 2025 09:02:54 +1000
-> > Gavin Shan <gshan@redhat.com> wrote:
-> >   
-> >> On 10/31/25 11:55 PM, Igor Mammedov wrote:  
-> >>> On Sun, 19 Oct 2025 10:36:16 +1000
-> >>> Gavin Shan <gshan@redhat.com> wrote:  
-> >>>> On 10/18/25 12:27 AM, Igor Mammedov wrote:  
-> >>>>> On Tue,  7 Oct 2025 16:08:10 +1000
-> >>>>> Gavin Shan <gshan@redhat.com> wrote:
-> >>>>>         
-> >>>>>> In the combination of 64KB host and 4KB guest, a problematic host page
-> >>>>>> affects 16x guest pages. In this specific case, it's reasonable to
-> >>>>>> push 16 consecutive memory CPERs. Otherwise, QEMU can run into core
-> >>>>>> dump due to the current error can't be delivered as the previous error
-> >>>>>> isn't acknoledges. It's caused by the nature the host page can be
-> >>>>>> accessed in parallel due to the mismatched host and guest page sizes.  
-> >>>>>
-> >>>>> can you explain a bit more what goes wrong?
-> >>>>>
-> >>>>> I'm especially interested in parallel access you've mentioned
-> >>>>> and why batch adding error records is needed
-> >>>>> as opposed to adding records every time invalid access happens?
-> >>>>>
-> >>>>> PS:
-> >>>>> Assume I don't remember details on how HEST works,
-> >>>>> Answering it in this format also should improve commit message
-> >>>>> making it more digestible for uninitiated.
-> >>>>>         
-> >>>>
-> >>>> Thanks for your review and I'm trying to answer your question below. Please let
-> >>>> me know if there are more questions.
-> >>>>
-> >>>> There are two signals (BUS_MCEERR_AR and BUS_MCEERR_AO) and BUS_MCEERR_AR is
-> >>>> concerned here. This signal BUS_MCEERR_AR is sent by host's stage2 page fault
-> >>>> handler when the resolved host page has been marked as marked as poisoned.
-> >>>> The stage2 page fault handler is invoked on every access to the host page.
-> >>>>
-> >>>> In the combination where host and guest has 64KB and 4KB separately, A 64KB
-> >>>> host page corresponds to 16x consecutive 4KB guest pages. It means we're
-> >>>> accessing the 64KB host page when any of those 16x consecutive 4KB guest pages
-> >>>> is accessed. In other words, a problematic 64KB host page affects the accesses
-> >>>> on 16x 4KB guest pages. Those 16x 4KB guest pages can be owned by different
-> >>>> threads on the guest and they run in parallel, potentially to access those
-> >>>> 16x 4KB guest pages in parallel. It potentially leading to 16x BUS_MCEERR_AR
-> >>>> signals at one point.
-> >>>>
-> >>>> In current implementation, the error record is built as the following calltrace
-> >>>> indicates. There are 16 error records in the extreme case (parallel accesses on
-> >>>> 16x 4KB guest pages, mapped to one 64KB host page). However, we can't handle
-> >>>> multiple error records at once due to the acknowledgement mechanism in
-> >>>> ghes_record_cper_errors(). For example, the first error record has been sent,
-> >>>> but not consumed by the guest yet. We fail to send the second error record.
-> >>>>
-> >>>> kvm_arch_on_sigbus_vcpu
-> >>>>      acpi_ghes_memory_errors
-> >>>>        ghes_gen_err_data_uncorrectable_recoverable      // Generic Error Data Entry
-> >>>>        acpi_ghes_build_append_mem_cper                  // Memory Error
-> >>>>        ghes_record_cper_errors
-> >>>>          
-> >>>> So this series improves this situation by simply sending 16x error records in
-> >>>> one shot for the combination of 64KB host + 4KB guest.  
-> >>>
-> >>> 1) What I'm concerned about is that it target one specific case only.
-> >>> Imagine if 1st cpu get error on page1 and another on page2=(page1+host_page_size)
-> >>> and so on for other CPUs. Then we are back where we were before this series.
-> >>>
-> >>> Also in abstract future when ARM gets 1Gb pages, that won't scale well.
-> >>>
-> >>> Can we instead of making up CPERs to cover whole host page,
-> >>> create 1/vcpu GHES source?
-> >>> That way when vcpu trips over bad page, it would have its own
-> >>> error status block to put errors in.
-> >>> That would address [1] and deterministically scale
-> >>> (well assuming that multiple SEA error sources are possible in theory)
-> >>>      
-> >>
-> >> I think it's a good idea to have individual error source for each vCPU. In this
-> >> way, the read_ack_reg won't be a limitation. I hope Jonathan is ok to this scheme.
-> >>
-> >> Currently, we have two (fixed) error sources like below. I assume the index of
-> >> the error source per vCPU will starts from (ACPI_HEST_SRC_ID_QMP + 1) based on
-> >> CPUState::cpu_index.  
-> > 
-> > I'd suggest ditch cpu index and use arch_id instead.
-> >   
-> 
-> arch_id, which is returned from CPUClass::get_arch_id(), is uint64_t. The error
-> source index is uint16_t, as defined in ACPI spec 6.5 (section 18.3.2.7 Generic
-> Hardware Error Source). So I think CPUState::cpu_index is the appropriate error
-> source index.
 
-while for ARM cpu_index might work, it's not stable on targets where CPU hotplug
-exists. Given it's generic ACPI code, It would be better to take this consideration
-into account.
-
-(aka make a map of arch_id to src_id if necessary)
-
-> 
-> >>
-> >> enum AcpiGhesSourceID {
-> >>       ACPI_HEST_SRC_ID_SYNC,
-> >>       ACPI_HEST_SRC_ID_QMP,       /* Use it only for QMP injected errors */
-> >> };
-> >>
-> >>  
-> >>> PS:
-> >>> I also wonder what real HW does when it gets in similar situation
-> >>> (i.e. error status block is not yet acknowledged but another async
-> >>> error arrived for the same error source)?
-> >>>      
-> >>
-> >> I believe real HW also have this specific issue. As to ARM64, I ever did some
-> >> google search and was told the error follows the firmware-first policy and
-> >> handled by a component of trustfirmware-a. However, I was unable to get the
-> >> source code. So it's hard for me to know how this specific issue is handled
-> >> there.  
-> > 
-> > Perhaps Jonathan can help with finding how real hw works around it?
-> > 
-> > My idea using per cpu source is just a speculation based on spec
-> > on how workaround the problem,
-> > I don't really know if guest OS will be able to handle it (aka,
-> > need to be tested is it's viable). That also probably was a reason
-> > in previous review, why should've waited for multiple sources
-> > support be be merged first before this series.
-> >   
-> 
-> Well, the point is the guest won't be full functional until the the problematic
-> host page is isolated and replaced by another host page. To avoid crash the qemu
-> still gives customer a chance to collect important information from the guest
-> by luck.
-> 
-> Thanks,
-> Gavin
-> 
-> 
-> >>  
-> >>>>>> Imporve push_ghes_memory_errors() to push 16x consecutive memory CPERs
-> >>>>>> for this specific case. The maximal error block size is bumped to 4KB,
-> >>>>>> providing enough storage space for those 16x memory CPERs.
-> >>>>>>
-> >>>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> >>>>>> ---
-> >>>>>>     hw/acpi/ghes.c   |  2 +-
-> >>>>>>     target/arm/kvm.c | 46 +++++++++++++++++++++++++++++++++++++++++++++-
-> >>>>>>     2 files changed, 46 insertions(+), 2 deletions(-)
-> >>>>>>
-> >>>>>> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> >>>>>> index 045b77715f..5c87b3a027 100644
-> >>>>>> --- a/hw/acpi/ghes.c
-> >>>>>> +++ b/hw/acpi/ghes.c
-> >>>>>> @@ -33,7 +33,7 @@
-> >>>>>>     #define ACPI_HEST_ADDR_FW_CFG_FILE          "etc/acpi_table_hest_addr"
-> >>>>>>     
-> >>>>>>     /* The max size in bytes for one error block */
-> >>>>>> -#define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
-> >>>>>> +#define ACPI_GHES_MAX_RAW_DATA_LENGTH   (4 * KiB)
-> >>>>>>     
-> >>>>>>     /* Generic Hardware Error Source version 2 */
-> >>>>>>     #define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
-> >>>>>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> >>>>>> index c5d5b3b16e..3ecb85e4b7 100644
-> >>>>>> --- a/target/arm/kvm.c
-> >>>>>> +++ b/target/arm/kvm.c
-> >>>>>> @@ -11,6 +11,7 @@
-> >>>>>>      */
-> >>>>>>     
-> >>>>>>     #include "qemu/osdep.h"
-> >>>>>> +#include "qemu/units.h"
-> >>>>>>     #include <sys/ioctl.h>
-> >>>>>>     
-> >>>>>>     #include <linux/kvm.h>
-> >>>>>> @@ -2433,10 +2434,53 @@ static void push_ghes_memory_errors(CPUState *c, AcpiGhesState *ags,
-> >>>>>>                                         uint64_t paddr)
-> >>>>>>     {
-> >>>>>>         GArray *addresses = g_array_new(false, false, sizeof(paddr));
-> >>>>>> +    uint64_t val, start, end, guest_pgsz, host_pgsz;
-> >>>>>>         int ret;
-> >>>>>>     
-> >>>>>>         kvm_cpu_synchronize_state(c);
-> >>>>>> -    g_array_append_vals(addresses, &paddr, 1);
-> >>>>>> +
-> >>>>>> +    /*
-> >>>>>> +     * Sort out the guest page size from TCR_EL1, which can be modified
-> >>>>>> +     * by the guest from time to time. So we have to sort it out dynamically.
-> >>>>>> +     */
-> >>>>>> +    ret = read_sys_reg64(c->kvm_fd, &val, ARM64_SYS_REG(3, 0, 2, 0, 2));
-> >>>>>> +    if (ret) {
-> >>>>>> +        goto error;
-> >>>>>> +    }
-> >>>>>> +
-> >>>>>> +    switch (extract64(val, 14, 2)) {
-> >>>>>> +    case 0:
-> >>>>>> +        guest_pgsz = 4 * KiB;
-> >>>>>> +        break;
-> >>>>>> +    case 1:
-> >>>>>> +        guest_pgsz = 64 * KiB;
-> >>>>>> +        break;
-> >>>>>> +    case 2:
-> >>>>>> +        guest_pgsz = 16 * KiB;
-> >>>>>> +        break;
-> >>>>>> +    default:
-> >>>>>> +        error_report("unknown page size from TCR_EL1 (0x%" PRIx64 ")", val);
-> >>>>>> +        goto error;
-> >>>>>> +    }
-> >>>>>> +
-> >>>>>> +    host_pgsz = qemu_real_host_page_size();
-> >>>>>> +    start = paddr & ~(host_pgsz - 1);
-> >>>>>> +    end = start + host_pgsz;
-> >>>>>> +    while (start < end) {
-> >>>>>> +        /*
-> >>>>>> +         * The precise physical address is provided for the affected
-> >>>>>> +         * guest page that contains @paddr. Otherwise, the starting
-> >>>>>> +         * address of the guest page is provided.
-> >>>>>> +         */
-> >>>>>> +        if (paddr >= start && paddr < (start + guest_pgsz)) {
-> >>>>>> +            g_array_append_vals(addresses, &paddr, 1);
-> >>>>>> +        } else {
-> >>>>>> +            g_array_append_vals(addresses, &start, 1);
-> >>>>>> +        }
-> >>>>>> +
-> >>>>>> +        start += guest_pgsz;
-> >>>>>> +    }
-> >>>>>> +
-> >>>>>>         ret = acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC, addresses);
-> >>>>>>         if (ret) {
-> >>>>>>             goto error;  
-> >>>>>         
-> >>>>     
-> >>>      
-> >>  
-> >   
-> 
+On 10/31/25 11:50 AM, Shameer Kolothum wrote:
+> Modify get_cap() callback so that it can return cap via an output
+> uint64_t param. And add support for generic iommu hw capability
+> info and max_pasid_log2(pasid width).
+>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  backends/iommufd.c                 | 18 +++++++++++++++---
+>  hw/i386/intel_iommu.c              |  5 +++--
+>  hw/vfio/container-legacy.c         |  8 ++++++--
+>  include/system/host_iommu_device.h | 14 ++++++++++----
+>  4 files changed, 34 insertions(+), 11 deletions(-)
+>
+> diff --git a/backends/iommufd.c b/backends/iommufd.c
+> index 6381f9664b..392f9cf2a8 100644
+> --- a/backends/iommufd.c
+> +++ b/backends/iommufd.c
+> @@ -523,19 +523,31 @@ bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+>      return idevc->detach_hwpt(idev, errp);
+>  }
+>  
+> -static int hiod_iommufd_get_cap(HostIOMMUDevice *hiod, int cap, Error **errp)
+> +static int hiod_iommufd_get_cap(HostIOMMUDevice *hiod, int cap,
+s/cap/capid? to avoid confusion with actual cap value?
+> +                                uint64_t *out_cap, Error **errp)
+>  {
+>      HostIOMMUDeviceCaps *caps = &hiod->caps;
+>  
+> +    g_assert(out_cap);
+> +
+>      switch (cap) {
+>      case HOST_IOMMU_DEVICE_CAP_IOMMU_TYPE:
+> -        return caps->type;
+> +        *out_cap = caps->type;
+> +        break;
+>      case HOST_IOMMU_DEVICE_CAP_AW_BITS:
+> -        return vfio_device_get_aw_bits(hiod->agent);
+> +        *out_cap = vfio_device_get_aw_bits(hiod->agent);
+> +        break;
+> +    case HOST_IOMMU_DEVICE_CAP_GENERIC_HW:
+> +        *out_cap = caps->hw_caps;
+> +        break;
+> +    case HOST_IOMMU_DEVICE_CAP_MAX_PASID_LOG2:
+> +        *out_cap = caps->max_pasid_log2;
+> +        break;
+>      default:
+>          error_setg(errp, "%s: unsupported capability %x", hiod->name, cap);
+>          return -EINVAL;
+>      }
+> +    return 0;
+>  }
+>  
+>  static void hiod_iommufd_class_init(ObjectClass *oc, const void *data)
+> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+> index 6a168d5107..91d0d643ea 100644
+> --- a/hw/i386/intel_iommu.c
+> +++ b/hw/i386/intel_iommu.c
+> @@ -4444,6 +4444,7 @@ static bool vtd_check_hiod(IntelIOMMUState *s, HostIOMMUDevice *hiod,
+>                             Error **errp)
+>  {
+>      HostIOMMUDeviceClass *hiodc = HOST_IOMMU_DEVICE_GET_CLASS(hiod);
+> +    uint64_t out_cap;
+>      int ret;
+>  
+>      if (!hiodc->get_cap) {
+> @@ -4452,11 +4453,11 @@ static bool vtd_check_hiod(IntelIOMMUState *s, HostIOMMUDevice *hiod,
+>      }
+>  
+>      /* Common checks */
+> -    ret = hiodc->get_cap(hiod, HOST_IOMMU_DEVICE_CAP_AW_BITS, errp);
+> +    ret = hiodc->get_cap(hiod, HOST_IOMMU_DEVICE_CAP_AW_BITS, &out_cap, errp);
+>      if (ret < 0) {
+>          return false;
+>      }
+> -    if (s->aw_bits > ret) {
+> +    if (s->aw_bits > out_cap) {
+>          error_setg(errp, "aw-bits %d > host aw-bits %d", s->aw_bits, ret);
+you also need to replace ret and out_cap here and also use 0x%PRIx64
+>          return false;
+>      }
+> diff --git a/hw/vfio/container-legacy.c b/hw/vfio/container-legacy.c
+> index a3615d7b5d..ac8370bd4b 100644
+> --- a/hw/vfio/container-legacy.c
+> +++ b/hw/vfio/container-legacy.c
+> @@ -1197,15 +1197,19 @@ static bool hiod_legacy_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
+>  }
+>  
+>  static int hiod_legacy_vfio_get_cap(HostIOMMUDevice *hiod, int cap,
+> -                                    Error **errp)
+> +                                    uint64_t *out_cap, Error **errp)
+>  {
+> +    g_assert(out_cap);
+> +
+>      switch (cap) {
+>      case HOST_IOMMU_DEVICE_CAP_AW_BITS:
+> -        return vfio_device_get_aw_bits(hiod->agent);
+> +        *out_cap = vfio_device_get_aw_bits(hiod->agent);
+> +        break;
+>      default:
+>          error_setg(errp, "%s: unsupported capability %x", hiod->name, cap);
+>          return -EINVAL;
+>      }
+> +    return 0;
+>  }
+>  
+>  static GList *
+> diff --git a/include/system/host_iommu_device.h b/include/system/host_iommu_device.h
+> index bfb2b60478..f89dbafd9e 100644
+> --- a/include/system/host_iommu_device.h
+> +++ b/include/system/host_iommu_device.h
+> @@ -94,13 +94,15 @@ struct HostIOMMUDeviceClass {
+>       *
+>       * @cap: capability to check.
+>       *
+> +     * @out_cap: 0 if a @cap is unsupported or else 1 or some positive
+> +     * value for some special @cap, i.e., HOST_IOMMU_DEVICE_CAP_AW_BITS.
+this does not match what is done in the impl. In case @cap is not
+supported you do not zero it.
+> +     *
+>       * @errp: pass an Error out when fails to query capability.
+>       *
+> -     * Returns: <0 on failure, 0 if a @cap is unsupported, or else
+> -     * 1 or some positive value for some special @cap,
+I would rather say the capability value
+> -     * i.e., HOST_IOMMU_DEVICE_CAP_AW_BITS.
+> +     * Returns: <0 on failure, 0 on success.
+<0 if cap is not supported
+>       */
+> -    int (*get_cap)(HostIOMMUDevice *hiod, int cap, Error **errp);
+> +    int (*get_cap)(HostIOMMUDevice *hiod, int cap, uint64_t *out_cap,
+> +                   Error **errp);
+>      /**
+>       * @get_iova_ranges: Return the list of usable iova_ranges along with
+>       * @hiod Host IOMMU device
+> @@ -123,6 +125,10 @@ struct HostIOMMUDeviceClass {
+>   */
+>  #define HOST_IOMMU_DEVICE_CAP_IOMMU_TYPE        0
+>  #define HOST_IOMMU_DEVICE_CAP_AW_BITS           1
+> +/* Generic IOMMU HW capability info */
+> +#define HOST_IOMMU_DEVICE_CAP_GENERIC_HW        2
+> +/* PASID width */
+> +#define HOST_IOMMU_DEVICE_CAP_MAX_PASID_LOG2    3
+>  
+>  #define HOST_IOMMU_DEVICE_CAP_AW_BITS_MAX       64
+>  #endif
+Eric
 
 

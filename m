@@ -4,82 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE2ECCCFA05
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 15:35:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFA24CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 15:36:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vH217-0000IT-Ab; Thu, 06 Nov 2025 10:35:17 -0500
+	id 1vH21y-0000XF-5q; Thu, 06 Nov 2025 10:36:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vH215-0000Hn-JF
- for qemu-arm@nongnu.org; Thu, 06 Nov 2025 10:35:15 -0500
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vH21v-0000Un-SC
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 10:36:07 -0500
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vH213-0002NC-41
- for qemu-arm@nongnu.org; Thu, 06 Nov 2025 10:35:15 -0500
-Received: by mail-yw1-x1130.google.com with SMTP id
- 00721157ae682-787ab220b1cso17792407b3.0
- for <qemu-arm@nongnu.org>; Thu, 06 Nov 2025 07:35:12 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vH21s-0003fC-MO
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 10:36:07 -0500
+Received: by mail-ed1-x544.google.com with SMTP id
+ 4fb4d7f45d1cf-64080ccf749so1310871a12.2
+ for <qemu-arm@nongnu.org>; Thu, 06 Nov 2025 07:36:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1762443312; x=1763048112; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=5AK2aKciqy3kVqhJTGYTxKPvrDhyGUIMBQdaapbIEHw=;
- b=Aa83KQvcJy/qZl9eUN4rs+YuH++KY8D4ObjqK9ctPBYk63E3R8dSXYf/n0Ae+f4uSX
- U/a9sukZgPk2Af+AOyfFEeMVn9i014V/eA7KrhF3PBZaUBz9GfISAtJBdhFKfsXy//gq
- WOyPOnFGYyqdQNar8QX9dXFtcANRa1iYin99xsANHg1oe9xN5oa8n3doAw14W7NAG2LK
- TlkR2QX3MJKwCjWl8UHsDiJVPnBSMOMWvp0m9tDW5NOyZ369R5zrp0qpqNrIpVa88Zhi
- pqORD4ybSTL822xMsUKQcdnVDM4D2aJuLcBhC2JZ+Gl7iGPvWGiWmJLR9OqqqI7EHlUR
- S6JQ==
+ d=linaro.org; s=google; t=1762443359; x=1763048159; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=USW+KWepaiP6dhVS8miNlW4VqVFRYFFw1EyWfJnZGbg=;
+ b=ZTMOxe+gdB+DpsxzuK9UXeUebhD2kFqBFNmbVVZJwjPREtAMzvgLLR8UN2yc97v6RG
+ ESkmjxyhKS40Gs02THQxntLSyn4AC4g717zQczxXL429crtqJ1sCBIut0Kbz82i9C+Cs
+ ISLoT0wR7IV6Isr6J7zxzofDIxvGbCL38MmT3cD2O6VnJJuZRc1gcz1YemhingukJmvO
+ ypVys8IQs01bt2g3m2Stoi1XV75CY+DgMXKv+ur1HBwkin426UYcxxKzoc26N2b+tiUB
+ abNc3GFTl0WuwCNl3Qdt7LEgB7uaW0ry//zRb8UXvADIY9tnbUY7Z6GiHWscbtK4Q/+u
+ j66g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762443312; x=1763048112;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=5AK2aKciqy3kVqhJTGYTxKPvrDhyGUIMBQdaapbIEHw=;
- b=i47I2xMT9oO7ZRAmONXHpVryzrhPCcPpdPbOVQwpES1PHXcEv+Xy6tClxY5d64odys
- w05dtMGd9ywH3tjpelentzboRomSbpfRQtktOG0PssQU1/4aao1xh3sWuwUrKTaZSDq3
- 4dXcEMpOEKnEEyFo6tcE1J0unwQjxGE/KEvTUeUyVnhe7FjiOR1NWgdLdj82w4wHHj1r
- 3//893sILb7baJ0VuSDS9MPQvNxECRQh8sx7iR+SN965goKTer1OwOsxfn1dLVy9ThKu
- VxyBekmkIERHZPSsBseI7EW8N71oGp+QNi1B65rMAYu1S6QAkS0HXx7Dwb845Mpp8+c4
- IpdQ==
-X-Gm-Message-State: AOJu0Yz8EWq+Y5addu7yIhcBVtXgpq0g7MxC6HPsnmUbkytjG7vwyvr+
- 7187h6G0q9EQhYFxZENgS/1x2Id7N5HtVg4t8Lvy4oqQHVzMCr28kBK1XnyPKjNrAbPZ2SRgl4S
- hy7Qt+2q1ib/0I7ocjmC84Lbcrh66VmTakWVBMxMysDLPWbnMwNzgN3Y=
-X-Gm-Gg: ASbGncsquNcz1EryUHzSV84Dqqt4wDy/jR0FBxUkDefHgDrlSyc9Gr6Hwu46Ki9kb60
- AiFL8KC895jrpKTN1K1i3DiAI8E7ru9KsV1kTTRLImSua/o3rbZugZuLO+xFZbgKgQgiUrFlLaN
- qZFLHqsb7euTPCBd17H1edK83lObYScK1VhjsSaQ5dYSrrJZ+FGg5MK0J9hKarHFkTeKfD+A6Vd
- 46oeIxwRQJ9YC6gZrQGVldS97/JXr/wtMoTWMMk57U3OCLipOPuEN+QIodIRw==
-X-Google-Smtp-Source: AGHT+IHN+auJax1uWfWAEw27+ddpWWeTVGsXEup7OP+cBs+oSdCpr/ex3vYyZOQxTfR0NzIdE/Smllz7EDaovm1j6JE=
-X-Received: by 2002:a05:690e:1249:b0:63f:9b56:f5c8 with SMTP id
- 956f58d0204a3-640b53db765mr3125025d50.2.1762443311706; Thu, 06 Nov 2025
- 07:35:11 -0800 (PST)
+ d=1e100.net; s=20230601; t=1762443359; x=1763048159;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=USW+KWepaiP6dhVS8miNlW4VqVFRYFFw1EyWfJnZGbg=;
+ b=ad11z7h+x2stmxgg2fOK5mV1+ohvt0DUJz18e4vyAy8XRvnX+6S0cA2MHLIRhGn17V
+ USQhoUjiFDL+koJma+IZSKwubv8jLbRdmnwgerg+PQsniecBMZFBl30XRP/dHVNpFiyg
+ dsUIUocoGn6JZBoBCRvkQVSSXel1+7QUNRprDuJPylqyKtuWmRoUJVmmsZ3+yrzq7WJa
+ retpToYWMIX9UlEtm3udejUJ06GED4X+G+oR93YMlSzhrSbTzxmXDQp70xz1wNcM7n8P
+ wi4ZExJbGU6ruoEYB6/mKnakQpdCMf80TyTaTYAAwldskZyyuzq+Mn879a2XB3NOlubX
+ 8k7w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWIdT5pS4wHoG/aCPavaXR6eAfsETBY2hy8TEkq9lUrGExL2EIpHLfcImp6EjIRBFvmRScExOCNrA==@nongnu.org
+X-Gm-Message-State: AOJu0Yyxj2FwrD9JStU103A/CeDoP0TaLHHwTXsuqyCxQg/iDBpzVwt3
+ tzv3CBUWHqEMGsruwybDfxcBqJM/1UePpIwaDFCKOrCxKL28aaBZaIMJcVARkho0rMI=
+X-Gm-Gg: ASbGnctisvCQQStWxhoveLq5NWuSzL+SXElbp6Zdj1vEoGR1/KvSGjXPELlRWWZDA9y
+ /DTF8s6XOA8PyFPkJdBi3ogR3ODpG3LBpitJWZ6i05h9VDYSpf3kE7fkebLNyriPow2Yipfw7Z0
+ tnU9EXa0ad8OfpsTqKAWTA8LOkBSPbcwRkr07dH+kFgdHbAEe7Ji+fo2QAQ822HKsPavfs7FuoD
+ BaG2LXjk2FOMshSCjrSTFRJO5wKpF4l/N1co47IEXxjm2WXRRRXts9cBa6n/S+w/Jffdnhx2Sro
+ C5igqHUqbslnYEt4DJInun0ztI0e+m+Lh6/zwWv7lzs/Lh1Lqm4ZnlPEJmem7yGRm4+p0e9BVsq
+ PWblExrGgz2CraJVLOcgWMPzSRd8/xJsWmfsp9yD+hWo3wbyWZ7iO8YcMyk1479yblzxsD64GHw
+ +6FTwcAYF8uaj/y8jTgTxRWwKl
+X-Google-Smtp-Source: AGHT+IFeaJhd91Dp/D5auUd0xCgfNgMHM+Kae1yjbuTeJ4y3+oQTg3CS/UU4hx9AMbgoBGdIdlaTkA==
+X-Received: by 2002:a17:907:6096:b0:b6d:73f8:3168 with SMTP id
+ a640c23a62f3a-b7265155843mr952815066b.3.1762443358811; 
+ Thu, 06 Nov 2025 07:35:58 -0800 (PST)
+Received: from [172.20.148.75] ([87.213.113.147])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b7289684a48sm242339666b.63.2025.11.06.07.35.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Nov 2025 07:35:58 -0800 (PST)
+Message-ID: <4948f1c6-db23-4880-b982-1cffcdfd48a9@linaro.org>
+Date: Thu, 6 Nov 2025 16:35:57 +0100
 MIME-Version: 1.0
-References: <20210108190945.949196-1-wuhaotsh@google.com>
- <20210108190945.949196-4-wuhaotsh@google.com>
-In-Reply-To: <20210108190945.949196-4-wuhaotsh@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 6 Nov 2025 15:35:00 +0000
-X-Gm-Features: AWmQ_bnfugMgacnS3jYrPAcHTkA3HnMsP5PQdl4c_wvcnVYTbhlD_vl2ER3Lfi4
-Message-ID: <CAFEAcA93eSO8sQf7gXGTQsjjuKf6HfQfF4JJpUk=A3dWYSgYZw@mail.gmail.com>
-Subject: Re: [PATCH v5 3/6] hw/adc: Add an ADC module for NPCM7XX
-To: Hao Wu <wuhaotsh@google.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
- kfting@nuvoton.com, minyard@acm.org, hskinnemoen@google.com, 
- venture@google.com, f4bug@amsat.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] hw/display/xlnx_dp.c: Don't abort on AUX FIFO
+ overrun/underrun
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+References: <20251106145209.1083998-1-peter.maydell@linaro.org>
+ <20251106145209.1083998-2-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20251106145209.1083998-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::544;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x544.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,111 +106,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 8 Jan 2021 at 19:10, Hao Wu <wuhaotsh@google.com> wrote:
->
-> The ADC is part of NPCM7XX Module. Its behavior is controled by the
-> ADC_CON register. It converts one of the eight analog inputs into a
-> digital input and stores it in the ADC_DATA register when enabled.
->
-> Users can alter input value by using qom-set QMP command.
->
-> Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
-> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+On 6/11/25 15:52, Peter Maydell wrote:
+> The documentation of the Xilinx DisplayPort subsystem at
+> https://www.xilinx.com/support/documents/ip_documentation/v_dp_txss1/v3_1/pg299-v-dp-txss1.pdf
+> doesn't say what happens if a guest tries to issue an AUX write
+> command with a length greater than the amount of data in the AUX
+> write FIFO, or tries to write more data to the write FIFO than it can
+> hold, or issues multiple commands that put data into the AUX read
+> FIFO without reading it such that it overflows.
+> 
+> Currently QEMU will abort() in these guest-error situations, either
+> in xlnx_dp.c itself or in the fifo8 code.  Make these cases all be
+> logged as guest errors instead.  We choose to ignore the new data on
+> overflow, and return 0 on underflow. This is in line with how we handled
+> the "read from empty RX FIFO" case in commit a09ef5040477.
+> 
+> Cc: qemu-stable@nongnu.org
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1418
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1419
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1424
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/display/xlnx_dp.c | 28 ++++++++++++++++++++++++++--
+>   1 file changed, 26 insertions(+), 2 deletions(-)
 
-Hi; I was looking at a division-by-zero bug in the
-NPCM7xx ADC device which was reported ages ago and
-is still present:
-
-https://gitlab.com/qemu-project/qemu/-/issues/550
-
-The problem is that the guest requests an ADC conversion
-using the "vref" reference, but vref is zero.
-
-Could a Nuvoton-aware person say what is supposed to happen
-here ?
-
-> +static uint32_t npcm7xx_adc_convert(uint32_t input, uint32_t ref)
-> +{
-> +    uint32_t result;
-> +
-> +    result = input * (NPCM7XX_ADC_MAX_RESULT + 1) / ref;
-
-In this function we divide by ref...
-
-> +    if (result > NPCM7XX_ADC_MAX_RESULT) {
-> +        result = NPCM7XX_ADC_MAX_RESULT;
-> +    }
-> +
-> +    return result;
-> +}
-
-> +static void npcm7xx_adc_convert_done(void *opaque)
-> +{
-> +    NPCM7xxADCState *s = opaque;
-> +    uint32_t input = NPCM7XX_ADC_CON_MUX(s->con);
-> +    uint32_t ref = (s->con & NPCM7XX_ADC_CON_REFSEL)
-> +        ? s->iref : s->vref;
-
-...which we set to either s->iref or s->vref, depending
-on whether the guest set the REFSEL bit in the register
-or not...
-
-> +
-> +    if (input >= NPCM7XX_ADC_NUM_INPUTS) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid input: %u\n",
-> +                      __func__, input);
-> +        return;
-> +    }
-> +    s->data = npcm7xx_adc_convert(s->adci[input], ref);
-> +    if (s->con & NPCM7XX_ADC_CON_INT_EN) {
-> +        s->con |= NPCM7XX_ADC_CON_INT;
-> +        qemu_irq_raise(s->irq);
-> +    }
-> +    s->con &= ~NPCM7XX_ADC_CON_CONV;
-> +}
-
-> +static void npcm7xx_adc_init(Object *obj)
-> +{
-> +    NPCM7xxADCState *s = NPCM7XX_ADC(obj);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-> +    int i;
-> +
-> +    sysbus_init_irq(sbd, &s->irq);
-> +
-> +    timer_init_ns(&s->conv_timer, QEMU_CLOCK_VIRTUAL,
-> +            npcm7xx_adc_convert_done, s);
-> +    memory_region_init_io(&s->iomem, obj, &npcm7xx_adc_ops, s,
-> +                          TYPE_NPCM7XX_ADC, 4 * KiB);
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +    s->clock = qdev_init_clock_in(DEVICE(s), "clock", NULL, NULL);
-> +
-> +    for (i = 0; i < NPCM7XX_ADC_NUM_INPUTS; ++i) {
-> +        object_property_add_uint32_ptr(obj, "adci[*]",
-> +                &s->adci[i], OBJ_PROP_FLAG_WRITE);
-> +    }
-> +    object_property_add_uint32_ptr(obj, "vref",
-> +            &s->vref, OBJ_PROP_FLAG_WRITE);
-
-...but we don't do anything here to arrange for the "vref"
-property to have a default value. The board doesn't set
-"vref" on the device, so it is zero, and if the guest
-tries to do a conversion with the vref clock QEMU crashes.
-
-> +static Property npcm7xx_timer_properties[] = {
-> +    DEFINE_PROP_UINT32("iref", NPCM7xxADCState, iref, NPCM7XX_ADC_DEFAULT_IREF),
-
-Here we set a default value for "iref", so that doesn't
-have the same problem.
-
-> +    DEFINE_PROP_END_OF_LIST(),
-> +};
-
-We should also define a realize method so that we can
-sanity check the iref and vref property values (notably
-not allowing them to be set to zero, but also any other
-sanitization that makes sense for the hardware.)
-
-thanks
--- PMM
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

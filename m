@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D91ECCF9F8
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 08:50:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03E57CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 08:50:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGvgz-0003dw-D7; Thu, 06 Nov 2025 03:50:05 -0500
+	id 1vGvgf-00033a-NR; Thu, 06 Nov 2025 03:49:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vGvgw-0003Y9-GD; Thu, 06 Nov 2025 03:50:02 -0500
+ id 1vGvgf-00033C-0q; Thu, 06 Nov 2025 03:49:45 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vGvgu-0005Sg-Q1; Thu, 06 Nov 2025 03:50:02 -0500
+ id 1vGvgd-0005Sg-AJ; Thu, 06 Nov 2025 03:49:44 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 6 Nov
- 2025 16:49:29 +0800
+ 2025 16:49:26 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 6 Nov 2025 16:49:29 +0800
+ Transport; Thu, 6 Nov 2025 16:49:26 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -34,10 +34,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 09/12] hw/arm/aspeed_ast10x0_evb: Add AST1060 EVB machine
- support
-Date: Thu, 6 Nov 2025 16:49:18 +0800
-Message-ID: <20251106084925.1253704-10-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 03/12] hw/misc/aspeed_scu: Fix the revision ID cannot be
+ set in the SOC layer for AST2600 and AST1030
+Date: Thu, 6 Nov 2025 16:49:12 +0800
+Message-ID: <20251106084925.1253704-4-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
 References: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
@@ -69,61 +69,49 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a new machine definition ast1060-evb to support the Aspeed AST1060
-evaluation board. The new EVB reuses the same MiniBMC framework used by
-AST1030, as both SoCs share the same core peripherals and controller
-designs.
+According to the design of the AST2600, it has a Silicon Revision ID
+Register, specifically SCU004 and SCU014, to set the Revision ID for the
+AST2600. For the AST2600 A3, SCU004 is set to 0x05030303 and SCU014 is
+set to 0x05030303.
 
-The AST1060 EVB machine initializes the ast1060-a2 SoC and sets the
-FMC and SPI flash models (w25q80bl and w25q02jvm) for simulation.
-This enables QEMU to boot and emulate firmware images for AST1060-based
-platforms.
+In the "aspeed_ast2600_scu_reset" function, the hardcoded value
+"AST2600_A3_SILICON_REV" was used for SCU004, while "s->silicon_rev" was
+used for SCU014. The value of "s->silicon_rev" is set by the SoC layer
+via the "silicon-rev" property. This patch aligns both SCU004 and SCU014
+to use "s->silicon_rev" for consistency and flexibility.
+
+Similarly, the "aspeed_ast1030_scu_reset" function also used a fixed
+revision constant ("AST1030_A1_SILICON_REV"). This change updates it to
+use the same "s->silicon_rev" property, ensuring that both SoCs follow
+a consistent and configurable revision handling mechanism.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/arm/aspeed_ast10x0_evb.c | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ hw/misc/aspeed_scu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast10x0_evb.c b/hw/arm/aspeed_ast10x0_evb.c
-index 7af2a77865..a01385b543 100644
---- a/hw/arm/aspeed_ast10x0_evb.c
-+++ b/hw/arm/aspeed_ast10x0_evb.c
-@@ -96,12 +96,35 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
-     aspeed_machine_class_init_cpus_defaults(mc);
- }
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index a0ab5eed8f..1f996d5398 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -841,7 +841,7 @@ static void aspeed_ast2600_scu_reset(DeviceState *dev)
+      * of actual revision. QEMU and Linux only support A1 onwards so this is
+      * sufficient.
+      */
+-    s->regs[AST2600_SILICON_REV] = AST2600_A3_SILICON_REV;
++    s->regs[AST2600_SILICON_REV] = s->silicon_rev;
+     s->regs[AST2600_SILICON_REV2] = s->silicon_rev;
+     s->regs[AST2600_HW_STRAP1] = s->hw_strap1;
+     s->regs[AST2600_HW_STRAP2] = s->hw_strap2;
+@@ -1137,7 +1137,7 @@ static void aspeed_ast1030_scu_reset(DeviceState *dev)
  
-+static void aspeed_minibmc_machine_ast1060_evb_class_init(ObjectClass *oc,
-+                                                          const void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc = "Aspeed AST1060 PFR (Cortex-M4)";
-+    amc->soc_name = "ast1060-a2";
-+    amc->hw_strap1 = 0;
-+    amc->hw_strap2 = 0;
-+    mc->init = aspeed_minibmc_machine_init;
-+    amc->fmc_model = "w25q80bl";
-+    amc->spi_model = "w25q02jvm";
-+    amc->num_cs = 2;
-+    amc->macs_mask = 0;
-+    aspeed_machine_class_init_cpus_defaults(mc);
-+}
-+
- static const TypeInfo aspeed_ast10x0_evb_types[] = {
-     {
-         .name           = MACHINE_TYPE_NAME("ast1030-evb"),
-         .parent         = TYPE_ASPEED_MACHINE,
-         .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
-         .interfaces     = arm_machine_interfaces,
-+    }, {
-+        .name           = MACHINE_TYPE_NAME("ast1060-evb"),
-+        .parent         = TYPE_ASPEED_MACHINE,
-+        .class_init     = aspeed_minibmc_machine_ast1060_evb_class_init,
-+        .interfaces     = arm_machine_interfaces,
-     }
- };
+     memcpy(s->regs, asc->resets, asc->nr_regs * 4);
  
+-    s->regs[AST2600_SILICON_REV] = AST1030_A1_SILICON_REV;
++    s->regs[AST2600_SILICON_REV] = s->silicon_rev;
+     s->regs[AST2600_SILICON_REV2] = s->silicon_rev;
+     s->regs[AST2600_HW_STRAP1] = s->hw_strap1;
+     s->regs[AST2600_HW_STRAP2] = s->hw_strap2;
 -- 
 2.43.0
 

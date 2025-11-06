@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A7E4CCFA03
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 08:52:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCDC6CCFA03
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 08:52:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGvgp-0003CH-56; Thu, 06 Nov 2025 03:49:55 -0500
+	id 1vGvh3-0003lI-JZ; Thu, 06 Nov 2025 03:50:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vGvgn-00036U-NB; Thu, 06 Nov 2025 03:49:53 -0500
+ id 1vGvh1-0003j9-WB; Thu, 06 Nov 2025 03:50:08 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vGvgl-0005Sg-MN; Thu, 06 Nov 2025 03:49:53 -0500
+ id 1vGvh0-0005ZE-7P; Thu, 06 Nov 2025 03:50:07 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 6 Nov
- 2025 16:49:28 +0800
+ 2025 16:49:29 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 6 Nov 2025 16:49:28 +0800
+ Transport; Thu, 6 Nov 2025 16:49:29 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -34,10 +34,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 06/12] hw/arm/aspeed_ast10x0: Add common realize function
- for AST10x0 SoCs
-Date: Thu, 6 Nov 2025 16:49:15 +0800
-Message-ID: <20251106084925.1253704-7-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 10/12] tests/functional/arm/test_aspeed_ast1060: Add
+ functional tests for Aspeed AST1060 SoC
+Date: Thu, 6 Nov 2025 16:49:19 +0800
+Message-ID: <20251106084925.1253704-11-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
 References: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
@@ -69,287 +69,88 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce a new common realize function aspeed_soc_ast10x0_realize()
-for AST10x0 series SoCs. The shared initialization and realization logic
-is now placed in this common function to improve code reuse and reduce
-duplication between different SoCs in the same family.
-
-The AST1030 realization function aspeed_soc_ast1030_realize() is
-updated to call the new common routine and then perform realization of
-its own specific devices such as LPC and PECI, which are not present on
-future SoCs like AST1060.
-
-This refactor simplifies maintenance and prepares the framework for
-adding AST1060 support.
-
-No functional changes.
+Add functional tests for the Aspeed AST1060 SoC and its evaluation board.
+The new test test_aspeed_ast1060.py validates booting the AST1060 EVB
+machine using the Zephyr OS and ASPEED PROT application (ast1060_prot_v03.02.tgz)
+and ensures basic console functionality.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/arm/aspeed_ast10x0.c | 128 ++++++++++++++++++++++------------------
- 1 file changed, 70 insertions(+), 58 deletions(-)
+ tests/functional/arm/meson.build            |  1 +
+ tests/functional/arm/test_aspeed_ast1060.py | 52 +++++++++++++++++++++
+ 2 files changed, 53 insertions(+)
+ create mode 100644 tests/functional/arm/test_aspeed_ast1060.py
 
-diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index 5941ebe00c..5bbe16af24 100644
---- a/hw/arm/aspeed_ast10x0.c
-+++ b/hw/arm/aspeed_ast10x0.c
-@@ -190,10 +190,9 @@ static void aspeed_soc_ast1030_init(Object *obj)
-     object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
- }
+diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
+index d1ed076a6a..1762a49604 100644
+--- a/tests/functional/arm/meson.build
++++ b/tests/functional/arm/meson.build
+@@ -28,6 +28,7 @@ tests_arm_system_quick = [
  
--static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-+static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCState *a, Error **errp)
- {
--    Aspeed10x0SoCState *a = ASPEED10X0_SOC(dev_soc);
--    AspeedSoCState *s = ASPEED_SOC(dev_soc);
-+    AspeedSoCState *s = ASPEED_SOC(a);
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-     DeviceState *armv7m;
-     Error *err = NULL;
-@@ -203,7 +202,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
- 
-     if (!clock_has_source(s->sysclk)) {
-         error_setg(errp, "sysclk clock must be wired up by the board code");
--        return;
-+        return false;
-     }
- 
-     /* General I/O memory space to catch all unimplemented device */
-@@ -216,7 +215,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-                                   "aspeed.sbc", sc->memmap[ASPEED_DEV_SBC],
-                                   0x40000);
- 
--    /* AST1030 CPU Core */
-+    /* AST10x0 CPU Core */
-     armv7m = DEVICE(&a->armv7m);
-     qdev_prop_set_uint32(armv7m, "num-irq", 256);
-     qdev_prop_set_string(armv7m, "cpu-type",
-@@ -232,7 +231,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
--        return;
-+        return false;
-     }
-     memory_region_add_subregion(s->memory,
-                                 sc->memmap[ASPEED_DEV_SRAM],
-@@ -241,14 +240,14 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-                            sc->secsram_size, &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
--        return;
-+        return false;
-     }
-     memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SECSRAM],
-                                 &s->secsram);
- 
-     /* SCU */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->scu), 0,
-                     sc->memmap[ASPEED_DEV_SCU]);
-@@ -258,7 +257,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(&s->sram),
-                              &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->i2c), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->i2c), 0,
-                     sc->memmap[ASPEED_DEV_I2C]);
-@@ -271,7 +270,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
- 
-     /* I3C */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->i3c), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->i3c), 0,
-                     sc->memmap[ASPEED_DEV_I3C]);
-@@ -282,50 +281,11 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->i3c.devices[i]), 0, irq);
-     }
- 
--    /* PECI */
--    if (!sysbus_realize(SYS_BUS_DEVICE(&s->peci), errp)) {
--        return;
--    }
--    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->peci), 0,
--                    sc->memmap[ASPEED_DEV_PECI]);
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
--                       aspeed_soc_ast1030_get_irq(s, ASPEED_DEV_PECI));
--
--    /* LPC */
--    if (!sysbus_realize(SYS_BUS_DEVICE(&s->lpc), errp)) {
--        return;
--    }
--    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->lpc), 0,
--                    sc->memmap[ASPEED_DEV_LPC]);
--
--    /* Connect the LPC IRQ to the GIC. It is otherwise unused. */
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 0,
--                       aspeed_soc_ast1030_get_irq(s, ASPEED_DEV_LPC));
--
--    /*
--     * On the AST1030 LPC subdevice IRQs are connected straight to the GIC.
--     */
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_1,
--                       qdev_get_gpio_in(DEVICE(&a->armv7m),
--                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_1));
--
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_2,
--                       qdev_get_gpio_in(DEVICE(&a->armv7m),
--                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_2));
--
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_3,
--                       qdev_get_gpio_in(DEVICE(&a->armv7m),
--                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_3));
--
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
--                       qdev_get_gpio_in(DEVICE(&a->armv7m),
--                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
--
-     /* UART */
-     for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
-         if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
-                                      sc->memmap[uart], errp)) {
--            return;
-+            return false;
-         }
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
-                            aspeed_soc_ast1030_get_irq(s, uart));
-@@ -335,7 +295,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     object_property_set_link(OBJECT(&s->timerctrl), "scu", OBJECT(&s->scu),
-                              &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->timerctrl), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->timerctrl), 0,
-                     sc->memmap[ASPEED_DEV_TIMER1]);
-@@ -346,7 +306,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
- 
-     /* ADC */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->adc), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->adc), 0,
-                     sc->memmap[ASPEED_DEV_ADC]);
-@@ -357,7 +317,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(&s->sram),
-             &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->fmc), 0,
-                     sc->memmap[ASPEED_DEV_FMC]);
-@@ -371,7 +331,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-         object_property_set_link(OBJECT(&s->spi[i]), "dram",
-                                  OBJECT(&s->sram), &error_abort);
-         if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), errp)) {
--            return;
-+            return false;
-         }
-         aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->spi[i]), 0,
-                         sc->memmap[ASPEED_DEV_SPI1 + i]);
-@@ -383,7 +343,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
- 
-     /* Secure Boot Controller */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->sbc), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->sbc), 0,
-                     sc->memmap[ASPEED_DEV_SBC]);
-@@ -392,7 +352,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(&s->sram),
-                              &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->hace), 0,
-                     sc->memmap[ASPEED_DEV_HACE]);
-@@ -407,14 +367,14 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-         object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&s->scu),
-                                  &error_abort);
-         if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
--            return;
-+            return false;
-         }
-         aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->wdt[i]), 0, wdt_offset);
-     }
- 
-     /* GPIO */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->gpio), 0,
-                     sc->memmap[ASPEED_DEV_GPIO]);
-@@ -442,6 +402,58 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->jtag[1]),
-                                   "aspeed.jtag",
-                                   sc->memmap[ASPEED_DEV_JTAG1], 0x20);
+ tests_arm_system_thorough = [
+   'aspeed_ast1030',
++  'aspeed_ast1060',
+   'aspeed_palmetto',
+   'aspeed_romulus',
+   'aspeed_witherspoon',
+diff --git a/tests/functional/arm/test_aspeed_ast1060.py b/tests/functional/arm/test_aspeed_ast1060.py
+new file mode 100644
+index 0000000000..034efa5342
+--- /dev/null
++++ b/tests/functional/arm/test_aspeed_ast1060.py
+@@ -0,0 +1,52 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots the ASPEED SoCs with firmware
++#
++# Copyright (C) 2025 ASPEED Technology Inc
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
-+    return true;
-+}
++from aspeed import AspeedTest
++from qemu_test import Asset, exec_command_and_wait_for_pattern
 +
-+static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-+{
-+    Aspeed10x0SoCState *a = ASPEED10X0_SOC(dev_soc);
-+    AspeedSoCState *s = ASPEED_SOC(dev_soc);
-+    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
 +
-+    if (!aspeed_soc_ast10x0_realize(a, errp)) {
-+        return;
-+    }
++class AST1060Machine(AspeedTest):
++    ASSET_ASPEED_AST1060_PROT_3_02 = Asset(
++        ('https://github.com/AspeedTech-BMC'
++         '/aspeed-zephyr-project/releases/download/v03.02'
++         '/ast1060_prot_v03.02.tgz'),
++         'dd5f1adc935316ddd1906506a02e15567bd7290657b52320f1a225564cc175bd')
 +
-+    /* PECI */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->peci), errp)) {
-+        return;
-+    }
-+    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->peci), 0,
-+                    sc->memmap[ASPEED_DEV_PECI]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
-+                       aspeed_soc_ast1030_get_irq(s, ASPEED_DEV_PECI));
++    def test_arm_ast1060_prot_3_02(self):
++        self.set_machine('ast1060-evb')
 +
-+    /* LPC */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->lpc), errp)) {
-+        return;
-+    }
-+    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->lpc), 0,
-+                    sc->memmap[ASPEED_DEV_LPC]);
++        kernel_name = "ast1060_prot/zephyr.bin"
++        kernel_file = self.archive_extract(
++            self.ASSET_ASPEED_AST1060_PROT_3_02, member=kernel_name)
 +
-+    /* Connect the LPC IRQ to the GIC. It is otherwise unused. */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 0,
-+                       aspeed_soc_ast1030_get_irq(s, ASPEED_DEV_LPC));
++        self.vm.set_console()
++        self.vm.add_args('-kernel', kernel_file, '-nographic')
++        self.vm.launch()
++        self.wait_for_console_pattern("Booting Zephyr OS")
++        exec_command_and_wait_for_pattern(self, "help",
++                                          "Available commands")
 +
-+    /*
-+     * On the AST1030 LPC subdevice IRQs are connected straight to the GIC.
-+     */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_1,
-+                       qdev_get_gpio_in(DEVICE(&a->armv7m),
-+                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_1));
++    def test_arm_ast1060_otp_blockdev_device(self):
++        self.vm.set_machine("ast1060-evb")
 +
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_2,
-+                       qdev_get_gpio_in(DEVICE(&a->armv7m),
-+                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_2));
++        kernel_name = "ast1060_prot/zephyr.bin"
++        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_02,
++                                           member=kernel_name)
++        otp_img = self.generate_otpmem_image()
 +
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_3,
-+                       qdev_get_gpio_in(DEVICE(&a->armv7m),
-+                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_3));
++        self.vm.set_console()
++        self.vm.add_args(
++            "-kernel", kernel_file,
++            "-blockdev", f"driver=file,filename={otp_img},node-name=otp",
++            "-global", "aspeed-otp.drive=otp",
++        )
++        self.vm.launch()
++        self.wait_for_console_pattern("Booting Zephyr OS")
 +
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
-+                       qdev_get_gpio_in(DEVICE(&a->armv7m),
-+                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
- }
- 
- static void aspeed_soc_ast1030_class_init(ObjectClass *klass, const void *data)
++if __name__ == '__main__':
++    AspeedTest.main()
 -- 
 2.43.0
 

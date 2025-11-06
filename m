@@ -4,86 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F327CCFA13
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 19:16:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBE52CCFA13
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 21:01:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vH5TJ-0005OR-66; Thu, 06 Nov 2025 14:16:40 -0500
+	id 1vH76q-0006n7-O8; Thu, 06 Nov 2025 16:01:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1vH5TH-0005NX-4F
- for qemu-arm@nongnu.org; Thu, 06 Nov 2025 14:16:35 -0500
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+ (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
+ id 1vH76p-0006mo-P8
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 16:01:31 -0500
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1vH5TE-0006sF-4b
- for qemu-arm@nongnu.org; Thu, 06 Nov 2025 14:16:34 -0500
-Received: by mail-lj1-x22c.google.com with SMTP id
- 38308e7fff4ca-37a2dced861so23954931fa.1
- for <qemu-arm@nongnu.org>; Thu, 06 Nov 2025 11:16:31 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
+ id 1vH76o-0006zI-5g
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 16:01:31 -0500
+Received: by mail-pj1-x102e.google.com with SMTP id
+ 98e67ed59e1d1-33067909400so63901a91.2
+ for <qemu-arm@nongnu.org>; Thu, 06 Nov 2025 13:01:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1762456589; x=1763061389; darn=nongnu.org;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+ d=gmail.com; s=20230601; t=1762462888; x=1763067688; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=D59605l+8Sn7tgyb1D1dh8hKak98HQtqQtnzVzLz2/U=;
- b=JbOadrF75otPxV4phlGX73O0elEQCF4BmmYlUg69T22MCa8UmU38gty1hQNN+7zaJ6
- o8OPyqrrhpftvlq/IXQ9Kk3Riqybz/WcfclliCC68jbyPkXXVMZO3LwvmtToSqryLEeY
- S0PjsmcctTpgmKb6FKwC8Ec+UneTxr7DB2sEkd71JwZRaB6fzv10S9N0LyVoqE+URhhm
- 5gH7h5geFVILhkxaikNac65b9nu1tOx/+azttH7aDm7WmaBOAXK2t7HuTZQUB7UFcwHF
- XCVGqTefGSM2OLmjkFZuxoGsJKcblYw3O5nomx6hoFKbZmQH7BqibpoyOS6jSStIemeg
- e2Kg==
+ bh=UJurBtOHMpRkyyKRKaw+0zxl4ugatfn4lzr1n7ZQhNg=;
+ b=Sfmr3AYrxGi8duOYb/PA7GPkuaSUiZ7ddGVfOSYA0dVjAlIiexuJXzU0/W66aHeWjo
+ cvL2qIax3yKNjEmJXIQ7G99JxdWpGHjsejc3IYrBHDediOamPDnZzl8MrCBkklHN0YWu
+ GtylqIYfW4lwyn310Pmdbpi+szkzOv4iIPOFCsU66s7KX92DlFfSFb5W0xu7FjBYD5Xs
+ mZIig1TogVSHGAVC9gm4kxYxBt7X7X7CRuS9P2EcLUZFA3A/gWlzWI9QestHOs53VXJZ
+ BDNzY6sf1i1/IXz+OsyD340rxrQo7bs9eep4wZWD9NxLwCin8GWPMcseaFKMHseNd+kp
+ /myw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762456589; x=1763061389;
- h=user-agent:in-reply-to:content-disposition:mime-version:references
- :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20230601; t=1762462888; x=1763067688;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=D59605l+8Sn7tgyb1D1dh8hKak98HQtqQtnzVzLz2/U=;
- b=QRLP3ebaPsIiCTwGSB0zWtqgaqgTmDEmiRuDgIrN3v7qbQ54fhM3JsV78K7ILbiice
- ZVoSHm2sDujLmox3NJNtWEl6lKl+8kIRupbFtTQr09VaCWnPjHo/RaGIzXUGkyYV3X+/
- vjknBWVC86+DMKRusXkjlB46XHo/vgVw7t2yd/444rZJvaBCDaXBzHjU1XYwAnkfkzI9
- WBDO3gWqFIJZNvTTlrI+Hyyzh37fF697+wY7YeUZzSX4Y3xuZfU/vwJqv02Aen4Aq7H+
- cBwRIwdGSKQnqcXIgmB2tqi6nJWalt9U/z5Sc1CLb8/FbCdEEWKWIEibAIg7miy46zSb
- vFVQ==
+ bh=UJurBtOHMpRkyyKRKaw+0zxl4ugatfn4lzr1n7ZQhNg=;
+ b=AKC/3lpeahY6vkQ+9V4N3RVzOEA0PSakPdVQP7USGaTx1lz2BPmz/noJW31/kkvjSk
+ 2/2ZXi938cX/esNHqcCnEPQnvrzICR0SJw8ecEqqOdiwuA5YeAP3f7u6vL+j3pmnEuK2
+ BVtwL4m3n94FGwi57fNTZhixlexk6d3S133QrpSDgobYveW02KfIQGPylFqGHamwka4e
+ j8tRDTdakxZZtD5TzL6qURxy97SZ61z1kdOV5IDvIkoSbxsILBSWt24hNQXKUEJepr0l
+ c86qc6xgNwi3t8wLLShY1w3H85RUdcpy5kVK3HyAxOOTZSrt/Vrx1aRm/q+uTqddtNcr
+ eAKA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUc0u8gjgjzGrBkjQSdN0xOBEqTSvt9kT8YyzKlrzR/WUDZd+jskhDpLkvbxcN9XLYP7Af0L7buUg==@nongnu.org
-X-Gm-Message-State: AOJu0YwutQZib1Ao/Xl294V40tIVoYbhhC9aoTmkbcYq+TyuzF3z/X/2
- Jf9oAn8DMjcJTA3CA/J7jsZCY0KtwazCSs1G+APMA/FDnQHLVqAAAlhJ
-X-Gm-Gg: ASbGncuHyknnHbNZG41SASDaHk34FElyL51kyCo8Gw5l+H69Pho9UrfI8F7504hspfp
- cINMQ6rd0+9L9yqMzQ6cV8aFVB4vAdH5W1gT5G3JRhBX1G91OEbDAleDT8pp9Jz4LJWmVlhKOnY
- Rgi8TqSwDZG/Ej19+QIapliR9jd2E5wKwpd25Kspa9bNAaBLle344wLp8CZoXeW0+RVwr3XPIvO
- NaTCA7ZP4ZA2Uh+ZsZRlp7CbcSMWMYVNIVAwWsyqPCQ5yEwZNDU4gJbHpjBIbV9DJuL1UmNVsIk
- fwimds0xAcyt822bfphC9Gu6B8H687TOjvzVJiBJb5hJxha4932TwjGNll4lx+BxPoQ+HOXnC2H
- 2SOoRUPLxEO1zLwd8cVr953LsuMJUXvnIuvTok3UJ7L1fO1JbDDnpA/lpeLQxpX7tQ/eQXDNp7W
- nM6iJgwkgm5YZ3fJv88nyYSRfnerGccINB55TT
-X-Google-Smtp-Source: AGHT+IFD4aE71hsW9zrv0X3ad5coCl5EtUekd0/IFzesAE4+9gyjfeL9/vLvgEkj6nByjZcL6vH5/w==
-X-Received: by 2002:a2e:a4dc:0:b0:378:d020:b6b3 with SMTP id
- 38308e7fff4ca-37a5dca31d5mr10966961fa.7.1762456589188; 
- Thu, 06 Nov 2025 11:16:29 -0800 (PST)
-Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
- by smtp.gmail.com with ESMTPSA id
- 38308e7fff4ca-37a5f0ee99csm8166941fa.45.2025.11.06.11.16.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Nov 2025 11:16:28 -0800 (PST)
-Date: Thu, 6 Nov 2025 20:16:26 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Ilya Repko <i.repko@syntacore.com>, fea.wang@sifive.com
-Cc: Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH] Revert "hw/net: Fix the transmission return size"
-Message-ID: <aQz0CiFKPCNbO76m@zapote>
-References: <20251106094837.431976-1-i.repko@syntacore.com>
+ AJvYcCW0tn2qpNlnskBFeWwA7FnSO2ux12i/BpSyOhCXP3ADiOffBQsdkk+V0mi8taIR5l7RJEQ+OiSqiw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx6JFzaCw8QwFAjiR2sSgH4P+218Vg24QB4tTX6tVaKJoBOgUa6
+ 6z3cml6DtQEnAWaEGePYxglW2JB6MV3g1DKE3yos7wX1SyCi11GYP3w5yknPBnPv4y11CNBGusY
+ xf46QWFrjhtjuig+PwuXF+2jjYqBz4rE=
+X-Gm-Gg: ASbGncszpMg4YIvXRpHRm+KLXwJIDXzx5yHyEpQY/x0pndH4n2sTjCD6qJWXc/MUOkW
+ 9ExFTYGYyrYh7xe2L74N48/7QDt6x0a9PrHhrzMhlZ2x9CXcvE0cwFWYgTCpCwyul7lWT8LNriu
+ hpqdy3WvLuKn71TdhuTJoE/00KQ6KpmLbOI9chL3Zw1swuu7Qxv0ZE+FFfpuURR4+krG2V1HMS1
+ N3Bx3+b/Mqwx4Tbz1y1QNeep/7+OGaOdNghAaozU60BPxUj4ITAf9Z09N3A/Y0=
+X-Google-Smtp-Source: AGHT+IEd68uD1kODaH+y82zJ5ELtmXy3wemopKID3Fa5npTuk7IetyFyUGqzzIHGy0o+TdgnfDqkd0LiC0p9l8AGZ3A=
+X-Received: by 2002:a17:90b:2785:b0:33b:ba50:fccc with SMTP id
+ 98e67ed59e1d1-3434c54da81mr585626a91.18.1762462888009; Thu, 06 Nov 2025
+ 13:01:28 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251106094837.431976-1-i.repko@syntacore.com>
-User-Agent: Mutt/2.2.14+84 (2efcabc4) (2025-03-23)
-Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x22c.google.com
+References: <20251104-feat-mte-tagged-far-v1-1-cdfd7db40397@gmail.com>
+ <9b196058-a0e3-422e-86a6-7c405681bf42@linaro.org>
+ <CAFEAcA_wOPO-BsMUB7_CtLKgb2HQEx4K62WJxoekabQ5Mo=Cpw@mail.gmail.com>
+ <a5fe4478-2a86-495a-8bea-9b524aab3dbe@linaro.org>
+In-Reply-To: <a5fe4478-2a86-495a-8bea-9b524aab3dbe@linaro.org>
+From: Gabriel Brookman <brookmangabriel@gmail.com>
+Date: Thu, 6 Nov 2025 16:01:16 -0500
+X-Gm-Features: AWmQ_bnBKgDR08lnYgO-E0rnmJcmdP_GuG7kdxOmtQeCLF-cMwR6oPFmbpZCOTI
+Message-ID: <CA+1f7BCx6OTir00u3mBKiJHooBMBmu-tbSFera7x4qa796uPHQ@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: add support for FEAT_MTE_TAGGED_FAR
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-pj1-x102e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,59 +100,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Nov 06, 2025 at 12:48:37PM +0300, Ilya Repko wrote:
-> This reverts commit 3a6d374b754b4b345195ff6846eeaffedc96a7c5.
-> 
-> During axienet_eth_rx_notify(), s->rxpos is modified to indicate how much
-> data was pushed to AXI DMA. eth_rx() would then return this value.
-> If at 0, network subsystem would consider packet reception as failed
-> and put the packet in a queue for later.
-> 
-> Before we attempt to push packet data to AXI DMA, the packet is stored
-> in s->rxmem buffer. If an attempt to push data fails, we will reattempt
-> to deliver it from s->rxmem buffer once s2mm stream gets a new descriptor.
-> s->rxmem would not be overwritten by a subsequent eth_rx() call, because
-> eth_can_rx() protects it in case it has any data at all. Leaving the packet
-> in a NetQueue though effectively duplicates it.
-> 
-> Therefore, eth_rx() must indicate successful packet reception in case
-> data push to AXI DMA fails.
+Gustavo,
 
-Hi,
+Thanks for the review! It makes sense.
 
-Adding Fea since we're reverting his patch, he may have some insights.
+On Thu, Nov 06, 2025 at 12:44:23PM +0100, Gustavo Romero wrote:
+> Gabriel, given what Peter explained above, although the patch
+> is correct, the best to move forward here is to embedded this
+> patch into the additional series that implements the others
+> "subfeatures" and, as a last step, after the patches that
+> implement the features, you enable all the features in 'max'.
 
-What you describe sounds reasonable but I think we've seen issues with
-both your version (the original one) and Fea's version.
+Once I finish FEAT_MTE_STORE_ONLY I'll send a new series, which will
+include the changes from this series, the STORE_ONLY implementation,
+and also include patches for the updated documentation and tests for
+FEAT_MTE_TAGGED_FAR as you requested. As I continue to write patches
+for MTE4 features, I'll add them to that patchset and we can merge it
+all at once.
 
-What machine are you running? Are you running Linux guests?
+Thanks,
+Gabriel
 
-Cheers,
-Edgar
-
-
-
-
-> 
-> Signed-off-by: Ilya Repko <i.repko@syntacore.com>
-> ---
->  hw/net/xilinx_axienet.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-> index 31e7708082..101b3f260a 100644
-> --- a/hw/net/xilinx_axienet.c
-> +++ b/hw/net/xilinx_axienet.c
-> @@ -867,7 +867,7 @@ static ssize_t eth_rx(NetClientState *nc, const uint8_t *buf, size_t size)
->      axienet_eth_rx_notify(s);
->  
->      enet_update_irq(s);
-> -    return s->rxpos;
-> +    return size;
->  }
->  
->  static size_t
-> -- 
-> 2.51.1
-> 
+On Thu, Nov 6, 2025 at 6:44=E2=80=AFAM Gustavo Romero <gustavo.romero@linar=
+o.org> wrote:
+>
+> Hi Peter,
+>
+> On 11/6/25 11:31, Peter Maydell wrote:
+> > On Wed, 5 Nov 2025 at 17:49, Gustavo Romero <gustavo.romero@linaro.org>=
+ wrote:
+> >>
+> >> Hi Gabriel,
+> >>
+> >> Thanks for your contribution.
+> >>
+> >> On 11/4/25 21:50, Gabriel Brookman wrote:
+> >>> FEAT_MTE_TAGGED_FAR is a feature required for MTE4. The feature
+> >>> guarantees that the full address (including tag bits) is reported aft=
+er
+> >>> a SEGV_MTESERR, and advertises itself in the ID_AA64PFR2_EL1 system
+> >>> register. QEMU was already reporting the full address, so this commit
+> >>> simply advertises the feature by setting that register, and unsets th=
+e
+> >>> register if MTE is disabled.
+> >>>
+> >>> Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
+> >>> ---
+> >>> This patch is the first step toward implementing ARM's Enhanced Memor=
+y
+> >>> Tagging Extension (MTE4). MTE4 guarantees the presence of several
+> >>> subfeatures: FEAT_MTE_CANONICAL_TAGS, FEAT_MTE_TAGGED_FAR,
+> >>> FEAT_MTE_STORE_ONLY, FEAT_MTE_NO_ADDRESS_TAGS, and FEAT_MTE_PERM,
+> >>> none of which are currently implemented in QEMU.
+> >>>
+> >>> According to the ARM ARM, the presence of any of these features (exce=
+pt
+> >>> FEAT_MTE_PERM) implies the presence of all the others. For simplicity
+> >>> and ease of review, I plan to introduce them one at a time. This firs=
+t
+> >>> patch focuses on FEAT_MTE_TAGGED_FAR.
+> >>
+> >> I think it's ok to add these "subfeatures" separately.
+> >
+> > We can add the implementation of the subfeatures separately,
+> > but we should not enable them in 'max' until they're all
+> > present.
+>
+> ah, true. I forget that when we do that we enable them in 'max'
+> as a last step.
+>
+>
+> > (We don't always adhere strictly to the architecture's
+> > "feature X implies Y exists" rules,
+>
+> Thanks for confirming it ;)
+>
+>
+> > but in this case
+> > because they're really a tightly linked bundle that add
+> > up to "MTE4" I think that presnting only a subset to guests
+> > is likely to result in them not behaving correctly.)
+>
+> Gabriel, given what Peter explained above, although the patch
+> is correct, the best to move forward here is to embedded this
+> patch into the additional series that implements the others
+> "subfeatures" and, as a last step, after the patches that
+> implement the features, you enable all the features in 'max'.
+>
+>
+> Cheers,
+> Gustavo
 

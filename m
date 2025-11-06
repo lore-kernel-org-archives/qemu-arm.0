@@ -4,115 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C2EACCF9F8
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 07:43:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18EFBCCF9F8
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 07:55:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGudp-0003UF-Fj; Thu, 06 Nov 2025 02:42:45 -0500
+	id 1vGup3-0006h7-UE; Thu, 06 Nov 2025 02:54:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vGudk-0003T9-EY
- for qemu-arm@nongnu.org; Thu, 06 Nov 2025 02:42:40 -0500
+ id 1vGup1-0006gc-Iu
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 02:54:20 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vGudi-0000ZT-KW
- for qemu-arm@nongnu.org; Thu, 06 Nov 2025 02:42:40 -0500
+ id 1vGuow-0000Uj-Ti
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 02:54:18 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762414957;
+ s=mimecast20190719; t=1762415651;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=wtZkFzJvAWKRTuLvfQKCt2G5L1fwhTXwQ3aqq8468eo=;
- b=dk0GCFqQq4bGU1E2ztNqgm57wc6zPf7+sPyH9ZFni9kUeLpmwJCmg4JKCjOOSnH9IaMGvb
- ae3jv4hNoxMTFPx3VQUOzP8+q16lQdxIpZl9LFi8CRanrM2e2+wEUCAAgUDQmkA2Lhv1ba
- 8/4/irc9A4aq3Y0PViOHrcHnMMxHy5A=
+ bh=tVL7hZ4j2kAuKul0PBILcZSs61/aRtgQLFDp1GSjUgM=;
+ b=DRLYw3tChqznJVFMlLH4XowLwr8fVlU1BOTLLMbKQpcklfpVJibpQZqAfHznyosHG5mZ1i
+ I6nVdKsDnaUy4+HIX4f+TgNu5oCYkxV10n+UJhbS9JL8345W64N8t56aGlRvE60gtTpqrI
+ 0iQimxQfBiGlZn4v8OnsOPn+YGuDx8k=
 Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
  [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-104-8Yhi0PjFNXWzFA7YsHLmfw-1; Thu, 06 Nov 2025 02:42:35 -0500
-X-MC-Unique: 8Yhi0PjFNXWzFA7YsHLmfw-1
-X-Mimecast-MFC-AGG-ID: 8Yhi0PjFNXWzFA7YsHLmfw_1762414954
+ us-mta-148-EESPSBh5OoGXk9CDcVHkew-1; Thu, 06 Nov 2025 02:54:09 -0500
+X-MC-Unique: EESPSBh5OoGXk9CDcVHkew-1
+X-Mimecast-MFC-AGG-ID: EESPSBh5OoGXk9CDcVHkew_1762415648
 Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-477594aad41so3147725e9.2
- for <qemu-arm@nongnu.org>; Wed, 05 Nov 2025 23:42:34 -0800 (PST)
+ 5b1f17b1804b1-4775d8428e8so5394255e9.0
+ for <qemu-arm@nongnu.org>; Wed, 05 Nov 2025 23:54:09 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762414954; x=1763019754;
+ d=1e100.net; s=20230601; t=1762415648; x=1763020448;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=wtZkFzJvAWKRTuLvfQKCt2G5L1fwhTXwQ3aqq8468eo=;
- b=nb8kRshBakHarOkMMkd6UtOJAVhCZtXZMMLpYfSSQtvFBX2x9fZvZDplXkKQw4IpN7
- R8v6Y4KMob1Rbt8De9+YP1MumVARbnubR0ghVjNoGOONcNXUR8wrniuwtoOmO4S5hRc5
- dCq185e7uAG04+8FJG6g2rfdw2QchuLVedRYKvH63pfcq383OqwY+iXBGPo/fleEFevV
- xDM5a+TGn/0AIiXxmAsX3lRH202/q0Qs3ecDh5+BZhfIQ0Y0iUSSsq9dOoV5wBQJSp6L
- DWPdjQTKxlQbWLEZJvyZZWIEESn8uRTxZWL0ctpgWGkKkZ24QYcF8ldJTwY9bzXJ8wXR
- v2dQ==
+ bh=tVL7hZ4j2kAuKul0PBILcZSs61/aRtgQLFDp1GSjUgM=;
+ b=AOKqqIkYzshxvCFw/p0ZI4qyTLyRJhTjgFYfnm3pKXKU2XJYUpf3MBdI1daK0x/1Ue
+ wcEDHPskpqgRAg8d/vi/Da1FSjRt3V6vCYCyvAoZ3pxg4tUJLtltn/8B5kAIPXnpdIoy
+ tuaGfbiWZAbuTPsgihZ2fBc3rD9SpPsmXEsj6OkIFeWkke69s3MxP8SoLu+G2Npzmm9n
+ SMNYNBwZWnOfPUl7EH03XERtDCb3edKdPw+ZgM/XRwsxvvOfT6PqKdl8sJdC5GrvdN4b
+ kUt+5+tfDEunylBADObJlF+rYbdcpUikVS6keWYVR3r6YEhgx3MIQyHHjDq1RPqv1UFl
+ 8TfA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUe9ZsKYf2K2Hob+AdzoS8EmG7gmnVkQ7EdVYJCsCfPF8oLQ9Xzom38v82C/d1x7efbDqJACTaTlQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxTJJCH+bRBW+aBKUS69SU6iBqdu/w2ewmhUqZvfO/SpUcUGSdK
- QQuXf8lkd39371x/qX4gbOa8MZAZI6okyPl4X+nueZYPC/iNHrxMSDtbArmTe9YtcEH2GpJzLfV
- ko5z4KGRoZru8g1m6WbsxUNez3m/S1aSTs7G3RbwK6PQJa3odfcBAFg==
-X-Gm-Gg: ASbGncuEehNk49hK1TaxZmL4TwCLAcM2MM64zF0ZZibxqUL7Z7cgQREtTN1M3g7Wu29
- kO6wVq+fkTXk3Jp1mUFBIxw5OsZUU3TJM70HY4aAnscFTcgO6q/2IB6UYFh5wN8biIx/OLJuIC1
- mCFELUmTWSU15yuEF2Q8K2xEuHJab+0uxe/lrODyUlCKFsR0xHnHDy09xfw6XShDc8KVpxzdc6a
- ri91f0nbVH1Cbxf5qClW0aKowC0aMWQKBWyKpdJA8PuVqW8qF5MkokAfioeQ2SBRQONeaBPqog6
- LcRVOZ3ejtdO08zw6pCdJZg2HpjVbhvlo79LoqNYVYONkA9JhaFhfD0n5O5Lu6Sdy8OgNOSb11Y
- CSmNDPVi+p37GiLDc5MQF8qxMqp+1tsW8KnJ6Oe/sP9B3tQ==
-X-Received: by 2002:a05:600c:37c8:b0:475:dd04:1289 with SMTP id
- 5b1f17b1804b1-4775ce61f4amr49182455e9.20.1762414953715; 
- Wed, 05 Nov 2025 23:42:33 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEZ6PIRyBdIoS3GRYmeIHD82Ao6Vjc3D23Q0MnHcaBrNJ1C0qX6rZrUIYwbWjUG9OKdDVQcGA==
-X-Received: by 2002:a05:600c:37c8:b0:475:dd04:1289 with SMTP id
- 5b1f17b1804b1-4775ce61f4amr49182135e9.20.1762414953325; 
- Wed, 05 Nov 2025 23:42:33 -0800 (PST)
+ AJvYcCUZuUMWWYhqM0wM781yQ3qDWFK8fa1sltpL3Wd0i6bRy31ibYgghDLwKAqwWvg0wKfv/ubu6ZKBHg==@nongnu.org
+X-Gm-Message-State: AOJu0YzHwau6YO+x4QD9MASr/3fPWhgyfXOpgGtH6bI3Q8F+7lAagAJR
+ KQMtNBB+dR26f1T7VBI3NpWYUbAxhfocYJOIXuaSo/FpJH/mqEnMT1WHfInPilWK9E+9NOQ9NJw
+ 23shmcvi0oMynoffw0i0/FHp2XyHPzMV34pPxOCxB3zXx31ts1TvDEQ==
+X-Gm-Gg: ASbGncu/acDx8MJlKXcuR/5LlkyqasfOABbq3PKADx63A56ur7SaYUpAh4zlsZeZn5L
+ JqoC+sr2vZWhtggyICirEMX/Z/loCcYz+fWjmw9VOAm+SM7XQmlIRC86cJsBAWJM7w0Fnk2uhL7
+ e9lUMK7NYHLmHXvGfun2WDHos7pLu8/9umh6cd2xf+yq5abNDOSI5MGGppGekDHVAibnLZ+wJG/
+ 1l3ggotMt18nELjVLUNwlYAImApm3E1t17skuwKED1CDFPoAO7fxmF/fxxRX/1YQ2ROhpyDx/ll
+ mAD3q0gvAxa0Qwji36kKC+tw0pAPquHj3gmnONxrnHoGVuOAKVKzaOhYFbcgcvW7uQONKbcD7FV
+ ikD/shaSTS31mpe3csZraTUWRUOVa/J6jWq0R2aK/Ws+Q6Q==
+X-Received: by 2002:a05:600c:5291:b0:477:c71:1fc1 with SMTP id
+ 5b1f17b1804b1-4775cdf76d3mr58571835e9.19.1762415648200; 
+ Wed, 05 Nov 2025 23:54:08 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH+2ZvyuTHT6PZfX7p3dbGMOYj+5he1F6P5Wccv1LQq9yrpXLYJG4Delw84HlJ0LMhaYsxfmQ==
+X-Received: by 2002:a05:600c:5291:b0:477:c71:1fc1 with SMTP id
+ 5b1f17b1804b1-4775cdf76d3mr58571595e9.19.1762415647815; 
+ Wed, 05 Nov 2025 23:54:07 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-477641b622asm9655905e9.4.2025.11.05.23.42.32
+ 5b1f17b1804b1-477632bda1asm27432985e9.3.2025.11.05.23.54.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 05 Nov 2025 23:42:32 -0800 (PST)
-Message-ID: <f0c5945d-ec24-4bb9-827c-c3e57abdea36@redhat.com>
-Date: Thu, 6 Nov 2025 08:42:31 +0100
+ Wed, 05 Nov 2025 23:54:07 -0800 (PST)
+Message-ID: <d58b17ae-ed38-4012-9da7-7c3efd484428@redhat.com>
+Date: Thu, 6 Nov 2025 08:54:06 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 15/32] hw/pci/pci: Introduce optional
- get_msi_address_space() callback
-To: Jason Gunthorpe <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>
-Cc: Shameer Kolothum <skolothumtho@nvidia.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "ddutile@redhat.com" <ddutile@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
- <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>,
- "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
- "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
- Krishnakant Jaju <kjaju@nvidia.com>
-References: <20251031105005.24618-16-skolothumtho@nvidia.com>
- <318947de-4467-4ced-a5d2-929e3df210ef@redhat.com>
- <CH3PR12MB754815B9B902E7EF66B0A1B9ABC4A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <85f315a2-e49a-4330-9419-48a8a3a4a3e3@redhat.com>
- <CH3PR12MB754844745DF256D7FF2CB07AABC4A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <e4fd6d1e-3fca-457b-ac6a-69e721d799f4@redhat.com>
- <CH3PR12MB75489F2161213432D34688D2ABC5A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <7ac24d9a-0caf-48cb-832c-812fecc5c82c@redhat.com>
- <20251105181049.GU1537560@nvidia.com> <aQuYZM/8SX+RtDtv@Asurada-Nvidia>
- <20251105185816.GW1537560@nvidia.com>
+Subject: Re: [PATCH v5 28/32] hw/arm/smmuv3-accel: Add property to specify OAS
+ bits
+To: Jason Gunthorpe <jgg@nvidia.com>
+Cc: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, peter.maydell@linaro.org, nicolinc@nvidia.com,
+ ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
+ kjaju@nvidia.com
+References: <20251031105005.24618-1-skolothumtho@nvidia.com>
+ <20251031105005.24618-29-skolothumtho@nvidia.com>
+ <49215c9d-feb1-4f72-bfe0-799572ecfac2@redhat.com>
+ <20251104145041.GE1537560@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251105185816.GW1537560@nvidia.com>
+In-Reply-To: <20251104145041.GE1537560@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: plR-_3lEtI2-ISfAwFYxfcRNzWqXyogRm08cbg6SXW8_1762414954
+X-Mimecast-MFC-PROC-ID: DmrBW6fdkHcIiq1DIJGMXyoExgSSwhAsZElkeJQ77C4_1762415648
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -143,44 +129,59 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Jason,
 
+On 11/4/25 3:50 PM, Jason Gunthorpe wrote:
+> On Tue, Nov 04, 2025 at 03:35:42PM +0100, Eric Auger wrote:
+>>> +    /*
+>>> +     * TODO: OAS is not something Linux kernel doc says meaningful for user.
+>>> +     * But looks like OAS needs to be compatible for accelerator support. Please
+>>> +     * check.
+>> would remove that comment. Either it is requested or not.
+>>> +     */
+>>> +    if (FIELD_EX32(info->idr[5], IDR5, OAS) <
+>>> +                FIELD_EX32(s->idr[5], IDR5, OAS)) {
+>>> +        error_setg(errp, "Host SMMUv3 OAS(%d) bits not compatible",
+>>> +                   smmuv3_oas_bits(FIELD_EX32(info->idr[5], IDR5, OAS)));
+>> let's be more explicit then and say
+>>
+>> Host SMMUv3 OAS (%d bits) is less that OAS bits advertised by SMMU (%d)
+> It isn't OAS that is being checked here, this is now IPA. OAS is for
+> use by the hypervisor.
+>
+> When the guest looks at the vSMMU the "OAS" it sees is the IPS
+> supported by the HW.
+>
+> Aside from the raw HW limit, it also shouldn't exceed the configured
+> size of the S2 HWPT.
+>
+> So the above should refer to this detail because it is a bit subtle
+> that OAS and IPS are often the same. See "3.4 Address sizes"
+>
+> * IAS reflects the maximum usable IPA of an implementation that is
+>   generated by stage 1 and input to stage 2:
+>
+> - This term is defined to illustrate the handling of intermediate
+>   addresses in this section and is not a configurable parameter.
+>
+> - The maximum usable IPA size of an SMMU is defined in terms of other SMMU implementation choices,
+>   as:
+>     IAS = MAX(SMMU_IDR0.TTF[0]==1 ? 40 : 0), SMMU_IDR0.TTF[1]==1 ? OAS : 0));
+>
+> - An IPA of 40 bits is required to support of AArch32 LPAE translations, and AArch64 limits the
+> maximum IPA size to the maximum PA size. Otherwise, when AArch32 LPAE is not implemented, the
+> IPA size equals OAS, the PA size, and might be smaller than 40 bits.
+>
+> - The purpose of definition of the IAS term is to abstract away from these implementation variables.
+Thank you for the clarification and pointer. I fully agree.
+maybe we can rephrase the error msg as:
 
-On 11/5/25 7:58 PM, Jason Gunthorpe wrote:
-> On Wed, Nov 05, 2025 at 10:33:08AM -0800, Nicolin Chen wrote:
->> On Wed, Nov 05, 2025 at 02:10:49PM -0400, Jason Gunthorpe wrote:
->>> On Wed, Nov 05, 2025 at 06:25:05PM +0100, Eric Auger wrote:
->>>> if the guest doorbell address is wrong because not properly translated,
->>>> vgic_msi_to_its() will fail to identify the ITS to inject the MSI in.
->>>> See kernel kvm/vgic/vgic-its.c vgic_msi_to_its and
->>>> vgic_its_inject_msi
->>> Which has been exactly my point to Nicolin. There is no way to
->>> "properly translate" the vMSI address in a HW accelerated SMMU
->>> emulation.
->> Hmm, I still can't connect the dots here. QEMU knows where the
->> guest CD table is to get the stage-1 translation table to walk
->> through. We could choose to not let it walk through. Yet, why?
-> You cannot walk any tables in guest memory without fully trapping all
-> invalidation on all command queues. Like real HW qemu needs to fence
-> its walks with any concurrent invalidate & sync to ensure it doesn't
-> walk into a UAF situation.
-But at the moment we do trap IOTLB invalidates so logically we can still
-do the translate in that config. The problem you describe will show up
-with vCMDQ which is not part of this series.
->
-> Since we can't trap or mediate vCMDQ the walking simply cannot be
-> done.
->
-> Thus, the general principle of the HW accelerated vSMMU is that it
-> NEVER walks any of these guest tables for any reason.
->
-> Thus, we cannot do anything with vMSI address beyond program it
-> directly into a real PCI device so it undergoes real HW translation.
-But anyway you need to provide KVM a valid info about the guest doorbell
-for this latter to setup irqfd gsi routing and also program ITS
-translation tables. At the moment we have a single vITS in qemu so maybe
-we can cheat.
+"Host SMMUv3 OAS (%d bits) is less that physical SMMU maximum usable IPA (%d)"
+which is more accurate despite in practice here we assimilate max IPA to OAS (
+TTF[1]==1 case)
 
 Eric
+
 >
 > Jason
 >

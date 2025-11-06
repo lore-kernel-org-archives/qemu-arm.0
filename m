@@ -4,84 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB498CCFA05
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 12:10:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D668CCFA03
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 13:56:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGyoU-0001Ws-45; Thu, 06 Nov 2025 07:10:02 -0500
+	id 1vH0Ss-00080j-PA; Thu, 06 Nov 2025 08:55:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vGyoS-0001WJ-RY
- for qemu-arm@nongnu.org; Thu, 06 Nov 2025 07:10:00 -0500
-Received: from p-east3-cluster5-host3-snip4-10.eps.apple.com ([57.103.86.161]
- helo=outbound.qs.icloud.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vH0Sp-00080J-VR
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 08:55:47 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vGyoR-0001zB-20
- for qemu-arm@nongnu.org; Thu, 06 Nov 2025 07:10:00 -0500
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-2 (Postfix) with ESMTPS id
- B91561800130; Thu,  6 Nov 2025 12:09:53 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=bTR8DcHlBo4/PEdqpQRrgkcmIdSXDbGRfLCtzvF8BAw=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=f/5rkznJdTsglZQ9Ct7CI0irYp30DHNEYCfkxgDyTF/uUDvRAKQorcPORicmgpJ1I9xxERQJUH0Aqun6LEfhk95u6h5MtQpWTL0s76mhqKbZGC2KroPl+koRlGwdalWcH6KBh9qkYY7cynNf/K98odtYKK3Qfob/Io0FC7eglnr0or60IYx9S2oKRyMo7JBOjC3slLScfk3ti8GL3vxQy7wNZV6BdBxiTO4uvUTrDD7w773Wu0VtL+RQZwxLVFNkhyy5Bz4e2fhiu0/cRlIygJO8C5XsADqS+QGGo3ZESNezzdrnUG7/8nuvKzxtuiW3/UvoLm8fuGuBaUG93M2+ZA==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-2 (Postfix) with ESMTPSA id
- 273C618000A9; Thu,  6 Nov 2025 12:09:52 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.200.81.1.6\))
-Subject: Re: [PATCH v10 17/28] hw: arm: virt-acpi-build: add hack
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <e52c8dd0-d284-4dc0-ad0c-3832ce996884@linaro.org>
-Date: Thu, 6 Nov 2025 13:09:40 +0100
-Cc: qemu-devel@nongnu.org,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Richard Henderson <richard.henderson@linaro.org>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <50C705D7-5DEC-4B3F-A603-25551C8A964C@unpredictable.fr>
-References: <20251029165510.45824-1-mohamed@unpredictable.fr>
- <20251029165510.45824-18-mohamed@unpredictable.fr>
- <e52c8dd0-d284-4dc0-ad0c-3832ce996884@linaro.org>
-To: Gustavo Romero <gustavo.romero@linaro.org>
-X-Mailer: Apple Mail (2.3864.200.81.1.6)
-X-Proofpoint-ORIG-GUID: DI5TIAIBwArfqUpndIr-LsLFaccMYiFu
-X-Proofpoint-GUID: DI5TIAIBwArfqUpndIr-LsLFaccMYiFu
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTA2MDA5NiBTYWx0ZWRfXwqG6rhwYYSSy
- bH6MILj6nKRVxqlvk36hTL75NEqJ+GUo4KqDPaXnUpwO0blQ04VOmf16kI4zxZ5Wk4W44Ebny23
- hMPDSNJVO/ERfE/bCsNXkJeWLMD3SEpS85t+dc7ErYQiFPGJFt7TJcoCfPJhCg2S0/VtGbntaU8
- xjWgTYe9R3kHp9Nbm4sxqoOiRQtx5wqVVOxTmolFBIhCNf+J++mv+LZYgYwePJJt+Eiw2pLbRk8
- ceLFxDQzKtp2fVDLqDC7USPksGUNQk03CnC7Y6AA46aEfGyVcuRORGujIRYSodX+8rbNcf7Ncni
- YRRegD1NMn0NAFvQUbp
-X-Authority-Info: v=2.4 cv=IdyKmGqa c=1 sm=1 tr=0 ts=690c9012 cx=c_apl:c_pps
- a=bsP7O+dXZ5uKcj+dsLqiMw==:117 a=bsP7O+dXZ5uKcj+dsLqiMw==:17
- a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=KKAkSRfTAAAA:8 a=nPwZXD_PinSu4dW7AjYA:9
- a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22 a=cPQSjfK2_nFv0Q5t_7PE:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
- definitions=2025-11-06_03,2025-11-06_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- adultscore=0 bulkscore=0 clxscore=1030 spamscore=0
- malwarescore=0 mlxscore=0
- mlxlogscore=999 phishscore=0 classifier=spam authscore=0 adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2509250000 definitions=main-2511060096
-X-JNJ: AAAAAAABlkIy0wY7n+AZm4T78A5e5Bmc7V1CRayakldEbZ0sqYOTIYjpLMVwTYu9dFjAJBWv+EMGBaB59ceBP6ACyfNqJGwn6GhgjHA90toXgLmY53RaVasMnTKqAUr06wiEDq/QZfCp7xRgpBba6k11LZyx9dZcbzFSVdQj0etDJPaJ403np1xvZBewMF5TyqxL3dS89tjGPm40ksYGIwPtg2Z8PYxH1MNXRTD/InGPPnLrIHqpwGRfdLDeSt5pkZ7u01QAfuOu3brB8jm+P4i8NT+l22ykLAWHkuQlhV40hRRuth6JYfGDR5YdhBnrNaCRvjOuJgDfjbqhLCYPY4CsZzhJR1u4TvhAVSX/+WV/Y6SVWCd4svDPrpS0HeRY1o9PV/bo4X4G6B2nEQxPvhaM6Vqj70BS44ZCp3goofEoM4jjxJHyuLTnUIwBSmoiyRxao1TA6NdlYrg6ltnKXOC1lcpjRvslsUDqbiS9qr3VagUvrnBHqxbDJFlZ3Qd+NHBHjtbSoIyS4sHSlwybtZFr56kcOknLJ4EwYEZeKi+8tMT3PoO0pWrSIOr1+W8tH31jbq15BuGH2r3+1aU8dQzmVBDPP52IF7d2EFmrNKzvNvFNJLu541zKlevT8wocgV0ZCUPdLbzytq/w80UinV7H6CtvEeTl8PzRdql1DRgzSHnzr8dT2R/8w+2MNCZbFkpnFSw/qzd6ejoPiI0=
-Received-SPF: pass client-ip=57.103.86.161;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vH0Sn-0003QO-CU
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 08:55:47 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1762437342;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=01SU0RhLQwEiOS6q37xq1Pr1Ihj1YfZqxXq3UNB5G8c=;
+ b=feIKLN8iGrTR9ADGg60BmY+qvuAQm5tDWl1ecnCZdrDhc/z6guM29hkCCe6GPq2aZmQrCT
+ uvBEp9ljPyLPe3H86Z6QY0UWNlMPkYVHhC6kLsAEkwBFlzA4lRP6c2mTJ5Yor/yZe0blE2
+ U9LUTYsuak4DPup/jJTNtdnP2dRW/3I=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-296-KaJ8FjKEMG2YsRouyL-mzA-1; Thu, 06 Nov 2025 08:55:41 -0500
+X-MC-Unique: KaJ8FjKEMG2YsRouyL-mzA-1
+X-Mimecast-MFC-AGG-ID: KaJ8FjKEMG2YsRouyL-mzA_1762437340
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4775d8428e8so8611085e9.0
+ for <qemu-arm@nongnu.org>; Thu, 06 Nov 2025 05:55:41 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1762437338; x=1763042138;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=01SU0RhLQwEiOS6q37xq1Pr1Ihj1YfZqxXq3UNB5G8c=;
+ b=qye7qf3YRhsqoUT16MLxTyDmYHjaeAtsBPt4aYN6FqqAwqBQZ8bJ3goL9t39CTQ3oj
+ l1IWkJoA/pD/aMGLeVJENf4Q03nYFLwANvYV3hgQK+9hbR+lISZzEMwOj6iyjDUvJ0C9
+ mxGqR+Rv7Ryw76EQZIdzSNrlzZNC+90DSo64iFdpD+xSe9wGSoi4CyDqWUG+edQnKiJA
+ fhg/tuBcFzplQ4X7wNJY28YFVKpDm4MMj0bcQagvuzXHKIEQ0RxUVWa64HMPlrsWdf+Q
+ ili3SlThpP93fChXdiudbiJCp0f1a2Mxk02c5+Ml2qdyK3kOiRO5NL5SrPXkoac5CJyT
+ Ri0Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCULa9rrzviMKVO8TqWhROzi3vReT8VoiFeq3M8o7qG83nKCLGmBtvB64YcFUe+dLsOfz/kMNf0F+Q==@nongnu.org
+X-Gm-Message-State: AOJu0YzBT0Uw/Ygzp+a0QAgVkrSPIzWdqB4CQU+kfHUKWN9nJMgIe1UY
+ PHYg9atP9ORSoMUeRQtAAMvJaXAj3Sc5H0aeZgpQQgSSaX7NnWgsbVj7fBFrJunJm/RjWLt5bcL
+ McOUSYBHWQ1PanWOD8HUZK36brlecwKXqIZQ2V4QOPxuWjyQqY0FDPw==
+X-Gm-Gg: ASbGncsCmdLX5iuYtSG0iA/VrXeiwawWnkNYUpxS6+5fDb+uV/TtXvwpu06WaAN4Cn4
+ akY3EBGTVhLaFVl5fXDNo4iHsXk9/0PmvZE3/VZOt0hSs8Ekc7eL6s1zqWggg1vEglIHIqIZOUj
+ 1kouR0wGVZFwTubCF/x/PLXcZMXsqeZSiaUq/UhNhLrmmfOYohAOrCpCpanUm8n0fGugqOS3TDU
+ 9s3gPqh9zh86DAyJyuQFGqrE7k7P4ObMsv2fL0JaxsIslC3BfjyzUMoOjnNtt8yWD7bz2A6fdVe
+ uj5AHeYLTAWoFiI+ihvKpO49NvVEJVicZV/mc6nd7r9ircZxUeaX07D02QMZ/nYTy8hUjqu12pu
+ DdDnOXJGOSxMB4M6S0gOedzjdHxL2Z4EyVA14DqS2lx/lHw==
+X-Received: by 2002:a05:600c:8b28:b0:477:a58:2d6b with SMTP id
+ 5b1f17b1804b1-4775cdbd460mr64072105e9.7.1762437338472; 
+ Thu, 06 Nov 2025 05:55:38 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEdNPZTotSJSiw+kGW8TF0ZOD5Tpcy0czenZ2FsDU3Dbh/lVCzKKQCjmXjTppZUlocNKhTnbQ==
+X-Received: by 2002:a05:600c:8b28:b0:477:a58:2d6b with SMTP id
+ 5b1f17b1804b1-4775cdbd460mr64071765e9.7.1762437338035; 
+ Thu, 06 Nov 2025 05:55:38 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-429eb410ffcsm5203681f8f.15.2025.11.06.05.55.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Nov 2025 05:55:37 -0800 (PST)
+Message-ID: <1be3383e-843f-49b8-a246-59375c42aaae@redhat.com>
+Date: Thu, 6 Nov 2025 14:55:36 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 31/32] vfio: Synthesize vPASID capability to VM
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+ ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
+ kjaju@nvidia.com
+References: <20251031105005.24618-1-skolothumtho@nvidia.com>
+ <20251031105005.24618-32-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20251031105005.24618-32-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 1Oekz1UtTVqJI5sGS8oLyXAUn0jqdl-zailfb7t1w_o_1762437340
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.271,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -96,99 +122,127 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
+Hi Shameer,
+On 10/31/25 11:50 AM, Shameer Kolothum wrote:
+> From: Yi Liu <yi.l.liu@intel.com>
+>
+> If user wants to expose PASID capability in vIOMMU, then VFIO would also
+need to report?
+> report the PASID cap for this device if the underlying hardware supports
+> it as well.
+>
+> As a start, this chooses to put the vPASID cap in the last 8 bytes of the
+> vconfig space. This is a choice in the good hope of no conflict with any
+> existing cap or hidden registers. For the devices that has hidden registers,
+> user should figure out a proper offset for the vPASID cap. This may require
+> an option for user to config it. Here we leave it as a future extension.
+> There are more discussions on the mechanism of finding the proper offset.
+>
+> https://lore.kernel.org/kvm/BN9PR11MB5276318969A212AD0649C7BE8CBE2@BN9PR11MB5276.namprd11.prod.outlook.com/
+>
+> Since we add a check to ensure the vIOMMU supports PASID, only devices
+> under those vIOMMUs can synthesize the vPASID capability. This gives
+> users control over which devices expose vPASID.
+>
+> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
+> Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  hw/vfio/pci.c      | 37 +++++++++++++++++++++++++++++++++++++
+>  include/hw/iommu.h |  1 +
+>  2 files changed, 38 insertions(+)
+>
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index 06b06afc2b..2054eac897 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -24,6 +24,7 @@
+>  #include <sys/ioctl.h>
+>  
+>  #include "hw/hw.h"
+> +#include "hw/iommu.h"
+>  #include "hw/pci/msi.h"
+>  #include "hw/pci/msix.h"
+>  #include "hw/pci/pci_bridge.h"
+> @@ -2500,7 +2501,12 @@ static int vfio_setup_rebar_ecap(VFIOPCIDevice *vdev, uint16_t pos)
+>  
+>  static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
+>  {
+> +    HostIOMMUDevice *hiod = vdev->vbasedev.hiod;
+> +    HostIOMMUDeviceClass *hiodc = HOST_IOMMU_DEVICE_GET_CLASS(hiod);
+>      PCIDevice *pdev = PCI_DEVICE(vdev);
+> +    uint64_t max_pasid_log2 = 0;
+> +    bool pasid_cap_added = false;
+> +    uint64_t hw_caps;
+>      uint32_t header;
+>      uint16_t cap_id, next, size;
+>      uint8_t cap_ver;
+> @@ -2578,12 +2584,43 @@ static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
+>                  pcie_add_capability(pdev, cap_id, cap_ver, next, size);
+>              }
+>              break;
+> +        case PCI_EXT_CAP_ID_PASID:
+> +             pasid_cap_added = true;
+> +             /* fallthrough */
+>          default:
+>              pcie_add_capability(pdev, cap_id, cap_ver, next, size);
+>          }
+>  
+>      }
+>  
+> +#ifdef CONFIG_IOMMUFD
+> +    /*
+> +     * Although we check for PCI_EXT_CAP_ID_PASID above, the Linux VFIO
+> +     * framework currently hides this capability. Try to retrieve it
+> +     * through alternative kernel interfaces (e.g. IOMMUFD APIs).
+I don't catch this sentence . When are you supposed to read above
+PCI_EXT_CAP_ID_PASID cap id then?
+> +     */
+> +    if (!pasid_cap_added && hiodc->get_cap) {
+> +        hiodc->get_cap(hiod, HOST_IOMMU_DEVICE_CAP_GENERIC_HW, &hw_caps, NULL);
+> +        hiodc->get_cap(hiod, HOST_IOMMU_DEVICE_CAP_MAX_PASID_LOG2,
+> +                       &max_pasid_log2, NULL);
+> +    }
+> +
+> +    /*
+> +     * If supported, adds the PASID capability in the end of the PCIe config
+> +     * space. TODO: Add option for enabling pasid at a safe offset.
+> +     */
+> +    if (max_pasid_log2 && (pci_device_get_viommu_flags(pdev) &
+> +                           VIOMMU_FLAG_PASID_SUPPORTED)) {
+> +        bool exec_perm = (hw_caps & IOMMU_HW_CAP_PCI_PASID_EXEC) ? true : false;
+can't you direct set exec_perm = (hw_caps & IOMMU_HW_CAP_PCI_PASID_EXEC);
+> +        bool priv_mod = (hw_caps & IOMMU_HW_CAP_PCI_PASID_PRIV) ? true : false;
+> +
+> +        pcie_pasid_init(pdev, PCIE_CONFIG_SPACE_SIZE - PCI_EXT_CAP_PASID_SIZEOF,
+> +                        max_pasid_log2, exec_perm, priv_mod);
+> +        /* PASID capability is fully emulated by QEMU */
+> +        memset(vdev->emulated_config_bits + pdev->exp.pasid_cap, 0xff, 8);
+> +    }
+> +#endif
+> +
+>      /* Cleanup chain head ID if necessary */
+>      if (pci_get_word(pdev->config + PCI_CONFIG_SPACE_SIZE) == 0xFFFF) {
+>          pci_set_word(pdev->config + PCI_CONFIG_SPACE_SIZE, 0);
+> diff --git a/include/hw/iommu.h b/include/hw/iommu.h
+> index 9b8bb94fc2..9635770bee 100644
+> --- a/include/hw/iommu.h
+> +++ b/include/hw/iommu.h
+> @@ -20,6 +20,7 @@
+>  enum viommu_flags {
+>      /* vIOMMU needs nesting parent HWPT to create nested HWPT */
+>      VIOMMU_FLAG_WANT_NESTING_PARENT = BIT_ULL(0),
+> +    VIOMMU_FLAG_PASID_SUPPORTED = BIT_ULL(1),
+>  };
+>  
+>  #endif /* HW_IOMMU_H */
+Thanks
 
-> On 6. Nov 2025, at 10:40, Gustavo Romero <gustavo.romero@linaro.org> =
-wrote:
->=20
-> Hi Mohamed and Phil,
->=20
-> On 10/29/25 17:54, Mohamed Mediouni wrote:
->> Looks like in the prior Qemu ACPI table handling, GICv2 =
-configurations
->> had vms->its=3D1...
->=20
-> To me, ITS should not be present on machines that have GICv2, so we =
-should not generate
-> any ACPI table advertising ITS when GICv2 is used.
->=20
-The problem is breaking migration/backwards compatibility=E2=80=A6 is it =
-an ignorable concern or
-should be the new behaviour be quirked to apply to only Qemu 11.0 =
-onwards?
-
-Thank you,
--Mohamed
-> Cheers,
-> Gustavo
->=20
->> Match that assumption to not make the test suite fail. Probably not =
-merge-worthy...
->> And then maybe see what to do for older releases too?
->> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->> ---
->>  hw/arm/virt-acpi-build.c | 10 +++++-----
->>  1 file changed, 5 insertions(+), 5 deletions(-)
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index a6a56455a9..39dd3d1020 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -472,7 +472,7 @@ build_iort(GArray *table_data, BIOSLinker =
-*linker, VirtMachineState *vms)
->>          nb_nodes =3D num_smmus + 1; /* RC and SMMUv3 */
->>          rc_mapping_count =3D rc_smmu_idmaps_len;
->>  -        if (virt_is_its_enabled(vms)) {
->> +        if (virt_is_its_enabled(vms) || vms->gic_version =3D=3D 2) {
->>              /*
->>               * Knowing the ID ranges from the RC to the SMMU, it's =
-possible to
->>               * determine the ID ranges from RC that go directly to =
-ITS.
->> @@ -483,7 +483,7 @@ build_iort(GArray *table_data, BIOSLinker =
-*linker, VirtMachineState *vms)
->>              rc_mapping_count +=3D rc_its_idmaps->len;
->>          }
->>      } else {
->> -        if (virt_is_its_enabled(vms)) {
->> +        if (virt_is_its_enabled(vms) || vms->gic_version =3D=3D 2) {
->>              nb_nodes =3D 2; /* RC and ITS */
->>              rc_mapping_count =3D 1; /* Direct map to ITS */
->>          } else {
->> @@ -498,7 +498,7 @@ build_iort(GArray *table_data, BIOSLinker =
-*linker, VirtMachineState *vms)
->>      build_append_int_noprefix(table_data, IORT_NODE_OFFSET, 4);
->>      build_append_int_noprefix(table_data, 0, 4); /* Reserved */
->>  -    if (virt_is_its_enabled(vms)) {
->> +    if (virt_is_its_enabled(vms) || vms->gic_version =3D=3D 2) {
->>          /* Table 12 ITS Group Format */
->>          build_append_int_noprefix(table_data, 0 /* ITS Group */, 1); =
-/* Type */
->>          node_size =3D  20 /* fixed header size */ + 4 /* 1 GIC ITS =
-Identifier */;
->> @@ -517,7 +517,7 @@ build_iort(GArray *table_data, BIOSLinker =
-*linker, VirtMachineState *vms)
->>          int smmu_mapping_count, offset_to_id_array;
->>          int irq =3D sdev->irq;
->>  -        if (virt_is_its_enabled(vms)) {
->> +        if (virt_is_its_enabled(vms) || vms->gic_version =3D=3D 2) {
->>              smmu_mapping_count =3D 1; /* ITS Group node */
->>              offset_to_id_array =3D SMMU_V3_ENTRY_SIZE; /* Just after =
-the header */
->>          } else {
->> @@ -610,7 +610,7 @@ build_iort(GArray *table_data, BIOSLinker =
-*linker, VirtMachineState *vms)
->>              }
->>          }
->>  -        if (virt_is_its_enabled(vms)) {
->> +        if (virt_is_its_enabled(vms) || vms->gic_version =3D=3D 2) {
->>              /*
->>               * Map bypassed (don't go through the SMMU) RIDs (input) =
-to
->>               * ITS Group node directly: RC -> ITS.
->=20
->=20
+Eric
 
 

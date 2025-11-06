@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14318CCFA1A
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 08:51:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C404CCF9F8
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 08:51:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGvh6-0003tQ-Q7; Thu, 06 Nov 2025 03:50:12 -0500
+	id 1vGvgd-00032N-7G; Thu, 06 Nov 2025 03:49:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vGvh4-0003nL-SA; Thu, 06 Nov 2025 03:50:10 -0500
+ id 1vGvgc-00030T-0C; Thu, 06 Nov 2025 03:49:42 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vGvh3-0005ZE-AL; Thu, 06 Nov 2025 03:50:10 -0500
+ id 1vGvga-0005Sg-8M; Thu, 06 Nov 2025 03:49:41 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 6 Nov
- 2025 16:49:30 +0800
+ 2025 16:49:26 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 6 Nov 2025 16:49:30 +0800
+ Transport; Thu, 6 Nov 2025 16:49:26 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -34,10 +34,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 11/12] docs/system/arm/aspeed: Update Aspeed and 2700
- family boards list
-Date: Thu, 6 Nov 2025 16:49:20 +0800
-Message-ID: <20251106084925.1253704-12-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 02/12] hw/block/m25p80: Add SFDP table for Winbond
+ W25Q02JVM flash
+Date: Thu, 6 Nov 2025 16:49:11 +0800
+Message-ID: <20251106084925.1253704-3-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
 References: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
@@ -69,38 +69,94 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Remove the ast2700-evb entry from the Aspeed family boards list in
-the documentation. The AST2700 platform now belongs to the new Aspeed
-2700 family group, which has its own dedicated documentation section
-and board definitions.
+Add the SFDP data table for Winbond W25Q02JVM flash device. The table
+was generated under Linux kernel by dumping the SFDP content using
+the following command:
 
-Update the Aspeed 2700 family boards list in the documentation to include
-the new ast2700fc board entry.
+```
+hexdump -v -e '8/1 "0x%02x, " "\n"' \
+    /sys/bus/spi/devices/spi0.0/spi-nor/sfdp
+```
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- docs/system/arm/aspeed.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/block/m25p80_sfdp.h |  1 +
+ hw/block/m25p80.c      |  2 ++
+ hw/block/m25p80_sfdp.c | 36 ++++++++++++++++++++++++++++++++++++
+ 3 files changed, 39 insertions(+)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 6317c0e910..a0c05a6f73 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -1,4 +1,4 @@
--Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-+Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
- ====================================================================================================================================================================================================================================================================================================================================================================================================================================
+diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+index 35785686a0..c1e532de5a 100644
+--- a/hw/block/m25p80_sfdp.h
++++ b/hw/block/m25p80_sfdp.h
+@@ -27,6 +27,7 @@ uint8_t m25p80_sfdp_w25q256(uint32_t addr);
+ uint8_t m25p80_sfdp_w25q512jv(uint32_t addr);
+ uint8_t m25p80_sfdp_w25q80bl(uint32_t addr);
+ uint8_t m25p80_sfdp_w25q01jvq(uint32_t addr);
++uint8_t m25p80_sfdp_w25q02jvm(uint32_t addr);
  
- The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
-@@ -274,7 +274,7 @@ configuration file for OTP memory:
-     done > otpmem.img
-   fi
+ uint8_t m25p80_sfdp_is25wp256(uint32_t addr);
  
--Aspeed 2700 family boards (``ast2700-evb``)
-+Aspeed 2700 family boards (``ast2700-evb``, ``ast2700fc``)
- ==================================================================
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index a5336d92ff..338e17bf1d 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -364,6 +364,8 @@ static const FlashPartInfo known_devices[] = {
+       .sfdp_read = m25p80_sfdp_w25q512jv },
+     { INFO("w25q01jvq",   0xef4021,      0,  64 << 10, 2048, ER_4K),
+       .sfdp_read = m25p80_sfdp_w25q01jvq },
++    { INFO("w25q02jvm",   0xef7022,      0,  64 << 10, 4096, ER_4K),
++      .sfdp_read = m25p80_sfdp_w25q02jvm },
  
- The QEMU Aspeed machines model BMCs of Aspeed evaluation boards.
+     /* Microchip */
+     { INFO("25csm04",      0x29cc00,      0x100,  64 << 10,  8, 0) },
+diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
+index a03a291a09..87878c2bf0 100644
+--- a/hw/block/m25p80_sfdp.c
++++ b/hw/block/m25p80_sfdp.c
+@@ -440,6 +440,42 @@ static const uint8_t sfdp_w25q80bl[] = {
+ };
+ define_sfdp_read(w25q80bl);
+ 
++static const uint8_t sfdp_w25q02jvm[] = {
++    0x53, 0x46, 0x44, 0x50, 0x06, 0x01, 0x01, 0xff,
++    0x00, 0x06, 0x01, 0x10, 0x80, 0x00, 0x00, 0xff,
++    0x84, 0x00, 0x01, 0x02, 0xd0, 0x00, 0x00, 0xff,
++    0x03, 0x00, 0x01, 0x02, 0xf0, 0x00, 0x00, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xe5, 0x20, 0xfb, 0xff, 0xff, 0xff, 0xff, 0x7f,
++    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x42, 0xbb,
++    0xfe, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00,
++    0xff, 0xff, 0x40, 0xeb, 0x0c, 0x20, 0x0f, 0x52,
++    0x10, 0xd8, 0x00, 0x00, 0x36, 0x02, 0xa6, 0x00,
++    0x82, 0xea, 0x14, 0xe2, 0xe9, 0x63, 0x76, 0x33,
++    0x7a, 0x75, 0x7a, 0x75, 0xf7, 0xa2, 0xd5, 0x5c,
++    0x19, 0xf7, 0x4d, 0xff, 0xe9, 0x70, 0xf9, 0xa5,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0x0a, 0xf0, 0xff, 0x21, 0xff, 0xdc, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++};
++define_sfdp_read(w25q02jvm);
++
+ /*
+  * Integrated Silicon Solution (ISSI)
+  */
 -- 
 2.43.0
 

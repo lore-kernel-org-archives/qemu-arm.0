@@ -4,51 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2636FCCFA03
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 08:52:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73ADACCF9F8
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 09:40:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGvgX-0002vQ-GT; Thu, 06 Nov 2025 03:49:37 -0500
+	id 1vGwTh-0001zy-OH; Thu, 06 Nov 2025 04:40:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vGvgW-0002vE-3V; Thu, 06 Nov 2025 03:49:36 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vGvgT-0005Sg-So; Thu, 06 Nov 2025 03:49:35 -0500
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Thu, 6 Nov
- 2025 16:49:25 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Thu, 6 Nov 2025 16:49:25 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, "Kevin
- Wolf" <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 00/12] hw/arm/aspeed: Add AST1060 SoC and EVB support
-Date: Thu, 6 Nov 2025 16:49:09 +0800
-Message-ID: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1vGwTg-0001xc-Gf
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 04:40:24 -0500
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1vGwTe-0005L2-Nh
+ for qemu-arm@nongnu.org; Thu, 06 Nov 2025 04:40:24 -0500
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-b70fb7b54cdso130407666b.1
+ for <qemu-arm@nongnu.org>; Thu, 06 Nov 2025 01:40:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1762422021; x=1763026821; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=I9JtZzZZJ5Szb1swUQPzO9Qt81xOQJmVdlAU2ltZN3g=;
+ b=cRP2knaI8mrRHqxvdCWqs2XEf4qqM7PaR4iMJ/5tM+4Hd8KD7IjY5w49rR8xjOLGH1
+ We6FFfBvEcZOLjjd2Df8dzwV1rAorK15eh13vXnPKwQi14u0Z9eufy/BIPmiGGkL8Dx9
+ GfG0dw0J89bRgeMtbO0PqlHeDMoF+lwf551ETaigw58CcvNf5Pa3amny1njKwhxVghhT
+ xw3T27rHwgzvq1et+HHe4RAalZYI6Af+d7doskdYYduxPumcsaaDDeHHuygUC/T8T19d
+ 0QSMFTR0Nq0TVb94ytvpVJPzAHrSHFkqAreuIFdPRfZwMeZbZbVSX+XJYNwifD4IBIFb
+ 5rlg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1762422021; x=1763026821;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=I9JtZzZZJ5Szb1swUQPzO9Qt81xOQJmVdlAU2ltZN3g=;
+ b=Hh2jVAUOSJ2nxcXpRvRS+9DjDSAKzwYI2Wxt8I03nIerzpECN0BIpohxXR0lwe9mbO
+ T3HGhauZjnIds1kEl8BKx0atPYIe69jngFW8BwDhmYtJz0zbsJZBUoBeN0KiZZC6XCew
+ wtk8uhrZQW9qNn/bouI40AEBoPhd6TsxgeRRd8l2b0WhOmzADIuAIP25k04RlBeWnbQY
+ KJFfKM8IY5xkTu7Bg8aFagDKwRoa35f3BSNeCgEtA93yO0+pmtE8CQsh2oIyWAoy6G+a
+ MCSo20NU4/iHPtH+7hHFWjWK4+YEpzntl+3ufzny2oiZrGzt0gV7OIS8YvlDbPOYyb/i
+ xlDQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWnOuIWQ6iKJfflsSPhQWfZPciKxwihSqoSJ58LB7N7IlTxro/PZTnq0JO6XHB/6THadIXH/oziJg==@nongnu.org
+X-Gm-Message-State: AOJu0Yz24fyY1W/66M4+U79aSAYU1s0pqcy5ktkHVKfn3jKDGQiJ+hRH
+ Zg3y1nuGtsXA0fuwuee6/4aRqugqQAzso5EAO3MvGhI+EAuM5l1WdGK6zgDTNGuHNWw=
+X-Gm-Gg: ASbGncvZA2oyPQkOnXuufwXCNHjrF7HKYqHj8JHA9IA6cBqr1N+I7VkNGo0rNrqIENq
+ C9LTUkBYP5L9U9g6J8MomU4efGTvD+CxXJLYXEKPxR8MysaoJtOB5KirUGKL0HQN7kQTVoCESb2
+ cRe38wGerK/qJ+hjTq3yBcTH+l4vutbwDNtW4qBF73VSB+5/Sg2Vf6MjU6/t/GpZfgWhRVMbcOb
+ JBNce7lhQOBeHDI9uiFeH8+7hEr9rjDlzfnCZ4f0AbmJ8hXqXhsLkOEazxT0ucK0XbwIvV2sw4X
+ XoGfE+jK+HA/yieAdbIIiwZQQgH/tR7x6CK9wLLrh+O/qo7TQdNxQfXNlWHYfDNMg4KJtvtXRrL
+ vL8SGbGBEibXf0E89nGbHkCfxnrvArOcKrRfbhFUjuaZNj/GWlbMD6SjH6etIPmH0Av7IPv/6Sx
+ LThSRArTa6nXUU/KSkdvnk6KZN4wW705f/ng==
+X-Google-Smtp-Source: AGHT+IEImNLvEv+BvoVzM3oQPw7O5b8dvobLF8MfGHU2pTrRO+7e3bcoq1UdHlWr9onQhn11vFBzbQ==
+X-Received: by 2002:a17:907:7f0f:b0:b3f:f207:b748 with SMTP id
+ a640c23a62f3a-b726515d4e2mr469991666b.10.1762422020826; 
+ Thu, 06 Nov 2025 01:40:20 -0800 (PST)
+Received: from [172.20.148.161] ([87.213.113.147])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b7289644819sm173764566b.45.2025.11.06.01.40.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Nov 2025 01:40:20 -0800 (PST)
+Message-ID: <e52c8dd0-d284-4dc0-ad0c-3832ce996884@linaro.org>
+Date: Thu, 6 Nov 2025 10:40:18 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v10 17/28] hw: arm: virt-acpi-build: add hack
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Pedro Barbuda <pbarbuda@microsoft.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20251029165510.45824-1-mohamed@unpredictable.fr>
+ <20251029165510.45824-18-mohamed@unpredictable.fr>
+Content-Language: en-US
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <20251029165510.45824-18-mohamed@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-ej1-x62f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -61,52 +107,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-v1:
-  1. Add SFDP table for Winbond W25Q02JVM flash
-  2. Add AST1060 SoC and EVB support
-  3. Fix missing SPI IRQ connection causing DMA interrupt failure
-  4. Fix the revision ID cannot be set in the SOC layer for AST2600 and AST1030
+Hi Mohamed and Phil,
 
-Jamin Lin (12):
-  hw/arm/aspeed: Fix missing SPI IRQ connection causing DMA interrupt
-    failure
-  hw/block/m25p80: Add SFDP table for Winbond W25Q02JVM flash
-  hw/misc/aspeed_scu: Fix the revision ID cannot be set in the SOC layer
-    for AST2600 and AST1030
-  hhw/misc/aspeed_scu: Add AST1060 A2 silicon revision definition
-  hw/arm/aspeed_ast10x0: Add common init function for AST10x0 SoCs
-  hw/arm/aspeed_ast10x0: Add common realize function for AST10x0 SoCs
-  hw/arm/aspeed_ast10x0: Pass SoC name to common init for AST10x0 family
-    reuse
-  hw/arm/aspeed_ast10x0: Add AST1060 SoC support
-  hw/arm/aspeed_ast10x0_evb: Add AST1060 EVB machine support
-  tests/functional/arm/test_aspeed_ast1060: Add functional tests for
-    Aspeed AST1060 SoC
-  docs/system/arm/aspeed: Update Aspeed and 2700 family boards list
-  docs/system/arm/aspeed: Update Aspeed MiniBMC section to include
-    AST1060 PFR processor
+On 10/29/25 17:54, Mohamed Mediouni wrote:
+> Looks like in the prior Qemu ACPI table handling, GICv2 configurations
+> had vms->its=1...
 
- docs/system/arm/aspeed.rst                  |  28 ++-
- hw/block/m25p80_sfdp.h                      |   1 +
- include/hw/misc/aspeed_scu.h                |   1 +
- hw/arm/aspeed_ast10x0.c                     | 216 +++++++++++++-------
- hw/arm/aspeed_ast10x0_evb.c                 |  23 +++
- hw/arm/aspeed_ast2600.c                     |   2 +
- hw/arm/aspeed_ast27x0.c                     |   2 +
- hw/block/m25p80.c                           |   2 +
- hw/block/m25p80_sfdp.c                      |  36 ++++
- hw/misc/aspeed_scu.c                        |   5 +-
- tests/functional/arm/meson.build            |   1 +
- tests/functional/arm/test_aspeed_ast1060.py |  52 +++++
- 12 files changed, 287 insertions(+), 82 deletions(-)
- create mode 100644 tests/functional/arm/test_aspeed_ast1060.py
+To me, ITS should not be present on machines that have GICv2, so we should not generate
+any ACPI table advertising ITS when GICv2 is used.
 
--- 
-2.43.0
+
+Cheers,
+Gustavo
+
+> Match that assumption to not make the test suite fail. Probably not merge-worthy...
+> 
+> And then maybe see what to do for older releases too?
+> 
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
+>   hw/arm/virt-acpi-build.c | 10 +++++-----
+>   1 file changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index a6a56455a9..39dd3d1020 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -472,7 +472,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>           nb_nodes = num_smmus + 1; /* RC and SMMUv3 */
+>           rc_mapping_count = rc_smmu_idmaps_len;
+>   
+> -        if (virt_is_its_enabled(vms)) {
+> +        if (virt_is_its_enabled(vms) || vms->gic_version == 2) {
+>               /*
+>                * Knowing the ID ranges from the RC to the SMMU, it's possible to
+>                * determine the ID ranges from RC that go directly to ITS.
+> @@ -483,7 +483,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>               rc_mapping_count += rc_its_idmaps->len;
+>           }
+>       } else {
+> -        if (virt_is_its_enabled(vms)) {
+> +        if (virt_is_its_enabled(vms) || vms->gic_version == 2) {
+>               nb_nodes = 2; /* RC and ITS */
+>               rc_mapping_count = 1; /* Direct map to ITS */
+>           } else {
+> @@ -498,7 +498,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>       build_append_int_noprefix(table_data, IORT_NODE_OFFSET, 4);
+>       build_append_int_noprefix(table_data, 0, 4); /* Reserved */
+>   
+> -    if (virt_is_its_enabled(vms)) {
+> +    if (virt_is_its_enabled(vms) || vms->gic_version == 2) {
+>           /* Table 12 ITS Group Format */
+>           build_append_int_noprefix(table_data, 0 /* ITS Group */, 1); /* Type */
+>           node_size =  20 /* fixed header size */ + 4 /* 1 GIC ITS Identifier */;
+> @@ -517,7 +517,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>           int smmu_mapping_count, offset_to_id_array;
+>           int irq = sdev->irq;
+>   
+> -        if (virt_is_its_enabled(vms)) {
+> +        if (virt_is_its_enabled(vms) || vms->gic_version == 2) {
+>               smmu_mapping_count = 1; /* ITS Group node */
+>               offset_to_id_array = SMMU_V3_ENTRY_SIZE; /* Just after the header */
+>           } else {
+> @@ -610,7 +610,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>               }
+>           }
+>   
+> -        if (virt_is_its_enabled(vms)) {
+> +        if (virt_is_its_enabled(vms) || vms->gic_version == 2) {
+>               /*
+>                * Map bypassed (don't go through the SMMU) RIDs (input) to
+>                * ITS Group node directly: RC -> ITS.
 
 

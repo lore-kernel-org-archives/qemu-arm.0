@@ -4,93 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96618CCFA0D
-	for <qemu-arm@archiver.kernel.org>; Wed,  5 Nov 2025 21:20:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43536CCFA0D
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Nov 2025 03:16:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vGkvo-0000cI-M3; Wed, 05 Nov 2025 16:20:40 -0500
+	id 1vGqTp-0003t4-9p; Wed, 05 Nov 2025 22:16:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vGkvn-0000bE-C7
- for qemu-arm@nongnu.org; Wed, 05 Nov 2025 16:20:39 -0500
-Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vGkvl-0008TQ-QX
- for qemu-arm@nongnu.org; Wed, 05 Nov 2025 16:20:39 -0500
-Received: by mail-qt1-x831.google.com with SMTP id
- d75a77b69052e-4ea12242d2eso20161cf.1
- for <qemu-arm@nongnu.org>; Wed, 05 Nov 2025 13:20:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1762377635; x=1762982435; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=PhEhkTq+LWTFHumUurvyRKjhtRaQVEgS+gmAOWh95t8=;
- b=nM7PCSUCZX6dsAosBll1kEYMuAwo/Mn8elQmhVcjqJ72mQmlix5N08L8r8+qhR/ht8
- HQJm5LXvVtpK48T0dlzMGzGO5CXxnn72jNFHdT4NykX+gz6go8Jiev0+TkCPCIAkmdQ2
- PI8VUHvJDxmWDnixi24SEtM0h/TdgTY59md7M9I6d2fAjR9LKOPWK7rC1qluJko9jhhq
- S9n4WmMydMBdmneLMA/sYlBwwfef6O5/kp+DW7HdkEdI2+HRGdnJC0LCicodAGEO1Q7O
- H+1sFoMPz2q92Te6nYTTkjLmX8pgESLLa8cMq4ETWNwuIDw4qKtt1Dw+32lpGSaIBWKD
- EvTQ==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vGqTn-0003sc-R7
+ for qemu-arm@nongnu.org; Wed, 05 Nov 2025 22:16:07 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vGqTl-00035V-9C
+ for qemu-arm@nongnu.org; Wed, 05 Nov 2025 22:16:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1762398962;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Dc+EgfG+CEzokJ22MK58FUPyJQ3TfKNKbmBl+mINl6U=;
+ b=JzZZE2MJCRzC1Te2BiIm6OozmPr0UiktcE91BKM1dlZf5sF545sSktUUwtIJma6JqIbs/0
+ sVY++QHpfRZcP1aMyUWNG+sJB+KNvM/CTyNRn6oeyTlpAo/yz2RALOTCrsUWPliJM12bf0
+ 8Hg5BeR68O9Ym76mXhhyNwbzQLqKTL4=
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
+ [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-295-y2FAvmLqOWSr0ZqvuLztgQ-1; Wed, 05 Nov 2025 22:16:01 -0500
+X-MC-Unique: y2FAvmLqOWSr0ZqvuLztgQ-1
+X-Mimecast-MFC-AGG-ID: y2FAvmLqOWSr0ZqvuLztgQ_1762398960
+Received: by mail-pl1-f200.google.com with SMTP id
+ d9443c01a7336-29598910dd2so14762425ad.1
+ for <qemu-arm@nongnu.org>; Wed, 05 Nov 2025 19:16:00 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762377635; x=1762982435;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=PhEhkTq+LWTFHumUurvyRKjhtRaQVEgS+gmAOWh95t8=;
- b=XzEFV+9t/hqMpsIP8uwRLq9XqNKweJqwyKWdZAgtpIhTbztGtnQ02ugX1wXk69TpST
- 6v5ZFDjq+fdgTr3heZCvs0hWiC1iibf7XEGaS1gdnL64CyznrLZG6yewYV6WmdeclvKI
- ncSSFEyM/7ZsXqGZ1M/GjtFp5Nel9MTDcbT/U12qLTa8OT3sBbk3GcF6GxArF+GliO6k
- AdEgyTbl+cTFlTktBvzY3graBJbmCAlOr7pv4mGo3RPj5lPcTY/mhHp98InVV5Vy8cBl
- 8ecB2amXsn7l9AXiocwHfNrNiX5lB/RgZl49T8dkeV75FIvRdEE9a+5+C7HXIXWOtpje
- b9Vg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWC1NauSeZNqRKXNJ8lWbcLe9WXlBDUQMq4jV/rRlph44/EHe1gnl0Xm+D3BomB5M5HYzsc/X3sXg==@nongnu.org
-X-Gm-Message-State: AOJu0Yymw7+sZt+Lc5aDGbhcUu+PJkjGoOBHahD2nS5+8c/lOy9QGiHw
- MKWsVRg4TKzmWBzRCBi4E94wFcb5F5ktXSf9YWScDfmf+e2+ES1gFmvbFXZVoQ4eM7ezGGAvXlk
- Ujky6zH8+3EyxVgJvIwEZEtI/2W+1cMB1QKySJECS
-X-Gm-Gg: ASbGnctOl+7jqN164DjWBr7lmMu6z6Br5wXv5SAOCBFsS6g31aqC8uD8yp9w2C7PbE6
- Ek2Cb0cWlzEyUECwPhwN711bSqRKkvcDu4yB/FXAHi4Zfk79gLm+E/8Yie9epT363PpX4hDP5+2
- k0w0EG+zliLuNoIWmJ0WK5cDxEguk33Jq3WRFjaPfxxctMVr0bkQZpLGdX5PFncKL5hEUbOgHlB
- iNQfFIsBuFH1VqTIb+bU+HZMSjNm9UxqOq1pwOsvyAQq2pKIXvriIkL99vll++4trL64VkP1Yx2
- vpnu/u1NdcKvzjk=
-X-Google-Smtp-Source: AGHT+IEfM+v9iGGdx1BYEBwrRxtuS1IfwFGY7+A9Bzfd7OccCZyoCqyFApq6x9U8ocZGZEY1QDlFrRUSsgzipV8XIDA=
-X-Received: by 2002:ac8:5810:0:b0:4b7:9c77:6ba5 with SMTP id
- d75a77b69052e-4ed82c07764mr197451cf.15.1762377635248; Wed, 05 Nov 2025
- 13:20:35 -0800 (PST)
+ d=1e100.net; s=20230601; t=1762398960; x=1763003760;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Dc+EgfG+CEzokJ22MK58FUPyJQ3TfKNKbmBl+mINl6U=;
+ b=v+e1YvHfOnXpzBrVFF3VNC0OagSO1At74d8J3bQYj1Hhz/KiFqA8BrSWjjJ5LRAvw4
+ Ao1uYvohFCDanBVTyrMXiGK/llmuVLSTLNih2BIG9wfoWS8bfCpks5DVJJf/0QwdrFoz
+ qIyjXFKJ2AJpvwtLcwz9QeC95FJ4N4C1FjcOytD6b513Ayy2yPpJvpWWQpvSg93v0xYA
+ 6Qv6dDB4s+1pxNcz9p7x9NGMSXa0UOkVJWwwAn8ZW/AxHFDqv7mOx3zKaME1oAHTu11h
+ xwpD+E2ZDoj311dggBJCM4jXn/M3PJUvEoCxLI3MX05FkXAJG3XoobtlwAjDFUoyNvKW
+ cGaA==
+X-Gm-Message-State: AOJu0Ywg3a/RAMKKM5asfqEQwNmDpUf/ut+267b3SFMtfNhf+0u1woX0
+ 1WvsFB49X08EqXDEDC1G42Hr4BqsEljSfqxWVDEqqpYDO+XJMTbN0vGCySY6Pc4G5jnLZRy8h1j
+ JwmoxDNrzLhwrW8M/WNwNLdkU+dNigSddMqRlB168txJpNkPodTud/A==
+X-Gm-Gg: ASbGncvzKSaORPrV3N3vR1jzVH+jnFHkZUMdiR8uD9KqQl1IyzjcRDGzS6bcsDsoFqB
+ pcOXJ/ri72tZt3uqsCzOd6rQVWZaumS0HUpyy1K6mScsvKs2aCADPF1XsCQ7MiVHSKev2U10ysz
+ 7jo9ZZpOoukOg5AMDKx3Yg9QvJ6o793agUAaDxhMhgYA/s2Onj50Htr4GR+s1j4Aw1eoDHKAmDH
+ 8SCLGRw+zP6Gf3Bm4su60ohc1JkwZjro2RNQ3SDiMqeslOcV8Qmtv6ekoX9i4ayJ3UKEfiHyXfM
+ +zD69sZFFi2ILePoKJzC+Mn/hkG6Ti4mkz22gE/7Y92SdCbZVdfKw/TghCxxg5Qjpnh9cqzQ6un
+ gcOky9jpoxp5D6Hu8sCPtbcNHfgYwVj1mPmHnCdo=
+X-Received: by 2002:a17:903:350c:b0:295:94fe:d5dc with SMTP id
+ d9443c01a7336-2962ad0c67bmr78049945ad.2.1762398959890; 
+ Wed, 05 Nov 2025 19:15:59 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGrHJjnnAxVxaVyJREL6rViJyXgqF0UXgZTx6h+0BQpLA15hAYDTMPKoK0bZ+j7MLeXOOquXA==
+X-Received: by 2002:a17:903:350c:b0:295:94fe:d5dc with SMTP id
+ d9443c01a7336-2962ad0c67bmr78049615ad.2.1762398959479; 
+ Wed, 05 Nov 2025 19:15:59 -0800 (PST)
+Received: from [192.168.68.51] (n175-34-62-5.mrk21.qld.optusnet.com.au.
+ [175.34.62.5]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-29651c6f201sm10240195ad.55.2025.11.05.19.15.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 05 Nov 2025 19:15:58 -0800 (PST)
+Message-ID: <cc07dfc9-f58a-4654-8854-c16a2e85fecd@redhat.com>
+Date: Thu, 6 Nov 2025 13:15:52 +1000
 MIME-Version: 1.0
-References: <20251105035859.3709907-1-kane_chen@aspeedtech.com>
- <20251105035859.3709907-10-kane_chen@aspeedtech.com>
-In-Reply-To: <20251105035859.3709907-10-kane_chen@aspeedtech.com>
-From: Nabih Estefan <nabihestefan@google.com>
-Date: Wed, 5 Nov 2025 13:20:22 -0800
-X-Gm-Features: AWmQ_bnP7JNqj7KbVxp3ah6m6IwtsK35PCrb5dKXPq7p42YEX2kdxz3PVMsGt2I
-Message-ID: <CA+QoejUqmspVZG=-T8TRbbc5nRXy0YQsLg6A4M54o6k=EkW6kA@mail.gmail.com>
-Subject: Re: [PATCH v2 09/17] hw/arm/aspeed: Attach SPI device to AST1700 model
-To: Kane Chen <kane_chen@aspeedtech.com>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, 
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- troy_lee@aspeedtech.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::831;
- envelope-from=nabihestefan@google.com; helo=mail-qt1-x831.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 4/8] acpi/ghes: Extend acpi_ghes_memory_errors() to
+ support multiple CPERs
+To: Jonathan Cameron <jonathan.cameron@huawei.com>, shan.gavin@gmail.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mchehab+huawei@kernel.org,
+ gengdongjiu1@gmail.com, mst@redhat.com, imammedo@redhat.com,
+ anisinha@redhat.com, peter.maydell@linaro.org, pbonzini@redhat.com
+References: <20251105114453.2164073-1-gshan@redhat.com>
+ <20251105114453.2164073-5-gshan@redhat.com>
+ <20251105141455.000052f0@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20251105141455.000052f0@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 7ktbBWz8DOlJ21HTJUj8Xwn8OmER0E_upBTuFjW43MU_1762398960
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.517,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,164 +116,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This patch seems to break qtest-arm
-```
-37/56 qemu:qtest+qtest-arm / qtest-arm/device-introspect-test ERROR
-5.18s killed by signal 6 SIGABRT
->>> QTEST_QEMU_IMG=3D./qemu-img G_TEST_DBUS_DAEMON=3D/b/f/w/src/git/qemu/te=
-sts/dbus-vmstate-daemon.sh QTEST_QEMU_BINARY=3D./qemu-system-arm PYTHON=3D/=
-b/f/w/src/git/qemu/build/pyvenv/bin/python3 MSAN_OPTIONS=3Dhalt_on_error=3D=
-1:abort_on_error=3D1:print_summary=3D1:print_stacktrace=3D1 MESON_TEST_ITER=
-ATION=3D1 UBSAN_OPTIONS=3Dhalt_on_error=3D1:abort_on_error=3D1:print_summar=
-y=3D1:print_stacktrace=3D1 QTEST_QEMU_STORAGE_DAEMON_BINARY=3D./storage-dae=
-mon/qemu-storage-daemon RUST_BACKTRACE=3D1 ASAN_OPTIONS=3Dhalt_on_error=3D1=
-:abort_on_error=3D1:print_summary=3D1 MALLOC_PERTURB_=3D175 /b/f/w/src/git/=
-qemu/build/tests/qtest/device-introspect-test --tap -k
-=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
-=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
-=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
-=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
-=80=95=E2=80=95=E2=80=95=E2=80=95 =E2=9C=80 =E2=80=95=E2=80=95=E2=80=95=E2=
-=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
-=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
-=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
-=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
-=95
-stderr:
-**
-ERROR:../hw/misc/aspeed_ast1700.c:113:aspeed_ast1700_instance_init:
-code should not be reached
-Broken pipe
-../tests/qtest/libqtest.c:208: kill_qemu() detected QEMU death from
-signal 6 (Aborted) (core dumped)
+Hi Jonathan and Igor,
 
-(test program exited with status code -6)
-```
+On 11/6/25 12:14 AM, Jonathan Cameron wrote:
+> On Wed,  5 Nov 2025 21:44:49 +1000
+> Gavin Shan <gshan@redhat.com> wrote:
+> 
+>> In the situation where host and guest has 64KiB and 4KiB page sizes,
+>> one problematic host page affects 16 guest pages. we need to send 16
+>> consective errors in this specific case.
+>>
+>> Extend acpi_ghes_memory_errors() to support multiple CPERs after the
+>> hunk of code to generate the GHES error status is pulled out from
+>> ghes_gen_err_data_uncorrectable_recoverable(). The status field of
+>> generic error status block is also updated accordingly if multiple
+>> error data entries are contained in the generic error status block.
+>>
+>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+> Hi Gavin,
+> 
+> Mostly fine, but a few comments on the defines added and a
+> question on what the multiple things are meant to mean?
+> 
 
-Failed by running:
-```
-./configure \
-  --target-list=3Darm-softmmu,arm-linux-user,aarch64-softmmu,aarch64-linux-=
-user,i386-softmmu
-\
-  --cc=3Dclang-18 --extra-cflags=3D-Wno-deprecated-declarations \
-  --cxx=3Dclang++-18 --extra-cxxflags=3D-Wno-deprecated-declarations
-make -j 32 all check-report-unit.junit.xml
-check-report-qtest-arm.junit.xml check-report-qtest-aarch64.junit.xml
-check-report-qtest-i386.junit.xml
+Thanks for your review and comments, replies as below.
+
+>> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+>> index a9c08e73c0..527b85c8d8 100644
+>> --- a/hw/acpi/ghes.c
+>> +++ b/hw/acpi/ghes.c
+>> @@ -57,8 +57,12 @@
+>>   /* The memory section CPER size, UEFI 2.6: N.2.5 Memory Error Section */
+>>   #define ACPI_GHES_MEM_CPER_LENGTH           80
+>>   
+>> -/* Masks for block_status flags */
+>> -#define ACPI_GEBS_UNCORRECTABLE         1
+>> +/* Bits for block_status flags */
+>> +#define ACPI_GEBS_UNCORRECTABLE           0
+>> +#define ACPI_GEBS_CORRECTABLE             1
+>> +#define ACPI_GEBS_MULTIPLE_UNCORRECTABLE  2
+>> +#define ACPI_GEBS_MULTIPLE_CORRECTABLE    3
+> 
+> So this maps to the bits in block status.
+> 
+> I'm not actually sure what these multiple variants are meant to tell us.
+> The multiple error blocks example referred to by the spec is a way to represent
+> the same error applying to multiple places.  So that's one error, many blocks.
+> I have no idea if we set these bits in that case.
+> 
+> Based on a quick look I don't think linux even takes any notice.  THere
+> are defines in actbl1.h but I'm not seeing any use made of them.
+> 
+
+I hope Igor can confirm since it was suggested by him.
+
+It's hard to understand how exactly these multiple variants are used from the
+spec. In ACPI 6.5 Table 18.11, it's explained as below.
+
+Bit [2] - Multiple Uncorrectable Errors: If set to one, indicates that more
+than one uncorrectable errors have been detected.
+
+I don't see those multiple variants have been used by Linux. So I think it's
+safe to drop them.
+
+>> +#define ACPI_GEBS_ERROR_DATA_ENTRIES      4
+> 
+> This is bits 4-13 and the define isn't used. I'd drop it.
+> 
+
+The definition is used in acpi_ghes_memory_errors() of this patch. However,
+I don't see it has been used by Linux. This field isn't used by Linux to determine
+the total number of error entries. So I think I can drop it either if Igor is ok.
 
 Thanks,
-Nabih
-
-Nabih Estefan (he/him) |  Software Engineer |
-nabihestefan@google.com |  857-308-9574
+Gavin
 
 
 
-On Tue, Nov 4, 2025 at 8:03=E2=80=AFPM Kane Chen via <qemu-devel@nongnu.org=
-> wrote:
->
-> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
->
-> Connect the SPI device to AST1700 model.
->
-> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
-> ---
->  include/hw/misc/aspeed_ast1700.h |  1 +
->  hw/misc/aspeed_ast1700.c         | 28 ++++++++++++++++++++++++++++
->  2 files changed, 29 insertions(+)
->
-> diff --git a/include/hw/misc/aspeed_ast1700.h b/include/hw/misc/aspeed_as=
-t1700.h
-> index 391c8687f5..e55deea67a 100644
-> --- a/include/hw/misc/aspeed_ast1700.h
-> +++ b/include/hw/misc/aspeed_ast1700.h
-> @@ -33,6 +33,7 @@ struct AspeedAST1700SoCState {
->      AspeedLTPIState ltpi;
->      SerialMM uart;
->      MemoryRegion sram;
-> +    AspeedSMCState spi;
->  };
->
->  #endif /* ASPEED_AST1700_H */
-> diff --git a/hw/misc/aspeed_ast1700.c b/hw/misc/aspeed_ast1700.c
-> index 6f7ff625b5..ba44e484e8 100644
-> --- a/hw/misc/aspeed_ast1700.c
-> +++ b/hw/misc/aspeed_ast1700.c
-> @@ -20,15 +20,19 @@
->  #define AST1700_SOC_SRAM_SIZE        0x00040000
->
->  enum {
-> +    ASPEED_AST1700_DEV_SPI0,
->      ASPEED_AST1700_DEV_SRAM,
->      ASPEED_AST1700_DEV_UART12,
->      ASPEED_AST1700_DEV_LTPI_CTRL,
-> +    ASPEED_AST1700_DEV_SPI0_MEM,
->  };
->
->  static const hwaddr aspeed_ast1700_io_memmap[] =3D {
-> +    [ASPEED_AST1700_DEV_SPI0]      =3D  0x00030000,
->      [ASPEED_AST1700_DEV_SRAM]      =3D  0x00BC0000,
->      [ASPEED_AST1700_DEV_UART12]    =3D  0x00C33B00,
->      [ASPEED_AST1700_DEV_LTPI_CTRL] =3D  0x00C34000,
-> +    [ASPEED_AST1700_DEV_SPI0_MEM]  =3D  0x04000000,
->  };
->  static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
->  {
-> @@ -76,6 +80,20 @@ static void aspeed_ast1700_realize(DeviceState *dev, E=
-rror **errp)
->                          aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_UART=
-12],
->                          sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart),=
- 0));
->
-> +    /* SPI */
-> +    object_property_set_link(OBJECT(&s->spi), "dram",
-> +                             OBJECT(&s->iomem), &error_abort);
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi), errp)) {
-> +        return;
-> +    }
-> +    memory_region_add_subregion(&s->iomem,
-> +                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_SPI0=
-],
-> +                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->spi), =
-0));
-> +
-> +    memory_region_add_subregion(&s->iomem,
-> +                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_SPI0=
-_MEM],
-> +                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->spi), =
-1));
-> +
->      /* LTPI controller */
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->ltpi), errp)) {
->          return;
-> @@ -88,11 +106,21 @@ static void aspeed_ast1700_realize(DeviceState *dev,=
- Error **errp)
->  static void aspeed_ast1700_instance_init(Object *obj)
->  {
->      AspeedAST1700SoCState *s =3D ASPEED_AST1700(obj);
-> +    char socname[8];
-> +    char typename[64];
-> +
-> +    if (sscanf(object_get_typename(obj), "aspeed.ast1700-%7s", socname) =
-!=3D 1) {
-> +        g_assert_not_reached();
-> +    }
->
->      /* UART */
->      object_initialize_child(obj, "uart[*]", &s->uart,
->                              TYPE_SERIAL_MM);
->
-> +    /* SPI */
-> +    snprintf(typename, sizeof(typename), "aspeed.spi%d-%s", 0, socname);
-> +    object_initialize_child(obj, "ioexp-spi[*]", &s->spi,
-> +                            typename);
->      /* LTPI controller */
->      object_initialize_child(obj, "ltpi-ctrl",
->                              &s->ltpi, TYPE_ASPEED_LTPI);
-> --
-> 2.43.0
->
->
 

@@ -4,87 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A22BFCCF9F8
-	for <qemu-arm@archiver.kernel.org>; Fri,  7 Nov 2025 14:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22D56CCFA18
+	for <qemu-arm@archiver.kernel.org>; Fri,  7 Nov 2025 15:02:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vHNcX-0000YM-Uf; Fri, 07 Nov 2025 09:39:22 -0500
+	id 1vHNyW-0000RY-OH; Fri, 07 Nov 2025 10:02:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vHNcV-0000Xr-VZ
- for qemu-arm@nongnu.org; Fri, 07 Nov 2025 09:39:19 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1vHNyM-0000NW-Tk
+ for qemu-arm@nongnu.org; Fri, 07 Nov 2025 10:01:55 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vHNcU-0001vU-3D
- for qemu-arm@nongnu.org; Fri, 07 Nov 2025 09:39:19 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-477563e28a3so5835245e9.1
- for <qemu-arm@nongnu.org>; Fri, 07 Nov 2025 06:39:17 -0800 (PST)
+ id 1vHNyJ-0003eE-Io
+ for qemu-arm@nongnu.org; Fri, 07 Nov 2025 10:01:54 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4775ae77516so9790455e9.1
+ for <qemu-arm@nongnu.org>; Fri, 07 Nov 2025 07:01:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1762526355; x=1763131155; darn=nongnu.org;
+ d=linaro.org; s=google; t=1762527709; x=1763132509; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=VnOoY3GS9fZhgYAsHIoSmdYJhCdMuYARnS13WjC3+QA=;
- b=u9s9fCN+UCjFoOB6enH9HTaD1lCwHdzYN8uvVfn17i7MxhPl161mci33a+pvxc/AAm
- kmo7mOHI+9YkrdqdSHW4zklVCpHkYXz34H9lOdzbmlApJhGS1FYhwLDfD00oEZZHy5yK
- cvCdK4JYqDJmh7MNsjdMC5Li4F/H9hRi4ykp8XF+s2e00lInLvZo3aUL9s0OPFL5KE9N
- TiElRySV2P+7V3gqFTFX0dwBwuhhFzq2j8C3bggFPz6+cdgXmKmYAOwbIm+JfxxLRZXa
- Q5A0nvyFArb3++4hWUnAjblg2wckvga7AC/Nc/OrCKGJ/3xi/AXArYxWlgq6zy0E+IcW
- RBcQ==
+ bh=JsPXanOwycMd+Uo8/scp5eUByokzkxKqyckKoyuUOUU=;
+ b=YHAwaf0/0YbqIjJeasScvztE3mKxn6/uRFKxFvuI3HMSzGer7A7/gkfa6VZIMivaKL
+ W1ShoQu/8yPhOAGsEbWODD3JPDhzn/CnaW9zG0ugtPIzl4Ivy4mG0BpsCA/w85Mp6A3W
+ sLjGC6jnE+BszBSCbfOkVCnlp8ovsBYfhTJS8OTc78rG/lGn/4TykhVfjuGlMxbKt+tq
+ 145vKhYyGZgQFGivJgeSqOTsPlCBqnLOdVFzNFroe5DTL+h/h1jtcAkVsYKHWoiUHq6h
+ iHS9wuL5m+06JpOKInByCQtU8toePsYxv3p8HypTdYjcZrPQ07iqbJeUehCMheRi0Vbs
+ XCmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762526355; x=1763131155;
+ d=1e100.net; s=20230601; t=1762527709; x=1763132509;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=VnOoY3GS9fZhgYAsHIoSmdYJhCdMuYARnS13WjC3+QA=;
- b=bbezYK10fr3750Y+whsRGLBHSKswUBrV6RPNfCOf2uv0JijOcwJeVuyn8rhPnJ4E3m
- tLD7GuRA8mUyqxUGPNZvj4af7M2iKfn/7QX1lHSVDwcNFwtybe99w5Ek7cNLqqOwp3yR
- uqhCSi5sd24htt89rgNGsce8hdmG/fTEaLDD/dpXuzmKZRoVgPFZ6KALh1R1RVOPjEV5
- o64QEvlRQUMpfQ1K5Wy2lRuzuzTNs1XtvptrhvZD3ccTW1zHUuTMtitBGAZl+CYHqmSM
- WpmyqbaHnDR/r6wu6uylrlK9kL/tmhXrYVD82OSHB8ugLxFu2x4nUThNPUk3OoPkUhv0
- FrYA==
-X-Gm-Message-State: AOJu0Yw9hm+F9wmWtZWGRF4MFkbNINvTui3RQSZCxZUD00bQgCSsnrcY
- Eo6MhEkHoWhvaWrms+J733yUJOWGXHtjyCIiGH+Rso0HTSqqp6pIzVs5FTGKlC+8FJO28T2nna5
- f1Mdc
-X-Gm-Gg: ASbGncvYC6yVW2PDAvPKuEAvvXC7QbcIWxb0TMIyp8skPo3Mn5QLZQurIm3WZeVoy6q
- aHvq6kjR0dXMlkzge3JhjFZHSh8bPMpIJmazK24NWcnZ7CxlPWZp0YsWymw6D49ol8nreewKBsY
- I/Ay9zOr0vRVUPeC6C+5HBVoZTq+RoL4lAe7UeRAIXg1qjUGk7GbhBH0K5WSYL5xqwUvzKpumno
- SwY1yxS088JRRdbpnrtnf75TfaYK+Hyf8ugEH9jYWYbI9BPsRBpXjQ6dvuB8kTrEnCMYLiu9OE6
- 5ioO16AKSZNXM2+n1wMUx7xVHvZmq84HhHqNlG/7fmx6wH7ebz8gV75W5N4wEuhWNojHbSRzFiA
- TwL8LkXvj7ObmDAGOA53o18Wuzil5JbTd7iFVBu1t1EU/eT1I2zEvLpqBWZe8LagzBnNoDySZdC
- dLZeVglQ==
-X-Google-Smtp-Source: AGHT+IHQpcK4t2r//EVnveuBQ0T3b2j+yA0t8l53Gs3DqQItfFdHqRX36K7vH1e6ExvfySCAL7FAww==
-X-Received: by 2002:a05:600c:154b:b0:46e:3b58:1b40 with SMTP id
- 5b1f17b1804b1-4776dc117a4mr21847005e9.4.1762526355397; 
- Fri, 07 Nov 2025 06:39:15 -0800 (PST)
+ bh=JsPXanOwycMd+Uo8/scp5eUByokzkxKqyckKoyuUOUU=;
+ b=VB/uW5L3oV0Iv6bbLCgXkC0dum4GFLs6+bi7VjlacFNPMw/4oCK80KIp53nnjD4JG8
+ WuJ9++NSHJVg2m8J0yA0Zocu4D5J/WYi1wlkVRPtNDB/WHCklXL91BFW/hF+nI7SJ3WM
+ ReXXSlM54iCljsEv/AXgWrvi0w0O5ZVCxKTpGbNN+qdYDU+0X8JlwNDhRMN0sr0k1Q0Z
+ D6uT9Y8iNQWADeaFbWnA3jb+ALwHl1s2d9RyObl12FafdSZPUjZRZw/Aa9b4iBfzv5g2
+ UR01EsT5Lmew/+61aQdCZ4s2MqxGCk59/maIs74WpnkElYx/Oxo0ncYizaCx+S+sndK2
+ M+KA==
+X-Gm-Message-State: AOJu0Yy6o9NojoTCxtBcPcmqLq+mXNj4wtM3LTfyfIlU1c+pHtUrtEF5
+ vBN3N3eTvdxVsV6y1TWqpUi5zxoo1/oQlcfSetfm6BuV04JnujusayOPc40fkyE2S5K66tmjlaO
+ pwbqv
+X-Gm-Gg: ASbGncsFOeFfW7R6Ucc+92PVtpz1wtHl2Fi4hVdqFou7OQfPffC0VEpun8EJiGFZdEN
+ uXSHt76FAet4/UqFeLmLCXgCFHFeuQJew9r3EXg8FNx/i3A3CZEon2fL6J+x9yNEanXJYDXjIeJ
+ a2e2E6J+j1WfWGqu1p1+azel4JekYFqKuB4cpJA0SWa4MDXGCPmy6r66lJ1YKE8Da/r5gUaeKyZ
+ RL2dXUATV7eQ2n8SXwc8xN4OiLgEhvXDThOG1dvzp4gQ5Xah9i4RoRCm7kQ6U/GhNWdzRI+w1iR
+ 2+gYXqHC0odpz06KDIAIVn2zp2Xgw/+bcVfzoB4wUiNMDA7GL2DPycVFXjthWFAfCYjKFZs3zZ4
+ Ir+LJ/GPLEMPkt7nowAK4Y9HEdJ+3Bj79mARY7UhlebNM1HapEFVsq+BtAJTr7Wr+zn0Nz7Q9jZ
+ 9oZ7iF+kbZi+lNAkqt
+X-Google-Smtp-Source: AGHT+IF6WqeitVxy78B0zzlLzVCq7C354pTOimGANN5r9APaHnVC7D10CTJbWt6OyjZLq25qFTXWvA==
+X-Received: by 2002:a05:600c:c4a3:b0:46e:436c:2191 with SMTP id
+ 5b1f17b1804b1-4776bcb9cbdmr27706775e9.25.1762527707959; 
+ Fri, 07 Nov 2025 07:01:47 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4776bcfd2e5sm52744815e9.13.2025.11.07.06.39.14
+ ffacd0b85a97d-42ac679607esm5794652f8f.43.2025.11.07.07.01.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Nov 2025 06:39:14 -0800 (PST)
+ Fri, 07 Nov 2025 07:01:41 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>
-Subject: [PATCH] hw/display/exynos4210_fimd: Account for zero length in
- fimd_update_memory_section()
-Date: Fri,  7 Nov 2025 14:39:13 +0000
-Message-ID: <20251107143913.1341358-1-peter.maydell@linaro.org>
+Cc: Tyrone Ting <kfting@nuvoton.com>,
+	Hao Wu <wuhaotsh@google.com>
+Subject: [PATCH] hw/misc/npcm_clk: Don't divide by zero when calculating
+ frequency
+Date: Fri,  7 Nov 2025 15:01:37 +0000
+Message-ID: <20251107150137.1353532-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,47 +101,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In fimd_update_memory_section() we attempt ot find and map part of
-the RAM MR which backs the framebuffer, based on guest-configurable
-size and start address.
+If the guest misprograms the PLL registers to request a zero
+divisor, we currently fall over with a division by zero:
 
-If the guest configures framebuffer settings which result in a
-zero-sized framebuffer, we hit an assertion(), because
-memory_region_find() will return a NULL mem_section.mr.
+../../hw/misc/npcm_clk.c:221:14: runtime error: division by zero
+SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../../hw/misc/npcm_clk.c:221:14
 
-Explicitly check for the zero-size case and treat this as a
-guest error.
+Thread 1 "qemu-system-aar" received signal SIGFPE, Arithmetic exception.
+0x00005555584d8f6d in npcm7xx_clk_update_pll (opaque=0x7fffed159a20) at ../../hw/misc/npcm_clk.c:221
+221             freq /= PLLCON_INDV(con) * PLLCON_OTDV1(con) * PLLCON_OTDV2(con);
 
-Because we now have a code path which can reach error_return without
-calling memory_region_find to set w->mem_section, we must NULL out
-w->mem_section.mr after the unref of the old MR, so that error_return
-does not incorrectly double-unref the old MR.
+Avoid this by treating this invalid setting like a stopped clock
+(setting freq to 0).
 
 Cc: qemu-stable@nongnu.org
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1407
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/549
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/display/exynos4210_fimd.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ hw/misc/npcm_clk.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-index c61e0280a7c..eec874d0b1d 100644
---- a/hw/display/exynos4210_fimd.c
-+++ b/hw/display/exynos4210_fimd.c
-@@ -1147,6 +1147,13 @@ static void fimd_update_memory_section(Exynos4210fimdState *s, unsigned win)
-     if (w->mem_section.mr) {
-         memory_region_set_log(w->mem_section.mr, false, DIRTY_MEMORY_VGA);
-         memory_region_unref(w->mem_section.mr);
-+        w->mem_section.mr = NULL;
-+    }
-+
-+    if (w->fb_len == 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "FIMD: Guest config means framebuffer is zero length\n");
-+        goto error_return;
-     }
+diff --git a/hw/misc/npcm_clk.c b/hw/misc/npcm_clk.c
+index c48d40b4468..e202a8a2998 100644
+--- a/hw/misc/npcm_clk.c
++++ b/hw/misc/npcm_clk.c
+@@ -212,13 +212,14 @@ static void npcm7xx_clk_update_pll(void *opaque)
+ {
+     NPCM7xxClockPLLState *s = opaque;
+     uint32_t con = s->clk->regs[s->reg];
+-    uint64_t freq;
++    uint64_t freq, freq_div;
  
-     w->mem_section = memory_region_find(s->fbmem, fb_start_addr, w->fb_len);
+     /* The PLL is grounded if it is not locked yet. */
+     if (con & PLLCON_LOKI) {
+         freq = clock_get_hz(s->clock_in);
+         freq *= PLLCON_FBDV(con);
+-        freq /= PLLCON_INDV(con) * PLLCON_OTDV1(con) * PLLCON_OTDV2(con);
++        freq_div = PLLCON_INDV(con) * PLLCON_OTDV1(con) * PLLCON_OTDV2(con);
++        freq = freq_div ? freq / freq_div : 0;
+     } else {
+         freq = 0;
+     }
 -- 
 2.43.0
 

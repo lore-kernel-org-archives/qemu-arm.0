@@ -4,92 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00F7BCCF9F8
-	for <qemu-arm@archiver.kernel.org>; Fri,  7 Nov 2025 18:29:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D19EBCCF9F8
+	for <qemu-arm@archiver.kernel.org>; Sat,  8 Nov 2025 00:22:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vHRDU-00034d-3R; Fri, 07 Nov 2025 13:29:44 -0500
+	id 1vHWit-0008QS-MS; Fri, 07 Nov 2025 19:22:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vHRCK-0002fG-Fj
- for qemu-arm@nongnu.org; Fri, 07 Nov 2025 13:28:32 -0500
-Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vHRCI-0004Wv-MI
- for qemu-arm@nongnu.org; Fri, 07 Nov 2025 13:28:32 -0500
-Received: by mail-il1-x12d.google.com with SMTP id
- e9e14a558f8ab-431d824c8cbso6985ab.1
- for <qemu-arm@nongnu.org>; Fri, 07 Nov 2025 10:28:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1762540108; x=1763144908; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=uO5g1jU0AlZUCCAZkhlWxfxPSBtSAw5OnO86ze8xJFo=;
- b=gRtBXv5VFeWGVcRsxsRg5h6qoZSuNK4fhen+nN60usnQGIefumJv8lNUVhD7f+qReW
- alcM6GqFamBlmzI0AKrcRBO8KA/lP+cFn3SAyrNgs90ZbH7vpA/+wh3wKOVnrYm8k6Z4
- JqYza9VMGHJdSQrPycVE7JFm1bWN+Iu96kCWIXDtnIRjzCO8qfied2W+nPRdFKGfXdwP
- A7v/lkAoXhxSzDyoPIhJgkoTRWRptNWxHoGshGAzASeVQGD5fXlCKF2IAFeblXG/TxdA
- 3qsAVaEiHmyk2/ztOvr4JqG62G/xraa0GFsRFPdnjF8akMVJyki1tuj3n43/7hhJxHub
- 7GSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762540108; x=1763144908;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=uO5g1jU0AlZUCCAZkhlWxfxPSBtSAw5OnO86ze8xJFo=;
- b=OyWgdD2GqlkxQXXKbH7Qw0Eo8pxBktN2w7p6aKyNrzcyn4jorH36aJ5fcIl6UQmQdl
- W8KaD3twaopei52V4ELtK4Rt/NqaIlsRqUX7/oAas/wJnwiwOAWgh/8PcEUHuE8Ipo6v
- BIVd07VqjOuUIJlkNJUdkb0M+HWa4vzv//TsKRCjLBczmIAl3Wpk39MXBQRm7axn/xzg
- sz5Z+OBn2uduLKTz8l9cmh5+cNQM241Orya4e8DxwwsVEYtqtJzZLDynYPbt668ZyUnu
- upnLeCV57VuMEEwsXHa219kGT6mJ9bZl7K68EC3Hk7vEWxroL3KH/U/BCb/kew/h52IX
- 6r6w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWOgTNblol2h3FWXzGxxIlVaoKjmBby+Yw24VGgLn1K9J7IZI0CU4rJfuoBIlYJ/Nb+zv/pfibW5A==@nongnu.org
-X-Gm-Message-State: AOJu0YxLx8KwDVBNu2Vzz1BWkcgcLQWc0bXSAev7kGVSbXuGZ142tbyv
- 1nvEltUbxbb2n/7FNiIAorsYSjPYY9yqYH03d7m2dSpJhuMz6pDjAGP60O4jYXl5wjtbvjQdxoE
- JlhQiNyVS8M026HVojAJVtFB406jlI6KFe7Muhjo/
-X-Gm-Gg: ASbGnctdIXvcdqXjuyrtrO6AUr0OfX7S+M26hxmG+bI+Jn6ATbDblT1K/R+McVyRt+6
- MdGRRornCSGw1ynZSKitgLD8wCxMQrhpej74asUwPsbgeBDxPQ8uSCE0FsiapM32PCW+wRdx5/B
- IBHjAp8X8JTM05Xab79WEiFUcn/KblE+tiVA3e5jt35lIhcPm6K1vvxP5R44VRUCadBWMOSjHWt
- HJbf4wrFZq304MTkGwjZMl6CVDc3XvCnbSyDUuaJd+exrDeY1KhoEsH5idyEk2i+Gl9nLGJgxPa
- Uk1e7qe++BIhMJi9UQyc1R52dQ==
-X-Google-Smtp-Source: AGHT+IG7BAvNKMSggrFvGNI1abet3JbYEQYFaIj2adAOV3o8lmSyWvmYGgEjZszJUHKRihhitHy0qQdQz+reEYCvT60=
-X-Received: by 2002:a05:6e02:1d98:b0:430:ccfa:1620 with SMTP id
- e9e14a558f8ab-433689a957bmr217225ab.12.1762540107984; Fri, 07 Nov 2025
- 10:28:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1vHWis-0008Ph-NV; Fri, 07 Nov 2025 19:22:30 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1vHWiq-0001if-9B; Fri, 07 Nov 2025 19:22:30 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 4AB2A5972FE;
+ Sat, 08 Nov 2025 01:22:23 +0100 (CET)
+X-Virus-Scanned: amavis at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
+ id kk2bx18pE7vx; Sat,  8 Nov 2025 01:22:21 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 00FB85972E8; Sat, 08 Nov 2025 01:22:21 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id F34EA5972E7;
+ Sat, 08 Nov 2025 01:22:20 +0100 (CET)
+Date: Sat, 8 Nov 2025 01:22:20 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Peter Maydell <peter.maydell@linaro.org>
+cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH] hw/audio/lm4549: Don't try to open a zero-frequency
+ audio voice
+In-Reply-To: <20251107154116.1396769-1-peter.maydell@linaro.org>
+Message-ID: <5da4fd2b-6c5b-e2f4-b421-0a440718af7b@eik.bme.hu>
+References: <20251107154116.1396769-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-References: <20251104233742.2147367-1-nabihestefan@google.com>
- <TYPPR06MB820663370307D783EA2AF733FCC5A@TYPPR06MB8206.apcprd06.prod.outlook.com>
- <SEZPR06MB76199F82F5B0D106C85E3080F7C5A@SEZPR06MB7619.apcprd06.prod.outlook.com>
-In-Reply-To: <SEZPR06MB76199F82F5B0D106C85E3080F7C5A@SEZPR06MB7619.apcprd06.prod.outlook.com>
-From: Nabih Estefan <nabihestefan@google.com>
-Date: Fri, 7 Nov 2025 10:28:16 -0800
-X-Gm-Features: AWmQ_bnqy8553CEXuTyX5lQw9FXv3NVP_WbfVTTbcnAS8_dVE7ietSKVHPmhI3I
-Message-ID: <CA+QoejVLkP6g43PJYpJacqVcNB+VRkQwSa3HYQbA1zJxT1d9Cw@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/ast27x0: Fix typo in LTPI address
-To: Kane Chen <kane_chen@aspeedtech.com>
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>, 
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "clg@kaod.org" <clg@kaod.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, 
- "leetroy@gmail.com" <leetroy@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::12d;
- envelope-from=nabihestefan@google.com; helo=mail-il1-x12d.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,74 +64,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Given that 10.2 is closed for features, but not for bug fixes: should
-we try and land this in 10.1, and get the LTPI patches in for 11.0?
-
-Thanks,
-Nabih
-
-Nabih Estefan (he/him) |  Software Engineer |
-nabihestefan@google.com |  857-308-9574
-
-
-
-On Tue, Nov 4, 2025 at 5:27=E2=80=AFPM Kane Chen <kane_chen@aspeedtech.com>=
- wrote:
+On Fri, 7 Nov 2025, Peter Maydell wrote:
+> If the guest incorrectly programs the lm4549 audio chip with a zero
+> frequency, we will pass this to AUD_open_out(), which will complain:
 >
-> Hi Nabih,
+>   A bug was just triggered in AUD_open_out
+>   Save all your work and restart without audio
+>   I am sorry
+>   Context:
+>   audio: frequency=0 nchannels=2 fmt=S16 endianness=little
 >
-> I will submit another patch for the LTPI controller soon, and I'll also f=
-ix this typo there.
-> If there are no further concerns, could we leave this change as is?
+> The datasheet doesn't say what we should do here, only that the valid
+> range for the freqency is 8000 to 48000 Hz; we choose to log the
+> guest error and ignore an attempt to change the DAC rate to something
+> outside the valid range.
 >
-> Best Regards,
-> Kane
-> > -----Original Message-----
-> > From: Jamin Lin <jamin_lin@aspeedtech.com>
-> > Sent: Wednesday, November 5, 2025 9:11 AM
-> > To: Nabih Estefan <nabihestefan@google.com>; qemu-devel@nongnu.org;
-> > Kane Chen <kane_chen@aspeedtech.com>
-> > Cc: clg@kaod.org; peter.maydell@linaro.org; Steven Lee
-> > <steven_lee@aspeedtech.com>; leetroy@gmail.com; qemu-arm@nongnu.org
-> > Subject: RE: [PATCH] hw/arm/ast27x0: Fix typo in LTPI address
-> >
-> > + Kane
-> >
-> > Hi Kane,
-> >
-> > Could you please help to review it?
-> > Thanks-Jamin
-> >
-> > > Subject: [PATCH] hw/arm/ast27x0: Fix typo in LTPI address
-> > >
-> > > The address for LTPI has one more 0 that it should, bug introduced in
-> > > commit 91064bea6b2d747a981cb3bd2904e56f443e6c67.
-> > >
-> > > Signed-off-by: Nabih Estefan <nabihestefan@google.com>
-> > > ---
-> > >  hw/arm/aspeed_ast27x0.c | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > >
-> > > diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c index
-> > > c484bcd4e2..1e6f469538 100644
-> > > --- a/hw/arm/aspeed_ast27x0.c
-> > > +++ b/hw/arm/aspeed_ast27x0.c
-> > > @@ -87,11 +87,11 @@ static const hwaddr
-> > aspeed_soc_ast2700_memmap[] =3D
-> > > {
-> > >      [ASPEED_DEV_UART11]    =3D  0x14C33A00,
-> > >      [ASPEED_DEV_UART12]    =3D  0x14C33B00,
-> > >      [ASPEED_DEV_WDT]       =3D  0x14C37000,
-> > > +    [ASPEED_DEV_LTPI]      =3D  0x30000000,
-> > >      [ASPEED_DEV_PCIE_MMIO0] =3D 0x60000000,
-> > >      [ASPEED_DEV_PCIE_MMIO1] =3D 0x80000000,
-> > >      [ASPEED_DEV_PCIE_MMIO2] =3D 0xA0000000,
-> > >      [ASPEED_DEV_SPI_BOOT]  =3D  0x100000000,
-> > > -    [ASPEED_DEV_LTPI]      =3D  0x300000000,
-> > >      [ASPEED_DEV_SDRAM]     =3D  0x400000000,
-> > >  };
-> > >
-> > > --
-> > > 2.51.2.1006.ga50a493c49-goog
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/410
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> This bug has been around for so long and is a weird edge case whose
+> only effect is to print a debug message, so it doesn't really seem
+> worth cc'ing stable on.
+> ---
+> hw/audio/lm4549.c | 17 ++++++++++++++++-
+> 1 file changed, 16 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/audio/lm4549.c b/hw/audio/lm4549.c
+> index 745441bd790..bf711c49c04 100644
+> --- a/hw/audio/lm4549.c
+> +++ b/hw/audio/lm4549.c
+> @@ -15,6 +15,7 @@
+>
+> #include "qemu/osdep.h"
+> #include "hw/hw.h"
+> +#include "qemu/log.h"
+> #include "qemu/audio.h"
+> #include "lm4549.h"
+> #include "migration/vmstate.h"
+> @@ -179,9 +180,23 @@ void lm4549_write(lm4549_state *s,
+>         break;
+>
+>     case LM4549_PCM_Front_DAC_Rate:
+> -        regfile[LM4549_PCM_Front_DAC_Rate] = value;
+>         DPRINTF("DAC rate change = %i\n", value);
+>
+> +        /*
+> +         * Valid sample rates are 4kHz to 48kHz.
+
+Commit message says minimum is 8kHz. One of these is likely incorrect.
+Maybe a typo in commit message?
+
+Regards,
+BALATON Zoltan
+
+> +         * The datasheet doesn't say what happens if you try to
+> +         * set the frequency to zero. AUD_open_out() will print
+> +         * a bug message if we pass it a zero frequency, so just
+> +         * ignore attempts to set the DAC frequency to zero.
+> +         */
+> +        if (value < 4000 || value > 48000) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "%s: DAC sample rate %d Hz is invalid, ignoring it\n",
+> +                          __func__, value);
+> +            break;
+> +        }
+> +        regfile[LM4549_PCM_Front_DAC_Rate] = value;
+> +
+>         /* Re-open a voice with the new sample rate */
+>         struct audsettings as;
+>         as.freq = value;
 >
 

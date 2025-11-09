@@ -4,84 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD2ACCCFA13
-	for <qemu-arm@archiver.kernel.org>; Sun,  9 Nov 2025 10:46:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F66CCCFA13
+	for <qemu-arm@archiver.kernel.org>; Sun,  9 Nov 2025 13:40:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vI2vu-0008NF-VU; Sun, 09 Nov 2025 05:46:07 -0500
+	id 1vI5eT-0002aQ-19; Sun, 09 Nov 2025 08:40:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vI2vt-0008Gu-6T
- for qemu-arm@nongnu.org; Sun, 09 Nov 2025 05:46:05 -0500
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vI5eQ-0002ZC-HJ
+ for qemu-arm@nongnu.org; Sun, 09 Nov 2025 08:40:15 -0500
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vI2vq-0008TG-UV
- for qemu-arm@nongnu.org; Sun, 09 Nov 2025 05:46:04 -0500
-Received: by mail-ej1-x642.google.com with SMTP id
- a640c23a62f3a-b4736e043f9so292937166b.0
- for <qemu-arm@nongnu.org>; Sun, 09 Nov 2025 02:46:02 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vI5eO-0000UI-Kt
+ for qemu-arm@nongnu.org; Sun, 09 Nov 2025 08:40:14 -0500
+Received: by mail-ej1-x643.google.com with SMTP id
+ a640c23a62f3a-b4736e043f9so303285366b.0
+ for <qemu-arm@nongnu.org>; Sun, 09 Nov 2025 05:40:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1762685161; x=1763289961; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:to
+ d=linaro.org; s=google; t=1762695611; x=1763300411; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=I0XbYMG3ZXeiT8BVAbvjtRixtNLKhkoATyUV7fZJRHI=;
- b=hlrUDek525ECRXHgAzq9xnB876yd/x1WrEPlMQmlZ2FvjEfSnsjEfwUp812nyyyKYn
- JEXYvUZfaWD3+jXs+rbt1olUmJ0QSX6tqKh6p0adVYFmm0feV/tso8mpFrcLnvX7b4SG
- VftWmdzLd/hz7J2K8bfWbAgAjffwUdVYh46TZ8WJcsJOZ73o6DYeQ9xhBFL30KF2WQd9
- IKLrJnoWc6gHWiyFQjUn4WPHUu1g6OtPmkWe+iF24xA6XXuEgAZaZ8vZ6LB7Yw24oil2
- AbQuPundOb8lJvKx+nQ3MrjocHgpSY+5B++aElM1GE/L16nb0qqK5bFznOIqmjqgVHoh
- htjQ==
+ bh=FGGWXmu/Gp5QZI1NAlHAkNxYhkYxP1TdvMJCl4NIAwI=;
+ b=wR1ssRj9AzOnB5arTnhLfwEcv8KZxRK1Rrjnp1WFKQTzAhJV2KT/pPzseenQYXQVNG
+ Ei3A78EsLS9f5CrdKDv7DPSwZO+feobqnnXPh8M69/f3HNXPFHDs9mf75OB079AHmcOn
+ 0eBfYPopcXCN1irVc9TkmCnEKrKiamCHlGttiA8HIaK9U4grG+O3pOtp38Bbrfy1Jawv
+ n6yXyDyDNYh6xp/ZWSkhQpaDFnYJq5HfCnldw8Nly9E8Ic61TRYwebTb5GgfDhks24KA
+ NWFaSMoz6/gQQANPeoDf6hSvYp4+zsC3tiy+ef0Rn56OWkOqub6RcazQ+jQ/QBA960kn
+ +VmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762685161; x=1763289961;
- h=content-transfer-encoding:in-reply-to:from:references:to
+ d=1e100.net; s=20230601; t=1762695611; x=1763300411;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=I0XbYMG3ZXeiT8BVAbvjtRixtNLKhkoATyUV7fZJRHI=;
- b=kpFGchK3BHJnRWZr8Uj9ysJ/MiRuZsatpomXGcHf45BcHppiDxqHwHeQl4OpYqE1ep
- 6syxaBac6J2qEXjlRzarp5r2htk7i0uG4bmd2j+f70D/hM7H86xB7NMU6RVpBs3vdx0U
- NNIeGKyXAON242iKH9bSGHPGjhq3rsBdfxBu8/AXG7BOTvQwHCcFsLCyng/NbmvWVFzO
- 9mm5uDy+nZMcHmhM5fpPNPV8L3ZgCOIJRDAOL/sHLfJ+Rk4mK3wtzraW6iX7TAg9xopZ
- KzLP9VeamAdUo5im4pKR2zIBWaj4b/cL5yoS54D8aTGr1ibKL6NE6BK29iJA2UjUdDds
- Hhyw==
+ bh=FGGWXmu/Gp5QZI1NAlHAkNxYhkYxP1TdvMJCl4NIAwI=;
+ b=Nnkl72LM9HNpyonu/2FJ6qBb6amKMsUwd2NLzcfRvKaUftwmFovY58Y3M8FjomqE0T
+ iXSdrF3K6Y4xRf7hBGXLDPtbHRBqnP+LZZdkjUnZhMdicT0XlVc/nN2QnlSAnazbysqo
+ chniL+aWqxnTArEAo6n4LkrLZ+OwfQGfLVnQSNcj2W2cNNoG8CtRPeuuQOpy7UwFIQam
+ gRsiHPsPcGd/I706ODnapvkRRd5c/UoHTb1lLqZPKrycJxrIXxZjujvRmgZbvPa538ow
+ LGMFAZwtPJGYmUgr03THsWiOCD6HugYFwR34L6uIT2VFcCM0sKQss9Gni+cfMeUPzOW8
+ HR+g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXsJmUD5fOSqMY2Vemb+pwi5IUX2KaT1lLpt3XvPKIMReEqEt0UPRUq1SVxiJyy5FGnWs/NnHseDg==@nongnu.org
-X-Gm-Message-State: AOJu0Yyf7kA1FgpEvYzxyATQQhWDrvhSJQmtMre1bnyk11UCLC0/QLh0
- 6Crn+RkLBpM4t9saQtWebDZsb+xElwKVdK3FMu+bVHb2LZy3mCbee0JIbNoH2TXdyds=
-X-Gm-Gg: ASbGncup8R46C9/N2tGAEcGwyVIqqbgkVvf/gFwHJqdD81uCWPnfW0bavAfFCnUNfGw
- 7zRVBXRo0i53aXFsIyvJy3q6ukl/S6WNSpzUnfclIr15I1hXH7q1cZS6+sBzeS1CBVXA/QpeMiS
- F/NoB6xPMJG9LRIN0wepEXJVw9I/Sm980JCLtF/P/7BtPrJx1oHGHcguf83GykmWUYEPWKwCDIz
- 6WF07GVto6CDbBPe9MCWT/hH2+IghaqtURI8fJAofF7Y69EjVq57TxTVq5VA0WCo60AXWWsADHV
- lAq0qUE7K3GdDlLHf9Qnst0VOh5bZWIxY7zeq0Z6wa6kv7yIKIHK8TwIV9q9AaokUFX3euaU6SP
- vSbE9XPMWSaHtnMQJGgc3ygyuoz4ZXyluQOm3hP/jVr3eOlPRLBVEjEIe+5GHo19C+0xEYd18nR
- 1EBFZsvDAVxlnkt8N8+UaMcLDArysyTttZeHg4RPsE7tALmdVES/Pj0pQsS3HFa+M=
-X-Google-Smtp-Source: AGHT+IFGDx2Hg73K7SSEPTwfZS2TGY1L073Ka2nm6rM/5PhMlrkhLyCHj33kzYD6np7OnaNg3o5IVw==
-X-Received: by 2002:a17:907:9721:b0:b72:5640:ac15 with SMTP id
- a640c23a62f3a-b72e03156dcmr456854466b.26.1762685161095; 
- Sun, 09 Nov 2025 02:46:01 -0800 (PST)
+ AJvYcCV0l5WtvZYW/NpplNMzGcLAf0VnPhZs4VnpaxVPnhl/UkaNxGvs9WGY+mpUPIEQF2BVbuszkIseFA==@nongnu.org
+X-Gm-Message-State: AOJu0YzbKIrY2yCfTtgT848JXcLvJ3VKzrss0IYdA3zaibTKIL1EE6yB
+ yDUpm84eo2CRWzSI0n23V/EXbYmxf5vhm7tx6GprjDu4sTbVpE6W3z7awVcdno8LrzE=
+X-Gm-Gg: ASbGncuCHdFzdINtw3VE5SYw8nvtlXhsLmigvQrp9aE53/KpkCXvyfY9VQJ3M9tnMyN
+ MM6v6h0uH8W9cYDrhpYDjQBOjalXLL+rhGXvur4heJTwEgpNCBUJEnC4w/95y88PUY3dShJfK42
+ g3jMlkIGCIDFkxLzQJwgzIejRfuOa2+KFFthwOL1O/wNbXKRnNfNrvmDtWGbV0DUf8uCD9VqDck
+ dZOvR59azmZuX64XBDdxyWUV0H31zq9yWhNh1/yFtoFav9UFcVVbZfqtYz2cuee2QhwrpRX+IBX
+ Y55ddKMYo1DdTJDFMYdAZgTm98iPt4Pe2/X39CuyTXEz0Kt3rmvCL1kdLWB5gJy5yFzD41OMzuR
+ 7IHVmeZVDIPop8vC0Aqdwc3LHwPOubppfthO0kWCkpdBLVC1pSLQptE/Tas3yiCY2cSOGAByz56
+ tuUjIh0Fn4Rs4C8AB8FBOJ6Xe92vpkSBSJsUrzFrGX+j3gONnLIzmvf8/Teg==
+X-Google-Smtp-Source: AGHT+IGXWcafAtkvpfqSQj5CLPxLhG6iz+bmK+NVtdOrflDHP2NhzUIFdlIk6YTgWBr7onfep3XNzQ==
+X-Received: by 2002:a17:907:7e91:b0:b6d:9576:3890 with SMTP id
+ a640c23a62f3a-b72e04ca2a7mr522352466b.45.1762695610760; 
+ Sun, 09 Nov 2025 05:40:10 -0800 (PST)
 Received: from [192.168.2.7] (tmo-086-152.customers.d1-online.com.
  [80.187.86.152]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b72bdbcea51sm767269166b.4.2025.11.09.02.46.00
+ a640c23a62f3a-b72bfa24d2asm795825666b.70.2025.11.09.05.40.05
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 09 Nov 2025 02:46:00 -0800 (PST)
-Message-ID: <e3530b1c-6f5f-48d0-ab5e-da94e59c275a@linaro.org>
-Date: Sun, 9 Nov 2025 11:45:59 +0100
+ Sun, 09 Nov 2025 05:40:08 -0800 (PST)
+Message-ID: <b708afc7-f894-4035-b6e4-62c6be99895f@linaro.org>
+Date: Sun, 9 Nov 2025 14:40:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/audio/lm4549: Don't try to open a zero-frequency audio
- voice
+Subject: Re: [PATCH 2/2] hw/display/xlnx_dp: Don't abort for unsupported
+ graphics formats
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-References: <20251107154116.1396769-1-peter.maydell@linaro.org>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+References: <20251106145209.1083998-1-peter.maydell@linaro.org>
+ <20251106145209.1083998-3-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251107154116.1396769-1-peter.maydell@linaro.org>
+In-Reply-To: <20251106145209.1083998-3-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x642.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::643;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x643.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,32 +107,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/11/25 16:41, Peter Maydell wrote:
-> If the guest incorrectly programs the lm4549 audio chip with a zero
-> frequency, we will pass this to AUD_open_out(), which will complain:
+Hi,
+
+On 6/11/25 15:52, Peter Maydell wrote:
+> If the guest writes an invalid or unsupported value to the
+> AV_BUF_FORMAT register, currently we abort().  Instead, log this as
+> either a guest error or an unimplemented error and continue.
 > 
->     A bug was just triggered in AUD_open_out
->     Save all your work and restart without audio
->     I am sorry
->     Context:
->     audio: frequency=0 nchannels=2 fmt=S16 endianness=little
+> The existing code treats DP_NL_VID_CB_Y0_CR_Y1 as x8b8g8r8
+> via a "case 0" that does not use the enum constant name for some
+> reason; we leave that alone beyond adding a comment about the
+> weird code.
 > 
-> The datasheet doesn't say what we should do here, only that the valid
-> range for the freqency is 8000 to 48000 Hz; we choose to log the
-> guest error and ignore an attempt to change the DAC rate to something
-> outside the valid range.
+> Documentation of this register seems to be at:
+> https://docs.amd.com/r/en-US/ug1087-zynq-ultrascale-registers/AV_BUF_FORMAT-DISPLAY_PORT-Register
 > 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/410
+> Cc: qemu-stable@nongnu.org
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1415
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> This bug has been around for so long and is a weird edge case whose
-> only effect is to print a debug message, so it doesn't really seem
-> worth cc'ing stable on.
-> ---
->   hw/audio/lm4549.c | 17 ++++++++++++++++-
->   1 file changed, 16 insertions(+), 1 deletion(-)
+>   hw/display/xlnx_dp.c | 53 +++++++++++++++++++++++++++++++++++++++-----
+>   1 file changed, 48 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
+> index c2bf692e7b1..d8119a56292 100644
+> --- a/hw/display/xlnx_dp.c
+> +++ b/hw/display/xlnx_dp.c
+> @@ -665,14 +665,28 @@ static void xlnx_dp_change_graphic_fmt(XlnxDPState *s)
+>       case DP_GRAPHIC_BGR888:
+>           s->g_plane.format = PIXMAN_b8g8r8;
+>           break;
+> +    case DP_GRAPHIC_RGBA5551:
+> +    case DP_GRAPHIC_RGBA4444:
+> +    case DP_GRAPHIC_8BPP:
+> +    case DP_GRAPHIC_4BPP:
+> +    case DP_GRAPHIC_2BPP:
+> +    case DP_GRAPHIC_1BPP:
+> +        qemu_log_mask(LOG_UNIMP, "%s: unimplemented graphic format %u",
+> +                      __func__,
+> +                      s->avbufm_registers[AV_BUF_FORMAT] & DP_GRAPHIC_MASK);
+> +        s->g_plane.format = PIXMAN_r8g8b8a8;
+> +        break;
+>       default:
+> -        error_report("%s: unsupported graphic format %u", __func__,
+> -                     s->avbufm_registers[AV_BUF_FORMAT] & DP_GRAPHIC_MASK);
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid graphic format %u",
+> +                      __func__,
+> +                      s->avbufm_registers[AV_BUF_FORMAT] & DP_GRAPHIC_MASK);
+> +        s->g_plane.format = PIXMAN_r8g8b8a8;
+>           abort();
 
-With s/8000/4000/ in description:
+Don't we want to remove this abort() call?
+
+Otherwise,
+
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+>       }
 
 

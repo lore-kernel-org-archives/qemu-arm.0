@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E376BCD1297
-	for <qemu-arm@archiver.kernel.org>; Mon, 10 Nov 2025 14:07:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97040CCFA13
+	for <qemu-arm@archiver.kernel.org>; Mon, 10 Nov 2025 14:11:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vISWQ-00071W-HJ; Mon, 10 Nov 2025 09:05:30 -0500
+	id 1vISbo-0003hT-O8; Mon, 10 Nov 2025 09:11:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1vISVl-0006TF-En; Mon, 10 Nov 2025 09:04:54 -0500
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vISWn-0007eV-3a
+ for qemu-arm@nongnu.org; Mon, 10 Nov 2025 09:05:53 -0500
 Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1vISVi-0008V1-UQ; Mon, 10 Nov 2025 09:04:49 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.54.176])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4d4ryK555gz5yVM;
- Mon, 10 Nov 2025 14:04:41 +0000 (UTC)
-Received: from kaod.org (37.59.142.105) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vISWf-0000Nv-RY
+ for qemu-arm@nongnu.org; Mon, 10 Nov 2025 09:05:52 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.58.159])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4d4rzW6Xsbz5xy9;
+ Mon, 10 Nov 2025 14:05:43 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Mon, 10 Nov
- 2025 15:04:40 +0100
+ 2025 15:05:43 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-105G006f1bbe094-e197-411f-8ce2-3849f78c3053,
+ (GARM-97G002ad4d19d4-2c8c-4be0-82f6-d5afa59b5d88,
  2CC8F654BF9A736B588295E2BFA8A60E013487DB) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <2a560734-ea59-4f4f-aa81-bf6e8cdb46ac@kaod.org>
-Date: Mon, 10 Nov 2025 15:04:39 +0100
+Message-ID: <8648546b-8c10-4cc8-b627-373eb1457d91@kaod.org>
+Date: Mon, 10 Nov 2025 15:05:42 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 02/12] hw/block/m25p80: Add SFDP table for Winbond
- W25Q02JVM flash
+Subject: Re: [PATCH v1 05/12] hw/arm/aspeed_ast10x0: Add common init function
+ for AST10x0 SoCs
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
@@ -44,7 +44,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
 References: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
- <20251106084925.1253704-3-jamin_lin@aspeedtech.com>
+ <20251106084925.1253704-6-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -89,25 +89,25 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251106084925.1253704-3-jamin_lin@aspeedtech.com>
+In-Reply-To: <20251106084925.1253704-6-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.105]
-X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG8EX2.mxp5.local
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG4EX2.mxp5.local (172.16.2.32) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: c0d29bcc-7afa-4409-9d02-3b5bf7f5b6ed
-X-Ovh-Tracer-Id: 17363909842272291646
+X-Ovh-Tracer-GUID: c83594d7-5796-4135-a4d5-3a7fec60ef29
+X-Ovh-Tracer-Id: 17381361287500565310
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTF2hWyzW4TEMGEKhDrGYVejsYZ5P48B+8KNiSlHGojV5imaTcELfZw+EtI3j3nXbMOCeurHMGX51VsOBIu8EwAUirGsEp+VjyrOcGlEhzDp1O9m7WHbtiY1tEaX9nurYTOCyZoZYHntTarm1a880sDCOvGh7cEwVmVja4A7tf8BGmvwmd0KrKh4vMRWTXYpVE1RJaVoapdXe5N0J3VcMsTMkQk+IdV1V6pLyZIzpWinTRSjnmNSlNNhO5egOHyUvlr9EMkJBZwoDQJ1TC5jf2FI827wjl2YAg+4x2BBW+USedOtJfKkVHANKyrYotKMn4yZnFfAYS9mGQpG/2miUs/GrdDDQZXghLsZlshcK957Lg1j0qEX93FpxYPlJWRMoEkcdmV+dKqk/cGNy95SzQoSQlSp8nfxuGOMGhWcn0BUVvdXqtYkrtZkQmksFQNVi05vu3sdKmcUL9G+wzO0bzoMhM4dqwv7TVPggNHSTIYQfpGIB2zE/Ry2itH50Bm4C/7uDC2AKimhbzXV7FttGLIPWkah3+hiJPId1EQGPCspx7tjQouJLBYJU+AQ68PpSxMc9KWwS7FVMrXRGQzFpHfBuTECHRil78Pwdx6dY/ybYT8p+/QcgylkddYSfcCk790JFBFXM7oIL8jrmaXZ1LWNCjKKNMsXFR4+QkqcyGaiRw
-DKIM-Signature: a=rsa-sha256; bh=YlWKHUHnw3dbeW0ShCvfyUkeJciBNwsdpRbKu5SpHjs=; 
+X-VR-SPAMCAUSE: dmFkZTF9Pp+bMD8ZprMQRoFmzl2wLUBR83UOfCZdhj4Cx81TQGQuvPKIgq9vcxxsNROTj+TjZHetNgMyoqjBPXOVeVgbm4fKGYde24JTqC+k6a0LiT/JYCL6WzQ0Pfrt0gxlc/zHUqinCDwzpt2lEggIHJCkNOBqlYig1lyOdHd/0dyQcrQ88A7qebxCFUCMlOxx1s95h4GXy/VY6cZB8agoo001VlPEDVm+KuyKS8cgZowIjHZOid+plvQ1Sv3svMJquPncXmpILBkAPyYeeIsT4TAqHHfXGdWm+HX4Zlx0NmeUB1S/14NCB/EE41qz22M4nw+BySSH9Y2hqGudV53XXASwtAyW7m9oSD/lEyoM1pno/Q7UJo3+sTsClRSkM4lekClv3NeSNcqtoXQmedEvJQ+TZeVsewlaUphb5AoIjbfeD8PIkawUO6gDGaex2SVcCjS+J+ZhsGrwTxa1+AjfHQZejNNuCYbuo/D46qsyExmOQsHD2UuvGC1YFuOkJ/j4bZz6evI4P2WdZznegPc2+QpGldUEe4WzR7YAQFCuyXLBwR1bONImvKzXefxp8JCkD1Brv+EdSBkFOLQNQDzDDZF9NZ8kI/sgd5bLFUKoGM8VXzJgxYUjk8S+3SZUJO5mZzJrxAN8vzTdlMQodf2xAeQRKyyIhTLSIjUM+VyJsG391A
+DKIM-Signature: a=rsa-sha256; bh=5B6e1wQ7/nzJiX8bAfhqOLK28kTkoBtk5ne8Brxb3lw=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1762783483; v=1;
- b=cDqFFDmEmHK93gb+Qet9TLPCYHSdW6FVTYdYn6ILtfBx0wdZWAAfjWsssAJ23YVVXpwsBI5l
- uY1d4jTKYv3RIPxg66RNTVOlMG+wjtF1GW+GyRJhz73p3wI1+yVAg8fGxor2qWpo1jrvkwlnuzc
- 85QqqX79jBYU/1IVQTd//CZdaCnLs1uyaga7xx/x+phwcpBbtW2geSUk3QNDPOLpSiyR2di9YQN
- uGquKZRFiTzlgchQhmlTJ22h59kjVJnDbpXYz12BV41UHxNcpgbwKt2H6vRQnUZ4ku2UYmVGrY1
- F8+wQ9cN1DPxiuEWM1hOeH2sNjRDJFq8dAj955x0MJDDg==
+ t=1762783544; v=1;
+ b=HeYHVbxTPHTEGtEexxUNVz2Y4SA2xykXTNwX/WKQnicpzGPbRZyfG6R3K+MlakQpG2nlGXn6
+ S+Fg+v79avvYkSfJDmeeMcSB896jvarddQXyg54kNgudqoYK5+arqXGaNUFMH7420Gp3nSLzxU0
+ MweEosAYY0qA9QENbcmGIqPlNWH3LGJnOeT2oduf1H/Rj69moJ2n02ZXZxzqmmI4t7lX+x9R0Hh
+ /V5q26o1CUaF3q+4adbfaAZcf5hREQ8nuVzk5Tqj1uKcZuZTTjYVYIyNyDuUqxbzriK6PHgfIcg
+ oyyi0AlY9LT02+CcEBGiFcswDaeLonaXXDiAISg5Y6Fmw==
 Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
  helo=6.mo552.mail-out.ovh.net
 X-Spam_score_int: -20
@@ -134,27 +134,31 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 11/6/25 09:49, Jamin Lin wrote:
-> Add the SFDP data table for Winbond W25Q02JVM flash device. The table
-> was generated under Linux kernel by dumping the SFDP content using
-> the following command:
+> Introduce a new common initialization function
+> aspeed_soc_ast10x0_init() for AST10x0 series SoCs. This separates the
+> shared initialization logic from the AST1030-specific part, allowing
+> reuse by future SoCs such as AST1060.
 > 
-> ```
-> hexdump -v -e '8/1 "0x%02x, " "\n"' \
->      /sys/bus/spi/devices/spi0.0/spi-nor/sfdp
-> ```
+> The AST1060 does not include the LPC and PECI models, so the common
+> initializer is used for all shared modules, while
+> aspeed_soc_ast1030_init() adds initialization of LPC and PECI, which
+> are unique to AST1030.
+> 
+> This refactor improves code reuse and prepares the codebase for
+> supporting the AST1060 platform.
+> 
+> No functional changes.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/block/m25p80_sfdp.h |  1 +
->   hw/block/m25p80.c      |  2 ++
->   hw/block/m25p80_sfdp.c | 36 ++++++++++++++++++++++++++++++++++++
->   3 files changed, 39 insertions(+)
+>   hw/arm/aspeed_ast10x0.c | 15 ++++++++++-----
+>   1 file changed, 10 insertions(+), 5 deletions(-)
+> 
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
-
 
 

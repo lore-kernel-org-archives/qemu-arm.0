@@ -4,118 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24E7ACD1297
-	for <qemu-arm@archiver.kernel.org>; Mon, 10 Nov 2025 16:44:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D575CCF9E3
+	for <qemu-arm@archiver.kernel.org>; Mon, 10 Nov 2025 22:59:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIUzx-00067D-Hf; Mon, 10 Nov 2025 11:44:11 -0500
+	id 1vIar4-0004f3-1O; Mon, 10 Nov 2025 17:59:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIUzb-0005y7-LR
- for qemu-arm@nongnu.org; Mon, 10 Nov 2025 11:43:48 -0500
-Received: from 10.mo552.mail-out.ovh.net ([87.98.187.244])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIUzU-0002EH-FE
- for qemu-arm@nongnu.org; Mon, 10 Nov 2025 11:43:44 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.231.84])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4d4wTh2yqjz5yJL;
- Mon, 10 Nov 2025 16:43:36 +0000 (UTC)
-Received: from kaod.org (37.59.142.114) by DAG8EX2.mxp5.local (172.16.2.72)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Mon, 10 Nov
- 2025 17:43:35 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-114S008b76823c4-6543-491b-9762-d2f85efe009b,
- 2CC8F654BF9A736B588295E2BFA8A60E013487DB) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <3751eebe-8a2f-4e85-bb9c-3a856407cc4f@kaod.org>
-Date: Mon, 10 Nov 2025 17:43:34 +0100
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vIaqt-0004Qc-He
+ for qemu-arm@nongnu.org; Mon, 10 Nov 2025 17:59:14 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vIaqr-0004X7-Og
+ for qemu-arm@nongnu.org; Mon, 10 Nov 2025 17:59:11 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-640aa1445c3so5433453a12.1
+ for <qemu-arm@nongnu.org>; Mon, 10 Nov 2025 14:59:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1762815548; x=1763420348; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=XJ/aCtEzIF0pB/zF0oJfUqwREKGpwVpCTU/gtPJxffU=;
+ b=FZIu3MWFC2BQFSGmwd6Ev1C69GBnalfAvUFy6uKfIIfySv7vE72GBpFfV+Imk3q+Dd
+ v24vOtHuBcIg2E2J+iAeR3yFxakHuEMNefkqICQW48KM6eu4Zo9hAasJuzwy8LGEqen/
+ G7uVeYlgTHLDSHIaJzMmFW5rVkb0Z0dpLYUpWqstWz8SOryKp3vxfpg7aL0B68ZJ2rQc
+ PLYi8zPjETzJJ31SPYHZ4sSpmZNSR0EM16ne9SrXeG5NaYhpxUePvyxNFi4heoA3RKbP
+ cBN8hlmkOceonq7ndtSCjEFd299PBLq9tTu1PCz1TvvxAMPpbZqjsusC5nkEj0HYn8JD
+ rqhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1762815548; x=1763420348;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=XJ/aCtEzIF0pB/zF0oJfUqwREKGpwVpCTU/gtPJxffU=;
+ b=CpbEbKo6GZfyv86DXh31aDDmassFshXyCirCRVd+aBC1QYVRPrr2gh2hlQgN08Z3IP
+ FIvnWaPkOnYJ9O4zdco7XU4l3R83LSXCtwYBecq9jalb6wvPR3aadyaGzZRl5wk9Co46
+ +rGM/e4DuZFgSU5gJL1tA7YduPWPvEqHuCOOo24wsOJf312UDdeq06+Fa0E1M9Tz6kQZ
+ YhluwllsbbUBn4ddaTpnSXT/Tof44MeEFNoHp+gD5U5HgAkyfW6en6la080RSdJFGdxP
+ /wzZISs6zKvR10N166beUdo0fxPh0EFqOKxxI3hgiofmjRVmavbx0JFUoWsi0yGbMFGk
+ xqqQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXDCojrXRm/9RNGt3XXaZOjB23Lyux26SnN2A1Mp8Gf+cuVhj2bvh48CWIgOKDTsbqt8f0mquY0Tg==@nongnu.org
+X-Gm-Message-State: AOJu0Yw2/56QvRpK9/t+H+Ui0DOoHACM8rlBTSM0g/aU9uQbG3jx9Whf
+ CxugkbVNhLCZgW2YAflEOm61UL9rhobfpybiNRLkV52mi9bep2fOqxyk
+X-Gm-Gg: ASbGncugSAXZmduoNVXkZD1tgfXYG6eGgm7rdTmOyQ4Xmo4QrcQatVe0gfDOEFvyTz7
+ c86cbjId60q5a64YBbBtu9Z6QrbS90OMrBJXSzCKblIkTXgAdEfIlIyaWz4XidcHJfxFMi9FZ5T
+ OVmu/Z/W+Scafddbz7sJe/+znK8lmAwtq1llbucJ5QSAOD3UNG7QJKulD0AYeq1nomDV3mXkbn3
+ xG0HwJ8b87NL3sOtZ3Jy+AF/yYxjvW9Cg5e0O/9TcReNIa0snV/1OQ1lYY/SLBw9VVwKAIRzAlA
+ PbENIw3rvDhUx7uRhwSSf0B5Aq77Jp/qfp54Fo9d9RxxNLMx0aoOd/6GDfb8a70H8zP6lUFVCKJ
+ DfS9azt5rW2IkVBfUv8Q2jw6vUIFI0QU7oulRhHbosKsvUXRWI6wP+SyHcbtYiZfzYjPlXfnIwP
+ 5+0xaQThcaEdAvFrWVm+F/2TN2AvN9nLldcTk2Yu3No/c6i+50Il2orPItf1oN9kF5k9h/6DtaV
+ Ya2k0KZKvN6a1UaaZ6CQXnJk0sFSZAmpc4=
+X-Google-Smtp-Source: AGHT+IE8yPg06rj5njcFQDbyIehPCrWn7Sw/7AUjC4DyI4HP5tG60fI7QlSPLV+qYRBw/c8Zhb21HA==
+X-Received: by 2002:a17:907:6ea5:b0:b5b:3ab0:a5b7 with SMTP id
+ a640c23a62f3a-b72e0562593mr976435566b.42.1762815547315; 
+ Mon, 10 Nov 2025 14:59:07 -0800 (PST)
+Received: from ehlo.thunderbird.net
+ (dynamic-2a02-3100-23dc-7300-bdbc-21c7-75fc-dd84.310.pool.telefonica.de.
+ [2a02:3100:23dc:7300:bdbc:21c7:75fc:dd84])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b72bf9bd741sm1165777866b.57.2025.11.10.14.59.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 10 Nov 2025 14:59:06 -0800 (PST)
+Date: Mon, 10 Nov 2025 22:59:04 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
+ mohamed@unpredictable.fr
+CC: Pedro Barbuda <pbarbuda@microsoft.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, Alexander Graf <agraf@csgraf.de>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+Subject: Re: [PATCH v10 13/28] whpx: change memory management logic
+In-Reply-To: <20251029165510.45824-14-mohamed@unpredictable.fr>
+References: <20251029165510.45824-1-mohamed@unpredictable.fr>
+ <20251029165510.45824-14-mohamed@unpredictable.fr>
+Message-ID: <463DE817-A72E-4ACF-B6A4-C40E879B4107@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/17] hw/arm/aspeed: AST1700 LTPI support and device
- hookups
-To: Kane Chen <kane_chen@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>
-References: <20251105035859.3709907-1-kane_chen@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20251105035859.3709907-1-kane_chen@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.114]
-X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG8EX2.mxp5.local
- (172.16.2.72)
-X-Ovh-Tracer-GUID: a6cfb403-0914-4bae-83ba-8b77b53db6d8
-X-Ovh-Tracer-Id: 1601029671803259826
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFI1/+AcsJJ9GvOCHSVWSH5f+kRTmCZrYeDrf405lSJYlD698RzBtt5eKlkbRKbDvGkhZfE4V0E3dbMvP/+DLiDb/OSHl4zDrisTx1C1NPU1+wZIpOBDGNRE7jOBblsWgqaziahwDjPNkZbQcLtMlBNeChUhk7VwNw9guOIigGarXQ01S/8pGZ23eQyvW8UNLb2wOdBGWbEKcbHkcxcbbXG96/q7ZMK/Ib3rwcdtliNhmHnAQNvtl+2kdSzexFqu/HokUV4WguzrJBEM3N6U7j+GytZCP3iQLnY2VhWfzxBG79513VON8GL76U5tyAudjXNcQz6iuWB0E/eyRZcE50kj80kahZGaxH9iXkBKSMmxwBvOcK1lQpH/iEBnTAWpTe2VhlFLPyK1BblVoNlwl6fa01Inl4lO5QL+0ADQb9p8aNKJbY6kwAKjPmO5g7pnpJCMI6ywjM4dxmjljFW6z1imCTaQa1hCiY2Ie29xAB8U2U5nl6Wg2rlCqzM+mvJCqtw76/BvusEwgXy/dnM2HI7uLDxbVdwOZuffOSZlkfKuWfB9+shFW3vcPRh2qnayIylVWIDSNdmXTe8mVoQiAzV+nTW44CD4WQrzkBI/br3Z1KExxfCKhg1taJUK+iapGwEX3qNbwO7SBR/QV4Hl7EUSYYsArjs8KKfFPmJ+RAMcA
-DKIM-Signature: a=rsa-sha256; bh=oEdswl9Cx+KDXjFjg5r0xa3RnnmFnwxEWNAtwzurlWM=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1762793016; v=1;
- b=oe9lzrPliB9a/O02XjAL2KlFL6D46CG/Byu+BrUV+LY12g0I0rr4mE1Gh93ZBE6Ht4Hy86d1
- 9pwWsfzNT0km0i1UiPClOvQtlXRY8eElEmb0Yjrn84Pi6/sOJdW3JY1skQPUO6EU8stgdrMBzKF
- /h7jaP1x+lW7N0kfZwETUrnWTw9YDciDVknvVC+h5cr0zBNDGlIEhPHXBv/HutpkG+48s2FtOED
- d3mN8s6WSOlJOql/qpTnlEFlO4bE4B/j7C6/XUnLnJTw9LXFk3AqSQ9nmbIZH+6qRDep+ieqUwL
- m8YM6GLQ4bWPn9tBDBGmCaNm4ZuUjd9fww26QPf2DYhlg==
-Received-SPF: pass client-ip=87.98.187.244; envelope-from=clg@kaod.org;
- helo=10.mo552.mail-out.ovh.net
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,116 +111,164 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 11/5/25 04:58, Kane Chen wrote:
-> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
-> 
-> Hi all,
-> 
-> LTPI (LVDS Tunneling Protocol & Interface) is defined in the OCP DC-SCM
-> 2.0 specification (see Figure 2):
-> https://www.opencompute.org/documents/ocp-dc-scm-2-0-ltpi-ver-1-0-pdf
-> 
-> LTPI provides a protocol and physical interface for tunneling various
-> low-speed signals between the Host Processor Module (HPM) and the
-> Satellite Controller Module (SCM). In Figure 2 of the specification,
-> the AST27x0 SoC (left) integrates two LTPI controllers, allowing it to
-> connect to up to two AST1700 boards. On the other side, the AST1700
-> consolidates HPM FPGA functions and multiple peripheral interfaces
-> (GPIO, UART, I2C, I3C, etc.) onto a single board.
-> 
-> Because the AST1700 exposes additional I/O interfaces (GPIO, I2C, I3C,
-> and others), it acts as an I/O expander. Once connected over LTPI,
-> the AST27x0 can control additional downstream devices through this link.
-> 
-> This patch series introduces a basic LTPI controller model and wires it
-> into the AST27x0 SoC. It also adds the AST1700-specific LTPI expander
-> device and gradually connects common peripherals on the AST1700 model.
-> For blocks that are not yet functionally implemented (I3C, SGPIOM, PWM),
-> their MMIO regions are modeled as unimplemented devices to reserve
-> address space and make the missing functionality explicit, ensuring that
-> guest probing remains stable.
-
-Thanks for the improved cover letter.
-
-> In the official release images, the AST1700 functions are not included
-> by default. To test the AST1700-related functionality, please include
-> the following DTS files for probing:
-> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm64/boot/dts/aspeed/aspeed-ltpi0.dtsi
-> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm64/boot/dts/aspeed/aspeed-ltpi1.dtsi
-
-Is a release planned ?
-
-> After including these DTS files in the BMC image, you can verify LTPI
-> functionality using the following scenarios:
-> 
-> 1. In U-Boot:
->     Run the ltpi command to trigger the LTPI connection and display the
->     current connection status.
-> 2. In BMC Linux:
->     Run i2cdetect -y <16-38> to scan and test the I2C buses exposed by
->     the AST1700.
-
-because this would be good to have for functional tests.
-
-> 
-> Any feedback or suggestions are appreciated!
-
-The AST1700 model is rather big and very similar to a SoC, without CPUs.
-Perhaps we should move the model under hw/arm instead ?
 
 
-Thanks,
+Am 29=2E Oktober 2025 16:54:55 UTC schrieb Mohamed Mediouni <mohamed@unpre=
+dictable=2Efr>:
+>This allows edk2 to work on Arm, although u-boot is still not functional=
+=2E
 
-C.
+This seems to fix https://gitlab=2Ecom/qemu-project/qemu/-/issues/513, at =
+least it works for me with x86 SeaBIOS via pflash=2E Also, https://gitlab=
+=2Ecom/qemu-project/qemu/-/issues/934 looks like a duplicate=2E
 
+I wonder if this patch could be 10=2E2 material such that OVMF can finally=
+ work with WHPX=2E
 
-> 
-> Kane
-> ---
-> 
-> ChangeLog
-> ---------
-> v2:
-> - Separate the AST1700 model into a standalone implementation
-> - Refine the mechanism for assigning the AST1700 board number
-> 
-> v1:
-> - Initial version
-> ---
-> 
-> Kane-Chen-AS (17):
->    hw/arm/aspeed: Add LTPI controller
->    hw/arm/aspeed: Attach LTPI controller to AST27X0 platform
->    hw/arm/aspeed: Add AST1700 LTPI expander device model
->    hw/arm/aspeed: Integrate AST1700 device into AST27X0
->    hw/arm/aspeed: Integrate interrupt controller for AST1700
->    hw/arm/aspeed: Attach LTPI controller to AST1700 model
->    hw/arm/aspeed: Attach UART device to AST1700 model
->    hw/arm/aspeed: Attach SRAM device to AST1700 model
->    hw/arm/aspeed: Attach SPI device to AST1700 model
->    hw/arm/aspeed: Attach ADC device to AST1700 model
->    hw/arm/aspeed: Attach SCU device to AST1700 model
->    hw/arm/aspeed: Attach GPIO device to AST1700 model
->    hw/arm/aspeed: Attach I2C device to AST1700 model
->    hw/arm/aspeed: Attach WDT device to AST1700 model
->    hw/arm/aspeed: Model AST1700 I3C block as unimplemented device
->    hw/arm/aspeed: Model AST1700 SGPIOM block as unimplemented device
->    hw/arm/aspeed: Model AST1700 PWM block as unimplemented device
-> 
->   include/hw/arm/aspeed_soc.h      |  20 +-
->   include/hw/intc/aspeed_intc.h    |   2 +
->   include/hw/misc/aspeed_ast1700.h |  51 ++++++
->   include/hw/misc/aspeed_ltpi.h    |  25 +++
->   hw/arm/aspeed_ast27x0.c          | 154 ++++++++++++++--
->   hw/intc/aspeed_intc.c            |  60 ++++++
->   hw/misc/aspeed_ast1700.c         | 303 +++++++++++++++++++++++++++++++
->   hw/misc/aspeed_ltpi.c            |  98 ++++++++++
->   hw/misc/meson.build              |   2 +
->   9 files changed, 700 insertions(+), 15 deletions(-)
->   create mode 100644 include/hw/misc/aspeed_ast1700.h
->   create mode 100644 include/hw/misc/aspeed_ltpi.h
->   create mode 100644 hw/misc/aspeed_ast1700.c
->   create mode 100644 hw/misc/aspeed_ltpi.c
-> 
+Best regards,
+Bernhard
 
+>
+>Signed-off-by: Mohamed Mediouni <mohamed@unpredictable=2Efr>
+>---
+> accel/whpx/whpx-common=2Ec | 101 +++++++++++++++------------------------
+> 1 file changed, 38 insertions(+), 63 deletions(-)
+>
+>diff --git a/accel/whpx/whpx-common=2Ec b/accel/whpx/whpx-common=2Ec
+>index c69792e638=2E=2Eaefec4bc8f 100644
+>--- a/accel/whpx/whpx-common=2Ec
+>+++ b/accel/whpx/whpx-common=2Ec
+>@@ -258,89 +258,64 @@ void whpx_vcpu_kick(CPUState *cpu)
+>  * Memory support=2E
+>  */
+>=20
+>-static void whpx_update_mapping(hwaddr start_pa, ram_addr_t size,
+>-                                void *host_va, int add, int rom,
+>-                                const char *name)
+>+static void whpx_set_phys_mem(MemoryRegionSection *section, bool add)
+> {
+>     struct whpx_state *whpx =3D &whpx_global;
+>-    HRESULT hr;
+>-
+>-    /*
+>-    if (add) {
+>-        printf("WHPX: ADD PA:%p Size:%p, Host:%p, %s, '%s'\n",
+>-               (void*)start_pa, (void*)size, host_va,
+>-               (rom ? "ROM" : "RAM"), name);
+>-    } else {
+>-        printf("WHPX: DEL PA:%p Size:%p, Host:%p,      '%s'\n",
+>-               (void*)start_pa, (void*)size, host_va, name);
+>-    }
+>-    */
+>-
+>-    if (add) {
+>-        hr =3D whp_dispatch=2EWHvMapGpaRange(whpx->partition,
+>-                                         host_va,
+>-                                         start_pa,
+>-                                         size,
+>-                                         (WHvMapGpaRangeFlagRead |
+>-                                          WHvMapGpaRangeFlagExecute |
+>-                                          (rom ? 0 : WHvMapGpaRangeFlagW=
+rite)));
+>-    } else {
+>-        hr =3D whp_dispatch=2EWHvUnmapGpaRange(whpx->partition,
+>-                                           start_pa,
+>-                                           size);
+>-    }
+>-
+>-    if (FAILED(hr)) {
+>-        error_report("WHPX: Failed to %s GPA range '%s' PA:%p, Size:%p b=
+ytes,"
+>-                     " Host:%p, hr=3D%08lx",
+>-                     (add ? "MAP" : "UNMAP"), name,
+>-                     (void *)(uintptr_t)start_pa, (void *)size, host_va,=
+ hr);
+>+    MemoryRegion *area =3D section->mr;
+>+    bool writable =3D !area->readonly && !area->rom_device;
+>+    WHV_MAP_GPA_RANGE_FLAGS flags;
+>+    uint64_t page_size =3D qemu_real_host_page_size();
+>+    uint64_t gva =3D section->offset_within_address_space;
+>+    uint64_t size =3D int128_get64(section->size);
+>+    HRESULT res;
+>+    void *mem;
+>+
+>+    if (!memory_region_is_ram(area)) {
+>+        if (writable) {
+>+            return;
+>+        } else if (!memory_region_is_romd(area)) {
+>+             add =3D false;
+>+        }
+>     }
+>-}
+>-
+>-static void whpx_process_section(MemoryRegionSection *section, int add)
+>-{
+>-    MemoryRegion *mr =3D section->mr;
+>-    hwaddr start_pa =3D section->offset_within_address_space;
+>-    ram_addr_t size =3D int128_get64(section->size);
+>-    unsigned int delta;
+>-    uint64_t host_va;
+>=20
+>-    if (!memory_region_is_ram(mr)) {
+>-        return;
+>+    if (!QEMU_IS_ALIGNED(size, page_size) ||
+>+        !QEMU_IS_ALIGNED(gva, page_size)) {
+>+        /* Not page aligned, so we can not map as RAM */
+>+        add =3D false;
+>     }
+>=20
+>-    delta =3D qemu_real_host_page_size() - (start_pa & ~qemu_real_host_p=
+age_mask());
+>-    delta &=3D ~qemu_real_host_page_mask();
+>-    if (delta > size) {
+>-        return;
+>-    }
+>-    start_pa +=3D delta;
+>-    size -=3D delta;
+>-    size &=3D qemu_real_host_page_mask();
+>-    if (!size || (start_pa & ~qemu_real_host_page_mask())) {
+>+    if (!add) {
+>+        res =3D whp_dispatch=2EWHvUnmapGpaRange(whpx->partition,
+>+                gva, size);
+>+        if (!SUCCEEDED(res)) {
+>+            error_report("WHPX: failed to unmap GPA range");
+>+            abort();
+>+        }
+>         return;
+>     }
+>=20
+>-    host_va =3D (uintptr_t)memory_region_get_ram_ptr(mr)
+>-            + section->offset_within_region + delta;
+>+    flags =3D WHvMapGpaRangeFlagRead | WHvMapGpaRangeFlagExecute
+>+     | (writable ? WHvMapGpaRangeFlagWrite : 0);
+>+    mem =3D memory_region_get_ram_ptr(area) + section->offset_within_reg=
+ion;
+>=20
+>-    whpx_update_mapping(start_pa, size, (void *)(uintptr_t)host_va, add,
+>-                        memory_region_is_rom(mr), mr->name);
+>+    res =3D whp_dispatch=2EWHvMapGpaRange(whpx->partition,
+>+         mem, gva, size, flags);
+>+    if (!SUCCEEDED(res)) {
+>+        error_report("WHPX: failed to map GPA range");
+>+        abort();
+>+    }
+> }
+>=20
+> static void whpx_region_add(MemoryListener *listener,
+>                            MemoryRegionSection *section)
+> {
+>-    memory_region_ref(section->mr);
+>-    whpx_process_section(section, 1);
+>+    whpx_set_phys_mem(section, true);
+> }
+>=20
+> static void whpx_region_del(MemoryListener *listener,
+>                            MemoryRegionSection *section)
+> {
+>-    whpx_process_section(section, 0);
+>-    memory_region_unref(section->mr);
+>+    whpx_set_phys_mem(section, false);
+> }
+>=20
+> static void whpx_transaction_begin(MemoryListener *listener)
 

@@ -4,47 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0A65CCF9E3
-	for <qemu-arm@archiver.kernel.org>; Mon, 10 Nov 2025 10:28:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5ADDCCFA13
+	for <qemu-arm@archiver.kernel.org>; Mon, 10 Nov 2025 10:37:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIP7r-0001b8-Lq; Mon, 10 Nov 2025 05:27:55 -0500
+	id 1vIPGW-0005eL-F3; Mon, 10 Nov 2025 05:36:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIOy2-0003Fu-TG
- for qemu-arm@nongnu.org; Mon, 10 Nov 2025 05:17:47 -0500
-Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIP2h-0006rl-04
+ for qemu-arm@nongnu.org; Mon, 10 Nov 2025 05:22:40 -0500
+Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIOxz-0008F0-0B
- for qemu-arm@nongnu.org; Mon, 10 Nov 2025 05:17:46 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.249.165])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4d4lwC6m35z5wMp;
- Mon, 10 Nov 2025 10:17:31 +0000 (UTC)
-Received: from kaod.org (37.59.142.110) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIP2f-0000aq-1v
+ for qemu-arm@nongnu.org; Mon, 10 Nov 2025 05:22:34 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.43.72])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4d4m1x1Ck9z5vws;
+ Mon, 10 Nov 2025 10:22:29 +0000 (UTC)
+Received: from kaod.org (37.59.142.108) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Mon, 10 Nov
- 2025 11:17:30 +0100
+ 2025 11:22:28 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-110S004e9898f9e-ba79-45ee-a21f-24da8663c64e,
+ (GARM-108S002a1ead866-742d-4004-a1a6-9ebfc5e173fd,
  2CC8F654BF9A736B588295E2BFA8A60E013487DB) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <8ad327e5-8233-48be-a8e1-9b93a48f2a36@kaod.org>
-Date: Mon, 10 Nov 2025 11:17:29 +0100
+Message-ID: <b96ef4b0-a3ee-4723-b75b-cc7e36b703d6@kaod.org>
+Date: Mon, 10 Nov 2025 11:22:27 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 01/12] hw/arm/aspeed: Fix missing SPI IRQ connection
- causing DMA interrupt failure
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, Kevin
- Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
-References: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
- <20251106084925.1253704-2-jamin_lin@aspeedtech.com>
+Subject: Re: [PATCH] hw/arm/ast27x0: Fix typo in LTPI address
+To: Nabih Estefan <nabihestefan@google.com>, <qemu-devel@nongnu.org>
+CC: <peter.maydell@linaro.org>, <steven_lee@aspeedtech.com>,
+ <leetroy@gmail.com>, <jamin_lin@aspeedtech.com>, <qemu-arm@nongnu.org>
+References: <20251104233742.2147367-1-nabihestefan@google.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -89,35 +82,35 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251106084925.1253704-2-jamin_lin@aspeedtech.com>
+In-Reply-To: <20251104233742.2147367-1-nabihestefan@google.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.110]
-X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG8EX2.mxp5.local
+X-Originating-IP: [37.59.142.108]
+X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: 877f205b-023f-4a78-a6cb-0d063abe23fa
-X-Ovh-Tracer-Id: 13527405909989690174
+X-Ovh-Tracer-GUID: 58a9720f-ea1b-4ee1-98dd-b3bfd81ac307
+X-Ovh-Tracer-Id: 13611285448819116905
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFDImZkxeL0FsVdKzIYTXc24+kUUcKNKAT5K9Bi7NuraCWU9jjTm1aHcvUmo/MB60QeM77HIa+S6L2LJJK+P99NIwoOyeXAt08DEF9HdVPUCK1fP+J5McAU6zp5YUrkbBxGjnzPHOOigRtOP6T9we8n8wPSfiverAULLSioHLFyhWyCypYStt8UIgX4FezKXJdPIp58ox+Etq9vljAjSILLwQZf9RXWEQOJPCSrVK0n7xp0EUApP9bLDHadu+ltJKILF9NB4LK+wK7rG4Avde+mIxtnCabo1XJ58ZRCK70GiG+PY3/nejzmF99HIy9zGkX0Dp0H3tS+BoLeNy26NSLKjnGkEB3+69+cAkYKQVY1p07gJ60dxDClGOTB/9azwojSs2/81ZjI4Vu4qbyAN2niiBikP1qXiRYo5IhlcSvdVOW4K11EpeajmpGlOMPesTeOV1UXawArH8WrSvKbCrp5kmD26UQJzz/EIJluIfXkUpcqh7zQUKS/MEAOQlmqfbA62BA5QDDXUC62KIOs0lQCwYSU+tR+AOb1V5XlmwODS6kNsGPh+yXAF7gKp5UNmlGHZ8inbUKr0BCJnMFk8kqrmiPHwbVdvyNzPyPsPrDLfAuuFuI3vmRY1D2DrIls4Z2fVumMGXsXuikVtE1OepP7ygGdyXiAix3wgB+JkEEBDQ
-DKIM-Signature: a=rsa-sha256; bh=+jXQRXhXhuMg0g0TKCEv7T8dahoZV7oriL0Rph8KvDg=; 
+X-VR-SPAMCAUSE: dmFkZTGy2KD/fMkSjODZ7HR0RP4RoLQjk4VmI6IkrQ4WTsfV4mEJP6iq4Br4N7AMAkYPNzuRoLgzW88hQG5tteOK1pXGCB7DcDYAEf7wcPlAKkXXDKIbTvFh/xkeMTfQzaxMs1yCPMJvI7BWIRPcVA8zYW5lD7grp4OsjOSdTJE+AfCBH1vqclYTkyjD9tTc7g8IYV+gXZT98b3tjxSLJStSX8/zM4ef71LyYjXmsrMV54mBnROyb1ELVW+P6b/re9VYaUGTAUbbRm8J5ndOm2mouDcxibSve6E73NVrIqLOBYs1TRXIAGkvQsOoXJ4h9Gaq6HKlwLUrVmLbya3hP9dt106Xsd0liuG/ONMhX5whQQE3mgF3Fip9fU0BzurUUfiGG5gLvD2f8U5iXjk6upIfTTJ7HyNTtGfojKkW4JqjBlqRPbAT96E4YZMKRwQVGe9e6/1zW+vKAnLVl8J5gGikmdKWIvLZQs1k0Y9f0lb1aGUTqgAsTlfD3A0HuG6pNxDtpdWl+W4ZNG6KgvLT5IBQRPZzCjRvkB0Wm0ekvEXMIUW48lu8Ba1Wer/d/iQ/PbuGbnOYhqq6WVw0jIh8+FHFnx4M6SQ42nosdV1hKHLnLS4tEtjyPwThzFOQafsP+Uj1ZImkP4W+1BOqISCa7x6r02orQRah25jprfRt9Qc78n2a9g
+DKIM-Signature: a=rsa-sha256; bh=2FLPZ9sjRY2a8AlU1SEiRTeNxyEIo3sFmROj34JW7xU=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1762769853; v=1;
- b=NxBl08vPhvEF0AMwImKn9KNm5/DwMvRT3lFH6AbIaLgv4eznQST7777nUlfw/9ekMsHmoPWx
- L6RTeshluhpKOEFawXZzXhbCY7Ze7bpkQxLumJD8I3NTI7vNG2FHPapd6b/5KtfrNSqKiKCoLLW
- 6K/pffR457H9ulHT+ziOFgcn4EJiRtpvsM0uK+9YpxHtMfAt1qLEUZovEQi8ame9NrGQMmgGiiH
- SAiytujkOuJlssxTrhduCBdw2siiLqnvFRgZGhmoApuOZVWxhn51y6T09pfCdtKFhXGHTMtARcJ
- amRC9z5ztLNhWnKCa9gx5hCx1JssJnr0uceSpzRtkumow==
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout2.mo529.mail-out.ovh.net
+ t=1762770150; v=1;
+ b=hWIhZERw/j9J7lfLG40WniW6ddREckEaC4DO51QR+FT9AzFoSHRVuVcrWuoCqBdJRru1eCw4
+ Ye6fXNA3Sdq6c+re/0si8FDcOLRazsQVb7k8ySka5NVUDC1MkU1qbP41zyVVEP0Qii1iKcC5wop
+ FyF2cFWFLP6T9Jea6maEdbP4Oy00ymbkmy5Bl5em7TtmMauWPYrz3dfo9RYLFI6sQqbcOyX6JO8
+ tgDJ1dSEvj2Pgjok8l4/KcBFFtILYGjD0spvcRwV/Am9cepr2V+N95taUS5QjvsYERa7Am3mu6v
+ JyLSBgV6Vl9qsuiFTNHdVAH29PDttVMwPOYxg43xPRVyA==
+Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
+ helo=3.mo548.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,26 +126,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 11/6/25 09:49, Jamin Lin wrote:
-> It did not connect SPI IRQ to the Interrupt Controller, so even the SPI
-> model raised the IRQ, the interrupt was not received. The CPU therefore
-> did not trigger an interrupt via the controller, and the firmware never
-> received the interrupt.
+On 11/5/25 00:37, Nabih Estefan wrote:
+> The address for LTPI has one more 0 that it should, bug introduced in
+> commit 91064bea6b2d747a981cb3bd2904e56f443e6c67.
 > 
-> Fixes: 356b230ed13889e09d087a96498887de695df17e ("aspeed/soc: Add AST1030 support")
-> Fixes: f25c0ae1079dc0b9de02676eb3e3949a09df9f41 ("aspeed/soc: Add AST2600 support")
-> Fixes: 5dd883ab0635c9f715c77cc32622e458a0724581 ("aspeed/soc: Add AST2700 support")
-
-QEMU 7.2 and above should be updated
-
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Signed-off-by: Nabih Estefan <nabihestefan@google.com>
 > ---
->   hw/arm/aspeed_ast10x0.c | 2 ++
->   hw/arm/aspeed_ast2600.c | 2 ++
->   hw/arm/aspeed_ast27x0.c | 2 ++
->   3 files changed, 6 insertions(+)
+>   hw/arm/aspeed_ast27x0.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
-
+Fixes: 91064bea6b2d ("aspeed: ast27x0: Map unimplemented devices in SoC memory")
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
@@ -161,45 +144,22 @@ C.
 
 
 
-> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-> index 7f49c13391..ca487774ae 100644
-> --- a/hw/arm/aspeed_ast10x0.c
-> +++ b/hw/arm/aspeed_ast10x0.c
-> @@ -372,6 +372,8 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->                           sc->memmap[ASPEED_DEV_SPI1 + i]);
->           aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->spi[i]), 1,
->                           ASPEED_SMC_GET_CLASS(&s->spi[i])->flash_window_base);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
-> +                           aspeed_soc_ast1030_get_irq(s, ASPEED_DEV_SPI1 + i));
->       }
->   
->       /* Secure Boot Controller */
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index 498d1ecc07..4c5a42ea17 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -557,6 +557,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->                           sc->memmap[ASPEED_DEV_SPI1 + i]);
->           aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->spi[i]), 1,
->                           ASPEED_SMC_GET_CLASS(&s->spi[i])->flash_window_base);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
-> +                           aspeed_soc_ast2600_get_irq(s, ASPEED_DEV_SPI1 + i));
->       }
->   
->       /* EHCI */
 > diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index c484bcd4e2..e02a674b13 100644
+> index c484bcd4e2..1e6f469538 100644
 > --- a/hw/arm/aspeed_ast27x0.c
 > +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -831,6 +831,8 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->                           sc->memmap[ASPEED_DEV_SPI0 + i]);
->           aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->spi[i]), 1,
->                           ASPEED_SMC_GET_CLASS(&s->spi[i])->flash_window_base);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi[i]), 0,
-> +                           aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_SPI0 + i));
->       }
+> @@ -87,11 +87,11 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_DEV_UART11]    =  0x14C33A00,
+>       [ASPEED_DEV_UART12]    =  0x14C33B00,
+>       [ASPEED_DEV_WDT]       =  0x14C37000,
+> +    [ASPEED_DEV_LTPI]      =  0x30000000,
+>       [ASPEED_DEV_PCIE_MMIO0] = 0x60000000,
+>       [ASPEED_DEV_PCIE_MMIO1] = 0x80000000,
+>       [ASPEED_DEV_PCIE_MMIO2] = 0xA0000000,
+>       [ASPEED_DEV_SPI_BOOT]  =  0x100000000,
+> -    [ASPEED_DEV_LTPI]      =  0x300000000,
+>       [ASPEED_DEV_SDRAM]     =  0x400000000,
+>   };
 >   
->       /* EHCI */
-
 
 

@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C5EBCCF9E3
-	for <qemu-arm@archiver.kernel.org>; Mon, 10 Nov 2025 16:17:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24E7ACD1297
+	for <qemu-arm@archiver.kernel.org>; Mon, 10 Nov 2025 16:44:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIUZa-0005zO-BF; Mon, 10 Nov 2025 11:16:54 -0500
+	id 1vIUzx-00067D-Hf; Mon, 10 Nov 2025 11:44:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIUZY-0005wm-0K
- for qemu-arm@nongnu.org; Mon, 10 Nov 2025 11:16:52 -0500
-Received: from 9.mo548.mail-out.ovh.net ([46.105.48.137])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIUzb-0005y7-LR
+ for qemu-arm@nongnu.org; Mon, 10 Nov 2025 11:43:48 -0500
+Received: from 10.mo552.mail-out.ovh.net ([87.98.187.244])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIUZW-00064d-2P
- for qemu-arm@nongnu.org; Mon, 10 Nov 2025 11:16:51 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.37.24])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4d4vtl2YC9z5ybb;
- Mon, 10 Nov 2025 16:16:47 +0000 (UTC)
-Received: from kaod.org (37.59.142.106) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIUzU-0002EH-FE
+ for qemu-arm@nongnu.org; Mon, 10 Nov 2025 11:43:44 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.231.84])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4d4wTh2yqjz5yJL;
+ Mon, 10 Nov 2025 16:43:36 +0000 (UTC)
+Received: from kaod.org (37.59.142.114) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Mon, 10 Nov
- 2025 17:16:46 +0100
+ 2025 17:43:35 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-106R006c58d239b-39ac-4ae2-915d-711c331bbd32,
+ (GARM-114S008b76823c4-6543-491b-9762-d2f85efe009b,
  2CC8F654BF9A736B588295E2BFA8A60E013487DB) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <3eff381c-a36b-48bd-89d3-4dcc4be5c39c@kaod.org>
-Date: Mon, 10 Nov 2025 17:16:46 +0100
+Message-ID: <3751eebe-8a2f-4e85-bb9c-3a856407cc4f@kaod.org>
+Date: Mon, 10 Nov 2025 17:43:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 17/17] hw/arm/aspeed: Model AST1700 PWM block as
- unimplemented device
+Subject: Re: [PATCH v2 00/17] hw/arm/aspeed: AST1700 LTPI support and device
+ hookups
 To: Kane Chen <kane_chen@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
@@ -43,7 +43,6 @@ To: Kane Chen <kane_chen@aspeedtech.com>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>
 References: <20251105035859.3709907-1-kane_chen@aspeedtech.com>
- <20251105035859.3709907-18-kane_chen@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -88,27 +87,27 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251105035859.3709907-18-kane_chen@aspeedtech.com>
+In-Reply-To: <20251105035859.3709907-1-kane_chen@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.106]
-X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG8EX2.mxp5.local
+X-Originating-IP: [37.59.142.114]
+X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: f2f81102-ab7a-455e-823a-f72e21b9fc6a
-X-Ovh-Tracer-Id: 1148136433288448946
+X-Ovh-Tracer-GUID: a6cfb403-0914-4bae-83ba-8b77b53db6d8
+X-Ovh-Tracer-Id: 1601029671803259826
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEETKDIRgefPLc/4UFXqjG33wuDJY6jdZWvdSTxCZgy6mCkZ+u/M8pSKt0oWr06dapBtxNp6o+pDqWuIKBLOzCJutyBpIGsLk/P9Y9AC4DIRQ0s3xm81uO26WY0oddK8bIbPgBEw2oIs1PIhyxKiL4OJHZC5Kj5VU95ryiSTs6RlNbvq3pMzJXPrBBZE6bx28HEVbW+918F97G/YZKUMUviO186SX+o9G9F4zm/MUzHTXvHDvzSktTH8z2iw/teJpreoUbkiepOAu7gENIZWpKTgc/fvOU2cImUFQ9XWU/KB/WporhxKYo+8jVNiogsImLOj1HYy45j9P+J4VIOD9teCAe6NNF/kEwM/U16O+i6hrlARFgE5hgTgA4zuM6+LgYAjJOzLbQqJDEs9mqMh0WgYHXjvKIdLpMK4L8QhllOMpTDxY8d6cx5iMyrYtQw5PlAYUXS+/9mpoLygoEttew8SCoOKBArVJxbJ38XAEM0WLrCCT7wFqBN3tDJ9Ckh3jyLKnCqi/lpOyVr1KlWckrSBkrHM+Nvon1B1gmmYyFsXicvIEiaLeriwUpfj02whitU5QRhAbM+mBqTTpNbP98GD9dY9tuktA6sHxVNGDL+awHOK8Xw3jRLdJ3Q8sjZksRLIwajHyXNt/1cVBgf6cfPTiRQnn3uZBmDCF1gauEgLQ
-DKIM-Signature: a=rsa-sha256; bh=sWROq5p1CFqvuNGYNDXzfttPs3417kfwAXK2WNAiikI=; 
+X-VR-SPAMCAUSE: dmFkZTFI1/+AcsJJ9GvOCHSVWSH5f+kRTmCZrYeDrf405lSJYlD698RzBtt5eKlkbRKbDvGkhZfE4V0E3dbMvP/+DLiDb/OSHl4zDrisTx1C1NPU1+wZIpOBDGNRE7jOBblsWgqaziahwDjPNkZbQcLtMlBNeChUhk7VwNw9guOIigGarXQ01S/8pGZ23eQyvW8UNLb2wOdBGWbEKcbHkcxcbbXG96/q7ZMK/Ib3rwcdtliNhmHnAQNvtl+2kdSzexFqu/HokUV4WguzrJBEM3N6U7j+GytZCP3iQLnY2VhWfzxBG79513VON8GL76U5tyAudjXNcQz6iuWB0E/eyRZcE50kj80kahZGaxH9iXkBKSMmxwBvOcK1lQpH/iEBnTAWpTe2VhlFLPyK1BblVoNlwl6fa01Inl4lO5QL+0ADQb9p8aNKJbY6kwAKjPmO5g7pnpJCMI6ywjM4dxmjljFW6z1imCTaQa1hCiY2Ie29xAB8U2U5nl6Wg2rlCqzM+mvJCqtw76/BvusEwgXy/dnM2HI7uLDxbVdwOZuffOSZlkfKuWfB9+shFW3vcPRh2qnayIylVWIDSNdmXTe8mVoQiAzV+nTW44CD4WQrzkBI/br3Z1KExxfCKhg1taJUK+iapGwEX3qNbwO7SBR/QV4Hl7EUSYYsArjs8KKfFPmJ+RAMcA
+DKIM-Signature: a=rsa-sha256; bh=oEdswl9Cx+KDXjFjg5r0xa3RnnmFnwxEWNAtwzurlWM=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1762791407; v=1;
- b=KhxU7wDqLdMh+OTfiLUZ9niFQEqk7XokoyWaqM8bJX2rud5eYq8GYRD1p/pcAThKBdJn8x5c
- CDoQJW0l3Vy/sx6i2rZrks9jtz8hFmrHrEiMxMuJCoCMTOKXNrmJP7EvhfkQL0gSLYhrZ2h6bP8
- PUqvyO87tgNe2FCBE59duEndDU8kAy460XDO1v6wwyRwvJ1U8kE5vJhd6Th84SZdLf4Kjebf/d2
- MHt1OtzNBLPdHLgGgIJwok/w3esUcADOI1BPp4E6Ejm8+3W7RUzaa73ZczGJcITxwxEDea7Jl7c
- GjStCOcXgq8A1inWonFDWQioEsPo+vivY0WhW9KNgyEQQ==
-Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
- helo=9.mo548.mail-out.ovh.net
+ t=1762793016; v=1;
+ b=oe9lzrPliB9a/O02XjAL2KlFL6D46CG/Byu+BrUV+LY12g0I0rr4mE1Gh93ZBE6Ht4Hy86d1
+ 9pwWsfzNT0km0i1UiPClOvQtlXRY8eElEmb0Yjrn84Pi6/sOJdW3JY1skQPUO6EU8stgdrMBzKF
+ /h7jaP1x+lW7N0kfZwETUrnWTw9YDciDVknvVC+h5cr0zBNDGlIEhPHXBv/HutpkG+48s2FtOED
+ d3mN8s6WSOlJOql/qpTnlEFlO4bE4B/j7C6/XUnLnJTw9LXFk3AqSQ9nmbIZH+6qRDep+ieqUwL
+ m8YM6GLQ4bWPn9tBDBGmCaNm4ZuUjd9fww26QPf2DYhlg==
+Received-SPF: pass client-ip=87.98.187.244; envelope-from=clg@kaod.org;
+ helo=10.mo552.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,7 +115,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,93 +134,113 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 11/5/25 04:58, Kane Chen wrote:
 > From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 > 
-> AST1700 includes an PWM block, but QEMU has no functional model for
-> aspeed product yet. 
+> Hi all,
+> 
+> LTPI (LVDS Tunneling Protocol & Interface) is defined in the OCP DC-SCM
+> 2.0 specification (see Figure 2):
+> https://www.opencompute.org/documents/ocp-dc-scm-2-0-ltpi-ver-1-0-pdf
+> 
+> LTPI provides a protocol and physical interface for tunneling various
+> low-speed signals between the Host Processor Module (HPM) and the
+> Satellite Controller Module (SCM). In Figure 2 of the specification,
+> the AST27x0 SoC (left) integrates two LTPI controllers, allowing it to
+> connect to up to two AST1700 boards. On the other side, the AST1700
+> consolidates HPM FPGA functions and multiple peripheral interfaces
+> (GPIO, UART, I2C, I3C, etc.) onto a single board.
+> 
+> Because the AST1700 exposes additional I/O interfaces (GPIO, I2C, I3C,
+> and others), it acts as an I/O expander. Once connected over LTPI,
+> the AST27x0 can control additional downstream devices through this link.
+> 
+> This patch series introduces a basic LTPI controller model and wires it
+> into the AST27x0 SoC. It also adds the AST1700-specific LTPI expander
+> device and gradually connects common peripherals on the AST1700 model.
+> For blocks that are not yet functionally implemented (I3C, SGPIOM, PWM),
+> their MMIO regions are modeled as unimplemented devices to reserve
+> address space and make the missing functionality explicit, ensuring that
+> guest probing remains stable.
 
-We could start with a dummy PWM model :
+Thanks for the improved cover letter.
 
-   https://github.com/legoater/qemu/commit/9d77c84b04c2d9ae5685b3ccb5c434873666ca78
+> In the official release images, the AST1700 functions are not included
+> by default. To test the AST1700-related functionality, please include
+> the following DTS files for probing:
+> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm64/boot/dts/aspeed/aspeed-ltpi0.dtsi
+> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm64/boot/dts/aspeed/aspeed-ltpi1.dtsi
 
-Feel free to add to your series.
+Is a release planned ?
+
+> After including these DTS files in the BMC image, you can verify LTPI
+> functionality using the following scenarios:
+> 
+> 1. In U-Boot:
+>     Run the ltpi command to trigger the LTPI connection and display the
+>     current connection status.
+> 2. In BMC Linux:
+>     Run i2cdetect -y <16-38> to scan and test the I2C buses exposed by
+>     the AST1700.
+
+because this would be good to have for functional tests.
+
+> 
+> Any feedback or suggestions are appreciated!
+
+The AST1700 model is rather big and very similar to a SoC, without CPUs.
+Perhaps we should move the model under hw/arm instead ?
+
 
 Thanks,
 
 C.
 
 
-
-Expose it as an unimplemented device so the
-> address space is reserved and the missing functionality is explicit
-> to users/guests.
 > 
-> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> Kane
 > ---
->   include/hw/misc/aspeed_ast1700.h |  1 +
->   hw/misc/aspeed_ast1700.c         | 16 ++++++++++++++++
->   2 files changed, 17 insertions(+)
 > 
-> diff --git a/include/hw/misc/aspeed_ast1700.h b/include/hw/misc/aspeed_ast1700.h
-> index 8ada3a7775..9d432a7db0 100644
-> --- a/include/hw/misc/aspeed_ast1700.h
-> +++ b/include/hw/misc/aspeed_ast1700.h
-> @@ -45,6 +45,7 @@ struct AspeedAST1700SoCState {
->   
->       UnimplementedDeviceState i3c;
->       UnimplementedDeviceState sgpiom;
-> +    UnimplementedDeviceState pwm;
->   };
->   
->   #endif /* ASPEED_AST1700_H */
-> diff --git a/hw/misc/aspeed_ast1700.c b/hw/misc/aspeed_ast1700.c
-> index 66a5f21d27..3d9a920a7a 100644
-> --- a/hw/misc/aspeed_ast1700.c
-> +++ b/hw/misc/aspeed_ast1700.c
-> @@ -20,9 +20,11 @@
->   #define AST1700_SOC_SRAM_SIZE        0x00040000
->   #define AST1700_SOC_I3C_SIZE         0x00010000
->   #define AST1700_SOC_SGPIOM_SIZE      0x00002000
-> +#define AST1700_SOC_PWM_SIZE         0x00000200
->   
->   enum {
->       ASPEED_AST1700_DEV_SPI0,
-> +    ASPEED_AST1700_DEV_PWM,
->       ASPEED_AST1700_DEV_SRAM,
->       ASPEED_AST1700_DEV_ADC,
->       ASPEED_AST1700_DEV_SCU,
-> @@ -38,6 +40,7 @@ enum {
->   
->   static const hwaddr aspeed_ast1700_io_memmap[] = {
->       [ASPEED_AST1700_DEV_SPI0]      =  0x00030000,
-> +    [ASPEED_AST1700_DEV_PWM]       =  0x000C0000,
->       [ASPEED_AST1700_DEV_SRAM]      =  0x00BC0000,
->       [ASPEED_AST1700_DEV_ADC]       =  0x00C00000,
->       [ASPEED_AST1700_DEV_SCU]       =  0x00C02000,
-> @@ -174,6 +177,15 @@ static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
->                           sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->sgpiom), 0),
->                           -1000);
->   
-> +    /* PWM */
-> +    qdev_prop_set_string(DEVICE(&s->pwm), "name", "ioexp-pwm");
-> +    qdev_prop_set_uint64(DEVICE(&s->pwm), "size", AST1700_SOC_PWM_SIZE);
-> +    sysbus_realize(SYS_BUS_DEVICE(&s->pwm), errp);
-> +    memory_region_add_subregion_overlap(&s->iomem,
-> +                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_PWM],
-> +                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pwm), 0),
-> +                        -1000);
-> +
->       /* WDT */
->       for (i = 0; i < AST1700_WDT_NUM; i++) {
->           AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
-> @@ -241,6 +253,10 @@ static void aspeed_ast1700_instance_init(Object *obj)
->       object_initialize_child(obj, "ioexp-sgpiom[*]", &s->sgpiom,
->                               TYPE_UNIMPLEMENTED_DEVICE);
->   
-> +    /* PWM */
-> +    object_initialize_child(obj, "ioexp-pwm", &s->pwm,
-> +                            TYPE_UNIMPLEMENTED_DEVICE);
-> +
->       /* WDT */
->       for (i = 0; i < AST1700_WDT_NUM; i++) {
->           snprintf(typename, sizeof(typename), "aspeed.wdt-%s", socname);
+> ChangeLog
+> ---------
+> v2:
+> - Separate the AST1700 model into a standalone implementation
+> - Refine the mechanism for assigning the AST1700 board number
+> 
+> v1:
+> - Initial version
+> ---
+> 
+> Kane-Chen-AS (17):
+>    hw/arm/aspeed: Add LTPI controller
+>    hw/arm/aspeed: Attach LTPI controller to AST27X0 platform
+>    hw/arm/aspeed: Add AST1700 LTPI expander device model
+>    hw/arm/aspeed: Integrate AST1700 device into AST27X0
+>    hw/arm/aspeed: Integrate interrupt controller for AST1700
+>    hw/arm/aspeed: Attach LTPI controller to AST1700 model
+>    hw/arm/aspeed: Attach UART device to AST1700 model
+>    hw/arm/aspeed: Attach SRAM device to AST1700 model
+>    hw/arm/aspeed: Attach SPI device to AST1700 model
+>    hw/arm/aspeed: Attach ADC device to AST1700 model
+>    hw/arm/aspeed: Attach SCU device to AST1700 model
+>    hw/arm/aspeed: Attach GPIO device to AST1700 model
+>    hw/arm/aspeed: Attach I2C device to AST1700 model
+>    hw/arm/aspeed: Attach WDT device to AST1700 model
+>    hw/arm/aspeed: Model AST1700 I3C block as unimplemented device
+>    hw/arm/aspeed: Model AST1700 SGPIOM block as unimplemented device
+>    hw/arm/aspeed: Model AST1700 PWM block as unimplemented device
+> 
+>   include/hw/arm/aspeed_soc.h      |  20 +-
+>   include/hw/intc/aspeed_intc.h    |   2 +
+>   include/hw/misc/aspeed_ast1700.h |  51 ++++++
+>   include/hw/misc/aspeed_ltpi.h    |  25 +++
+>   hw/arm/aspeed_ast27x0.c          | 154 ++++++++++++++--
+>   hw/intc/aspeed_intc.c            |  60 ++++++
+>   hw/misc/aspeed_ast1700.c         | 303 +++++++++++++++++++++++++++++++
+>   hw/misc/aspeed_ltpi.c            |  98 ++++++++++
+>   hw/misc/meson.build              |   2 +
+>   9 files changed, 700 insertions(+), 15 deletions(-)
+>   create mode 100644 include/hw/misc/aspeed_ast1700.h
+>   create mode 100644 include/hw/misc/aspeed_ltpi.h
+>   create mode 100644 hw/misc/aspeed_ast1700.c
+>   create mode 100644 hw/misc/aspeed_ltpi.c
+> 
 
 

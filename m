@@ -4,81 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A97ECCF9E3
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 07:32:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C23FCCFA1A
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 10:08:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIirW-0004JJ-3R; Tue, 11 Nov 2025 02:32:22 -0500
+	id 1vIlIW-0003Xa-Tn; Tue, 11 Nov 2025 05:08:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vIirF-0004BR-Sy
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 02:32:08 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1vIlIG-0003Oa-J3; Tue, 11 Nov 2025 05:08:10 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vIirC-0003z9-2Z
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 02:32:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762846319;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WCtLIRD+fmLqFUhzuTcaK1xWurPTLl1+LnYZhUzIoTo=;
- b=ETyq0A+XYixcHYd0OO5BGqZXVAc2u7VOJ1Zx0GseLs4RIk+M4FyKsSYEBRDZNad5wR858l
- 8VlsQWCvIw6GiU5PPL4jJFzipUS74lFypdFEsCdFIHj3iLePijcdMcCyQxykyQ7L/sOCAV
- ab+Pl4VLcdDJlR+1/xrYkvYc1piTKTw=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-636-Wi3ktwNKODig974MNFRVcA-1; Tue,
- 11 Nov 2025 02:31:55 -0500
-X-MC-Unique: Wi3ktwNKODig974MNFRVcA-1
-X-Mimecast-MFC-AGG-ID: Wi3ktwNKODig974MNFRVcA_1762846314
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 731301800452; Tue, 11 Nov 2025 07:31:53 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.18])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 441011956056; Tue, 11 Nov 2025 07:31:52 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 995D521E6A27; Tue, 11 Nov 2025 08:31:49 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1vIlID-0005BK-FO; Tue, 11 Nov 2025 05:08:08 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4d5Mdx4T7yzJ46dq;
+ Tue, 11 Nov 2025 18:07:17 +0800 (CST)
+Received: from dubpeml100005.china.huawei.com (unknown [7.214.146.113])
+ by mail.maildlp.com (Postfix) with ESMTPS id 4DFF114038F;
+ Tue, 11 Nov 2025 18:07:48 +0800 (CST)
+Received: from localhost (10.203.177.15) by dubpeml100005.china.huawei.com
+ (7.214.146.113) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.36; Tue, 11 Nov
+ 2025 10:07:47 +0000
+Date: Tue, 11 Nov 2025 10:07:46 +0000
 To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,
- jonathan.cameron@huawei.com,  mchehab+huawei@kernel.org,
- gengdongjiu1@gmail.com,  mst@redhat.com,  imammedo@redhat.com,
- anisinha@redhat.com,  peter.maydell@linaro.org,  pbonzini@redhat.com,
- shan.gavin@gmail.com
-Subject: Re: [PATCH v3 6/8] acpi/ghes: Use error_abort in
- acpi_ghes_memory_errors()
-In-Reply-To: <b673bf36-cf1b-4103-bce8-0465a1385403@redhat.com> (Gavin Shan's
- message of "Tue, 11 Nov 2025 16:02:24 +1000")
+CC: Igor Mammedov <imammedo@redhat.com>, <shan.gavin@gmail.com>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <mchehab+huawei@kernel.org>,
+ <gengdongjiu1@gmail.com>, <mst@redhat.com>, <anisinha@redhat.com>,
+ <peter.maydell@linaro.org>, <pbonzini@redhat.com>
+Subject: Re: [PATCH v3 4/8] acpi/ghes: Extend acpi_ghes_memory_errors() to
+ support multiple CPERs
+Message-ID: <20251111100746.00003136@huawei.com>
+In-Reply-To: <cad74549-a313-48b6-8260-f23f6be1e8c8@redhat.com>
 References: <20251105114453.2164073-1-gshan@redhat.com>
- <20251105114453.2164073-7-gshan@redhat.com>
- <87o6p9gmy4.fsf@pond.sub.org>
- <b673bf36-cf1b-4103-bce8-0465a1385403@redhat.com>
-Date: Tue, 11 Nov 2025 08:31:49 +0100
-Message-ID: <87jyzxf2je.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ <20251105114453.2164073-5-gshan@redhat.com>
+ <20251105141455.000052f0@huawei.com>
+ <cc07dfc9-f58a-4654-8854-c16a2e85fecd@redhat.com>
+ <20251110154957.5c481df7@fedora>
+ <cad74549-a313-48b6-8260-f23f6be1e8c8@redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.203.177.15]
+X-ClientProxiedBy: lhrpeml500011.china.huawei.com (7.191.174.215) To
+ dubpeml100005.china.huawei.com (7.214.146.113)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,237 +72,115 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Gavin Shan <gshan@redhat.com> writes:
+On Tue, 11 Nov 2025 14:08:13 +1000
+Gavin Shan <gshan@redhat.com> wrote:
 
-> Hi Markus,
->
-> On 11/11/25 3:25 PM, Markus Armbruster wrote:
->> Gavin Shan <gshan@redhat.com> writes:
->>=20
->>> Use error_abort in acpi_ghes_memory_errors() so that the caller needn't
->>> explicitly call abort() on errors. With this change, its return value
->>> isn't needed any more.
->>>
->>> Suggested-by: Igor Mammedov <imammedo@redhat.com>
->>> Signed-off-by: Gavin Shan <gshan@redhat.com>
->>> ---
->>>   hw/acpi/ghes-stub.c    |  6 +++---
->>>   hw/acpi/ghes.c         | 15 ++++-----------
->>>   include/hw/acpi/ghes.h |  5 +++--
->>>   target/arm/kvm.c       | 10 +++-------
->>>   4 files changed, 13 insertions(+), 23 deletions(-)
->>>
->>> diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
->>> index 4faf573aeb..4ef914ffc5 100644
->>> --- a/hw/acpi/ghes-stub.c
->>> +++ b/hw/acpi/ghes-stub.c
->>> @@ -11,10 +11,10 @@
->>>  #include "qemu/osdep.h"
->>>  #include "hw/acpi/ghes.h"
->>>=20=20
->>> -int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->>> -                            uint64_t *addresses, uint32_t num_of_addre=
-sses)
->>> +void acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->>> +                             uint64_t *addresses, uint32_t num_of_addr=
-esses,
->>> +                             Error **errp)
->>>  {
->>> -    return -1;
->>>  }
->>=20
->> Before the patch, this function always fails: it returns -1.
->>=20
->> Afterwards, it always succeeds: it doesn't set @errp.
->>=20
->> Which one is correct?
->>=20
->
-> Both are correct. This variant is only used on !CONFIG_ACPI_APEI. In this=
- case,
-> there is no chance to call this variant in the only caller kvm_arch_on_si=
-gbus_vcpu().
-> acpi_ghes_get_state() returns NULL on !CONFIG_ACPI_APEI there.
+> Hi Igor and Jonathan,
+> 
+> On 11/11/25 12:49 AM, Igor Mammedov wrote:
+> > On Thu, 6 Nov 2025 13:15:52 +1000
+> > Gavin Shan <gshan@redhat.com> wrote:  
+> >> On 11/6/25 12:14 AM, Jonathan Cameron wrote:  
+> >>> On Wed,  5 Nov 2025 21:44:49 +1000
+> >>> Gavin Shan <gshan@redhat.com> wrote:
+> >>>      
+> >>>> In the situation where host and guest has 64KiB and 4KiB page sizes,
+> >>>> one problematic host page affects 16 guest pages. we need to send 16
+> >>>> consective errors in this specific case.
+> >>>>
+> >>>> Extend acpi_ghes_memory_errors() to support multiple CPERs after the
+> >>>> hunk of code to generate the GHES error status is pulled out from
+> >>>> ghes_gen_err_data_uncorrectable_recoverable(). The status field of
+> >>>> generic error status block is also updated accordingly if multiple
+> >>>> error data entries are contained in the generic error status block.
+> >>>>
+> >>>> Signed-off-by: Gavin Shan <gshan@redhat.com>  
+> >>> Hi Gavin,
+> >>>
+> >>> Mostly fine, but a few comments on the defines added and a
+> >>> question on what the multiple things are meant to mean?
+> >>>      
+> >>
+> >> Thanks for your review and comments, replies as below.
+> >>  
+> >>>> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> >>>> index a9c08e73c0..527b85c8d8 100644
+> >>>> --- a/hw/acpi/ghes.c
+> >>>> +++ b/hw/acpi/ghes.c
+> >>>> @@ -57,8 +57,12 @@
+> >>>>    /* The memory section CPER size, UEFI 2.6: N.2.5 Memory Error Section */
+> >>>>    #define ACPI_GHES_MEM_CPER_LENGTH           80
+> >>>>    
+> >>>> -/* Masks for block_status flags */
+> >>>> -#define ACPI_GEBS_UNCORRECTABLE         1
+> >>>> +/* Bits for block_status flags */
+> >>>> +#define ACPI_GEBS_UNCORRECTABLE           0
+> >>>> +#define ACPI_GEBS_CORRECTABLE             1
+> >>>> +#define ACPI_GEBS_MULTIPLE_UNCORRECTABLE  2
+> >>>> +#define ACPI_GEBS_MULTIPLE_CORRECTABLE    3  
+> >>>
+> >>> So this maps to the bits in block status.
+> >>>
+> >>> I'm not actually sure what these multiple variants are meant to tell us.
+> >>> The multiple error blocks example referred to by the spec is a way to represent
+> >>> the same error applying to multiple places.  So that's one error, many blocks.
+> >>> I have no idea if we set these bits in that case.
+> >>>
+> >>> Based on a quick look I don't think linux even takes any notice.  THere
+> >>> are defines in actbl1.h but I'm not seeing any use made of them.
+> >>>      
+> >>
+> >> I hope Igor can confirm since it was suggested by him.
+> >>
+> >> It's hard to understand how exactly these multiple variants are used from the
+> >> spec. In ACPI 6.5 Table 18.11, it's explained as below.
+> >>
+> >> Bit [2] - Multiple Uncorrectable Errors: If set to one, indicates that more
+> >> than one uncorrectable errors have been detected.
+> >>
+> >> I don't see those multiple variants have been used by Linux. So I think it's
+> >> safe to drop them.  
+> > 
+> > even though example describes 'same' error at different components,
+> > the bit fields descriptions doesn't set any limits on what 'more than one' means.
+> > 
+> > Also from guest POV it's multiple different pages that we are reporting here
+> > as multiple CPERs.
+> > It seems to me that setting *_MULTIPLE_* here is correct thing to do.
+> >   
+> 
+> I don't have strong opinions. Lets keep to set _MULTIPLE_ flag if Jonathan
+> is fine. Again, this field isn't used by Linux guest.
+I don't care strongly.  Maybe we should ask for a spec clarification as I doubt
+implementations will be consistent on this given the vague description and that
+Linux ignores it today.
 
-If this is not supposed to be called, have it abort() to make it
-obvious.
+> 
+> >>>> +#define ACPI_GEBS_ERROR_DATA_ENTRIES      4  
+> >>>
+> >>> This is bits 4-13 and the define isn't used. I'd drop it.
+> >>>      
+> >>
+> >> The definition is used in acpi_ghes_memory_errors() of this patch. However,
+> >> I don't see it has been used by Linux. This field isn't used by Linux to determine
+> >> the total number of error entries. So I think I can drop it either if Igor is ok.
+> >>  
+> 
+> Lets keep this field either in next revision if Jonathan is fine.
 
->>>=20=20
->>>  AcpiGhesState *acpi_ghes_get_state(void)
->>> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
->>> index 055e5d719a..aa469c03f2 100644
->>> --- a/hw/acpi/ghes.c
->>> +++ b/hw/acpi/ghes.c
->>> @@ -543,8 +543,9 @@ void ghes_record_cper_errors(AcpiGhesState *ags, co=
-nst void *cper, size_t len,
->>>      notifier_list_notify(&acpi_generic_error_notifiers, &source_id);
->>>  }
->>>=20=20
->>> -int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->>> -                            uint64_t *addresses, uint32_t num_of_addre=
-sses)
->>> +void acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->>> +                             uint64_t *addresses, uint32_t num_of_addr=
-esses,
->>> +                             Error **errp)
->>=20
->> qapi/error.h:
->>=20
->>   * - Whenever practical, also return a value that indicates success /
->>   *   failure.  This can make the error checking more concise, and can
->>   *   avoid useless error object creation and destruction.  Note that
->>   *   we still have many functions returning void.  We recommend
->>   *   =E2=80=A2 bool-valued functions return true on success / false on =
-failure,
->>   *   =E2=80=A2 pointer-valued functions return non-null / null pointer,=
- and
->>   *   =E2=80=A2 integer-valued functions return non-negative / negative.
->>=20
->
-> Question: If it's deterministic that caller passes @error_abort or @error=
-_fatal
-> to acpi_ghes_memory_errors(), QEMU crashes with a core dump or exit befor=
-e its
-> caller to check the return value. In this case, it's still preferred for
-> acpi_ghes_memory_errors() returns a value to indicate the success or fail=
-ure?
+I'm fine with the field, but not the value.  As far as I can tell form the spec, it should
+be a mask, not a single bit.
 
-Yes, to separate concerns: acpi_ghes_memory_errors() remains oblivious
-of how it is called.
-
->>>  {
->>>      /* Memory Error Section Type */
->>>      const uint8_t guid[] =3D
->>> @@ -555,7 +556,6 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, uin=
-t16_t source_id,
->>>       * Table 17-13 Generic Error Data Entry
->>>       */
->>>      QemuUUID fru_id =3D {};
->>> -    Error *errp =3D NULL;
->>>      int data_length;
->>>      GArray *block;
->>>      uint32_t block_status, i;
->>> @@ -592,16 +592,9 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, ui=
-nt16_t source_id,
->>>      }
->>>=20=20
->>>      /* Report the error */
->>> -    ghes_record_cper_errors(ags, block->data, block->len, source_id, &=
-errp);
->>> +    ghes_record_cper_errors(ags, block->data, block->len, source_id, e=
-rrp);
->>>=20=20
->>>      g_array_free(block, true);
->>> -
->>> -    if (errp) {
->>> -        error_report_err(errp);
->>> -        return -1;
->>> -    }
->>> -
->>> -    return 0;
->>>  }
->>=20
->> The error reporting moves into the caller.
->>=20
->
-> Similar question as above. If it's deterministic for the caller passes @e=
-rror_abort
-> or @error_fatal to acpi_ghes_memory_errors() and then to ghes_record_cper=
-_errors(),
-> QEMU crashes with a core dump or exit before error_report_err(errp) can b=
-e executed.
-> In this case, it's still preferred to have error_report_err(&error_abort)=
- or
-> error_report_err(&error_fatal) in its caller?
-
-Yes.
-
->>>=20=20
->>>  AcpiGhesState *acpi_ghes_get_state(void)
->>> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
->>> index f73908985d..35c7bbbb01 100644
->>> --- a/include/hw/acpi/ghes.h
->>> +++ b/include/hw/acpi/ghes.h
->>> @@ -98,8 +98,9 @@ void acpi_build_hest(AcpiGhesState *ags, GArray *tabl=
-e_data,
->>>                       const char *oem_id, const char *oem_table_id);
->>>  void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
->>>                            GArray *hardware_errors);
->>> -int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->>> -                            uint64_t *addresses, uint32_t num_of_addre=
-sses);
->>> +void acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->>> +                             uint64_t *addresses, uint32_t num_of_addr=
-esses,
->>> +                             Error **errp);
->>>  void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, siz=
-e_t len,
->>>                               uint16_t source_id, Error **errp);
->>>=20=20
->>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->>> index 459ca4a9b0..a889315606 100644
->>> --- a/target/arm/kvm.c
->>> +++ b/target/arm/kvm.c
->>> @@ -2458,13 +2458,9 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int co=
-de, void *addr)
->>>              addresses[0] =3D paddr;
->>>              if (code =3D=3D BUS_MCEERR_AR) {
->>>                  kvm_cpu_synchronize_state(c);
->>> -                if (!acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYN=
-C,
->>> -                                             addresses, 1)) {
->>> -                    kvm_inject_arm_sea(c);
->>> -                } else {
->>> -                    error_report("failed to record the error");
->>> -                    abort();
->>> -                }
->>> +                acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
->>> +                                        addresses, 1, &error_abort);
->>> +                kvm_inject_arm_sea(c);
->>=20
->> Before the patch, we get two error reports, like this:
->>=20
->>      qemu-system-FOO: OSPM does not acknowledge previous error, so can n=
-ot record CPER for current error anymore
->>      qemu-system-FOO: failed to record the error
->>      Aborted (core dumped)
->>=20
->> Such error cascades should be avoided.
->>=20
->> Afterwards, we get one:
->>=20
->>      Unexpected error at SOURCE-FILE:LINE-NUMBER:
->>      qemu-system-FOO: OSPM does not acknowledge previous error, so can n=
-ot record CPER for current error anymore
->>      Aborted (core dumped)
->>=20
->> Are all errors reported by acpi_ghes_memory_errors() programming errors,
->> i.e. when an error is reported, there's a bug for us to fix?
->>=20
->> If not, abort() is wrong before the patch, and &error_abort is wrong
->> afterwards.
->>=20
->> You can use &error_fatal for fatal errors that are not programming
->> errors.
->
-> No, there is no programming errors and the core dump is actually no sense.
-
-Confirms my suspicion :)
-
-> It makes more sense for the caller to pass @error_fatal down to acpi_ghes=
-_memory_errors().
-
-Makes sense.
-
->>>              }
->>>              return;
->>>          }
->>=20
->
+> 
 > Thanks,
 > Gavin
+> 
+> 
+> 
 
 

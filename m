@@ -4,46 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C23FCCFA1A
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 10:08:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88BA3CCFA1A
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 10:13:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIlIW-0003Xa-Tn; Tue, 11 Nov 2025 05:08:25 -0500
+	id 1vIlMz-0000UV-6Z; Tue, 11 Nov 2025 05:13:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vIlIG-0003Oa-J3; Tue, 11 Nov 2025 05:08:10 -0500
+ id 1vIlMx-0000TY-H9; Tue, 11 Nov 2025 05:12:59 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vIlID-0005BK-FO; Tue, 11 Nov 2025 05:08:08 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4d5Mdx4T7yzJ46dq;
- Tue, 11 Nov 2025 18:07:17 +0800 (CST)
+ id 1vIlMt-00062w-PK; Tue, 11 Nov 2025 05:12:57 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4d5Mm45qsszHnHBC;
+ Tue, 11 Nov 2025 18:12:36 +0800 (CST)
 Received: from dubpeml100005.china.huawei.com (unknown [7.214.146.113])
- by mail.maildlp.com (Postfix) with ESMTPS id 4DFF114038F;
- Tue, 11 Nov 2025 18:07:48 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id ADFFA1402F3;
+ Tue, 11 Nov 2025 18:12:53 +0800 (CST)
 Received: from localhost (10.203.177.15) by dubpeml100005.china.huawei.com
  (7.214.146.113) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.36; Tue, 11 Nov
- 2025 10:07:47 +0000
-Date: Tue, 11 Nov 2025 10:07:46 +0000
+ 2025 10:12:52 +0000
+Date: Tue, 11 Nov 2025 10:12:51 +0000
 To: Gavin Shan <gshan@redhat.com>
-CC: Igor Mammedov <imammedo@redhat.com>, <shan.gavin@gmail.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <mchehab+huawei@kernel.org>,
- <gengdongjiu1@gmail.com>, <mst@redhat.com>, <anisinha@redhat.com>,
- <peter.maydell@linaro.org>, <pbonzini@redhat.com>
-Subject: Re: [PATCH v3 4/8] acpi/ghes: Extend acpi_ghes_memory_errors() to
- support multiple CPERs
-Message-ID: <20251111100746.00003136@huawei.com>
-In-Reply-To: <cad74549-a313-48b6-8260-f23f6be1e8c8@redhat.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
+ <mchehab+huawei@kernel.org>, <gengdongjiu1@gmail.com>, <mst@redhat.com>,
+ <imammedo@redhat.com>, <anisinha@redhat.com>, <peter.maydell@linaro.org>,
+ <pbonzini@redhat.com>, <shan.gavin@gmail.com>, Hanjun Guo
+ <guohanjun@huawei.com>, "Rafael J. Wysocki" <rafael@kernel.org>, Tony Luck
+ <tony.luck@intel.com>, "Borislav Petkov" <bp@alien8.de>, Shuai Xue
+ <xueshuai@linux.alibaba.com>, <linux-acpi@vger.kernel.org>,
+ <linux-edac@vger.kernel.org>, Miaohe Lin <linmiaohe@huawei.com>, Naoya
+ Horiguchi <nao.horiguchi@gmail.com>
+Subject: Re: [PATCH v3 8/8] target/arm/kvm: Support multiple memory CPERs
+ injection
+Message-ID: <20251111101251.00006e84@huawei.com>
+In-Reply-To: <9fbd5344-947d-46bd-8754-16fc9e3fff05@redhat.com>
 References: <20251105114453.2164073-1-gshan@redhat.com>
- <20251105114453.2164073-5-gshan@redhat.com>
- <20251105141455.000052f0@huawei.com>
- <cc07dfc9-f58a-4654-8854-c16a2e85fecd@redhat.com>
- <20251110154957.5c481df7@fedora>
- <cad74549-a313-48b6-8260-f23f6be1e8c8@redhat.com>
+ <20251105114453.2164073-9-gshan@redhat.com>
+ <20251105143710.000041f5@huawei.com>
+ <9fbd5344-947d-46bd-8754-16fc9e3fff05@redhat.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -77,109 +80,177 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 11 Nov 2025 14:08:13 +1000
+On Thu, 6 Nov 2025 13:26:27 +1000
 Gavin Shan <gshan@redhat.com> wrote:
 
-> Hi Igor and Jonathan,
+> Hi Jonathan,
 > 
-> On 11/11/25 12:49 AM, Igor Mammedov wrote:
-> > On Thu, 6 Nov 2025 13:15:52 +1000
-> > Gavin Shan <gshan@redhat.com> wrote:  
-> >> On 11/6/25 12:14 AM, Jonathan Cameron wrote:  
-> >>> On Wed,  5 Nov 2025 21:44:49 +1000
-> >>> Gavin Shan <gshan@redhat.com> wrote:
-> >>>      
-> >>>> In the situation where host and guest has 64KiB and 4KiB page sizes,
-> >>>> one problematic host page affects 16 guest pages. we need to send 16
-> >>>> consective errors in this specific case.
-> >>>>
-> >>>> Extend acpi_ghes_memory_errors() to support multiple CPERs after the
-> >>>> hunk of code to generate the GHES error status is pulled out from
-> >>>> ghes_gen_err_data_uncorrectable_recoverable(). The status field of
-> >>>> generic error status block is also updated accordingly if multiple
-> >>>> error data entries are contained in the generic error status block.
-> >>>>
-> >>>> Signed-off-by: Gavin Shan <gshan@redhat.com>  
-> >>> Hi Gavin,
-> >>>
-> >>> Mostly fine, but a few comments on the defines added and a
-> >>> question on what the multiple things are meant to mean?
-> >>>      
-> >>
-> >> Thanks for your review and comments, replies as below.
-> >>  
-> >>>> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> >>>> index a9c08e73c0..527b85c8d8 100644
-> >>>> --- a/hw/acpi/ghes.c
-> >>>> +++ b/hw/acpi/ghes.c
-> >>>> @@ -57,8 +57,12 @@
-> >>>>    /* The memory section CPER size, UEFI 2.6: N.2.5 Memory Error Section */
-> >>>>    #define ACPI_GHES_MEM_CPER_LENGTH           80
-> >>>>    
-> >>>> -/* Masks for block_status flags */
-> >>>> -#define ACPI_GEBS_UNCORRECTABLE         1
-> >>>> +/* Bits for block_status flags */
-> >>>> +#define ACPI_GEBS_UNCORRECTABLE           0
-> >>>> +#define ACPI_GEBS_CORRECTABLE             1
-> >>>> +#define ACPI_GEBS_MULTIPLE_UNCORRECTABLE  2
-> >>>> +#define ACPI_GEBS_MULTIPLE_CORRECTABLE    3  
-> >>>
-> >>> So this maps to the bits in block status.
-> >>>
-> >>> I'm not actually sure what these multiple variants are meant to tell us.
-> >>> The multiple error blocks example referred to by the spec is a way to represent
-> >>> the same error applying to multiple places.  So that's one error, many blocks.
-> >>> I have no idea if we set these bits in that case.
-> >>>
-> >>> Based on a quick look I don't think linux even takes any notice.  THere
-> >>> are defines in actbl1.h but I'm not seeing any use made of them.
-> >>>      
-> >>
-> >> I hope Igor can confirm since it was suggested by him.
-> >>
-> >> It's hard to understand how exactly these multiple variants are used from the
-> >> spec. In ACPI 6.5 Table 18.11, it's explained as below.
-> >>
-> >> Bit [2] - Multiple Uncorrectable Errors: If set to one, indicates that more
-> >> than one uncorrectable errors have been detected.
-> >>
-> >> I don't see those multiple variants have been used by Linux. So I think it's
-> >> safe to drop them.  
+> On 11/6/25 12:37 AM, Jonathan Cameron wrote:
+> > On Wed,  5 Nov 2025 21:44:53 +1000
+> > Gavin Shan <gshan@redhat.com> wrote:
+> >   
+> >> In the combination of 64KiB host and 4KiB guest, a problematic host
+> >> page affects 16x guest pages that can be owned by different threads.
+> >> It means 16x memory errors can be raised at once due to the parallel
+> >> accesses to those 16x guest pages on the guest. Unfortunately, QEMU
+> >> can't deliver them one by one because we just one GHES error block,  
 > > 
-> > even though example describes 'same' error at different components,
-> > the bit fields descriptions doesn't set any limits on what 'more than one' means.
-> > 
-> > Also from guest POV it's multiple different pages that we are reporting here
-> > as multiple CPERs.
-> > It seems to me that setting *_MULTIPLE_* here is correct thing to do.
+> > we have just one
 > >   
 > 
-> I don't have strong opinions. Lets keep to set _MULTIPLE_ flag if Jonathan
-> is fine. Again, this field isn't used by Linux guest.
-I don't care strongly.  Maybe we should ask for a spec clarification as I doubt
-implementations will be consistent on this given the vague description and that
-Linux ignores it today.
-
+> Thanks, fixed locally.
 > 
-> >>>> +#define ACPI_GEBS_ERROR_DATA_ENTRIES      4  
-> >>>
-> >>> This is bits 4-13 and the define isn't used. I'd drop it.
-> >>>      
+> >> corresponding one read acknowledgement register. It can eventually
+> >> cause QEMU crash dump due to the contention on that register, meaning
+> >> the current memory error can't be delivered before the previous error
+> >> isn't acknowledged.
 > >>
-> >> The definition is used in acpi_ghes_memory_errors() of this patch. However,
-> >> I don't see it has been used by Linux. This field isn't used by Linux to determine
-> >> the total number of error entries. So I think I can drop it either if Igor is ok.
-> >>  
+> >> Imporve push_ghes_memory_errors() to push 16x consecutive memory errors  
+> > Improve
+> >   
 > 
-> Lets keep this field either in next revision if Jonathan is fine.
+> Thanks, fixed locally.
+> 
+> >> under this situation to avoid the contention on the read acknowledgement
+> >> register.
+> >>
+> >> Signed-off-by: Gavin Shan <gshan@redhat.com>  
+> > Hi Gavin
+> > 
+> > Silly question that never occurred to me before:
+> > What happens if we just report a single larger error?
+> > 
+> > The CPER record has a Physical Address Mask that I think lets us say we
+> > are only reporting at a 64KiB granularity.
+> > 
+> > In linux drivers/edac/ghes_edac.c seems to handle this via e->grain.
+> > https://elixir.bootlin.com/linux/v6.18-rc4/source/drivers/edac/ghes_edac.c#L346
+> > 
+> > I haven't chased the whole path through to whether this does appropriate poisoning
+> > on the guest though.
+> >   
+> 
+> We have the following call trace to handle CPER error record. The e->grain
+> originated from the Physical Address Mask is used to come up with the size
+> for memory scrubbing at (a). The page isolation happens at (b) bases on the
+> reported Physical Address. So a larger Physical Address Mask won't help to
+> isolate more pages per my understanding.
 
-I'm fine with the field, but not the value.  As far as I can tell form the spec, it should
-be a mask, not a single bit.
+Ok - thanks for walking this through!
 
+So is that a kernel bug?  If we have a report of a problem that
+effects multiple pages, why are we not isolating them all?
+
+Which one are we isolating? Is it the first in the reported range or
+do we have some means to see which address access resulted in an SEA?
+
++CC kernel APEI maintainers and related to see if they have a view on what should
+be happening here.
+
+The short version of the question is: Should the kernel should be isolating
+multiple pages if a CPER record has a granularity of more than a page?
+
+This could occur if we have a guest with smaller pages than the host.
+
+> 
+> do_sea
+>    apei_claim_sea
+>      ghes_notify_sea
+>        ghes_in_nmi_spool_from_list
+>          ghes_in_nmi_queue_one_entry
+>          irq_work_queue                          // ghes_proc_irq_work
+>            ghes_proc_in_irq
+>              ghes_do_proc
+>                atomic_notifier_call_chain        // (a) ghes_report_chain
+>                  ghes_edac_report_mem_error
+>                    edac_raw_mc_handle_error
+>                 ghes_handle_memory_failure
+>                   ghes_do_memory_failure
+>                     memory_failure_cb
+>                       memory_failure             // (b) Isolate the page
 > 
 > Thanks,
 > Gavin
 > 
+> >> ---
+> >>   target/arm/kvm.c | 52 ++++++++++++++++++++++++++++++++++++++++++++++--
+> >>   1 file changed, 50 insertions(+), 2 deletions(-)
+> >>
+> >> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> >> index 5b151eda3c..d7de8262da 100644
+> >> --- a/target/arm/kvm.c
+> >> +++ b/target/arm/kvm.c
+> >> @@ -11,6 +11,7 @@
+> >>    */
+> >>   
+> >>   #include "qemu/osdep.h"
+> >> +#include "qemu/units.h"
+> >>   #include <sys/ioctl.h>
+> >>   
+> >>   #include <linux/kvm.h>
+> >> @@ -2432,12 +2433,59 @@ int kvm_arch_get_registers(CPUState *cs, Error **errp)
+> >>   static void push_ghes_memory_errors(CPUState *c, AcpiGhesState *ags,
+> >>                                       uint64_t paddr, Error **errp)
+> >>   {
+> >> +    uint64_t val, start, end, guest_pgsz, host_pgsz;
+> >>       uint64_t addresses[16];
+> >> +    uint32_t num_of_addresses;
+> >> +    int ret;
+> >> +
+> >> +    /*
+> >> +     * Sort out the guest page size from TCR_EL1, which can be modified
+> >> +     * by the guest from time to time. So we have to sort it out dynamically.
+> >> +     */
+> >> +    ret = read_sys_reg64(c->kvm_fd, &val, ARM64_SYS_REG(3, 0, 2, 0, 2));
+> >> +    if (ret) {
+> >> +        error_setg(errp, "Error %" PRId32 " to read TCR_EL1 register", ret);
+> >> +        return;
+> >> +    }
+> >> +
+> >> +    switch (extract64(val, 14, 2)) {
+> >> +    case 0:
+> >> +        guest_pgsz = 4 * KiB;
+> >> +        break;
+> >> +    case 1:
+> >> +        guest_pgsz = 64 * KiB;
+> >> +        break;
+> >> +    case 2:
+> >> +        guest_pgsz = 16 * KiB;
+> >> +        break;
+> >> +    default:
+> >> +        error_setg(errp, "Unknown page size from TCR_EL1 (0x%" PRIx64 ")", val);
+> >> +        return;
+> >> +    }
+> >> +
+> >> +    host_pgsz = qemu_real_host_page_size();
+> >> +    start = paddr & ~(host_pgsz - 1);
+> >> +    end = start + host_pgsz;
+> >> +    num_of_addresses = 0;
+> >>   
+> >> -    addresses[0] = paddr;
+> >> +    while (start < end) {
+> >> +        /*
+> >> +         * The precise physical address is provided for the affected
+> >> +         * guest page that contains @paddr. Otherwise, the starting
+> >> +         * address of the guest page is provided.
+> >> +         */
+> >> +        if (paddr >= start && paddr < (start + guest_pgsz)) {
+> >> +            addresses[num_of_addresses++] = paddr;
+> >> +        } else {
+> >> +            addresses[num_of_addresses++] = start;
+> >> +        }
+> >> +
+> >> +        start += guest_pgsz;
+> >> +    }
+> >>   
+> >>       kvm_cpu_synchronize_state(c);
+> >> -    acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC, addresses, 1, errp);
+> >> +    acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
+> >> +                            addresses, num_of_addresses, errp);
+> >>       kvm_inject_arm_sea(c);
+> >>   }
+> >>     
+> >   
 > 
 > 
 

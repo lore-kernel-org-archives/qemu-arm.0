@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB898CCFA1A
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 17:18:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F35BCCFA18
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 17:18:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIs0M-0006SM-I9; Tue, 11 Nov 2025 12:18:06 -0500
+	id 1vIs0K-0006Pb-Rc; Tue, 11 Nov 2025 12:18:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vIrzv-0005fr-U1
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 12:17:40 -0500
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ id 1vIrzm-0005WL-Bi
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 12:17:32 -0500
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vIrzp-0003wz-6s
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 12:17:39 -0500
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-640e9f5951aso1749265a12.1
- for <qemu-arm@nongnu.org>; Tue, 11 Nov 2025 09:17:32 -0800 (PST)
+ id 1vIrzk-0003uN-3r
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 12:17:29 -0500
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-6419aaced59so3584618a12.0
+ for <qemu-arm@nongnu.org>; Tue, 11 Nov 2025 09:17:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1762881451; x=1763486251; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Za+5Mks5dDo7+VKCqxjl33d6oX+mjFDqlwwucW0qEdw=;
- b=ZHIQFa0Z7ZkxAu2cvisWOzanuLPLo3kuObEDjokoouLRFrBOSMLgUguxR9DLvtcssd
- gpEbopaYuVVo49X1wkPUkJF2Et+mxF9UFR1q9LmJLqbyCm340XiMM5HPBS+kwpdnMT4d
- AxRiGQhxN9IjAJ3Ve+6vw0ayDKjWwg3BxFpVVvDoCtYpmHsj/sW3qn3v0E9wMoNLwUAU
- /g2zsVx0SV+zwnPPeRIVfB/AKzkETN2YaKfgqaxg3DWxh4YIswVZ6XPFOzH3FAdEzH7O
- PLkb6xO+57svmafJ2L0T8Y0sIhksi5p0WktlXVZMUxfgJwWh2mVh8v7uq0+890ucahJ9
- QrMA==
+ d=linaro.org; s=google; t=1762881446; x=1763486246; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=7PGrRKAvpWgdql03IMxILc4BiTJmKYPYpApvfDWwzvA=;
+ b=TbBjO6LMtm74z3nbNyoj7IPufsDg7Eo40EDJkSseRfgeuZvg18d/q69clCZUes9khr
+ IvFMdIrggdyCG5pSjgWm9+GfJbHsSiz4uaeb6GC9ybYozKUf1+SC6sxSU7hbFN9PWs3V
+ mmG8UFqJ8fGYgeNzHcsbY89vtQuoV6bcQZQgVOCyi+sCuw4MjY4bHySnla1MmXRt9GnQ
+ mApb3gXmpTWVJxOMlWG3W70KTNQIodAOMrUMQXstiXa73CWkjyU07pnBsCOPhCHxoNQf
+ zWMaXe68wBnQ2wgjmaOQ+3MKUyFLhZH8UHr7bdZLiRlYotDc9QRmm3P71V2h4PD6cbiz
+ 0gWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762881451; x=1763486251;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=Za+5Mks5dDo7+VKCqxjl33d6oX+mjFDqlwwucW0qEdw=;
- b=YyfEj2mBcS5+GDvGSyEJ/rpujia7HORER895UpkJcfrMsUtfsDe64f6pGck0YDeyv3
- MZZFBdSg5y0J39hPi9kxsOSRlWNAzZKMo7rYn0DlPZwORmIsIWVxzSoU+V1A597IKHY1
- CwSPZ/2Pl7yyD0Lfw2wI0rnnbLyBpjyu2i4RD2RXE5/N+vfmBG4wu1qM+fUfisItui+N
- AnRsQ84ZlawVDrdma3ifVC9AspxEA4BppJmE6cqzI7qy4yJtCaWmnlQenVkopEZQ+BQi
- 0XPt4KP4CaxMkM2X/UT49rUpkL+vRaVWHxbLlzDzz8+ZYzKJ0U3Ziroa5Y3WSx7j9pAn
- gpdQ==
+ d=1e100.net; s=20230601; t=1762881446; x=1763486246;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=7PGrRKAvpWgdql03IMxILc4BiTJmKYPYpApvfDWwzvA=;
+ b=n9bL/ki2CGlH9JoTvq/6oHEl39XbSne9/LQNC4UAngKAzH3BvVsYsM1J1L24wAPjXM
+ Al3v9PXc3QiuHSQE55023UNVovOfxc3kNm5AZ0zL1bbsIPTsShrETycWWTaWD3bfluCc
+ 8r00wuDRVBq3My0Ncx2juCCdOIr0B9kduUjrnsPGzjWwd1eEhADqn57aqB60NreFS13R
+ ZStpaalKgGAc3NPIuNRsad5EbJF/hBI3Jpo9S+ESfQHmtvSxrkM1KpJtgjgJLZHnVs7P
+ l7y1GlE7evsiy1Vx71Wq8mWL1+siZR9idgQbQuGfkqye4o/aGhndSao6UggAXHiq7jVH
+ gBVQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWZj50/J4iykxdc8hQuxi+AeBdBzb+oMS4nZ9VgHaoMfspawDUZVJZjd+TLEx2DvfHlFNfunDHHrg==@nongnu.org
-X-Gm-Message-State: AOJu0YyZElJMkSVHkQlfSpwxpUXnsGsx010NIsX88PLYTqThRvkq0OA2
- PmBf/gtax1dy0QAyn/mjkGPPCGj59G6Gi99vwTrHznSI22SAKcezzpyD65uUAEcP87E=
-X-Gm-Gg: ASbGncvYhSOm9SVbKZuN1a/9sNW8HdDHVkCYy2ZKC3pSlKRTFejsg14orNIUXe3ApMw
- UnxsbwL0XPbjSyWt++sUDn9P4vxUZ/02TlH2+6FANIMZDwCMW5nU2Hovp9tVCUv8uIFabknECne
- Gzrebr/1xApazyzVZHUV5Pbl3O6XmxgFfrNFcL4byV2wkzQ2l6KgJp2+md+6unFpM1IiJB7w3lN
- FBCv/k0NG6ZDHzFiiB6WlCPPLVNZyihim/6UmzL3wTIx2/jCkpMQmWqeinUcHM034vzQCIH6Bmo
- Jjd5oO+D9I5GI8aXkJ1+VUouGC9cKxrITxlDO6jAg8dRH72I2XI4IxRFC34G1zSv7cmryl3UDMo
- TZne/qrg6YNWaMlYgKe3gR9dzApa24jLb9g6J7e1gfBFeLK2G/6zxnpwtG73g6Unh3Kc99FX28D
- p+
-X-Google-Smtp-Source: AGHT+IEzV2oPWceBEQZfRjUMRF3Z1okUInmrwb60js1ltUEB6Txr+6XY2GMiVSLduNqZ35nAheRp/w==
-X-Received: by 2002:a17:906:6a1d:b0:afa:1d2c:bbd1 with SMTP id
- a640c23a62f3a-b733143e47dmr5499966b.30.1762881451559; 
- Tue, 11 Nov 2025 09:17:31 -0800 (PST)
+ AJvYcCV87t2Ouae4qP5sgh3moXVGC+3Lr3hA6rfNRVYYtrre7NGEd3qDdbM0/pPrp5kdS963MVQhrKBHGg==@nongnu.org
+X-Gm-Message-State: AOJu0YzHjUp7DfI0ZIwZrATnJMlmiahiXcllzJrfMuXxfqJg8Ji0It78
+ j+YgXPHZS8KTvtZ7SeEnfH2smV6qQ5TTsqhwJGVOv3yjeGX+dzb/RuGV+xnyEOXRB0Y=
+X-Gm-Gg: ASbGncsIpNnPzkO/L04f5CWmOJcmHtLliFvXRaDA6fCfrTxefI6sbW1ac4nLNRvRbRu
+ M5pWDAfl42x6j5NhYYEIaytGF2kvP1mdehebGYPi8XdozR180+/AcKhGVrjzj1kuM/JRSQpLq2P
+ TWcVsSoMd7fE8nTFAK9Rz5hSZ5u19yHj1sWvdqWI8pCtUEUajI8SKHlms1218/1cWf/fiXt3sMa
+ NwnZq9WNJJZdprRD5L+cuQbW9aRW8Japnef2QEd+MQXp0Say2+e4uki6bdLccypYShytnkU5PWX
+ J59chu/yUFgFesFchKW/DJJ2KEapN4wrH+qh8YqT78shJ/mjFOt5XVz2JJqQcJoaleDHBa3WJwg
+ PkfsG4m77S75/Vz3iMZUnz38nWjwUnknpate48zgkEOsMwdpqSXr1SaTMn4Zsj02NeUoAcnPdgL
+ Q+
+X-Google-Smtp-Source: AGHT+IEwSTQ9giAUEpNEQqdy9Mb+KGSmZ4U/SBQjFBhbZiXZVql4E4LlqT2bTNk3BMmFNZmAjcWUOQ==
+X-Received: by 2002:a05:6402:2554:b0:641:27d8:ec3f with SMTP id
+ 4fb4d7f45d1cf-6415e8126c2mr10443160a12.29.1762881445745; 
+ Tue, 11 Nov 2025 09:17:25 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b72bfa2510esm1371639666b.72.2025.11.11.09.17.28
+ 4fb4d7f45d1cf-6411f862697sm13947763a12.25.2025.11.11.09.17.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Nov 2025 09:17:28 -0800 (PST)
+ Tue, 11 Nov 2025 09:17:25 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id AB09C60DA8;
- Tue, 11 Nov 2025 17:17:25 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 3F51E5F8FC;
+ Tue, 11 Nov 2025 17:17:24 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
@@ -84,18 +83,16 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
  Thomas Huth <thuth@redhat.com>,
  Dmitry Osipenko <dmitry.osipenko@collabora.com>,
  BALATON Zoltan <balaton@eik.bme.hu>,
- Gustavo Romero <gustavo.romero@linaro.org>, qemu-stable@nongnu.org
-Subject: [PATCH 12/16] tests: move test_virt_gpu to share.linaro.org
-Date: Tue, 11 Nov 2025 17:17:19 +0000
-Message-ID: <20251111171724.78201-13-alex.bennee@linaro.org>
+ Gustavo Romero <gustavo.romero@linaro.org>
+Subject: [PATCH 00/16] testing/next cleanups (docker, functional)
+Date: Tue, 11 Nov 2025 17:17:07 +0000
+Message-ID: <20251111171724.78201-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20251111171724.78201-1-alex.bennee@linaro.org>
-References: <20251111171724.78201-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x530.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,42 +115,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Linaro are migrating file-hosting from the old NextCloud instance to
-another sharing site.
+We have a new ppc64le custom runner box courtesy of OSUOSL. The
+ansible scripts where updated in the last pull request and now we can
+turn on the runner.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: qemu-stable@nongnu.org
----
- tests/functional/aarch64/test_virt_gpu.py | 16 +++++-----------
- 1 file changed, 5 insertions(+), 11 deletions(-)
+On the subject runners I've done some more template clean-ups to
+improve maintainability and also tried to stop the custom runners
+appearing when not prompted for.
 
-diff --git a/tests/functional/aarch64/test_virt_gpu.py b/tests/functional/aarch64/test_virt_gpu.py
-index 4e50887c3e9..89bd596b548 100755
---- a/tests/functional/aarch64/test_virt_gpu.py
-+++ b/tests/functional/aarch64/test_virt_gpu.py
-@@ -22,17 +22,11 @@
- 
- class Aarch64VirtGPUMachine(LinuxKernelTest):
- 
--    ASSET_VIRT_GPU_KERNEL = Asset(
--        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
--        'download?path=%2F&files='
--        'Image.6.12.16.aarch64',
--        '7888c51c55d37e86bbbdeb5acea9f08c34e6b0f03c1f5b2463285f6a6f6eec8b')
--
--    ASSET_VIRT_GPU_ROOTFS = Asset(
--        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
--        'download?path=%2F&files='
--        'rootfs.aarch64.ext2.zstd',
--        'd45118c899420b7e673f1539a37a35480134b3e36e3a59e2cb69b1781cbb14ef')
-+    ASSET_VIRT_GPU_KERNEL = Asset('https://share.linaro.org/downloadFile?id=lL8wgnMmSXZo7Co',
-+                                  '7888c51c55d37e86bbbdeb5acea9f08c34e6b0f03c1f5b2463285f6a6f6eec8b')
-+
-+    ASSET_VIRT_GPU_ROOTFS = Asset('https://share.linaro.org/downloadFile?id=qOn1wbfKmS6KVHZ',
-+                                  'd45118c899420b7e673f1539a37a35480134b3e36e3a59e2cb69b1781cbb14ef')
- 
-     def _launch_virt_gpu(self, gpu_device):
- 
+Finally fileserver.linaro.org is being shutdown at the end of the year
+so I have migrated the tests to a new server. Those changes have a Cc:
+qemu-stable@nongnu.org tag as they will need back-porting.
+
+Please review,
+
+Alex.
+
+Alex Bennée (15):
+  tests/docker: drop --link from COPYs in emsdk docker
+  libvirt-ci: bump libvirt-ci to latest version
+  tests/lcitool: update ENV stazas outputted by refresh
+  tests/docker: add coreutils to the package list
+  gitlab: add initial ppc64le custom-runner test
+  tests: move test_xen assets to share.linaro.org
+  tests: move test_virt assets to share.linaro.org
+  tests: move test_netdev_ethtool to share.linaro.org
+  tests: move test_kvm_xen to share.linaro.org
+  tests: move test_kvm to share.linaro.org
+  tests: move test_virt_gpu to share.linaro.org
+  gitlab: use template for ubuntu-24.04-s390x jobs
+  gitlab: suppress custom runners being triggered by schedule
+  gitlab: make the schedule rules a bit more general
+  gitlab: add a weekly container building job
+
+Pierrick Bouvier (1):
+  docs/about/emulation: update assets for uftrace plugin documentation
+
+ docs/about/emulation.rst                      |  20 +-
+ docs/devel/testing/ci-jobs.rst.inc            |   6 +
+ .gitlab-ci.d/base.yml                         |   4 +-
+ .gitlab-ci.d/cirrus/freebsd-14.vars           |   2 +-
+ .gitlab-ci.d/cirrus/macos-14.vars             |   2 +-
+ .gitlab-ci.d/container-template.yml           |   4 +
+ .gitlab-ci.d/containers.yml                   |  36 ++++
+ .gitlab-ci.d/custom-runners.yml               |   1 +
+ .../custom-runners/debian-13-ppc64le.yml      |  40 ++++
+ .../custom-runners/ubuntu-24.04-aarch64.yml   |  12 +-
+ .../custom-runners/ubuntu-24.04-s390x.yml     | 181 +++++++-----------
+ .../ci/setup/debian/debian-13-ppc64le.yaml    |   1 +
+ .../ci/setup/ubuntu/ubuntu-2404-aarch64.yaml  |   1 +
+ .../ci/setup/ubuntu/ubuntu-2404-s390x.yaml    |   1 +
+ tests/docker/Makefile.include                 |  11 ++
+ tests/docker/dockerfiles/alpine.docker        |  11 +-
+ tests/docker/dockerfiles/centos9.docker       |  11 +-
+ .../dockerfiles/debian-amd64-cross.docker     |  21 +-
+ .../dockerfiles/debian-arm64-cross.docker     |  21 +-
+ .../dockerfiles/debian-armhf-cross.docker     |  21 +-
+ .../dockerfiles/debian-i686-cross.docker      |  21 +-
+ .../dockerfiles/debian-mips64el-cross.docker  |  21 +-
+ .../dockerfiles/debian-mipsel-cross.docker    |  21 +-
+ .../dockerfiles/debian-ppc64el-cross.docker   |  21 +-
+ .../dockerfiles/debian-riscv64-cross.docker   |  24 ++-
+ .../dockerfiles/debian-s390x-cross.docker     |  21 +-
+ tests/docker/dockerfiles/debian.docker        |  13 +-
+ .../dockerfiles/emsdk-wasm32-cross.docker     |   8 +-
+ .../dockerfiles/fedora-rust-nightly.docker    |  11 +-
+ .../dockerfiles/fedora-win64-cross.docker     |  19 +-
+ tests/docker/dockerfiles/fedora.docker        |  11 +-
+ tests/docker/dockerfiles/opensuse-leap.docker |  11 +-
+ tests/docker/dockerfiles/ubuntu2204.docker    |  11 +-
+ tests/functional/aarch64/test_kvm.py          |   7 +-
+ tests/functional/aarch64/test_virt.py         |   5 +-
+ tests/functional/aarch64/test_virt_gpu.py     |  16 +-
+ tests/functional/aarch64/test_xen.py          |  12 +-
+ tests/functional/x86_64/test_kvm_xen.py       |  17 +-
+ .../functional/x86_64/test_netdev_ethtool.py  |  14 +-
+ tests/lcitool/libvirt-ci                      |   2 +-
+ tests/lcitool/projects/qemu.yml               |   1 +
+ tests/lcitool/refresh                         |   6 +-
+ tests/vm/generated/freebsd.json               |   1 +
+ 43 files changed, 371 insertions(+), 330 deletions(-)
+ create mode 100644 .gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
+
 -- 
 2.47.3
 

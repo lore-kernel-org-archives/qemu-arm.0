@@ -4,95 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D399CCFA18
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 04:41:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7D02CCF9E3
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 05:09:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIgBd-0002cb-AT; Mon, 10 Nov 2025 23:40:57 -0500
+	id 1vIgcj-0003hb-F9; Tue, 11 Nov 2025 00:08:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vIgBb-0002V2-I4
- for qemu-arm@nongnu.org; Mon, 10 Nov 2025 23:40:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vIgcd-0003bX-QZ
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 00:08:53 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vIgBY-0005WV-Ni
- for qemu-arm@nongnu.org; Mon, 10 Nov 2025 23:40:55 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vIgcc-0000OL-CT
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 00:08:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762836051;
+ s=mimecast20190719; t=1762837729;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KvIb+o9yHfWawf8Rx5NTGMXQkEQ5gId4H5ppEmceRpA=;
- b=HheUwBGKzAoFX7Hfwq5zXN4w0nNtk5m5TrmJ2lI3HnDlrn/zIM+pIK0oPt2wOCR/YCTdjG
- AuslcvaoLcxUBbKkAT1+V+/Pz49JF7nFogAteO4p+g1DI8J3NWEHvR7Xa6v0BE6TI1THPG
- vzE3SpQvPGTovuBXRyGN5gyyJ1XqLj8=
-Received: from mail-pg1-f199.google.com (mail-pg1-f199.google.com
- [209.85.215.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-326-TGZ29GfaOmeIAVhYsGKcsg-1; Mon, 10 Nov 2025 23:40:50 -0500
-X-MC-Unique: TGZ29GfaOmeIAVhYsGKcsg-1
-X-Mimecast-MFC-AGG-ID: TGZ29GfaOmeIAVhYsGKcsg_1762836049
-Received: by mail-pg1-f199.google.com with SMTP id
- 41be03b00d2f7-b9ceccbd7e8so7804262a12.0
- for <qemu-arm@nongnu.org>; Mon, 10 Nov 2025 20:40:50 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762836049; x=1763440849;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=KvIb+o9yHfWawf8Rx5NTGMXQkEQ5gId4H5ppEmceRpA=;
- b=hJnWCQJOkKwyML99UYNUBTNEzq3Z23PZFEqJal1VqJwzzKsroiBLwPZZKxDw1TQz5O
- hMQIJOfzq2uEi5Dw8dwi1A9P/qhCa9ORPM8TeabLDXj8D5fnkDwMwwzJ6bSZMOPlueZm
- eEP+gqGimgiktd+gIz4/rhgbI3gTNgvoAZ1MBPYP1g6vqQIQuAzJDLSAOXDiT2DQtZ8B
- ijB8GTLYcyN68cKcD7idgBlTOcRuRPci+msuPy/nY7R3CxlePCib/b5/ILc5YFfSGvap
- BAD9OaaOBD8Pf8bXQy7RTjMkB/i0uJ3pxAacbtpEHmsPqSQPTHLTf/pUGViGliHyFNDj
- n1Kg==
-X-Gm-Message-State: AOJu0Yy7b2C/FhnAHnRzR4GIOyPzl4t2178j75pbS3xiDdUtxZn+ybUu
- OL5PMpDYSSG0+gOEzQfqK+ajWm4ETNFzDjDv8u22Wsf6VWLZ/XX4QNY8VqKj+n+syh+SlWTGCtx
- IU1YCW2VOsVZsuE2w7XhR2UVQOrmLHVhmYh+/5ntPUwusoiJXDm6jKA==
-X-Gm-Gg: ASbGncs9Y0Jcfuq6dj+k5cXCti+dL/5OZ/qBjSRtbQgO1olOBM13z5F6qPbQkYSTHQS
- 7qJxpaX8qiQa6woP43TkESe3eqlNiF1mGoV8QTRyF7QmpUO47aMNwOd24OTFEZaed7FwHnwZ3Dl
- sGUpCLcGrRzt7Bfvt2DeJJCrNCqo/tYqG8SN0mmW/lLJQJRXkYJsrkH1pyfLs5NEcAW0goAv6m+
- iCOKQMztQKXAzYr4hqMxTFyfjcu0LIvlIaiaJUThVdfjZ3H72+GOpk0rY313q3WxH1ycKTYoyqh
- 6rRPhUPclcaKQlIRLLuVbqWHTOLKBW3MxfOPAJ83FQz4KqiCN8aOn2mGesAcngFX1l1yQTLYuTn
- g4ffz/eXTfGPu6H2KBlAjV0Kzo68GyYOQgbHsDg4=
-X-Received: by 2002:a17:902:da4b:b0:295:fc0:5a32 with SMTP id
- d9443c01a7336-297e53e7aa7mr139797225ad.3.1762836049131; 
- Mon, 10 Nov 2025 20:40:49 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGnDX5dI7N/F+glRRKpH2cAr+Zv0auRVeUsqg+ywIns9b9aMQOVj98//kdzU/Zd+TxfmbvD7w==
-X-Received: by 2002:a17:902:da4b:b0:295:fc0:5a32 with SMTP id
- d9443c01a7336-297e53e7aa7mr139796905ad.3.1762836048720; 
- Mon, 10 Nov 2025 20:40:48 -0800 (PST)
-Received: from [192.168.68.51] (n175-34-62-5.mrk21.qld.optusnet.com.au.
- [175.34.62.5]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-29651c94ac5sm163762095ad.92.2025.11.10.20.40.44
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 10 Nov 2025 20:40:48 -0800 (PST)
-Message-ID: <659b0d40-6b06-42a8-ba7d-73dd2dcdf0f0@redhat.com>
-Date: Tue, 11 Nov 2025 14:40:42 +1000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/8] acpi/ghes: Extend acpi_ghes_memory_errors() to
- support multiple CPERs
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, jonathan.cameron@huawei.com,
- mchehab+huawei@kernel.org, gengdongjiu1@gmail.com, mst@redhat.com,
- anisinha@redhat.com, peter.maydell@linaro.org, pbonzini@redhat.com,
- shan.gavin@gmail.com
+ bh=12g85iCdCp1+GVbwWJx8GuCkJ0Ggke6K+P2042nRwdg=;
+ b=BkigUR12UtVy4fGUAuEXOofT+fO0PkR1wA+zFlIr1yWc2wpieiOEh1fei27B++ysS4MkEU
+ BTE/Fu1GicVj14YCPd6kRCFwxjoItqXluDQ8McqD+EmSyRcQxHpQ1IO8RezIpHorsw9wNw
+ X9DSlax3F2tua/iEnWh8ecHUOe4UwWA=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-649-lrEmkTNvNAKNXA_SYkrzZQ-1; Tue,
+ 11 Nov 2025 00:08:46 -0500
+X-MC-Unique: lrEmkTNvNAKNXA_SYkrzZQ-1
+X-Mimecast-MFC-AGG-ID: lrEmkTNvNAKNXA_SYkrzZQ_1762837724
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 45E8D1956061; Tue, 11 Nov 2025 05:08:44 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.18])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 94279195608E; Tue, 11 Nov 2025 05:08:43 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 082E821E6A27; Tue, 11 Nov 2025 06:08:41 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Gavin Shan <gshan@redhat.com>,  qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org,  jonathan.cameron@huawei.com,
+ mchehab+huawei@kernel.org,  gengdongjiu1@gmail.com,  mst@redhat.com,
+ imammedo@redhat.com,  anisinha@redhat.com,  peter.maydell@linaro.org,
+ pbonzini@redhat.com,  shan.gavin@gmail.com
+Subject: Re: [PATCH v3 6/8] acpi/ghes: Use error_abort in
+ acpi_ghes_memory_errors()
+In-Reply-To: <2c3b388e-e002-466a-9b03-cafefcfc9d19@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 10 Nov 2025 15:54:07
+ +0100")
 References: <20251105114453.2164073-1-gshan@redhat.com>
- <20251105114453.2164073-5-gshan@redhat.com> <20251110153801.258be29d@fedora>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20251110153801.258be29d@fedora>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: sjIBKFzhW00f-SnCfHHKWQdKasT9fXmDouKC6NaLR0g_1762836049
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ <20251105114453.2164073-7-gshan@redhat.com>
+ <2c3b388e-e002-466a-9b03-cafefcfc9d19@linaro.org>
+Date: Tue, 11 Nov 2025 06:08:40 +0100
+Message-ID: <87v7jhgnqf.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -117,145 +94,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Igor,
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-On 11/11/25 12:38 AM, Igor Mammedov wrote:
-> On Wed,  5 Nov 2025 21:44:49 +1000
-> Gavin Shan <gshan@redhat.com> wrote:
-> 
->> In the situation where host and guest has 64KiB and 4KiB page sizes,
->> one problematic host page affects 16 guest pages. we need to send 16
->> consective errors in this specific case.
-> 
-> I still don't like it, since it won't fix anything in case of more than
-> 1 broken host pages. (in v2 discussion quickly went hugepages route
-> and futility of recovering from them).
-> 
-> If having per vCPU source is not desirable,
-> can we stall all other vcpus that touch poisoned pages until
-> error is acked by guest and then let another VCPU to queue its own error?
-> 
-
-We're trying to avoid the guest from suddenly disappearing due to the QEMU
-crash, instead of recovering from the memory errors. To keep the guest
-accessible, system administrators still get a chance to collect important
-information from the guest.
-
-The idea of stalling the vCPU which is accessing any poisoned pages and
-retry on delivering the error was proposed in v1, but was rejected.
-
-https://lists.nongnu.org/archive/html/qemu-arm/2025-02/msg01071.html
-
-As the intention of this series is just to improve the memory error
-reporting, to avoid QEMU crash if possible, it sounds reasonable to send
-16x consecutive CPERs in one shot for this specific case (4KB guest on
-64KB host). As to hugetlb cases, it's different story. If the hugetlb
-folio (page) size is small enough (like 64KB), we can leverage current
-design to send consecutive CPERs. I don't think there are too much we
-can do if hugetlb folio size is large enough (from 2MB to 16GB).
-
-> 
->> Extend acpi_ghes_memory_errors() to support multiple CPERs after the
->> hunk of code to generate the GHES error status is pulled out from
->> ghes_gen_err_data_uncorrectable_recoverable(). The status field of
->> generic error status block is also updated accordingly if multiple
->> error data entries are contained in the generic error status block.
-> 
-> I don't mind much translating 64K page error into several 4K CPER
-> records, so this part is fine. But it's hardly a solution to the generic
-> problem.
-> 
-
-Note that I don't expect a memory error storm from the hardware level.
-In that case, it's a good sign indicating the memory DIMM has been totally
-broken and needs a replacement :-)
-
->>
+> On 5/11/25 12:44, Gavin Shan wrote:
+>> Use error_abort in acpi_ghes_memory_errors() so that the caller needn't
+>> explicitly call abort() on errors. With this change, its return value
+>> isn't needed any more.
+>> Suggested-by: Igor Mammedov <imammedo@redhat.com>
 >> Signed-off-by: Gavin Shan <gshan@redhat.com>
 >> ---
->>   hw/acpi/ghes-stub.c    |  2 +-
->>   hw/acpi/ghes.c         | 60 +++++++++++++++++++++++-------------------
->>   include/hw/acpi/ghes.h |  2 +-
->>   target/arm/kvm.c       |  4 ++-
->>   4 files changed, 38 insertions(+), 30 deletions(-)
->>
-> ...
->> @@ -577,10 +568,25 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->>       assert((data_length + ACPI_GHES_GESB_SIZE) <=
->>               ACPI_GHES_MAX_RAW_DATA_LENGTH);
->>   
->> -    ghes_gen_err_data_uncorrectable_recoverable(block, guid, data_length);
->> +    /* Build the new generic error status block header */
->> +    block_status = (1 << ACPI_GEBS_UNCORRECTABLE) |
->> +                   (num_of_addresses << ACPI_GEBS_ERROR_DATA_ENTRIES);
->                         ^^^^^^^^^^^^^^
-> maybe assert in case it won't fit into bit field
-> 
-
-Yep, Same thing was suggested by Philippe.
-
->> +    if (num_of_addresses > 1) {
->> +        block_status |= ACPI_GEBS_MULTIPLE_UNCORRECTABLE;
->> +    }
->> +
->> +    acpi_ghes_generic_error_status(block, block_status, 0, 0,
->> +                                   data_length, ACPI_CPER_SEV_RECOVERABLE);
->>   
->> -    /* Build the memory section CPER for above new generic error data entry */
->> -    acpi_ghes_build_append_mem_cper(block, physical_address);
->> +    for (i = 0; i < num_of_addresses; i++) {
->> +        /* Build generic error data entries */
->> +        acpi_ghes_generic_error_data(block, guid,
->> +                                     ACPI_CPER_SEV_RECOVERABLE, 0, 0,
->> +                                     ACPI_GHES_MEM_CPER_LENGTH, fru_id, 0);
->> +
->> +        /* Memory section CPER on top of the generic error data entry */
->> +        acpi_ghes_build_append_mem_cper(block, addresses[i]);
->> +    }
->>   
->>       /* Report the error */
->>       ghes_record_cper_errors(ags, block->data, block->len, source_id, &errp);
+>>   hw/acpi/ghes-stub.c    |  6 +++---
+>>   hw/acpi/ghes.c         | 15 ++++-----------
+>>   include/hw/acpi/ghes.h |  5 +++--
+>>   target/arm/kvm.c       | 10 +++-------
+>>   4 files changed, 13 insertions(+), 23 deletions(-)
+>
+>
 >> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
->> index df2ecbf6e4..f73908985d 100644
+>> index f73908985d..35c7bbbb01 100644
 >> --- a/include/hw/acpi/ghes.h
 >> +++ b/include/hw/acpi/ghes.h
->> @@ -99,7 +99,7 @@ void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
+>> @@ -98,8 +98,9 @@ void acpi_build_hest(AcpiGhesState *ags, GArray *table=
+_data,
+>>                        const char *oem_id, const char *oem_table_id);
 >>   void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
 >>                             GArray *hardware_errors);
->>   int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->> -                            uint64_t error_physical_addr);
->> +                            uint64_t *addresses, uint32_t num_of_addresses);
->>   void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
->>                                uint16_t source_id, Error **errp);
->>   
->> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->> index 0d57081e69..459ca4a9b0 100644
->> --- a/target/arm/kvm.c
->> +++ b/target/arm/kvm.c
->> @@ -2434,6 +2434,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
->>       ram_addr_t ram_addr;
->>       hwaddr paddr;
->>       AcpiGhesState *ags;
->> +    uint64_t addresses[16];
->>   
->>       assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
->>   
->> @@ -2454,10 +2455,11 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
->>                * later from the main thread, so doing the injection of
->>                * the error would be more complicated.
->>                */
->> +            addresses[0] = paddr;
->>               if (code == BUS_MCEERR_AR) {
->>                   kvm_cpu_synchronize_state(c);
->>                   if (!acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
->> -                                             paddr)) {
->> +                                             addresses, 1)) {
->>                       kvm_inject_arm_sea(c);
->>                   } else {
->>                       error_report("failed to record the error");
-> 
+>> -int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+>> -                            uint64_t *addresses, uint32_t num_of_addres=
+ses);
+>> +void acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+>> +                             uint64_t *addresses, uint32_t num_of_addre=
+sses,
+>> +                             Error **errp);
+>
+> This is an anti-pattern w.r.t. commit e3fe3988d78 ("error: Document
+> Error API usage rules"), because it can be called with an errp distinct
+> of &error_abort.
+>
+> If you really want to abort(), remove the errp argument, directly call
+> abort() and rename as acpi_ghes_memory_abort_on_errors().
 
-Thanks,
-Gavin
+Since there are no callers that do not want abort() on error, this is
+fine.
+
+I think your patch is also fine in princple, but a few details are
+wrong.  I'll point them out inline.
+
+[...]
 
 

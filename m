@@ -4,95 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EE38CCF9E3
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 06:02:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A97ECCF9E3
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 07:32:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIhSk-0006YA-OA; Tue, 11 Nov 2025 01:02:44 -0500
+	id 1vIirW-0004JJ-3R; Tue, 11 Nov 2025 02:32:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vIhSj-0006U1-4g
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 01:02:41 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vIirF-0004BR-Sy
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 02:32:08 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vIhSf-0007kL-Vw
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 01:02:40 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vIirC-0003z9-2Z
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 02:32:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762840957;
+ s=mimecast20190719; t=1762846319;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=koH81FTGaXA6b5zb+G0vk5e0prX1lbQsjBrO4oK8u+E=;
- b=SGrhrUh+rIjaKBfPSggBc/ngDrtffbzdO6jsJ2aHCF9pk8CeMq96Erqo7F47OrieBTAZyU
- zxlOBdbDQAh4OXrkHIhzcoc3+hFylunxk46ZXMTrLm1Vjnu9k72GjsTPuczQyyYL9RIHrU
- u+uGzjnEjtwLOvpj2lzvkg83sTqWQX8=
-Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
- [209.85.216.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-428-94ZICNtSNZSoEXPgERbulg-1; Tue, 11 Nov 2025 01:02:33 -0500
-X-MC-Unique: 94ZICNtSNZSoEXPgERbulg-1
-X-Mimecast-MFC-AGG-ID: 94ZICNtSNZSoEXPgERbulg_1762840952
-Received: by mail-pj1-f70.google.com with SMTP id
- 98e67ed59e1d1-34378c914b4so3080986a91.1
- for <qemu-arm@nongnu.org>; Mon, 10 Nov 2025 22:02:32 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762840952; x=1763445752;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=koH81FTGaXA6b5zb+G0vk5e0prX1lbQsjBrO4oK8u+E=;
- b=sGdEiwVqix8Dv2In7MOVGDXDrAavxIZ0GJaIJKH3FySookpBidHk6RYXoiKfmRk1AS
- EEN3FVFDIPORJIm9WYcWJ0eQvAXwSJbNqsahG9ucbIHJz+IcV+qW7gxjuP1QgOa1UWe8
- ZGbPzGLjzMoOW4BtW+jWqE3QLKHYMqc1H8pWxS/y8TVs+v9Z3XwAFMzjvAmqFmg1rIne
- XI1+1vZ2jNz3CYop5fld8+Oiwb4Xr0lp7XiUJucxRJiwW+TavpYgubrzPQvR7J05cwS3
- JoJ6rm3vF9z5rwQnCzrquVR1r53Q9O4C4fKi30NFfw0CdPIppQzj676l1xr4UnAusZz4
- qX9Q==
-X-Gm-Message-State: AOJu0Ywx/yZ6i9RYLjdUizvNyrnp44xJMil8LVqXmaANJgmtY3fKKvNn
- kUtryiX5Ao4MqfMOEkfiy2Ptol0yF/lQvAVl6DWat4LUB+c+JRlirj180lwUxJ1pJK4+1RBiTEi
- hzzbLmTxDR7wL9SN2Mwhp7t7Rn80ZyBjHoJcct3hoX669DqqAAbLSCw==
-X-Gm-Gg: ASbGnctBt1bMxhufpsUyx8Ohvwf3lQmjhMUReDLEri922ZRclFbADKdadmx5P+l6pBI
- DyvPdHUuHU8RD7Fkq/Z/SJp9jchISJUQEWXcBQdzY8fwvf3j5KR/Pkts1EvApp1WLdpbzcRo1NH
- 4/rxLUdlt6otuSX9g3yQ7g+OIPS5rHBIZdXLxRQvS53rSGQrsglsicnJA6fbymBfq8E2iOmREqO
- UNY+U40Ncra1R22bJMnanU3SsjNs1nTtqcMsCa3B474LBNOUbLYMJDF2psTAETEWm5UCG+wQRO3
- zeDgVvbIKMjRgKsCvqowoVicyO3fRNk6V1h35xVfNoV1z53NZipBlJb71Lm9edyaeN0SXh4tURH
- CTr2AjE6tGi4bJr3wcezYxZ5uGu86+86MR2cqF3M=
-X-Received: by 2002:a17:90b:17cb:b0:340:e521:bc73 with SMTP id
- 98e67ed59e1d1-3436cb73b73mr12513649a91.5.1762840951926; 
- Mon, 10 Nov 2025 22:02:31 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFzPdJPk3Wrt3JCPxia0buuUMKIFZVDvMzforq2lAJo6mRKfjyheZLW//gK9V1l/tF0uLzxkw==
-X-Received: by 2002:a17:90b:17cb:b0:340:e521:bc73 with SMTP id
- 98e67ed59e1d1-3436cb73b73mr12513610a91.5.1762840951465; 
- Mon, 10 Nov 2025 22:02:31 -0800 (PST)
-Received: from [192.168.68.51] (n175-34-62-5.mrk21.qld.optusnet.com.au.
- [175.34.62.5]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-343c52046f6sm512563a91.14.2025.11.10.22.02.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 10 Nov 2025 22:02:30 -0800 (PST)
-Message-ID: <b673bf36-cf1b-4103-bce8-0465a1385403@redhat.com>
-Date: Tue, 11 Nov 2025 16:02:24 +1000
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+ bh=WCtLIRD+fmLqFUhzuTcaK1xWurPTLl1+LnYZhUzIoTo=;
+ b=ETyq0A+XYixcHYd0OO5BGqZXVAc2u7VOJ1Zx0GseLs4RIk+M4FyKsSYEBRDZNad5wR858l
+ 8VlsQWCvIw6GiU5PPL4jJFzipUS74lFypdFEsCdFIHj3iLePijcdMcCyQxykyQ7L/sOCAV
+ ab+Pl4VLcdDJlR+1/xrYkvYc1piTKTw=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-636-Wi3ktwNKODig974MNFRVcA-1; Tue,
+ 11 Nov 2025 02:31:55 -0500
+X-MC-Unique: Wi3ktwNKODig974MNFRVcA-1
+X-Mimecast-MFC-AGG-ID: Wi3ktwNKODig974MNFRVcA_1762846314
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 731301800452; Tue, 11 Nov 2025 07:31:53 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.18])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 441011956056; Tue, 11 Nov 2025 07:31:52 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 995D521E6A27; Tue, 11 Nov 2025 08:31:49 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,
+ jonathan.cameron@huawei.com,  mchehab+huawei@kernel.org,
+ gengdongjiu1@gmail.com,  mst@redhat.com,  imammedo@redhat.com,
+ anisinha@redhat.com,  peter.maydell@linaro.org,  pbonzini@redhat.com,
+ shan.gavin@gmail.com
 Subject: Re: [PATCH v3 6/8] acpi/ghes: Use error_abort in
  acpi_ghes_memory_errors()
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, jonathan.cameron@huawei.com,
- mchehab+huawei@kernel.org, gengdongjiu1@gmail.com, mst@redhat.com,
- imammedo@redhat.com, anisinha@redhat.com, peter.maydell@linaro.org,
- pbonzini@redhat.com, shan.gavin@gmail.com
+In-Reply-To: <b673bf36-cf1b-4103-bce8-0465a1385403@redhat.com> (Gavin Shan's
+ message of "Tue, 11 Nov 2025 16:02:24 +1000")
 References: <20251105114453.2164073-1-gshan@redhat.com>
- <20251105114453.2164073-7-gshan@redhat.com> <87o6p9gmy4.fsf@pond.sub.org>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <87o6p9gmy4.fsf@pond.sub.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: wZyWzamUzIZ9FIC_QqRFVPanIUSulxU3LBgHTq00UkY_1762840952
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ <20251105114453.2164073-7-gshan@redhat.com>
+ <87o6p9gmy4.fsf@pond.sub.org>
+ <b673bf36-cf1b-4103-bce8-0465a1385403@redhat.com>
+Date: Tue, 11 Nov 2025 08:31:49 +0100
+Message-ID: <87jyzxf2je.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -117,192 +94,234 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Markus,
+Gavin Shan <gshan@redhat.com> writes:
 
-On 11/11/25 3:25 PM, Markus Armbruster wrote:
-> Gavin Shan <gshan@redhat.com> writes:
-> 
->> Use error_abort in acpi_ghes_memory_errors() so that the caller needn't
->> explicitly call abort() on errors. With this change, its return value
->> isn't needed any more.
->>
->> Suggested-by: Igor Mammedov <imammedo@redhat.com>
->> Signed-off-by: Gavin Shan <gshan@redhat.com>
->> ---
->>   hw/acpi/ghes-stub.c    |  6 +++---
->>   hw/acpi/ghes.c         | 15 ++++-----------
->>   include/hw/acpi/ghes.h |  5 +++--
->>   target/arm/kvm.c       | 10 +++-------
->>   4 files changed, 13 insertions(+), 23 deletions(-)
->>
->> diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
->> index 4faf573aeb..4ef914ffc5 100644
->> --- a/hw/acpi/ghes-stub.c
->> +++ b/hw/acpi/ghes-stub.c
->> @@ -11,10 +11,10 @@
->>   #include "qemu/osdep.h"
->>   #include "hw/acpi/ghes.h"
->>   
->> -int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->> -                            uint64_t *addresses, uint32_t num_of_addresses)
->> +void acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->> +                             uint64_t *addresses, uint32_t num_of_addresses,
->> +                             Error **errp)
->>   {
->> -    return -1;
->>   }
-> 
-> Before the patch, this function always fails: it returns -1.
-> 
-> Afterwards, it always succeeds: it doesn't set @errp.
-> 
-> Which one is correct?
-> 
+> Hi Markus,
+>
+> On 11/11/25 3:25 PM, Markus Armbruster wrote:
+>> Gavin Shan <gshan@redhat.com> writes:
+>>=20
+>>> Use error_abort in acpi_ghes_memory_errors() so that the caller needn't
+>>> explicitly call abort() on errors. With this change, its return value
+>>> isn't needed any more.
+>>>
+>>> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>> ---
+>>>   hw/acpi/ghes-stub.c    |  6 +++---
+>>>   hw/acpi/ghes.c         | 15 ++++-----------
+>>>   include/hw/acpi/ghes.h |  5 +++--
+>>>   target/arm/kvm.c       | 10 +++-------
+>>>   4 files changed, 13 insertions(+), 23 deletions(-)
+>>>
+>>> diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
+>>> index 4faf573aeb..4ef914ffc5 100644
+>>> --- a/hw/acpi/ghes-stub.c
+>>> +++ b/hw/acpi/ghes-stub.c
+>>> @@ -11,10 +11,10 @@
+>>>  #include "qemu/osdep.h"
+>>>  #include "hw/acpi/ghes.h"
+>>>=20=20
+>>> -int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+>>> -                            uint64_t *addresses, uint32_t num_of_addre=
+sses)
+>>> +void acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+>>> +                             uint64_t *addresses, uint32_t num_of_addr=
+esses,
+>>> +                             Error **errp)
+>>>  {
+>>> -    return -1;
+>>>  }
+>>=20
+>> Before the patch, this function always fails: it returns -1.
+>>=20
+>> Afterwards, it always succeeds: it doesn't set @errp.
+>>=20
+>> Which one is correct?
+>>=20
+>
+> Both are correct. This variant is only used on !CONFIG_ACPI_APEI. In this=
+ case,
+> there is no chance to call this variant in the only caller kvm_arch_on_si=
+gbus_vcpu().
+> acpi_ghes_get_state() returns NULL on !CONFIG_ACPI_APEI there.
 
-Both are correct. This variant is only used on !CONFIG_ACPI_APEI. In this case,
-there is no chance to call this variant in the only caller kvm_arch_on_sigbus_vcpu().
-acpi_ghes_get_state() returns NULL on !CONFIG_ACPI_APEI there.
+If this is not supposed to be called, have it abort() to make it
+obvious.
 
->>   
->>   AcpiGhesState *acpi_ghes_get_state(void)
->> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
->> index 055e5d719a..aa469c03f2 100644
->> --- a/hw/acpi/ghes.c
->> +++ b/hw/acpi/ghes.c
->> @@ -543,8 +543,9 @@ void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
->>       notifier_list_notify(&acpi_generic_error_notifiers, &source_id);
->>   }
->>   
->> -int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->> -                            uint64_t *addresses, uint32_t num_of_addresses)
->> +void acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->> +                             uint64_t *addresses, uint32_t num_of_addresses,
->> +                             Error **errp)
-> 
-> qapi/error.h:
-> 
->   * - Whenever practical, also return a value that indicates success /
->   *   failure.  This can make the error checking more concise, and can
->   *   avoid useless error object creation and destruction.  Note that
->   *   we still have many functions returning void.  We recommend
->   *   • bool-valued functions return true on success / false on failure,
->   *   • pointer-valued functions return non-null / null pointer, and
->   *   • integer-valued functions return non-negative / negative.
-> 
+>>>=20=20
+>>>  AcpiGhesState *acpi_ghes_get_state(void)
+>>> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+>>> index 055e5d719a..aa469c03f2 100644
+>>> --- a/hw/acpi/ghes.c
+>>> +++ b/hw/acpi/ghes.c
+>>> @@ -543,8 +543,9 @@ void ghes_record_cper_errors(AcpiGhesState *ags, co=
+nst void *cper, size_t len,
+>>>      notifier_list_notify(&acpi_generic_error_notifiers, &source_id);
+>>>  }
+>>>=20=20
+>>> -int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+>>> -                            uint64_t *addresses, uint32_t num_of_addre=
+sses)
+>>> +void acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+>>> +                             uint64_t *addresses, uint32_t num_of_addr=
+esses,
+>>> +                             Error **errp)
+>>=20
+>> qapi/error.h:
+>>=20
+>>   * - Whenever practical, also return a value that indicates success /
+>>   *   failure.  This can make the error checking more concise, and can
+>>   *   avoid useless error object creation and destruction.  Note that
+>>   *   we still have many functions returning void.  We recommend
+>>   *   =E2=80=A2 bool-valued functions return true on success / false on =
+failure,
+>>   *   =E2=80=A2 pointer-valued functions return non-null / null pointer,=
+ and
+>>   *   =E2=80=A2 integer-valued functions return non-negative / negative.
+>>=20
+>
+> Question: If it's deterministic that caller passes @error_abort or @error=
+_fatal
+> to acpi_ghes_memory_errors(), QEMU crashes with a core dump or exit befor=
+e its
+> caller to check the return value. In this case, it's still preferred for
+> acpi_ghes_memory_errors() returns a value to indicate the success or fail=
+ure?
 
-Question: If it's deterministic that caller passes @error_abort or @error_fatal
-to acpi_ghes_memory_errors(), QEMU crashes with a core dump or exit before its
-caller to check the return value. In this case, it's still preferred for
-acpi_ghes_memory_errors() returns a value to indicate the success or failure?
+Yes, to separate concerns: acpi_ghes_memory_errors() remains oblivious
+of how it is called.
 
->>   {
->>       /* Memory Error Section Type */
->>       const uint8_t guid[] =
->> @@ -555,7 +556,6 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->>        * Table 17-13 Generic Error Data Entry
->>        */
->>       QemuUUID fru_id = {};
->> -    Error *errp = NULL;
->>       int data_length;
->>       GArray *block;
->>       uint32_t block_status, i;
->> @@ -592,16 +592,9 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->>       }
->>   
->>       /* Report the error */
->> -    ghes_record_cper_errors(ags, block->data, block->len, source_id, &errp);
->> +    ghes_record_cper_errors(ags, block->data, block->len, source_id, errp);
->>   
->>       g_array_free(block, true);
->> -
->> -    if (errp) {
->> -        error_report_err(errp);
->> -        return -1;
->> -    }
->> -
->> -    return 0;
->>   }
-> 
-> The error reporting moves into the caller.
-> 
+>>>  {
+>>>      /* Memory Error Section Type */
+>>>      const uint8_t guid[] =3D
+>>> @@ -555,7 +556,6 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, uin=
+t16_t source_id,
+>>>       * Table 17-13 Generic Error Data Entry
+>>>       */
+>>>      QemuUUID fru_id =3D {};
+>>> -    Error *errp =3D NULL;
+>>>      int data_length;
+>>>      GArray *block;
+>>>      uint32_t block_status, i;
+>>> @@ -592,16 +592,9 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, ui=
+nt16_t source_id,
+>>>      }
+>>>=20=20
+>>>      /* Report the error */
+>>> -    ghes_record_cper_errors(ags, block->data, block->len, source_id, &=
+errp);
+>>> +    ghes_record_cper_errors(ags, block->data, block->len, source_id, e=
+rrp);
+>>>=20=20
+>>>      g_array_free(block, true);
+>>> -
+>>> -    if (errp) {
+>>> -        error_report_err(errp);
+>>> -        return -1;
+>>> -    }
+>>> -
+>>> -    return 0;
+>>>  }
+>>=20
+>> The error reporting moves into the caller.
+>>=20
+>
+> Similar question as above. If it's deterministic for the caller passes @e=
+rror_abort
+> or @error_fatal to acpi_ghes_memory_errors() and then to ghes_record_cper=
+_errors(),
+> QEMU crashes with a core dump or exit before error_report_err(errp) can b=
+e executed.
+> In this case, it's still preferred to have error_report_err(&error_abort)=
+ or
+> error_report_err(&error_fatal) in its caller?
 
-Similar question as above. If it's deterministic for the caller passes @error_abort
-or @error_fatal to acpi_ghes_memory_errors() and then to ghes_record_cper_errors(),
-QEMU crashes with a core dump or exit before error_report_err(errp) can be executed.
-In this case, it's still preferred to have error_report_err(&error_abort) or
-error_report_err(&error_fatal) in its caller?
+Yes.
 
->>   
->>   AcpiGhesState *acpi_ghes_get_state(void)
->> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
->> index f73908985d..35c7bbbb01 100644
->> --- a/include/hw/acpi/ghes.h
->> +++ b/include/hw/acpi/ghes.h
->> @@ -98,8 +98,9 @@ void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
->>                        const char *oem_id, const char *oem_table_id);
->>   void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
->>                             GArray *hardware_errors);
->> -int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->> -                            uint64_t *addresses, uint32_t num_of_addresses);
->> +void acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->> +                             uint64_t *addresses, uint32_t num_of_addresses,
->> +                             Error **errp);
->>   void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
->>                                uint16_t source_id, Error **errp);
->>   
->> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->> index 459ca4a9b0..a889315606 100644
->> --- a/target/arm/kvm.c
->> +++ b/target/arm/kvm.c
->> @@ -2458,13 +2458,9 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
->>               addresses[0] = paddr;
->>               if (code == BUS_MCEERR_AR) {
->>                   kvm_cpu_synchronize_state(c);
->> -                if (!acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
->> -                                             addresses, 1)) {
->> -                    kvm_inject_arm_sea(c);
->> -                } else {
->> -                    error_report("failed to record the error");
->> -                    abort();
->> -                }
->> +                acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
->> +                                        addresses, 1, &error_abort);
->> +                kvm_inject_arm_sea(c);
-> 
-> Before the patch, we get two error reports, like this:
-> 
->      qemu-system-FOO: OSPM does not acknowledge previous error, so can not record CPER for current error anymore
->      qemu-system-FOO: failed to record the error
->      Aborted (core dumped)
-> 
-> Such error cascades should be avoided.
-> 
-> Afterwards, we get one:
-> 
->      Unexpected error at SOURCE-FILE:LINE-NUMBER:
->      qemu-system-FOO: OSPM does not acknowledge previous error, so can not record CPER for current error anymore
->      Aborted (core dumped)
-> 
-> Are all errors reported by acpi_ghes_memory_errors() programming errors,
-> i.e. when an error is reported, there's a bug for us to fix?
-> 
-> If not, abort() is wrong before the patch, and &error_abort is wrong
-> afterwards.
-> 
-> You can use &error_fatal for fatal errors that are not programming
-> errors.
-> 
+>>>=20=20
+>>>  AcpiGhesState *acpi_ghes_get_state(void)
+>>> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+>>> index f73908985d..35c7bbbb01 100644
+>>> --- a/include/hw/acpi/ghes.h
+>>> +++ b/include/hw/acpi/ghes.h
+>>> @@ -98,8 +98,9 @@ void acpi_build_hest(AcpiGhesState *ags, GArray *tabl=
+e_data,
+>>>                       const char *oem_id, const char *oem_table_id);
+>>>  void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
+>>>                            GArray *hardware_errors);
+>>> -int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+>>> -                            uint64_t *addresses, uint32_t num_of_addre=
+sses);
+>>> +void acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+>>> +                             uint64_t *addresses, uint32_t num_of_addr=
+esses,
+>>> +                             Error **errp);
+>>>  void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, siz=
+e_t len,
+>>>                               uint16_t source_id, Error **errp);
+>>>=20=20
+>>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>>> index 459ca4a9b0..a889315606 100644
+>>> --- a/target/arm/kvm.c
+>>> +++ b/target/arm/kvm.c
+>>> @@ -2458,13 +2458,9 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int co=
+de, void *addr)
+>>>              addresses[0] =3D paddr;
+>>>              if (code =3D=3D BUS_MCEERR_AR) {
+>>>                  kvm_cpu_synchronize_state(c);
+>>> -                if (!acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYN=
+C,
+>>> -                                             addresses, 1)) {
+>>> -                    kvm_inject_arm_sea(c);
+>>> -                } else {
+>>> -                    error_report("failed to record the error");
+>>> -                    abort();
+>>> -                }
+>>> +                acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
+>>> +                                        addresses, 1, &error_abort);
+>>> +                kvm_inject_arm_sea(c);
+>>=20
+>> Before the patch, we get two error reports, like this:
+>>=20
+>>      qemu-system-FOO: OSPM does not acknowledge previous error, so can n=
+ot record CPER for current error anymore
+>>      qemu-system-FOO: failed to record the error
+>>      Aborted (core dumped)
+>>=20
+>> Such error cascades should be avoided.
+>>=20
+>> Afterwards, we get one:
+>>=20
+>>      Unexpected error at SOURCE-FILE:LINE-NUMBER:
+>>      qemu-system-FOO: OSPM does not acknowledge previous error, so can n=
+ot record CPER for current error anymore
+>>      Aborted (core dumped)
+>>=20
+>> Are all errors reported by acpi_ghes_memory_errors() programming errors,
+>> i.e. when an error is reported, there's a bug for us to fix?
+>>=20
+>> If not, abort() is wrong before the patch, and &error_abort is wrong
+>> afterwards.
+>>=20
+>> You can use &error_fatal for fatal errors that are not programming
+>> errors.
+>
+> No, there is no programming errors and the core dump is actually no sense.
 
-No, there is no programming errors and the core dump is actually no sense.
+Confirms my suspicion :)
 
-It makes more sense for the caller to pass @error_fatal down to acpi_ghes_memory_errors().
+> It makes more sense for the caller to pass @error_fatal down to acpi_ghes=
+_memory_errors().
 
->>               }
->>               return;
->>           }
-> 
+Makes sense.
 
-Thanks,
-Gavin
+>>>              }
+>>>              return;
+>>>          }
+>>=20
+>
+> Thanks,
+> Gavin
 
 

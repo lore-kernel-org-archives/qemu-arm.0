@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5620ECCFA1A
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 18:22:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5790CCCFA18
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 18:24:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIt07-0004QR-Lv; Tue, 11 Nov 2025 13:21:55 -0500
+	id 1vIt21-0006rB-6k; Tue, 11 Nov 2025 13:23:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIsz8-0002qP-RO
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 13:21:00 -0500
-Received: from 7.mo548.mail-out.ovh.net ([46.105.33.25])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIt1E-00058J-3o
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 13:23:04 -0500
+Received: from 9.mo552.mail-out.ovh.net ([87.98.180.222])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIsz7-0006L3-8i
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 13:20:54 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.43.201])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4d5ZbQ4L1Jz5vS4;
- Tue, 11 Nov 2025 18:20:50 +0000 (UTC)
-Received: from kaod.org (37.59.142.101) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIt1A-0006Wu-2g
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 13:23:02 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.54.198])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4d5Zdh08Y0z5vq9;
+ Tue, 11 Nov 2025 18:22:48 +0000 (UTC)
+Received: from kaod.org (37.59.142.102) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Tue, 11 Nov
- 2025 19:20:49 +0100
+ 2025 19:22:47 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-101G00405aa82e9-5f8e-4d2a-bd39-68d148d32899,
+ (GARM-102R0043da18278-68c6-4f45-86e6-f1768b141d5c,
  FED24A3CA347B2ADB49E2A92EE4521FA9BC47B0E) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <a589c937-33bb-4647-9282-d9d1e2c15131@kaod.org>
-Date: Tue, 11 Nov 2025 19:20:48 +0100
+Message-ID: <482da412-99ed-4742-9c62-01f01d317068@kaod.org>
+Date: Tue, 11 Nov 2025 19:22:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 09/12] hw/arm/aspeed_ast10x0_evb: Add AST1060 EVB
- machine support
+Subject: Re: [PATCH v1 11/12] docs/system/arm/aspeed: Update Aspeed and 2700
+ family boards list
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
@@ -44,7 +44,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
 References: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
- <20251106084925.1253704-10-jamin_lin@aspeedtech.com>
+ <20251106084925.1253704-12-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -89,35 +89,35 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251106084925.1253704-10-jamin_lin@aspeedtech.com>
+In-Reply-To: <20251106084925.1253704-12-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG8EX2.mxp5.local
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: 823d16c1-2124-4cd1-b6c3-c45fd3009038
-X-Ovh-Tracer-Id: 9115567122886724414
+X-Ovh-Tracer-GUID: af521912-995b-436b-b558-95ac6a768a4b
+X-Ovh-Tracer-Id: 9148781169773087550
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFI54cztQU0zZOckAHpmcRRbgXHUyEHLdTdlt3xaKkH81BqRuWsu19xpne3PNrpwtgxJxSwWwSNRkEh59YB2pqmH7itmoHdd6dn+GuE2bA1QlWpCibvc5lJqmM/4mIPFjPJfkjHW3cERFREU9EvZhHz4Vl+QEJAe3v/ev7kleGZiuKwZWZlBKQ7La6W4I0yBghXZTxw2TXsOJ1u7wL6qQlTUil4uxFcFxfsKWvfCo/D1fK50NId48NDeTr2GL0CXiA1P/Mzcai8n+EPnwZ9sIvgnWSs9BXXfki5/b5EEzHe2t3kQp3GsA75wY7Umbb017E26jbfsaNl/lAhdxapm74TptoIVSTaLr+4cPzGFpP6IVeJMxzrWiETtbw79qNBUh/wEkAnFMuJr1SIUQO9F2Rw+OtQARat+pmnfV1kLdjRDol/PkQc9tg96Sf7beNQXWeDzIL486qALzEM7H52FEA5L9koYPXT0aHQ/C5TqLB6dMQc6d5lREeFQo7wnnN89tZLnOxip3jXUA80e3BYgoTaHzbkv0aBmBHpjfdbC7lWyXhjwSh23VzG8Xw2dZN4gCUwaYUAL49kwUL5bEFjXY680Uu225YMaecGsTr1NGSWurUS8Ni7Tmuq3LArjKhSlGItZ9huii8hhZmG1Gf+MnoXNWttXvnGd9Cwq316vg0hKg
-DKIM-Signature: a=rsa-sha256; bh=zZS8IkEkG1O88cUD80F8SlbZOiqH7ay+Mme1/7SIE/E=; 
+X-VR-SPAMCAUSE: dmFkZTGY3cyuFOkHrJ48zXI9NJQs6wJ+mJUkKS1bJGC2BQU+LWWmWcbOMFEFdnv1Qh0m2E74bhTsXqIeXCNwlCekQ1S+LUKrRMdOBPXV6S+FnatHvH1oZiD0BRgYIXVp6I84KmY3V+C+1v99oHSSiS6asXGSYTZ1+eqwO8erwFBGHBgCUCRJvVzhzwgcZRHJJQqJajzt9O/PVEY7ovgfjMBlPniCmw8Ehh6wIegdZfYx0jcmOeuVVpgeYWBXhjAX6El4cr4ATVsgxyh+cht7uoGqfRVfMYbloeSY/nqSwjDO2hPy3FBByCTyZYYRCF25IIZzeYIxvzjj0OyxQ6apS7KcB3Y8GeHKvobyhPlQWNxwGLZjnsfMUM9E5OjTlxjMQdJG/z4+eUmtCA9hHzgaBeDvWDllvauW2lcxw3slPCYOwfZphpncL2EeeP53VvczVQ0OidQb/c/6eDarhzTPKfviuWOBJLRYEgPtzx5qMGtFjAzlJuV/bossP+LUGInJkyqzGS25lbeid+OLCtbKKoOUhqS6mYVd3JywBuYuffAlWS1UoQTA4sW2XJiykIVwNjTu3W22/hWfW4APxr87NYsQzJDkAg7ViVH1G0FIQcVAfLpWKCaVukie/wx49C4oSD4dHWPEXQdj5MjJOyu3i6gYtXHwos09nu6Vr9RvY9z5YyorUQ
+DKIM-Signature: a=rsa-sha256; bh=VeiZNKg41FJUbLBY2mU1Kj1+JsD3utAJWogMQnabn/o=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1762885251; v=1;
- b=JQKrpfYUjf1DJm5mXf9p5zddZ0CYg8pKT1jaYkjiexfq3z8R5YxIMmCHAVLNZvcPmuvU/z61
- p3jnTSHgH/B56uQbdXpAswVzC6E/q6Mb97N9MQrTBbWyUcPokS3HSqcmpMc3FYnYotgvu0gBps/
- Jsa2yrGeqWPorpdW6ReBiJ9v/yL2H92JcXQCOM4RPS92V1xvv/7reKivMPHBFTb8HMQzbI9Jpis
- BmkfH6oqot7MyuKCIdppJ0G8xvMd4OfhihXIwsucuDq/VBDJsJm04APfk8g71hjo6B8NbnuloUH
- QH46smpI1/RjB8D7rNRKtBGl4VZtl3IkPP65ymeMy7yTg==
-Received-SPF: pass client-ip=46.105.33.25; envelope-from=clg@kaod.org;
- helo=7.mo548.mail-out.ovh.net
+ t=1762885368; v=1;
+ b=HO1wNP67f5Men/p5RGKTFQf4a5QjuNholgJlmZRFNI6ILkl6M3qJOgRGGUw5XVY9AM3UuYPc
+ iXLVjz0b5p+h0rLNAON8Fwnmc/QzKOrQ6pkQ9d1af12pWXE70wS0hgx6yoezoh6YqtP5Pm6ZfwR
+ +gpGvVgH5g83Sg+0mvSlr8ZnyHyXodfMyfsC2/RTPvfB2tgJGOWQgkTHWp8uQc1paD60SHBngXQ
+ 2LowAYuul8RWGoDQSxYJ9dwtGkdgrFr1fN/qrdisSi40itwuhj02wAsXWk29Y7UzblCBVlQRhzf
+ CbtLjguAVGA2FBS9r1+5eI0Rjss5IGXQ2WkJ96wCBVX5A==
+Received-SPF: pass client-ip=87.98.180.222; envelope-from=clg@kaod.org;
+ helo=9.mo552.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,70 +134,46 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 11/6/25 09:49, Jamin Lin wrote:
-> Add a new machine definition ast1060-evb to support the Aspeed AST1060
-> evaluation board. The new EVB reuses the same MiniBMC framework used by
-> AST1030, as both SoCs share the same core peripherals and controller
-> designs.
+> Remove the ast2700-evb entry from the Aspeed family boards list in
+> the documentation. The AST2700 platform now belongs to the new Aspeed
+> 2700 family group, which has its own dedicated documentation section
+> and board definitions.
 > 
-> The AST1060 EVB machine initializes the ast1060-a2 SoC and sets the
-> FMC and SPI flash models (w25q80bl and w25q02jvm) for simulation.
-> This enables QEMU to boot and emulate firmware images for AST1060-based
-> platforms.
+> Update the Aspeed 2700 family boards list in the documentation to include
+> the new ast2700fc board entry.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   hw/arm/aspeed_ast10x0_evb.c | 23 +++++++++++++++++++++++
->   1 file changed, 23 insertions(+)
+>   docs/system/arm/aspeed.rst | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/arm/aspeed_ast10x0_evb.c b/hw/arm/aspeed_ast10x0_evb.c
-> index 7af2a77865..a01385b543 100644
-> --- a/hw/arm/aspeed_ast10x0_evb.c
-> +++ b/hw/arm/aspeed_ast10x0_evb.c
-> @@ -96,12 +96,35 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
->       aspeed_machine_class_init_cpus_defaults(mc);
->   }
->   
-> +static void aspeed_minibmc_machine_ast1060_evb_class_init(ObjectClass *oc,
-> +                                                          const void *data)
-> +{
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-> +
-> +    mc->desc = "Aspeed AST1060 PFR (Cortex-M4)";
-
-What does "PFR" mean ?
-
-> +    amc->soc_name = "ast1060-a2";
-> +    amc->hw_strap1 = 0;
-> +    amc->hw_strap2 = 0;
-> +    mc->init = aspeed_minibmc_machine_init;
-> +    amc->fmc_model = "w25q80bl";
-> +    amc->spi_model = "w25q02jvm";
-> +    amc->num_cs = 2;
-> +    amc->macs_mask = 0;
-> +    aspeed_machine_class_init_cpus_defaults(mc);
-> +}
-> +
->   static const TypeInfo aspeed_ast10x0_evb_types[] = {
->       {
->           .name           = MACHINE_TYPE_NAME("ast1030-evb"),
->           .parent         = TYPE_ASPEED_MACHINE,
->           .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
->           .interfaces     = arm_machine_interfaces,
-> +    }, {
-> +        .name           = MACHINE_TYPE_NAME("ast1060-evb"),
-> +        .parent         = TYPE_ASPEED_MACHINE,
-> +        .class_init     = aspeed_minibmc_machine_ast1060_evb_class_init,
-> +        .interfaces     = arm_machine_interfaces,
->       }
->   };
+> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+> index 6317c0e910..a0c05a6f73 100644
+> --- a/docs/system/arm/aspeed.rst
+> +++ b/docs/system/arm/aspeed.rst
+> @@ -1,4 +1,4 @@
+> -Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
+> +Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
+>   ====================================================================================================================================================================================================================================================================================================================================================================================================================================
 >   
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+The title text line above and the  "...===..." line should match in length.
+
 
 Thanks,
 
 C.
 
+
+>   The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
+> @@ -274,7 +274,7 @@ configuration file for OTP memory:
+>       done > otpmem.img
+>     fi
+>   
+> -Aspeed 2700 family boards (``ast2700-evb``)
+> +Aspeed 2700 family boards (``ast2700-evb``, ``ast2700fc``)
+>   ==================================================================
+>   
+>   The QEMU Aspeed machines model BMCs of Aspeed evaluation boards.
 
 

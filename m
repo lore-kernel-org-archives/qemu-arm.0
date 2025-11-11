@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E260CCFA18
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 18:20:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2038CD1297
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 18:22:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIsyf-0002Mq-Uc; Tue, 11 Nov 2025 13:20:26 -0500
+	id 1vIt0B-0004U5-CI; Tue, 11 Nov 2025 13:21:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIsy9-0001vx-EO
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 13:19:58 -0500
-Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIszq-0003hM-8x
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 13:21:39 -0500
+Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIsy2-00060T-1H
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 13:19:52 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.54.27])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4d5ZZ60WRNz5vqn;
- Tue, 11 Nov 2025 18:19:41 +0000 (UTC)
-Received: from kaod.org (37.59.142.107) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vIszm-0006P5-Np
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 13:21:37 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.54.53])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4d5ZcD4F7xz5vp3;
+ Tue, 11 Nov 2025 18:21:32 +0000 (UTC)
+Received: from kaod.org (37.59.142.102) by DAG8EX2.mxp5.local (172.16.2.72)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Tue, 11 Nov
- 2025 19:19:40 +0100
+ 2025 19:21:31 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-107S001ba434721-7c73-4691-bd3b-21e20d23aeb9,
+ (GARM-102R004c6fca102-9f0d-4896-ad93-247132d51c17,
  FED24A3CA347B2ADB49E2A92EE4521FA9BC47B0E) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <b66d5044-cd8a-4f5d-aad4-c685dcd34e3f@kaod.org>
-Date: Tue, 11 Nov 2025 19:19:39 +0100
+Message-ID: <1561279d-a0d1-4160-a4e9-854dcbc17dec@kaod.org>
+Date: Tue, 11 Nov 2025 19:21:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 07/12] hw/arm/aspeed_ast10x0: Pass SoC name to common
- init for AST10x0 family reuse
+Subject: Re: [PATCH v1 10/12] tests/functional/arm/test_aspeed_ast1060: Add
+ functional tests for Aspeed AST1060 SoC
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
@@ -44,7 +44,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
 References: <20251106084925.1253704-1-jamin_lin@aspeedtech.com>
- <20251106084925.1253704-8-jamin_lin@aspeedtech.com>
+ <20251106084925.1253704-11-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -89,35 +89,35 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251106084925.1253704-8-jamin_lin@aspeedtech.com>
+In-Reply-To: <20251106084925.1253704-11-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.107]
-X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG8EX2.mxp5.local
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG8EX2.mxp5.local
  (172.16.2.72)
-X-Ovh-Tracer-GUID: 3dee8299-b153-4117-8874-87926cc8e511
-X-Ovh-Tracer-Id: 9096426823833914174
+X-Ovh-Tracer-GUID: 633aee48-d01a-42be-91ae-af6845590b58
+X-Ovh-Tracer-Id: 9127670544825551678
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEu8TXs5pAMOFO/x5lb3fcBUX66ZVaVIhTB8S/g6hk0V1lJwC2jjC00jBVYgxVoniO4Lwm+MCF5fzZjuQXvjYiESdYrGkmy291xLfgyfmlbDTO9Z7vhKQ5DujN865eZ2WAa7a2vQHGn2tSIfnJessBp25PHu6Hg+lPG3k4lHMT2nTrfDvDwag/uBaq7JXtqSAdwEWzkho6Hb6LvzAs1Gupn6K8juLgn07EN42UWJCJ3tX2eVxBosquDHMWIgkCc3QHg8z2WYF+Rprc3wZshOuTdo9XftxuLBEYitUtijxWRVyR+0BXmcZXuqhtyQnu57SMyk/0s4/RuS6tKY2cGjOA2BrT80R8K7dfj5h5CuF6aFZARkTNSKV6LkZ+pW4ijPEbh0ax89tZfX4AQErSorULb8F1Cxl/VX1jGyI+kcC9jAp0UQh5JZgUkOASed2+vNRhj8czUOfCKKrSyWAIFSsjLo86PBC/8cCyLaN22aCqjedHIvHs9jWPtEp7/bCjjqRLdmYqWMMLVXmnoliKXWZgVNaudpEd0We+nGm/DDc5m0ZtY2WVUMaYA2QilxnKRrFMN2eXQiVHAMEkox+sJsaUDw76qbJScjNp5R19oh1gqWEzUHAEX0uldM37OB2/HOQQhF19xy8skw09V2qgst9Fl9ZlibHw4a0XvfAMpf8025Q
-DKIM-Signature: a=rsa-sha256; bh=XQqI37UI4p/gAn5F4R6nqOFxt91wSvefpGxa7d+UrNk=; 
+X-VR-SPAMCAUSE: dmFkZTEyjVidsfL2A/ZadI3Eru87sd6cPzMvvGbpFNjfC7Xm0gUOdKlA1SbLfn7yEeQsd8WJDXf4zmDYoJT2hWOd2XrToAFyAZxwiLlcvyckKfzl2Fi+ZE4sFA+z+gfoWQwfQY/Hao3ZIjvpIZ0mrBJDgra5O0KH4sTzu2bDbckm1g0VSBU4jIlafAHcAzK9FY7Pf9uSYDah/v1DuxXqD8aaa/kvYJatasAX4fGlxyVg2rZrzahB0HmQ76vhLE/myH8mYRiDNBZx/TUDZySolJjPjPjvtmIi1UTIC3d0DKHSOEbOVh/C9MJYcGq0PCQOogTickSRVImymzjjrFocKG8IsgvfN/r804zIeu2oEuEA+DF+p+UtxXT45Y+ICrxHsWU8wDBD9pM2ketCtPdyPz3Mcka0KCoWPEMh+EZ7y/aMmMxFQDPHTf1QMCgHphQGeYksGulOK5AymXyDF1bfnGEYXlgTZE/bep7EK4xNs8YyCBmr3DrGBlezJ/iHcHyiQO8tKH/F6htoejFoHx3aotkk7Qex8GH0FA6dLOq53oyvVeKQxdi/ct5UMbh6tbc96PZv895S2tA1MCn1M8huDvH1nWTvL1sLWGU0JYUPG4CjZrA06KAeeFBEQ3NB+bB1AZ2lRo2WGGtciNEIHu81H49xIrqqYnI77RBEoh2XUM4V6JLgQg
+DKIM-Signature: a=rsa-sha256; bh=IfOzTvCTf4VFjKHcQb6r3yqkTOVi2iJvwYCZk2VHTC8=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1762885183; v=1;
- b=MTwIKXe30ahEcJmKbqxZwQanF5bL068NKtu7K5ToIEN/hEJQ3mEOleYjx3dWdVShLHT8YfMT
- npmJbzXN2XIDnfiqxpuggCbJWR1+bIWfz8afy9XbPuWi/qntkW7T6c059PrcMAF3CsQrteRj/CJ
- NgwhAkUbvIr4NKNKp8IizOHoBszPuKVzgC1W+E9CUDS5EqLx7XW9cuye0X4ux6aYDfIeX9MpA6v
- C3Z8zcABklzPj5r5BvBdjKQEOsEV5JC9sb4qJCHK17+huoiO0P+9dwEdbFMG797NjvRRe59VJZa
- aK6lDTwevxS7CZBuAtwslBOXyN1M3sLuZ+ehbHgXmKxIQ==
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout4.mo529.mail-out.ovh.net
+ t=1762885292; v=1;
+ b=I6LymQ6aXenwWCnxAtMJB1QgedYwXYpyiPykrdKOWve0OjUJ0uUE/LV/rN0FVqHdE1ql61fq
+ 9jr3X9ZA1EzUKoRIMhaBLbPZDrpjtgZle9OI0ue5H3zJfT69Fm/iFC/bZ4IgzCorGFu5wFIExSI
+ hIE8CQiocnIkERGaROQBAArngcUBNr7F1VZEeJ3mlUuMZJfge+8PEpuI02+cpHb39mXZ6eF7uYe
+ I+Cv/JTfjR17nrCxOl9v080JJvk8tXvHzXpr2S6ALlvHCxcItvM2KQf3EHrVIWGJ+yYX0yK3cid
+ vPEvm8Q30JsPymXDKTlf520siHJDFQBnj0MDGIndf88kA==
+Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
+ helo=smtpout3.mo529.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,66 +134,14 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 11/6/25 09:49, Jamin Lin wrote:
-> Refactor the AST10x0 common initialization to accept a socname
-> parameter.
-> 
-> The AST1030 model can be reused by AST1060 since they share most of the
-> same controllers. This approach allows AST1060 to leverage the existing
-> AST1030 initialization flow while keeping separate SoC-specific init
-> functions for components that differ.
-> 
-> This prepares the framework for AST1060 support, allowing it to reuse
-> AST1030 device models and initialization flow without code duplication.
-> 
-> No functional changes.
+> Add functional tests for the Aspeed AST1060 SoC and its evaluation board.
+> The new test test_aspeed_ast1060.py validates booting the AST1060 EVB
+> machine using the Zephyr OS and ASPEED PROT application (ast1060_prot_v03.02.tgz)
+> and ensures basic console functionality.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/arm/aspeed_ast10x0.c | 14 +++++++-------
->   1 file changed, 7 insertions(+), 7 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-> index 5bbe16af24..c85c21b149 100644
-> --- a/hw/arm/aspeed_ast10x0.c
-> +++ b/hw/arm/aspeed_ast10x0.c
-> @@ -107,19 +107,14 @@ static qemu_irq aspeed_soc_ast1030_get_irq(AspeedSoCState *s, int dev)
->       return qdev_get_gpio_in(DEVICE(&a->armv7m), sc->irqmap[dev]);
->   }
->   
-> -static void aspeed_soc_ast10x0_init(Object *obj)
-> +static void aspeed_soc_ast10x0_init(Object *obj, const char *socname)
->   {
->       Aspeed10x0SoCState *a = ASPEED10X0_SOC(obj);
->       AspeedSoCState *s = ASPEED_SOC(obj);
->       AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-> -    char socname[8];
->       char typename[64];
->       int i;
->   
-> -    if (sscanf(object_get_typename(obj), "%7s", socname) != 1) {
-> -        g_assert_not_reached();
-> -    }
-> -
->       object_initialize_child(obj, "armv7m", &a->armv7m, TYPE_ARMV7M);
->   
->       s->sysclk = qdev_init_clock_in(DEVICE(s), "sysclk", NULL, NULL, 0);
-> @@ -184,8 +179,13 @@ static void aspeed_soc_ast10x0_init(Object *obj)
->   static void aspeed_soc_ast1030_init(Object *obj)
->   {
->       AspeedSoCState *s = ASPEED_SOC(obj);
-> +    char socname[8];
-> +
-> +    if (sscanf(object_get_typename(obj), "%7s", socname) != 1) {
-> +        g_assert_not_reached();
-> +    }
->   
-> -    aspeed_soc_ast10x0_init(obj);
-> +    aspeed_soc_ast10x0_init(obj, socname);
 
-
-As Philippe suggested, why not use directly :
-
-        aspeed_soc_ast10x0_init(obj, "ast1030");
+Looks ok.
 
 
 Thanks,
@@ -201,9 +149,81 @@ Thanks,
 C.
 
 
-
->       object_initialize_child(obj, "lpc", &s->lpc, TYPE_ASPEED_LPC);
->       object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
->   }
+> ---
+>   tests/functional/arm/meson.build            |  1 +
+>   tests/functional/arm/test_aspeed_ast1060.py | 52 +++++++++++++++++++++
+>   2 files changed, 53 insertions(+)
+>   create mode 100644 tests/functional/arm/test_aspeed_ast1060.py
+> 
+> diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
+> index d1ed076a6a..1762a49604 100644
+> --- a/tests/functional/arm/meson.build
+> +++ b/tests/functional/arm/meson.build
+> @@ -28,6 +28,7 @@ tests_arm_system_quick = [
+>   
+>   tests_arm_system_thorough = [
+>     'aspeed_ast1030',
+> +  'aspeed_ast1060',
+>     'aspeed_palmetto',
+>     'aspeed_romulus',
+>     'aspeed_witherspoon',
+> diff --git a/tests/functional/arm/test_aspeed_ast1060.py b/tests/functional/arm/test_aspeed_ast1060.py
+> new file mode 100644
+> index 0000000000..034efa5342
+> --- /dev/null
+> +++ b/tests/functional/arm/test_aspeed_ast1060.py
+> @@ -0,0 +1,52 @@
+> +#!/usr/bin/env python3
+> +#
+> +# Functional test that boots the ASPEED SoCs with firmware
+> +#
+> +# Copyright (C) 2025 ASPEED Technology Inc
+> +#
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +
+> +from aspeed import AspeedTest
+> +from qemu_test import Asset, exec_command_and_wait_for_pattern
+> +
+> +
+> +class AST1060Machine(AspeedTest):
+> +    ASSET_ASPEED_AST1060_PROT_3_02 = Asset(
+> +        ('https://github.com/AspeedTech-BMC'
+> +         '/aspeed-zephyr-project/releases/download/v03.02'
+> +         '/ast1060_prot_v03.02.tgz'),
+> +         'dd5f1adc935316ddd1906506a02e15567bd7290657b52320f1a225564cc175bd')
+> +
+> +    def test_arm_ast1060_prot_3_02(self):
+> +        self.set_machine('ast1060-evb')
+> +
+> +        kernel_name = "ast1060_prot/zephyr.bin"
+> +        kernel_file = self.archive_extract(
+> +            self.ASSET_ASPEED_AST1060_PROT_3_02, member=kernel_name)
+> +
+> +        self.vm.set_console()
+> +        self.vm.add_args('-kernel', kernel_file, '-nographic')
+> +        self.vm.launch()
+> +        self.wait_for_console_pattern("Booting Zephyr OS")
+> +        exec_command_and_wait_for_pattern(self, "help",
+> +                                          "Available commands")
+> +
+> +    def test_arm_ast1060_otp_blockdev_device(self):
+> +        self.vm.set_machine("ast1060-evb")
+> +
+> +        kernel_name = "ast1060_prot/zephyr.bin"
+> +        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_02,
+> +                                           member=kernel_name)
+> +        otp_img = self.generate_otpmem_image()
+> +
+> +        self.vm.set_console()
+> +        self.vm.add_args(
+> +            "-kernel", kernel_file,
+> +            "-blockdev", f"driver=file,filename={otp_img},node-name=otp",
+> +            "-global", "aspeed-otp.drive=otp",
+> +        )
+> +        self.vm.launch()
+> +        self.wait_for_console_pattern("Booting Zephyr OS")
+> +
+> +if __name__ == '__main__':
+> +    AspeedTest.main()
 
 

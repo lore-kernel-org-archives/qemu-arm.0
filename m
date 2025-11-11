@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D6C8CCFA18
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 18:00:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A902CCFA18
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 18:02:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIsfN-0002E2-Fb; Tue, 11 Nov 2025 13:00:29 -0500
+	id 1vIsh4-0003IG-51; Tue, 11 Nov 2025 13:02:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vIsf8-0002AF-Mi
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 13:00:16 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vIsga-00034V-90
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 13:01:48 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vIsf5-0002s1-NT
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 13:00:13 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vIsgZ-0003GT-6T
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 13:01:44 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762884010;
+ s=mimecast20190719; t=1762884102;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=150Xt/V/GkrxDJPhyoPI44/9b/esPd6tBQN6rtW3DXY=;
- b=GBBDdTWiAXdlPX5/S2DXcmyaX6YjKclqwZbjpfV3hNo9RWyJFtXoqJcvVCUkyLxo8tnoYo
- gMfdKJ7dxO5DODO2FWR14mJIJy0Bqk4KvhJuGvYu54RhtWAsyXgP9djk2dqW4JfPwhDwbd
- 2f08gIVRsM0qOpZi4KsKNHEsz4BJ3bw=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=pglcBOI65Cy8PggXp2vfN1Rqo3l/dKZZbS2poH6t+Ao=;
+ b=W0Iyi9RhdZd50nj9YpilKfNl4zQoJPXnYSJ3PDWcrbTrpBwyjEgmJFjpVrpeTzu1L95NOg
+ tQzj/aKi5+zc3mL3l9c1AbSZ/6lJ2DH1Rfu4wqJChqwwDm1dd2+eKd5Et9GPwpZeX76YsK
+ oC8nMwlffPHASlYLs26zayi9rKvYjSI=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-522-92bfBjqoM1iiJGd_eh3VZw-1; Tue, 11 Nov 2025 13:00:05 -0500
-X-MC-Unique: 92bfBjqoM1iiJGd_eh3VZw-1
-X-Mimecast-MFC-AGG-ID: 92bfBjqoM1iiJGd_eh3VZw_1762884005
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-477632ef599so6487115e9.1
- for <qemu-arm@nongnu.org>; Tue, 11 Nov 2025 10:00:05 -0800 (PST)
+ us-mta-333-_xLzxKnPMDyT9rZEEDTDqw-1; Tue, 11 Nov 2025 13:01:41 -0500
+X-MC-Unique: _xLzxKnPMDyT9rZEEDTDqw-1
+X-Mimecast-MFC-AGG-ID: _xLzxKnPMDyT9rZEEDTDqw_1762884097
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-42b3b5ed793so1412533f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 11 Nov 2025 10:01:37 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762884004; x=1763488804;
+ d=1e100.net; s=20230601; t=1762884097; x=1763488897;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=150Xt/V/GkrxDJPhyoPI44/9b/esPd6tBQN6rtW3DXY=;
- b=bfKHFEJfw9buUBNrXZfP/E1jf92qwTFJVu5eCkyUhF/9u1dKg5T0Q22P45Kpu9ijnm
- nE+GjMNSkqasX+RFcRIb1oLNgrQpmi1a+jV3mSjffTwRM2xs1T/2wOQ/BhvubL/nac/+
- YsOFxnXJ/i3hOR4wzBp/p6u2jNJ3Z4GVaK/HbxT/W38k+F+6Ag1N5HIY5M5iUePMF4uv
- cH5JJk3OKe6VL1kK5HcBQbtqZUHY62HyAbjL6SnltbVKOUbKbkJDUnRvTISPfWlBA7Rh
- DeazFul0PMVWxtAQfKRQ8PMw+fm/vhYoYNKbOnQvwugPl0LeeMY5AOI372yHweKFpKaT
- mhdw==
+ bh=pglcBOI65Cy8PggXp2vfN1Rqo3l/dKZZbS2poH6t+Ao=;
+ b=KfvsfmyjRIM90RSCpHO9FD1cSihw6uCiySYLJ6qD5gEMYwRPXQaM5kAAyOggZZa7b1
+ t5rwd9oRZ8mf6PYnCzXQDsWo0du/HzvjXCOQC2G9mpFP0CuK/HKLmr/RP3EFIFfRe+ou
+ G3my6uySA/m8DOQ1mfN/a4VfsxiQcm4sazRCuYcnk+QzciKfNYYB+vDuxOpjj/qQ/27U
+ 9e7R2Xg3Dy2+WH6LnXOibyusYWx0gOLNhN4GpOdpoo7f1bizI1wW3KAz3fpt2wrVlikr
+ NUtMRHtCOuV/GKWWj/5H274rKpD7DT+9I3D5a5hDWwxGykjeMCD+jbLely57HeglnAJR
+ zwHQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVInmHPhHo5RbuZY4P81kxC+2Cz5qlm9IDkn7HcV1/2SupigALUBSg+jU07T0FcJdroGrPxRhumQA==@nongnu.org
-X-Gm-Message-State: AOJu0YyeAf8D03F+4h8aa1dw1dskNkb8Xm1g246lQP2wCKcsy/ukvfK+
- NjBbz8NCMODOo/1XActoqWw+MbXtjksF6fXqGnlbWays1CHzkziyuF6kzFQ/HygZvB5lbLklnaL
- mkhnSwFoHts3+1RNq05Ztc99qXVTczu9ne6n2pJXoCiWjBOUMwPoeMg==
-X-Gm-Gg: ASbGnct5ikzwXBAQ5+TlTH4k1BHOYf4NoAcqChVOZ6MO6cVrh8bfYD6hYgHPB47/0Cz
- FW7zzrWkCHyA0tmiMGSCopFFCrfWcSIo5p30dtc8wVJ2SOGjlehtbKVWDb/q0xHhBZ8tNyPawtN
- KaGx5xweC/PTPXFj5GMpM08n9ZCX4IFHWB1aDwofPA1UE/jaNuqHprOqBvcNdZjVss87zZwwzQE
- SBs4QiFwO1/1pAX9d5cCr5E4ylQBfIiUskoyaYhpfMmOINZ308Th3egP0YMtCgyqoIXEKaLQmk/
- 1Peo8GW2axmScgwUsuaB53BNVfpFghcB0+iCx0j6/3KiPLtfSBkyOAi/aesP8+Trn9/Fcec=
-X-Received: by 2002:a05:600c:1989:b0:475:ddad:c3a9 with SMTP id
- 5b1f17b1804b1-4778732a909mr1798505e9.13.1762884004611; 
- Tue, 11 Nov 2025 10:00:04 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGM1Mos/oup87tmy8eOd1p6t0oy638lUHGwygjZheFFfdCYWRrJW8PGM2l2zvXiwZ8uUYwiUw==
-X-Received: by 2002:a05:600c:1989:b0:475:ddad:c3a9 with SMTP id
- 5b1f17b1804b1-4778732a909mr1798135e9.13.1762884004201; 
- Tue, 11 Nov 2025 10:00:04 -0800 (PST)
+ AJvYcCVI0EbtmhLfyJCII5j3eBVnCVMIIpiFho8gWy2dlhq9GwMOpeVUIqS/LzBNYMpW8uZ3+1nZpvzW/w==@nongnu.org
+X-Gm-Message-State: AOJu0YzD8FJAr4tgAPb/PuxeAvPRXW4opw0yFwJnr0DzotjfP9x5Owlu
+ ZFAJwhVQubVjSQHnH5vRB/dzPycKc+RCdhZzxVDmC3v7kN8y/RwH0/JWmCyTys4F/5tPnlhL5bw
+ IPtM1cs+8a+X5IwUQJdTNfBLIGkdx5qF8mBA1m8py/p8qoW/TsLdw1A==
+X-Gm-Gg: ASbGncvcSAqEXNi2JcC+a822hp/Tv2x75sj44/ko+NpDS3Eh29W38n29zD/CJ4+13cl
+ MIzNxLBGmjFFtq6U8Vc+pJm8oHqq0v3BBjxmvymFBCEmHlkKyrAexxZyHSGthFEJ8I8qjsXazRg
+ Z/4gDleBhpynBjp5DxkVIvApw4OEQxNtzx6LGS1+T/l0vul+vy79al9urcjy5y/s0KGabqz1aDG
+ 6wb/3/ydcZfPbF6l0s7hnq57IwUqFwoNiugZ/8hOOgq8yO6hBYqrQ0XtYdurm3C2vb00NbfA6bs
+ vK089iTlMV/UJMum0SJ8/WVDUcAXr6J/Ls7Ag/y6G9AGwMLBVADqMqSRzuWsjr4x2lXsuEQ=
+X-Received: by 2002:a5d:5c84:0:b0:42b:4279:eddd with SMTP id
+ ffacd0b85a97d-42b4bb7d2f0mr90478f8f.24.1762884096724; 
+ Tue, 11 Nov 2025 10:01:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEZO7dWUazsEo1FXX4wCWBB8J8Qn7Bv1CYf1jO0OUi/DbAay5UVfKOZiBUA7uG7I0QaGR0xrg==
+X-Received: by 2002:a5d:5c84:0:b0:42b:4279:eddd with SMTP id
+ ffacd0b85a97d-42b4bb7d2f0mr90430f8f.24.1762884096263; 
+ Tue, 11 Nov 2025 10:01:36 -0800 (PST)
 Received: from [192.168.0.7] ([47.64.113.41]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42ac675cd25sm29922278f8f.22.2025.11.11.10.00.02
+ ffacd0b85a97d-42ac679c5dcsm33138957f8f.44.2025.11.11.10.01.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 11 Nov 2025 10:00:03 -0800 (PST)
-Message-ID: <d5da233a-c1ca-4d85-b380-7d7c34e13bb7@redhat.com>
-Date: Tue, 11 Nov 2025 19:00:02 +0100
+ Tue, 11 Nov 2025 10:01:35 -0800 (PST)
+Message-ID: <b540d3eb-b132-4fb8-acd7-8b5ec5878652@redhat.com>
+Date: Tue, 11 Nov 2025 19:01:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 12/16] tests: move test_virt_gpu to share.linaro.org
+Subject: Re: [PATCH 07/16] tests: move test_xen assets to share.linaro.org
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
@@ -90,7 +90,7 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
  BALATON Zoltan <balaton@eik.bme.hu>,
  Gustavo Romero <gustavo.romero@linaro.org>, qemu-stable@nongnu.org
 References: <20251111171724.78201-1-alex.bennee@linaro.org>
- <20251111171724.78201-13-alex.bennee@linaro.org>
+ <20251111171724.78201-8-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -134,14 +134,14 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20251111171724.78201-13-alex.bennee@linaro.org>
+In-Reply-To: <20251111171724.78201-8-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: LbNg7drvXWn_BNtdeTR2KvnvnONeaXgc9IWuWwuK8u0_1762884005
+X-Mimecast-MFC-PROC-ID: neHjwiwWwoEQujui2rLqxmbTNHDOUyt_7wuM4ip2rVg_1762884097
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -173,39 +173,60 @@ On 11/11/2025 18.17, Alex Bennée wrote:
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > Cc: qemu-stable@nongnu.org
 > ---
->   tests/functional/aarch64/test_virt_gpu.py | 16 +++++-----------
->   1 file changed, 5 insertions(+), 11 deletions(-)
+>   tests/functional/aarch64/test_xen.py | 12 ++++--------
+>   1 file changed, 4 insertions(+), 8 deletions(-)
 > 
-> diff --git a/tests/functional/aarch64/test_virt_gpu.py b/tests/functional/aarch64/test_virt_gpu.py
-> index 4e50887c3e9..89bd596b548 100755
-> --- a/tests/functional/aarch64/test_virt_gpu.py
-> +++ b/tests/functional/aarch64/test_virt_gpu.py
-> @@ -22,17 +22,11 @@
+> diff --git a/tests/functional/aarch64/test_xen.py b/tests/functional/aarch64/test_xen.py
+> index 261d796540d..f7bde5859ec 100755
+> --- a/tests/functional/aarch64/test_xen.py
+> +++ b/tests/functional/aarch64/test_xen.py
+> @@ -25,8 +25,7 @@ class BootXen(LinuxKernelTest):
+>       XEN_COMMON_COMMAND_LINE = 'dom0_mem=128M loglvl=all guest_loglvl=all'
 >   
->   class Aarch64VirtGPUMachine(LinuxKernelTest):
+>       ASSET_KERNEL = Asset(
+> -        ('https://fileserver.linaro.org/s/JSsewXGZ6mqxPr5/'
+> -         'download?path=%2F&files=linux-5.9.9-arm64-ajb'),
+> +        ('https://share.linaro.org/downloadFile?id=RRahAWwAwYKTZQd'),
+
+If the URL fits into one line, you could drop the parentheses here now (and 
+also in the other spots in this patch).
+
+With that nit fixed:
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+
+
+>           '00366fa51ea957c19462d2e2aefd480bef80ce727120e714ae48e0c88f261edb')
 >   
-> -    ASSET_VIRT_GPU_KERNEL = Asset(
-> -        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
-> -        'download?path=%2F&files='
-> -        'Image.6.12.16.aarch64',
-> -        '7888c51c55d37e86bbbdeb5acea9f08c34e6b0f03c1f5b2463285f6a6f6eec8b')
-> -
-> -    ASSET_VIRT_GPU_ROOTFS = Asset(
-> -        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
-> -        'download?path=%2F&files='
-> -        'rootfs.aarch64.ext2.zstd',
-> -        'd45118c899420b7e673f1539a37a35480134b3e36e3a59e2cb69b1781cbb14ef')
-> +    ASSET_VIRT_GPU_KERNEL = Asset('https://share.linaro.org/downloadFile?id=lL8wgnMmSXZo7Co',
-> +                                  '7888c51c55d37e86bbbdeb5acea9f08c34e6b0f03c1f5b2463285f6a6f6eec8b')
-> +
-> +    ASSET_VIRT_GPU_ROOTFS = Asset('https://share.linaro.org/downloadFile?id=qOn1wbfKmS6KVHZ',
-> +                                  'd45118c899420b7e673f1539a37a35480134b3e36e3a59e2cb69b1781cbb14ef')
-
-I'm currently working on patches that check the functional test files with 
-pylint, and that will complain if the line exceeds 100 columns. Could you 
-please use the old indentation here to avoid that we exceed the limit?
-
-  Thanks,
-   Thomas
+>       def launch_xen(self, xen_path):
+> @@ -55,8 +54,7 @@ def launch_xen(self, xen_path):
+>           wait_for_console_pattern(self, console_pattern, "Panic on CPU 0:")
+>   
+>       ASSET_XEN_4_11 = Asset(
+> -        ('https://fileserver.linaro.org/s/JSsewXGZ6mqxPr5/download?path=%2F&'
+> -         'files=xen-hypervisor-4.11-arm64_4.11.4%2B37-g3263f257ca-1_arm64.deb'),
+> +        ('https://share.linaro.org/downloadFile?id=ALU4n2NGGYbE4fO'),
+>           'b745c2631342f9fcc0147ddc364edb62c20ecfebd430e5a3546e7d7c6891c0bc')
+>   
+>       def test_arm64_xen_411_and_dom0(self):
+> @@ -66,8 +64,7 @@ def test_arm64_xen_411_and_dom0(self):
+>           self.launch_xen(xen_path)
+>   
+>       ASSET_XEN_4_14 = Asset(
+> -        ('https://fileserver.linaro.org/s/JSsewXGZ6mqxPr5/download?path=%2F&'
+> -         'files=xen-hypervisor-4.14-arm64_4.14.0%2B80-gd101b417b7-1_arm64.deb'),
+> +        ('https://share.linaro.org/downloadFile?id=os4zSXPl7WW4lqX'),
+>           'e930a3293248edabd367d5b4b3b6448b9c99c057096ea8b47228a7870661d5cb')
+>   
+>       def test_arm64_xen_414_and_dom0(self):
+> @@ -77,8 +74,7 @@ def test_arm64_xen_414_and_dom0(self):
+>           self.launch_xen(xen_path)
+>   
+>       ASSET_XEN_4_15 = Asset(
+> -        ('https://fileserver.linaro.org/s/JSsewXGZ6mqxPr5/download?path=%2F&'
+> -         'files=xen-upstream-4.15-unstable.deb'),
+> +        ('https://share.linaro.org/downloadFile?id=jjjG4uTp2wuO4Ks'),
+>           '2a9a8af8acf0231844657cc28baab95bd918b0ee2d493ee4ee6f8846e1358bc9')
+>   
+>       def test_arm64_xen_415_and_dom0(self):
 
 

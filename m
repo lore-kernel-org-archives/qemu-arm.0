@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D509ACCFA1A
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 10:29:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFE86CD1297
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 10:29:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIlcn-0008VS-9O; Tue, 11 Nov 2025 05:29:21 -0500
+	id 1vIlcg-0008O3-K8; Tue, 11 Nov 2025 05:29:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1vIlcQ-0007ou-Hf
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 05:28:59 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ id 1vIlcM-0007gq-MW
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 05:28:55 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1vIlcH-0000IF-PT
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 05:28:58 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-6406f3dcc66so6647972a12.3
- for <qemu-arm@nongnu.org>; Tue, 11 Nov 2025 02:28:49 -0800 (PST)
+ id 1vIlcH-0000Hl-9x
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 05:28:54 -0500
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-6419aaced59so2892998a12.0
+ for <qemu-arm@nongnu.org>; Tue, 11 Nov 2025 02:28:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1762856928; x=1763461728; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1762856926; x=1763461726; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZGgoXcGrS3dQFr7HRsHf2MQYE1FsV3OmHQ8tkmeJh/A=;
- b=Q8j5tpB7ggiFb4nbX8/QS09ZvzL2VjYhp4SD+XBnIzya4lWP8ocXOpug8edskT6Z92
- FBa/5Ei0dyPPNb8FgBqg8KIMn/m3WAFkj5yAdhlKfeeSgWqBa9UFi5CKr+JJXx0kQzUt
- fKUnAiXFoxkbdDUQ4hVA+K89hS1TOq7YsqGT+4q4q/+26bNjcZEb5lFZ90jyuTSED89d
- +nf8ep+lWb8paFcSsZudtRw48ULvIwHEryMnzZmofH9t2loKieoVz35HAxs3/0n0m2Yf
- s5PptFIHVbh9Sk/gRPs1rFZp8LH596qCV//JvDSw0ah8jfh6j1vXR3V+gqqunk4gueel
- r3nQ==
+ bh=WbUillCxC8gTRtjMdBirWgtKx3zAKtmwPZbkOAGWMnA=;
+ b=XKJgsqKWQkM8DkBPpmvPeNaC47lAlTMloDao7C3WwhfKPWhifB8obo+SrScHiALKAr
+ 90BVunnDa25H696QIDiNGXUoRKfavvRnJJ0a6L/TME8oaMJhRT5W/381mqpVh3tgckRu
+ n2WQE/d4HJBkna0c0P8BwmVcr+W0dH/Q6b22hWCcFhlZekJ6AHFOL32buHWZTPeZIzE/
+ jsRJ0CcvG+Ralk2QQYgeTUwpwTRYYOISE2yX5lTDlpITe197InNqbP8WHhql4qhkXCje
+ yh8InpJIBZfSmey3J1AWXUnLx+dM5dfn+9cXpGZq9ejGbu7b7Ckfq0PWN9E2Sp3LHp7L
+ n4NQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762856928; x=1763461728;
+ d=1e100.net; s=20230601; t=1762856926; x=1763461726;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ZGgoXcGrS3dQFr7HRsHf2MQYE1FsV3OmHQ8tkmeJh/A=;
- b=uvI0lYMlkqc4JLc/HqXVsIUA9Sa6S8UfRneCOXaslwGaeQoNuz1uKbrsleZglcbCm/
- TCSX4JFMYRCtykkd2heeyuOt2ai4CXj5LN0dvPCXimyi/nSMESReqLiWr9bVkgAdFyU8
- J2umwuOhGgQpxRRR9NgDs9/J7GW4FWORG4YoeI0aX+phpBsyO0gLbQG8gM8vjB3WlQgk
- ImJlz2+Te25cZl6dRolNIn4kusUyEv0Ep6RXQDq5TSqRrlshoFzc3L6FMQibDU7IAjwk
- NmGGVjGKoHvBTYKlms6ZUey1SmcLy9ubZmlUfuhTdszRpWWWEJcj3YUAQ5D3RyglsJYq
- tlgQ==
+ bh=WbUillCxC8gTRtjMdBirWgtKx3zAKtmwPZbkOAGWMnA=;
+ b=R7JukoQPbB9uxFPCV0ZbDbS/46/uiyE9H5LJWVMYKKvvX4T0BmOene8BKAM/YmvP/D
+ K217wp2kDgAx3DBKCy/E2EPTIKg4tCHFb97kqr/H0LodZqOpIADhK+sQc2AemQOduCKv
+ kwbm489wfphkH9RrjpZ2BZMnolO8hwzMh/WyFxoC2AwLzoXN+hhsWj+1+YTwJxJzA59S
+ Q3Ci+xyfSYqhHE1TYUejlF4W1GSw61descUxxrQmqcL3mIxNA7VPiSOrwBZFSEQg5CBE
+ 9eGvrRiXpcWt8TmvwK/TNh1B7Qn4wjni8DGFg+MDa4RtDYC+GuM9SByfPbH5wTTOSgJ8
+ 7xKQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVcSraX9hHHx42H8EODloERTXGHpfbc34S+1cdSPgviiTwxPydD/DR2JpaUq2ZXiSi/c0V3IhpCpQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yyr8hLnhjYZAd1whnK3hgkw17sUyYqLbsImFf8/zY8Q3/CZYlg1
- wFEgIIl6Kf+w6CML6kL+ukuH/a2e1kYEnNT72DLxgRqPDHX9sw+UW9fr
-X-Gm-Gg: ASbGncvBsDY7eROvIB5c9XP+ECiCCZgQr/YYs0GrUy1dWLReFUsdCd3wKmq31SoFm97
- SpkMu16r/AN71mv8a05F7ebwCdbHvcdKFheub/kv5ZG4tvQMamVGHWbi/bW5eumXCRkn1ZhnaSd
- qrWG4xHAgVp5dM0UsC2QOGwR8Ffx4z+qaoptbZvygwUsQS6WLsOfQ8ZF+Zr51y1ukx71rDwc76C
- x0t3S9o7JtDO5XK+mrmwMZfSZPt209d+rroKCZP9dICcV47WSWKjC4CMek7YYksisFqATq3my0p
- GLzQkzOc9il1Nlgsx9vpAhbuwdcXRnglDaMpLxgdWXs0Y+AvzoT1ELFYLvex9IDuMLZG9AfM98Q
- 9xa2Ak6pYt/JNWiGXcEOWugTOVLvfcTSd1JIcpRDC206M5X3yw0P1hhi7LIFBWRHhiIWyFdzu9/
- /Muj3lWD+dItUubNE05YH3RQ==
-X-Google-Smtp-Source: AGHT+IEYF4QMJtiwKEWR/vdDVXUbeIzg2Y6H2dOfKtOPSRxbu/hbUsX7qU/BYk7O8WbDHcDC7azJlw==
-X-Received: by 2002:a17:906:6a09:b0:b4a:d60d:fb68 with SMTP id
- a640c23a62f3a-b72e036bbccmr1081590566b.6.1762856927885; 
- Tue, 11 Nov 2025 02:28:47 -0800 (PST)
+ AJvYcCUNsn8CiZ3/tsCQZXEG1Pgz7ceOGMrT9YGgoX2PD2aPv0VGCe6eWcvEoxGn9jvTi0PYDYIXWc6UXg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy6NmH/H2LsitYoZz9IOvy+u9pSO/UHhzIyPlAntU0/n7KeANKX
+ wThRmyxkx6U6UboqL7Jjk1N5qTAZqDFOneb4XgN401/71+cVzoMJHpKO
+X-Gm-Gg: ASbGncvcdOW2Er5WPnwyCC9kXNqxwC1CCC26e299DnG6OxbTEM4GRo+O8t9KXMkWTpk
+ XbZRrQgV6vtAtQd26nlSmmXqZswGIJ1GZrE75aFczgCbfgPKsbPvSF2T3jp7ul2iqjoJktT8ILQ
+ c4EBsgR4CJwy/crJ1tVFB7uqTk11Qx1/LlEIq0w0BX03wRI9dsV3amwi1VHX5u6KIYbQrAh+vCJ
+ nCxoAdKMMKevkNwAOHdd8GGe0fYHq+TQRJ48EM4V3khBF/nUrjc7S5Uw02CErqswQfexg2ZhT+I
+ RPL7clLhap7LGWzNX6T6Z3nA7/Awkf4FBjr+3XgOwzEL2XFDX1jnmURiJ6e7mg4zmhELW7CkXNo
+ dyuaw0ykD1l4u3xS1GQ2TclXjrkM0JHBovf4+vZlbyPAeAsIbyTZ4IcAjil7kW0FiT6ZI66DkZi
+ eU3JtElaY0oT5xlCkyZAYNvg==
+X-Google-Smtp-Source: AGHT+IHGlH2+iFMTDNoy1rsNx/WZGBEQgotlqpx4PlK8whL9elHTnJWWrbdzXFRa+3BThk9nTnxWog==
+X-Received: by 2002:a17:907:7246:b0:b72:aab5:930e with SMTP id
+ a640c23a62f3a-b72e030953amr1332453766b.16.1762856926049; 
+ Tue, 11 Nov 2025 02:28:46 -0800 (PST)
 Received: from PC-DA2D10.beckhoff.com
  ([2001:9e8:dc12:ce00:ae91:a1ff:fe8b:15a7])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b72bdbd1ecfsm1290619366b.10.2025.11.11.02.28.47
+ a640c23a62f3a-b72bdbd1ecfsm1290619366b.10.2025.11.11.02.28.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Nov 2025 02:28:47 -0800 (PST)
+ Tue, 11 Nov 2025 02:28:45 -0800 (PST)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -79,16 +79,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Kevin Wolf <kwolf@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  YannickV <Y.Vossen@beckhoff.com>
-Subject: [PATCH v4 11/15] hw/misc: Add Beckhoff CCAT device
-Date: Tue, 11 Nov 2025 11:28:32 +0100
-Message-ID: <20251111102836.212535-12-corvin.koehne@gmail.com>
+Subject: [PATCH v4 09/15] hw/misc: Add dummy ZYNQ DDR controller
+Date: Tue, 11 Nov 2025 11:28:30 +0100
+Message-ID: <20251111102836.212535-10-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251111102836.212535-1-corvin.koehne@gmail.com>
 References: <20251111102836.212535-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=corvin.koehne@gmail.com; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,44 +113,53 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-This adds the Beckhoff Communication Controller (CCAT). The information
-block, EEPROM interface and DMA controller are currently  implemented.
-
-The EEPROM provides production information for Beckhoff Devices.
-An EEPORM binary must therefor be handed over. It should be aligned to
-a power of two. If no EEPROM binary is handed over an empty EEPROM of
-size 4096 is initialized.
-
-This device is needed for the Beckhoff CX7200 board emulation.
+A dummy DDR controller for ZYNQ has been added. While all registers are present,
+not all are functional. Read and write access is validated, and the user mode
+can be set. This provides a basic DDR controller initialization, preventing
+system hangs due to endless polling or similar issues.
 
 Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
 ---
- hw/misc/Kconfig         |   3 +
- hw/misc/beckhoff_ccat.c | 338 ++++++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build     |   1 +
- 3 files changed, 342 insertions(+)
- create mode 100644 hw/misc/beckhoff_ccat.c
+ hw/misc/Kconfig                  |   3 +
+ hw/misc/meson.build              |   1 +
+ hw/misc/xlnx-zynq-ddrc.c         | 413 +++++++++++++++++++++++++++++++
+ include/hw/misc/xlnx-zynq-ddrc.h | 148 +++++++++++
+ 4 files changed, 565 insertions(+)
+ create mode 100644 hw/misc/xlnx-zynq-ddrc.c
+ create mode 100644 include/hw/misc/xlnx-zynq-ddrc.h
 
 diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 99548e146f..f3a2efa350 100644
+index 8f9ce2f68c..99548e146f 100644
 --- a/hw/misc/Kconfig
 +++ b/hw/misc/Kconfig
-@@ -223,4 +223,7 @@ config XLNX_VERSAL_TRNG
- config XLNX_ZYNQ_DDRC
+@@ -220,4 +220,7 @@ config IOSB
+ config XLNX_VERSAL_TRNG
      bool
  
-+config BECKHOFF_CCAT
++config XLNX_ZYNQ_DDRC
 +    bool
 +
  source macio/Kconfig
-diff --git a/hw/misc/beckhoff_ccat.c b/hw/misc/beckhoff_ccat.c
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 55f493521b..6ee7b6c71d 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -89,6 +89,7 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
+ ))
+ system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+ system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
++system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('xlnx-zynq-ddrc.c'))
+ system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-crf.c'))
+ system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx-zynqmp-apu-ctrl.c'))
+ system_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files(
+diff --git a/hw/misc/xlnx-zynq-ddrc.c b/hw/misc/xlnx-zynq-ddrc.c
 new file mode 100644
-index 0000000000..cba570e767
+index 0000000000..13d64329c3
 --- /dev/null
-+++ b/hw/misc/beckhoff_ccat.c
-@@ -0,0 +1,338 @@
++++ b/hw/misc/xlnx-zynq-ddrc.c
+@@ -0,0 +1,413 @@
 +/*
-+ * Beckhoff Communication Controller Emulation
++ * QEMU model of the Xilinx Zynq Double Data Rate Controller
 + *
 + * Copyright (c) Beckhoff Automation GmbH. & Co. KG
 + *
@@ -163,342 +172,559 @@ index 0000000000..cba570e767
 +#include "qemu/bitops.h"
 +#include "qemu/log.h"
 +#include "qapi/error.h"
++#include "hw/registerfields.h"
 +#include "system/block-backend.h"
 +#include "exec/address-spaces.h"
 +#include "exec/memory.h"
 +#include "system/dma.h"
-+#include "qemu/error-report.h"
-+#include "block/block.h"
-+#include "block/block_int.h"
-+#include "block/qdict.h"
-+#include "hw/block/block.h"
++#include "hw/misc/xlnx-zynq-ddrc.h"
 +#include "migration/vmstate.h"
-+#include "qemu/bswap.h"
 +
-+#ifndef CCAT_ERR_DEBUG
-+#define CCAT_ERR_DEBUG 0
++#ifndef DDRCTRL_ERR_DEBUG
++#define DDRCTRL_ERR_DEBUG 0
 +#endif
 +
-+#define TYPE_BECKHOFF_CCAT "beckhoff-ccat"
-+OBJECT_DECLARE_SIMPLE_TYPE(BeckhoffCcat, BECKHOFF_CCAT)
-+
-+#define MAX_NUM_SLOTS 32
-+#define CCAT_FUNCTION_BLOCK_SIZE 16
-+
-+#define CCAT_EEPROM_OFFSET 0x100
-+#define CCAT_DMA_OFFSET 0x8000
-+
-+#define CCAT_MEM_SIZE 0xFFFF
-+#define CCAT_DMA_SIZE 0x800
-+#define CCAT_EEPROM_SIZE 0x20
-+
-+#define EEPROM_MEMORY_SIZE 0x1000
-+
-+#define EEPROM_CMD_OFFSET (CCAT_EEPROM_OFFSET + 0x00)
-+    #define EEPROM_CMD_WRITE_MASK 0x2
-+    #define EEPROM_CMD_READ_MASK 0x1
-+#define EEPROM_ADR_OFFSET (CCAT_EEPROM_OFFSET + 0x04)
-+#define EEPROM_DATA_OFFSET (CCAT_EEPROM_OFFSET + 0x08)
-+
-+#define DMA_BUFFER_OFFSET (CCAT_DMA_OFFSET + 0x00)
-+#define DMA_DIRECTION_OFFSET (CCAT_DMA_OFFSET + 0x7c0)
-+    #define DMA_DIRECTION_MASK 1
-+#define DMA_TRANSFER_OFFSET (CCAT_DMA_OFFSET + 0x7c4)
-+#define DMA_HOST_ADR_OFFSET (CCAT_DMA_OFFSET + 0x7c8)
-+#define DMA_TRANSFER_LENGTH_OFFSET (CCAT_DMA_OFFSET + 0x7cc)
-+
-+/*
-+ * The informationblock  is always located at address 0x0.
-+ * Address and size are therefor replaced by two identifiers.
-+ * The Parameter give information about the maximal number of
-+ * function slots and the creation date (in this case 01.01.2001)
-+ */
-+#define CCAT_ID_1 0x88a4
-+#define CCAT_ID_2 0x54414343
-+#define CCAT_INFO_BLOCK_PARAMS ((MAX_NUM_SLOTS << 0) | (0x1 << 8) | \
-+                              (0x1 << 16) | (0x1 << 24))
-+
-+#define CCAT_FUN_TYPE_ENTRY 0x0001
-+#define CCAT_FUN_TYPE_EEPROM 0x0012
-+#define CCAT_FUN_TYPE_DMA 0x0013
-+
-+typedef struct BeckhoffCcat {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem;
-+
-+    uint8_t mem[CCAT_MEM_SIZE];
-+
-+    BlockBackend *eeprom_blk;
-+    uint8_t *eeprom_storage;
-+    uint32_t eeprom_size;
-+} BeckhoffCcat;
-+
-+static void sync_eeprom(BeckhoffCcat *s)
++static void zynq_ddrctrl_post_write(RegisterInfo *reg, uint64_t val)
 +{
-+    if (!s->eeprom_blk) {
-+        return;
-+    }
-+    blk_pwrite(s->eeprom_blk, 0, s->eeprom_size, s->eeprom_storage, 0);
-+}
-+
-+static uint64_t beckhoff_ccat_eeprom_read(void *opaque, hwaddr addr,
-+                                          unsigned size)
-+{
-+    BeckhoffCcat *s = opaque;
-+    return ldn_le_p(&s->mem[addr], size);
-+}
-+
-+static void beckhoff_ccat_eeprom_write(void *opaque, hwaddr addr, uint64_t val,
-+                              unsigned size)
-+{
-+    BeckhoffCcat *s = opaque;
-+    uint64_t eeprom_adr;
-+    uint64_t buf;
-+    uint32_t bytes_to_read;
-+
-+    switch (addr) {
-+    case EEPROM_CMD_OFFSET:
-+        eeprom_adr = ldl_le_p(&s->mem[EEPROM_ADR_OFFSET]);
-+        eeprom_adr = (eeprom_adr * 2) % s->eeprom_size;
-+        if (val & EEPROM_CMD_READ_MASK) {
-+            buf = 0;
-+            bytes_to_read = 8;
-+            if (eeprom_adr > s->eeprom_size - 8) {
-+                bytes_to_read = s->eeprom_size - eeprom_adr;
-+            }
-+            buf = ldn_le_p(s->eeprom_storage + eeprom_adr, bytes_to_read);
-+            stq_le_p(&s->mem[EEPROM_DATA_OFFSET], buf);
-+        } else if (val & EEPROM_CMD_WRITE_MASK) {
-+            buf = ldl_le_p(&s->mem[EEPROM_DATA_OFFSET]);
-+            stw_le_p((uint16_t *)(s->eeprom_storage + eeprom_adr), buf);
-+            sync_eeprom(s);
-+        }
-+        break;
-+    default:
-+        stn_le_p(&s->mem[addr], size, val);
-+    }
-+}
-+
-+static uint64_t beckhoff_ccat_dma_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    BeckhoffCcat *s = opaque;
-+
-+    switch (addr) {
-+    case DMA_TRANSFER_OFFSET:
-+        if (s->mem[DMA_TRANSFER_OFFSET] & 0x1) {
-+            s->mem[DMA_TRANSFER_OFFSET] = 0;
-+        }
-+        break;
-+    }
-+    return ldn_le_p(&s->mem[addr], size);
-+}
-+
-+static void beckhoff_ccat_dma_write(void *opaque, hwaddr addr, uint64_t val,
-+                           unsigned size)
-+{
-+    BeckhoffCcat *s = opaque;
-+    dma_addr_t dmaAddr;
-+    uint8_t len;
-+    uint8_t *mem_buf;
-+
-+    switch (addr) {
-+    case DMA_TRANSFER_OFFSET:
-+        len = s->mem[DMA_TRANSFER_LENGTH_OFFSET];
-+        mem_buf = &s->mem[DMA_BUFFER_OFFSET];
-+        dmaAddr = ldl_le_p(&s->mem[DMA_HOST_ADR_OFFSET]);
-+        if (s->mem[DMA_DIRECTION_OFFSET] & DMA_DIRECTION_MASK) {
-+            dma_memory_read(&address_space_memory, dmaAddr,
-+                            mem_buf, len * 8, MEMTXATTRS_UNSPECIFIED);
++    DDRCTRLState *s = DDRCTRL(reg->opaque);
++    if (reg->access->addr == A_DDRC_CTRL) {
++        if (val & 0x1) {
++            s->reg[R_MODE_STS_REG] |=
++                (R_MODE_STS_REG_DDR_REG_OPERATING_MODE_MASK & 0x1);
 +        } else {
-+            /*
-+             * The write transfer uses Host DMA Address + 8 as the target
-+             * offset, as described in the CCAT manual Version 0.0.41
-+             * section 20.2.
-+             */
-+            dma_memory_write(&address_space_memory, dmaAddr + 8,
-+                                mem_buf, len * 8, MEMTXATTRS_UNSPECIFIED);
++            s->reg[R_MODE_STS_REG] &=
++                ~R_MODE_STS_REG_DDR_REG_OPERATING_MODE_MASK;
 +        }
-+        break;
-+    }
-+    stn_le_p(&s->mem[addr], size, val);
-+}
-+
-+static uint64_t beckhoff_ccat_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    BeckhoffCcat *s = opaque;
-+    uint64_t val = 0;
-+
-+    assert(addr <= CCAT_MEM_SIZE - size);
-+
-+    if (addr >= CCAT_EEPROM_OFFSET &&
-+                        addr <= CCAT_EEPROM_OFFSET + s->eeprom_size) {
-+        return beckhoff_ccat_eeprom_read(opaque, addr, size);
-+    } else if (addr >= CCAT_DMA_OFFSET &&
-+                        addr <= CCAT_DMA_OFFSET + CCAT_DMA_SIZE) {
-+        return beckhoff_ccat_dma_read(opaque, addr, size);
-+    } else {
-+        val = ldn_le_p(&s->mem[addr], size);
-+    }
-+
-+    return val;
-+}
-+
-+static void beckhoff_ccat_write(void *opaque, hwaddr addr, uint64_t val,
-+                                unsigned size)
-+{
-+    BeckhoffCcat *s = opaque;
-+
-+    assert(addr <= CCAT_MEM_SIZE - size);
-+
-+    if (addr >= CCAT_EEPROM_OFFSET &&
-+                        addr <= CCAT_EEPROM_OFFSET + s->eeprom_size) {
-+        beckhoff_ccat_eeprom_write(opaque, addr, val, size);
-+    } else if (addr >= CCAT_DMA_OFFSET &&
-+                        addr <= CCAT_DMA_OFFSET + CCAT_DMA_SIZE) {
-+        beckhoff_ccat_dma_write(opaque, addr, val, size);
-+    } else {
-+        stn_le_p(&s->mem[addr], size, val);
 +    }
 +}
 +
-+static const MemoryRegionOps beckhoff_ccat_ops = {
-+    .read = beckhoff_ccat_read,
-+    .write = beckhoff_ccat_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 8,
-+    },
++static const RegisterAccessInfo xlnx_zynq_ddrc_regs_info[] = {
++    /* 0x00 - 0x3C: Basic DDRC control and config */
++    { .name = "DDRC_CTRL",
++      .addr = A_DDRC_CTRL,
++      .reset = 0x00000200,
++      .post_write = zynq_ddrctrl_post_write },
++    { .name = "TWO_RANK_CFG",
++      .addr = A_TWO_RANK_CFG,
++      .reset = 0x000C1076 },
++    { .name = "HPR_REG",
++      .addr = A_HPR_REG,
++      .reset = 0x03C0780F },
++    { .name = "LPR_REG",
++      .addr = A_LPR_REG,
++      .reset = 0x03C0780F },
++    { .name = "WR_REG",
++      .addr = A_WR_REG,
++      .reset = 0x0007F80F },
++    { .name = "DRAM_PARAM_REG0",
++      .addr = A_DRAM_PARAM_REG0,
++      .reset = 0x00041016 },
++    { .name = "DRAM_PARAM_REG1",
++      .addr = A_DRAM_PARAM_REG1,
++      .reset = 0x351B48D9 },
++    { .name = "DRAM_PARAM_REG2",
++      .addr = A_DRAM_PARAM_REG2,
++      .reset = 0x83015904 },
++    { .name = "DRAM_PARAM_REG3",
++      .addr = A_DRAM_PARAM_REG3,
++      .reset = 0x250882D0 },
++    { .name = "DRAM_PARAM_REG4",
++      .addr = A_DRAM_PARAM_REG4,
++      .reset = 0x0000003C },
++    { .name = "DRAM_INIT_PARAM",
++      .addr = A_DRAM_INIT_PARAM,
++      .reset = 0x00002007 },
++    { .name = "DRAM_EMR_REG",
++      .addr = A_DRAM_EMR_REG,
++      .reset = 0x00000008 },
++    { .name = "DRAM_EMR_MR_REG",
++      .addr = A_DRAM_EMR_MR_REG,
++      .reset = 0x00000940 },
++    { .name = "DRAM_BURST8_RDWR",
++      .addr = A_DRAM_BURST8_RDWR,
++      .reset = 0x00020034 },
++    { .name = "DRAM_DISABLE_DQ",
++      .addr = A_DRAM_DISABLE_DQ },
++    { .name = "DRAM_ADDR_MAP_BANK",
++      .addr = A_DRAM_ADDR_MAP_BANK,
++      .reset = 0x00000F77 },
++    { .name = "DRAM_ADDR_MAP_COL",
++      .addr = A_DRAM_ADDR_MAP_COL,
++      .reset = 0xFFF00000 },
++    { .name = "DRAM_ADDR_MAP_ROW",
++      .addr = A_DRAM_ADDR_MAP_ROW,
++      .reset = 0x0FF55555 },
++    { .name = "DRAM_ODT_REG",
++      .addr = A_DRAM_ODT_REG,
++      .reset = 0x00000249 },
++
++    /* 0x4C - 0x5C: PHY and DLL */
++    { .name = "PHY_DBG_REG",
++      .addr = A_PHY_DBG_REG },
++    { .name = "PHY_CMD_TIMEOUT_RDDATA_CPT",
++      .addr = A_PHY_CMD_TIMEOUT_RDDATA_CPT,
++      .reset = 0x00010200 },
++    { .name = "MODE_STS_REG",
++      .addr = A_MODE_STS_REG },
++    { .name = "DLL_CALIB",
++      .addr = A_DLL_CALIB,
++      .reset = 0x00000101 },
++    { .name = "ODT_DELAY_HOLD",
++      .addr = A_ODT_DELAY_HOLD,
++      .reset = 0x00000023 },
++
++    /* 0x60 - 0x7C: Control registers */
++    { .name = "CTRL_REG1",
++      .addr = A_CTRL_REG1,
++      .reset = 0x0000003E },
++    { .name = "CTRL_REG2",
++      .addr = A_CTRL_REG2,
++      .reset = 0x00020000 },
++    { .name = "CTRL_REG3",
++      .addr = A_CTRL_REG3,
++      .reset = 0x00284027 },
++    { .name = "CTRL_REG4",
++      .addr = A_CTRL_REG4,
++      .reset = 0x00001610 },
++    { .name = "CTRL_REG5",
++      .addr = A_CTRL_REG5,
++      .reset = 0x00455111 },
++    { .name = "CTRL_REG6",
++      .addr = A_CTRL_REG6,
++      .reset = 0x00032222 },
++
++    /* 0xA0 - 0xB4: Refresh, ZQ, powerdown, misc */
++    { .name = "CHE_REFRESH_TIMER0",
++      .addr = A_CHE_REFRESH_TIMER0,
++      .reset = 0x00008000 },
++    { .name = "CHE_T_ZQ",
++      .addr = A_CHE_T_ZQ,
++      .reset = 0x10300802 },
++    { .name = "CHE_T_ZQ_SHORT_INTERVAL_REG",
++      .addr = A_CHE_T_ZQ_SHORT_INTERVAL_REG,
++      .reset = 0x0020003A },
++    { .name = "DEEP_PWRDWN_REG",
++      .addr = A_DEEP_PWRDWN_REG },
++    { .name = "REG_2C",
++      .addr = A_REG_2C },
++    { .name = "REG_2D",
++      .addr = A_REG_2D,
++      .reset = 0x00000200 },
++
++    /* 0xB8 - 0xF8: ECC, DFI, etc. */
++    { .name = "DFI_TIMING",
++      .addr = A_DFI_TIMING,
++      .reset = 0x00200067 },
++    { .name = "CHE_ECC_CONTROL_REG_OFFSET",
++      .addr = A_CHE_ECC_CONTROL_REG_OFFSET },
++    { .name = "CHE_CORR_ECC_LOG_REG_OFFSET",
++      .addr = A_CHE_CORR_ECC_LOG_REG_OFFSET },
++    { .name = "CHE_CORR_ECC_ADDR_REG_OFFSET",
++      .addr = A_CHE_CORR_ECC_ADDR_REG_OFFSET },
++    { .name = "CHE_CORR_ECC_DATA_31_0_REG_OFFSET",
++      .addr = A_CHE_CORR_ECC_DATA_31_0_REG_OFFSET },
++    { .name = "CHE_CORR_ECC_DATA_63_32_REG_OFFSET",
++      .addr = A_CHE_CORR_ECC_DATA_63_32_REG_OFFSET },
++    { .name = "CHE_CORR_ECC_DATA_71_64_REG_OFFSET",
++      .addr = A_CHE_CORR_ECC_DATA_71_64_REG_OFFSET },
++    { .name = "CHE_UNCORR_ECC_LOG_REG_OFFSET",
++      .addr = A_CHE_UNCORR_ECC_LOG_REG_OFFSET },
++    { .name = "CHE_UNCORR_ECC_ADDR_REG_OFFSET",
++      .addr = A_CHE_UNCORR_ECC_ADDR_REG_OFFSET },
++    { .name = "CHE_UNCORR_ECC_DATA_31_0_REG_OFFSET",
++      .addr = A_CHE_UNCORR_ECC_DATA_31_0_REG_OFFSET },
++    { .name = "CHE_UNCORR_ECC_DATA_63_32_REG_OFFSET",
++      .addr = A_CHE_UNCORR_ECC_DATA_63_32_REG_OFFSET },
++    { .name = "CHE_UNCORR_ECC_DATA_71_64_REG_OFFSET",
++      .addr = A_CHE_UNCORR_ECC_DATA_71_64_REG_OFFSET },
++    { .name = "CHE_ECC_STATS_REG_OFFSET",
++      .addr = A_CHE_ECC_STATS_REG_OFFSET },
++    { .name = "ECC_SCRUB",
++      .addr = A_ECC_SCRUB,
++      .reset = 0x00000008 },
++    { .name = "CHE_ECC_CORR_BIT_MASK_31_0_REG_OFFSET",
++      .addr = A_CHE_ECC_CORR_BIT_MASK_31_0_REG_OFFSET },
++    { .name = "CHE_ECC_CORR_BIT_MASK_63_32_REG_OFFSET",
++      .addr = A_CHE_ECC_CORR_BIT_MASK_63_32_REG_OFFSET },
++
++    /* 0x114 - 0x174: PHY config, ratios, DQS, WE */
++    { .name = "PHY_RCVER_ENABLE",
++      .addr = A_PHY_RCVER_ENABLE },
++    { .name = "PHY_CONFIG0",
++      .addr = A_PHY_CONFIG0,
++      .reset = 0x40000001 },
++    { .name = "PHY_CONFIG1",
++      .addr = A_PHY_CONFIG1,
++      .reset = 0x40000001 },
++    { .name = "PHY_CONFIG2",
++      .addr = A_PHY_CONFIG2,
++      .reset = 0x40000001 },
++    { .name = "PHY_CONFIG3",
++      .addr = A_PHY_CONFIG3,
++      .reset = 0x40000001 },
++    { .name = "PHY_INIT_RATIO0",
++      .addr = A_PHY_INIT_RATIO0 },
++    { .name = "PHY_INIT_RATIO1",
++      .addr = A_PHY_INIT_RATIO1 },
++    { .name = "PHY_INIT_RATIO2",
++      .addr = A_PHY_INIT_RATIO2 },
++    { .name = "PHY_INIT_RATIO3",
++      .addr = A_PHY_INIT_RATIO3 },
++    { .name = "PHY_RD_DQS_CFG0",
++      .addr = A_PHY_RD_DQS_CFG0,
++      .reset = 0x00000040 },
++    { .name = "PHY_RD_DQS_CFG1",
++      .addr = A_PHY_RD_DQS_CFG1,
++      .reset = 0x00000040 },
++    { .name = "PHY_RD_DQS_CFG2",
++      .addr = A_PHY_RD_DQS_CFG2,
++      .reset = 0x00000040 },
++    { .name = "PHY_RD_DQS_CFG3",
++      .addr = A_PHY_RD_DQS_CFG3,
++      .reset = 0x00000040 },
++    { .name = "PHY_WR_DQS_CFG0",
++      .addr = A_PHY_WR_DQS_CFG0 },
++    { .name = "PHY_WR_DQS_CFG1",
++      .addr = A_PHY_WR_DQS_CFG1 },
++    { .name = "PHY_WR_DQS_CFG2",
++      .addr = A_PHY_WR_DQS_CFG2 },
++    { .name = "PHY_WR_DQS_CFG3",
++      .addr = A_PHY_WR_DQS_CFG3 },
++    { .name = "PHY_WE_CFG0",
++      .addr = A_PHY_WE_CFG0,
++      .reset = 0x00000040 },
++    { .name = "PHY_WE_CFG1",
++      .addr = A_PHY_WE_CFG1,
++      .reset = 0x00000040 },
++    { .name = "PHY_WE_CFG2",
++      .addr = A_PHY_WE_CFG2,
++      .reset = 0x00000040 },
++    { .name = "PHY_WE_CFG3",
++      .addr = A_PHY_WE_CFG3,
++      .reset = 0x00000040 },
++
++    /* 0x17C - 0x194: Write data slaves, misc */
++    { .name = "WR_DATA_SLV0",
++      .addr = A_WR_DATA_SLV0,
++      .reset = 0x00000080 },
++    { .name = "WR_DATA_SLV1",
++      .addr = A_WR_DATA_SLV1,
++      .reset = 0x00000080 },
++    { .name = "WR_DATA_SLV2",
++      .addr = A_WR_DATA_SLV2,
++      .reset = 0x00000080 },
++    { .name = "WR_DATA_SLV3",
++      .addr = A_WR_DATA_SLV3,
++      .reset = 0x00000080 },
++    { .name = "REG_64",
++      .addr = A_REG_64,
++      .reset = 0x10020000 },
++    { .name = "REG_65",
++      .addr = A_REG_65 },
++
++    /* 0x1A4 - 0x1C4: Misc registers */
++    { .name = "REG69_6A0",
++      .addr = A_REG69_6A0 },
++    { .name = "REG69_6A1",
++      .addr = A_REG69_6A1 },
++    { .name = "REG6C_6D2",
++      .addr = A_REG6C_6D2 },
++    { .name = "REG6C_6D3",
++      .addr = A_REG6C_6D3 },
++    { .name = "REG6E_710",
++      .addr = A_REG6E_710 },
++    { .name = "REG6E_711",
++      .addr = A_REG6E_711 },
++    { .name = "REG6E_712",
++      .addr = A_REG6E_712 },
++    { .name = "REG6E_713",
++      .addr = A_REG6E_713 },
++
++    /* 0x1CC - 0x1E8: DLL, PHY status */
++    { .name = "PHY_DLL_STS0",
++      .addr = A_PHY_DLL_STS0 },
++    { .name = "PHY_DLL_STS1",
++      .addr = A_PHY_DLL_STS1 },
++    { .name = "PHY_DLL_STS2",
++      .addr = A_PHY_DLL_STS2 },
++    { .name = "PHY_DLL_STS3",
++      .addr = A_PHY_DLL_STS3 },
++    { .name = "DLL_LOCK_STS",
++      .addr = A_DLL_LOCK_STS },
++    { .name = "PHY_CTRL_STS",
++      .addr = A_PHY_CTRL_STS },
++    { .name = "PHY_CTRL_STS_REG2",
++      .addr = A_PHY_CTRL_STS_REG2 },
++
++    /* 0x200 - 0x2B4: AXI, LPDDR, misc */
++    { .name = "AXI_ID",
++      .addr = A_AXI_ID },
++    { .name = "PAGE_MASK",
++      .addr = A_PAGE_MASK },
++    { .name = "AXI_PRIORITY_WR_PORT0",
++      .addr = A_AXI_PRIORITY_WR_PORT0,
++      .reset = 0x000803FF },
++    { .name = "AXI_PRIORITY_WR_PORT1",
++      .addr = A_AXI_PRIORITY_WR_PORT1,
++      .reset = 0x000803FF },
++    { .name = "AXI_PRIORITY_WR_PORT2",
++      .addr = A_AXI_PRIORITY_WR_PORT2,
++      .reset = 0x000803FF },
++    { .name = "AXI_PRIORITY_WR_PORT3",
++      .addr = A_AXI_PRIORITY_WR_PORT3,
++      .reset = 0x000803FF },
++    { .name = "AXI_PRIORITY_RD_PORT0",
++      .addr = A_AXI_PRIORITY_RD_PORT0,
++      .reset = 0x000003FF },
++    { .name = "AXI_PRIORITY_RD_PORT1",
++      .addr = A_AXI_PRIORITY_RD_PORT1,
++      .reset = 0x000003FF },
++    { .name = "AXI_PRIORITY_RD_PORT2",
++      .addr = A_AXI_PRIORITY_RD_PORT2,
++      .reset = 0x000003FF },
++    { .name = "AXI_PRIORITY_RD_PORT3",
++      .addr = A_AXI_PRIORITY_RD_PORT3,
++      .reset = 0x000003FF },
++    { .name = "EXCL_ACCESS_CFG0",
++      .addr = A_EXCL_ACCESS_CFG0 },
++    { .name = "EXCL_ACCESS_CFG1",
++      .addr = A_EXCL_ACCESS_CFG1 },
++    { .name = "EXCL_ACCESS_CFG2",
++      .addr = A_EXCL_ACCESS_CFG2 },
++    { .name = "EXCL_ACCESS_CFG3",
++      .addr = A_EXCL_ACCESS_CFG3 },
++    { .name = "MODE_REG_READ",
++      .addr = A_MODE_REG_READ },
++    { .name = "LPDDR_CTRL0",
++      .addr = A_LPDDR_CTRL0 },
++    { .name = "LPDDR_CTRL1",
++      .addr = A_LPDDR_CTRL1 },
++    { .name = "LPDDR_CTRL2",
++      .addr = A_LPDDR_CTRL2,
++      .reset = 0x003C0015 },
++    { .name = "LPDDR_CTRL3",
++      .addr = A_LPDDR_CTRL3,
++      .reset = 0x00000601 },
 +};
 +
-+static void beckhoff_ccat_reset(DeviceState *dev)
++static void zynq_ddrctrl_reset(DeviceState *dev)
 +{
-+    BeckhoffCcat *s = BECKHOFF_CCAT(dev);
++    DDRCTRLState *s = DDRCTRL(dev);
++    int i;
 +
-+    memset(&s->mem[0], 0, MAX_NUM_SLOTS * CCAT_FUNCTION_BLOCK_SIZE);
-+
-+    size_t offset = 0 * CCAT_FUNCTION_BLOCK_SIZE;
-+    stw_le_p(&s->mem[offset + 0], CCAT_FUN_TYPE_ENTRY);
-+    stw_le_p(&s->mem[offset + 2], 0x0001);
-+    stl_le_p(&s->mem[offset + 4], CCAT_INFO_BLOCK_PARAMS);
-+    stl_le_p(&s->mem[offset + 8], CCAT_ID_1);
-+    stl_le_p(&s->mem[offset + 12], CCAT_ID_2);
-+
-+    offset = 11 * CCAT_FUNCTION_BLOCK_SIZE;
-+    stw_le_p(&s->mem[offset + 0], CCAT_FUN_TYPE_EEPROM);
-+    stw_le_p(&s->mem[offset + 2], 0x0001);
-+    stl_le_p(&s->mem[offset + 4], 0);
-+    stl_le_p(&s->mem[offset + 8], CCAT_EEPROM_OFFSET);
-+    stl_le_p(&s->mem[offset + 12], CCAT_EEPROM_SIZE);
-+
-+    offset = 15 * CCAT_FUNCTION_BLOCK_SIZE;
-+    stw_le_p(&s->mem[offset + 0], CCAT_FUN_TYPE_DMA);
-+    stw_le_p(&s->mem[offset + 2], 0x0000);
-+    stl_le_p(&s->mem[offset + 4], 0);
-+    stl_le_p(&s->mem[offset + 8], CCAT_DMA_OFFSET);
-+    stl_le_p(&s->mem[offset + 12], CCAT_DMA_SIZE);
-+}
-+
-+static void beckhoff_ccat_realize(DeviceState *dev, Error **errp)
-+{
-+    BeckhoffCcat *s = BECKHOFF_CCAT(dev);
-+    BlockBackend *blk;
-+
-+    blk = s->eeprom_blk;
-+
-+    if (blk) {
-+        uint64_t blk_size = blk_getlength(blk);
-+        if (!is_power_of_2(blk_size)) {
-+            error_setg(errp, "Blockend size is not a power of two.");
-+            return;
-+        }
-+
-+        if (blk_size < 512) {
-+            error_setg(errp, "Blockend size is too small.");
-+            return;
-+        } else {
-+            blk_set_perm(blk, BLK_PERM_WRITE, BLK_PERM_ALL, errp);
-+
-+            s->eeprom_size = blk_size;
-+            s->eeprom_blk = blk;
-+            s->eeprom_storage = blk_blockalign(s->eeprom_blk, s->eeprom_size);
-+
-+            if (!blk_check_size_and_read_all(s->eeprom_blk, DEVICE(s),
-+                                             s->eeprom_storage, s->eeprom_size,
-+                                             errp)) {
-+                return;
-+            }
-+        }
-+    } else {
-+        s->eeprom_size = EEPROM_MEMORY_SIZE;
-+        s->eeprom_storage = blk_blockalign(NULL, s->eeprom_size);
-+        memset(s->eeprom_storage, 0x00, s->eeprom_size);
++    for (i = 0; i < ZYNQ_DDRCTRL_NUM_REG; ++i) {
++        register_reset(&s->regs_info[i]);
 +    }
 +}
 +
-+static void beckhoff_ccat_init(Object *obj)
-+{
-+    BeckhoffCcat *s = BECKHOFF_CCAT(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++static const MemoryRegionOps ddrctrl_ops = {
++    .read = register_read_memory,
++    .write = register_write_memory,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++};
 +
-+    memory_region_init_io(&s->iomem, obj, &beckhoff_ccat_ops, s,
-+                          TYPE_BECKHOFF_CCAT, CCAT_MEM_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription vmstate_beckhoff_ccat = {
-+    .name = "beckhoff-ccat",
++static const VMStateDescription vmstate_zynq_ddrctrl = {
++    .name = "zynq_ddrc",
 +    .version_id = 1,
 +    .minimum_version_id = 1,
 +    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT8_ARRAY(mem, BeckhoffCcat, CCAT_MEM_SIZE),
-+        VMSTATE_UINT32(eeprom_size, BeckhoffCcat),
-+        VMSTATE_VBUFFER_UINT32(eeprom_storage, BeckhoffCcat, 1, NULL,
-+                               eeprom_size),
++        VMSTATE_UINT32_ARRAY(reg, DDRCTRLState, ZYNQ_DDRCTRL_NUM_REG),
 +        VMSTATE_END_OF_LIST()
 +    }
 +};
 +
-+static const Property beckhoff_ccat_properties[] = {
-+    DEFINE_PROP_DRIVE("eeprom", BeckhoffCcat, eeprom_blk),
-+};
++static void zynq_ddrctrl_init(Object *obj)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    DDRCTRLState *s = DDRCTRL(obj);
 +
-+static void beckhoff_ccat_class_init(ObjectClass *klass, void *data)
++    s->reg_array =
++        register_init_block32(DEVICE(obj), xlnx_zynq_ddrc_regs_info,
++                              ARRAY_SIZE(xlnx_zynq_ddrc_regs_info),
++                              s->regs_info, s->reg,
++                              &ddrctrl_ops,
++                              DDRCTRL_ERR_DEBUG,
++                              ZYNQ_DDRCTRL_MMIO_SIZE);
++
++    sysbus_init_mmio(sbd, &s->reg_array->mem);
++}
++
++static void zynq_ddrctrl_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->realize = beckhoff_ccat_realize;
-+    device_class_set_legacy_reset(dc, beckhoff_ccat_reset);
-+    dc->vmsd = &vmstate_beckhoff_ccat;
-+    device_class_set_props(dc, beckhoff_ccat_properties);
++
++    device_class_set_legacy_reset(dc, zynq_ddrctrl_reset);
++    dc->vmsd = &vmstate_zynq_ddrctrl;
 +}
 +
-+static const TypeInfo beckhoff_ccat_info = {
-+ .name = TYPE_BECKHOFF_CCAT,
-+ .parent = TYPE_SYS_BUS_DEVICE,
-+ .instance_size = sizeof(BeckhoffCcat),
-+ .instance_init = beckhoff_ccat_init,
-+ .class_init = beckhoff_ccat_class_init,
++static const TypeInfo ddrctrl_info = {
++    .name = TYPE_DDRCTRL,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(DDRCTRLState),
++    .instance_init = zynq_ddrctrl_init,
++    .class_init = zynq_ddrctrl_class_init,
 +};
 +
-+static void beckhoff_ccat_register_types(void)
++static void ddrctrl_register_types(void)
 +{
-+    type_register_static(&beckhoff_ccat_info);
++    type_register_static(&ddrctrl_info);
 +}
 +
-+type_init(beckhoff_ccat_register_types)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 6ee7b6c71d..1fc1468464 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -14,6 +14,7 @@ system_ss.add(when: 'CONFIG_PL310', if_true: files('arm_l2x0.c'))
- system_ss.add(when: 'CONFIG_INTEGRATOR_DEBUG', if_true: files('arm_integrator_debug.c'))
- system_ss.add(when: 'CONFIG_A9SCU', if_true: files('a9scu.c'))
- system_ss.add(when: 'CONFIG_ARM11SCU', if_true: files('arm11scu.c'))
-+system_ss.add(when: 'CONFIG_BECKHOFF_CCAT', if_true: files('beckhoff_ccat.c'))
- 
- system_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_ras.c'))
- 
++type_init(ddrctrl_register_types)
+diff --git a/include/hw/misc/xlnx-zynq-ddrc.h b/include/hw/misc/xlnx-zynq-ddrc.h
+new file mode 100644
+index 0000000000..3d45a02176
+--- /dev/null
++++ b/include/hw/misc/xlnx-zynq-ddrc.h
+@@ -0,0 +1,148 @@
++/*
++ * QEMU model of the Xilinx Zynq Double Data Rate Controller
++ *
++ * Copyright (c) Beckhoff Automation GmbH. & Co. KG
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef XLNX_ZYNQ_DDRC_H
++#define XLNX_ZYNQ_DDRC_H
++
++#include "hw/sysbus.h"
++#include "hw/register.h"
++
++#define TYPE_DDRCTRL "zynq.ddr-ctlr"
++#define DDRCTRL(obj) \
++    OBJECT_CHECK(DDRCTRLState, (obj), TYPE_DDRCTRL)
++
++REG32(DDRC_CTRL, 0x00)
++REG32(TWO_RANK_CFG, 0x04)
++REG32(HPR_REG, 0x08)
++REG32(LPR_REG, 0x0C)
++REG32(WR_REG, 0x10)
++REG32(DRAM_PARAM_REG0, 0x14)
++REG32(DRAM_PARAM_REG1, 0x18)
++REG32(DRAM_PARAM_REG2, 0x1C)
++REG32(DRAM_PARAM_REG3, 0x20)
++REG32(DRAM_PARAM_REG4, 0x24)
++REG32(DRAM_INIT_PARAM, 0x28)
++REG32(DRAM_EMR_REG, 0x2C)
++REG32(DRAM_EMR_MR_REG, 0x30)
++REG32(DRAM_BURST8_RDWR, 0x34)
++REG32(DRAM_DISABLE_DQ, 0x38)
++REG32(DRAM_ADDR_MAP_BANK, 0x3C)
++REG32(DRAM_ADDR_MAP_COL, 0x40)
++REG32(DRAM_ADDR_MAP_ROW, 0x44)
++REG32(DRAM_ODT_REG, 0x48)
++REG32(PHY_DBG_REG, 0x4C)
++REG32(PHY_CMD_TIMEOUT_RDDATA_CPT, 0x50)
++REG32(MODE_STS_REG, 0x54)
++    FIELD(MODE_STS_REG, DDR_REG_DBG_STALL, 3, 3)
++    FIELD(MODE_STS_REG, DDR_REG_OPERATING_MODE, 0, 2)
++REG32(DLL_CALIB, 0x58)
++REG32(ODT_DELAY_HOLD, 0x5C)
++REG32(CTRL_REG1, 0x60)
++REG32(CTRL_REG2, 0x64)
++REG32(CTRL_REG3, 0x68)
++REG32(CTRL_REG4, 0x6C)
++REG32(CTRL_REG5, 0x78)
++REG32(CTRL_REG6, 0x7C)
++REG32(CHE_REFRESH_TIMER0, 0xA0)
++REG32(CHE_T_ZQ, 0xA4)
++REG32(CHE_T_ZQ_SHORT_INTERVAL_REG, 0xA8)
++REG32(DEEP_PWRDWN_REG, 0xAC)
++REG32(REG_2C, 0xB0)
++REG32(REG_2D, 0xB4)
++REG32(DFI_TIMING, 0xB8)
++REG32(CHE_ECC_CONTROL_REG_OFFSET, 0xC4)
++REG32(CHE_CORR_ECC_LOG_REG_OFFSET, 0xC8)
++REG32(CHE_CORR_ECC_ADDR_REG_OFFSET, 0xCC)
++REG32(CHE_CORR_ECC_DATA_31_0_REG_OFFSET, 0xD0)
++REG32(CHE_CORR_ECC_DATA_63_32_REG_OFFSET, 0xD4)
++REG32(CHE_CORR_ECC_DATA_71_64_REG_OFFSET, 0xD8)
++REG32(CHE_UNCORR_ECC_LOG_REG_OFFSET, 0xDC)
++REG32(CHE_UNCORR_ECC_ADDR_REG_OFFSET, 0xE0)
++REG32(CHE_UNCORR_ECC_DATA_31_0_REG_OFFSET, 0xE4)
++REG32(CHE_UNCORR_ECC_DATA_63_32_REG_OFFSET, 0xE8)
++REG32(CHE_UNCORR_ECC_DATA_71_64_REG_OFFSET, 0xEC)
++REG32(CHE_ECC_STATS_REG_OFFSET, 0xF0)
++REG32(ECC_SCRUB, 0xF4)
++REG32(CHE_ECC_CORR_BIT_MASK_31_0_REG_OFFSET, 0xF8)
++REG32(CHE_ECC_CORR_BIT_MASK_63_32_REG_OFFSET, 0xFC)
++REG32(PHY_RCVER_ENABLE, 0x114)
++REG32(PHY_CONFIG0, 0x118)
++REG32(PHY_CONFIG1, 0x11C)
++REG32(PHY_CONFIG2, 0x120)
++REG32(PHY_CONFIG3, 0x124)
++REG32(PHY_INIT_RATIO0, 0x12C)
++REG32(PHY_INIT_RATIO1, 0x130)
++REG32(PHY_INIT_RATIO2, 0x134)
++REG32(PHY_INIT_RATIO3, 0x138)
++REG32(PHY_RD_DQS_CFG0, 0x140)
++REG32(PHY_RD_DQS_CFG1, 0x144)
++REG32(PHY_RD_DQS_CFG2, 0x148)
++REG32(PHY_RD_DQS_CFG3, 0x14C)
++REG32(PHY_WR_DQS_CFG0, 0x154)
++REG32(PHY_WR_DQS_CFG1, 0x158)
++REG32(PHY_WR_DQS_CFG2, 0x15C)
++REG32(PHY_WR_DQS_CFG3, 0x160)
++REG32(PHY_WE_CFG0, 0x168)
++REG32(PHY_WE_CFG1, 0x16C)
++REG32(PHY_WE_CFG2, 0x170)
++REG32(PHY_WE_CFG3, 0x174)
++REG32(WR_DATA_SLV0, 0x17C)
++REG32(WR_DATA_SLV1, 0x180)
++REG32(WR_DATA_SLV2, 0x184)
++REG32(WR_DATA_SLV3, 0x188)
++REG32(REG_64, 0x190)
++REG32(REG_65, 0x194)
++REG32(REG69_6A0, 0x1A4)
++REG32(REG69_6A1, 0x1A8)
++REG32(REG6C_6D2, 0x1B0)
++REG32(REG6C_6D3, 0x1B4)
++REG32(REG6E_710, 0x1B8)
++REG32(REG6E_711, 0x1BC)
++REG32(REG6E_712, 0x1C0)
++REG32(REG6E_713, 0x1C4)
++REG32(PHY_DLL_STS0, 0x1CC)
++REG32(PHY_DLL_STS1, 0x1D0)
++REG32(PHY_DLL_STS2, 0x1D4)
++REG32(PHY_DLL_STS3, 0x1D8)
++REG32(DLL_LOCK_STS, 0x1E0)
++REG32(PHY_CTRL_STS, 0x1E4)
++REG32(PHY_CTRL_STS_REG2, 0x1E8)
++REG32(AXI_ID, 0x200)
++REG32(PAGE_MASK, 0x204)
++REG32(AXI_PRIORITY_WR_PORT0, 0x208)
++REG32(AXI_PRIORITY_WR_PORT1, 0x20C)
++REG32(AXI_PRIORITY_WR_PORT2, 0x210)
++REG32(AXI_PRIORITY_WR_PORT3, 0x214)
++REG32(AXI_PRIORITY_RD_PORT0, 0x218)
++REG32(AXI_PRIORITY_RD_PORT1, 0x21C)
++REG32(AXI_PRIORITY_RD_PORT2, 0x220)
++REG32(AXI_PRIORITY_RD_PORT3, 0x224)
++REG32(EXCL_ACCESS_CFG0, 0x294)
++REG32(EXCL_ACCESS_CFG1, 0x298)
++REG32(EXCL_ACCESS_CFG2, 0x29C)
++REG32(EXCL_ACCESS_CFG3, 0x2A0)
++REG32(MODE_REG_READ, 0x2A4)
++REG32(LPDDR_CTRL0, 0x2A8)
++REG32(LPDDR_CTRL1, 0x2AC)
++REG32(LPDDR_CTRL2, 0x2B0)
++REG32(LPDDR_CTRL3, 0x2B4)
++
++
++#define ZYNQ_DDRCTRL_MMIO_SIZE      0x400
++#define ZYNQ_DDRCTRL_NUM_REG        (ZYNQ_DDRCTRL_MMIO_SIZE / 4)
++
++typedef struct DDRCTRLState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion iomem;
++
++    RegisterInfoArray *reg_array;
++    uint32_t reg[ZYNQ_DDRCTRL_NUM_REG];
++    RegisterInfo regs_info[ZYNQ_DDRCTRL_NUM_REG];
++} DDRCTRLState;
++#endif
 -- 
 2.47.3
 

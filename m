@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFBE2CD13D2
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 10:32:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE403CCFA1A
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 10:32:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIlcj-0008RH-F6; Tue, 11 Nov 2025 05:29:17 -0500
+	id 1vIlce-0008KS-Rj; Tue, 11 Nov 2025 05:29:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1vIlcH-0007Vg-J5
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 05:28:49 -0500
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ id 1vIlcK-0007a2-2a
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 05:28:52 -0500
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1vIlcB-0000FW-1k
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 05:28:47 -0500
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-b64cdbb949cso687168766b.1
- for <qemu-arm@nongnu.org>; Tue, 11 Nov 2025 02:28:40 -0800 (PST)
+ id 1vIlcH-0000GC-5t
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 05:28:51 -0500
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-b714b1290aeso670706566b.2
+ for <qemu-arm@nongnu.org>; Tue, 11 Nov 2025 02:28:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1762856919; x=1763461719; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1762856922; x=1763461722; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4zu0Rm6kaYJRSMkds5jE0Qr5Ypoby5zFJAM6oroUc1k=;
- b=OqBcmjvmU8xp0wthNlysJeDhXQXIULa6Aqt7adSKaEeVTPedwQvOyr4t1EAVt4m6Ye
- CZpWQ/OU8SMXj9XO7VJWyYI/OrLuXKCTBnQeBNwV56E8jIGJR3cFfHZ6uURNa+VLIags
- ADZNnYiib2uqBAIeZESI5dkMAVc3S+0dGu/ZPXiFxzW9X3mNpD4MLohWqOPrR/n08HIl
- lnbZiUm7VO2o7t7pEbYfNB29uF8naT/BOwmii+6zezXR7pTTHeOWuWydp/dyIQt2Fpcp
- MJqVTjzCzGV6GqXSAg1zfXrXZ1iVj4g8qwvCnw43j1zem1RTTUoIcH8jzoaPJQ1C1/E4
- 0Cyg==
+ bh=f25omtBgfs0TevR7//KmvifCDlD013yaB1K85NENVXU=;
+ b=hwGYPzfz7On4nfK2oK6FrJgcTp90bwvpIkwJeJWySxKLB5SMwLlCRqLMROOmnVUxvO
+ zdU/1QY8uleY1JYDMQ/whWAg5Dz/2ixjLH5s5lXfgOlk/GdsR/ce02Nu6BRX5sH6ELfy
+ m38To3CGaitX/5NInxYBn4+L7AHoK+ZmkUpSTq2YxUxhFbuA8qPFfUlPUoTVFi+eqEIZ
+ kYfkrCpXhKZURcIuolIaZNG0v7iYgI/qIk/4i0SLSu+h56stXBN9MqBfG9g0mWMyqLqo
+ s92aUCIRRWLmB49KLsSICqgRnQiyRTZ9Nseva1OQSh6NHTXGZZPKBjFtYKXAmDudahgV
+ sYLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762856919; x=1763461719;
+ d=1e100.net; s=20230601; t=1762856922; x=1763461722;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=4zu0Rm6kaYJRSMkds5jE0Qr5Ypoby5zFJAM6oroUc1k=;
- b=QCIfFPNezO/UZW8nUm4vyfRkuIl0zg2kubwCii58HeCe/ImGdadvBeB7VulcfRfd/t
- QQhanhBHETCE4MWKuzAMeSrIAKYEyqg23NS4eUN+Y9GB5eX/WHzm8KHt9brZJzT4gt/B
- gtdISMsDwjgLoAYOXKVlFouH8SYqr/YiGhHW+kiUvyFGR69gyd8yxHtD1Zyd14BuiXm1
- PnScHkJNqxEC03hHsKSfHjMbMVInJvHGL1B6W5K69GzO7ngozk7JIJbYpYr3CSlb5MNr
- 4iJxHzRF83SS1NAxtyGHsalN27XzyrTUPeAhuSCvh6sXjqeUYoOtEf7MtysjUnOy+fPt
- vDPQ==
+ bh=f25omtBgfs0TevR7//KmvifCDlD013yaB1K85NENVXU=;
+ b=N6hye7ut3/HivImn3zi5QPlpmBtHOg4WvTgPFPDWh75Tg6jMW4v7MKKhb+NYVl+5we
+ T5jd8y3rQV71CCjP0Hndw3QFNPGM9wCywgqS10y5KzltIQ5f8863a3xjmJZQQlCPvyNB
+ Xvco0DK4V7jzqukPbg7X+GnZdLgq5L+zuxgtbMhAhZjYpomZCutOuXBkjASzU+sRbYO2
+ CczzK4+TYlw4vj5JsdSDts2qwtBcPoJHe3uTjCcer/1e98lzUyoVvZXX6h9K25Uv2Nu5
+ 8Itay8y5G1WqaVak20eKTt+Ii0KFPsPo8BKBGU+sRrlYgRfDTs4cobx1B2dqJ+aPDi33
+ KTSw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXLbXksYHQZ2GpcUGELxOYpg+JWwodO0dWZqTIcY/pD7O0mLzM1dnDS/wwqCppo71MdGCl1W/GPYQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwkqaqpUiuPvVcVzCeDlRr5zniiFAh2lyFIITQZ4ls00HBCQshy
- 4suUnFfhi2hWajEHf+vgb4Ez4RcX1jA3O6D+uDcFeVIwPCTrB7Q+DfuqxLTaAxsb
-X-Gm-Gg: ASbGncv1zApL2BxjltoZjJF1d8rkouhKFu0r6oDNH+TaKKGs9GJlU1oZ5uAt7jPmfDq
- 1RU9rJ5f1Xm1et96ra5S1ApOOQQoE7gabq3otcEJcO8TViYJr9RN1aBafKZ4FeHJJdTCs9utVAe
- EtojXEwCw+BXTG0f5RcQbe1n0PLXh2h2HRY7MBV9kGilt7iq2ZqMcgSMv5ENregUknYho/OID0R
- 6X1HmJcFIPYvF3lekDYHRvJizo7xS0ajLdDoZzOlVMp2IQ1JMGcfNOZV2XBL/pZ0jcm2WWowC/v
- n9faBzbtsrL5Crxm+KdRA9SbWadD3uhsdHCrbWfZAteHPkRZMSD3cbHVMmQyERukj7+R/OyJzqa
- sEjajV8ym6BrD+T23QJIrfWQpiuy7+927hxIPghQ/OP/nQJUnl0xIHwZmdE1dTlG1gcQIwzOW4o
- 9YGJqd23GrasaKuNCjvvg5Bg==
-X-Google-Smtp-Source: AGHT+IGKJxSK2MsTiZQr6YSNqN+N8dUmQNNXUM73L+gy87N6msmi8tJWFcz6kE6LzJQ4C7TvWayVSQ==
-X-Received: by 2002:a17:907:3c91:b0:b3c:193:820e with SMTP id
- a640c23a62f3a-b72e02ca102mr1162872066b.13.1762856918877; 
- Tue, 11 Nov 2025 02:28:38 -0800 (PST)
+ AJvYcCWQApuBbKHQ3EPlnPTs7PYOawW806U+tRGQd1lygofrI5pdLHhkiV+4OhXabk7+cvH0L6Mj8IBqyA==@nongnu.org
+X-Gm-Message-State: AOJu0YyeUoGszZOD23Qa7/7UP0gRTn21CcvJDSFYrfaq22nOX2Z4nWCq
+ 28q4QOgLsSc2h5PN8uTBB/WN+Hukk9JxTEO0lzcZOBW2j7z0cNBKbtAK
+X-Gm-Gg: ASbGncvgu4CXFJUUEuftmOSjGr3iu/pJPDK/BE45dKHvXLoc86Q+s32Dr0hpOipKWTD
+ kudfFsij3VR9NItebkut3ZI/ZaJ9zlLsQn2BLHlO46HDdrKf7cASzkDQU1utTDj7FUUpaqGsYbj
+ Oemut5YBqW6Q/AOLOrcHVgMyPm6P04TNq2vwtzHIdVRGYFKl/DPykGv58ICPAOA9jFBOBB6U9gE
+ QUKDrjkxMFuuQ0nuKZLwJxKuOC+ARtWxNFS6AuA5mILMZV4KKYFkC5Bj9opUkuzczy08kYpYrla
+ /O3slYJCO3QPu+NGhH11FM+OjH0prDZpXDPzO3nNXKedx9r63the55YFmXjs86NdeIBcY4hnDLu
+ 0RTqepvJGMnWLBQe65c8IwsfK2baTAAH6VSMDxO3f9vOODztPFPw8fWUbY4eeIReQ2xIOFbxeA+
+ to9GGxgwdpqraDIf6IBvA8d6D7N5HBq+ai
+X-Google-Smtp-Source: AGHT+IG/DF2YjzTNfFm4f4hlzcdh5/CzFCiTeGXost6wpPq4FqBWreDCamev1Vp9QhJhsTYuerNBAQ==
+X-Received: by 2002:a17:907:7b83:b0:b40:e687:c2c with SMTP id
+ a640c23a62f3a-b72e0562db8mr1112914766b.37.1762856921585; 
+ Tue, 11 Nov 2025 02:28:41 -0800 (PST)
 Received: from PC-DA2D10.beckhoff.com
  ([2001:9e8:dc12:ce00:ae91:a1ff:fe8b:15a7])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b72bdbd1ecfsm1290619366b.10.2025.11.11.02.28.38
+ a640c23a62f3a-b72bdbd1ecfsm1290619366b.10.2025.11.11.02.28.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Nov 2025 02:28:38 -0800 (PST)
+ Tue, 11 Nov 2025 02:28:41 -0800 (PST)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -78,17 +78,19 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Corvin=20K=C3=B6hne?= <c.koehne@beckhoff.com>,
  Kevin Wolf <kwolf@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- YannickV <Y.Vossen@beckhoff.com>
-Subject: [PATCH v4 01/15] hw/timer: Make frequency configurable
-Date: Tue, 11 Nov 2025 11:28:22 +0100
-Message-ID: <20251111102836.212535-2-corvin.koehne@gmail.com>
+ YannickV <Y.Vossen@beckhoff.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@amd.com>
+Subject: [PATCH v4 04/15] hw/arm/zynq-devcfg: Prevent unintended unlock during
+ initialization
+Date: Tue, 11 Nov 2025 11:28:25 +0100
+Message-ID: <20251111102836.212535-5-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251111102836.212535-1-corvin.koehne@gmail.com>
 References: <20251111102836.212535-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=corvin.koehne@gmail.com; helo=mail-ej1-x634.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-ej1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,143 +115,33 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-The a9 global timer and arm mp timers rely on the PERIPHCLK as
-their clock source. The current implementation does not take
-that into account. That causes problems for applications assuming
-other frequencies than 1 GHz.
+During the emulation startup, all registers are reset, which triggers the
+`r_unlock_post_write` function with a value of 0. This led to an
+unintended memory access disable, making the devcfg unusable.
 
-We can now configure frequencies for the a9 global timer and
-arm mp timer. By allowing these values to be set according to
-the application's needs, we ensure that the timers behave
-consistently with the expected system configuration. The SoC
-configures the device correctly.
-
-Information can be found in the Zynq 7000 SoC Technical
-Reference Manual under Timers.
-https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM
+During startup, the memory space no longer gets locked.
 
 Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 ---
- hw/timer/a9gtimer.c            |  9 ++++++---
- hw/timer/arm_mptimer.c         | 15 +++++++++++----
- include/hw/timer/a9gtimer.h    |  1 +
- include/hw/timer/arm_mptimer.h |  2 ++
- 4 files changed, 20 insertions(+), 7 deletions(-)
+ hw/dma/xlnx-zynq-devcfg.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-index 9835c35483..090d14c683 100644
---- a/hw/timer/a9gtimer.c
-+++ b/hw/timer/a9gtimer.c
-@@ -63,9 +63,9 @@ static inline int a9_gtimer_get_current_cpu(A9GTimerState *s)
- static inline uint64_t a9_gtimer_get_conv(A9GTimerState *s)
+diff --git a/hw/dma/xlnx-zynq-devcfg.c b/hw/dma/xlnx-zynq-devcfg.c
+index b838c1c0d0..f28d0015e6 100644
+--- a/hw/dma/xlnx-zynq-devcfg.c
++++ b/hw/dma/xlnx-zynq-devcfg.c
+@@ -221,7 +221,9 @@ static void r_unlock_post_write(RegisterInfo *reg, uint64_t val)
  {
-     uint64_t prescale = extract32(s->control, R_CONTROL_PRESCALER_SHIFT,
--                                  R_CONTROL_PRESCALER_LEN);
+     XlnxZynqDevcfg *s = XLNX_ZYNQ_DEVCFG(reg->opaque);
+     const char *device_prefix = object_get_typename(OBJECT(s));
 -
--    return (prescale + 1) * 10;
-+                                  R_CONTROL_PRESCALER_LEN) + 1;
-+    uint64_t scaled_prescaler = prescale * 10;
-+    return muldiv64(scaled_prescaler, NANOSECONDS_PER_SECOND, s->freq_hz);
- }
- 
- static A9GTimerUpdate a9_gtimer_get_update(A9GTimerState *s)
-@@ -374,6 +374,9 @@ static const VMStateDescription vmstate_a9_gtimer = {
- };
- 
- static const Property a9_gtimer_properties[] = {
-+    /* Default clock-frequency is 1GHz (NANOSECONDS_PER_SECOND) */
-+    DEFINE_PROP_UINT64("clock-frequency", A9GTimerState, freq_hz,
-+                       NANOSECONDS_PER_SECOND),
-     DEFINE_PROP_UINT32("num-cpu", A9GTimerState, num_cpu, 0),
- };
- 
-diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
-index 803dad1e8a..cae07090f9 100644
---- a/hw/timer/arm_mptimer.c
-+++ b/hw/timer/arm_mptimer.c
-@@ -59,9 +59,11 @@ static inline void timerblock_update_irq(TimerBlock *tb)
- }
- 
- /* Return conversion factor from mpcore timer ticks to qemu timer ticks.  */
--static inline uint32_t timerblock_scale(uint32_t control)
-+static inline uint32_t timerblock_scale(TimerBlock *tb, uint32_t control)
- {
--    return (((control >> 8) & 0xff) + 1) * 10;
-+    uint64_t prescale = (((control >> 8) & 0xff) + 1);
-+    uint64_t scaled_prescaler = prescale * 10;
-+    return muldiv64(scaled_prescaler, NANOSECONDS_PER_SECOND, tb->freq_hz);
- }
- 
- /* Must be called within a ptimer transaction block */
-@@ -155,7 +157,7 @@ static void timerblock_write(void *opaque, hwaddr addr,
-             ptimer_stop(tb->timer);
-         }
-         if ((control & 0xff00) != (value & 0xff00)) {
--            ptimer_set_period(tb->timer, timerblock_scale(value));
-+            ptimer_set_period(tb->timer, timerblock_scale(tb, value));
-         }
-         if (value & 1) {
-             uint64_t count = ptimer_get_count(tb->timer);
-@@ -222,7 +224,8 @@ static void timerblock_reset(TimerBlock *tb)
-         ptimer_transaction_begin(tb->timer);
-         ptimer_stop(tb->timer);
-         ptimer_set_limit(tb->timer, 0, 1);
--        ptimer_set_period(tb->timer, timerblock_scale(0));
-+        ptimer_set_period(tb->timer,
-+            timerblock_scale(tb, tb->control));
-         ptimer_transaction_commit(tb->timer);
-     }
- }
-@@ -269,6 +272,7 @@ static void arm_mptimer_realize(DeviceState *dev, Error **errp)
-      */
-     for (i = 0; i < s->num_cpu; i++) {
-         TimerBlock *tb = &s->timerblock[i];
-+        tb->freq_hz = s->freq_hz;
-         tb->timer = ptimer_init(timerblock_tick, tb, PTIMER_POLICY);
-         sysbus_init_irq(sbd, &tb->irq);
-         memory_region_init_io(&tb->iomem, OBJECT(s), &timerblock_ops, tb,
-@@ -301,6 +305,9 @@ static const VMStateDescription vmstate_arm_mptimer = {
- };
- 
- static const Property arm_mptimer_properties[] = {
-+    /* Default clock-frequency is 1GHz (NANOSECONDS_PER_SECOND) */
-+    DEFINE_PROP_UINT64("clock-frequency", ARMMPTimerState, freq_hz,
-+                       NANOSECONDS_PER_SECOND),
-     DEFINE_PROP_UINT32("num-cpu", ARMMPTimerState, num_cpu, 0),
- };
- 
-diff --git a/include/hw/timer/a9gtimer.h b/include/hw/timer/a9gtimer.h
-index 6ae9122e4b..3b63d14927 100644
---- a/include/hw/timer/a9gtimer.h
-+++ b/include/hw/timer/a9gtimer.h
-@@ -76,6 +76,7 @@ struct A9GTimerState {
- 
-     MemoryRegion iomem;
-     /* static props */
-+    uint64_t freq_hz;
-     uint32_t num_cpu;
- 
-     QEMUTimer *timer;
-diff --git a/include/hw/timer/arm_mptimer.h b/include/hw/timer/arm_mptimer.h
-index 65a96e2a0d..da43a3d351 100644
---- a/include/hw/timer/arm_mptimer.h
-+++ b/include/hw/timer/arm_mptimer.h
-@@ -31,6 +31,7 @@ typedef struct {
-     uint32_t control;
-     uint32_t status;
-     struct ptimer_state *timer;
-+    uint64_t freq_hz;
-     qemu_irq irq;
-     MemoryRegion iomem;
- } TimerBlock;
-@@ -43,6 +44,7 @@ struct ARMMPTimerState {
-     SysBusDevice parent_obj;
-     /*< public >*/
- 
-+    uint64_t freq_hz;
-     uint32_t num_cpu;
-     TimerBlock timerblock[ARM_MPTIMER_MAX_CPUS];
-     MemoryRegion iomem;
++    if (device_is_in_reset(DEVICE(s))) {
++        return;
++    }
+     if (val == R_UNLOCK_MAGIC) {
+         DB_PRINT("successful unlock\n");
+         s->regs[R_CTRL] |= R_CTRL_PCAP_PR_MASK;
 -- 
 2.47.3
 

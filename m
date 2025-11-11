@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B242CCFA18
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 17:23:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C37CACCFA18
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 17:23:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIs5E-0003si-CI; Tue, 11 Nov 2025 12:23:09 -0500
+	id 1vIs57-0003P6-QI; Tue, 11 Nov 2025 12:23:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vIrzy-0005pl-QF
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 12:17:43 -0500
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ id 1vIrzx-0005oI-PL
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 12:17:42 -0500
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vIrzr-0003yk-Ii
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 12:17:42 -0500
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-640a0812658so6605253a12.0
- for <qemu-arm@nongnu.org>; Tue, 11 Nov 2025 09:17:35 -0800 (PST)
+ id 1vIrzq-0003y4-Mt
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 12:17:41 -0500
+Received: by mail-ej1-x62c.google.com with SMTP id
+ a640c23a62f3a-b6d402422c2so881949766b.2
+ for <qemu-arm@nongnu.org>; Tue, 11 Nov 2025 09:17:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1762881454; x=1763486254; darn=nongnu.org;
+ d=linaro.org; s=google; t=1762881453; x=1763486253; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2QDQ4kffpq2WZHg9gsRHpbpFNV16GXaUIYy7pK8ULY4=;
- b=t77uAlXEU8RqYXqcuLkxB1j4QpLDLNz+n/J8weORceSgTaLqmW3R7XmIpwHXYj4SIS
- Pj1+inHBMiOwJUagIayeBVninHQdBslWaKj9ThbQWO/eNKEzecVyXT1nfk6qV4o0EdzN
- c9wIcrkzBLS/wg7tCU+WFKENnNJ6z3VQz0MyyIXzaR0p8b3kdnzv9KdI/xYyCqCOCoi7
- t6WSqYqW+XBqzCd8zk3+y5mWo+VpkghMzMmU+bQYwUWODcKO2Tfn3wAas2paOD8ohQDN
- r392Bvfnv5XPRZTciCeuIQ00nh3O8TnL3TOxVVA0z7O/6HwOofqTbYXLGiR1KBSrMLVq
- TV/w==
+ bh=isiSnvhJheR3tndZoafatyQawN2Nwud/FinpWf6dJ+8=;
+ b=y0kFwpUyqlrkOuYSoPY7Ls0MQEze8SB/8VdSz4r0I2Dt/CTBEfAB8Me2AjgGiyn4Mm
+ L87+n8ABFaz5WQS9NcDYideCSZUsuvedmWqfpdOx0H23HkaKeHZbflvTpE15TB9oLp+w
+ j5fElrOF9BCh4C8ApVPRqHM3UAXc5nmWGuj1d/p94bFx6wI9u+hwbz7zsddXCfVTr8iq
+ PJPMNsrjan8U83x/h5U5CgyYVMeFLRpOG5l82n9SvgT044FVzBaq1H44qTTUWXLwxyzv
+ KGm9pKcmF7ccFl+mgeXW7XTWezSQ52on98Vs39OTbIzmC+vYH+7P16mbMnPi3p6V4+mt
+ KvOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762881454; x=1763486254;
+ d=1e100.net; s=20230601; t=1762881453; x=1763486253;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=2QDQ4kffpq2WZHg9gsRHpbpFNV16GXaUIYy7pK8ULY4=;
- b=MF+SlZcNZfMVFkUoFantDuZTS8XYx0oqX6NKJy8dKs7Mx3j1oBeZdaUP063YQShbmM
- yBB6f1M54xlyki2xwXduVe1WL19gH23hFWN2Mjz4YGkM8hI114KBvLekDIDMEQf8NR6y
- 6BkM1jno88zDrt/iEJkP9tlXi4layo81genKwa7ipsflLzD1dclOmf6kIfWZXA9eSVqm
- niJgGeqB9LofPQ1PlOD5dR2/2Dwisouo39Rd7uz+pUMBep/TMCsMmlCC2+ctgqlHQATt
- +7joLzuWTHFLbiDaT9L0+2MRpOGCjYn2kGTenzEeGVmzChNuUz7YBT2mrTGExVXK9vUy
- xioQ==
+ bh=isiSnvhJheR3tndZoafatyQawN2Nwud/FinpWf6dJ+8=;
+ b=UewIUxnwYXNAjX/PfFIrhUvk/Lu7u0gGMyNzMAeTW19ecE8ElEIy+jHDA/iMBH+ocs
+ pcuGKVmmxntQu71A1Y55Cia9pF3wU5n4ovNr1Kd8+iODDT892BkeJGgTm/Bo29GwB7Ec
+ wqODMFYUQgDZWsW80nJpL9ZM2Rdc6D3hIsmBMHI8JKxAdBoYvA3AnkWeXClpvvNpfybS
+ VWyPCdmnbUZ245kijji391sgjEsgIjoBXuGSLdRN1Ix+oEfdQztVlsZ/Cbzv+OErPO55
+ 6qTxCM+CczxM8uJJKvTgTjwe0O8pN0uBBwZSoKAdDGIcF7K6M7xLE/54l3KQ9+/8PnPb
+ GCEA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVSrlhnmt82c6K3ahfFmrkY5a/JJbif/dJ11dGTBHvZf3JxDBsR+Yb1nq727tRLDd8lW2PHPu55GA==@nongnu.org
-X-Gm-Message-State: AOJu0YwFy5zfr54ge4/2JzJ6zveDqKq3Lc3s20YQJ1O4vHdj9Qih6cb7
- Da0NE741LP6k8dYL8kYnzC7eYoYbyNX6oMjgmVMuNN2ZOVihk4uAVxDiyT/pfRh3GIc=
-X-Gm-Gg: ASbGncsaE8B4/kXPTugSo3iE5Pl16MtNSFSh09zlKuL2Ve0bNkznvOzTpKXXNkhcaYw
- aIrD3zyJw8bFX0fVb+FFMAgz2cg6Dpu3xjGgy48gQJ1Jxue2iXqTZHBn+mCWiMChFLAX9bWgTiD
- O9JpV8qa8HU0NMDFl7vfUKC+y0XdQjM0QhtPlXVZ9Gl6WtmBXg9uxEk6Sb2qWsIaqzPFHgWzlih
- MS3CiJDnhzgAfaelZZxKGe1VsjOaZ0mJ+jev5VzjTZfYoQm0QpiHSatI32FlBL2S3kSG3Cc5+Q0
- 5Y7vNnY8S1rUJrIV08sXY5gDV2OtRonjlpW5RHC6acHEkA0fn25PxNOAPak9J2jtTBlDD4z2yPp
- F/no05PDzg7HXOsQWalqI60sEBq10Dqu7wFJl8jlPApeW6V2Ap1BsWOP0PalS5yav//V7JXd7kZ
- iJmt66OxIJwtg=
-X-Google-Smtp-Source: AGHT+IE+RDj0TwfDoOTOklwVl+Igl7p37eF5Bxw8scuz9kTvOQEBuwZ1beKkOlM6q7bqG6/P92dsNg==
-X-Received: by 2002:a05:6402:40c5:b0:640:be87:a858 with SMTP id
- 4fb4d7f45d1cf-6415e80a8d3mr11552134a12.27.1762881453962; 
+ AJvYcCXWvb7614FrzjOfgwyu/6oMg7/pEXkMKTyHEJPzMhDXmbDmAsT2dNOpX0djTKcHoi5vP0VZBPqFrw==@nongnu.org
+X-Gm-Message-State: AOJu0YyDHzcD794HSEDFxJhC0pZMaopURFrPz/bwboUtErLuzks9p6Rn
+ oVTm8SUbcKJI6oTsMo5rtMzX/hoTKIRS0WEVAVU+7B+9WJYAaj0Lc/VQIyknyWAcyTg=
+X-Gm-Gg: ASbGncvWGXOuiWUo2ByF3ioJ4XJXCWCJzI86zWUmnj2LN7k9+uunC90BGGJOtzepLW2
+ Rk9zw7sjp67HJSiRPN6cZ3/o4nQpuv7r/N4ViZ/xVjAIqzEEd8VMFQmz+jVmU+HE+v7A7j0H8iD
+ PiYlh8dExHYgNrbtCmSRrf0tklbXre5wr2VydR5NJPsiK2t0k0oMquu2YHVx+Xt/2cUpDh5po2o
+ 5GSsDQQI66RSV7W4/xDR0lRqI3fA8T4FCsCDSDbviGsFeM/GWXkpwmvE1iJuY4yjVLg2uhha/AE
+ Su9741/g9JbjzzbYVRyDwSkLP3rPeO0q7HsgnEi+vpjcdiqy+12E17Ys/a92o99F26omOFowHve
+ 0+6L/tkgNbe11pCJE5K3hEn7QMmeBdfFrhBjzDbgm/+3mmQNlDM3UTzPPtfcikK11WcUYvy0mY8
+ lC7LYkEBo3Pfk=
+X-Google-Smtp-Source: AGHT+IGnxqaazuqopfjBF2D2bxQy7inIkMJjWQtlK4Zk1+ctTwGetZeDZydQBswHM+F6dfF9UIkOVw==
+X-Received: by 2002:a17:907:7e8f:b0:b3f:cc6d:e0a8 with SMTP id
+ a640c23a62f3a-b72e02d3b42mr1422888466b.17.1762881453143; 
  Tue, 11 Nov 2025 09:17:33 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6411f862cd7sm13899520a12.30.2025.11.11.09.17.28
+ a640c23a62f3a-b72bf97d3c0sm1437124666b.36.2025.11.11.09.17.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Nov 2025 09:17:30 -0800 (PST)
+ Tue, 11 Nov 2025 09:17:28 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id DF83D5F8FC;
+ by draig.lan (Postfix) with ESMTP id 74C82607D3;
  Tue, 11 Nov 2025 17:17:25 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -84,19 +84,18 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
  Thomas Huth <thuth@redhat.com>,
  Dmitry Osipenko <dmitry.osipenko@collabora.com>,
  BALATON Zoltan <balaton@eik.bme.hu>,
- Gustavo Romero <gustavo.romero@linaro.org>
-Subject: [PATCH 14/16] gitlab: suppress custom runners being triggered by
- schedule
-Date: Tue, 11 Nov 2025 17:17:21 +0000
-Message-ID: <20251111171724.78201-15-alex.bennee@linaro.org>
+ Gustavo Romero <gustavo.romero@linaro.org>, qemu-stable@nongnu.org
+Subject: [PATCH 10/16] tests: move test_kvm_xen to share.linaro.org
+Date: Tue, 11 Nov 2025 17:17:17 +0000
+Message-ID: <20251111171724.78201-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251111171724.78201-1-alex.bennee@linaro.org>
 References: <20251111171724.78201-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,98 +118,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Otherwise the mere presence of the RUNNER env vars is enough to
-trigger the jobs.
+Linaro are migrating file-hosting from the old NextCloud instance to
+another sharing site.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: qemu-stable@nongnu.org
 ---
- .gitlab-ci.d/custom-runners/debian-13-ppc64le.yml    |  2 +-
- .gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml | 12 ++++++------
- .gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml   |  2 +-
- 3 files changed, 8 insertions(+), 8 deletions(-)
+ tests/functional/x86_64/test_kvm_xen.py | 17 +++++------------
+ 1 file changed, 5 insertions(+), 12 deletions(-)
 
-diff --git a/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
-index 6733a8e0dae..9d87268194e 100644
---- a/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
-+++ b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
-@@ -11,7 +11,7 @@
-     - ppc64le
-   rules:
-     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
--    - if: "$PPC64LE_RUNNER_AVAILABLE"
-+    - if: '$PPC64LE_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-   before_script:
-     - source scripts/ci/gitlab-ci-section
-     - section_start setup "Pre-script setup"
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
-index ee13587d99e..86bca7800ea 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
-@@ -11,7 +11,7 @@
-     - aarch64
-   rules:
-     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
--    - if: "$AARCH64_RUNNER_AVAILABLE"
-+    - if: '$AARCH64_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-   before_script:
-     - source scripts/ci/gitlab-ci-section
-     - section_start setup "Pre-script setup"
-@@ -50,7 +50,7 @@ ubuntu-24.04-aarch64-all:
-     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
-       when: manual
-       allow_failure: true
--    - if: "$AARCH64_RUNNER_AVAILABLE"
-+    - if: '$AARCH64_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-       when: manual
-       allow_failure: true
+diff --git a/tests/functional/x86_64/test_kvm_xen.py b/tests/functional/x86_64/test_kvm_xen.py
+index a5d445023c9..424d4b20010 100755
+--- a/tests/functional/x86_64/test_kvm_xen.py
++++ b/tests/functional/x86_64/test_kvm_xen.py
+@@ -23,18 +23,11 @@ class KVMXenGuest(QemuSystemTest):
+     kernel_path = None
+     kernel_params = None
  
-@@ -63,7 +63,7 @@ ubuntu-24.04-aarch64-without-defaults:
-     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
-       when: manual
-       allow_failure: true
--    - if: "$AARCH64_RUNNER_AVAILABLE"
-+    - if: '$AARCH64_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-       when: manual
-       allow_failure: true
+-    # Fetch assets from the kvm-xen-guest subdir of my shared test
+-    # images directory on fileserver.linaro.org where you can find
+-    # build instructions for how they where assembled.
+-    ASSET_KERNEL = Asset(
+-        ('https://fileserver.linaro.org/s/kE4nCFLdQcoBF9t/download?'
+-         'path=%2Fkvm-xen-guest&files=bzImage'),
+-        'ec0ad7bb8c33c5982baee0a75505fe7dbf29d3ff5d44258204d6307c6fe0132a')
+-
+-    ASSET_ROOTFS = Asset(
+-        ('https://fileserver.linaro.org/s/kE4nCFLdQcoBF9t/download?'
+-         'path=%2Fkvm-xen-guest&files=rootfs.ext4'),
+-        'b11045d649006c649c184e93339aaa41a8fe20a1a86620af70323252eb29e40b')
++    ASSET_KERNEL = Asset('https://share.linaro.org/downloadFile?id=UG0V8dzzHrrHb9X',
++                         'ec0ad7bb8c33c5982baee0a75505fe7dbf29d3ff5d44258204d6307c6fe0132a')
++
++    ASSET_ROOTFS = Asset('https://share.linaro.org/downloadFile?id=VwLRKDXKFl6oKti',
++                         'b11045d649006c649c184e93339aaa41a8fe20a1a86620af70323252eb29e40b')
  
-@@ -82,7 +82,7 @@ ubuntu-24.04-aarch64-clang:
-     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
-       when: manual
-       allow_failure: true
--    - if: "$AARCH64_RUNNER_AVAILABLE"
-+    - if: '$AARCH64_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-       when: manual
-       allow_failure: true
- 
-@@ -95,7 +95,7 @@ ubuntu-24.04-aarch64-tci:
-     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
-       when: manual
-       allow_failure: true
--    - if: "$AARCH64_RUNNER_AVAILABLE"
-+    - if: '$AARCH64_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-       when: manual
-       allow_failure: true
- 
-@@ -107,5 +107,5 @@ ubuntu-24.04-aarch64-notcg:
-   rules:
-     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
-       when: manual
--    - if: "$AARCH64_RUNNER_AVAILABLE"
-+    - if: '$AARCH64_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-       when: manual
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml b/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
-index ef8db2750ac..69f10198725 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
-@@ -11,7 +11,7 @@
-     - s390x
-   rules:
-     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
--    - if: "$S390X_RUNNER_AVAILABLE"
-+    - if: '$S390X_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-   before_script:
-     - source scripts/ci/gitlab-ci-section
-     - section_start setup "Pre-script setup"
+     def common_vm_setup(self):
+         # We also catch lack of KVM_XEN support if we fail to launch
 -- 
 2.47.3
 

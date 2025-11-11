@@ -4,40 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D3CACCFA1A
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 11:57:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 489C8CD13CF
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Nov 2025 12:22:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vImzP-0007RA-A4; Tue, 11 Nov 2025 06:56:47 -0500
+	id 1vInNw-00084x-Bu; Tue, 11 Nov 2025 07:22:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vImyc-0005Lm-UW; Tue, 11 Nov 2025 06:55:58 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vInLQ-0004cM-5W
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 07:19:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vImya-0005Mo-F6; Tue, 11 Nov 2025 06:55:58 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4d5Q2f1HJRzJ46bY;
- Tue, 11 Nov 2025 19:55:22 +0800 (CST)
-Received: from dubpeml100005.china.huawei.com (unknown [7.214.146.113])
- by mail.maildlp.com (Postfix) with ESMTPS id 021AB140371;
- Tue, 11 Nov 2025 19:55:53 +0800 (CST)
-Received: from localhost (10.203.177.15) by dubpeml100005.china.huawei.com
- (7.214.146.113) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.36; Tue, 11 Nov
- 2025 11:55:52 +0000
-Date: Tue, 11 Nov 2025 11:55:51 +0000
-To: Gavin Shan <gshan@redhat.com>
-CC: Igor Mammedov <imammedo@redhat.com>, <shan.gavin@gmail.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <mchehab+huawei@kernel.org>,
- <gengdongjiu1@gmail.com>, <mst@redhat.com>, <anisinha@redhat.com>,
- <peter.maydell@linaro.org>, <pbonzini@redhat.com>
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vInLN-00019R-Er
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 07:19:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1762863568;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=j4vFMP2+PgPcpDrBpxIP2bJH0X/tllQNcH+EXd83rIM=;
+ b=WFyyeLSmm7Vl7bY6Io+badPunyocaAZGIk7ImpVSQj0+cKRjCDcubW0lFgfvGcsWVpWqdp
+ xQoHROSwjTRqpBcyDKUdbJm8gGtXrbgNEqlhjmUFnxvKLhRytKaHySeqJTGf3RfJyLvRw4
+ 3s52K3k2f2regHOzvCje7kc+O9MG+0U=
+Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
+ [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-7-knzGJJxeOSGYkzXg-G9_gA-1; Tue, 11 Nov 2025 07:19:26 -0500
+X-MC-Unique: knzGJJxeOSGYkzXg-G9_gA-1
+X-Mimecast-MFC-AGG-ID: knzGJJxeOSGYkzXg-G9_gA_1762863566
+Received: by mail-pj1-f71.google.com with SMTP id
+ 98e67ed59e1d1-340bc4ef67fso4975073a91.3
+ for <qemu-arm@nongnu.org>; Tue, 11 Nov 2025 04:19:26 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1762863565; x=1763468365;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=j4vFMP2+PgPcpDrBpxIP2bJH0X/tllQNcH+EXd83rIM=;
+ b=Z11nd/RU1+KZAW80MBdv2MvXRTNWY6m7w/9CeMcQOuChmB6vyGuVuOLTLXtUK06lqN
+ FJDjeMfLeyYdvl+WPbCnfdCAN7omfMyqTHhjAK1DAsB3omfuwHHNxX3kPhGvDvKYFjiD
+ jvhtiCFDr4cBrF4z6G3/jdyuVmZX7b4ioqjw913I0EGmF/eCAvAexGdHBb58YNPqB0CL
+ 2mkAIidafJoclhFUjRwfva0HY8rZEqWrzYbTMFe2NtEnFqZCr0MvWisltUJyKbPYbYl4
+ BwDZnHI6QOU+0mJfiT9scgOU45dKYUcgFyLbgrmBrPWy7Cr2jL5dW1APtpvoHK6ksVgz
+ nUKA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXac2zdj8FhKvj98q8zVy0iTLtOQl9VCeLGXWblHF1WSrFXMJ39C+nH7tbXLb/4/kxB4f1NXJSk5Q==@nongnu.org
+X-Gm-Message-State: AOJu0YwgCLpgxCSw59qMai+uv5bgYmWkxcuIsPiRpIkjy6M1MI6V3Dxd
+ dGz/UsK5ivKNAy3l4HdpY6DtbR4wRMUWlYIo47XTAdvxbZIDQ2rbKLJbHWwdwHXmM+f3kKlXEp2
+ o2bfJB5W2FCxds+HKcxpP393XFv37ku0J546btHDgrt2n+/JPvr863Q==
+X-Gm-Gg: ASbGnctCxo8lOUaOmESz984b6uq4/UB5kjbfcs2w27pQaBqNeH1aSuOP7aWlAmqr1T9
+ NGureCS2lHQ/VafgVjevV5hJG92GIC1Y7MD+QShPRFv6eSn6kJLq38DmVbzvylKW6gKmbfBdzV2
+ tHlI4MLxpVG/cia26B9jDdlF/fpMueSdWrZfDfVZU5cpGM9o1FDrhirDkSRzQGZHM1MXLS3foJ0
+ mqPFINCAOelgdTMfcyDCIrZ+0VTqpeeXDUOrTTSaa71aMjQuzCczZzVtdMHbVIZA7xyTNun8Tp9
+ z57wwupjwy/aQhFxFK4VX0MqZFpESnY0QtGn4FGaDa+LFnZ0BHjeJ8vrvD+cVskPzMjS9wwp03u
+ ZJHDZ52Sb1a+3ay5o+EMXoRDqoxdud3uZmwH9f9c=
+X-Received: by 2002:a17:90a:e710:b0:340:dcd4:f851 with SMTP id
+ 98e67ed59e1d1-3436cb73cb1mr13540564a91.3.1762863565589; 
+ Tue, 11 Nov 2025 04:19:25 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEBHn4H9bZrdWxPBi2rdXHGLAVOuYVkOomXD5ohBndslH4wZdqE20IEvS7wmwTVumgvXJiCfw==
+X-Received: by 2002:a17:90a:e710:b0:340:dcd4:f851 with SMTP id
+ 98e67ed59e1d1-3436cb73cb1mr13540530a91.3.1762863565096; 
+ Tue, 11 Nov 2025 04:19:25 -0800 (PST)
+Received: from [192.168.68.51] (n175-34-62-5.mrk21.qld.optusnet.com.au.
+ [175.34.62.5]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3434c31d86esm14711595a91.8.2025.11.11.04.19.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 11 Nov 2025 04:19:24 -0800 (PST)
+Message-ID: <e797a9f6-aee6-4c0f-9c17-f4200199e317@redhat.com>
+Date: Tue, 11 Nov 2025 22:19:18 +1000
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 4/8] acpi/ghes: Extend acpi_ghes_memory_errors() to
  support multiple CPERs
-Message-ID: <20251111115551.00003385@huawei.com>
-In-Reply-To: <2440a0dd-6543-4590-9c0f-06b05bdfc8a4@redhat.com>
+To: Jonathan Cameron <jonathan.cameron@huawei.com>
+Cc: Igor Mammedov <imammedo@redhat.com>, shan.gavin@gmail.com,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, mchehab+huawei@kernel.org,
+ gengdongjiu1@gmail.com, mst@redhat.com, anisinha@redhat.com,
+ peter.maydell@linaro.org, pbonzini@redhat.com
 References: <20251105114453.2164073-1-gshan@redhat.com>
  <20251105114453.2164073-5-gshan@redhat.com>
  <20251105141455.000052f0@huawei.com>
@@ -46,22 +92,25 @@ References: <20251105114453.2164073-1-gshan@redhat.com>
  <cad74549-a313-48b6-8260-f23f6be1e8c8@redhat.com>
  <20251111100746.00003136@huawei.com>
  <2440a0dd-6543-4590-9c0f-06b05bdfc8a4@redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
-MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+ <20251111115551.00003385@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20251111115551.00003385@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: K5g0kPUCGFcE5s9DSdEP-cxJcai8gFmAM87qyAPqzU0_1762863566
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.15]
-X-ClientProxiedBy: lhrpeml100010.china.huawei.com (7.191.174.197) To
- dubpeml100005.china.huawei.com (7.214.146.113)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,140 +123,144 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 11 Nov 2025 20:55:17 +1000
-Gavin Shan <gshan@redhat.com> wrote:
+Hi Jonathan,
 
-> Hi Jonathan,
+On 11/11/25 9:55 PM, Jonathan Cameron wrote:
+> On Tue, 11 Nov 2025 20:55:17 +1000
+> Gavin Shan <gshan@redhat.com> wrote:
+>> On 11/11/25 8:07 PM, Jonathan Cameron wrote:
+>>> On Tue, 11 Nov 2025 14:08:13 +1000
+>>> Gavin Shan <gshan@redhat.com> wrote:
+>>>> On 11/11/25 12:49 AM, Igor Mammedov wrote:
+>>>>> On Thu, 6 Nov 2025 13:15:52 +1000
+>>>>> Gavin Shan <gshan@redhat.com> wrote:
+>>>>>> On 11/6/25 12:14 AM, Jonathan Cameron wrote:
+>>>>>>> On Wed,  5 Nov 2025 21:44:49 +1000
+>>>>>>> Gavin Shan <gshan@redhat.com> wrote:
+>>>>>>>          
+>>>>>>>> In the situation where host and guest has 64KiB and 4KiB page sizes,
+>>>>>>>> one problematic host page affects 16 guest pages. we need to send 16
+>>>>>>>> consective errors in this specific case.
+>>>>>>>>
+>>>>>>>> Extend acpi_ghes_memory_errors() to support multiple CPERs after the
+>>>>>>>> hunk of code to generate the GHES error status is pulled out from
+>>>>>>>> ghes_gen_err_data_uncorrectable_recoverable(). The status field of
+>>>>>>>> generic error status block is also updated accordingly if multiple
+>>>>>>>> error data entries are contained in the generic error status block.
+>>>>>>>>
+>>>>>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>
+>>>>>>> Hi Gavin,
+>>>>>>>
+>>>>>>> Mostly fine, but a few comments on the defines added and a
+>>>>>>> question on what the multiple things are meant to mean?
+>>>>>>>          
+>>>>>>
+>>>>>> Thanks for your review and comments, replies as below.
+>>>>>>      
+>>>>>>>> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+>>>>>>>> index a9c08e73c0..527b85c8d8 100644
+>>>>>>>> --- a/hw/acpi/ghes.c
+>>>>>>>> +++ b/hw/acpi/ghes.c
+>>>>>>>> @@ -57,8 +57,12 @@
+>>>>>>>>      /* The memory section CPER size, UEFI 2.6: N.2.5 Memory Error Section */
+>>>>>>>>      #define ACPI_GHES_MEM_CPER_LENGTH           80
+>>>>>>>>      
+>>>>>>>> -/* Masks for block_status flags */
+>>>>>>>> -#define ACPI_GEBS_UNCORRECTABLE         1
+>>>>>>>> +/* Bits for block_status flags */
+>>>>>>>> +#define ACPI_GEBS_UNCORRECTABLE           0
+>>>>>>>> +#define ACPI_GEBS_CORRECTABLE             1
+>>>>>>>> +#define ACPI_GEBS_MULTIPLE_UNCORRECTABLE  2
+>>>>>>>> +#define ACPI_GEBS_MULTIPLE_CORRECTABLE    3
+>>>>>>>
+>>>>>>> So this maps to the bits in block status.
+>>>>>>>
+>>>>>>> I'm not actually sure what these multiple variants are meant to tell us.
+>>>>>>> The multiple error blocks example referred to by the spec is a way to represent
+>>>>>>> the same error applying to multiple places.  So that's one error, many blocks.
+>>>>>>> I have no idea if we set these bits in that case.
+>>>>>>>
+>>>>>>> Based on a quick look I don't think linux even takes any notice.  THere
+>>>>>>> are defines in actbl1.h but I'm not seeing any use made of them.
+>>>>>>>          
+>>>>>>
+>>>>>> I hope Igor can confirm since it was suggested by him.
+>>>>>>
+>>>>>> It's hard to understand how exactly these multiple variants are used from the
+>>>>>> spec. In ACPI 6.5 Table 18.11, it's explained as below.
+>>>>>>
+>>>>>> Bit [2] - Multiple Uncorrectable Errors: If set to one, indicates that more
+>>>>>> than one uncorrectable errors have been detected.
+>>>>>>
+>>>>>> I don't see those multiple variants have been used by Linux. So I think it's
+>>>>>> safe to drop them.
+>>>>>
+>>>>> even though example describes 'same' error at different components,
+>>>>> the bit fields descriptions doesn't set any limits on what 'more than one' means.
+>>>>>
+>>>>> Also from guest POV it's multiple different pages that we are reporting here
+>>>>> as multiple CPERs.
+>>>>> It seems to me that setting *_MULTIPLE_* here is correct thing to do.
+>>>>>       
+>>>>
+>>>> I don't have strong opinions. Lets keep to set _MULTIPLE_ flag if Jonathan
+>>>> is fine. Again, this field isn't used by Linux guest.
+>>> I don't care strongly.  Maybe we should ask for a spec clarification as I doubt
+>>> implementations will be consistent on this given the vague description and that
+>>> Linux ignores it today.
+>>>    
+>>
+>> Google Gemini has the following question. If it can be trusted, it should be
+>> set when @num_of_addresses is larger than 1.
+>>
+>> Quota from Google Gemini:
+>>
+>> The system firmware sets this bit to indicate to the Operating System Power Management (OSPM)
+>> that more than one correctable error condition has been detected and logged for the associated
+>> hardware component since the last time the status was cleared by the software. This is crucial
+>> because a high frequency of correctable errors often indicates a potential underlying hardware
+>> issue that could lead to uncorrectable (and potentially fatal) errors if not addressed (e.g.,
+>> in memory, where multiple correctable errors might trigger a spare memory operation).
+>>
+>>>>   
+>>>>>>>> +#define ACPI_GEBS_ERROR_DATA_ENTRIES      4
+>>>>>>>
+>>>>>>> This is bits 4-13 and the define isn't used. I'd drop it.
+>>>>>>>          
+>>>>>>
+>>>>>> The definition is used in acpi_ghes_memory_errors() of this patch. However,
+>>>>>> I don't see it has been used by Linux. This field isn't used by Linux to determine
+>>>>>> the total number of error entries. So I think I can drop it either if Igor is ok.
+>>>>>>      
+>>>>
+>>>> Lets keep this field either in next revision if Jonathan is fine.
+>>>
+>>> I'm fine with the field, but not the value.  As far as I can tell form the spec, it should
+>>> be a mask, not a single bit.
+>>>    
+>>
+>> Agreed, lets keep ACPI_HEST_ERROR_ENTRY_COUNT as zero in next revision.
 > 
-> On 11/11/25 8:07 PM, Jonathan Cameron wrote:
-> > On Tue, 11 Nov 2025 14:08:13 +1000
-> > Gavin Shan <gshan@redhat.com> wrote:  
-> >> On 11/11/25 12:49 AM, Igor Mammedov wrote:  
-> >>> On Thu, 6 Nov 2025 13:15:52 +1000
-> >>> Gavin Shan <gshan@redhat.com> wrote:  
-> >>>> On 11/6/25 12:14 AM, Jonathan Cameron wrote:  
-> >>>>> On Wed,  5 Nov 2025 21:44:49 +1000
-> >>>>> Gavin Shan <gshan@redhat.com> wrote:
-> >>>>>         
-> >>>>>> In the situation where host and guest has 64KiB and 4KiB page sizes,
-> >>>>>> one problematic host page affects 16 guest pages. we need to send 16
-> >>>>>> consective errors in this specific case.
-> >>>>>>
-> >>>>>> Extend acpi_ghes_memory_errors() to support multiple CPERs after the
-> >>>>>> hunk of code to generate the GHES error status is pulled out from
-> >>>>>> ghes_gen_err_data_uncorrectable_recoverable(). The status field of
-> >>>>>> generic error status block is also updated accordingly if multiple
-> >>>>>> error data entries are contained in the generic error status block.
-> >>>>>>
-> >>>>>> Signed-off-by: Gavin Shan <gshan@redhat.com>  
-> >>>>> Hi Gavin,
-> >>>>>
-> >>>>> Mostly fine, but a few comments on the defines added and a
-> >>>>> question on what the multiple things are meant to mean?
-> >>>>>         
-> >>>>
-> >>>> Thanks for your review and comments, replies as below.
-> >>>>     
-> >>>>>> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> >>>>>> index a9c08e73c0..527b85c8d8 100644
-> >>>>>> --- a/hw/acpi/ghes.c
-> >>>>>> +++ b/hw/acpi/ghes.c
-> >>>>>> @@ -57,8 +57,12 @@
-> >>>>>>     /* The memory section CPER size, UEFI 2.6: N.2.5 Memory Error Section */
-> >>>>>>     #define ACPI_GHES_MEM_CPER_LENGTH           80
-> >>>>>>     
-> >>>>>> -/* Masks for block_status flags */
-> >>>>>> -#define ACPI_GEBS_UNCORRECTABLE         1
-> >>>>>> +/* Bits for block_status flags */
-> >>>>>> +#define ACPI_GEBS_UNCORRECTABLE           0
-> >>>>>> +#define ACPI_GEBS_CORRECTABLE             1
-> >>>>>> +#define ACPI_GEBS_MULTIPLE_UNCORRECTABLE  2
-> >>>>>> +#define ACPI_GEBS_MULTIPLE_CORRECTABLE    3  
-> >>>>>
-> >>>>> So this maps to the bits in block status.
-> >>>>>
-> >>>>> I'm not actually sure what these multiple variants are meant to tell us.
-> >>>>> The multiple error blocks example referred to by the spec is a way to represent
-> >>>>> the same error applying to multiple places.  So that's one error, many blocks.
-> >>>>> I have no idea if we set these bits in that case.
-> >>>>>
-> >>>>> Based on a quick look I don't think linux even takes any notice.  THere
-> >>>>> are defines in actbl1.h but I'm not seeing any use made of them.
-> >>>>>         
-> >>>>
-> >>>> I hope Igor can confirm since it was suggested by him.
-> >>>>
-> >>>> It's hard to understand how exactly these multiple variants are used from the
-> >>>> spec. In ACPI 6.5 Table 18.11, it's explained as below.
-> >>>>
-> >>>> Bit [2] - Multiple Uncorrectable Errors: If set to one, indicates that more
-> >>>> than one uncorrectable errors have been detected.
-> >>>>
-> >>>> I don't see those multiple variants have been used by Linux. So I think it's
-> >>>> safe to drop them.  
-> >>>
-> >>> even though example describes 'same' error at different components,
-> >>> the bit fields descriptions doesn't set any limits on what 'more than one' means.
-> >>>
-> >>> Also from guest POV it's multiple different pages that we are reporting here
-> >>> as multiple CPERs.
-> >>> It seems to me that setting *_MULTIPLE_* here is correct thing to do.
-> >>>      
-> >>
-> >> I don't have strong opinions. Lets keep to set _MULTIPLE_ flag if Jonathan
-> >> is fine. Again, this field isn't used by Linux guest.  
-> > I don't care strongly.  Maybe we should ask for a spec clarification as I doubt
-> > implementations will be consistent on this given the vague description and that
-> > Linux ignores it today.
-> >   
+> I'm even more confused now.  The GEBS Error Data entry count should be field from 13:4
+> and the value taken should be the number of entries in the record, so 1, 4, 16 depending
+> on the page size.
 > 
-> Google Gemini has the following question. If it can be trusted, it should be
-> set when @num_of_addresses is larger than 1.
+> So that define of the value 4 is garbage. If it were DATA_ENTRIES_SHIFT then I'd be much happier.
 > 
-> Quota from Google Gemini:
-> 
-> The system firmware sets this bit to indicate to the Operating System Power Management (OSPM)
-> that more than one correctable error condition has been detected and logged for the associated
-> hardware component since the last time the status was cleared by the software. This is crucial
-> because a high frequency of correctable errors often indicates a potential underlying hardware
-> issue that could lead to uncorrectable (and potentially fatal) errors if not addressed (e.g.,
-> in memory, where multiple correctable errors might trigger a spare memory operation).
-> 
-> >>  
-> >>>>>> +#define ACPI_GEBS_ERROR_DATA_ENTRIES      4  
-> >>>>>
-> >>>>> This is bits 4-13 and the define isn't used. I'd drop it.
-> >>>>>         
-> >>>>
-> >>>> The definition is used in acpi_ghes_memory_errors() of this patch. However,
-> >>>> I don't see it has been used by Linux. This field isn't used by Linux to determine
-> >>>> the total number of error entries. So I think I can drop it either if Igor is ok.
-> >>>>     
-> >>
-> >> Lets keep this field either in next revision if Jonathan is fine.  
-> > 
-> > I'm fine with the field, but not the value.  As far as I can tell form the spec, it should
-> > be a mask, not a single bit.
-> >   
-> 
-> Agreed, lets keep ACPI_HEST_ERROR_ENTRY_COUNT as zero in next revision.
 
-I'm even more confused now.  The GEBS Error Data entry count should be field from 13:4
-and the value taken should be the number of entries in the record, so 1, 4, 16 depending
-on the page size.
+My bad. I misunderstood your point. It will be fixed by using APIs from
+"hw/registerfields.h" as suggested by Philippe in another reply.
 
-So that define of the value 4 is garbage. If it were DATA_ENTRIES_SHIFT then I'd be much happier.
+   ...
+   FIELD(ACPI_GEBS, MULTIPLE_CORRECTABLE, 3, 1)
+   FIELD(ACPI_GEBS, ERROR_DATA_ENTRIES, 4, 10)
 
+   then use FIELD_DP32() to only set the correct bits.
 
-> 
-> Thanks,
-> Gavin
-> 
-> 
+Thanks,
+Gavin
 
 

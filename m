@@ -4,26 +4,26 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E15B6CD3421
-	for <qemu-arm@archiver.kernel.org>; Wed, 12 Nov 2025 16:22:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEA10CD13DD
+	for <qemu-arm@archiver.kernel.org>; Wed, 12 Nov 2025 16:22:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJDc0-0002iR-Fu; Wed, 12 Nov 2025 11:22:25 -0500
+	id 1vJDc9-0002wA-2F; Wed, 12 Nov 2025 11:22:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vJDbo-0002da-WB; Wed, 12 Nov 2025 11:22:13 -0500
+ id 1vJDbr-0002fk-9g; Wed, 12 Nov 2025 11:22:19 -0500
 Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vJDbk-0004oc-MX; Wed, 12 Nov 2025 11:22:12 -0500
+ id 1vJDbl-0004od-Aw; Wed, 12 Nov 2025 11:22:14 -0500
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwBHYqgktBRpI6oPAg--.69S2;
- Thu, 13 Nov 2025 00:21:56 +0800 (CST)
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwCHaCUotBRpaJvEAA--.11420S2;
+ Thu, 13 Nov 2025 00:22:00 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwDnP+0jtBRpz0YEAA--.8224S3;
- Thu, 13 Nov 2025 00:21:55 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAfwDnP+0jtBRpz0YEAA--.8224S6;
+ Thu, 13 Nov 2025 00:21:59 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
 To: Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
  Laurent Vivier <lvivier@redhat.com>, Eric Auger <eric.auger@redhat.com>,
@@ -35,19 +35,22 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>,
  Mostafa Saleh <smostafa@google.com>, Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [RFC v3 0/3] hw/misc: Introduce a generalized IOMMU test framework
-Date: Thu, 13 Nov 2025 00:21:49 +0800
-Message-Id: <20251112162152.447327-1-tangtao1634@phytium.com.cn>
+Subject: [RFC v3 3/3] tests/qtest: add SMMUv3 bare-metal test using
+ iommu-testdev
+Date: Thu, 13 Nov 2025 00:21:52 +0800
+Message-Id: <20251112162152.447327-4-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20251112162152.447327-1-tangtao1634@phytium.com.cn>
+References: <20251112162152.447327-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwDnP+0jtBRpz0YEAA--.8224S3
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAMBWkTmLAHcAAHsq
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
+X-CM-TRANSID: AQAAfwDnP+0jtBRpz0YEAA--.8224S6
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAMBWkTmLAHdwAAsq
+Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxtFy3KFWUWFWkJF43Ar1kZrb_yoW3Wr1UpF
- 93Cay3KF48JF1fZrn3Aw40yFy3tan5Ja12vr13Gw1Sg3y3AFy8tF47KFy8tF93A395ZF17
- Za1Utr15ur4FyFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoW3Jw1DCF43Xw15ur43XFy5Arb_yoW7AryxpF
+ yDCa4ayFZ7JF1fu3Z3Ja1kKr1rtan3Aw1UGr13KrnIkrs0y34UtrZ7KFWUKFZrJ3ykZF1U
+ Za4ktF45Gr18XaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
 Received-SPF: pass client-ip=162.243.164.118;
@@ -75,188 +78,172 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is v3 of the IOMMU test framework. V2 introduced the smmu-testdev for
-bare-metal SMMUv3 testing. V3 is a significant architectural refactoring of that
-work, generalizing it into a modular and extensible IOMMU test framework. The
-device has been renamed from smmu-testdev to iommu-testdev and the
-architecture has been significantly restructured for better modularity
-and extensibility.
+Add a qtest suite that validates ARM SMMUv3 translation without guest
+firmware or OS. The tests leverage iommu-testdev to trigger DMA
+operations and the qos-smmuv3 library to configure IOMMU translation
+structures.
 
-Motivation
-----------
-
-Currently, thoroughly testing IOMMU emulation (e.g., ARM SMMUv3) requires
-a significant software stack. We need to boot a full guest operating
-system (like Linux) with the appropriate drivers (e.g., IOMMUFD) and rely
-on firmware (e.g., ACPI with IORT tables or Hafnium) to correctly
-configure the IOMMU and orchestrate DMA from a peripheral device.
-
-This dependency on a complex software stack presents several challenges:
-
-* High Barrier to Entry: Writing targeted tests for specific IOMMU
-    features (like fault handling, specific translation regimes, etc.)
-    becomes cumbersome.
-
-* Difficult to Debug: It's hard to distinguish whether a bug originates
-    from the IOMMU emulation itself, the guest driver, the firmware
-    tables, or the guest kernel's configuration.
-
-* Slow Iteration: The need to boot a full guest OS slows down the
-    development and testing cycle.
-
-The primary goal of this work is to create a lightweight, self-contained
-testing environment that allows us to exercise the IOMMU's core logic
-directly at the qtest level, removing the need for any guest-side software.
-
-Our Approach: A Dedicated Test Framework
------------------------------------------
-
-To achieve this, we introduce three main components:
-
-* A minimal hardware device: iommu-testdev
-* A reusable IOMMU helper library: libqos/qos-smmuv3
-* A comprehensive qtest suite: iommu-smmuv3-test
-
-The iommu-testdev is intentionally not a conformant, general-purpose PCIe
-or platform device. It is a purpose-built, highly simplified "DMA engine"
-designed to be analogous to a minimal PCIe Root Complex that bypasses the
-full, realistic topology (Host Bridges, Switches, Endpoints) to provide a
-direct, programmable path for a DMA request to reach the IOMMU. Its sole
-purpose is to trigger a DMA transaction when its registers are written to,
-making it perfectly suited for direct control from a test environment like
-qtest.
-
-The Qtest Framework
--------------------
-
-The new qtest (iommu-smmuv3-test.c) serves as the "bare-metal driver"
-for both the IOMMU and the iommu-testdev. It leverages the libqos helper
-library to manually perform all the setup that would typically be handled
-by the guest kernel and firmware, but in a completely controlled and
-predictable manner:
-
-1.  IOMMU Configuration: It directly initializes the SMMU's registers to a
-    known state using helper functions from qos-smmuv3.
-
-2.  Translation Structure Setup: It uses the libqos library to construct
-    the necessary translation structures in memory, including Stream Table
-    Entries (STEs), Context Descriptors (CDs), and Page Tables (PTEs).
-
-3.  DMA Trigger: It programs the iommu-testdev to initiate a DMA operation
-    targeting a specific IOVA with configurable attributes.
-
-4.  Verification: It waits for the transaction to complete and verifies
-    that the memory was accessed correctly after address translation by
-    the IOMMU.
-
-This framework provides a solid and extensible foundation for validating
-the IOMMU's core translation paths. The current test suite covers:
-
+Test coverage includes:
 - Stage 1 only translation (VA -> PA via CD page tables)
 - Stage 2 only translation (IPA -> PA via STE S2 tables)
 - Nested translation (VA -> IPA -> PA, Stage 1 + Stage 2)
+- Could be easily extended to support multiple security spaces
+  (Non-Secure, Secure, Root, Realm)
 
-The infrastructure is designed to be easily extended to support multiple
-security spaces (Non-Secure, Secure, Root, Realm) and additional IOMMU
-features.
+Each test:
+1. Initializes SMMUv3 with appropriate command/event queues
+2. Builds translation tables (STE/CD/PTE) for the target scenario
+3. Configures iommu-testdev with IOVA and DMA attributes
+4. Triggers DMA and validates successful translation
+5. Verifies data integrity through the write-read pattern
 
+This bare-metal approach provides deterministic IOMMU testing with
+minimal dependencies, making failures directly attributable to the SMMU
+translation path. The test infrastructure can be easily extended to
+cover additional scenarios like fault handling, permission checks, and
+invalidation commands.
 
-Major Changes from v2 to v3:
------------------------------
-
-1. Generalization and Renaming:
-   - Device renamed from "smmu-testdev" to "iommu-testdev" to reflect
-     its generic nature and potential use with other IOMMU types beyond
-     SMMUv3.
-   - File paths updated:
-     * hw/misc/smmu-testdev.c -> hw/misc/iommu-testdev.c
-     * include/hw/misc/smmu-testdev.h -> include/hw/misc/iommu-testdev.h
-     * docs/specs/smmu-testdev.rst -> docs/specs/iommu-testdev.rst
-
-2. Architectural Refactoring - Separation of Concerns:
-   The most significant change is the separation of IOMMU-specific logic
-   from the test device:
-
-   - iommu-testdev (hw/misc/iommu-testdev.c):
-     * Now focuses solely on being a DMA trigger device
-     * Contains only MMIO register handling and DMA operation triggering
-     * No longer contains SMMU-specific page table construction logic
-     * Provides a clean, minimal interface for IOMMU testing
-
-   - libqos/qos-smmuv3 (tests/qtest/libqos/qos-smmuv3.{c,h}):
-     * Encapsulates all SMMUv3-specific initialization and setup
-     * Handles Stream Table Entry (STE) construction
-     * Handles Context Descriptor (CD) construction
-     * Manages multi-level page table setup (L0-L3)
-     * Provides support for different translation modes (S1, S2, nested)
-     * Can be reused across multiple test suites
-     * Includes helper functions for security space offset calculations
-
-   - iommu-smmuv3-test (tests/qtest/iommu-smmuv3-test.c):
-     * Focuses on test logic rather than setup boilerplate
-     * Cleaner and more maintainable test cases
-     * Uses high-level abstractions from qos-smmuv3 library
-
-3. Enhanced Modularity:
-   - Clear separation between:
-     * Generic DMA trigger mechanism (iommu-testdev)
-     * IOMMU-specific setup logic (qos-smmuv3)
-     * Test scenarios (iommu-smmuv3-test)
-   - This structure makes it easier to:
-     * Add tests for new IOMMU features
-     * Support additional IOMMU types (e.g., Intel VT-d)
-
-4. Improved Test Coverage:
-   - Explicit tests for multiple translation modes:
-     * Stage 1 only
-     * Stage 2 only
-     * Nested (Stage 1 + Stage 2)
-   - Better structured test configuration system
-   - Clearer test result validation
-
-5. Code Quality Improvements:
-   - Added comprehensive tracing support (8 trace points)
-   - Better error handling and validation
-   - More descriptive variable names and comments
-
-6. Documentation Updates:
-   - Updated device specification in docs/specs/iommu-testdev.rst
-   - More detailed register descriptions
-
-Future Work
------------
-
-The current implementation focuses on basic translation path validation
-in the Non-Secure address space. Future extensions could include:
-
-* Multi-space testing (Secure, Root, Realm) for SMMUv3
-* Support for other IOMMU types (Intel VT-d, AMD-Vi, RISC-V IOMMU)
-
-Tao Tang (3):
-  hw/misc: introduce iommu-testdev for bare-metal IOMMU testing
-  tests/qtest: add libqos SMMUv3 helper library
-  tests/qtest: add SMMUv3 bare-metal test using iommu-testdev
-
- docs/specs/index.rst            |   1 +
- docs/specs/iommu-testdev.rst    |  96 ++++
- hw/misc/Kconfig                 |   5 +
- hw/misc/iommu-testdev.c         | 292 ++++++++++
- hw/misc/meson.build             |   1 +
- hw/misc/trace-events            |  10 +
- include/hw/misc/iommu-testdev.h |  78 +++
- tests/qtest/iommu-smmuv3-test.c | 116 ++++
- tests/qtest/libqos/meson.build  |   3 +
- tests/qtest/libqos/qos-smmuv3.c | 920 ++++++++++++++++++++++++++++++++
- tests/qtest/libqos/qos-smmuv3.h | 291 ++++++++++
+Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+---
+ tests/qtest/iommu-smmuv3-test.c | 116 ++++++++++++++++++++++++++++++++
  tests/qtest/meson.build         |   1 +
- 12 files changed, 1814 insertions(+)
- create mode 100644 docs/specs/iommu-testdev.rst
- create mode 100644 hw/misc/iommu-testdev.c
- create mode 100644 include/hw/misc/iommu-testdev.h
+ 2 files changed, 117 insertions(+)
  create mode 100644 tests/qtest/iommu-smmuv3-test.c
- create mode 100644 tests/qtest/libqos/qos-smmuv3.c
- create mode 100644 tests/qtest/libqos/qos-smmuv3.h
 
+diff --git a/tests/qtest/iommu-smmuv3-test.c b/tests/qtest/iommu-smmuv3-test.c
+new file mode 100644
+index 0000000000..100fbdfe05
+--- /dev/null
++++ b/tests/qtest/iommu-smmuv3-test.c
+@@ -0,0 +1,116 @@
++/*
++ * QTest for SMMUv3 with iommu-testdev
++ *
++ * This QTest file is used to test the SMMUv3 with iommu-testdev so that we can
++ * test SMMUv3 without any guest kernel or firmware.
++ *
++ * Copyright (c) 2025 Phytium Technology
++ *
++ * Author:
++ *  Tao Tang <tangtao1634@phytium.com.cn>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "libqos/pci.h"
++#include "libqos/generic-pcihost.h"
++#include "hw/pci/pci_regs.h"
++#include "hw/misc/iommu-testdev.h"
++#include "libqos/qos-smmuv3.h"
++
++#define DMA_LEN           4
++
++/* Test configurations for different SMMU modes and spaces */
++static const QSMMUTestConfig base_test_configs[] = {
++    {
++        .trans_mode = QSMMU_TM_S1_ONLY,
++        .sec_sid = QSMMU_SEC_SID_NONSECURE,
++        .dma_iova = QSMMU_IOVA_OR_IPA,
++        .dma_len = DMA_LEN,
++        .expected_result = 0
++    },
++    {
++        .trans_mode = QSMMU_TM_S2_ONLY,
++        .sec_sid = QSMMU_SEC_SID_NONSECURE,
++        .dma_iova = QSMMU_IOVA_OR_IPA,
++        .dma_len = DMA_LEN,
++        .expected_result = 0
++    },
++    {
++        .trans_mode = QSMMU_TM_NESTED,
++        .sec_sid = QSMMU_SEC_SID_NONSECURE,
++        .dma_iova = QSMMU_IOVA_OR_IPA,
++        .dma_len = DMA_LEN,
++        .expected_result = 0
++    }
++};
++
++static QPCIDevice *setup_qtest_pci_device(QTestState *qts, QGenericPCIBus *gbus,
++                                          QPCIBar *bar)
++{
++    int slot, fn;
++    uint16_t vid, did;
++    QPCIDevice *dev = NULL;
++
++    qpci_init_generic(gbus, qts, NULL, false);
++
++    /* Find device by vendor/device ID to avoid slot surprises. */
++    for (slot = 0; slot < 32 && !dev; slot++) {
++        for (fn = 0; fn < 8 && !dev; fn++) {
++            QPCIDevice *cand = qpci_device_find(&gbus->bus,
++                                                QPCI_DEVFN(slot, fn));
++            if (!cand) {
++                continue;
++            }
++            vid = qpci_config_readw(cand, PCI_VENDOR_ID);
++            did = qpci_config_readw(cand, PCI_DEVICE_ID);
++            if (vid == IOMMU_TESTDEV_VENDOR_ID &&
++                did == IOMMU_TESTDEV_DEVICE_ID) {
++                dev = cand;
++                g_test_message("Found iommu-testdev! devfn: 0x%x", cand->devfn);
++            } else {
++                g_free(cand);
++            }
++        }
++    }
++    g_assert(dev);
++
++    qpci_device_enable(dev);
++    *bar = qpci_iomap(dev, 0, NULL);
++    g_assert_false(bar->is_io);
++
++    return dev;
++}
++
++static void test_smmuv3_translation(void)
++{
++    QTestState *qts;
++    QGenericPCIBus gbus;
++    QPCIDevice *dev;
++    QPCIBar bar;
++
++    /* Initialize QEMU environment for SMMU testing */
++    qts = qtest_init("-machine virt,acpi=off,gic-version=3,iommu=smmuv3 "
++                     "-smp 1 -m 512 -cpu max -net none "
++                     "-device iommu-testdev");
++
++    /* Setup and configure PCI device */
++    dev = setup_qtest_pci_device(qts, &gbus, &bar);
++    g_assert(dev);
++
++    /* Run the enhanced translation tests */
++    g_test_message("### Starting SMMUv3 translation tests...###");
++    qsmmu_translation_batch(base_test_configs, ARRAY_SIZE(base_test_configs),
++                            qts, dev, bar, VIRT_SMMU_BASE);
++    g_test_message("### SMMUv3 translation tests completed successfully! ###");
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++    qtest_add_func("/iommu-testdev/translation", test_smmuv3_translation);
++    return g_test_run();
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 669d07c06b..e2d2e68092 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -263,6 +263,7 @@ qtests_aarch64 = \
+    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
+   (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
++  (config_all_devices.has_key('CONFIG_IOMMU_TESTDEV') ? ['iommu-smmuv3-test'] : []) + \
+   qtests_cxl +                                                                                  \
+   ['arm-cpu-features',
+    'numa-test',
 -- 
 2.34.1
 

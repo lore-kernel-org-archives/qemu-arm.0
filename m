@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5CF0CCFA1A
-	for <qemu-arm@archiver.kernel.org>; Wed, 12 Nov 2025 00:52:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49A5DCCFA18
+	for <qemu-arm@archiver.kernel.org>; Wed, 12 Nov 2025 00:52:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vIz55-0004R2-O6; Tue, 11 Nov 2025 19:51:27 -0500
+	id 1vIz55-0004R6-VK; Tue, 11 Nov 2025 19:51:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vIz52-0004OX-Or
- for qemu-arm@nongnu.org; Tue, 11 Nov 2025 19:51:24 -0500
-Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
+ id 1vIz53-0004PM-AN
+ for qemu-arm@nongnu.org; Tue, 11 Nov 2025 19:51:25 -0500
+Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vIz51-0005p1-Cn
+ id 1vIz51-0005pM-Og
  for qemu-arm@nongnu.org; Tue, 11 Nov 2025 19:51:24 -0500
-Received: by mail-qv1-xf2c.google.com with SMTP id
- 6a1803df08f44-882451b353fso1844216d6.1
- for <qemu-arm@nongnu.org>; Tue, 11 Nov 2025 16:51:22 -0800 (PST)
+Received: by mail-qv1-xf31.google.com with SMTP id
+ 6a1803df08f44-88059c28da1so2668686d6.2
+ for <qemu-arm@nongnu.org>; Tue, 11 Nov 2025 16:51:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=gmail.com; s=20230601; t=1762908682; x=1763513482; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=CaohwLtIR7C9243DMpjNQ1vbzBgBz3c5xAC0e8E0Q+0=;
- b=CEgWIjNkVsVgpAojw07FM1Yh5cdq5ET05ul1GlNQT/lz6xHqsXvKCC/Va71iOz0N1B
- JkntsRunPQvKirMFNO0sRFNNE3xKeKPHj/NXE93zqe9nGJit2MiLogNuU3pJZ70SoQ+5
- RkZmXO4BVDo23Vg92GGkovt+pdfRWU7nm8FJLuDIzsOIA4+iX9/ijkeIr81v6E+8G4t/
- F2qpuSy7xIjpP/gs/w3JAXltsfBWoOZiHopGOJfb3zFis7UnhZTJxtH0HOvwXu3gXlB/
- yZ15Dg20sQ0/VWguNxgY8NMcaAKYNCa7jmMvCpxziYNKwrfMtnj8p0/I6QuStMbrGlUj
- kB9A==
+ :reply-to; bh=rVrVdypkmr3E/RiyYnlF3XIe+i5PDhK0NolgWCoGEMM=;
+ b=Uq3j8TucwtgP5rvUay6c2vL9ooed741bdY/X4mnyKNie6/IrnOa6do2E1EHy3r1Qjl
+ BQZfK7UmY36KK+zb7cT03lFieyjFmUycZa2JXeFkRkYlE9xXo9XPQr75fNyBMiY2oLoY
+ ebmlghAv++YQfP4u2nT3/1F3M7KKmVFsrwP5CMjITWybnsoBXjX7dz1qc9+QOAhhGXr8
+ YT5OTxbg37L1i8H8k0mvVo/pblyw/MlU1qCpWLIyQ163Fg8pCBNDLBTxcWPUIaTd6T9C
+ zBOvutblkxa6XVa4fVkeWX43uUpcZv1OpSlKozP9uU84iltSvjUWaI/VQ2LTJXIHZkCl
+ Ffiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20230601; t=1762908682; x=1763513482;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=CaohwLtIR7C9243DMpjNQ1vbzBgBz3c5xAC0e8E0Q+0=;
- b=uQ2Pkj/Hqs2fpTItjZeFEmCiBgGaM2OG9P9xlUcUXBSAyox39vmGycHHi72Wg1nBGw
- 40Exp/YJGjioV4AkXnXdpXITAGnI1k4TgK90P6EwAjb4xc+137TAiuCxWknweXVz46Qn
- 333Xkqkkl5NuttyEqSbPhGYljctFZKemVXgCtMeJbFy1wYJqy6ZjEEgNaiv18HXwGW3E
- rYFd5rIJfp3U/1erNChXGH2QmPoKYow61rMjWUrzC3D6FIY9YYSpVTrbrNW4Nf7P9SjK
- jA/GbVy90vVdnvGNt2DqaoKHpyAFp1NJzN1HZvpCobcZ2NkFvPebpKIM2XSJfGhhC/i3
- afqQ==
+ bh=rVrVdypkmr3E/RiyYnlF3XIe+i5PDhK0NolgWCoGEMM=;
+ b=llQ9eCU/gnyiuK4h+wRqgepH1nFTLYi8c7F3daPqM7a283+MRxvga9BSSICHUdlJs1
+ tk/PU0ohvTC9NG+a7hdlocj18mdTog93XCfRlx9VeVwg5payTRr36rbt4plCNQ4BoIG0
+ Hs+OeoU3lCW6gQufvogYAstCzRWwWCD1HR87qygEtgE5bkgllcw4Vf/OprfySExiT/Vr
+ 3m4I4yKbhQ842KZy8C1ZB7UBoOrNtBZkdSFt6Pj4NDXwtumsFWswspc+AbtjOsSAO7Ya
+ 8WW19MGpYWV9exeOKAjiiHyLg6SCwqT6FoIdcz5ZaRcLUsE9lqOtcpfKGiMMNxESwz+R
+ TZJQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVXCa8Aiif66919OwPcYFlnuoB6aILBP2wYVl/XaGgp/iD+tSiP7EgvyGai+jI84upCOL+Hmc48lw==@nongnu.org
-X-Gm-Message-State: AOJu0YwMCmlbgYI3Olr7eB8Yc4xTcjEaDmRNIC1okDEqJiJ/JKn+YPQl
- /2ZcTalrDz3K8cM3ud078Wpa+garqQ0en4iZKyeH59dY5MihHRH3h70cyudYVZtF
-X-Gm-Gg: ASbGnctYUjcN8JCXeOdUyZ+Xkbqv8aU2/DJNDaDB+i4z7yAlejfzhvZFaa+R1XNEZkf
- wB39YxqQIs/kCkFe9JH2JfN9gabBCmE4tyce9vHDpFtUVsMe2ZvypA1sxaCJQ4QwdeoG2reyr/l
- SBvMUvLYDaItWmmQ/vM0W1hCnarM+EGJl+qnOvWotMEZFtEa2VAz+lg68rQg8/eSh53qXXCuOYv
- U2j5sshL+EOlnV0G8tFPm0QZlfDLxMhqJuX22/+YUl6NuPlfUvDuyRnFOz3PmpbFdT79QXw5nkX
- sAkFfhvL22GhKusLp/WkElNrrTWrPTJ4jn+4FTKYJ6k9qFQ2lv86vf0KpU1xT+UEHdA8COZI45w
- u0Oq/TPnEfaMlsaRBRUvO8/O+zLYBEpbvOdx8HL+OMICabVhRckH/YLyRMRCOR6vGwSd821pq7w
- Nej6yJTxiT
-X-Google-Smtp-Source: AGHT+IF+iQ2O/bPV8bzxfq2n7/AJoDexY+2jxkQwYFmiEtInhWya4OGn7/fLuEKgyLuWPYTyEA8u7w==
-X-Received: by 2002:ad4:5aae:0:b0:882:49b3:c696 with SMTP id
- 6a1803df08f44-88271a1145emr19627776d6.50.1762908681800; 
- Tue, 11 Nov 2025 16:51:21 -0800 (PST)
+ AJvYcCVVyt3bZsGBcTOZiKRfc+SM6QhiIwjoiIqlLPcoLetXHbe8f8szZc/JWSDtXzEKqtziL460sLe2Rg==@nongnu.org
+X-Gm-Message-State: AOJu0YwhrLPNWTZ1D2PKixMXLkX/lATVhg8mdmvp/0dw5oHkRPu7zPJS
+ 5f2TwjYEoey8ZA0gqSLVf2VMvaYBay2pCejf4vu/BH1qPT27bHo+xAXt2X1CsjrI
+X-Gm-Gg: ASbGncvAYzC+GFNWYkDvUycE9+dF+Twg+3G4poVeu1QHUXtCA+bi+UTYq7pW76rYZ7N
+ x8JbbwtT4JIQd63mFQADJqiyWF35g1VUIi8yKoyCOYHIXbctrEbbX8UQORmBSxcA/NJbSqfFfpY
+ 6x/MFz7Ftqim+LKoHTjUqXOXl/BSM9b5QHICLzraO9cg84KzHBJt8syFWc13hB/z0+Tz/f+aglN
+ YMjQZaU2vuNruzby/RvJU6kDHBuBpXGXCFwXtBuXU3cAXxH9rTIfxVep2IZKpk0eqi3BliJZpTY
+ mh5yzJgV6sCG/5LtL979YXHSmFDnjQ9gGXqNe69C7YuI8C7mHnT4pjswU7IlMwtG99BXKayWjM4
+ n7yUeof2IRCf3w073pn4quM+Ax7C1f9uSwPPQHRYjBcXeqdKFPjeWzpx8yDG0h4AMlnUocyLgHz
+ iQ1/2KLnII
+X-Google-Smtp-Source: AGHT+IHR4+2wsvWMJ2uexni3JJo6oV4CQ39Ih4GxApgCORsMnAdc3C0jeteLKykvcxXvemvFxxIKwQ==
+X-Received: by 2002:a05:6214:2a4c:b0:882:3afa:74 with SMTP id
+ 6a1803df08f44-8827193ddc9mr19904556d6.29.1762908682575; 
+ Tue, 11 Nov 2025 16:51:22 -0800 (PST)
 Received: from [10.0.0.22] ([185.213.193.149])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-8823892a79fsm81445096d6.4.2025.11.11.16.51.20
+ 6a1803df08f44-8823892a79fsm81445096d6.4.2025.11.11.16.51.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Nov 2025 16:51:21 -0800 (PST)
+ Tue, 11 Nov 2025 16:51:22 -0800 (PST)
 From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Tue, 11 Nov 2025 19:50:53 -0500
-Subject: [PATCH RFC 4/5] target/arm: add FEAT_MTE_STORE_ONLY logic
+Date: Tue, 11 Nov 2025 19:50:54 -0500
+Subject: [PATCH RFC 5/5] docs: added MTE4 features to docs
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251111-feat-mte4-v1-4-72ef5cf276f9@gmail.com>
+Message-Id: <20251111-feat-mte4-v1-5-72ef5cf276f9@gmail.com>
 References: <20251111-feat-mte4-v1-0-72ef5cf276f9@gmail.com>
 In-Reply-To: <20251111-feat-mte4-v1-0-72ef5cf276f9@gmail.com>
 To: qemu-devel@nongnu.org
@@ -80,15 +80,15 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org, 
  Gabriel Brookman <brookmangabriel@gmail.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1762908676; l=1406;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1762908676; l=900;
  i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=yvgh0EMVT0ltvLWA+q61dbTURKT5fEJL48Kbo0rzv/c=;
- b=Kdv1k+wkfEJeapVX/a2Nintjqzq2Mrx8gjbxU6/lwZPigtn5Tki8JOSTHHSblyJE+Js2qB2/d
- 01WgRerU9qCDZtFMgUUQOUCmG+dOCMGCcZctDyrpWKn9YZpS2bAt7M3
+ bh=yMYVdAhFPzUk+dj5yY7HVAqBXvYMOye3T8cT36hK3K8=;
+ b=Omlvu1wD6ymvmau/bEIFPE1YuQ1TuofHTJxinh/K8gU7BILZTwfivVqgkQmT1vErD+CJ6UfxU
+ TdPhckojQUhCjiKCg1q9GGPK8M5zbt3lddS1MJF/a3gGwIHAqmN1KeF
 X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
  pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f2c;
- envelope-from=brookmangabriel@gmail.com; helo=mail-qv1-xf2c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f31;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-qv1-xf31.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,50 +111,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This feature automatically succeeds tag checks on load instructions when
-the appropriate SCTLR_TCSO register for the current exception level is
-set.
+The implemented MTE4 features are now present in
+docs/system/arm/emulation.rst
 
 Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
 ---
- target/arm/tcg/mte_helper.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ docs/system/arm/emulation.rst | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index bb48fe359b..3f7e89f436 100644
---- a/target/arm/tcg/mte_helper.c
-+++ b/target/arm/tcg/mte_helper.c
-@@ -865,8 +865,30 @@ static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
-     return 0;
- }
- 
-+static bool mte_store_only_active(CPUARMState *env)
-+{
-+    int el = arm_current_el(env);
-+    if (el) {
-+        if (SCTLR_TSCO & env->cp15.sctlr_el[el]) {
-+            return true;
-+        }
-+    } else {
-+        if ((HCR_E2H & env->cp15.hcr_el2) &&
-+            (SCTLR_TSCO0 & env->cp15.sctlr_el[2])) {
-+            return true;
-+        } else if (SCTLR_TSCO0 & env->cp15.sctlr_el[1]) {
-+            return true;
-+        }
-+    }
-+    return false;
-+}
-+
- uint64_t mte_check(CPUARMState *env, uint32_t desc, uint64_t ptr, uintptr_t ra)
- {
-+    if (!FIELD_EX32(desc, MTEDESC, WRITE) && mte_store_only_active(env)) {
-+        return useronly_clean_ptr(ptr);
-+    }
-+
-     uint64_t fault;
-     int ret = mte_probe_int(env, desc, ptr, ra, &fault);
- 
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index 31a5878a8f..1bf99c77bb 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -106,6 +106,8 @@ the following architecture extensions:
+ - FEAT_MTE3 (MTE Asymmetric Fault Handling)
+ - FEAT_MTE_ASYM_FAULT (Memory tagging asymmetric faults)
+ - FEAT_MTE_ASYNC (Asynchronous reporting of Tag Check Fault)
++- FEAT_MTE_TAGGED_FAR (Full address reporting of Tag Check Fault)
++- FEAT_MTE_STORE_ONLY (Store-only tag checking)
+ - FEAT_NMI (Non-maskable Interrupt)
+ - FEAT_NV (Nested Virtualization)
+ - FEAT_NV2 (Enhanced nested virtualization support)
 
 -- 
 2.51.2

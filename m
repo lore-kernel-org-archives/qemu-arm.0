@@ -4,64 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB1D5CD3423
-	for <qemu-arm@archiver.kernel.org>; Wed, 12 Nov 2025 16:23:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7849FCD13DD
+	for <qemu-arm@archiver.kernel.org>; Wed, 12 Nov 2025 16:57:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJDc6-0002rB-7x; Wed, 12 Nov 2025 11:22:30 -0500
+	id 1vJE8W-0006er-6x; Wed, 12 Nov 2025 11:56:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vJDbv-0002gT-0j; Wed, 12 Nov 2025 11:22:19 -0500
-Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vJDbl-0004og-DH; Wed, 12 Nov 2025 11:22:16 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwDHzpontBRpO6oPAg--.87S2;
- Thu, 13 Nov 2025 00:21:59 +0800 (CST)
-Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwDnP+0jtBRpz0YEAA--.8224S5;
- Thu, 13 Nov 2025 00:21:58 +0800 (CST)
-From: Tao Tang <tangtao1634@phytium.com.cn>
-To: Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>, Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [RFC v3 2/3] tests/qtest: add libqos SMMUv3 helper library
-Date: Thu, 13 Nov 2025 00:21:51 +0800
-Message-Id: <20251112162152.447327-3-tangtao1634@phytium.com.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20251112162152.447327-1-tangtao1634@phytium.com.cn>
-References: <20251112162152.447327-1-tangtao1634@phytium.com.cn>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1vJE8U-0006dF-JF
+ for qemu-arm@nongnu.org; Wed, 12 Nov 2025 11:55:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1vJE8N-0002eo-4Q
+ for qemu-arm@nongnu.org; Wed, 12 Nov 2025 11:55:58 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1762966548;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=iAeAMZVjB0p8EiWzgYd0LOcerlYTRWKgltu1YL56W7s=;
+ b=IXEZnsQYz9YbW7RpeMf9QTKhqGbaMzd8C+TCyAGrNIfFgsrePlOTjGNGS7F6xj1kiihAEB
+ mMgKNOmfwtB5cMgrAVZhGA1R9qmybNrThoh3NCESIcljtnnKQN358DY+M38L9L3eqG9CDf
+ 9SFBrenii6P6hjhAC2feP7wli10VjFA=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-605-2qq-pMktPo-kwNR2Gr8_tA-1; Wed, 12 Nov 2025 11:55:46 -0500
+X-MC-Unique: 2qq-pMktPo-kwNR2Gr8_tA-1
+X-Mimecast-MFC-AGG-ID: 2qq-pMktPo-kwNR2Gr8_tA_1762966545
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-42b366a76ffso524423f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 12 Nov 2025 08:55:46 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1762966545; x=1763571345;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=BNRI1g2hhjvp8akW98t9p4sZXPspd+zHnm6aCOLSYXo=;
+ b=g90T/2nma7gdL6Ks45bCh1ou3czDaAEukBbty/NjbhdGM1Mqc7q/AlNzXK+/TDNKaC
+ HoWrGhGVs8QhEM3PWAjCmd/PyotIGhqSQ3pt+GQRqquDx8q3wBNLuh6EJo1AyG5etN5k
+ DdNu0K8lLw8VPdY6nbIld/l89bLWaT1ndbGjqD6/TZPOJ5Ox/+HpH3u7K1aukDCy1YrS
+ k2RTJchLyHLvMLj3PzZ/ehWvTTnuiemDaK1LVnokXxYdOLHi8pOXbCjmW33hqJB3CYP+
+ fQRbXPlTROFaQ+oWrdbduHnqbrfusdRxluK8tGEdy2q82KCvEV7uOw5Kf0QchCVDLkzX
+ 6YgQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVEwkIPdHSng5JW0TlKQbsPfJGssvOO0vRiwVrQ6ir76v5vNcV5bNUxu8NwCdQA4Vs/hwzGhLteJQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwHmSs4yYcyUk3vfgPebVX7jxYMVo+9NY+/MJhz5JJ1ZNWlICL/
+ cDNhQBY5foBi0bVyDdvbITIqhNoVcnql42DUBTiOubZWKcrxUKICA4qf/Vzv38s7mWHskE7vdFO
+ RSJZWtFbQB1BK0v/sU2wAjSPPRQc2elagvWU+lXPW2hdb0zVgHCpXbg==
+X-Gm-Gg: ASbGnctOyMpRxef9lcZ8rgpevFZcqJ4CwOxkhKLcEumv7ZfHXPkUNYuJfzG9StVkMtB
+ oy/+LTVXpCWVJ8qTfsvUYJ4ppGPNocWADpG1/wCnV1bsNayuGAziXl+AWnFSouhz5DWuHwiS3hw
+ EDx+Nqbmo74X2mte7xbY3v/YzhEdgMKYSneC3OJZhrNgJRoRCOlw/+Ll4koVah/qa461XbKbU3A
+ VVzjUPROfXUTZrpp/lCvqS9n0ylieCt+xtuC8XSSjUbTuv903Y4DnxiV+UO6PdsBHGcNTKhxoS/
+ YXkxxGGyxFEuZdPKHUBFUBeifamoCbgDZc9erOlZLfWYXEFjntzyq3SWM94HQKzPEg==
+X-Received: by 2002:a05:6000:1886:b0:42b:32c3:3947 with SMTP id
+ ffacd0b85a97d-42b4bddfa01mr3830938f8f.62.1762966544829; 
+ Wed, 12 Nov 2025 08:55:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEUX+E9nBqAyLH7AtioOiWFIY8gVMIUCP/T2E61Utyye1iXoB0uL0CVUy1vApjb7S1OiV1f8w==
+X-Received: by 2002:a05:6000:1886:b0:42b:32c3:3947 with SMTP id
+ ffacd0b85a97d-42b4bddfa01mr3830890f8f.62.1762966543986; 
+ Wed, 12 Nov 2025 08:55:43 -0800 (PST)
+Received: from fedora ([85.93.96.130]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-42b2ee2ed31sm28894190f8f.29.2025.11.12.08.55.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 12 Nov 2025 08:55:43 -0800 (PST)
+Date: Wed, 12 Nov 2025 17:55:40 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Salil Mehta <salil.mehta@opnsrc.net>
+Cc: Salil Mehta <salil.mehta@huawei.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "mst@redhat.com" <mst@redhat.com>, "maz@kernel.org" <maz@kernel.org>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>, Jonathan Cameron
+ <jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
+ <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+ <richard.henderson@linaro.org>, "armbru@redhat.com" <armbru@redhat.com>,
+ "andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
+ <david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>, "will@kernel.org"
+ <will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
+ <pbonzini@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>,
+ "rafael@kernel.org" <rafael@kernel.org>, "borntraeger@linux.ibm.com"
+ <borntraeger@linux.ibm.com>, "alex.bennee@linaro.org"
+ <alex.bennee@linaro.org>, "gustavo.romero@linaro.org"
+ <gustavo.romero@linaro.org>, "npiggin@gmail.com" <npiggin@gmail.com>,
+ "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>, "linux@armlinux.org.uk"
+ <linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
+ <darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
+ <ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
+ <vishnu@os.amperecomputing.com>, "gankulkarni@os.amperecomputing.com"
+ <gankulkarni@os.amperecomputing.com>, "karl.heubaum@oracle.com"
+ <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
+ <miguel.luis@oracle.com>, zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng
+ (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>, Linuxarm <linuxarm@huawei.com>,
+ "jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
+ <maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+ "shahuang@redhat.com" <shahuang@redhat.com>, "zhao1.liu@intel.com"
+ <zhao1.liu@intel.com>
+Subject: Re: [PATCH RFC V6 14/24] arm/acpi: Introduce dedicated CPU OSPM
+ interface for ARM-like platforms
+Message-ID: <20251112175540.7407860a@fedora>
+In-Reply-To: <CAJ7pxebaqZusZAF7y=881=3dA+YVNeYUZ8BCKb_tQPvn7BbNww@mail.gmail.com>
+References: <20251001010127.3092631-1-salil.mehta@opnsrc.net>
+ <20251001010127.3092631-15-salil.mehta@opnsrc.net>
+ <20251003165816.53821040@fedora>
+ <7da6a9c470684754810414f0abd23a62@huawei.com>
+ <20251007140613.5916df08@fedora>
+ <CAJ7pxebaqZusZAF7y=881=3dA+YVNeYUZ8BCKb_tQPvn7BbNww@mail.gmail.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 8zzf-tFYjdKxw4kY6CCXZGFBI1GvmjE2M614Jpbrd8E_1762966545
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwDnP+0jtBRpz0YEAA--.8224S5
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAMBWkTmLAHdQAAso
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvAXoWDGF43ZFWfKF45uF18JFWrKrg_yoWrAw4kuo
- W3uF45Za4kWr1xur1jkFyxta1kXrWv93y5Ar45Jw4q9a9rWr4Yk340yw4fX3WxtryYgFyr
- ArWvq39rta4kAr95n29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7KY7ZEXasCq-sGcSsGvf
- J3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_UU
- UUUUUUU==
-Received-SPF: pass client-ip=209.97.181.73;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,1279 +149,1620 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce qos-smmuv3, a reusable library for SMMUv3-related qtest
-operations. This module encapsulates common tasks like:
+On Fri, 10 Oct 2025 03:00:15 +0000
+Salil Mehta <salil.mehta@opnsrc.net> wrote:
 
-- SMMUv3 initialization (enabling, configuring command/event queues)
-- Stream Table Entry (STE) and Context Descriptor (CD) setup
-- Multi-level page table construction (L0-L3 for 4KB granules)
-- Support for Stage 1, Stage 2, and nested translation modes
-- Could be easily extended to support multi-space testing infrastructure
- (Non-Secure, Secure, Root, Realm)
+> Hi Igor,
+>=20
+> On Tue, Oct 7, 2025 at 12:06=E2=80=AFPM Igor Mammedov <imammedo@redhat.co=
+m> wrote:
+>=20
+> > On Tue, 7 Oct 2025 11:15:47 +0000
+> > Salil Mehta <salil.mehta@huawei.com> wrote:
+> > =20
+> > > Hi Igor,
+> > >
+> > > Thanks for the reviews and sorry for the late reply. Please find my =
+=20
+> > replies inline. =20
+> > >
+> > > =20
+> > > > From: Igor Mammedov <imammedo@redhat.com>
+> > > > Sent: Friday, October 3, 2025 3:58 PM
+> > > >
+> > > > On Wed,  1 Oct 2025 01:01:17 +0000
+> > > > salil.mehta@opnsrc.net wrote:
+> > > > =20
+> > > > > From: Salil Mehta <salil.mehta@huawei.com>
+> > > > >
+> > > > > The existing ACPI CPU hotplug interface is built for x86 platform=
+s
+> > > > > where CPUs can be inserted or removed and resources are allocated
+> > > > > dynamically. On ARM, CPUs are never hotpluggable: resources are
+> > > > > allocated at boot and QOM vCPU objects always exist. Instead, CPU=
+s =20
+> > are =20
+> > > > > administratively managed by toggling ACPI _STA to enable or disab=
+le
+> > > > > them, which gives a hotplug-like effect but does not match the x8=
+6 =20
+> > model. =20
+> > > > >
+> > > > > Reusing the x86 hotplug AML code would complicate maintenance sin=
+ce
+> > > > > much of its logic relies on toggling the _STA.Present bit to noti=
+fy
+> > > > > OSPM about CPU insertion or removal. Such usage is not =20
+> > architecturally =20
+> > > > > valid on ARM, where CPUs cannot appear or disappear at runtime. =
+=20
+> > Mixing =20
+> > > > > both models in one interface would increase complexity and make t=
+he
+> > > > > AML harder to extend. A separate path is therefore required. The =
+new
+> > > > > design is heavily inspired by the CPU hotplug interface but avoid=
+s =20
+> > its =20
+> > > > unsuitable semantics.
+> > > >
+> > > > Let me ask how much existing CPUHP AML code will become, if you reu=
+se =20
+> > it =20
+> > > > and add handling of 'enabled' bit there?
+> > > >
+> > > > Would it be the same 700LOC as in this patch, which is basically =
+=20
+> > duplication of =20
+> > > > existing CPUHP ACPI interface? =20
+> > >
+> > >
+> > > It is by design as we have adopted non-hotplug approach now and close=
+ly =20
+> > aligned =20
+> > > ourselves with what PSCI standard perceives to be the definition of C=
+PU =20
+> > hotplug on ARM =20
+> > > platforms - at least, as of today! And it is *NOT* what 'CPU hotplug'=
+ =20
+> > means on x86 platform.
+> >
+> > There is no argument that they are different but,
+> > Could you point to PSCI specific parts in this patch?
+> > =20
+>=20
+> Yes, sure.
+>=20
+> https://lore.kernel.org/qemu-devel/20251001010127.3092631-1-salil.mehta@o=
+pnsrc.net/T/#m926978ce8b91a1f2cca88b5b579a8aedd9e62d2c
+> https://lore.kernel.org/qemu-devel/20251001010127.3092631-1-salil.mehta@o=
+pnsrc.net/T/#mb96b36ebf68b0455b657ce495cac2aee9fbf0f67
+>=20
+>=20
+>=20
+> > =20
+> > > In crux, this means,
+> > > 1. Dropping any hotplug/unplug infrastructure and its related =20
+> > paraphernalia from the =20
+> > >     ARM implementation till the time the meaning of physical CPU hotp=
+lug =20
+> > is not clear as =20
+> > >     per the specification. We do not want to model in Qemu something =
+=20
+> > which does not =20
+> > >     exist or defined, especially for the CPU hotplug case. =20
+> >
+> > there is 'opts' config struct that lets user to opt in/out from specifi=
+c
+> > AML
+> > being generated. You could use that to disable some hotplug only bits o=
+f
+> > AML.
+> > Other bits that are more generic/reusable, just refactor/rename them to=
+ a
+> > more
+> > generic names.
+> > =20
+>=20
+> Sure, but what you are suggesting is a code reuse strategy not a design
+> problem.
+> We can take this as a cleanup activity later on or even in parallel. I've
+> no reservations
+> about that. Why hold ARM patches hostage to these benign optimizations?
 
-The library provides high-level abstractions that allow test code to
-focus on IOMMU behavior validation rather than low-level register
-manipulation and page table encoding. Key features include:
+Let me use anology:=20
+if QOM doesn't suite purpose / too complex and someone duplicates it droppi=
+ng
+some parts of it along the way, the request to merge it (even temporarily) =
+very
+likely will get hard refusal.
 
-- Automatic memory allocation for translation structures with proper
-  alignment
-- Helper functions to build valid STEs/CDs for different translation
-  scenarios
-- Page table walkers that handle address offset calculations per
-  security space
-- Command queue management for SMMU configuration commands
+It's ok to do this for RFC/POC to play around but it's not ok to merge
+such code into mainline.
 
-This infrastructure is designed to be used by iommu-testdev-based tests
-and future SMMUv3 test suites, reducing code duplication and improving
-test maintainability.
+> BTW, that 'opt' is one of the ugliest parts of this function. Why do othe=
+r
+> architectures
+> have to worry about initializing legacy bits of x86 in the common code
+> before calling
+> AML function?
 
-Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
----
- tests/qtest/libqos/meson.build  |   3 +
- tests/qtest/libqos/qos-smmuv3.c | 920 ++++++++++++++++++++++++++++++++
- tests/qtest/libqos/qos-smmuv3.h | 291 ++++++++++
- 3 files changed, 1214 insertions(+)
- create mode 100644 tests/qtest/libqos/qos-smmuv3.c
- create mode 100644 tests/qtest/libqos/qos-smmuv3.h
+it's a price of unification.
+If there is a better idea to deal with it, patches are welcome. =20
 
-diff --git a/tests/qtest/libqos/meson.build b/tests/qtest/libqos/meson.build
-index 1ddaf7b095..8d6758ec2b 100644
---- a/tests/qtest/libqos/meson.build
-+++ b/tests/qtest/libqos/meson.build
-@@ -60,6 +60,9 @@ libqos_srcs = files(
-         'x86_64_pc-machine.c',
-         'riscv-virt-machine.c',
-         'loongarch-virt-machine.c',
-+
-+        # SMMU:
-+        'qos-smmuv3.c',
- )
- 
- if have_virtfs
-diff --git a/tests/qtest/libqos/qos-smmuv3.c b/tests/qtest/libqos/qos-smmuv3.c
-new file mode 100644
-index 0000000000..1b97b8b5e6
---- /dev/null
-+++ b/tests/qtest/libqos/qos-smmuv3.c
-@@ -0,0 +1,920 @@
-+/*
-+ * QOS SMMUv3 Module
-+ *
-+ * This module provides SMMUv3-specific helper functions for libqos tests,
-+ * encapsulating SMMUv3 setup, assertion, and cleanup operations.
-+ *
-+ * Copyright (c) 2025 Phytium Technology
-+ *
-+ * Author:
-+ *  Tao Tang <tangtao1634@phytium.com.cn>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "tests/qtest/libqos/pci.h"
-+#include "hw/misc/iommu-testdev.h"
-+#include "qos-smmuv3.h"
-+
-+/* STE/CD field setting macros */
-+#define QSMMU_STE_OR_CD_ENTRY_BYTES 64
-+#define QSMMU_STE_S2T0SZ_VAL 0x14
-+
-+#define QSMMU_STE_SET_VALID(ste, val)                                   \
-+    ((ste)->word[0] = ((ste)->word[0] & ~(0x1 << 0)) |                  \
-+                      (((val) & 0x1) << 0))
-+#define QSMMU_STE_SET_CONFIG(ste, val)                                  \
-+    ((ste)->word[0] = ((ste)->word[0] & ~(0x7 << 1)) |                  \
-+                      (((val) & 0x7) << 1))
-+#define QSMMU_STE_SET_S1FMT(ste, val)                                   \
-+    ((ste)->word[0] = ((ste)->word[0] & ~(0x3 << 4)) |                  \
-+                      (((val) & 0x3) << 4))
-+
-+#define QSMMU_STE_SET_CTXPTR(ste, val) do {                             \
-+    (ste)->word[0] = ((ste)->word[0] & 0x0000003fu) |                   \
-+                     ((uint32_t)(val) & 0xffffffc0u);                   \
-+    (ste)->word[1] = ((ste)->word[1] & 0xffff0000u) |                   \
-+                     ((uint32_t)(((uint64_t)(val)) >> 32) &             \
-+                      0x0000ffffu);                                     \
-+} while (0)
-+
-+#define QSMMU_STE_SET_S1CDMAX(ste, val)                                 \
-+    ((ste)->word[1] = ((ste)->word[1] & ~(0x1f << 27)) |                \
-+                      (((val) & 0x1f) << 27))
-+#define QSMMU_STE_SET_S1STALLD(ste, val)                                \
-+    ((ste)->word[2] = ((ste)->word[2] & ~(0x1 << 27)) |                 \
-+                      (((val) & 0x1) << 27))
-+#define QSMMU_STE_SET_EATS(ste, val)                                    \
-+    ((ste)->word[2] = ((ste)->word[2] & ~(0x3 << 28)) |                 \
-+                      (((val) & 0x3) << 28))
-+#define QSMMU_STE_SET_STRW(ste, val)                                    \
-+    ((ste)->word[2] = ((ste)->word[2] & ~(0x3 << 30)) |                 \
-+                      (((val) & 0x3) << 30))
-+#define QSMMU_STE_SET_NSCFG(ste, val)                                   \
-+    ((ste)->word[2] = ((ste)->word[2] & ~(0x3 << 14)) |                 \
-+                      (((val) & 0x3) << 14))
-+#define QSMMU_STE_SET_S2VMID(ste, val)                                  \
-+    ((ste)->word[4] = ((ste)->word[4] & ~0xffff) | ((val) & 0xffff))
-+#define QSMMU_STE_SET_S2T0SZ(ste, val)                                  \
-+    ((ste)->word[5] = ((ste)->word[5] & ~0x3f) | ((val) & 0x3f))
-+#define QSMMU_STE_SET_S2SL0(ste, val)                                   \
-+    ((ste)->word[5] = ((ste)->word[5] & ~(0x3 << 6)) |                  \
-+                      (((val) & 0x3) << 6))
-+#define QSMMU_STE_SET_S2TG(ste, val)                                    \
-+    ((ste)->word[5] = ((ste)->word[5] & ~(0x3 << 14)) |                 \
-+                      (((val) & 0x3) << 14))
-+#define QSMMU_STE_SET_S2PS(ste, val)                                    \
-+    ((ste)->word[5] = ((ste)->word[5] & ~(0x7 << 16)) |                 \
-+                      (((val) & 0x7) << 16))
-+#define QSMMU_STE_SET_S2AA64(ste, val)                                  \
-+    ((ste)->word[5] = ((ste)->word[5] & ~(0x1 << 19)) |                 \
-+                      (((val) & 0x1) << 19))
-+#define QSMMU_STE_SET_S2ENDI(ste, val)                                  \
-+    ((ste)->word[5] = ((ste)->word[5] & ~(0x1 << 20)) |                 \
-+                      (((val) & 0x1) << 20))
-+#define QSMMU_STE_SET_S2AFFD(ste, val)                                  \
-+    ((ste)->word[5] = ((ste)->word[5] & ~(0x1 << 21)) |                 \
-+                      (((val) & 0x1) << 21))
-+#define QSMMU_STE_SET_S2HD(ste, val)                                    \
-+    ((ste)->word[5] = ((ste)->word[5] & ~(0x1 << 23)) |                 \
-+                      (((val) & 0x1) << 23))
-+#define QSMMU_STE_SET_S2HA(ste, val)                                    \
-+    ((ste)->word[5] = ((ste)->word[5] & ~(0x1 << 24)) |                 \
-+                      (((val) & 0x1) << 24))
-+#define QSMMU_STE_SET_S2S(ste, val)                                     \
-+    ((ste)->word[5] = ((ste)->word[5] & ~(0x1 << 25)) |                 \
-+                      (((val) & 0x1) << 25))
-+#define QSMMU_STE_SET_S2R(ste, val)                                     \
-+    ((ste)->word[5] = ((ste)->word[5] & ~(0x1 << 26)) |                 \
-+                      (((val) & 0x1) << 26))
-+
-+#define QSMMU_STE_SET_S2TTB(ste, val) do {                              \
-+    (ste)->word[6] = ((ste)->word[6] & 0x0000000fu) |                   \
-+                     ((uint32_t)(val) & 0xfffffff0u);                   \
-+    (ste)->word[7] = ((ste)->word[7] & 0xfff00000u) |                   \
-+                     ((uint32_t)(((uint64_t)(val)) >> 32) &             \
-+                      0x000fffffu);                                     \
-+} while (0)
-+
-+/* CD field setting macros */
-+#define QSMMU_CD_SET_VALID(cd, val)                                     \
-+    ((cd)->word[0] = ((cd)->word[0] & ~(0x1 << 31)) |                   \
-+                     (((val) & 0x1) << 31))
-+#define QSMMU_CD_SET_TSZ(cd, sel, val)                                  \
-+    ((cd)->word[0] = ((cd)->word[0] &                                   \
-+                      ~(0x3f << ((sel) * 16 + 0))) |                    \
-+                     (((val) & 0x3f) << ((sel) * 16 + 0)))
-+#define QSMMU_CD_SET_TG(cd, sel, val)                                   \
-+    ((cd)->word[0] = ((cd)->word[0] &                                   \
-+                      ~(0x3 << ((sel) * 16 + 6))) |                     \
-+                     (((val) & 0x3) << ((sel) * 16 + 6)))
-+#define QSMMU_CD_SET_EPD(cd, sel, val)                                  \
-+    ((cd)->word[0] = ((cd)->word[0] &                                   \
-+                      ~(0x1 << ((sel) * 16 + 14))) |                    \
-+                     (((val) & 0x1) << ((sel) * 16 + 14)))
-+#define QSMMU_CD_SET_ENDI(cd, val)                                      \
-+    ((cd)->word[0] = ((cd)->word[0] & ~(0x1 << 15)) |                   \
-+                     (((val) & 0x1) << 15))
-+#define QSMMU_CD_SET_IPS(cd, val)                                       \
-+    ((cd)->word[1] = ((cd)->word[1] & ~(0x7 << 0)) |                    \
-+                     (((val) & 0x7) << 0))
-+#define QSMMU_CD_SET_AFFD(cd, val)                                      \
-+    ((cd)->word[1] = ((cd)->word[1] & ~(0x1 << 3)) |                    \
-+                     (((val) & 0x1) << 3))
-+#define QSMMU_CD_SET_HD(cd, val)                                        \
-+    ((cd)->word[1] = ((cd)->word[1] & ~(0x1 << 10)) |                   \
-+                     (((val) & 0x1) << 10))
-+#define QSMMU_CD_SET_HA(cd, val)                                        \
-+    ((cd)->word[1] = ((cd)->word[1] & ~(0x1 << 11)) |                   \
-+                     (((val) & 0x1) << 11))
-+#define QSMMU_CD_SET_TTB(cd, sel, val) do {                             \
-+    (cd)->word[(sel) * 2 + 2] =                                         \
-+        ((cd)->word[(sel) * 2 + 2] & 0x0000000f) |                      \
-+        ((val) & 0xfffffff0);                                           \
-+    (cd)->word[(sel) * 2 + 3] =                                         \
-+        ((cd)->word[(sel) * 2 + 3] & 0xfff80000) |                      \
-+        ((((uint64_t)(val)) >> 32) & 0x0007ffff);                       \
-+} while (0)
-+#define QSMMU_CD_SET_HAD(cd, sel, val)                                  \
-+    ((cd)->word[(sel) * 2 + 2] =                                        \
-+     ((cd)->word[(sel) * 2 + 2] & ~(0x1 << 1)) |                        \
-+     (((val) & 0x1) << 1))
-+#define QSMMU_CD_SET_MAIR0(cd, val) ((cd)->word[6] = (val))
-+#define QSMMU_CD_SET_MAIR1(cd, val) ((cd)->word[7] = (val))
-+#define QSMMU_CD_SET_TCR_T0SZ(cd, val)                                  \
-+    ((cd)->word[4] = ((cd)->word[4] & ~0x3f) | ((val) & 0x3f))
-+#define QSMMU_CD_SET_ASID(cd, val)                                      \
-+    ((cd)->word[1] = ((cd)->word[1] & ~(0xffff << 16)) |                \
-+                     (((val) & 0xffff) << 16))
-+#define QSMMU_CD_SET_S(cd, val)                                         \
-+    ((cd)->word[1] = ((cd)->word[1] & ~(0x1 << 12)) |                   \
-+                     (((val) & 0x1) << 12))
-+#define QSMMU_CD_SET_R(cd, val)                                         \
-+    ((cd)->word[1] = ((cd)->word[1] & ~(0x1 << 13)) |                   \
-+                     (((val) & 0x1) << 13))
-+#define QSMMU_CD_SET_A(cd, val)                                         \
-+    ((cd)->word[1] = ((cd)->word[1] & ~(0x1 << 14)) |                   \
-+                     (((val) & 0x1) << 14))
-+#define QSMMU_CD_SET_AARCH64(cd, val)                                   \
-+    ((cd)->word[1] = ((cd)->word[1] & ~(0x1 << 9)) |                    \
-+                     (((val) & 0x1) << 9))
-+#define QSMMU_CD_SET_TBI(cd, val)                                       \
-+    ((cd)->word[1] = ((cd)->word[1] & ~(0x3 << 6)) |                    \
-+                     (((val) & 0x3) << 6))
-+#define QSMMU_CD_SET_NSCFG0(cd, val)                                    \
-+    ((cd)->word[2] = ((cd)->word[2] & ~(0x1 << 0)) |                    \
-+                     (((val) & 0x1) << 0))
-+#define QSMMU_CD_SET_NSCFG1(cd, val)                                    \
-+    ((cd)->word[4] = ((cd)->word[4] & ~(0x1 << 0)) |                    \
-+                     (((val) & 0x1) << 0))
-+
-+
-+/* STE and CD image structures */
-+typedef struct {
-+    uint32_t word[8];
-+} STEImg;
-+
-+typedef struct {
-+    uint32_t word[8];
-+} CDImg;
-+
-+/* Apply space offset to address */
-+static inline uint64_t qsmmu_apply_space_offs(QSMMUSpace sp,
-+                                              uint64_t address)
-+{
-+    return address + qsmmu_space_offset(sp);
-+}
-+
-+uint32_t qsmmu_expected_dma_result(QSMMUTestContext *ctx)
-+{
-+    /* Currently only non-secure space is supported. */
-+    if (ctx->tx_space != QSMMU_SPACE_NONSECURE) {
-+        return ITD_DMA_ERR_TX_FAIL;
-+    }
-+    return 0;
-+}
-+
-+uint32_t qsmmu_build_dma_attrs(QSMMUSpace space)
-+{
-+    uint32_t attrs = 0;
-+    switch (space) {
-+    case QSMMU_SPACE_NONSECURE:
-+        /* Non-secure: secure=0, space=1 */
-+        attrs = ITD_ATTRS_SET_SECURE(attrs, 0);
-+        attrs = ITD_ATTRS_SET_SPACE(attrs, QSMMU_SPACE_NONSECURE);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    return attrs;
-+}
-+
-+uint32_t qsmmu_setup_and_enable_translation(QSMMUTestContext *ctx)
-+{
-+    uint32_t build_result;
-+
-+    /* Trigger configuration */
-+    qpci_io_writel(ctx->dev, ctx->bar, ITD_REG_TRANS_DBELL, 0x2);
-+
-+    /* Build page tables and SMMU structures first */
-+    build_result = qsmmu_build_translation(
-+                       ctx->qts, ctx->config.trans_mode,
-+                       ctx->tx_space, ctx->sid);
-+    if (build_result != 0) {
-+        g_test_message("Build failed: mode=%u sid=%u status=0x%x",
-+                       ctx->config.trans_mode, ctx->sid, build_result);
-+        ctx->trans_status = build_result;
-+        return ctx->trans_status;
-+    }
-+
-+    /* Program SMMU registers for the appropriate security space */
-+    qsmmu_program_regs(ctx->qts, ctx->smmu_base, ctx->tx_space);
-+
-+    /* Read configuration status */
-+    ctx->trans_status = qpci_io_readl(ctx->dev, ctx->bar,
-+                                      ITD_REG_TRANS_STATUS);
-+
-+    return ctx->trans_status;
-+}
-+
-+uint32_t qsmmu_trigger_dma(QSMMUTestContext *ctx)
-+{
-+    uint32_t result, attrs_val;
-+    int i;
-+
-+    /* Program DMA parameters */
-+    qpci_io_writel(ctx->dev, ctx->bar, ITD_REG_DMA_GVA_LO,
-+                   (uint32_t)ctx->config.dma_iova);
-+    qpci_io_writel(ctx->dev, ctx->bar, ITD_REG_DMA_GVA_HI,
-+                   (uint32_t)(ctx->config.dma_iova >> 32));
-+    qpci_io_writel(ctx->dev, ctx->bar, ITD_REG_DMA_LEN,
-+                   ctx->config.dma_len);
-+
-+    /*
-+     * Build and write DMA attributes based on device security state.
-+     *
-+     * We only support Non-secure state for now. But in future, this can be
-+     * extended to support static Secure state or dynamic Realm state as well.
-+     */
-+    attrs_val = qsmmu_build_dma_attrs(QSMMU_SPACE_NONSECURE);
-+    qpci_io_writel(ctx->dev, ctx->bar, ITD_REG_DMA_ATTRS, attrs_val);
-+
-+    /* Flip status */
-+    qpci_io_writel(ctx->dev, ctx->bar, ITD_REG_DMA_DBELL, 1);
-+
-+    /* Trigger DMA by reading ID register */
-+    qpci_io_readl(ctx->dev, ctx->bar, ITD_REG_DMA_TRIGGERING);
-+
-+    /* Poll for DMA completion */
-+    for (i = 0; i < 1000; i++) {
-+        result = qpci_io_readl(ctx->dev, ctx->bar, ITD_REG_DMA_RESULT);
-+        if (result != ITD_DMA_RESULT_BUSY) {
-+            ctx->dma_result = result;
-+            break;
-+        }
-+        g_usleep(1000);
-+    }
-+
-+    /* Fallback for timeout */
-+    if (ctx->dma_result == ITD_DMA_RESULT_BUSY) {
-+        ctx->dma_result = ITD_DMA_ERR_TX_FAIL;
-+    }
-+
-+    return ctx->dma_result;
-+}
-+
-+static void qsmmu_push_cfgi_cmd(QTestState *qts, uint64_t smmu_base,
-+                                QSMMUSpace bank_sp, uint32_t type,
-+                                uint32_t sid, bool ssec)
-+{
-+    hwaddr bank_off;
-+    uint32_t new_prod, base_lo, base_hi, log2size, prod;
-+    uint32_t index_mask, slot, words[4];
-+    uint64_t base, qbase, entry_pa;
-+    int i;
-+
-+    /* Only non-secure commands are supported for now */
-+    g_assert_false(ssec);
-+
-+    bank_off = 0;
-+
-+    /* Read CMDQ_BASE register */
-+    base_lo = qtest_readl(qts, smmu_base + bank_off +
-+                          QSMMU_REG_CMDQ_BASE);
-+    base_hi = qtest_readl(qts, smmu_base + bank_off +
-+                          QSMMU_REG_CMDQ_BASE + 4);
-+    base = ((uint64_t)base_hi << 32) | base_lo;
-+    log2size = base & 0x1f;
-+    qbase = base & QSMMU_BASE_ADDR_MASK;
-+
-+    /* Read CMDQ_PROD register */
-+    prod = qtest_readl(qts, smmu_base + bank_off +
-+                       QSMMU_REG_CMDQ_PROD);
-+    index_mask = (1u << log2size) - 1u;
-+    slot = prod & index_mask;
-+    entry_pa = qbase + (uint64_t)slot * 16u;
-+
-+    /* Prepare command words */
-+    memset(words, 0, sizeof(words));
-+    words[0] = (type & 0xff) | (ssec ? (1u << 10) : 0u);
-+    words[1] = sid;
-+
-+    /* Write command to the command queue */
-+    for (i = 0; i < 4; i++) {
-+        qtest_writel(qts, entry_pa + i * 4, words[i]);
-+    }
-+
-+    /* Update PROD to trigger command handler */
-+    new_prod = (prod + 1) & ((1u << (log2size + 1)) - 1u);
-+    qtest_writel(qts, smmu_base + bank_off + QSMMU_REG_CMDQ_PROD, new_prod);
-+}
-+
-+void qsmmu_cleanup_translation(QSMMUTestContext *ctx)
-+{
-+    static const QSMMUSpace spaces[] = { QSMMU_SPACE_NONSECURE };
-+    uint32_t sid;
-+    uint64_t ste_addr, ste_addr_real, cd_addr_real;
-+    QSMMUSpace build_space;
-+    int idx, i;
-+
-+    sid = ctx->sid;
-+    ste_addr = sid * QSMMU_STE_OR_CD_ENTRY_BYTES + QSMMU_STR_TAB_BASE;
-+
-+    /* Clear page table entries and configuration structures */
-+    for (idx = 0; idx < ARRAY_SIZE(spaces); idx++) {
-+        build_space = spaces[idx];
-+
-+        ste_addr_real = qsmmu_apply_space_offs(build_space, ste_addr);
-+        /* Clear STE (8 words) */
-+        for (i = 0; i < 8; i++) {
-+            qtest_writel(ctx->qts, ste_addr_real + i * 4, 0);
-+        }
-+
-+        cd_addr_real = qsmmu_apply_space_offs(build_space, QSMMU_CD_GPA);
-+        /* Clear CD (8 words) */
-+        for (i = 0; i < 8; i++) {
-+            qtest_writel(ctx->qts, cd_addr_real + i * 4, 0);
-+            g_assert_cmpint(qtest_readl(ctx->qts, cd_addr_real + i * 4), ==, 0);
-+        }
-+    }
-+
-+    /* Invalidate SMMU caches via configuration invalidation commands */
-+    if (ctx->smmu_base) {
-+        /* Issue cache invalidation commands to SMMU */
-+        qsmmu_push_cfgi_cmd(ctx->qts, ctx->smmu_base, QSMMU_SPACE_NONSECURE,
-+                            QSMMU_CMD_CFGI_STE, sid, false);
-+        qsmmu_push_cfgi_cmd(ctx->qts, ctx->smmu_base, QSMMU_SPACE_NONSECURE,
-+                            QSMMU_CMD_CFGI_CD, sid, false);
-+        qsmmu_push_cfgi_cmd(ctx->qts, ctx->smmu_base, QSMMU_SPACE_NONSECURE,
-+                            QSMMU_CMD_TLBI_NSNH_ALL, sid, false);
-+    }
-+}
-+
-+bool qsmmu_validate_test_result(QSMMUTestContext *ctx)
-+{
-+    uint32_t expected = qsmmu_expected_dma_result(ctx);
-+    g_test_message("-> Validating result: expected=0x%x actual=0x%x",
-+                   expected, ctx->dma_result);
-+    return (ctx->dma_result == expected);
-+}
-+
-+QSMMUSpace qsmmu_sec_sid_to_space(QSMMUSecSID sec_sid)
-+{
-+    switch (sec_sid) {
-+    case QSMMU_SEC_SID_NONSECURE:
-+        return QSMMU_SPACE_NONSECURE;
-+    case QSMMU_SEC_SID_SECURE:
-+        return QSMMU_SPACE_SECURE;
-+    case QSMMU_SEC_SID_REALM:
-+        return QSMMU_SPACE_REALM;
-+    case QSMMU_SEC_SID_ROOT:
-+        return QSMMU_SPACE_ROOT;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+uint64_t qsmmu_space_offset(QSMMUSpace sp)
-+{
-+    switch (sp) {
-+    case QSMMU_SPACE_NONSECURE:
-+        return QSMMU_SPACE_OFFS_NS;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+void qsmmu_single_translation(QSMMUTestContext *ctx)
-+{
-+    uint32_t config_result;
-+    uint32_t dma_result;
-+    bool test_passed;
-+
-+    /* Configure SMMU translation */
-+    config_result = qsmmu_setup_and_enable_translation(ctx);
-+    if (config_result != 0) {
-+        g_test_message("Configuration failed: mode=%u status=0x%x",
-+                       ctx->config.trans_mode, config_result);
-+        return;
-+    }
-+
-+    /* Trigger DMA operation */
-+    dma_result = qsmmu_trigger_dma(ctx);
-+    if (dma_result != 0) {
-+        g_test_message("DMA failed: mode=%u result=0x%x",
-+                       ctx->config.trans_mode, dma_result);
-+    } else {
-+        g_test_message("-> DMA succeeded: mode=%u", ctx->config.trans_mode);
-+    }
-+
-+    /* Validate test result */
-+    test_passed = qsmmu_validate_test_result(ctx);
-+    g_assert_true(test_passed);
-+
-+    /* Clean up translation state to prepare for the next test */
-+    qsmmu_cleanup_translation(ctx);
-+}
-+
-+void qsmmu_translation_batch(const QSMMUTestConfig *configs,
-+                                  size_t count,
-+                                  QTestState *qts,
-+                                  QPCIDevice *dev,
-+                                  QPCIBar bar,
-+                                  uint64_t smmu_base)
-+{
-+    int i;
-+    /* Initialize test memory */
-+    for (i = 0; i < count; i++) {
-+        qtest_memset(qts, configs[i].dma_iova, 0x00, configs[i].dma_len);
-+    }
-+    /* Execute each test configuration */
-+    for (i = 0; i < count; i++) {
-+        QSMMUTestContext ctx = {
-+            .qts = qts,
-+            .dev = dev,
-+            .bar = bar,
-+            .smmu_base = smmu_base,
-+            .config = configs[i],
-+            .trans_status = 0,
-+            .dma_result = 0,
-+            .sid = dev->devfn,
-+            .tx_space = qsmmu_sec_sid_to_space(configs[i].sec_sid),
-+        };
-+
-+        qsmmu_single_translation(&ctx);
-+        g_test_message("--> Test %d completed: mode=%u sec_sid=%u "
-+                       "status=0x%x result=0x%x", i, configs[i].trans_mode,
-+                       configs[i].sec_sid, ctx.trans_status, ctx.dma_result);
-+    }
-+}
-+
-+uint32_t qsmmu_build_translation(QTestState *qts, QSMMUTransMode mode,
-+                                      QSMMUSpace tx_space, uint32_t sid)
-+{
-+    uint64_t ste_addr, ste_addr_real, cd_addr_real;
-+    uint64_t cd_ttb, vttb, vttb_real;
-+    uint8_t nscfg0, nscfg1;
-+    QSMMUSpace build_space;
-+    STEImg ste;
-+    CDImg cd;
-+    int i;
-+
-+    build_space = tx_space;
-+    /* Only Non-Secure space is supported */
-+    if (build_space != QSMMU_SPACE_NONSECURE) {
-+        return 0xdeadbeafu;
-+    }
-+
-+    /* Build STE image */
-+    memset(&ste, 0, sizeof(ste));
-+    switch (mode) {
-+    case QSMMU_TM_S1_ONLY:
-+        QSMMU_STE_SET_CONFIG(&ste, 0x5);
-+        break;
-+    case QSMMU_TM_S2_ONLY:
-+        QSMMU_STE_SET_CONFIG(&ste, 0x6);
-+        break;
-+    case QSMMU_TM_NESTED:
-+    default:
-+        QSMMU_STE_SET_CONFIG(&ste, 0x7);
-+        break;
-+    }
-+
-+    QSMMU_STE_SET_VALID(&ste, 1);
-+    QSMMU_STE_SET_S2T0SZ(&ste, QSMMU_STE_S2T0SZ_VAL);
-+    QSMMU_STE_SET_S2SL0(&ste, 0x2);
-+    QSMMU_STE_SET_S2TG(&ste, 0);
-+    QSMMU_STE_SET_S2PS(&ste, 0x5);
-+    QSMMU_STE_SET_S2AA64(&ste, 1);
-+    QSMMU_STE_SET_S2ENDI(&ste, 0);
-+    QSMMU_STE_SET_S2AFFD(&ste, 0);
-+
-+    /*
-+     * The consistent policy also extends to pointer fetches. For cases that
-+     * require reading STE.S1ContextPtr or STE.S2TTB, we still follow the same
-+     * policy:
-+     * - The PA space security attribute of the address pointed to
-+     *   (e.g., the CD or S2L1 table) must also match the input 'SEC_SID'.
-+     */
-+    cd_addr_real = qsmmu_apply_space_offs(build_space, QSMMU_CD_GPA);
-+    QSMMU_STE_SET_CTXPTR(&ste, cd_addr_real);
-+
-+    vttb = QSMMU_VTTB;
-+    vttb_real = qsmmu_apply_space_offs(build_space, vttb);
-+    QSMMU_STE_SET_S2TTB(&ste, vttb_real);
-+
-+    ste_addr = sid * QSMMU_STE_OR_CD_ENTRY_BYTES + QSMMU_STR_TAB_BASE;
-+    ste_addr_real = qsmmu_apply_space_offs(build_space, ste_addr);
-+
-+    /* Write STE to memory */
-+    for (i = 0; i < 8; i++) {
-+        qtest_writel(qts, ste_addr_real + i * 4, ste.word[i]);
-+    }
-+
-+    switch (tx_space) {
-+    case QSMMU_SPACE_NONSECURE:
-+        nscfg0 = 0x1;
-+        nscfg1 = 0x1;
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+    /* Build CD image for S1 path if needed */
-+    if (mode != QSMMU_TM_S2_ONLY) {
-+        memset(&cd, 0, sizeof(cd));
-+
-+        QSMMU_CD_SET_ASID(&cd, 0x1e20);
-+        QSMMU_CD_SET_AARCH64(&cd, 1);
-+        QSMMU_CD_SET_VALID(&cd, 1);
-+        QSMMU_CD_SET_A(&cd, 1);
-+        QSMMU_CD_SET_S(&cd, 0);
-+        QSMMU_CD_SET_HD(&cd, 0);
-+        QSMMU_CD_SET_HA(&cd, 0);
-+        QSMMU_CD_SET_IPS(&cd, 0x4);
-+        QSMMU_CD_SET_TBI(&cd, 0x0);
-+        QSMMU_CD_SET_AFFD(&cd, 0x0);
-+        QSMMU_CD_SET_EPD(&cd, 0, 0x0);
-+        QSMMU_CD_SET_EPD(&cd, 1, 0x1);
-+        QSMMU_CD_SET_TSZ(&cd, 0, 0x10);
-+        QSMMU_CD_SET_TG(&cd, 0, 0x0);
-+        QSMMU_CD_SET_ENDI(&cd, 0x0);
-+
-+        QSMMU_CD_SET_NSCFG0(&cd, nscfg0);
-+        QSMMU_CD_SET_NSCFG1(&cd, nscfg1);
-+        QSMMU_CD_SET_R(&cd, 0x1);
-+        cd_ttb = vttb_real;
-+        QSMMU_CD_SET_TTB(&cd, 0, cd_ttb);
-+
-+        for (i = 0; i < 8; i++) {
-+            /* TODO: Maybe need more work to write to secure RAM in future */
-+            qtest_writel(qts, cd_addr_real + i * 4, cd.word[i]);
-+            g_assert_cmpint(qtest_readl(qts, cd_addr_real + i * 4), ==,
-+                            cd.word[i]);
-+        }
-+    }
-+
-+    qsmmu_setup_translation_tables(qts, QSMMU_IOVA_OR_IPA, build_space,
-+                                   false, mode);
-+    /* Nested extras: CD S2 tables */
-+    if (mode == QSMMU_TM_NESTED) {
-+        /*
-+         * Extra Stage 2 page tables is needed if
-+         *          SMMUTranslationClass == SMMU_CLASS_CD
-+         * as smmuv3_do_translate would translate an IPA of the CD to the final
-+         * output CD after a Stage 2 translation.
-+         */
-+        qsmmu_setup_translation_tables(qts, cd_addr_real, build_space,
-+                                       true, mode);
-+    }
-+
-+    return 0;
-+}
-+
-+uint64_t qsmmu_bank_base(uint64_t base, QSMMUSpace sp)
-+{
-+    switch (sp) {
-+    case QSMMU_SPACE_NONSECURE:
-+        return base;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+void qsmmu_program_bank(QTestState *qts, uint64_t bank_base, QSMMUSpace sp)
-+{
-+    uint64_t cmdq_base, eventq_base, strtab_base;
-+
-+    qtest_writel(qts, bank_base + QSMMU_REG_GBPA, 0x80000000);  /* UPDATE */
-+    qtest_writel(qts, bank_base + QSMMU_REG_CR0, 0x0);          /* Disable */
-+    qtest_writel(qts, bank_base + QSMMU_REG_CR1, 0x0d75);       /* Config */
-+
-+    /* CMDQ_BASE: add address-space offset*/
-+    cmdq_base = qsmmu_apply_space_offs(sp, QSMMU_CMDQ_BASE_ADDR);
-+    cmdq_base |= 0x0a;  /* Size and valid bits */
-+    qtest_writeq(qts, bank_base + QSMMU_REG_CMDQ_BASE, cmdq_base);
-+
-+    qtest_writel(qts, bank_base + QSMMU_REG_CMDQ_CONS, 0x0);
-+    qtest_writel(qts, bank_base + QSMMU_REG_CMDQ_PROD, 0x0);
-+
-+    /* EVENTQ_BASE: add address-space offset */
-+    eventq_base = qsmmu_apply_space_offs(sp, QSMMU_EVENTQ_BASE_ADDR);
-+    eventq_base |= 0x0a;  /* Size and valid bits */
-+    qtest_writeq(qts, bank_base + QSMMU_REG_EVENTQ_BASE, eventq_base);
-+
-+    qtest_writel(qts, bank_base + QSMMU_REG_EVENTQ_PROD, 0x0);
-+    qtest_writel(qts, bank_base + QSMMU_REG_EVENTQ_CONS, 0x0);
-+
-+    /* STRTAB_BASE_CFG: linear stream table, LOG2SIZE=5 */
-+    qtest_writel(qts, bank_base + QSMMU_REG_STRTAB_CFG, 0x5);
-+
-+    /* STRTAB_BASE: add address-space offset */
-+    strtab_base = qsmmu_apply_space_offs(sp, QSMMU_STR_TAB_BASE);
-+    qtest_writeq(qts, bank_base + QSMMU_REG_STRTAB_BASE, strtab_base);
-+
-+    /* CR0: Enable SMMU with appropriate flags */
-+    qtest_writel(qts, bank_base + QSMMU_REG_CR0, 0xd);
-+}
-+
-+void qsmmu_program_regs(QTestState *qts, uint64_t smmu_base, QSMMUSpace space)
-+{
-+    uint64_t sp_base;
-+    /* Always program Non-Secure bank first */
-+    uint64_t ns_base = qsmmu_bank_base(smmu_base, QSMMU_SPACE_NONSECURE);
-+    qsmmu_program_bank(qts, ns_base, QSMMU_SPACE_NONSECURE);
-+
-+    /* Program the requested space if different from Non-Secure */
-+    sp_base = qsmmu_bank_base(smmu_base, space);
-+    if (sp_base != ns_base) {
-+        qsmmu_program_bank(qts, sp_base, space);
-+    }
-+}
-+
-+static uint32_t qsmmu_get_table_index(uint64_t addr, int level)
-+{
-+    switch (level) {
-+    case 0:
-+        return (addr >> 39) & 0x1ff;
-+    case 1:
-+        return (addr >> 30) & 0x1ff;
-+    case 2:
-+        return (addr >> 21) & 0x1ff;
-+    case 3:
-+        return (addr >> 12) & 0x1ff;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static uint64_t qsmmu_get_table_addr(uint64_t base, int level, uint64_t iova)
-+{
-+    uint32_t index = qsmmu_get_table_index(iova, level);
-+    return (base & QSMMU_PTE_MASK) + (index * 8);
-+}
-+
-+/*
-+ * qsmmu_get_pte_attrs - Calculate the S1 leaf PTE value
-+ *
-+ * IOMMU need to set different attributes for PTEs based on the translation mode
-+ */
-+static uint64_t qsmmu_get_pte_attrs(QSMMUTransMode mode, bool is_leaf,
-+                                    QSMMUSpace space)
-+{
-+    uint64_t rw_mask = QSMMU_LEAF_PTE_RW_MASK;
-+    uint64_t ro_mask = QSMMU_LEAF_PTE_RO_MASK;
-+    uint64_t non_leaf_mask = QSMMU_NON_LEAF_PTE_MASK;
-+
-+    switch (space) {
-+    case QSMMU_SPACE_NONSECURE:
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    if (!is_leaf) {
-+        return non_leaf_mask;
-+    }
-+
-+    /* For leaf PTE */
-+    if (mode == QSMMU_TM_NESTED || mode == QSMMU_TM_S1_ONLY) {
-+        return rw_mask;
-+    }
-+
-+    return ro_mask;
-+}
-+
-+/*
-+ * qsmmu_setup_s2_walk_for_ipa - Setup Stage 2 page table walk for an IPA
-+ *
-+ * @qts: QTest state handle
-+ * @space: Security space
-+ * @ipa: Intermediate Physical Address to translate
-+ * @s2_vttb: Stage 2 VTTB (page table base)
-+ * @mode: Translation mode
-+ * @is_final: Whether this is the final S2 walk (not nested within S1)
-+ *
-+ * Calculates and writes a 4-level Stage 2 page table walk for the given IPA.
-+ * This function dynamically generates and writes all page table entries
-+ * (L0-L3) to guest memory based on the input IPA and configuration.
-+ */
-+static void qsmmu_setup_s2_walk_for_ipa(QTestState *qts,
-+                                        QSMMUSpace space,
-+                                        uint64_t ipa,
-+                                        uint64_t s2_vttb,
-+                                        QSMMUTransMode mode,
-+                                        bool is_final)
-+{
-+    uint64_t all_s2_l0_pte_val;
-+    uint64_t all_s2_l1_pte_val;
-+    uint64_t all_s2_l2_pte_val;
-+    uint64_t all_s2_l3_pte_val;
-+    uint64_t s2_l0_addr, s2_l1_addr, s2_l2_addr, s2_l3_addr;
-+
-+    /* Shared intermediate PTE values for all S2 walks */
-+    all_s2_l0_pte_val = qsmmu_apply_space_offs(
-+        space, QSMMU_L0_PTE_VAL | qsmmu_get_pte_attrs(mode, false, space));
-+    all_s2_l1_pte_val = qsmmu_apply_space_offs(
-+        space, QSMMU_L1_PTE_VAL | qsmmu_get_pte_attrs(mode, false, space));
-+    all_s2_l2_pte_val = qsmmu_apply_space_offs(
-+        space, QSMMU_L2_PTE_VAL | qsmmu_get_pte_attrs(mode, false, space));
-+
-+    /* Stage 2 Level 0 */
-+    s2_l0_addr = qsmmu_get_table_addr(s2_vttb, 0, ipa);
-+    qtest_writeq(qts, s2_l0_addr, all_s2_l0_pte_val);
-+
-+    /* Stage 2 Level 1 */
-+    s2_l1_addr = qsmmu_get_table_addr(all_s2_l0_pte_val, 1, ipa);
-+    qtest_writeq(qts, s2_l1_addr, all_s2_l1_pte_val);
-+
-+    /* Stage 2 Level 2 */
-+    s2_l2_addr = qsmmu_get_table_addr(all_s2_l1_pte_val, 2, ipa);
-+    qtest_writeq(qts, s2_l2_addr, all_s2_l2_pte_val);
-+
-+    /* Stage 2 Level 3 (leaf) */
-+    s2_l3_addr = qsmmu_get_table_addr(all_s2_l2_pte_val, 3, ipa);
-+
-+    /*
-+     * Stage 2 L3 PTE attributes depend on the context:
-+     * - For nested S1 table address translations (!is_final):
-+     *   Use LEAF attrs (0x763) because these PTEs map S1 table pages directly
-+     * - For final S2 walk (is_final):
-+     *   Use TABLE attrs (0x7e3) for the final IPA→PA mapping
-+     */
-+    if (!is_final) {
-+        all_s2_l3_pte_val =
-+            (ipa & QSMMU_PTE_MASK) |
-+            qsmmu_get_pte_attrs(QSMMU_TM_NESTED, true, space);
-+    } else {
-+        all_s2_l3_pte_val =
-+            (ipa & QSMMU_PTE_MASK) |
-+            qsmmu_get_pte_attrs(QSMMU_TM_S2_ONLY, true, space);
-+    }
-+
-+    qtest_writeq(qts, s2_l3_addr, all_s2_l3_pte_val);
-+}
-+
-+/*
-+ * qsmmu_setup_s1_level_with_nested_s2 - Setup S1 level with nested S2 walk
-+ *
-+ * @qts: QTest state handle
-+ * @space: Security space
-+ * @s1_level: Stage 1 level (0-3)
-+ * @s1_pte_addr: Stage 1 PTE address (as IPA)
-+ * @s1_pte_val: Stage 1 PTE value to write
-+ * @s2_vttb: Stage 2 VTTB for nested translation
-+ * @mode: Translation mode
-+ *
-+ * For nested translation, each S1 table access requires a full S2 walk
-+ * to translate the S1 table's IPA to PA. This function performs the nested
-+ * S2 walk and writes the S1 PTE value to guest memory.
-+ */
-+static void qsmmu_setup_s1_level_with_nested_s2(QTestState *qts,
-+                                                QSMMUSpace space,
-+                                                int s1_level,
-+                                                uint64_t s1_pte_addr,
-+                                                uint64_t s1_pte_val,
-+                                                uint64_t s2_vttb,
-+                                                QSMMUTransMode mode)
-+{
-+    /*
-+     * Perform nested S2 walk to translate S1 table IPA to PA.
-+     * This is always needed for S1_ONLY/S2_ONLY/NESTED modes because:
-+     * - S1_ONLY: Needs S2 tables for "IPA as PA" mapping (for testing)
-+     * - S2_ONLY: Needs S2 tables for direct translation
-+     * - NESTED: Needs S2 tables for nested translation
-+     */
-+    qsmmu_setup_s2_walk_for_ipa(qts, space, s1_pte_addr,
-+                                s2_vttb, mode, false);
-+
-+    /* Write the S1 PTE value */
-+    qtest_writeq(qts, s1_pte_addr, s1_pte_val);
-+}
-+
-+/*
-+ * qsmmu_setup_translation_tables - Setup SMMU translation tables
-+ *
-+ * The 'SEC_SID' represents the input security state of the device/transaction,
-+ * whether it's a static Secure state or a dynamically-switched Realm state.
-+ * SEC_SID has been converted to the corresponding SEcurity Space (QSMMUSpace)
-+ * before calling this function.
-+ *
-+ * In a real SMMU translation, this input security state does not unilaterally
-+ * determine the output Physical Address (PA) space. The output PA space is
-+ * ultimately determined by attributes encountered during the page table walk,
-+ * such as NSCFG and NSTable.
-+ *
-+ * However, for the specific context of testing the SMMU with the iommu-testdev,
-+ * and to simplify the future support for Secure and Realm states, we adopt a
-+ * consistent policy:
-+ *
-+ * - We always ensure that the page table attributes (e.g., nscfg, nstable)
-+ * *match* the input 'SEC_SID' of the test case.
-+ *
-+ * For example: If 'SEC_SID' is Non-Secure, the corresponding nscfg and nstable
-+ * attributes in the translation tables will always be set to 1.
-+ *
-+ */
-+void qsmmu_setup_translation_tables(QTestState *qts,
-+                                    uint64_t iova,
-+                                    QSMMUSpace space,
-+                                    bool is_cd,
-+                                    QSMMUTransMode mode)
-+{
-+    uint64_t all_s2_l0_pte_val, all_s2_l1_pte_val, all_s2_l2_pte_val;
-+    uint64_t s1_vttb, s2_vttb, s1_leaf_pte_val;
-+    uint64_t l0_addr, l1_addr, l2_addr, l3_addr;
-+
-+    g_test_message("Begin of construction: IOVA=0x%lx mode=%d is_building_CD=%s"
-+                   " ===", iova, mode, is_cd ? "yes" : "no");
-+
-+    /* Initialize shared S2 PTE values used across all walks */
-+    all_s2_l0_pte_val = qsmmu_apply_space_offs(
-+        space, QSMMU_L0_PTE_VAL | qsmmu_get_pte_attrs(mode, false, space));
-+    all_s2_l1_pte_val = qsmmu_apply_space_offs(
-+        space, QSMMU_L1_PTE_VAL | qsmmu_get_pte_attrs(mode, false, space));
-+    all_s2_l2_pte_val = qsmmu_apply_space_offs(
-+        space, QSMMU_L2_PTE_VAL | qsmmu_get_pte_attrs(mode, false, space));
-+
-+    /* Both S1 and S2 share the same VTTB base */
-+    s1_vttb = qsmmu_apply_space_offs(space, QSMMU_VTTB & QSMMU_PTE_MASK);
-+    s2_vttb = s1_vttb;
-+
-+    if (!is_cd) {
-+        /*
-+         * Setup Stage 1 page tables with nested Stage 2 walks.
-+         * For each S1 level (L0-L3), we need to:
-+         * 1. Calculate S1 PTE address (as IPA)
-+         * 2. Perform nested S2 walk to translate that IPA to PA
-+         * 3. Write the S1 PTE value
-+         */
-+
-+        /* Stage 1 Level 0 */
-+        l0_addr = qsmmu_get_table_addr(s1_vttb, 0, iova);
-+        qsmmu_setup_s1_level_with_nested_s2(qts, space, 0, l0_addr,
-+                                            all_s2_l0_pte_val, s2_vttb, mode);
-+
-+        /* Stage 1 Level 1 */
-+        l1_addr = qsmmu_get_table_addr(all_s2_l0_pte_val & QSMMU_PTE_MASK,
-+                                       1, iova);
-+        qsmmu_setup_s1_level_with_nested_s2(qts, space, 1, l1_addr,
-+                                            all_s2_l1_pte_val, s2_vttb, mode);
-+
-+        /* Stage 1 Level 2 */
-+        l2_addr = qsmmu_get_table_addr(all_s2_l1_pte_val & QSMMU_PTE_MASK,
-+                                       2, iova);
-+        qsmmu_setup_s1_level_with_nested_s2(qts, space, 2, l2_addr,
-+                                            all_s2_l2_pte_val, s2_vttb, mode);
-+
-+        /* Stage 1 Level 3 (leaf) */
-+        l3_addr = qsmmu_get_table_addr(all_s2_l2_pte_val & QSMMU_PTE_MASK,
-+                                       3, iova);
-+
-+        s1_leaf_pte_val = qsmmu_apply_space_offs(
-+            space, QSMMU_L3_PTE_VAL | qsmmu_get_pte_attrs(mode, true, space)
-+        );
-+
-+        qsmmu_setup_s1_level_with_nested_s2(qts, space, 3, l3_addr,
-+                                            s1_leaf_pte_val, s2_vttb, mode);
-+    } else {
-+        /*
-+         * For CD address translation, we start directly with the IPA.
-+         */
-+        s1_leaf_pte_val = iova | qsmmu_get_pte_attrs(QSMMU_TM_NESTED,
-+                                                     false, space);
-+    }
-+
-+    /*
-+     * Final Stage 2 walk: Translate the result from Stage 1.
-+     * - For S1_ONLY: This is skipped in hardware but we set it up for testing
-+     * - For S2_ONLY: This is the only walk
-+     * - For NESTED: This translates the IPA from S1 to final PA
-+     * - For CD address (is_cd=true): This is a table address, use !is_final
-+     */
-+    qsmmu_setup_s2_walk_for_ipa(qts, space, s1_leaf_pte_val, s2_vttb,
-+                                mode, !is_cd);
-+
-+    /* Calculate and log final translated PA */
-+    g_test_message("End of construction: PA=0x%llx ===",
-+                   (s1_leaf_pte_val & QSMMU_PTE_MASK) + (iova & 0xfff));
-+}
-diff --git a/tests/qtest/libqos/qos-smmuv3.h b/tests/qtest/libqos/qos-smmuv3.h
-new file mode 100644
-index 0000000000..366da774eb
---- /dev/null
-+++ b/tests/qtest/libqos/qos-smmuv3.h
-@@ -0,0 +1,291 @@
-+/*
-+ * QOS SMMUv3 Module
-+ *
-+ * This module provides SMMUv3-specific helper functions for libqos tests,
-+ * encapsulating SMMUv3 setup, assertion, and cleanup operations.
-+ *
-+ * Copyright (c) 2025 Phytium Technology
-+ *
-+ * Author:
-+ *  Tao Tang <tangtao1634@phytium.com.cn>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef QTEST_LIBQOS_SMMUV3_H
-+#define QTEST_LIBQOS_SMMUV3_H
-+
-+#include "hw/misc/iommu-testdev.h"
-+
-+#define VIRT_SMMU_BASE            0x0000000009050000ull
-+
-+/* SMMU command type */
-+#define QSMMU_CMD_CFGI_STE        0x03
-+#define QSMMU_CMD_CFGI_CD         0x05
-+#define QSMMU_CMD_TLBI_NSNH_ALL   0x30
-+
-+/* SMMU register offsets */
-+#define QSMMU_REG_GBPA            0x0044
-+#define QSMMU_REG_CR0             0x0020
-+#define QSMMU_REG_CR1             0x0028
-+#define QSMMU_REG_CMDQ_BASE       0x0090
-+#define QSMMU_REG_CMDQ_CONS       0x009c
-+#define QSMMU_REG_CMDQ_PROD       0x0098
-+#define QSMMU_REG_EVENTQ_BASE     0x00a0
-+#define QSMMU_REG_EVENTQ_PROD     0x00a8
-+#define QSMMU_REG_EVENTQ_CONS     0x00ac
-+#define QSMMU_REG_STRTAB_CFG      0x0088
-+#define QSMMU_REG_STRTAB_BASE     0x0080
-+
-+#define QSMMU_BASE_ADDR_MASK      0xfffffffffffc0
-+
-+/* SMMU queue and table base addresses */
-+#define QSMMU_CMDQ_BASE_ADDR      0x000000000e16b000ull
-+#define QSMMU_EVENTQ_BASE_ADDR    0x000000000e170000ull
-+
-+/*
-+ * Translation tables and descriptors for a mapping of
-+ *   - IOVA(Stage 1 only)
-+ *   - IPA (Stage 2 only)
-+ * to GPA.
-+ *
-+ * The translation is based on the Arm architecture with the following
-+ * prerequisites:
-+ * - Granule size: 4KB pages.
-+ * - Page table levels: 4 levels (L0, L1, L2, L3), starting at level 0.
-+ * - IOVA size: The walk resolves a IOVA: 0x8080604567
-+ * - Address space: The 4-level lookup with 4KB granules supports up to a
-+ * 48-bit (256TB) virtual address space. Each level uses a 9-bit index
-+ * (512 entries per table). The breakdown is:
-+ * - L0 index: IOVA bits [47:39]
-+ * - L1 index: IOVA bits [38:30]
-+ * - L2 index: IOVA bits [29:21]
-+ * - L3 index: IOVA bits [20:12]
-+ * - Page offset: IOVA bits [11:0]
-+ *
-+ * NOTE: All physical addresses defined here (QSMMU_VTTB, table addresses, etc.)
-+ * appear to be within a secure RAM region. In practice, an offset is added
-+ * to these values to place them in non-secure RAM. For example, when running
-+ * in a virt machine type, the RAM base address (e.g., 0x40000000) is added to
-+ * these constants.
-+ */
-+#define QSMMU_IOVA_OR_IPA               0x0000008080604567ull
-+#define QSMMU_VTTB                      0x000000000e4d0000ull
-+#define QSMMU_STR_TAB_BASE              0x000000000e179000ull
-+#define QSMMU_CD_GPA                    (QSMMU_STR_TAB_BASE - 0x40ull)
-+
-+
-+#define QSMMU_L0_PTE_VAL                0x000000000e4d1000ull
-+#define QSMMU_L1_PTE_VAL                0x000000000e4d2000ull
-+#define QSMMU_L2_PTE_VAL                0x000000000e4d3000ull
-+#define QSMMU_L3_PTE_VAL                0x000000000ecba000ull
-+
-+#define QSMMU_NON_LEAF_PTE_MASK         0x8000000000000003ull
-+#define QSMMU_LEAF_PTE_RO_MASK          0x04000000000007e3ull
-+#define QSMMU_LEAF_PTE_RW_MASK          0x0400000000000763ull
-+#define QSMMU_PTE_MASK                  0x0000fffffffff000ull
-+
-+/*
-+ * Address-space base offsets for test tables.
-+ * - Non-Secure uses a fixed offset, keeping internal layout identical.
-+ *
-+ * Note: Future spaces (e.g. Secure/Realm/Root) are not implemented here.
-+ * When needed, introduce new offsets and reuse the helpers below so
-+ * relative layout stays identical across spaces.
-+ */
-+#define QSMMU_SPACE_OFFS_NS             0x0000000040000000ull
-+
-+typedef enum QSMMUSecSID {
-+    QSMMU_SEC_SID_NONSECURE    = 0,
-+    QSMMU_SEC_SID_SECURE       = 1,
-+    QSMMU_SEC_SID_REALM        = 2,
-+    QSMMU_SEC_SID_ROOT         = 3,
-+} QSMMUSecSID;
-+
-+typedef enum QSMMUSpace {
-+    QSMMU_SPACE_SECURE         = 0,
-+    QSMMU_SPACE_NONSECURE      = 1,
-+    QSMMU_SPACE_ROOT           = 2,
-+    QSMMU_SPACE_REALM          = 3,
-+} QSMMUSpace;
-+
-+typedef enum QSMMUTransMode {
-+    QSMMU_TM_S1_ONLY           = 0,
-+    QSMMU_TM_S2_ONLY           = 1,
-+    QSMMU_TM_NESTED            = 2,
-+} QSMMUTransMode;
-+
-+typedef struct QSMMUTestConfig {
-+    QSMMUTransMode trans_mode;        /* Translation mode (S1, S2, Nested) */
-+    QSMMUSecSID sec_sid;              /* SEC_SID of test device */
-+    uint64_t dma_iova;                /* DMA IOVA address for testing */
-+    uint32_t dma_len;                 /* DMA length for testing */
-+    uint32_t expected_result;         /* Expected DMA result for validation */
-+} QSMMUTestConfig;
-+
-+typedef struct QSMMUTestContext {
-+    QTestState *qts;            /* QTest state handle */
-+    QPCIDevice *dev;            /* PCI device handle */
-+    QPCIBar bar;                /* PCI BAR for MMIO access */
-+    QSMMUTestConfig config;     /* Test configuration */
-+    uint64_t smmu_base;         /* SMMU base address */
-+    uint32_t trans_status;      /* Translation configuration status */
-+    uint32_t dma_result;        /* DMA operation result */
-+    uint32_t sid;               /* Stream ID for the test */
-+    QSMMUSpace tx_space;        /* Cached transaction space */
-+} QSMMUTestContext;
-+
-+/* Convert SEC_SID to corresponding Security Space */
-+QSMMUSpace qsmmu_sec_sid_to_space(QSMMUSecSID sec_sid);
-+
-+/* Get base offset of the specific Security space */
-+uint64_t qsmmu_space_offset(QSMMUSpace sp);
-+
-+uint32_t qsmmu_build_dma_attrs(QSMMUSpace space);
-+
-+/*
-+ * qsmmu_setup_and_enable_translation - Complete translation setup and enable
-+ *
-+ * @ctx: Test context containing configuration and device handles
-+ *
-+ * Returns: Translation status (0 = success, non-zero = error)
-+ *
-+ * This function performs the complete translation setup sequence:
-+ * 1. Triggers configuration request via ITD_REG_TRANS_DBELL
-+ * 2. Builds all required SMMU structures (STE, CD, page tables)
-+ * 3. Programs SMMU registers for the appropriate security space
-+ * 4. Reads back and returns configuration status
-+ */
-+uint32_t qsmmu_setup_and_enable_translation(QSMMUTestContext *ctx);
-+
-+/*
-+ * qsmmu_build_translation - Build SMMU translation structures
-+ *
-+ * @qts: QTest state handle
-+ * @mode: Translation mode (S1_ONLY, S2_ONLY, NESTED)
-+ * @tx_space: Transaction security space
-+ * @sid: Stream ID
-+ *
-+ * Returns: Build status (0 = success, non-zero = error)
-+ *
-+ * Constructs all necessary SMMU translation structures in guest memory:
-+ * - Stream Table Entry (STE) for the given SID
-+ * - Context Descriptor (CD) if Stage 1 translation is involved
-+ * - Complete page table hierarchy based on translation mode
-+ *
-+ * The structures are written to security-space-specific memory regions.
-+ */
-+uint32_t qsmmu_build_translation(QTestState *qts, QSMMUTransMode mode,
-+                                 QSMMUSpace tx_space, uint32_t sid);
-+
-+/*
-+ * qsmmu_bank_base - Get SMMU control bank base address
-+ *
-+ * @base: SMMU base address
-+ * @sp: Security space
-+ *
-+ * Returns: Bank base address for the given security space
-+ *
-+ * Maps security space to the corresponding SMMU control register bank.
-+ * Currently only Non-Secure bank is supported.
-+ */
-+uint64_t qsmmu_bank_base(uint64_t base, QSMMUSpace sp);
-+
-+/*
-+ * qsmmu_program_bank - Program SMMU control bank registers
-+ *
-+ * @qts: QTest state handle
-+ * @bank_base: SMMU bank base address
-+ * @sp: Security space
-+ *
-+ * Programs a specific SMMU control bank with minimal configuration:
-+ * - Global Bypass Attribute (GBPA)
-+ * - Control registers (CR0, CR1)
-+ * - Command queue (base, producer, consumer)
-+ * - Event queue (base, producer, consumer)
-+ * - Stream table configuration (base, format)
-+ *
-+ * Addresses are adjusted based on security space offset.
-+ */
-+void qsmmu_program_bank(QTestState *qts, uint64_t bank_base, QSMMUSpace sp);
-+
-+/*
-+ * qsmmu_program_regs - Program all required SMMU register banks
-+ *
-+ * @qts: QTest state handle
-+ * @smmu_base: SMMU base address
-+ * @space: Target security space
-+ *
-+ * Programs SMMU registers for the requested security space which is called in
-+ * qsmmu_setup_and_enable_translation. Always programs Non-Secure bank first,
-+ * then the target space if different.
-+ */
-+void qsmmu_program_regs(QTestState *qts, uint64_t smmu_base, QSMMUSpace space);
-+
-+uint32_t qsmmu_trigger_dma(QSMMUTestContext *ctx);
-+
-+/*
-+ * qsmmu_cleanup_translation - Clean up translation configuration
-+ *
-+ * @ctx: Test context containing configuration and device handles
-+ *
-+ * Clears all translation structures and invalidates SMMU caches:
-+ * - Clears STE and CD entries
-+ * - Issues SMMU invalidation commands (CFGI_STE, CFGI_CD, TLBI_NSNH_ALL)
-+ */
-+void qsmmu_cleanup_translation(QSMMUTestContext *ctx);
-+
-+/* qsmmu_expected_dma_result - Calculate expected DMA result */
-+uint32_t qsmmu_expected_dma_result(QSMMUTestContext *ctx);
-+
-+/*
-+ * qsmmu_validate_test_result - Validate actual VS expected test result
-+ *
-+ * @ctx: Test context containing actual and expected results
-+ *
-+ * Returns: true if test passed (actual == expected), false otherwise
-+ *
-+ * Compares the actual DMA result with the expected result and logs
-+ * the comparison for debugging purposes.
-+ */
-+bool qsmmu_validate_test_result(QSMMUTestContext *ctx);
-+
-+/*
-+ * qsmmu_setup_translation_tables - Setup complete SMMU page table hierarchy
-+ *
-+ * @qts: QTest state handle
-+ * @iova: Input Virtual Address or IPA to translate
-+ * @space: Security space (NONSECURE, SECURE, REALM, ROOT)
-+ * @is_cd: Whether translating CD address (vs regular IOVA)
-+ * @mode: Translation mode (S1_ONLY, S2_ONLY, NESTED)
-+ *
-+ * This function builds the complete page table structure for translating
-+ * the given IOVA through the SMMU. The structure varies based on mode:
-+ *
-+ * - S1_ONLY: Single Stage 1 walk (IOVA -> PA)
-+ * - S2_ONLY: Single Stage 2 walk (IPA -> PA)
-+ * - NESTED: Stage 1 walk (IOVA -> IPA) with nested S2 walks for each
-+ *   S1 table access, plus final S2 walk for the result IPA
-+ *
-+ * For nested mode, this creates a complex hierarchy:
-+ * - 4 Stage 1 levels (L0-L3), each requiring a 4-level Stage 2 walk
-+ * - 1 final Stage 2 walk for the resulting IPA
-+ *
-+ * The function writes all necessary Page Table Entries (PTEs) to guest
-+ * memory using qtest_writeq(), setting up the complete translation path
-+ * that the SMMU hardware will traverse during DMA operations.
-+ */
-+void qsmmu_setup_translation_tables(QTestState *qts,
-+                                    uint64_t iova,
-+                                    QSMMUSpace space,
-+                                    bool is_cd,
-+                                    QSMMUTransMode mode);
-+
-+/* High-level test execution functions */
-+
-+void qsmmu_single_translation(QSMMUTestContext *ctx);
-+void qsmmu_translation_batch(const QSMMUTestConfig *configs, size_t count,
-+                             QTestState *qts, QPCIDevice *dev,
-+                             QPCIBar bar, uint64_t smmu_base);
-+
-+#endif /* QTEST_LIBQOS_SMMUV3_H */
--- 
-2.34.1
+>=20
+>=20
+> > > 2. This also means *NOT* enabling the  ACPI_CPU_HOTPLUG compilation =
+=20
+> > switch to =20
+> > >      preserve the sanctity of the clean design. =20
+> >
+> > that's semantics, I'd suggest renaming that to ACPI_CPU.
+> > =20
+>=20
+>=20
+> It is not about this. To make it hotplug agnostic we would need to start
+> with new minimal
+> code and then add on top of it what is present in acpi/cpu.c incrementall=
+y.
+> This can be
+> done in parallel by
+>=20
+> 1. accepting the minimal new code. This will keep the ball rolling for AR=
+M
+> 2. adding the x86 stuff incrementally over that minimal new AML file (wit=
+h
+> other name)
+> 3. Testing a new file doesn't break x86 functionality
+> 4. replacing the old file acpi/cpus.c with a new common file.
+
+Typically duplicating a huge chunk of code is frowned upon,
+there might be exceptions in case of putting out fires and we need to get
+a fix quickly in (even then it's not likely to be merged),
+but this series is very much not the case.
+
+On top of that, I'd say double no to duplicating guest ABI that
+the copied code exposes to guest and than trying to reconcile it later.
+
+So, please reuse/refactor existing code.
+
+> > =20
+> > > 3. Yes, there is a code duplicity for now but that=E2=80=99s a case o=
+f further =20
+> > optimization and =20
+> > >     cleanup not a design issue. Some of them are:
+> > >     (1)  ACPI device-check and eject-request  handling code can be =
+=20
+> > extracted and =20
+> > >     made generic for all devices not just for CPUs. =20
+> >
+> > make it more generic in acpi/cpu.c, instead of copying.
+> > I don't have any objections to refactoring existing code if it makes se=
+nse
+> > and
+> > we can share the code.
+> > =20
+>=20
+> In principle I agree with your point about carving a common code that wor=
+ks
+> for all.
+> I'm only requesting how this could be done in a non-disrupting way by not
+> holding
+> the current patches of ARM for this change. This change will require time
+> and most
+> importantly testing across many architectures.
+>=20
+>=20
+> > =20
+> > >     (2)  Right now, acpi/cpu.c is assuming that resources and templat=
+es =20
+> > should be =20
+> > >      same for all the CPUs using CPUs AML described in it. There is n=
+o =20
+> > need for =20
+> > >      such a restriction. Every platform should be free to choose the =
+way =20
+> > it wants to =20
+> > >      manage the resources and the interpretation of the fields inside=
+ it. =20
+> >
+> > be more specific why you'd need different resources/MMIO layout for thi=
+s
+> > series?
+> > =20
+>=20
+> IIRC in RFC V5, you object to adding 'enabled' bit as it was breaking x86
+> ABI
+> because of some backward compatibility issue?
+>=20
+>=20
+> >
+> > The thing is if we copied every time when we needed something that's a =
+bit
+> > different,
+> > we would end up with unsupportable/bloated QEMU.
+> > =20
+>=20
+> For sure. I totally agree with it but it was an informed decision here
+> internally to keep
+> the ACPI part separate for this series because of the past review comment=
+s
+> and the
+> difficulty in dealing with very minimalistic changes we proposed for ACPI
+> part.
+>=20
+>=20
+> > =20
+> > >     (3) Call backs used with GED  makes an assumption of HOTPLUG =20
+> > interface etc. =20
+> > >     (4) In fact, the prototype of the GED event handler makes a simil=
+ar =20
+> > mistake of =20
+> > >      assuming that GED is only meant for devices supporting hotplug w=
+hen =20
+> > this is not =20
+> > >      the case even as per the ACPI specification. =20
+> > please be more specific and point to problematic code.
+> > =20
+>=20
+> void build_ged_aml(Aml *table, const char *name, HotplugHandler
+> *hotplug_dev,
+>                    uint32_t ged_irq, AmlRegionSpace rs, hwaddr ged_base)
+>=20
+>=20
+> GED is not just for hotplug handling.
+
+It's not clear what you are trying to say/point out.
+If I'd guess, you've meant arg "HotplugHandler *hotplug_dev".
+For one, HotplugHandler long overgrown its name, it's more like PlugHandler=
+,
+meant to wire things up. One can rename it if necessary.
+
+Also suggest a better way/prototype for build_ged_aml() if it doesn't work
+for you.
+
+>=20
+> >
+> > current acpi/cpu.c might be compiled under ACPI_CPU_HOTPLUG knob but it=
+'s
+> > not really
+> > limited to hotplug, the reason for being compiled as such is that hotpl=
+ug
+> > was
+> > the sole reason for building CPUs AML at all.
+> > =20
+>=20
+> Got it. so as you rightly suggested it needs refactoring. The only reques=
+t
+> I'm making is
+> let us do it parallely and incrementally without holding ARM patches for
+> this change.
+
+in cover letter review, I've suggested a way how to split the series in
+a digestible parts some of which could be done in parallel.
+wrt this patch see my comments above.
+
+>=20
+> >
+> > What I see in the patch is simplifying current code somewhat by droppin=
+g
+> > some hotplug related bits and a bunch of renaming.
+> > Otherwise it's pretty much duplicating current acpi/cpu.c.
+> >
+> > Beside that simplification, I don't see any reason why duplicating such
+> > amount is good idea.
+> > Consider making exiting acpi/cpu.c more generic instead.
+> > =20
+>=20
+> Intial idea was to make it generic enough for any device which uses
+> device-check
+> and eject-request  for adding/removing the device but we left it for late=
+r
+> discussions.
+>=20
+>=20
+> > > RFC V5 was an attempt to implement this feature using the hotplug =20
+> > infrastructure =20
+> > > and this RFC V6 is a deviation from previous approach towards =20
+> > non-hotplug. We do =20
+> > > not want a hotchpotch approach because that=E2=80=99s a recipe for fu=
+ture =20
+> > disaster. =20
+> > >
+> > >
+> > > Many Thanks!
+> > > Salil.
+> > >
+> > > =20
+> > > > =20
+> > > > >
+> > > > > This patch adds a dedicated CPU OSPM (Operating System Power
+> > > > > Management) interface. It provides a memory-mapped control region=
+ =20
+> > with =20
+> > > > > selector, flags, command, and data fields, and AML methods for
+> > > > > device-check, eject request, and _OST reporting. OSPM is notified
+> > > > > through GED events and can coordinate CPU events directly with QE=
+MU.
+> > > > > Other ARM-like architectures may also use this interface.
+> > > > >
+> > > > > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+> > > > > ---
+> > > > >  hw/acpi/Kconfig                        |   3 +
+> > > > >  hw/acpi/acpi-cpu-ospm-interface-stub.c |  41 ++
+> > > > >  hw/acpi/cpu_ospm_interface.c           | 747 =20
+> > > > +++++++++++++++++++++++++ =20
+> > > > >  hw/acpi/meson.build                    |   2 +
+> > > > >  hw/acpi/trace-events                   |  17 +
+> > > > >  hw/arm/Kconfig                         |   1 +
+> > > > >  include/hw/acpi/cpu_ospm_interface.h   |  78 +++
+> > > > >  7 files changed, 889 insertions(+)
+> > > > >  create mode 100644 hw/acpi/acpi-cpu-ospm-interface-stub.c
+> > > > >  create mode 100644 hw/acpi/cpu_ospm_interface.c  create mode 100=
+644
+> > > > > include/hw/acpi/cpu_ospm_interface.h
+> > > > >
+> > > > > diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig index
+> > > > > 1d4e9f0845..aa52f0468f 100644
+> > > > > --- a/hw/acpi/Kconfig
+> > > > > +++ b/hw/acpi/Kconfig
+> > > > > @@ -21,6 +21,9 @@ config ACPI_ICH9
+> > > > >  config ACPI_CPU_HOTPLUG
+> > > > >      bool
+> > > > >
+> > > > > +config ACPI_CPU_OSPM_INTERFACE
+> > > > > +    bool
+> > > > > +
+> > > > >  config ACPI_MEMORY_HOTPLUG
+> > > > >      bool
+> > > > >      select MEM_DEVICE
+> > > > > diff --git a/hw/acpi/acpi-cpu-ospm-interface-stub.c
+> > > > > b/hw/acpi/acpi-cpu-ospm-interface-stub.c
+> > > > > new file mode 100644
+> > > > > index 0000000000..f6f333f641
+> > > > > --- /dev/null
+> > > > > +++ b/hw/acpi/acpi-cpu-ospm-interface-stub.c
+> > > > > @@ -0,0 +1,41 @@
+> > > > > +/*
+> > > > > + * ACPI CPU OSPM Interface Handling.
+> > > > > + *
+> > > > > + * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
+> > > > > + *
+> > > > > + * Author: Salil Mehta <salil.mehta@huawei.com>
+> > > > > + *
+> > > > > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > > > > + *
+> > > > > + * This program is free software; you can redistribute it and/or
+> > > > > +modify
+> > > > > + * it under the terms of the GNU General Public License as publi=
+shed
+> > > > > +by
+> > > > > + * the Free Software Foundation; either version 2 of the License=
+, or
+> > > > > + * (at your option) any later version.
+> > > > > + */
+> > > > > +
+> > > > > +#include "qemu/osdep.h"
+> > > > > +#include "hw/acpi/cpu_ospm_interface.h"
+> > > > > +
+> > > > > +void acpi_cpu_device_check_cb(AcpiCpuOspmState *cpu_st, =20
+> > DeviceState =20
+> > > > *dev, =20
+> > > > > +                              uint32_t event_st, Error **errp) {=
+ }
+> > > > > +
+> > > > > +void acpi_cpu_eject_request_cb(AcpiCpuOspmState *cpu_st, =20
+> > > > DeviceState *dev, =20
+> > > > > +                               uint32_t event_st, Error **errp) =
+{ }
+> > > > > +
+> > > > > +void acpi_cpu_eject_cb(AcpiCpuOspmState *cpu_st, DeviceState *de=
+v,
+> > > > > +Error **errp) { }
+> > > > > +
+> > > > > +void acpi_cpu_ospm_state_interface_init(MemoryRegion *as, Object=
+ =20
+> > > > *owner, =20
+> > > > > +                                        AcpiCpuOspmState *state,
+> > > > > +                                        hwaddr base_addr) { }
+> > > > > +
+> > > > > +void acpi_cpus_ospm_status(AcpiCpuOspmState *cpu_st, =20
+> > > > ACPIOSTInfoList =20
+> > > > > +***list) { }
+> > > > > diff --git a/hw/acpi/cpu_ospm_interface.c
+> > > > > b/hw/acpi/cpu_ospm_interface.c new file mode 100644 index
+> > > > > 0000000000..61aab8a793
+> > > > > --- /dev/null
+> > > > > +++ b/hw/acpi/cpu_ospm_interface.c
+> > > > > @@ -0,0 +1,747 @@
+> > > > > +/*
+> > > > > + * ACPI CPU OSPM Interface Handling.
+> > > > > + *
+> > > > > + * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
+> > > > > + *
+> > > > > + * Author: Salil Mehta <salil.mehta@huawei.com>
+> > > > > + *
+> > > > > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > > > > + *
+> > > > > + * This program is free software; you can redistribute it and/or
+> > > > > +modify
+> > > > > + * it under the terms of the GNU General Public License as publi=
+shed
+> > > > > +by
+> > > > > + * the Free Software Foundation; either version 2 of the License=
+, or
+> > > > > + * (at your option) any later version.
+> > > > > + */
+> > > > > +
+> > > > > +#include "qemu/osdep.h"
+> > > > > +#include "migration/vmstate.h"
+> > > > > +#include "hw/core/cpu.h"
+> > > > > +#include "qapi/error.h"
+> > > > > +#include "trace.h"
+> > > > > +#include "qapi/qapi-events-acpi.h"
+> > > > > +#include "hw/acpi/cpu_ospm_interface.h"
+> > > > > +
+> > > > > +/* CPU identifier and resource device */
+> > > > > +#define CPU_NAME_FMT      "C%.03X" /* CPU name format (e.g., C00=
+1) =20
+> > > > */ =20
+> > > > > +#define CPU_RES_DEVICE    "CPUR" /* CPU resource device name */
+> > > > > +#define CPU_DEVICE        "CPUS" /* CPUs device name */
+> > > > > +#define CPU_LOCK          "CPLK" /* CPU lock object */
+> > > > > +/* ACPI method(_STA, _EJ0, etc.) handlers */
+> > > > > +#define CPU_STS_METHOD    "CSTA" /* CPU status method =20
+> > > > (_STA.Enabled) */ =20
+> > > > > +#define CPU_SCAN_METHOD   "CSCN" /* CPU scan method for =20
+> > > > enumeration */ =20
+> > > > > +#define CPU_NOTIFY_METHOD "CTFY" /* Notify method for CPU events=
+ =20
+> > > > */ =20
+> > > > > +#define CPU_EJECT_METHOD  "CEJ0" /* CPU eject method (_EJ0) */
+> > > > > +#define CPU_OST_METHOD    "COST" /* OSPM status reporting (_OST)=
+ */
+> > > > > +/* CPU MMIO region fields (in PRST region) */
+> > > > > +#define CPU_SELECTOR      "CSEL" /* CPU selector index (WO) */
+> > > > > +#define CPU_ENABLED_F     "CPEN" /* Flag: CPU enabled status(_ST=
+A) =20
+> > > > (RO) */ =20
+> > > > > +#define CPU_DEVCHK_F      "CDCK" /* Flag: Device-check event (RW=
+) */
+> > > > > +#define CPU_EJECTRQ_F     "CEJR" /* Flag: Eject-request event (R=
+W)*/
+> > > > > +#define CPU_EJECT_F       "CEJ0" /* Flag: Ejection trigger (WO) =
+*/
+> > > > > +#define CPU_COMMAND       "CCMD" /* Command register (RW) */
+> > > > > +#define CPU_DATA          "CDAT" /* Data register (RW) */
+> > > > > +
+> > > > > + /*
+> > > > > + * CPU OSPM Interface MMIO Layout (Total: 16 bytes)
+> > > > > + *
+> > > > > + *
+> > > > > + =20
+> > +--------+--------+--------+--------+--------+--------+--------+---- =
+=20
+> > > > > + ----+
+> > > > > + * |  0x00  |  0x01  |  0x02  |  0x03  |  0x04  |  0x05  |  0x06=
+  |
+> > > > > + 0x07  |
+> > > > > + * =20
+> > +--------+--------+--------+--------+--------+--------+--------+-------=
+-+ =20
+> > > > > + * |       Selector (DWord, write-only)         | Flags  |Comman=
+d =20
+> > |Reserved| =20
+> > > > > + * |                                            | (RO/RW)|  (WO)=
+ =20
+> > |(2B pad)| =20
+> > > > > + * |        4 bytes (32 bits)                   | 1B     |   1B =
+  | =20
+> > 2B     | =20
+> > > > > + *
+> > > > > + =20
+> > +------------------------------------------------------------------- =
+=20
+> > > > > + ----+
+> > > > > + * |  0x08  |  0x09  |  0x0A  |  0x0B  |  0x0C  |  0x0D  |  0x0E=
+  |
+> > > > > + 0x0F  |
+> > > > > + * =20
+> > +--------+--------+--------+--------+--------+--------+--------+-------=
+-+ =20
+> > > > > + * |                        Data (QWord, read/write) =20
+> >        | =20
+> > > > > + * |               Used by CPU scan and _OST methods (64 bits) =
+=20
+> >        | =20
+> > > > > + *
+> > > > > + =20
+> > +------------------------------------------------------------------- =
+=20
+> > > > > + ----+
+> > > > > + *
+> > > > > + * Field Overview:
+> > > > > + *
+> > > > > + * - Selector: 4 bytes @0x00 (DWord, WO)
+> > > > > + *               - Selects target CPU index for the current =20
+> > operation. =20
+> > > > > + * - Flags:    1 byte  @0x04 (RO/RW)
+> > > > > + *               - Bit 0: ENABLED  =E2=80=93 CPU is powered on (=
+RO)
+> > > > > + *               - Bit 1: DEVCHK   =E2=80=93 Device-check comple=
+ted (RW)
+> > > > > + *               - Bit 2: EJECTRQ  =E2=80=93 Guest requests CPU =
+eject (RW)
+> > > > > + *               - Bit 3: EJECT    =E2=80=93 Trigger CPU ejectio=
+n (WO)
+> > > > > + *               - Bits 4=E2=80=937: Reserved (write 0)
+> > > > > + * - Command:  1 byte  @0x05 (WO)
+> > > > > + *               - Specifies control operation (e.g., scan, _OST=
+, =20
+> > eject). =20
+> > > > > + * - Reserved: 2 bytes @0x06=E2=80=930x07
+> > > > > + *               - Alignment padding; must be zero on write.
+> > > > > + * - Data:     8 bytes @0x08 (QWord, RW)
+> > > > > + *               - Input/output for command-specific data.
+> > > > > + *               - Used by CPU scan or _OST.
+> > > > > + */
+> > > > > +
+> > > > > +/*
+> > > > > + * Macros defining the CPU MMIO region layout. Change field size=
+s
+> > > > > +here to
+> > > > > + * alter the overall MMIO region size.
+> > > > > + */
+> > > > > +/* Sub-Field sizes (in bytes) */
+> > > > > +#define ACPI_CPU_MR_SELECTOR_SIZE  4 /* Write-only (DWord access=
+) =20
+> > > > */ =20
+> > > > > +#define ACPI_CPU_MR_FLAGS_SIZE     1 /* Read-write (Byte access)=
+ */
+> > > > > +#define ACPI_CPU_MR_RES_FLAGS_SIZE 0 /* Reserved padding */
+> > > > > +#define ACPI_CPU_MR_CMD_SIZE       1 /* Write-only (Byte access)=
+ */
+> > > > > +#define ACPI_CPU_MR_RES_CMD_SIZE   2 /* Reserved padding */
+> > > > > +#define ACPI_CPU_MR_CMD_DATA_SIZE  8 /* Read-write (QWord =20
+> > > > access) */ =20
+> > > > > +
+> > > > > +#define ACPI_CPU_OSPM_IF_MAX_FIELD_SIZE \
+> > > > > +    MAX_CONST(ACPI_CPU_MR_CMD_DATA_SIZE, \
+> > > > > +    MAX_CONST(ACPI_CPU_MR_SELECTOR_SIZE, \
+> > > > > +    MAX_CONST(ACPI_CPU_MR_CMD_SIZE, =20
+> > > > ACPI_CPU_MR_FLAGS_SIZE))) =20
+> > > > > +
+> > > > > +/* Validate layout against exported total length */
+> > > > > +_Static_assert(ACPI_CPU_OSPM_IF_REG_LEN =3D=3D
+> > > > > +               (ACPI_CPU_MR_SELECTOR_SIZE +
+> > > > > +                ACPI_CPU_MR_FLAGS_SIZE +
+> > > > > +                ACPI_CPU_MR_RES_FLAGS_SIZE +
+> > > > > +                ACPI_CPU_MR_CMD_SIZE +
+> > > > > +                ACPI_CPU_MR_RES_CMD_SIZE +
+> > > > > +                ACPI_CPU_MR_CMD_DATA_SIZE),
+> > > > > +               "ACPI_CPU_OSPM_IF_REG_LEN mismatch with internal =
+MMIO
+> > > > > +layout");
+> > > > > +
+> > > > > +/* Sub-Field sizes (in bits) */
+> > > > > +#define ACPI_CPU_MR_SELECTOR_SIZE_BITS \
+> > > > > +    (ACPI_CPU_MR_SELECTOR_SIZE * BITS_PER_BYTE)  /* Write-only =
+=20
+> > > > (DWord =20
+> > > > > +Acc) */ #define ACPI_CPU_MR_FLAGS_SIZE_BITS \
+> > > > > +    (ACPI_CPU_MR_FLAGS_SIZE * BITS_PER_BYTE)     /* Read-write =
+=20
+> > (Byte =20
+> > > > Acc) */ =20
+> > > > > +#define ACPI_CPU_MR_RES_FLAGS_SIZE_BITS \
+> > > > > +    (ACPI_CPU_MR_RES_FLAGS_SIZE * BITS_PER_BYTE) /* Reserved =20
+> > > > padding =20
+> > > > > +*/ #define ACPI_CPU_MR_CMD_SIZE_BITS \
+> > > > > +    (ACPI_CPU_MR_CMD_SIZE * BITS_PER_BYTE)       /* Write-only =
+=20
+> > (Byte =20
+> > > > Acc) */ =20
+> > > > > +#define ACPI_CPU_MR_RES_CMD_SIZE_BITS \
+> > > > > +    (ACPI_CPU_MR_RES_CMD_SIZE * BITS_PER_BYTE)   /* Reserved =20
+> > > > padding */ =20
+> > > > > +#define ACPI_CPU_MR_CMD_DATA_SIZE_BITS \
+> > > > > +    (ACPI_CPU_MR_CMD_DATA_SIZE * BITS_PER_BYTE)  /* Read-write =
+=20
+> > > > (QWord =20
+> > > > > +Acc) */
+> > > > > +
+> > > > > +/* Field offsets (in bytes) */
+> > > > > +#define ACPI_CPU_MR_SELECTOR_OFFSET_WO  0 #define
+> > > > > +ACPI_CPU_MR_FLAGS_OFFSET_RW \
+> > > > > +    (ACPI_CPU_MR_SELECTOR_OFFSET_WO + \
+> > > > > +     ACPI_CPU_MR_SELECTOR_SIZE)
+> > > > > +#define ACPI_CPU_MR_CMD_OFFSET_WO \
+> > > > > +    (ACPI_CPU_MR_FLAGS_OFFSET_RW + \
+> > > > > +     ACPI_CPU_MR_FLAGS_SIZE + \
+> > > > > +     ACPI_CPU_MR_RES_FLAGS_SIZE)
+> > > > > +#define ACPI_CPU_MR_CMD_DATA_OFFSET_RW \
+> > > > > +    (ACPI_CPU_MR_CMD_OFFSET_WO + \
+> > > > > +     ACPI_CPU_MR_CMD_SIZE + \
+> > > > > +     ACPI_CPU_MR_RES_CMD_SIZE)
+> > > > > +
+> > > > > +/* ensure all offsets are at their natural size alignment =20
+> > boundaries */ =20
+> > > > > +#define STATIC_ASSERT_FIELD_ALIGNMENT(offset, type, field_name) =
+=20
+> > > > \ =20
+> > > > > +    _Static_assert((offset) % sizeof(type) =3D=3D 0, =20
+> >           \ =20
+> > > > > +                   field_name " is not aligned to its natural
+> > > > > +boundary")
+> > > > > +
+> > > > > =20
+> > > > +STATIC_ASSERT_FIELD_ALIGNMENT(ACPI_CPU_MR_SELECTOR_OFFSET_W
+> > > > O, =20
+> > > > > +                              uint32_t, "Selector");
+> > > > > +STATIC_ASSERT_FIELD_ALIGNMENT(ACPI_CPU_MR_FLAGS_OFFSET_RW,
+> > > > > +                              uint8_t, "Flags");
+> > > > > +STATIC_ASSERT_FIELD_ALIGNMENT(ACPI_CPU_MR_CMD_OFFSET_WO,
+> > > > > +                              uint8_t, "Command");
+> > > > > =20
+> > > > +STATIC_ASSERT_FIELD_ALIGNMENT(ACPI_CPU_MR_CMD_DATA_OFFSET_
+> > > > RW, =20
+> > > > > +                              uint64_t, "Command Data");
+> > > > > +
+> > > > > +/* Flag bit positions (used within 'flags' subfield) */ #define
+> > > > > +ACPI_CPU_FLAGS_USED_BITS 4 #define =20
+> > > > ACPI_CPU_MR_FLAGS_BIT_ENABLED =20
+> > > > > +BIT(0) #define ACPI_CPU_MR_FLAGS_BIT_DEVCHK  BIT(1) #define
+> > > > > +ACPI_CPU_MR_FLAGS_BIT_EJECTRQ BIT(2)
+> > > > > +#define ACPI_CPU_MR_FLAGS_BIT_EJECT =20
+> > > > BIT(ACPI_CPU_FLAGS_USED_BITS - 1) =20
+> > > > > +
+> > > > > +#define ACPI_CPU_MR_RES_FLAG_BITS (BITS_PER_BYTE -
+> > > > > +ACPI_CPU_FLAGS_USED_BITS)
+> > > > > +
+> > > > > +enum {
+> > > > > +    ACPI_GET_NEXT_CPU_WITH_EVENT_CMD =3D 0,
+> > > > > +    ACPI_OST_EVENT_CMD =3D 1,
+> > > > > +    ACPI_OST_STATUS_CMD =3D 2,
+> > > > > +    ACPI_CMD_MAX
+> > > > > +};
+> > > > > +
+> > > > > +#define AML_APPEND_MR_RESVD_FIELD(mr_field, size_bits)       \
+> > > > > +    do {                                                        =
+\
+> > > > > +        if ((size_bits) !=3D 0) {                               =
+  \
+> > > > > +            aml_append((mr_field), aml_reserved_field(size_bits)=
+); \
+> > > > > +        }                                                       =
+\
+> > > > > +    } while (0)
+> > > > > +
+> > > > > +#define AML_APPEND_MR_NAMED_FIELD(mr_field, name, size_bits)    =
+\
+> > > > > +    do {                                                        =
+\
+> > > > > +        if ((size_bits) !=3D 0) {                               =
+  \
+> > > > > +            aml_append((mr_field), aml_named_field((name), =20
+> > (size_bits))); \ =20
+> > > > > +        }                                                       =
+\
+> > > > > +    } while (0)
+> > > > > +
+> > > > > +#define AML_CPU_RES_DEV(base, field) \
+> > > > > +        aml_name("%s.%s.%s", (base), CPU_RES_DEVICE, (field))
+> > > > > +
+> > > > > +static ACPIOSTInfo *
+> > > > > +acpi_cpu_ospm_ost_status(int idx, AcpiCpuOspmStateStatus *cdev) =
+{
+> > > > > +    ACPIOSTInfo *info =3D g_new0(ACPIOSTInfo, 1);
+> > > > > +
+> > > > > +    info->source =3D cdev->ost_event;
+> > > > > +    info->status =3D cdev->ost_status;
+> > > > > +    if (cdev->cpu) {
+> > > > > +        DeviceState *dev =3D DEVICE(cdev->cpu);
+> > > > > +        if (dev->id) {
+> > > > > +            info->device =3D g_strdup(dev->id);
+> > > > > +        }
+> > > > > +    }
+> > > > > +    return info;
+> > > > > +}
+> > > > > +
+> > > > > +void acpi_cpus_ospm_status(AcpiCpuOspmState *cpu_st, =20
+> > > > ACPIOSTInfoList =20
+> > > > > +***list) {
+> > > > > +    ACPIOSTInfoList ***tail =3D list;
+> > > > > +    int i;
+> > > > > +
+> > > > > +    for (i =3D 0; i < cpu_st->dev_count; i++) {
+> > > > > +        QAPI_LIST_APPEND(*tail, acpi_cpu_ospm_ost_status(i, &cpu=
+_st-
+> > > > >devs[i]));
+> > > > > +    }
+> > > > > +}
+> > > > > +
+> > > > > +static uint64_t
+> > > > > +acpi_cpu_ospm_intf_mr_read(void *opaque, hwaddr addr, unsigned =
+=20
+> > > > size) =20
+> > > > > +{
+> > > > > +    AcpiCpuOspmState *cpu_st =3D opaque;
+> > > > > +    AcpiCpuOspmStateStatus *cdev;
+> > > > > +    uint64_t val =3D 0;
+> > > > > +
+> > > > > +    if (cpu_st->selector >=3D cpu_st->dev_count) {
+> > > > > +        return val;
+> > > > > +    }
+> > > > > +    cdev =3D &cpu_st->devs[cpu_st->selector];
+> > > > > +    switch (addr) {
+> > > > > +    case ACPI_CPU_MR_FLAGS_OFFSET_RW:
+> > > > > +        val |=3D qdev_check_enabled(DEVICE(cdev->cpu)) ?
+> > > > > +                                  ACPI_CPU_MR_FLAGS_BIT_ENABLED =
+: 0;
+> > > > > +        val |=3D cdev->devchk_pending ? ACPI_CPU_MR_FLAGS_BIT_DE=
+VCHK =20
+> > : =20
+> > > > 0; =20
+> > > > > +        val |=3D cdev->ejrqst_pending ? ACPI_CPU_MR_FLAGS_BIT_EJ=
+ECTRQ =20
+> > : =20
+> > > > 0; =20
+> > > > > +        trace_acpi_cpuos_if_read_flags(cpu_st->selector, val);
+> > > > > +        break;
+> > > > > +    case ACPI_CPU_MR_CMD_DATA_OFFSET_RW:
+> > > > > +        switch (cpu_st->command) {
+> > > > > +        case ACPI_GET_NEXT_CPU_WITH_EVENT_CMD:
+> > > > > +           val =3D cpu_st->selector;
+> > > > > +           break;
+> > > > > +        default:
+> > > > > + =20
+> >  trace_acpi_cpuos_if_read_invalid_cmd_data(cpu_st->selector, =20
+> > > > > + =20
+> >  cpu_st->command); =20
+> > > > > +           break;
+> > > > > +        }
+> > > > > +        trace_acpi_cpuos_if_read_cmd_data(cpu_st->selector, val)=
+;
+> > > > > +        break;
+> > > > > +    default:
+> > > > > +        break;
+> > > > > +    }
+> > > > > +    return val;
+> > > > > +}
+> > > > > +
+> > > > > +static void
+> > > > > +acpi_cpu_ospm_intf_mr_write(void *opaque, hwaddr addr, uint64_t =
+=20
+> > > > data, =20
+> > > > > +                            unsigned int size) {
+> > > > > +    AcpiCpuOspmState *cpu_st =3D opaque;
+> > > > > +    AcpiCpuOspmStateStatus *cdev;
+> > > > > +    ACPIOSTInfo *info;
+> > > > > +
+> > > > > +    assert(cpu_st->dev_count);
+> > > > > +    if (addr) {
+> > > > > +        if (cpu_st->selector >=3D cpu_st->dev_count) {
+> > > > > + =20
+> > trace_acpi_cpuos_if_invalid_idx_selected(cpu_st->selector); =20
+> > > > > +            return;
+> > > > > +        }
+> > > > > +    }
+> > > > > +
+> > > > > +    switch (addr) {
+> > > > > +    case ACPI_CPU_MR_SELECTOR_OFFSET_WO: /* current CPU selector=
+ =20
+> > > > */ =20
+> > > > > +        cpu_st->selector =3D data;
+> > > > > +        trace_acpi_cpuos_if_write_idx(cpu_st->selector);
+> > > > > +        break;
+> > > > > +    case ACPI_CPU_MR_FLAGS_OFFSET_RW: /* set is_* fields  */
+> > > > > +        cdev =3D &cpu_st->devs[cpu_st->selector];
+> > > > > +        if (data & ACPI_CPU_MR_FLAGS_BIT_DEVCHK) {
+> > > > > +            /* clear device-check pending event */
+> > > > > +            cdev->devchk_pending =3D false;
+> > > > > +            trace_acpi_cpuos_if_clear_devchk_evt(cpu_st->selecto=
+r);
+> > > > > +        } else if (data & ACPI_CPU_MR_FLAGS_BIT_EJECTRQ) {
+> > > > > +            /* clear eject-request pending event */
+> > > > > +            cdev->ejrqst_pending =3D false;
+> > > > > +            trace_acpi_cpuos_if_clear_ejrqst_evt(cpu_st->selecto=
+r);
+> > > > > +        } else if (data & ACPI_CPU_MR_FLAGS_BIT_EJECT) {
+> > > > > +            DeviceState *dev =3D NULL;
+> > > > > +            if (!cdev->cpu || cdev->cpu =3D=3D first_cpu) {
+> > > > > + =20
+> > trace_acpi_cpuos_if_ejecting_invalid_cpu(cpu_st->selector); =20
+> > > > > +                break;
+> > > > > +            }
+> > > > > +            /*
+> > > > > +             * OSPM has returned with eject. Hence, it is now sa=
+fe =20
+> > to put the =20
+> > > > > +             * cpu device on powered-off state.
+> > > > > +             */
+> > > > > +            trace_acpi_cpuos_if_ejecting_cpu(cpu_st->selector);
+> > > > > +            dev =3D DEVICE(cdev->cpu);
+> > > > > +            qdev_sync_disable(dev, &error_fatal);
+> > > > > +        }
+> > > > > +        break;
+> > > > > +    case ACPI_CPU_MR_CMD_OFFSET_WO:
+> > > > > +        trace_acpi_cpuos_if_write_cmd(cpu_st->selector, data);
+> > > > > +        if (data < ACPI_CMD_MAX) {
+> > > > > +            cpu_st->command =3D data;
+> > > > > +            if (cpu_st->command =3D=3D =20
+> > > > ACPI_GET_NEXT_CPU_WITH_EVENT_CMD) { =20
+> > > > > +                uint32_t iter =3D cpu_st->selector;
+> > > > > +
+> > > > > +                do {
+> > > > > +                    cdev =3D &cpu_st->devs[iter];
+> > > > > +                    if (cdev->devchk_pending || =20
+> > cdev->ejrqst_pending) { =20
+> > > > > +                        cpu_st->selector =3D iter;
+> > > > > + =20
+> > trace_acpi_cpuos_if_cpu_has_events(cpu_st->selector, =20
+> > > > > +                            cdev->devchk_pending, =20
+> > cdev->ejrqst_pending); =20
+> > > > > +                        break;
+> > > > > +                    }
+> > > > > +                    iter =3D iter + 1 < cpu_st->dev_count ? iter=
+ + 1 =20
+> > : 0; =20
+> > > > > +                } while (iter !=3D cpu_st->selector);
+> > > > > +            }
+> > > > > +        }
+> > > > > +        break;
+> > > > > +    case ACPI_CPU_MR_CMD_DATA_OFFSET_RW:
+> > > > > +        switch (cpu_st->command) {
+> > > > > +        case ACPI_OST_EVENT_CMD: {
+> > > > > +           cdev =3D &cpu_st->devs[cpu_st->selector];
+> > > > > +           cdev->ost_event =3D data;
+> > > > > +           trace_acpi_cpuos_if_write_ost_ev(cpu_st->selector, cd=
+ev-
+> > > > >ost_event);
+> > > > > +           break;
+> > > > > +        }
+> > > > > +        case ACPI_OST_STATUS_CMD: {
+> > > > > +           cdev =3D &cpu_st->devs[cpu_st->selector];
+> > > > > +           cdev->ost_status =3D data;
+> > > > > +           info =3D acpi_cpu_ospm_ost_status(cpu_st->selector, c=
+dev);
+> > > > > +           qapi_event_send_acpi_device_ost(info);
+> > > > > +           qapi_free_ACPIOSTInfo(info);
+> > > > > +           trace_acpi_cpuos_if_write_ost_status(cpu_st->selector=
+,
+> > > > > +                                                cdev->ost_status=
+);
+> > > > > +           break;
+> > > > > +        }
+> > > > > +        default:
+> > > > > +           trace_acpi_cpuos_if_write_invalid_cmd(cpu_st->selecto=
+r,
+> > > > > +                                                 cpu_st->command=
+);
+> > > > > +           break;
+> > > > > +        }
+> > > > > +        break;
+> > > > > +    default:
+> > > > > +        trace_acpi_cpuos_if_write_invalid_offset(cpu_st->selecto=
+r, =20
+> > addr); =20
+> > > > > +        break;
+> > > > > +    }
+> > > > > +}
+> > > > > +
+> > > > > +static const MemoryRegionOps cpu_common_mr_ops =3D {
+> > > > > +    .read =3D acpi_cpu_ospm_intf_mr_read,
+> > > > > +    .write =3D acpi_cpu_ospm_intf_mr_write,
+> > > > > +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+> > > > > +    .valid =3D {
+> > > > > +        .min_access_size =3D 1,
+> > > > > +        .max_access_size =3D ACPI_CPU_OSPM_IF_MAX_FIELD_SIZE,
+> > > > > +    },
+> > > > > +    .impl =3D {
+> > > > > +        .min_access_size =3D 1,
+> > > > > +        .max_access_size =3D ACPI_CPU_OSPM_IF_MAX_FIELD_SIZE,
+> > > > > +        .unaligned =3D false,
+> > > > > +    },
+> > > > > +};
+> > > > > +
+> > > > > +void acpi_cpu_ospm_state_interface_init(MemoryRegion *as, Object=
+ =20
+> > > > *owner, =20
+> > > > > +                                        AcpiCpuOspmState *state,
+> > > > > +                                        hwaddr base_addr) {
+> > > > > +    MachineState *machine =3D MACHINE(qdev_get_machine());
+> > > > > +    MachineClass *mc =3D MACHINE_GET_CLASS(machine);
+> > > > > +    const CPUArchIdList *id_list;
+> > > > > +    int i;
+> > > > > +
+> > > > > +    assert(mc->possible_cpu_arch_ids);
+> > > > > +    id_list =3D mc->possible_cpu_arch_ids(machine);
+> > > > > +    state->dev_count =3D id_list->len;
+> > > > > +    state->devs =3D g_new0(typeof(*state->devs), state->dev_coun=
+t);
+> > > > > +    for (i =3D 0; i < id_list->len; i++) {
+> > > > > +        state->devs[i].cpu =3D  CPU(id_list->cpus[i].cpu);
+> > > > > +        state->devs[i].arch_id =3D id_list->cpus[i].arch_id;
+> > > > > +    }
+> > > > > +    memory_region_init_io(&state->ctrl_reg, owner, =20
+> > > > &cpu_common_mr_ops, state, =20
+> > > > > +                          "ACPI CPU OSPM State Interface Memory =
+=20
+> > Region", =20
+> > > > > +                          ACPI_CPU_OSPM_IF_REG_LEN);
+> > > > > +    memory_region_add_subregion(as, base_addr, &state->ctrl_reg)=
+; }
+> > > > > +
+> > > > > +static AcpiCpuOspmStateStatus *
+> > > > > +acpi_get_cpu_status(AcpiCpuOspmState *cpu_st, DeviceState *dev) =
+{
+> > > > > +    CPUClass *k =3D CPU_GET_CLASS(dev);
+> > > > > +    uint64_t cpu_arch_id =3D k->get_arch_id(CPU(dev));
+> > > > > +    int i;
+> > > > > +
+> > > > > +    for (i =3D 0; i < cpu_st->dev_count; i++) {
+> > > > > +        if (cpu_arch_id =3D=3D cpu_st->devs[i].arch_id) {
+> > > > > +            return &cpu_st->devs[i];
+> > > > > +        }
+> > > > > +    }
+> > > > > +    return NULL;
+> > > > > +}
+> > > > > +
+> > > > > +void acpi_cpu_device_check_cb(AcpiCpuOspmState *cpu_st, =20
+> > DeviceState =20
+> > > > *dev, =20
+> > > > > +                              uint32_t event_st, Error **errp) {
+> > > > > +    AcpiCpuOspmStateStatus *cdev;
+> > > > > +    cdev =3D acpi_get_cpu_status(cpu_st, dev);
+> > > > > +    if (!cdev) {
+> > > > > +        return;
+> > > > > +    }
+> > > > > +    assert(cdev->cpu);
+> > > > > +
+> > > > > +    /*
+> > > > > +     * Tell OSPM via GED IRQ(GSI) that a powered-off cpu is bein=
+g =20
+> > powered- =20
+> > > > on. =20
+> > > > > +     * Also, mark 'device-check' event pending for this cpu. Thi=
+s =20
+> > will =20
+> > > > > +     * eventually result in OSPM evaluating the ACPI _EVT method=
+ =20
+> > and scan =20
+> > > > of =20
+> > > > > +     * cpus
+> > > > > +     */
+> > > > > +    cdev->devchk_pending =3D true;
+> > > > > +    acpi_send_event(cpu_st->acpi_dev, event_st); }
+> > > > > +
+> > > > > +void acpi_cpu_eject_request_cb(AcpiCpuOspmState *cpu_st, =20
+> > > > DeviceState *dev, =20
+> > > > > +                              uint32_t event_st, Error **errp) {
+> > > > > +    AcpiCpuOspmStateStatus *cdev;
+> > > > > +    cdev =3D acpi_get_cpu_status(cpu_st, dev);
+> > > > > +    if (!cdev) {
+> > > > > +        return;
+> > > > > +    }
+> > > > > +    assert(cdev->cpu);
+> > > > > +
+> > > > > +    /*
+> > > > > +     * Tell OSPM via GED IRQ(GSI) that a cpu wants to power-off =
+or =20
+> > go on =20
+> > > > standby =20
+> > > > > +     * Also,mark 'eject-request' event pending for this cpu. =20
+> > (graceful =20
+> > > > shutdown) =20
+> > > > > +     */
+> > > > > +    cdev->ejrqst_pending =3D true;
+> > > > > +    acpi_send_event(cpu_st->acpi_dev, event_st); }
+> > > > > +
+> > > > > +void
+> > > > > +acpi_cpu_eject_cb(AcpiCpuOspmState *cpu_st, DeviceState *dev, Er=
+ror
+> > > > > +**errp) {
+> > > > > +    /* TODO: possible handling here */ }
+> > > > > +
+> > > > > +static const VMStateDescription vmstate_cpu_ospm_state_sts =3D {
+> > > > > +    .name =3D "CPU OSPM state status",
+> > > > > +    .version_id =3D 1,
+> > > > > +    .minimum_version_id =3D 1,
+> > > > > +    .fields =3D (const VMStateField[]) {
+> > > > > +        VMSTATE_BOOL(devchk_pending, AcpiCpuOspmStateStatus),
+> > > > > +        VMSTATE_BOOL(ejrqst_pending, AcpiCpuOspmStateStatus),
+> > > > > +        VMSTATE_UINT32(ost_event, AcpiCpuOspmStateStatus),
+> > > > > +        VMSTATE_UINT32(ost_status, AcpiCpuOspmStateStatus),
+> > > > > +        VMSTATE_END_OF_LIST()
+> > > > > +    }
+> > > > > +};
+> > > > > +
+> > > > > +const VMStateDescription vmstate_cpu_ospm_state =3D {
+> > > > > +    .name =3D "CPU OSPM state",
+> > > > > +    .version_id =3D 1,
+> > > > > +    .minimum_version_id =3D 1,
+> > > > > +    .fields =3D (const VMStateField[]) {
+> > > > > +        VMSTATE_UINT32(selector, AcpiCpuOspmState),
+> > > > > +        VMSTATE_UINT8(command, AcpiCpuOspmState),
+> > > > > +        VMSTATE_STRUCT_VARRAY_POINTER_UINT32(devs, =20
+> > > > AcpiCpuOspmState, =20
+> > > > > +                                             dev_count,
+> > > > > + =20
+> >  vmstate_cpu_ospm_state_sts, =20
+> > > > > + =20
+> >  AcpiCpuOspmStateStatus), =20
+> > > > > +        VMSTATE_END_OF_LIST()
+> > > > > +    }
+> > > > > +};
+> > > > > +
+> > > > > +void acpi_build_cpus_aml(Aml *table, hwaddr base_addr, const cha=
+r =20
+> > > > *root, =20
+> > > > > +                         const char *event_handler_method) {
+> > > > > +    MachineState *machine =3D MACHINE(qdev_get_machine());
+> > > > > +    MachineClass *mc =3D MACHINE_GET_CLASS(machine);
+> > > > > +    const CPUArchIdList *arch_ids =3D =20
+> > mc->possible_cpu_arch_ids(machine); =20
+> > > > > +    Aml *sb_scope =3D aml_scope("_SB"); /* System Bus Scope */
+> > > > > +    Aml *ifctx, *field, *method, *cpu_res_dev, *cpus_dev;
+> > > > > +    Aml *zero =3D aml_int(0);
+> > > > > +    Aml *one =3D aml_int(1);
+> > > > > +
+> > > > > +    cpu_res_dev =3D aml_device("%s.%s", root, CPU_RES_DEVICE);
+> > > > > +    {
+> > > > > +        Aml *crs;
+> > > > > +
+> > > > > +        aml_append(cpu_res_dev,
+> > > > > +            aml_name_decl("_HID", aml_eisaid("PNP0A06")));
+> > > > > +        aml_append(cpu_res_dev,
+> > > > > +            aml_name_decl("_UID", aml_string("CPU OSPM Interface=
+ =20
+> > > > resources"))); =20
+> > > > > +        aml_append(cpu_res_dev, aml_mutex(CPU_LOCK, 0));
+> > > > > +
+> > > > > +        crs =3D aml_resource_template();
+> > > > > +        aml_append(crs, aml_memory32_fixed(base_addr, =20
+> > > > ACPI_CPU_OSPM_IF_REG_LEN, =20
+> > > > > +                   AML_READ_WRITE));
+> > > > > +
+> > > > > +        aml_append(cpu_res_dev, aml_name_decl("_CRS", crs));
+> > > > > +
+> > > > > +        /* declare CPU OSPM Interface MMIO region related access=
+ =20
+> > fields */ =20
+> > > > > +        aml_append(cpu_res_dev,
+> > > > > +                   aml_operation_region("PRST", AML_SYSTEM_MEMOR=
+Y,
+> > > > > +                                        aml_int(base_addr),
+> > > > > +                                        ACPI_CPU_OSPM_IF_REG_LEN=
+));
+> > > > > +
+> > > > > +        /*
+> > > > > +         * define named fields within PRST region with 'Byte' =
+=20
+> > access widths =20
+> > > > > +         * and reserve fields with other access width
+> > > > > +         */
+> > > > > +        field =3D aml_field("PRST", AML_BYTE_ACC, AML_NOLOCK, =
+=20
+> > > > AML_PRESERVE); =20
+> > > > > +        /* reserve CPU 'selector' field (size in bits) */
+> > > > > +        AML_APPEND_MR_RESVD_FIELD(field, =20
+> > > > ACPI_CPU_MR_SELECTOR_SIZE_BITS); =20
+> > > > > +        /* Flag::Enabled Bit(RO) - Read '1' if enabled */
+> > > > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_ENABLED_F, 1);
+> > > > > +        /* Flag::Devchk Bit(RW) - Read '1', has a event. Write '=
+1', =20
+> > to clear */ =20
+> > > > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_DEVCHK_F, 1);
+> > > > > +        /* Flag::Ejectrq Bit(RW) - Read 1, has event. Write 1 to=
+ =20
+> > clear */ =20
+> > > > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_EJECTRQ_F, 1);
+> > > > > +        /* Flag::Eject Bit(WO) - OSPM evals _EJx, initiates CPU =
+=20
+> > Eject in =20
+> > > > Qemu*/ =20
+> > > > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_EJECT_F, 1);
+> > > > > +        /* Flag::Bit(ACPI_CPU_FLAGS_USED_BITS)-Bit(7) - Reserve =
+=20
+> > left over =20
+> > > > bits*/ =20
+> > > > > +        AML_APPEND_MR_RESVD_FIELD(field, =20
+> > > > ACPI_CPU_MR_RES_FLAG_BITS); =20
+> > > > > +        /* Reserved space: padding after flags */
+> > > > > +        AML_APPEND_MR_RESVD_FIELD(field, =20
+> > > > ACPI_CPU_MR_RES_FLAGS_SIZE_BITS); =20
+> > > > > +        /* Command field written by OSPM */
+> > > > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_COMMAND,
+> > > > > +                                  ACPI_CPU_MR_CMD_SIZE_BITS);
+> > > > > +        /* Reserved space: padding after command field */
+> > > > > +        AML_APPEND_MR_RESVD_FIELD(field, =20
+> > > > ACPI_CPU_MR_RES_CMD_SIZE_BITS); =20
+> > > > > +        /* Command data: 64-bit payload associated with command =
+*/
+> > > > > +        AML_APPEND_MR_RESVD_FIELD(field, =20
+> > > > ACPI_CPU_MR_CMD_DATA_SIZE_BITS); =20
+> > > > > +        aml_append(cpu_res_dev, field);
+> > > > > +
+> > > > > +        /*
+> > > > > +         * define named fields with 'Dword' access widths and =
+=20
+> > reserve fields =20
+> > > > > +         * with other access width
+> > > > > +         */
+> > > > > +        field =3D aml_field("PRST", AML_DWORD_ACC, AML_NOLOCK, =
+=20
+> > > > AML_PRESERVE); =20
+> > > > > +        /* CPU selector, write only */
+> > > > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_SELECTOR,
+> > > > > +                                  ACPI_CPU_MR_SELECTOR_SIZE_BITS=
+);
+> > > > > +        aml_append(cpu_res_dev, field);
+> > > > > +
+> > > > > +        /*
+> > > > > +         * define named fields with 'Qword' access widths and =
+=20
+> > reserve fields =20
+> > > > > +         * with other access width
+> > > > > +         */
+> > > > > +        field =3D aml_field("PRST", AML_QWORD_ACC, AML_NOLOCK, =
+=20
+> > > > AML_PRESERVE); =20
+> > > > > +        /*
+> > > > > +         * Reserve space: selector, flags, reserved flags, comma=
+nd, =20
+> > reserved =20
+> > > > > +         * command for Qword alignment.
+> > > > > +         */
+> > > > > +        AML_APPEND_MR_RESVD_FIELD(field, =20
+> > > > ACPI_CPU_MR_SELECTOR_SIZE_BITS + =20
+> > > > > + =20
+> > ACPI_CPU_MR_FLAGS_SIZE_BITS + =20
+> > > > > + =20
+> > ACPI_CPU_MR_RES_FLAGS_SIZE_BITS + =20
+> > > > > + =20
+> > ACPI_CPU_MR_CMD_SIZE_BITS + =20
+> > > > > + =20
+> > ACPI_CPU_MR_RES_CMD_SIZE_BITS); =20
+> > > > > +        /* Command data accessible via Qword */
+> > > > > +        AML_APPEND_MR_NAMED_FIELD(field, CPU_DATA,
+> > > > > +                                  ACPI_CPU_MR_CMD_DATA_SIZE_BITS=
+);
+> > > > > +        aml_append(cpu_res_dev, field);
+> > > > > +    }
+> > > > > +    aml_append(sb_scope, cpu_res_dev);
+> > > > > +
+> > > > > +    cpus_dev =3D aml_device("%s.%s", root, CPU_DEVICE);
+> > > > > +    {
+> > > > > +        Aml *ctrl_lock =3D AML_CPU_RES_DEV(root, CPU_LOCK);
+> > > > > +        Aml *cpu_selector =3D AML_CPU_RES_DEV(root, CPU_SELECTOR=
+);
+> > > > > +        Aml *is_enabled =3D AML_CPU_RES_DEV(root, CPU_ENABLED_F)=
+;
+> > > > > +        Aml *dvchk_evt =3D AML_CPU_RES_DEV(root, CPU_DEVCHK_F);
+> > > > > +        Aml *ejrq_evt =3D AML_CPU_RES_DEV(root, CPU_EJECTRQ_F);
+> > > > > +        Aml *ej_evt =3D AML_CPU_RES_DEV(root, CPU_EJECT_F);
+> > > > > +        Aml *cpu_cmd =3D AML_CPU_RES_DEV(root, CPU_COMMAND);
+> > > > > +        Aml *cpu_data =3D AML_CPU_RES_DEV(root, CPU_DATA);
+> > > > > +        int i;
+> > > > > +
+> > > > > +        aml_append(cpus_dev, aml_name_decl("_HID", =20
+> > > > aml_string("ACPI0010"))); =20
+> > > > > +        aml_append(cpus_dev, aml_name_decl("_CID",
+> > > > > + aml_eisaid("PNP0A05")));
+> > > > > +
+> > > > > +        method =3D aml_method(CPU_NOTIFY_METHOD, 2, =20
+> > > > AML_NOTSERIALIZED); =20
+> > > > > +        for (i =3D 0; i < arch_ids->len; i++) {
+> > > > > +            Aml *cpu =3D aml_name(CPU_NAME_FMT, i);
+> > > > > +            Aml *uid =3D aml_arg(0);
+> > > > > +            Aml *event =3D aml_arg(1);
+> > > > > +
+> > > > > +            ifctx =3D aml_if(aml_equal(uid, aml_int(i)));
+> > > > > +            {
+> > > > > +                aml_append(ifctx, aml_notify(cpu, event));
+> > > > > +            }
+> > > > > +            aml_append(method, ifctx);
+> > > > > +        }
+> > > > > +        aml_append(cpus_dev, method);
+> > > > > +
+> > > > > +        method =3D aml_method(CPU_STS_METHOD, 1, AML_SERIALIZED)=
+;
+> > > > > +        {
+> > > > > +            Aml *idx =3D aml_arg(0);
+> > > > > +            Aml *sta =3D aml_local(0);
+> > > > > +            Aml *else_ctx;
+> > > > > +
+> > > > > +            aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
+> > > > > +            aml_append(method, aml_store(idx, cpu_selector));
+> > > > > +            aml_append(method, aml_store(zero, sta));
+> > > > > +            ifctx =3D aml_if(aml_equal(is_enabled, one));
+> > > > > +            {
+> > > > > +                /* cpu is present and enabled */
+> > > > > +                aml_append(ifctx, aml_store(aml_int(0xF), sta));
+> > > > > +            }
+> > > > > +            aml_append(method, ifctx);
+> > > > > +            else_ctx =3D aml_else();
+> > > > > +            {
+> > > > > +                /* cpu is present but disabled */
+> > > > > +                aml_append(else_ctx, aml_store(aml_int(0xD), sta=
+));
+> > > > > +            }
+> > > > > +            aml_append(method, else_ctx);
+> > > > > +            aml_append(method, aml_release(ctrl_lock));
+> > > > > +            aml_append(method, aml_return(sta));
+> > > > > +        }
+> > > > > +        aml_append(cpus_dev, method);
+> > > > > +
+> > > > > +        method =3D aml_method(CPU_EJECT_METHOD, 1, AML_SERIALIZE=
+D);
+> > > > > +        {
+> > > > > +            Aml *idx =3D aml_arg(0);
+> > > > > +
+> > > > > +            aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
+> > > > > +            aml_append(method, aml_store(idx, cpu_selector));
+> > > > > +            aml_append(method, aml_store(one, ej_evt));
+> > > > > +            aml_append(method, aml_release(ctrl_lock));
+> > > > > +        }
+> > > > > +        aml_append(cpus_dev, method);
+> > > > > +
+> > > > > +        method =3D aml_method(CPU_SCAN_METHOD, 0, AML_SERIALIZED=
+);
+> > > > > +        {
+> > > > > +            Aml *has_event =3D aml_local(0); /* Local0: Loop con=
+trol =20
+> > flag */ =20
+> > > > > +            Aml *uid =3D aml_local(1); /* Local1: Current CPU UI=
+D */
+> > > > > +            /* Constants */
+> > > > > +            Aml *dev_chk =3D aml_int(1); /* Notify: device check=
+ to =20
+> > enable */ =20
+> > > > > +            Aml *eject_req =3D aml_int(3); /* Notify: eject for =
+=20
+> > removal */ =20
+> > > > > +            Aml *next_cpu_cmd =3D
+> > > > > + aml_int(ACPI_GET_NEXT_CPU_WITH_EVENT_CMD);
+> > > > > +
+> > > > > +            /* Acquire CPU lock */
+> > > > > +            aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
+> > > > > +
+> > > > > +            /* Initialize loop */
+> > > > > +            aml_append(method, aml_store(zero, uid));
+> > > > > +            aml_append(method, aml_store(one, has_event));
+> > > > > +
+> > > > > +            Aml *while_ctx =3D aml_while(aml_land(
+> > > > > +                aml_equal(has_event, one),
+> > > > > +                aml_lless(uid, aml_int(arch_ids->len))
+> > > > > +            ));
+> > > > > +            {
+> > > > > +                aml_append(while_ctx, aml_store(zero, has_event)=
+);
+> > > > > +                /*
+> > > > > +                 * Issue scan cmd: QEMU will return next CPU wit=
+h =20
+> > event in =20
+> > > > > +                 * cpu_data
+> > > > > +                 */
+> > > > > +                aml_append(while_ctx, aml_store(uid, cpu_selecto=
+r));
+> > > > > +                aml_append(while_ctx, aml_store(next_cpu_cmd,
+> > > > > + cpu_cmd));
+> > > > > +
+> > > > > +                /* If scan wrapped around to an earlier UID, exi=
+t =20
+> > loop */ =20
+> > > > > +                Aml *wrap_check =3D aml_if(aml_lless(cpu_data, u=
+id));
+> > > > > +                aml_append(wrap_check, aml_break());
+> > > > > +                aml_append(while_ctx, wrap_check);
+> > > > > +
+> > > > > +                /* Set UID to scanned result */
+> > > > > +                aml_append(while_ctx, aml_store(cpu_data, uid));
+> > > > > +
+> > > > > +                /* send CPU device-check(resume) event to OSPM *=
+/
+> > > > > +                Aml *if_devchk =3D aml_if(aml_equal(dvchk_evt, o=
+ne));
+> > > > > +                {
+> > > > > +                    aml_append(if_devchk,
+> > > > > +                        aml_call2(CPU_NOTIFY_METHOD, uid, dev_ch=
+k));
+> > > > > +                    /* clear local device-check event sent flag =
+*/
+> > > > > +                    aml_append(if_devchk, aml_store(one, =20
+> > dvchk_evt)); =20
+> > > > > +                    aml_append(if_devchk, aml_store(one, =20
+> > has_event)); =20
+> > > > > +                }
+> > > > > +                aml_append(while_ctx, if_devchk);
+> > > > > +
+> > > > > +                /*
+> > > > > +                 * send CPU eject-request event to OSPM to =20
+> > gracefully handle =20
+> > > > > +                 * OSPM related tasks running on this CPU
+> > > > > +                 */
+> > > > > +                Aml *else_ctx =3D aml_else();
+> > > > > +                Aml *if_ejrq =3D aml_if(aml_equal(ejrq_evt, one)=
+);
+> > > > > +                {
+> > > > > +                    aml_append(if_ejrq,
+> > > > > +                        aml_call2(CPU_NOTIFY_METHOD, uid, =20
+> > eject_req)); =20
+> > > > > +                    /* clear local eject-request event sent flag=
+ */
+> > > > > +                    aml_append(if_ejrq, aml_store(one, ejrq_evt)=
+);
+> > > > > +                    aml_append(if_ejrq, aml_store(one, has_event=
+));
+> > > > > +                }
+> > > > > +                aml_append(else_ctx, if_ejrq);
+> > > > > +                aml_append(while_ctx, else_ctx);
+> > > > > +
+> > > > > +                /* Increment UID */
+> > > > > +                aml_append(while_ctx, aml_increment(uid));
+> > > > > +            }
+> > > > > +            aml_append(method, while_ctx);
+> > > > > +
+> > > > > +            /* Release cpu lock */
+> > > > > +            aml_append(method, aml_release(ctrl_lock));
+> > > > > +        }
+> > > > > +        aml_append(cpus_dev, method);
+> > > > > +
+> > > > > +        method =3D aml_method(CPU_OST_METHOD, 4, AML_SERIALIZED)=
+;
+> > > > > +        {
+> > > > > +            Aml *uid =3D aml_arg(0);
+> > > > > +            Aml *ev_cmd =3D aml_int(ACPI_OST_EVENT_CMD);
+> > > > > +            Aml *st_cmd =3D aml_int(ACPI_OST_STATUS_CMD);
+> > > > > +
+> > > > > +            aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
+> > > > > +            aml_append(method, aml_store(uid, cpu_selector));
+> > > > > +            aml_append(method, aml_store(ev_cmd, cpu_cmd));
+> > > > > +            aml_append(method, aml_store(aml_arg(1), cpu_data));
+> > > > > +            aml_append(method, aml_store(st_cmd, cpu_cmd));
+> > > > > +            aml_append(method, aml_store(aml_arg(2), cpu_data));
+> > > > > +            aml_append(method, aml_release(ctrl_lock));
+> > > > > +        }
+> > > > > +        aml_append(cpus_dev, method);
+> > > > > +
+> > > > > +        /* build Processor object for each processor */
+> > > > > +        for (i =3D 0; i < arch_ids->len; i++) {
+> > > > > +            Aml *dev;
+> > > > > +            Aml *uid =3D aml_int(i);
+> > > > > +
+> > > > > +            dev =3D aml_device(CPU_NAME_FMT, i);
+> > > > > +            aml_append(dev, aml_name_decl("_HID", =20
+> > > > aml_string("ACPI0007"))); =20
+> > > > > +            aml_append(dev, aml_name_decl("_UID", uid));
+> > > > > +
+> > > > > +            method =3D aml_method("_STA", 0, AML_SERIALIZED);
+> > > > > +            aml_append(method, =20
+> > aml_return(aml_call1(CPU_STS_METHOD, =20
+> > > > uid))); =20
+> > > > > +            aml_append(dev, method);
+> > > > > +
+> > > > > +            if (CPU(arch_ids->cpus[i].cpu) !=3D first_cpu) {
+> > > > > +                method =3D aml_method("_EJ0", 1, AML_NOTSERIALIZ=
+ED);
+> > > > > +                aml_append(method, aml_call1(CPU_EJECT_METHOD, =
+=20
+> > uid)); =20
+> > > > > +                aml_append(dev, method);
+> > > > > +            }
+> > > > > +
+> > > > > +            method =3D aml_method("_OST", 3, AML_SERIALIZED);
+> > > > > +            aml_append(method,
+> > > > > +                aml_call4(CPU_OST_METHOD, uid, aml_arg(0),
+> > > > > +                          aml_arg(1), aml_arg(2))
+> > > > > +            );
+> > > > > +            aml_append(dev, method);
+> > > > > +            aml_append(cpus_dev, dev);
+> > > > > +        }
+> > > > > +    }
+> > > > > +    aml_append(sb_scope, cpus_dev);
+> > > > > +    aml_append(table, sb_scope);
+> > > > > +
+> > > > > +    method =3D aml_method(event_handler_method, 0, =20
+> > > > AML_NOTSERIALIZED); =20
+> > > > > +    aml_append(method, aml_call0("\\_SB.CPUS." CPU_SCAN_METHOD))=
+;
+> > > > > +    aml_append(table, method);
+> > > > > +}
+> > > > > diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build index
+> > > > > 73f02b9691..6d83396ab4 100644
+> > > > > --- a/hw/acpi/meson.build
+> > > > > +++ b/hw/acpi/meson.build
+> > > > > @@ -8,6 +8,8 @@ acpi_ss.add(files(
+> > > > >  ))
+> > > > >  acpi_ss.add(when: 'CONFIG_ACPI_CPU_HOTPLUG', if_true: files('cpu=
+.c',
+> > > > > 'cpu_hotplug.c'))
+> > > > >  acpi_ss.add(when: 'CONFIG_ACPI_CPU_HOTPLUG', if_false:
+> > > > > files('acpi-cpu-hotplug-stub.c'))
+> > > > > +acpi_ss.add(when: 'CONFIG_ACPI_CPU_OSPM_INTERFACE', if_true:
+> > > > > +files('cpu_ospm_interface.c'))
+> > > > > +acpi_ss.add(when: 'CONFIG_ACPI_CPU_OSPM_INTERFACE', if_false:
+> > > > > +files('acpi-cpu-ospm-interface-stub.c'))
+> > > > >  acpi_ss.add(when: 'CONFIG_ACPI_MEMORY_HOTPLUG', if_true:
+> > > > > files('memory_hotplug.c'))
+> > > > >  acpi_ss.add(when: 'CONFIG_ACPI_MEMORY_HOTPLUG', if_false:
+> > > > > files('acpi-mem-hotplug-stub.c'))
+> > > > >  acpi_ss.add(when: 'CONFIG_ACPI_NVDIMM', if_true: files('nvdimm.c=
+'))
+> > > > > diff --git a/hw/acpi/trace-events b/hw/acpi/trace-events index
+> > > > > edc93e703c..c0ecbdd48f 100644
+> > > > > --- a/hw/acpi/trace-events
+> > > > > +++ b/hw/acpi/trace-events
+> > > > > @@ -40,6 +40,23 @@ cpuhp_acpi_fw_remove_cpu(uint32_t idx) =20
+> > > > "0x%"PRIx32 =20
+> > > > > cpuhp_acpi_write_ost_ev(uint32_t slot, uint32_t ev) "idx[0x%"PRIx=
+32"]
+> > > > > OST EVENT: 0x%"PRIx32  cpuhp_acpi_write_ost_status(uint32_t slot,
+> > > > > uint32_t st) "idx[0x%"PRIx32"] OST STATUS: 0x%"PRIx32
+> > > > >
+> > > > > +#cpu_ospm_interface.c
+> > > > > +acpi_cpuos_if_invalid_idx_selected(uint32_t idx) "selector =20
+> > > > idx[0x%"PRIx32"]" =20
+> > > > > +acpi_cpuos_if_read_flags(uint32_t idx, uint8_t flags) "cpu
+> > > > > +idx[0x%"PRIx32"] flags: 0x%"PRIx8 acpi_cpuos_if_write_idx(uint32=
+_t
+> > > > > +idx) "set active cpu idx: 0x%"PRIx32 =20
+> > acpi_cpuos_if_write_cmd(uint32_t =20
+> > > > > +idx, uint8_t cmd) "cpu idx[0x%"PRIx32"] cmd: 0x%"PRIx8
+> > > > > +acpi_cpuos_if_write_invalid_cmd(uint32_t idx, uint8_t cmd) "cpu
+> > > > > +idx[0x%"PRIx32"] invalid cmd: 0x%"PRIx8
+> > > > > +acpi_cpuos_if_write_invalid_offset(uint32_t idx, uint64_t addr) =
+"cpu
+> > > > > +idx[0x%"PRIx32"] invalid offset: 0x%"PRIx64 =20
+> > > > acpi_cpuos_if_read_cmd_data(uint32_t idx, uint32_t data) "cpu
+> > > > idx[0x%"PRIx32"] data: 0x%"PRIx32
+> > > > acpi_cpuos_if_read_invalid_cmd_data(uint32_t idx, uint8_t cmd) "cpu
+> > > > idx[0x%"PRIx32"] invalid cmd: 0x%"PRIx8
+> > > > acpi_cpuos_if_cpu_has_events(uint32_t idx, bool devchk, bool ejrqst=
+) =20
+> > "cpu =20
+> > > > idx[0x%"PRIx32"] device-check pending: %d, eject-request pending: %=
+d" =20
+> > > > > +acpi_cpuos_if_clear_devchk_evt(uint32_t idx) "cpu idx[0x%"PRIx32=
+"]"
+> > > > > +acpi_cpuos_if_clear_ejrqst_evt(uint32_t idx) "cpu idx[0x%"PRIx32=
+"]"
+> > > > > +acpi_cpuos_if_ejecting_invalid_cpu(uint32_t idx) "invalid cpu =
+=20
+> > > > idx[0x%"PRIx32"]" =20
+> > > > > +acpi_cpuos_if_ejecting_cpu(uint32_t idx) "cpu idx[0x%"PRIx32"]"
+> > > > > +acpi_cpuos_if_write_ost_ev(uint32_t idx, uint32_t ev) "cpu
+> > > > > +idx[0x%"PRIx32"] OST Event: 0x%"PRIx32
+> > > > > +acpi_cpuos_if_write_ost_status(uint32_t idx, uint32_t st) "cpu
+> > > > > +idx[0x%"PRIx32"] OST Status: 0x%"PRIx32
+> > > > > +
+> > > > >  # pcihp.c
+> > > > >  acpi_pci_eject_slot(unsigned bsel, unsigned slot) "bsel: %u slot=
+: =20
+> > %u" =20
+> > > > >  acpi_pci_unplug(int bsel, int slot) "bsel: %d slot: %d"
+> > > > > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig index
+> > > > > 2aa4b5d778..c9991e00c7 100644
+> > > > > --- a/hw/arm/Kconfig
+> > > > > +++ b/hw/arm/Kconfig
+> > > > > @@ -39,6 +39,7 @@ config ARM_VIRT
+> > > > >      select VIRTIO_MEM_SUPPORTED
+> > > > >      select ACPI_CXL
+> > > > >      select ACPI_HMAT
+> > > > > +    select ACPI_CPU_OSPM_INTERFACE
+> > > > >
+> > > > >  config CUBIEBOARD
+> > > > >      bool
+> > > > > diff --git a/include/hw/acpi/cpu_ospm_interface.h
+> > > > > b/include/hw/acpi/cpu_ospm_interface.h
+> > > > > new file mode 100644
+> > > > > index 0000000000..5dda327a34
+> > > > > --- /dev/null
+> > > > > +++ b/include/hw/acpi/cpu_ospm_interface.h
+> > > > > @@ -0,0 +1,78 @@
+> > > > > +/*
+> > > > > + * ACPI CPU OSPM Interface Handling.
+> > > > > + *
+> > > > > + * Copyright (c) 2025 Huawei Technologies R&D (UK) Ltd.
+> > > > > + *
+> > > > > + * Author: Salil Mehta <salil.mehta@huawei.com>
+> > > > > + *
+> > > > > + * SPDX-License-Identifier: GPL-2.0-or-later
+> > > > > + *
+> > > > > + * This program is free software; you can redistribute it and/or
+> > > > > +modify
+> > > > > + * it under the terms of the GNU General Public License as publi=
+shed
+> > > > > +by
+> > > > > + * the ree Software Foundation; either version 2 of the License,=
+ or
+> > > > > + * (at your option) any later version.
+> > > > > + */
+> > > > > +#ifndef CPU_OSPM_INTERFACE_H
+> > > > > +#define CPU_OSPM_INTERFACE_H
+> > > > > +
+> > > > > +#include "qapi/qapi-types-acpi.h"
+> > > > > +#include "hw/qdev-core.h"
+> > > > > +#include "hw/acpi/acpi.h"
+> > > > > +#include "hw/acpi/aml-build.h"
+> > > > > +#include "hw/boards.h"
+> > > > > +
+> > > > > +/**
+> > > > > + * Total size (in bytes) of the ACPI CPU OSPM Interface MMIO reg=
+ion.
+> > > > > + *
+> > > > > + * This region contains control and status fields such as CPU
+> > > > > +selector,
+> > > > > + * flags, command register, and data register. It must exactly m=
+atch
+> > > > > +the
+> > > > > + * layout defined in the AML code and the memory region =20
+> > > > implementation. =20
+> > > > > + *
+> > > > > + * Any mismatch between this definition and the AML layout may =
+=20
+> > result =20
+> > > > > +in
+> > > > > + * runtime errors or build-time assertion failures (e.g.,
+> > > > > +_Static_assert),
+> > > > > + * breaking correct device emulation and guest OS coordination.
+> > > > > + */
+> > > > > +#define ACPI_CPU_OSPM_IF_REG_LEN 16
+> > > > > +
+> > > > > +typedef struct  {
+> > > > > +    CPUState *cpu;
+> > > > > +    uint64_t arch_id;
+> > > > > +    bool devchk_pending; /* device-check pending */
+> > > > > +    bool ejrqst_pending; /* eject-request pending */
+> > > > > +    uint32_t ost_event;
+> > > > > +    uint32_t ost_status;
+> > > > > +} AcpiCpuOspmStateStatus;
+> > > > > +
+> > > > > +typedef struct AcpiCpuOspmState {
+> > > > > +    DeviceState *acpi_dev;
+> > > > > +    MemoryRegion ctrl_reg;
+> > > > > +    uint32_t selector;
+> > > > > +    uint8_t command;
+> > > > > +    uint32_t dev_count;
+> > > > > +    AcpiCpuOspmStateStatus *devs;
+> > > > > +} AcpiCpuOspmState;
+> > > > > +
+> > > > > +void acpi_cpu_device_check_cb(AcpiCpuOspmState *cpu_st, =20
+> > DeviceState =20
+> > > > *dev, =20
+> > > > > +                              uint32_t event_st, Error **errp);
+> > > > > +
+> > > > > +void acpi_cpu_eject_request_cb(AcpiCpuOspmState *cpu_st, =20
+> > > > DeviceState *dev, =20
+> > > > > +                               uint32_t event_st, Error **errp);
+> > > > > +
+> > > > > +void acpi_cpu_eject_cb(AcpiCpuOspmState *cpu_st, DeviceState *de=
+v,
+> > > > > +                       Error **errp);
+> > > > > +
+> > > > > +void acpi_cpu_ospm_state_interface_init(MemoryRegion *as, Object=
+ =20
+> > > > *owner, =20
+> > > > > +                                        AcpiCpuOspmState *state,
+> > > > > +                                        hwaddr base_addr);
+> > > > > +
+> > > > > +void acpi_build_cpus_aml(Aml *table, hwaddr base_addr, const cha=
+r =20
+> > > > *root, =20
+> > > > > +                         const char *event_handler_method);
+> > > > > +
+> > > > > +void acpi_cpus_ospm_status(AcpiCpuOspmState *cpu_st,
+> > > > > +                           ACPIOSTInfoList ***list);
+> > > > > +
+> > > > > +extern const VMStateDescription vmstate_cpu_ospm_state; #define
+> > > > > +VMSTATE_CPU_OSPM_STATE(cpuospm, state) \
+> > > > > +    VMSTATE_STRUCT(cpuospm, state, 1, \
+> > > > > +                   vmstate_cpu_ospm_state, AcpiCpuOspmState) #en=
+dif
+> > > > > +/* CPU_OSPM_INTERFACE_H */ =20
+> > > > =20
+> > > =20
+> >
+> > =20
 
 

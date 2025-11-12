@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46510CD3429
-	for <qemu-arm@archiver.kernel.org>; Wed, 12 Nov 2025 17:28:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3396BCD3429
+	for <qemu-arm@archiver.kernel.org>; Wed, 12 Nov 2025 17:28:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJEdN-0007WU-4H; Wed, 12 Nov 2025 12:27:53 -0500
+	id 1vJEcb-0004uf-4r; Wed, 12 Nov 2025 12:27:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vJEcr-0005i7-I2
- for qemu-arm@nongnu.org; Wed, 12 Nov 2025 12:27:21 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vJEcZ-0004oa-RA
+ for qemu-arm@nongnu.org; Wed, 12 Nov 2025 12:27:03 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vJEcp-000093-HJ
- for qemu-arm@nongnu.org; Wed, 12 Nov 2025 12:27:20 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vJEcX-00006j-V8
+ for qemu-arm@nongnu.org; Wed, 12 Nov 2025 12:27:03 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762968438;
+ s=mimecast20190719; t=1762968421;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=sRH6WvKIOLV1t+w1QeJew958DbYgl8cdX+R9ufIFR0c=;
- b=HJaE3VBWszmzkYg3hKs4gyrYZYy/N/LyVLkqbSaeMTVy9/eQNUGJ3uyjB5yN8+BDYyUJp+
- dJhCoZnZGuxIRZWABeIiPCmZ1ekHWE0nun64glnE1vqRNJxv72bnlNVv0sb1WV9UG5gjao
- 6aV1tqDZlQYxCdcTcguIklypp2UlrQ0=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=jComCR9dou2BiNNIDUx1CcQSU8FXiZcz7ZdaWhHcvD0=;
+ b=IbTZzig4sxbgU5UZZzp0uzvuRDLaLWP41/bqw3vuihh2vBPxs6Pxthmv+Ktwo+LT9PI+4Q
+ PBoJLoPt4HCWXFl7bEoqmRyPGZX7bNBAsAW9xlBnyFsG+UqZi7ohsHAW+1CUa5XTmfhnn8
+ yCJ6Vc3Dmm7geReo0+WgSTdMKf1H1WI=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-639-boNtZXG7OX-0yTDAytemJA-1; Wed,
- 12 Nov 2025 12:27:14 -0500
-X-MC-Unique: boNtZXG7OX-0yTDAytemJA-1
-X-Mimecast-MFC-AGG-ID: boNtZXG7OX-0yTDAytemJA_1762968433
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-655-cON3AfeFOd2SB71cAs8s3w-1; Wed,
+ 12 Nov 2025 12:26:57 -0500
+X-MC-Unique: cON3AfeFOd2SB71cAs8s3w-1
+X-Mimecast-MFC-AGG-ID: cON3AfeFOd2SB71cAs8s3w_1762968416
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D79C019560B2; Wed, 12 Nov 2025 17:27:12 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2F4891956070; Wed, 12 Nov 2025 17:26:56 +0000 (UTC)
 Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.14])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F12AE1955F1A; Wed, 12 Nov 2025 17:27:04 +0000 (UTC)
+ id BFA421955F1A; Wed, 12 Nov 2025 17:26:48 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, jonathan.cameron@huawei.com,
@@ -53,9 +53,10 @@ Cc: qemu-devel@nongnu.org, jonathan.cameron@huawei.com,
  eduardo@habkost.net, marcel.apfelbaum@gmail.com, philmd@linaro.org,
  wangyanan55@huawei.com, zhao1.liu@intel.com, peter.maydell@linaro.org,
  pbonzini@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v4 8/8] target/arm/kvm: Support multiple memory CPERs injection
-Date: Thu, 13 Nov 2025 03:25:35 +1000
-Message-ID: <20251112172535.403042-9-gshan@redhat.com>
+Subject: [PATCH v4 6/8] acpi/ghes: Bail early on error from
+ get_ghes_source_offsets()
+Date: Thu, 13 Nov 2025 03:25:33 +1000
+Message-ID: <20251112172535.403042-7-gshan@redhat.com>
 In-Reply-To: <20251112172535.403042-1-gshan@redhat.com>
 References: <20251112172535.403042-1-gshan@redhat.com>
 MIME-Version: 1.0
@@ -87,128 +88,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the combination of 64KiB host and 4KiB guest, a problematic host
-page affects 16x guest pages that can be owned by different threads.
-It means 16x memory errors can be raised at once due to the parallel
-accesses to those 16x guest pages on the guest. Unfortunately, QEMU
-can't deliver them one by one because we just have one GHES error block,
-corresponding to one read acknowledgement register. It can eventually
-cause QEMU crash dump due to the contention on that register, meaning
-the current memory error can't be delivered before the previous error
-isn't acknowledged.
+For one particular error (Error), we can't call error_setg() for twice.
+Otherwise, the assert(*errp == NULL) will be triggered unexpectedly in
+error_setv(). In ghes_record_cper_errors(), get_ghes_source_offsets()
+can return a error initialized by error_setg(). Without bailing on
+this error, it can call into the second error_setg() due to the
+unexpected value from the read acknowledgement register.
 
-Move the logics of sending ACPI GHES memory errors and injects SEA
-exception to a newly added helper push_ghes_memory_errors(). Improve
-push_ghes_memory_errors() to push 16x consecutive memory errors if
-needed to avoid the contention on the read acknowledgement register,
-thus the exceptional termination on QEMU.
+Bail early in ghes_record_cper_errors() when error is received from
+get_ghes_source_offsets() to avoid the exception.
 
 Signed-off-by: Gavin Shan <gshan@redhat.com>
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 ---
- target/arm/kvm.c | 70 +++++++++++++++++++++++++++++++++++++++++++-----
- 1 file changed, 64 insertions(+), 6 deletions(-)
+ hw/acpi/ghes.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index b8c3ad2ad9..3da97664eb 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -11,6 +11,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/units.h"
- #include <sys/ioctl.h>
- 
- #include <linux/kvm.h>
-@@ -2429,12 +2430,73 @@ int kvm_arch_get_registers(CPUState *cs, Error **errp)
-     return ret;
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index 160eedcf09..d3d6c11197 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -436,7 +436,7 @@ static void get_hw_error_offsets(uint64_t ghes_addr,
+     *read_ack_register_addr = ghes_addr + sizeof(uint64_t);
  }
  
-+static bool push_ghes_memory_errors(CPUState *c, AcpiGhesState *ags,
-+                                    uint64_t paddr, Error **errp)
-+{
-+    uint64_t val, start, end, guest_pgsz, host_pgsz;
-+    uint64_t addresses[16];
-+    uint32_t num_of_addresses;
-+    int err;
-+    bool ret;
-+
-+    /*
-+     * Sort out the guest page size from TCR_EL1, which can be modified
-+     * by the guest from time to time. So we have to sort it out dynamically.
-+     */
-+    err = read_sys_reg64(c->kvm_fd, &val, ARM64_SYS_REG(3, 0, 2, 0, 2));
-+    if (err) {
-+        error_setg(errp, "Error %" PRId32 " to read TCR_EL1 register", err);
-+        return false;
-+    }
-+
-+    switch (extract64(val, 14, 2)) {
-+    case 0:
-+        guest_pgsz = 4 * KiB;
-+        break;
-+    case 1:
-+        guest_pgsz = 64 * KiB;
-+        break;
-+    case 2:
-+        guest_pgsz = 16 * KiB;
-+        break;
-+    default:
-+        error_setg(errp, "Unknown page size from TCR_EL1 (0x%" PRIx64 ")", val);
-+        return false;
-+    }
-+
-+    host_pgsz = qemu_real_host_page_size();
-+    start = paddr & ~(host_pgsz - 1);
-+    end = start + host_pgsz;
-+    num_of_addresses = 0;
-+
-+    while (start < end) {
-+        /*
-+         * The precise physical address is provided for the affected
-+         * guest page that contains @paddr. Otherwise, the starting
-+         * address of the guest page is provided.
-+         */
-+        if (paddr >= start && paddr < (start + guest_pgsz)) {
-+            addresses[num_of_addresses++] = paddr;
-+        } else {
-+            addresses[num_of_addresses++] = start;
-+        }
-+
-+        start += guest_pgsz;
-+    }
-+
-+    kvm_cpu_synchronize_state(c);
-+    ret = acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
-+                                  addresses, num_of_addresses, errp);
-+    kvm_inject_arm_sea(c);
-+
-+    return ret;
-+}
-+
- void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
- {
-     ram_addr_t ram_addr;
-     hwaddr paddr;
-     AcpiGhesState *ags;
--    uint64_t addresses[16];
- 
-     assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
- 
-@@ -2455,12 +2517,8 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
-              * later from the main thread, so doing the injection of
-              * the error would be more complicated.
-              */
--            addresses[0] = paddr;
-             if (code == BUS_MCEERR_AR) {
--                kvm_cpu_synchronize_state(c);
--                acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
--                                        addresses, 1, &error_fatal);
--                kvm_inject_arm_sea(c);
-+                push_ghes_memory_errors(c, ags, paddr, &error_fatal);
-             }
-             return;
+-static void get_ghes_source_offsets(uint16_t source_id,
++static bool get_ghes_source_offsets(uint16_t source_id,
+                                     uint64_t hest_addr,
+                                     uint64_t *cper_addr,
+                                     uint64_t *read_ack_start_addr,
+@@ -467,7 +467,7 @@ static void get_ghes_source_offsets(uint16_t source_id,
+         /* For now, we only know the size of GHESv2 table */
+         if (type != ACPI_GHES_SOURCE_GENERIC_ERROR_V2) {
+             error_setg(errp, "HEST: type %d not supported.", type);
+-            return;
++            return false;
          }
+ 
+         /* Compare CPER source ID at the GHESv2 structure */
+@@ -481,7 +481,7 @@ static void get_ghes_source_offsets(uint16_t source_id,
+     }
+     if (i == num_sources) {
+         error_setg(errp, "HEST: Source %d not found.", source_id);
+-        return;
++        return false;
+     }
+ 
+     /* Navigate through table address pointers */
+@@ -501,6 +501,8 @@ static void get_ghes_source_offsets(uint16_t source_id,
+     cpu_physical_memory_read(hest_read_ack_addr, read_ack_start_addr,
+                              sizeof(*read_ack_start_addr));
+     *read_ack_start_addr = le64_to_cpu(*read_ack_start_addr);
++
++    return true;
+ }
+ 
+ NotifierList acpi_generic_error_notifiers =
+@@ -519,9 +521,10 @@ void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
+     if (!ags->use_hest_addr) {
+         get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
+                              &cper_addr, &read_ack_register_addr);
+-    } else {
+-        get_ghes_source_offsets(source_id, le64_to_cpu(ags->hest_addr_le),
+-                                &cper_addr, &read_ack_register_addr, errp);
++    } else if (!get_ghes_source_offsets(source_id,
++                    le64_to_cpu(ags->hest_addr_le), &cper_addr,
++                    &read_ack_register_addr, errp)) {
++            return;
+     }
+ 
+     cpu_physical_memory_read(read_ack_register_addr,
 -- 
 2.51.1
 

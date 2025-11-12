@@ -4,93 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28BD8CCF9E3
-	for <qemu-arm@archiver.kernel.org>; Wed, 12 Nov 2025 15:25:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E15B6CD3421
+	for <qemu-arm@archiver.kernel.org>; Wed, 12 Nov 2025 16:22:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJCi8-0005JT-Rh; Wed, 12 Nov 2025 10:24:47 -0500
+	id 1vJDc0-0002iR-Fu; Wed, 12 Nov 2025 11:22:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1vJCgy-0004EI-Pl
- for qemu-arm@nongnu.org; Wed, 12 Nov 2025 10:23:31 -0500
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1vJCgw-0001Vf-RG
- for qemu-arm@nongnu.org; Wed, 12 Nov 2025 10:23:28 -0500
-Received: by mail-pl1-x632.google.com with SMTP id
- d9443c01a7336-29586626fbeso9198355ad.0
- for <qemu-arm@nongnu.org>; Wed, 12 Nov 2025 07:23:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1762961004; x=1763565804; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=aQoFD8HHNCUzu8Xv77GZfmrU4JLWRGqETvU5zFCEuZo=;
- b=DRxFMR0vsjSp3qtlQnRLst3oppyPcAro5wio3FWSB8+NMBDWUa//8NbqIiqgph46sq
- 9pjhM9RvTzDHQCDSUmMR2uGar4bNb/BEL+TlyTcG4hJOD9UCSdSb7IgzF7x6z3FXmP3W
- nNsjStKouJK9HPcDIUyXCGbM95YzPM6BWFLqVXGHtumzzpeiYSfSho28R1VLRUkN9VAC
- DnAbK5YmHyaHHB7pqqEWWTSVPkPdV5kbOpyxIyGX0ByMnbJy/kIpI+6nLjB0l5sj0Kj4
- joYhJiOI7sVBpsz2NMNMSiTJ999gj0nuC2OpRkIcBS+F4PrEg6dAtJto7z8cLOiy0HRg
- +elg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762961004; x=1763565804;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=aQoFD8HHNCUzu8Xv77GZfmrU4JLWRGqETvU5zFCEuZo=;
- b=jkoInbq9cNSbcMmh/NPSTIzobkl3TCEOpvERiB/EOcAt1YMHkdLx2tAx5zHp3gAJOt
- HqQyaf1SxoxRvPkvUel7i3VjRaPoWW4BUOed03vz//3yEBKtTKxkwkHnuEJDJek9W6hu
- kBPvZ+hXNi3gqL+pmWQR5SqPOHDlscG1vPaikDZNzEceBRdhSHHSm3A9vuuMe6sf3Ib9
- Q+yYONW+IeZilrxtIIUL63WhhOfgSkEyv3v30GEptcuyRaNZAv4veSJ/yRV5N71Y+tcd
- wW2pCh7zKNmDOBKdNR4TgjBEIPHxI5nZ4U9u2j+vhQfYikPHendUn6idcXlfA/okSalV
- eWfQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU72a7PYWO3egaBL6AOBVTcfuCcN+e6+VObe+p0Uwnj9v0U/K+Zj9quamk0moDSaVm2HVp6qL3TjA==@nongnu.org
-X-Gm-Message-State: AOJu0Yy54jIn8sm6SzkB+632eP/4gXo89p7+T57IP6KGYSOjt6zFiUKL
- nZvCXKdkoKrQtsE8arvt9IRxvAfqIlO4J2O5h6bvJqAw627FC9654TGyAqvaBmS0n3jwPCNXHOh
- gcC2pD4iVOuGh19C+cCN6dN2Tf9dsnQ4=
-X-Gm-Gg: ASbGncsclyLuMogHrM0+xW7G9cAdxBWZSDYieNXhETrtVQ4vBj8fHfEfRW2qU+LrrPJ
- n08kZYOrZrMmMD3uMvmnDv9HPOhFqA4GoURuX3424C+c5ahJFqiT9z6ATBfPkJw6xmBj6f4j2Un
- bi1xv+2r3LqGmBu094a3Cah1KubF1Bk9XDvKiSuheHpzQeHROXiVi/9auDZYiUPpxFYuloLW2VX
- JR1oQlHPvyV4k+OcWG8OHrEOdZd17FN/xvgGTCG3PVNr1/ygT7eZ9tGYMDI9255sLZas2h7Qil5
- 17Z30G9RVM/Sp4A=
-X-Google-Smtp-Source: AGHT+IF3WSJKlxx4PFfnmdF9dVEWavrMVXOkgMhtp3vjRM5O2tUj2a21XIS2+2O1FqyAXifna1jXAEeR1yUyZZsKlYw=
-X-Received: by 2002:a17:903:244a:b0:295:1aa7:edf7 with SMTP id
- d9443c01a7336-2984edaaeb0mr42748425ad.30.1762961004324; Wed, 12 Nov 2025
- 07:23:24 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vJDbo-0002da-WB; Wed, 12 Nov 2025 11:22:13 -0500
+Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vJDbk-0004oc-MX; Wed, 12 Nov 2025 11:22:12 -0500
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwBHYqgktBRpI6oPAg--.69S2;
+ Thu, 13 Nov 2025 00:21:56 +0800 (CST)
+Received: from phytium.com.cn (unknown [218.76.62.144])
+ by mail (Coremail) with SMTP id AQAAfwDnP+0jtBRpz0YEAA--.8224S3;
+ Thu, 13 Nov 2025 00:21:55 +0800 (CST)
+From: Tao Tang <tangtao1634@phytium.com.cn>
+To: Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>, Tao Tang <tangtao1634@phytium.com.cn>
+Subject: [RFC v3 0/3] hw/misc: Introduce a generalized IOMMU test framework
+Date: Thu, 13 Nov 2025 00:21:49 +0800
+Message-Id: <20251112162152.447327-1-tangtao1634@phytium.com.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20251111171724.78201-1-alex.bennee@linaro.org>
- <20251111171724.78201-2-alex.bennee@linaro.org>
-In-Reply-To: <20251111171724.78201-2-alex.bennee@linaro.org>
-From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
-Date: Thu, 13 Nov 2025 00:23:12 +0900
-X-Gm-Features: AWmQ_bnKMzPbFk434dGlXinTwKvQee_I0gzBdLN9S0ZpzTEkJ-usQIqLqOXaNI0
-Message-ID: <CAEDrbUbLNbTkVTYTnodZPXsPyBJ+ci9DoxLDyP8FRyf2u0QGgw@mail.gmail.com>
-Subject: Re: [PATCH 01/16] tests/docker: drop --link from COPYs in emsdk docker
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org, 
- Zhao Liu <zhao1.liu@intel.com>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>, 
- Ed Maste <emaste@freebsd.org>, Paul Durrant <paul@xen.org>,
- David Woodhouse <dwmw2@infradead.org>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, qemu-arm@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Peter Maydell <peter.maydell@linaro.org>, Li-Wen Hsu <lwhsu@freebsd.org>, 
- Thomas Huth <thuth@redhat.com>, Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Gustavo Romero <gustavo.romero@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000006a6e2006436758c1"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=ktokunaga.mail@gmail.com; helo=mail-pl1-x632.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAfwDnP+0jtBRpz0YEAA--.8224S3
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAMBWkTmLAHcAAHsq
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
+ 4@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoWxtFy3KFWUWFWkJF43Ar1kZrb_yoW3Wr1UpF
+ 93Cay3KF48JF1fZrn3Aw40yFy3tan5Ja12vr13Gw1Sg3y3AFy8tF47KFy8tF93A395ZF17
+ Za1Utr15ur4FyFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=162.243.164.118;
+ envelope-from=tangtao1634@phytium.com.cn;
+ helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,84 +75,189 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---0000000000006a6e2006436758c1
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+This is v3 of the IOMMU test framework. V2 introduced the smmu-testdev for
+bare-metal SMMUv3 testing. V3 is a significant architectural refactoring of that
+work, generalizing it into a modular and extensible IOMMU test framework. The
+device has been renamed from smmu-testdev to iommu-testdev and the
+architecture has been significantly restructured for better modularity
+and extensibility.
 
-> As we need to build images in both docker and podman lets not have any
-> incompatibilities. I don't think it makes any major difference.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> ---
->  tests/docker/dockerfiles/emsdk-wasm32-cross.docker | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/tests/docker/dockerfiles/emsdk-wasm32-cross.docker
-b/tests/docker/dockerfiles/emsdk-wasm32-cross.docker
-> index 6b1642a207c..1f08eb0b855 100644
-> --- a/tests/docker/dockerfiles/emsdk-wasm32-cross.docker
-> +++ b/tests/docker/dockerfiles/emsdk-wasm32-cross.docker
-> @@ -115,8 +115,8 @@ RUN mkdir -p /glib
->  RUN curl -Lks
-https://download.gnome.org/sources/glib/${GLIB_MINOR_VERSION}/glib-$GLIB_VE=
-RSION.tar.xz
-| \
->      tar xJC /glib --strip-components=3D1
->
-> -COPY --link --from=3Dzlib-dev /builddeps/ /builddeps/
-> -COPY --link --from=3Dlibffi-dev /builddeps/ /builddeps/
-> +COPY --from=3Dzlib-dev /builddeps/ /builddeps/
-> +COPY --from=3Dlibffi-dev /builddeps/ /builddeps/
->
->  WORKDIR /glib
->  RUN <<EOF
-> @@ -141,5 +141,5 @@ RUN sed -i -E "/#define HAVE_PTHREAD_GETNAME_NP 1/d"
-./_build/config.h
->  RUN meson install -C _build
->
->  FROM build-base
-> -COPY --link --from=3Dglib-dev /builddeps/ /builddeps/
-> -COPY --link --from=3Dpixman-dev /builddeps/ /builddeps/
-> +COPY --from=3Dglib-dev /builddeps/ /builddeps/
-> +COPY --from=3Dpixman-dev /builddeps/ /builddeps/
+Motivation
+----------
 
-Reviewed-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+Currently, thoroughly testing IOMMU emulation (e.g., ARM SMMUv3) requires
+a significant software stack. We need to boot a full guest operating
+system (like Linux) with the appropriate drivers (e.g., IOMMUFD) and rely
+on firmware (e.g., ACPI with IORT tables or Hafnium) to correctly
+configure the IOMMU and orchestrate DMA from a peripheral device.
 
-Regards,
-Kohei Tokunaga
+This dependency on a complex software stack presents several challenges:
 
---0000000000006a6e2006436758c1
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+* High Barrier to Entry: Writing targeted tests for specific IOMMU
+    features (like fault handling, specific translation regimes, etc.)
+    becomes cumbersome.
 
-<div dir=3D"ltr"><div dir=3D"ltr">&gt; As we need to build images in both d=
-ocker and podman lets not have any<br>&gt; incompatibilities. I don&#39;t t=
-hink it makes any major difference.<br>&gt; <br>&gt; Signed-off-by: Alex Be=
-nn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.org">alex.bennee@linaro.=
-org</a>&gt;<br>&gt; ---<br>&gt; =C2=A0tests/docker/dockerfiles/emsdk-wasm32=
--cross.docker | 8 ++++----<br>&gt; =C2=A01 file changed, 4 insertions(+), 4=
- deletions(-)<br>&gt; <br>&gt; diff --git a/tests/docker/dockerfiles/emsdk-=
-wasm32-cross.docker b/tests/docker/dockerfiles/emsdk-wasm32-cross.docker<br=
->&gt; index 6b1642a207c..1f08eb0b855 100644<br>&gt; --- a/tests/docker/dock=
-erfiles/emsdk-wasm32-cross.docker<br>&gt; +++ b/tests/docker/dockerfiles/em=
-sdk-wasm32-cross.docker<br>&gt; @@ -115,8 +115,8 @@ RUN mkdir -p /glib<br>&=
-gt; =C2=A0RUN curl -Lks <a href=3D"https://download.gnome.org/sources/glib/=
-${GLIB_MINOR_VERSION}/glib-$GLIB_VERSION.tar.xz">https://download.gnome.org=
-/sources/glib/${GLIB_MINOR_VERSION}/glib-$GLIB_VERSION.tar.xz</a> | \<br>&g=
-t; =C2=A0 =C2=A0 =C2=A0tar xJC /glib --strip-components=3D1<br>&gt; <br>&gt=
-; -COPY --link --from=3Dzlib-dev /builddeps/ /builddeps/<br>&gt; -COPY --li=
-nk --from=3Dlibffi-dev /builddeps/ /builddeps/<br>&gt; +COPY --from=3Dzlib-=
-dev /builddeps/ /builddeps/<br>&gt; +COPY --from=3Dlibffi-dev /builddeps/ /=
-builddeps/<br>&gt; <br>&gt; =C2=A0WORKDIR /glib<br>&gt; =C2=A0RUN &lt;&lt;E=
-OF<br>&gt; @@ -141,5 +141,5 @@ RUN sed -i -E &quot;/#define HAVE_PTHREAD_GE=
-TNAME_NP 1/d&quot; ./_build/config.h<br>&gt; =C2=A0RUN meson install -C _bu=
-ild<br>&gt; <br>&gt; =C2=A0FROM build-base<br>&gt; -COPY --link --from=3Dgl=
-ib-dev /builddeps/ /builddeps/<br>&gt; -COPY --link --from=3Dpixman-dev /bu=
-ilddeps/ /builddeps/<br>&gt; +COPY --from=3Dglib-dev /builddeps/ /builddeps=
-/<br>&gt; +COPY --from=3Dpixman-dev /builddeps/ /builddeps/<br><br>Reviewed=
--by: Kohei Tokunaga &lt;<a href=3D"mailto:ktokunaga.mail@gmail.com">ktokuna=
-ga.mail@gmail.com</a>&gt;<br><br>Regards,<br>Kohei Tokunaga<br><br></div></=
-div>
+* Difficult to Debug: It's hard to distinguish whether a bug originates
+    from the IOMMU emulation itself, the guest driver, the firmware
+    tables, or the guest kernel's configuration.
 
---0000000000006a6e2006436758c1--
+* Slow Iteration: The need to boot a full guest OS slows down the
+    development and testing cycle.
+
+The primary goal of this work is to create a lightweight, self-contained
+testing environment that allows us to exercise the IOMMU's core logic
+directly at the qtest level, removing the need for any guest-side software.
+
+Our Approach: A Dedicated Test Framework
+-----------------------------------------
+
+To achieve this, we introduce three main components:
+
+* A minimal hardware device: iommu-testdev
+* A reusable IOMMU helper library: libqos/qos-smmuv3
+* A comprehensive qtest suite: iommu-smmuv3-test
+
+The iommu-testdev is intentionally not a conformant, general-purpose PCIe
+or platform device. It is a purpose-built, highly simplified "DMA engine"
+designed to be analogous to a minimal PCIe Root Complex that bypasses the
+full, realistic topology (Host Bridges, Switches, Endpoints) to provide a
+direct, programmable path for a DMA request to reach the IOMMU. Its sole
+purpose is to trigger a DMA transaction when its registers are written to,
+making it perfectly suited for direct control from a test environment like
+qtest.
+
+The Qtest Framework
+-------------------
+
+The new qtest (iommu-smmuv3-test.c) serves as the "bare-metal driver"
+for both the IOMMU and the iommu-testdev. It leverages the libqos helper
+library to manually perform all the setup that would typically be handled
+by the guest kernel and firmware, but in a completely controlled and
+predictable manner:
+
+1.  IOMMU Configuration: It directly initializes the SMMU's registers to a
+    known state using helper functions from qos-smmuv3.
+
+2.  Translation Structure Setup: It uses the libqos library to construct
+    the necessary translation structures in memory, including Stream Table
+    Entries (STEs), Context Descriptors (CDs), and Page Tables (PTEs).
+
+3.  DMA Trigger: It programs the iommu-testdev to initiate a DMA operation
+    targeting a specific IOVA with configurable attributes.
+
+4.  Verification: It waits for the transaction to complete and verifies
+    that the memory was accessed correctly after address translation by
+    the IOMMU.
+
+This framework provides a solid and extensible foundation for validating
+the IOMMU's core translation paths. The current test suite covers:
+
+- Stage 1 only translation (VA -> PA via CD page tables)
+- Stage 2 only translation (IPA -> PA via STE S2 tables)
+- Nested translation (VA -> IPA -> PA, Stage 1 + Stage 2)
+
+The infrastructure is designed to be easily extended to support multiple
+security spaces (Non-Secure, Secure, Root, Realm) and additional IOMMU
+features.
+
+
+Major Changes from v2 to v3:
+-----------------------------
+
+1. Generalization and Renaming:
+   - Device renamed from "smmu-testdev" to "iommu-testdev" to reflect
+     its generic nature and potential use with other IOMMU types beyond
+     SMMUv3.
+   - File paths updated:
+     * hw/misc/smmu-testdev.c -> hw/misc/iommu-testdev.c
+     * include/hw/misc/smmu-testdev.h -> include/hw/misc/iommu-testdev.h
+     * docs/specs/smmu-testdev.rst -> docs/specs/iommu-testdev.rst
+
+2. Architectural Refactoring - Separation of Concerns:
+   The most significant change is the separation of IOMMU-specific logic
+   from the test device:
+
+   - iommu-testdev (hw/misc/iommu-testdev.c):
+     * Now focuses solely on being a DMA trigger device
+     * Contains only MMIO register handling and DMA operation triggering
+     * No longer contains SMMU-specific page table construction logic
+     * Provides a clean, minimal interface for IOMMU testing
+
+   - libqos/qos-smmuv3 (tests/qtest/libqos/qos-smmuv3.{c,h}):
+     * Encapsulates all SMMUv3-specific initialization and setup
+     * Handles Stream Table Entry (STE) construction
+     * Handles Context Descriptor (CD) construction
+     * Manages multi-level page table setup (L0-L3)
+     * Provides support for different translation modes (S1, S2, nested)
+     * Can be reused across multiple test suites
+     * Includes helper functions for security space offset calculations
+
+   - iommu-smmuv3-test (tests/qtest/iommu-smmuv3-test.c):
+     * Focuses on test logic rather than setup boilerplate
+     * Cleaner and more maintainable test cases
+     * Uses high-level abstractions from qos-smmuv3 library
+
+3. Enhanced Modularity:
+   - Clear separation between:
+     * Generic DMA trigger mechanism (iommu-testdev)
+     * IOMMU-specific setup logic (qos-smmuv3)
+     * Test scenarios (iommu-smmuv3-test)
+   - This structure makes it easier to:
+     * Add tests for new IOMMU features
+     * Support additional IOMMU types (e.g., Intel VT-d)
+
+4. Improved Test Coverage:
+   - Explicit tests for multiple translation modes:
+     * Stage 1 only
+     * Stage 2 only
+     * Nested (Stage 1 + Stage 2)
+   - Better structured test configuration system
+   - Clearer test result validation
+
+5. Code Quality Improvements:
+   - Added comprehensive tracing support (8 trace points)
+   - Better error handling and validation
+   - More descriptive variable names and comments
+
+6. Documentation Updates:
+   - Updated device specification in docs/specs/iommu-testdev.rst
+   - More detailed register descriptions
+
+Future Work
+-----------
+
+The current implementation focuses on basic translation path validation
+in the Non-Secure address space. Future extensions could include:
+
+* Multi-space testing (Secure, Root, Realm) for SMMUv3
+* Support for other IOMMU types (Intel VT-d, AMD-Vi, RISC-V IOMMU)
+
+Tao Tang (3):
+  hw/misc: introduce iommu-testdev for bare-metal IOMMU testing
+  tests/qtest: add libqos SMMUv3 helper library
+  tests/qtest: add SMMUv3 bare-metal test using iommu-testdev
+
+ docs/specs/index.rst            |   1 +
+ docs/specs/iommu-testdev.rst    |  96 ++++
+ hw/misc/Kconfig                 |   5 +
+ hw/misc/iommu-testdev.c         | 292 ++++++++++
+ hw/misc/meson.build             |   1 +
+ hw/misc/trace-events            |  10 +
+ include/hw/misc/iommu-testdev.h |  78 +++
+ tests/qtest/iommu-smmuv3-test.c | 116 ++++
+ tests/qtest/libqos/meson.build  |   3 +
+ tests/qtest/libqos/qos-smmuv3.c | 920 ++++++++++++++++++++++++++++++++
+ tests/qtest/libqos/qos-smmuv3.h | 291 ++++++++++
+ tests/qtest/meson.build         |   1 +
+ 12 files changed, 1814 insertions(+)
+ create mode 100644 docs/specs/iommu-testdev.rst
+ create mode 100644 hw/misc/iommu-testdev.c
+ create mode 100644 include/hw/misc/iommu-testdev.h
+ create mode 100644 tests/qtest/iommu-smmuv3-test.c
+ create mode 100644 tests/qtest/libqos/qos-smmuv3.c
+ create mode 100644 tests/qtest/libqos/qos-smmuv3.h
+
+-- 
+2.34.1
+
 

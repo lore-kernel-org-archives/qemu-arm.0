@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E398CD5BBB
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:25:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8254CD5BBB
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:26:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJUWE-0007TX-RW; Thu, 13 Nov 2025 05:25:34 -0500
+	id 1vJUWS-0007yQ-Eh; Thu, 13 Nov 2025 05:25:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUWD-0007Qx-Sq
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:33 -0500
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ id 1vJUWN-0007ny-L1
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:43 -0500
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUW9-0007H1-Gm
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:33 -0500
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-640e9f5951aso2912074a12.1
- for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:29 -0800 (PST)
+ id 1vJUWE-0007J7-UU
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:43 -0500
+Received: by mail-ej1-x62c.google.com with SMTP id
+ a640c23a62f3a-b7277324054so81082066b.0
+ for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763029528; x=1763634328; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763029533; x=1763634333; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=6PFyNVmW41Sxq9LA5K2KHMOdLPGkT9qJhzHZKWnYoAY=;
- b=ChRg1BsCL9rzA9wjuCAjegfQPXX02ADETH27KZHvpEmVK4sdipsX5Ri+rrYX1aVy0Q
- /eCeAuMA0xG9txlUpCuiUU/ZLLrUpqa40Jf7seStZf0Vy0hSN9QYyqu7pCZmWA0DiI6g
- oAcIq5zmdyAYuOD6D6wSJs+WrA6cDfZ8PEui1FxSNTUqgniVONHMgGNHN9cbBFxPtTq2
- fLyOCBD6RFj6uStMh9+fRhNr5dS2Q0r5+oN/DU8LgbkwpYWHSjlwlxdLYX9iW2vXhJut
- 5zO4WyJvOV3tyA3nd+I3o43uN7MxybYP/jmjBbrmxcmGuJoAt8HNFlLHH29O+oni1s1f
- IpQw==
+ bh=SDxw1Ka0eIp3fKfaGtcSKA06rhQlT0+/YP0DJg0ZmfQ=;
+ b=enfJ9tVWRusMjJ3OwcOZJMI6puZcdSZXCs/qiNz4/jat+v/OeD+vOwS/TVmQeS5gk8
+ 8jQTrM9oUgBFOkGdMzAbEGdrM0rS2KksJYavMXiNiti/Yt16hFSm4sl5gO8pvf6YA2a7
+ 28AF0FDTx30wTYJ4LeKlbwdO8OS9y3S7JqGial0l/I/sT03I69gudlQyu1+vJTZsUpi5
+ p4wSTip8FSNiOaXjwVrO3/H0MFVzN7grDkFcNSOOOSkWVH0Cu5KbQEko3QAq7ssOhJEl
+ eo+WFZz6CVUFhJYNFxVaWRydhNkQsIcM1SLXQHDjjy96Nq4HO8Mz5X5cJWOOYnHYLemr
+ 6yfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763029528; x=1763634328;
+ d=1e100.net; s=20230601; t=1763029533; x=1763634333;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=6PFyNVmW41Sxq9LA5K2KHMOdLPGkT9qJhzHZKWnYoAY=;
- b=ua+jAa5ncR8pYBrEbO9KlE6Y3OXTiGaxlLmnqln12PemCW6QCLeC7TFMPsrgmbHYrJ
- LQhI2tY8bY0p4CwrKY1RpkwanhxwhTx39KYSirx1mMW3Ogk8W98Ll1q34fJ0qmQRI/M9
- FKm/JF0y9dHPGaGNGFWbGUYjhncLnaSX3REyVKPf+jezHmxcDew/NvZSwEm9BF8Cq5Ru
- 5mjlgsOHCMiQQKbidP4LJLPpF1JhdEHx7babIN6akwiL3bOkjMeDblLNFdjPHNgGuzVf
- SbI+ZJ8XSJZGTGRlf+hznbDicJkNnrooaItRYnt7sQlkKwIWpZZmLl4jK82T54Rryqt4
- mfMg==
+ bh=SDxw1Ka0eIp3fKfaGtcSKA06rhQlT0+/YP0DJg0ZmfQ=;
+ b=QJxvsGNgMNeG8opKQxiu9FzB0mmqKSdioct0XYAIn7B6SaXYsOK+Pt94qHYcBqwfYe
+ zl1OgobB/NtknCcZJW889WUuKg5dstBRmx/N4yneLM9Pg94u9gF84o2NHiYVSh12oNRr
+ oCKNzEfjxBr8boqlAerEUVChBk9MUDuFxsGfk5forOwsUfo+jo7u/e848Ftbk7CQm7vs
+ YkIcDQu4+OkM/peLlZHDoZRS2YGOcrPsmxGGNPYVKFusAn++0KbMGiRhlBqNv54LElOa
+ KYfLU6ZGV+Pv9kuNdkO+HjS1q35spVeVizsxR6JIwFNKnmOncG6+XYkQZlHeeDbYi71Q
+ Iqbw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV5wowddGH6m58tPXBP95D7JgC4OpnbMEmk4UHz1JLj0YgYV/h+XsqvmFqGrKyM91Cdm5xDTqq92g==@nongnu.org
-X-Gm-Message-State: AOJu0YyRq0bct/rI4TlBkNWuZKUCnh1LXcr9rQJ1Y6ejTMr4wi56E33q
- SnB3tL/U7pf7UH1UMwdriAk0jR8CwbvcNnG1CTiFo9HlNsFUVEmulUIXA7+wbp1VFZA=
-X-Gm-Gg: ASbGncvf4Id0jkrAJIwmc+LFemPsDxTYnck3bwbDWy3XtQPl+y2C0ntIy+qKwlRK+V1
- nUQFHUNKE0yl3m5k+BjDOP0I+gQOd1tlF6aXn1IVI6Nm5Gu7oju8z/C5UEfqLCoQrZOZkWYPm1V
- FFLfyB0T0kpI5VuREVAv/DTESJ+9MSYxkeC0cgTK8lST75llGiWFUAawShgSiuF08FwjbiPjGXN
- fdGLpeuc2rbULC433ZJ1k/Nvvc74jCVwuLpf0zPCqH8aUsvm57X0qjOMs5XhzavUWTvRwRTnwN0
- BSi10Y4W635Re0b41FMlfdpJCnzM/bsGHX5P87HgEF5XJhw59rlhyrUw7clah+UYsJvMTd3W7Xl
- KudK2hKbFvFZnHBObKF2eyBhZEIsbgp53iJ3Ha+Job3r6DRQCtuhnjxa1eZBbpHDLa6Gd7OhsLS
- sy
-X-Google-Smtp-Source: AGHT+IGiCM8yuLjAyZxeNjqTnHB/PoBiHZPuZSXu8IK5tymujj89vM/Qx0aTXirprNzcX7n+mhtjmg==
-X-Received: by 2002:a17:907:a01:b0:b70:4f7d:24f8 with SMTP id
- a640c23a62f3a-b73483a82dbmr266519766b.22.1763029527756; 
- Thu, 13 Nov 2025 02:25:27 -0800 (PST)
+ AJvYcCUSODObxgjXqeiDeezuoqsoEY1ZWdJSa6W/e3ifBxt8+xuNpGsIxBpYmFXaR1dRb5ES09lYMsgftQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxGBrmLfzcYLGpMkYm3MKyjU2+5lVFiUjUrmofvw+GXVDmrQqhx
+ 8qP2HBCPNynzZOXDo3k3HRI6jzkqfiaqOK+/RwCPxALSFb+ynJF5w0QugfWf5M4325U=
+X-Gm-Gg: ASbGncvlsG8CZ07Lxj4gGFDtxPac5yqsYAcUWp1iZEss2zkZexyy3ZBunrBDAtiBh/p
+ M8gUcXRwdsidevK4VDvckDWRJDJgFOkFu9e1RNV8em/AUnTxIiAc33C9aPKaOVbhv5GPEB0Ez8e
+ AgWwz3kHgxlTqCdlTyXqSN7EqNCzo8kNAFisdw4iGQCrAHj/6+b5e3wQGM+Vzfg+khdo0YiC0LK
+ 6wE92Bzy1YxLLICI1UXtwgwDiT0BclTiE+D78JlAblHw5OetjXbIsQYURwZsrIDsJQKkOYhzD4X
+ qIgyw7wKGsfL8P7g6dm44KLEEnf6C0TjVcaIyV6vweGMhynsompIqMIHm+L2sXPSXa6+CQU41lK
+ UJmrQ4kORyQwh4StfRS7dr+N9yaIjlnKWWdhf3hQRk/6MRFW2f0aApZAFku1hXSbX73a6o0SvHl
+ RX
+X-Google-Smtp-Source: AGHT+IG8ODICqVGXq3HoZY53C2Uooox+Rb+z86/D4erKnistjzAamXes8SBH1vL6RWFxosMMRuKDbQ==
+X-Received: by 2002:a17:906:730a:b0:b73:2cf1:ba6 with SMTP id
+ a640c23a62f3a-b7331a0054cmr555591966b.7.1763029533210; 
+ Thu, 13 Nov 2025 02:25:33 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b734fda92c5sm131272966b.53.2025.11.13.02.25.26
+ a640c23a62f3a-b734e9e0f20sm138282266b.0.2025.11.13.02.25.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Nov 2025 02:25:27 -0800 (PST)
+ Thu, 13 Nov 2025 02:25:29 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 24C115F905;
+ by draig.lan (Postfix) with ESMTP id 7233E5F91D;
  Thu, 13 Nov 2025 10:25:26 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -85,17 +85,17 @@ Cc: Paul Durrant <paul@xen.org>,
  qemu-s390x@nongnu.org, Li-Wen Hsu <lwhsu@freebsd.org>,
  David Woodhouse <dwmw2@infradead.org>, Ed Maste <emaste@freebsd.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 03/18] tests/lcitool: update ENV stazas outputted by refresh
-Date: Thu, 13 Nov 2025 10:25:09 +0000
-Message-ID: <20251113102525.1255370-4-alex.bennee@linaro.org>
+Subject: [PATCH v2 05/18] gitlab: add initial ppc64le custom-runner test
+Date: Thu, 13 Nov 2025 10:25:11 +0000
+Message-ID: <20251113102525.1255370-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251113102525.1255370-1-alex.bennee@linaro.org>
 References: <20251113102525.1255370-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x531.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,213 +118,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now lcitool has been updated to use the non-legacy ENVs we should do
-the same for what refresh adds.
+This is a plain configure build but I only run a subset of the tests
+until the kinks have been worked out.
 
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/docker/dockerfiles/debian-amd64-cross.docker    | 4 ++--
- tests/docker/dockerfiles/debian-arm64-cross.docker    | 4 ++--
- tests/docker/dockerfiles/debian-armhf-cross.docker    | 4 ++--
- tests/docker/dockerfiles/debian-i686-cross.docker     | 4 ++--
- tests/docker/dockerfiles/debian-mips64el-cross.docker | 4 ++--
- tests/docker/dockerfiles/debian-mipsel-cross.docker   | 4 ++--
- tests/docker/dockerfiles/debian-ppc64el-cross.docker  | 4 ++--
- tests/docker/dockerfiles/debian-riscv64-cross.docker  | 4 ++--
- tests/docker/dockerfiles/debian-s390x-cross.docker    | 4 ++--
- tests/docker/dockerfiles/debian.docker                | 2 +-
- tests/docker/dockerfiles/fedora-win64-cross.docker    | 4 ++--
- tests/lcitool/refresh                                 | 6 +++---
- 12 files changed, 24 insertions(+), 24 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-amd64-cross.docker b/tests/docker/dockerfiles/debian-amd64-cross.docker
-index 26a39940126..c38ab8247d5 100644
---- a/tests/docker/dockerfiles/debian-amd64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-amd64-cross.docker
-@@ -181,8 +181,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/x86_64-linux-gnu && \
- ENV ABI="x86_64-linux-gnu"
- ENV MESON_OPTS="--cross-file=x86_64-linux-gnu"
- ENV RUST_TARGET="x86_64-unknown-linux-gnu"
--ENV QEMU_CONFIGURE_OPTS --cross-prefix=x86_64-linux-gnu-
--ENV DEF_TARGET_LIST x86_64-softmmu,x86_64-linux-user,i386-softmmu,i386-linux-user
-+ENV QEMU_CONFIGURE_OPTS=--cross-prefix=x86_64-linux-gnu-
-+ENV DEF_TARGET_LIST=x86_64-softmmu,x86_64-linux-user,i386-softmmu,i386-linux-user
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
-index 4b0163fa1b9..2f62da0f5eb 100644
---- a/tests/docker/dockerfiles/debian-arm64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
-@@ -180,8 +180,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/aarch64-linux-gnu && \
- ENV ABI="aarch64-linux-gnu"
- ENV MESON_OPTS="--cross-file=aarch64-linux-gnu"
- ENV RUST_TARGET="aarch64-unknown-linux-gnu"
--ENV QEMU_CONFIGURE_OPTS --cross-prefix=aarch64-linux-gnu-
--ENV DEF_TARGET_LIST aarch64-softmmu,aarch64-linux-user
-+ENV QEMU_CONFIGURE_OPTS=--cross-prefix=aarch64-linux-gnu-
-+ENV DEF_TARGET_LIST=aarch64-softmmu,aarch64-linux-user
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
-index 742031ce0a2..62e297f5d12 100644
---- a/tests/docker/dockerfiles/debian-armhf-cross.docker
-+++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
-@@ -177,8 +177,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/arm-linux-gnueabihf && \
- ENV ABI="arm-linux-gnueabihf"
- ENV MESON_OPTS="--cross-file=arm-linux-gnueabihf"
- ENV RUST_TARGET="armv7-unknown-linux-gnueabihf"
--ENV QEMU_CONFIGURE_OPTS --cross-prefix=arm-linux-gnueabihf-
--ENV DEF_TARGET_LIST arm-softmmu,arm-linux-user
-+ENV QEMU_CONFIGURE_OPTS=--cross-prefix=arm-linux-gnueabihf-
-+ENV DEF_TARGET_LIST=arm-softmmu,arm-linux-user
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian-i686-cross.docker b/tests/docker/dockerfiles/debian-i686-cross.docker
-index 1ccfde2e4bb..eb9a915d492 100644
---- a/tests/docker/dockerfiles/debian-i686-cross.docker
-+++ b/tests/docker/dockerfiles/debian-i686-cross.docker
-@@ -177,8 +177,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/i686-linux-gnu && \
- ENV ABI="i686-linux-gnu"
- ENV MESON_OPTS="--cross-file=i686-linux-gnu"
- ENV RUST_TARGET="i686-unknown-linux-gnu"
--ENV QEMU_CONFIGURE_OPTS --cross-prefix=i686-linux-gnu-
--ENV DEF_TARGET_LIST i386-softmmu,i386-linux-user
-+ENV QEMU_CONFIGURE_OPTS=--cross-prefix=i686-linux-gnu-
-+ENV DEF_TARGET_LIST=i386-softmmu,i386-linux-user
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian-mips64el-cross.docker b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-index eeb77212d5d..42e8444d153 100644
---- a/tests/docker/dockerfiles/debian-mips64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-@@ -176,8 +176,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/mips64el-linux-gnuabi64 && \
- ENV ABI="mips64el-linux-gnuabi64"
- ENV MESON_OPTS="--cross-file=mips64el-linux-gnuabi64"
- ENV RUST_TARGET="mips64el-unknown-linux-gnuabi64"
--ENV QEMU_CONFIGURE_OPTS --cross-prefix=mips64el-linux-gnuabi64-
--ENV DEF_TARGET_LIST mips64el-softmmu,mips64el-linux-user
-+ENV QEMU_CONFIGURE_OPTS=--cross-prefix=mips64el-linux-gnuabi64-
-+ENV DEF_TARGET_LIST=mips64el-softmmu,mips64el-linux-user
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian-mipsel-cross.docker b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-index 9b3dca44f15..1ab197b144d 100644
---- a/tests/docker/dockerfiles/debian-mipsel-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-@@ -176,8 +176,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/mipsel-linux-gnu && \
- ENV ABI="mipsel-linux-gnu"
- ENV MESON_OPTS="--cross-file=mipsel-linux-gnu"
- ENV RUST_TARGET="mipsel-unknown-linux-gnu"
--ENV QEMU_CONFIGURE_OPTS --cross-prefix=mipsel-linux-gnu-
--ENV DEF_TARGET_LIST mipsel-softmmu,mipsel-linux-user
-+ENV QEMU_CONFIGURE_OPTS=--cross-prefix=mipsel-linux-gnu-
-+ENV DEF_TARGET_LIST=mipsel-softmmu,mipsel-linux-user
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian-ppc64el-cross.docker b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-index 15c6b436d31..85d2c0ffdc2 100644
---- a/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-@@ -179,8 +179,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/powerpc64le-linux-gnu && \
- ENV ABI="powerpc64le-linux-gnu"
- ENV MESON_OPTS="--cross-file=powerpc64le-linux-gnu"
- ENV RUST_TARGET="powerpc64le-unknown-linux-gnu"
--ENV QEMU_CONFIGURE_OPTS --cross-prefix=powerpc64le-linux-gnu-
--ENV DEF_TARGET_LIST ppc64-softmmu,ppc64-linux-user
-+ENV QEMU_CONFIGURE_OPTS=--cross-prefix=powerpc64le-linux-gnu-
-+ENV DEF_TARGET_LIST=ppc64-softmmu,ppc64-linux-user
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian-riscv64-cross.docker b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-index 2591c4adc96..4f01eecf416 100644
---- a/tests/docker/dockerfiles/debian-riscv64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-@@ -179,8 +179,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/riscv64-linux-gnu && \
- ENV ABI="riscv64-linux-gnu"
- ENV MESON_OPTS="--cross-file=riscv64-linux-gnu"
- ENV RUST_TARGET="riscv64gc-unknown-linux-gnu"
--ENV QEMU_CONFIGURE_OPTS --cross-prefix=riscv64-linux-gnu-
--ENV DEF_TARGET_LIST riscv64-softmmu,riscv64-linux-user
-+ENV QEMU_CONFIGURE_OPTS=--cross-prefix=riscv64-linux-gnu-
-+ENV DEF_TARGET_LIST=riscv64-softmmu,riscv64-linux-user
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian-s390x-cross.docker b/tests/docker/dockerfiles/debian-s390x-cross.docker
-index 57aa3209c5c..2a3046e7859 100644
---- a/tests/docker/dockerfiles/debian-s390x-cross.docker
-+++ b/tests/docker/dockerfiles/debian-s390x-cross.docker
-@@ -178,8 +178,8 @@ endian = 'big'\n" > /usr/local/share/meson/cross/s390x-linux-gnu && \
- ENV ABI="s390x-linux-gnu"
- ENV MESON_OPTS="--cross-file=s390x-linux-gnu"
- ENV RUST_TARGET="s390x-unknown-linux-gnu"
--ENV QEMU_CONFIGURE_OPTS --cross-prefix=s390x-linux-gnu-
--ENV DEF_TARGET_LIST s390x-softmmu,s390x-linux-user
-+ENV QEMU_CONFIGURE_OPTS=--cross-prefix=s390x-linux-gnu-
-+ENV DEF_TARGET_LIST=s390x-softmmu,s390x-linux-user
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian.docker b/tests/docker/dockerfiles/debian.docker
-index bbb920c6815..c1817f162f6 100644
---- a/tests/docker/dockerfiles/debian.docker
-+++ b/tests/docker/dockerfiles/debian.docker
-@@ -169,7 +169,7 @@ RUN cd /usr/src/netmap/LINUX && \
-   ./configure --no-drivers --no-apps \
-   --kernel-dir=$(ls -d /usr/src/linux-headers-*-$(dpkg --print-architecture)) \
-   && make install
--ENV QEMU_CONFIGURE_OPTS --enable-netmap
-+ENV QEMU_CONFIGURE_OPTS=--enable-netmap
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
-index e6f84dd556f..1da425768fc 100644
---- a/tests/docker/dockerfiles/fedora-win64-cross.docker
-+++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
-@@ -112,8 +112,8 @@ RUN nosync dnf install -y \
+---
+v2
+  - limit to check-unit check-tcg check-softfloat
+---
+ docs/devel/testing/ci-jobs.rst.inc            |  6 +++
+ .gitlab-ci.d/custom-runners.yml               |  1 +
+ .../custom-runners/debian-13-ppc64le.yml      | 41 +++++++++++++++++++
+ 3 files changed, 48 insertions(+)
+ create mode 100644 .gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
+
+diff --git a/docs/devel/testing/ci-jobs.rst.inc b/docs/devel/testing/ci-jobs.rst.inc
+index b92d372a0a9..f1c70344ece 100644
+--- a/docs/devel/testing/ci-jobs.rst.inc
++++ b/docs/devel/testing/ci-jobs.rst.inc
+@@ -174,6 +174,12 @@ If you've got access to an IBM Z host that can be used as a gitlab-CI
+ runner, you can set this variable to enable the tests that require this
+ kind of host. The runner should be tagged with "s390x".
  
- ENV ABI="x86_64-w64-mingw32"
- ENV MESON_OPTS="--cross-file=/usr/share/mingw/toolchain-mingw64.meson"
--ENV QEMU_CONFIGURE_OPTS --cross-prefix=x86_64-w64-mingw32-
--ENV DEF_TARGET_LIST x86_64-softmmu
-+ENV QEMU_CONFIGURE_OPTS=--cross-prefix=x86_64-w64-mingw32-
-+ENV DEF_TARGET_LIST=x86_64-softmmu
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index df186caffe6..3a31fcfee9c 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -121,7 +121,7 @@ debian13_extras = [
-     "  ./configure --no-drivers --no-apps \\\n",
-     "  --kernel-dir=$(ls -d /usr/src/linux-headers-*-$(dpkg --print-architecture)) \\\n",
-     "  && make install\n",
--    "ENV QEMU_CONFIGURE_OPTS --enable-netmap\n"
-+    "ENV QEMU_CONFIGURE_OPTS=--enable-netmap\n"
- ]
- 
- # Based on the hub.docker.com/library/rust Dockerfiles
-@@ -162,8 +162,8 @@ ubuntu2204_rust_extras = [
- ]
- 
- def cross_build(prefix, targets):
--    conf = "ENV QEMU_CONFIGURE_OPTS --cross-prefix=%s\n" % (prefix)
--    targets = "ENV DEF_TARGET_LIST %s\n" % (targets)
-+    conf = "ENV QEMU_CONFIGURE_OPTS=--cross-prefix=%s\n" % (prefix)
-+    targets = "ENV DEF_TARGET_LIST=%s\n" % (targets)
-     return "".join([conf, targets])
- 
- #
++PPC64LE_RUNNER_AVAILABLE
++~~~~~~~~~~~~~~~~~~~~~~~~
++If you've got access to an PPC64LE host that can be used as a gitlab-CI
++runner, you can set this variable to enable the tests that require this
++kind of host. The runner should be tagged with "ppc64le".
++
+ CCACHE_DISABLE
+ ~~~~~~~~~~~~~~
+ The jobs are configured to use "ccache" by default since this typically
+diff --git a/.gitlab-ci.d/custom-runners.yml b/.gitlab-ci.d/custom-runners.yml
+index 142fbf4a242..3e28e48c97c 100644
+--- a/.gitlab-ci.d/custom-runners.yml
++++ b/.gitlab-ci.d/custom-runners.yml
+@@ -31,3 +31,4 @@
+ include:
+   - local: '/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml'
+   - local: '/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml'
++  - local: '/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml'
+diff --git a/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
+new file mode 100644
+index 00000000000..80706c7a956
+--- /dev/null
++++ b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
+@@ -0,0 +1,41 @@
++# All jobs should run successfully in an environment setup by the
++# scripts/ci/setup/build-environment.yml task:
++# "Install basic packages to build QEMU on Ubuntu/Debian"
++
++.debian_ppc64le_template:
++  extends: .custom_runner_template
++  needs: []
++  stage: build
++  tags:
++    - debian_13
++    - ppc64le
++  rules:
++    - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
++    - if: "$PPC64LE_RUNNER_AVAILABLE"
++  before_script:
++    - source scripts/ci/gitlab-ci-section
++    - section_start setup "Pre-script setup"
++    - JOBS=$(expr $(nproc) - 2)
++    - section_end setup
++  script:
++    - mkdir build
++    - cd build
++    - section_start configure "Running configure"
++    - ../configure $CONFIGURE_ARGS ||
++          { cat config.log meson-logs/meson-log.txt && exit 1; }
++    - section_end configure
++    - section_start build "Building QEMU"
++    - make --output-sync -j"$JOBS"
++    - section_end build
++    - section_start test "Running tests"
++    - if test -n "$MAKE_CHECK_ARGS";
++      then
++        make -j"$JOBS" $MAKE_CHECK_ARGS ;
++      fi
++    - section_end test
++
++debian-13-ppc64le-default:
++  extends: .debian_ppc64le_template
++  variables:
++    # qtest currently fails: https://gitlab.com/qemu-project/qemu/-/issues/3207
++    MAKE_CHECK_ARGS: check-unit check-tcg check-softfloat
 -- 
 2.47.3
 

@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8254CD5BBB
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE19BCD5BBD
 	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:26:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJUWS-0007yQ-Eh; Thu, 13 Nov 2025 05:25:48 -0500
+	id 1vJUWY-0008G5-Rf; Thu, 13 Nov 2025 05:25:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUWN-0007ny-L1
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:43 -0500
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ id 1vJUWT-00081s-JK
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:49 -0500
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUWE-0007J7-UU
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:43 -0500
-Received: by mail-ej1-x62c.google.com with SMTP id
- a640c23a62f3a-b7277324054so81082066b.0
- for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:34 -0800 (PST)
+ id 1vJUWI-0007LN-BT
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:49 -0500
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-64175dfc338so1151747a12.0
+ for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763029533; x=1763634333; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763029537; x=1763634337; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=SDxw1Ka0eIp3fKfaGtcSKA06rhQlT0+/YP0DJg0ZmfQ=;
- b=enfJ9tVWRusMjJ3OwcOZJMI6puZcdSZXCs/qiNz4/jat+v/OeD+vOwS/TVmQeS5gk8
- 8jQTrM9oUgBFOkGdMzAbEGdrM0rS2KksJYavMXiNiti/Yt16hFSm4sl5gO8pvf6YA2a7
- 28AF0FDTx30wTYJ4LeKlbwdO8OS9y3S7JqGial0l/I/sT03I69gudlQyu1+vJTZsUpi5
- p4wSTip8FSNiOaXjwVrO3/H0MFVzN7grDkFcNSOOOSkWVH0Cu5KbQEko3QAq7ssOhJEl
- eo+WFZz6CVUFhJYNFxVaWRydhNkQsIcM1SLXQHDjjy96Nq4HO8Mz5X5cJWOOYnHYLemr
- 6yfw==
+ bh=/vImDf2hGFxVneHc+mjP6tqwz3wXsUppLPT1D+FNgTI=;
+ b=OLNbSFV+5iq+Pg7o9prkERblTKqQk5cZRIyk0f6S9r1IhTnEf7Ng7UqOltV5W0p6Ts
+ 1WnoQuzhjEjbYj5k5m9i/7N8FkpjH+iIcmsq0Z3YcwNAD2wLvr4y3xNyEqDui07TMBH8
+ M/Echp+kbcE7kRDXtc6Fo3B3LHzjjV402PZr0VvHmDOys62cT25gCOB/UvDv9UL2hrOo
+ srDccNrC1Uv+4BLoAZD+3uoiRvVTPUPvlgxxkq4mZB52PaF7XTYcgoX2KJvACQgarRhc
+ 7NZxa1n+hpGZM86r4H2YJmI9qqSa20rO/6lPtRjI5qXItoRTWbkmll4L+mpss9vBNlhC
+ ZjZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763029533; x=1763634333;
+ d=1e100.net; s=20230601; t=1763029537; x=1763634337;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=SDxw1Ka0eIp3fKfaGtcSKA06rhQlT0+/YP0DJg0ZmfQ=;
- b=QJxvsGNgMNeG8opKQxiu9FzB0mmqKSdioct0XYAIn7B6SaXYsOK+Pt94qHYcBqwfYe
- zl1OgobB/NtknCcZJW889WUuKg5dstBRmx/N4yneLM9Pg94u9gF84o2NHiYVSh12oNRr
- oCKNzEfjxBr8boqlAerEUVChBk9MUDuFxsGfk5forOwsUfo+jo7u/e848Ftbk7CQm7vs
- YkIcDQu4+OkM/peLlZHDoZRS2YGOcrPsmxGGNPYVKFusAn++0KbMGiRhlBqNv54LElOa
- KYfLU6ZGV+Pv9kuNdkO+HjS1q35spVeVizsxR6JIwFNKnmOncG6+XYkQZlHeeDbYi71Q
- Iqbw==
+ bh=/vImDf2hGFxVneHc+mjP6tqwz3wXsUppLPT1D+FNgTI=;
+ b=LGHvW5QyWKQL+8fGV6h97PfTMyNZfCM0F9XcSsAXgLy9yey78pNoP7BkXTRBT00NFu
+ ozB8vOe9q2T7O6AL7CYJJ+clKi0NfLhz4bcRFMNY2xMsW6ItAYZcVh4pjsO6fodQZT4w
+ +YJifADjOOeUxEIJ3DA1/rozWLdBvYaGyG9iQHQa75a53TGVkXxgPt/+aeuXtaFTWbMy
+ qBkkv9DJ2O2f3CIFXTmkDenvKla10UBu9STMGjhm0TUc5mJ1kIJ9xM3Sj4fEj1syaDW/
+ L80ubqCFrhIJ1cuMUd9cVGw+u8Tp6OTIJtBn+j6ALMtfcBDUOx3Tng2tUNHXZLgKwXpm
+ sejw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUSODObxgjXqeiDeezuoqsoEY1ZWdJSa6W/e3ifBxt8+xuNpGsIxBpYmFXaR1dRb5ES09lYMsgftQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxGBrmLfzcYLGpMkYm3MKyjU2+5lVFiUjUrmofvw+GXVDmrQqhx
- 8qP2HBCPNynzZOXDo3k3HRI6jzkqfiaqOK+/RwCPxALSFb+ynJF5w0QugfWf5M4325U=
-X-Gm-Gg: ASbGncvlsG8CZ07Lxj4gGFDtxPac5yqsYAcUWp1iZEss2zkZexyy3ZBunrBDAtiBh/p
- M8gUcXRwdsidevK4VDvckDWRJDJgFOkFu9e1RNV8em/AUnTxIiAc33C9aPKaOVbhv5GPEB0Ez8e
- AgWwz3kHgxlTqCdlTyXqSN7EqNCzo8kNAFisdw4iGQCrAHj/6+b5e3wQGM+Vzfg+khdo0YiC0LK
- 6wE92Bzy1YxLLICI1UXtwgwDiT0BclTiE+D78JlAblHw5OetjXbIsQYURwZsrIDsJQKkOYhzD4X
- qIgyw7wKGsfL8P7g6dm44KLEEnf6C0TjVcaIyV6vweGMhynsompIqMIHm+L2sXPSXa6+CQU41lK
- UJmrQ4kORyQwh4StfRS7dr+N9yaIjlnKWWdhf3hQRk/6MRFW2f0aApZAFku1hXSbX73a6o0SvHl
- RX
-X-Google-Smtp-Source: AGHT+IG8ODICqVGXq3HoZY53C2Uooox+Rb+z86/D4erKnistjzAamXes8SBH1vL6RWFxosMMRuKDbQ==
-X-Received: by 2002:a17:906:730a:b0:b73:2cf1:ba6 with SMTP id
- a640c23a62f3a-b7331a0054cmr555591966b.7.1763029533210; 
- Thu, 13 Nov 2025 02:25:33 -0800 (PST)
+ AJvYcCVBZFWWnHsiAtwcplhRuX9oxen03iAYOUvrKljU4bJF5+aJ/qBopSwyMA8GaPo+acs2o2kP1tsD6A==@nongnu.org
+X-Gm-Message-State: AOJu0YxxQK7uJH8EDCd3rrvxIDrm8ZT/poaIWSUx/k4gTcKm0OmxV+4c
+ zAQzGBAeRhEolfnOEMCbHZAV0BYap4Sn1j9gYDS+eyxK33eYlD7t7Yk9uoT5AdGj2/U=
+X-Gm-Gg: ASbGnctUZTDI1ztYtLY9bWFmkFPP6L/h5aVvTDIv2yAQpW8ph1iH/DaqAaAuy3guRU6
+ B5gRHTIsHuZzZnnXUJcxc5Pvih9RFhKs0IF+A2iiltDAGifQqu8P4ZoBYMsAuaK+Oa9E3WudhC9
+ jBkCieft4PmeoC6Oijx4b25Fff3vvqIpBQ68E+MNOfJRf1UQ4IGJFu0uQ3vb9h2r9w4H/bKXRyh
+ JpdvmRWTsEHGQRRA9fw1StR9ILX8W6aghw5l//K0RI/h2ZjPuFqF7284SW+8/YLgbxgp1k0N6sU
+ yJ2KtXllrcmUniiO8BdGiys+mvAwOH0nyP3eWeAuaaWOqxRCcRzNphPjWartGxcV9mN9WKTUoUP
+ TVzocmiswUV6IEMIf4mh780jknix0o1xklQa0Qmjrzioqj2QRQAeTMH3/TahEnhl3U+qvPeSYxl
+ JS
+X-Google-Smtp-Source: AGHT+IEec2tckrlUyUqwxIIXF54QshFUpMVxliZXuvgaLCJUvyy2QaqWxYDeHZLo0wGauI8LL8lhFA==
+X-Received: by 2002:a05:6402:40cd:b0:640:96fe:c7b8 with SMTP id
+ 4fb4d7f45d1cf-6431a49ab90mr5255269a12.2.1763029536722; 
+ Thu, 13 Nov 2025 02:25:36 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b734e9e0f20sm138282266b.0.2025.11.13.02.25.27
+ 4fb4d7f45d1cf-6433a497f27sm1167660a12.17.2025.11.13.02.25.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Nov 2025 02:25:29 -0800 (PST)
+ Thu, 13 Nov 2025 02:25:35 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 7233E5F91D;
- Thu, 13 Nov 2025 10:25:26 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 570BF60804;
+ Thu, 13 Nov 2025 10:25:27 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paul Durrant <paul@xen.org>,
@@ -83,19 +83,18 @@ Cc: Paul Durrant <paul@xen.org>,
  Thomas Huth <thuth@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-s390x@nongnu.org, Li-Wen Hsu <lwhsu@freebsd.org>,
- David Woodhouse <dwmw2@infradead.org>, Ed Maste <emaste@freebsd.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 05/18] gitlab: add initial ppc64le custom-runner test
-Date: Thu, 13 Nov 2025 10:25:11 +0000
-Message-ID: <20251113102525.1255370-6-alex.bennee@linaro.org>
+ David Woodhouse <dwmw2@infradead.org>, Ed Maste <emaste@freebsd.org>
+Subject: [PATCH v2 14/18] gitlab: simplify the ubuntu-24.04-aarch64 rules
+Date: Thu, 13 Nov 2025 10:25:20 +0000
+Message-ID: <20251113102525.1255370-15-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251113102525.1255370-1-alex.bennee@linaro.org>
 References: <20251113102525.1255370-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,95 +117,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is a plain configure build but I only run a subset of the tests
-until the kinks have been worked out.
+We don't need to duplicate the if rules to get the allow_failure and
+manual behaviour we want. Clean that up to keep all the rules in the
+same place.
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - limit to check-unit check-tcg check-softfloat
----
- docs/devel/testing/ci-jobs.rst.inc            |  6 +++
- .gitlab-ci.d/custom-runners.yml               |  1 +
- .../custom-runners/debian-13-ppc64le.yml      | 41 +++++++++++++++++++
- 3 files changed, 48 insertions(+)
- create mode 100644 .gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
+ .../custom-runners/ubuntu-24.04-aarch64.yml   | 43 +++++--------------
+ 1 file changed, 10 insertions(+), 33 deletions(-)
 
-diff --git a/docs/devel/testing/ci-jobs.rst.inc b/docs/devel/testing/ci-jobs.rst.inc
-index b92d372a0a9..f1c70344ece 100644
---- a/docs/devel/testing/ci-jobs.rst.inc
-+++ b/docs/devel/testing/ci-jobs.rst.inc
-@@ -174,6 +174,12 @@ If you've got access to an IBM Z host that can be used as a gitlab-CI
- runner, you can set this variable to enable the tests that require this
- kind of host. The runner should be tagged with "s390x".
+diff --git a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
+index ee13587d99e..6f950baee0d 100644
+--- a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
++++ b/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
+@@ -46,26 +46,16 @@ ubuntu-24.04-aarch64-all:
+   extends: .ubuntu_aarch64_template
+   variables:
+     MAKE_CHECK_ARGS: check
+-  rules:
+-    - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+-      when: manual
+-      allow_failure: true
+-    - if: "$AARCH64_RUNNER_AVAILABLE"
+-      when: manual
+-      allow_failure: true
++  allow_failure: true
++  when: manual
  
-+PPC64LE_RUNNER_AVAILABLE
-+~~~~~~~~~~~~~~~~~~~~~~~~
-+If you've got access to an PPC64LE host that can be used as a gitlab-CI
-+runner, you can set this variable to enable the tests that require this
-+kind of host. The runner should be tagged with "ppc64le".
-+
- CCACHE_DISABLE
- ~~~~~~~~~~~~~~
- The jobs are configured to use "ccache" by default since this typically
-diff --git a/.gitlab-ci.d/custom-runners.yml b/.gitlab-ci.d/custom-runners.yml
-index 142fbf4a242..3e28e48c97c 100644
---- a/.gitlab-ci.d/custom-runners.yml
-+++ b/.gitlab-ci.d/custom-runners.yml
-@@ -31,3 +31,4 @@
- include:
-   - local: '/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml'
-   - local: '/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml'
-+  - local: '/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml'
-diff --git a/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
-new file mode 100644
-index 00000000000..80706c7a956
---- /dev/null
-+++ b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
-@@ -0,0 +1,41 @@
-+# All jobs should run successfully in an environment setup by the
-+# scripts/ci/setup/build-environment.yml task:
-+# "Install basic packages to build QEMU on Ubuntu/Debian"
-+
-+.debian_ppc64le_template:
-+  extends: .custom_runner_template
-+  needs: []
-+  stage: build
-+  tags:
-+    - debian_13
-+    - ppc64le
-+  rules:
-+    - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
-+    - if: "$PPC64LE_RUNNER_AVAILABLE"
-+  before_script:
-+    - source scripts/ci/gitlab-ci-section
-+    - section_start setup "Pre-script setup"
-+    - JOBS=$(expr $(nproc) - 2)
-+    - section_end setup
-+  script:
-+    - mkdir build
-+    - cd build
-+    - section_start configure "Running configure"
-+    - ../configure $CONFIGURE_ARGS ||
-+          { cat config.log meson-logs/meson-log.txt && exit 1; }
-+    - section_end configure
-+    - section_start build "Building QEMU"
-+    - make --output-sync -j"$JOBS"
-+    - section_end build
-+    - section_start test "Running tests"
-+    - if test -n "$MAKE_CHECK_ARGS";
-+      then
-+        make -j"$JOBS" $MAKE_CHECK_ARGS ;
-+      fi
-+    - section_end test
-+
-+debian-13-ppc64le-default:
-+  extends: .debian_ppc64le_template
-+  variables:
-+    # qtest currently fails: https://gitlab.com/qemu-project/qemu/-/issues/3207
-+    MAKE_CHECK_ARGS: check-unit check-tcg check-softfloat
+ ubuntu-24.04-aarch64-without-defaults:
+   extends: .ubuntu_aarch64_template
+   variables:
+     CONFIGURE_ARGS: --disable-user --without-default-devices --without-default-features
+     MAKE_CHECK_ARGS: check
+-  rules:
+-    - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+-      when: manual
+-      allow_failure: true
+-    - if: "$AARCH64_RUNNER_AVAILABLE"
+-      when: manual
+-      allow_failure: true
++  allow_failure: true
++  when: manual
+ 
+ ubuntu-24.04-aarch64-alldbg:
+   extends: .ubuntu_aarch64_template
+@@ -78,34 +68,21 @@ ubuntu-24.04-aarch64-clang:
+   variables:
+     CONFIGURE_ARGS: --cc=clang --cxx=clang++ --enable-ubsan
+     MAKE_CHECK_ARGS: check
+-  rules:
+-    - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+-      when: manual
+-      allow_failure: true
+-    - if: "$AARCH64_RUNNER_AVAILABLE"
+-      when: manual
+-      allow_failure: true
++  allow_failure: true
++  when: manual
+ 
+ ubuntu-24.04-aarch64-tci:
+   extends: .ubuntu_aarch64_template
+   variables:
+     CONFIGURE_ARGS: --enable-tcg-interpreter
+     MAKE_CHECK_ARGS: check
+-  rules:
+-    - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+-      when: manual
+-      allow_failure: true
+-    - if: "$AARCH64_RUNNER_AVAILABLE"
+-      when: manual
+-      allow_failure: true
++  allow_failure: true
++  when: manual
+ 
+ ubuntu-24.04-aarch64-notcg:
+   extends: .ubuntu_aarch64_template
+   variables:
+     CONFIGURE_ARGS: --disable-tcg --with-devices-aarch64=minimal
+     MAKE_CHECK_ARGS: check
+-  rules:
+-    - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+-      when: manual
+-    - if: "$AARCH64_RUNNER_AVAILABLE"
+-      when: manual
++  allow_failure: true
++  when: manual
 -- 
 2.47.3
 

@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E86C5CD5BB8
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:28:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC872CD5BBD
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:28:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJUWO-0007qg-Gl; Thu, 13 Nov 2025 05:25:44 -0500
+	id 1vJUWN-0007mM-0Y; Thu, 13 Nov 2025 05:25:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUWL-0007kA-NX
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:41 -0500
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+ id 1vJUWJ-0007hL-Ql
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:40 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUWE-0007If-6h
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:41 -0500
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-b73161849e1so101826066b.2
- for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:33 -0800 (PST)
+ id 1vJUWC-0007Hs-L8
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:39 -0500
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-b72b495aa81so69537366b.2
+ for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763029533; x=1763634333; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763029531; x=1763634331; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=vlCHybPzDuoJOci0v74ijY95dNfkhBjmAJIbo8QxUw0=;
- b=qhnaOO09D1uCdnp3gRk/xD5TGO6JNAkGqRN/EMAL3MXAm+pgBkpoZayF8NVMNoJbwi
- W3ANKJWh5zmGIDu1msen8Zkbn1ebykHZtLT7DPVlqtCa2qV7aKXs8SkXhoeEjIGf3n0T
- o+CIlXq+ODn6haDouNIBHB0EdWCvIAUnu+hcX4VhVm8z1ZkG9SX704peA+uTIOzZtnGc
- sScYkXivvJ3hMdHfhzP3UjKYet44/YSObWEgL9IM3n2CxuPqpFawGRDGJGwv9lhnMZd2
- gSThmLuCi/TqjtcIH4pVCZQoY0E4wi/zcwr7duTy054Itsz729YsMcAFaAsJEcsHEbZP
- rKZw==
+ bh=nPG0MGsfnUcpaMTtgjJ6a7rIIqT0WPSEG9giTwKtIeU=;
+ b=PWoEmK6Q7GY3pjKCF0rdWq7TBnkTW1G2CC1URWOfLUrNq1GLU6yD2kMN5iO7pEWFsL
+ DRPW14W0iflzvPLq5XV+J4vcWM26KdeSS79cs/5E0DhHCs0IIgcZFlkiZJ6Jt1uGQLaF
+ k/wDgOEAqgmnVEak84W62V1E0Dh04djSKGnSoy+etSGxBSU4roUed+bVE2t2GvL6eJDi
+ BKfFh0dXL7N2w+ISbD3akMM84pC7iNZ7w55VA/T4x++eq9hxlMAHDfv7urpVHl3n/8k9
+ mS7RO6kTWGqKpNcVHTax7hMhuK/ZsS+E5v6hoPMldCPY+z0bP5Yuy/mgH75n2BzYkFOG
+ IwHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763029533; x=1763634333;
+ d=1e100.net; s=20230601; t=1763029531; x=1763634331;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=vlCHybPzDuoJOci0v74ijY95dNfkhBjmAJIbo8QxUw0=;
- b=LYD56w0yVPF/LPXXMvXR2PmNZ43sfRSbcA5gF84dMgXyUvYdpfFpnqp9+3JJNBVoec
- 3dKVI+8Yv57kFdKFRD5BKfVE9tpvp6Z66oAGn/OlE2M0j8aIUw8i+PYXvE6HEWy3svwd
- qcXg5DRUiTiQV1Q7y62QGAOa4SzCkhqUIDUNgOh4BQdRDR1BT5wr4J5goasK35jBuHxF
- Yzn8zAUp3T6XRXcqfkIoo8RvyN8T5FUSlLFAaziP97lAACz+TT+dJID590MrgbC+KKvE
- i+x790G6c/XmhicifDLZuePfXgi72jH075SNKaUtEsg/CWPUsLvR4DlCnd9bx08+7nlK
- A0FA==
+ bh=nPG0MGsfnUcpaMTtgjJ6a7rIIqT0WPSEG9giTwKtIeU=;
+ b=FdrVWOIulmgI8ewSOhX9ZIxpy5KszSUOPe51ZXBiBVckWct9uYEr/1zmlU+PP2MJ4f
+ LFq+4tuaECxeyBMKviAk5YY2I+JNovFtv7Ueygn08fG5v1IjJpBlFuy1/Lu0cb0jMWsI
+ IY1xZSt85bu3hxUYybwwc/RmTpjL18Va6NeCf4BO3XTr4DP3UOJcaSY6EfzF2f3EVlrA
+ Cs9Q9AkZ+X1lAB6oP7Bp6c6HReUAzBV4+FNYMUL3cceePxsh9yFXNOvUu2EC/2L9kJQk
+ mVSYJ7Yvy1EuDxUOK8tBV2xFzmA4UYON9BcIiVCRHIr+x0NAnq8mVG8P2CWzQJj+CLbp
+ UMBA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXH+khmYrhOk9XkFioJBr2dB7dH5y77WVP/E+K57IH9+BRa9vqDf/3yeMcasZvHWMaBrg60n+iP3A==@nongnu.org
-X-Gm-Message-State: AOJu0Yy7ESwhOS78pCRGPEe0MTkoAkwnigmykn+8Ul8Pd/Y/rpgzFUVA
- InsIscRpGAn7YzMOjWxp6UHo+CSl7YuMgC4WJMNRmqFUyrp1FkrV+0SUel3xXPht0UY=
-X-Gm-Gg: ASbGnctRh8/LyWhmA2i8UsgcBc2XGaKk563JejdvchDVVsJ6wL9FogJy8eYuiQ2c8xb
- QELYQYEXEesxq2sgId2AtUmn+id5AGN4IBpenAglMsB6qUym01Na5XgZ2AzV++mbpGpWvOUAamX
- +/x/dO8q8pig2435Pq6gRlsBJMqTjZgsUfg9IttACi+FX3dCfVqLANFBpqtD2lPRdQy47YSarfv
- sWxfnbpw6V3C+yXjL3Fzkqz2W43xvn6OIDzHB7zi16Cseab4TyR05Gqyz3WeAZPMD9sb1Xlc50x
- uHmWlzw48iAlT8HTdHytX7LKYgx8TcFQ3CXf8U/4fcd2VEjtbh2REpHpd+9C88s+/8XqUxPvg81
- /KgV0CbPXa7epEDKWmh8arARgRCBXmM8FQH14Rh3is6r4az6Y5UeOR5CI+HFilCFtuaoI8RGQig
- Wi
-X-Google-Smtp-Source: AGHT+IFSefeI3O3NTyzInxDbyr4d+Szrak+Wk48jqZT19jYcdXoczcU1I6FmxlB0Ky6wwAR6+WCrmA==
-X-Received: by 2002:a17:907:8694:b0:b73:4894:6e10 with SMTP id
- a640c23a62f3a-b7348946ecdmr282833466b.46.1763029532396; 
- Thu, 13 Nov 2025 02:25:32 -0800 (PST)
+ AJvYcCUwtrN5kwQa3yermjxTN+aYhtjSt9LkblYHZtWsf160yKGh1p5/U5e+NjcNrsffqxY7gyiFMLJG9A==@nongnu.org
+X-Gm-Message-State: AOJu0YwwHdTfQubQgdIKr0eH3TxiONc7fFcijfchdREgWh/es08LGPEY
+ gRsnRqaVREYuG+pMqZDrEHOr4RkpdpXRhrVAtZ3M06qwUwjvCChDHkKII0LQQVXSyh4=
+X-Gm-Gg: ASbGncuKURH95bUCKwP4uob0znUDFp6eHhW7hD+rGgZM1M0gkzpowMHC6vpEbC5RKTs
+ 5fsc5Fr4LEOjskFQeEVBV/2qIWPQKYIuWqn296qmQ3Tr+ecWDP7ts2VsuzX1A+ylfdJpR1ZG/0q
+ GnMERr/g8ETobQnD4suVEMsMka7g4GBDyOg8DTTXbCOCa31yDXKiB35+BWoGqOghm+rqIiIiC/g
+ 0/Hq8ek+smAqUuSSkElxz38+nWE6GcQaM1uM+0nFATpHXZLGX7HB60eKTGv1+9Q6ffv352JFWwd
+ jQ1Ykclxo2S36s7hgBjGq3TL//sN5qsaslFO0zJLIdqqECDQjdRmBwnHeQP3fNzsZ6Vx+VF9X0b
+ c/endD+XONxe1WItxuKGwnsw6Yjkk92CQIsY86P6lnf0Xjiw7SPOXNHvWq/FwdAmz30ljm/+Ek9
+ iG
+X-Google-Smtp-Source: AGHT+IGSXTItwIrG+cAuhs+hozlHj1Szrr39FUVETfzjEv7QI9K23HrmrewJmJgiQvt7U1uP8UsPgw==
+X-Received: by 2002:a17:907:da6:b0:b70:7d61:b8a5 with SMTP id
+ a640c23a62f3a-b7331b331f7mr717266066b.62.1763029530800; 
+ Thu, 13 Nov 2025 02:25:30 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b734fa81275sm135714466b.13.2025.11.13.02.25.28
+ a640c23a62f3a-b734fa811c1sm134440866b.10.2025.11.13.02.25.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Thu, 13 Nov 2025 02:25:29 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 9FFD25F956;
+ by draig.lan (Postfix) with ESMTP id EB5D45FCBD;
  Thu, 13 Nov 2025 10:25:26 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -85,24 +85,24 @@ Cc: Paul Durrant <paul@xen.org>,
  qemu-s390x@nongnu.org, Li-Wen Hsu <lwhsu@freebsd.org>,
  David Woodhouse <dwmw2@infradead.org>, Ed Maste <emaste@freebsd.org>,
  qemu-stable@nongnu.org
-Subject: [PATCH v2 07/18] tests: move test_xen assets to share.linaro.org
-Date: Thu, 13 Nov 2025 10:25:13 +0000
-Message-ID: <20251113102525.1255370-8-alex.bennee@linaro.org>
+Subject: [PATCH v2 10/18] tests: move test_kvm_xen to share.linaro.org
+Date: Thu, 13 Nov 2025 10:25:16 +0000
+Message-ID: <20251113102525.1255370-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251113102525.1255370-1-alex.bennee@linaro.org>
 References: <20251113102525.1255370-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,58 +124,38 @@ another sharing site.
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Cc: qemu-stable@nongnu.org
-
 ---
-v2
-  - strip un-needed ellipses
----
- tests/functional/aarch64/test_xen.py | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+ tests/functional/x86_64/test_kvm_xen.py | 17 +++++------------
+ 1 file changed, 5 insertions(+), 12 deletions(-)
 
-diff --git a/tests/functional/aarch64/test_xen.py b/tests/functional/aarch64/test_xen.py
-index 261d796540d..d90595cad35 100755
---- a/tests/functional/aarch64/test_xen.py
-+++ b/tests/functional/aarch64/test_xen.py
-@@ -25,8 +25,7 @@ class BootXen(LinuxKernelTest):
-     XEN_COMMON_COMMAND_LINE = 'dom0_mem=128M loglvl=all guest_loglvl=all'
+diff --git a/tests/functional/x86_64/test_kvm_xen.py b/tests/functional/x86_64/test_kvm_xen.py
+index a5d445023c9..424d4b20010 100755
+--- a/tests/functional/x86_64/test_kvm_xen.py
++++ b/tests/functional/x86_64/test_kvm_xen.py
+@@ -23,18 +23,11 @@ class KVMXenGuest(QemuSystemTest):
+     kernel_path = None
+     kernel_params = None
  
-     ASSET_KERNEL = Asset(
--        ('https://fileserver.linaro.org/s/JSsewXGZ6mqxPr5/'
--         'download?path=%2F&files=linux-5.9.9-arm64-ajb'),
-+        'https://share.linaro.org/downloadFile?id=RRahAWwAwYKTZQd',
-         '00366fa51ea957c19462d2e2aefd480bef80ce727120e714ae48e0c88f261edb')
+-    # Fetch assets from the kvm-xen-guest subdir of my shared test
+-    # images directory on fileserver.linaro.org where you can find
+-    # build instructions for how they where assembled.
+-    ASSET_KERNEL = Asset(
+-        ('https://fileserver.linaro.org/s/kE4nCFLdQcoBF9t/download?'
+-         'path=%2Fkvm-xen-guest&files=bzImage'),
+-        'ec0ad7bb8c33c5982baee0a75505fe7dbf29d3ff5d44258204d6307c6fe0132a')
+-
+-    ASSET_ROOTFS = Asset(
+-        ('https://fileserver.linaro.org/s/kE4nCFLdQcoBF9t/download?'
+-         'path=%2Fkvm-xen-guest&files=rootfs.ext4'),
+-        'b11045d649006c649c184e93339aaa41a8fe20a1a86620af70323252eb29e40b')
++    ASSET_KERNEL = Asset('https://share.linaro.org/downloadFile?id=UG0V8dzzHrrHb9X',
++                         'ec0ad7bb8c33c5982baee0a75505fe7dbf29d3ff5d44258204d6307c6fe0132a')
++
++    ASSET_ROOTFS = Asset('https://share.linaro.org/downloadFile?id=VwLRKDXKFl6oKti',
++                         'b11045d649006c649c184e93339aaa41a8fe20a1a86620af70323252eb29e40b')
  
-     def launch_xen(self, xen_path):
-@@ -55,8 +54,7 @@ def launch_xen(self, xen_path):
-         wait_for_console_pattern(self, console_pattern, "Panic on CPU 0:")
- 
-     ASSET_XEN_4_11 = Asset(
--        ('https://fileserver.linaro.org/s/JSsewXGZ6mqxPr5/download?path=%2F&'
--         'files=xen-hypervisor-4.11-arm64_4.11.4%2B37-g3263f257ca-1_arm64.deb'),
-+        'https://share.linaro.org/downloadFile?id=ALU4n2NGGYbE4fO',
-         'b745c2631342f9fcc0147ddc364edb62c20ecfebd430e5a3546e7d7c6891c0bc')
- 
-     def test_arm64_xen_411_and_dom0(self):
-@@ -66,8 +64,7 @@ def test_arm64_xen_411_and_dom0(self):
-         self.launch_xen(xen_path)
- 
-     ASSET_XEN_4_14 = Asset(
--        ('https://fileserver.linaro.org/s/JSsewXGZ6mqxPr5/download?path=%2F&'
--         'files=xen-hypervisor-4.14-arm64_4.14.0%2B80-gd101b417b7-1_arm64.deb'),
-+        'https://share.linaro.org/downloadFile?id=os4zSXPl7WW4lqX',
-         'e930a3293248edabd367d5b4b3b6448b9c99c057096ea8b47228a7870661d5cb')
- 
-     def test_arm64_xen_414_and_dom0(self):
-@@ -77,8 +74,7 @@ def test_arm64_xen_414_and_dom0(self):
-         self.launch_xen(xen_path)
- 
-     ASSET_XEN_4_15 = Asset(
--        ('https://fileserver.linaro.org/s/JSsewXGZ6mqxPr5/download?path=%2F&'
--         'files=xen-upstream-4.15-unstable.deb'),
-+        'https://share.linaro.org/downloadFile?id=jjjG4uTp2wuO4Ks',
-         '2a9a8af8acf0231844657cc28baab95bd918b0ee2d493ee4ee6f8846e1358bc9')
- 
-     def test_arm64_xen_415_and_dom0(self):
+     def common_vm_setup(self):
+         # We also catch lack of KVM_XEN support if we fail to launch
 -- 
 2.47.3
 

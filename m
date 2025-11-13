@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11E9FCD5BBC
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:28:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92417CD5BBC
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:29:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJUWR-0007xU-VZ; Thu, 13 Nov 2025 05:25:48 -0500
+	id 1vJUWZ-0008I3-PX; Thu, 13 Nov 2025 05:25:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUWP-0007sK-3l
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:45 -0500
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ id 1vJUWV-00085V-3c
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:51 -0500
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUWF-0007Jp-Oi
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:44 -0500
-Received: by mail-ej1-x636.google.com with SMTP id
- a640c23a62f3a-b725ead5800so74713866b.1
- for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:35 -0800 (PST)
+ id 1vJUWJ-0007MI-Ja
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:50 -0500
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-b735b89501fso15136966b.0
+ for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763029534; x=1763634334; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763029538; x=1763634338; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4RQ91nM5L2zJYd64DP2sn9NSAph1jmTDyv/4IpoM9Qk=;
- b=NePmby/xrgANgJb91rJN2zFpzDzc4wQqj5/du4WLPwbc9A2UGGvWRvK4prgn8BL3Hk
- yvSfTBoKCTwNsMFgiINgzYM0RNobNIIoYc3CdcoJ/OcZtqUqCqut0W4Z+ZPuJhrWvHGF
- wYw/gLJhhGZDtMYkl8YvOh5vUwuraSTQ24u0olKP9lVN0qMt3vN3ifN1v03fNGMroMvE
- SkJUAKT0pGAjgEVQfsX/OBgrFOvLqnPEGVnoBsUp/VefE+5woAHO8c7vM2n9B1Gp8vqN
- iH+4pndBX3Cf45g1athS7Q5bKem4S7zqBUnTmjf3k1px5+ILictg5/sHqRNF5LsDmNdF
- uHzA==
+ bh=ookYlMgqelv1akkEQQg8dNQyfrcFRJWhuosml8n/iQE=;
+ b=O1QOPGcAH39RFJfVQSbVnf4SB01xUIrFcIqmNSKdN4AsX2zgL22d04XJqKIo94vfzs
+ enrSQqnMU4VCR4gMB140xfbLePOYq1G2yU0b1KHKPaGblmebFGfT+4T8WYZoQhsm+toT
+ Sn52pnOODrsduK593eri7bqv2lo7I90jrrVbXKF3fHu4BsKrzRlYVrsejoC9VOm+ydhn
+ d51OyfEqhWgenQhiJ6RgqBW4Kxx/Vlf2ecwiSkZ+QgGHYkJYvm+C7in+y1gfyzthGDS2
+ Lvhwn/whodUoVN7i+f/c9Fc/qZLtR67CrQ3NQI1lXjdZpRGEu6hvTY3YkBxeIIqNVQid
+ 5UvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763029534; x=1763634334;
+ d=1e100.net; s=20230601; t=1763029538; x=1763634338;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=4RQ91nM5L2zJYd64DP2sn9NSAph1jmTDyv/4IpoM9Qk=;
- b=gMkRmCFfSbIgYSL4Y1GywGrZFSGINoAcNpr+0DzDtuJkcltj+bgI7tCl6IZ8VRb0wL
- xyP28OkEThe9cXgTLbLd96s/7KYb5OzTwdNJ0Vkp3Gww/8yWx3X7BrVAblP3B4LQRc4U
- Ji+1OMepB3x5XzOUZe+/MYDQWP72L2+zcJazouLKELUMrUT4vwOuxlSP7VsXJfSCNhbM
- isWY2O/CHDuDCAp8wJvLko+sbskzhBwdSDZXcx313Ma5HoVdbxUCCGhFJD2g3fGpLzrs
- 7YellIHlm3vcC6qD+ts32oWsnhb8reNwdLo/6buWTuX9E4kYpZJoLWdFXkkyzsAOpjwH
- OOKg==
+ bh=ookYlMgqelv1akkEQQg8dNQyfrcFRJWhuosml8n/iQE=;
+ b=U6XNppjubAqM7L9jyAfiWvEC2QOIXgQJzClmijPuX4QUKetpMoMc//9Pf/unmEJ28H
+ P7OgdANQWVgWEZn+Z2mt5JyMJLca7fY0n4t9LQBnOgizFO87yUkH/pZrgYAGNIxOgegN
+ /Wi8sFAstBQKFCXKCbm+Tfg2L9jyb6CwwrA7/wRFTXzgsVZMa1EY4yZ7i/4O+wgvC7Kg
+ 1RhLtsdEC9a1LJSmHz7dfy/uRgD9P0n4MbRHFLqP2T20eiq+1sjHYSaRUjxX3i6GnXsq
+ rjxYcolRwG0rH8c3i5m0S1G4n1JT+jMM0RvWCaHTaze6wtYsXzkk0GP/evM+L4prx0Ea
+ 7dEQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU0hKYL7l3+95BoojYtp1nv8Xp6IiL8gMsb9xyFmvx90/xYOSQSDcZmY65OoNtpEGup0Mb8u1vmMw==@nongnu.org
-X-Gm-Message-State: AOJu0Yw7wUqgSryG33bA7TcZ4l0rab/B6Udx3M4Ib11C6LJS6ZCRZlJ6
- lpCWyx5QpSXQQHNntlX9QJSyNjuEHr9GAyRC4gpixFy7olrAnSfDWrYx9cytWzz55zI=
-X-Gm-Gg: ASbGncuwFLpo8sukTRLdG8IXO2HyF+yRp0kQ644If2FXUVhMYncUNh3zv3sKvfUsCJ2
- 7fjsQtV4lVZ8c69FO1lLtDuFftyeyLTEnEw+qTTTXa1S81UXrNmfQYDzo1phrw8UBlajozIINUk
- drzFEusyJU2EPc6wkGTFWNrMahLOIneaq3eDv3tkgwvOHRZXHf5S8FZN30YM5yBq/YIW4YX73o1
- q/86KRZ22BIrJU26bDKaZA4YBe08ZOOSAcLZKg9KozvoCIBZ7qQTjyZgozXzg48nuxZb9k9v0us
- RS2YEYHuaeFF8Tjt1abNywlicJAXBb7gXB11//nz0EVpam9pHMyLEyxwCwzyDBXW+JyW+CkaKCc
- UonicIlVbuz+Gcy5oAtJ7nc24GYc4Kj/Gs+xRfv4UCQdlZhj4iar8MpFvc/qKU34hdisd3zVv6T
- wt
-X-Google-Smtp-Source: AGHT+IH9+pvsB9Ni2cu5kuvCdvMtVCZ/Jm83YSit+2xdUlFf6tmKByrtfFoItch8ylf1U3g6P+QsRQ==
-X-Received: by 2002:a17:907:96a7:b0:b71:ea7c:e509 with SMTP id
- a640c23a62f3a-b7331a970f1mr628958566b.41.1763029534156; 
- Thu, 13 Nov 2025 02:25:34 -0800 (PST)
+ AJvYcCU5Z8DyqNjv92ocY9dzkHivVxL+j3xCFLYdQwQ5HuMhf8GOyHEhHWlxS1O29dR4KEgWNoVjdHXX6g==@nongnu.org
+X-Gm-Message-State: AOJu0YxjAp4Lv2F6bg1bjHRoR7y22NowmT9NROb5gt0mJFxlp03yTu4E
+ VXCZIMeLhpm/vXzsGKgul3R3jDoqNP8ke3tG8Y3t3O9eQEU9NxYGQrmD5QQ3s6Z2HvE=
+X-Gm-Gg: ASbGncvIVv47ieX1VxFhl3vaJu+8O5XW17j3A5yAELllD6SzUIm4CZIFPr+tWs0JeTt
+ ZampqMLmDCtKpyMDRnjEyoUZSKg1+uiwI+jq0VDcSjM4aMUMpbykACJ8MiqJeJYUSyS+V4hBW/V
+ P2Eyf5f7xxwSZjPAB0ETJiKjPlEh5F5+Dr8pMKSPgVi7g+BAH6/MvmATnw7q3cKj8MN3dLVOVMt
+ F+2O7TyucSQ7r8gkqqjbubtKn9f/Ka9uIAGbr9uv/B2U7O4dxoFl0UsrLVoM8mb5jySHzP1O6BZ
+ wqPVCeDChELcU/lky/uerIyGI6PwBJ2mHiGoPJ1ucEaxXcIMko5C+80Fy6ypa44X197PAGOQwOu
+ x/2vHhqBZYD4gMSfUJXJm31AnRXMw+UNddjqCC+qkR16pitAnQBOSPdCjWZr3XC03IIvxy+uAc/
+ X5
+X-Google-Smtp-Source: AGHT+IGN5rn3IkITx8pU1gBFIPR+aCxJh/HcSkRUTXui4DXx/wg0EFxNep2T6leo1ZgNotjn3qcj5A==
+X-Received: by 2002:a17:906:730f:b0:b6d:5363:88a9 with SMTP id
+ a640c23a62f3a-b733196865dmr595103066b.9.1763029537912; 
+ Thu, 13 Nov 2025 02:25:37 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b734fd809d2sm133615866b.42.2025.11.13.02.25.29
+ a640c23a62f3a-b734fad43dfsm135287366b.20.2025.11.13.02.25.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Nov 2025 02:25:29 -0800 (PST)
+ Thu, 13 Nov 2025 02:25:35 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id D397C5FAED;
- Thu, 13 Nov 2025 10:25:26 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 7057A60DA8;
+ Thu, 13 Nov 2025 10:25:27 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paul Durrant <paul@xen.org>,
@@ -84,18 +84,19 @@ Cc: Paul Durrant <paul@xen.org>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-s390x@nongnu.org, Li-Wen Hsu <lwhsu@freebsd.org>,
  David Woodhouse <dwmw2@infradead.org>, Ed Maste <emaste@freebsd.org>,
- qemu-stable@nongnu.org
-Subject: [PATCH v2 09/18] tests: move test_netdev_ethtool to share.linaro.org
-Date: Thu, 13 Nov 2025 10:25:15 +0000
-Message-ID: <20251113102525.1255370-10-alex.bennee@linaro.org>
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH v2 15/18] gitlab: suppress custom runners being triggered by
+ schedule
+Date: Thu, 13 Nov 2025 10:25:21 +0000
+Message-ID: <20251113102525.1255370-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251113102525.1255370-1-alex.bennee@linaro.org>
 References: <20251113102525.1255370-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x636.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,41 +119,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Linaro are migrating file-hosting from the old NextCloud instance to
-another sharing site.
+Otherwise the mere presence of the RUNNER env vars is enough to
+trigger the jobs.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: qemu-stable@nongnu.org
 ---
- tests/functional/x86_64/test_netdev_ethtool.py | 14 ++++----------
- 1 file changed, 4 insertions(+), 10 deletions(-)
+ .gitlab-ci.d/custom-runners/debian-13-ppc64le.yml    | 2 +-
+ .gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml | 2 +-
+ .gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/tests/functional/x86_64/test_netdev_ethtool.py b/tests/functional/x86_64/test_netdev_ethtool.py
-index ee1a397bd24..ac8a92512cf 100755
---- a/tests/functional/x86_64/test_netdev_ethtool.py
-+++ b/tests/functional/x86_64/test_netdev_ethtool.py
-@@ -16,16 +16,10 @@ class NetDevEthtool(QemuSystemTest):
-     # Runs in about 17s under KVM, 19s under TCG, 25s under GCOV
-     timeout = 45
- 
--    # Fetch assets from the netdev-ethtool subdir of my shared test
--    # images directory on fileserver.linaro.org.
--    ASSET_BASEURL = ('https://fileserver.linaro.org/s/kE4nCFLdQcoBF9t/'
--                     'download?path=%2Fnetdev-ethtool&files=')
--    ASSET_BZIMAGE = Asset(
--        ASSET_BASEURL + "bzImage",
--        "ed62ee06ea620b1035747f3f66a5e9fc5d3096b29f75562ada888b04cd1c4baf")
--    ASSET_ROOTFS = Asset(
--        ASSET_BASEURL + "rootfs.squashfs",
--        "8f0207e3c4d40832ae73c1a927e42ca30ccb1e71f047acb6ddb161ba422934e6")
-+    ASSET_BZIMAGE = Asset("https://share.linaro.org/downloadFile?id=QD37GYYAJhGOgVe",
-+                          "ed62ee06ea620b1035747f3f66a5e9fc5d3096b29f75562ada888b04cd1c4baf")
-+    ASSET_ROOTFS = Asset("https://share.linaro.org/downloadFile?id=YAqnr0W8fruDh3f",
-+                         "8f0207e3c4d40832ae73c1a927e42ca30ccb1e71f047acb6ddb161ba422934e6")
- 
-     def common_test_code(self, netdev, extra_args=None):
-         self.set_machine('q35')
+diff --git a/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
+index 80706c7a956..6492d013de8 100644
+--- a/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
++++ b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
+@@ -11,7 +11,7 @@
+     - ppc64le
+   rules:
+     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+-    - if: "$PPC64LE_RUNNER_AVAILABLE"
++    - if: '$PPC64LE_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
+   before_script:
+     - source scripts/ci/gitlab-ci-section
+     - section_start setup "Pre-script setup"
+diff --git a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
+index 6f950baee0d..c8adb8171c0 100644
+--- a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
++++ b/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
+@@ -11,7 +11,7 @@
+     - aarch64
+   rules:
+     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+-    - if: "$AARCH64_RUNNER_AVAILABLE"
++    - if: '$AARCH64_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
+   before_script:
+     - source scripts/ci/gitlab-ci-section
+     - section_start setup "Pre-script setup"
+diff --git a/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml b/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
+index 32e12188873..fcb49ae884d 100644
+--- a/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
++++ b/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
+@@ -11,7 +11,7 @@
+     - s390x
+   rules:
+     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+-    - if: "$S390X_RUNNER_AVAILABLE"
++    - if: '$S390X_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
+   before_script:
+     - source scripts/ci/gitlab-ci-section
+     - section_start setup "Pre-script setup"
 -- 
 2.47.3
 

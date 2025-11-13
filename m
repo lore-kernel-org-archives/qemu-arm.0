@@ -4,155 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD330CD5BC2
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:53:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF9E4CD5BC4
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 11:10:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJUxa-0002ft-Pz; Thu, 13 Nov 2025 05:53:50 -0500
+	id 1vJVDL-0006iQ-Tt; Thu, 13 Nov 2025 06:10:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vJUvZ-0001J7-72
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:51:49 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vJVDG-0006g0-KH
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 06:10:04 -0500
+Received: from 3.mo552.mail-out.ovh.net ([178.33.254.192])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vJUvW-0002VH-Uw
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:51:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1763031101;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=XKo5vqTcFRXgLdeTCy6JkxEm7xMVp9TfTcYXdz3iMRQ=;
- b=WRGHPgNPoPZJb6OjbQyJE0TuDM6ngoIvPfoRYvXleYAEuHOW0Z+/3UluLz3v/Q48oquGvb
- wq1oc8XxKppxb5f1pZYYtqmvM0qzvU8LiQ145ldWwFkm02EeVlnnJpZPOLYli3zcVRNkIY
- +rizxtQ8xL6xym23tYb2ZrAk6PrNxzw=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-428-O3SGb4zZNmuJMyqgkorCXA-1; Thu, 13 Nov 2025 05:51:40 -0500
-X-MC-Unique: O3SGb4zZNmuJMyqgkorCXA-1
-X-Mimecast-MFC-AGG-ID: O3SGb4zZNmuJMyqgkorCXA_1763031099
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-47778daa4d2so5942185e9.2
- for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:51:39 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763031099; x=1763635899;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=XKo5vqTcFRXgLdeTCy6JkxEm7xMVp9TfTcYXdz3iMRQ=;
- b=F/RsSBQXBOTQyZd98amu0Kth7G1G5qwgthmduRdwNC70QR6p/OervV1qRKCN9IxJel
- z1rD6im/7Lb2K8tfOaX7E/orPmK1nqiTJIrYQg+ng8GxIPEi5lhj8MRHCdMBhDHWVeVd
- 15kKuZVzBx9nbfT4U1a3oN+9dG1TU2vaHosqSxOHO09Wp1dZ3+wLNu3hfzCqmk5AL1My
- nPDzezss3VQTrlz2k0KFwix/Qtg5NZHGd1pkmBb/vpEqF90oBdGgNuMWeJY06fAZ8JUj
- ejqF59qSVs1bTVmimnPfrrMA13PznoLefZHKTDg3DTdINFkUMJ8npHgcugPzYSQ2LN+0
- KcCw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXZ9deCosNHA+z7V9Ro9ruT5zXoyBRh8pO9Q56iaXT62q1fU+OUR1bGOLHK8Z5A4EtGKbH3NTlZ8A==@nongnu.org
-X-Gm-Message-State: AOJu0YzLEBSGkmwzjNFUXCMOy1Vrntt5MRh46AP0qAG5/vIpe68G989w
- +h8VadQDD/ayc3tbohD3SujHiVEBo1rJV52Mn/mpj2jtgGv17qMsibCV9TSv47QZOAmE2Tge4fz
- tV5qGog0wt74tPMbhSQa85obaBNjP9KpduhKyb8mYq9JvZlrO1kfbIQ==
-X-Gm-Gg: ASbGncvQsMFzgj1LS4DsumNQmqbnlQ9QvbiY/tAC5iEXFA0H80m7Tsi7DxH0D62KJNX
- wsM3ne5+Gel9OxDVfL49/HH9/CS1T8uEGmtLjOm4IVWQenlb8QrlOtQJJjKqhn5Dgn5agkOwKnd
- n9yNxGzJvPFR9Yf0uTR27baUbhLWgYX87lc2MxtCu+esDPcxFRDWEW9jy6jVnqDYqwxCvcZUExp
- appD7Lf3r4D0XT+oNGaRb3EZjIMLX3+etHl+G/q4zi41Pu4f2qfOzeqDhWEEpcGed5tRXVxPyYq
- m5tzDhSuZC8BVfhn91es/usPBvyQwm/HqMSBIDM4cZrS9pmKtL5rakFnNm5GBzTF2IXQd+Q=
-X-Received: by 2002:a05:600c:c177:b0:475:daa7:ec60 with SMTP id
- 5b1f17b1804b1-477870b93bcmr61571185e9.21.1763031098731; 
- Thu, 13 Nov 2025 02:51:38 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFwMEMEf3c6excHPCf9J8TLzB76o0b7MoBgGSaM9Ya9uFIQGkr+RtE4ZWvhrrra3dP1EsLivw==
-X-Received: by 2002:a05:600c:c177:b0:475:daa7:ec60 with SMTP id
- 5b1f17b1804b1-477870b93bcmr61570855e9.21.1763031098356; 
- Thu, 13 Nov 2025 02:51:38 -0800 (PST)
-Received: from [192.168.0.7] ([47.64.114.10]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47789ffea1esm61621245e9.13.2025.11.13.02.51.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 Nov 2025 02:51:37 -0800 (PST)
-Message-ID: <3d4cb40b-02c0-488b-93b4-abd26e53e16e@redhat.com>
-Date: Thu, 13 Nov 2025 11:51:36 +0100
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vJVDE-0006eV-Ay
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 06:10:02 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.37.73])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4d6cx56W0dz5w7W;
+ Thu, 13 Nov 2025 11:09:45 +0000 (UTC)
+Received: from kaod.org (37.59.142.110) by DAG8EX2.mxp5.local (172.16.2.72)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Thu, 13 Nov
+ 2025 12:09:41 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-110S0040c1c3a20-2a90-49a1-9952-c70b6ca2bddb,
+ 4476756531275CA3349E6B909B2DFE5C65DEBF14) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <2f1397fe-3df3-4554-ae24-8c5e0ba89119@kaod.org>
+Date: Thu, 13 Nov 2025 12:09:39 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 12/18] tests: move test_virt_gpu to share.linaro.org
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Paul Durrant <paul@xen.org>,
- Dmitry Osipenko <dmitry.osipenko@collabora.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- Gustavo Romero <gustavo.romero@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- Kohei Tokunaga <ktokunaga.mail@gmail.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- BALATON Zoltan <balaton@eik.bme.hu>, Peter Maydell
- <peter.maydell@linaro.org>, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- Li-Wen Hsu <lwhsu@freebsd.org>, David Woodhouse <dwmw2@infradead.org>,
- Ed Maste <emaste@freebsd.org>, qemu-stable@nongnu.org
-References: <20251113102525.1255370-1-alex.bennee@linaro.org>
- <20251113102525.1255370-13-alex.bennee@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20251113102525.1255370-13-alex.bennee@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Uf0283qhrbl1Oz-ltAvzkRkrys-Q4nxI3X6HsDLyDpk_1763031099
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Subject: Re: [PATCH v2 1/3] hw/nvram: Add a new auxiliary function to init
+ at24c eeprom
+To: Yubin Zou <yubinz@google.com>, <qemu-devel@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, <qemu-arm@nongnu.org>, Hao Wu
+ <wuhaotsh@google.com>
+References: <20251113-quanta-q71l-eeproms-v2-0-e72451b974b0@google.com>
+ <20251113-quanta-q71l-eeproms-v2-1-e72451b974b0@google.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20251113-quanta-q71l-eeproms-v2-1-e72451b974b0@google.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.110]
+X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG8EX2.mxp5.local
+ (172.16.2.72)
+X-Ovh-Tracer-GUID: 4cb59560-feb8-44f3-81c6-b6a55e29f6e2
+X-Ovh-Tracer-Id: 13580886153342978994
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGNX6EKlNqT32O3ZjTi/0lS8RAKjShRnZovoojPnVFtT3IQFBw1945DSc6DlGtEbvLqNyR+Z2dZtL/hH9aD+QlCvhWL5x019IeANISzErLjAV7p206oYzfex1WiKYdOKJmOkz72+E6ccJ8K1/oJNCbwXhVDDbjxNvbXGib0fuM2NzqcQ7NztW0znRkSHXs4fuFHuFOFV2bRipex4FUed5I3AP1ZF+3bHbbcnlF+WLlI4YQHtwdvBDuPfWgwgfISj1OZJ1Z9bKRLOAKhPIcGCEAgcDqFrSQdhr2/piUrZ9vS5AwGlWeZes1R8qYvovMHqBBY2IOkcjK4a8fJEopezSvjB8cPLopQJLqJdfDejdcDitQmydLC3neYouxoL7authi973ELl28DwG9wB8RpbFS/07MLXoc5I27gFSGhVCOJS0l0bYpjP1V1vy4EIlcTXf59Nh24ybtiJgcsQ7NjCFAHrw97muRzjw6pA0BIIFkOM0CEjn3GOd+uBXUFTP82NElnZpmCguGkpKQF6MXdzbaf9eA7ViHD7rYYkyaKKEN1nrB8LY/0t4OlC6q8aogYY3sWK9drQqftvFde23UDHgjT6j+oqepiu4HtKpwVPu8sXMFr4DzQGWehbRTSD2VnnvZ6jdfLSiKLcVpSAk21ET6VIhoWvnYnFJtxT7IQ5Bxu+A
+DKIM-Signature: a=rsa-sha256; bh=40CnKT+CERV0oCAK4RQDRYi+U6pxISEGfQFTFjCIQlc=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1763032188; v=1;
+ b=id91oYO3DQGGjICv3ox/egdY0hwV7HAzE016oNJ3qXk8tjQdl+IRBHk1/YDmjvHPLv6asKPq
+ GSashd+vkHBLUr0RG+xQ7CFcihOIsACuQ0IADvFg8dSj8UrBTAGdvaF8nIVr8dSi3yvy9yeyFE0
+ 3RiFg+UUItvBcXy2Cduzy7BgLPc2n7LtD2HQpb52LgtqKQI8XFC9XLBmbca2wDqJoIjKSFvhQOq
+ OKpt6L80bekOZBbZ8qx4u0HaWyj8A7pz0GLlw4NgwYSJ0gXZD0p/wsmC7jKqOybIvcX/uMYfdXi
+ cRR3voNjCKVe0TusGDhQLAc1koKJGLhLX+Mi0cjMrCUvg==
+Received-SPF: pass client-ip=178.33.254.192; envelope-from=clg@kaod.org;
+ helo=3.mo552.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -168,41 +130,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 13/11/2025 11.25, Alex Bennée wrote:
-> Linaro are migrating file-hosting from the old NextCloud instance to
-> another sharing site.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Cc: qemu-stable@nongnu.org
-> 
-> ---
-> v2
->    - indentation for long lines
-> ---
->   tests/functional/aarch64/test_virt_gpu.py | 8 ++------
->   1 file changed, 2 insertions(+), 6 deletions(-)
-> 
-> diff --git a/tests/functional/aarch64/test_virt_gpu.py b/tests/functional/aarch64/test_virt_gpu.py
-> index 4e50887c3e9..c26a1f20c65 100755
-> --- a/tests/functional/aarch64/test_virt_gpu.py
-> +++ b/tests/functional/aarch64/test_virt_gpu.py
-> @@ -23,15 +23,11 @@
->   class Aarch64VirtGPUMachine(LinuxKernelTest):
->   
->       ASSET_VIRT_GPU_KERNEL = Asset(
-> -        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
-> -        'download?path=%2F&files='
-> -        'Image.6.12.16.aarch64',
-> +        'https://share.linaro.org/downloadFile?id=lL8wgnMmSXZo7Co',
->           '7888c51c55d37e86bbbdeb5acea9f08c34e6b0f03c1f5b2463285f6a6f6eec8b')
->   
->       ASSET_VIRT_GPU_ROOTFS = Asset(
-> -        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
-> -        'download?path=%2F&files='
-> -        'rootfs.aarch64.ext2.zstd',
-> +        'https://share.linaro.org/downloadFile?id=qOn1wbfKmS6KVHZ',
->           'd45118c899420b7e673f1539a37a35480134b3e36e3a59e2cb69b1781cbb14ef')
+Hello Yubin,
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+On 11/13/25 01:43, Yubin Zou wrote:
+> From: Hao Wu <wuhaotsh@google.com>
+> 
+> In NPCM7xx boards, at24c eeproms are backed by drives. 
+
+Are they ? I don't see any drive usage apart from the flash devices.
+
+> However,
+> these drives use unit number as unique identifier. So if we
+> specify two drives with the same unit number, error will occured:
+> `Device with id 'none85' exists`.
+
+Yes. The drive interface is very poor when it comes to the user
+interface. Something to avoid.
+
+A better alternative is to define the devices on the command line
+using a blockdev, something like :
+
+   -blockdev node-name=eprom0,driver=file,filename=/path/to/eprom0-contents \
+   -device at24c-eeprom,bus=aspeed.i2c.bus.1,address=0x54,id=foobar,drive=eprom0
+
+Please try that instead. Or use at24c_eeprom_init_rom() like the
+other machines.
+
+A functional test of the quanta-q71l board would be appreciated.
+
+Thanks,
+
+C.
+
+
+
+> Instead of using i2c address as unit number, we now assign unique
+> unit numbers for each eeproms in each board. This avoids conflict
+> in providing multiple eeprom contents with the same address.
+> 
+> We add an auxiliary function in the at24c eeprom module for this.
+> This allows it to easily add at24c eeprom to non-nuvoton boards
+> like aspeed as well.
+> 
+> Change-Id: I2f056cc0507d39164335a03bc18b5c94015b4b11
+> Signed-off-by: Hao Wu <wuhaotsh@google.com>
+> ---
+>   hw/nvram/eeprom_at24c.c         | 17 +++++++++++++++++
+>   include/hw/nvram/eeprom_at24c.h |  4 ++++
+>   2 files changed, 21 insertions(+)
+> 
+> diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
+> index 82ea97e552a15c8bcd38e38939b53545b01ad273..8542ca2b037d6e896c7b394e7ff4b6ec27297ad7 100644
+> --- a/hw/nvram/eeprom_at24c.c
+> +++ b/hw/nvram/eeprom_at24c.c
+> @@ -17,6 +17,7 @@
+>   #include "hw/qdev-properties.h"
+>   #include "hw/qdev-properties-system.h"
+>   #include "system/block-backend.h"
+> +#include "system/blockdev.h"
+>   #include "qom/object.h"
+>   
+>   /* #define DEBUG_AT24C */
+> @@ -264,3 +265,19 @@ static void at24c_eeprom_register(void)
+>   }
+>   
+>   type_init(at24c_eeprom_register)
+> +
+> +void at24c_eeprom_init_one(I2CBus *i2c_bus, int bus, uint8_t addr,
+> +                           uint32_t rsize, int unit_number)
+> +{
+> +    I2CSlave *i2c_dev = i2c_slave_new("at24c-eeprom", addr);
+> +    DeviceState *dev = DEVICE(i2c_dev);
+> +    BlockInterfaceType type = IF_NONE;
+> +    DriveInfo *dinfo;
+> +
+> +    dinfo = drive_get(type, bus, unit_number);
+> +    if (dinfo) {
+> +        qdev_prop_set_drive(dev, "drive", blk_by_legacy_dinfo(dinfo));
+> +    }
+
+> +    qdev_prop_set_uint32(dev, "rom-size", rsize);> +    i2c_slave_realize_and_unref(i2c_dev, i2c_bus, &error_abort);
+> +}
+> diff --git a/include/hw/nvram/eeprom_at24c.h b/include/hw/nvram/eeprom_at24c.h
+> index acb9857b2adddd1fe5a924652f6ebae13b674b66..fdac7c1c022f9f73307bb3ecf761caa732e999bc 100644
+> --- a/include/hw/nvram/eeprom_at24c.h
+> +++ b/include/hw/nvram/eeprom_at24c.h
+> @@ -36,4 +36,8 @@ I2CSlave *at24c_eeprom_init(I2CBus *bus, uint8_t address, uint32_t rom_size);
+>   I2CSlave *at24c_eeprom_init_rom(I2CBus *bus, uint8_t address, uint32_t rom_size,
+>                                   const uint8_t *init_rom, uint32_t init_rom_size);
+>   
+> +/* Init one at24c eeprom device */
+> +void at24c_eeprom_init_one(I2CBus *i2c_bus, int bus, uint8_t addr,
+> +                           uint32_t rsize, int unit_number);
+> +
+>   #endif
+> 
 
 

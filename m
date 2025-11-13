@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5815DCD5BBC
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2126ACD5BBB
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:27:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJUWU-00084b-Kp; Thu, 13 Nov 2025 05:25:50 -0500
+	id 1vJUWG-0007ZF-Mz; Thu, 13 Nov 2025 05:25:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUWR-0007wG-EF
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:47 -0500
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ id 1vJUWG-0007Ws-05
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:36 -0500
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUWH-0007KY-6a
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:47 -0500
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-640ca678745so1224256a12.2
- for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:36 -0800 (PST)
+ id 1vJUWA-0007HF-Bz
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:35 -0500
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-64165cd689eso2931414a12.0
+ for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763029535; x=1763634335; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763029529; x=1763634329; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LZHfy1fDQhmHrgPlYUJxZXN3O1QxQXWctC2JvDVkN54=;
- b=MZj7W1v0/rdkyYOhS5vlvrhr+rwOtqr52FngjWuQKo8EHpPlVDUuirCyMKbINQ6qqi
- rY+6GNhIyWNEeUgOuCbg4UE3Tbygnclc+8CeNcLL6YLdX7f88fvgrdVzb5taELXAbWeS
- rIimSayd4XLY6CCc7j8+2pqMDG3jXPJ1bo4Rqp1b90z+GRSmyMHY0jRWkDScnNubw6MG
- ZDD0if51tZQYFe+PxaD0Hed83g2zajtxnJ4ymW/XCqpL27tJuQLBDHTXJ/IjMEFrON7U
- BRz4EfgThbLnz8tC2NFGk3/P+39AGLgl3K55XF4cy8xASQFFMBzj6QMPGmWPYjKMKMa7
- Azlw==
+ bh=gZdfn5DTRUnuvKpFRrCy4/zIYR7A5KWzbxEDTPGlz+4=;
+ b=zwJWF/RmVRViEl7IBt0gpE4mgTCbDOo5nLWjj5vwlQrA9JZ12LMk0sCHSEnJKee8Ae
+ M9vZSba1hQdVgHUAdANLigI2gs/vhl9SbdpY5lXAN0y6pjFPHrVWkEpLEiAdb60vZ5io
+ zy3cig+yCPx4nRzLKKWmmfvEoaZANm+D7icGDRECbaoG4T9llAfq2Ah0wY3Fm1VCxs0C
+ zUkzK//5bd1aMDfXra8EOvS+BwRmVXAOBGBWoF9D2iI5lja2uNV9/1JyBa1f8KIXtp8x
+ dMvKodehAkeDpQFtKc1WGgNAHSVgvkEM/Fn62tNPYxz8pZHB7c88KqACMWjMjSGTLFsx
+ TZMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763029535; x=1763634335;
+ d=1e100.net; s=20230601; t=1763029529; x=1763634329;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=LZHfy1fDQhmHrgPlYUJxZXN3O1QxQXWctC2JvDVkN54=;
- b=fbq86ovFSGCIHBbIJF7xWaFHILCb5sW2g8Eyh282ma//a9KE70vP7QU7Q37EB6u/L7
- FJOXgt9aHNG1imPtW+kvwq7phMJUeR+g5ouDiNFlu8U0LMKrwl1dY9rB91WkJWxz87dj
- dRhNXyDnPHZRqvZXGqPBej1wvGt+J+IG06UXOgka1v4Rt38jcJUfX8IikC5bLRpOzpAv
- A+WMzBSV0L4/aL8oQdTB1DDFkFKdTu39tkVeRZP9vrhNXwiTMpK/QQgCemNsIdYEAnii
- YklQwoA4Goqo1QbjoJv2VHfEYDrMOELXfs0gxktBKpNG1e2ZdO6G7FkYZ5uHCCVkClZk
- I38Q==
+ bh=gZdfn5DTRUnuvKpFRrCy4/zIYR7A5KWzbxEDTPGlz+4=;
+ b=kzN9U8jfQoPvbLom5XNkUVdSuTaCH8XhCXq0Wi4nOnbwkAGYsXa7gbXildThJRJIjl
+ WxWbIF8+89C6wvJ1XPwK5jWJn93nqmlHGZvad92jTqg0lnHs366pjZGvTPHG2BMepJ3E
+ wgh9I30GC7YQcs6XLsdCUau89Im0z9zHlYUYPn7Qcdv4NOeT9WTXq0PoFOTJ5XVwfzR8
+ Lm/E7vqpfMK7EegsGqG9GJX99QJabcc1PNYygNHH3auXqwJzaOIaH01cOWoTQddWJVwk
+ B08T4MMTdjWGZeJMPDe5gS/aM2Usu6vHEpTcTpMs1/OUt2FKCSVbqgvpt+LZBAEkKWZd
+ aVpA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXWAS3NfrdLHlCHFpZtaUTur9+wGA6Z57i2IXzT9NAnFEdNxPiAqqM6Nype719x7Ges7oNJWtwTkw==@nongnu.org
-X-Gm-Message-State: AOJu0Yy12eRmrpF8DLdhNKmPjR2Fpdi0IknLNuCF3jXWPeZHuFjpDIVo
- qzBrvNVwwiKPcKh0nfQ7qMWJtnaQojZqgTYH1V0G4hyYErRs0LValUotGo+ggm3waJE=
-X-Gm-Gg: ASbGnctaJmLfkJqjVclb0TZzlYk3lr7rL0d/l/FypyY1Mcdm1DTS3lsZiq/DYHxmqpY
- P57+HZnOv4FgC8R2jKNcrmvVLgGqBc34OhKRxtj5OsPYmK4ho0hUhbcmAzdQSf03PZCeH/qqHnY
- GCUnlBU+KqBnSlBtkb9fhzxF+nscuWwDMrCMZvTQxkB6NVeT9yRwoPgHNRMCjtsy2KC6MgEnATc
- PMBCL5+dk9rh965pLNalglnxkfrOxciLI5/FiUmicAemLBRaxwDNLf8dIiEAvXJkSQOPtInmSKj
- 1T04cnNG3hKI0ehGzeLBUCvmuOWTSOCXuIVtKwRYXJ2yPxaB0rEytHGclYgL4+AhWOuQazsi8JM
- n2wBF0/rv+H0YJ74j+lRvKZVLs4JbUG9y5rmtrYA0vdfAEK38dLxUcOlL0kZIch7/e+gAbmPci/
- 93
-X-Google-Smtp-Source: AGHT+IGCj0v6Ge91/as+pZ+yCH8uvkTWHMynzVHIQw0uD1UlgZtepQBCd27gBeFwL7tvPUMHRaDG8w==
-X-Received: by 2002:a17:907:6e93:b0:b72:9d0b:defa with SMTP id
- a640c23a62f3a-b7331ab3429mr662951766b.41.1763029535507; 
- Thu, 13 Nov 2025 02:25:35 -0800 (PST)
+ AJvYcCWJbl5gL8m3tilHLg85DbUH/c3Hh9dtGw0LqLVZJav3QaULEkil468BGhOmt4cnL/BudQkiaaj5tw==@nongnu.org
+X-Gm-Message-State: AOJu0YzvyC/hvvvnIAoMqYCjWfv24hV6pbSkQO/fLYmoYY5G9fcfWcyc
+ KnVgvXaW1U6XWoF8Fj3P4rVtbEX/ayQQrhQRuM9iXGzd+QXzi9Asp2c9HtAgyIdjpa4=
+X-Gm-Gg: ASbGncvEJQLGyrh4UI5A49iZa4r3y92F2U/Z/y67+P9xQUwnRKZ3VwRGFobhJIG0m63
+ koqs+41sgzfrBdmcM/SZwuG4j7GitUWbBSNKzNvY8VVTxaex/gqO+n0bLfmDjYxVpnu9LZTFnrp
+ +KPIKLf7r8wrdb6FrIs8Q7c0fDJQT9w4InpvYjedHHc0YP0OuCeYcbvqwyh9pmDbGlMvmUo8mDQ
+ YsAXNJneCFQX+RkJqK8cWRGt4btYDzPl8vaPkGPqE+BzuOImipbgfQXk+E07OFNPrStVJzgLEdK
+ sn4jY2m0uvVxiNr6/TOqsL3TXZzRu50WfNnxDdWwgVA95JT75x8cBO5v059DuARZSvF48lVJwq4
+ ZqRNI3jzOjLMCkz/6+h20Tep9VutToLfOsdw90fzjOLPCrsQET7+xKT8WxPXTO06T8lAqHs4EtN
+ Yd
+X-Google-Smtp-Source: AGHT+IGv2cm7ocr5fzcGcxPLzJmrIGvdICG5Ubl1uOdDwPm5NY7NZZIVnCcz+xF1LI0qUZZ84+tcUg==
+X-Received: by 2002:a17:907:3d0e:b0:b72:dcda:fe5a with SMTP id
+ a640c23a62f3a-b73480bdcbemr275276966b.5.1763029528656; 
+ Thu, 13 Nov 2025 02:25:28 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b734fa812a3sm136349366b.8.2025.11.13.02.25.29
+ a640c23a62f3a-b734fa80bf5sm136504466b.3.2025.11.13.02.25.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Nov 2025 02:25:30 -0800 (PST)
+ Thu, 13 Nov 2025 02:25:27 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 24EAE607D3;
- Thu, 13 Nov 2025 10:25:27 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id C72B55F846;
+ Thu, 13 Nov 2025 10:25:25 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paul Durrant <paul@xen.org>,
@@ -83,19 +83,18 @@ Cc: Paul Durrant <paul@xen.org>,
  Thomas Huth <thuth@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-s390x@nongnu.org, Li-Wen Hsu <lwhsu@freebsd.org>,
- David Woodhouse <dwmw2@infradead.org>, Ed Maste <emaste@freebsd.org>,
- qemu-stable@nongnu.org
-Subject: [PATCH v2 12/18] tests: move test_virt_gpu to share.linaro.org
-Date: Thu, 13 Nov 2025 10:25:18 +0000
-Message-ID: <20251113102525.1255370-13-alex.bennee@linaro.org>
+ David Woodhouse <dwmw2@infradead.org>, Ed Maste <emaste@freebsd.org>
+Subject: [PATCH v2 01/18] tests/docker: drop --link from COPYs in emsdk docker
+Date: Thu, 13 Nov 2025 10:25:07 +0000
+Message-ID: <20251113102525.1255370-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251113102525.1255370-1-alex.bennee@linaro.org>
 References: <20251113102525.1255370-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,41 +117,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Linaro are migrating file-hosting from the old NextCloud instance to
-another sharing site.
+As we need to build images in both docker and podman lets not have any
+incompatibilities. I don't think it makes any major difference.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: qemu-stable@nongnu.org
-
+Reviewed-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
-v2
-  - indentation for long lines
----
- tests/functional/aarch64/test_virt_gpu.py | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ tests/docker/dockerfiles/emsdk-wasm32-cross.docker | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/functional/aarch64/test_virt_gpu.py b/tests/functional/aarch64/test_virt_gpu.py
-index 4e50887c3e9..c26a1f20c65 100755
---- a/tests/functional/aarch64/test_virt_gpu.py
-+++ b/tests/functional/aarch64/test_virt_gpu.py
-@@ -23,15 +23,11 @@
- class Aarch64VirtGPUMachine(LinuxKernelTest):
+diff --git a/tests/docker/dockerfiles/emsdk-wasm32-cross.docker b/tests/docker/dockerfiles/emsdk-wasm32-cross.docker
+index 6b1642a207c..1f08eb0b855 100644
+--- a/tests/docker/dockerfiles/emsdk-wasm32-cross.docker
++++ b/tests/docker/dockerfiles/emsdk-wasm32-cross.docker
+@@ -115,8 +115,8 @@ RUN mkdir -p /glib
+ RUN curl -Lks https://download.gnome.org/sources/glib/${GLIB_MINOR_VERSION}/glib-$GLIB_VERSION.tar.xz | \
+     tar xJC /glib --strip-components=1
  
-     ASSET_VIRT_GPU_KERNEL = Asset(
--        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
--        'download?path=%2F&files='
--        'Image.6.12.16.aarch64',
-+        'https://share.linaro.org/downloadFile?id=lL8wgnMmSXZo7Co',
-         '7888c51c55d37e86bbbdeb5acea9f08c34e6b0f03c1f5b2463285f6a6f6eec8b')
+-COPY --link --from=zlib-dev /builddeps/ /builddeps/
+-COPY --link --from=libffi-dev /builddeps/ /builddeps/
++COPY --from=zlib-dev /builddeps/ /builddeps/
++COPY --from=libffi-dev /builddeps/ /builddeps/
  
-     ASSET_VIRT_GPU_ROOTFS = Asset(
--        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
--        'download?path=%2F&files='
--        'rootfs.aarch64.ext2.zstd',
-+        'https://share.linaro.org/downloadFile?id=qOn1wbfKmS6KVHZ',
-         'd45118c899420b7e673f1539a37a35480134b3e36e3a59e2cb69b1781cbb14ef')
+ WORKDIR /glib
+ RUN <<EOF
+@@ -141,5 +141,5 @@ RUN sed -i -E "/#define HAVE_PTHREAD_GETNAME_NP 1/d" ./_build/config.h
+ RUN meson install -C _build
  
-     def _launch_virt_gpu(self, gpu_device):
+ FROM build-base
+-COPY --link --from=glib-dev /builddeps/ /builddeps/
+-COPY --link --from=pixman-dev /builddeps/ /builddeps/
++COPY --from=glib-dev /builddeps/ /builddeps/
++COPY --from=pixman-dev /builddeps/ /builddeps/
 -- 
 2.47.3
 

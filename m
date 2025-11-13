@@ -4,92 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F334FCD484C
-	for <qemu-arm@archiver.kernel.org>; Wed, 12 Nov 2025 21:55:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50A80CD4F38
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 00:44:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJImw-00037y-C1; Wed, 12 Nov 2025 16:54:02 -0500
+	id 1vJLRd-00009j-AX; Wed, 12 Nov 2025 19:44:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vJI3v-0000m4-Bc
- for qemu-arm@nongnu.org; Wed, 12 Nov 2025 16:07:31 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from
+ <3vykVaQYKCLYuqXejvckkcha.Ykimaiq-Wnijkjcjq.knc@flex--yubinz.bounces.google.com>)
+ id 1vJLRH-0008Er-8R
+ for qemu-arm@nongnu.org; Wed, 12 Nov 2025 19:43:54 -0500
+Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vJI3p-0001rK-Tx
- for qemu-arm@nongnu.org; Wed, 12 Nov 2025 16:07:31 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-42b38693c4dso49194f8f.3
- for <qemu-arm@nongnu.org>; Wed, 12 Nov 2025 13:07:25 -0800 (PST)
+ (Exim 4.90_1) (envelope-from
+ <3vykVaQYKCLYuqXejvckkcha.Ykimaiq-Wnijkjcjq.knc@flex--yubinz.bounces.google.com>)
+ id 1vJLRE-0006N9-TS
+ for qemu-arm@nongnu.org; Wed, 12 Nov 2025 19:43:50 -0500
+Received: by mail-pl1-x649.google.com with SMTP id
+ d9443c01a7336-297d50cd8c4so6916275ad.0
+ for <qemu-arm@nongnu.org>; Wed, 12 Nov 2025 16:43:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1762981644; x=1763586444; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ndvKFCJtXmZXWNjsWlnfM9pmpLT2hMmXPRvFvrdoK9k=;
- b=YlHkoj+gqamG+NyS4lEHQbC72PVQR2ADAIFIHBHYyYondHN3ccREX/kAXO0aWpxZ2Y
- 8s8a93v7GUj8WoG1x8nUUArH72P5zm81buKoRXP2GFOtrc8OKroSj2cR2G5JfiYw6cHO
- vASWLw4DROlZ/FgainN5lIgeiDXztbxuP/surhy6uGBoppFt/wlCW7GvqycZ1XmQ1cFa
- eWpK29XqrFz4RJHTCPT4KBfpVENG7YOyCWRLIB5RKfhKmPSdyNtr8U9VurhLPsHmFOep
- ULeTYjCJZ0DwYN4rh47Xz65JMqGCaibGnR+vfUW5KKe0b48JML/rcCMQtpZ3YRWEki9U
- c4Yg==
+ d=google.com; s=20230601; t=1762994624; x=1763599424; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=tm8rA0540b2jPQHifOjOXAmLnosq8n0B2UdOlNRIOXw=;
+ b=ebZHoqBiE2g6piTAaf2fH+nkVIBF8xb5bkQQUY7WqjUSar4nwPR8Ho9bE2qA6yg427
+ WzXP/GYlT8sgC0MYZ2JU8rTWFhh2c11Jii3+LI4cyT2/nDDzi2ZSC6pDNf9qeLha3WBT
+ siJK+rUFME2D1es4+O9ZI+oDqsNlgANBthwJAhlkOo4iU0BesmV7B7gg18ksZn/pE5gc
+ LgNYZe+3JiG8Q0BF+Kcq25O2zIe7Mcz9pHdWYOIz4YcWU/abZZibtfyS1fQoZTx89xdh
+ kfzKHyggmjVhZFKN7TI3lBT9hdY23V3kMcUmzffQUkMDuiCnBORVgtNKWGD+1LMSYFAg
+ 6X1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762981644; x=1763586444;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ndvKFCJtXmZXWNjsWlnfM9pmpLT2hMmXPRvFvrdoK9k=;
- b=NC4cFp5VZM4VnXhitZCKGjMVs0qrZMY2jSoiopDHJHbjCKA4ts5wAySBdrU7e5ZeLu
- rbkvveNMk/FvCazR0G66EuaqCYDXJ1M+brxJFQmftHKfDLwdzmbcm+iv25vmE39Iv3Bc
- hJHuqfV69YWBIXgB7f+iNGZjqkwx/5xb2TDZyRMSEMvuWK6sS+99pLSaIU6SKG21Hfo5
- /4aV89MTIr8t8cKlE2eXXxQZ3ST8a9cXtaJAeThjIEMRfoDZny4+Vak0DFTBocxfzway
- M1tiKYS0WK3zPyPIGBy7fallVrlF1QaQYFCzJpdSYwOaXivFnk0OAF785pPgdVQrM+yr
- v5AA==
-X-Gm-Message-State: AOJu0YzPxLxOIJODqf6d0l8ke3I6gu6G5961tYKvj3U7MMkxUeOimNRt
- 2G4awfAbYRDds5wenDA3kVee+jdJ+whsBqr307WG33li/zRZFethC5UmlwSq6j65Yio=
-X-Gm-Gg: ASbGncs8+mG5P0Z10y+t6xyzrGgTQFhsK6NKzWRuaAv+o6qtkbM75aF2Jmn6BNuSV7H
- dDYCBE5qsHuaaxmaflnRaHCip+cA5IMNzPJTRibfD5ogWkgucFe+Doah7HB0cYFLljClk17VTVr
- OvgDtwMwBCM2mHVyFqMVdbU5MEWyK2YTswEZH46xMEl9Puptiq9ZyOV/xpD0cIwFviI0jhcZt2/
- Aa+Nm4ydzADSmD9hA6opJotcoaG+n5VsqC5/s91vR8pENwf5qG7onmrDZhlUskO0oc0c07XaMlS
- 73k5QQC0WumJlmwukNbUt4zc2IvUK/pNZS8zvKrctV+6El2V51gQIdvjJiGBqWGwpnjYScntiSD
- dQ+ZVu7Na20oN1h+gJVSu4qntMQI7JQGPFtMmTL3niblbnSOYyxEtQQjIYc7HXb4EoFwUF+8AHL
- VN/uqlSArJhC8spg+ZQMIsrlYgkEVv9BSJWYTL/77H408=
-X-Google-Smtp-Source: AGHT+IGtaSx6QtlDHy/EycHh0/ZhW1Mmm/5WCyQeOiw9mC05LvLWss/kOLCaCs1PZ52vi6bPz95ITQ==
-X-Received: by 2002:a05:6000:310b:b0:42b:3b4c:f411 with SMTP id
- ffacd0b85a97d-42b4bdb06f1mr4248875f8f.36.1762981643683; 
- Wed, 12 Nov 2025 13:07:23 -0800 (PST)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42b2e96441dsm28506596f8f.23.2025.11.12.13.07.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Nov 2025 13:07:23 -0800 (PST)
-Message-ID: <d4f17034-94d9-4fdb-9d9d-c027dbc1e9b3@linaro.org>
-Date: Wed, 12 Nov 2025 22:07:07 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/2] target/arm/kvm: add kvm-psci-version vcpu property
-Content-Language: en-US
-To: Sebastian Ott <sebott@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, Eric Auger <eric.auger@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
- kvmarm@lists.linux.dev
-References: <20251112181357.38999-1-sebott@redhat.com>
- <20251112181357.38999-3-sebott@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251112181357.38999-3-sebott@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ d=1e100.net; s=20230601; t=1762994624; x=1763599424;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=tm8rA0540b2jPQHifOjOXAmLnosq8n0B2UdOlNRIOXw=;
+ b=IjoHFLejJNsWuj/ctgQ6lJ/weYP6tk0nQSmUiFknUzNPdaMQkhTOrFyXJ+MfId0yoF
+ 7veTAbrJ2acLqK0J62fbbdTCerglWnxsB9iA76aeoN6gZCHx+66qePpeLwLb3n69dIL5
+ m9R7ZSLazu+m3mtS06xNPnDeo8dhwpZAq7a1ETlFxhB8eT7n5fheFNIQ9teuGyN9U1+B
+ 7tqbTZChxuNbX9ag7ErAdabHvguSgCUFxBBmFR+JiRF4ZyG8sPZ3JuYk2JI4ev3/D0Rm
+ /AV7uXalXsrkW8KeKiLIjqcaar+5uCJGnmp4Af5yFIu5konWGeBjxRPkA72pP9koHNl2
+ 9YTg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWhDMB3JwmmRdz+ZyJ/QCFavoLM6gwPHWGtj3qY0T1Wj/X/F+6or4HZbxggjqm7nbZB1s5NwGtiqg==@nongnu.org
+X-Gm-Message-State: AOJu0YxBLx8TMGdurwCMBV0ZMzeT+XiuCKCwJxKvytMrmkrxKIbIMkSR
+ j+1O8znrT7Geqy03UDRjMfKyXcQ+0+gsX2PumIwnUKBDWAsFmdXBSxvlnXyGlCKJZN8QcersqKU
+ PzG4bEg==
+X-Google-Smtp-Source: AGHT+IFZj6G2V90cdeBOjI2IpVdvCMCt7rAIs8HpZHsitDYJafZnn754kQIjFZ6YfPCf67DWI22zQBX1I0c=
+X-Received: from dlbbt10.prod.google.com ([2002:a05:7022:98a:b0:119:49ca:6b9e])
+ (user=yubinz job=prod-delivery.src-stubby-dispatcher) by
+ 2002:a17:902:d2c1:b0:298:46a9:df1f
+ with SMTP id d9443c01a7336-2984ed34247mr75727425ad.12.1762994623664; Wed, 12
+ Nov 2025 16:43:43 -0800 (PST)
+Date: Thu, 13 Nov 2025 00:43:30 +0000
+In-Reply-To: <20251113-quanta-q71l-eeproms-v2-0-e72451b974b0@google.com>
+Mime-Version: 1.0
+References: <20251113-quanta-q71l-eeproms-v2-0-e72451b974b0@google.com>
+X-Mailer: b4 0.14.2
+Message-ID: <20251113-quanta-q71l-eeproms-v2-3-e72451b974b0@google.com>
+Subject: [PATCH v2 3/3] hw/arm: enable eeproms for quanta-q71l
+From: Yubin Zou <yubinz@google.com>
+To: qemu-devel@nongnu.org
+Cc: "=?utf-8?q?C=C3=A9dric_Le_Goater?=" <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
+ Yubin Zou <yubinz@google.com>, Patrick Venture <venture@google.com>
+Content-Type: text/plain; charset="utf-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
+ envelope-from=3vykVaQYKCLYuqXejvckkcha.Ykimaiq-Wnijkjcjq.knc@flex--yubinz.bounces.google.com;
+ helo=mail-pl1-x649.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,63 +100,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Sebastian,
+From: Patrick Venture <venture@google.com>
 
-On 12/11/25 19:13, Sebastian Ott wrote:
-> Provide a kvm specific vcpu property to override the default
-> (as of kernel v6.13 that would be PSCI v1.3) PSCI version emulated
-> by kvm. Current valid values are: 0.1, 0.2, 1.0, 1.1, 1.2, and 1.3
-> 
-> Note: in order to support PSCI v0.1 we need to drop vcpu
-> initialization with KVM_CAP_ARM_PSCI_0_2 in that case.
-> 
-> Signed-off-by: Sebastian Ott <sebott@redhat.com>
-> ---
->   docs/system/arm/cpu-features.rst |  5 +++
->   target/arm/cpu.h                 |  6 +++
->   target/arm/kvm.c                 | 64 +++++++++++++++++++++++++++++++-
->   3 files changed, 74 insertions(+), 1 deletion(-)
+Tested: Quanta-q71l firmware booted to login and was populated via the
+-drives for the corresponding eeproms.
+Signed-off-by: Patrick Venture <venture@google.com>
+---
+ hw/arm/aspeed.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index bae59ae7394882e3fc93863049a37ff5a8737ff8..8cef387a0b431576a873553704920886222cca86 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -562,16 +562,16 @@ static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1), "tmp105", 0x4f);
+ 
+     /* Baseboard FRU */
+-    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 1), 0x54, 8192);
++    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 1), 1, 0x54, 8192, 0);
+     /* Frontpanel FRU */
+-    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 1), 0x57, 8192);
++    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 1), 1, 0x57, 8192, 1);
+     /* TODO: Add Memory Riser i2c mux and eeproms. */
+ 
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9546", 0x74);
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2), "pca9548", 0x77);
+ 
+     /* Add BIOS FRU */
+-    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 3), 0x56, 8192);
++    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 3), 3, 0x56, 8192, 2);
+ 
+     /* i2c-7 */
+     i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9546", 0x70);
+@@ -581,9 +581,9 @@ static void quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
+     /*        - i2c@3: pmbus@59 */
+ 
+     /* PDB FRU */
+-    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x52, 8192);
++    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 7), 7, 0x52, 8192, 3);
+     /* BMC FRU */
+-    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50, 8192);
++    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 8), 8, 0x50, 8192, 4);
+ }
+ 
+ static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
 
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 0d57081e69..e91b1abfb8 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -484,6 +484,49 @@ static void kvm_steal_time_set(Object *obj, bool value, Error **errp)
->       ARM_CPU(obj)->kvm_steal_time = value ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
->   }
->   
-> +struct psci_version {
-> +    uint32_t number;
-> +    const char *str;
-> +};
-> +
-> +static const struct psci_version psci_versions[] = {
-> +    { QEMU_PSCI_VERSION_0_1, "0.1" },
-> +    { QEMU_PSCI_VERSION_0_2, "0.2" },
-> +    { QEMU_PSCI_VERSION_1_0, "1.0" },
-> +    { QEMU_PSCI_VERSION_1_1, "1.1" },
-> +    { QEMU_PSCI_VERSION_1_2, "1.2" },
-> +    { QEMU_PSCI_VERSION_1_3, "1.3" },
-> +    { -1, NULL },
-> +};
+-- 
+2.51.2.1041.gc1ab5b90ca-goog
 
-
-> @@ -505,6 +548,12 @@ void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
->                                kvm_steal_time_set);
->       object_property_set_description(obj, "kvm-steal-time",
->                                       "Set off to disable KVM steal time.");
-> +
-> +    object_property_add_str(obj, "kvm-psci-version", kvm_get_psci_version,
-> +                            kvm_set_psci_version);
-> +    object_property_set_description(obj, "kvm-psci-version",
-> +                                    "Set PSCI version. "
-> +                                    "Valid values are 0.1, 0.2, 1.0, 1.1, 1.2, 1.3");
-
-Could we enumerate from psci_versions[] here?
-
->   }
-Thanks,
-
-Phil.
 

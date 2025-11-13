@@ -4,70 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65EC9CD5BAB
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:06:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E398CD5BBB
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:25:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJUDz-0002SR-QS; Thu, 13 Nov 2025 05:06:45 -0500
+	id 1vJUWE-0007TX-RW; Thu, 13 Nov 2025 05:25:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vJUDm-0002Pk-DB
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:06:33 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vJUDY-0007ZI-TL
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:06:21 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1763028376;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=L2VzrA+im5lU8SyI/wwytZm7oAxotbKtb1vkC1NuCIU=;
- b=TXjwJsefnuJmRlVPzAhxEx2Q2bduqBBZv55E+5uAZeZsKDnrWDDvPIKAsKsaNJqd7nIHaz
- qDkuPdBzwWchUrtYkMX7xoDpsmk4ODkKHowDar9LyfOpkT8J/dYhPp+1Wa9tCT2HFL3n4p
- WmjCVRICBjrM3kb8p8P95NKgOpwaT+A=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-107--1zOWuHgNfSBV82ddD-_zQ-1; Thu,
- 13 Nov 2025 05:06:10 -0500
-X-MC-Unique: -1zOWuHgNfSBV82ddD-_zQ-1
-X-Mimecast-MFC-AGG-ID: -1zOWuHgNfSBV82ddD-_zQ_1763028368
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8A8771955F54; Thu, 13 Nov 2025 10:06:07 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.45.224.127])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 20EB2180094B; Thu, 13 Nov 2025 10:06:02 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Cc: Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Subject: [PATCH] tests/functional/arm/test_aspeed_ast2600_buildroot: Fix
- pylint warnings
-Date: Thu, 13 Nov 2025 11:06:01 +0100
-Message-ID: <20251113100601.476900-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vJUWD-0007Qx-Sq
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:33 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vJUW9-0007H1-Gm
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:33 -0500
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-640e9f5951aso2912074a12.1
+ for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1763029528; x=1763634328; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=6PFyNVmW41Sxq9LA5K2KHMOdLPGkT9qJhzHZKWnYoAY=;
+ b=ChRg1BsCL9rzA9wjuCAjegfQPXX02ADETH27KZHvpEmVK4sdipsX5Ri+rrYX1aVy0Q
+ /eCeAuMA0xG9txlUpCuiUU/ZLLrUpqa40Jf7seStZf0Vy0hSN9QYyqu7pCZmWA0DiI6g
+ oAcIq5zmdyAYuOD6D6wSJs+WrA6cDfZ8PEui1FxSNTUqgniVONHMgGNHN9cbBFxPtTq2
+ fLyOCBD6RFj6uStMh9+fRhNr5dS2Q0r5+oN/DU8LgbkwpYWHSjlwlxdLYX9iW2vXhJut
+ 5zO4WyJvOV3tyA3nd+I3o43uN7MxybYP/jmjBbrmxcmGuJoAt8HNFlLHH29O+oni1s1f
+ IpQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1763029528; x=1763634328;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=6PFyNVmW41Sxq9LA5K2KHMOdLPGkT9qJhzHZKWnYoAY=;
+ b=ua+jAa5ncR8pYBrEbO9KlE6Y3OXTiGaxlLmnqln12PemCW6QCLeC7TFMPsrgmbHYrJ
+ LQhI2tY8bY0p4CwrKY1RpkwanhxwhTx39KYSirx1mMW3Ogk8W98Ll1q34fJ0qmQRI/M9
+ FKm/JF0y9dHPGaGNGFWbGUYjhncLnaSX3REyVKPf+jezHmxcDew/NvZSwEm9BF8Cq5Ru
+ 5mjlgsOHCMiQQKbidP4LJLPpF1JhdEHx7babIN6akwiL3bOkjMeDblLNFdjPHNgGuzVf
+ SbI+ZJ8XSJZGTGRlf+hznbDicJkNnrooaItRYnt7sQlkKwIWpZZmLl4jK82T54Rryqt4
+ mfMg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV5wowddGH6m58tPXBP95D7JgC4OpnbMEmk4UHz1JLj0YgYV/h+XsqvmFqGrKyM91Cdm5xDTqq92g==@nongnu.org
+X-Gm-Message-State: AOJu0YyRq0bct/rI4TlBkNWuZKUCnh1LXcr9rQJ1Y6ejTMr4wi56E33q
+ SnB3tL/U7pf7UH1UMwdriAk0jR8CwbvcNnG1CTiFo9HlNsFUVEmulUIXA7+wbp1VFZA=
+X-Gm-Gg: ASbGncvf4Id0jkrAJIwmc+LFemPsDxTYnck3bwbDWy3XtQPl+y2C0ntIy+qKwlRK+V1
+ nUQFHUNKE0yl3m5k+BjDOP0I+gQOd1tlF6aXn1IVI6Nm5Gu7oju8z/C5UEfqLCoQrZOZkWYPm1V
+ FFLfyB0T0kpI5VuREVAv/DTESJ+9MSYxkeC0cgTK8lST75llGiWFUAawShgSiuF08FwjbiPjGXN
+ fdGLpeuc2rbULC433ZJ1k/Nvvc74jCVwuLpf0zPCqH8aUsvm57X0qjOMs5XhzavUWTvRwRTnwN0
+ BSi10Y4W635Re0b41FMlfdpJCnzM/bsGHX5P87HgEF5XJhw59rlhyrUw7clah+UYsJvMTd3W7Xl
+ KudK2hKbFvFZnHBObKF2eyBhZEIsbgp53iJ3Ha+Job3r6DRQCtuhnjxa1eZBbpHDLa6Gd7OhsLS
+ sy
+X-Google-Smtp-Source: AGHT+IGiCM8yuLjAyZxeNjqTnHB/PoBiHZPuZSXu8IK5tymujj89vM/Qx0aTXirprNzcX7n+mhtjmg==
+X-Received: by 2002:a17:907:a01:b0:b70:4f7d:24f8 with SMTP id
+ a640c23a62f3a-b73483a82dbmr266519766b.22.1763029527756; 
+ Thu, 13 Nov 2025 02:25:27 -0800 (PST)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b734fda92c5sm131272966b.53.2025.11.13.02.25.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 13 Nov 2025 02:25:27 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 24C115F905;
+ Thu, 13 Nov 2025 10:25:26 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Paul Durrant <paul@xen.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ Gustavo Romero <gustavo.romero@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Kohei Tokunaga <ktokunaga.mail@gmail.com>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Thomas Huth <thuth@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-s390x@nongnu.org, Li-Wen Hsu <lwhsu@freebsd.org>,
+ David Woodhouse <dwmw2@infradead.org>, Ed Maste <emaste@freebsd.org>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH v2 03/18] tests/lcitool: update ENV stazas outputted by refresh
+Date: Thu, 13 Nov 2025 10:25:09 +0000
+Message-ID: <20251113102525.1255370-4-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20251113102525.1255370-1-alex.bennee@linaro.org>
+References: <20251113102525.1255370-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,74 +118,214 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+Now lcitool has been updated to use the non-legacy ENVs we should do
+the same for what refresh adds.
 
-Pylint recommends to use a "with" context for tempfile.TemporaryDirectory()
-to make sure that the directory is deleted once it is not needed anymore,
-and it recommends to use the "check" parameter for subprocess.run().
-For style reasons, the imports at the beginning of the file should be
-grouped by module.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .../arm/test_aspeed_ast2600_buildroot.py      | 21 +++++++++++--------
- 1 file changed, 12 insertions(+), 9 deletions(-)
+ tests/docker/dockerfiles/debian-amd64-cross.docker    | 4 ++--
+ tests/docker/dockerfiles/debian-arm64-cross.docker    | 4 ++--
+ tests/docker/dockerfiles/debian-armhf-cross.docker    | 4 ++--
+ tests/docker/dockerfiles/debian-i686-cross.docker     | 4 ++--
+ tests/docker/dockerfiles/debian-mips64el-cross.docker | 4 ++--
+ tests/docker/dockerfiles/debian-mipsel-cross.docker   | 4 ++--
+ tests/docker/dockerfiles/debian-ppc64el-cross.docker  | 4 ++--
+ tests/docker/dockerfiles/debian-riscv64-cross.docker  | 4 ++--
+ tests/docker/dockerfiles/debian-s390x-cross.docker    | 4 ++--
+ tests/docker/dockerfiles/debian.docker                | 2 +-
+ tests/docker/dockerfiles/fedora-win64-cross.docker    | 4 ++--
+ tests/lcitool/refresh                                 | 6 +++---
+ 12 files changed, 24 insertions(+), 24 deletions(-)
 
-diff --git a/tests/functional/arm/test_aspeed_ast2600_buildroot.py b/tests/functional/arm/test_aspeed_ast2600_buildroot.py
-index 51f2676c906..575a5f64143 100755
---- a/tests/functional/arm/test_aspeed_ast2600_buildroot.py
-+++ b/tests/functional/arm/test_aspeed_ast2600_buildroot.py
-@@ -9,8 +9,8 @@
- import tempfile
- import subprocess
+diff --git a/tests/docker/dockerfiles/debian-amd64-cross.docker b/tests/docker/dockerfiles/debian-amd64-cross.docker
+index 26a39940126..c38ab8247d5 100644
+--- a/tests/docker/dockerfiles/debian-amd64-cross.docker
++++ b/tests/docker/dockerfiles/debian-amd64-cross.docker
+@@ -181,8 +181,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/x86_64-linux-gnu && \
+ ENV ABI="x86_64-linux-gnu"
+ ENV MESON_OPTS="--cross-file=x86_64-linux-gnu"
+ ENV RUST_TARGET="x86_64-unknown-linux-gnu"
+-ENV QEMU_CONFIGURE_OPTS --cross-prefix=x86_64-linux-gnu-
+-ENV DEF_TARGET_LIST x86_64-softmmu,x86_64-linux-user,i386-softmmu,i386-linux-user
++ENV QEMU_CONFIGURE_OPTS=--cross-prefix=x86_64-linux-gnu-
++ENV DEF_TARGET_LIST=x86_64-softmmu,x86_64-linux-user,i386-softmmu,i386-linux-user
+ # As a final step configure the user (if env is defined)
+ ARG USER
+ ARG UID
+diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
+index 4b0163fa1b9..2f62da0f5eb 100644
+--- a/tests/docker/dockerfiles/debian-arm64-cross.docker
++++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
+@@ -180,8 +180,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/aarch64-linux-gnu && \
+ ENV ABI="aarch64-linux-gnu"
+ ENV MESON_OPTS="--cross-file=aarch64-linux-gnu"
+ ENV RUST_TARGET="aarch64-unknown-linux-gnu"
+-ENV QEMU_CONFIGURE_OPTS --cross-prefix=aarch64-linux-gnu-
+-ENV DEF_TARGET_LIST aarch64-softmmu,aarch64-linux-user
++ENV QEMU_CONFIGURE_OPTS=--cross-prefix=aarch64-linux-gnu-
++ENV DEF_TARGET_LIST=aarch64-softmmu,aarch64-linux-user
+ # As a final step configure the user (if env is defined)
+ ARG USER
+ ARG UID
+diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
+index 742031ce0a2..62e297f5d12 100644
+--- a/tests/docker/dockerfiles/debian-armhf-cross.docker
++++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
+@@ -177,8 +177,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/arm-linux-gnueabihf && \
+ ENV ABI="arm-linux-gnueabihf"
+ ENV MESON_OPTS="--cross-file=arm-linux-gnueabihf"
+ ENV RUST_TARGET="armv7-unknown-linux-gnueabihf"
+-ENV QEMU_CONFIGURE_OPTS --cross-prefix=arm-linux-gnueabihf-
+-ENV DEF_TARGET_LIST arm-softmmu,arm-linux-user
++ENV QEMU_CONFIGURE_OPTS=--cross-prefix=arm-linux-gnueabihf-
++ENV DEF_TARGET_LIST=arm-softmmu,arm-linux-user
+ # As a final step configure the user (if env is defined)
+ ARG USER
+ ARG UID
+diff --git a/tests/docker/dockerfiles/debian-i686-cross.docker b/tests/docker/dockerfiles/debian-i686-cross.docker
+index 1ccfde2e4bb..eb9a915d492 100644
+--- a/tests/docker/dockerfiles/debian-i686-cross.docker
++++ b/tests/docker/dockerfiles/debian-i686-cross.docker
+@@ -177,8 +177,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/i686-linux-gnu && \
+ ENV ABI="i686-linux-gnu"
+ ENV MESON_OPTS="--cross-file=i686-linux-gnu"
+ ENV RUST_TARGET="i686-unknown-linux-gnu"
+-ENV QEMU_CONFIGURE_OPTS --cross-prefix=i686-linux-gnu-
+-ENV DEF_TARGET_LIST i386-softmmu,i386-linux-user
++ENV QEMU_CONFIGURE_OPTS=--cross-prefix=i686-linux-gnu-
++ENV DEF_TARGET_LIST=i386-softmmu,i386-linux-user
+ # As a final step configure the user (if env is defined)
+ ARG USER
+ ARG UID
+diff --git a/tests/docker/dockerfiles/debian-mips64el-cross.docker b/tests/docker/dockerfiles/debian-mips64el-cross.docker
+index eeb77212d5d..42e8444d153 100644
+--- a/tests/docker/dockerfiles/debian-mips64el-cross.docker
++++ b/tests/docker/dockerfiles/debian-mips64el-cross.docker
+@@ -176,8 +176,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/mips64el-linux-gnuabi64 && \
+ ENV ABI="mips64el-linux-gnuabi64"
+ ENV MESON_OPTS="--cross-file=mips64el-linux-gnuabi64"
+ ENV RUST_TARGET="mips64el-unknown-linux-gnuabi64"
+-ENV QEMU_CONFIGURE_OPTS --cross-prefix=mips64el-linux-gnuabi64-
+-ENV DEF_TARGET_LIST mips64el-softmmu,mips64el-linux-user
++ENV QEMU_CONFIGURE_OPTS=--cross-prefix=mips64el-linux-gnuabi64-
++ENV DEF_TARGET_LIST=mips64el-softmmu,mips64el-linux-user
+ # As a final step configure the user (if env is defined)
+ ARG USER
+ ARG UID
+diff --git a/tests/docker/dockerfiles/debian-mipsel-cross.docker b/tests/docker/dockerfiles/debian-mipsel-cross.docker
+index 9b3dca44f15..1ab197b144d 100644
+--- a/tests/docker/dockerfiles/debian-mipsel-cross.docker
++++ b/tests/docker/dockerfiles/debian-mipsel-cross.docker
+@@ -176,8 +176,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/mipsel-linux-gnu && \
+ ENV ABI="mipsel-linux-gnu"
+ ENV MESON_OPTS="--cross-file=mipsel-linux-gnu"
+ ENV RUST_TARGET="mipsel-unknown-linux-gnu"
+-ENV QEMU_CONFIGURE_OPTS --cross-prefix=mipsel-linux-gnu-
+-ENV DEF_TARGET_LIST mipsel-softmmu,mipsel-linux-user
++ENV QEMU_CONFIGURE_OPTS=--cross-prefix=mipsel-linux-gnu-
++ENV DEF_TARGET_LIST=mipsel-softmmu,mipsel-linux-user
+ # As a final step configure the user (if env is defined)
+ ARG USER
+ ARG UID
+diff --git a/tests/docker/dockerfiles/debian-ppc64el-cross.docker b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
+index 15c6b436d31..85d2c0ffdc2 100644
+--- a/tests/docker/dockerfiles/debian-ppc64el-cross.docker
++++ b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
+@@ -179,8 +179,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/powerpc64le-linux-gnu && \
+ ENV ABI="powerpc64le-linux-gnu"
+ ENV MESON_OPTS="--cross-file=powerpc64le-linux-gnu"
+ ENV RUST_TARGET="powerpc64le-unknown-linux-gnu"
+-ENV QEMU_CONFIGURE_OPTS --cross-prefix=powerpc64le-linux-gnu-
+-ENV DEF_TARGET_LIST ppc64-softmmu,ppc64-linux-user
++ENV QEMU_CONFIGURE_OPTS=--cross-prefix=powerpc64le-linux-gnu-
++ENV DEF_TARGET_LIST=ppc64-softmmu,ppc64-linux-user
+ # As a final step configure the user (if env is defined)
+ ARG USER
+ ARG UID
+diff --git a/tests/docker/dockerfiles/debian-riscv64-cross.docker b/tests/docker/dockerfiles/debian-riscv64-cross.docker
+index 2591c4adc96..4f01eecf416 100644
+--- a/tests/docker/dockerfiles/debian-riscv64-cross.docker
++++ b/tests/docker/dockerfiles/debian-riscv64-cross.docker
+@@ -179,8 +179,8 @@ endian = 'little'\n" > /usr/local/share/meson/cross/riscv64-linux-gnu && \
+ ENV ABI="riscv64-linux-gnu"
+ ENV MESON_OPTS="--cross-file=riscv64-linux-gnu"
+ ENV RUST_TARGET="riscv64gc-unknown-linux-gnu"
+-ENV QEMU_CONFIGURE_OPTS --cross-prefix=riscv64-linux-gnu-
+-ENV DEF_TARGET_LIST riscv64-softmmu,riscv64-linux-user
++ENV QEMU_CONFIGURE_OPTS=--cross-prefix=riscv64-linux-gnu-
++ENV DEF_TARGET_LIST=riscv64-softmmu,riscv64-linux-user
+ # As a final step configure the user (if env is defined)
+ ARG USER
+ ARG UID
+diff --git a/tests/docker/dockerfiles/debian-s390x-cross.docker b/tests/docker/dockerfiles/debian-s390x-cross.docker
+index 57aa3209c5c..2a3046e7859 100644
+--- a/tests/docker/dockerfiles/debian-s390x-cross.docker
++++ b/tests/docker/dockerfiles/debian-s390x-cross.docker
+@@ -178,8 +178,8 @@ endian = 'big'\n" > /usr/local/share/meson/cross/s390x-linux-gnu && \
+ ENV ABI="s390x-linux-gnu"
+ ENV MESON_OPTS="--cross-file=s390x-linux-gnu"
+ ENV RUST_TARGET="s390x-unknown-linux-gnu"
+-ENV QEMU_CONFIGURE_OPTS --cross-prefix=s390x-linux-gnu-
+-ENV DEF_TARGET_LIST s390x-softmmu,s390x-linux-user
++ENV QEMU_CONFIGURE_OPTS=--cross-prefix=s390x-linux-gnu-
++ENV DEF_TARGET_LIST=s390x-softmmu,s390x-linux-user
+ # As a final step configure the user (if env is defined)
+ ARG USER
+ ARG UID
+diff --git a/tests/docker/dockerfiles/debian.docker b/tests/docker/dockerfiles/debian.docker
+index bbb920c6815..c1817f162f6 100644
+--- a/tests/docker/dockerfiles/debian.docker
++++ b/tests/docker/dockerfiles/debian.docker
+@@ -169,7 +169,7 @@ RUN cd /usr/src/netmap/LINUX && \
+   ./configure --no-drivers --no-apps \
+   --kernel-dir=$(ls -d /usr/src/linux-headers-*-$(dpkg --print-architecture)) \
+   && make install
+-ENV QEMU_CONFIGURE_OPTS --enable-netmap
++ENV QEMU_CONFIGURE_OPTS=--enable-netmap
+ # As a final step configure the user (if env is defined)
+ ARG USER
+ ARG UID
+diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
+index e6f84dd556f..1da425768fc 100644
+--- a/tests/docker/dockerfiles/fedora-win64-cross.docker
++++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
+@@ -112,8 +112,8 @@ RUN nosync dnf install -y \
  
--from qemu_test import Asset
- from aspeed import AspeedTest
-+from qemu_test import Asset
- from qemu_test import exec_command_and_wait_for_pattern, skipIfMissingCommands
+ ENV ABI="x86_64-w64-mingw32"
+ ENV MESON_OPTS="--cross-file=/usr/share/mingw/toolchain-mingw64.meson"
+-ENV QEMU_CONFIGURE_OPTS --cross-prefix=x86_64-w64-mingw32-
+-ENV DEF_TARGET_LIST x86_64-softmmu
++ENV QEMU_CONFIGURE_OPTS=--cross-prefix=x86_64-w64-mingw32-
++ENV DEF_TARGET_LIST=x86_64-softmmu
+ # As a final step configure the user (if env is defined)
+ ARG USER
+ ARG UID
+diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+index df186caffe6..3a31fcfee9c 100755
+--- a/tests/lcitool/refresh
++++ b/tests/lcitool/refresh
+@@ -121,7 +121,7 @@ debian13_extras = [
+     "  ./configure --no-drivers --no-apps \\\n",
+     "  --kernel-dir=$(ls -d /usr/src/linux-headers-*-$(dpkg --print-architecture)) \\\n",
+     "  && make install\n",
+-    "ENV QEMU_CONFIGURE_OPTS --enable-netmap\n"
++    "ENV QEMU_CONFIGURE_OPTS=--enable-netmap\n"
+ ]
  
+ # Based on the hub.docker.com/library/rust Dockerfiles
+@@ -162,8 +162,8 @@ ubuntu2204_rust_extras = [
+ ]
  
-@@ -66,21 +66,18 @@ def test_arm_ast2600_evb_buildroot(self):
-          'images/ast2600-evb/buildroot-2023.02-tpm/flash.img'),
-         'a46009ae8a5403a0826d607215e731a8c68d27c14c41e55331706b8f9c7bd997')
+ def cross_build(prefix, targets):
+-    conf = "ENV QEMU_CONFIGURE_OPTS --cross-prefix=%s\n" % (prefix)
+-    targets = "ENV DEF_TARGET_LIST %s\n" % (targets)
++    conf = "ENV QEMU_CONFIGURE_OPTS=--cross-prefix=%s\n" % (prefix)
++    targets = "ENV DEF_TARGET_LIST=%s\n" % (targets)
+     return "".join([conf, targets])
  
--    @skipIfMissingCommands('swtpm')
--    def test_arm_ast2600_evb_buildroot_tpm(self):
--        self.set_machine('ast2600-evb')
--
-+    def _test_arm_ast2600_evb_buildroot_tpm(self, tpmstate_dir):
-         image_path = self.ASSET_BR2_202302_AST2600_TPM_FLASH.fetch()
- 
--        tpmstate_dir = tempfile.TemporaryDirectory(prefix="qemu_")
--        socket = os.path.join(tpmstate_dir.name, 'swtpm-socket')
-+        socket = os.path.join(tpmstate_dir, 'swtpm-socket')
- 
-         # We must put the TPM state dir in /tmp/, not the build dir,
-         # because some distros use AppArmor to lock down swtpm and
-         # restrict the set of locations it can access files in.
-         subprocess.run(['swtpm', 'socket', '-d', '--tpm2',
--                        '--tpmstate', f'dir={tpmstate_dir.name}',
--                        '--ctrl', f'type=unixio,path={socket}'])
-+                        '--tpmstate', f'dir={tpmstate_dir}',
-+                        '--ctrl', f'type=unixio,path={socket}'],
-+                       check=True)
- 
-         self.vm.add_args('-chardev', f'socket,id=chrtpm,path={socket}')
-         self.vm.add_args('-tpmdev', 'emulator,id=tpm0,chardev=chrtpm')
-@@ -97,6 +94,12 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
- 
-         self.do_test_arm_aspeed_buildroot_poweroff()
- 
-+    @skipIfMissingCommands('swtpm')
-+    def test_arm_ast2600_evb_buildroot_tpm(self):
-+        self.set_machine('ast2600-evb')
-+        with tempfile.TemporaryDirectory(prefix="qemu_") as tpmstate_dir:
-+            self._test_arm_ast2600_evb_buildroot_tpm(tpmstate_dir)
-+
- 
- if __name__ == '__main__':
-     AspeedTest.main()
+ #
 -- 
-2.51.1
+2.47.3
 
 

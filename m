@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E25BCD5BBB
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:28:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E86C5CD5BB8
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:28:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJUWM-0007ly-Q8; Thu, 13 Nov 2025 05:25:42 -0500
+	id 1vJUWO-0007qg-Gl; Thu, 13 Nov 2025 05:25:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUWI-0007eu-Ei
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:38 -0500
+ id 1vJUWL-0007kA-NX
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:41 -0500
 Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUWB-0007Hj-RJ
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:38 -0500
+ id 1vJUWE-0007If-6h
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:41 -0500
 Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-b7355f6ef12so60434766b.3
- for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:31 -0800 (PST)
+ a640c23a62f3a-b73161849e1so101826066b.2
+ for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763029530; x=1763634330; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763029533; x=1763634333; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=B6MG1TGqEZEKs8lWNOvNJUKe3Xf+4CJsaxs77IqurM8=;
- b=juNQyNONisj8FceAE+7thFRHIrzRmf9JzruKAGzItFNtrMe9JD8VzJejToiKuiAdki
- NSxsUdkvb3D6S9OqaHMQbepbbL3IZKpf35jsiRMVht/XTU82iQe/RGGGjE5WS2RgycGF
- 8Dn8pKhIYj98BDTLR4LVJGYOJJNICtRje3g6c/ZaAxOn1OZQ4bMD0q91DJsDM6Zpei3H
- AUbSQnPxxVJCUokrv5xvlDEqOKzdMb6AMDuAjEninLiv4tlgAj6QFiJ4BQmOlHiDhKBt
- NxwM/+9Xqew9I2df9d5prhSZDRSSUH2dJmppWTsTE4MGexHFwocxCHNDOkk4WZhlM4z0
- ijlQ==
+ bh=vlCHybPzDuoJOci0v74ijY95dNfkhBjmAJIbo8QxUw0=;
+ b=qhnaOO09D1uCdnp3gRk/xD5TGO6JNAkGqRN/EMAL3MXAm+pgBkpoZayF8NVMNoJbwi
+ W3ANKJWh5zmGIDu1msen8Zkbn1ebykHZtLT7DPVlqtCa2qV7aKXs8SkXhoeEjIGf3n0T
+ o+CIlXq+ODn6haDouNIBHB0EdWCvIAUnu+hcX4VhVm8z1ZkG9SX704peA+uTIOzZtnGc
+ sScYkXivvJ3hMdHfhzP3UjKYet44/YSObWEgL9IM3n2CxuPqpFawGRDGJGwv9lhnMZd2
+ gSThmLuCi/TqjtcIH4pVCZQoY0E4wi/zcwr7duTy054Itsz729YsMcAFaAsJEcsHEbZP
+ rKZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763029530; x=1763634330;
+ d=1e100.net; s=20230601; t=1763029533; x=1763634333;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=B6MG1TGqEZEKs8lWNOvNJUKe3Xf+4CJsaxs77IqurM8=;
- b=Tp7xKVpinwIhh2+BrtHO5vrUs6mcwEvHcgQ5M7w5vbpVhZVUXvT/lUgxf9p5LqSXjL
- VlRf8aruFcLu8ji0AjjaKl7YhtSSSt5tOFxjuFm9rs4HJ6AhiC4Axyl+fZ4Xt4wptyGo
- h7q1PsxBRHREz0oOiJCXXT54vLCMJs7gBx9w8PjwEX6kN3ajS9iRO5YHRFeXs25NRKtr
- qnV9T4WYMeJIKDN/OwBaD5vLIXQ3WPg0YMEUDx1/t3bNVLPJiUTXp0wwurZe/og8W10V
- T5UFUt4VYJa6XvCbbnWG1C20MhE7dbJNS80yZ7YBpzb13TIvXUMt4XMtqtowAcACYmyL
- 2KVg==
+ bh=vlCHybPzDuoJOci0v74ijY95dNfkhBjmAJIbo8QxUw0=;
+ b=LYD56w0yVPF/LPXXMvXR2PmNZ43sfRSbcA5gF84dMgXyUvYdpfFpnqp9+3JJNBVoec
+ 3dKVI+8Yv57kFdKFRD5BKfVE9tpvp6Z66oAGn/OlE2M0j8aIUw8i+PYXvE6HEWy3svwd
+ qcXg5DRUiTiQV1Q7y62QGAOa4SzCkhqUIDUNgOh4BQdRDR1BT5wr4J5goasK35jBuHxF
+ Yzn8zAUp3T6XRXcqfkIoo8RvyN8T5FUSlLFAaziP97lAACz+TT+dJID590MrgbC+KKvE
+ i+x790G6c/XmhicifDLZuePfXgi72jH075SNKaUtEsg/CWPUsLvR4DlCnd9bx08+7nlK
+ A0FA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVzY80aTQMPnI1DIdMZWauJ1+Bq1UbPm5zH8tnjus2WiErBjx3qwM74Ivv0UvtBzc+3Rb3d5pcTjQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yx2PuvoPiN/ZWfUx+y2UbjsVEDF0mZREGh1GQioZ3hF+0G3KEXU
- Oqz2gHUvHOand/DChzWr0OmZ8BmfTHyyZqIDUfdM04ePLugB71rbK6gD3Ah+l6Nd4QA=
-X-Gm-Gg: ASbGncsf4G+LMQNvzVbJOr9Dr7/yknaNYv8UIcSrBBNsYroCClqYW2J4yVUjo1dnfZ1
- cKT/8858gR9JtWW1HhiJA9C0riDsVHzkSjqZJgPpqnESpC6HnFo9nXz5VM8hodw4rYAVDWCqHIa
- ubdppyyCGI/5EMa301pqBsKDpS4i4HJB7VKwxisXK2rWwkK19dlliEpz5X3/EvSEmepF7Fm+w1P
- /6w4k2/lEtJ8sGbrk1VGPQENG5n1Ivg7JRtgFSqGUYRIplzr6JaUvGswD9aNKGW8yM/ri0XzGbB
- +aC8qFNCKYYcm6OmP9/EynqoU0tWFg1bUTf5mgFhHjEnM/Qs6Os7pduca7ThWGftDG25LhZbTJN
- DZf2tmCDsSxIEaVwpSIlOjHvXG5y7A6IskzWJ8wlx/DgxMUWcDCA/l29XGXGOfjbkv789mh1DfG
- kJGFlRmzxd4lo=
-X-Google-Smtp-Source: AGHT+IElxVay9Pyb26bhmRQj7nHmVyZHQ0NUBPDwnQ27EIu3ES34C1swpwXOosWzRMKL4CD/MVDZ5Q==
-X-Received: by 2002:a17:907:930b:b0:b73:278a:a499 with SMTP id
- a640c23a62f3a-b7331997c1dmr557136866b.15.1763029529961; 
- Thu, 13 Nov 2025 02:25:29 -0800 (PST)
+ AJvYcCXH+khmYrhOk9XkFioJBr2dB7dH5y77WVP/E+K57IH9+BRa9vqDf/3yeMcasZvHWMaBrg60n+iP3A==@nongnu.org
+X-Gm-Message-State: AOJu0Yy7ESwhOS78pCRGPEe0MTkoAkwnigmykn+8Ul8Pd/Y/rpgzFUVA
+ InsIscRpGAn7YzMOjWxp6UHo+CSl7YuMgC4WJMNRmqFUyrp1FkrV+0SUel3xXPht0UY=
+X-Gm-Gg: ASbGnctRh8/LyWhmA2i8UsgcBc2XGaKk563JejdvchDVVsJ6wL9FogJy8eYuiQ2c8xb
+ QELYQYEXEesxq2sgId2AtUmn+id5AGN4IBpenAglMsB6qUym01Na5XgZ2AzV++mbpGpWvOUAamX
+ +/x/dO8q8pig2435Pq6gRlsBJMqTjZgsUfg9IttACi+FX3dCfVqLANFBpqtD2lPRdQy47YSarfv
+ sWxfnbpw6V3C+yXjL3Fzkqz2W43xvn6OIDzHB7zi16Cseab4TyR05Gqyz3WeAZPMD9sb1Xlc50x
+ uHmWlzw48iAlT8HTdHytX7LKYgx8TcFQ3CXf8U/4fcd2VEjtbh2REpHpd+9C88s+/8XqUxPvg81
+ /KgV0CbPXa7epEDKWmh8arARgRCBXmM8FQH14Rh3is6r4az6Y5UeOR5CI+HFilCFtuaoI8RGQig
+ Wi
+X-Google-Smtp-Source: AGHT+IFSefeI3O3NTyzInxDbyr4d+Szrak+Wk48jqZT19jYcdXoczcU1I6FmxlB0Ky6wwAR6+WCrmA==
+X-Received: by 2002:a17:907:8694:b0:b73:4894:6e10 with SMTP id
+ a640c23a62f3a-b7348946ecdmr282833466b.46.1763029532396; 
+ Thu, 13 Nov 2025 02:25:32 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b734fa81172sm135054566b.15.2025.11.13.02.25.26
+ a640c23a62f3a-b734fa81275sm135714466b.13.2025.11.13.02.25.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Nov 2025 02:25:27 -0800 (PST)
+ Thu, 13 Nov 2025 02:25:29 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 00DFA5F8C4;
+ by draig.lan (Postfix) with ESMTP id 9FFD25F956;
  Thu, 13 Nov 2025 10:25:26 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -84,10 +84,10 @@ Cc: Paul Durrant <paul@xen.org>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-s390x@nongnu.org, Li-Wen Hsu <lwhsu@freebsd.org>,
  David Woodhouse <dwmw2@infradead.org>, Ed Maste <emaste@freebsd.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 02/18] libvirt-ci: bump libvirt-ci to latest version
-Date: Thu, 13 Nov 2025 10:25:08 +0000
-Message-ID: <20251113102525.1255370-3-alex.bennee@linaro.org>
+ qemu-stable@nongnu.org
+Subject: [PATCH v2 07/18] tests: move test_xen assets to share.linaro.org
+Date: Thu, 13 Nov 2025 10:25:13 +0000
+Message-ID: <20251113102525.1255370-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251113102525.1255370-1-alex.bennee@linaro.org>
 References: <20251113102525.1255370-1-alex.bennee@linaro.org>
@@ -118,532 +118,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We will need the latest version to add coreutils in the next commit.
-As libvirt has updated the handling of ENV variables this brings a
-little bit of churn to the docker images.
+Linaro are migrating file-hosting from the old NextCloud instance to
+another sharing site.
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
----
- tests/docker/dockerfiles/alpine.docker        | 10 +++++-----
- tests/docker/dockerfiles/centos9.docker       | 10 +++++-----
- .../dockerfiles/debian-amd64-cross.docker     | 16 ++++++++--------
- .../dockerfiles/debian-arm64-cross.docker     | 16 ++++++++--------
- .../dockerfiles/debian-armhf-cross.docker     | 16 ++++++++--------
- .../dockerfiles/debian-i686-cross.docker      | 16 ++++++++--------
- .../dockerfiles/debian-mips64el-cross.docker  | 16 ++++++++--------
- .../dockerfiles/debian-mipsel-cross.docker    | 16 ++++++++--------
- .../dockerfiles/debian-ppc64el-cross.docker   | 16 ++++++++--------
- .../dockerfiles/debian-riscv64-cross.docker   | 19 ++++++++-----------
- .../dockerfiles/debian-s390x-cross.docker     | 16 ++++++++--------
- tests/docker/dockerfiles/debian.docker        | 10 +++++-----
- .../dockerfiles/fedora-rust-nightly.docker    | 10 +++++-----
- .../dockerfiles/fedora-win64-cross.docker     | 14 +++++++-------
- tests/docker/dockerfiles/fedora.docker        | 10 +++++-----
- tests/docker/dockerfiles/opensuse-leap.docker | 10 +++++-----
- tests/docker/dockerfiles/ubuntu2204.docker    | 10 +++++-----
- tests/lcitool/libvirt-ci                      |  2 +-
- 18 files changed, 115 insertions(+), 118 deletions(-)
+Cc: qemu-stable@nongnu.org
 
-diff --git a/tests/docker/dockerfiles/alpine.docker b/tests/docker/dockerfiles/alpine.docker
-index 52adf9ccbb7..1da375c9158 100644
---- a/tests/docker/dockerfiles/alpine.docker
-+++ b/tests/docker/dockerfiles/alpine.docker
-@@ -126,11 +126,11 @@ RUN apk update && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/clang && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
+---
+v2
+  - strip un-needed ellipses
+---
+ tests/functional/aarch64/test_xen.py | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/tests/functional/aarch64/test_xen.py b/tests/functional/aarch64/test_xen.py
+index 261d796540d..d90595cad35 100755
+--- a/tests/functional/aarch64/test_xen.py
++++ b/tests/functional/aarch64/test_xen.py
+@@ -25,8 +25,7 @@ class BootXen(LinuxKernelTest):
+     XEN_COMMON_COMMAND_LINE = 'dom0_mem=128M loglvl=all guest_loglvl=all'
  
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- # https://gitlab.alpinelinux.org/alpine/aports/-/issues/17463
- RUN apk add clang19-libclang
- # As a final step configure the user (if env is defined)
-diff --git a/tests/docker/dockerfiles/centos9.docker b/tests/docker/dockerfiles/centos9.docker
-index 0674d778262..ff3e8069b45 100644
---- a/tests/docker/dockerfiles/centos9.docker
-+++ b/tests/docker/dockerfiles/centos9.docker
-@@ -132,11 +132,11 @@ RUN dnf distro-sync -y && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/clang && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/gcc
+     ASSET_KERNEL = Asset(
+-        ('https://fileserver.linaro.org/s/JSsewXGZ6mqxPr5/'
+-         'download?path=%2F&files=linux-5.9.9-arm64-ajb'),
++        'https://share.linaro.org/downloadFile?id=RRahAWwAwYKTZQd',
+         '00366fa51ea957c19462d2e2aefd480bef80ce727120e714ae48e0c88f261edb')
  
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/debian-amd64-cross.docker b/tests/docker/dockerfiles/debian-amd64-cross.docker
-index 7f4674400df..26a39940126 100644
---- a/tests/docker/dockerfiles/debian-amd64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-amd64-cross.docker
-@@ -72,11 +72,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+     def launch_xen(self, xen_path):
+@@ -55,8 +54,7 @@ def launch_xen(self, xen_path):
+         wait_for_console_pattern(self, console_pattern, "Panic on CPU 0:")
  
- RUN /usr/bin/pip3 install meson==1.8.1
+     ASSET_XEN_4_11 = Asset(
+-        ('https://fileserver.linaro.org/s/JSsewXGZ6mqxPr5/download?path=%2F&'
+-         'files=xen-hypervisor-4.11-arm64_4.11.4%2B37-g3263f257ca-1_arm64.deb'),
++        'https://share.linaro.org/downloadFile?id=ALU4n2NGGYbE4fO',
+         'b745c2631342f9fcc0147ddc364edb62c20ecfebd430e5a3546e7d7c6891c0bc')
  
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
+     def test_arm64_xen_411_and_dom0(self):
+@@ -66,8 +64,7 @@ def test_arm64_xen_411_and_dom0(self):
+         self.launch_xen(xen_path)
  
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     dpkg --add-architecture amd64 && \
-@@ -178,9 +178,9 @@ endian = 'little'\n" > /usr/local/share/meson/cross/x86_64-linux-gnu && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/x86_64-linux-gnu-cc && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/x86_64-linux-gnu-gcc
+     ASSET_XEN_4_14 = Asset(
+-        ('https://fileserver.linaro.org/s/JSsewXGZ6mqxPr5/download?path=%2F&'
+-         'files=xen-hypervisor-4.14-arm64_4.14.0%2B80-gd101b417b7-1_arm64.deb'),
++        'https://share.linaro.org/downloadFile?id=os4zSXPl7WW4lqX',
+         'e930a3293248edabd367d5b4b3b6448b9c99c057096ea8b47228a7870661d5cb')
  
--ENV ABI "x86_64-linux-gnu"
--ENV MESON_OPTS "--cross-file=x86_64-linux-gnu"
--ENV RUST_TARGET "x86_64-unknown-linux-gnu"
-+ENV ABI="x86_64-linux-gnu"
-+ENV MESON_OPTS="--cross-file=x86_64-linux-gnu"
-+ENV RUST_TARGET="x86_64-unknown-linux-gnu"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=x86_64-linux-gnu-
- ENV DEF_TARGET_LIST x86_64-softmmu,x86_64-linux-user,i386-softmmu,i386-linux-user
- # As a final step configure the user (if env is defined)
-diff --git a/tests/docker/dockerfiles/debian-arm64-cross.docker b/tests/docker/dockerfiles/debian-arm64-cross.docker
-index c7cd54ee5ca..4b0163fa1b9 100644
---- a/tests/docker/dockerfiles/debian-arm64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-arm64-cross.docker
-@@ -72,11 +72,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+     def test_arm64_xen_414_and_dom0(self):
+@@ -77,8 +74,7 @@ def test_arm64_xen_414_and_dom0(self):
+         self.launch_xen(xen_path)
  
- RUN /usr/bin/pip3 install meson==1.8.1
+     ASSET_XEN_4_15 = Asset(
+-        ('https://fileserver.linaro.org/s/JSsewXGZ6mqxPr5/download?path=%2F&'
+-         'files=xen-upstream-4.15-unstable.deb'),
++        'https://share.linaro.org/downloadFile?id=jjjG4uTp2wuO4Ks',
+         '2a9a8af8acf0231844657cc28baab95bd918b0ee2d493ee4ee6f8846e1358bc9')
  
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- 
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     dpkg --add-architecture arm64 && \
-@@ -177,9 +177,9 @@ endian = 'little'\n" > /usr/local/share/meson/cross/aarch64-linux-gnu && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/aarch64-linux-gnu-cc && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/aarch64-linux-gnu-gcc
- 
--ENV ABI "aarch64-linux-gnu"
--ENV MESON_OPTS "--cross-file=aarch64-linux-gnu"
--ENV RUST_TARGET "aarch64-unknown-linux-gnu"
-+ENV ABI="aarch64-linux-gnu"
-+ENV MESON_OPTS="--cross-file=aarch64-linux-gnu"
-+ENV RUST_TARGET="aarch64-unknown-linux-gnu"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=aarch64-linux-gnu-
- ENV DEF_TARGET_LIST aarch64-softmmu,aarch64-linux-user
- # As a final step configure the user (if env is defined)
-diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/docker/dockerfiles/debian-armhf-cross.docker
-index 627d41c6dee..742031ce0a2 100644
---- a/tests/docker/dockerfiles/debian-armhf-cross.docker
-+++ b/tests/docker/dockerfiles/debian-armhf-cross.docker
-@@ -72,11 +72,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
- 
- RUN /usr/bin/pip3 install meson==1.8.1
- 
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- 
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     dpkg --add-architecture armhf && \
-@@ -174,9 +174,9 @@ endian = 'little'\n" > /usr/local/share/meson/cross/arm-linux-gnueabihf && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/arm-linux-gnueabihf-cc && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/arm-linux-gnueabihf-gcc
- 
--ENV ABI "arm-linux-gnueabihf"
--ENV MESON_OPTS "--cross-file=arm-linux-gnueabihf"
--ENV RUST_TARGET "armv7-unknown-linux-gnueabihf"
-+ENV ABI="arm-linux-gnueabihf"
-+ENV MESON_OPTS="--cross-file=arm-linux-gnueabihf"
-+ENV RUST_TARGET="armv7-unknown-linux-gnueabihf"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=arm-linux-gnueabihf-
- ENV DEF_TARGET_LIST arm-softmmu,arm-linux-user
- # As a final step configure the user (if env is defined)
-diff --git a/tests/docker/dockerfiles/debian-i686-cross.docker b/tests/docker/dockerfiles/debian-i686-cross.docker
-index 2998764065f..1ccfde2e4bb 100644
---- a/tests/docker/dockerfiles/debian-i686-cross.docker
-+++ b/tests/docker/dockerfiles/debian-i686-cross.docker
-@@ -72,11 +72,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
- 
- RUN /usr/bin/pip3 install meson==1.8.1
- 
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- 
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     dpkg --add-architecture i386 && \
-@@ -174,9 +174,9 @@ endian = 'little'\n" > /usr/local/share/meson/cross/i686-linux-gnu && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/i686-linux-gnu-cc && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/i686-linux-gnu-gcc
- 
--ENV ABI "i686-linux-gnu"
--ENV MESON_OPTS "--cross-file=i686-linux-gnu"
--ENV RUST_TARGET "i686-unknown-linux-gnu"
-+ENV ABI="i686-linux-gnu"
-+ENV MESON_OPTS="--cross-file=i686-linux-gnu"
-+ENV RUST_TARGET="i686-unknown-linux-gnu"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=i686-linux-gnu-
- ENV DEF_TARGET_LIST i386-softmmu,i386-linux-user
- # As a final step configure the user (if env is defined)
-diff --git a/tests/docker/dockerfiles/debian-mips64el-cross.docker b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-index 6e88777f76d..eeb77212d5d 100644
---- a/tests/docker/dockerfiles/debian-mips64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-@@ -71,11 +71,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
- 
- RUN /usr/bin/pip3 install meson==1.8.1
- 
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- 
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     dpkg --add-architecture mips64el && \
-@@ -173,9 +173,9 @@ endian = 'little'\n" > /usr/local/share/meson/cross/mips64el-linux-gnuabi64 && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/mips64el-linux-gnuabi64-cc && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/mips64el-linux-gnuabi64-gcc
- 
--ENV ABI "mips64el-linux-gnuabi64"
--ENV MESON_OPTS "--cross-file=mips64el-linux-gnuabi64"
--ENV RUST_TARGET "mips64el-unknown-linux-gnuabi64"
-+ENV ABI="mips64el-linux-gnuabi64"
-+ENV MESON_OPTS="--cross-file=mips64el-linux-gnuabi64"
-+ENV RUST_TARGET="mips64el-unknown-linux-gnuabi64"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=mips64el-linux-gnuabi64-
- ENV DEF_TARGET_LIST mips64el-softmmu,mips64el-linux-user
- # As a final step configure the user (if env is defined)
-diff --git a/tests/docker/dockerfiles/debian-mipsel-cross.docker b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-index 5f4e3fa9636..9b3dca44f15 100644
---- a/tests/docker/dockerfiles/debian-mipsel-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mipsel-cross.docker
-@@ -71,11 +71,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
- 
- RUN /usr/bin/pip3 install meson==1.8.1
- 
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- 
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     dpkg --add-architecture mipsel && \
-@@ -173,9 +173,9 @@ endian = 'little'\n" > /usr/local/share/meson/cross/mipsel-linux-gnu && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/mipsel-linux-gnu-cc && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/mipsel-linux-gnu-gcc
- 
--ENV ABI "mipsel-linux-gnu"
--ENV MESON_OPTS "--cross-file=mipsel-linux-gnu"
--ENV RUST_TARGET "mipsel-unknown-linux-gnu"
-+ENV ABI="mipsel-linux-gnu"
-+ENV MESON_OPTS="--cross-file=mipsel-linux-gnu"
-+ENV RUST_TARGET="mipsel-unknown-linux-gnu"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=mipsel-linux-gnu-
- ENV DEF_TARGET_LIST mipsel-softmmu,mipsel-linux-user
- # As a final step configure the user (if env is defined)
-diff --git a/tests/docker/dockerfiles/debian-ppc64el-cross.docker b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-index dfa690616d1..15c6b436d31 100644
---- a/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-ppc64el-cross.docker
-@@ -72,11 +72,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
- 
- RUN /usr/bin/pip3 install meson==1.8.1
- 
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- 
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     dpkg --add-architecture ppc64el && \
-@@ -176,9 +176,9 @@ endian = 'little'\n" > /usr/local/share/meson/cross/powerpc64le-linux-gnu && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/powerpc64le-linux-gnu-cc && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/powerpc64le-linux-gnu-gcc
- 
--ENV ABI "powerpc64le-linux-gnu"
--ENV MESON_OPTS "--cross-file=powerpc64le-linux-gnu"
--ENV RUST_TARGET "powerpc64le-unknown-linux-gnu"
-+ENV ABI="powerpc64le-linux-gnu"
-+ENV MESON_OPTS="--cross-file=powerpc64le-linux-gnu"
-+ENV RUST_TARGET="powerpc64le-unknown-linux-gnu"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=powerpc64le-linux-gnu-
- ENV DEF_TARGET_LIST ppc64-softmmu,ppc64-linux-user
- # As a final step configure the user (if env is defined)
-diff --git a/tests/docker/dockerfiles/debian-riscv64-cross.docker b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-index 09b2953f32c..2591c4adc96 100644
---- a/tests/docker/dockerfiles/debian-riscv64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-@@ -72,17 +72,14 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
- 
- RUN /usr/bin/pip3 install meson==1.8.1
- 
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- 
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     dpkg --add-architecture riscv64 && \
--    eatmydata apt-get install debian-ports-archive-keyring && \
--    eatmydata echo 'deb http://ftp.ports.debian.org/debian-ports/ sid main' > /etc/apt/sources.list.d/ports.list && \
--    eatmydata echo 'deb http://ftp.ports.debian.org/debian-ports/ unreleased main' >> /etc/apt/sources.list.d/ports.list && \
-     eatmydata apt-get update && \
-     eatmydata apt-get dist-upgrade -y && \
-     eatmydata apt-get install --no-install-recommends -y dpkg-dev && \
-@@ -179,9 +176,9 @@ endian = 'little'\n" > /usr/local/share/meson/cross/riscv64-linux-gnu && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/riscv64-linux-gnu-cc && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/riscv64-linux-gnu-gcc
- 
--ENV ABI "riscv64-linux-gnu"
--ENV MESON_OPTS "--cross-file=riscv64-linux-gnu"
--ENV RUST_TARGET "riscv64gc-unknown-linux-gnu"
-+ENV ABI="riscv64-linux-gnu"
-+ENV MESON_OPTS="--cross-file=riscv64-linux-gnu"
-+ENV RUST_TARGET="riscv64gc-unknown-linux-gnu"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=riscv64-linux-gnu-
- ENV DEF_TARGET_LIST riscv64-softmmu,riscv64-linux-user
- # As a final step configure the user (if env is defined)
-diff --git a/tests/docker/dockerfiles/debian-s390x-cross.docker b/tests/docker/dockerfiles/debian-s390x-cross.docker
-index 09a78c15baf..57aa3209c5c 100644
---- a/tests/docker/dockerfiles/debian-s390x-cross.docker
-+++ b/tests/docker/dockerfiles/debian-s390x-cross.docker
-@@ -72,11 +72,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
- 
- RUN /usr/bin/pip3 install meson==1.8.1
- 
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- 
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     dpkg --add-architecture s390x && \
-@@ -175,9 +175,9 @@ endian = 'big'\n" > /usr/local/share/meson/cross/s390x-linux-gnu && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/s390x-linux-gnu-cc && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/s390x-linux-gnu-gcc
- 
--ENV ABI "s390x-linux-gnu"
--ENV MESON_OPTS "--cross-file=s390x-linux-gnu"
--ENV RUST_TARGET "s390x-unknown-linux-gnu"
-+ENV ABI="s390x-linux-gnu"
-+ENV MESON_OPTS="--cross-file=s390x-linux-gnu"
-+ENV RUST_TARGET="s390x-unknown-linux-gnu"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=s390x-linux-gnu-
- ENV DEF_TARGET_LIST s390x-softmmu,s390x-linux-user
- # As a final step configure the user (if env is defined)
-diff --git a/tests/docker/dockerfiles/debian.docker b/tests/docker/dockerfiles/debian.docker
-index 8dd893be4b0..bbb920c6815 100644
---- a/tests/docker/dockerfiles/debian.docker
-+++ b/tests/docker/dockerfiles/debian.docker
-@@ -152,11 +152,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
- 
- RUN /usr/bin/pip3 install meson==1.8.1
- 
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- # netmap/cscope/global
- RUN DEBIAN_FRONTEND=noninteractive eatmydata \
-   apt install -y --no-install-recommends \
-diff --git a/tests/docker/dockerfiles/fedora-rust-nightly.docker b/tests/docker/dockerfiles/fedora-rust-nightly.docker
-index 7d31c9f4060..e4233b53cbe 100644
---- a/tests/docker/dockerfiles/fedora-rust-nightly.docker
-+++ b/tests/docker/dockerfiles/fedora-rust-nightly.docker
-@@ -152,11 +152,11 @@ exec "$@"\n' > /usr/bin/nosync && \
- 
- RUN /usr/bin/pip3 install meson==1.8.1
- 
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- RUN dnf install -y wget
- ENV RUSTUP_HOME=/usr/local/rustup CARGO_HOME=/usr/local/cargo
- ENV RUSTC=/usr/local/rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rustc
-diff --git a/tests/docker/dockerfiles/fedora-win64-cross.docker b/tests/docker/dockerfiles/fedora-win64-cross.docker
-index c76a70c3684..e6f84dd556f 100644
---- a/tests/docker/dockerfiles/fedora-win64-cross.docker
-+++ b/tests/docker/dockerfiles/fedora-win64-cross.docker
-@@ -72,11 +72,11 @@ exec "$@"\n' > /usr/bin/nosync && \
- 
- RUN /usr/bin/pip3 install meson==1.8.1
- 
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- 
- RUN nosync dnf install -y \
-                mingw-w64-tools \
-@@ -110,8 +110,8 @@ RUN nosync dnf install -y \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/x86_64-w64-mingw32-g++ && \
-     ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/x86_64-w64-mingw32-gcc
- 
--ENV ABI "x86_64-w64-mingw32"
--ENV MESON_OPTS "--cross-file=/usr/share/mingw/toolchain-mingw64.meson"
-+ENV ABI="x86_64-w64-mingw32"
-+ENV MESON_OPTS="--cross-file=/usr/share/mingw/toolchain-mingw64.meson"
- ENV QEMU_CONFIGURE_OPTS --cross-prefix=x86_64-w64-mingw32-
- ENV DEF_TARGET_LIST x86_64-softmmu
- # As a final step configure the user (if env is defined)
-diff --git a/tests/docker/dockerfiles/fedora.docker b/tests/docker/dockerfiles/fedora.docker
-index 891a740fcbc..632259378c9 100644
---- a/tests/docker/dockerfiles/fedora.docker
-+++ b/tests/docker/dockerfiles/fedora.docker
-@@ -152,11 +152,11 @@ exec "$@"\n' > /usr/bin/nosync && \
- 
- RUN /usr/bin/pip3 install meson==1.8.1
- 
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/opensuse-leap.docker b/tests/docker/dockerfiles/opensuse-leap.docker
-index 75e17477807..def0ca9db46 100644
---- a/tests/docker/dockerfiles/opensuse-leap.docker
-+++ b/tests/docker/dockerfiles/opensuse-leap.docker
-@@ -138,11 +138,11 @@ RUN /usr/bin/pip3.11 install \
-                      sphinx \
-                      sphinx-rtd-theme
- 
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3.11"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3.11"
- # As a final step configure the user (if env is defined)
- ARG USER
- ARG UID
-diff --git a/tests/docker/dockerfiles/ubuntu2204.docker b/tests/docker/dockerfiles/ubuntu2204.docker
-index 602d4196249..c8cc6249296 100644
---- a/tests/docker/dockerfiles/ubuntu2204.docker
-+++ b/tests/docker/dockerfiles/ubuntu2204.docker
-@@ -150,11 +150,11 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
- 
- RUN /usr/bin/pip3 install meson==1.8.1
- 
--ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
--ENV LANG "en_US.UTF-8"
--ENV MAKE "/usr/bin/make"
--ENV NINJA "/usr/bin/ninja"
--ENV PYTHON "/usr/bin/python3"
-+ENV CCACHE_WRAPPERSDIR="/usr/libexec/ccache-wrappers"
-+ENV LANG="en_US.UTF-8"
-+ENV MAKE="/usr/bin/make"
-+ENV NINJA="/usr/bin/ninja"
-+ENV PYTHON="/usr/bin/python3"
- ENV RUSTC=/usr/bin/rustc-1.83
- ENV RUSTDOC=/usr/bin/rustdoc-1.83
- ENV CARGO_HOME=/usr/local/cargo
-diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
-index 9da20ff7c3b..caed407a0f1 160000
---- a/tests/lcitool/libvirt-ci
-+++ b/tests/lcitool/libvirt-ci
-@@ -1 +1 @@
--Subproject commit 9da20ff7c3bc9067804a7561c2ff87583b434853
-+Subproject commit caed407a0f1dfe3a3293a41c378c382deefbac36
+     def test_arm64_xen_415_and_dom0(self):
 -- 
 2.47.3
 

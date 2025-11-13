@@ -4,90 +4,171 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8955ACD3445
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 00:45:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F408CD4F2F
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 05:07:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJLSZ-0001Fu-JS; Wed, 12 Nov 2025 19:45:11 -0500
+	id 1vJPXq-0001y7-89; Thu, 13 Nov 2025 00:06:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yubinz@google.com>) id 1vJLSU-000130-HD
- for qemu-arm@nongnu.org; Wed, 12 Nov 2025 19:45:07 -0500
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <yubinz@google.com>) id 1vJLSR-0006SX-Ju
- for qemu-arm@nongnu.org; Wed, 12 Nov 2025 19:45:05 -0500
-Received: by mail-lf1-x134.google.com with SMTP id
- 2adb3069b0e04-5942f46ad87so2400e87.0
- for <qemu-arm@nongnu.org>; Wed, 12 Nov 2025 16:45:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1762994701; x=1763599501; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=dlTiY6/YKQh3Ol3rdfLXYIM7s/dUNVdRB7ggLSppcng=;
- b=akNvblubVFjI0GjeQUpeVZH5COWB1bhCTtdLzS2S7mEHnDavvo9BVe4mKOGXpdt6pG
- dXhrjrukBZZwkDTXZ8G+HSp+fHpPB4LRcuHtNFDtzWRqcToBXa8neGs60XSr0ZX50Omp
- FqjdvqyxmpLoeaNE5e8buJuRZsKhzOqvhZr/t2CIx2o+pSqtjEQQWpIFEke2ZKPh21x2
- Z0ZmOxCYcshNtOKEWGH41QcshomPT2UVwb+FNzj+Xk+sNnxjOs3UupgJOBiwNMjqA7yU
- bdav431JCWrgELLOfeWCZm8YvOlYIlxSF6Z6EEXsdoYUvINcMKS0SF2sCjVW6dO8rEiK
- 26HA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762994701; x=1763599501;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=dlTiY6/YKQh3Ol3rdfLXYIM7s/dUNVdRB7ggLSppcng=;
- b=R3W+hoRSsnXiF+W3zhF2xCVoXsXYb0E9MVM91Er2d84/Fki0mT6xjvC+L6FPimv8AX
- XyqU6lVEEsM/bY7TcXGH02pCZOHcvjV9Mh00y8fuVa80gutXmXvWEdArmQQWa/AWItT6
- Wt4nx6aE6gm8qHgD13RMrb82Bltho8SeOF7qOODnb4pG4Zm0D0mKe1Cn14/K5qc0wZZ2
- Q0sE2Mw0KPGBXZc1fuyVI9nZpDU7Z3xPIa7C8BPTpFlhA2WoEx9QuipegjHeKV154x0g
- hin1cOsCWew0boygd7zj+yfo63JCXXMMPBIVS/e/0sfxaat1AYQbZz2bgNYu3orBwH8M
- xXGw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUXkQJSEb1cPAog5gSKGHVyaI4GIhu0oJVWwP5mH7lt/28XaTqdl770gobwWFr1mvBgsZr7zsHuTw==@nongnu.org
-X-Gm-Message-State: AOJu0YxUnOrM2bTD+uDuWSHiAeSV1rLsHfEBTBnVQVfHlm6VXT253Bu3
- Wgu40x9lp+d775A7l+B4NUlOeJkIVZoRlP8gfHKUn5555XU6mLEUOmlnjIWmMWRNu/cpSlJD76b
- 3tR5o+MMzzuJ0+UXuVxjEaTSA3SNNLhdVQKOrw+pY
-X-Gm-Gg: ASbGncvsXM1kM6c3mH+/2BlKFbrpqiPNsV9QJToBfRE4a/4hdkSIlLDinjLOR3aHfKH
- H7vTtOpy3gUGbm/PvKJ4Rc2a07dN1Nipw35aU3aqN4wSbb565jlXacTWU9UN8fSHND2HokM2Mgw
- m1+Yc84NmOZdqCRUeq05U4lSXf1Faj5XyZVWngrZYiQNB7+WIFIqkF7agp4JDD63IjifjTUkGPL
- AFc0UFBRZqkkQApJ2+Kd2JowNd1dkF8xhbEvUyWp4hZZRjbGHvsPXf6k/JT3bh2kmOEOS3zzAis
- znl4q8ky7WDLW1rVznNokUru+g==
-X-Google-Smtp-Source: AGHT+IGpy6PPXZSZeZ1uznHFguHmsClXX+LpkDBcjG8nYeWWik8Rnz7N/POuvyI/E2InlbLAr2BUwcfNxxRaCQucvT0=
-X-Received: by 2002:a05:6512:605:20b0:594:2f37:84d7 with SMTP id
- 2adb3069b0e04-5957f075b2fmr88516e87.2.1762994700503; Wed, 12 Nov 2025
- 16:45:00 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1vJPXm-0001vH-2W; Thu, 13 Nov 2025 00:06:50 -0500
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1vJPXj-0003XB-7h; Thu, 13 Nov 2025 00:06:49 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=HcIQvjb3GMt14hQh9/GO9SNI49rbPABFvRJ2mt1ONldOI4rBox0WpsaIoNH+GlMmGByLGkqGiTMKzZHFCFff9b2gnQrJczOIzGhEwnGjhz1UQIvQk8j+DXOrrsCRp6kU8dd0QTdZnGCSaZVhbrlZePGy/yuyRtomkPmlN6+Cu6AZV1IrT+O0uDFMasnmUyBA0HKMlQYr+l0z/T0oP+wyYLefLi2gGCqLtUd3fFDrgHgD6cGX6wF3jElVawJxZtTKwbPtOQBAiT09dgDdbOVd4KJV+Lr8ejHlvzzCYM56k/bNfp/QxAbd5yy7+pRHyYPpqlKYRvBHkv5oI/nrEA+apg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Vq63AMNjvWFlxkurQwO/LU/7rhltf3G35Marp50lsik=;
+ b=wsQeYQe5WNDcm5q5njEXu48KCP1x8pkQung4jGKlkh4jvWxNU9x7RTy0z/yx0wQcz7tpSZfMkOlVm6+Kd5gxbb1+LXS8X32IHTQYnP+uYHAYWb157Z0RlMtATYdEyoW2NW6oalmRv72R5AF9EO/0kEwiz9yKbz+Ht+Fqa2FCJ9Mvs3eMNIwpzrpM+ETXMtsZagOR8agbk3j9Si0mTuYu5MpS9GrzDkxn+GY8fPCFq5/y1JiNHm7aQ/lo9HTDBPoTldfFFvN3SCZxWH2s3n8w6c08gigruHnMibGqrWU2XLF7yVRRnDUPs68902q0wtG/UKori53FgzK343WnDSHGWA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Vq63AMNjvWFlxkurQwO/LU/7rhltf3G35Marp50lsik=;
+ b=OXy8/1YY1Q/B4ge0l76RH7nfnM9XqVYfaevxSvHItkegsElZN/RXtz3lUamCdpuCDWEcibdbjnQ8/llZrp2q8D76YmOTylhbg7zalTl4wPQOj99mzeD2XCD0HEeU51JLYEGbxcw4vMhyMG3+MyO5ImUM9LbqL8DcfOCkNqMRYtL9Zvjng3jbuZnHcSp7fH62Q2d2jEyRk9Kblhbp43Zw1TDFB7l3SGLMsbH8NNIZC0bqNUo3iHF7kyQXRktxkcxohwkIdxacffFH1Pj52+79BK4jd46m/3xzOgno5NoBx7C34leYBRByMXEOhIknJ+e7CEzI1EybeK/XUMRT4xnMyA==
+Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
+ by PUZPR06MB5904.apcprd06.prod.outlook.com (2603:1096:301:113::6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9320.16; Thu, 13 Nov
+ 2025 05:06:36 +0000
+Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
+ ([fe80::b420:4392:6eb0:91e5]) by TYPPR06MB8206.apcprd06.prod.outlook.com
+ ([fe80::b420:4392:6eb0:91e5%3]) with mapi id 15.20.9320.013; Thu, 13 Nov 2025
+ 05:06:36 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: Yubin Zou <yubinz@google.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+CC: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Hao Wu
+ <wuhaotsh@google.com>, Patrick Venture <venture@google.com>
+Subject: RE: [PATCH v2 0/3] Add drive-backed EEPROM support to quanta-q71l
+Thread-Topic: [PATCH v2 0/3] Add drive-backed EEPROM support to quanta-q71l
+Thread-Index: AQHcVDaR/hxbHLEzF0aWbfAKfbjFbrTwDSww
+Date: Thu, 13 Nov 2025 05:06:35 +0000
+Message-ID: <TYPPR06MB82066E9E2A137135A76935A4FCCDA@TYPPR06MB8206.apcprd06.prod.outlook.com>
+References: <20251113-quanta-q71l-eeproms-v2-0-e72451b974b0@google.com>
+In-Reply-To: <20251113-quanta-q71l-eeproms-v2-0-e72451b974b0@google.com>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|PUZPR06MB5904:EE_
+x-ms-office365-filtering-correlation-id: 3a906ede-8d1f-4eb5-c63d-08de22726ba3
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|366016|1800799024|7416014|38070700021; 
+x-microsoft-antispam-message-info: =?utf-8?B?ZGZ5dExpZVljRlUxWklkcG1lbDNGWE1PUlR6VHRxRjEvUkhWWVU4dzQya2Zs?=
+ =?utf-8?B?WWpjTzVPMitJTGlmSWl1Vm9HeDRnb1lCQXkxbHlYZi9FZDlOMndBc3NvZ3J5?=
+ =?utf-8?B?VUlqUU5LUjlQR3NUbWlFbzhoVkorcjR6RWlKemVDLzN2bTRVS1ljTDVEbHVq?=
+ =?utf-8?B?V0RJdnYzeXMrbHJ4WTJEM2liQklDTkxYVkJ0QTdIN2Jwb0dZWldSckFBbGVa?=
+ =?utf-8?B?ZVp4NkNqNkd3aStSTjJsY0tMVUlOYWdtV3NoWEhvLzNiREU0NmZ1QWRlQ0F2?=
+ =?utf-8?B?SUthb3psSUxmVFpMa1F3UnhCK0oxT3h5amV6SFpaeFMxaWtoM0RoYjhYY0FZ?=
+ =?utf-8?B?Sy9IZ0dGV3ZtVjhuYlhyMFRaZXhBUHlFSnFOZkhyUXE2T0FYb3o4Rmw5ckpE?=
+ =?utf-8?B?R2l6NXdWYVdoT0pvWGFzQ1BFQVVjcjBOL2tKL2tkZFJ3bHZEcUJJeS9LcElm?=
+ =?utf-8?B?QzhKckdrbVFNK21sTzgxK2tXaGJWMVd1OTlRYzJlWjgzdjBRZy9sWlVON3hG?=
+ =?utf-8?B?MVRxaCtJQ1MveTBMRGUyMkxoTWJBR09aNXgyS3d4MUZJNE1NRmppVkNqcitU?=
+ =?utf-8?B?RWtSeXFOSG91Y21ZcE5RcGIwNkN0Zmk3a0JVQmJvVitrSmdPZnN3cWN4UDBI?=
+ =?utf-8?B?OHZBKzN2MjlMYysyUWd1b3ZQaWlReHVGdEJ0K2xIa1Mvelk2a0xvNXFwbncv?=
+ =?utf-8?B?WGJPUVp2aWtWWjlMMFZVeVNoMzFDUG92cG9rcmoxbkNQYnBrSkZ5MWtyeDQv?=
+ =?utf-8?B?T21LaU8xaTZKektReFZDYTg3d2tpRnVtVWlPM01LQzk1b0szbTBXWmJ1dnRG?=
+ =?utf-8?B?aVN2dkZlYXdFV21nYk5McXlmQjRJMnBlY2p1a0hVSDBUcUZJdEV2cytaVGxw?=
+ =?utf-8?B?RUN5dVhoVHJqN2tFdFFTUHlxbkMvWjFsM0lEL2hJNk9rMkFodXNwZkt4dkVQ?=
+ =?utf-8?B?OFN4cDdPMDIxdFRYdHllZFV2OWltRmtFM0IxT0s1akYvMWdWSE1oZFlNLzhN?=
+ =?utf-8?B?bGlreGo2RWF5RlAxelJjOXJucjM3cm4yZG1IdSszSGRDK1NwZWkzL3NKQ05Y?=
+ =?utf-8?B?RnBNN21Ccm1yVExEeXFsY1RPdytnb3Jrb3dXam5zWlAzYldIMUhLbEVBMTZa?=
+ =?utf-8?B?UFNYWE9paFFNRXV6MkFFNFF1R01yOC9HdEtIcUtFQ2RrZlRtNU9lQTZwbmhH?=
+ =?utf-8?B?WG5kQnNZQ3J5cG9sNFJkekZOWUVjLzF5OTg5Wlp0Wk14dEJKOVQzdDVnRm81?=
+ =?utf-8?B?N0cwa3Z5dWgyeGNXOE1PYVg2bXZRNEJUb05pM1FVWW5ISE44dS9VcnpRUVow?=
+ =?utf-8?B?dHhxRHhGYmJHTHE1VXFVb2VpUE5sdGRtNmN3SEVlVXZ1Rm5IVHpXN2pPV0VZ?=
+ =?utf-8?B?QkdFWmdwMTRZVi9vNE51S2VzdTJ6UHpadGlrUUVDVXFHOStQWGdjSlQ0REFa?=
+ =?utf-8?B?YmFUcHQySWtxK1ZJZ0pwOXRNTzNUM2M2Smp2a1JPVTRsVUNObFVQRGUrNE5V?=
+ =?utf-8?B?N0R5QkZBeUV4UUJLTUNUbXlFa05JN1hpbmFOMzdaK3hKalIwWTgyT3kvVzE3?=
+ =?utf-8?B?YkFPTXMyTUppMVVPeEhnaVk1eGpqUGJiWUtXUFNydU9GSFBoblJZVFYzUGNv?=
+ =?utf-8?B?aTdaU1NzcWUyWU5WRjF0S0gxTEJTR3B0SG4xTE9qVUcraVhHR3dTa0JhejBn?=
+ =?utf-8?B?ZHdZUHpkVEZkRVM0SjVwQzFUcUpRaWhlNEZsYVJCVnEvM3QrKzEzblgrY1RC?=
+ =?utf-8?B?eFRSczlnZlVOZ3JiSFhzemR3anBVaDUxWVlWc3ZzQ1Q5S2UzMnkxM1gzb2Rm?=
+ =?utf-8?B?U2xscGNPNVhEcjdSb0h5WWJ4UTN0eExBRGFsUVZuSnprUHlMQ2tpNzNNeWJ2?=
+ =?utf-8?B?VGFlSXZsRXduZEZpK1lGUFJIdlUvdmx2Yi9UTmlDRDQyZGtyZ3owSFdFQSt5?=
+ =?utf-8?B?dHcvS0ZtQ2dGNXM0Q0JGK3Y5U3NHQ01mVEI2THNVNGp1NnZ0d1lMRzJqMUt5?=
+ =?utf-8?B?Yi83RWdIYXp6RzB4cWlMM0I2MnhBQVhIa2RlMHVaS3JnOWdDOUxrQmYraHZR?=
+ =?utf-8?B?YTNKc1VYeEVFRDNpeFpXR1ErSmtVWFlTaHk4Zz09?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE; SFS:(13230040)(376014)(366016)(1800799024)(7416014)(38070700021);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?c2Q5THRtNExobXZteHovQitrY2dTcEFYMTNZYVNldzMrMFQ5eGpaS0VNNFhP?=
+ =?utf-8?B?OHVEOWU0bFBYeUhQc1BnbGhOZU5sUS8vaGhXNmhJZUhqUEg5QnlTdXQzT1o3?=
+ =?utf-8?B?R0h5bUVqQ2R5blkvZTI1eFozb01qSlY0THNOdllySWRUMTdMN3pOWlU1Qy9j?=
+ =?utf-8?B?TkVVMERsa2tRM1QvQVJMc2VuUWo1M1l1b1gwcmdHSGkxdEJYRkZlZkgwU2VY?=
+ =?utf-8?B?b1Z2MWpHcTNPandlMUh6STU0NHZBdzdBUjJCU2wraXpucWt6NmFRUnF5cU5y?=
+ =?utf-8?B?c0ZRaGN2eHNCSjB2Z2dKejNnbmZGVFViejhaVktpQ1ZxWGNyVHJxWUZieWNV?=
+ =?utf-8?B?M3BuQ29sUlF3OFV1MWN2dmZGbXl1STZPSDNtV0I3UmJvQ3JBNDNkVFlvK09y?=
+ =?utf-8?B?dlpWQ1NUNndQTG8vRWVIdW1FNmdwOTdSYXVybERDeHRiVFhoM0tYcHVHWWsw?=
+ =?utf-8?B?OGhYQm85Uk9ZRUc3VzJxVmZvd2pweURyY0pTZmdEdnMxcGxTOXQvc1dzc0pn?=
+ =?utf-8?B?SXBvYjNrQVovWnNQMUYxc3VRTTdaUWxFNCtjWEcrRktDQUFtWGMwQVhXUXhr?=
+ =?utf-8?B?M3NFTS80eFlzUGgzWjN0ZGovdmtUYWIrUzNCRVFmMDhYcTFkTW9aRmROMWUw?=
+ =?utf-8?B?NFZsbXFaemJtSG9TVlRyeHhFZWU4blRhV2ZYR0l2N2pzM21uSDRNQnRnOHAx?=
+ =?utf-8?B?cUhQbEFUNXc5OG9xZm1vc1BVZXMvWUZIN3g0aVhxclV5ZkV5VkxKaFEyelYw?=
+ =?utf-8?B?RWtKWWkwV0txUVFxNHplbkRzbExzMlY2MjBVN2tCNTlXYWtBS0Zmem5Va0wv?=
+ =?utf-8?B?UFc5NEVuWTdXV3IvWll6ajB3RWN3dGdYTityRzduY2VpTzhBbk1tcTl6TzRP?=
+ =?utf-8?B?STFpZ1U0eXptREhVa0FmTVNVTmJ1UG5QZGNUL3ZocHFYQ3lFUDR0VU95aWRB?=
+ =?utf-8?B?U2ZLeGxEU0s0VnZpLzJXVHdHNjdrcm1RRUUyZmFCTUd3ZGw3REhzQXppL0F3?=
+ =?utf-8?B?eTJKelI0alBFc1B4VWlROS8yR2U2azZHRXRqYmVZaUpiNElPcTZIZWFKQWdX?=
+ =?utf-8?B?NzFoZDJzaTRVcElqK1ZmWVFuY29KUGI5K3VGN21idm9TcFJORC8zL0s4eTd0?=
+ =?utf-8?B?KzczaWtSbmI5S3M3Z1dvNFhMQVBUNVNITUpTU2pyQ2ZvVWJIczA5emt3Ym1G?=
+ =?utf-8?B?c1ljM254bHIrWHJuSDc4R3NRdWtIRjFUcmZiOUZXY3R2UnkwQWlKVnl0ckFx?=
+ =?utf-8?B?VUltYnRhc0YrMlJsTThBVHp1T2w2eUNqRGQ3TzBhSm1wZFgybXRqenczaWIr?=
+ =?utf-8?B?MGNPblBPWWw4cXhMZlN4aUJxaHFMZWVLTXZWSHlCYnh3UTRWK2E3aHdQd1do?=
+ =?utf-8?B?cHowSlY4Rzg3cUFMS29jdHl2Nk00cDhlYVlJVDlOTzNiRXRHUzFnSFVobVhN?=
+ =?utf-8?B?WkhlRFVPYUZXcEU1akxLbHdnZTJpY05JN2lRNVZCQkgrL2ZSUGdoUTRRWGZ4?=
+ =?utf-8?B?OFZ6RStMdStZS00zUnIyYUQ2Yk9JdCtCMElqbUdpaTJNcUdISWxaaUZXTmVX?=
+ =?utf-8?B?SmUxY0FwQlV3TlI1RWs2WHQvVDdORllwNnllOW9ZZ3RtNU9WTk0rS1hOenh4?=
+ =?utf-8?B?bTNDc3BoVGZrcHBSbWVTU3pUOXViQ3lSbmpWL0YxVDFpOG1Gcmw4b2xUaFBD?=
+ =?utf-8?B?aU1QWkg5RUJtR1QrbTZIYXBPZitFMVFvOTBhUnFSSUtHMUtscFB5b3M5OGND?=
+ =?utf-8?B?amlsWEJ5dFVtVHdGZjRqNk9KVktGNFd5eHBCcUE2QUZmZnp3SkFzcFlZSjNV?=
+ =?utf-8?B?LzVmcExUMnFja1krUlZVNWlBZ0F5cU5YUkpnc3NJNnJ3ajRxVk1tQjRkVEcy?=
+ =?utf-8?B?K25OM29SSS9qOVdmVjFnL1VSemg4SDFIWkRhZXVHRTcxWEdxUHpSaHBXc0dL?=
+ =?utf-8?B?ZWlYNkZBam8vbjhXOGRuQzBIbHQ0QkdnbFlhcExxTEU3NlhBalMzU0xLY2xn?=
+ =?utf-8?B?NHVqL3hWNS9QV2xTdkdMa3lvVmpFUnpybjBReEN0Nk13SGczM0ZXd3JnMDNH?=
+ =?utf-8?B?OGZDL28zRS9qeXRqTExTWUVncFo4aXZvWmVNdWlvWlFNRFJGNkNnSkFEWDF2?=
+ =?utf-8?Q?GZ3RXE55ZkIoyJzZbsZy0KyFv?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20250916-quanta-q71l-eeproms-v1-0-3648692cc441@google.com>
- <20250916-quanta-q71l-eeproms-v1-2-3648692cc441@google.com>
- <08b6e571-bf4f-4e51-8a70-8c2c5c675277@kaod.org>
- <CABU_6BJ5zZ2VWHo4pS7r815RtTjdv5iZj=wYbXm5xc=X0+dh9w@mail.gmail.com>
- <660f1bfc-383f-4681-98e7-19aa4555b5fe@kaod.org>
-In-Reply-To: <660f1bfc-383f-4681-98e7-19aa4555b5fe@kaod.org>
-From: Yubin Zou <yubinz@google.com>
-Date: Wed, 12 Nov 2025 16:44:48 -0800
-X-Gm-Features: AWmQ_bnHAlZvUVu9ura2_0JE8mhgT_rnJCKK22h_GLiFXGffPhSkhe9cm96ImI0
-Message-ID: <CABU_6BJinkS58UP6JH2yQ7zujTtV1am5iPGCuCwLTiYxnUBXdg@mail.gmail.com>
-Subject: Re: [PATCH 2/2] hw/arm: enable eeproms for quanta-q71l
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org,
- Patrick Venture <venture@google.com>
-Content-Type: multipart/alternative; boundary="000000000000dd918506436f30f6"
-Received-SPF: pass client-ip=2a00:1450:4864:20::134;
- envelope-from=yubinz@google.com; helo=mail-lf1-x134.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3a906ede-8d1f-4eb5-c63d-08de22726ba3
+X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Nov 2025 05:06:36.0267 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 4mTZjM/ja6a2/lcjBOsnYBKNyb0FZFY7Bwgajsj14LBmnTE/vDQ66y2JlZcMcN8EwLNvMziRDRyelxMALWfeQKdhPTYYhoa6PENDYObD6Wk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR06MB5904
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYPPR03CU001.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,257 +184,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000dd918506436f30f6
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi
-
-Thanks for reminding me. I have updated the series to include the utility
-function of at24c_eeprom_init_one.
-
-Thanks
-
-On Tue, Nov 11, 2025 at 10:26=E2=80=AFAM C=C3=A9dric Le Goater <clg@kaod.or=
-g> wrote:
-
-> Hi,
->
-> On 10/1/25 00:17, Yubin Zou wrote:
-> > Yes, I will include the patch containing the utility function of
-> at24c_eeprom_init_one.
->
-> Will you send an update or have you given up on the idea ?
->
->
-> Thanks,
->
-> C.
->
->
-> >
-> > Yubin
-> >
-> > On Tue, Sep 16, 2025 at 11:07=E2=80=AFPM C=C3=A9dric Le Goater <clg@kao=
-d.org <mailto:
-> clg@kaod.org>> wrote:
-> >
-> >     Hi,
-> >
-> >     On 9/16/25 19:50, Yubin Zou wrote:
-> >      > From: Patrick Venture <venture@google.com <mailto:
-> venture@google.com>>
-> >      >
-> >      > Tested: Quanta-q71l firmware booted to login and was populated
-> via the
-> >      > -drives for the corresponding eeproms.
-> >      > Signed-off-by: Patrick Venture <venture@google.com <mailto:
-> venture@google.com>>
-> >      > ---
-> >      >   hw/arm/aspeed.c | 10 +++++-----
-> >      >   1 file changed, 5 insertions(+), 5 deletions(-)
-> >      >
-> >      > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> >      > index
-> bae59ae7394882e3fc93863049a37ff5a8737ff8..8cef387a0b431576a87355370492088=
-6222cca86
-> 100644
-> >      > --- a/hw/arm/aspeed.c
-> >      > +++ b/hw/arm/aspeed.c
-> >      > @@ -562,16 +562,16 @@ static void
-> quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
-> >      >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 1),
-> "tmp105", 0x4f);
-> >      >
-> >      >       /* Baseboard FRU */
-> >      > -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 1), 0x54,
-> 8192);
-> >      > +    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 1), 1,
-> 0x54, 8192, 0);
-> >
-> >     Where is at24c_eeprom_init_one() implementation ?
-> >
-> >
-> >     Thanks,
-> >
-> >     C.
-> >
-> >
-> >      >       /* Frontpanel FRU */
-> >      > -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 1), 0x57,
-> 8192);
-> >      > +    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 1), 1,
-> 0x57, 8192, 1);
-> >      >       /* TODO: Add Memory Riser i2c mux and eeproms. */
-> >      >
-> >      >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
-> "pca9546", 0x74);
-> >      >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 2),
-> "pca9548", 0x77);
-> >      >
-> >      >       /* Add BIOS FRU */
-> >      > -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 3), 0x56,
-> 8192);
-> >      > +    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 3), 3,
-> 0x56, 8192, 2);
-> >      >
-> >      >       /* i2c-7 */
-> >      >       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 7),
-> "pca9546", 0x70);
-> >      > @@ -581,9 +581,9 @@ static void
-> quanta_q71l_bmc_i2c_init(AspeedMachineState *bmc)
-> >      >       /*        - i2c@3: pmbus@59 */
-> >      >
-> >      >       /* PDB FRU */
-> >      > -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 7), 0x52,
-> 8192);
-> >      > +    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 7), 7,
-> 0x52, 8192, 3);
-> >      >       /* BMC FRU */
-> >      > -    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x50,
-> 8192);
-> >      > +    at24c_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 8), 8,
-> 0x50, 8192, 4);
-> >      >   }
-> >      >
-> >      >   static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
-> >      >
-> >
->
->
-
---000000000000dd918506436f30f6
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi<div><br></div><div>Thanks for reminding me. I have upda=
-ted the series to include the utility function of at24c_eeprom_init_one.</d=
-iv><div><br></div><div>Thanks</div></div><br><div class=3D"gmail_quote gmai=
-l_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Nov 11, 20=
-25 at 10:26=E2=80=AFAM C=C3=A9dric Le Goater &lt;<a href=3D"mailto:clg@kaod=
-.org">clg@kaod.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">Hi,<br>
-<br>
-On 10/1/25 00:17, Yubin Zou wrote:<br>
-&gt; Yes, I will include the patch containing the utility function of at24c=
-_eeprom_init_one.<br>
-<br>
-Will you send an update or have you given up on the idea ?<br>
-<br>
-<br>
-Thanks,<br>
-<br>
-C.<br>
-<br>
-<br>
-&gt; <br>
-&gt; Yubin<br>
-&gt; <br>
-&gt; On Tue, Sep 16, 2025 at 11:07=E2=80=AFPM C=C3=A9dric Le Goater &lt;<a =
-href=3D"mailto:clg@kaod.org" target=3D"_blank">clg@kaod.org</a> &lt;mailto:=
-<a href=3D"mailto:clg@kaod.org" target=3D"_blank">clg@kaod.org</a>&gt;&gt; =
-wrote:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Hi,<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On 9/16/25 19:50, Yubin Zou wrote:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; From: Patrick Venture &lt;<a href=3D"mailto:v=
-enture@google.com" target=3D"_blank">venture@google.com</a> &lt;mailto:<a h=
-ref=3D"mailto:venture@google.com" target=3D"_blank">venture@google.com</a>&=
-gt;&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Tested: Quanta-q71l firmware booted to login =
-and was populated via the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; -drives for the corresponding eeproms.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; Signed-off-by: Patrick Venture &lt;<a href=3D=
-"mailto:venture@google.com" target=3D"_blank">venture@google.com</a> &lt;ma=
-ilto:<a href=3D"mailto:venture@google.com" target=3D"_blank">venture@google=
-.com</a>&gt;&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; ---<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0hw/arm/aspeed.c | 10 +++++-----<b=
-r>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A01 file changed, 5 insertions(+), =
-5 deletions(-)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.=
-c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; index bae59ae7394882e3fc93863049a37ff5a8737ff=
-8..8cef387a0b431576a873553704920886222cca86 100644<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; --- a/hw/arm/aspeed.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +++ b/hw/arm/aspeed.c<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -562,16 +562,16 @@ static void quanta_q71l=
-_bmc_i2c_init(AspeedMachineState *bmc)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0i2c_slave_create_si=
-mple(aspeed_i2c_get_bus(&amp;soc-&gt;i2c, 1), &quot;tmp105&quot;, 0x4f);<br=
->
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Baseboard FRU */=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0 =C2=A0 at24c_eeprom_init(aspeed_i2c_g=
-et_bus(&amp;soc-&gt;i2c, 1), 0x54, 8192);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 at24c_eeprom_init_one(aspeed_i=
-2c_get_bus(&amp;soc-&gt;i2c, 1), 1, 0x54, 8192, 0);<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Where is at24c_eeprom_init_one() implementation ?<b=
-r>
-&gt; <br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Thanks,<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0C.<br>
-&gt; <br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Frontpanel FRU *=
-/<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0 =C2=A0 at24c_eeprom_init(aspeed_i2c_g=
-et_bus(&amp;soc-&gt;i2c, 1), 0x57, 8192);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 at24c_eeprom_init_one(aspeed_i=
-2c_get_bus(&amp;soc-&gt;i2c, 1), 1, 0x57, 8192, 1);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* TODO: Add Memory=
- Riser i2c mux and eeproms. */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0i2c_slave_create_si=
-mple(aspeed_i2c_get_bus(&amp;soc-&gt;i2c, 2), &quot;pca9546&quot;, 0x74);<b=
-r>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0i2c_slave_create_si=
-mple(aspeed_i2c_get_bus(&amp;soc-&gt;i2c, 2), &quot;pca9548&quot;, 0x77);<b=
-r>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* Add BIOS FRU */<=
-br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0 =C2=A0 at24c_eeprom_init(aspeed_i2c_g=
-et_bus(&amp;soc-&gt;i2c, 3), 0x56, 8192);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 at24c_eeprom_init_one(aspeed_i=
-2c_get_bus(&amp;soc-&gt;i2c, 3), 3, 0x56, 8192, 2);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* i2c-7 */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0i2c_slave_create_si=
-mple(aspeed_i2c_get_bus(&amp;soc-&gt;i2c, 7), &quot;pca9546&quot;, 0x70);<b=
-r>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; @@ -581,9 +581,9 @@ static void quanta_q71l_b=
-mc_i2c_init(AspeedMachineState *bmc)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/*=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 - i2c@3: pmbus@59 */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* PDB FRU */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0 =C2=A0 at24c_eeprom_init(aspeed_i2c_g=
-et_bus(&amp;soc-&gt;i2c, 7), 0x52, 8192);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 at24c_eeprom_init_one(aspeed_i=
-2c_get_bus(&amp;soc-&gt;i2c, 7), 7, 0x52, 8192, 3);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0/* BMC FRU */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; -=C2=A0 =C2=A0 at24c_eeprom_init(aspeed_i2c_g=
-et_bus(&amp;soc-&gt;i2c, 8), 0x50, 8192);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; +=C2=A0 =C2=A0 at24c_eeprom_init_one(aspeed_i=
-2c_get_bus(&amp;soc-&gt;i2c, 8), 8, 0x50, 8192, 4);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;=C2=A0 =C2=A0static void ast2500_evb_i2c_init(=
-AspeedMachineState *bmc)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt; <br>
-<br>
-</blockquote></div>
-
---000000000000dd918506436f30f6--
+SGkgWXViaW4sDQoNCj4gT3ZlcnZpZXcgb2YgQ2hhbmdlczoNCj4gVGhpcyB0d28tcGF0Y2ggc2Vy
+aWVzIGludHJvZHVjZXMgSTJDIEVFUFJPTSBkZXZpY2VzIChBVDI0QzY0KSB0byB0aGUNCj4gcXVh
+bnRhLXE3MWwgbWFjaGluZSBtb2RlbCwgcmVwcmVzZW50aW5nIHRoZSBCYXNlYm9hcmQsIEZyb250
+cGFuZWwsIEJJT1MsDQo+IFBEQiwgYW5kIEJNQyBGUlVzLg0KPiANCj4gSW1wcm92ZW1lbnQgdG8g
+UUVNVToNCj4gVGhlc2UgY2hhbmdlcyBlbmhhbmNlIHRoZSBzaW11bGF0aW9uIGZpZGVsaXR5IG9m
+IHRoZSBxdWFudGEtcTcxbCBib2FyZC4NCj4gQnkgbW9kZWxpbmcgdGhlIEZSVSBFRVBST01zIGFu
+ZCBhbGxvd2luZyB0aGVtIHRvIGJlIGJhY2tlZCBieSBkcml2ZXMuDQo+IA0KPiBJbXBhY3QgKEJl
+Zm9yZS9BZnRlcik6DQo+IEJlZm9yZToNCj4gVGhlIHF1YW50YS1xNzFsIG1hY2hpbmUgbW9kZWwg
+ZGlkIG5vdCBpbmNsdWRlIHRoZSBJMkMgRUVQUk9NcyBmb3IgRlJVDQo+IGRhdGEgc3RvcmFnZS4N
+Cg0KUGxlYXNlIHJlYmFzZSB5b3VyIGNvZGViYXNlLg0KVGhlIHF1YW50YS1xNzFsIGJvYXJkIGhh
+cyBiZWVuIG1vdmVkIGludG8gYXNwZWVkX2FzdDI0MDBfcXVhbnRhLXE3MWwuYw0KWW91IGNhbiBm
+aW5kIGl0IGhlcmU6DQpodHRwczovL2dpdGh1Yi5jb20vcWVtdS9xZW11L2Jsb2IvbWFzdGVyL2h3
+L2FybS9hc3BlZWRfYXN0MjQwMF9xdWFudGEtcTcxbC5jDQoNClRoYW5rcy1KYW1pbg0KDQo+IA0K
+PiBBZnRlcjoNCj4gVGhlIEVFUFJPTXMgYXJlIGFkZGVkIHRvIHRoZSBhcHByb3ByaWF0ZSBJMkMg
+YnVzZXMgYXQgdGhlaXIgcmVzcGVjdGl2ZQ0KPiBhZGRyZXNzZXMuIEVhY2ggZWVwcm9tIG5vdyBj
+YW4gYmUgYXNzb2NpYXRlZCB3aXRoIGEgUUVNVSBkcml2ZXIgYmFja2VuZA0KPiBieSB1c2luZyB0
+aGUgYC1kcml2ZWBvcHRpb24uDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBZdWJpbiBab3UgPHl1Ymlu
+ekBnb29nbGUuY29tPg0KPiAtLS0NCj4gQ2hhbmdlcyBpbiB2MjoNCj4gSW5jbHVkZSBhIHBhdGNo
+IHRvIGFkZCBhIGF1eGlsaWFyeSBmdW5jdGlvbiBpbiB0aGUgYXQyNGMgZWVwcm9tIG1vZHVsZSB0
+bw0KPiBhc3NpZ24gdW5pcXVlIHVuaXQgbnVtYmVycyBmb3IgZWFjaCBlZXByb21zIGluIGVhY2gg
+Ym9hcmQNCj4gDQo+IC0gTGluayB0byB2MToNCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVt
+dS1kZXZlbC8yMDI1MDkxNi1xdWFudGEtcTcxbC1lZXByb21zLXYxLTAtMzY0OA0KPiA2OTJjYzQ0
+MUBnb29nbGUuY29tDQo+IA0KPiAtLS0NCj4gSGFvIFd1ICgxKToNCj4gICAgICAgaHcvbnZyYW06
+IEFkZCBhIG5ldyBhdXhpbGlhcnkgZnVuY3Rpb24gdG8gaW5pdCBhdDI0YyBlZXByb20NCj4gDQo+
+IFBhdHJpY2sgVmVudHVyZSAoMik6DQo+ICAgICAgIGh3L2FybTogYWRkIGVlcHJvbXMgdG8gcXVh
+bnRhLXE3bDEgYm9hcmQNCj4gICAgICAgaHcvYXJtOiBlbmFibGUgZWVwcm9tcyBmb3IgcXVhbnRh
+LXE3MWwNCj4gDQo+ICBody9hcm0vYXNwZWVkLmMgICAgICAgICAgICAgICAgIHwgMTUgKysrKysr
+KysrKy0tLS0tDQo+ICBody9udnJhbS9lZXByb21fYXQyNGMuYyAgICAgICAgIHwgMTcgKysrKysr
+KysrKysrKysrKysNCj4gIGluY2x1ZGUvaHcvbnZyYW0vZWVwcm9tX2F0MjRjLmggfCAgNCArKysr
+DQo+ICAzIGZpbGVzIGNoYW5nZWQsIDMxIGluc2VydGlvbnMoKyksIDUgZGVsZXRpb25zKC0pDQo+
+IC0tLQ0KPiBiYXNlLWNvbW1pdDogMTkwZDVkN2ZkNzI1ZmY3NTRmOTRlOGUwY2JmYjY5ZjI3OWM4
+MmI1ZA0KPiBjaGFuZ2UtaWQ6IDIwMjUwOTE2LXF1YW50YS1xNzFsLWVlcHJvbXMtMGViYzZlMDQ4
+NmQ3DQo+IA0KPiBCZXN0IHJlZ2FyZHMsDQo+IC0tDQo+IFl1YmluIFpvdSA8eXViaW56QGdvb2ds
+ZS5jb20+DQoNCg==
 

@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92417CD5BBC
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:29:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CF03CD5BC1
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Nov 2025 10:35:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJUWZ-0008I3-PX; Thu, 13 Nov 2025 05:25:55 -0500
+	id 1vJUem-0004z1-J5; Thu, 13 Nov 2025 05:34:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUWV-00085V-3c
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:51 -0500
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ id 1vJUeh-0004il-Ov
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:34:19 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vJUWJ-0007MI-Ja
- for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:25:50 -0500
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-b735b89501fso15136966b.0
- for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:25:39 -0800 (PST)
+ id 1vJUeZ-0002Eo-5q
+ for qemu-arm@nongnu.org; Thu, 13 Nov 2025 05:34:16 -0500
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-b3c2db014easo106075066b.0
+ for <qemu-arm@nongnu.org>; Thu, 13 Nov 2025 02:34:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763029538; x=1763634338; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763030049; x=1763634849; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ookYlMgqelv1akkEQQg8dNQyfrcFRJWhuosml8n/iQE=;
- b=O1QOPGcAH39RFJfVQSbVnf4SB01xUIrFcIqmNSKdN4AsX2zgL22d04XJqKIo94vfzs
- enrSQqnMU4VCR4gMB140xfbLePOYq1G2yU0b1KHKPaGblmebFGfT+4T8WYZoQhsm+toT
- Sn52pnOODrsduK593eri7bqv2lo7I90jrrVbXKF3fHu4BsKrzRlYVrsejoC9VOm+ydhn
- d51OyfEqhWgenQhiJ6RgqBW4Kxx/Vlf2ecwiSkZ+QgGHYkJYvm+C7in+y1gfyzthGDS2
- Lvhwn/whodUoVN7i+f/c9Fc/qZLtR67CrQ3NQI1lXjdZpRGEu6hvTY3YkBxeIIqNVQid
- 5UvA==
+ bh=Q5TZ3YZIekArO8aThmCwKiXH5EbvOU3ltQ8JmLe73dY=;
+ b=QyzkdKgA/HquHQEBVLt8/dxg/ygUtPCo2fPIhBsXcw/6MpxvEL9FYFLV+k7Pxzssx0
+ PaoSFJH5ZdclQQ3gqzHTSnL6iS7A8Tg7FNBmxsa/Rs4Pjr+z1AzWGHMmj1vq3D5J5vT+
+ QWeOAaMxdsZQ4ESDNqRlivMbQqgiXHa9BqqaCpYEu/LwvmwN33/JBgHMo3p/Goz/aLnv
+ ZsA8alpMRuAE3FXs2aJ6TdQNzAgEx+IHNRFCPFBgwDuhhJ8j8JufP3/vXJT+TM0cQiWK
+ Cl1irgygxdE7aWgxFvS7Q2CTzteNGCwG/o8V047f7mW/wjrtW0m2mOp11HeeOTxC0e9W
+ 1+Lg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763029538; x=1763634338;
+ d=1e100.net; s=20230601; t=1763030049; x=1763634849;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ookYlMgqelv1akkEQQg8dNQyfrcFRJWhuosml8n/iQE=;
- b=U6XNppjubAqM7L9jyAfiWvEC2QOIXgQJzClmijPuX4QUKetpMoMc//9Pf/unmEJ28H
- P7OgdANQWVgWEZn+Z2mt5JyMJLca7fY0n4t9LQBnOgizFO87yUkH/pZrgYAGNIxOgegN
- /Wi8sFAstBQKFCXKCbm+Tfg2L9jyb6CwwrA7/wRFTXzgsVZMa1EY4yZ7i/4O+wgvC7Kg
- 1RhLtsdEC9a1LJSmHz7dfy/uRgD9P0n4MbRHFLqP2T20eiq+1sjHYSaRUjxX3i6GnXsq
- rjxYcolRwG0rH8c3i5m0S1G4n1JT+jMM0RvWCaHTaze6wtYsXzkk0GP/evM+L4prx0Ea
- 7dEQ==
+ bh=Q5TZ3YZIekArO8aThmCwKiXH5EbvOU3ltQ8JmLe73dY=;
+ b=K7h4ICOcorqcbJRuSUypWhj2yzHIskpeQBfidYsrouRR9zwYxI7kF1xfHttSQxcRuE
+ vV3vQqDP1dZVJy0/1VpJehrlvYlnX3VSGzLhpigTkxgKQmUWGwQ38jeX/3pAq/+V7zEw
+ vjKW7oHsZvZKcg6P9fZh1yuPtrq/eGhLcUqKqKLkgS7e79vFFjb+GhqzBHn1s8xf5NPp
+ i2OD28b+W5n/TDicTao5xduDrwb63bo892hpkf1VaxFhGPPPrXxuDKnH/emIrRvZBBvu
+ YSFI0PEw9vVsLptzwB9E0ZGnEyTFrJWx7j1GfUvsLbkQsWl3bgR6mVUr4pLs8sTyfMqs
+ oYJQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU5Z8DyqNjv92ocY9dzkHivVxL+j3xCFLYdQwQ5HuMhf8GOyHEhHWlxS1O29dR4KEgWNoVjdHXX6g==@nongnu.org
-X-Gm-Message-State: AOJu0YxjAp4Lv2F6bg1bjHRoR7y22NowmT9NROb5gt0mJFxlp03yTu4E
- VXCZIMeLhpm/vXzsGKgul3R3jDoqNP8ke3tG8Y3t3O9eQEU9NxYGQrmD5QQ3s6Z2HvE=
-X-Gm-Gg: ASbGncvIVv47ieX1VxFhl3vaJu+8O5XW17j3A5yAELllD6SzUIm4CZIFPr+tWs0JeTt
- ZampqMLmDCtKpyMDRnjEyoUZSKg1+uiwI+jq0VDcSjM4aMUMpbykACJ8MiqJeJYUSyS+V4hBW/V
- P2Eyf5f7xxwSZjPAB0ETJiKjPlEh5F5+Dr8pMKSPgVi7g+BAH6/MvmATnw7q3cKj8MN3dLVOVMt
- F+2O7TyucSQ7r8gkqqjbubtKn9f/Ka9uIAGbr9uv/B2U7O4dxoFl0UsrLVoM8mb5jySHzP1O6BZ
- wqPVCeDChELcU/lky/uerIyGI6PwBJ2mHiGoPJ1ucEaxXcIMko5C+80Fy6ypa44X197PAGOQwOu
- x/2vHhqBZYD4gMSfUJXJm31AnRXMw+UNddjqCC+qkR16pitAnQBOSPdCjWZr3XC03IIvxy+uAc/
- X5
-X-Google-Smtp-Source: AGHT+IGN5rn3IkITx8pU1gBFIPR+aCxJh/HcSkRUTXui4DXx/wg0EFxNep2T6leo1ZgNotjn3qcj5A==
-X-Received: by 2002:a17:906:730f:b0:b6d:5363:88a9 with SMTP id
- a640c23a62f3a-b733196865dmr595103066b.9.1763029537912; 
- Thu, 13 Nov 2025 02:25:37 -0800 (PST)
+ AJvYcCUokvAkwjxT+RR3DCOJEFWHJxznE4/Gd4Hw3u+QpRy3eTIYPXYyazQoxCaFdDsGi5nARIUB1+zCgg==@nongnu.org
+X-Gm-Message-State: AOJu0Ywp+ZdrkgUBWWpKsEBkUMYCj3K4YheiN0H9QydBXwFGhDysLFOS
+ Q4mdmvQiMsF50CZinb/8q68NVcOHaCXG9+siAFVC7MZ1FVEQdA6eh1rDeu4unacqE6Q=
+X-Gm-Gg: ASbGnctlwuylaQewSCv6e9KY5a4fBwo5AIs+R4BQiWx4UQqhJl1UAGzVKe5ZxT8wKVw
+ TuHSxNGDVJMCLl35GeykGHVN0remfkpmh4nuBpF5TXtbuPnJbhYJXT5ivq4GigGPPXOovXJZk2+
+ iLRj5vWKapxP6M+jllsO2HPvU2Yl3zAh99X0Ns3VlF3HkkV+mbAOv7qk2ZAYaprUdvSePXMWEHO
+ RmlZgZTU+fAuenL4fW1jrnwfgpv4DMzmDAngM7pPSWB6AbXlIyXZ+x6koIF7ytgtLG8C5zf5A6r
+ R60ICZHsJKuxJLehZl0DRe8+HFULAS/Fzs0VubL8D9RX2Hq0xLyT0J+ReMD4DgO/bUSuPnD8Ebz
+ /gUR8Ej07nmue9jlkRjxdPqacgYnCCstwo0l8Xc6bnL1Rb/qES05iSjtyvJ0omwMX40BLKzk4LF
+ Xe
+X-Google-Smtp-Source: AGHT+IE99KmTVBSLpPgUFbncOXLqFkxue438SLJxzi70Risef0F3opgs0ZvLBVRo4CFKS1CvXm/8cQ==
+X-Received: by 2002:a17:907:8687:b0:b71:f9d5:70d5 with SMTP id
+ a640c23a62f3a-b73319b06f0mr688110666b.27.1763030049019; 
+ Thu, 13 Nov 2025 02:34:09 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b734fad43dfsm135287366b.20.2025.11.13.02.25.32
+ a640c23a62f3a-b734fa81172sm136616366b.15.2025.11.13.02.34.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Nov 2025 02:25:35 -0800 (PST)
+ Thu, 13 Nov 2025 02:34:08 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 7057A60DA8;
+ by draig.lan (Postfix) with ESMTP id BDA6160DE6;
  Thu, 13 Nov 2025 10:25:27 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -85,18 +85,17 @@ Cc: Paul Durrant <paul@xen.org>,
  qemu-s390x@nongnu.org, Li-Wen Hsu <lwhsu@freebsd.org>,
  David Woodhouse <dwmw2@infradead.org>, Ed Maste <emaste@freebsd.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v2 15/18] gitlab: suppress custom runners being triggered by
- schedule
-Date: Thu, 13 Nov 2025 10:25:21 +0000
-Message-ID: <20251113102525.1255370-16-alex.bennee@linaro.org>
+Subject: [PATCH v2 18/18] gitlab: add a weekly container building job
+Date: Thu, 13 Nov 2025 10:25:24 +0000
+Message-ID: <20251113102525.1255370-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251113102525.1255370-1-alex.bennee@linaro.org>
 References: <20251113102525.1255370-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,56 +118,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Otherwise the mere presence of the RUNNER env vars is enough to
-trigger the jobs.
+This will hopefully catch containers that break because of upstream
+changes as well as keep the container cache fresh.
+
+As we have all the container jobs as dependants we tweaks the
+container template to allow scheduled runs. Because we added a new
+rules stanza we also need to make sure we catch the normal runs as
+well.
 
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- .gitlab-ci.d/custom-runners/debian-13-ppc64le.yml    | 2 +-
- .gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml | 2 +-
- .gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml   | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
-index 80706c7a956..6492d013de8 100644
---- a/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
-+++ b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
-@@ -11,7 +11,7 @@
-     - ppc64le
-   rules:
-     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
--    - if: "$PPC64LE_RUNNER_AVAILABLE"
-+    - if: '$PPC64LE_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-   before_script:
-     - source scripts/ci/gitlab-ci-section
-     - section_start setup "Pre-script setup"
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
-index 6f950baee0d..c8adb8171c0 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
-@@ -11,7 +11,7 @@
-     - aarch64
-   rules:
-     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
--    - if: "$AARCH64_RUNNER_AVAILABLE"
-+    - if: '$AARCH64_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-   before_script:
-     - source scripts/ci/gitlab-ci-section
-     - section_start setup "Pre-script setup"
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml b/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
-index 32e12188873..fcb49ae884d 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
-@@ -11,7 +11,7 @@
-     - s390x
-   rules:
-     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
--    - if: "$S390X_RUNNER_AVAILABLE"
-+    - if: '$S390X_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-   before_script:
-     - source scripts/ci/gitlab-ci-section
-     - section_start setup "Pre-script setup"
+---
+v2
+  - add staging and QEMU_CI runs
+---
+ .gitlab-ci.d/container-template.yml |  5 ++++
+ .gitlab-ci.d/containers.yml         | 39 +++++++++++++++++++++++++++++
+ tests/docker/Makefile.include       | 11 ++++++++
+ 3 files changed, 55 insertions(+)
+
+diff --git a/.gitlab-ci.d/container-template.yml b/.gitlab-ci.d/container-template.yml
+index 4eec72f383d..a128a46469b 100644
+--- a/.gitlab-ci.d/container-template.yml
++++ b/.gitlab-ci.d/container-template.yml
+@@ -19,3 +19,8 @@
+     - docker push "$TAG"
+   after_script:
+     - docker logout
++  rules:
++    # because we want to enable this for scheduled runs we also have to replicate the normal rules
++    - if: '$CI_PIPELINE_SOURCE == "schedule"'
++    - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
++    - if: '$QEMU_CI && $CI_PROJECT_NAMESPACE != $QEMU_CI_UPSTREAM'
+diff --git a/.gitlab-ci.d/containers.yml b/.gitlab-ci.d/containers.yml
+index db9b4d5e57f..f7d3e7205dc 100644
+--- a/.gitlab-ci.d/containers.yml
++++ b/.gitlab-ci.d/containers.yml
+@@ -33,3 +33,42 @@ amd64-fedora-rust-nightly-container:
+   variables:
+     NAME: fedora-rust-nightly
+   allow_failure: true
++
++# this scheduled job will trigger all the containers to build
++weekly-container-builds:
++  extends: .container_job_template
++  allow_failure: true
++  needs:
++    # core
++    - amd64-centos9-container
++    - amd64-fedora-container
++    # cross
++    - amd64-debian-cross-container
++    - amd64-debian-user-cross-container
++    - amd64-debian-legacy-cross-container
++    - arm64-debian-cross-container
++    - armhf-debian-cross-container
++    - hexagon-cross-container
++    - loongarch-debian-cross-container
++    - i686-debian-cross-container
++    - mips64el-debian-cross-container
++    - ppc64el-debian-cross-container
++    - riscv64-debian-cross-container
++    - s390x-debian-cross-container
++    - tricore-debian-cross-container
++    - xtensa-debian-cross-container
++    - win64-fedora-cross-container
++    - wasm-emsdk-cross-container
++    # containers
++    - amd64-alpine-container
++    - amd64-debian-container
++    - amd64-ubuntu2204-container
++    - amd64-opensuse-leap-container
++    - python-container
++    - amd64-fedora-rust-nightly-container
++  script:
++    - apk -U add make bash skopeo
++    - make docker-verify V=1 DOCKER_DEFAULT_REGISTRY=$CI_REGISTRY_IMAGE
++  rules:
++    # this only ever runes as a scheduled build
++    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+index 3959d8a028a..38467cca610 100644
+--- a/tests/docker/Makefile.include
++++ b/tests/docker/Makefile.include
+@@ -49,6 +49,15 @@ docker-image-%: $(DOCKER_FILES_DIR)/%.docker
+ 		-t qemu/$* - < $< $(if $V,,> /dev/null),\
+ 		"BUILD", $*)
+ 
++# General rule for inspecting registry images.
++docker-verify-%: $(DOCKER_FILES_DIR)/%.docker
++	  $(call quiet-command,			\
++		skopeo inspect 			\
++			--format '{{.Created}}' \
++			docker://$(DOCKER_REGISTRY)/qemu/$*	\
++		$(if $V,,> /dev/null),\
++		"VERIFY", $*)
++
+ # Special rule for debootstraped binfmt linux-user images
+ docker-binfmt-image-debian-%: $(DOCKER_FILES_DIR)/debian-bootstrap.docker
+ 	$(if $(EXECUTABLE),,\
+@@ -236,6 +245,8 @@ docker-run: docker-qemu-src
+ 
+ docker-image: ${DOCKER_IMAGES:%=docker-image-%}
+ 
++docker-verify: ${DOCKER_IMAGES:%=docker-verify-%}
++
+ docker-clean:
+ 	$(call quiet-command, $(DOCKER_SCRIPT) clean)
+ 
 -- 
 2.47.3
 

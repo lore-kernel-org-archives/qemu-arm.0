@@ -4,82 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83016CE8D4F
-	for <qemu-arm@archiver.kernel.org>; Fri, 14 Nov 2025 16:15:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 445B0CE8D4F
+	for <qemu-arm@archiver.kernel.org>; Fri, 14 Nov 2025 16:43:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vJwSU-0002ra-8h; Fri, 14 Nov 2025 11:15:34 -0500
+	id 1vJwtR-0003N4-25; Fri, 14 Nov 2025 11:43:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vJwSR-0002o1-VA
- for qemu-arm@nongnu.org; Fri, 14 Nov 2025 11:15:32 -0500
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vJwtP-0003Lu-98
+ for qemu-arm@nongnu.org; Fri, 14 Nov 2025 11:43:23 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vJwSQ-00076b-HO
- for qemu-arm@nongnu.org; Fri, 14 Nov 2025 11:15:31 -0500
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-786a822e73aso24117887b3.3
- for <qemu-arm@nongnu.org>; Fri, 14 Nov 2025 08:15:30 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vJwtN-0007no-IO
+ for qemu-arm@nongnu.org; Fri, 14 Nov 2025 11:43:23 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4775ae77516so24478775e9.1
+ for <qemu-arm@nongnu.org>; Fri, 14 Nov 2025 08:43:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763136929; x=1763741729; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1763138598; x=1763743398; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CeESu3OY+NCfrGLBh8dDVMucacYjkHu1cMnctlpj1gA=;
- b=I3xQC7u/AuRXlpbe/OGCu6WZNFTbiwYyF1XfZsxS392HZimmg8bGF70KZAbnknlSLW
- fC4zv5pR2ocldsYAiNJm/I/diS/IXXA/Cxd2OtAf4dlTQKbIvLtN+IZWI2LX0QHZt3rl
- kkV6tQJoASoxgvGOcrqhvZ7BuWElQpAK2YFH1VkDVodcWXuySsUnqK1st7WC/sq8m7Kp
- /tAPY15PDf46iHNCXMJH6FEli0frf2AVXohZ67ESvASejgS8e835H1DXyQuKKl+qpwEF
- doL8s0/2Z00I1/WXZBK4FbZptWrsTDi8QoglXCs0EPawi105+kixG9G0MzX2/kGA1aJr
- CS6A==
+ bh=iO+BNlBT9P+e+qmdEE0iGw+yBdKFzfcLrai8JYuyG5k=;
+ b=chXTiQ+Jqw4YRABsMNzCzkybAq1qJUfxIkvYq+xvaJ8Ixfj8YvMDZYu48gaGEpYPMr
+ HuvkZvuAirfyV+KbKvWi4lGM1zBYzyo64NmQ3Mw9ca1OfSdyNmP3lqhef/EL5jC6gpB+
+ So8aBKWHjvpLQM2ySnhikx5p5emEX/BTJRklUj9Xwxo964wm48d9kO1sqDUiXIX4EZM8
+ F9pWukFtTGUOQZy/x40tNzTx0MtdVlnN44m0Tii690sE3nDrlNo5b36txBmOUnobw0ST
+ o5LTi6YETMYkszoOOzhQohU0nvQl+kXJdbqv+RdgjlZH4eItHxpNamUHTao6JiS9n+Jy
+ qbGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763136929; x=1763741729;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=CeESu3OY+NCfrGLBh8dDVMucacYjkHu1cMnctlpj1gA=;
- b=OcvF1ccFRKjhTcSHF7WrE3VWRsH/LRh1lFBHAuT+HyxfMCTgSJKTv8YFT8lDT5dTq4
- YLKuYHfm0w79jQM8Q81HDrfkJfFOP2J6TJVuich7+xkbsHMe8YGQCXC9dpXR7XJyNMGi
- nFKsBr72FuKuv8ihdhsugiSM47p8LDewUuQ4vNx9NumqVwY+PlToytnCsK7TND9ReiPL
- /E2jwlOwQU1FMiK89xqvJ6JVx5CCz3sy8Uau5dQq/Bl4WO5bihC+FCzyOeyt2EIXhe1N
- LyF377pE8BnWvjQNq/jTAv71tRFn1+PVT5G46y/aOR4VUxm207mCjcixn2N4K/s4ivRp
- tEkQ==
+ d=1e100.net; s=20230601; t=1763138598; x=1763743398;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=iO+BNlBT9P+e+qmdEE0iGw+yBdKFzfcLrai8JYuyG5k=;
+ b=SsCxyCE1Wme7El/pYB3eEPqz4Ltqy7xOgPvZPm+VMeBotCKuE5WZvrFTpQJb6dYb+l
+ 369bG5kyCdNvphXdgmKqUrbYuZmVt2cwJ5x8/+yFMM55CcRf9avllVbw0t4u5rlUBlLs
+ MIAJ/IvGznQZvAKV8k8o/nXeIrtulVTcjw8fRRPmrc3yG0bjtGKvlpR7mmeIOBhFuIqC
+ cb0OLqxd88E29liF79L7mE0Y0ZrO49cvUQLId3s4jgPZgTsEdmWPiiF7RikoZvZkW64N
+ zxYPUxrdyg77BeXAULnoCb6n+8UDj2Gtt52+Px/QoVkkeQ7BAEedKER2EgT0tZtdaMuv
+ MwJA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVStEW/jXhHAxNy6R9dbG/jxMtH42AFNHlF0Py8DMCOTsebS7Hpj3sBhSkqcl3o5IRDq9wqPcHoKQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yw8tmp+iMRuynW1pdVy78UwwhMqvgFSXlg5AJmmF0VUBArLX7yM
- VJ2cWhs26jEgaQPsWBeoaNTTRc6At/6udwxS618YD3jt0gj8oym699+y8i9PjYzHVMq4Xs8Xtp8
- HF/FVSxuJThFk6dS7F1t5FrToNR9q+6KgfXym6r9y6w==
-X-Gm-Gg: ASbGncsTTZff1b5Gwfq1EAyYlTiW0G7JAWMFERvdW9w09QT+Q4YLbcy4ZDcTWxx1aeS
- Qg23g+Wvg27/YcclQ7IhtEZfnib/7CNkiKi9IioxAUZtOr8BEEVblij39oQqzqfIAyrxc8bCBg5
- IgodGd4klL+fJQOKxA9saYpCCiISEzm36E3lMUTtjiRLWa5yG0QocaHTT1AagWH8jui+zHMMyqM
- 2VJN50Mj3U/XCEXeveYrDbtoHDsYLyRL2uorhq/0e6RI3vFKyPPM2CBk8J0kbOeHQrFQAc8
-X-Google-Smtp-Source: AGHT+IGNKCD6onrOHvOhg29T4vpjlRRUq80YetpYJEr3dTGena0SgwLGZFLHh6EGr+3cgDUWeMl2ap5aKm/uHrF1Ftg=
-X-Received: by 2002:a05:690c:884:b0:783:7867:eeb4 with SMTP id
- 00721157ae682-78929f3d604mr35916747b3.53.1763136929328; Fri, 14 Nov 2025
- 08:15:29 -0800 (PST)
-MIME-Version: 1.0
+ AJvYcCW4v4znyntQ/41rRO5OtIzk6+4HWkElwI1CEEqkjXOdzX+eWBIFN2Y0hRjNPw1sQrb10wjAD3hJ/Q==@nongnu.org
+X-Gm-Message-State: AOJu0Ywb6LASf78GkcjbaMUiFcniR+B+W8QJqvSPbuhB/0r6EAQbQ40N
+ fetoVxre+dbycCmGDn1N3R5OpWwnWmuvmQhUdkhURT0QaTJ6gD3ZmUiNbYAxNo/5yBc=
+X-Gm-Gg: ASbGnctcW9UqTbX1f5+BTGVb/SpDtpNVP7k1bE0xOIOQrxJIXovagMBuXFFCTEG0DA3
+ PnRvitTHhs9N8DBnIMm2tuHNbcXwgrktsSvMyEwZQ65/LQnKy3bnKNPoyUuBMfGPTXr8wPgVKMK
+ T4eA+vkRhsNgmVWH5vBf3cDVBws7YiekWMw8/0YQhxxJ1SCuAY1IQY/dVqU2Qhs8tT6n9Zanu+1
+ Gs0zTFdKFSzkJ+yKFv0MvCx/li7FzC3mEfztmQq2LbTr5wTgWRf62HuNcGOvgevFNLfib96Nu+J
+ ADbvKyqa0D/L/CJYRWFJsf5M1fpUX0MMz3ZsWy+RsVGhFyQnDqqiF6ZqhMPFY8spejdweVDkZ5c
+ qL7q9EkHuwlka7QlSqjLhnKPwt8ioe80nrevXmLCOsA44idxTfmnNCPYR61uIek5x8hBTRvli9B
+ 2gTGo/HF2qOMk=
+X-Google-Smtp-Source: AGHT+IGG9QdTnS5vnw7tJUl9nt/ml0xyeXeaMawIbJ6yhYc/iMpBL9ivAgKK07GMtEktdBVIWH8g0A==
+X-Received: by 2002:a05:600c:4594:b0:475:dd89:acb with SMTP id
+ 5b1f17b1804b1-4778fe9a707mr34417485e9.22.1763138598483; 
+ Fri, 14 Nov 2025 08:43:18 -0800 (PST)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4778bd2fa91sm47432115e9.17.2025.11.14.08.43.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 14 Nov 2025 08:43:17 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id F09705F820;
+ Fri, 14 Nov 2025 16:43:16 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Yodel Eldar <yodel.eldar@yodel.dev>
+Cc: qemu-devel@nongnu.org,  Peter Maydell <peter.maydell@linaro.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Fabiano Rosas
+ <farosas@suse.de>,  Laurent Vivier <lvivier@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  "open list:Raspberry Pi" <qemu-arm@nongnu.org>,
+ Florian Meier <florian.meier@koalo.de>, Florian Fainelli
+ <florian.fainelli@broadcom.com>
+Subject: Re: [RFC PATCH] hw/dma: don't allow weird transfer lengths for bcm2835
+In-Reply-To: <4d6d7e9d-0952-4158-9ef4-6093a16e9dd9@yodel.dev> (Yodel Eldar's
+ message of "Fri, 14 Nov 2025 10:05:58 -0600")
 References: <20251111105429.3993300-1-alex.bennee@linaro.org>
  <4d6d7e9d-0952-4158-9ef4-6093a16e9dd9@yodel.dev>
-In-Reply-To: <4d6d7e9d-0952-4158-9ef4-6093a16e9dd9@yodel.dev>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 14 Nov 2025 16:15:18 +0000
-X-Gm-Features: AWmQ_bkjHdqc2tPZoD8SL8Lm3gvhG5QrzCtn-q8-lzn42fDD9EnVHyTde-gYYYU
-Message-ID: <CAFEAcA_H1-9Hygic_c5hw58Q_YHwcq0nSkeGs6+qd48RD2u7bA@mail.gmail.com>
-Subject: Re: [RFC PATCH] hw/dma: don't allow weird transfer lengths for bcm2835
-To: Yodel Eldar <yodel.eldar@yodel.dev>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- qemu-devel@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:Raspberry Pi" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: mu4e 1.12.14-dev2; emacs 30.1
+Date: Fri, 14 Nov 2025 16:43:16 +0000
+Message-ID: <87wm3so997.fsf@draig.linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1129.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,23 +112,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 14 Nov 2025 at 16:06, Yodel Eldar <yodel.eldar@yodel.dev> wrote:
->
->
+Yodel Eldar <yodel.eldar@yodel.dev> writes:
+
+(add Florians to CC)
+
 > On 11/11/2025 04:54, Alex Benn=C3=A9e wrote:
-> > The datasheet doesn't explicitly say that TXFR_LEN has to be word
-> > aligned but the fact there is a DMA_D_WIDTH flag to select between 32
-> > bit and 128 bit strongly implies that is how it works. The downstream
+>> The datasheet doesn't explicitly say that TXFR_LEN has to be word
+>> aligned but the fact there is a DMA_D_WIDTH flag to select between 32
+>> bit and 128 bit strongly implies that is how it works. The downstream
 >
 > At the bottom of page 38, the datasheet [1] states "the DMA can deal
 > with byte aligned transfers and will minimise bus traffic by buffering
 > and packing misaligned accesses."
+>
+> IIUC, the *_WIDTH info fields are implied as maxima.
+>
+> [1] https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf
 
-Yeah, I read that, but my interpretation of it is that it says
-it's OK to provide non-4-aligned source and destination addresses.
-It doesn't say anything either way about whether the transfer
-size can be a non-multiple of 4.
+That reads ambiguously - you could start a misaligned n*WIDTH transfer
+and the hardware will write bytes until aligned?
 
-thanks
--- PMM
+If it does indeed work with byte accesses maybe we can just do:
+
+  if (xlen & 0x3) {
+    .. do one byte ..
+    xlen -=3D 1;
+  } else {
+    .. existing 32 bit code ..
+  }
+
+but I guess we need to handle unaligned accesses as well.
+
+Florian,
+
+Can you help clarify what the datasheet means here?
+
+Thanks,
+
+<snip>
+
+>> rpi kernel also goes to efforts to not write sub-4 byte lengths so
+>> lets:
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FA8CCEACCB
-	for <qemu-arm@archiver.kernel.org>; Fri, 14 Nov 2025 20:09:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 905B9CEACC9
+	for <qemu-arm@archiver.kernel.org>; Fri, 14 Nov 2025 20:09:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vK06x-0004Jl-9w; Fri, 14 Nov 2025 15:09:36 -0500
+	id 1vK06w-0004GP-Mo; Fri, 14 Nov 2025 15:09:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vK02r-0007Df-Cv
- for qemu-arm@nongnu.org; Fri, 14 Nov 2025 15:05:23 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vK04I-0000Rd-SH
+ for qemu-arm@nongnu.org; Fri, 14 Nov 2025 15:06:54 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vK02p-00050e-SF
- for qemu-arm@nongnu.org; Fri, 14 Nov 2025 15:05:21 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-477632d45c9so18301185e9.2
- for <qemu-arm@nongnu.org>; Fri, 14 Nov 2025 12:05:19 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vK04H-0005Bi-Cb
+ for qemu-arm@nongnu.org; Fri, 14 Nov 2025 15:06:50 -0500
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-42b38de7940so1442538f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 14 Nov 2025 12:06:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763150718; x=1763755518; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763150808; x=1763755608; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZhaKZtIHcKQyEzCs44RThvX4QVJ1Sgd9Tp4DxoQS0nM=;
- b=QpVMznyz4/5ADSa9rH3ROIHR0v5G52s+uC2Fit/j8VAAJdVNPPNC5H+ilIx0hEujFn
- BnU5NN6UBDvdiLYQZ1EGT5NuwC4fVIuvrHFwMxeUdauUlt4Y71l2YP36sNn1efT5K1T3
- qCCjFTJ2zMnO4hMHn2NLI6poxQUAZFp8SPGfiWmof0ehTX7eMQ5lj0i262qkRR4R/4ci
- b31+uttRGvZChs4AyABWHsbGhVHW9oIXs6xr3WblpS4Gib6Mw5HRFu7HtjJO6KKWFxsd
- SPc6zAD5crC9h2aoA1i3trMzNYqV0KwX1mfkiZoWG+q/EVlRw42yn1pr9rZVJGkdYX5A
- 8BMg==
+ bh=EMDbgyBSsHgV3ZURAPo979wxtIvTEY+Ozps1vZGgi5k=;
+ b=pdYH1Bn7inbCm52AOutcuz/auUDPFocAFh4uvwAsI1Lj2Eg9iNNoLbyk2dilcgnq5m
+ hqcmRc6dztFFFzM51LrP23Lzt36ZxgYQ++nq2poiyL1+4PwUdSLlJkP8xRnFgWm0fIXg
+ DaPYChs86UEaQWhCA1bdsyWT/3K5o5LCGNZ7x+fBxvTdb2IaUJtra31j8bHOweU6iGwZ
+ 3NpTLTpLvX6/mqLfu/s+wCa55WQEsBCCjsNLeKQ3RdfleFBbtBMReCIItuxLIG7xuBA6
+ 5pno9SmMOtV8/VnZD33s/4joXBcImGkMAx3drlpBtEsDth8pQT/M8sewF/A7g+5Ilvgw
+ sJ6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763150718; x=1763755518;
+ d=1e100.net; s=20230601; t=1763150808; x=1763755608;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ZhaKZtIHcKQyEzCs44RThvX4QVJ1Sgd9Tp4DxoQS0nM=;
- b=susi0k6fM2HctFZAQgh97JnuBAaRG5gs8EYnJL4n0noaugLzPYRPRx4EM+rElxQ2my
- HgF3IhqLFHg/sBaH6wHga5ivFr05d40sX+fDOk4GkGrEV2dWDniA1DnoL4MIJCL52DW/
- wgC332OP/JFdqYpol6i1mCloM5r76xw+7aqMRbr4+QOZsHrCsQ9cZiJzF5NuWMYA1FiB
- YpzcU6CZAKYGHOKpWsbtSEbxgH21p3bIYypg5kANCtFJUD2zHz0s/Xhnn/q77mGZhWvX
- UnzBtAvbjK0rxmXh7+l97YjjlTyenn0UDKRZLgngV1upkc/B0kgrWc0anN/2/rxFUUpF
- AV3Q==
+ bh=EMDbgyBSsHgV3ZURAPo979wxtIvTEY+Ozps1vZGgi5k=;
+ b=DIdchj1ofLugLfVfRhO0N3llKRxS6bjuPOKi7rmGtPUo3yIt8j86UiTEJ17Rt8CZjZ
+ +3euBkQPIxKe0t+w3yRt4ir/k+SEGz/rKP5zhwdHNx3ejY7vqMKyEVz4HsnGRf0IKdtg
+ 5LGu2UtVzzaNwk97uD+YyckxbiGfiDtnqiSg8GU8vFUMyahbrjLNlMKyRlT6bM5PG4UK
+ kF82NP9ghU2Sq3UdSjCyKDzGFxWsveA4oVL6owIFrzVxCO/MJoWKswZSIkB75f5IC57b
+ u40zJTUXzmpcLX2QsZW+QSLY86fu2w30SUxMuOBS1po4MJKy7LYRNSbb0M04vJA3XpRG
+ 9rNg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV5k/MY/kv1TCBwc/kVRazCQuEAqLJ8AHMDWW7STMmrlA1pZneaPlZ/ZnlDKr6dM/CRAJORA9HV0Q==@nongnu.org
-X-Gm-Message-State: AOJu0YxYtuhYahOk249MpHUo6w2GWRpOLqIdm1RegkC8IC8cjD4Zz797
- ECzX+OQFvmnkzlRCfJcoumKOU3+HvbrPaKAZEn3c/6cy4WbKPiWUTh+Ghf7Q4zLD8IUr2I/wy2S
- nTakvmUgezw==
-X-Gm-Gg: ASbGnctNK9lGM/Q3uUDZFnOc/MCIoupkMZ0aIvrZiXFS2FWUyvqQX7cRb/68LTUR2dB
- DWTtNodm48Mjd+AIxyYfsMbN/bETPlFQVzTd4xthtu1EQ8weXzxjyAeogWh/iR7FXnirtmyPG6Z
- jpcN6nQzWkUFgOLU7aD2WssuVRZNaCOU6zTJYcL9ifoZlWDqyT2t7I/3K7UhUwKo0gUETK1yg3z
- 4hUjUHEzwYiW+ItcyrSpAWh6vu7WJx7JKRWdjdeqSA2ioj+57HwDx5sfzNoWTG46DUjfNpXmK1J
- s3PGAyzlnnm4dCBT20qht7jPRcF7B748pV826zD9PNZXtCA9xCz/zAXpRwhoqcw75Sf2LzGUx4W
- GS+y4FnKXCybgtflQuLMBuzD50Fy7WSbAAS3a95vZq4JR7JCshNlNzfsPzm4KHir21C5RZIdUKV
- ngVl6kgCetfeaULk6dxR4MURSng40/xys4MxBunVkzOSn/zHGuQA==
-X-Google-Smtp-Source: AGHT+IGxOPmZaiU2QIqOX8vP2waXUQsTuY9lyWNssyfSaOv12O7A6NZdYYkp5MiCp7Ro8Cax4ElNMQ==
-X-Received: by 2002:a05:600c:8b21:b0:471:13dd:bae7 with SMTP id
- 5b1f17b1804b1-4778fe883e3mr50226165e9.30.1763150718467; 
- Fri, 14 Nov 2025 12:05:18 -0800 (PST)
+ AJvYcCWrnBaQwjcXr9RSg2hYm1sXOLC+I19xl11L4o348n/7x73C6G0RAP5aj5GP9/PLSEiG3mwK/UmPKQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yw80iVZahULFlM6wn5MdcUYz5UPO7KVgI3MY/v4dE7mp2hSJ/tx
+ QnHXOXMcsI5iRzHhEYqcPlFdgI1U1pxjxpuFCHg3aOSui2FURvoGD0UW+suu65S0VH2slCf5JDc
+ Wc2PhyXBVFw==
+X-Gm-Gg: ASbGncvrtz0wLDMFXb5foQJ0uhV/7oNmM5/TtSbl8YrOoZCQfzz/jMGZiLQNPc4HQIV
+ gGEqTHgguXxJ3ajvXHg/mUBfr7SDpX4842txabkOanAwkY7pxt4EEGivdQwKzDbTRTIqkPByGvI
+ NLu+pH2zlvcnvX+kgG8qRJsGa6PfKjoKMbX8Wi35U77ryRI60cVXr0Ic3xqf+RGJCTmhKhIWFSm
+ kY+rmu0+tAQQ1T4ZESTwfLkkde+NjOXPsu5X6hr2yhhxchbZDA7lRnZZkOey6Hvg87qNgKa+NtE
+ gJevSodBQmAgpXfgUOnd5lxp9e35eCHvvMJJ/TIC7RPYccmBSryxF1X9D7Ondi92H/L2EgkecuJ
+ CKPPKmOIa12LAoYOHsuxlPArM9tI+sW0MBr3UPJNI52Xp7LtFnk1CCQubZaXxXXeQE5qpeu/ewV
+ XcfZ1VxES/isLwA44XfTKrLntY1WUFuxEw76MsvDb1QdsbWdsSRuwidkkzhbX1
+X-Google-Smtp-Source: AGHT+IHS7g7OD0VGWRaPeDTts+2fdDLuiqqYlvhhxmKtYkLi+mDY0kY2scPx9f4jxsOmgMHwJRvm5w==
+X-Received: by 2002:a5d:5f42:0:b0:42b:3e19:b650 with SMTP id
+ ffacd0b85a97d-42b59338fefmr4213598f8f.17.1763150807952; 
+ Fri, 14 Nov 2025 12:06:47 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-477969b3c12sm7706355e9.13.2025.11.14.12.05.15
+ ffacd0b85a97d-42b53f17cbfsm11654266f8f.35.2025.11.14.12.06.46
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 14 Nov 2025 12:05:16 -0800 (PST)
+ Fri, 14 Nov 2025 12:06:47 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
@@ -78,17 +78,17 @@ Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>
-Subject: [PATCH v5 07/19] accel/hvf: Move hvf_log_sync to hvf_log_clear
-Date: Fri, 14 Nov 2025 21:04:09 +0100
-Message-ID: <20251114200422.4280-8-philmd@linaro.org>
+Subject: [PATCH v5 19/19] target/arm: Only allow disabling NEON when using TCG
+Date: Fri, 14 Nov 2025 21:04:21 +0100
+Message-ID: <20251114200422.4280-20-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251114200422.4280-1-philmd@linaro.org>
 References: <20251114200422.4280-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,51 +111,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Richard Henderson <richard.henderson@linaro.org>
+Only allow disabling NEON when using TCG.
 
-Right idea, wrong hook.  log_sync is called before using
-dirty bit data (which for hvf is already up-to-date),
-whereas log_clear is called before cleaning the range.
+This avoids confusing user experience:
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+  $ qemu-system-aarch64 -M virt -accel hvf \
+                        -cpu host,neon=off,vfp=off,vfp-d32=off
+  qemu-system-aarch64: AArch64 CPUs must have both VFP and Neon or neither
+
+  $ qemu-system-aarch64 -M virt -accel hvf \
+                        -cpu host,neon=off,vfp=off,vfp-d32=off
+  qemu-system-aarch64: ARM CPUs must have both VFP-D32 and Neon or neither
+
+  $ qemu-system-aarch64 -M virt -accel hvf \
+                        -cpu host,neon=off,vfp=off,vfp-d32=off
+  qemu-system-aarch64: can't apply global host-arm-cpu.vfp-d32=off: Property 'host-arm-cpu.vfp-d32' not found
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- accel/hvf/hvf-all.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ target/arm/cpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
-index 601e63c7f9a..f203a6251f0 100644
---- a/accel/hvf/hvf-all.c
-+++ b/accel/hvf/hvf-all.c
-@@ -224,12 +224,13 @@ static void hvf_log_stop(MemoryListener *listener,
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index b392374df98..eaf76532eca 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1460,7 +1460,7 @@ static void arm_cpu_post_init(Object *obj)
+ 
+     if (arm_feature(&cpu->env, ARM_FEATURE_NEON)) {
+         cpu->has_neon = true;
+-        if (!kvm_enabled()) {
++        if (tcg_enabled() || qtest_enabled()) {
+             qdev_property_add_static(DEVICE(obj), &arm_cpu_has_neon_property);
+         }
      }
- }
- 
--static void hvf_log_sync(MemoryListener *listener,
--                         MemoryRegionSection *section)
-+static void hvf_log_clear(MemoryListener *listener,
-+                          MemoryRegionSection *section)
- {
-     /*
--     * sync of dirty pages is handled elsewhere; just make sure we keep
--     * tracking the region.
-+     * The dirty page bits within section are being cleared.
-+     * Some number of those pages may have been dirtied and
-+     * the write permission enabled.  Reset the range read-only.
-      */
-     hvf_protect_clean_range(section->offset_within_address_space,
-                             int128_get64(section->size));
-@@ -254,7 +255,7 @@ static MemoryListener hvf_memory_listener = {
-     .region_del = hvf_region_del,
-     .log_start = hvf_log_start,
-     .log_stop = hvf_log_stop,
--    .log_sync = hvf_log_sync,
-+    .log_clear = hvf_log_clear,
- };
- 
- static int hvf_accel_init(AccelState *as, MachineState *ms)
 -- 
 2.51.0
 

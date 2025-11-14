@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50C79CEACC1
-	for <qemu-arm@archiver.kernel.org>; Fri, 14 Nov 2025 20:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6D0ACEACC1
+	for <qemu-arm@archiver.kernel.org>; Fri, 14 Nov 2025 20:11:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vK08k-0000PZ-8I; Fri, 14 Nov 2025 15:11:26 -0500
+	id 1vK08r-0001Cp-Uk; Fri, 14 Nov 2025 15:11:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vK030-0007PI-64
- for qemu-arm@nongnu.org; Fri, 14 Nov 2025 15:05:33 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vK03M-0007m1-Ed
+ for qemu-arm@nongnu.org; Fri, 14 Nov 2025 15:05:54 -0500
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vK02y-00051n-BZ
- for qemu-arm@nongnu.org; Fri, 14 Nov 2025 15:05:29 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-475ca9237c2so13815865e9.3
- for <qemu-arm@nongnu.org>; Fri, 14 Nov 2025 12:05:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vK03K-00054m-NU
+ for qemu-arm@nongnu.org; Fri, 14 Nov 2025 15:05:52 -0500
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-42b3c965df5so1575135f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 14 Nov 2025 12:05:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763150726; x=1763755526; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763150748; x=1763755548; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LrCvW2q7zC748sZfNybE9cKpHZrZs8xKn7Qk86qnoug=;
- b=BCBKQPjuVqoSbeLeixCXXpn5h3IZoS0SqF2m4SINLTsQjKNqWXE0tulTXA+oCnNyKz
- H3aFjWmN0GFHTU8ywBH8d8zEFTd88vjZ0INt+O1shZs3CWVoMS/8BKUpK8SQO5pFgdNp
- //8WMIliEsVF3lEOn+MTgQr5QsjnGz6rJfWPl08y4iU0j3cCoMuvdDgTza02U+I/466t
- bikLTaxs7B59BHshdXqg+pyfpJ5gJyEoyiZzzF43tx0zlpNHCbMPdh9LmerWmwOrZx7h
- kAAuGrGe6d3RCtqKzkiNg4Qjif5emHdMYuA1JElL/zW7eZPCkytGyzhtrgyIxJVU4of1
- M9Bw==
+ bh=4jVZL+EPfNSiEcUqc0mMtti7iz45SaUWfxueOvD5pC8=;
+ b=PeZilM/uKaLX7BK3QMbtcpDeVRTgzGYPhMRToZ5NT1OSSsuS7BS6GYgX6n+Tu7S6Ci
+ r1ziBkbdIYRjmjB/So9Hx8l781B1gwM3nabgZTrGI375L4nL/Z2FqdP8ZTdkONMtAjDU
+ fZrrzDwqu/7xJzj4px34c49mQdbIp0n5rtzFjWxbxNCJ0ddj+jfO74KaHqW+7f964P/Q
+ IkZmmIjT3/GqD2fJZQb95KGoimgnOuVac6WuCe7C5NDYzLQX3LD/pbZJXqwknOu//OHX
+ hF3N5j75jaNy6tHAAUGQWG/g/DmdEXbN3WMqQJID4EOuQH1VDmzskiculdVsCrOCFW//
+ EqAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763150726; x=1763755526;
+ d=1e100.net; s=20230601; t=1763150748; x=1763755548;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=LrCvW2q7zC748sZfNybE9cKpHZrZs8xKn7Qk86qnoug=;
- b=gu/f8C/wi9ds+ZhtFSZlvlngD9SdV/tXOP8PCG0nVaO3OHcg0edij67fWlqSvrVnXB
- Hjy+drQGmLBJmrugeySxPLY28tJpODe/yB5IiKYjanSvkFfI98qP4LWQedCXHu/7al4k
- 0nf1fvKR+RRNVagtgBPraj6bxEuKrHcZ1IxuKCddA2rf8tBcm+kbYmJFvBwXk0CIFO3D
- i1kFO1OfaDA54Dpbmg8PFV3B7zGUGr9NU49LUJQm/g0jOPrTBzBDgo3YUigsKqAtQynC
- W6T533wxq7ejgYHoXMUN6ZVy96QzWWHnMyZFjCHPRGyLwdsDamNkE/EaggJn2EV9OtFP
- 0YNQ==
+ bh=4jVZL+EPfNSiEcUqc0mMtti7iz45SaUWfxueOvD5pC8=;
+ b=u/+DPekYYr0TkJWN3Qy3nT9GM0qjOy7DpvmM5jmRYDWexyh/ujMTsQKUsiD90x+cIZ
+ qKLtKUNYmYcIJs6ajMf2B+iMryjtez0lxxodT5poAS8YRyloUg+EkQBcJg4yhz2w9Cpl
+ kEWUaexANtpirVQvg+71yl3wy6DGfVQf4gDXX34QSZgEMRbOHANJyQAz4lvwuGVxqbci
+ 2TuMqZigeZ4YemcUCpsiYdcH2sjQlqMeHV9p+ouvoGFcaf85k4Rskcb3Y9E1mtOuZ7jM
+ YlqKZ4XayVwLBGy37SDJIk2Fz91/Or3RH2LjF6dr3otG4eA77EEY/UGa3Oicb0+vj+Cn
+ WIHA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXzLL0vLrzxzKn/92XFiMHuN2rGYYJ7LcJIWebc/xI8GIjrzN4zqV+4vdchHMPDOeUIQqsPRKd7cQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxbSg33a/Pr2mtuqqd9YliJfWoL0JaUcnoSKmEE/lvWmV8fC08L
- 1J/6eAGnPwQQtimeAogsl50NfdJDeKRa1aYzVGxW96CC1tZyyktPj2XdiVeu3hivgsU=
-X-Gm-Gg: ASbGnctzJovNRs87D4uR+bnNZ29O7E0Z/Eho5e4e3MaU33eY827/JITZtH5TniguoeU
- 7g0ZhN513KJsOpFRVe1Y6rIKx8aCB/68EK54VED1JbLCETAuna18SdFtfTdSX170ZCi1dZwJ9Lq
- uPILexG2rkn8v5KTqoSkaZNELqk2eCkwCAai9moYfsgP26CkdzoakazV3jqltCroI1G6G1l3Hhd
- KCey85hDForh4Ojtf0xGaYhMTKQScZ/6N3YV3IamOzSMYjPmnBO6ST7sVbI+2BwOh/xbl7KfcCb
- dwiZNuIwt98N6qMA7AY3jUN6zW5k5cO5ogzgc3pr3O2dgPjndBg7AQnuhvdPwMOmSY79by+HGvB
- 3/BDXpmrUH0U4YYfi9armbCKmztmHw0Pdf6pDO0GmEB6WE7oXQxWmw3QH4jw5FPrWINfdxCmvVP
- bKWn02mnV5P4pA3MC5DXV9dIsfiTq5gee2ThxuFJYF3SzLV1VVqA==
-X-Google-Smtp-Source: AGHT+IHQsaThjE2qdbCDz7zwpPJ0/O1j5OI7r9+EcbTbsslvUnvm0CpbxyicAsCWwDeyxfrQ367/Qg==
-X-Received: by 2002:a05:600c:c83:b0:475:de12:d3b5 with SMTP id
- 5b1f17b1804b1-4778feaa58fmr43129125e9.34.1763150725894; 
- Fri, 14 Nov 2025 12:05:25 -0800 (PST)
+ AJvYcCX1m/9S13Mpm19Q9d6tS0hysYoQiqiOuERXEhLehVf4MwGv3XDwo0m8ieT6Z2ZDoTA2I5nsUuimUg==@nongnu.org
+X-Gm-Message-State: AOJu0YxzdSwgeqOpoKWAAVXgHy/Ux44kpBSgWkkbVLv0ULJ7AYcbE63j
+ FgR+JgB3vL6YWMUH0gQDmS9wrjPNZ+laMX+MAjIKDJIWytrGd7p973+RUOSCV6ZGT/o=
+X-Gm-Gg: ASbGncsVoCsqSCw4MvjcXgjG9rIXx2CPCGOyAEBQ7qGbMnJrE3IwO8KVVmDWXLUJhFf
+ xb54IH1TDik4Zkh99x59ipUyrNiE0uvECmnhBF5DOXTRTLwuRH1cN+IkX3UqP0/1B+2JsjooA1G
+ iEg+XObwDyNLxpb5h8/RiGzI81/jecb5gzg7UY6Nlh+ZsMIuhAJ/rf5Vpm8NLqFwp19JThJVIDP
+ xlHjWCngTFKedo8MX7xztHdGOCrIoFDBEcvJObmBLdI40BYAXu0Gjc0IihblFzmqcVC2cGMFHtm
+ V1FHwp+RoeNbspJdW8ozCnIhqT72Kvl2O25p4HigLl5N4FZXHKXqYJBwAxXSB4rNCsoOXU8ygfs
+ YxU+0Uy0ftLYWaLgHatdiorSPWUT9VsyuhhofdcmLSmoZlOcKq0eYjeqMsUFl2i9IOhZhFrrnBi
+ 2QkRbiTj/5vsbKReIh8qzRj+1rRrF/9fTPig67CQCastHwVDbO0A==
+X-Google-Smtp-Source: AGHT+IE31UBENWH56bBFb/LwFIJ3Mu5Juk/lIMDKmufMAdYtBjIuDq375lsvdwCVy4G2r0k25sx9Bw==
+X-Received: by 2002:a05:6000:22c1:b0:42b:3ab7:b8a4 with SMTP id
+ ffacd0b85a97d-42b5938b4b1mr4063352f8f.33.1763150748421; 
+ Fri, 14 Nov 2025 12:05:48 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4779525d2bcsm24719925e9.5.2025.11.14.12.05.24
+ ffacd0b85a97d-42b53e846afsm11942271f8f.13.2025.11.14.12.05.47
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 14 Nov 2025 12:05:25 -0800 (PST)
+ Fri, 14 Nov 2025 12:05:47 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
@@ -77,24 +77,24 @@ Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>
-Subject: [PATCH v5 08/19] accel/hvf: Simplify hvf_set_phys_mem
-Date: Fri, 14 Nov 2025 21:04:10 +0100
-Message-ID: <20251114200422.4280-9-philmd@linaro.org>
+Subject: [PATCH v5 11/19] target/arm/hvf: Implement dirty page tracking
+Date: Fri, 14 Nov 2025 21:04:13 +0100
+Message-ID: <20251114200422.4280-12-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251114200422.4280-1-philmd@linaro.org>
 References: <20251114200422.4280-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,176 +112,100 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Richard Henderson <richard.henderson@linaro.org>
 
-All of the complicated parts of updating the address space
-are handled by address_space_update_topology_pass.
-Do not create or use hvf_slot structures.
+Notice writes to pages which are being monitored.  Mark the page dirty,
+re-enable writes, and retry the instruction without emulation.
+
+Assert the fault is not from a stage1 page table walk.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
-v5: s/gva/gpa/ (Akihiko)
----
- accel/hvf/hvf-all.c | 111 +++++++-------------------------------------
- 1 file changed, 17 insertions(+), 94 deletions(-)
+ target/arm/hvf/hvf.c | 52 ++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 43 insertions(+), 9 deletions(-)
 
-diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
-index f203a6251f0..5781b17fa4e 100644
---- a/accel/hvf/hvf-all.c
-+++ b/accel/hvf/hvf-all.c
-@@ -87,45 +87,16 @@ void hvf_unprotect_dirty_range(hwaddr addr, size_t size)
-                      HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC);
- }
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index de1e8fb8a05..0f584b8137a 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1869,9 +1869,10 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
+         uint32_t srt = (syndrome >> 16) & 0x1f;
+         uint32_t cm = (syndrome >> 8) & 0x1;
+         uint64_t val = 0;
++        uint64_t ipa = excp->physical_address;
++        AddressSpace *as = cpu_get_address_space(cpu, ARMASIdx_NS);
  
--static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)
--{
--    struct mac_slot *macslot;
--    hv_return_t ret;
--
--    macslot = &mac_slots[slot->slot_id];
--
--    if (macslot->present) {
--        if (macslot->size != slot->size) {
--            macslot->present = 0;
--            trace_hvf_vm_unmap(macslot->gpa_start, macslot->size);
--            ret = hv_vm_unmap(macslot->gpa_start, macslot->size);
--            assert_hvf_ok(ret);
--        }
--    }
--
--    if (!slot->size) {
--        return 0;
--    }
--
--    macslot->present = 1;
--    macslot->gpa_start = slot->start;
--    macslot->size = slot->size;
--    trace_hvf_vm_map(slot->start, slot->size, slot->mem, flags,
--                     flags & HV_MEMORY_READ ?  'R' : '-',
--                     flags & HV_MEMORY_WRITE ? 'W' : '-',
--                     flags & HV_MEMORY_EXEC ?  'X' : '-');
--    ret = hv_vm_map(slot->mem, slot->start, slot->size, flags);
--    assert_hvf_ok(ret);
--    return 0;
--}
--
- static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
- {
--    hvf_slot *mem;
-     MemoryRegion *area = section->mr;
-     bool writable = !area->readonly && !area->rom_device;
-     hv_memory_flags_t flags;
-     uint64_t page_size = qemu_real_host_page_size();
-+    uint64_t gpa = section->offset_within_address_space;
-+    uint64_t size = int128_get64(section->size);
-+    hv_return_t ret;
-+    void *mem;
+-        trace_hvf_data_abort(excp->virtual_address,
+-                             excp->physical_address, isv,
++        trace_hvf_data_abort(excp->virtual_address, ipa, isv,
+                              iswrite, s1ptw, len, srt);
  
-     if (!memory_region_is_ram(area)) {
-         if (writable) {
-@@ -139,69 +110,28 @@ static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
+         if (cm) {
+@@ -1880,23 +1881,56 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
+             break;
          }
+ 
++        /* Handle dirty page logging for ram. */
++        if (iswrite) {
++            hwaddr xlat;
++            MemoryRegion *mr = address_space_translate(as, ipa, &xlat,
++                                                       NULL, true,
++                                                       MEMTXATTRS_UNSPECIFIED);
++            if (memory_region_is_ram(mr)) {
++                uintptr_t page_size = qemu_real_host_page_size();
++                intptr_t page_mask = -(intptr_t)page_size;
++                uint64_t ipa_page = ipa & page_mask;
++
++                /* TODO: Inject exception to the guest. */
++                assert(!mr->readonly);
++
++                if (memory_region_get_dirty_log_mask(mr)) {
++                    memory_region_set_dirty(mr, ipa_page + xlat, page_size);
++                    hvf_unprotect_dirty_range(ipa_page, page_size);
++                }
++
++                /* Retry with page writes enabled. */
++                break;
++            }
++        }
++
++        /*
++         * TODO: If s1ptw, this is an error in the guest os page tables.
++         * Inject the exception into the guest.
++         */
++        assert(!s1ptw);
++
++        /*
++         * TODO: ISV will be 0 for SIMD or SVE accesses.
++         * Inject the exception into the guest.
++         */
+         assert(isv);
+ 
++        /*
++         * Emulate MMIO.
++         * TODO: Inject faults for errors.
++         */
+         if (iswrite) {
+             val = hvf_get_reg(cpu, srt);
+-            address_space_write(&address_space_memory,
+-                                excp->physical_address,
+-                                MEMTXATTRS_UNSPECIFIED, &val, len);
++            address_space_write(as, ipa, MEMTXATTRS_UNSPECIFIED, &val, len);
+         } else {
+-            address_space_read(&address_space_memory,
+-                               excp->physical_address,
+-                               MEMTXATTRS_UNSPECIFIED, &val, len);
++            address_space_read(as, ipa, MEMTXATTRS_UNSPECIFIED, &val, len);
+             if (sse) {
+                 val = sextract64(val, 0, len * 8);
+             }
+             hvf_set_reg(cpu, srt, val);
+         }
+-
+         advance_pc = true;
+         break;
      }
- 
--    if (!QEMU_IS_ALIGNED(int128_get64(section->size), page_size) ||
--        !QEMU_IS_ALIGNED(section->offset_within_address_space, page_size)) {
-+    if (!QEMU_IS_ALIGNED(size, page_size) ||
-+        !QEMU_IS_ALIGNED(gpa, page_size)) {
-         /* Not page aligned, so we can not map as RAM */
-         add = false;
-     }
- 
--    mem = hvf_find_overlap_slot(
--            section->offset_within_address_space,
--            int128_get64(section->size));
--
--    if (mem && add) {
--        if (mem->size == int128_get64(section->size) &&
--            mem->start == section->offset_within_address_space &&
--            mem->mem == (memory_region_get_ram_ptr(area) +
--            section->offset_within_region)) {
--            return; /* Same region was attempted to register, go away. */
--        }
--    }
--
--    /* Region needs to be reset. set the size to 0 and remap it. */
--    if (mem) {
--        mem->size = 0;
--        if (do_hvf_set_memory(mem, 0)) {
--            error_report("Failed to reset overlapping slot");
--            abort();
--        }
--    }
--
-     if (!add) {
-+        trace_hvf_vm_unmap(gpa, size);
-+        ret = hv_vm_unmap(gpa, size);
-+        assert_hvf_ok(ret);
-         return;
-     }
- 
--    if (area->readonly ||
--        (!memory_region_is_ram(area) && memory_region_is_romd(area))) {
--        flags = HV_MEMORY_READ | HV_MEMORY_EXEC;
--    } else {
--        flags = HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC;
--    }
-+    flags = HV_MEMORY_READ | HV_MEMORY_EXEC | (writable ? HV_MEMORY_WRITE : 0);
-+    mem = memory_region_get_ram_ptr(area) + section->offset_within_region;
- 
--    /* Now make a new slot. */
--    int x;
--
--    for (x = 0; x < hvf_state->num_slots; ++x) {
--        mem = &hvf_state->slots[x];
--        if (!mem->size) {
--            break;
--        }
--    }
--
--    if (x == hvf_state->num_slots) {
--        error_report("No free slots");
--        abort();
--    }
--
--    mem->size = int128_get64(section->size);
--    mem->mem = memory_region_get_ram_ptr(area) + section->offset_within_region;
--    mem->start = section->offset_within_address_space;
--    mem->region = area;
--
--    if (do_hvf_set_memory(mem, flags)) {
--        error_report("Error registering new memory slot");
--        abort();
--    }
-+    trace_hvf_vm_map(gpa, size, mem, flags,
-+                     flags & HV_MEMORY_READ ?  'R' : '-',
-+                     flags & HV_MEMORY_WRITE ? 'W' : '-',
-+                     flags & HV_MEMORY_EXEC ?  'X' : '-');
-+    ret = hv_vm_map(mem, gpa, size, flags);
-+    assert_hvf_ok(ret);
- }
- 
- static void hvf_log_start(MemoryListener *listener,
-@@ -260,7 +190,6 @@ static MemoryListener hvf_memory_listener = {
- 
- static int hvf_accel_init(AccelState *as, MachineState *ms)
- {
--    int x;
-     hv_return_t ret;
-     HVFState *s = HVF_STATE(as);
-     int pa_range = 36;
-@@ -281,12 +210,6 @@ static int hvf_accel_init(AccelState *as, MachineState *ms)
-     }
-     assert_hvf_ok(ret);
- 
--    s->num_slots = ARRAY_SIZE(s->slots);
--    for (x = 0; x < s->num_slots; ++x) {
--        s->slots[x].size = 0;
--        s->slots[x].slot_id = x;
--    }
--
-     QTAILQ_INIT(&s->hvf_sw_breakpoints);
- 
-     hvf_state = s;
 -- 
 2.51.0
 

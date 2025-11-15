@@ -4,98 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B26DCEACCB
-	for <qemu-arm@archiver.kernel.org>; Fri, 14 Nov 2025 20:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C5A4CE8D6B
+	for <qemu-arm@archiver.kernel.org>; Sat, 15 Nov 2025 02:23:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vK0Au-0003cg-FC; Fri, 14 Nov 2025 15:13:40 -0500
+	id 1vK5ws-0004q4-7D; Fri, 14 Nov 2025 21:23:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vK047-0008W9-Fg
- for qemu-arm@nongnu.org; Fri, 14 Nov 2025 15:06:40 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vK045-00059n-BQ
- for qemu-arm@nongnu.org; Fri, 14 Nov 2025 15:06:38 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-477632d9326so17110415e9.1
- for <qemu-arm@nongnu.org>; Fri, 14 Nov 2025 12:06:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763150793; x=1763755593; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=R3F2C6kHHPWBiLc/P72P8z+qmvtuhzoJzLzlQGryUqk=;
- b=u/VJ9xt11jYvqbDh7ZkWgBjRcSRwIqEPyxs4+kSJZBF1bB6FVsA4VwrdNLvAPOSyyP
- OXj2F3zzup8r7Wspru2pGVneavsJ/YQsnR2pZsloNFqnRSysNKgLLVMamJy/V/Y3T2VV
- KK2Z0GpMBJA1amVv2ENfxM2mpwqgYTDchkBChy0fSZOrlI2q1OIDl5y/LDI5OvHIkVdB
- /olz6ywhlYxErWF/ta/YugD6LSaGkY+Ql1dS5LrOrUxZYws7W2UmI6y9z5QGzPnvHODE
- tk0zLU/OBqoINfKsVeYgR47loFqWkA7RsynoI+f5GG5KM7MzzAHtLzN4epHwWVpRSSg6
- kD2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763150793; x=1763755593;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=R3F2C6kHHPWBiLc/P72P8z+qmvtuhzoJzLzlQGryUqk=;
- b=Hwj3/JEION+mEMSlWAjNUgazQsSYY3RJESwS8I3ev8jaqt2R1BvT0bt0nxyyRbDwkD
- z2X6qJLdNWfctBhKL5OUiKrNpAfG91NQg3FUn7jDhq/g/pmijsASnOQ/p4LhZa+txOHp
- GXslmi3jqA0pRz3XTosyJtu/t/u9HsuFzw5DMo3tmuUwN16P9d7FGUkaw+Tffx+fve4K
- xkO6h1ho2q6fWGA2YySHyQBM4yVKYP2i5Taz455FE5wbs2PU50H4K5zklT4EuSC44kLi
- KpShYW9XjIosvpJgbZJo9nk4tDbV3sj+VViMwGTgHuwCLe1OdwUjXMQZlXpIXrahVXx1
- JjFw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVWboamHIqC7MsJUCIT1oVNsyvFU/ay13t43yv969mhkFi1j6hBmGUnu1dqkCma8Ep++jpyPig7yg==@nongnu.org
-X-Gm-Message-State: AOJu0YwCyhF6MYoa3rtQMn2rM9cw06CAhWjROlaSjlnj16vIQY9koF3h
- zrS8nphz4mlqYLau8XW3neMTrNkzKf0/H+WvhE0zzlB6eg+zvUe2JM7YfGj5zNmBsHs=
-X-Gm-Gg: ASbGncuMyWoUiMF7DUweQhvgI62J+dlgXIcCUwwV3joqDbuq7JzMGc/+qpQ34Ngru/+
- OCmIcXD66NHzZ12wg4fhF4CWyPGxLl2UOTQKGoJI7N5FGFSgozPWW2c5V4HHyQvPVRyEatNj07i
- lIhpaGHVRhxQcvoP+DpB4FS8YRYza5CT2Tq8gSqY/vBhBdT6tAOLbzvKwwAVGsI7Kea2qgTRa/s
- X1OIttYBzvKKy6Chsfix/s8m2P7UOgwO7r5ZpYY8P/8t8b7mYPmdmRdzcVy0KvI0mrxo0uu74f9
- Uho3wKNWS9ZhGeTQFs78aadiqRwaEqhrno5hY9gcTkOQe4QyOe4PWisWjb8IS2sgYR7EyD+/UBT
- +tnyBlCkOa92KLOd8fhGyQBfVJG5cb5hQlQjPJX2iR040pjxRyEC0Duito8ycS/FCvHc68frQnu
- BZ3TeUQs/tH+2H4y9Hv0/5IUTB6Vr03n8F93oLatDvJ0e35/c7hA==
-X-Google-Smtp-Source: AGHT+IEn8axmdlThJoOIpCHIUcegfWVBb8SZB6bu/ErdlYyUDFfP+9Hh2RA09EyvCjVirGQcLS9EsA==
-X-Received: by 2002:a05:600c:4505:b0:477:7a87:48d1 with SMTP id
- 5b1f17b1804b1-4778fea8810mr51352655e9.30.1763150793439; 
- Fri, 14 Nov 2025 12:06:33 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42b53f0b60csm11771751f8f.22.2025.11.14.12.06.31
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 14 Nov 2025 12:06:32 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1vK5wn-0004nK-KJ; Fri, 14 Nov 2025 21:23:30 -0500
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1vK5wk-0004Oa-PM; Fri, 14 Nov 2025 21:23:29 -0500
+Received: from [192.168.10.110] (p865013-ipoe.ipoe.ocn.ne.jp [153.242.222.12])
+ (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 5AF2Mefl098890
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Sat, 15 Nov 2025 11:22:40 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=Tb0yRBS5b+CywSCmNXmKdViMa5KOfPGxpxM2o/zn+Dk=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=Message-ID:Date:Subject:To:From;
+ s=rs20250326; t=1763173360; v=1;
+ b=oFUIue63xSpQ4Hk7d2VD+Byp5HA2bPEKY+nZPOdUlyquYzsKeyoR5IinmKVMxJ9L
+ 6EjILXWZ4Sd9JDOW8FDsbbdu26cFXzXSfEBjcnzVam+6YPBl8s72WblxXqapRfXC
+ ZdD1kCmV/Zkerayx6GzoXachxAXu6Z+7mW+r9nxRia/l8WH24aA6raQ6JQAaLStz
+ TvllI2REfSHYv0es2GKYazkcAWWkofeqog4L9C5hyx4ie/Fy7uX54KrV19SA5Gxl
+ PvFR/2E8dnKqL/Dcj3pdLaleJvIaQ4GVswr419I0v2rK5Cg1eX2Qsqi7ULu/+L1o
+ 5xglE2uXuy2P9kko0CCDdg==
+Message-ID: <b0b2fdce-9f4a-47a5-bba0-209f2c8ac0cc@rsg.ci.i.u-tokyo.ac.jp>
+Date: Sat, 15 Nov 2025 11:22:40 +0900
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 00/19] target/arm/hvf: Consolidate
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Paolo Bonzini
+ <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
  Peter Collingbourne <pcc@google.com>, Cameron Esfahani <dirty@apple.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  Peter Maydell <peter.maydell@linaro.org>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>
-Subject: [PATCH v5 17/19] target/arm: Create GTimers *after* features
- finalized / accel realized
-Date: Fri, 14 Nov 2025 21:04:19 +0100
-Message-ID: <20251114200422.4280-18-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251114200422.4280-1-philmd@linaro.org>
 References: <20251114200422.4280-1-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Language: en-US
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <20251114200422.4280-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,108 +78,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Call generic (including accelerator) cpu_realize() handlers
-*before* setting @gt_cntfrq_hz default
+On 2025/11/15 5:04, Philippe Mathieu-Daudé wrote:
+> Missing review: #8
+> 
+> - Patches 1-11 fix migration on HVF
+> - Patches 12-14 remove a signal race with WFI
+> - Patches 15-18 correct guest timer frequency
+> 
+> Since v4:
+> - Rename gva -> gpa in hvf_set_phys_mem (Akihiko)
+> - Dropped missing VTimer synchronization patches for 10.2
+> 
+> Since v3:
+> - Call qemu_real_host_page_mask/size once (rth)
+> 
+> Since v2:
+> - Improve host page size/mask uses (rth)
+> - Remove cpu_test_interrupt in hvf_wfi (rth)
+> 
+> Since v1:
+> - Addressed Mads & Richard comments
+> - Fixed migration by reworking memory listeners
+>    (unfortunately the current broken code has been
+>     used as base for WHPX)
+> - Sync CNTV_CTL/CVAL_EL0
+> - Remove WFI racy signal implementation
+> - Simplify PSCI Suspend (I expect the same can be
+>    done for the other hvf_psci_cpu_off() calls).
+> - Emulate more missing registers (PMU & Monitor Dbg)
+> 
+>  From v1:
+> - Fix a pair of memory leak
+> - Check a pair of return values
+> - Mention calls which must be run on vCPU thread
+> - Force MIDR
+> - Use hv_vcpu_config_create/hv_vcpu_config_get_feature_reg
+>    when not running on vCPU thread
+> - Factor hvf_handle_vmexit() / hvf_handle_exception(() out
+> - Call hv_vcpu_run() in loop
+> - Guard hv_vcpu_run() between cpu_exec_start/end()
+> - Restrict ARM specific in AccelCPUState
+> 
+> Based-on: <20250829152909.1589668-14-pbonzini@redhat.com>
+> 
+> Philippe Mathieu-Daudé (10):
+>    target/i386/hvf: Use host page alignment in ept_emulation_fault()
+>    accel/hvf: Enforce host alignment in hv_vm_protect()
+>    accel/hvf: Skip WFI if CPU has work to do
+>    accel/hvf: Implement WFI without using pselect()
+>    accel/hvf: Have PSCI CPU_SUSPEND halt the vCPU
+>    accel: Introduce AccelOpsClass::cpu_target_realize() hook
+>    accel/hvf: Add hvf_arch_cpu_realize() stubs
+>    target/arm: Create GTimers *after* features finalized / accel realized
+>    target/arm/hvf: Really set Generic Timer counter frequency
+>    target/arm: Only allow disabling NEON when using TCG
+> 
+> Richard Henderson (9):
+>    accel/hvf: Create hvf_protect_clean_range, hvf_unprotect_dirty_range
+>    target/i386/hvf: Use hvf_unprotect_dirty_range
+>    target/i386/hvf: Use address_space_translate in ept_emulation_fault
+>    accel/hvf: Simplify hvf_log_*
+>    accel/hvf: Move hvf_log_sync to hvf_log_clear
+>    accel/hvf: Simplify hvf_set_phys_mem
+>    accel/hvf: Drop hvf_slot and hvf_find_overlap_slot
+>    accel/hvf: Remove mac_slots
+>    target/arm/hvf: Implement dirty page tracking
+> 
+>   include/accel/accel-cpu-ops.h |   1 +
+>   include/system/hvf_int.h      |  22 +---
+>   accel/accel-common.c          |   5 +
+>   accel/hvf/hvf-accel-ops.c     |  19 +---
+>   accel/hvf/hvf-all.c           | 186 ++++++++++------------------------
+>   target/arm/cpu.c              |  67 ++++++------
+>   target/arm/hvf/hvf.c          | 167 +++++++++++++++---------------
+>   target/i386/hvf/hvf.c         |  44 ++++----
+>   accel/hvf/trace-events        |   1 +
+>   9 files changed, 208 insertions(+), 304 deletions(-)
+> 
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/cpu.c | 65 ++++++++++++++++++++++++------------------------
- 1 file changed, 33 insertions(+), 32 deletions(-)
-
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 39292fb9bc1..b392374df98 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1636,26 +1636,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         return;
-     }
- 
--    if (!cpu->gt_cntfrq_hz) {
--        /*
--         * 0 means "the board didn't set a value, use the default". (We also
--         * get here for the CONFIG_USER_ONLY case.)
--         * ARMv8.6 and later CPUs architecturally must use a 1GHz timer; before
--         * that it was an IMPDEF choice, and QEMU initially picked 62.5MHz,
--         * which gives a 16ns tick period.
--         *
--         * We will use the back-compat value:
--         *  - for QEMU CPU types added before we standardized on 1GHz
--         *  - for versioned machine types with a version of 9.0 or earlier
--         */
--        if (arm_feature(env, ARM_FEATURE_BACKCOMPAT_CNTFRQ) ||
--            cpu->backcompat_cntfrq) {
--            cpu->gt_cntfrq_hz = GTIMER_BACKCOMPAT_HZ;
--        } else {
--            cpu->gt_cntfrq_hz = GTIMER_DEFAULT_HZ;
--        }
--    }
--
- #ifndef CONFIG_USER_ONLY
-     /* The NVIC and M-profile CPU are two halves of a single piece of
-      * hardware; trying to use one without the other is a command line
-@@ -1702,7 +1682,40 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-             return;
-         }
-     }
-+#endif
- 
-+    cpu_exec_realizefn(cs, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+    arm_cpu_finalize_features(cpu, &local_err);
-+    if (local_err != NULL) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+    if (!cpu->gt_cntfrq_hz) {
-+        /*
-+         * 0 means "the board didn't set a value, use the default". (We also
-+         * get here for the CONFIG_USER_ONLY case.)
-+         * ARMv8.6 and later CPUs architecturally must use a 1GHz timer; before
-+         * that it was an IMPDEF choice, and QEMU initially picked 62.5MHz,
-+         * which gives a 16ns tick period.
-+         *
-+         * We will use the back-compat value:
-+         *  - for QEMU CPU types added before we standardized on 1GHz
-+         *  - for versioned machine types with a version of 9.0 or earlier
-+         */
-+        if (arm_feature(env, ARM_FEATURE_BACKCOMPAT_CNTFRQ) ||
-+            cpu->backcompat_cntfrq) {
-+            cpu->gt_cntfrq_hz = GTIMER_BACKCOMPAT_HZ;
-+        } else {
-+            cpu->gt_cntfrq_hz = GTIMER_DEFAULT_HZ;
-+        }
-+    }
-+#ifndef CONFIG_USER_ONLY
-     {
-         uint64_t scale = gt_cntfrq_period_ns(cpu);
- 
-@@ -1723,18 +1736,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     }
- #endif
- 
--    cpu_exec_realizefn(cs, &local_err);
--    if (local_err != NULL) {
--        error_propagate(errp, local_err);
--        return;
--    }
--
--    arm_cpu_finalize_features(cpu, &local_err);
--    if (local_err != NULL) {
--        error_propagate(errp, local_err);
--        return;
--    }
--
- #ifdef CONFIG_USER_ONLY
-     /*
-      * User mode relies on IC IVAU instructions to catch modification of
--- 
-2.51.0
-
+For the whole series:
+Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 

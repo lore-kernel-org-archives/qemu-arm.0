@@ -4,66 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C5A4CE8D6B
-	for <qemu-arm@archiver.kernel.org>; Sat, 15 Nov 2025 02:23:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5463ACCD19A
+	for <qemu-arm@archiver.kernel.org>; Sun, 16 Nov 2025 14:32:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vK5ws-0004q4-7D; Fri, 14 Nov 2025 21:23:35 -0500
+	id 1vKdoD-0003sW-Gp; Sun, 16 Nov 2025 09:32:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vK5wn-0004nK-KJ; Fri, 14 Nov 2025 21:23:30 -0500
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vK5wk-0004Oa-PM; Fri, 14 Nov 2025 21:23:29 -0500
-Received: from [192.168.10.110] (p865013-ipoe.ipoe.ocn.ne.jp [153.242.222.12])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 5AF2Mefl098890
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sat, 15 Nov 2025 11:22:40 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=Tb0yRBS5b+CywSCmNXmKdViMa5KOfPGxpxM2o/zn+Dk=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=Message-ID:Date:Subject:To:From;
- s=rs20250326; t=1763173360; v=1;
- b=oFUIue63xSpQ4Hk7d2VD+Byp5HA2bPEKY+nZPOdUlyquYzsKeyoR5IinmKVMxJ9L
- 6EjILXWZ4Sd9JDOW8FDsbbdu26cFXzXSfEBjcnzVam+6YPBl8s72WblxXqapRfXC
- ZdD1kCmV/Zkerayx6GzoXachxAXu6Z+7mW+r9nxRia/l8WH24aA6raQ6JQAaLStz
- TvllI2REfSHYv0es2GKYazkcAWWkofeqog4L9C5hyx4ie/Fy7uX54KrV19SA5Gxl
- PvFR/2E8dnKqL/Dcj3pdLaleJvIaQ4GVswr419I0v2rK5Cg1eX2Qsqi7ULu/+L1o
- 5xglE2uXuy2P9kko0CCDdg==
-Message-ID: <b0b2fdce-9f4a-47a5-bba0-209f2c8ac0cc@rsg.ci.i.u-tokyo.ac.jp>
-Date: Sat, 15 Nov 2025 11:22:40 +0900
+ (Exim 4.90_1) (envelope-from <yodel.eldar@gmail.com>)
+ id 1vKd7W-0002qp-Py
+ for qemu-arm@nongnu.org; Sun, 16 Nov 2025 08:48:46 -0500
+Received: from mail-oo1-xc41.google.com ([2607:f8b0:4864:20::c41])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <yodel.eldar@gmail.com>)
+ id 1vKd7U-0000Nq-UQ
+ for qemu-arm@nongnu.org; Sun, 16 Nov 2025 08:48:46 -0500
+Received: by mail-oo1-xc41.google.com with SMTP id
+ 006d021491bc7-657490df6f3so348015eaf.2
+ for <qemu-arm@nongnu.org>; Sun, 16 Nov 2025 05:48:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1763300923; x=1763905723; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:to:subject:cc:user-agent:mime-version
+ :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+ bh=3K0/9VyGGC+FRx1PheDwKsO+O9JnvRys8IuXQdR/WDA=;
+ b=TCFf1D3amnIAJ7t2utDMULjvEtZ5A+drXqWuQvOIxUhGwx7Vur+y+QrNbkkYJJ9c4p
+ NY8y/adM3Yqmj0VXAErw8SY9v1RKyI90N70HYL7MyFzf201HiCOxqbXOTT5fGri6LNgM
+ S2R1nitzkJJDRcdoEH40ILpRsOaHs/klwkFtHGKtOXnDQT5YqbExW9RMre83s85V4sbL
+ g0g2NqWzPGGRlByQlqn4/LjAIurwy+JRUMgTHTSj6jxrQEHVZfJwGNjz51/5OVtR573C
+ XbBOYHnCTIzFRDnOTvqhyAp235DWNt4kaiAwat5hnLXSZ4r13sSWIBm1d+bVLzmSrgjs
+ Hcgw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1763300923; x=1763905723;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:to:subject:cc:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=3K0/9VyGGC+FRx1PheDwKsO+O9JnvRys8IuXQdR/WDA=;
+ b=s6/Lt4/yILlcBrKE+U99Mq7o9TBbdkg8556dSYPEUuL2kKUpvevIBUO6iKQoOMjMJZ
+ pr/+R0j9ZM2ZT3iys3MGquc+eK6lnrY1ZlbvvWGi0/jhPCr8QUnFT585XndLQANMpZHy
+ QAJCpC9iRTiNeJbL64jJ1zKPfk3NaW+x7fozgJtrSv/hpW5+nggw59KYyDymFOs5p82Y
+ J3sDNIiGteuVfl2MYtZUhp7BjzJHODga6BMFjF2ZrTihVcsPS08IBZdQCisako91pcjl
+ A94nx0c202rKvY4L2qCeD1W8vrxFq10hILz4GRamxvZQ+IKQyca36VcwsUg/wzMi6RKu
+ bfig==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUFiFLPb0dCQ1E/q8dpT3Lanj8aQv1/ZJlxNFV5BgK6kOGKPiMVDhRll6YHTumJ1aBvip5x4GrfAg==@nongnu.org
+X-Gm-Message-State: AOJu0YyI16QgFAioPXR+kqnD4oxZsJHeudrY0Ec62iImc7sJ49eULt1A
+ Bw0u951n1Degkl+M6Dj3FI0tlFWXAw/pwq+3iy4JfRWne2+HXy2Lv9SE
+X-Gm-Gg: ASbGncv+suib5sTWpR7snGFkhEnOqh3zSoGH7TDMf/I8LX94O4bz0xlI+hXugiw1XiQ
+ QUimn+lp3ONfCPhQr+7bQqcgRWcJAei+KCDfKJ09gg0M60Jv0NWUjYkg8m1b7vtcfn5JnmlmaYZ
+ qitbZ2UZexqSMCfBscnhKQQUzeuMmFDtJNQzDpgOtSVOegZttiNGC+MvLurKjtqCpx2dj8EnORA
+ GYUzDjcoUqXGjKeb9ngnP0Bf1MulnbOYjqiZmfPSBw2ejaKtFVCxofexL4a+XkCSx/pUO4bNsKX
+ PRgMm9S8kxEOLc7q+j2lNjxJgUavvASyTQszIzeYlu6SDi2iF9uzdUUz4L37roPplD0RAF3Grh4
+ c5KcK5CH3o6Fql88BNYkJvpbLrE1hnswVh29MRH5BfkhNx10j+6rFPf286p2oVJF+0nIdVkTfvS
+ WSvuQiPDlI9f/PmruzBIfUfpeLhejhP2ilRYOLK8sdxqb1qrylQltCLSJznMSx7yEMdANHKaig1
+ 6eo3vXe
+X-Google-Smtp-Source: AGHT+IHRyOUA0fxc0jPJ+a/LOYmourPKmrI14Uv6qjck0pgl7Mf5agrcQFYfBWSk1ba8MIq9Wj7ewA==
+X-Received: by 2002:a05:6870:88a1:b0:3ec:451b:2ef0 with SMTP id
+ 586e51a60fabf-3ec451b3bd7mr9006fac.38.1763300922920; 
+ Sun, 16 Nov 2025 05:48:42 -0800 (PST)
+Received: from [192.168.1.242] (99-62-247-245.lightspeed.hstntx.sbcglobal.net.
+ [99.62.247.245]) by smtp.gmail.com with ESMTPSA id
+ 586e51a60fabf-3e8522b268fsm4872232fac.18.2025.11.16.05.48.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 16 Nov 2025 05:48:42 -0800 (PST)
+Message-ID: <200584ab-1ce3-44bb-8911-59df9e9a8f37@gmail.com>
+Date: Sun, 16 Nov 2025 07:48:41 -0600
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 00/19] target/arm/hvf: Consolidate
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org,
- Phil Dennis-Jordan <phil@philjordan.eu>, Paolo Bonzini
- <pbonzini@redhat.com>, Richard Henderson <richard.henderson@linaro.org>,
- Peter Collingbourne <pcc@google.com>, Cameron Esfahani <dirty@apple.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
+Cc: yodel.eldar@gmail.com, qemu-devel@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>
-References: <20251114200422.4280-1-philmd@linaro.org>
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:Raspberry Pi" <qemu-arm@nongnu.org>,
+ Florian Meier <florian.meier@koalo.de>,
+ Florian Fainelli <florian.fainelli@broadcom.com>
+Subject: Re: [RFC PATCH] hw/dma: don't allow weird transfer lengths for bcm2835
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Yodel Eldar <yodel.eldar@yodel.dev>
+References: <20251111105429.3993300-1-alex.bennee@linaro.org>
+ <4d6d7e9d-0952-4158-9ef4-6093a16e9dd9@yodel.dev>
+ <87wm3so997.fsf@draig.linaro.org>
 Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20251114200422.4280-1-philmd@linaro.org>
+From: Yodel Eldar <yodel.eldar@gmail.com>
+Autocrypt: addr=yodel.eldar@gmail.com; keydata=
+ xjMEZxqXdhYJKwYBBAHaRw8BAQdAkletQdG3CLyANZyuf2t7Z9PK4b6HiT+DdSPUB2mHzmPN
+ I1lvZGVsIEVsZGFyIDx5b2RlbC5lbGRhckBnbWFpbC5jb20+wpYEExYKAD4WIQTTzRjNQG27
+ imap+N+V7k+3NmVNrAUCaNWADAIbAwUJA5wbTQULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAK
+ CRCV7k+3NmVNrBcbAQDBV8csM+HooPvD20VQiBThV+AZ5KDmkOPtUmh0nkp7JgD8Dgdf20FW
+ 6S2J1vvZhLJr98wGadpnz88x3YRkb25sWQ7OOARnGpd2EgorBgEEAZdVAQUBAQdAKPIy3W/D
+ KFsm1e+31zoqmOY0pqz8vjIM846wM6lEY2QDAQgHwn4EGBYIACYCGwwWIQTTzRjNQG27imap
+ +N+V7k+3NmVNrAUCaNWG7QUJA5wi9wAKCRCV7k+3NmVNrPusAQCQDQwETy7VT6UhHPhoTkrQ
+ nsNqQfFU3tXqCTiViToktQD7B/U2/to97hQIJCWbK6yd3T+KPZJPMcHMg2XRyedUvgA=
+In-Reply-To: <87wm3so997.fsf@draig.linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: base64
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c41;
+ envelope-from=yodel.eldar@gmail.com; helo=mail-oo1-xc41.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 16 Nov 2025 09:32:52 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,84 +126,109 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2025/11/15 5:04, Philippe Mathieu-Daudé wrote:
-> Missing review: #8
-> 
-> - Patches 1-11 fix migration on HVF
-> - Patches 12-14 remove a signal race with WFI
-> - Patches 15-18 correct guest timer frequency
-> 
-> Since v4:
-> - Rename gva -> gpa in hvf_set_phys_mem (Akihiko)
-> - Dropped missing VTimer synchronization patches for 10.2
-> 
-> Since v3:
-> - Call qemu_real_host_page_mask/size once (rth)
-> 
-> Since v2:
-> - Improve host page size/mask uses (rth)
-> - Remove cpu_test_interrupt in hvf_wfi (rth)
-> 
-> Since v1:
-> - Addressed Mads & Richard comments
-> - Fixed migration by reworking memory listeners
->    (unfortunately the current broken code has been
->     used as base for WHPX)
-> - Sync CNTV_CTL/CVAL_EL0
-> - Remove WFI racy signal implementation
-> - Simplify PSCI Suspend (I expect the same can be
->    done for the other hvf_psci_cpu_off() calls).
-> - Emulate more missing registers (PMU & Monitor Dbg)
-> 
->  From v1:
-> - Fix a pair of memory leak
-> - Check a pair of return values
-> - Mention calls which must be run on vCPU thread
-> - Force MIDR
-> - Use hv_vcpu_config_create/hv_vcpu_config_get_feature_reg
->    when not running on vCPU thread
-> - Factor hvf_handle_vmexit() / hvf_handle_exception(() out
-> - Call hv_vcpu_run() in loop
-> - Guard hv_vcpu_run() between cpu_exec_start/end()
-> - Restrict ARM specific in AccelCPUState
-> 
-> Based-on: <20250829152909.1589668-14-pbonzini@redhat.com>
-> 
-> Philippe Mathieu-Daudé (10):
->    target/i386/hvf: Use host page alignment in ept_emulation_fault()
->    accel/hvf: Enforce host alignment in hv_vm_protect()
->    accel/hvf: Skip WFI if CPU has work to do
->    accel/hvf: Implement WFI without using pselect()
->    accel/hvf: Have PSCI CPU_SUSPEND halt the vCPU
->    accel: Introduce AccelOpsClass::cpu_target_realize() hook
->    accel/hvf: Add hvf_arch_cpu_realize() stubs
->    target/arm: Create GTimers *after* features finalized / accel realized
->    target/arm/hvf: Really set Generic Timer counter frequency
->    target/arm: Only allow disabling NEON when using TCG
-> 
-> Richard Henderson (9):
->    accel/hvf: Create hvf_protect_clean_range, hvf_unprotect_dirty_range
->    target/i386/hvf: Use hvf_unprotect_dirty_range
->    target/i386/hvf: Use address_space_translate in ept_emulation_fault
->    accel/hvf: Simplify hvf_log_*
->    accel/hvf: Move hvf_log_sync to hvf_log_clear
->    accel/hvf: Simplify hvf_set_phys_mem
->    accel/hvf: Drop hvf_slot and hvf_find_overlap_slot
->    accel/hvf: Remove mac_slots
->    target/arm/hvf: Implement dirty page tracking
-> 
->   include/accel/accel-cpu-ops.h |   1 +
->   include/system/hvf_int.h      |  22 +---
->   accel/accel-common.c          |   5 +
->   accel/hvf/hvf-accel-ops.c     |  19 +---
->   accel/hvf/hvf-all.c           | 186 ++++++++++------------------------
->   target/arm/cpu.c              |  67 ++++++------
->   target/arm/hvf/hvf.c          | 167 +++++++++++++++---------------
->   target/i386/hvf/hvf.c         |  44 ++++----
->   accel/hvf/trace-events        |   1 +
->   9 files changed, 208 insertions(+), 304 deletions(-)
-> 
-
-For the whole series:
-Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+DQpPbiAxNC8xMS8yMDI1IDEwOjQzLCBBbGV4IEJlbm7DqWUgd3JvdGU6DQo+IFlvZGVsIEVs
+ZGFyIDx5b2RlbC5lbGRhckB5b2RlbC5kZXY+IHdyaXRlczoNCj4gDQo+IChhZGQgRmxvcmlh
+bnMgdG8gQ0MpDQo+IA0KPj4gT24gMTEvMTEvMjAyNSAwNDo1NCwgQWxleCBCZW5uw6llIHdy
+b3RlOg0KPj4+IFRoZSBkYXRhc2hlZXQgZG9lc24ndCBleHBsaWNpdGx5IHNheSB0aGF0IFRY
+RlJfTEVOIGhhcyB0byBiZSB3b3JkDQo+Pj4gYWxpZ25lZCBidXQgdGhlIGZhY3QgdGhlcmUg
+aXMgYSBETUFfRF9XSURUSCBmbGFnIHRvIHNlbGVjdCBiZXR3ZWVuIDMyDQo+Pj4gYml0IGFu
+ZCAxMjggYml0IHN0cm9uZ2x5IGltcGxpZXMgdGhhdCBpcyBob3cgaXQgd29ya3MuIFRoZSBk
+b3duc3RyZWFtDQo+Pg0KPj4gQXQgdGhlIGJvdHRvbSBvZiBwYWdlIDM4LCB0aGUgZGF0YXNo
+ZWV0IFsxXSBzdGF0ZXMgInRoZSBETUEgY2FuIGRlYWwNCj4+IHdpdGggYnl0ZSBhbGlnbmVk
+IHRyYW5zZmVycyBhbmQgd2lsbCBtaW5pbWlzZSBidXMgdHJhZmZpYyBieSBidWZmZXJpbmcN
+Cj4+IGFuZCBwYWNraW5nIG1pc2FsaWduZWQgYWNjZXNzZXMuIg0KPj4NCj4+IElJVUMsIHRo
+ZSAqX1dJRFRIIGluZm8gZmllbGRzIGFyZSBpbXBsaWVkIGFzIG1heGltYS4NCj4+DQo+PiBb
+MV0gaHR0cHM6Ly9kYXRhc2hlZXRzLnJhc3BiZXJyeXBpLmNvbS9iY20yODM1L2JjbTI4MzUt
+cGVyaXBoZXJhbHMucGRmDQo+IA0KPiBUaGF0IHJlYWRzIGFtYmlndW91c2x5IC0geW91IGNv
+dWxkIHN0YXJ0IGEgbWlzYWxpZ25lZCBuKldJRFRIIHRyYW5zZmVyDQo+IGFuZCB0aGUgaGFy
+ZHdhcmUgd2lsbCB3cml0ZSBieXRlcyB1bnRpbCBhbGlnbmVkPw0KPiANCj4gSWYgaXQgZG9l
+cyBpbmRlZWQgd29yayB3aXRoIGJ5dGUgYWNjZXNzZXMgbWF5YmUgd2UgY2FuIGp1c3QgZG86
+DQo+IA0KPiAgICBpZiAoeGxlbiAmIDB4Mykgew0KPiAgICAgIC4uIGRvIG9uZSBieXRlIC4u
+DQo+ICAgICAgeGxlbiAtPSAxOw0KPiAgICB9IGVsc2Ugew0KPiAgICAgIC4uIGV4aXN0aW5n
+IDMyIGJpdCBjb2RlIC4uDQo+ICAgIH0NCj4gDQo+IGJ1dCBJIGd1ZXNzIHdlIG5lZWQgdG8g
+aGFuZGxlIHVuYWxpZ25lZCBhY2Nlc3NlcyBhcyB3ZWxsLg0KPiANCj4gRmxvcmlhbiwNCj4g
+DQo+IENhbiB5b3UgaGVscCBjbGFyaWZ5IHdoYXQgdGhlIGRhdGFzaGVldCBtZWFucyBoZXJl
+Pw0KPiANCj4gVGhhbmtzLA0KPiANCj4gPHNuaXA+DQo+IA0KPj4+IHJwaSBrZXJuZWwgYWxz
+byBnb2VzIHRvIGVmZm9ydHMgdG8gbm90IHdyaXRlIHN1Yi00IGJ5dGUgbGVuZ3RocyBzbw0K
+Pj4+IGxldHM6DQo+IA0KDQpTb3JyeSBmb3IgdGhlIGxhZ2dlZCByZXNwb25zZTogSSB3YXMg
+cmV2aWV3aW5nIHRoZSBkYXRhc2hlZXQgYW5kLA0KZmFpbGluZyB0byBmaW5kIGNsYXJpdHkg
+dGhlcmUsIGZhbWlsaWFyaXppbmcgbXlzZWxmIHdpdGggdGhlIEFYSQ0KcHJvdG9jb2wgc3Bl
+YyBhbmQgcmVsZXZhbnQgZHJpdmVyIGNvZGUuIFVuZm9ydHVuYXRlbHksIEknbSBzdGlsbA0K
+dW5jZXJ0YWluIGFib3V0IGhvdyB0aGUgRE1BIGNvbnRyb2xsZXIgaGFuZGxlcyB1bmFsaWdu
+ZWQgdmFsdWVzIGluDQpUWEZSX0xFTi5YTEVOR1RILCBidXQgYmVsb3cgSSd2ZSBsaXN0ZWQg
+c29tZSBvZiBteSBhYnJpZGdlZCBmaW5kaW5ncyBpbg0KdGhlIGhvcGUgdGhhdCBpdCBtYXkg
+YmUgb2Ygc29tZSBoZWxwLiBHaXZlbiBteSBhbWJpdmFsZW5jZSByZWdhcmRpbmcNCnRoZSBh
+bnN3ZXIgdG8gdGhlIHF1ZXN0aW9uLCBJIGRlZmVyIHRvIEFsZXggYW5kIHRoZSBjb21tdW5p
+dHkuDQoNCkluIGFsaWdubWVudCB3aXRoIFBldGVyJ3MgY29tbWVudCwgdGhlIEFYSSBzcGVj
+IGNsZWFybHkgZXhwbGljYXRlcw0Kc3VwcG9ydCBvZiB1bmFsaWduZWQgc3RhcnQgYWRkcmVz
+cyB0cmFuc2ZlcnMgWzFdIGJ1dCBkb2Vzbid0IGFwcGVhciB0bw0KcmVxdWlyZSBzdXBwb3J0
+IG9mIHVuYWxpZ25lZCBlbmRpbmcgdHJhbnNmZXJzLCBhbHRob3VnaCwgdGhhdCBkb2Vzbid0
+DQpwcmVjbHVkZSB0aGVtIGVpdGhlci4NCg0KT24gdGhlIG90aGVyIGhhbmQsIHdlIGtub3cg
+dGhlIEJDTTI4MzUgc3VwcG9ydHMgd3JpdGUgc3Ryb2JlcyBhdCBsZWFzdA0KZm9yIHRyaWdn
+ZXJpbmcgY2FjaGUgcHJlZmV0Y2hpbmcgWzJdLCBhbmQgdGhhdCB0aGlzICJhbGxvd3MgbWVt
+b3J5DQpzdHJ1Y3R1cmVzIHRvIGJlIGltcGxlbWVudGVkIHRoYXQgY2FuIGJlIHdyaXR0ZW4g
+dXNpbmcgYnl0ZSBhbmQgaGFsZg0Kd29yZCBhY2Nlc3NlcyIgWzNdLiBUaGUgc3BlY2lmaWNh
+dGlvbiBhbHNvIHN0YXRlcyAiW2FdbGwgW21hbmFnZXJdDQppbnRlcmZhY2VzIGFuZCBpbnRl
+cmNvbm5lY3QgbXVzdCBwcm92aWRlIGNvcnJlY3Qgd3JpdGUgc3Ryb2JlcyIgYW5kDQp0aGF0
+IHN1Ym9yZGluYXRlIGNvbXBvbmVudHMgY2FuIGNob29zZSB0bzogZnVsbHkgdXNlIHRoZW0s
+IGlnbm9yZSB0aGVtDQooaS5lLiwgInRyZWF0IGFsbCB3cml0ZXMgYXMgYmVpbmcgdGhlIGZ1
+bGwgZGF0YSBidXMgd2lkdGgiKSwgb3IgZGV0ZWN0DQp1bnN1cHBvcnRlZCB3cml0ZSBzdHJv
+YmUgY29tYmluYXRpb25zIGFuZCBwcm92aWRlIGFuIGVycm9yIHJlc3BvbnNlLg0KTW9yZW92
+ZXIsICJbYV1ueSBbc3Vib3JkaW5hdGVdIGNvbXBvbmVudCB0aGF0IGlzIHByb3ZpZGluZyBt
+ZW1vcnktbGlrZQ0KYmVoYXZpb3IgbXVzdCBmdWxseSBzdXBwb3J0IHdyaXRlIHN0cm9iZXMi
+IFszXS4gVG8gbWUsIHRoaXMgc3VnZ2VzdHMNCnRoYXQgdGhlIEJDTTI4MzUgaGFzIHdoYXQg
+aXQgbmVlZHMgdG8gYmUgYWJsZSB0byBpbnZhbGlkYXRlIHRoZSBieXRlcw0KcGFzdCB0aGUg
+VFhGUl9MRU4gYnl0ZXMgaW4gdGhlIGZpbmFsIGJlYXQgb2YgYSBETUEgd3JpdGUgdHJhbnNh
+Y3Rpb24uLi4NCmJ1dCBJSVVDIGl0J3MgcG9zc2libGUgdG8gZm9yZWdvIHRoYXQgYW5kIHJl
+bWFpbiBBWEktY29tcGxpYW50Lg0KDQpTZWN0aW9uIDQuMiBvZiB7QX0sIEJ1cnN0IExlbmd0
+aCwgYWxzbyBtZW50aW9ucyB0aGUgdXNlIG9mIHdyaXRlIHN0cm9iZXMNCmZvciBwYXJ0aWFs
+IHdyaXRlIHRyYW5zYWN0aW9ucyBhbmQgZXh0ZW5kcyBpdCB0byBjb3ZlciByZWFkIHRyYW5z
+YWN0aW9ucw0KdmlhIGRpc2NhcmRpbmcsIHRvbzoNCg0KICAgICBObyBjb21wb25lbnQgY2Fu
+IHRlcm1pbmF0ZSBhIGJ1cnN0IGVhcmx5IHRvIHJlZHVjZSB0aGUgbnVtYmVyIG9mDQogICAg
+IGRhdGEgdHJhbnNmZXJzLiBEdXJpbmcgYSB3cml0ZSBidXJzdCwgdGhlIFttYW5hZ2VyXSBj
+YW4gZGlzYWJsZQ0KICAgICBmdXJ0aGVyIHdyaXRpbmcgYnkgZGVhc3NlcnRpbmcgYWxsIHRo
+ZSB3cml0ZSBzdHJvYmVzLCBidXQgaXQNCiAgICAgbXVzdCBjb21wbGV0ZSB0aGUgcmVtYWlu
+aW5nIHRyYW5zZmVycyBpbiB0aGUgYnVyc3QuIER1cmluZyBhDQogICAgIHJlYWQgYnVyc3Qs
+IHRoZSBbbWFuYWdlcl0gY2FuIGRpc2NhcmQgZnVydGhlciByZWFkIGRhdGEsIGJ1dCBpdA0K
+ICAgICBtdXN0IGNvbXBsZXRlIHRoZSByZW1haW5pbmcgdHJhbnNmZXJzIGluIHRoZSBidXJz
+dC4gWzRdDQoNCkFzIGEgY291bnRlcnBvaW50LCBob3dldmVyLCBwZXJoYXBzIG9ubHkgd2hv
+bGUgdHJhbnNmZXJzIG9mIGEgcmVhZA0KdHJhbnNhY3Rpb24gY2FuIGJlIGRpc2NhcmRlZCwg
+b3IgdGhlIEJDTTI4MzUgZm9yZXdlbnQgaXQgYWx0b2dldGhlci4NCg0KTmFycm93IFRyYW5z
+ZmVycywgc2VjdGlvbiA5LjMsIGFsc28gbWVudGlvbnMgdGhlIGdlbmVyYXRpb24gb2YgdHJh
+bnNmZXJzDQp0aGF0IGFyZSBuYXJyb3dlciB0aGFuIHRoZSBkYXRhIGJ1cyBvZiB0aGUgbWFu
+YWdlciBbNV0uDQoNCkFsbCBvZiB0aGUgYWJvdmUgYXJlIHRha2VuIGZyb20gdGhlIEFYSSBz
+cGVjLCBidXQgYXMgbWVudGlvbmVkIGVhcmxpZXINCnNvbWUgb2YgdGhlc2UgZmVhdHVyZXMg
+YXJlIG9wdC1pbiwgYW5kIHRoZSBCQ00yODM1IGNvdWxkIGhhdmUgc2tpcHBlZA0KdGhlbS4g
+U28sIGxhc3RseSwgbGV0J3MgY29uc2lkZXIgVFhGUl9MRU4gZnJvbSB0aGUgZGF0YXNoZWV0
+IFs2XTogSXQncw0KZGVzY3JpYmVkIGFzICJzcGVjaWZbeWluZ10gdGhlIGFtb3VudCBvZiBk
+YXRhIHRvIGJlIHRyYW5zZmVycmVkIGluDQpieXRlcy4iIE1vcmVvdmVyLCBhbGwgb2YgdGhl
+IGJpdHMgb2YgaXRzIGJpdGZpZWxkIGFyZSBhY2NvdW50ZWQsDQppbmNsdWRpbmcgVFhGUl9M
+RU5bMzE6MzBdOiAiUmVzZXJ2ZWQgLSBXcml0ZSBhcyAwLCByZWFkIGFzIGRvbid0IGNhcmUu
+Ig0KSXQgY291bGQgYmUgYW4gdW5mb3J0dW5hdGUgb3ZlcnNpZ2h0IHRoYXQgdGhlIGF1dGhv
+cnMnIGRpZG4ndCBkZXNjcmliZQ0KVFhGUl9MRU5bMTowXSB3aXRoIHRoZSBzYW1lIGRlc2Ny
+aXB0aW9uLCBvciBpdCBjb3VsZCBiZSBpbnRlbnRpb25hbC4gSWYNClhMRU5HVEgncyB0d28g
+TFNCcyBhcmUgYWx3YXlzIDAgKG9yIGp1c3QgaWdub3JlZCksIHRoZW4gY291bGRuJ3QNClRY
+RlJfTEVOIHNpbXBseSBpbmRpY2F0ZSB0aGUgbnVtYmVyIG9mIHRyYW5zZmVycyBpbnN0ZWFk
+IG9mIHRoZSB0b3RhbA0KbnVtYmVyIG9mIGJ5dGVzIHRyYW5zZmVycmVkIGluIGEgdHJhbnNh
+Y3Rpb24sIGxpa2UgWUxFTkdUSCBpbiAyRCBtb2RlPw0KDQpJJ20gaW5jbGluZWQgdG8gdGhp
+bmsgdGhhdCB0aGUgbGluZSBhYm91dCB0aGUgRE1BIGRlYWxpbmcgd2l0aCBieXRlDQphbGln
+bmVkIHRyYW5zZmVycyBtZWFucyB0aGF0IGJvdGggdW5hbGlnbmVkIHN0YXJ0IGFkZHJlc3Nl
+cyBhbmQNCmEgcGFydGlhbCB0ZXJtaW5hbCBkYXRhIHRyYW5zZmVycyB2aWEgcGFja2luZywg
+YnVmZmVyaW5nLCBkaXNjYXJkaW5nLA0KYW5kIHRoZSBhcHBsaWNhdGlvbiBvZiB3cml0ZSBz
+dHJvYmVzIG9uIGZ1bGwtd2lkdGggdHJhbnNmZXJzIGFyZQ0KcG9zc2libGUsIGJ1dCB3aXRo
+b3V0IG1vcmUgcHJlY2lzZSBsYW5ndWFnZSBvciBhIHRlc3Qgb24gaGFyZHdhcmUgKG5vdA0K
+cGxhbm5lZCBhbnl0aW1lIHNvb24pLCBJIGNhbid0IGJlIHN1cmUuIEFsc28sIHBsZWFzZSBs
+ZXQgbWUga25vdyBpZg0KSSBtaXN1bmRlcnN0b29kIGFueSBvZiB0aGUgc291cmNlIG1hdGVy
+aWFsIG9yIGltcG9ydGFudCBkZXRhaWxzIEkNCm1heSBoYXZlIG1pc3NlZC4NCg0KSW4gdGhl
+IGFic2VuY2Ugb2YgY2VydGFpbnR5IGFuZCBmb3IgdGhlIHNha2Ugb2YgYWRkcmVzc2luZyB0
+aGUgRG9TIGlzc3VlDQp0aGF0IGluc3BpcmVkIHRoZSBwYXRjaCwgcGVyaGFwcyBpdCdzIGJl
+dHRlciB0byBsZWF2ZSB0aGUgcGF0Y2ggYXMgaXMNCndpdGggYSBjb21tZW50IHNvbGljaXRp
+bmcgZnVydGhlciBpbnZlc3RpZ2F0aW9uIG9uIGFjdHVhbCBiZWhhdmlvcj8NCg0Ke0F9IEFN
+QkEgQVhJIFByb3RvY29sIFZlcnNpb246IDIuMCBTcGVjaWZpY2F0aW9uDQogICAgIGh0dHBz
+Oi8vZG9jdW1lbnRhdGlvbi1zZXJ2aWNlLmFybS5jb20vc3RhdGljLzY0MjU2ZTg0MzE0ZTI0
+NWQwODZiYzg4Zg0KDQp7Qn0gQkNNMjgzNSBBUk0gUGVyaXBoZXJhbHMNCiAgICAgaHR0cHM6
+Ly9kYXRhc2hlZXRzLnJhc3BiZXJyeXBpLmNvbS9iY20yODM1L2JjbTI4MzUtcGVyaXBoZXJh
+bHMucGRmDQoNClsxXSB7QX0gKHAuIDEwLTIpDQpbMl0ge0J9IChwLiA1MSkNClszXSB7QX0g
+KHAuIDE0LTUpDQpbNF0ge0F9IChwLiA0LTMpDQpbNV0ge0F9IChwLiA5LTQpDQpbNl0ge0J9
+IChwLiA1MykNCg0KVGhhbmtzLA0KWW9kZWwNCg==
 

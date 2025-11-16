@@ -4,121 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F440CEBF61
-	for <qemu-arm@archiver.kernel.org>; Sun, 16 Nov 2025 20:47:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70E91CCD19A
+	for <qemu-arm@archiver.kernel.org>; Sun, 16 Nov 2025 21:32:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vKjeS-0002qB-40; Sun, 16 Nov 2025 15:47:12 -0500
+	id 1vKkMA-00044J-Gt; Sun, 16 Nov 2025 16:32:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1vKjeP-0002pg-QE; Sun, 16 Nov 2025 15:47:10 -0500
-Received: from 6.mo548.mail-out.ovh.net ([188.165.58.48])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1vKjeM-00083e-OO; Sun, 16 Nov 2025 15:47:09 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.54.98])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4d8jbl1kSTz5yfQ;
- Sun, 16 Nov 2025 20:46:58 +0000 (UTC)
-Received: from kaod.org (37.59.142.95) by DAG8EX2.mxp5.local (172.16.2.72)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Sun, 16 Nov
- 2025 21:46:57 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-95G001f456cd2e-8db9-415e-bd1a-088123101773,
- 341CA4BE1272FAB2DFA1B6D1A4625F22D6D7B78A) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <6253b8f4-7661-48b5-910d-2abe010c04e8@kaod.org>
-Date: Sun, 16 Nov 2025 21:46:57 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v2 08/12] hw/arm/aspeed_ast10x0: Add AST1060 SoC
- support
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, Kevin
- Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:Block layer core" <qemu-block@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
-References: <20251112030553.291734-1-jamin_lin@aspeedtech.com>
- <20251112030553.291734-9-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
- BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
- M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
- 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
- jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
- TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
- neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
- VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
- QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
- ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
- WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
- wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
- SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
- cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
- S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
- 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
- hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
- tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
- t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
- OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
- KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
- o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
- ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
- IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
- d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
- +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
- HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
- l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
- 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
- ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
- KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251112030553.291734-9-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.95]
-X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG8EX2.mxp5.local
- (172.16.2.72)
-X-Ovh-Tracer-GUID: 35b2dca2-4cb3-4a84-9bee-ae4cafe08427
-X-Ovh-Tracer-Id: 4053802616971889470
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTELNB8YEuNPcH7tImB3ujllpqAJgSE1UdOIpKFyeHSiSPD8rW0dBfviQVQefu9tXWnTYcWktdilKA/ib4GoQe5DL6lIT2GIQsGDuGE65VfTNaNrInh17EgT63pBjzHIVZLjit6zNIUlLFa5zTYyN636D3pq5jl8xNOgjY7CM+O10r4J6Kt/caZAqYk34WdEkz0o5FjEiIt7lNubQp9lOOETWvkbm8T6KcyarbfgdhWWwqc/9dOG9wkbKYLzXB3zqNBOzjOb6H6PSl683dnLR1tCcB6mluJOoaC1AfG836dgMxKQXeebMhDAHQcweXJ22JJB4tI30WGIbI8WSMhItSK7oDlerLeAFUwedI0Y6yOaBMm0QfBjNGeEsUjsHqRFSr/LvXdfF32/lHvW6uGhxgXMZg9zPyUOvdu7+nMlNO8SU8nLk1KgQD0JWw5ZFtsqrpaL1ZXhn6WDEqRG/ELyXIwEXPnXRGvGhw6qNkxf6g95gsbMk8UvBNpYWvBVx4nC4v05Z4q+rbLYGMhZ6t3/TJ9lBgBoP0pGURqMlowrfMuVKoFzwL8bmtOtoAruH3tTxA2/vbjahkxCSuoOBY4H2/MpPKHt9yrCSA8msp9rjU+ZU/nDqw+ZQeFgBqwv3IUlaubTRlmtT6l/j/Rt2nd1mcG5VQzooUs/w3VcwYUAUNLRSQ
-DKIM-Signature: a=rsa-sha256; bh=l2TVH9YOQo/0hD0npMnI10Pg2uE7125Qkw4HpVPhRsk=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1763326020; v=1;
- b=sBWGe6DlYUK5to9U0fE1OS8MIGCdztyJZxuIDM4eDEeEdm1YokOugbmYNGY+sCC1E9hMxn5k
- gKDpZ52HXhKpo26Q1UIUPCillXD4Me2OG4Eevow9WjtDWeAN0FKvQtW7EHa81sYnbuXaP4QBZK3
- vWxYlcTfuIQkAjscrIv8G6H40bxfIhkooyacJm+RzrQ1hDJryUjo+jHsH0Iwqotuja+t1NbMA10
- jSidjFFBX9YRJpvUVYzFIXwPrfSIHXzXt0VN5tOu9itWXbR4R5CSHTUg64c/k1GBgKkXrt3Bp68
- DDsoDVBj/tf3FZPAmgF7Y5oOTYX/QsPa+gTcSy7speoOA==
-Received-SPF: pass client-ip=188.165.58.48; envelope-from=clg@kaod.org;
- helo=6.mo548.mail-out.ovh.net
+ (Exim 4.90_1)
+ (envelope-from <bounce+7d9d16.7c7b8f-qemu-arm=nongnu.org@revolve.com>)
+ id 1vKhiW-0008C1-JD
+ for qemu-arm@nongnu.org; Sun, 16 Nov 2025 13:43:16 -0500
+Received: from a44.a6e4cdb8.use4.send.mailgun.net ([198.244.49.44])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1)
+ (envelope-from <bounce+7d9d16.7c7b8f-qemu-arm=nongnu.org@revolve.com>)
+ id 1vKhiT-0005cr-Fv
+ for qemu-arm@nongnu.org; Sun, 16 Nov 2025 13:43:16 -0500
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=revolve.com; q=dns/txt;
+ s=smtp; t=1763318591; x=1763325791; 
+ h=Message-Id: In-Reply-To: To: To: Cc: From: From: Subject: Subject:
+ Content-Type: Mime-Version: Date: Sender: Sender; 
+ bh=w5OvZC2cuFCCLnLP4PXBUxW66ilrdlxy98nZf+11cj0=;
+ b=tIaJ9RkiaK+Hbo25YtA9BU/a4k2J9sxz5UdspSXMsXvnZnJK+WnhSKsxsRpVji5EFrojsP17dGFR4AIreVJGs3mZO1VjRumZaHzxxza0QBqmBHS2dbVP2hPjIonLen/3f5PZlI7f1Wrj4Z1LH8MdmRjVAFOR701T9FXz+pWWNg0=
+X-Mailgun-Sid: WyIwZWQxZSIsInFlbXUtYXJtQG5vbmdudS5vcmciLCI3YzdiOGYiXQ==
+Received: by 6130ff375f9780dfb3af950874568c4cc5e1d1d4ede81abf44958894a3eeb710
+ with HTTP id 691a1b3e5548fd3d57d635e7; Sun, 16 Nov 2025 18:43:10 GMT
+X-Mailgun-Sending-Ip: 198.244.49.44
+Date: Sun, 16 Nov 2025 18:43:10 +0000
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="06de6f41cd2f09dd844a5d4a4c76c03c0d0680befda2e39f8bb61e67ddf3"
+Subject: Re: [RFC PATCH] hw/dma: don't allow weird transfer lengths for bcm2835
+Cc: yodel.eldar@gmail.com, qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ philmd@linaro.org, farosas@suse.de, lvivier@redhat.com, pbonzini@redhat.com,
+ qemu-arm@nongnu.org, florian.meier@koalo.de, florian.fainelli@broadcom.com
+To: yodel.eldar@gmail.com, alex.bennee@linaro.org, yodel.eldar@yodel.dev
+In-Reply-To: <200584ab-1ce3-44bb-8911-59df9e9a8f37@gmail.com>
+Message-Id: <c3qqgqdgQoK1xEReeO9GHw@revolve.com>
+X-Mailgun-Variables: {"communicationId":
+ "eyJvcmdJZCI6ImNQZTR5MjV6VGx5SlBjM2VvRHZTaGciLCJjdXN0b21lcklkIjoiZ1U4T0dULU1SY2FMN1YtNkVHeVhtZyIsImNvbnZlcnNhdGlvbkl0ZW1JZCI6ImMzcXFncWRnUW9LMXhFUmVlTzlHSHcifQ"}
+Received-SPF: pass client-ip=198.244.49.44;
+ envelope-from=bounce+7d9d16.7c7b8f-qemu-arm=nongnu.org@revolve.com;
+ helo=a44.a6e4cdb8.use4.send.mailgun.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 16 Nov 2025 16:32:16 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -130,123 +69,269 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  REVOLVE <service@revolve.com>
+From:  REVOLVE via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 11/12/25 04:05, Jamin Lin wrote:
-> Add initial support for the Aspeed AST1060 SoC. The AST1060 reuses most
-> of the AST1030 peripheral device models, as the two SoCs share nearly
-> the same controllers including WDT, SCU, TIMER, HACE, ADC, I2C, FMC,
-> and SPI.
-> 
-> A new common initialization and realization framework (ast10x0_init
-> and ast10x0_realize) is leveraged so AST1060 can instantiate the
-> existing AST1030 models without redefining duplicate device types.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/arm/aspeed_ast10x0.c | 59 ++++++++++++++++++++++++++++++++++++++++-
->   1 file changed, 58 insertions(+), 1 deletion(-)
+--06de6f41cd2f09dd844a5d4a4c76c03c0d0680befda2e39f8bb61e67ddf3
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 
+Hi Yodel,=20
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Thank you for reaching out to us here at Revolve!=20
+=20
+Here is the direct contact for your inquiry: Buyers@revolve.com=20
+=20
+I hope this information was helpful! If you have any questions or concerns,=
+ please feel free to contact us as we are more than happy to assist you.
 
-Thanks,
+Regards,=20
+Sammie=C2=A0
+Customer Service
 
-C.
+How was your service? Please leave your comments https://www.revolve.com/r/=
+CSFeedbackSurvey.jsp?type=3Drep&name=3DSammie%20O&c=3DgU8OGT-MRcaL7V-6EGyXm=
+g=C2=A0
 
+On Sunday, November 16, 2025, 6:33 AM "Yodel Eldar" <yodel.eldar@gmail.com>=
+ wrote:
 
-> 
-> diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-> index 1521000af0..bcfe83bdb7 100644
-> --- a/hw/arm/aspeed_ast10x0.c
-> +++ b/hw/arm/aspeed_ast10x0.c
-> @@ -185,6 +185,23 @@ static void aspeed_soc_ast1030_init(Object *obj)
->       object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
->   }
->   
-> +static void aspeed_soc_ast1060_init(Object *obj)
-> +{
-> +    /*
-> +     * The AST1060 SoC reuses the AST1030 device models. Since all peripheral
-> +     * models (e.g. WDT, SCU, TIMER, HACE, ADC, I2C, FMC, SPI) defined for
-> +     * AST1030 are compatible with AST1060, we simply reuse the existing
-> +     * AST1030 models for AST1060.
-> +     *
-> +     * To simplify the implementation, AST1060 sets its socname to that of
-> +     * AST1030, avoiding the need to create a full set of new
-> +     * TYPE_ASPEED_1060_XXX device definitions. This allows the same
-> +     * TYPE_ASPEED_1030_WDT and other models to be instantiated for both
-> +     * SoCs.
-> +     */
-> +    aspeed_soc_ast10x0_init(obj, "ast1030");
-> +}
-> +
->   static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCState *a, Error **errp)
->   {
->       AspeedSoCState *s = ASPEED_SOC(a);
-> @@ -451,6 +468,15 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
->                                   sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
->   }
->   
-> +static void aspeed_soc_ast1060_realize(DeviceState *dev_soc, Error **errp)
-> +{
-> +    Aspeed10x0SoCState *a = ASPEED10X0_SOC(dev_soc);
-> +
-> +    if (!aspeed_soc_ast10x0_realize(a, errp)) {
-> +        return;
-> +    }
-> +}
-> +
->   static void aspeed_soc_ast1030_class_init(ObjectClass *klass, const void *data)
->   {
->       static const char * const valid_cpu_types[] = {
-> @@ -479,6 +505,32 @@ static void aspeed_soc_ast1030_class_init(ObjectClass *klass, const void *data)
->       sc->num_cpus = 1;
->   }
->   
-> +static void aspeed_soc_ast1060_class_init(ObjectClass *klass, const void *data)
-> +{
-> +    static const char * const valid_cpu_types[] = {
-> +        ARM_CPU_TYPE_NAME("cortex-m4"), /* TODO cortex-m4f */
-> +        NULL
-> +    };
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedSoCClass *sc = ASPEED_SOC_CLASS(dc);
-> +
-> +    /* Reason: The Aspeed SoC can only be instantiated from a board */
-> +    dc->user_creatable = false;
-> +    dc->realize = aspeed_soc_ast1060_realize;
-> +
-> +    sc->valid_cpu_types = valid_cpu_types;
-> +    sc->silicon_rev = AST1060_A2_SILICON_REV;
-> +    sc->sram_size = 0xc0000;
-> +    sc->secsram_size = 0x40000; /* 256 * KiB */
-> +    sc->spis_num = 2;
-> +    sc->wdts_num = 4;
-> +    sc->uarts_num = 1;
-> +    sc->uarts_base = ASPEED_DEV_UART5;
-> +    sc->irqmap = aspeed_soc_ast1030_irqmap;
-> +    sc->memmap = aspeed_soc_ast1030_memmap;
-> +    sc->num_cpus = 1;
-> +}
-> +
->   static const TypeInfo aspeed_soc_ast10x0_types[] = {
->       {
->           .name           = TYPE_ASPEED10X0_SOC,
-> @@ -490,7 +542,12 @@ static const TypeInfo aspeed_soc_ast10x0_types[] = {
->           .parent         = TYPE_ASPEED10X0_SOC,
->           .instance_init  = aspeed_soc_ast1030_init,
->           .class_init     = aspeed_soc_ast1030_class_init,
-> -    },
-> +    }, {
-> +        .name           = "ast1060-a2",
-> +        .parent         = TYPE_ASPEED10X0_SOC,
-> +        .instance_init  = aspeed_soc_ast1060_init,
-> +        .class_init     = aspeed_soc_ast1060_class_init,
-> +    }
->   };
->   
->   DEFINE_TYPES(aspeed_soc_ast10x0_types)
+>=20
+> On 14/11/2025 10:43, Alex Benn=C3=A9e wrote:
+> > Yodel Eldar <yodel.eldar@yodel.dev> writes:
+> >=20
+> > (add Florians to CC)
+> >=20
+> >> On 11/11/2025 04:54, Alex Benn=C3=A9e wrote:
+> >>> The datasheet doesn't explicitly say that TXFR_LEN has to be word
+> >>> aligned but the fact there is a DMA_D_WIDTH flag to select between 32
+> >>> bit and 128 bit strongly implies that is how it works. The downstream
+> >>
+> >> At the bottom of page 38, the datasheet [1] states "the DMA can deal
+> >> with byte aligned transfers and will minimise bus traffic by buffering
+> >> and packing misaligned accesses."
+> >>
+> >> IIUC, the *_WIDTH info fields are implied as maxima.
+> >>
+> >> [1] https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf
+> >=20
+> > That reads ambiguously - you could start a misaligned n*WIDTH transfer
+> > and the hardware will write bytes until aligned?
+> >=20
+> > If it does indeed work with byte accesses maybe we can just do:
+> >=20
+> >    if (xlen & 0x3) {
+> >      .. do one byte ..
+> >      xlen -=3D 1;
+> >    } else {
+> >      .. existing 32 bit code ..
+> >    }
+> >=20
+> > but I guess we need to handle unaligned accesses as well.
+> >=20
+> > Florian,
+> >=20
+> > Can you help clarify what the datasheet means here?
+> >=20
+> > Thanks,
+> >=20
+> > <snip>
+> >=20
+> >>> rpi kernel also goes to efforts to not write sub-4 byte lengths so
+> >>> lets:
+> >=20
+>=20
+> Sorry for the lagged response: I was reviewing the datasheet and,
+> failing to find clarity there, familiarizing myself with the AXI
+> protocol spec and relevant driver code. Unfortunately, I'm still
+> uncertain about how the DMA controller handles unaligned values in
+> TXFR_LEN.XLENGTH, but below I've listed some of my abridged findings in
+> the hope that it may be of some help. Given my ambivalence regarding
+> the answer to the question, I defer to Alex and the community.
+>=20
+> In alignment with Peter's comment, the AXI spec clearly explicates
+> support of unaligned start address transfers [1] but doesn't appear to
+> require support of unaligned ending transfers, although, that doesn't
+> preclude them either.
+>=20
+> On the other hand, we know the BCM2835 supports write strobes at least
+> for triggering cache prefetching [2], and that this "allows memory
+> structures to be implemented that can be written using byte and half
+> word accesses" [3]. The specification also states "[a]ll [manager]
+> interfaces and interconnect must provide correct write strobes" and
+> that subordinate components can choose to: fully use them, ignore them
+> (i.e., "treat all writes as being the full data bus width"), or detect
+> unsupported write strobe combinations and provide an error response.
+> Moreover, "[a]ny [subordinate] component that is providing memory-like
+> behavior must fully support write strobes" [3]. To me, this suggests
+> that the BCM2835 has what it needs to be able to invalidate the bytes
+> past the TXFR_LEN bytes in the final beat of a DMA write transaction...
+> but IIUC it's possible to forego that and remain AXI-compliant.
+>=20
+> Section 4.2 of {A}, Burst Length, also mentions the use of write strobes
+> for partial write transactions and extends it to cover read transactions
+> via discarding, too:
+>=20
+>      No component can terminate a burst early to reduce the number of
+>      data transfers. During a write burst, the [manager] can disable
+>      further writing by deasserting all the write strobes, but it
+>      must complete the remaining transfers in the burst. During a
+>      read burst, the [manager] can discard further read data, but it
+>      must complete the remaining transfers in the burst. [4]
+>=20
+> As a counterpoint, however, perhaps only whole transfers of a read
+> transaction can be discarded, or the BCM2835 forewent it altogether.
+>=20
+> Narrow Transfers, section 9.3, also mentions the generation of transfers
+> that are narrower than the data bus of the manager [5].
+>=20
+> All of the above are taken from the AXI spec, but as mentioned earlier
+> some of these features are opt-in, and the BCM2835 could have skipped
+> them. So, lastly, let's consider TXFR_LEN from the datasheet [6]: It's
+> described as "specif[ying] the amount of data to be transferred in
+> bytes." Moreover, all of the bits of its bitfield are accounted,
+> including TXFR_LEN[31:30]: "Reserved - Write as 0, read as don't care."
+> It could be an unfortunate oversight that the authors' didn't describe
+> TXFR_LEN[1:0] with the same description, or it could be intentional. If
+> XLENGTH's two LSBs are always 0 (or just ignored), then couldn't
+> TXFR_LEN simply indicate the number of transfers instead of the total
+> number of bytes transferred in a transaction, like YLENGTH in 2D mode?
+>=20
+> I'm inclined to think that the line about the DMA dealing with byte
+> aligned transfers means that both unaligned start addresses and
+> a partial terminal data transfers via packing, buffering, discarding,
+> and the application of write strobes on full-width transfers are
+> possible, but without more precise language or a test on hardware (not
+> planned anytime soon), I can't be sure. Also, please let me know if
+> I misunderstood any of the source material or important details I
+> may have missed.
+>=20
+> In the absence of certainty and for the sake of addressing the DoS issue
+> that inspired the patch, perhaps it's better to leave the patch as is
+> with a comment soliciting further investigation on actual behavior?
+>=20
+> {A} AMBA AXI Protocol Version: 2.0 Specification
+>      https://documentation-service.arm.com/static/64256e84314e245d086bc88=
+f
+>=20
+> {B} BCM2835 ARM Peripherals
+>      https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf
+>=20
+> [1] {A} (p. 10-2)
+> [2] {B} (p. 51)
+> [3] {A} (p. 14-5)
+> [4] {A} (p. 4-3)
+> [5] {A} (p. 9-4)
+> [6] {B} (p. 53)
+>=20
+> Thanks,
+> Yodel
+>=20
 
+--06de6f41cd2f09dd844a5d4a4c76c03c0d0680befda2e39f8bb61e67ddf3
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+
+<html><head></head><body><div>Hi Yodel, </div><div><br/></div><div>Thank yo=
+u for reaching out to us here at Revolve! </div><div> </div><div>Here is th=
+e direct contact for your inquiry: Buyers@revolve.com </div><div> </div><di=
+v>I hope this information was helpful! If you have any questions or concern=
+s, please feel free to contact us as we are more than happy to assist you.<=
+/div><div><br/></div><div>Regards, </div><div>Sammie=C2=A0</div><div>Custom=
+er Service</div><div><br/></div><div>How was your service? Please leave you=
+r comments https://www.revolve.com/r/CSFeedbackSurvey.jsp?type=3Drep&amp;na=
+me=3DSammie%20O&amp;c=3DgU8OGT-MRcaL7V-6EGyXmg=C2=A0</div><div><br/><div><d=
+iv>On Sunday, November 16, 2025, 6:33 AM &#34;Yodel Eldar&#34; &lt;yodel.el=
+dar@gmail.com&gt; wrote:</div><div dir=3D"auto"><blockquote style=3D"margin=
+:0.5ex 0 0 0.8ex;border-left:1px #ccc solid;padding-left:1ex"><div><br/>On =
+14/11/2025 10:43, Alex Benn=C3=A9e wrote:<br/>&gt; Yodel Eldar <yodel.eldar=
+@yodel.dev> writes:<br/>&gt; <br/>&gt; (add Florians to CC)<br/>&gt; <br/>&=
+gt;&gt; On 11/11/2025 04:54, Alex Benn=C3=A9e wrote:<br/>&gt;&gt;&gt; The d=
+atasheet doesn&#39;t explicitly say that TXFR_LEN has to be word<br/>&gt;&g=
+t;&gt; aligned but the fact there is a DMA_D_WIDTH flag to select between 3=
+2<br/>&gt;&gt;&gt; bit and 128 bit strongly implies that is how it works. T=
+he downstream<br/>&gt;&gt;<br/>&gt;&gt; At the bottom of page 38, the datas=
+heet [1] states &#34;the DMA can deal<br/>&gt;&gt; with byte aligned transf=
+ers and will minimise bus traffic by buffering<br/>&gt;&gt; and packing mis=
+aligned accesses.&#34;<br/>&gt;&gt;<br/>&gt;&gt; IIUC, the *_WIDTH info fie=
+lds are implied as maxima.<br/>&gt;&gt;<br/>&gt;&gt; [1] https://datasheets=
+=2Eraspberrypi.com/bcm2835/bcm2835-peri=
+pherals.pdf<br/>&gt; <br/>&gt; That re=
+ads ambiguously - you could start a misaligned n*WIDTH transfer<br/>&gt; an=
+d the hardware will write bytes until aligned?<br/>&gt; <br/>&gt; If it doe=
+s indeed work with byte accesses maybe we can just do:<br/>&gt; <br/>&gt;  =
+  if (xlen &amp; 0x3) {<br/>&gt;      .. do one byte ..<br/>&gt;      xlen =
+-=3D 1;<br/>&gt;    } else {<br/>&gt;      .. existing 32 bit code ..<br/>&=
+gt;    }<br/>&gt; <br/>&gt; but I guess we need to handle unaligned accesse=
+s as well.<br/>&gt; <br/>&gt; Florian,<br/>&gt; <br/>&gt; Can you help clar=
+ify what the datasheet means here?<br/>&gt; <br/>&gt; Thanks,<br/>&gt; <br/=
+>&gt; <snip><br/>&gt; <br/>&gt;&gt;&gt; rpi kernel also goes to efforts to =
+not write sub-4 byte lengths so<br/>&gt;&gt;&gt; lets:<br/>&gt; <br/><br/>S=
+orry for the lagged response: I was reviewing the datasheet and,<br/>failin=
+g to find clarity there, familiarizing myself with the AXI<br/>protocol spe=
+c and relevant driver code. Unfortunately, I&#39;m still<br/>uncertain abou=
+t how the DMA controller handles unaligned values in<br/>TXFR_LEN.XLENGTH, =
+but below I&#39;ve listed some of my abridged findings in<br/>the hope that=
+ it may be of some help. Given my ambivalence regarding<br/>the answer to t=
+he question, I defer to Alex and the community.<br/><br/>In alignment with =
+Peter&#39;s comment, the AXI spec clearly explicates<br/>support of unalign=
+ed start address transfers [1] but doesn&#39;t appear to<br/>require suppor=
+t of unaligned ending transfers, although, that doesn&#39;t<br/>preclude th=
+em either.<br/><br/>On the other hand, we know the BCM2835 supports write s=
+trobes at least<br/>for triggering cache prefetching [2], and that this &#3=
+4;allows memory<br/>structures to be implemented that can be written using =
+byte and half<br/>word accesses&#34; [3]. The specification also states &#3=
+4;[a]ll [manager]<br/>interfaces and interconnect must provide correct writ=
+e strobes&#34; and<br/>that subordinate components can choose to: fully use=
+ them, ignore them<br/>(i.e., &#34;treat all writes as being the full data =
+bus width&#34;), or detect<br/>unsupported write strobe combinations and pr=
+ovide an error response.<br/>Moreover, &#34;[a]ny [subordinate] component t=
+hat is providing memory-like<br/>behavior must fully support write strobes&=
+#34; [3]. To me, this suggests<br/>that the BCM2835 has what it needs to be=
+ able to invalidate the bytes<br/>past the TXFR_LEN bytes in the final beat=
+ of a DMA write transaction...<br/>but IIUC it&#39;s possible to forego tha=
+t and remain AXI-compliant.<br/><br/>Section 4.2 of {A}, Burst Length, also=
+ mentions the use of write strobes<br/>for partial write transactions and e=
+xtends it to cover read transactions<br/>via discarding, too:<br/><br/>    =
+ No component can terminate a burst early to reduce the number of<br/>     =
+data transfers. During a write burst, the [manager] can disable<br/>     fu=
+rther writing by deasserting all the write strobes, but it<br/>     must co=
+mplete the remaining transfers in the burst. During a<br/>     read burst, =
+the [manager] can discard further read data, but it<br/>     must complete =
+the remaining transfers in the burst. [4]<br/><br/>As a counterpoint, howev=
+er, perhaps only whole transfers of a read<br/>transaction can be discarded=
+, or the BCM2835 forewent it altogether.<br/><br/>Narrow Transfers, section=
+ 9.3, also mentions the generation of transfers<br/>that are narrower than =
+the data bus of the manager [5].<br/><br/>All of the above are taken from t=
+he AXI spec, but as mentioned earlier<br/>some of these features are opt-in=
+, and the BCM2835 could have skipped<br/>them. So, lastly, let&#39;s consid=
+er TXFR_LEN from the datasheet [6]: It&#39;s<br/>described as &#34;specif[y=
+ing] the amount of data to be transferred in<br/>bytes.&#34; Moreover, all =
+of the bits of its bitfield are accounted,<br/>including TXFR_LEN[31:30]: &=
+#34;Reserved - Write as 0, read as don&#39;t care.&#34;<br/>It could be an =
+unfortunate oversight that the authors&#39; didn&#39;t describe<br/>TXFR_LE=
+N[1:0] with the same description, or it could be intentional. If<br/>XLENGT=
+H&#39;s two LSBs are always 0 (or just ignored), then couldn&#39;t<br/>TXFR=
+_LEN simply indicate the number of transfers instead of the total<br/>numbe=
+r of bytes transferred in a transaction, like YLENGTH in 2D mode?<br/><br/>=
+I&#39;m inclined to think that the line about the DMA dealing with byte<br/=
+>aligned transfers means that both unaligned start addresses and<br/>a part=
+ial terminal data transfers via packing, buffering, discarding,<br/>and the=
+ application of write strobes on full-width transfers are<br/>possible, but=
+ without more precise language or a test on hardware (not<br/>planned anyti=
+me soon), I can&#39;t be sure. Also, please let me know if<br/>I misunderst=
+ood any of the source material or important details I<br/>may have missed.<=
+br/><br/>In the absence of certainty and for the sake of addressing the DoS=
+ issue<br/>that inspired the patch, perhaps it&#39;s better to leave the pa=
+tch as is<br/>with a comment soliciting further investigation on actual beh=
+avior?<br/><br/>{A} AMBA AXI Protocol Version: 2.0 Specification<br/>     h=
+ttps://documentation-service.arm.com/static/64256e84314e245d086bc88f<br/><b=
+r/>{B} BCM2835 ARM Peripherals<br/>     https://datasheets.raspberrypi.com/=
+bcm2835/bcm2835-peripherals.pdf<br/><br/>[1] {A} (p. 10-2)<br/>[2] {B} (p. =
+51)<br/>[3] {A} (p. 14-5)<br/>[4] {A} (p. 4-3)<br/>[5] {A} (p. 9-4)<br/>[6]=
+ {B} (p. 53)<br/><br/>Thanks,<br/>Yodel<br/></snip></yodel.eldar@yodel.dev>=
+</div></blockquote></div></div><br/></div></body></html>
+--06de6f41cd2f09dd844a5d4a4c76c03c0d0680befda2e39f8bb61e67ddf3--
 

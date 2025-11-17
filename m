@@ -4,87 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F63FCEACEF
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 15:40:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3828CE8D6B
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 15:42:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vL1Kg-0005xN-A7; Mon, 17 Nov 2025 10:39:58 -0500
+	id 1vL1Mm-00082h-PB; Mon, 17 Nov 2025 10:42:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vL1KL-0005my-8E
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:39:37 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vL1Mf-0007zl-PX
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:42:02 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vL1KI-0005ia-8x
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:39:35 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-47778b23f64so30968755e9.0
- for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 07:39:32 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vL1Mc-00069N-La
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:42:00 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-47758595eecso25067585e9.0
+ for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 07:41:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763393971; x=1763998771; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=4z1jh/Ha3QCCNXYfp7y5UhFkZykJVLI4/OdNGSZZcuU=;
- b=vuXrAK8PwRAUYr+MbpHbgXRkmg0TPfv4D7FNG8It3Pm5by1RI3LbCArP6mft7aIod3
- 67g3GyF7NOOry8BMTD+nR8REc+f6X8N2JYUxYBs/5BPAgarc+JD+vGSFMf2uvgew9mL5
- Qo5Ua0F6K+8EFOgW0Si020+6JasrYbeT7YEHmLZpEz3NVz8K4Qax5+pjcJXk8jl26f3D
- gsJ2uoHy7nimQE+5PINbJKsyWtJBTmGv94dGkZKGGXoW+zhU7mF2d4+C6Xd83Tgn7+pP
- L6nT9kVDEC47V9J2H0JvTrVM2eHDVapVOAWVU6hmAbtArgnp+uVAWNj7ontGvG7TFSCO
- nKmw==
+ d=linaro.org; s=google; t=1763394116; x=1763998916; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=xYeIl3mtcWUCJeVXRBw8qX4nIcjFSObNWJG++fEgW+4=;
+ b=FM9jtyqi2CR1Jv5BldYrfS8W2sJJW673psLYvgT91w2cEstCf/IfN642rFZzGYGblO
+ eHcYpnm7L4OfVUeGtTIW5FXwUMT5bZYcLJ+ONMqIb6UQ1vGdQNXQatcZjARwY3z3i/Al
+ qWAIBISCbReFd8bR9AuQNEk2iqWvrcTH/4x9puKSWL3FvmpU7/vLFMCGOmFlRF831nym
+ RBom90SD++Z8y0lnpgZeXgBJtwo6HFg3Y3iTZRQjS2x5HcuK67ktdqYT+2mXmScI3iSk
+ rjvOBt0+ePfv9r8oOamRPwW3iEmItHQ6KtR8j3ydaKc1ByqKawOnTnqiilILpCw1eLRW
+ I7Rw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763393971; x=1763998771;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=4z1jh/Ha3QCCNXYfp7y5UhFkZykJVLI4/OdNGSZZcuU=;
- b=TidzHcoA128gYR+jo16cPw1EfC4gprBKL11+VcT/9xPojKYyDN+B0Zap5ndoM8baDD
- opVxHVx2brgPfDSkHRCb6jxf5TWE5JlSBiFOs2qVIz2EtdbS6OP+SdriKvvfJSzTBp4d
- C0DLotW9KOApvpve/4nMWcxtty5UpZjjuivblhDzdQH9xA0HDf3ty/eOLcuzhaCHpFK4
- PXMF8mAiFfgqK1kjFvxjHnIOKgcqQ9AxLYMaM2OpdmNqcfN3Y5ON+UnZQSPLJHMPxeHD
- CMpkWg/2Cz7S7YHQKKItD6GpISegw1e1NADMYpER1ihZ1yla0niuBgEoK2i9Uj/Bk39P
- 304Q==
+ d=1e100.net; s=20230601; t=1763394116; x=1763998916;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=xYeIl3mtcWUCJeVXRBw8qX4nIcjFSObNWJG++fEgW+4=;
+ b=BJ5FMNGn8FZrJPa6K2L+hS+XIwL4WbIizTHLgN0xY7lt7USd4vyduHPp0RjyEihI6P
+ Ks6BMeqmAS2yuZmCD4J+V0fKQ73tUWiOiVPuNW3GQXMqhzyuq84CktQ7ih5xc6j9FFk8
+ qaEUJSL2EXqm7aVnIUxTJBKulAvdmjK03D7pOxKF4XzmYZpNLcqkNLUYUecJbf3u8gGm
+ ObgQJ7aFxb8C0KdmVhCkbm/VzVbGF9TBPg8sEOgjI2CfP30/pT8sfO3XZ34+55hyYVpg
+ /lKjf6WCKi0VaRXdDr2ytk92qEgfsysbWpO9ZMNV9aUSe07eyk3heROIR6UCcdA776eq
+ B3Dg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWMES4Rc6kWOb+anNUyS3bcJRNmmxpMhi2IlBlAfqksXZiFSktJlyRyRRVogRHX1meSQ+ir2besew==@nongnu.org
-X-Gm-Message-State: AOJu0YxVyWjqh9/MkmycK+cJ4NgpdEj0+Kux0W4Xxv1QoUhQqNb14Waq
- v22DgGFbLKZh8xlqYEKq3xxt5TQ5g76p41iyIMSLykAzs73XxtVXIxMjZbVeHh4i5wY=
-X-Gm-Gg: ASbGncstiuWnvWmLL+dfjJvY0ndG5S4FWLSAtvrDDQIv401xF3IkaApiuY+VOi20IEB
- e1FHkjDa7yZhFbMNw1aQb7WwXCYQsqQqkskzhBTPq134C6mZKktAOxWrNqqdZzzP2lAgvr9I7Cf
- RD1y9GHKmoVme5J7SuJ29om+oyswOJgt9+CC+b6q+DXn2HbRlCm3G6WgSxMzOM9vyfmeqKvcjmS
- LGi3dqWSFeOIedft3yrg0hTJld6vD/HPiHezfUMCS4q+wAUIKs67IDETCFX8gYmgzTsncwLoFJc
- NrogwXwnu/HRErHercPmHH7R+qPyxGWjt2RLnZ3jEbKGvoYQxdb6GRKQlLiitQifh0piuECcJhe
- zgYwuSAwXFUn9EXldOCFhN2Hl7Ncn8v/zj0eWaN2G2GxHkdRX9/RX5rKLRg5l+Qkbn9fK2htdq2
- cpPoDXiZNqYZsMwFgJThnCzW9FWgVla6HE1w6+L7E9ALeYctKXzB/DrtjKzRkQo9lNMTuu3TY=
-X-Google-Smtp-Source: AGHT+IHOQf2Nme0A5MkSLy70RjfLQDNh69L8xkTQCcbQ0oQdMUBrOe1V+OZ9HnXjAKsvbAkdmV7oow==
-X-Received: by 2002:a05:600c:c177:b0:477:429b:3b93 with SMTP id
- 5b1f17b1804b1-4778fe63008mr131753845e9.18.1763393971443; 
- Mon, 17 Nov 2025 07:39:31 -0800 (PST)
-Received: from [192.168.8.105] (66.red-37-158-132.dynamicip.rima-tde.net.
- [37.158.132.66]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4779b509a5esm135298885e9.2.2025.11.17.07.39.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Nov 2025 07:39:31 -0800 (PST)
-Message-ID: <22652ca4-0650-4ff4-ad55-4ad10e668bfb@linaro.org>
-Date: Mon, 17 Nov 2025 16:39:28 +0100
+ AJvYcCUsBBWinUft+bjrH+7M4ZL7XyDDnLtgWcatLSnPodKyRuWP2jLwhyI1apCsReOyAsLGelGmK7eTTg==@nongnu.org
+X-Gm-Message-State: AOJu0YwNYeBPI/ytZR+vzNpkT2AJ2uLYy5/A+Ee1NDm+IeCtWSRVC7Io
+ yotHwROlj1fegTjHLn6aeJdQhGWMPfjSsFTHx9H32vZIEtXw8sti3wFTewCiFHW1k3g=
+X-Gm-Gg: ASbGncueVLXHVr4lVUYl64Wrsz5OQzJjKx1TteULcMsNAAYvrLTvVIBgT1lGsHklbFp
+ ukSqiCKRNyPX3opBKo/GAXfBRuEpxeJz19edGc4u0dY6rWnVrOt18CmqFwxbZfd5PMoBNBa9ibW
+ o+0BzWS0WBjHhlmG/ly7KOuGUA+x+/Cn1J3PJRDcwfa2pY6g9depQdpZFbn90xSaDbOgsHoorMw
+ i1Xooi1pxvOVDx9hqZPvJpuOc/0+gw7d5EizifL/IIUxMKRJ3rsws95HyffM4GRvUP/aPmXzXW2
+ nZAoO59jJrpQZRcte5+eCoFGVlUrLFnQVjyZsY/m0PJWFh/ipQtof/viy5UA3I+XvzT2MyWSSSu
+ 5a6DRG8TymrnJ/fv9NUESaKDqjj38tZRNl4AeEB1venTC13VxXkSZYvWBV6zGPPGwiJQHYMIsLQ
+ kzm+khstecFm6P4+SZT/JtsBHnfqPYqGhojn0bnRqslA4kO7SI/A==
+X-Google-Smtp-Source: AGHT+IHAIFOWTLVJ0JjdatGPqaRU28JD/MLlFroeORzmoKsKYRcTfVUHjfkhYhIhD/a5PvOqOPH9wA==
+X-Received: by 2002:a05:6000:64a:b0:42b:47da:c318 with SMTP id
+ ffacd0b85a97d-42b593737d4mr10604706f8f.52.1763394116571; 
+ Mon, 17 Nov 2025 07:41:56 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-42c97745f79sm12620833f8f.23.2025.11.17.07.41.55
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 17 Nov 2025 07:41:55 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH-for-10.2 0/2] tcg: Remove support for 32-bit arm hosts
+Date: Mon, 17 Nov 2025 16:41:52 +0100
+Message-ID: <20251117154154.79090-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v2 05/10] tests/tcg: added test for MTE write-only
-To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org
-References: <20251116-feat-mte4-v2-0-9a7122b7fa76@gmail.com>
- <20251116-feat-mte4-v2-5-9a7122b7fa76@gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20251116-feat-mte4-v2-5-9a7122b7fa76@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x32c.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,69 +104,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 11/17/25 02:40, Gabriel Brookman wrote:
-> This test cannot be run in user-mode because the control bit that
-> enables this feature is only writable at EL1.
-> 
-> Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
-> ---
->   tests/tcg/aarch64/Makefile.target |  2 +-
->   tests/tcg/aarch64/mte-10.c        | 55 +++++++++++++++++++++++++++++++++++++++
->   2 files changed, 56 insertions(+), 1 deletion(-)
-> 
-> diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-> index b491cfb5e1..6203ac9b51 100644
-> --- a/tests/tcg/aarch64/Makefile.target
-> +++ b/tests/tcg/aarch64/Makefile.target
-> @@ -64,7 +64,7 @@ AARCH64_TESTS += bti-2
->   
->   # MTE Tests
->   ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
-> -AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7 mte-8 mte-9
-> +AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7 mte-8 mte-9 mte-10
->   mte-%: CFLAGS += $(CROSS_CC_HAS_ARMV8_MTE)
->   endif
->   
-> diff --git a/tests/tcg/aarch64/mte-10.c b/tests/tcg/aarch64/mte-10.c
-> new file mode 100644
-> index 0000000000..0fa3f97e1d
-> --- /dev/null
-> +++ b/tests/tcg/aarch64/mte-10.c
-> @@ -0,0 +1,55 @@
-> +/*
-> + * Memory tagging, write-only tag checking
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "mte.h"
-> +
-> +void pass(int sig, siginfo_t *info, void *uc)
-> +{
-> +    exit(0);
-> +}
-> +
-> +int main(int ac, char **av)
-> +{
-> +    struct sigaction sa;
-> +    int *p0, *p1, *p2;
-> +    long excl = 1;
-> +
-> +    /*
-> +     * NOTE FOR REVIEWERS: to run this test locally, I modified
-> +     * enable_mte to also activate write-only tag checking by writing
-> +     * to ID_AA64PFR2_EL1. I am not sure how to modify the test so that
-> +     * it works without that modification. Input appreciated.
-> +     */
-> +    enable_mte(PR_MTE_TCF_SYNC);
+32-bit hosts are deprecated since QEMU v10.0.0; we already
+removed support for MIPS and PPC hosts. Time for ARM removal.
 
-You must
+Based-on: <20251117140420.62193-1-philmd@linaro.org>
+          "roms: Do not try to build EDK2 for 32-bit ARM on Fedora"
+Based-on: <20251117153756.78830-1-philmd@linaro.org>
+          "docs: Mention 32-bit PPC host as removed"
 
-(1) Delay the patch adding the test case until after FEAT_MTE_STORE_ONLY is enabled 
-(currently patch 10)
+Philippe Mathieu-Daudé (2):
+  gitlab: Stop cross-testing for 32-bit ARM hosts
+  buildsys: Remove support for 32-bit ARM hosts
 
-(2) Implement support for PR_MTE_STORE_ONLY in linux-user/.
+ MAINTAINERS                                   |    6 -
+ docs/about/removed-features.rst               |    4 +-
+ configure                                     |   39 -
+ meson.build                                   |    5 +-
+ linux-user/include/host/arm/host-signal.h     |   43 -
+ tcg/arm/tcg-target-con-set.h                  |   47 -
+ tcg/arm/tcg-target-con-str.h                  |   26 -
+ tcg/arm/tcg-target-has.h                      |   73 -
+ tcg/arm/tcg-target-mo.h                       |   13 -
+ tcg/arm/tcg-target-reg-bits.h                 |   12 -
+ tcg/arm/tcg-target.h                          |   73 -
+ tcg/arm/tcg-target-opc.h.inc                  |   16 -
+ tcg/arm/tcg-target.c.inc                      | 3489 -----------------
+ .gitlab-ci.d/container-cross.yml              |    6 -
+ .gitlab-ci.d/crossbuilds.yml                  |    7 -
+ common-user/host/arm/safe-syscall.inc.S       |  108 -
+ python/qemu/utils/accel.py                    |    1 -
+ roms/edk2-build.py                            |    4 -
+ .../dockerfiles/debian-armhf-cross.docker     |  188 -
+ tests/docker/dockerfiles/debian-bootstrap.pre |    5 +-
+ tests/lcitool/refresh                         |    5 -
+ 21 files changed, 4 insertions(+), 4166 deletions(-)
+ delete mode 100644 linux-user/include/host/arm/host-signal.h
+ delete mode 100644 tcg/arm/tcg-target-con-set.h
+ delete mode 100644 tcg/arm/tcg-target-con-str.h
+ delete mode 100644 tcg/arm/tcg-target-has.h
+ delete mode 100644 tcg/arm/tcg-target-mo.h
+ delete mode 100644 tcg/arm/tcg-target-reg-bits.h
+ delete mode 100644 tcg/arm/tcg-target.h
+ delete mode 100644 tcg/arm/tcg-target-opc.h.inc
+ delete mode 100644 tcg/arm/tcg-target.c.inc
+ delete mode 100644 common-user/host/arm/safe-syscall.inc.S
+ delete mode 100644 tests/docker/dockerfiles/debian-armhf-cross.docker
 
+-- 
+2.51.0
 
-r~
 

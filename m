@@ -4,60 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70E91CCD19A
-	for <qemu-arm@archiver.kernel.org>; Sun, 16 Nov 2025 21:32:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF0FCCCD19A
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 01:41:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vKkMA-00044J-Gt; Sun, 16 Nov 2025 16:32:23 -0500
+	id 1vKoEc-0002We-5m; Sun, 16 Nov 2025 20:40:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <bounce+7d9d16.7c7b8f-qemu-arm=nongnu.org@revolve.com>)
- id 1vKhiW-0008C1-JD
- for qemu-arm@nongnu.org; Sun, 16 Nov 2025 13:43:16 -0500
-Received: from a44.a6e4cdb8.use4.send.mailgun.net ([198.244.49.44])
+ (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
+ id 1vKoEX-0002UT-Ej
+ for qemu-arm@nongnu.org; Sun, 16 Nov 2025 20:40:45 -0500
+Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1)
- (envelope-from <bounce+7d9d16.7c7b8f-qemu-arm=nongnu.org@revolve.com>)
- id 1vKhiT-0005cr-Fv
- for qemu-arm@nongnu.org; Sun, 16 Nov 2025 13:43:16 -0500
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=revolve.com; q=dns/txt;
- s=smtp; t=1763318591; x=1763325791; 
- h=Message-Id: In-Reply-To: To: To: Cc: From: From: Subject: Subject:
- Content-Type: Mime-Version: Date: Sender: Sender; 
- bh=w5OvZC2cuFCCLnLP4PXBUxW66ilrdlxy98nZf+11cj0=;
- b=tIaJ9RkiaK+Hbo25YtA9BU/a4k2J9sxz5UdspSXMsXvnZnJK+WnhSKsxsRpVji5EFrojsP17dGFR4AIreVJGs3mZO1VjRumZaHzxxza0QBqmBHS2dbVP2hPjIonLen/3f5PZlI7f1Wrj4Z1LH8MdmRjVAFOR701T9FXz+pWWNg0=
-X-Mailgun-Sid: WyIwZWQxZSIsInFlbXUtYXJtQG5vbmdudS5vcmciLCI3YzdiOGYiXQ==
-Received: by 6130ff375f9780dfb3af950874568c4cc5e1d1d4ede81abf44958894a3eeb710
- with HTTP id 691a1b3e5548fd3d57d635e7; Sun, 16 Nov 2025 18:43:10 GMT
-X-Mailgun-Sending-Ip: 198.244.49.44
-Date: Sun, 16 Nov 2025 18:43:10 +0000
-Mime-Version: 1.0
-Content-Type: multipart/alternative;
- boundary="06de6f41cd2f09dd844a5d4a4c76c03c0d0680befda2e39f8bb61e67ddf3"
-Subject: Re: [RFC PATCH] hw/dma: don't allow weird transfer lengths for bcm2835
-Cc: yodel.eldar@gmail.com, qemu-devel@nongnu.org, peter.maydell@linaro.org,
- philmd@linaro.org, farosas@suse.de, lvivier@redhat.com, pbonzini@redhat.com,
- qemu-arm@nongnu.org, florian.meier@koalo.de, florian.fainelli@broadcom.com
-To: yodel.eldar@gmail.com, alex.bennee@linaro.org, yodel.eldar@yodel.dev
-In-Reply-To: <200584ab-1ce3-44bb-8911-59df9e9a8f37@gmail.com>
-Message-Id: <c3qqgqdgQoK1xEReeO9GHw@revolve.com>
-X-Mailgun-Variables: {"communicationId":
- "eyJvcmdJZCI6ImNQZTR5MjV6VGx5SlBjM2VvRHZTaGciLCJjdXN0b21lcklkIjoiZ1U4T0dULU1SY2FMN1YtNkVHeVhtZyIsImNvbnZlcnNhdGlvbkl0ZW1JZCI6ImMzcXFncWRnUW9LMXhFUmVlTzlHSHcifQ"}
-Received-SPF: pass client-ip=198.244.49.44;
- envelope-from=bounce+7d9d16.7c7b8f-qemu-arm=nongnu.org@revolve.com;
- helo=a44.a6e4cdb8.use4.send.mailgun.net
+ (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
+ id 1vKoEV-0005wl-2G
+ for qemu-arm@nongnu.org; Sun, 16 Nov 2025 20:40:44 -0500
+Received: by mail-qt1-x829.google.com with SMTP id
+ d75a77b69052e-4eda6a8cc12so37261441cf.0
+ for <qemu-arm@nongnu.org>; Sun, 16 Nov 2025 17:40:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1763343641; x=1763948441; darn=nongnu.org;
+ h=cc:to:content-transfer-encoding:mime-version:message-id:date
+ :subject:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=uEEiFqFe8mk24F2K087eNTYDl+wsLQIIoRXEos/1iZU=;
+ b=aURUlRWWhtAU47L/nXCfR2rs355H4zi8HcWVDrxiVFzUeOxCaS4Gb1NDknFI5fHP4K
+ ePqIsRtLZ3iRxVXDde0qsLDER9XYSKZKGSh4zCYi+e8TMIGw/OqySBcPuQwCH9ycaWn+
+ Xxxg59hqUmx+nulJvVAScI1Ato/O+fBi80p4Bc1EvP58PoVBdMzqTVpZbXW3TESiFZUt
+ OE6zch+VL2+spR5GCsotfyx40+5CsBNi+fM8tQKENe+AUpS1k2OMxCc/EKNUKSjtZd5E
+ jDAwjPS0izXAJMVqaQwDIS/0Nf16+VealzUFRfDX0DAtwwLnl/xJGjtHDIYEB6oCXJC0
+ GlJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1763343641; x=1763948441;
+ h=cc:to:content-transfer-encoding:mime-version:message-id:date
+ :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=uEEiFqFe8mk24F2K087eNTYDl+wsLQIIoRXEos/1iZU=;
+ b=PZSwNB0Wm9p7h7s9PabicyiKJxnoaN/8o0w2CaesS/qBCqxVsbPDWvsUuj+6RaevtW
+ kh2WpFiZ4LxQxDYXis+KeNdi4age9anpvi8hBCekAgiJCdyQwXPKa7q51EFoly6sOrtW
+ 5QI1FkBTIyjCsJr9sRTMtK9g+997S/FvnjkXLCf+ihtU99vZOWc2aoQ4O7UfDazVh90Z
+ RX8ar/PANFbPfnf4rmLODNfXFEh7BAOxPrXhaOQ5AM05sWd5tJVVt6/3DMD0bp9LTACT
+ o5svKTF091dCnwE7Fe6fqtKzvcspavMkWJYc2SnDlquZ77m/WE0PBtU0RO0xb8cq7gDa
+ 2ZUw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVYTiwDVkQJNZTh0LlE1E4ofUFUH3m02lf3qBANbIRgrPNxhC8sUFVqML3VnHIqTRpSgXJ24hm+pA==@nongnu.org
+X-Gm-Message-State: AOJu0YxDfJB9x7hO7l74QG5PoGcPLZFtNUUFjeFynjdeWAAUV7u0OVYk
+ aOItgN+Zx7xZHAFhl/3EHConCEOAsHnmjqKjDZFmFk1eGXD6VCGgxV8nby0ji230
+X-Gm-Gg: ASbGncuijywcY2JEihBgqV1mvczfKx9Y8k7g+Qr1fxZXQnH4sBrVx5nnft8anoYeK6D
+ WMBPBeTFOrdhxjbWNXNuLk95XiaEJ5TjVCtglcU3uA5jITG01zwGMxee7Q7XiUQZIzLdloW2D+g
+ HHQQOuLHls0mpfxayR5q+XrCZe01IvtLR7HHstZcuQZcu4OW/Qd+h1dH+BnheJAP/Vbpann8kZI
+ LAvSd2Q/15+OUFneU/HU+4g5RAt6DLZo1NGQpMaxpcR8zVgf+EEyfai7K5GAN1uwflOFKkLXDY6
+ 8KKcVWN2UvNltEnYsdVbVIC1ekQjqgFkA4j7npV3SdK9ngB/J8pUA3Hu9QObTpBW24s2ZYce1Sr
+ Ct1iIgCG7GYveH3RnIcBvfyr7jmI7Rg2cDcQTZElytoBwWvafEYwkLMCw7HBJc/n7O51ihIZKXq
+ 3rNG8LNN9vaZUuuzY2SZylK/mUuytmPw==
+X-Google-Smtp-Source: AGHT+IFYZMapw/AltwVkTGtpEoMfdCwAYd3kNUcv47oxXn7v6+HAXJF0VMIKs500QE2FTh7R8WZIRQ==
+X-Received: by 2002:a05:622a:349:b0:4ed:6782:12c4 with SMTP id
+ d75a77b69052e-4edf20a904fmr153834401cf.33.1763343641392; 
+ Sun, 16 Nov 2025 17:40:41 -0800 (PST)
+Received: from [10.0.0.22] ([185.213.193.149])
+ by smtp.gmail.com with ESMTPSA id
+ d75a77b69052e-4ee1c21ea34sm18246551cf.30.2025.11.16.17.40.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 16 Nov 2025 17:40:40 -0800 (PST)
+From: Gabriel Brookman <brookmangabriel@gmail.com>
+Subject: [PATCH RFC v2 00/10] target/arm: add support for MTE4
+Date: Sun, 16 Nov 2025 20:40:17 -0500
+Message-Id: <20251116-feat-mte4-v2-0-9a7122b7fa76@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAF9GmkC/02MwQrCMBAFf6Xs2UgS29R6EgQ/wKv0EOKmXTCNJ
+ CUoJf9uiBeP8+YxG0QMhBFOzQYBE0XySwG5a8DMepmQ0aMwSC47IfjALOqVuRVbpvqWa1UEHg9
+ Q/q+Alt61dYfb9QJjGWeKqw+f2k+iql9KiL9UEoyzXqLtjJW9ssN5cpqee+MdjDnnL9aom8+nA
+ AAA
+X-Change-ID: 20251109-feat-mte4-6740a6202e83
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, 
+ Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org, 
+ Gabriel Brookman <brookmangabriel@gmail.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1763343639; l=2808;
+ i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
+ bh=yaMmec54r9aWfnLvH2zuBqAlw4r90lBdRpvP/BaAc2g=;
+ b=H0P0b91vwmrKKuAyIEke6eZOsfigTlk0/X+GXpaFUsY9IWXc16fALsMCYOWftwptQUgDet4fE
+ OZzzoqmgaw5D5xeDa0oiOdb9+gkIFbvhyBuoAHaHU6zG+UoZ11VLqg7
+X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
+ pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
+Received-SPF: pass client-ip=2607:f8b0:4864:20::829;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-qt1-x829.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 16 Nov 2025 16:32:16 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,269 +111,74 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  REVOLVE <service@revolve.com>
-From:  REVOLVE via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---06de6f41cd2f09dd844a5d4a4c76c03c0d0680befda2e39f8bb61e67ddf3
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+This patch implements ARM's Enhanced Memory Tagging Extension (MTE4).
+MTE4 guarantees the presence of several subfeatures:
+FEAT_MTE_CANONICAL_TAGS, FEAT_MTE_TAGGED_FAR, FEAT_MTE_STORE_ONLY,
+FEAT_MTE_NO_ADDRESS_TAGS, and FEAT_MTE_PERM, none of which are
+currently implemented in QEMU.
 
-Hi Yodel,=20
+According to the ARM ARM, the presence of any of these features (except
+FEAT_MTE_PERM) implies the presence of all the others. For simplicity  
+and ease of review, I plan to introduce them one at a time. This patch
+handles all features except FEAT_MTE_PERM, with the plan to introduce
+FEAT_MTE_PERM in the next iteration of the patch.
 
-Thank you for reaching out to us here at Revolve!=20
-=20
-Here is the direct contact for your inquiry: Buyers@revolve.com=20
-=20
-I hope this information was helpful! If you have any questions or concerns,=
- please feel free to contact us as we are more than happy to assist you.
+Testing:
+  - To test this code, I used the tests included, plus modifications to
+    enable the EL1 control bits for the features being tested. These
+    features rely on EL1 control bits, which cannot be set in user-mode.
+    Please advise on the preferred strategy for testing EL1-dependent
+    behavior in user-mode tests.
 
-Regards,=20
-Sammie=C2=A0
-Customer Service
+The next version of this patch will include the MTE_PERM feature, since
+MTE4 guarantees its existence.
 
-How was your service? Please leave your comments https://www.revolve.com/r/=
-CSFeedbackSurvey.jsp?type=3Drep&name=3DSammie%20O&c=3DgU8OGT-MRcaL7V-6EGyXm=
-g=C2=A0
+Thanks,
+Gabriel Brookman
 
-On Sunday, November 16, 2025, 6:33 AM "Yodel Eldar" <yodel.eldar@gmail.com>=
- wrote:
+Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3116
+---
+Changes in v2:
+- Added tests for STORE_ONLY.
+- Refined commit messages.
+- Added FEAT_MTE_CANONICAL_TAGS and FEAT_MTE_NO_ADDRESS_TAGS + tests.
+- fixed TCSO bit macro names.
+- Link to v1: https://lore.kernel.org/qemu-devel/20251111-feat-mte4-v1-0-72ef5cf276f9@gmail.com
 
->=20
-> On 14/11/2025 10:43, Alex Benn=C3=A9e wrote:
-> > Yodel Eldar <yodel.eldar@yodel.dev> writes:
-> >=20
-> > (add Florians to CC)
-> >=20
-> >> On 11/11/2025 04:54, Alex Benn=C3=A9e wrote:
-> >>> The datasheet doesn't explicitly say that TXFR_LEN has to be word
-> >>> aligned but the fact there is a DMA_D_WIDTH flag to select between 32
-> >>> bit and 128 bit strongly implies that is how it works. The downstream
-> >>
-> >> At the bottom of page 38, the datasheet [1] states "the DMA can deal
-> >> with byte aligned transfers and will minimise bus traffic by buffering
-> >> and packing misaligned accesses."
-> >>
-> >> IIUC, the *_WIDTH info fields are implied as maxima.
-> >>
-> >> [1] https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf
-> >=20
-> > That reads ambiguously - you could start a misaligned n*WIDTH transfer
-> > and the hardware will write bytes until aligned?
-> >=20
-> > If it does indeed work with byte accesses maybe we can just do:
-> >=20
-> >    if (xlen & 0x3) {
-> >      .. do one byte ..
-> >      xlen -=3D 1;
-> >    } else {
-> >      .. existing 32 bit code ..
-> >    }
-> >=20
-> > but I guess we need to handle unaligned accesses as well.
-> >=20
-> > Florian,
-> >=20
-> > Can you help clarify what the datasheet means here?
-> >=20
-> > Thanks,
-> >=20
-> > <snip>
-> >=20
-> >>> rpi kernel also goes to efforts to not write sub-4 byte lengths so
-> >>> lets:
-> >=20
->=20
-> Sorry for the lagged response: I was reviewing the datasheet and,
-> failing to find clarity there, familiarizing myself with the AXI
-> protocol spec and relevant driver code. Unfortunately, I'm still
-> uncertain about how the DMA controller handles unaligned values in
-> TXFR_LEN.XLENGTH, but below I've listed some of my abridged findings in
-> the hope that it may be of some help. Given my ambivalence regarding
-> the answer to the question, I defer to Alex and the community.
->=20
-> In alignment with Peter's comment, the AXI spec clearly explicates
-> support of unaligned start address transfers [1] but doesn't appear to
-> require support of unaligned ending transfers, although, that doesn't
-> preclude them either.
->=20
-> On the other hand, we know the BCM2835 supports write strobes at least
-> for triggering cache prefetching [2], and that this "allows memory
-> structures to be implemented that can be written using byte and half
-> word accesses" [3]. The specification also states "[a]ll [manager]
-> interfaces and interconnect must provide correct write strobes" and
-> that subordinate components can choose to: fully use them, ignore them
-> (i.e., "treat all writes as being the full data bus width"), or detect
-> unsupported write strobe combinations and provide an error response.
-> Moreover, "[a]ny [subordinate] component that is providing memory-like
-> behavior must fully support write strobes" [3]. To me, this suggests
-> that the BCM2835 has what it needs to be able to invalidate the bytes
-> past the TXFR_LEN bytes in the final beat of a DMA write transaction...
-> but IIUC it's possible to forego that and remain AXI-compliant.
->=20
-> Section 4.2 of {A}, Burst Length, also mentions the use of write strobes
-> for partial write transactions and extends it to cover read transactions
-> via discarding, too:
->=20
->      No component can terminate a burst early to reduce the number of
->      data transfers. During a write burst, the [manager] can disable
->      further writing by deasserting all the write strobes, but it
->      must complete the remaining transfers in the burst. During a
->      read burst, the [manager] can discard further read data, but it
->      must complete the remaining transfers in the burst. [4]
->=20
-> As a counterpoint, however, perhaps only whole transfers of a read
-> transaction can be discarded, or the BCM2835 forewent it altogether.
->=20
-> Narrow Transfers, section 9.3, also mentions the generation of transfers
-> that are narrower than the data bus of the manager [5].
->=20
-> All of the above are taken from the AXI spec, but as mentioned earlier
-> some of these features are opt-in, and the BCM2835 could have skipped
-> them. So, lastly, let's consider TXFR_LEN from the datasheet [6]: It's
-> described as "specif[ying] the amount of data to be transferred in
-> bytes." Moreover, all of the bits of its bitfield are accounted,
-> including TXFR_LEN[31:30]: "Reserved - Write as 0, read as don't care."
-> It could be an unfortunate oversight that the authors' didn't describe
-> TXFR_LEN[1:0] with the same description, or it could be intentional. If
-> XLENGTH's two LSBs are always 0 (or just ignored), then couldn't
-> TXFR_LEN simply indicate the number of transfers instead of the total
-> number of bytes transferred in a transaction, like YLENGTH in 2D mode?
->=20
-> I'm inclined to think that the line about the DMA dealing with byte
-> aligned transfers means that both unaligned start addresses and
-> a partial terminal data transfers via packing, buffering, discarding,
-> and the application of write strobes on full-width transfers are
-> possible, but without more precise language or a test on hardware (not
-> planned anytime soon), I can't be sure. Also, please let me know if
-> I misunderstood any of the source material or important details I
-> may have missed.
->=20
-> In the absence of certainty and for the sake of addressing the DoS issue
-> that inspired the patch, perhaps it's better to leave the patch as is
-> with a comment soliciting further investigation on actual behavior?
->=20
-> {A} AMBA AXI Protocol Version: 2.0 Specification
->      https://documentation-service.arm.com/static/64256e84314e245d086bc88=
-f
->=20
-> {B} BCM2835 ARM Peripherals
->      https://datasheets.raspberrypi.com/bcm2835/bcm2835-peripherals.pdf
->=20
-> [1] {A} (p. 10-2)
-> [2] {B} (p. 51)
-> [3] {A} (p. 14-5)
-> [4] {A} (p. 4-3)
-> [5] {A} (p. 9-4)
-> [6] {B} (p. 53)
->=20
-> Thanks,
-> Yodel
->=20
+---
+Gabriel Brookman (10):
+      target/arm: explicitly disable MTE4 for max
+      tests/tcg: added test for MTE FAR
+      target/arm: add TCSO bitmasks to SCTLR
+      target/arm: add FEAT_MTE_STORE_ONLY logic
+      tests/tcg: added test for MTE write-only
+      target/arm: add canonical and no-address tag logic
+      target/arm: ldg on canonical tag loads the tag
+      target/arm: storing to canonical tags faults
+      tests/tcg: added test for MTE canonical and NAT
+      docs: added MTE4 features to docs
 
---06de6f41cd2f09dd844a5d4a4c76c03c0d0680befda2e39f8bb61e67ddf3
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html; charset="utf-8"
+ docs/system/arm/emulation.rst     |  4 ++
+ target/arm/cpu.h                  |  2 +
+ target/arm/helper.c               |  4 +-
+ target/arm/internals.h            | 40 +++++++++++++++++
+ target/arm/tcg/cpu64.c            |  8 ++++
+ target/arm/tcg/mte_helper.c       | 95 ++++++++++++++++++++++++++++++++++++++-
+ tests/tcg/aarch64/Makefile.target |  2 +-
+ tests/tcg/aarch64/mte-10.c        | 55 +++++++++++++++++++++++
+ tests/tcg/aarch64/mte-11.c        | 46 +++++++++++++++++++
+ tests/tcg/aarch64/mte-9.c         | 48 ++++++++++++++++++++
+ 10 files changed, 299 insertions(+), 5 deletions(-)
+---
+base-commit: 9febfa94b69b7146582c48a868bd2330ac45037f
+change-id: 20251109-feat-mte4-6740a6202e83
 
-<html><head></head><body><div>Hi Yodel, </div><div><br/></div><div>Thank yo=
-u for reaching out to us here at Revolve! </div><div> </div><div>Here is th=
-e direct contact for your inquiry: Buyers@revolve.com </div><div> </div><di=
-v>I hope this information was helpful! If you have any questions or concern=
-s, please feel free to contact us as we are more than happy to assist you.<=
-/div><div><br/></div><div>Regards, </div><div>Sammie=C2=A0</div><div>Custom=
-er Service</div><div><br/></div><div>How was your service? Please leave you=
-r comments https://www.revolve.com/r/CSFeedbackSurvey.jsp?type=3Drep&amp;na=
-me=3DSammie%20O&amp;c=3DgU8OGT-MRcaL7V-6EGyXmg=C2=A0</div><div><br/><div><d=
-iv>On Sunday, November 16, 2025, 6:33 AM &#34;Yodel Eldar&#34; &lt;yodel.el=
-dar@gmail.com&gt; wrote:</div><div dir=3D"auto"><blockquote style=3D"margin=
-:0.5ex 0 0 0.8ex;border-left:1px #ccc solid;padding-left:1ex"><div><br/>On =
-14/11/2025 10:43, Alex Benn=C3=A9e wrote:<br/>&gt; Yodel Eldar <yodel.eldar=
-@yodel.dev> writes:<br/>&gt; <br/>&gt; (add Florians to CC)<br/>&gt; <br/>&=
-gt;&gt; On 11/11/2025 04:54, Alex Benn=C3=A9e wrote:<br/>&gt;&gt;&gt; The d=
-atasheet doesn&#39;t explicitly say that TXFR_LEN has to be word<br/>&gt;&g=
-t;&gt; aligned but the fact there is a DMA_D_WIDTH flag to select between 3=
-2<br/>&gt;&gt;&gt; bit and 128 bit strongly implies that is how it works. T=
-he downstream<br/>&gt;&gt;<br/>&gt;&gt; At the bottom of page 38, the datas=
-heet [1] states &#34;the DMA can deal<br/>&gt;&gt; with byte aligned transf=
-ers and will minimise bus traffic by buffering<br/>&gt;&gt; and packing mis=
-aligned accesses.&#34;<br/>&gt;&gt;<br/>&gt;&gt; IIUC, the *_WIDTH info fie=
-lds are implied as maxima.<br/>&gt;&gt;<br/>&gt;&gt; [1] https://datasheets=
-=2Eraspberrypi.com/bcm2835/bcm2835-peri=
-pherals.pdf<br/>&gt; <br/>&gt; That re=
-ads ambiguously - you could start a misaligned n*WIDTH transfer<br/>&gt; an=
-d the hardware will write bytes until aligned?<br/>&gt; <br/>&gt; If it doe=
-s indeed work with byte accesses maybe we can just do:<br/>&gt; <br/>&gt;  =
-  if (xlen &amp; 0x3) {<br/>&gt;      .. do one byte ..<br/>&gt;      xlen =
--=3D 1;<br/>&gt;    } else {<br/>&gt;      .. existing 32 bit code ..<br/>&=
-gt;    }<br/>&gt; <br/>&gt; but I guess we need to handle unaligned accesse=
-s as well.<br/>&gt; <br/>&gt; Florian,<br/>&gt; <br/>&gt; Can you help clar=
-ify what the datasheet means here?<br/>&gt; <br/>&gt; Thanks,<br/>&gt; <br/=
->&gt; <snip><br/>&gt; <br/>&gt;&gt;&gt; rpi kernel also goes to efforts to =
-not write sub-4 byte lengths so<br/>&gt;&gt;&gt; lets:<br/>&gt; <br/><br/>S=
-orry for the lagged response: I was reviewing the datasheet and,<br/>failin=
-g to find clarity there, familiarizing myself with the AXI<br/>protocol spe=
-c and relevant driver code. Unfortunately, I&#39;m still<br/>uncertain abou=
-t how the DMA controller handles unaligned values in<br/>TXFR_LEN.XLENGTH, =
-but below I&#39;ve listed some of my abridged findings in<br/>the hope that=
- it may be of some help. Given my ambivalence regarding<br/>the answer to t=
-he question, I defer to Alex and the community.<br/><br/>In alignment with =
-Peter&#39;s comment, the AXI spec clearly explicates<br/>support of unalign=
-ed start address transfers [1] but doesn&#39;t appear to<br/>require suppor=
-t of unaligned ending transfers, although, that doesn&#39;t<br/>preclude th=
-em either.<br/><br/>On the other hand, we know the BCM2835 supports write s=
-trobes at least<br/>for triggering cache prefetching [2], and that this &#3=
-4;allows memory<br/>structures to be implemented that can be written using =
-byte and half<br/>word accesses&#34; [3]. The specification also states &#3=
-4;[a]ll [manager]<br/>interfaces and interconnect must provide correct writ=
-e strobes&#34; and<br/>that subordinate components can choose to: fully use=
- them, ignore them<br/>(i.e., &#34;treat all writes as being the full data =
-bus width&#34;), or detect<br/>unsupported write strobe combinations and pr=
-ovide an error response.<br/>Moreover, &#34;[a]ny [subordinate] component t=
-hat is providing memory-like<br/>behavior must fully support write strobes&=
-#34; [3]. To me, this suggests<br/>that the BCM2835 has what it needs to be=
- able to invalidate the bytes<br/>past the TXFR_LEN bytes in the final beat=
- of a DMA write transaction...<br/>but IIUC it&#39;s possible to forego tha=
-t and remain AXI-compliant.<br/><br/>Section 4.2 of {A}, Burst Length, also=
- mentions the use of write strobes<br/>for partial write transactions and e=
-xtends it to cover read transactions<br/>via discarding, too:<br/><br/>    =
- No component can terminate a burst early to reduce the number of<br/>     =
-data transfers. During a write burst, the [manager] can disable<br/>     fu=
-rther writing by deasserting all the write strobes, but it<br/>     must co=
-mplete the remaining transfers in the burst. During a<br/>     read burst, =
-the [manager] can discard further read data, but it<br/>     must complete =
-the remaining transfers in the burst. [4]<br/><br/>As a counterpoint, howev=
-er, perhaps only whole transfers of a read<br/>transaction can be discarded=
-, or the BCM2835 forewent it altogether.<br/><br/>Narrow Transfers, section=
- 9.3, also mentions the generation of transfers<br/>that are narrower than =
-the data bus of the manager [5].<br/><br/>All of the above are taken from t=
-he AXI spec, but as mentioned earlier<br/>some of these features are opt-in=
-, and the BCM2835 could have skipped<br/>them. So, lastly, let&#39;s consid=
-er TXFR_LEN from the datasheet [6]: It&#39;s<br/>described as &#34;specif[y=
-ing] the amount of data to be transferred in<br/>bytes.&#34; Moreover, all =
-of the bits of its bitfield are accounted,<br/>including TXFR_LEN[31:30]: &=
-#34;Reserved - Write as 0, read as don&#39;t care.&#34;<br/>It could be an =
-unfortunate oversight that the authors&#39; didn&#39;t describe<br/>TXFR_LE=
-N[1:0] with the same description, or it could be intentional. If<br/>XLENGT=
-H&#39;s two LSBs are always 0 (or just ignored), then couldn&#39;t<br/>TXFR=
-_LEN simply indicate the number of transfers instead of the total<br/>numbe=
-r of bytes transferred in a transaction, like YLENGTH in 2D mode?<br/><br/>=
-I&#39;m inclined to think that the line about the DMA dealing with byte<br/=
->aligned transfers means that both unaligned start addresses and<br/>a part=
-ial terminal data transfers via packing, buffering, discarding,<br/>and the=
- application of write strobes on full-width transfers are<br/>possible, but=
- without more precise language or a test on hardware (not<br/>planned anyti=
-me soon), I can&#39;t be sure. Also, please let me know if<br/>I misunderst=
-ood any of the source material or important details I<br/>may have missed.<=
-br/><br/>In the absence of certainty and for the sake of addressing the DoS=
- issue<br/>that inspired the patch, perhaps it&#39;s better to leave the pa=
-tch as is<br/>with a comment soliciting further investigation on actual beh=
-avior?<br/><br/>{A} AMBA AXI Protocol Version: 2.0 Specification<br/>     h=
-ttps://documentation-service.arm.com/static/64256e84314e245d086bc88f<br/><b=
-r/>{B} BCM2835 ARM Peripherals<br/>     https://datasheets.raspberrypi.com/=
-bcm2835/bcm2835-peripherals.pdf<br/><br/>[1] {A} (p. 10-2)<br/>[2] {B} (p. =
-51)<br/>[3] {A} (p. 14-5)<br/>[4] {A} (p. 4-3)<br/>[5] {A} (p. 9-4)<br/>[6]=
- {B} (p. 53)<br/><br/>Thanks,<br/>Yodel<br/></snip></yodel.eldar@yodel.dev>=
-</div></blockquote></div></div><br/></div></body></html>
---06de6f41cd2f09dd844a5d4a4c76c03c0d0680befda2e39f8bb61e67ddf3--
+Best regards,
+-- 
+Gabriel Brookman <brookmangabriel@gmail.com>
+
 

@@ -4,90 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF0FCCCD19A
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 01:41:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25946CEACEF
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 01:41:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vKoEc-0002We-5m; Sun, 16 Nov 2025 20:40:51 -0500
+	id 1vKoF4-0002vE-MJ; Sun, 16 Nov 2025 20:41:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vKoEX-0002UT-Ej
- for qemu-arm@nongnu.org; Sun, 16 Nov 2025 20:40:45 -0500
+ id 1vKoEg-0002ZC-4A
+ for qemu-arm@nongnu.org; Sun, 16 Nov 2025 20:40:56 -0500
 Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vKoEV-0005wl-2G
- for qemu-arm@nongnu.org; Sun, 16 Nov 2025 20:40:44 -0500
+ id 1vKoEd-0005yX-7u
+ for qemu-arm@nongnu.org; Sun, 16 Nov 2025 20:40:53 -0500
 Received: by mail-qt1-x829.google.com with SMTP id
- d75a77b69052e-4eda6a8cc12so37261441cf.0
- for <qemu-arm@nongnu.org>; Sun, 16 Nov 2025 17:40:42 -0800 (PST)
+ d75a77b69052e-4ee14ba3d9cso10641191cf.1
+ for <qemu-arm@nongnu.org>; Sun, 16 Nov 2025 17:40:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1763343641; x=1763948441; darn=nongnu.org;
- h=cc:to:content-transfer-encoding:mime-version:message-id:date
- :subject:from:from:to:cc:subject:date:message-id:reply-to;
- bh=uEEiFqFe8mk24F2K087eNTYDl+wsLQIIoRXEos/1iZU=;
- b=aURUlRWWhtAU47L/nXCfR2rs355H4zi8HcWVDrxiVFzUeOxCaS4Gb1NDknFI5fHP4K
- ePqIsRtLZ3iRxVXDde0qsLDER9XYSKZKGSh4zCYi+e8TMIGw/OqySBcPuQwCH9ycaWn+
- Xxxg59hqUmx+nulJvVAScI1Ato/O+fBi80p4Bc1EvP58PoVBdMzqTVpZbXW3TESiFZUt
- OE6zch+VL2+spR5GCsotfyx40+5CsBNi+fM8tQKENe+AUpS1k2OMxCc/EKNUKSjtZd5E
- jDAwjPS0izXAJMVqaQwDIS/0Nf16+VealzUFRfDX0DAtwwLnl/xJGjtHDIYEB6oCXJC0
- GlJw==
+ d=gmail.com; s=20230601; t=1763343647; x=1763948447; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=Dnbbf6q1KBWAEN9kQkeNkKZ6PakRiGS6+tTlmd1+/pE=;
+ b=QnqAUT4xmBRAkVqJ0TsRdA9HLCsxRnwbkUTipI3w2KO819WGuc/tKlgIQl7UFKcgm1
+ LoPXpEjDE10wmIbUj6gpbwFVEdUnXCsOuqHfv8z1vQh0qKZRBnMFPRS4kgqT02S41PRS
+ 7PamkYfsRhcWLPnxi4G3ak9dIoE6YWw1Cwn6iRMu9RSvxiT3rUgqCOHh5UjceztoCa+o
+ 4lOh8pSKbP/c5UDecW7sYOUSUORLd7G+7Mc0V/oQVOmqYsaaQoCqEFASFm5IxoTmbkYA
+ ZTKeSsijgUQLDv0KIj1zDyeLbXCNScsTTJqy5qQLSvah6ZLsSuFcJv7nyDgjhSyVoN3q
+ asNQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763343641; x=1763948441;
- h=cc:to:content-transfer-encoding:mime-version:message-id:date
- :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=uEEiFqFe8mk24F2K087eNTYDl+wsLQIIoRXEos/1iZU=;
- b=PZSwNB0Wm9p7h7s9PabicyiKJxnoaN/8o0w2CaesS/qBCqxVsbPDWvsUuj+6RaevtW
- kh2WpFiZ4LxQxDYXis+KeNdi4age9anpvi8hBCekAgiJCdyQwXPKa7q51EFoly6sOrtW
- 5QI1FkBTIyjCsJr9sRTMtK9g+997S/FvnjkXLCf+ihtU99vZOWc2aoQ4O7UfDazVh90Z
- RX8ar/PANFbPfnf4rmLODNfXFEh7BAOxPrXhaOQ5AM05sWd5tJVVt6/3DMD0bp9LTACT
- o5svKTF091dCnwE7Fe6fqtKzvcspavMkWJYc2SnDlquZ77m/WE0PBtU0RO0xb8cq7gDa
- 2ZUw==
+ d=1e100.net; s=20230601; t=1763343647; x=1763948447;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=Dnbbf6q1KBWAEN9kQkeNkKZ6PakRiGS6+tTlmd1+/pE=;
+ b=uUsZYtLZrVUaNjAAR2PtAAefoSK6tuvxiRQoCOi46HOBkzb5BlXKDADTVFjJ803I1z
+ KhXk1AaqS2BWdpO3yhZb8EjwF0GRWTsetSAx4oOHEgQqWbXlQ3McEp6cmBV01vduwUOP
+ Mw8aEvDNGLwiiWixaGjxR410FXWVIKld0dcdQmIDWY1ihkLbL8ZXGix86b1S7C3w6X4s
+ 8/qlzFX4qDM3oVh14WoFvuiTYaUgcE+ftQXCYssl1xhbFo1oKPwrdZdGr5iZOz2c8o/w
+ kHozRjZbes4tEjGpMNpil9vlncqRSdkr3qTFgkDRlHelHTHOrpSUkm/eOImDhap6mN9l
+ ejgg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVYTiwDVkQJNZTh0LlE1E4ofUFUH3m02lf3qBANbIRgrPNxhC8sUFVqML3VnHIqTRpSgXJ24hm+pA==@nongnu.org
-X-Gm-Message-State: AOJu0YxDfJB9x7hO7l74QG5PoGcPLZFtNUUFjeFynjdeWAAUV7u0OVYk
- aOItgN+Zx7xZHAFhl/3EHConCEOAsHnmjqKjDZFmFk1eGXD6VCGgxV8nby0ji230
-X-Gm-Gg: ASbGncuijywcY2JEihBgqV1mvczfKx9Y8k7g+Qr1fxZXQnH4sBrVx5nnft8anoYeK6D
- WMBPBeTFOrdhxjbWNXNuLk95XiaEJ5TjVCtglcU3uA5jITG01zwGMxee7Q7XiUQZIzLdloW2D+g
- HHQQOuLHls0mpfxayR5q+XrCZe01IvtLR7HHstZcuQZcu4OW/Qd+h1dH+BnheJAP/Vbpann8kZI
- LAvSd2Q/15+OUFneU/HU+4g5RAt6DLZo1NGQpMaxpcR8zVgf+EEyfai7K5GAN1uwflOFKkLXDY6
- 8KKcVWN2UvNltEnYsdVbVIC1ekQjqgFkA4j7npV3SdK9ngB/J8pUA3Hu9QObTpBW24s2ZYce1Sr
- Ct1iIgCG7GYveH3RnIcBvfyr7jmI7Rg2cDcQTZElytoBwWvafEYwkLMCw7HBJc/n7O51ihIZKXq
- 3rNG8LNN9vaZUuuzY2SZylK/mUuytmPw==
-X-Google-Smtp-Source: AGHT+IFYZMapw/AltwVkTGtpEoMfdCwAYd3kNUcv47oxXn7v6+HAXJF0VMIKs500QE2FTh7R8WZIRQ==
-X-Received: by 2002:a05:622a:349:b0:4ed:6782:12c4 with SMTP id
- d75a77b69052e-4edf20a904fmr153834401cf.33.1763343641392; 
- Sun, 16 Nov 2025 17:40:41 -0800 (PST)
+ AJvYcCXJME475fSEgr0F3RZpdUzTPTIlQootldPHAQA7624mSksKt4vFH2xIroa2A9B0MaaKPzCq+3KIgA==@nongnu.org
+X-Gm-Message-State: AOJu0YxldveKIr939oXOdI9YBbsFNcA4dpqpS9XKunErdoGo1JolS7Fm
+ bO2h8O9sGNEi7TlU6F63A7DPBdFEErVp373QxiUxPARDOdLCAIgWjna2Ud3DkUOy
+X-Gm-Gg: ASbGncu+hyVXVepr0/Pemo3PA7MUy0lDyCvWEBd3JDu1Tcso6W6q7Q7XUSANUqzfkJD
+ LkQGV9UD3/bUSKvVmVc2z+g1lgJ/A+qavJ09rxj5DiYTCbihzE5vwayiRJNyvhMhwYa/3fwSNuZ
+ d+R7WegZouKqzE6htnUHBIcwgIjLaDyzTbFbh16Z3K1Cyo3TvaJilZSzJFaPRDRvoBJPeuEVxh3
+ vsaQlpLqmzgG++/6127eVjeV8S42XgLXTMM74x19BLvqx9aeyJKPy4csjYnCr6ul85esyTSPsgS
+ 43Vv9Ym9y4EmSNok14PAp1o0hpt5eFEPsOUEHBrKeZlHwc3WYOtDos9tVZPVMwDbO/KsPl6NsxG
+ QlbSayDVU1PTjg1JQb7pUbu99bSte0K95Gij29xWBURPolHYJCVCXkekPOyyca3jK5j+ON2ES7V
+ LZ3VwJ5XYq
+X-Google-Smtp-Source: AGHT+IGfGfCC6520aEJWYOsOhBFRPDDs/yZTSTasS4u2bpxZrScMeoWGou+IJax+a8HH46HT0V+kdw==
+X-Received: by 2002:a05:622a:1343:b0:4ed:43fe:f537 with SMTP id
+ d75a77b69052e-4edf215b06amr153393461cf.76.1763343647497; 
+ Sun, 16 Nov 2025 17:40:47 -0800 (PST)
 Received: from [10.0.0.22] ([185.213.193.149])
  by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-4ee1c21ea34sm18246551cf.30.2025.11.16.17.40.39
+ d75a77b69052e-4ee1c21ea34sm18246551cf.30.2025.11.16.17.40.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 16 Nov 2025 17:40:40 -0800 (PST)
+ Sun, 16 Nov 2025 17:40:46 -0800 (PST)
 From: Gabriel Brookman <brookmangabriel@gmail.com>
-Subject: [PATCH RFC v2 00/10] target/arm: add support for MTE4
-Date: Sun, 16 Nov 2025 20:40:17 -0500
-Message-Id: <20251116-feat-mte4-v2-0-9a7122b7fa76@gmail.com>
+Date: Sun, 16 Nov 2025 20:40:23 -0500
+Subject: [PATCH RFC v2 06/10] target/arm: add canonical and no-address tag
+ logic
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAF9GmkC/02MwQrCMBAFf6Xs2UgS29R6EgQ/wKv0EOKmXTCNJ
- CUoJf9uiBeP8+YxG0QMhBFOzQYBE0XySwG5a8DMepmQ0aMwSC47IfjALOqVuRVbpvqWa1UEHg9
- Q/q+Alt61dYfb9QJjGWeKqw+f2k+iql9KiL9UEoyzXqLtjJW9ssN5cpqee+MdjDnnL9aom8+nA
- AAA
-X-Change-ID: 20251109-feat-mte4-6740a6202e83
+Message-Id: <20251116-feat-mte4-v2-6-9a7122b7fa76@gmail.com>
+References: <20251116-feat-mte4-v2-0-9a7122b7fa76@gmail.com>
+In-Reply-To: <20251116-feat-mte4-v2-0-9a7122b7fa76@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, 
  Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org, 
  Gabriel Brookman <brookmangabriel@gmail.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1763343639; l=2808;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1763343639; l=3340;
  i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=yaMmec54r9aWfnLvH2zuBqAlw4r90lBdRpvP/BaAc2g=;
- b=H0P0b91vwmrKKuAyIEke6eZOsfigTlk0/X+GXpaFUsY9IWXc16fALsMCYOWftwptQUgDet4fE
- OZzzoqmgaw5D5xeDa0oiOdb9+gkIFbvhyBuoAHaHU6zG+UoZ11VLqg7
+ bh=F2pGZprB8kCYpSFO6b+fLbFMcjK4Pgwg8dscgoUacB0=;
+ b=9RGQlL+ym4S7ny7TacHw8tgfdCWLHKD/gKIbmJ2TuIlbqjJfKgDCZdMfdAJT46sZWPENZyfLC
+ f6RGirPwaiGA9BrpKUBvfv1BNBwpI+D1mCHuaAiCtVwx9utsCNbNMYY
 X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
  pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
 Received-SPF: pass client-ip=2607:f8b0:4864:20::829;
@@ -114,71 +112,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This patch implements ARM's Enhanced Memory Tagging Extension (MTE4).
-MTE4 guarantees the presence of several subfeatures:
-FEAT_MTE_CANONICAL_TAGS, FEAT_MTE_TAGGED_FAR, FEAT_MTE_STORE_ONLY,
-FEAT_MTE_NO_ADDRESS_TAGS, and FEAT_MTE_PERM, none of which are
-currently implemented in QEMU.
-
-According to the ARM ARM, the presence of any of these features (except
-FEAT_MTE_PERM) implies the presence of all the others. For simplicity  
-and ease of review, I plan to introduce them one at a time. This patch
-handles all features except FEAT_MTE_PERM, with the plan to introduce
-FEAT_MTE_PERM in the next iteration of the patch.
-
-Testing:
-  - To test this code, I used the tests included, plus modifications to
-    enable the EL1 control bits for the features being tested. These
-    features rely on EL1 control bits, which cannot be set in user-mode.
-    Please advise on the preferred strategy for testing EL1-dependent
-    behavior in user-mode tests.
-
-The next version of this patch will include the MTE_PERM feature, since
-MTE4 guarantees its existence.
-
-Thanks,
-Gabriel Brookman
+This feature causes tag checks to compare logical address tags against
+their canonical form rather than against allocation tags. Described in
+the ARM ARM section "Logical Address Tagging".
 
 Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3116
 ---
-Changes in v2:
-- Added tests for STORE_ONLY.
-- Refined commit messages.
-- Added FEAT_MTE_CANONICAL_TAGS and FEAT_MTE_NO_ADDRESS_TAGS + tests.
-- fixed TCSO bit macro names.
-- Link to v1: https://lore.kernel.org/qemu-devel/20251111-feat-mte4-v1-0-72ef5cf276f9@gmail.com
+ target/arm/internals.h      | 40 ++++++++++++++++++++++++++++++++++++++++
+ target/arm/tcg/mte_helper.c | 12 ++++++++++++
+ 2 files changed, 52 insertions(+)
 
----
-Gabriel Brookman (10):
-      target/arm: explicitly disable MTE4 for max
-      tests/tcg: added test for MTE FAR
-      target/arm: add TCSO bitmasks to SCTLR
-      target/arm: add FEAT_MTE_STORE_ONLY logic
-      tests/tcg: added test for MTE write-only
-      target/arm: add canonical and no-address tag logic
-      target/arm: ldg on canonical tag loads the tag
-      target/arm: storing to canonical tags faults
-      tests/tcg: added test for MTE canonical and NAT
-      docs: added MTE4 features to docs
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 75677945af..5f0bcdaaac 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1633,6 +1633,46 @@ static inline bool tcma_check(uint32_t desc, int bit55, int ptr_tag)
+     return tcma && match;
+ }
+ 
++/* Return whether or not the second nibble of a VA matches bit 55.  */
++static inline bool tag_is_canonical(int ptr_tag, int bit55)
++{
++    return ((ptr_tag + bit55) & 0xf) == 0;
++}
++
++/* Return true if mtx bits mean that the access is canonically checked.  */
++static inline bool mtx_check(CPUARMState *env, bool bit55)
++{
++    /*
++     * the MTX bits used in EL0 are those used in whichever EL is used
++     * for the supervisor. The EL that contains the supervisor uses
++     * bits 60 and 61 (MTX0 and MTX1), while the other ELs that aren't
++     * used by the supervisor.
++     */
++    int el = arm_current_el(env);
++    if (el == 0) {
++        if (HCR_E2H & env->cp15.hcr_el2) {
++            return (1l << (60 + bit55)) & env->cp15.tcr_el[2];
++        } else {
++            return (1l << (60 + bit55)) & env->cp15.tcr_el[1];
++        }
++    } else if (el == 1) {
++        if (HCR_E2H & env->cp15.hcr_el2) {
++            g_assert_not_reached();
++        } else {
++            return (1l << (60 + bit55)) & env->cp15.tcr_el[1];
++        }
++    } else if (el == 2) {
++        if (HCR_E2H & env->cp15.hcr_el2) {
++            return (1l << (60 + bit55)) & env->cp15.tcr_el[2];
++        } else {
++            return (1l << 33) & env->cp15.tcr_el[2];
++        }
++    } else if (el == 3) {
++        return (1l << 33) & env->cp15.tcr_el[3];
++    }
++    return false;
++}
++
+ /*
+  * For TBI, ideally, we would do nothing.  Proper behaviour on fault is
+  * for the tag to be present in the FAR_ELx register.  But for user-only
+diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
+index f9fd6fd408..513ee8d6a1 100644
+--- a/target/arm/tcg/mte_helper.c
++++ b/target/arm/tcg/mte_helper.c
+@@ -799,6 +799,10 @@ static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
+         return 1;
+     }
+ 
++    if (mtx_check(env, bit55)) {
++        return tag_is_canonical(ptr_tag, bit55);
++    }
++
+     mmu_idx = FIELD_EX32(desc, MTEDESC, MIDX);
+     type = FIELD_EX32(desc, MTEDESC, WRITE) ? MMU_DATA_STORE : MMU_DATA_LOAD;
+     sizem1 = FIELD_EX32(desc, MTEDESC, SIZEM1);
+@@ -962,6 +966,14 @@ uint64_t HELPER(mte_check_zva)(CPUARMState *env, uint32_t desc, uint64_t ptr)
+         goto done;
+     }
+ 
++    if (mtx_check(env, bit55)) {
++        if (tag_is_canonical(ptr_tag, bit55)) {
++            goto done;
++        }
++        mte_check_fail(env, desc, ptr, ra);
++    }
++
++
+     /*
+      * In arm_cpu_realizefn, we asserted that dcz > LOG2_TAG_GRANULE+1,
+      * i.e. 32 bytes, which is an unreasonably small dcz anyway, to make
 
- docs/system/arm/emulation.rst     |  4 ++
- target/arm/cpu.h                  |  2 +
- target/arm/helper.c               |  4 +-
- target/arm/internals.h            | 40 +++++++++++++++++
- target/arm/tcg/cpu64.c            |  8 ++++
- target/arm/tcg/mte_helper.c       | 95 ++++++++++++++++++++++++++++++++++++++-
- tests/tcg/aarch64/Makefile.target |  2 +-
- tests/tcg/aarch64/mte-10.c        | 55 +++++++++++++++++++++++
- tests/tcg/aarch64/mte-11.c        | 46 +++++++++++++++++++
- tests/tcg/aarch64/mte-9.c         | 48 ++++++++++++++++++++
- 10 files changed, 299 insertions(+), 5 deletions(-)
----
-base-commit: 9febfa94b69b7146582c48a868bd2330ac45037f
-change-id: 20251109-feat-mte4-6740a6202e83
-
-Best regards,
 -- 
-Gabriel Brookman <brookmangabriel@gmail.com>
+2.51.2
 
 

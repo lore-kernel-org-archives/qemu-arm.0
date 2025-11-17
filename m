@@ -4,98 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74CF1CEACEF
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 20:39:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D2F3CE8D6B
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 21:37:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vL60M-0005Mi-9T; Mon, 17 Nov 2025 15:39:19 -0500
+	id 1vL6uN-0002zU-9x; Mon, 17 Nov 2025 16:37:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vL60C-0005L1-Dv
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 15:39:10 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vL605-0000dI-H5
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 15:39:03 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-429c4c65485so3999787f8f.0
- for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 12:39:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763411940; x=1764016740; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fFyGRInXFBpZaeNlXle17cFajkY7UYBMTQRyOKOfKmE=;
- b=M/lm+vTui9Md5gLzuBt9S5BkvjAvtRpAYT9WArM6VrsrJJ5G7KMMTXLRyTluceECMa
- rPr9s2cjX5K41zJklBOA0KsSAHhXXi2wkG2xt0D6LbgtjrRB/HnKBLtD3ZteG4DWdttj
- 9VKXP/csZtONS4GFRkMlFk0ZageOeIL7GT+Y06t2F6FtZWsj62BDBW4SRHlHrRn3PD5d
- xZOZUYvDqD7zKO50ZHZ3rhalNiJMr7r/t9VPeIo2iO21ZApiwGjlnrCpC6Ka6K1fNF3a
- p1q3TVscDpxTxgnlQnPJHF3rPIJgnIuJ5j9YBeoZNphcy7896u3Fbr9/aFLAQnzDqYbv
- InSA==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1vL6uL-0002yJ-PH
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 16:37:09 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1vL6uH-0001VK-GA
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 16:37:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1763415423;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sUrXsrOEYCDeXvWB1vmj4/9WZ8aTvo79yERF3k+T32g=;
+ b=LQHIGqQlIJdK424DL9KazePPDsOoLVgro+vv8HQ/gID7dulLSmfvXiD90ZyTQ0hIH+kU+X
+ YGwAqjP0bzYS235kuvNeEnfXqIStAVBz/VSWIeis+mjEtQ1ipUyFSwQb4+PiN/+STKZiSJ
+ 2zfy+3i+yy6LME6n0UCyHVWdNOEv17M=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-570-JfhzvblcOUmKRMHYlQ0ehA-1; Mon, 17 Nov 2025 16:37:01 -0500
+X-MC-Unique: JfhzvblcOUmKRMHYlQ0ehA-1
+X-Mimecast-MFC-AGG-ID: JfhzvblcOUmKRMHYlQ0ehA_1763415421
+Received: by mail-qv1-f71.google.com with SMTP id
+ 6a1803df08f44-88044215975so176100696d6.1
+ for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 13:37:01 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763411940; x=1764016740;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=fFyGRInXFBpZaeNlXle17cFajkY7UYBMTQRyOKOfKmE=;
- b=xTJ56waJb1qJ2UXMSrM7IrS+JaRn2bitdcbyVSUU3Ibvf8pHWYu6pwG2cRVop/HSCo
- cWgSxx05bHO/ZICgXgJdDV4fVEXPnh5ski5z0RC7t0qcWlsfoWg/otZJ7m4o7QMtzzx9
- pjT68BBdoSIP7h2Wsa40xSqtfOukZ8cWWfhk6syBe58RvCBq7z/7fY/9C+8i0DgDAQGQ
- wfsBtcI1YcL4qbmnXKgIYC/yZkennxDe2tNtid3WVcXdyuBrJC4pt/nfgrIv2diRH3hQ
- H4wiDbLBspscWsbS8pdVsPIhTPYXi9UFlQZ1coBvLFKWcidZuqeVJ7nU5vSoZNzz+6Kz
- ew2A==
+ d=1e100.net; s=20230601; t=1763415421; x=1764020221;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=sUrXsrOEYCDeXvWB1vmj4/9WZ8aTvo79yERF3k+T32g=;
+ b=E4gBLv/+eq3Ab0931D0QE3im6JcW9b9LI89RKrFFm35LB8AOb5iAUB9a1cZYXNkuBj
+ gh04YEAwr1xzY1jmt5W0Wip106u7xap9fYkOEso4Y/rCadn1jShZ4DPmKsw7x4UQWowp
+ YdoxFYQ+wDEIc17GPD3a2lwQLVuGtcnwRU7LlEWER3B9ngryLpJjO2l35VKGJtZbYbKd
+ XQOLUhcBLDV4AjJLN/6hnV/ddDOGBpXcW7nsQqujV0tZCoDJTGEX0wkUe1nYgiemjOKW
+ 522N5Pp2AYLEmQezEYSFLou9jzbrc0WAUAr/UzzcslpM/uKgOjmvdDQxX6sQ7fhzLwsB
+ RhUQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXWOhMxsTgsXTx4pkiIEmlvdMjqWcloZQsLNgQhNhIdT0ZPXF7dDU3w0r7QtI3anKg0GVrEXySZSQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwySfo+Ook8fCI1y8K1zvrhVM1D8a2k+zhX0ot4X+TN37sUXMjl
- SUUB3fhrvBCDy2cRq+vhvU9LIeglyzE+ZfAIExu0lKGjNTBKzG2kYDX5C2eQVkyG0B0=
-X-Gm-Gg: ASbGncvvACm0mh/dHpGu+fBK3hOYr/6eDxah06/OR8HyXs/Tboh+N5dU4h0nzZA8LE6
- /UMRAHzrwVKiLjofdLoBj+bFnE+E2X3bxveq/GKLvSXAdRPejxoJIfi2/Ezy9QFaCQHojIMMaHL
- 2AXYJMQtpg/56LRnUv1iJRbk53CGbdK9SpvTJChUWVw69Q5ofbIOcgTCp9HjfvkpnYrIqnTfIp6
- kZ2+AiaqG2RdWz8mqu/WczWf/olSbwvoPiVjNfbGsOr1txDT0F7i3AG6A0wd9DiirIHdsViAI8N
- dC5y9LSE/gg30N9BXl+tCcgS1aNXLodHh26beF2bpcM3KpypIk6zDcrcqZFhdmMEpPGqO5TXJZP
- H8S2NeRB7ocfG25VyHE1YTQHVMZQKZl/t76hcCYWumrsLuYgV3hgT4+hiDyTePB2XKcgqpKXeTl
- cJ/drnFgiQ3dg2ntSE7g4nqJMywYKQHSgYCBUnlyemXvlDS4LhcA==
-X-Google-Smtp-Source: AGHT+IGasQkJTIBq9jHENy2gaGASJz+hCICNjeUX2rdp3uffCo4bb9CVdyOvFS1MDnPcfyT/7T1KGA==
-X-Received: by 2002:a5d:584b:0:b0:405:3028:1be2 with SMTP id
- ffacd0b85a97d-42b59328ec3mr14512400f8f.11.1763411938834; 
- Mon, 17 Nov 2025 12:38:58 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42b53e7aea7sm27901909f8f.1.2025.11.17.12.38.57
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 17 Nov 2025 12:38:58 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Nick Briggs <nicholas.h.briggs@gmail.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ AJvYcCVX3JOnURqarCvghOcl/wLnCipL7AgL4pUHBQ8pbsG1ID2hvV4qS32xruyijSwaIVetifDhAXMFhQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwfGYS2YvWX4i8Z+8DY6SpA/9815gTwPw6WxYxqhjKmioUqFjUW
+ AgA+J5lrV/7nJ87opT81d5A+DoAI1L8pBQmaAogCzW/J4MXyt7LnJGdS8QVxn/FFSdpKgFb72aw
+ IzEqj4fq2TeJPTAJAvzz780jqGcHoecjftiClb35Q0qlKPtxVlGDN6g==
+X-Gm-Gg: ASbGncuV0l2cxGFVpgNkQ78CaC2+K+iftjkDrRJBdkmUmjNjNrnIUa9OgLa96iqBiPN
+ qCh8b+OXcIV+dSaHdq5fcN9qF5lf8BckyPrLHqkcJZ1KjrpLfC6fLs/Nli2OUSkpKvyHmYsSRW8
+ gGOuIt3bOLVY55k1roLwUEdogAmYRFmAMJVDSp6ruYOtsRLf1yS4FioNp8Hetud9OKmqjtC/sfU
+ NH3SmadS50p1veecyYsWkaZo/gx5qu5SZ8Fjnm2sHKmK6vOaoBPTOENstKQ2TRCOAtpdUbicK2s
+ VavbfAVgYgwhVyE+phsSZPfQcMT4p48xO8FhmP+sBvIr2zhWhIjnt2Hd3pega6/+tlCgzk5dxUl
+ ebQ==
+X-Received: by 2002:a05:6214:21ef:b0:882:3c65:1cbe with SMTP id
+ 6a1803df08f44-882926132b2mr186628446d6.28.1763415421259; 
+ Mon, 17 Nov 2025 13:37:01 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH+z5kxSqrAgFWhsvveasQqjWvCvGo3xs9eXu/xnyKTkwQzvvjxXjldT81lN8U2rDJrpMBmUw==
+X-Received: by 2002:a05:6214:21ef:b0:882:3c65:1cbe with SMTP id
+ 6a1803df08f44-882926132b2mr186628216d6.28.1763415420843; 
+ Mon, 17 Nov 2025 13:37:00 -0800 (PST)
+Received: from x1.local ([142.188.210.50]) by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-882863138c0sm100494086d6.16.2025.11.17.13.36.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 17 Nov 2025 13:37:00 -0800 (PST)
+Date: Mon, 17 Nov 2025 16:36:56 -0500
+From: Peter Xu <peterx@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Nick Briggs <nicholas.h.briggs@gmail.com>,
+ Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
  Li Zhijian <lizhijian@fujitsu.com>,
- Kostiantyn Kostiuk <kkostiuk@redhat.com>, Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Andrew Deason <adeason@sinenomine.net>, Eric Blake <eblake@redhat.com>,
- Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Kostiantyn Kostiuk <kkostiuk@redhat.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Andrew Deason <adeason@sinenomine.net>,
+ Eric Blake <eblake@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH-for-10.2 3/3] target/arm/tcg: Undefine Solaris FSCALE
- definition as a kludge
-Date: Mon, 17 Nov 2025 21:38:34 +0100
-Message-ID: <20251117203834.83713-4-philmd@linaro.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20251117203834.83713-1-philmd@linaro.org>
+Subject: Re: [PATCH-for-10.2 2/3] migration/rdma: Check ntohll() availability
+ with meson
+Message-ID: <aRuVeBtzS9r3Oypr@x1.local>
 References: <20251117203834.83713-1-philmd@linaro.org>
+ <20251117203834.83713-3-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20251117203834.83713-3-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Ceerr_0vg7t6TbT4z7bABBIEEpY6K4V6cxU54mThqeI_1763415421
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,101 +122,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
- CONFIG_SOLARIS_FSCALE
+On Mon, Nov 17, 2025 at 09:38:33PM +0100, Philippe Mathieu-Daudé wrote:
+> Commit 44ce1b5d2fc ("migration/rdma: define htonll/ntohll
+> only if not predefined") tried to only include htonll/ntohll
+> replacements when their symbol is *defined*, but this doesn't
+> work, as they aren't:
+> 
+>   ../migration/rdma.c:242:17: error: static declaration of 'htonll' follows non-static declaration
+>     242 | static uint64_t htonll(uint64_t v)
+>         |                 ^~~~~~
+>   In file included from /usr/include/netinet/in.h:73,
+>                    from /usr/include/sys/socket.h:32,
+>                    from /home/f4bug/qemu/include/system/os-posix.h:30,
+>                    from /home/f4bug/qemu/include/qemu/osdep.h:176,
+>                    from ../migration/rdma.c:17:
+>   /usr/include/sys/byteorder.h:75:18: note: previous declaration of 'htonll' with type 'uint64_t(uint64_t)' {aka 'long unsigned int(long unsigned int)'}
+>      75 | extern  uint64_t htonll(uint64_t);
+>         |                  ^~~~~~
+>   ../migration/rdma.c:252:17: error: static declaration of 'ntohll' follows non-static declaration
+>     252 | static uint64_t ntohll(uint64_t v)
+>         |                 ^~~~~~
+>   /usr/include/sys/byteorder.h:76:18: note: previous declaration of 'ntohll' with type 'uint64_t(uint64_t)' {aka 'long unsigned int(long unsigned int)'}
+>      76 | extern  uint64_t ntohll(uint64_t);
+>         |                  ^~~~~~
+> 
+> Better to check the symbol availability with meson.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Solaris defines FSCALE in <sys/param.h>:
+Acked-by: Peter Xu <peterx@redhat.com>
 
-  301 /*
-  302  * Scale factor for scaled integers used to count
-  303  * %cpu time and load averages.
-  304  */
-  305 #define FSHIFT  8               /* bits to right of fixed binary point */
-  306 #define FSCALE  (1<<FSHIFT)
-
-When emulating the SVE FSCALE instruction, we defines the same name
-in decodetree format in target/arm/tcg/sve.decode:
-
-  1129:FSCALE          01100101 .. 00 1001 100 ... ..... .....    @rdn_pg_rm
-
-This leads to a definition clash:
-
-  In file included from ../target/arm/tcg/translate-sve.c:21:
-  ../target/arm/tcg/translate.h:875:17: error: pasting "trans_" and "(" does not give a valid preprocessing token
-    875 |     static bool trans_##NAME(DisasContext *s, arg_##NAME *a) \
-        |                 ^~~~~~
-  ../target/arm/tcg/translate-sve.c:4205:5: note: in expansion of macro 'TRANS_FEAT'
-   4205 |     TRANS_FEAT(NAME, FEAT, gen_gvec_fpst_arg_zpzz, name##_zpzz_fns[a->esz], a)
-        |     ^~~~~~~~~~
-  ../target/arm/tcg/translate-sve.c:4249:1: note: in expansion of macro 'DO_ZPZZ_FP'
-   4249 | DO_ZPZZ_FP(FSCALE, aa64_sve, sve_fscalbn)
-        | ^~~~~~~~~~
-  ../target/arm/tcg/translate-sve.c:4249:12: error: expected declaration specifiers or '...' before numeric constant
-   4249 | DO_ZPZZ_FP(FSCALE, aa64_sve, sve_fscalbn)
-        |            ^~~~~~
-  ../target/arm/tcg/translate.h:875:25: note: in definition of macro 'TRANS_FEAT'
-    875 |     static bool trans_##NAME(DisasContext *s, arg_##NAME *a) \
-        |                         ^~~~
-  ../target/arm/tcg/translate-sve.c:4249:1: note: in expansion of macro 'DO_ZPZZ_FP'
-   4249 | DO_ZPZZ_FP(FSCALE, aa64_sve, sve_fscalbn)
-        | ^~~~~~~~~~
-  ../target/arm/tcg/translate.h:875:47: error: pasting "arg_" and "(" does not give a valid preprocessing token
-    875 |     static bool trans_##NAME(DisasContext *s, arg_##NAME *a) \
-        |                                               ^~~~
-  ../target/arm/tcg/translate-sve.c:4205:5: note: in expansion of macro 'TRANS_FEAT'
-   4205 |     TRANS_FEAT(NAME, FEAT, gen_gvec_fpst_arg_zpzz, name##_zpzz_fns[a->esz], a)
-        |     ^~~~~~~~~~
-  ../target/arm/tcg/translate-sve.c:4249:1: note: in expansion of macro 'DO_ZPZZ_FP'
-   4249 | DO_ZPZZ_FP(FSCALE, aa64_sve, sve_fscalbn)
-        | ^~~~~~~~~~
-  In file included from ../target/arm/tcg/translate-sve.c:100:
-  libqemu-aarch64-softmmu.a.p/decode-sve.c.inc:1227:13: warning: 'trans_FSCALE' used but never defined
-   1227 | static bool trans_FSCALE(DisasContext *ctx, arg_FSCALE *a);
-        |             ^~~~~~~~~~~~
-  ../target/arm/tcg/translate-sve.c:4249:30: warning: 'sve_fscalbn_zpzz_fns' defined but not used [-Wunused-const-variable=]
-   4249 | DO_ZPZZ_FP(FSCALE, aa64_sve, sve_fscalbn)
-        |                              ^~~~~~~~~~~
-  ../target/arm/tcg/translate-sve.c:4201:42: note: in definition of macro 'DO_ZPZZ_FP'
-   4201 |     static gen_helper_gvec_4_ptr * const name##_zpzz_fns[4] = { \
-        |                                          ^~~~
-
-As a kludge, check the definition existence with meson, then undefine
-it locally in target/arm/tcg/translate-sve.c file.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- meson.build                    | 3 +++
- target/arm/tcg/translate-sve.c | 3 +++
- 2 files changed, 6 insertions(+)
-
-diff --git a/meson.build b/meson.build
-index 72edd6097a4..65dd2bc6873 100644
---- a/meson.build
-+++ b/meson.build
-@@ -2779,6 +2779,9 @@ config_host_data.set('HAVE_TCP_KEEPINTVL',
-                      #endif
-                      int main(void) { return 0; }''',
-                      name: 'Win32 TCP_KEEPINTVL'))
-+if host_os == 'sunos'
-+  config_host_data.set('CONFIG_SOLARIS_FSCALE', cc.has_header_symbol('sys/param.h', 'FSCALE'))
-+endif
- 
- # has_member
- config_host_data.set('HAVE_SIGEV_NOTIFY_THREAD_ID',
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index 07b827fa8e8..b6fd069aa0c 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -4246,6 +4246,9 @@ DO_ZPZZ_AH_FP_B16(FMAX_zpzz, aa64_sve, sve_fmax, sve_ah_fmax)
- DO_ZPZZ_FP_B16(FMINNM_zpzz, aa64_sve, sve_fminnum)
- DO_ZPZZ_FP_B16(FMAXNM_zpzz, aa64_sve, sve_fmaxnum)
- DO_ZPZZ_AH_FP(FABD, aa64_sve, sve_fabd, sve_ah_fabd)
-+#ifdef CONFIG_SOLARIS_FSCALE
-+#undef FSCALE /* Kludge for Solaris which defines FSCALE in <sys/param.h> */
-+#endif
- DO_ZPZZ_FP(FSCALE, aa64_sve, sve_fscalbn)
- DO_ZPZZ_FP(FDIV, aa64_sve, sve_fdiv)
- DO_ZPZZ_FP(FMULX, aa64_sve, sve_fmulx)
 -- 
-2.51.0
+Peter Xu
 
 

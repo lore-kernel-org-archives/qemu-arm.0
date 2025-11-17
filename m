@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D858CCEACEF
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 11:56:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E612CE8D6B
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 11:56:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vKxq9-0000TT-01; Mon, 17 Nov 2025 06:56:13 -0500
+	id 1vKxq9-0000Tn-1F; Mon, 17 Nov 2025 06:56:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vKxpf-0008S5-V5
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 06:55:44 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1vKxpe-0008RJ-Jp
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 06:55:42 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vKxpX-0005kZ-VW
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 06:55:43 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4775638d819so23925465e9.1
- for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 03:55:35 -0800 (PST)
+ id 1vKxpX-0005jn-5l
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 06:55:42 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-475ca9237c2so22850875e9.3
+ for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 03:55:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763380534; x=1763985334; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763380533; x=1763985333; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=TkBjjycuEHq7s63eouJrlIMTBjvbHE+kUgoNjQOl88I=;
- b=tBVHRdKTZC5bb1y0bj9z/1+XbsyA1FvLksE4JFJiMVHdxcl8+JNZ6eZzBr8QYZp6O1
- LeQBcKSJ8ay/tbG4K6kbVqXVqzd0GG2TL7nFeReOweiC9NbHSW2BLFjdRR/AEY6SSncE
- a0/BDhv4pHxNKQ7Ec6O5hq/vReGxEnEkmJu96KCwdcZFHEZwodcRU45oy9xtx0ZIx7CK
- 1wuLPI6Faq0u6RiHCOchInm4Ww/lLtzTvQ8surt7xWER94eKam7C8u0WdC4w2NgbSdwV
- 2EDA2DumMMYo8scQNu26UhFMaELh7PyU7nIDFIxmb/FHMmeCZS5WjfPongbQRdan5ec8
- 77IA==
+ bh=t6HSnkvpjHkS7tonHb5zKH2VLJ9Qc9MClLALRrKy+8k=;
+ b=eTwb9++X2TSgaiF/IDO1JHMOUNyWBIOCCo5TwVN1gbsb0m0vX3KgMlp7M9xBF94YoR
+ ZGtrRa35eceJCJQrEv5JggDGWcT7b2qiJfXD8mGnDF6TnFKi0r6dRVpzH5gggB+tsA24
+ iBHQXGAzZQbf+hDv9pG+r9rrZL35cWmBRk9Ib4MwMPSpd6E27VSmRAX6Z4f5jo68Hi8R
+ ovyLDasrEM3r/0fs0l97cF73fo8gT2aqjN/Vzc3929e2nMHoRKFQPxb10ZbwGuHF+W80
+ wBcwTCEnZOWlF74Wd+pkuMw66PMLaR2x6PiqO2Ud0iwgNT2uVOaISQlnl+dtQBjpy1L6
+ roGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763380534; x=1763985334;
+ d=1e100.net; s=20230601; t=1763380533; x=1763985333;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=TkBjjycuEHq7s63eouJrlIMTBjvbHE+kUgoNjQOl88I=;
- b=nR+Y08snUONvPwpQJHCWgkPF0kaxSPS/Mj/hBH8KDpj4Pw1R9Cm8kVAtfAiOEpi73h
- D4Qvpx5MWXYH9WPnY+UgPrsryV/sID62VpR6Cqdnu/znPC+CLQgkaHU/5Ao+4x2cO5Rz
- xApmRzgLa3GshTk4NHu4oRvzDZ8DrL95xDT3CVk4h+km9S5bc6mVa+Y6pBvZTznAVBPR
- 6wJYETUhdP2BnLoGkQACRo/k9MAEhxVRDjodq2FToBPyXB5lu6Lr8Jcv5ffWHMfO33um
- UK+PoevN2DveCUrfYyAPUD3YYnHfjdi58DhsXbM/sG1RrS09d43pLTUpoRQ4/RhEdode
- 30eA==
+ bh=t6HSnkvpjHkS7tonHb5zKH2VLJ9Qc9MClLALRrKy+8k=;
+ b=h1zB+jdBLSrQFhtjifd5fBHgW/6SYoTuGviwshH58TJAI3cet4fc9ApLIwKqrSwUgk
+ vCMfNESsRIUX8Bqe8GaqdUXRvPLE0l9ZyvGVhUQNdmuylfrVwny7WNCgiDiBCO6Y+vp9
+ KGwEDvpvmN6t9YgxXALQJo/WHO8uacvLub1qR0KGmCHwitVyPzphTlkOPw23L9JGJuGK
+ 2p+ClRG9jZpHqoaaPY9xy9yYMg+j3ZR3hiCLHud9yOQJUCEDSoiY84ax2psflVYmF3Ab
+ l8UE4YItCTYfu4btt8lcl0QGPO82PpK9oHHu7cgD6JX+nAVoSkpZGJJ1U8QTrrteWTQB
+ Axfw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVtwcg1O+VhpAw+StjdfEgHSwc5Qk0WiB+SYMD1gIw6iFbFTRNqd1R4yadkrB6w3QDeN3MNjZUzmw==@nongnu.org
-X-Gm-Message-State: AOJu0Yxwc+dR5n4gTTBFvstwGEZ7YpkEEsrVSaeXdep6EXP94lXIFf8f
- sBQafUaOODRjs6576sODg+gZTqS6z13vJDa6zIQ+pJXoz9uu6iiA9q7rTLUjTzlabuA=
-X-Gm-Gg: ASbGncvWbBJ/2q/fEfshLU/+K+FYvG4Pqoxj+M56doCmIcZqiDk78gbZwO0rp3be1Av
- I0aoTJ/+0YttbygJmGjWh14hcatKY3apaPmJieLhnNP7V7a+7hs/HeFYMkRhQiVuus9D7mXtnwb
- V5rbUAvMxByex1jAoLw5O4gbzhYyyJrtuyntDf4g4jO8sXOCww4b7qu6MMtNCJabDGRsCAjbK3R
- u5Pxih6VmhJjhXy/D7CWO+c/qzy3xuZJC3Fs8NlNaDuP6eZCwd35t51AtdjApECyJC9H0KN6pS1
- BQgRWObBcn5dubXS1p3GLYlxmutkc6cdqJqCo9KjbgDeBixg2fFuHZl/VwtinDBWuOupeO0l+De
- jRCKzzTMCeOz4m1ov3qBSnqXgHEgWyHw3RyYKPUBqd1Y/ezgWOomTJal2c4HcuRbSzo3soxtFMU
- 3L
-X-Google-Smtp-Source: AGHT+IEkU+aIogpO7d9dF5Xsyays0qnG9yDmKpr2QhbmQCEdeMh5d7DXHaxMTwqHSCTkFXZnvC43AQ==
-X-Received: by 2002:a05:600c:c177:b0:46f:d682:3c3d with SMTP id
- 5b1f17b1804b1-4778fe683d6mr105748855e9.13.1763380534468; 
- Mon, 17 Nov 2025 03:55:34 -0800 (PST)
+ AJvYcCWIj00cMOnCsoTLRt5SboEqpeiuQquxNa7X9J/8prjTmt8kGc7Xfd3Lxh2ekGiH3RLH+XB4114Wxg==@nongnu.org
+X-Gm-Message-State: AOJu0Yxfzv1pbJnagz+1jVU92NG7DgtQCTL6vqV2SBCCeLgazHaeDY3r
+ Iyr6Gz0S7Wktr4GpB1KIQUtV4yxoXVuoCL5aH0PH3tq49W0R144OUHu9Qnx4WFA8LUc=
+X-Gm-Gg: ASbGncsNvvrAqmi511VeVsd/VWWLiSY3elLG15loTiet/5m5dK+yvL8JyYUGTrrbk3g
+ e1i9jlEr3dm0Vrl+KER2k6jTtWHkjFPthTMCTRIAPs/D3ImiObCdj5n8mmMMeZmkUdBJVoYq6zb
+ x8x8k/zCN+47b3/Odd2zeSohAQlMYo12++DK+bF9kGtvywXhrK3tRTfywQX508djv+zNVhMsEXa
+ ScmNi4JtiFxgPRx+264EHSkcRY5vmDZW8OkN3SoMfvieanxDXhOYm2jqpSJC41xtUbvwbOb8zAR
+ YZ/eWKjnUD7m81KxOMapEhKaT/5yK53kn0qZuplXhOX5nucLa93x8dBP3+v/YP9iIYCcCaSBipk
+ weX15jO8H8wLiCd88C+NSSnd9plaGvW9VQ0uC004ICwDFw4ecH6SmnPp0tCLhqX4nAOvkeikjSq
+ EwnY4/lHYMIBA=
+X-Google-Smtp-Source: AGHT+IGqDbB1aBZg+Atb/z9ha5gUFE7YiqK8g5oU2lZ2KS67jdaSS6NvTIX/311+4j55ecLpjl9IGQ==
+X-Received: by 2002:a05:600c:4585:b0:477:7725:c16a with SMTP id
+ 5b1f17b1804b1-4778fe5717amr117639735e9.10.1763380533202; 
+ Mon, 17 Nov 2025 03:55:33 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47787e2bcf9sm305417615e9.3.2025.11.17.03.55.29
+ 5b1f17b1804b1-47787e8e6acsm315026085e9.9.2025.11.17.03.55.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Mon, 17 Nov 2025 03:55:32 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id C01065FC43;
+ by draig.lan (Postfix) with ESMTP id 8FC625FC09;
  Mon, 17 Nov 2025 11:55:25 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -85,18 +85,17 @@ Cc: Ed Maste <emaste@freebsd.org>,
  Dmitry Osipenko <dmitry.osipenko@collabora.com>, qemu-arm@nongnu.org,
  Zhao Liu <zhao1.liu@intel.com>, qemu-s390x@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v3 15/18] gitlab: suppress custom runners being triggered by
- schedule
-Date: Mon, 17 Nov 2025 11:55:20 +0000
-Message-ID: <20251117115523.3993105-16-alex.bennee@linaro.org>
+Subject: [PATCH v3 13/18] gitlab: use template for ubuntu-24.04-s390x jobs
+Date: Mon, 17 Nov 2025 11:55:18 +0000
+Message-ID: <20251117115523.3993105-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251117115523.3993105-1-alex.bennee@linaro.org>
 References: <20251117115523.3993105-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,57 +118,230 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Otherwise the mere presence of the RUNNER env vars is enough to
-trigger the jobs.
+Most of the test is pure boilerplate so to save ourselves from
+repetition move all the main bits into a minimal copy of
+native_build_job_template but without the caching.
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-ID: <20251113102525.1255370-16-alex.bennee@linaro.org>
+We keep all the current allow_fail, manual and configure setups but do
+take the opportunity to replace the inline nproc calls to using a
+common JOBS variable. We also fix the namespace check to use the
+QEMU_CI_UPSTREAM variable.
+
+Message-ID: <20251113102525.1255370-14-alex.bennee@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- .gitlab-ci.d/custom-runners/debian-13-ppc64le.yml    | 2 +-
- .gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml | 2 +-
- .gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml   | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 
-diff --git a/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
-index e088c3b67b7..40b1f408f90 100644
---- a/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
-+++ b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
-@@ -11,7 +11,7 @@
-     - ppc64le
-   rules:
-     - if: '$CI_PROJECT_NAMESPACE == $QEMU_CI_UPSTREAM && $CI_COMMIT_BRANCH =~ /^staging/'
--    - if: "$PPC64LE_RUNNER_AVAILABLE"
-+    - if: '$PPC64LE_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-   before_script:
-     - source scripts/ci/gitlab-ci-section
-     - section_start setup "Pre-script setup"
-diff --git a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml b/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
-index 6f950baee0d..c8adb8171c0 100644
---- a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
-+++ b/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
-@@ -11,7 +11,7 @@
-     - aarch64
-   rules:
-     - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
--    - if: "$AARCH64_RUNNER_AVAILABLE"
-+    - if: '$AARCH64_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-   before_script:
-     - source scripts/ci/gitlab-ci-section
-     - section_start setup "Pre-script setup"
+---
+v3
+  - use the QEMU_CI_UPSTREAM variable
+---
+ .../custom-runners/ubuntu-24.04-s390x.yml     | 185 +++++++-----------
+ 1 file changed, 70 insertions(+), 115 deletions(-)
+
 diff --git a/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml b/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
-index 2fc940e127c..fb093d05b5d 100644
+index 45dbee17880..2fc940e127c 100644
 --- a/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
 +++ b/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
-@@ -11,7 +11,7 @@
-     - s390x
-   rules:
-     - if: '$CI_PROJECT_NAMESPACE == $QEMU_CI_UPSTREAM && $CI_COMMIT_BRANCH =~ /^staging/'
--    - if: "$S390X_RUNNER_AVAILABLE"
-+    - if: '$S390X_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE != "schedule"'
-   before_script:
-     - source scripts/ci/gitlab-ci-section
-     - section_start setup "Pre-script setup"
+@@ -2,129 +2,84 @@
+ # setup by the scripts/ci/setup/ubuntu/build-environment.yml task
+ # "Install basic packages to build QEMU on Ubuntu 24.04"
+ 
++.ubuntu_s390x_template:
++  extends: .custom_runner_template
++  needs: []
++  stage: build
++  tags:
++    - ubuntu_24.04
++    - s390x
++  rules:
++    - if: '$CI_PROJECT_NAMESPACE == $QEMU_CI_UPSTREAM && $CI_COMMIT_BRANCH =~ /^staging/'
++    - if: "$S390X_RUNNER_AVAILABLE"
++  before_script:
++    - source scripts/ci/gitlab-ci-section
++    - section_start setup "Pre-script setup"
++    - JOBS=$(expr $(nproc) - 1)
++    - section_end setup
++  script:
++    - mkdir build
++    - cd build
++    - section_start configure "Running configure"
++    - ../configure $CONFIGURE_ARGS ||
++        { cat config.log meson-logs/meson-log.txt; exit 1; }
++    - section_end configure
++    - section_start build "Building QEMU"
++    - make --output-sync -j"$JOBS"
++    - section_end build
++    - section_start test "Running tests"
++    - if test -n "$MAKE_CHECK_ARGS";
++      then
++        make -j"$JOBS" $MAKE_CHECK_ARGS ;
++      fi
++    - section_end test
++
+ ubuntu-24.04-s390x-all-linux:
+- extends: .custom_runner_template
+- needs: []
+- stage: build
+- tags:
+- - ubuntu_24.04
+- - s390x
+- rules:
+- - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+- - if: "$S390X_RUNNER_AVAILABLE"
+- script:
+- - mkdir build
+- - cd build
+- - ../configure --enable-debug --disable-system --disable-tools --disable-docs
+-   || { cat config.log meson-logs/meson-log.txt; exit 1; }
+- - make --output-sync -j`nproc`
+- - make --output-sync check-tcg
+- - make --output-sync -j`nproc` check
++  extends: .ubuntu_s390x_template
++  needs: []
++  variables:
++    CONFIGURE_ARGS: --enable-debug --disable-system --disable-tools --disable-docs
++    MAKE_CHECK_ARGS: check-tcg check
+ 
+ ubuntu-24.04-s390x-all-system:
+- extends: .custom_runner_template
+- needs: []
+- stage: build
+- tags:
+- - ubuntu_24.04
+- - s390x
+- timeout: 75m
+- rules:
+- - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+-   allow_failure: true
+- - if: "$S390X_RUNNER_AVAILABLE"
+-   allow_failure: true
+- script:
+- - mkdir build
+- - cd build
+- - ../configure --disable-user
+-   || { cat config.log meson-logs/meson-log.txt; exit 1; }
+- - make --output-sync -j`nproc`
+- - make --output-sync -j`nproc` check
++  extends: .ubuntu_s390x_template
++  needs: []
++  variables:
++    CONFIGURE_ARGS: --disable-user
++    MAKE_CHECK_ARGS: check
++  allow_failure: true
+ 
+ ubuntu-24.04-s390x-alldbg:
+- extends: .custom_runner_template
+- needs: []
+- stage: build
+- tags:
+- - ubuntu_24.04
+- - s390x
+- rules:
+- - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+-   when: manual
+-   allow_failure: true
+- - if: "$S390X_RUNNER_AVAILABLE"
+-   when: manual
+-   allow_failure: true
+- script:
+- - mkdir build
+- - cd build
+- - ../configure --enable-debug
+-   || { cat config.log meson-logs/meson-log.txt; exit 1; }
+- - make clean
+- - make --output-sync -j`nproc`
+- - make --output-sync -j`nproc` check
++  extends: .ubuntu_s390x_template
++  needs: []
++  variables:
++    CONFIGURE_ARGS: --enable-debug
++    MAKE_CHECK_ARGS: check
++  allow_failure: true
++  when: manual
+ 
+ ubuntu-24.04-s390x-clang:
+- extends: .custom_runner_template
+- needs: []
+- stage: build
+- tags:
+- - ubuntu_24.04
+- - s390x
+- rules:
+- - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+-   when: manual
+-   allow_failure: true
+- - if: "$S390X_RUNNER_AVAILABLE"
+-   when: manual
+-   allow_failure: true
+- script:
+- - mkdir build
+- - cd build
+- - ../configure --cc=clang --cxx=clang++ --enable-ubsan
+-   || { cat config.log meson-logs/meson-log.txt; exit 1; }
+- - make --output-sync -j`nproc`
+- - make --output-sync -j`nproc` check
++  extends: .ubuntu_s390x_template
++  needs: []
++  variables:
++    CONFIGURE_ARGS: --cc=clang --cxx=clang++ --enable-ubsan
++    MAKE_CHECK_ARGS: check
++  allow_failure: true
++  when: manual
+ 
+ ubuntu-24.04-s390x-tci:
+- needs: []
+- stage: build
+- tags:
+- - ubuntu_24.04
+- - s390x
+- rules:
+- - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+-   when: manual
+-   allow_failure: true
+- - if: "$S390X_RUNNER_AVAILABLE"
+-   when: manual
+-   allow_failure: true
+- script:
+- - mkdir build
+- - cd build
+- - ../configure --enable-tcg-interpreter
+-   || { cat config.log meson-logs/meson-log.txt; exit 1; }
+- - make --output-sync -j`nproc`
++  extends: .ubuntu_s390x_template
++  needs: []
++  variables:
++    CONFIGURE_ARGS: --enable-tcg-interpreter
++  allow_failure: true
++  when: manual
+ 
+ ubuntu-24.04-s390x-notcg:
+- extends: .custom_runner_template
+- needs: []
+- stage: build
+- tags:
+- - ubuntu_24.04
+- - s390x
+- rules:
+- - if: '$CI_PROJECT_NAMESPACE == "qemu-project" && $CI_COMMIT_BRANCH =~ /^staging/'
+-   when: manual
+-   allow_failure: true
+- - if: "$S390X_RUNNER_AVAILABLE"
+-   when: manual
+-   allow_failure: true
+- script:
+- - mkdir build
+- - cd build
+- - ../configure --disable-tcg
+-   || { cat config.log meson-logs/meson-log.txt; exit 1; }
+- - make --output-sync -j`nproc`
+- - make --output-sync -j`nproc` check
++  extends: .ubuntu_s390x_template
++  needs: []
++  variables:
++    CONFIGURE_ARGS: --disable-tcg
++    MAKE_CHECK_ARGS: check
++  allow_failure: true
++  when: manual
 -- 
 2.47.3
 

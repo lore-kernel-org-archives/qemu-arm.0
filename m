@@ -4,98 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C639DCE8D6B
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 10:38:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31A06CE8D6B
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 11:56:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vKwcQ-0002iM-DD; Mon, 17 Nov 2025 05:37:58 -0500
+	id 1vKxpY-0008Iw-Nr; Mon, 17 Nov 2025 06:55:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vKwcP-0002hz-2g
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 05:37:57 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1vKxpX-0008Gq-4j
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 06:55:35 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vKwcN-0006Yb-Ay
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 05:37:56 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-42b3c965cc4so2059881f8f.0
- for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 02:37:54 -0800 (PST)
+ id 1vKxpT-0005gz-2k
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 06:55:34 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-47790b080e4so14339245e9.3
+ for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 03:55:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763375873; x=1763980673; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1763380529; x=1763985329; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=gt7KXN0kf51wppv42sreiYYOAhM1z4v1+z7/C1VrtNA=;
- b=KF3B9XCObKey6HD9OOuKm6wbxNBVokQTA8P9ORO2OYAnwIL82k4rTmqfc824hs7FbZ
- iovXWFd/WSCi7c5RMkaE1nXtZax6UqY2jU/C8HzfxjsXFXlS2CE3cLwboBJYmhqpyA/F
- iUiqm1z8tzPDBzKprRmaedrWOgHztW9494JexsOIpXm0p7tc63ODbNLxofiyBD4IJma+
- pGDG4crSk0mhp7nHxS86wZw3ueNAq4kOJiyomIQ6Er/FSSVqsRvwH37V6L5rmK7gREqq
- t/584aEAnTPZsK8lbBaueoS+oYTEpbwzOZxcMA5ON3ForTfq91VrdjLFfpUJamDLHfCQ
- 20ww==
+ bh=xqHWnAkE618EWgRbik2E2u5ZOc1cs1N5HVjAC1I4HPI=;
+ b=HIlHUznubxr3Czm5CdN8rAhCFt5yP2AEWu/8+g2/AlhCNULzRf+3wPrwavfgp1fka+
+ KMKXgIVxVb8M9Rmc4diKnu+2dvp6M2kLbz1gtlIb6pXrRjySiKNJmmxnNi9Rfouxnj0E
+ eNl3m0vbi99FdIJ7q/xAP8TYp5YTxNEpS6Ta0I84tGWBa35NuyfDAeBnPSmwIqcq8bJv
+ /w55T0kNiQV2ZYFfVEqtlvRoSNCYZIHQgU6S2zK7PEN62ejGb0x99xwTbN4MTm9cN4wi
+ UvohQz/PmlYW7B1tUe6STIkXzWJtT0/F+x6YWv+0J+8uxqvR9kPuy401gQJEUVCWWFee
+ yfkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763375873; x=1763980673;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=gt7KXN0kf51wppv42sreiYYOAhM1z4v1+z7/C1VrtNA=;
- b=BU2gDbB/b7JbP33hjJX8rxzfJIFT8EqWqjlAn6mKpKIkHA7LtOUG+K5haMmrWL/T/n
- RRIGJNx+tMuml/eQTo/BA+KFRUoRpRWpgP/nRWbwh4LiXDgMy6oTvl98w7ZorXOUt1JT
- A4KUqoxYwOHfYiuU+vTtXSb6H8kTG6Y+p6zyAUQtkU3t8Ci+HcCV1AO0w1NjRQOol5Dy
- lhEySxLs9GLuboQOsHPo1FvEi9OCGxeXORLUAHfJE9/UtvDlfv4jV8PqpzQj781K+S/F
- H2+6/HzbukEZ55vzC9lLiG4hBuIxqJiTYH8EK8B1MOKD4AvoXzX0f3HuRhWoXLeWIDlQ
- rO2w==
+ d=1e100.net; s=20230601; t=1763380529; x=1763985329;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=xqHWnAkE618EWgRbik2E2u5ZOc1cs1N5HVjAC1I4HPI=;
+ b=TYMkMUdH1t44ENqr1sZWMy59l3xKuP5Gx4pZn03biLY5SccWw2HlU1xPpOzEtiW/Rq
+ JUgVU5urNKJfBo04Q8Sl7yVa00u63v6vpADH7vSogXmVWkihDT2HtTG0X8Hz9/+K4Yec
+ F+ekWPrnD5e/dhxNJuzTomGspN3QmXaYOCn/ydr9EaezDwD7XKsGqFRlRPzRDkSA//9W
+ UMKubQGCZ7T6rJnEuOUJ2aqiDr7VYKUOUCKCe+JIglvtPV6nh68IoCWLQuH5VlpJ8fnq
+ lMJsfeSIZn51c+7S0bTh1Qt4OylW2VDksKLqbC6Hm4zMLcqwyunLf8xRXhOywsY9XvK3
+ v4kQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCURHt3lwxXQ69m73n6vwC9uTd9wfrD6RA6hqk+IJyTAxgCsQpGw8LeJWkcPznT6v32zPUO1LvMbGQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxheYNq/qtiQ8Jhhu5BTLCn1rs1lGvgv5BmHzbKNBjxVlwMfJT1
- BDBITqt3rbC8vx38/Ei4TQF0aUv8t6ONdbPsfXseWzH6jjVvunWmJQ4YmOZExznLfUE=
-X-Gm-Gg: ASbGncte9WA89vDVl90BqMlNO4etpi8Yz5LRdptn8qxWIJinTyYDrv0Pza8xz1VPGrj
- Ckv8I49ARdTeAX1KGVYpzSPgArFUqWQpNuY+4sxcxk7yw1OJjE8ZTqZANCtjYp3hDs1C89pMdWr
- ZEG9WEwDmDPYfiuAyDzrT5lcTmHtNjXjNBjbewfrSrv9D87ChAPZfhzBeJ78dK4eUsQOpQtIc9Y
- 0SXJYa4L95CYiBWTjr3NedrG8eS47oioG+ihQPqAT28ndtDcFsKmjq0mNqdtp7U5YGWSs6PEBWL
- hPC4c45bAWmJp1EoixivJYUZ8E2qEL7BjB4+BwZEH8yiCjhlji7uTjeYCcT5WZPYI7jc7uju1mO
- djT3l5fTrPoHWPs2x/P8fpt7YuNKw+/cco9yZggvki3eOOOvc5+90GApH4x8q+3OZfsGa/WKlXk
- lPAFICgjfHZGo=
-X-Google-Smtp-Source: AGHT+IEM5VmR/GqIW+79w0HlLSXqMLmnMI8y+5EWXewb/sjOLZOLIRjGIMEhqHzmqcyE3N5EIr7bXg==
-X-Received: by 2002:a05:6000:200c:b0:426:fb27:974a with SMTP id
- ffacd0b85a97d-42b52844e62mr14896404f8f.27.1763375873313; 
- Mon, 17 Nov 2025 02:37:53 -0800 (PST)
+ AJvYcCWprzn9Ro4o9Pxlbufbyi/QU+6RWeFQ/hn7uXRcpfm8fTzQ7BXXtgabr/Dnw7kZLxXKslDcBsHAQA==@nongnu.org
+X-Gm-Message-State: AOJu0Yywm91bAysr2X1LaRti0dC2nEr99mKmvTqVjXU9HpnmqPEdmYGG
+ +j2CfWqKFPwFgHIiCCgD+fjGcEUbAuQm1igYl+an0SLbRooEmXQMoaQS+mnnXFSvrtk=
+X-Gm-Gg: ASbGncvO9TUoTZ/54irl2iyc565qoEIpFWrAx3iVbIZbd4JsN4uS7Igc0UB3TWykXNv
+ 7ulsi094nBeEKHtB/LfTSumFPm7BEcs2knjENYbfQTNVTNI5jWKtXAIqalLCUGkKkDh8pw1ffeF
+ /lWSR4Cj4nrEPDdYzKh/pYXONm3p3vbYco2pigh2DuTSvoVIT2eGCv9b3TmJOnBCntABXWMsjqp
+ fFxjpIXj0TRvaUJkn0VCMXmcU9kDUWEaddWOJPEh0SWickNNXNjvUS6ElXdq5s9n5jt2MkgFNWm
+ cno1bl+tyfKFad/j2zeJwAcISfrYmpv7Iw7cfRLfjLsMdGWDUpvmmt2SUQbpgULchbNRFjbH7wc
+ BTJL16m6O2ecaZ4/Uu0BOzSMt3hI9m0P1/p/4djp9rWNPZPuHwRyX9gPwasxESOcRNxCX0v0d3z
+ v7
+X-Google-Smtp-Source: AGHT+IGR/obW2vE0r8t6POXGJ+bM/OuihSLT0ClVR96JK/weQvLyZonVZ6oPew/D1ImB76CYHq2eJg==
+X-Received: by 2002:a05:600c:a49:b0:475:e007:baf1 with SMTP id
+ 5b1f17b1804b1-4778feadb6dmr104271715e9.34.1763380529203; 
+ Mon, 17 Nov 2025 03:55:29 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42b53e7ae16sm25667680f8f.3.2025.11.17.02.37.52
+ 5b1f17b1804b1-47787e35b7esm311848305e9.4.2025.11.17.03.55.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Nov 2025 02:37:52 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id EA6645F804;
- Mon, 17 Nov 2025 10:37:51 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org,  Paul Durrant <paul@xen.org>,  Dmitry Osipenko
- <dmitry.osipenko@collabora.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,  Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- Gustavo Romero <gustavo.romero@linaro.org>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Zhao Liu <zhao1.liu@intel.com>,  Kohei Tokunaga
- <ktokunaga.mail@gmail.com>,  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Thomas Huth <thuth@redhat.com>,  BALATON Zoltan <balaton@eik.bme.hu>,
- Peter Maydell <peter.maydell@linaro.org>,  qemu-arm@nongnu.org,
- qemu-s390x@nongnu.org,  Li-Wen Hsu <lwhsu@freebsd.org>,  David Woodhouse
- <dwmw2@infradead.org>,  Ed Maste <emaste@freebsd.org>
-Subject: Re: [PATCH v2 16/18] gitlab: make custom runners need QEMU_CI to run
-In-Reply-To: <aRr3WQfFnD1gpXdH@redhat.com> ("Daniel P. =?utf-8?Q?Berrang?=
- =?utf-8?Q?=C3=A9=22's?= message of
- "Mon, 17 Nov 2025 10:22:17 +0000")
-References: <20251113102525.1255370-1-alex.bennee@linaro.org>
- <20251113102525.1255370-17-alex.bennee@linaro.org>
- <aRr3WQfFnD1gpXdH@redhat.com>
-User-Agent: mu4e 1.12.14-pre3; emacs 30.1
-Date: Mon, 17 Nov 2025 10:37:51 +0000
-Message-ID: <87y0o5kkqo.fsf@draig.linaro.org>
+ Mon, 17 Nov 2025 03:55:28 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id C0F8A5F929;
+ Mon, 17 Nov 2025 11:55:24 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Ed Maste <emaste@freebsd.org>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Thomas Huth <thuth@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ David Woodhouse <dwmw2@infradead.org>, Paul Durrant <paul@xen.org>,
+ Gustavo Romero <gustavo.romero@linaro.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Kohei Tokunaga <ktokunaga.mail@gmail.com>, Li-Wen Hsu <lwhsu@freebsd.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Dmitry Osipenko <dmitry.osipenko@collabora.com>, qemu-arm@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>, qemu-s390x@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 05/18] docs/about/emulation: update assets for uftrace
+ plugin documentation
+Date: Mon, 17 Nov 2025 11:55:10 +0000
+Message-ID: <20251117115523.3993105-6-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20251117115523.3993105-1-alex.bennee@linaro.org>
+References: <20251117115523.3993105-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42f.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,112 +119,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-> On Thu, Nov 13, 2025 at 10:25:22AM +0000, Alex Benn=C3=A9e wrote:
->> In addition to not being triggered by schedule we should follow the
->> same rules about QEMU_CI. One day we may figure out how to fold the
->> custom runner rules into the .base_job_template but today is not that
->> day.
->>=20
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->>  .gitlab-ci.d/custom-runners/debian-13-ppc64le.yml    | 2 +-
->>  .gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml | 2 +-
->>  .gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml   | 2 +-
->>  3 files changed, 3 insertions(+), 3 deletions(-)
->>=20
->> diff --git a/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml b/.gitlab=
--ci.d/custom-runners/debian-13-ppc64le.yml
->> index 6492d013de8..be73c14b95e 100644
->> --- a/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
->> +++ b/.gitlab-ci.d/custom-runners/debian-13-ppc64le.yml
->> @@ -11,7 +11,7 @@
->>      - ppc64le
->>    rules:
->>      - if: '$CI_PROJECT_NAMESPACE =3D=3D "qemu-project" && $CI_COMMIT_BR=
-ANCH =3D~ /^staging/'
->> -    - if: '$PPC64LE_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE !=3D "sched=
-ule"'
->> +    - if: '$PPC64LE_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE !=3D "sched=
-ule" && $QEMU_CI'
->>    before_script:
->>      - source scripts/ci/gitlab-ci-section
->>      - section_start setup "Pre-script setup"
->> diff --git a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml b/.git=
-lab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
->> index c8adb8171c0..7a30a18d0bc 100644
->> --- a/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
->> +++ b/.gitlab-ci.d/custom-runners/ubuntu-24.04-aarch64.yml
->> @@ -11,7 +11,7 @@
->>      - aarch64
->>    rules:
->>      - if: '$CI_PROJECT_NAMESPACE =3D=3D "qemu-project" && $CI_COMMIT_BR=
-ANCH =3D~ /^staging/'
->> -    - if: '$AARCH64_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE !=3D "sched=
-ule"'
->> +    - if: '$AARCH64_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE !=3D "sched=
-ule" && $QEMU_CI'
->>    before_script:
->>      - source scripts/ci/gitlab-ci-section
->>      - section_start setup "Pre-script setup"
->> diff --git a/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml b/.gitla=
-b-ci.d/custom-runners/ubuntu-24.04-s390x.yml
->> index fcb49ae884d..c30816a806e 100644
->> --- a/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
->> +++ b/.gitlab-ci.d/custom-runners/ubuntu-24.04-s390x.yml
->> @@ -11,7 +11,7 @@
->>      - s390x
->>    rules:
->>      - if: '$CI_PROJECT_NAMESPACE =3D=3D "qemu-project" && $CI_COMMIT_BR=
-ANCH =3D~ /^staging/'
->
-> As a separate commit this should be changed to
->
->    - if: '$CI_PROJECT_NAMESPACE =3D=3D $QEMU_CI_UPSTREAM && $CI_COMMIT_BR=
-ANCH =3D~ /^staging/'
->
-> $QEMU_CI_UPSTREAM defaults to 'qemu-project' but devs can override it
-> to point to their own repo, in order to test operation as if it were
-> in upstream.
+Linaro is discontinuing its fileserver service by end of the year.
+Migrate assets to GitHub.
 
-I'll wrap this in into the template clean-up as that also cleans up
-other bits.
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-ID: <20251113102525.1255370-7-alex.bennee@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ docs/about/emulation.rst | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
->
->> -    - if: '$S390X_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE !=3D "schedul=
-e"'
->> +    - if: '$S390X_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE !=3D "schedul=
-e" && $QEMU_CI'
->>    before_script:
->>      - source scripts/ci/gitlab-ci-section
->>      - section_start setup "Pre-script setup"
->
-> This means the job will never get run by default in upstream context
-> unless QEMU_CI is set. This is different from base.yml where in upstream
-> context, jobs all run by default.
->
-> ie in upstream we implicitly have QEMU_CI=3D=3D2 by default, while in
-> forks we implicitly have QEMU_CI=3D=3D0 / unset.
->
-> To get this matching better requires:
->
->  rules:
->    - if: '$CI_PROJECT_NAMESPACE =3D=3D $QEMU_CI_UPSTREAM && $CI_COMMIT_BR=
-ANCH =3D~ /^staging/'
->    - if: '$QEMU_CI !=3D "1" && $QEMU_CI !=3D "2" && $CI_PROJECT_NAMESPACE=
- !=3D $QEMU_CI_UPSTREAM'
->      when: never
->    - if: '$S390X_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE !=3D "schedule" =
-&& $QEMU_CI =3D=3D "1"'
->      when: manual
->    - if: '$S390X_RUNNER_AVAILABLE && $CI_PIPELINE_SOURCE !=3D "schedule"'
->
->
-> With regards,
-> Daniel
+diff --git a/docs/about/emulation.rst b/docs/about/emulation.rst
+index 92c219119e8..4a7d1f41780 100644
+--- a/docs/about/emulation.rst
++++ b/docs/about/emulation.rst
+@@ -886,24 +886,24 @@ As an example, we can trace qemu itself running git::
+     $ uftrace dump --chrome | gzip > ~/qemu_aarch64_git_help.json.gz
+ 
+ For convenience, you can download this trace `qemu_aarch64_git_help.json.gz
+-<https://fileserver.linaro.org/s/N8X8fnZ5yGRZLsT/download/qemu_aarch64_git_help.json.gz>`_.
++<https://github.com/pbo-linaro/qemu-assets/raw/refs/heads/master/qemu-uftrace/qemu_aarch64_git_help.json.gz>`_.
+ Download it and open this trace on https://ui.perfetto.dev/. You can zoom in/out
+ using :kbd:`W`, :kbd:`A`, :kbd:`S`, :kbd:`D` keys.
+ Some sequences taken from this trace:
+ 
+ - Loading program and its interpreter
+ 
+-.. image:: https://fileserver.linaro.org/s/fie8JgX76yyL5cq/preview
++.. image:: https://github.com/pbo-linaro/qemu-assets/blob/master/qemu-uftrace/loader_exec.png?raw=true
+    :height: 200px
+ 
+ - open syscall
+ 
+-.. image:: https://fileserver.linaro.org/s/rsXPTeZZPza4PcE/preview
++.. image:: https://github.com/pbo-linaro/qemu-assets/blob/master/qemu-uftrace/open_syscall.png?raw=true
+    :height: 200px
+ 
+ - TB creation
+ 
+-.. image:: https://fileserver.linaro.org/s/GXY6NKMw5EeRCew/preview
++.. image:: https://github.com/pbo-linaro/qemu-assets/blob/master/qemu-uftrace/tb_translation.png?raw=true
+    :height: 200px
+ 
+ It's usually better to use ``uftrace record`` directly. However, tracing
+@@ -916,7 +916,7 @@ Example system trace
+ 
+ A full trace example (chrome trace, from instructions below) generated from a
+ system boot can be found `here
+-<https://fileserver.linaro.org/s/WsemLboPEzo24nw/download/aarch64_boot.json.gz>`_.
++<https://github.com/pbo-linaro/qemu-assets/raw/refs/heads/master/qemu-uftrace/aarch64_boot.json.gz>`_.
+ Download it and open this trace on https://ui.perfetto.dev/. You can see code
+ executed for all privilege levels, and zoom in/out using
+ :kbd:`W`, :kbd:`A`, :kbd:`S`, :kbd:`D` keys. You can find below some sequences
+@@ -924,27 +924,27 @@ taken from this trace:
+ 
+ - Two first stages of boot sequence in Arm Trusted Firmware (EL3 and S-EL1)
+ 
+-.. image:: https://fileserver.linaro.org/s/kkxBS552W7nYESX/preview
++.. image:: https://github.com/pbo-linaro/qemu-assets/blob/master/qemu-uftrace/bl3_to_bl1.png?raw=true
+    :height: 200px
+ 
+ - U-boot initialization (until code relocation, after which we can't track it)
+ 
+-.. image:: https://fileserver.linaro.org/s/LKTgsXNZFi5GFNC/preview
++.. image:: https://github.com/pbo-linaro/qemu-assets/blob/master/qemu-uftrace/uboot.png?raw=true
+    :height: 200px
+ 
+ - Stat and open syscalls in kernel
+ 
+-.. image:: https://fileserver.linaro.org/s/dXe4MfraKg2F476/preview
++.. image:: https://github.com/pbo-linaro/qemu-assets/blob/master/qemu-uftrace/stat.png?raw=true
+    :height: 200px
+ 
+ - Timer interrupt
+ 
+-.. image:: https://fileserver.linaro.org/s/TM5yobYzJtP7P3C/preview
++.. image:: https://github.com/pbo-linaro/qemu-assets/blob/master/qemu-uftrace/timer_interrupt.png?raw=true
+    :height: 200px
+ 
+ - Poweroff sequence (from kernel back to firmware, NS-EL2 to EL3)
+ 
+-.. image:: https://fileserver.linaro.org/s/oR2PtyGKJrqnfRf/preview
++.. image:: https://github.com/pbo-linaro/qemu-assets/blob/master/qemu-uftrace/poweroff.png?raw=true
+    :height: 200px
+ 
+ Build and run system example
+-- 
+2.47.3
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
 

@@ -4,95 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C277CEBF61
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 15:54:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05680CEACEF
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 16:01:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vL1VC-0003x3-BK; Mon, 17 Nov 2025 10:50:50 -0500
+	id 1vL1eQ-0000bo-V5; Mon, 17 Nov 2025 11:00:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vL1UO-0003cy-HG
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:50:07 -0500
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vL1e5-0000WX-Pz
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 11:00:08 -0500
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vL1UL-0007y9-65
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:49:59 -0500
-Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-42bb288c219so1680512f8f.1
- for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 07:49:56 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vL1e0-0001Q0-Cd
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:59:57 -0500
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-7866aca9ff4so44295917b3.3
+ for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 07:59:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763394595; x=1763999395; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1763395192; x=1763999992; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=oZRYAZdzLgyEzHOt2DfzPrkE819VJ/pVp5yoaxoHfw4=;
- b=A5vkMRohWI/C06lgF+qwO5Jes6bhX1NMG7az7HZ2O11uHWXDtKYfN0WcGp53FzLxAy
- stSfZu8CscjzonIufR8STJMmIdj+TNDZw6atqaLhymGWfDXNIR12L8lUs6/LqNhg8ZdQ
- EzduNEI3sTPDgmwD8qCTFAFn/gNodPFM/pJ9C4SiH37G5TMtgNQ8qS9hTlxeKXGmO5zT
- Hxy4AJHOCzssSAGGS8F9DjfxgMATOLQDY0A/ES4IJWULDTZwXJ1WfYIi8AQrOL8Og8Xw
- MGVmHcICmKYdNxcxO5dwtWUBfjE6LVw+EXNpIBWJW6KzS3SnsxGN+Wr5CEm7ZNUGSw2Q
- YzEw==
+ bh=gHTgpEzHUXz1adi5KE/ydBVHYXdO1GNQEdl0OMaSsWE=;
+ b=qtMWrVVsbZa74zXsjKOpX1Xyf9pV8yEYDyJXbv3ixSi5hFsOlkNAR1pPq2/gBQAD/2
+ kMKVn4odfL8b6JfVqgC14lTUBGrs6oSQ43oMmzMX/Rz3llMlg/x0bX3dZAAWfJPa7pWb
+ fGGT8WP9k7V/e/vldv529NRQSUDc0ZNsAeINIxbMErQ3PBDeH1qiPTfiqId7b2un0Ht7
+ Dpe5bWl3kUf4U0TlOUDkpmiCvlu1k4cobeDhstuQ986N/ZOAt0zXYHICWR/bJde4kXGZ
+ HQHKP9MacRbRhDxHnKtvU0brCQoG+oH3aUrewixaUecj1rAO3/SeOHSLDO2Jsz8onP7t
+ eUcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763394595; x=1763999395;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20230601; t=1763395192; x=1763999992;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=oZRYAZdzLgyEzHOt2DfzPrkE819VJ/pVp5yoaxoHfw4=;
- b=ptqBsrbvt1GJ4dwxybc6L//wJ4KroZC1QIbdg6XqyDlpdjHgQpvovZg+fmTnTDbhDM
- fME0gH1hHbpTaOu4qmuKYKqEw0SCXz/gJCopxKZ2IthS8Ckr7ZTUri6bB/LpKuc7Nqay
- ZA8Yi8iy9CxXJe9ZrMHv+gd/OYSzvRVW27T4eslBQ+tEFkKb9OLdezoagLeS/fUanITs
- ufoebkqIjH0s2manpVrstJqhm1vlsCZjS2podHAcwhfvdtMl9hkF0ueDjSstHhEsbNm5
- JgPPxxUjNEPb3HQwHun8wkuaJ6ydU2UaXN2Rh16Da7oBIaRO4ffTRjgJISBevCu43bOR
- C2YA==
+ bh=gHTgpEzHUXz1adi5KE/ydBVHYXdO1GNQEdl0OMaSsWE=;
+ b=pY92Q0tkDnqdMqwwSLe5PhWQEMgba95Q/wukPnu+igUP+so7+4Ty1aFpS8Os7q/SAx
+ u+MZVfHhwvsoS+JtlmDmqEzIwDi4m5eA8QjHZzTCSRyLu2sjw6hhoXvqMU04tK5hSu5G
+ 9ZMk/hx5mSA4x70Ow+EdMpnphdoDYhziRVghYLs75C7D/saexP325unudNcb4lOIxsiq
+ Aqw9ooZEgq7xKxD3lV86HD1FvPpX2OoAtvKhaYoE4M7lPr9sXm0UCONSCHrgJv9QscgU
+ SbMtfIt062XY3csK6queWEMclFd5hDSBmTO0w0LuFsP3JgZU+w0jQroN6uiJ/rwYsspQ
+ 9shA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU+SD1yXBKyLwuC9xY1qTNRb/Yn07zCVqtMn2VZfSBSyNAgiILK92SvVV118hnYwX1qmoLaIRhXpg==@nongnu.org
-X-Gm-Message-State: AOJu0Yzq5bwu2m4ZScRdfWHySOimg6JuTnRUKxXypP0l3CIikCwLInUL
- bhh5tAStCv42Nwq51wx3iweX2fTtcYO5fq4ZR3J+gk0kYsGA24785oK/sK1zPEKCFgs=
-X-Gm-Gg: ASbGncvYfJqNI94fpAAQrxl2w5WwHgplAay/ct4BGPMgi0oa12VkSCivDe0cEadXnmC
- wPHWUuzZbQYcNLS9HS3NPDa+DiWWpfDRqlYYGiNd0skY/unhYq5N88QuTNIdA86BR8COwXLP1If
- Gz/j+wKcbAemVC7HnIcSEBuf9YxWzFJGjsTVTDV3xiErDj2nv8ev36PJ5+L/vqN6FhCsDF32RW+
- tB65RfPRbkrGoO/mPfcbyDt//UVkIRCnhVbsL/3V+k9xSwMPAoaR2zNrsjKIqkl81+KSEEfRVSk
- h4SasFiRdDk4RhTyxU5IOja9D/bG+ebMgWygLw+ix25uibMDpfQgLiVhmY85eMVlUD/jIhYk3DH
- 7FYfQ03y1SHK5ttfZsrc2CE/SEX4tD8DhrS10Pys9DyaubbqFuqS4X4e9B894QwjZU4Yeo23Lj5
- B+9FTsp10xgGE=
-X-Google-Smtp-Source: AGHT+IEc8jEEVXXrv8qeE8/V3Q2lcaCxaYmnm6aToTAPc5Dps/raXtBpg904AugJIh+PuuCdRLBUSA==
-X-Received: by 2002:a05:6000:22c1:b0:42b:4139:579e with SMTP id
- ffacd0b85a97d-42b5938eee5mr12763429f8f.43.1763394595486; 
- Mon, 17 Nov 2025 07:49:55 -0800 (PST)
-Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42b53dea1c9sm27103070f8f.0.2025.11.17.07.49.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Nov 2025 07:49:53 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 5C8EE5FA14;
- Mon, 17 Nov 2025 15:49:49 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-stable@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:ARM KVM CPUs)
-Subject: [PULL 10/18] tests: move test_kvm to share.linaro.org
-Date: Mon, 17 Nov 2025 15:49:39 +0000
-Message-ID: <20251117154948.4122164-11-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20251117154948.4122164-1-alex.bennee@linaro.org>
-References: <20251117154948.4122164-1-alex.bennee@linaro.org>
+ AJvYcCXIH7YkIp4m20TNsIPnDLBdkaL1HGs60ot7p4CwAHEg+51QrBv+4BhcpUB+eq+9qt9KgkP6DbOFXg==@nongnu.org
+X-Gm-Message-State: AOJu0Yx2oMWUafsqkskBL22Qikyjcuu2jGB9j5IgXbk6Rev0QhSqLg7n
+ tOjcipIPln/X579jkSN78J9Z+Dq9by1VecKalIwW8li5Bdy0dEfxTAIU52OmDnLB7mQUCaMIn9H
+ 8ENh+4kAM6xggpONqutaa+R5wO36fOhoZGnzYhNYcCA==
+X-Gm-Gg: ASbGncuDiAtpPM+ZKognHh0fRaP68t/CFGopBJ1JhHsHv9uymhkgpxD1QiYm/56mvqd
+ ZeTdLP0h1DovoE6orvlMvvIPeeE8OwUComspE8rOK3uPBbHeWkKG4PKiz0+Y+c17+FnhJy/xZ2o
+ R5PnWg0r2VfYme6a8Qu6IEPp4EAYSXRfH1QiHAAFNe3Nj5DR9dA01xvPcLh3ybDFgUtErF9Rc3S
+ 0NpOyuopV1xqXFPTHUCe9ZnDVAMU86SiuVORAL7eTwVB/8tkhCWrYzkFl14ykRqIBSmzUPtJ6iy
+ 22gHYlY=
+X-Google-Smtp-Source: AGHT+IEGLO/ClAuY29s2xR7oSDOkU3t5RgbnSsBgaSel7T4dRMslqbqi3exQa9lBMqONLyJl0QHuXTC5vk/gMiaagpE=
+X-Received: by 2002:a05:690e:1587:20b0:641:f5bc:6975 with SMTP id
+ 956f58d0204a3-641f5bc702bmr5468164d50.81.1763395191880; Mon, 17 Nov 2025
+ 07:59:51 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x435.google.com
+References: <20251117154154.79090-1-philmd@linaro.org>
+In-Reply-To: <20251117154154.79090-1-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 17 Nov 2025 15:59:40 +0000
+X-Gm-Features: AWmQ_bm4lmcRXwYzzA-plWaP0voGQ_CQJZDi5xEDbFMNSCdGvzVWRZftu1A8Dsk
+Message-ID: <CAFEAcA-e6fC6yaZP1WSV5qg6-LYYrSDFJik4yLPUPMUDjxQ39Q@mail.gmail.com>
+Subject: Re: [PATCH-for-10.2 0/2] tcg: Remove support for 32-bit arm hosts
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Gerd Hoffmann <kraxel@redhat.com>, John Snow <jsnow@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,30 +104,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Linaro are migrating file-hosting from the old NextCloud instance to
-another sharing site.
+On Mon, 17 Nov 2025 at 15:42, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> 32-bit hosts are deprecated since QEMU v10.0.0; we already
+> removed support for MIPS and PPC hosts. Time for ARM removal.
+>
+> Based-on: <20251117140420.62193-1-philmd@linaro.org>
+>           "roms: Do not try to build EDK2 for 32-bit ARM on Fedora"
+> Based-on: <20251117153756.78830-1-philmd@linaro.org>
+>           "docs: Mention 32-bit PPC host as removed"
+>
+> Philippe Mathieu-Daud=C3=A9 (2):
+>   gitlab: Stop cross-testing for 32-bit ARM hosts
+>   buildsys: Remove support for 32-bit ARM hosts
 
-Cc: qemu-stable@nongnu.org
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-ID: <20251117115523.3993105-11-alex.bennee@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+I would prefer us not to drop a deprecated feature after
+feature-freeze, please. This seems like it can wait for 11.0.
 
-diff --git a/tests/functional/aarch64/test_kvm.py b/tests/functional/aarch64/test_kvm.py
-index 9fb9286139f..7545f5ed554 100755
---- a/tests/functional/aarch64/test_kvm.py
-+++ b/tests/functional/aarch64/test_kvm.py
-@@ -19,9 +19,7 @@
- class Aarch64VirtKVMTests(LinuxKernelTest):
- 
-     ASSET_KVM_TEST_KERNEL = Asset(
--        'https://fileserver.linaro.org/s/HmjaxXXYHYSqbes/'
--        'download?path=%2F&files='
--        'image-with-kvm-tool-and-unit-tests.gz',
-+        'https://share.linaro.org/downloadFile?id=Bs8Eb2Wb7yWtkTA',
-         '34de4aaea90db5da42729e7d28b77f392c37a2f4da859f889a5234aaf0970696')
- 
-     # make it easier to detect successful return to shell
--- 
-2.47.3
-
+thanks
+-- PMM
 

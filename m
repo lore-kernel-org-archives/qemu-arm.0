@@ -4,97 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 638A0CEACEF
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 17:05:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E27BCE8D6B
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 17:14:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vL2fO-0007Lu-7a; Mon, 17 Nov 2025 12:05:29 -0500
+	id 1vL2nk-0008Ak-EC; Mon, 17 Nov 2025 12:14:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vL2f6-0007Gh-Df
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 12:05:13 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vL2f0-0004pc-PA
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 12:05:04 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-47758595eecso25767445e9.0
- for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 09:05:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763399100; x=1764003900; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=HE2fmlyORJFUjXBDWXDExn8hzuILt7lnHbNQZ4qzuks=;
- b=N/9UUhtLS/A7gXyTeFCTh9MRAybN8kmBSK64KI0sDOi9EB3/JKQTbALj84okcPH0C+
- 5GJJx6IlOgMV0mi8XEoZ57D80s+M/Xa9Lc9J9sJUIevmoEu/6muz2rFXCvjEk6OUbkgO
- bup3m7VFhLUgV/3ECmK8NqQjTRCneSMswDurhcmLZxjLT4iic0DDhBYCtMDf02MGG3YW
- n/OeqjHCoOUIP95W0o6PxqMb9d96TZh98OTpB14J+EZTJ32dXM3vLrYX6lfPk+2yvhKU
- q4JR84NERqkFx+soV5xnayHlVmHv6tGHe0lcCpYe20uqHxQdcI+Hy9ptDHjhP9iOEzGY
- UHlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763399100; x=1764003900;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=HE2fmlyORJFUjXBDWXDExn8hzuILt7lnHbNQZ4qzuks=;
- b=M/y5+317NElBv4qvIKyI4nESV1S9WUxg/f09SgPv6VbaMiV+PevDha+HBAzF2NBIgb
- vz2OdGXeYtzdsaIziVe7yyxM5h1+aHXgRaAk8idZVzghkWzycILsztglxLQs0NrZNhQ4
- uxgy/3pQtdJOZdS7g66kk6jEEZ7W91LowF77zy7yojAsyuCkDpJ24POB84WZt4p6T5TL
- 9x9/lHZy+54cimG8mCDmhQ0o9YVIlR/KmMIr4H7vS8qN9qVIF2i5eMYrVk833NUiEW2C
- avOlabT9hsTssDab381pHItqM2qVh7HgJX7hs+sSJp2ILIGEgn4MLWcJmBOzTegKtJen
- x5Pw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWiiC2WLJTaYb+cmbpM/uh9xgs3hZ3/sDcvcVijmZIUemH0XUelkYedXN3/MncRskUlv6fQzbgjvg==@nongnu.org
-X-Gm-Message-State: AOJu0YzUP51Sc5SiCDL3u8R6WHP+T33twTz8ezpmmKBfacvxPVB1qdhY
- cWhSIY6EviyoPMl7SP8zAZlaBIauL/k3Vrn161AEwkcxWUDi8N3fDwDo5/Qs731cl5Q=
-X-Gm-Gg: ASbGncuJVrNNFkfgAsXYSveGUbQt9jVE7Lx5KDFBuGPrbbuAAzfoXHxwcSUommd30LP
- lYdQfhAClnEtocgjnE/BispV3EJDjolgiS91RwiMpX03VeTwQtOodp7Pd/HKvP3WRKhhtbXAXsu
- 7IW6MUY4w4/3b2RAkdEhJUMdlUn3ZfibI0b8wN2Y9+iu1wXnF8bOmMXS140ZGpCajqgoEL7QA3+
- qYN4kaqoRf0AfkJ4KL1ZhKmjBj2CpYRF+obVoLWPQeQNPAr8iJVEC1BQ4dFJCQlYkjdjq9kzgkX
- Nq92sALJS6VggzKQoXHdpIpVZfpFT0Lha63D7gylYkmEl6oqLp2AZx8222t2L74+xnbjTF/uHYr
- hJnAQubwrH7mLNSKDs77E8sTkiM6AJQeqlBmzn981rVtarXt5le5zFrchaAOkGJrckV5iFOePdG
- RoYDJzwjTuzPW+DFQXPhHTb6SULl27iRfyPU0lSiUlL6BtT+rkQnmelg==
-X-Google-Smtp-Source: AGHT+IH0EZ8HCV7GbhiyCN/x53Sxj3XUTx+ngK88SGVXYGsuOYnqgMguELmgrquf5p5afIpnniyxPg==
-X-Received: by 2002:a05:600c:253:b0:477:94e3:8a96 with SMTP id
- 5b1f17b1804b1-47794e38b9amr60505025e9.20.1763399099831; 
- Mon, 17 Nov 2025 09:04:59 -0800 (PST)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4779f45776csm40738495e9.9.2025.11.17.09.04.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Nov 2025 09:04:59 -0800 (PST)
-Message-ID: <5f9c6578-793c-4284-a7da-9181f06ba6a0@linaro.org>
-Date: Mon, 17 Nov 2025 18:04:56 +0100
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vL2nY-0007y9-38
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 12:13:52 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vL2nV-0006xp-Pq
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 12:13:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1763399628;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=rivxdtJOIlouE9+EE296t9Z5KRR72XB0SmVPzPY3syA=;
+ b=HCtHAMUaEm/EG/vqXeRS/uzqNKKE/+Li5LDeChJgHQc5MdwMyG4DWbdvJJshm1+VyWvaUF
+ nIevgJokdueIdwwKuT2JgfAahFIjOXuVUble7Ohcb2dl5jWevAM0zOnhx6bE2k9g2LRwdK
+ sRjfvs4StXTEQFjn49DUVh94TiAdbd0=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-623-ANT1B8m2M2mf_tzLAsmDwA-1; Mon,
+ 17 Nov 2025 12:13:44 -0500
+X-MC-Unique: ANT1B8m2M2mf_tzLAsmDwA-1
+X-Mimecast-MFC-AGG-ID: ANT1B8m2M2mf_tzLAsmDwA_1763399623
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1DAFC1955F54; Mon, 17 Nov 2025 17:13:43 +0000 (UTC)
+Received: from localhost (unknown [10.45.225.173])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id F40711800367; Mon, 17 Nov 2025 17:13:41 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org, Peter Maydell
+ <peter.maydell@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v3 1/2] hw/arm/imx8mp-evk: Add KVM support
+In-Reply-To: <20251101120130.236721-2-shentey@gmail.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Avril Crosse O'Flaherty"
+References: <20251101120130.236721-1-shentey@gmail.com>
+ <20251101120130.236721-2-shentey@gmail.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Mon, 17 Nov 2025 18:13:38 +0100
+Message-ID: <87v7j8r399.fsf@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-10.2 0/2] tcg: Remove support for 32-bit arm hosts
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, John Snow <jsnow@redhat.com>,
- Cleber Rosa <crosa@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-References: <20251117154154.79090-1-philmd@linaro.org>
- <CAFEAcA-e6fC6yaZP1WSV5qg6-LYYrSDFJik4yLPUPMUDjxQ39Q@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA-e6fC6yaZP1WSV5qg6-LYYrSDFJik4yLPUPMUDjxQ39Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,28 +88,192 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 17/11/25 16:59, Peter Maydell wrote:
-> On Mon, 17 Nov 2025 at 15:42, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> 32-bit hosts are deprecated since QEMU v10.0.0; we already
->> removed support for MIPS and PPC hosts. Time for ARM removal.
->>
->> Based-on: <20251117140420.62193-1-philmd@linaro.org>
->>            "roms: Do not try to build EDK2 for 32-bit ARM on Fedora"
->> Based-on: <20251117153756.78830-1-philmd@linaro.org>
->>            "docs: Mention 32-bit PPC host as removed"
->>
->> Philippe Mathieu-Daudé (2):
->>    gitlab: Stop cross-testing for 32-bit ARM hosts
->>    buildsys: Remove support for 32-bit ARM hosts
-> 
-> I would prefer us not to drop a deprecated feature after
-> feature-freeze, please. This seems like it can wait for 11.0.
+On Sat, Nov 01 2025, Bernhard Beschow <shentey@gmail.com> wrote:
 
-Sure no problem on my side (per Daniel comment on IRC,
-I thought this was a due task).
+> Allows the imx8mp-evk machine to run guests with KVM acceleration.
+>
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>  docs/system/arm/imx8mp-evk.rst | 19 +++++++++++++++++++
+>  hw/arm/fsl-imx8mp.c            | 34 +++++++++++++++++++++++++++++-----
+>  hw/arm/imx8mp-evk.c            | 11 +++++++++++
+>  hw/arm/Kconfig                 |  3 ++-
+>  4 files changed, 61 insertions(+), 6 deletions(-)
+>
+> diff --git a/docs/system/arm/imx8mp-evk.rst b/docs/system/arm/imx8mp-evk.rst
+> index b2f7d29ade..75c8fbd366 100644
+> --- a/docs/system/arm/imx8mp-evk.rst
+> +++ b/docs/system/arm/imx8mp-evk.rst
+> @@ -60,3 +60,22 @@ Now that everything is prepared the machine can be started as follows:
+>        -dtb imx8mp-evk.dtb \
+>        -append "root=/dev/mmcblk2p2" \
+>        -drive file=sdcard.img,if=sd,bus=2,format=raw,id=mmcblk2
+> +
+> +
+> +KVM Acceleration
+> +----------------
+> +
+> +To enable hardware-assisted acceleration via KVM, append
+> +``-accel kvm -cpu host`` to the command line. While this speeds up performance
+> +significantly, be aware of the following limitations:
+> +
+> +* The ``imx8mp-evk`` machine is not included under the "virtualization use case"
+> +  of :doc:`QEMU's security policy </system/security>`. This means that you
+> +  should not trust that it can contain malicious guests, whether it is run
+> +  using TCG or KVM. If you don't trust your guests and you're relying on QEMU to
+> +  be the security boundary, you want to choose another machine such as ``virt``.
+> +* Rather than Cortex-A53 CPUs, the same CPU type as the host's will be used.
+> +  This is a limitation of KVM and may not work with guests with a tight
+> +  dependency on Cortex-A53.
+> +* No EL2 and EL3 exception levels are available which is also a KVM limitation.
+> +  Direct kernel boot should work but running U-Boot, TF-A, etc. won't succeed.
+> diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
+> index 866f4d1d74..ee6f3e42d2 100644
+> --- a/hw/arm/fsl-imx8mp.c
+> +++ b/hw/arm/fsl-imx8mp.c
+> @@ -12,11 +12,13 @@
+>  #include "system/address-spaces.h"
+>  #include "hw/arm/bsa.h"
+>  #include "hw/arm/fsl-imx8mp.h"
+> -#include "hw/intc/arm_gicv3.h"
+>  #include "hw/misc/unimp.h"
+>  #include "hw/boards.h"
+> +#include "system/kvm.h"
+>  #include "system/system.h"
+> +#include "target/arm/cpu.h"
+>  #include "target/arm/cpu-qom.h"
+> +#include "target/arm/kvm_arm.h"
+>  #include "qapi/error.h"
+>  #include "qobject/qlist.h"
+>  
+> @@ -193,15 +195,15 @@ static void fsl_imx8mp_init(Object *obj)
+>  {
+>      MachineState *ms = MACHINE(qdev_get_machine());
+>      FslImx8mpState *s = FSL_IMX8MP(obj);
+> +    const char *cpu_type = ms->cpu_type ?: ARM_CPU_TYPE_NAME("cortex-a53");
+>      int i;
+>  
+>      for (i = 0; i < MIN(ms->smp.cpus, FSL_IMX8MP_NUM_CPUS); i++) {
+>          g_autofree char *name = g_strdup_printf("cpu%d", i);
+> -        object_initialize_child(obj, name, &s->cpu[i],
+> -                                ARM_CPU_TYPE_NAME("cortex-a53"));
+> +        object_initialize_child(obj, name, &s->cpu[i], cpu_type);
+>      }
+>  
+> -    object_initialize_child(obj, "gic", &s->gic, TYPE_ARM_GICV3);
+> +    object_initialize_child(obj, "gic", &s->gic, gicv3_class_name());
 
-Regards,
+Running current master (resp. with this patch applied), I'm getting make
+check failures on an aarch64 (Mt. Snow) host ("qemu-system-aarch64:
+unknown type 'arm-gicv3'" while using this machine); going back right
+before this patch, everything works fine. Haven't tried to debug this
+yet (maybe I'm the one with the weird config again...)
 
-Phil.
+>  
+>      object_initialize_child(obj, "ccm", &s->ccm, TYPE_IMX8MP_CCM);
+>  
+> @@ -274,7 +276,8 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+>      /* CPUs */
+>      for (i = 0; i < ms->smp.cpus; i++) {
+>          /* On uniprocessor, the CBAR is set to 0 */
+> -        if (ms->smp.cpus > 1) {
+> +        if (ms->smp.cpus > 1 &&
+> +                object_property_find(OBJECT(&s->cpu[i]), "reset-cbar")) {
+>              object_property_set_int(OBJECT(&s->cpu[i]), "reset-cbar",
+>                                      fsl_imx8mp_memmap[FSL_IMX8MP_GIC_DIST].addr,
+>                                      &error_abort);
+> @@ -286,6 +289,16 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+>          object_property_set_int(OBJECT(&s->cpu[i]), "cntfrq", 8000000,
+>                                  &error_abort);
+>  
+> +        if (object_property_find(OBJECT(&s->cpu[i]), "has_el2")) {
+> +            object_property_set_bool(OBJECT(&s->cpu[i]), "has_el2",
+> +                                     !kvm_enabled(), &error_abort);
+> +        }
+> +
+> +        if (object_property_find(OBJECT(&s->cpu[i]), "has_el3")) {
+> +            object_property_set_bool(OBJECT(&s->cpu[i]), "has_el3",
+> +                                     !kvm_enabled(), &error_abort);
+> +        }
+> +
+>          if (i) {
+>              /*
+>               * Secondary CPUs start in powered-down state (and can be
+> @@ -304,6 +317,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+>      {
+>          SysBusDevice *gicsbd = SYS_BUS_DEVICE(&s->gic);
+>          QList *redist_region_count;
+> +        bool pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
+>  
+>          qdev_prop_set_uint32(gicdev, "num-cpu", ms->smp.cpus);
+>          qdev_prop_set_uint32(gicdev, "num-irq",
+> @@ -360,6 +374,16 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+>                                 qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
+>              sysbus_connect_irq(gicsbd, i + 3 * ms->smp.cpus,
+>                                 qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
+> +
+> +            if (kvm_enabled()) {
+> +                if (pmu) {
+> +                    assert(arm_feature(&s->cpu[i].env, ARM_FEATURE_PMU));
+> +                    if (kvm_irqchip_in_kernel()) {
+> +                        kvm_arm_pmu_set_irq(&s->cpu[i], VIRTUAL_PMU_IRQ);
+> +                    }
+> +                    kvm_arm_pmu_init(&s->cpu[i]);
+> +                }
+> +            }
+>          }
+>      }
+>  
+> diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
+> index fc880a1d44..3ddcf1af5a 100644
+> --- a/hw/arm/imx8mp-evk.c
+> +++ b/hw/arm/imx8mp-evk.c
+> @@ -13,6 +13,7 @@
+>  #include "hw/arm/machines-qom.h"
+>  #include "hw/boards.h"
+>  #include "hw/qdev-properties.h"
+> +#include "system/kvm.h"
+>  #include "system/qtest.h"
+>  #include "qemu/error-report.h"
+>  #include "qapi/error.h"
+> @@ -94,12 +95,22 @@ static void imx8mp_evk_init(MachineState *machine)
+>      }
+>  }
+>  
+> +static const char *imx8mp_evk_get_default_cpu_type(const MachineState *ms)
+> +{
+> +    if (kvm_enabled()) {
+> +        return ARM_CPU_TYPE_NAME("host");
+> +    }
+> +
+> +    return ARM_CPU_TYPE_NAME("cortex-a53");
+> +}
+> +
+>  static void imx8mp_evk_machine_init(MachineClass *mc)
+>  {
+>      mc->desc = "NXP i.MX 8M Plus EVK Board";
+>      mc->init = imx8mp_evk_init;
+>      mc->max_cpus = FSL_IMX8MP_NUM_CPUS;
+>      mc->default_ram_id = "imx8mp-evk.ram";
+> +    mc->get_default_cpu_type = imx8mp_evk_get_default_cpu_type;
+>  }
+>  
+>  DEFINE_MACHINE_AARCH64("imx8mp-evk", imx8mp_evk_machine_init)
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index b44b85f436..0cdeb60f1f 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -622,7 +622,8 @@ config FSL_IMX8MP
+>  config FSL_IMX8MP_EVK
+>      bool
+>      default y
+> -    depends on TCG && AARCH64
+> +    depends on AARCH64
+> +    depends on TCG || KVM
+>      select FSL_IMX8MP
+>  
+>  config ARM_SMMUV3
+> -- 
+> 2.51.2
+
 

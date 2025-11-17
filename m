@@ -4,95 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D92B0CEACEF
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 16:19:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60C99CE8D6B
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 16:54:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vL1wO-0001Vg-8n; Mon, 17 Nov 2025 11:19:01 -0500
+	id 1vL2Uv-0001Oc-Ch; Mon, 17 Nov 2025 11:54:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vL1vf-0001Fm-RR
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 11:18:19 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vL2Uk-0001N1-VF
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 11:54:33 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vL1vd-0005HR-Ii
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 11:18:11 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-42b39d51dcfso2491579f8f.2
- for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 08:18:08 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vL2Uc-0002f5-St
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 11:54:21 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-477a1c28778so16591435e9.3
+ for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 08:54:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763396287; x=1764001087; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=PEGtx4glEPHESr4eXKn/cYl9f25xI1JVH/ZWB7Z0ENI=;
- b=S/25A5ClgxxcRtjIXRUmfa87re3wtoZ1MLnZEqgowh2/hclIolw9Rz3EgO029MyUHp
- YN3lxenVQrdehsy+mlXVTq1Rq4AjOLRD5NdLGBJYvnAeZ0l1MoLw72unzlzfQvFAU4/e
- 0ECXQ59FVyLjhiriKNeFz0g/zTcVpHGhvDOdagQX4hL4A1iBUCqEYtnWBwN0B4GSHW5z
- G9hkdzO6YprjiRLIGMuZ1vYQnxGiVNkWxET4Rd6pLsFjntmJ25uuEwSOEO5SatsjD66i
- rPdwKvtfhA1rFbFipqzo4AmCm90m1EfbvaW4JiyesCH/mWvIqa0491uejBb75raVSoUp
- y0Uw==
+ d=linaro.org; s=google; t=1763398457; x=1764003257; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=DiI+ErW/gjrEn6qHwHygYlyNpSeAZDkXnFa/j4W5bJU=;
+ b=vwsIo/UxsauaLaJ3WXPxEa9uGDngdX8qLF1ZqEb9yU3qGxA791vv9w3mpFcGyQrlTP
+ vEXnD82wMjPtP4fMiC7Deod8e5iY2fD8XIhpBgmpjUKMIjIyCUH+vA6js2q2enIMj+Ae
+ PGHj4t3KtkwQJLODqtWd2wEHSMG8fGjMYvHtt9OogYDRO0vc82UhhQZmDqldFxYvnn51
+ kqFKtBengvIKzgrj7QtOWZHhOwNEmzfNqGMClbi3tfls58FtnsaVKyMWZBre60SzFYlE
+ dakJJlxRbNLP11uZC8haoM6kSs/ktkfOgtfgZfsLHIwoMOcLKDbIgPNw2SbCNd5V6UPb
+ anxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763396287; x=1764001087;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=PEGtx4glEPHESr4eXKn/cYl9f25xI1JVH/ZWB7Z0ENI=;
- b=hYsTa9mqN1MXsvt8SxtdGlY55JNO9TRGKLJKQDG6LdyjWDTjDuDd//xyMjfYgMF2cz
- dfnsCmJeaqM3UseSR1wwr+YTVbu3oqSvLkrLqtasHm80HRc4oixxlJJ4UfTHEtfmc7lT
- 05U2pySOr8gP0k4ySK1P4wM3aH0totd+Su2VYBYsII0NkZIoyEGvtQvXHVpTWYOBLnOM
- G+yvuac/mg6NKLKEkPrQmBD98KDDpsP8+cOUeQREhr+Zs6cndxSVRuhKgWFj0Pj05pjA
- u7hXGase0DR4l9lQkBZu56AFhlIXfRg6t8pQCiuKosqw/MdtkqLhUO1w+kOOHh1UnuIi
- ByaA==
+ d=1e100.net; s=20230601; t=1763398457; x=1764003257;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=DiI+ErW/gjrEn6qHwHygYlyNpSeAZDkXnFa/j4W5bJU=;
+ b=G0oZsUFju7SnZYqepecFJCl6FSfS0AQ0Z5NFEHhtIEThN0qtuEu6FXRsWYn6fNEY0Y
+ yJpUns9PqtSriQNjZ9Fi2EKuT8zDRYhX6vT/WUXc8uXbbEAZ9/Kx6vGgVQcMsf2A//hg
+ gu/WkvvJ+YevW7DKI0YOkhQ3Fhk4bD9bFbw7TpetLAtoOy0CGtmVZKopy5z5jdG6LRiV
+ BcCCyDRxxq48L6UZy2XZW5CdOrKPBuJokZQZ1iPIVz5FyjZIGvUCQ9gdZvUGfw+LT2G+
+ Wz5y4VPGT7/WonJyb3K9qOj7dkgVo7gETcByi6XNM/blzE9BwtVoENd/Qj3yDcDCpbMP
+ hEHQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWcS1W0RFL2FSvUCyTt7aadX+jg/6Ki6UBY/9/c0bjiEpCoaxzsppIgp30oUjKxh4Ypgn0pgDAuuQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yx7ydey5jLw7JyEpdD97R5C9tjzpymYOFsQLdb7DZFLdR6HPGuD
- YC19/Ga4iOmuyhJNE7RjKiEj4HO4TBFhIxDtvkAXNIMph9K+OZ8ZKX3zOCAqu4uS0Zs=
-X-Gm-Gg: ASbGncsxoqAQUKD1MTqnjgheyJdmzLjrV01AWG8zYOhd5/YJG8wS8MfB93Xgqca20bC
- 0fXN3mUoGuHpTptfCByM4dbFWWexIrDNwkr9zZXpPtPLJT3M1I01rk02FeTw2Fn8Gs2Y9VerlbY
- IsoxJtDE5R2/zOBv/IUURyNdQHrPqQKKdW/+nJ0CrZ09jx4uqpzuhOW1J6FWJd4BV1/B64pM6Ar
- dJVdeO5Q7+cuudj8fC1DWN3+NoLR0WQlibTuYlogB5xGkfAd0VZlOlTLDmeyFGoPusGpIYHURr0
- pdMbolxQ5rSaJaehPPUs8DImH0bTsxN+uhDmKtkxpKA8JJcAjML4g3KsK4+NR0RqbP59WAPn4RM
- yTUtLPW3gVzghO+U9ThG+3is8/2+M6BbZcARjHyiEXpztJmbwYMDSEbVNC+izRJD8oQbH78RwF8
- ZQIBUgnqYE9A/YzGgrzwWQYc/viIPCM8ZpuwP62TpAA2PcHSeocIWaCrQrY5wG
-X-Google-Smtp-Source: AGHT+IFTF2SwuPmKiSqFIRKIalWaceUxq39Wzs99DbMjOjikzXwBB68Whb6c126THWRFh/lE0xGEbg==
-X-Received: by 2002:a05:6000:2008:b0:429:c450:8fad with SMTP id
- ffacd0b85a97d-42b59396f60mr13349573f8f.53.1763396287032; 
- Mon, 17 Nov 2025 08:18:07 -0800 (PST)
-Received: from [192.168.8.105] (66.red-37-158-132.dynamicip.rima-tde.net.
- [37.158.132.66]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42b53e845bdsm26131704f8f.12.2025.11.17.08.18.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Nov 2025 08:18:06 -0800 (PST)
-Message-ID: <288583e6-42ae-45ba-99d4-376d379a940d@linaro.org>
-Date: Mon, 17 Nov 2025 17:18:03 +0100
+ AJvYcCXEFMDcNc5NR9R77/jyPO0iohcFLNq9NjB5YhC9a5O6XU1bfQndi8Z0Zz+s5R9/phOfSwT/s5SlFQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzBKaW190JeHstTZmM1oDPwIKmwars53T/VlwISOKpnI61lUDFO
+ i/N33gtOco6P21NdpErL4j6cj0ftI81pxOxW7d3EfF3V7CY6sn4/OhFPwB1Ap+T4w8c=
+X-Gm-Gg: ASbGncuRGYj9jUwwOHWsS9BxOeo5WODTe+OxI6M8iL437aEPHq34GHp77s+2Pwe9omd
+ K/cUe55XdgCIz1vdE+lqV1uZQAtMY1czCOvlfC+vpPwSaVGDEpOoS7qKoEqRROQpx0KRIpzG9aX
+ rX9BbxhrF22muMYEY4InO9erSe6YbVKtF76+mCr6UE1Us50mqOnIf60UIrLUl0bIhiXVIf6HIH6
+ Me2kOD3hrSgqlqPIep4jMzbwqOR5K9IWspPQCFtGJx7I/G03JI/HLm3gL6FSaCnNCNSl4wB5x5N
+ oGompf4K+hFDBgXuLyaMgx8InLbBUPzUsWcWMYftfXAOxMdWxXe+Ol3vgwZ9x96v4IJB9oky9Wz
+ vCeZ7zSpYQG8fHPvlFJuMQmcqhNzWipZ4m+Ba09EOcONg5B526w48/Qe1ut3wkivSViNKNQi/uu
+ jO
+X-Google-Smtp-Source: AGHT+IEDlY8oX019rMDJHuPUOYTY3+rA5nPMtOCfUfXAPTPZQg/tPMXmOOYTuThetPBP8ZByv8VWPA==
+X-Received: by 2002:a05:600c:1f86:b0:477:7c7d:d9b2 with SMTP id
+ 5b1f17b1804b1-4778fea17bemr112617575e9.32.1763398456594; 
+ Mon, 17 Nov 2025 08:54:16 -0800 (PST)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4779973ddcfsm138884595e9.15.2025.11.17.08.54.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 17 Nov 2025 08:54:15 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 1973C5F76E;
+ Mon, 17 Nov 2025 16:54:15 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>,  qemu-arm@nongnu.org,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Gerd Hoffmann <kraxel@redhat.com>,  John Snow
+ <jsnow@redhat.com>,  Cleber Rosa <crosa@redhat.com>,  =?utf-8?Q?Marc-Andr?=
+ =?utf-8?Q?=C3=A9?= Lureau <marcandre.lureau@redhat.com>
+Subject: Re: [PATCH-for-10.2 1/2] gitlab: Stop cross-testing for 32-bit ARM
+ hosts
+In-Reply-To: <20251117154154.79090-2-philmd@linaro.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 17 Nov 2025 16:41:53
+ +0100")
+References: <20251117154154.79090-1-philmd@linaro.org>
+ <20251117154154.79090-2-philmd@linaro.org>
+User-Agent: mu4e 1.12.14-pre3; emacs 30.1
+Date: Mon, 17 Nov 2025 16:54:15 +0000
+Message-ID: <87h5uslhvs.fsf@draig.linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v2 06/10] target/arm: add canonical and no-address tag
- logic
-To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org
-References: <20251116-feat-mte4-v2-0-9a7122b7fa76@gmail.com>
- <20251116-feat-mte4-v2-6-9a7122b7fa76@gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20251116-feat-mte4-v2-6-9a7122b7fa76@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42a.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,137 +114,383 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 11/17/25 02:40, Gabriel Brookman wrote:
-> This feature causes tag checks to compare logical address tags against
-> their canonical form rather than against allocation tags. Described in
-> the ARM ARM section "Logical Address Tagging".
-> 
-> Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+
+> 32-bit host support is deprecated since commit 6d701c9bac1
+> ("meson: Deprecate 32-bit host support"). Next commits will
+> remove support for 32-bit ARM hosts. Stop cross-building
+> QEMU on our CI. Remove the CI jobs and related Docker files.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
->   target/arm/internals.h      | 40 ++++++++++++++++++++++++++++++++++++++++
->   target/arm/tcg/mte_helper.c | 12 ++++++++++++
->   2 files changed, 52 insertions(+)
-> 
-> diff --git a/target/arm/internals.h b/target/arm/internals.h
-> index 75677945af..5f0bcdaaac 100644
-> --- a/target/arm/internals.h
-> +++ b/target/arm/internals.h
-> @@ -1633,6 +1633,46 @@ static inline bool tcma_check(uint32_t desc, int bit55, int ptr_tag)
->       return tcma && match;
->   }
->   
-> +/* Return whether or not the second nibble of a VA matches bit 55.  */
-> +static inline bool tag_is_canonical(int ptr_tag, int bit55)
-> +{
-> +    return ((ptr_tag + bit55) & 0xf) == 0;
-> +}
-> +
-> +/* Return true if mtx bits mean that the access is canonically checked.  */
-> +static inline bool mtx_check(CPUARMState *env, bool bit55)
-> +{
-> +    /*
-> +     * the MTX bits used in EL0 are those used in whichever EL is used
-> +     * for the supervisor. The EL that contains the supervisor uses
-> +     * bits 60 and 61 (MTX0 and MTX1), while the other ELs that aren't
-> +     * used by the supervisor.
-> +     */
-> +    int el = arm_current_el(env);
-> +    if (el == 0) {
-> +        if (HCR_E2H & env->cp15.hcr_el2) {
-> +            return (1l << (60 + bit55)) & env->cp15.tcr_el[2];
-> +        } else {
-> +            return (1l << (60 + bit55)) & env->cp15.tcr_el[1];
-> +        }
-> +    } else if (el == 1) {
-> +        if (HCR_E2H & env->cp15.hcr_el2) {
-> +            g_assert_not_reached();
-> +        } else {
-> +            return (1l << (60 + bit55)) & env->cp15.tcr_el[1];
-> +        }
-> +    } else if (el == 2) {
-> +        if (HCR_E2H & env->cp15.hcr_el2) {
-> +            return (1l << (60 + bit55)) & env->cp15.tcr_el[2];
-> +        } else {
-> +            return (1l << 33) & env->cp15.tcr_el[2];
-> +        }
-> +    } else if (el == 3) {
-> +        return (1l << 33) & env->cp15.tcr_el[3];
-> +    }
-> +    return false;
-> +}
+>  configure                                     |   9 -
+>  .gitlab-ci.d/container-cross.yml              |   6 -
+>  .gitlab-ci.d/crossbuilds.yml                  |   7 -
+>  python/qemu/utils/accel.py                    |   1 -
+>  roms/edk2-build.py                            |   4 -
+>  .../dockerfiles/debian-armhf-cross.docker     | 188 ------------------
+>  tests/docker/dockerfiles/debian-bootstrap.pre |   5 +-
+>  tests/lcitool/refresh                         |   5 -
+>  8 files changed, 1 insertion(+), 224 deletions(-)
+>  delete mode 100644 tests/docker/dockerfiles/debian-armhf-cross.docker
+>
+> diff --git a/configure b/configure
+> index a2f66f7ff9c..4b8f92e822b 100755
+> --- a/configure
+> +++ b/configure
+> @@ -1334,8 +1334,6 @@ fi
+>  : ${cross_prefix_aarch64=3D"aarch64-linux-gnu-"}
+>  : ${cross_prefix_aarch64_be=3D"$cross_prefix_aarch64"}
+>  : ${cross_prefix_alpha=3D"alpha-linux-gnu-"}
+> -: ${cross_prefix_arm=3D"arm-linux-gnueabihf-"}
+> -: ${cross_prefix_armeb=3D"$cross_prefix_arm"}
+>  : ${cross_prefix_hexagon=3D"hexagon-unknown-linux-musl-"}
+>  : ${cross_prefix_loongarch64=3D"loongarch64-unknown-linux-gnu-"}
+>  : ${cross_prefix_hppa=3D"hppa-linux-gnu-"}
+> @@ -1359,8 +1357,6 @@ fi
+>=20=20
+>  : ${cross_cc_aarch64_be=3D"$cross_cc_aarch64"}
+>  : ${cross_cc_cflags_aarch64_be=3D"-mbig-endian"}
+> -: ${cross_cc_armeb=3D"$cross_cc_arm"}
+> -: ${cross_cc_cflags_armeb=3D"-mbig-endian"}
+>  : ${cross_cc_hexagon=3D"hexagon-unknown-linux-musl-clang"}
+>  : ${cross_cc_cflags_hexagon=3D"-mv73 -O2 -static"}
+>  : ${cross_cc_cflags_i386=3D"-m32"}
+> @@ -1481,11 +1477,6 @@ probe_target_compiler() {
+>          # We don't have any bigendian build tools so we only use this fo=
+r AArch64
+>          container_image=3Ddebian-arm64-cross
+>          ;;
+> -      arm)
+> -        # We don't have any bigendian build tools so we only use this fo=
+r ARM
+> -        container_image=3Ddebian-armhf-cross
+> -        container_cross_prefix=3Darm-linux-gnueabihf-
+> -        ;;
 
-Again, you can't touch hcr_el2 directly.
-In this case, you want to use regime_tcr, using the mmu_idx value from mte_probe_int.
+This isn't used for cross-builds but for building tests. So you need to
+add a stanza above that passes:
 
-Use arm_mmu_idx_to_el() instead of arm_current_el(), so that UNPRIV acceses are handled 
-correctly.
+  container_image=3Ddebian-all-test-cross
 
-Using "l" is always wrong; always ll or preferably ull.
-Though really defines for
+>        hexagon)
+>          container_cross_prefix=3Dhexagon-unknown-linux-musl-
+>          container_cross_cc=3D${container_cross_prefix}clang
+> diff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cr=
+oss.yml
+> index 0fd7341afac..e7ce1392770 100644
+> --- a/.gitlab-ci.d/container-cross.yml
+> +++ b/.gitlab-ci.d/container-cross.yml
+> @@ -22,12 +22,6 @@ arm64-debian-cross-container:
+>    variables:
+>      NAME: debian-arm64-cross
+>=20=20
+> -armhf-debian-cross-container:
+> -  extends: .container_job_template
+> -  stage: containers
+> -  variables:
+> -    NAME: debian-armhf-cross
+> -
+>  hexagon-cross-container:
+>    extends: .container_job_template
+>    stage: containers
+> diff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml
+> index 99dfa7eea6f..e0a68c2023d 100644
+> --- a/.gitlab-ci.d/crossbuilds.yml
+> +++ b/.gitlab-ci.d/crossbuilds.yml
+> @@ -1,13 +1,6 @@
+>  include:
+>    - local: '/.gitlab-ci.d/crossbuild-template.yml'
+>=20=20
+> -cross-armhf-user:
+> -  extends: .cross_user_build_job
+> -  needs:
+> -    - job: armhf-debian-cross-container
+> -  variables:
+> -    IMAGE: debian-armhf-cross
+> -
+>  cross-arm64-system:
+>    extends: .cross_system_build_job
+>    needs:
+> diff --git a/python/qemu/utils/accel.py b/python/qemu/utils/accel.py
+> index f915b646692..e6fca304b33 100644
+> --- a/python/qemu/utils/accel.py
+> +++ b/python/qemu/utils/accel.py
+> @@ -26,7 +26,6 @@
+>  # support which often includes its 32 bit cousin.
+>  ADDITIONAL_ARCHES =3D {
+>      "x86_64": "i386",
+> -    "aarch64": "armhf",
+>      "ppc64le": "ppc64",
+>  }
+>=20=20
+> diff --git a/roms/edk2-build.py b/roms/edk2-build.py
+> index c7e9dc58ec0..683c622c3d6 100755
+> --- a/roms/edk2-build.py
+> +++ b/roms/edk2-build.py
+> @@ -289,10 +289,6 @@ def prepare_env(cfg, silent =3D False):
+>      os.environ['PYTHONHASHSEED'] =3D '1'
+>=20=20
+>      # for cross builds
+> -    if binary_exists('arm-linux-gnueabi-gcc'):
+> -        # ubuntu
+> -        os.environ['GCC5_ARM_PREFIX'] =3D 'arm-linux-gnueabi-'
+> -        os.environ['GCC_ARM_PREFIX'] =3D 'arm-linux-gnueabi-'
 
-   bit55 ? TCR_MTX1 : TCR_MTX0
+Isn't this part of the firmware build? armhf guests aren't going away.
 
-wouldn't go amiss.
+>      if binary_exists('loongarch64-linux-gnu-gcc'):
+>          os.environ['GCC5_LOONGARCH64_PREFIX'] =3D 'loongarch64-linux-gnu=
+-'
+>          os.environ['GCC_LOONGARCH64_PREFIX'] =3D 'loongarch64-linux-gnu-'
+> diff --git a/tests/docker/dockerfiles/debian-armhf-cross.docker b/tests/d=
+ocker/dockerfiles/debian-armhf-cross.docker
+> deleted file mode 100644
+> index 627d41c6dee..00000000000
+> --- a/tests/docker/dockerfiles/debian-armhf-cross.docker
+> +++ /dev/null
+> @@ -1,188 +0,0 @@
+> -# THIS FILE WAS AUTO-GENERATED
+> -#
+> -#  $ lcitool dockerfile --layers all --cross-arch armv7l debian-13 qemu
+> -#
+> -# https://gitlab.com/libvirt/libvirt-ci
+> -
+> -FROM docker.io/library/debian:13-slim
+> -
+> -RUN export DEBIAN_FRONTEND=3Dnoninteractive && \
+> -    apt-get update && \
+> -    apt-get install -y eatmydata && \
+> -    eatmydata apt-get dist-upgrade -y && \
+> -    eatmydata apt-get install --no-install-recommends -y \
+> -                      bash \
+> -                      bc \
+> -                      bindgen \
+> -                      bison \
+> -                      bsdextrautils \
+> -                      bzip2 \
+> -                      ca-certificates \
+> -                      ccache \
+> -                      dbus \
+> -                      debianutils \
+> -                      diffutils \
+> -                      exuberant-ctags \
+> -                      findutils \
+> -                      flex \
+> -                      gcc \
+> -                      gcovr \
+> -                      gettext \
+> -                      git \
+> -                      hostname \
+> -                      libclang-rt-dev \
+> -                      libglib2.0-dev \
+> -                      llvm \
+> -                      locales \
+> -                      make \
+> -                      mtools \
+> -                      ncat \
+> -                      ninja-build \
+> -                      openssh-client \
+> -                      pkgconf \
+> -                      python3 \
+> -                      python3-numpy \
+> -                      python3-opencv \
+> -                      python3-pillow \
+> -                      python3-pip \
+> -                      python3-setuptools \
+> -                      python3-sphinx \
+> -                      python3-sphinx-rtd-theme \
+> -                      python3-tomli \
+> -                      python3-venv \
+> -                      python3-wheel \
+> -                      python3-yaml \
+> -                      rpm2cpio \
+> -                      rustc \
+> -                      sed \
+> -                      socat \
+> -                      sparse \
+> -                      swtpm \
+> -                      tar \
+> -                      tesseract-ocr \
+> -                      tesseract-ocr-eng \
+> -                      vulkan-tools \
+> -                      xorriso \
+> -                      zstd && \
+> -    eatmydata apt-get autoremove -y && \
+> -    eatmydata apt-get autoclean -y && \
+> -    sed -Ei 's,^# (en_US\.UTF-8 .*)$,\1,' /etc/locale.gen && \
+> -    dpkg-reconfigure locales && \
+> -    rm -f /usr/lib*/python3*/EXTERNALLY-MANAGED
+> -
+> -RUN /usr/bin/pip3 install meson=3D=3D1.8.1
+> -
+> -ENV CCACHE_WRAPPERSDIR "/usr/libexec/ccache-wrappers"
+> -ENV LANG "en_US.UTF-8"
+> -ENV MAKE "/usr/bin/make"
+> -ENV NINJA "/usr/bin/ninja"
+> -ENV PYTHON "/usr/bin/python3"
+> -
+> -RUN export DEBIAN_FRONTEND=3Dnoninteractive && \
+> -    dpkg --add-architecture armhf && \
+> -    eatmydata apt-get update && \
+> -    eatmydata apt-get dist-upgrade -y && \
+> -    eatmydata apt-get install --no-install-recommends -y dpkg-dev && \
+> -    eatmydata apt-get install --no-install-recommends -y \
+> -                      gcc-arm-linux-gnueabihf \
+> -                      libaio-dev:armhf \
+> -                      libasan8:armhf \
+> -                      libasound2-dev:armhf \
+> -                      libattr1-dev:armhf \
+> -                      libbpf-dev:armhf \
+> -                      libbrlapi-dev:armhf \
+> -                      libbz2-dev:armhf \
+> -                      libc6-dev:armhf \
+> -                      libcacard-dev:armhf \
+> -                      libcap-ng-dev:armhf \
+> -                      libcapstone-dev:armhf \
+> -                      libcbor-dev:armhf \
+> -                      libcmocka-dev:armhf \
+> -                      libcurl4-gnutls-dev:armhf \
+> -                      libdaxctl-dev:armhf \
+> -                      libdrm-dev:armhf \
+> -                      libepoxy-dev:armhf \
+> -                      libfdt-dev:armhf \
+> -                      libffi-dev:armhf \
+> -                      libfuse3-dev:armhf \
+> -                      libgbm-dev:armhf \
+> -                      libgcrypt20-dev:armhf \
+> -                      libglib2.0-dev:armhf \
+> -                      libgnutls28-dev:armhf \
+> -                      libgtk-3-dev:armhf \
+> -                      libgtk-vnc-2.0-dev:armhf \
+> -                      libibverbs-dev:armhf \
+> -                      libiscsi-dev:armhf \
+> -                      libjemalloc-dev:armhf \
+> -                      libjpeg62-turbo-dev:armhf \
+> -                      libjson-c-dev:armhf \
+> -                      liblttng-ust-dev:armhf \
+> -                      liblzo2-dev:armhf \
+> -                      libncursesw5-dev:armhf \
+> -                      libnfs-dev:armhf \
+> -                      libnuma-dev:armhf \
+> -                      libpam0g-dev:armhf \
+> -                      libpcre2-dev:armhf \
+> -                      libpipewire-0.3-dev:armhf \
+> -                      libpixman-1-dev:armhf \
+> -                      libpng-dev:armhf \
+> -                      libpulse-dev:armhf \
+> -                      librdmacm-dev:armhf \
+> -                      libsasl2-dev:armhf \
+> -                      libsdl2-dev:armhf \
+> -                      libsdl2-image-dev:armhf \
+> -                      libseccomp-dev:armhf \
+> -                      libselinux1-dev:armhf \
+> -                      libslirp-dev:armhf \
+> -                      libsnappy-dev:armhf \
+> -                      libsndio-dev:armhf \
+> -                      libspice-protocol-dev:armhf \
+> -                      libspice-server-dev:armhf \
+> -                      libssh-dev:armhf \
+> -                      libstd-rust-dev:armhf \
+> -                      libsystemd-dev:armhf \
+> -                      libtasn1-6-dev:armhf \
+> -                      libubsan1:armhf \
+> -                      libudev-dev:armhf \
+> -                      liburing-dev:armhf \
+> -                      libusb-1.0-0-dev:armhf \
+> -                      libusbredirhost-dev:armhf \
+> -                      libvdeplug-dev:armhf \
+> -                      libvirglrenderer-dev:armhf \
+> -                      libvte-2.91-dev:armhf \
+> -                      libxdp-dev:armhf \
+> -                      libzstd-dev:armhf \
+> -                      nettle-dev:armhf \
+> -                      systemtap-sdt-dev:armhf \
+> -                      zlib1g-dev:armhf && \
+> -    eatmydata apt-get autoremove -y && \
+> -    eatmydata apt-get autoclean -y && \
+> -    mkdir -p /usr/local/share/meson/cross && \
+> -    printf "[binaries]\n\
+> -c =3D '/usr/bin/arm-linux-gnueabihf-gcc'\n\
+> -ar =3D '/usr/bin/arm-linux-gnueabihf-gcc-ar'\n\
+> -strip =3D '/usr/bin/arm-linux-gnueabihf-strip'\n\
+> -pkgconfig =3D '/usr/bin/arm-linux-gnueabihf-pkg-config'\n\
+> -\n\
+> -[host_machine]\n\
+> -system =3D 'linux'\n\
+> -cpu_family =3D 'arm'\n\
+> -cpu =3D 'armhf'\n\
+> -endian =3D 'little'\n" > /usr/local/share/meson/cross/arm-linux-gnueabih=
+f && \
+> -    dpkg-query --showformat '${Package}_${Version}_${Architecture}\n' --=
+show > /packages.txt && \
+> -    mkdir -p /usr/libexec/ccache-wrappers && \
+> -    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/arm-linux-gnueabi=
+hf-cc && \
+> -    ln -s /usr/bin/ccache /usr/libexec/ccache-wrappers/arm-linux-gnueabi=
+hf-gcc
+> -
+> -ENV ABI "arm-linux-gnueabihf"
+> -ENV MESON_OPTS "--cross-file=3Darm-linux-gnueabihf"
+> -ENV RUST_TARGET "armv7-unknown-linux-gnueabihf"
+> -ENV QEMU_CONFIGURE_OPTS --cross-prefix=3Darm-linux-gnueabihf-
+> -ENV DEF_TARGET_LIST arm-softmmu,arm-linux-user
+> -# As a final step configure the user (if env is defined)
+> -ARG USER
+> -ARG UID
+> -RUN if [ "${USER}" ]; then \
+> -  id ${USER} 2>/dev/null || useradd -u ${UID} -U ${USER}; fi
+> -
+> -ENV ENABLE_RUST 1
+> diff --git a/tests/docker/dockerfiles/debian-bootstrap.pre b/tests/docker=
+/dockerfiles/debian-bootstrap.pre
+> index 35c85f7db8a..0a652754dfd 100755
+> --- a/tests/docker/dockerfiles/debian-bootstrap.pre
+> +++ b/tests/docker/dockerfiles/debian-bootstrap.pre
+> @@ -21,7 +21,7 @@ if [ -z $FAKEROOT ]; then
+>  fi
+>=20=20
+>  if [ -z "${DEB_ARCH}" ]; then
+> -    echo "Please set DEB_ARCH to choose an architecture (e.g. armhf)" >&2
+> +    echo "Please set DEB_ARCH to choose an architecture (e.g. arm64)" >&2
+>      exit_and_skip
+>=20=20
+>  fi
+> @@ -99,9 +99,6 @@ else
+>          amd64)
+>              QEMU=3Dqemu-i386
+>              ;;
+> -        armel|armhf)
+> -            QEMU=3Dqemu-arm
+> -            ;;
 
-You seam to be missing a check for FEAT_MTE_NO_ADDRESS_TAGS or FEAT_MTE_CANONICAL_TAGS.
-
-> +
->   /*
->    * For TBI, ideally, we would do nothing.  Proper behaviour on fault is
->    * for the tag to be present in the FAR_ELx register.  But for user-only
-> diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-> index f9fd6fd408..513ee8d6a1 100644
-> --- a/target/arm/tcg/mte_helper.c
-> +++ b/target/arm/tcg/mte_helper.c
-> @@ -799,6 +799,10 @@ static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
->           return 1;
->       }
->   
-> +    if (mtx_check(env, bit55)) {
-> +        return tag_is_canonical(ptr_tag, bit55);
-> +    }
-
-This could use a comment like
-
-     If mtx is enabled, then the access is MemTag_CanonicallyTagged,
-     otherwise it is MemTag_AllocationTagged.  See AArch64.CheckTag.
-
-> +    if (mtx_check(env, bit55)) {
-> +        if (tag_is_canonical(ptr_tag, bit55)) {
-> +            goto done;
-> +        }
-> +        mte_check_fail(env, desc, ptr, ra);
-> +    }
-
-Likewise.
-
-In the pseudocode, walkparams.mtx is used in AArch64.VAIsOutOfRange, which is part of 
-get_phys_addr_lpae() here:
-
-     /*
-      * We determined the region when collecting the parameters, but we
-      * have not yet validated that the address is valid for the region.
-      * Extract the top bits and verify that they all match select.
-      *
-      * For aa32, if inputsize == addrsize, then we have selected the
-      * region by exclusion in aa32_va_parameters and there is no more
-      * validation to do here.
-      */
-     if (inputsize < addrsize) {
-         uint64_t top_bits = sextract64(address, inputsize,
-                                            addrsize - inputsize);
-         if (-top_bits != param.select) {
-             /* The gap between the two regions is a Translation fault */
-             goto do_translation_fault;
-         }
-     }
-
-There is also a use in AArch64.S1DisabledOutput, which would correspond to 
-get_phys_addr_disabled(), which is relevant before
-
-             if (extract64(address, pamax, addrtop - pamax + 1) != 0) {
-                 fi->type = ARMFault_AddressSize;
+Again this is for testing and building rootfs's so shouldn't be dropped
+here.
 
 
-r~
+>          arm64)
+>              QEMU=3Dqemu-aarch64
+>              ;;
+> diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
+> index df186caffe6..d3743ba73e8 100755
+> --- a/tests/lcitool/refresh
+> +++ b/tests/lcitool/refresh
+> @@ -208,11 +208,6 @@ try:
+>                          trailer=3Dcross_build("aarch64-linux-gnu-",
+>                                              "aarch64-softmmu,aarch64-lin=
+ux-user"))
+>=20=20
+> -    generate_dockerfile("debian-armhf-cross", "debian-13",
+> -                        cross=3D"armv7l",
+> -                        trailer=3Dcross_build("arm-linux-gnueabihf-",
+> -                                            "arm-softmmu,arm-linux-user"=
+))
+> -
+>      generate_dockerfile("debian-i686-cross", "debian-13",
+>                          cross=3D"i686",
+>                          trailer=3Dcross_build("i686-linux-gnu-",
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0E13CE8D6B
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 15:26:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F63FCEACEF
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 15:40:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vL17W-0001Yb-4X; Mon, 17 Nov 2025 10:26:23 -0500
+	id 1vL1Kg-0005xN-A7; Mon, 17 Nov 2025 10:39:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vL17U-0001XW-Kt
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:26:20 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1vL1KL-0005my-8E
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:39:37 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vL17S-0003za-Sy
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:26:20 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-477a1c28778so15340305e9.3
- for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 07:26:18 -0800 (PST)
+ id 1vL1KI-0005ia-8x
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:39:35 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-47778b23f64so30968755e9.0
+ for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 07:39:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763393177; x=1763997977; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763393971; x=1763998771; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=8jbfTDig/ej8CvcFENX9wrk4ynv4q8GykQ67r2pkeDo=;
- b=ouwelMrM3YzLz44I+DuR+inRT/vq3YBJ8RVnrxsRYpuM0x3Younx4WRnqWnE/P5Yq5
- wFieRr/N8JCNgbstCCsdtFqrYiGk0GCyHayxdCrdDx7Bm1hKiv55SnVG9uRr6B5ktzkY
- MsKVswN0rdQKq1Bnu0/kI0uhSUS3nr2CrpnApQJzo101ULVl6F8hSLTlop/CQPBJwLsK
- uFcIZmcttitARX7Jt9g6apvQXOBy2sz1QNTZ38H1K+kX415NC33Pgnrzjzg2vu89rjxY
- xtj77oUPkPcVDTuSkR4HdNWZIggjw7tQ+eX8FDXjiVJW8wGclWHmmqWdPLnXmu8HjA1C
- PXEg==
+ bh=4z1jh/Ha3QCCNXYfp7y5UhFkZykJVLI4/OdNGSZZcuU=;
+ b=vuXrAK8PwRAUYr+MbpHbgXRkmg0TPfv4D7FNG8It3Pm5by1RI3LbCArP6mft7aIod3
+ 67g3GyF7NOOry8BMTD+nR8REc+f6X8N2JYUxYBs/5BPAgarc+JD+vGSFMf2uvgew9mL5
+ Qo5Ua0F6K+8EFOgW0Si020+6JasrYbeT7YEHmLZpEz3NVz8K4Qax5+pjcJXk8jl26f3D
+ gsJ2uoHy7nimQE+5PINbJKsyWtJBTmGv94dGkZKGGXoW+zhU7mF2d4+C6Xd83Tgn7+pP
+ L6nT9kVDEC47V9J2H0JvTrVM2eHDVapVOAWVU6hmAbtArgnp+uVAWNj7ontGvG7TFSCO
+ nKmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763393177; x=1763997977;
+ d=1e100.net; s=20230601; t=1763393971; x=1763998771;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=8jbfTDig/ej8CvcFENX9wrk4ynv4q8GykQ67r2pkeDo=;
- b=VGDa6lkOdQF9B4DTGyUEy2Yn90xf/EnyQmIuwdMBOt/6xVCgbxujCR57HYZkMcFAYK
- hR+nwVsS0dA7Qn5cMmytzov43wVq7PVBJn6hejMT/M/Raecpq9qgoHeJ4y7DAoU9NdBf
- kvjLbRt+psyRoou7fXE3AE4jAEeHs9wQtFrMTro1Y52KeOrOdqJT+JalwLI2Ya4aS2zm
- 2VVFhDzJRQVzqWunggeHLoTDD8GFuUdZQGCt/xJgOxAk3NEzPS6WzAmJoZX0j4xHpa4K
- 1CV0pX8v2XFtUPnA3BJo4cW+ywn/+uqtsbw6Fj7+i7cYmdRhuAKT3H0X2yH1ZkrUQINA
- LXCQ==
+ bh=4z1jh/Ha3QCCNXYfp7y5UhFkZykJVLI4/OdNGSZZcuU=;
+ b=TidzHcoA128gYR+jo16cPw1EfC4gprBKL11+VcT/9xPojKYyDN+B0Zap5ndoM8baDD
+ opVxHVx2brgPfDSkHRCb6jxf5TWE5JlSBiFOs2qVIz2EtdbS6OP+SdriKvvfJSzTBp4d
+ C0DLotW9KOApvpve/4nMWcxtty5UpZjjuivblhDzdQH9xA0HDf3ty/eOLcuzhaCHpFK4
+ PXMF8mAiFfgqK1kjFvxjHnIOKgcqQ9AxLYMaM2OpdmNqcfN3Y5ON+UnZQSPLJHMPxeHD
+ CMpkWg/2Cz7S7YHQKKItD6GpISegw1e1NADMYpER1ihZ1yla0niuBgEoK2i9Uj/Bk39P
+ 304Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVZauTBMBbMwh/fxL0MqixQJqGuOl5CazuAsN0az+Ei/b+GDF6wV2Crvz2SiNX2n0rtaaxVMM5NQQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxfHy30RolGr1ioz2Q+Fio3ByG+8lirQN1tqK85DL1PQvUUQr1P
- fS0k66K+WgBEONiYrdKTjHi1UbBaMlgxMNYFpsS3BUQ3zTRyA6pNC5/kdG3IrXbeCFw=
-X-Gm-Gg: ASbGncvBww6XX9NURLDXi85AFnrk+STn1PZxXwItwXuAuF8nH1ktPoOseXmE9+SDcUo
- 8S96h4fnzw4T18Z9LXkTK3wNmK/YSKt/hhuiUQHGT67911THUOcg8TFIyH3nGFcTxsDqSAHopN/
- JbD4c+A/az5FEktBv/uKc+1WXZRiI6p+vwaVSckhP6sfmAPbPGuWisdm+lWHbiMrBY9wc1x8TKj
- VPHuQMTCKCMC1Lxzwugm0iQ0Ftc2vXhzwiXh+CJtNojRU9o4jy7yFSo1SKp+ev7XMxJpqQ46tFs
- pJI+6tEKTDxDrlmDeBzBGlFyr+hwFlwiBw89YTuAljSzQ9MW5EcLLk5Snya7Owoi4yXz7hZg97n
- qlqc7L7/7pmjV0ZHp3QZJt+BDmgeWWasnJ4HrUkAevIo6hN65ZZeY4fYwuSirPf8mjqjCEK1gxd
- XICzvL3LjOyvsKInzTZ5w7NUv6QGgLe1Mh34gja2YBHmWNjXXBm5KSubBNsM7F
-X-Google-Smtp-Source: AGHT+IHuvRbYEDS0pfPFSanePMY0nawu9yjRP0Pl6Q8exiepm7xuwrZT4FWV5aAdD3prjmdGVJWY6Q==
-X-Received: by 2002:a05:600c:a47:b0:477:79c7:8994 with SMTP id
- 5b1f17b1804b1-4778fea195emr139643055e9.30.1763393177028; 
- Mon, 17 Nov 2025 07:26:17 -0800 (PST)
+ AJvYcCWMES4Rc6kWOb+anNUyS3bcJRNmmxpMhi2IlBlAfqksXZiFSktJlyRyRRVogRHX1meSQ+ir2besew==@nongnu.org
+X-Gm-Message-State: AOJu0YxVyWjqh9/MkmycK+cJ4NgpdEj0+Kux0W4Xxv1QoUhQqNb14Waq
+ v22DgGFbLKZh8xlqYEKq3xxt5TQ5g76p41iyIMSLykAzs73XxtVXIxMjZbVeHh4i5wY=
+X-Gm-Gg: ASbGncstiuWnvWmLL+dfjJvY0ndG5S4FWLSAtvrDDQIv401xF3IkaApiuY+VOi20IEB
+ e1FHkjDa7yZhFbMNw1aQb7WwXCYQsqQqkskzhBTPq134C6mZKktAOxWrNqqdZzzP2lAgvr9I7Cf
+ RD1y9GHKmoVme5J7SuJ29om+oyswOJgt9+CC+b6q+DXn2HbRlCm3G6WgSxMzOM9vyfmeqKvcjmS
+ LGi3dqWSFeOIedft3yrg0hTJld6vD/HPiHezfUMCS4q+wAUIKs67IDETCFX8gYmgzTsncwLoFJc
+ NrogwXwnu/HRErHercPmHH7R+qPyxGWjt2RLnZ3jEbKGvoYQxdb6GRKQlLiitQifh0piuECcJhe
+ zgYwuSAwXFUn9EXldOCFhN2Hl7Ncn8v/zj0eWaN2G2GxHkdRX9/RX5rKLRg5l+Qkbn9fK2htdq2
+ cpPoDXiZNqYZsMwFgJThnCzW9FWgVla6HE1w6+L7E9ALeYctKXzB/DrtjKzRkQo9lNMTuu3TY=
+X-Google-Smtp-Source: AGHT+IHOQf2Nme0A5MkSLy70RjfLQDNh69L8xkTQCcbQ0oQdMUBrOe1V+OZ9HnXjAKsvbAkdmV7oow==
+X-Received: by 2002:a05:600c:c177:b0:477:429b:3b93 with SMTP id
+ 5b1f17b1804b1-4778fe63008mr131753845e9.18.1763393971443; 
+ Mon, 17 Nov 2025 07:39:31 -0800 (PST)
 Received: from [192.168.8.105] (66.red-37-158-132.dynamicip.rima-tde.net.
  [37.158.132.66]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-477a7cb24dfsm22092785e9.14.2025.11.17.07.26.16
+ 5b1f17b1804b1-4779b509a5esm135298885e9.2.2025.11.17.07.39.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Nov 2025 07:26:16 -0800 (PST)
-Message-ID: <9b2de87c-b7d8-4a64-8c7b-bf94e3233275@linaro.org>
-Date: Mon, 17 Nov 2025 16:26:14 +0100
+ Mon, 17 Nov 2025 07:39:31 -0800 (PST)
+Message-ID: <22652ca4-0650-4ff4-ad55-4ad10e668bfb@linaro.org>
+Date: Mon, 17 Nov 2025 16:39:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v2 04/10] target/arm: add FEAT_MTE_STORE_ONLY logic
+Subject: Re: [PATCH RFC v2 05/10] tests/tcg: added test for MTE write-only
 To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org
 References: <20251116-feat-mte4-v2-0-9a7122b7fa76@gmail.com>
- <20251116-feat-mte4-v2-4-9a7122b7fa76@gmail.com>
+ <20251116-feat-mte4-v2-5-9a7122b7fa76@gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20251116-feat-mte4-v2-4-9a7122b7fa76@gmail.com>
+In-Reply-To: <20251116-feat-mte4-v2-5-9a7122b7fa76@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,44 +108,67 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 11/17/25 02:40, Gabriel Brookman wrote:
-> This feature automatically succeeds tag checks on load instructions when
-> the appropriate SCTLR_TCSO register for the current exception level is
-> set. Find information on this feature in the "Tag Checking" section of
-> the ARM ARM, Memory Tagging Extension chapter.
+> This test cannot be run in user-mode because the control bit that
+> enables this feature is only writable at EL1.
 > 
 > Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
 > ---
->   target/arm/tcg/mte_helper.c | 22 ++++++++++++++++++++++
->   1 file changed, 22 insertions(+)
+>   tests/tcg/aarch64/Makefile.target |  2 +-
+>   tests/tcg/aarch64/mte-10.c        | 55 +++++++++++++++++++++++++++++++++++++++
+>   2 files changed, 56 insertions(+), 1 deletion(-)
 > 
-> diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-> index bb48fe359b..f9fd6fd408 100644
-> --- a/target/arm/tcg/mte_helper.c
-> +++ b/target/arm/tcg/mte_helper.c
-> @@ -865,8 +865,30 @@ static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
->       return 0;
->   }
+> diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+> index b491cfb5e1..6203ac9b51 100644
+> --- a/tests/tcg/aarch64/Makefile.target
+> +++ b/tests/tcg/aarch64/Makefile.target
+> @@ -64,7 +64,7 @@ AARCH64_TESTS += bti-2
 >   
-> +static bool mte_store_only_active(CPUARMState *env)
+>   # MTE Tests
+>   ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
+> -AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7 mte-8 mte-9
+> +AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7 mte-8 mte-9 mte-10
+>   mte-%: CFLAGS += $(CROSS_CC_HAS_ARMV8_MTE)
+>   endif
+>   
+> diff --git a/tests/tcg/aarch64/mte-10.c b/tests/tcg/aarch64/mte-10.c
+> new file mode 100644
+> index 0000000000..0fa3f97e1d
+> --- /dev/null
+> +++ b/tests/tcg/aarch64/mte-10.c
+> @@ -0,0 +1,55 @@
+> +/*
+> + * Memory tagging, write-only tag checking
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "mte.h"
+> +
+> +void pass(int sig, siginfo_t *info, void *uc)
 > +{
-> +    int el = arm_current_el(env);
-> +    if (el) {
-> +        if (SCTLR_TCSO & env->cp15.sctlr_el[el]) {
-> +            return true;
-> +        }
-> +    } else {
-> +        if ((HCR_E2H & env->cp15.hcr_el2) &&'
+> +    exit(0);
+> +}
+> +
+> +int main(int ac, char **av)
+> +{
+> +    struct sigaction sa;
+> +    int *p0, *p1, *p2;
+> +    long excl = 1;
+> +
+> +    /*
+> +     * NOTE FOR REVIEWERS: to run this test locally, I modified
+> +     * enable_mte to also activate write-only tag checking by writing
+> +     * to ID_AA64PFR2_EL1. I am not sure how to modify the test so that
+> +     * it works without that modification. Input appreciated.
+> +     */
+> +    enable_mte(PR_MTE_TCF_SYNC);
 
-You can't test hcr_el2 directly, because SecEL2 might not exist when (Non-secure) EL2 
-does.  However, this can be simplified using arm_sctlr():
+You must
 
-     uint64_t sctlr = arm_sctlr(env, el);
-     uint64_t test = el ? SCTLR_TCSO : SCTLR_TCSO0;
-     return sctlr & test;
+(1) Delay the patch adding the test case until after FEAT_MTE_STORE_ONLY is enabled 
+(currently patch 10)
 
-
-That said, we should cache this in TBFLAGS so that we don't generate the mte_check 
-function call at runtime for reads.  See target/arm/tcg/hflags.c, s/MTE_ACTIVE/.
+(2) Implement support for PR_MTE_STORE_ONLY in linux-user/.
 
 
 r~

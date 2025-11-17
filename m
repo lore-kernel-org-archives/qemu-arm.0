@@ -4,100 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B344CE8D6B
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 15:52:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCE0ACEACEF
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 15:52:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vL1VG-000423-Er; Mon, 17 Nov 2025 10:50:54 -0500
+	id 1vL1Uk-0003mJ-Qs; Mon, 17 Nov 2025 10:50:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vL1V8-0003ts-D3
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:50:46 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1vL1UO-0003cz-GQ
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:50:07 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vL1V5-0008HZ-US
- for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:50:46 -0500
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-42b32900c8bso2539279f8f.0
- for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 07:50:28 -0800 (PST)
+ id 1vL1UK-0007xW-5B
+ for qemu-arm@nongnu.org; Mon, 17 Nov 2025 10:49:58 -0500
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-42b3720e58eso4183175f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 17 Nov 2025 07:49:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763394627; x=1763999427; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1763394594; x=1763999394; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7jc/nu/J0AL+pY15UNyyOgb11bFycenf4RnmDHJT64M=;
- b=PzHeOvHTX9NdvRoEc+znlWEz9BtqwVISliBoLZeRFQ8eFc8SqlBuRkRLB0maT34swW
- 3bZrUuckTvgEwIpCXQSYCfec7IhGp5yqnjx5xZZFTyt0KeRyzcxiBVMwEkQ/jRx8oGJo
- Uv36f3R/ZyEY9UxV/vPFbV+b4tiFeBVEy0BbeJbOhNwWGC2Y81oSNi9g/85z1XGzoyae
- V54Ao8T5nmxx6epbWlWTdBmhVDZrZtJQuvBhkO1S+jf4bTnAB7dK1M6DzVWIVVuOQZcO
- 5G3sXKuL7fOwBS4qe+arBMmP7JEFXE2/80o76Dal8EdClcReefB6jrABeRk2EsMbk0m6
- ZwUA==
+ bh=+In2d+Biyo55vHenXzzVehXQt3xVthufDl9j93GHiLo=;
+ b=itcKBi9wfGFnYbdcanl65Qbdd2UxJSYgTSK92VV1W0QDmtMmLyfIM92+Y4C2oukbsf
+ p3T94PcbtKslqEon3E7FV8MJhfzhrT4cncCeyeRdDUv0BIVgDMbGZYG+GAB75tetJxuF
+ eKT4HPfvnIIMkw2lvARuTmypnYm4fKp9m4jWNafGmAQpUoSbX5fskrr4D8kq5iHSALG9
+ M9Q5X669Aj2ODsYPqtiYg6mES4YxCCUycLE1cLURtjenEG2xJqwKjRvYlI6cfaXcwRXD
+ z6dmqUX3x5ztVmHkaNeleI2bA6+3OfWVfXWXn8QUdXXhDG0jFpc612alv/ubEz/CcT7H
+ HMiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763394627; x=1763999427;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7jc/nu/J0AL+pY15UNyyOgb11bFycenf4RnmDHJT64M=;
- b=haPJ5HPZ7AqRzqJrCpvtN4TnogCOBLIx8M3ELDBR/mo2/P8jvIj1F73kvM39Ap/Eav
- 5M4YlhpZ2vYKtCLzBv2Qki2kiG1lnM+vfNtDJIhpcfykVEGG/qf8cjTQk6AwDZ/GIn3L
- Nb7jNQkUN59J9QfK4Kt5hC3+Ca1Kt9601ak+dc9zbNuATyUTCivikq63ByfclX+mqSzs
- o3jYEVJ+GOEKb2KBlJ65KAesIHnobaTG25R7uzyPYxFlFirv7Hv87qpa1xk0XR7j4zmO
- MZZjN0frLp8U2hkl9Hw6phHKEJQYciSASTeA4NxV8sLHlySI3I4FYGa0zSZeAuEJsCVo
- LIng==
+ d=1e100.net; s=20230601; t=1763394594; x=1763999394;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=+In2d+Biyo55vHenXzzVehXQt3xVthufDl9j93GHiLo=;
+ b=Sh0u0pp3fVCxiZ2dctRgg0/sw3KPLV0Gyad92Cx1iwUnDh0NbfOACVm2fNPejQtTFW
+ 7fopwwG14HE4k5xnvTrzNMsjtAqV+SLrlagmjf2C5/LEHzCBnpcanYepuRheQyNbH6Gx
+ brlxSpxEK7lHzYfGcc4IgNJWauIuJWHO+Z4xiStMDdOQDajJvSU+/9kH6mg/Y8f0Pcc8
+ sCGtavh5IC+e0PorQ0P8CzHRP7Y5lVn7rDiieLVepw428LJysc0N8zlH4QFMfTLQTRLz
+ ErufCMA9vwuGEW7JvtHIP9kXjSDT0xm8uKcBCvVLukqTveOo0c3lkeOmypWR1OeJfHRI
+ d7Zw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUOshgOVCx0+g6Ya51KuOaapQNDdMen3NAlXJWFiFsSKJYCWMtMuQCa1ou3v7PF5FhsIFWYOWugZQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz1BZ8Q4prSNkcOQMI/RbSAc7127JAzy0hAR+iZYPOgxcW6vMDW
- t+QnBeqU/uc7ZBAsgZPPagqKu85fJdOit9s94tp+JumR338HoOfrjqPBi2CumUYyy6w=
-X-Gm-Gg: ASbGncsw0oUamtJgSvaCS38nA8cFqoWtTsT5T2q0IibFHYaJQFU3H+/x5KmnbHrjh8B
- wRf0H/2j3rnRAM1wus43wowrDfoWRlDT03I+mrWYGHf6aK/0ZYJWB2yAIzkwPtKdNkltufJgF4+
- 3UDqCOUlqOTWv98Blx7MouLs96PVjZ0Qbv5kgAuWuUbJIT7p/XDWwVjFMltgOP7KqBqf01NQWDx
- ywpuui6dSRlKptKGgGgl6EbsokWlexAWPlnvt8NNxwHoSHIJrOjMvOm90zizrnd4pzlokudN6Dh
- ElqBKh4t/9wAEV8kUi2POVqfV5YCi0XWzDME9C/DonsyU2hL+eomes3GFaM4/sruf3crqef5BLE
- MJckNiLXpORnIa9nZpTKAJy8T9j4qoIl5X6Oww1Dx0mlzpKHxdH/M8TRQqzYZGrVrYtRm/iviOw
- k7SG4n0M0WhX4=
-X-Google-Smtp-Source: AGHT+IEPyg7Q7nST33WVAn4TLz8sqsSDTTZWkdxTE3F0TV1WIg2f/oxGFvVjB/aCngo9njTelxtQ9A==
-X-Received: by 2002:a05:6000:1a8b:b0:42b:2f90:bd05 with SMTP id
- ffacd0b85a97d-42b59374c07mr12492448f8f.45.1763394627051; 
- Mon, 17 Nov 2025 07:50:27 -0800 (PST)
+ AJvYcCWtCVBv0JVl/T3JU4fMKXZKJi+1vWv2/P9seZd9vxSmyIPktfUFeI1cOVK9PUb3hjJCToymewrQcw==@nongnu.org
+X-Gm-Message-State: AOJu0Yz4dKhgEhIs43AGtK301DBp681bz8bll6W3jeYIfNKQ1Ay60bSS
+ O/CYjWPqIaisKEoYxePXaHZZbIHB/LwihGPCT29Ko+x2pa89yXSj0mj1bwBdWZs0lWDtYZVVqUG
+ SXzeC
+X-Gm-Gg: ASbGncv8kwoogfUAQQ7/w+XY1rCrOK5fvDEhz2YP8id/8Kbm0HmEXpFwdinVjiJ1jNz
+ GpDiDYGeKrRW6Z2ixQl1yDCQRAZ/+gX3Q0sR5u807sQCJcIw5fzSFmSbCb0JxV28kOK/d0AEwLh
+ ajqEGUHQNeuohP7npdT7hTmMoexy/6+jK9FifhS4kp2Roi21Eu5FcNsGrKIfK1D9V7yMRHpwODo
+ /73vny55SfgRgK/yYrVY71Wh4q8WAwlYPNK70pB8wl10XAcrUY9/iHvEO6wNUY0mDUYZqGITDk+
+ qIBfnwUtkqoImEHw4u8xhKVY3aZnJdL6qOYMT1n3sy6PjUXb3GFMxVPgWw71h+KYbeNPP0exOon
+ 5Vw9zVL/7x11hJHVCWdVnqF2Rw8x98jhtFPUj0lcqZCnCbvYKPHJw9VRKTpS2wu2ItQL9cAtkab
+ XcfdOtX34uLiM=
+X-Google-Smtp-Source: AGHT+IFEtPhDvAMBcCHHzTJvxyzI+CFtjvQ5cp9/uHLyEdeFizf966evWjyHmRh9Dv89UDOd44k9Hg==
+X-Received: by 2002:a05:6000:2013:b0:42b:2fc8:177 with SMTP id
+ ffacd0b85a97d-42b59390f6amr11559632f8f.49.1763394594196; 
+ Mon, 17 Nov 2025 07:49:54 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42c961f6e64sm13559448f8f.27.2025.11.17.07.50.26
+ ffacd0b85a97d-42b53f0b62dsm26946790f8f.24.2025.11.17.07.49.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Nov 2025 07:50:26 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 8AEBF5F860;
- Mon, 17 Nov 2025 15:50:25 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,  Ed Maste <emaste@freebsd.org>,  Akihiko Odaki
- <odaki@rsg.ci.i.u-tokyo.ac.jp>,  Thomas Huth <thuth@redhat.com>,  BALATON
- Zoltan <balaton@eik.bme.hu>,  Sriram Yagnaraman
- <sriram.yagnaraman@ericsson.com>,  Paolo Bonzini <pbonzini@redhat.com>,
- David Woodhouse <dwmw2@infradead.org>,  Paul Durrant <paul@xen.org>,
- Gustavo Romero <gustavo.romero@linaro.org>,  Kohei Tokunaga
- <ktokunaga.mail@gmail.com>,  Li-Wen Hsu <lwhsu@freebsd.org>,  Peter
- Maydell <peter.maydell@linaro.org>,  Dmitry Osipenko
- <dmitry.osipenko@collabora.com>,  qemu-arm@nongnu.org,  Zhao Liu
- <zhao1.liu@intel.com>,  qemu-s390x@nongnu.org,  Daniel P. =?utf-8?Q?Berra?=
- =?utf-8?Q?ng=C3=A9?= <berrange@redhat.com>
-Subject: Re: [PATCH v3 03/18] tests/lcitool: update ENV stazas outputted by
- refresh
-In-Reply-To: <0d18d036-f93a-4874-9306-ec769cb375d2@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 17 Nov 2025 15:00:52
- +0100")
-References: <20251117115523.3993105-1-alex.bennee@linaro.org>
- <20251117115523.3993105-4-alex.bennee@linaro.org>
- <0d18d036-f93a-4874-9306-ec769cb375d2@linaro.org>
-User-Agent: mu4e 1.12.14-pre3; emacs 30.1
-Date: Mon, 17 Nov 2025 15:50:25 +0000
-Message-ID: <87seeclku6.fsf@draig.linaro.org>
+ Mon, 17 Nov 2025 07:49:52 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 193F45F932;
+ Mon, 17 Nov 2025 15:49:49 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, qemu-stable@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:Virt)
+Subject: [PULL 07/18] tests: move test_virt assets to share.linaro.org
+Date: Mon, 17 Nov 2025 15:49:36 +0000
+Message-ID: <20251117154948.4122164-8-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20251117154948.4122164-1-alex.bennee@linaro.org>
+References: <20251117154948.4122164-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x432.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,38 +109,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+Linaro are migrating file-hosting from the old NextCloud instance to
+another sharing site. While I'm at it drop the old pauth-impdef flag
+which is no longer needed.
 
-> Typo "stanzas" in subject?
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Cc: qemu-stable@nongnu.org
+Message-ID: <20251117115523.3993105-8-alex.bennee@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-dammit - just as I sent it...
+diff --git a/tests/functional/aarch64/test_virt.py b/tests/functional/aarch64/test_virt.py
+index 63071f9b517..f9e3ec08fad 100755
+--- a/tests/functional/aarch64/test_virt.py
++++ b/tests/functional/aarch64/test_virt.py
+@@ -60,8 +60,7 @@ def test_alpine_virt_tcg_gic_max(self):
+ 
+ 
+     ASSET_KERNEL = Asset(
+-        ('https://fileserver.linaro.org/s/'
+-         'z6B2ARM7DQT3HWN/download'),
++        'https://share.linaro.org/downloadFile?id=3zGlbmXh8pXFewt',
+         '12a54d4805cda6ab647cb7c7bbdb16fafb3df400e0d6f16445c1a0436100ef8d')
+ 
+     def common_aarch64_virt(self, machine):
+@@ -77,7 +76,7 @@ def common_aarch64_virt(self, machine):
+         self.vm.set_console()
+         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+                                'console=ttyAMA0')
+-        self.vm.add_args('-cpu', 'max,pauth-impdef=on',
++        self.vm.add_args('-cpu', 'max',
+                          '-machine', machine,
+                          '-accel', 'tcg',
+                          '-kernel', kernel_path,
+-- 
+2.47.3
 
-spin v2
-
-
->
-> On 17/11/25 12:55, Alex Benn=C3=A9e wrote:
->> Now lcitool has been updated to use the non-legacy ENVs we should do
->> the same for what refresh adds.
->> Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
->> Message-ID: <20251113102525.1255370-4-alex.bennee@linaro.org>
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->>   tests/docker/dockerfiles/debian-amd64-cross.docker    | 4 ++--
->>   tests/docker/dockerfiles/debian-arm64-cross.docker    | 4 ++--
->>   tests/docker/dockerfiles/debian-armhf-cross.docker    | 4 ++--
->>   tests/docker/dockerfiles/debian-i686-cross.docker     | 4 ++--
->>   tests/docker/dockerfiles/debian-mips64el-cross.docker | 4 ++--
->>   tests/docker/dockerfiles/debian-mipsel-cross.docker   | 4 ++--
->>   tests/docker/dockerfiles/debian-ppc64el-cross.docker  | 4 ++--
->>   tests/docker/dockerfiles/debian-riscv64-cross.docker  | 4 ++--
->>   tests/docker/dockerfiles/debian-s390x-cross.docker    | 4 ++--
->>   tests/docker/dockerfiles/debian.docker                | 2 +-
->>   tests/docker/dockerfiles/fedora-win64-cross.docker    | 4 ++--
->>   tests/lcitool/refresh                                 | 6 +++---
->>   12 files changed, 24 insertions(+), 24 deletions(-)
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
 

@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 458C9CEACEF
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 01:42:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 705C7CCD19A
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Nov 2025 01:42:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vKoFK-0003Ag-2K; Sun, 16 Nov 2025 20:41:34 -0500
+	id 1vKoF9-00034v-6I; Sun, 16 Nov 2025 20:41:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vKoEh-0002Zo-IC
- for qemu-arm@nongnu.org; Sun, 16 Nov 2025 20:40:56 -0500
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
+ id 1vKoEd-0002XB-FB
+ for qemu-arm@nongnu.org; Sun, 16 Nov 2025 20:40:53 -0500
+Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vKoEf-0005zF-2z
- for qemu-arm@nongnu.org; Sun, 16 Nov 2025 20:40:55 -0500
-Received: by mail-qt1-x836.google.com with SMTP id
- d75a77b69052e-4ee19b1fe5dso9517531cf.0
- for <qemu-arm@nongnu.org>; Sun, 16 Nov 2025 17:40:52 -0800 (PST)
+ id 1vKoEY-0005xf-QB
+ for qemu-arm@nongnu.org; Sun, 16 Nov 2025 20:40:47 -0500
+Received: by mail-qt1-x82a.google.com with SMTP id
+ d75a77b69052e-4ed6882991aso34602081cf.1
+ for <qemu-arm@nongnu.org>; Sun, 16 Nov 2025 17:40:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1763343651; x=1763948451; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1763343645; x=1763948445; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=34ktumR/fmkok2iT5/89XdGNb+d+wyQTRwC+kBFtXAA=;
- b=FqK0WQGkcGFYE+5AFV31dCk5vj9tXAvwcM3czoADeoyZawqXBircV9aDWcc/KlwsEO
- fcd8ncjqIGttKetP9NqBiLqv9RMC/UhGG1tcNHAlfkbt89akxsd0qXcyZfFvKyJ9mHTm
- IJA6Q0c6GKNJL+i885yv3FqTpoRyxVSCApuCi2P3S6twYVEHdiZAIREoD9vTePyJuQbj
- mQUtXvNF7E9X2AnmXS2QoMop1ho6FN09s2EKV2UFQrq8xfG/4onhnauCRm3ah43ULMMa
- TwXjIWb6sxVr/HMMWdIZZR7bCM7ttkat9Ju+dLFWTgXnk52HZXrQbBTMGAwvvM0zhYUg
- 1MDA==
+ :reply-to; bh=YZPS9rJuRYJQhQMaUWtzxXr08fJQQ2IjJz7xMKY7qDM=;
+ b=b8LRRln4EUZiUykSgQf7JKoUC0a60cbBfkvTbrRvQpQfgowfICEy5L4pILe5xpF1lV
+ Hua4hqz3tbmPlaFJ47KIM20dEd62KVOwK93/l2HNXMJf+YzRVq/pZugF5KixzrCcnGZg
+ hY+l6WiVlm6rLKSmUpz29Dg3aG2mw3XotEqp9T0ZToTEnWTvSo07BopJ0KS+BJIrj4pL
+ 3EW06xNP2V3zy375ZJwvL8Wr6x4GKnDU/56A3QYMEn20NIpvS3Y2HBspvR5nLJazctia
+ 56MfqEhwhyI02H5MTuasN6Vm+YtzInpx0y8yaG+FYE7sH/uR6kha7WfEC5ejIsdtYUrx
+ if6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763343651; x=1763948451;
+ d=1e100.net; s=20230601; t=1763343645; x=1763948445;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=34ktumR/fmkok2iT5/89XdGNb+d+wyQTRwC+kBFtXAA=;
- b=K8dro8dG2YpAUHNeeJpZ3Wys3H3IccOwnGFJgolY0XTxw0AqcAUv4BqL1C3WooYr0x
- G0MJoHPy3U3gCoTAirMJnH98vlDq2QpfKXsbCoA2gxU4X0d7KncFdyZQ7ZkN6vpsFBVv
- R9Np38HkUZzXyoHPKsJw9j8REKxLVv09Q+vS06hu9iUQ2dtICc/3TogVIvNSHTIRaLrA
- v14wyDK5L67scKCgHUlxIRqs1cKLKF39QTJpbafBYfEWb+Mu//wJyTBkxskECjMVTNfA
- P6Yt7RqDo1O+OpK9Ge29yAawazyHCqnyE8zOvOX+2j+gRLYSyzhxIRy0jhaScs1raR4E
- 9kVg==
+ bh=YZPS9rJuRYJQhQMaUWtzxXr08fJQQ2IjJz7xMKY7qDM=;
+ b=XqUVXpUNEYpIJBluPiu98ab9PYPZZVVBMsIM65XeG/MEazIVxjCjID/W8luYYS4INh
+ tUbArTZTMGC8aANdzlE1FzJy38HWQRDfgJSFAGBfb0E+mysh+kAo2uYQiwJ6q/TZGy6n
+ qxKOnO1rfBnLJ4fJn3VVW3ZOflUuX85oLNb+XdgXFsZlqOXf3ykzGh0c6jEfWyaJx3iu
+ gueK7gRdmJia2J1kdZfbIpwXjBQbaIgZQsLWvNabKwzpxtGx+SMcdrjYbVAUwtixPtJP
+ UBtQiaLsBA+Bd8a1rUgGvfWDtu0pqWXDVoK27QYDt7iBhAFlDLnSMKY46fBIz//MbepN
+ LcGg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU2MpBdakQ8Agm/uYqmI3Fqjbq9Q2rZzYUSEaiUXrOCWU9/RvzOEnpvrARAo9StMtCm9StxCgE4Mg==@nongnu.org
-X-Gm-Message-State: AOJu0YzHA6+dWhvKA0bGicB9p/4q5F6AZNMzY2rY4b4ogCVoDrbWH1F6
- WvK1K7rAFmxQB6yBUJLmTsRzpf5AEHP5EvfqOzHNOZ2soG1Zsqm9mDKKXhTxmrsy
-X-Gm-Gg: ASbGnctHCGCgjWvbcAQ7Ydcv48n6c3cu9BLi+iU/45nfQeMbzbkj4wlUpIAqo6QyPNc
- hqqRUi0Aizp1IcEaQNaDTJl+ou+c3/03+18BHRbswvVhwIz4HnV0P0wu/OvnFd86P2lCkY/eq51
- UIpA3uo8WNbzuYMwHG3HDd2gwrvO+m+l+R5Kzsia3XzcFD7qwNI8SUmW1tznG8gN7gavFQdVpH3
- jFOOvWCqfsemEVBg6dmYnhFANezRKUzs0H99AFSa22kfC1Hh7+33Tr16MMyhvoROBB6zOh+j/+B
- 4pXLupotXwViSiUzgrmSlDzbYZ+hXdmZuKNYyGOXntkubV2mP8YWG5WsWP56lEc5H466n875eHi
- QstnE84KL44S6kNt31/MsM/wVXRosIMv/xLvgUYMaNYjQOS8c8EZp5Ti4/h9FqMtQHaTPM1iQUd
- bFCYKDU7cJbvJU1ZIx5f0xBW9n0mCP7w==
-X-Google-Smtp-Source: AGHT+IF/jGsQ8lD+aMX20VfPJBdAWz6M0s5sUUTm4IbUGzRgpJaLI9ugiTvvxlxAdZNDRL7eRCo7Sw==
-X-Received: by 2002:ac8:5746:0:b0:4ee:13d0:d02b with SMTP id
- d75a77b69052e-4ee13d0d42cmr61896721cf.50.1763343651349; 
- Sun, 16 Nov 2025 17:40:51 -0800 (PST)
+ AJvYcCVDBFnmNEc24x9j4cuaMEm/JPLlp0cRdftOSNrEOTc/b/9ivPKm5Qug/VEbSduZ3LmZA9SvdGIk8g==@nongnu.org
+X-Gm-Message-State: AOJu0YwGlY+TArOIvEvZx8xazCMqm5Nbwur+DljqOENe6ZnfoflrrhRn
+ NLToEDp9V8pHv7krcT0MStw/A7lJlnwxx0ysNeYJtfTlE8mpySxG6kMKTgQrejNV
+X-Gm-Gg: ASbGncujgMXuuX50udxZBECx42EJMatzpfD9GSuMACe4x5rlTkdbHE3ZsRKbNNCMgLh
+ krGVxkU1y4n+d/1UlnkEfqIlek8bux3/8hz7tpjT7WEMsRM7xPgtB9exvvEueQibM6Mi/kdATHV
+ CK6OrqD9mVbaDh//NbU/htBkyJIdOmcZBvaSadU4/Vxc/DVmhLu+qoCACFZwqXQlUUaZ3BBzZ98
+ +8CRGtBkH7GPVo35SThbT2DUQC9Nw01MSt+i1N0GoJXpu4Dpwp4FRTlQW3mtNjk7Nesw+gHhZIj
+ kD0wKUTcFIQrJDcjA6euYh6TFp+Yw+zVJMI25BEcTD3Ff8U3QgfRA20iDVlHs6AvyjE+hfVUB/0
+ fnO4m3qTLiZGPm2jVy4HEQycruYtb8cavC9fiHsQqroU1nxHZbwWoHaH6WZxSRB01XQbuZY29LQ
+ sL+EZHQWbhWBFN85UNjvY=
+X-Google-Smtp-Source: AGHT+IHgvieHxSRUO9TsHKNvJgshRAHk/5Gv34QSSGE6MsBMKM1XUkjD3wkxJ7wnGGvD6rkSbLrljg==
+X-Received: by 2002:ac8:5996:0:b0:4ed:2715:6130 with SMTP id
+ d75a77b69052e-4edf216e10cmr143023481cf.36.1763343645435; 
+ Sun, 16 Nov 2025 17:40:45 -0800 (PST)
 Received: from [10.0.0.22] ([185.213.193.149])
  by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-4ee1c21ea34sm18246551cf.30.2025.11.16.17.40.50
+ d75a77b69052e-4ee1c21ea34sm18246551cf.30.2025.11.16.17.40.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 16 Nov 2025 17:40:50 -0800 (PST)
+ Sun, 16 Nov 2025 17:40:44 -0800 (PST)
 From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Sun, 16 Nov 2025 20:40:26 -0500
-Subject: [PATCH RFC v2 09/10] tests/tcg: added test for MTE canonical and NAT
+Date: Sun, 16 Nov 2025 20:40:21 -0500
+Subject: [PATCH RFC v2 04/10] target/arm: add FEAT_MTE_STORE_ONLY logic
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251116-feat-mte4-v2-9-9a7122b7fa76@gmail.com>
+Message-Id: <20251116-feat-mte4-v2-4-9a7122b7fa76@gmail.com>
 References: <20251116-feat-mte4-v2-0-9a7122b7fa76@gmail.com>
 In-Reply-To: <20251116-feat-mte4-v2-0-9a7122b7fa76@gmail.com>
 To: qemu-devel@nongnu.org
@@ -80,22 +80,22 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org, 
  Gabriel Brookman <brookmangabriel@gmail.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1763343639; l=2238;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1763343639; l=1520;
  i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=omw1g4lZFe7vILkkcTfo81X8l2MlNL9SA0t8yBt/E6w=;
- b=hH/sdUEP5eyqUlp/HXSvoAyM5FaF5N1gbqxkZXHVssW5Mkjr3Vd2hdu3K6Ncmf7TglxTWE8ld
- oHvYadkFatPBLaUvpDFRiqnIOheVN4agTw3775LETO/OniJHNtt6qcA
+ bh=68ZM+10B9YHoYASDZcGdBy4XhZSBVkzEJDAZb1ZURqE=;
+ b=wC980mUNguhEfrIR5Nq6/5CttN9iRGDU71qsPwjgXzgFeylMIbfREmburYaJ/twikPUTvdsb6
+ ShAT0Y1fbGWCJNRkdc2aY45uYXLfHK1h5D7T3C5IycYmjf0IwtGBCQM
 X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
  pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
-Received-SPF: pass client-ip=2607:f8b0:4864:20::836;
- envelope-from=brookmangabriel@gmail.com; helo=mail-qt1-x836.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82a;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-qt1-x82a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,80 +111,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This test cannot run in user-mode because the control bit that enables
-this feature is only writable at EL1.
+This feature automatically succeeds tag checks on load instructions when
+the appropriate SCTLR_TCSO register for the current exception level is
+set. Find information on this feature in the "Tag Checking" section of
+the ARM ARM, Memory Tagging Extension chapter.
 
 Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
 ---
- tests/tcg/aarch64/Makefile.target |  2 +-
- tests/tcg/aarch64/mte-11.c        | 46 +++++++++++++++++++++++++++++++++++++++
- 2 files changed, 47 insertions(+), 1 deletion(-)
+ target/arm/tcg/mte_helper.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 6203ac9b51..141c9db9c4 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -64,7 +64,7 @@ AARCH64_TESTS += bti-2
+diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
+index bb48fe359b..f9fd6fd408 100644
+--- a/target/arm/tcg/mte_helper.c
++++ b/target/arm/tcg/mte_helper.c
+@@ -865,8 +865,30 @@ static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
+     return 0;
+ }
  
- # MTE Tests
- ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
--AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7 mte-8 mte-9 mte-10
-+AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7 mte-8 mte-9 mte-10 mte-11
- mte-%: CFLAGS += $(CROSS_CC_HAS_ARMV8_MTE)
- endif
- 
-diff --git a/tests/tcg/aarch64/mte-11.c b/tests/tcg/aarch64/mte-11.c
-new file mode 100644
-index 0000000000..86f2206e41
---- /dev/null
-+++ b/tests/tcg/aarch64/mte-11.c
-@@ -0,0 +1,46 @@
-+/*
-+ * Memory tagging, canonical tag checking
-+ *
-+ * Copyright (c) 2021 Linaro Ltd
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "mte.h"
-+
-+void pass(int sig, siginfo_t *info, void *uc)
++static bool mte_store_only_active(CPUARMState *env)
 +{
-+    assert(info->si_code == SEGV_MTESERR);
-+    exit(0);
++    int el = arm_current_el(env);
++    if (el) {
++        if (SCTLR_TCSO & env->cp15.sctlr_el[el]) {
++            return true;
++        }
++    } else {
++        if ((HCR_E2H & env->cp15.hcr_el2) &&
++            (SCTLR_TCSO0 & env->cp15.sctlr_el[2])) {
++            return true;
++        } else if (SCTLR_TCSO0 & env->cp15.sctlr_el[1]) {
++            return true;
++        }
++    }
++    return false;
 +}
 +
-+int main(int ac, char **av)
-+{
-+    struct sigaction sa;
-+    int *p0, *p1, *p2;
-+    long excl = 1;
+ uint64_t mte_check(CPUARMState *env, uint32_t desc, uint64_t ptr, uintptr_t ra)
+ {
++    if (!FIELD_EX32(desc, MTEDESC, WRITE) && mte_store_only_active(env)) {
++        return useronly_clean_ptr(ptr);
++    }
 +
-+    /*
-+     * NOTE FOR REVIEWERS: to run this test locally, I modified
-+     * enable_mte to also activate canonical tagging checking by writing
-+     * to the appropriate MTX control bits. I am not sure how to modify
-+     * the test so that it works without that modification. Input appreciated.
-+     */
-+    enable_mte(PR_MTE_TCF_SYNC);
-+    p0 = alloc_mte_mem(sizeof(*p0));
-+
-+    /* shouldn't fault on a canonical ptr */
-+    *p0 = 32;
-+
-+    /* decanonicalize ptr */
-+    p0 = (int *) (((long) p0) | (1ll << 56));
-+
-+    memset(&sa, 0, sizeof(sa));
-+    sa.sa_sigaction = pass;
-+    sa.sa_flags = SA_SIGINFO;
-+    sigaction(SIGSEGV, &sa, NULL);
-+
-+    /* should fault on our modified ptr */
-+    *p0 = 64;
-+
-+    abort();
-+}
+     uint64_t fault;
+     int ret = mte_probe_int(env, desc, ptr, ra, &fault);
+ 
 
 -- 
 2.51.2

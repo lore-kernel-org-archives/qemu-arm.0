@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 874A1CEE334
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC47DCEE338
 	for <qemu-arm@archiver.kernel.org>; Tue, 18 Nov 2025 16:12:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vLOHy-0002y3-Sd; Tue, 18 Nov 2025 11:10:43 -0500
+	id 1vLOI0-00031R-T0; Tue, 18 Nov 2025 11:10:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vLOHU-0002j5-Jv
- for qemu-arm@nongnu.org; Tue, 18 Nov 2025 11:10:16 -0500
+ id 1vLOHZ-0002l5-Of
+ for qemu-arm@nongnu.org; Tue, 18 Nov 2025 11:10:21 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vLOHQ-0005Ac-2P
- for qemu-arm@nongnu.org; Tue, 18 Nov 2025 11:10:12 -0500
+ id 1vLOHY-0005HA-9S
+ for qemu-arm@nongnu.org; Tue, 18 Nov 2025 11:10:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1763482207;
+ s=mimecast20190719; t=1763482215;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=4wxPKyVn84RDzo2oJCOuNEsO22mNJnKBpxKqACiX87M=;
- b=KTpJOu319BY6sW34v37bJSUM2kIMVf0NoXCl9nb3/DYOZIA6t5kzOelPUpq3tK6dqpVUgL
- pQpFKdjMJYmnL1QyTQe4bee3mVsctlb6iYAmaMUhmkttgPzk1y+1vQLwEWKqxHk3YqdwXt
- 6k5P9k/VYvskXJQlhNOBKEAjDlkskmQ=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=oe9X9vrtzuAvfuKIbXQg7zoSn4VcD4HMrEpnSfOuFKg=;
+ b=Dp7mbDP/d+3P7lrm85YlaWJJPi0V8FKAY5H4G9i/dkkbySaEXof35bmS0Z9VRYn+WQtLlk
+ znuxSpDVieudnYax5oJ7IeR8bZcvzp8jP7e0r3DwkzvnuqMLpr2hWegCor9QYbA55R7rwy
+ drZg7QO9cWjImbvKIws9IDCxhUA2Ft0=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-300-Ca041t6_MS6WY8qBQS6Dow-1; Tue,
- 18 Nov 2025 11:09:59 -0500
-X-MC-Unique: Ca041t6_MS6WY8qBQS6Dow-1
-X-Mimecast-MFC-AGG-ID: Ca041t6_MS6WY8qBQS6Dow_1763482197
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-252-E3JPMRIzOsevxW9EbuKpBA-1; Tue,
+ 18 Nov 2025 11:10:09 -0500
+X-MC-Unique: E3JPMRIzOsevxW9EbuKpBA-1
+X-Mimecast-MFC-AGG-ID: E3JPMRIzOsevxW9EbuKpBA_1763482208
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4D2DC180034A; Tue, 18 Nov 2025 16:09:57 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5986C195607F; Tue, 18 Nov 2025 16:10:08 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.16])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9B2E019560B0; Tue, 18 Nov 2025 16:09:52 +0000 (UTC)
+ id BF4B519560B2; Tue, 18 Nov 2025 16:10:03 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
  maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com,
  gshan@redhat.com, ddutile@redhat.com, peterx@redhat.com, philmd@linaro.org,
  pbonzini@redhat.com
-Subject: [PATCH v2 5/8] kvm-all: Add the capability to blacklist some KVM regs
-Date: Tue, 18 Nov 2025 17:07:35 +0100
-Message-ID: <20251118160920.554809-6-eric.auger@redhat.com>
+Subject: [PATCH v2 7/8] target/arm/cpu: Expose x-mig-hidden-regs and
+ x-mig-safe-missing-regs properties
+Date: Tue, 18 Nov 2025 17:07:37 +0100
+Message-ID: <20251118160920.554809-8-eric.auger@redhat.com>
 In-Reply-To: <20251118160920.554809-1-eric.auger@redhat.com>
 References: <20251118160920.554809-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -86,77 +87,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On ARM we want to be able to blacklist registers that are exposed
-by KVM. To mitigate some mitigation failures that occur when a new
-register is exposed and does not exist on the destination, some
-registers are tagged "hidden" and their state won't be saved. As the
-state is not saved and they are expected not to be used, we want to
-enforce they aren't. So let's check this. The new CPUClass hide_reg()
-callback is optional and will be implemented on ARM in a subsequent
-patch.
+Allows to set both array properties along with arm cpus. Their "x-" prefix
+reminds that those shall be used carefully for distro specific use cases
+to garantee cross kernel migration.
+
+This will allow to define such compat machine props like:
+
+    static GlobalProperty arm_virt_kernel_compat_10_1[] = {
+        /* KVM_REG_ARM_VENDOR_HYP_BMAP_2 */
+        { TYPE_ARM_CPU, "x-mig-hidden-regs", "0x6030000000160003" },
+        { TYPE_ARM_CPU, "x-mig-safe-missing-regs",
+          /* TCR_EL1, PIRE0_EL1, PIR_EL1 */
+          "0x603000000013c103, 0x603000000013c512, 0x603000000013c513" },
+    }
+
+The first one means KVM_REG_ARM_VENDOR_HYP_BMAP_2 shall always
+been hidden for machine types older than 10.1. The second one means
+that along with 10.1 machine type we may receive in the incoming
+migration stream, 3 registers that are unknown on destination.
+
+Obvioulsy, using the reg index as defined in
+linux/Documentation/virt/kvm/api.rst is not user friendly. However
+those options, prefixed with "x-" are supposed to be used
+rarely by people who know the details.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- include/hw/core/cpu.h |  2 ++
- accel/kvm/kvm-all.c   | 12 ++++++++++++
- 2 files changed, 14 insertions(+)
+ target/arm/cpu.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 9615051774..5390e3e3d1 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -142,6 +142,7 @@ struct SysemuCPUOps;
-  * the caller will not g_free() it.
-  * @disas_set_info: Setup architecture specific components of disassembly info
-  * @adjust_watchpoint_address: Perform a target-specific adjustment to an
-+ * @hide_reg: Check if a register must be hidden (optional)
-  * address before attempting to match it against watchpoints.
-  * @deprecation_note: If this CPUClass is deprecated, this field provides
-  *                    related information.
-@@ -167,6 +168,7 @@ struct CPUClass {
-     int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
-     int (*gdb_write_register)(CPUState *cpu, uint8_t *buf, int reg);
-     vaddr (*gdb_adjust_breakpoint)(CPUState *cpu, vaddr addr);
-+    bool (*hide_reg)(CPUState *cpu, uint64_t regidex);
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 066746d76f..c41774cb4c 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2248,6 +2248,11 @@ static const Property arm_cpu_properties[] = {
+     DEFINE_PROP_BOOL("backcompat-cntfrq", ARMCPU, backcompat_cntfrq, false),
+     DEFINE_PROP_BOOL("backcompat-pauth-default-use-qarma5", ARMCPU,
+                       backcompat_pauth_default_use_qarma5, false),
++    DEFINE_PROP_ARRAY("x-mig-hidden-regs", ARMCPU,
++                      nr_hidden_regs, hidden_regs, qdev_prop_uint64, uint64_t),
++    DEFINE_PROP_ARRAY("x-mig-safe-missing-regs", ARMCPU,
++                      nr_mig_safe_missing_regs, mig_safe_missing_regs,
++                      qdev_prop_uint64, uint64_t),
+ };
  
-     const char *gdb_core_xml_file;
-     const char * (*gdb_arch_name)(CPUState *cpu);
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index f9254ae654..d047d49c0f 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -3784,9 +3784,15 @@ bool kvm_device_supported(int vmfd, uint64_t type)
- 
- int kvm_set_one_reg(CPUState *cs, uint64_t id, void *source)
- {
-+    CPUClass *cc = CPU_GET_CLASS(cs);
-     struct kvm_one_reg reg;
-     int r;
- 
-+    if (cc->hide_reg && cc->hide_reg(cs, id)) {
-+        error_report("%s reg 0x%"PRIx64" is hidden and shall never been accessed",
-+                     __func__, id);
-+        g_assert_not_reached();
-+    }
-     reg.id = id;
-     reg.addr = (uintptr_t) source;
-     r = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-@@ -3798,9 +3804,15 @@ int kvm_set_one_reg(CPUState *cs, uint64_t id, void *source)
- 
- int kvm_get_one_reg(CPUState *cs, uint64_t id, void *target)
- {
-+    CPUClass *cc = CPU_GET_CLASS(cs);
-     struct kvm_one_reg reg;
-     int r;
- 
-+    if (cc->hide_reg && cc->hide_reg(cs, id)) {
-+        error_report("%s reg 0x%"PRIx64" is hidden and shall never been accessed",
-+                     __func__, id);
-+        g_assert_not_reached();
-+    }
-     reg.id = id;
-     reg.addr = (uintptr_t) target;
-     r = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
+ static const gchar *arm_gdb_arch_name(CPUState *cs)
 -- 
 2.51.1
 

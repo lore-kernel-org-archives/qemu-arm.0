@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30C4ECEE333
-	for <qemu-arm@archiver.kernel.org>; Tue, 18 Nov 2025 16:10:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD755CEE335
+	for <qemu-arm@archiver.kernel.org>; Tue, 18 Nov 2025 16:10:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vLOHF-0002ee-Ba; Tue, 18 Nov 2025 11:09:59 -0500
+	id 1vLOHW-0002jZ-4m; Tue, 18 Nov 2025 11:10:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vLOGz-0002WN-RE
- for qemu-arm@nongnu.org; Tue, 18 Nov 2025 11:09:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vLOH8-0002Zq-HY
+ for qemu-arm@nongnu.org; Tue, 18 Nov 2025 11:09:53 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vLOGx-0004aL-Eo
- for qemu-arm@nongnu.org; Tue, 18 Nov 2025 11:09:41 -0500
+ id 1vLOH6-0004gc-JV
+ for qemu-arm@nongnu.org; Tue, 18 Nov 2025 11:09:50 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1763482175;
+ s=mimecast20190719; t=1763482186;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=b26cI2M7OPZ81pAQprxKa6aNofC/up7EdiYzf1XHT/c=;
- b=GyZhnDJi2y0IGvcdGhRd/THpXIt5Ml9CiFiLZJMfepDLl79y19lVCBCleSdyBlQPKALlSB
- OHbUsXvdCHAsi5TF9a8cVVfpzhphHw1KD3RzLl+mlxcP54ednosJVHyvWhTspQXCK1qy9I
- 9pOZl7q8WVs7ZxlarwVC1l3BYqUZ1RM=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vCXFBOVAeisHEx3+fOj5JbWs4YJB8n7CVHoFfGsSQp8=;
+ b=AYnkcHx1z+gbLMbQR6dungH7kd2TbQtVKKiSBEmiuqOeH4ePAleD2uX5YtTQMt+FBWRH0N
+ CdWp6/jWXV2rbwrxgYcrqwDzGj0CGZCryOqk9ic02R3zka1x1+NTJT7dig80XzdZXfsIa7
+ 3GGcWpMhboaRADkQfBPvPlpsCvHJj6M=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-684-eOJ-V8qJPpqYzfc7phmRjA-1; Tue,
- 18 Nov 2025 11:09:31 -0500
-X-MC-Unique: eOJ-V8qJPpqYzfc7phmRjA-1
-X-Mimecast-MFC-AGG-ID: eOJ-V8qJPpqYzfc7phmRjA_1763482170
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-475-aV09ZANiM9-52Edrkl-8Xg-1; Tue,
+ 18 Nov 2025 11:09:43 -0500
+X-MC-Unique: aV09ZANiM9-52Edrkl-8Xg-1
+X-Mimecast-MFC-AGG-ID: aV09ZANiM9-52Edrkl-8Xg_1763482180
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 49BF61956062; Tue, 18 Nov 2025 16:09:30 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 996BD1800107; Tue, 18 Nov 2025 16:09:40 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.32.16])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 84CBA19560B2; Tue, 18 Nov 2025 16:09:23 +0000 (UTC)
+ id 0FF1719560B2; Tue, 18 Nov 2025 16:09:35 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
  maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com,
  gshan@redhat.com, ddutile@redhat.com, peterx@redhat.com, philmd@linaro.org,
  pbonzini@redhat.com
-Subject: [PATCH v2 0/8] Mitigation of "failed to load
- cpu:cpreg_vmstate_array_len" migration failures
-Date: Tue, 18 Nov 2025 17:07:30 +0100
-Message-ID: <20251118160920.554809-1-eric.auger@redhat.com>
+Subject: [PATCH v2 2/8] target/arm/cpu: Allow registers to be hidden
+Date: Tue, 18 Nov 2025 17:07:32 +0100
+Message-ID: <20251118160920.554809-3-eric.auger@redhat.com>
+In-Reply-To: <20251118160920.554809-1-eric.auger@redhat.com>
+References: <20251118160920.554809-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -85,95 +87,140 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When migrating ARM guests accross same machines with different host
-kernels we are likely to encounter failures such as:
+More recent kernels sometimes expose new registers in an
+unconditionnal manner. This situation breaks backward migration
+as qemu notices there are more registers in the input stream
+than supported on the destination host. This leads to a
+"failed to load cpu:cpreg_vmstate_array_len" error.
 
-"failed to load cpu:cpreg_vmstate_array_len"
+A good example is the introduction of KVM_REG_ARM_VENDOR_HYP_BMAP_2
+pseudo FW register in v6.16 by commit C0000e58c74e (“KVM: arm64:
+Introduce KVM_REG_ARM_VENDOR_HYP_BMAP_2”). Trying to do backward
+migration from a host kernel that features the commit to a destination
+host that doesn't, fail with above error.
 
-This is due to the fact KVM exposes a different number of registers
-to qemu on source and destination. When trying to migrate a bigger
-register set to a smaller one, qemu cannot save the CPU state.
+Currently QEMU is not using that feature so ignoring this latter
+is not a problem. An easy way to fix the migration issue is to teach
+qemu we don't care about that register and we can simply ignore it
+when syncing its state during migration.
 
-For example, recently we faced such kind of situations with:
-- unconditionnal exposure of KVM_REG_ARM_VENDOR_HYP_BMAP_2 FW pseudo
-  register from v6.16 onwards. Causes backward migration failure.
-- removal of unconditionnal exposure of TCR2_EL1, PIRE0_EL1, PIR_EL1
-  from v6.13 onwards. Causes forward migration failure.
+This patch introduces an array of such hidden registers. Soon it will
+be settable through an array property.
 
-This situation is really problematic for distributions which want to
-guarantee forward and backward migration of a given machine type
-between different releases. 
+If hidden, the register is moved out of the array of cpreg which is
+built in kvm_arm_init_cpreg_list(). That way their state won't be
+synced.
 
-While the series mainly targets KVM acceleration, this problem
-also exists with TCG. For instance some registers may be exposed
-while they shouldn't. Then it is tricky to fix that situation
-without breaking forward migration. An example was provided by
-Peter: 4f2b82f60 ("target/arm: Reinstate bogus AArch32 DBGDTRTX
-register for migration compat).
-
-This series introduces 2 CPU array properties that list
-- the CPU registers to hide from the exposes sysregs (aims
-  at removing registers from the destination)
-- The CPU registers that may not exist but which can be found
-  in the incoming migration stream (aims at ignoring extra
-  registers in the incoming state)
-
-An example is given to illustrate how those props
-could be used to apply compats for machine types supposed to "see" the
-same register set accross various host kernels.
-
-Mitigation of DBGDTRTX issue would be achived by setting
-x-mig-safe-missing-regs=0x40200000200e0298 which matches
-AArch32 DBGDTRTX register index.
-
-The first patch improves the tracing so that we can quickly detect
-which registers do not match between the incoming stream and the
-exposed sysregs
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
 
-History:
-
 v1 -> v2:
-- fixed typos (Connie)
-- Make it less KVM specific (tentative hidding of TCG regs, not
-  tested)
-- Tested DBGDTRTX TCG case reported by Peter
-- No change to the property format yet. Ran out of idea. However
-  I changed the name of the property with x-mig prefix
-- Changed the terminology, kept hidding but remove fake which was
-  confusing
-- Simplified the logic for regs missing in the incoming stream and
-  do not check anymore they are exposed on dest
+- Move the property in a separate patch
+- improve the commit msg
+- change the trace point to just print info in
+  kvm_arm_init_cpreg_list()
+- improve comment in cpu.h (Connie)
+---
+ target/arm/cpu.h        | 23 +++++++++++++++++++++++
+ target/arm/kvm.c        | 12 +++++++++++-
+ target/arm/trace-events |  2 ++
+ 3 files changed, 36 insertions(+), 1 deletion(-)
 
-Available at:
-https://github.com/eauger/qemu/tree/mitig-v2
-
-
-Eric Auger (8):
-  target/arm/machine: Improve traces on register mismatch during
-    migration
-  target/arm/cpu: Allow registers to be hidden
-  target/arm/machine: Allow extra regs in the incoming stream
-  target/arm/helper: Skip hidden registers
-  kvm-all: Add the capability to blacklist some KVM regs
-  target/arm/cpu: Implement hide_reg callback()
-  target/arm/cpu: Expose x-mig-hidden-regs and x-mig-safe-missing-regs
-    properties
-  hw/arm/virt: [DO NOT UPSTREAM] Enforce compatibility with older
-    kernels
-
- include/hw/core/cpu.h   |  2 ++
- target/arm/cpu.h        | 51 +++++++++++++++++++++++++++++++
- accel/kvm/kvm-all.c     | 12 ++++++++
- hw/arm/virt.c           | 19 ++++++++++++
- target/arm/cpu.c        | 11 +++++++
- target/arm/helper.c     | 10 +++++-
- target/arm/kvm.c        | 35 ++++++++++++++++++++-
- target/arm/machine.c    | 67 +++++++++++++++++++++++++++++++++++++----
- target/arm/trace-events |  9 ++++++
- 9 files changed, 208 insertions(+), 8 deletions(-)
-
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 077b0cce5b..0a283940be 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1044,6 +1044,18 @@ struct ArchCPU {
+     /* KVM steal time */
+     OnOffAuto kvm_steal_time;
+ 
++    /*
++     * Register indexes that must be hidden. Although normally
++     * supported (defined in TCG description or exposed by KVM) they are
++     * willingly hidden for migration sake. This may be used to allow
++     * backward migration to older versions that do implement a specific
++     * feature. With KVM acceleration the indexes are the ones described
++     * in linux/Documentation/virt/kvm/api.rst. With TCG, this is the TCG
++     * sysreg index.
++     */
++    uint64_t *hidden_regs;
++    uint32_t nr_hidden_regs;
++
+     /* Uniprocessor system with MP extensions */
+     bool mp_is_up;
+ 
+@@ -1184,6 +1196,17 @@ struct ARMCPUClass {
+     ResettablePhases parent_phases;
+ };
+ 
++static inline bool
++arm_cpu_hidden_reg(ARMCPU *cpu, uint64_t regidx)
++{
++    for (int i = 0; i < cpu->nr_hidden_regs; i++) {
++        if (cpu->hidden_regs[i] == regidx) {
++            return true;
++        }
++    }
++    return false;
++}
++
+ /* Callback functions for the generic timer's timers. */
+ void arm_gt_ptimer_cb(void *opaque);
+ void arm_gt_vtimer_cb(void *opaque);
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 58c6075a9e..575a668f49 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -788,7 +788,10 @@ static int kvm_arm_init_cpreg_list(ARMCPU *cpu)
+     qsort(&rlp->reg, rlp->n, sizeof(rlp->reg[0]), compare_u64);
+ 
+     for (i = 0, arraylen = 0; i < rlp->n; i++) {
+-        if (!kvm_arm_reg_syncs_via_cpreg_list(rlp->reg[i])) {
++        uint64_t regidx = rlp->reg[i];
++
++        if (!kvm_arm_reg_syncs_via_cpreg_list(regidx) ||
++            arm_cpu_hidden_reg(cpu, regidx)) {
+             continue;
+         }
+         switch (rlp->reg[i] & KVM_REG_SIZE_MASK) {
+@@ -804,6 +807,8 @@ static int kvm_arm_init_cpreg_list(ARMCPU *cpu)
+         arraylen++;
+     }
+ 
++    trace_kvm_arm_init_cpreg_list_arraylen(arraylen);
++
+     cpu->cpreg_indexes = g_renew(uint64_t, cpu->cpreg_indexes, arraylen);
+     cpu->cpreg_values = g_renew(uint64_t, cpu->cpreg_values, arraylen);
+     cpu->cpreg_vmstate_indexes = g_renew(uint64_t, cpu->cpreg_vmstate_indexes,
+@@ -815,9 +820,14 @@ static int kvm_arm_init_cpreg_list(ARMCPU *cpu)
+ 
+     for (i = 0, arraylen = 0; i < rlp->n; i++) {
+         uint64_t regidx = rlp->reg[i];
++
+         if (!kvm_arm_reg_syncs_via_cpreg_list(regidx)) {
+             continue;
+         }
++        if (arm_cpu_hidden_reg(cpu, regidx)) {
++            trace_kvm_arm_init_cpreg_list_skip_hidden_reg(rlp->reg[i]);
++            continue;
++        }
+         cpu->cpreg_indexes[arraylen] = regidx;
+         arraylen++;
+     }
+diff --git a/target/arm/trace-events b/target/arm/trace-events
+index 0a5ed3e69d..20f4b4f2cd 100644
+--- a/target/arm/trace-events
++++ b/target/arm/trace-events
+@@ -14,6 +14,8 @@ arm_gt_update_irq(int timer, int irqstate) "gt_update_irq: timer %d irqstate %d"
+ # kvm.c
+ kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova = 0x%"PRIx64" is translated into 0x%"PRIx64
+ kvm_arm_cpu_post_load_missing_reg(char *name) "Missing register in input stream: %s"
++kvm_arm_init_cpreg_list_arraylen(uint32_t arraylen) "arraylen=%d"
++kvm_arm_init_cpreg_list_skip_hidden_reg(uint64_t regidx) "hidden 0x%"PRIx64" is skipped"
+ 
+ # cpu.c
+ arm_cpu_reset(uint64_t mp_aff) "cpu %" PRIu64
 -- 
 2.51.1
 

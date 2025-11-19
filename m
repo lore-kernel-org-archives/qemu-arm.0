@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5090CF34AB
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Nov 2025 13:11:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B47EFCF34A1
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Nov 2025 13:11:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vLhwI-0000UF-1c; Wed, 19 Nov 2025 08:09:38 -0500
+	id 1vLhwH-0000T5-Qx; Wed, 19 Nov 2025 08:09:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vLhvu-00005B-TI
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vLhvu-00005C-Tc
  for qemu-arm@nongnu.org; Wed, 19 Nov 2025 08:09:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vLhvq-00037i-CN
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vLhvq-000374-03
  for qemu-arm@nongnu.org; Wed, 19 Nov 2025 08:09:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1763557749;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=Js6BO4VeBey2OiZe7AjXj3GXLYuEHV85DWPD2FEQA2I=;
- b=hWZ7Yv65+kQoFiDL2iLN9JWViSTd+Y+g80ACGb3/OnRsAd/izKPt0dgmcs3IVaF/Z5M6uu
- PkJbFkmiN82vP2Y0MxhmaJMMOUyi1j5Igv+1zrtbsLBNEWUX/JiJlcImFFZxVQvEje68YP
- prNA5LHB9yzPIcZ4GBzLwOqaoA5WTf4=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Q2/KZiPL6jFf6ZEf6LuTfoZJ9VDQwSYmfYUw5h6FWj8=;
+ b=flBqxOdzEw/W4+ilJE5Z68x4Q22zQkDoKDwtGVMSJSsS6EmQFhnSoBTjmV0iedyQHqpcrd
+ 5lH3Nfj3WIf8N6S1PeFqcBAdH6OJs0QzIdImob5mACP4Rls01H9eGlTF6HK9M89Bs/1rKG
+ ZvALpHyPp9ls/eqSrhXie87r9hhiGJ8=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-232-WePI68LnPQCITVv1F2bMiQ-1; Wed,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-151-AWehYKanNrqJKV5WNRli2g-1; Wed,
  19 Nov 2025 08:09:04 -0500
-X-MC-Unique: WePI68LnPQCITVv1F2bMiQ-1
-X-Mimecast-MFC-AGG-ID: WePI68LnPQCITVv1F2bMiQ_1763557741
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+X-MC-Unique: AWehYKanNrqJKV5WNRli2g-1
+X-Mimecast-MFC-AGG-ID: AWehYKanNrqJKV5WNRli2g_1763557741
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6E5D219560AD; Wed, 19 Nov 2025 13:09:00 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 664D91956096; Wed, 19 Nov 2025 13:09:00 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.45.242.18])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 720CA180047F; Wed, 19 Nov 2025 13:08:58 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6C6D3195608E; Wed, 19 Nov 2025 13:08:58 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 766DA21E6A27; Wed, 19 Nov 2025 14:08:55 +0100 (CET)
+ id 84D1321E66EF; Wed, 19 Nov 2025 14:08:55 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: kwolf@redhat.com, hreitz@redhat.com, mst@redhat.com, imammedo@redhat.com,
@@ -59,13 +60,16 @@ Cc: kwolf@redhat.com, hreitz@redhat.com, mst@redhat.com, imammedo@redhat.com,
  philmd@linaro.org, wangyanan55@huawei.com, zhao1.liu@intel.com,
  qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  qemu-riscv@nongnu.org, xen-devel@lists.xenproject.org
-Subject: [PATCH 0/5] A bit of cleanup around Error
-Date: Wed, 19 Nov 2025 14:08:50 +0100
-Message-ID: <20251119130855.105479-1-armbru@redhat.com>
+Subject: [PATCH 3/5] nbd/client-connection: Replace error_propagate() by
+ assignment
+Date: Wed, 19 Nov 2025 14:08:53 +0100
+Message-ID: <20251119130855.105479-4-armbru@redhat.com>
+In-Reply-To: <20251119130855.105479-1-armbru@redhat.com>
+References: <20251119130855.105479-1-armbru@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -90,44 +94,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Note: the last patch adds a drive-by FIXME.  I asked for advice on how
-to fix it:
+connect_thread_func() sets a variable to null, then error_propagate()s
+an Error * to it.  This is a roundabout way to assign the Error * to
+it, so replace it by just that.
 
-    Subject: Incorrect error handling in xen_enable_tpm()
-    To: qemu-devel@nongnu.org
-    Cc: Stefano Stabellini <sstabellini@kernel.org>, Anthony PERARD <anthony@xenproject.org>, Paul
-     Durrant <paul@xen.org>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-     xen-devel@lists.xenproject.org, Vikram Garhwal <vikram.garhwal@amd.com> 
-    Date: Fri, 14 Nov 2025 10:16:58 +0100
-    Message-ID: <87jyzt0y9h.fsf@pond.sub.org>
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ nbd/client-connection.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-No reply so far.
-
-Markus Armbruster (5):
-  hw/core/loader: Make load_elf_hdr() return bool, simplify caller
-  hw/nvram/xlnx-bbram: More idiomatic and simpler error reporting
-  nbd/client-connection: Replace error_propagate() by assignment
-  error: error_free(NULL) is safe, drop unnecessary conditionals
-  error: Consistently name Error * objects err, and not errp
-
- include/hw/loader.h         |  4 +++-
- block/crypto.c              |  8 ++++----
- hw/acpi/ghes.c              |  8 ++++----
- hw/acpi/pcihp.c             |  4 +---
- hw/arm/boot.c               |  6 +-----
- hw/core/loader.c            |  8 ++++++--
- hw/nvram/xlnx-bbram.c       | 18 ++++--------------
- hw/ppc/spapr.c              | 16 ++++++++--------
- hw/riscv/spike.c            | 10 +---------
- hw/xen/xen-pvh-common.c     | 13 ++++++++++---
- io/channel-websock.c        |  4 +---
- io/task.c                   |  4 +---
- migration/migration.c       |  6 ++----
- nbd/client-connection.c     |  3 +--
- nbd/common.c                |  6 +++---
- tests/unit/test-smp-parse.c |  5 +----
- 16 files changed, 51 insertions(+), 72 deletions(-)
-
+diff --git a/nbd/client-connection.c b/nbd/client-connection.c
+index 79ea97e4cc..6a4f080717 100644
+--- a/nbd/client-connection.c
++++ b/nbd/client-connection.c
+@@ -207,8 +207,7 @@ static void *connect_thread_func(void *opaque)
+         qemu_mutex_lock(&conn->mutex);
+ 
+         error_free(conn->err);
+-        conn->err = NULL;
+-        error_propagate(&conn->err, local_err);
++        conn->err = local_err;
+ 
+         if (ret < 0) {
+             object_unref(OBJECT(conn->sioc));
 -- 
 2.49.0
 

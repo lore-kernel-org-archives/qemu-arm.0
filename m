@@ -4,85 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E662CF58C9
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Nov 2025 19:13:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FDD4CF58E8
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Nov 2025 20:38:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vLncU-0005YV-Hk; Wed, 19 Nov 2025 14:13:34 -0500
+	id 1vLowf-0002ro-UM; Wed, 19 Nov 2025 15:38:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vLnbz-00053z-EE
- for qemu-arm@nongnu.org; Wed, 19 Nov 2025 14:13:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vLnbx-0003Zr-Jf
- for qemu-arm@nongnu.org; Wed, 19 Nov 2025 14:13:03 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1763579581;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=40h3XLj9+PQ9YtwgX30Ek+MMJ2QDdr/Ci5vXiZEsl2A=;
- b=PIbfsttwP8VK0U/cN/MVh0Vb1Qxv+glISjeLh+HpvbiqV/SVNV1cmyqMqd3bVv4YiDpIQj
- 7wCVR4ZCQSw14fxPlZ5an6o8thBg2DcmGbD6OkMuAhg4ErO88oftqsuvTTm7RozuhFWVFN
- ZhRsZQ+v4pFRP3C9OMB8VRVbe4h9OsQ=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-163-ZZ9ZNeNsM7mLeavDfCwX8g-1; Wed,
- 19 Nov 2025 14:12:56 -0500
-X-MC-Unique: ZZ9ZNeNsM7mLeavDfCwX8g-1
-X-Mimecast-MFC-AGG-ID: ZZ9ZNeNsM7mLeavDfCwX8g_1763579572
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0EC18180034A; Wed, 19 Nov 2025 19:12:51 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.18])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B313C180047F; Wed, 19 Nov 2025 19:12:49 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 3478021E6A27; Wed, 19 Nov 2025 20:12:47 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-Cc: qemu-devel@nongnu.org,  kwolf@redhat.com,  hreitz@redhat.com,
- mst@redhat.com,  imammedo@redhat.com,  anisinha@redhat.com,
- gengdongjiu1@gmail.com,  peter.maydell@linaro.org,
- alistair@alistair23.me,  edgar.iglesias@gmail.com,  npiggin@gmail.com,
- harshpb@linux.ibm.com,  palmer@dabbelt.com,  liwei1518@gmail.com,
- dbarboza@ventanamicro.com,  zhiwei_liu@linux.alibaba.com,
- sstabellini@kernel.org,  anthony@xenproject.org,  paul@xen.org,
- berrange@redhat.com,  peterx@redhat.com,  farosas@suse.de,
- eblake@redhat.com,  eduardo@habkost.net,  marcel.apfelbaum@gmail.com,
- philmd@linaro.org,  wangyanan55@huawei.com,  zhao1.liu@intel.com,
- qemu-block@nongnu.org,  qemu-arm@nongnu.org,  qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org,  xen-devel@lists.xenproject.org
-Subject: Re: [PATCH 1/5] hw/core/loader: Make load_elf_hdr() return bool,
- simplify caller
-In-Reply-To: <bf44d9cd-806a-4d2c-8cff-0a88222959ed@yandex-team.ru> (Vladimir
- Sementsov-Ogievskiy's message of "Wed, 19 Nov 2025 19:34:26 +0300")
-References: <20251119130855.105479-1-armbru@redhat.com>
- <20251119130855.105479-2-armbru@redhat.com>
- <bf44d9cd-806a-4d2c-8cff-0a88222959ed@yandex-team.ru>
-Date: Wed, 19 Nov 2025 20:12:47 +0100
-Message-ID: <875xb5x2ds.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vLowe-0002rJ-Ao
+ for qemu-arm@nongnu.org; Wed, 19 Nov 2025 15:38:28 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vLowb-0007Eu-EY
+ for qemu-arm@nongnu.org; Wed, 19 Nov 2025 15:38:28 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-4775e891b5eso828045e9.2
+ for <qemu-arm@nongnu.org>; Wed, 19 Nov 2025 12:38:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1763584698; x=1764189498; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=VTU5AJv9rSlIrVi5LXD3BPXP0DBJ54feNZIIwrMtGz0=;
+ b=ETVwiB8Jb81KhDAFiWrJtKO2W45+FFGk+r2DiKWDfQyCrijX4qdc/a2nNQ3ST+YiLd
+ Z0qZoSesy5XBOtvm98mcRuctuqlJqQZuzFFNoIN6H+vB3AjM8bIpOe8haO6VijxJqUFe
+ j1NDo/e1XW/GdFaccH4FwsrtE+twqxOuSEcx5KixhidG+Nik51PCJvbU4UWa7+iWPdQn
+ 8HXAJQOW8Ci5vr8A4xD6OS7QSsKP+u+DF8vmbIqa4h0HkRJwDE6W9PU7XBwGxECWDSGO
+ GDaTjvx/bq8Ikco0w/YTVVKfleSt4hjulfeaDws1RBZJp2Sf02Rm0hoonrH81E1RL/hY
+ epAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1763584698; x=1764189498;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=VTU5AJv9rSlIrVi5LXD3BPXP0DBJ54feNZIIwrMtGz0=;
+ b=hZYHn69lPweEN+l5xrg4X1eRWPjPdERcsUoWk7N1jQDoY538MniTPRjHlbJ+7Iy8Z8
+ dgx6QF3R5Npaz6zFSrJeY7dgM7hA8kPYzFAY+lE+i+JIlQYQHYNaT2NMvNKiHDUHRDP+
+ PchdTOrxNosYsqHbG0dE5QIvGc3cMOKOb2ZHXifkhwQC5RVp7l0p9AT85onGuDmHob4c
+ HF9IaDUyDJGNepZ7EG9gE0KgPCeUdcBJaNkZdHVoyeTXaucnfWBqAiNd5uV6XVmpdPsm
+ jVpZXWXEU2ceKL4vUVSX5bYLaZzQrU8Nn7YPzT2uD1PzTBH+mwdLk6j+OwRFJTJWr9h8
+ 41HA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUip8/4UY9P/ozk/Z4JRmRMvHhdtURpfpYjRaGAfCd7R0iSaw1g2115ZMrM/JZ1eZL4JrG1yds6KQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yxyy5Xzv87KZMWcwPLSZstS/fu5z2ll35SZdTB12yY9slRz/G7d
+ pej/LG/u+jn5Ah76v/1JTN56aTQxrxdBHj7rqWMWvaMhLUp5kAChCUEM
+X-Gm-Gg: ASbGncstZGmkwAURb/5gyZs0EqOHpKdOnpdDuyolpeV/ew7/6hxwPaYV2fcd8EWqW3n
+ rQbED1tl+dlSB9itovu+God2QUniIQXkyE/Rqol/ONmikdQ2XCdw7usx60x29wqgkAlxC8J0fei
+ +3T0Uc6S/JJ3abmiII7ony/HrDllgKgsWqxAQPymjuy3rg1vcJ8s/4U1UrjoLTSSOOoCi5QU8cF
+ pB8wl+hfHYwTzcHGEiqzGzSKLcsbjjgb2y98fChtpNdBQ2VTgZQOIOa/nY1Bdb30mE2itbnBcI2
+ 9b7Kv2K5A4pisdm6eQaCJByEoRuopaUpgrEzJRvNOLmzHKLThpI4kK17NF43qfEl1iXu1+gkCrB
+ XKQEAj2r1NLjZMtW7jS6WdGN8daMGeLuO0KfzPpD6JEpP6ud+TKzrrQTgVWpTfqd78nAX8dVxrq
+ V9+WtvLdv6LJeJUNPBdTBzAr73yn/3uQxs3HKWsnJI1s9MY8wGCBLu/+Fpjlahv8l4aDkPwwSL0
+ V/KNA==
+X-Google-Smtp-Source: AGHT+IHYqA51Ows78jeeZK9wk1Pf8BZfYPElbC74LxH5mGYnLJCScE6yegcrna0Ew8plEC7CplSJoQ==
+X-Received: by 2002:a05:600c:524b:b0:477:333a:f71f with SMTP id
+ 5b1f17b1804b1-477b8a95f5bmr5553655e9.17.1763584697555; 
+ Wed, 19 Nov 2025 12:38:17 -0800 (PST)
+Received: from archlinux (dynamic-002-245-001-202.2.245.pool.telefonica.de.
+ [2.245.1.202]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-477b0ffd37bsm68266995e9.3.2025.11.19.12.38.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 19 Nov 2025 12:38:17 -0800 (PST)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v2] hw/arm/Kconfig: Exclude imx8mp-evk machine from KVM-only
+ build
+Date: Wed, 19 Nov 2025 21:37:59 +0100
+Message-ID: <20251119203759.5138-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,39 +101,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru> writes:
+Fixes make check failures on an aarch64 host when QEMU is configured
+using '--enable-kvm --disable-tcg':
+  qemu-system-aarch64: unknown type 'arm-gicv3'
 
-> On 19.11.25 16:08, Markus Armbruster wrote:
->> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->
-> Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
->
->> ---
->>   include/hw/loader.h |  4 +++-
->>   hw/arm/boot.c       |  6 +-----
->>   hw/core/loader.c    |  8 ++++++--
->>   hw/riscv/spike.c    | 10 +---------
->>   4 files changed, 11 insertions(+), 17 deletions(-)
->> diff --git a/include/hw/loader.h b/include/hw/loader.h
->> index d035e72748..6f91703503 100644
->> --- a/include/hw/loader.h
->> +++ b/include/hw/loader.h
->> @@ -188,8 +188,10 @@ ssize_t load_elf(const char *filename,
->>    *
->>    * Inspect an ELF file's header. Read its full header contents into a
->>    * buffer and/or determine if the ELF is 64bit.
->> + *
->> + * Returns true on success, false on failure.
->
-> I don't really care, but IMO, it's obvious contract for bool+errp functions, not worth a comment.
+Reported-by: Cornelia Huck <cohuck@redhat.com>
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Tested-by: Cornelia Huck <cohuck@redhat.com>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 
-Nearby function comments all have a "Returns" sentence.  I try to blend
-in :)
+---
+v2:
+* Enhance commit message (Phil, Cornelia)
+---
+ hw/arm/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
->>    */
->> -void load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp);
->> +bool load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp);
->>     ssize_t load_aout(const char *filename, hwaddr addr, int max_sz,
->>                     bool big_endian, hwaddr target_page_size);
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 0cdeb60f1f..7877506384 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -623,7 +623,7 @@ config FSL_IMX8MP_EVK
+     bool
+     default y
+     depends on AARCH64
+-    depends on TCG || KVM
++    depends on TCG
+     select FSL_IMX8MP
+ 
+ config ARM_SMMUV3
+-- 
+2.52.0
 
 

@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8B4DCF34AB
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Nov 2025 13:10:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A0AFCF34AB
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Nov 2025 13:11:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vLhwY-0000cH-F6; Wed, 19 Nov 2025 08:09:54 -0500
+	id 1vLhwZ-0000fI-4G; Wed, 19 Nov 2025 08:09:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vLhvy-0000A4-99
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vLhvy-0000A1-0H
  for qemu-arm@nongnu.org; Wed, 19 Nov 2025 08:09:19 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vLhvv-0003A8-A0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vLhvs-00038m-G2
  for qemu-arm@nongnu.org; Wed, 19 Nov 2025 08:09:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1763557754;
+ s=mimecast20190719; t=1763557751;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=AWrrhvA/SQYaSu88z25wZQ2Z8oavREpawBAonXTqbBU=;
- b=c+0TozYP/9ufXMVjPpKkkXW/3IbYGmg6Sqkkep2AFY3rdTMezB0VzC2l6IB1tnUExxTgse
- /t+Y5Ck83rneOGmRUEyLHPVvbvRb2jKZHDCid/XL1eI0aOtqGuO23UwvfTDHHaWZxAKQzK
- Jhei8MbgzR4HCOEZcq5Il3L+E751N3o=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=D6teciZy8520fQI1QLTUyVGW20QyuWqmo6xWXoR980s=;
+ b=c9lcS7m1LY1OaIj2Asx0QzeB1mnk7MOPYu6TfSnURD6kM2EcHbzCaWOnGhgukR06N1UKAw
+ gK/3Ir70ZULj36ZpCuU7fsKKy9XgZanNMIbhEzuJnuaEMNCubqOB5+p4xrbh/BhcYm/J02
+ POu6eS4HdTyLzaev/8iA02oyTBiAl30=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-327-4l80z0zhO3KwJirOWaUm4g-1; Wed,
- 19 Nov 2025 08:09:07 -0500
-X-MC-Unique: 4l80z0zhO3KwJirOWaUm4g-1
-X-Mimecast-MFC-AGG-ID: 4l80z0zhO3KwJirOWaUm4g_1763557744
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-55-fWja6XeyMdqUfO5drj9beA-1; Wed,
+ 19 Nov 2025 08:09:05 -0500
+X-MC-Unique: fWja6XeyMdqUfO5drj9beA-1
+X-Mimecast-MFC-AGG-ID: fWja6XeyMdqUfO5drj9beA_1763557740
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DD5B218AB410; Wed, 19 Nov 2025 13:09:03 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 37A2A1800343; Wed, 19 Nov 2025 13:09:00 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.45.242.18])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 17C931800346; Wed, 19 Nov 2025 13:09:03 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4FCEF1800451; Wed, 19 Nov 2025 13:08:58 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 8F4A421E66A9; Wed, 19 Nov 2025 14:08:55 +0100 (CET)
+ id 79C9C21E6935; Wed, 19 Nov 2025 14:08:55 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: kwolf@redhat.com, hreitz@redhat.com, mst@redhat.com, imammedo@redhat.com,
@@ -60,14 +60,15 @@ Cc: kwolf@redhat.com, hreitz@redhat.com, mst@redhat.com, imammedo@redhat.com,
  philmd@linaro.org, wangyanan55@huawei.com, zhao1.liu@intel.com,
  qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  qemu-riscv@nongnu.org, xen-devel@lists.xenproject.org
-Subject: [PATCH 5/5] error: Consistently name Error * objects err, and not errp
-Date: Wed, 19 Nov 2025 14:08:55 +0100
-Message-ID: <20251119130855.105479-6-armbru@redhat.com>
+Subject: [PATCH 1/5] hw/core/loader: Make load_elf_hdr() return bool,
+ simplify caller
+Date: Wed, 19 Nov 2025 14:08:51 +0100
+Message-ID: <20251119130855.105479-2-armbru@redhat.com>
 In-Reply-To: <20251119130855.105479-1-armbru@redhat.com>
 References: <20251119130855.105479-1-armbru@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -93,173 +94,109 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This touches code in xen_enable_tpm() that is obviously wrong.  Since
-I don't know how to fix it properly, I'm adding a FIXME there.
-
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- block/crypto.c          |  8 ++++----
- hw/acpi/ghes.c          |  8 ++++----
- hw/ppc/spapr.c          | 16 ++++++++--------
- hw/xen/xen-pvh-common.c | 13 ++++++++++---
- nbd/common.c            |  6 +++---
- 5 files changed, 29 insertions(+), 22 deletions(-)
+ include/hw/loader.h |  4 +++-
+ hw/arm/boot.c       |  6 +-----
+ hw/core/loader.c    |  8 ++++++--
+ hw/riscv/spike.c    | 10 +---------
+ 4 files changed, 11 insertions(+), 17 deletions(-)
 
-diff --git a/block/crypto.c b/block/crypto.c
-index b97d027444..36abb7af46 100644
---- a/block/crypto.c
-+++ b/block/crypto.c
-@@ -938,14 +938,14 @@ static void GRAPH_RDLOCK
- block_crypto_amend_cleanup(BlockDriverState *bs)
- {
-     BlockCrypto *crypto = bs->opaque;
--    Error *errp = NULL;
-+    Error *err = NULL;
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index d035e72748..6f91703503 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -188,8 +188,10 @@ ssize_t load_elf(const char *filename,
+  *
+  * Inspect an ELF file's header. Read its full header contents into a
+  * buffer and/or determine if the ELF is 64bit.
++ *
++ * Returns true on success, false on failure.
+  */
+-void load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp);
++bool load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp);
  
-     /* release exclusive read/write permissions to the underlying file */
-     crypto->updating_keys = false;
--    bdrv_child_refresh_perms(bs, bs->file, &errp);
-+    bdrv_child_refresh_perms(bs, bs->file, &err);
+ ssize_t load_aout(const char *filename, hwaddr addr, int max_sz,
+                   bool big_endian, hwaddr target_page_size);
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index b91660208f..06b303aab8 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -766,16 +766,12 @@ static ssize_t arm_load_elf(struct arm_boot_info *info, uint64_t *pentry,
+     int data_swab = 0;
+     int elf_data_order;
+     ssize_t ret;
+-    Error *err = NULL;
  
--    if (errp) {
--        error_report_err(errp);
-+    if (err) {
-+        error_report_err(err);
-     }
- }
- 
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index 06555905ce..841a36e370 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -563,7 +563,7 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
-     const uint8_t guid[] =
-           UUID_LE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
-                   0xED, 0x7C, 0x83, 0xB1);
--    Error *errp = NULL;
-+    Error *err = NULL;
-     int data_length;
-     GArray *block;
- 
-@@ -583,12 +583,12 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
-     acpi_ghes_build_append_mem_cper(block, physical_address);
- 
-     /* Report the error */
--    ghes_record_cper_errors(ags, block->data, block->len, source_id, &errp);
-+    ghes_record_cper_errors(ags, block->data, block->len, source_id, &err);
- 
-     g_array_free(block, true);
- 
--    if (errp) {
--        error_report_err(errp);
-+    if (err) {
-+        error_report_err(err);
+-
+-    load_elf_hdr(info->kernel_filename, &elf_header, &elf_is64, &err);
+-    if (err) {
++    if (!load_elf_hdr(info->kernel_filename, &elf_header, &elf_is64, NULL)) {
+         /*
+          * If the file is not an ELF file we silently return.
+          * The caller will fall back to try other formats.
+          */
+-        error_free(err);
          return -1;
      }
  
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 99b843ba2f..db5e98e458 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -2847,7 +2847,7 @@ static void spapr_machine_init(MachineState *machine)
-     int i;
-     MemoryRegion *sysmem = get_system_memory();
-     long load_limit, fw_size;
--    Error *errp = NULL;
-+    Error *err = NULL;
-     NICInfo *nd;
- 
-     if (!filename) {
-@@ -2871,7 +2871,7 @@ static void spapr_machine_init(MachineState *machine)
-     /* Determine capabilities to run with */
-     spapr_caps_init(spapr);
- 
--    kvmppc_check_papr_resize_hpt(&errp);
-+    kvmppc_check_papr_resize_hpt(&err);
-     if (spapr->resize_hpt == SPAPR_RESIZE_HPT_DEFAULT) {
-         /*
-          * If the user explicitly requested a mode we should either
-@@ -2879,10 +2879,10 @@ static void spapr_machine_init(MachineState *machine)
-          * it's not set explicitly, we reset our mode to something
-          * that works
-          */
--        if (errp) {
-+        if (err) {
-             spapr->resize_hpt = SPAPR_RESIZE_HPT_DISABLED;
--            error_free(errp);
--            errp = NULL;
-+            error_free(err);
-+            err = NULL;
-         } else {
-             spapr->resize_hpt = smc->resize_hpt_default;
-         }
-@@ -2890,14 +2890,14 @@ static void spapr_machine_init(MachineState *machine)
- 
-     assert(spapr->resize_hpt != SPAPR_RESIZE_HPT_DEFAULT);
- 
--    if ((spapr->resize_hpt != SPAPR_RESIZE_HPT_DISABLED) && errp) {
-+    if ((spapr->resize_hpt != SPAPR_RESIZE_HPT_DISABLED) && err) {
-         /*
-          * User requested HPT resize, but this host can't supply it.  Bail out
-          */
--        error_report_err(errp);
-+        error_report_err(err);
-         exit(1);
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 590c5b02aa..10687fe1c8 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -364,8 +364,9 @@ const char *load_elf_strerror(ssize_t error)
      }
--    error_free(errp);
-+    error_free(err);
+ }
  
-     spapr->rma_size = spapr_rma_size(spapr, &error_fatal);
- 
-diff --git a/hw/xen/xen-pvh-common.c b/hw/xen/xen-pvh-common.c
-index b93ff80c85..3e62ec09d0 100644
---- a/hw/xen/xen-pvh-common.c
-+++ b/hw/xen/xen-pvh-common.c
-@@ -101,7 +101,7 @@ static void xen_create_virtio_mmio_devices(XenPVHMachineState *s)
- #ifdef CONFIG_TPM
- static void xen_enable_tpm(XenPVHMachineState *s)
+-void load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp)
++bool load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp)
  {
--    Error *errp = NULL;
-+    Error *err = NULL;
-     DeviceState *dev;
-     SysBusDevice *busdev;
- 
-@@ -111,8 +111,15 @@ static void xen_enable_tpm(XenPVHMachineState *s)
-         return;
++    bool ok = false;
+     int fd;
+     uint8_t e_ident_local[EI_NIDENT];
+     uint8_t *e_ident;
+@@ -380,7 +381,7 @@ void load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp)
+     fd = open(filename, O_RDONLY | O_BINARY);
+     if (fd < 0) {
+         error_setg_errno(errp, errno, "Failed to open file: %s", filename);
+-        return;
++        return false;
      }
-     dev = qdev_new(TYPE_TPM_TIS_SYSBUS);
--    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be), &errp);
--    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &errp);
-+    /*
-+     * FIXME This use of &err is is wrong.  If both calls fail, the
-+     * second will trip error_setv()'s assertion.  If just one call
-+     * fails, we leak an Error object.  Setting the same property
-+     * twice (first to a QOM path, then to an ID string) is almost
-+     * certainly wrong, too.
-+     */
-+    object_property_set_link(OBJECT(dev), "tpmdev", OBJECT(be), &err);
-+    object_property_set_str(OBJECT(dev), "tpmdev", be->id, &err);
-     busdev = SYS_BUS_DEVICE(dev);
-     sysbus_realize_and_unref(busdev, &error_fatal);
-     sysbus_mmio_map(busdev, 0, s->cfg.tpm.base);
-diff --git a/nbd/common.c b/nbd/common.c
-index 2a133a66c3..f43cbaa15b 100644
---- a/nbd/common.c
-+++ b/nbd/common.c
-@@ -282,10 +282,10 @@ void nbd_set_socket_send_buffer(QIOChannelSocket *sioc)
- #ifdef UNIX_STREAM_SOCKET_SEND_BUFFER_SIZE
-     if (sioc->localAddr.ss_family == AF_UNIX) {
-         size_t size = UNIX_STREAM_SOCKET_SEND_BUFFER_SIZE;
--        Error *errp = NULL;
-+        Error *err = NULL;
- 
--        if (qio_channel_socket_set_send_buffer(sioc, size, &errp) < 0) {
--            warn_report_err(errp);
-+        if (qio_channel_socket_set_send_buffer(sioc, size, &err) < 0) {
-+            warn_report_err(err);
-         }
+     if (read(fd, hdr, EI_NIDENT) != EI_NIDENT) {
+         error_setg_errno(errp, errno, "Failed to read file: %s", filename);
+@@ -415,8 +416,11 @@ void load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp)
+         off += br;
      }
- #endif /* UNIX_STREAM_SOCKET_SEND_BUFFER_SIZE */
+ 
++    ok = true;
++
+ fail:
+     close(fd);
++    return ok;
+ }
+ 
+ /* return < 0 if error, otherwise the number of bytes loaded in memory */
+diff --git a/hw/riscv/spike.c b/hw/riscv/spike.c
+index b0bab3fe00..8531e1d121 100644
+--- a/hw/riscv/spike.c
++++ b/hw/riscv/spike.c
+@@ -180,15 +180,7 @@ static void create_fdt(SpikeState *s, const MemMapEntry *memmap,
+ 
+ static bool spike_test_elf_image(char *filename)
+ {
+-    Error *err = NULL;
+-
+-    load_elf_hdr(filename, NULL, NULL, &err);
+-    if (err) {
+-        error_free(err);
+-        return false;
+-    } else {
+-        return true;
+-    }
++    return load_elf_hdr(filename, NULL, NULL, NULL);
+ }
+ 
+ static void spike_board_init(MachineState *machine)
 -- 
 2.49.0
 

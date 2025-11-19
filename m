@@ -4,88 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B54E4CF258E
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Nov 2025 07:48:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70E4ACF258E
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Nov 2025 07:50:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vLcvW-00072V-8B; Wed, 19 Nov 2025 02:48:30 -0500
+	id 1vLcxL-0007f8-Nj; Wed, 19 Nov 2025 02:50:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vLcvO-00071J-8s
- for qemu-arm@nongnu.org; Wed, 19 Nov 2025 02:48:23 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ id 1vLcx8-0007ci-SR
+ for qemu-arm@nongnu.org; Wed, 19 Nov 2025 02:50:12 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vLcvL-000310-BY
- for qemu-arm@nongnu.org; Wed, 19 Nov 2025 02:48:21 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4779adb38d3so31999135e9.2
- for <qemu-arm@nongnu.org>; Tue, 18 Nov 2025 23:48:18 -0800 (PST)
+ id 1vLcx3-00034z-Qz
+ for qemu-arm@nongnu.org; Wed, 19 Nov 2025 02:50:09 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-477770019e4so66821155e9.3
+ for <qemu-arm@nongnu.org>; Tue, 18 Nov 2025 23:50:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763538497; x=1764143297; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763538601; x=1764143401; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=dc3fw7l8Q3MOjjyPrAjJy3J1HK2uS6osBsWTcoWyKOA=;
- b=UOFd3OxM8ZelO6n9VR7AL07JgijgX8xI4kOCpqnPcv+FIj4znWsRhP0G8/cT9AKf+j
- xYxJXKdvfvjqQISe+2q6GOlJTO3fgTXSQOkVQUD9WrhkLu24L1pOaIOR5pXBDDF5nDMX
- 2raPQSiiUPW3fFBnSmmQVMf+3iW3tFeF6R3TsPPqgNTK7g3+wcxLxOvJIbbP/9+pykEh
- evT4EzQ871uNSd/LOnCGsjLlI17bQx2EJtjGj49BBFqZyEm3ngER0/LQBviK8rHbzDkU
- EVqxOzRIbpamIC8mML9K6DUJu3x010oRKH1o+lR6vh2LtNE5FyWR3gwb938yPRctEuPF
- Zwmg==
+ bh=FJ+QmTMK/yL4WwUPLL+36Dcb1t/YVv83d7fJPKTkS3s=;
+ b=j7lU/PCL+WfDEg2mF9yWAFEIkRhE36E8KK8U0roWfKr5lvYlsydmggJZevxsHEx912
+ H7lilk8SQhGI+eR6e8u6JjBlUj/9US3olPURHhDzjpL26yazttpkm7klImjXeAR/xKuu
+ ak9FLScH1daqLb1eamlS1MT2iLFIhSmNNPyJKj36wwmUjgEjYmGI/PVhDggSrdakdemK
+ ck4N0JBpzAk1HdFmdgYLE1oXolZhAV64Kw2k+oHF4OZFkXA8gx2GEQK3JIxQ57/8/O0E
+ p9aEKq9b0/phoIyECuAxncI8vlv4KteuwqiHJ1SvLyv8223JUkCZeWfZNmZjU6xTBYGv
+ irZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763538497; x=1764143297;
+ d=1e100.net; s=20230601; t=1763538601; x=1764143401;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=dc3fw7l8Q3MOjjyPrAjJy3J1HK2uS6osBsWTcoWyKOA=;
- b=it8oqOe0oO9/PHeQMBf7tEwNpxMx18pIcuIrMT2oqwYDTT9kchfGyxVmFHu4KQGxYK
- MpVyh3kH/pNftVDYVZyEh6yt28yH2FPxnDFZWPv7GjGYVfwXu84BaXjNARioLcpeodow
- ilo+CryYDKmZYX9LfjUqr0DKSk3Ah9gFAHHndUC2h6XUwQkyN8NF6AlvTQXE2lAYQ8H/
- eGouBl3WKpH5eVz3UnPDRdNGCUjPQOBoTYQUdsR3WTE93qqkLP1C27aJYd0vdABxzgTt
- lCC6KL7EeuFYfbiIxzwtx1sC39EnWbhTuh6aZm/xIdB7QG1F+4eDyH7tW0pmTOdaPRmz
- xxRw==
+ bh=FJ+QmTMK/yL4WwUPLL+36Dcb1t/YVv83d7fJPKTkS3s=;
+ b=bqdflXZwALqExh/VJxaSGB8rdkAR9RkpppSyG+AzXoIls+2HRMJ6yz4aTwFbvEADOe
+ TEjn7CuxNJ9DD8shG1ENgHzr6ZLpITdIbcmHIiVRC/iq0vHhFXhdtHYwwHRv4wlbFEqk
+ z341jtL3haQOPewXronTjTSUb2IPYBeNlEJWqxibjLLBZxZBAFEfhHCVIIgbTNlXd0od
+ TJZCZcR6Nafn9PDcNJ0m7MD4T5tidq23G5o7kBzuNs3HtXu3uAuI9mZUmFRyrars/oUG
+ qf3r0sC7x5P5SXg0UAn2RbWOtgF18XWwnk8Su+Si1JYoMexuQIdIb9BVoTuC2l3rV9L1
+ +U5g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW6tmuFWt7CqTv2gCsnYpGzcT0tlCm48VzRru47INUsZu379lXYiavd403kDTmi0X8hoQ9JhvPBzg==@nongnu.org
-X-Gm-Message-State: AOJu0YwqLeJEu9qXnYGVfEZs4PNya1Cp+rUKee6GEZB8hRMXdXKtK5K+
- gFedPxIj5O65RvCGz/MGNK76w8TWcSCp/y7B84swiBWiwNZ3zrY0K7yH13uoV7Ow3Bs=
-X-Gm-Gg: ASbGnctXSEyNB8k2StU7Tg3DOwFl1eqRAcRfOsFQAXk27LH+QRqeKsnjLgXRLSYXwwm
- A9h4lbq6s1lB2yIaGxfX3WtZyxuHtffzngEEyMtl2CUC/Hl6d4RprlgwgCbKaXSvtpyryJn3dUo
- ibU9RlaYuA0rqHvSOchZLBaTj6opxU/A0p92GYmbc7FdaaS9fiGK9YPBEQNOcBfnnvS+kwIAZPA
- nwckLKbvpJU/EZdwfrWodS05gd3+ssLpcHTkBuA4kHYF+8qYLt7rkhcTmgbWSCbND1O2UvKguSs
- C42+U3qQZLShav7c3V1TQ9KTcKBZlElLGGlI9SEznayUACdsM2Ez3pQkVk+84WmiPjZr21xkrRj
- Ac71Fam/3BKECR/CmK0eUaa7TqLCdTwQ7inbLicP9GfQgsKV6IUBU4L0MEKvPI8yPILddiwDo2/
- e5cMkMRJl9OoNv3AB2bPG/CKzLQWfTjgt57Mna9XoF4cwJ7sqwSqjBODEImsXMG0NSwOU=
-X-Google-Smtp-Source: AGHT+IHzz+QMue0cy/N4ly7F24guDGtJuVu7Yy6kIanR0QecLPcmQvtinQv3RSzDCxKdiOC8xTAbRA==
-X-Received: by 2002:a05:600c:8b42:b0:477:942:7521 with SMTP id
- 5b1f17b1804b1-4778fe683e1mr162260945e9.14.1763538497524; 
- Tue, 18 Nov 2025 23:48:17 -0800 (PST)
+ AJvYcCXJpxDl4p3kc7H87XyjjAqneToQi541DhXyMpsMsCa89a/2cDX5NIGJ+huIkjd9zqomyVu6RchjaA==@nongnu.org
+X-Gm-Message-State: AOJu0YwZwItxCAZNvT76f0H9B4WBPZ5klJP3BgGZdrljkSrlpFf8yIbI
+ DLtcJp9JxviD5PhtLAQpU3GGqN6mCT9syDZniCCIhP1ToQlZwI409kkkOGiGpUTXUHo=
+X-Gm-Gg: ASbGnctojjLrt746njF2DXbKbew7zY5ULNG71ed1MyYjwydOOikNobonIoty749ojJB
+ vGr2DXzoIt0qv0WH+Q7oV/bwWa12VH6fWeFcMyJjqO9fzdyHIP+p6GoIj5bBQ1h1Hwy4Uhr3X8u
+ uHcuDPVmncYcRB+eyVohKey0O7Yvp0NuGVaNpy8NMuT1SoDuOT3AFuLjJ6PKXrxsCQIjDmiPt2/
+ 2ku7KqxZwt1AWH5UN+AgBlFPMENwNGLY3TkH14ExS6XMbFu0gCSlAC/bEip+2V2L3moKNbJ6QVM
+ Nq+r5sgCde7Eiwg1S1ET0melOqoKNmtX1AHffc7tXbvxXAkThOSQskCaWkOmFJcbpYpwSdztuOF
+ wjIzZdpihM/k7NThNm1AigtUj/HewDHIH5WX/Q9q1aVIC176KPSnYsATC0LYuAfjLD4dP7EdEMp
+ IZe8tMnGiKPvWB7EpFX+4p4T6it+KAjtU4AhOTpDXn9fNfH2AG3EPGFoecoq8uOBSbqzPk6zadK
+ yNn/g==
+X-Google-Smtp-Source: AGHT+IHlHYPZYZ/A8dlSBOApFfINloS/UkSxz/qceUhwqiN5F3xbDyOGt7NibTP7G79oxS8BR10B0A==
+X-Received: by 2002:a05:600c:3b12:b0:46e:761b:e7ff with SMTP id
+ 5b1f17b1804b1-4778fe89ed9mr150826425e9.28.1763538601238; 
+ Tue, 18 Nov 2025 23:50:01 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:ed5:b1f0:90e8:1fdb:2cba:9db1?
  ([2a01:e0a:ed5:b1f0:90e8:1fdb:2cba:9db1])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-477b102a3a1sm32315295e9.9.2025.11.18.23.48.16
+ 5b1f17b1804b1-477b1022a32sm39203225e9.8.2025.11.18.23.50.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Nov 2025 23:48:17 -0800 (PST)
-Message-ID: <f3ba257b-44c4-4365-8735-30642518ca3b@linaro.org>
-Date: Wed, 19 Nov 2025 08:48:12 +0100
+ Tue, 18 Nov 2025 23:50:00 -0800 (PST)
+Message-ID: <0820f522-1174-4a92-8f4f-168511d959ae@linaro.org>
+Date: Wed, 19 Nov 2025 08:49:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v2 08/10] target/arm: storing to canonical tags faults
+Subject: Re: [PATCH RFC v2 09/10] tests/tcg: added test for MTE canonical and
+ NAT
 To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org
 References: <20251116-feat-mte4-v2-0-9a7122b7fa76@gmail.com>
- <20251116-feat-mte4-v2-8-9a7122b7fa76@gmail.com>
+ <20251116-feat-mte4-v2-9-9a7122b7fa76@gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20251116-feat-mte4-v2-8-9a7122b7fa76@gmail.com>
+In-Reply-To: <20251116-feat-mte4-v2-9-9a7122b7fa76@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=richard.henderson@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,49 +111,11 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 11/17/25 02:40, Gabriel Brookman wrote:
-> According to ARM ARM, section "Memory region tagging types", tag-store
-> instructions targeting canonically tagged regions cause a stage 1
-> permission fault.
-> 
-> Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
-> ---
->   target/arm/tcg/mte_helper.c | 47 +++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 47 insertions(+)
-> 
-> diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-> index ddb68e11fc..9eb3777fe2 100644
-> --- a/target/arm/tcg/mte_helper.c
-> +++ b/target/arm/tcg/mte_helper.c
-> @@ -196,6 +196,23 @@ uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
->   #endif
->   }
->   
-> +static void canonical_tag_write_fail(CPUARMState *env,
-> +                                uint64_t dirty_ptr, uintptr_t ra)
-> +{
-> +    uint64_t syn;
-> +
-> +    env->exception.vaddress = dirty_ptr;
-> +
-> +    /* bit 42 is TnD */
-> +    syn = (1l << 42) | syn_data_abort_no_iss(arm_current_el(env) != 0,
-> +            0, 0, 0, 0, 1, 0b1110);
-> +    raise_exception_ra(env, EXCP_DATA_ABORT, syn, exception_target_el(env), ra);
-> +    g_assert_not_reached();
-> +
-> +}
-> +
-> +
-> +
+> +    p0 = (int *) (((long) p0) | (1ll << 56));
 
-"l" is wrong.
+mixing long and ll is sketchy.
 
-Better as
-
-     syn = syn_data_abort_no_iss(...);
-     syn |= BIT_ULL(42);
-
-Watch the myriad newlines.
+Best to use uintptr_t anyway.
 
 
 r~

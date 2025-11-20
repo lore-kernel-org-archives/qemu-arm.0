@@ -4,98 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BDC0CF857B
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Nov 2025 10:52:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BBCECF8847
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Nov 2025 12:04:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vM2Ga-0003wE-EK; Thu, 20 Nov 2025 05:51:59 -0500
+	id 1vM3Ow-0000NL-9f; Thu, 20 Nov 2025 07:04:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vM2GG-0003tY-Nk
- for qemu-arm@nongnu.org; Thu, 20 Nov 2025 05:51:37 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1vM3Or-0000J6-TC
+ for qemu-arm@nongnu.org; Thu, 20 Nov 2025 07:04:33 -0500
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vM2GC-0004k6-M2
- for qemu-arm@nongnu.org; Thu, 20 Nov 2025 05:51:36 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-42b427cda88so512700f8f.0
- for <qemu-arm@nongnu.org>; Thu, 20 Nov 2025 02:51:31 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1vM3Op-0004OB-Cd
+ for qemu-arm@nongnu.org; Thu, 20 Nov 2025 07:04:33 -0500
+Received: by mail-ot1-x32b.google.com with SMTP id
+ 46e09a7af769-7c76f65feb5so599182a34.0
+ for <qemu-arm@nongnu.org>; Thu, 20 Nov 2025 04:04:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763635890; x=1764240690; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=ventanamicro.com; s=google; t=1763640270; x=1764245070; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=1M/18t6moVlkRgWVwoPcK84uBvdA6yoMjg+D+edbTko=;
- b=wfSc+JgJ0dI7VOXGQZ+KxVreJ+fO9QOTpcR9mOc0tauYvgoulOvQ+o2cWdaPdqcsEq
- Jw+lE0nxDogD8auAyXVkuooER8BTCmmOWt3EAWfuDvc5Pr+Kl7zqeEGTefScxP8tJnrq
- VIe9S3nQThB5+3xcsD30sNgXOt/EbUwJupk3Fx9WpOVImJJUQBs5bqMuOlrB3XDXj8/b
- 2ygQ7W5NzGybYIGcXJOEMgyUPw/AkRno0kMi7Wqk4jYloDQbKvpyjKdhNnBEpraNYQkp
- GbO4qK401M2S2pca29OuEoC+Ub80PGyxjStn7svYq8N5y3CENRneph6iGz40H3WbghRf
- n3qA==
+ bh=HarGE69Xcqz4hsoJV05tBZlKbKycWI9YTMfsZh37Imo=;
+ b=Qca5Vc7loXk++X4C4HVC84XJRCy2fQrcg+PP8HBg5SCVprfJ5O5DBoA3/AUS4Mz0HK
+ vUXaS+GCut++nPnRmHDsMlNwjzvG+tYPeryiZt1BkDwtZ7BprG2SK+lFKXsDZ7oOPvnQ
+ oJSsga2mnOePfdwJC/QLcK8o110B24SLjHyzJH9oDf2wKk4WcfbV4tUhfdeGoJRnDWyO
+ SG2mn6D9mIRXKb0jFDVC6jZmybhPOypDmdY2xbVnOMoCVJvdJTd32NBYuVA1UFtYtHw3
+ x7UGeeXMiAwaYBEuz8a6YT9sOyTK9oUXJ1r4ZetV0tRhoNSt+DoB5LisbC80rwxBWDKK
+ qjZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763635890; x=1764240690;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1763640270; x=1764245070;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=1M/18t6moVlkRgWVwoPcK84uBvdA6yoMjg+D+edbTko=;
- b=e95aQiksSMbhoiu4xZ+hd5/067igwf0/7OkjMvOcjehViNdK7ZIWUhoQLbL830bZM5
- irQxns2hVbkbWG/YXL0kn1LUyidNutxiGLAZwH5ci4+NoVsKNl6eL/RIxwgdZTJuXC+k
- VGAXQKEAMx8TowBbcynBWEh1wegNo2lucVHhmFkDYcZgy68wdKKgY0rwMyVYl8OObGiG
- UuReo/tW4hdtM13e4pi1xGjG/uqBoYBIoq9sO4YVqU3goNURyVeFMmSit6V0Qp0/uTMo
- I/PvYo9WmRbFGEJdiHXWrShRIvaj0CLWcVLDN/6yM0egnk8E1AJZppddfPfOMUeIlv9V
- ys3w==
+ bh=HarGE69Xcqz4hsoJV05tBZlKbKycWI9YTMfsZh37Imo=;
+ b=PNVMyEM/b9ra9CspCG+cKthVPUmJEkRVRJ9vCqNircR+G8L6X20JzS87Jqv1H9YVBe
+ wo1RbdDfG1FSb+Aoe/LhTnJtm0/oDMgN5I3YsabsSUn/8AFxCzfKkaCbaGIScesZGxku
+ mFMtXFZ16elcqSnDWm61YnMeUYwrEMJpH98CN+6rQZlAFJLt1K86gt7N4jqWX9A/6pV6
+ xv2YpcXI2D7OglEoKMoiSygcJ/p8xtO+GBElQXXIFyb7ibX6L5jlBhp4/Mpo/3bl/INy
+ 0BAY6a68DP9SC1EaaADIt/K6PrP0tOwSVgfZHgpf0erwFLJF04672YSEx+mkQrqIxe7j
+ +oxg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX20FFsDCJt9e3lPE0FOx6Yydm20EaaETC3YzJA0oaHA4ngsb+31WXCcVskorTargm9uAznxWz6Sg==@nongnu.org
-X-Gm-Message-State: AOJu0YwNCTHOdhUqJt3ZIuEl+2Js8iT8fkZKt2jTXElLHKGoZ5bwve4R
- KO4gBa8ndHbZwnxGoy02jnTeJGncH3efBXMxL10YiylyzJn0yHfpa1PDFb4g5SYJbLA=
-X-Gm-Gg: ASbGncteAIwuI80wpQv2nleT7y51gA778K9eFExF5JT4Bzd1Tl9wVZuMe5QTD0WvJWc
- JaHlztG/zPI+jiriSNEBVfSF1FBeXWy63edCSfJRPXUrwB/zhv9ppYASZPBiENlFvArHLrDZ4PR
- U5t3UKhXBgUK0Qu/zh1yQAgDPcr54QWNRZ9hj15Ncsx/VLtYFywTP91IyF8g/mcFYCdi0cmE298
- 2c8lStJmUx6p4ncmkH4CLHewElGJTXi9coSB9+e1jUTKtzGO+uUWsELiRfBKX5v3RkwaKvPGA08
- cgC8zXdPClWZxXzXYxUKmkQ6lqTxLBqtItxsOWFu1PjzRPdFAuFQ4Rx1F+lmY3/yI2sFCujb6qt
- IJNIum+JP11lQWj9meCvfDJeoC5xwA7m7C3Rqla3S0sdM5PQzKc8ypadrbhxvM0Tl+tW/moiwRW
- dlxqQRBaEM1VPbXH329SihaouUubuBnHKc7B1jyw9leHBcb7v2XT74Gw==
-X-Google-Smtp-Source: AGHT+IF1uX4P9Ldl1MKPWCI4CVFASAXHm93mBmH2oSNKZDSuBThVvq6LdHNkjvPuApS7MKVFsJt3HQ==
-X-Received: by 2002:a05:6000:228a:b0:42b:3131:5433 with SMTP id
- ffacd0b85a97d-42cb9a2decbmr2359371f8f.26.1763635890108; 
- Thu, 20 Nov 2025 02:51:30 -0800 (PST)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42cb7fb9190sm4912620f8f.33.2025.11.20.02.51.28
+ AJvYcCWkvhFh/3QMgiwOxunaMxtOt7pD8UP3lheDox/Do530hVITzBe/KygqowBrICwKi5cUS2QQeH94nw==@nongnu.org
+X-Gm-Message-State: AOJu0YwNHCdLDF3gePPA5S6y6my/fh4GRagzetNWHzAx+Sl0CgvM+GeK
+ P7RHbr2gfJNVQ9FcZb2vIaAw18LlYeM2w+iAtFvTQd712pl6HBMETVYM9akAe11RQfc=
+X-Gm-Gg: ASbGncuqDej6sLNQ3g/G84q32JhqO3SN7bjFGaCvFzwpewKGGhyIw37np7Ku9AZQLsG
+ KUyjYr3xjCt9oW3ZTSb5gvY9lBB+W8tfKinu+t8rSLtGlMq11ZdUPwyGeMnbMxVVzumerSC+dud
+ N+ZypfGoYmRQz7dNktPWzdOUTdB031DtR9PGE+HKZLeAj/f2P1FcACIvFzTqlJS5ngFE+d1eir9
+ VGpxeM1ySulu08zz5i5A1kr7i9O+1rR4LlJLAD1Hy7cd+UMnqgLun7O9w6lRwKjyrpi2m+V/YGv
+ m6QB73VVHgsyUKkeObTyUcLDQsJ8n/hU3lluL2EAgUK0egY4yErl+duGkNiTR0usJa/QUG6E4wD
+ seFaSu+4LJhSql4nxFps7M5g3wVN5Bq/zdEktWKb38+5Qt90LgdPZ/gxzF/lwLibfbu5NF7R3wL
+ 2QsJtr16e15N51ePO3GcFZ08mN4uE=
+X-Google-Smtp-Source: AGHT+IE7T3zLtJLZzoLsBItMOrBxunHBl1jg9y/7kshJBu9cagdI0RFnANqpM80LeRmUMaqt6X37qA==
+X-Received: by 2002:a05:6830:7187:b0:7c7:59a1:48d7 with SMTP id
+ 46e09a7af769-7c78f381e2bmr1004247a34.2.1763640269622; 
+ Thu, 20 Nov 2025 04:04:29 -0800 (PST)
+Received: from [192.168.68.110] ([177.188.133.235])
+ by smtp.gmail.com with ESMTPSA id
+ 46e09a7af769-7c78d302329sm924384a34.6.2025.11.20.04.04.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Nov 2025 02:51:29 -0800 (PST)
-Message-ID: <ab69153d-b162-47f2-90c9-22cd248c94a5@linaro.org>
-Date: Thu, 20 Nov 2025 11:51:27 +0100
+ Thu, 20 Nov 2025 04:04:27 -0800 (PST)
+Message-ID: <4fb0a736-4450-47c0-9f9e-6cb86a3b28ea@ventanamicro.com>
+Date: Thu, 20 Nov 2025 09:04:19 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 1/5] hw/core/loader: Make load_elf_hdr() return bool,
  simplify caller
-Content-Language: en-US
-To: Markus Armbruster <armbru@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-Cc: qemu-devel@nongnu.org, kwolf@redhat.com, hreitz@redhat.com,
- mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
- gengdongjiu1@gmail.com, peter.maydell@linaro.org, alistair@alistair23.me,
- edgar.iglesias@gmail.com, npiggin@gmail.com, harshpb@linux.ibm.com,
- palmer@dabbelt.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: kwolf@redhat.com, hreitz@redhat.com, mst@redhat.com, imammedo@redhat.com, 
+ anisinha@redhat.com, gengdongjiu1@gmail.com, peter.maydell@linaro.org,
+ alistair@alistair23.me, edgar.iglesias@gmail.com, npiggin@gmail.com,
+ harshpb@linux.ibm.com, palmer@dabbelt.com, liwei1518@gmail.com,
  zhiwei_liu@linux.alibaba.com, sstabellini@kernel.org,
  anthony@xenproject.org, paul@xen.org, berrange@redhat.com,
- peterx@redhat.com, farosas@suse.de, eblake@redhat.com, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, wangyanan55@huawei.com, zhao1.liu@intel.com,
+ peterx@redhat.com, farosas@suse.de, eblake@redhat.com,
+ vsementsov@yandex-team.ru, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
+ philmd@linaro.org, wangyanan55@huawei.com, zhao1.liu@intel.com,
  qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  qemu-riscv@nongnu.org, xen-devel@lists.xenproject.org
 References: <20251119130855.105479-1-armbru@redhat.com>
  <20251119130855.105479-2-armbru@redhat.com>
- <bf44d9cd-806a-4d2c-8cff-0a88222959ed@yandex-team.ru>
- <875xb5x2ds.fsf@pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <875xb5x2ds.fsf@pond.sub.org>
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Content-Language: en-US
+In-Reply-To: <20251119130855.105479-2-armbru@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32b;
+ envelope-from=dbarboza@ventanamicro.com; helo=mail-ot1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,46 +117,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 19/11/25 20:12, Markus Armbruster wrote:
-> Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru> writes:
-> 
->> On 19.11.25 16:08, Markus Armbruster wrote:
->>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->>
->> Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
->>
->>> ---
->>>    include/hw/loader.h |  4 +++-
->>>    hw/arm/boot.c       |  6 +-----
->>>    hw/core/loader.c    |  8 ++++++--
->>>    hw/riscv/spike.c    | 10 +---------
->>>    4 files changed, 11 insertions(+), 17 deletions(-)
->>> diff --git a/include/hw/loader.h b/include/hw/loader.h
->>> index d035e72748..6f91703503 100644
->>> --- a/include/hw/loader.h
->>> +++ b/include/hw/loader.h
->>> @@ -188,8 +188,10 @@ ssize_t load_elf(const char *filename,
->>>     *
->>>     * Inspect an ELF file's header. Read its full header contents into a
->>>     * buffer and/or determine if the ELF is 64bit.
->>> + *
->>> + * Returns true on success, false on failure.
->>
->> I don't really care, but IMO, it's obvious contract for bool+errp functions, not worth a comment.
-> 
-> Nearby function comments all have a "Returns" sentence.  I try to blend
-> in :)
 
-New developers might just have to look at a particular API such this
-loader one, without knowing the global errp contract. With that in
-mind, I'll documents @return everywhere.
 
+On 11/19/25 10:08 AM, Markus Armbruster wrote:
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+
+Nice cleanup
+
+
+Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+
+>   include/hw/loader.h |  4 +++-
+>   hw/arm/boot.c       |  6 +-----
+>   hw/core/loader.c    |  8 ++++++--
+>   hw/riscv/spike.c    | 10 +---------
+>   4 files changed, 11 insertions(+), 17 deletions(-)
 > 
->>>     */
->>> -void load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp);
->>> +bool load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp);
->>>      ssize_t load_aout(const char *filename, hwaddr addr, int max_sz,
->>>                      bool big_endian, hwaddr target_page_size);
-> 
+> diff --git a/include/hw/loader.h b/include/hw/loader.h
+> index d035e72748..6f91703503 100644
+> --- a/include/hw/loader.h
+> +++ b/include/hw/loader.h
+> @@ -188,8 +188,10 @@ ssize_t load_elf(const char *filename,
+>    *
+>    * Inspect an ELF file's header. Read its full header contents into a
+>    * buffer and/or determine if the ELF is 64bit.
+> + *
+> + * Returns true on success, false on failure.
+>    */
+> -void load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp);
+> +bool load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp);
+>   
+>   ssize_t load_aout(const char *filename, hwaddr addr, int max_sz,
+>                     bool big_endian, hwaddr target_page_size);
+> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> index b91660208f..06b303aab8 100644
+> --- a/hw/arm/boot.c
+> +++ b/hw/arm/boot.c
+> @@ -766,16 +766,12 @@ static ssize_t arm_load_elf(struct arm_boot_info *info, uint64_t *pentry,
+>       int data_swab = 0;
+>       int elf_data_order;
+>       ssize_t ret;
+> -    Error *err = NULL;
+>   
+> -
+> -    load_elf_hdr(info->kernel_filename, &elf_header, &elf_is64, &err);
+> -    if (err) {
+> +    if (!load_elf_hdr(info->kernel_filename, &elf_header, &elf_is64, NULL)) {
+>           /*
+>            * If the file is not an ELF file we silently return.
+>            * The caller will fall back to try other formats.
+>            */
+> -        error_free(err);
+>           return -1;
+>       }
+>   
+> diff --git a/hw/core/loader.c b/hw/core/loader.c
+> index 590c5b02aa..10687fe1c8 100644
+> --- a/hw/core/loader.c
+> +++ b/hw/core/loader.c
+> @@ -364,8 +364,9 @@ const char *load_elf_strerror(ssize_t error)
+>       }
+>   }
+>   
+> -void load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp)
+> +bool load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp)
+>   {
+> +    bool ok = false;
+>       int fd;
+>       uint8_t e_ident_local[EI_NIDENT];
+>       uint8_t *e_ident;
+> @@ -380,7 +381,7 @@ void load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp)
+>       fd = open(filename, O_RDONLY | O_BINARY);
+>       if (fd < 0) {
+>           error_setg_errno(errp, errno, "Failed to open file: %s", filename);
+> -        return;
+> +        return false;
+>       }
+>       if (read(fd, hdr, EI_NIDENT) != EI_NIDENT) {
+>           error_setg_errno(errp, errno, "Failed to read file: %s", filename);
+> @@ -415,8 +416,11 @@ void load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp)
+>           off += br;
+>       }
+>   
+> +    ok = true;
+> +
+>   fail:
+>       close(fd);
+> +    return ok;
+>   }
+>   
+>   /* return < 0 if error, otherwise the number of bytes loaded in memory */
+> diff --git a/hw/riscv/spike.c b/hw/riscv/spike.c
+> index b0bab3fe00..8531e1d121 100644
+> --- a/hw/riscv/spike.c
+> +++ b/hw/riscv/spike.c
+> @@ -180,15 +180,7 @@ static void create_fdt(SpikeState *s, const MemMapEntry *memmap,
+>   
+>   static bool spike_test_elf_image(char *filename)
+>   {
+> -    Error *err = NULL;
+> -
+> -    load_elf_hdr(filename, NULL, NULL, &err);
+> -    if (err) {
+> -        error_free(err);
+> -        return false;
+> -    } else {
+> -        return true;
+> -    }
+> +    return load_elf_hdr(filename, NULL, NULL, NULL);
+>   }
+>   
+>   static void spike_board_init(MachineState *machine)
 
 

@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90F70CF8859
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Nov 2025 13:25:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67513CF8855
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Nov 2025 13:25:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vM4fF-0000n1-Lr; Thu, 20 Nov 2025 08:25:34 -0500
+	id 1vM4dv-0005it-2N; Thu, 20 Nov 2025 08:24:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vM4f4-00008k-OS; Thu, 20 Nov 2025 08:25:22 -0500
+ id 1vM4dt-0005ig-SE; Thu, 20 Nov 2025 08:24:09 -0500
 Received: from mail-westusazlp170100001.outbound.protection.outlook.com
  ([2a01:111:f403:c000::1] helo=BYAPR05CU005.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vM4ez-0002bF-Gj; Thu, 20 Nov 2025 08:25:22 -0500
+ id 1vM4ds-0002D1-AQ; Thu, 20 Nov 2025 08:24:09 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=jo7ac2nW9rwZDwJF7hhCzZvMi2aNhxEtQJbJ6VO6oQOVCbbN+6QAY7YaAD7YmzMXhVcXyHV2cAtdoR8aYZFS+siW00YX/VKDIwWGl0yrg9Yak14BnAYoX+tFMoeIGgig1tY9GASulmE8IYhuWf0FL51d0uzJ4RQMXPgFf4e88/85oghQNnML5M2/LrZYypAOPY61RLjxlOVTVBkuiQoTz3vYUP2LdY3C5tzm9T2Ym1NVJg+10yFtsXIRlCen6bM6aIYkiLHtEcocypwmENLBeN+OgA0PvujTWvonM4idDQIylaJEG3A588jt85aVtBT+aVQXu0NeoOlksuSpiVEGCw==
+ b=NSxJrSUTUayb38B7i6Kiti7VWB92GqCNgFpJoPX8MJJKZwPGPYfRiuGzNchjVywDeWeZooCUuw4b3i7oLiqOeVmecNafg9CPpNTTHEKYvKzTe2D8CflXpgxKfOhptp4FruOa7wVaRWnatlXNfa7HO06Qn5r+Au9F/dyjarm5Mutni6GWCBM1RdWMoKsq62+vr/qcofWTBR+9qSqo5xRt+NW/V4oYNlq3NRCC4el1lf82CJmY5l1VAexDTAjz4xIHlUpnu5h++PpdpYHWEV9jX3bUuXKHQY6JbH5f91ypuirdas/R6piZ2Wn0iC40DinVyvO1Yns/967tfbh58JJAGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=KIYpKpBDZ/wPMV5H22ZyZD02qLRimM4fWixvA6bRLxc=;
- b=pP8+/LjbMBGzV/tGZd5d3qtfsgj1bPQpjFq8twwBOuA6dDvvZK1DqJqkSV1cjghnOurK6tMXV4jIngQnQmWKOQ21t7T6p2tfCespkO+YxyTR52QPmORZuV0M1VeFoQpgIUPLwOP2uqaf31/oPlWe+ceptC8Fk+q3ZBxAzviBq2hAw6Oj90rS2zpNQ/3XJsKQjHuNuTtb3wUT+jsBl3NKMem4Ggxn0ccQPNUSDky3O+Bg+cF+jtMwaRNEl6dT/NsbM9PwxpKFLPYKiX7XaPu2G+nhRVEg6ZZMZGfC3XE3CxkIT5guTTLs3kgVcyxS5PM2rBrTJ5J1ukT/SalfKB4uQg==
+ bh=DG03UdMUbSM+5ObpKiWgCDs7YhmvpVYTZ1UsN2Tyk08=;
+ b=Ni6s+S7msLm6lDXJVkncFtAW2hh6iXmqhuh0vaTKxnUZfdtIIVP8yjPaV4uK6e5SUoisS3xdxkfyPgKXsJ+ThssCgRkx72MnhFqgzt55QduT+1oqbYTlg2wdHQr0q8ErPpJLXh02w3XJv6vwldx0FefRuMBQQ7k9y8etm+T7aIhvipMWoHM4FcyX1sU+K1JYPISvLn27yluCDxAL9i9w4X8DdRhHFpwow7PFjhoHSRwp7jOy+MhNsXYGpj/6o+RL11Q97MJdfTkY50yHwvmHC/tNN8ioJWr5lojcZeyxdu2hSNZ9N2bVGFLZJw1hqwnaKiY2nCmXSxk81aA3Njqtfw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
@@ -33,18 +33,18 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=KIYpKpBDZ/wPMV5H22ZyZD02qLRimM4fWixvA6bRLxc=;
- b=lUkAhE6wJ0rWgAndoX6hL+rdMiPPTB1jF7FxRC8P0mCzsDqJfK+5rDmwAj5r1DQjcfuZh+iAzbBk0PayNt5EaucjPArDNGekfecVM4jZShkK52H2/AiVQNQSaP/8fv8jmmE+r1od9F27xgvgyeN88IEAMAFb7I0ww8OAo2e06tt2oLu9/gcn1r20T3XdZVYK6VJmtxQpFj5MqaLMRjisLUOTJ/+6fLXEDOfrFUy5JW0m1fhjWeZo/6v/aFdy5yu2F9muCnWsgh62MAGCZlhADwJb9m39/M5btnDzdyWeRRLwCy6+CfZB5walXWztyj3SDoJiIauLdBA0bhaae9Gu9g==
-Received: from CH0P221CA0016.NAMP221.PROD.OUTLOOK.COM (2603:10b6:610:11c::18)
- by PH8PR12MB7231.namprd12.prod.outlook.com (2603:10b6:510:225::9)
- with Microsoft SMTP Server (version=TLS1_2,
+ bh=DG03UdMUbSM+5ObpKiWgCDs7YhmvpVYTZ1UsN2Tyk08=;
+ b=OmkXL2cQUJKrwJPbuwfdcpcMPozDQLQAgh6DfCPJNxpdJLm5ugdEJzONC7injOEdrYHTMjbLNfzqvUCuRe26WHyvUIlcMMlladFClFWOn0bNc5rY1sW74qj6DIm9aTLyhmjv+eA6wlC0wKzPeaqTHwmivkQFRXO2YBpvbepl4v/pL1BzkK8Nfukmpd7QE0SMXF4+fsNCN0Huzjgsr8SyQfUoh9VRkZ5Y82kB7k+moodeCbXVtzjbx/DcGzbJa4/PCAHT6199xWRbimdF3sQEA/grVaa/nefxFWvjT8X/mlnWOYXG8qqlF7O/+veYddgRyTGJ26jHQI+ar70+vNe6Sg==
+Received: from CH3P220CA0015.NAMP220.PROD.OUTLOOK.COM (2603:10b6:610:1e8::8)
+ by IA1PR12MB8079.namprd12.prod.outlook.com (2603:10b6:208:3fb::5) with
+ Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.10; Thu, 20 Nov
- 2025 13:25:09 +0000
-Received: from CH1PEPF0000A34B.namprd04.prod.outlook.com
- (2603:10b6:610:11c:cafe::45) by CH0P221CA0016.outlook.office365.com
- (2603:10b6:610:11c::18) with Microsoft SMTP Server (version=TLS1_3,
+ 2025 13:24:00 +0000
+Received: from CH1PEPF0000A345.namprd04.prod.outlook.com
+ (2603:10b6:610:1e8:cafe::52) by CH3P220CA0015.outlook.office365.com
+ (2603:10b6:610:1e8::8) with Microsoft SMTP Server (version=TLS1_3,
  cipher=TLS_AES_256_GCM_SHA384) id 15.20.9343.11 via Frontend Transport; Thu,
- 20 Nov 2025 13:25:09 +0000
+ 20 Nov 2025 13:24:00 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
@@ -53,17 +53,17 @@ Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
  216.228.117.161 as permitted sender) receiver=protection.outlook.com;
  client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
 Received: from mail.nvidia.com (216.228.117.161) by
- CH1PEPF0000A34B.mail.protection.outlook.com (10.167.244.10) with Microsoft
+ CH1PEPF0000A345.mail.protection.outlook.com (10.167.244.8) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9343.9 via Frontend Transport; Thu, 20 Nov 2025 13:25:09 +0000
+ 15.20.9343.9 via Frontend Transport; Thu, 20 Nov 2025 13:23:59 +0000
 Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
  (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Thu, 20 Nov
- 2025 05:24:53 -0800
+ 2025 05:23:46 -0800
 Received: from NV-2Y5XW94.nvidia.com (10.126.231.35) by rnnvmail201.nvidia.com
  (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Thu, 20 Nov
- 2025 05:24:50 -0800
+ 2025 05:23:42 -0800
 From: Shameer Kolothum <skolothumtho@nvidia.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
@@ -71,10 +71,12 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <nathanc@nvidia.com>, <mochs@nvidia.com>, <smostafa@google.com>,
  <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
  <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
- <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>, <kjaju@nvidia.com>
-Subject: [PATCH v6 22/33] hw/arm/virt: Set PCI preserve_config for accel SMMUv3
-Date: Thu, 20 Nov 2025 13:22:02 +0000
-Message-ID: <20251120132213.56581-23-skolothumtho@nvidia.com>
+ <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>, <kjaju@nvidia.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>
+Subject: [PATCH v6 08/33] hw/pci/pci: Add optional supports_address_space()
+ callback
+Date: Thu, 20 Nov 2025 13:21:48 +0000
+Message-ID: <20251120132213.56581-9-skolothumtho@nvidia.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20251120132213.56581-1-skolothumtho@nvidia.com>
 References: <20251120132213.56581-1-skolothumtho@nvidia.com>
@@ -86,53 +88,53 @@ X-ClientProxiedBy: rnnvmail201.nvidia.com (10.129.68.8) To
  rnnvmail201.nvidia.com (10.129.68.8)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH1PEPF0000A34B:EE_|PH8PR12MB7231:EE_
-X-MS-Office365-Filtering-Correlation-Id: 154d30d7-7d9e-43b2-c001-08de28383a7a
+X-MS-TrafficTypeDiagnostic: CH1PEPF0000A345:EE_|IA1PR12MB8079:EE_
+X-MS-Office365-Filtering-Correlation-Id: 30267a79-52a0-4007-1a25-08de283810ee
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|1800799024|7416014|36860700013|82310400026; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?vE0fwL52s+2gGAnUsZlM/ksQFW+LwbrcHedR7jrF8M3wgbvp2KbaA8C5yyey?=
- =?us-ascii?Q?pxxhhUuIY820+JoB1bk2Hz736SmA9FBPfx4IxCUJzDch0jXwi3b/GYlITmia?=
- =?us-ascii?Q?9vqPO7uVJj5athK4opTjsjfW1PHUQh+Mn4k5CytqIxOBeBaX2XBubuSwvfeI?=
- =?us-ascii?Q?g6TBCUPEIVMKaSlpzN9JmDJ8pD5uRG8D3TNc9I7JHqbD0Zrztn2JVxz7KEbb?=
- =?us-ascii?Q?4LFC5X0PVFMm84iSItzJ1lWQsij8i6boaxv2XepGtaJybJ94KE2qdwQfyjD4?=
- =?us-ascii?Q?8JQA7gmYnRFvhaBX+G1tEhVOXB1TBzPpJELV8dhbAOygQetMkjbL6jMJek46?=
- =?us-ascii?Q?aHEz5BlCbeMsycdDDxVVHZLxA+hgMsquwz9n/LBG//1ZpFLULsc4L/NHhHZV?=
- =?us-ascii?Q?wCKVVEzAarz+IVtTheXh0memJL+bzjYAT3Wit1V/yEpGR6vYyGGzYqQ++rTI?=
- =?us-ascii?Q?yd0gFA21z39S5x/od3kjhYsUMrzveK43EdTPh+BmVTo4TpZ3t2KPmMjx5ij/?=
- =?us-ascii?Q?uc8sKI7QROXlKy7XatfXUHXUNodDTcQiBcRTfRA3ZdE+3rCYErJjAWV8jwbs?=
- =?us-ascii?Q?aACrlj5LZrpeszhJNr4oAmpdj2OxpBt9VG3AKTYgAFYbevSFAGM1QTEezS6g?=
- =?us-ascii?Q?EwLdaxq1pk/2OF0wdNdnp1PfViOG0hmGJdJm3dkfBoEVKx0h+3Q8CNgetnGX?=
- =?us-ascii?Q?ezdvnZawFgnZzEpDkAyqN0k3ryxAdLlghVYfe1xo4SCyl3Rv0jxzZSr0fzlG?=
- =?us-ascii?Q?mjJyENVIQR9X7nhcY4iD2GeJIU1qt0oFbXLyb2bRoIhKqnnZGo2KrbVwYIdW?=
- =?us-ascii?Q?Ki3ZwW4vRAi+phsbhNb2XSLZLXoY6VqzVrXPaqpeFoVHLb0Q/K1j3SbY7Vq6?=
- =?us-ascii?Q?G1G2L+eM1pz+tROmHmRj3rb9vOfRgdMVKUyps8IXnkyaqzf8JhR8GJDYVsrE?=
- =?us-ascii?Q?ONg7KQGIA6ES5ueFDBsDVTRgO6e8HtjHP8Naemz/WBfAuzNORE/jk+B0ELtq?=
- =?us-ascii?Q?fLDJgLrrkB5tLn/LctZ5MFo6S0L0Q2hubqODL2YmBRqpwbF3LC0cQsj60lM6?=
- =?us-ascii?Q?DU65Jq1MR3ips4Ne33y9MLaGb3P+diYFLSyhk6vfhmBM2efuOjsZNf7v5p9W?=
- =?us-ascii?Q?2Y1mqthfUnP0PC8AtdRiGp+vyA12KF2rthPi9ug1wI4/SWhhT+SbRBNS/RDu?=
- =?us-ascii?Q?BiR+GyHGJrl5nOw8kM0cYk9HXuhJA9vvFpiIiaegVD7NmJ5fykS/9+HurSgI?=
- =?us-ascii?Q?VGekbblD76WTMYj5zgU/7vRFHg7Xw2fBPnn5PbabMxSfMciOKtHs1OAqbpQn?=
- =?us-ascii?Q?rKQHv9pUfPmFLr/EjKkjerSSYpBhkjKz9ik46fR0AENeApjzIULzWaAvMZxv?=
- =?us-ascii?Q?fN8+9owN779R6Z5+iGyx/MVOFLSr/MeCP7s/86xSlk3B7B2lfrnpUeG8e4Sy?=
- =?us-ascii?Q?nkfOFQ/Sz9xtBsj8gL4h/e2GhuyfNIitBvDYAlIaJ+eYfbSuQ4ilGW1m7rqm?=
- =?us-ascii?Q?SzvrFMlr9EeSXuq7s5ki+bsJsHX1/1fIEw0aLVxvDgiSR2hW1/KYNwILnOwr?=
- =?us-ascii?Q?ysnlHy+BwrYWaW2ekeo=3D?=
+ ARA:13230040|376014|7416014|36860700013|82310400026|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?UOrQOYmm/s36Ij8rpIY1iv39jbrX72hDUhWc/WpG9bE4WkYehXk/yLp+Ycfv?=
+ =?us-ascii?Q?h5Ibir3PWE2lvd2KAzR4hbzxFwHYIWi4ssy1zIvy76xudkwUuWXkL5GuH9Nn?=
+ =?us-ascii?Q?m7Iw3v7UmHLoOPue5IEXPsyMjxcT+Qmf5xm40/K/LQIBaD7EpTGOfhSeiDO1?=
+ =?us-ascii?Q?sYgHIuX+FqgbtAl3/VrOhIWm6PTTVx1qs866pQcPZvvBN1acTmXccVmrB79k?=
+ =?us-ascii?Q?ugavaQcqYcTmNSh35xAUEn9qQPcgKd5HGTHSnWdgX5UAVGbOxWaCg4IEAltp?=
+ =?us-ascii?Q?8n5FGuFa/aFx85G1VbCx4MoI4vfKdYHwYz1y7uQwoD3scGcLCPwg9CvBLuza?=
+ =?us-ascii?Q?sn2NZb0uK5ULOFyeE53M9vX9DpiiIUxtZH2VIS1YiQSEW4sGJkeVEnkD2p2+?=
+ =?us-ascii?Q?UNm9wzQWZ1wWcEODr2oAX+UQVMK1ala3kMZkoBR0ToEo4I9IFK+0sfBwHslm?=
+ =?us-ascii?Q?Lbb1lnd42AQE0cSy/RydWnApWM/KNq6Jr2vX812MTOQcTGZQ0oJ9tcUoPwDC?=
+ =?us-ascii?Q?YhxAFufGJ/RbMbhTisyYa+dS+A2yROmBFSgH6XJHStE7bjk0Dvo4PJUxvToF?=
+ =?us-ascii?Q?6eMRy3xoSLj8jziMDo4l9p3BDMZhycspDOLGwll/ChpHeh2V0dW9LFdrICOm?=
+ =?us-ascii?Q?DxNjK/HaZYcXVn4Mcoc287odrGFSt3Ih4dVUXpr12iAQppzA1/h0+ob6Pd7s?=
+ =?us-ascii?Q?qB42JXexQg/EhciqUXEDdB0it0RdTXqLibBAehwQXoZ0tAHMoyxb7wBepKLL?=
+ =?us-ascii?Q?M/eNEebRVkrwhGGrxOi+H61mubj7ZKrhQY/5uP78mLnBhhGVbkmqjyoUJCk3?=
+ =?us-ascii?Q?Jk02jbS8lhNr32LWVP0DBBxiTeKyN2QNzbhVmqoWQXwnSbbNXFWL5YTSLGSu?=
+ =?us-ascii?Q?ArcpNf/7Jf+5taa/47KxOIel1YclEgXp79ck9P+1S4/IRD+YPU5qdR3pRuHa?=
+ =?us-ascii?Q?VFDXMA0XU8anSPhpfiOPY7zty6RXX3Kyo8YUqDRCRPe91uuF0iV/LZxEzeQE?=
+ =?us-ascii?Q?o6ZTNF68af5m2YKAemZ8GWFGhAZIJBoKH4EUAe5tDMqQ01hsIKXCk5taF7K5?=
+ =?us-ascii?Q?0s9q6ZNx/jFUr+vclcVYWEECAr2Zq0H5/rtD3oEgC0Xo/KRWl2Cl+nlLwRTk?=
+ =?us-ascii?Q?ZfOV0nKGeSRGRiEtjMkObafPJ6ldex9nJLjbwpteLsPYCDWtA+3PkqEbe1DO?=
+ =?us-ascii?Q?JG4Q0Gn6MOPw2elNgvd4AM+KpelCltXKGldwR/g/ZF05GYoTQYiaPS25MEci?=
+ =?us-ascii?Q?/8DsIj9+2SdmlGlVHyXOqPkATU0yUrtCrIQza6oXS2Xay2Px2M7ZLyTuIU8o?=
+ =?us-ascii?Q?LIIiuHtsCiMzH2RwQ8IMsGQ3GYfaiBjq9cSNHnxt5YOu4qWEUsdXF6mhPwT2?=
+ =?us-ascii?Q?rYFRRLpVhB/NXYmjK62ZSggUNi0y9Wyv9KfDhAcijVXhMglzMxJiPDDbFfpG?=
+ =?us-ascii?Q?0LoPt/4LzfzTRMH+e6O5h4PGGYXGkw6Ec1uuXm8HOuJQuoO+Yx6l1WPuP2iC?=
+ =?us-ascii?Q?9srAuzoTpmoEcdTNqMAA1/zotoe3rEecgUu8xlnCx+covitCdXCu1rFOzg6M?=
+ =?us-ascii?Q?uRDq4nl+hiS3qFIU0q4=3D?=
 X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(7416014)(36860700013)(82310400026); DIR:OUT;
+ SFS:(13230040)(376014)(7416014)(36860700013)(82310400026)(1800799024); DIR:OUT;
  SFP:1101; 
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Nov 2025 13:25:09.5940 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 154d30d7-7d9e-43b2-c001-08de28383a7a
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Nov 2025 13:23:59.8874 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 30267a79-52a0-4007-1a25-08de283810ee
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: CH1PEPF0000A34B.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: CH1PEPF0000A345.namprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB7231
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB8079
 Received-SPF: permerror client-ip=2a01:111:f403:c000::1;
  envelope-from=skolothumtho@nvidia.com;
  helo=BYAPR05CU005.outbound.protection.outlook.com
@@ -158,68 +160,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce a new pci_preserve_config field in virt machine state which
-allows  the generation of DSM #5. This field is only set if accel SMMU
-is instantiated.
+Introduce an optional supports_address_space() callback in PCIIOMMUOps to
+allow a vIOMMU implementation to reject devices that should not be attached
+to it.
 
-In a subsequent patch, SMMUv3 accel mode will make use of IORT RMR nodes
-to enable nested translation of MSI doorbell addresses. IORT RMR requires
-_DSM #5 to be set for the PCI host bridge so that the Guest kernel
-preserves the PCI boot configuration.
+Currently, get_address_space() is the first and mandatory callback into the
+vIOMMU layer, which always returns an address space. For certain setups, such
+as hardware accelerated vIOMMUs (e.g. ARM SMMUv3 with accel=on), attaching
+emulated endpoint devices is undesirable as it may impact the behavior or
+performance of VFIO passthrough devices, for example, by triggering
+unnecessary invalidations on the host IOMMU.
 
+The new callback allows a vIOMMU to check and reject unsupported devices
+early during PCI device registration.
+
+Cc: Michael S. Tsirkin <mst@redhat.com>
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 ---
- hw/arm/virt-acpi-build.c | 8 ++++++++
- hw/arm/virt.c            | 1 +
- include/hw/arm/virt.h    | 1 +
- 3 files changed, 10 insertions(+)
+ hw/pci/pci.c         | 20 ++++++++++++++++++++
+ include/hw/pci/pci.h | 17 +++++++++++++++++
+ 2 files changed, 37 insertions(+)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 200e2a1da7..f7264fe8d8 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -164,6 +164,14 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
-         .pci_native_hotplug = !acpi_pcihp,
-     };
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index af32ab4adb..55647a6928 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -135,6 +135,21 @@ static void pci_set_master(PCIDevice *d, bool enable)
+     d->is_master = enable; /* cache the status */
+ }
  
-+    /*
-+     * Accel SMMU requires RMRs for MSI 1-1 mapping, which require _DSM
-+     * function 5 (_DSM for Preserving PCI Boot Configurations).
-+     */
-+    if (vms->pci_preserve_config) {
-+        cfg.preserve_config = true;
-+    }
++static bool
++pci_device_supports_iommu_address_space(PCIDevice *dev, Error **errp)
++{
++    PCIBus *bus;
++    PCIBus *iommu_bus;
++    int devfn;
 +
-     if (vms->highmem_mmio) {
-         cfg.mmio64 = memmap[VIRT_HIGH_PCIE_MMIO];
++    pci_device_get_iommu_bus_devfn(dev, &iommu_bus, &bus, &devfn);
++    if (iommu_bus && iommu_bus->iommu_ops->supports_address_space) {
++        return iommu_bus->iommu_ops->supports_address_space(bus,
++                                iommu_bus->iommu_opaque, devfn, errp);
++    }
++    return true;
++}
++
+ static void pci_init_bus_master(PCIDevice *pci_dev)
+ {
+     AddressSpace *dma_as = pci_device_iommu_address_space(pci_dev);
+@@ -1424,6 +1439,11 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
+     pci_dev->config_write = config_write;
+     bus->devices[devfn] = pci_dev;
+     pci_dev->version_id = 2; /* Current pci device vmstate version */
++    if (!pci_device_supports_iommu_address_space(pci_dev, errp)) {
++        do_pci_unregister_device(pci_dev);
++        bus->devices[devfn] = NULL;
++        return NULL;
++    }
+     if (phase_check(PHASE_MACHINE_READY)) {
+         pci_init_bus_master(pci_dev);
      }
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ea3231543a..8503879c3d 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3109,6 +3109,7 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
-                 }
-                 object_property_set_uint(OBJECT(dev), "msi-gpa", db_start,
-                                          &error_abort);
-+                vms->pci_preserve_config = true;
-             }
-         }
-     }
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index c77a33f6df..efbc1758c5 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -180,6 +180,7 @@ struct VirtMachineState {
-     bool ns_el2_virt_timer_irq;
-     CXLState cxl_devices_state;
-     bool legacy_smmuv3_present;
-+    bool pci_preserve_config;
- };
- 
- #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
+diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+index a3ca54859c..dd1c4483a2 100644
+--- a/include/hw/pci/pci.h
++++ b/include/hw/pci/pci.h
+@@ -417,6 +417,23 @@ typedef struct IOMMUPRINotifier {
+  * framework for a set of devices on a PCI bus.
+  */
+ typedef struct PCIIOMMUOps {
++    /**
++     * @supports_address_space: Optional pre-check to determine if a PCI
++     * device can have an IOMMU address space.
++     *
++     * @bus: the #PCIBus being accessed.
++     *
++     * @opaque: the data passed to pci_setup_iommu().
++     *
++     * @devfn: device and function number.
++     *
++     * @errp: pass an Error out only when return false
++     *
++     * Returns: true if the device can be associated with an IOMMU address
++     * space, false otherwise with errp set.
++     */
++    bool (*supports_address_space)(PCIBus *bus, void *opaque, int devfn,
++                                   Error **errp);
+     /**
+      * @get_address_space: get the address space for a set of devices
+      * on a PCI bus.
 -- 
 2.43.0
 

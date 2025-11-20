@@ -4,96 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC6D4CF857F
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Nov 2025 10:44:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BDC0CF857B
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Nov 2025 10:52:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vM28k-0001T4-98; Thu, 20 Nov 2025 05:43:50 -0500
+	id 1vM2Ga-0003wE-EK; Thu, 20 Nov 2025 05:51:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vM28i-0001Sk-Jw
- for qemu-arm@nongnu.org; Thu, 20 Nov 2025 05:43:48 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vM2GG-0003tY-Nk
+ for qemu-arm@nongnu.org; Thu, 20 Nov 2025 05:51:37 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vM28g-0003TM-QL
- for qemu-arm@nongnu.org; Thu, 20 Nov 2025 05:43:48 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-4779cb0a33fso7143345e9.0
- for <qemu-arm@nongnu.org>; Thu, 20 Nov 2025 02:43:45 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vM2GC-0004k6-M2
+ for qemu-arm@nongnu.org; Thu, 20 Nov 2025 05:51:36 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-42b427cda88so512700f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 20 Nov 2025 02:51:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763635424; x=1764240224; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763635890; x=1764240690; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=7oHOv6TarlQbLUVDxxSIUN/NgK6M7FvSaHEHJevpMjw=;
- b=n2nu33Ex1CQW8aFAnPBh1w2EZckYOLJLOW4DsyKMSvBv8k0dH9CET2jFuv/Apg0W65
- gGRD/DptzMlKrnrPdiT/Q+//nvvwifOsJiii+i5b7HcTBP+jxXU7GLjbeeEanNsi99SA
- 76zvnM6hdtvZLIsSm6m7GE1gBvNDuKtYMfkGqRA5nliXLV70fxEP3m5wu8xJi+2MEizj
- gPIwQFLqDXe+kaO969PTsqxX59NobpAGAYaPbm/a37yyZyTbHpyCnLi4RFCWAt3MUuIX
- Vlhc4YWKm2kUGocgOPNsBVFYBWJ3EnaWSdAfA4BA+scxyHYy/oD/znmwRHLppEyPdKiL
- SLZg==
+ bh=1M/18t6moVlkRgWVwoPcK84uBvdA6yoMjg+D+edbTko=;
+ b=wfSc+JgJ0dI7VOXGQZ+KxVreJ+fO9QOTpcR9mOc0tauYvgoulOvQ+o2cWdaPdqcsEq
+ Jw+lE0nxDogD8auAyXVkuooER8BTCmmOWt3EAWfuDvc5Pr+Kl7zqeEGTefScxP8tJnrq
+ VIe9S3nQThB5+3xcsD30sNgXOt/EbUwJupk3Fx9WpOVImJJUQBs5bqMuOlrB3XDXj8/b
+ 2ygQ7W5NzGybYIGcXJOEMgyUPw/AkRno0kMi7Wqk4jYloDQbKvpyjKdhNnBEpraNYQkp
+ GbO4qK401M2S2pca29OuEoC+Ub80PGyxjStn7svYq8N5y3CENRneph6iGz40H3WbghRf
+ n3qA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763635424; x=1764240224;
+ d=1e100.net; s=20230601; t=1763635890; x=1764240690;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=7oHOv6TarlQbLUVDxxSIUN/NgK6M7FvSaHEHJevpMjw=;
- b=duDSY4KcipaPNleNxbU/F28Ao55iDBvJyN2ittQGZP9wvu7rPGpAheXUrH5eLSkDhK
- acwsraxHxpJHJuVGlxyUAL8xHD/8waGTe3GTf+ACDo323Z1NZVLsICfAgWcajExoN3jx
- Oy/QxQTcxlsYJ++XtuRJ6XZ/u1gHsyvP2FUMHIoVmwYvRbrgJuq/5jVVkxcPjQ8g6cAo
- fiVtoh2gs6i4VOENVAI3C/JWgulKDc/iAfWMnfuVQAHnNUrUIrf4PGpF4fxPgGnHea5K
- iXLd4elLWsB9feRUdb01lvCIb+ArD7Z7yQ4jZlzKO1ZIbja3ilwxKuMWZAaboMnsRZq/
- EL4g==
+ bh=1M/18t6moVlkRgWVwoPcK84uBvdA6yoMjg+D+edbTko=;
+ b=e95aQiksSMbhoiu4xZ+hd5/067igwf0/7OkjMvOcjehViNdK7ZIWUhoQLbL830bZM5
+ irQxns2hVbkbWG/YXL0kn1LUyidNutxiGLAZwH5ci4+NoVsKNl6eL/RIxwgdZTJuXC+k
+ VGAXQKEAMx8TowBbcynBWEh1wegNo2lucVHhmFkDYcZgy68wdKKgY0rwMyVYl8OObGiG
+ UuReo/tW4hdtM13e4pi1xGjG/uqBoYBIoq9sO4YVqU3goNURyVeFMmSit6V0Qp0/uTMo
+ I/PvYo9WmRbFGEJdiHXWrShRIvaj0CLWcVLDN/6yM0egnk8E1AJZppddfPfOMUeIlv9V
+ ys3w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUTbTZx8LEpJ0+Rt71dTtWOiYrbp9S4r6yCS7BTx5Kf3x4gjiYFQZXRJX3eZmofDz8kEwQIJvWh7w==@nongnu.org
-X-Gm-Message-State: AOJu0Yyl7b5tnlWaDCOzyDWrM9IYbxRrWkGGCDpaNLJqkuezmlTLwS1F
- tNwP33eaTLiqs/YhIIpB8oVnSNCrQr5HiTu8N5DzE5qAW3y6MoJinqgh6czjGWQl0eg=
-X-Gm-Gg: ASbGncvvey4JjJoL/m/dWU3zza75TVuFqRwc/7HLYGk4Kt+XETRApZSzyZiYLo1yzl5
- aso61keIiDpVdLNgh3xO5vcxecNBtYuCVak8PluJ/odDfXoFui0970H0vXC8R4TTDfXLcsujGez
- duV/75zeclWIlJvrns14+4Jk67nNSq/ZWL2BaU8mfLwh14OgnUwqiCtfRjp6r46ykEw88FoadwE
- I3IcDFGIwm0RBLZ15oKor+2LcdtOv645gQww3mWhjxhADZAhFHRYR43Sr7XJxbyDWMu3f2vj8Wu
- K0+27OYGym6n32Zp1qOxRcmV3XBQhqg/kecDt0cECstkKbm59eral53YkIqTe47N+cfe682QYoG
- DNK1Ar/R0gvj0WusqPyrG73ExTyztXx9PYaNxiy3okBcd8e66GQKS/eZCCzg8LYKVPF7uYUga0t
- Em6JBvYq1LJ2MvK529F8fob4p+eHL38vQ7HCWehtJ9tX0Ny/hFNiYDAw==
-X-Google-Smtp-Source: AGHT+IEMgQ5A/ngM4oB7aYVi/VQg/3amHDLzSn7jIdobyyplBkmG3dA8rWbfZr7EIB9azrG7yf2qjA==
-X-Received: by 2002:a05:600c:1550:b0:477:a54a:acba with SMTP id
- 5b1f17b1804b1-477b9e1cbe5mr23604595e9.17.1763635424278; 
- Thu, 20 Nov 2025 02:43:44 -0800 (PST)
+ AJvYcCX20FFsDCJt9e3lPE0FOx6Yydm20EaaETC3YzJA0oaHA4ngsb+31WXCcVskorTargm9uAznxWz6Sg==@nongnu.org
+X-Gm-Message-State: AOJu0YwNCTHOdhUqJt3ZIuEl+2Js8iT8fkZKt2jTXElLHKGoZ5bwve4R
+ KO4gBa8ndHbZwnxGoy02jnTeJGncH3efBXMxL10YiylyzJn0yHfpa1PDFb4g5SYJbLA=
+X-Gm-Gg: ASbGncteAIwuI80wpQv2nleT7y51gA778K9eFExF5JT4Bzd1Tl9wVZuMe5QTD0WvJWc
+ JaHlztG/zPI+jiriSNEBVfSF1FBeXWy63edCSfJRPXUrwB/zhv9ppYASZPBiENlFvArHLrDZ4PR
+ U5t3UKhXBgUK0Qu/zh1yQAgDPcr54QWNRZ9hj15Ncsx/VLtYFywTP91IyF8g/mcFYCdi0cmE298
+ 2c8lStJmUx6p4ncmkH4CLHewElGJTXi9coSB9+e1jUTKtzGO+uUWsELiRfBKX5v3RkwaKvPGA08
+ cgC8zXdPClWZxXzXYxUKmkQ6lqTxLBqtItxsOWFu1PjzRPdFAuFQ4Rx1F+lmY3/yI2sFCujb6qt
+ IJNIum+JP11lQWj9meCvfDJeoC5xwA7m7C3Rqla3S0sdM5PQzKc8ypadrbhxvM0Tl+tW/moiwRW
+ dlxqQRBaEM1VPbXH329SihaouUubuBnHKc7B1jyw9leHBcb7v2XT74Gw==
+X-Google-Smtp-Source: AGHT+IF1uX4P9Ldl1MKPWCI4CVFASAXHm93mBmH2oSNKZDSuBThVvq6LdHNkjvPuApS7MKVFsJt3HQ==
+X-Received: by 2002:a05:6000:228a:b0:42b:3131:5433 with SMTP id
+ ffacd0b85a97d-42cb9a2decbmr2359371f8f.26.1763635890108; 
+ Thu, 20 Nov 2025 02:51:30 -0800 (PST)
 Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-477b831421fsm40121035e9.10.2025.11.20.02.43.43
+ ffacd0b85a97d-42cb7fb9190sm4912620f8f.33.2025.11.20.02.51.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Nov 2025 02:43:43 -0800 (PST)
-Message-ID: <43427fac-db73-43af-bbf6-93bc3d978706@linaro.org>
-Date: Thu, 20 Nov 2025 11:43:42 +0100
+ Thu, 20 Nov 2025 02:51:29 -0800 (PST)
+Message-ID: <ab69153d-b162-47f2-90c9-22cd248c94a5@linaro.org>
+Date: Thu, 20 Nov 2025 11:51:27 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/2] target/arm/kvm: add kvm-psci-version vcpu property
+Subject: Re: [PATCH 1/5] hw/core/loader: Make load_elf_hdr() return bool,
+ simplify caller
 Content-Language: en-US
-To: eric.auger@redhat.com, Sebastian Ott <sebott@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, kvm@vger.kernel.org, kvmarm@lists.linux.dev
-References: <20251112181357.38999-1-sebott@redhat.com>
- <20251112181357.38999-3-sebott@redhat.com>
- <d4f17034-94d9-4fdb-9d9d-c027dbc1e9b3@linaro.org>
- <c082340f-31b1-e690-8c29-c8d39edf8d35@redhat.com>
- <a2d0ddf1-f00c-42dd-851d-53f2ec789986@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+Cc: qemu-devel@nongnu.org, kwolf@redhat.com, hreitz@redhat.com,
+ mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
+ gengdongjiu1@gmail.com, peter.maydell@linaro.org, alistair@alistair23.me,
+ edgar.iglesias@gmail.com, npiggin@gmail.com, harshpb@linux.ibm.com,
+ palmer@dabbelt.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, sstabellini@kernel.org,
+ anthony@xenproject.org, paul@xen.org, berrange@redhat.com,
+ peterx@redhat.com, farosas@suse.de, eblake@redhat.com, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, wangyanan55@huawei.com, zhao1.liu@intel.com,
+ qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, xen-devel@lists.xenproject.org
+References: <20251119130855.105479-1-armbru@redhat.com>
+ <20251119130855.105479-2-armbru@redhat.com>
+ <bf44d9cd-806a-4d2c-8cff-0a88222959ed@yandex-team.ru>
+ <875xb5x2ds.fsf@pond.sub.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <a2d0ddf1-f00c-42dd-851d-53f2ec789986@redhat.com>
+In-Reply-To: <875xb5x2ds.fsf@pond.sub.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,101 +118,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 20/11/25 11:10, Eric Auger wrote:
+On 19/11/25 20:12, Markus Armbruster wrote:
+> Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru> writes:
 > 
+>> On 19.11.25 16:08, Markus Armbruster wrote:
+>>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+>>
+>> Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+>>
+>>> ---
+>>>    include/hw/loader.h |  4 +++-
+>>>    hw/arm/boot.c       |  6 +-----
+>>>    hw/core/loader.c    |  8 ++++++--
+>>>    hw/riscv/spike.c    | 10 +---------
+>>>    4 files changed, 11 insertions(+), 17 deletions(-)
+>>> diff --git a/include/hw/loader.h b/include/hw/loader.h
+>>> index d035e72748..6f91703503 100644
+>>> --- a/include/hw/loader.h
+>>> +++ b/include/hw/loader.h
+>>> @@ -188,8 +188,10 @@ ssize_t load_elf(const char *filename,
+>>>     *
+>>>     * Inspect an ELF file's header. Read its full header contents into a
+>>>     * buffer and/or determine if the ELF is 64bit.
+>>> + *
+>>> + * Returns true on success, false on failure.
+>>
+>> I don't really care, but IMO, it's obvious contract for bool+errp functions, not worth a comment.
 > 
-> On 11/13/25 1:05 PM, Sebastian Ott wrote:
->> Hi Philippe,
->>
->> On Wed, 12 Nov 2025, Philippe Mathieu-Daudé wrote:
->>> On 12/11/25 19:13, Sebastian Ott wrote:
->>>>   Provide a kvm specific vcpu property to override the default
->>>>   (as of kernel v6.13 that would be PSCI v1.3) PSCI version emulated
->>>>   by kvm. Current valid values are: 0.1, 0.2, 1.0, 1.1, 1.2, and 1.3
->>>>
->>>>   Note: in order to support PSCI v0.1 we need to drop vcpu
->>>>   initialization with KVM_CAP_ARM_PSCI_0_2 in that case.
->>>>
->>>>   Signed-off-by: Sebastian Ott <sebott@redhat.com>
->>>>   ---
->>>>     docs/system/arm/cpu-features.rst |  5 +++
->>>>     target/arm/cpu.h                 |  6 +++
->>>>     target/arm/kvm.c                 | 64
->>>> +++++++++++++++++++++++++++++++-
->>>>     3 files changed, 74 insertions(+), 1 deletion(-)
->>>
->>>
->>>>   diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->>>>   index 0d57081e69..e91b1abfb8 100644
->>>>   --- a/target/arm/kvm.c
->>>>   +++ b/target/arm/kvm.c
->>>>   @@ -484,6 +484,49 @@ static void kvm_steal_time_set(Object *obj, bool
->>>>   value, Error **errp)
->>>>         ARM_CPU(obj)->kvm_steal_time = value ? ON_OFF_AUTO_ON :
->>>>     ON_OFF_AUTO_OFF;
->>>>     }
->>>>
->>>>   +struct psci_version {
->>>>   +    uint32_t number;
->>>>   +    const char *str;
->>>>   +};
->>>>   +
->>>>   +static const struct psci_version psci_versions[] = {
->>>>   +    { QEMU_PSCI_VERSION_0_1, "0.1" },
->>>>   +    { QEMU_PSCI_VERSION_0_2, "0.2" },
->>>>   +    { QEMU_PSCI_VERSION_1_0, "1.0" },
->>>>   +    { QEMU_PSCI_VERSION_1_1, "1.1" },
->>>>   +    { QEMU_PSCI_VERSION_1_2, "1.2" },
->>>>   +    { QEMU_PSCI_VERSION_1_3, "1.3" },
->>>>   +    { -1, NULL },
->>>>   +};
->>>
->>>
->>>>   @@ -505,6 +548,12 @@ void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
->>>>                                  kvm_steal_time_set);
->>>>         object_property_set_description(obj, "kvm-steal-time",
->>>>                                         "Set off to disable KVM steal
->>>>   time.");
->>>>   +
->>>>   +    object_property_add_str(obj, "kvm-psci-version",
->>>>   kvm_get_psci_version,
->>>>   +                            kvm_set_psci_version);
->>>>   +    object_property_set_description(obj, "kvm-psci-version",
->>>>   +                                    "Set PSCI version. "
->>>>   +                                    "Valid values are 0.1, 0.2,
->>>> 1.0, 1.1,
->>>>   1.2, 1.3");
->>>
->>> Could we enumerate from psci_versions[] here?
->>>
->>
->> Hm, we'd need to concatenate these. Either manually:
->> "Valid values are " psci_versions[0].str ", " psci_versions[1].str ",
->> " ... which is not pretty and still needs to be touched for a new
->> version.
->>
->> Or by a helper function that puts these in a new array and uses smth like
->> g_strjoinv(", ", array);
->> But that's quite a bit of extra code that needs to be maintained without
->> much gain.
->>
->> Or we shy away from the issue and rephrase that to:
->> "Valid values include 1.0, 1.1, 1.2, 1.3"
-> Personally I would vote for keeping it as is
+> Nearby function comments all have a "Returns" sentence.  I try to blend
+> in :)
 
-OK.
+New developers might just have to look at a particular API such this
+loader one, without knowing the global errp contract. With that in
+mind, I'll documents @return everywhere.
 
-> (by the way why did you
-> moit 0.1 and 0.2 above?)
 > 
-> Eric
->>
->> Since the intended use case is via machine types and I don't expect a
->> lot of users setting the psci version manually - I vote for option 3.
->>
->> Opinions?
->>
->> Sebastian
+>>>     */
+>>> -void load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp);
+>>> +bool load_elf_hdr(const char *filename, void *hdr, bool *is64, Error **errp);
+>>>      ssize_t load_aout(const char *filename, hwaddr addr, int max_sz,
+>>>                      bool big_endian, hwaddr target_page_size);
 > 
 
 

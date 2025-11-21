@@ -4,110 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97260CFC515
-	for <qemu-arm@archiver.kernel.org>; Sat, 22 Nov 2025 02:31:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F68CFC516
+	for <qemu-arm@archiver.kernel.org>; Sat, 22 Nov 2025 02:32:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vMctM-0007qf-JV; Fri, 21 Nov 2025 20:58:25 -0500
+	id 1vMckX-0001Ai-Kh; Fri, 21 Nov 2025 20:49:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vMbpo-0003Ma-Do
- for qemu-arm@nongnu.org; Fri, 21 Nov 2025 19:50:41 -0500
-Received: from 7.mo552.mail-out.ovh.net ([188.165.59.253])
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1vMbPx-0004Zw-KN; Fri, 21 Nov 2025 19:24:01 -0500
+Received: from mail-westusazlp170120002.outbound.protection.outlook.com
+ ([2a01:111:f403:c001::2] helo=SJ2PR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vMbpc-0000Lb-O2
- for qemu-arm@nongnu.org; Fri, 21 Nov 2025 19:50:37 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.54.239])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4dCqRB4JKKz5vxd;
- Fri, 21 Nov 2025 22:20:22 +0000 (UTC)
-Received: from kaod.org (37.59.142.109) by DAG8EX2.mxp5.local (172.16.2.72)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1vMbPj-0002dm-9l; Fri, 21 Nov 2025 19:23:51 -0500
+Received: from LV0PR12MB999092.namprd12.prod.outlook.com
+ (2603:10b6:408:32e::22) by SA0PR12MB7092.namprd12.prod.outlook.com
+ (2603:10b6:806:2d5::20) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.11; Fri, 21 Nov
+ 2025 22:50:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=BjtkyGTQp3gJUsjwhP3FTl+HMfzelZPZqgLVZNCVE/MKmXqsTJHeFEHhTsCuAKVFSgxxFlMZF166QtG3Nn6LDnd2BKzhRd7xc6GE3qRYGAo9WdGz9uXxZvwZU5p4AvAU7g1ueo4mbV46cX+rFFQhHjD9y+BjqyM/qJU1ugZyIfo1g1kvpdKsdnwjORWDGCtVVq+jAQ5CFSr9Y5Cu7hwsH56sCC6lgUdBfcY5WTCdPTDb/bzOweHloJF6eGtGfbjVhisbVGVN40KmvsIgDbSpKfbc6Mm07xFA7rS8cNaw0W/wrmGz7KkdGc70tEEtaW6WiOLVTEmyAPAVg9Zwenc1DA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zQNfUffxwn4nk3br6jOuGa/4UmumTiNgJnRPAhghtPg=;
+ b=NWj6/Fb8UHBaUTfXHHOUOPpMAlzzqezh8hC7e+0oy7BMNm/IPWoeWrRsVA9+2u9AKpdobaZuXprKXIAWwazMU/hPGys6oGIrk8cIEMyAPRrV3dfhGkCYiqUOw7JVI61hCB9nN7phf0pLhjMvVP5ZcqHkgf5aG8G4evHnPTzRnoniJma8cb3gDT3uYhYptyPadgRKWWtbuoCdPcAze2tohTo1GNciTX/Yqf3QfF8iZ8i2mwFgFeojZopfeK6RLdP9I3ROH7O0vZ68smxFAPADEzeSnNI/JouaFpkN/bbY7F8KR3EyHBQSybg0kGGtj8XbHp5igzTM1AeQ07bSA5UuUg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zQNfUffxwn4nk3br6jOuGa/4UmumTiNgJnRPAhghtPg=;
+ b=Q3hBDElqF+w6H0BIou1fgD4JBj6uEYVRx0r86fEGqkkf1Xg9ygBP+Sxd8JRGc7xDpv8mKNzQQO/gdZmNa3X3UaDarQ76rxAGJHj8y84wiwKCrRxfqwZAkRA/R7DEUyx/QOwuDZTkJzOh+ypKZhzjSaZb+0NBwpIGXNQKfJU5ahCgyMAlJbJYcwMt5VNSKr8VkllbMXDkAIR6VsyWZQR+p6nukQW2geopezFA5PrFr1RWvSPwHSGflGsrxIqiBzeBOlVLD3GC8Qp/FaTbibolPZ3BoqxriqCf7ubGA0gBUmxFkXhMdBwOCla+yKmHThKB1KVJimHrN3nTLFPSeZ1Lbg==
+Received: from BN9PR03CA0277.namprd03.prod.outlook.com (2603:10b6:408:f5::12)
+ by LV0PR12MB999092.namprd12.prod.outlook.com (2603:10b6:408:32e::22)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Fri, 21 Nov
- 2025 23:20:21 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-109S00389b839f1-458e-4587-8985-f0c954f28545,
- 20F18A3716404196E6FAACF2E4DECD64BC5092B7) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <f5f9eb8e-91f6-40e0-847e-19e3cdd3d402@kaod.org>
-Date: Fri, 21 Nov 2025 23:20:20 +0100
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.11; Fri, 21 Nov
+ 2025 17:28:29 +0000
+Received: from BN1PEPF00005FFC.namprd05.prod.outlook.com
+ (2603:10b6:408:f5:cafe::c1) by BN9PR03CA0277.outlook.office365.com
+ (2603:10b6:408:f5::12) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9343.11 via Frontend Transport; Fri,
+ 21 Nov 2025 17:28:12 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ BN1PEPF00005FFC.mail.protection.outlook.com (10.167.243.228) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9343.9 via Frontend Transport; Fri, 21 Nov 2025 17:28:29 +0000
+Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Fri, 21 Nov
+ 2025 09:28:13 -0800
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by rnnvmail202.nvidia.com
+ (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Fri, 21 Nov
+ 2025 09:28:12 -0800
+Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com (10.129.68.10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
+ Transport; Fri, 21 Nov 2025 09:28:11 -0800
+Date: Fri, 21 Nov 2025 09:28:09 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameer Kolothum <skolothumtho@nvidia.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Jason Gunthorpe
+ <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
+ <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>, "smostafa@google.com"
+ <smostafa@google.com>, "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, "yi.l.liu@intel.com"
+ <yi.l.liu@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>, "Michael S .
+ Tsirkin" <mst@redhat.com>
+Subject: Re: [PATCH v6 08/33] hw/pci/pci: Add optional
+ supports_address_space() callback
+Message-ID: <aSChKQtpSs/zYqh1@Asurada-Nvidia>
+References: <20251120132213.56581-1-skolothumtho@nvidia.com>
+ <20251120132213.56581-9-skolothumtho@nvidia.com>
+ <aR9/SMia+iganQ2r@Asurada-Nvidia>
+ <CH3PR12MB754864DAE416B1EE5C1DFFC7ABD5A@CH3PR12MB7548.namprd12.prod.outlook.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v1 1/1] hw/pci-host/aspeed_pcie: Update ASPEED PCIe
- Root Port capabilities and enable MSI to support hotplug
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, <nabihestefan@google.com>
-References: <20251121050108.3407445-1-jamin_lin@aspeedtech.com>
- <20251121050108.3407445-2-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20251121050108.3407445-2-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.109]
-X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG8EX2.mxp5.local
- (172.16.2.72)
-X-Ovh-Tracer-GUID: be30a365-2093-4126-8de4-1b53c246e102
-X-Ovh-Tracer-Id: 16547632407702965170
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFKS8Q/iSUMUd6Y3I+pnQM7s4KBxMgvDTzYiWF8NW/vz/dhW5JFYTN1IrGWSKTlTR9G8H291j/OPGi9NzSIQ75YK/GZAq5xNyalnUivYmEUfbslz8R/yfLPYPnhLt117jC3oDz8AXVu299uFLAWZYQeb99X/cnKwwYrXdTC/zuta9t+nz+t8SvPviI/tvBUplnF3ase+pM62iQc3RSAJZ4UaQ2AgT39GfNWkJrzwq+uGFfl6wt313L0qUOt+t61RzmN7hnFstf0f++DrGgYNL9Vysk0SnL+MULqLxL1lZj/nLZcpQ/qxEB+FAe7GtdDA3h3tOSbLCvJU3HIQfs/V731UNEzHzZ5OWfgkn7hKLY3Cx4q4JVSzkCKXSbBclLop34MGfegNtFOz5e3agOB3LCPQU8eX+Mt0bFXH5D32H+C6LQKBtYsI/PHIQDe/4oq6ekigapRmc4fcNvNC/KZZKqPliznht00YVAQRDxZSeo9RQth2PU5YRSG/j46Bo9qhpi5kKeqLebUwZ7sdLEPfzhvFNcN9a4SyrenN9gcws/IhtZp7CVO1VMdJq+NQ8JsdTriTezbnONaojboOD79nLWbxANlUAkwH1b+/LVuClg0dUp4vatD9htuDhpL3PhA8i9THJkfg6otVWZ/65jxP4kzuKAzo6VMpyDD75gz68JBTA
-DKIM-Signature: a=rsa-sha256; bh=ZEKMy37ICzsTbWB2JeMjKZ7VV/JBa1KK/U94/yKsmO4=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1763763624; v=1;
- b=lTY5E+t37nCT/WRxV/A55qLzFrEH36lRaNsFqLXn3cXT2NLyroyEkyb7sPuxY/GqnKy0G0ef
- dqxIT8baK+/R+x989ZlmgLc6honew5ZcGDIDEol/vcWXz8pBMkXssJbyUGZ8NHNY0zzka4haWPm
- 86js3BSjZ/Qq6y+bUCRCm4hnJ6k5Is7cEiju3qQ6EQVI0AYpdiWN2iebPoIw33dgdmnoQd9uSPH
- +9bM9nUcHnyzyej9zHWkKABDbkdam5MhcTi77lw5dotewgJm9Fzy2+B060YtPWpTPwufTnplAjd
- hfjRE2jb5U0UqZH6om8Xa+po9KkaFgQN6/Bnuos4zrYOw==
-Received-SPF: pass client-ip=188.165.59.253; envelope-from=clg@kaod.org;
- helo=7.mo552.mail-out.ovh.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <CH3PR12MB754864DAE416B1EE5C1DFFC7ABD5A@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN1PEPF00005FFC:EE_|LV0PR12MB999092:EE_|SA0PR12MB7092:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4171b98e-75a5-472b-f1c7-08de292362e7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|36860700013|82310400026|376014|7416014|1800799024|7053199007; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?7OfCPFWgxC2YQQnTv/BR/POdM9c9PCHEyuxdl9RTu2XEDHZY2SST8aq/W+zX?=
+ =?us-ascii?Q?RrYXO11riqQI2JfH/sbkjjF/OhvtbBzv69lQGN6Y55R1xC34XMg2TkPSq1M/?=
+ =?us-ascii?Q?FD1hAM8FfbMQ1AoQ2fhnBYlV31QTAFJviH+0tLUhNwiUBDL0P5ELaIK1IrmE?=
+ =?us-ascii?Q?Ze+VXChvxBmbhByRMWd1Ro1n6F6VVeGSEbgFdR6I7WhiLd8g11rGG0YF13ZI?=
+ =?us-ascii?Q?Tkmtc5Qyg+dPQUDOJR+xVuwhJvUwJ/x/Jth183mJ3LL9vYJ8ny9iKstq25Xe?=
+ =?us-ascii?Q?Hi2b7itnfGRc9lbSZqex6Y1TRjbpvEL379O+up26FCekZW8rUjXZ0eAZ2DR+?=
+ =?us-ascii?Q?ZDQFCQ3nrOCvyrEHQ49DqVSjZWW04Klj4hvuknuQG/v1w6ykZ3W4W7FVq5Le?=
+ =?us-ascii?Q?mgiEpebn51vnYVBSAO7OJzcHdL9wa+HWmdD1gtESlOSKmA8mn2NiN8pT7ODi?=
+ =?us-ascii?Q?bgOIFRgg97DB/ylFyi+AKictMPifBCeHtrtFU6ARzYvUQuBGhUHVdcLBzQgT?=
+ =?us-ascii?Q?UHsO8BCdZPKX1w10Ah8ahyr5DGZMSYaYplRo8qWyYN++ZOHoqYpSS5GRK197?=
+ =?us-ascii?Q?ZnR3nRtObOmDAmiSCm6k0Zk0dwI8qh3OeeKvBIFcVKZimit7KEMChzKaxzVO?=
+ =?us-ascii?Q?6yssZ0x3dROlvLsczODIsv2v9dxC3IAJP3KaWzNhv2hKzIfhvbiyLB9SAuPX?=
+ =?us-ascii?Q?VSAdJah3FmVneUSbM57NBMwDgDJYhKZimwgDJKg9FNspTBxkopLM2WzHWA8W?=
+ =?us-ascii?Q?3eANNOKEQ0MFRJPrWNmKa5+fBe9cp98luzzoue9aubIPTxQaFwBYer7ollJV?=
+ =?us-ascii?Q?XrVesY1ju1eroDimEyKHHQ9DSwrT+6a7CzTvGA7CgrJTCJ1N2XYxR03SKmKa?=
+ =?us-ascii?Q?7DycV4ZeUdKCZEHIQRdhYAEura+MtAalwo9GfEypukcQN7GucLmPz2ck5u7L?=
+ =?us-ascii?Q?KPUQ/szkexCdP3WZqki/ge+5tPv/iHqdwLJFpUFlbi2XzQqItR0JKXm9sGfM?=
+ =?us-ascii?Q?qNzJV1RSG5fvrEqAhoDttNbUXnuKPOjAHIlHj7ghVZjxMafynXzcA/cTjPAP?=
+ =?us-ascii?Q?UxjtG9Kg4nZ0Pd5/fLwyBgX9m2JCzePnVam2jRxsEqKp9HDnYN/eRtYR53X9?=
+ =?us-ascii?Q?JPHExtkNoIs6uj+YD2QENg+k5U/N7eOB1prdmfqDZ9L8ELDRIG4v2PWBnPET?=
+ =?us-ascii?Q?y28w9OuX8SphLjH9eVYkHzfUW3I+mo0YS0RcOFCkxOX+jnG5iFoMzfsFkhQE?=
+ =?us-ascii?Q?DDTEjEoheR4mp5nq0Wut+/dewt2LJfgYRvwr2b9oNdANlpM75iWtM/qmzHnJ?=
+ =?us-ascii?Q?8PeMtw8R7M5ckJyLg4loVoLxFqDx27e91ZGxZOYArlE//fA/nxQhlpyUJC//?=
+ =?us-ascii?Q?aOPbBDiEwPoBGDa2VBT4S4fqPXZMZM8mTD28Ydj9cJ6Sqrq3/ridqvrAw/dq?=
+ =?us-ascii?Q?TeNZwgI2B1rdhzgh9Mj8VAKF3rl/ZbBqJEaF+fLyVbtbLLi2F9XhoMHmk63n?=
+ =?us-ascii?Q?PjSRC4sPZHsEp2MLZOxAv/zWKDIpX42u3f4MDyEe5YVBMQQ9Gfb9pzcYzWcG?=
+ =?us-ascii?Q?lEjTwbHx2MRM/TRsFyc=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(36860700013)(82310400026)(376014)(7416014)(1800799024)(7053199007);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Nov 2025 17:28:29.1329 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4171b98e-75a5-472b-f1c7-08de292362e7
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BN1PEPF00005FFC.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV0PR12MB999092
+X-OriginatorOrg: Nvidia.com
+Received-SPF: permerror client-ip=2a01:111:f403:c001::2;
+ envelope-from=nicolinc@nvidia.com;
+ helo=SJ2PR03CU001.outbound.protection.outlook.com
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -122,100 +167,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 11/21/25 06:01, Jamin Lin wrote:
-> This patch updates the ASPEED PCIe Root Port capability layout and interrupt
-> handling to match the hardware-defined capability structure as documented in
-> the PCI Express Controller (PCIE) chapter of the ASPEED SoC datasheet.
+On Fri, Nov 21, 2025 at 02:38:06AM -0800, Shameer Kolothum wrote:
+> > -----Original Message-----
+> > From: Nicolin Chen <nicolinc@nvidia.com>
+> > Sent: 20 November 2025 20:51
+> > To: Shameer Kolothum <skolothumtho@nvidia.com>
+> > Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> > eric.auger@redhat.com; peter.maydell@linaro.org; Jason Gunthorpe
+> > <jgg@nvidia.com>; ddutile@redhat.com; berrange@redhat.com; Nathan
+> > Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
+> > smostafa@google.com; wangzhou1@hisilicon.com;
+> > jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
+> > zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
+> > Krishnakant Jaju <kjaju@nvidia.com>; Michael S . Tsirkin <mst@redhat.com>
+> > Subject: Re: [PATCH v6 08/33] hw/pci/pci: Add optional
+> > supports_address_space() callback
+> > 
+> > On Thu, Nov 20, 2025 at 01:21:48PM +0000, Shameer Kolothum wrote:
+> > > Introduce an optional supports_address_space() callback in PCIIOMMUOps
+> > to
+> > 
+> > "supports_address_space" sounds a bit to wide to me than its
+> > indication to supporting an IOMMU address space specifically,
+> > since the "system address space" being used in this series is
+> > a legit address space as well.
+> > 
+> > With that being said, I think we are fine for now, given the
+> > API docs has clarified it. If someone shares the same concern,
+> > we can rename it later.
 > 
-> The following capability offsets and fields are now aligned with the actual
-> hardware implementation (validated using EVB config-space dumps via
-> 'lspci -s <bdf> -vvv'):
-> 
-> - Added MSI capability at offset 0x50 and enabled 1-vector MSI support
-> - Added PCI Express Capability structure at offset 0x80
-> - Added Secondary Subsystem Vendor ID (SSVID) at offset 0xC0
-> - Added AER capability at offset 0x100
-> - Implemented aer_vector() callback and MSI init/uninit hooks
-> - Updated Root Port SSID to 0x1150 to reflect the platform default
-> 
-> Enabling MSI is required for proper PCIe Hotplug event signaling. This change
-> improves correctness and ensures QEMU Root Port behavior matches the behavior
-> of ASPEED hardware and downstream kernel expectations.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/pci-host/aspeed_pcie.c | 40 ++++++++++++++++++++++++++++++++++++++-
->   1 file changed, 39 insertions(+), 1 deletion(-)
+> The intent here is just to let the vIOMMU decide whether a device should
+> be associated with its address_space before we call get_address_space().
+> If the check passes, the vIOMMU must provide the actual address_space
+> through get_address_space() callback.
 
+The naming makes sense now. Yet, the API doc is a bit confusing..
 
-It seems that we should queue this patch for QEMU 10.2. If so,
-could you provide a fixes tag please ?
+Why it says "device can have an IOMMU address space"? If a device
+only has a system address space (i.e. it doesn't support an IOMMU
+address space), it still returns true, right?
 
-Thanks,
-
-C.
-
-
-> 
-> diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
-> index f7593444fc..1fc2c61772 100644
-> --- a/hw/pci-host/aspeed_pcie.c
-> +++ b/hw/pci-host/aspeed_pcie.c
-> @@ -68,6 +68,38 @@ static const TypeInfo aspeed_pcie_root_device_info = {
->    * PCIe Root Port
->    */
->   
-> +#define ASPEED_PCIE_ROOT_PORT_MSI_OFFSET        0x50
-> +#define ASPEED_PCIE_ROOT_PORT_MSI_NR_VECTOR     1
-> +#define ASPEED_PCIE_ROOT_PORT_SSVID_OFFSET      0xC0
-> +#define ASPEED_PCIE_ROOT_PORT_EXP_OFFSET        0x80
-> +#define ASPEED_PCIE_ROOT_PORT_AER_OFFSET        0x100
-> +
-> +static uint8_t aspeed_pcie_root_port_aer_vector(const PCIDevice *d)
-> +{
-> +    return 0;
-> +}
-> +
-> +static int aspeed_pcie_root_port_interrupts_init(PCIDevice *d, Error **errp)
-> +{
-> +    int rc;
-> +
-> +    rc = msi_init(d, ASPEED_PCIE_ROOT_PORT_MSI_OFFSET,
-> +                  ASPEED_PCIE_ROOT_PORT_MSI_NR_VECTOR,
-> +                  PCI_MSI_FLAGS_MASKBIT & PCI_MSI_FLAGS_64BIT,
-> +                  PCI_MSI_FLAGS_MASKBIT & PCI_MSI_FLAGS_MASKBIT,
-> +                  errp);
-> +    if (rc < 0) {
-> +        assert(rc == -ENOTSUP);
-> +    }
-> +
-> +    return rc;
-> +}
-> +
-> +static void aspeed_pcie_root_port_interrupts_uninit(PCIDevice *d)
-> +{
-> +    msi_uninit(d);
-> +}
-> +
->   static void aspeed_pcie_root_port_class_init(ObjectClass *klass,
->                                                const void *data)
->   {
-> @@ -80,7 +112,13 @@ static void aspeed_pcie_root_port_class_init(ObjectClass *klass,
->       k->device_id = 0x1150;
->       dc->user_creatable = true;
->   
-> -    rpc->aer_offset = 0x100;
-> +    rpc->aer_vector = aspeed_pcie_root_port_aer_vector;
-> +    rpc->interrupts_init = aspeed_pcie_root_port_interrupts_init;
-> +    rpc->interrupts_uninit = aspeed_pcie_root_port_interrupts_uninit;
-> +    rpc->exp_offset = ASPEED_PCIE_ROOT_PORT_EXP_OFFSET;
-> +    rpc->aer_offset = ASPEED_PCIE_ROOT_PORT_AER_OFFSET;
-> +    rpc->ssvid_offset = ASPEED_PCIE_ROOT_PORT_SSVID_OFFSET;
-> +    rpc->ssid = 0x1150;
->   }
->   
->   static const TypeInfo aspeed_pcie_root_port_info = {
-
-
-
+Nicolin
 

@@ -4,104 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD1F4CF64B1
-	for <qemu-arm@archiver.kernel.org>; Sat, 22 Nov 2025 03:26:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C31BACFC515
+	for <qemu-arm@archiver.kernel.org>; Sat, 22 Nov 2025 03:55:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vMcnI-0003Rv-DE; Fri, 21 Nov 2025 20:52:09 -0500
+	id 1vMd5z-0003z3-3t; Fri, 21 Nov 2025 21:11:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vMbaU-0002EM-3Z
- for qemu-arm@nongnu.org; Fri, 21 Nov 2025 19:34:53 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1vMccs-0004u6-FH; Fri, 21 Nov 2025 20:41:22 -0500
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vMbaG-0005VB-Sj
- for qemu-arm@nongnu.org; Fri, 21 Nov 2025 19:34:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1763771661;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TzFobMVJyhBRmur9FruIDbmEkqTBfCm6pgRHaFZ+3G0=;
- b=IZbvA9n9nAUedAD3SDb3bKbqxe6rMrygUE08MwRPtwG7/JDCqgs3ZpCBrSxe7KhGv+CMl2
- w7lxqkNx9U8uYUhlhGT0UYU24XVC5dXHyV/X8iGghSexbFJzVx18Gc8w2OypxFCxVm37Ky
- nhi7encZ6w5nLuYon++D8yD6owvRito=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-613-uG-mDcYbNYqtNKP-4ycJWw-1; Fri, 21 Nov 2025 08:13:59 -0500
-X-MC-Unique: uG-mDcYbNYqtNKP-4ycJWw-1
-X-Mimecast-MFC-AGG-ID: uG-mDcYbNYqtNKP-4ycJWw_1763730839
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-4779edba8f3so13728375e9.3
- for <qemu-arm@nongnu.org>; Fri, 21 Nov 2025 05:13:59 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763730838; x=1764335638;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=TzFobMVJyhBRmur9FruIDbmEkqTBfCm6pgRHaFZ+3G0=;
- b=T8GaLqieCNQBHW1TjxzGsyQw9xOVLarntZ7cwKn6a1Fuoh3ka6MW5bjFCUIPgq6ZGT
- UBEwwc06WCkRh7XdpcsoY9sJOj7LHn1KSx/49lz3RXR1Dl9dR/jtmVvkjDU3RcpjBTev
- 3G2BKDPi2wwquyto4Dn62CosrGPAkaRSr1Yu0bIbd3PbEN7zKXhZBo52Mdq5dGXcScd4
- mdzFoI7EKV3CbmW8caITy6tbqEOcA8QGDr6FAbrLO1MS2mgPcj1M1fEdFPB+uYD2UIxc
- EYb2VApORbXg5jsaqheec9JtMLwQeRpi4H6oXJqTu6dMkAOn1/tnHoNvgwH1hgoaRU4X
- oj4Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVj7jXoub2cDWIoxFgkRJEyrxTBSzC+3X7CyDUqz1lUGHpmnUB/0/QfWZBecaXgAw4fzu3CAmadJQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy/n2SeBsIrW18/5DlA4e69wvxPvcxKBfC9MaPS2rnP/q+UKnNt
- y7FY1GVEYtfTlCfrY5EWTKgj2s5X5jWirNfxRGArhW9/Gz+Eu7Vd0biZ8xVDV9xC8f3NEggMUZb
- cwSe0jTUTJDzdRh2yhiwik5qSodfHWsvqmiG0hPwaUwD3XuSFoYK3pcd46rbB8Q==
-X-Gm-Gg: ASbGncsoUdf9qyYNQoPSPqLORcPKaPrKjW79QBeII+2ai6AwWxbAv5zC0CPd5DmEQEW
- wNEr56wabuOJ4XjdO8SHqj4KDtl8R7fh4zClk5BQ2I4rX4R0JQdyzv4m1PWFhPGqI2uoJUL8ywP
- I4ZJRkechHYP1vdNiIpeMgfK5jx2QXiSJkKCWeRSKLJP5mnFH7uiV6NyXqbrWSo7cLmQu8c6Oex
- 5878beHKExRB7bKENIiud84hOL78jilsIsBol2MTMeQszG7sDHTGi9wFSeT744Z5lsxz+eGbz6S
- 9+7r9L+ucRJWQ6Duhtdij2vjBACVpV4yTIHvIOM/sLaur6++pfXLx0u8tQTn9sgkOkK8mwy9wST
- UNh9V4FbQyBBeAf2tM/Doy2epXIdC1ubFgjZlkfIouaiNKv8/MAJ55zFufg==
-X-Received: by 2002:a05:600c:3553:b0:477:7a78:3016 with SMTP id
- 5b1f17b1804b1-477c0170782mr21639505e9.8.1763730838136; 
- Fri, 21 Nov 2025 05:13:58 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHR0aAO5to1fWMNaufn5kLIe/sQzUAYgZkQQBAhUpH8uGlxn0fHAFNU/j/19ByAepZdnHJiaA==
-X-Received: by 2002:a05:600c:3553:b0:477:7a78:3016 with SMTP id
- 5b1f17b1804b1-477c0170782mr21639245e9.8.1763730837710; 
- Fri, 21 Nov 2025 05:13:57 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-477c0d85360sm33313175e9.15.2025.11.21.05.13.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 21 Nov 2025 05:13:57 -0800 (PST)
-Message-ID: <3097d58e-3793-4434-8beb-2e4f4c52f772@redhat.com>
-Date: Fri, 21 Nov 2025 14:13:55 +0100
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1vMcao-00034B-CX; Fri, 21 Nov 2025 20:41:18 -0500
+Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
+ (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 5ALAnhLa078745
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Fri, 21 Nov 2025 19:49:44 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=Nctt2G5VdGAd0f97i5IQdXGCf3/Ph3bC8lF+lgjLw50=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=Message-ID:Date:Subject:To:From;
+ s=rs20250326; t=1763722184; v=1;
+ b=jksot3XuhnFKOX4NBpb9WtrjLgbGKthOlZoxlErqPILtc/Ghh1YHJF7PCFLnDSA1
+ 2gTdS135uBzu3V3ajJxPGbOssJlKvaLiZm7U9HytP/TMKOc9zQbuvUblCWxzHK6h
+ oYGoICc1YwPjrshUJjPRaAbVn5UujNXXs1iBuvif8yhUz85W3yhoz7fYW41S8SCP
+ 4sbMvV8lLWGSO7EGGynKJFrI6j4kZKfBfSevycD+rvzg2LD2NXntUopGB5CJmSbL
+ WRYJOJnuPIN7rz8mgX/0X9MceuuNy65nY3XvnXSp1k0xB7MoGAyQ4u735OkIxskN
+ zeCtYJYTbabj8JIe5B9qoQ==
+Message-ID: <073d66a9-1507-4ff2-95c4-0a2d362a0feb@rsg.ci.i.u-tokyo.ac.jp>
+Date: Fri, 21 Nov 2025 19:49:43 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v3 06/21] hw/arm/smmuv3: Thread SEC_SID through helper APIs
-To: Tao Tang <tangtao1634@phytium.com.cn>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>
-References: <20251012150701.4127034-1-tangtao1634@phytium.com.cn>
- <20251012150701.4127034-7-tangtao1634@phytium.com.cn>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251012150701.4127034-7-tangtao1634@phytium.com.cn>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: iywi8SR6-nFHR4YwYHZdqszjCukcenBf0G-xw7-i9Wo_1763730839
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v11 11/28] whpx: switch irqchip in kernel to a bool
+ outside the struct
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+ qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
+ Peter Xu <peterx@redhat.com>, Mads Ynddal <mads@ynddal.dk>
+References: <20251121100240.89117-1-mohamed@unpredictable.fr>
+ <20251121100240.89117-12-mohamed@unpredictable.fr>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <20251121100240.89117-12-mohamed@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,162 +67,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 2025/11/21 19:02, Mohamed Mediouni wrote:
+> Fix buildability on newer Qemu.
 
+Can you give some more explanation?
 
-On 10/12/25 5:06 PM, Tao Tang wrote:
-> Extend the register and queue helper routines to accept an explicit
-> SEC_SID argument instead of hard-coding the non-secure bank.
->
-> All existing callers are updated to pass SMMU_SEC_SID_NS, so the
-> behavior remains identical. This prepares the code for handling
-> additional security state banks in the future. So Non-secure state
-> is the only state bank supported for now.
->
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
+> 
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
->  hw/arm/smmuv3-internal.h | 21 +++++++++------------
->  hw/arm/smmuv3.c          | 15 ++++++++-------
->  2 files changed, 17 insertions(+), 19 deletions(-)
->
-> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> index 858bc206a2..af0e0b32b3 100644
-> --- a/hw/arm/smmuv3-internal.h
-> +++ b/hw/arm/smmuv3-internal.h
-> @@ -246,9 +246,8 @@ REG64(S_EVENTQ_IRQ_CFG0,    0x80b0)
->  REG32(S_EVENTQ_IRQ_CFG1,    0x80b8)
->  REG32(S_EVENTQ_IRQ_CFG2,    0x80bc)
->  
-> -static inline int smmu_enabled(SMMUv3State *s)
-> +static inline int smmu_enabled(SMMUv3State *s, SMMUSecSID sec_sid)
->  {
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->      return FIELD_EX32(bank->cr[0], CR0, SMMUEN);
->  }
-> @@ -276,16 +275,16 @@ static inline uint32_t smmuv3_idreg(int regoffset)
->      return smmuv3_ids[regoffset / 4];
->  }
->  
-> -static inline bool smmuv3_eventq_irq_enabled(SMMUv3State *s)
-> +static inline bool smmuv3_eventq_irq_enabled(SMMUv3State *s,
-> +                                             SMMUSecSID sec_sid)
->  {
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->      return FIELD_EX32(bank->irq_ctrl, IRQ_CTRL, EVENTQ_IRQEN);
->  }
->  
-> -static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
-> +static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s,
-> +                                             SMMUSecSID sec_sid)
->  {
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->      return FIELD_EX32(bank->irq_ctrl, IRQ_CTRL, GERROR_IRQEN);
->  }
-> @@ -330,23 +329,21 @@ static inline void queue_cons_incr(SMMUQueue *q)
->      q->cons = deposit32(q->cons, 0, q->log2size + 1, q->cons + 1);
->  }
->  
-> -static inline bool smmuv3_cmdq_enabled(SMMUv3State *s)
-> +static inline bool smmuv3_cmdq_enabled(SMMUv3State *s, SMMUSecSID sec_sid)
->  {
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->      return FIELD_EX32(bank->cr[0], CR0, CMDQEN);
->  }
->  
-> -static inline bool smmuv3_eventq_enabled(SMMUv3State *s)
-> +static inline bool smmuv3_eventq_enabled(SMMUv3State *s, SMMUSecSID sec_sid)
->  {
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->      return FIELD_EX32(bank->cr[0], CR0, EVENTQEN);
->  }
->  
-> -static inline void smmu_write_cmdq_err(SMMUv3State *s, uint32_t err_type)
-> +static inline void smmu_write_cmdq_err(SMMUv3State *s, uint32_t err_type,
-> +                                       SMMUSecSID sec_sid)
->  {
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->      bank->cmdq.cons = FIELD_DP32(bank->cmdq.cons, CMDQ_CONS, ERR, err_type);
->  }
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 9c085ac678..6d05bb1310 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -57,7 +57,7 @@ static void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq,
->  
->      switch (irq) {
->      case SMMU_IRQ_EVTQ:
-> -        pulse = smmuv3_eventq_irq_enabled(s);
-> +        pulse = smmuv3_eventq_irq_enabled(s, sec_sid);
->          break;
->      case SMMU_IRQ_PRIQ:
->          qemu_log_mask(LOG_UNIMP, "PRI not yet supported\n");
-> @@ -77,7 +77,7 @@ static void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq,
->          bank->gerror ^= new_gerrors;
->          trace_smmuv3_write_gerror(new_gerrors, bank->gerror);
->  
-> -        pulse = smmuv3_gerror_irq_enabled(s);
-> +        pulse = smmuv3_gerror_irq_enabled(s, sec_sid);
->          break;
->      }
->      }
-> @@ -153,7 +153,7 @@ static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
->      SMMUQueue *q = &bank->eventq;
->      MemTxResult r;
->  
-> -    if (!smmuv3_eventq_enabled(s)) {
-> +    if (!smmuv3_eventq_enabled(s, sec_sid)) {
->          return MEMTX_ERROR;
->      }
->  
-> @@ -176,8 +176,9 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
->  {
->      Evt evt = {};
->      MemTxResult r;
-> +    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->  
-> -    if (!smmuv3_eventq_enabled(s)) {
-> +    if (!smmuv3_eventq_enabled(s, sec_sid)) {
->          return;
->      }
->  
-> @@ -1070,7 +1071,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->  
->      qemu_mutex_lock(&s->mutex);
->  
-> -    if (!smmu_enabled(s)) {
-> +    if (!smmu_enabled(s, sec_sid)) {
->          if (FIELD_EX32(bank->gbpa, GBPA, ABORT)) {
->              status = SMMU_TRANS_ABORT;
->          } else {
-> @@ -1300,7 +1301,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->      SMMUQueue *q = &bank->cmdq;
->      SMMUCommandType type = 0;
->  
-> -    if (!smmuv3_cmdq_enabled(s)) {
-> +    if (!smmuv3_cmdq_enabled(s, sec_sid)) {
->          return 0;
->      }
->      /*
-> @@ -1513,7 +1514,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->  
->      if (cmd_error) {
->          trace_smmuv3_cmdq_consume_error(smmu_cmd_string(type), cmd_error);
-> -        smmu_write_cmdq_err(s, cmd_error);
-> +        smmu_write_cmdq_err(s, cmd_error, sec_sid);
->          smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_CMDQ_ERR_MASK);
->      }
->  
+>   accel/stubs/whpx-stub.c        |  1 +
+>   accel/whpx/whpx-common.c       | 10 +---------
+>   include/system/whpx-internal.h |  1 -
+>   include/system/whpx.h          |  3 ++-
+>   4 files changed, 4 insertions(+), 11 deletions(-)
+> 
+> diff --git a/accel/stubs/whpx-stub.c b/accel/stubs/whpx-stub.c
+> index c564c89fd0..4529dc4f78 100644
+> --- a/accel/stubs/whpx-stub.c
+> +++ b/accel/stubs/whpx-stub.c
+> @@ -10,3 +10,4 @@
+>   #include "system/whpx.h"
+>   
+>   bool whpx_allowed;
+> +bool whpx_irqchip_in_kernel;
+> diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
+> index 18d93225c1..4dabe3a032 100644
+> --- a/accel/whpx/whpx-common.c
+> +++ b/accel/whpx/whpx-common.c
+> @@ -39,6 +39,7 @@
+>   #include <winhvplatformdefs.h>
+>   
+>   bool whpx_allowed;
+> +bool whpx_irqchip_in_kernel;
+>   static bool whp_dispatch_initialized;
+>   static HMODULE hWinHvPlatform;
+>   #ifdef __x86_64__
+> @@ -492,15 +493,6 @@ static const TypeInfo whpx_cpu_accel_type = {
+>       .abstract = true,
+>   };
+>   
+> -/*
+> - * Partition support
+> - */
+> -
+> -bool whpx_irqchip_in_kernel(void)
+> -{
+> -    return whpx_global.kernel_irqchip;
+> -}
+> -
+>   static void whpx_accel_class_init(ObjectClass *oc, const void *data)
+>   {
+>       AccelClass *ac = ACCEL_CLASS(oc);
+> diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
+> index 81c0c1819f..b1706a2749 100644
+> --- a/include/system/whpx-internal.h
+> +++ b/include/system/whpx-internal.h
+> @@ -44,7 +44,6 @@ struct whpx_state {
+>   
+>       bool kernel_irqchip_allowed;
+>       bool kernel_irqchip_required;
+> -    bool kernel_irqchip;
+>   };
+>   
+>   extern struct whpx_state whpx_global;
+> diff --git a/include/system/whpx.h b/include/system/whpx.h
+> index 98fe045ba1..4217a27e91 100644
+> --- a/include/system/whpx.h
+> +++ b/include/system/whpx.h
+> @@ -25,8 +25,9 @@
+>   
+>   #ifdef CONFIG_WHPX_IS_POSSIBLE
+>   extern bool whpx_allowed;
+> +extern bool whpx_irqchip_in_kernel;
+>   #define whpx_enabled() (whpx_allowed)
+> -bool whpx_irqchip_in_kernel(void);
+> +#define whpx_irqchip_in_kernel() (whpx_irqchip_in_kernel)
+>   #else /* !CONFIG_WHPX_IS_POSSIBLE */
+>   #define whpx_enabled() 0
+>   #define whpx_irqchip_in_kernel() (0)
 
 

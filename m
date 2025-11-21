@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 429C1CFA46E
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Nov 2025 04:09:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 238F6CFA46E
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Nov 2025 05:01:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vMISN-0002Aq-Uy; Thu, 20 Nov 2025 23:09:11 -0500
+	id 1vMJHF-0004Fk-QY; Fri, 21 Nov 2025 00:01:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vMISH-00029g-Vw; Thu, 20 Nov 2025 23:09:06 -0500
+ id 1vMJGr-0003z1-Hk; Fri, 21 Nov 2025 00:01:25 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vMISG-0006w9-Ga; Thu, 20 Nov 2025 23:09:05 -0500
+ id 1vMJGp-0006BY-S9; Fri, 21 Nov 2025 00:01:21 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Fri, 21 Nov
- 2025 12:08:50 +0800
+ 2025 13:01:08 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Fri, 21 Nov 2025 12:08:50 +0800
+ Transport; Fri, 21 Nov 2025 13:01:08 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+ Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <nabihestefan@google.com>
 Subject: [PATCH v1 1/1] hw/pci-host/aspeed_pcie: Update ASPEED PCIe Root Port
  capabilities and enable MSI to support hotplug
-Date: Fri, 21 Nov 2025 12:08:49 +0800
-Message-ID: <20251121040849.3287437-2-jamin_lin@aspeedtech.com>
+Date: Fri, 21 Nov 2025 13:01:08 +0800
+Message-ID: <20251121050108.3407445-2-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251121040849.3287437-1-jamin_lin@aspeedtech.com>
-References: <20251121040849.3287437-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20251121050108.3407445-1-jamin_lin@aspeedtech.com>
+References: <20251121050108.3407445-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain

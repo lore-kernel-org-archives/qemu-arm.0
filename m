@@ -4,58 +4,160 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B168CCFC515
-	for <qemu-arm@archiver.kernel.org>; Sat, 22 Nov 2025 02:02:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 194F3CFC515
+	for <qemu-arm@archiver.kernel.org>; Sat, 22 Nov 2025 02:05:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vMcpO-0004x9-3J; Fri, 21 Nov 2025 20:54:19 -0500
+	id 1vMclU-0001os-1k; Fri, 21 Nov 2025 20:50:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vMbcW-0003kv-IX; Fri, 21 Nov 2025 19:36:56 -0500
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vMbRr-0005kp-I6; Fri, 21 Nov 2025 19:25:57 -0500
+Received: from mail-westcentralusazlp170100005.outbound.protection.outlook.com
+ ([2a01:111:f403:c112::5] helo=CY7PR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vMbcK-0005Dq-Sy; Fri, 21 Nov 2025 19:36:52 -0500
-Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 5ALAewEQ076011
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Fri, 21 Nov 2025 19:40:59 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=lNp5divqF01PzSSdYyTYotITUvUSEKBSIbpmecHY0wY=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=Message-ID:Date:Subject:To:From;
- s=rs20250326; t=1763721659; v=1;
- b=Q7LtqkiZwzkIflPjzsgPou9z+aE8ifUvpSsk2lSaLTHBZIbGSNDnDvC/LDiCxzpC
- 9LzTmb2Vsv7npJcGCubT76QyzLmL3k0IT0PQ5n/MkR+KAgXeXb3xPbwkFFbDVUHG
- 7YTUYGMzEoDArjytR45R8hC0puz4FPhDirtxzAQIUyXm+Bm8KVOH+2lovqQTP/5A
- isE92gJm8co4FCUq2Oh6O2AS63pNpI1B3pDRVRGjyTXHZuOA3c/NxL08qCMS4ar3
- 5okswiRpPYPPCRNRioaAhubAZfbmxWl5MzBxO3wYmuk+4JV80z5G5c3/c11uCjJl
- vQm1nA5rvWuxe6nd53jfXg==
-Message-ID: <013084e1-0f6d-462d-b4f5-e5a38e4d8f3b@rsg.ci.i.u-tokyo.ac.jp>
-Date: Fri, 21 Nov 2025 19:40:58 +0900
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 08/28] whpx: ifdef out winhvemulation on non-x86_64
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
- qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
- Peter Xu <peterx@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-References: <20251121100240.89117-1-mohamed@unpredictable.fr>
- <20251121100240.89117-9-mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vMbPu-0002h6-Ec; Fri, 21 Nov 2025 19:25:50 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=lvcdyQApCmMJIUWBXWlNqGoRYyTl/jA/gGDrLvrCGILh4fcHzRemy+xUBy8yEnGSxZm7iX/PJ+/W7LiefToUi3Ij0KNGoIp/R2IsJe9CgxbUjNreqiNm5MeSmYPukjkHDMnYqiiB2yLC/4Yw+KRrGi74uszRyupy+nMmCpiR0LKvtg2Q3602mFB0f+lFbuYJx5HNxBDhPGjp+6JvvFwBhctud2NGlwgMSaapVuRyRqtazWS014BFJR2l7OP3LRj7sebuaWS1NszrYmucetwKa/T7NVd3V3ZU8SF4Hg0N8XGvrBD4gYqcpMztnNHiufz0xBeA+2KSlGgRpLMNslEQ+g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ZRjFitd7FsZAAT/4+O017tyTUl63tNDhrVwTeU83bGs=;
+ b=PQgXotrJRpbBSVh9QfHp/hX6zBEis7jzgpKTm3hZ5eZkx+pLJJeOE9iq6fTKooG/uQD+F7h5ycV56iwnS2jNU4inRvsgRt6+LOcboozKtToVGTT0j0Iv4zdqt0pYc9orjpKxirES9DjEDq08ruCrYrAkYDrxWFHE9k09AxVZixQkdtR6juwTGj6SYPC8DJJv9cNH8KvMfl0GEcrxBgHOcokdQUJ5absvi9dFb19dCuTQdTEylDG2U0vwc5oUnlWFZj6nG15ZbEHYNKtXbhVt+Z/oYmdNrZUg1G44IDJcb/yk9tBXZ2zFVmdeH+mf/1bzUnr/KizxOGQDnJroab/ZQw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ZRjFitd7FsZAAT/4+O017tyTUl63tNDhrVwTeU83bGs=;
+ b=OevDY311wXtka2Jz27h1mVQ5zspAmDrm+A2cyh7XDS64+FIdzAqdGJowZc55/BHLEcqQEspsjaUf+nUNOwbr4S1EJJRDMGtTMlkK2BWyK+8D38njgx6Uhhh5FU0aSBOjHJ309Be/zNNsWD+QFYk08D2i9BgK37+uJNsVquUIn+inHU7pk8Wr8ALXCpT1KfpYl/wpqAf/IEf4hPC/t2I+Ink4qSySOD2tKRwnNpaEEgn7lqXqrFuihGfe6D6Z6mt1j22X1mpR8Dg4l9WwuW5V+Gdzsv6N7mFoDAqUimMbeDHiIlyvDdzik59T7NjD10hkKd3be7SWOI4RSX29FX8JIg==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by DM6PR12MB4353.namprd12.prod.outlook.com (2603:10b6:5:2a6::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.11; Fri, 21 Nov
+ 2025 17:32:27 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::e8c:e992:7287:cb06]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::e8c:e992:7287:cb06%5]) with mapi id 15.20.9343.011; Fri, 21 Nov 2025
+ 17:32:26 +0000
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Jason Gunthorpe
+ <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
+ <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>, "smostafa@google.com"
+ <smostafa@google.com>, "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, "yi.l.liu@intel.com"
+ <yi.l.liu@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>, "Michael S .
+ Tsirkin" <mst@redhat.com>
+Subject: RE: [PATCH v6 08/33] hw/pci/pci: Add optional
+ supports_address_space() callback
+Thread-Topic: [PATCH v6 08/33] hw/pci/pci: Add optional
+ supports_address_space() callback
+Thread-Index: AQHcWiFC5ZutjosMpE+DcYfPDxJ0SbT8CpYAgADj5VCAAHWrgIAAAGXA
+Date: Fri, 21 Nov 2025 17:32:26 +0000
+Message-ID: <CH3PR12MB75487F475CA02C6319AE5086ABD5A@CH3PR12MB7548.namprd12.prod.outlook.com>
+References: <20251120132213.56581-1-skolothumtho@nvidia.com>
+ <20251120132213.56581-9-skolothumtho@nvidia.com>
+ <aR9/SMia+iganQ2r@Asurada-Nvidia>
+ <CH3PR12MB754864DAE416B1EE5C1DFFC7ABD5A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <aSChKQtpSs/zYqh1@Asurada-Nvidia>
+In-Reply-To: <aSChKQtpSs/zYqh1@Asurada-Nvidia>
+Accept-Language: en-US, en-GB
 Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20251121100240.89117-9-mohamed@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|DM6PR12MB4353:EE_
+x-ms-office365-filtering-correlation-id: a5375047-2da8-4287-1c9e-08de2923f01c
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|1800799024|376014|7416014|38070700021|7053199007; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?/D++63OjDJcJpbg0gzAjBxvmEssEeLvEaiSuatEnrugGxhGiA2WNIQo3UmhH?=
+ =?us-ascii?Q?dJaxYFBAXPQlsj57WzMxZQ5qav/fVMXl+A0tTH7+DVgqO1TsivJKJ9GcJCsa?=
+ =?us-ascii?Q?eSnasTyiEbZn0o0fYCqh4iwzhicqOnKbEG+ef0wPcWwV5jaWUTWoj/Y45znA?=
+ =?us-ascii?Q?t1peRuUNlsF0FuU59TzMcS+FwV8KE7acWPI8wP0DmIdy1VFdzc/TJphIJB87?=
+ =?us-ascii?Q?vwQZcQgzTYUrL0N8pbWcacBIDQHkAwSKtm0Lhhx8dLXE57/f8QDHzmHU0fGC?=
+ =?us-ascii?Q?mZ9CuL6mHYw1lvMjTsoYbNxllWvbdfq/595XTCPTY6RaPRsuGdJb0rc5+du8?=
+ =?us-ascii?Q?i2ayx+9nXXI7jErAOJF8jIhiOwswkvxvEZiqcl6zCG9D4667hBym4GfOdjBd?=
+ =?us-ascii?Q?6Mgjue+pHk3BvH8v/L1rKoBwvSXX9UT6AdmwCFsYkSAr82Ahoxme83lI2e5f?=
+ =?us-ascii?Q?qNiEJq4ZAnLBJ8AScVMi01sX9QNCT0LSLOhcMH2KiHleuP32sKikZt+CKMk2?=
+ =?us-ascii?Q?jYwEybQKKQPV7x6tBcHlzvLXfzt4mTcThtC97yEdjgZ6AekfotFnzVhOO/iE?=
+ =?us-ascii?Q?RXzGXB4ZuCEiJSLWCokeWWhv3eiuaYRX3YrwKRkhxLCk3KzjfN9PZMsntHI2?=
+ =?us-ascii?Q?G8blvJ4GZWWeDbl1d1qjsDEvUM21/L6pL2qo1LVqgye9fNbrO48Y5AiOG28g?=
+ =?us-ascii?Q?QbkSjY+PXYkpxBsRHdcNQCs2or3ZTp+0ix00sXHggFMbi8ko4VlSNDmxbdGg?=
+ =?us-ascii?Q?NJYJP6BhgGEomzFruGhHU9uBeGz5hWd+RgKJOwbG++Jf1fsv5ior5JAEVyZ/?=
+ =?us-ascii?Q?6ve3xvUmZ3RFAoKp5V2JR0bdpBa0EMhX6qemPf0NyJWhvpzTzR4gotV276So?=
+ =?us-ascii?Q?YrVZP5aP6SL8NFCuO2PHoIDO2UQzwfu91/dnqQPQ73JDDvi8IHGhePl8MjgD?=
+ =?us-ascii?Q?bdu36CzF7XAlfzcDN3RImEn+I/TuoWpRR+btFSlVAadd39qlY6v2NCPYPKDr?=
+ =?us-ascii?Q?a5li7J4i1WtGjginugPlIB4mAg8puq44gvB5gABiU2nN2j0pKJZ1oAF3t/Bg?=
+ =?us-ascii?Q?5bFumlBts4gJ1tggoBbQbJ5LKubW3G/4YzkhDOjKayKPh6JMfTPfjdyAz06z?=
+ =?us-ascii?Q?IFRmauYZlbwkucUH6NLf49Ol+Lol8/fTWmLEnwE8WcR4DuCpFpgT8QaYysVN?=
+ =?us-ascii?Q?Pg+4Rv8WzNb+xVFTJt2TolB2Q1rxjEn0b6sVMO847YbdSMpaF5ywnTy8o8+K?=
+ =?us-ascii?Q?x4Cv85mlfJ8n+IFw2JslrP5VU3fMufR1o2IpjKSdIw8P2Z+d5kasXEqjYsIc?=
+ =?us-ascii?Q?4a766YgQKvKwoSgb8xRhwwFbU3/4awbYVUgrfTTYSOw5fXg/supNVCe83GQ4?=
+ =?us-ascii?Q?nTEDJCxYPstBoI2NDIx/6lMt7QFovGXdCHAI9pG/aPwIGjdDfBdP+L2SA8Z6?=
+ =?us-ascii?Q?p6fBO9lYyMdUzTsZdnHUxQX3XDUH2dTlsDQ0V0YN5zR3SgUupSw/t4GNaBnZ?=
+ =?us-ascii?Q?jnqX49C34PXtgy+y5ZJH9KUFv0VCm0IX+kv4?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(376014)(7416014)(38070700021)(7053199007);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?LZobua0kYtryxN1FsI2mBiNrE+aiBQWwfC6x+/YWJxoO8+YBERfWY3tvnBhd?=
+ =?us-ascii?Q?WE+gFj9fN7ricsxF0sGrE7xnFapxGtVc0v5hea1mZgmqb8CxqZ/PLOf3M2c8?=
+ =?us-ascii?Q?XhIzqgGEqQrOzB/L8D3rUxVCdX2GsMfUYCG3ZF0YyGnH1oKPAnTN5iXV2tN4?=
+ =?us-ascii?Q?wZcvcxchS+aE9FszvYoLAGLFnJB6dSagVwyj8pPAXyQCAE25oheZxH1uChU8?=
+ =?us-ascii?Q?Y/84VPslgezeMdmwCiJD1mUC6oHKb/boqxrFLVh6PITPsyH/Xb9WXPw6u5NS?=
+ =?us-ascii?Q?shXprCOzVXUJEmDJMzw1mflApkaweMnn54/4S6+gUqP2oezgJBl6F1CgB2Xa?=
+ =?us-ascii?Q?R+b51jAXKuhmXUwzLMSC//cx+UCNJV7ge3WSYXTnVsdkJ29KZWw21Gf1YhvG?=
+ =?us-ascii?Q?jzs5f49pZ8X94gEL31O73+NgliZ8PamkX0BJivZIc9B7QvMGm+LB8HFx5226?=
+ =?us-ascii?Q?frOn6SKiyKuqkS0unuSjg7WZw9KNVYW3GOCQeACz5TSzv9qDiPNbS9u5X9Iw?=
+ =?us-ascii?Q?biMppHju5auIUeYiSd1e8g2Ebv9bp96Xzvk0bQbuNjYBLdmDJpmO4oh93U4+?=
+ =?us-ascii?Q?/7EDHQSOXZkGzeAEWpqWcW2Weh5VMXyen1e1GA0fDIq6ZwGIXNhq/u8W+WE2?=
+ =?us-ascii?Q?1iOZVGkypR5QVCIYCoz/vkabTwYP+ToLB38e5WnbDOdgll4/Ks6MrkmVDNhw?=
+ =?us-ascii?Q?EmDz0R8FJZvspwd8Ekqrd+rWHyJavkiuDKzKiKQ7ZYW7AfxNgJRswpfPfuYn?=
+ =?us-ascii?Q?o/wT8M1a4EgeDaPgoHm2Gzh8F9Na5abccf/o+6nIMs6blWhJ7fCibxEi2TD6?=
+ =?us-ascii?Q?cp7T1ye/090yh2Es4tW5hEuB3fSGmXMFLKibEfQDDKgZjlbuCjj3c0kqQEXU?=
+ =?us-ascii?Q?E9vaCqp9U0b77ySFmgMSI8LhscGb9lAEIE0u8fCTTtC+34CC+/epat02Syyw?=
+ =?us-ascii?Q?ewPpx1pi4HNKURCzValMg+dTPbQFZ+HqlyR47k1rjvhliBODJpBPY9ovEfp0?=
+ =?us-ascii?Q?G+wp+S6qnVoitVyY4PduIHU1Dz6/uRdUz0IXoByNej4+nM8gu7X78VibGgp4?=
+ =?us-ascii?Q?5zzHvgOdILu3kiqnqR88PtCjwGhWzaFV/RHr7eF2AqOmwkxjlwfySIwfbV/+?=
+ =?us-ascii?Q?stPuChI93//dawYPXrQ9YujF86F2TraIZhlgQXO1lUrqpztzbmiOuktjVHLy?=
+ =?us-ascii?Q?H0FZo2FdR4zxQkvEPswJAXJ+LJ8kgs//8wpAzehlTthvzns934hMfr24Jf/8?=
+ =?us-ascii?Q?R+WVRGooHOi2xxYdZJLlk7hpU3/5x5JOURbwA7SGQtb9EYspmFCD6k8pS+58?=
+ =?us-ascii?Q?v6ZragE1RHhidaZVh1kKij5V4nnFvikUx44L0txr/0hn9xvnScXJMIsg3s4s?=
+ =?us-ascii?Q?YVYh708O1XtYrREtorr38hT5zZDkn8VdKajs4ruvV/aYyPArVhc0HzEW6BTJ?=
+ =?us-ascii?Q?QJ4zbyVeCR6rRAgVSVCd8xddXFPkOER/lDZBnu88XGRtZwLF+cv3QRiPMJIM?=
+ =?us-ascii?Q?8XzgOXCos7MLE44gXJQUyap8q2RgVVO4pCDlE0+xlWhVHDWaO3DdnMHIbamd?=
+ =?us-ascii?Q?P80CMuZoMhKS7kKW+2f8JhZdIZHAN5HxZP7/jxA3?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a5375047-2da8-4287-1c9e-08de2923f01c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Nov 2025 17:32:26.1778 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: MJejzvuP82y2ut1dZOchOs2E1nz3EW5fp6WyRnO6n7MJ9RaCxUY6+fa10xYWcNm5EkDAzDl/D8NA3ew1+0SYMA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4353
+Received-SPF: permerror client-ip=2a01:111:f403:c112::5;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=CY7PR03CU001.outbound.protection.outlook.com
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,142 +172,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2025/11/21 19:02, Mohamed Mediouni wrote:
-> winhvemulation is x86_64 only.
-> 
-> In the future, we might want to get rid of winhvemulation usage
-> entirely.
-> 
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> 
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> ---
->   accel/whpx/whpx-common.c       | 14 ++++++++++++--
->   include/system/whpx-common.h   |  2 ++
->   include/system/whpx-internal.h |  7 ++++++-
->   3 files changed, 20 insertions(+), 3 deletions(-)
-> 
-> diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
-> index 66c9238586..95664a1df7 100644
-> --- a/accel/whpx/whpx-common.c
-> +++ b/accel/whpx/whpx-common.c
-> @@ -41,7 +41,9 @@
->   bool whpx_allowed;
->   static bool whp_dispatch_initialized;
->   static HMODULE hWinHvPlatform;
-> +#ifdef __x86_64__
 
-Please use: HOST_X86_64
 
-Rationale: scripts/checkpatch.pl has the following code:
+> -----Original Message-----
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> Sent: 21 November 2025 17:28
+> To: Shameer Kolothum <skolothumtho@nvidia.com>
+> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> eric.auger@redhat.com; peter.maydell@linaro.org; Jason Gunthorpe
+> <jgg@nvidia.com>; ddutile@redhat.com; berrange@redhat.com; Nathan
+> Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
+> smostafa@google.com; wangzhou1@hisilicon.com;
+> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
+> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
+> Krishnakant Jaju <kjaju@nvidia.com>; Michael S . Tsirkin <mst@redhat.com>
+> Subject: Re: [PATCH v6 08/33] hw/pci/pci: Add optional
+> supports_address_space() callback
+>=20
+> On Fri, Nov 21, 2025 at 02:38:06AM -0800, Shameer Kolothum wrote:
+> > > -----Original Message-----
+> > > From: Nicolin Chen <nicolinc@nvidia.com>
+> > > Sent: 20 November 2025 20:51
+> > > To: Shameer Kolothum <skolothumtho@nvidia.com>
+> > > Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> > > eric.auger@redhat.com; peter.maydell@linaro.org; Jason Gunthorpe
+> > > <jgg@nvidia.com>; ddutile@redhat.com; berrange@redhat.com; Nathan
+> > > Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
+> > > smostafa@google.com; wangzhou1@hisilicon.com;
+> > > jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
+> > > zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com=
+;
+> > > Krishnakant Jaju <kjaju@nvidia.com>; Michael S . Tsirkin
+> <mst@redhat.com>
+> > > Subject: Re: [PATCH v6 08/33] hw/pci/pci: Add optional
+> > > supports_address_space() callback
+> > >
+> > > On Thu, Nov 20, 2025 at 01:21:48PM +0000, Shameer Kolothum wrote:
+> > > > Introduce an optional supports_address_space() callback in
+> PCIIOMMUOps
+> > > to
+> > >
+> > > "supports_address_space" sounds a bit to wide to me than its
+> > > indication to supporting an IOMMU address space specifically,
+> > > since the "system address space" being used in this series is
+> > > a legit address space as well.
+> > >
+> > > With that being said, I think we are fine for now, given the
+> > > API docs has clarified it. If someone shares the same concern,
+> > > we can rename it later.
+> >
+> > The intent here is just to let the vIOMMU decide whether a device shoul=
+d
+> > be associated with its address_space before we call get_address_space()=
+.
+> > If the check passes, the vIOMMU must provide the actual address_space
+> > through get_address_space() callback.
+>=20
+> The naming makes sense now. Yet, the API doc is a bit confusing..
+>=20
+> Why it says "device can have an IOMMU address space"? If a device
+> only has a system address space (i.e. it doesn't support an IOMMU
+> address space), it still returns true, right?
 
-# check of hardware specific defines
-# we have e.g. CONFIG_LINUX and CONFIG_WIN32 for common cases
-# where they might be necessary.
-		if ($line =~ m@^.\s*\#\s*if.*\b__@) {
-			WARN("architecture specific defines should be avoided\n" .  $herecurr);
-		}
+Yes. I think the API doc wording requires tightening. Will do.
 
->   static HMODULE hWinHvEmulation;
-> +#endif
->   
->   struct whpx_state whpx_global;
->   struct WHPDispatch whp_dispatch;
-> @@ -236,8 +238,10 @@ void whpx_destroy_vcpu(CPUState *cpu)
->       struct whpx_state *whpx = &whpx_global;
->   
->       whp_dispatch.WHvDeleteVirtualProcessor(whpx->partition, cpu->cpu_index);
-> +#ifdef __x86_64__
->       AccelCPUState *vcpu = cpu->accel;
->       whp_dispatch.WHvEmulatorDestroyEmulator(vcpu->emulator);
-> +#endif
->       g_free(cpu->accel);
->   }
->   
-> @@ -412,8 +416,12 @@ static bool load_whp_dispatch_fns(HMODULE *handle,
->           LIST_WINHVPLATFORM_FUNCTIONS(WHP_LOAD_FIELD)
->           break;
->       case WINHV_EMULATION_FNS_DEFAULT:
-> +#ifdef __x86_64__
->           WHP_LOAD_LIB(WINHV_EMULATION_DLL, hLib)
->           LIST_WINHVEMULATION_FUNCTIONS(WHP_LOAD_FIELD)
-> +#else
-> +        g_assert_not_reached();
-> +#endif
->           break;
->       case WINHV_PLATFORM_FNS_SUPPLEMENTAL:
->           WHP_LOAD_LIB(WINHV_PLATFORM_DLL, hLib)
-> @@ -539,11 +547,11 @@ bool init_whp_dispatch(void)
->       if (!load_whp_dispatch_fns(&hWinHvPlatform, WINHV_PLATFORM_FNS_DEFAULT)) {
->           goto error;
->       }
-> -
-> +#ifdef __x86_64__
->       if (!load_whp_dispatch_fns(&hWinHvEmulation, WINHV_EMULATION_FNS_DEFAULT)) {
->           goto error;
->       }
-> -
-> +#endif
->       assert(load_whp_dispatch_fns(&hWinHvPlatform,
->           WINHV_PLATFORM_FNS_SUPPLEMENTAL));
->       whp_dispatch_initialized = true;
-> @@ -553,9 +561,11 @@ error:
->       if (hWinHvPlatform) {
->           FreeLibrary(hWinHvPlatform);
->       }
-> +#ifdef __x86_64__
->       if (hWinHvEmulation) {
->           FreeLibrary(hWinHvEmulation);
->       }
-> +#endif
->       return false;
->   }
->   
-> diff --git a/include/system/whpx-common.h b/include/system/whpx-common.h
-> index e549c7539c..7a7c607e0a 100644
-> --- a/include/system/whpx-common.h
-> +++ b/include/system/whpx-common.h
-> @@ -3,7 +3,9 @@
->   #define SYSTEM_WHPX_COMMON_H
->   
->   struct AccelCPUState {
-> +#ifdef __x86_64__
->       WHV_EMULATOR_HANDLE emulator;
-> +#endif
->       bool window_registered;
->       bool interruptable;
->       bool ready_for_pic_interrupt;
-> diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
-> index c59f9de091..4565436682 100644
-> --- a/include/system/whpx-internal.h
-> +++ b/include/system/whpx-internal.h
-> @@ -4,8 +4,9 @@
->   
->   #include <windows.h>
->   #include <winhvplatform.h>
-> +#ifdef __x86_64__
->   #include <winhvemulation.h>
-> -
-> +#endif
->   #include "hw/i386/apic.h"
->   
->   typedef enum WhpxBreakpointState {
-> @@ -100,12 +101,16 @@ void whpx_apic_get(APICCommonState *s);
->   
->   /* Define function typedef */
->   LIST_WINHVPLATFORM_FUNCTIONS(WHP_DEFINE_TYPE)
-> +#ifdef __x86_64__
->   LIST_WINHVEMULATION_FUNCTIONS(WHP_DEFINE_TYPE)
-> +#endif
->   LIST_WINHVPLATFORM_FUNCTIONS_SUPPLEMENTAL(WHP_DEFINE_TYPE)
->   
->   struct WHPDispatch {
->       LIST_WINHVPLATFORM_FUNCTIONS(WHP_DECLARE_MEMBER)
-> +#ifdef __x86_64__
->       LIST_WINHVEMULATION_FUNCTIONS(WHP_DECLARE_MEMBER)
-> +#endif
->       LIST_WINHVPLATFORM_FUNCTIONS_SUPPLEMENTAL(WHP_DECLARE_MEMBER)
->   };
->   
-
+Thanks,
+Shameer
 

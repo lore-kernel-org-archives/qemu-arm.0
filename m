@@ -4,57 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63BD4CFC504
-	for <qemu-arm@archiver.kernel.org>; Sat, 22 Nov 2025 04:23:22 +0000 (UTC)
-Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5875CFC504
+	for <qemu-arm@archiver.kernel.org>; Sat, 22 Nov 2025 04:47:24 +0000 (UTC)
+Received: from [::1] (helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vMczT-0004Ar-Jf; Fri, 21 Nov 2025 21:04:47 -0500
+	id 1vMOiT-0000XT-SD; Fri, 21 Nov 2025 05:50:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vMcAD-0006iy-Py; Fri, 21 Nov 2025 20:11:45 -0500
+ id 1vMOWh-0003zA-UX; Fri, 21 Nov 2025 05:38:04 -0500
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vMcA0-0004dw-RP; Fri, 21 Nov 2025 20:11:41 -0500
+ id 1vMOWX-0002JN-Al; Fri, 21 Nov 2025 05:37:59 -0500
 Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
  (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 5ALC1MwC000804
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 5ALAbASp074664
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Fri, 21 Nov 2025 21:01:23 +0900 (JST)
+ Fri, 21 Nov 2025 19:37:11 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=4NXv6EwW2QRaAJOJTTRauVs49o3MSdW1+DjtNFk7ULA=; 
+DKIM-Signature: a=rsa-sha256; bh=fXuVz71uzKkMD6s5XD0qIx2g6uYHZuOpMWhK178pPTM=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=Message-ID:Date:Subject:To:From;
- s=rs20250326; t=1763726483; v=1;
- b=Zcs3Lxe7pUp14O5Dz4a+mw4zarbdGUhX2XwCU92UTBhbYpQ4pr78dFWfrlE9bs8e
- MUAgKWqDe1tYw6Pu8xwn8ThJfseZnP0txcHPd1pBDeS0S2qUPccNnlfED2o7ECDU
- FdOZUHUl2hGl2gv0IL1Jd4Ql9z2gl9jkEkZhf6kigj6IcidXgdbckxtTns/nem1e
- RRs/de18dmo0qGB37yWL7460jvdh3TztnL31XTpY5oAzJogoN7rM3nSEtIaBspkq
- HaZoouiG+ZZlFPJZWJgRSevs68gDQqpHH740prXHLnK2BqFTnFv7XAViat/0YoMN
- P86SmuW/1M/oUpryATsuTw==
-Message-ID: <2aab212b-0770-4cdf-a30f-5b914e815543@rsg.ci.i.u-tokyo.ac.jp>
-Date: Fri, 21 Nov 2025 21:01:22 +0900
+ s=rs20250326; t=1763721431; v=1;
+ b=B8BJ4RsEIYqOAWJKwm2AN9ZZu8mhPspw6z+gm5cbHONrV0+EesrAoc57mj8e4WDr
+ krGosBnUsoIwKQwyAgdbDXENH80IxsUTM915E5OMdG95c2lnjn1tqTDxjq2qCYAf
+ HlhdqTVfoInu2iu1L2BQfYJs/jcvrZjR5lPqOYydjvZJwuGwNRUhkYeOLCfmzSTF
+ hO3x1uvg5749eMxpYWvoBA08nrJcpcKaTPyOL0txh92hhVrOMVeETcG8f00yXwwV
+ E94pRd7+qNFI4+jy+SaPmz1cnIQPaTUi4aV6lzxi1E3R+o0oaKHvkiP5+Rch1aD/
+ 9jf18z9PQnw4ei2xiFWqaw==
+Message-ID: <95237630-e3b4-4787-a1f8-8eb8e50929f5@rsg.ci.i.u-tokyo.ac.jp>
+Date: Fri, 21 Nov 2025 19:37:10 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 14/28] whpx: change memory management logic
+Subject: Re: [PATCH v11 04/28] hw/arm: virt: add GICv2m for the case when ITS
+ is not available
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
  <alex.bennee@linaro.org>,
  qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
- Peter Xu <peterx@redhat.com>, Mads Ynddal <mads@ynddal.dk>
+ Peter Xu <peterx@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
 References: <20251121100240.89117-1-mohamed@unpredictable.fr>
- <20251121100240.89117-15-mohamed@unpredictable.fr>
+ <20251121100240.89117-5-mohamed@unpredictable.fr>
 Content-Language: en-US
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20251121100240.89117-15-mohamed@unpredictable.fr>
+In-Reply-To: <20251121100240.89117-5-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=49.212.243.89;
  envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,150 +80,103 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 2025/11/21 19:02, Mohamed Mediouni wrote:
-> This allows edk2 to work on Arm, although u-boot is still not functional.
+> On Hypervisor.framework for macOS and WHPX for Windows, the provided environment is a GICv3 without ITS.
+> 
+> As such, support a GICv3 w/ GICv2m for that scenario.
 > 
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->   accel/whpx/whpx-common.c | 101 +++++++++++++++------------------------
->   1 file changed, 38 insertions(+), 63 deletions(-)
 > 
-> diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
-> index 399cf1914c..53b8cb06cc 100644
-> --- a/accel/whpx/whpx-common.c
-> +++ b/accel/whpx/whpx-common.c
-> @@ -259,89 +259,64 @@ void whpx_vcpu_kick(CPUState *cpu)
->    * Memory support.
->    */
->   
-> -static void whpx_update_mapping(hwaddr start_pa, ram_addr_t size,
-> -                                void *host_va, int add, int rom,
-> -                                const char *name)
-> +static void whpx_set_phys_mem(MemoryRegionSection *section, bool add)
->   {
->       struct whpx_state *whpx = &whpx_global;
-> -    HRESULT hr;
-> -
-> -    /*
-> -    if (add) {
-> -        printf("WHPX: ADD PA:%p Size:%p, Host:%p, %s, '%s'\n",
-> -               (void*)start_pa, (void*)size, host_va,
-> -               (rom ? "ROM" : "RAM"), name);
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>   hw/arm/virt-acpi-build.c | 4 +++-
+>   hw/arm/virt.c            | 8 ++++++++
+>   include/hw/arm/virt.h    | 2 ++
+>   3 files changed, 13 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 200e2a1da7..e2062f5d21 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -960,7 +960,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>               build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
+>               build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
+>           }
 > -    } else {
-> -        printf("WHPX: DEL PA:%p Size:%p, Host:%p,      '%s'\n",
-> -               (void*)start_pa, (void*)size, host_va, name);
-> -    }
-> -    */
-> -
-> -    if (add) {
-> -        hr = whp_dispatch.WHvMapGpaRange(whpx->partition,
-> -                                         host_va,
-> -                                         start_pa,
-> -                                         size,
-> -                                         (WHvMapGpaRangeFlagRead |
-> -                                          WHvMapGpaRangeFlagExecute |
-> -                                          (rom ? 0 : WHvMapGpaRangeFlagWrite)));
-> -    } else {
-> -        hr = whp_dispatch.WHvUnmapGpaRange(whpx->partition,
-> -                                           start_pa,
-> -                                           size);
-> -    }
-> -
-> -    if (FAILED(hr)) {
-> -        error_report("WHPX: Failed to %s GPA range '%s' PA:%p, Size:%p bytes,"
-> -                     " Host:%p, hr=%08lx",
-> -                     (add ? "MAP" : "UNMAP"), name,
-> -                     (void *)(uintptr_t)start_pa, (void *)size, host_va, hr);
-> +    MemoryRegion *area = section->mr;
-> +    bool writable = !area->readonly && !area->rom_device;
-> +    WHV_MAP_GPA_RANGE_FLAGS flags;
-> +    uint64_t page_size = qemu_real_host_page_size();
-> +    uint64_t gva = section->offset_within_address_space;
-> +    uint64_t size = int128_get64(section->size);
-> +    HRESULT res;
-
-Let's keep it named as hr for consistency.
-
-> +    void *mem;
-> +
-> +    if (!memory_region_is_ram(area)) {
-> +        if (writable) {
-> +            return;
-> +        } else if (!memory_region_is_romd(area)) {
-> +             add = false;
-> +        }
->       }
-> -}
-> -
-> -static void whpx_process_section(MemoryRegionSection *section, int add)
-> -{
-> -    MemoryRegion *mr = section->mr;
-> -    hwaddr start_pa = section->offset_within_address_space;
-> -    ram_addr_t size = int128_get64(section->size);
-> -    unsigned int delta;
-> -    uint64_t host_va;
->   
-> -    if (!memory_region_is_ram(mr)) {
-> -        return;
-> +    if (!QEMU_IS_ALIGNED(size, page_size) ||
-> +        !QEMU_IS_ALIGNED(gva, page_size)) {
-> +        /* Not page aligned, so we can not map as RAM */
-> +        add = false;
->       }
->   
-> -    delta = qemu_real_host_page_size() - (start_pa & ~qemu_real_host_page_mask());
-> -    delta &= ~qemu_real_host_page_mask();
-> -    if (delta > size) {
-> -        return;
-> -    }
-> -    start_pa += delta;
-> -    size -= delta;
-> -    size &= qemu_real_host_page_mask();
-> -    if (!size || (start_pa & ~qemu_real_host_page_mask())) {
-> +    if (!add) {
-> +        res = whp_dispatch.WHvUnmapGpaRange(whpx->partition,
-> +                gva, size);
-> +        if (!SUCCEEDED(res)) {
-
-Simpler: if (FAILED(res))
-
-> +            error_report("WHPX: failed to unmap GPA range");
-> +            abort();
-> +        }
->           return;
->       }
->   
-> -    host_va = (uintptr_t)memory_region_get_ram_ptr(mr)
-> -            + section->offset_within_region + delta;
-> +    flags = WHvMapGpaRangeFlagRead | WHvMapGpaRangeFlagExecute
-> +     | (writable ? WHvMapGpaRangeFlagWrite : 0);
-> +    mem = memory_region_get_ram_ptr(area) + section->offset_within_region;
->   
-> -    whpx_update_mapping(start_pa, size, (void *)(uintptr_t)host_va, add,
-> -                        memory_region_is_rom(mr), mr->name);
-> +    res = whp_dispatch.WHvMapGpaRange(whpx->partition,
-> +         mem, gva, size, flags);
-> +    if (!SUCCEEDED(res)) {
-> +        error_report("WHPX: failed to map GPA range");
-> +        abort();
 > +    }
->   }
+> +
+> +    if (!(vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) && !vms->no_gicv3_with_gicv2m) {
+>           const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
 >   
->   static void whpx_region_add(MemoryListener *listener,
->                              MemoryRegionSection *section)
+>           /* 5.2.12.16 GIC MSI Frame Structure */
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 25fb2bab56..f2a924ed26 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -959,6 +959,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+>   
+>       if (vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) {
+>           create_its(vms);
+> +    } else if (vms->gic_version != VIRT_GIC_VERSION_2 && !vms->no_gicv3_with_gicv2m) {
+> +        create_v2m(vms);
+>       } else if (vms->gic_version == VIRT_GIC_VERSION_2) {
+>           create_v2m(vms);
+>       }
+
+Shorter:
+if (vms->gic_version == VIRT_GIC_VERSION_2 ||
+     !vms->no_gicv3_with_gicv2m) {
+     create_v2m(vms);
+}
+
+> @@ -2444,6 +2446,8 @@ static void machvirt_init(MachineState *machine)
+>       vms->ns_el2_virt_timer_irq = ns_el2_virt_timer_present() &&
+>           !vmc->no_ns_el2_virt_timer_irq;
+>   
+> +    vms->no_gicv3_with_gicv2m = vmc->no_gicv3_with_gicv2m;
+> +
+>       fdt_add_timer_nodes(vms);
+>       fdt_add_cpu_nodes(vms);
+>   
+> @@ -3488,6 +3492,7 @@ static void virt_instance_init(Object *obj)
+>       vms->its = true;
+>       /* Allow ITS emulation if the machine version supports it */
+>       vms->tcg_its = !vmc->no_tcg_its;
+> +    vms->no_gicv3_with_gicv2m = false;
+>   
+>       /* Default disallows iommu instantiation */
+>       vms->iommu = VIRT_IOMMU_NONE;
+> @@ -3540,9 +3545,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(10, 2)
+>   
+>   static void virt_machine_10_1_options(MachineClass *mc)
 >   {
-> -    memory_region_ref(section->mr);
-> -    whpx_process_section(section, 1);
-> +    whpx_set_phys_mem(section, true);
+> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> +
+>       virt_machine_10_2_options(mc);
+>       mc->smbios_memory_device_size = 2047 * TiB;
+>       compat_props_add(mc->compat_props, hw_compat_10_1, hw_compat_10_1_len);
+> +    vmc->no_gicv3_with_gicv2m = true;
 >   }
+>   DEFINE_VIRT_MACHINE(10, 1)
 >   
->   static void whpx_region_del(MemoryListener *listener,
->                              MemoryRegionSection *section)
->   {
-> -    whpx_process_section(section, 0);
-> -    memory_region_unref(section->mr);
-> +    whpx_set_phys_mem(section, false);
->   }
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index c77a33f6df..3ff83aaabe 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -130,6 +130,7 @@ struct VirtMachineClass {
+>       bool no_cpu_topology;
+>       bool no_tcg_lpa2;
+>       bool no_ns_el2_virt_timer_irq;
+> +    bool no_gicv3_with_gicv2m;
+>       bool no_nested_smmu;
+>   };
 >   
->   static void whpx_transaction_begin(MemoryListener *listener)
+> @@ -178,6 +179,7 @@ struct VirtMachineState {
+>       char *oem_id;
+>       char *oem_table_id;
+>       bool ns_el2_virt_timer_irq;
+> +    bool no_gicv3_with_gicv2m;
+>       CXLState cxl_devices_state;
+>       bool legacy_smmuv3_present;
+>   };
 
 

@@ -4,105 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4192BCFA47A
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Nov 2025 06:52:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 019DFCFA477
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Nov 2025 07:28:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vML0C-0003aH-C9; Fri, 21 Nov 2025 01:52:16 -0500
+	id 1vMLZ6-0007UL-L1; Fri, 21 Nov 2025 02:28:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vML0A-0003ZZ-FS
- for qemu-arm@nongnu.org; Fri, 21 Nov 2025 01:52:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vML08-0003og-IH
- for qemu-arm@nongnu.org; Fri, 21 Nov 2025 01:52:14 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1763707930;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=gF05YVo7s9NJT1v4+oKcymDmGaLfxKAtCaFOowBY/So=;
- b=CGrH+DGpj9G5oOIVpbUkePtQ6vJBWJBSevxudplqxyt9X1lVCwE42xhX8lMW/13UiCk1zU
- JcS2ymzf2vyOlXYUhBT5E+M4Tv0kpT9K+5WblhmpZCLpuicQOysea5pjEbBP5YClwYHDlH
- ifNjppexVropRTe+2dfqzFl7/1Q1JQg=
-Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com
- [209.85.216.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-503-ruL_vRECNnq6v7qlVSvNUQ-1; Fri, 21 Nov 2025 01:52:09 -0500
-X-MC-Unique: ruL_vRECNnq6v7qlVSvNUQ-1
-X-Mimecast-MFC-AGG-ID: ruL_vRECNnq6v7qlVSvNUQ_1763707928
-Received: by mail-pj1-f69.google.com with SMTP id
- 98e67ed59e1d1-343daf0f38aso1944272a91.3
- for <qemu-arm@nongnu.org>; Thu, 20 Nov 2025 22:52:08 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vMLYf-0007B8-J3
+ for qemu-arm@nongnu.org; Fri, 21 Nov 2025 02:27:56 -0500
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vMLXu-000625-7V
+ for qemu-arm@nongnu.org; Fri, 21 Nov 2025 02:27:45 -0500
+Received: by mail-ed1-x543.google.com with SMTP id
+ 4fb4d7f45d1cf-640a0812658so2756379a12.0
+ for <qemu-arm@nongnu.org>; Thu, 20 Nov 2025 23:26:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1763709828; x=1764314628; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=cskrPK+QxONz4k3u1F4DSco9fXxNJt/HV0VjLhKecYo=;
+ b=wh58dkKlSEar0vlcaE/hJ75wk8+MWriIRZepWXMTFcbHS0eBQVAsXi/cqttzfLFgLU
+ lBcQXtkVTVD8oO3/hSim09EKtN/uMJ5vPDZkDPAd2oAlYmDvOWWnm+hDXIBPUjsOEqUT
+ qva8/UNDorJDanFH4IwHi7O9Yx8iMvu2zKy9OgPAbWBQSpvFAH5XegJvfmPeiP5iBlOa
+ +GUXBJnz3vay9XMISQ2/VXxXiy/PN0u130dLB18lfimXontVhhFysBuZHFh5rRWdKTSu
+ FUPnBWKEyIE3YentEf8y4eqfEzKa7opb0XSH1Uft2Zz8TCV+GF6Y+rAYgjm+kGPt0Ww0
+ yHqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763707928; x=1764312728;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1763709828; x=1764314628;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=gF05YVo7s9NJT1v4+oKcymDmGaLfxKAtCaFOowBY/So=;
- b=GLwpfEAi8KoCkMysiP84OH3zxQeHcLgybu4qq1yhP5E2WdADtLbeVs0PMNpMdQ0EOx
- aKZ4MPkcJKXeCcGrx/wJ+NLcjdnfgyqDDCjcBV/zEO8xtDmrgIg6BFuSQlaStDdgi79d
- SAttmoEOjOqDus8DinjoZF9AyEvgE97pgMxEaG6tR9gG9LkwE/H7qAn4e05YNy8Jno2Q
- Bfje6sLGMrRzIWtsPvhYmoczEcOK2PLN/grZiFS6wMxsKNW9zVUiWXaBp8uCOar+jUFZ
- /xnnElryCP/pwDrgBuB+lAWNt8iuA+wE3hCHzVdb3E4rZgXHketF7ZMZtUBowju5Clp8
- HtpQ==
-X-Gm-Message-State: AOJu0Yzie6VWEGPZlQk5Ox2PupaYYwCBJQlEWhAXuKjoEXtutAwRyf+9
- BTbdPb8aTWj+zSxqn9/amx1H/te16+ENFa4ZcEY1WCo6lD9OT0avjsMqjxSDX7K2I9nqFbKoctF
- 88RGH6y91h903+14KcMwS2Ji8jky14slVioV/ICuw/lQZTQ2CGaCOqw==
-X-Gm-Gg: ASbGncs/skRPK2zQq7NSB8nX2ep923msOxe6FKXuMd4ZbMe5xioQg2WhF+Tg6UXi7wF
- Dc7/1i38tSXqrfy0L8cQlhvsn9LKCD3CA9Oba4jSxAGgVXXoPvK2a185UyOF1RySGBY730yZ3eo
- mn2x1EEu6V13hYTVINSt6N1TtVl9XPhOWowtMigyZUpfDMXAamKIF3gvcsKxMMOtxv4HHlyu1be
- gdBuUzYBqN4HivcBpBMZ/VhR0jaqXfCDEbfhFVBfIRaxkXLHK6w7atBANxSFSkpOwhGaPKDgXQP
- 8tgtF+rh8sjVd5ozQGk6lxHPilPaM9/qv/Xm/t6x3DMNWm/OsAMtkcltYMfihcvRuvFeQTyc89f
- WReP5d2lLkSJL4GEQ2eBU/BDPLqapcRbMkYCi0DeeKUKXb2ZKZQ==
-X-Received: by 2002:a17:90b:5704:b0:340:dd2c:a3da with SMTP id
- 98e67ed59e1d1-34733e436damr1299285a91.8.1763707927821; 
- Thu, 20 Nov 2025 22:52:07 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEEPa/bTgTBH1lYBJHordkqvB86rJBWuuKv+FRp6FyAdP1qvY93kRBz9AnYJ0vbK0kLmUicDw==
-X-Received: by 2002:a17:90b:5704:b0:340:dd2c:a3da with SMTP id
- 98e67ed59e1d1-34733e436damr1299254a91.8.1763707927372; 
- Thu, 20 Nov 2025 22:52:07 -0800 (PST)
-Received: from [192.168.68.51] (n175-34-62-5.mrk21.qld.optusnet.com.au.
- [175.34.62.5]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7c3f155f6e7sm4854431b3a.63.2025.11.20.22.52.00
+ bh=cskrPK+QxONz4k3u1F4DSco9fXxNJt/HV0VjLhKecYo=;
+ b=i/EHP0HFDUGnRXf15PzyK6v+XPOtrwxkygFpOTIWZA3yCpnfaEkBy9t1NIVqwAkxNE
+ nYmC5smltn6OkXZ2TGSsaezHPgyzomcNf8XVk8xjD379hemDbI9ZEyPJLnQvWjs0qn+I
+ tDtiS65mURBpxtbdo6fKfDM72Pw7SzxH2Is7s0EDoUDSGmDVqQf3MzUzYB0JK18NnnDk
+ yuw6cBOHgF5mKlL5yLjcF067HgSA3EzReheb27guo7qOyjVAp55i3PECz752uz836C3A
+ VQVJxbMYNmeqjv3o+KNTitMsoExARjNO6A65eE8ap9r13HM5nzVdj2W1/q2MYGEdhi3v
+ lWCg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW3Gl95VWmO4+wxQm+DD3G9s3ls50bqyjimWBdACh2tboIPr0uOBx/UwxU0aHY1cdBNspwC8ijMXA==@nongnu.org
+X-Gm-Message-State: AOJu0YzDJKf8y0h3wXHEMLvxhnS4AQ/VQT1wwCnK3I/bbcKfQNBrs1cv
+ nhnnMRYYXOUtSSVXoVmB3m02isoPL4bsX84+aF8VDWAoMuATb+PP7PYHl2UblKwdrzXIDBSYkm0
+ rPaaCI5JlOZVs
+X-Gm-Gg: ASbGncssXVeJKho7EcTpvmfCwZt8LC6HaDkytMv73we6CnLzoIdUHIA30RHuDRJ+wLu
+ 1goaFWpko8sTkUmLZHLptuDleAnue3kstPIvaY2zRzdBOjg6zG4gQCfxKRX0VHMGTX5zJPReKF4
+ dy+ePczl221IZ3mvedS7ZWvNpdE+OudSQgVxRzNke6Qjm09IkmWV2jZdmk3ELpFeqtE/O3u3gi6
+ 8lQ1YWDQaBrYxOI8s0ZJe5+Tc1trayU97m8jo2UxtPaIK2l2Gl7bBtDM54yE9bszSok9f5Kzl04
+ zE4jFc1BInlL38BGLX4DntDa6dnqmbWbO5ddjItRJ3PHluGnfuI834bTtfYvKBck5TMgTkuikch
+ W97/p7dlZAxq9/n/ZBbrEBAgPEmXLldlKBM4UHoHI4nbTD+RpJTDLiEog4oYZh1aGld0Iwrd2+f
+ yjydNltqbeXxc6Uxf1lrFR6GEZmvLQS6EkWnujKb3sWoNGwi13JBbBLw==
+X-Google-Smtp-Source: AGHT+IGHN/KQ0bUk8m0DrtiIPbJyYZF2vimJtwu4hirLdJCh5xQio3RO8tP6oC4pcO1w1ZESKKMJsA==
+X-Received: by 2002:a05:600c:4f88:b0:477:942:7521 with SMTP id
+ 5b1f17b1804b1-477c018afa2mr11704075e9.14.1763709163800; 
+ Thu, 20 Nov 2025 23:12:43 -0800 (PST)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-477a96aa472sm85902195e9.0.2025.11.20.23.12.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Nov 2025 22:52:06 -0800 (PST)
-Message-ID: <3be51d9f-366a-47a3-a048-623608aa0475@redhat.com>
-Date: Fri, 21 Nov 2025 16:51:58 +1000
+ Thu, 20 Nov 2025 23:12:43 -0800 (PST)
+Message-ID: <34ec72d0-dafa-418c-9372-d5d033a93c0d@linaro.org>
+Date: Fri, 21 Nov 2025 08:12:42 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/8] target/arm/kvm: Improve memory error handling
-To: Jonathan Cameron <jonathan.cameron@huawei.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mchehab+huawei@kernel.org,
- gengdongjiu1@gmail.com, mst@redhat.com, imammedo@redhat.com,
- armbru@redhat.com, anisinha@redhat.com, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, philmd@linaro.org, wangyanan55@huawei.com,
- zhao1.liu@intel.com, peter.maydell@linaro.org, pbonzini@redhat.com,
- shan.gavin@gmail.com, zhangliang5@huawei.com
-References: <20251112172535.403042-1-gshan@redhat.com>
- <20251118104755.000024c8@huawei.com>
-From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20251118104755.000024c8@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: c1ngjfx_6-Vba84v9icpJBwCxgUAm5kB5ZarijYnk2E_1763707928
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH] hw/arm/armv7m: Disable reentrancy guard for
+ v7m_sysreg_ns_ops MRs
 Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20251114155304.2662414-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20251114155304.2662414-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::543;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x543.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,56 +105,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Jonathan,
+On 14/11/25 16:53, Peter Maydell wrote:
+> For M-profile cores which support TrustZone, there are some memory
+> areas which are "NS aliases" -- a Secure access to these addresses
+> really performs an NS access to a different part of the device.  We
+> implement these using MemoryRegionOps read and write functions which
+> pass the access on with adjusted attributes using
+> memory_region_dispatch_read() and memory_region_dispatch_write().
+> 
+> Since the MR we are dispatching to is owned by the same device that
+> owns the NS-alias MR (the TYPE_ARMV7M container object), this trips
+> the reentrancy-guard that is applied by access_with_adjusted_size().
+> 
+> Mark the NS alias MemoryRegions as disable_reentrancy_guard; this is
+> safe because v7m_sysreg_ns_read() and v7m_sysreg_ns_write() do not
+> touch any of the device's state.  (Any further reentrancy attempts by
+> the underlying MR will still be caught.)
+> 
+> Without this fix, an attempt to read from an address like 0xe002e010,
+> which is a register in the NS systick alias, will fail and provoke
+> 
+>   qemu-system-arm: warning: Blocked re-entrant IO on MemoryRegion: v7m_systick at addr: 0x0
+> 
+> We didn't notice this earlier because almost all code accesses
+> the registers and systick via the non-alias addresses; the NS
+> aliases are only need for the rarer case of Secure code that needs
+> to manage the NS timer or system state on behalf of NS code.
+> 
+> Note that although the v7m_systick_ops read and write functions
+> also call memory_region_dispatch_{read,write}, this MR does not
+> need to have the reentrancy-guard disabled because the underlying
+> MR that it forwards to is owned by a different device (the
+> TYPE_SYSTICK timer device).
+> 
+> Reported via a stackoverflow question:
+> https://stackoverflow.com/questions/79808107/what-this-error-is-even-about-qemu-system-arm-warning-blocked-re-entrant-io
+> 
+> Cc: qemu-stable@nongnu.org
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/arm/armv7m.c | 12 ++++++++++++
+>   1 file changed, 12 insertions(+)
 
-On 11/18/25 8:47 PM, Jonathan Cameron wrote:
-> On Thu, 13 Nov 2025 03:25:27 +1000
-> Gavin Shan <gshan@redhat.com> wrote:
-> 
->> In the combination of 64KiB host and 4KiB guest, a problematic host
->> page affects 16x guest pages. Those 16x guest pages are most likely
->> owned by separate threads and accessed by the threads in parallel.
->> It means 16x memory errors can be raised at once. However, we're
->> unable to handle this situation because the only error source has
->> one read acknowledgement register in current design. QEMU has to
->> crash in the following path due to the previously delivered error
->> isn't acknowledged by the guest on attempt to deliver another error.
->>
->>    kvm_vcpu_thread_fn
->>      kvm_cpu_exec
->>        kvm_arch_on_sigbus_vcpu
->>          kvm_cpu_synchronize_state
->>          acpi_ghes_memory_errors
->>          abort
->>
->> This series fixes the issue by sending 16x consective CPER errors
->> which are contained in a single GHES error block.
->>
->> PATCH[1-4] Increases GHES raw data maximal length from 1KiB to 4KiB
->> PATCH[5]   Supports multiple error records in a single error block
->> PATCH[6-7] Improves the error handling in the error delivery path
->> PATCH[8]   Sends 16x consective CPERs in a single block if needed
->>
-> 
-> Hi Gavin,
-> 
-> Just a quick head's up to say we've had some internal discussions around the
-> kernel handling of broader address masks in CPER and think it is probably
-> broken. Rectifying that may at least simplify what is needed on the QEMU side
-> of things and maybe even handle much larger blocks (2M and larger).
-> 
-> Will keep everyone informed of how we get on with resolving that.
-> 
-
-Thanks, Jonathan. If the broader address mask in CPER can be used to isolate
-the specified memory range instead of a page, QEMU needn't the improvement
-done in this series. Please copy me if the linux patches are going to be
-sent for review if possible, I will try to review.
-
-I will pull those patches improving error handling and post them separately
-so that they can be merged. Those patches aren't really relevant to error handling.
-
-Thanks,
-Gavin
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 

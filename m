@@ -4,50 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F618CFA46E
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Nov 2025 05:01:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4192BCFA47A
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Nov 2025 06:52:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vMJHE-0004FU-P2; Fri, 21 Nov 2025 00:01:45 -0500
+	id 1vML0C-0003aH-C9; Fri, 21 Nov 2025 01:52:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vMJGo-0003yn-VZ; Fri, 21 Nov 2025 00:01:25 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vML0A-0003ZZ-FS
+ for qemu-arm@nongnu.org; Fri, 21 Nov 2025 01:52:14 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vMJGm-0006BY-5W; Fri, 21 Nov 2025 00:01:18 -0500
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Fri, 21 Nov
- 2025 13:01:08 +0800
-Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Fri, 21 Nov 2025 13:01:08 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <nabihestefan@google.com>
-Subject: [PATCH v1 0/1] (RESEND) Update ASPEED PCIe Root Port capabilities and
- enable MSI to support hotplug
-Date: Fri, 21 Nov 2025 13:01:07 +0800
-Message-ID: <20251121050108.3407445-1-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vML08-0003og-IH
+ for qemu-arm@nongnu.org; Fri, 21 Nov 2025 01:52:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1763707930;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gF05YVo7s9NJT1v4+oKcymDmGaLfxKAtCaFOowBY/So=;
+ b=CGrH+DGpj9G5oOIVpbUkePtQ6vJBWJBSevxudplqxyt9X1lVCwE42xhX8lMW/13UiCk1zU
+ JcS2ymzf2vyOlXYUhBT5E+M4Tv0kpT9K+5WblhmpZCLpuicQOysea5pjEbBP5YClwYHDlH
+ ifNjppexVropRTe+2dfqzFl7/1Q1JQg=
+Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com
+ [209.85.216.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-503-ruL_vRECNnq6v7qlVSvNUQ-1; Fri, 21 Nov 2025 01:52:09 -0500
+X-MC-Unique: ruL_vRECNnq6v7qlVSvNUQ-1
+X-Mimecast-MFC-AGG-ID: ruL_vRECNnq6v7qlVSvNUQ_1763707928
+Received: by mail-pj1-f69.google.com with SMTP id
+ 98e67ed59e1d1-343daf0f38aso1944272a91.3
+ for <qemu-arm@nongnu.org>; Thu, 20 Nov 2025 22:52:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1763707928; x=1764312728;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=gF05YVo7s9NJT1v4+oKcymDmGaLfxKAtCaFOowBY/So=;
+ b=GLwpfEAi8KoCkMysiP84OH3zxQeHcLgybu4qq1yhP5E2WdADtLbeVs0PMNpMdQ0EOx
+ aKZ4MPkcJKXeCcGrx/wJ+NLcjdnfgyqDDCjcBV/zEO8xtDmrgIg6BFuSQlaStDdgi79d
+ SAttmoEOjOqDus8DinjoZF9AyEvgE97pgMxEaG6tR9gG9LkwE/H7qAn4e05YNy8Jno2Q
+ Bfje6sLGMrRzIWtsPvhYmoczEcOK2PLN/grZiFS6wMxsKNW9zVUiWXaBp8uCOar+jUFZ
+ /xnnElryCP/pwDrgBuB+lAWNt8iuA+wE3hCHzVdb3E4rZgXHketF7ZMZtUBowju5Clp8
+ HtpQ==
+X-Gm-Message-State: AOJu0Yzie6VWEGPZlQk5Ox2PupaYYwCBJQlEWhAXuKjoEXtutAwRyf+9
+ BTbdPb8aTWj+zSxqn9/amx1H/te16+ENFa4ZcEY1WCo6lD9OT0avjsMqjxSDX7K2I9nqFbKoctF
+ 88RGH6y91h903+14KcMwS2Ji8jky14slVioV/ICuw/lQZTQ2CGaCOqw==
+X-Gm-Gg: ASbGncs/skRPK2zQq7NSB8nX2ep923msOxe6FKXuMd4ZbMe5xioQg2WhF+Tg6UXi7wF
+ Dc7/1i38tSXqrfy0L8cQlhvsn9LKCD3CA9Oba4jSxAGgVXXoPvK2a185UyOF1RySGBY730yZ3eo
+ mn2x1EEu6V13hYTVINSt6N1TtVl9XPhOWowtMigyZUpfDMXAamKIF3gvcsKxMMOtxv4HHlyu1be
+ gdBuUzYBqN4HivcBpBMZ/VhR0jaqXfCDEbfhFVBfIRaxkXLHK6w7atBANxSFSkpOwhGaPKDgXQP
+ 8tgtF+rh8sjVd5ozQGk6lxHPilPaM9/qv/Xm/t6x3DMNWm/OsAMtkcltYMfihcvRuvFeQTyc89f
+ WReP5d2lLkSJL4GEQ2eBU/BDPLqapcRbMkYCi0DeeKUKXb2ZKZQ==
+X-Received: by 2002:a17:90b:5704:b0:340:dd2c:a3da with SMTP id
+ 98e67ed59e1d1-34733e436damr1299285a91.8.1763707927821; 
+ Thu, 20 Nov 2025 22:52:07 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEEPa/bTgTBH1lYBJHordkqvB86rJBWuuKv+FRp6FyAdP1qvY93kRBz9AnYJ0vbK0kLmUicDw==
+X-Received: by 2002:a17:90b:5704:b0:340:dd2c:a3da with SMTP id
+ 98e67ed59e1d1-34733e436damr1299254a91.8.1763707927372; 
+ Thu, 20 Nov 2025 22:52:07 -0800 (PST)
+Received: from [192.168.68.51] (n175-34-62-5.mrk21.qld.optusnet.com.au.
+ [175.34.62.5]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-7c3f155f6e7sm4854431b3a.63.2025.11.20.22.52.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 20 Nov 2025 22:52:06 -0800 (PST)
+Message-ID: <3be51d9f-366a-47a3-a048-623608aa0475@redhat.com>
+Date: Fri, 21 Nov 2025 16:51:58 +1000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 0/8] target/arm/kvm: Improve memory error handling
+To: Jonathan Cameron <jonathan.cameron@huawei.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mchehab+huawei@kernel.org,
+ gengdongjiu1@gmail.com, mst@redhat.com, imammedo@redhat.com,
+ armbru@redhat.com, anisinha@redhat.com, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, philmd@linaro.org, wangyanan55@huawei.com,
+ zhao1.liu@intel.com, peter.maydell@linaro.org, pbonzini@redhat.com,
+ shan.gavin@gmail.com, zhangliang5@huawei.com
+References: <20251112172535.403042-1-gshan@redhat.com>
+ <20251118104755.000024c8@huawei.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20251118104755.000024c8@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: c1ngjfx_6-Vba84v9icpJBwCxgUAm5kB5ZarijYnk2E_1763707928
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -60,93 +115,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-v1:
-  1.  Update ASPEED PCIe Root Port capabilities and enable MSI to support hotplug
+Hi Jonathan,
 
-How to test it:
+On 11/18/25 8:47 PM, Jonathan Cameron wrote:
+> On Thu, 13 Nov 2025 03:25:27 +1000
+> Gavin Shan <gshan@redhat.com> wrote:
+> 
+>> In the combination of 64KiB host and 4KiB guest, a problematic host
+>> page affects 16x guest pages. Those 16x guest pages are most likely
+>> owned by separate threads and accessed by the threads in parallel.
+>> It means 16x memory errors can be raised at once. However, we're
+>> unable to handle this situation because the only error source has
+>> one read acknowledgement register in current design. QEMU has to
+>> crash in the following path due to the previously delivered error
+>> isn't acknowledged by the guest on attempt to deliver another error.
+>>
+>>    kvm_vcpu_thread_fn
+>>      kvm_cpu_exec
+>>        kvm_arch_on_sigbus_vcpu
+>>          kvm_cpu_synchronize_state
+>>          acpi_ghes_memory_errors
+>>          abort
+>>
+>> This series fixes the issue by sending 16x consective CPER errors
+>> which are contained in a single GHES error block.
+>>
+>> PATCH[1-4] Increases GHES raw data maximal length from 1KiB to 4KiB
+>> PATCH[5]   Supports multiple error records in a single error block
+>> PATCH[6-7] Improves the error handling in the error delivery path
+>> PATCH[8]   Sends 16x consective CPERs in a single block if needed
+>>
+> 
+> Hi Gavin,
+> 
+> Just a quick head's up to say we've had some internal discussions around the
+> kernel handling of broader address masks in CPER and think it is probably
+> broken. Rectifying that may at least simplify what is needed on the QEMU side
+> of things and maybe even handle much larger blocks (2M and larger).
+> 
+> Will keep everyone informed of how we get on with resolving that.
+> 
 
-Firmware Requirements
- 
-Before testing, please make sure the Linux kernel has the following configuration enabled:
-Reference defconfig:
-https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm64/configs/aspeed_g7_defconfig
+Thanks, Jonathan. If the broader address mask in CPER can be used to isolate
+the specified memory range instead of a page, QEMU needn't the improvement
+done in this series. Please copy me if the linux patches are going to be
+sent for review if possible, I will try to review.
 
-CONFIG_HOTPLUG_PCI_PCIE=y
-CONFIG_HOTPLUG_PCI=y
-# CONFIG_HOTPLUG_PCI_CPCI is not set
-# CONFIG_HOTPLUG_PCI_SHPC is not set
+I will pull those patches improving error handling and post them separately
+so that they can be merged. Those patches aren't really relevant to error handling.
 
-QEMU Testing Procedure
-1. Boot Linux and verify the root port
-
-root@ast2700-a1-spl:~# lspci
-0002:00:00.0 PCI bridge: ASPEED Technology, Inc. AST1150 PCI-to-PCI Bridge
-
-2. Add an e1000e device dynamically (Hot-plug)
-
-In QEMU monitor:
-(qemu) device_add e1000e,bus=pcie.2,id=mye1000e
-[  103.919703] pcieport 0002:00:00.0: pciehp: Slot(0): Button press: will power on in 5 sec
-[  103.921921] pcieport 0002:00:00.0: pciehp: Slot(0): Card present
-[  103.922557] pcieport 0002:00:00.0: pciehp: Slot(0): Link Up
-[  105.047374] pci 0002:01:00.0: [8086:10d3] type 00 class 0x020000
-[  105.048859] pci 0002:01:00.0: reg 0x10: [mem 0x00000000-0x0001ffff]
-[  105.049786] pci 0002:01:00.0: reg 0x14: [mem 0x00000000-0x0001ffff]
-[  105.050453] pci 0002:01:00.0: reg 0x18: [io  0x0000-0x001f]
-[  105.051049] pci 0002:01:00.0: reg 0x1c: [mem 0x00000000-0x00003fff]
-[  105.051904] pci 0002:01:00.0: reg 0x30: [mem 0x00000000-0x0003ffff pref]
-[  105.052880] pci 0002:01:00.0: enabling Extended Tags
-[  105.063878] pci 0002:01:00.0: BAR 6: assigned [mem 0xa0000000-0xa003ffff pref]
-[  105.064889] pci 0002:01:00.0: BAR 0: assigned [mem 0xa0040000-0xa005ffff]
-[  105.066104] pci 0002:01:00.0: BAR 1: assigned [mem 0xa0060000-0xa007ffff]
-[  105.066881] pci 0002:01:00.0: BAR 3: assigned [mem 0xa0080000-0xa0083fff]
-[  105.067637] pci 0002:01:00.0: BAR 2: assigned [io  0x1000-0x101f]
-[  105.068360] pcieport 0002:00:00.0: PCI bridge to [bus 01]
-[  105.068828] pcieport 0002:00:00.0:   bridge window [io  0x1000-0x1fff]
-[  105.072140] pcieport 0002:00:00.0:   bridge window [mem 0xa0000000-0xa01fffff]
-[  105.075017] pcieport 0002:00:00.0:   bridge window [mem 0xa0200000-0xa03fffff 64bit pref]
-[  105.081561] pcieport 0002:00:00.0: Max Payload Size set to  128/ 128 (was  128), Max Read Rq  128
-[  105.082733] pci 0002:01:00.0: Max Payload Size set to  128/ 128 (was  128), Max Read Rq  128
-[  105.089597] e1000e 0002:01:00.0: enabling device (0000 -> 0002)
-[  105.098995] e1000e 0002:01:00.0: Interrupt Throttling Rate (ints/sec) set to dynamic conservative mode
-[  105.160515] e1000e 0002:01:00.0 0002:01:00.0 (uninitialized): registered PHC clock
-[  105.231396] e1000e 0002:01:00.0 eth2: (PCI Express:2.5GT/s:Width x1) 52:54:00:12:34:56
-[  105.232279] e1000e 0002:01:00.0 eth2: Intel(R) PRO/1000 Network Connection
-[  105.233696] e1000e 0002:01:00.0 eth2: MAC: 3, PHY: 8, PBA No: 000000-000
-[  105.489627] 8021q: adding VLAN 0 to HW filter on device eth2
-[  105.788193] e1000e 0002:01:00.0 eth2: NIC Link is Up 1000 Mbps Full Duplex, Flow Control: Rx/Tx
-
-Leave QEMU monitor mode and lspci now lists the device:
-
-root@ast2700-a1-spl:~# lspci
-0002:00:00.0 PCI bridge: ASPEED Technology, Inc. AST1150 PCI-to-PCI Bridge
-0002:01:00.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection
-
-3. Remove the device dynamically (Hot-unplug)  
-
-In QEMU monitor:
-(qemu) device_del mye1000e
-[  203.354941] pcieport 0002:00:00.0: pciehp: Slot(0): Button press: will power off in 5 sec
-[  208.411558] e1000e 0002:01:00.0 eth2: removed PHC
-[  208.486799] e1000e 0002:01:00.0 eth2: NIC Link is Down
-
-Leave QEMU monitor mode and lspci again shows only the root port:
-root@ast2700-a1-spl:~# lspci
-0002:00:00.0 PCI bridge: ASPEED Technology, Inc. AST1150 PCI-to-PCI Bridge
-
-Jamin Lin (1):
-  hw/pci-host/aspeed_pcie: Update ASPEED PCIe Root Port capabilities and
-    enable MSI to support hotplug
-
- hw/pci-host/aspeed_pcie.c | 40 ++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 39 insertions(+), 1 deletion(-)
-
--- 
-2.43.0
+Thanks,
+Gavin
 
 

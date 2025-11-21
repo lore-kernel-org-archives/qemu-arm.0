@@ -4,83 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55235CFA76A
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Nov 2025 10:09:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 011FDCFA76D
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Nov 2025 10:29:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vMNzv-0004w8-0U; Fri, 21 Nov 2025 05:04:12 -0500
+	id 1vMONF-0000aR-Vw; Fri, 21 Nov 2025 05:28:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vMNzW-0004iW-T3
- for qemu-arm@nongnu.org; Fri, 21 Nov 2025 05:03:47 -0500
-Received: from p-east3-cluster3-host1-snip4-4.eps.apple.com ([57.103.86.7]
- helo=outbound.qs.icloud.com)
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vMOI8-0007lA-V3; Fri, 21 Nov 2025 05:23:01 -0500
+Received: from mail-westcentralusazlp170100005.outbound.protection.outlook.com
+ ([2a01:111:f403:c112::5] helo=CY7PR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vMNzI-0007tv-0U
- for qemu-arm@nongnu.org; Fri, 21 Nov 2025 05:03:43 -0500
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-4 (Postfix) with ESMTPS id
- 92C7918010C3; Fri, 21 Nov 2025 10:02:58 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=1HDLl+vsTco3N+tEGqvISSZb2bm2NYHKpsf2pCMBzc0=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=KEHLuVr86nRpO4/BwUC75p23yPe2ohoVy3fp4icjRVg5kJsDwnapfPXDahq6JmBt69C6c+QyqfMI6m/ZweYWHRK64TM6pL90AfYwmnPh4b5C3hq/rvOZGTizwlKzuwKrlZBPSWVKHfmzUUzbQmipj6qBMUGTiDdYQBe4vabCKLlLxlu4ElpxA/fMO+M5z4rW0TETV3G7hPEsA61cYwU69IRFPdG05yB8EyHoYjUmwjDuQ6N3WnThQMvnZrGDw0I3g9vXikVuL3TgmB24eEzviFJnN+E8iUycn6+on8WpGMLtnTCyzFEnqChi6e0z2i4cZEKL0M8+OZJiNT8Czr09HA==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-4 (Postfix) with ESMTPSA id
- C71D718000A6; Fri, 21 Nov 2025 10:02:56 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org,
-	mohamed@unpredictable.fr
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, Peter Xu <peterx@redhat.com>,
- Mads Ynddal <mads@ynddal.dk>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v11 08/28] whpx: ifdef out winhvemulation on non-x86_64
-Date: Fri, 21 Nov 2025 11:02:20 +0100
-Message-ID: <20251121100240.89117-9-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20251121100240.89117-1-mohamed@unpredictable.fr>
-References: <20251121100240.89117-1-mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vMOHy-0001Eh-8o; Fri, 21 Nov 2025 05:22:56 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=u7WonJWfv2LNZQ5FYdautBZSCZ1TjB1W8xskYTg5mxjUejGdr8DTUn1/XSjVoSL/kUgpUzfAKRvk6q7CPvPyl7UxD0LgQiHjzNI2yV0UPqCbfr1QwDdWUi0w76tjucmkZSeXtV+xysqWaKSLwgU2AYLC1KiJYDcKJwrx1JpZigwEfizzilPh5i9iFiB1xxtEWfCb5BmtmC2Y1SA5hCxKRRFLshgGMY6Q+jc7OPSKtugG2/HQhi5Z+k+j7/X48M90Dmf/O+5YsxKPsCDIusLSiE6HbHchl83fyl0bkF/TbU1yaFFxwcfU5vFGoMN891Fx/NBvurEAQx9oe6m8+b9XVg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=WkdipiNHgD2YBjJihTPp2q34GZrBZ9P9Zc2OhHIDqWA=;
+ b=VXzwcjCx6bv1MjPo3W5+rEyHZAi3+HHKqJWqbB3s2QJhGc+hteJpfPKF5nu3ir2qHVVl8CBXHXMzM8LPxwPZu9AbK3uyMKOCElTnBJIyI4g1sSlYXEZwyYEQi2Vpqn/eqzbiSBsnQAz+0oXGk0iiq9nInTEN3dr66VdKig/UrJULpKCkUGJw1Vh7WtDlgFvoWR3M7N0FOXGELXtatvCF4ouJsfDCrm6nzN/TQ7AwtRw5MMvqh/TLjsTXvSPkVQ1KVUPp+As76+KDssVH1Pq8JYQHxRaDrI1GkP6vjBJaURzF9ojy81v0AQryY2QAu5+vNLT2uFcV3EM9hZdyNK/PNg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=WkdipiNHgD2YBjJihTPp2q34GZrBZ9P9Zc2OhHIDqWA=;
+ b=k8wND824Bp8Ta6AQ3j6OYt+XK1G9YuFgkW0eWSVa29P+rHDZXN7x2DPZoVMT03nytlmnjandzEyIdcAyH6raZZYVd/V2ApVx/3ynYgCnFbLvMUgCyNxjdMOpo1/vzrVXCFAJFRDEC2CdMKzSGgvy8xVj/ObK/i3xvhvhIxS+dIYWmxLxTYkTa5yyT2PZA6kkgsWFT84B5iABh25bVdb8dKg1gGVl69gNO0osiuExoOJ8HI1PdAiVPiYyVx6fP8t6TXI0gBa67VgLQx0/dfLqSviK0esW8wJ8soKVsH4BB4n6EWOPuB/ebFcrYTD0SgwQ9jcSdc5F1fU78LL01weIIA==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by DS0PR12MB8343.namprd12.prod.outlook.com (2603:10b6:8:fd::8) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9343.11; Fri, 21 Nov 2025 10:22:21 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::e8c:e992:7287:cb06]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::e8c:e992:7287:cb06%5]) with mapi id 15.20.9343.011; Fri, 21 Nov 2025
+ 10:22:21 +0000
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Jason Gunthorpe
+ <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
+ <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>, "smostafa@google.com"
+ <smostafa@google.com>, "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, "yi.l.liu@intel.com"
+ <yi.l.liu@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>
+Subject: RE: [PATCH v6 33/33] hw/arm/smmuv3-accel: Add support for PASID enable
+Thread-Topic: [PATCH v6 33/33] hw/arm/smmuv3-accel: Add support for PASID
+ enable
+Thread-Index: AQHcWiFqHSYhBOGE40atlLYpe09yo7T8IHEAgADKkVA=
+Date: Fri, 21 Nov 2025 10:22:21 +0000
+Message-ID: <CH3PR12MB75485354E16E462D66567416ABD5A@CH3PR12MB7548.namprd12.prod.outlook.com>
+References: <20251120132213.56581-1-skolothumtho@nvidia.com>
+ <20251120132213.56581-34-skolothumtho@nvidia.com>
+ <aR+RngqP3HTLZIlH@Asurada-Nvidia>
+In-Reply-To: <aR+RngqP3HTLZIlH@Asurada-Nvidia>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|DS0PR12MB8343:EE_
+x-ms-office365-filtering-correlation-id: 390df915-a759-4006-499a-08de28e7db4a
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|7416014|1800799024|366016|38070700021|7053199007; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?zQ7rEWC4bE1QDgL1TQPRX5tNaqNRdc/ztJBSp7VIYqnJIcE7kAj9C95GvTWe?=
+ =?us-ascii?Q?/s4//hRsIYkm1gLfrws69+7q1rgSB7NPhv2Bkq+Pgc6RoOdVggaGfPIeV/Gu?=
+ =?us-ascii?Q?R3skAs1CbUlf0nHBQ0V19CS/RoGp4Q+V6U5kVxpukwXnYIhCT/pzzoP2FLtt?=
+ =?us-ascii?Q?QhZc0jE2ChYwpEhh4KdkZ6OjPvvzJdXEsQupLyQlT9Xhmeflo26L3uI1F7Df?=
+ =?us-ascii?Q?MBd2h/M6SuKE72fJ5pEuZYz3TYlC268OF61JG+VHxu+MkPGcNzkxVsQsZ1oT?=
+ =?us-ascii?Q?91cokrdYAKGEDzdhCMzYmCa4Qo/S7r0BmfvBX3ehFteW+u9bDpBj7rVUGM/i?=
+ =?us-ascii?Q?ihIhWT8ocb0yUMrKwTf8tqCGqqajOoRBLr6hvPrjV7A+lFqtlV44ymkhuD1k?=
+ =?us-ascii?Q?97qHj6i4izyx5iYlpMFy2QvpGtZg2n2GMRJQMStt/C69f67hMnXN+LIb4BOS?=
+ =?us-ascii?Q?pMJyZomvrkURBbG1+800RzFQX/wSPwMLnru4dW4YV/HFs8kcn+U/XD4iP+e4?=
+ =?us-ascii?Q?/S/+7ZW1mtJnnyIPPrasUWGx2ROUoqFJ/nlbLuPYTgvDL7RfOw2b7yZCwW+I?=
+ =?us-ascii?Q?lG8Q7UwxqukBWle2kyIXzei7LYjpf8vqKmYSwzhkOtOEsnG8TGmxkMeNpVCq?=
+ =?us-ascii?Q?pSHTFHAlri6o34fc7BXWK9DOouJPc5GCujBNZKGir0G71WOF++41nahJ9zvZ?=
+ =?us-ascii?Q?wBG5XWxiAp59BSQrp0JiICHWNRWrrbHeCoph+0AH22YybZjD0NcBw/rnAXlF?=
+ =?us-ascii?Q?l9NFE4YK3zc8LxECOti+Frvi3+/gknBJu6aym8QQuptUfJxwrpKrQ/81mV2u?=
+ =?us-ascii?Q?XLxptKIKgGhWNyYWB0DIfbmQBlMvu5bgiM8mF3XAYmRify52BNPHzHWnu6aw?=
+ =?us-ascii?Q?go3QV8TSnWm15ZEEd2J5Dq7mVFm1081HUIP1SV09m6RV3RijqCbNvWrxBxzd?=
+ =?us-ascii?Q?e9/jrI6ugeUM15E0FmQ2jBf0kBcilp67DjYqqHlW8z9sB+zHPyAbrn4nJawQ?=
+ =?us-ascii?Q?0n6vbhzle83JhN44q/Mtuhknz7gb69MPTLMbHtN5Q1E16lye/UVfjzFijdOp?=
+ =?us-ascii?Q?JRpbJZr0Ky2J36Zep4J0tMAufXuYbAgVFk1ay0iNTPOz1+CSCsbWOwZJ5cFv?=
+ =?us-ascii?Q?cwsExZAIMRIVzTQXDZODX9RBQwj3iZSL0d4M1kW0UvTZejbrhcLZmVkWWWEL?=
+ =?us-ascii?Q?05kGAFrRDgSrctTToXVowZA+3vWw9/lIs8MgnGXwm43UY0ev+/ayeFRrfYLe?=
+ =?us-ascii?Q?+WY7s6eIiupkbO/gw2wfXMBLv//wSg3ez9j6sAfoBFWLkZzi2j0ydvQTmLxq?=
+ =?us-ascii?Q?JCRv3c6KkOHUHGBRTtfoRVfDTZ8v+vEDKk0tHAGSlf/LJhMOY8VophTVVMPW?=
+ =?us-ascii?Q?DRnQPVoHgXMHGTMM2EOBX7ZJCQRfKSDGiHxhAmtxSSxHHisDiV/WPpSURVTx?=
+ =?us-ascii?Q?LPFFYjPnBmSW8ugFcNyDudVG/pLszI6qS4dsQ7pSW74rg+ZBo5pfTRFjThEQ?=
+ =?us-ascii?Q?W7mvwN4OHgCIHZvndaX3XWSf82+GENS53jiE?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(1800799024)(366016)(38070700021)(7053199007);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?QAKzrbtHIhVPHdNYKwafIIwB7xSKmqZx6rypgHjgHSycMH622bZrw48tlNYI?=
+ =?us-ascii?Q?JIOR/TS4inCJXt94OIxOS4yOj7oqlcGzRZArFeD5VtgNTGJPyK7RHqfRtuhq?=
+ =?us-ascii?Q?KXC4EJgrqBtj/txQssYYwdyqMmrCI/+RqXnOkW5zqIY18m3zA2wNZ3evxLsb?=
+ =?us-ascii?Q?RrkYl3G1fSMlKyQ2SVyx2H7+sSIJja7RTRaIbkrnBQt8cxxNRojMy+JpSlxc?=
+ =?us-ascii?Q?ldA7Har4sbKKwgIYmHcZMxIE1+d7VZzwrqofD1aBsczF5hG3xP7Rb9ScDrzs?=
+ =?us-ascii?Q?uD9VIUnQ/GlCyti32BzlR6qhvXHBe8c4a9Q5m52KXB12EQ+N8mXTZPSJtX+K?=
+ =?us-ascii?Q?ukfW8qE98fFZuMBec162LkzOB2IWMaa7rsnu4S+rPbvF4L95fvtc2orFlzlt?=
+ =?us-ascii?Q?xylgcnnhWVea8jsAVfH2fa/sTbeEsuPGcjFFw32fHr16os5PgQdH4eFP4Quz?=
+ =?us-ascii?Q?68b+LE56a6BFXAs0/aVL8tiL3w6fxhb+rBB5e+tD/tBNT6vF2T/JGy8V1Xm+?=
+ =?us-ascii?Q?sNuZxYo3MoWgHwLp2mQ4b2PpJ1zcn9icE3jI92ijOW4e6urFE48cgCQAPSIN?=
+ =?us-ascii?Q?e/mFIjmUllDHVdNaSyiIvy9CvPX+Z9R/LxHOX6r3P/GKBw+rMRS7ixp3q9UN?=
+ =?us-ascii?Q?Z0dmqIgryDMRUVSsFZ6UPwAbfVSrsSL5IfRfxzwfGhhaC8nz3X1gAcOOItDe?=
+ =?us-ascii?Q?swJYxYe0qNOTUA5v0JpkzMhqkRi63+2MX/g5VSXUsvuc/5dlIO6HjNIBXCLL?=
+ =?us-ascii?Q?WhfBJkpGIpauFw8Kd0PqTG/Bk/W7ns2pR77rS5DFPdEkkvmuBhJdGKREB9wf?=
+ =?us-ascii?Q?L9f12RQRitmEUJ+XqEOCyl/pIssBBvbTdj5klooPxdChcpqxVm9DAEwhvEBi?=
+ =?us-ascii?Q?Etj2PeO3Vd4eUO/uUL+zepYklETFKIg7KHc+6gLVL/LHQwBwriJZ+GchRSH9?=
+ =?us-ascii?Q?cmQ0c/PCqAneieobOLcQ17iTB7AJoqtmNkSNOoujf4zZA+ybFrnQ9R71uX2n?=
+ =?us-ascii?Q?riEt9tRWC4X5wlF58wZGzqm4CRcHWbGlLVGOM1xRvFNbIUXi28W97Q26iFcj?=
+ =?us-ascii?Q?KKPhAXRHeRhmtysuQCDiG0/L4s/4CoR/vki8iRFlMKhMyuS/0BJKYaUWW2gY?=
+ =?us-ascii?Q?7p4qlITPBv+CzfBIcli+DBXeQnQMBszXY+YVyBPk0klu++b6fmllWmAMgdQk?=
+ =?us-ascii?Q?cm3LdqLrT0zlfsYsxOlleWSc768we4WK6fuZB8ra6fWXVULIeNVvkOSLlXW7?=
+ =?us-ascii?Q?MsdU5oUXPjtVKTtG2DpVQQCBnDHYVxp1aeNO+OoC9npdwpgJDFgYpWwE7ArF?=
+ =?us-ascii?Q?8jNkM3O5iONCLFJEMMPWVsAdWP0sePOLvola0j0Drevr/FpXcDlHDUns9bgC?=
+ =?us-ascii?Q?rNTd8Y5Afp2NVBbuHQXP/79+YuVfyO+adY5cBWlR2FvrNX36R39Kgvs0Ekl7?=
+ =?us-ascii?Q?aBQuTmQ09NVa5PoikvFICg4sWnbijObosGWGtdJro83+6OVfuSsmWk+gWAko?=
+ =?us-ascii?Q?zCURqkOS/zj/CS8Q1kaEcFyBF6y7S3xgVgeWvSVjN9gWwOHJ7h6MEIWnCtyD?=
+ =?us-ascii?Q?hv58Qwrw7OpiGLt+dgADQ5+tusM7Ah0VSaPnN51g?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: 8am2yJNSNirpzvJW9nazTpRAj3k-vLTK
-X-Proofpoint-GUID: 8am2yJNSNirpzvJW9nazTpRAj3k-vLTK
-X-Authority-Info: v=2.4 cv=eOMeTXp1 c=1 sm=1 tr=0 ts=692038d2 cx=c_apl:c_pps
- a=bsP7O+dXZ5uKcj+dsLqiMw==:117 a=bsP7O+dXZ5uKcj+dsLqiMw==:17
- a=6UeiqGixMTsA:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
- a=VExx-Oqz_yhFp4n2Ql0A:9 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTIxMDA3NiBTYWx0ZWRfXwnFJVhRUyOi9
- F9Zo6Y98yggMtrJqi8rUEatAnG28XRuBIEjtV2EQ7wWhiI16il7Iya+8GK6feS2aPaQ79c3oH2B
- 3vuttViTwiDVsXXrKp1NxnCx+f3f80rHMVEtap++K2GhdSHjoNuaMsbKsMIpE9n6m6kqaLC1sou
- gwJ+dB0557kssmFINUe1+9pKkE1ZkI0VJOKB71x2FHLsXjQQMwf1dNf0m00txi8VzWf018EWL9b
- 48c4+NebWqqpTcyGshbzLBbF1tn9092al4QC08FGslSN8J/NlfoYSHjor++/GIvMUYher9Svv9A
- rQFDH87K8CqH3raYLly
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
- definitions=2025-11-21_03,2025-11-20_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=770
- clxscore=1030 mlxscore=0 malwarescore=0
- adultscore=0 phishscore=0 spamscore=0
- suspectscore=0 bulkscore=0 classifier=spam authscore=0 adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2510240001 definitions=main-2511210076
-X-JNJ: AAAAAAAB8r1G76cND0K5hFiJBhvNjC7BgVE0OQG6Uw34ddj2FeXFKSxWnV4xnadKeDwXzsKhoBYX7T+v5v7O8eBmzIdrHULGuOpSLfgUtbI8ClkTVsJiMGjWu5MTexiO1iKGydMEcWhQVRJ6Ak5A3J1b+AgykCyIblGOpF89BQb11hLlr8YXdhsDT3Hxx8hWGkPj5zxyHEjed+aBaBdnVC+14qtnobuvrbpfSBrTnHIWhi6bsTxfdc/nkkE8mvU7L3enZdd/vSf+x6fZ3YwYXNlTPAuOz+hvbqSUO6jq7CuROvBIZV46q5uNDfOkj4B5p46lA48qcBextBpboM6eQWLLTEqyHcOXV6NEEc258D62gvrMcqe8SoTP7KNoe8/fWwRlcM89/K115SyyhjiyL/fKCOwl9F0nJdGMd2p34rCGuDypmZE6Ih2y9h7xVmlzWmf+J5C0ux1Dx3qj5NTVZDMrEZ48pzpW0K9KsnCC5H3j0fuCtcaPVXlFwIdLGzSH6WWR0Zi4UWAEfctfDjdu5N4ot3KYcJtDRMgezryASrFtBkdM2gZx+19Gtn1fhEF8O7rxmJkZ+/VeIFKzKNgFnIgAkwJECo54TvuVBPrzwWRqNqpY3lMDl70jmrAnoIqDonKEXoo/N49Am5J81KCXFWPig8V21Fvsv0ojcHU/CAAa9vmzropv1UflXhTJT9wjjGZ4NA1J6zaRiWQkUgMysx+M/z2eZAX7IWcpUDUbqTCZauyPa5nyG1dkmJuth578ajqrudcbsQw=
-Received-SPF: pass client-ip=57.103.86.7;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 390df915-a759-4006-499a-08de28e7db4a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Nov 2025 10:22:21.4421 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: vL6bVqBdPcPoT6UIILCuusUno5fmTta8A22o2FB+Me+SdTVyslqqiUS6DcZwd0H290rZf1j0anBQXVITG1p70w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB8343
+Received-SPF: permerror client-ip=2a01:111:f403:c112::5;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=CY7PR03CU001.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,131 +176,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-winhvemulation is x86_64 only.
 
-In the future, we might want to get rid of winhvemulation usage
-entirely.
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> -----Original Message-----
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> Sent: 20 November 2025 22:10
+> To: Shameer Kolothum <skolothumtho@nvidia.com>
+> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> eric.auger@redhat.com; peter.maydell@linaro.org; Jason Gunthorpe
+> <jgg@nvidia.com>; ddutile@redhat.com; berrange@redhat.com; Nathan
+> Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
+> smostafa@google.com; wangzhou1@hisilicon.com;
+> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
+> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
+> Krishnakant Jaju <kjaju@nvidia.com>
+> Subject: Re: [PATCH v6 33/33] hw/arm/smmuv3-accel: Add support for PASID
+> enable
+>=20
+> On Thu, Nov 20, 2025 at 01:22:13PM +0000, Shameer Kolothum wrote:
+> > +++ b/hw/arm/smmuv3-accel.c
+> > @@ -67,6 +67,12 @@ smmuv3_accel_check_hw_compatible(SMMUv3State
+> *s,
+> >          error_setg(errp, "Host SMMUv3 SIDSIZE not compatible");
+> >          return false;
+> >      }
+> > +    /* If user enables PASID support(pasid=3Don), QEMU sets SSIDSIZE t=
+o 16 */
+> > +    if (FIELD_EX32(info->idr[1], IDR1, SSIDSIZE) <
+> > +                FIELD_EX32(s->idr[1], IDR1, SSIDSIZE)) {
+> > +        error_setg(errp, "Host SMMUv3 SSIDSIZE not compatible");
+> > +        return false;
+> > +    }
+>=20
+> I think we can print the values: host vs VM. And at SIDSIZE above
+> as well.
+>=20
+> > @@ -2084,6 +2090,7 @@ static const Property smmuv3_properties[] =3D {
+> >      DEFINE_PROP_BOOL("ril", SMMUv3State, ril, true),
+> >      DEFINE_PROP_BOOL("ats", SMMUv3State, ats, false),
+> >      DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
+> > +    DEFINE_PROP_BOOL("pasid", SMMUv3State, pasid, false),
+> >  };
+>=20
+> Instead of doing a boolean "pasid", perhaps ssidsize and sidsize
+> should be configurable. Then, user can follow the not-compatible
+> print to set correct SSIDSIZE and SIDSIZE.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
----
- accel/whpx/whpx-common.c       | 14 ++++++++++++--
- include/system/whpx-common.h   |  2 ++
- include/system/whpx-internal.h |  7 ++++++-
- 3 files changed, 20 insertions(+), 3 deletions(-)
-
-diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
-index 66c9238586..95664a1df7 100644
---- a/accel/whpx/whpx-common.c
-+++ b/accel/whpx/whpx-common.c
-@@ -41,7 +41,9 @@
- bool whpx_allowed;
- static bool whp_dispatch_initialized;
- static HMODULE hWinHvPlatform;
-+#ifdef __x86_64__
- static HMODULE hWinHvEmulation;
-+#endif
- 
- struct whpx_state whpx_global;
- struct WHPDispatch whp_dispatch;
-@@ -236,8 +238,10 @@ void whpx_destroy_vcpu(CPUState *cpu)
-     struct whpx_state *whpx = &whpx_global;
- 
-     whp_dispatch.WHvDeleteVirtualProcessor(whpx->partition, cpu->cpu_index);
-+#ifdef __x86_64__
-     AccelCPUState *vcpu = cpu->accel;
-     whp_dispatch.WHvEmulatorDestroyEmulator(vcpu->emulator);
-+#endif
-     g_free(cpu->accel);
- }
- 
-@@ -412,8 +416,12 @@ static bool load_whp_dispatch_fns(HMODULE *handle,
-         LIST_WINHVPLATFORM_FUNCTIONS(WHP_LOAD_FIELD)
-         break;
-     case WINHV_EMULATION_FNS_DEFAULT:
-+#ifdef __x86_64__
-         WHP_LOAD_LIB(WINHV_EMULATION_DLL, hLib)
-         LIST_WINHVEMULATION_FUNCTIONS(WHP_LOAD_FIELD)
-+#else
-+        g_assert_not_reached();
-+#endif
-         break;
-     case WINHV_PLATFORM_FNS_SUPPLEMENTAL:
-         WHP_LOAD_LIB(WINHV_PLATFORM_DLL, hLib)
-@@ -539,11 +547,11 @@ bool init_whp_dispatch(void)
-     if (!load_whp_dispatch_fns(&hWinHvPlatform, WINHV_PLATFORM_FNS_DEFAULT)) {
-         goto error;
-     }
--
-+#ifdef __x86_64__
-     if (!load_whp_dispatch_fns(&hWinHvEmulation, WINHV_EMULATION_FNS_DEFAULT)) {
-         goto error;
-     }
--
-+#endif
-     assert(load_whp_dispatch_fns(&hWinHvPlatform,
-         WINHV_PLATFORM_FNS_SUPPLEMENTAL));
-     whp_dispatch_initialized = true;
-@@ -553,9 +561,11 @@ error:
-     if (hWinHvPlatform) {
-         FreeLibrary(hWinHvPlatform);
-     }
-+#ifdef __x86_64__
-     if (hWinHvEmulation) {
-         FreeLibrary(hWinHvEmulation);
-     }
-+#endif
-     return false;
- }
- 
-diff --git a/include/system/whpx-common.h b/include/system/whpx-common.h
-index e549c7539c..7a7c607e0a 100644
---- a/include/system/whpx-common.h
-+++ b/include/system/whpx-common.h
-@@ -3,7 +3,9 @@
- #define SYSTEM_WHPX_COMMON_H
- 
- struct AccelCPUState {
-+#ifdef __x86_64__
-     WHV_EMULATOR_HANDLE emulator;
-+#endif
-     bool window_registered;
-     bool interruptable;
-     bool ready_for_pic_interrupt;
-diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
-index c59f9de091..4565436682 100644
---- a/include/system/whpx-internal.h
-+++ b/include/system/whpx-internal.h
-@@ -4,8 +4,9 @@
- 
- #include <windows.h>
- #include <winhvplatform.h>
-+#ifdef __x86_64__
- #include <winhvemulation.h>
--
-+#endif
- #include "hw/i386/apic.h"
- 
- typedef enum WhpxBreakpointState {
-@@ -100,12 +101,16 @@ void whpx_apic_get(APICCommonState *s);
- 
- /* Define function typedef */
- LIST_WINHVPLATFORM_FUNCTIONS(WHP_DEFINE_TYPE)
-+#ifdef __x86_64__
- LIST_WINHVEMULATION_FUNCTIONS(WHP_DEFINE_TYPE)
-+#endif
- LIST_WINHVPLATFORM_FUNCTIONS_SUPPLEMENTAL(WHP_DEFINE_TYPE)
- 
- struct WHPDispatch {
-     LIST_WINHVPLATFORM_FUNCTIONS(WHP_DECLARE_MEMBER)
-+#ifdef __x86_64__
-     LIST_WINHVEMULATION_FUNCTIONS(WHP_DECLARE_MEMBER)
-+#endif
-     LIST_WINHVPLATFORM_FUNCTIONS_SUPPLEMENTAL(WHP_DECLARE_MEMBER)
- };
- 
--- 
-2.50.1 (Apple Git-155)
-
+Do we really need that? Currently both are set to 16 which means 64K
+values are supported. I think we can make it configurable when any
+usecase  with >64K requirement comes up.
+=20
+Thanks,
+Shameer
 

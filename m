@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2455ECFA761
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Nov 2025 10:04:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D71CFA76B
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Nov 2025 10:05:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vMNzb-0004kk-W7; Fri, 21 Nov 2025 05:03:53 -0500
+	id 1vMNz7-0004aI-6H; Fri, 21 Nov 2025 05:03:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vMNzM-0004ef-T2
- for qemu-arm@nongnu.org; Fri, 21 Nov 2025 05:03:40 -0500
-Received: from p-east3-cluster3-host11-snip4-9.eps.apple.com ([57.103.86.112]
+ id 1vMNz5-0004Z3-BP
+ for qemu-arm@nongnu.org; Fri, 21 Nov 2025 05:03:19 -0500
+Received: from p-east3-cluster7-host11-snip4-10.eps.apple.com ([57.103.84.241]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vMNzD-0007tF-Ec
- for qemu-arm@nongnu.org; Fri, 21 Nov 2025 05:03:34 -0500
+ id 1vMNyt-0007rW-PS
+ for qemu-arm@nongnu.org; Fri, 21 Nov 2025 05:03:16 -0500
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-4 (Postfix) with ESMTPS id
- 9EA281800130; Fri, 21 Nov 2025 10:02:53 +0000 (UTC)
+ 4D8421800175; Fri, 21 Nov 2025 10:02:50 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=9vYko/DI2RK+OqhuWK0dyFWYB5OCgm45PuZW5dC4nJ8=;
+ s=sig1; bh=lE935EhSo6eiiRGBTf1TCzdO8HBh375WWDyS664DB/c=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=IKbLvtpf/69TQS/thfNx7P8PYguBkRl9l4/90vQj6Qksjzfo0d8e1hJiyW4zALeW7YCdFXOGSK/lCV+i5pnirx2P5OZoHicnvq0XcB5yg6A2omHci1HYqTnT2k6yGU4yMTD4N9oFo1fJNKCTA+yTFAqnpcKQDsGUfXSwatrdQt/at58w4zjgjflOVuYaqMzLSApLxSHMSdZCVQ3jBwVcwKKXG/bQStXfYiauCpU5vxlk1Ie6Gr8Sjc0mE8gmtPSST4B5nFi+Fc5s5Yh3kVEWk7KHxF+1UYmal9+mEJfUk+7JwjGMZXRrvbOKBipLvbyWt5isC877QGVAjXu3fkPbBw==
+ b=OyPc0UCqAZJLzQzaf5ad2Y12VKcK/dCSe4xe+oXuY2cPJgZvx5xXOF5Qi5qY4gU+83T3fSyJToSa/qL+ZFWuaZ13IIz8VEBFwZNctthHsNIaX7KYgEoqabbu/XyOsuJL+3Q6mgnMNyVcLdsk/eOuYYipAvKELuX4Er3AOgibKUF8MjSXJeSinExYJKNPJfY//7/N9cuJXKCjr+TnPtXFmBChZJZCx/C5tyikxWC7AkETE5CD3yeI96UKYu8Af0EDH3u2ea1In9NRucHqlz+Vy37mp6ay5OCF37cabGP84JK8pvUODDCnMSIU872WNuyEhH6snBiRhd64OiaMDHbr2Q==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-4 (Postfix) with ESMTPSA id
- 8DFEB180016B; Fri, 21 Nov 2025 10:02:51 +0000 (UTC)
+ 100A81800130; Fri, 21 Nov 2025 10:02:47 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org,
 	mohamed@unpredictable.fr
@@ -41,43 +41,47 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, Peter Xu <peterx@redhat.com>,
- Mads Ynddal <mads@ynddal.dk>
-Subject: [PATCH v11 05/28] tests: data: update AArch64 ACPI tables
-Date: Fri, 21 Nov 2025 11:02:17 +0100
-Message-ID: <20251121100240.89117-6-mohamed@unpredictable.fr>
+ Mads Ynddal <mads@ynddal.dk>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v11 03/28] qtest: hw/arm: virt: skip ACPI test for ITS off
+Date: Fri, 21 Nov 2025 11:02:15 +0100
+Message-ID: <20251121100240.89117-4-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20251121100240.89117-1-mohamed@unpredictable.fr>
 References: <20251121100240.89117-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: _jx-qDq8BsZ5bjzz4wfRj-bgPMTgf_y8
-X-Proofpoint-GUID: _jx-qDq8BsZ5bjzz4wfRj-bgPMTgf_y8
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTIxMDA3NiBTYWx0ZWRfX7REoM0sqYaUv
- D9Mq/2qdjimcckA2XJXEDJF2YOu19reGc3GHvWfRwNyZj99DRJXTuGHval4fKKOSHEGBkHrdnfJ
- pNwO8hqMuaMyvaZWk3vsxSeYOLKvwiwF0uy3v0jASxTvkDIGzzuT8RZn170TptbIvqUXPeOP1DH
- nmEAlfjCwlsctt6GhzurCv7puuO58Hrw6815Sitnv9yAGHLaG44wjUhaMyukc+bF3fm5FBzc2jZ
- 9uinDm63zKol9ceDKQ9zavSxxnSvj+RDDNs27W67fkDgT5rPGwACjOZ/NFDUbdf5ei2HiISyPLS
- 1daSz7hxQi93gbhcdA9
-X-Authority-Info: v=2.4 cv=Oa6VzxTY c=1 sm=1 tr=0 ts=692038ce cx=c_apl:c_pps
+X-Authority-Info: v=2.4 cv=P4c3RyAu c=1 sm=1 tr=0 ts=692038cb cx=c_apl:c_pps
  a=bsP7O+dXZ5uKcj+dsLqiMw==:117 a=bsP7O+dXZ5uKcj+dsLqiMw==:17
- a=6UeiqGixMTsA:10 a=VkNPw1HP01LnGYTKEx00:22 a=CvHhVyPyXxbOnLnphYAA:9
+ a=6UeiqGixMTsA:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
+ a=1t8nasy7xzbR8br5Zw8A:9 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: IowDia7XAf8QSFgdabAG7Nye8ETo8hIJ
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTIxMDA3NiBTYWx0ZWRfX1VXs/d2MPE2Z
+ lC8xcbgwgxQmmZXl1U6JJuxUNTWJdwWVkpXQzjvC+OOtjgdPmmsPGOHm5lBlBNXN3FXMqWOEiQe
+ zm/CwZhenxNfYIG/RfEuzhp/UkO+r6XnC0T8mdFy9A7MWhxZthqqUaa2bf8VWaSiCMifJFHDQ2E
+ YWKHPkzyI957j+S2uuIfL1k3NHcvbeawZVZQbUCcaAk4F/fWG0eoX/cci6i2h4rA+3Czr7tCNN3
+ Fym1I3JC0E1b2gs0WF++vMiohEmTXf/E9lmgnxrUAAs9BO6DadONJDeTPXLsIszPeTstWc3DyCB
+ NxVK7udkJ6MRJ/khZe1
+X-Proofpoint-GUID: IowDia7XAf8QSFgdabAG7Nye8ETo8hIJ
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2025-11-21_03,2025-11-20_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- clxscore=1030 bulkscore=0 malwarescore=0 spamscore=0 suspectscore=0
- mlxscore=0 phishscore=0 mlxlogscore=931 classifier=spam authscore=0 adjust=0
- reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2511210076
-X-JNJ: AAAAAAABZ0AUPOmFM1o3Yr4ylplYGmtZMMCJNYE3W+29wUcdLpHbyMsOuJLzJqB7OptlM3VewR07+Ai+JQa0TNXyd1HIt8bi7BiSKd1rSy98ECIxDFb98mHh7ySmRd4fpky+Kx4o5NSKI3Oc8wbNmoiJu+2hlpZODslo5UdMOrqdQBoTTiItmw004Lu0QRUVrWGwshkYilKfn9E/M7OD3K1VpcXFtV3gGJE54UMFVL9azwsKCsapau6LPbHCwJtDEmp06cmjgLhFUwZjzUKsjmzXwNJxI/VJiN2tAKm28f3nU1jMDcILmR5vxgmu1rVslabxKyrQFhExfRMyb/kbv17PHr6Gi9mNEX+bcc+7II1vJkDCUP7V0P3zk3MNY9uEwL/HKw6XGhE8d43wsuIGczjso3GrGpfOg6LGgGxInBhy5BM1XwPhRYIcSFx55bogyucmSTIcaWHHnSNthE462l816me9ZdYcJrOtp8sXkk1Tf8of7yEOUgTtGUaA0WBR9s+EVJqxv+odCm2Q0oOyjjl/MEP+JdIzbFFQ6YESGvTO53mxXtQjzZwkH7lycRrf6u7TJu6ctQPQ6CaIkDY81RiTFnq235CzppULQFjNovvgMnrFkfMKBxs4Leq7y4wA2/cdxhnPq/8dVlxFbutYjSDt3wjLcX8Bwc3yrx2cvoHoztU7AhLmRQ8GPy6BKRWjKchXUnhBg7lt6D+Wzw74565trnXmjVanAD/OcvGa4j93AqlIQr2CvkcYEzGC3ak/mHE=
-Received-SPF: pass client-ip=57.103.86.112;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ mlxlogscore=910 mlxscore=0 clxscore=1030 spamscore=0 phishscore=0
+ adultscore=0 malwarescore=0 suspectscore=0 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2511210076
+X-JNJ: AAAAAAAB+hdFq3Gaph8aooWwmAd3R+SRnBCTHWbi0n1959RZ5sM4WOYW9IDwzJ8Ck3FYWTTP2/nagJBOt6eY2avFD6KJy8BYS1XtnM1B+RiCzU5tRTN03D/34CeFy5Rz/jQZnY+yvC+ap04UFoz+7T5YTyiclnhNcI2BAV4VWns/TRaIb9bR/YbMy9JFLE4DXxgG5u5uZKCipzb7SN7I8863hNoaTFCw/dd1qk6ICPQqcDilNh6MGDl2NcFqwOhQB0G3g0OLfsy/IyI8hlIc65A+/j99AQhh6lzCwgmyod4OEeF/jeQfwHRcKLuUSVnNS5WsZyhygPcLdTZxmhKN/kizBECLZFRLwSVwoNkhStueqNRCu5Wsr7Yy/PMU0nnRvNFGrlkiLdj7hpiaMC33XsE7l9ktOCJYInfDA9t2MDcylOS7R8NXLppEPfKecfc/0/72MsPJHOI/Fa8y1PtfOhoZQxZVqLINIJZDl5iF2gO6p62r9Yv0a5NFwCPBuO6MeN9ARaBs/eeYDFXhjLRUHoiZpCM+Z9O1WJ/5l9vNos1n3Ts5cUrQXMwc2wf1mXi+Y586uuy5i7H08qktLpQ8JPCIIsUKRw4q5LfX8BGe5D882g7quDBZZ1oX5VAHWvszJclpaS92sc8Za7GEg5nACUE3JVd9lmxoxGQJtOVd/4s85fzjSOQM9xlGmy0owGVXTTAF+unG6Lr50t1gTUzKlNrYs+O4gLroTRXcI1wpDP4AU7vUSZzjhxLqH/dwpuGFh2FbcZH97Q==
+Received-SPF: pass client-ip=57.103.84.241;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,31 +97,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-After the previous commit introducing GICv3 + GICv2m configurations,
-update the AArch64 ACPI table for the its=off case.
-
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 164 -> 188 bytes
- tests/qtest/bios-tables-test-allowed-diff.h |   1 -
- 2 files changed, 1 deletion(-)
-
-diff --git a/tests/data/acpi/aarch64/virt/APIC.its_off b/tests/data/acpi/aarch64/virt/APIC.its_off
-index 6130cb7d07103b326feb4dcd7034f85808bebadf..16a01a17c0af605daf64f3cd2de3572be9e60cab 100644
-GIT binary patch
-delta 43
-qcmZ3&xQCI;F~HM#4+8@Oi@`*$SrWVwKqeS4aeydBAa-B~U;qHCpaq8j
-
-delta 18
-ZcmdnPxP+0*F~HM#2?GNI3&%vRSpY3v1aANU
+ tests/qtest/bios-tables-test-allowed-diff.h | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index bfc4d60124..dfb8523c8b 100644
+index dfb8523c8b..bfc4d60124 100644
 --- a/tests/qtest/bios-tables-test-allowed-diff.h
 +++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,2 +1 @@
+@@ -1 +1,2 @@
  /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/aarch64/virt/APIC.its_off",
++"tests/data/acpi/aarch64/virt/APIC.its_off",
 -- 
 2.50.1 (Apple Git-155)
 

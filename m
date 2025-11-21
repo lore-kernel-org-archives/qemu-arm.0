@@ -4,58 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00198CFC515
-	for <qemu-arm@archiver.kernel.org>; Sat, 22 Nov 2025 03:24:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD1F4CF64B1
+	for <qemu-arm@archiver.kernel.org>; Sat, 22 Nov 2025 03:26:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vMd2Z-0001Wy-4a; Fri, 21 Nov 2025 21:07:57 -0500
+	id 1vMcnI-0003Rv-DE; Fri, 21 Nov 2025 20:52:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vMcfF-00062m-2r; Fri, 21 Nov 2025 20:43:50 -0500
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vMbaU-0002EM-3Z
+ for qemu-arm@nongnu.org; Fri, 21 Nov 2025 19:34:53 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vMcdD-00034B-Bx; Fri, 21 Nov 2025 20:43:45 -0500
-Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 5ALB0lIF082075
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Fri, 21 Nov 2025 20:00:47 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=pPgWNNaO1ks5E7v0D89pLCF3vN+IZF4I4yDcfaHG7iY=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=Message-ID:Date:Subject:To:From;
- s=rs20250326; t=1763722847; v=1;
- b=IMgbzIVxrISAHthm285xrt++q83xLaWUU9Qggd2eIPQYn5QVVPMg97rFzOJsRjbV
- c2KvgzSfOSA0KbUeUFIyfpgBSJ3oJak/wxzAPqRPACpOpfrVPWCMpmqkYrn04SCj
- N1XD1fE4ioo2sTBCLFGJadXUc7HXDc1HT2guVvsMmvJyQUT3Lqz2DzL5yx6NpUgE
- 1O68gmtZaXc8yqe1/OFTSXd5ijUpZRxkCojQSKPYAHh06yXvWqPUAnamUjVH9mMW
- KqZxTpHinjG/jSAmExUjomTj27L5xChjHfH1CG8zzhjlAw4Iz9rDWIN5HJrjCLsS
- 1qUkrWfnuv20qndU7PYTRA==
-Message-ID: <0781754c-240a-4430-9d88-aa5c93dd1cde@rsg.ci.i.u-tokyo.ac.jp>
-Date: Fri, 21 Nov 2025 20:00:47 +0900
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vMbaG-0005VB-Sj
+ for qemu-arm@nongnu.org; Fri, 21 Nov 2025 19:34:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1763771661;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=TzFobMVJyhBRmur9FruIDbmEkqTBfCm6pgRHaFZ+3G0=;
+ b=IZbvA9n9nAUedAD3SDb3bKbqxe6rMrygUE08MwRPtwG7/JDCqgs3ZpCBrSxe7KhGv+CMl2
+ w7lxqkNx9U8uYUhlhGT0UYU24XVC5dXHyV/X8iGghSexbFJzVx18Gc8w2OypxFCxVm37Ky
+ nhi7encZ6w5nLuYon++D8yD6owvRito=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-613-uG-mDcYbNYqtNKP-4ycJWw-1; Fri, 21 Nov 2025 08:13:59 -0500
+X-MC-Unique: uG-mDcYbNYqtNKP-4ycJWw-1
+X-Mimecast-MFC-AGG-ID: uG-mDcYbNYqtNKP-4ycJWw_1763730839
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-4779edba8f3so13728375e9.3
+ for <qemu-arm@nongnu.org>; Fri, 21 Nov 2025 05:13:59 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1763730838; x=1764335638;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=TzFobMVJyhBRmur9FruIDbmEkqTBfCm6pgRHaFZ+3G0=;
+ b=T8GaLqieCNQBHW1TjxzGsyQw9xOVLarntZ7cwKn6a1Fuoh3ka6MW5bjFCUIPgq6ZGT
+ UBEwwc06WCkRh7XdpcsoY9sJOj7LHn1KSx/49lz3RXR1Dl9dR/jtmVvkjDU3RcpjBTev
+ 3G2BKDPi2wwquyto4Dn62CosrGPAkaRSr1Yu0bIbd3PbEN7zKXhZBo52Mdq5dGXcScd4
+ mdzFoI7EKV3CbmW8caITy6tbqEOcA8QGDr6FAbrLO1MS2mgPcj1M1fEdFPB+uYD2UIxc
+ EYb2VApORbXg5jsaqheec9JtMLwQeRpi4H6oXJqTu6dMkAOn1/tnHoNvgwH1hgoaRU4X
+ oj4Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVj7jXoub2cDWIoxFgkRJEyrxTBSzC+3X7CyDUqz1lUGHpmnUB/0/QfWZBecaXgAw4fzu3CAmadJQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy/n2SeBsIrW18/5DlA4e69wvxPvcxKBfC9MaPS2rnP/q+UKnNt
+ y7FY1GVEYtfTlCfrY5EWTKgj2s5X5jWirNfxRGArhW9/Gz+Eu7Vd0biZ8xVDV9xC8f3NEggMUZb
+ cwSe0jTUTJDzdRh2yhiwik5qSodfHWsvqmiG0hPwaUwD3XuSFoYK3pcd46rbB8Q==
+X-Gm-Gg: ASbGncsoUdf9qyYNQoPSPqLORcPKaPrKjW79QBeII+2ai6AwWxbAv5zC0CPd5DmEQEW
+ wNEr56wabuOJ4XjdO8SHqj4KDtl8R7fh4zClk5BQ2I4rX4R0JQdyzv4m1PWFhPGqI2uoJUL8ywP
+ I4ZJRkechHYP1vdNiIpeMgfK5jx2QXiSJkKCWeRSKLJP5mnFH7uiV6NyXqbrWSo7cLmQu8c6Oex
+ 5878beHKExRB7bKENIiud84hOL78jilsIsBol2MTMeQszG7sDHTGi9wFSeT744Z5lsxz+eGbz6S
+ 9+7r9L+ucRJWQ6Duhtdij2vjBACVpV4yTIHvIOM/sLaur6++pfXLx0u8tQTn9sgkOkK8mwy9wST
+ UNh9V4FbQyBBeAf2tM/Doy2epXIdC1ubFgjZlkfIouaiNKv8/MAJ55zFufg==
+X-Received: by 2002:a05:600c:3553:b0:477:7a78:3016 with SMTP id
+ 5b1f17b1804b1-477c0170782mr21639505e9.8.1763730838136; 
+ Fri, 21 Nov 2025 05:13:58 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHR0aAO5to1fWMNaufn5kLIe/sQzUAYgZkQQBAhUpH8uGlxn0fHAFNU/j/19ByAepZdnHJiaA==
+X-Received: by 2002:a05:600c:3553:b0:477:7a78:3016 with SMTP id
+ 5b1f17b1804b1-477c0170782mr21639245e9.8.1763730837710; 
+ Fri, 21 Nov 2025 05:13:57 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-477c0d85360sm33313175e9.15.2025.11.21.05.13.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 21 Nov 2025 05:13:57 -0800 (PST)
+Message-ID: <3097d58e-3793-4434-8beb-2e4f4c52f772@redhat.com>
+Date: Fri, 21 Nov 2025 14:13:55 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 12/28] whpx: interrupt controller support
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
- qemu-arm@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
- Peter Xu <peterx@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-References: <20251121100240.89117-1-mohamed@unpredictable.fr>
- <20251121100240.89117-13-mohamed@unpredictable.fr>
+Subject: Re: [RFC v3 06/21] hw/arm/smmuv3: Thread SEC_SID through helper APIs
+To: Tao Tang <tangtao1634@phytium.com.cn>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>
+References: <20251012150701.4127034-1-tangtao1634@phytium.com.cn>
+ <20251012150701.4127034-7-tangtao1634@phytium.com.cn>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20251012150701.4127034-7-tangtao1634@phytium.com.cn>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: iywi8SR6-nFHR4YwYHZdqszjCukcenBf0G-xw7-i9Wo_1763730839
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20251121100240.89117-13-mohamed@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,357 +113,162 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2025/11/21 19:02, Mohamed Mediouni wrote:
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> 
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+
+
+On 10/12/25 5:06 PM, Tao Tang wrote:
+> Extend the register and queue helper routines to accept an explicit
+> SEC_SID argument instead of hard-coding the non-secure bank.
+>
+> All existing callers are updated to pass SMMU_SEC_SID_NS, so the
+> behavior remains identical. This prepares the code for handling
+> additional security state banks in the future. So Non-secure state
+> is the only state bank supported for now.
+>
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Eric
 > ---
->   hw/arm/virt.c                      |   3 +
->   hw/intc/arm_gicv3_common.c         |   3 +
->   hw/intc/arm_gicv3_whpx.c           | 239 +++++++++++++++++++++++++++++
->   hw/intc/meson.build                |   1 +
->   include/hw/intc/arm_gicv3_common.h |   3 +
->   5 files changed, 249 insertions(+)
->   create mode 100644 hw/intc/arm_gicv3_whpx.c
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index f2a924ed26..9817299975 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -49,6 +49,7 @@
->   #include "system/tcg.h"
->   #include "system/kvm.h"
->   #include "system/hvf.h"
-> +#include "system/whpx.h"
->   #include "system/qtest.h"
->   #include "system/system.h"
->   #include "hw/loader.h"
-> @@ -2108,6 +2109,8 @@ static void finalize_gic_version(VirtMachineState *vms)
->           /* KVM w/o kernel irqchip can only deal with GICv2 */
->           gics_supported |= VIRT_GIC_VERSION_2_MASK;
->           accel_name = "KVM with kernel-irqchip=off";
-> +    } else if (whpx_enabled()) {
-> +        gics_supported |= VIRT_GIC_VERSION_3_MASK;
->       } else if (tcg_enabled() || hvf_enabled() || qtest_enabled())  {
->           gics_supported |= VIRT_GIC_VERSION_2_MASK;
->           if (module_object_class_by_name("arm-gicv3")) {
-> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-> index 2d0df6da86..1fd1e329e8 100644
-> --- a/hw/intc/arm_gicv3_common.c
-> +++ b/hw/intc/arm_gicv3_common.c
-> @@ -32,6 +32,7 @@
->   #include "gicv3_internal.h"
->   #include "hw/arm/linux-boot-if.h"
->   #include "system/kvm.h"
-> +#include "system/whpx.h"
->   
->   
->   static void gicv3_gicd_no_migration_shift_bug_post_load(GICv3State *cs)
-> @@ -663,6 +664,8 @@ const char *gicv3_class_name(void)
->   {
->       if (kvm_irqchip_in_kernel()) {
->           return "kvm-arm-gicv3";
-> +    } else if (whpx_enabled()) {
-> +        return TYPE_WHPX_GICV3;
->       } else {
->           if (kvm_enabled()) {
->               error_report("Userspace GICv3 is not supported with KVM");
-> diff --git a/hw/intc/arm_gicv3_whpx.c b/hw/intc/arm_gicv3_whpx.c
-> new file mode 100644
-> index 0000000000..88a05e5901
-> --- /dev/null
-> +++ b/hw/intc/arm_gicv3_whpx.c
-> @@ -0,0 +1,239 @@
-> +/* SPDX-License-Identifier: GPL-2.0-or-later */
-> +/*
-> + * ARM Generic Interrupt Controller using HVF platform support
-> + *
-> + * Copyright (c) 2025 Mohamed Mediouni
-> + * Based on vGICv3 KVM code by Pavel Fedin
-> + *
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "hw/intc/arm_gicv3_common.h"
-> +#include "qemu/error-report.h"
-> +#include "qemu/module.h"
-> +#include "system/runstate.h"
-> +#include "system/whpx.h"
-> +#include "system/whpx-internal.h"
-> +#include "gicv3_internal.h"
-> +#include "vgic_common.h"
-> +#include "qom/object.h"
-> +#include "target/arm/cpregs.h"
-> +
-> +#include "hw/arm/bsa.h"
-> +#include <winhvplatform.h>
-> +#include <winhvplatformdefs.h>
-> +#include <winnt.h>
-> +
-> +struct WHPXARMGICv3Class {
-> +    ARMGICv3CommonClass parent_class;
-> +    DeviceRealize parent_realize;
-> +    ResettablePhases parent_phases;
-> +};
-> +
-> +typedef struct WHPXARMGICv3Class WHPXARMGICv3Class;
-> +
-> +/* This is reusing the GICv3State typedef from ARM_GICV3_ITS_COMMON */
-> +DECLARE_OBJ_CHECKERS(GICv3State, WHPXARMGICv3Class,
-> +                     WHPX_GICV3, TYPE_WHPX_GICV3);
-
-OBJECT_DECLARE_TYPE() lets you add typedef and DECLARE_OBJ_CHECKERS() at 
-once.
-
-> +
-> +/* TODO: Implement GIC state save-restore */
-> +static void whpx_gicv3_check(GICv3State *s)
-> +{
-> +}
-> +
-> +static void whpx_gicv3_put(GICv3State *s)
-> +{
-> +    whpx_gicv3_check(s);
-> +}
-> +
-> +static void whpx_gicv3_get(GICv3State *s)
-> +{
-> +}
-> +
-> +static void whpx_gicv3_set_irq(void *opaque, int irq, int level)
-> +{
-> +    struct whpx_state *whpx = &whpx_global;
-> +
-> +    GICv3State *s = (GICv3State *)opaque;
-
-No explicit cast is needed.
-
-> +    if (irq > s->num_irq) {
-> +        return;
-> +    }
-> +    WHV_INTERRUPT_TYPE interrupt_type = WHvArm64InterruptTypeFixed;
-> +    WHV_INTERRUPT_CONTROL interrupt_control = {
-> +    interrupt_type = WHvArm64InterruptTypeFixed,
-> +    .RequestedVector = GIC_INTERNAL + irq, .InterruptControl.Asserted = level};
-
-I think this should be:
-
-WHV_INTERRUPT_CONTROL interrupt_control = {
-     .Type = WHvArm64InterruptTypeFixed,
-     .RequestedVector = GIC_INTERNAL + irq,
-     .InterruptControl.Asserted = level
-};
-
-> +
-> +    whp_dispatch.WHvRequestInterrupt(whpx->partition, &interrupt_control,
-> +         sizeof(interrupt_control));
-> +}
-> +
-> +static void whpx_gicv3_icc_reset(CPUARMState *env, const ARMCPRegInfo *ri)
-> +{
-> +    GICv3State *s;
-> +    GICv3CPUState *c;
-> +
-> +    c = (GICv3CPUState *)env->gicv3state;
-> +    s = c->gic;
-> +
-> +    c->icc_pmr_el1 = 0;
-> +    /*
-> +     * Architecturally the reset value of the ICC_BPR registers
-> +     * is UNKNOWN. We set them all to 0 here; when the kernel
-> +     * uses these values to program the ICH_VMCR_EL2 fields that
-> +     * determine the guest-visible ICC_BPR register values, the
-> +     * hardware's "writing a value less than the minimum sets
-> +     * the field to the minimum value" behaviour will result in
-> +     * them effectively resetting to the correct minimum value
-> +     * for the host GIC.
-> +     */
-> +    c->icc_bpr[GICV3_G0] = 0;
-> +    c->icc_bpr[GICV3_G1] = 0;
-> +    c->icc_bpr[GICV3_G1NS] = 0;
-> +
-> +    c->icc_sre_el1 = 0x7;
-> +    memset(c->icc_apr, 0, sizeof(c->icc_apr));
-> +    memset(c->icc_igrpen, 0, sizeof(c->icc_igrpen));
-> +
-> +    if (s->migration_blocker) {
-> +        return;
-> +    }
-> +
-> +    c->icc_ctlr_el1[GICV3_S] = c->icc_ctlr_el1[GICV3_NS];
-> +}
-> +
-> +static void whpx_gicv3_reset_hold(Object *obj, ResetType type)
-> +{
-> +    GICv3State *s = ARM_GICV3_COMMON(obj);
-> +    WHPXARMGICv3Class *kgc = WHPX_GICV3_GET_CLASS(s);
-> +
-> +    if (kgc->parent_phases.hold) {
-> +        kgc->parent_phases.hold(obj, type);
-> +    }
-> +
-> +    whpx_gicv3_put(s);
-> +}
-> +
-> +
-> +/*
-> + * CPU interface registers of GIC needs to be reset on CPU reset.
-> + * For the calling arm_gicv3_icc_reset() on CPU reset, we register
-> + * below ARMCPRegInfo. As we reset the whole cpu interface under single
-> + * register reset, we define only one register of CPU interface instead
-> + * of defining all the registers.
-> + */
-> +static const ARMCPRegInfo gicv3_cpuif_reginfo[] = {
-> +    { .name = "ICC_CTLR_EL1", .state = ARM_CP_STATE_BOTH,
-> +      .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 12, .opc2 = 4,
-> +      /*
-> +       * If ARM_CP_NOP is used, resetfn is not called,
-> +       * So ARM_CP_NO_RAW is appropriate type.
-> +       */
-> +      .type = ARM_CP_NO_RAW,
-> +      .access = PL1_RW,
-> +      .readfn = arm_cp_read_zero,
-> +      .writefn = arm_cp_write_ignore,
-> +      /*
-> +       * We hang the whole cpu interface reset routine off here
-> +       * rather than parcelling it out into one little function
-> +       * per register
-> +       */
-> +      .resetfn = whpx_gicv3_icc_reset,
-> +    },
-> +};
-> +
-> +static void whpx_set_reg(CPUState *cpu, WHV_REGISTER_NAME reg, WHV_REGISTER_VALUE val)
-> +{
-> +    struct whpx_state *whpx = &whpx_global;
-> +    HRESULT hr;
-> +    hr = whp_dispatch.WHvSetVirtualProcessorRegisters(whpx->partition, cpu->cpu_index,
-> +         &reg, 1, &val);
-
-Nitpick: I prefer having a newline after the declarations.
-
-> +
-> +    if (FAILED(hr)) {
-> +        error_report("WHPX: Failed to set register %08x, hr=%08lx", reg, hr);
-> +    }
-> +}
-> +
-> +static void whpx_gicv3_realize(DeviceState *dev, Error **errp)
-> +{
-> +    GICv3State *s = WHPX_GICV3(dev);
-> +    WHPXARMGICv3Class *kgc = WHPX_GICV3_GET_CLASS(s);
-> +    Error *local_err = NULL;
-> +    int i;
-> +
-> +    kgc->parent_realize(dev, &local_err);
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-
-Please use ERRP_GUARD().
-include/qapi/error.h has a detailed explanation.
-
-> +        return;
-> +    }
-> +
-> +    if (s->revision != 3) {
-> +        error_setg(errp, "unsupported GIC revision %d for platform GIC",
-> +                   s->revision);
-> +    }
-> +
-> +    if (s->security_extn) {
-> +        error_setg(errp, "the platform vGICv3 does not implement the "
-> +                   "security extensions");
-> +        return;
-> +    }
-> +
-> +    if (s->nmi_support) {
-> +        error_setg(errp, "NMI is not supported with the platform GIC");
-> +        return;
-> +    }
-> +
-> +    if (s->nb_redist_regions > 1) {
-> +        error_setg(errp, "Multiple VGICv3 redistributor regions are not "
-> +                   "supported by WHPX");
-> +        error_append_hint(errp, "A maximum of %d VCPUs can be used",
-> +                          s->redist_region_count[0]);
-> +        return;
-> +    }
-> +
-> +    gicv3_init_irqs_and_mmio(s, whpx_gicv3_set_irq, NULL);
-> +
-> +    for (i = 0; i < s->num_cpu; i++) {
-> +        CPUState *cpu_state = qemu_get_cpu(i);
-> +        ARMCPU *cpu = ARM_CPU(cpu_state);
-> +        WHV_REGISTER_VALUE val = {.Reg64 = 0x080A0000 + (GICV3_REDIST_SIZE * i)};
-> +        whpx_set_reg(cpu_state, WHvArm64RegisterGicrBaseGpa, val);
-> +        define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
-> +    }
-> +
-> +    if (s->maint_irq) {
-> +        error_setg(errp, "Nested virtualisation not currently supported by WHPX.");
-> +        return;
-> +    }
-> +}
-> +
-> +static void whpx_gicv3_class_init(ObjectClass *klass, const void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    ResettableClass *rc = RESETTABLE_CLASS(klass);
-> +    ARMGICv3CommonClass *agcc = ARM_GICV3_COMMON_CLASS(klass);
-> +    WHPXARMGICv3Class *kgc = WHPX_GICV3_CLASS(klass);
-> +
-> +    agcc->pre_save = whpx_gicv3_get;
-> +    agcc->post_load = whpx_gicv3_put;
-> +
-> +    device_class_set_parent_realize(dc, whpx_gicv3_realize,
-> +                                    &kgc->parent_realize);
-> +    resettable_class_set_parent_phases(rc, NULL, whpx_gicv3_reset_hold, NULL,
-> +                                       &kgc->parent_phases);
-> +}
-> +
-> +static const TypeInfo whpx_arm_gicv3_info = {
-> +    .name = TYPE_WHPX_GICV3,
-> +    .parent = TYPE_ARM_GICV3_COMMON,
-> +    .instance_size = sizeof(GICv3State),
-> +    .class_init = whpx_gicv3_class_init,
-> +    .class_size = sizeof(WHPXARMGICv3Class),
-> +};
-> +
-> +static void whpx_gicv3_register_types(void)
-> +{
-> +    type_register_static(&whpx_arm_gicv3_info);
-> +}
-> +
-> +type_init(whpx_gicv3_register_types)
-> diff --git a/hw/intc/meson.build b/hw/intc/meson.build
-> index faae20b93d..96742df090 100644
-> --- a/hw/intc/meson.build
-> +++ b/hw/intc/meson.build
-> @@ -41,6 +41,7 @@ specific_ss.add(when: 'CONFIG_APIC', if_true: files('apic.c', 'apic_common.c'))
->   arm_common_ss.add(when: 'CONFIG_ARM_GIC', if_true: files('arm_gicv3_cpuif_common.c'))
->   arm_common_ss.add(when: 'CONFIG_ARM_GICV3', if_true: files('arm_gicv3_cpuif.c'))
->   specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gic_kvm.c'))
-> +specific_ss.add(when: ['CONFIG_WHPX', 'TARGET_AARCH64'], if_true: files('arm_gicv3_whpx.c'))
->   specific_ss.add(when: ['CONFIG_ARM_GIC_KVM', 'TARGET_AARCH64'], if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
->   arm_common_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_nvic.c'))
->   specific_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_irqmp.c'))
-> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-> index 61d51915e0..9fd8b9b858 100644
-> --- a/include/hw/intc/arm_gicv3_common.h
-> +++ b/include/hw/intc/arm_gicv3_common.h
-> @@ -313,6 +313,9 @@ typedef struct ARMGICv3CommonClass ARMGICv3CommonClass;
->   DECLARE_OBJ_CHECKERS(GICv3State, ARMGICv3CommonClass,
->                        ARM_GICV3_COMMON, TYPE_ARM_GICV3_COMMON)
->   
-> +/* Types for GICv3 kernel-irqchip */
-> +#define TYPE_WHPX_GICV3 "whpx-arm-gicv3"
-> +
->   struct ARMGICv3CommonClass {
->       /*< private >*/
->       SysBusDeviceClass parent_class;
+>  hw/arm/smmuv3-internal.h | 21 +++++++++------------
+>  hw/arm/smmuv3.c          | 15 ++++++++-------
+>  2 files changed, 17 insertions(+), 19 deletions(-)
+>
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> index 858bc206a2..af0e0b32b3 100644
+> --- a/hw/arm/smmuv3-internal.h
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -246,9 +246,8 @@ REG64(S_EVENTQ_IRQ_CFG0,    0x80b0)
+>  REG32(S_EVENTQ_IRQ_CFG1,    0x80b8)
+>  REG32(S_EVENTQ_IRQ_CFG2,    0x80bc)
+>  
+> -static inline int smmu_enabled(SMMUv3State *s)
+> +static inline int smmu_enabled(SMMUv3State *s, SMMUSecSID sec_sid)
+>  {
+> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+>      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
+>      return FIELD_EX32(bank->cr[0], CR0, SMMUEN);
+>  }
+> @@ -276,16 +275,16 @@ static inline uint32_t smmuv3_idreg(int regoffset)
+>      return smmuv3_ids[regoffset / 4];
+>  }
+>  
+> -static inline bool smmuv3_eventq_irq_enabled(SMMUv3State *s)
+> +static inline bool smmuv3_eventq_irq_enabled(SMMUv3State *s,
+> +                                             SMMUSecSID sec_sid)
+>  {
+> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+>      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
+>      return FIELD_EX32(bank->irq_ctrl, IRQ_CTRL, EVENTQ_IRQEN);
+>  }
+>  
+> -static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
+> +static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s,
+> +                                             SMMUSecSID sec_sid)
+>  {
+> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+>      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
+>      return FIELD_EX32(bank->irq_ctrl, IRQ_CTRL, GERROR_IRQEN);
+>  }
+> @@ -330,23 +329,21 @@ static inline void queue_cons_incr(SMMUQueue *q)
+>      q->cons = deposit32(q->cons, 0, q->log2size + 1, q->cons + 1);
+>  }
+>  
+> -static inline bool smmuv3_cmdq_enabled(SMMUv3State *s)
+> +static inline bool smmuv3_cmdq_enabled(SMMUv3State *s, SMMUSecSID sec_sid)
+>  {
+> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+>      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
+>      return FIELD_EX32(bank->cr[0], CR0, CMDQEN);
+>  }
+>  
+> -static inline bool smmuv3_eventq_enabled(SMMUv3State *s)
+> +static inline bool smmuv3_eventq_enabled(SMMUv3State *s, SMMUSecSID sec_sid)
+>  {
+> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+>      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
+>      return FIELD_EX32(bank->cr[0], CR0, EVENTQEN);
+>  }
+>  
+> -static inline void smmu_write_cmdq_err(SMMUv3State *s, uint32_t err_type)
+> +static inline void smmu_write_cmdq_err(SMMUv3State *s, uint32_t err_type,
+> +                                       SMMUSecSID sec_sid)
+>  {
+> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+>      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
+>      bank->cmdq.cons = FIELD_DP32(bank->cmdq.cons, CMDQ_CONS, ERR, err_type);
+>  }
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 9c085ac678..6d05bb1310 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -57,7 +57,7 @@ static void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq,
+>  
+>      switch (irq) {
+>      case SMMU_IRQ_EVTQ:
+> -        pulse = smmuv3_eventq_irq_enabled(s);
+> +        pulse = smmuv3_eventq_irq_enabled(s, sec_sid);
+>          break;
+>      case SMMU_IRQ_PRIQ:
+>          qemu_log_mask(LOG_UNIMP, "PRI not yet supported\n");
+> @@ -77,7 +77,7 @@ static void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq,
+>          bank->gerror ^= new_gerrors;
+>          trace_smmuv3_write_gerror(new_gerrors, bank->gerror);
+>  
+> -        pulse = smmuv3_gerror_irq_enabled(s);
+> +        pulse = smmuv3_gerror_irq_enabled(s, sec_sid);
+>          break;
+>      }
+>      }
+> @@ -153,7 +153,7 @@ static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
+>      SMMUQueue *q = &bank->eventq;
+>      MemTxResult r;
+>  
+> -    if (!smmuv3_eventq_enabled(s)) {
+> +    if (!smmuv3_eventq_enabled(s, sec_sid)) {
+>          return MEMTX_ERROR;
+>      }
+>  
+> @@ -176,8 +176,9 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
+>  {
+>      Evt evt = {};
+>      MemTxResult r;
+> +    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+>  
+> -    if (!smmuv3_eventq_enabled(s)) {
+> +    if (!smmuv3_eventq_enabled(s, sec_sid)) {
+>          return;
+>      }
+>  
+> @@ -1070,7 +1071,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>  
+>      qemu_mutex_lock(&s->mutex);
+>  
+> -    if (!smmu_enabled(s)) {
+> +    if (!smmu_enabled(s, sec_sid)) {
+>          if (FIELD_EX32(bank->gbpa, GBPA, ABORT)) {
+>              status = SMMU_TRANS_ABORT;
+>          } else {
+> @@ -1300,7 +1301,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+>      SMMUQueue *q = &bank->cmdq;
+>      SMMUCommandType type = 0;
+>  
+> -    if (!smmuv3_cmdq_enabled(s)) {
+> +    if (!smmuv3_cmdq_enabled(s, sec_sid)) {
+>          return 0;
+>      }
+>      /*
+> @@ -1513,7 +1514,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+>  
+>      if (cmd_error) {
+>          trace_smmuv3_cmdq_consume_error(smmu_cmd_string(type), cmd_error);
+> -        smmu_write_cmdq_err(s, cmd_error);
+> +        smmu_write_cmdq_err(s, cmd_error, sec_sid);
+>          smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_CMDQ_ERR_MASK);
+>      }
+>  
 
 

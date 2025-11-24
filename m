@@ -4,87 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2979ECFD313
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Nov 2025 12:45:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8272CFA466
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Nov 2025 12:46:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vNVwa-0005oB-P9; Mon, 24 Nov 2025 07:45:26 -0500
+	id 1vNVx7-00063C-PK; Mon, 24 Nov 2025 07:45:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vNVr9-0003Ty-3d
- for qemu-arm@nongnu.org; Mon, 24 Nov 2025 07:39:49 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vNVtJ-0002dY-9m
+ for qemu-arm@nongnu.org; Mon, 24 Nov 2025 07:42:04 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vNVr6-0007iV-J2
- for qemu-arm@nongnu.org; Mon, 24 Nov 2025 07:39:46 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-477a219dbcaso38805085e9.3
- for <qemu-arm@nongnu.org>; Mon, 24 Nov 2025 04:39:41 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vNVtF-00084Q-AT
+ for qemu-arm@nongnu.org; Mon, 24 Nov 2025 07:41:59 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-477619f8ae5so23881725e9.3
+ for <qemu-arm@nongnu.org>; Mon, 24 Nov 2025 04:41:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763987980; x=1764592780; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763988112; x=1764592912; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=OSWi1J2brTEyYQcpIKpdBA6vEgQpg2LxGkNeDLumwnY=;
- b=WCCWSzWsGTkY3o52zqY0XwBCjzl6J1Hgqgflko4Y/sj5mqoPHMpoTt+oDlv2fhnMPN
- jdLZtgjqGBJE9PFbdzIJSMFbqsREulwjYRJdVXV3gaDmxzLHW07UTaRRILaJtSiJ6TS5
- WsBPVuKEX5CW7Y4QM4bvAXAMa55DHJPzGu9sJ9OsbkKsRy0wKQw3HrA2qdoe5ptbq1E9
- syaBsxqAZ5+jnRIDfq0fGbTLAREVkpbKGtTmzGof5d/MFxxr4SjBl9STYlzRlqzngfTW
- mnlzT8va0P0l0z52TdSSfBOzft4GmbpFjVn2zBHT3zx35HZNTlsvfGWO9zrMhrt2FUsx
- jiVA==
+ bh=Zf90rc5mivwSDjSLztZSrMw0UJxM/sRqkZXzQnucTwk=;
+ b=sTXJbCbfL687bEAgEQT8Ls5of5c91VyVg7AUM+ewc0nkaMKw8bwyj2bH9xTOMcv83k
+ HAE4YPA02G7zncfnP0X1m5txh7e17iBhT31nKRW4HivuN/VXEHXcW+YykgbvGOrE37Ng
+ PpeLEmRtv+mujz4m/MLk5i7ffR25Sj6uIrOLBdz5nD/u6ax6jcjuEufixRl6kbBIrQwy
+ mqgqBVi09xHM9ZMQrxJ537j9Ru19jgxsserMxI1FMyVusHIJWh7CV2M2/1N2s+fxNi0d
+ OnrjYs82KyO/Qw5SA1jkVLqME7OcZUrxTNXgPNO/8UlpnNOh9jLjXBA42rSD8FYEPs1J
+ d2rA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763987980; x=1764592780;
+ d=1e100.net; s=20230601; t=1763988112; x=1764592912;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=OSWi1J2brTEyYQcpIKpdBA6vEgQpg2LxGkNeDLumwnY=;
- b=XzIUa5swNJDBdyEmg/SWe8v7lZgqzwOC29BkshTVkL+cnYFKOhwsgOwKK6IAneCYJ1
- /JPqf1nD2ZKmrkNtUM3mEoWpTkze8HeT6H0UQQCvokQRyNiXrLo27310QySz0Hvb1z/S
- 86xQmHxAI6dr9CjC94B2AADj4qsLdh7jRcdGIv5v/er/7XVIqGbYaqdYG/i/r2OTgpFy
- LpzbrkqNa3+js9XC1rAegVvNU1IYQ9KUCrny50FqYJYcIIwuxVALamRKGQdkbiSJ2lzj
- t7FHJnmdsGuUI5WGVp+n16SEylLuHEJ3N1l4qsvHn4oDbfF1i4/yEV9qT2UByhhIXrzv
- aHqA==
+ bh=Zf90rc5mivwSDjSLztZSrMw0UJxM/sRqkZXzQnucTwk=;
+ b=hQzVwAOXYTW7Q8a3jieESoXIncYmNqpkkpOtI/0XG0Pc2zIMQ5SzF+BuAuqa3T5fO1
+ U0mOYcqmUZC12tc8pHF7KJOrIUrrPTTW4mAu+IPUXyllehFjgoBpBIDUqOdcOFhVx6P5
+ p7r4Y7G2zNHwMnSy89uLFjg9krhISeqb4SR3Xo/yM/yqELsxddJcAVg0kwLGk8V5PhVl
+ BIVX+worNqyLcJY7qq6Vh++hId1Oqu4NApB/tlWMPYEcppQSfTUNMVwEqHPjd8dnjnjW
+ WXw1yCtkzoHRU9TW9hZHOOCExi5f2g2oUIQYHbjxB4X7os7KR3xQYyE9+n9inhY/Tsf8
+ jIJA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXgz4S9C1DhBcbiSujH96WRw3hd9t6dGip45XFvEcxVIC5wAA8PoFkXJ3me1DltDayMC9nX7dBPtg==@nongnu.org
-X-Gm-Message-State: AOJu0Yy9uazE7QU3k2VY69iUPjpPckvq+c4m4glTQRoo9Kjz/M9lNglO
- ZG81z7KHtV0TFx0Fx4h3MrhkZmXPnS/rdsQGnmB8znIas1Qz3fF4H+xiIj8/r3qapVM=
-X-Gm-Gg: ASbGncvLjF6BKZhq976Qvz7mn4CpAYEMyP0NocjfgMFQyMaUet7ntNNK//gEXfIsopu
- ju/D7b6Boem2W7c5cYAXDcGC/T8cGFvEd5skOd0euAXtbm+p1O2Iw3JVuXAcApgOaBT9Seux5za
- huFcN5JUOf/fI7+BynDyw8W/+Oy/qX+5U7P646dnMtuX5ueomIx3Ulr6FZPXVM+AbInbaX/qfoY
- d+5JPxNb9SNP23oxgMBYl4JVjA0asUYV89eMKuIQl5igeD86b8C9NQCOumCceLIjxHPmtreTt1Z
- 1kCw5tfW2lnCl9Om8BMKONyrjN8rA4Uo45R4RWaDEAe0fZq1JRxtEdA8CczZicemY8BFxt8KbM2
- gUOc3/TXSio+sDIFshySVufwHh3yKGXIWuKxmKR/v2RiV1eOfdRFun6Y674CgXOV9+SH+b14fmW
- DByTLODGCsKQhZ8gfxPA7xUL5J6VXwJmIJcQff3JlrerfWa56enlo6kaT0A9c=
-X-Google-Smtp-Source: AGHT+IF+ELbaFmzEaWWc9rVzBL4OB8JjW6zMG+mOAaowmAtaDShx9rKCs/UcI1FN0hAmk/5Pf7qIdw==
-X-Received: by 2002:a05:600c:1906:b0:46e:3550:9390 with SMTP id
- 5b1f17b1804b1-477c01d47c7mr96493655e9.20.1763987979649; 
- Mon, 24 Nov 2025 04:39:39 -0800 (PST)
+ AJvYcCWBQauzezx7QEu+Xa0l5zGHkdnygoV2qjQDnA/CQoF89lzX59Dk1/3zYlTmmbslaWLghBzeppVV8g==@nongnu.org
+X-Gm-Message-State: AOJu0YwWa51/2KixHg64zagweRHWITVoyokju+VfcB1W9pI650MbG/Fp
+ Vf95rjuV4di0gKloc3fDBWNXBs+i3xf+H842MLoKSRns0eb/i1msSB0ba3tQb0/Rsu8=
+X-Gm-Gg: ASbGncvwA0BwnVvXZnfMvV+P/bF3i/mRdbZ2gI76VMWsEHEyUPOv5thQp5qGFAwLiSS
+ 72H7BDrGrC0VMXr8lxC0UlUdV/mz2lZYQlUoU0AjTmsyiqRBluvNsndK/J5sq13joq/5WKjBOr0
+ ZfYoCnpnOMpdC4TTlq9wWpUR7COzQ8CoJ0jSf9SfmegPz3ypD41NYXG8SsWJvmSaxmbx0LPpQji
+ rvOCG8tXXb+K4muUxjablYqjf00l7CUlemMVVvALiZYscjv0g/uxbF0Ojw8oQqNa/5i2pa4y2Gn
+ s46k3NUe9ktWJcIbNNKVR6aQ66KeE/myIApTBoS1N5kVlHi3CR2B4Kpe3l1L1enNI1wR46l7tnz
+ 1IOtiMTIth0pITn1rYs2O/ZmUmveaB/NbFHGWqJetTYGvZOZDJbn9wYdQ0U263d7UfwG/6a5sOm
+ IsPX10c90UsUxzjATnBSC+gd4L1uUNA2gg+uDBk4e0gQq7AkvIkoCQdzrVyEs=
+X-Google-Smtp-Source: AGHT+IEOO0hPWjLNp7SJAc7+eLaPEC5cQkBYp/A9KvWjjPEf5Qfu10Is/dVFBwMqsHbMgH7lr6TNwQ==
+X-Received: by 2002:a05:600c:45cf:b0:471:1716:11c4 with SMTP id
+ 5b1f17b1804b1-477c01ebc94mr116800765e9.34.1763988112570; 
+ Mon, 24 Nov 2025 04:41:52 -0800 (PST)
 Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-477bf355933sm200693405e9.2.2025.11.24.04.39.38
+ 5b1f17b1804b1-477bf198a67sm204393845e9.0.2025.11.24.04.41.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Nov 2025 04:39:39 -0800 (PST)
-Message-ID: <6c7ae362-ed23-4e88-bc43-8be111c83441@linaro.org>
-Date: Mon, 24 Nov 2025 13:39:38 +0100
+ Mon, 24 Nov 2025 04:41:51 -0800 (PST)
+Message-ID: <0cd6c984-f90a-4cd7-adfc-add9bf0de619@linaro.org>
+Date: Mon, 24 Nov 2025 13:41:50 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/4] Rename UBOOT_MAX_GUNZIP_BYTES to
- UBOOT_MAX_DECOMPRESSED_BYTES
+Subject: Re: [PATCH v4 0/4] Add support for zboot images compressed with zstd
 Content-Language: en-US
 To: Daan De Meyer <daan.j.demeyer@gmail.com>, qemu-devel@nongnu.org
 Cc: Aleksandar Rikalo <arikalo@gmail.com>, Paul Burton
  <paulburton@kernel.org>, qemu-arm@nongnu.org,
  Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
 References: <20251124123521.1058183-1-daan.j.demeyer@gmail.com>
- <20251124123521.1058183-3-daan.j.demeyer@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251124123521.1058183-3-daan.j.demeyer@gmail.com>
+In-Reply-To: <20251124123521.1058183-1-daan.j.demeyer@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,16 +106,16 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 24/11/25 13:35, Daan De Meyer wrote:
-> For consistency with LOAD_IMAGE_MAX_DECOMPRESSED_BYTES.
+> Fedora arm64 has an EFI_ZBOOT kernel image compressed
+> with zstd. Let's make sure we can use it for direct kernel
+> boot with qemu.
 > 
-> Signed-off-by: Daan De Meyer <daan.j.demeyer@gmail.com>
-> ---
->   hw/core/loader-fit.c | 2 +-
->   hw/core/loader.c     | 2 +-
->   include/hw/loader.h  | 2 +-
->   3 files changed, 3 insertions(+), 3 deletions(-)
+> Daan De Meyer (4):
+>    Rename LOAD_IMAGE_MAX_GUNZIP_BYTES to
+>      LOAD_IMAGE_MAX_DECOMPRESSED_BYTES
+>    Rename UBOOT_MAX_GUNZIP_BYTES to UBOOT_MAX_DECOMPRESSED_BYTES
+>    Use g_autofree in unpack_efi_zboot_image()
+>    Add support for zboot images compressed with zstd
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+Thanks, queued for 11.0.
 

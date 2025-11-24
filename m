@@ -4,47 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B19FECFD348
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Nov 2025 19:02:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1B6DCFD352
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Nov 2025 20:09:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vNbpQ-0000q1-9W; Mon, 24 Nov 2025 14:02:24 -0500
+	id 1vNcrg-00060k-Ec; Mon, 24 Nov 2025 15:08:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vNbpO-0000ge-RN; Mon, 24 Nov 2025 14:02:22 -0500
-Received: from mail-westcentralusazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c112::7] helo=CY3PR05CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1vNcre-0005zo-7s; Mon, 24 Nov 2025 15:08:46 -0500
+Received: from mail-westus3azlp170110003.outbound.protection.outlook.com
+ ([2a01:111:f403:c107::3] helo=PH0PR06CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vNbpN-0004nN-08; Mon, 24 Nov 2025 14:02:22 -0500
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1vNcrc-00065A-9k; Mon, 24 Nov 2025 15:08:45 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=xO2hx8yd+LJrWIDp4U/BR9HcO0j7IL7cazlkPlrJ7Z5No1ozt42kKurkWS5nByusLsksHVILqB+hFQGkJRBrzGmgzdlrWjnMCJ0WFIPtLajJTOJr56KF9/P224hPV04rW87ZGdQKZFn96gZXJmMN5Ouvb3Hs8l8ldJ09Q715GQbuwy6tJ5NxVA18fSzi9Fm4iESwGMzzpRPShoOixcUM5hFeYflBHjrb4uj2YFR5UeWe5JLmulaQ2aMZxoSuoW648DjA+AzAv2SRb0rVSSgd50TYUApqiUz3R5/ishEgi/Q8RO6UtmrxlTmfC52RE1IWegdndkgg0ZTvnS4xqtqB3g==
+ b=QycrrzDhzHMxvNoGgucn3pVduVFMPpUiyDYfCEcyCfpvLUGzh8BGxZ01bAECUM+8XowiqCGu5PCYwqHWe5dWaUaAHgEotE+eFMUPIe/JudJuEZe8qksuSimBS/GdNNAcM+CahKIUiyaBqwj89VV1N5jkMDmJnHumjynP633XD8QJHOoVQIsBLb+4f+lxVa8dGnDb9+iDUWLdTn25ZOcy7aC1SQvuDDrPVg50L3JbEs+8M1FvlVNXEOcLp3wOYpL2uzDipu0fuByv9hsbJmnPCyUrapvHf/mcIFQnJgL6I/VTGx5kmNX6oU3lYdTxOXaQRixzlQsHCi41k4iAaZgaWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hobO6laaOR0M8EnNG6Dp1BMIulrqNpZiJOLykZWY9bo=;
- b=G/k5Hn7+LXU2yErCrnLL2/TeK/OTYMbqYczwQtEEWGQzSh/tCADdVhHh5Qfm3r8weDQzov8o6FP+pCFD3QGRPyVaxuIe0NgJB0I4EZPf7Yx5/4iOFbB14H5+SF1QkXRg+o9rvuIbwTqs1SgTGHa6lTGs8O5r+2clc0C8vad9mKBVbe1vfwUXsGOzzQZOt5cS9AoXgn7KLsmf2IVRRt2x22SLtT03ONuAe0OtDVWNTtfJFQel2tAav+5bRWq2AEjWHJ7mgIrBPl/ZjEQq8tnKzX5M42Jdohhxvvup+xcBpPgi6VIzaPt8m1RZtpxhOIDAVHfVepS6BPPsPBhYyR/Ttg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
+ bh=hYw0kg8ZNKon+Pzkn/3b0Vhq6v2BxXSAByX3jM237CE=;
+ b=FGP5+ywB7LUmhoX0zchDWPud6ZU6UI7bc5b+jH2gEJep+FRzyPiQ0HL8gHPNk1TJzJoJMuPo4rX3Yp7fVW0Hi9A8oAnpqA23sjGMIv0GYuu3y786vPtYLvYTZdsrMiMpW9CJpuDoh4g39W44dObG8m+JgQ8gXB2U1/1q/4OuGPmA9cNuDYy1mGCI43LDdpE90+rafssx4QmtiTxj3muROPVYnUicKXPiQSyITEWI7T8usHCyBzObdl9/UMie7MfzAhQ0dNMKlaHuWicqc2PbW1oKMslSAcehjVtqD6sxm4X47vMVL+imhbNgFoENB2u7w60f0ekf177b9eN0ZJQH6A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.232) smtp.rcpttodomain=intel.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hobO6laaOR0M8EnNG6Dp1BMIulrqNpZiJOLykZWY9bo=;
- b=pqk/YLmCSXtJv8dw0lmzolYme7AZCDWEvtCKx4vJWyVGK6z9wII65sX2G+K20fA6m1WlYuRUPawhGRrlF3ao35rHzrxtIHOjzdXWtMraWQ4u/M06NtAFws+c287S5AtufJILHDepAGVYH7ik21i1NckvT0ybBSnhWu/Mf/oVcTr9/hhtiDFEm5BxpRvha6Dtd3x0m2arSuq00KJfg7ElMEZiw1okBjVD8L72IdHGdGrkY9p5VU70d5pod+TrxqHhoo975mH4t29TazrdDAhM4y4eNFMfbQeYRWrcJNZ1NSKTr29zLQLxtGccYvTM93qdENvsxzeFSYtV+fmUhVlWOg==
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
- by IA0PPF316EEACD8.namprd12.prod.outlook.com
- (2603:10b6:20f:fc04::bcb) with Microsoft SMTP Server (version=TLS1_2,
+ bh=hYw0kg8ZNKon+Pzkn/3b0Vhq6v2BxXSAByX3jM237CE=;
+ b=umuFPjv9bLNe1Bv51LwfKAdEi7XlnTzWIzCrnjenG5L7UGmB5wHV2EScwt9fJ4I4eSgZvRG9juuBXFgLMRCUcmpCRR9pJNrNxPQzm9lxqJkQlNFOkA/ZnwVe1M2sp2oFkZ7sbX9ZDHFaGHq1Zo0ffXGj8bncOHc3CrvpUdhbhzwZC1pnwTW9wdHxrgBX0y9Y1qPaUd5Z0qGVAFzkp836nmjy4PRA+lD/RlnBbtIVcKwy1EgtVCft3x6ZUS1yA2hWMLpoODjjOGMX6HE2KUqGOGPWMXJj3jM3wea2LZMbhF/lbXpfgVNotrnVKTF+hbopy4g3n4uUP064T0Y47dXwPg==
+Received: from MW4PR02CA0026.namprd02.prod.outlook.com (2603:10b6:303:16d::25)
+ by DM4PR12MB6063.namprd12.prod.outlook.com (2603:10b6:8:b1::19) with
+ Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9343.17; Mon, 24 Nov
- 2025 19:01:58 +0000
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::e8c:e992:7287:cb06]) by CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::e8c:e992:7287:cb06%5]) with mapi id 15.20.9343.016; Mon, 24 Nov 2025
- 19:01:58 +0000
-From: Shameer Kolothum <skolothumtho@nvidia.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
+ 2025 20:08:38 +0000
+Received: from SJ5PEPF000001D7.namprd05.prod.outlook.com
+ (2603:10b6:303:16d:cafe::62) by MW4PR02CA0026.outlook.office365.com
+ (2603:10b6:303:16d::25) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9343.17 via Frontend Transport; Mon,
+ 24 Nov 2025 20:08:04 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.232) by
+ SJ5PEPF000001D7.mail.protection.outlook.com (10.167.242.59) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9366.7 via Frontend Transport; Mon, 24 Nov 2025 20:08:38 +0000
+Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
+ (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 24 Nov
+ 2025 12:08:24 -0800
+Received: from drhqmail201.nvidia.com (10.126.190.180) by
+ drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.20; Mon, 24 Nov 2025 12:08:24 -0800
+Received: from Asurada-Nvidia (10.127.8.13) by mail.nvidia.com
+ (10.126.190.180) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
+ Transport; Mon, 24 Nov 2025 12:08:23 -0800
+Date: Mon, 24 Nov 2025 12:08:21 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameer Kolothum <skolothumtho@nvidia.com>
 CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
  <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
  "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Jason Gunthorpe
@@ -57,13 +83,9 @@ CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
  "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
  "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, "yi.l.liu@intel.com"
  <yi.l.liu@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>
-Subject: RE: [PATCH v6 17/33] hw/arm/smmuv3: Add support for providing a
+Subject: Re: [PATCH v6 17/33] hw/arm/smmuv3: Add support for providing a
  direct MSI doorbell GPA
-Thread-Topic: [PATCH v6 17/33] hw/arm/smmuv3: Add support for providing a
- direct MSI doorbell GPA
-Thread-Index: AQHcWiEf+PaTPr3V30uUQF2zh8a+rrT8ExiAgADSd6CAAIZ+AIAEERrggACwdACAAAMO8A==
-Date: Mon, 24 Nov 2025 19:01:57 +0000
-Message-ID: <CH3PR12MB754878079B614319CC6FB9C0ABD0A@CH3PR12MB7548.namprd12.prod.outlook.com>
+Message-ID: <aSS7Nbe+JpM1tJxQ@Asurada-Nvidia>
 References: <20251120132213.56581-1-skolothumtho@nvidia.com>
  <20251120132213.56581-18-skolothumtho@nvidia.com>
  <aR+Ga0DrveuOd3v7@Asurada-Nvidia>
@@ -71,101 +93,70 @@ References: <20251120132213.56581-1-skolothumtho@nvidia.com>
  <aSCnyrcIe7kqIncW@Asurada-Nvidia>
  <CH3PR12MB7548BCF00E128545097E3DE4ABD0A@CH3PR12MB7548.namprd12.prod.outlook.com>
  <aSSlJukXV0C48pFX@Asurada-Nvidia>
-In-Reply-To: <aSSlJukXV0C48pFX@Asurada-Nvidia>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|IA0PPF316EEACD8:EE_
-x-ms-office365-filtering-correlation-id: 216f2b5c-7805-4750-bed0-08de2b8bf124
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|376014|7416014|1800799024|38070700021|7053199007; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?S1IELSKEkX/Sdx7YI8AagTgE8289j/70/HsCoGRqMPuNuLrzAWrKj3PiWT8o?=
- =?us-ascii?Q?QWzjsVoUFREtsgQHV0O7Ggx1uD0uH4Dr7u4wibFQTdsTj9ulxfNZSYs1Exg9?=
- =?us-ascii?Q?cTdLjRrg5wwf94Vt9XIaQkT+xHlmTp36gl04i05ta/Z5ELgWm30juKuO1Ghc?=
- =?us-ascii?Q?/82p4Z5Bus9Pag2gSv6XDOUPOT74XTSJK7tP/LBpU55PdwgrfkgIelzXbjLO?=
- =?us-ascii?Q?tFtWXfO3d2VQ82WLjwYe+YLagDe7o19o9TP8lR8LiY0+42yGRRq01BI73xgq?=
- =?us-ascii?Q?OVNedae74YAdZBRDE+d0TmGLxWA1qNRXG7Yod6GsUmOQiq0YTKYhN5xcPuzk?=
- =?us-ascii?Q?TTugZEMIOdhyswUDpAK9WevYPqrS5OgN1qLRTI/ktTfK6PA69Iqg/IlNwQ7D?=
- =?us-ascii?Q?t2asbza1ShnRbLKE6tJEjr5DSNJVFXNoXBEgDQYxdAXA4fnppLY51gUuQTm5?=
- =?us-ascii?Q?r0rvAnZKLZ+CTSYvxMh4hwW70Pkzsaew9bZvps6NwjGMNoM742cYL0RjzZ+Q?=
- =?us-ascii?Q?TwzeN0fO5HR9GFv2QS95Y/wO7U8KwJTsAKCJZv6z29Otcw2SwJ8zZY2MU0mh?=
- =?us-ascii?Q?yRQoNPRIvei1t2n3RB3bDVy7Fy/wlaMxC9WvoRhrP2WtYxpJketnAs5gRgRK?=
- =?us-ascii?Q?m2Y5Db7BVN/y4FBof6VkVdxnZ4RtJBtNJsC4Vs0Y26/2tg5wFZWJ6MlgvlxK?=
- =?us-ascii?Q?XSCGGZZF7ZYkSIsQLKcynzh7IQLZaIMXaOkNW2AU9Nkywo8rQ8z6svT7tcG+?=
- =?us-ascii?Q?l4xLhAWpoWUfKG/XX2PoFFMSGyM66bThOTDuT4kHpMiU4Te61p6CsHAUdTTf?=
- =?us-ascii?Q?1rB/g7iGiWKcShtna4JL/fiN4psqwv8Q9By2myd03vtvuxIx5qayO40Nx20A?=
- =?us-ascii?Q?0f6g8rxiYCV6Id8chGdGypRYDtqw1hDjVErj/PVt/ENSTkVNS860fBoupqJs?=
- =?us-ascii?Q?IbPtSaboSijp1PJFiw1I3qRp1qpolqURHCBMjUzxKJaH2yxehAJW0/BIdWhy?=
- =?us-ascii?Q?Ix7Y2saNOPyEE8CXGwVev/yqwbAN2gBI/zCrB3h/XKJKMKaS5++U2cEfA1e+?=
- =?us-ascii?Q?7AwYxD864Pr2bb/qUbi7gF9qd88fQzM7G790AtvKC2abR6q5QP8q2VXOXeYY?=
- =?us-ascii?Q?E/8QmzXBFJqVXtZl9X2Vtk3O+U+zSHp6h3ybYUxHCSeUe5/nt1cxX/7b7UW1?=
- =?us-ascii?Q?9QWR01JkT5+EatqcD31QwuEf4LyE+ceMh6z2hKn1laXZPbooysAnxB/WVxaZ?=
- =?us-ascii?Q?2RlEOqmUWwSKIBosRc2+QWmfcgFouUGQckQ/4cntCmDvJj9YfvX5CFFkyE34?=
- =?us-ascii?Q?bDHU1/iQmQAS+LV797YRVmYGjgxnUJdY44S3jw6jHMqI1kvDieyMqp+Qzm8V?=
- =?us-ascii?Q?BuYTrNbxRCDhnR1T11G/OoepGktUSfXW1O6I6872SGnPq9J2YMbgJkHqiw0W?=
- =?us-ascii?Q?Y1cEwDIbVZc2+3rBeRRpo8n4rQ5CvKj/Dtvk6tDjKI3ExB2Kg/ZJLyDGsh7e?=
- =?us-ascii?Q?n7f6BwRNz5qqJ6gQpboZDM90IOcrIQ6wtRSC?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(7416014)(1800799024)(38070700021)(7053199007);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?a/WnpYI1b/IWNYa6YKPqJgfrKcuoK7rrtPLsYDsVOHNccQtOH0AVOJllkmwe?=
- =?us-ascii?Q?GaNpiYhAD7bbsVn9YcaVoFHUCHcBF1TmfZcZeu1pA5qLTc5ogQf/+JhQgs26?=
- =?us-ascii?Q?VMxpvRIeM1eN/oUjA7a3xhQDNuR0ZNN3uK/VVjPB4WEX1Sq/LIFWZ3lbBvBB?=
- =?us-ascii?Q?5eN6Po3uwHXFajnu8DVMw+//p2yYNixQtynq9nU8PK3cebe7SecOa3Ud53Gr?=
- =?us-ascii?Q?XRCE916VxkBwJkqyl+87weJF0e4WqTG9x/UsvD0YsvgXCQ2al0/HlsXSdRCz?=
- =?us-ascii?Q?Yo9Q0TBWK4BC+DzA9pvPWg1p/73HcyICK3J2uQVgdJVAEdvXMHa/HPJNdgzz?=
- =?us-ascii?Q?sl0mGDcMo+6hPC6Ii/C6xAjv42kuxwhFNSFV9tOfuWboqy6yMsKhOHW6vCkR?=
- =?us-ascii?Q?id9nfvCBmnZa66XmUO3NfVNcGYuxcQHpJmKJz6qUvH3CC7bKRa057USRw0+L?=
- =?us-ascii?Q?zz2Ya6Hv8gaE8FfhuOiQND75aVzzeWXH59Q856oK6yRYQt/z3eholDWj3twF?=
- =?us-ascii?Q?LZWEEOX5WFCkzHjdjHZMGV9r73eC2+sQCfVLLqHDToTO+owm8MlTLWsbLvGN?=
- =?us-ascii?Q?G9+OAcSeLi0aZ8KTQubk0xzx7PgQ86QWnAZjewSQkYw9QxiEhcwriaIHM3MH?=
- =?us-ascii?Q?fju4g/RuKtGGyXpDJb/BJJEkFEuJuBqyQYMha3pr/2Ahg05TBLu+HDgkdn3t?=
- =?us-ascii?Q?dkgPz1Bfepq1CcvVZI90aSmb/iqatHc7CnCXKydJtn8R4Piex5Ml8VfYhDMo?=
- =?us-ascii?Q?73ZcAE2YUAuce9iaN0fDlT9mgGAvpt4/DdW3Mk5yNrtNhgAoKrlr0jOllyus?=
- =?us-ascii?Q?FNGvb2NOv44JX3k89HtB1molzGQdq5ctRMiAGfDjE7Yx05S9lJ/EIIDRGAvo?=
- =?us-ascii?Q?zpGhYsc3ZeYRFWdjWRagtPfQGpmN422P0P2a3Ds7tPpWiM2SdLUWcj8mcnZs?=
- =?us-ascii?Q?1p/KTYghK3o5VAJXbRvaYFDigh5cNaStaHTcGrihBN6wBQUmxUJSywSBdCdV?=
- =?us-ascii?Q?+qpRiSNNStnHbALqs89VKjdwkh7CqFn70U+hZd6Jy0+mqbyhj08gUMHVKdPQ?=
- =?us-ascii?Q?hzr4t3dwk7S5SfQPqekyvbQywmclXIXZx8EodP+rDwg0U/CpD39xfzJBwjpR?=
- =?us-ascii?Q?D+3vqIhPDsvhf6TH+JSTPD3pSPpDIXQCglMqjnqfwhHZgWMbKXcgVWcG/PCf?=
- =?us-ascii?Q?S1RuZv/KJVTrTmy/wndpaCwWsWKX3wys4E8dfFCUncG98XxiyVSGtx/V7Xwb?=
- =?us-ascii?Q?MFbWp+3dAzX+F4UOMZ9iOLkV/AjnH/sIuWZpYsJs50X66iMjBHF3LvSLy7pM?=
- =?us-ascii?Q?B2fl7HWbCInV9QLFiBW4nEgTkVkHrnfiQGWpip9P3VHSCeFrNqxOsCjsDQeG?=
- =?us-ascii?Q?o0oXQVEfhBjZZp3V9NevYxspq9AqUp1maDlU4/4NFunHsFgO1+n3KBqUjCBv?=
- =?us-ascii?Q?cvVe9j0QM5gJmkleGEDZBCyHQ7E5sC36DntQG4uCZnZu5pikVPg1Jsx5tlP7?=
- =?us-ascii?Q?tdkAye3ZP3fKIookjfpPxAPYJv6+ou3ObCWR+OGWV4za9xADxY4BImxxjzmM?=
- =?us-ascii?Q?UuHlgQZtcFfZEvBz2sPzTTKOVTBwWh0bi8wk3u20?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ <CH3PR12MB754878079B614319CC6FB9C0ABD0A@CH3PR12MB7548.namprd12.prod.outlook.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <CH3PR12MB754878079B614319CC6FB9C0ABD0A@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ5PEPF000001D7:EE_|DM4PR12MB6063:EE_
+X-MS-Office365-Filtering-Correlation-Id: 14fd84e7-54b3-4735-d6d6-08de2b954185
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|36860700013|82310400026|376014|7416014|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?TxOowBUppodp5W/kNjaBygz387zydNanCB8nheqTfo/7WLx7EUK1Tcqn4fQu?=
+ =?us-ascii?Q?O6dm5p93EKsFbY4kzRHhUbDOj8zvLL/48Jrv0DMl1DfVjeAtqajWXG5PXv0s?=
+ =?us-ascii?Q?5vnz9T63ooK3kkcq+FfwUjOVrzIJWkgqomtmZGaDmVt+rqlFqbYy2+VbzMZo?=
+ =?us-ascii?Q?P5dFFnhCp1g2N3I5rBu02pvYJqnO12afU/+2+0k5JGy9SEj4xYcSWoC+DGS4?=
+ =?us-ascii?Q?BwkpMYjr1pjkoPoEOqFec5IoMz7rB8Rv8OOy45vkD4odC41LyFaVrXD9o+Ka?=
+ =?us-ascii?Q?bgNPReZeuTTqbSonUlhmLBWGkCe10IsytvF7+xjdnR59/+EpD14fXOO71xfC?=
+ =?us-ascii?Q?Axlm4oXcj4WUJWW9xXS35AFHvgQESjuV15o0qHP3ttKAVY3b9VpC68dWKRe5?=
+ =?us-ascii?Q?f2yRjtiuB/ibuHEoBpY4ypi4mnIwpn2zLzm3XLfHqAw4Ttkbqe5DdUGGxUWR?=
+ =?us-ascii?Q?IUHr+ZiJBxWJSSO/0q+xjHm001hEKh+0ddpEdYjOQt1jDzOZbFEEx13pIQEp?=
+ =?us-ascii?Q?KBKSe7jrH9qvkRBkKknKgUIH347qDmdRbtAO+n/22xjlCw+cyjWfx1qHmVYD?=
+ =?us-ascii?Q?gW1YlRdpZGN+BfRjgRrMcz4Yeio4XZtDI7hx68q06tndzutD9sPRKzeR9g6Y?=
+ =?us-ascii?Q?OgOf5yu3hNQSBgLN/hpcLgh/gVCpRC+8RbOn6BQ33Mc8YBwQO2KMk91Ka3x7?=
+ =?us-ascii?Q?hnaT0GBSaJdebOh9/hiHEepbfXxjsnyZd2Ey+o/1BXCmZvQipMZAHGMb619X?=
+ =?us-ascii?Q?aESKK7UFzOEwd9JynPLj3J54Flg23ee2LX1VrJ1y3tXHa/gn3GSRbhUd0065?=
+ =?us-ascii?Q?up6eJohhi7PfsWN9BZ7mZaqByOEwB5/HnBw3LK+5FG8/geySQeW9QT/CEkyv?=
+ =?us-ascii?Q?xtBHAcIz8kuALeFPH38e7xyD3YiD3nLEBw0XqIuahKToeu4k+dPclo8omgNm?=
+ =?us-ascii?Q?7MdcuAM79eoweK+Yz6yqIpJmY5RL59iAE7z+pgP4ATHbp3uOzivOVrcfIgoa?=
+ =?us-ascii?Q?y3NloCRefQM2ccpV8T56CdsWzZJUW3bDngvx6fAhaA4OAOWiXAbJlA9DLojv?=
+ =?us-ascii?Q?UAqBFADTEoywuyjQ+qVM89x+TWvGQWQl1HEisjjN5HbISNCzXXMI3m5EmDTm?=
+ =?us-ascii?Q?YuUNOs6l8Ln0W3KHCrblXE0A4hFiRGWd29WIUWsCEoWa8qBDFVdcAvaryJ2j?=
+ =?us-ascii?Q?0tegH1CtFXXLn5xqqsVzYclBCGjv0pQ/vx6z9Wyk3Hgcxgn0SwCc5xeuNGr6?=
+ =?us-ascii?Q?Z9X1Op2yRQ/vfFHogvc/H/GRnjOO1eT7Nt7gCa3kJS0YVmdOnTtiyvByuvqB?=
+ =?us-ascii?Q?a6L4M4iq2MQIkeS6rjale8tV7rtPt7fDy7IsiqKACmLdX+DJZSErtyz/N7tZ?=
+ =?us-ascii?Q?tQBJ7eI8OuORer9vXv0jWK+fABbqANY1crEHyYKFRwiQSQNcFoah/2F3960I?=
+ =?us-ascii?Q?XV4vLqoKsHNbdOSo+oxasYC49UFRfBxzyOe4VPwM7UKIgPdMf2J/YjydAWPP?=
+ =?us-ascii?Q?TrmO6yhFvBdHnLzRbHJnp+Ji+pmWFKgDmwSDYsNHK3P0n8oBBfool5oaOvwd?=
+ =?us-ascii?Q?z2znH26aaS7tFuoHDUg=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(36860700013)(82310400026)(376014)(7416014)(1800799024); DIR:OUT;
+ SFP:1101; 
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 216f2b5c-7805-4750-bed0-08de2b8bf124
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Nov 2025 19:01:57.8767 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: EKnj/R5MoCpynYnAAPYDW0fbzhudJv+vyuHIn8TZ4TfpWKAOTcXRGJgfLefFTcEzvl2FiAfsb8RGOh9DwSrbcg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PPF316EEACD8
-Received-SPF: permerror client-ip=2a01:111:f403:c112::7;
- envelope-from=skolothumtho@nvidia.com;
- helo=CY3PR05CU001.outbound.protection.outlook.com
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.075,
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Nov 2025 20:08:38.2314 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 14fd84e7-54b3-4735-d6d6-08de2b954185
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: SJ5PEPF000001D7.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB6063
+Received-SPF: permerror client-ip=2a01:111:f403:c107::3;
+ envelope-from=nicolinc@nvidia.com;
+ helo=PH0PR06CU001.outbound.protection.outlook.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.075,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -181,72 +172,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-> -----Original Message-----
-> From: Nicolin Chen <nicolinc@nvidia.com>
-> Sent: 24 November 2025 18:34
-> To: Shameer Kolothum <skolothumtho@nvidia.com>
-> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
-> eric.auger@redhat.com; peter.maydell@linaro.org; Jason Gunthorpe
-> <jgg@nvidia.com>; ddutile@redhat.com; berrange@redhat.com; Nathan
-> Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
-> smostafa@google.com; wangzhou1@hisilicon.com;
-> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
-> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
-> Krishnakant Jaju <kjaju@nvidia.com>
-> Subject: Re: [PATCH v6 17/33] hw/arm/smmuv3: Add support for providing a
-> direct MSI doorbell GPA
->=20
-> On Mon, Nov 24, 2025 at 12:05:38AM -0800, Shameer Kolothum wrote:
-> > > > > > +        if (object_property_find(OBJECT(dev), "accel") &&
-> > > > > > +            object_property_get_bool(OBJECT(dev), "accel",
-> &error_abort)) {
+On Mon, Nov 24, 2025 at 11:01:57AM -0800, Shameer Kolothum wrote:
+> > On Mon, Nov 24, 2025 at 12:05:38AM -0800, Shameer Kolothum wrote:
+> > > > > > > +        if (object_property_find(OBJECT(dev), "accel") &&
+> > > > > > > +            object_property_get_bool(OBJECT(dev), "accel",
+> > &error_abort)) {
+> > > > > >
+> > > > > > Do we need object_property_find()? A later patch seems to drop it.
+> > > > > > Perhaps we shouldn't add it in the first place?
 > > > > >
-> > > > > Do we need object_property_find()? A later patch seems to drop it=
-.
-> > > > > Perhaps we shouldn't add it in the first place?
+> > > > > We need that at this stage as we haven't added the "accel" property yet
+> > > > > and that will cause "make check" tests to fail without that.
+> > > > >
+> > > > > We remove it once we introduce "accel" property later.
 > > > >
-> > > > We need that at this stage as we haven't added the "accel" property=
- yet
-> > > > and that will cause "make check" tests to fail without that.
-> > > >
-> > > > We remove it once we introduce "accel" property later.
+> > > > Hmm, I assume object_property_get_bool() would return false when
+> > > > "accel" is not available yet? No?
 > > >
-> > > Hmm, I assume object_property_get_bool() would return false when
-> > > "accel" is not available yet? No?
-> >
-> > It is the errp that will be set if there is no "accel" is available tha=
-t will fail the
-> > tests. Another way to avoid object_property_find() is to pass NULL for =
-errp
-> in
-> > object_property_get_bool(), but I think again when we introduce "accel"=
- we
-> have
-> > change that into either errp/error_abort here.
-> >
-> > I am not sure there is any other way to handle this.
->=20
-> This path is to set MSI GPA, which could be optional, right? So,
-> we don't really need to exit when accel is not found or accel is
-> set to "n".
->=20
-> In that case, could we just use NULL even when "accel" is added?
-> Why do we use error_abort or errp?
+> > > It is the errp that will be set if there is no "accel" is available that will fail the
+> > > tests. Another way to avoid object_property_find() is to pass NULL for errp
+> > in
+> > > object_property_get_bool(), but I think again when we introduce "accel" we
+> > have
+> > > change that into either errp/error_abort here.
+> > >
+> > > I am not sure there is any other way to handle this.
+> > 
+> > This path is to set MSI GPA, which could be optional, right? So,
+> > we don't really need to exit when accel is not found or accel is
+> > set to "n".
+> > 
+> > In that case, could we just use NULL even when "accel" is added?
+> > Why do we use error_abort or errp?
+> 
+> I cant recollect why I used error_abort here in the first place. May be
+> since we used that for the "primary-bus" above. But as you said,
+> we could argue "accel" is optional property. However, if we pass NULL
+> and then for some other reason it fails(even if accel=on),
+> we will end up ignoring the error completely and silently boot without
+> "accel" ?
 
-I cant recollect why I used error_abort here in the first place. May be
-since we used that for the "primary-bus" above. But as you said,
-we could argue "accel" is optional property. However, if we pass NULL
-and then for some other reason it fails(even if accel=3Don),
-we will end up ignoring the error completely and silently boot without
-"accel" ?
+OK. I see now..
 
-The  object_property_get_bool(..., &error_abort) is used in
-virt-acpi-build.c as well.
+What we want are:
+1) When "accel" isn't defined, don't abort it by calling that
+   object_property_find() to make msi-gpa optional.
+2) When "accel" is defined, remove the object_property_find()
+   because object_property_get_bool() will never abort. And it
+   will make the msi-gpa optional depending on accel=on/off.
 
-Still not sure "NULL" is a good idea or not.
+Perhaps we should re-organize the patch sequence, putting the
+MSI one later. Checking the "accel" before we introduce it is
+a bit odd. But any way, I think we are fine here, if you don't
+want to change.
 
-Thanks,
-Shameer
+Thanks
+Nicolin
 

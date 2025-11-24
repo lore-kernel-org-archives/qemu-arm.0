@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA176CFA466
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Nov 2025 12:30:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B5C4CFD313
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Nov 2025 12:30:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vNVRT-0003sS-NG; Mon, 24 Nov 2025 07:13:15 -0500
+	id 1vNVUL-0006lF-HI; Mon, 24 Nov 2025 07:16:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vNVQy-0003Ty-WC
- for qemu-arm@nongnu.org; Mon, 24 Nov 2025 07:12:45 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vNVT2-0005Dz-BS
+ for qemu-arm@nongnu.org; Mon, 24 Nov 2025 07:14:55 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vNVQx-0001pz-DT
- for qemu-arm@nongnu.org; Mon, 24 Nov 2025 07:12:44 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-47775fb6cb4so27208995e9.0
- for <qemu-arm@nongnu.org>; Mon, 24 Nov 2025 04:12:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vNVT0-0002Db-Fe
+ for qemu-arm@nongnu.org; Mon, 24 Nov 2025 07:14:51 -0500
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-42b2a0c18caso2604564f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 24 Nov 2025 04:14:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763986362; x=1764591162; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763986489; x=1764591289; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=GAahkJUUr13idApsrji8MqjFyOarSXxW6Th5dit+urE=;
- b=MNss/qDOt+E58VVlOGrkw+wjxc/Yb6yaQ9fHQW/k9Np73UDPzYPUHexr+WBpFEZ/Jn
- AdslJJlcAtPqirRN5fd96hCA6YQoM6MlacPskv+jzqgJv+u1CU0E+gd1Q8vs53oSoPSf
- kqlAkoQLJQFD0GqjN2VwYWV9Sd8WmlgbTrjhOz6ed3hVTJAM2MfRWVO0SC1ajn6GXFiT
- oVVorfxokJ5uS0WEokPYh+9uZctZKmLR5a9uJMeioodW2eM5GCcvFgwgvu6lcScusy2u
- XBqITKQW4P3fYKk2iGv6d778QlFgabTPVNLmis87LCeYigEW9JVnWNUSTFoTNZZtsswl
- 08Sg==
+ bh=Of121HS8SSCgYw4Agc/yloPFf6MMSVd2IAJBagVwBXE=;
+ b=xwqPzrSyvR7SRe2TJ6cUw+Zie1rGtnxLaAZESx58Xkpdk3tLC4auKmKqhzpnUIrJE4
+ u1vc/hh5TB7l/7rmR2zyNqvJi8sRzWXOGD7avGGNkcDR/Pp9ePT/qt0nOK0pTE91/hNb
+ /YxAfQw9JC1FSnTGPlMivpK/PbNC96AJITKNs2ask83aLBOES79UxePGk1CkX/6py5JD
+ GIIdZxceLfXwzjQkQ5qlpnrewaVnjDjuMSEMo7mXfrl65ag1hB9AEZqJFGRdxhYDIFEe
+ C/MByn1dQvhzvOZ4qNInTcOZidnLIJ8aZZCcVIXu/HMz3Ixu/XGEnS20tClW0aa+WBp8
+ WEBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763986362; x=1764591162;
+ d=1e100.net; s=20230601; t=1763986489; x=1764591289;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=GAahkJUUr13idApsrji8MqjFyOarSXxW6Th5dit+urE=;
- b=EPt+qer0RT0TQxHWc7PcSZKMqFRi4040oTeHQiS5XEesHYQocsbCOmwFGYPmvudLE3
- aYFaNf9NfguCo/l+LmTtp/MbdRKAKh/krg8EaibgXL7sDEySw+lGo8C4NAZAHSG6rsJz
- 3fJJ9Puh8VnwVTRvWbIpxBxG1D4zQT5VwJArK1s7YjbWg+UaCSpHWR0Dyvtf7X/MFkU4
- 5z3xCxJQdffYHTEFAyO4tF5rn+yYgfqucNyN/S6UUCHGzKVOS3TlwQZRLeJa/V7scajV
- yvnCHZ1P5mxMJ0U9eq49rWpjSqazCjgZR0Y7UYzBDbYM3lLYNh0qijgiwwVr0Ifx12pT
- gguA==
+ bh=Of121HS8SSCgYw4Agc/yloPFf6MMSVd2IAJBagVwBXE=;
+ b=juSMRDEYb2HCvYzSR46gTqYZfQyvMtkslU6GoHhqQBb6eruYXcIKdIuI4y/pCpf0g4
+ b0UFdFY6sMH7stnJQoUY+3N14N7neVNeYGZF5kg3tJZmfZmAT08iulLWaMtitFcxTJLB
+ LPR7XLs7cK2rELQs3q5jMuGB5FpFfksml0WWABwdJlOKoDNTAGJmq8o/FuZHlTQVwuZX
+ rNKK3P//4RnMLm+f8kUmO+jOx7gixey0BwZavR6X7KWmuENWCq2anLubOwimuFgy8dXw
+ L6TuL61JbnyplGBgDhoPUwIbmxFT9WLUA6mn0Uzkwu56SQq1FDk/s0czC7KM+U4N1gVt
+ OtVg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVNB4gKGjHlki/kLVOmlj3sj290r5NOnJ4HIYCOZ9YiQvDLiJR6ppIJbv1MX4Pw2Tu5YMd9pNoixw==@nongnu.org
-X-Gm-Message-State: AOJu0YxYgA9MP0fwslLV2hJrboabFgGhf/DIH+7YWZZxdSZrL1kbhSHY
- rxE6No1xkipB52T8QmBp5PeryUEOQudelHwmDKcyEr3ak5G4YO0ipovYAakgVyKKClskqAQcR87
- uh/xA6I/rmQ==
-X-Gm-Gg: ASbGncukCKJCHPmw9moFY2wVwnGLP2nVBO1EzKMt9Lv6d7v2bBgW34eNP9kubleKHNF
- YAUMff+MIpgsa585wC45/iVuEI49EJQSEeW+opKMLoXFQt3Ro9RhwMUdeP4JZxw96IsUoxu46+L
- uc/y7Yw+yBUsSqU5xSGX58YDJNs6/NaFhMcCIqcco026Hm3yNZt2OOgYyUI1u7m5sTfAFVCfiIX
- kiQLardcnHPOv+0+aYR45e89yvvVv/pmHsF/RxE6cFEiQe3AMA+qIK1c+PwSFFm+UUOa4wiHY/y
- 6fqIg6HSeKtBpY/2wsGdrZD0Z6gW7h5Ukbp+y9lWoSvASNrTh7AoDuU9rKNBfX9Pwx0epsTNI5j
- PdoT0Mk143N6/9/J+svehAgdry3Ez10YulieHOOQXASf7vqpcplOjpB0Mzq0sHn/MbBvLIdRtqi
- G7kdgW3S+lzE0BGwmFgwQBnlgMpr3gvNp40G3uJL3pZozRvGy9ykNUjA==
-X-Google-Smtp-Source: AGHT+IGCuuh5MxYeyTa8fAkuX3uTgaUeAdaBnJlse1+kr0rABmGAVQpNcPI+/8zgfTlpGZNptvyfhQ==
-X-Received: by 2002:a05:600c:1909:b0:477:7b16:5f9f with SMTP id
- 5b1f17b1804b1-477c11337e0mr117832625e9.31.1763986361728; 
- Mon, 24 Nov 2025 04:12:41 -0800 (PST)
+ AJvYcCVD1yRdunerymxT0QsdtvNuVAKFXSsqJMUMfg88PhamHADj0chJ41pYrpI7doT6Uedv3wKCtop1kg==@nongnu.org
+X-Gm-Message-State: AOJu0Yz94o6QgTEWQA3VDs4dlFiM+fe2AiulnuUSrHeZpF4oUohJysby
+ y+FemAm+RR2Tn5SczCGDZg3PrSEBsulpW6k0o4iaopwmEN0oFpOGU/KbZ3Scu3/I0FM=
+X-Gm-Gg: ASbGncttS0a5Y87Nab2KTlRXwxgVoKk6bfCbcJu6yLp/8p6TiX2hD3XZTj7+gao8DxU
+ NcrczpC2QND4+az/CMM/wlmQZfote4zxonQvOGWslP1hrylQEVMdsqKcsqnIPHKORQlT4/DY2Na
+ UmBXh5l2f0F3ybdtSHNlkpYqoPV4yL+QWntjT0j3eyUMqs+cxoV9ec7rX8N7b8AbsVHARL5d9W0
+ 2H70eA0bHEFpWtraG+fXizq4fVjrVKW97yTjOQp3Kg5JkldrxKhrUV9m8+K8Xv20HdJlCJMR4xV
+ /atJdN7Wd10S+1AZQpxJOO8IVS2rid5McVREa7Xx7qbRVocvsgG+3/kdAdj7LrPCO5dyCVS5njY
+ cPPNyh5VvLhPRioVWh30G+tNvewkMEsVDuRWwh8+T0jFE3gfqIGsTPNF6tra65T3tNlSuxgOZ+q
+ qsmY5BIHle5K5QyTHX954AHjLfBIo5fZqsvHIxUnsAva1wlUgDJWH/uQ==
+X-Google-Smtp-Source: AGHT+IHRFmD/liqQCFowP60BnbhJcbHp9kJ8YgR4SgjXdQGLlTpBvnjjzkHPZ5SPAoYd8A4EhRMlDA==
+X-Received: by 2002:a5d:5d12:0:b0:42b:2e39:6d45 with SMTP id
+ ffacd0b85a97d-42cc1cbd047mr11715155f8f.15.1763986488883; 
+ Mon, 24 Nov 2025 04:14:48 -0800 (PST)
 Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-477bf35f976sm198059095e9.4.2025.11.24.04.12.40
+ ffacd0b85a97d-42cc231dc6esm19814249f8f.7.2025.11.24.04.14.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Nov 2025 04:12:40 -0800 (PST)
-Message-ID: <76090cc4-fb02-4896-b00c-ac0c30585316@linaro.org>
-Date: Mon, 24 Nov 2025 13:12:39 +0100
+ Mon, 24 Nov 2025 04:14:48 -0800 (PST)
+Message-ID: <96b3e13b-3145-4acc-aee4-5d953c1b5107@linaro.org>
+Date: Mon, 24 Nov 2025 13:14:47 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 1/3] Rename LOAD_IMAGE_MAX_GUNZIP_BYTES to
@@ -82,9 +81,9 @@ References: <20251011081553.4065883-1-daan.j.demeyer@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 In-Reply-To: <20251011081553.4065883-2-daan.j.demeyer@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,49 +117,18 @@ On 11/10/25 10:15, Daan De Meyer wrote:
 >   hw/nvram/fw_cfg.c   | 2 +-
 >   include/hw/loader.h | 2 +-
 >   4 files changed, 7 insertions(+), 7 deletions(-)
-> 
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index e77d8679d8..c0dec0343a 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -826,7 +826,7 @@ static uint64_t load_aarch64_image(const char *filename, hwaddr mem_base,
->       ssize_t size;
->   
->       /* On aarch64, it's the bootloader's job to uncompress the kernel. */
-> -    size = load_image_gzipped_buffer(filename, LOAD_IMAGE_MAX_GUNZIP_BYTES,
-> +    size = load_image_gzipped_buffer(filename, LOAD_IMAGE_MAX_DECOMPRESSED_BYTES,
->                                        &buffer);
->   
->       if (size < 0) {
-> diff --git a/hw/core/loader.c b/hw/core/loader.c
-> index 477661a025..42edcf2d98 100644
-> --- a/hw/core/loader.c
-> +++ b/hw/core/loader.c
-> @@ -796,8 +796,8 @@ ssize_t load_image_gzipped_buffer(const char *filename, uint64_t max_sz,
->           goto out;
->       }
->   
-> -    if (max_sz > LOAD_IMAGE_MAX_GUNZIP_BYTES) {
-> -        max_sz = LOAD_IMAGE_MAX_GUNZIP_BYTES;
-> +    if (max_sz > LOAD_IMAGE_MAX_DECOMPRESSED_BYTES) {
-> +        max_sz = LOAD_IMAGE_MAX_DECOMPRESSED_BYTES;
->       }
->   
->       data = g_malloc(max_sz);
-> @@ -898,8 +898,8 @@ ssize_t unpack_efi_zboot_image(uint8_t **buffer, ssize_t *size)
->           return -1;
->       }
->   
-> -    data = g_malloc(LOAD_IMAGE_MAX_GUNZIP_BYTES);
-> -    bytes = gunzip(data, LOAD_IMAGE_MAX_GUNZIP_BYTES, *buffer + ploff, plsize);
-> +    data = g_malloc(LOAD_IMAGE_MAX_DECOMPRESSED_BYTES);
-> +    bytes = gunzip(data, LOAD_IMAGE_MAX_DECOMPRESSED_BYTES, *buffer + ploff, plsize);
 
-I'd take the opportunity to introduce a size_t variable, since
-patch #3 re-use this definition.
 
-Otherwise,
+> diff --git a/include/hw/loader.h b/include/hw/loader.h
+> index c96b5e141c..24b91ba02b 100644
+> --- a/include/hw/loader.h
+> +++ b/include/hw/loader.h
+> @@ -80,7 +80,7 @@ ssize_t load_image_mr(const char *filename, MemoryRegion *mr);
+>    * load_image_gzipped_buffer() will read. It prevents
+>    * g_malloc() in those functions from allocating a huge amount of memory.
+>    */
+> -#define LOAD_IMAGE_MAX_GUNZIP_BYTES (256 << 20)
+> +#define LOAD_IMAGE_MAX_DECOMPRESSED_BYTES (256 << 20)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+Maybe also rename UBOOT_MAX_GUNZIP_BYTES for coherency.
 

@@ -4,93 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B5C4CFD313
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Nov 2025 12:30:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14874CFA466
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Nov 2025 12:32:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vNVUL-0006lF-HI; Mon, 24 Nov 2025 07:16:13 -0500
+	id 1vNVcF-0006Hf-4m; Mon, 24 Nov 2025 07:24:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vNVT2-0005Dz-BS
- for qemu-arm@nongnu.org; Mon, 24 Nov 2025 07:14:55 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vNVc0-0004wR-FO
+ for qemu-arm@nongnu.org; Mon, 24 Nov 2025 07:24:09 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vNVT0-0002Db-Fe
- for qemu-arm@nongnu.org; Mon, 24 Nov 2025 07:14:51 -0500
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-42b2a0c18caso2604564f8f.1
- for <qemu-arm@nongnu.org>; Mon, 24 Nov 2025 04:14:50 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vNVby-0005BV-Ro
+ for qemu-arm@nongnu.org; Mon, 24 Nov 2025 07:24:07 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-47790b080e4so22224925e9.3
+ for <qemu-arm@nongnu.org>; Mon, 24 Nov 2025 04:24:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1763986489; x=1764591289; darn=nongnu.org;
+ d=linaro.org; s=google; t=1763987045; x=1764591845; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Of121HS8SSCgYw4Agc/yloPFf6MMSVd2IAJBagVwBXE=;
- b=xwqPzrSyvR7SRe2TJ6cUw+Zie1rGtnxLaAZESx58Xkpdk3tLC4auKmKqhzpnUIrJE4
- u1vc/hh5TB7l/7rmR2zyNqvJi8sRzWXOGD7avGGNkcDR/Pp9ePT/qt0nOK0pTE91/hNb
- /YxAfQw9JC1FSnTGPlMivpK/PbNC96AJITKNs2ask83aLBOES79UxePGk1CkX/6py5JD
- GIIdZxceLfXwzjQkQ5qlpnrewaVnjDjuMSEMo7mXfrl65ag1hB9AEZqJFGRdxhYDIFEe
- C/MByn1dQvhzvOZ4qNInTcOZidnLIJ8aZZCcVIXu/HMz3Ixu/XGEnS20tClW0aa+WBp8
- WEBw==
+ bh=YFUqPyXoIDtGVeuH7VqsJ7MOoz2HmKT7WqlGbCd66cE=;
+ b=VCZB5+aDC/Nz8ddeT9/vzpyvc3VkftouA1A1GuvJQzH2wPVuPyA0ofcrKWJMl4Xt6r
+ QMhMIiQBYapagn5Z7RO9YSbWs1IgOd1+VT38cHgR3q98Gth1DhgPKJ27rY3yiUWvtmcD
+ g/dTZQgGyr23T+o8y250ypTwm3G7cJI0LNepsbp3MQrIeamPfwTUr/qWfx4d6MKyc2sG
+ TUjxQYc8qZHHcMvkBR143WSZkHUS168S1h4+c4RoBOaYLR0LjM1kzmq0Kus+CwpP+yMS
+ fakB1sT4fvlwdjndJ1VeAmkr09rJCU0DVAR1hl3AmciJAVIaIzv4Q2nlYcZnKpvL+gIR
+ 63aA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1763986489; x=1764591289;
+ d=1e100.net; s=20230601; t=1763987045; x=1764591845;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Of121HS8SSCgYw4Agc/yloPFf6MMSVd2IAJBagVwBXE=;
- b=juSMRDEYb2HCvYzSR46gTqYZfQyvMtkslU6GoHhqQBb6eruYXcIKdIuI4y/pCpf0g4
- b0UFdFY6sMH7stnJQoUY+3N14N7neVNeYGZF5kg3tJZmfZmAT08iulLWaMtitFcxTJLB
- LPR7XLs7cK2rELQs3q5jMuGB5FpFfksml0WWABwdJlOKoDNTAGJmq8o/FuZHlTQVwuZX
- rNKK3P//4RnMLm+f8kUmO+jOx7gixey0BwZavR6X7KWmuENWCq2anLubOwimuFgy8dXw
- L6TuL61JbnyplGBgDhoPUwIbmxFT9WLUA6mn0Uzkwu56SQq1FDk/s0czC7KM+U4N1gVt
- OtVg==
+ bh=YFUqPyXoIDtGVeuH7VqsJ7MOoz2HmKT7WqlGbCd66cE=;
+ b=d3eLNbn+NLNL53d2w59OWv5j3GHvF64EQZp2dbb7+sybL1qMfHTM2xZquV+RlnUaEx
+ 6q2RKR+cJx8KKuyrxk2ooGgKGJbAMr4VjolKgxlGQBzQ3SoQKdZ5ooEGJZTKqrJHlSBK
+ 6v7p6G7fKGo50STjcZ/4tB/Phx72HqzPsIypgm366WwMreENInMfut3VzUPoHa40An3M
+ zALrBaGm63qL0/ap1zxRoPk9VGuvw3JyA82BQmqOvgeilUc9K/W5MtUhJzoTUG06lICL
+ un4OHP8usgWycDmYRri/Etw2XoEDSVHw1fKVqK2EH35d4hPF3l4af9TTo78pK93foolb
+ 0Scw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVD1yRdunerymxT0QsdtvNuVAKFXSsqJMUMfg88PhamHADj0chJ41pYrpI7doT6Uedv3wKCtop1kg==@nongnu.org
-X-Gm-Message-State: AOJu0Yz94o6QgTEWQA3VDs4dlFiM+fe2AiulnuUSrHeZpF4oUohJysby
- y+FemAm+RR2Tn5SczCGDZg3PrSEBsulpW6k0o4iaopwmEN0oFpOGU/KbZ3Scu3/I0FM=
-X-Gm-Gg: ASbGncttS0a5Y87Nab2KTlRXwxgVoKk6bfCbcJu6yLp/8p6TiX2hD3XZTj7+gao8DxU
- NcrczpC2QND4+az/CMM/wlmQZfote4zxonQvOGWslP1hrylQEVMdsqKcsqnIPHKORQlT4/DY2Na
- UmBXh5l2f0F3ybdtSHNlkpYqoPV4yL+QWntjT0j3eyUMqs+cxoV9ec7rX8N7b8AbsVHARL5d9W0
- 2H70eA0bHEFpWtraG+fXizq4fVjrVKW97yTjOQp3Kg5JkldrxKhrUV9m8+K8Xv20HdJlCJMR4xV
- /atJdN7Wd10S+1AZQpxJOO8IVS2rid5McVREa7Xx7qbRVocvsgG+3/kdAdj7LrPCO5dyCVS5njY
- cPPNyh5VvLhPRioVWh30G+tNvewkMEsVDuRWwh8+T0jFE3gfqIGsTPNF6tra65T3tNlSuxgOZ+q
- qsmY5BIHle5K5QyTHX954AHjLfBIo5fZqsvHIxUnsAva1wlUgDJWH/uQ==
-X-Google-Smtp-Source: AGHT+IHRFmD/liqQCFowP60BnbhJcbHp9kJ8YgR4SgjXdQGLlTpBvnjjzkHPZ5SPAoYd8A4EhRMlDA==
-X-Received: by 2002:a5d:5d12:0:b0:42b:2e39:6d45 with SMTP id
- ffacd0b85a97d-42cc1cbd047mr11715155f8f.15.1763986488883; 
- Mon, 24 Nov 2025 04:14:48 -0800 (PST)
+ AJvYcCVV7oAO9peeVSPOWgDP7ACzqw7Mt6htTKdHJbCibtiGTOqzaC9VuFFbAZrTO9Muk5OA/Hn3rsNhww==@nongnu.org
+X-Gm-Message-State: AOJu0Yxvm6FLHThRs2JptsXvQv1OWjAACSE1qgIKoK0GvQXgk4uDan2L
+ Goz+1K9WFqeqnX9yezO5+Ar6cWK4u+bAx0aYXos4SgjrFICbuNB69gRVGwMOYwRuF40=
+X-Gm-Gg: ASbGnctbCjo/M7peyCoP8dYWjaz49hSXDAIRDsSGld8ova6FX1bZ6qfWAPoMqOduBCT
+ vVF9DPHB58CHX8HLeIJUw8ynTcnopEeSjLqWZ4Xtb2LDvy6wQT/TrMTLCFLdMqDVv+UCNM/fnlQ
+ T95W5CalbafFWXV8LWlJWIsAE1JVAZxpFCob0PG5ln5U69cucY3Afg9Ae3PdH2b/Ct8XoGlEd1n
+ e9fXIOxegEAXvcXczno8UtrkOWDDvX0JaxUm+zZLnCACEHbgwSKXZ2W3nFAWt/tQx77VBjIymaF
+ 0EgIEUukG6EQJptLcX7VwGSYP4dW2kVpAqztIOLwDIIjsBuhNynCK16VG0ZbkoCJ2LNkPh1h5KV
+ +V/rpCUFBPCuw/lqwVQ5alfVbC77hGxHgvn1NJ5XhGnInKPnpAcUFQsPsNfapF7/ddflkqtCjNb
+ 01dbEiBs2fnaP/FlHDyy74/uKAYORPlklhXCGx8w06p6xKlmMA72pnRQ==
+X-Google-Smtp-Source: AGHT+IF0xZUJpWScuToPTVMnXkp0BeFuganRQnYpKZaLr3KG2FLf02qV+StKz4/owrVpnt9lr4kMCw==
+X-Received: by 2002:a05:600c:1d1b:b0:477:9671:3a42 with SMTP id
+ 5b1f17b1804b1-477c1133e4bmr119196285e9.35.1763987045330; 
+ Mon, 24 Nov 2025 04:24:05 -0800 (PST)
 Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42cc231dc6esm19814249f8f.7.2025.11.24.04.14.48
+ ffacd0b85a97d-42cb7fb8a29sm28606915f8f.30.2025.11.24.04.24.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Nov 2025 04:14:48 -0800 (PST)
-Message-ID: <96b3e13b-3145-4acc-aee4-5d953c1b5107@linaro.org>
-Date: Mon, 24 Nov 2025 13:14:47 +0100
+ Mon, 24 Nov 2025 04:24:04 -0800 (PST)
+Message-ID: <1649f7fa-281d-4876-9172-3cccddb77b39@linaro.org>
+Date: Mon, 24 Nov 2025 13:24:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/3] Rename LOAD_IMAGE_MAX_GUNZIP_BYTES to
- LOAD_IMAGE_MAX_DECOMPRESSED_BYTES
+Subject: Re: [PATCH v3 2/3] Use g_autofree in unpack_efi_zboot_image()
 Content-Language: en-US
 To: Daan De Meyer <daan.j.demeyer@gmail.com>, qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 References: <20251011081553.4065883-1-daan.j.demeyer@gmail.com>
- <20251011081553.4065883-2-daan.j.demeyer@gmail.com>
+ <20251011081553.4065883-3-daan.j.demeyer@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251011081553.4065883-2-daan.j.demeyer@gmail.com>
+In-Reply-To: <20251011081553.4065883-3-daan.j.demeyer@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,28 +106,11 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 11/10/25 10:15, Daan De Meyer wrote:
-> Preparation for adding support for zstd compressed efi zboot kernel
-> images.
-> 
 > Signed-off-by: Daan De Meyer <daan.j.demeyer@gmail.com>
 > ---
->   hw/arm/boot.c       | 2 +-
->   hw/core/loader.c    | 8 ++++----
->   hw/nvram/fw_cfg.c   | 2 +-
->   include/hw/loader.h | 2 +-
->   4 files changed, 7 insertions(+), 7 deletions(-)
+>   hw/core/loader.c | 5 ++---
+>   1 file changed, 2 insertions(+), 3 deletions(-)
 
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-> diff --git a/include/hw/loader.h b/include/hw/loader.h
-> index c96b5e141c..24b91ba02b 100644
-> --- a/include/hw/loader.h
-> +++ b/include/hw/loader.h
-> @@ -80,7 +80,7 @@ ssize_t load_image_mr(const char *filename, MemoryRegion *mr);
->    * load_image_gzipped_buffer() will read. It prevents
->    * g_malloc() in those functions from allocating a huge amount of memory.
->    */
-> -#define LOAD_IMAGE_MAX_GUNZIP_BYTES (256 << 20)
-> +#define LOAD_IMAGE_MAX_DECOMPRESSED_BYTES (256 << 20)
-
-Maybe also rename UBOOT_MAX_GUNZIP_BYTES for coherency.
 

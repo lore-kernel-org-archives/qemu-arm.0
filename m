@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ECFCCFD37F
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Nov 2025 10:12:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F9C8D0E6EC
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Nov 2025 14:27:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vNpzj-0006MB-7t; Tue, 25 Nov 2025 05:09:59 -0500
+	id 1vNu0G-0003n6-W6; Tue, 25 Nov 2025 09:26:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vNpzd-0006Ix-G0
- for qemu-arm@nongnu.org; Tue, 25 Nov 2025 05:09:54 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vNu0F-0003jk-UM
+ for qemu-arm@nongnu.org; Tue, 25 Nov 2025 09:26:47 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vNpzc-0002T2-3U
- for qemu-arm@nongnu.org; Tue, 25 Nov 2025 05:09:53 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vNu0D-0003Np-HM
+ for qemu-arm@nongnu.org; Tue, 25 Nov 2025 09:26:47 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764065391;
+ s=mimecast20190719; t=1764080804;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6LvGAFdqPszxDnFKNkhSJIYfndypaqawAeYDvehONhg=;
- b=aiXXm5mEm6FsIInEBFd6QK6FKxUkYYCSJscj9Evw3/hwY6Rn8wp9L5A4CGAfx6iqhNaqsl
- LQLplPtzzcO6zSUab2qSohQzPhR+PemiWmG9FT0kSmnH3lFKHDxNuVHrCD2vWUK+P67K5a
- M6QsX3A+Zt6qFj2zZeotaEMxsQUrw4w=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=PqlH0f1x/cKcYceC6NAoDFuSjaLJIjQacXn2fB++HBs=;
+ b=GLkqbX4CPcd8IvlVhAflcnNEw9zSLhU1rP7JVt7Ja6w8zt3I1TVUSBwB6k/QLOSck7wX1F
+ ysEnr5MEX6hmd1jrWB/DAJwF1TfjXje9k0fPwCInR6nfsirFhkDYrlIjF6XplCuBdNC6oa
+ yki43Gk6M0UY/W+nZVvpksuaDV2WvKI=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-388-WTnancYdPDqotLkEEZ5dPw-1; Tue,
- 25 Nov 2025 05:09:48 -0500
-X-MC-Unique: WTnancYdPDqotLkEEZ5dPw-1
-X-Mimecast-MFC-AGG-ID: WTnancYdPDqotLkEEZ5dPw_1764065387
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-459-hT-Dt9CaNWCoAzmVucahAA-1; Tue,
+ 25 Nov 2025 09:26:40 -0500
+X-MC-Unique: hT-Dt9CaNWCoAzmVucahAA-1
+X-Mimecast-MFC-AGG-ID: hT-Dt9CaNWCoAzmVucahAA_1764080799
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D91A61956096; Tue, 25 Nov 2025 10:09:46 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.45.224.42])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9924D18004A3; Tue, 25 Nov 2025 10:09:42 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
- maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com,
- gshan@redhat.com, ddutile@redhat.com, peterx@redhat.com, philmd@linaro.org,
- pbonzini@redhat.com
-Subject: [PATCH v3 08/11] target/arm/cpu: Expose x-mig-hidden-regs and
- x-mig-safe-missing-regs properties
-Date: Tue, 25 Nov 2025 11:07:57 +0100
-Message-ID: <20251125100859.506228-9-eric.auger@redhat.com>
-In-Reply-To: <20251125100859.506228-1-eric.auger@redhat.com>
-References: <20251125100859.506228-1-eric.auger@redhat.com>
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 75383180047F; Tue, 25 Nov 2025 14:26:38 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.44.32.24])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 370B7195608E; Tue, 25 Nov 2025 14:26:33 +0000 (UTC)
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH] aspeed/{xdma, rtc,
+ sdhci}: Fix endianness to DEVICE_LITTLE_ENDIAN
+Date: Tue, 25 Nov 2025 15:26:31 +0100
+Message-ID: <20251125142631.676689-1-clg@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.075,
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.152,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,55 +83,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+From:  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Allows to set both array properties along with arm cpus. Their "x-" prefix
-reminds that those shall be used carefully for distro specific use cases
-to garantee cross kernel migration.
+When the XDMA, RTC and SDHCI device models of the Aspeed SoCs were
+first introduced, their MMIO regions inherited of a DEVICE_NATIVE_ENDIAN
+endianness. It should be DEVICE_LITTLE_ENDIAN. Fix that.
 
-This will allow to define such compat machine props like:
-
-    static GlobalProperty arm_virt_kernel_compat_10_1[] = {
-        /* KVM_REG_ARM_VENDOR_HYP_BMAP_2 */
-        { TYPE_ARM_CPU, "x-mig-hidden-regs", "0x6030000000160003" },
-        { TYPE_ARM_CPU, "x-mig-safe-missing-regs",
-          /* TCR_EL1, PIRE0_EL1, PIR_EL1 */
-          "0x603000000013c103, 0x603000000013c512, 0x603000000013c513" },
-    }
-
-The first one means KVM_REG_ARM_VENDOR_HYP_BMAP_2 shall always
-been hidden for machine types older than 10.1. The second one means
-that along with 10.1 machine type we may receive in the incoming
-migration stream, 3 registers that are unknown on destination.
-
-Obvioulsy, using the reg index as defined in
-linux/Documentation/virt/kvm/api.rst is not user friendly. However
-those options, prefixed with "x-" are supposed to be used
-rarely by people who know the details.
-
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- target/arm/cpu.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ hw/misc/aspeed_xdma.c | 2 +-
+ hw/rtc/aspeed_rtc.c   | 2 +-
+ hw/sd/aspeed_sdhci.c  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 066746d76f..c41774cb4c 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2248,6 +2248,11 @@ static const Property arm_cpu_properties[] = {
-     DEFINE_PROP_BOOL("backcompat-cntfrq", ARMCPU, backcompat_cntfrq, false),
-     DEFINE_PROP_BOOL("backcompat-pauth-default-use-qarma5", ARMCPU,
-                       backcompat_pauth_default_use_qarma5, false),
-+    DEFINE_PROP_ARRAY("x-mig-hidden-regs", ARMCPU,
-+                      nr_hidden_regs, hidden_regs, qdev_prop_uint64, uint64_t),
-+    DEFINE_PROP_ARRAY("x-mig-safe-missing-regs", ARMCPU,
-+                      nr_mig_safe_missing_regs, mig_safe_missing_regs,
-+                      qdev_prop_uint64, uint64_t),
+diff --git a/hw/misc/aspeed_xdma.c b/hw/misc/aspeed_xdma.c
+index 31662ea0f5cc..d9afb0cae1f7 100644
+--- a/hw/misc/aspeed_xdma.c
++++ b/hw/misc/aspeed_xdma.c
+@@ -113,7 +113,7 @@ static void aspeed_xdma_write(void *opaque, hwaddr addr, uint64_t val,
+ static const MemoryRegionOps aspeed_xdma_ops = {
+     .read = aspeed_xdma_read,
+     .write = aspeed_xdma_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid.min_access_size = 1,
+     .valid.max_access_size = 4,
+ };
+diff --git a/hw/rtc/aspeed_rtc.c b/hw/rtc/aspeed_rtc.c
+index c4feea23a0b3..6793e253f472 100644
+--- a/hw/rtc/aspeed_rtc.c
++++ b/hw/rtc/aspeed_rtc.c
+@@ -131,7 +131,7 @@ static void aspeed_rtc_reset(DeviceState *d)
+ static const MemoryRegionOps aspeed_rtc_ops = {
+     .read = aspeed_rtc_read,
+     .write = aspeed_rtc_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
  };
  
- static const gchar *arm_gdb_arch_name(CPUState *cs)
+ static const VMStateDescription vmstate_aspeed_rtc = {
+diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+index 7217e20c2a98..339a8d12df26 100644
+--- a/hw/sd/aspeed_sdhci.c
++++ b/hw/sd/aspeed_sdhci.c
+@@ -124,7 +124,7 @@ static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
+ static const MemoryRegionOps aspeed_sdhci_ops = {
+     .read = aspeed_sdhci_read,
+     .write = aspeed_sdhci_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+     .valid.min_access_size = 1,
+     .valid.max_access_size = 4,
+ };
 -- 
-2.52.0
+2.51.1
 
 

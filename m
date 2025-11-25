@@ -4,82 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3F88D0EE0D
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Nov 2025 16:53:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 278CBD0EE0D
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Nov 2025 17:07:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vNwGy-0000AE-74; Tue, 25 Nov 2025 11:52:12 -0500
+	id 1vNwUZ-0005Ca-AF; Tue, 25 Nov 2025 12:06:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vNwEJ-0007m9-Fz
- for qemu-arm@nongnu.org; Tue, 25 Nov 2025 11:49:32 -0500
-Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vNwEH-0001dd-Uu
- for qemu-arm@nongnu.org; Tue, 25 Nov 2025 11:49:27 -0500
-Received: by mail-yw1-x1133.google.com with SMTP id
- 00721157ae682-78a6c7ac38fso62841547b3.0
- for <qemu-arm@nongnu.org>; Tue, 25 Nov 2025 08:49:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1764089364; x=1764694164; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=/kjj+RKvFaJ6vDXt4saXc8XoJ4xnopLukQ4IyJvevYE=;
- b=wvtuEMIgtqcR3jt9HJoEAvhH+mB7tMcEkmHE75bDqrYjfIIdcKzunMLMFm9CUC3KkI
- L1+GupslrbbMohkViV57SQldMkXFh3HHtKjN0bo5e4wepkACN4Us2WjVIR6dZyMgDbW9
- qPMo/OsGjnuqSyygQDnHUhe8log7u+lCaV228J9X4cdgfsvkVGfTSxiqcf77t75orS2h
- 8qBZ7PAG63adVnZXBFz4YGiGoOoRS8RqjKlOdbv/ZM7Ms3bRjOkUSGS8MLp3U6+UXn7D
- bYJNo/RW1seTDH50a3DPFpImUYQh2a68iT53X8HsLW8MdbDXLwq+Mwna7RmQG6lwfrf6
- 2yIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764089364; x=1764694164;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/kjj+RKvFaJ6vDXt4saXc8XoJ4xnopLukQ4IyJvevYE=;
- b=lYsrFnnqUPTo85t40BXDlztPSWXW4PBxfLo4KfJru1+nXKd7VaOjtjNFpMTvHNKzdK
- QhaTvvbOACIt4KMupMT9Cf453pjtSrFz6vcEtclcpe7ddVsrkdkg5SuE9++aC23SUPqi
- EYt12zrUXyxpnDUvwAlPDcU2yoJ6m5ZWhL1trjZJXwKm1RM5jtmL9l22LDRwMsR8hJP8
- 9vmmnWqDliLBvFHFCosqzQWuHYgi2GSaybWut9Tpejn7mlkeoS1JBncNkiN68LnwkT4T
- xJfROqhoRHPkeheXqU/O18+YVDwDiojbltNoUlaEV4cxYlVHWRjW6dqTkHfS7iuu7I7S
- sWFw==
-X-Gm-Message-State: AOJu0YxtyH54cJRvtTACb0gZUKbU2qSJPIlHoOWeSJXd+Okh7vWJUENF
- vL5LU+Hm8Sh6UdyG0/A8HoJpUTSVrQOihCdPqVroJTCuViG/rKhfbtYfDIPHhRnEUJZ61ljgNrQ
- sQ4BdCn+YEPHJKZlIQUaFtqYDAqHy/CWl6mnUkLf+dw==
-X-Gm-Gg: ASbGncu+MU7aRPcsCNgG4oV7WOOoO4ZMmSLbPP3/hLQdJemHkPg4W22ZUoPTYG1t/0X
- gHZvU0siGJOZzSf6WglyYws7EPGvQR/lDfDvUoyvqbyv30BGpHqqhlPH/kE9i+eaFxEXyKe+RHv
- 7BXzGcbO+AhlWUMQttNVs0aPYLkMCXu6Jyl7SU/ILjaIQJo033/OpwL4jveHyPXMBIqZiFQd6Ri
- +ixmSdFfaUd78+QxGUU/E/kF9iElWHrPDmUCErffdiyTFc2hSa7jqrG7YGswm09o29K
-X-Google-Smtp-Source: AGHT+IGp+SLoUduLe8zReNeXV3tVdoUyB2PFwrNnHS/3dpyAOoK9/eGfLmwQ4uDeY8iTT+wOz/QTKv35togdnxgLqH8=
-X-Received: by 2002:a05:690c:e3ca:b0:784:957a:16a1 with SMTP id
- 00721157ae682-78a8b54efcdmr139898677b3.56.1764089364030; Tue, 25 Nov 2025
- 08:49:24 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vNwTH-0004n6-Hb
+ for qemu-arm@nongnu.org; Tue, 25 Nov 2025 12:04:56 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vNwTD-0004Uh-Kl
+ for qemu-arm@nongnu.org; Tue, 25 Nov 2025 12:04:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1764090289;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7w1aHtTFT/JcF6TqW06vbQKPaLyGII/eXkBIWVoDFr0=;
+ b=G20h5FQmy48EZNvd/cB2hvVZAOHmxzj5ykxTUXseRcr9hp2U5fuSQlZpqGnxxiIdmTV7Zd
+ nGgxe01XflOnfGNAP/nv1LYBetWB8O9CgENLiOXZT2YeDIRAA+Bn0L3pEG37oEAeT0R8uo
+ KiKBxkf2RRdZvCTz6l2z0cn/uXtoHfU=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-573-RhcSYJ2LNmOlWHJQy5zONg-1; Tue,
+ 25 Nov 2025 12:04:47 -0500
+X-MC-Unique: RhcSYJ2LNmOlWHJQy5zONg-1
+X-Mimecast-MFC-AGG-ID: RhcSYJ2LNmOlWHJQy5zONg_1764090282
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2A67B1956066; Tue, 25 Nov 2025 17:04:42 +0000 (UTC)
+Received: from localhost (dhcp-192-239.str.redhat.com [10.33.192.239])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id ED79C195608E; Tue, 25 Nov 2025 17:04:40 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ eric.auger@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ sebott@redhat.com, gshan@redhat.com, ddutile@redhat.com,
+ peterx@redhat.com, philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH v3 03/11] target/arm/cpu: Allow registers to be hidden
+In-Reply-To: <20251125100859.506228-4-eric.auger@redhat.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Avril Crosse O'Flaherty"
+References: <20251125100859.506228-1-eric.auger@redhat.com>
+ <20251125100859.506228-4-eric.auger@redhat.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Tue, 25 Nov 2025 18:04:38 +0100
+Message-ID: <87ms4aoxg9.fsf@redhat.com>
 MIME-Version: 1.0
-References: <20251119134414.2892640-1-cohuck@redhat.com>
- <CAFEAcA8r7_6fbEFtkEL4vi-wqABewcPU3P73RWh08RRQnQ5Baw@mail.gmail.com>
- <87see2ozzu.fsf@redhat.com>
-In-Reply-To: <87see2ozzu.fsf@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Nov 2025 16:49:11 +0000
-X-Gm-Features: AWmQ_bloi0DHLO1PvOwQvfEGf7gFitdSqt3kj3nP6WOqEve4r4S7uQZq6UTnw7M
-Message-ID: <CAFEAcA_zXVk39GzeMeTtpMVPr5xm23H7RPzbvX9Sxhgr=WzN+Q@mail.gmail.com>
-Subject: Re: [PATCH for-11.0] arm: add DCZID_EL0 to idregs array
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.152,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,34 +92,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 25 Nov 2025 at 16:09, Cornelia Huck <cohuck@redhat.com> wrote:
->
-> On Mon, Nov 24 2025, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> > On Wed, 19 Nov 2025 at 13:44, Cornelia Huck <cohuck@redhat.com> wrote:
-> >>
-> >> This requires a bit of care, since we still have to handle the EL
-> >> specific part (DCZID_EL0.DZP). Callers can set/access dcz_blocksize
-> >> via a wrapper working on DCZID_EL.BS.
-> >>
-> >> KVM currently does not support DCZID_EL0 via ONE_REG, and actually
-> >> does not need to work with it, so provide a dummy value for now.
-> >
-> > That seems like an odd (unintended?) omission -- is it worth
-> > adding? (We would need to handle older kernels that don't
-> > expose it anyway, of course.)
->
-> I'm not sure whether there's actually a usecase for KVM exposing this to
-> the VMM - AFAICS, KVM doesn't do anything special for DC ZVA and
-> friends, and doesn't tweak HCR_EL2.TDZ which would change behaviour.
+On Tue, Nov 25 2025, Eric Auger <eric.auger@redhat.com> wrote:
 
-I guess the only one I can think of is to correctly fail
-migration from a source CPU with a DCZID_EL0.BS that doesn't
-match the one on the destination CPU. (We can't lie to the
-guest about the blocksize as part of "tell the guest it has
-a different CPU type from the actual host" unless we want to
-trap and emulate all the DC ZVA etc insns...)
+> More recent kernels sometimes expose new registers in an
+> unconditionnal manner. This situation breaks backward migration
+> as qemu notices there are more registers in the input stream
+> than supported on the destination host. This leads to a
+> "failed to load cpu:cpreg_vmstate_array_len" error.
+>
+> A good example is the introduction of KVM_REG_ARM_VENDOR_HYP_BMAP_2
+> pseudo FW register in v6.16 by commit C0000e58c74e (=E2=80=9CKVM: arm64:
+> Introduce KVM_REG_ARM_VENDOR_HYP_BMAP_2=E2=80=9D). Trying to do backward
+> migration from a host kernel that features the commit to a destination
+> host that doesn't, fail with above error.
+>
+> Currently QEMU is not using that feature so ignoring this latter
+> is not a problem. An easy way to fix the migration issue is to teach
+> qemu we don't care about that register and we can simply ignore it
+> when syncing its state during migration.
+>
+> This patch introduces an array of such hidden registers. Soon it will
+> be settable through an array property.
+>
+> If hidden, the register is moved out of the array of cpreg which is
+> built in kvm_arm_init_cpreg_list(). That way their state won't be
+> synced.
 
-thanks
--- PMM
+I'm wondering whether the patch description should also mention non-KVM
+cases (e.g. the bogus reg that was exposed). It might also make sense to
+merge patch 5 here?
+
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
+Otherwise, LGTM.
+
 

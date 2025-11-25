@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D28FAD0E6F5
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Nov 2025 16:10:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC72CD0EE0A
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Nov 2025 16:43:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vNvcF-0003iw-MW; Tue, 25 Nov 2025 11:10:08 -0500
+	id 1vNw8P-0004gx-E0; Tue, 25 Nov 2025 11:43:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vNvc9-0003gO-Kc
- for qemu-arm@nongnu.org; Tue, 25 Nov 2025 11:10:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vNw7l-0004Hn-9o
+ for qemu-arm@nongnu.org; Tue, 25 Nov 2025 11:42:49 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vNvc3-0003zD-PZ
- for qemu-arm@nongnu.org; Tue, 25 Nov 2025 11:09:58 -0500
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vNw7j-0000wM-Ag
+ for qemu-arm@nongnu.org; Tue, 25 Nov 2025 11:42:41 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764086988;
+ s=mimecast20190719; t=1764088957;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=wTIv6dREnPMvXS5uJbknCLqCPpIYBaF9/FWh3NHuOks=;
- b=Kb6WqMrgH8aWBCiWXtA+Hlam9Qz3ZN73O7DKJfkSeqbs11Axg/jfXzY2TuKJmkqrTNINGB
- EMpRCskEMjUW4dvdJmvihhbwlGaeaHtweibpSGdB9N9IO7OP0qQLBqO+Vre4vqnnEvqjTu
- JKPJ+/ua0OO9HJwAYbIeyQw+JSHLbA8=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=vFX9D6q4sZ1ZfLmYzJPRUOnWCuQ9+4NEuBm2hrgsw+A=;
+ b=MzBVdW/OSsFpMvr//djnc+RmBZYjo35dWatbGevqE6KYPrcA3gU2oPrLRs0O55BWozszv4
+ APbWndvQNgSwLWl6ZINw58lYojpmqfrLBlmfqjqJBqmZtMUEoIFPIHpq6S3NuJgaj4T/Bj
+ wOxCxm+kCSoVaTZ3Pee7xmyF8zhfnn8=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-401-EO9jCkBeOlq1IirmuN3SWw-1; Tue,
- 25 Nov 2025 11:09:46 -0500
-X-MC-Unique: EO9jCkBeOlq1IirmuN3SWw-1
-X-Mimecast-MFC-AGG-ID: EO9jCkBeOlq1IirmuN3SWw_1764086984
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-508-zd-SzBJlME-6j5GXwpIBRw-1; Tue,
+ 25 Nov 2025 11:42:34 -0500
+X-MC-Unique: zd-SzBJlME-6j5GXwpIBRw-1
+X-Mimecast-MFC-AGG-ID: zd-SzBJlME-6j5GXwpIBRw_1764088952
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5C10419560B1; Tue, 25 Nov 2025 16:09:44 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 855631800650; Tue, 25 Nov 2025 16:42:32 +0000 (UTC)
 Received: from localhost (dhcp-192-239.str.redhat.com [10.33.192.239])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5A71F1956056; Tue, 25 Nov 2025 16:09:43 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 545AF3001E83; Tue, 25 Nov 2025 16:42:30 +0000 (UTC)
 From: Cornelia Huck <cohuck@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Eric Auger
- <eric.auger@redhat.com>
-Subject: Re: [PATCH for-11.0] arm: add DCZID_EL0 to idregs array
-In-Reply-To: <CAFEAcA8r7_6fbEFtkEL4vi-wqABewcPU3P73RWh08RRQnQ5Baw@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ eric.auger@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ sebott@redhat.com, gshan@redhat.com, ddutile@redhat.com,
+ peterx@redhat.com, philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH v3 01/11] hw/arm/virt: Rename arm_virtio_compat into
+ arm_virt_compat_defaults
+In-Reply-To: <20251125100859.506228-2-eric.auger@redhat.com>
 Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
  Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
  153243,
  =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
  Avril Crosse O'Flaherty"
-References: <20251119134414.2892640-1-cohuck@redhat.com>
- <CAFEAcA8r7_6fbEFtkEL4vi-wqABewcPU3P73RWh08RRQnQ5Baw@mail.gmail.com>
+References: <20251125100859.506228-1-eric.auger@redhat.com>
+ <20251125100859.506228-2-eric.auger@redhat.com>
 User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Tue, 25 Nov 2025 17:09:41 +0100
-Message-ID: <87see2ozzu.fsf@redhat.com>
+Date: Tue, 25 Nov 2025 17:42:28 +0100
+Message-ID: <87pl96oyh7.fsf@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.152,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.152,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,23 +91,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Nov 24 2025, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Tue, Nov 25 2025, Eric Auger <eric.auger@redhat.com> wrote:
 
-> On Wed, 19 Nov 2025 at 13:44, Cornelia Huck <cohuck@redhat.com> wrote:
->>
->> This requires a bit of care, since we still have to handle the EL
->> specific part (DCZID_EL0.DZP). Callers can set/access dcz_blocksize
->> via a wrapper working on DCZID_EL.BS.
->>
->> KVM currently does not support DCZID_EL0 via ONE_REG, and actually
->> does not need to work with it, so provide a dummy value for now.
+> Renaming arm_virtio_compat into arm_virt_compat_defaults
+> makes more obvious that those compats apply to all machine
+> types by default, if not overriden for specific ones. This also
+> matches the terminology used for pc-q35.
 >
-> That seems like an odd (unintended?) omission -- is it worth
-> adding? (We would need to handle older kernels that don't
-> expose it anyway, of course.)
+> Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  hw/arm/virt.c | 13 +++++++------
+>  1 file changed, 7 insertions(+), 6 deletions(-)
 
-I'm not sure whether there's actually a usecase for KVM exposing this to
-the VMM - AFAICS, KVM doesn't do anything special for DC ZVA and
-friends, and doesn't tweak HCR_EL2.TDZ which would change behaviour.
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
 

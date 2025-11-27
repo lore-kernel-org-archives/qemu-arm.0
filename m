@@ -4,76 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FE1DD11183
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Nov 2025 08:15:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0C89CFD2F6
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Nov 2025 14:04:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vOX9L-0006Sh-Qx; Thu, 27 Nov 2025 03:14:49 -0500
+	id 1vOcbO-0004ki-BP; Thu, 27 Nov 2025 09:04:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vOX9E-0006RB-L4
- for qemu-arm@nongnu.org; Thu, 27 Nov 2025 03:14:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1vOcbK-0004c8-FH; Thu, 27 Nov 2025 09:04:04 -0500
+Received: from mgamail.intel.com ([192.198.163.9])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vOX9D-0006NR-5r
- for qemu-arm@nongnu.org; Thu, 27 Nov 2025 03:14:40 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764231278;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=la5j1am4DhgKAfJUqq7ic9NEmCDb2TkpNGKbThvmjjg=;
- b=f68fqcRI8cYRsnoN0Xk+pCqNtcNZl/K5AGr++xSCmmqo9i7dAV9jT6H+zmeir7lsE4qX/O
- djr1Ex6WpAfQ+7NOF67d+Ctm2AnOAzGKl4eOL7SZU2erFZB/cl/TFpGOcW94lytuDmNmhW
- 1wrMP4uMw3AjSSeKzPWdhB4xj+qywa8=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-683-mP5RHACFP0mFmMe1mVzoMg-1; Thu,
- 27 Nov 2025 03:14:35 -0500
-X-MC-Unique: mP5RHACFP0mFmMe1mVzoMg-1
-X-Mimecast-MFC-AGG-ID: mP5RHACFP0mFmMe1mVzoMg_1764231274
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id AC73C180034D; Thu, 27 Nov 2025 08:14:33 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.7])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2E47418002AC; Thu, 27 Nov 2025 08:14:33 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 805F221E6A27; Thu, 27 Nov 2025 09:14:30 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  mchehab+huawei@kernel.org,
- jonathan.cameron@huawei.com,  mst@redhat.com,  imammedo@redhat.com,
- anisinha@redhat.com,  gengdongjiu1@gmail.com,  peter.maydell@linaro.org,
- pbonzini@redhat.com,  shan.gavin@gmail.com
-Subject: Re: [PATCH 5/5] acpi/ghes: Use error_fatal in
- acpi_ghes_memory_errors()
-In-Reply-To: <20251127004435.2098335-6-gshan@redhat.com> (Gavin Shan's message
- of "Thu, 27 Nov 2025 10:44:35 +1000")
-References: <20251127004435.2098335-1-gshan@redhat.com>
- <20251127004435.2098335-6-gshan@redhat.com>
-Date: Thu, 27 Nov 2025 09:14:30 +0100
-Message-ID: <87o6on7uzd.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1vOcbH-00039u-Sw; Thu, 27 Nov 2025 09:04:01 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1764252240; x=1795788240;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=wbIpXOHrAhUYTz4YKeYSdJQ6eJC9BtOYzZPt+wa1Bpo=;
+ b=hM7eGOu1nGVv+WcBcuQ5dPKzxGszP/o9K2zDjHqJrna2AjlT4XQm9AfH
+ 2/YfOcPnm8VBLWVrmgepslh52D3nuTKm3hTN+StPflEjQHvGmvlwLqQdr
+ dDSL7eyIa8FPfngz3OZOLsN8jilZQcZiKMFW1C7qQaZqx+qdziyAsrIYc
+ RqwcFIJJmprpiGMmdGP251VmpEC4TbM2Wr6gMWFCs6thGE8b2IQgNxOJu
+ prM6/Ij+iZSVyK3myKNnUa8XBptE902ubyprdOSulMdB+GqKhqHbITuC0
+ xTWA6fHWb32Ab3RZRDUDxnE86Zj/1sO6bfgwD2hcCHAjYbeSMacl+NvD+ g==;
+X-CSE-ConnectionGUID: uB61wwTdRSu8SckVRq6c3Q==
+X-CSE-MsgGUID: 8Ds/8cKWRpmo6ZtfLZDMRQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11625"; a="76988049"
+X-IronPort-AV: E=Sophos;i="6.20,231,1758610800"; d="scan'208";a="76988049"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Nov 2025 06:03:56 -0800
+X-CSE-ConnectionGUID: ZiYc/Z/CSz60FVKebjEsIQ==
+X-CSE-MsgGUID: ybI2bXHdSTGszpa08vP/ow==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.20,231,1758610800"; d="scan'208";a="216594607"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.39])
+ by fmviesa002.fm.intel.com with ESMTP; 27 Nov 2025 06:03:48 -0800
+Date: Thu, 27 Nov 2025 22:28:28 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ kvm@vger.kernel.org, Sergio Lopez <slp@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, qemu-riscv@nongnu.org,
+ Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Ani Sinha <anisinha@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?iso-8859-1?Q?Cl=E9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
+ qemu-arm@nongnu.org,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Huacai Chen <chenhuacai@kernel.org>,
+ Jason Wang <jasowang@redhat.com>, Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [PATCH v4 09/27] hw/nvram/fw_cfg: Remove
+ fw_cfg_io_properties::dma_enabled
+Message-ID: <aShgDDow//CQsMhF@intel.com>
+References: <20250508133550.81391-1-philmd@linaro.org>
+ <20250508133550.81391-10-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.224,
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20250508133550.81391-10-philmd@linaro.org>
+Received-SPF: pass client-ip=192.198.163.9; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -45
+X-Spam_score: -4.6
+X-Spam_bar: ----
+X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.224,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,22 +105,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Gavin Shan <gshan@redhat.com> writes:
+On Thu, May 08, 2025 at 03:35:32PM +0200, Philippe Mathieu-Daudé wrote:
+> Date: Thu,  8 May 2025 15:35:32 +0200
+> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Subject: [PATCH v4 09/27] hw/nvram/fw_cfg: Remove
+>  fw_cfg_io_properties::dma_enabled
+> X-Mailer: git-send-email 2.47.1
+> 
+> Now than all calls to fw_cfg_init_io_dma() pass DMA arguments,
 
-> Use error_fatal in acpi_ghes_memory_errors() so that the caller needn't
-> explicitly call exit(). The return value of acpi_ghes_memory_errors()
-> and ghes_record_cper_errors() is changed to 'bool' indicating an error
-> has been raised, to be compatible with what's documented in error.h.
->
-> Suggested-by: Igor Mammedov <imammedo@redhat.com>
-> Suggested-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
-> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+Yes,
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> the 'dma_enabled' of the TYPE_FW_CFG_IO type is not used anymore.
+> Remove it, simplifying fw_cfg_init_io_dma() and fw_cfg_io_realize().
 
-I figure I would've split this for easier review, say 1. return bool,
-2. convert acpi_ghes_memory_errors to Error.  Since you already got
-review, it's probably not worthwhile now.  Next time :)
+but the 'dma_enabled' of the TYPE_FW_CFG_IO type is still used in
+hw/sparc64/sun4u.c:
+
+    dev = qdev_new(TYPE_FW_CFG_IO);
+    qdev_prop_set_bit(dev, "dma_enabled", false);
+
+The creation of TYPE_FW_CFG_IO is similar to fw_cfg_init_io_dma(), but
+it still has little difference so I find sun4uv can't use
+fw_cfg_init_io_dma() directly for now, or it may require more careful
+clarification that it can use fw_cfg_init_io_dma().
+
+So, at least we have to keep "dma_enabled" property in
+fw_cfg_io_properties[].
+
+...
+
+> diff --git a/hw/i386/x86-common.c b/hw/i386/x86-common.c
+> index 27254a0e9f1..ee594364415 100644
+> --- a/hw/i386/x86-common.c
+> +++ b/hw/i386/x86-common.c
+> @@ -991,10 +991,7 @@ void x86_load_linux(X86MachineState *x86ms,
+>      }
+>  
+>      option_rom[nb_option_roms].bootindex = 0;
+> -    option_rom[nb_option_roms].name = "linuxboot.bin";
+> -    if (fw_cfg_dma_enabled(fw_cfg)) {
+> -        option_rom[nb_option_roms].name = "linuxboot_dma.bin";
+> -    }
+> +    option_rom[nb_option_roms].name = "linuxboot_dma.bin";
+>      nb_option_roms++;
+>  }
+
+But now all x86 machines have enabled dma, so it's still possible to
+drop "linuxboot.bin".
+
+For this, I think we could add a DMA check in the x86 common code to
+guarantee DMA is enabled and then we won't need to constantly check
+DMA enable in every corner.
+
+Regards,
+Zhao
 
 

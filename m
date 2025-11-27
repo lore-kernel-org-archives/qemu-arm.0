@@ -4,55 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40648D1118D
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Nov 2025 00:45:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C024D116E1
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Nov 2025 00:45:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vOQ8I-0000Lu-9M; Wed, 26 Nov 2025 19:45:14 -0500
+	id 1vOQ8Q-0000aT-UJ; Wed, 26 Nov 2025 19:45:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vOQ8G-0000HG-7h
- for qemu-arm@nongnu.org; Wed, 26 Nov 2025 19:45:12 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vOQ8P-0000Tq-5t
+ for qemu-arm@nongnu.org; Wed, 26 Nov 2025 19:45:21 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vOQ8D-0006do-C7
- for qemu-arm@nongnu.org; Wed, 26 Nov 2025 19:45:11 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vOQ8N-0006gG-QD
+ for qemu-arm@nongnu.org; Wed, 26 Nov 2025 19:45:20 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764204306;
+ s=mimecast20190719; t=1764204319;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=u/fXoJToLdKEKij/eR5ApefqDGv8GlnzKMPFVuGT6kE=;
- b=Emg3y1eaQYQkGXiwtzhbU9PpgHA276qylDUnQjs4zh6fZzP1LxndZzmAgcE4s807yD9GIK
- /oMKEbjOuoJnd8/+YvE5ebvV5SK6cSA7xOcNzy3ebwj0XbFlPrMdHuDaxN/I5uS35FeWFP
- UZDun+mDRCH26dJ6HX37Ea3Su2ousGg=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=t+tqqQvUFqNTVlh00Ywwj0fhJw5oQDzYQ+hgwc4k11g=;
+ b=Sb2N2o4d82W/vGCS8aAsaigyXIW/AvFpoiZXHwMYL8o8r3+xfoBVL9lixpowVNTSBSbvmB
+ 3XiavCoCqWxEULt6p3KOndhyA8Q8PUDX16ov/UzKd98cMhvVe0BCmNsxn+YeehcbA8Ob7T
+ tmzRIByvVOpL4R9H/hkmUbE+BM6dVrs=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-644-3wZVIi_HMdGscNG-mgXpIg-1; Wed,
- 26 Nov 2025 19:45:02 -0500
-X-MC-Unique: 3wZVIi_HMdGscNG-mgXpIg-1
-X-Mimecast-MFC-AGG-ID: 3wZVIi_HMdGscNG-mgXpIg_1764204301
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-478-DEpx_QFZNwa0ZU7yJMfw7w-1; Wed,
+ 26 Nov 2025 19:45:15 -0500
+X-MC-Unique: DEpx_QFZNwa0ZU7yJMfw7w-1
+X-Mimecast-MFC-AGG-ID: DEpx_QFZNwa0ZU7yJMfw7w_1764204314
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9C2A31954B14; Thu, 27 Nov 2025 00:45:00 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B994C1956068; Thu, 27 Nov 2025 00:45:13 +0000 (UTC)
 Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.67])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 754211800451; Thu, 27 Nov 2025 00:44:53 +0000 (UTC)
+ id D58A31800346; Thu, 27 Nov 2025 00:45:07 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, mchehab+huawei@kernel.org,
  jonathan.cameron@huawei.com, armbru@redhat.com, mst@redhat.com,
  imammedo@redhat.com, anisinha@redhat.com, gengdongjiu1@gmail.com,
  peter.maydell@linaro.org, pbonzini@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH 0/5] acpi/ghes: Error object handling improvement
-Date: Thu, 27 Nov 2025 10:44:30 +1000
-Message-ID: <20251127004435.2098335-1-gshan@redhat.com>
+Subject: [PATCH 2/5] acpi/ghes: Abort in acpi_ghes_memory_errors() if necessary
+Date: Thu, 27 Nov 2025 10:44:32 +1000
+Message-ID: <20251127004435.2098335-3-gshan@redhat.com>
+In-Reply-To: <20251127004435.2098335-1-gshan@redhat.com>
+References: <20251127004435.2098335-1-gshan@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -82,25 +85,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series is curved from that for memory error handling improvement
-[1] based on the received comments, to improve the error object handling
-in various aspects.
+The function hw/acpi/ghes-stub.c::acpi_ghes_memory_errors() shouldn't
+be called by any one. Take g_assert_not_reached() as a clearer indication.
 
-[1] https://lists.nongnu.org/archive/html/qemu-arm/2025-11/msg00534.html
+Suggested-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+---
+ hw/acpi/ghes-stub.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Gavin Shan (5):
-  acpi/ghes: Automate data block cleanup in acpi_ghes_memory_errors()
-  acpi/ghes: Abort in acpi_ghes_memory_errors() if necessary
-  target/arm/kvm: Exit on error from acpi_ghes_memory_errors()
-  acpi/ghes: Bail early on error from get_ghes_source_offsets()
-  acpi/ghes: Use error_fatal in acpi_ghes_memory_errors()
-
- hw/acpi/ghes-stub.c    |  6 +++---
- hw/acpi/ghes.c         | 45 ++++++++++++++++++------------------------
- include/hw/acpi/ghes.h |  6 +++---
- target/arm/kvm.c       | 10 +++-------
- 4 files changed, 28 insertions(+), 39 deletions(-)
-
+diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
+index 40f660c246..b54f1b093c 100644
+--- a/hw/acpi/ghes-stub.c
++++ b/hw/acpi/ghes-stub.c
+@@ -14,7 +14,7 @@
+ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+                             uint64_t physical_address)
+ {
+-    return -1;
++    g_assert_not_reached();
+ }
+ 
+ AcpiGhesState *acpi_ghes_get_state(void)
 -- 
 2.51.1
 

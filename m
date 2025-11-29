@@ -4,85 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DAD3D116E2
-	for <qemu-arm@archiver.kernel.org>; Fri, 28 Nov 2025 16:23:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1514CD116EA
+	for <qemu-arm@archiver.kernel.org>; Sat, 29 Nov 2025 01:22:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vP1Fh-0000z0-Oh; Fri, 28 Nov 2025 11:23:23 -0500
+	id 1vP9fE-0002bw-FX; Fri, 28 Nov 2025 20:22:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <osama.abdelkader@gmail.com>)
- id 1vP1Fc-0000wD-SZ
- for qemu-arm@nongnu.org; Fri, 28 Nov 2025 11:23:19 -0500
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <osama.abdelkader@gmail.com>)
- id 1vP1Fb-0001Sq-FG
- for qemu-arm@nongnu.org; Fri, 28 Nov 2025 11:23:16 -0500
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-42bb288c1bfso1214082f8f.2
- for <qemu-arm@nongnu.org>; Fri, 28 Nov 2025 08:23:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1764346992; x=1764951792; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=Pr5yp29H0V4IUQeiIEA/B9+K+4Dm24CaDsEp9vyABNo=;
- b=MHK+xcXaV7w1fXnp9MkUdg+BfEz2cMWFjR3fLGla+eoYMDD0LURoOacMIrLAbbqaJ0
- iODbQsonCmdHPNxUPP4Wlf7oNsn17nvti0KUR/b2b4S/+lLwf4WylNqlw4y92Yh5BtsA
- 4gEtXXSxU0Jd0+9b4XOW+lrW+D+udlkcDOzhdQL6ZzEklP+JvEVqLAVMBQJJ4qz2y0Fz
- ug1BqLrPspWVT4SMML6LZlydUoSjeq/NS96r884j6l0m1Odc7AMPwA8SO7mbI2jRDH9c
- 66smGvNQbWb4zaM7Ovr+NTmf83wNZpiLjBR5+PU8yqSKH0KB2N39pn05aKtgnvJPBnCe
- qfzg==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vP9fA-0002aj-Or
+ for qemu-arm@nongnu.org; Fri, 28 Nov 2025 20:22:12 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vP9f8-0001cm-VB
+ for qemu-arm@nongnu.org; Fri, 28 Nov 2025 20:22:12 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1764379325;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=aaXld7QRK+hOb9QqSes3j1caeP+4l3n/jwswr44E1L4=;
+ b=Yyv7PzFixw7IgBJXZDyjZRIjYYVKSgF/Wpjk5q+uKtEeu6jQyiFG8eL2C3VaJ6iZyvVsd8
+ VE2wGWLxUnQfVGFU7r9yNHk0YlWW7r5JFxsmh8TvJSXykAs2LCIXPZ8RlP/n++WXwBu2lp
+ tNY/42L2E5Szkg7NjJKAYjbHIWauXrQ=
+Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com
+ [209.85.210.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-532-pkqrxWhQN42RSBsHhoOBtg-1; Fri, 28 Nov 2025 20:22:03 -0500
+X-MC-Unique: pkqrxWhQN42RSBsHhoOBtg-1
+X-Mimecast-MFC-AGG-ID: pkqrxWhQN42RSBsHhoOBtg_1764379323
+Received: by mail-pf1-f200.google.com with SMTP id
+ d2e1a72fcca58-7d481452732so939976b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 28 Nov 2025 17:22:03 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764346992; x=1764951792;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Pr5yp29H0V4IUQeiIEA/B9+K+4Dm24CaDsEp9vyABNo=;
- b=ZL4gV+738Mi6EvyKuAFxNocKykGwMfsgQh6Z6c9u9/s9/REeMJ+tc88tJeukpgQxdr
- zxWIZFVUGBZFprPkBjwujLqc/6Korn60iUm+bcKHm3pmeI9qEQRtJcXtwZb5v9pyu5SS
- XBD2tttcw39537DbvC2Sycnk8oC8W6o/wgOTiEfGgvLz6O3cBz2lP9/4GpBIn/uAREtZ
- mGLXEJka3Ua9vm4Rpt3W3zxrQa6CLboiVdc+AO3ZDRgT4HFDLRKODHk2cbe839hBT5PC
- Q1j9fBQKZhjmcxbeN4eZ37Pq+q1aa8GEn6tiygK7Lsrh96t/D0vjo69SM03eKAd66Y1n
- eOcQ==
-X-Gm-Message-State: AOJu0YxN3YC+U3tBt9NPzwPm36j2VbtZwpyazmdATWXpZtyG7WUQrvxq
- Gv74HC57dg+qBYg9HaofUOhDNmdKRCmkO+XKHq4qb3F0qqATm/l5W8W4
-X-Gm-Gg: ASbGncvV6PO3kc/9xhGRURU0PCmv3hkqGkhU1QVydGr5xbd2i/X9A+mMrVqPZvB949w
- /HBlc+FHC8tdfzm6LrGLrWVaHhBvGKjnlJurJ0uUv1D8IXvgjIujkF/NK8ek6+1gGtvlsi/zYrv
- cCcg6aRuxTMbGlGeN0Kl0fil4If15eAcBWs01nPTQHOuPfURkZDWlATEInkZDDLgxfyNP3x+VNQ
- IXrf/6ymmxuopps7GCe3yL3WUN0zwIQ7rFJXBJ1RB5ZJOy1DuggqPr8GAIrZvzo0+2+uOQo+/cA
- uJiGO+/6WOd7TSwPJZeURVG9EF2MEbjI3OjcNI+JCrRNrj02ZMb3XTgOvDItHiXsM71ValH4POi
- aIHqrJwI0JFOutybzDu87B6m5PVvCUVRdE4mCJoAb3/cKW0MSplUWGh7k20YEsBixV8guu/cRRa
- ZHd3yz95R1eS8UAQ==
-X-Google-Smtp-Source: AGHT+IGcJxj+MvTPHPjIhAjvMTzHqqsd8NMWcrN2hnQyCTuWEq36aOkVmFYeTxFQzNBrYjuGDWqWUQ==
-X-Received: by 2002:a05:6000:401f:b0:42b:2ac7:7942 with SMTP id
- ffacd0b85a97d-42e0f1e3433mr16953347f8f.5.1764346992326; 
- Fri, 28 Nov 2025 08:23:12 -0800 (PST)
-Received: from osama.. ([197.46.139.116]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42e1ca1a303sm10953167f8f.27.2025.11.28.08.23.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Nov 2025 08:23:11 -0800 (PST)
-From: Osama Abdelkader <osama.abdelkader@gmail.com>
-To: peter.maydell@linaro.org,
-	philmd@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Osama Abdelkader <osama.abdelkader@gmail.com>
-Subject: [PATCH] hw/arm/raspi: remove duplicate include
-Date: Fri, 28 Nov 2025 18:23:06 +0200
-Message-ID: <20251128162306.13701-1-osama.abdelkader@gmail.com>
-X-Mailer: git-send-email 2.43.0
+ d=1e100.net; s=20230601; t=1764379323; x=1764984123;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=aaXld7QRK+hOb9QqSes3j1caeP+4l3n/jwswr44E1L4=;
+ b=qu0M11o75NP8rQswpPSPWCjBPiounbzeupMFLafVjYaomPXIOVertYL91/7dwwmuY2
+ 7a0JQoKQtzxXU71UUcI+WLS8pd/3npKUUdL19+vY4p0BgWKTDR6brWUQw83itVgopjxM
+ VXA83cprsg92legFuzts0y1cxUu+yx5He0fZ8l5gpzA5qs36StWPa0mp8/1E4nuCPZ7g
+ F/3JyBg3D3CrvDqNXwaL4oLg3bQxsSj2r0ngSc1Ck1PZEIS3FJ+ENpW8tmgN8upwVqSM
+ hL5gLSqH/q+bJcnCK+9iP6q20KZjhJsTMkF1RnTYoPu1hkGDDv8x1eFvLnNTdfUpzOHi
+ xsww==
+X-Gm-Message-State: AOJu0YzlNS7hTTuVdt5ZXPOnGJ8EricWMk/SMY/wsvXqKOmCM+mtw40d
+ +B730jT6OvTw+jKSlmm2R7tXKuqRIU9l6A9177lzOdL20JTP/iR6HpHoOvd+DAC1LFUKVHS20/f
+ 5z5JiEGIz88s1yuJbVq3uY2BALQbwmcrSpbwWN+hreVnqF90ZxhmBpw==
+X-Gm-Gg: ASbGncugwDqU2Tg09qvHiiG5PCTIbdczQ/TGPm37zXA7f32YXcQ/raPQg9Uz4f0DhrE
+ fYPv2Az+zxkdod4FDC1caYTGXz47Y+Qnqpj3h71pQgdY+0/CjHFy2kYoFrw2EdF529KYk44DYFH
+ odmvATnU96CDYFE86kMTH4R56U7jYufhlTyhWKQXver9wDl7IDYtXOK6BbsO/v8pLEIZJaRPolb
+ blWcjTxttQVqXKBHHrxTSVoRS0kGJ6qRsthFM6DdgQI/6tZ/0KXn5bPi2pOYoB0aij9yd1f3Yph
+ lOs+V7uaZFzOj1uTNbwtxm8LCKfK3uFPV+HruBcQXCHZk6GWpjJOv/9KBA7YykCHGwYS6VeMxto
+ AnV6X0EcCHu3ktuaqLjVBQ6t6m1q1S8xltzszTXOq+2n+VcSiMQ==
+X-Received: by 2002:a05:6a21:33a3:b0:35e:4b35:3669 with SMTP id
+ adf61e73a8af0-3614ed962d0mr32247882637.31.1764379322689; 
+ Fri, 28 Nov 2025 17:22:02 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGD/6y3yAZEsqUQBC1nJ6TunkYnaU4h+HVdAIBKEdrnk3b6L33o36MHqLLUTIw/BYUqgDsOVA==
+X-Received: by 2002:a05:6a21:33a3:b0:35e:4b35:3669 with SMTP id
+ adf61e73a8af0-3614ed962d0mr32247863637.31.1764379322337; 
+ Fri, 28 Nov 2025 17:22:02 -0800 (PST)
+Received: from [192.168.68.51] (n175-34-62-5.mrk21.qld.optusnet.com.au.
+ [175.34.62.5]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-7d54b003177sm794831b3a.14.2025.11.28.17.21.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 28 Nov 2025 17:22:01 -0800 (PST)
+Message-ID: <53c3c2c4-b8e3-4ca1-a0dd-88148520ad82@redhat.com>
+Date: Sat, 29 Nov 2025 11:21:55 +1000
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=osama.abdelkader@gmail.com; helo=mail-wr1-x436.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/5] acpi/ghes: Error object handling improvement
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mchehab+huawei@kernel.org,
+ jonathan.cameron@huawei.com, armbru@redhat.com, mst@redhat.com,
+ anisinha@redhat.com, gengdongjiu1@gmail.com, peter.maydell@linaro.org,
+ pbonzini@redhat.com, shan.gavin@gmail.com
+References: <20251127004435.2098335-1-gshan@redhat.com>
+ <20251128150926.78bebacb@imammedo>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20251128150926.78bebacb@imammedo>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: wD_-RPIiVB1AVcjVYBktS-pm8foiSRdipB2dkwEgzoA_1764379323
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.014,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,26 +116,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-hw/arm/boot.h is included twice
+Hi Igor,
 
-Signed-off-by: Osama Abdelkader <osama.abdelkader@gmail.com>
----
- hw/arm/raspi.c | 1 -
- 1 file changed, 1 deletion(-)
+On 11/29/25 12:09 AM, Igor Mammedov wrote:
+> On Thu, 27 Nov 2025 10:44:30 +1000
+> Gavin Shan <gshan@redhat.com> wrote:
+> 
+>> This series is curved from that for memory error handling improvement
+>                   ^^^ confusing
+> based on above I'm not sure if it depends on [1] and shoul be applied on top
+> or it can be merged on its own
+> 
 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 81d2fa1b67..bc723dd7d6 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -24,7 +24,6 @@
- #include "qemu/error-report.h"
- #include "hw/boards.h"
- #include "hw/loader.h"
--#include "hw/arm/boot.h"
- #include "hw/arm/machines-qom.h"
- #include "qom/object.h"
- 
--- 
-2.43.0
+The current series is a standalone series and expected to be merged by its own.
+
+For (v4) series of memory error improvement [1], Jonathan wants to extend
+the handlers in the guest kernel so that the granularity in CPER record
+will be used to isolate the corresponding memory address range. With this,
+the patches in the (v4) series to send 16x continuous errors become useless.
+However, those patches in (v4) series to improve the Error (object) hanlding
+are still useful. So I pulled those patches for the Error (object) hanlding
+improvement from (v4) series to form this series.
+
+>> [1] based on the received comments, to improve the error object handling
+>> in various aspects.
+>>
+>> [1] https://lists.nongnu.org/archive/html/qemu-arm/2025-11/msg00534.html
+>>
+
+Thanks,
+Gavin
+
+>> Gavin Shan (5):
+>>    acpi/ghes: Automate data block cleanup in acpi_ghes_memory_errors()
+>>    acpi/ghes: Abort in acpi_ghes_memory_errors() if necessary
+>>    target/arm/kvm: Exit on error from acpi_ghes_memory_errors()
+>>    acpi/ghes: Bail early on error from get_ghes_source_offsets()
+>>    acpi/ghes: Use error_fatal in acpi_ghes_memory_errors()
+>>
+>>   hw/acpi/ghes-stub.c    |  6 +++---
+>>   hw/acpi/ghes.c         | 45 ++++++++++++++++++------------------------
+>>   include/hw/acpi/ghes.h |  6 +++---
+>>   target/arm/kvm.c       | 10 +++-------
+>>   4 files changed, 28 insertions(+), 39 deletions(-)
+>>
+> 
 
 

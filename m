@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2316DD111A8
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Dec 2025 10:08:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11B81D116F1
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Dec 2025 10:17:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vQ0om-0003SH-2u; Mon, 01 Dec 2025 05:07:40 -0500
+	id 1vQ0uB-0007ZL-KJ; Mon, 01 Dec 2025 05:13:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vQ0nO-0002Xq-3N
- for qemu-arm@nongnu.org; Mon, 01 Dec 2025 05:06:21 -0500
+ id 1vQ0tJ-0006yM-Uq
+ for qemu-arm@nongnu.org; Mon, 01 Dec 2025 05:12:23 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vQ0nM-00039q-1W
- for qemu-arm@nongnu.org; Mon, 01 Dec 2025 05:06:13 -0500
+ id 1vQ0tH-00041L-Nc
+ for qemu-arm@nongnu.org; Mon, 01 Dec 2025 05:12:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764583566;
+ s=mimecast20190719; t=1764583938;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uW1p99+fEKKcsGF5xx8D4kXfkA4YCt3Lw264D2SyIyc=;
- b=P2TLC6Qt4q1nEDmVhDmfTAkYDZTcoRa73TvVED6Aq6mi5xf8rRTMK0D2UlPZl2JqJDpUSA
- c3V98zSXwcWlzIvr6l6UfaIvIj+2md4f8dwbpBSIn9fXfFKMvNl1MfAPh/K9TW/s10YHTa
- WNgoqFtKsfUq12BLiGyhBEcfKTnItBE=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=NSWjB5xJ+0R/gzP3NMr7iboo6um3B37gHfH7EWh0fok=;
+ b=d0s6UZjpxOqDTGOTJ0gbDwZAE7McIQqxxp07a+5I/dQnarHUqpgSL/f/yxee2D/EWkgB66
+ fBOCR4gBFeB57Ak+2SVKy1SLoKpwu4sfzbqkhlIC+POHMZU7JpV3AC6HpGWNYb3Nml5bw9
+ UYwERtBWsX2YNhct2EYTvQ1kvjyvpUI=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-261-5v1LdhbCNFitkQLgrPS7xQ-1; Mon, 01 Dec 2025 05:06:03 -0500
-X-MC-Unique: 5v1LdhbCNFitkQLgrPS7xQ-1
-X-Mimecast-MFC-AGG-ID: 5v1LdhbCNFitkQLgrPS7xQ_1764583562
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-42e2e5ef669so849080f8f.0
- for <qemu-arm@nongnu.org>; Mon, 01 Dec 2025 02:06:02 -0800 (PST)
+ us-mta-441-4yeuGV_3NEeJQCP4oWycIw-1; Mon, 01 Dec 2025 05:12:17 -0500
+X-MC-Unique: 4yeuGV_3NEeJQCP4oWycIw-1
+X-Mimecast-MFC-AGG-ID: 4yeuGV_3NEeJQCP4oWycIw_1764583936
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-42e2e2389aeso527963f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 01 Dec 2025 02:12:17 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764583562; x=1765188362;
+ d=1e100.net; s=20230601; t=1764583936; x=1765188736;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=uW1p99+fEKKcsGF5xx8D4kXfkA4YCt3Lw264D2SyIyc=;
- b=w/lhzl5wS/CMJosuxvDbYn1QoJhl6fAbUGpEfhC73GkgtTubhAZlBSBUIEPjre/E8Q
- WQJYxhsNXIF5UxoWCbD1GYQVipSmsAT4vD9ep3eYtqwoXtbqYjC1KPL2LeWe1jOA9Zk6
- 3y6ChBxOFoad5Mtnl/jS2iqWrPyssrQ49VAACEXwLAz3dqLHaxM0Sq+ZRpfUpaflAiYV
- XZKTzoTobmpqLZhVAGCc+Oj5YINTBQXsoHIXrF77o89dKKngzA0xnhzKYmjOTX0B5AMC
- aETmbrwFqr9kivWw0zoWk7xbJk8Vbsw0WO3Y3Dm/i8QexKyM6Tk6IKikIS8Klg7heIO+
- daew==
-X-Gm-Message-State: AOJu0YyzUp6b+uVRg1EAWhNbvrWM6xTqswcyYnwhQK6VaMqledccCJhB
- IZP+sMT+RNMY/+IVrHjaMoM9FEMu4hiS4LTViEttTiGdHmFd9yCL/3ElxvhfPqgcFSvUeGqjR34
- 8Jn4Q68Cr8XubLlsBxrgbpzRI7TlgUcreMfz9OYerZ/SnEKzf+8rQLg==
-X-Gm-Gg: ASbGnctloozsSWP9mxoJVx5zk07N/gcYW3N1rV4P4vfvJ8Wl2wuIXpx9enNyfNagshx
- 4wbfHhSjGhEO7mSQVInbx200FHZocyXA7mfCNiRUTIJl0rIrtdCJQXBj8rJ/t7GsAUy/n6bNlPB
- p4AyBaM72MVR+RGFCQaz25dDPPLgCMNpJLHY/JfyGAquBFxolBm8hFoRmBBwhXx6pRbXyuBks8x
- ZOWOTQTmLtpH4LA4GZAQeUBcOqzdGD08q3yxbX5VcIA44UNhrwf2JLv/vMnxmDnyCOfZN83hkov
- GRCuk0sT+mo2pkr21591d0z07yAqGlgCU754nloXvf0TtXJ3PRdFqi5YSXm8o/UH3ifyBw==
-X-Received: by 2002:a5d:5f54:0:b0:425:742e:7823 with SMTP id
- ffacd0b85a97d-42e0f1fbd71mr27026366f8f.12.1764583561900; 
- Mon, 01 Dec 2025 02:06:01 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFhuYmeLXGraGZvXTc50VFEuB2MxTZxQVtw773W22xA0ONbEaj/VVEQOaSMqTTXLGSZ2IxBpA==
-X-Received: by 2002:a5d:5f54:0:b0:425:742e:7823 with SMTP id
- ffacd0b85a97d-42e0f1fbd71mr27026320f8f.12.1764583561483; 
- Mon, 01 Dec 2025 02:06:01 -0800 (PST)
+ bh=NSWjB5xJ+0R/gzP3NMr7iboo6um3B37gHfH7EWh0fok=;
+ b=rFjx9Qv2LvM/1shdZPtWSaK7IbvQSDZP4/hz8K6yERKnbf1dRWNdtYhWHKqVCdeMjw
+ Nl+SHzm6XZzKEz9WhfD4NLFqHiA8ZbkL2nMaRj9YbNyG46hE4pcFKPGRkHkyWbBHYfXp
+ 9RYPwKbZpxHW6N88bS0AspZpF3iBBHkBTeBKNS9mngom8TCtTilvEXNjRG2ooOyf1sMg
+ OPUV2k5znaitNH1FPAyNcdWxK0eUc3XUGlCK8zevDhJcrMjitpSouZMEI1xAL1gAJOF5
+ WJowxFVhGTEfO186nt2ftURx9ScubXNO+8Fuf4XjyJCEfO/1rnejdy96L2QT7UPfh9Uw
+ YmPA==
+X-Gm-Message-State: AOJu0YwAAlks2rW6oJtpxK1jyHhZT9CDzei7ypiZ7Ei0Hr+WdpLoAS9u
+ ZQjb3UYK5chbG5jvg47AJR8JdIZI8lLAf8+vXsdVRQSAWnGl8Q6pNQM6fcW2adsu/uDEcO6rLXW
+ y7N72uOTbyBROhs9GXPqyr8zXyVIVUUJHfW010jzE1AMJxprw/jSX6A==
+X-Gm-Gg: ASbGncvQKSe3ecdsJ0a7g9EhK/vC2eQgOJJXkQj6bH7f8C681/2dtrY3RbwH/Wx9cV/
+ 48RIwubSTVLHCA1o2pWEOEUGoh81B/LNB4KEl7XEtkssSSJf1iGpVZByuhHZUu76OZf/GOO0UtY
+ 72h9rR03dMCOH3M85ebcYKirQLhdosIMVnWlN2DY07pzEAQZYujF4vEPPiUzXATvzv9BY/4h/NB
+ kPmdtovVep9opBGP74yNs7AmEaPH/vUYVLtGnN1aNtMn0jIoJD7HsqRBmjIgYvT6skpDAa5Nu0m
+ Gw2MLmEAFGYaAN5Z5BtNl6HFbY/HM6cBGu1R7+Sb9yc7dwZwCJu1odKeYkzgVyLESIlukw==
+X-Received: by 2002:a5d:5d85:0:b0:42b:3b55:8928 with SMTP id
+ ffacd0b85a97d-42cc1accd19mr40223175f8f.20.1764583936280; 
+ Mon, 01 Dec 2025 02:12:16 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFjAs5/j9Nvi9MOfPHTwzHLNogR0Tnk0U4GQl6b3MkL4A3JGNeza2p5zT2QceWhtq6Ou9oFWw==
+X-Received: by 2002:a5d:5d85:0:b0:42b:3b55:8928 with SMTP id
+ ffacd0b85a97d-42cc1accd19mr40223132f8f.20.1764583935812; 
+ Mon, 01 Dec 2025 02:12:15 -0800 (PST)
 Received: from imammedo ([213.175.46.86]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42e1c5c30c4sm25852149f8f.9.2025.12.01.02.06.00
+ ffacd0b85a97d-42e1c5c3022sm25823448f8f.4.2025.12.01.02.12.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Dec 2025 02:06:00 -0800 (PST)
-Date: Mon, 1 Dec 2025 11:06:00 +0100
+ Mon, 01 Dec 2025 02:12:15 -0800 (PST)
+Date: Mon, 1 Dec 2025 11:12:14 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Gavin Shan <gshan@redhat.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mchehab+huawei@kernel.org,
  jonathan.cameron@huawei.com, armbru@redhat.com, mst@redhat.com,
  anisinha@redhat.com, gengdongjiu1@gmail.com, peter.maydell@linaro.org,
  pbonzini@redhat.com, shan.gavin@gmail.com
-Subject: Re: [PATCH 3/5] target/arm/kvm: Exit on error from
+Subject: Re: [PATCH 5/5] acpi/ghes: Use error_fatal in
  acpi_ghes_memory_errors()
-Message-ID: <20251201110600.370bc0b5@imammedo>
-In-Reply-To: <20251127004435.2098335-4-gshan@redhat.com>
+Message-ID: <20251201111214.1e432e82@imammedo>
+In-Reply-To: <20251127004435.2098335-6-gshan@redhat.com>
 References: <20251127004435.2098335-1-gshan@redhat.com>
- <20251127004435.2098335-4-gshan@redhat.com>
+ <20251127004435.2098335-6-gshan@redhat.com>
 X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: L0URQxowoVx4y3AOOmk5PuVCIa0x6hmJD0APl10KSkA_1764583562
+X-Mimecast-MFC-PROC-ID: gTm2DzmsZqG6enzR5PSCrLhEGnxK2YY4yK-uB2PImdo_1764583936
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
@@ -99,7 +99,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,38 +115,157 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 27 Nov 2025 10:44:33 +1000
+On Thu, 27 Nov 2025 10:44:35 +1000
 Gavin Shan <gshan@redhat.com> wrote:
 
-> A core dump is no sense as there isn't programming bugs related to
-> errors from acpi_ghes_memory_errors().
-> 
-> Exit instead of abort when the function returns errors, and the
-> excessive error message is also dropped.
+> Use error_fatal in acpi_ghes_memory_errors() so that the caller needn't
+> explicitly call exit(). The return value of acpi_ghes_memory_errors()
+> and ghes_record_cper_errors() is changed to 'bool' indicating an error
+> has been raised, to be compatible with what's documented in error.h.
 > 
 > Suggested-by: Igor Mammedov <imammedo@redhat.com>
 > Suggested-by: Markus Armbruster <armbru@redhat.com>
 > Signed-off-by: Gavin Shan <gshan@redhat.com>
+> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
 > ---
->  target/arm/kvm.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
+>  hw/acpi/ghes-stub.c    |  4 ++--
+>  hw/acpi/ghes.c         | 26 ++++++++++----------------
+>  include/hw/acpi/ghes.h |  6 +++---
+>  target/arm/kvm.c       |  9 +++------
+>  4 files changed, 18 insertions(+), 27 deletions(-)
 > 
+> diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
+> index b54f1b093c..5f9313cce9 100644
+> --- a/hw/acpi/ghes-stub.c
+> +++ b/hw/acpi/ghes-stub.c
+> @@ -11,8 +11,8 @@
+>  #include "qemu/osdep.h"
+>  #include "hw/acpi/ghes.h"
+>  
+> -int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+> -                            uint64_t physical_address)
+> +bool acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+> +                             uint64_t physical_address, Error **errp)
+>  {
+>      g_assert_not_reached();
+>  }
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> index c35883dfa9..3033e93d65 100644
+> --- a/hw/acpi/ghes.c
+> +++ b/hw/acpi/ghes.c
+> @@ -515,14 +515,14 @@ static bool get_ghes_source_offsets(uint16_t source_id,
+>  NotifierList acpi_generic_error_notifiers =
+>      NOTIFIER_LIST_INITIALIZER(acpi_generic_error_notifiers);
+>  
+> -void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
+> +bool ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
+>                               uint16_t source_id, Error **errp)
+>  {
+>      uint64_t cper_addr = 0, read_ack_register_addr = 0, read_ack_register;
+>  
+>      if (len > ACPI_GHES_MAX_RAW_DATA_LENGTH) {
+>          error_setg(errp, "GHES CPER record is too big: %zd", len);
+> -        return;
+> +        return false;
+>      }
+>  
+>      if (!ags->use_hest_addr) {
+> @@ -531,7 +531,7 @@ void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
+>      } else if (!get_ghes_source_offsets(source_id,
+>                      le64_to_cpu(ags->hest_addr_le),
+>                      &cper_addr, &read_ack_register_addr, errp)) {
+> -            return;
+> +            return false;
+>      }
+>  
+>      cpu_physical_memory_read(read_ack_register_addr,
+> @@ -542,7 +542,7 @@ void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
+>          error_setg(errp,
+>                     "OSPM does not acknowledge previous error,"
+>                     " so can not record CPER for current error anymore");
+> -        return;
+> +        return false;
+>      }
+>  
+>      read_ack_register = cpu_to_le64(0);
+> @@ -557,16 +557,17 @@ void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
+>      cpu_physical_memory_write(cper_addr, cper, len);
+>  
+>      notifier_list_notify(&acpi_generic_error_notifiers, &source_id);
+> +
+> +    return true;
+>  }
+>  
+> -int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+> -                            uint64_t physical_address)
+> +bool acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+> +                             uint64_t physical_address, Error **errp)
+>  {
+>      /* Memory Error Section Type */
+>      const uint8_t guid[] =
+>            UUID_LE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
+>                    0xED, 0x7C, 0x83, 0xB1);
+> -    Error *errp = NULL;
+>      int data_length;
+>      g_autoptr(GArray) block = g_array_new(false, true /* clear */, 1);
+>  
+> @@ -583,15 +584,8 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+>      /* Build the memory section CPER for above new generic error data entry */
+>      acpi_ghes_build_append_mem_cper(block, physical_address);
+>  
+> -    /* Report the error */
+> -    ghes_record_cper_errors(ags, block->data, block->len, source_id, &errp);
+> -
+> -    if (errp) {
+> -        error_report_err(errp);
+> -        return -1;
+> -    }
+> -
+> -    return 0;
+> +    return ghes_record_cper_errors(ags, block->data, block->len,
+> +                                   source_id, errp);
+>  }
+>  
+>  AcpiGhesState *acpi_ghes_get_state(void)
+> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> index df2ecbf6e4..5b29aae4dd 100644
+> --- a/include/hw/acpi/ghes.h
+> +++ b/include/hw/acpi/ghes.h
+> @@ -98,9 +98,9 @@ void acpi_build_hest(AcpiGhesState *ags, GArray *table_data,
+>                       const char *oem_id, const char *oem_table_id);
+>  void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
+>                            GArray *hardware_errors);
+> -int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+> -                            uint64_t error_physical_addr);
+> -void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
+> +bool acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+> +                            uint64_t error_physical_addr, Error **errp);
+> +bool ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
+>                               uint16_t source_id, Error **errp);
+>  
+>  /**
 > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 0d57081e69..acda0b3fb4 100644
+> index acda0b3fb4..76aa09810f 100644
 > --- a/target/arm/kvm.c
 > +++ b/target/arm/kvm.c
-> @@ -2460,8 +2460,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
->                                               paddr)) {
->                      kvm_inject_arm_sea(c);
->                  } else {
-> -                    error_report("failed to record the error");
-> -                    abort();
-> +                    exit(1);
->                  }
+> @@ -2456,12 +2456,9 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+>               */
+>              if (code == BUS_MCEERR_AR) {
+>                  kvm_cpu_synchronize_state(c);
+> -                if (!acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
+> -                                             paddr)) {
+> -                    kvm_inject_arm_sea(c);
+> -                } else {
+> -                    exit(1);
+> -                }
+> +                acpi_ghes_memory_errors(ags, ACPI_HEST_SRC_ID_SYNC,
+> +                                        paddr, &error_fatal);
+> +                kvm_inject_arm_sea(c);
 >              }
 >              return;
+>          }
 
 

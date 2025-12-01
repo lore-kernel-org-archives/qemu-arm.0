@@ -4,102 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7A03D111A8
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Dec 2025 09:38:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 993E5D116F1
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Dec 2025 09:39:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vQ0MX-0000dO-S4; Mon, 01 Dec 2025 04:38:29 -0500
+	id 1vQ0NH-0001EY-4n; Mon, 01 Dec 2025 04:39:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vQ0M8-0000ac-OW
- for qemu-arm@nongnu.org; Mon, 01 Dec 2025 04:38:04 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vQ0M5-0007et-Gz
- for qemu-arm@nongnu.org; Mon, 01 Dec 2025 04:38:03 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764581880;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DaEty387PH/ejKI8m8D9xKfy25pAxHPUdctNf1oV5uQ=;
- b=MTKgJYobI5/x7uhT+NokCrhSlD5BdGbfjYrCVm8UhfJ9iMaM9VtUd4BCPPStQDp5mAmTPm
- MXWKc28AotrjFEOtRzIQK6wdp/eer/eZgf5of65mqy/3dwrw1+9oWKrWeAksM5bMXHI9dr
- t+wroZhTiSiGLUb3GGgLrYE0WrzYAqE=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-5-1oJBdUoTNAikeu6mLK4RuA-1; Mon, 01 Dec 2025 04:37:57 -0500
-X-MC-Unique: 1oJBdUoTNAikeu6mLK4RuA-1
-X-Mimecast-MFC-AGG-ID: 1oJBdUoTNAikeu6mLK4RuA_1764581876
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-42b487cda00so2226519f8f.3
- for <qemu-arm@nongnu.org>; Mon, 01 Dec 2025 01:37:57 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vQ0NF-0001Cn-3g
+ for qemu-arm@nongnu.org; Mon, 01 Dec 2025 04:39:13 -0500
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vQ0ND-0007ju-8U
+ for qemu-arm@nongnu.org; Mon, 01 Dec 2025 04:39:12 -0500
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-78a6c7ac38fso38740797b3.0
+ for <qemu-arm@nongnu.org>; Mon, 01 Dec 2025 01:39:10 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1764581949; x=1765186749; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=Vk7N776ubxPfKBx1hNktvScJzUjhOlG47pzildGEWB0=;
+ b=HbfiYzena3jkCo9LNPzqOJMUT/yrDM2bfrJ9GDkczoBWx1bGFOTzU6F8z+h9pQyOsC
+ 2YQZhVpJcM2etRkxSLyps9TsUbQk3Su/sov2AI8onAHJKPDl9zmVJVX4D/cJeCd6AX+a
+ 3PZCJrtD1yycOZp0grNOfEP/9fmZPbE4TvUDei1xpJL4mewVSpGQwXanrt9CN7xvRqrt
+ htGAbNoroNPvPOLkbV8dXdg6Yf0+kiHb9RrbEcqekZYS+kPMkgdi4eitZzToEushkV5x
+ ArISA8B/vPF55tpGfQ6rPtzfkxE6sFutdVy9KJPM3v/5hzZOJm7xIFtNXP5xGawMMDXB
+ /c+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764581876; x=1765186676;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=DaEty387PH/ejKI8m8D9xKfy25pAxHPUdctNf1oV5uQ=;
- b=eR5/xtH0fRcuGKa32S+hXs+LXhsQZ/6n7MryEYovL1yUwe50avvwTrBWWUTMFDadJr
- Ndui2zJTtBUczH26PJQByaOsX8MNaTA+N/KT2e4WSCTQs5v/nhL4iKgJ+BopuWIqK5cj
- jrzDPowQv4CjgGRGAQ6NOMTGW4Te5G9Ya+jEwl30Hpt61mnCiUXdr9nXXT1vvKeBAqp/
- ykl9S3D2C6B8Qc41ZLLrj3+il1nVeEqSH/Gc6/9pdp7EPDAh5Mzpw/ZOMPM8oxJPBErE
- 1dQYkfpJpDhS4PkuZNTglV/B0VkQ12eKG0udkDRjTU2h2Sdhp7PxQXfBJhuTqYiBk/Ed
- zDgw==
-X-Gm-Message-State: AOJu0YyOpRFy7I1fpaz951VdJ6nYLuuH50fjhOgxV222zCqTrH4Et7IM
- 0coDs2gaRnsEIzvcJ1oGufv4OKTmRkk+uuZq62O0efZaTXw8Ntup5BHEbTUrDMByLfMXiqkFy5F
- 2qZwTQqM5aT24sOB/icb6rk4D/rqkr4xvbkoiYA0oQ/01B4nffWZBzw==
-X-Gm-Gg: ASbGncuZ+BONbXrK5moUuhXhHolpt/z2wZe1315dxjkVad+LRU5Nbb9tAkk12RAnlwx
- pkTiUlMlAulS2zE7tCdedOq/+2ND/h3w7ihipAB7FuWs9VHRByOFuN22Uxij3GhoR2ogklbFwF9
- mULoSZZTWWoouX6TUsTIT2zNeT8xilIdgXQqUf0384IFYuTBt9jm3px43x01l9LN92VpGPGVJfR
- Ie3Q6F+pOe2/0VHL/bzq9Bov8YF53HPBGrP+57B4BX4TUvaj4391Uw/eVMfoYPr5OoGW9HLhgtG
- Dpdy/LwBBAGxkeD8lF5EoViZ/Auw6/AvmeKf2kcvfdKu12SxGSuPGt4l8O26Wg4h+X5Jkg==
-X-Received: by 2002:a05:600c:1c13:b0:471:786:94d3 with SMTP id
- 5b1f17b1804b1-477c01b201fmr359198175e9.22.1764581876233; 
- Mon, 01 Dec 2025 01:37:56 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH2dsjbP7qIEs0Mvap0gO4378zyZOjamu2Mt9MeM8OtAAirolTU8yo+0XKPhbmeONNYnOjZpA==
-X-Received: by 2002:a05:600c:1c13:b0:471:786:94d3 with SMTP id
- 5b1f17b1804b1-477c01b201fmr359197905e9.22.1764581875871; 
- Mon, 01 Dec 2025 01:37:55 -0800 (PST)
-Received: from imammedo ([213.175.46.86]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4791163e3cbsm234661745e9.10.2025.12.01.01.37.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 01 Dec 2025 01:37:55 -0800 (PST)
-Date: Mon, 1 Dec 2025 10:37:54 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mchehab+huawei@kernel.org,
- jonathan.cameron@huawei.com, armbru@redhat.com, mst@redhat.com,
- anisinha@redhat.com, gengdongjiu1@gmail.com, peter.maydell@linaro.org,
- pbonzini@redhat.com, shan.gavin@gmail.com
-Subject: Re: [PATCH 2/5] acpi/ghes: Abort in acpi_ghes_memory_errors() if
- necessary
-Message-ID: <20251201103754.770941aa@imammedo>
-In-Reply-To: <20251127004435.2098335-3-gshan@redhat.com>
-References: <20251127004435.2098335-1-gshan@redhat.com>
- <20251127004435.2098335-3-gshan@redhat.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
+ d=1e100.net; s=20230601; t=1764581949; x=1765186749;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Vk7N776ubxPfKBx1hNktvScJzUjhOlG47pzildGEWB0=;
+ b=NicDMK3yDdmpZhjbG1GCNxL1460/1bC9Xtq30wUM5KB2IKnluaTYkZFt7GgOuBPTwN
+ Tn1NBYBGOtHxyTOYW/0Cdot5mnMTeSkvLLounPEOaITPy/t1B2SmIGofxriQtVIqFwHd
+ mby1dbLUloDbe9ao2puazOvhMJ4nTfSi6ivnYFyrxsguWqmKVtw8+VEkxt6MNsQ1xIs3
+ xyXus2HlB1PzBLXxefjtg9YOn/2XmQf8mNJskGuvohGbLpyk4U/TQgtYU47JqU7OwEKl
+ 8VVDXFwMT4iPb/xrCyAXAVzUwyJNso+h/JR9uG8dAkGNHX8dLAfW0PIBHkQyle5nFrU9
+ 4xww==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWGB1HuihjWlDq4QFcjzU0ADWeNfUPyYyTCywuuHLazYuRBh7W0nVQqb9rpqsqJ7cK13QBtKsURBg==@nongnu.org
+X-Gm-Message-State: AOJu0YykiaKXBf8ALQkvPhTQefasBoe5HoPBmBc2DYC54smmAoT9QWV5
+ KeO1FcDbOpTcTukG/07OnKsEeZXCwh3wCcr0vB2+34HS86OwrvJLKMViFaxvI/ewxq/YeXkxX9b
+ zW+b+VMp1k7O9l636BHLqZb+LgLIQWfI3RK60NcLsKw==
+X-Gm-Gg: ASbGncuHV6g2KZeH6t5eeyXw1CcY4yNiIZfZBJDIwW0CZQelbvXyzoWQve6kzOaYYQz
+ Tvq5AXSX3FpV3Uq9PVW5Snk3KylTLTe/s2l3enYtUa0Z0T2CPq1vRgjOSIBrJyJn8fGeTLStDPn
+ SN7+y+U9YirTLZ7ESBZP6T73ZmcNXuT8UCC9ei6mC5bgbPqBhjDCF0vUABffS57IDlaKcKYJLIb
+ osjsCDFFWotMXkY0aiLoPYc/5SPh8DTyuTPp2YExpkLOQunEZ1+LRuHooBfbW/Iu3mH0gMtwpOz
+ OleJadg=
+X-Google-Smtp-Source: AGHT+IFTOPmMb+n9M0I4LBtTZUDPrbItivAwxig4hjFGYP2rrInJ2IlvhEheRt0C/VxneCVDZ7EFM5BakwCZ27jERv0=
+X-Received: by 2002:a05:690c:6e07:b0:77f:9dae:34f0 with SMTP id
+ 00721157ae682-78a8b549d41mr310847237b3.46.1764581949025; Mon, 01 Dec 2025
+ 01:39:09 -0800 (PST)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 6qzNPiDmCKjM2trbuu8dzGBdyzNPW0uYkVAWOExh6qQ_1764581876
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <d2265ebb-84bc-41b7-a2d7-05dc9a5a2055@accesssoftek.com>
+ <CAFEAcA8j6sAmm-uT9LdDt1VP2fWmui9ETXn90bDWbCh4aEMG4A@mail.gmail.com>
+ <1706a491-f76a-45e1-9653-f3ba730690ec@linaro.org>
+In-Reply-To: <1706a491-f76a-45e1-9653-f3ba730690ec@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 1 Dec 2025 09:38:57 +0000
+X-Gm-Features: AWmQ_bksnXU9o-MEVg0d_MH7N1_aRKGWMiymZxr0eUZrJuH8C9RxZ4Au_ZuCDyU
+Message-ID: <CAFEAcA-z1p7iPmRUm0O3CboqGYpO--H98SaMu=xEK17dCgp=4A@mail.gmail.com>
+Subject: Re: [PATCH v2] target/arm: Fix assert on BRA.
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: Harald van Dijk <hdijk@accesssoftek.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,33 +99,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 27 Nov 2025 10:44:32 +1000
-Gavin Shan <gshan@redhat.com> wrote:
+On Sun, 30 Nov 2025 at 20:27, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 11/28/25 01:31, Peter Maydell wrote:
+> > On Fri, 28 Nov 2025 at 04:38, Harald van Dijk <hdijk@accesssoftek.com> wrote:
+> >>
+> >> trans_BRA does
+> >>
+> >>      gen_a64_set_pc(s, dst);
+> >>      set_btype_for_br(s, a->rn);
+> >>
+> >> gen_a64_set_pc does
+> >>
+> >>      s->pc_save = -1;
+> >>
+> >> set_btype_for_br (if aa64_bti is enabled and the register is not x16 or
+> >> x17) does
+> >>
+> >>      gen_pc_plus_diff(s, pc, 0);
+> >>
+> >> gen_pc_plus_diff does
+> >>
+> >>      assert(s->pc_save != -1);
+> >>
+> >> Hence, this assert is getting hit. We need to call set_btype_for_br
+> >> before gen_a64_set_pc, and there is nothing in set_btype_for_br that
+> >> depends on gen_a64_set_pc having already been called, so this commit
+> >> simply swaps the calls.
+> >>
+> >> Signed-off-by: Harald van Dijk <hdijk@accesssoftek.com>
+> >> ---
+> >>   target/arm/tcg/translate-a64.c | 2 +-
+> >>   1 file changed, 1 insertion(+), 1 deletion(-)
+> >>
+> >> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+> >> index 08b21d7dbf..cde22a5cca 100644
+> >> --- a/target/arm/tcg/translate-a64.c
+> >> +++ b/target/arm/tcg/translate-a64.c
+> >> @@ -1916,8 +1916,8 @@ static bool trans_BRA(DisasContext *s, arg_bra *a)
+> >>           return false;
+> >>       }
+> >>       dst = auth_branch_target(s, cpu_reg(s,a->rn), cpu_reg_sp(s, a->rm), !a->m);
+> >> -    gen_a64_set_pc(s, dst);
+> >>       set_btype_for_br(s, a->rn);
+> >> +    gen_a64_set_pc(s, dst);
+> >>       s->base.is_jmp = DISAS_JUMP;
+> >>       return true;
+> >>   }
+> >
+> > The commit message on commit 64678fc45d8f6 says
+> >      The set_btype_for_br call must be moved after the gen_a64_set_pc
+> >      call to ensure the current pc can still be computed.
+> >
+> > but I think that is incorrect and it meant to say "moved before",
+> > because the actual code changes it makes to trans_BR() and
+> > trans_BRAZ() are
+> >
+> > @@ -1521,8 +1528,8 @@ static void set_btype_for_blr(DisasContext *s)
+> >
+> >   static bool trans_BR(DisasContext *s, arg_r *a)
+> >   {
+> > -    gen_a64_set_pc(s, cpu_reg(s, a->rn));
+> >       set_btype_for_br(s, a->rn);
+> > +    gen_a64_set_pc(s, cpu_reg(s, a->rn));
+> >       s->base.is_jmp = DISAS_JUMP;
+> >       return true;
+> >   }
+> > @@ -1581,8 +1588,8 @@ static bool trans_BRAZ(DisasContext *s, arg_braz *a)
+> >       }
+> >
+> >       dst = auth_branch_target(s, cpu_reg(s, a->rn), tcg_constant_i64(0), !a->m);
+> > -    gen_a64_set_pc(s, dst);
+> >       set_btype_for_br(s, a->rn);
+> > +    gen_a64_set_pc(s, dst);
+> >       s->base.is_jmp = DISAS_JUMP;
+> >       return true;
+> >   }
+> >
+> > which move the set_btype_for_br() call to before gen_a64_set_pc().
+> >
+> > So I think that we just forgot to also include trans_BRA() in
+> > that change, and your patch here fixes that.
+> >
+> > Richard,  does that sound right?
+>
+> Yep.
+>
+> >
+> > If so, this should be:
+> > Cc: qemu-stable@nongnu.org
+> > Fixes: 64678fc45d8f6 ("target/arm: Fix BTI versus CF_PCREL")
+> >
+> > and you can have
+> > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-> The function hw/acpi/ghes-stub.c::acpi_ghes_memory_errors() shouldn't
-> be called by any one. Take g_assert_not_reached() as a clearer indication.
-> 
-> Suggested-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Gavin Shan <gshan@redhat.com>
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Applied to target-arm.next, thanks.
 
-> ---
->  hw/acpi/ghes-stub.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
-> index 40f660c246..b54f1b093c 100644
-> --- a/hw/acpi/ghes-stub.c
-> +++ b/hw/acpi/ghes-stub.c
-> @@ -14,7 +14,7 @@
->  int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
->                              uint64_t physical_address)
->  {
-> -    return -1;
-> +    g_assert_not_reached();
->  }
->  
->  AcpiGhesState *acpi_ghes_get_state(void)
-
+-- PMM
 

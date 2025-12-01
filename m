@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62DCBD116F1
-	for <qemu-arm@archiver.kernel.org>; Mon,  1 Dec 2025 14:19:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2187CD116F1
+	for <qemu-arm@archiver.kernel.org>; Mon,  1 Dec 2025 14:19:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vQ4js-0008Bv-4A; Mon, 01 Dec 2025 09:19:01 -0500
+	id 1vQ4kA-0008Ii-VT; Mon, 01 Dec 2025 09:19:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vQ4jn-0008Aw-JO
- for qemu-arm@nongnu.org; Mon, 01 Dec 2025 09:18:50 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vQ4js-0008By-LT
+ for qemu-arm@nongnu.org; Mon, 01 Dec 2025 09:19:01 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vQ4jl-0008I5-4k
- for qemu-arm@nongnu.org; Mon, 01 Dec 2025 09:18:46 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vQ4jr-0008It-DN
+ for qemu-arm@nongnu.org; Mon, 01 Dec 2025 09:18:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764598724;
+ s=mimecast20190719; t=1764598730;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=a9aoFy3Yg4lbh+by5lZ+UhEryQqCrrXjwP0LjVujXcA=;
- b=NhOU6PI7yC8R9woHvtuhPINy1cl4wVtigQjSC3+3RUm3cF8LrV4HBdNfnAuNTDYqDWfAZa
- l0aiQa282aZsRNZ0N9XsF9sdWXVOCNvYrkS3pNd6hVE+7o1M1USW97coJHuMM/lVb/iUzC
- iTq5P3vJ4ZLFyvauH7ig0NJKOC1sAGI=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=hFTrMQc5IxJJ3/jIi048eNx7CAwoEJpAp9GF73Up+MQ=;
+ b=bOQRq6y8bWuTAYu318BXgZe7K6OCHi3bMgsSgsSERrZptFdTvZFj78AAyY1QVY3oHbKm1b
+ Bdr5vzdGoIn+iDohWNQFhRiDvJ44qNb4AH270hbQV/UYfnFOjHhiLbvtGw2yjd8Umjpg7U
+ Kg8sp39DHk2A37grFGmIYPkKIZl2QeY=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-650-sNMmjBkpOvavgPq5dJGPDA-1; Mon,
- 01 Dec 2025 09:18:41 -0500
-X-MC-Unique: sNMmjBkpOvavgPq5dJGPDA-1
-X-Mimecast-MFC-AGG-ID: sNMmjBkpOvavgPq5dJGPDA_1764598719
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-354-8uBxEuYuPNOVu8sTGUCZAg-1; Mon,
+ 01 Dec 2025 09:18:47 -0500
+X-MC-Unique: 8uBxEuYuPNOVu8sTGUCZAg-1
+X-Mimecast-MFC-AGG-ID: 8uBxEuYuPNOVu8sTGUCZAg_1764598726
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9B83119560B0; Mon,  1 Dec 2025 14:18:39 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id F02901955E74; Mon,  1 Dec 2025 14:18:45 +0000 (UTC)
 Received: from gshan-thinkpadx1nanogen2.rmtau.csb (unknown [10.64.136.76])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DAD67195608E; Mon,  1 Dec 2025 14:18:33 +0000 (UTC)
+ id 697561956095; Mon,  1 Dec 2025 14:18:40 +0000 (UTC)
 From: Gavin Shan <gshan@redhat.com>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, mst@redhat.com, jonathan.cameron@huawei.com,
  mchehab+huawei@kernel.org, imammedo@redhat.com, armbru@redhat.com,
  anisinha@redhat.com, gengdongjiu1@gmail.com, peter.maydell@linaro.org,
  pbonzini@redhat.com, shan.gavin@gmail.com
-Subject: [PATCH v2 1/5] acpi/ghes: Automate data block cleanup in
- acpi_ghes_memory_errors()
-Date: Tue,  2 Dec 2025 00:17:59 +1000
-Message-ID: <20251201141803.2386129-2-gshan@redhat.com>
+Subject: [PATCH v2 2/5] acpi/ghes: Abort in acpi_ghes_memory_errors() if
+ necessary
+Date: Tue,  2 Dec 2025 00:18:00 +1000
+Message-ID: <20251201141803.2386129-3-gshan@redhat.com>
 In-Reply-To: <20251201141803.2386129-1-gshan@redhat.com>
 References: <20251201141803.2386129-1-gshan@redhat.com>
 MIME-Version: 1.0
@@ -70,7 +70,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,42 +86,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Use g_auto_ptr() to automate data block cleanup in the function so
-that it won't be a burden to us.
+The function hw/acpi/ghes-stub.c::acpi_ghes_memory_errors() shouldn't
+be called by any one. Take g_assert_not_reached() as a clearer indication.
 
 Suggested-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- hw/acpi/ghes.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+ hw/acpi/ghes-stub.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index 06555905ce..6366c74248 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -565,9 +565,7 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
-                   0xED, 0x7C, 0x83, 0xB1);
-     Error *errp = NULL;
-     int data_length;
--    GArray *block;
--
--    block = g_array_new(false, true /* clear */, 1);
-+    g_autoptr(GArray) block = g_array_new(false, true /* clear */, 1);
+diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
+index 40f660c246..b54f1b093c 100644
+--- a/hw/acpi/ghes-stub.c
++++ b/hw/acpi/ghes-stub.c
+@@ -14,7 +14,7 @@
+ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
+                             uint64_t physical_address)
+ {
+-    return -1;
++    g_assert_not_reached();
+ }
  
-     data_length = ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH;
-     /*
-@@ -585,8 +583,6 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
-     /* Report the error */
-     ghes_record_cper_errors(ags, block->data, block->len, source_id, &errp);
- 
--    g_array_free(block, true);
--
-     if (errp) {
-         error_report_err(errp);
-         return -1;
+ AcpiGhesState *acpi_ghes_get_state(void)
 -- 
 2.51.1
 

@@ -4,113 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDEF9D116F6
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 15:54:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62F06D11702
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 16:04:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vQSh3-0001NG-Vm; Tue, 02 Dec 2025 10:53:34 -0500
+	id 1vQSrX-0004jY-O7; Tue, 02 Dec 2025 11:04:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vQSh1-0001Mz-Pk
- for qemu-arm@nongnu.org; Tue, 02 Dec 2025 10:53:31 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1vQSrO-0004iO-8c; Tue, 02 Dec 2025 11:04:17 -0500
+Received: from mgamail.intel.com ([192.198.163.7])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vQSgz-0003Mb-9n
- for qemu-arm@nongnu.org; Tue, 02 Dec 2025 10:53:31 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764690807;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=lcix7lIJ92VfKuqTXYGLZJUsWBdoju2FEvA3VpgMf6Q=;
- b=ivxUejcH88po40NPI6xC0W9KoHPmMMC7GgtRDgJdDysFBcbpj3tWNj7ww87QAjhL068I07
- BTE0U8p0w4DU8zl7IjqWzS4jxvyC6SVhJ1Orr1TwqAmIEwRqLFuj58WWksGmcVm8K0eAwB
- /ijcxXzvbTmvW7erf2lTqy2tfDk1c0U=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-663-O3ImTuh7OlekTwtw5ADohg-1; Tue, 02 Dec 2025 10:53:26 -0500
-X-MC-Unique: O3ImTuh7OlekTwtw5ADohg-1
-X-Mimecast-MFC-AGG-ID: O3ImTuh7OlekTwtw5ADohg_1764690805
-Received: by mail-qt1-f197.google.com with SMTP id
- d75a77b69052e-4ed7591799eso105984831cf.0
- for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 07:53:25 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764690805; x=1765295605;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=lcix7lIJ92VfKuqTXYGLZJUsWBdoju2FEvA3VpgMf6Q=;
- b=vbxXOoYp+E9gOwLnX2J5y0IIeGEcaVJAzX5qMrTt9m5f2BZ4rKLBxcEB+eq5NvCPdO
- 1yCW0KkkeqSKP3+1zQBb7DmkTMUaq7o7J2GYkuYUJzEsq8yW0Sxv8f2LoZVJKBml0YA4
- jCYSdY8jqLjB8JcFu7ohExWjWIk30C0DXXgduO9V5dM1xm1gfFBlZOf6XjTw6CWMNiKR
- +w9I8Zv7B19HIVhmr1AeCgBK4qp5l2QKbX6HyyQRuE9pOAaf5vna8rN9hKR3tDeeudoU
- 67y1swjG2UibjmY7Ym5WyjkEY6JhUiocj/BCNDbhK/FDmzcESHml66sKE+JBpIVKUXHi
- 0VfA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUJv/K8xLPwnq6UkJ9rlb93GYasK0JdR20V1cvcpmXlYFCVZxN+mRVvrnDOjGFg5Cb3DjgsIayQWg==@nongnu.org
-X-Gm-Message-State: AOJu0Yy8/oYOWvTo+l7xT3IJZozGeyuq1zP1ND+uoNPAxlUK5BcVpi+o
- h/W5B6r7FiJ1wYCsgGnzkxyf7f35CrIAhza+E4JwR/aZgCkZRJxe2nLZCBbXGQC83YRvr0uFrOV
- RyymIRiy5Pmof6KfLdIcw5YBLktMA4oJdaxaVeCje9KmUQPfjz/aVLw==
-X-Gm-Gg: ASbGncvDLbMxCQw7puZQcB8wSxEBIsgU/+uj1u56oEY/CnpACsAo4UQZQOWL5dqNdVH
- 0lgsaMj5gJP7xFGMLUNTmV15yy5/yqPh7peCYyNwtQwJzqzAFHVy86NeSwln3zhZtnq3Yxs+u0f
- Crq/XjzCQ57xZM5HW9+FeI9gaYvcIG8mOJs6pp0RigTTkTJoHLcJbUIp5gHiiV/PkAJVXO5EdQt
- ilHyez+DMN8efj13NzQ3wVzaOsjaWc6w9JmitTV/JgNb0Wq4dNfv9GJ90fG1FsqdvYYWgu+OjeM
- onXGA1pTIEQJMAX8UOviTIm5ytbIfT9lngLkmahB8BwVm0BRyMHpWRD5TGORZ/rj+334/RjeYQO
- lLLSVh5qw20BkX7gG29uD4batpsHOtFBi0JYF1S/KqWbhzt1+QRfCLyTk4g==
-X-Received: by 2002:a05:622a:490:b0:4ec:f2e1:483 with SMTP id
- d75a77b69052e-4ee5885307bmr584965061cf.26.1764690805359; 
- Tue, 02 Dec 2025 07:53:25 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGV98ShQcsEwFEqUCtild6DMyI6kLykA5Xwo4TI838Fu8311/cJAa5pzPnCeIEx1JDb9K6Xeg==
-X-Received: by 2002:a05:622a:490:b0:4ec:f2e1:483 with SMTP id
- d75a77b69052e-4ee5885307bmr584964391cf.26.1764690804723; 
- Tue, 02 Dec 2025 07:53:24 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:fa3:e4b0:95dc:ab11:92db:6f9e?
- ([2a01:e0a:fa3:e4b0:95dc:ab11:92db:6f9e])
- by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-4efd2fbb8d1sm98830531cf.9.2025.12.02.07.53.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Dec 2025 07:53:24 -0800 (PST)
-Message-ID: <274e3061-c4ab-48f6-ba95-ed0eed0e2ce2@redhat.com>
-Date: Tue, 2 Dec 2025 16:53:21 +0100
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1vQSrL-00066J-8q; Tue, 02 Dec 2025 11:04:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1764691451; x=1796227451;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=gl+I3qRUk/2kD6tcKA1cj0SEcivTN17lu7FLN59Ycg4=;
+ b=oJFm/X4Yq0Yyb6HtMxeuFJo6LuFvH9vGsibsO3YQ8RleFmIGjLppPhPD
+ AG1bGIa3a1PIjPx7hp99UchPhhkrRb7WMkbS8fumWIW6iP+x7z8RqAvFC
+ Auxd06n0fPVqbCwSvVvf8xiO8owM/BC+42wYhAIH9uJQulMBi7pt0PwSD
+ 0y9DAIYUwyGn5I2nok0xTsCbwO7qxGmbRbSG4Oedf/lVwwKHNjLheaALP
+ Wa0GDeY0UbRos6Rloi45pnatRNvddPFcQvrwSY7ae/rm7LDkGBCbjB61o
+ XOCORlF2llV9X3sPv5Zocn33OoO5znQsheh9tZdaHVmvxd/UzACSV2ki9 g==;
+X-CSE-ConnectionGUID: varC3Z0bTNuj1G7RYpVjYQ==
+X-CSE-MsgGUID: e17FVQ9eRpy5mp9h9XwicA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11630"; a="92142170"
+X-IronPort-AV: E=Sophos;i="6.20,243,1758610800"; d="scan'208";a="92142170"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Dec 2025 08:04:08 -0800
+X-CSE-ConnectionGUID: bzzD33gAS+6lPd5xdA7mbA==
+X-CSE-MsgGUID: IhCA6L4sQFiUFoTfizwXUQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.20,243,1758610800"; d="scan'208";a="199536863"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
+ by orviesa005.jf.intel.com with ESMTP; 02 Dec 2025 08:03:59 -0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, devel@lists.libvirt.org, kvm@vger.kernel.org,
+ qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Sergio Lopez <slp@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Yi Liu <yi.l.liu@intel.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
+ Amit Shah <amit@kernel.org>, Xiaoyao Li <xiaoyao.li@intel.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?q?Cl=C3=A9ment=20Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Huacai Chen <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
+ Jiri Denemark <jdenemar@redhat.com>, Zhao Liu <zhao1.liu@intel.com>
+Subject: [PATCH v5 00/28] hw/i386/pc: Remove deprecated 2.6 and 2.7 PC machines
+Date: Wed,  3 Dec 2025 00:28:07 +0800
+Message-Id: <20251202162835.3227894-1-zhao1.liu@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v3 12/21] hw/arm/smmu-common: Implement secure state
- handling in ptw
-To: Tao Tang <tangtao1634@phytium.com.cn>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>
-References: <20251012150701.4127034-1-tangtao1634@phytium.com.cn>
- <20251012151200.4129164-1-tangtao1634@phytium.com.cn>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251012151200.4129164-1-tangtao1634@phytium.com.cn>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Y6KSRuL3Mj_W4CSANnf1mb8oVlD5jUOB2khhE_JvO7k_1764690805
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=192.198.163.7; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,198 +101,189 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi,
 
+A brief introduction from Philippe's v4:
 
-On 10/12/25 5:12 PM, Tao Tang wrote:
-> Enhance the page table walker to correctly handle secure and non-secure
-> memory accesses. This change introduces logic to select the appropriate
-> address space and enforce architectural security policies during walks.
->
-> The page table walker now correctly processes Secure Stage 1
-> translations. Key changes include:
->
-> - The get_pte function now uses the security context to fetch table
-> entries from either the Secure or Non-secure address space.
->
-> - The stage 1 walker tracks the security state, respecting the NSCFG
-> and NSTable attributes. It correctly handles the hierarchical security
-> model: if a table descriptor in a secure walk has NSTable=1, all
-> subsequent lookups for that walk are forced into the Non-secure space.
-> This is a one-way transition, as specified by the architecture.
->
-> - A check is added to fault nested translations that produce a Secure
-> IPA when Secure stage 2 is not supported (SMMU_S_IDR1.SEL2 == 0).
->
-> - The final TLB entry is tagged with the correct output address space,
-> ensuring proper memory isolation.
->
-> Stage 2 translations are currently limited to Non-secure lookups. Full
-> support for Secure Stage 2 translation will be added in a future series.
->
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> ---
->  hw/arm/smmu-common.c | 64 +++++++++++++++++++++++++++++++++++++++-----
->  hw/arm/trace-events  |  2 +-
->  2 files changed, 59 insertions(+), 7 deletions(-)
->
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 5fabe30c75..a092bb5a8d 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -399,20 +399,26 @@ void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid)
->   * @base_addr[@index]
->   */
->  static int get_pte(dma_addr_t baseaddr, uint32_t index, uint64_t *pte,
-> -                   SMMUPTWEventInfo *info)
-> +                   SMMUPTWEventInfo *info, SMMUSecSID sec_sid)
->  {
->      int ret;
->      dma_addr_t addr = baseaddr + index * sizeof(*pte);
-> -
-> +    MemTxAttrs attrs = smmu_get_txattrs(sec_sid);
-> +    AddressSpace *as = smmu_get_address_space(sec_sid);
-> +    if (!as) {
-> +        info->type = SMMU_PTW_ERR_WALK_EABT;
-is it WALK_EABT or PERMISSION in that case? I fail to find where it is
-specified in the spec. Add a reference once?
-> +        info->addr = addr;
-> +        return -EINVAL;
-> +    }
->      /* TODO: guarantee 64-bit single-copy atomicity */
-> -    ret = ldq_le_dma(&address_space_memory, addr, pte, MEMTXATTRS_UNSPECIFIED);
-> +    ret = ldq_le_dma(as, addr, pte, attrs);
->  
->      if (ret != MEMTX_OK) {
->          info->type = SMMU_PTW_ERR_WALK_EABT;
->          info->addr = addr;
->          return -EINVAL;
->      }
-> -    trace_smmu_get_pte(baseaddr, index, addr, *pte);
-> +    trace_smmu_get_pte(sec_sid, baseaddr, index, addr, *pte);
->      return 0;
->  }
->  
-> @@ -543,6 +549,8 @@ static int smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg,
->  
->      baseaddr = extract64(tt->ttb, 0, cfg->oas);
->      baseaddr &= ~indexmask;
-> +    int nscfg = tt->nscfg;
-> +    bool forced_ns = false;  /* Track if NSTable=1 forced NS mode */
->  
->      while (level < VMSA_LEVELS) {
->          uint64_t subpage_size = 1ULL << level_shift(level, granule_sz);
-> @@ -552,7 +560,10 @@ static int smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg,
->          dma_addr_t pte_addr = baseaddr + offset * sizeof(pte);
->          uint8_t ap;
->  
-> -        if (get_pte(baseaddr, offset, &pte, info)) {
-> +        /* Use NS if forced by previous NSTable=1 or current nscfg */
-> +        int current_ns = forced_ns || nscfg;
-> +        SMMUSecSID sec_sid = current_ns ? SMMU_SEC_SID_NS : SMMU_SEC_SID_S;
-> +        if (get_pte(baseaddr, offset, &pte, info, sec_sid)) {
->                  goto error;
->          }
->          trace_smmu_ptw_level(stage, level, iova, subpage_size,
-> @@ -577,6 +588,26 @@ static int smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg,
->                      goto error;
->                  }
->              }
-> +
-> +            /*
-> +             * Hierarchical control of Secure/Non-secure accesses:
-> +             * If NSTable=1 from Secure space, force all subsequent lookups to
-> +             * Non-secure space and ignore future NSTable according to
-> +             * (IHI 0070G.b)13.4.1 Stage 1 page permissions and
-> +             * (DDI 0487H.a)D8.4.2 Control of Secure or Non-secure memory access
-> +             */
-> +            if (!forced_ns) {
-> +                int new_nstable = PTE_NSTABLE(pte);
-> +                if (!current_ns && new_nstable) {
-> +                    /* First transition from Secure to Non-secure */
-> +                    forced_ns = true;
-> +                    nscfg = 1;
-> +                } else if (!forced_ns) {
-> +                    /* Still in original mode, update nscfg normally */
-> +                    nscfg = new_nstable;
-> +                }
-> +                /* If forced_ns is already true, ignore NSTable bit */
-> +            }
->              level++;
->              continue;
->          } else if (is_page_pte(pte, level)) {
-> @@ -619,6 +650,13 @@ static int smmu_ptw_64_s1(SMMUState *bs, SMMUTransCfg *cfg,
->              goto error;
->          }
->  
-> +        tlbe->sec_sid = PTE_NS(pte) ? SMMU_SEC_SID_NS : SMMU_SEC_SID_S;
-> +        tlbe->entry.target_as = smmu_get_address_space(tlbe->sec_sid);
-> +        if (!tlbe->entry.target_as) {
-> +            info->type = SMMU_PTW_ERR_WALK_EABT;
-> +            info->addr = gpa;
-> +            goto error;
-> +        }
->          tlbe->entry.translated_addr = gpa;
->          tlbe->entry.iova = iova & ~mask;
->          tlbe->entry.addr_mask = mask;
-> @@ -688,7 +726,8 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
->          dma_addr_t pte_addr = baseaddr + offset * sizeof(pte);
->          uint8_t s2ap;
->  
-> -        if (get_pte(baseaddr, offset, &pte, info)) {
-> +        /* Use NS as Secure Stage 2 is not implemented (SMMU_S_IDR1.SEL2 == 0)*/
-I don't really get this as you passed the sel2 in the cfg?
-> +        if (get_pte(baseaddr, offset, &pte, info, SMMU_SEC_SID_NS)) {
->                  goto error;
->          }
->          trace_smmu_ptw_level(stage, level, ipa, subpage_size,
-> @@ -741,6 +780,8 @@ static int smmu_ptw_64_s2(SMMUTransCfg *cfg,
->              goto error_ipa;
->          }
->  
-> +        tlbe->sec_sid = SMMU_SEC_SID_NS;
-> +        tlbe->entry.target_as = &address_space_memory;
->          tlbe->entry.translated_addr = gpa;
->          tlbe->entry.iova = ipa & ~mask;
->          tlbe->entry.addr_mask = mask;
-> @@ -825,6 +866,17 @@ int smmu_ptw(SMMUState *bs, SMMUTransCfg *cfg, dma_addr_t iova,
->          return ret;
->      }
->  
-> +    if (!cfg->sel2 && tlbe->sec_sid > SMMU_SEC_SID_NS) {
-> +        /*
-> +         * Nested translation with Secure IPA output is not supported if
-> +         * Secure Stage 2 is not implemented.
-> +         */
-> +        info->type = SMMU_PTW_ERR_TRANSLATION;
-pointer to the spec for TRANSLATION error?
+The versioned 'pc' and 'q35' machines up to 2.12 been marked
+as deprecated three releases ago, and are older than 6 years,
+so according to our support policy we can remove them.
 
-Otherwise looks good
+This series only includes the 2.6 and 2.7 machines removal,
+as it is a big enough number of LoC removed. Rest will
+follow.
 
-Eric
-> +        info->stage = SMMU_STAGE_1;
-> +        tlbe->entry.perm = IOMMU_NONE;
-> +        return -EINVAL;
-> +    }
-> +
->      ipa = CACHED_ENTRY_TO_ADDR(tlbe, iova);
->      ret = smmu_ptw_64_s2(cfg, ipa, perm, &tlbe_s2, info);
->      if (ret) {
-> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-> index 96ebd1b11b..a37e894766 100644
-> --- a/hw/arm/trace-events
-> +++ b/hw/arm/trace-events
-> @@ -16,7 +16,7 @@ smmu_ptw_level(int stage, int level, uint64_t iova, size_t subpage_size, uint64_
->  smmu_ptw_invalid_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr, uint32_t offset, uint64_t pte) "stage=%d level=%d base@=0x%"PRIx64" pte@=0x%"PRIx64" offset=%d pte=0x%"PRIx64
->  smmu_ptw_page_pte(int stage, int level,  uint64_t iova, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t address) "stage=%d level=%d iova=0x%"PRIx64" base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" page address = 0x%"PRIx64
->  smmu_ptw_block_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t iova, uint64_t gpa, int bsize_mb) "stage=%d level=%d base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" iova=0x%"PRIx64" block address = 0x%"PRIx64" block size = %d MiB"
-> -smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "baseaddr=0x%"PRIx64" index=0x%x, pteaddr=0x%"PRIx64", pte=0x%"PRIx64
-> +smmu_get_pte(int sec_sid, uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "sec_sid=%d baseaddr=0x%"PRIx64" index=0x%x, pteaddr=0x%"PRIx64", pte=0x%"PRIx64""
->  smmu_iotlb_inv_all(void) "IOTLB invalidate all"
->  smmu_iotlb_inv_asid_vmid(int asid, int vmid) "IOTLB invalidate asid=%d vmid=%d"
->  smmu_iotlb_inv_vmid(int vmid) "IOTLB invalidate vmid=%d"
+This v5 is based on the master branch at the commit 66ec38b6fa59
+("Merge tag 'pull-target-arm-20251201' of https://gitlab.com/pm215/qemu
+into staging").
+
+(Main) changes since v4:
+ * Completely remove the legacy CPU hotplug approach.
+   - New patch 2-8.
+   - Test CPU hot-plug & hot-unplug via qmp.
+
+ * Keep "dma_enabled" property in fw_cfg_io_properties[] since Sun4u &
+   Sun4v are still using it.
+   - About more details, please see commit message of patch 15.
+
+ * Temporarily keep these properties: "cpuid-0xb" (of X86CPU),
+   "fill-mtrr-mask" (of X86CPU), "version" (of IOAPICCommonState).
+   - These properties will be deprecated first before removal, in
+     another series.
+
+ * Keep "l3-cache" (of X86CPU) and "page-per-vq" (of VirtIOPCIProxy),
+   since they are still in use (e.g., libvirt).
+
+Thank you everyone for the reviews and patience, and also thank you
+Philippe for the guidance and Igor for the patch.
+
+Best Regards,
+Zhao
+---
+Igor Mammedov (3):
+  tests/acpi: Allow DSDT table change for x86 machines
+  pc: Start with modern CPU hotplug interface by default
+  acpi: Remove legacy cpu hotplug utilities
+
+Philippe Mathieu-Daudé (22):
+  hw/i386/pc: Remove deprecated pc-q35-2.6 and pc-i440fx-2.6 machines
+  hw/i386/pc: Remove PCMachineClass::legacy_cpu_hotplug field
+  hw/nvram/fw_cfg: Rename fw_cfg_init_mem() with '_nodma' suffix
+  hw/mips/loongson3_virt: Prefer using fw_cfg_init_mem_nodma()
+  hw/nvram/fw_cfg: Factor fw_cfg_init_mem_internal() out
+  hw/nvram/fw_cfg: Rename fw_cfg_init_mem_wide() ->
+    fw_cfg_init_mem_dma()
+  hw/i386/x86: Remove X86MachineClass::fwcfg_dma_enabled field
+  hw/i386/pc: Remove multiboot.bin
+  hw/i386: Assume fw_cfg DMA is always enabled
+  hw/i386: Remove linuxboot.bin
+  hw/i386/pc: Remove pc_compat_2_6[] array
+  hw/intc/apic: Remove APICCommonState::legacy_instance_id field
+  hw/core/machine: Remove hw_compat_2_6[] array
+  hw/virtio/virtio-mmio: Remove
+    VirtIOMMIOProxy::format_transport_address field
+  hw/i386/pc: Remove deprecated pc-q35-2.7 and pc-i440fx-2.7 machines
+  hw/i386/pc: Remove pc_compat_2_7[] array
+  target/i386/cpu: Remove CPUX86State::full_cpuid_auto_level field
+  hw/audio/pcspk: Remove PCSpkState::migrate field
+  hw/core/machine: Remove hw_compat_2_7[] array
+  hw/i386/intel_iommu: Remove IntelIOMMUState::buggy_eim field
+  hw/virtio/virtio-pci: Remove VirtIOPCIProxy::ignore_backend_features
+    field
+  hw/char/virtio-serial: Do not expose the 'emergency-write' property
+
+Zhao Liu (3):
+  docs/specs/acpi_cpu_hotplug: Remove legacy cpu hotplug descriptions
+  tests/acpi: Update DSDT tables for pc machine
+  tests/acpi: Update DSDT tables for q35 machine
+
+ docs/specs/acpi_cpu_hotplug.rst               |  28 +-
+ hw/acpi/acpi-cpu-hotplug-stub.c               |  19 +-
+ hw/acpi/cpu.c                                 |  10 -
+ hw/acpi/cpu_hotplug.c                         | 348 ------------------
+ hw/acpi/generic_event_device.c                |   1 +
+ hw/acpi/ich9.c                                |  61 +--
+ hw/acpi/meson.build                           |   2 +-
+ hw/acpi/piix4.c                               |  61 +--
+ hw/arm/virt.c                                 |   2 +-
+ hw/audio/pcspk.c                              |  10 -
+ hw/char/virtio-serial-bus.c                   |   9 +-
+ hw/core/machine.c                             |  17 -
+ hw/hppa/machine.c                             |   2 +-
+ hw/i386/acpi-build.c                          |   7 +-
+ hw/i386/fw_cfg.c                              |  16 +-
+ hw/i386/intel_iommu.c                         |   5 +-
+ hw/i386/microvm.c                             |   3 -
+ hw/i386/multiboot.c                           |   7 +-
+ hw/i386/pc.c                                  |  25 +-
+ hw/i386/pc_piix.c                             |  23 --
+ hw/i386/pc_q35.c                              |  24 --
+ hw/i386/x86-common.c                          |   8 +-
+ hw/i386/x86.c                                 |   2 -
+ hw/intc/apic_common.c                         |   5 -
+ hw/loongarch/fw_cfg.c                         |   4 +-
+ hw/loongarch/virt-acpi-build.c                |   1 -
+ hw/mips/loongson3_virt.c                      |   2 +-
+ hw/nvram/fw_cfg.c                             |  22 +-
+ hw/riscv/virt.c                               |   4 +-
+ hw/virtio/virtio-mmio.c                       |  15 -
+ hw/virtio/virtio-pci.c                        |   5 +-
+ include/hw/acpi/cpu.h                         |   1 -
+ include/hw/acpi/cpu_hotplug.h                 |  40 --
+ include/hw/acpi/ich9.h                        |   4 +-
+ include/hw/acpi/piix4.h                       |   4 +-
+ include/hw/boards.h                           |   6 -
+ include/hw/i386/apic_internal.h               |   1 -
+ include/hw/i386/intel_iommu.h                 |   1 -
+ include/hw/i386/pc.h                          |   9 -
+ include/hw/i386/x86.h                         |   2 -
+ include/hw/nvram/fw_cfg.h                     |   9 +-
+ include/hw/virtio/virtio-mmio.h               |   1 -
+ include/hw/virtio/virtio-pci.h                |   1 -
+ include/hw/virtio/virtio-serial.h             |   2 -
+ pc-bios/meson.build                           |   2 -
+ pc-bios/multiboot.bin                         | Bin 1024 -> 0 bytes
+ pc-bios/optionrom/Makefile                    |   2 +-
+ pc-bios/optionrom/linuxboot.S                 | 195 ----------
+ pc-bios/optionrom/multiboot.S                 | 232 ------------
+ pc-bios/optionrom/multiboot_dma.S             | 234 +++++++++++-
+ pc-bios/optionrom/optionrom.h                 |   4 -
+ target/i386/cpu.c                             | 111 +++---
+ target/i386/cpu.h                             |   3 -
+ tests/data/acpi/x86/pc/DSDT                   | Bin 8611 -> 8598 bytes
+ tests/data/acpi/x86/pc/DSDT.acpierst          | Bin 8522 -> 8509 bytes
+ tests/data/acpi/x86/pc/DSDT.acpihmat          | Bin 9936 -> 9923 bytes
+ tests/data/acpi/x86/pc/DSDT.bridge            | Bin 15482 -> 15469 bytes
+ tests/data/acpi/x86/pc/DSDT.cphp              | Bin 9075 -> 9062 bytes
+ tests/data/acpi/x86/pc/DSDT.dimmpxm           | Bin 10265 -> 10252 bytes
+ tests/data/acpi/x86/pc/DSDT.hpbridge          | Bin 8562 -> 8549 bytes
+ tests/data/acpi/x86/pc/DSDT.hpbrroot          | Bin 5100 -> 5087 bytes
+ tests/data/acpi/x86/pc/DSDT.ipmikcs           | Bin 8683 -> 8670 bytes
+ tests/data/acpi/x86/pc/DSDT.memhp             | Bin 9970 -> 9957 bytes
+ tests/data/acpi/x86/pc/DSDT.nohpet            | Bin 8469 -> 8456 bytes
+ tests/data/acpi/x86/pc/DSDT.numamem           | Bin 8617 -> 8604 bytes
+ tests/data/acpi/x86/pc/DSDT.roothp            | Bin 12404 -> 12391 bytes
+ tests/data/acpi/x86/q35/DSDT                  | Bin 8440 -> 8427 bytes
+ tests/data/acpi/x86/q35/DSDT.acpierst         | Bin 8457 -> 8444 bytes
+ tests/data/acpi/x86/q35/DSDT.acpihmat         | Bin 9765 -> 9752 bytes
+ .../data/acpi/x86/q35/DSDT.acpihmat-generic-x | Bin 12650 -> 12637 bytes
+ .../acpi/x86/q35/DSDT.acpihmat-noinitiator    | Bin 8719 -> 8706 bytes
+ tests/data/acpi/x86/q35/DSDT.applesmc         | Bin 8486 -> 8473 bytes
+ tests/data/acpi/x86/q35/DSDT.bridge           | Bin 12053 -> 12040 bytes
+ tests/data/acpi/x86/q35/DSDT.core-count       | Bin 12998 -> 12985 bytes
+ tests/data/acpi/x86/q35/DSDT.core-count2      | Bin 33855 -> 33842 bytes
+ tests/data/acpi/x86/q35/DSDT.cphp             | Bin 8904 -> 8891 bytes
+ tests/data/acpi/x86/q35/DSDT.cxl              | Bin 13231 -> 13218 bytes
+ tests/data/acpi/x86/q35/DSDT.dimmpxm          | Bin 10094 -> 10081 bytes
+ tests/data/acpi/x86/q35/DSDT.ipmibt           | Bin 8515 -> 8502 bytes
+ tests/data/acpi/x86/q35/DSDT.ipmismbus        | Bin 8528 -> 8515 bytes
+ tests/data/acpi/x86/q35/DSDT.ivrs             | Bin 8457 -> 8444 bytes
+ tests/data/acpi/x86/q35/DSDT.memhp            | Bin 9799 -> 9786 bytes
+ tests/data/acpi/x86/q35/DSDT.mmio64           | Bin 9570 -> 9557 bytes
+ tests/data/acpi/x86/q35/DSDT.multi-bridge     | Bin 13293 -> 13280 bytes
+ tests/data/acpi/x86/q35/DSDT.noacpihp         | Bin 8302 -> 8289 bytes
+ tests/data/acpi/x86/q35/DSDT.nohpet           | Bin 8298 -> 8285 bytes
+ tests/data/acpi/x86/q35/DSDT.numamem          | Bin 8446 -> 8433 bytes
+ tests/data/acpi/x86/q35/DSDT.pvpanic-isa      | Bin 8541 -> 8528 bytes
+ tests/data/acpi/x86/q35/DSDT.thread-count     | Bin 12998 -> 12985 bytes
+ tests/data/acpi/x86/q35/DSDT.thread-count2    | Bin 33855 -> 33842 bytes
+ tests/data/acpi/x86/q35/DSDT.tis.tpm12        | Bin 9046 -> 9033 bytes
+ tests/data/acpi/x86/q35/DSDT.tis.tpm2         | Bin 9072 -> 9059 bytes
+ tests/data/acpi/x86/q35/DSDT.type4-count      | Bin 18674 -> 18661 bytes
+ tests/data/acpi/x86/q35/DSDT.viot             | Bin 14697 -> 14684 bytes
+ tests/data/acpi/x86/q35/DSDT.xapic            | Bin 35803 -> 35790 bytes
+ tests/qtest/test-x86-cpuid-compat.c           |  11 -
+ 96 files changed, 359 insertions(+), 1264 deletions(-)
+ delete mode 100644 hw/acpi/cpu_hotplug.c
+ delete mode 100644 include/hw/acpi/cpu_hotplug.h
+ delete mode 100644 pc-bios/multiboot.bin
+ delete mode 100644 pc-bios/optionrom/linuxboot.S
+ delete mode 100644 pc-bios/optionrom/multiboot.S
+
+-- 
+2.34.1
 
 

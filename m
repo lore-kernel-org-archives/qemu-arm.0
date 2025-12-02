@@ -4,106 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C64D5D116F6
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 12:11:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 829E7D116F6
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 13:20:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vQPDe-00042l-T4; Tue, 02 Dec 2025 07:11:00 -0500
+	id 1vQQJ8-0005z9-D9; Tue, 02 Dec 2025 08:20:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vQPDa-00041U-Do
- for qemu-arm@nongnu.org; Tue, 02 Dec 2025 07:10:54 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vQPDY-0004HW-05
- for qemu-arm@nongnu.org; Tue, 02 Dec 2025 07:10:53 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764677448;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Fr+EeQHaTBBEkfXrUEbvpgr1nkBQ0/G4WMdu4ffGE5U=;
- b=RiZAZCYAuvuRd0AzXu8fcAgSOAJpcBtB9DTwk7M0hb2TLT6j8F1yOx+17nZO3xIHHKG3E6
- FV9Rxr9zrveJNO/D5SqtsjhO5WG14wbU9PUII9+2AarA7jzKUMbOh1+S/++7YTVmTD3rq6
- hM+UmKqf0zgxeV5te73+Nybhoul6PCs=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-166-sZ1TmEAoPpW02ksrTZocRw-1; Tue, 02 Dec 2025 07:10:46 -0500
-X-MC-Unique: sZ1TmEAoPpW02ksrTZocRw-1
-X-Mimecast-MFC-AGG-ID: sZ1TmEAoPpW02ksrTZocRw_1764677446
-Received: by mail-ej1-f72.google.com with SMTP id
- a640c23a62f3a-b70b21e6cdbso379917766b.1
- for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 04:10:46 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vQQJ7-0005yg-1w
+ for qemu-arm@nongnu.org; Tue, 02 Dec 2025 08:20:41 -0500
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vQQJ5-00066h-Gg
+ for qemu-arm@nongnu.org; Tue, 02 Dec 2025 08:20:40 -0500
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-789524e6719so79065577b3.1
+ for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 05:20:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1764681638; x=1765286438; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZbS46Le7oyh4pfgHIhx3/EKDWw+WzT5lTC3ChbRBoFw=;
+ b=Rits9/2HmtRnXv2QZa/OhHF1XHzOz6EyNYSADUOri4LLv7CMwmXcbm4GPqDREVtQt7
+ YyCh71Vy9ipSsuu3hg1WEHXmnmT8gUJLmhQ0TkVnaVehwImP3DwKEjqMn8c8lWwL7XC6
+ TUm7LeFzq/II8NGmJAmNE3Bs1iYJjohGfUA43Iihu4eHY5m+yez7v2n8l2BlrRe3KTFo
+ XF0i6Qvi66WRnNHqjr8IhLa8u7Aml60QavrD0UgForCcm1Rz+zYzzflac+hrunEqj3I5
+ sULpZmal9fEshb5PPSm9h7Im0uB7wZelZL5zaSJtB/KAv52MpQbIyC9AFJrSw097cqrD
+ t6IQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764677446; x=1765282246;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=Fr+EeQHaTBBEkfXrUEbvpgr1nkBQ0/G4WMdu4ffGE5U=;
- b=KbdY3g++N5pVNEhvYGrdBD3A2eO6EDCukF2pCi2QMrVIAdiLjjqxB6BAguEHgoNdp1
- gDphdJI940VHHYIPtqkVIn0wp1unZA5VRvHWTqsOmsb37F68zR7+3qkvPr4251VEEJ0u
- 8ABN0MIjY2S3iCp2aN4ruYDJUJ1EhZtQDnSawr5tKwg3K1kyDolutDhtEKzcyTPigKAH
- nUt+C2j9z5rb9LYi+ZC/rR2p0XWbU+v8e9Rp6k8N0Jd3fynq3MBPktxxiIiOP7mRfSX1
- D4U9VqfCQ+FqUalIe6ioyCbfwhCh0oh7TW4dMY5zz+VBurX1Ts5LiGsX+F5MYj2od9PW
- OFwg==
+ d=1e100.net; s=20230601; t=1764681638; x=1765286438;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ZbS46Le7oyh4pfgHIhx3/EKDWw+WzT5lTC3ChbRBoFw=;
+ b=CO6MhUOn/Bz4k4zn/WkaKFRDx41msVWovTF2jpKuhpoeaMR6SHZZ/Dnixt8E4E4Vs0
+ VaI7JLBTUwcRQZMD1ZPv1OArvJXGhKlZ2vR4NQOn1SP3W++aohVi27KSPiAEfrHDsnHA
+ 3RO+3v0q6CRU9jdTOsN6KlN4Dpfjt1J/N4FckqMyRAuve9Kpd6Wpy13pIcZAIiTbwgA3
+ irZRiL6QjZekIMDaskbFSHc7ad15B78i+E962U/gANMMKbGxk7S8cbp/oAFX09QF2eDj
+ tw5/xWUmi2vlEeNNBw85IpYCG+iW1F6vxvAGFXY4p5AuAN5RzP1wjGbc9IEmTMPY4N46
+ MPHw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWWp/3uPVqc1kY8CrUsKBmERnNv7K8mRUacV49d49viPQDaz+xjZQeKgiDgfFfn9Rd1WGUnZuPpRg==@nongnu.org
-X-Gm-Message-State: AOJu0YzZepo8eWp71wyPXCOJL+qjysl/75k5AvbMZ0QrddXOKH88P5sw
- ZcV09nA9LhEPs2cJV2jXSY4bd1mIplCgTPuqH1Btdt/ac1ZvQkc8fV7MIdcNEZj4l9NccO9K3JN
- zEdonAVUriCFH2jtnoSe33Gk9TKdQ3mGk8Z/b7oJTwjsPONWE7a9wrg==
-X-Gm-Gg: ASbGncvgEJDQLtw9H8Nl3Exff+JG7vhPoN+CkYld+vsHZuq5S2tREU0czlP92jh7jQv
- qON4ujByWj1M9SuMRlcwlw1gefiehQkQzhXRrHhj0u3RJMp0eRaQbuCo4/mkaqrIkDXYyHw7s2E
- hGdg6nRJ22D/9Bwv+Yj/5p8nYUDLf0x77vFsnXokQ3Hzldn2i7DKfW7VPGJvYFXeyuBnlHvWrC7
- zD15Lq0x8e+f/rPvlXCFnLJULs0MegaXK7S8o3HTEnLWpf+uRevu+vIGt8NSnA3dHCtAJz6rApF
- U5gg1fT9iCBhfyL9sHn1iEeTnp4wPU3lYKd1TelO3Pf7OsJzzuaEe1gCjVqHBuIdkMtHDA==
-X-Received: by 2002:a17:907:1c12:b0:b76:b791:b58f with SMTP id
- a640c23a62f3a-b79c1fb6ca5mr266877266b.0.1764677445601; 
- Tue, 02 Dec 2025 04:10:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEhZJuuYtbtxrJpwyf+ICnXzdNRSt0Nvo1p1tTRrSamPKNeI+X2Go+4aEfRQv2XlSLvb68dJg==
-X-Received: by 2002:a17:907:1c12:b0:b76:b791:b58f with SMTP id
- a640c23a62f3a-b79c1fb6ca5mr266874166b.0.1764677445134; 
- Tue, 02 Dec 2025 04:10:45 -0800 (PST)
-Received: from imammedo ([213.175.37.14]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b76f519e331sm1522968366b.24.2025.12.02.04.10.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Dec 2025 04:10:44 -0800 (PST)
-Date: Tue, 2 Dec 2025 13:10:42 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Gavin Shan <gshan@redhat.com>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, jonathan.cameron@huawei.com, armbru@redhat.com,
- mst@redhat.com, anisinha@redhat.com, gengdongjiu1@gmail.com,
- peter.maydell@linaro.org, pbonzini@redhat.com, shan.gavin@gmail.com
-Subject: Re: [PATCH 0/5] acpi/ghes: Error object handling improvement
-Message-ID: <20251202131042.698612a6@imammedo>
-In-Reply-To: <dd43197e-ff56-4adf-a413-03f63d5f5078@redhat.com>
+ AJvYcCXVddctP0j/o83QnhYKUqqCUMq9ZlBKI3YF90dlQcxG1YrD5GfTVpEoknQ9UDjxeyDQ4IAQ1zk24g==@nongnu.org
+X-Gm-Message-State: AOJu0YyqPDVJiEXk4FuAWd1iq7HX6HqzMVyXm38Q+5MWj3u3O5eHF6gK
+ yDVME429Bif7xbv5asiU60/FmY1TbK1xRfjpeCoyS5xBp3/5ost1qQ3aRmtKrUvFy46IQt0Gtou
+ +ZnXBLI7NS9QpJ5KG20ZhQc+3JnftMRv3DSg2IGBrDg==
+X-Gm-Gg: ASbGncvsQuil2Ht4NbXiGtsV8Ae9SiBGx2+zWbf0IQKvnzp6LOVPsHNhhCKfeYHIkTb
+ lKLxFfxNahAgSr+jXV9EXQVqatyddm1mPHEOpPjNGL5odiCcQpZ19yEw39NvqiyWlTj4dJSXldg
+ wqRJXC8zZ8daVwF3smu3eYCtAUpTIKXIH0Eb9wVo0fUHUhmxDwtIeHm0c/kHMVPZZMMm0Kg8Bxn
+ z6K2rWeGvWcEJ3IF2CMzcPg5jpciwb/XSEGvPWXvKnE7Va2Qa61npBi8EPlwWvRBPBdIN2G
+X-Google-Smtp-Source: AGHT+IFbDdIwWx7XVhFZ2HYqK7MJWY/IQ5E8pWk4PvWwI/wIh4twpVg7DgGfekCeIYkrIG4Uo7UsxOyC/vyQAR7v52A=
+X-Received: by 2002:a05:690c:399:b0:78a:834e:b106 with SMTP id
+ 00721157ae682-78bff634c32mr18700467b3.25.1764681638096; Tue, 02 Dec 2025
+ 05:20:38 -0800 (PST)
+MIME-Version: 1.0
 References: <20251127004435.2098335-1-gshan@redhat.com>
  <20251201131729.615abe68@foz.lan>
  <12b7baee-1d6d-440a-a119-971b47d7f3ad@redhat.com>
  <20251201153121.190c22ec@foz.lan>
  <dd43197e-ff56-4adf-a413-03f63d5f5078@redhat.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
-MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Ztty_EwcfAWTT30R83y1jjZ9JVVyjFkKryFIHfa0p10_1764677446
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+In-Reply-To: <dd43197e-ff56-4adf-a413-03f63d5f5078@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 2 Dec 2025 13:20:26 +0000
+X-Gm-Features: AWmQ_bkqFgNduGew7C_ZevHLFJ_sGthu2wIX_qkiURLvF6gbo8GKmy9qMz0-CfU
+Message-ID: <CAFEAcA8P9sRUWgKmxrdCiOsMKtVu8gzLUorhR7HLG+ZtzNOL0A@mail.gmail.com>
+Subject: Re: [PATCH 0/5] acpi/ghes: Error object handling improvement
+To: Gavin Shan <gshan@redhat.com>
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, 
+ jonathan.cameron@huawei.com, armbru@redhat.com, mst@redhat.com, 
+ imammedo@redhat.com, anisinha@redhat.com, gengdongjiu1@gmail.com, 
+ pbonzini@redhat.com, shan.gavin@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,82 +102,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 2 Dec 2025 00:37:53 +1000
-Gavin Shan <gshan@redhat.com> wrote:
-
+On Mon, 1 Dec 2025 at 14:38, Gavin Shan <gshan@redhat.com> wrote:
+>
 > Hi Mauro,
-> 
+>
 > On 12/2/25 12:31 AM, Mauro Carvalho Chehab wrote:
 > > On Tue, 2 Dec 2025 00:13:06 +1000
-> > Gavin Shan <gshan@redhat.com> wrote:  
-> >> On 12/1/25 10:17 PM, Mauro Carvalho Chehab wrote:  
+> > Gavin Shan <gshan@redhat.com> wrote:
+> >> On 12/1/25 10:17 PM, Mauro Carvalho Chehab wrote:
 > >>> On Thu, 27 Nov 2025 10:44:30 +1000
-> >>> Gavin Shan <gshan@redhat.com> wrote:  
-> 
+> >>> Gavin Shan <gshan@redhat.com> wrote:
+>
 > [...]
-> 
+>
 > >>>
 > >>> Btw, what setup are you using to test memory errors? It would be
 > >>> nice to have it documented somewhere, maybe at
 > >>> docs/specs/acpi_hest_ghes.rst.
-> >>>      
+> >>>
 > >>
 > >> I don't think docs/specs/acpi_hest_ghes.rst is the right place for that
-> >> as it's for specifications.  
-> > 
+> >> as it's for specifications.
+> >
 > > Perhaps not, but it would be nice to have it documented somewhere,
 > > either there or at QEMU wiki.
-> >   
-> 
+> >
+>
 > QEMU wiki may be the best place for it. I never updated to QEMU wiki and
 > any guiding steps on how to do that?
 
-do you have an account already?
+I think in general we should prefer to document things in docs/
+if we think users would want to know them. If it's just a
+test setup then perhaps docs/devel, or if feasible actually
+make it a test in tests/. The wiki is largely unused except
+for the changelog and planning docs.
 
-> 
-> >> I'm sharing how this is tested here to make the thread complete.  
-> > 
-> > Thanks!
-> >   
-> >>
-> >> - Both host and guest has 4KB page size
-> >>
-> >> - Start the guest by the following command lines
-> >>
-> >>     /home/gavin/sandbox/qemu.main/build/qemu-system-aarch64                  \
-> >>     -accel kvm -machine virt,gic-version=host,nvdimm=on,ras=on               \
-> >>     -cpu host -smp maxcpus=8,cpus=8,sockets=2,clusters=2,cores=2,threads=1   \
-> >>     -m 4096M,slots=16,maxmem=128G                                            \
-> >>     -object memory-backend-ram,id=mem0,size=4096M                            \
-> >>     -numa node,nodeid=0,cpus=0-7,memdev=mem0                                 \
-> >>     -L /home/gavin/sandbox/qemu.main/build/pc-bios                           \
-> >>     -monitor none -serial mon:stdio -nographic                               \
-> >>     -gdb tcp::6666 -qmp tcp:localhost:5555,server,wait=off                   \
-> >>     -bios /home/gavin/sandbox/qemu.main/build/pc-bios/edk2-aarch64-code.fd   \
-> >>     -boot c                                                                  \
-> >>     -device pcie-root-port,bus=pcie.0,chassis=1,id=pcie.1                    \
-> >>     -device pcie-root-port,bus=pcie.0,chassis=2,id=pcie.2                    \
-> >>     -device pcie-root-port,bus=pcie.0,chassis=3,id=pcie.3                    \
-> >>        :                                                                     \
-> >>     -device pcie-root-port,bus=pcie.0,chassis=16,id=pcie.16                  \
-> >>     -drive file=/home/gavin/sandbox/images/disk.qcow2,if=none,id=drive0      \
-> >>     -device virtio-blk-pci,id=virtblk0,bus=pcie.1,drive=drive0,num-queues=4  \
-> >>     -netdev tap,id=tap1,vhost=true,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown \
-> >>     -device virtio-net-pci,bus=pcie.8,netdev=tap1,mac=52:54:00:f1:26:b0
-> >>
-> >> - Trigger 'victim -d' in the guest  
-> > 
-> > Hmm... from where I can get victim?
-> >   
-> 
-> https://git.kernel.org/pub/scm/utils/cpu/mce/mce-test.git
-> 
-> > Regards,
-> > Mauro
-> >   
-> 
-> Thanks,
-> Gavin
-> 
+(In an ideal world we'd check for parts of the wiki that still
+have useful-to-users up to date information, and fold them into
+our manuals.)
 
+thanks
+-- PMM
 

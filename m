@@ -4,89 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 829E7D116F6
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 13:20:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFFD2CFD2F6
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 13:53:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vQQJ8-0005z9-D9; Tue, 02 Dec 2025 08:20:42 -0500
+	id 1vQQob-00039C-24; Tue, 02 Dec 2025 08:53:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vQQJ7-0005yg-1w
- for qemu-arm@nongnu.org; Tue, 02 Dec 2025 08:20:41 -0500
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vQQJ5-00066h-Gg
- for qemu-arm@nongnu.org; Tue, 02 Dec 2025 08:20:40 -0500
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-789524e6719so79065577b3.1
- for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 05:20:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1764681638; x=1765286438; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ZbS46Le7oyh4pfgHIhx3/EKDWw+WzT5lTC3ChbRBoFw=;
- b=Rits9/2HmtRnXv2QZa/OhHF1XHzOz6EyNYSADUOri4LLv7CMwmXcbm4GPqDREVtQt7
- YyCh71Vy9ipSsuu3hg1WEHXmnmT8gUJLmhQ0TkVnaVehwImP3DwKEjqMn8c8lWwL7XC6
- TUm7LeFzq/II8NGmJAmNE3Bs1iYJjohGfUA43Iihu4eHY5m+yez7v2n8l2BlrRe3KTFo
- XF0i6Qvi66WRnNHqjr8IhLa8u7Aml60QavrD0UgForCcm1Rz+zYzzflac+hrunEqj3I5
- sULpZmal9fEshb5PPSm9h7Im0uB7wZelZL5zaSJtB/KAv52MpQbIyC9AFJrSw097cqrD
- t6IQ==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vQQoY-00038Q-6f
+ for qemu-arm@nongnu.org; Tue, 02 Dec 2025 08:53:11 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vQQoV-0001t2-S1
+ for qemu-arm@nongnu.org; Tue, 02 Dec 2025 08:53:09 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1764683586;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ccZkKYpG6reUrqX/P/HODGfeaPwHtUq9ExmRzikWyPg=;
+ b=Q9M6ZlbuOYvNOn5xDgPCk2m/yWplx6EGiP9XP1kwfbCpadJgIkjYITdPsW2PreLL8nhZp7
+ f7XCkuq/fNXH+KY0G1arFSrEcD/gaFKpoMwNBC54glM5UhYqfpgn6/uuRiEcK2oSAF4ROU
+ PYITR/9RFEbfmPGYCn60vYrduslG47I=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-83-KZKAzTHHPa6h6WCHm-j7ww-1; Tue, 02 Dec 2025 08:53:04 -0500
+X-MC-Unique: KZKAzTHHPa6h6WCHm-j7ww-1
+X-Mimecast-MFC-AGG-ID: KZKAzTHHPa6h6WCHm-j7ww_1764683584
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-8b2d2c91215so1161985285a.1
+ for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 05:53:04 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764681638; x=1765286438;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1764683584; x=1765288384;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZbS46Le7oyh4pfgHIhx3/EKDWw+WzT5lTC3ChbRBoFw=;
- b=CO6MhUOn/Bz4k4zn/WkaKFRDx41msVWovTF2jpKuhpoeaMR6SHZZ/Dnixt8E4E4Vs0
- VaI7JLBTUwcRQZMD1ZPv1OArvJXGhKlZ2vR4NQOn1SP3W++aohVi27KSPiAEfrHDsnHA
- 3RO+3v0q6CRU9jdTOsN6KlN4Dpfjt1J/N4FckqMyRAuve9Kpd6Wpy13pIcZAIiTbwgA3
- irZRiL6QjZekIMDaskbFSHc7ad15B78i+E962U/gANMMKbGxk7S8cbp/oAFX09QF2eDj
- tw5/xWUmi2vlEeNNBw85IpYCG+iW1F6vxvAGFXY4p5AuAN5RzP1wjGbc9IEmTMPY4N46
- MPHw==
+ bh=ccZkKYpG6reUrqX/P/HODGfeaPwHtUq9ExmRzikWyPg=;
+ b=H6zv345r2lJGE0vn+TfuL+YYJq/xTRROI2LI+OSQ4tO4RyN5kGfsmx4SFtL7azkX1w
+ RWzjo3mGEYA7fSqgDup/92Ayq9LkgGOVV9usng/ODM0tOvXNJalFH7wDl4m2Je0BBFsm
+ FLQ8w344V3E+D6P5arlS9vQHhJJdGSedRIjUWjAwY1J89J4JWeR/XxC5VfWO7vhJv90l
+ /T/OVHTueKcir3y//gWdEzJTYyydWCmRF1Pp5unH3lKXoBS4EEzpf279QC7SqQNzE2nt
+ /DOStJSD/KHbvfC7VN1ptyRhkSBS16xtPYiM3HRcjIsFgNN+CN3B3a19B4lrLeB3IEQr
+ 338g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXVddctP0j/o83QnhYKUqqCUMq9ZlBKI3YF90dlQcxG1YrD5GfTVpEoknQ9UDjxeyDQ4IAQ1zk24g==@nongnu.org
-X-Gm-Message-State: AOJu0YyqPDVJiEXk4FuAWd1iq7HX6HqzMVyXm38Q+5MWj3u3O5eHF6gK
- yDVME429Bif7xbv5asiU60/FmY1TbK1xRfjpeCoyS5xBp3/5ost1qQ3aRmtKrUvFy46IQt0Gtou
- +ZnXBLI7NS9QpJ5KG20ZhQc+3JnftMRv3DSg2IGBrDg==
-X-Gm-Gg: ASbGncvsQuil2Ht4NbXiGtsV8Ae9SiBGx2+zWbf0IQKvnzp6LOVPsHNhhCKfeYHIkTb
- lKLxFfxNahAgSr+jXV9EXQVqatyddm1mPHEOpPjNGL5odiCcQpZ19yEw39NvqiyWlTj4dJSXldg
- wqRJXC8zZ8daVwF3smu3eYCtAUpTIKXIH0Eb9wVo0fUHUhmxDwtIeHm0c/kHMVPZZMMm0Kg8Bxn
- z6K2rWeGvWcEJ3IF2CMzcPg5jpciwb/XSEGvPWXvKnE7Va2Qa61npBi8EPlwWvRBPBdIN2G
-X-Google-Smtp-Source: AGHT+IFbDdIwWx7XVhFZ2HYqK7MJWY/IQ5E8pWk4PvWwI/wIh4twpVg7DgGfekCeIYkrIG4Uo7UsxOyC/vyQAR7v52A=
-X-Received: by 2002:a05:690c:399:b0:78a:834e:b106 with SMTP id
- 00721157ae682-78bff634c32mr18700467b3.25.1764681638096; Tue, 02 Dec 2025
- 05:20:38 -0800 (PST)
+ AJvYcCXzA1Z37u62/Ms7z8VwJYVh5hctOCqSN9ZDka0oJrKcSnJMZ7XTAITBWz8HgdLTnclAZedc6Ln0yw==@nongnu.org
+X-Gm-Message-State: AOJu0Yxmnp4GBF9MZm5eNPBYW3oiIme1eyrcDgKYn33KDrsKYe23d4CG
+ WAgIvTzXOjDan44LNR4O2wiTa07lqUqd+Sxgl9UyfuvWRfeSDLe3A6TVHQQ3tSZW7DV6+ZP8jng
+ xPf7V0Rwfwac8gQVNnhBY3TPJ7ALGcCl4zxTf+GDbcD4qIhuxjEOlQA==
+X-Gm-Gg: ASbGncswovr34jicBdkHHUGwpJojNwOyI2tmmYZSUoZ9Uuo6n1g/7v4SZuCYG8HIeUr
+ HlcvECi4ZOUeVFAvyCZM7d+IOEw6rCMp2LTLkjgJedbRCIyXPoW09NlbXOJzO8q+nJ0G99MM/5A
+ 857suRo3mgqgKpWMrsVWygX4YzTzp4ZPEHaoAVwhg6LUf3P3MKdqEZM97vtf6i4Oc3rFdpeO4ve
+ xOwvrRdBVoMl8rjpRz+nz01DvNaEy6u91Clwmtgkg0GVqWvH04bqkPD3UPYig57qta85jydhTES
+ apRzNtpPZMrw7lKyZ9eSgkvUWrA7hgVQM05k2+8Ir3BfMRR9O04HACxq0RffCUBDiNyZFxGsy1L
+ gow2Ufwkn0ufLF1Wt5KstiL5I5gCaJP9jq41xg1cNabL8k3eg+P9CjTm5Sg==
+X-Received: by 2002:a05:620a:4012:b0:888:f40a:256 with SMTP id
+ af79cd13be357-8b33d469e26mr5988567385a.65.1764683584315; 
+ Tue, 02 Dec 2025 05:53:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFmv7c8d2ZM3yY/6nK6zWHVp4LHdHRNNk8muK54O5kKPIoCSVgJChET2fbFhOsR4tMbtP1h2g==
+X-Received: by 2002:a05:620a:4012:b0:888:f40a:256 with SMTP id
+ af79cd13be357-8b33d469e26mr5988562285a.65.1764683583771; 
+ Tue, 02 Dec 2025 05:53:03 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:fa3:e4b0:95dc:ab11:92db:6f9e?
+ ([2a01:e0a:fa3:e4b0:95dc:ab11:92db:6f9e])
+ by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-8b52a1df6b9sm1076584585a.53.2025.12.02.05.53.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 02 Dec 2025 05:53:02 -0800 (PST)
+Message-ID: <ac4ba17f-47ac-4c67-b2e6-c8d835ee0e6f@redhat.com>
+Date: Tue, 2 Dec 2025 14:53:00 +0100
 MIME-Version: 1.0
-References: <20251127004435.2098335-1-gshan@redhat.com>
- <20251201131729.615abe68@foz.lan>
- <12b7baee-1d6d-440a-a119-971b47d7f3ad@redhat.com>
- <20251201153121.190c22ec@foz.lan>
- <dd43197e-ff56-4adf-a413-03f63d5f5078@redhat.com>
-In-Reply-To: <dd43197e-ff56-4adf-a413-03f63d5f5078@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Dec 2025 13:20:26 +0000
-X-Gm-Features: AWmQ_bkqFgNduGew7C_ZevHLFJ_sGthu2wIX_qkiURLvF6gbo8GKmy9qMz0-CfU
-Message-ID: <CAFEAcA8P9sRUWgKmxrdCiOsMKtVu8gzLUorhR7HLG+ZtzNOL0A@mail.gmail.com>
-Subject: Re: [PATCH 0/5] acpi/ghes: Error object handling improvement
-To: Gavin Shan <gshan@redhat.com>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, 
- jonathan.cameron@huawei.com, armbru@redhat.com, mst@redhat.com, 
- imammedo@redhat.com, anisinha@redhat.com, gengdongjiu1@gmail.com, 
- pbonzini@redhat.com, shan.gavin@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC v3 08/21] hw/arm/smmuv3: Add separate address space for
+ secure SMMU accesses
+To: Tao Tang <tangtao1634@phytium.com.cn>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>
+References: <20251012150701.4127034-1-tangtao1634@phytium.com.cn>
+ <20251012150701.4127034-9-tangtao1634@phytium.com.cn>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20251012150701.4127034-9-tangtao1634@phytium.com.cn>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: zSZUubKEn839j0-PpOaJxUMLZOXySNi3Sw2yCCHNG2Y_1764683584
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,48 +123,128 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 1 Dec 2025 at 14:38, Gavin Shan <gshan@redhat.com> wrote:
->
-> Hi Mauro,
->
-> On 12/2/25 12:31 AM, Mauro Carvalho Chehab wrote:
-> > On Tue, 2 Dec 2025 00:13:06 +1000
-> > Gavin Shan <gshan@redhat.com> wrote:
-> >> On 12/1/25 10:17 PM, Mauro Carvalho Chehab wrote:
-> >>> On Thu, 27 Nov 2025 10:44:30 +1000
-> >>> Gavin Shan <gshan@redhat.com> wrote:
->
-> [...]
->
-> >>>
-> >>> Btw, what setup are you using to test memory errors? It would be
-> >>> nice to have it documented somewhere, maybe at
-> >>> docs/specs/acpi_hest_ghes.rst.
-> >>>
-> >>
-> >> I don't think docs/specs/acpi_hest_ghes.rst is the right place for that
-> >> as it's for specifications.
-> >
-> > Perhaps not, but it would be nice to have it documented somewhere,
-> > either there or at QEMU wiki.
-> >
->
-> QEMU wiki may be the best place for it. I never updated to QEMU wiki and
-> any guiding steps on how to do that?
+Hi Tao,
 
-I think in general we should prefer to document things in docs/
-if we think users would want to know them. If it's just a
-test setup then perhaps docs/devel, or if feasible actually
-make it a test in tests/. The wiki is largely unused except
-for the changelog and planning docs.
+On 10/12/25 5:06 PM, Tao Tang wrote:
+> According to the Arm architecture, SMMU-originated memory accesses,
+> such as fetching commands or writing events for a secure stream, must
+> target the Secure Physical Address (PA) space. The existing model sends
+> all DMA to the global non-secure address_space_memory.
+>
+> This patch introduces the infrastructure to differentiate between secure
+> and non-secure memory accesses. Firstly, SMMU_SEC_SID_S is added in
+> SMMUSecSID enum to represent the secure context. Then a weak global
+> symbol, arm_secure_address_space, is added, which can be provided by the
+> machine model to represent the Secure PA space.
+>
+> A new helper, smmu_get_address_space(), selects the target address
+> space based on SEC_SID. All internal DMA calls
+> (dma_memory_read/write) will be updated to use this helper in follow-up
+> patches.
+>
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> ---
+>  hw/arm/smmu-common.c         |  8 ++++++++
+>  hw/arm/virt.c                |  5 +++++
+>  include/hw/arm/smmu-common.h | 27 +++++++++++++++++++++++++++
+>  3 files changed, 40 insertions(+)
+>
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 62a7612184..24db448683 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -30,6 +30,14 @@
+>  #include "hw/arm/smmu-common.h"
+>  #include "smmu-internal.h"
+>  
+> +/* Global state for secure address space availability */
+> +bool arm_secure_as_available;
+don't you need to initialize it?
 
-(In an ideal world we'd check for parts of the wiki that still
-have useful-to-users up to date information, and fold them into
-our manuals.)
+why is it local to the SMMU. To me the secure address space sounds
+global like address_space_memory usable by other IPs than the SMMU and
+the CPUs.
+> +
+> +void smmu_enable_secure_address_space(void)
+> +{
+> +    arm_secure_as_available = true;
+> +}
+> +
+>  /* IOTLB Management */
+>  
+>  static guint smmu_iotlb_key_hash(gconstpointer v)
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 175023897a..83dc62a095 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -92,6 +92,8 @@
+>  #include "hw/cxl/cxl_host.h"
+>  #include "qemu/guest-random.h"
+>  
+> +AddressSpace arm_secure_address_space;
+> +
+>  static GlobalProperty arm_virt_compat[] = {
+>      { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
+>  };
+> @@ -2257,6 +2259,9 @@ static void machvirt_init(MachineState *machine)
+>          memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
+>                             UINT64_MAX);
+>          memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
+> +        address_space_init(&arm_secure_address_space, secure_sysmem,
+> +                           "secure-memory-space");
+besides using dynamic allocation like in cpu_address_space_init() would
+allow to get rid of arm_secure_as_available
+> +        smmu_enable_secure_address_space();
+>      }
+>  
+>      firmware_loaded = virt_firmware_init(vms, sysmem,
+> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+> index b0dae18a62..d54558f94b 100644
+> --- a/include/hw/arm/smmu-common.h
+> +++ b/include/hw/arm/smmu-common.h
+> @@ -43,9 +43,36 @@
+>  /* StreamID Security state */
+>  typedef enum SMMUSecSID {
+>      SMMU_SEC_SID_NS = 0,
+> +    SMMU_SEC_SID_S,
+>      SMMU_SEC_SID_NUM,
+>  } SMMUSecSID;
+>  
+> +extern AddressSpace __attribute__((weak)) arm_secure_address_space;
+> +extern bool arm_secure_as_available;
+> +void smmu_enable_secure_address_space(void);
+> +
+> +/*
+> + * Return the address space corresponding to the SEC_SID.
+> + * If SEC_SID is Secure, but secure address space is not available,
+> + * return NULL and print a warning message.
+> + */
+> +static inline AddressSpace *smmu_get_address_space(SMMUSecSID sec_sid)
+> +{
+> +    switch (sec_sid) {
+> +    case SMMU_SEC_SID_NS:
+> +        return &address_space_memory;
+> +    case SMMU_SEC_SID_S:
+> +        if (!arm_secure_as_available || arm_secure_address_space.root == NULL) {
+> +            printf("Secure address space requested but not available");
+> +            return NULL;
+> +        }
+> +        return &arm_secure_address_space;
+> +    default:
+> +        printf("Unknown SEC_SID value %d", sec_sid);
+> +        return NULL;
+> +    }
+> +}
+> +
+>  /*
+>   * Page table walk error types
+>   */
+Thanks
 
-thanks
--- PMM
+Eric
+
 

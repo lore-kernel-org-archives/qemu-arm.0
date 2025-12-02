@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A726FD11705
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 16:12:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FDC4D11707
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 16:12:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vQSuO-0002Na-2y; Tue, 02 Dec 2025 11:07:23 -0500
+	id 1vQSu1-0000jY-Ta; Tue, 02 Dec 2025 11:06:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vQSuF-00029u-RI; Tue, 02 Dec 2025 11:07:13 -0500
+ id 1vQStz-0000LT-79; Tue, 02 Dec 2025 11:06:55 -0500
 Received: from mgamail.intel.com ([192.198.163.7])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vQSuE-00088I-2Y; Tue, 02 Dec 2025 11:07:11 -0500
+ id 1vQStx-0007xU-65; Tue, 02 Dec 2025 11:06:54 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1764691630; x=1796227630;
+ t=1764691613; x=1796227613;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=89F41mSOuYhugFJj7jF488k0MReP/Q9Ed85C0vFns40=;
- b=CwoEuQJ/lGWGvChr59hUvjSGDjwE9ocIhEtRZSyk75H+gIRto/01SIGf
- EwsUf5ZV3blPcJlWhWz5laL37woyR83jZTASep3QK1MM5mfTeUOlFjb8l
- IKjGl5ci8WEjtcC1b7YdkYleJNJQfSibP7lHarccKZXqneIaMt8KoXG3F
- lC2Ae8gw+lDawsr5p6sevBmeLDN/FJt6KerVYxdM0FzJIb5ZoxX49t6QU
- Fo9w8r02iM0dZaDlGXpivvPRz9Hu2JdgWooEZlDoA/o2COzZJaBA7lGRO
- 2Oug5xZeFEslRU2qzIV0agTNdPR82zMwHY7AejCxIo25ghIOcSS+cEg8y A==;
-X-CSE-ConnectionGUID: EUUoXNg1QaaX1EzKqxgN6w==
-X-CSE-MsgGUID: ca31zYg5RPaz/PqPnz6XDA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11630"; a="92142856"
-X-IronPort-AV: E=Sophos;i="6.20,243,1758610800"; d="scan'208";a="92142856"
+ bh=/n0ftya4A99iHjWPZUr3WDol3H8mQTwBUoAVwDtk6y4=;
+ b=m0o2plEazctQtoiWzDDMbMtBjQGDpo6yYl2S9ozAxhC9KqwYeqGRvy8U
+ xcXyoBM5o5EzTNMNBGF6LrI4wIDLQmDxNdvZzwzBs8V51qqmXDXVmU/E9
+ XG9yqBGJiHV9c6fy1kFCNeVPljW58Lw4txIempqqc30PFIWqRD1DnsU9q
+ xiAGf+V40CxOIx3yZCiaj6yYijnADkU4CauV+QMjNFzI9djLuHaoE+MO4
+ Lci5EMmwMXSCbKZ4j7p40W7pBUdVEz3NiOjImb4yMhb+FQwnHqPV0CecP
+ K8H8M4635vNg2yv02HezMIRCUyTLQBUvjkm4KJ3zgvqNqDqWwIQ1IYaXf g==;
+X-CSE-ConnectionGUID: puSSr1yPQkyL9VdT3GcR+Q==
+X-CSE-MsgGUID: H+/si3JRRRyTbO17uI0HJA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11630"; a="92142798"
+X-IronPort-AV: E=Sophos;i="6.20,243,1758610800"; d="scan'208";a="92142798"
 Received: from orviesa005.jf.intel.com ([10.64.159.145])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Dec 2025 08:07:08 -0800
-X-CSE-ConnectionGUID: chFndAIkR6Gryt9wY9xekA==
-X-CSE-MsgGUID: cqcEw527TwmS1tzvB+S+yA==
+ 02 Dec 2025 08:06:50 -0800
+X-CSE-ConnectionGUID: H0vus8aaRLakTXdaogt3nQ==
+X-CSE-MsgGUID: TEFPBB7vSquCrbpUZ8eS+A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.20,243,1758610800"; d="scan'208";a="199537786"
+X-IronPort-AV: E=Sophos;i="6.20,243,1758610800"; d="scan'208";a="199537727"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
- by orviesa005.jf.intel.com with ESMTP; 02 Dec 2025 08:06:59 -0800
+ by orviesa005.jf.intel.com with ESMTP; 02 Dec 2025 08:06:41 -0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
  "Michael S . Tsirkin" <mst@redhat.com>,
@@ -72,10 +72,10 @@ Cc: qemu-devel@nongnu.org, devel@lists.libvirt.org, kvm@vger.kernel.org,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
  Jiri Denemark <jdenemar@redhat.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v5 20/28] hw/virtio/virtio-mmio: Remove
- VirtIOMMIOProxy::format_transport_address field
-Date: Wed,  3 Dec 2025 00:28:27 +0800
-Message-Id: <20251202162835.3227894-21-zhao1.liu@intel.com>
+Subject: [PATCH v5 18/28] hw/intc/apic: Remove
+ APICCommonState::legacy_instance_id field
+Date: Wed,  3 Dec 2025 00:28:25 +0800
+Message-Id: <20251202162835.3227894-19-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20251202162835.3227894-1-zhao1.liu@intel.com>
 References: <20251202162835.3227894-1-zhao1.liu@intel.com>
@@ -109,66 +109,60 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-The VirtIOMMIOProxy::format_transport_address boolean was only set
-in the hw_compat_2_6[] array, via the 'format_transport_address=off'
+The APICCommonState::legacy_instance_id boolean was only set
+in the pc_compat_2_6[] array, via the 'legacy-instance-id=on'
 property. We removed all machines using that array, lets remove
-that property, simplifying virtio_mmio_bus_get_dev_path().
+that property, simplifying apic_common_realize().
+
+Because instance_id is initialized as initial_apic_id, we can
+not register vmstate_apic_common directly via dc->vmsd.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/virtio/virtio-mmio.c         | 15 ---------------
- include/hw/virtio/virtio-mmio.h |  1 -
- 2 files changed, 16 deletions(-)
+ hw/intc/apic_common.c           | 5 -----
+ include/hw/i386/apic_internal.h | 1 -
+ 2 files changed, 6 deletions(-)
 
-diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
-index c05c00bcd4a7..c779836201d5 100644
---- a/hw/virtio/virtio-mmio.c
-+++ b/hw/virtio/virtio-mmio.c
-@@ -764,8 +764,6 @@ static void virtio_mmio_pre_plugged(DeviceState *d, Error **errp)
- /* virtio-mmio device */
+diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
+index ec9e978b0b40..69a7b1bd5d3e 100644
+--- a/hw/intc/apic_common.c
++++ b/hw/intc/apic_common.c
+@@ -276,9 +276,6 @@ static void apic_common_realize(DeviceState *dev, Error **errp)
+         info->enable_tpr_reporting(s, true);
+     }
  
- static const Property virtio_mmio_properties[] = {
--    DEFINE_PROP_BOOL("format_transport_address", VirtIOMMIOProxy,
--                     format_transport_address, true),
-     DEFINE_PROP_BOOL("force-legacy", VirtIOMMIOProxy, legacy, true),
-     DEFINE_PROP_BIT("ioeventfd", VirtIOMMIOProxy, flags,
-                     VIRTIO_IOMMIO_FLAG_USE_IOEVENTFD_BIT, true),
-@@ -827,19 +825,6 @@ static char *virtio_mmio_bus_get_dev_path(DeviceState *dev)
-     virtio_mmio_proxy = VIRTIO_MMIO(virtio_mmio_bus->parent);
-     proxy_path = qdev_get_dev_path(DEVICE(virtio_mmio_proxy));
- 
--    /*
--     * If @format_transport_address is false, then we just perform the same as
--     * virtio_bus_get_dev_path(): we delegate the address formatting for the
--     * device on the virtio-mmio bus to the bus that the virtio-mmio proxy
--     * (i.e., the device that implements the virtio-mmio bus) resides on. In
--     * this case the base address of the virtio-mmio transport will be
--     * invisible.
--     */
--    if (!virtio_mmio_proxy->format_transport_address) {
--        return proxy_path;
+-    if (s->legacy_instance_id) {
+-        instance_id = VMSTATE_INSTANCE_ID_ANY;
 -    }
--
--    /* Otherwise, we append the base address of the transport. */
-     section = memory_region_find(&virtio_mmio_proxy->iomem, 0, 0x200);
-     assert(section.mr);
+     vmstate_register_with_alias_id(NULL, instance_id, &vmstate_apic_common,
+                                    s, -1, 0, NULL);
  
-diff --git a/include/hw/virtio/virtio-mmio.h b/include/hw/virtio/virtio-mmio.h
-index aa492620228d..8b19ec2291ac 100644
---- a/include/hw/virtio/virtio-mmio.h
-+++ b/include/hw/virtio/virtio-mmio.h
-@@ -66,7 +66,6 @@ struct VirtIOMMIOProxy {
-     uint32_t guest_page_shift;
-     /* virtio-bus */
-     VirtioBusState bus;
--    bool format_transport_address;
-     /* Fields only used for non-legacy (v2) devices */
-     uint32_t guest_features[2];
-     VirtIOMMIOQueue vqs[VIRTIO_QUEUE_MAX];
+@@ -395,8 +392,6 @@ static const Property apic_properties_common[] = {
+     DEFINE_PROP_UINT8("version", APICCommonState, version, 0x14),
+     DEFINE_PROP_BIT("vapic", APICCommonState, vapic_control, VAPIC_ENABLE_BIT,
+                     true),
+-    DEFINE_PROP_BOOL("legacy-instance-id", APICCommonState, legacy_instance_id,
+-                     false),
+ };
+ 
+ static void apic_common_get_id(Object *obj, Visitor *v, const char *name,
+diff --git a/include/hw/i386/apic_internal.h b/include/hw/i386/apic_internal.h
+index 4a62fdceb4ea..0cb06bbc76c9 100644
+--- a/include/hw/i386/apic_internal.h
++++ b/include/hw/i386/apic_internal.h
+@@ -187,7 +187,6 @@ struct APICCommonState {
+     uint32_t vapic_control;
+     DeviceState *vapic;
+     hwaddr vapic_paddr; /* note: persistence via kvmvapic */
+-    bool legacy_instance_id;
+     uint32_t extended_log_dest;
+ };
+ 
 -- 
 2.34.1
 

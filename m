@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94703CFD2F6
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 14:18:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E301CFD2F6
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 15:20:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vQRD1-0006aL-Nv; Tue, 02 Dec 2025 09:18:27 -0500
+	id 1vQSAE-0007iK-VB; Tue, 02 Dec 2025 10:19:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vQRD0-0006Zt-6J
- for qemu-arm@nongnu.org; Tue, 02 Dec 2025 09:18:26 -0500
+ id 1vQSAE-0007i2-B2
+ for qemu-arm@nongnu.org; Tue, 02 Dec 2025 10:19:38 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vQRCw-0004Bz-Kt
- for qemu-arm@nongnu.org; Tue, 02 Dec 2025 09:18:24 -0500
+ id 1vQSAB-0007x0-R5
+ for qemu-arm@nongnu.org; Tue, 02 Dec 2025 10:19:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764685100;
+ s=mimecast20190719; t=1764688773;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=N02afQ6nsKtEvowCN0rYgCNOKt9twcfH2EwiRsRX6FU=;
- b=bzImdXLebD+6mDFWeVP5z2d+KWPUkoRi0c4bIGrH0I3Cj2uchRF9YE7RUyi/jsiu+zxG1U
- fJM1NhHH3Z0bljzMtY5preMqCMxCZHR9Ya4V7C439yvRmRuHsH/eWM2pWkMsr5FQKEV1vg
- twQGQt0SjdTMWppMVSvdpFNSRS7Wmz0=
+ bh=j500ZfWAcLcqWOvQJChvD4/q+ql06LYNDxDqWJYiYGI=;
+ b=ZAbZLDcp4FMK+nsphCsNMGSHd/TjgVXGcyou5rffIdK+oeDNX8UspGMfW8PPABTjYpirhB
+ u+B346rsIM4h7/VkZBOi4QI/QNkaXjjoJD1NtwWBnQxMz+FfaBqD9OxUmAsubD8Eh9B7hp
+ utZsFBLSlAAWTeJcEU7wKGTmWCgOZ5A=
 Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
  [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-345-3FHg_EyJP_KmJMwSis6pDA-1; Tue, 02 Dec 2025 09:18:19 -0500
-X-MC-Unique: 3FHg_EyJP_KmJMwSis6pDA-1
-X-Mimecast-MFC-AGG-ID: 3FHg_EyJP_KmJMwSis6pDA_1764685099
+ us-mta-45-rt8U2bSwO3Gt-PRMDb0hLg-1; Tue, 02 Dec 2025 10:19:32 -0500
+X-MC-Unique: rt8U2bSwO3Gt-PRMDb0hLg-1
+X-Mimecast-MFC-AGG-ID: rt8U2bSwO3Gt-PRMDb0hLg_1764688772
 Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-8b2e41884a0so1269880685a.1
- for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 06:18:19 -0800 (PST)
+ af79cd13be357-8b2dbd36752so1090292585a.0
+ for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 07:19:32 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764685099; x=1765289899;
+ d=1e100.net; s=20230601; t=1764688771; x=1765293571;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=N02afQ6nsKtEvowCN0rYgCNOKt9twcfH2EwiRsRX6FU=;
- b=EC82qHikyo48ZjIDUoxdQCkKs0FxLys8FTjNlLXqRrokn+ZuRFrI5o+++QO23Txwuo
- DqZwX2TpowOpR5jrkCWfnCiMVMLV9doR+n8uZy0QXTn3wg3gs0Kx27Qq1jqImnXsDg1m
- Dr+uwqxQIgHcX1Sb9NR6OreTWZduMUaMtXogYTxwxOJdG47C6EpzmUvMLHPpTqaiG+eo
- EnkKPdj5K1APjWlZRWexs5hV8gMrUZ4I60Tda399C4WVf35SmQvVTz1bZzyrLmtWEP1X
- IclMlKeUZUWmO6a477nyHcCuebnSWodvlkBx/NrPXKZGnmvIZRaGoWBKAJtxMvupLFax
- ggVA==
+ bh=j500ZfWAcLcqWOvQJChvD4/q+ql06LYNDxDqWJYiYGI=;
+ b=TUrBjQgnOMXDZUMAQ2hjIVb1duuhaw7PIwmrhNYcQJzZmbSlqjeA+qNDEu+GWKsemM
+ +axs4FCg5axQo9TCFBxSnoA2m47ABzFxatQK1AUcOgqEiHUGGRZVehgoMoE6hGcZNIE3
+ bjR/yfCE8nEs2Ce7KeRSvq/c88/5CbXB3EZ7A+2u+XXXZn4nGUZ9CDGANLTTnOimyWyR
+ Z33KgjOO/dakLTZM4ycuk1+U7k8pT1yX7uOXLBVZ9LRYw8BFghCgnBaL8KaXwuHgSmQr
+ 0Ccclmr0ryE/57SyCdBkp6hn3g6FywJESYThlxbqC9FsvYbgQnK65zf2iYE2je0SdUwY
+ G9jg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWBtndt5AWNWgIV9cmqhjVhqlZ3ftQ06c19it6RQMHl2rTHoobEHhmSOaofO1+Wfx3+31hJ8UrIZw==@nongnu.org
-X-Gm-Message-State: AOJu0YzRv8Qznxv3i4i/WpYB2Sh14iW2QDBBVskzdH94fntcd9uQ1NB1
- KZ/Btpxe0XCNHlRV742Kfev8CHk5ExCku39YtSpeROIMzcLpFyk89u9aZbSSIsvW2nFTJm8X5iJ
- QNGQRtwU/UhaJXxwFzkP3D2EYt59pu/5Cyg0XlFpczd9VYMsrVJ5kqZMqE/fxZg==
-X-Gm-Gg: ASbGncvuNq7WjyvfJIRjYeCsd4G7Zf3J/dpmoteg1RIpAVl6DHQLDOc74vESwo0IjjY
- gMe6VywkkcScQm3Lf5KDnwSkUUpX4m+CY5VrcNJe0uWev5FR/vL+S6kqGdVDPM5fXSiUdT54tQb
- nYF7Xx+O+uSl5EDR2VnS276hXkNKbIb7SvSZTiBgPM78CwsJFHuWxwL16lmTHSqG6zFnlZQuZ8q
- RsUtdAUXDThUqO6lUO/f0Vm3drXm+cV/j8YrI57lSpc/rWp6kKjARGpcyo3OuUybrDNul/kT8fZ
- oCvSLcfees7n239o2nQE3CpBKKTHVmoau+MMfnkiuhyxc/a5YszkEaLQOTqtOg1/oZkDgRJs53e
- sEJEdyz/+ZKBO+voE9gpqX9oNHxKHidrGIawy153enrWTnwXvobcPihdxbQ==
-X-Received: by 2002:a05:620a:172c:b0:8b2:efb6:5d07 with SMTP id
- af79cd13be357-8b33d47823amr5530873685a.48.1764685098796; 
- Tue, 02 Dec 2025 06:18:18 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHBbdswql/b3NYDzcwk4inq93LOqv4tOlhQDI+gFHupHGdAci1VIVPdq1+6n1t1q+F01CINeg==
-X-Received: by 2002:a05:620a:172c:b0:8b2:efb6:5d07 with SMTP id
- af79cd13be357-8b33d47823amr5530866685a.48.1764685098262; 
- Tue, 02 Dec 2025 06:18:18 -0800 (PST)
+ AJvYcCXe/NFYxT34AvSECh4G6teyRXYcDUROztJewQi4EQ8hHU0Xwy1a+LFAi6qG4cw+htwfB+W8G/+ZsQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwEYEwXgzfPRWPPklTrHsxfXUJXAeJGQ/FYpwVcWwoowpybwqCd
+ qpPrJi4L1e09qqWYYAslZikg+QITEwUwgGrANF1RNqSA46iuvqzDuTac1GC93wLnTv0lybBBjFY
+ OCJfoBP+AimWApqr7IVBfQoobshmVI/66J1TKGUiYD+N6hmh6G4oPGg==
+X-Gm-Gg: ASbGncsg9et6C2qflxLdukwAoioGm4VEVrytRF0UbzGXkQnGnPaK8bDztlWJsnYyjYG
+ YNKhdmWvdoP2hQmyA853B0Fk5Wi1kgLUCNL5cV4ZErxs3Jq76XDzCmU4VsiXVOD7RgvoHK29xbr
+ 7L7x5hY58qP1InzvI1fmE0DFzeWwyH8aMvP+eIO23TA1Ml9kidRVJP7Gp1f0brVs1xGoqrwVwN2
+ L/sJDmcHQg6dyAexhBaY57U28hVBkQlTSykNG4Vk8CJu9pcOyX9o7CKmNs5kE6WEN7kj44WDpDr
+ JBlBeo30Mexm0lGjXuRk/aYLPngP90taa6yzo8WShkHugLYiAH0lzk7XhrB7vEPj3a4cvAdZ1as
+ 2WLCUyVP7JcHSYlVFkpq9hGvPJ3Vz+flG4X+rQY93cYvg+udvrxkj9acCDw==
+X-Received: by 2002:a05:620a:3194:b0:8a1:21a6:e054 with SMTP id
+ af79cd13be357-8b33d23b160mr5580378285a.4.1764688771315; 
+ Tue, 02 Dec 2025 07:19:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEHL85Rx8w4n1LCapLONifPJOe3WyI/lgWLd96TCzy2AGRhoi7a0c7AkJ0p+xDbfExhjUFezg==
+X-Received: by 2002:a05:620a:3194:b0:8a1:21a6:e054 with SMTP id
+ af79cd13be357-8b33d23b160mr5580373185a.4.1764688770823; 
+ Tue, 02 Dec 2025 07:19:30 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:fa3:e4b0:95dc:ab11:92db:6f9e?
  ([2a01:e0a:fa3:e4b0:95dc:ab11:92db:6f9e])
  by smtp.gmail.com with ESMTPSA id
- af79cd13be357-8b5304c960asm997598585a.19.2025.12.02.06.18.16
+ af79cd13be357-8b52a1b6f72sm1078979285a.29.2025.12.02.07.19.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Dec 2025 06:18:17 -0800 (PST)
-Message-ID: <a9a840a6-c65f-4352-9a49-ddd1b5483f43@redhat.com>
-Date: Tue, 2 Dec 2025 15:18:15 +0100
+ Tue, 02 Dec 2025 07:19:30 -0800 (PST)
+Message-ID: <6173cde1-ee30-45b5-a8dc-0cdb09a4b1f1@redhat.com>
+Date: Tue, 2 Dec 2025 16:19:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v3 10/21] hw/arm/smmu-common: Key configuration cache on
- SMMUDevice and SEC_SID
+Subject: Re: [RFC v3 11/21] hw/arm/smmuv3: Decode security attributes from
+ descriptors
 To: Tao Tang <tangtao1634@phytium.com.cn>,
  Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
@@ -92,11 +92,11 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Jean-Philippe Brucker <jean-philippe@linaro.org>,
  Mostafa Saleh <smostafa@google.com>
 References: <20251012150701.4127034-1-tangtao1634@phytium.com.cn>
- <20251012150701.4127034-11-tangtao1634@phytium.com.cn>
+ <20251012150701.4127034-12-tangtao1634@phytium.com.cn>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251012150701.4127034-11-tangtao1634@phytium.com.cn>
+In-Reply-To: <20251012150701.4127034-12-tangtao1634@phytium.com.cn>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ixy1C3f4UOnjSFVTkSbLKYPJBirQxdiHgdp4LgQlAEc_1764685099
+X-Mimecast-MFC-PROC-ID: xbnF4vdf_hDLIUByG3MALv4vZkuZ8qQMn4bfcctiaxY_1764688772
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -130,184 +130,132 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Hi Tao,
 
 On 10/12/25 5:06 PM, Tao Tang wrote:
-> Adapt the configuration cache to support multiple security states by
-> introducing a composite key, SMMUConfigKey. This key combines the
-> SMMUDevice with SEC_SID, preventing aliasing between Secure and
-> Non-secure configurations for the same device, also the future Realm and
-> Root configurations.
+> As the first step in implementing secure page table walks, this patch
+> introduces the logic to decode security-related attributes from various
+> SMMU structures.
 >
-> The cache lookup, insertion, and invalidation mechanisms are updated
-> to use this new keying infrastructure. This change is critical for
-> ensuring correct translation when a device is active in more than one
-> security world.
+> The NSCFG bits from the Context Descriptor are now decoded and stored.
+> These bits control the security attribute of the starting-level
+> translation table, which is crucial for managing secure and non-secure
+> memory accesses.
+>
+> The SMMU_S_IDR1.SEL2 bit is read to determine if Secure stage 2
+> translations are supported. This capability is cached in the
+> SMMUTransCfg structure for the page table walker's use.
+>
+> Finally, new macros (PTE_NS, PTE_NSTABLE) are added to prepare for
+> extracting attributes from page and table descriptors. To improve
+> clarity, these different attribute bits are organized into distinct
+> subsections in the header file.
 >
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
 > ---
->  hw/arm/smmu-common.c         | 45 ++++++++++++++++++++++++++++++++++--
->  hw/arm/smmuv3.c              | 13 +++++++----
->  include/hw/arm/smmu-common.h |  7 ++++++
->  3 files changed, 58 insertions(+), 7 deletions(-)
+>  hw/arm/smmu-internal.h       | 16 ++++++++++++++--
+>  hw/arm/smmuv3-internal.h     |  2 ++
+>  hw/arm/smmuv3.c              |  2 ++
+>  include/hw/arm/smmu-common.h |  3 +++
+>  4 files changed, 21 insertions(+), 2 deletions(-)
 >
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 82308f0e33..5fabe30c75 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -30,6 +30,26 @@
->  #include "hw/arm/smmu-common.h"
->  #include "smmu-internal.h"
+> diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
+> index d143d296f3..a0454f720d 100644
+> --- a/hw/arm/smmu-internal.h
+> +++ b/hw/arm/smmu-internal.h
+> @@ -58,16 +58,28 @@
+>      ((level == 3) &&                                                    \
+>       ((pte & ARM_LPAE_PTE_TYPE_MASK) == ARM_LPAE_L3_PTE_TYPE_PAGE))
 >  
-> +/* Configuration Cache Management */
-> +static guint smmu_config_key_hash(gconstpointer key)
-> +{
-> +    const SMMUConfigKey *k = key;
-> +    return g_direct_hash(k->sdev) ^ (guint)k->sec_sid;
-> +}
+> +/* Block & page descriptor attributes */
+> +/* Non-secure bit */
+> +#define PTE_NS(pte) \
+> +    (extract64(pte, 5, 1))
 > +
-> +static gboolean smmu_config_key_equal(gconstpointer a, gconstpointer b)
-> +{
-> +    const SMMUConfigKey *ka = a;
-> +    const SMMUConfigKey *kb = b;
-> +    return ka->sdev == kb->sdev && ka->sec_sid == kb->sec_sid;
-> +}
-> +
-> +SMMUConfigKey smmu_get_config_key(SMMUDevice *sdev, SMMUSecSID sec_sid)
-> +{
-> +    SMMUConfigKey key = {.sdev = sdev, .sec_sid = sec_sid};
-> +    return key;
-> +}
-> +
->  ARMSecuritySpace smmu_get_security_space(SMMUSecSID sec_sid)
->  {
->      switch (sec_sid) {
-> @@ -256,7 +276,8 @@ static gboolean smmu_hash_remove_by_vmid_ipa(gpointer key, gpointer value,
->  static gboolean
->  smmu_hash_remove_by_sid_range(gpointer key, gpointer value, gpointer user_data)
->  {
-> -    SMMUDevice *sdev = (SMMUDevice *)key;
-> +    SMMUConfigKey *config_key = (SMMUConfigKey *)key;
-> +    SMMUDevice *sdev = config_key->sdev;
->      uint32_t sid = smmu_get_sid(sdev);
->      SMMUSIDRange *sid_range = (SMMUSIDRange *)user_data;
+>  /* access permissions */
 >  
-> @@ -274,6 +295,24 @@ void smmu_configs_inv_sid_range(SMMUState *s, SMMUSIDRange sid_range)
->                                  &sid_range);
->  }
+>  #define PTE_AP(pte) \
+>      (extract64(pte, 6, 2))
 >  
-> +static gboolean smmu_hash_remove_by_sdev(gpointer key, gpointer value,
-> +                                         gpointer user_data)
-> +{
-> +    SMMUConfigKey *config_key = (SMMUConfigKey *)key;
-> +    SMMUDevice *target = (SMMUDevice *)user_data;
+> +/* access flag */
+> +#define PTE_AF(pte) \
+> +    (extract64(pte, 10, 1))
 > +
-> +    if (config_key->sdev != target) {
-> +        return false;
-> +    }
-> +    trace_smmu_config_cache_inv(smmu_get_sid(target));
-> +    return true;
-> +}
 > +
-> +void smmu_configs_inv_sdev(SMMUState *s, SMMUDevice *sdev)
-> +{
-> +    g_hash_table_foreach_remove(s->configs, smmu_hash_remove_by_sdev, sdev);
-> +}
+> +/* Table descriptor attributes */
+>  #define PTE_APTABLE(pte) \
+>      (extract64(pte, 61, 2))
+>  
+> -#define PTE_AF(pte) \
+> -    (extract64(pte, 10, 1))
+> +#define PTE_NSTABLE(pte) \
+> +    (extract64(pte, 63, 1))
 > +
->  void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
->                           uint8_t tg, uint64_t num_pages, uint8_t ttl)
->  {
-> @@ -961,7 +1000,9 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
->          error_propagate(errp, local_err);
->          return;
->      }
-> -    s->configs = g_hash_table_new_full(NULL, NULL, NULL, g_free);
-> +    s->configs = g_hash_table_new_full(smmu_config_key_hash,
-> +                                       smmu_config_key_equal,
-> +                                       g_free, g_free);
->      s->iotlb = g_hash_table_new_full(smmu_iotlb_key_hash, smmu_iotlb_key_equal,
->                                       g_free, g_free);
->      s->smmu_pcibus_by_busptr = g_hash_table_new(NULL, NULL);
+>  /*
+>   * TODO: At the moment all transactions are considered as privileged (EL1)
+>   * as IOMMU translation callback does not pass user/priv attributes.
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> index 99fdbcf3f5..1e757af459 100644
+> --- a/hw/arm/smmuv3-internal.h
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -703,6 +703,8 @@ static inline int oas2bits(int oas_field)
+>  #define CD_R(x)          extract32((x)->word[1], 13, 1)
+>  #define CD_A(x)          extract32((x)->word[1], 14, 1)
+>  #define CD_AARCH64(x)    extract32((x)->word[1], 9 , 1)
+> +#define CD_NSCFG0(x)     extract32((x)->word[2], 0, 1)
+> +#define CD_NSCFG1(x)     extract32((x)->word[4], 0, 1)
+>  
+>  /**
+>   * tg2granule - Decodes the CD translation granule size field according
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 351bbf1ae9..55f4ad1757 100644
+> index 55f4ad1757..3686056d8e 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -878,10 +878,11 @@ static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
->   *
->   * @sdev: SMMUDevice handle
->   * @event: output event info
-> + * @sec_sid: StreamID Security state
->   *
->   * The configuration cache contains data resulting from both STE and CD
->   * decoding under the form of an SMMUTransCfg struct. The hash table is indexed
-> - * by the SMMUDevice handle.
-> + * by a composite key of the SMMUDevice and the sec_sid.
->   */
->  static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
->                                         SMMUSecSID sec_sid)
-> @@ -889,8 +890,9 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
->      SMMUv3State *s = sdev->smmu;
->      SMMUState *bc = &s->smmu_state;
->      SMMUTransCfg *cfg;
-> +    SMMUConfigKey lookup_key = smmu_get_config_key(sdev, sec_sid);
->  
-> -    cfg = g_hash_table_lookup(bc->configs, sdev);
-> +    cfg = g_hash_table_lookup(bc->configs, &lookup_key);
->      if (cfg) {
->          sdev->cfg_cache_hits++;
->          trace_smmuv3_config_cache_hit(smmu_get_sid(sdev),
-> @@ -915,7 +917,9 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
+> @@ -812,6 +812,7 @@ static int decode_cd(SMMUv3State *s, SMMUTransCfg *cfg,
+>              tt->ttb = CACHED_ENTRY_TO_ADDR(entry, tt->ttb);
 >          }
 >  
->          if (!smmuv3_decode_config(&sdev->iommu, cfg, event)) {
-> -            g_hash_table_insert(bc->configs, sdev, cfg);
-> +            SMMUConfigKey *persistent_key = g_new(SMMUConfigKey, 1);
-> +            *persistent_key = lookup_key;
-> +            g_hash_table_insert(bc->configs, persistent_key, cfg);
->          } else {
->              g_free(cfg);
+> +        tt->nscfg = i ? CD_NSCFG1(cd) : CD_NSCFG0(cd);
+>          tt->had = CD_HAD(cd, i);
+>          trace_smmuv3_decode_cd_tt(i, tt->tsz, tt->ttb, tt->granule_sz, tt->had);
+>      }
+> @@ -915,6 +916,7 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
 >              cfg = NULL;
-> @@ -929,8 +933,7 @@ static void smmuv3_flush_config(SMMUDevice *sdev)
->      SMMUv3State *s = sdev->smmu;
->      SMMUState *bc = &s->smmu_state;
+>              return cfg;
+>          }
+> +        cfg->sel2 = FIELD_EX32(s->bank[SMMU_SEC_SID_S].idr[1], S_IDR1, SEL2);
+I don't get why we store sel2 in the cfg as it does not vary.
+
+Thanks
+
+Eric
 >  
-> -    trace_smmu_config_cache_inv(smmu_get_sid(sdev));
-> -    g_hash_table_remove(bc->configs, sdev);
-> +    smmu_configs_inv_sdev(bc, sdev);
->  }
->  
->  /* Do translation with TLB lookup. */
+>          if (!smmuv3_decode_config(&sdev->iommu, cfg, event)) {
+>              SMMUConfigKey *persistent_key = g_new(SMMUConfigKey, 1);
 > diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index c17c7db6e5..bccbbe0115 100644
+> index bccbbe0115..90a37fe32d 100644
 > --- a/include/hw/arm/smmu-common.h
 > +++ b/include/hw/arm/smmu-common.h
-> @@ -182,6 +182,11 @@ typedef struct SMMUIOTLBKey {
+> @@ -109,6 +109,7 @@ typedef struct SMMUTransTableInfo {
+>      uint8_t tsz;               /* input range, ie. 2^(64 -tsz)*/
+>      uint8_t granule_sz;        /* granule page shift */
+>      bool had;                  /* hierarchical attribute disable */
+> +    int nscfg;                /* Non-secure attribute of Starting-level TT */
+>  } SMMUTransTableInfo;
+>  
+>  typedef struct SMMUTLBEntry {
+> @@ -116,6 +117,7 @@ typedef struct SMMUTLBEntry {
 >      uint8_t level;
->  } SMMUIOTLBKey;
->  
-> +typedef struct SMMUConfigKey {
-> +    SMMUDevice *sdev;
+>      uint8_t granule;
+>      IOMMUAccessFlags parent_perm;
 > +    SMMUSecSID sec_sid;
-> +} SMMUConfigKey;
-> +
->  typedef struct SMMUSIDRange {
->      uint32_t start;
->      uint32_t end;
-> @@ -257,6 +262,7 @@ SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
->  void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry);
->  SMMUIOTLBKey smmu_get_iotlb_key(int asid, int vmid, uint64_t iova,
->                                  uint8_t tg, uint8_t level);
-> +SMMUConfigKey smmu_get_config_key(SMMUDevice *sdev, SMMUSecSID sec_sid);
->  void smmu_iotlb_inv_all(SMMUState *s);
->  void smmu_iotlb_inv_asid_vmid(SMMUState *s, int asid, int vmid);
->  void smmu_iotlb_inv_vmid(SMMUState *s, int vmid);
-> @@ -266,6 +272,7 @@ void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
->  void smmu_iotlb_inv_ipa(SMMUState *s, int vmid, dma_addr_t ipa, uint8_t tg,
->                          uint64_t num_pages, uint8_t ttl);
->  void smmu_configs_inv_sid_range(SMMUState *s, SMMUSIDRange sid_range);
-> +void smmu_configs_inv_sdev(SMMUState *s, SMMUDevice *sdev);
->  /* Unmap the range of all the notifiers registered to any IOMMU mr */
->  void smmu_inv_notifiers_all(SMMUState *s);
+>  } SMMUTLBEntry;
 >  
+>  /* Stage-2 configuration. */
+> @@ -156,6 +158,7 @@ typedef struct SMMUTransCfg {
+>      struct SMMUS2Cfg s2cfg;
+>      MemTxAttrs txattrs;        /* cached transaction attributes */
+>      AddressSpace *as;          /* cached address space */
+> +    int sel2;                 /* Secure EL2 and Secure stage 2 support */
+>  } SMMUTransCfg;
+>  
+>  typedef struct SMMUDevice {
 
 

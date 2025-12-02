@@ -4,113 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE9B3D11712
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 16:40:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A28ED1171E
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 17:52:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vQTPm-0008W4-5c; Tue, 02 Dec 2025 11:39:46 -0500
+	id 1vQUXq-0000jt-Un; Tue, 02 Dec 2025 12:52:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vQTPk-0008SR-Ch
- for qemu-arm@nongnu.org; Tue, 02 Dec 2025 11:39:44 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vQTPd-0000pI-RF
- for qemu-arm@nongnu.org; Tue, 02 Dec 2025 11:39:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764693568;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=W4/AYtEB34watU7mzWhvt/la20zD/AOTq45orngLKcw=;
- b=OblCNbmlj5iethFjPO5Nh4u7bKANBn3CdJ+8VdYnY2FdRhb0lc9nFr+a75OVV+x942bd0Y
- 0vMigzCbGTpVEG3eXXGeV4k/lhwZG2ZieCmtHkFjlS6K4/R1aXBM4wFp2WW698t2KBbdvA
- IXQJYyaEC4wKc76+3+bezq6+E6l2ZfU=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-643-beozO2jQOT2DoBcYv7Vm1w-1; Tue, 02 Dec 2025 11:39:27 -0500
-X-MC-Unique: beozO2jQOT2DoBcYv7Vm1w-1
-X-Mimecast-MFC-AGG-ID: beozO2jQOT2DoBcYv7Vm1w_1764693567
-Received: by mail-qt1-f197.google.com with SMTP id
- d75a77b69052e-4ed79dd4a47so108034121cf.3
- for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 08:39:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vQUXY-0000fb-VI
+ for qemu-arm@nongnu.org; Tue, 02 Dec 2025 12:51:54 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vQUXW-0001Vd-SV
+ for qemu-arm@nongnu.org; Tue, 02 Dec 2025 12:51:52 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-4775e891b5eso24777665e9.2
+ for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 09:51:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1764697908; x=1765302708; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=nNAKiD2KFQe7dDwm1ph5n7Eqp+TtKu8jd1cW1u/1N9k=;
+ b=elMwHUQRmOaaQGRtsphMqmQhedC2JfTcOK35Gxn8W+6V6g+Yb0yBXUrFi7BqpXDNGw
+ wMzqtlG+rpnvwErmnLUXIU1L1dZzHYmqOBMrypsaixOksWTVb8C3pTcHUe/bLyU4Rpue
+ +vxdt0mnbC0eK4SX5BYicbCZN0OFoM9zNeB0Y2k+hj5MIA4GDzxxeDDV8hLUghzVtQs0
+ PsrG3pqp7u1sxFAflqAUvX2FByYHF2zqhH/1JvjEP0uDjZHakPMnM6Yia0ih91E83OIt
+ KQSij64XZR5kqD7TBfDqDT6CTCJzlX0Qh8sdHMAmH1U9PYR/133kCT9zKevbrgeAD111
+ sxiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764693567; x=1765298367;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1764697908; x=1765302708;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=W4/AYtEB34watU7mzWhvt/la20zD/AOTq45orngLKcw=;
- b=ae5dPm2cMgv6osOC7nzzZhOta6p/FlIp7lDc38eyy9Jkz7tJUxyzK9PK8f6OrQ83Wp
- bB48ZXTmWZ6nmCDSZJ/AtuF2QEHoWqN5PXIYOvbIuINFAucKxHm1chEF1tRYP8lp8+qI
- /Jn08C/Bd3VMoV6HLzmrh+tWpdTW72dAtB9WsxZqVXRlHdLxR2mdbUgL0sYXPeFZrqb6
- InusTjTHNz3XXgfGZJIvEh7IusKiwh52PWuEv3Nq9hOig4CT9PW1zXf3kT1f0fRY5SuL
- SckvIARSi3iTJ7SCLc2L3sQjK+G6vgokkPy2JK5M4bZqfzCc/wM5ZhdT58+IPc2QC6uS
- WQxA==
+ bh=nNAKiD2KFQe7dDwm1ph5n7Eqp+TtKu8jd1cW1u/1N9k=;
+ b=AXsc//dOTUTmoz5O23+FmoY2hnSBYb8bzj4YgmHyYOHlAK5blvUysSpaM5AfRMa5Fx
+ ETfpVccf6KgqXrmkPd7Y8eXZhJC8lfgJQ9GFBBoYu6lZlIgDYHH4EZ1u1O8F/luEg6Vk
+ pD3mDPZ5LFkoHsVMnNldbmbW+eJt9NkbNmh8IO9LGW1IaeX4P9hLjTHwaYrXBU9pZ3MM
+ JMzw2nOVkXot7Cs2VUv4OqrJZ2HQgdj5ZK1mtE9mApC48CtT1xUie35UaAqerTUQP1Px
+ VOsGe60q1B1J8HjEi+kl1gGX+rfk9OXjhUMoAGpiOtI4YpAsOd8MJX4E4ZwjLD1sWtt4
+ Om4g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV52zE4xeezZt5Df7T1ikCwZkM2fsQTTrHkp/OZw2eGd/XX4gGE31w1kaunfXlpH8mxINWWnsUH6A==@nongnu.org
-X-Gm-Message-State: AOJu0YyxGzSuqF+0TT5wx/V1YJJB1AOryKn+VqcRPL6nCuzsL4ugA9x8
- 4FGjp2ncsjYhlg4CIcA+xi7a8W/8/MSsgg+c2dlH/xv9vNDSLzfpwXMNGNVN8Gz954u5r4KGnRS
- GT41pRsCnoPcG1QHuZANa6pvaTIaNQbSKF8iN9qHeUqxRzW/iarxhdg==
-X-Gm-Gg: ASbGnctNQVYRRximc/KU7GNeO4pgd9pm61P3jALR0lVf/mwxlGclZNhCDpGJE09LCGw
- Hf+s6Z0Om/RLaSf1FGlxKk6eyHVDjsBFwlQ5as9iHKiLPOeZ3+VQITIDOvc01bFDwRyqg0MAadi
- 66MM2HQF4u1m1A02aI3wo6twU8BUCL5Bw2SjcF8E8K03OR8F0wU1oQLm1hhvG5xJRx8x21+07My
- 12MUA/nA60jGtjcNBGPgTmOkdRBcGxF6pCXHkK7MLcRqOPC1DaXIvw4sfNfRFdtPIqS0vCz2oyy
- blXln61HSifTHoEhFCyVuOssOuJq2E7Kh+lpw3BaIjH/ygoyWP+1dNdpwS08mTcTATnxNY8vlWa
- b0GX07WmeRwjC9rirX41Lv2P2T513LowpK7McD3bDKsvi6lLmK4WpfIzkcA==
-X-Received: by 2002:a05:622a:11c5:b0:4e8:af8a:f951 with SMTP id
- d75a77b69052e-4ee5895c017mr605466291cf.83.1764693566817; 
- Tue, 02 Dec 2025 08:39:26 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEgmonitC+FW3bwYhVpB8TRJ+JaQ3KljMFVU8AhHBQGjhc7jkmiqUxuEWaGp/6vQco2kAkH/g==
-X-Received: by 2002:a05:622a:11c5:b0:4e8:af8a:f951 with SMTP id
- d75a77b69052e-4ee5895c017mr605465671cf.83.1764693566310; 
- Tue, 02 Dec 2025 08:39:26 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:fa3:e4b0:95dc:ab11:92db:6f9e?
- ([2a01:e0a:fa3:e4b0:95dc:ab11:92db:6f9e])
- by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-4efd341f0ecsm95033051cf.16.2025.12.02.08.39.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Dec 2025 08:39:25 -0800 (PST)
-Message-ID: <2ba17310-e032-44f6-a17f-a8f5b9dec003@redhat.com>
-Date: Tue, 2 Dec 2025 17:39:23 +0100
+ AJvYcCUuVcaoOZu+hlMv9FtG+swF9sq46hPXDqbSdU2P0gZaGLiI4ySOZ9otchnBWMw1wTP3bPGKwZbPlw==@nongnu.org
+X-Gm-Message-State: AOJu0YyuNLgI+erQqryfx0LdA4V76uB3aD5wL/lWCAWn0vgCoDQThxx8
+ ZSVai8rt1pCE7CSaHF4TnjUHYPmDscwAiVJf6MmJU3VWS+yHaPaYvZAfZuG5YVV+9Cs=
+X-Gm-Gg: ASbGncsj6Xdt4OYcEeus9f0VxaVp593ovQ/9pH5sswObRwJ3+Oy64UKmkDer1pP/3a2
+ EgvL4Elm0ngNcnK2mVKeBvBXUyv2VkX9LM4cTMCnf71mgTD43BhhhtZ/zgBYKX6kRdOKuNZyaCs
+ aHps47bnSSzATsVtHlzzzKYqQKbhfldVVyxo12Bz16y9Guz6NwCV6Ksj76ltNAw9z3AyoHm9RNn
+ 0avmd36SLzfQB09xxIbTBjRMPUqicfQt+a1RGr/BnvtA941eLEjp5559GGz+e1Vp7IvJ4r+Ug+v
+ 5rcSMlFSJo7lwbTXsBYs0PH9OLNAbiOgBtD7nidMgkGrFLKCKFLxlPPktDpi4zvLxYejF0kB4p7
+ Xxc1W/mNdY/jBw2KjxXl5yhbbUCUc9apC6WUvogqn9nCzyamJImv4p/11a+381NFVf67zm8mnwQ
+ hD6tettZpUSAjtrn7bXuOPpCEBaGIQUdPWpl+do2i2D2uCELDwJUCd8UE/l5FPP3fx5wlX+Qs=
+X-Google-Smtp-Source: AGHT+IGQWZrnhCXRrCNucUhJWFiPNs+g4YtJpn+pbgmUbfXkiD1t5XGrcULpcuYd3hQi9/Yd/6veiw==
+X-Received: by 2002:a05:600c:1d0e:b0:477:bb0:751b with SMTP id
+ 5b1f17b1804b1-477c01c4d79mr401104005e9.27.1764697908157; 
+ Tue, 02 Dec 2025 09:51:48 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4792a6530a5sm1689915e9.5.2025.12.02.09.51.47
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 02 Dec 2025 09:51:47 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Mads Ynddal <mads@ynddal.dk>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
+ Christian Stussak <christian.stussak@imaginary.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH-for-10.2] target/arm/hvf: Break loop if guest halted vCPU
+ during hv_vcpu_run()
+Date: Tue,  2 Dec 2025 18:51:46 +0100
+Message-ID: <20251202175146.20331-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v3 21/21] hw/arm/smmuv3: Add secure migration and enable
- secure state
-To: Tao Tang <tangtao1634@phytium.com.cn>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>
-References: <20251012150701.4127034-1-tangtao1634@phytium.com.cn>
- <20251012151611.4131627-1-tangtao1634@phytium.com.cn>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251012151611.4131627-1-tangtao1634@phytium.com.cn>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: eXzvVv4WNgeYxCb59Wnng50Pjym8OTQWbXBtkwGf6_c_1764693567
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,184 +100,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Since commit 93ac765076a we try to call hv_vcpu_run() many times
+in a row, but we missed the guest could have halted a vCPU; if so
+we need to return to outer loop.
 
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3228
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3230
+Fixes: 93ac765076a ("target/arm/hvf: Keep calling hv_vcpu_run() in loop")
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/arm/hvf/hvf.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-On 10/12/25 5:16 PM, Tao Tang wrote:
-> Introduce a bool secure_impl field to SMMUv3State and expose it as
-> a secure-impl device property. The introduction of this property is the
-> culminating step that activates the entire secure access data path,
-> tying together all previously merged logic to provide full support for
-> secure state accesses.
->
-> Add live migration support for the SMMUv3 secure register bank.
->
-> To correctly migrate the secure state, the migration logic must know
-> if the secure functionality is enabled. To facilitate this, a bool
-> secure_impl field is introduced and exposed as the secure-impl device
-> property. This property is introduced at the point it is first
-> required—for migration—and serves as the final piece of the series.
->
-> The introduction of this property also completes and activates the
-> entire secure access data path, tying together all previously merged
-> logic to provide full support for secure state accesses.
->
-> Usage:
->     -global arm-smmuv3,secure-impl=true
->
-> When this property is enabled, the capability is advertised to the
-> guest via the S_IDR1.SECURE_IMPL bit.
->
-> The migration is implemented as follows:
->
-> - A new vmstate_smmuv3_secure_bank, referenced by the smmuv3/bank_s
-> subsection, serializes the secure bank's registers and queues.
->
-> - A companion smmuv3/gbpa_secure subsection mirrors the non-secure
-> GBPA handling, migrating the register only if its value diverges
-> from the reset default.
->
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> ---
->  hw/arm/smmuv3.c         | 75 +++++++++++++++++++++++++++++++++++++++++
->  include/hw/arm/smmuv3.h |  1 +
->  2 files changed, 76 insertions(+)
->
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 0b366895ec..ce41a12a36 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -337,6 +337,7 @@ static void smmuv3_init_regs(SMMUv3State *s)
->  
->      memset(sbk->idr, 0, sizeof(sbk->idr));
->      sbk->idr[1] = FIELD_DP32(sbk->idr[1], S_IDR1, S_SIDSIZE, SMMU_IDR1_SIDSIZE);
-> +    sbk->idr[1] = FIELD_DP32(sbk->idr[1], S_IDR1, SECURE_IMPL, s->secure_impl);
->      sbk->gbpa = SMMU_GBPA_RESET_VAL;
->      sbk->cmdq.entry_size = sizeof(struct Cmd);
->      sbk->eventq.entry_size = sizeof(struct Evt);
-> @@ -2452,6 +2453,53 @@ static const VMStateDescription vmstate_smmuv3_queue = {
->      },
->  };
->  
-> +static const VMStateDescription vmstate_smmuv3_secure_bank = {
-> +    .name = "smmuv3_secure_bank",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (const VMStateField[]) {
-> +        VMSTATE_UINT32(features, SMMUv3RegBank),
-> +        VMSTATE_UINT8(sid_split, SMMUv3RegBank),
-> +        VMSTATE_UINT32_ARRAY(cr, SMMUv3RegBank, 3),
-> +        VMSTATE_UINT32(cr0ack, SMMUv3RegBank),
-> +        VMSTATE_UINT32(irq_ctrl, SMMUv3RegBank),
-> +        VMSTATE_UINT32(gerror, SMMUv3RegBank),
-> +        VMSTATE_UINT32(gerrorn, SMMUv3RegBank),
-> +        VMSTATE_UINT64(gerror_irq_cfg0, SMMUv3RegBank),
-> +        VMSTATE_UINT32(gerror_irq_cfg1, SMMUv3RegBank),
-> +        VMSTATE_UINT32(gerror_irq_cfg2, SMMUv3RegBank),
-> +        VMSTATE_UINT64(strtab_base, SMMUv3RegBank),
-> +        VMSTATE_UINT32(strtab_base_cfg, SMMUv3RegBank),
-> +        VMSTATE_UINT64(eventq_irq_cfg0, SMMUv3RegBank),
-> +        VMSTATE_UINT32(eventq_irq_cfg1, SMMUv3RegBank),
-> +        VMSTATE_UINT32(eventq_irq_cfg2, SMMUv3RegBank),
-> +        VMSTATE_STRUCT(cmdq, SMMUv3RegBank, 0,
-> +                       vmstate_smmuv3_queue, SMMUQueue),
-> +        VMSTATE_STRUCT(eventq, SMMUv3RegBank, 0,
-> +                       vmstate_smmuv3_queue, SMMUQueue),
-> +        VMSTATE_END_OF_LIST(),
-> +    },
-> +};
-> +
-> +static bool smmuv3_secure_bank_needed(void *opaque)
-> +{
-> +    SMMUv3State *s = opaque;
-> +
-> +    return s->secure_impl;
-> +}
-> +
-> +static const VMStateDescription vmstate_smmuv3_bank_s = {
-> +    .name = "smmuv3/bank_s",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .needed = smmuv3_secure_bank_needed,
-> +    .fields = (const VMStateField[]) {
-> +        VMSTATE_STRUCT(bank[SMMU_SEC_SID_S], SMMUv3State, 0,
-> +                       vmstate_smmuv3_secure_bank, SMMUv3RegBank),
-> +        VMSTATE_END_OF_LIST(),
-> +    },
-> +};
-> +
->  static bool smmuv3_gbpa_needed(void *opaque)
->  {
->      SMMUv3State *s = opaque;
-> @@ -2472,6 +2520,25 @@ static const VMStateDescription vmstate_gbpa = {
->      }
->  };
->  
-> +static bool smmuv3_gbpa_secure_needed(void *opaque)
-I don't think you need that subsection. You can directly put this in the
-secure subsection one. This was needed for NS to avoid breaking
-migration but here you shall not need it.
-
-Thanks
-
-Eric
-> +{
-> +    SMMUv3State *s = opaque;
-> +
-> +    return s->secure_impl &&
-> +           s->bank[SMMU_SEC_SID_S].gbpa != SMMU_GBPA_RESET_VAL;
-> +}
-> +
-> +static const VMStateDescription vmstate_gbpa_secure = {
-> +    .name = "smmuv3/gbpa_secure",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .needed = smmuv3_gbpa_secure_needed,
-> +    .fields = (const VMStateField[]) {
-> +        VMSTATE_UINT32(bank[SMMU_SEC_SID_S].gbpa, SMMUv3State),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  static const VMStateDescription vmstate_smmuv3 = {
->      .name = "smmuv3",
->      .version_id = 1,
-> @@ -2506,6 +2573,8 @@ static const VMStateDescription vmstate_smmuv3 = {
->      },
->      .subsections = (const VMStateDescription * const []) {
->          &vmstate_gbpa,
-> +        &vmstate_smmuv3_bank_s,
-> +        &vmstate_gbpa_secure,
->          NULL
->      }
->  };
-> @@ -2519,6 +2588,12 @@ static const Property smmuv3_properties[] = {
->       * Defaults to stage 1
->       */
->      DEFINE_PROP_STRING("stage", SMMUv3State, stage),
-> +    /*
-> +     * SECURE_IMPL field in S_IDR1 register.
-> +     * Indicates whether secure state is implemented.
-> +     * Defaults to false (0)
-> +     */
-> +    DEFINE_PROP_BOOL("secure-impl", SMMUv3State, secure_impl, false),
->  };
->  
->  static void smmuv3_instance_init(Object *obj)
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index e9012fcdb0..8fec3f8edb 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -69,6 +69,7 @@ struct SMMUv3State {
->      qemu_irq     irq[4];
->      QemuMutex mutex;
->      char *stage;
-> +    bool secure_impl;
->  };
->  
->  typedef enum {
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index de1e8fb8a05..10ac5559ca1 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -2029,10 +2029,6 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
+     int ret;
+     hv_return_t r;
+ 
+-    if (cpu->halted) {
+-        return EXCP_HLT;
+-    }
+-
+     flush_cpu_state(cpu);
+ 
+     do {
+@@ -2041,6 +2037,10 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
+             return EXCP_INTERRUPT;
+         }
+ 
++        if (cpu->halted) {
++            return EXCP_HLT;
++        }
++
+         bql_unlock();
+         cpu_exec_start(cpu);
+         r = hv_vcpu_run(cpu->accel->fd);
+-- 
+2.51.0
 
 

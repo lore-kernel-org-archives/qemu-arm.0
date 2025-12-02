@@ -4,101 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D547D1170A
-	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 16:11:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F250D11707
+	for <qemu-arm@archiver.kernel.org>; Tue,  2 Dec 2025 16:11:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vQSy2-0007Y9-Fa; Tue, 02 Dec 2025 11:11:06 -0500
+	id 1vQSum-0003d5-Ka; Tue, 02 Dec 2025 11:07:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vQSw6-0004wc-8Q
- for qemu-arm@nongnu.org; Tue, 02 Dec 2025 11:09:09 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1vQSui-0003KZ-69; Tue, 02 Dec 2025 11:07:40 -0500
+Received: from mgamail.intel.com ([192.198.163.7])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vQSw3-00006c-Pa
- for qemu-arm@nongnu.org; Tue, 02 Dec 2025 11:09:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764691742;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=U7+Ad1DQku/KL3b7bCdX4+uTWQCvm0tEszy834Ayws4=;
- b=IVx8cYxKOmOe5GXguHj3oiJc9Ats5Yk+2HGqv0u9sNA67dcmoF9fiQRtK4si/Bvxv1yDuX
- NQzHpDCphCLMGjJnxOOt2tAHtoT8e0SzKz+BZQ43teXFrRSPorefybonGUXiE4nZZXqgbt
- WoH9nV6Nhm68jyXHFxOHOVGTnTO3Edg=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-383-lh_p7Y-qOaqtaZDP2JBzAg-1; Tue, 02 Dec 2025 11:09:00 -0500
-X-MC-Unique: lh_p7Y-qOaqtaZDP2JBzAg-1
-X-Mimecast-MFC-AGG-ID: lh_p7Y-qOaqtaZDP2JBzAg_1764691740
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4775d8428e8so47215485e9.0
- for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 08:09:00 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764691740; x=1765296540;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=U7+Ad1DQku/KL3b7bCdX4+uTWQCvm0tEszy834Ayws4=;
- b=OU2oQo/R2bSfr84HAZFVAUzeMcCMbAbsmJyoCdts3KefRv0HZhIVITRwrsjuZVRnPh
- PgOvoaSqhRNDFigtXkeT6UWESqBRpfP5G3hANpIChhhYxwKn2Qc2gbeYUrVUhTEFdki5
- O7kFhxKcd+IqsXhf9Z2P4MuhSEpijjlGYT2zcM7Rh+s0G9d5F/CXnCPQa8opgknh/09X
- vzBW2x3P3WAgAKODZfSnpxgEqsSaAOZ0846iS5DNWrd0Lp2og8A7e6D4ViiKMOXhuEpU
- YsdwK/3IX8Ej0rv2HaS9Pg/9P3nMjlYZG2duqFRW6y1ldra3D8kAPwBGLslRrEVTsHmF
- 0Osg==
-X-Gm-Message-State: AOJu0Yw6Poqkrh9UDNP74Geqd43omG3DVleOw0yP/ZMBZHstXMvQlytr
- 7RGbH2NnC4I0Qi/sn4VAKVTcyJaZlOEEylo4e3NfKtfTiTrU3HjMYpVwvDbsZSK6l5ZiyaOH/eL
- tvLV+r53gmLvEK/uEeibxYKAzJaS4OE1IDP0mSAIt3RFmQKz9Jsu4sQ==
-X-Gm-Gg: ASbGncuCn95WUgXqoZ40F0ANr6z5ZdENLYgnAu6+BZQs1KSOMpth0bQJWn/SwztUbbA
- hMhXFH/R0L4TlHyJVgYmmRIhqnei49mIRLfvmDwwloxNarRrge5dzHpFE5wJmi5E6P5JM8txs85
- LiGMArUq91gyQVcrxKQfs/XU0wXvEYcPJHes1wcpLhbE6QZ8py7cbIi9PfZ2AMBuOlZYvmagyrD
- +1CHKLq83MAqCmc8927g/fB2VcxxMlCkYkDTdTVQE3O2Z9VUnTN3A9hPYUy/4bFlBH098M0WUsM
- ILbgyoayR2uG7I+agwpCECf6Bv1WjAkHrp0yuVp+Tzp1nanxFV7bzm6haxzamBL4hJimJkyM9Ba
- jXmSW1RSL2PHW1XEdnpn2diqRQa95xPe60+qqhX+L5X5b3zYtDKErLwNITj0j0zAJFqet3gDg
-X-Received: by 2002:a05:600c:1c8a:b0:477:5af7:6fa with SMTP id
- 5b1f17b1804b1-477c01ff636mr474350605e9.32.1764691739642; 
- Tue, 02 Dec 2025 08:08:59 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFCJcOKBkToQRQqCimSXYNAuCA53uuEuTDBUZ/jgsC1gwfTGJxcvlPlmY/zYIMOG9XF+jmUlA==
-X-Received: by 2002:a05:600c:1c8a:b0:477:5af7:6fa with SMTP id
- 5b1f17b1804b1-477c01ff636mr474350245e9.32.1764691739282; 
- Tue, 02 Dec 2025 08:08:59 -0800 (PST)
-Received: from rh.redhat.com
- (p200300f6af35a800883b071bf1f3e4b6.dip0.t-ipconnect.de.
- [2003:f6:af35:a800:883b:71b:f1f3:e4b6])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42e1caa767dsm34300899f8f.38.2025.12.02.08.08.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 02 Dec 2025 08:08:58 -0800 (PST)
-From: Sebastian Ott <sebott@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
- kvmarm@lists.linux.dev, Sebastian Ott <sebott@redhat.com>
-Subject: [PATCH v4 1/2] target/arm/kvm: add constants for new PSCI versions
-Date: Tue,  2 Dec 2025 17:08:52 +0100
-Message-ID: <20251202160853.22560-2-sebott@redhat.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20251202160853.22560-1-sebott@redhat.com>
-References: <20251202160853.22560-1-sebott@redhat.com>
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1vQSuf-0008Cu-LA; Tue, 02 Dec 2025 11:07:39 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1764691658; x=1796227658;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=xbQmgoe2IOU9HSvyb9lb+wg4Nep+wx7DJvs7Fx9TRRo=;
+ b=kkmfjHIkpZXBkDLXeHCZ1/CXQI3nKXljtwT6iibB7F1UvBuFsQxcx281
+ qvvHSMxT4xwYK2z7lZgB6/U0j4yQwFBisWHfm+32gg8ti1JY9xl7XwdSy
+ 0G1gPL/cv8qnQwo12UMgfGd++Gj3d0THFwgLByKNPnubcJqmrtdBuq9Kx
+ hguG1FMRI41Be63IXGFNU64s1qrMz4Y0pTtv3wNmX+W2k9Zw+UX+A6S1h
+ fBshfRWMF4I1HJ3n5OxAKmLYlDG+THIaeSluBm6vfHL/aaeQupXwB4hXV
+ mU/TvV+nhTo01mhRbeCieQqBzdZ9O1JpwgtlxXbOwKOwj4smM9P3HdDZ7 Q==;
+X-CSE-ConnectionGUID: jXU7DIaVRJ2ZPHu7NaEg9Q==
+X-CSE-MsgGUID: PpqVXOERRyGscs/UR/6dBg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11630"; a="92142974"
+X-IronPort-AV: E=Sophos;i="6.20,243,1758610800"; d="scan'208";a="92142974"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Dec 2025 08:07:36 -0800
+X-CSE-ConnectionGUID: K6boL9nXQgOc2bG5wpxHdg==
+X-CSE-MsgGUID: bP0+wkBRQX+2cM0IZVd8Aw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.20,243,1758610800"; d="scan'208";a="199537874"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
+ by orviesa005.jf.intel.com with ESMTP; 02 Dec 2025 08:07:26 -0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, devel@lists.libvirt.org, kvm@vger.kernel.org,
+ qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Sergio Lopez <slp@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Yi Liu <yi.l.liu@intel.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
+ Amit Shah <amit@kernel.org>, Xiaoyao Li <xiaoyao.li@intel.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?q?Cl=C3=A9ment=20Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Huacai Chen <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
+ Jiri Denemark <jdenemar@redhat.com>, Zhao Liu <zhao1.liu@intel.com>
+Subject: [PATCH v5 23/28] target/i386/cpu: Remove
+ CPUX86State::full_cpuid_auto_level field
+Date: Wed,  3 Dec 2025 00:28:30 +0800
+Message-Id: <20251202162835.3227894-24-zhao1.liu@intel.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20251202162835.3227894-1-zhao1.liu@intel.com>
+References: <20251202162835.3227894-1-zhao1.liu@intel.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 5zsa2nUvStAtHX3rswsOFDLHV4jxMEfpj4I0Nfg8yto_1764691740
-X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Received-SPF: pass client-ip=192.198.163.7; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,28 +107,177 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add constants for PSCI version 1_2 and 1_3.
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Signed-off-by: Sebastian Ott <sebott@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+The CPUX86State::full_cpuid_auto_level boolean was only
+disabled for the pc-q35-2.7 and pc-i440fx-2.7 machines,
+which got removed. Being now always %true, we can remove
+it and simplify x86_cpu_expand_features().
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- target/arm/kvm-consts.h | 2 ++
- 1 file changed, 2 insertions(+)
+Note, although libvirt still uses this property in its test cases, it
+was confirmed this property is not exposed to user directly [*].
 
-diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
-index 54ae5da7ce..9fba3e886d 100644
---- a/target/arm/kvm-consts.h
-+++ b/target/arm/kvm-consts.h
-@@ -97,6 +97,8 @@ MISMATCH_CHECK(QEMU_PSCI_1_0_FN_PSCI_FEATURES, PSCI_1_0_FN_PSCI_FEATURES);
- #define QEMU_PSCI_VERSION_0_2                     0x00002
- #define QEMU_PSCI_VERSION_1_0                     0x10000
- #define QEMU_PSCI_VERSION_1_1                     0x10001
-+#define QEMU_PSCI_VERSION_1_2                     0x10002
-+#define QEMU_PSCI_VERSION_1_3                     0x10003
+[*]: https://lore.kernel.org/qemu-devel/aDmphSY1MSxu7L9R@orkuz.int.mamuti.net/
+---
+ target/i386/cpu.c | 111 ++++++++++++++++++++++------------------------
+ target/i386/cpu.h |   3 --
+ 2 files changed, 54 insertions(+), 60 deletions(-)
+
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index 641777578637..72c69ba81c1b 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -9019,69 +9019,67 @@ void x86_cpu_expand_features(X86CPU *cpu, Error **errp)
  
- MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
- /* We don't bother to check every possible version value */
+     /* CPUID[EAX=7,ECX=0].EBX always increased level automatically: */
+     x86_cpu_adjust_feat_level(cpu, FEAT_7_0_EBX);
+-    if (cpu->full_cpuid_auto_level) {
+-        x86_cpu_adjust_feat_level(cpu, FEAT_1_EDX);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_1_ECX);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_6_EAX);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_7_0_ECX);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_7_1_EAX);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_7_1_ECX);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_7_1_EDX);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_7_2_EDX);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_8000_0001_EDX);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_8000_0001_ECX);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_8000_0007_EDX);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_8000_0008_EBX);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_C000_0001_EDX);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_SVM);
+-        x86_cpu_adjust_feat_level(cpu, FEAT_XSAVE);
+-
+-        /* Intel Processor Trace requires CPUID[0x14] */
+-        if ((env->features[FEAT_7_0_EBX] & CPUID_7_0_EBX_INTEL_PT)) {
+-            if (cpu->intel_pt_auto_level) {
+-                x86_cpu_adjust_level(cpu, &cpu->env.cpuid_min_level, 0x14);
+-            } else if (cpu->env.cpuid_min_level < 0x14) {
+-                mark_unavailable_features(cpu, FEAT_7_0_EBX,
+-                    CPUID_7_0_EBX_INTEL_PT,
+-                    "Intel PT need CPUID leaf 0x14, please set by \"-cpu ...,intel-pt=on,min-level=0x14\"");
+-            }
++    x86_cpu_adjust_feat_level(cpu, FEAT_1_EDX);
++    x86_cpu_adjust_feat_level(cpu, FEAT_1_ECX);
++    x86_cpu_adjust_feat_level(cpu, FEAT_6_EAX);
++    x86_cpu_adjust_feat_level(cpu, FEAT_7_0_ECX);
++    x86_cpu_adjust_feat_level(cpu, FEAT_7_1_EAX);
++    x86_cpu_adjust_feat_level(cpu, FEAT_7_1_ECX);
++    x86_cpu_adjust_feat_level(cpu, FEAT_7_1_EDX);
++    x86_cpu_adjust_feat_level(cpu, FEAT_7_2_EDX);
++    x86_cpu_adjust_feat_level(cpu, FEAT_8000_0001_EDX);
++    x86_cpu_adjust_feat_level(cpu, FEAT_8000_0001_ECX);
++    x86_cpu_adjust_feat_level(cpu, FEAT_8000_0007_EDX);
++    x86_cpu_adjust_feat_level(cpu, FEAT_8000_0008_EBX);
++    x86_cpu_adjust_feat_level(cpu, FEAT_C000_0001_EDX);
++    x86_cpu_adjust_feat_level(cpu, FEAT_SVM);
++    x86_cpu_adjust_feat_level(cpu, FEAT_XSAVE);
++
++    /* Intel Processor Trace requires CPUID[0x14] */
++    if ((env->features[FEAT_7_0_EBX] & CPUID_7_0_EBX_INTEL_PT)) {
++        if (cpu->intel_pt_auto_level) {
++            x86_cpu_adjust_level(cpu, &cpu->env.cpuid_min_level, 0x14);
++        } else if (cpu->env.cpuid_min_level < 0x14) {
++            mark_unavailable_features(cpu, FEAT_7_0_EBX,
++                CPUID_7_0_EBX_INTEL_PT,
++                "Intel PT need CPUID leaf 0x14, please set by \"-cpu ...,intel-pt=on,min-level=0x14\"");
+         }
++    }
+ 
+-        /*
+-         * Intel CPU topology with multi-dies support requires CPUID[0x1F].
+-         * For AMD Rome/Milan, cpuid level is 0x10, and guest OS should detect
+-         * extended toplogy by leaf 0xB. Only adjust it for Intel CPU, unless
+-         * cpu->vendor_cpuid_only has been unset for compatibility with older
+-         * machine types.
+-         */
+-        if (x86_has_cpuid_0x1f(cpu) &&
+-            (IS_INTEL_CPU(env) || !cpu->vendor_cpuid_only)) {
+-            x86_cpu_adjust_level(cpu, &env->cpuid_min_level, 0x1F);
+-        }
++    /*
++     * Intel CPU topology with multi-dies support requires CPUID[0x1F].
++     * For AMD Rome/Milan, cpuid level is 0x10, and guest OS should detect
++     * extended toplogy by leaf 0xB. Only adjust it for Intel CPU, unless
++     * cpu->vendor_cpuid_only has been unset for compatibility with older
++     * machine types.
++     */
++    if (x86_has_cpuid_0x1f(cpu) &&
++        (IS_INTEL_CPU(env) || !cpu->vendor_cpuid_only)) {
++        x86_cpu_adjust_level(cpu, &env->cpuid_min_level, 0x1F);
++    }
+ 
+-        /* Advanced Vector Extensions 10 (AVX10) requires CPUID[0x24] */
+-        if (env->features[FEAT_7_1_EDX] & CPUID_7_1_EDX_AVX10) {
+-            x86_cpu_adjust_level(cpu, &env->cpuid_min_level, 0x24);
+-        }
++    /* Advanced Vector Extensions 10 (AVX10) requires CPUID[0x24] */
++    if (env->features[FEAT_7_1_EDX] & CPUID_7_1_EDX_AVX10) {
++        x86_cpu_adjust_level(cpu, &env->cpuid_min_level, 0x24);
++    }
+ 
+-        /* SVM requires CPUID[0x8000000A] */
+-        if (env->features[FEAT_8000_0001_ECX] & CPUID_EXT3_SVM) {
+-            x86_cpu_adjust_level(cpu, &env->cpuid_min_xlevel, 0x8000000A);
+-        }
++    /* SVM requires CPUID[0x8000000A] */
++    if (env->features[FEAT_8000_0001_ECX] & CPUID_EXT3_SVM) {
++        x86_cpu_adjust_level(cpu, &env->cpuid_min_xlevel, 0x8000000A);
++    }
+ 
+-        /* SEV requires CPUID[0x8000001F] */
+-        if (sev_enabled()) {
+-            x86_cpu_adjust_level(cpu, &env->cpuid_min_xlevel, 0x8000001F);
+-        }
++    /* SEV requires CPUID[0x8000001F] */
++    if (sev_enabled()) {
++        x86_cpu_adjust_level(cpu, &env->cpuid_min_xlevel, 0x8000001F);
++    }
+ 
+-        if (env->features[FEAT_8000_0021_EAX]) {
+-            x86_cpu_adjust_level(cpu, &env->cpuid_min_xlevel, 0x80000021);
+-        }
++    if (env->features[FEAT_8000_0021_EAX]) {
++        x86_cpu_adjust_level(cpu, &env->cpuid_min_xlevel, 0x80000021);
++    }
+ 
+-        /* SGX requires CPUID[0x12] for EPC enumeration */
+-        if (env->features[FEAT_7_0_EBX] & CPUID_7_0_EBX_SGX) {
+-            x86_cpu_adjust_level(cpu, &env->cpuid_min_level, 0x12);
+-        }
++    /* SGX requires CPUID[0x12] for EPC enumeration */
++    if (env->features[FEAT_7_0_EBX] & CPUID_7_0_EBX_SGX) {
++        x86_cpu_adjust_level(cpu, &env->cpuid_min_level, 0x12);
+     }
+ 
+     /* Set cpuid_*level* based on cpuid_min_*level, if not explicitly set */
+@@ -10010,7 +10008,6 @@ static const Property x86_cpu_properties[] = {
+     DEFINE_PROP_UINT32("min-xlevel2", X86CPU, env.cpuid_min_xlevel2, 0),
+     DEFINE_PROP_UINT8("avx10-version", X86CPU, env.avx10_version, 0),
+     DEFINE_PROP_UINT64("ucode-rev", X86CPU, ucode_rev, 0),
+-    DEFINE_PROP_BOOL("full-cpuid-auto-level", X86CPU, full_cpuid_auto_level, true),
+     DEFINE_PROP_STRING("hv-vendor-id", X86CPU, hyperv_vendor),
+     DEFINE_PROP_BOOL("cpuid-0xb", X86CPU, enable_cpuid_0xb, true),
+     DEFINE_PROP_BOOL("x-vendor-cpuid-only", X86CPU, vendor_cpuid_only, true),
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index cee1f692a1c3..8c3eb86fa0c7 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -2292,9 +2292,6 @@ struct ArchCPU {
+     /* Force to enable cpuid 0x1f */
+     bool force_cpuid_0x1f;
+ 
+-    /* Enable auto level-increase for all CPUID leaves */
+-    bool full_cpuid_auto_level;
+-
+     /*
+      * Compatibility bits for old machine types (PC machine v6.0 and older).
+      * Only advertise CPUID leaves defined by the vendor.
 -- 
-2.42.0
+2.34.1
 
 

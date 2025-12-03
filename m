@@ -4,65 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 669E0D12D69
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Dec 2025 14:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80AF4D12D77
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Dec 2025 15:10:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vQntE-0002wH-G6; Wed, 03 Dec 2025 09:31:38 -0500
+	id 1vQoUr-00047l-BR; Wed, 03 Dec 2025 10:10:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vQnsg-0002ou-FU; Wed, 03 Dec 2025 09:31:03 -0500
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vQnsc-0008HG-IR; Wed, 03 Dec 2025 09:30:57 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwB3f2OXSTBp1tX4Ag--.1967S2;
- Wed, 03 Dec 2025 22:30:47 +0800 (CST)
-Received: from [192.168.31.152] (unknown [113.246.234.131])
- by mail (Coremail) with SMTP id AQAAfwAHXuuWSTBp5VIJAA--.3550S2;
- Wed, 03 Dec 2025 22:30:46 +0800 (CST)
-Message-ID: <d5dfb06e-b80a-4f13-b629-87f9545c4b4e@phytium.com.cn>
-Date: Wed, 3 Dec 2025 22:30:46 +0800
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1vQoUn-000472-AC; Wed, 03 Dec 2025 10:10:22 -0500
+Received: from mgamail.intel.com ([198.175.65.11])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1vQoUk-0001sr-S2; Wed, 03 Dec 2025 10:10:20 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1764774619; x=1796310619;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=c+CGSL03XsGeKR9rQ33s4wJDu4sorkvQt3kaI2+9WAw=;
+ b=jmz1825k95C6gJ7lHfVeN/obZj4fdeTLc1a0WAratwW2Kx89881HhL6l
+ QRlSSUE8CNKEEviQhS6Bvlqspgt9/1R5ZtXs3py7sOhXud2jit1G1cFzF
+ R1I4waLVpslCmkgZCdSLNQsL4kaKDd637XVqAYZ0zxJ5acQC5N5VrUAN4
+ fV9jvVBgOBJG13S5WObF8nmV72v3XzlLdr9EtiW+fWSiaxkMC5f7Ry+Cn
+ K5TV/EJYuZG5EfiOCCK7IIi0+LYj3diNuuk1SsoU8zscdr2TLrEDEf2mh
+ zrnLwVtEbHkIVT0ST0snE50drksqvNgWGT+/ST2/H/che0J1yDEXgGB1i Q==;
+X-CSE-ConnectionGUID: 1xjQcNR+Q5ag2AF7J0uqiw==
+X-CSE-MsgGUID: cYyrRtAQRwyRMuhQairiWQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11631"; a="77089733"
+X-IronPort-AV: E=Sophos;i="6.20,246,1758610800"; d="scan'208";a="77089733"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Dec 2025 07:10:14 -0800
+X-CSE-ConnectionGUID: LgrBsQSlSJ+2UVKin4iNlQ==
+X-CSE-MsgGUID: sBdsJ8WiSd6bV3A6DksBGA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.20,246,1758610800"; d="scan'208";a="199124349"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.39])
+ by fmviesa005.fm.intel.com with ESMTP; 03 Dec 2025 07:10:12 -0800
+Date: Wed, 3 Dec 2025 23:34:55 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, Xiaoyao Li <xiaoyao.li@intel.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ qemu-riscv@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH-for-11.0 v6 01/13] hw/ppc/mac: Use fw_cfg_init_mem_nodma()
+Message-ID: <aTBYnxMhcEsIiqG+@intel.com>
+References: <20251203060942.57851-1-philmd@linaro.org>
+ <20251203060942.57851-2-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v3 11/21] hw/arm/smmuv3: Decode security attributes from
- descriptors
-To: eric.auger@redhat.com, Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>
-References: <20251012150701.4127034-1-tangtao1634@phytium.com.cn>
- <20251012150701.4127034-12-tangtao1634@phytium.com.cn>
- <6173cde1-ee30-45b5-a8dc-0cdb09a4b1f1@redhat.com>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <6173cde1-ee30-45b5-a8dc-0cdb09a4b1f1@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwAHXuuWSTBp5VIJAA--.3550S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQANBWkvSDQGnQACsq
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxXrW7Ww45Kw43WrWxCw1UGFg_yoWrGrykpr
- WkGFn8KFW8J3WxKws2qr4avFs3Xws5tF1DCrn0gr95Aws0vryfWF1Ikry5KasF9rn5Jr42
- vr4qvas5urZFqrJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20251203060942.57851-2-philmd@linaro.org>
+Received-SPF: pass client-ip=198.175.65.11; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,115 +85,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Eric
+On Wed, Dec 03, 2025 at 07:09:29AM +0100, Philippe Mathieu-Daudé wrote:
+> Date: Wed,  3 Dec 2025 07:09:29 +0100
+> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Subject: [PATCH-for-11.0 v6 01/13] hw/ppc/mac: Use fw_cfg_init_mem_nodma()
+> X-Mailer: git-send-email 2.51.0
+> 
+> Use fw_cfg_init_mem_nodma() instead of open-coding it.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>  hw/ppc/mac_newworld.c | 11 +----------
+>  hw/ppc/mac_oldworld.c | 11 +----------
+>  2 files changed, 2 insertions(+), 20 deletions(-)
 
-On 2025/12/2 23:19, Eric Auger wrote:
-> Hi Tao,
->
-> On 10/12/25 5:06 PM, Tao Tang wrote:
->> As the first step in implementing secure page table walks, this patch
->> introduces the logic to decode security-related attributes from various
->> SMMU structures.
->>
->> The NSCFG bits from the Context Descriptor are now decoded and stored.
->> These bits control the security attribute of the starting-level
->> translation table, which is crucial for managing secure and non-secure
->> memory accesses.
->>
->> The SMMU_S_IDR1.SEL2 bit is read to determine if Secure stage 2
->> translations are supported. This capability is cached in the
->> SMMUTransCfg structure for the page table walker's use.
->>
->> Finally, new macros (PTE_NS, PTE_NSTABLE) are added to prepare for
->> extracting attributes from page and table descriptors. To improve
->> clarity, these different attribute bits are organized into distinct
->> subsections in the header file.
->>
->> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->> ---
->>   hw/arm/smmu-internal.h       | 16 ++++++++++++++--
->>   hw/arm/smmuv3-internal.h     |  2 ++
->>   hw/arm/smmuv3.c              |  2 ++
->>   include/hw/arm/smmu-common.h |  3 +++
->>   4 files changed, 21 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
->> index d143d296f3..a0454f720d 100644
->> --- a/hw/arm/smmu-internal.h
->> +++ b/hw/arm/smmu-internal.h
->> @@ -58,16 +58,28 @@
->>       ((level == 3) &&                                                    \
->>        ((pte & ARM_LPAE_PTE_TYPE_MASK) == ARM_LPAE_L3_PTE_TYPE_PAGE))
->>   
->> +/* Block & page descriptor attributes */
->> +/* Non-secure bit */
->> +#define PTE_NS(pte) \
->> +    (extract64(pte, 5, 1))
->> +
->>   /* access permissions */
->>   
->>   #define PTE_AP(pte) \
->>       (extract64(pte, 6, 2))
->>   
->> +/* access flag */
->> +#define PTE_AF(pte) \
->> +    (extract64(pte, 10, 1))
->> +
->> +
->> +/* Table descriptor attributes */
->>   #define PTE_APTABLE(pte) \
->>       (extract64(pte, 61, 2))
->>   
->> -#define PTE_AF(pte) \
->> -    (extract64(pte, 10, 1))
->> +#define PTE_NSTABLE(pte) \
->> +    (extract64(pte, 63, 1))
->> +
->>   /*
->>    * TODO: At the moment all transactions are considered as privileged (EL1)
->>    * as IOMMU translation callback does not pass user/priv attributes.
->> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
->> index 99fdbcf3f5..1e757af459 100644
->> --- a/hw/arm/smmuv3-internal.h
->> +++ b/hw/arm/smmuv3-internal.h
->> @@ -703,6 +703,8 @@ static inline int oas2bits(int oas_field)
->>   #define CD_R(x)          extract32((x)->word[1], 13, 1)
->>   #define CD_A(x)          extract32((x)->word[1], 14, 1)
->>   #define CD_AARCH64(x)    extract32((x)->word[1], 9 , 1)
->> +#define CD_NSCFG0(x)     extract32((x)->word[2], 0, 1)
->> +#define CD_NSCFG1(x)     extract32((x)->word[4], 0, 1)
->>   
->>   /**
->>    * tg2granule - Decodes the CD translation granule size field according
->> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index 55f4ad1757..3686056d8e 100644
->> --- a/hw/arm/smmuv3.c
->> +++ b/hw/arm/smmuv3.c
->> @@ -812,6 +812,7 @@ static int decode_cd(SMMUv3State *s, SMMUTransCfg *cfg,
->>               tt->ttb = CACHED_ENTRY_TO_ADDR(entry, tt->ttb);
->>           }
->>   
->> +        tt->nscfg = i ? CD_NSCFG1(cd) : CD_NSCFG0(cd);
->>           tt->had = CD_HAD(cd, i);
->>           trace_smmuv3_decode_cd_tt(i, tt->tsz, tt->ttb, tt->granule_sz, tt->had);
->>       }
->> @@ -915,6 +916,7 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
->>               cfg = NULL;
->>               return cfg;
->>           }
->> +        cfg->sel2 = FIELD_EX32(s->bank[SMMU_SEC_SID_S].idr[1], S_IDR1, SEL2);
-> I don't get why we store sel2 in the cfg as it does not vary.
->
-> Thanks
->
-> Eric
-
-You're absolutely rightâ€”caching SEL2 in SMMUTransCfg was unnecessary. I 
-didnâ€™t think it through carefully at the time. Iâ€™ll drop that change in 
-the next revision.
-
-Thanks,
-
-Tao
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
 

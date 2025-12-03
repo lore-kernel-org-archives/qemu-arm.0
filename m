@@ -4,88 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1959D116F3
-	for <qemu-arm@archiver.kernel.org>; Wed,  3 Dec 2025 07:02:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9CCFD1268E
+	for <qemu-arm@archiver.kernel.org>; Wed,  3 Dec 2025 07:02:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vQgrq-0002JF-KL; Wed, 03 Dec 2025 02:01:40 -0500
+	id 1vQgs6-0002Op-AG; Wed, 03 Dec 2025 02:01:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vQgrb-0002G8-Ox
- for qemu-arm@nongnu.org; Wed, 03 Dec 2025 02:01:27 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vQgrv-0002KD-Km
+ for qemu-arm@nongnu.org; Wed, 03 Dec 2025 02:01:46 -0500
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vQgrY-0001mW-Qk
- for qemu-arm@nongnu.org; Wed, 03 Dec 2025 02:01:23 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-47795f6f5c0so38264355e9.1
- for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 23:01:18 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vQgrt-0001oC-7J
+ for qemu-arm@nongnu.org; Wed, 03 Dec 2025 02:01:43 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-42e2d44c727so1727091f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 23:01:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1764745277; x=1765350077; darn=nongnu.org;
+ d=linaro.org; s=google; t=1764745299; x=1765350099; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=dIPPQJIkimIrAN/OqDJfIr0BzioIBa9UlO2MKnJW2u0=;
- b=CcRYshNFqnZvFQaChXK27K6LmswI8VnjgdqfXL+t3EeOD8wfKF+W4ux/R81sR5qwLL
- pKK9SmkZ+NfURYukLs5I0uzLdNQZYFN+v3Y7Wq1KGrdHZulrXEZib7NiGugXDBm+SBw2
- nuUJZe5XTrYcpU8CTTlKorh2p7VbBOpAj0Tj3Ohb1LbQVRvSNJ6/EkcPf2Sl+Zb2iR1I
- w5J2lvItY7Gl5cQB/e90C8yBuu9fJ6HEJX59bGNpoPDpGtzlOBWduwm2x98JXfgzmGZD
- VZQMzGpbkoxgeMbHpyx/WRu9XoOT9Gr1BmdwOZyZlkk/0RQZTwiJC42Fo60HBSh9PWwL
- 0azw==
+ bh=iLegxef/YiqYKWzWPFEOA2BIUc7KYmVqjzdVrXKPuiA=;
+ b=FCzkrSu+hSxXFItoXRLA0vw2PD2AWFL/QusmA2ZFGCqpSccfUA21tarLME28MaXxYK
+ Ip3TsvXzIWzR6FQ9o7dI6sHeqNC6pFe7sEGla7bUZ5PHNYmksOqAsbZ2CrZ1YNe3YZWn
+ S8dylEV3P3DOg0+2mt6SxI5h/4oVGufnDN1mgcaJqTL6cJ60BCuOfXzsOQwtJcNIu2An
+ VueCv+SFYj9baUFqamxpa51Cm2Eh5wVqcPXkp25o4KzUJeLMl2AavAyBoAXgHt9RW90C
+ BA3rewq61YWkZq70jTrVFToRulrODYimHuY3DAlxJmb1GOV+myXqth8yaICSmh/ZrmHA
+ Ms6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764745277; x=1765350077;
+ d=1e100.net; s=20230601; t=1764745299; x=1765350099;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=dIPPQJIkimIrAN/OqDJfIr0BzioIBa9UlO2MKnJW2u0=;
- b=Y8iqxKZIAo6gp1Y3Sakp/39Ap82f0UrfpcIn+QvmR7QlPAt9SLwj6GOGpqpo9ZheDB
- +rXvKBvHOWqykGY13vGeFcJFx2uYoJjphpCNTCX0pViClEFU0PTiNm7Hk1fR9ZowVR3/
- VQ4hHMwDVpkNY1ZR6I8D4/MwzhaL/CKEIO661PCa6s4Tagvle4vglMGSpKPQqbv2Dhjg
- QUG+pCAOYVu1WZ9oNL3g4Y67fWsrK2bizKA34rmwmkkSbSvInXdbjGad3+ZXUG+Rdsho
- KYSy3cP4WRzdi04Hlotxfe29WVPPqAFzGhi/fstlKDnLjK9zTWKTG8pBN2fiH6V+gHkO
- h/ig==
+ bh=iLegxef/YiqYKWzWPFEOA2BIUc7KYmVqjzdVrXKPuiA=;
+ b=my/NuzjOQPcFbWSadxKEcaa/HaBCxumhoxa9bIq8RDm0QksFiGOIjVGbUMEUm+znA7
+ zJpAtuhzopMpu6m59iusjxD23gRlRp7h2ecqeyDN5CLg6VkY1ynehl7gYAOH0zuIRGo6
+ i+XFd09DXS2egupNyfok02W/wqJVowHBkTvfGgVn9ZMKs/mrtGNvAS1340YvvttL+iWX
+ Ghs9mGWoshL6kpiNfeh0496N45WX98zgVrTC8/cUnGeat5iVmp6GTT2/ozX7EqwL4YEN
+ SXskiaD0GVQiuSFli0rhS91kmjD2UY5q/E66UokY0gLksEri1jWQWqUK8pzA5jjHXY2O
+ zk2A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVDjrkA5DPv65Zv0BsHvbKH89cIYTF6H+K9do5YoqqmUTkg3+wiq5g75iW755iKk7bXqn8cQNYakA==@nongnu.org
-X-Gm-Message-State: AOJu0YyLTGuI1OyjRRKAEMd/u15EhyxW6glU205l0TmhyRChD+kPQsw4
- ZiEFqLi8kS0Ln/9To0/aUXknEsLbVOMrB57DzhT/GYeQC9d1EcniT2I6ccZ1W5c53tkbkSO/5f+
- tG365ZmE=
-X-Gm-Gg: ASbGncsm8b94SU4WBVMDcm6BiqTWDIIrV8M3nF9NrhIv9bF0C0xyDeIjDME/sR9h6Ho
- z/5b1Ej/vlyYUT6po5sV59NFBmzTvIdrY8LZvSThVZFmODQh+8D7jjnibYvY6Fvw37q/ZXfQO0S
- pHWlBQs0BEOgd71xP5rkk3eiTQLUgyfcLEUSSdLtalzmZNSsXlExumIXLXF7k52xuLGcm2vxxiq
- SKOJ/J3BVbDWUGqQY9Ihj7qI23j0DUUFYRKpQ1EMUBrFkErL5KuQLJHCL6JsUAelDC9kz9p2o+l
- 4MBngIiEBQOQwO6YPG3MnpGQEs0sIhtjjrYJSaNJhga2nwQC5ESX8sF3AF33n3ZHJKp9/4r8uLt
- 9rg4/0y/FJozdEDGm1GbkWAyUFk1F1mi9McyoIug5Nd1gEbxFIFgSonWmz536ys43Bb+Fc16EbL
- 8gVOSAbKzmCsw++YyhE/Ss0jCy8L1ElcodbiJw4s4nAy94QOCNH8tBYA==
-X-Google-Smtp-Source: AGHT+IGG0ZbmprKWSOG88beLIL3qTc9McUoQae5GvpteHCpgqkA6R9gh6l5DCSqW5PcehVkuqjXlAg==
-X-Received: by 2002:a05:600c:1390:b0:477:a3f9:fda5 with SMTP id
- 5b1f17b1804b1-4792aef1a50mr8425815e9.9.1764745277390; 
- Tue, 02 Dec 2025 23:01:17 -0800 (PST)
+ AJvYcCXsuYt/wR3sGjerNyKnl1wsEWUs6rmuju7njsRSaSLk/4jVPaJLDsZ6BN0xFO/r9hvbgyqWtKRlFw==@nongnu.org
+X-Gm-Message-State: AOJu0YyF+FEhQ8GXbtbhTmVZd0ysUH1VRShix86mQ9BSqABNlU6d3WyQ
+ dXy5SVGFkd02orzS9+0nnxwqVd73hu8NWX1rEuhoPa/8m+DngQXznDOP688/1B3Ye5o=
+X-Gm-Gg: ASbGncvQxoFXUTArlBVoy3Oe2+QoIsj/jT3MmYRocebezxX6vSpYpymAmsYsLPBHRDb
+ zRbTm0TI+/P0YfD8JrlNTmJB0fB384sr1fHeTIB0RC2Ox94IjjctGrMKPKD8ph1dGR/WQo6VGqg
+ fOGuPo8o/+OCzQwlh/gyeY8ea1HRyVsgVEQmTT0qKlU5z9mZ6kygRqOtcrqZesr2GryUxXkoPbr
+ Hu/F4t3g9+3KrSMZfbiItpS8mr9MsoyYCgcCNInSNS8/k3V0wUpVH1YGX3HLPAkuWC2PVb4IB2Y
+ X7rrOQqk9PFKnU8l8GLVG6bBhuA1O1pXy4ABjC1iF+yX0JTL9+Z7kb2hBsUa/Lq51AufwzZvUZc
+ q62tmql5NeK8SyTeAyGvQiist3N7/IJa9jZ9Dxe6kwF/N8XIsNy3J4XbvdI0nnju/scMdeLJKni
+ io63Xbq7j9SQoCcjBfjWElLeOsmvdlRjTMqEkzl5Hvpu6BFXWNQcSC4g==
+X-Google-Smtp-Source: AGHT+IFWayL7dZkqCSl/nVOxv4Bv/f6eF21QUbKlrnYnU7+tA8VCf5qu+N8vib84rXuH2Fw2mN1z9g==
+X-Received: by 2002:a05:6000:428a:b0:42b:2f79:755e with SMTP id
+ ffacd0b85a97d-42f7319051fmr900134f8f.3.1764745299574; 
+ Tue, 02 Dec 2025 23:01:39 -0800 (PST)
 Received: from [192.168.69.213] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42e1ca1a3e4sm37758920f8f.25.2025.12.02.23.01.16
+ ffacd0b85a97d-42e1ca1a3e4sm37760730f8f.25.2025.12.02.23.01.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Dec 2025 23:01:16 -0800 (PST)
-Message-ID: <2c2fbaf0-75e4-4e12-a932-7444c8143f02@linaro.org>
-Date: Wed, 3 Dec 2025 08:01:16 +0100
+ Tue, 02 Dec 2025 23:01:39 -0800 (PST)
+Message-ID: <74013c3c-c8c3-482e-8811-265dfc557fb5@linaro.org>
+Date: Wed, 3 Dec 2025 08:01:38 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-11.0 v6 00/13] hw/sparc64/sun4u: Use
- fw_cfg_init_io_nodma()
+Subject: Re: [PATCH-for-11.0 v6 12/13] hw/i386: Assume fw_cfg DMA is always
+ enabled
 Content-Language: en-US
 To: Zhao Liu <zhao1.liu@intel.com>, qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
  Xiaoyao Li <xiaoyao.li@intel.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-riscv@nongnu.org,
- qemu-arm@nongnu.org
+ qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>
 References: <20251203060942.57851-1-philmd@linaro.org>
+ <20251203060942.57851-13-philmd@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251203060942.57851-1-philmd@linaro.org>
+In-Reply-To: <20251203060942.57851-13-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,50 +112,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-New (unreviewed) patches: 1, 2, 5-8
-
 On 3/12/25 07:09, Philippe Mathieu-Daudé wrote:
-> Hi Zhao,
+> From: Zhao Liu <zhao1.liu@intel.com>
 > 
-> This is my answer to this comment of yours:
+> Now all calls of x86 machines to fw_cfg_init_io_dma() pass DMA
+> arguments, so the FWCfgState (FWCfgIoState) created by x86 machines
+> enables DMA by default.
 > 
->   > Although other callers of fw_cfg_init_io_dma() besides x86 also pass
->   > DMA arguments to create DMA-enabled FwCfgIoState, the "dma_enabled"
->   > property of FwCfgIoState cannot yet be removed, because Sun4u and Sun4v
->   > still create DMA-disabled FwCfgIoState (bypass fw_cfg_init_io_dma()) in
->   > sun4uv_init() (hw/sparc64/sun4u.c).
->   >
->   > Maybe reusing fw_cfg_init_io_dma() for them would be a better choice, or
->   > adding fw_cfg_init_io_nodma(). However, before that, first simplify the
->   > handling of FwCfgState in x86.
->   >
->   > Considering that FwCfgIoState in x86 enables DMA by default, remove the
->   > handling for DMA-disabled cases and replace DMA checks with assertions
->   > to ensure that the default DMA-enabled setting is not broken.
+> Then 'linuxboot.bin' isn't used anymore, and it will be removed in the
+> next commit.
 > 
-> My series is to apply just after this patch of your series:
-> 
->    [PATCH v5 10/28] hw/mips/loongson3_virt: Prefer using fw_cfg_init_mem_nodma()
-> 
-> Regards,
-> 
-> Phil.
-> 
-> Based-on: <20251202162835.3227894-11-zhao1.liu@intel.com>
-> 
-> Philippe Mathieu-Daudé (12):
->    hw/ppc/mac: Use fw_cfg_init_mem_nodma()
->    hw/sparc/sun4m: Use fw_cfg_init_mem_nodma()
->    hw/nvram/fw_cfg: Factor fw_cfg_init_mem_internal() out
->    hw/nvram/fw_cfg: Rename fw_cfg_init_mem_wide() ->
->      fw_cfg_init_mem_dma()
->    hw/nvram/fw_cfg: Propagate I/O MemoryRegion to fw_cfg_init_io_dma()
->    hw/nvram/fw_cfg: Factor fw_cfg_init_io_internal() out
->    hw/nvram/fw_cfg: Add fw_cfg_init_io_nodma() helper
->    hw/sparc64/sun4u: Use fw_cfg_init_io_nodma()
->    hw/nvram/fw_cfg: Remove fw_cfg_io_properties::dma_enabled
->    hw/i386/x86: Remove X86MachineClass::fwcfg_dma_enabled field
->    hw/i386/pc: Remove multiboot.bin
->    hw/i386: Remove linuxboot.bin
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   hw/i386/fw_cfg.c     | 1 +
+>   hw/i386/x86-common.c | 6 ++----
+>   2 files changed, 3 insertions(+), 4 deletions(-)
 
 

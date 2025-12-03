@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B4CAD1266D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02345D116F3
 	for <qemu-arm@archiver.kernel.org>; Wed,  3 Dec 2025 06:11:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vQg56-000737-Kn; Wed, 03 Dec 2025 01:11:25 -0500
+	id 1vQg4j-000617-QZ; Wed, 03 Dec 2025 01:10:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vQg53-0006vH-WF
- for qemu-arm@nongnu.org; Wed, 03 Dec 2025 01:11:14 -0500
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vQg4h-0005vN-Tn
+ for qemu-arm@nongnu.org; Wed, 03 Dec 2025 01:10:51 -0500
 Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vQg51-0001At-7E
- for qemu-arm@nongnu.org; Wed, 03 Dec 2025 01:11:13 -0500
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vQg4g-00016E-12
+ for qemu-arm@nongnu.org; Wed, 03 Dec 2025 01:10:51 -0500
 Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-477b1cc8fb4so38702765e9.1
- for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 22:11:10 -0800 (PST)
+ 5b1f17b1804b1-47775fb6cb4so45194725e9.0
+ for <qemu-arm@nongnu.org>; Tue, 02 Dec 2025 22:10:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1764742270; x=1765347070; darn=nongnu.org;
+ d=linaro.org; s=google; t=1764742248; x=1765347048; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=46vnfSxGy1j6e0vUyHlJU/9mdbC6bpVvSwQgBjgZ5ZI=;
- b=k/nyHj2BkUlWnN/gtgSqGWn1h5p9lff32E6voN4cOhTAZ23X+EeV8gMnTcAUMACf11
- odwG3vuiQMNfh71PaXByCOAuFjrmrxcQ6K6eQcpUOJuUpUDCfO9ZahXKFygVyS7usykZ
- tJysK+K/idmCFUu+JU/OmJGoDCF+GiBlF1i4qPTRHpuzN3ZxKCnlFm+W0J6GoGfOkp+2
- iE4Ho0QEExouA8kqINtS2owyB3H3/Iv6q/rSHN9d4X4kuBUvsDtGJuuKAri0g+y/iatS
- cmbQPOmRxPkGH4LK8CiIcZznGmjRsdjqvMUqvWsBEdhr+Eg8I9xMy2BxtK7KD7EyAG90
- 4bkA==
+ bh=quCJPogV7nRUmrNwgtt7+y1aIO17eQXRGgz3UisICQs=;
+ b=LxRjV1mOd5EfdizpnEuiyZ2yu+2+6/LkUVNjX0gUwb3RCkXx6eHqmUItNK20iMv+3P
+ NK9il66ke4f3P1FPnHF85kKbKqiMvi8+2BValQzmqJhL3IalxjT/v0Ber4w4/jOuOeeG
+ CTqvshnbJGZ/75STFu4LmuaE9Lc7TVey++ZS6+EHPEKbyNTEHZTRRt+7s7w884g2C34l
+ 8mclUArtLAcqf/CtdyaeBrUDNoEm7YmI+J19weeGo6xX6l9YIO9cNklje5tril6jepgD
+ t8z064PXdO7iF4nl4DJvtPqZL4qi5RCE3g82Z7seR7AC6XgVc4chZSaCPsGwaIohfQS+
+ f2jQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764742270; x=1765347070;
+ d=1e100.net; s=20230601; t=1764742248; x=1765347048;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=46vnfSxGy1j6e0vUyHlJU/9mdbC6bpVvSwQgBjgZ5ZI=;
- b=caEHuBk5WxACksMI/SWIFcbQpT5R4rVEZxgmu73yALMLs/LfOX6g7REVUq8pwxI6Tb
- ux/O4Bc1ajIbBxDhWy7bMR/2dbqWeXld4V2fs/JWfIMkMHX7Oi0ddj2SpKpKbK3rhaJp
- J1aQcjqEOcijOmFeMXKnPA6nxcgzt39/Ss0UdufWLcwj9+84054j+egdM1Ubxh04AJ9v
- KV6md1rMIQvpBPyiaYHuuNhixfPB3L5OHewJorYXMc23ScYB2M1LhLzkUBocoMmEpEQS
- 20ti7D7BbBi1C1WHsDw6EdpmiyDOXoh8HzLO+/QFhsPWsKyLcm4p9iZBMbdLSfTm12GT
- NS4w==
+ bh=quCJPogV7nRUmrNwgtt7+y1aIO17eQXRGgz3UisICQs=;
+ b=rLVtL7XvNBmOw8uAzdFh2ArDdA4byVQZysG8U780zIvHgrObKGaL5wqtYTCJeieZyD
+ h9q/5NgwQNGtx6VU4KnbjRF3FnejM++A23G6tavmUd6HDR9nJwJ1jSfrUkLRGhKDDhpY
+ SiGyPsoW+thKiHr+NQT0KthtBYk3711u8DepMQh6IpokweJQZlweBT6zDH7DK9PUVWuT
+ brdw9+kvBRyJDxqpfX5/28RtgCFQBHuGvGihaq7BsM5JOoT8td4L70tenYrI9XTl8Kxz
+ ycB5FQ/RRg5SmcWjjKEzxejpHJqqeermTN3j8wBlwLjBxiVlmnIv0cX6zUNmWrjybC3/
+ VzAw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWvi7TLIWSIU4/+qGDAgcnsE0yRDaPs7votZ/9NziY1LiopIna8PvI+zPDl1y9RqQhl+8bTkD+t9w==@nongnu.org
-X-Gm-Message-State: AOJu0YxL6zcqhmGyVRz1YbKfrdkY7Qr2iMoBtbXHI3Rr2PVKs+v6L1JA
- LLXM8yl0H32QmlCDhif7T8oXL/ndouriPl0IrpUYzlVeTKXpoaf9eDwUYr4JHBlhG9U=
-X-Gm-Gg: ASbGncvUp88AugCOrKitK94lGExo5r23qF0sAL9X4zdhQv+CopUwHokWSOQJQS1pMHj
- tQMqiRDL37Ci9Vn1ezd6dzG40UILGQX5jP1TFgWOlqmolLbQ60Rm/cNjtXiQnUfe+hijuBoqB2N
- cY6G/xnhOM8lw5iIB7Z22AYmMOYnUHaFjnrCgUwXy6Q9TRTWD0PC1D5BX6MCsvUT8taHLNryU4Y
- 9jF8h3agfrSTgtERhAOI7FTe/Y2rKBLJhnHzIJUDEqhS2DuUkoopJdYhzqpTR79tM3+aF7q+E+7
- fqFbrZPMSkf5E4xmttDefO8lEIZlbvseWkW3EHLQ2AiaC+YVx+XPfaqSQ0ron5NVFj9GuwcYdjI
- bmRBEw1dQ+VPUWv6muUjGKzyUR+xwGSNQaytjk0NEYMqp46zY27vSA0PiXAgo7062s6g9CCFqdy
- lJef8TYnuQwHKK/VkvaR4d3EvBffcBNg3bS0YYe3BW+ulR4jOHDpu0jHZZv4Zj
-X-Google-Smtp-Source: AGHT+IGzIDwCTKOLlr77oNq8MxfixjC7xfMHSOwbndl59QPqIUvmZvz3PAzc9CbmGpRB+GWaMuMioA==
-X-Received: by 2002:a05:6000:612:b0:42b:5603:3ce6 with SMTP id
- ffacd0b85a97d-42f73173debmr899975f8f.18.1764742269796; 
- Tue, 02 Dec 2025 22:11:09 -0800 (PST)
+ AJvYcCWxTJUL8jT2AD+pQMFLxmqLvB+Un2LvhG2YBOQOJwh6to3sKm0Ipk0A67933Bu/dYDlNIv+bhYu+g==@nongnu.org
+X-Gm-Message-State: AOJu0Yw3JL0RCoCP00E5UI2uFDfI2b3+uYRR2DQtN/ij9uNOebgGcday
+ tXepVPIld3mbpC7sSuyqlhqSmn6IAE4oe14389SPYXk7GrWduzJkfJxDLShgG4atMQ8=
+X-Gm-Gg: ASbGnctpqF991vm5VEFPH3pHF1biDxFJZHk0Os4MUbIAk/3nV3fR572LL9mxkFcMmob
+ mavUHUGvep72k+UddTRTpdFV5wVkHQeQu3xTrMRhSt4G2haoCSnYx93mkaGeQFrMYJHxNHi586u
+ kJqSjnYjLigcE0wBUiGaIDavKB0ZhD3lq4fw3y8nkhgIwVmFAXqpyd7JFoGl0kDtZsC3DXe4rf0
+ E8kmq3LffCtk1SivXDGb6YrMIwmBj1p3fA9+ABes3Y/DOL/dDIdPLspRITYGvTRufpfGO1/Bzfx
+ eXEXi933GLEQqF2QLpgjLE2ibkkSVW/rWsUFqsN1kNAnxbr/FFC1Tcm1pIVWTogZMxlwD2bucdm
+ 4WXZhgmodOGemucqBIddHhnYL6NW47/PaN1hrIEY/6FYFaa6rJEj7gRXSjG0M+6gi5MxUgMthOQ
+ g3ZOaR1qaZKqIEje/4XFXxvn31feZ5rOS/UVMJYUfv5lW8pqP/e3ymyL+T/lxq
+X-Google-Smtp-Source: AGHT+IHb5GGL3dNPV8pAWpWQo+oO1ln71vxDjpnW98Ij7PAUP87vZLn4REjuXe0G0YBrVVytO5PbnQ==
+X-Received: by 2002:a05:600c:3b97:b0:46e:33b2:c8da with SMTP id
+ 5b1f17b1804b1-4792af40489mr10490725e9.32.1764742248380; 
+ Tue, 02 Dec 2025 22:10:48 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42e1c5d618csm36471747f8f.14.2025.12.02.22.11.08
+ 5b1f17b1804b1-4792a79dd66sm29299405e9.6.2025.12.02.22.10.47
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 02 Dec 2025 22:11:09 -0800 (PST)
+ Tue, 02 Dec 2025 22:10:47 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: Zhao Liu <zhao1.liu@intel.com>,
 	qemu-devel@nongnu.org
@@ -73,14 +73,16 @@ Cc: qemu-ppc@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-riscv@nongnu.org,
  qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>
-Subject: [PATCH-for-11.0 v6 12/13] hw/i386: Assume fw_cfg DMA is always enabled
-Date: Wed,  3 Dec 2025 07:09:40 +0100
-Message-ID: <20251203060942.57851-13-philmd@linaro.org>
+ Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>
+Subject: [PATCH-for-11.0 v6 09/13] hw/nvram/fw_cfg: Remove
+ fw_cfg_io_properties::dma_enabled
+Date: Wed,  3 Dec 2025 07:09:37 +0100
+Message-ID: <20251203060942.57851-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20251203060942.57851-1-philmd@linaro.org>
 References: <20251203060942.57851-1-philmd@linaro.org>
@@ -111,51 +113,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Zhao Liu <zhao1.liu@intel.com>
+Now than all calls to fw_cfg_init_io_dma() pass DMA arguments,
+the 'dma_enabled' of the TYPE_FW_CFG_IO type is not used anymore.
+Remove it, simplifying fw_cfg_init_io_dma() and fw_cfg_io_realize().
 
-Now all calls of x86 machines to fw_cfg_init_io_dma() pass DMA
-arguments, so the FWCfgState (FWCfgIoState) created by x86 machines
-enables DMA by default.
+Note, we can not remove the equivalent in fw_cfg_mem_properties[]
+because it is still used in HPPA and MIPS Loongson3 machines:
 
-Then 'linuxboot.bin' isn't used anymore, and it will be removed in the
+  $ git grep -w fw_cfg_init_mem_nodma
+  hw/hppa/machine.c:204:    fw_cfg = fw_cfg_init_mem_nodma(addr, addr + 4, 1);
+  hw/mips/loongson3_virt.c:289:    fw_cfg = fw_cfg_init_mem_nodma(cfg_addr, cfg_addr + 8, 8);
+
+'linuxboot.bin' isn't used anymore, we'll remove it in the
 next commit.
 
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/i386/fw_cfg.c     | 1 +
- hw/i386/x86-common.c | 6 ++----
- 2 files changed, 3 insertions(+), 4 deletions(-)
+ hw/i386/fw_cfg.c  | 15 +++++++--------
+ hw/nvram/fw_cfg.c | 26 ++++++++------------------
+ 2 files changed, 15 insertions(+), 26 deletions(-)
 
 diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
-index bf38338fb47..528862d2e33 100644
+index 498da9ec69c..bf38338fb47 100644
 --- a/hw/i386/fw_cfg.c
 +++ b/hw/i386/fw_cfg.c
-@@ -226,6 +226,7 @@ void fw_cfg_add_acpi_dsdt(Aml *scope, FWCfgState *fw_cfg)
-      * of the i/o region used is FW_CFG_CTL_SIZE; And the DMA control
-      * register is located at FW_CFG_DMA_IO_BASE + 4
+@@ -216,18 +216,17 @@ void fw_cfg_build_feature_control(MachineState *ms, FWCfgState *fw_cfg)
+ #ifdef CONFIG_ACPI
+ void fw_cfg_add_acpi_dsdt(Aml *scope, FWCfgState *fw_cfg)
+ {
++    uint8_t io_size;
++    Aml *dev = aml_device("FWCF");
++    Aml *crs = aml_resource_template();
++
+     /*
+      * when using port i/o, the 8-bit data register *always* overlaps
+      * with half of the 16-bit control register. Hence, the total size
+-     * of the i/o region used is FW_CFG_CTL_SIZE; when using DMA, the
+-     * DMA control register is located at FW_CFG_DMA_IO_BASE + 4
++     * of the i/o region used is FW_CFG_CTL_SIZE; And the DMA control
++     * register is located at FW_CFG_DMA_IO_BASE + 4
       */
-+    assert(fw_cfg_dma_enabled(fw_cfg));
-     io_size = ROUND_UP(FW_CFG_CTL_SIZE, 4) + sizeof(dma_addr_t);
+-    Object *obj = OBJECT(fw_cfg);
+-    uint8_t io_size = object_property_get_bool(obj, "dma_enabled", NULL) ?
+-        ROUND_UP(FW_CFG_CTL_SIZE, 4) + sizeof(dma_addr_t) :
+-        FW_CFG_CTL_SIZE;
+-    Aml *dev = aml_device("FWCF");
+-    Aml *crs = aml_resource_template();
++    io_size = ROUND_UP(FW_CFG_CTL_SIZE, 4) + sizeof(dma_addr_t);
  
      aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
-diff --git a/hw/i386/x86-common.c b/hw/i386/x86-common.c
-index 1ee55382dab..e8dc4d903bd 100644
---- a/hw/i386/x86-common.c
-+++ b/hw/i386/x86-common.c
-@@ -1002,10 +1002,8 @@ void x86_load_linux(X86MachineState *x86ms,
-     }
  
-     option_rom[nb_option_roms].bootindex = 0;
--    option_rom[nb_option_roms].name = "linuxboot.bin";
--    if (fw_cfg_dma_enabled(fw_cfg)) {
--        option_rom[nb_option_roms].name = "linuxboot_dma.bin";
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index 079c28f9212..e0a140d01c0 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -1027,12 +1027,9 @@ static FWCfgState *fw_cfg_init_io_internal(MemoryRegion *iomem,
+     SysBusDevice *sbd;
+     FWCfgIoState *ios;
+     FWCfgState *s;
+-    bool dma_requested = dma_iobase && dma_as;
+ 
++    assert(dma_iobase);
+     dev = qdev_new(TYPE_FW_CFG_IO);
+-    if (!dma_requested) {
+-        qdev_prop_set_bit(dev, "dma_enabled", false);
 -    }
-+    assert(fw_cfg_dma_enabled(fw_cfg));
-+    option_rom[nb_option_roms].name = "linuxboot_dma.bin";
-     nb_option_roms++;
+ 
+     object_property_add_child(OBJECT(qdev_get_machine()), TYPE_FW_CFG,
+                               OBJECT(dev));
+@@ -1043,13 +1040,10 @@ static FWCfgState *fw_cfg_init_io_internal(MemoryRegion *iomem,
+     memory_region_add_subregion(iomem, iobase, &ios->comb_iomem);
+ 
+     s = FW_CFG(dev);
+-
+-    if (s->dma_enabled) {
+-        /* 64 bits for the address field */
+-        s->dma_as = dma_as;
+-        s->dma_addr = 0;
+-        memory_region_add_subregion(iomem, dma_iobase, &s->dma_iomem);
+-    }
++    /* 64 bits for the address field */
++    s->dma_as = dma_as;
++    s->dma_addr = 0;
++    memory_region_add_subregion(iomem, dma_iobase, &s->dma_iomem);
+ 
+     return s;
+ }
+@@ -1198,8 +1192,6 @@ static void fw_cfg_file_slots_allocate(FWCfgState *s, Error **errp)
  }
  
+ static const Property fw_cfg_io_properties[] = {
+-    DEFINE_PROP_BOOL("dma_enabled", FWCfgIoState, parent_obj.dma_enabled,
+-                     true),
+     DEFINE_PROP_UINT16("x-file-slots", FWCfgIoState, parent_obj.file_slots,
+                        FW_CFG_FILE_SLOTS_DFLT),
+ };
+@@ -1220,11 +1212,9 @@ static void fw_cfg_io_realize(DeviceState *dev, Error **errp)
+     memory_region_init_io(&s->comb_iomem, OBJECT(s), &fw_cfg_comb_mem_ops,
+                           FW_CFG(s), "fwcfg", FW_CFG_CTL_SIZE);
+ 
+-    if (FW_CFG(s)->dma_enabled) {
+-        memory_region_init_io(&FW_CFG(s)->dma_iomem, OBJECT(s),
+-                              &fw_cfg_dma_mem_ops, FW_CFG(s), "fwcfg.dma",
+-                              sizeof(dma_addr_t));
+-    }
++    memory_region_init_io(&FW_CFG(s)->dma_iomem, OBJECT(s),
++                          &fw_cfg_dma_mem_ops, FW_CFG(s), "fwcfg.dma",
++                          sizeof(dma_addr_t));
+ 
+     fw_cfg_common_realize(dev, errp);
+ }
 -- 
 2.51.0
 

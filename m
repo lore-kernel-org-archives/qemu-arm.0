@@ -4,105 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D68B2D29FB2
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 19:45:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D658D2A532
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 20:31:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vRFGy-0005G1-7V; Thu, 04 Dec 2025 14:45:52 -0500
+	id 1vRFyZ-0000kN-8D; Thu, 04 Dec 2025 15:30:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1vRFGw-0005Er-Dt; Thu, 04 Dec 2025 14:45:50 -0500
-Received: from fout-b1-smtp.messagingengine.com ([202.12.124.144])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter@pjd.dev>)
- id 1vRFGu-00073s-4E; Thu, 04 Dec 2025 14:45:49 -0500
-Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
- by mailfout.stl.internal (Postfix) with ESMTP id E4AB11D00166;
- Thu,  4 Dec 2025 14:45:44 -0500 (EST)
-Received: from phl-mailfrontend-02 ([10.202.2.163])
- by phl-compute-05.internal (MEProxy); Thu, 04 Dec 2025 14:45:45 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pjd.dev; h=cc:cc
- :content-transfer-encoding:content-type:content-type:date:date
- :from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to; s=fm2; t=1764877544;
- x=1764963944; bh=qhIgUhDQcDTlfo1MknYhbh+kpXzL/E993d8Sf0Girwg=; b=
- aR24EWaVM4vu6IAU4jPmohqXNMS5CRjfP4vhx+wb0bdQomk4J+td/sAVIsd5scp2
- 5pYDwMMPapuDytXmhMebhOwZH44lrlAp0k/HWi5iksgEpxGkdCgFpv83GDS5fs0c
- wX3c41mo5iTZ2FlmE9OYWRM9ISUi3943hMW2h5ZmLJGruDwYBqXqBT7ouUfolP43
- m+e48nFHSVhD5UNVqXmaw1xY4z2EaTnils0ymeHHRTDXjEPaCXvOQPIt1J9emTRu
- ERLCt1+YLEdTNy6bWWknMCr9iFlCHDgmERlgiTHNmZo1QAfPZMtprnIu2Yat9Ieu
- MnodyliH1bizKaLMgO7PhQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:content-type:date:date:feedback-id:feedback-id
- :from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1764877544; x=
- 1764963944; bh=qhIgUhDQcDTlfo1MknYhbh+kpXzL/E993d8Sf0Girwg=; b=n
- wbpHm05CdVBeGII53I4Wcv/IH8PBX84bB41SOnTkpSK3nItkG2/E5QOXpZexWtdC
- yfQFMIgSPZV1WdoRd61cgwdG+90K6ok5QGyWifkWPx23SQMv2/iLymyojdyu2uQ+
- 9PnWAHW3sVMK5DtIvh6EazsGpidS0Dd3bAxvGmFFdG1Bm9vcS5FKPsLdE6swBSP7
- jqllBLlSC2SG4/HZ3vkHLFpZ5RGhDUHxC/RuzDuu6uydvsHoTCN0gSGrXnc3ogsH
- aK4pw4+x09PfRdD10LP80nOfw66wvAVG7vHEJBncM0te/JVpJX0DacbDG+Ywmssy
- 1tAIblEEnhY+ICWAaek0A==
-X-ME-Sender: <xms:5-QxabEmEkE6bVr9ax_jLpn0eVMyvyV3PnYNy1-GIl2dhoJV6msenA>
- <xme:5-QxaWkFIo-DrwyrpP2YXq0qYHlLXlsgwTqBIkL7bsnUtpjVq00w1TNxr5UcksIn_
- QMKXAfwHmEsvJv54vmdOPLJB9YT-o5i-ebbw2YstYXfGIqgqzfnDww>
-X-ME-Received: <xmr:5-QxaWfncoSRMhkWQ7Ks0gCVgw_W6vuAI7OZu_qA5mgw8wOcb5-KYoHHQ9Y1K6NSIR85A5Y>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdeigeehucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceurghi
- lhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurh
- eptgfghfggufffkfhfvegjvffosehtqhhmtdhhtdejnecuhfhrohhmpefrvghtvghrucff
- vghlvghvohhrhigrshcuoehpvghtvghrsehpjhgurdguvghvqeenucggtffrrghtthgvrh
- hnpeeuiedtvdejgfegfffgudetvddtueffueejffejgeelveeutddtveehfffhfeetieen
- ucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehpvghtvg
- hrsehpjhgurdguvghvpdhnsggprhgtphhtthhopeduuddpmhhouggvpehsmhhtphhouhht
- pdhrtghpthhtohepshhtvghvvghnpghlvggvsegrshhpvggvughtvggthhdrtghomhdprh
- gtphhtthhopegtlhhgsehrvgguhhgrthdrtghomhdprhgtphhtthhopehpvghtvghrrdhm
- rgihuggvlhhlsehlihhnrghrohdrohhrghdprhgtphhtthhopegrnhgurhgvfiestghoug
- gvtghonhhsthhruhgtthdrtghomhdrrghupdhrtghpthhtohepqhgvmhhuqdgrrhhmsehn
- ohhnghhnuhdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurd
- horhhgpdhrtghpthhtohepphhhihhlmhgusehlihhnrghrohdrohhrghdprhgtphhtthho
- pehjohgvlhesjhhmshdrihgurdgruhdprhgtphhtthhopehlvggvthhrohihsehgmhgrih
- hlrdgtohhm
-X-ME-Proxy: <xmx:5-QxacHjqzxXH5AKWR-HKlqA6NzfLQ-vLnfaxygEGDs8F16TrVRr3g>
- <xmx:5-QxaUh6hmcl7ki43r6zE8c-2hxI3hpiEsL-q7WRW0YXvoe6EAFztA>
- <xmx:5-QxaY0rsM3polrB9rycbR3GWfR2D6OxQhXgxc-uV0YO4IxSehQFtw>
- <xmx:5-QxaXdycA9VWUjIBgptgHbgbAJl43i4l_j73T2c4K-R_Pc48PbUOg>
- <xmx:6OQxaV4TdcyApleFZxXWgmrnTpIjnWV-HIjTn2VIXO6TDAYMSWNzeXGw>
-Feedback-ID: i9e814621:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 4 Dec 2025 14:45:43 -0500 (EST)
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-From: Peter Delevoryas <peter@pjd.dev>
-Mime-Version: 1.0 (1.0)
-Subject: Re: [PATCH] aspeed: Deprecate the fby35 machine
-Date: Thu, 4 Dec 2025 11:45:31 -0800
-Message-Id: <2B4B594F-DFB1-4BD1-8FF3-8F74EB2EC52A@pjd.dev>
-References: <8f8fb825-891a-4c06-9676-4aa232cd4642@kaod.org>
-Cc: =?utf-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Maydell Peter <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <8f8fb825-891a-4c06-9676-4aa232cd4642@kaod.org>
-To: =?utf-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-X-Mailer: iPhone Mail (23B85)
-Received-SPF: pass client-ip=202.12.124.144; envelope-from=peter@pjd.dev;
- helo=fout-b1-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vRFyX-0000jP-Ab
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 15:30:53 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vRFyV-0004dd-90
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 15:30:52 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4779ce2a624so16500185e9.2
+ for <qemu-arm@nongnu.org>; Thu, 04 Dec 2025 12:30:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1764880249; x=1765485049; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=3BqwSOzW1wtwIWsV9h67dzQ80+RnxXRVz74+RBt7IdY=;
+ b=ao53uJxIZ5EXBKFpcyllfoi2/vUi7GZwJucn0bGnLB1MJ45hWTIYkZRIzERr0gMSuX
+ 1gCvlAj/ppN4LPBp58LyYFNVLVQJHb5uaaq5L6C1/PWMBAzPuy/V0cl7uHDKLLSK1oY3
+ D6y9KOTaPmjbaeueGvXwfd1Ln0DH51fWGKdocCd/BkERoNcFcg91V6THShoVicsDJBN6
+ tNJB5lVsmWuINDbheKIwyb9+rSTZWC9aOGnc+JDRj8+ZzrhUQSZ90oGsPt2r1JzTYGXu
+ JGWB/YzzRMJLAPIvzX/ZZPFPXLQdWDoEGHWc4nwQqxSr8QbVRisxDGIpEjMZ4kNR+U4J
+ sRIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1764880249; x=1765485049;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=3BqwSOzW1wtwIWsV9h67dzQ80+RnxXRVz74+RBt7IdY=;
+ b=s9Dme5vVFxKRzvBBq7OICCDSVjUz7CgRH56YHL5YPtCs+4DgHX81SsQcoJ7kThdgaD
+ 3o4ysJge73FBS4ashVh6yRhiC4bm94tn9EhcKSXFqEJqP1qUpVZ+YWSlaJbfKIP0jX5u
+ JzPkUxGImn/YgqyV8+LweufiVEPURZlS97v27e77Lfkz/vNPdo3e47boYknlWxlZkTFd
+ eGfW89Q54TYn8rdBaBjFAmfNFMlGwfs+1pmLuaD/wnRKdyVAw3qd/WHy1p7d/FcZwqlZ
+ q7TIrvKb1yRhDXz03V+ocQ2k/DI6mhgfaFYj8q9WXEZ7WiJwjb/FeEYq06+k65yo3Gmp
+ 3zQw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVknAmVJWCG/pHM/5dXgD7zaIPpzZ/iqhrXDD74UruegA9ulJvAeobqAqRrS5LeFk43g0ZSf83RvA==@nongnu.org
+X-Gm-Message-State: AOJu0YxgIiwcOr6xbva2MGp9eVOow5gaqnZqeH6oEqNqKUdYijQvIotO
+ itmo9cSWt+1y10IPADPk9qsBANQf2cDTAXaiVxHUFVweC6wp4LBavN8xIttwVXqMmmE=
+X-Gm-Gg: ASbGncuHqnkzVHSuk4UzmfyTGZsaiQ0VTMqWfkChMBk7pBijTCSPnbE/ST1GK353m3m
+ dsc6uNiKOXVkaBYi+iCVS88gD+GofZFvmHd/x84fusZGy7DzBxW6Z7G2h2LWkYq6WvakbLkcQ0v
+ 28OBQ3kSIXMcnsb2qmOa8tY07DHY0VtZ8yNttsBXfCAvPThpTBCxStT10mLvcTWpfAwJocraqds
+ a29zbjRc50uXo3s3SMD+HxS8SwPM8Eyv7PY3wJANw4jB7aMUKhfFCN6Mp51/FrTfzOxOtcINsJJ
+ geMRP5cq8n9FWvle8nkLhe4tPuO40ZM2lGtU6K4vRQ0cfA9d+PlIOaCciReZkYvyMyC8oul9PQG
+ i82igvDvKyPxdXiNlRRASpagMQKTxsocFPVTrFqnd7iFT2AlZYu1YmMapXkyBAE48Vxf0Axwgdc
+ YlXpRMQXKmGmE=
+X-Google-Smtp-Source: AGHT+IHXoEibkOrAjxxeMOd9PWIvyqsmYClUs3crg7XW64xGtrubNjrROS285RE5GsxCyAhdRGCEOQ==
+X-Received: by 2002:a05:600c:c494:b0:477:a36f:1a57 with SMTP id
+ 5b1f17b1804b1-4792f244c93mr38919935e9.3.1764880249502; 
+ Thu, 04 Dec 2025 12:30:49 -0800 (PST)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-47930c747b8sm48983665e9.9.2025.12.04.12.30.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 04 Dec 2025 12:30:48 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 045165F7E9;
+ Thu, 04 Dec 2025 20:30:48 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Jessica Clarke <jrtc27@jrtc27.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH v2] target/arm: handle unaligned PC during tlb probe
+Date: Thu,  4 Dec 2025 20:30:38 +0000
+Message-ID: <20251204203039.1377662-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -119,42 +105,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+PC alignment faults have priority over instruction aborts and we have
+code to deal with this in the translation front-ends. However during
+tb_lookup we can see a potentially faulting probe which doesn't get a
+MemOp set. If the page isn't available this results in
+EC_INSNABORT (0x20) instead of EC_PCALIGNMENT (0x22).
 
+As there is no easy way to set the appropriate MemOp in the
+instruction fetch probe path lets just detect it in
+arm_cpu_tlb_fill_align() and set memop appropriately.
 
-> On Dec 2, 2025, at 11:42=E2=80=AFPM, C=C3=A9dric Le Goater <clg@kaod.org> w=
-rote:
->=20
-> =EF=BB=BFHello,
->=20
->> On 11/26/25 11:24, C=C3=A9dric Le Goater wrote:
->> There are no functional tests for the 'fby35' machine which makes
->> harder to determine when something becomes deprecated or unused.
->> The 'fby35' machine was originally added as an example of a multi-SoC
->> system, with the expectation the models would evolve over time in an
->> heterogeneous system. This hasn't happened and no public firmware is
->> available to boot it. It can be replaced by the 'ast2700fc', another
->> multi-SoC machine based on the newer AST2700 SoCs which are excepted
->> to receive better support in the future.
->> Cc: Peter Delevoryas <peter@pjd.dev>
->> Signed-off-by: C=C3=A9dric Le Goater <clg@redhat.com>
->=20
->=20
-> No objections ? If not, I will queue the deprecation for QEMU 10.2.
-> Since deprecation is tolerated in the -rc phase.
+Fixes: https://gitlab.com/qemu-project/qemu/-/issues/3233
+Tested-by: Jessica Clarke <jrtc27@jrtc27.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-Oh hey, sorry I missed the original email, yeah no objections! Totally fair.=
- :) We=E2=80=99re not using this internally either, we=E2=80=99ve mostly end=
-ed up pursuing multi-process solutions. Even though I think single-process s=
-tuff is interesting, getting multi master i2c to work between socs in the sa=
-me process can be tricky.
+---
+v2
+  - don't mess with MemOp for alignment check
+  - expand arm_deliver_fault to pick up alignment issues
+---
+ target/arm/tcg/tlb_helper.c | 21 ++++++++++++++++-----
+ 1 file changed, 16 insertions(+), 5 deletions(-)
 
-Thanks,
-Peter
-
->=20
-> Thanks,
->=20
-> C.
->=20
+diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
+index f1983a5732e..5c689d3b69f 100644
+--- a/target/arm/tcg/tlb_helper.c
++++ b/target/arm/tcg/tlb_helper.c
+@@ -250,7 +250,11 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
+     fsr = compute_fsr_fsc(env, fi, target_el, mmu_idx, &fsc);
+ 
+     if (access_type == MMU_INST_FETCH) {
+-        syn = syn_insn_abort(same_el, fi->ea, fi->s1ptw, fsc);
++        if (fi->type == ARMFault_Alignment) {
++            syn = syn_pcalignment();
++        } else {
++            syn = syn_insn_abort(same_el, fi->ea, fi->s1ptw, fsc);
++        }
+         exc = EXCP_PREFETCH_ABORT;
+     } else {
+         bool gcs = regime_is_gcs(core_to_arm_mmu_idx(env, mmu_idx));
+@@ -346,11 +350,18 @@ bool arm_cpu_tlb_fill_align(CPUState *cs, CPUTLBEntryFull *out, vaddr address,
+     }
+ 
+     /*
+-     * Per R_XCHFJ, alignment fault not due to memory type has
+-     * highest precedence.  Otherwise, walk the page table and
+-     * and collect the page description.
++     * PC alignment faults should be dealt with at translation time
++     * but we also need to catch them while being probed.
++     *
++     * Then per R_XCHFJ, alignment fault not due to memory type take
++     * precedence. Otherwise, walk the page table and and collect the
++     * page description.
++     *
+      */
+-    if (address & ((1 << memop_alignment_bits(memop)) - 1)) {
++    if (access_type == MMU_INST_FETCH && !cpu->env.thumb &&
++        (address & 3)) {
++        fi->type = ARMFault_Alignment;
++    } else if (address & ((1 << memop_alignment_bits(memop)) - 1)) {
+         fi->type = ARMFault_Alignment;
+     } else if (!get_phys_addr(&cpu->env, address, access_type, memop,
+                               core_to_arm_mmu_idx(&cpu->env, mmu_idx),
+-- 
+2.47.3
 
 

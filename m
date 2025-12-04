@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C23B7D29FAB
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 18:19:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8742D24477
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 18:37:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vRDvd-00047G-SL; Thu, 04 Dec 2025 13:19:45 -0500
+	id 1vREBx-0008Om-AX; Thu, 04 Dec 2025 13:36:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vRDvb-00046d-UW
- for qemu-arm@nongnu.org; Thu, 04 Dec 2025 13:19:43 -0500
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ id 1vREBv-0008OG-Ps
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 13:36:35 -0500
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vRDva-00016P-A5
- for qemu-arm@nongnu.org; Thu, 04 Dec 2025 13:19:43 -0500
-Received: by mail-pj1-x1034.google.com with SMTP id
- 98e67ed59e1d1-34381ec9197so1090361a91.1
- for <qemu-arm@nongnu.org>; Thu, 04 Dec 2025 10:19:39 -0800 (PST)
+ id 1vREBu-0007V0-7u
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 13:36:35 -0500
+Received: by mail-pj1-x102f.google.com with SMTP id
+ 98e67ed59e1d1-34372216275so1383330a91.2
+ for <qemu-arm@nongnu.org>; Thu, 04 Dec 2025 10:36:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1764872379; x=1765477179; darn=nongnu.org;
+ d=linaro.org; s=google; t=1764873393; x=1765478193; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=CYsc787tQo5xf4+vPWXZrVzbUjRunC0ksdnBvtGJAgI=;
- b=qUxvGR/mQe12wsFaA4RXjuYRyIUndiWNkpc3Rnq1VMAhYqUAB8ga2KgT9fHNUo1qcp
- XaSkuYl1SWLUGoEdXb2mNm81dVDs61GcD1qKpCZ2ZeY3Lf5CTiO7xKz7MsyGsbeyl7lq
- RA6QSSw5+FSCak0uuSbQxWndYPzFJ64Smthxp8ADOAxqZY5idiNY2eLhoFiYAxpyS3P4
- v9e8znYdOL9HlmsUFdsVXXWHTZ35vA8deVlRcYjcpDqJlmkbiE7L0k7QCLIDKdzk2MHp
- uPPuZZyAQ0sAB/4jt6+Dfh8IVuo+MO1CKYKQ4zPbUqauGAZQXbCkOQ+hzRor+X2ap5FV
- /i+g==
+ bh=4sJjiGWs1N++nWJpef6v9Bvf41rJMyLV4hdvMlidK0I=;
+ b=DQu+2LnrMcFH48D1jBhyGwwnQeEtno0NG0bhdtL8PeiM+8Wdq+mvNfccd559CSEno+
+ ZkNEuxrAcva1NX/Sw/6722fM/s+e05rZIXb0FclJ3YgtTSCqtUHao87L0IGfcfGPgquC
+ 5o/Ic7jtxqOkvSu9MyuJkCAf87I2f556EE/g0IQAOtsA6FP91wAFVzMXVkj3wIQd0Bnf
+ uzpIJQNxMphRFO88rRXqwdyGWZGuGwpcy8MD1kUnrSd0Jqq3T7Z21n4l5zsGp/TJPzfa
+ SKRVh6VhbZEWWaKyc5s/u5+kRK2oPWL88VF8ceIqW2e7g35leJDaHM8Zhb+OahsxDV+S
+ pq1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764872379; x=1765477179;
+ d=1e100.net; s=20230601; t=1764873393; x=1765478193;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=CYsc787tQo5xf4+vPWXZrVzbUjRunC0ksdnBvtGJAgI=;
- b=oyBHS4r0QvRRJ3CH6QmuTthkI/Q7fDGiWoZ7/ZRy1HgY4DftWZ9veRsniF6QQ2CQum
- AcZsmK6xGH/MFBoaEEIbpP9Vo5Z9W9Nxb8gwFmhXhZJqBMvM5vyN6QR/0KMrFiJETZQJ
- 28xAY2wbtpRxD5b13aHfl4K5L+0XGBvxe8/OKMyCLII5vIhqWWgPxyv4yhGkQtH5o12Q
- ZpewWHXkfJxROoZMesxi+Bd6rny7hA+gxOCTwN+ANsFrwqqD0z4Xmat2dbNwbDHxdWa9
- +eF3tZA2PbUc4qXhMHBWnVUvb1RN3dSQSjgFd9WrhOTsCUg0UST8m6PwnGZD6fD+5L7m
- JULg==
+ bh=4sJjiGWs1N++nWJpef6v9Bvf41rJMyLV4hdvMlidK0I=;
+ b=CPp9jzcXbJWiOQJCXoRzNEvk72Mk1VqXK6rGOrBp9n4ZxXYPlx5/DZkIel6fPt7GjF
+ 9IQu7K1/WX0x6i+8gFWmJs91Tb2bHTf2tq+fh+5NmLLLyuoUc/2F+ei5w5D0hgJdDuHF
+ 6F9y8nBuidy9xLu/32B8xP+ZGj5+v0AgPBx5wvCKNi4YfsntP2y1fzM+pNeSIMiMOQVY
+ FNmOWiJYojQSHVyDzuEQn0CH2UVp0csyqGNAGCNA3/u90KebrVfouGALrV7PrPMTPVbs
+ iHx8lvhsuGjlBv8Xfhnl57wGvS3pCBxUinxKFd9U0bpPZglgu13QMCxZGXdcRaSZdZv8
+ 5VuA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU3hyOVFoKvVXA5xiSGFXITyZh94j7s7piJAM6NDMkbvWLXK8A0WmQQmh2XznRg9JW2JRlIK9rzXg==@nongnu.org
-X-Gm-Message-State: AOJu0YwpTAmdAi1YTTdg1la4Ci6AR9rU3ni1b0672wlaTwoT8E0Xr9qD
- eIuJikE/9x2L++ddWA8J2nhYp+Zv8kQAdXdq/7VZBwKZjQaPZsgQpNyFoISK4b7hKao=
-X-Gm-Gg: ASbGnctY5fUNfA2aT7t2LzJEWjyWuVvGAHKTPBntqAe4TedGjEUt3FGqB4eElzSW9st
- hANAmKjXY7t50IY+ktrGPlOt5ppbnK1xPrOeYyxz+WiMxpNqiGgjCoEc+c68Bb378JOJxDWzbkG
- ajtX1cWxZ7C8sYCGZ2G/psvqLm1/5umx3Qs5tj3hif4t2WZezqtFmOxm23rLdZXV2cxK/l47eF+
- SDsvH/Cy0LiAHHQDSHyLr/mspr6T4in9A5Up6S6Hop5RTpPnJgNMbPa1YelO9Yse+V6tWWUk9PF
- ADsz3Iz7Pm5QwlB7HNmFXA1sAeJ3V1VBUmIvbLELM2aibR9UMKI4RqeQgYnEq6WE8A/pIGbiHw8
- J12voy0yVkyLWdY0Sw4es4oHLxhS2YFy9ZMe3ao92JpVOhD/pWZl3p98/ocez2m6/sOHfIfxu4Z
- GBwqLBIT0kqFRNzy5mI25Hm2VJvMxzNGayWEu7NkyetI0eqPGVgIk0fyA=
-X-Google-Smtp-Source: AGHT+IFnuzRenuZm745XhXwUqt7evMiM98nS8pYBlCqSfXT5jtvQbyR8QTYxw2y9zeZE5nC3Rpe9qQ==
-X-Received: by 2002:a17:90b:548f:b0:336:b60f:3936 with SMTP id
- 98e67ed59e1d1-349125d346amr8970428a91.12.1764872378769; 
- Thu, 04 Dec 2025 10:19:38 -0800 (PST)
+ AJvYcCW+EJH3f/5h4zInvqhI2nnGMwIC1merTgrb07L4fGMZtwii3lqmpVcQqxBQ7w8jmUQsTPyJ2QzrJg==@nongnu.org
+X-Gm-Message-State: AOJu0YxWQoSzA53jMFn8IN7gvhN4PhysDmCdlB0Y66Hr906E9+qZWZ4x
+ qz4kfcYxtKmxgTecAoSQ8Dhp/7CZvK6isFbiiIWZqP0qv4VqlxV/5hhsFQcE9BWKGpM=
+X-Gm-Gg: ASbGncvrDID6PbDUbFAAP0PM2rc4Wfm44GF77V64P9kYy4SjT+SUdu2tIXpE/TMN6CM
+ 0JGEh2a+oTsvH5oMvfrkRnBYJMDURZ12oYsfsUpVREpT/ZVXYWvlZcf0J4ay/Ssyju5DqfYa+su
+ pH1R9m6n2358AFbjI49TlvsH6brAtWDLz1Sy7D4cFsSjvH/2fpQj9WXTX+oxd2dfvqFyDy7js7E
+ RhNwHF5HISIeifS65Nt9goIvd1jPvMhpY18gdBziodImenK+7G27l6mkjIKjb3ITHSwGcQrJWPY
+ +gY5EgeeSYQbu2Qbb9q/RnOjoEPRUpnNXQRm7t/GqMpWUn+DrF2Ak6X44E8I8FyTcObFb98tfkO
+ ENKdFdgdH6n9EDh3WYrzLw3ruNa6LATT3K59zg55lgGyvqlY+2OoEjfuAQyBlM8JqS3tlVZi8iK
+ XB/HSnM2K7rPaQHOllWMrXW0oKJhbsrAIIDJnKNyVXmLjhzmDB2O4dZQBvvOzAgtJdCA==
+X-Google-Smtp-Source: AGHT+IGXacDhACO8mBswxofKjIOStTHM8Iik5BEXKmuNBYNUAZ5u8IswPuqV00rTSF9ZjtFLcKf82g==
+X-Received: by 2002:a17:90b:38ce:b0:340:ba29:d3b6 with SMTP id
+ 98e67ed59e1d1-349125c002dmr7587123a91.6.1764873392764; 
+ Thu, 04 Dec 2025 10:36:32 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-34912a07626sm2484926a91.4.2025.12.04.10.19.37
+ 98e67ed59e1d1-3494f596877sm2444342a91.9.2025.12.04.10.36.31
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Dec 2025 10:19:38 -0800 (PST)
-Message-ID: <59eb723b-e34f-4a5e-a2c5-2e3242cba8df@linaro.org>
-Date: Thu, 4 Dec 2025 10:19:37 -0800
+ Thu, 04 Dec 2025 10:36:32 -0800 (PST)
+Message-ID: <e52db78c-15ca-4c09-a5f2-e149b6c5cb5d@linaro.org>
+Date: Thu, 4 Dec 2025 10:36:31 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC RESEND v5 1/4] hw/arm/smmuv3: Extract common definitions to
- smmuv3-common.h
+Subject: Re: [RFC RESEND v5 2/4] hw/misc: Introduce iommu-testdev for
+ bare-metal IOMMU testing
 Content-Language: en-US
 To: Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini
  <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
@@ -87,13 +87,13 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Mostafa Saleh <smostafa@google.com>,
  CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
 References: <20251126154547.1300748-1-tangtao1634@phytium.com.cn>
- <20251126154547.1300748-2-tangtao1634@phytium.com.cn>
+ <20251126154547.1300748-3-tangtao1634@phytium.com.cn>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251126154547.1300748-2-tangtao1634@phytium.com.cn>
+In-Reply-To: <20251126154547.1300748-3-tangtao1634@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1034.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,25 +117,43 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 11/26/25 7:45 AM, Tao Tang wrote:
-> Move register definitions, command enums, and Stream Table Entry (STE) /
-> Context Descriptor (CD) structure definitions from the internal header
-> hw/arm/smmuv3-internal.h to a new common header
-> include/hw/arm/smmuv3-common.h.
+> Add a minimal PCI test device designed to exercise IOMMU translation
+> (such as ARM SMMUv3) without requiring guest firmware or OS. The device
+> provides MMIO registers to configure and trigger DMA operations with
+> controllable attributes (security state, address space), enabling
+> deterministic IOMMU testing.
 > 
-> This allows other components, such as generic SMMUv3 tests or test devices,
-> to utilize these definitions without including the specific SMMUv3 device
-> internal state.
+> Key features:
+> - Bare-metal IOMMU testing via simple MMIO interface
+> - Configurable DMA attributes for security states and address spaces
+> - Write-then-read verification pattern with automatic result checking
 > 
-> In addition, refactor the STE and CD field definitions to consistently use
-> the 'hw/registerfields.h' API and introduce corresponding setter macros to
-> facilitate structure manipulation.
+> The device performs a deterministic DMA test pattern: write a known
+> value (0x88888888) to a configured IOVA, read it back, and verify data
+> integrity. Results are reported through a dedicated result register,
+> eliminating the need for complex interrupt handling or driver
+> infrastructure in tests.
+> 
+> This is purely a test device and not intended for production use or
+> machine realism. It complements existing test infrastructure like
+> pci-testdev but focuses specifically on IOMMU translation path
+> validation.
 > 
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > ---
->   hw/arm/smmuv3-internal.h       | 255 +-----------------
->   include/hw/arm/smmuv3-common.h | 461 +++++++++++++++++++++++++++++++++
->   2 files changed, 462 insertions(+), 254 deletions(-)
->   create mode 100644 include/hw/arm/smmuv3-common.h
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>   docs/specs/index.rst            |   1 +
+>   docs/specs/iommu-testdev.rst    | 109 +++++++++++++
+>   hw/misc/Kconfig                 |   5 +
+>   hw/misc/iommu-testdev.c         | 278 ++++++++++++++++++++++++++++++++
+>   hw/misc/meson.build             |   1 +
+>   hw/misc/trace-events            |  10 ++
+>   include/hw/misc/iommu-testdev.h |  70 ++++++++
+>   7 files changed, 474 insertions(+)
+>   create mode 100644 docs/specs/iommu-testdev.rst
+>   create mode 100644 hw/misc/iommu-testdev.c
+>   create mode 100644 include/hw/misc/iommu-testdev.h
+Overall, the test device looks sane and has a clear interface, that can 
+be used for several iommu implementations, beyond Arm smmu.
 
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 

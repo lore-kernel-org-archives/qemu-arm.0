@@ -4,86 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00632D2A532
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 20:36:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BCB6D2CDE6
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 23:53:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vRG3I-0002Tr-4v; Thu, 04 Dec 2025 15:35:48 -0500
+	id 1vRJ8Q-00017g-N9; Thu, 04 Dec 2025 18:53:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vRG3H-0002TI-9f
- for qemu-arm@nongnu.org; Thu, 04 Dec 2025 15:35:47 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vRJ8L-00014B-WB
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 18:53:14 -0500
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vRG3F-0006Nw-GH
- for qemu-arm@nongnu.org; Thu, 04 Dec 2025 15:35:47 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4779adb38d3so12852685e9.2
- for <qemu-arm@nongnu.org>; Thu, 04 Dec 2025 12:35:45 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vRJ8K-0000rA-A6
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 18:53:13 -0500
+Received: by mail-pl1-x62f.google.com with SMTP id
+ d9443c01a7336-29845b06dd2so20763505ad.2
+ for <qemu-arm@nongnu.org>; Thu, 04 Dec 2025 15:53:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1764880544; x=1765485344; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=ADXnR0TbdNMzWQdMQoPHqGEf2r7+AjyVPKeqyWdpADM=;
- b=OrVC74NYiIhmE3dnhryQzg0JXIaXdRI3gdSwdnCQBLcG3qMTM5VRAFJE48vSC9N+gk
- IYkaatS55oABPdfzc19AzDgA9e81kqNyIW3amg94lWkTM+5dQyvtEZf1AoCPPJdszuRq
- LafSdIf/EpnIEWvRNlkkxGtbXxNFg8OFf/jIwuReM7F9c5uCAHVBpNDvCeH8stqPxCDP
- hdrWsqhEytBCba7UNR62D4BzU2PbatkwYpZxkHWh05OaZStX3iQJI9/H/63/u1nfrOQs
- PXISAl267IrhoIinDAMAMeG+hCoMo+y/Sahnfwd5+M8ar3v+iDwpeBF6oPVGq9lP/ous
- eUhg==
+ d=linaro.org; s=google; t=1764892390; x=1765497190; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=FMkjvCbStvijs/DL1v0dwSw8xMGkRB84PU9HL0/Qnzk=;
+ b=YsJVHqrm8F67ypZmiaJCe5E8m4uN5QVJ6piBlozQsw+G2k9St45HQyrctvYv0gef65
+ wJ5ImvVtDAovDwcprdpeknxpK4OQdDn1LTumKRe29f1ZRx0NLmbYFiA6JldpHDDIt2/p
+ 2k2/F9K6IVSbZNAM52t6UE2XtVuXxoSLhoxqiFnuNEI8y+v91VApSxwS4f+1UDwPIPPU
+ 9yLqnC9/hRZzZ6XIDXH42+Wrnpnh6KWiTECoSWfXq5cDeqOPVxJdVpuUSvpZ34NlbpjX
+ wN3PRkmip4A9uEPb/vcyn449PYkcelhm+UqpdT0Wa27lF2kwxjhiwDMWD1gX2H1ORPrI
+ D/+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764880544; x=1765485344;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ADXnR0TbdNMzWQdMQoPHqGEf2r7+AjyVPKeqyWdpADM=;
- b=jut492HFu/xXduGIhb25aZYcC7Oatn05unInzqNQLRQHKwcpMbIPqZ3IXksfPFVD38
- awwN/rW0GN02/TaP6Joy38JwDU+Uic7bEZQXx5HdRvjFzOmFdmrgBBLIKujuKHuF2/tY
- P0FwzCDXAtyl96UFF1lFg4uFDBDVGfGqC4doSLcjwpFra1s6tyKjm06L2bg4lMpUUj4u
- f4v1r2cECihCBkR6C2xn3GNrXCzOCZJULsaj84QSGZyYYJ2qHTokPHfwqu+4oRt/HZVf
- 9uv+fEaT5av3tV/u5GoxHN8+JFWgXePG5v41ujdt5cUD2aGgMIM7ivZWhvXat9OgmEMf
- 0W6A==
+ d=1e100.net; s=20230601; t=1764892390; x=1765497190;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=FMkjvCbStvijs/DL1v0dwSw8xMGkRB84PU9HL0/Qnzk=;
+ b=HlPGMmE8DFnK1GyMjb9f3/OfJdapjb6ut+M5J9vo5LCFYI4XnIcls3ekgjELSDGoq6
+ olfEMcT63fxOnQoFvcYTBOe9Fa8cvsbyfZFI1BnRBWHV8u9XkKltIZN7CqDywRuZllT8
+ xkGzoHWGJi1QTA43CFkIRbz0GE7Hq9siQayv2Uy3iLK36LZJ2BCzQtUlAily8gScxpJt
+ bdL5cnV1W4x/IamBhzNOt0q3MiPwcRbrBHpE8jqRtBmcqSOK2SXv+dRJsnOZpWS9aKIC
+ KPbIKwV/ilxM3SxBilA2N+WQ7H4kBBHZJSbRpYdHWsXhnhdSHzl2OzMNKW9FyhJOe9xH
+ 6CqA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVPpYzHrRicODGFy6Erykv8ZAfaC3HciZ1T6bD5x1UYVdxqt2Y+fqQiouQInpaqNApRfjheZPIA0A==@nongnu.org
-X-Gm-Message-State: AOJu0Yw/exNgCtlWRgBYn4dkcgK5yQvdQRQ3LYEk3aUzpwmFibZnCZfa
- FZ8EH5xkRSm0EMAoGVVHiZHzU80fMxYY4b5KIftBTRnBviph4BJoFUcpmHa8DFKAc6dtPY+beXc
- 13kL0
-X-Gm-Gg: ASbGnct3G9OuIRekL6ogDbf9DCmjvyU5X4BzHWc7CkJXwYu0S4i1D+kbDCoqEJZZpoE
- djFLfafkajT7aZE7xe+bhS+GLFLJvftsiule1libCJghy2QGvOUF3oXasFAnlpocF+dMZdOPupo
- xqA0RCt1U5ZezdmoKgNZPnYmyeNp2DGcOQ1K8cMIHhMZ963mbJYOz2pLkwmQMfrEXaFgJ46V2PK
- I6CLotcHrWAS81OLnFbI1o0cHiYsSb2zIVA4nyal5DzY1y8m4EK8WTEujHUiJq/gRNi9jzikhv1
- HeKI/tC8rPyb5VSiLjKlEVaL1Knb7R7spy2p/V0LBtqOHoay09qUqchDrzrPHrRLiZmOobtmshk
- eXS2mn+1uN8MRLHHaldPumAqJ34Eg8xjnGHKmNW5RoUKXUIXoIkMLqBbiyQicIvgfTqyele4kMd
- 3HqTWw7AO9TAA=
-X-Google-Smtp-Source: AGHT+IEpubWCIp7iEu65iFT7ZYXVrQ/bGONIMjX5RRVsbTOh3QysnqHaoJAO9IFlnVVnxVADCKks8A==
-X-Received: by 2002:a05:600c:1d1d:b0:477:abea:9028 with SMTP id
- 5b1f17b1804b1-4792f24418bmr44440775e9.6.1764880543664; 
- Thu, 04 Dec 2025 12:35:43 -0800 (PST)
-Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4792b157783sm51248535e9.5.2025.12.04.12.35.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Dec 2025 12:35:43 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 46B625F7E9;
- Thu, 04 Dec 2025 20:35:42 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Jessica Clarke <jrtc27@jrtc27.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH v3] target/arm: handle unaligned PC during tlb probe
-Date: Thu,  4 Dec 2025 20:35:40 +0000
-Message-ID: <20251204203540.1381896-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
+ AJvYcCWt4bnD7leumV1SBCS7WNFGdE79Lr8Pjd8PLjqDAu/kydpcnFQz2pCotp8POmJdQmdXkzGTEmeLUA==@nongnu.org
+X-Gm-Message-State: AOJu0YxKLeVWO4Oxm1aj0GlXL5lym7j7mWnMvL4uWHaIMcLwOffxjsS1
+ gFtq225ZDV/iRGGouJTsfmIYhXkuBp9KywX9Ip1xr8Q6ByOQejHw6T/wslGkJSO2woo=
+X-Gm-Gg: ASbGncu+gMeJDZOPpVXZK7hHCXHFA4Wok0QEAMlVBBXgiTWty+8XT7ak9JXp5ookfKa
+ sjmY/in1OTI3JnJUDhMbdYzzn+amHVqoG6cpvD/6w1xKvFZwJZhp4Tggk7sJut8vGIJJSqEKzM+
+ Pmkv0/D9MCFdSts3vGbW8/loMjCEl/MXsm9DtQJXD/8sdENuarBTrXHSf3kzqKuoPXvIRnU71TW
+ f5NQzoe5kBExn/CwkTC2KxaJxo6zHrmzig3MRHgkydEIs67v60cX4GXF0YdbUIwEQb4ign0OykT
+ qQddBEg/xDschU6X72lHpZg0xa4ZoTm3KcPMq9zlT4LqQbFDfhXltMERU/kfW2tBUwXz5R1C7DT
+ /6KdOnABxd3ylQasz7hbLzNe6Cv7u3l6otNf5Enu+yICDdMCR7gGlYGwwdfY5NYFLYD99yVu4Gf
+ vzYCe7KRY5TOXddCgfsquh7g8ZskkyvEURJ+vAPoM8pRk3ooRhcqf0rqM=
+X-Google-Smtp-Source: AGHT+IFLw/UmHSqtEtuj6ykoNuGoLjYc+cFsbjxXfedXb3X4N7XpUF5w9upjLcg2/WoJ876pPMtEzQ==
+X-Received: by 2002:a17:90b:4a90:b0:340:9d52:44c1 with SMTP id
+ 98e67ed59e1d1-349126d7e86mr8712802a91.35.1764892390423; 
+ Thu, 04 Dec 2025 15:53:10 -0800 (PST)
+Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3494f5b94cfsm2838032a91.17.2025.12.04.15.53.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 04 Dec 2025 15:53:09 -0800 (PST)
+Message-ID: <9b2c0429-a8bb-4df4-ad95-492f463cf29f@linaro.org>
+Date: Thu, 4 Dec 2025 15:53:09 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC RESEND v5 3/4] tests/qtest/libqos: Add SMMUv3 helper library
+To: Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini
+ <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>,
+ CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
+References: <20251126154547.1300748-1-tangtao1634@phytium.com.cn>
+ <20251126154547.1300748-4-tangtao1634@phytium.com.cn>
+Content-Language: en-US
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20251126154547.1300748-4-tangtao1634@phytium.com.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,73 +115,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-PC alignment faults have priority over instruction aborts and we have
-code to deal with this in the translation front-ends. However during
-tb_lookup we can see a potentially faulting probe which doesn't get a
-MemOp set. If the page isn't available this results in
-EC_INSNABORT (0x20) instead of EC_PCALIGNMENT (0x22).
+On 11/26/25 7:45 AM, Tao Tang wrote:
+> Introduce qos-smmuv3, a reusable library for SMMUv3-related qtest
+> operations. This module encapsulates common tasks like:
+> 
+> - SMMUv3 initialization (enabling, configuring command/event queues)
+> - Stream Table Entry (STE) and Context Descriptor (CD) setup
+> - Multi-level page table construction (L0-L3 for 4KB granules)
+> - Support for Stage 1, Stage 2, and nested translation modes
+> - Could be easily extended to support multi-space testing infrastructure
+>      (Non-Secure, Secure, Root, Realm)
+> 
+> The library provides high-level abstractions that allow test code to
+> focus on IOMMU behavior validation rather than low-level register
+> manipulation and page table encoding. Key features include:
+> 
+> - Automatic memory allocation for translation structures with proper
+>      alignment
+> - Helper functions to build valid STEs/CDs for different translation
+>      scenarios
+> - Page table walkers that handle address offset calculations per
+>      security space
+> - Command queue management for SMMU configuration commands
+> 
+> This infrastructure is designed to be used by iommu-testdev-based tests
+> and future SMMUv3 test suites, reducing code duplication and improving
+> test maintainability.
+> 
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> ---
+>   tests/qtest/libqos/meson.build  |   3 +
+>   tests/qtest/libqos/qos-smmuv3.c | 731 ++++++++++++++++++++++++++++++++
+>   tests/qtest/libqos/qos-smmuv3.h | 267 ++++++++++++
+>   3 files changed, 1001 insertions(+)
+>   create mode 100644 tests/qtest/libqos/qos-smmuv3.c
+>   create mode 100644 tests/qtest/libqos/qos-smmuv3.h
+> 
 
-As there is no easy way to set the appropriate MemOp in the
-instruction fetch probe path lets just detect it in
-arm_cpu_tlb_fill_align() ahead of the main alignment check. We also
-teach arm_deliver_fault to deliver the right syndrome for
-MMU_INST_FETCH alignment issues.
+...
 
-Fixes: https://gitlab.com/qemu-project/qemu/-/issues/3233
-Tested-by: Jessica Clarke <jrtc27@jrtc27.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> +
+> +void qsmmu_single_translation(QSMMUTestContext *ctx)
+> +{
+> +    uint32_t config_result;
+> +    uint32_t dma_result;
+> +    bool test_passed;
+> +
+> +    /* Configure SMMU translation */
+> +    config_result = qsmmu_setup_and_enable_translation(ctx);
+> +    if (config_result != 0) {
+> +        g_test_message("Configuration failed: mode=%u status=0x%x",
+> +                       ctx->config.trans_mode, config_result);
+> +        return;
 
----
-v2
-  - don't mess with MemOp for alignment check
-  - expand arm_deliver_fault to pick up alignment issues
-v3
-  - update commit message
----
- target/arm/tcg/tlb_helper.c | 21 ++++++++++++++++-----
- 1 file changed, 16 insertions(+), 5 deletions(-)
+Is that expected to silently return if we can't configure translation?
 
-diff --git a/target/arm/tcg/tlb_helper.c b/target/arm/tcg/tlb_helper.c
-index f1983a5732e..5c689d3b69f 100644
---- a/target/arm/tcg/tlb_helper.c
-+++ b/target/arm/tcg/tlb_helper.c
-@@ -250,7 +250,11 @@ void arm_deliver_fault(ARMCPU *cpu, vaddr addr,
-     fsr = compute_fsr_fsc(env, fi, target_el, mmu_idx, &fsc);
- 
-     if (access_type == MMU_INST_FETCH) {
--        syn = syn_insn_abort(same_el, fi->ea, fi->s1ptw, fsc);
-+        if (fi->type == ARMFault_Alignment) {
-+            syn = syn_pcalignment();
-+        } else {
-+            syn = syn_insn_abort(same_el, fi->ea, fi->s1ptw, fsc);
-+        }
-         exc = EXCP_PREFETCH_ABORT;
-     } else {
-         bool gcs = regime_is_gcs(core_to_arm_mmu_idx(env, mmu_idx));
-@@ -346,11 +350,18 @@ bool arm_cpu_tlb_fill_align(CPUState *cs, CPUTLBEntryFull *out, vaddr address,
-     }
- 
-     /*
--     * Per R_XCHFJ, alignment fault not due to memory type has
--     * highest precedence.  Otherwise, walk the page table and
--     * and collect the page description.
-+     * PC alignment faults should be dealt with at translation time
-+     * but we also need to catch them while being probed.
-+     *
-+     * Then per R_XCHFJ, alignment fault not due to memory type take
-+     * precedence. Otherwise, walk the page table and and collect the
-+     * page description.
-+     *
-      */
--    if (address & ((1 << memop_alignment_bits(memop)) - 1)) {
-+    if (access_type == MMU_INST_FETCH && !cpu->env.thumb &&
-+        (address & 3)) {
-+        fi->type = ARMFault_Alignment;
-+    } else if (address & ((1 << memop_alignment_bits(memop)) - 1)) {
-         fi->type = ARMFault_Alignment;
-     } else if (!get_phys_addr(&cpu->env, address, access_type, memop,
-                               core_to_arm_mmu_idx(&cpu->env, mmu_idx),
--- 
-2.47.3
+> +    }
+> +
+> +    /* Trigger DMA operation */
+> +    dma_result = qsmmu_trigger_dma(ctx);
+> +    if (dma_result != 0) {
+> +        g_test_message("DMA failed: mode=%u result=0x%x",
+> +                       ctx->config.trans_mode, dma_result);
+> +    } else {
+> +        g_test_message("-> DMA succeeded: mode=%u", ctx->config.trans_mode);
+> +    }
+> +
+> +    /* Validate test result */
+> +    test_passed = qsmmu_validate_test_result(ctx);
+> +    g_assert_true(test_passed);
+> +
+> +    /* Clean up translation state to prepare for the next test */
+> +    qsmmu_cleanup_translation(ctx);
+> +}
+> +
+> +void qsmmu_translation_batch(const QSMMUTestConfig *configs, size_t count,
+> +                             QTestState *qts, QPCIDevice *dev,
+> +                             QPCIBar bar, uint64_t smmu_base)
+> +{
+> +    for (int i = 0; i < count; i++) {
+> +        /* Initialize test memory */
+> +        qtest_memset(qts, configs[i].dma_iova, 0x00, configs[i].dma_len);
+> +        /* Execute each test configuration */
+> +        QSMMUTestContext ctx = {
+> +            .qts = qts,
+> +            .dev = dev,
+> +            .bar = bar,
+> +            .smmu_base = smmu_base,
+> +            .config = configs[i],
+> +            .trans_status = 0,
+> +            .dma_result = 0,
+> +            .sid = dev->devfn,
+> +            .tx_space = qsmmu_sec_sid_to_space(configs[i].sec_sid),
+> +        };
+> +
+> +        qsmmu_single_translation(&ctx);
+> +        g_test_message("--> Test %d completed: mode=%u sec_sid=%u "
+> +                       "status=0x%x result=0x%x", i, configs[i].trans_mode,
+> +                       configs[i].sec_sid, ctx.trans_status, ctx.dma_result);
+> +    }
+> +}
 
+What is the reason for batching operations?
+We are not in a performance critical scenario for running this test, so 
+it's probably better to have distinct calls to single_translation.
+
+...
+
+For the rest of the patch, which is quite consequent, congrats. It's 
+hard to review all the setup phase here, but knowing it works with the 
+current smmuv3 implementation, that's a good proof that it's working as 
+expected.
 

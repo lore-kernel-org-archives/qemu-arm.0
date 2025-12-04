@@ -4,114 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E91F2D216AE
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 16:39:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C23B7D29FAB
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 18:19:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vRCLx-0000Fa-G3; Thu, 04 Dec 2025 11:38:51 -0500
+	id 1vRDvd-00047G-SL; Thu, 04 Dec 2025 13:19:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vRCLt-0000FF-KK
- for qemu-arm@nongnu.org; Thu, 04 Dec 2025 11:38:45 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vRCLq-0000b4-9Y
- for qemu-arm@nongnu.org; Thu, 04 Dec 2025 11:38:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764866321;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oewJrQ4KqNNd66kSHO6werUV/k7nywfwlSZgyYIb6Do=;
- b=ObPf9NtVolj0NQY61+vu7r7wgKRXrtp83HhXur3QsqvaZgvX19EyWdObgLwf5zpCkJKdpa
- Us5IwJo6tRxc/uIJBV/swWiXNrRj3f/qgVTCF7550fMaOjTCZlr6J+G7KdHx8z1bjGeGoh
- MsKpoQ9wCyoDGluizNUXlpAn58xyCgs=
-Received: from mail-yx1-f70.google.com (mail-yx1-f70.google.com
- [74.125.224.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-206-1fw_qbprOdulRWMp7SCeOA-1; Thu, 04 Dec 2025 11:38:38 -0500
-X-MC-Unique: 1fw_qbprOdulRWMp7SCeOA-1
-X-Mimecast-MFC-AGG-ID: 1fw_qbprOdulRWMp7SCeOA_1764866318
-Received: by mail-yx1-f70.google.com with SMTP id
- 956f58d0204a3-63e33859d16so1095119d50.2
- for <qemu-arm@nongnu.org>; Thu, 04 Dec 2025 08:38:38 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764866318; x=1765471118;
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vRDvb-00046d-UW
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 13:19:43 -0500
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vRDva-00016P-A5
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 13:19:43 -0500
+Received: by mail-pj1-x1034.google.com with SMTP id
+ 98e67ed59e1d1-34381ec9197so1090361a91.1
+ for <qemu-arm@nongnu.org>; Thu, 04 Dec 2025 10:19:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1764872379; x=1765477179; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=oewJrQ4KqNNd66kSHO6werUV/k7nywfwlSZgyYIb6Do=;
- b=fiB6WcO32jcyUaLPMUdkrlKdn1OUIN0IO3VrXd7NaDtszlcYK3CAAUsaqHY3OYdxlx
- 9r81rzn5js1TEfQuj3GocIcp7EQ0EWTCluKvfQLp+pygKP5A2AGhV4qfvEjm9G4ocWjE
- 4dFbClsOfycKPosRqSyJNSB/75x7G4yQmMeV+9WRGqaXXzD5tSi/RksD4c47oUOEZ3w1
- DypX3GZrlGCd84nTju515thdmhaCnlbSmHq3+YT1FKsn8iqLqi/3JxATesGoRAGuh489
- qveb3xynBCzggRp5yz+ysPpWJm2O38CltdMlUBETVEyrF75FvRkD/3eSIqVwlOl813Gl
- Ub8Q==
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=CYsc787tQo5xf4+vPWXZrVzbUjRunC0ksdnBvtGJAgI=;
+ b=qUxvGR/mQe12wsFaA4RXjuYRyIUndiWNkpc3Rnq1VMAhYqUAB8ga2KgT9fHNUo1qcp
+ XaSkuYl1SWLUGoEdXb2mNm81dVDs61GcD1qKpCZ2ZeY3Lf5CTiO7xKz7MsyGsbeyl7lq
+ RA6QSSw5+FSCak0uuSbQxWndYPzFJ64Smthxp8ADOAxqZY5idiNY2eLhoFiYAxpyS3P4
+ v9e8znYdOL9HlmsUFdsVXXWHTZ35vA8deVlRcYjcpDqJlmkbiE7L0k7QCLIDKdzk2MHp
+ uPPuZZyAQ0sAB/4jt6+Dfh8IVuo+MO1CKYKQ4zPbUqauGAZQXbCkOQ+hzRor+X2ap5FV
+ /i+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1764872379; x=1765477179;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=CYsc787tQo5xf4+vPWXZrVzbUjRunC0ksdnBvtGJAgI=;
+ b=oyBHS4r0QvRRJ3CH6QmuTthkI/Q7fDGiWoZ7/ZRy1HgY4DftWZ9veRsniF6QQ2CQum
+ AcZsmK6xGH/MFBoaEEIbpP9Vo5Z9W9Nxb8gwFmhXhZJqBMvM5vyN6QR/0KMrFiJETZQJ
+ 28xAY2wbtpRxD5b13aHfl4K5L+0XGBvxe8/OKMyCLII5vIhqWWgPxyv4yhGkQtH5o12Q
+ ZpewWHXkfJxROoZMesxi+Bd6rny7hA+gxOCTwN+ANsFrwqqD0z4Xmat2dbNwbDHxdWa9
+ +eF3tZA2PbUc4qXhMHBWnVUvb1RN3dSQSjgFd9WrhOTsCUg0UST8m6PwnGZD6fD+5L7m
+ JULg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUYjGbqmSrYxS2Rc7ilUBP1zYBi4lyHsB0hd+WyX4bRSGXNqz1zx7jZWzERe7JGavZGBs2b5waEcw==@nongnu.org
-X-Gm-Message-State: AOJu0YzCJwiVUc9jgByGowgqtl3K92GemIXUHHWhqWTV+oT2PG2FgMrw
- Vm7TIsq4s+puOmDeioksz+Jrrf7+DDXDe9hfAF05dN3VVdtp/krNpm8s2gxvQI7gLSEjIK2cTZd
- me8s53ESFpwEb1FrybYEqSIBFEULQk0Ag9R1047lQn16A6qMysv2OHw==
-X-Gm-Gg: ASbGncuFTPdaCen6RDcvw1I1r6JXxf4eEp8YP09Mlf56Ytlkbm8pR/aKUClpLH8VNzR
- oeZFMqgfl4Mv1fqB4cLnQoFHIvRq3U9jdK883atKFusyK3oz1AhONb2tEHLTwn8Gnj7eeKO0hDJ
- 87SSBnYC2g7+W7dc34ABKDRkdVAnmR5t72ii1NLDGc6oCsRuYpHXdS/TQiKluQpnJTvSY20ehNg
- PyvHJE2bIJmn000J4w2Y9dh26xGall8xeAnCnBqhsoDR8cgSpSe9b6Pt1ikshyQZliMfwvz+6GG
- oSyI4lJSKGTEudnjGJDTgbD02wjGa0POCPm+na4QXUP1p6j99MT1HhpcPW80ULa2FSUrLXX+VYK
- WmDxwtoBS435BoNZ08I+nSWey0sZkY5rBY1ZrnrLM3LbRE+9pBm6JidtJeg==
-X-Received: by 2002:a05:690c:3691:b0:786:4fd5:e5db with SMTP id
- 00721157ae682-78c188ffa06mr52436057b3.49.1764866318218; 
- Thu, 04 Dec 2025 08:38:38 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHQFr2yGexdDYeOAWuKz7ZXziNe9Qrp9HSa7wzL0JGXiauI3eeRVm/LMvHN6hYDyt+NyF3zPQ==
-X-Received: by 2002:a05:690c:3691:b0:786:4fd5:e5db with SMTP id
- 00721157ae682-78c188ffa06mr52435477b3.49.1764866317775; 
- Thu, 04 Dec 2025 08:38:37 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:fa3:e4b0:95dc:ab11:92db:6f9e?
- ([2a01:e0a:fa3:e4b0:95dc:ab11:92db:6f9e])
+ AJvYcCU3hyOVFoKvVXA5xiSGFXITyZh94j7s7piJAM6NDMkbvWLXK8A0WmQQmh2XznRg9JW2JRlIK9rzXg==@nongnu.org
+X-Gm-Message-State: AOJu0YwpTAmdAi1YTTdg1la4Ci6AR9rU3ni1b0672wlaTwoT8E0Xr9qD
+ eIuJikE/9x2L++ddWA8J2nhYp+Zv8kQAdXdq/7VZBwKZjQaPZsgQpNyFoISK4b7hKao=
+X-Gm-Gg: ASbGnctY5fUNfA2aT7t2LzJEWjyWuVvGAHKTPBntqAe4TedGjEUt3FGqB4eElzSW9st
+ hANAmKjXY7t50IY+ktrGPlOt5ppbnK1xPrOeYyxz+WiMxpNqiGgjCoEc+c68Bb378JOJxDWzbkG
+ ajtX1cWxZ7C8sYCGZ2G/psvqLm1/5umx3Qs5tj3hif4t2WZezqtFmOxm23rLdZXV2cxK/l47eF+
+ SDsvH/Cy0LiAHHQDSHyLr/mspr6T4in9A5Up6S6Hop5RTpPnJgNMbPa1YelO9Yse+V6tWWUk9PF
+ ADsz3Iz7Pm5QwlB7HNmFXA1sAeJ3V1VBUmIvbLELM2aibR9UMKI4RqeQgYnEq6WE8A/pIGbiHw8
+ J12voy0yVkyLWdY0Sw4es4oHLxhS2YFy9ZMe3ao92JpVOhD/pWZl3p98/ocez2m6/sOHfIfxu4Z
+ GBwqLBIT0kqFRNzy5mI25Hm2VJvMxzNGayWEu7NkyetI0eqPGVgIk0fyA=
+X-Google-Smtp-Source: AGHT+IFnuzRenuZm745XhXwUqt7evMiM98nS8pYBlCqSfXT5jtvQbyR8QTYxw2y9zeZE5nC3Rpe9qQ==
+X-Received: by 2002:a17:90b:548f:b0:336:b60f:3936 with SMTP id
+ 98e67ed59e1d1-349125d346amr8970428a91.12.1764872378769; 
+ Thu, 04 Dec 2025 10:19:38 -0800 (PST)
+Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 956f58d0204a3-6443f5bca83sm770072d50.25.2025.12.04.08.38.32
+ 98e67ed59e1d1-34912a07626sm2484926a91.4.2025.12.04.10.19.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Dec 2025 08:38:37 -0800 (PST)
-Message-ID: <377d4c92-bfb0-4743-94d4-c4bf8dcb2934@redhat.com>
-Date: Thu, 4 Dec 2025 17:38:30 +0100
+ Thu, 04 Dec 2025 10:19:38 -0800 (PST)
+Message-ID: <59eb723b-e34f-4a5e-a2c5-2e3242cba8df@linaro.org>
+Date: Thu, 4 Dec 2025 10:19:37 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 16/33] hw/pci/pci: Introduce a callback to retrieve the
- MSI doorbell GPA directly
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
- mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
- zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
- kjaju@nvidia.com, "Michael S . Tsirkin" <mst@redhat.com>
-References: <20251120132213.56581-1-skolothumtho@nvidia.com>
- <20251120132213.56581-17-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251120132213.56581-17-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: rPbMM1DbKhEjizBmoY0FKuG9pdQ101vWYjJJEMmsgxE_1764866318
-X-Mimecast-Originator: redhat.com
+Subject: Re: [RFC RESEND v5 1/4] hw/arm/smmuv3: Extract common definitions to
+ smmuv3-common.h
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+To: Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini
+ <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>,
+ CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
+References: <20251126154547.1300748-1-tangtao1634@phytium.com.cn>
+ <20251126154547.1300748-2-tangtao1634@phytium.com.cn>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20251126154547.1300748-2-tangtao1634@phytium.com.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -7
-X-Spam_score: -0.8
-X-Spam_bar: /
-X-Spam_report: (-0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_BL_SPAMCOP_NET=1.347, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1034.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,161 +113,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
-
-On 11/20/25 2:21 PM, Shameer Kolothum wrote:
-> For certain vIOMMU implementations, such as SMMUv3 in accelerated mode,
-> the translation tables are programmed directly into the physical SMMUv3
-> in a nested configuration. While QEMU knows where the guest tables live,
-> safely walking them in software would require trapping and ordering all
-> guest invalidations on every command queue. Without this, QEMU could race
-> with guest updates and walk stale or freed page tables.
->
-> This constraint is fundamental to the design of HW-accelerated vSMMU when
-> used with downstream vfio-pci endpoint devices, where QEMU must never walk
-> guest translation tables and must rely on the physical SMMU for
-> translation. Future accelerated vSMMU features, such as virtual CMDQ, will
-> also prevent trapping invalidations, reinforcing this restriction.
->
-> For vfio-pci endpoints behind such a vSMMU, the only translation QEMU
-> needs is for the MSI doorbell used when setting up KVM MSI route tables.
-> Instead of attempting a software walk, introduce an optional vIOMMU
-> callback that returns the MSI doorbell GPA directly.
->
-> kvm_arch_fixup_msi_route() uses this callback when available and ignores
-> the guest provided IOVA in that case.
->
-> If the vIOMMU does not implement the callback, we fall back to the
-> existing IOMMU based address space translation path.
->
-> This ensures correct MSI routing for accelerated SMMUv3 + VFIO passthrough
-> while avoiding unsafe software walks of guest translation tables.
->
-> Cc: Michael S. Tsirkin <mst@redhat.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+On 11/26/25 7:45 AM, Tao Tang wrote:
+> Move register definitions, command enums, and Stream Table Entry (STE) /
+> Context Descriptor (CD) structure definitions from the internal header
+> hw/arm/smmuv3-internal.h to a new common header
+> include/hw/arm/smmuv3-common.h.
+> 
+> This allows other components, such as generic SMMUv3 tests or test devices,
+> to utilize these definitions without including the specific SMMUv3 device
+> internal state.
+> 
+> In addition, refactor the STE and CD field definitions to consistently use
+> the 'hw/registerfields.h' API and introduce corresponding setter macros to
+> facilitate structure manipulation.
+> 
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > ---
->  hw/pci/pci.c         | 17 +++++++++++++++++
->  include/hw/pci/pci.h | 17 +++++++++++++++++
->  target/arm/kvm.c     | 18 +++++++++++++++++-
->  3 files changed, 51 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index 55647a6928..201583603f 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -2979,6 +2979,23 @@ bool pci_device_get_iommu_bus_devfn(PCIDevice *dev, PCIBus **piommu_bus,
->      return aliased;
->  }
->  
-> +bool pci_device_iommu_msi_direct_gpa(PCIDevice *dev, hwaddr *out_doorbell)
-> +{
-> +    PCIBus *bus;
-> +    PCIBus *iommu_bus;
-> +    int devfn;
-> +
-> +    pci_device_get_iommu_bus_devfn(dev, &iommu_bus, &bus, &devfn);
-> +    if (iommu_bus) {
-> +        if (iommu_bus->iommu_ops->get_msi_direct_gpa) {
-> +            *out_doorbell = iommu_bus->iommu_ops->get_msi_direct_gpa(bus,
-> +                                iommu_bus->iommu_opaque, devfn);
-> +            return true;
-> +        }
-> +    }
-> +    return false;
-> +}
-> +
->  AddressSpace *pci_device_iommu_address_space(PCIDevice *dev)
->  {
->      PCIBus *bus;
-> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-> index dd1c4483a2..0964049044 100644
-> --- a/include/hw/pci/pci.h
-> +++ b/include/hw/pci/pci.h
-> @@ -664,6 +664,22 @@ typedef struct PCIIOMMUOps {
->                              uint32_t pasid, bool priv_req, bool exec_req,
->                              hwaddr addr, bool lpig, uint16_t prgi, bool is_read,
->                              bool is_write);
-> +    /**
-> +     * @get_msi_direct_gpa: get the guest physical address of MSI doorbell
-> +     * for the device on a PCI bus.
-> +     *
-> +     * Optional callback. If implemented, it must return a valid guest
-> +     * physical address for the MSI doorbell
-> +     *
-> +     * @bus: the #PCIBus being accessed.
-> +     *
-> +     * @opaque: the data passed to pci_setup_iommu().
-> +     *
-> +     * @devfn: device and function number
-> +     *
-> +     * Returns: the guest physical address of the MSI doorbell.
-> +     */
-> +    uint64_t (*get_msi_direct_gpa)(PCIBus *bus, void *opaque, int devfn);
->  } PCIIOMMUOps;
->  
->  bool pci_device_get_iommu_bus_devfn(PCIDevice *dev, PCIBus **piommu_bus,
-> @@ -672,6 +688,7 @@ AddressSpace *pci_device_iommu_address_space(PCIDevice *dev);
->  bool pci_device_set_iommu_device(PCIDevice *dev, HostIOMMUDevice *hiod,
->                                   Error **errp);
->  void pci_device_unset_iommu_device(PCIDevice *dev);
-> +bool pci_device_iommu_msi_direct_gpa(PCIDevice *dev, hwaddr *out_doorbell);
->  
->  /**
->   * pci_device_get_viommu_flags: get vIOMMU flags.
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 0d57081e69..2372de6a6e 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -1620,26 +1620,42 @@ int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
->          return 0;
->      }
->  
-> +    /*
-> +     * We do have an IOMMU address space, but for some vIOMMU implementations
-> +     * (e.g. accelerated SMMUv3) the translation tables are programmed into
-> +     * the physical SMMUv3 in the host (nested S1=guest, S2=host). QEMU cannot
-> +     * walk these tables in a safe way, so in that case we obtain the MSI
-> +     * doorbell GPA directly from the vIOMMU backend and ignore the gIOVA
-> +     * @address.
-> +     */
-> +    if (pci_device_iommu_msi_direct_gpa(dev, &doorbell_gpa)) {
-> +        goto set_doorbell;
-> +    }
-> +
->      /* MSI doorbell address is translated by an IOMMU */
->  
-> -    RCU_READ_LOCK_GUARD();
-> +    rcu_read_lock();
-what is the rationale behind the RCU changes?
-
-Eric
->  
->      mr = address_space_translate(as, address, &xlat, &len, true,
->                                   MEMTXATTRS_UNSPECIFIED);
->  
->      if (!mr) {
-> +        rcu_read_unlock();
->          return 1;
->      }
->  
->      mrs = memory_region_find(mr, xlat, 1);
->  
->      if (!mrs.mr) {
-> +        rcu_read_unlock();
->          return 1;
->      }
->  
->      doorbell_gpa = mrs.offset_within_address_space;
->      memory_region_unref(mrs.mr);
-> +    rcu_read_unlock();
->  
-> +set_doorbell:
->      route->u.msi.address_lo = doorbell_gpa;
->      route->u.msi.address_hi = doorbell_gpa >> 32;
->  
+>   hw/arm/smmuv3-internal.h       | 255 +-----------------
+>   include/hw/arm/smmuv3-common.h | 461 +++++++++++++++++++++++++++++++++
+>   2 files changed, 462 insertions(+), 254 deletions(-)
+>   create mode 100644 include/hw/arm/smmuv3-common.h
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 

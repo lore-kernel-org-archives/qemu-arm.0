@@ -4,150 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55DE1D1F9B4
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 10:48:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABE01D1F9BC
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 11:10:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vR6sc-0001Fg-1X; Thu, 04 Dec 2025 05:48:10 -0500
+	id 1vR7Dl-0002HM-AU; Thu, 04 Dec 2025 06:10:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vR6sZ-0001FB-G6
- for qemu-arm@nongnu.org; Thu, 04 Dec 2025 05:48:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vR7Di-0002GR-EO
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 06:09:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vR6sX-0001h7-C8
- for qemu-arm@nongnu.org; Thu, 04 Dec 2025 05:48:07 -0500
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1vR7Dg-0002nr-Qz
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 06:09:58 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764845284;
+ s=mimecast20190719; t=1764846594;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=6tyOEvsFspYZUcwzU3OxMzTAdn6bK0XXoV7A7MYDuhA=;
- b=eWQQt2G7meuwnEpLCOEPk1P/iYWJM7V8VWTIR9NZlRt/a8oMLSdRBy50PjO7yNLm6RfoSK
- fuF0mxMogoTRY9SIg0YpfJi1n4zo1mEwRkDaM4TapZ5yRpleWkJnW63jYtE13RxF7vz45+
- 5A14IR/ThXUVsCDd25s6o3FsCEqpxSU=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references;
+ bh=XyCCexfikUNWiqkNfYU1zCh5RHwj+ikUhsH7znFqHmY=;
+ b=OmbH18+2iKBWxP+c24RSAcavJkiThjD3Zbd7hqM3k50jIL8DyeX/fpscx8eW/NdWF64ikX
+ S0FbAKGIC4wRZyKo5lyK4ZPh+DloN5lAbNJs8w39+3tlbjZ+2ZPeYkud3Y6dbTFQR692y4
+ Ea9MSQdy8gWHMJMhgsNQmyfk6LlWuzI=
+Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
+ [209.85.215.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-693-D8b52qUwPe6l_r-Olt2lFA-1; Thu, 04 Dec 2025 05:48:02 -0500
-X-MC-Unique: D8b52qUwPe6l_r-Olt2lFA-1
-X-Mimecast-MFC-AGG-ID: D8b52qUwPe6l_r-Olt2lFA_1764845282
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-42b352355a1so899959f8f.1
- for <qemu-arm@nongnu.org>; Thu, 04 Dec 2025 02:48:02 -0800 (PST)
+ us-mta-530-qnmp9kKeMZyX0N378UrQAA-1; Thu, 04 Dec 2025 06:09:53 -0500
+X-MC-Unique: qnmp9kKeMZyX0N378UrQAA-1
+X-Mimecast-MFC-AGG-ID: qnmp9kKeMZyX0N378UrQAA_1764846593
+Received: by mail-pg1-f197.google.com with SMTP id
+ 41be03b00d2f7-be8c77ecc63so1126619a12.2
+ for <qemu-arm@nongnu.org>; Thu, 04 Dec 2025 03:09:53 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764845281; x=1765450081;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=6tyOEvsFspYZUcwzU3OxMzTAdn6bK0XXoV7A7MYDuhA=;
- b=shqPyPw349nuydUajOczZUZTcCzCrbCM+wg2lpmhvxrHJxQEkTungpE3q2TlMrB+su
- 1buCbGjvx27tX135EZLI7cZUl51xV2rgS4YfT+lyZwyqB9W5Qy7gocIHJQ6CYqSxFkkA
- Vz1/bwdlJwuOfWgBouPO/Umf/D3ttlivfC5IxD1CdWRgAV4eo+/l0Z7Doo6yud8Ggzi6
- kJK2bRT7AgoVbws70TlD7OpBdbf9qVPJpyWF6o+Aylh1+nFZhvsPdnoMHdAp2g9YXt8/
- 4ppUn+tU0u5V3BuTbIXlHMiaKniRdgT8pxueEeEebUjoMkHqiR7L8Chgkwk2prEqeAx9
- Iw2g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVCwvnIXj7lKySBNZL2BUC/w2HmUI6OQtu0VauMwTkRFJS2Nh6oQPXo3UoUW9bC7G3ehaQR2B6RXQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz5O97JOEGvyibX5JTfDj1JA1jSZaoBPNFMqmY/rbi6lA6lmraI
- VgEeYe+Vp4fyQW9tlS3juTbK4ZT6+Jsbupjrwd7c1Kq5AMgCFZtLDstIz6pwBsiZZehKCF4eHnQ
- yAsaUUWPgaPdPutzqtpkwv0gqT7BwBVMuSnmuGwPRKu7fi9rA5MsAOg==
-X-Gm-Gg: ASbGnctg3/l+qhH3RGZDax6zXRSvdgkNPfRHjTyl3RLgWzRnxPhpe38GBWGCypaze5P
- wEIjALotgoqbNbRyX+NFWGRFeuIP8xxw2h9KEoPwN9UVNpbHpI9/7RcgU2l8HXGDRRsvq9E8Uds
- ZHm9KiCaIRjjgjoXWkhpibrlKRhFm8WDaDHsP5PAg5fj5tkTwApG+9cAqesmoHT09BhQMQlGsOC
- Z6RpO6vatkHizSO/UjAiCYFPr6jKATl5fxjTf6UHIMHy4vC2mbyHf5mtt0VV92WaWshuES39do7
- F9VV7fPqAO2+wY5mcWFh3aJTWz50Kp6eKzZJwYJppU55SkK2SzhsEoqlSDspaTfqKeeJIVE7gEp
- qWMSg068=
-X-Received: by 2002:a5d:6e44:0:b0:429:cf03:8b2e with SMTP id
- ffacd0b85a97d-42f78772783mr2273552f8f.13.1764845281570; 
- Thu, 04 Dec 2025 02:48:01 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFBlracykKAM3aejXY4qvHj47MAxRdbLufgi1l/+BWPYhzvD4ixzbIrL5MxQ3iUYqFQ6UUvmQ==
-X-Received: by 2002:a5d:6e44:0:b0:429:cf03:8b2e with SMTP id
- ffacd0b85a97d-42f78772783mr2273527f8f.13.1764845281137; 
- Thu, 04 Dec 2025 02:48:01 -0800 (PST)
-Received: from [192.168.0.5] ([47.64.112.197])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42f7d222478sm2487603f8f.20.2025.12.04.02.48.00
+ d=1e100.net; s=20230601; t=1764846591; x=1765451391;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=XyCCexfikUNWiqkNfYU1zCh5RHwj+ikUhsH7znFqHmY=;
+ b=Q3AK1l/L2EFCwnQhkStjEnDdhsMyLA5CZxMBlPlLduCbGlLTDNgk5Bh8QB/ZWFPLB7
+ paKKcxd4KG+6s3BuD4idMOiWn2vLnrRwcRuaxgnaMJppTM30iPEAoFs2+wP00ij/Gbns
+ CLNQoEdrtxmozB+6mBFo/dapYV82aw9KZzItMGFPfpOVFX5SUYbw6y2r9qZD5spzX4yX
+ 0LkNQBQyb0D9nMOcinFlxfvHnCBvfYRwEn3lEuTNw7uZC3Yn/dVy6mUvNPBaUPFICwcs
+ KO0LJQAcJFO5QDfxTjhyY6huSj/mBeq8prazi7O0R8u5/bDL/6jMZqaO6BxCa0htbpUy
+ nSFw==
+X-Gm-Message-State: AOJu0Yzc8Bd2ox85aB3QaDyGloG65r2u02pk2vKH7cgn1f8xu+EcVSvQ
+ CDtz7JVYXAGPATebR89PQcf4QfnKhz3Cxp09RJUKEhfH7RYjSezylOLT6UkFGMX7yDZiyw2ynmL
+ vS8ZusdtixEQg3v5PFTc0V6MMCeewaHSLPe4vXkIHQCkpXE+aiSwsK0Q2YHQEFWtLPPzlai/0L9
+ BxTe10h88XAvQuPbNnegURVcSS9zYMeO6qUA==
+X-Gm-Gg: ASbGncuRez/64LKndTIZxk82I8s3W8k4Mg9jCPiM3W4smM9DThIjiClwMSNq5NADOjw
+ wJJONciIRaXhyvSO18nfNWikjKWY2Bnl6jP2brlykU/Pa6YO7sMjYOC+HaFUAIedEsGqy21h47m
+ sdvzueU35ejOOk+9T6SzKl0UGZgKIBpdvEM0cGj6PAiGWmbKNlBlk5+RCeh4+3QVqWW5kDRXv0I
+ NU/UjllDgLVMCChViaCXVfF1C19nxqz52Bumywh1mZi5WPRGi8AvXr0T789he+nFHXulX1NPkjj
+ sSqfdLObIPtlRoABm8WzHR31V8reRSrLypVHU1g9nPdbe+Zpjeks2SmQqapTs4TW9YP9BPJ/Vqo
+ zqGHOT0r1XQ9Y/50hkNZOsTnBMSH0nOH5FUensL81SOvKWb81+w==
+X-Received: by 2002:a05:6a21:3284:b0:35e:3c6c:1eed with SMTP id
+ adf61e73a8af0-363f5d7336dmr7067444637.18.1764846590955; 
+ Thu, 04 Dec 2025 03:09:50 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGqniOWBR9ujUTYUCSa0noJOQ0Z/uKgnG+Wt491XrUqEYC6Y4H3O99netEyJr0G4i89B8NFYQ==
+X-Received: by 2002:a05:6a21:3284:b0:35e:3c6c:1eed with SMTP id
+ adf61e73a8af0-363f5d7336dmr7067401637.18.1764846590436; 
+ Thu, 04 Dec 2025 03:09:50 -0800 (PST)
+Received: from [192.168.68.51] (n175-34-62-5.mrk21.qld.optusnet.com.au.
+ [175.34.62.5]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-7e2adc5bf17sm1858152b3a.38.2025.12.04.03.09.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Dec 2025 02:48:00 -0800 (PST)
-Message-ID: <abb5a2c3-3c42-4f7b-95e8-2e0b29fe5685@redhat.com>
-Date: Thu, 4 Dec 2025 11:47:58 +0100
+ Thu, 04 Dec 2025 03:09:49 -0800 (PST)
+Message-ID: <f9cc047c-9ede-4956-b79c-0e3a05e41a43@redhat.com>
+Date: Thu, 4 Dec 2025 21:09:43 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 00/15] hw/arm: add Beckhoff CX7200 board
-To: =?UTF-8?Q?Corvin_K=C3=B6hne?= <corvin.koehne@gmail.com>,
- qemu-devel@nongnu.org
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Kevin Wolf <kwolf@redhat.com>,
- qemu-block@nongnu.org, =?UTF-8?Q?Corvin_K=C3=B6hne?=
- <c.koehne@beckhoff.com>, Hanna Reitz <hreitz@redhat.com>,
- =?UTF-8?Q?Yannick_Vo=C3=9Fen?= <y.vossen@beckhoff.com>
-References: <20251204093502.50582-1-corvin.koehne@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20251204093502.50582-1-corvin.koehne@gmail.com>
+Subject: Re: [PATCH v2 0/5] acpi/ghes: Error object handling improvement
+From: Gavin Shan <gshan@redhat.com>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, mst@redhat.com, jonathan.cameron@huawei.com,
+ mchehab+huawei@kernel.org, imammedo@redhat.com, armbru@redhat.com,
+ anisinha@redhat.com, gengdongjiu1@gmail.com, peter.maydell@linaro.org,
+ pbonzini@redhat.com, shan.gavin@gmail.com
+References: <20251201141803.2386129-1-gshan@redhat.com>
+In-Reply-To: <20251201141803.2386129-1-gshan@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: qVtdTefiA_pmTZhkn8zy64iVYZDJK5uawGocDrG0Khc_1764845282
+X-Mimecast-MFC-PROC-ID: F1XDlDpuqQO9HTPi0LLkrfiEmpIqwEdMUQJSINlO1Ng_1764846593
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -163,75 +115,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 04/12/2025 10.34, Corvin Köhne wrote:
-> From: Corvin Köhne <c.koehne@beckhoff.com>
-> 
-> Hi,
-> 
-> Beckhoff has build a board, called CX7200, based on the Xilinx Zynq A9
-> platform. This commit series adds the Beckhoff CX7200 as new board variant to
-> QEMU.
-> 
-> The emulation is able to successfully boot an CX7200 image. The image includes
-> some self tests executed on every boot. Only the cache self test fails due to
-> QEMU emulating the cache as always being coherent. The self tests include f.e.:
-> 
-> * Network
-> * Flash
-> * CCAT DMA + EEPROM [1]
-> * TwinCAT (Beckhoff's automation control software [2])
-> 
-> [1] https://github.com/beckhoff/ccat
-> [2] https://www.beckhoff.com/en-us/products/automation/
-> 
-> YannickV (15):
->    hw/timer: Make frequency configurable
->    hw/timer: Make PERIPHCLK divider configurable
->    hw/dma/zynq-devcfg: Handle bitstream loading via DMA to 0xffffffff
->    hw/arm/zynq-devcfg: Prevent unintended unlock during initialization
->    hw/dma/zynq: Ensure PCFG_DONE bit remains set to indicate PL is in
->      user mode
->    hw/dma/zynq-devcfg: Simulate dummy PL reset
->    hw/dma/zynq-devcfg: Indicate power-up status of PL
->    hw/misc: Add dummy ZYNQ DDR controller
->    hw/misc/zynq_slcr: Add logic for DCI configuration
->    hw/misc: Add Beckhoff CCAT device
->    hw/block/m25p80: Add HAS_SR_TB flag for is25lp016d
->    hw/arm/xilinx_zynq: Split xilinx_zynq into header and implementation
->      files
->    hw/arm/xilinx_zynq: Add flash-type property
->    hw/arm: Add new machine based on xilinx-zynq-a9 for Beckhoff CX7200
->    docs/system/arm: Add support for Beckhoff CX7200
-> 
->   docs/system/arm/beckhoff-cx7200.rst |  57 ++++
->   docs/system/target-arm.rst          |   1 +
->   hw/arm/Kconfig                      |   7 +
->   hw/arm/beckhoff_CX7200.c            | 104 +++++++
->   hw/arm/meson.build                  |   1 +
->   hw/arm/xilinx_zynq.c                |  54 ++--
->   hw/block/m25p80.c                   |   3 +-
->   hw/dma/xlnx-zynq-devcfg.c           |  27 +-
->   hw/misc/Kconfig                     |   6 +
->   hw/misc/beckhoff_ccat.c             | 339 +++++++++++++++++++++++
->   hw/misc/meson.build                 |   2 +
->   hw/misc/xlnx-zynq-ddrc.c            | 413 ++++++++++++++++++++++++++++
->   hw/misc/zynq_slcr.c                 |  31 +++
->   hw/timer/a9gtimer.c                 |  26 +-
->   hw/timer/arm_mptimer.c              |  32 ++-
->   include/hw/arm/xilinx_zynq.h        |  37 +++
->   include/hw/misc/xlnx-zynq-ddrc.h    | 148 ++++++++++
->   include/hw/timer/a9gtimer.h         |   2 +
->   include/hw/timer/arm_mptimer.h      |   4 +
+Hi Michael,
 
-  Hi!
+On 12/2/25 12:17 AM, Gavin Shan wrote:
+> This series is pulled from the series for memory error hanlding
+> improvement [1] to improve the error object handling in various
+> aspects.
+> 
+> [1] https://lists.nongnu.org/archive/html/qemu-arm/2025-11/msg00534.html
+> 
+> This series doesn't have any dependencies and can be merged by
+> it own.
+> 
 
-Looking at the list of changed files, I think this series misses an update 
-to MAINTAINERS to add the new board there. Could you please add such a patch?
+Could you help to merge this series if it looks good to you? :)
 
-Also, are there any binaries for this board publically available somewhere 
-on the internet? If so, please also add a functional test for this board to 
-tests/functional/ - thanks!
 
-  Thomas
+Thanks,
+Gavin
+
+> Changelog
+> =========
+> v2:
+>    * v1: https://lists.nongnu.org/archive/html/qemu-arm/2025-11/msg00969.html
+>    * Commit log improvement on PATCH[v1 4/5]            (Igor)
+>    * Collected RBs                                      (Gavin)
+> 
+> Gavin Shan (5):
+>    acpi/ghes: Automate data block cleanup in acpi_ghes_memory_errors()
+>    acpi/ghes: Abort in acpi_ghes_memory_errors() if necessary
+>    target/arm/kvm: Exit on error from acpi_ghes_memory_errors()
+>    acpi/ghes: Bail early on error from get_ghes_source_offsets()
+>    acpi/ghes: Use error_fatal in acpi_ghes_memory_errors()
+> 
+>   hw/acpi/ghes-stub.c    |  6 +++---
+>   hw/acpi/ghes.c         | 45 ++++++++++++++++++------------------------
+>   include/hw/acpi/ghes.h |  6 +++---
+>   target/arm/kvm.c       | 10 +++-------
+>   4 files changed, 28 insertions(+), 39 deletions(-)
+> 
 
 

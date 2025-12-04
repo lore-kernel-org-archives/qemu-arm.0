@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BA39D206AA
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 14:22:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1CDDD206A9
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 14:33:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vRADW-0003w4-8B; Thu, 04 Dec 2025 09:21:58 -0500
+	id 1vRAOn-0007bb-SP; Thu, 04 Dec 2025 09:33:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vRADU-0003si-Fv
- for qemu-arm@nongnu.org; Thu, 04 Dec 2025 09:21:56 -0500
+ id 1vRAOm-0007b6-Ty
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 09:33:36 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vRADS-0002Ck-LJ
- for qemu-arm@nongnu.org; Thu, 04 Dec 2025 09:21:56 -0500
+ id 1vRAOk-0007RO-BE
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 09:33:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764858112;
+ s=mimecast20190719; t=1764858813;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3SD5W4SkFB1q6NVAsWelACBEt4onCHvYn7wbJOAJI2Q=;
- b=cafkWI4CWIltzbLapPr5FtCeMl/3AHK6+S8o/0JqQycMwU2nfi4dYtsBPr/d9Of7PcTAX1
- XRLXJaavCXso8yMDMBosnOdpTP8bFa2R4rvHoWe1cpl7kglwqYIy89Fyq346IEW63HPa6R
- ctxPKDvhRNmTBO67/oUWtBmqIOkYwXs=
-Received: from mail-yx1-f70.google.com (mail-yx1-f70.google.com
- [74.125.224.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=yJTbbx9bvccEvtU1F7UOZYSh0YBKtNEjL+ESlkbOtvs=;
+ b=CPlTJ1n7LuIxxqV51iz6UqqNSW/NBtiRBZCRVT82AwY+KiKpt4g4k0LSE1m7x6RIsgWwNy
+ Kkvw8tBviMWEAF4GximTRBaaazq3rx4MWSzJNvslnZZirWjOanRW2eGsmZqgejS+kS6Xkc
+ jKOoVj5UxchQDOsi6d2QHCfWwRTKd/Y=
+Received: from mail-yx1-f69.google.com (mail-yx1-f69.google.com
+ [74.125.224.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-509-OVd1onpsNfij_G_Ax1p2Dg-1; Thu, 04 Dec 2025 09:21:50 -0500
-X-MC-Unique: OVd1onpsNfij_G_Ax1p2Dg-1
-X-Mimecast-MFC-AGG-ID: OVd1onpsNfij_G_Ax1p2Dg_1764858110
-Received: by mail-yx1-f70.google.com with SMTP id
- 956f58d0204a3-640d2ff4acdso1165258d50.3
- for <qemu-arm@nongnu.org>; Thu, 04 Dec 2025 06:21:50 -0800 (PST)
+ us-mta-609-0io4t1gjOlOnjHCvZ_LAqg-1; Thu, 04 Dec 2025 09:33:30 -0500
+X-MC-Unique: 0io4t1gjOlOnjHCvZ_LAqg-1
+X-Mimecast-MFC-AGG-ID: 0io4t1gjOlOnjHCvZ_LAqg_1764858809
+Received: by mail-yx1-f69.google.com with SMTP id
+ 956f58d0204a3-6421389c362so1177650d50.1
+ for <qemu-arm@nongnu.org>; Thu, 04 Dec 2025 06:33:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764858110; x=1765462910;
+ d=1e100.net; s=20230601; t=1764858809; x=1765463609;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=3SD5W4SkFB1q6NVAsWelACBEt4onCHvYn7wbJOAJI2Q=;
- b=Cvnp8VUivtMvk1QHvgUHmPLEWrdnlKntdeDlp4gRJPnIXmCa+xCiko+qMltIGf7+t3
- bismt7U5zSf5RlL7HT7pPrwQr4B/EtJn7JZoioxdhksNfbypMbPpSJ/iKh+9yYQHUBvO
- 3C/SfigVHhrafpEZHt91eAUJBieYe3tJBCqL8bGcIh/vZ9GHzmpBFpWfKxa2Eou85lJX
- ca/DFKGEELYzgQwy/Tx9KLhMu4a+jaLjalaRUkOqeTfgMaJrEiasSXMWOrN8aMe0rB6X
- gPU7nB/4GnNq2k3XN0hqTsD1QquAGw/Ip8zutXrVmQci36+6sThHq3E+nrW4Fb2pMBjG
- EeUA==
+ bh=yJTbbx9bvccEvtU1F7UOZYSh0YBKtNEjL+ESlkbOtvs=;
+ b=CE8ZElszpqounBVPAqAGLKyZwjZdYKod2ua/t806uIdWELgyReng+tu8JTmmrfTUNF
+ hZ5U7nQBUQxTeR5vkOO/WKyDKJa47YcI6Lo7eIKxv76BdMrAYVl5HfzdmCge5PA+m7BI
+ o93Q+7PWZ25MITLUPjrLlkPA4V3rCKUvDqfYpSM7WXneY5T+Tsc4RnjSLKZZIOSP4EvX
+ dnogGa7WLUOP4Njk1sjH4eRUSDsqcnoXYpNxHMhHK6QX9g7cQ5kh2/4Nwq4EAjop7ONO
+ /S5cjedZZmiIkJM2eIxRsIa2zUjsMzF/MxsmtAkQADFjRP7hDrSg2BJHH2PNFLSYwRUQ
+ aaCw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUwZVGKBn1hJZQcO8LVnncNeP65cpBwG+FuOnKtI0gQErmAPW/DXUfqCVK6YoX7VVy3JScyue7WJQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy4ITifXMux/i2s50Zp9JMkCWT4HSwlK91Yu2jLHNIJtP6PnzNX
- 538h+nQCQhbvCnwEk5J7LFaSifRqTFILExKKYwKqYC/skA2hIXZhquq4xfH1VdhWbKlDNou75lI
- 2PL/SFw+5HmW3XDbEr20namYogABQZ6zy7Ye2FQ6A25rWSq6cyKAM5w==
-X-Gm-Gg: ASbGncuzKaWragY+zh7GzwXfsKmqKD4DIA1UTZT/OZhAkm/QXADVkIs9hXqGAohyb6F
- H5HqHSQaFVHkVDT2uugwPJ65bB7XFy7Ov+50fQ3/eX6jEO+g3K/KvGP9dj+xEDAf0WAxajaiOLb
- mCnKHxcppYUK5oolSKE+cV15EkzybdU/ORzjXJoxX1yvFshMK8kGcr0YLHffK71IfdJWB85gzc7
- 5QK18TiEVWg/blnAd1lHDek2xURbK6TJBdP5/fxt2t8J64kppZka8AtNBcfqdCOl8tXk84vkPYZ
- tVNqraXYAK1BLW/RiN3aPeBXjbdWO8ZD0cBmfsUFbBUw/R+92s4mgOXkCf0ShRMLsUvKwB0PZ6h
- LmkXWwOG/8cM87nvvJhy6/Ium2dGOacPQTzp9V6M8PzwWWKAlyXz/jUy7Dg==
-X-Received: by 2002:a05:690e:4010:b0:641:eeca:193a with SMTP id
- 956f58d0204a3-64436f8c8f5mr4679687d50.3.1764858110247; 
- Thu, 04 Dec 2025 06:21:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHTSNO6a89PgLBgZiM9M15aT6b/fUKMLUenYhfhJ4YSAT9/71RNh356zungi03JGJwBn1qlKQ==
-X-Received: by 2002:a05:690e:4010:b0:641:eeca:193a with SMTP id
- 956f58d0204a3-64436f8c8f5mr4679656d50.3.1764858109646; 
- Thu, 04 Dec 2025 06:21:49 -0800 (PST)
+ AJvYcCU1qxhwgDhVf0SBwd+31t9MF5mmQKIcwqrX+0LSeRNAAkku+aK4CXubYiIJrAb3z4r25dtwU6anOw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy6aD4JsqbbeTIZBLMoDn29h0ZZOaYD612EDREu+hhQeNYtSLbl
+ ZkSqdakhExlUuQlfn1eTRh9kAJi6qYs41Oxp0XseGMjb4MPCln1sqtK8FZaDt5gkd3kEwl72vbg
+ IEIRFjfBzEeZ4tOfDFXzRx8Yv8xemvxd7pfxkoEJS4QLm8w4huDmb+mXNNZh47g==
+X-Gm-Gg: ASbGncsrl9HfI1SSrFfrhTrwIC/bdetwcNmb65l7bDPOwLFzjm0l2uB55S6QOvxXH2E
+ HMm76kF5LcwONw5skUjbYqVKyrgZ5IeJL0BcDQ/gqnhflo5KrOW0eeO3ioHtATW9rS0b2RVxalt
+ fcw330rwtbaeMJIae3VcTeMRWlgGeYJXUUNMoWNYmAHni4CnWoVzgq1kkv1Uim3lFdajsfi84Ol
+ Ctr9eWc3vjrN6YAzxYe6xlmR45JRMl++Mx7vr2F3zdcZnNyhiWyKrI0qtWtpDp7MC60wHuINuiO
+ gQng11/JbPloyrZ3VjascLbITcQPeSnXyL6xatsBa3eiChLWxdquoQtb8I03x8msPVcuusjw/05
+ olEXzEVtHlhyxrZPmOVqRDClfo2p9qtqyVHMuQpiQ6FYeiKa0phT02j4EVA==
+X-Received: by 2002:a05:690e:1486:b0:63f:b5a5:37c with SMTP id
+ 956f58d0204a3-6443d8ea4c2mr2696993d50.2.1764858809317; 
+ Thu, 04 Dec 2025 06:33:29 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG8MolvGFND5akNFmibK9HSspDeQ5bXOfjmLTbA1M+rKG/sJ/7ngViswEZ3iXdAQBv2MvDXgQ==
+X-Received: by 2002:a05:690e:1486:b0:63f:b5a5:37c with SMTP id
+ 956f58d0204a3-6443d8ea4c2mr2696967d50.2.1764858808924; 
+ Thu, 04 Dec 2025 06:33:28 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:fa3:e4b0:95dc:ab11:92db:6f9e?
  ([2a01:e0a:fa3:e4b0:95dc:ab11:92db:6f9e])
  by smtp.gmail.com with ESMTPSA id
- 00721157ae682-78c1b4adbefsm5886107b3.2.2025.12.04.06.21.47
+ 00721157ae682-78c1b78e8b5sm5724037b3.43.2025.12.04.06.33.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 04 Dec 2025 06:21:49 -0800 (PST)
-Message-ID: <83975c51-b49a-4300-af76-f2289c8bcdec@redhat.com>
-Date: Thu, 4 Dec 2025 15:21:46 +0100
+ Thu, 04 Dec 2025 06:33:28 -0800 (PST)
+Message-ID: <421fdc65-c21d-4606-a241-28341955104a@redhat.com>
+Date: Thu, 4 Dec 2025 15:33:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v3 15/21] hw/arm/smmuv3: Determine register bank from MMIO
- offset
+Subject: Re: [RFC v3 16/21] hw/arm/smmuv3: Implement SMMU_S_INIT register
 To: Tao Tang <tangtao1634@phytium.com.cn>,
  Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
@@ -92,15 +91,15 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Jean-Philippe Brucker <jean-philippe@linaro.org>,
  Mostafa Saleh <smostafa@google.com>
 References: <20251012150701.4127034-1-tangtao1634@phytium.com.cn>
- <20251012151331.4130048-1-tangtao1634@phytium.com.cn>
+ <20251012151351.4130239-1-tangtao1634@phytium.com.cn>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251012151331.4130048-1-tangtao1634@phytium.com.cn>
+In-Reply-To: <20251012151351.4130239-1-tangtao1634@phytium.com.cn>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: L7ZUAic5DS6O8vHth84O0-d56hIpNLIusaFPUMIFrlo_1764858110
+X-Mimecast-MFC-PROC-ID: NaMXX26q0Nxm0Fgdq0_6jerwkwxJteW4cRbqo73JIQQ_1764858809
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -7
@@ -131,186 +130,96 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 On 10/12/25 5:13 PM, Tao Tang wrote:
-> Modify the main MMIO handlers (smmu_write_mmio, smmu_read_mmio)
-> to determine the security state of the target register based on its
-> memory-mapped offset.
+> Implement read/write handlers for the SMMU_S_INIT secure-only
+> register.
 >
-> By checking if the offset is within the secure register space (>=
-> SMMU_SECURE_REG_START), the handlers can deduce the register's
-> SEC_SID (reg_sec_sid). This SID is then passed down to the register
-> access helper functions (smmu_writel, smmu_readl, etc.).
+> Writing to this register provides a mechanism for software to perform a
+> global invalidation of ALL caches within the SMMU. This includes the
+> IOTLBs and Configuration Caches across all security states.
 >
-> Inside these helpers, the switch statement now operates on a masked,
-> relative offset:
->
->     uint32_t reg_offset = offset & 0xfff;
->     switch (reg_offset) {
->         ...
->     }
->
-> This design leverages a key feature of the SMMU specification: registers
-> with the same function across different security states
-> (Non-secure, Realm, Root) share the same relative offset. This avoids
-> significant code duplication. The reg_sec_sid passed from the MMIO
-> handler determines which security bank to operate on, while the masked
-> offset identifies the specific register within that bank.
->
-> It is important to distinguish between the security state of the
-> register itself and the security state of the access. A
-> higher-privilege security state is permitted to access registers
-> belonging to a lower-privilege state, but the reverse is not allowed.
-> This patch lays the groundwork for enforcing such rules.
->
-> For future compatibility with Realm and Root states, the logic in the
-> else block corresponding to the secure offset check:
->
-> if (offset >= SMMU_SECURE_REG_START) {
->     reg_sec_sid = SMMU_SEC_SID_S;
-> } else {
->     /* Future Realm/Root handling */
-> }
->
-> will need to be expanded. This will be necessary to differentiate
-> between the Root Control Page and Realm Register Pages, especially since
-> the Root Control Page is IMPLEMENTATION DEFINED.
+> This feature is critical for secure hypervisors like Hafnium, which
+> use it as a final step in their SMMU initialization sequence. It
+> provides a reliable, architecturally defined method to ensure a clean
+> and known-good cache state before enabling translations.
 >
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > ---
->  hw/arm/smmuv3.c | 61 ++++++++++++++++++++++++++++++++++++-------------
->  1 file changed, 45 insertions(+), 16 deletions(-)
+>  hw/arm/smmuv3.c     | 33 +++++++++++++++++++++++++++++++++
+>  hw/arm/trace-events |  1 +
+>  2 files changed, 34 insertions(+)
 >
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index f161dd3eff..100caeeb35 100644
+> index 100caeeb35..432de88610 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -1675,12 +1675,13 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+> @@ -354,6 +354,21 @@ static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
+>  
 >  }
 >  
->  static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
-> -                               uint64_t data, MemTxAttrs attrs)
-> +                                uint64_t data, MemTxAttrs attrs,
-> +                                SMMUSecSID reg_sec_sid)
->  {
-> -    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
-> +    uint32_t reg_offset = offset & 0xfff;
->  
-> -    switch (offset) {
-> +    switch (reg_offset) {
->      case A_GERROR_IRQ_CFG0:
->          if (!smmu_gerror_irq_cfg_writable(s, reg_sec_sid)) {
->              /* SMMU_(*_)_IRQ_CTRL.GERROR_IRQEN == 1: IGNORED this write */
-> @@ -1745,12 +1746,13 @@ static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
->  }
->  
->  static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-> -                               uint64_t data, MemTxAttrs attrs)
-> +                               uint64_t data, MemTxAttrs attrs,
-> +                               SMMUSecSID reg_sec_sid)
->  {
-> -    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
-> +    uint32_t reg_offset = offset & 0xfff;
->  
-> -    switch (offset) {
-> +    switch (reg_offset) {
->      case A_CR0:
->          bank->cr[0] = data;
->          bank->cr0ack = data & ~SMMU_CR0_RESERVED;
-> @@ -1985,12 +1987,33 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
->      /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
->      offset &= ~0x10000;
->  
-> +    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
-> +    /*
-> +     * The security state of the access (MemTxAttrs attrs) may differ from the
-> +     * security state to which the register belongs. Future support will include
-> +     * Realm and Root security states.
-> +     *
-> +     * The SMMU architecture specifies that Realm, Root, and Non-secure
-> +     * registers share the same offset layout within the last 4 hexadecimal
-> +     * digits (16 bits) of the address. Only Secure state registers are
-> +     * mapped to a higher address space, starting from
-> +     * SMMU_SECURE_REG_START (0x8000).
-> +     *
-> +     * Therefore, we can directly use the offset to distinguish Secure
-> +     * registers. When Realm and Root support is needed in the future, we
-> +     * only need to enhance the 'else' block of the corresponding 'if'
-> +     * statement to handle those specific security states.
-I wouldn't add that many references to the Realm and Root support in the
-very code. Maybe move that in the commit desc.
-> +     */
-> +    if (offset >= SMMU_SECURE_REG_START) {
-> +        reg_sec_sid = SMMU_SEC_SID_S;
+> +static void smmuv3_invalidate_all_caches(SMMUv3State *s)
+> +{
+> +    trace_smmuv3_invalidate_all_caches();
+> +    SMMUState *bs = &s->smmu_state;
+> +
+> +    /* Clear all cached configs including STE and CD */
+> +    if (bs->configs) {
+> +        g_hash_table_remove_all(bs->configs);
 > +    }
 > +
->      switch (size) {
->      case 8:
-> -        r = smmu_writell(s, offset, data, attrs);
-> +        r = smmu_writell(s, offset, data, attrs, reg_sec_sid);
->          break;
->      case 4:
-> -        r = smmu_writel(s, offset, data, attrs);
-> +        r = smmu_writel(s, offset, data, attrs, reg_sec_sid);
->          break;
->      default:
->          r = MEMTX_ERROR;
-> @@ -2002,12 +2025,13 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
->  }
+> +    /* Invalidate all SMMU IOTLB entries */
+> +    smmu_inv_notifiers_all(&s->smmu_state);
+> +    smmu_iotlb_inv_all(bs);
+> +}
+> +
+>  static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
+>                                                   SMMUTransCfg *cfg,
+>                                                   SMMUEventInfo *event,
+> @@ -1969,6 +1984,21 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
 >  
->  static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
-> -                               uint64_t *data, MemTxAttrs attrs)
-> +                               uint64_t *data, MemTxAttrs attrs,
-> +                               SMMUSecSID reg_sec_sid)
->  {
-> -    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
-> +    uint32_t reg_offset = offset & 0xfff;
->  
-> -    switch (offset) {
-> +    switch (reg_offset) {
->      case A_GERROR_IRQ_CFG0:
->          /* SMMU_(*_)GERROR_IRQ_CFG0 BOTH check SMMU_IDR0.MSI */
->          if (!smmu_msi_supported(s, reg_sec_sid)) {
-> @@ -2036,12 +2060,13 @@ static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
->  }
->  
->  static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
-> -                              uint64_t *data, MemTxAttrs attrs)
-> +                              uint64_t *data, MemTxAttrs attrs,
-> +                              SMMUSecSID reg_sec_sid)
->  {
-> -    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
-> +    uint32_t reg_offset = offset & 0xfff;
->  
-> -    switch (offset) {
-> +    switch (reg_offset) {
->      case A_IDREGS ... A_IDREGS + 0x2f:
->          *data = smmuv3_idreg(offset - A_IDREGS);
+>          bank->eventq_irq_cfg2 = data;
 >          return MEMTX_OK;
-> @@ -2165,13 +2190,17 @@ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
->  
->      /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
->      offset &= ~0x10000;
-> +    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
-declaration should be at the beginning of the function, ie before the
-offset setting
-> +    if (offset >= SMMU_SECURE_REG_START) {
-> +        reg_sec_sid = SMMU_SEC_SID_S;
-> +    }
->  
->      switch (size) {
->      case 8:
-> -        r = smmu_readll(s, offset, data, attrs);
-> +        r = smmu_readll(s, offset, data, attrs, reg_sec_sid);
->          break;
->      case 4:
-> -        r = smmu_readl(s, offset, data, attrs);
-> +        r = smmu_readl(s, offset, data, attrs, reg_sec_sid);
->          break;
+> +    case (A_S_INIT & 0xfff):
+why do we apply & 0xfff ?
+> +        if (data & R_S_INIT_INV_ALL_MASK) {
+> +            int cr0_smmuen = smmu_enabled(s, reg_sec_sid);
+> +            int s_cr0_smmuen = smmuv3_get_cr0ack_smmuen(s, reg_sec_sid);
+> +            if (cr0_smmuen || s_cr0_smmuen) {
+use smmuv3_is_smmu_enabled()?
+> +                /* CONSTRAINED UNPREDICTABLE behavior: Ignore this write */
+> +                qemu_log_mask(LOG_GUEST_ERROR, "S_INIT write ignored: "
+> +                              "CR0.SMMUEN=%d or S_CR0.SMMUEN=%d is set\n",
+> +                              cr0_smmuen, s_cr0_smmuen);
+> +                return MEMTX_OK;
+> +            }
+> +            smmuv3_invalidate_all_caches(s);
+> +        }
+> +        /* Synchronous emulation: invalidation completed instantly. */
+> +        return MEMTX_OK;
 >      default:
->          r = MEMTX_ERROR;
+>          qemu_log_mask(LOG_UNIMP,
+>                        "%s Unexpected 32-bit access to 0x%"PRIx64" (WI)\n",
+> @@ -2172,6 +2202,9 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
+>      case A_EVENTQ_CONS:
+>          *data = bank->eventq.cons;
+>          return MEMTX_OK;
+> +    case (A_S_INIT & 0xfff):
+> +        *data = 0;
+> +        return MEMTX_OK;
+>      default:
+>          *data = 0;
+>          qemu_log_mask(LOG_UNIMP,
+> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+> index 434d6abfc2..0e7ad8fee3 100644
+> --- a/hw/arm/trace-events
+> +++ b/hw/arm/trace-events
+> @@ -64,6 +64,7 @@ smmuv3_cmdq_tlbi_s12_vmid(int vmid) "vmid=%d"
+>  smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
+>  smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
+>  smmuv3_inv_notifiers_iova(const char *name, int asid, int vmid, uint64_t iova, uint8_t tg, uint64_t num_pages, int stage) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" stage=%d"
+> +smmuv3_invalidate_all_caches(void) "Invalidate all SMMU caches and TLBs"
+>  smmu_reset_exit(void) ""
+>  
+>  # strongarm.c
 Thanks
 
 Eric

@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65322D1F9A0
-	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 09:38:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4926BD1D89F
+	for <qemu-arm@archiver.kernel.org>; Thu,  4 Dec 2025 09:39:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vR5kZ-0001XQ-C0; Thu, 04 Dec 2025 04:35:48 -0500
+	id 1vR5kp-0001wV-Qv; Thu, 04 Dec 2025 04:36:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1vR5k7-0001BS-2d
- for qemu-arm@nongnu.org; Thu, 04 Dec 2025 04:35:19 -0500
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ id 1vR5kB-0001E2-7g
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 04:35:25 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
- id 1vR5k2-0003Pd-US
- for qemu-arm@nongnu.org; Thu, 04 Dec 2025 04:35:18 -0500
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-644f90587e5so1016785a12.0
- for <qemu-arm@nongnu.org>; Thu, 04 Dec 2025 01:35:12 -0800 (PST)
+ id 1vR5k6-0003S1-W5
+ for qemu-arm@nongnu.org; Thu, 04 Dec 2025 04:35:22 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-64165cd689eso2809067a12.0
+ for <qemu-arm@nongnu.org>; Thu, 04 Dec 2025 01:35:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1764840911; x=1765445711; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1764840916; x=1765445716; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Pfg+3r5e3fkTMweJDY05x2D0nfBscf4bb3i1khlEcLs=;
- b=IiIPr18pO97Co4agTe3ETohSwv4ifgFVfLPGhmwp7tPSaCmCm10k6OlNbmF3vf8c9F
- wPmQ47qbkgYXzUkqoR5I9vu8l2kAU8wBMo1Y2KJ7eEstisoRyZr2sfDjIvXFP3UvcCFj
- KXS3byBbWgqp0x3NjgBCDczcphvgjeiSRKS0lljXc4IpYB5Uv9lAQu4eqqfhr5APqTVv
- hROqK/GjnFZQdoRGqlfdE7ElBnMnzIHC2yIB/6IvOQwcoZ06MUOx/lvSuDAPY1Hgiyty
- rM5y5z8YVzCkPLI8HWef2YFuOD9fiCwxX1BG00T/XiAzooUT7iGVZdk3xiK795UyzH4D
- yvNQ==
+ bh=1IEAaSPzmzz5B3AM/apm91VbHSHgHQnwVHyZGTcUVH8=;
+ b=OlPHENvKc0U09m5wD+TkZ+B9JdMfH7KSYzIhLa49u9UJPwO0i/yp/hhhpb8lESupHI
+ qHtRoAThwwW5YQn2CzQ2J7nXQIzuQMrWSQchKjEgHA98Cc1NwyaBehThLzda8S9JZ1mp
+ ixvMimXKPfUzXu2yGZFjqARP4Oit0YvuxrW+N2XlJRLmwjPbgYdfllQdXIKmzaBXsmy0
+ 56V/mn0fIRRbR87/pJ9skz0TLwL0SxPuuwJSFquikL1msRMmTtNOaBPc+Or5P6UQgYlx
+ 6wg0uPlHk61hh5NSGXB34k8o7GhZ/9hsXGhJsqokTGCimDPJRMmda8A/LjqH8qjMW9x2
+ Nx8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764840911; x=1765445711;
+ d=1e100.net; s=20230601; t=1764840916; x=1765445716;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Pfg+3r5e3fkTMweJDY05x2D0nfBscf4bb3i1khlEcLs=;
- b=BcPoHNwmUKYVezJKrDDx+9zlo1tU6lk9DxDYJi+EqzfQLKpEeSbiyZZaviabD81y1G
- nFRBrfp2xGsp45wua27iajlUFWIyXn8eR19qmQ7Vxn0VqJEiEiVEYKGjbvKoH660R3nq
- VT1ad0j9ljEjFSqhSWgO23SQ/rzMhQvnx0auznswXzcW3l+4BO6N0XMZcKYeIvgFUmTC
- YJzlNstzsLuFIKUoB/UmrEiecRpJEOmzQxy2yHLUfMPo2LjPParHduPVKNQuVgrAx8kt
- hKk9AOHf0sg27FRtOFLWNmmwGAGLiLv3olSMccepjYlvy4pniirnI/W+y1xwQLOEmO4w
- T3qw==
+ bh=1IEAaSPzmzz5B3AM/apm91VbHSHgHQnwVHyZGTcUVH8=;
+ b=g0FFyxFc/MsgL/3wXiPrmjzwOECh26wFwZpJe+MwQBH8gpuTmOJKm02w8meF75VLQS
+ SAbEFiIQd9EMmxw362RjjsbEIksQRIetaMwbEmrDLYS7qWWd+3rV141JY13wevPCp4Rj
+ /dGRt5ThphxagUXrZvq2+XEUthjbwc0iqjrAteeMKft+UoO30TMZE2Ezf5/+jMUJ4bIu
+ JLQgDUWYIy5BZHjPWVUQAJYGtZKjw3NIRklm63xN7VmPU3KmlHFQs0ITW+wRkXWhgL0n
+ xDx9voCnTKl7lmNuVBzRDpQ33d7ruzOMZDTQLTwF4LNvpPgfFNZBYQsLLGCzgO3LuMvJ
+ gtiw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWAI+ufjXlJ/8jFXZdCZlvK0RcRj4A+bAwX0by9ynM/9s0WCiOQAo5CuIn5RhfZH92GuvOR64ehkg==@nongnu.org
-X-Gm-Message-State: AOJu0YxGaxLdDDM/LktRL7KTTxyl9ys2ghteMkaHCAEhKpQzPCj0Or/T
- j1mYqmEVAgHMqkGWLJJvcGLzj5I2JY0oJbw6Lh41hhwIk/U2KNsva4J1
-X-Gm-Gg: ASbGncuHw6GlZ+GGnlE7v0v8Zwy/Lj1xsKngcbmJwzFxZJwncgP1iKu6zOxc5Rkvkjf
- ipdfQMsa6bZyHktYWm3C+41PzJ5fGmUXQOCQEQlvEUFtEpKZQfXYq4puR1JXp86sofrqGbuy847
- fNdxgwRYx3fPV5cupiOLsP7xRr1bHHZBinaXxGZ3hVvQC9O5GQdtf7izlqP8U/kSNytxJ4bEZqS
- sGeM4dFwWKMAYgLH0zImLbYHiI2/nPueg48XQCJypDcoN0TuF1w4e3yEuwAWjA9fTJEPxO1FDJA
- KYRYUlD6KWq29twjQpF7RDSwL6/tqtJzYGnQWnJTKpnG+ilLs66rtr28NZnhKwHE62JWMSNumGm
- b1TvhJSouyDo3sAZzY8BzjpFvf4xPChCueAOz3j/12EhV/vsCGQgqmSEaxaVXdyQi/Whk2ITF7q
- HHRjNhDjFxxfSxfzTmpw2kMlVlhi0NINk=
-X-Google-Smtp-Source: AGHT+IFRf3LHkGMTeKzqM0EWxnZp7Zf/lsrWcTpTYLwWOhltIN/yp45v4fnUPpsbHleX7Oc15Kf4CQ==
-X-Received: by 2002:a05:6402:26cc:b0:641:1f22:fc68 with SMTP id
- 4fb4d7f45d1cf-647abddcb97mr1856056a12.24.1764840911099; 
- Thu, 04 Dec 2025 01:35:11 -0800 (PST)
+ AJvYcCXQW4g4bHPzPKsjiMepiSZZnFZq3XrRE8oYfeaJaTJ3VcCYRYulVQ48eQRLi6GA/cHWNiXG8tCftw==@nongnu.org
+X-Gm-Message-State: AOJu0Yxk/LqVKq/fwrNWGiBiiiPjjlG8c3im9NDR6NL8bJ9vx6AStReu
+ OBAIgtOg8lMpYmnCCj8pqGIOxGGU4FsdsKCopZ++HBxaA7gP3HSFwnDWCHfuPYjd
+X-Gm-Gg: ASbGncvV3CupUjqQMovdjxAjn+uLAmMfT9JEU11riz6x8BqUfISTK0gjPt7PrXqTqMX
+ 78IrctjHEiOmHq4C8ITDFKiRhrjFjQQMGiZxx449/GZiD74itu71vSZP404KlJuMw5dIaD3Xh4S
+ 2X+aESn5+IldAY0eHwfhaFERb6QIzpGV8YZO7m3HsaE0YlK38cAMSmH8wgUkcjzDMGbiX3oEZ1e
+ QK61J5IvDI1mzluTkusBzcCdMNMZiv+i7k/y9c5S94A1K61kRuI4+ECdVUM8OIfRCNicRdAUY77
+ ZTqUoUXo8XT1mB5rtoMzCHHDHGzv+TqhJqA4yiHXD5wjdJt09UVp9wcCZR1LBsTaLIMA337aDAg
+ c17m2e9OzpfqDlIgu1Uvy4siUSMievvJ+TCsOpIlZ3lSwFYL8oU05zAf7RNR+Tcp/BsErwIRRS1
+ 4uU9tfexmkNeNlkNbaJCIVl8Gw4BelcANYKj3d5hmMKQ==
+X-Google-Smtp-Source: AGHT+IGvV+sCGJwOTFpGpCKdSMYu4U7c5oQUZ4Ip2HqD6FJoA3/JuJo/SVgHxJKIEhPAkKuNBJvIvw==
+X-Received: by 2002:a05:6402:1ec5:b0:647:7bfb:6ce4 with SMTP id
+ 4fb4d7f45d1cf-647a69e6aa4mr2398833a12.1.1764840915995; 
+ Thu, 04 Dec 2025 01:35:15 -0800 (PST)
 Received: from PC-DA2D10.beckhoff.com ([195.226.174.194])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-647b2edf72asm856573a12.11.2025.12.04.01.35.10
+ 4fb4d7f45d1cf-647b2edf72asm856573a12.11.2025.12.04.01.35.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Dec 2025 01:35:10 -0800 (PST)
+ Thu, 04 Dec 2025 01:35:15 -0800 (PST)
 From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -77,18 +77,17 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  =?UTF-8?q?Corvin=20K=C3=B6hne?= <c.koehne@beckhoff.com>,
  Hanna Reitz <hreitz@redhat.com>,
  =?UTF-8?q?Yannick=20Vo=C3=9Fen?= <y.vossen@beckhoff.com>,
- YannickV <Y.Vossen@beckhoff.com>,
- "Edgar E. Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH v5 07/15] hw/dma/zynq-devcfg: Indicate power-up status of PL
-Date: Thu,  4 Dec 2025 10:34:54 +0100
-Message-ID: <20251204093502.50582-8-corvin.koehne@gmail.com>
+ YannickV <Y.Vossen@beckhoff.com>
+Subject: [PATCH v5 11/15] hw/block/m25p80: Add HAS_SR_TB flag for is25lp016d
+Date: Thu,  4 Dec 2025 10:34:58 +0100
+Message-ID: <20251204093502.50582-12-corvin.koehne@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251204093502.50582-1-corvin.koehne@gmail.com>
 References: <20251204093502.50582-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=corvin.koehne@gmail.com; helo=mail-ed1-x531.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,30 +112,29 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: YannickV <Y.Vossen@beckhoff.com>
 
-It is assumed, that the programmable logic (PL) is always powered
-during emulation. Therefor the PCFG_POR_B bit in the MCTRL register
-is set.
+The is25lp016d has 4 Block Write Protect Bits. BP3 specifies
+whether the upper or lower range should be protected. Therefore,
+we add the HAS_SR_TB flag to the is25lp016d flags.
 
 Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 ---
- hw/dma/xlnx-zynq-devcfg.c | 3 ++-
+ hw/block/m25p80.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/dma/xlnx-zynq-devcfg.c b/hw/dma/xlnx-zynq-devcfg.c
-index 722d68a568..bd8057caa9 100644
---- a/hw/dma/xlnx-zynq-devcfg.c
-+++ b/hw/dma/xlnx-zynq-devcfg.c
-@@ -333,7 +333,8 @@ static const RegisterAccessInfo xlnx_zynq_devcfg_regs_info[] = {
-        /* Silicon 3.0 for version field, the mysterious reserved bit 23
-         * and QEMU platform identifier.
-         */
--       .reset = 0x2 << R_MCTRL_PS_VERSION_SHIFT | 1 << 23 | R_MCTRL_QEMU_MASK,
-+       .reset = 0x2 << R_MCTRL_PS_VERSION_SHIFT | 1 << 23 |
-+                R_MCTRL_PCFG_POR_B_MASK | R_MCTRL_QEMU_MASK,
-        .ro = ~R_MCTRL_INT_PCAP_LPBK_MASK,
-        .rsvd = 0x00f00303,
-     },
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index a5336d92ff..1df223ee81 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -217,7 +217,8 @@ static const FlashPartInfo known_devices[] = {
+     /* ISSI */
+     { INFO("is25lq040b",  0x9d4013,      0,  64 << 10,   8, ER_4K) },
+     { INFO("is25lp080d",  0x9d6014,      0,  64 << 10,  16, ER_4K) },
+-    { INFO("is25lp016d",  0x9d6015,      0,  64 << 10,  32, ER_4K) },
++    { INFO("is25lp016d",  0x9d6015,      0,  64 << 10,  32,
++           ER_4K | HAS_SR_TB) },
+     { INFO("is25lp032",   0x9d6016,      0,  64 << 10,  64, ER_4K) },
+     { INFO("is25lp064",   0x9d6017,      0,  64 << 10, 128, ER_4K) },
+     { INFO("is25lp128",   0x9d6018,      0,  64 << 10, 256, ER_4K) },
 -- 
 2.47.3
 

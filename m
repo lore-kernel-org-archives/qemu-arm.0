@@ -4,97 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C06B1D2F7D9
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Dec 2025 17:20:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 060C5D339A0
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Dec 2025 17:23:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vRZSp-0005ga-6v; Fri, 05 Dec 2025 12:19:27 -0500
+	id 1vRZWg-0007gg-1e; Fri, 05 Dec 2025 12:23:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vRZSm-0005gI-14
- for qemu-arm@nongnu.org; Fri, 05 Dec 2025 12:19:24 -0500
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+ id 1vRZWe-0007fv-6V
+ for qemu-arm@nongnu.org; Fri, 05 Dec 2025 12:23:24 -0500
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vRZSk-0003tl-0P
- for qemu-arm@nongnu.org; Fri, 05 Dec 2025 12:19:23 -0500
-Received: by mail-pg1-x530.google.com with SMTP id
- 41be03b00d2f7-bcfd82f55ebso1555430a12.1
- for <qemu-arm@nongnu.org>; Fri, 05 Dec 2025 09:19:21 -0800 (PST)
+ id 1vRZWc-0004RC-3k
+ for qemu-arm@nongnu.org; Fri, 05 Dec 2025 12:23:23 -0500
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-2953e415b27so27123875ad.2
+ for <qemu-arm@nongnu.org>; Fri, 05 Dec 2025 09:23:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1764955160; x=1765559960; darn=nongnu.org;
+ d=linaro.org; s=google; t=1764955401; x=1765560201; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=fNr3vkwz8TE38u1XNmS2c3w2p3CdTxpHlmwQlriUDHg=;
- b=OZMeC24UrDsCdJqFlatzr8SnD8B6Fna1ESjuQ4oztO72p8PzixUBq4dJXkWrbrm/Ip
- 4rFtQV/UB6R2vS422JCbwM5Y5kK+LcJ5Q514DaKUzqyRGwABx38ulvcC+6JY9P9rYj5c
- 3XKBdif3JnIx5iMyvgsmlpC+msgMdn4qqcbjWvQfk7SkT7AE/K/KRbl0JuFzjJ8r1KS/
- x/zazxsRoU0WhU6dVy60kxXmf9YH5PrBDQ+5bCO06P9pvTU5PmWAFenc9hO2iTf80uTo
- cZvM8TGq59pGo+3sVPJxsj8wepuj+1YTB3rHrdsqi2jyX2YdZjT/K1aF01uFzqCSLCzG
- aCyw==
+ bh=PdS17f+WOxymdaFYdco6uVN7zwk8liLJzREHNVoYBYw=;
+ b=K3e1iqwM7VXtWOlq7hRYq4Z4Dq5LUKVo5895Of/YHtP8rvt+SqmGIIKWmOsn1IUyd7
+ D13D9XKgPG8Pufo2zhacDdPpYgwCESA6Bem3INn1oc0irCBwCqUG9rLCAFPYYfyTXe5D
+ sLifh8c7JsZqrp3EsxemgzTZmrxUf1gs3GIcTVr31WJzIKjzSIQs8xATC4k9swr/M1/0
+ nwAIZyrE558Re57oUu+1/uCbof4Ohv8qbEuiuLee/FdkpBKJn2fMDunf1jwPD26p6Jtu
+ S1iwDutDAuKlgCxjQjbAh95hWGi1GwsAVIvsAjTu5VjYoB6pSwJ6YJ4RTMvVYct9aItD
+ TveQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764955160; x=1765559960;
+ d=1e100.net; s=20230601; t=1764955401; x=1765560201;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=fNr3vkwz8TE38u1XNmS2c3w2p3CdTxpHlmwQlriUDHg=;
- b=MWJAh65yaLWSDJuxCm7wjhxFmnXxsu8IumRPE4wYJLxWShSV6jLaqa4wzNPhLRb+dh
- w4vbHI7cGt+lKCFDYrXtFXjbdYoCiAZ8Zggc9JOzQm/ks6smFmXqWyylY+NVCze1jyMU
- lDfqlw5V5mk5HcZqlBK647PJTaZe167cRSKN+hvBpf3gpm5Opk2Nng77WPWRw5mT8jeL
- YNmpj9MSZYbU/5N+emi/GzMmeG1TmzEWrYrkRty4TkhouF00tAD2/dAlFm9dNbUWa8pW
- 0frAXMS1eZ6Qfrg4QxnPUhveSo8bPEET1fD02pt4LkZoJ3RYnsPkUD73XySntfpIWS7B
- J+RA==
+ bh=PdS17f+WOxymdaFYdco6uVN7zwk8liLJzREHNVoYBYw=;
+ b=fzBnYAse+Hr2Grzz5zrtEBh6sZruYhv3ywXN/n3s9iuVfvcY+3Y7dc1N529IdvWXzC
+ xUPBkhPUrhXpZeqZAK2hSTU5E4eWy/Tr16u4PnvqGhmy1t9xfwpsD7BgDvDTWJ137+kN
+ yZtUjSfzjlgAhtqOdjTa+UxO8vp04vnqGkA63jZwKvLi2YqAM7OKznu/rnLQG+sJyQR3
+ bnBhRZkSKFhLwKe4bPp/R8dSGuUkA2RT0rA36BWvuxlxaBX5iiKsOuontvwL+fjZZv96
+ 9TCKu9ewnNmv9uOceBBAC1iy6o1qHYnhV4b/JaQGd+9INrukE/FBifXL/JXzi4ty8zlI
+ YTlA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXEsF65SKw7d+wzGV+LoLPRtPef9eaoTrQ30mdFMkxgtgvUo3gAzYkxJqfXJ6p4rR7Pmc/8T3Oekg==@nongnu.org
-X-Gm-Message-State: AOJu0YzkBr9yF8jvm2ufOH7O7SfnZx2tsvsOC2+1VEw0ZRb/fthKRhww
- 4pgX0Q3RDbWL2fdxscxxsv6tnj7TskDA6Bfuo1IOeTH4yP3piRmTd5Ct80yXYSknsEg=
-X-Gm-Gg: ASbGncsS/mrB+F9ZSrOo+zjyE0DtojhS+iJyFBZcSp44D+BqSniLztFArJM5tugPqhI
- H82hQK1hQisPSQg8uxMBLAwelxmBxy1gmz0FDvI2mTDefTpLOvBlTiEjJsnwM6df8VUL0wd1fDh
- 7g0QyRrTnqLnxtJQRM2VzTQ0oe+vBz+RQK0Gh88Jt5mr+RCN2aVtK4lKt8YdlaNmKnt4h60gSDz
- ot1O3HZw99xwdQ9fNv53HhDmdj/+GXoauXXvkf9UDWpLwz9LEdjJ35yY96249tV6GLOW7l6L5Qy
- ItRbfCjH2M4L6oHHh7gtHVQ95wawF1GxZbJF42+CLM8TottgRBPd3N9EOOq42ogGXld0HydaNS4
- ZOKxhgt7G6bVaxL74BRf9ls2Lt55FXvw+f0ESZ5ng3C3fm09IDTZHzh/OANHFsh047vGMXNlUKb
- IKZxy97uk2BxgjBquP4Ij1a2tNoaqnmrkLlkab5+D4UGYdAeVEtASlsVs=
-X-Google-Smtp-Source: AGHT+IH/cHLhy23k2UA+wVY+EWNMpezGTrOJ4ke0g0WyckePYsGJ7iz1T/r1JzBAX3s94WkfoSBBHg==
-X-Received: by 2002:a17:90b:3a47:b0:343:7711:127d with SMTP id
- 98e67ed59e1d1-349438d603fmr7554402a91.9.1764955160169; 
- Fri, 05 Dec 2025 09:19:20 -0800 (PST)
+ AJvYcCWlqBZyLKuKQrvf3u53KVCXzDtu1+AQmkHqOYMmwwGALYJ62tjWaWtW9QKZyPdjYJOrbt3wQ6FlAg==@nongnu.org
+X-Gm-Message-State: AOJu0YzklV1MEcfwzAUHUcDp/EwnaMe6/elGVmPFHsifBirxMNPEMIS+
+ FKHoBzSkDPt6FCN7eVO/d5JfTtuBQPr8wjYlaA9muil0PDDwa7he2MM2QgMUvhwya4o=
+X-Gm-Gg: ASbGncuRKOvmkt+t2R+TDZtCRtqmi1T99Xj9J7MvfhLaf+ZSh9nVqPKfYI1oqfIcp+9
+ 91R5fm5r9jdvvHA99pCcCmKw2XhGX2FuSuDBGEhUCfUh7PcPcn6sqSHz9SxzUOjxgvDOlOZV03R
+ u25w1si3nQFydqwOZkhy7H9CYxHeBMAU+oijHbr96jMvpexXgue6mxPXA2rnkigkV3huQNZ6SvB
+ EqhSmvQ+geIPgcnKMSbV8+1146sFHujE7eMin2aCDZz6Bs8ir22qY5sPN62aD/zOow5k3+erH5e
+ Q7MstfBDMuW9qU5CQ/TaNq8+34DgprkSQNxVjV/YFbNr6YMbQq4eaGfhu1HW0YeXwteQ+Q0ZWHX
+ AxHrCX/SELP5whHzwXcf0NAryfClrxjO72P1MmGT9ZtQfoOWBRsdte5OHZWK0sJhERpoWHpIU+C
+ de0H0QXCx7ebB19SiwPUobRhGJKObu/q1ZGPhtKEwiDgjng4aqQX4N34s=
+X-Google-Smtp-Source: AGHT+IGyAu+qiptPiK/ZaILoDs6C+gnCVVv5utZCw0lKLzRdRzgKGRgw/C+SUfnzJLRaXbyoS4LRNg==
+X-Received: by 2002:a17:903:19cf:b0:298:2cdf:56c8 with SMTP id
+ d9443c01a7336-29da26797b2mr76269585ad.60.1764955400472; 
+ Fri, 05 Dec 2025 09:23:20 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-29daeae6ae0sm54197205ad.93.2025.12.05.09.19.19
+ d9443c01a7336-29dae4cf9d0sm53963585ad.29.2025.12.05.09.23.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 05 Dec 2025 09:19:19 -0800 (PST)
-Message-ID: <a361b46f-2173-4c98-a5d3-6b4d2ac004af@linaro.org>
-Date: Fri, 5 Dec 2025 09:19:19 -0800
+ Fri, 05 Dec 2025 09:23:20 -0800 (PST)
+Message-ID: <52accf06-e75e-4649-a97b-45fa7e08459f@linaro.org>
+Date: Fri, 5 Dec 2025 09:23:19 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC RESEND v5 3/4] tests/qtest/libqos: Add SMMUv3 helper library
+Subject: Re: [RFC v3 18/21] hw/arm/smmuv3: Harden security checks in MMIO
+ handlers
 Content-Language: en-US
-To: Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini
- <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Tao Tang <tangtao1634@phytium.com.cn>, eric.auger@redhat.com,
+ Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>,
- CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
-References: <20251126154547.1300748-1-tangtao1634@phytium.com.cn>
- <20251126154547.1300748-4-tangtao1634@phytium.com.cn>
- <9b2c0429-a8bb-4df4-ad95-492f463cf29f@linaro.org>
- <b184c907-e073-43d0-87b9-cf8c6c23dbed@phytium.com.cn>
+ Mostafa Saleh <smostafa@google.com>
+References: <20251012150701.4127034-1-tangtao1634@phytium.com.cn>
+ <20251012151437.4130770-1-tangtao1634@phytium.com.cn>
+ <04533911-e6f5-42d6-9813-85e97ce13d38@redhat.com>
+ <ab0edbd5-9556-424a-83ab-452801d617a8@phytium.com.cn>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <b184c907-e073-43d0-87b9-cf8c6c23dbed@phytium.com.cn>
+In-Reply-To: <ab0edbd5-9556-424a-83ab-452801d617a8@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x530.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,192 +114,175 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/5/25 7:03 AM, Tao Tang wrote:
-> Hi Pierrick,
+On 12/5/25 2:36 AM, Tao Tang wrote:
+> Hi Eric,
 > 
-> On 2025/12/5 07:53, Pierrick Bouvier wrote:
->> On 11/26/25 7:45 AM, Tao Tang wrote:
->>> Introduce qos-smmuv3, a reusable library for SMMUv3-related qtest
->>> operations. This module encapsulates common tasks like:
+> On 2025/12/4 22:59, Eric Auger wrote:
+>>
+>> On 10/12/25 5:14 PM, Tao Tang wrote:
+>>> This patch hardens the security validation within the main MMIO
+>>> dispatcher functions (smmu_read_mmio and smmu_write_mmio).
 >>>
->>> - SMMUv3 initialization (enabling, configuring command/event queues)
->>> - Stream Table Entry (STE) and Context Descriptor (CD) setup
->>> - Multi-level page table construction (L0-L3 for 4KB granules)
->>> - Support for Stage 1, Stage 2, and nested translation modes
->>> - Could be easily extended to support multi-space testing infrastructure
->>>       (Non-Secure, Secure, Root, Realm)
+>>> First, accesses to the secure register space are now correctly gated by
+>>> whether the SECURE_IMPL feature is enabled in the model. This prevents
+>>> guest software from accessing the secure programming interface when it is
+>>> disabled, though some registers are exempt from this check as per the
+>>> architecture.
 >>>
->>> The library provides high-level abstractions that allow test code to
->>> focus on IOMMU behavior validation rather than low-level register
->>> manipulation and page table encoding. Key features include:
->>>
->>> - Automatic memory allocation for translation structures with proper
->>>       alignment
->>> - Helper functions to build valid STEs/CDs for different translation
->>>       scenarios
->>> - Page table walkers that handle address offset calculations per
->>>       security space
->>> - Command queue management for SMMU configuration commands
->>>
->>> This infrastructure is designed to be used by iommu-testdev-based tests
->>> and future SMMUv3 test suites, reducing code duplication and improving
->>> test maintainability.
+>>> Second, the check for the input stream's security is made more robust.
+>>> It now validates not only the legacy MemTxAttrs.secure bit, but also
+>>> the .space field. This brings the SMMU's handling of security spaces
+>>> into full alignment with the PE.
 >>>
 >>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 >>> ---
->>>    tests/qtest/libqos/meson.build  |   3 +
->>>    tests/qtest/libqos/qos-smmuv3.c | 731 ++++++++++++++++++++++++++++++++
->>>    tests/qtest/libqos/qos-smmuv3.h | 267 ++++++++++++
->>>    3 files changed, 1001 insertions(+)
->>>    create mode 100644 tests/qtest/libqos/qos-smmuv3.c
->>>    create mode 100644 tests/qtest/libqos/qos-smmuv3.h
+>>>    hw/arm/smmuv3.c | 64 +++++++++++++++++++++++++++++++++++++++++++++++++
+>>>    1 file changed, 64 insertions(+)
 >>>
->>
->> ...
->>
->>> +
->>> +void qsmmu_single_translation(QSMMUTestContext *ctx)
+>>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+>>> index 4ac7a2f3c7..c9c742c80b 100644
+>>> --- a/hw/arm/smmuv3.c
+>>> +++ b/hw/arm/smmuv3.c
+>>> @@ -1458,6 +1458,12 @@ static bool smmu_eventq_irq_cfg_writable(SMMUv3State *s, SMMUSecSID sec_sid)
+>>>        return smmu_irq_ctl_evtq_irqen_disabled(s, sec_sid);
+>>>    }
+>>>    
+>>> +/* Check if the SMMU hardware itself implements secure state features */
+>>> +static inline bool smmu_hw_secure_implemented(SMMUv3State *s)
 >>> +{
->>> +    uint32_t config_result;
->>> +    uint32_t dma_result;
->>> +    bool test_passed;
->>> +
->>> +    /* Configure SMMU translation */
->>> +    config_result = qsmmu_setup_and_enable_translation(ctx);
->>> +    if (config_result != 0) {
->>> +        g_test_message("Configuration failed: mode=%u status=0x%x",
->>> +                       ctx->config.trans_mode, config_result);
->>> +        return;
->>
->> Is that expected to silently return if we can't configure translation?
-> 
-> 
-> No, it is not intended to silently return on a failed configuration.
-> Maybe an assertion is a better choice:
-> 
-> 
-> config_result = qsmmu_setup_and_enable_translation(ctx);
-> 
-> g_assert_cmpuint(config_result, ==, 0);
-> 
-
-Looks good. We should rely on exit code first, and then on verbose log 
-to find what is the problem.
-
->>
->>> +    }
->>> +
->>> +    /* Trigger DMA operation */
->>> +    dma_result = qsmmu_trigger_dma(ctx);
->>> +    if (dma_result != 0) {
->>> +        g_test_message("DMA failed: mode=%u result=0x%x",
->>> +                       ctx->config.trans_mode, dma_result);
->>> +    } else {
->>> +        g_test_message("-> DMA succeeded: mode=%u",
->>> ctx->config.trans_mode);
->>> +    }
->>> +
->>> +    /* Validate test result */
->>> +    test_passed = qsmmu_validate_test_result(ctx);
->>> +    g_assert_true(test_passed);
->>> +
->>> +    /* Clean up translation state to prepare for the next test */
->>> +    qsmmu_cleanup_translation(ctx);
+>>> +    return FIELD_EX32(s->bank[SMMU_SEC_SID_S].idr[1], S_IDR1, SECURE_IMPL);
 >>> +}
 >>> +
->>> +void qsmmu_translation_batch(const QSMMUTestConfig *configs, size_t
->>> count,
->>> +                             QTestState *qts, QPCIDevice *dev,
->>> +                             QPCIBar bar, uint64_t smmu_base)
+>>>    static int smmuv3_cmdq_consume(SMMUv3State *s, SMMUSecSID sec_sid)
+>>>    {
+>>>        SMMUState *bs = ARM_SMMU(s);
+>>> @@ -1712,6 +1718,55 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, SMMUSecSID sec_sid)
+>>>        return 0;
+>>>    }
+>>>    
+>>> +/*
+>>> + * Check if a register is exempt from the secure implementation check.
+>>> + *
+>>> + * The SMMU architecture specifies that certain secure registers, such as
+>>> + * the secure Event Queue IRQ configuration registers, must be accessible
+>>> + * even if the full secure hardware is not implemented. This function
+>>> + * identifies those registers.
+>>> + *
+>>> + * Returns true if the register is exempt, false otherwise.
+>>> + */
+>>> +static bool is_secure_impl_exempt_reg(hwaddr offset)
 >>> +{
->>> +    for (int i = 0; i < count; i++) {
->>> +        /* Initialize test memory */
->>> +        qtest_memset(qts, configs[i].dma_iova, 0x00,
->>> configs[i].dma_len);
->>> +        /* Execute each test configuration */
->>> +        QSMMUTestContext ctx = {
->>> +            .qts = qts,
->>> +            .dev = dev,
->>> +            .bar = bar,
->>> +            .smmu_base = smmu_base,
->>> +            .config = configs[i],
->>> +            .trans_status = 0,
->>> +            .dma_result = 0,
->>> +            .sid = dev->devfn,
->>> +            .tx_space = qsmmu_sec_sid_to_space(configs[i].sec_sid),
->>> +        };
->>> +
->>> +        qsmmu_single_translation(&ctx);
->>> +        g_test_message("--> Test %d completed: mode=%u sec_sid=%u "
->>> +                       "status=0x%x result=0x%x", i,
->>> configs[i].trans_mode,
->>> +                       configs[i].sec_sid, ctx.trans_status,
->>> ctx.dma_result);
->>> +    }
+>>> +    switch (offset) {
+>>> +    case A_S_EVENTQ_IRQ_CFG0:
+>>> +    case A_S_EVENTQ_IRQ_CFG1:
+>>> +    case A_S_EVENTQ_IRQ_CFG2:
+>>> +        return true;
+>>> +    default:
+>>> +        return false;
+>>> +    }
 >>> +}
+>>> +
+>>> +/* Helper function for Secure register access validation */
+>> I think we shall improve the doc commennt for the function. I understand
+>> @offset is a secure register offset and the function returns whether the
+>> access to the secure register is possible. This requires a) the access
+>> to be secure and in general secure state support exccet for few regs?
+>>> +static bool smmu_check_secure_access(SMMUv3State *s, MemTxAttrs attrs,
+>>> +                                     hwaddr offset, bool is_read)
+>>> +{   /* Check if the access is secure */
+>>> +    if (!(attrs.space == ARMSS_Secure ||
+>>> +          attrs.secure == 1)) {
+>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>> +            "%s: Non-secure %s attempt at offset 0x%" PRIx64 " (%s)\n",
+>>> +            __func__, is_read ? "read" : "write", offset,
+>>> +            is_read ? "RAZ" : "WI");
+>>> +        return false;
+>>> +    }
+>>> +
+>>> +    /*
+>>> +     * Check if the secure state is implemented. Some registers are exempted
+>>> +     * from this check.
+>>> +     */
+>>> +    if (!is_secure_impl_exempt_reg(offset) && !smmu_hw_secure_implemented(s)) {
+>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>>> +            "%s: Secure %s attempt at offset 0x%" PRIx64 ". But Secure state "
+>>> +            "is not implemented (RES0)\n",
+>>> +            __func__, is_read ? "read" : "write", offset);
+>>> +        return false;
+>>> +    }
+>>> +    return true;
+>>> +}
+>>> +
+>>>    static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
+>>>                                    uint64_t data, MemTxAttrs attrs,
+>>>                                    SMMUSecSID reg_sec_sid)
+>>> @@ -2058,6 +2113,10 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
+>>>         * statement to handle those specific security states.
+>>>         */
+>>>        if (offset >= SMMU_SECURE_REG_START) {
+>>> +        if (!smmu_check_secure_access(s, attrs, offset, false)) {
+>>> +            trace_smmuv3_write_mmio(offset, data, size, MEMTX_OK);
+>>> +            return MEMTX_OK;
+>> so the access to @offset is not permitted and we return MEMTX_OK? I am
+>> confused
+>>> +        }
+>>>            reg_sec_sid = SMMU_SEC_SID_S;
+>>>        }
+>>>    
+>>> @@ -2248,6 +2307,11 @@ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
+>>>        offset &= ~0x10000;
+>>>        SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
+>>>        if (offset >= SMMU_SECURE_REG_START) {
+>>> +        if (!smmu_check_secure_access(s, attrs, offset, true)) {
+>>> +            *data = 0;
+>>> +            trace_smmuv3_read_mmio(offset, *data, size, MEMTX_OK);
+>>> +            return MEMTX_OK;
+>> same here?
+>>> +        }
+>>>            reg_sec_sid = SMMU_SEC_SID_S;
+>>>        }
+>>>    
+>> Thanks
 >>
->> What is the reason for batching operations?
->> We are not in a performance critical scenario for running this test,
->> so it's probably better to have distinct calls to single_translation.
+>> Eric
 > 
 > 
-> As described in the previous thread [1] , I plan to split the tests so
-> that each translation mode is exercised by its own qtest. With that
-> split in place, there is no real need for a qsmmu_translation_batch()
-> helper anymore, so I refactor it into a qsmmu_run_translation_case
-> function and drop the inside for-loop.
+> Thanks for the review and for calling out the confusion around this helper.
+> 
+> 
+> The function `smmu_check_secure_access` and `return MEMTX_OK` statement
+> after smmu_check_secure_access returned false is trying to follow the
+> SECURE_IMPL rules from the architecture spec:
+> 
+> ARM IHI 0070 G.b , 6.2 Register overview
+> 
+> - When SMMU_S_IDR1.SECURE_IMPL == 1, SMMU_S_* registers are RAZ/WI to
+> Non-secure access. See section 3.11 Reset, Enable and initialization
+> regarding Non-secure access to SMMU_S_INIT. All other registers are
+> accessible to both Secure and Non-secure accesses.
+> - When SMMU_S_IDR1.SECURE_IMPL == 0, SMMU_S_* registers are RES0.
 >
 
-All good, indeed removes the need for translation_batch.
+May be worth to add a comment quoting the spec, we have been two people 
+to ask the same thing. It definitely looks like a mistake when reading 
+for the first time.
 
+> 
+> So the MEMTX_OK in the MMIO handlers is deliberate: we are acknowledging
+> the bus transaction while applying the architectural RAZ/WI/RES0
+> semantics at the register level, rather than modelling a bus abort. Also
+> there was another discussion about this issue [1]  in V1 series.
 > 
 > [1]
-> https://lore.kernel.org/qemu-devel/7370070a-c569-4b77-bd1e-6fc749ba9c90@phytium.com.cn/
-> 
->>
->> ...
->>
->> For the rest of the patch, which is quite consequent, congrats. It's
->> hard to review all the setup phase here, but knowing it works with the
->> current smmuv3 implementation, that's a good proof that it's working
->> as expected.
+>    https://lore.kernel.org/qemu-devel/a5154459-a632-42b0-b599-d5dff85b5dd2@phytium.com.cn/
 > 
 > 
-> Yes, setting up all this infrastructure did take some time, especially
-> getting the nested mode page tables right (and Secure state-related
-> configuration which is still in my local repo).
->
-
-Feel free to start with the current version, and then you'll add secure 
-state related changes as part of your other series.
-
-> I really appreciate that you ran the tests yourself and even checked
-> with a coverage-enabled build to confirm that it exercises the smmuv3
-> implementation. Thanks again for the thorough review.
->
-
-In case someone else wants to reproduce:
-$ export CFLAGS="--coverage"
-$ ./configure --target-list=aarch64-softmmu
-$ ninja -C build
-$ QTEST_QEMU_BINARY=./build/qemu-system-aarch64 \
-   ./build/tests/qtest/iommu-smmuv3-test
-$ rm -rf build/coverage_html
-$ mkdir build/coverage_html
-$ gcovr \
-       --gcov-ignore-parse-errors suspicious_hits.warn \
-       --gcov-ignore-parse-errors negative_hits.warn \
-       --merge-mode-functions=separate \
-       --html-details build/coverage_html/index.html \
-       --filter 'hw/arm/smmu*'
-$ echo file://$(pwd)/build/coverage_html/index.html
-# open this in browser by clicking on your terminal
-
-If useful for you, you can attach those instructions in your next cover 
-letter, so people can easily reproduce.
-
+> I'll add these needed details and parameters introduction as comment
+> in `smmu_check_secure_access` and `return MEMTX_OK`. How do you think
+> about it?
 > 
-> Best regards,
+> 
+> Thanks again for the feedback,
 > 
 > Tao
 > 

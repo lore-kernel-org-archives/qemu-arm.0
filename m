@@ -4,32 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 277B2D2E00A
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Dec 2025 06:32:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC782D2E039
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Dec 2025 08:24:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vRPMf-0007Yc-6m; Fri, 05 Dec 2025 01:32:25 -0500
+	id 1vRR6b-0002s3-MP; Fri, 05 Dec 2025 03:23:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vRPMb-0007Xg-J1; Fri, 05 Dec 2025 01:32:22 -0500
+ id 1vRR6a-0002rd-B4; Fri, 05 Dec 2025 03:23:56 -0500
 Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vRPMY-0002Jd-Gm; Fri, 05 Dec 2025 01:32:21 -0500
+ id 1vRR6X-0003B5-9H; Fri, 05 Dec 2025 03:23:56 -0500
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwCnrmJmfDJphgoRAw--.2152S2;
- Fri, 05 Dec 2025 14:32:06 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwCXn2OMljJpxkgSAw--.572S2;
+ Fri, 05 Dec 2025 16:23:40 +0800 (CST)
 Received: from [10.31.62.13] (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwDnP+1ffDJphbgJAA--.4243S2;
- Fri, 05 Dec 2025 14:32:00 +0800 (CST)
-Message-ID: <c4b53716-47ad-4507-a889-f0f1487c1c68@phytium.com.cn>
-Date: Fri, 5 Dec 2025 14:31:59 +0800
+ by mail (Coremail) with SMTP id AQAAfwCX7eqCljJpvLwJAA--.4322S2;
+ Fri, 05 Dec 2025 16:23:37 +0800 (CST)
+Message-ID: <d9547948-6a69-46ca-8837-329ffd1b5f9f@phytium.com.cn>
+Date: Fri, 5 Dec 2025 16:23:30 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v3 15/21] hw/arm/smmuv3: Determine register bank from MMIO
- offset
+Subject: Re: [RFC v3 16/21] hw/arm/smmuv3: Implement SMMU_S_INIT register
 To: eric.auger@redhat.com, Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>,
@@ -38,19 +37,19 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Jean-Philippe Brucker <jean-philippe@linaro.org>,
  Mostafa Saleh <smostafa@google.com>
 References: <20251012150701.4127034-1-tangtao1634@phytium.com.cn>
- <20251012151331.4130048-1-tangtao1634@phytium.com.cn>
- <83975c51-b49a-4300-af76-f2289c8bcdec@redhat.com>
+ <20251012151351.4130239-1-tangtao1634@phytium.com.cn>
+ <421fdc65-c21d-4606-a241-28341955104a@redhat.com>
 From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <83975c51-b49a-4300-af76-f2289c8bcdec@redhat.com>
+In-Reply-To: <421fdc65-c21d-4606-a241-28341955104a@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CM-TRANSID: AQAAfwDnP+1ffDJphbgJAA--.4243S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAOBWkwma4FjAAKsn
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAfwCX7eqCljJpvLwJAA--.4322S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAOBWkwma4FjAALsm
 Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxGFy7Cr4kJF4DXryxXr4Utwb_yoW7Jw47p3
- 9xt3W3KF4ktF47Xr1SqF1UGF13Cws7Kr15Arn8Kry8Z3s0yr18JF40vryF9FyDJry5Ar1U
- tF45Jr17ur45ArJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoW3XF1fuw18CFWUJFy7CryfWFg_yoW3GFy8pr
+ WkGF15KFWUAw4fu3W2kw4kAFyUZw1kK3W7Cr98Ga4ava4Yyry0qr4qgw4Y9F1DCr48A3y2
+ qr4YgFsruw1UZaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
 Received-SPF: pass client-ip=129.150.39.64;
@@ -79,126 +78,217 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Hi Eric,
 
-On 2025/12/4 22:21, Eric Auger wrote:
+On 2025/12/4 22:33, Eric Auger wrote:
 >
 > On 10/12/25 5:13 PM, Tao Tang wrote:
->> Modify the main MMIO handlers (smmu_write_mmio, smmu_read_mmio)
->> to determine the security state of the target register based on its
->> memory-mapped offset.
+>> Implement read/write handlers for the SMMU_S_INIT secure-only
+>> register.
 >>
->> By checking if the offset is within the secure register space (>=
->> SMMU_SECURE_REG_START), the handlers can deduce the register's
->> SEC_SID (reg_sec_sid). This SID is then passed down to the register
->> access helper functions (smmu_writel, smmu_readl, etc.).
+>> Writing to this register provides a mechanism for software to perform a
+>> global invalidation of ALL caches within the SMMU. This includes the
+>> IOTLBs and Configuration Caches across all security states.
 >>
->> Inside these helpers, the switch statement now operates on a masked,
->> relative offset:
->>
->>      uint32_t reg_offset = offset & 0xfff;
->>      switch (reg_offset) {
->>          ...
->>      }
->>
->> This design leverages a key feature of the SMMU specification: registers
->> with the same function across different security states
->> (Non-secure, Realm, Root) share the same relative offset. This avoids
->> significant code duplication. The reg_sec_sid passed from the MMIO
->> handler determines which security bank to operate on, while the masked
->> offset identifies the specific register within that bank.
->>
->> It is important to distinguish between the security state of the
->> register itself and the security state of the access. A
->> higher-privilege security state is permitted to access registers
->> belonging to a lower-privilege state, but the reverse is not allowed.
->> This patch lays the groundwork for enforcing such rules.
->>
->> For future compatibility with Realm and Root states, the logic in the
->> else block corresponding to the secure offset check:
->>
->> if (offset >= SMMU_SECURE_REG_START) {
->>      reg_sec_sid = SMMU_SEC_SID_S;
->> } else {
->>      /* Future Realm/Root handling */
->> }
->>
->> will need to be expanded. This will be necessary to differentiate
->> between the Root Control Page and Realm Register Pages, especially since
->> the Root Control Page is IMPLEMENTATION DEFINED.
+>> This feature is critical for secure hypervisors like Hafnium, which
+>> use it as a final step in their SMMU initialization sequence. It
+>> provides a reliable, architecturally defined method to ensure a clean
+>> and known-good cache state before enabling translations.
 >>
 >> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 >> ---
->>   hw/arm/smmuv3.c | 61 ++++++++++++++++++++++++++++++++++++-------------
->>   1 file changed, 45 insertions(+), 16 deletions(-)
+>>   hw/arm/smmuv3.c     | 33 +++++++++++++++++++++++++++++++++
+>>   hw/arm/trace-events |  1 +
+>>   2 files changed, 34 insertions(+)
 >>
 >> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index f161dd3eff..100caeeb35 100644
+>> index 100caeeb35..432de88610 100644
 >> --- a/hw/arm/smmuv3.c
 >> +++ b/hw/arm/smmuv3.c
->> ------------------------------<snip>------------------------------
->>
->>
->>
->> ------------------------------<snip>------------------------------
->>           bank->cr[0] = data;
->>           bank->cr0ack = data & ~SMMU_CR0_RESERVED;
->> @@ -1985,12 +1987,33 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
->>       /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
->>       offset &= ~0x10000;
+>> @@ -354,6 +354,21 @@ static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
 >>   
->> +    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->> +    /*
->> +     * The security state of the access (MemTxAttrs attrs) may differ from the
->> +     * security state to which the register belongs. Future support will include
->> +     * Realm and Root security states.
->> +     *
->> +     * The SMMU architecture specifies that Realm, Root, and Non-secure
->> +     * registers share the same offset layout within the last 4 hexadecimal
->> +     * digits (16 bits) of the address. Only Secure state registers are
->> +     * mapped to a higher address space, starting from
->> +     * SMMU_SECURE_REG_START (0x8000).
->> +     *
->> +     * Therefore, we can directly use the offset to distinguish Secure
->> +     * registers. When Realm and Root support is needed in the future, we
->> +     * only need to enhance the 'else' block of the corresponding 'if'
->> +     * statement to handle those specific security states.
-> I wouldn't add that many references to the Realm and Root support in the
-> very code. Maybe move that in the commit desc.
->> ------------------------------<snip>------------------------------
->>
->>
->>
->> ------------------------------<snip>------------------------------
+>>   }
 >>   
->>   static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
->> -                              uint64_t *data, MemTxAttrs attrs)
->> +                              uint64_t *data, MemTxAttrs attrs,
->> +                              SMMUSecSID reg_sec_sid)
->>   {
->> -    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
->>       SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
->> +    uint32_t reg_offset = offset & 0xfff;
+>> +static void smmuv3_invalidate_all_caches(SMMUv3State *s)
+>> +{
+>> +    trace_smmuv3_invalidate_all_caches();
+>> +    SMMUState *bs = &s->smmu_state;
+>> +
+>> +    /* Clear all cached configs including STE and CD */
+>> +    if (bs->configs) {
+>> +        g_hash_table_remove_all(bs->configs);
+>> +    }
+>> +
+>> +    /* Invalidate all SMMU IOTLB entries */
+>> +    smmu_inv_notifiers_all(&s->smmu_state);
+>> +    smmu_iotlb_inv_all(bs);
+>> +}
+>> +
+>>   static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
+>>                                                    SMMUTransCfg *cfg,
+>>                                                    SMMUEventInfo *event,
+>> @@ -1969,6 +1984,21 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
 >>   
->> -    switch (offset) {
->> +    switch (reg_offset) {
->>       case A_IDREGS ... A_IDREGS + 0x2f:
->>           *data = smmuv3_idreg(offset - A_IDREGS);
+>>           bank->eventq_irq_cfg2 = data;
 >>           return MEMTX_OK;
->> @@ -2165,13 +2190,17 @@ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
->>   
->>       /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
->>       offset &= ~0x10000;
->> +    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
-> declaration should be at the beginning of the function, ie before the
-> offset setting
+>> +    case (A_S_INIT & 0xfff):
+> why do we apply & 0xfff ?
 
 
-Thanks for the review. I'll keep only a short comment in the code and 
-move the roadmap description into commit msg. I'll also move these 
-declarations to the beginning (I've found this issue in a few other places).
+
+Let me clarify what I was trying to do with the `(A_S_INIT & 0xfff)` 
+case, and then ask your opinion on how to clean this up.
+
+According to the SMMUv3 spec , registers with the same function across 
+different security states (Non-secure, Realm, Root) share the same 
+*relative* offset within their 4KB bank window. In the MMIO handlers we 
+first decode the bank from the high bits of the offset (to get 
+`reg_sec_sid`), and then do:
+
+     uint32_t reg_offset = offset & 0xfff;
+
+     switch (reg_offset) {
+         ...
+     }
+
+So the `switch` is really operating on the per-bank 4KB-relative offset, 
+and the banked registers can share the same `case` logic while 
+`reg_sec_sid` selects which bank structure we actually touch.
+
+Most of the `A_*` macros (e.g. `A_CR0`) are already defined as these 
+relative offsets (just the low 12 bits), so they fit naturally in this 
+scheme and we can simply write `case A_CR0:`.
+
+`A_S_INIT`, however, is still defined as an *absolute* offset that 
+already includes the secure-bank base. Since the `switch` is matching on 
+`reg_offset = offset & 0xfff`, I ended up writing:
+
+     case (A_S_INIT & 0xfff):
+
+as a shortcut to adapt an absolute macro to the “relative” decode. 
+S_INIT is also a secure-only register, so there is no NS twin that I 
+could reuse as the shared low-12-bit macro. In practice that makes 
+S_INIT a one-off special case in the current code, which is why the `& 
+0xfff` sticks out.
 
 
-Best regards,
+I agree this looks more like a hack than a clean design, so I’d like to 
+rework it in the next version. I see a couple of possible directions and 
+would appreciate your view on which one is preferable:
+
+1) Stop using NS macros as the canonical case labels and list all 
+bank-specific variants explicitly.
+
+    Instead of relying on a single “NS” macro for the shared low-12-bit 
+offset, we could have:
+
+        switch (reg_offset) {
+        case A_STRTAB_BASE_CFG:
+        case A_S_STRTAB_BASE_CFG:
+            ...
+            break;
+        }
+
+    This makes the banked nature explicit in the `switch` and avoids 
+relying on NS as the “reference” definition. The bank selection would 
+still be driven by `reg_sec_sid`, but the case labels themselves would 
+be per-bank macros where that makes sense.
+
+2) Go back to the v2 [1] idea and introduce a dedicated S_INIT-relative 
+alias macro.
+
+    As I had in v2, we could define a separate macro that encodes only 
+the relative offset, e.g. something like:
+
+         REG32(S_INIT,               0x803c)
+             FIELD(S_INIT, INV_ALL,    0, 1)
+         /* Alias for the S_INIT offset to match in the dispatcher switch */
+         #define A_S_INIT_ALIAS         0x3c
+
+
+    and then the decode would simply use:
+
+        switch (reg_offset) {
+        case A_S_INIT_ALIAS:
+            ...
+            break;
+        }
+
+    This keeps the “absolute” constant for the secure MMIO layout (if we 
+still find that useful elsewhere), but makes the decode logic work 
+entirely in terms of relative offsets and removes the inline.
+
+3) Keep the current implementation and add some comment about it.
+
+
+Which option would you prefer? Any other thoughts or suggestions would 
+be greatly appreciated.
+
+
+[1] 
+https://lore.kernel.org/qemu-devel/7161c00c-c519-4e90-9dca-99bcf7518d40@redhat.com/
+
+
+
+>> +        if (data & R_S_INIT_INV_ALL_MASK) {
+>> +            int cr0_smmuen = smmu_enabled(s, reg_sec_sid);
+>> +            int s_cr0_smmuen = smmuv3_get_cr0ack_smmuen(s, reg_sec_sid);
+>> +            if (cr0_smmuen || s_cr0_smmuen) {
+> use smmuv3_is_smmu_enabled()?
+
+
+Yes using smmuv3_is_smmu_enabled is a better choice. And I'll check both 
+CR0.SMMUEN and S_CR0.SMMUEN in V4. As I found *any SMMU_(*_)CR0.SMMUEN 
+== 1* descriptions in 6.3.62 SMMU_S_INIT ARM IHI 0070 G.b:
+
+ > If SMMU_ROOT_CR0.GPCEN == 0, a write of 1 to INV_ALL when any 
+SMMU_(*_)CR0.SMMUEN == 1,
+ >     or an Update of any SMMUEN to 1 is in progress ........ , is 
+CONSTRAINED UNPREDICTABLE......
+
+
+Thanks for your review.
+
+
+Yours,
 
 Tao
+
+>> +                /* CONSTRAINED UNPREDICTABLE behavior: Ignore this write */
+>> +                qemu_log_mask(LOG_GUEST_ERROR, "S_INIT write ignored: "
+>> +                              "CR0.SMMUEN=%d or S_CR0.SMMUEN=%d is set\n",
+>> +                              cr0_smmuen, s_cr0_smmuen);
+>> +                return MEMTX_OK;
+>> +            }
+>> +            smmuv3_invalidate_all_caches(s);
+>> +        }
+>> +        /* Synchronous emulation: invalidation completed instantly. */
+>> +        return MEMTX_OK;
+>>       default:
+>>           qemu_log_mask(LOG_UNIMP,
+>>                         "%s Unexpected 32-bit access to 0x%"PRIx64" (WI)\n",
+>> @@ -2172,6 +2202,9 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
+>>       case A_EVENTQ_CONS:
+>>           *data = bank->eventq.cons;
+>>           return MEMTX_OK;
+>> +    case (A_S_INIT & 0xfff):
+>> +        *data = 0;
+>> +        return MEMTX_OK;
+>>       default:
+>>           *data = 0;
+>>           qemu_log_mask(LOG_UNIMP,
+>> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+>> index 434d6abfc2..0e7ad8fee3 100644
+>> --- a/hw/arm/trace-events
+>> +++ b/hw/arm/trace-events
+>> @@ -64,6 +64,7 @@ smmuv3_cmdq_tlbi_s12_vmid(int vmid) "vmid=%d"
+>>   smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
+>>   smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
+>>   smmuv3_inv_notifiers_iova(const char *name, int asid, int vmid, uint64_t iova, uint8_t tg, uint64_t num_pages, int stage) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" stage=%d"
+>> +smmuv3_invalidate_all_caches(void) "Invalidate all SMMU caches and TLBs"
+>>   smmu_reset_exit(void) ""
+>>   
+>>   # strongarm.c
+> Thanks
+>
+> Eric
 
 

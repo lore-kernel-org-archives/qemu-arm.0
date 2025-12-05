@@ -4,91 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28C68D33980
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Dec 2025 15:11:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B773D32D9C
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Dec 2025 15:12:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vRXSr-0003eL-Pf; Fri, 05 Dec 2025 10:11:21 -0500
+	id 1vRXTR-0004ki-9C; Fri, 05 Dec 2025 10:11:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vRXSp-0003cI-Vq
- for qemu-arm@nongnu.org; Fri, 05 Dec 2025 10:11:20 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1vRXTJ-0004YB-Os
+ for qemu-arm@nongnu.org; Fri, 05 Dec 2025 10:11:51 -0500
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vRXSo-0001Ri-I9
- for qemu-arm@nongnu.org; Fri, 05 Dec 2025 10:11:19 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-477a1c28778so30559375e9.3
- for <qemu-arm@nongnu.org>; Fri, 05 Dec 2025 07:11:18 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1vRXTI-0001VY-5J
+ for qemu-arm@nongnu.org; Fri, 05 Dec 2025 10:11:49 -0500
+Received: by mail-oi1-x22f.google.com with SMTP id
+ 5614622812f47-450ccefe6ffso1334657b6e.1
+ for <qemu-arm@nongnu.org>; Fri, 05 Dec 2025 07:11:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1764947477; x=1765552277; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=lnP94QzJYdcIFYVLamZVmYmkVOkYawK77F+QBWnmxK8=;
- b=y7nbS9u77uVWp3ekW62zmEIVqZWlCkm5CRkDl58pc6tz+PNrFRlgg/rKs2RBaMXlFy
- 3MoiG61ng1w+H0PghmzP6oSBLCeNJAbKsEPtBNEzA00G5IZ6UEVYp1XnSf5MKzkqBDdX
- IIxqOn2ZTf6wlh+RLWdHZfWopdaht4kP4A0gEAETlulatnPX1HZDmajSHr1h8pt+T25i
- HgXIfVT960DATuDp7qfx2fuY3+cxYfxzja+6u1jSwviG/8JD0YvZJJT4Q2jbIhxRgGGQ
- EdJw/mpTKyE0D1LXLZ2Pp/xvabIWjkpgU/TQVlk4Auz4Lq89qqmB0DuZr6zGdM2lJwfN
- Jffw==
+ d=linaro.org; s=google; t=1764947506; x=1765552306; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=m23IJjqqMukIBBgSiJZdjQOmsfWT72QFikpiERbNuhE=;
+ b=k/ATWOdOgJlVFuJgab8FN7Qs8CG73iNO6RbMccjDALMYUfFJLKAPh4VtQPeugdUC5K
+ o36m9LdSMJBkFAzwagALnoFruxtc/DQNAXcHDbFkbLa2qOfmYOYdiqz4EoqdYI9bYI99
+ 6+7qEYDcazTR0D3tjYowHHxDeROwqTPwb4VW1/kq+ZnXjujZnK2x0qdZ5RwXEG5XAt9H
+ KQgFKuPR8bD5/teJHd+t7qMqB1LTjFEkCeK1g+pAxg3WHS3OoLPxkzpw4zbwDU6toKOr
+ pwk3PD14ZvMJ1WZyrys0TVerTjir6LPtdGhJkNnaZY5a2j4tWU8NbFg99ou/wYSAo3E4
+ Py1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764947477; x=1765552277;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=lnP94QzJYdcIFYVLamZVmYmkVOkYawK77F+QBWnmxK8=;
- b=QwAAnuGIzYTAnS6Ex9Lpq/f7K5PREVKUtwOQwdYtXB3Sb3W2tCspbqeIk9C1CdYnLH
- T/CuP7OsLhVfndRrCWV5x8azDVBa33vMZcipWj3/7B5y9gaiJZfwyNTScqjtAemcAml8
- Ir8ECTzQ12FQbqyesm/PIsgKVfnYLlRBxq+sYs4s5wLPbS0m6n68ZCupsNlk9twoPuZq
- wTELLO4m49Ydd/+UhcgvuDN0x6AUkg9dfMhxjvP17tfSwRYKKx4oOGKR+7UGz6fpCNgY
- mEjoRuYxl2Zn2Dn0+vkpSHd0FvUFKPs7Fyya4DxP8YxDSFHKe9Gu6ljb8WRWvJa1LLaY
- MVfA==
+ d=1e100.net; s=20230601; t=1764947506; x=1765552306;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=m23IJjqqMukIBBgSiJZdjQOmsfWT72QFikpiERbNuhE=;
+ b=w5KK73Sc73KWIq6OZqUDSlta4349AsQihgcjMpsstJHevHc4yy0bpq47GXmhDRFVFQ
+ tCPFIfSnkm8yP0VKn1TjKmgzsH0QWm2CDdTo4YpH3g/FQOUHfnpF9/cya8X+44dEz7iA
+ VoyL+gFu/6lH5QzbktmzmDk0uiH4b9L0QkqoutOjAwthzJaTIqO3D9i9IPRrFgSbuiHF
+ 4A4TbDCAHR1lDjSFJxBIWysigwZ91EkkWLZPrw22PnEwoY3ptJkag8sgGJsvdVYBD6VT
+ Iy1uYR/q+gwf61vJSNSVOLRTBryzN4boPtVdnKKPtpSzUCgaWg7W/zY1aKHGbVkqPNtF
+ 401Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWmIa2+ZP4YbHTAQbmfF1cFene5Y2wpew/om/Wtn0lH6/lQePvCaxshNgs/jiPYezn2YURs8+7PUg==@nongnu.org
-X-Gm-Message-State: AOJu0YzioadLhQEDkd/YKIgnoa9wdIwBonS0cuYm9woki34BIxGBiuBa
- pe5qJY5GCG3gZvnP7usEQu5vHHm5l3SKBLMKWwrniO1y33lWwkL5T5M5KhNSbsye/QQ=
-X-Gm-Gg: ASbGncvYx0iSYo2Hp0g5ZXieG+c7M5vk6nEi+OZPVhVSXIXnMWsfX3fTVeqhSoCvsUi
- iNZSrihKQLFiOOXLtgXT1IE6PsKwJweDq8rO6NvQIS/nC8Lf5dJd1HlusomkPq0OtFlg4/2OQAe
- Glb01bMLK/4xo1DmfcPwod6T2MjM3lqq1NlHG5lb7k/ZapOdExGqHBUAGLM095TTEeHTXF197Qv
- i2SGoyYp5ZCkxMxjJUISdTMLDiaLarFgsKF5xPEImQGXv7hg5b4xxVbqEciFQSsiIHIJPsc+FBd
- r/jOvvEUrZPQe7I0oVB0vf9XFQrv8BiqkHpbjbmxV5RojuHLvF9mQVYQgaiqGoWezKGPSy3OnyS
- GRH6iMa22rNxpRB0nwoRR2uUNM8ee6aHyaJzjetDxZxeiZnqwaJwyqDZZaUz599N+mTZE5r0Vju
- I7aCpV06uJhP8=
-X-Google-Smtp-Source: AGHT+IHrxzncpq3CW/62XHFieacCMbuk0+0KP2h8agiE66SoYcxvX4ST1TBTglUXgS1ET+1INfImNg==
-X-Received: by 2002:a05:600c:4507:b0:477:6374:6347 with SMTP id
- 5b1f17b1804b1-4792f38659fmr63409225e9.22.1764947477022; 
- Fri, 05 Dec 2025 07:11:17 -0800 (PST)
-Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4792b0d5e55sm95237475e9.2.2025.12.05.07.11.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Dec 2025 07:11:16 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 5B88A5F7F6;
- Fri, 05 Dec 2025 15:11:15 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Mads Ynddal <mads@ynddal.dk>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 0/2] target/arm: fix for hvf regression in v10.2-rc1 (#3228)
-Date: Fri,  5 Dec 2025 15:11:13 +0000
-Message-ID: <20251205151115.2035930-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
+ AJvYcCV0QIdEyX9DudxQMKS7blHChp6nE58JpG3R2PpBZr/1hQU5yYw444+fOwqEmGCcHDKmFIyJYH70pA==@nongnu.org
+X-Gm-Message-State: AOJu0YwgGTk3/uqvYQAphhF8SYr8auc8wJy6/A6LrFtFiywwP/8mqGMz
+ MTcqBUMnlaH46d3W3xm6MChsffDssUaAuVe/WAp59rpvLoYyQYtf9dn1u1VkPTrRs+o=
+X-Gm-Gg: ASbGncubryjfMTxA5c7H3zIOkM8ib6OagWG9QC2sGG+bWnXb2iwq9FOVqhzL10y0yZC
+ C6tkI+VKspm18mC1WHvlviDdkK1DSvKy/c5XHFEo9v2ZBmJEYHusTVsmKGq2AtuRUqL00iNqtXy
+ L/ciretQRVTtBOB6KJjhvJFHpEOeAIDk4Pn7NtAT61Q6yt8BZRMRsZFLxYPrKcgayEo/nWY5mGe
+ FIaNC6XZJyGQo539ySu4KkBVcG9XxjTfA/24OwQN/FrTA1OIbVf/Q1QuWYXYQoEc+/K8FJ3NPb8
+ qXFi+aDyla5xxJ0JsMyuU7lNsSsHU+tYXLiGFJ5/+9GCPzYuuH3z3SYBAGqabZfQQI0ybNN+5OV
+ PkvN0oFZG0FimU6hIbTEr7DB1scHCVA+Tc97TsPTF57IsRX6g4RnwMNWW0kfQoGVwpgL0qKqh7S
+ xafgRok0Hvfry/gLgIafmcHDqqbNZFm/mm4ZmfSnoK8RTqVy+t80VS7WsynDktUioI
+X-Google-Smtp-Source: AGHT+IFuQD+VlFU7dW8yCB6Ih1dPSnZYtwo5O2x+ErBih2+ZUEu51gKIr65nLwUU7gh0QmvMzOVjPQ==
+X-Received: by 2002:a05:6808:528e:b0:44d:aa31:d929 with SMTP id
+ 5614622812f47-45378e937b6mr4280160b6e.20.1764947506441; 
+ Fri, 05 Dec 2025 07:11:46 -0800 (PST)
+Received: from [192.168.4.112] (fixed-187-189-51-143.totalplay.net.
+ [187.189.51.143]) by smtp.gmail.com with ESMTPSA id
+ 586e51a60fabf-3f50a727d7csm3630333fac.0.2025.12.05.07.11.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 05 Dec 2025 07:11:45 -0800 (PST)
+Message-ID: <19527bca-4209-42d2-bedb-18dff9639987@linaro.org>
+Date: Fri, 5 Dec 2025 09:11:43 -0600
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] target/arm: handle unaligned PC during tlb probe
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Jessica Clarke <jrtc27@jrtc27.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20251204203540.1381896-1-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20251204203540.1381896-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::22f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x22f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,26 +108,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Although bisecting indicated 93ac765076a (target/arm/hvf: Keep calling
-hv_vcpu_run() in loop) was the culprit I noticed that using gdbstub
-would get further in the run due to the enforced syncing from being
-debugged.
+On 12/4/25 14:35, Alex Bennée wrote:
+> PC alignment faults have priority over instruction aborts and we have
+> code to deal with this in the translation front-ends. However during
+> tb_lookup we can see a potentially faulting probe which doesn't get a
+> MemOp set. If the page isn't available this results in
+> EC_INSNABORT (0x20) instead of EC_PCALIGNMENT (0x22).
+> 
+> As there is no easy way to set the appropriate MemOp in the
+> instruction fetch probe path lets just detect it in
+> arm_cpu_tlb_fill_align() ahead of the main alignment check. We also
+> teach arm_deliver_fault to deliver the right syndrome for
+> MMU_INST_FETCH alignment issues.
+> 
+> Fixes:https://gitlab.com/qemu-project/qemu/-/issues/3233
+> Tested-by: Jessica Clarke<jrtc27@jrtc27.com>
+> Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
+> 
+> ---
+> v2
+>    - don't mess with MemOp for alignment check
+>    - expand arm_deliver_fault to pick up alignment issues
+> v3
+>    - update commit message
+> ---
+>   target/arm/tcg/tlb_helper.c | 21 ++++++++++++++++-----
+>   1 file changed, 16 insertions(+), 5 deletions(-)
 
-As far as I can tell the kernel got confused by contradictory responses
-from PSCI while booting up and then never recovered.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Please test.
-
-Alex
-
-Alex Bennée (2):
-  Revert "target/arm: Re-use arm_is_psci_call() in HVF"
-  target/arm: ensure PSCI register updates are flushed
-
- target/arm/hvf/hvf.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
-
--- 
-2.47.3
-
+r~
 

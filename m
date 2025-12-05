@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C825D2F7C6
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Dec 2025 09:43:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0570D2F7D1
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Dec 2025 10:37:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vRSLF-0006SU-Uo; Fri, 05 Dec 2025 04:43:10 -0500
+	id 1vRTBV-0008Ox-2b; Fri, 05 Dec 2025 05:37:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vRSLB-0006QM-Ow; Fri, 05 Dec 2025 04:43:05 -0500
+ id 1vRTBS-0008NY-8a; Fri, 05 Dec 2025 05:37:06 -0500
 Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vRSL7-0005Hv-Qc; Fri, 05 Dec 2025 04:43:05 -0500
+ id 1vRTBO-0003Vs-EJ; Fri, 05 Dec 2025 05:37:06 -0500
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwDHy5caqTJp9ysTAw--.326S2;
- Fri, 05 Dec 2025 17:42:50 +0800 (CST)
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwDHtVzAtTJpbWE6AQ--.25252S2;
+ Fri, 05 Dec 2025 18:36:48 +0800 (CST)
 Received: from [10.31.62.13] (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwC3DesXqTJpDsAJAA--.4270S2;
- Fri, 05 Dec 2025 17:42:47 +0800 (CST)
-Message-ID: <4936993e-122e-42ba-acb2-f28c313de35f@phytium.com.cn>
-Date: Fri, 5 Dec 2025 17:42:47 +0800
+ by mail (Coremail) with SMTP id AQAAfwCn_eqytTJpU8QJAA--.4346S2;
+ Fri, 05 Dec 2025 18:36:43 +0800 (CST)
+Message-ID: <ab0edbd5-9556-424a-83ab-452801d617a8@phytium.com.cn>
+Date: Fri, 5 Dec 2025 18:36:34 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v3 17/21] hw/arm/smmuv3: Pass security state to command
- queue and IRQ logic
+Subject: Re: [RFC v3 18/21] hw/arm/smmuv3: Harden security checks in MMIO
+ handlers
 To: eric.auger@redhat.com, Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>,
@@ -38,19 +38,19 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Jean-Philippe Brucker <jean-philippe@linaro.org>,
  Mostafa Saleh <smostafa@google.com>
 References: <20251012150701.4127034-1-tangtao1634@phytium.com.cn>
- <20251012151420.4130577-1-tangtao1634@phytium.com.cn>
- <bab3001e-b756-48e3-894a-4b4c43521069@redhat.com>
+ <20251012151437.4130770-1-tangtao1634@phytium.com.cn>
+ <04533911-e6f5-42d6-9813-85e97ce13d38@redhat.com>
 From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <bab3001e-b756-48e3-894a-4b4c43521069@redhat.com>
+In-Reply-To: <04533911-e6f5-42d6-9813-85e97ce13d38@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwC3DesXqTJpDsAJAA--.4270S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAPBWkx6ywEIgAAsy
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
+X-CM-TRANSID: AQAAfwCn_eqytTJpU8QJAA--.4346S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAPBWkx6ywEzQAAsd
+Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW3ZrW5Aw18Cr18KrWUJw47Jwb_yoWDXrW7pr
- 48A3Z8GryrGF1fJF1Iq3yUuFy3Jw17Kwn8Jry5Ka4fA34DAr1Fqr1DWr1Y934Dur4rZw4I
- yayUGrsxuF17ArJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoWxKFy7Kr1UJr47JryrXFyUGFg_yoWxJr1xpr
+ 4DK3W5Gr4DKF17XF4Sqw4kCFyrCrZ2grW7C393K3yUZa45Cr95JF40k34Y93ZrGr1UZa1x
+ AF1FvrWfur1YyrJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
 Received-SPF: pass client-ip=129.150.39.64;
@@ -79,299 +79,168 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Hi Eric,
 
-On 2025/12/4 22:46, Eric Auger wrote:
+On 2025/12/4 22:59, Eric Auger wrote:
 >
 > On 10/12/25 5:14 PM, Tao Tang wrote:
->> The command queue and interrupt logic must operate within the correct
->> security context. Handling a command queue in one security state can
->> have side effects, such as interrupts or errors, that need to be
->> processed in another. This requires the IRQ and GERROR logic to be
->> fully aware of the multi-security-state environment.
+>> This patch hardens the security validation within the main MMIO
+>> dispatcher functions (smmu_read_mmio and smmu_write_mmio).
 >>
->> This patch refactors the command queue processing and interrupt handling
->> to be security-state aware. Besides, unlike the command queue, the
->> event queue logic was already updated to be security-state aware in a
->> previous change. The SMMUSecSID is now passed through the relevant
->> functions to ensure that:
+>> First, accesses to the secure register space are now correctly gated by
+>> whether the SECURE_IMPL feature is enabled in the model. This prevents
+>> guest software from accessing the secure programming interface when it is
+>> disabled, though some registers are exempt from this check as per the
+>> architecture.
 >>
->> - Command queue operations are performed on the correct register bank.
->>
->> - Interrupts are triggered and checked against the correct security
->> state's configuration.
->>
->> - Errors from command processing are reported in the correct GERROR
->> register bank.
->>
->> - Architectural access controls, like preventing secure commands from a
->> non-secure queue, are correctly enforced.
->>
->> - As Secure Stage 2 is not yet implemented, commands that target it
->> are now correctly aborted during command queue processing.
+>> Second, the check for the input stream's security is made more robust.
+>> It now validates not only the legacy MemTxAttrs.secure bit, but also
+>> the .space field. This brings the SMMU's handling of security spaces
+>> into full alignment with the PE.
 >>
 >> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 >> ---
->>   hw/arm/smmuv3.c     | 61 +++++++++++++++++++++++++++++++--------------
->>   hw/arm/trace-events |  2 +-
->>   2 files changed, 43 insertions(+), 20 deletions(-)
+>>   hw/arm/smmuv3.c | 64 +++++++++++++++++++++++++++++++++++++++++++++++++
+>>   1 file changed, 64 insertions(+)
 >>
 >> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index 432de88610..4ac7a2f3c7 100644
+>> index 4ac7a2f3c7..c9c742c80b 100644
 >> --- a/hw/arm/smmuv3.c
 >> +++ b/hw/arm/smmuv3.c
->> @@ -46,11 +46,11 @@
->>    *
->>    * @irq: irq type
->>    * @gerror_mask: mask of gerrors to toggle (relevant if @irq is GERROR)
->> + * @sec_sid: SEC_SID of the bank
->>    */
->>   static void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq,
->> -                               uint32_t gerror_mask)
->> +                               uint32_t gerror_mask, SMMUSecSID sec_sid)
->>   {
->> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->>       SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->>   
->>       bool pulse = false;
->> @@ -87,9 +87,9 @@ static void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq,
->>       }
->>   }
->>   
->> -static void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
->> +static void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn,
->> +                                 SMMUSecSID sec_sid)
->>   {
->> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->>       SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->>       uint32_t pending = bank->gerror ^ bank->gerrorn;
->>       uint32_t toggled = bank->gerrorn ^ new_gerrorn;
->> @@ -109,7 +109,7 @@ static void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
->>       trace_smmuv3_write_gerrorn(toggled & pending, bank->gerrorn);
->>   }
->>   
->> -static inline MemTxResult queue_read(SMMUQueue *q, Cmd *cmd)
->> +static inline MemTxResult queue_read(SMMUQueue *q, Cmd *cmd, SMMUSecSID sec_sid)
-> why this change as sec_sid is not yet used?
-> besides the q is already specialized for a given sec_sid
->>   {
->>       dma_addr_t addr = Q_CONS_ENTRY(q);
->>       MemTxResult ret;
->> @@ -167,7 +167,7 @@ static MemTxResult smmuv3_write_eventq(SMMUv3State *s, SMMUSecSID sec_sid,
->>       }
->>   
->>       if (!smmuv3_q_empty(q)) {
->> -        smmuv3_trigger_irq(s, SMMU_IRQ_EVTQ, 0);
->> +        smmuv3_trigger_irq(s, SMMU_IRQ_EVTQ, 0, sec_sid);
->>       }
->>       return MEMTX_OK;
->>   }
->> @@ -263,7 +263,8 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
->>                                 info->sid);
->>       r = smmuv3_write_eventq(s, sec_sid, &evt);
->>       if (r != MEMTX_OK) {
->> -        smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_EVENTQ_ABT_ERR_MASK);
->> +        smmuv3_trigger_irq(s, SMMU_IRQ_GERROR,
->> +                           R_GERROR_EVENTQ_ABT_ERR_MASK, sec_sid);
->>       }
->>       info->recorded = true;
->>   }
->> @@ -1457,11 +1458,10 @@ static bool smmu_eventq_irq_cfg_writable(SMMUv3State *s, SMMUSecSID sec_sid)
+>> @@ -1458,6 +1458,12 @@ static bool smmu_eventq_irq_cfg_writable(SMMUv3State *s, SMMUSecSID sec_sid)
 >>       return smmu_irq_ctl_evtq_irqen_disabled(s, sec_sid);
 >>   }
 >>   
->> -static int smmuv3_cmdq_consume(SMMUv3State *s)
->> +static int smmuv3_cmdq_consume(SMMUv3State *s, SMMUSecSID sec_sid)
+>> +/* Check if the SMMU hardware itself implements secure state features */
+>> +static inline bool smmu_hw_secure_implemented(SMMUv3State *s)
+>> +{
+>> +    return FIELD_EX32(s->bank[SMMU_SEC_SID_S].idr[1], S_IDR1, SECURE_IMPL);
+>> +}
+>> +
+>>   static int smmuv3_cmdq_consume(SMMUv3State *s, SMMUSecSID sec_sid)
 >>   {
 >>       SMMUState *bs = ARM_SMMU(s);
->>       SMMUCmdError cmd_error = SMMU_CERROR_NONE;
->> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->>       SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->>       SMMUQueue *q = &bank->cmdq;
->>       SMMUCommandType type = 0;
->> @@ -1480,14 +1480,14 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->>           uint32_t pending = bank->gerror ^ bank->gerrorn;
->>           Cmd cmd;
+>> @@ -1712,6 +1718,55 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, SMMUSecSID sec_sid)
+>>       return 0;
+>>   }
 >>   
->> -        trace_smmuv3_cmdq_consume(Q_PROD(q), Q_CONS(q),
->> +        trace_smmuv3_cmdq_consume(sec_sid, Q_PROD(q), Q_CONS(q),
->>                                     Q_PROD_WRAP(q), Q_CONS_WRAP(q));
->>   
->>           if (FIELD_EX32(pending, GERROR, CMDQ_ERR)) {
->>               break;
->>           }
->>   
->> -        if (queue_read(q, &cmd) != MEMTX_OK) {
->> +        if (queue_read(q, &cmd, sec_sid) != MEMTX_OK) {
->>               cmd_error = SMMU_CERROR_ABT;
->>               break;
->>           }
->> @@ -1500,7 +1500,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->>           switch (type) {
->>           case SMMU_CMD_SYNC:
->>               if (CMD_SYNC_CS(&cmd) & CMD_SYNC_SIG_IRQ) {
->> -                smmuv3_trigger_irq(s, SMMU_IRQ_CMD_SYNC, 0);
->> +                smmuv3_trigger_irq(s, SMMU_IRQ_CMD_SYNC, 0, sec_sid);
->>               }
->>               break;
->>           case SMMU_CMD_PREFETCH_CONFIG:
->> @@ -1512,6 +1512,11 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->>               SMMUDevice *sdev = smmu_find_sdev(bs, sid);
->>   
->>               if (CMD_SSEC(&cmd)) {
-> when reading the spec I have the impression SSEC is common to all commands
-> 4.1.6 Common command fields
-> Can't you factorize that check?
->> +                if (sec_sid != SMMU_SEC_SID_S) {
->> +                    /* Secure Stream with Non-Secure command */
->> +                    cmd_error = SMMU_CERROR_ILL;
->> +                    break;
->> +                }
->>                   cmd_error = SMMU_CERROR_ILL;
->>                   break;
->>               }
->> @@ -1532,6 +1537,10 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->>               SMMUSIDRange sid_range;
->>   
->>               if (CMD_SSEC(&cmd)) {
->> +                if (sec_sid != SMMU_SEC_SID_S) {
->> +                    cmd_error = SMMU_CERROR_ILL;
->> +                    break;
->> +                }
->>                   cmd_error = SMMU_CERROR_ILL;
->>                   break;
->>               }
->> @@ -1551,6 +1560,10 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->>               SMMUDevice *sdev = smmu_find_sdev(bs, sid);
->>   
->>               if (CMD_SSEC(&cmd)) {
->> +                if (sec_sid != SMMU_SEC_SID_S) {
->> +                    cmd_error = SMMU_CERROR_ILL;
->> +                    break;
->> +                }
->>                   cmd_error = SMMU_CERROR_ILL;
->>                   break;
->>               }
->> @@ -1618,7 +1631,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->>                   cmd_error = SMMU_CERROR_ILL;
->>                   break;
->>               }
->> -            smmuv3_range_inval(bs, &cmd, SMMU_STAGE_1, SMMU_SEC_SID_NS);
->> +            smmuv3_range_inval(bs, &cmd, SMMU_STAGE_1, sec_sid);
->>               break;
->>           case SMMU_CMD_TLBI_S12_VMALL:
->>           {
->> @@ -1628,6 +1641,11 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->>                   cmd_error = SMMU_CERROR_ILL;
->>                   break;
->>               }
->> +            /* Secure Stage 2 isn't supported for now */
->> +            if (sec_sid != SMMU_SEC_SID_NS) {
->> +                cmd_error = SMMU_CERROR_ABT;
->> +                break;
->> +            }
->>   
->>               trace_smmuv3_cmdq_tlbi_s12_vmid(vmid);
->>               smmu_inv_notifiers_all(&s->smmu_state);
->> @@ -1639,11 +1657,16 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
->>                   cmd_error = SMMU_CERROR_ILL;
->>                   break;
->>               }
+>> +/*
+>> + * Check if a register is exempt from the secure implementation check.
+>> + *
+>> + * The SMMU architecture specifies that certain secure registers, such as
+>> + * the secure Event Queue IRQ configuration registers, must be accessible
+>> + * even if the full secure hardware is not implemented. This function
+>> + * identifies those registers.
+>> + *
+>> + * Returns true if the register is exempt, false otherwise.
+>> + */
+>> +static bool is_secure_impl_exempt_reg(hwaddr offset)
+>> +{
+>> +    switch (offset) {
+>> +    case A_S_EVENTQ_IRQ_CFG0:
+>> +    case A_S_EVENTQ_IRQ_CFG1:
+>> +    case A_S_EVENTQ_IRQ_CFG2:
+>> +        return true;
+>> +    default:
+>> +        return false;
+>> +    }
+>> +}
 >> +
->> +            if (sec_sid != SMMU_SEC_SID_NS) {
->> +                cmd_error = SMMU_CERROR_ABT;
->> +                break;
->> +            }
->>               /*
->>                * As currently only either s1 or s2 are supported
->>                * we can reuse same function for s2.
->>                */
->> -            smmuv3_range_inval(bs, &cmd, SMMU_STAGE_2, SMMU_SEC_SID_NS);
->> +            smmuv3_range_inval(bs, &cmd, SMMU_STAGE_2, sec_sid);
->>               break;
->>           case SMMU_CMD_TLBI_EL3_ALL:
->>           case SMMU_CMD_TLBI_EL3_VA:
+>> +/* Helper function for Secure register access validation */
+> I think we shall improve the doc commennt for the function. I understand
+> @offset is a secure register offset and the function returns whether the
+> access to the secure register is possible. This requires a) the access
+> to be secure and in general secure state support exccet for few regs?
+>> +static bool smmu_check_secure_access(SMMUv3State *s, MemTxAttrs attrs,
+>> +                                     hwaddr offset, bool is_read)
+>> +{   /* Check if the access is secure */
+>> +    if (!(attrs.space == ARMSS_Secure ||
+>> +          attrs.secure == 1)) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +            "%s: Non-secure %s attempt at offset 0x%" PRIx64 " (%s)\n",
+>> +            __func__, is_read ? "read" : "write", offset,
+>> +            is_read ? "RAZ" : "WI");
+>> +        return false;
+>> +    }
+>> +
+>> +    /*
+>> +     * Check if the secure state is implemented. Some registers are exempted
+>> +     * from this check.
+>> +     */
+>> +    if (!is_secure_impl_exempt_reg(offset) && !smmu_hw_secure_implemented(s)) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +            "%s: Secure %s attempt at offset 0x%" PRIx64 ". But Secure state "
+>> +            "is not implemented (RES0)\n",
+>> +            __func__, is_read ? "read" : "write", offset);
+>> +        return false;
+>> +    }
+>> +    return true;
+>> +}
+>> +
+>>   static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
+>>                                   uint64_t data, MemTxAttrs attrs,
+>>                                   SMMUSecSID reg_sec_sid)
+>> @@ -2058,6 +2113,10 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
+>>        * statement to handle those specific security states.
+>>        */
+>>       if (offset >= SMMU_SECURE_REG_START) {
+>> +        if (!smmu_check_secure_access(s, attrs, offset, false)) {
+>> +            trace_smmuv3_write_mmio(offset, data, size, MEMTX_OK);
+>> +            return MEMTX_OK;
+> so the access to @offset is not permitted and we return MEMTX_OK? I am
+> confused
+>> +        }
+>>           reg_sec_sid = SMMU_SEC_SID_S;
+>>       }
+>>   
+>> @@ -2248,6 +2307,11 @@ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
+>>       offset &= ~0x10000;
+>>       SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
+>>       if (offset >= SMMU_SECURE_REG_START) {
+>> +        if (!smmu_check_secure_access(s, attrs, offset, true)) {
+>> +            *data = 0;
+>> +            trace_smmuv3_read_mmio(offset, *data, size, MEMTX_OK);
+>> +            return MEMTX_OK;
+> same here?
+>> +        }
+>>           reg_sec_sid = SMMU_SEC_SID_S;
+>>       }
+>>   
+> Thanks
+>
+> Eric
 
 
-Thanks for the pointers on 4.1.6. After reading the spec, I realize I 
-did not clearly separate two related concepts in my initial implementation:
-
-- the security context of the command queue / register bank, and
-
-- the security state of the target stream described by SSEC in the 
-command payload that the command is meant to operate on.
+Thanks for the review and for calling out the confusion around this helper.
 
 
-I plan to split the command queue’s security state from the stream's 
-security state. The command queue bank (NS/S) still drives which 
-register bank sees the GERROR/CMDQ state, while a small helper now 
-interprets SSEC so every opcode automatically targets the right stream 
-security state, which is pointed by SMMUSecSID *stream_sid (NS-only for 
-the NS queue; Secure vs Non-secure selected per SSEC on the Secure queue).
+The function `smmu_check_secure_access` and `return MEMTX_OK` statement 
+after smmu_check_secure_access returned false is trying to follow the 
+SECURE_IMPL rules from the architecture spec:
+
+ARM IHI 0070 G.b , 6.2 Register overview
+
+- When SMMU_S_IDR1.SECURE_IMPL == 1, SMMU_S_* registers are RAZ/WI to 
+Non-secure access. See section 3.11 Reset, Enable and initialization 
+regarding Non-secure access to SMMU_S_INIT. All other registers are 
+accessible to both Secure and Non-secure accesses.
+- When SMMU_S_IDR1.SECURE_IMPL == 0, SMMU_S_* registers are RES0.
 
 
+So the MEMTX_OK in the MMIO handlers is deliberate: we are acknowledging 
+the bus transaction while applying the architectural RAZ/WI/RES0 
+semantics at the register level, rather than modelling a bus abort. Also 
+there was another discussion about this issue [1]  in V1 series.
 
-static bool smmuv3_cmd_resolve_stream_sid(SMMUSecSID cmdq_sid,
-                                           const Cmd *cmd,
-                                           SMMUSecSID *stream_sid,       
-   /* Output SEC_SID that point to the target stream and will be used in 
-the subsequent code */
-                                           SMMUCmdError *err)
-{
-     uint32_t ssec = CMD_SSEC(cmd);
-
-     switch (cmdq_sid) {
-     case SMMU_SEC_SID_NS:
-         if (ssec) {
-             *err = SMMU_CERROR_ILL;
-             return false;
-         }
-         *stream_sid = SMMU_SEC_SID_NS;
-         return true;
-     case SMMU_SEC_SID_S:
-         *stream_sid = ssec ? SMMU_SEC_SID_S : SMMU_SEC_SID_NS;
-         return true;
-     default:
-         *err = SMMU_CERROR_ILL;
-         return false;
-     }
-}
+[1] 
+  https://lore.kernel.org/qemu-devel/a5154459-a632-42b0-b599-d5dff85b5dd2@phytium.com.cn/
 
 
-static int smmuv3_cmdq_consume(SMMUv3State *s, SMMUSecSID sec_sid) {
-
-.......
-
-         if (!smmuv3_cmd_resolve_stream_sid(sec_sid, &cmd,
-                                            &stream_sid, &cmd_error)) {
-             break;
-         }
-
-         qemu_mutex_lock(&s->mutex);
-         switch (type) {
-
-.......
-
-         case SMMU_CMD_TLBI_NH_VAA:
-         case SMMU_CMD_TLBI_NH_VA:
-             if (!STAGE1_SUPPORTED(s)) {
-                 cmd_error = SMMU_CERROR_ILL;
-                 break;
-             }
-             smmuv3_range_inval(bs, &cmd, SMMU_STAGE_1, stream_sid);  /* 
-Use the output SEC_SID that returned from smmuv3_cmd_resolve_stream_sid*/
-             break;
-
-}
+I'll add these needed details and parameters introduction as comment 
+in `smmu_check_secure_access` and `return MEMTX_OK`. How do you think 
+about it?
 
 
-Could you please take a quick look at the helper before I fold it into v4?
+Thanks again for the feedback,
 
-
-Also I'll remove `SMMUSecSID sec_sid` in queue_read.
-
-
-Thanks a lot for your time!
-
-Best regards,
 Tao
 
 

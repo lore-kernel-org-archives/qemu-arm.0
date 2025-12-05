@@ -4,63 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC782D2E039
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Dec 2025 08:24:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2855CD2E03F
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Dec 2025 08:44:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vRR6b-0002s3-MP; Fri, 05 Dec 2025 03:23:58 -0500
+	id 1vRRPe-0007zF-8U; Fri, 05 Dec 2025 03:43:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vRR6a-0002rd-B4; Fri, 05 Dec 2025 03:23:56 -0500
-Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vRR6X-0003B5-9H; Fri, 05 Dec 2025 03:23:56 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwCXn2OMljJpxkgSAw--.572S2;
- Fri, 05 Dec 2025 16:23:40 +0800 (CST)
-Received: from [10.31.62.13] (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwCX7eqCljJpvLwJAA--.4322S2;
- Fri, 05 Dec 2025 16:23:37 +0800 (CST)
-Message-ID: <d9547948-6a69-46ca-8837-329ffd1b5f9f@phytium.com.cn>
-Date: Fri, 5 Dec 2025 16:23:30 +0800
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vRRPW-0007xa-PE
+ for qemu-arm@nongnu.org; Fri, 05 Dec 2025 03:43:33 -0500
+Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vRRPV-0006Ca-9j
+ for qemu-arm@nongnu.org; Fri, 05 Dec 2025 03:43:30 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.231.159])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4dN4dx4Lh6z6MvR;
+ Fri,  5 Dec 2025 08:43:17 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG8EX2.mxp5.local (172.16.2.72)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Fri, 5 Dec
+ 2025 09:43:16 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G00267252dc8-e635-4303-8268-60b44dbdf2dd,
+ 59763B53E82CD9889501A3149EEF2B77A02AA328) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <f0cb1f8e-bccd-4360-911a-f74560a350a8@kaod.org>
+Date: Fri, 5 Dec 2025 09:43:15 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v3 16/21] hw/arm/smmuv3: Implement SMMU_S_INIT register
-To: eric.auger@redhat.com, Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>
-References: <20251012150701.4127034-1-tangtao1634@phytium.com.cn>
- <20251012151351.4130239-1-tangtao1634@phytium.com.cn>
- <421fdc65-c21d-4606-a241-28341955104a@redhat.com>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <421fdc65-c21d-4606-a241-28341955104a@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Subject: Re: [PATCH] aspeed: Deprecate the fby35 machine
+To: Peter Delevoryas <peter@pjd.dev>
+CC: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Maydell Peter
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+References: <8f8fb825-891a-4c06-9676-4aa232cd4642@kaod.org>
+ <2B4B594F-DFB1-4BD1-8FF3-8F74EB2EC52A@pjd.dev>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <2B4B594F-DFB1-4BD1-8FF3-8F74EB2EC52A@pjd.dev>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwCX7eqCljJpvLwJAA--.4322S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAOBWkwma4FjAALsm
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW3XF1fuw18CFWUJFy7CryfWFg_yoW3GFy8pr
- WkGF15KFWUAw4fu3W2kw4kAFyUZw1kK3W7Cr98Ga4ava4Yyry0qr4qgw4Y9F1DCr48A3y2
- qr4YgFsruw1UZaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=129.150.39.64;
- envelope-from=tangtao1634@phytium.com.cn; helo=sgoci-sdnproxy-4.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG8EX2.mxp5.local
+ (172.16.2.72)
+X-Ovh-Tracer-GUID: f6717cb3-3132-4f8a-8b9d-a29d74e50b95
+X-Ovh-Tracer-Id: 11179341651219745781
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGPzYgO7juiaW7NkCuAZtFT0WypUs4+le0HDBPWCT3kqHx6eW/sgKMnKMdrG4DDAaB2qQRAEdoPgb5nVSfWwmrrU5/hSMiW3DwjXhlFAc7Pa6aFbYamkWRTkiNfgoTTEEtJ5DsoR4HmEpvMWD2CWDI5EscuYs8+yi1H7oeI3+J14vL3+yIwesQbGstWtqvssHvVSrXRxkeL5uN3//BipoQ/gIy196ZCLhYDPP30Kzoo331FmiaLud78MV+he5778giphnx+G3nY22vxbveI7a8GIyvvedrSxYkucB6sREKSC5I3LxdsukXu4WLkplQSRGjeYwjMw1cTfpZERcAZi5q8OFwYx4+2kddMkuAMuXloR9xDrhzVs1PUXI03m6mrrFw4sAfRbFo3oXObkndKCk50wMQ4uXhH6klKuiLt3nrDXrMTWV6QENkpxpqBf9v8nZIRYaZymyY//RL49b350eY8kWE6jUZeUgSwTC4vjwHu08fYq5MPOSQjD3zOdv9Zwq/H83rdzIgFVY5pnwRa/Z6EefrTYvMViBsWB6X1wbC39Lc5uAB4GAvV2IGb2yWQfgdJs/3pBqEhsg1hW/eT36U/T+KGZvLEFn5noRDrVck3/8t9lZpe14U1m0c8iVu+IodMMQPP5KxAa+KWTAIgHu0uDC8uq0ubuO/BFOCPhdBjZA
+DKIM-Signature: a=rsa-sha256; bh=Azoqj59CU+Vb9APeV/ksGEqbdeV01VrZYrE9HnsB9Xg=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1764924200; v=1;
+ b=lC8SuRYEfyhR5YUA2NEcvmk2FaKJ5UuphS6gcReEY7yd1IupI0NE6v61K10HqK4GYe237V3R
+ q2221RuuiJfMOwZCczs+gt/FdqtV9pe07s0YMViHh+UsjDcmIUaqqQ3fVq1/oq0Z3GcMNPQ4Fgb
+ XJ52FH0UMJdGPOxonTSYmC28YYIsG2MUywXxi9XCFCVHn64FPGxUlMlO7RTKtLyf6dr24g8TLvR
+ BaHPh4WQcCPj0rqSpF5347DAnN6+6Q/e+CJVeQyfRoqkAB5BMNzwT6562xhLwSuXLUNL5IcidnW
+ QqQF8huqKz+fxszLIUrLnEdy4LEl1/gvaJgAor5GNuW3Q==
+Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
+ helo=3.mo548.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,219 +131,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Eric,
-
-On 2025/12/4 22:33, Eric Auger wrote:
->
-> On 10/12/25 5:13 PM, Tao Tang wrote:
->> Implement read/write handlers for the SMMU_S_INIT secure-only
->> register.
+On 12/4/25 20:45, Peter Delevoryas wrote:
+> 
+> 
+>> On Dec 2, 2025, at 11:42 PM, Cédric Le Goater <clg@kaod.org> wrote:
 >>
->> Writing to this register provides a mechanism for software to perform a
->> global invalidation of ALL caches within the SMMU. This includes the
->> IOTLBs and Configuration Caches across all security states.
+>> ﻿Hello,
 >>
->> This feature is critical for secure hypervisors like Hafnium, which
->> use it as a final step in their SMMU initialization sequence. It
->> provides a reliable, architecturally defined method to ensure a clean
->> and known-good cache state before enabling translations.
+>>> On 11/26/25 11:24, Cédric Le Goater wrote:
+>>> There are no functional tests for the 'fby35' machine which makes
+>>> harder to determine when something becomes deprecated or unused.
+>>> The 'fby35' machine was originally added as an example of a multi-SoC
+>>> system, with the expectation the models would evolve over time in an
+>>> heterogeneous system. This hasn't happened and no public firmware is
+>>> available to boot it. It can be replaced by the 'ast2700fc', another
+>>> multi-SoC machine based on the newer AST2700 SoCs which are excepted
+>>> to receive better support in the future.
+>>> Cc: Peter Delevoryas <peter@pjd.dev>
+>>> Signed-off-by: Cédric Le Goater <clg@redhat.com>
 >>
->> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->> ---
->>   hw/arm/smmuv3.c     | 33 +++++++++++++++++++++++++++++++++
->>   hw/arm/trace-events |  1 +
->>   2 files changed, 34 insertions(+)
 >>
->> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index 100caeeb35..432de88610 100644
->> --- a/hw/arm/smmuv3.c
->> +++ b/hw/arm/smmuv3.c
->> @@ -354,6 +354,21 @@ static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
->>   
->>   }
->>   
->> +static void smmuv3_invalidate_all_caches(SMMUv3State *s)
->> +{
->> +    trace_smmuv3_invalidate_all_caches();
->> +    SMMUState *bs = &s->smmu_state;
->> +
->> +    /* Clear all cached configs including STE and CD */
->> +    if (bs->configs) {
->> +        g_hash_table_remove_all(bs->configs);
->> +    }
->> +
->> +    /* Invalidate all SMMU IOTLB entries */
->> +    smmu_inv_notifiers_all(&s->smmu_state);
->> +    smmu_iotlb_inv_all(bs);
->> +}
->> +
->>   static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
->>                                                    SMMUTransCfg *cfg,
->>                                                    SMMUEventInfo *event,
->> @@ -1969,6 +1984,21 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
->>   
->>           bank->eventq_irq_cfg2 = data;
->>           return MEMTX_OK;
->> +    case (A_S_INIT & 0xfff):
-> why do we apply & 0xfff ?
+>> No objections ? If not, I will queue the deprecation for QEMU 10.2.
+>> Since deprecation is tolerated in the -rc phase.
+> 
+> Oh hey, sorry I missed the original email, yeah no objections! Totally fair. :) We’re not using this internally either, we’ve mostly ended up pursuing multi-process solutions. 
 
+Could we have your Acked-by then ?
 
+> Even though I think single-process stuff is interesting, getting multi master i2c to work between socs in the same process can be tricky.
 
-Let me clarify what I was trying to do with the `(A_S_INIT & 0xfff)` 
-case, and then ask your opinion on how to clean this up.
+Yeah. This is still WIP. Making good progres though.
 
-According to the SMMUv3 spec , registers with the same function across 
-different security states (Non-secure, Realm, Root) share the same 
-*relative* offset within their 4KB bank window. In the MMIO handlers we 
-first decode the bank from the high bits of the offset (to get 
-`reg_sec_sid`), and then do:
+Thanks,
 
-     uint32_t reg_offset = offset & 0xfff;
+C.
 
-     switch (reg_offset) {
-         ...
-     }
-
-So the `switch` is really operating on the per-bank 4KB-relative offset, 
-and the banked registers can share the same `case` logic while 
-`reg_sec_sid` selects which bank structure we actually touch.
-
-Most of the `A_*` macros (e.g. `A_CR0`) are already defined as these 
-relative offsets (just the low 12 bits), so they fit naturally in this 
-scheme and we can simply write `case A_CR0:`.
-
-`A_S_INIT`, however, is still defined as an *absolute* offset that 
-already includes the secure-bank base. Since the `switch` is matching on 
-`reg_offset = offset & 0xfff`, I ended up writing:
-
-     case (A_S_INIT & 0xfff):
-
-as a shortcut to adapt an absolute macro to the “relative” decode. 
-S_INIT is also a secure-only register, so there is no NS twin that I 
-could reuse as the shared low-12-bit macro. In practice that makes 
-S_INIT a one-off special case in the current code, which is why the `& 
-0xfff` sticks out.
-
-
-I agree this looks more like a hack than a clean design, so I’d like to 
-rework it in the next version. I see a couple of possible directions and 
-would appreciate your view on which one is preferable:
-
-1) Stop using NS macros as the canonical case labels and list all 
-bank-specific variants explicitly.
-
-    Instead of relying on a single “NS” macro for the shared low-12-bit 
-offset, we could have:
-
-        switch (reg_offset) {
-        case A_STRTAB_BASE_CFG:
-        case A_S_STRTAB_BASE_CFG:
-            ...
-            break;
-        }
-
-    This makes the banked nature explicit in the `switch` and avoids 
-relying on NS as the “reference” definition. The bank selection would 
-still be driven by `reg_sec_sid`, but the case labels themselves would 
-be per-bank macros where that makes sense.
-
-2) Go back to the v2 [1] idea and introduce a dedicated S_INIT-relative 
-alias macro.
-
-    As I had in v2, we could define a separate macro that encodes only 
-the relative offset, e.g. something like:
-
-         REG32(S_INIT,               0x803c)
-             FIELD(S_INIT, INV_ALL,    0, 1)
-         /* Alias for the S_INIT offset to match in the dispatcher switch */
-         #define A_S_INIT_ALIAS         0x3c
-
-
-    and then the decode would simply use:
-
-        switch (reg_offset) {
-        case A_S_INIT_ALIAS:
-            ...
-            break;
-        }
-
-    This keeps the “absolute” constant for the secure MMIO layout (if we 
-still find that useful elsewhere), but makes the decode logic work 
-entirely in terms of relative offsets and removes the inline.
-
-3) Keep the current implementation and add some comment about it.
-
-
-Which option would you prefer? Any other thoughts or suggestions would 
-be greatly appreciated.
-
-
-[1] 
-https://lore.kernel.org/qemu-devel/7161c00c-c519-4e90-9dca-99bcf7518d40@redhat.com/
-
-
-
->> +        if (data & R_S_INIT_INV_ALL_MASK) {
->> +            int cr0_smmuen = smmu_enabled(s, reg_sec_sid);
->> +            int s_cr0_smmuen = smmuv3_get_cr0ack_smmuen(s, reg_sec_sid);
->> +            if (cr0_smmuen || s_cr0_smmuen) {
-> use smmuv3_is_smmu_enabled()?
-
-
-Yes using smmuv3_is_smmu_enabled is a better choice. And I'll check both 
-CR0.SMMUEN and S_CR0.SMMUEN in V4. As I found *any SMMU_(*_)CR0.SMMUEN 
-== 1* descriptions in 6.3.62 SMMU_S_INIT ARM IHI 0070 G.b:
-
- > If SMMU_ROOT_CR0.GPCEN == 0, a write of 1 to INV_ALL when any 
-SMMU_(*_)CR0.SMMUEN == 1,
- >     or an Update of any SMMUEN to 1 is in progress ........ , is 
-CONSTRAINED UNPREDICTABLE......
-
-
-Thanks for your review.
-
-
-Yours,
-
-Tao
-
->> +                /* CONSTRAINED UNPREDICTABLE behavior: Ignore this write */
->> +                qemu_log_mask(LOG_GUEST_ERROR, "S_INIT write ignored: "
->> +                              "CR0.SMMUEN=%d or S_CR0.SMMUEN=%d is set\n",
->> +                              cr0_smmuen, s_cr0_smmuen);
->> +                return MEMTX_OK;
->> +            }
->> +            smmuv3_invalidate_all_caches(s);
->> +        }
->> +        /* Synchronous emulation: invalidation completed instantly. */
->> +        return MEMTX_OK;
->>       default:
->>           qemu_log_mask(LOG_UNIMP,
->>                         "%s Unexpected 32-bit access to 0x%"PRIx64" (WI)\n",
->> @@ -2172,6 +2202,9 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
->>       case A_EVENTQ_CONS:
->>           *data = bank->eventq.cons;
->>           return MEMTX_OK;
->> +    case (A_S_INIT & 0xfff):
->> +        *data = 0;
->> +        return MEMTX_OK;
->>       default:
->>           *data = 0;
->>           qemu_log_mask(LOG_UNIMP,
->> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
->> index 434d6abfc2..0e7ad8fee3 100644
->> --- a/hw/arm/trace-events
->> +++ b/hw/arm/trace-events
->> @@ -64,6 +64,7 @@ smmuv3_cmdq_tlbi_s12_vmid(int vmid) "vmid=%d"
->>   smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
->>   smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
->>   smmuv3_inv_notifiers_iova(const char *name, int asid, int vmid, uint64_t iova, uint8_t tg, uint64_t num_pages, int stage) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" stage=%d"
->> +smmuv3_invalidate_all_caches(void) "Invalidate all SMMU caches and TLBs"
->>   smmu_reset_exit(void) ""
->>   
->>   # strongarm.c
-> Thanks
->
-> Eric
 
 

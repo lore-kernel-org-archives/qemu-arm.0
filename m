@@ -4,69 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56E5AD2F7D1
-	for <qemu-arm@archiver.kernel.org>; Fri,  5 Dec 2025 10:54:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AE58D2F7FD
+	for <qemu-arm@archiver.kernel.org>; Fri,  5 Dec 2025 14:20:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vRTSL-0003JP-Ts; Fri, 05 Dec 2025 05:54:34 -0500
+	id 1vRWfM-0002KK-6I; Fri, 05 Dec 2025 09:20:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vRTSK-0003JB-E0; Fri, 05 Dec 2025 05:54:32 -0500
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
+ id 1vRWfJ-0002IU-7k; Fri, 05 Dec 2025 09:20:09 -0500
+Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vRTSH-0006Li-SD; Fri, 05 Dec 2025 05:54:32 -0500
+ id 1vRWfF-0005EF-Tu; Fri, 05 Dec 2025 09:20:08 -0500
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwDX31PguTJpV3E6AQ--.62741S2;
- Fri, 05 Dec 2025 18:54:24 +0800 (CST)
-Received: from [10.31.62.13] (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwAXce7XuTJp_cUJAA--.24747S2;
- Fri, 05 Dec 2025 18:54:18 +0800 (CST)
-Message-ID: <525bfc6f-041e-4fa5-8f11-c37a9fbcecba@phytium.com.cn>
-Date: Fri, 5 Dec 2025 18:54:15 +0800
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwAnCSYH6jJpVz87AQ--.24902S2;
+ Fri, 05 Dec 2025 22:19:51 +0800 (CST)
+Received: from [192.168.31.152] (unknown [113.246.235.80])
+ by mail (Coremail) with SMTP id AQAAfwCX8O0F6jJpx9YJAA--.19258S2;
+ Fri, 05 Dec 2025 22:19:49 +0800 (CST)
+Message-ID: <7370070a-c569-4b77-bd1e-6fc749ba9c90@phytium.com.cn>
+Date: Fri, 5 Dec 2025 22:19:48 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v3 19/21] hw/arm/smmuv3: Use iommu_index to represent the
- security context
-To: eric.auger@redhat.com, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [RFC RESEND v5 4/4] tests/qtest: Add SMMUv3 bare-metal test using
+ iommu-testdev
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>,
  Mostafa Saleh <smostafa@google.com>,
- Mathieu Poirier <mathieu.poirier@linaro.org>
-References: <20251012150701.4127034-1-tangtao1634@phytium.com.cn>
- <20251012151501.4131026-1-tangtao1634@phytium.com.cn>
- <dbc4d33e-3477-4f39-a745-4fdc0866fc08@linaro.org>
- <5bde6664-c830-44dd-9513-700980a43ade@phytium.com.cn>
- <75d10ffd-eafe-4daa-b763-6e1f3e90c766@linaro.org>
- <b5300243-01c0-4764-b2d1-5ed8ae70e499@phytium.com.cn>
- <8b1c2587-dd5c-481f-9509-a60b853208d2@redhat.com>
+ CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
+References: <20251126154547.1300748-1-tangtao1634@phytium.com.cn>
+ <20251126154547.1300748-5-tangtao1634@phytium.com.cn>
+ <5d37349b-fbc4-4964-a3e8-d937a64ae232@linaro.org>
 From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <8b1c2587-dd5c-481f-9509-a60b853208d2@redhat.com>
+In-Reply-To: <5d37349b-fbc4-4964-a3e8-d937a64ae232@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwAXce7XuTJp_cUJAA--.24747S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAPBWkx6ywFAQAAsQ
+X-CM-TRANSID: AQAAfwCX8O0F6jJpx9YJAA--.19258S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAPBWkx6ywGXwAAsN
 Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxtrWxKFy5CF1Duw43tryUAwb_yoWftFWUpF
- W8GFWUKrZ8JF1rAr1Iq3WUZrW3tryxJw13Xr1rKF1UAr4qyrn2qr48Xr1Y9r1DXr48AF1j
- vw1UJFW7ur15ArJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoW3GFy5uFy8tFy8WrWDJr1kZrb_yoWfKFW5pF
+ 1kCrWUtFWUJr1fJr17Jw1UJFyFyrnrJ3WUJr18XF15Ar4DAryjqr1jgryqgr9rJr48XF1U
+ Zw10qFnxur1UJFJanT9S1TB71UUUUUJqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+Received-SPF: pass client-ip=129.150.39.64;
+ envelope-from=tangtao1634@phytium.com.cn; helo=sgoci-sdnproxy-4.icoremail.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -83,237 +81,258 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Eric,
+Hi Pierrick,
 
-On 2025/12/4 23:05, Eric Auger wrote:
+On 2025/12/5 02:42, Pierrick Bouvier wrote:
+> On 11/26/25 7:45 AM, Tao Tang wrote:
+>> Add a qtest suite that validates ARM SMMUv3 translation without guest
+>> firmware or OS. The tests leverage iommu-testdev to trigger DMA
+>> operations and the qos-smmuv3 library to configure IOMMU translation
+>> structures.
+>>
+>> This test suite targets the virt machine and covers:
+>> - Stage 1 only translation (VA -> PA via CD page tables)
+>> - Stage 2 only translation (IPA -> PA via STE S2 tables)
+>> - Nested translation (VA -> IPA -> PA, Stage 1 + Stage 2)
+>> - Design to extended to support multiple security spaces
+>>      (Non-Secure, Secure, Root, Realm)
+>>
+>> Each test case follows this sequence:
+>> 1. Initialize SMMUv3 with appropriate command/event queues
+>> 2. Build translation tables (STE/CD/PTE) for the target scenario
+>> 3. Configure iommu-testdev with IOVA and DMA attributes via MMIO
+>> 4. Trigger DMA and validate successful translation
+>> 5. Verify data integrity through a deterministic write-read pattern
+>>
+>> This bare-metal approach provides deterministic IOMMU testing with
+>> minimal dependencies, making failures directly attributable to the SMMU
+>> translation path.
+>>
+>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>> ---
+>>   tests/qtest/iommu-smmuv3-test.c | 114 ++++++++++++++++++++++++++++++++
+>>   tests/qtest/meson.build         |   1 +
+>>   2 files changed, 115 insertions(+)
+>>   create mode 100644 tests/qtest/iommu-smmuv3-test.c
+>>
+>> diff --git a/tests/qtest/iommu-smmuv3-test.c 
+>> b/tests/qtest/iommu-smmuv3-test.c
+>> new file mode 100644
+>> index 0000000000..af438ecce0
+>> --- /dev/null
+>> +++ b/tests/qtest/iommu-smmuv3-test.c
+>> @@ -0,0 +1,114 @@
+>> +/*
+>> + * QTest for SMMUv3 with iommu-testdev
+>> + *
+>> + * This QTest file is used to test the SMMUv3 with iommu-testdev so 
+>> that we can
+>> + * test SMMUv3 without any guest kernel or firmware.
+>> + *
+>> + * Copyright (c) 2025 Phytium Technology
+>> + *
+>> + * Author:
+>> + *  Tao Tang <tangtao1634@phytium.com.cn>
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "libqtest.h"
+>> +#include "libqos/pci.h"
+>> +#include "libqos/generic-pcihost.h"
+>> +#include "hw/pci/pci_regs.h"
+>> +#include "hw/misc/iommu-testdev.h"
+>> +#include "libqos/qos-smmuv3.h"
+>> +
+>> +#define DMA_LEN           4
+>> +
+>> +/* Test configurations for different SMMU modes and spaces */
+>> +static const QSMMUTestConfig base_test_configs[] = {
+>> +    {
+>> +        .trans_mode = QSMMU_TM_S1_ONLY,
+>> +        .sec_sid = QSMMU_SEC_SID_NONSECURE,
+>> +        .dma_iova = QSMMU_IOVA_OR_IPA,
+>> +        .dma_len = DMA_LEN,
+>> +        .expected_result = 0
+>> +    },
+>> +    {
+>> +        .trans_mode = QSMMU_TM_S2_ONLY,
+>> +        .sec_sid = QSMMU_SEC_SID_NONSECURE,
+>> +        .dma_iova = QSMMU_IOVA_OR_IPA,
+>> +        .dma_len = DMA_LEN,
+>> +        .expected_result = 0
+>> +    },
+>> +    {
+>> +        .trans_mode = QSMMU_TM_NESTED,
+>> +        .sec_sid = QSMMU_SEC_SID_NONSECURE,
+>> +        .dma_iova = QSMMU_IOVA_OR_IPA,
+>> +        .dma_len = DMA_LEN,
+>> +        .expected_result = 0
+>> +    }
+>> +};
+>> +
+>> +static QPCIDevice *setup_qtest_pci_device(QTestState *qts, 
+>> QGenericPCIBus *gbus,
+>> +                                          QPCIBar *bar)
+>> +{
+>> +    uint16_t vid, did;
+>> +    QPCIDevice *dev = NULL;
+>> +
+>> +    qpci_init_generic(gbus, qts, NULL, false);
+>> +
+>> +    /* Find device by vendor/device ID to avoid slot surprises. */
+>> +    for (int s = 0; s < 32 && !dev; s++) {
+>> +        for (int fn = 0; fn < 8 && !dev; fn++) {
+>> +            QPCIDevice *cand = qpci_device_find(&gbus->bus, 
+>> QPCI_DEVFN(s, fn));
+>> +            if (!cand) {
+>> +                continue;
+>> +            }
+>> +            vid = qpci_config_readw(cand, PCI_VENDOR_ID);
+>> +            did = qpci_config_readw(cand, PCI_DEVICE_ID);
+>> +            if (vid == IOMMU_TESTDEV_VENDOR_ID &&
+>> +                did == IOMMU_TESTDEV_DEVICE_ID) {
+>> +                dev = cand;
+>> +                g_test_message("Found iommu-testdev! devfn: 0x%x", 
+>> cand->devfn);
+>> +            } else {
+>> +                g_free(cand);
+>> +            }
+>> +        }
+>> +    }
+>> +    g_assert(dev);
+>> +
+>> +    qpci_device_enable(dev);
+>> +    *bar = qpci_iomap(dev, 0, NULL);
+>> +    g_assert_false(bar->is_io);
+>> +
+>> +    return dev;
+>> +}
+>> +
+>> +static void test_smmuv3_translation(void)
+>> +{
+>> +    QTestState *qts;
+>> +    QGenericPCIBus gbus;
+>> +    QPCIDevice *dev;
+>> +    QPCIBar bar;
+>> +
+>> +    /* Initialize QEMU environment for SMMU testing */
+>> +    qts = qtest_init("-machine 
+>> virt,acpi=off,gic-version=3,iommu=smmuv3 "
+>> +                     "-smp 1 -m 512 -cpu max -net none "
+>> +                     "-device iommu-testdev");
+>> +
+>> +    /* Setup and configure PCI device */
+>> +    dev = setup_qtest_pci_device(qts, &gbus, &bar);
+>> +    g_assert(dev);
+>> +
+>> +    /* Run the enhanced translation tests */
+>> +    g_test_message("### Starting SMMUv3 translation tests...###");
+>> +    qsmmu_translation_batch(base_test_configs, 
+>> ARRAY_SIZE(base_test_configs),
+>> +                            qts, dev, bar, VIRT_SMMU_BASE);
+>> +    g_test_message("### SMMUv3 translation tests completed 
+>> successfully! ###");
+>> +    qtest_quit(qts);
+>> +}
+>> +
+>> +int main(int argc, char **argv)
+>> +{
+>> +    g_test_init(&argc, &argv, NULL);
+>> +    qtest_add_func("/iommu-testdev/translation", 
+>> test_smmuv3_translation);
 >
-> On 10/20/25 10:44 AM, Tao Tang wrote:
->> Hi Pierrick,
->>
->> On 2025/10/16 15:04, Pierrick Bouvier wrote:
->>> On 10/15/25 11:37 PM, Tao Tang wrote:
->>>> Hi Pierrick:
->>>>
->>>> On 2025/10/15 08:02, Pierrick Bouvier wrote:
->>>>> Hi Tao,
->>>>>
->>>>> On 10/12/25 8:15 AM, Tao Tang wrote:
->>>>>> The Arm SMMUv3 architecture uses a SEC_SID (Secure StreamID) to
->>>>>> select
->>>>>> the programming interface. To support future extensions like RME,
->>>>>> which
->>>>>> defines four security states (Non-secure, Secure, Realm, and
->>>>>> Root), the
->>>>>> QEMU model must cleanly separate these contexts for all operations.
->>>>>>
->>>>>> This commit leverages the generic iommu_index to represent this
->>>>>> security context. The core IOMMU layer now uses the SMMU's
->>>>>> .attrs_to_index
->>>>>> callback to map a transaction's ARMSecuritySpace attribute to the
->>>>>> corresponding iommu_index.
->>>>>>
->>>>>> This index is then passed down to smmuv3_translate and used
->>>>>> throughout
->>>>>> the model to select the correct register bank and processing
->>>>>> logic. This
->>>>>> makes the iommu_index the clear QEMU equivalent of the architectural
->>>>>> SEC_SID, cleanly separating the contexts for all subsequent lookups.
->>>>>>
->>>>>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->>>>>> ---
->>>>>>     hw/arm/smmuv3.c | 36 +++++++++++++++++++++++++++++++++++-
->>>>>>     1 file changed, 35 insertions(+), 1 deletion(-)
->>>>>>
->>>>>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->>>>>> index c9c742c80b..b44859540f 100644
->>>>>> --- a/hw/arm/smmuv3.c
->>>>>> +++ b/hw/arm/smmuv3.c
->>>>>> @@ -1080,6 +1080,38 @@ static void smmuv3_fixup_event(SMMUEventInfo
->>>>>> *event, hwaddr iova)
->>>>>>         }
->>>>>>     }
->>>>>>     +static SMMUSecSID smmuv3_attrs_to_sec_sid(MemTxAttrs attrs)
->>>>>> +{
->>>>>> +    switch (attrs.space) {
->>>>>> +    case ARMSS_Secure:
->>>>>> +        return SMMU_SEC_SID_S;
->>>>>> +    case ARMSS_NonSecure:
->>>>>> +    default:
->>>>>> +        return SMMU_SEC_SID_NS;
->>>>>> +    }
->>>>>> +}
->>>>>> +
->>>>>> +/*
->>>>>> + * ARM IOMMU index mapping (implements SEC_SID from ARM SMMU):
->>>>>> + * iommu_idx = 0: Non-secure transactions
->>>>>> + * iommu_idx = 1: Secure transactions
->>>>>> + *
->>>>>> + * The iommu_idx parameter effectively implements the SEC_SID
->>>>>> + * (Security Stream ID) attribute from the ARM SMMU architecture
->>>>>> specification,
->>>>>> + * which allows the SMMU to differentiate between different security
->>>>>> state
->>>>>> + * transactions at the hardware level.
->>>>>> + */
->>>>>> +static int smmuv3_attrs_to_index(IOMMUMemoryRegion *iommu,
->>>>>> MemTxAttrs attrs)
->>>>>> +{
->>>>>> +    return (int)smmuv3_attrs_to_sec_sid(attrs);
->>>>>> +}
->>>>>> +
->>>>>> +static int smmuv3_num_indexes(IOMMUMemoryRegion *iommu)
->>>>>> +{
->>>>>> +    /* Support 2 IOMMU indexes for now: NS/S */
->>>>>> +    return SMMU_SEC_SID_NUM;
->>>>>> +}
->>>>>> +
->>>>>>     /* Entry point to SMMU, does everything. */
->>>>>>     static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr,
->>>>>> hwaddr
->>>>>> addr,
->>>>>>                                           IOMMUAccessFlags flag, int
->>>>>> iommu_idx)
->>>>>> @@ -1087,7 +1119,7 @@ static IOMMUTLBEntry
->>>>>> smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->>>>>>         SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
->>>>>>         SMMUv3State *s = sdev->smmu;
->>>>>>         uint32_t sid = smmu_get_sid(sdev);
->>>>>> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->>>>>> +    SMMUSecSID sec_sid = iommu_idx;
->>>>>>         SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->>>>>>         SMMUEventInfo event = {.type = SMMU_EVT_NONE,
->>>>>>                                .sid = sid,
->>>>>> @@ -2540,6 +2572,8 @@ static void
->>>>>> smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
->>>>>>           imrc->translate = smmuv3_translate;
->>>>>>         imrc->notify_flag_changed = smmuv3_notify_flag_changed;
->>>>>> +    imrc->attrs_to_index = smmuv3_attrs_to_index;
->>>>>> +    imrc->num_indexes = smmuv3_num_indexes;
->>>>>>     }
->>>>>>       static const TypeInfo smmuv3_type_info = {
->>>>> I noticed that this commit breaks boot of a simple Linux kernel. It
->>>>> was already the case with v2, and it seems there is a deeper issue.
->>>>>
->>>>> Virtio drive initialization hangs up with:
->>>>> [    9.421906] virtio_blk virtio2: [vda] 20971520 512-byte logical
->>>>> blocks (10.7 GB/10.0 GiB)
->>>>> smmuv3_translate_disable smmuv3-iommu-memory-region-24-3 sid=0x18
->>>>> bypass (smmu disabled) iova:0xfffff040 is_write=1
->>>>>
->>>>> You can reproduce that with any kernel/rootfs, but if you want a
->>>>> simple recipe (you need podman and qemu-user-static):
->>>>> $ git clone https://github.com/pbo-linaro/qemu-linux-stack
->>>>> $ cd qemu-linux-stack
->>>>> $ ./build_kernel.sh
->>>>> $ ./build_rootfs.sh
->>>>> $ /path/to/qemu-system-aarch64 \
->>>>> -nographic -M virt,iommu=smmuv3 -cpu max -kernel out/Image.gz \
->>>>> -append "root=/dev/vda rw" out/host.ext4 -trace 'smmuv3*'
->>>>>
->>>>> Looking more closely,
->>>>> we reach SMMU_TRANS_DISABLE, because iommu_idx associated is 1.
->>>>> This values comes from smmuv3_attrs_to_sec_sid, by reading
->>>>> attrs.space, which is ArmSS_Secure.
->>>>>
->>>>> The problem is that it's impossible to have anything Secure given that
->>>>> all the code above runs in NonSecure world.
->>>>> After investigation, the original value read from attrs.space has not
->>>>> been set anywhere, and is just the default zero-initialized value
->>>>> coming from pci_msi_trigger. It happens that it defaults to SEC_SID_S,
->>>>> which probably matches your use case with hafnium, but it's an happy
->>>>> accident.
->>>>>
->>>>> Looking at the SMMU spec, I understand that SEC_SID is configured for
->>>>> each stream, and can change dynamically.
->>>>> On the opposite, a StreamID is fixed and derived from PCI bus and slot
->>>>> for a given device.
->>>>>
->>>>> Thus, I think we are missing some logic here.
->>>>> I'm still trying to understand where the SEC_SID should come from
->>>>> initially.
->>>>> "The association between a device and the Security state of the
->>>>> programming interface is a system-defined property."
->>>>> Does it mean we should be able to set a QEMU property for any device?
->>>>>
->>>>> Does anyone familiar with this has some idea?
->>>>>
->>>>> As well, we should check the SEC_SID found based on
->>>>> SMMU_S_IDR1.SECURE_IMPL.
->>>>> 3.10.1 StreamID Security state (SEC_SID)
->>>>> If SMMU_S_IDR1.SECURE_IMPL == 0, then incoming transactions have a
->>>>> StreamID, and either:
->>>>> • A SEC_SID identifier with a value of 0.
->>>>> • No SEC_SID identifer, and SEC_SID is implicitly treated as 0.
->>>>> If SMMU_S_IDR1.SECURE_IMPL == 1, incoming transactions have a
->>>>> StreamID, and a SEC_SID identifier.
->>>>>
->>>>> Regards,
->>>>> Pierrick
->>>> Thank you very much for your detailed review and in-depth analysis, and
->>>> for pointing out this critical issue that breaks the Linux boot.
->>>>
->>>>
->>>> To be transparent, my initial approach was indeed tailored to my
->>>> specific test case, where I was effectively hardcoding the device's
->>>> StreamID to represent it's a so-called Secure device in my self
->>>> testing.
->>>> This clearly isn't a general solution.
->>>>
->>> It's definitely not a bad approach, and it's a good way to exercise
->>> the secure path. It would have been caught by some of QEMU functional
->>> tests anyway, so it's not a big deal.
->>>
->>> A solution would be to define the secure attribute as a property of
->>> the PCI device, and query that to identify sec_sid accordingly.
->>> As you'll see in 3.10.1 StreamID Security state (SEC_SID), "Whether a
->>> stream is under Secure control or not is a different property to the
->>> target PA space of a transaction.", so we definitely should *not* do
->>> any funky stuff depending on which address is accessed.
->>
->> Thank you for the encouraging and very constructive feedback.
->>
->>
->> Your proposed solution—to define the security attribute as a property
->> on the PCIDevice—is the perfect way forward to resolve Secure device
->> issue. Perhaps we can implement this functionality in V4 as shown in
->> the following code snippet?
->>
->> 1)  define sec_sid in include/hw/pci/pci_device.h:
->>
->> struct PCIDevice {
->>      DeviceState qdev;
->> ......
->>      /* Add SEC_SID property for SMMU security context */
->>      uint8_t sec_sid;  /* 0 = Non-secure, 1 = Secure*/
->> ......
->>
->> }
->>
->>
->> 2) then add sec-sid field in the Property of PCI in hw/pci/pci.c:
->>
->> static const Property pci_props[] = {
->> ......
->>      /* SEC_SID property: 0=NS, 1=S */
->>      DEFINE_PROP_UINT8("sec-sid", PCIDevice, sec_sid, 0),
->>
->> ......
->>
->> };
-> As this impacts the PCIe subsystem, I would encourage to submit that
-> change in a separate pre-requisite series. This needs to be reviewed by
-> Michael and other PCIe specialists.
+> Just a simple organization remark, maybe it would be better to have 
+> separate tests for each translation setup. It's easier to review in 
+> case a failure is found.
+> test_smmuv3_translation could be modified to add a QSMMUTestConfig 
+> parameter, and new entry points could be used to define the three setup.
+> What do you think?
 >
-> Thanks
+>> +    return g_test_run();
+>> +}
+>> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+>> index 669d07c06b..e2d2e68092 100644
+>> --- a/tests/qtest/meson.build
+>> +++ b/tests/qtest/meson.build
+>> @@ -263,6 +263,7 @@ qtests_aarch64 = \
+>>      config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? 
+>> ['tpm-tis-i2c-test'] : []) + \
+>>     (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? 
+>> qtests_aspeed64 : []) + \
+>>     (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : 
+>> []) + \
+>> +  (config_all_devices.has_key('CONFIG_IOMMU_TESTDEV') ? 
+>> ['iommu-smmuv3-test'] : []) + \
+>>     qtests_cxl + \
+>>     ['arm-cpu-features',
+>>      'numa-test',
 >
-> Eric
+> I ran this qtest, and checked with a coverage enabled build that it 
+> was triggering associated code in smmuv3 implementation.
+>
+> Tested-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>
+> For a first version that's great. Later, we might want to generate 
+> faults as well, to see that SMMU is correctly reporting an error on 
+> incorrect transactions.
+>
+> I don't mind having a complex qos-smmuv3.c with gory details, since we 
+> have a clear test here, that is easy to understand and modify.
+>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 
-OK. I'll split this feature into another patch. Thanks for the guidance!
+Thanks a lot for the review, the test, and the suggestion.
 
+
+To be honest, when I wrote the initial version I didn’t really think 
+about splitting the tests per mode. I was instead worrying about how to 
+correctly call `qsmmu_cleanup_translation` after each translation mode 
+to flush all SMMU caches so that the next mode wouldn’t be affected by 
+leftover state. Your suggestion of separate test functions actually 
+makes this a lot cleaner: each test starts from a fresh QEMU/SMMU state, 
+and I don’t need to overthink the cleanup between different modes.
+
+
+I'll refactor test_smmuv3_translation code a bit, but leave everything 
+else the same. The refactoring code will be like:
+
+
+static void test_smmuv3_ns_s1_only(void)
+{
+     run_smmuv3_translation(&base_test_configs[0]);
+}
+
+static void test_smmuv3_ns_s2_only(void)
+{
+     run_smmuv3_translation(&base_test_configs[1]);
+}
+
+static void test_smmuv3_ns_nested(void)
+{
+     run_smmuv3_translation(&base_test_configs[2]);
+}
+
+int main(int argc, char **argv)
+{
+     g_test_init(&argc, &argv, NULL);
+     qtest_add_func("/iommu-testdev/translation/ns-s1-only",
+                    test_smmuv3_ns_s1_only);
+     qtest_add_func("/iommu-testdev/translation/ns-s2-only",
+                    test_smmuv3_ns_s2_only);
+     qtest_add_func("/iommu-testdev/translation/ns-nested",
+                    test_smmuv3_ns_nested);
+     return g_test_run();
+}
+
+
+Thanks again for running the coverage build and for the hint about 
+adding fault-oriented tests; I’ll look into extending qos-smmuv3 in that 
+direction as a follow-up.
 
 Best regards,
 Tao
-
 
 

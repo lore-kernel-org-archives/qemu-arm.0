@@ -4,62 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEFF5D3B7E2
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Dec 2025 16:39:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBE26D3B7E2
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Dec 2025 17:04:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vSeFi-0001vK-Q9; Mon, 08 Dec 2025 11:38:24 -0500
+	id 1vSeeb-000300-Td; Mon, 08 Dec 2025 12:04:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vSeFZ-0001tk-Ec
- for qemu-arm@nongnu.org; Mon, 08 Dec 2025 11:38:13 -0500
+ id 1vSeea-0002zf-Of
+ for qemu-arm@nongnu.org; Mon, 08 Dec 2025 12:04:04 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vSeFV-0002bL-Pu
- for qemu-arm@nongnu.org; Mon, 08 Dec 2025 11:38:12 -0500
+ id 1vSeeY-0000QX-Us
+ for qemu-arm@nongnu.org; Mon, 08 Dec 2025 12:04:04 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1765211888;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ s=mimecast20190719; t=1765213441;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=IoPMT69hU7hgy+EBlQGMx7ULsNeZWjI7C3qwtY9/v0g=;
- b=bW2HSu6+OvcLbo/PtCv1nTy2a4ekKG/dBsaD7Tcm5zUTB7vrHgNdF1Cq8FG15TC7dZzlMg
- zURx0ldbLPPnO1ZUgQOk1zROdTpvLyJwOmAbsmq+vBqan7qvN5ccT785ixVGCthhiYbwM5
- Z8oK9H3NJbkwErS5alChFdHnzq7KvEI=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-292-R3kM3kNlOH2eZWyggFSUYA-1; Mon,
- 08 Dec 2025 11:38:05 -0500
-X-MC-Unique: R3kM3kNlOH2eZWyggFSUYA-1
-X-Mimecast-MFC-AGG-ID: R3kM3kNlOH2eZWyggFSUYA_1765211884
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 65A5A18002C9; Mon,  8 Dec 2025 16:38:04 +0000 (UTC)
-Received: from laptop.redhat.com (unknown [10.22.88.78])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8C68B30001A5; Mon,  8 Dec 2025 16:38:01 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, cohuck@redhat.com, sebott@redhat.com
-Cc: maz@kernel.org
-Subject: [PATCH 1/3] scripts: introduce scripts/update-aarch64-sysreg-code.py
-Date: Mon,  8 Dec 2025 17:37:03 +0100
-Message-ID: <20251208163751.611186-2-eric.auger@redhat.com>
-In-Reply-To: <20251208163751.611186-1-eric.auger@redhat.com>
-References: <20251208163751.611186-1-eric.auger@redhat.com>
+ bh=kJFajqK+BAme7a0UeF4POH4PUCJNId/qHlmErNU28j4=;
+ b=JmQ2wn/HiL9NLjdiAFN3m7w2HHEnwG9d8O10sBlDnxbznxignC0Pmir83Cv6oaNlpDMCC5
+ +kqUyLsQD4l32hWrkNVTAcCy/dkhvfqA2gMLD/gjjzGK/2+TaOi9lhjbeeXPMBSu/2GOSh
+ fZa0ZU96aKDZZ/LiogvbT59s/MZ7xPc=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-316-HqNNL_XkPT-D33rpZirg8Q-1; Mon, 08 Dec 2025 12:03:54 -0500
+X-MC-Unique: HqNNL_XkPT-D33rpZirg8Q-1
+X-Mimecast-MFC-AGG-ID: HqNNL_XkPT-D33rpZirg8Q_1765213434
+Received: by mail-qv1-f69.google.com with SMTP id
+ 6a1803df08f44-8824d5b11easo98116026d6.3
+ for <qemu-arm@nongnu.org>; Mon, 08 Dec 2025 09:03:54 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1765213434; x=1765818234;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=kJFajqK+BAme7a0UeF4POH4PUCJNId/qHlmErNU28j4=;
+ b=RM2NXEHUmFT9mfYQJaNNbiJNW6VV/65lgVIOc6gH+WXsFoilbV2a0VDd7c7mxWKJlE
+ NDwC1G02sa5jtLkswO5yU4TAKmh0xQ6A2gtU04RhxgP4opQeJH5a1VYfK1Ne8z3qRhCF
+ 3uLTW+MUfeZTaxNNg0uj9R3OG/XwICVtBgBjUywSJoJVl2tFZZVZ5pUyU9V62CiLkfJV
+ Bxy0lW9Mqm3SKxrdpM8Fan+Wcxq3phJO7BsDrhKZKPZz6+XLcKo5Q8E3d3Il2l096LKA
+ I8q43LucljkpW1KiCLPNyRqjCp8vq+e62unJ0kZaQJf0mghdVEdABJG9kJ1qUGX3FUq3
+ 30mw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWUwuNeK8L4VcY3WLDOdj0oFUeR1ZPEDR+zJvd86WNRAWou1I5X6t8OzqjD1rOHpUR6j7t9/Psafg==@nongnu.org
+X-Gm-Message-State: AOJu0YxfOuFX6QZBTZkSBJ/NzZS0dI9QbT72sVn0eanifvZPTA2OweVt
+ F6cdT3lo9qB0cwQtFrR/5oiWQRjJaEDuuYZqxbysZhZ1/uX6IsFMN4zt2Gl8ycTGPZTqaHJD+Ts
+ aNZW5NzseJ+UAZLDUM6EGfdBM18Cn7+CcBGvCvKO5oLSGNBF88G/NEw==
+X-Gm-Gg: ASbGncuhJVpaEBq6WmZ2nfF0j24ObhtKvv3k/00VX7H6PiQLZZmjFMk2l4wOfMz2pTv
+ mJgvJY7r8FPD0pFx/Jy64L+SBTCHvqB8JgGiSHNxfrDPl3sGEFPPCLZ4SWPAGoO0rcG6o61QhFU
+ FNLduDZK+nBc4Yp3QklJXPg340LzJWVZnUNsKUcL/qNRVk25piQ9B2CbYY9caVGJFUaPneR7iGx
+ Ml9NpcXiesW2WRHcVukv6w9xUQDw8oO81gBoiAbWGY5FibxIVRFCmMlCicELR35I39vAto87ym0
+ QpltE8VKGu7v1cr9t9CKGx6Nzs8yFF91JiYTMhPZhke1iAq192s7s/TAVM/5tJ+dc64cJLyTtuV
+ biiwuJYwo0L2CUXvNuMUggNJ/MLynND5Ujhd6spkKEqGkpH4BE+WuzvKoqg==
+X-Received: by 2002:a05:622a:2598:b0:4b7:a680:2111 with SMTP id
+ d75a77b69052e-4f03fde8ca1mr102420961cf.8.1765213433863; 
+ Mon, 08 Dec 2025 09:03:53 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFCiIch+3JpLNDXcLRMMCmCbIgw+K/9ssf7JvjBPoGZrlzBz77BF26hYeCTNfVLlkzjBMxHIw==
+X-Received: by 2002:a05:622a:2598:b0:4b7:a680:2111 with SMTP id
+ d75a77b69052e-4f03fde8ca1mr102420361cf.8.1765213433458; 
+ Mon, 08 Dec 2025 09:03:53 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ d75a77b69052e-4f027d0132fsm86452571cf.18.2025.12.08.09.03.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 08 Dec 2025 09:03:52 -0800 (PST)
+Message-ID: <fe2728de-4399-4452-8f8f-a9b1dfb6be62@redhat.com>
+Date: Mon, 8 Dec 2025 18:03:47 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 16/33] hw/pci/pci: Introduce a callback to retrieve the
+ MSI doorbell GPA directly
+To: Shameer Kolothum <skolothumtho@nvidia.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Jason Gunthorpe <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>,
+ "ddutile@redhat.com" <ddutile@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
+ <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>,
+ "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>, "Michael S . Tsirkin" <mst@redhat.com>
+References: <20251120132213.56581-1-skolothumtho@nvidia.com>
+ <20251120132213.56581-17-skolothumtho@nvidia.com>
+ <377d4c92-bfb0-4743-94d4-c4bf8dcb2934@redhat.com>
+ <CH3PR12MB754847D3EC2A35D54F0317EAABA6A@CH3PR12MB7548.namprd12.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CH3PR12MB754847D3EC2A35D54F0317EAABA6A@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Y0xxiuU6NWxxEyQNErPJfO1DU_u8_lgddpJoDdVi2ag_1765213434
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -69,7 +120,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,172 +133,107 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce a script that takes as input the Registers.json file
-delivered in the AARCHMRS Features Model downloadable from the
-Arm Developer A-Profile Architecture Exploration Tools page:
-https://developer.arm.com/Architectures/A-Profile%20Architecture#Downloads
-and outputs the list of ID regs in target/arm/cpu-sysregs.h.inc
-under the form of DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>).
+Hi Shameer,
 
-We only care about IDregs with opcodes satisfying:
-op0 = 3, op1 within [0, 3], crn = 0, crm within [0, 7], op2 within [0, 7]
+On 12/4/25 7:57 PM, Shameer Kolothum wrote:
+> Hi Eric,
+>
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: 04 December 2025 16:39
+>> To: Shameer Kolothum <skolothumtho@nvidia.com>; qemu-
+>> arm@nongnu.org; qemu-devel@nongnu.org
+>> Cc: peter.maydell@linaro.org; Jason Gunthorpe <jgg@nvidia.com>; Nicolin
+>> Chen <nicolinc@nvidia.com>; ddutile@redhat.com; berrange@redhat.com;
+>> Nathan Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
+>> smostafa@google.com; wangzhou1@hisilicon.com;
+>> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
+>> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
+>> Krishnakant Jaju <kjaju@nvidia.com>; Michael S . Tsirkin <mst@redhat.com>
+>> Subject: Re: [PATCH v6 16/33] hw/pci/pci: Introduce a callback to retrieve the
+>> MSI doorbell GPA directly
+>>
+>> External email: Use caution opening links or attachments
+> ...
+>  
+>>> --- a/target/arm/kvm.c
+>>> +++ b/target/arm/kvm.c
+>>> @@ -1620,26 +1620,42 @@ int kvm_arch_fixup_msi_route(struct
+>> kvm_irq_routing_entry *route,
+>>>          return 0;
+>>>      }
+>>>
+>>> +    /*
+>>> +     * We do have an IOMMU address space, but for some vIOMMU
+>> implementations
+>>> +     * (e.g. accelerated SMMUv3) the translation tables are programmed into
+>>> +     * the physical SMMUv3 in the host (nested S1=guest, S2=host). QEMU
+>> cannot
+>>> +     * walk these tables in a safe way, so in that case we obtain the MSI
+>>> +     * doorbell GPA directly from the vIOMMU backend and ignore the
+>> gIOVA
+>>> +     * @address.
+>>> +     */
+>>> +    if (pci_device_iommu_msi_direct_gpa(dev, &doorbell_gpa)) {
+>>> +        goto set_doorbell;
+>>> +    }
+>>> +
+>>>      /* MSI doorbell address is translated by an IOMMU */
+>>>
+>>> -    RCU_READ_LOCK_GUARD();
+>>> +    rcu_read_lock();
+>> what is the rationale behind the RCU changes?
+>>
+> Otherwise, it will crash if this fn returns via the goto set_doorbell path
+> with,
+>
+> include/qemu/rcu.h:101: rcu_read_unlock: Assertion `p_rcu_reader->depth != 0' failed
+>
+> goto set_doorbell path skips over the scope where RCU_READ_LOCK_GUARD() 
+> is active. When the function later reaches rcu_read_unlock() implicitly via
+> destructor,  the guard was never entered, so we hit above.
+>
+> An alternative would be to wrap the translation logic in its own block, like
+>
+>     if (pci_device_iommu_msi_direct_gpa(dev, &doorbell_gpa)) {
+>          goto set_doorbell;
+>     }
+>
+>     {
+>         RCU_READ_LOCK_GUARD();
+>        /* MSI translation logic */
+>     }
+>
+> set_doorbell:
+>     route->u.msi.address_lo = doorbell_gpa;
+>     route->u.msi.address_hi = doorbell_gpa >> 32;
+>     return 0;
+>
+> Or could do:
+>
+> if (!pci_device_iommu_msi_direct_gpa(dev, &doorbell_gpa)) {
+>     RCU_READ_LOCK_GUARD();
+>     /* translation logic */
+> }
+> route->u.msi.address_lo = doorbell_gpa;
+> route->u.msi.address_hi = doorbell_gpa >> 32;
+> return 0;
+>
+> Both approaches work, but I find the explicit lock/unlock variant easier
+> to follow. Please let me know if there is a better way.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+thank you for the explanation. It was not obvious to me. Maybe document
+that in the commit msg and keep the current version.
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Eric
 
----
-
-This was tested with https://developer.arm.com/-/cdn-downloads/permalink/Exploration-Tools-OS-Machine-Readable-Data/AARCHMRS_BSD/AARCHMRS_OPENSOURCE_A_profile_FAT-2025-09_ASL0.tar.gz
-
-Discussion about undesired generated regs can be found in
-https://lore.kernel.org/all/CAFEAcA9OXi4v+hdBMamQv85HYp2EqxOA5=nfsdZ5E3nf8RP_pw@mail.gmail.com/
----
- scripts/update-aarch64-sysreg-code.py | 133 ++++++++++++++++++++++++++
- 1 file changed, 133 insertions(+)
- create mode 100755 scripts/update-aarch64-sysreg-code.py
-
-diff --git a/scripts/update-aarch64-sysreg-code.py b/scripts/update-aarch64-sysreg-code.py
-new file mode 100755
-index 0000000000..c7b31035d1
---- /dev/null
-+++ b/scripts/update-aarch64-sysreg-code.py
-@@ -0,0 +1,133 @@
-+#!/usr/bin/env python3
-+
-+# This script takes as input the Registers.json file delivered in
-+# the AARCHMRS Features Model downloadable from the Arm Developer
-+# A-Profile Architecture Exploration Tools page:
-+# https://developer.arm.com/Architectures/A-Profile%20Architecture#Downloads
-+# and outputs the list of ID regs in target/arm/cpu-sysregs.h.inc
-+# under the form of DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>)
-+#
-+# Copyright (C) 2025 Red Hat, Inc.
-+#
-+# Authors: Eric Auger <eric.auger@redhat.com>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+
-+import json
-+import os
-+import sys
-+
-+# returns the int value of a given @opcode for a reg @encoding
-+def get_opcode(encoding, opcode):
-+    fvalue = encoding.get(opcode)
-+    if fvalue:
-+        value = fvalue.get('value')
-+        if isinstance(value, str):
-+            value = value.strip("'")
-+            value = int(value,2)
-+            return value
-+    return -1
-+
-+def extract_idregs_from_registers_json(filename):
-+    """
-+    Load a Registers.json file and extract all ID registers, decode their
-+    opcode and dump the information in target/arm/cpu-sysregs.h.inc
-+
-+    Args:
-+        filename (str): The path to the Registers.json
-+    returns:
-+        idregs: list of ID regs and their encoding
-+    """
-+    if not os.path.exists(filename):
-+        print(f"Error: {filename} could not be found!")
-+        return {}
-+
-+    try:
-+        with open(filename, 'r') as f:
-+            register_data = json.load(f)
-+
-+    except json.JSONDecodeError:
-+        print(f"Could not decode json from '{filename}'!")
-+        return {}
-+    except Exception as e:
-+        print(f"Unexpected error while reading {filename}: {e}")
-+        return {}
-+
-+    registers = [r for r in register_data if isinstance(r, dict) and \
-+                r.get('_type') == 'Register']
-+
-+    idregs = {}
-+
-+    # Some regs have op code values like 000x, 001x. Anyway we don't need
-+    # them. Besides some regs are undesired in the generated file such as
-+    # CCSIDR_EL1 and CCSIDR2_EL1 which are arrays of regs. Also exclude
-+    # VMPIDR_EL2 and VPIDR_EL2 which are outside of the IDreg scope we
-+    # are interested in and are tricky to decode as their system accessor
-+    # refer to MPIDR_EL1/MIDR_EL1 respectively
-+
-+    skiplist = ['ALLINT', 'PM', 'S1_', 'S3_', 'SVCR', \
-+                'CCSIDR_EL1', 'CCSIDR2_EL1', 'VMPIDR_EL2', 'VPIDR_EL2']
-+
-+    for register in registers:
-+        reg_name = register.get('name')
-+
-+        is_skipped = any(term in (reg_name or "").upper() for term in skiplist)
-+
-+        if reg_name and not is_skipped:
-+            accessors = register.get('accessors', [])
-+
-+            for accessor in accessors:
-+                type = accessor.get('_type')
-+                if type in ['Accessors.SystemAccessor']:
-+                    encoding_list = accessor.get('encoding')
-+
-+                    if isinstance(encoding_list, list) and encoding_list and \
-+                       isinstance(encoding_list[0], dict):
-+                        encoding_wrapper = encoding_list[0]
-+                        encoding_source = encoding_wrapper.get('encodings', \
-+                                                               encoding_wrapper)
-+
-+                        if isinstance(encoding_source, dict):
-+                                op0 = get_opcode(encoding_source, 'op0')
-+                                op1 = get_opcode(encoding_source, 'op1')
-+                                op2 = get_opcode(encoding_source, 'op2')
-+                                crn = get_opcode(encoding_source, 'CRn')
-+                                crm = get_opcode(encoding_source, 'CRm')
-+                                encoding_str=f"{op0} {op1} {crn} {crm} {op2}"
-+
-+                # ID regs are assumed within this scope
-+                if op0 == 3 and (op1 == 0 or op1 == 1 or op1 == 3) and \
-+                   crn == 0 and (crm >= 0 and crm <= 7) and (op2 >= 0 and op2 <= 7):
-+                    idregs[reg_name] = encoding_str
-+
-+    return idregs
-+
-+if __name__ == "__main__":
-+    # Single arg expectedr: the path to the Registers.json file
-+    if len(sys.argv) < 2:
-+        print("Usage: scripts/update-aarch64-sysreg-code.py <path_to_registers_json>")
-+        sys.exit(1)
-+    else:
-+        json_file_path = sys.argv[1]
-+
-+    extracted_registers = extract_idregs_from_registers_json(json_file_path)
-+
-+    if extracted_registers:
-+        output_list = extracted_registers.items()
-+
-+        # Sort by register name
-+        sorted_output = sorted(output_list, key=lambda item: item[0])
-+
-+        # format lines as DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>)
-+        final_output = ""
-+        for reg_name, encoding in sorted_output:
-+            reformatted_encoding = encoding.replace(" ", ", ")
-+            final_output += f"DEF({reg_name}, {reformatted_encoding})\n"
-+
-+        with open("target/arm/cpu-sysregs.h.inc", 'w') as f:
-+            f.write("/* SPDX-License-Identifier: BSD-3-Clause */\n\n")
-+            f.write("/* This file is autogenerated by ")
-+            f.write("scripts/update-aarch64-sysreg-code.py */\n\n")
-+            f.write(final_output)
-+        print(f"updated target/arm/cpu-sysregs.h.inc")
--- 
-2.52.0
+>
+> Thanks,
+> Shameer
+>
 
 

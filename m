@@ -4,98 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D21E7D3B7E2
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Dec 2025 17:09:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EFD0D3B7E2
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Dec 2025 17:18:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vSejR-0006er-Ou; Mon, 08 Dec 2025 12:09:06 -0500
+	id 1vSesM-0001zM-Ba; Mon, 08 Dec 2025 12:18:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vSejQ-0006du-9L
- for qemu-arm@nongnu.org; Mon, 08 Dec 2025 12:09:04 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vSejO-0001Ct-4W
- for qemu-arm@nongnu.org; Mon, 08 Dec 2025 12:09:03 -0500
-Received: by mail-wm1-x341.google.com with SMTP id
- 5b1f17b1804b1-47798ded6fcso35558155e9.1
- for <qemu-arm@nongnu.org>; Mon, 08 Dec 2025 09:09:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765213740; x=1765818540; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=yp/1DvjRTHSNKSXajeVBgxucRCT8YkMJ1b7rSmV4BMo=;
- b=o9utv3KdG/RKJ5KsLVyCxQ9CM2u3o5J0C01HW8OrrQf/5kRa46u6aiUlGG8asjcP2q
- 9YgKk9GFNclH2aoIGSRCA1IBkFtgs2k+lcJMj+beO0K9UllsfC+AIAycIE3aY+AzOMLJ
- SG4hUoXcGYELvZgeJKfqf+YeEr7mI+4HbGdMcomufvFKI6XvPrlTCR5BCKJPcZINCiko
- PJAkvA0PJKUmMeArFcivXG/icFYyjYqY4Gs3QbnhCVeHsUzfzxfAl2rVgnUiqTqHya1Y
- tc0rthZZQc/cT962+vL2bQpJK03l0GxZUUCQ650dQ0Q190LkhYyqfUqJbRp7ASMCrCtd
- 9xHQ==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vSesK-0001yC-12
+ for qemu-arm@nongnu.org; Mon, 08 Dec 2025 12:18:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vSesH-00039Y-Pa
+ for qemu-arm@nongnu.org; Mon, 08 Dec 2025 12:18:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1765214293;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VL08V+9vqyEMIsPjsNaUawtDLNknNx/VuH+45FfUYxI=;
+ b=b9c89LU2fIKJ65qk9O/NcuwpDZozu1OxYka1hZCnm5iZhyEiv4pLURMYf5GucqIc1pFqOi
+ ZsnL5kAQj8vPQkqnFo9NFutdKjjSVhQkYGCZVB6AeM6CISc04XuFtdtNcXEhW6ouZUIl2x
+ jsBH5KMXYYiw7+7IG9Qxs6frsS4NEGA=
+Received: from mail-pg1-f199.google.com (mail-pg1-f199.google.com
+ [209.85.215.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-140-T09xsgZtPAWtLk81M_FppQ-1; Mon, 08 Dec 2025 12:18:09 -0500
+X-MC-Unique: T09xsgZtPAWtLk81M_FppQ-1
+X-Mimecast-MFC-AGG-ID: T09xsgZtPAWtLk81M_FppQ_1765214289
+Received: by mail-pg1-f199.google.com with SMTP id
+ 41be03b00d2f7-b98e6ff908aso10757362a12.2
+ for <qemu-arm@nongnu.org>; Mon, 08 Dec 2025 09:18:09 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765213740; x=1765818540;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=yp/1DvjRTHSNKSXajeVBgxucRCT8YkMJ1b7rSmV4BMo=;
- b=en1JTrQ83qGntKx8zaImzUSjwJ6N0PXNgmv2+tSVDY7UZc5AbO6R/vgi4bVCumuvtX
- FZhh9/pSdUppVJL68NvbQhZo5NtAbdU4G7NYMyQlPUZu6MBK91fbN+ncbsQsDyhYsBBf
- I/J3fvRVdrd/9wYW5B72pQwISc0NgchEcVrVTN/DavAE5tanAPoLNWDFw/UkQ14GF30G
- jbbsuRzPeDVuQMfGHxW0BOWJo7njqlD0mdWVHJ7KXg+7IBWJo5qjg83PVXguoTmEuZUh
- 23e8PUcinzQNqdyhZ4/6g8qQcRRXj2X2oEO6Rd017rFFp6HJb9TL2bYodtGi34birT8t
- kCFg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWmh+D/0U5kNGjjAnSLENL6qRtjt412hjZxWs+/5dlEd9zqHrezh/rZOgVEctDKVomCa/aDa7JqFw==@nongnu.org
-X-Gm-Message-State: AOJu0YzLQF6Jv4zoTI1H+crGwMbba5iRrA1wNpyZwdI+HxuTV3M1ABBm
- UQ3vWFVzVTVZBEnFXimwN5T/4wG5N2Yqz8MvNS7oLeIty92plivneaXQXqE8CVo8lfg9phu+7qN
- xuj7Y
-X-Gm-Gg: ASbGncuWD0slbmOdMx+/04DpnTVhsZFXwIN2vGWDtFh6BXewBd1YyJf6scthmoG8wRJ
- DRdOZ/Xvq/pfer2YnFcpek7V7G7glo5oOizhJinCotZsu5ufaKbUc/Cse/BGoOp34PIj+RkY/77
- R5+myX8bjpMQiLnYZim5k8E8FL1QyLE6figcXdcCuFo6JWExL8Ult0bsZlnCXcKOKlCqeNR1O+W
- fPe9uSCh/jrIMEVIiQwhdwAUjNNLfxcgVEwALQFpZJT5FgyK+e0x6XQeiKjGFhIW6mr0dTbaPgr
- EiWTrJOSpchupsBmzWEXP8fcT0BYVgEgIhIVSVXu4WydX6oS5/rDWqSlhnOByg9AJAIzyMaWM7Z
- 6DMJsA/YnfaIiMneNtS/PuCa+LXhaUDdlhbB7b+HkjVjMVRHmIPpA0PjV+p6itTox4bpTmuMjlH
- co6mXN0SAocDA=
-X-Google-Smtp-Source: AGHT+IFB5M9H1XwTkmXpQHXIAsNagaxwwxuEgkky5qyiHd//D5sYM3MAjlsKiorqagRCvsEnYoqhBQ==
-X-Received: by 2002:a05:600c:4e92:b0:45c:4470:271c with SMTP id
- 5b1f17b1804b1-47939e1dc67mr79456045e9.18.1765213740208; 
- Mon, 08 Dec 2025 09:09:00 -0800 (PST)
-Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47933aef61fsm211412905e9.7.2025.12.08.09.08.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Dec 2025 09:08:59 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id B64145F83B;
- Mon, 08 Dec 2025 17:08:58 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Zenghui Yu <zenghui.yu@linux.dev>
-Cc: qemu-devel@nongnu.org,  Mads Ynddal <mads@ynddal.dk>,  Peter Maydell
- <peter.maydell@linaro.org>,  qemu-arm@nongnu.org,  Alexander Graf
- <agraf@csgraf.de>
-Subject: Re: [PATCH 2/2] target/arm: ensure PSCI register updates are flushed
-In-Reply-To: <ff000682-b14d-4152-88b3-cb2761b60bc1@linux.dev> (Zenghui Yu's
- message of "Mon, 8 Dec 2025 23:30:30 +0800")
-References: <20251205151115.2035930-1-alex.bennee@linaro.org>
- <20251205151115.2035930-3-alex.bennee@linaro.org>
- <ff000682-b14d-4152-88b3-cb2761b60bc1@linux.dev>
-User-Agent: mu4e 1.12.14-pre3; emacs 30.1
-Date: Mon, 08 Dec 2025 17:08:58 +0000
-Message-ID: <87zf7shped.fsf@draig.linaro.org>
+ d=1e100.net; s=20230601; t=1765214288; x=1765819088;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=VL08V+9vqyEMIsPjsNaUawtDLNknNx/VuH+45FfUYxI=;
+ b=Byof1EJ8oRqOx+LlkitK0H7UW6I+UMWqA9rU4uNpUxnSaW47/VkBDjbog+d2mU1vXa
+ i7/BxVaFePjuVokK9Aj93D1trGRd6EpsSFBgEWYi5+MqUURhPeI312t3guHBOSlUq1du
+ lHIN5HUgg8qlmE1lMf4YrnqlKxgGRCx17UdT+H99zeju1bx6tOp0+IJdDbAvP2GqW99n
+ uXc9aPZhDwGAAVTOFrpBnkT2lWafMWbPT0jBFg9HDKaelbtbHk/06hwzSmuPX15j4WEN
+ AXaVe6sEX/hAVAZ1STg7gh7z88+VDCCsPbx3Lozxn62KgzO9Z2hl2i0v41qNdFnUvOVs
+ 1V1w==
+X-Gm-Message-State: AOJu0YzNjK+9+uWr+g5eGpoMmQ21NaJ/fG/nkJQagrQWUDZFGN5nSPQV
+ CZOMtMaH5uboFyZiq0UHNh5/6asg0zgwUukwHmUCqYfEpbbFmLrQ5NnACPqYciWNb4VtXPXzP05
+ mOD9ZszVljj+Em9uaAdUfHJ6QuF/RD4hbQbsLlonci93yy4VZLzPHUg==
+X-Gm-Gg: ASbGncuPrjN7hzcGxUk4Jmker4TALFlOIo8Y2F8OSxb4b9kNw/vaoLdWOO3uN6FPIKg
+ sSUIi3oCAnjc9EoaSJ1QlOCwjkp1O39/0Z5XdQxEMXRHMBnlVBVdIZJ3MkMN/tHQ7OEekfQVWxC
+ YqcPvRCqnnIUmE3dOEQo8qyES2kezZDlImoUtWC1/SZe05OUYPHU1BZFISsVuDcxgDVZy5Shi88
+ w9P+wwTgaQsaNOeSxtdDv3G51z4TjX2kablB64rwfPGhdANxH9W3sIteupywSvkqzAiVRiARJYR
+ hHiWboL4c/3xcNIivL+O4d9ebiY18KCy8hFbHZ6KWhacBEPzp6GeQ15Gbea8ETS3T9mhFncnQRw
+ I7RGpTvHW9vvymw5QHTDsC1vlg6bDTWAZevNZSYHWHjUmxUYBXjp+Pf/8Qw==
+X-Received: by 2002:a05:7300:d084:b0:2a4:3592:cf5d with SMTP id
+ 5a478bee46e88-2abc70f7864mr3708194eec.1.1765214288530; 
+ Mon, 08 Dec 2025 09:18:08 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF+EEe2PZWYlFKN+U88zJhICyFxgDpx4Q4wosJbE4lz+op2w66Q/GewNPwCJ9NFS+BsWZD9vA==
+X-Received: by 2002:a05:7300:d084:b0:2a4:3592:cf5d with SMTP id
+ 5a478bee46e88-2abc70f7864mr3708185eec.1.1765214287991; 
+ Mon, 08 Dec 2025 09:18:07 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-2aba822b615sm35906621eec.0.2025.12.08.09.18.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 08 Dec 2025 09:18:07 -0800 (PST)
+Message-ID: <cda8507b-1cc9-41ab-96ff-b27159460ef1@redhat.com>
+Date: Mon, 8 Dec 2025 18:17:55 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x341.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 29/33] hw/arm/smmuv3-accel: Add property to specify OAS
+ bits
+To: Nicolin Chen <nicolinc@nvidia.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ jgg@nvidia.com, ddutile@redhat.com, berrange@redhat.com, nathanc@nvidia.com,
+ mochs@nvidia.com, smostafa@google.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, yi.l.liu@intel.com,
+ kjaju@nvidia.com
+References: <20251120132213.56581-1-skolothumtho@nvidia.com>
+ <20251120132213.56581-30-skolothumtho@nvidia.com>
+ <aR+MjODa6/XFlCqz@Asurada-Nvidia>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <aR+MjODa6/XFlCqz@Asurada-Nvidia>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: RO6xflTdQ3CvtCd6WXmoN19kICyx7gbojgVs5gzoEVE_1765214289
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,56 +122,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Zenghui Yu <zenghui.yu@linux.dev> writes:
 
-> Hi Alex,
+
+On 11/20/25 10:47 PM, Nicolin Chen wrote:
+> On Thu, Nov 20, 2025 at 01:22:09PM +0000, Shameer Kolothum wrote:
+>> QEMU SMMUv3 currently sets the output address size (OAS) to 44 bits.
+>> With accelerator mode enabled, a device may use SVA, where CPU page tables
+>> are shared with the SMMU, requiring an OAS at least as large as the
+>> CPU’s output address size. A user option is added to configure this.
+>>
+>> However, the OAS value advertised by the virtual SMMU must remain
+>> compatible with the capabilities of the host SMMUv3. In accelerated
+>> mode, the host SMMU performs stage-2 translation and must be able to
+>> consume the intermediate physical addresses (IPA) produced by stage-1.
+>>
+>> The OAS exposed by the virtual SMMU defines the maximum IPA width that
+>> stage-1 translations may generate. For AArch64 implementations, the
+>> maximum usable IPA size on the host SMMU is determined by its own OAS.
+>> Check that the configured OAS does not exceed what the host SMMU
+>> can safely support.
+>>
+>> Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
+>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+>> ---
+>>  hw/arm/smmuv3-accel.c    | 20 ++++++++++++++++++++
+>>  hw/arm/smmuv3-internal.h |  3 ++-
+>>  hw/arm/smmuv3.c          | 16 +++++++++++++++-
+>>  include/hw/arm/smmuv3.h  |  1 +
+>>  4 files changed, 38 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+>> index 73c7ce586a..35a94c720a 100644
+>> --- a/hw/arm/smmuv3-accel.c
+>> +++ b/hw/arm/smmuv3-accel.c
+>> @@ -27,6 +27,12 @@
+>>  static MemoryRegion root, sysmem;
+>>  static AddressSpace *shared_as_sysmem;
+>>  
+>> +static int smmuv3_oas_bits(uint32_t oas)
+>> +{
+>> +    static const int map[] = { 32, 36, 40, 42, 44, 48, 52, 56 };
+>> +    return () ? map[oas] : -EINVAL;
+> We should probably just:
+> 	g_assert(oas < ARRAY_SIZE(map));
 >
-> On 2025/12/5 23:11, Alex Benn=C3=A9e wrote:
->> When we handle a host call we report state back to the caller via
->> registers. Set vcpu_dirty to indicate QEMU is currently the reference
->> and hoist the flush_cpu_state() and make the call unconditional.
->>=20
->> Fixes: https://gitlab.com/qemu-project/qemu/-/issues/3228
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> -EINVAL is useless anyway in the caller that prints it.
 >
-> This fixes the guest boot issue.
+> Otherwise,
 >
-> However I notice that some (all?) HMP commands (e.g., "info registers")
-> don't return and result in guest hang. Haven't dig further though.
+> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+With Nicolin's suggestion
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-Does this fix it:
-
---8<---------------cut here---------------start------------->8---
-target/arm: make HV_EXIT_REASON_CANCELED leave main loop
-
-Without this we can spin tightly in the main HVF dispatch loop and
-never release the lock long enough.
-
-Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-1 file changed, 1 insertion(+)
-=EE=98=9E target/arm/hvf/hvf.c | 1 +
-
-modified   =EE=98=9E target/arm/hvf/hvf.c
-@@ -2020,6 +2020,7 @@ static int hvf_handle_vmexit(CPUState *cpu, hv_vcpu_e=
-xit_t *exit)
-         break;
-     case HV_EXIT_REASON_CANCELED:
-         /* we got kicked, no exit to process */
-+        ret =3D -1;
-         break;
-     default:
-         g_assert_not_reached();
---8<---------------cut here---------------end--------------->8---
-
+Eric
 >
-> Thanks,
-> Zenghui
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
 

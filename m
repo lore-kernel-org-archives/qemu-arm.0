@@ -4,74 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D079D3B7EA
-	for <qemu-arm@archiver.kernel.org>; Mon,  8 Dec 2025 23:02:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB248D3B7EA
+	for <qemu-arm@archiver.kernel.org>; Mon,  8 Dec 2025 23:15:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vSkF6-0004KC-Uv; Mon, 08 Dec 2025 18:02:09 -0500
+	id 1vSkS7-0006AC-4J; Mon, 08 Dec 2025 18:15:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vSkF1-0004JS-OV
- for qemu-arm@nongnu.org; Mon, 08 Dec 2025 18:02:04 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ id 1vSkRz-00063D-UB
+ for qemu-arm@nongnu.org; Mon, 08 Dec 2025 18:15:29 -0500
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vSkF0-0003aF-3V
- for qemu-arm@nongnu.org; Mon, 08 Dec 2025 18:02:03 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-477632b0621so36196955e9.2
- for <qemu-arm@nongnu.org>; Mon, 08 Dec 2025 15:02:00 -0800 (PST)
+ id 1vSkRx-0005Pv-Tj
+ for qemu-arm@nongnu.org; Mon, 08 Dec 2025 18:15:27 -0500
+Received: by mail-pf1-x431.google.com with SMTP id
+ d2e1a72fcca58-7bf0ad0cb87so5754241b3a.2
+ for <qemu-arm@nongnu.org>; Mon, 08 Dec 2025 15:15:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765234918; x=1765839718; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1765235723; x=1765840523; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=B18bFogMiBZFvzcdH72KQIqsb0ufAd13NGkPwD3C3ug=;
- b=P8XFIwGkHxST006LiJIaRGxLLULic9yqB7Og97P/kZjoPjykHERwqxWGO/+1zPcDrB
- XRRwZ6OZjZcE1I+cfeQjxKxnDbLzFoGrqX7sjUASFzggAblidltys9/XC5tCdLASZ+Y7
- yUa1L/fZ3+j8b2WRr2O3RFWHGDXtsUgImR7emcUzzsaFWMnh23GwNB2gb3NYQ194Epn+
- JA16iKg1SiVzt2qF2ZAt5A/1v1hgGijwJDKgOKISiFzafzpN19BdOjlTYdhy7PsmRCRO
- 2+CcKo3kxfXXHkAnRkQSP43g+6TsHW82iPCivXI6HFKDciKrEW07ntLIS+l+RGvM2JDA
- 5ugQ==
+ bh=HXDEnMSsq9Obi8Qx7sh+Y8zuA17vo/9J5diLflBtDgs=;
+ b=XoFzKLUnhIID6N+FNZGEqWIbA0TR3hwAQmPs9kEEzeVen27YqvqBwux5y4Pk5QsUWj
+ XPUbp2nM3dA0VaGtJjovsTzepQXSwx/3StXXfoaSWxrDYeZLIn9NGvZ4isE2YIXiKFM8
+ IR/NKfQeH/h1Bcz1U/+xgE+5wLid7de/CTtGAc0su1o8Zh0+JSVo5zpXiOyvywYDUcFh
+ +jtvyVaqKPjaQW1zWr3ZrKPbtoh1PdCnZOS57LfBzclXx3Oiez8gYoVjjlY0iB0sZxlZ
+ 4BEfzbKi90wvWfCSaK6OA517au0gLx0w5+wnHdkGNoh1vNHxHQ4PlzpwFmUd9LCJErgp
+ /dSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765234918; x=1765839718;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1765235723; x=1765840523;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=B18bFogMiBZFvzcdH72KQIqsb0ufAd13NGkPwD3C3ug=;
- b=wjKyQ7VZ+7osScS+l35hfzB+KIodojE2SJhVWrRmTcKvO0JucPYi36MnT6hChtLWeT
- MfLiTAAu4Qk8ZF1HaUq+GDj3Mn9JZ6JVKyLaIeEDrzw+jr92QV/oO6zM/ef+baZN0oWK
- JChCLH8ufLpJqq0GL7Pd693taQYesaG3MTEvxER7hMTkwsb/RYPuZNRyTsseEQQEZk/G
- SqKR6oNPB00GBCiEoou+FlUlhbXM6tKJPRxtZydYEDAnYKT2tpJcbXOoK27f5Qtxtwsk
- wA5Lvhg5hbEt2HiPCtEpqVCodnKhxFwscvSGoc7N0LieXl2kYGR3UGKIW1w6lpoutT7u
- DOVQ==
+ bh=HXDEnMSsq9Obi8Qx7sh+Y8zuA17vo/9J5diLflBtDgs=;
+ b=AUsGHXiGmHRZDBnvhIEBJ57HMaDQtjs59JJx2QXRBihKcc3tM61AmKMVAgQFMF6cG3
+ vEIXJ492d7Gf8xpNPJfzHaqZknGsYk/CbMPwIb0JrMh2/KmW4HBSTd1KeIlZA/+CMFK/
+ xzNEoS1hyQDBxe4Gx4swOOwGLsID+7wil21KxjylkmlmnHOplz1Ef9lQBquQ/fxK0y3r
+ MyuvV3FO5qRtrkg7EB95R0JuQ/bT737Tjg5mfzPWLa7z2k4KGSgI5TlZugF7vHbA1brL
+ Vw3h7FI25iMBCcFkNhNum3SZO+yIqpCqAhmzfRUfNiFTlJHlpLwPEkJiiNekO1W4+r6A
+ LFPA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXF0wwaqw7O2/STlhVoukqTvON3bcbSQY9sPEuhejcnG3EiDs5qM9NpdwFcW4XKX09bR1tVC/sHqw==@nongnu.org
-X-Gm-Message-State: AOJu0YzgMd7xYTydgaRFc8l/sAO5lJFKjyt6mCxtNAoXHvNaVfry+I1t
- Olmh/E4qRW1RkOi8yENoc6MbHhKkcxP0WYnMZFdOpSIVF51tkDty2FcpLtAAKeoeclU=
-X-Gm-Gg: ASbGnctIZ3yO91yInPcK+Rc7W5tSWYjuDFM4VRckiEsV2y5T8W6+rKbrny6cru26eIA
- 3YnLUotWBC3r8gBz2Mm7t9sp3lUj0+oGsdt5UI3hxPUlwwWNiNgIfZ/wkF/nJ8MaR6QVApHbaVT
- e3jBtmBULi8fY05Sa+E87+1Z/B9D3xN3gOq2xSnHD9W05YoeMxm7X+U9wR/STcINhNA7nenfR75
- +xRhMabzunkhbGxgRPurV1ceENa8+uaitjWA0rILmcqfgs8VY/2fZC8VS/yQXtkAmfKEdSA9Qv1
- 0xxMxV97D1VXXV9a1uysxr7XwxVoPYahcr8Y3+ciJ8UuAGTTvyexxwAjVaAHicorLhCJJ3H1WaV
- 5QNPvNFycm0ulHj9aE0SwWDs9TRR/sdl3PyMeZLrhsRffTiC6R32QGyZXvJRtMXdLvYvM7nF0ac
- 4FeEo7syjACew2QHkxafQ=
-X-Google-Smtp-Source: AGHT+IGL5cdoTBrRANMIpf3acxsZKxeVuzFeBSV870OtOKC8JQCOtBiyndr2bf0TQ9h2ihz2ui6tAQ==
-X-Received: by 2002:a05:600c:3b07:b0:477:c37:2ea7 with SMTP id
- 5b1f17b1804b1-47939e23e7bmr102645665e9.21.1765234918523; 
- Mon, 08 Dec 2025 15:01:58 -0800 (PST)
-Received: from [10.14.0.2] ([82.102.18.126]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47a7d6fa0f6sm7088505e9.4.2025.12.08.15.01.54
+ AJvYcCUybtEthxmkKkZJvkTsUr12WBCRdBAqAQIb57eTqrK3re6/FNdJO6ssIPhyLNMBze3RhC6xbr9Mgw==@nongnu.org
+X-Gm-Message-State: AOJu0YwsuTWi+ESWSjX1r4yNXioTgyf3lyrtMaMysIDMzvXvPvkt73py
+ XoYCNX5N2i/gF0oYohNOFBM+3NYqGzu9A5yvaRjsuYfv9blGV4p21ueaYFzFeLPf13s=
+X-Gm-Gg: ASbGnctpBxCqhXQKEb7txipH/BYbh4F4plH16R5zsaJ5hZLF/M3ZEs/LVHXBfu+zcmL
+ oj+if9mwqOw7OTvMEqWAEfNiKailUvEsm+MhKNdvkwLW+UqggtXa6g1zQQFuL4XB6ax1Z68noSm
+ WkVcM+f+IHz1da4nqn5nBLiV2XIMNQ9/gCX7KA8cg5z6YHjNVx8w18yFY0fhOoL9X2l+VWwH3Li
+ 71yDcKqI1G+TsKmPBdNmWWac+0Dq4AO2fqCWB6FHVsLuDee0FpEDRb7cGX9y2y6KoO+xkydQ1Ss
+ yFZj/VNWSn9mSCLbY61/h9dQ758d8Lyws77IjHHdy22wRXgVPxBkaybhjZsDAq//imL6CYEsa13
+ 5XuFB0N6AKi9nLKgsP/UIWYb2xbdabyYZf1L1+OAp2D3uG1wGEr8MSYK8kOFG5UTGqz2D70PUF6
+ ZfIbr8M88ltKdIbfSeK6WoXtXzmEKJX1bsXHBFdnPUcq3mSOO+pzX6J5k=
+X-Google-Smtp-Source: AGHT+IHQsFpJB8WC0jCiO+E5XRXIEllxNtO5mjzT3Y/EA/pQUe2SDiqA2mfgzPdQhvg5nPBwGq/gQQ==
+X-Received: by 2002:a05:6a00:2392:b0:7e8:43f5:bd29 with SMTP id
+ d2e1a72fcca58-7e8c580841dmr9631103b3a.62.1765235722753; 
+ Mon, 08 Dec 2025 15:15:22 -0800 (PST)
+Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-7e2adc5c400sm14129669b3a.37.2025.12.08.15.15.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 08 Dec 2025 15:01:57 -0800 (PST)
-Message-ID: <07afa374-e068-4f05-a70b-e8c6b207831e@linaro.org>
-Date: Mon, 8 Dec 2025 15:01:52 -0800
+ Mon, 08 Dec 2025 15:15:22 -0800 (PST)
+Message-ID: <9a8d8ce6-6cc1-4e61-b148-9395344ee35a@linaro.org>
+Date: Mon, 8 Dec 2025 15:15:21 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v6 3/4] tests/qtest/libqos: Add SMMUv3 helper library
+Subject: Re: [RFC v6 4/4] tests/qtest: Add SMMUv3 bare-metal test using
+ iommu-testdev
+Content-Language: en-US
 To: Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini
  <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
  Laurent Vivier <lvivier@redhat.com>, Eric Auger <eric.auger@redhat.com>,
@@ -84,14 +87,13 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Mostafa Saleh <smostafa@google.com>,
  CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
 References: <20251206155203.3015881-1-tangtao1634@phytium.com.cn>
- <20251206155203.3015881-4-tangtao1634@phytium.com.cn>
-Content-Language: en-US
+ <20251206155203.3015881-5-tangtao1634@phytium.com.cn>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251206155203.3015881-4-tangtao1634@phytium.com.cn>
+In-Reply-To: <20251206155203.3015881-5-tangtao1634@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,41 +117,39 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 12/6/25 7:52 AM, Tao Tang wrote:
-> Introduce qos-smmuv3, a reusable library for SMMUv3-related qtest
-> operations. This module encapsulates common tasks like:
+> Add a qtest suite that validates ARM SMMUv3 translation without guest
+> firmware or OS. The tests leverage iommu-testdev to trigger DMA
+> operations and the qos-smmuv3 library to configure IOMMU translation
+> structures.
 > 
-> - SMMUv3 initialization (enabling, configuring command/event queues)
-> - Stream Table Entry (STE) and Context Descriptor (CD) setup
-> - Multi-level page table construction (L0-L3 for 4KB granules)
-> - Support for Stage 1, Stage 2, and nested translation modes
-> - Could be easily extended to support multi-space testing infrastructure
+> This test suite targets the virt machine and covers:
+> - Stage 1 only translation (VA -> PA via CD page tables)
+> - Stage 2 only translation (IPA -> PA via STE S2 tables)
+> - Nested translation (VA -> IPA -> PA, Stage 1 + Stage 2)
+> - Design to extended to support multiple security spaces
 >      (Non-Secure, Secure, Root, Realm)
 > 
-> The library provides high-level abstractions that allow test code to
-> focus on IOMMU behavior validation rather than low-level register
-> manipulation and page table encoding. Key features include:
+> Each test case follows this sequence:
+> 1. Initialize SMMUv3 with appropriate command/event queues
+> 2. Build translation tables (STE/CD/PTE) for the target scenario
+> 3. Configure iommu-testdev with IOVA and DMA attributes via MMIO
+> 4. Trigger DMA and validate successful translation
+> 5. Verify data integrity through a deterministic write-read pattern
 > 
-> - Automatic memory allocation for translation structures with proper
->      alignment
-> - Helper functions to build valid STEs/CDs for different translation
->      scenarios
-> - Page table walkers that handle address offset calculations per
->      security space
-> - Command queue management for SMMU configuration commands
-> 
-> This infrastructure is designed to be used by iommu-testdev-based tests
-> and future SMMUv3 test suites, reducing code duplication and improving
-> test maintainability.
+> This bare-metal approach provides deterministic IOMMU testing with
+> minimal dependencies, making failures directly attributable to the SMMU
+> translation path.
 > 
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Tested-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > ---
->   tests/qtest/libqos/meson.build  |   3 +
->   tests/qtest/libqos/qos-smmuv3.c | 632 ++++++++++++++++++++++++++++++++
->   tests/qtest/libqos/qos-smmuv3.h | 256 +++++++++++++
->   3 files changed, 891 insertions(+)
->   create mode 100644 tests/qtest/libqos/qos-smmuv3.c
->   create mode 100644 tests/qtest/libqos/qos-smmuv3.h
+>   tests/qtest/iommu-smmuv3-test.c | 131 ++++++++++++++++++++++++++++++++
+>   tests/qtest/meson.build         |   1 +
+>   2 files changed, 132 insertions(+)
+>   create mode 100644 tests/qtest/iommu-smmuv3-test.c
+Looks great now!
+Tested again, and works as expected.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-
+Let's see if other people have additional comments on the series.
 

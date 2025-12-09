@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEEC1D3B7E2
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09DD0D3B7F4
 	for <qemu-arm@archiver.kernel.org>; Tue,  9 Dec 2025 00:02:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vSlAu-0007A7-5A; Mon, 08 Dec 2025 19:01:52 -0500
+	id 1vSlB2-0007I6-IT; Mon, 08 Dec 2025 19:02:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <36WY3aQYKCOQeaHOTfMUUMRK.IUSWKSa-GXSTUTMTa.UXM@flex--yubinz.bounces.google.com>)
- id 1vSlAr-00079P-CE
- for qemu-arm@nongnu.org; Mon, 08 Dec 2025 19:01:49 -0500
-Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
+ <38GY3aQYKCOslhOVamTbbTYR.PbZdRZh-NeZabaTah.beT@flex--yubinz.bounces.google.com>)
+ id 1vSlAy-0007BY-Ss
+ for qemu-arm@nongnu.org; Mon, 08 Dec 2025 19:01:57 -0500
+Received: from mail-pg1-x54a.google.com ([2607:f8b0:4864:20::54a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <36WY3aQYKCOQeaHOTfMUUMRK.IUSWKSa-GXSTUTMTa.UXM@flex--yubinz.bounces.google.com>)
- id 1vSlAp-0007Ra-OV
- for qemu-arm@nongnu.org; Mon, 08 Dec 2025 19:01:49 -0500
-Received: by mail-pg1-x549.google.com with SMTP id
- 41be03b00d2f7-bdf47c10220so8574279a12.3
- for <qemu-arm@nongnu.org>; Mon, 08 Dec 2025 16:01:46 -0800 (PST)
+ <38GY3aQYKCOslhOVamTbbTYR.PbZdRZh-NeZabaTah.beT@flex--yubinz.bounces.google.com>)
+ id 1vSlAx-0007T4-9A
+ for qemu-arm@nongnu.org; Mon, 08 Dec 2025 19:01:56 -0500
+Received: by mail-pg1-x54a.google.com with SMTP id
+ 41be03b00d2f7-bb27b422cf2so8118391a12.1
+ for <qemu-arm@nongnu.org>; Mon, 08 Dec 2025 16:01:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1765238505; x=1765843305; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=qKWZSsFPlt3/m4vph5eKz2W5qe9VhtT1w47FAZxOtFM=;
- b=2+8Zyi1qb5YWTxbPwSAVjp0PqKg+o/IU+HpPyI9CqCp1fASy45hu5c0IMM8kZWgsqT
- Hu2uGduGPBzSiWJKfbF/v9wP2tbvbJBU7L7jqL9XzrlhdZZf7pMb49voXnMdgK4UxOS2
- xKyOpsTs/vp3t28ccyveYtuJoMnpWCM5UtiA2DeEEk4CynuIzWqOn1siB7jIzS1C5sKm
- u+VYfGAu5sFAa7utAOU7Hy7w45lWFj+NqQHeiJDkVpytGzfEGhy/dAW0zRfeeEEnrj83
- q8YaarvNNxK8u58FAsr7m/KL3eciRrxFCoqoEJPQPTlEjnUQGcfA6EedN80pmWePbI6I
- WWvw==
+ d=google.com; s=20230601; t=1765238513; x=1765843313; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=otXfzV3x3jmdu0ev4HSkq2G8k4KXSOIhZQ6dmB3c07g=;
+ b=tHSZFQE8o22Nc7gkV/pwUNh+VROd/trkXX8Sxptwm56alCfHaFn+mG4RRd8iU8lNnc
+ NKWKOOu2ikxOW3ePSUdGvq/N/687w1irq8tEIX6hS3KH/UeK5bUjSnVy04Pdy4YCb1qD
+ RFOCP+CoKMd5FAOXjE294SOwosy97cVsjnNOLyfhh78J2BIlZKaNVQ+Oxlb9ZXuYVQIO
+ 03VMV8rh1F8N3HU7o0XfJdZGh4OF37QVPpWjM8gpZrGCN+6S/qwkQxiVtKlNbv2lRmka
+ 1JZ4eyQBKGuYVxaRQc3pwkf/6h7P1KfPdXCrV6eixa0/ilkJgjpiObckaUGtOh1XobIf
+ 0s6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765238505; x=1765843305;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=qKWZSsFPlt3/m4vph5eKz2W5qe9VhtT1w47FAZxOtFM=;
- b=ZoKXaUfyyRvwh4HGvINsrhtFkNDtFfyf8jOPvGOuGdm470vxLoA753TzBVvLmJoux2
- tl3GpCaw6zlj44LZzgZO/MwuV70Lo1gHzqOqVA2zPtHmn/dcVkYxF+g4bbvBOahC8VLu
- nWpRBKFZ4HKKTPljnazWM8gFVyiftB+F/BTAqxPPY/sAYCcQlOpwZmvH5+CA5dyw1txO
- DoCyxoVrXH0ORqHqXBhS/a68P2UHCAr2h0MgirAPGilmJWFpWrmieIywGRubt81Gahvs
- IQeqjqmmlyxJOgOMxQcLUxWhjtRRZBmh53tQP7FQJtTmixynor49g0VdID9W0EBdsThe
- R7TQ==
+ d=1e100.net; s=20230601; t=1765238513; x=1765843313;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=otXfzV3x3jmdu0ev4HSkq2G8k4KXSOIhZQ6dmB3c07g=;
+ b=BzSb4HyC704MVP1V/symFtYCa1fcylpzvcxuKs59JVUyaWhzeguLWIPStkgyKqFAHW
+ DpfMDAXXg1cp7rUf2YEC78GV1aXfmmfqXQk7kGbdPMSUJQ+n8hKtYyksa0tK7G9qMD3M
+ cVWAiGSy1KSBv345MRLmPqyoywpKHwubeaW6QXZ6d8/6no8LDEaX5nJaHx5sLsq0RU1T
+ jVYvuhkn6q1k7MJhgSlwnA/GsLjm+S90EZHTY1qWvuJnsSOs5L6A41ToSIYLMp5LEHI9
+ CWM5LPaN9LN+nka1x2JJy/yzaJnJPeo1bR2Kn/ImlDEJ3xw6FiYkKECOczikG114y3xf
+ fO6g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUwzO3RCGqSa6o+m3Nu/zFPh0UOkbj6S0K/9+I68ZCZ/qSKlYEq6bYCKyOGSOadNcQW0+j1s5eypQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yx93eAAnz9pnooyDEaRlgM0ZO95PxF4Wr9Ltru5JOLHt/N4C8w2
- esZeRvJ01AbUSGO53TR4jJ+1l+ZBaMBLqqkZzbmQU22+bwyHVvi4wXaz9nzMIPxms3h+SPXYB6w
- RBGt5yA==
-X-Google-Smtp-Source: AGHT+IGpkxfvMz65SRPUSd4SnHoyM/eUXQXveI+c1Bvf2J3jMDMZzk4iibtM2Ne4EAhcbKQ0WBX20cPauKA=
-X-Received: from dyec21.prod.google.com ([2002:a05:7300:2215:b0:2ab:9468:d9cf])
+ AJvYcCX1Y3TnOA1m9GQsYxRqOszT+UgimIbVoIeR8zylsgMkeGRYVVjdyxj0Sa45DAdsmut3LeV1el5M3w==@nongnu.org
+X-Gm-Message-State: AOJu0YzBlmABKD0OLbcmS1hdsJQGBGo3bpi+o00jzlGVmgJnpuJqk6AF
+ uVI9bTOTqdy4lYMUWYrvAUfnYPD9znl3PSO5oiRs8yh/jYp3xrbqkO6Y5hCUXj5iLHzlYj8l8qu
+ 9bEFvMw==
+X-Google-Smtp-Source: AGHT+IHW3z+q3GdQLsjhOzIktqrA/HPJHeruugQhUC1kIoFCNfbbRm7CFdSq4IdX37AW0pj/4rpbyL7ZwrU=
+X-Received: from dlbds7.prod.google.com ([2002:a05:7022:2507:b0:119:49ca:6b8b])
  (user=yubinz job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:693c:2414:b0:2a4:3f9c:9af8
- with SMTP id 5a478bee46e88-2abc7153739mr5639729eec.9.1765238505238; Mon, 08
- Dec 2025 16:01:45 -0800 (PST)
-Date: Tue, 09 Dec 2025 00:01:32 +0000
+ 2002:a05:7022:492:b0:119:e569:fbb3
+ with SMTP id a92af1059eb24-11e032bab02mr8030968c88.34.1765238512653; Mon, 08
+ Dec 2025 16:01:52 -0800 (PST)
+Date: Tue, 09 Dec 2025 00:01:37 +0000
+In-Reply-To: <20251209-aspeed-sgpio-v2-0-976e5f5790c2@google.com>
 Mime-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIANxmN2kC/1XMQQrCMBCF4auUWRvJRBupK+8hXcRkmg5oExIJS
- sndjQUXLv8H71shU2LKcO5WSFQ4c1haqF0HdjaLJ8GuNSipekTZC5MjkRPZRw4C3XFwpC0ZraF
- dYqKJXxt3HVvPnJ8hvTe94Hf9QfofKiikuEml5XA4oZ7MxYfg77S34QFjrfUDv40b36kAAAA=
-X-Change-Id: 20251105-aspeed-sgpio-1d49de6cea66
+References: <20251209-aspeed-sgpio-v2-0-976e5f5790c2@google.com>
 X-Mailer: b4 0.14.2
-Message-ID: <20251209-aspeed-sgpio-v2-0-976e5f5790c2@google.com>
-Subject: [PATCH v2 0/6] hw/gpio/aspeed_sgpio: Add Aspeed Serial GPIO (SGPIO)
- controller model
+Message-ID: <20251209-aspeed-sgpio-v2-5-976e5f5790c2@google.com>
+Subject: [PATCH v2 5/6] hw/arm/aspeed_ast27x0: Wire SGPIO controller to
+ AST2700 SoC
 From: Yubin Zou <yubinz@google.com>
 To: qemu-devel@nongnu.org
 Cc: "=?utf-8?q?C=C3=A9dric_Le_Goater?=" <clg@kaod.org>,
@@ -81,16 +79,16 @@ Cc: "=?utf-8?q?C=C3=A9dric_Le_Goater?=" <clg@kaod.org>,
  Nabih Estefan <nabihestefan@google.com>, qemu-arm@nongnu.org, 
  Yubin Zou <yubinz@google.com>
 Content-Type: text/plain; charset="utf-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
- envelope-from=36WY3aQYKCOQeaHOTfMUUMRK.IUSWKSa-GXSTUTMTa.UXM@flex--yubinz.bounces.google.com;
- helo=mail-pg1-x549.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::54a;
+ envelope-from=38GY3aQYKCOslhOVamTbbTYR.PbZdRZh-NeZabaTah.beT@flex--yubinz.bounces.google.com;
+ helo=mail-pg1-x54a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,68 +104,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series introduces a model for the Aspeed Serial GPIO (SGPIO) controller,
-commonly found on Aspeed SoCs such as the AST2700. The SGPIO peripheral
-provides a large number of GPIO pins that can be controlled and monitored
-serially.
-
-Improvement to QEMU:
-These patches enhance QEMU's hardware emulation capabilities for platforms
-using Aspeed SoCs, particularly for BMC simulations. By modeling the SGPIO
-controller, QEMU can more accurately represent the hardware, allowing for
-better development and testing of firmware and software that relies on these
-GPIOs for various functions like sensor monitoring, presence detect, and
-system control signals.
-
-Impact (Before/After):
-
-Before:
-QEMU lacked a model for the Aspeed SGPIO controller. Any guest software
-attempting to interact with the SGPIO register space would find no device.
-Firmware features depending on SGPIO pin states or interrupts could not be
-tested in QEMU.
-
-After:
-QEMU emulates the Aspeed SGPIO controller on supported machines (e.g.,
-ast2700-evb).
-- Guest firmware can configure SGPIO pins, set output values, and read input
-  values through the memory-mapped registers.
-- External entities (like test scripts or other QEMU components) can interact
-  with the pins via QOM properties (e.g., to simulate external signal changes).
-  Path example: /machine/soc/sgpio[0]/sgpio0
-- The model generates interrupts based on input pin transitions, according to
-  the configured mode (level/edge), enabling testing of interrupt handlers.
+This commit integrates the Aspeed SGPIO controller into the AST2700
 
 Signed-off-by: Yubin Zou <yubinz@google.com>
 ---
-Changes in v2:
-Split the v1 into smaller commits and reorder it for better review:
-- Link to v1: https://lore.kernel.org/qemu-devel/20251106-aspeed-sgpio-v1-0-b026093716fa@google.com
+ hw/arm/aspeed_ast27x0.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
----
-Yubin Zou (6):
-      hw/gpio/aspeed_sgpio: Add basic device model for Aspeed SGPIO
-      hw/gpio/aspeed_sgpio: aspeed: Add QOM property accessors for SGPIO pins
-      hw/gpio/aspeed_sgpio: Implement SGPIO interrupt handling
-      hw/arm/aspeed_soc: Update Aspeed SoC to support two SGPIO controllers
-      hw/arm/aspeed_ast27x0: Wire SGPIO controller to AST2700 SoC
-      test/qtest: Add Unit test for Aspeed SGPIO
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index e5f04bd16e80696e41005d9062a6df6d060b8088..787accadbecae376d0c747d054ec6372785375b1 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -519,6 +519,11 @@ static void aspeed_soc_ast2700_init(Object *obj)
+     snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
+     object_initialize_child(obj, "gpio", &s->gpio, typename);
+ 
++    snprintf(typename, sizeof(typename), "aspeed.sgpio-%s", socname);
++    for (i = 0; i < sc->sgpio_num; i++) {
++        object_initialize_child(obj, "sgpio[*]", &s->sgpiom[i], typename);
++    }
++
+     object_initialize_child(obj, "rtc", &s->rtc, TYPE_ASPEED_RTC);
+ 
+     snprintf(typename, sizeof(typename), "aspeed.sdhci-%s", socname);
+@@ -973,6 +978,17 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
+                        aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_GPIO));
+ 
++    /* SGPIO */
++    for (i = 0; i < sc->sgpio_num; i++) {
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->sgpiom[i]), errp)) {
++            return;
++        }
++        aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->sgpiom[i]), 0,
++                        sc->memmap[ASPEED_DEV_SGPIOM0 + i]);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->sgpiom[i]), 0,
++                        aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_SGPIOM0 + i));
++    }
++
+     /* RTC */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->rtc), errp)) {
+         return;
 
- hw/arm/aspeed_ast10x0.c          |   6 +-
- hw/arm/aspeed_ast27x0.c          |  26 +++
- hw/gpio/aspeed_sgpio.c           | 348 +++++++++++++++++++++++++++++++++++++++
- hw/gpio/meson.build              |   1 +
- include/hw/arm/aspeed_soc.h      |   8 +-
- include/hw/gpio/aspeed_sgpio.h   |  68 ++++++++
- tests/qtest/ast2700-sgpio-test.c | 152 +++++++++++++++++
- tests/qtest/meson.build          |   1 +
- 8 files changed, 605 insertions(+), 5 deletions(-)
----
-base-commit: 917ac07f9aef579b9538a81d45f45850aba42906
-change-id: 20251105-aspeed-sgpio-1d49de6cea66
-
-Best regards,
 -- 
-Yubin Zou <yubinz@google.com>
+2.52.0.223.gf5cc29aaa4-goog
 
 

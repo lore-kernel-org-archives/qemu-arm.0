@@ -4,154 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56842D1CDC6
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Dec 2025 14:53:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBE5ED3B7FF
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Dec 2025 16:09:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vSz53-0000YE-Ed; Tue, 09 Dec 2025 09:52:45 -0500
+	id 1vT0Gt-0007mL-Ez; Tue, 09 Dec 2025 11:09:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vSz51-0000XT-7g
- for qemu-arm@nongnu.org; Tue, 09 Dec 2025 09:52:43 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vT0Gn-0007lX-MU
+ for qemu-arm@nongnu.org; Tue, 09 Dec 2025 11:08:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vSz4z-00006R-Mm
- for qemu-arm@nongnu.org; Tue, 09 Dec 2025 09:52:42 -0500
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vT0Gl-0006Li-Qc
+ for qemu-arm@nongnu.org; Tue, 09 Dec 2025 11:08:57 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1765291961;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1765296533;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=io7JWqQd9z1Hrtj3lPMQmlaJidHiu62v7e+HMM/aD40=;
- b=dkDNj6pnwDJRDPPMoTdFDt08lhqCGLOe98ha2JB1VD5oXwIZ7XPGF1ncsGfGcrOT+6Oya2
- LP3m9TuUB/CvLdMmkNkUaeQeb74HA0sQFntgmnyuYE1WtHpgOQJlcPmJW1GnCYnZRsbauz
- Oe0Vad6kw+un3miAj4hPV5/PuRx1YDM=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references;
+ bh=1g41inXIlucCSAeLOyhD8KeeGH7HWy6ghOsq6rMsvVw=;
+ b=Aejv9IRL0fBe3zlxhd87vmUqU6r0yQypCcZ7Vm2k/o72tZ0dh3kHHL8xF7vORFYnMSQO28
+ x35Di+t9qWxv8STOWjM839I4R5o8Ldv09SxDiAEJaX0l8+CxcQmYbFeRuCmmbNpgxcHOl/
+ x4ttQ9rzxzPZTYg7p02VlDg6FQlZexQ=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-648-euPkXZ-jOQedgYGHbRv1OA-1; Tue, 09 Dec 2025 09:52:37 -0500
-X-MC-Unique: euPkXZ-jOQedgYGHbRv1OA-1
-X-Mimecast-MFC-AGG-ID: euPkXZ-jOQedgYGHbRv1OA_1765291956
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-477563e531cso37414765e9.1
- for <qemu-arm@nongnu.org>; Tue, 09 Dec 2025 06:52:37 -0800 (PST)
+ us-mta-615-fQWREBFCPzu0ztveCflL8w-1; Tue, 09 Dec 2025 11:08:52 -0500
+X-MC-Unique: fQWREBFCPzu0ztveCflL8w-1
+X-Mimecast-MFC-AGG-ID: fQWREBFCPzu0ztveCflL8w_1765296532
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-8ba026720eeso93708385a.1
+ for <qemu-arm@nongnu.org>; Tue, 09 Dec 2025 08:08:52 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765291956; x=1765896756;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1765296531; x=1765901331;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=io7JWqQd9z1Hrtj3lPMQmlaJidHiu62v7e+HMM/aD40=;
- b=Mi40eVVw9xhLHxOffefQMo4IPUOOgKVWsuKrYa8jHxMu3SCWEF0SFxHgXaouvliHhv
- kSAeBD+HkC98egxJ8mZ6kbsP9eXR05t7A0+IELpYJGsEBzfYVAsxl4ATXfgrLKypQ9fO
- IjN9XUqpiFADGy4cBBpHYGJChZz1xUeNtM175zUe90ZyBASJVNm7XIZQEUJliGAmxY4x
- FCXa4miCSmUouDBtp1tE+uvJxxPPEFGfylR++PXTHgUtfQWTZeraJZ4OyzFAwo+Z64Yv
- gxAubr+661495vQrHX73bVtJNFv6LKv9sJ6nTgTcVqjgt6TJyuxfuKwOwoso2C/pFDcS
- Mg/Q==
+ bh=1g41inXIlucCSAeLOyhD8KeeGH7HWy6ghOsq6rMsvVw=;
+ b=LTnbEDHaJLOwd7zLOAmLTkcAl1zRCc3DysqDHlhcnC4y/mIa+m3ItHFAjGoU4enpob
+ uyhs3MTcfInz/WuqugDHvyF38WAutGAhHWWJLg9fZcQY7d24npmxIRJ3L2QgvkDkzHmJ
+ fB/jqHbpQB9XU0lZ390Ssna85L0j9fepmbsDZy9ERJzaaou+3c8g7pY2SfmpkcadKIMa
+ tp39genCE4NxOtTPsRSW/9gcJm7f5oVPujd+ntSF6YmkEKGmFioSx4y00ktNrXIQ+ShY
+ PqZsIMRqzUaK/QKEIAweFVgGyH54YYvds79mBmdv/Uzq7ceR2++OMBrHYHEJIOIGtJLD
+ mB+Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWfNFHpMJZsP3fwxXfeDjIHFqKrcwCtOfgRMI1m5xGhmAEslMA9cBM7dtUjNqmkH4kasZ05v9lVDg==@nongnu.org
-X-Gm-Message-State: AOJu0YyFR7wo5leDrl/SWyEXZCN5nxX8TYJd2vWMaDZRV0ISn6qWGEWu
- lNN4o86d+PnGKUIAPNI0UGXIMsNbjJhygFFEJN8jQ3hlag1tEJjVlTuCUE4kqyD2dGCi78zGsiQ
- RiPn03NnuMXAAEgZ9ebwdcmEP1IeQ0qGIPPqFPJ0Y5GOaQx82LaNgJw==
-X-Gm-Gg: ASbGncvpRmmRPQw7h9ns6K9WCkKx7CWJ53KRX8WNES+VAusN1sYdIlY3rx057ELCuWp
- BOa/4Vgw13OmsHyh+XJpsk4V+6Av6S5IBYFU0Oyzv0LS2vXZSXBI/lYainIwp+/nP+ME76jGyvL
- s5syTU0sdIkOYubhT64hdz34T6+vyMiWhhy7hEVK9pg+HjPw62ROvH2JteFVC/yUG+mjZimq3kL
- kn5fkU63h77bDzlajpIOhrrgCNSAgzIhyY5gLZ5k/e1R/LsiLWM7Gd6IsYb9d3DAn2XkAltwU5y
- Ab1Qi1V1CrIKRyHzpWDVpjmLe9Z0nFU+Ec6KWXgJNsI9zunFaiNt0sY52r23jZBeNvpmSB1/xbW
- 1LpQ93QHKtk9qL1MEVPAebw/S2cwUJhGCbcSO8i5YG4dNr+cP
-X-Received: by 2002:a05:600c:1f90:b0:475:dcbb:7903 with SMTP id
- 5b1f17b1804b1-47939dfbf05mr93534215e9.9.1765291956327; 
- Tue, 09 Dec 2025 06:52:36 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHVwg4yQ4nfB2Mge3HiwvS/wUm0izAIVVrmi04AruSDJHOqyjHwMPoFTUc/J2rLm/QRVs0aWg==
-X-Received: by 2002:a05:600c:1f90:b0:475:dcbb:7903 with SMTP id
- 5b1f17b1804b1-47939dfbf05mr93534025e9.9.1765291955839; 
- Tue, 09 Dec 2025 06:52:35 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ AJvYcCXpomq0ghj24hJVtfzx7h2t4VLPZsAZT5dl2nugIwgU8LND4QNOee9iXhzVOWn4DCM3j4MAu+YLTA==@nongnu.org
+X-Gm-Message-State: AOJu0YwMiAh3GC8m7ETI4TFrinUkjcbRWjd8D3I7dnQ7heDqYVUP3y2J
+ gHa7B6Td+7iAaVxM7jqnxJmX/zwkoj6ImskjBIkHduiPkla/2QNDJeP9jABzmvBfgDJDcCOp1Bb
+ HW3A+32UwQ/hMDIZw+vNTxglz1c2Fax9Pc7eONgavREu9u5AEWefUnPTCF5BiJQ==
+X-Gm-Gg: ASbGncvx2o3lMnqQAvAfpIsII2/n4g/Sya8iEy4xUr4iTN3MtHmWzj9KrfgTT3ecSLj
+ Fs31/h+BBbaEvEw1OOg2aRaY0j+pfH+90NBxbQwSILX57zmfzrbjaaORwqInkQj8pGMO7Xm5FZb
+ MCXHULQkx4ChGELaEvuUvdaEyuC8eNrNJCvWjtTRRwBsk/Z/7lmwagSo9/mgeCtv6+Nzo4H8Br8
+ 3pordsoeaVIEF25htGCP7X66HzpkPTcwPfzq3X1Se701/Xq1K+Snh8XY1uqUwdQk2D3bpeFrawo
+ OHnTWfBRTvXy0yYCqaah8W3IOc2ebvjUfEwTgGv3OjZrZedfNKWtp+QacVglVcF/dBoo17Nh+68
+ Q02Y3yIJLHCHZxa3YkNCVY1Ns9h/rpYQNBFZPFoVf3IfTHsEoPBcm5fWgvQ==
+X-Received: by 2002:a05:620a:1a9d:b0:89f:db05:1643 with SMTP id
+ af79cd13be357-8b6a23f8a7cmr1686749685a.89.1765296531292; 
+ Tue, 09 Dec 2025 08:08:51 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFBc6C9M//PYF3Nlh/NFirwmz1Fjva8biSu4TTTkEQ4JFpmzzbulftdlcArHJEaaMDyEk9DYw==
+X-Received: by 2002:a05:620a:1a9d:b0:89f:db05:1643 with SMTP id
+ af79cd13be357-8b6a23f8a7cmr1686743185a.89.1765296530787; 
+ Tue, 09 Dec 2025 08:08:50 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47a816938d4sm13496865e9.1.2025.12.09.06.52.34
+ af79cd13be357-8b627a8824csm1320061185a.39.2025.12.09.08.08.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Dec 2025 06:52:35 -0800 (PST)
-Message-ID: <4dae8293-066f-4354-b50a-05ba4cc9b80f@redhat.com>
-Date: Tue, 9 Dec 2025 15:52:34 +0100
+ Tue, 09 Dec 2025 08:08:50 -0800 (PST)
+Message-ID: <8a2675a8-4ab6-4775-86d9-e1e15ff0f50b@redhat.com>
+Date: Tue, 9 Dec 2025 17:08:40 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/6] hw/gpio/aspeed_sgpio: aspeed: Add QOM property
- accessors for SGPIO pins
-To: Yubin Zou <yubinz@google.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Kane-Chen-AS
- <kane_chen@aspeedtech.com>, Nabih Estefan <nabihestefan@google.com>,
- qemu-arm@nongnu.org
-References: <20251209-aspeed-sgpio-v2-0-976e5f5790c2@google.com>
- <20251209-aspeed-sgpio-v2-2-976e5f5790c2@google.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251209-aspeed-sgpio-v2-2-976e5f5790c2@google.com>
+Subject: Re: [PATCH v2 2/4] hw/arm/smmuv3-accel: Allocate vEVENTQ for
+ accelerated SMMUv3 devices
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, nicolinc@nvidia.com, nathanc@nvidia.com,
+ mochs@nvidia.com, jgg@nvidia.com, jonathan.cameron@huawei.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, kjaju@nvidia.com
+References: <20251204092245.5157-1-skolothumtho@nvidia.com>
+ <20251204092245.5157-3-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20251204092245.5157-3-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: HEtEMF1U_4PvO2U42ss4j-F5uS58eJfXPMj8zJzvGAo_1765291956
+X-Mimecast-MFC-PROC-ID: fHYkIsRQkDkHVwYYtwZycYn63g3vJh6HkK8_Vi2tgXo_1765296532
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -164,138 +120,198 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
 
-The subject needs a fix. Please remove the extra 'aspeed: '.
 
-On 12/9/25 01:01, Yubin Zou wrote:
-> This commit adds QOM property accessors for the Aspeed SGPIO pins.
-
-I think you can drop the above sentence from the commit log. It's
-redundant with the subject.
-
-> The `aspeed_sgpio_get_pin` and `aspeed_sgpio_set_pin` functions are
-> implemented to get and set the level of individual SGPIO pins. These
-> are then exposed as boolean properties on the SGPIO device object.
-> 
-> Signed-off-by: Yubin Zou <yubinz@google.com>
+On 12/4/25 10:22 AM, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
+>
+> When the guest enables the Event Queue and a vIOMMU is present, allocate a
+> vEVENTQ object so that host-side events related to the vIOMMU can be
+> received and propagated back to the guest.
+>
+> For cold-plugged devices using SMMUv3 acceleration, the vIOMMU is created
+> before the guest boots. In this case, the vEVENTQ is allocated when the
+> guest writes to SMMU_CR0 and sets EVENTQEN = 1.
+>
+> If no cold-plugged device exists at boot (i.e. no vIOMMU initially), the
+> vEVENTQ is allocated when a vIOMMU is created, i.e. during the first
+> device hot-plug.
+>
+> Event read and propagation will be added in a later patch.
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 > ---
->   hw/gpio/aspeed_sgpio.c | 78 ++++++++++++++++++++++++++++++++++++++++++++++++++
->   1 file changed, 78 insertions(+)
-> 
-> diff --git a/hw/gpio/aspeed_sgpio.c b/hw/gpio/aspeed_sgpio.c
-> index 8676fa7ced134f1f62dc9e30b42c5fe6db3de268..efa7e574abe87e33e58ac88dba5e3469c6702b83 100644
-> --- a/hw/gpio/aspeed_sgpio.c
-> +++ b/hw/gpio/aspeed_sgpio.c
-> @@ -91,6 +91,73 @@ static void aspeed_sgpio_2700_write(void *opaque, hwaddr offset, uint64_t data,
->       }
->   }
->   
-> +static bool aspeed_sgpio_get_pin_level(AspeedSGPIOState *s, int pin)
+>  hw/arm/smmuv3-accel.c | 62 ++++++++++++++++++++++++++++++++++++++++++-
+>  hw/arm/smmuv3-accel.h |  6 +++++
+>  hw/arm/smmuv3.c       |  4 +++
+>  3 files changed, 71 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index dc0f61e841..74f0be3731 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -378,6 +378,58 @@ bool smmuv3_accel_issue_inv_cmd(SMMUv3State *bs, void *cmd, SMMUDevice *sdev,
+>                     sizeof(Cmd), &entry_num, cmd, errp);
+>  }
+>  
+> +static void smmuv3_accel_free_veventq(SMMUv3AccelState *accel)
 > +{
-> +    uint32_t value = s->ctrl_regs[pin >> 1];
-> +    bool is_input = !(pin % 2);
-> +    uint32_t bit_mask = 0;
+> +    IOMMUFDVeventq *veventq = accel->veventq;
 > +
-> +    if (is_input) {
-> +        bit_mask = SGPIO_SERIAL_IN_VAL_MASK;
-> +    } else {
-> +        bit_mask = SGPIO_SERIAL_OUT_VAL_MASK;
-> +    }
-> +
-> +    return value & bit_mask;
-> +}
-> +
-> +static void aspeed_sgpio_set_pin_level(AspeedSGPIOState *s, int pin, bool level)
-> +{
-> +    uint32_t value = s->ctrl_regs[pin >> 1];
-> +    bool is_input = !(pin % 2);
-> +    uint32_t bit_mask = 0;
-> +
-> +    if (is_input) {
-> +        bit_mask = SGPIO_SERIAL_IN_VAL_MASK;
-> +    } else {
-> +        bit_mask = SGPIO_SERIAL_OUT_VAL_MASK;
-> +    }
-> +
-> +    if (level) {
-> +        value |= bit_mask;
-> +    } else {
-> +        value &= ~bit_mask;
-> +    }
-> +    s->ctrl_regs[pin >> 1] = value;
-> +}
-> +
-> +static void aspeed_sgpio_get_pin(Object *obj, Visitor *v, const char *name,
-> +                                void *opaque, Error **errp)
-> +{
-> +    bool level = true;
-> +    int pin = 0xfff;
-> +    AspeedSGPIOState *s = ASPEED_SGPIO(obj);
-> +
-> +    if (sscanf(name, "sgpio%d", &pin) != 1) {
-> +        error_setg(errp, "%s: error reading %s", __func__, name);
+> +    if (!veventq) {
 > +        return;
 > +    }
-> +    level = aspeed_sgpio_get_pin_level(s, pin);
-> +    visit_type_bool(v, name, &level, errp);
+> +    iommufd_backend_free_id(accel->viommu.iommufd, veventq->veventq_id);
+> +    g_free(veventq);
+> +    accel->veventq = NULL;
 > +}
 > +
-> +static void aspeed_sgpio_set_pin(Object *obj, Visitor *v, const char *name,
-> +                                void *opaque, Error **errp)
+> +bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp)
 > +{
-> +    bool level;
-> +    int pin = 0xfff;
-> +    AspeedSGPIOState *s = ASPEED_SGPIO(obj);
+> +    SMMUv3AccelState *accel = s->s_accel;
+> +    IOMMUFDVeventq *veventq;
+> +    uint32_t veventq_id;
+> +    uint32_t veventq_fd;
 > +
-> +    if (!visit_type_bool(v, name, &level, errp)) {
-> +        return;
+> +    if (!accel) {
+> +        return true;
 > +    }
-> +    if (sscanf(name, "sgpio%d", &pin) != 1) {
-> +        error_setg(errp, "%s: error reading %s", __func__, name);
-> +        return;
+> +
+> +    if (accel->veventq) {
+> +        return true;
 > +    }
-> +    aspeed_sgpio_set_pin_level(s, pin, level);
+> +
+> +    /*
+> +     * Check whether the Guest has enabled the Event Queue. The queue enabled
+> +     * means EVENTQ_BASE has been programmed with a valid base address and size.
+> +     * If it’s not yet configured, return and retry later.
+The comment does not match the code nor the spec:
+
+static inline bool smmuv3_eventq_enabled(SMMUv3State *s) 
+{
+    return FIELD_EX32(s->cr[0], CR0, EVENTQEN);
+}
+
+and in 7.2.1
+
+Events are delivered into an Event queue if the queue is “writable”. The
+Event queue is writable when all of the following are true: • The queue
+is enabled, through SMMU_(*_)CR0.EVENTQEN for the Security state of the
+queue. • The queue is not full (see section 7.4 Event queue overflow
+regarding overflow). • No unacknowledged GERROR.EVENTQ_ABT_ERR condition
+exists for the queue
+
+
+> +     */
+> +    if (!smmuv3_eventq_enabled(s)) {
+> +        return true;
+> +    }
+> +
+> +    if (!iommufd_backend_alloc_veventq(accel->viommu.iommufd,
+> +                                       accel->viommu.viommu_id,
+> +                                       IOMMU_VEVENTQ_TYPE_ARM_SMMUV3,
+> +                                       1 << s->eventq.log2size, &veventq_id,
+> +                                       &veventq_fd, errp)) {
+> +        return false;
+> +    }
+> +
+> +    veventq = g_new(IOMMUFDVeventq, 1);
+> +    veventq->veventq_id = veventq_id;
+> +    veventq->veventq_fd = veventq_fd;
+> +    veventq->viommu = &accel->viommu;
+> +    accel->veventq = veventq;
+> +    return true;
 > +}
 > +
->   static const MemoryRegionOps aspeed_gpio_2700_ops = {
->     .read       = aspeed_sgpio_2700_read,
->     .write      = aspeed_sgpio_2700_write,
-> @@ -114,6 +181,16 @@ static void aspeed_sgpio_realize(DeviceState *dev, Error **errp)
->       sysbus_init_mmio(sbd, &s->iomem);
->   }
->   
-> +static void aspeed_sgpio_init(Object *obj)
+>  static bool
+>  smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+>                            Error **errp)
+> @@ -421,14 +473,21 @@ smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+>          goto free_abort_hwpt;
+>      }
+>  
+> +    /* Allocate a vEVENTQ if guest has enabled event queue */
+> +    if (!smmuv3_accel_alloc_veventq(s, errp)) {
+> +        goto free_bypass_hwpt;
+> +    }
+Then why don't we do it always upon the SMMU_(*_)CR0.EVENTQEN write?
+same question for the deallocation?
+> +
+>      /* Attach a HWPT based on SMMUv3 GBPA.ABORT value */
+>      hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
+>      if (!host_iommu_device_iommufd_attach_hwpt(idev, hwpt_id, errp)) {
+> -        goto free_bypass_hwpt;
+> +        goto free_veventq;
+>      }
+>      s->s_accel = accel;
+>      return true;
+>  
+> +free_veventq:
+> +    smmuv3_accel_free_veventq(accel);
+>  free_bypass_hwpt:
+>      iommufd_backend_free_id(idev->iommufd, accel->bypass_hwpt_id);
+>  free_abort_hwpt:
+> @@ -537,6 +596,7 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
+>      trace_smmuv3_accel_unset_iommu_device(devfn, idev->devid);
+>  
+>      if (QLIST_EMPTY(&accel->device_list)) {
+> +        smmuv3_accel_free_veventq(accel);
+>          iommufd_backend_free_id(accel->viommu.iommufd, accel->bypass_hwpt_id);
+>          iommufd_backend_free_id(accel->viommu.iommufd, accel->abort_hwpt_id);
+>          iommufd_backend_free_id(accel->viommu.iommufd, accel->viommu.viommu_id);
+> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
+> index 2f2904d86b..7b0f585769 100644
+> --- a/hw/arm/smmuv3-accel.h
+> +++ b/hw/arm/smmuv3-accel.h
+> @@ -20,6 +20,7 @@
+>   */
+>  typedef struct SMMUv3AccelState {
+>      IOMMUFDViommu viommu;
+> +    IOMMUFDVeventq *veventq;
+>      uint32_t bypass_hwpt_id;
+>      uint32_t abort_hwpt_id;
+>      QLIST_HEAD(, SMMUv3AccelDevice) device_list;
+> @@ -48,6 +49,7 @@ bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp);
+>  bool smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
+>                                  Error **errp);
+>  void smmuv3_accel_idr_override(SMMUv3State *s);
+> +bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp);
+>  void smmuv3_accel_reset(SMMUv3State *s);
+>  #else
+>  static inline void smmuv3_accel_init(SMMUv3State *s)
+> @@ -78,6 +80,10 @@ smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
+>  static inline void smmuv3_accel_idr_override(SMMUv3State *s)
+>  {
+>  }
+> +bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp)
 > +{
-> +    for (int i = 0; i < ASPEED_SGPIO_MAX_PIN_PAIR * 2; i++) {
-> +        char *name = g_strdup_printf("sgpio%d", i);
-
-You could use a g_autofree variable and drop the g_free below.
-
-How about using a "%03d" format in the printf and sscanf too ?
-
-C.
-
-> +        object_property_add(obj, name, "bool", aspeed_sgpio_get_pin,
-> +                            aspeed_sgpio_set_pin, NULL, NULL);
-> +        g_free(name);
-> +    }
+> +    return true;
 > +}
-> +
->   static void aspeed_sgpio_class_init(ObjectClass *klass, const void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(klass);
-> @@ -143,6 +220,7 @@ static const TypeInfo aspeed_sgpio_ast2700_info = {
->     .name           = TYPE_ASPEED_SGPIO "-ast2700",
->     .parent         = TYPE_ASPEED_SGPIO,
->     .class_init     = aspeed_sgpio_2700_class_init,
-> +  .instance_init  = aspeed_sgpio_init,
->   };
->   
->   static void aspeed_sgpio_register_types(void)
-> 
+>  static inline void smmuv3_accel_reset(SMMUv3State *s)
+>  {
+>  }
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 763f069a35..ac60ca0ce7 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -1602,6 +1602,10 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+>          s->cr0ack = data & ~SMMU_CR0_RESERVED;
+>          /* in case the command queue has been enabled */
+>          smmuv3_cmdq_consume(s, &local_err);
+> +        /* Allocate vEVENTQ if guest enables EventQ and vIOMMU is ready */
+> +        if (local_err == NULL) {
+> +            smmuv3_accel_alloc_veventq(s, &local_err);
+> +        }
+>          break;
+>      case A_CR1:
+>          s->cr[1] = data;
+Thanks
+
+Eric
 
 

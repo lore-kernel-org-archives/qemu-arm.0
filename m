@@ -4,81 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E48ED3B7EA
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Dec 2025 09:25:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27E15D1CDC6
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Dec 2025 09:25:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vStxz-0006lo-E5; Tue, 09 Dec 2025 04:25:07 -0500
+	id 1vSty0-0006mW-7B; Tue, 09 Dec 2025 04:25:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vStxx-0006jq-J7
- for qemu-arm@nongnu.org; Tue, 09 Dec 2025 04:25:05 -0500
+ id 1vStxy-0006kk-Qs
+ for qemu-arm@nongnu.org; Tue, 09 Dec 2025 04:25:06 -0500
 Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vStxu-0002HG-Rx
- for qemu-arm@nongnu.org; Tue, 09 Dec 2025 04:25:05 -0500
+ id 1vStxw-0002Jy-ED
+ for qemu-arm@nongnu.org; Tue, 09 Dec 2025 04:25:06 -0500
 Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-477563e28a3so38784245e9.1
- for <qemu-arm@nongnu.org>; Tue, 09 Dec 2025 01:25:02 -0800 (PST)
+ 5b1f17b1804b1-47775fb6cb4so45216445e9.0
+ for <qemu-arm@nongnu.org>; Tue, 09 Dec 2025 01:25:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765272301; x=1765877101; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=9THmgE9FxGdmnfvfnPpWimZ+vaexgQkKA5pzaXkAXJY=;
- b=QWqo+iPPhSOVN3HsX845ObOOSA6xgBgjmNJ8rgwTclbvzN1laUk+kFP5PwqhesvRZy
- ZyIdt0KoJnHzi59JljHCrP7x+dTCKeODuDlgwQU03nZ3Z50x7JPxFFmtvFDCG580E8p5
- kAbUB+/lHh02gtqvmRW86qb3AkswUw7SmmFJhlmW1SOyQHm4rNZL2FuZvW9DGGiIj4Fw
- Zq+C2cT4dqCW3cEPhNFJHUh6N9dMC2OEKwU//y2w4k6fYqjK7/4avFEEewVaREr7ykvH
- sewlTnYHyZK+bW+Vs3Fz6WW6iH1r4h3RnTFbptPKaIP5SU+aP6lsp3dxszVR/t6ONlsK
- nygQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765272301; x=1765877101;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1765272303; x=1765877103; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9THmgE9FxGdmnfvfnPpWimZ+vaexgQkKA5pzaXkAXJY=;
- b=Banvmva6WJSrQmdEyy3pxMMz4Vxqk41EP+Tnmxj2Eoo9eU6lXijG4yH03hc4mPXgj0
- XQ9EmxU0guQGi0Jx09O/VKTB+yxiQ9RhBDv3QW04sVfT8XBgSfFxCUwWJahW0pYBsxu6
- HiomaQZrNr4hzoHiPJs7RkatVuWUwyPK4R9IKhOYq4rnLldqIGkc41WDSiViFTmono4L
- q2JEwDN2G0Fu/ibQUHnmr4K55cPN2GlRRYF8mREiZDRMVEGrHkchrIokLDRfCsbz7Yiz
- Bx4k/zUu0/UBHNBkaGtz7uZ2jcDTH+VpDEkry5d9jdo073DpaaUD9/BQsKsiDYS+wREk
- RO2g==
+ bh=rMYHo9CKGWoLVCQcgyGnKo7wkmT6Z8PYd+ym/Y4GtS8=;
+ b=KCHPqWXGU/2dZJ1IH8ktlwgZVyNeNE6zSZ+oJ/vl21wVwI1Th1BLVbvpzJ3qHXJIwn
+ xZHlRI+PUdM+1chcnFXT3dIPfWJvNgiRaPvFRE98CkQtsKMYU5iMZoee9Cu7sKMoiW2Q
+ 0kQl1QnsLFcknqtrg42f27ipQ45/nCSkdAB0Xa4MNPA9V7mFPXy8dPKxMi0fMQmLTJhw
+ YywdjlGOE9Y4Cds6fqJKMqXXkCTEg7dys6uZB82lBPJH1JZPSvIN8j5qzKgwU3wJSw30
+ JnainY6OkIOtXlVIdk3AExV+JH5d/B1xIG6y7MFSiVAH8+G/o4rDyzDhBRl4cvLWAQAw
+ mgLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1765272303; x=1765877103;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=rMYHo9CKGWoLVCQcgyGnKo7wkmT6Z8PYd+ym/Y4GtS8=;
+ b=HgUUd99QFi4sVe8PI/aitQb/mkPlplX4wTuKzsJ9XKGuu/yDRuVjHx/ya5raWC03QX
+ j5OV8Ldeki3ZlZmTKmMP3BseqlCQsSPGQYV5Q5RJgCTrUr48Otdl/Q/vuQZwZEjwgGqB
+ TStrYru/RjtjShaTVB0oAMW2Rb/4MZBWpscXSZVFL2fTKD7A1TjHxYE3TpSPe4TVLXx2
+ 0dNFxNfwyoXbUkRr8nBSFW8sr6qT3Tvf8bXKpWZFOO2sVM4yrjYvU6fyU8WpJiqDF2na
+ 4mNMp/UEkSKyz1QbFGOThKhGl0BDX7QApWhNdWNCALnb+pPBQOOnCiI1MofXt9HremiS
+ Uj/g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWv3ISNaaBBEEExXzpLTYLE4fNrWEhEdY2QqnItxZqY0pbRqPI+YAm+nsqjUJuDmTsVxSXpiPdYRw==@nongnu.org
-X-Gm-Message-State: AOJu0YzbQ3PBsJqZTISf1bxEb/poGT0WK3zdtIafNb1yHu+CcN/L1WA0
- ALNtjVziVlTJoxHArvlW+DFlfwshaJMCctmxoFMLDgg37zZBfCdJgpr4IRcQsVtP8jI=
-X-Gm-Gg: ASbGncvFrgAx1uXZch16bWOATjUrMCtPXTP/I8AH9dhiVcQoxCG39R56e3DtTDGng/R
- USgn3uopeWxU/lBEEc0DtGY3gVNheGxT1ar6d4ozf51+vIZbSjDDBAGbIQiCg5BlOVp8XWnnSbI
- +buvFanrkmejC9Nc2xwUv14zS9ERn1e7qN9napcaSZJvSUN2laIwFnOgnI3/wA+Nk9AWXl+moci
- pv8jZHiuVP3hEAKj1AX29h9pQAz6pD3EyFs2duk/uv50XIWaZl7wyjIQVWm9QQnfN3pQ/sLmkTF
- UN1gT1wZi5oiDOrFDOemM4itU7VPi9cQScO7Slus4QGJQpRcEn415Es2WWUbbLTc6/QLbG2lr1j
- kPbZMuYGIPvolC+iNL57nnpxvHobKBDQWy/dLly9A099py60wXiQhpBXGMUPxV5uFGFYLmeCjnx
- RNTsHhsJwp15M=
-X-Google-Smtp-Source: AGHT+IGkP6Kh0IPnG57RNCUqHZKRmf2oJs0Weh1mxZc33haa0YGFD5V9FDIBMBtGqHJ1U7n3J/te6Q==
-X-Received: by 2002:a05:600c:870b:b0:479:1348:c63e with SMTP id
- 5b1f17b1804b1-47a7fa3344emr8579115e9.9.1765272300969; 
- Tue, 09 Dec 2025 01:25:00 -0800 (PST)
+ AJvYcCXmmnW+8sp+knvqcRwy/bRU65fX8go77t9NPcGRV+95yydIPTE9aVNtQjuaQqG1C2bf5HflxdL1Lg==@nongnu.org
+X-Gm-Message-State: AOJu0YyqRCa37P+5SOxdV24eY4JPTrxaybRqyfdmVrNgZFHR4LshlpIa
+ hNnxum8ZOIh9AQvXMdyAju3/wLkurhLGSocSTT80u7G9Xsjqk9IoX2wgGc6tW3iBCgk=
+X-Gm-Gg: ASbGncvndB23QpOQ0kB+GcJVBEMj8w6pp+EIt7nISfDWJt6lbl7Onk33LJMGpjF5fZc
+ MP7IN5q6gPvWCtgEpmvCBhE19XRgKhVXpeDOOVIMFwf7klzNDHVFrswd+HN6WgzO6oS8AYlJ/nu
+ xD6waxzDhSRgWGPTvRsmuS8Pal1JBgAQY5e/Mdq6iUvJckgB9q7bP5MMj1xsvqT0VLraldKm7Vt
+ 667EIpklaRNzS2tLOmg9zEM/4NLob8uICy9hRyGcRQYjfYS5nO9XLmgODQixv43b4Vzn+FhcQmV
+ ClmAVR0lahzUpX27QioRVIW8VYXHcD+nxp80NXTtWXcDB+0uFiAdLO7nTLSP4vJMO+EdGEYLQgl
+ V6WkqLSsvtKPDNmD24es/EjBdsnZG6xthcBWSoqcKFlNiSGkLWDqlV3nGkCOmfjG2bscAw4zyxR
+ T+Phufv0/jrCE=
+X-Google-Smtp-Source: AGHT+IEUcYKtImaN+MB6jR+ErxfH9ywEYeN+y7kh/5b8IZ7mKK/9NEqXOrD/m2uKJEz/Nb9gGR63iQ==
+X-Received: by 2002:a05:600c:529b:b0:479:3a88:de5d with SMTP id
+ 5b1f17b1804b1-4793a88deb1mr102905335e9.36.1765272302827; 
+ Tue, 09 Dec 2025 01:25:02 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47a7d6eb1f1sm29352845e9.2.2025.12.09.01.25.00
+ 5b1f17b1804b1-47a7d6fa121sm28672735e9.5.2025.12.09.01.25.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Tue, 09 Dec 2025 01:25:00 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 7A5A65F818;
+ by draig.lan (Postfix) with ESMTP id 8CBB35F747;
  Tue, 09 Dec 2025 09:24:59 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Mads Ynddal <mads@ynddal.dk>, Alexander Graf <agraf@csgraf.de>,
  qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 0/4] Final (for real this time) patches for arm - pre-PR
-Date: Tue,  9 Dec 2025 09:24:55 +0000
-Message-ID: <20251209092459.1058313-1-alex.bennee@linaro.org>
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Christian Stussak <christian.stussak@imaginary.org>
+Subject: [PATCH 1/4] Revert "target/arm: Re-use arm_is_psci_call() in HVF"
+Date: Tue,  9 Dec 2025 09:24:56 +0000
+Message-ID: <20251209092459.1058313-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20251209092459.1058313-1-alex.bennee@linaro.org>
+References: <20251209092459.1058313-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
  envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
@@ -88,7 +93,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,22 +109,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-These are all bug fixes for Arm including a recent regression to the
-Arm HVF code. Last chance to object as I will roll the PR later today
-once Richard is online.
+This breaks a pure HVF (--disable-tcg) build because the fallback stub
+will always report false.
 
-Alex.
+This reverts commit 4695daacc068cd0aa9a91c0063c4f2a9ec9b7ba1.
 
-Alex Bennée (4):
-  Revert "target/arm: Re-use arm_is_psci_call() in HVF"
-  target/arm: ensure PSCI register updates are flushed
-  target/arm: make HV_EXIT_REASON_CANCELED leave hvf_arch_vcpu_exec
-  target/arm: handle unaligned PC during tlb probe
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Christian Stussak <christian.stussak@imaginary.org>
+---
+ target/arm/hvf/hvf.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
- target/arm/hvf/hvf.c        | 11 ++++++++---
- target/arm/tcg/tlb_helper.c | 21 ++++++++++++++++-----
- 2 files changed, 24 insertions(+), 8 deletions(-)
-
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index de1e8fb8a05..70d34063df8 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1935,7 +1935,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
+         break;
+     case EC_AA64_HVC:
+         cpu_synchronize_state(cpu);
+-        if (arm_is_psci_call(arm_cpu, EXCP_HVC)) {
++        if (arm_cpu->psci_conduit == QEMU_PSCI_CONDUIT_HVC) {
+             /* Do NOT advance $pc for HVC */
+             if (!hvf_handle_psci_call(cpu)) {
+                 trace_hvf_unknown_hvc(env->pc, env->xregs[0]);
+@@ -1949,7 +1949,7 @@ static int hvf_handle_exception(CPUState *cpu, hv_vcpu_exit_exception_t *excp)
+         break;
+     case EC_AA64_SMC:
+         cpu_synchronize_state(cpu);
+-        if (arm_is_psci_call(arm_cpu, EXCP_SMC)) {
++        if (arm_cpu->psci_conduit == QEMU_PSCI_CONDUIT_SMC) {
+             /* Secure Monitor Call exception, we need to advance $pc */
+             advance_pc = true;
+ 
 -- 
 2.47.3
 

@@ -4,96 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8FD1D3B7EA
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Dec 2025 13:58:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56842D1CDC6
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Dec 2025 14:53:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vSyE0-000469-FS; Tue, 09 Dec 2025 08:57:56 -0500
+	id 1vSz53-0000YE-Ed; Tue, 09 Dec 2025 09:52:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vSyDy-00045x-LQ
- for qemu-arm@nongnu.org; Tue, 09 Dec 2025 08:57:54 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vSyDv-0003Yt-LJ
- for qemu-arm@nongnu.org; Tue, 09 Dec 2025 08:57:54 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-477632d9326so38268645e9.1
- for <qemu-arm@nongnu.org>; Tue, 09 Dec 2025 05:57:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765288670; x=1765893470; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=9Lj6Cwynroty49vwh9NXFqjkMdhiMwNrXbvydn1kQYQ=;
- b=Nbvvj8+bxogfWn8g55OzvKhH407foxUXe98cPkhAUGO+94pzm41SX/s/XiEFYS50Rl
- I8vAjBx4xe1ujRLebZ8O+HeVZSEuTuF6Ej++mNrSnlE4GxgxPjJkvEZnj3m43oiyu0pe
- 4N6KPIzSptJD2/WH94PMPQ0LSIknXpO0AD2y9vZkF1O3DqiTs0RJDoEmDPeleLVPtGi6
- /7YXhmIFDLw3MSzBH4KqmIkbqtvCHZSnhsVRmFV72fi+3/4f2AyObThJnZamsq3l0Dng
- Qnn4b/j61hOQg1bLMYuvm1afurWPGzPCvVPXIYgEqdwli+5dnIm9BDTFkRXLDk8HD+Ps
- UrPQ==
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vSz51-0000XT-7g
+ for qemu-arm@nongnu.org; Tue, 09 Dec 2025 09:52:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vSz4z-00006R-Mm
+ for qemu-arm@nongnu.org; Tue, 09 Dec 2025 09:52:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1765291961;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=io7JWqQd9z1Hrtj3lPMQmlaJidHiu62v7e+HMM/aD40=;
+ b=dkDNj6pnwDJRDPPMoTdFDt08lhqCGLOe98ha2JB1VD5oXwIZ7XPGF1ncsGfGcrOT+6Oya2
+ LP3m9TuUB/CvLdMmkNkUaeQeb74HA0sQFntgmnyuYE1WtHpgOQJlcPmJW1GnCYnZRsbauz
+ Oe0Vad6kw+un3miAj4hPV5/PuRx1YDM=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-648-euPkXZ-jOQedgYGHbRv1OA-1; Tue, 09 Dec 2025 09:52:37 -0500
+X-MC-Unique: euPkXZ-jOQedgYGHbRv1OA-1
+X-Mimecast-MFC-AGG-ID: euPkXZ-jOQedgYGHbRv1OA_1765291956
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-477563e531cso37414765e9.1
+ for <qemu-arm@nongnu.org>; Tue, 09 Dec 2025 06:52:37 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765288670; x=1765893470;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=9Lj6Cwynroty49vwh9NXFqjkMdhiMwNrXbvydn1kQYQ=;
- b=aeaR4gGgkUxd0E9f5yQ+4cHOdYMwZY8dmaAj0dW80y4iPcUKMzp/FsgOlwRfiI//3k
- Q1uFQaTA0kRN4qk3PA99mLRZymRxCYV0rhPBbftZJT358iKtCk27GmZlg0kn93ulcFqf
- zwdycoDO7EtO1cZAOvI6XMcj607IaGkmXVOqVbDKUnFYtHfC0VRTdOFZzw7FSc+4kTVw
- M8qlEQjKaPZcfD/uNgS5AkWEI4aQVbb9b1UdN0IDNxyI6P+mXTPC9SOfkD70tqYz5EoQ
- ge5wUOi0VeoH5oyw9kBpXDHaBH1zvc0q8Y1D5BeZigeCGcxY5zX6XJAe2+g7tdrz63hK
- yoSQ==
+ d=1e100.net; s=20230601; t=1765291956; x=1765896756;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=io7JWqQd9z1Hrtj3lPMQmlaJidHiu62v7e+HMM/aD40=;
+ b=Mi40eVVw9xhLHxOffefQMo4IPUOOgKVWsuKrYa8jHxMu3SCWEF0SFxHgXaouvliHhv
+ kSAeBD+HkC98egxJ8mZ6kbsP9eXR05t7A0+IELpYJGsEBzfYVAsxl4ATXfgrLKypQ9fO
+ IjN9XUqpiFADGy4cBBpHYGJChZz1xUeNtM175zUe90ZyBASJVNm7XIZQEUJliGAmxY4x
+ FCXa4miCSmUouDBtp1tE+uvJxxPPEFGfylR++PXTHgUtfQWTZeraJZ4OyzFAwo+Z64Yv
+ gxAubr+661495vQrHX73bVtJNFv6LKv9sJ6nTgTcVqjgt6TJyuxfuKwOwoso2C/pFDcS
+ Mg/Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWQQ+fFK8H0wN+6uzD3gDuLPUEDwxocgM6gJUDG2+cVwR72Z82+tj9Cf0mDnNWnG9G/p/+jkikOkA==@nongnu.org
-X-Gm-Message-State: AOJu0Ywe8phmEoaeCfIEtXIRZ002loZYuIYR9OXKz63R97PtGBFAqV/8
- AJEHIAqhgeXG4zGyasXzxN0IYOEQL0gUiZWCLhboyLxye1eg+F/4S0nX7a9yJfrOlWI=
-X-Gm-Gg: ASbGncvbXu8ebx3KJogyo3sO7tiDN23N8mcPu+54zbG1ox259zxR2vi4C8pLKMl+Oi0
- ON21/7ilrxjMNqp9pMH5EVwv+/gtvbNfmBcnrbKBXMQS0ywEWzKfyO/4pR3xCEJLTpCsERKJ8Rq
- /tZKT+9mXv8I7m3/8Zj+08aXY5Fu3S7CUPY52zTS8VES++Muhy2cQbxc6hHArerwXzDQsec8vrc
- RP5XGfJxkxaANfyZdnRLutSkxQeMmNZG9PdBYwzsWjnD6P1DTUz4PQGvzPP7QR0fcInANp+1kK1
- bWygJyOlIEcNoGvMWT7Mj8wVwCa2olOKfaqaAwzhb049diHmehBtvgrsnhYLHCUwpd9VfqScjfx
- pv0Auei2LWiwJrfLoL9raS0p2TcvR+7jdTUYdK10qJuWQxbR8QYSSOI9oZ7z/vZ0PJEAUkBLm+6
- qKMJb0zzB2VptfqfgHzAc2Fhdzw9cJV8dWEyHZfaN3mT0++V9oun2iAg==
-X-Google-Smtp-Source: AGHT+IFQpeoJOY7oHyI5Rar7nwjlNYAaLCIs1gKbIL//pTAPOnJCCOAx7z8qvPxR5SI2bCfKNPkx6g==
-X-Received: by 2002:a05:600c:35d6:b0:477:b642:9dc6 with SMTP id
- 5b1f17b1804b1-47939e48b2bmr109868225e9.34.1765288669531; 
- Tue, 09 Dec 2025 05:57:49 -0800 (PST)
-Received: from [192.168.69.213] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42f7d222491sm33136971f8f.22.2025.12.09.05.57.48
+ AJvYcCWfNFHpMJZsP3fwxXfeDjIHFqKrcwCtOfgRMI1m5xGhmAEslMA9cBM7dtUjNqmkH4kasZ05v9lVDg==@nongnu.org
+X-Gm-Message-State: AOJu0YyFR7wo5leDrl/SWyEXZCN5nxX8TYJd2vWMaDZRV0ISn6qWGEWu
+ lNN4o86d+PnGKUIAPNI0UGXIMsNbjJhygFFEJN8jQ3hlag1tEJjVlTuCUE4kqyD2dGCi78zGsiQ
+ RiPn03NnuMXAAEgZ9ebwdcmEP1IeQ0qGIPPqFPJ0Y5GOaQx82LaNgJw==
+X-Gm-Gg: ASbGncvpRmmRPQw7h9ns6K9WCkKx7CWJ53KRX8WNES+VAusN1sYdIlY3rx057ELCuWp
+ BOa/4Vgw13OmsHyh+XJpsk4V+6Av6S5IBYFU0Oyzv0LS2vXZSXBI/lYainIwp+/nP+ME76jGyvL
+ s5syTU0sdIkOYubhT64hdz34T6+vyMiWhhy7hEVK9pg+HjPw62ROvH2JteFVC/yUG+mjZimq3kL
+ kn5fkU63h77bDzlajpIOhrrgCNSAgzIhyY5gLZ5k/e1R/LsiLWM7Gd6IsYb9d3DAn2XkAltwU5y
+ Ab1Qi1V1CrIKRyHzpWDVpjmLe9Z0nFU+Ec6KWXgJNsI9zunFaiNt0sY52r23jZBeNvpmSB1/xbW
+ 1LpQ93QHKtk9qL1MEVPAebw/S2cwUJhGCbcSO8i5YG4dNr+cP
+X-Received: by 2002:a05:600c:1f90:b0:475:dcbb:7903 with SMTP id
+ 5b1f17b1804b1-47939dfbf05mr93534215e9.9.1765291956327; 
+ Tue, 09 Dec 2025 06:52:36 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHVwg4yQ4nfB2Mge3HiwvS/wUm0izAIVVrmi04AruSDJHOqyjHwMPoFTUc/J2rLm/QRVs0aWg==
+X-Received: by 2002:a05:600c:1f90:b0:475:dcbb:7903 with SMTP id
+ 5b1f17b1804b1-47939dfbf05mr93534025e9.9.1765291955839; 
+ Tue, 09 Dec 2025 06:52:35 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-47a816938d4sm13496865e9.1.2025.12.09.06.52.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Dec 2025 05:57:48 -0800 (PST)
-Message-ID: <6c48d631-4433-4ec8-9726-d832dee086b6@linaro.org>
-Date: Tue, 9 Dec 2025 14:57:47 +0100
+ Tue, 09 Dec 2025 06:52:35 -0800 (PST)
+Message-ID: <4dae8293-066f-4354-b50a-05ba4cc9b80f@redhat.com>
+Date: Tue, 9 Dec 2025 15:52:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] scripts: introduce
- scripts/update-aarch64-sysreg-code.py
-Content-Language: en-US
-To: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, richard.henderson@linaro.org,
- cohuck@redhat.com, sebott@redhat.com
-Cc: maz@kernel.org
-References: <20251208163751.611186-1-eric.auger@redhat.com>
- <20251208163751.611186-2-eric.auger@redhat.com>
- <796814e9-62c2-44d2-bd8c-39e36f17f635@linaro.org>
- <3a23f4b5-ff63-4b63-8dd3-f0bdd250c2ac@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <3a23f4b5-ff63-4b63-8dd3-f0bdd250c2ac@redhat.com>
+Subject: Re: [PATCH v2 2/6] hw/gpio/aspeed_sgpio: aspeed: Add QOM property
+ accessors for SGPIO pins
+To: Yubin Zou <yubinz@google.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Kane-Chen-AS
+ <kane_chen@aspeedtech.com>, Nabih Estefan <nabihestefan@google.com>,
+ qemu-arm@nongnu.org
+References: <20251209-aspeed-sgpio-v2-0-976e5f5790c2@google.com>
+ <20251209-aspeed-sgpio-v2-2-976e5f5790c2@google.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
+ 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
+ yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
+ 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
+ ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
+ RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
+ gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
+ 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
+ Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
+ tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSJDw6lkcmljIExl
+ IEdvYXRlciA8Y2xnQHJlZGhhdC5jb20+wsGRBBMBCAA7FiEEoPZlSPBIlev+awtgUaNDx8/7
+ 7KEFAmTLlVECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AACgkQUaNDx8/77KG0eg//
+ S0zIzTcxkrwJ/9XgdcvVTnXLVF9V4/tZPfB7sCp8rpDCEseU6O0TkOVFoGWM39sEMiQBSvyY
+ lHrP7p7E/JYQNNLh441MfaX8RJ5Ul3btluLapm8oHp/vbHKV2IhLcpNCfAqaQKdfk8yazYhh
+ EdxTBlzxPcu+78uE5fF4wusmtutK0JG0sAgq0mHFZX7qKG6LIbdLdaQalZ8CCFMKUhLptW71
+ xe+aNrn7hScBoOj2kTDRgf9CE7svmjGToJzUxgeh9mIkxAxTu7XU+8lmL28j2L5uNuDOq9vl
+ hM30OT+pfHmyPLtLK8+GXfFDxjea5hZLF+2yolE/ATQFt9AmOmXC+YayrcO2ZvdnKExZS1o8
+ VUKpZgRnkwMUUReaF/mTauRQGLuS4lDcI4DrARPyLGNbvYlpmJWnGRWCDguQ/LBPpbG7djoy
+ k3NlvoeA757c4DgCzggViqLm0Bae320qEc6z9o0X0ePqSU2f7vcuWN49Uhox5kM5L86DzjEQ
+ RHXndoJkeL8LmHx8DM+kx4aZt0zVfCHwmKTkSTQoAQakLpLte7tWXIio9ZKhUGPv/eHxXEoS
+ 0rOOAZ6np1U/xNR82QbF9qr9TrTVI3GtVe7Vxmff+qoSAxJiZQCo5kt0YlWwti2fFI4xvkOi
+ V7lyhOA3+/3oRKpZYQ86Frlo61HU3r6d9wzOwU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhW
+ pOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNLSoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZ
+ KXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVUcP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwp
+ bV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6
+ TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFU
+ CSLB2AE4wXQkJbApye48qnZ09zc929df5gU6hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iS
+ YBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616dtb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6g
+ LxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7
+ JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1cOY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0Sdu
+ jWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/Jx
+ IqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k
+ 8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoXywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjK
+ yKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9j
+ hQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Tad2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yop
+ s302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it+OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/p
+ LHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1nHzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBU
+ wYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVISl73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lU
+ XOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfA
+ HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
+ izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20251209-aspeed-sgpio-v2-2-976e5f5790c2@google.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: HEtEMF1U_4PvO2U42ss4j-F5uS58eJfXPMj8zJzvGAo_1765291956
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,236 +167,135 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/12/25 14:40, Eric Auger wrote:
-> Hi Philippe,
-> 
-> On 12/9/25 1:30 PM, Philippe Mathieu-Daudé wrote:
->> On 8/12/25 17:37, Eric Auger wrote:
->>> Introduce a script that takes as input the Registers.json file
->>> delivered in the AARCHMRS Features Model downloadable from the
->>> Arm Developer A-Profile Architecture Exploration Tools page:
->>> https://developer.arm.com/Architectures/A-Profile%20Architecture#Downloads
->>>
->>> and outputs the list of ID regs in target/arm/cpu-sysregs.h.inc
->>> under the form of DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>).
->>
->> Great idea!
->>
->>>
->>> We only care about IDregs with opcodes satisfying:
->>> op0 = 3, op1 within [0, 3], crn = 0, crm within [0, 7], op2 within
->>> [0, 7]
->>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>
->>> ---
->>>
->>> This was tested with
->>> https://developer.arm.com/-/cdn-downloads/permalink/Exploration-Tools-OS-Machine-Readable-Data/AARCHMRS_BSD/AARCHMRS_OPENSOURCE_A_profile_FAT-2025-09_ASL0.tar.gz
->>>
->>> Discussion about undesired generated regs can be found in
->>> https://lore.kernel.org/all/CAFEAcA9OXi4v+hdBMamQv85HYp2EqxOA5=nfsdZ5E3nf8RP_pw@mail.gmail.com/
->>>
->>> ---
->>>    scripts/update-aarch64-sysreg-code.py | 133 ++++++++++++++++++++++++++
->>>    1 file changed, 133 insertions(+)
->>>    create mode 100755 scripts/update-aarch64-sysreg-code.py
->>>
->>> diff --git a/scripts/update-aarch64-sysreg-code.py
->>> b/scripts/update-aarch64-sysreg-code.py
->>> new file mode 100755
->>> index 0000000000..c7b31035d1
->>> --- /dev/null
->>> +++ b/scripts/update-aarch64-sysreg-code.py
->>> @@ -0,0 +1,133 @@
->>> +#!/usr/bin/env python3
->>> +
->>> +# This script takes as input the Registers.json file delivered in
->>> +# the AARCHMRS Features Model downloadable from the Arm Developer
->>> +# A-Profile Architecture Exploration Tools page:
->>> +#
->>> https://developer.arm.com/Architectures/A-Profile%20Architecture#Downloads
->>> +# and outputs the list of ID regs in target/arm/cpu-sysregs.h.inc
->>> +# under the form of DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>)
->>> +#
->>> +# Copyright (C) 2025 Red Hat, Inc.
->>> +#
->>> +# Authors: Eric Auger <eric.auger@redhat.com>
->>> +#
->>> +# SPDX-License-Identifier: GPL-2.0-or-later
->>> +
->>> +
->>> +import json
->>> +import os
->>> +import sys
->>> +
->>
->> [*]
->>
->>> +# returns the int value of a given @opcode for a reg @encoding
->>> +def get_opcode(encoding, opcode):
->>> +    fvalue = encoding.get(opcode)
->>> +    if fvalue:
->>> +        value = fvalue.get('value')
->>> +        if isinstance(value, str):
->>> +            value = value.strip("'")
->>> +            value = int(value,2)
->>> +            return value
->>> +    return -1
->>> +
->>> +def extract_idregs_from_registers_json(filename):
->>> +    """
->>> +    Load a Registers.json file and extract all ID registers, decode
->>> their
->>> +    opcode and dump the information in target/arm/cpu-sysregs.h.inc
->>> +
->>> +    Args:
->>> +        filename (str): The path to the Registers.json
->>> +    returns:
->>> +        idregs: list of ID regs and their encoding
->>> +    """
->>> +    if not os.path.exists(filename):
->>> +        print(f"Error: {filename} could not be found!")
->>> +        return {}
->>> +
->>> +    try:
->>> +        with open(filename, 'r') as f:
->>> +            register_data = json.load(f)
->>> +
->>> +    except json.JSONDecodeError:
->>> +        print(f"Could not decode json from '{filename}'!")
->>> +        return {}
->>> +    except Exception as e:
->>> +        print(f"Unexpected error while reading {filename}: {e}")
->>> +        return {}
->>> +
->>> +    registers = [r for r in register_data if isinstance(r, dict) and \
->>> +                r.get('_type') == 'Register']
->>> +
->>> +    idregs = {}
->>> +
->>> +    # Some regs have op code values like 000x, 001x. Anyway we don't
->>> need
->>> +    # them. Besides some regs are undesired in the generated file
->>> such as
->>> +    # CCSIDR_EL1 and CCSIDR2_EL1 which are arrays of regs. Also exclude
->>> +    # VMPIDR_EL2 and VPIDR_EL2 which are outside of the IDreg scope we
->>> +    # are interested in and are tricky to decode as their system
->>> accessor
->>> +    # refer to MPIDR_EL1/MIDR_EL1 respectively
->>> +
->>> +    skiplist = ['ALLINT', 'PM', 'S1_', 'S3_', 'SVCR', \
->>> +                'CCSIDR_EL1', 'CCSIDR2_EL1', 'VMPIDR_EL2', 'VPIDR_EL2']
->>
->> Since we might have to update this array, I'd move it (and the big
->> comment preceding) in [*].
->>
->>> +
->>> +    for register in registers:
->>> +        reg_name = register.get('name')
->>> +
->>> +        is_skipped = any(term in (reg_name or "").upper() for term
->>> in skiplist)
->>> +
->>> +        if reg_name and not is_skipped:
->>> +            accessors = register.get('accessors', [])
->>> +
->>> +            for accessor in accessors:
->>> +                type = accessor.get('_type')
->>> +                if type in ['Accessors.SystemAccessor']:
->>> +                    encoding_list = accessor.get('encoding')
->>> +
->>> +                    if isinstance(encoding_list, list) and
->>> encoding_list and \
->>> +                       isinstance(encoding_list[0], dict):
->>> +                        encoding_wrapper = encoding_list[0]
->>> +                        encoding_source =
->>> encoding_wrapper.get('encodings', \
->>> +
->>> encoding_wrapper)
->>> +
->>> +                        if isinstance(encoding_source, dict):
->>> +                                op0 = get_opcode(encoding_source,
->>> 'op0')
->>> +                                op1 = get_opcode(encoding_source,
->>> 'op1')
->>> +                                op2 = get_opcode(encoding_source,
->>> 'op2')
->>> +                                crn = get_opcode(encoding_source,
->>> 'CRn')
->>> +                                crm = get_opcode(encoding_source,
->>> 'CRm')
->>> +                                encoding_str=f"{op0} {op1} {crn}
->>> {crm} {op2}"
->>> +
->>> +                # ID regs are assumed within this scope
->>> +                if op0 == 3 and (op1 == 0 or op1 == 1 or op1 == 3)
->>> and \
->>> +                   crn == 0 and (crm >= 0 and crm <= 7) and (op2 >=
->>> 0 and op2 <= 7):
->>> +                    idregs[reg_name] = encoding_str
->>> +
->>> +    return idregs
->>> +
->>> +if __name__ == "__main__":
->>> +    # Single arg expectedr: the path to the Registers.json file
->>
->> Typo "expectedr".
->>
->>> +    if len(sys.argv) < 2:
->>> +        print("Usage: scripts/update-aarch64-sysreg-code.py
->>> <path_to_registers_json>")
->>> +        sys.exit(1)
->>> +    else:
->>> +        json_file_path = sys.argv[1]
->>> +
->>> +    extracted_registers =
->>> extract_idregs_from_registers_json(json_file_path)
->>> +
->>> +    if extracted_registers:
->>> +        output_list = extracted_registers.items()
->>> +
->>> +        # Sort by register name
->>> +        sorted_output = sorted(output_list, key=lambda item: item[0])
->>> +
->>> +        # format lines as DEF(<name>, <op0>, <op1>, <crn>, <crm>,
->>> <op2>)
->>> +        final_output = ""
->>> +        for reg_name, encoding in sorted_output:
->>> +            reformatted_encoding = encoding.replace(" ", ", ")
->>> +            final_output += f"DEF({reg_name},
->>> {reformatted_encoding})\n"
->>> +
->>> +        with open("target/arm/cpu-sysregs.h.inc", 'w') as f:
->>> +            f.write("/* SPDX-License-Identifier: BSD-3-Clause */\n\n")
->>> +            f.write("/* This file is autogenerated by ")
->>> +            f.write("scripts/update-aarch64-sysreg-code.py */\n\n")
->>> +            f.write(final_output)
->>> +        print(f"updated target/arm/cpu-sysregs.h.inc")
->>
->> Fixed string (no formating) so no need for f- prefix.
->>
->> Patch LGTM but it should have some unit test.
-> 
-> thank you for the review.
-> 
-> Not sure what you mean by unit test? One solution could be to diff the
-> result with former bash/awk I used to generation previously [1] but i
-> guess it would be awkward to upstream the awk script we did not want in
-> the first place. Otherwise we could check some random opcodes but it
-> wouldn't mean the others are correct. To me the best way to validate the
-> python script is to do [1] once but do not upstream that. Reviewing the
-> new generated files against the previous content [3/3] is the best way
-> to test the result. I mean using auto generation does not prevent from
-> reviewing the generated stuff, especially because the generation is
-> triggered manually as scripts/update_linux_headers.sh and should not
-> happen very frequenty.
-> 
-> Thoughts?
+Hi,
 
-I was thinking something minimal like what we use for decodetree,
-see these 2 files:
+The subject needs a fix. Please remove the extra 'aspeed: '.
 
-  - tests/decode/meson.build
-  - tests/decode/err_field10.decode
+On 12/9/25 01:01, Yubin Zou wrote:
+> This commit adds QOM property accessors for the Aspeed SGPIO pins.
+
+I think you can drop the above sentence from the commit log. It's
+redundant with the subject.
+
+> The `aspeed_sgpio_get_pin` and `aspeed_sgpio_set_pin` functions are
+> implemented to get and set the level of individual SGPIO pins. These
+> are then exposed as boolean properties on the SGPIO device object.
+> 
+> Signed-off-by: Yubin Zou <yubinz@google.com>
+> ---
+>   hw/gpio/aspeed_sgpio.c | 78 ++++++++++++++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 78 insertions(+)
+> 
+> diff --git a/hw/gpio/aspeed_sgpio.c b/hw/gpio/aspeed_sgpio.c
+> index 8676fa7ced134f1f62dc9e30b42c5fe6db3de268..efa7e574abe87e33e58ac88dba5e3469c6702b83 100644
+> --- a/hw/gpio/aspeed_sgpio.c
+> +++ b/hw/gpio/aspeed_sgpio.c
+> @@ -91,6 +91,73 @@ static void aspeed_sgpio_2700_write(void *opaque, hwaddr offset, uint64_t data,
+>       }
+>   }
+>   
+> +static bool aspeed_sgpio_get_pin_level(AspeedSGPIOState *s, int pin)
+> +{
+> +    uint32_t value = s->ctrl_regs[pin >> 1];
+> +    bool is_input = !(pin % 2);
+> +    uint32_t bit_mask = 0;
+> +
+> +    if (is_input) {
+> +        bit_mask = SGPIO_SERIAL_IN_VAL_MASK;
+> +    } else {
+> +        bit_mask = SGPIO_SERIAL_OUT_VAL_MASK;
+> +    }
+> +
+> +    return value & bit_mask;
+> +}
+> +
+> +static void aspeed_sgpio_set_pin_level(AspeedSGPIOState *s, int pin, bool level)
+> +{
+> +    uint32_t value = s->ctrl_regs[pin >> 1];
+> +    bool is_input = !(pin % 2);
+> +    uint32_t bit_mask = 0;
+> +
+> +    if (is_input) {
+> +        bit_mask = SGPIO_SERIAL_IN_VAL_MASK;
+> +    } else {
+> +        bit_mask = SGPIO_SERIAL_OUT_VAL_MASK;
+> +    }
+> +
+> +    if (level) {
+> +        value |= bit_mask;
+> +    } else {
+> +        value &= ~bit_mask;
+> +    }
+> +    s->ctrl_regs[pin >> 1] = value;
+> +}
+> +
+> +static void aspeed_sgpio_get_pin(Object *obj, Visitor *v, const char *name,
+> +                                void *opaque, Error **errp)
+> +{
+> +    bool level = true;
+> +    int pin = 0xfff;
+> +    AspeedSGPIOState *s = ASPEED_SGPIO(obj);
+> +
+> +    if (sscanf(name, "sgpio%d", &pin) != 1) {
+> +        error_setg(errp, "%s: error reading %s", __func__, name);
+> +        return;
+> +    }
+> +    level = aspeed_sgpio_get_pin_level(s, pin);
+> +    visit_type_bool(v, name, &level, errp);
+> +}
+> +
+> +static void aspeed_sgpio_set_pin(Object *obj, Visitor *v, const char *name,
+> +                                void *opaque, Error **errp)
+> +{
+> +    bool level;
+> +    int pin = 0xfff;
+> +    AspeedSGPIOState *s = ASPEED_SGPIO(obj);
+> +
+> +    if (!visit_type_bool(v, name, &level, errp)) {
+> +        return;
+> +    }
+> +    if (sscanf(name, "sgpio%d", &pin) != 1) {
+> +        error_setg(errp, "%s: error reading %s", __func__, name);
+> +        return;
+> +    }
+> +    aspeed_sgpio_set_pin_level(s, pin, level);
+> +}
+> +
+>   static const MemoryRegionOps aspeed_gpio_2700_ops = {
+>     .read       = aspeed_sgpio_2700_read,
+>     .write      = aspeed_sgpio_2700_write,
+> @@ -114,6 +181,16 @@ static void aspeed_sgpio_realize(DeviceState *dev, Error **errp)
+>       sysbus_init_mmio(sbd, &s->iomem);
+>   }
+>   
+> +static void aspeed_sgpio_init(Object *obj)
+> +{
+> +    for (int i = 0; i < ASPEED_SGPIO_MAX_PIN_PAIR * 2; i++) {
+> +        char *name = g_strdup_printf("sgpio%d", i);
+
+You could use a g_autofree variable and drop the g_free below.
+
+How about using a "%03d" format in the printf and sscanf too ?
+
+C.
+
+> +        object_property_add(obj, name, "bool", aspeed_sgpio_get_pin,
+> +                            aspeed_sgpio_set_pin, NULL, NULL);
+> +        g_free(name);
+> +    }
+> +}
+> +
+>   static void aspeed_sgpio_class_init(ObjectClass *klass, const void *data)
+>   {
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+> @@ -143,6 +220,7 @@ static const TypeInfo aspeed_sgpio_ast2700_info = {
+>     .name           = TYPE_ASPEED_SGPIO "-ast2700",
+>     .parent         = TYPE_ASPEED_SGPIO,
+>     .class_init     = aspeed_sgpio_2700_class_init,
+> +  .instance_init  = aspeed_sgpio_init,
+>   };
+>   
+>   static void aspeed_sgpio_register_types(void)
+> 
+
 

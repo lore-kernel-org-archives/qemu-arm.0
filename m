@@ -4,100 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D5C1D1CDC6
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Dec 2025 10:19:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0EECD3B7EA
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Dec 2025 10:32:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vSuoI-0001AI-Hy; Tue, 09 Dec 2025 05:19:10 -0500
+	id 1vSv0q-0006Qd-0h; Tue, 09 Dec 2025 05:32:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vSuoG-00019X-Ac
- for qemu-arm@nongnu.org; Tue, 09 Dec 2025 05:19:08 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vSv0e-0006Oq-8Y
+ for qemu-arm@nongnu.org; Tue, 09 Dec 2025 05:31:57 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vSuoE-0008KU-Ih
- for qemu-arm@nongnu.org; Tue, 09 Dec 2025 05:19:08 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vSv0a-0003sk-1g
+ for qemu-arm@nongnu.org; Tue, 09 Dec 2025 05:31:53 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1765275545;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1765276310;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=EKI/cbDBHbKZsK9LoLRPEKXmj7kEki7sWCgJioeY/8U=;
- b=ghTCI0AsCNYz363h5UAz4SdpsaWH7/EuJdF0098jFsHcZ/K46u6sEjkXsAYQmjHOEXvL3R
- 70xM/+onWBkKUAA70Hj2rOdjFnSEqCzAQ4SY18HkbKGeie2f3QXizJSVANNRk6Z/aNKVvK
- gmemVP2vBNZXkDB2sKj5LTLzdVA5CfQ=
-Received: from mail-pg1-f199.google.com (mail-pg1-f199.google.com
- [209.85.215.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=wiaPmYAw/k3RkmnvJ86TKUAEaDvsCoN4EGuvsb8ZBLs=;
+ b=Prdu/oYdzLRp7YDWr3f3NSzKkaNhggDG3KT8w5PjpGPNcHIODdCZ+gOLZW2f4pe1bqqMmh
+ QQTCONwHXfRLcuzp2VaJ+eBnMxE0Q8qSpcpMzqc00YIssjhs3MGOfnVtEeq3eA1TIfomYO
+ YosQR1F/Ef2/QDmpY1jqmw35zc4VCdc=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-372-7qPXPKJ7O0Ke3SI8pYJeZQ-1; Tue, 09 Dec 2025 05:19:03 -0500
-X-MC-Unique: 7qPXPKJ7O0Ke3SI8pYJeZQ-1
-X-Mimecast-MFC-AGG-ID: 7qPXPKJ7O0Ke3SI8pYJeZQ_1765275543
-Received: by mail-pg1-f199.google.com with SMTP id
- 41be03b00d2f7-b6ce1b57b9cso6390597a12.1
- for <qemu-arm@nongnu.org>; Tue, 09 Dec 2025 02:19:03 -0800 (PST)
+ us-mta-282-4pl5CXWaPoCuDdlhVAPenQ-1; Tue, 09 Dec 2025 05:31:49 -0500
+X-MC-Unique: 4pl5CXWaPoCuDdlhVAPenQ-1
+X-Mimecast-MFC-AGG-ID: 4pl5CXWaPoCuDdlhVAPenQ_1765276308
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-477cf2230c8so45197705e9.0
+ for <qemu-arm@nongnu.org>; Tue, 09 Dec 2025 02:31:49 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765275543; x=1765880343;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1765276308; x=1765881108;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=EKI/cbDBHbKZsK9LoLRPEKXmj7kEki7sWCgJioeY/8U=;
- b=j+FAwL7oyPdWtS8D1HfD6/o86ejghEx/zYGtpqte4HEBA91aQb5rgf3JEtKDMnnSAc
- 7qH9xEPVDW/lKkrWxZAGFIEYMSIe8hlxgKCy1u/ZVA194TKY39EGzXVpKkARNQW620jv
- Gs1bXvm79N+iPiGWG+a7Q3hc1+RIqywFOBvfndKRPgTUHekkecuAhs2DR5V9RE6uOnTq
- UcZnuf3lqCUVQMR/GqpymWupQAztRd2bGJR5XMXZPiZVw2bd8ul/L7dNzPuiMr9Ia4va
- /VadxKoaPAebFs5oj8dOPavhBiWe/mdsqmAxM0hTaVEKtG+aUrbcSdrs5CG3GmJJv7Ai
- 0/+w==
+ bh=wiaPmYAw/k3RkmnvJ86TKUAEaDvsCoN4EGuvsb8ZBLs=;
+ b=MCX7VC1ACPF4ZKxCQkaF7GgV709Qp44inEb8sBpRvofcLeAHkoTMWUpt/ab5MejKNU
+ tWrrKgWi0fRfIY+1lKojJOlorb/uJ/Fv2wP8e/jtjw0zzTZ+RjBoRJH4bFAARMcMcL1i
+ tgqh097kng6JxhH5T9N9gnW7KrWK/ObIOXwPOqRDf71BVWyqdhVKi2ibEkaf37jm/1xI
+ a3v2uBafelIZED2/W5N7Dde8ozIjnsNWd0t1wSy6YxWJK4kpK8LHfKz/xbYBSRLqwtBK
+ l3NZuTaI28cAgxQT1GcxKUk05Mcfwts74Geg3vWCrlp1RQfQtqeaAq5wD5p0FLkHhvvP
+ dBwg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUsaJp2W6FMvkUVID3dWHe8ctaUbECUO9Iz+Cde9uxLQBm9zLH1RmfXS8Q+FN6i7hdyzb2D68A2bQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxphF4PqXo5dsxSUD+C2raT7+9OtPmovtWVtHfFg51+RGof2mC4
- g6ma9ZCPAvM4XSh7dkUgwCAuUVthU97LXd9Z7ShXB3vMF1WLPhLrne0L5PCA18/5hqsifqPSa7z
- LL0SRrp9N29VkXo6aPZjaW0XsYlhBJ4LhQhKR/4vDde/JMjxoN8YNtQ==
-X-Gm-Gg: ASbGncslwetHMKFrbdmnXZeaxlmt6c6ZDP/zwi2p3Pbb6135SgmBYi1tQ2233fbsFbG
- OzrKcQ/DpvW3/wgJPKy0fS+f5luC2Ul2XbZXdvfDR+xqQ1l+SZLS3bw/Lukct9yuCnLQnyXvmEq
- LYt6g7K1Tqg5ImCgdcP8uxf+4ByJKNW1U44l4n6xjd3DYFXfSN+JWPzwKjDaVO2HFmkl0SxVQe+
- Pu2NC2jsFZRLHSFU9aAiZowETb2CCLlOXtdpkvHFUzJ9byJ+FJHhcfnAcEj1tshIsl98BR2FjGb
- 5VYcK0+xdUyhyPG3HBzc6UbUITEkxIIz09oNx27rk0JpfU+jAZIsgcREC01PLbYZocseXOwEPMV
- lvlpbO+5cMNIxFlQ+BNWd15AUnFjduIaowRI+IifvKOTVCVeqI1KjtZv5Fw==
-X-Received: by 2002:a05:7300:d210:b0:2a4:874e:70cb with SMTP id
- 5a478bee46e88-2abc71f59e1mr4987814eec.26.1765275542658; 
- Tue, 09 Dec 2025 02:19:02 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGsMdzDgO7XLcWCc/dU5ng8es1aGNx40R9q+JTVzbUGAoTYqa4SM2GRfY7gHOYyxD4YcXTN+Q==
-X-Received: by 2002:a05:7300:d210:b0:2a4:874e:70cb with SMTP id
- 5a478bee46e88-2abc71f59e1mr4987794eec.26.1765275542107; 
- Tue, 09 Dec 2025 02:19:02 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ AJvYcCVpq9We5LRaaQHKFDggV7mhGPA6GnrURoJ+tcObHLH6lP2ohBLqFfrIcp9AI49LB2mcrigwOFDpyw==@nongnu.org
+X-Gm-Message-State: AOJu0YzrhKaMa+1VDpOjKRRkbmx7SRQm39ooZHB/NeioIhwD7/4SEDgg
+ RwS+Di6Iajtu54DJIRobNiV6FnvAqhH7i568x28DEq22Yv3YwJ95HCfZEwbCh71FrlH1DoAZ5af
+ uXo/pQJ1DNHHze4r7JMPegXlpMVoNLqRISha49KM4Ts/6alduK5f29g==
+X-Gm-Gg: ASbGnctKFdZlJQjni0w0bi1wz7odxc3KY+y4rkFoRp9It+WOwpMAxSLIUCViibmM4oi
+ 3pl1Yk/w66q21S/7WvbLcIRcjUiW9F2YutbaV2frpIsOhe0M5Lju3XaxA52P6IynF370LXUijHd
+ 9aOy9Payi8N5+cJWITiiJhltsOZWT4GapRbWmc9iQ+Fwnnpa8ZWy3pA/2NdoDxp95ihqDi8Nd/w
+ lEDLgvEhdUTdO8SACKW8aJp6Sepy8kZO/GKonLpHEq1g3pHJXRVe1XIDmdo9lDJTAUl+Si1RuWL
+ eAWWcgm0ShOQ8fgXIFzMw14j98BpOMYM9GxycT4wFzmzCYyeY31YvRoYosJ5Va7OjV0jNeIqHhg
+ 15BU0Z4PUQo8cmaX3AvdZOua6JNvf7V9wqgv8n2c1HmW0Oi0X
+X-Received: by 2002:a05:600c:154c:b0:477:7991:5d1e with SMTP id
+ 5b1f17b1804b1-47939e386dfmr109105985e9.25.1765276307637; 
+ Tue, 09 Dec 2025 02:31:47 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IESiHzYh45fITQWmiXwlDRMoogcAhJPOpd3e9JbWsgTfwRr61yyn+ZLr6YmiepiOB0724dUJg==
+X-Received: by 2002:a05:600c:154c:b0:477:7991:5d1e with SMTP id
+ 5b1f17b1804b1-47939e386dfmr109105555e9.25.1765276307087; 
+ Tue, 09 Dec 2025 02:31:47 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2aba87d7b9dsm56031890eec.4.2025.12.09.02.18.56
+ 5b1f17b1804b1-47a815e862asm2321195e9.1.2025.12.09.02.31.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Dec 2025 02:19:01 -0800 (PST)
-Message-ID: <69e9ac12-596d-415a-a669-980ba67d22ba@redhat.com>
-Date: Tue, 9 Dec 2025 11:18:53 +0100
+ Tue, 09 Dec 2025 02:31:46 -0800 (PST)
+Message-ID: <1ee20ead-6978-4c2b-9b2f-ad778107ad04@redhat.com>
+Date: Tue, 9 Dec 2025 11:31:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/4] vEVENTQ support for accelerated SMMUv3 devices
+Subject: Re: [PATCH v6 00/33] hw/arm/virt: Add support for user-creatable
+ accelerated SMMUv3
 To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, nicolinc@nvidia.com, nathanc@nvidia.com,
- mochs@nvidia.com, jgg@nvidia.com, jonathan.cameron@huawei.com,
- zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, kjaju@nvidia.com
-References: <20251204092245.5157-1-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251204092245.5157-1-skolothumtho@nvidia.com>
+Cc: eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
+ nicolinc@nvidia.com, ddutile@redhat.com, berrange@redhat.com,
+ nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com,
+ wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
+ jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
+ zhenzhong.duan@intel.com, yi.l.liu@intel.com, kjaju@nvidia.com
+References: <20251120132213.56581-1-skolothumtho@nvidia.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20251120132213.56581-1-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: QMTyMlPrbrh6AIWM_dy9edtcpNjO0mFZ69DbhrXNkPg_1765275543
+X-Mimecast-MFC-PROC-ID: 6KwJhJFBXsMeAeRH3J_IMTRPKRabXKmn9eIQAH9dB84_1765276308
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,7 +149,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,60 +162,209 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-On 12/4/25 10:22 AM, Shameer Kolothum wrote:
+On 11/20/25 14:21, Shameer Kolothum wrote:
 > Hi,
->
-> Changes from RFC v1:
-> https://lore.kernel.org/qemu-devel/20251105154657.37386-1-skolothumtho@nvidia.com/
->
->  -Rebased on v6[0] of the "accelerated SMMUv3" series
->  -Addressed feedback on the RFC. Thanks!
->  -Dropped the RFC tag as the accelerated series is now more mature, and once
->   that lands, it makes sense to pick this up as well since it enables the
->   delivery of SMMUv3 events to the guest.
->
-> When accel=on is enabled for an SMMUv3 instance, the host hardware SMMUv3
-> may generate Stage-1 (S1) fault or event notifications that are intended
-> for the vIOMMU instance in userspace.
->
-> This series adds QEMU support for receiving such host events through the
-> vEVENTQ interface and propagating them to the guest. The implementation
-> uses the vEVENTQ support provided by the IOMMUFD subsystem in the kernel.
->
-> I have lightly this on a Grace platform using some hacks to generate fault
-tested
-
-Eric
-> events. Further testing and feedback are welcome.
->
+> 
+> Changes from v5:
+>    https://lore.kernel.org/qemu-devel/20251031105005.24618-1-skolothumtho@nvidia.com/
+> 
+>   - Addressed feedback from v5 and picked up R-by tags. Thanks to all!
+>   - The previously split out _DSM fix mini-series is now accepted [0].
+>   - Improved documentation about the rationale behind the design choice of
+>     returning an address space aliased to the system address space for
+>     vfio-pci endpoint devices (patch #10).
+>   - Added error propagation support for smmuv3_cmdq_consume() (patch #13).
+>   - Updated vSTE based HWPT installation to check the SMMU enabled case
+>     (patch #14).
+>   - Introduced an optional callback to PCIIOMMUOps to retrieve the MSI
+>     doorbell GPA directly, allowing us to avoid unsafe page table walks for
+>     MSI translation in accelerated SMMUv3 cases (patch #16).
+>   - GBPA-based vSTE update depends on Nicolin's kernel patch [1].
+>   - VFIO/IOMMUFD has dependency on Zhenzhong's patches: 4/5/8 from the
+>     pass-through support series [2].
+> 
+> PATCH organization:
+>   1–26: Enables accelerated SMMUv3 with features based on default QEMU SMMUv3,
+>         including IORT RMR based MSI support.
+>   27–29: Adds options for specifying RIL, ATS, and OAS features.
+>   30–33: Adds PASID support, including VFIO changes.
+> 
+> Tests:
+> Performed basic sanity tests on an NVIDIA GRACE platform with GPU device
+> assignments. A CUDA test application was used to verify the SVA use case.
+> Further tests are always welcome.
+> 
+> Eg: Qemu Cmd line:
+> 
+> qemu-system-aarch64 -machine virt,gic-version=3,highmem-mmio-size=2T \
+> -cpu host -smp cpus=4 -m size=16G,slots=2,maxmem=66G -nographic \
+> -bios QEMU_EFI.fd -object iommufd,id=iommufd0 -enable-kvm \
+> -object memory-backend-ram,size=8G,id=m0 \
+> -object memory-backend-ram,size=8G,id=m1 \
+> -numa node,memdev=m0,cpus=0-3,nodeid=0 -numa node,memdev=m1,nodeid=1 \
+> -numa node,nodeid=2 -numa node,nodeid=3 -numa node,nodeid=4 -numa node,nodeid=5 \
+> -numa node,nodeid=6 -numa node,nodeid=7 -numa node,nodeid=8 -numa node,nodeid=9 \
+> -device pxb-pcie,id=pcie.1,bus_nr=1,bus=pcie.0 \
+> -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.0,accel=on,ats=on,ril=off,pasid=on,oas=48 \
+> -device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1,pref64-reserve=512G,id=dev0 \
+> -device vfio-pci,host=0019:06:00.0,rombar=0,id=dev0,iommufd=iommufd0,bus=pcie.port1 \
+> -object acpi-generic-initiator,id=gi0,pci-dev=dev0,node=2 \
+> ...
+> -object acpi-generic-initiator,id=gi7,pci-dev=dev0,node=9 \
+> -device pxb-pcie,id=pcie.2,bus_nr=8,bus=pcie.0 \
+> -device arm-smmuv3,primary-bus=pcie.2,id=smmuv3.1,accel=on,ats=on,ril=off,pasid=on \
+> -device pcie-root-port,id=pcie.port2,bus=pcie.2,chassis=2,pref64-reserve=512G \
+> -device vfio-pci,host=0018:06:00.0,rombar=0,id=dev1,iommufd=iommufd0,bus=pcie.port2 \
+> -device virtio-blk-device,drive=fs \
+> -drive file=image.qcow2,index=0,media=disk,format=qcow2,if=none,id=fs \
+> -net none \
+> -nographic
+> 
+> A complete branch can be found here,
+> https://github.com/shamiali2008/qemu-master master-smmuv3-accel-v6
+> 
+> Please take a look and let me know your feedback.
+> 
 > Thanks,
 > Shameer
->
-> [0]https://lore.kernel.org/qemu-devel/20251120132213.56581-1-skolothumtho@nvidia.com/
->
-> Nicolin Chen (2):
->   backends/iommufd: Introduce iommufd_backend_alloc_veventq
->   hw/arm/smmuv3-accel: Allocate vEVENTQ for accelerated SMMUv3 devices
->
-> Shameer Kolothum (2):
->   hw/arm/smmuv3: Introduce a helper function for event propagation
->   hw/arm/smmuv3-accel: Read and propagate host vIOMMU events
->
->  backends/iommufd.c       |  31 ++++++++++
->  backends/trace-events    |   1 +
->  hw/arm/smmuv3-accel.c    | 120 ++++++++++++++++++++++++++++++++++++++-
->  hw/arm/smmuv3-accel.h    |   8 +++
->  hw/arm/smmuv3-internal.h |   4 ++
->  hw/arm/smmuv3.c          |  25 ++++++--
->  hw/arm/trace-events      |   2 +-
->  include/system/iommufd.h |  12 ++++
->  8 files changed, 195 insertions(+), 8 deletions(-)
->
+> 
+> [0] https://lore.kernel.org/qemu-devel/20251022080639.243965-1-skolothumtho@nvidia.com/
+> [1] https://lore.kernel.org/linux-iommu/20251103172755.2026145-1-nicolinc@nvidia.com/
+> [2] https://lore.kernel.org/qemu-devel/20251117093729.1121324-1-zhenzhong.duan@intel.com/
+> 
+> Details from RFCv3 Cover letter:
+> -------------------------------
+> https://lore.kernel.org/qemu-devel/20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com/
+> 
+> This patch series introduces initial support for a user-creatable,
+> accelerated SMMUv3 device (-device arm-smmuv3,accel=on) in QEMU.
+> 
+> This is based on the user-creatable SMMUv3 device series [0].
+> 
+> Why this is needed:
+> 
+> On ARM, to enable vfio-pci pass-through devices in a VM, the host SMMUv3
+> must be set up in nested translation mode (Stage 1 + Stage 2), with
+> Stage 1 (S1) controlled by the guest and Stage 2 (S2) managed by the host.
+> 
+> This series introduces an optional accel property for the SMMUv3 device,
+> indicating that the guest will try to leverage host SMMUv3 features for
+> acceleration. By default, enabling accel configures the host SMMUv3 in
+> nested mode to support vfio-pci pass-through.
+> 
+> This new accelerated, user-creatable SMMUv3 device lets you:
+> 
+>   -Set up a VM with multiple SMMUv3s, each tied to a different physical SMMUv3
+>    on the host. Typically, you’d have multiple PCIe PXB root complexes in the
+>    VM (one per virtual NUMA node), and each of them can have its own SMMUv3.
+>    This setup mirrors the host's layout, where each NUMA node has its own
+>    SMMUv3, and helps build VMs that are more aligned with the host's NUMA
+>    topology.
+> 
+>   -The host–guest SMMUv3 association results in reduced invalidation broadcasts
+>    and lookups for devices behind different physical SMMUv3s.
+> 
+>   -Simplifies handling of host SMMUv3s with differing feature sets.
+> 
+>   -Lays the groundwork for additional capabilities like vCMDQ support.
+> -------------------------------
+> 
+> Eric Auger (2):
+>    hw/pci-host/gpex: Allow to generate preserve boot config DSM #5
+>    hw/arm/virt-acpi-build: Add IORT RMR regions to handle MSI nested
+>      binding
+> 
+> Nicolin Chen (4):
+>    backends/iommufd: Introduce iommufd_backend_alloc_viommu
+>    backends/iommufd: Introduce iommufd_backend_alloc_vdev
+>    hw/arm/smmuv3-accel: Add set/unset_iommu_device callback
+>    hw/arm/smmuv3-accel: Add nested vSTE install/uninstall support
+> 
+> Shameer Kolothum (26):
+>    hw/arm/smmu-common: Factor out common helper functions and export
+>    hw/arm/smmu-common: Make iommu ops part of SMMUState
+>    hw/arm/smmuv3-accel: Introduce smmuv3 accel device
+>    hw/arm/smmuv3-accel: Initialize shared system address space
+>    hw/pci/pci: Move pci_init_bus_master() after adding device to bus
+>    hw/pci/pci: Add optional supports_address_space() callback
+>    hw/pci-bridge/pci_expander_bridge: Move TYPE_PXB_PCIE_DEV to header
+>    hw/arm/smmuv3-accel: Restrict accelerated SMMUv3 to vfio-pci endpoints
+>      with iommufd
+>    hw/arm/smmuv3: Implement get_viommu_cap() callback
+>    hw/arm/smmuv3: propagate smmuv3_cmdq_consume() errors to caller
+>    hw/arm/smmuv3-accel: Install SMMUv3 GBPA based hwpt
+>    hw/pci/pci: Introduce a callback to retrieve the MSI doorbell GPA
+>      directly
+>    hw/arm/smmuv3: Add support for providing a direct MSI doorbell GPA
+>    hw/arm/smmuv3-accel: Add support to issue invalidation cmd to host
+>    hw/arm/smmuv3: Initialize ID registers early during realize()
+>    hw/arm/smmuv3-accel: Get host SMMUv3 hw info and validate
+>    hw/arm/virt: Set PCI preserve_config for accel SMMUv3
+>    tests/qtest/bios-tables-test: Prepare for IORT revison upgrade
+>    tests/qtest/bios-tables-test: Update IORT blobs after revision upgrade
+>    hw/arm/smmuv3: Add accel property for SMMUv3 device
+>    hw/arm/smmuv3-accel: Add a property to specify RIL support
+>    hw/arm/smmuv3-accel: Add support for ATS
+>    hw/arm/smmuv3-accel: Add property to specify OAS bits
+>    backends/iommufd: Retrieve PASID width from
+>      iommufd_backend_get_device_info()
+>    Extend get_cap() callback to support PASID
+>    hw/arm/smmuv3-accel: Add support for PASID enable
+> 
+> Yi Liu (1):
+>    vfio: Synthesize vPASID capability to VM
+> 
+>   backends/iommufd.c                            |  82 +-
+>   backends/trace-events                         |   2 +
+>   hw/arm/Kconfig                                |   5 +
+>   hw/arm/meson.build                            |   3 +-
+>   hw/arm/smmu-common.c                          |  51 +-
+>   hw/arm/smmuv3-accel.c                         | 756 ++++++++++++++++++
+>   hw/arm/smmuv3-accel.h                         |  86 ++
+>   hw/arm/smmuv3-internal.h                      |  27 +-
+>   hw/arm/smmuv3.c                               | 206 ++++-
+>   hw/arm/trace-events                           |   6 +
+>   hw/arm/virt-acpi-build.c                      | 127 ++-
+>   hw/arm/virt.c                                 |  30 +
+>   hw/i386/intel_iommu.c                         |   8 +-
+>   hw/pci-bridge/pci_expander_bridge.c           |   1 -
+>   hw/pci-host/gpex-acpi.c                       |  29 +-
+>   hw/pci/pci.c                                  |  43 +-
+>   hw/vfio/container-legacy.c                    |   8 +-
+>   hw/vfio/iommufd.c                             |   7 +-
+>   hw/vfio/pci.c                                 |  38 +
+>   include/hw/arm/smmu-common.h                  |   7 +
+>   include/hw/arm/smmuv3.h                       |  10 +
+>   include/hw/arm/virt.h                         |   1 +
+>   include/hw/iommu.h                            |   1 +
+>   include/hw/pci-host/gpex.h                    |   1 +
+>   include/hw/pci/pci.h                          |  34 +
+>   include/hw/pci/pci_bridge.h                   |   1 +
+>   include/system/host_iommu_device.h            |  21 +-
+>   include/system/iommufd.h                      |  29 +-
+>   target/arm/kvm.c                              |  18 +-
+>   tests/data/acpi/aarch64/virt/IORT             | Bin 128 -> 128 bytes
+>   tests/data/acpi/aarch64/virt/IORT.its_off     | Bin 172 -> 172 bytes
+>   tests/data/acpi/aarch64/virt/IORT.smmuv3-dev  | Bin 364 -> 364 bytes
+>   .../data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 276 -> 276 bytes
+>   33 files changed, 1536 insertions(+), 102 deletions(-)
+>   create mode 100644 hw/arm/smmuv3-accel.c
+>   create mode 100644 hw/arm/smmuv3-accel.h
+> 
+
+FYI, I am seeing configure errors :
+
+The following clauses were found for ARM_SMMUV3_ACCEL
+     select ARM_SMMUV3_ACCEL if ARM_VIRT
+     config ARM_SMMUV3_ACCEL depends on (ARM_SMMUV3 && IOMMUFD)
+
+KconfigDataError: contradiction between clauses when setting ARM_SMMUV3_ACCEL
+
+Thanks,
+
+C.
 
 

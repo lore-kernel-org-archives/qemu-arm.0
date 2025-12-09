@@ -4,89 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17F79D3B7EA
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Dec 2025 12:34:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70A6AD1CDC6
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Dec 2025 12:40:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vSwuz-0003Fh-OK; Tue, 09 Dec 2025 07:34:13 -0500
+	id 1vSx15-0005Vw-HI; Tue, 09 Dec 2025 07:40:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vSwuy-0003F6-Gh
- for qemu-arm@nongnu.org; Tue, 09 Dec 2025 07:34:12 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vSx13-0005VL-Uy
+ for qemu-arm@nongnu.org; Tue, 09 Dec 2025 07:40:29 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vSwuw-00076R-Ht
- for qemu-arm@nongnu.org; Tue, 09 Dec 2025 07:34:12 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4779adb38d3so52303805e9.2
- for <qemu-arm@nongnu.org>; Tue, 09 Dec 2025 04:34:10 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vSx12-0001aV-Cp
+ for qemu-arm@nongnu.org; Tue, 09 Dec 2025 07:40:29 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-47789cd2083so33659545e9.2
+ for <qemu-arm@nongnu.org>; Tue, 09 Dec 2025 04:40:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765283649; x=1765888449; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=linaro.org; s=google; t=1765284027; x=1765888827; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=5Md+2KzC/nD2SPokWSEaP2qj40tFpsrM0GiSUbtIqZk=;
- b=vyz7agerKRHVvDmnKvFPP+pH8I+3ugD3GvGg0NK8F7CL8O2Pqn8uNtl6WB6AzIreSs
- 5TqdMrz1Z5LvEb2C23JR+hdUbCFlw9Y9esRkYR6UUMImCEVfxXG5NO1BqUR/syHxfV4O
- CWLYgIFaauf1z9xGY6h1t6lxO50am6JD+GB2M8JyDqi4W/HlBLCYwwOnyQbTdn/ZSfxt
- +zeOkf/4bubBFbZGMvLLc497B5yAgDkjj7obzW1FO6ptyPBcpOfPoJ/GvUYHhKjB8r70
- Gi6VTtH6k7voCT+dsOPgpz9Q7D9rb8luJ1nB7EIjXKslKtpqz6znlqbFYOCp4az4AXrV
- in4w==
+ bh=IC8+DC4Ib0SrtPh4l1CU9Gq1c2LnqykzUE7mPJiFwAg=;
+ b=ipJJveR2w7zAaRD4FZ7Un6kIiflah7yJzn3R0cqHglSUDbqmZ00KAFGh60TpI5qCtq
+ tSow1zW9oPs/jVpLM2hCizfx0Hq6xG9Qx8jxL490RB3mkQ9HmfzkBWX91726ahmgmLdG
+ gMVmpt9AeUn5kHMmSUH8lZ0XhZKxy8+bpg37cmfWfTspEhPwBrgC/kfOftfIwfzHIoaB
+ 3s6tIiBmyjk6ePK1vNHQ9//fWG0DSnPQi4fpuOa6rVN7DnDZcuKXXTdfV5s6Tvoy7v4H
+ jAYypqozg9rwmqLO5pHxUflzkMWPiVzqFUUSEA4l7ozwB8mn86+NHFoiHSSjqBruZIGB
+ P85g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765283649; x=1765888449;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=1e100.net; s=20230601; t=1765284027; x=1765888827;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=5Md+2KzC/nD2SPokWSEaP2qj40tFpsrM0GiSUbtIqZk=;
- b=GOtyKkY4CrhvazeYw9JlxwpweVaIDTayiYYjeWj6Y6ACYHMdHcT2MWwaUrlFrKWfK+
- ElI8xUmp/OJWKMZkQRPn1ynZzZhPUK2Q92z8piUD/8bsvwrXEeamxVgbycUW5BYt8GBe
- zTFsEfFvBnln+27l08M2+jDyu/ow/KLxsZeS79TsrK/YbfUfcX0LEOiKor65SYuzHVxm
- sD61gR7BAGkcYD8nV77CkMD+jJx0gfr9b8yuDHNmIGIpm3l1fLUJ4HGdhxmPE0w9dhzs
- 7L+n2C/35PYkKZ/Knbsnunyp9E5cr7oq6E1QuCui4FoC6s2B/ueGvqmd2Wgt40czXti2
- p3dg==
+ bh=IC8+DC4Ib0SrtPh4l1CU9Gq1c2LnqykzUE7mPJiFwAg=;
+ b=LT+aNOE9W+qWJzTs3G2e1rXR6fXVyAP5Q+cRAJ7BczURZIqhjVwaJF1M57FD6G3uIk
+ ocaky1Ac9VvDQHbRYf+0kmaKwNMg1+gXc7Aob9liGoHi9AxYwfiZiGpyqJhm+7d1QiYQ
+ mWklhpSsYMygxo9kn0F9O9yLCKm8vHZH3EzC/7UKhxtmUSQ1Zknn1HtW9IkAKF3E9dQI
+ OUpiZnUE6OWgDtjSdDpTMMp1tL3qyu56OJ8RzLRTrWgX1VyMQxP3vbogtISOWEBcloOP
+ WfRMPxKap9H8A8Ed5BJX8B0OObzgxpIl60fG/mGnOyOWQJF06roe8cPmfsQ4F/JeGa3e
+ wNUA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVKC4cyy/2ciY3Xg5isXPdvUrzE3n9g2WE2KYlJNpoq89OEnwxTYapUWiwE79cjwVUgQ+0vOE1phg==@nongnu.org
-X-Gm-Message-State: AOJu0Yytp0Qy6BecYS02l5b2ED10XdrkZdc6dsDcCE3/QFjTSYNnpu9O
- LWamB5AjHx2QGUpWjctFQnixHd3L6quWK7SCa1fu4/GI8Z8bXji+M8LqIVLbe22M6WKC/0XOKk4
- n4KTUXEE=
-X-Gm-Gg: ASbGncvMwM1K9SxBMLC+rYmk112hpPYJo/240m+vxuKMDEZAtLT3rKSHf4dt4HM1fJv
- gQQ7MfwhF0UR2Ue5YyirwCai8tpQPOHpEtLGTFKGO7/BW7FUJ/sSBPzlJstMcmv35TbK/OlKQaM
- YuYL7b5iBXki2SzmXlZ1IViHC+YNlRbU2AS+ABcWwps4v8j1RRYn722ZAAG3pxYxeXw/fO4+2Uq
- J3XM5trGwVvGCE93URjwtLsumGXRSmDkcGbbmoaOG7iPWuyfcC+jjAEl20gs7UCZUt0T1Imp3Jl
- j1FA/zHYZmD8dXKZR/eZ37DzTny+cDNNA8leKlXWgHXdhTCAvV53/unFJhs6VWnAxU+cxGSmoyO
- 8n/3/BZ/9B1t5JwYzQBQmacL+ZLvI/j5oKTN/p4KtxNCvQbZeW+gkem9QAsMXqqcqI9Smq31wIh
- biy0z7yZFAVkH89qpNWk6XjpAWQs5+G3kJihb1WzSyI/NGSXDgZENskw==
-X-Google-Smtp-Source: AGHT+IHeVPgt/ygQKLS0ue0LdE4ju3hgGAX3U4DpssPP6tPu3Sc5x9qZSZ8ZPKp+6+8ggecBgTFZLA==
-X-Received: by 2002:a05:600c:8b34:b0:471:700:f281 with SMTP id
- 5b1f17b1804b1-47939e3d14amr113290215e9.25.1765283648678; 
- Tue, 09 Dec 2025 04:34:08 -0800 (PST)
+ AJvYcCXW9PaY+fxCyLJszZhPXrriGe0pWO6hvN5/2SjAd5hzUPa9rA9dzeinT4xSh4E6Hnm3VNzFfoTwag==@nongnu.org
+X-Gm-Message-State: AOJu0Yx37M4q2ggNkDI+2PECo8fZbSe50qKrh+0gBkTS7pYiUdomGmAT
+ YZ5d34yBU/cEKKn6xwuRZ+bS4AvFJA0tDSGUOm/z8yCK5iBUV9lN5+uA5yRljXPNoMc=
+X-Gm-Gg: ASbGncvJJQ2DCjtBQT18OBGoGEHV7cQNBd9ShaYkposF2ceoI867cj0ctTdR4Md25KX
+ ph++r8lYhqIlTUlG+RI8By8QvLrt/GKrn1K8yUxsQynu52SXhRRDtA7/pWm+tlgHvd2HtGXKlVw
+ R/ny53DfhEHLkEn+LlIUndFRl0aMc1q3y9MWBVS1MP1m2FKqzuijG8GGhuL8hGpPLDx5iJmELk0
+ kg/mTzpeH01dYLQ8OppL4kTGZGrFhc3q4Sdpe++H4HlC4zN14L5VwTwHNaDdmJjmpzsopLf1oe/
+ gPd2gOGC76LCaSe6kcoQyIlwbVrXcqIgToWmPU7T9qqZ3I1HqmY03e3tiKVXQxysBOfHcLgkCMb
+ wyPO1HA+t3RIguT/MGQClyqPUtTTtF92FYPUeiVjtvouh/FEfkJqyiQLGTqQIm2NjN+h/1fVfwB
+ R8j4UR5cBkbIk0qs3A0xF8ibnwjWeOaRvYmY8+lH186lPuLp4A4iXhbA==
+X-Google-Smtp-Source: AGHT+IECehiPEX67BgdGj/I+aSrrbdIXNZCBM3aZysQI2RXhZqeFamVEZkLOOHfmjN5wPEFO+KcJMQ==
+X-Received: by 2002:a05:600c:3115:b0:477:63db:c718 with SMTP id
+ 5b1f17b1804b1-47939e2797cmr129519705e9.16.1765284026785; 
+ Tue, 09 Dec 2025 04:40:26 -0800 (PST)
 Received: from [192.168.69.213] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47a7da22878sm15554525e9.16.2025.12.09.04.34.07
+ 5b1f17b1804b1-47a7d68ab29sm38108185e9.9.2025.12.09.04.40.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Dec 2025 04:34:08 -0800 (PST)
-Message-ID: <c4d5140a-8ef2-49bc-883a-9b40e6e9e58a@linaro.org>
-Date: Tue, 9 Dec 2025 13:34:07 +0100
+ Tue, 09 Dec 2025 04:40:26 -0800 (PST)
+Message-ID: <fa6395bd-8105-44a4-a2af-75d44f519051@linaro.org>
+Date: Tue, 9 Dec 2025 13:40:25 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] scripts: introduce
- scripts/update-aarch64-sysreg-code.py
+Subject: Re: [PATCH 2/4] target/arm: ensure PSCI register updates are flushed
 Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Mads Ynddal <mads@ynddal.dk>, Alexander Graf <agraf@csgraf.de>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Christian Stussak <christian.stussak@imaginary.org>
+References: <20251209092459.1058313-1-alex.bennee@linaro.org>
+ <20251209092459.1058313-3-alex.bennee@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, cohuck@redhat.com, sebott@redhat.com
-Cc: maz@kernel.org
-References: <20251208163751.611186-1-eric.auger@redhat.com>
- <20251208163751.611186-2-eric.auger@redhat.com>
- <796814e9-62c2-44d2-bd8c-39e36f17f635@linaro.org>
-In-Reply-To: <796814e9-62c2-44d2-bd8c-39e36f17f635@linaro.org>
+In-Reply-To: <20251209092459.1058313-3-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,209 +107,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/12/25 13:30, Philippe Mathieu-Daudé wrote:
-> On 8/12/25 17:37, Eric Auger wrote:
->> Introduce a script that takes as input the Registers.json file
->> delivered in the AARCHMRS Features Model downloadable from the
->> Arm Developer A-Profile Architecture Exploration Tools page:
->> https://developer.arm.com/Architectures/A- 
->> Profile%20Architecture#Downloads
->> and outputs the list of ID regs in target/arm/cpu-sysregs.h.inc
->> under the form of DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>).
+On 9/12/25 10:24, Alex Bennée wrote:
+> When we handle a host call we report state back to the caller via
+> registers. Set vcpu_dirty to indicate QEMU is currently the reference
+> and hoist the flush_cpu_state() and make the call unconditional.
 > 
-> Great idea!
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3228
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Tested-by: Christian Stussak <christian.stussak@imaginary.org>
 > 
->>
->> We only care about IDregs with opcodes satisfying:
->> op0 = 3, op1 within [0, 3], crn = 0, crm within [0, 7], op2 within [0, 7]
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> This was tested with https://developer.arm.com/-/cdn-downloads/ 
->> permalink/Exploration-Tools-OS-Machine-Readable-Data/AARCHMRS_BSD/ 
->> AARCHMRS_OPENSOURCE_A_profile_FAT-2025-09_ASL0.tar.gz
->>
->> Discussion about undesired generated regs can be found in
->> https://lore.kernel.org/all/ 
->> CAFEAcA9OXi4v+hdBMamQv85HYp2EqxOA5=nfsdZ5E3nf8RP_pw@mail.gmail.com/
->> ---
->>   scripts/update-aarch64-sysreg-code.py | 133 ++++++++++++++++++++++++++
->>   1 file changed, 133 insertions(+)
->>   create mode 100755 scripts/update-aarch64-sysreg-code.py
->>
->> diff --git a/scripts/update-aarch64-sysreg-code.py b/scripts/update- 
->> aarch64-sysreg-code.py
->> new file mode 100755
->> index 0000000000..c7b31035d1
->> --- /dev/null
->> +++ b/scripts/update-aarch64-sysreg-code.py
->> @@ -0,0 +1,133 @@
->> +#!/usr/bin/env python3
->> +
->> +# This script takes as input the Registers.json file delivered in
->> +# the AARCHMRS Features Model downloadable from the Arm Developer
->> +# A-Profile Architecture Exploration Tools page:
->> +# https://developer.arm.com/Architectures/A- 
->> Profile%20Architecture#Downloads
->> +# and outputs the list of ID regs in target/arm/cpu-sysregs.h.inc
->> +# under the form of DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>)
->> +#
->> +# Copyright (C) 2025 Red Hat, Inc.
->> +#
->> +# Authors: Eric Auger <eric.auger@redhat.com>
->> +#
->> +# SPDX-License-Identifier: GPL-2.0-or-later
->> +
->> +
->> +import json
->> +import os
->> +import sys
->> +
-> 
-> [*]
-> 
->> +# returns the int value of a given @opcode for a reg @encoding
->> +def get_opcode(encoding, opcode):
->> +    fvalue = encoding.get(opcode)
->> +    if fvalue:
->> +        value = fvalue.get('value')
->> +        if isinstance(value, str):
->> +            value = value.strip("'")
->> +            value = int(value,2)
->> +            return value
->> +    return -1
->> +
->> +def extract_idregs_from_registers_json(filename):
->> +    """
->> +    Load a Registers.json file and extract all ID registers, decode 
->> their
->> +    opcode and dump the information in target/arm/cpu-sysregs.h.inc
->> +
->> +    Args:
->> +        filename (str): The path to the Registers.json
->> +    returns:
->> +        idregs: list of ID regs and their encoding
->> +    """
->> +    if not os.path.exists(filename):
->> +        print(f"Error: {filename} could not be found!")
->> +        return {}
->> +
->> +    try:
->> +        with open(filename, 'r') as f:
->> +            register_data = json.load(f)
->> +
->> +    except json.JSONDecodeError:
->> +        print(f"Could not decode json from '{filename}'!")
->> +        return {}
->> +    except Exception as e:
->> +        print(f"Unexpected error while reading {filename}: {e}")
->> +        return {}
->> +
->> +    registers = [r for r in register_data if isinstance(r, dict) and \
->> +                r.get('_type') == 'Register']
->> +
->> +    idregs = {}
->> +
->> +    # Some regs have op code values like 000x, 001x. Anyway we don't 
->> need
->> +    # them. Besides some regs are undesired in the generated file 
->> such as
->> +    # CCSIDR_EL1 and CCSIDR2_EL1 which are arrays of regs. Also exclude
->> +    # VMPIDR_EL2 and VPIDR_EL2 which are outside of the IDreg scope we
->> +    # are interested in and are tricky to decode as their system 
->> accessor
->> +    # refer to MPIDR_EL1/MIDR_EL1 respectively
->> +
->> +    skiplist = ['ALLINT', 'PM', 'S1_', 'S3_', 'SVCR', \
->> +                'CCSIDR_EL1', 'CCSIDR2_EL1', 'VMPIDR_EL2', 'VPIDR_EL2']
-> 
-> Since we might have to update this array, I'd move it (and the big
-> comment preceding) in [*].
-> 
->> +
->> +    for register in registers:
->> +        reg_name = register.get('name')
->> +
->> +        is_skipped = any(term in (reg_name or "").upper() for term in 
->> skiplist)
->> +
->> +        if reg_name and not is_skipped:
->> +            accessors = register.get('accessors', [])
->> +
->> +            for accessor in accessors:
->> +                type = accessor.get('_type')
->> +                if type in ['Accessors.SystemAccessor']:
->> +                    encoding_list = accessor.get('encoding')
->> +
->> +                    if isinstance(encoding_list, list) and 
->> encoding_list and \
->> +                       isinstance(encoding_list[0], dict):
->> +                        encoding_wrapper = encoding_list[0]
->> +                        encoding_source = 
->> encoding_wrapper.get('encodings', \
->> +                                                               
->> encoding_wrapper)
->> +
->> +                        if isinstance(encoding_source, dict):
->> +                                op0 = get_opcode(encoding_source, 'op0')
->> +                                op1 = get_opcode(encoding_source, 'op1')
->> +                                op2 = get_opcode(encoding_source, 'op2')
->> +                                crn = get_opcode(encoding_source, 'CRn')
->> +                                crm = get_opcode(encoding_source, 'CRm')
->> +                                encoding_str=f"{op0} {op1} {crn} 
->> {crm} {op2}"
->> +
->> +                # ID regs are assumed within this scope
->> +                if op0 == 3 and (op1 == 0 or op1 == 1 or op1 == 3) and \
->> +                   crn == 0 and (crm >= 0 and crm <= 7) and (op2 >= 0 
->> and op2 <= 7):
->> +                    idregs[reg_name] = encoding_str
->> +
->> +    return idregs
->> +
->> +if __name__ == "__main__":
->> +    # Single arg expectedr: the path to the Registers.json file
-> 
-> Typo "expectedr".
-> 
->> +    if len(sys.argv) < 2:
->> +        print("Usage: scripts/update-aarch64-sysreg-code.py 
->> <path_to_registers_json>")
->> +        sys.exit(1)
->> +    else:
->> +        json_file_path = sys.argv[1]
->> +
->> +    extracted_registers = 
->> extract_idregs_from_registers_json(json_file_path)
->> +
->> +    if extracted_registers:
->> +        output_list = extracted_registers.items()
->> +
->> +        # Sort by register name
->> +        sorted_output = sorted(output_list, key=lambda item: item[0])
->> +
->> +        # format lines as DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>)
->> +        final_output = ""
->> +        for reg_name, encoding in sorted_output:
->> +            reformatted_encoding = encoding.replace(" ", ", ")
->> +            final_output += f"DEF({reg_name}, {reformatted_encoding})\n"
->> +
->> +        with open("target/arm/cpu-sysregs.h.inc", 'w') as f:
->> +            f.write("/* SPDX-License-Identifier: BSD-3-Clause */\n\n")
->> +            f.write("/* This file is autogenerated by ")
->> +            f.write("scripts/update-aarch64-sysreg-code.py */\n\n")
+> ---
+> v2
+>    - Fixes->Resolves
+> ---
+>   target/arm/hvf/hvf.c | 6 +++++-
+>   1 file changed, 5 insertions(+), 1 deletion(-)
 
-Maybe worth adding the format in header:
-
-      f.write("/* DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>) */\n")
-
->> +            f.write(final_output)
->> +        print(f"updated target/arm/cpu-sysregs.h.inc")
-> 
-> Fixed string (no formating) so no need for f- prefix.
-> 
-> Patch LGTM but it should have some unit test.
+Again:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 

@@ -4,144 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0EECD3B7EA
-	for <qemu-arm@archiver.kernel.org>; Tue,  9 Dec 2025 10:32:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E954D3B7EA
+	for <qemu-arm@archiver.kernel.org>; Tue,  9 Dec 2025 10:32:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vSv0q-0006Qd-0h; Tue, 09 Dec 2025 05:32:08 -0500
+	id 1vSv0r-0006RD-Vh; Tue, 09 Dec 2025 05:32:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vSv0e-0006Oq-8Y
- for qemu-arm@nongnu.org; Tue, 09 Dec 2025 05:31:57 -0500
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vSv0k-0006Pa-Qk
+ for qemu-arm@nongnu.org; Tue, 09 Dec 2025 05:32:03 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vSv0a-0003sk-1g
- for qemu-arm@nongnu.org; Tue, 09 Dec 2025 05:31:53 -0500
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vSv0j-0003w5-6W
+ for qemu-arm@nongnu.org; Tue, 09 Dec 2025 05:32:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1765276310;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1765276320;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=wiaPmYAw/k3RkmnvJ86TKUAEaDvsCoN4EGuvsb8ZBLs=;
- b=Prdu/oYdzLRp7YDWr3f3NSzKkaNhggDG3KT8w5PjpGPNcHIODdCZ+gOLZW2f4pe1bqqMmh
- QQTCONwHXfRLcuzp2VaJ+eBnMxE0Q8qSpcpMzqc00YIssjhs3MGOfnVtEeq3eA1TIfomYO
- YosQR1F/Ef2/QDmpY1jqmw35zc4VCdc=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references;
+ bh=3r2Gn+GyRvWzhqDaIrIdZaO1hd9SIPPLg7tXHz6VxaI=;
+ b=TWcL/R+gyPfQJ1Xsp+Exbl1jHBAnk37T2p+wfh15aLIXGrhpYeDMfx82Kvi5bwGnxELVRO
+ 2BVaNY6QuKy8dX3VOSnHoHDsornZD+IEc3wEF56QVup7NHQ0zzIyecFAEqJeSBZJ0TLjiX
+ kszQIPYbS7vRq2k5DfPgKlp2K5/w950=
+Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
+ [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-282-4pl5CXWaPoCuDdlhVAPenQ-1; Tue, 09 Dec 2025 05:31:49 -0500
-X-MC-Unique: 4pl5CXWaPoCuDdlhVAPenQ-1
-X-Mimecast-MFC-AGG-ID: 4pl5CXWaPoCuDdlhVAPenQ_1765276308
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-477cf2230c8so45197705e9.0
- for <qemu-arm@nongnu.org>; Tue, 09 Dec 2025 02:31:49 -0800 (PST)
+ us-mta-398-7NHU-ExYO6qRW9fnfXA46A-1; Tue, 09 Dec 2025 05:31:59 -0500
+X-MC-Unique: 7NHU-ExYO6qRW9fnfXA46A-1
+X-Mimecast-MFC-AGG-ID: 7NHU-ExYO6qRW9fnfXA46A_1765276318
+Received: by mail-pl1-f199.google.com with SMTP id
+ d9443c01a7336-29e6b269686so28258215ad.1
+ for <qemu-arm@nongnu.org>; Tue, 09 Dec 2025 02:31:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765276308; x=1765881108;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1765276318; x=1765881118;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wiaPmYAw/k3RkmnvJ86TKUAEaDvsCoN4EGuvsb8ZBLs=;
- b=MCX7VC1ACPF4ZKxCQkaF7GgV709Qp44inEb8sBpRvofcLeAHkoTMWUpt/ab5MejKNU
- tWrrKgWi0fRfIY+1lKojJOlorb/uJ/Fv2wP8e/jtjw0zzTZ+RjBoRJH4bFAARMcMcL1i
- tgqh097kng6JxhH5T9N9gnW7KrWK/ObIOXwPOqRDf71BVWyqdhVKi2ibEkaf37jm/1xI
- a3v2uBafelIZED2/W5N7Dde8ozIjnsNWd0t1wSy6YxWJK4kpK8LHfKz/xbYBSRLqwtBK
- l3NZuTaI28cAgxQT1GcxKUk05Mcfwts74Geg3vWCrlp1RQfQtqeaAq5wD5p0FLkHhvvP
- dBwg==
+ bh=3r2Gn+GyRvWzhqDaIrIdZaO1hd9SIPPLg7tXHz6VxaI=;
+ b=NxbvW0QoL/gDZa62ba5x1Jp2eRxpdbetDwHzlpIP5md3Rp2kjMTUYaYNuuocwQlHt1
+ fUBWyzVaweeqCZahdptO7Pgx3MjvLNJJ/c1fzs4L2/unSiloDqOg4cXFO1Mg5tdQ9nM+
+ X3IG57n9aHSo+IAvGRLqeo+lhaoQyLBXma5SDF/aqZWEqjpEgtxToKUBWrEeXjfMqigv
+ W1xvUZ/LywNQJ/GkjISWLwqAcpjVkorcX+aCkFeDnvsHDXfSWpwkFP72Uz7agbavdxus
+ zFGXRDbEXwWJ3fplFY51D9T85i3/a0ukVCnGVYnehsN/kA7TZvdmoMS4OKoUiivaMyta
+ 0Rbw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVpq9We5LRaaQHKFDggV7mhGPA6GnrURoJ+tcObHLH6lP2ohBLqFfrIcp9AI49LB2mcrigwOFDpyw==@nongnu.org
-X-Gm-Message-State: AOJu0YzrhKaMa+1VDpOjKRRkbmx7SRQm39ooZHB/NeioIhwD7/4SEDgg
- RwS+Di6Iajtu54DJIRobNiV6FnvAqhH7i568x28DEq22Yv3YwJ95HCfZEwbCh71FrlH1DoAZ5af
- uXo/pQJ1DNHHze4r7JMPegXlpMVoNLqRISha49KM4Ts/6alduK5f29g==
-X-Gm-Gg: ASbGnctKFdZlJQjni0w0bi1wz7odxc3KY+y4rkFoRp9It+WOwpMAxSLIUCViibmM4oi
- 3pl1Yk/w66q21S/7WvbLcIRcjUiW9F2YutbaV2frpIsOhe0M5Lju3XaxA52P6IynF370LXUijHd
- 9aOy9Payi8N5+cJWITiiJhltsOZWT4GapRbWmc9iQ+Fwnnpa8ZWy3pA/2NdoDxp95ihqDi8Nd/w
- lEDLgvEhdUTdO8SACKW8aJp6Sepy8kZO/GKonLpHEq1g3pHJXRVe1XIDmdo9lDJTAUl+Si1RuWL
- eAWWcgm0ShOQ8fgXIFzMw14j98BpOMYM9GxycT4wFzmzCYyeY31YvRoYosJ5Va7OjV0jNeIqHhg
- 15BU0Z4PUQo8cmaX3AvdZOua6JNvf7V9wqgv8n2c1HmW0Oi0X
-X-Received: by 2002:a05:600c:154c:b0:477:7991:5d1e with SMTP id
- 5b1f17b1804b1-47939e386dfmr109105985e9.25.1765276307637; 
- Tue, 09 Dec 2025 02:31:47 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IESiHzYh45fITQWmiXwlDRMoogcAhJPOpd3e9JbWsgTfwRr61yyn+ZLr6YmiepiOB0724dUJg==
-X-Received: by 2002:a05:600c:154c:b0:477:7991:5d1e with SMTP id
- 5b1f17b1804b1-47939e386dfmr109105555e9.25.1765276307087; 
- Tue, 09 Dec 2025 02:31:47 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ AJvYcCU3y/S5eLa+sPR92Fs1YibrgiFaOouGxRn3nWt8c2aRdQLBe7aRmiil43Bxhs+vPxNkmNanfHfCZA==@nongnu.org
+X-Gm-Message-State: AOJu0Yzj8BC3emGWt0wjqPk4/I1Ynz0uE0J0s1O8RydgR84Lve6jJF0s
+ TNApHB0Nb52UQvcVc6V3InsPIcNHU2bzNfaB5lQAewKb3jPtKP+WRabUQdzcohPmkDOfQ2X13+1
+ Y+5ocIW2aQU/0b6Zp4eRuGCQEJmO9bKRGk35p+UKLDOoUAN95LL2Nlg==
+X-Gm-Gg: ASbGnctx80Ic3+NymJXpNp092+apmF9tPJbsp5t1yQO1IjItehPb/oAYQJ85eY3Jk0I
+ Qqa2OEVz8Zp1uMyPXAeDqlndZm3oixlMurFlGzlr6hy1VtXNsrR5adeMFnSErcGonuTXq3ZVji4
+ SxdMge1//EB3itx/1L78ZG9pHeX3It8SNoUB/iW0gdm7f/0mQhz2z0WJvPJRZFF/+cPdRx3IPJK
+ pRgLx1q1XiqIvMcsSuTBnMfEyVomj7rxXjuYCTVWi3juiiQ+e7HMwTD+17iYirenCrAklnv82Hd
+ V0KOazcFYAIUyXzf8WSmnles0paiSdMnmkZ3TfYr/SDkajhkQcSIUJpCwRLiyamvu+bE9Hu1jKA
+ bEqum3AzES/IWBMjajbMr2iglXacuJE2W8ANHOmGB0ZBp7Sx65wkw5JpXpA==
+X-Received: by 2002:a05:7022:4394:b0:119:e56b:958c with SMTP id
+ a92af1059eb24-11e0325ef0fmr7939806c88.17.1765276318248; 
+ Tue, 09 Dec 2025 02:31:58 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFLPmiNGF8TBRnuHUE83sJD5OVTkWG7a/3mClSSRRWjj8Ry4RalpPAy9O0SlU08TxlCDzpIiA==
+X-Received: by 2002:a05:7022:4394:b0:119:e56b:958c with SMTP id
+ a92af1059eb24-11e0325ef0fmr7939785c88.17.1765276317708; 
+ Tue, 09 Dec 2025 02:31:57 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47a815e862asm2321195e9.1.2025.12.09.02.31.45
+ a92af1059eb24-11df7552defsm69293603c88.2.2025.12.09.02.31.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Dec 2025 02:31:46 -0800 (PST)
-Message-ID: <1ee20ead-6978-4c2b-9b2f-ad778107ad04@redhat.com>
-Date: Tue, 9 Dec 2025 11:31:45 +0100
+ Tue, 09 Dec 2025 02:31:57 -0800 (PST)
+Message-ID: <bf00d499-cbe9-4e14-a79c-a601fd19a558@redhat.com>
+Date: Tue, 9 Dec 2025 11:31:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 00/33] hw/arm/virt: Add support for user-creatable
- accelerated SMMUv3
+Subject: Re: [PATCH v2 1/4] backends/iommufd: Introduce
+ iommufd_backend_alloc_veventq
 To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Cc: eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
- nicolinc@nvidia.com, ddutile@redhat.com, berrange@redhat.com,
- nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, yi.l.liu@intel.com, kjaju@nvidia.com
-References: <20251120132213.56581-1-skolothumtho@nvidia.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251120132213.56581-1-skolothumtho@nvidia.com>
+Cc: peter.maydell@linaro.org, nicolinc@nvidia.com, nathanc@nvidia.com,
+ mochs@nvidia.com, jgg@nvidia.com, jonathan.cameron@huawei.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, kjaju@nvidia.com
+References: <20251204092245.5157-1-skolothumtho@nvidia.com>
+ <20251204092245.5157-2-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20251204092245.5157-2-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 6KwJhJFBXsMeAeRH3J_IMTRPKRabXKmn9eIQAH9dB84_1765276308
+X-Mimecast-MFC-PROC-ID: NPqoA_szkD5708VO1QXjtuL5-A3VJpf6oMPaT2Ok6n4_1765276318
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -149,7 +107,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -162,209 +120,108 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 11/20/25 14:21, Shameer Kolothum wrote:
-> Hi,
-> 
-> Changes from v5:
->    https://lore.kernel.org/qemu-devel/20251031105005.24618-1-skolothumtho@nvidia.com/
-> 
->   - Addressed feedback from v5 and picked up R-by tags. Thanks to all!
->   - The previously split out _DSM fix mini-series is now accepted [0].
->   - Improved documentation about the rationale behind the design choice of
->     returning an address space aliased to the system address space for
->     vfio-pci endpoint devices (patch #10).
->   - Added error propagation support for smmuv3_cmdq_consume() (patch #13).
->   - Updated vSTE based HWPT installation to check the SMMU enabled case
->     (patch #14).
->   - Introduced an optional callback to PCIIOMMUOps to retrieve the MSI
->     doorbell GPA directly, allowing us to avoid unsafe page table walks for
->     MSI translation in accelerated SMMUv3 cases (patch #16).
->   - GBPA-based vSTE update depends on Nicolin's kernel patch [1].
->   - VFIO/IOMMUFD has dependency on Zhenzhong's patches: 4/5/8 from the
->     pass-through support series [2].
-> 
-> PATCH organization:
->   1–26: Enables accelerated SMMUv3 with features based on default QEMU SMMUv3,
->         including IORT RMR based MSI support.
->   27–29: Adds options for specifying RIL, ATS, and OAS features.
->   30–33: Adds PASID support, including VFIO changes.
-> 
-> Tests:
-> Performed basic sanity tests on an NVIDIA GRACE platform with GPU device
-> assignments. A CUDA test application was used to verify the SVA use case.
-> Further tests are always welcome.
-> 
-> Eg: Qemu Cmd line:
-> 
-> qemu-system-aarch64 -machine virt,gic-version=3,highmem-mmio-size=2T \
-> -cpu host -smp cpus=4 -m size=16G,slots=2,maxmem=66G -nographic \
-> -bios QEMU_EFI.fd -object iommufd,id=iommufd0 -enable-kvm \
-> -object memory-backend-ram,size=8G,id=m0 \
-> -object memory-backend-ram,size=8G,id=m1 \
-> -numa node,memdev=m0,cpus=0-3,nodeid=0 -numa node,memdev=m1,nodeid=1 \
-> -numa node,nodeid=2 -numa node,nodeid=3 -numa node,nodeid=4 -numa node,nodeid=5 \
-> -numa node,nodeid=6 -numa node,nodeid=7 -numa node,nodeid=8 -numa node,nodeid=9 \
-> -device pxb-pcie,id=pcie.1,bus_nr=1,bus=pcie.0 \
-> -device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.0,accel=on,ats=on,ril=off,pasid=on,oas=48 \
-> -device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1,pref64-reserve=512G,id=dev0 \
-> -device vfio-pci,host=0019:06:00.0,rombar=0,id=dev0,iommufd=iommufd0,bus=pcie.port1 \
-> -object acpi-generic-initiator,id=gi0,pci-dev=dev0,node=2 \
-> ...
-> -object acpi-generic-initiator,id=gi7,pci-dev=dev0,node=9 \
-> -device pxb-pcie,id=pcie.2,bus_nr=8,bus=pcie.0 \
-> -device arm-smmuv3,primary-bus=pcie.2,id=smmuv3.1,accel=on,ats=on,ril=off,pasid=on \
-> -device pcie-root-port,id=pcie.port2,bus=pcie.2,chassis=2,pref64-reserve=512G \
-> -device vfio-pci,host=0018:06:00.0,rombar=0,id=dev1,iommufd=iommufd0,bus=pcie.port2 \
-> -device virtio-blk-device,drive=fs \
-> -drive file=image.qcow2,index=0,media=disk,format=qcow2,if=none,id=fs \
-> -net none \
-> -nographic
-> 
-> A complete branch can be found here,
-> https://github.com/shamiali2008/qemu-master master-smmuv3-accel-v6
-> 
-> Please take a look and let me know your feedback.
-> 
-> Thanks,
-> Shameer
-> 
-> [0] https://lore.kernel.org/qemu-devel/20251022080639.243965-1-skolothumtho@nvidia.com/
-> [1] https://lore.kernel.org/linux-iommu/20251103172755.2026145-1-nicolinc@nvidia.com/
-> [2] https://lore.kernel.org/qemu-devel/20251117093729.1121324-1-zhenzhong.duan@intel.com/
-> 
-> Details from RFCv3 Cover letter:
-> -------------------------------
-> https://lore.kernel.org/qemu-devel/20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com/
-> 
-> This patch series introduces initial support for a user-creatable,
-> accelerated SMMUv3 device (-device arm-smmuv3,accel=on) in QEMU.
-> 
-> This is based on the user-creatable SMMUv3 device series [0].
-> 
-> Why this is needed:
-> 
-> On ARM, to enable vfio-pci pass-through devices in a VM, the host SMMUv3
-> must be set up in nested translation mode (Stage 1 + Stage 2), with
-> Stage 1 (S1) controlled by the guest and Stage 2 (S2) managed by the host.
-> 
-> This series introduces an optional accel property for the SMMUv3 device,
-> indicating that the guest will try to leverage host SMMUv3 features for
-> acceleration. By default, enabling accel configures the host SMMUv3 in
-> nested mode to support vfio-pci pass-through.
-> 
-> This new accelerated, user-creatable SMMUv3 device lets you:
-> 
->   -Set up a VM with multiple SMMUv3s, each tied to a different physical SMMUv3
->    on the host. Typically, you’d have multiple PCIe PXB root complexes in the
->    VM (one per virtual NUMA node), and each of them can have its own SMMUv3.
->    This setup mirrors the host's layout, where each NUMA node has its own
->    SMMUv3, and helps build VMs that are more aligned with the host's NUMA
->    topology.
-> 
->   -The host–guest SMMUv3 association results in reduced invalidation broadcasts
->    and lookups for devices behind different physical SMMUv3s.
-> 
->   -Simplifies handling of host SMMUv3s with differing feature sets.
-> 
->   -Lays the groundwork for additional capabilities like vCMDQ support.
-> -------------------------------
-> 
-> Eric Auger (2):
->    hw/pci-host/gpex: Allow to generate preserve boot config DSM #5
->    hw/arm/virt-acpi-build: Add IORT RMR regions to handle MSI nested
->      binding
-> 
-> Nicolin Chen (4):
->    backends/iommufd: Introduce iommufd_backend_alloc_viommu
->    backends/iommufd: Introduce iommufd_backend_alloc_vdev
->    hw/arm/smmuv3-accel: Add set/unset_iommu_device callback
->    hw/arm/smmuv3-accel: Add nested vSTE install/uninstall support
-> 
-> Shameer Kolothum (26):
->    hw/arm/smmu-common: Factor out common helper functions and export
->    hw/arm/smmu-common: Make iommu ops part of SMMUState
->    hw/arm/smmuv3-accel: Introduce smmuv3 accel device
->    hw/arm/smmuv3-accel: Initialize shared system address space
->    hw/pci/pci: Move pci_init_bus_master() after adding device to bus
->    hw/pci/pci: Add optional supports_address_space() callback
->    hw/pci-bridge/pci_expander_bridge: Move TYPE_PXB_PCIE_DEV to header
->    hw/arm/smmuv3-accel: Restrict accelerated SMMUv3 to vfio-pci endpoints
->      with iommufd
->    hw/arm/smmuv3: Implement get_viommu_cap() callback
->    hw/arm/smmuv3: propagate smmuv3_cmdq_consume() errors to caller
->    hw/arm/smmuv3-accel: Install SMMUv3 GBPA based hwpt
->    hw/pci/pci: Introduce a callback to retrieve the MSI doorbell GPA
->      directly
->    hw/arm/smmuv3: Add support for providing a direct MSI doorbell GPA
->    hw/arm/smmuv3-accel: Add support to issue invalidation cmd to host
->    hw/arm/smmuv3: Initialize ID registers early during realize()
->    hw/arm/smmuv3-accel: Get host SMMUv3 hw info and validate
->    hw/arm/virt: Set PCI preserve_config for accel SMMUv3
->    tests/qtest/bios-tables-test: Prepare for IORT revison upgrade
->    tests/qtest/bios-tables-test: Update IORT blobs after revision upgrade
->    hw/arm/smmuv3: Add accel property for SMMUv3 device
->    hw/arm/smmuv3-accel: Add a property to specify RIL support
->    hw/arm/smmuv3-accel: Add support for ATS
->    hw/arm/smmuv3-accel: Add property to specify OAS bits
->    backends/iommufd: Retrieve PASID width from
->      iommufd_backend_get_device_info()
->    Extend get_cap() callback to support PASID
->    hw/arm/smmuv3-accel: Add support for PASID enable
-> 
-> Yi Liu (1):
->    vfio: Synthesize vPASID capability to VM
-> 
->   backends/iommufd.c                            |  82 +-
->   backends/trace-events                         |   2 +
->   hw/arm/Kconfig                                |   5 +
->   hw/arm/meson.build                            |   3 +-
->   hw/arm/smmu-common.c                          |  51 +-
->   hw/arm/smmuv3-accel.c                         | 756 ++++++++++++++++++
->   hw/arm/smmuv3-accel.h                         |  86 ++
->   hw/arm/smmuv3-internal.h                      |  27 +-
->   hw/arm/smmuv3.c                               | 206 ++++-
->   hw/arm/trace-events                           |   6 +
->   hw/arm/virt-acpi-build.c                      | 127 ++-
->   hw/arm/virt.c                                 |  30 +
->   hw/i386/intel_iommu.c                         |   8 +-
->   hw/pci-bridge/pci_expander_bridge.c           |   1 -
->   hw/pci-host/gpex-acpi.c                       |  29 +-
->   hw/pci/pci.c                                  |  43 +-
->   hw/vfio/container-legacy.c                    |   8 +-
->   hw/vfio/iommufd.c                             |   7 +-
->   hw/vfio/pci.c                                 |  38 +
->   include/hw/arm/smmu-common.h                  |   7 +
->   include/hw/arm/smmuv3.h                       |  10 +
->   include/hw/arm/virt.h                         |   1 +
->   include/hw/iommu.h                            |   1 +
->   include/hw/pci-host/gpex.h                    |   1 +
->   include/hw/pci/pci.h                          |  34 +
->   include/hw/pci/pci_bridge.h                   |   1 +
->   include/system/host_iommu_device.h            |  21 +-
->   include/system/iommufd.h                      |  29 +-
->   target/arm/kvm.c                              |  18 +-
->   tests/data/acpi/aarch64/virt/IORT             | Bin 128 -> 128 bytes
->   tests/data/acpi/aarch64/virt/IORT.its_off     | Bin 172 -> 172 bytes
->   tests/data/acpi/aarch64/virt/IORT.smmuv3-dev  | Bin 364 -> 364 bytes
->   .../data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 276 -> 276 bytes
->   33 files changed, 1536 insertions(+), 102 deletions(-)
->   create mode 100644 hw/arm/smmuv3-accel.c
->   create mode 100644 hw/arm/smmuv3-accel.h
-> 
 
-FYI, I am seeing configure errors :
 
-The following clauses were found for ARM_SMMUV3_ACCEL
-     select ARM_SMMUV3_ACCEL if ARM_VIRT
-     config ARM_SMMUV3_ACCEL depends on (ARM_SMMUV3 && IOMMUFD)
-
-KconfigDataError: contradiction between clauses when setting ARM_SMMUV3_ACCEL
-
-Thanks,
-
-C.
+On 12/4/25 10:22 AM, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
+>
+> Add a new helper for IOMMU_VEVENTQ_ALLOC ioctl to allocate a virtual event
+> queue (vEVENTQ) for a vIOMMU object.
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  backends/iommufd.c       | 31 +++++++++++++++++++++++++++++++
+>  backends/trace-events    |  1 +
+>  include/system/iommufd.h | 12 ++++++++++++
+>  3 files changed, 44 insertions(+)
+>
+> diff --git a/backends/iommufd.c b/backends/iommufd.c
+> index 718d63f5cf..633aecd525 100644
+> --- a/backends/iommufd.c
+> +++ b/backends/iommufd.c
+> @@ -503,6 +503,37 @@ bool iommufd_backend_alloc_vdev(IOMMUFDBackend *be, uint32_t dev_id,
+>      return true;
+>  }
+>  
+> +bool iommufd_backend_alloc_veventq(IOMMUFDBackend *be, uint32_t viommu_id,
+> +                                   uint32_t type, uint32_t depth,
+> +                                   uint32_t *out_veventq_id,
+> +                                   uint32_t *out_veventq_fd, Error **errp)
+> +{
+> +    int ret;
+> +    struct iommu_veventq_alloc alloc_veventq = {
+> +        .size = sizeof(alloc_veventq),
+> +        .flags = 0,
+> +        .type = type,
+> +        .veventq_depth = depth,
+> +        .viommu_id = viommu_id,
+> +    };
+> +
+> +    ret = ioctl(be->fd, IOMMU_VEVENTQ_ALLOC, &alloc_veventq);
+> +
+> +    trace_iommufd_viommu_alloc_eventq(be->fd, viommu_id, type,
+> +                                      alloc_veventq.out_veventq_id,
+> +                                      alloc_veventq.out_veventq_fd, ret);
+> +    if (ret) {
+> +        error_setg_errno(errp, errno, "IOMMU_VEVENTQ_ALLOC failed");
+> +        return false;
+> +    }
+> +
+> +    g_assert(out_veventq_id);
+> +    g_assert(out_veventq_fd);
+can it happen if the ioctl succeeds?
+> +    *out_veventq_id = alloc_veventq.out_veventq_id;
+> +    *out_veventq_fd = alloc_veventq.out_veventq_fd;
+> +    return true;
+> +}
+> +
+>  bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+>                                             uint32_t hwpt_id, Error **errp)
+>  {
+> diff --git a/backends/trace-events b/backends/trace-events
+> index 8408dc8701..5afa7a40be 100644
+> --- a/backends/trace-events
+> +++ b/backends/trace-events
+> @@ -23,3 +23,4 @@ iommufd_backend_get_dirty_bitmap(int iommufd, uint32_t hwpt_id, uint64_t iova, u
+>  iommufd_backend_invalidate_cache(int iommufd, uint32_t id, uint32_t data_type, uint32_t entry_len, uint32_t entry_num, uint32_t done_num, uint64_t data_ptr, int ret) " iommufd=%d id=%u data_type=%u entry_len=%u entry_num=%u done_num=%u data_ptr=0x%"PRIx64" (%d)"
+>  iommufd_backend_alloc_viommu(int iommufd, uint32_t dev_id, uint32_t type, uint32_t hwpt_id, uint32_t viommu_id, int ret) " iommufd=%d type=%u dev_id=%u hwpt_id=%u viommu_id=%u (%d)"
+>  iommufd_backend_alloc_vdev(int iommufd, uint32_t dev_id, uint32_t viommu_id, uint64_t virt_id, uint32_t vdev_id, int ret) " iommufd=%d dev_id=%u viommu_id=%u virt_id=0x%"PRIx64" vdev_id=%u (%d)"
+> +iommufd_viommu_alloc_eventq(int iommufd, uint32_t viommu_id, uint32_t type, uint32_t veventq_id, uint32_t veventq_fd, int ret) " iommufd=%d viommu_id=%u type=%u veventq_id=%u veventq_fd=%u (%d)"
+> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+> index aa78bf1e1d..9770ff1484 100644
+> --- a/include/system/iommufd.h
+> +++ b/include/system/iommufd.h
+> @@ -56,6 +56,13 @@ typedef struct IOMMUFDVdev {
+>      uint32_t virt_id;  /* virtual device ID */
+>  } IOMMUFDVdev;
+>  
+> +/* Virtual event queue interface for a vIOMMU */
+> +typedef struct IOMMUFDVeventq {
+> +    IOMMUFDViommu *viommu;
+> +    uint32_t veventq_id;
+> +    uint32_t veventq_fd;
+> +} IOMMUFDVeventq;
+> +
+>  bool iommufd_backend_connect(IOMMUFDBackend *be, Error **errp);
+>  void iommufd_backend_disconnect(IOMMUFDBackend *be);
+>  
+> @@ -86,6 +93,11 @@ bool iommufd_backend_alloc_vdev(IOMMUFDBackend *be, uint32_t dev_id,
+>                                  uint32_t viommu_id, uint64_t virt_id,
+>                                  uint32_t *out_vdev_id, Error **errp);
+>  
+> +bool iommufd_backend_alloc_veventq(IOMMUFDBackend *be, uint32_t viommu_id,
+> +                                   uint32_t type, uint32_t depth,
+> +                                   uint32_t *out_veventq_id,
+> +                                   uint32_t *out_veventq_fd, Error **errp);
+> +
+>  bool iommufd_backend_set_dirty_tracking(IOMMUFDBackend *be, uint32_t hwpt_id,
+>                                          bool start, Error **errp);
+>  bool iommufd_backend_get_dirty_bitmap(IOMMUFDBackend *be, uint32_t hwpt_id,
+Eric
 
 

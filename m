@@ -4,94 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3A8ED2CE17
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Dec 2025 10:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B5FED3B9A9
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Dec 2025 11:00:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vTHDn-0007sY-30; Wed, 10 Dec 2025 05:14:59 -0500
+	id 1vTHvY-0002kE-I1; Wed, 10 Dec 2025 06:00:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1vTHDl-0007sB-Ha; Wed, 10 Dec 2025 05:14:57 -0500
-Received: from isrv.corpit.ru ([212.248.84.144])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1vTHDj-0000vG-Dv; Wed, 10 Dec 2025 05:14:57 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 7F5B71730B6;
- Wed, 10 Dec 2025 13:14:36 +0300 (MSK)
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id E0969330D73;
- Wed, 10 Dec 2025 13:14:42 +0300 (MSK)
-Message-ID: <836d2623-6b79-4303-a34b-12e72c674822@tls.msk.ru>
-Date: Wed, 10 Dec 2025 13:14:42 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vTHvV-0002is-90
+ for qemu-arm@nongnu.org; Wed, 10 Dec 2025 06:00:10 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vTHvR-0003DF-F0
+ for qemu-arm@nongnu.org; Wed, 10 Dec 2025 06:00:08 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-47a80d4a065so10316365e9.2
+ for <qemu-arm@nongnu.org>; Wed, 10 Dec 2025 03:00:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1765364403; x=1765969203; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=MbvqQiM0Hg7JnJkifPKiEMRMTMpM7V85GonokBLipjg=;
+ b=FbkiSHIEpx5T5/XF+Tc1iNfd7tBdsaXniP3pPTxYJz8bnM1o6Ey5cpl2D6Z+/XID/b
+ h3P2H17YWG6b6H7SKvqX+WNtVrNb99eKwqWkYej5D5DTttDgdCdqZkjivPbHx2x4p3zu
+ KMkIblb+KTaQKUApb4zQhtZ6iIZUxo0l/MhHHtSUxkkEudH1e7xchDRpQVA9Pwb8D+0H
+ RRM5hgJ/jHLFVxt7ckeUAWtyF1nOwYrF/pSqnvc70HdS0fuGwDnYkeZlkCEiuTyySN6g
+ xuGG4bYEOQyTdiZpAr29xuSFFtB7346eAz2KQSQHDbXaG72D8uIZKHy9bRxJvHkiATAb
+ AmYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1765364403; x=1765969203;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=MbvqQiM0Hg7JnJkifPKiEMRMTMpM7V85GonokBLipjg=;
+ b=ei9DslKBeLVZ+7daNl+Kha8jbYNV330aarKZijJwJo6U3ZqsmCdU67u//k9JBG9UYx
+ VfiqSaXcFfYmK08mZYmg9yjxhnF+YRC1Hfkzvl6r+wrD681hi3dAtb6dnmwT6HP5u/T5
+ TUGJYqwVJY61QWkK3C//j9f//9SjZbQsXjjqwARtxUI81hXrfXyaeF3UHDAgPJ09q1Xq
+ UziQViylIy2YbRHpIg54/ho5VmHhKMhT5oZmK0NxDXrrm0c9Q8PfybrZ2GMZgEbE4Nh1
+ vOJYJBLwLSZF5Vc/gQt6ST3yOMtCf8SHjP1q4ikIOLTxlSUtZvNdrQN1BuPDnkeeQz71
+ EGJA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWkOh7zvkJgJ8uFYHFc2H+pGPmeE23jzXHb/d95178mZ0S2ENGbkzi5KpDMZ5dRLa1eeR9ilx77fw==@nongnu.org
+X-Gm-Message-State: AOJu0YzQWI2mU4pggV8TI8Qlxy5cTFb4l0zcbr0BRYJIx0ct95pDV3ar
+ Wr4rhUl6KIN2Pbp3DqwPb54CGOqcwJAhjAlLeGKup/fMvRXaIuj5WcKrYj8OKi+M1/g=
+X-Gm-Gg: ASbGncvOM6Wd63MoQ8WcS0qTQ3INfOrqWhbw210ZgPWH+oMeS33ddvc+1QNmUw+qjtH
+ 7CDb/kP7yUqksP8xz81KvjPBzRwHf9n7+oe/zNSixADAvXwG/plyimTKvZnpC9cA5YIAYCjXfg1
+ YoG6e6zAkdVlnlVSFO180W8rAB2vGUfNDF93STVN3DoCtqyKRNlgXcpy5dSu9n4jMLYFeqYdLNK
+ a4O/lYP8OAkinpixG3cVywaEOToT0YBebdHjPWsAIItsZ3oktS+upahCT07OHS7PinE30FkmIJH
+ t/h6cM5slNlinJ8DaUQWNU5crgqw1Wn4hYuaGkXny5ZmyvBEmTPc1LK6QGMRK5+exI5Dt2OI5Gv
+ M34OZweM12TUJgO09J+XRnkSbn6oJBFOh43iCcNjnOTNVzQV1iKTR0zQ2n6LbszM8osRp0kMCgX
+ 2E0UvGv62hZeU=
+X-Google-Smtp-Source: AGHT+IEIsBYCzOr9ZBGe2j0sEmRavUte89zb2fWI3Exm/V2V++m7yWnf5MptmP5gL2L12n1UP9Fb7Q==
+X-Received: by 2002:a05:600c:8183:b0:477:7b16:5f9f with SMTP id
+ 5b1f17b1804b1-47a83848368mr17774345e9.31.1765364403412; 
+ Wed, 10 Dec 2025 03:00:03 -0800 (PST)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-47a82d414basm36783385e9.10.2025.12.10.03.00.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 10 Dec 2025 03:00:02 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 1D6E45F814;
+ Wed, 10 Dec 2025 11:00:02 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org,  Jessica Clarke <jrtc27@jrtc27.com>,  Peter
+ Maydell <peter.maydell@linaro.org>,  "open list:ARM TCG CPUs"
+ <qemu-arm@nongnu.org>,  qemu-stable <qemu-stable@nongnu.org>
 Subject: Re: [PATCH v3] target/arm: handle unaligned PC during tlb probe
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Jessica Clarke <jrtc27@jrtc27.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- qemu-stable <qemu-stable@nongnu.org>
+In-Reply-To: <836d2623-6b79-4303-a34b-12e72c674822@tls.msk.ru> (Michael
+ Tokarev's message of "Wed, 10 Dec 2025 13:14:42 +0300")
 References: <20251204203540.1381896-1-alex.bennee@linaro.org>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsFNBGYpLkcBEACsajkUXU2lngbm6RyZuCljo19q/XjZTMikctzMoJnBGVSmFV66kylUghxs
- HDQQF2YZJbnhSVt/mP6+V7gG6MKR5gYXYxLmypgu2lJdqelrtGf1XtMrobG6kuKFiD8OqV6l
- 2M5iyOZT3ydIFOUX0WB/B9Lz9WcQ6zYO9Ohm92tiWWORCqhAnwZy4ua/nMZW3RgO7bM6GZKt
- /SFIorK9rVqzv40D6KNnSyeWfqf4WN3EvEOozMfWrXbEqA7kvd6ShjJoe1FzCEQ71Fj9dQHL
- DZG+44QXvN650DqEtQ4RW9ozFk3Du9u8lbrXC5cqaCIO4dx4E3zxIddqf6xFfu4Oa5cotCM6
- /4dgxDoF9udvmC36qYta+zuDsnAXrYSrut5RBb0moez/AR8HD/cs/dS360CLMrl67dpmA+XD
- 7KKF+6g0RH46CD4cbj9c2egfoBOc+N5XYyr+6ejzeZNf40yjMZ9SFLrcWp4yQ7cpLsSz08lk
- a0RBKTpNWJdblviPQaLW5gair3tyJR+J1ER1UWRmKErm+Uq0VgLDBDQoFd9eqfJjCwuWZECp
- z2JUO+zBuGoKDzrDIZH2ErdcPx3oSlVC2VYOk6H4cH1CWr9Ri8i91ClivRAyVTbs67ha295B
- y4XnxIVaZU+jJzNgLvrXrkI1fTg4FJSQfN4W5BLCxT4sq8BDtwARAQABzSBNaWNoYWVsIFRv
- a2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLBlAQTAQoAPhYhBJ2L4U4/Kp3XkZko8WGtPZjs3yyO
- BQJmKS5HAhsDBQkSzAMABQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEGGtPZjs3yyOZSAP
- /ibilK1gbHqEI2zR2J59Dc0tjtbByVmQ8IMh0SYU3j1jeUoku2UCgdnGKpwvLXtwZINgdl6Q
- cEaDBRX6drHLJFAi/sdgwVgdnDxaWVJO/ZIN/uJI0Tx7+FSAk8CWSa4IWUOzPNmtrDfb4z6v
- G36rppY8bTNKbX6nWFXuv2LXQr7g6+kKnbwv4QFpD+UFF1CrLm3byMq4ikdBXpZx030qBL61
- b7PrfXcBLao0357kWGH6C2Zu4wBnDUJwGi68pI5rzSRAFyAQsE89sjLdR1yFoBH8NiFnAQXP
- LA8Am9FMsC7D/bi/kwKTJdcZvzdGU1HG6tJvXLWC+nqGpJNBzRdDpjqtxNuL76vVd/JbsFMS
- JchLN+01fNQ5FHglvkd6md7vO+ULq+r9An5hMiDoRbYVUOBN8uiYNk+qKbdgSfbhsgPURqHi
- 1bXkgMeMasqWbGMe7iBW/YH2ePfZ6HuKLNQDCkiWZYPQZvyXHvQHjuJJ5+US81tkqM+Q6Snq
- 0L/O/LD0qLlbinHrcx0abg06VXBoYmGICJpf/3hhWQM4f+B/5w4vpl8q0B6Osz01pBUBfYak
- CiYCNHMWWVZkW9ZnY7FWiiPOu8iE1s5oPYqBljk3FNUk04SDKMF5TxL87I2nMBnVnvp0ZAuY
- k9ojiLqlhaKnZ1+zwmwmPmXzFSwlyMczPUMSzsFNBGYpLkcBEAC0mxV2j5M1x7GiXqxNVyWy
- OnlWqJkbkoyMlWFSErf+RUYlC9qVGwUihgsgEhQMg0nJiSISmU3vsNEx5j0T13pTEyWXWBdS
- XtZpNEW1lZ2DptoGg+6unpvxd2wn+dqzJqlpr4AY3vc95q4Za/NptWtSCsyJebZ7DxCCkzET
- tzbbnCjW1souCETrMy+G916w1gJkz4V1jLlRMEEoJHLrr1XKDdJRk/34AqXPKOzILlWRFK6s
- zOWa80/FNQV5cvjc2eN1HsTMFY5hjG3zOZb60WqwTisJwArjQbWKF49NLHp/6MpiSXIxF/FU
- jcVYrEk9sKHN+pERnLqIjHA8023whDWvJide7f1V9lrVcFt0zRIhZOp0IAE86E3stSJhZRhY
- xyIAx4dpDrw7EURLOhu+IXLeEJbtW89tp2Ydm7TVAt5iqBubpHpGTWV7hwPRQX2w2MBq1hCn
- K5Xx79omukJisbLqG5xUCR1RZBUfBlYnArssIZSOpdJ9wWMK+fl5gn54cs+yziUYU3Tgk0fJ
- t0DzQsgfd2JkxOEzJACjJWti2Gh3szmdgdoPEJH1Og7KeqbOu2mVCJm+2PrNlzCybOZuHOV5
- +vSarkb69qg9nU+4ZGX1m+EFLDqVUt1g0SjY6QmM5yjGBA46G3dwTEV0/u5Wh7idNT0mRg8R
- eP/62iTL55AM6QARAQABwsF8BBgBCgAmFiEEnYvhTj8qndeRmSjxYa09mOzfLI4FAmYpLkcC
- GwwFCRLMAwAACgkQYa09mOzfLI53ag/+ITb3WW9iqvbjDueV1ZHwUXYvebUEyQV7BFofaJbJ
- Sr7ek46iYdV4Jdosvq1FW+mzuzrhT+QzadEfYmLKrQV4EK7oYTyQ5hcch55eX00o+hyBHqM2
- RR/B5HGLYsuyQNv7a08dAUmmi9eAktQ29IfJi+2Y+S1okAEkWFxCUs4EE8YinCrVergB/MG5
- S7lN3XxITIaW00faKbqGtNqij3vNxua7UenN8NHNXTkrCgA+65clqYI3MGwpqkPnXIpTLGl+
- wBI5S540sIjhgrmWB0trjtUNxe9QcTGHoHtLeGX9QV5KgzNKoUNZsyqh++CPXHyvcN3OFJXm
- VUNRs/O3/b1capLdrVu+LPd6Zi7KAyWUqByPkK18+kwNUZvGsAt8WuVQF5telJ6TutfO8xqT
- FUzuTAHE+IaRU8DEnBpqv0LJ4wqqQ2MeEtodT1icXQ/5EDtM7OTH231lJCR5JxXOnWPuG6el
- YPkzzso6HT7rlapB5nulYmplJZSZ4RmE1ATZKf+wUPocDu6N10LtBNbwHWTT5NLtxNJAJAvl
- ojis6H1kRWZE/n5buyPY2NYeyWfjjrerOYt3er55n4C1I88RSCTGeejVmXWuo65QD2epvzE6
- 3GgKngeVm7shlp7+d3D3+fAAHTvulQQqV3jOodz+B4yzuZ7WljkNrmrWrH8aI4uA98c=
-In-Reply-To: <20251204203540.1381896-1-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <836d2623-6b79-4303-a34b-12e72c674822@tls.msk.ru>
+User-Agent: mu4e 1.12.14-pre3; emacs 30.1
+Date: Wed, 10 Dec 2025 11:00:02 +0000
+Message-ID: <87sedivbyl.fsf@draig.linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,30 +109,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/4/25 23:35, Alex Bennée wrote:
-> PC alignment faults have priority over instruction aborts and we have
-> code to deal with this in the translation front-ends. However during
-> tb_lookup we can see a potentially faulting probe which doesn't get a
-> MemOp set. If the page isn't available this results in
-> EC_INSNABORT (0x20) instead of EC_PCALIGNMENT (0x22).
-> 
-> As there is no easy way to set the appropriate MemOp in the
-> instruction fetch probe path lets just detect it in
-> arm_cpu_tlb_fill_align() ahead of the main alignment check. We also
-> teach arm_deliver_fault to deliver the right syndrome for
-> MMU_INST_FETCH alignment issues.
-> 
-> Fixes: https://gitlab.com/qemu-project/qemu/-/issues/3233
-> Tested-by: Jessica Clarke <jrtc27@jrtc27.com>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Michael Tokarev <mjt@tls.msk.ru> writes:
 
-This feels like a qemu-stable material (for all active stable
-branches).
+> On 12/4/25 23:35, Alex Benn=C3=A9e wrote:
+>> PC alignment faults have priority over instruction aborts and we have
+>> code to deal with this in the translation front-ends. However during
+>> tb_lookup we can see a potentially faulting probe which doesn't get a
+>> MemOp set. If the page isn't available this results in
+>> EC_INSNABORT (0x20) instead of EC_PCALIGNMENT (0x22).
+>> As there is no easy way to set the appropriate MemOp in the
+>> instruction fetch probe path lets just detect it in
+>> arm_cpu_tlb_fill_align() ahead of the main alignment check. We also
+>> teach arm_deliver_fault to deliver the right syndrome for
+>> MMU_INST_FETCH alignment issues.
+>> Fixes: https://gitlab.com/qemu-project/qemu/-/issues/3233
+>> Tested-by: Jessica Clarke <jrtc27@jrtc27.com>
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>
+> This feels like a qemu-stable material (for all active stable
+> branches).
 
-I'm picking it up for 10.0.x and 10.1.x.  Please let me know
-if I shouldn't.
+By all means - its pretty self-contained.
 
-Thanks,
+>
+> I'm picking it up for 10.0.x and 10.1.x.  Please let me know
+> if I shouldn't.
+>
+> Thanks,
+>
+> /mjt
 
-/mjt
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

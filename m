@@ -4,117 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48DF0D3E768
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Dec 2025 18:46:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DC24D3E780
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Dec 2025 23:01:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vTPCK-00077P-MV; Wed, 10 Dec 2025 13:46:01 -0500
+	id 1vTTB1-0006BX-Hd; Wed, 10 Dec 2025 18:00:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vTPCH-00076i-K5
- for qemu-arm@nongnu.org; Wed, 10 Dec 2025 13:45:59 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vTPCE-00048Y-Mb
- for qemu-arm@nongnu.org; Wed, 10 Dec 2025 13:45:57 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1765392353;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sMS+Q+wF/hCn/MwWLwr4ed1U6EOVDi5hMKamvBt1DII=;
- b=hcLe448UywQAiy08Yg29Ch/t7a4/hnpr1IOmdoYFqCqdFPnsG/TX2P4gir4LpmUabo8jL6
- 14y/A+AOFn8WnHmDxVvh2IG9xv/A9hgp8a0duMT7Hg3gH7TgnN+PZpzewbbxBqPQ52UJJE
- HttdumtHw4cd86qoDWu7Ba2lhpWziPI=
-Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
- [209.85.216.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-171-4Sc-v6xPNAOBEemkE_vk-g-1; Wed, 10 Dec 2025 13:45:52 -0500
-X-MC-Unique: 4Sc-v6xPNAOBEemkE_vk-g-1
-X-Mimecast-MFC-AGG-ID: 4Sc-v6xPNAOBEemkE_vk-g_1765392352
-Received: by mail-pj1-f70.google.com with SMTP id
- 98e67ed59e1d1-340ad9349b3so299436a91.1
- for <qemu-arm@nongnu.org>; Wed, 10 Dec 2025 10:45:52 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765392351; x=1765997151;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
+ id 1vTTAx-0006Ah-NY
+ for qemu-arm@nongnu.org; Wed, 10 Dec 2025 18:00:53 -0500
+Received: from mail-qt1-x831.google.com ([2607:f8b0:4864:20::831])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
+ id 1vTTAt-0006Ut-Uo
+ for qemu-arm@nongnu.org; Wed, 10 Dec 2025 18:00:50 -0500
+Received: by mail-qt1-x831.google.com with SMTP id
+ d75a77b69052e-4ee147baf7bso86661cf.1
+ for <qemu-arm@nongnu.org>; Wed, 10 Dec 2025 15:00:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1765407646; cv=none;
+ d=google.com; s=arc-20240605;
+ b=NV+0WhUFT6Y4Ec/QmjtWbzRtYaxUy9pdj3g1RbvLt7M/8+STTLqiOFdOHgp0hKiQ7f
+ 8Goyr4AtrWWLoAaQj3Txlz9POrL7fw67cFXJMjgzbcySQvdUMkeIhxs7oFJHnKJpLCHe
+ eNpjsR6kR09fV3qrMEBy7wc786jl9sbCQxcqYhbCkQw9smf1aBddgQY29FzRgbPZ7fVI
+ JWt4uMTNtaO6Lqpg7ZIf4RhzmqkgTRCP5yxuDV6hqHfjlDzS91rj9oFmRfqNuq+ePdCN
+ B+WER2kV+2oMUCSQkHM56nrwGf6xzaZWGVDFwyVTPdzSN7TLmqS73hd0I4/oMsRr7Jn9
+ 3fvg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=BXQY9YR5MCV3qoqwm7p+9vegnmEDn42tatiNVe+jV5Q=;
+ fh=yDIjAlQdOrO0rTtPZooXBjyLw55HiyFZs//MkVk9st8=;
+ b=WKLzPY3CfIlYBpj/tiYJ9XWuivrocI3BZIW/hWYguV+2IdjK/iSHXMsuT6n00e+bpL
+ 0tJJjMpMhDFLjWo514shz6v8UY6O6v01fryIWoTHyRqf7zBMTqJq7f30qQse+giE2T8K
+ N6VD8PqmBvIfY6vSBHKNNzVPekIjfwbENvYcJfPFop30XMcQmkKizFLZXWI8lAj3Rt9b
+ IEE4mjRnQosubSmauqJ/LWfTcBRgdW0R7Cws7r8cC6709I3X3XzZF0WSs1bpSeFl5LwK
+ f9pNIaIaGsP1uMbaeIaeDswKlH1PlvytdSIKjzvtJu9Po0lxHkua7dc8xcIQtGbRe93e
+ LKEQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1765407646; x=1766012446; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=sMS+Q+wF/hCn/MwWLwr4ed1U6EOVDi5hMKamvBt1DII=;
- b=J0JxrzacOXP4LzMyuqYpF5CWQndHFlNEcfPvoCaRHJLSXlaIlhmU6umD2ju8L6WA+p
- eB77K06pYHAU1S0xuzVvxdP9AzifFAeK4vcrFd02j5Eewluo5BMNl2ZJ0TM5AXuG2dK9
- ohJTDNAMSE+rnDxGZoLzrlBBxvgA9htP3stiiW1whJgd905JV9MU7JSLn4aDAOZt1ODl
- RbV7d+u/TND5I3L5qymFNu4ZVgwOl1jLVkRUtnVDpMzQVsGJzwQq0IsZa9fyxHKL4F0L
- SZGoZ446ZOT8qOl1a+WICvb0AJx4+0kC4LPT/dXDcnuv3ca2O/9ziN3TjmQasM/viSVy
- CiRA==
+ bh=BXQY9YR5MCV3qoqwm7p+9vegnmEDn42tatiNVe+jV5Q=;
+ b=ynCrfSOxEk1PUcHcEv001iyUoNWjEmXp6d4YjmDoUBFyNEN4lStQ/yhktwxdQ8s+JM
+ 29MOkx8Z+WKqM7ooK5HSmhRwZQOF8Siw4X4zHeDMoxb6jD3BxWmd5EIS5tnBBq4DR1R8
+ CKccAt7AVZqJqhdo3nhH5mtMaO9O6OT7N6Bz8H0PWD/vYma7Bx7yYzj93JR5W1Cpu8q3
+ 5y2LjvibVbBOBQStyABfi6kN26Hu8hKgvbtHPgMylpcrVbAay7DLxCliH3QnbVKL8PGz
+ NeNIkVlQWxLweI8eXAksE6S1LAGRT4jOyGbifEq8Vo1E7bT1nAgjBNZjkw/PxILNan75
+ DUDw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1765407646; x=1766012446;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=BXQY9YR5MCV3qoqwm7p+9vegnmEDn42tatiNVe+jV5Q=;
+ b=sSHykq++7P5jWiN8O8g6DyDVx2m9u5xVe17yVBw2sEeNvl7LGQXpzGgDWUaHlCw5PR
+ O1baqlxs15/GCjlC39i12vtD/55KPELk8RdvS2qjIqfOxpPuTAQ4nuImR4Uh0OW6TwT2
+ 4AvHL8OpwadS61NAYx7xBIzfMJcm/l2dzVmiJ2BGJFcJPSFdJlkMQL/8MgJ5hZlaGG5P
+ B5zEx6Cv+6dt+kEo4gzikpdie3BnQjfbfdieZXl8epbTYAtZIavaFGiD86vczi5u3UA9
+ 2sqgVSSn1TU13G2N2TVq82p96KsQUBIf7CEz1s6ZUisvHlzsRrgFaeebOlXsnJjgPzSK
+ lVWA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXs7oc5oYptAsKIZMnhICcA+2D10CHw7XE3mlJ9yTJE6nEiwLdZqdO5UzANeDnab+On3RQoGM7uzw==@nongnu.org
-X-Gm-Message-State: AOJu0YyBjrXew4fTRm5c0Fcq32Iu4x2rJG6XxZ3LQOkp/hCc5huqZGWX
- pMn7FujUo9/PnA1Nfol7XZXdXKuGYyj266NnzoBIEnkCgnP/i0pTdwAF46f1I0Bt1vrODzfn4GM
- tBNMSIVyN+3NQkNJWm4m+e1N0oz6JrThGSewqMBuVmcfECQ+YcgYROw==
-X-Gm-Gg: AY/fxX7gDXM9vDj5161AUMkg8sQQ5Agv929Pb//9KWlotlXj3bw/SG1qMonaWg41YVb
- uz85/9O2wW8Oic2v5FKvK96kb0/klJnUpGLovktsYcFnL4OXCYXdoPdf39dKDRti57s7rCUUb5q
- iG9Z+J+aOpVy9+fU4bYKNfkzv/u6KKC+RXIta/3p0h6p9j51uTNujiGy4A3duvHRZdAAlBu/0XX
- DrDhu+HyIm/AkCiqhB4IYvGQg8RCK9GcXLZ8IprteKYAUk67bltSdd4UKUhHrUiAT/LkWhUCIhi
- KeAzSdGCfnRlv3iQQI0mS59MgYe+shutMUXTRzvqal/vYKKdIWf39wUWIUR61Khi4QJWs9GlBN4
- INC7CiwcVrZZSswmOq0tK2u0xFH+0pV7lM55iyRkF1CJJpTdI/jZhqc+Mjw==
-X-Received: by 2002:a17:90b:1652:b0:343:6a79:6c75 with SMTP id
- 98e67ed59e1d1-34a72885eecmr3361365a91.29.1765392351428; 
- Wed, 10 Dec 2025 10:45:51 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFhKxYByZS4f0rrYGWGJy5Zy4BJO9Wako6wTfGp19VHDrVUB4vTdDdNWG3lV6arEXR4RTj57Q==
-X-Received: by 2002:a17:90b:1652:b0:343:6a79:6c75 with SMTP id
- 98e67ed59e1d1-34a72885eecmr3361338a91.29.1765392350888; 
- Wed, 10 Dec 2025 10:45:50 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-34a6ff019f0sm3206875a91.1.2025.12.10.10.45.44
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 10 Dec 2025 10:45:50 -0800 (PST)
-Message-ID: <629e6b11-069e-45c9-9119-b310db85a82d@redhat.com>
-Date: Wed, 10 Dec 2025 19:45:41 +0100
+ AJvYcCUWcbDQkJ8WJ13vz78vbzjTxwtpJjBtfSsQtu2o1Q5WI6oC2wXZqR2ZDdrsGRnopmGzfS2iJeawCQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yz3td0biy+Tlgw/Rnk5t/FjWADGMqbYteaWU2f3S81fMFhxCNNN
+ HFguPJyWIuEpZ5cjwN4YacS3AwrJub/vrGIvT1rym5oa5xnj8b/zNRidl7O7qqCjPmgaYRdCjSx
+ DvK/DSwSMO02rjbRTO+CU5weVnsy/6Vvqj5KBAks/
+X-Gm-Gg: ASbGncvrTjZadRD3Xk9A21zQpPwoq08aISyKyfHOtkmmLHeiHL/6LBnulL0qLx98aCz
+ /TnLqUNqcSTI2sCwZ176v2sw70efzJbsIrO6Mo7HQjmSyjLNO9i15vvMPKxNzz83UjUgXFNYmvd
+ rqWSPkoAYvfnVQqZJVMhhj+FOWq7VZE43CCMOIpupbeCTOfm6cckIqGv4nMGXEW0u8ayQNb6yPX
+ +sPhvUrc2pvkUF0PnmQpELGBsL1FUaXOqv8Jwc0gGmyPA4zDdnCWN3zWxVg+XLIOmxYUjoJ6kSV
+ RH2K+ki9ebZYT5sHsxA9y9/O4EEm
+X-Google-Smtp-Source: AGHT+IGmuYHWSEd8ALpBgewk9y/yw/88NlqOgn+aunrdP+n+0XsgTCqHMHnSGqK7xMSd262u9qYunlN8vaBy1Fz+Z8g=
+X-Received: by 2002:a05:622a:34d:b0:4f1:a5f5:31d9 with SMTP id
+ d75a77b69052e-4f1bd878ac2mr3752201cf.6.1765407643893; Wed, 10 Dec 2025
+ 15:00:43 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC RESEND v5 4/4] tests/qtest: Add SMMUv3 bare-metal test using
- iommu-testdev
-To: Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini
- <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>,
- CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
-References: <20251126154547.1300748-1-tangtao1634@phytium.com.cn>
- <20251126154547.1300748-5-tangtao1634@phytium.com.cn>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251126154547.1300748-5-tangtao1634@phytium.com.cn>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: PAs0je8F2SXbYwGCJN4MaX0LL3EIphsnYfxc11AuyLc_1765392352
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+References: <20251208074436.1871180-1-kane_chen@aspeedtech.com>
+ <20251208074436.1871180-2-kane_chen@aspeedtech.com>
+In-Reply-To: <20251208074436.1871180-2-kane_chen@aspeedtech.com>
+From: Nabih Estefan <nabihestefan@google.com>
+Date: Wed, 10 Dec 2025 15:00:32 -0800
+X-Gm-Features: AQt7F2p38QyRBWGEoZbDbchVpAkzoZDeKdiz5IWzha35FPl9VIyDM-YEUXlIYxY
+Message-ID: <CA+QoejUQQg7y5t3J18y=aEPFJGC=Od-HSNxh-+6Vupugb9QGSg@mail.gmail.com>
+Subject: Re: [PATCH v3 01/18] hw/misc: Add LTPI controller
+To: Kane Chen <kane_chen@aspeedtech.com>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, 
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ troy_lee@aspeedtech.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::831;
+ envelope-from=nabihestefan@google.com; helo=mail-qt1-x831.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,177 +124,301 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-On 11/26/25 4:45 PM, Tao Tang wrote:
-> Add a qtest suite that validates ARM SMMUv3 translation without guest
-> firmware or OS. The tests leverage iommu-testdev to trigger DMA
-> operations and the qos-smmuv3 library to configure IOMMU translation
-> structures.
+On Sun, Dec 7, 2025 at 11:46=E2=80=AFPM Kane Chen via <qemu-devel@nongnu.or=
+g> wrote:
 >
-> This test suite targets the virt machine and covers:
-> - Stage 1 only translation (VA -> PA via CD page tables)
-> - Stage 2 only translation (IPA -> PA via STE S2 tables)
-> - Nested translation (VA -> IPA -> PA, Stage 1 + Stage 2)
-> - Design to extended to support multiple security spaces
->     (Non-Secure, Secure, Root, Realm)
+> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 >
-> Each test case follows this sequence:
-> 1. Initialize SMMUv3 with appropriate command/event queues
-> 2. Build translation tables (STE/CD/PTE) for the target scenario
-> 3. Configure iommu-testdev with IOVA and DMA attributes via MMIO
-> 4. Trigger DMA and validate successful translation
-> 5. Verify data integrity through a deterministic write-read pattern
+> LTPI (LVDS Tunneling Protocol & Interface) is defined in the OCP DC-SCM
+> 2.0 specification:
+> https://www.opencompute.org/documents/ocp-dc-scm-2-0-ltpi-ver-1-0-pdf
 >
-> This bare-metal approach provides deterministic IOMMU testing with
-> minimal dependencies, making failures directly attributable to the SMMU
-> translation path.
+> LTPI is a protocol and physical interface for tunneling various low-speed
+> signals between the HPM and SCM. As shown in Figure 2, the AST27x0 (left)
+> integrates two LTPI controllers, allowing it to connect to up to two
+> extended boards.
 >
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> This commit introduces a simple device model for the ASPEED LTPI
+> controller in QEMU.
+>
+> The model includes basic MMIO read/write operations and sets default
+> register values during reset to emulate a link-up state.
+>
+> Implements register space with read/write callbacks.
+>
+> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 > ---
->  tests/qtest/iommu-smmuv3-test.c | 114 ++++++++++++++++++++++++++++++++
->  tests/qtest/meson.build         |   1 +
->  2 files changed, 115 insertions(+)
->  create mode 100644 tests/qtest/iommu-smmuv3-test.c
+>  include/hw/misc/aspeed_ltpi.h |  32 ++++++
+>  hw/misc/aspeed_ltpi.c         | 194 ++++++++++++++++++++++++++++++++++
+>  hw/misc/meson.build           |   1 +
+>  3 files changed, 227 insertions(+)
+>  create mode 100644 include/hw/misc/aspeed_ltpi.h
+>  create mode 100644 hw/misc/aspeed_ltpi.c
 >
-> diff --git a/tests/qtest/iommu-smmuv3-test.c b/tests/qtest/iommu-smmuv3-test.c
+> diff --git a/include/hw/misc/aspeed_ltpi.h b/include/hw/misc/aspeed_ltpi.=
+h
 > new file mode 100644
-> index 0000000000..af438ecce0
+> index 0000000000..cb1a9f4bd8
 > --- /dev/null
-> +++ b/tests/qtest/iommu-smmuv3-test.c
-> @@ -0,0 +1,114 @@
+> +++ b/include/hw/misc/aspeed_ltpi.h
+> @@ -0,0 +1,32 @@
 > +/*
-> + * QTest for SMMUv3 with iommu-testdev
+> + * ASPEED LTPI Controller
 > + *
-> + * This QTest file is used to test the SMMUv3 with iommu-testdev so that we can
-> + * test SMMUv3 without any guest kernel or firmware.
+> + * Copyright (C) 2025 ASPEED Technology Inc.
 > + *
-> + * Copyright (c) 2025 Phytium Technology
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +#ifndef ASPEED_LTPI_H
+> +#define ASPEED_LTPI_H
+> +
+> +#include "hw/sysbus.h"
+> +
+> +#define TYPE_ASPEED_LTPI "aspeed.ltpi-ctrl"
+> +OBJECT_DECLARE_SIMPLE_TYPE(AspeedLTPIState, ASPEED_LTPI)
+> +
+> +#define ASPEED_LTPI_CTRL_SIZE   0x200
+> +#define ASPEED_LTPI_PHY_SIZE    0x100
+> +#define ASPEED_LTPI_TOP_SIZE    0x100
+
+Is there any specific reason to has ASPEED_LTPI_TOTAL_SIZE declared in
+the header, but the rest of the sizes in the main file? More of a nit,
+but we should group them all together (probably in the header)
+
+> +
+> +struct AspeedLTPIState {
+> +    SysBusDevice parent;
+> +    MemoryRegion mmio;
+> +    MemoryRegion mmio_ctrl;
+> +    MemoryRegion mmio_phy;
+> +    MemoryRegion mmio_top;
+> +
+> +    uint32_t ctrl_regs[ASPEED_LTPI_CTRL_SIZE >> 2];
+> +    uint32_t phy_regs[ASPEED_LTPI_PHY_SIZE >> 2];
+> +    uint32_t top_regs[ASPEED_LTPI_TOP_SIZE >> 2];
+> +};
+> +
+> +#endif /* ASPEED_LTPI_H */
+> diff --git a/hw/misc/aspeed_ltpi.c b/hw/misc/aspeed_ltpi.c
+> new file mode 100644
+> index 0000000000..a94ed804a3
+> --- /dev/null
+> +++ b/hw/misc/aspeed_ltpi.c
+> @@ -0,0 +1,194 @@
+> +/*
+> + * ASPEED LTPI Controller
 > + *
-> + * Author:
-> + *  Tao Tang <tangtao1634@phytium.com.cn>
+> + * Copyright (C) 2025 ASPEED Technology Inc.
 > + *
 > + * SPDX-License-Identifier: GPL-2.0-or-later
 > + */
 > +
 > +#include "qemu/osdep.h"
-> +#include "libqtest.h"
-> +#include "libqos/pci.h"
-> +#include "libqos/generic-pcihost.h"
-> +#include "hw/pci/pci_regs.h"
-> +#include "hw/misc/iommu-testdev.h"
-> +#include "libqos/qos-smmuv3.h"
+> +#include "qemu/log.h"
+> +#include "migration/vmstate.h"
+> +#include "hw/misc/aspeed_ltpi.h"
 > +
-> +#define DMA_LEN           4
+> +#define ASPEED_LTPI_TOTAL_SIZE  0x900
+> +#define ASPEED_LTPI_CTRL_BASE   0x000
+> +#define ASPEED_LTPI_PHY_BASE    0x200
+> +#define ASPEED_LTPI_TOP_BASE    0x800
 > +
-> +/* Test configurations for different SMMU modes and spaces */
-> +static const QSMMUTestConfig base_test_configs[] = {
-> +    {
-> +        .trans_mode = QSMMU_TM_S1_ONLY,
-> +        .sec_sid = QSMMU_SEC_SID_NONSECURE,
-> +        .dma_iova = QSMMU_IOVA_OR_IPA,
-what does this mean? QSMMU_IOVA_OR_IPA
-
-Eric
-> +        .dma_len = DMA_LEN,
-> +        .expected_result = 0
+> +#define LTPI_CTRL_LINK_MNG 0x42
+> +#define LTPI_PHY_MODE 0x0
+> +
+> +static uint64_t aspeed_ltpi_top_read(void *opaque, hwaddr offset, unsign=
+ed size)
+> +{
+> +    AspeedLTPIState *s =3D opaque;
+> +    uint32_t idx =3D offset >> 2;
+> +
+> +    return s->top_regs[idx];
+> +}
+> +
+> +static void aspeed_ltpi_top_write(void *opaque, hwaddr offset,
+> +                              uint64_t val, unsigned size)
+> +{
+> +    AspeedLTPIState *s =3D opaque;
+> +    uint32_t idx =3D offset >> 2;
+> +
+> +    switch (offset) {
+> +    default:
+> +        s->top_regs[idx] =3D (uint32_t)val;
+> +        break;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps aspeed_ltpi_top_ops =3D {
+> +    .read =3D aspeed_ltpi_top_read,
+> +    .write =3D aspeed_ltpi_top_write,
+> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+> +    .valid =3D {
+> +        .min_access_size =3D 1,
+> +        .max_access_size =3D 4,
 > +    },
-> +    {
-> +        .trans_mode = QSMMU_TM_S2_ONLY,
-> +        .sec_sid = QSMMU_SEC_SID_NONSECURE,
-> +        .dma_iova = QSMMU_IOVA_OR_IPA,
-> +        .dma_len = DMA_LEN,
-> +        .expected_result = 0
+> +};
+> +
+> +static uint64_t aspeed_ltpi_phy_read(void *opaque, hwaddr offset, unsign=
+ed size)
+> +{
+> +    AspeedLTPIState *s =3D opaque;
+> +    uint32_t idx =3D offset >> 2;
+> +
+> +    return s->phy_regs[idx];
+> +}
+> +
+> +static void aspeed_ltpi_phy_write(void *opaque, hwaddr offset,
+> +                              uint64_t val, unsigned size)
+> +{
+> +    AspeedLTPIState *s =3D opaque;
+> +    uint32_t idx =3D offset >> 2;
+> +
+> +    switch (offset) {
+> +    default:
+> +        s->phy_regs[idx] =3D (uint32_t)val;
+> +        break;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps aspeed_ltpi_phy_ops =3D {
+> +    .read =3D aspeed_ltpi_phy_read,
+> +    .write =3D aspeed_ltpi_phy_write,
+> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+> +    .valid =3D {
+> +        .min_access_size =3D 1,
+> +        .max_access_size =3D 4,
 > +    },
-> +    {
-> +        .trans_mode = QSMMU_TM_NESTED,
-> +        .sec_sid = QSMMU_SEC_SID_NONSECURE,
-> +        .dma_iova = QSMMU_IOVA_OR_IPA,
-> +        .dma_len = DMA_LEN,
-> +        .expected_result = 0
+> +};
+> +
+> +static uint64_t aspeed_ltpi_ctrl_read(void *opaque,
+> +                                      hwaddr offset, unsigned size)
+> +{
+> +    AspeedLTPIState *s =3D opaque;
+> +    uint32_t idx =3D offset >> 2;
+> +
+> +    return s->ctrl_regs[idx];
+> +}
+> +
+> +static void aspeed_ltpi_ctrl_write(void *opaque, hwaddr offset,
+> +                              uint64_t val, unsigned size)
+> +{
+> +    AspeedLTPIState *s =3D opaque;
+> +    uint32_t idx =3D offset >> 2;
+> +
+> +    switch (offset) {
+> +    default:
+> +        s->ctrl_regs[idx] =3D (uint32_t)val;
+> +        break;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps aspeed_ltpi_ctrl_ops =3D {
+> +    .read =3D aspeed_ltpi_ctrl_read,
+> +    .write =3D aspeed_ltpi_ctrl_write,
+> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+> +    .valid =3D {
+> +        .min_access_size =3D 1,
+> +        .max_access_size =3D 4,
+> +    },
+> +};
+> +
+> +static void aspeed_ltpi_reset(DeviceState *dev)
+> +{
+> +    AspeedLTPIState *s =3D ASPEED_LTPI(dev);
+> +
+> +    memset(s->ctrl_regs, 0, sizeof(s->ctrl_regs));
+> +    memset(s->phy_regs, 0, sizeof(s->phy_regs));
+> +    memset(s->top_regs, 0, sizeof(s->top_regs));
+> +    /* set default values */
+> +    s->ctrl_regs[LTPI_CTRL_LINK_MNG] =3D 0x11900007;
+> +    s->phy_regs[LTPI_PHY_MODE] =3D 0x2;
+> +}
+> +
+> +
+> +static const VMStateDescription vmstate_aspeed_ltpi =3D {
+> +    .name =3D TYPE_ASPEED_LTPI,
+> +    .version_id =3D 1,
+> +    .minimum_version_id =3D 1,
+> +    .fields =3D (VMStateField[]) {
+> +        VMSTATE_UINT32_ARRAY(ctrl_regs, AspeedLTPIState,
+> +                             ASPEED_LTPI_CTRL_SIZE >> 2),
+> +        VMSTATE_UINT32_ARRAY(phy_regs, AspeedLTPIState,
+> +                             ASPEED_LTPI_PHY_SIZE >> 2),
+> +        VMSTATE_UINT32_ARRAY(top_regs, AspeedLTPIState,
+> +                             ASPEED_LTPI_TOP_SIZE >> 2),
+> +
+> +        VMSTATE_END_OF_LIST()
 > +    }
 > +};
 > +
-> +static QPCIDevice *setup_qtest_pci_device(QTestState *qts, QGenericPCIBus *gbus,
-> +                                          QPCIBar *bar)
+> +static void aspeed_ltpi_realize(DeviceState *dev, Error **errp)
 > +{
-> +    uint16_t vid, did;
-> +    QPCIDevice *dev = NULL;
+> +    AspeedLTPIState *s =3D ASPEED_LTPI(dev);
 > +
-> +    qpci_init_generic(gbus, qts, NULL, false);
+> +    memory_region_init(&s->mmio, OBJECT(s), TYPE_ASPEED_LTPI,
+> +                       ASPEED_LTPI_TOTAL_SIZE);
 > +
-> +    /* Find device by vendor/device ID to avoid slot surprises. */
-> +    for (int s = 0; s < 32 && !dev; s++) {
-> +        for (int fn = 0; fn < 8 && !dev; fn++) {
-> +            QPCIDevice *cand = qpci_device_find(&gbus->bus, QPCI_DEVFN(s, fn));
-> +            if (!cand) {
-> +                continue;
-> +            }
-> +            vid = qpci_config_readw(cand, PCI_VENDOR_ID);
-> +            did = qpci_config_readw(cand, PCI_DEVICE_ID);
-> +            if (vid == IOMMU_TESTDEV_VENDOR_ID &&
-> +                did == IOMMU_TESTDEV_DEVICE_ID) {
-> +                dev = cand;
-> +                g_test_message("Found iommu-testdev! devfn: 0x%x", cand->devfn);
-> +            } else {
-> +                g_free(cand);
-> +            }
-> +        }
-> +    }
-> +    g_assert(dev);
+> +    memory_region_init_io(&s->mmio_ctrl, OBJECT(s),
+> +                          &aspeed_ltpi_ctrl_ops, s,
+> +                          "aspeed-ltpi-ctrl", ASPEED_LTPI_CTRL_SIZE);
 > +
-> +    qpci_device_enable(dev);
-> +    *bar = qpci_iomap(dev, 0, NULL);
-> +    g_assert_false(bar->is_io);
+> +    memory_region_init_io(&s->mmio_phy, OBJECT(s),
+> +                          &aspeed_ltpi_phy_ops, s,
+> +                          "aspeed-ltpi-phy", ASPEED_LTPI_PHY_SIZE);
 > +
-> +    return dev;
+> +    memory_region_init_io(&s->mmio_top, OBJECT(s),
+> +                          &aspeed_ltpi_top_ops, s,
+> +                          "aspeed-ltpi-top", ASPEED_LTPI_TOP_SIZE);
+> +
+> +    memory_region_add_subregion(&s->mmio,
+> +                                ASPEED_LTPI_CTRL_BASE, &s->mmio_ctrl);
+> +    memory_region_add_subregion(&s->mmio,
+> +                                ASPEED_LTPI_PHY_BASE, &s->mmio_phy);
+> +    memory_region_add_subregion(&s->mmio,
+> +                                ASPEED_LTPI_TOP_BASE, &s->mmio_top);
+> +
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->mmio);
 > +}
 > +
-> +static void test_smmuv3_translation(void)
+> +static void aspeed_ltpi_class_init(ObjectClass *klass, const void *data)
 > +{
-> +    QTestState *qts;
-> +    QGenericPCIBus gbus;
-> +    QPCIDevice *dev;
-> +    QPCIBar bar;
-> +
-> +    /* Initialize QEMU environment for SMMU testing */
-> +    qts = qtest_init("-machine virt,acpi=off,gic-version=3,iommu=smmuv3 "
-> +                     "-smp 1 -m 512 -cpu max -net none "
-> +                     "-device iommu-testdev");
-> +
-> +    /* Setup and configure PCI device */
-> +    dev = setup_qtest_pci_device(qts, &gbus, &bar);
-> +    g_assert(dev);
-> +
-> +    /* Run the enhanced translation tests */
-> +    g_test_message("### Starting SMMUv3 translation tests...###");
-> +    qsmmu_translation_batch(base_test_configs, ARRAY_SIZE(base_test_configs),
-> +                            qts, dev, bar, VIRT_SMMU_BASE);
-> +    g_test_message("### SMMUv3 translation tests completed successfully! ###");
-> +    qtest_quit(qts);
+> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> +    dc->realize =3D aspeed_ltpi_realize;
+> +    dc->vmsd =3D &vmstate_aspeed_ltpi;
+> +    device_class_set_legacy_reset(dc, aspeed_ltpi_reset);
 > +}
 > +
-> +int main(int argc, char **argv)
+> +static const TypeInfo aspeed_ltpi_info =3D {
+> +    .name          =3D TYPE_ASPEED_LTPI,
+> +    .parent        =3D TYPE_SYS_BUS_DEVICE,
+> +    .instance_size =3D sizeof(AspeedLTPIState),
+> +    .class_init    =3D aspeed_ltpi_class_init,
+> +};
+> +
+> +static void aspeed_ltpi_register_types(void)
 > +{
-> +    g_test_init(&argc, &argv, NULL);
-> +    qtest_add_func("/iommu-testdev/translation", test_smmuv3_translation);
-> +    return g_test_run();
+> +    type_register_static(&aspeed_ltpi_info);
 > +}
-> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index 669d07c06b..e2d2e68092 100644
-> --- a/tests/qtest/meson.build
-> +++ b/tests/qtest/meson.build
-> @@ -263,6 +263,7 @@ qtests_aarch64 = \
->     config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
->    (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
->    (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
-> +  (config_all_devices.has_key('CONFIG_IOMMU_TESTDEV') ? ['iommu-smmuv3-test'] : []) + \
->    qtests_cxl +                                                                                  \
->    ['arm-cpu-features',
->     'numa-test',
-
+> +
+> +type_init(aspeed_ltpi_register_types);
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index b1d8d8e5d2..45b16e7797 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -136,6 +136,7 @@ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: fil=
+es(
+>    'aspeed_hace.c',
+>    'aspeed_i3c.c',
+>    'aspeed_lpc.c',
+> +  'aspeed_ltpi.c',
+>    'aspeed_scu.c',
+>    'aspeed_sbc.c',
+>    'aspeed_sdmc.c',
+> --
+> 2.43.0
+>
+>
 

@@ -4,88 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0780BD3E771
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Dec 2025 18:38:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C740D3E771
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Dec 2025 18:40:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vTP3u-00017b-7T; Wed, 10 Dec 2025 13:37:18 -0500
+	id 1vTP79-0005Vu-Li; Wed, 10 Dec 2025 13:40:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vTP3r-000168-U6
- for qemu-arm@nongnu.org; Wed, 10 Dec 2025 13:37:15 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vTP3p-0002Sm-GZ
- for qemu-arm@nongnu.org; Wed, 10 Dec 2025 13:37:15 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-42b38de7940so22703f8f.3
- for <qemu-arm@nongnu.org>; Wed, 10 Dec 2025 10:37:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765391832; x=1765996632; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=rmuruirWl2Hf5ekYVz4hPWVOUqfIMTyLIVh2I054+1w=;
- b=lPf1ng1m+syMAWv97M961lmlISdr0FiIEk0KTMWAzZTDmT4/2GVlGauTE+IcI8mfkf
- ttDFhpju8A8nWM0BbeqooV2RSL87OlQ640hGgDKLu4xmp5Z1NbTIHpU+SZ3uvU2bBiKI
- ZBOl+nVn+NuSw4aY+SgYg/Zpk4fPu/drEEU08AtVMerHCBDjDZaKYCOLeKuEN5iQt18C
- qp9EcE4mWaVAVMcPPhf+6P3Gj6fUr+EEqYLMZXRnxRQYsrkmrmUtJZ/9IqCndL9ICN0K
- Y4Y4nEmZdK779+8YhkYwDrg6uUYrd+hRlj7Qy76HbegQUV3/odckKa8GDi39MksDIrmY
- cj0w==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vTP72-0005RV-1l
+ for qemu-arm@nongnu.org; Wed, 10 Dec 2025 13:40:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vTP6z-00038Y-NK
+ for qemu-arm@nongnu.org; Wed, 10 Dec 2025 13:40:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1765392028;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fC2okjvQPNCerM3jp2jWcvYVb5UofwtwHW7JG29GHpM=;
+ b=TfXWH3Dra7uj7d/a7mPIskNGBXyQ6XDKCTfSXzCEboERWtR3JLRMGQO22RHbEJJcFrMDFW
+ Ya9J4emKmhbwxrjDDH8/R3DdXX4qSd96tTlvXxr1fUB/q1lia+r7iXcq4jcgogWXZLsrOo
+ 1ek+u7wqCmA3nyCRF/oDnDp2b2EM428=
+Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
+ [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-597-g27KtFZgN4iJMb2cUe7eeQ-1; Wed, 10 Dec 2025 13:40:26 -0500
+X-MC-Unique: g27KtFZgN4iJMb2cUe7eeQ-1
+X-Mimecast-MFC-AGG-ID: g27KtFZgN4iJMb2cUe7eeQ_1765392026
+Received: by mail-pl1-f199.google.com with SMTP id
+ d9443c01a7336-29806c42760so4098225ad.2
+ for <qemu-arm@nongnu.org>; Wed, 10 Dec 2025 10:40:26 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765391832; x=1765996632;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=rmuruirWl2Hf5ekYVz4hPWVOUqfIMTyLIVh2I054+1w=;
- b=RGGgi7nx75ZIi552ZhMolCsis+ar6h2OumRXwcgrrgwTZk7KLWHGnmdE6Jyy99SQws
- InbmgNKwj0ZzeNZSAJweXV39YhDKwIk97vQ/i4Zftza/3o2eZLxItQYGzp4iqJ2l2B4g
- mDY1VgdjVvE7yKjfDohU39br6mNqQRoHaPUSapTnbBy03dw6gu1ENYbwlLOPhOcyUCLk
- UYu7aEFGjrkkfY/X4Fz/nPkyyBQihqB0PUOKqQCbH5O9Scqpm3FGmvSkak4/ChN6iR6B
- e/biK3sAUgv4PJbeXMJ+2JxnqjxSTZTm/XF5v5snBj9okZYyyYUGcQHf18y0h0odcZNW
- RcJA==
-X-Gm-Message-State: AOJu0YxCVZTL/SR/VibN8p4yDpeZf5Nvhzry1yF5wlzkLGgH5hFM+toQ
- TO6m4iDKeGJgFanOOeoowGNGsYov1AE+tVCtsQzCPE8EjurvjVOGKOampRO5/kupxGPnZl72O4W
- 5QyKE
-X-Gm-Gg: AY/fxX4ZPZBv7D210auoPy3O9R+6+D38Lrz1fMw8zkmijYoKW20z9WrYVASRmbiCpMI
- /ePKTItbYFm8+x76SfNZDb/AgeXPOkQ/QJ7F3yLl6evxIEJ8cPa4yapX6sKYa/C5BV+7uW6NwHw
- qWFj12VOpXbCq5Qzindv3kppWeCkRwUBMs5r9Hu5R3+RPMKVtiowEx37Vylu0aBnA4au+nNL2co
- +pcOBN2oKk/yTDHjiMZPul7YXBokVQNZ7I2Go2FEDg+DqRs3J5GLTfQMMNLkI7svVpdR0wwKJHb
- WH8xPdH0gmrKH2gzebQlGL6I/1bk6ZA8ByeobIm1PX7W6yOu3Q4HNZUmRkQ6oiPzUJam6UfiqhU
- f9DGcWnE4iu+9ryalKdwXrM+8sgTB9Tp69QXDcfsk+Qt5Chskh7Cie+dyswmlhrizvNhmlgVFAX
- dCZPrARW0a+Ofn0MrN
-X-Google-Smtp-Source: AGHT+IH1iyn5x17R9K9rC7H+NaITv97PoyAn08Em0f2NKaqGMEXqVLZSE34ATuLzYc85qXZ4UwQfig==
-X-Received: by 2002:a05:6000:2509:b0:42b:3131:5433 with SMTP id
- ffacd0b85a97d-42fa3ada434mr3916195f8f.26.1765391831880; 
- Wed, 10 Dec 2025 10:37:11 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ d=1e100.net; s=20230601; t=1765392026; x=1765996826;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=fC2okjvQPNCerM3jp2jWcvYVb5UofwtwHW7JG29GHpM=;
+ b=RDqRN3q1522vRaOYyZDiCZs2Tq6tYZFNUleKYOAbkXbWpx33dYIcBrZvWT8fZeJDsp
+ B0EdyEjfXUUwDSS0OZaiiQlJeRC7j903NmFOwRwd7E7XIQg6mMqY+U3UtLnZpBWW8dkr
+ fCAsbac2UZoUtm2V8v6dGCOfsk0LHv5cuCGZH+7GppxzoG/VCOPt7CrLCBWVzpG/T7xy
+ ur2JC402ZFsQ1EOiyXj77lwrRxjOwdO0I1mIm/NDY8D6Ab4wSYDgkENyIChj8qj7HGr4
+ 7a8WpX+bJVHJNBHVYcgcU61gVsfsGoXsx8Li+4YjYNIqgRRWXJHU7lVZeldUXuo4r6m7
+ TseA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU2DRsx9liPlFBRdXVicJyIEnHPGIMq0IyY8LZOUcdOIY85oNsqNOTRBmItkG8B8KP9GnAHKcemzQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy+24Ct6d7t9ByIyfm6MvWMEgGc58vSYRW4DCgIMkef2hkJpy4T
+ 6x5frnwvxpJI1YgDE9FIJHt3FPerldUl2x/kmpxBW2jbBv/0XtfS3rRD7Jr1Zx03WtmLUdp5zRR
+ jbryWa5OvVEFNecxnSYU53n5ZFztBR1SmWX7UHF+5l58Ur46/QJYdVQ==
+X-Gm-Gg: AY/fxX42qtw3uCjJ8SyDzEmSS3KHcFLlrHIbzUe8pYwoIlwCAAWGQ0izAra7cnfEI5X
+ +NKKCC8KwcUOX5mNjzoL7UN6YDsN3w9dQlZekxuCBpcBOV8btJ539FzAOCqpeNMgw5ltv/clzrb
+ cfOaW9FknZR660WHFIW43ouq3wP7Q1cMLiqQlnnE6DOV2NnArtjsPskn4Lwsiq7udkN/7LPlhCj
+ saI+Orz0aL5blHFN9YaKfQjSpcAXtPWW//0NuTECKa0KMbPnG3RPRNUsQ7HGXKrQIj2zYkKUUxy
+ WPplnvy7XBp3aiDqB5a2corYXblu6YBQOJ+uNKrNnCasAgwPqr3E9QfJq7PMmuQycGvrwlcGmJp
+ OBWqubUd8/alw2XDamxSXJqJztFMG8BjeUrdMTP4hbfoUUFlBpXbsDj/Raw==
+X-Received: by 2002:a17:903:1a2c:b0:290:b53b:7456 with SMTP id
+ d9443c01a7336-29ec22e3ea4mr32851955ad.5.1765392025547; 
+ Wed, 10 Dec 2025 10:40:25 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGH0G3/SxfySL4XfvLn1KP1y62i4y2oVrztOBx9YeOy2s1BhLDF8oExaLXUeDH+xrLDGRRWtQ==
+X-Received: by 2002:a17:903:1a2c:b0:290:b53b:7456 with SMTP id
+ d9443c01a7336-29ec22e3ea4mr32851685ad.5.1765392025051; 
+ Wed, 10 Dec 2025 10:40:25 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42fa8a7044csm477702f8f.15.2025.12.10.10.37.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Dec 2025 10:37:11 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH for-11.0 7/7] hw/arm/omap1: Remove omap_badwidth_*
- implementations
-Date: Wed, 10 Dec 2025 18:37:00 +0000
-Message-ID: <20251210183700.3446237-8-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20251210183700.3446237-1-peter.maydell@linaro.org>
-References: <20251210183700.3446237-1-peter.maydell@linaro.org>
+ d9443c01a7336-29ee9d38c7fsm773715ad.39.2025.12.10.10.40.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 10 Dec 2025 10:40:24 -0800 (PST)
+Message-ID: <5af3335d-632b-432a-80d8-80ca4d20d06a@redhat.com>
+Date: Wed, 10 Dec 2025 19:40:16 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC RESEND v5 3/4] tests/qtest/libqos: Add SMMUv3 helper library
+To: Tao Tang <tangtao1634@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>,
+ CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
+References: <20251126154547.1300748-1-tangtao1634@phytium.com.cn>
+ <20251126154547.1300748-4-tangtao1634@phytium.com.cn>
+ <9b2c0429-a8bb-4df4-ad95-492f463cf29f@linaro.org>
+ <b184c907-e073-43d0-87b9-cf8c6c23dbed@phytium.com.cn>
+ <a361b46f-2173-4c98-a5d3-6b4d2ac004af@linaro.org>
+ <41c33694-008e-4ee1-bbe2-1498e9b6c9c7@phytium.com.cn>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <41c33694-008e-4ee1-bbe2-1498e9b6c9c7@phytium.com.cn>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: LGJNLZpgauxGsdwSG2PJJL_PJLhAmRwL_I9vWbW26Fo_1765392026
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,110 +130,221 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now there are no callsites for the omap_badwidth_* family
-of functions we can remove their implementations.
+Hi Tao,
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/hw/arm/omap.h | 10 --------
- hw/arm/omap1.c        | 59 -------------------------------------------
- 2 files changed, 69 deletions(-)
+On 12/6/25 6:27 AM, Tao Tang wrote:
+>
+> On 2025/12/6 01:19, Pierrick Bouvier wrote:
+>> On 12/5/25 7:03 AM, Tao Tang wrote:
+>>> Hi Pierrick,
+>>>
+>>> On 2025/12/5 07:53, Pierrick Bouvier wrote:
+>>>> On 11/26/25 7:45 AM, Tao Tang wrote:
+>>>>> Introduce qos-smmuv3, a reusable library for SMMUv3-related qtest
+>>>>> operations. This module encapsulates common tasks like:
+>>>>>
+>>>>> - SMMUv3 initialization (enabling, configuring command/event queues)
+>>>>> - Stream Table Entry (STE) and Context Descriptor (CD) setup
+>>>>> - Multi-level page table construction (L0-L3 for 4KB granules)
+>>>>> - Support for Stage 1, Stage 2, and nested translation modes
+>>>>> - Could be easily extended to support multi-space testing
+>>>>> infrastructure
+>>>>>       (Non-Secure, Secure, Root, Realm)
+>>>>>
+>>>>> The library provides high-level abstractions that allow test code to
+>>>>> focus on IOMMU behavior validation rather than low-level register
+>>>>> manipulation and page table encoding. Key features include:
+>>>>>
+>>>>> - Automatic memory allocation for translation structures with proper
+>>>>>       alignment
+>>>>> - Helper functions to build valid STEs/CDs for different translation
+>>>>>       scenarios
+>>>>> - Page table walkers that handle address offset calculations per
+>>>>>       security space
+>>>>> - Command queue management for SMMU configuration commands
+>>>>>
+>>>>> This infrastructure is designed to be used by iommu-testdev-based
+>>>>> tests
+>>>>> and future SMMUv3 test suites, reducing code duplication and
+>>>>> improving
+>>>>> test maintainability.
+>>>>>
+>>>>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>>>>> ---
+>>>>>    tests/qtest/libqos/meson.build  |   3 +
+>>>>>    tests/qtest/libqos/qos-smmuv3.c | 731
+>>>>> ++++++++++++++++++++++++++++++++
+>>>>>    tests/qtest/libqos/qos-smmuv3.h | 267 ++++++++++++
+>>>>>    3 files changed, 1001 insertions(+)
+>>>>>    create mode 100644 tests/qtest/libqos/qos-smmuv3.c
+>>>>>    create mode 100644 tests/qtest/libqos/qos-smmuv3.h
+>>>>>
+>>>>
+>>>> ...
+>>>>
+>>>>> +
+>>>>> +void qsmmu_single_translation(QSMMUTestContext *ctx)
+>>>>> +{
+>>>>> +    uint32_t config_result;
+>>>>> +    uint32_t dma_result;
+>>>>> +    bool test_passed;
+>>>>> +
+>>>>> +    /* Configure SMMU translation */
+>>>>> +    config_result = qsmmu_setup_and_enable_translation(ctx);
+>>>>> +    if (config_result != 0) {
+>>>>> +        g_test_message("Configuration failed: mode=%u status=0x%x",
+>>>>> +                       ctx->config.trans_mode, config_result);
+>>>>> +        return;
+>>>>
+>>>> Is that expected to silently return if we can't configure translation?
+>>>
+>>>
+>>> No, it is not intended to silently return on a failed configuration.
+>>> Maybe an assertion is a better choice:
+>>>
+>>>
+>>> config_result = qsmmu_setup_and_enable_translation(ctx);
+>>>
+>>> g_assert_cmpuint(config_result, ==, 0);
+>>>
+>>
+>> Looks good. We should rely on exit code first, and then on verbose
+>> log to find what is the problem.
+>>
+>>>>
+>>>>> +    }
+>>>>> +
+>>>>> +    /* Trigger DMA operation */
+>>>>> +    dma_result = qsmmu_trigger_dma(ctx);
+>>>>> +    if (dma_result != 0) {
+>>>>> +        g_test_message("DMA failed: mode=%u result=0x%x",
+>>>>> +                       ctx->config.trans_mode, dma_result);
+>>>>> +    } else {
+>>>>> +        g_test_message("-> DMA succeeded: mode=%u",
+>>>>> ctx->config.trans_mode);
+>>>>> +    }
+>>>>> +
+>>>>> +    /* Validate test result */
+>>>>> +    test_passed = qsmmu_validate_test_result(ctx);
+>>>>> +    g_assert_true(test_passed);
+>>>>> +
+>>>>> +    /* Clean up translation state to prepare for the next test */
+>>>>> +    qsmmu_cleanup_translation(ctx);
+>>>>> +}
+>>>>> +
+>>>>> +void qsmmu_translation_batch(const QSMMUTestConfig *configs, size_t
+>>>>> count,
+>>>>> +                             QTestState *qts, QPCIDevice *dev,
+>>>>> +                             QPCIBar bar, uint64_t smmu_base)
+>>>>> +{
+>>>>> +    for (int i = 0; i < count; i++) {
+>>>>> +        /* Initialize test memory */
+>>>>> +        qtest_memset(qts, configs[i].dma_iova, 0x00,
+>>>>> configs[i].dma_len);
+>>>>> +        /* Execute each test configuration */
+>>>>> +        QSMMUTestContext ctx = {
+>>>>> +            .qts = qts,
+>>>>> +            .dev = dev,
+>>>>> +            .bar = bar,
+>>>>> +            .smmu_base = smmu_base,
+>>>>> +            .config = configs[i],
+>>>>> +            .trans_status = 0,
+>>>>> +            .dma_result = 0,
+>>>>> +            .sid = dev->devfn,
+>>>>> +            .tx_space = qsmmu_sec_sid_to_space(configs[i].sec_sid),
+>>>>> +        };
+>>>>> +
+>>>>> +        qsmmu_single_translation(&ctx);
+>>>>> +        g_test_message("--> Test %d completed: mode=%u sec_sid=%u "
+>>>>> +                       "status=0x%x result=0x%x", i,
+>>>>> configs[i].trans_mode,
+>>>>> +                       configs[i].sec_sid, ctx.trans_status,
+>>>>> ctx.dma_result);
+>>>>> +    }
+>>>>> +}
+>>>>
+>>>> What is the reason for batching operations?
+>>>> We are not in a performance critical scenario for running this test,
+>>>> so it's probably better to have distinct calls to single_translation.
+>>>
+>>>
+>>> As described in the previous thread [1] , I plan to split the tests so
+>>> that each translation mode is exercised by its own qtest. With that
+>>> split in place, there is no real need for a qsmmu_translation_batch()
+>>> helper anymore, so I refactor it into a qsmmu_run_translation_case
+>>> function and drop the inside for-loop.
+>>>
+>>
+>> All good, indeed removes the need for translation_batch.
+>>
+>>>
+>>> [1]
+>>> https://lore.kernel.org/qemu-devel/7370070a-c569-4b77-bd1e-6fc749ba9c90@phytium.com.cn/
+>>>
+>>>
+>>>>
+>>>> ...
+>>>>
+>>>> For the rest of the patch, which is quite consequent, congrats. It's
+>>>> hard to review all the setup phase here, but knowing it works with the
+>>>> current smmuv3 implementation, that's a good proof that it's working
+>>>> as expected.
+>>>
+>>>
+>>> Yes, setting up all this infrastructure did take some time, especially
+>>> getting the nested mode page tables right (and Secure state-related
+>>> configuration which is still in my local repo).
+>>>
+>>
+>> Feel free to start with the current version, and then you'll add
+>> secure state related changes as part of your other series.
+>>
+>>> I really appreciate that you ran the tests yourself and even checked
+>>> with a coverage-enabled build to confirm that it exercises the smmuv3
+>>> implementation. Thanks again for the thorough review.
+>>>
+>>
+>> In case someone else wants to reproduce:
+>> $ export CFLAGS="--coverage"
+>> $ ./configure --target-list=aarch64-softmmu
+>> $ ninja -C build
+>> $ QTEST_QEMU_BINARY=./build/qemu-system-aarch64 \
+>>   ./build/tests/qtest/iommu-smmuv3-test
+>> $ rm -rf build/coverage_html
+>> $ mkdir build/coverage_html
+>> $ gcovr \
+>>       --gcov-ignore-parse-errors suspicious_hits.warn \
+>>       --gcov-ignore-parse-errors negative_hits.warn \
+>>       --merge-mode-functions=separate \
+>>       --html-details build/coverage_html/index.html \
+>>       --filter 'hw/arm/smmu*'
+>> $ echo file://$(pwd)/build/coverage_html/index.html
+>> # open this in browser by clicking on your terminal
+>>
+>> If useful for you, you can attach those instructions in your next
+>> cover letter, so people can easily reproduce. 
 
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index bdb2e887e47..66a435a3d72 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -673,16 +673,6 @@ struct omap_mpu_state_s {
- struct omap_mpu_state_s *omap310_mpu_init(MemoryRegion *sdram,
-                 const char *core);
- 
--uint32_t omap_badwidth_read8(void *opaque, hwaddr addr);
--void omap_badwidth_write8(void *opaque, hwaddr addr,
--                uint32_t value);
--uint32_t omap_badwidth_read16(void *opaque, hwaddr addr);
--void omap_badwidth_write16(void *opaque, hwaddr addr,
--                uint32_t value);
--uint32_t omap_badwidth_read32(void *opaque, hwaddr addr);
--void omap_badwidth_write32(void *opaque, hwaddr addr,
--                uint32_t value);
--
- void omap_mpu_wakeup(void *opaque, int irq, int req);
- 
- #define OMAP_BAD_REG(paddr)        \
-diff --git a/hw/arm/omap1.c b/hw/arm/omap1.c
-index cfa4e1f677c..8fa4195a5fa 100644
---- a/hw/arm/omap1.c
-+++ b/hw/arm/omap1.c
-@@ -44,65 +44,6 @@
- #include "target/arm/cpu-qom.h"
- #include "trace.h"
- 
--static inline void omap_log_badwidth(const char *funcname, hwaddr addr, int sz)
--{
--    qemu_log_mask(LOG_GUEST_ERROR, "%s: %d-bit register %#08" HWADDR_PRIx "\n",
--                  funcname, 8 * sz, addr);
--}
--
--/* Should signal the TCMI/GPMC */
--uint32_t omap_badwidth_read8(void *opaque, hwaddr addr)
--{
--    uint8_t ret;
--
--    omap_log_badwidth(__func__, addr, 1);
--    cpu_physical_memory_read(addr, &ret, 1);
--    return ret;
--}
--
--void omap_badwidth_write8(void *opaque, hwaddr addr,
--                uint32_t value)
--{
--    uint8_t val8 = value;
--
--    omap_log_badwidth(__func__, addr, 1);
--    cpu_physical_memory_write(addr, &val8, 1);
--}
--
--uint32_t omap_badwidth_read16(void *opaque, hwaddr addr)
--{
--    uint16_t ret;
--
--    omap_log_badwidth(__func__, addr, 2);
--    cpu_physical_memory_read(addr, &ret, 2);
--    return ret;
--}
--
--void omap_badwidth_write16(void *opaque, hwaddr addr,
--                uint32_t value)
--{
--    uint16_t val16 = value;
--
--    omap_log_badwidth(__func__, addr, 2);
--    cpu_physical_memory_write(addr, &val16, 2);
--}
--
--uint32_t omap_badwidth_read32(void *opaque, hwaddr addr)
--{
--    uint32_t ret;
--
--    omap_log_badwidth(__func__, addr, 4);
--    cpu_physical_memory_read(addr, &ret, 4);
--    return ret;
--}
--
--void omap_badwidth_write32(void *opaque, hwaddr addr,
--                uint32_t value)
--{
--    omap_log_badwidth(__func__, addr, 4);
--    cpu_physical_memory_write(addr, &value, 4);
--}
--
- /* MPU OS timers */
- struct omap_mpu_timer_s {
-     MemoryRegion iomem;
--- 
-2.43.0
+are you ready to maintain that code (esp the lib)? You shall add an
+entry in the MAINTAINERS file for those new files I guess.
+
+Eric
+>>
+>
+> Hi Pierrick,
+>
+> Got it, I’ll keep this series focused on the current non-secure smmuv3
+> implementation, and the coverage instructions you shared are very
+> helpful — I’ll add them to the next cover letter so that other
+> reviewers can easily reproduce the results.
+>
+> Thanks again for all the detailed review and guidance.
+>
+> Best regards,
+> Tao
+>
 
 

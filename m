@@ -4,90 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C740D3E771
-	for <qemu-arm@archiver.kernel.org>; Wed, 10 Dec 2025 18:40:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 225B9D3E771
+	for <qemu-arm@archiver.kernel.org>; Wed, 10 Dec 2025 18:44:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vTP79-0005Vu-Li; Wed, 10 Dec 2025 13:40:39 -0500
+	id 1vTPAE-0006P1-Mf; Wed, 10 Dec 2025 13:43:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vTP72-0005RV-1l
- for qemu-arm@nongnu.org; Wed, 10 Dec 2025 13:40:32 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1vTPA2-0006NC-NE
+ for qemu-arm@nongnu.org; Wed, 10 Dec 2025 13:43:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vTP6z-00038Y-NK
- for qemu-arm@nongnu.org; Wed, 10 Dec 2025 13:40:31 -0500
+ id 1vTP9z-0003ZE-Qo
+ for qemu-arm@nongnu.org; Wed, 10 Dec 2025 13:43:37 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1765392028;
+ s=mimecast20190719; t=1765392213;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=fC2okjvQPNCerM3jp2jWcvYVb5UofwtwHW7JG29GHpM=;
- b=TfXWH3Dra7uj7d/a7mPIskNGBXyQ6XDKCTfSXzCEboERWtR3JLRMGQO22RHbEJJcFrMDFW
- Ya9J4emKmhbwxrjDDH8/R3DdXX4qSd96tTlvXxr1fUB/q1lia+r7iXcq4jcgogWXZLsrOo
- 1ek+u7wqCmA3nyCRF/oDnDp2b2EM428=
-Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
- [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=zr7uvmt/71xEwB5JJWgF6aR8P9yGGYRmX+C9qoOaMCA=;
+ b=UIM0HvZuL7UN7qlXVFxj4bqPy648SFqOAS7q5m91IeCRoupXMgHhKCAb4N/IydyO27F9uJ
+ LxqXsv4/IWRGX3PIIr5gQnU/5sPZ+p0JEKqRq63CdLWYie+FYr3Gk0L9H3BeZUg2lqBvyw
+ hjTo5eJAt9JcSLQ0i3+NyB8NIGidOxc=
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
+ [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-597-g27KtFZgN4iJMb2cUe7eeQ-1; Wed, 10 Dec 2025 13:40:26 -0500
-X-MC-Unique: g27KtFZgN4iJMb2cUe7eeQ-1
-X-Mimecast-MFC-AGG-ID: g27KtFZgN4iJMb2cUe7eeQ_1765392026
-Received: by mail-pl1-f199.google.com with SMTP id
- d9443c01a7336-29806c42760so4098225ad.2
- for <qemu-arm@nongnu.org>; Wed, 10 Dec 2025 10:40:26 -0800 (PST)
+ us-mta-56-QyXx_F-dNZSFwZYERUL52g-1; Wed, 10 Dec 2025 13:43:31 -0500
+X-MC-Unique: QyXx_F-dNZSFwZYERUL52g-1
+X-Mimecast-MFC-AGG-ID: QyXx_F-dNZSFwZYERUL52g_1765392211
+Received: by mail-pl1-f200.google.com with SMTP id
+ d9443c01a7336-29845b18d1aso2934985ad.1
+ for <qemu-arm@nongnu.org>; Wed, 10 Dec 2025 10:43:31 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765392026; x=1765996826;
+ d=1e100.net; s=20230601; t=1765392210; x=1765997010;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=fC2okjvQPNCerM3jp2jWcvYVb5UofwtwHW7JG29GHpM=;
- b=RDqRN3q1522vRaOYyZDiCZs2Tq6tYZFNUleKYOAbkXbWpx33dYIcBrZvWT8fZeJDsp
- B0EdyEjfXUUwDSS0OZaiiQlJeRC7j903NmFOwRwd7E7XIQg6mMqY+U3UtLnZpBWW8dkr
- fCAsbac2UZoUtm2V8v6dGCOfsk0LHv5cuCGZH+7GppxzoG/VCOPt7CrLCBWVzpG/T7xy
- ur2JC402ZFsQ1EOiyXj77lwrRxjOwdO0I1mIm/NDY8D6Ab4wSYDgkENyIChj8qj7HGr4
- 7a8WpX+bJVHJNBHVYcgcU61gVsfsGoXsx8Li+4YjYNIqgRRWXJHU7lVZeldUXuo4r6m7
- TseA==
+ bh=zr7uvmt/71xEwB5JJWgF6aR8P9yGGYRmX+C9qoOaMCA=;
+ b=BGAKP0Fvgr3Lq8M8lqA6zduoZ2M4JuSrytf0AQ4YRd6Pn/5fzsEut2mDZ3+JKPeHNc
+ 93ZxvgHQmnjwm2g74/j4Dk5Hb/67HCBFf06BUPIr7xarchXaFzNagdo1cZN6BDZN1MXS
+ GN0zsFtQFaqsj6nmjx7LACWvElfof2Q3VaDz8L+v3v6FptDq2yq81SQ4xNEnD0XV0uEc
+ ZJkyt6WQJGJSVNLGYmGA8OmOMyMvtL4NPVbl5yv9pdPc7pw8InfdyqkB6HOhNtdSb79w
+ /AHiSDl5sR7boHQSThjOq9YGsUbHAFHpZJb+yfP2rW+tCFUUtAesw3w67l9PycXB/lu9
+ 7bgQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU2DRsx9liPlFBRdXVicJyIEnHPGIMq0IyY8LZOUcdOIY85oNsqNOTRBmItkG8B8KP9GnAHKcemzQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy+24Ct6d7t9ByIyfm6MvWMEgGc58vSYRW4DCgIMkef2hkJpy4T
- 6x5frnwvxpJI1YgDE9FIJHt3FPerldUl2x/kmpxBW2jbBv/0XtfS3rRD7Jr1Zx03WtmLUdp5zRR
- jbryWa5OvVEFNecxnSYU53n5ZFztBR1SmWX7UHF+5l58Ur46/QJYdVQ==
-X-Gm-Gg: AY/fxX42qtw3uCjJ8SyDzEmSS3KHcFLlrHIbzUe8pYwoIlwCAAWGQ0izAra7cnfEI5X
- +NKKCC8KwcUOX5mNjzoL7UN6YDsN3w9dQlZekxuCBpcBOV8btJ539FzAOCqpeNMgw5ltv/clzrb
- cfOaW9FknZR660WHFIW43ouq3wP7Q1cMLiqQlnnE6DOV2NnArtjsPskn4Lwsiq7udkN/7LPlhCj
- saI+Orz0aL5blHFN9YaKfQjSpcAXtPWW//0NuTECKa0KMbPnG3RPRNUsQ7HGXKrQIj2zYkKUUxy
- WPplnvy7XBp3aiDqB5a2corYXblu6YBQOJ+uNKrNnCasAgwPqr3E9QfJq7PMmuQycGvrwlcGmJp
- OBWqubUd8/alw2XDamxSXJqJztFMG8BjeUrdMTP4hbfoUUFlBpXbsDj/Raw==
-X-Received: by 2002:a17:903:1a2c:b0:290:b53b:7456 with SMTP id
- d9443c01a7336-29ec22e3ea4mr32851955ad.5.1765392025547; 
- Wed, 10 Dec 2025 10:40:25 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGH0G3/SxfySL4XfvLn1KP1y62i4y2oVrztOBx9YeOy2s1BhLDF8oExaLXUeDH+xrLDGRRWtQ==
-X-Received: by 2002:a17:903:1a2c:b0:290:b53b:7456 with SMTP id
- d9443c01a7336-29ec22e3ea4mr32851685ad.5.1765392025051; 
- Wed, 10 Dec 2025 10:40:25 -0800 (PST)
+ AJvYcCWosZ2rhnUxh8RuHsCpKLlLl0Ubt3zKeIUdvoZAS3tkaiPKmZNGDSEgH+hGZjW1vcIp6vefBIdl6A==@nongnu.org
+X-Gm-Message-State: AOJu0Yy8p8KLyUk7mPtN0rhrVlHN8Q6xx3UOyrzg37LuIRr366Fw1S/g
+ T1VJfANOFxBN0YSJ/C4sgNAk33VObRHj19a3qNJKo+WIyZ1g6dQ8JBsr+D6/YOjya8d/16squaK
+ Zqm6Zf8bihyjNiiRTW/LS1fvqwdUKDPdfYs9iVh8khTy1rFp9AhQ0jw==
+X-Gm-Gg: AY/fxX5NLMQ0jxbOL3t1RUTgGDUjW3XJWxBsnxHsXZ6kq3WVgY9yqWYGzWujCSbbpd+
+ P+qqsbdm3xEATUAqfjxMXDWqKva+GsGBW7s8rp/oCVyMUTlAmlaP1o5jVIpRuP9+OzgSeYN6FPT
+ /5mJZk8MVsAfZtmaYgZDrQ7GV04/PEy1RKyLo1cA+V9p+HFLboJuS85OliGuSHiW90++ebkMbay
+ ZAl3W0DFNEg5Hgqhzg0Xt1TrN3wY4LKz3B7UuWnb+K+IIdPbrzD757vj7D1uLTimdDNGRAeoGRM
+ N9ULABQC4JNpG7KGuOaIXVulQBk8utdSAzdh3uoOvYnAgDfr4zcuas6XWmnm3N65Gnf6DbF/m17
+ TuVpQPFz56cc5fMTQ3Ij6eo1YSFHrm3dBwSVDYSdpH5G06QbLyWjs9SMNkg==
+X-Received: by 2002:a17:902:ebd1:b0:296:3f23:b909 with SMTP id
+ d9443c01a7336-29ec25aaefamr40674835ad.39.1765392210588; 
+ Wed, 10 Dec 2025 10:43:30 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE10V6X8Z/KwEFd/T62QX+LOP3jbBU+yBv9QUA571/PA8CD3dy4oJU4/qINtDG7giF03syQBA==
+X-Received: by 2002:a17:902:ebd1:b0:296:3f23:b909 with SMTP id
+ d9443c01a7336-29ec25aaefamr40674535ad.39.1765392210187; 
+ Wed, 10 Dec 2025 10:43:30 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-29ee9d38c7fsm773715ad.39.2025.12.10.10.40.18
+ d9443c01a7336-29ee9b36c98sm813995ad.8.2025.12.10.10.43.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 10 Dec 2025 10:40:24 -0800 (PST)
-Message-ID: <5af3335d-632b-432a-80d8-80ca4d20d06a@redhat.com>
-Date: Wed, 10 Dec 2025 19:40:16 +0100
+ Wed, 10 Dec 2025 10:43:29 -0800 (PST)
+Message-ID: <e95d82af-540f-43b0-9f0c-2e5928192049@redhat.com>
+Date: Wed, 10 Dec 2025 19:43:20 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [RFC RESEND v5 3/4] tests/qtest/libqos: Add SMMUv3 helper library
-To: Tao Tang <tangtao1634@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini <pbonzini@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -97,25 +96,22 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
 References: <20251126154547.1300748-1-tangtao1634@phytium.com.cn>
  <20251126154547.1300748-4-tangtao1634@phytium.com.cn>
  <9b2c0429-a8bb-4df4-ad95-492f463cf29f@linaro.org>
- <b184c907-e073-43d0-87b9-cf8c6c23dbed@phytium.com.cn>
- <a361b46f-2173-4c98-a5d3-6b4d2ac004af@linaro.org>
- <41c33694-008e-4ee1-bbe2-1498e9b6c9c7@phytium.com.cn>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <41c33694-008e-4ee1-bbe2-1498e9b6c9c7@phytium.com.cn>
+In-Reply-To: <9b2c0429-a8bb-4df4-ad95-492f463cf29f@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: LGJNLZpgauxGsdwSG2PJJL_PJLhAmRwL_I9vWbW26Fo_1765392026
+X-Mimecast-MFC-PROC-ID: _saK02C6kVT_p_t1CrjJw2S5AmpJPTfIqU23fPUxbz0_1765392211
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -134,217 +130,130 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Tao,
 
-On 12/6/25 6:27 AM, Tao Tang wrote:
+
+On 12/5/25 12:53 AM, Pierrick Bouvier wrote:
+> On 11/26/25 7:45 AM, Tao Tang wrote:
+>> Introduce qos-smmuv3, a reusable library for SMMUv3-related qtest
+>> operations. This module encapsulates common tasks like:
+>>
+>> - SMMUv3 initialization (enabling, configuring command/event queues)
+>> - Stream Table Entry (STE) and Context Descriptor (CD) setup
+>> - Multi-level page table construction (L0-L3 for 4KB granules)
+>> - Support for Stage 1, Stage 2, and nested translation modes
+>> - Could be easily extended to support multi-space testing infrastructure
+>>      (Non-Secure, Secure, Root, Realm)
+>>
+>> The library provides high-level abstractions that allow test code to
+>> focus on IOMMU behavior validation rather than low-level register
+>> manipulation and page table encoding. Key features include:
+>>
+>> - Automatic memory allocation for translation structures with proper
+>>      alignment
+>> - Helper functions to build valid STEs/CDs for different translation
+>>      scenarios
+>> - Page table walkers that handle address offset calculations per
+>>      security space
+>> - Command queue management for SMMU configuration commands
+>>
+>> This infrastructure is designed to be used by iommu-testdev-based tests
+>> and future SMMUv3 test suites, reducing code duplication and improving
+>> test maintainability.
+>>
+>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>> ---
+>>   tests/qtest/libqos/meson.build  |   3 +
+>>   tests/qtest/libqos/qos-smmuv3.c | 731 ++++++++++++++++++++++++++++++++
+>>   tests/qtest/libqos/qos-smmuv3.h | 267 ++++++++++++
+>>   3 files changed, 1001 insertions(+)
+>>   create mode 100644 tests/qtest/libqos/qos-smmuv3.c
+>>   create mode 100644 tests/qtest/libqos/qos-smmuv3.h
+>>
 >
-> On 2025/12/6 01:19, Pierrick Bouvier wrote:
->> On 12/5/25 7:03 AM, Tao Tang wrote:
->>> Hi Pierrick,
->>>
->>> On 2025/12/5 07:53, Pierrick Bouvier wrote:
->>>> On 11/26/25 7:45 AM, Tao Tang wrote:
->>>>> Introduce qos-smmuv3, a reusable library for SMMUv3-related qtest
->>>>> operations. This module encapsulates common tasks like:
->>>>>
->>>>> - SMMUv3 initialization (enabling, configuring command/event queues)
->>>>> - Stream Table Entry (STE) and Context Descriptor (CD) setup
->>>>> - Multi-level page table construction (L0-L3 for 4KB granules)
->>>>> - Support for Stage 1, Stage 2, and nested translation modes
->>>>> - Could be easily extended to support multi-space testing
->>>>> infrastructure
->>>>>       (Non-Secure, Secure, Root, Realm)
->>>>>
->>>>> The library provides high-level abstractions that allow test code to
->>>>> focus on IOMMU behavior validation rather than low-level register
->>>>> manipulation and page table encoding. Key features include:
->>>>>
->>>>> - Automatic memory allocation for translation structures with proper
->>>>>       alignment
->>>>> - Helper functions to build valid STEs/CDs for different translation
->>>>>       scenarios
->>>>> - Page table walkers that handle address offset calculations per
->>>>>       security space
->>>>> - Command queue management for SMMU configuration commands
->>>>>
->>>>> This infrastructure is designed to be used by iommu-testdev-based
->>>>> tests
->>>>> and future SMMUv3 test suites, reducing code duplication and
->>>>> improving
->>>>> test maintainability.
->>>>>
->>>>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->>>>> ---
->>>>>    tests/qtest/libqos/meson.build  |   3 +
->>>>>    tests/qtest/libqos/qos-smmuv3.c | 731
->>>>> ++++++++++++++++++++++++++++++++
->>>>>    tests/qtest/libqos/qos-smmuv3.h | 267 ++++++++++++
->>>>>    3 files changed, 1001 insertions(+)
->>>>>    create mode 100644 tests/qtest/libqos/qos-smmuv3.c
->>>>>    create mode 100644 tests/qtest/libqos/qos-smmuv3.h
->>>>>
->>>>
->>>> ...
->>>>
->>>>> +
->>>>> +void qsmmu_single_translation(QSMMUTestContext *ctx)
->>>>> +{
->>>>> +    uint32_t config_result;
->>>>> +    uint32_t dma_result;
->>>>> +    bool test_passed;
->>>>> +
->>>>> +    /* Configure SMMU translation */
->>>>> +    config_result = qsmmu_setup_and_enable_translation(ctx);
->>>>> +    if (config_result != 0) {
->>>>> +        g_test_message("Configuration failed: mode=%u status=0x%x",
->>>>> +                       ctx->config.trans_mode, config_result);
->>>>> +        return;
->>>>
->>>> Is that expected to silently return if we can't configure translation?
->>>
->>>
->>> No, it is not intended to silently return on a failed configuration.
->>> Maybe an assertion is a better choice:
->>>
->>>
->>> config_result = qsmmu_setup_and_enable_translation(ctx);
->>>
->>> g_assert_cmpuint(config_result, ==, 0);
->>>
->>
->> Looks good. We should rely on exit code first, and then on verbose
->> log to find what is the problem.
->>
->>>>
->>>>> +    }
->>>>> +
->>>>> +    /* Trigger DMA operation */
->>>>> +    dma_result = qsmmu_trigger_dma(ctx);
->>>>> +    if (dma_result != 0) {
->>>>> +        g_test_message("DMA failed: mode=%u result=0x%x",
->>>>> +                       ctx->config.trans_mode, dma_result);
->>>>> +    } else {
->>>>> +        g_test_message("-> DMA succeeded: mode=%u",
->>>>> ctx->config.trans_mode);
->>>>> +    }
->>>>> +
->>>>> +    /* Validate test result */
->>>>> +    test_passed = qsmmu_validate_test_result(ctx);
->>>>> +    g_assert_true(test_passed);
->>>>> +
->>>>> +    /* Clean up translation state to prepare for the next test */
->>>>> +    qsmmu_cleanup_translation(ctx);
->>>>> +}
->>>>> +
->>>>> +void qsmmu_translation_batch(const QSMMUTestConfig *configs, size_t
->>>>> count,
->>>>> +                             QTestState *qts, QPCIDevice *dev,
->>>>> +                             QPCIBar bar, uint64_t smmu_base)
->>>>> +{
->>>>> +    for (int i = 0; i < count; i++) {
->>>>> +        /* Initialize test memory */
->>>>> +        qtest_memset(qts, configs[i].dma_iova, 0x00,
->>>>> configs[i].dma_len);
->>>>> +        /* Execute each test configuration */
->>>>> +        QSMMUTestContext ctx = {
->>>>> +            .qts = qts,
->>>>> +            .dev = dev,
->>>>> +            .bar = bar,
->>>>> +            .smmu_base = smmu_base,
->>>>> +            .config = configs[i],
->>>>> +            .trans_status = 0,
->>>>> +            .dma_result = 0,
->>>>> +            .sid = dev->devfn,
->>>>> +            .tx_space = qsmmu_sec_sid_to_space(configs[i].sec_sid),
->>>>> +        };
->>>>> +
->>>>> +        qsmmu_single_translation(&ctx);
->>>>> +        g_test_message("--> Test %d completed: mode=%u sec_sid=%u "
->>>>> +                       "status=0x%x result=0x%x", i,
->>>>> configs[i].trans_mode,
->>>>> +                       configs[i].sec_sid, ctx.trans_status,
->>>>> ctx.dma_result);
->>>>> +    }
->>>>> +}
->>>>
->>>> What is the reason for batching operations?
->>>> We are not in a performance critical scenario for running this test,
->>>> so it's probably better to have distinct calls to single_translation.
->>>
->>>
->>> As described in the previous thread [1] , I plan to split the tests so
->>> that each translation mode is exercised by its own qtest. With that
->>> split in place, there is no real need for a qsmmu_translation_batch()
->>> helper anymore, so I refactor it into a qsmmu_run_translation_case
->>> function and drop the inside for-loop.
->>>
->>
->> All good, indeed removes the need for translation_batch.
->>
->>>
->>> [1]
->>> https://lore.kernel.org/qemu-devel/7370070a-c569-4b77-bd1e-6fc749ba9c90@phytium.com.cn/
->>>
->>>
->>>>
->>>> ...
->>>>
->>>> For the rest of the patch, which is quite consequent, congrats. It's
->>>> hard to review all the setup phase here, but knowing it works with the
->>>> current smmuv3 implementation, that's a good proof that it's working
->>>> as expected.
->>>
->>>
->>> Yes, setting up all this infrastructure did take some time, especially
->>> getting the nested mode page tables right (and Secure state-related
->>> configuration which is still in my local repo).
->>>
->>
->> Feel free to start with the current version, and then you'll add
->> secure state related changes as part of your other series.
->>
->>> I really appreciate that you ran the tests yourself and even checked
->>> with a coverage-enabled build to confirm that it exercises the smmuv3
->>> implementation. Thanks again for the thorough review.
->>>
->>
->> In case someone else wants to reproduce:
->> $ export CFLAGS="--coverage"
->> $ ./configure --target-list=aarch64-softmmu
->> $ ninja -C build
->> $ QTEST_QEMU_BINARY=./build/qemu-system-aarch64 \
->>   ./build/tests/qtest/iommu-smmuv3-test
->> $ rm -rf build/coverage_html
->> $ mkdir build/coverage_html
->> $ gcovr \
->>       --gcov-ignore-parse-errors suspicious_hits.warn \
->>       --gcov-ignore-parse-errors negative_hits.warn \
->>       --merge-mode-functions=separate \
->>       --html-details build/coverage_html/index.html \
->>       --filter 'hw/arm/smmu*'
->> $ echo file://$(pwd)/build/coverage_html/index.html
->> # open this in browser by clicking on your terminal
->>
->> If useful for you, you can attach those instructions in your next
->> cover letter, so people can easily reproduce. 
+> ...
+>
+>> +
+>> +void qsmmu_single_translation(QSMMUTestContext *ctx)
+>> +{
+>> +    uint32_t config_result;
+>> +    uint32_t dma_result;
+>> +    bool test_passed;
+>> +
+>> +    /* Configure SMMU translation */
+>> +    config_result = qsmmu_setup_and_enable_translation(ctx);
+>> +    if (config_result != 0) {
+>> +        g_test_message("Configuration failed: mode=%u status=0x%x",
+>> +                       ctx->config.trans_mode, config_result);
+>> +        return;
+>
+> Is that expected to silently return if we can't configure translation?
+>
+>> +    }
+>> +
+>> +    /* Trigger DMA operation */
+>> +    dma_result = qsmmu_trigger_dma(ctx);
+>> +    if (dma_result != 0) {
+>> +        g_test_message("DMA failed: mode=%u result=0x%x",
+>> +                       ctx->config.trans_mode, dma_result);
+>> +    } else {
+>> +        g_test_message("-> DMA succeeded: mode=%u",
+>> ctx->config.trans_mode);
+>> +    }
+>> +
+>> +    /* Validate test result */
+>> +    test_passed = qsmmu_validate_test_result(ctx);
+>> +    g_assert_true(test_passed);
+>> +
+>> +    /* Clean up translation state to prepare for the next test */
+>> +    qsmmu_cleanup_translation(ctx);
+>> +}
+>> +
+>> +void qsmmu_translation_batch(const QSMMUTestConfig *configs, size_t
+>> count,
+>> +                             QTestState *qts, QPCIDevice *dev,
+>> +                             QPCIBar bar, uint64_t smmu_base)
+>> +{
+>> +    for (int i = 0; i < count; i++) {
+>> +        /* Initialize test memory */
+>> +        qtest_memset(qts, configs[i].dma_iova, 0x00,
+>> configs[i].dma_len);
+>> +        /* Execute each test configuration */
+>> +        QSMMUTestContext ctx = {
+>> +            .qts = qts,
+>> +            .dev = dev,
+>> +            .bar = bar,
+>> +            .smmu_base = smmu_base,
+>> +            .config = configs[i],
+>> +            .trans_status = 0,
+>> +            .dma_result = 0,
+>> +            .sid = dev->devfn,
+>> +            .tx_space = qsmmu_sec_sid_to_space(configs[i].sec_sid),
+>> +        };
+>> +
+>> +        qsmmu_single_translation(&ctx);
+>> +        g_test_message("--> Test %d completed: mode=%u sec_sid=%u "
+>> +                       "status=0x%x result=0x%x", i,
+>> configs[i].trans_mode,
+>> +                       configs[i].sec_sid, ctx.trans_status,
+>> ctx.dma_result);
+>> +    }
+>> +}
+>
+> What is the reason for batching operations?
+> We are not in a performance critical scenario for running this test,
+> so it's probably better to have distinct calls to single_translation.
+>
+> ...
+>
+> For the rest of the patch, which is quite consequent, congrats. It's
+> hard to review all the setup phase here, but knowing it works with the
+> current smmuv3 implementation, that's a good proof that it's working
+> as expected. 
 
-are you ready to maintain that code (esp the lib)? You shall add an
-entry in the MAINTAINERS file for those new files I guess.
+That's a huge amount of code indeed. I don't how much we shall review
+this test lib but if it needs std review the patch needs to be split to
+ease the review. Maybe qtest maintainers can give some guidelines here...
 
 Eric
->>
->
-> Hi Pierrick,
->
-> Got it, I’ll keep this series focused on the current non-secure smmuv3
-> implementation, and the coverage instructions you shared are very
-> helpful — I’ll add them to the next cover letter so that other
-> reviewers can easily reproduce the results.
->
-> Thanks again for all the detailed review and guidance.
->
-> Best regards,
-> Tao
->
 
 

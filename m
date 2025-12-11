@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01EC0D4335B
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 23:45:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A4DBD4335E
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 23:45:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vTqKv-0003Q8-Qg; Thu, 11 Dec 2025 18:44:43 -0500
+	id 1vTqKu-0003PR-Th; Thu, 11 Dec 2025 18:44:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vTqKs-0003NL-NX
- for qemu-arm@nongnu.org; Thu, 11 Dec 2025 18:44:38 -0500
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+ id 1vTqKt-0003No-32
+ for qemu-arm@nongnu.org; Thu, 11 Dec 2025 18:44:39 -0500
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vTqKq-0003Wv-Jq
+ id 1vTqKr-0003XC-Bt
  for qemu-arm@nongnu.org; Thu, 11 Dec 2025 18:44:38 -0500
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-7a9c64dfa8aso515615b3a.3
+Received: by mail-pj1-x1034.google.com with SMTP id
+ 98e67ed59e1d1-343dfb673a8so670579a91.0
  for <qemu-arm@nongnu.org>; Thu, 11 Dec 2025 15:44:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765496675; x=1766101475; darn=nongnu.org;
+ d=linaro.org; s=google; t=1765496676; x=1766101476; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jpcJFT2k5nHygp8suhE8+fSew2JESztmRXmXovsEsMw=;
- b=OXZRexR7ltmxc2p7P24jyZoOT+tEFLNDMZ1uVdKJhyNCGT8/0lq1+x4WLejSUFKPA2
- ro4x3EgFzH2lg4OV8z9RU2ARGK0/Ta+tMOx7FI7KDeFIYS0k5C9zlKmpCAoDE1pbLPrQ
- 9YZVPpg46HNhx6jtXY8HwQOh53OhHOmC/MqhZM3iKyZnuJa+1MVjmYQjQUEtkLdhkC4d
- 5YMwT+5w+bEAkhGGrb6CZJT4+VBkzaXgegrkoILwU5YWx+rueMvlK+d4uzrvvq2q7AUH
- wfgkw9s6kZ999FiUzWJ27tmjjmvkubRTtQfB+x4rIV2VRsI/aLENBGn/91rGTHieio3b
- evDQ==
+ bh=jKUQi9a2OWlZ7y6Jma65MPuLoFvySr8Ow6X58V0yBsk=;
+ b=GsSXbDg9xwKcA/686kCAYTOgRTT0Q7gX9bzcl7Vf5Wm9FHuZMsBnfUKwp7ZTgtK+w6
+ ere9lSwtKJBNq5atqbonCtMs6HnKeG45AJCxQHG6uBC6AINAWz+//A6NTyTIii70XzqQ
+ 97lB+VWr1qMaMlRYFg0ewdna2KCaLWgau+6A8Ik5qBH62a5IMu5DGvCEUDKB4AdJePbQ
+ ygMiD5UDvoKwHkdHEk0CBhkBETTxBG9igKg0CXGPe0LkReVV2STtj/BJ1rYnEH8LnfNN
+ XI02mJ9OAFJVauEtUNsvqlYzG9d6KDXTAS8Pwk3bcd5xO2xBr6aYkEnpVrlPDYOSMge0
+ GaZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765496675; x=1766101475;
+ d=1e100.net; s=20230601; t=1765496676; x=1766101476;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=jpcJFT2k5nHygp8suhE8+fSew2JESztmRXmXovsEsMw=;
- b=VJKi1ozccwlIRzEHXRkicWyxg00DghEmUS+mk3FG9qQIfCGxjhmDpXY6YX3pH9c82/
- fiiegBDo/Nc7MGgYsVzDoCvIAWir0QsNrwvMeHu+H3+Vg7FBC22f2OlZW+5SqgT9pNbl
- wIzPpnDoirNrvcxPPteLw2otVhTMNrE1XQ6lkY/pdFQUQEr633Jf3kjl5i18dRg9lUO7
- ELJ/UqS9smPGwohbE6loRfMXExmCkyLF6uatRloDzl834Zzuc3FufPivvphjeC7Ng5OM
- LNiB+POsqCQxTjHE9D67EJyCh1JBHkz5s8YjSGsGzx0qp5vN0bsuI+Jy4UUxmM9ld0Uc
- Vpbg==
+ bh=jKUQi9a2OWlZ7y6Jma65MPuLoFvySr8Ow6X58V0yBsk=;
+ b=qrSn9TvRDLEzi1bsfKBKU1P2JdEgn6LkMG5mSvCSQ4dzrQn3zQVgJdvxSmCtublubB
+ exDoYN/V/hcXnw6enOPane8S6Xc9CwXQsPs7IyVejKFddeUCRkCFqzUO4yeXVLQZsgRw
+ KQzhEyxRbmzfJ5dd6TRMLfxB88KVt/61pFA5AJbgobRrS/DBtPJx7UEh5zhEV/xdbcP8
+ QuTyrcGt/EGwtkzHYMaMtG7VhOeEPorB3R1w964Lk9dlL/EjwzduHSEeY/StBV6gqKA9
+ DTSAkAxiNmtH5vsKEB9479IrSx3oBzQlV2C5y0w+y42VYmL1pbmq2Q5O6iHxjBpdfNBo
+ rj0w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUcbks3pGkqxN2VQVCPhTqbLhigsphvvu3022GhSK3MiuMLLRhEAYlSan1297CYlG5FIlROdo0n/A==@nongnu.org
-X-Gm-Message-State: AOJu0Yyg4uWsctj9P9kAgH3tJpjIVmE2+gdxU417XHu7U2HPaH1lQxC2
- s9eMyirTZDq27FUUP8zfXNKd3lt0nQdEEfW245QjN7DmXhapti3I44pEOUOlqOz1MdE=
-X-Gm-Gg: AY/fxX74i91Fwv9aIUwAHT5r3BsFm1d9lppq4MnQ01jwZpMvLutWaN7c9RYKEgnt9Tf
- B6NLBfxkZ8C6tEnWM5GhEfhnRulXczK3ZfLXk3zgKUhSOiXtBArHKFqNRT5PclnFPT6mDI2Ymc3
- pI1RZ7/wgq9BJLBkNLkVWkDjGslJR+LFJwDTofEYpWFmlNf4W4d/gdplByN8Vd6xS0v3CJ4B6W5
- rLOXKJ49Raj3EHNAQsp/uSY8JDyXuEsTzqaWupIuLWKcmr2fy++2h1w8ZSnfV11eDdxQVFWRapm
- YqNHmQAbsAOjo7KOjmt49cKmO/ZIhscIoJVpY8x4Gx6kQSYWSC529pssWqVD7hZE+SnxUR/rTnQ
- AhpqLWV0XDjDGeP+Yv6gKBU4PaDuSdg4KfUvyp5s6NPorN5+SuMLQmnds3BSaip1fZJ7PSfXAC/
- HldtREdKDlEF1POOYcA4cxvF3VIa+hlzSV7ZuekJ7wYYh1PTIcq4UwyDzqaFZFTP62rrGx9GjVU
- A==
-X-Google-Smtp-Source: AGHT+IF/DpPvfoCBwE0KcZlFwwnUpppqOP+B4y3lL33Yd2nemBLu8aQEA2u6ufPbhs5nVgzzJCfSWQ==
-X-Received: by 2002:a05:6a20:3d8a:b0:366:55c4:c5a8 with SMTP id
- adf61e73a8af0-369adad45a1mr209248637.25.1765496675064; 
+ AJvYcCXUmuUKE8cl845Y1lEWyT+fK/d3DaRWYeaiuv4aXY9FTHDNEKta7UtnNp4YhSRDcLrxOo/q2nzUQw==@nongnu.org
+X-Gm-Message-State: AOJu0Yw7NwVomH9X5gs1ylpL937zJ5tMH7k6/Tv9pcGda6uAL8ekN02U
+ aNMA1qXJfKvD/CPbBlQLJEqruJbqX+JUVpmf+fwaWWCJTUIKuAPoX7DCVtTt61eKWU4=
+X-Gm-Gg: AY/fxX5F6cjxUaudPggUoQIvc/jo3dSBffcgFplEkNpMx+3A7G3iHlchtuwHnvsy0W5
+ 517O1jh7HwS5pvRAvRia5wsYCez/4S+2oqe0BhazyQblzzVv1b3dLtgiYKuEMMY0Qdb3d7tWW7u
+ 84m3o8H4n/FbuULNmmR32ey2FWT9ULEHbKmAEcMqZzus6hjbrXez3pZFSUfAtEqAXmW9npaWeRe
+ ZsAyRvdfMBNHLioJ/0+PQ1Sdp2XWIkd+ZOOGNDhPP+6GQZIuFaqFObn4Y9G1yonumfvjOO92u4q
+ WRlCOMRusIXK3HOvup2GEQNgilHMJLyL2En9WFBq6KhfgOhVvFP8XBter5OmkFbYmOCdC/T1beK
+ YOD0B8nlZl/L4U3VhekwUC5+xKamyhoL/JfeNMg7ieNiqMdWmjQQsK73/EyTXOd68uXKXS/5sQ8
+ vc+d3Pz1yY8cvGtXnw55XniwuAuyp7lXAuwfXsWwPM05+tM5A+s5OqQGTjhuoRptI=
+X-Google-Smtp-Source: AGHT+IH/7OG8gHsl5qG/OTEpuhBwf4zkG/wsAOiTePqRKG/CVS0cRAKW879n6aoH6GAlmW2YvLIzFg==
+X-Received: by 2002:a17:90b:5645:b0:343:b610:901c with SMTP id
+ 98e67ed59e1d1-34abd76f325mr289059a91.26.1765496675802; 
  Thu, 11 Dec 2025 15:44:35 -0800 (PST)
 Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c0c2599228dsm3370410a12.1.2025.12.11.15.44.34
+ 41be03b00d2f7-c0c2599228dsm3370410a12.1.2025.12.11.15.44.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 11 Dec 2025 15:44:34 -0800 (PST)
+ Thu, 11 Dec 2025 15:44:35 -0800 (PST)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -76,23 +75,24 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
  Tao Tang <tangtao1634@phytium.com.cn>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 1/2] target/arm: Move ARMSecuritySpace to a common header
-Date: Thu, 11 Dec 2025 15:44:25 -0800
-Message-ID: <20251211234426.2403792-2-pierrick.bouvier@linaro.org>
+Subject: [PATCH 2/2] target/arm/ptw: make granule_protection_check usable
+ without a cpu
+Date: Thu, 11 Dec 2025 15:44:26 -0800
+Message-ID: <20251211234426.2403792-3-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251211234426.2403792-1-pierrick.bouvier@linaro.org>
 References: <20251211234426.2403792-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x431.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1034.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,140 +108,147 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Tao Tang <tangtao1634@phytium.com.cn>
+By removing cpu details and use a config struct, we can use the
+same granule_protection_check with other devices, like SMMU.
 
-The ARMSecuritySpace enum and its related helpers were defined in the
-target-specific header target/arm/cpu.h. This prevented common,
-target-agnostic code like the SMMU model from using these definitions
-without triggering "cpu.h included from common code" errors.
-
-To resolve this, this commit introduces a new, lightweight header,
-include/hw/arm/arm-security.h, which is safe for inclusion by common
-code.
-
-The following change was made:
-
-- The ARMSecuritySpace enum and the arm_space_is_secure() and
-arm_secure_to_space() helpers have been moved from target/arm/cpu.h
-to the new hw/arm/arm-security.h header.
-
-This refactoring decouples the security state definitions from the core
-CPU implementation, allowing common hardware models to correctly handle
-security states without pulling in heavyweight, target-specific headers.
-
-Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Link: https://lists.nongnu.org/archive/html/qemu-arm/2025-09/msg01288.html
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- include/hw/arm/arm-security.h | 54 +++++++++++++++++++++++++++++++++++
- target/arm/cpu.h              | 25 +---------------
- 2 files changed, 55 insertions(+), 24 deletions(-)
- create mode 100644 include/hw/arm/arm-security.h
+ target/arm/cpu.h | 14 ++++++++++++++
+ target/arm/ptw.c | 41 ++++++++++++++++++++++++-----------------
+ 2 files changed, 38 insertions(+), 17 deletions(-)
 
-diff --git a/include/hw/arm/arm-security.h b/include/hw/arm/arm-security.h
-new file mode 100644
-index 00000000000..9664c0f95e9
---- /dev/null
-+++ b/include/hw/arm/arm-security.h
-@@ -0,0 +1,54 @@
-+/*
-+ * ARM security space helpers
-+ *
-+ * Provide ARMSecuritySpace and helpers for code that is not tied to CPU.
-+ *
-+ *  Copyright (c) 2003 Fabrice Bellard
-+ *
-+ * This library is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU Lesser General Public
-+ * License as published by the Free Software Foundation; either
-+ * version 2.1 of the License, or (at your option) any later version.
-+ *
-+ * This library is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+ * Lesser General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU Lesser General Public
-+ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef HW_ARM_ARM_SECURITY_H
-+#define HW_ARM_ARM_SECURITY_H
-+
-+#include <stdbool.h>
-+
-+/*
-+ * ARM v9 security states.
-+ * The ordering of the enumeration corresponds to the low 2 bits
-+ * of the GPI value, and (except for Root) the concat of NSE:NS.
-+ */
-+
-+ typedef enum ARMSecuritySpace {
-+    ARMSS_Secure     = 0,
-+    ARMSS_NonSecure  = 1,
-+    ARMSS_Root       = 2,
-+    ARMSS_Realm      = 3,
-+} ARMSecuritySpace;
-+
-+/* Return true if @space is secure, in the pre-v9 sense. */
-+static inline bool arm_space_is_secure(ARMSecuritySpace space)
-+{
-+    return space == ARMSS_Secure || space == ARMSS_Root;
-+}
-+
-+/* Return the ARMSecuritySpace for @secure, assuming !RME or EL[0-2]. */
-+static inline ARMSecuritySpace arm_secure_to_space(bool secure)
-+{
-+    return secure ? ARMSS_Secure : ARMSS_NonSecure;
-+}
-+
-+#endif /* HW_ARM_ARM_SECURITY_H */
-+
-+
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 39f2b2e54de..efbef0341da 100644
+index efbef0341da..38cc5823a93 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -31,6 +31,7 @@
- #include "exec/page-protection.h"
- #include "qapi/qapi-types-common.h"
- #include "target/arm/multiprocessing.h"
-+#include "hw/arm/arm-security.h"
- #include "target/arm/gtimer.h"
- #include "target/arm/cpu-sysregs.h"
- #include "target/arm/mmuidx.h"
-@@ -2102,30 +2103,6 @@ static inline int arm_feature(CPUARMState *env, int feature)
+@@ -1216,6 +1216,20 @@ void arm_v7m_cpu_do_interrupt(CPUState *cpu);
  
- void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp);
+ hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
+                                          MemTxAttrs *attrs);
++
++typedef struct ARMGranuleProtectionConfig {
++    uint64_t gpccr;
++    uint64_t gptbr;
++    uint8_t parange;
++    bool support_sel2;
++    AddressSpace *as_secure;
++} ARMGranuleProtectionConfig;
++
++bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
++                                  uint64_t paddress,
++                                  ARMSecuritySpace pspace,
++                                  ARMSecuritySpace ss,
++                                  ARMMMUFaultInfo *fi);
+ #endif /* !CONFIG_USER_ONLY */
  
--/*
-- * ARM v9 security states.
-- * The ordering of the enumeration corresponds to the low 2 bits
-- * of the GPI value, and (except for Root) the concat of NSE:NS.
-- */
--
--typedef enum ARMSecuritySpace {
--    ARMSS_Secure     = 0,
--    ARMSS_NonSecure  = 1,
--    ARMSS_Root       = 2,
--    ARMSS_Realm      = 3,
--} ARMSecuritySpace;
--
--/* Return true if @space is secure, in the pre-v9 sense. */
--static inline bool arm_space_is_secure(ARMSecuritySpace space)
--{
--    return space == ARMSS_Secure || space == ARMSS_Root;
--}
--
--/* Return the ARMSecuritySpace for @secure, assuming !RME or EL[0-2]. */
--static inline ARMSecuritySpace arm_secure_to_space(bool secure)
--{
--    return secure ? ARMSS_Secure : ARMSS_NonSecure;
--}
+ int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 2e6b149b2d1..2b620b03014 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -330,24 +330,23 @@ static bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx,
+     return (regime_sctlr(env, mmu_idx) & SCTLR_M) == 0;
+ }
  
- #if !defined(CONFIG_USER_ONLY)
- /**
+-static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
+-                                     ARMSecuritySpace pspace,
+-                                     ARMSecuritySpace ss,
+-                                     ARMMMUFaultInfo *fi)
++bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
++                                  uint64_t paddress,
++                                  ARMSecuritySpace pspace,
++                                  ARMSecuritySpace ss,
++                                  ARMMMUFaultInfo *fi)
+ {
+     MemTxAttrs attrs = {
+         .secure = true,
+         .space = ARMSS_Root,
+     };
+-    ARMCPU *cpu = env_archcpu(env);
+-    uint64_t gpccr = env->cp15.gpccr_el3;
++    const uint64_t gpccr = config.gpccr;
+     unsigned pps, pgs, l0gptsz, level = 0;
+     uint64_t tableaddr, pps_mask, align, entry, index;
+-    AddressSpace *as;
+     MemTxResult result;
+     int gpi;
+ 
+-    if (!FIELD_EX64(gpccr, GPCCR, GPC)) {
++    if (!FIELD_EX64(config.gpccr, GPCCR, GPC)) {
+         return true;
+     }
+ 
+@@ -362,7 +361,7 @@ static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
+      * physical address size is invalid.
+      */
+     pps = FIELD_EX64(gpccr, GPCCR, PPS);
+-    if (pps > FIELD_EX64_IDREG(&cpu->isar, ID_AA64MMFR0, PARANGE)) {
++    if (pps > config.parange) {
+         goto fault_walk;
+     }
+     pps = pamax_map[pps];
+@@ -432,7 +431,7 @@ static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
+     }
+ 
+     /* GPC Priority 4: the base address of GPTBR_EL3 exceeds PPS. */
+-    tableaddr = env->cp15.gptbr_el3 << 12;
++    tableaddr = config.gptbr << 12;
+     if (tableaddr & ~pps_mask) {
+         goto fault_size;
+     }
+@@ -446,12 +445,10 @@ static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
+     align = MAKE_64BIT_MASK(0, align);
+     tableaddr &= ~align;
+ 
+-    as = arm_addressspace(env_cpu(env), attrs);
+-
+     /* Level 0 lookup. */
+     index = extract64(paddress, l0gptsz, pps - l0gptsz);
+     tableaddr += index * 8;
+-    entry = address_space_ldq_le(as, tableaddr, attrs, &result);
++    entry = address_space_ldq_le(config.as_secure, tableaddr, attrs, &result);
+     if (result != MEMTX_OK) {
+         goto fault_eabt;
+     }
+@@ -479,7 +476,7 @@ static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
+     level = 1;
+     index = extract64(paddress, pgs + 4, l0gptsz - pgs - 4);
+     tableaddr += index * 8;
+-    entry = address_space_ldq_le(as, tableaddr, attrs, &result);
++    entry = address_space_ldq_le(config.as_secure, tableaddr, attrs, &result);
+     if (result != MEMTX_OK) {
+         goto fault_eabt;
+     }
+@@ -513,7 +510,7 @@ static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
+     case 0b1111: /* all access */
+         return true;
+     case 0b1000: /* secure */
+-        if (!cpu_isar_feature(aa64_sel2, cpu)) {
++        if (!config.support_sel2) {
+             goto fault_walk;
+         }
+         /* fall through */
+@@ -3786,8 +3783,18 @@ static bool get_phys_addr_gpc(CPUARMState *env, S1Translate *ptw,
+                             memop, result, fi)) {
+         return true;
+     }
+-    if (!granule_protection_check(env, result->f.phys_addr,
+-                                  result->f.attrs.space, ptw->in_space, fi)) {
++
++    ARMCPU *cpu = env_archcpu(env);
++    struct ARMGranuleProtectionConfig gpc = {
++        .gpccr = env->cp15.gpccr_el3,
++        .gptbr = env->cp15.gptbr_el3,
++        .parange = FIELD_EX64_IDREG(&cpu->isar, ID_AA64MMFR0, PARANGE),
++        .support_sel2 = cpu_isar_feature(aa64_sel2, cpu),
++        .as_secure = cpu_get_address_space(env_cpu(env), ARMASIdx_S)
++    };
++    if (!arm_granule_protection_check(gpc, result->f.phys_addr,
++                                      result->f.attrs.space, ptw->in_space,
++                                      fi)) {
+         fi->type = ARMFault_GPCFOnOutput;
+         return true;
+     }
 -- 
 2.47.3
 

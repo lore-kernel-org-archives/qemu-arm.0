@@ -4,67 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61153D41C12
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 09:40:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F16DD41C15
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 10:21:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vTd9M-0006qf-4p; Thu, 11 Dec 2025 04:39:52 -0500
+	id 1vTdnY-0005aC-Ck; Thu, 11 Dec 2025 05:21:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vTd9F-0006pQ-Dp; Thu, 11 Dec 2025 04:39:45 -0500
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vTd99-0004yx-Kz; Thu, 11 Dec 2025 04:39:43 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwAH6CRSkTpp4nJcAQ--.37767S2;
- Thu, 11 Dec 2025 17:39:30 +0800 (CST)
-Received: from [10.31.62.13] (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwAnge5PkTppZS8LAA--.27025S2;
- Thu, 11 Dec 2025 17:39:27 +0800 (CST)
-Message-ID: <2e54cc59-1c76-482f-834d-f75e309ed7db@phytium.com.cn>
-Date: Thu, 11 Dec 2025 17:39:27 +0800
+ (Exim 4.90_1) (envelope-from <me@linux.beauty>)
+ id 1vTdnW-0005ZY-UO; Thu, 11 Dec 2025 05:21:22 -0500
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <me@linux.beauty>)
+ id 1vTdnU-00055B-Ck; Thu, 11 Dec 2025 05:21:22 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1765448437; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=ZE9sPVAWXVGWu/LKi5ajTaoLknyfwf/HKS2rDEvvA/7mK2cUqkWxtvc8qXkjKviHz7krbiQMDs2Mmqt2sIVo7Q0DH+wI1JDUY0UroKUBKwxn6LYw4b72NqiRTr8U2YGwTrM3JCAaC6DFnOdn421L6PXIghNog7bvI6S7huTRMpI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1765448437;
+ h=Content-Type:Content-Transfer-Encoding:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To:Cc;
+ bh=zvbCSxFQ5GtZrejK5aYSTISAwkVH5RejnhMuIVCy2F0=; 
+ b=GoVBLEjxz1lVpXIXNUCOhNJkF9yd2hcCILoOyR/TystJTosLO7qaxbnm+tX+1dCaMbxuys6NJNh5HOwnlYIucsrGfogm/bEkPSdJT0Ew2M/0sqdVA/+K/6MbJ+Mx/qmKvU1R5msXXsels+Np17T1F/6T93fFySYkIIfSMQfGHi4=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=linux.beauty;
+ spf=pass  smtp.mailfrom=me@linux.beauty;
+ dmarc=pass header.from=<me@linux.beauty>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1765448437; 
+ s=zmail; d=linux.beauty; i=me@linux.beauty;
+ h=From:From:To:To:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To:Cc;
+ bh=zvbCSxFQ5GtZrejK5aYSTISAwkVH5RejnhMuIVCy2F0=;
+ b=IhWGfCVuV3zNxpJHAJpO77jGMX+raRXN6DPXjBiPOLDlUDavPNeXM+D0Xoezb7B9
+ hmvQ+MyefT+r74nj12I5UYYKlLwdRmOdBcu5GOnbOSRjClG1F1alwJEO+3GWEx9MJsp
+ GWi6X0lxVwmJ+4gM1T+zJ8hBsb6ChiivE4t9EkYY=
+Received: by mx.zohomail.com with SMTPS id 1765448433768511.7457602478198;
+ Thu, 11 Dec 2025 02:20:33 -0800 (PST)
+From: Li Chen <me@linux.beauty>
+To: "Peter Maydell" <peter.maydell@linaro.org>,
+ "Shannon Zhao" <shannon.zhaosl@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ "Igor Mammedov" <imammedo@redhat.com>, "Ani Sinha" <anisinha@redhat.com>,
+ "Eduardo Habkost" <eduardo@habkost.net>,
+ "Marcel Apfelbaum" <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ "Yanan Wang" <wangyanan55@huawei.com>, "Zhao Liu" <zhao1.liu@intel.com>,
+ "Song Gao" <gaosong@loongson.cn>, "Jiaxun Yang" <jiaxun.yang@flygoat.com>,
+ "Sunil V L" <sunilvl@ventanamicro.com>,
+ "Palmer Dabbelt" <palmer@dabbelt.com>,
+ "Alistair Francis" <alistair.francis@wdc.com>,
+ "Weiwei Li" <liwei1518@gmail.com>, "qemu-arm" <qemu-arm@nongnu.org>,
+ "qemu-devel" <qemu-devel@nongnu.org>, "qemu-riscv" <qemu-riscv@nongnu.org>
+Subject: [PATCH v6] acpi/virt: suppress UART device & SPCR when guest has no
+ serial hardware
+Date: Thu, 11 Dec 2025 18:20:25 +0800
+Message-ID: <20251211102025.873506-1-me@linux.beauty>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC RESEND v5 3/4] tests/qtest/libqos: Add SMMUv3 helper library
-To: eric.auger@redhat.com, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>,
- CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
-References: <20251126154547.1300748-1-tangtao1634@phytium.com.cn>
- <20251126154547.1300748-4-tangtao1634@phytium.com.cn>
- <9b2c0429-a8bb-4df4-ad95-492f463cf29f@linaro.org>
- <e95d82af-540f-43b0-9f0c-2e5928192049@redhat.com>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <e95d82af-540f-43b0-9f0c-2e5928192049@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwAnge5PkTppZS8LAA--.27025S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQABBWk51DEDpAABsW
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxuFW3ury5CryxGF4xtF1UJrb_yoWxGFyrpF
- ykGFW5trWUJFn5Jr17Gr1UGry5Ar4xJw1UJr10gF1DJrZ5Ar12gr1jgryq9r1DJr48Xr1j
- vw1jgFnxur15JrDanT9S1TB71UUUUUJqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.112; envelope-from=me@linux.beauty;
+ helo=sender4-pp-f112.zoho.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -82,153 +88,198 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Eric,
+From: Li Chen <chenl311@chinatelecom.cn>
 
-On 2025/12/11 02:43, Eric Auger wrote:
->
-> On 12/5/25 12:53 AM, Pierrick Bouvier wrote:
->> On 11/26/25 7:45 AM, Tao Tang wrote:
->>> Introduce qos-smmuv3, a reusable library for SMMUv3-related qtest
->>> operations. This module encapsulates common tasks like:
->>>
->>> - SMMUv3 initialization (enabling, configuring command/event queues)
->>> - Stream Table Entry (STE) and Context Descriptor (CD) setup
->>> - Multi-level page table construction (L0-L3 for 4KB granules)
->>> - Support for Stage 1, Stage 2, and nested translation modes
->>> - Could be easily extended to support multi-space testing infrastructure
->>>       (Non-Secure, Secure, Root, Realm)
->>>
->>> The library provides high-level abstractions that allow test code to
->>> focus on IOMMU behavior validation rather than low-level register
->>> manipulation and page table encoding. Key features include:
->>>
->>> - Automatic memory allocation for translation structures with proper
->>>       alignment
->>> - Helper functions to build valid STEs/CDs for different translation
->>>       scenarios
->>> - Page table walkers that handle address offset calculations per
->>>       security space
->>> - Command queue management for SMMU configuration commands
->>>
->>> This infrastructure is designed to be used by iommu-testdev-based tests
->>> and future SMMUv3 test suites, reducing code duplication and improving
->>> test maintainability.
->>>
->>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->>> ---
->>>    tests/qtest/libqos/meson.build  |   3 +
->>>    tests/qtest/libqos/qos-smmuv3.c | 731 ++++++++++++++++++++++++++++++++
->>>    tests/qtest/libqos/qos-smmuv3.h | 267 ++++++++++++
->>>    3 files changed, 1001 insertions(+)
->>>    create mode 100644 tests/qtest/libqos/qos-smmuv3.c
->>>    create mode 100644 tests/qtest/libqos/qos-smmuv3.h
->>>
->> ...
->>
->>> +
->>> +void qsmmu_single_translation(QSMMUTestContext *ctx)
->>> +{
->>> +    uint32_t config_result;
->>> +    uint32_t dma_result;
->>> +    bool test_passed;
->>> +
->>> +    /* Configure SMMU translation */
->>> +    config_result = qsmmu_setup_and_enable_translation(ctx);
->>> +    if (config_result != 0) {
->>> +        g_test_message("Configuration failed: mode=%u status=0x%x",
->>> +                       ctx->config.trans_mode, config_result);
->>> +        return;
->> Is that expected to silently return if we can't configure translation?
->>
->>> +    }
->>> +
->>> +    /* Trigger DMA operation */
->>> +    dma_result = qsmmu_trigger_dma(ctx);
->>> +    if (dma_result != 0) {
->>> +        g_test_message("DMA failed: mode=%u result=0x%x",
->>> +                       ctx->config.trans_mode, dma_result);
->>> +    } else {
->>> +        g_test_message("-> DMA succeeded: mode=%u",
->>> ctx->config.trans_mode);
->>> +    }
->>> +
->>> +    /* Validate test result */
->>> +    test_passed = qsmmu_validate_test_result(ctx);
->>> +    g_assert_true(test_passed);
->>> +
->>> +    /* Clean up translation state to prepare for the next test */
->>> +    qsmmu_cleanup_translation(ctx);
->>> +}
->>> +
->>> +void qsmmu_translation_batch(const QSMMUTestConfig *configs, size_t
->>> count,
->>> +                             QTestState *qts, QPCIDevice *dev,
->>> +                             QPCIBar bar, uint64_t smmu_base)
->>> +{
->>> +    for (int i = 0; i < count; i++) {
->>> +        /* Initialize test memory */
->>> +        qtest_memset(qts, configs[i].dma_iova, 0x00,
->>> configs[i].dma_len);
->>> +        /* Execute each test configuration */
->>> +        QSMMUTestContext ctx = {
->>> +            .qts = qts,
->>> +            .dev = dev,
->>> +            .bar = bar,
->>> +            .smmu_base = smmu_base,
->>> +            .config = configs[i],
->>> +            .trans_status = 0,
->>> +            .dma_result = 0,
->>> +            .sid = dev->devfn,
->>> +            .tx_space = qsmmu_sec_sid_to_space(configs[i].sec_sid),
->>> +        };
->>> +
->>> +        qsmmu_single_translation(&ctx);
->>> +        g_test_message("--> Test %d completed: mode=%u sec_sid=%u "
->>> +                       "status=0x%x result=0x%x", i,
->>> configs[i].trans_mode,
->>> +                       configs[i].sec_sid, ctx.trans_status,
->>> ctx.dma_result);
->>> +    }
->>> +}
->> What is the reason for batching operations?
->> We are not in a performance critical scenario for running this test,
->> so it's probably better to have distinct calls to single_translation.
->>
->> ...
->>
->> For the rest of the patch, which is quite consequent, congrats. It's
->> hard to review all the setup phase here, but knowing it works with the
->> current smmuv3 implementation, that's a good proof that it's working
->> as expected.
-> That's a huge amount of code indeed. I don't how much we shall review
-> this test lib but if it needs std review the patch needs to be split to
-> ease the review. Maybe qtest maintainers can give some guidelines here...
->
-> Eric
+virt machines always instantiate a PL011/16550 UART at slot 0 and describe
+it in ACPI (DSDT and optional SPCR table). When the command line disables
+the serial backend (e.g. "-serial none"), the guest still sees the UART as
+a preferred console even though it is not usable.
 
+Teach the virt ACPI code to omit the UART device and SPCR when there is no
+serial backend attached. This matches the hardware that the guest can
+actually use and avoids confusing firmware or OS code that relies on SPCR.
 
-I agree that the current qos-smmuv3 patch is too big for a single 
-review. When implementing this library I actually spent quite some time 
-debugging it, especially getting the page tables right, which is part of 
-why it initially came as one large chunk.
+The bios-tables-test qtests rely on an ACPI UART node and SPCR entry for
+UEFI-based virt machines. To keep those tests working we create a UART
+with a "null" chardev backend instead. This preserves the ACPI tables
+while discarding the firmware's serial output so it does not corrupt the
+TAP stdout stream.
 
-I plan to split it into several smaller patches along functional boundaries:
+Suggested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Li Chen <chenl311@chinatelecom.cn>
+Reviewed-by: Sunil V L <sunilvl@ventanamicro.com>
+---
+v4->v5:
+- Also suppress UART device & SPCR when guest has no serial hardware on loongarch
+- rename serial_exist to serial_exists
+- fix style issue
+v5->v6: 
+- Fix: tap parsingg error caused by changing serial to none; now set to null.
 
-- one for the basic structures and common helpers, then separate patches 
-for
-- Stage-1,
-- Stage-2,
-- nested translation support,
-- for the more complex nested case I can further split the changes if 
-that makes the review easier.
+ hw/arm/virt-acpi-build.c       | 15 +++++++++------
+ hw/loongarch/virt-acpi-build.c |  8 +++++---
+ hw/riscv/virt-acpi-build.c     |  8 ++++++--
+ include/system/system.h        |  2 ++
+ system/vl.c                    |  5 +++++
+ tests/qtest/bios-tables-test.c |  6 ++++--
+ 6 files changed, 31 insertions(+), 13 deletions(-)
 
-I would very much appreciate qtest maintainers' professional advices on 
-the overall shape and layering of this test library before I start 
-splitting it up.
-
-
-Best regards,
-
-Tao
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 200e2a1da7..16d3b63030 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -64,6 +64,7 @@
+ #include "hw/virtio/virtio-acpi.h"
+ #include "target/arm/cpu.h"
+ #include "target/arm/multiprocessing.h"
++#include "system/system.h"
+ 
+ #define ARM_SPI_BASE 32
+ 
+@@ -1031,11 +1032,13 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+      */
+     scope = aml_scope("\\_SB");
+     acpi_dsdt_add_cpus(scope, vms);
+-    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0],
+-                       (irqmap[VIRT_UART0] + ARM_SPI_BASE), 0);
+-    if (vms->second_ns_uart_present) {
+-        acpi_dsdt_add_uart(scope, &memmap[VIRT_UART1],
+-                           (irqmap[VIRT_UART1] + ARM_SPI_BASE), 1);
++    if (serial_exists()) {
++        acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0],
++                           (irqmap[VIRT_UART0] + ARM_SPI_BASE), 0);
++        if (vms->second_ns_uart_present) {
++            acpi_dsdt_add_uart(scope, &memmap[VIRT_UART1],
++                               (irqmap[VIRT_UART1] + ARM_SPI_BASE), 1);
++        }
+     }
+     if (vmc->acpi_expose_flash) {
+         acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+@@ -1184,7 +1187,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+ 
+     acpi_add_table(table_offsets, tables_blob);
+ 
+-    if (ms->acpi_spcr_enabled) {
++    if (ms->acpi_spcr_enabled && serial_exists()) {
+         spcr_setup(tables_blob, tables->linker, vms);
+     }
+ 
+diff --git a/hw/loongarch/virt-acpi-build.c b/hw/loongarch/virt-acpi-build.c
+index 3694c9827f..6eab907087 100644
+--- a/hw/loongarch/virt-acpi-build.c
++++ b/hw/loongarch/virt-acpi-build.c
+@@ -484,8 +484,10 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+ 
+     acpi_table_begin(&table, table_data);
+     dsdt = init_aml_allocator();
+-    for (i = 0; i < VIRT_UART_COUNT; i++) {
+-        build_uart_device_aml(dsdt, i);
++    if (serial_exists()) {
++        for (i = 0; i < VIRT_UART_COUNT; i++) {
++            build_uart_device_aml(dsdt, i);
++        }
+     }
+     build_pci_device_aml(dsdt, lvms);
+     build_la_ged_aml(dsdt, machine);
+@@ -557,7 +559,7 @@ static void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+     build_srat(tables_blob, tables->linker, machine);
+     acpi_add_table(table_offsets, tables_blob);
+ 
+-    if (machine->acpi_spcr_enabled)
++    if (machine->acpi_spcr_enabled && serial_exists())
+         spcr_setup(tables_blob, tables->linker, machine);
+ 
+     if (machine->numa_state->num_nodes) {
+diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
+index f1406cb683..e895bc4ddb 100644
+--- a/hw/riscv/virt-acpi-build.c
++++ b/hw/riscv/virt-acpi-build.c
+@@ -39,6 +39,7 @@
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "system/reset.h"
++#include "system/system.h"
+ 
+ #define ACPI_BUILD_TABLE_SIZE             0x20000
+ #define ACPI_BUILD_INTC_ID(socket, index) ((socket << 24) | (index))
+@@ -474,7 +475,10 @@ static void build_dsdt(GArray *table_data,
+                                  memmap[VIRT_APLIC_S].size, "RSCV0002");
+     }
+ 
+-    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0], UART0_IRQ);
++    if (serial_exists()) {
++        acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0], UART0_IRQ);
++    }
++
+     if (virt_is_iommu_sys_enabled(s)) {
+         acpi_dsdt_add_iommu_sys(scope, &memmap[VIRT_IOMMU_SYS], IOMMU_SYS_IRQ);
+     }
+@@ -890,7 +894,7 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
+ 
+     acpi_add_table(table_offsets, tables_blob);
+ 
+-    if (ms->acpi_spcr_enabled) {
++    if (ms->acpi_spcr_enabled && serial_exists()) {
+         spcr_setup(tables_blob, tables->linker, s);
+     }
+ 
+diff --git a/include/system/system.h b/include/system/system.h
+index 03a2d0e900..4a03f17e91 100644
+--- a/include/system/system.h
++++ b/include/system/system.h
+@@ -74,6 +74,8 @@ extern unsigned int nb_prom_envs;
+ /* Return the Chardev for serial port i, or NULL if none */
+ Chardev *serial_hd(int i);
+ 
++bool serial_exists(void);
++
+ /* parallel ports */
+ 
+ #define MAX_PARALLEL_PORTS 3
+diff --git a/system/vl.c b/system/vl.c
+index 5091fe52d9..3a2988cb47 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -1487,6 +1487,11 @@ Chardev *serial_hd(int i)
+     return NULL;
+ }
+ 
++bool serial_exists(void)
++{
++    return serial_hd(0) ? true : false;
++}
++
+ static bool parallel_parse(const char *devname, Error **errp)
+ {
+     static int index = 0;
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index 6b892ef23e..6b0e4be752 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -824,10 +824,12 @@ static char *test_acpi_create_args(test_data *data, const char *params)
+         /*
+          * TODO: convert '-drive if=pflash' to new syntax (see e33763be7cd3)
+          * when arm/virt boad starts to support it.
++         * NOTE: Explicitly add "-serial null" to enable uart in DSDT
++         *       without mixing guest output into TAP stdout.
+          */
+         if (data->cd) {
+             args = g_strdup_printf("-machine %s%s %s -accel tcg "
+-                "-nodefaults -nographic "
++                "-nodefaults -serial null -nographic "
+                 "-drive if=pflash,format=raw,file=%s,readonly=on "
+                 "-drive if=pflash,format=raw,file=%s,snapshot=on -cdrom %s %s",
+                 data->machine, data->machine_param ?: "",
+@@ -835,7 +837,7 @@ static char *test_acpi_create_args(test_data *data, const char *params)
+                 data->uefi_fl1, data->uefi_fl2, data->cd, params ? params : "");
+         } else {
+             args = g_strdup_printf("-machine %s%s %s -accel tcg "
+-                "-nodefaults -nographic "
++                "-nodefaults -serial null -nographic "
+                 "-drive if=pflash,format=raw,file=%s,readonly=on "
+                 "-drive if=pflash,format=raw,file=%s,snapshot=on %s",
+                 data->machine, data->machine_param ?: "",
+-- 
+2.51.0
 
 

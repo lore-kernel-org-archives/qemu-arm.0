@@ -4,98 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C34ED4335B
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 22:21:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A26C2D43359
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 22:27:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vTp2W-0007PX-Fo; Thu, 11 Dec 2025 17:21:36 -0500
+	id 1vTp7V-0001bx-Nx; Thu, 11 Dec 2025 17:26:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vTp2U-0007Ok-N0
- for qemu-arm@nongnu.org; Thu, 11 Dec 2025 17:21:34 -0500
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+ id 1vTp7R-0001aC-3C
+ for qemu-arm@nongnu.org; Thu, 11 Dec 2025 17:26:41 -0500
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vTp2T-0003H7-3R
- for qemu-arm@nongnu.org; Thu, 11 Dec 2025 17:21:34 -0500
-Received: by mail-pf1-x436.google.com with SMTP id
- d2e1a72fcca58-7f121c00dedso742614b3a.0
- for <qemu-arm@nongnu.org>; Thu, 11 Dec 2025 14:21:32 -0800 (PST)
+ id 1vTp7P-0005A2-Ga
+ for qemu-arm@nongnu.org; Thu, 11 Dec 2025 17:26:40 -0500
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-7f121c00dedso747645b3a.0
+ for <qemu-arm@nongnu.org>; Thu, 11 Dec 2025 14:26:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765491692; x=1766096492; darn=nongnu.org;
+ d=linaro.org; s=google; t=1765491998; x=1766096798; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=f5xjuMkaaczkaNqjWZ/VAUt1Oj5pKOGI3NKeSFWso6A=;
- b=PLk3ICziswE/zoU6QPOcZxf2pSmdladN/qNIqARPUgVhtoNSiPphZMQnavt2HG+8cs
- 7M6fHr/Mr1tXky/+YYBAB/oQZzUfQno4xOj39Th8G+GVqN0OScQu5OVCcwJ1Md/CdD6F
- e2E04/hJdo27N+FoHVcpKLDXyop6ZA8shX65FZxNH3UMEgeruZ8ZpTQ7vIeX/ZkqIMWT
- ZKDXee9DINE9FC4fRdq8xUr4LLTl2AdZJLPGjcThnVVCfv3DrU7YV9OnN3PsW5fwnnZP
- ZlAN+5srYP/FpEryiYpNVr+dunXTwX21g9kq487LZMUGRBsQT+MOoOJDhpfza3tGlmLM
- Gg5w==
+ bh=S/kUz+nDt/WGpNRZXQCP2s6Nm2X+/R3zJqZWJXL3Do0=;
+ b=RXWcj9TCkm+FnZpwCihT+10oyFmSrUX/aCjqvJUCU2nzU+JWqSIVQYQ/jjYNPH67Wh
+ TymAFGy1A7asX4MZZrVLM8vNxEyGq7+W6TxLepODxQoa4hMU3Idkueji8/I26DLd3/qX
+ 2WgMQNM6T+kh98LHjrfOeKlellml9/O6BDSy8sI9GJJ45blUD+Pifrja+6lWcQ3ZA5yZ
+ eq1bqtpzuv/+ROg2HDbnw4nxSEIypf6IkUAYP9HReJUEVX8a0Tuq5v4QSXnZB7kyxw3D
+ frHYGCvjBAyM8Biieo94gbE/Ic2mAWrO2TmNJCmGibWtRVdduVXpyKqSWU2+MZXn69zG
+ /9Tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765491692; x=1766096492;
+ d=1e100.net; s=20230601; t=1765491998; x=1766096798;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=f5xjuMkaaczkaNqjWZ/VAUt1Oj5pKOGI3NKeSFWso6A=;
- b=hiTXKigzitxTuJTCRbtDa3cDa3tW+UarFILzm9YWbRdqY5UrLoj6LvEj0lO5ArwEJ9
- kGk8my/ybjZhcN9WhjrxDb6YL5dNTcpmpj46b7lQADqmoYGWoehVClk5mPcVktkGf9UZ
- r8HtYX+IBDsBJE5wHLY9IcbVeO6+E8YKQ26/rFEaTqq5ehH/yY7BQ0eyuuN7uqpaJVAZ
- js2LPq27z6xQ+k+bzmaRMDsr8v2DxhkSf5S8sTE/fIBx2k5rQxY1R2bXBripRW2IpEOI
- 48VpvkiPgwfx9kaNm8iDln6EjWNhLaE4aJvHq+JwpEsehE4lA7Qst5DynM79Xo5qdoGV
- u+DQ==
+ bh=S/kUz+nDt/WGpNRZXQCP2s6Nm2X+/R3zJqZWJXL3Do0=;
+ b=KJU0jidYfpA02fAb/URqo2lRCRk6+a7R6o+vWJj5npdsx6x8YUuI6Ka58YVrcK6QWu
+ emcbVqxQfu11QnA5gNqkbA4g0EDCph2gIY3ztqE6mif+niECpVxHwBeKRIsmKyijs3rm
+ gBsB//r69J6hBNFMGwQuxvjn/523kjzHtO+HsM4XwfXb3VIWkGHJsD5I0l0k0spMwZ+X
+ MPFtxG3AXsye6mYOy74rXuyJimSCB7rUHXoo7lQ0qv6hVEExLdIMLMjtq5/3zByCY7TW
+ SCcRFiZ2QuZ9YPCTBQZV5ZaXDJZAQuOrCHyUZyVO0WJnMBKGuNuHAbPvRy3VMIoVQn31
+ 2cWg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXziTYKhVuICNz+pNrPRJn68bUb93m5ZPjWl4WRWiA16O/R9B2QehYxXvk9U0n8XzJYkpbXllyNLA==@nongnu.org
-X-Gm-Message-State: AOJu0YwtVl8NB7oLaBAHG3rqudPZfyIdra1XV9laRqUXJ21di5+ZH97L
- y/xnoYwH6J79ZSlEKw2awoy9oyJqz/m6xlbNJIWCmSEUCXLcy6zk9bfyBPmfVlh60VI=
-X-Gm-Gg: AY/fxX49qiBi7fYcPO84gccS09xhafQfAMKsabgeMIqvJhXsKmkXkw1CnUvi/n4LwD1
- 8pIyx45CMsrudFStgzU7AyrKGFZDFWPE42KASwRdawOGDq+g4/l4NZSTBHEOyTC1CVjLfVoOv//
- 0W/+TB5dfCpZCOOgESfQB9nSizZB0yCc8X4A4uAHuflWDyXZ4pQ3KWGhid/lxKHWdd3vrN8FaPQ
- yuekRPsLTl3BoRWvNvKlTxL30YfQ92jxxGLuz6eT28SAOAHPwXjFIBOZmBQQGr2wwOVv026bNWt
- vGiUhgx1o4wZ0W2olNFiw42IWU8f9gHw3ihDtrcVzm9m39eAybI7idCv/xkSFrL0TQjU4I7Ih4i
- tqQEZPtQ7uyMSMcpJ2w04VCN+rONQnt5o+U/Sts8gcM/KVD5LrlsoqS/Bs8pklqNVD6l3ieTwu6
- xuiVgzm3ipxLPmjOVRy1IoNbN4AA0nTkU6SdMoC+tlXPRdnv4FnoqKAMI=
-X-Google-Smtp-Source: AGHT+IFNm2y4AR3PKe6mILZegPOntdSrjY8+8FE6ss/f/ggJ2n72H1LfJXEQ+9yXsL1OC+ZWe0Sqwg==
-X-Received: by 2002:a05:6a21:339b:b0:366:581e:19e9 with SMTP id
- adf61e73a8af0-369adfb3027mr31088637.19.1765491691535; 
- Thu, 11 Dec 2025 14:21:31 -0800 (PST)
+ AJvYcCVwK9o4HCufblCSPsXrFNthmEEU+etsktJFMhNYjCOreKiJE0Z881lDex3RwScYQOxzOyOPD77yUA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy6zdZ6saP0mUqKE6TILyZp9T/f4lFUYQ+wKu8qIq3kcCSohtmC
+ YMYFUxkwbEUUavCdnNoOhK9ynv3kY+h/g1TpR9qygR0KErPfJ31R+ShddaPVMHTs+a8=
+X-Gm-Gg: AY/fxX5ekxGWE6s2WUzyPtu+6Muyte5LMap/FzOTmaPoflf/hRfhielcufmw1meLc4I
+ x9tF2DengyM+PtEK1VdyPGHGQ0QVWhLb21TpgJnkMeF1MfN/YirdvTR+UxiwW7naln4jxQi4ghB
+ ycys+1eRoQYuj3e/yKR8/yHLQKec+yu/cWLSErRZtMfF9pCCdDLrMBTJ7kAudozcAHbkoqlDpXc
+ bkTdV15zrAbXU5UeOAnz5njxQ1qURerivUb7twGBoS7D9l42QO75CJ2yQrx1fXr61ubWHEFmmZ3
+ YYlO5RqGbj5FXYLWiXnJLdiXBwqIWjdaOA1d+s6HjsvYq0ta4kHron8j021Ym+GWJ8gOSb1WWr0
+ FoChazonBIfr5QclRn5jL2/sQ7iLC+MJQi9DsdEl9VEJzrbqq+C8OIVzAvpqkdz3YuJdnl1i16Q
+ 6e56XMNI2d/J9HaCJ//IB7M16VEcoDZa3Ht7IO4say7TS0PItmfXZucGc7JK1eSYmc1g==
+X-Google-Smtp-Source: AGHT+IHYCpBBriMfZUJDyn1sptct6fkolXdbKkDJyJeZfqNaJmd6DUxbfmiu/bHZy3ck7ZnrrcwGiA==
+X-Received: by 2002:a05:6a20:6a11:b0:34f:1623:2354 with SMTP id
+ adf61e73a8af0-369af813597mr24831637.42.1765491997834; 
+ Thu, 11 Dec 2025 14:26:37 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c0c2c582e86sm3167497a12.33.2025.12.11.14.21.30
+ d2e1a72fcca58-7f4c4aa718asm3405729b3a.35.2025.12.11.14.26.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Dec 2025 14:21:30 -0800 (PST)
-Message-ID: <ffeefd82-43a0-412b-bbe3-31018d0321d7@linaro.org>
-Date: Thu, 11 Dec 2025 14:21:29 -0800
+ Thu, 11 Dec 2025 14:26:37 -0800 (PST)
+Message-ID: <ea6a119a-49fb-490f-9532-6de60e9f049a@linaro.org>
+Date: Thu, 11 Dec 2025 14:26:36 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/smmu: add memory regions as property for an SMMU
- instance
+Subject: Re: [RFC 1/1] hw/pci: Add sec-sid property to PCIDevice
 Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
- tangtao1634@phytium.com.cn, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, qemu-arm@nongnu.org, Eric Auger
- <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>
-References: <20251211221715.2206662-1-pierrick.bouvier@linaro.org>
+To: Tao Tang <tangtao1634@phytium.com.cn>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Eric Auger <eric.auger@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Chen Baozi <chenbaozi@phytium.com.cn>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>
+References: <20251211102729.227376-1-tangtao1634@phytium.com.cn>
+ <20251211102729.227376-2-tangtao1634@phytium.com.cn>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251211221715.2206662-1-pierrick.bouvier@linaro.org>
+In-Reply-To: <20251211102729.227376-2-tangtao1634@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x436.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,23 +113,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/11/25 2:17 PM, Pierrick Bouvier wrote:
-> This will be used to access non-secure and secure memory. Secure support
-> and Granule Protection Check (for RME) for SMMU need to access secure
-> memory.
-> 
-> As well, it allows to remove usage of global address_space_memory,
-> allowing different SMMU instances to have a specific view of memory.
-> 
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> ---
->   include/hw/arm/smmu-common.h |  4 ++++
->   hw/arm/sbsa-ref.c            | 16 ++++++++++++----
->   hw/arm/smmu-common.c         | 24 ++++++++++++++++++++++++
->   hw/arm/virt.c                | 16 +++++++++++-----
->   4 files changed, 51 insertions(+), 9 deletions(-)
->
+Hi Tao,
 
-This hopefully solves issue discussed here:
-https://lore.kernel.org/qemu-devel/20251012150701.4127034-9-tangtao1634@phytium.com.cn/
+On 12/11/25 2:27 AM, Tao Tang wrote:
+> Arm SMMUv3 uses SEC_SID to control how it interprets the security
+> state of incoming DMA requests. When SEC_SID=Secure, the SMMU
+> examines additional signals to distinguish Secure vs Non-secure
+> streams; when SEC_SID=Non-secure, all requests are treated as
+> Non-secure streams regardless of other signals.
+> 
+> The SMMU spec states that SEC_SID is a system-defined property.
+> And devices capable of SEC_SID=Secure should be statically marked
+> by the system.
+> 
+> This adds a uint8_t sec_sid field and "sec-sid" QOM property to
+> PCIDevice, allowing boards to configure this attribute. Values are
+> 0 (Non-secure, default) and 1 (Secure).
+> 
+> Note: This is not a PCIe architectural feature. It is purely an
+> SMMU integration mechanism and does not affect PCIe transactions.
+> 
+> Future RME-DA/TDISP work will use the PCIe TDISP/DTI protocol to model
+> Realm and Non-secure streams, instead of extending this static field.
+> 
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> ---
+>   hw/pci/pci.c                | 7 +++++++
+>   include/hw/pci/pci_device.h | 3 +++
+>   2 files changed, 10 insertions(+)
+> 
+> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> index b1eba348e0..1f944d0e39 100644
+> --- a/hw/pci/pci.c
+> +++ b/hw/pci/pci.c
+> @@ -98,6 +98,13 @@ static const Property pci_props[] = {
+>       DEFINE_PROP_STRING("sriov-pf", PCIDevice, sriov_pf),
+>       DEFINE_PROP_BIT("x-pcie-ext-tag", PCIDevice, cap_present,
+>                       QEMU_PCIE_EXT_TAG_BITNR, true),
+> +
+> +    /*
+> +     * System-defined, statically configured SEC_SID for this PCI device, used
+> +     * by Arm SMMU. Currently only support Non-secure (0) and Secure (1)
+> +     * security states.
+> +     */
+> +    DEFINE_PROP_UINT8("sec-sid", PCIDevice, sec_sid, 0),
+>       { .name = "busnr", .info = &prop_pci_busnr },
+>   };
+>   
+> diff --git a/include/hw/pci/pci_device.h b/include/hw/pci/pci_device.h
+> index 88ccea5011..16364731da 100644
+> --- a/include/hw/pci/pci_device.h
+> +++ b/include/hw/pci/pci_device.h
+> @@ -184,6 +184,9 @@ struct PCIDevice {
+>       uint32_t max_bounce_buffer_size;
+>   
+>       char *sriov_pf;
+> +
+> +    /* Arm SMMU SEC_SID */
+> +    uint8_t sec_sid;
+>   };
+>   
+>   static inline int pci_intx(PCIDevice *pci_dev)
+
+this is an excellent addition, and something we definitely need for 
+Secure support in SMMU.
+
+May I suggest we have a string value instead of a uint8_t?
+
+This way, it would be explicit to have:
+sec-sid=non-secure (default)
+sec-sid=secure
+It can be backed by a proper SMMUSecSID variable, so once command line 
+is parsed, we don't deal with string anymore, but with a proper enum 
+instead.
+
+Thanks,
+Pierrick
 

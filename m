@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41A86D41D58
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 15:23:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1715BD41D58
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 15:25:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vTiVu-0004gU-G0; Thu, 11 Dec 2025 10:23:30 -0500
+	id 1vTiX6-0005OA-2S; Thu, 11 Dec 2025 10:24:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vTiVt-0004gC-2M
- for qemu-arm@nongnu.org; Thu, 11 Dec 2025 10:23:29 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vTiX4-0005ND-Fs
+ for qemu-arm@nongnu.org; Thu, 11 Dec 2025 10:24:42 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vTiVr-0004lV-7B
- for qemu-arm@nongnu.org; Thu, 11 Dec 2025 10:23:28 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vTiX2-0005Bq-S3
+ for qemu-arm@nongnu.org; Thu, 11 Dec 2025 10:24:42 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1765466605;
+ s=mimecast20190719; t=1765466680;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=xEV2ET08lTfu5PFUdVrGZ8CTgU7mZ4vZr0FD1nufhXU=;
- b=Z0Q5KcCXwUNCF7+qiGmRAgMh5epPiAQo/XSNLj67fLtgFC16/cdVI20XZ6jBJ6ovdwGuW3
- GSercFq5lC1fJmCCEgm1gUdV4LFFTfqVSZuwY6ysrmVzkmXXCTdarklm3Bo+flK7ozmha/
- mhN2txb9a1zsUSoe4gQ7svTtY2Ag+W0=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=EJK41ynsPUuJv69DTopYLPaRucjPYfwFDkl1me2BzjA=;
+ b=FAO65VtrmiZFLQMxkNSHqxcskrmScD/oCl3BKK7lMpk5lHu3Ovhec7EKu5vM0RYoY4g009
+ lXRk98i4azIVIfLwmCv5cRfmjD5xqRxIXc/rCBICljDx1WfZPo1R6rPrdUCV8z+Xp479ys
+ CiGjpcvMsSRcCT58z9X5MfiWzwDdKws=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-497-M2USLv5WMmegvW6cpt8UHQ-1; Thu, 11 Dec 2025 10:23:24 -0500
-X-MC-Unique: M2USLv5WMmegvW6cpt8UHQ-1
-X-Mimecast-MFC-AGG-ID: M2USLv5WMmegvW6cpt8UHQ_1765466603
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-47797caba11so1042905e9.3
- for <qemu-arm@nongnu.org>; Thu, 11 Dec 2025 07:23:24 -0800 (PST)
+ us-mta-618-ReTsO1n7NX-LXwxvrqPKFQ-1; Thu, 11 Dec 2025 10:24:38 -0500
+X-MC-Unique: ReTsO1n7NX-LXwxvrqPKFQ-1
+X-Mimecast-MFC-AGG-ID: ReTsO1n7NX-LXwxvrqPKFQ_1765466677
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-42f9e62b4feso148978f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 11 Dec 2025 07:24:38 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765466603; x=1766071403;
+ d=1e100.net; s=20230601; t=1765466677; x=1766071477;
  h=content-transfer-encoding:in-reply-to:autocrypt:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=xEV2ET08lTfu5PFUdVrGZ8CTgU7mZ4vZr0FD1nufhXU=;
- b=en+4qd8Dc5atZr4dPzo5kMQ5ibwi3mmU8qbeT+juTQw0YerGUn9adxkANCp2GQnTAf
- p9Ge3C2RJA/lX5WIzh8yoj3/toTEXpiHDqpULrGvxhuMZIcj+dEoIxti0DKnM/P/t333
- 8RftYMobWwdXmYxIlt/kWbfzWQoa7caxUlhiBw/Inedi1jLGRckftq4j8nZo/BtTvwVf
- 9g1Ob2efQf2brngkBTSAg1Ssx16bO72Zn8wjeA9gusxIfiBzu8osKZSTdaOCCgEt86x2
- AUvM415bb5IhCIKDa1KCUSSW8o/dsCSRuhwVG4ipTr8Jfx6yBjw/QBWgBd5C2Ra2hMYA
- yYjw==
+ bh=EJK41ynsPUuJv69DTopYLPaRucjPYfwFDkl1me2BzjA=;
+ b=rAiTfq+sQoEUJLGyjKl9BxrEUWaGXLTo8bDxe6nQc/Ojxw9Yu5IT1qRz8Ae4Jlt0W0
+ Ph2VKGJv2oNgLydvbtRJDaGWlaFhJ1f2uGaoTjpj9jZCUDKelgsmmvgA9/0DRpolAavj
+ J5bXypzdX0IOIcqN6t4h5KnAnOoE/E86OLNK12jup3fFWqRBOLoNao1nDcVkUDydzQHu
+ IVGV6tH1b1Fj+A3Q0Ep8FlhUttm5sFZ5JjEDlhJr+DhnjGsCVTz3D2p251nY2anxe/VT
+ xRUvTOC1Zrr8GXq+jfwhSS+5LWC1wtVssUSEAqTLndLlAfVVkROHaRqM4tiggW0SizoM
+ 9W/A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUc7rvmT/0yhZO2KRr1ImGQXasol9G72KBe8WGcKD59ntT+nTYNbJU1QLYbrxr2fsag0tcmSWo6bQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzCc/kYfp/5jUK0gmVQbYbTYJVZLBUb+S5VovjjlU0BlQJt41c0
- 4brl6OdOTJFevS6iFkvbOuuWPIv5JwaR+BNBCDXWn1rWH2NKKdFT2wTClWREuWNl14rIPZhFdss
- +nW475/DT5lNub/kM/lqjpK2zTalQOM7e+tRiXAqeAZpKilhHAdEeIQ==
-X-Gm-Gg: AY/fxX6IFhjrNZ2+DMk4bQrVyhTtaBBOwl04XPR9MfaEFOGycX4If9anUHhhhAxCn5j
- q1IqTi5uH/llQR/N0cVwxHK3O83LXg6964KdgZItunrWdliHpaoTiAHXSSoh+l4w7GG3T49Ih9F
- QvbQcZfoy/Wk6dIRNJQ8cM39J02VXWfMLFahhha6VAghEqPNJKhHMz2noIe/T5toSWTzFBLtnSh
- Usj1lIuTXtBao1RHeQz/8fA1WaQk2Qt1Luho8g+8kn5D+ps5UAtujPuhiW/IpRNNlIa63eiYZZu
- 8Aer1z5TIuAmWutG11XhyN+BE2QSDJkfd+YOuKvEgv4WYdQSojVBovHL0WX0k6UcSmmqWgPO5s1
- kXbwNxZ5KojEM9tadncId+ZwsDmxBqxKQ7dBRq//QxOCSbEVv
-X-Received: by 2002:a05:600c:46d2:b0:477:429b:3b93 with SMTP id
- 5b1f17b1804b1-47a83843246mr69479085e9.18.1765466603157; 
- Thu, 11 Dec 2025 07:23:23 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEhMmROcczFH91R9Q/StnP+e6u1ticPAaAx2HuR5It8OFjRJ8WibM0Tx05fTblJkzBlGIUNZg==
-X-Received: by 2002:a05:600c:46d2:b0:477:429b:3b93 with SMTP id
- 5b1f17b1804b1-47a83843246mr69478695e9.18.1765466602687; 
- Thu, 11 Dec 2025 07:23:22 -0800 (PST)
+ AJvYcCWG6r5iLmydAch1DsFDGg2hpgiKajl6J5+neALE4GRn4vXHi7W5+2xqeB6rwatiq3Ox5SELT1iD4Q==@nongnu.org
+X-Gm-Message-State: AOJu0YxczQcux2c7Qt9Yr8FRYMUcKXBbKo5dBxkGn4qgi9igWHw0Lcbt
+ BHRzTtmpQOEdR99r4QNzHBvbOfYF+eLN1hoHajTp1yghFsP7OwqKG9EsqDWt0Oi4qfic2INi9/A
+ 1pPVOQxlwDKsJbZZ4r7CTfhY7nL0AsohJeYcVoOUtDpDCuqlQt8BJLQ==
+X-Gm-Gg: AY/fxX4uRIGQBwqI4CQlo4KeEvVYPlwb+XtSvlRsyVGUTqTPB0qTvO64PAG309w42mH
+ 6MGfMjw3bgQ88SACiTOxqVA6e8wabI/sJyJrisDDSPVtQfCeUKFdq8xwlRpq4M+iL9IW6YxsEoi
+ cU0icWFyNyYT7DxelTizbqF9yRW6j8w4bvr32G6vdCXCllDzbXCcWPvHnaz3Wbf5aDKdJyN08dr
+ arZbuNJyBF5jhQRgIboFU+Ni/7yJp8lxJwNHz4y9t0Dhx4pNmqfzNwDAHrhEjhG2IpaS/3Q78v4
+ 1wxJoV0fWzL4O9evnZ5T78ajrdIGi2QGaZ47Ux7Hzh/sE4EGwPCDydqHXDRrIIM3jjfzuFjxwCp
+ HmyzbDg4Ct3cf4fn28PXedVp3ZKbAgAv/JmnOPdgkLEDv478g
+X-Received: by 2002:a5d:5f45:0:b0:42c:a420:e755 with SMTP id
+ ffacd0b85a97d-42fab31cb50mr2844531f8f.23.1765466677317; 
+ Thu, 11 Dec 2025 07:24:37 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHlyrHBj0iFoY/GJJIhEn6Tem75am4I1jatEtjJXn/l61+WBn0n6QfH8hHxkfWRoJQOiZuBQg==
+X-Received: by 2002:a5d:5f45:0:b0:42c:a420:e755 with SMTP id
+ ffacd0b85a97d-42fab31cb50mr2844498f8f.23.1765466676816; 
+ Thu, 11 Dec 2025 07:24:36 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
  ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47a89f35ae6sm38827635e9.6.2025.12.11.07.23.21
+ ffacd0b85a97d-42fa8b9b6bfsm6113841f8f.43.2025.12.11.07.24.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Dec 2025 07:23:22 -0800 (PST)
-Message-ID: <8a6dec90-aba6-49cc-98c9-9d8205d83ac5@redhat.com>
-Date: Thu, 11 Dec 2025 16:23:21 +0100
+ Thu, 11 Dec 2025 07:24:36 -0800 (PST)
+Message-ID: <4fd538c5-842c-4c96-83ed-dae4da8f8783@redhat.com>
+Date: Thu, 11 Dec 2025 16:24:35 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 29/33] hw/arm/smmuv3-accel: Add property to specify OAS
- bits
+Subject: Re: [PATCH v6 30/33] backends/iommufd: Retrieve PASID width from
+ iommufd_backend_get_device_info()
 To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
@@ -89,7 +89,7 @@ Cc: eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
  jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
  zhenzhong.duan@intel.com, yi.l.liu@intel.com, kjaju@nvidia.com
 References: <20251120132213.56581-1-skolothumtho@nvidia.com>
- <20251120132213.56581-30-skolothumtho@nvidia.com>
+ <20251120132213.56581-31-skolothumtho@nvidia.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -134,21 +134,21 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251120132213.56581-30-skolothumtho@nvidia.com>
+In-Reply-To: <20251120132213.56581-31-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: pdFu30wVMlCPf97T85qLhLZKtyfXeVPbWwh_dkafQKs_1765466603
+X-Mimecast-MFC-PROC-ID: K05vFWirP790nKTQ_Q5FAU0HK0bd-vl3iLrZW_lOlr0_1765466677
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -167,165 +167,138 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 11/20/25 14:22, Shameer Kolothum wrote:
-> QEMU SMMUv3 currently sets the output address size (OAS) to 44 bits.
-> With accelerator mode enabled, a device may use SVA, where CPU page tables
-> are shared with the SMMU, requiring an OAS at least as large as the
-> CPU’s output address size. A user option is added to configure this.
+> Retrieve PASID width from iommufd_backend_get_device_info() and store it
+> in HostIOMMUDeviceCaps for later use.
 > 
-> However, the OAS value advertised by the virtual SMMU must remain
-> compatible with the capabilities of the host SMMUv3. In accelerated
-> mode, the host SMMU performs stage-2 translation and must be able to
-> consume the intermediate physical addresses (IPA) produced by stage-1.
-> 
-> The OAS exposed by the virtual SMMU defines the maximum IPA width that
-> stage-1 translations may generate. For AArch64 implementations, the
-> maximum usable IPA size on the host SMMU is determined by its own OAS.
-> Check that the configured OAS does not exceed what the host SMMU
-> can safely support.
-> 
+> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
 > Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
 > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->   hw/arm/smmuv3-accel.c    | 20 ++++++++++++++++++++
->   hw/arm/smmuv3-internal.h |  3 ++-
->   hw/arm/smmuv3.c          | 16 +++++++++++++++-
->   include/hw/arm/smmuv3.h  |  1 +
->   4 files changed, 38 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 73c7ce586a..35a94c720a 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -27,6 +27,12 @@
->   static MemoryRegion root, sysmem;
->   static AddressSpace *shared_as_sysmem;
->   
-> +static int smmuv3_oas_bits(uint32_t oas)
-> +{
-> +    static const int map[] = { 32, 36, 40, 42, 44, 48, 52, 56 };
-> +    return (oas < ARRAY_SIZE(map)) ? map[oas] : -EINVAL;
-> +}
-> +
->   static bool
->   smmuv3_accel_check_hw_compatible(SMMUv3State *s,
->                                    struct iommu_hw_info_arm_smmuv3 *info,
-> @@ -68,6 +74,15 @@ smmuv3_accel_check_hw_compatible(SMMUv3State *s,
->           error_setg(errp, "Host SMMUv3 doesn't support Range Invalidation");
->           return false;
->       }
-> +    /* Check OAS value opted is compatible with Host SMMUv3 IPA */
-> +    if (FIELD_EX32(info->idr[5], IDR5, OAS) <
-> +                FIELD_EX32(s->idr[5], IDR5, OAS)) {
-> +        error_setg(errp, "Host SMMUv3 supports only %d-bit IPA, but the vSMMU "
-> +                   "OAS implies %d-bit IPA",
-> +                   smmuv3_oas_bits(FIELD_EX32(info->idr[5], IDR5, OAS)),
-> +                   smmuv3_oas_bits(FIELD_EX32(info->idr[5], IDR5, OAS)));
-> +        return false;
-> +    }
->   
->       /* QEMU SMMUv3 supports GRAN4K/GRAN16K/GRAN64K translation granules */
->       if (FIELD_EX32(info->idr[5], IDR5, GRAN4K) !=
-> @@ -650,6 +665,11 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
->   
->       /* QEMU SMMUv3 has no ATS. Advertise ATS if opt-on by property */
->       s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ATS, s->ats);
-> +
-> +    /* Advertise 48-bit OAS in IDR5 when requested (default is 44 bits). */
-> +    if (s->oas == 48) {
 
-Intel has defines for AS width :
 
-  VTD_HOST_AW_48BIT
-  VTD_HOST_AW_39BIT
-
-I suggest doing the same for SMMUv3 to avoid using directly
-numerical values like here and below.
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
 
-
-> +        s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS_48);
-> +    }
->   }
+> ---
+>   backends/iommufd.c                 | 6 +++++-
+>   hw/arm/smmuv3-accel.c              | 3 ++-
+>   hw/vfio/iommufd.c                  | 7 +++++--
+>   include/system/host_iommu_device.h | 3 +++
+>   include/system/iommufd.h           | 3 ++-
+>   5 files changed, 17 insertions(+), 5 deletions(-)
+> 
+> diff --git a/backends/iommufd.c b/backends/iommufd.c
+> index e68a2c934f..6381f9664b 100644
+> --- a/backends/iommufd.c
+> +++ b/backends/iommufd.c
+> @@ -388,7 +388,8 @@ bool iommufd_backend_get_dirty_bitmap(IOMMUFDBackend *be,
 >   
->   /* Based on SMUUv3 GPBA.ABORT configuration, attach a corresponding HWPT */
-> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> index a76e4e2484..0f44a4e1d3 100644
-> --- a/hw/arm/smmuv3-internal.h
-> +++ b/hw/arm/smmuv3-internal.h
-> @@ -111,7 +111,8 @@ REG32(IDR5,                0x14)
->        FIELD(IDR5, VAX,        10, 2);
->        FIELD(IDR5, STALL_MAX,  16, 16);
+>   bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
+>                                        uint32_t *type, void *data, uint32_t len,
+> -                                     uint64_t *caps, Error **errp)
+> +                                     uint64_t *caps, uint8_t *max_pasid_log2,
+> +                                     Error **errp)
+>   {
+>       struct iommu_hw_info info = {
+>           .size = sizeof(info),
+> @@ -407,6 +408,9 @@ bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
+>       g_assert(caps);
+>       *caps = info.out_capabilities;
 >   
-> -#define SMMU_IDR5_OAS 4
-> +#define SMMU_IDR5_OAS_44 4
-> +#define SMMU_IDR5_OAS_48 5
->   
->   REG32(IIDR,                0x18)
->   REG32(AIDR,                0x1c)
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index ad476146f6..a7bd4eeb77 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -299,7 +299,8 @@ static void smmuv3_init_id_regs(SMMUv3State *s)
->       s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 1);
->       s->idr[3] = FIELD_DP32(s->idr[3], IDR3, BBML, 2);
->   
-> -    s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS); /* 44 bits */
-> +    /* OAS: 44 bits */
-> +    s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS_44);
->       /* 4K, 16K and 64K granule support */
->       s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, 1);
->       s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN16K, 1);
-> @@ -1945,8 +1946,17 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
->               error_setg(errp, "ats can only be enabled if accel=on");
->               return false;
->           }
-> +        if (s->oas != 44) {
-> +            error_setg(errp, "OAS can only be set to 44 bits if accel=off");
-> +            return false;
-> +        }
->           return true;
->       }
-> +
-> +    if (s->oas != 44 && s->oas != 48) {
-> +        error_setg(errp, "OAS can only be set to 44 or 48 bits");
-> +        return false;
+> +    if (max_pasid_log2) {
+> +        *max_pasid_log2 = info.out_max_pasid_log2;
 > +    }
 >       return true;
 >   }
 >   
-> @@ -2073,6 +2083,7 @@ static const Property smmuv3_properties[] = {
->       /* RIL can be turned off for accel cases */
->       DEFINE_PROP_BOOL("ril", SMMUv3State, ril, true),
->       DEFINE_PROP_BOOL("ats", SMMUv3State, ats, false),
-> +    DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
->   };
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index 35a94c720a..254d29ee2d 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -113,7 +113,8 @@ smmuv3_accel_hw_compatible(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+>       uint64_t caps;
 >   
->   static void smmuv3_instance_init(Object *obj)
-> @@ -2103,6 +2114,9 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
->       object_class_property_set_description(klass, "ats",
->           "Enable/disable ATS support (for accel=on). Please ensure host "
->           "platform has ATS support before enabling this");
-> +    object_class_property_set_description(klass, "oas",
-> +        "Specify Output Address Size (for accel =on). Supported values "
-> +        "are 44 or 48 bits. Defaults to 44 bits");
->   }
+>       if (!iommufd_backend_get_device_info(idev->iommufd, idev->devid, &data_type,
+> -                                         &info, sizeof(info), &caps, errp)) {
+> +                                         &info, sizeof(info), &caps, NULL,
+> +                                         errp)) {
+>           return false;
+>       }
 >   
->   static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index 242d6429ed..d488a39cd0 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -71,6 +71,7 @@ struct SMMUv3State {
->       Error *migration_blocker;
->       bool ril;
->       bool ats;
-> +    uint8_t oas;
->   };
+> diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
+> index ca8a6b7029..bbe944d7cc 100644
+> --- a/hw/vfio/iommufd.c
+> +++ b/hw/vfio/iommufd.c
+> @@ -353,7 +353,8 @@ static bool iommufd_cdev_autodomains_get(VFIODevice *vbasedev,
+>        * instead.
+>        */
+>       if (!iommufd_backend_get_device_info(vbasedev->iommufd, vbasedev->devid,
+> -                                         &type, NULL, 0, &hw_caps, errp)) {
+> +                                         &type, NULL, 0, &hw_caps, NULL,
+> +                                         errp)) {
+>           return false;
+>       }
 >   
->   typedef enum {
+> @@ -889,19 +890,21 @@ static bool hiod_iommufd_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
+>       HostIOMMUDeviceCaps *caps = &hiod->caps;
+>       VendorCaps *vendor_caps = &caps->vendor_caps;
+>       enum iommu_hw_info_type type;
+> +    uint8_t max_pasid_log2;
+>       uint64_t hw_caps;
+>   
+>       hiod->agent = opaque;
+>   
+>       if (!iommufd_backend_get_device_info(vdev->iommufd, vdev->devid, &type,
+>                                            vendor_caps, sizeof(*vendor_caps),
+> -                                         &hw_caps, errp)) {
+> +                                         &hw_caps, &max_pasid_log2, errp)) {
+>           return false;
+>       }
+>   
+>       hiod->name = g_strdup(vdev->name);
+>       caps->type = type;
+>       caps->hw_caps = hw_caps;
+> +    caps->max_pasid_log2 = max_pasid_log2;
+>   
+>       idev = HOST_IOMMU_DEVICE_IOMMUFD(hiod);
+>       idev->iommufd = vdev->iommufd;
+> diff --git a/include/system/host_iommu_device.h b/include/system/host_iommu_device.h
+> index ab849a4a82..bfb2b60478 100644
+> --- a/include/system/host_iommu_device.h
+> +++ b/include/system/host_iommu_device.h
+> @@ -30,6 +30,8 @@ typedef union VendorCaps {
+>    * @hw_caps: host platform IOMMU capabilities (e.g. on IOMMUFD this represents
+>    *           the @out_capabilities value returned from IOMMU_GET_HW_INFO ioctl)
+>    *
+> + * @max_pasid_log2: width of PASIDs supported by host IOMMU device
+> + *
+>    * @vendor_caps: host platform IOMMU vendor specific capabilities (e.g. on
+>    *               IOMMUFD this represents a user-space buffer filled by kernel
+>    *               with host IOMMU @type specific hardware information data)
+> @@ -37,6 +39,7 @@ typedef union VendorCaps {
+>   typedef struct HostIOMMUDeviceCaps {
+>       uint32_t type;
+>       uint64_t hw_caps;
+> +    uint8_t max_pasid_log2;
+>       VendorCaps vendor_caps;
+>   } HostIOMMUDeviceCaps;
+>   #endif
+> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+> index 41e216c677..aa78bf1e1d 100644
+> --- a/include/system/iommufd.h
+> +++ b/include/system/iommufd.h
+> @@ -71,7 +71,8 @@ int iommufd_backend_unmap_dma(IOMMUFDBackend *be, uint32_t ioas_id,
+>                                 hwaddr iova, uint64_t size);
+>   bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
+>                                        uint32_t *type, void *data, uint32_t len,
+> -                                     uint64_t *caps, Error **errp);
+> +                                     uint64_t *caps, uint8_t *max_pasid_log2,
+> +                                     Error **errp);
+>   bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
+>                                   uint32_t pt_id, uint32_t flags,
+>                                   uint32_t data_type, uint32_t data_len,
 
 

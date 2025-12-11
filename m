@@ -4,151 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A153D41C33
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 12:55:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FA96D41C36
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 13:10:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vTgCL-0003eA-Vh; Thu, 11 Dec 2025 07:55:09 -0500
+	id 1vTgRD-0007Q2-Jy; Thu, 11 Dec 2025 08:10:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vTgCF-0003ct-EZ
- for qemu-arm@nongnu.org; Thu, 11 Dec 2025 07:55:04 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vTgRC-0007PU-EW
+ for qemu-arm@nongnu.org; Thu, 11 Dec 2025 08:10:30 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vTgCD-0000y8-MT
- for qemu-arm@nongnu.org; Thu, 11 Dec 2025 07:55:03 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vTgRA-0005DS-8P
+ for qemu-arm@nongnu.org; Thu, 11 Dec 2025 08:10:30 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1765457699;
+ s=mimecast20190719; t=1765458625;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=0Pi4KufqSyWa0n+yuGz31t0Bv5IpW6NETI6204wJhig=;
- b=X79Q5Qffo74vo934NMXTHxL22UKlsysRGVRBdqy+qW+hrvHz64SByMuaGYeS8kdig+/B9h
- x0B4xJ0UkLUmQLAb5rkt9V3vwBPrPkT7rgnLcF4xn7ft1hkyptC77vLdcQISby85wITXwq
- qeiAhyhVwxUsXPgT3A7wy/JVh8mMttk=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references;
+ bh=nxgZ5rHwXEKGnjUs10atvCH4X26HiDa9P76X5oSwGZw=;
+ b=EBX4lIXKKzKKPq0OovHsy1V635o2jD1bhpdYKIU9JcIcK+2pezYVeVq246zaTKmkyed8F9
+ uWR42LA1Er3+bF4/j9jel4FPzvIjyRtM/25KLTa+XSiAxPq7pE+MF64FdqYXZ1L3+afsss
+ 9fwqw3GuPYAwozgUw4BGm/hwzSKIqqQ=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-630-vUeYQR21OeWIMcK_Aj3xIw-1; Thu, 11 Dec 2025 07:54:58 -0500
-X-MC-Unique: vUeYQR21OeWIMcK_Aj3xIw-1
-X-Mimecast-MFC-AGG-ID: vUeYQR21OeWIMcK_Aj3xIw_1765457697
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-42b487cda00so37214f8f.3
- for <qemu-arm@nongnu.org>; Thu, 11 Dec 2025 04:54:58 -0800 (PST)
+ us-mta-201-2JitdDBkP4uHwtpUQLPoSA-1; Thu, 11 Dec 2025 08:10:23 -0500
+X-MC-Unique: 2JitdDBkP4uHwtpUQLPoSA-1
+X-Mimecast-MFC-AGG-ID: 2JitdDBkP4uHwtpUQLPoSA_1765458623
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-47788165c97so439415e9.0
+ for <qemu-arm@nongnu.org>; Thu, 11 Dec 2025 05:10:23 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765457697; x=1766062497;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=0Pi4KufqSyWa0n+yuGz31t0Bv5IpW6NETI6204wJhig=;
- b=l6jr5vp1GKOOV+vwkCmmHJIGldg/EontgIdJSFnc/Ji0mBcSVS57zsSaBjKbL0H/XS
- Q1DXMd+bLfI4pudUpVUCuiw/4ki0KKOltHnTWC/CSBP0Q+QWxurYzWeCLG29im5xiucE
- 6iiakwG8rzmL0WIK9wnWcaSRlwKtmQQctSblL/SbLc65N/Z6576Fe91Phl7iBqRuhuVB
- oqNcFfnkOUSKMzJAE3JQryyzF2qEg8Al38Rhyi1T5J5UDiANQNdeKCYfH65DYuSfgpxa
- vR+ELj8g9gLAkvV0GUOwyAgxcdga5+70cJj05r9Ygl/eeeSYW3O2pIkyONch/wZI0Yhi
- o/Wg==
+ d=1e100.net; s=20230601; t=1765458623; x=1766063423;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=nxgZ5rHwXEKGnjUs10atvCH4X26HiDa9P76X5oSwGZw=;
+ b=dltf3TwQnBiJyOpnCZ2nxRqyvbvuAL8AUHx35MqJ2iQv/1yCKAUFNu4SKD1tvhoOtL
+ Mp+fyM27R8gXrwa4unbxi10maj9L2VA6tEqZn9Ky6tQoksO3YAoV6SSdL9fr3UrDxDJm
+ ixzs4OcL+8v95ihDkzs8TcW0hlv7A6GhrlBtlZhhRCeHQ6liZWOBChQSa64QVbOZaGP3
+ 7Ukax5vr4S9ih7Fqfof/WPckLJRR32CnnOLuJFeX7OM84G+NmopbmbJMryl8fuiawxR/
+ 9WDvPRkcFFZY3ony7UyhFvjuXPG3GEMMBJT1S743eEK4OfdxUtee09ofQ3FlnBox3O0f
+ li9w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVz5ph6WQ9OrZSZlveBHZws4m2lx4R6keKed8VBCghVPUFtwEXH6X+/7eWSBHPYdRr34DcPLA503w==@nongnu.org
-X-Gm-Message-State: AOJu0YxJuGjoRCF4U8AFaqQg7dq0JOhjVfshHg4PBx+gCOpueInNZC7h
- cxFLDKjtflEbxeRixwyVZId/gxRY38q6L9hq9DrDFuXyUh0kbwZovWj5TXwSkrh8wPNljuPcS/h
- JtMqOhWTBouYclLtJoRU2Mvm18tYQGFDYBR7V8p3QOQFM5E2+Ai9DVQ==
-X-Gm-Gg: AY/fxX42LFahhS4Y//wPaqfk/6+Ax+pf22LA1ZOM7S7duG+vyxBizzr2w4KfhF7LZ6V
- teKripuHxNNwVqP84PC/YZq/U5bQHfPKvtTc9WNM9524j+bmCKCxDz20uap97iaP4mdYMbzLy0q
- e4Affh617ywQH9I2I7ePWP6xyndgJ53Cc6NMEOtj8NBfgBozDOv5v/1vSMpaRz6Rql7+r96l39A
- 23ThxUSKAXpv9fuAjFGrYnbzwhx7uPylzPaWrCaddIL7EYIRYoDd9pHPmB5wn6jAZ+qfCazYM6y
- YlDuT2LDosXzUGAQ9XcC5Y9grDAY9J2IYtXEBMH4ef1tNN4POf5X9z3yzY9006xiFZ6ADvFFVtZ
- ygj4lYCx89m2cO/ldDsAbI8fd+Kybx4/cX7PqSh3psKoj3BZZ
-X-Received: by 2002:a05:6000:240e:b0:42b:549d:cdfc with SMTP id
- ffacd0b85a97d-42fa3af8978mr7044188f8f.35.1765457697005; 
- Thu, 11 Dec 2025 04:54:57 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFrVIoEBR6anjnFmNeQfBeJR4NSsE/UDiIX02c7wWN5HJIqmXcoukdHt/xkW8dXBASPcXJ8kg==
-X-Received: by 2002:a05:6000:240e:b0:42b:549d:cdfc with SMTP id
- ffacd0b85a97d-42fa3af8978mr7044153f8f.35.1765457696563; 
- Thu, 11 Dec 2025 04:54:56 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ AJvYcCVPRUZ6m3mcDcPKsKaJnqjKFuMtxncBJxmNTH+cxlge/2M4SxN+6BFrF2LDPcxm9SbLNTqbY72AIQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzsnzlQmEzvnpodZbwiIaD8LLwFSQAmk654ziwupqrj1Xa2gAAm
+ 5+JGkexlpPd5cZjPSKYUDsyRFw/iwK4KKir0uUpOdAjJVSuMd/gaBs0xAKojTThYY4bykyC2Hus
+ icJk3BUjGKcac3nwgrfbvU2RaN42pEcO3pocV/dS4fcIdlMhj7p2FvQ==
+X-Gm-Gg: AY/fxX4WPHBNrLkW9UkskK0vjM7IA+T+XPv4jw3Pqop4JXA6xGh8dw3+Ox3qUSEyIMp
+ 0OtdFwAf6Tvz3NVxOLA0Jhl6nfq8Aiq+YHacY4NjZ54JDD+LCwBHrk/xuRbheobBc4pWPlPM+rY
+ a2qh83vL/PSD2hFb4oViB8cpLsqIMX5PUL4kmweOh0CzdrhE9FbVkphF9F2hM4lahjeIjmdD+u5
+ bQCa9t+yAaTvgvFhu2xqYR+n1IGDKMDLrMYPfgXjCrSab24cm69xlIxtfy/viISwOySFU8PdT7O
+ 1bpX+tpJnPQWaX5dbFAJOwnM1VF3nrgu7vsWCv61Lv5ncYlrIODPbWiHghUJ0BoTxMhODraGZmf
+ KNJC1oc7P/V+3HTEt7VyLu66ULhzPzmY=
+X-Received: by 2002:a05:600c:19c8:b0:46e:506b:20c5 with SMTP id
+ 5b1f17b1804b1-47a83810f1bmr64727345e9.26.1765458622609; 
+ Thu, 11 Dec 2025 05:10:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEnO4xQkRH8Oq6BtFsNihke7JXq5v93qZLrVAplcGFprC2BA7KhkQ2o9ofGGvV46tH/QDDh8Q==
+X-Received: by 2002:a05:600c:19c8:b0:46e:506b:20c5 with SMTP id
+ 5b1f17b1804b1-47a83810f1bmr64726905e9.26.1765458622068; 
+ Thu, 11 Dec 2025 05:10:22 -0800 (PST)
+Received: from redhat.com (IGLD-80-230-32-59.inter.net.il. [80.230.32.59])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42fa8a702a1sm6141465f8f.13.2025.12.11.04.54.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Dec 2025 04:54:56 -0800 (PST)
-Message-ID: <6a062129-2b8f-420a-a4b9-87dde7574481@redhat.com>
-Date: Thu, 11 Dec 2025 13:54:55 +0100
+ 5b1f17b1804b1-47a89d04393sm36101945e9.0.2025.12.11.05.10.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 11 Dec 2025 05:10:21 -0800 (PST)
+Date: Thu, 11 Dec 2025 08:10:18 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Li Chen <me@linux.beauty>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Song Gao <gaosong@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Sunil V L <sunilvl@ventanamicro.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-devel <qemu-devel@nongnu.org>, qemu-riscv <qemu-riscv@nongnu.org>
+Subject: Re: [PATCH v6] acpi/virt: suppress UART device & SPCR when guest has
+ no serial hardware
+Message-ID: <20251211080811-mutt-send-email-mst@kernel.org>
+References: <20251211102025.873506-1-me@linux.beauty>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 05/33] hw/arm/smmuv3-accel: Introduce smmuv3 accel
- device
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
- nicolinc@nvidia.com, ddutile@redhat.com, berrange@redhat.com,
- nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, yi.l.liu@intel.com, kjaju@nvidia.com
-References: <20251120132213.56581-1-skolothumtho@nvidia.com>
- <20251120132213.56581-6-skolothumtho@nvidia.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251120132213.56581-6-skolothumtho@nvidia.com>
+In-Reply-To: <20251211102025.873506-1-me@linux.beauty>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: rG9FL8a1TNu7oDXFa_R8DxeK7v6VoRGTW8Njy-pqOQY_1765457697
+X-Mimecast-MFC-PROC-ID: knJHLJs9VPG5WijlvMHZzZRrxE6l4UEIslcjUU6B4io_1765458623
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -166,218 +124,213 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 11/20/25 14:21, Shameer Kolothum wrote:
-> Set up dedicated PCIIOMMUOps for the accel SMMUv3, since it will need
-> different callback handling in upcoming patches. This also adds a
-> CONFIG_ARM_SMMUV3_ACCEL build option so the feature can be disabled
-> at compile time. Because we now include CONFIG_DEVICES in the header to
-> check for ARM_SMMUV3_ACCEL, the meson file entry for smmuv3.c needs to
-> be changed to arm_ss.add.
+On Thu, Dec 11, 2025 at 06:20:25PM +0800, Li Chen wrote:
+> From: Li Chen <chenl311@chinatelecom.cn>
 > 
-> The “accel” property isn’t user visible yet and it will be introduced in
-> a later patch once all the supporting pieces are ready.
+> virt machines always instantiate a PL011/16550 UART at slot 0 and describe
+> it in ACPI (DSDT and optional SPCR table). When the command line disables
+> the serial backend (e.g. "-serial none"), the guest still sees the UART as
+> a preferred console even though it is not usable.
 > 
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> Teach the virt ACPI code to omit the UART device and SPCR when there is no
+> serial backend attached. This matches the hardware that the guest can
+> actually use and avoids confusing firmware or OS code that relies on SPCR.
+> 
+> The bios-tables-test qtests rely on an ACPI UART node and SPCR entry for
+> UEFI-based virt machines. To keep those tests working we create a UART
+> with a "null" chardev backend instead. This preserves the ACPI tables
+> while discarding the firmware's serial output so it does not corrupt the
+> TAP stdout stream.
+> 
+> Suggested-by: Philippe Mathieu-Daud� <philmd@linaro.org>
+> Signed-off-by: Li Chen <chenl311@chinatelecom.cn>
+> Reviewed-by: Sunil V L <sunilvl@ventanamicro.com>
+
+This bothers me:
+won't this mean number of serial devices changes silently?  So for
+example, if you install a guest, see that 1st serial device is broken,
+configure it with 2nd one as a work around, now with your change there
+is no second one so guest will be broken?
+
+
+I seems safer to have compat machinery around and avoid
+changing this for old machine types.
+
+
+
+
 > ---
->   hw/arm/Kconfig          |  5 ++++
->   hw/arm/meson.build      |  3 ++-
->   hw/arm/smmuv3-accel.c   | 59 +++++++++++++++++++++++++++++++++++++++++
->   hw/arm/smmuv3-accel.h   | 27 +++++++++++++++++++
->   hw/arm/smmuv3.c         |  5 ++++
->   include/hw/arm/smmuv3.h |  3 +++
->   6 files changed, 101 insertions(+), 1 deletion(-)
->   create mode 100644 hw/arm/smmuv3-accel.c
->   create mode 100644 hw/arm/smmuv3-accel.h
+> v4->v5:
+> - Also suppress UART device & SPCR when guest has no serial hardware on loongarch
+> - rename serial_exist to serial_exists
+> - fix style issue
+> v5->v6: 
+> - Fix: tap parsingg error caused by changing serial to none; now set to null.
 > 
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 0cdeb60f1f..702b79a02b 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -12,6 +12,7 @@ config ARM_VIRT
->       select ARM_GIC
->       select ACPI
->       select ARM_SMMUV3
-> +    select ARM_SMMUV3_ACCEL
->       select GPIO_KEY
->       select DEVICE_TREE
->       select FW_CFG_DMA
-> @@ -629,6 +630,10 @@ config FSL_IMX8MP_EVK
->   config ARM_SMMUV3
->       bool
->   
-> +config ARM_SMMUV3_ACCEL
-> +    bool
-> +    depends on ARM_SMMUV3 && IOMMUFD
-> +
->   config FSL_IMX6UL
->       bool
->       default y
-> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-> index aeaf654790..c250487e64 100644
-> --- a/hw/arm/meson.build
-> +++ b/hw/arm/meson.build
-> @@ -84,7 +84,8 @@ arm_common_ss.add(when: 'CONFIG_ARMSSE', if_true: files('armsse.c'))
->   arm_common_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c', 'mcimx7d-sabre.c'))
->   arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
->   arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
-> -arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
-> +arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
-> +arm_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true: files('smmuv3-accel.c'))
->   arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
->   arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
->   arm_common_ss.add(when: 'CONFIG_XEN', if_true: files(
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> new file mode 100644
-> index 0000000000..99ef0db8c4
-> --- /dev/null
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -0,0 +1,59 @@
-> +/*
-> + * Copyright (c) 2025 Huawei Technologies R & D (UK) Ltd
-> + * Copyright (C) 2025 NVIDIA
-> + * Written by Nicolin Chen, Shameer Kolothum
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +
-> +#include "hw/arm/smmuv3.h"
-> +#include "smmuv3-accel.h"
-> +
-> +static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs, SMMUPciBus *sbus,
-> +                                               PCIBus *bus, int devfn)
-> +{
-> +    SMMUDevice *sdev = sbus->pbdev[devfn];
-> +    SMMUv3AccelDevice *accel_dev;
-> +
-> +    if (sdev) {
-> +        return container_of(sdev, SMMUv3AccelDevice, sdev);
+>  hw/arm/virt-acpi-build.c       | 15 +++++++++------
+>  hw/loongarch/virt-acpi-build.c |  8 +++++---
+>  hw/riscv/virt-acpi-build.c     |  8 ++++++--
+>  include/system/system.h        |  2 ++
+>  system/vl.c                    |  5 +++++
+>  tests/qtest/bios-tables-test.c |  6 ++++--
+>  6 files changed, 31 insertions(+), 13 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 200e2a1da7..16d3b63030 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -64,6 +64,7 @@
+>  #include "hw/virtio/virtio-acpi.h"
+>  #include "target/arm/cpu.h"
+>  #include "target/arm/multiprocessing.h"
+> +#include "system/system.h"
+>  
+>  #define ARM_SPI_BASE 32
+>  
+> @@ -1031,11 +1032,13 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>       */
+>      scope = aml_scope("\\_SB");
+>      acpi_dsdt_add_cpus(scope, vms);
+> -    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0],
+> -                       (irqmap[VIRT_UART0] + ARM_SPI_BASE), 0);
+> -    if (vms->second_ns_uart_present) {
+> -        acpi_dsdt_add_uart(scope, &memmap[VIRT_UART1],
+> -                           (irqmap[VIRT_UART1] + ARM_SPI_BASE), 1);
+> +    if (serial_exists()) {
+> +        acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0],
+> +                           (irqmap[VIRT_UART0] + ARM_SPI_BASE), 0);
+> +        if (vms->second_ns_uart_present) {
+> +            acpi_dsdt_add_uart(scope, &memmap[VIRT_UART1],
+> +                               (irqmap[VIRT_UART1] + ARM_SPI_BASE), 1);
+> +        }
+>      }
+>      if (vmc->acpi_expose_flash) {
+>          acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+> @@ -1184,7 +1187,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>  
+>      acpi_add_table(table_offsets, tables_blob);
+>  
+> -    if (ms->acpi_spcr_enabled) {
+> +    if (ms->acpi_spcr_enabled && serial_exists()) {
+>          spcr_setup(tables_blob, tables->linker, vms);
+>      }
+>  
+> diff --git a/hw/loongarch/virt-acpi-build.c b/hw/loongarch/virt-acpi-build.c
+> index 3694c9827f..6eab907087 100644
+> --- a/hw/loongarch/virt-acpi-build.c
+> +++ b/hw/loongarch/virt-acpi-build.c
+> @@ -484,8 +484,10 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+>  
+>      acpi_table_begin(&table, table_data);
+>      dsdt = init_aml_allocator();
+> -    for (i = 0; i < VIRT_UART_COUNT; i++) {
+> -        build_uart_device_aml(dsdt, i);
+> +    if (serial_exists()) {
+> +        for (i = 0; i < VIRT_UART_COUNT; i++) {
+> +            build_uart_device_aml(dsdt, i);
+> +        }
+>      }
+>      build_pci_device_aml(dsdt, lvms);
+>      build_la_ged_aml(dsdt, machine);
+> @@ -557,7 +559,7 @@ static void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+>      build_srat(tables_blob, tables->linker, machine);
+>      acpi_add_table(table_offsets, tables_blob);
+>  
+> -    if (machine->acpi_spcr_enabled)
+> +    if (machine->acpi_spcr_enabled && serial_exists())
+>          spcr_setup(tables_blob, tables->linker, machine);
+>  
+>      if (machine->numa_state->num_nodes) {
+> diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
+> index f1406cb683..e895bc4ddb 100644
+> --- a/hw/riscv/virt-acpi-build.c
+> +++ b/hw/riscv/virt-acpi-build.c
+> @@ -39,6 +39,7 @@
+>  #include "qapi/error.h"
+>  #include "qemu/error-report.h"
+>  #include "system/reset.h"
+> +#include "system/system.h"
+>  
+>  #define ACPI_BUILD_TABLE_SIZE             0x20000
+>  #define ACPI_BUILD_INTC_ID(socket, index) ((socket << 24) | (index))
+> @@ -474,7 +475,10 @@ static void build_dsdt(GArray *table_data,
+>                                   memmap[VIRT_APLIC_S].size, "RSCV0002");
+>      }
+>  
+> -    acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0], UART0_IRQ);
+> +    if (serial_exists()) {
+> +        acpi_dsdt_add_uart(scope, &memmap[VIRT_UART0], UART0_IRQ);
 > +    }
 > +
-> +    accel_dev = g_new0(SMMUv3AccelDevice, 1);
-
-oh. This is not a QOM object :/
-
-> +    sdev = &accel_dev->sdev;
+>      if (virt_is_iommu_sys_enabled(s)) {
+>          acpi_dsdt_add_iommu_sys(scope, &memmap[VIRT_IOMMU_SYS], IOMMU_SYS_IRQ);
+>      }
+> @@ -890,7 +894,7 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
+>  
+>      acpi_add_table(table_offsets, tables_blob);
+>  
+> -    if (ms->acpi_spcr_enabled) {
+> +    if (ms->acpi_spcr_enabled && serial_exists()) {
+>          spcr_setup(tables_blob, tables->linker, s);
+>      }
+>  
+> diff --git a/include/system/system.h b/include/system/system.h
+> index 03a2d0e900..4a03f17e91 100644
+> --- a/include/system/system.h
+> +++ b/include/system/system.h
+> @@ -74,6 +74,8 @@ extern unsigned int nb_prom_envs;
+>  /* Return the Chardev for serial port i, or NULL if none */
+>  Chardev *serial_hd(int i);
+>  
+> +bool serial_exists(void);
 > +
-> +    sbus->pbdev[devfn] = sdev;
-> +    smmu_init_sdev(bs, sdev, bus, devfn);
-> +    return accel_dev;
-> +}
-> +
-> +/*
-> + * Find or add an address space for the given PCI device.
-> + *
-> + * If a device matching @bus and @devfn already exists, return its
-> + * corresponding address space. Otherwise, create a new device entry
-> + * and initialize address space for it.
-> + */
-> +static AddressSpace *smmuv3_accel_find_add_as(PCIBus *bus, void *opaque,
-> +                                              int devfn)
+>  /* parallel ports */
+>  
+>  #define MAX_PARALLEL_PORTS 3
+> diff --git a/system/vl.c b/system/vl.c
+> index 5091fe52d9..3a2988cb47 100644
+> --- a/system/vl.c
+> +++ b/system/vl.c
+> @@ -1487,6 +1487,11 @@ Chardev *serial_hd(int i)
+>      return NULL;
+>  }
+>  
+> +bool serial_exists(void)
 > +{
-> +    SMMUState *bs = opaque;
-> +    SMMUPciBus *sbus = smmu_get_sbus(bs, bus);
-> +    SMMUv3AccelDevice *accel_dev = smmuv3_accel_get_dev(bs, sbus, bus, devfn);
-> +    SMMUDevice *sdev = &accel_dev->sdev;
-> +
-> +    return &sdev->as;
+> +    return serial_hd(0) ? true : false;
 > +}
 > +
-> +static const PCIIOMMUOps smmuv3_accel_ops = {
-> +    .get_address_space = smmuv3_accel_find_add_as,
-> +};
-> +
-> +void smmuv3_accel_init(SMMUv3State *s)
-> +{
-> +    SMMUState *bs = ARM_SMMU(s);
-> +
-> +    bs->iommu_ops = &smmuv3_accel_ops;
-
-again, I think this should be a sSMMUv3Class attribute.
-
-> +}
-> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
-> new file mode 100644
-> index 0000000000..0dc6b00d35
-> --- /dev/null
-> +++ b/hw/arm/smmuv3-accel.h
-> @@ -0,0 +1,27 @@
-> +/*
-> + * Copyright (c) 2025 Huawei Technologies R & D (UK) Ltd
-> + * Copyright (C) 2025 NVIDIA
-> + * Written by Nicolin Chen, Shameer Kolothum
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#ifndef HW_ARM_SMMUV3_ACCEL_H
-> +#define HW_ARM_SMMUV3_ACCEL_H
-> +
-> +#include "hw/arm/smmu-common.h"
-> +#include CONFIG_DEVICES
-> +
-> +typedef struct SMMUv3AccelDevice {
-> +    SMMUDevice sdev;
-> +} SMMUv3AccelDevice;
-> +
-> +#ifdef CONFIG_ARM_SMMUV3_ACCEL
-> +void smmuv3_accel_init(SMMUv3State *s);
-> +#else
-> +static inline void smmuv3_accel_init(SMMUv3State *s)
-> +{
-> +}
-> +#endif
-> +
-> +#endif /* HW_ARM_SMMUV3_ACCEL_H */
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index bcf8af8dc7..ef991cb7d8 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -32,6 +32,7 @@
->   #include "qapi/error.h"
->   
->   #include "hw/arm/smmuv3.h"
-> +#include "smmuv3-accel.h"
->   #include "smmuv3-internal.h"
->   #include "smmu-internal.h"
->   
-> @@ -1882,6 +1883,10 @@ static void smmu_realize(DeviceState *d, Error **errp)
->       SysBusDevice *dev = SYS_BUS_DEVICE(d);
->       Error *local_err = NULL;
->   
-> +    if (s->accel) {
-> +        smmuv3_accel_init(s);
-> +    }
-> +
->       c->parent_realize(d, &local_err);
->       if (local_err) {
->           error_propagate(errp, local_err);
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index d183a62766..bb7076286b 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -63,6 +63,9 @@ struct SMMUv3State {
->       qemu_irq     irq[4];
->       QemuMutex mutex;
->       char *stage;
-> +
-> +    /* SMMU has HW accelerator support for nested S1 + s2 */
-> +    bool accel;
-
-Have you considered modeling with a QOM object instead ?
-
-Thanks,
-
-C.
-
->   };
->   
->   typedef enum {
+>  static bool parallel_parse(const char *devname, Error **errp)
+>  {
+>      static int index = 0;
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+> index 6b892ef23e..6b0e4be752 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -824,10 +824,12 @@ static char *test_acpi_create_args(test_data *data, const char *params)
+>          /*
+>           * TODO: convert '-drive if=pflash' to new syntax (see e33763be7cd3)
+>           * when arm/virt boad starts to support it.
+> +         * NOTE: Explicitly add "-serial null" to enable uart in DSDT
+> +         *       without mixing guest output into TAP stdout.
+>           */
+>          if (data->cd) {
+>              args = g_strdup_printf("-machine %s%s %s -accel tcg "
+> -                "-nodefaults -nographic "
+> +                "-nodefaults -serial null -nographic "
+>                  "-drive if=pflash,format=raw,file=%s,readonly=on "
+>                  "-drive if=pflash,format=raw,file=%s,snapshot=on -cdrom %s %s",
+>                  data->machine, data->machine_param ?: "",
+> @@ -835,7 +837,7 @@ static char *test_acpi_create_args(test_data *data, const char *params)
+>                  data->uefi_fl1, data->uefi_fl2, data->cd, params ? params : "");
+>          } else {
+>              args = g_strdup_printf("-machine %s%s %s -accel tcg "
+> -                "-nodefaults -nographic "
+> +                "-nodefaults -serial null -nographic "
+>                  "-drive if=pflash,format=raw,file=%s,readonly=on "
+>                  "-drive if=pflash,format=raw,file=%s,snapshot=on %s",
+>                  data->machine, data->machine_param ?: "",
+> -- 
+> 2.51.0
 
 

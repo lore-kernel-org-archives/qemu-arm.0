@@ -4,100 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A26C2D43359
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 22:27:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44E22D43362
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 23:45:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vTp7V-0001bx-Nx; Thu, 11 Dec 2025 17:26:45 -0500
+	id 1vTqKt-0003Oo-P7; Thu, 11 Dec 2025 18:44:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vTp7R-0001aC-3C
- for qemu-arm@nongnu.org; Thu, 11 Dec 2025 17:26:41 -0500
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+ id 1vTqKr-0003Ml-Pg
+ for qemu-arm@nongnu.org; Thu, 11 Dec 2025 18:44:37 -0500
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vTp7P-0005A2-Ga
- for qemu-arm@nongnu.org; Thu, 11 Dec 2025 17:26:40 -0500
-Received: by mail-pf1-x42c.google.com with SMTP id
- d2e1a72fcca58-7f121c00dedso747645b3a.0
- for <qemu-arm@nongnu.org>; Thu, 11 Dec 2025 14:26:39 -0800 (PST)
+ id 1vTqKp-0003Wn-Tp
+ for qemu-arm@nongnu.org; Thu, 11 Dec 2025 18:44:37 -0500
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-7aab061e7cbso803096b3a.1
+ for <qemu-arm@nongnu.org>; Thu, 11 Dec 2025 15:44:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765491998; x=1766096798; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=S/kUz+nDt/WGpNRZXQCP2s6Nm2X+/R3zJqZWJXL3Do0=;
- b=RXWcj9TCkm+FnZpwCihT+10oyFmSrUX/aCjqvJUCU2nzU+JWqSIVQYQ/jjYNPH67Wh
- TymAFGy1A7asX4MZZrVLM8vNxEyGq7+W6TxLepODxQoa4hMU3Idkueji8/I26DLd3/qX
- 2WgMQNM6T+kh98LHjrfOeKlellml9/O6BDSy8sI9GJJ45blUD+Pifrja+6lWcQ3ZA5yZ
- eq1bqtpzuv/+ROg2HDbnw4nxSEIypf6IkUAYP9HReJUEVX8a0Tuq5v4QSXnZB7kyxw3D
- frHYGCvjBAyM8Biieo94gbE/Ic2mAWrO2TmNJCmGibWtRVdduVXpyKqSWU2+MZXn69zG
- /9Tw==
+ d=linaro.org; s=google; t=1765496674; x=1766101474; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=n/kApJcFOEGmRRa1OLrQIEELHvqnoG2PtkXXaM683OI=;
+ b=VDovCPwkfFJLoqMGtPnfgKo88xqACe+qbUU/Al2nKegO9mnjOcqNuMjXgoZxZBPxhd
+ wBNJpA455OwFwIeZCFgw0ktX/1LFIJ9ubJ78kY8bCSHB/+dv0Rj2s5u72515dzhb2mO/
+ xGFiJRwqhgAV0iguldObFvI5gZ8gK72Jyj9Icb0zOTexjuw6EtVxDLNGWjFVnB4cPlWX
+ EGZT9mbv56GoplMNYPJFt5U5UZILKsTSq9cfd92ggTqrFyh0DgsGCKYHjp+4HzdYcQ2g
+ O2PZyDQBv7VwicVzueaeMtSpV+Q62ycLvbVtwMI0r8FAN24wzTUpIRmsqLIHq4aPrATL
+ 7UyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765491998; x=1766096798;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=S/kUz+nDt/WGpNRZXQCP2s6Nm2X+/R3zJqZWJXL3Do0=;
- b=KJU0jidYfpA02fAb/URqo2lRCRk6+a7R6o+vWJj5npdsx6x8YUuI6Ka58YVrcK6QWu
- emcbVqxQfu11QnA5gNqkbA4g0EDCph2gIY3ztqE6mif+niECpVxHwBeKRIsmKyijs3rm
- gBsB//r69J6hBNFMGwQuxvjn/523kjzHtO+HsM4XwfXb3VIWkGHJsD5I0l0k0spMwZ+X
- MPFtxG3AXsye6mYOy74rXuyJimSCB7rUHXoo7lQ0qv6hVEExLdIMLMjtq5/3zByCY7TW
- SCcRFiZ2QuZ9YPCTBQZV5ZaXDJZAQuOrCHyUZyVO0WJnMBKGuNuHAbPvRy3VMIoVQn31
- 2cWg==
+ d=1e100.net; s=20230601; t=1765496674; x=1766101474;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=n/kApJcFOEGmRRa1OLrQIEELHvqnoG2PtkXXaM683OI=;
+ b=dxdXAwUsuJDZb+nZvvPJ2+7owIDmu1U2nY9LROd8XKK9MOKGQQxPhoR3fywmhKIjZG
+ fhiWYnLXu7zCUEixylCl0hhkKTA/7uMh/zh7jLvv8bDt91Ato/Vg0r7GvWTx6Z1Za8iA
+ LxhZuc9c3/sU9vC5mL0QigbBxH2+a+EHFFGqUSCsZLtN9acnQ0GyH78Tf9JD9OPQ2rdD
+ z1nFocX9bjZyEpz/QF8OjFpAEaeR1GiC8OpKnXGukMLwdF4KPDK2lUAgfXpFMEfTerOU
+ WHnmS1m66cLWH1n30xMj/12lUt3H1kA08SJhpUf7aWNjFJKKNZZtJk7ej+5hQedqRTMq
+ zOWw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVwK9o4HCufblCSPsXrFNthmEEU+etsktJFMhNYjCOreKiJE0Z881lDex3RwScYQOxzOyOPD77yUA==@nongnu.org
-X-Gm-Message-State: AOJu0Yy6zdZ6saP0mUqKE6TILyZp9T/f4lFUYQ+wKu8qIq3kcCSohtmC
- YMYFUxkwbEUUavCdnNoOhK9ynv3kY+h/g1TpR9qygR0KErPfJ31R+ShddaPVMHTs+a8=
-X-Gm-Gg: AY/fxX5ekxGWE6s2WUzyPtu+6Muyte5LMap/FzOTmaPoflf/hRfhielcufmw1meLc4I
- x9tF2DengyM+PtEK1VdyPGHGQ0QVWhLb21TpgJnkMeF1MfN/YirdvTR+UxiwW7naln4jxQi4ghB
- ycys+1eRoQYuj3e/yKR8/yHLQKec+yu/cWLSErRZtMfF9pCCdDLrMBTJ7kAudozcAHbkoqlDpXc
- bkTdV15zrAbXU5UeOAnz5njxQ1qURerivUb7twGBoS7D9l42QO75CJ2yQrx1fXr61ubWHEFmmZ3
- YYlO5RqGbj5FXYLWiXnJLdiXBwqIWjdaOA1d+s6HjsvYq0ta4kHron8j021Ym+GWJ8gOSb1WWr0
- FoChazonBIfr5QclRn5jL2/sQ7iLC+MJQi9DsdEl9VEJzrbqq+C8OIVzAvpqkdz3YuJdnl1i16Q
- 6e56XMNI2d/J9HaCJ//IB7M16VEcoDZa3Ht7IO4say7TS0PItmfXZucGc7JK1eSYmc1g==
-X-Google-Smtp-Source: AGHT+IHYCpBBriMfZUJDyn1sptct6fkolXdbKkDJyJeZfqNaJmd6DUxbfmiu/bHZy3ck7ZnrrcwGiA==
-X-Received: by 2002:a05:6a20:6a11:b0:34f:1623:2354 with SMTP id
- adf61e73a8af0-369af813597mr24831637.42.1765491997834; 
- Thu, 11 Dec 2025 14:26:37 -0800 (PST)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7f4c4aa718asm3405729b3a.35.2025.12.11.14.26.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Dec 2025 14:26:37 -0800 (PST)
-Message-ID: <ea6a119a-49fb-490f-9532-6de60e9f049a@linaro.org>
-Date: Thu, 11 Dec 2025 14:26:36 -0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 1/1] hw/pci: Add sec-sid property to PCIDevice
-Content-Language: en-US
-To: Tao Tang <tangtao1634@phytium.com.cn>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Eric Auger <eric.auger@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Chen Baozi <chenbaozi@phytium.com.cn>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>
-References: <20251211102729.227376-1-tangtao1634@phytium.com.cn>
- <20251211102729.227376-2-tangtao1634@phytium.com.cn>
+ AJvYcCVI9iiSy0Jh+Njb5D0frkLzDCaePHiSgyPALDVM2YJhIna/OZ+VgLquPJi5tclDv5RdXX80eIAXcQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy4VlGg+j1P5OveYFqsTtSelidiY9fXgKXuuHfN75nTvDrIqLkd
+ r+fMKwafv/2ScTJnwSk4T6Vp3UxAOF5KRmVZbEeHOIWVEy6PiYmgeGKZjslAQuNx6MU=
+X-Gm-Gg: AY/fxX4vMHtCxmuUMsiTdXnzrrzB7UozIuObcYpP6w28nqwAujwg89cgJPfO45+XL5f
+ e9wz5K02BV61tgi2KU1SH0eObkDj+H6MMQEXyOlmvDXeNlhSrVZYpIQ5t/1v+RTwS3SqWLAbLfF
+ v/KeiuCClvq/ptkK9DvB7yCw7dkywGf4bE7ByAdtkw+Z1FnZi1FhpAWCW3Pj0IWF2pZLDtH/oGk
+ LaGOp5QSW20aTxLvTXcCft5jxy6IZUY/EeRAx26tHOYToRTZybZOuSn21MgA1UR0zuLCQ/Jo0k9
+ uyQeUVsqCJ83mbeCbWCQhtmK4V7jV0olD66LKf3INstHGRMHANZwCVP7mtaS2T0vvXGzqe8Rlkt
+ IpbEa/qKvBG2xZV9A+7jj6YG3UqfYTh5fUZ4XkZF9pZ53cTzwOmX830hLbhsRv/3LMZjRoo/VNU
+ FMbOWIx1GzaJUKaYXWf4gJAN7XAIVpcOvYl4/dMyatr8fDMDqUuVSR1I4ei7aeDjg=
+X-Google-Smtp-Source: AGHT+IGpndTZ+y98hnvSU0KUXddeQJcFrDHYu001T78oBYlkCp01KrbUELyJt9ankzp6tdKGP//cWw==
+X-Received: by 2002:a05:6a20:3d1c:b0:342:fa4f:5849 with SMTP id
+ adf61e73a8af0-369afc018ecmr187326637.39.1765496674336; 
+ Thu, 11 Dec 2025 15:44:34 -0800 (PST)
+Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-c0c2599228dsm3370410a12.1.2025.12.11.15.44.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 11 Dec 2025 15:44:33 -0800 (PST)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251211102729.227376-2-tangtao1634@phytium.com.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42c.google.com
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+ Tao Tang <tangtao1634@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH 0/2] target/arm: make granule_protection_check usable from SMMU
+Date: Thu, 11 Dec 2025 15:44:24 -0800
+Message-ID: <20251211234426.2403792-1-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.47.3
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,80 +105,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Tao,
+This series prepare granule_protection_check to be usable from SMMU, for
+implementing RME feature.
+It's based on Tao's commit [1] extracting ARMSecuritySpace from cpu.h header for
+convenience.
 
-On 12/11/25 2:27 AM, Tao Tang wrote:
-> Arm SMMUv3 uses SEC_SID to control how it interprets the security
-> state of incoming DMA requests. When SEC_SID=Secure, the SMMU
-> examines additional signals to distinguish Secure vs Non-secure
-> streams; when SEC_SID=Non-secure, all requests are treated as
-> Non-secure streams regardless of other signals.
-> 
-> The SMMU spec states that SEC_SID is a system-defined property.
-> And devices capable of SEC_SID=Secure should be statically marked
-> by the system.
-> 
-> This adds a uint8_t sec_sid field and "sec-sid" QOM property to
-> PCIDevice, allowing boards to configure this attribute. Values are
-> 0 (Non-secure, default) and 1 (Secure).
-> 
-> Note: This is not a PCIe architectural feature. It is purely an
-> SMMU integration mechanism and does not affect PCIe transactions.
-> 
-> Future RME-DA/TDISP work will use the PCIe TDISP/DTI protocol to model
-> Realm and Non-secure streams, instead of extending this static field.
-> 
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> ---
->   hw/pci/pci.c                | 7 +++++++
->   include/hw/pci/pci_device.h | 3 +++
->   2 files changed, 10 insertions(+)
-> 
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index b1eba348e0..1f944d0e39 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -98,6 +98,13 @@ static const Property pci_props[] = {
->       DEFINE_PROP_STRING("sriov-pf", PCIDevice, sriov_pf),
->       DEFINE_PROP_BIT("x-pcie-ext-tag", PCIDevice, cap_present,
->                       QEMU_PCIE_EXT_TAG_BITNR, true),
-> +
-> +    /*
-> +     * System-defined, statically configured SEC_SID for this PCI device, used
-> +     * by Arm SMMU. Currently only support Non-secure (0) and Secure (1)
-> +     * security states.
-> +     */
-> +    DEFINE_PROP_UINT8("sec-sid", PCIDevice, sec_sid, 0),
->       { .name = "busnr", .info = &prop_pci_busnr },
->   };
->   
-> diff --git a/include/hw/pci/pci_device.h b/include/hw/pci/pci_device.h
-> index 88ccea5011..16364731da 100644
-> --- a/include/hw/pci/pci_device.h
-> +++ b/include/hw/pci/pci_device.h
-> @@ -184,6 +184,9 @@ struct PCIDevice {
->       uint32_t max_bounce_buffer_size;
->   
->       char *sriov_pf;
-> +
-> +    /* Arm SMMU SEC_SID */
-> +    uint8_t sec_sid;
->   };
->   
->   static inline int pci_intx(PCIDevice *pci_dev)
+[1] https://lore.kernel.org/qemu-devel/20251012150701.4127034-5-tangtao1634@phytium.com.cn/
 
-this is an excellent addition, and something we definitely need for 
-Secure support in SMMU.
+To demonstrate the purpose, this is the (wip) change to use that from SMMU:
 
-May I suggest we have a string value instead of a uint8_t?
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 80f48df3dda..1acff3bbd66 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -1055,12 +1056,36 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
+     }
 
-This way, it would be explicit to have:
-sec-sid=non-secure (default)
-sec-sid=secure
-It can be backed by a proper SMMUSecSID variable, so once command line 
-is parsed, we don't deal with string anymore, but with a proper enum 
-instead.
+     cached_entry = smmu_translate(bs, cfg, addr, flag, &ptw_info);
+     if (desc_s2_translation) {
+         cfg->asid = asid;
+         cfg->stage = stage;
+     }
 
-Thanks,
-Pierrick
++    if (cached_entry) {
++        hwaddr paddress = CACHED_ENTRY_TO_ADDR(cached_entry, addr);
++        ARMSecuritySpace pspace = sec_sid_to_security_space(cfg->sec_sid);
++        ARMSecuritySpace ss = ARMSS_Root;
++        ARMMMUFaultInfo fi;
++
++        ARMGranuleProtectionConfig gpc = {
++            .gpccr = s->root.gpt_base_cfg,
++            .gptbr = s->root.gpt_base >> 12,
++            .parange = 6, /* 52 bits */
++            .support_sel2 = false,
++            .as_secure = &s->smmu_state.as_secure_memory
++        };
++        /* The fields in SMMU_ROOT_GPT_BASE_CFG are the same as for GPCCR_EL3,
++         * except there is no copy of GPCCR_EL3.GPC. See SMMU_ROOT_CR0.GPCEN. */
++        const bool gpc_enabled = FIELD_EX32(s->root.cr0, ROOT_CR0, GPCEN);
++        gpc.gpccr = FIELD_DP64(gpc.gpccr, GPCCR, GPC, gpc_enabled);
++        bool gpc_check = arm_granule_protection_check(gpc, paddress,
++                                                      pspace, ss, &fi);
++        if (!gpc_check) {
++            printf("ERROR: fi.type=%d fi.gpcf=%d\n", fi.type, fi.gpcf);
++            g_assert_not_reached();
++        }
++    }
++
+     if (!cached_entry) {
+         /* All faults from PTW has S2 field. */
+         event->u.f_walk_eabt.s2 = (ptw_info.stage == SMMU_STAGE_2);
+
+Pierrick Bouvier (1):
+  target/arm/ptw: make granule_protection_check usable without a cpu
+
+Tao Tang (1):
+  target/arm: Move ARMSecuritySpace to a common header
+
+ include/hw/arm/arm-security.h | 54 +++++++++++++++++++++++++++++++++++
+ target/arm/cpu.h              | 39 ++++++++++---------------
+ target/arm/ptw.c              | 41 +++++++++++++++-----------
+ 3 files changed, 93 insertions(+), 41 deletions(-)
+ create mode 100644 include/hw/arm/arm-security.h
+
+-- 
+2.47.3
+
 

@@ -4,173 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70770D3E798
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 06:43:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CAB4D3E79C
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 07:28:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vTaOH-0000Rk-FO; Thu, 11 Dec 2025 01:43:05 -0500
+	id 1vTb5d-0002qm-Ea; Thu, 11 Dec 2025 02:27:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vTaOC-0000Qd-4s; Thu, 11 Dec 2025 01:43:02 -0500
-Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
- ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vTaO7-0005O3-Gq; Thu, 11 Dec 2025 01:42:58 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=GEx3yMPCPInNJGq+zB4Wwca6HB1esE1TebvQmXX27jjtIQqE5ZM2ePk+s393XPZCFaoZCKUB3TtBgngMr6BxqvluwDJbqZrUspfHJwtVFSmHuSLFWzXCsWdG8zisODSneyqDkp7dkFifnti4zdxiJRJtSQpj3nG1lYAmbrfhd26BLljyP4JU5NGvahlpI5uh/09YP3Z8kcd+Pwiyv75GfrzXQL/o1kNUKi7v5mrThZaVntZ61HqGY2INPrvcenYsAW4RyTtDoCeBUlOpx6MkmZpBPdJH9GxZzU6RCSODu3DLWHOXQA1BWfGNvlVktsPRAfMmWUhPa4t2L5Kgo8Jw1g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=sYebL0w5VFwubfkbY5IJFNWGgULlK4irNttYo/LQ1U0=;
- b=iY6uB+DItvxhuFpraibn2dN+yI9IOpm+B86vmfoid91yEpkywvTTvvrn8Bpm0HXQZVyNju/NLlXAJjo0UFep2l1yzXcjn5mM0dh3N1iBU8hkGVDBC2o0AI1NPn7l44t/BUTnCqcrERzywSgxgc9BlWuCi09zWYxZPoaeRDJAVOvip3/06hF3ugtpbj3ZoON24n4Vv1dvxlYxNVEwbrsRWCXVCbEbzGMl8NkaUKw5h9AHrvD0RichzlZCpY5MBMAlxjtuqV6LZyCyhxv83r4JJlJnp9Hinq7JTTG381oBevAJVUmrDve17HNwgLgAvjreH/n+/sNZlfTNEjr5/mjt5Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sYebL0w5VFwubfkbY5IJFNWGgULlK4irNttYo/LQ1U0=;
- b=iPMMgZ/ErBgfCteojRwMw4pvvhS357LiWddT2+yNatgRI8RdduG2eN/FMTMtPY/zc9F2x+hQ81aLC9BcFoU55KQufUwzaPNar44URmn9lp9NHFOIK6QOoatSjd+HmtapvVihBwWNaN0RIcxxBzYB193b9ge4AU/YJIqWZWKUcwj+sPEYso8lJW4gMeOYarS9gqhasfes96XslBYzZYq30IIRShqK3XIiNlKgjlecI5w5Kc6Bgv8Qd/lpD3iyVNpeTgFjR98PwTDer5tFKvyTHgCc15rL3b3ANx1vBbO6sOyRnlm5gLTRfRFgGVGqlAf/95naIRko78BaToC1sg+1hA==
-Received: from SI6PR06MB7631.apcprd06.prod.outlook.com (2603:1096:4:239::11)
- by SEYPR06MB6335.apcprd06.prod.outlook.com (2603:1096:101:13c::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9412.7; Thu, 11 Dec
- 2025 06:42:47 +0000
-Received: from SI6PR06MB7631.apcprd06.prod.outlook.com
- ([fe80::602a:6372:fff6:feca]) by SI6PR06MB7631.apcprd06.prod.outlook.com
- ([fe80::602a:6372:fff6:feca%6]) with mapi id 15.20.9412.005; Thu, 11 Dec 2025
- 06:42:47 +0000
-From: Kane Chen <kane_chen@aspeedtech.com>
-To: Nabih Estefan <nabihestefan@google.com>
-CC: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: RE: [PATCH v3 00/18] hw/arm/aspeed: AST1700 LTPI support and device
- hookups
-Thread-Topic: [PATCH v3 00/18] hw/arm/aspeed: AST1700 LTPI support and device
- hookups
-Thread-Index: AQHcaBaCQIdJYTUOKk+0YD9pSIaY37UbgckAgAB/h8A=
-Date: Thu, 11 Dec 2025 06:42:47 +0000
-Message-ID: <SI6PR06MB76310C943D65CE7456178A50F7A1A@SI6PR06MB7631.apcprd06.prod.outlook.com>
-References: <20251208074436.1871180-1-kane_chen@aspeedtech.com>
- <CA+QoejW4vx7U-QYBK6GY10NpwXyQFe92j9M=OeURWz_D5vBbUw@mail.gmail.com>
-In-Reply-To: <CA+QoejW4vx7U-QYBK6GY10NpwXyQFe92j9M=OeURWz_D5vBbUw@mail.gmail.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI6PR06MB7631:EE_|SEYPR06MB6335:EE_
-x-ms-office365-filtering-correlation-id: b26f6ade-1214-471f-e42f-08de38807f40
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|376014|366016|38070700021|13003099007; 
-x-microsoft-antispam-message-info: =?utf-8?B?OG5tZmRLc0pjTmlYQlBKVXgzdkdNS1NPaDlFMndhVDJ6YjBNdTh2MEJyTEN0?=
- =?utf-8?B?cWU5dFFNdjNvQXdPRmRmVWYyeEoweUhKMmFKQnh6MG1hMnFtS2NVWFJwNS9Z?=
- =?utf-8?B?c3JMWFVsMGFITm5pTkdWWTROWm90N3dzekVPV2ZHNGhtK3VIc1BQMVJYRWNF?=
- =?utf-8?B?S2JzdlFGbnI5aTNMVC9TNmZGNVM4THpPWWtYVXpHZGl4dnpLTExRV0orS2FL?=
- =?utf-8?B?cVRTZTNSSTlFM1pUMkNqaUJnRXZMTVoyTXA0Q0pMTjhReWUwRDhoTkNzM1VK?=
- =?utf-8?B?T0lHSi9iTlFWekY1VGlYY1YxOGpuQ296a1RRLzBEL2lTakhwMHdZUnVFM1Qr?=
- =?utf-8?B?aGJoR3FBY1kwcFRhQldYU01LQjIvaUxsTlIvOW54WldoMzgvMlNMK3lBbzAy?=
- =?utf-8?B?eFZVcWVWN3h3eXNKb1VUUkJ1WHUzck9qZHlvd1I1bkVyTVJ4d2x3QUZjVDJH?=
- =?utf-8?B?Q3ZYelExd1R2eFEvNjR6U1JaWE5Ob25hRG9rYkZkajdSblNVZnhCaGpUOEto?=
- =?utf-8?B?YzY0eUpsbmhPL01ZYjEyVHcvUWJKR1liS3NicEpodjh2SURQaDQyMkJiNWYw?=
- =?utf-8?B?clgxeEdJYmEvOTNYWXpYc0d0VzkrSUVFZmVYUldDZ0tFVytKWmh0Rml5V3do?=
- =?utf-8?B?M3VHNUVsWk9vd0ZCeVlzNWh1Vno4ZXVPT3hZSnhDU2pKdm9nMzNzb1pjZTFF?=
- =?utf-8?B?YmE4OG5iOTg4VE95VTRlOVZUb1ZkZXcxMHJPbnNoa1ZqRlR6c1NZZWg5Ynk1?=
- =?utf-8?B?YjFtV2l2MEpCdmowdDJFRCtuaWFvTzgzZ0xoeFNlT2xUZU95c2lWdTd6YWE5?=
- =?utf-8?B?eEF0eEdIL1pXSUFTVnRCdFFDYmR1WjBVS3FwY3VBZ0syWWRmY1FCNVRmcDFZ?=
- =?utf-8?B?T3ZpUENWZXFQYnNMQWdTWE0zdjFpOVo4MDFMWE4yTnRHd1U1c2Yxck1IV1dr?=
- =?utf-8?B?Q2FadjRYbSs5bU54RWFQcE1jVXNLZUpvT0g5L2V3bEpReWlIMnV3ZlZXTnJI?=
- =?utf-8?B?eGtscHdWZ1lCWWM4WHI4UnZMQmZZMlJ6bUh5ZEhoS1ZMNzBMd1F1aXFlRDJI?=
- =?utf-8?B?d3hxYkF2Smsyc0g3WFBMeldiUTJwRjN4dlJNdllhVTdsdWZoQnRWcy9QVDNm?=
- =?utf-8?B?Skx2N2F5V0JBL3VYOENCL0lSdkxmZEZLa3pJcEFVeW5DekRDcWV5dEhCZk1a?=
- =?utf-8?B?YW5oYjR0MFVrTFNJbUhxbEIxTFBPMlNLeFpWQ2hlVzludTJ0eUcxcGowaTlU?=
- =?utf-8?B?UGhjSnpVWWQ1WXBjSW9mL0pHZ0VqL2gvL2tEMHZiZ2VnMm9iODN2VkRWNWph?=
- =?utf-8?B?VkZhLzJOb2MxT1ZQOXZtTVZUTUJxdU5NQnNJY1dpejFaWVAza3Z5d0lmdnk4?=
- =?utf-8?B?RENWOFk3U2pqeFMvTE9uRm42UURJOUltbTJOc1ZzWCs2aHRsSHlJaTBod3Jq?=
- =?utf-8?B?UmZhQVhSWDgyem9yNGFwczRZekY0aFhZZlFPZjJ5K2VpYmlNcElBY0pLTTIx?=
- =?utf-8?B?R1g4Sjc4dmd4MUw1ZTFyYjVFZTRjeDViOWt3Q1VXdEsrVE44bE11S1JmRG02?=
- =?utf-8?B?N0hQT2MyTmVsRkhNdVNQTEhtM1FEQmhCZ1hKKzRNMG80dzdMVzA5THR6Q3dT?=
- =?utf-8?B?NGlkM09Cc3luS3d5QWo0ZFdDK1Z0dE9XMUxOTE1XNm5qNE9ra2RLNXVNdFR0?=
- =?utf-8?B?NE9zZ09Cd2duS21oOExDb2RPKzQ3NjhacHo5U2xHMlpaM0JYNHVCOXNrT2tI?=
- =?utf-8?B?a3REMGtnNEFSbjkyMDVoeld5WE1Zdk1wYUF2QUExU21pUzIrekZENndqN0VE?=
- =?utf-8?B?MVV2d0RRUlZYY1RUYU5BMGNzSG9wOCtjYlAzRElKdTdrNVliV0xFUERIdG16?=
- =?utf-8?B?SSs4eDhZYlgrVnlpb1R2MDdJMkY0anRxZXladHMxSXYwWXlrZDYxUElZNlhW?=
- =?utf-8?B?WFBQVkJacGZELzlJN1ppS05QNWsySzdMRUc2dm5hZTNlTEh3c2RzVC9BWHhE?=
- =?utf-8?B?TysvSytlK2xMNFMxUVJ1VmJ6aDVodkNJVWpjZlNBQ0laeDdDSk1uK1pMQ3c1?=
- =?utf-8?B?eEtnOWhyQXRyVmRVWmUrbUhic1lSOUVYalpaUT09?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SI6PR06MB7631.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE; SFS:(13230040)(1800799024)(376014)(366016)(38070700021)(13003099007);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dVVFZG1JTkRQZFBsVG43Z0lLSklKUnAvNDhQUWhqZEVNdXN0a2pYRW5mSVlP?=
- =?utf-8?B?QWxsMW9BTUZmOEFDUXJDcW55MytVWDdpT3dBc2VTNm5lTjFHMk95R3BadkxR?=
- =?utf-8?B?R05Nb2w1TENPckhpckIvM1BDWGJDOUxHdE9OcVhtbWo2L0NXQloybWppclgx?=
- =?utf-8?B?L1RPRWNWUVRrbmRLWVl0SWdzNUtvbHpKKytsM2NtWDUzUU45bitlYjgrM1VC?=
- =?utf-8?B?VVorTFRGeFBYRzhNRkhjQ3FzYVNuZlNPSEpDTVV0S3kyM3MyZldLN2JEUm1l?=
- =?utf-8?B?VWlSSy9NeUhmVW4yeE9kOUJtMFh5MW9WMVVLVWZOdFJ4UUpXQWpzdmhOWUJn?=
- =?utf-8?B?QVc5SHl5UmlabkFWQ1BkUkw3VnNNN2JRTGhKeFQ0R2RacXpGYTAwNEZ0VDlP?=
- =?utf-8?B?TTVEUDhhRmRMcVloYkFyY05NTlRNU3NOYzgwQjMxMmkyak5JNEhKZUJNd2Z0?=
- =?utf-8?B?SHp3YzllQmJRM0dDZ2todE1YUU00bUhEUzNuWkI1MXI5TDVNNnBmYjU1QVhC?=
- =?utf-8?B?Y2xSNUFjck1hOWZ0akFpbW1SQ3FQZ0ppZW9UTk9nSlFZM2ZON1RtWmtnbTJ4?=
- =?utf-8?B?aTU4Y1RwczFHYlhWd2RPdE1NU2Z3cWVqUGhmbThMY0laOGtmOGR5bkpHUlJN?=
- =?utf-8?B?OUFjLzNsM25kV2JCdDlhcURBS2pLem9RdC9FSWU3bDN5bnhUWk4zUWtKZHYy?=
- =?utf-8?B?ZGx2UkczUkJIcGhiRnc0SXg3RWt6UFk0R2xiRVdLYXV3M0hVd2laVGpLK2ZT?=
- =?utf-8?B?U1V4VDVldlcvSzNtSzdlb1hVUWFLWU5TSGtWb2o3KzRHQ0xqdE9jWSs5NU55?=
- =?utf-8?B?d1lyaUFXaGtFMk4ybE1ycVJCaGpTUUpQSnFmU1FzdFNLSmJBTlcxR3JCQ2ZS?=
- =?utf-8?B?UlNpbXo1MmtqUy9pSEpnYUQyL3FrUnZXSWNTN3g2WlV2UjlwQ0sxMDV2Ukwr?=
- =?utf-8?B?OHgzY3RveGNhT2JCMzRtcXhIYUJyZDljSUFNWVVsc1RXNWhZcS8zWU1wOFNG?=
- =?utf-8?B?WUpFNDA1ZXBmM2p2cFZiZ2Y5bUJBblN3dktTYTNlYXRhUFFpS3lpZVFXYW5p?=
- =?utf-8?B?bjYvd1JyVjBPL3ZUaXlMUGVPbkM5SWc4aDhOUkNib1QwSmVzNUZsTlFOUisw?=
- =?utf-8?B?dGxJZytHTnkyb1lwNmpEcmtEZHNpSExWVmsvNjcrdTZZb1kxM2FWTHozNTBR?=
- =?utf-8?B?eW1ER1A3N1lnM3lmVnlzbk8zaXZkemF2OVNGSjlmSGlvWHRrcGg2WVhCNktZ?=
- =?utf-8?B?dTBVTllFK3NzODRpMjIyRUliWE5XU2ZKbWtINzlsamh4VFB6MkdyYSs3TFJw?=
- =?utf-8?B?cFU0NTZDQ095Rnl5SVFNdG9rdHFOQ0xQZUkwdDJNSlAxRys4NmdIeG1EUlFq?=
- =?utf-8?B?RjFRcU5RR2lHY2JXSWYxNFA3TGp3TmlXUEozNUg5SmpPWHU1ZGVXeXo0OHgr?=
- =?utf-8?B?U2VvRS9aS0l6NURhNlBHVWtBZm5BOGJjRlQvU080VUFpeHR1ZE9VYXltdHJo?=
- =?utf-8?B?WXhKVzJXbW4yS3NPRjg5TUVGVy8rWWlaY0JJNEJPekRwaUpuMjZpQWRpWHZr?=
- =?utf-8?B?L0FjVFFLa3hjNVl2ZGNuRHBZdzM1Y1IrVXlGNGVNQXVxRm5JaUFjUjdTcHVz?=
- =?utf-8?B?emhqb3gxSFE5UTNxU2U0RnBKQXhOZlptTUt0VmErNGF5d3dNVDNUTEZhYjJJ?=
- =?utf-8?B?dG91bHYrN2lCa05OSU8vMDJQZ0F1c2VGamxXS1FkSzBkMmpQanJBcDB1UXJn?=
- =?utf-8?B?MGR2ZWhlamRyRTd5Z0hkQThQSE92WkhQMFR4OXBYMm0rdks3NGNWSTBsMU9B?=
- =?utf-8?B?a1o0Q0dUTDAwaXoyR2orb3NsUlV0TmVKbVM5YW9wTHJSd29rZEI2ei9Tb1dW?=
- =?utf-8?B?aTZDRTYwaVBlcjVha29BS1V0UUdLRHY4UURpWW9FZGN5d2xZUVRFNGQ3V1Vw?=
- =?utf-8?B?VmpIL1pPWlo1MnJ5YU1WOFdYVVptSzM1cDdHQ0F2UVdzVWJ3Y1JHR1ZKZk9k?=
- =?utf-8?B?UnV1OUVXNVRTUTdtcXVzSkJJQXlwWWdOQys4SDNiNnZLeVppYUNvSm1KSGxx?=
- =?utf-8?B?NmZIUmpqQm14WkZLZnhJTTYvS3JRS2Nqai9VUUJ0UnFEK29QbHVvTUpvS2lQ?=
- =?utf-8?Q?UIV66FMZaTTN0WmsEkhslZr9Z?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vTb5a-0002pF-Mp; Thu, 11 Dec 2025 02:27:50 -0500
+Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vTb5X-00079r-LR; Thu, 11 Dec 2025 02:27:50 -0500
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwAXHZlecjppECFSAw--.337S2;
+ Thu, 11 Dec 2025 15:27:26 +0800 (CST)
+Received: from [10.31.62.13] (unknown [218.76.62.144])
+ by mail (Coremail) with SMTP id AQAAfwCX7epYcjppfSoLAA--.6702S2;
+ Thu, 11 Dec 2025 15:27:20 +0800 (CST)
+Message-ID: <85e5dc36-8cdf-4ee9-b482-882dc7a31aca@phytium.com.cn>
+Date: Thu, 11 Dec 2025 15:27:19 +0800
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI6PR06MB7631.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b26f6ade-1214-471f-e42f-08de38807f40
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Dec 2025 06:42:47.4757 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: HAhiJEDCv1kJglH19ges6q17g2swLdCXvasNhpwLMx02JQ46VXlYxj48nWPemgEFwDNnBXl7fCbvYqdIKGPziePj4pb0cn2nQyT4Jfrb2+c=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB6335
-Received-SPF: pass client-ip=2a01:111:f403:c406::3;
- envelope-from=kane_chen@aspeedtech.com;
- helo=OS8PR02CU002.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC RESEND v5 2/4] hw/misc: Introduce iommu-testdev for
+ bare-metal IOMMU testing
+To: eric.auger@redhat.com, Paolo Bonzini <pbonzini@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>,
+ CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
+References: <20251126154547.1300748-1-tangtao1634@phytium.com.cn>
+ <20251126154547.1300748-3-tangtao1634@phytium.com.cn>
+ <829b3e14-92e8-4d22-bb02-c6e7322d9856@redhat.com>
+From: Tao Tang <tangtao1634@phytium.com.cn>
+In-Reply-To: <829b3e14-92e8-4d22-bb02-c6e7322d9856@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAfwCX7epYcjppfSoLAA--.6702S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAABWk4gq0InAAGso
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
+ 4@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoW3GryrCFWrWrWDuw4UuryfZwb_yoWftFy8pF
+ 98GaySkF48JF1xCw1Sqw48CFy3GFsYy3WUCr1rKw1Fgr9Iyry8Jr1jk340k3srJrW8Z3Wx
+ Zw40qFyUuw45ZrJanT9S1TB71UUUUUJqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=209.97.181.73;
+ envelope-from=tangtao1634@phytium.com.cn;
+ helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -187,120 +82,272 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgTmFiaWgsDQoNClRoYW5rIHlvdSBmb3IgeW91ciByZXZpZXcgYW5kIGNvbW1lbnRzLiBJIHdp
-bGwgd2FpdCBhIGZldyBtb3JlIGRheXMNCnRvIHNlZSBpZiB0aGVyZSBpcyBhZGRpdGlvbmFsIGZl
-ZWRiYWNrIGZyb20gb3RoZXJzLiBJZiB5b3UgZW5jb3VudGVyDQphbnl0aGluZyB1bmV4cGVjdGVk
-IGluIHlvdXIgbG9jYWwgZW52aXJvbm1lbnQsIHBsZWFzZSBsZXQgbWUga25vdy4gSQ0Kd2lsbCB0
-cnkgdG8gYWRkcmVzcyBpdCBpbiB0aGUgdjQgcGF0Y2ggaWYgcG9zc2libGUuDQoNCkJlc3QgcmVn
-YXJkcywNCkthbmUNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogTmFiaWgg
-RXN0ZWZhbiA8bmFiaWhlc3RlZmFuQGdvb2dsZS5jb20+DQo+IFNlbnQ6IFRodXJzZGF5LCBEZWNl
-bWJlciAxMSwgMjAyNSA3OjAyIEFNDQo+IFRvOiBLYW5lIENoZW4gPGthbmVfY2hlbkBhc3BlZWR0
-ZWNoLmNvbT4NCj4gQ2M6IEPDqWRyaWMgTGUgR29hdGVyIDxjbGdAa2FvZC5vcmc+OyBQZXRlciBN
-YXlkZWxsDQo+IDxwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc+OyBTdGV2ZW4gTGVlIDxzdGV2ZW5f
-bGVlQGFzcGVlZHRlY2guY29tPjsgVHJveQ0KPiBMZWUgPGxlZXRyb3lAZ21haWwuY29tPjsgSmFt
-aW4gTGluIDxqYW1pbl9saW5AYXNwZWVkdGVjaC5jb20+OyBBbmRyZXcNCj4gSmVmZmVyeSA8YW5k
-cmV3QGNvZGVjb25zdHJ1Y3QuY29tLmF1PjsgSm9lbCBTdGFubGV5IDxqb2VsQGptcy5pZC5hdT47
-DQo+IG9wZW4gbGlzdDpBU1BFRUQgQk1DcyA8cWVtdS1hcm1Abm9uZ251Lm9yZz47IG9wZW4gbGlz
-dDpBbGwgcGF0Y2hlcyBDQw0KPiBoZXJlIDxxZW11LWRldmVsQG5vbmdudS5vcmc+OyBUcm95IExl
-ZSA8dHJveV9sZWVAYXNwZWVkdGVjaC5jb20+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjMgMDAv
-MThdIGh3L2FybS9hc3BlZWQ6IEFTVDE3MDAgTFRQSSBzdXBwb3J0IGFuZA0KPiBkZXZpY2UgaG9v
-a3Vwcw0KPiANCj4gT24gU3VuLCBEZWMgNywgMjAyNSBhdCAxMTo0NeKAr1BNIEthbmUgQ2hlbiB2
-aWEgPHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz4NCj4gd3JvdGU6DQo+ID4NCj4gPiBGcm9tOiBLYW5l
-LUNoZW4tQVMgPGthbmVfY2hlbkBhc3BlZWR0ZWNoLmNvbT4NCj4gPg0KPiA+IEhpIGFsbCwNCj4g
-Pg0KPiA+IExUUEkgKExWRFMgVHVubmVsaW5nIFByb3RvY29sICYgSW50ZXJmYWNlKSBpcyBkZWZp
-bmVkIGluIHRoZSBPQ1ANCj4gPiBEQy1TQ00NCj4gPiAyLjAgc3BlY2lmaWNhdGlvbiAoc2VlIEZp
-Z3VyZSAyKToNCj4gPiBodHRwczovL3d3dy5vcGVuY29tcHV0ZS5vcmcvZG9jdW1lbnRzL29jcC1k
-Yy1zY20tMi0wLWx0cGktdmVyLTEtMC1wZGYNCj4gPg0KPiA+IExUUEkgcHJvdmlkZXMgYSBwcm90
-b2NvbCBhbmQgcGh5c2ljYWwgaW50ZXJmYWNlIGZvciB0dW5uZWxpbmcgdmFyaW91cw0KPiA+IGxv
-dy1zcGVlZCBzaWduYWxzIGJldHdlZW4gdGhlIEhvc3QgUHJvY2Vzc29yIE1vZHVsZSAoSFBNKSBh
-bmQgdGhlDQo+ID4gU2F0ZWxsaXRlIENvbnRyb2xsZXIgTW9kdWxlIChTQ00pLiBJbiBGaWd1cmUg
-MiBvZiB0aGUgc3BlY2lmaWNhdGlvbiwNCj4gPiB0aGUgQVNUMjd4MCBTb0MgKGxlZnQpIGludGVn
-cmF0ZXMgdHdvIExUUEkgY29udHJvbGxlcnMsIGFsbG93aW5nIGl0IHRvDQo+ID4gY29ubmVjdCB0
-byB1cCB0byB0d28gQVNUMTcwMCBib2FyZHMuIE9uIHRoZSBvdGhlciBzaWRlLCB0aGUgQVNUMTcw
-MA0KPiA+IGNvbnNvbGlkYXRlcyBIUE0gRlBHQSBmdW5jdGlvbnMgYW5kIG11bHRpcGxlIHBlcmlw
-aGVyYWwgaW50ZXJmYWNlcw0KPiA+IChHUElPLCBVQVJULCBJMkMsIEkzQywgZXRjLikgb250byBh
-IHNpbmdsZSBib2FyZC4NCj4gPg0KPiA+IEJlY2F1c2UgdGhlIEFTVDE3MDAgZXhwb3NlcyBhZGRp
-dGlvbmFsIEkvTyBpbnRlcmZhY2VzIChHUElPLCBJMkMsIEkzQywNCj4gPiBhbmQgb3RoZXJzKSwg
-aXQgYWN0cyBhcyBhbiBJL08gZXhwYW5kZXIuIE9uY2UgY29ubmVjdGVkIG92ZXIgTFRQSSwgdGhl
-DQo+ID4gQVNUMjd4MCBjYW4gY29udHJvbCBhZGRpdGlvbmFsIGRvd25zdHJlYW0gZGV2aWNlcyB0
-aHJvdWdoIHRoaXMgbGluay4NCj4gPg0KPiA+IFRoaXMgcGF0Y2ggc2VyaWVzIGlzIGJhc2VkIG9u
-IHRoZSBTR1BJTyBjaGFuZ2VzOg0KPiA+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2
-ZWwvMjAyNTExMDYtYXNwZWVkLXNncGlvLXYxLTAtYjAyNjA5MzcNCj4gPiAxNmZhQGdvb2dsZS5j
-b20vDQo+ID4NCj4gPiBJdCBpbnRyb2R1Y2VzIGEgYmFzaWMgTFRQSSBjb250cm9sbGVyIG1vZGVs
-IGFuZCB3aXJlcyBpdCBpbnRvIHRoZQ0KPiA+IEFTVDI3eDAgU29DLiBUaGUgc2VyaWVzIGFsc28g
-YWRkcyB0aGUgQVNUMTcwMC1zcGVjaWZpYyBMVFBJIGV4cGFuZGVyDQo+ID4gZGV2aWNlIGFuZCBp
-bmNyZW1lbnRhbGx5IGNvbm5lY3RzIGNvbW1vbiBwZXJpcGhlcmFscyBvbiB0aGUgQVNUMTcwMA0K
-PiA+IG1vZGVsLiBGb3IgdGhlIEkzQyBibG9jaywgd2hpY2ggbWF5IGNhdXNlIGtlcm5lbCBjcmFz
-aGVzLCBpdHMgTU1JTw0KPiA+IHJlZ2lvbiBpcyBtb2RlbGVkIGFzIGFuIHVuaW1wbGVtZW50ZWQg
-ZGV2aWNlIHRvIHJlc2VydmUgYWRkcmVzcyBzcGFjZQ0KPiA+IGFuZCBtYWtlIHRoZSBtaXNzaW5n
-IGZ1bmN0aW9uYWxpdHkgZXhwbGljaXQsIGVuc3VyaW5nIHN0YWJsZSBndWVzdA0KPiA+IHByb2Jp
-bmcuDQo+ID4NCj4gPiBJbiB0aGUgb2ZmaWNpYWwgcmVsZWFzZSBpbWFnZXMsIHRoZSBBU1QxNzAw
-IGZ1bmN0aW9ucyBhcmUgbm90IGluY2x1ZGVkDQo+ID4gYnkgZGVmYXVsdC4gVG8gdGVzdCB0aGUg
-QVNUMTcwMC1yZWxhdGVkIGZ1bmN0aW9uYWxpdHksIHBsZWFzZSBpbmNsdWRlDQo+ID4gdGhlIGZv
-bGxvd2luZyBEVFMgZmlsZXMgZm9yIHByb2Jpbmc6DQo+ID4NCj4gaHR0cHM6Ly9naXRodWIuY29t
-L0FzcGVlZFRlY2gtQk1DL2xpbnV4L2Jsb2IvYXNwZWVkLW1hc3Rlci12Ni42L2FyY2gvYQ0KPiA+
-IHJtNjQvYm9vdC9kdHMvYXNwZWVkL2FzcGVlZC1sdHBpMC5kdHNpDQo+ID4NCj4gaHR0cHM6Ly9n
-aXRodWIuY29tL0FzcGVlZFRlY2gtQk1DL2xpbnV4L2Jsb2IvYXNwZWVkLW1hc3Rlci12Ni42L2Fy
-Y2gvYQ0KPiA+IHJtNjQvYm9vdC9kdHMvYXNwZWVkL2FzcGVlZC1sdHBpMS5kdHNpDQo+ID4NCj4g
-PiBBZnRlciBpbmNsdWRpbmcgdGhlc2UgRFRTIGZpbGVzIGluIHRoZSBCTUMgaW1hZ2UsIHlvdSBj
-YW4gdmVyaWZ5IExUUEkNCj4gPiBmdW5jdGlvbmFsaXR5IHVzaW5nIHRoZSBmb2xsb3dpbmcgc2Nl
-bmFyaW9zOg0KPiA+DQo+ID4gMS4gSW4gVS1Cb290Og0KPiA+ICAgIFJ1biB0aGUgbHRwaSBjb21t
-YW5kIHRvIHRyaWdnZXIgdGhlIExUUEkgY29ubmVjdGlvbiBhbmQgZGlzcGxheSB0aGUNCj4gPiAg
-ICBjdXJyZW50IGNvbm5lY3Rpb24gc3RhdHVzLg0KPiA+IDIuIEluIEJNQyBMaW51eDoNCj4gPiAg
-ICBSdW4gaTJjZGV0ZWN0IC15IDwxNi0zOD4gdG8gc2NhbiBhbmQgdGVzdCB0aGUgSTJDIGJ1c2Vz
-IGV4cG9zZWQgYnkNCj4gPiAgICB0aGUgQVNUMTcwMC4NCj4gPg0KPiA+IEFueSBmZWVkYmFjayBv
-ciBzdWdnZXN0aW9ucyBhcmUgYXBwcmVjaWF0ZWQhDQo+ID4NCj4gPiBLYW5lDQo+ID4NCj4gDQo+
-IEkgbGVmdCBzb21lIG5pdC1waWNreSBub3RlcyBvbiBzb21lIG9mIHRoZSBwYXRjaGVzLCBidXQg
-YWZ0ZXIgZml4aW5nIHBhdGNoIDAzDQo+IGV2ZXJ5dGhpbmcgZWxzZSBzZWVtcyBnb29kLiBGV0lX
-IEkgYnJvdWdodCB0aGUgd2hvbGUgcGF0Y2hzZXQgaW50byBvdXINCj4gYnJhbmNoIGFuZCBub3Qg
-b25seSBkb2VzIGV2ZXJ5dGhpbmcgY29tcGlsZSBwcm9wZXJseSwgYnV0IEkgY2FuIGFsc28gc2Vl
-IGFuZA0KPiBpbnRlcmFjdCB3aXRoIHRoZSBpMmMgYnVzZXMgZnJvbSB0aGUgQVNUMTcwMCBpbiBv
-dXIgaW50ZXJuYWwgcGxhdGZvcm1zLiBXaWxsDQo+IHdhaXQgZm9yIHY0IHRvIGFkZCB0aGUgcmV2
-aWV3ZWQgYW5kIHRlc3RlZCB0YWdzLCBidXQgTEdUTSENCj4gDQo+ID4gLS0tDQo+ID4NCj4gPiBD
-aGFuZ2VMb2cNCj4gPiAtLS0tLS0tLS0NCj4gPiB2MzoNCj4gPiAtIEFkZCBQV00gbW9kZWwNCj4g
-PiAtIEludGVncmF0ZSB0aGUgU0dQSU8gbW9kZWwNCj4gPiAtIEZpeCBJMkMgdGVzdCBjYXNlIGZh
-aWx1cmUNCj4gPiAtIFJlZmluZSBjb2RlIHN0cnVjdHVyZQ0KPiA+DQo+ID4gdjI6DQo+ID4gLSBT
-ZXBhcmF0ZSB0aGUgQVNUMTcwMCBtb2RlbCBpbnRvIGEgc3RhbmRhbG9uZSBpbXBsZW1lbnRhdGlv
-bg0KPiA+IC0gUmVmaW5lIHRoZSBtZWNoYW5pc20gZm9yIGFzc2lnbmluZyB0aGUgQVNUMTcwMCBi
-b2FyZCBudW1iZXINCj4gPg0KPiA+IHYxOg0KPiA+IC0gSW5pdGlhbCB2ZXJzaW9uDQo+ID4gLS0t
-DQo+ID4NCj4gPiBLYW5lLUNoZW4tQVMgKDE4KToNCj4gPiAgIGh3L21pc2M6IEFkZCBMVFBJIGNv
-bnRyb2xsZXINCj4gPiAgIGh3L2FybS9hc3BlZWQ6IEF0dGFjaCBMVFBJIGNvbnRyb2xsZXIgdG8g
-QVNUMjdYMCBwbGF0Zm9ybQ0KPiA+ICAgaHcvbWlzYzogQWRkIGJhc2ljIEFzcGVlZCBQV00gbW9k
-ZWwNCj4gPiAgIGh3L2FybS9hc3BlZWQ6IEFkZCBBU1QxNzAwIExUUEkgZXhwYW5kZXIgZGV2aWNl
-IG1vZGVsDQo+ID4gICBody9hcm0vYXNwZWVkOiBJbnRlZ3JhdGUgQVNUMTcwMCBkZXZpY2UgaW50
-byBBU1QyN1gwDQo+ID4gICBody9hcm0vYXNwZWVkOiBJbnRlZ3JhdGUgaW50ZXJydXB0IGNvbnRy
-b2xsZXIgZm9yIEFTVDE3MDANCj4gPiAgIGh3L2FybS9hc3BlZWQ6IEF0dGFjaCBMVFBJIGNvbnRy
-b2xsZXIgdG8gQVNUMTcwMCBtb2RlbA0KPiA+ICAgaHcvYXJtL2FzcGVlZDogQXR0YWNoIFVBUlQg
-ZGV2aWNlIHRvIEFTVDE3MDAgbW9kZWwNCj4gPiAgIGh3L2FybS9hc3BlZWQ6IEF0dGFjaCBTUkFN
-IGRldmljZSB0byBBU1QxNzAwIG1vZGVsDQo+ID4gICBody9hcm0vYXNwZWVkOiBBdHRhY2ggU1BJ
-IGRldmljZSB0byBBU1QxNzAwIG1vZGVsDQo+ID4gICBody9hcm0vYXNwZWVkOiBBdHRhY2ggQURD
-IGRldmljZSB0byBBU1QxNzAwIG1vZGVsDQo+ID4gICBody9hcm0vYXNwZWVkOiBBdHRhY2ggU0NV
-IGRldmljZSB0byBBU1QxNzAwIG1vZGVsDQo+ID4gICBody9hcm0vYXNwZWVkOiBBdHRhY2ggR1BJ
-TyBkZXZpY2UgdG8gQVNUMTcwMCBtb2RlbA0KPiA+ICAgaHcvYXJtL2FzcGVlZDogYXR0YWNoIEky
-QyBkZXZpY2UgdG8gQVNUMTcwMCBtb2RlbA0KPiA+ICAgaHcvYXJtL2FzcGVlZDogQXR0YWNoIFdE
-VCBkZXZpY2UgdG8gQVNUMTcwMCBtb2RlbA0KPiA+ICAgaHcvYXJtL2FzcGVlZDogQXR0YWNoIFBX
-TSBkZXZpY2UgdG8gQVNUMTcwMCBtb2RlbA0KPiA+ICAgaHcvYXJtL2FzcGVlZDogQXR0YWNoIFNH
-UElPTSBkZXZpY2UgdG8gQVNUMTcwMCBtb2RlbA0KPiA+ICAgaHcvYXJtL2FzcGVlZDogTW9kZWwg
-QVNUMTcwMCBJM0MgYmxvY2sgYXMgdW5pbXBsZW1lbnRlZCBkZXZpY2UNCj4gPg0KPiA+ICBpbmNs
-dWRlL2h3L2FybS9hc3BlZWRfYXN0MTcwMC5oIHwgIDUzICsrKysrKysNCj4gPiAgaW5jbHVkZS9o
-dy9hcm0vYXNwZWVkX3NvYy5oICAgICB8ICAyNSArKy0NCj4gPiAgaW5jbHVkZS9ody9pMmMvYXNw
-ZWVkX2kyYy5oICAgICB8ICAgMSArDQo+ID4gIGluY2x1ZGUvaHcvaW50Yy9hc3BlZWRfaW50Yy5o
-ICAgfCAgIDIgKw0KPiA+ICBpbmNsdWRlL2h3L21pc2MvYXNwZWVkX2x0cGkuaCAgIHwgIDMyICsr
-KysNCj4gPiAgaW5jbHVkZS9ody9taXNjL2FzcGVlZF9wd20uaCAgICB8ICAzMSArKysrDQo+ID4g
-IGh3L2FybS9hc3BlZWRfYXN0MTcwMC5jICAgICAgICAgfCAyNjkNCj4gKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysNCj4gPiAgaHcvYXJtL2FzcGVlZF9hc3QyN3gwLmMgICAgICAgICB8
-IDE2MyArKysrKysrKysrKysrKysrKy0tDQo+ID4gIGh3L2kyYy9hc3BlZWRfaTJjLmMgICAgICAg
-ICAgICAgfCAgMTkgKystDQo+ID4gIGh3L2ludGMvYXNwZWVkX2ludGMuYyAgICAgICAgICAgfCAg
-NjAgKysrKysrKw0KPiA+ICBody9taXNjL2FzcGVlZF9sdHBpLmMgICAgICAgICAgIHwgMTk0ICsr
-KysrKysrKysrKysrKysrKysrKysrDQo+ID4gIGh3L21pc2MvYXNwZWVkX3B3bS5jICAgICAgICAg
-ICAgfCAxMjEgKysrKysrKysrKysrKysNCj4gPiAgaHcvYXJtL21lc29uLmJ1aWxkICAgICAgICAg
-ICAgICB8ICAgMSArDQo+ID4gIGh3L21pc2MvbWVzb24uYnVpbGQgICAgICAgICAgICAgfCAgIDIg
-Kw0KPiA+ICBody9taXNjL3RyYWNlLWV2ZW50cyAgICAgICAgICAgIHwgICA0ICsNCj4gPiAgMTUg
-ZmlsZXMgY2hhbmdlZCwgOTU3IGluc2VydGlvbnMoKyksIDIwIGRlbGV0aW9ucygtKSAgY3JlYXRl
-IG1vZGUNCj4gPiAxMDA2NDQgaW5jbHVkZS9ody9hcm0vYXNwZWVkX2FzdDE3MDAuaCAgY3JlYXRl
-IG1vZGUgMTAwNjQ0DQo+ID4gaW5jbHVkZS9ody9taXNjL2FzcGVlZF9sdHBpLmggIGNyZWF0ZSBt
-b2RlIDEwMDY0NA0KPiA+IGluY2x1ZGUvaHcvbWlzYy9hc3BlZWRfcHdtLmggIGNyZWF0ZSBtb2Rl
-IDEwMDY0NA0KPiA+IGh3L2FybS9hc3BlZWRfYXN0MTcwMC5jICBjcmVhdGUgbW9kZSAxMDA2NDQg
-aHcvbWlzYy9hc3BlZWRfbHRwaS5jDQo+ID4gY3JlYXRlIG1vZGUgMTAwNjQ0IGh3L21pc2MvYXNw
-ZWVkX3B3bS5jDQo+ID4NCj4gPiAtLQ0KPiA+IDIuNDMuMA0KPiA+DQo+ID4NCg==
+Hi Eric,
+
+On 2025/12/11 02:35, Eric Auger wrote:
+>
+> On 11/26/25 4:45 PM, Tao Tang wrote:
+>> Add a minimal PCI test device designed to exercise IOMMU translation
+>> (such as ARM SMMUv3) without requiring guest firmware or OS. The device
+>> provides MMIO registers to configure and trigger DMA operations with
+>> controllable attributes (security state, address space), enabling
+>> deterministic IOMMU testing.
+>>
+>> Key features:
+>> - Bare-metal IOMMU testing via simple MMIO interface
+>> - Configurable DMA attributes for security states and address spaces
+>> - Write-then-read verification pattern with automatic result checking
+>>
+>> The device performs a deterministic DMA test pattern: write a known
+>> value (0x88888888) to a configured IOVA, read it back, and verify data
+>> integrity. Results are reported through a dedicated result register,
+>> eliminating the need for complex interrupt handling or driver
+>> infrastructure in tests.
+>>
+>> This is purely a test device and not intended for production use or
+>> machine realism. It complements existing test infrastructure like
+>> pci-testdev but focuses specifically on IOMMU translation path
+>> validation.
+>>
+>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>> ---
+>>   docs/specs/index.rst            |   1 +
+>>   docs/specs/iommu-testdev.rst    | 109 +++++++++++++
+>>   hw/misc/Kconfig                 |   5 +
+>>   hw/misc/iommu-testdev.c         | 278 ++++++++++++++++++++++++++++++++
+>>   hw/misc/meson.build             |   1 +
+>>   hw/misc/trace-events            |  10 ++
+>>   include/hw/misc/iommu-testdev.h |  70 ++++++++
+>>   7 files changed, 474 insertions(+)
+>>   create mode 100644 docs/specs/iommu-testdev.rst
+>>   create mode 100644 hw/misc/iommu-testdev.c
+>>   create mode 100644 include/hw/misc/iommu-testdev.h
+>>
+>> diff --git a/docs/specs/index.rst b/docs/specs/index.rst
+>> index f19d73c9f6..1fc7fae6bb 100644
+>> --- a/docs/specs/index.rst
+>> +++ b/docs/specs/index.rst
+>> @@ -39,3 +39,4 @@ guest hardware that is specific to QEMU.
+>>      riscv-iommu
+>>      riscv-aia
+>>      aspeed-intc
+>> +   iommu-testdev
+>> \ No newline at end of file
+>> diff --git a/docs/specs/iommu-testdev.rst b/docs/specs/iommu-testdev.rst
+>> new file mode 100644
+>> index 0000000000..fdc7f2ee89
+>> --- /dev/null
+>> +++ b/docs/specs/iommu-testdev.rst
+>> @@ -0,0 +1,109 @@
+>> +iommu-testdev — IOMMU test device for bare-metal testing
+>> +=========================================================
+>> +
+>> +Overview
+>> +--------
+>> +``iommu-testdev`` is a minimal, test-only PCI device designed to exercise
+>> +IOMMU translation (such as ARM SMMUv3) without requiring firmware or a guest
+>> +OS. Tests can populate IOMMU translation tables with known values and trigger
+>> +DMA operations that flow through the IOMMU translation path. It is **not** a
+>> +faithful PCIe endpoint and must be considered a QEMU-internal test vehicle.
+>> +
+>> +Key Features
+>> +------------
+>> +* **Bare-metal IOMMU testing**: No guest kernel or firmware required
+>> +* **Configurable DMA attributes**: Supports address space  configuration via
+> double space
+
+
+Thanks for catching it.
+
+>> +  MMIO registers
+>> +* **Deterministic verification**: Write-then-read DMA pattern with automatic
+>> +  result checking
+>> +
+>> +Status
+>> +------
+>> +* Location: ``hw/misc/iommu-testdev.c``
+>> +* Header: ``include/hw/misc/iommu-testdev.h``
+>> +* Build guard: ``CONFIG_IOMMU_TESTDEV``
+>> +
+>> +Device Interface
+>> +----------------
+>> +The device exposes a single PCI BAR0 with MMIO registers:
+> all those regs are 32b?
+
+
+Yes. All registers are 32-bit, little-endian, and only support 4-byte 
+accesses, as enforced by the MemoryRegionOps valid range. I’ll make this 
+explicit in  the docs and in the register table to avoid any ambiguity.
+
+>> +
+>> +* ``ITD_REG_DMA_TRIGGERING`` (0x00): Reading triggers DMA execution
+>> +* ``ITD_REG_DMA_GVA_LO`` (0x04): IOVA/GVA bits [31:0]
+>> +* ``ITD_REG_DMA_GVA_HI`` (0x08): IOVA/GVA bits [63:32]
+>> +* ``ITD_REG_DMA_LEN`` (0x0C): DMA transfer length
+>> +* ``ITD_REG_DMA_RESULT`` (0x10): DMA operation result (0=success)
+>> +* ``ITD_REG_DMA_DBELL`` (0x14): Write 1 to arm DMA
+> can you elaborate on this DMA_DBELL? It is not crystal clear to me.
+
+
+The idea is to model a tiny, explicit DMA state machine instead of 
+having a single MMIO operation that implicitly does “configure + start + 
+complete”.
+
+In this model:
+
+   * DMA_DBELL is just an “arm / doorbell” register.
+   * DMA_TRIGGERING is the “consume / execute” action.
+   * DMA_RESULT exposes the state/outcome.
+
+This split is mainly for timing control and debuggability: qtests can 
+easily exercise and assert distinct paths (NOT_ARMED, BAD_LEN, TX/RD 
+failures, mismatch) instead of having all side effects hidden behind a 
+single write.
+
+
+If you feel this is overkill for a qtest-only device, I'm open to 
+simplifying the interface (e.g. "write a register and immediately 
+execute DMA").
+
+>> +* ``ITD_REG_DMA_ATTRS`` (0x18): DMA attributes
+>> +
+>> +  - bit[0]: secure (1=Secure, 0=Non-Secure)
+>> +  - bits[2:1]: address space (0=Non-Secure, 1=Secure, 2=Root, 3=Realm)
+> I would simply remove Root and Realm for now. Are those bits part of
+>
+> ITD_REG_DMA_ATTR?
+
+
+Yes I just shadowed the MemTxAttrs. I'll remove the unused Root/Realm 
+definition.
+
+>
+>> +    Only these MemTxAttrs fields (``secure`` and ``space``) are consumed today;
+>> +    other bits are reserved but can be wired up easily if future tests need
+>> +    to pass extra attributes.
+>> +
+>> +Translation Setup Workflow
+>> +--------------------------
+>> +``iommu-testdev`` never builds SMMU/AMD-Vi/RISC-V IOMMU structures on its own.
+>> +Architecture-specific construction lives entirely in qtest/libqos helpers.
+>> +Those helpers populate guest memory with page tables/architecture-specific
+>> +structures and program the emulated IOMMU registers directly. See the
+>> +``qsmmu_setup_and_enable_translation()`` function in
+>> +``tests/qtest/libqos/qos-smmuv3.c`` for an example of how SMMUv3 translation
+>> +is set up for this device.
+>> +
+>> +DMA Operation Flow
+>> +------------------
+>> +1. Test programs IOMMU translation tables
+>> +2. Test configures DMA address (GVA_LO/HI), length, and attributes
+>> +3. Test writes 1 to DMA_DBELL to arm the operation
+>> +4. Test reads DMA_TRIGGERING to execute DMA
+> why do we need 3 and 4?
+
+
+As previously described.
+
+>> +5. Test polls DMA_RESULT:
+>> +
+>> +   - 0x00000000: Success
+>> +   - 0xFFFFFFFE: Busy (still in progress)
+>> +   - 0xDEAD000X: Various error codes
+>> +
+>> +The device performs a write-then-read sequence using a known pattern
+>> +(0x88888888) and verifies data integrity automatically.
+>> +
+>> +Running the qtest
+>> +-----------------
+>> +The SMMUv3 test suite uses this device and covers multiple translation modes::
+>> +
+>> +    cd build-debug
+>> +    QTEST_QEMU_BINARY=./qemu-system-aarch64 \\
+>> +        ./tests/qtest/iommu-smmuv3-test --tap -k
+>> +
+>> +This test suite exercises:
+>> +
+>> +* Stage 1 only translation
+>> +* Stage 2 only translation
+>> +* Nested (Stage 1 + Stage 2) translation
+>> +* Multiple security spaces (Non-Secure, Secure, Root, Realm)
+> ditto
+
+
+I'll remove it.
+
+>> +
+>> +Instantiation
+>> +-------------
+>> +The device is not wired into any board by default. Tests instantiate it
+>> +via QEMU command line::
+>> +
+>> +    -device iommu-testdev
+>> +
+>> +For ARM platforms with SMMUv3::
+>> +
+>> +    -M virt,iommu=smmuv3 -device iommu-testdev
+> does it work -device arm-smmuv3 multi instantiation too?
+
+
+No. It only supports machine-wide SMMU (`iommu=smmuv3`) as SMMU base 
+address is hardcoded with 0x9050000 in tests/qtest/libqos/qos-smmuv3.h. 
+Should we support user-creatable SMMUv3 in this testdev?
+
+>> +
+>> +The device will be placed behind the IOMMU automatically.
+>> +
+>> +Limitations
+>> +-----------
+>> +* No realistic PCIe enumeration, MSI/MSI-X, or interrupt handling
+>> +* No ATS/PRI support
+>> +* No actual device functionality beyond DMA test pattern
+>> +* Test-only; not suitable for production or machine realism
+>> +* Address space support (Secure/Root/Realm) is architecture-dependent
+>> +
+>> +See also
+>> +--------
+>> +* ``tests/qtest/iommu-smmuv3-test.c`` — SMMUv3 test suite
+>> +* ``tests/qtest/libqos/qos-smmuv3.{c,h}`` — SMMUv3 test library
+>> +* SMMUv3 emulation: ``hw/arm/smmu*``
+>> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+>> index fccd735c24..b5f6fdbd9c 100644
+>> --- a/hw/misc/Kconfig
+>> +++ b/hw/misc/Kconfig
+>> @@ -25,6 +25,11 @@ config PCI_TESTDEV
+>>       default y if TEST_DEVICES
+>>       depends on PCI
+>>   
+>> +config IOMMU_TESTDEV
+>> +    bool
+>> +    default y if TEST_DEVICES
+>> +    depends on PCI
+>> +
+>>   config EDU
+>>       bool
+>>       default y if TEST_DEVICES
+>> diff --git a/hw/misc/iommu-testdev.c b/hw/misc/iommu-testdev.c
+>> new file mode 100644
+>> index 0000000000..3182ccea4d
+>> --- /dev/null
+>> +++ b/hw/misc/iommu-testdev.c
+>> @@ -0,0 +1,278 @@
+>> +/*
+>> + * A test device for IOMMU
+>> + *
+>> + * This test device is a minimal IOMMU-aware device used to test the IOMMU.
+> how is it IOMMU aware? Isn't it "simply" a kinda PCIe DMA device
+>
+> it behaves as other PCIe devices with s->dma_as = pci_device_iommu_address_space(pdev);
+> no?
+
+
+Sorry for the confusing wording. The device is not really "IOMMU-aware": 
+it is just a PCI DMA engine, and the tests are responsible 
+for programming the emulated IOMMU and wiring the device behind it, not 
+the iommu-testdev itself.
+
+
+Thanks again for the review,
+Tao
+
 

@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1715BD41D58
-	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 15:25:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96797D41D50
+	for <qemu-arm@archiver.kernel.org>; Thu, 11 Dec 2025 15:26:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vTiX6-0005OA-2S; Thu, 11 Dec 2025 10:24:44 -0500
+	id 1vTiZC-0006Fv-Eq; Thu, 11 Dec 2025 10:26:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vTiX4-0005ND-Fs
- for qemu-arm@nongnu.org; Thu, 11 Dec 2025 10:24:42 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vTiZA-0006Fd-Sm
+ for qemu-arm@nongnu.org; Thu, 11 Dec 2025 10:26:52 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vTiX2-0005Bq-S3
- for qemu-arm@nongnu.org; Thu, 11 Dec 2025 10:24:42 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vTiZ9-0005k4-7v
+ for qemu-arm@nongnu.org; Thu, 11 Dec 2025 10:26:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1765466680;
+ s=mimecast20190719; t=1765466810;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=EJK41ynsPUuJv69DTopYLPaRucjPYfwFDkl1me2BzjA=;
- b=FAO65VtrmiZFLQMxkNSHqxcskrmScD/oCl3BKK7lMpk5lHu3Ovhec7EKu5vM0RYoY4g009
- lXRk98i4azIVIfLwmCv5cRfmjD5xqRxIXc/rCBICljDx1WfZPo1R6rPrdUCV8z+Xp479ys
- CiGjpcvMsSRcCT58z9X5MfiWzwDdKws=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=hqF8KkHOx3PIG2nfiXsklOUWdhu31DmxYT0+RuF4hyo=;
+ b=I0mx1KpKOFYOiPwud6uyGPsSdHE97+wn8txtmmgk3Svhlni5PeYwsOr1P01xuUzPGx3otV
+ sIHCBAOkeGc4DyEW+7UcNglNMdTDNSkCWb06c8PKgCXRhEukVOdAJ9MquaNKlCYLq6eaLd
+ +oRdvgDCuAoFs1KASV1RGwtM3F+cLa0=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-618-ReTsO1n7NX-LXwxvrqPKFQ-1; Thu, 11 Dec 2025 10:24:38 -0500
-X-MC-Unique: ReTsO1n7NX-LXwxvrqPKFQ-1
-X-Mimecast-MFC-AGG-ID: ReTsO1n7NX-LXwxvrqPKFQ_1765466677
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-42f9e62b4feso148978f8f.0
- for <qemu-arm@nongnu.org>; Thu, 11 Dec 2025 07:24:38 -0800 (PST)
+ us-mta-676-vVhh-l4sNlWULdOnBN1KLw-1; Thu, 11 Dec 2025 10:26:48 -0500
+X-MC-Unique: vVhh-l4sNlWULdOnBN1KLw-1
+X-Mimecast-MFC-AGG-ID: vVhh-l4sNlWULdOnBN1KLw_1765466807
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-477b8a667bcso3072155e9.2
+ for <qemu-arm@nongnu.org>; Thu, 11 Dec 2025 07:26:48 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765466677; x=1766071477;
+ d=1e100.net; s=20230601; t=1765466807; x=1766071607;
  h=content-transfer-encoding:in-reply-to:autocrypt:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=EJK41ynsPUuJv69DTopYLPaRucjPYfwFDkl1me2BzjA=;
- b=rAiTfq+sQoEUJLGyjKl9BxrEUWaGXLTo8bDxe6nQc/Ojxw9Yu5IT1qRz8Ae4Jlt0W0
- Ph2VKGJv2oNgLydvbtRJDaGWlaFhJ1f2uGaoTjpj9jZCUDKelgsmmvgA9/0DRpolAavj
- J5bXypzdX0IOIcqN6t4h5KnAnOoE/E86OLNK12jup3fFWqRBOLoNao1nDcVkUDydzQHu
- IVGV6tH1b1Fj+A3Q0Ep8FlhUttm5sFZ5JjEDlhJr+DhnjGsCVTz3D2p251nY2anxe/VT
- xRUvTOC1Zrr8GXq+jfwhSS+5LWC1wtVssUSEAqTLndLlAfVVkROHaRqM4tiggW0SizoM
- 9W/A==
+ bh=hqF8KkHOx3PIG2nfiXsklOUWdhu31DmxYT0+RuF4hyo=;
+ b=MB/GoaznysVvMEuDGFMUKhymHvXjq4jAndE4gqCu4hqom3DfrPL+L+NTpY0U28g54M
+ HvSBfEejRooiFirh4dILyJ5QWBFh8dCoaBkbaBr4c4k21NMsypHZh8LyCWhu+6BPc+uC
+ qeiy0G/x7F5wPpEI8P52fIURg9OjqkPI4qg8jjyklZ4pegKx8tZeTDwI2Y74IJZwKM+r
+ W95ovtJClgyVOOhtOk+9CHhpBhniBtb6+j4iltZUPUlfdqq8li6s2PpDLZ8uXfrCS5e5
+ GzLLd91YU3smUWmph4pqkHZWnJq8vy3n8zVi6E92WhNzAaQVs7koEXuzZT20hLeUzhJe
+ e74g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWG6r5iLmydAch1DsFDGg2hpgiKajl6J5+neALE4GRn4vXHi7W5+2xqeB6rwatiq3Ox5SELT1iD4Q==@nongnu.org
-X-Gm-Message-State: AOJu0YxczQcux2c7Qt9Yr8FRYMUcKXBbKo5dBxkGn4qgi9igWHw0Lcbt
- BHRzTtmpQOEdR99r4QNzHBvbOfYF+eLN1hoHajTp1yghFsP7OwqKG9EsqDWt0Oi4qfic2INi9/A
- 1pPVOQxlwDKsJbZZ4r7CTfhY7nL0AsohJeYcVoOUtDpDCuqlQt8BJLQ==
-X-Gm-Gg: AY/fxX4uRIGQBwqI4CQlo4KeEvVYPlwb+XtSvlRsyVGUTqTPB0qTvO64PAG309w42mH
- 6MGfMjw3bgQ88SACiTOxqVA6e8wabI/sJyJrisDDSPVtQfCeUKFdq8xwlRpq4M+iL9IW6YxsEoi
- cU0icWFyNyYT7DxelTizbqF9yRW6j8w4bvr32G6vdCXCllDzbXCcWPvHnaz3Wbf5aDKdJyN08dr
- arZbuNJyBF5jhQRgIboFU+Ni/7yJp8lxJwNHz4y9t0Dhx4pNmqfzNwDAHrhEjhG2IpaS/3Q78v4
- 1wxJoV0fWzL4O9evnZ5T78ajrdIGi2QGaZ47Ux7Hzh/sE4EGwPCDydqHXDRrIIM3jjfzuFjxwCp
- HmyzbDg4Ct3cf4fn28PXedVp3ZKbAgAv/JmnOPdgkLEDv478g
-X-Received: by 2002:a5d:5f45:0:b0:42c:a420:e755 with SMTP id
- ffacd0b85a97d-42fab31cb50mr2844531f8f.23.1765466677317; 
- Thu, 11 Dec 2025 07:24:37 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHlyrHBj0iFoY/GJJIhEn6Tem75am4I1jatEtjJXn/l61+WBn0n6QfH8hHxkfWRoJQOiZuBQg==
-X-Received: by 2002:a5d:5f45:0:b0:42c:a420:e755 with SMTP id
- ffacd0b85a97d-42fab31cb50mr2844498f8f.23.1765466676816; 
- Thu, 11 Dec 2025 07:24:36 -0800 (PST)
+ AJvYcCWbCedJp9zrgr0HsQFknuQ3xBCuiWtNLRc8Aygm8jgfI+jFmbQgeM5CMFJ0E/41ae1mPhaQ00X6iA==@nongnu.org
+X-Gm-Message-State: AOJu0YwSL/uX8FRPytaPPkpWZ4c1SjsF+c4bkBmJKbny0JoHXzs2pqWe
+ sM9SSEYh7ip/WCWCYxdHllkkyc75mX9c7zPpcttvDB3SQ2h890Zgeyuv+AkEiYSsz6AU6YbUPo1
+ j1RuZMHUZPlWme9xJZTsEQr6RHE8qa4YcsAArQI5s/XS1jPc+fMcw58C2vGzBzQ==
+X-Gm-Gg: AY/fxX7PFs4l0zrRicdkTT1FAL3/aNRajo6e9yYebVbulULLopkTdus1KSOXbTGPXhN
+ CJlAgQMITRc6ck6vKocnBWGPInRe/KX5DKm6H0qIet44eB1Qby7H8ndOKHt3R+2HVitsntqOaSn
+ WgBbug9TA13VDUvPvrWRd8D+Bfwvv6k9rYIOEz6GicFv/qReF1Rs8GIu7EK+38tXF77RxI/jAW5
+ rNAXOLSawDAau4WAj8s1xKdJjJTPfx4sxrcNLkWuAvkY1E7+s0eRA4c/FRTMWH8vLPITIjiNo45
+ 42c6eTWKIqalXFVnRtMDi8rRWdbWIvKgDSiP2k7wA0ssC6K5InJkkQzlARDR9RmYhpiBuOXRxOb
+ c/d62hrNBzGw/6S7RHoIjfUgGsyZM6X/WRtZQSMer2DJDM/7o
+X-Received: by 2002:a05:600c:45c6:b0:477:7b9a:bb07 with SMTP id
+ 5b1f17b1804b1-47a8379fe10mr71571015e9.35.1765466806880; 
+ Thu, 11 Dec 2025 07:26:46 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGmrX2zF/PugTqYOO4uogPs7c51AIGjoXU/6W4K9OiR7u7mw7yLETT3dehG7LX5FhSA8sb5Xg==
+X-Received: by 2002:a05:600c:45c6:b0:477:7b9a:bb07 with SMTP id
+ 5b1f17b1804b1-47a8379fe10mr71570635e9.35.1765466806375; 
+ Thu, 11 Dec 2025 07:26:46 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
  ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42fa8b9b6bfsm6113841f8f.43.2025.12.11.07.24.35
+ 5b1f17b1804b1-47a89d1e539sm16302125e9.0.2025.12.11.07.26.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Dec 2025 07:24:36 -0800 (PST)
-Message-ID: <4fd538c5-842c-4c96-83ed-dae4da8f8783@redhat.com>
-Date: Thu, 11 Dec 2025 16:24:35 +0100
+ Thu, 11 Dec 2025 07:26:45 -0800 (PST)
+Message-ID: <0b95b9d4-1f6f-4034-b343-d3961c57c342@redhat.com>
+Date: Thu, 11 Dec 2025 16:26:44 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 30/33] backends/iommufd: Retrieve PASID width from
- iommufd_backend_get_device_info()
+Subject: Re: [PATCH v6 31/33] Extend get_cap() callback to support PASID
 To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
@@ -89,7 +88,7 @@ Cc: eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
  jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
  zhenzhong.duan@intel.com, yi.l.liu@intel.com, kjaju@nvidia.com
 References: <20251120132213.56581-1-skolothumtho@nvidia.com>
- <20251120132213.56581-31-skolothumtho@nvidia.com>
+ <20251120132213.56581-32-skolothumtho@nvidia.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -134,13 +133,13 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251120132213.56581-31-skolothumtho@nvidia.com>
+In-Reply-To: <20251120132213.56581-32-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: K05vFWirP790nKTQ_Q5FAU0HK0bd-vl3iLrZW_lOlr0_1765466677
+X-Mimecast-MFC-PROC-ID: bWZkKQhjqRA5q4HnPaZ_Qku-pzO9MMYeq6nR9exnZAI_1765466807
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -150,7 +149,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -167,138 +166,165 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 11/20/25 14:22, Shameer Kolothum wrote:
-> Retrieve PASID width from iommufd_backend_get_device_info() and store it
-> in HostIOMMUDeviceCaps for later use.
-> 
-> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> Modify get_cap() callback so that it can return cap via an output
+> uint64_t param. And add support for generic iommu hw capability
+> info and max_pasid_log2(pasid width).
 
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+This is doing multiple changes. Please split.
 
 Thanks,
 
 C.
 
+
+> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 > ---
->   backends/iommufd.c                 | 6 +++++-
->   hw/arm/smmuv3-accel.c              | 3 ++-
->   hw/vfio/iommufd.c                  | 7 +++++--
->   include/system/host_iommu_device.h | 3 +++
->   include/system/iommufd.h           | 3 ++-
->   5 files changed, 17 insertions(+), 5 deletions(-)
+>   backends/iommufd.c                 | 23 ++++++++++++++++++-----
+>   hw/i386/intel_iommu.c              |  8 +++++---
+>   hw/vfio/container-legacy.c         |  8 ++++++--
+>   include/system/host_iommu_device.h | 18 ++++++++++++------
+>   4 files changed, 41 insertions(+), 16 deletions(-)
 > 
 > diff --git a/backends/iommufd.c b/backends/iommufd.c
-> index e68a2c934f..6381f9664b 100644
+> index 6381f9664b..718d63f5cf 100644
 > --- a/backends/iommufd.c
 > +++ b/backends/iommufd.c
-> @@ -388,7 +388,8 @@ bool iommufd_backend_get_dirty_bitmap(IOMMUFDBackend *be,
->   
->   bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
->                                        uint32_t *type, void *data, uint32_t len,
-> -                                     uint64_t *caps, Error **errp)
-> +                                     uint64_t *caps, uint8_t *max_pasid_log2,
-> +                                     Error **errp)
->   {
->       struct iommu_hw_info info = {
->           .size = sizeof(info),
-> @@ -407,6 +408,9 @@ bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
->       g_assert(caps);
->       *caps = info.out_capabilities;
->   
-> +    if (max_pasid_log2) {
-> +        *max_pasid_log2 = info.out_max_pasid_log2;
-> +    }
->       return true;
+> @@ -523,19 +523,32 @@ bool host_iommu_device_iommufd_detach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+>       return idevc->detach_hwpt(idev, errp);
 >   }
 >   
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 35a94c720a..254d29ee2d 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -113,7 +113,8 @@ smmuv3_accel_hw_compatible(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
->       uint64_t caps;
->   
->       if (!iommufd_backend_get_device_info(idev->iommufd, idev->devid, &data_type,
-> -                                         &info, sizeof(info), &caps, errp)) {
-> +                                         &info, sizeof(info), &caps, NULL,
-> +                                         errp)) {
->           return false;
->       }
->   
-> diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
-> index ca8a6b7029..bbe944d7cc 100644
-> --- a/hw/vfio/iommufd.c
-> +++ b/hw/vfio/iommufd.c
-> @@ -353,7 +353,8 @@ static bool iommufd_cdev_autodomains_get(VFIODevice *vbasedev,
->        * instead.
->        */
->       if (!iommufd_backend_get_device_info(vbasedev->iommufd, vbasedev->devid,
-> -                                         &type, NULL, 0, &hw_caps, errp)) {
-> +                                         &type, NULL, 0, &hw_caps, NULL,
-> +                                         errp)) {
->           return false;
->       }
->   
-> @@ -889,19 +890,21 @@ static bool hiod_iommufd_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
+> -static int hiod_iommufd_get_cap(HostIOMMUDevice *hiod, int cap, Error **errp)
+> +static int hiod_iommufd_get_cap(HostIOMMUDevice *hiod, int cap_id,
+> +                                uint64_t *out_cap, Error **errp)
+>   {
 >       HostIOMMUDeviceCaps *caps = &hiod->caps;
->       VendorCaps *vendor_caps = &caps->vendor_caps;
->       enum iommu_hw_info_type type;
-> +    uint8_t max_pasid_log2;
->       uint64_t hw_caps;
 >   
->       hiod->agent = opaque;
+> -    switch (cap) {
+> +    g_assert(out_cap);
+> +
+> +    switch (cap_id) {
+>       case HOST_IOMMU_DEVICE_CAP_IOMMU_TYPE:
+> -        return caps->type;
+> +        *out_cap = caps->type;
+> +        break;
+>       case HOST_IOMMU_DEVICE_CAP_AW_BITS:
+> -        return vfio_device_get_aw_bits(hiod->agent);
+> +        *out_cap = vfio_device_get_aw_bits(hiod->agent);
+> +        break;
+> +    case HOST_IOMMU_DEVICE_CAP_GENERIC_HW:
+> +        *out_cap = caps->hw_caps;
+> +        break;
+> +    case HOST_IOMMU_DEVICE_CAP_MAX_PASID_LOG2:
+> +        *out_cap = caps->max_pasid_log2;
+> +        break;
+>       default:
+> -        error_setg(errp, "%s: unsupported capability %x", hiod->name, cap);
+> +        *out_cap = 0;
+> +        error_setg(errp, "%s: unsupported capability %x", hiod->name, cap_id);
+>           return -EINVAL;
+>       }
+> +    return 0;
+>   }
 >   
->       if (!iommufd_backend_get_device_info(vdev->iommufd, vdev->devid, &type,
->                                            vendor_caps, sizeof(*vendor_caps),
-> -                                         &hw_caps, errp)) {
-> +                                         &hw_caps, &max_pasid_log2, errp)) {
+>   static void hiod_iommufd_class_init(ObjectClass *oc, const void *data)
+> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+> index 78b142ccea..d5c131a814 100644
+> --- a/hw/i386/intel_iommu.c
+> +++ b/hw/i386/intel_iommu.c
+> @@ -4605,6 +4605,7 @@ static bool vtd_check_hiod(IntelIOMMUState *s, HostIOMMUDevice *hiod,
+>                              Error **errp)
+>   {
+>       HostIOMMUDeviceClass *hiodc = HOST_IOMMU_DEVICE_GET_CLASS(hiod);
+> +    uint64_t out_cap;
+>       int ret;
+>   
+>       if (!hiodc->get_cap) {
+> @@ -4613,12 +4614,13 @@ static bool vtd_check_hiod(IntelIOMMUState *s, HostIOMMUDevice *hiod,
+>       }
+>   
+>       /* Common checks */
+> -    ret = hiodc->get_cap(hiod, HOST_IOMMU_DEVICE_CAP_AW_BITS, errp);
+> +    ret = hiodc->get_cap(hiod, HOST_IOMMU_DEVICE_CAP_AW_BITS, &out_cap, errp);
+>       if (ret < 0) {
+>           return false;
+>       }
+> -    if (s->aw_bits > ret) {
+> -        error_setg(errp, "aw-bits %d > host aw-bits %d", s->aw_bits, ret);
+> +    if (s->aw_bits > out_cap) {
+> +        error_setg(errp, "aw-bits %d > host aw-bits 0x%" PRIx64, s->aw_bits,
+> +                   out_cap);
 >           return false;
 >       }
 >   
->       hiod->name = g_strdup(vdev->name);
->       caps->type = type;
->       caps->hw_caps = hw_caps;
-> +    caps->max_pasid_log2 = max_pasid_log2;
+> diff --git a/hw/vfio/container-legacy.c b/hw/vfio/container-legacy.c
+> index 32c260b345..1acf063762 100644
+> --- a/hw/vfio/container-legacy.c
+> +++ b/hw/vfio/container-legacy.c
+> @@ -1203,15 +1203,19 @@ static bool hiod_legacy_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
+>   }
 >   
->       idev = HOST_IOMMU_DEVICE_IOMMUFD(hiod);
->       idev->iommufd = vdev->iommufd;
+>   static int hiod_legacy_vfio_get_cap(HostIOMMUDevice *hiod, int cap,
+> -                                    Error **errp)
+> +                                    uint64_t *out_cap, Error **errp)
+>   {
+> +    g_assert(out_cap);
+> +
+>       switch (cap) {
+>       case HOST_IOMMU_DEVICE_CAP_AW_BITS:
+> -        return vfio_device_get_aw_bits(hiod->agent);
+> +        *out_cap = vfio_device_get_aw_bits(hiod->agent);
+> +        break;
+>       default:
+>           error_setg(errp, "%s: unsupported capability %x", hiod->name, cap);
+>           return -EINVAL;
+>       }
+> +    return 0;
+>   }
+>   
+>   static GList *
 > diff --git a/include/system/host_iommu_device.h b/include/system/host_iommu_device.h
-> index ab849a4a82..bfb2b60478 100644
+> index bfb2b60478..4e891e5225 100644
 > --- a/include/system/host_iommu_device.h
 > +++ b/include/system/host_iommu_device.h
-> @@ -30,6 +30,8 @@ typedef union VendorCaps {
->    * @hw_caps: host platform IOMMU capabilities (e.g. on IOMMUFD this represents
->    *           the @out_capabilities value returned from IOMMU_GET_HW_INFO ioctl)
->    *
-> + * @max_pasid_log2: width of PASIDs supported by host IOMMU device
-> + *
->    * @vendor_caps: host platform IOMMU vendor specific capabilities (e.g. on
->    *               IOMMUFD this represents a user-space buffer filled by kernel
->    *               with host IOMMU @type specific hardware information data)
-> @@ -37,6 +39,7 @@ typedef union VendorCaps {
->   typedef struct HostIOMMUDeviceCaps {
->       uint32_t type;
->       uint64_t hw_caps;
-> +    uint8_t max_pasid_log2;
->       VendorCaps vendor_caps;
->   } HostIOMMUDeviceCaps;
+> @@ -88,19 +88,21 @@ struct HostIOMMUDeviceClass {
+>        * @get_cap: check if a host IOMMU device capability is supported.
+>        *
+>        * Optional callback, if not implemented, hint not supporting query
+> -     * of @cap.
+> +     * of @cap_id.
+>        *
+>        * @hiod: pointer to a host IOMMU device instance.
+>        *
+> -     * @cap: capability to check.
+> +     * @cap_id: capability to check.
+> +     *
+> +     * @out_cap: 0 if a @cap_id is unsupported or else the capability
+> +     * value for @cap_id.
+>        *
+>        * @errp: pass an Error out when fails to query capability.
+>        *
+> -     * Returns: <0 on failure, 0 if a @cap is unsupported, or else
+> -     * 1 or some positive value for some special @cap,
+> -     * i.e., HOST_IOMMU_DEVICE_CAP_AW_BITS.
+> +     * Returns: <0 if @cap_id is not supported, 0 on success.
+>        */
+> -    int (*get_cap)(HostIOMMUDevice *hiod, int cap, Error **errp);
+> +    int (*get_cap)(HostIOMMUDevice *hiod, int cap_id, uint64_t *out_cap,
+> +                   Error **errp);
+>       /**
+>        * @get_iova_ranges: Return the list of usable iova_ranges along with
+>        * @hiod Host IOMMU device
+> @@ -123,6 +125,10 @@ struct HostIOMMUDeviceClass {
+>    */
+>   #define HOST_IOMMU_DEVICE_CAP_IOMMU_TYPE        0
+>   #define HOST_IOMMU_DEVICE_CAP_AW_BITS           1
+> +/* Generic IOMMU HW capability info */
+> +#define HOST_IOMMU_DEVICE_CAP_GENERIC_HW        2
+> +/* PASID width */
+> +#define HOST_IOMMU_DEVICE_CAP_MAX_PASID_LOG2    3
+>   
+>   #define HOST_IOMMU_DEVICE_CAP_AW_BITS_MAX       64
 >   #endif
-> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
-> index 41e216c677..aa78bf1e1d 100644
-> --- a/include/system/iommufd.h
-> +++ b/include/system/iommufd.h
-> @@ -71,7 +71,8 @@ int iommufd_backend_unmap_dma(IOMMUFDBackend *be, uint32_t ioas_id,
->                                 hwaddr iova, uint64_t size);
->   bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
->                                        uint32_t *type, void *data, uint32_t len,
-> -                                     uint64_t *caps, Error **errp);
-> +                                     uint64_t *caps, uint8_t *max_pasid_log2,
-> +                                     Error **errp);
->   bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
->                                   uint32_t pt_id, uint32_t flags,
->                                   uint32_t data_type, uint32_t data_len,
 
 

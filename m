@@ -4,95 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3C9ED4336B
-	for <qemu-arm@archiver.kernel.org>; Fri, 12 Dec 2025 06:17:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F09B2D44166
+	for <qemu-arm@archiver.kernel.org>; Fri, 12 Dec 2025 10:36:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vTwSg-0003tN-5y; Fri, 12 Dec 2025 01:17:07 -0500
+	id 1vU0Va-0005o1-01; Fri, 12 Dec 2025 05:36:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vTwSU-0003sK-Rw
- for qemu-arm@nongnu.org; Fri, 12 Dec 2025 01:17:02 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vU0VM-0005hf-BP
+ for qemu-arm@nongnu.org; Fri, 12 Dec 2025 05:36:14 -0500
+Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vTwSS-0000j2-9b
- for qemu-arm@nongnu.org; Fri, 12 Dec 2025 01:16:54 -0500
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-42e2e6aa22fso382632f8f.2
- for <qemu-arm@nongnu.org>; Thu, 11 Dec 2025 22:16:50 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vU0VJ-0003lf-8n
+ for qemu-arm@nongnu.org; Fri, 12 Dec 2025 05:36:08 -0500
+Received: by mail-yw1-x1135.google.com with SMTP id
+ 00721157ae682-78ac9f30833so9415297b3.0
+ for <qemu-arm@nongnu.org>; Fri, 12 Dec 2025 02:36:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765520209; x=1766125009; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=hYwJNV8tIACMXVsMEi1PaBSq5ICUFqY3BKSFbm+GhYU=;
- b=F7I3+g76ldRYhZRB+ut8jhUndX60JSFInRDD1Zhf7zaf7rAKjm0iUs2RTRMCdJAzni
- qidyM6LgivbFPYscH8rTnrAUH6iF0xd1QP+Q5mLFuTs5DtNia8afNp2wNHfzlAhBfxMw
- CJDqGMXydtk0KpDnHxH1zAqV35Cug08FdUZTFc9IlAEnr3gYp0PitIr/Hj4QyV1D1+N3
- +M6B/J+r8SmbzE1gKN2s8IfISAdx2gdo4K6Qjc+JTU8l9Oj/iff6KRmXhca5Xx6Bo3ik
- hvKMfQ29XaiaaKH4OcVu57Dab6lMI2C5KgdwrydKYInYEyxdGidJCIuaQaq0piZVA4HD
- ckxQ==
+ d=linaro.org; s=google; t=1765535761; x=1766140561; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=MVaEqJNoWHJldDXQYgvMqfSKVivAaMUvCAu099xaxUU=;
+ b=eek7G3B4VTMWuFaJzC5I+idLr6ynVFadTR4ZK0GoCTDvBR0LiaeVXlghjP52ecFoqQ
+ V/wuP7AYYwok+8yzm04ISPstmQnw6k0Rm+fgKXL1gIMWTLUX5SDbnDRfg2/AURh1qL7R
+ gpzTF3EwOKXq+9o+pYPayX9MzKKsk3+vY5H9s3H+VVCJBu7J1kU+p0ne35bkxWt6C64v
+ v9O8ASurQb9q880U5A+bx30OPi9pUSwReIMZ0vVlw1CU1rk8md6EOAn0uoa+CARdmihD
+ xqRHXG1nMOZ7rO7RHBV2X1DiuheZk1cWmcsmDo8Db4vI9JpOp+/zZv2TI5Jt8X9cGYLD
+ pVYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765520209; x=1766125009;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=hYwJNV8tIACMXVsMEi1PaBSq5ICUFqY3BKSFbm+GhYU=;
- b=irenXZYP2eyxf8D3DZMLeo39juZ6Mj5cG4SEZpaVyyRb7MfBI1oMd31r5jFXQ0+g6a
- V3l0lP0gDfsY1J2D12kAKXyrSMEIWRqEm22kFOovB4d/SAAe2p8ubRI4Cq5Cg8OkSyfq
- riQQbj2IwLirYr0SRK3ndFea8ElgqI0sceZ0w7maX79O3xHgIYtyZPXRugIN0PLPfSP2
- 9OeDAjPAWnm9Q3KxuHf7Mzz6oeea/bLrClWLEjVTQH9XnpcnBYavNlFcw5pbqeh3YO/G
- 3rt8kT5D/wzGqkf7voqwOscrdAsqTcoVKGtxM64Ry/026FtYLAjgbyU+RFPLUebk2be8
- 5Gqg==
+ d=1e100.net; s=20230601; t=1765535762; x=1766140562;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=MVaEqJNoWHJldDXQYgvMqfSKVivAaMUvCAu099xaxUU=;
+ b=eeKZrKmME5JLtkdP+FQAgThtKsscewFfFfz3K8rPGSRQb9E+WulOJExK/0KJM4wExe
+ 38q8/xxKdQCp0Qkj87AEdNrNx6oBJRv4Ab7Dy4qdSNtG/ceVMkrdll3z1o3GQ2iz70bI
+ gier7KCmsdc4XlSfNjE+Gta8j/Z4UFUNm9k7h3QhOBd3mjtK+WS4D6X0pMtN018Ms3Ty
+ Nunhd390f60DiucTucGHcBQhGP3pVk19jlGXNK+kES6xby2/uqvpKcDzJ7ai5BmAN5ly
+ lJVxWJ9erdBlylBIAVz0v8Kru5gSscfS+xKcxwy+drOGrQeIryiHv9E1tZdmOpGAelI4
+ ckOw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUDatMJBHiOC/CMcCb1g2bu4g9KBbnRXoXrCdedECrpr/6cK64dasJZZpqE7tf9guoqG6vMgEb+Jw==@nongnu.org
-X-Gm-Message-State: AOJu0Yz2z9fnGcXkYDrr5QkfqlSw0SIsB1yVUxkwlVeL47Hrmp1jijfR
- asqwJq2/vjN+muz/IWkMH8cKxzGiVyDocxaTS+JS5O4v0njZJ/u0hyRjHg2mdLCyx4c=
-X-Gm-Gg: AY/fxX6rCH7BYSnvdU7ZV+hQylfTPcC0WNA1mJe7KKtZ2p7IO1NKdVH+PZYZDSVzqLl
- S8Iu31KCPDXTuiD8uBfMiwBoNgt/HYz1CPaxY0TXTC/Cvo/2xJFpF2XVn64dGzz2j/BxO0Fcl9N
- CG4zfgZSKaERYlQJq+TljXkx83DctrI939m49rfKKtHwGaVwqdFDXU3R5/KAUyYH0KlG9QhqnlH
- faqCi+tUUn466yVjDglpAPngjtqkgXNZ0wuD4ICmjezlnmdKgDvAOygZtSCIRvdX3apFfvPvU8d
- WkWda9ioRFAlG3aioYHWZMivgzjG+wXWMCKznZdohQGisgnNFpG5wfM9IX7p3pW08Y+NY+FacQK
- KA2SaEKGOH4kXrnwDe78OSfw1pZvZv8nVrxnU3WvimSaTfRIZ9gzvEtXk6EgMS+31y7O1aoxwzT
- 7THAnVwn5Cq6RMPayVAe+EBOyPDtrN/pweLXZXIsEYUNE+LRiYudqiCw==
-X-Google-Smtp-Source: AGHT+IF8833O4uEPjxPUCvfTgZ6G4VtEMSxeE5/T1NlQexRjTxduAqfgcjvtrr/9/xKBxEl+BrJjPg==
-X-Received: by 2002:a05:6000:268a:b0:429:b9bc:e826 with SMTP id
- ffacd0b85a97d-42fb48e59c9mr870389f8f.53.1765520208742; 
- Thu, 11 Dec 2025 22:16:48 -0800 (PST)
-Received: from [192.168.69.202] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-42fa8b85d1esm9790685f8f.26.2025.12.11.22.16.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Dec 2025 22:16:48 -0800 (PST)
-Message-ID: <87a479e9-21eb-4c4c-8e64-32744eea1f96@linaro.org>
-Date: Fri, 12 Dec 2025 07:16:46 +0100
+ AJvYcCXk9MtmDbxIfHjPddLgi0prgoOnE0RFkLuqyUR6g9mMc4ZvOeE8RkpPWIXbS3NVLNfvtSaD1a4LfQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yw2K+M+iKJUJk227PUItr9FqtT/6gkKaf6j3vlDc1eHvRRMMlCX
+ P/1u3mlIYdahBRhlknqqhTUE6psF7gjBh8zO7+v4DD9wj1eqeZl5I3I+LtG56wLuUWZWa7I/w4W
+ gnRR9S3if0M2BbrypbzrdeCD6rn3vKI0bYv9avb6ruQ==
+X-Gm-Gg: AY/fxX6y24G9pA+/kMTRPlIZ9E3gp9HHK/1W633p9U+rLp3DUMd9+cigd//n8aIFHV5
+ hK7hJC+Ei/adL40J24UXRvVszfETkzOUUuUk6uhqJ4D4wGRGJnUP2dUSR5LyozJ3YexHd+SfFDZ
+ OcNRlxnVmIcfJ8eca3kOj35cRwdml1tylmTkke3qixxDzHqNWKLVGsjvN7NIDTG6AOdn1321lAA
+ uNO09AVpqcn/3mPUzK8DtK/YwgBVVaRJkFcryogqA4Uu+dEUG4+1HT3PAktzaioiugvMDXK
+X-Google-Smtp-Source: AGHT+IE9uPGbAP8yStN0BATMFYew9/wc1eAKy+mHpEcyndobabsrAZPzxZKiFFQLBPbkumGYbSFGDjmbklPgGZ+BGEc=
+X-Received: by 2002:a05:690e:118b:b0:644:4259:9b71 with SMTP id
+ 956f58d0204a3-64555664c6dmr804284d50.65.1765535761405; Fri, 12 Dec 2025
+ 02:36:01 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/smmu: add memory regions as property for an SMMU
- instance
-Content-Language: en-US
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
- tangtao1634@phytium.com.cn, qemu-arm@nongnu.org,
- Eric Auger <eric.auger@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, Richard Henderson
- <richard.henderson@linaro.org>, Radoslaw Biernacki <rad@semihalf.com>
-References: <20251211221715.2206662-1-pierrick.bouvier@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251211221715.2206662-1-pierrick.bouvier@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+References: <20251211234426.2403792-1-pierrick.bouvier@linaro.org>
+ <20251211234426.2403792-3-pierrick.bouvier@linaro.org>
+In-Reply-To: <20251211234426.2403792-3-pierrick.bouvier@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 12 Dec 2025 10:35:50 +0000
+X-Gm-Features: AQt7F2p9FH6d43ZMGz76b3xLcfzcGgSD-yEbBD0OnN9vSDk-HxrqSMOE0YDa7BM
+Message-ID: <CAFEAcA-G0QchOw_zXNwUq3KAAKJZggnpeXkt7ePBAUa1SD1P2Q@mail.gmail.com>
+Subject: Re: [PATCH 2/2] target/arm/ptw: make granule_protection_check usable
+ without a cpu
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org, 
+ Tao Tang <tangtao1634@phytium.com.cn>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,212 +99,191 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Pierrick,
-
-On 11/12/25 23:17, Pierrick Bouvier wrote:
-> This will be used to access non-secure and secure memory. Secure support
-> and Granule Protection Check (for RME) for SMMU need to access secure
-> memory.
-
-Sorry yesterday it was late for me and I forgot to post the similar
-patch :/
-
-> 
-> As well, it allows to remove usage of global address_space_memory,
-> allowing different SMMU instances to have a specific view of memory.
-> 
+On Thu, 11 Dec 2025 at 23:44, Pierrick Bouvier
+<pierrick.bouvier@linaro.org> wrote:
+>
+> By removing cpu details and use a config struct, we can use the
+> same granule_protection_check with other devices, like SMMU.
+>
 > Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+
+I'm not 100% sure about this approach, mainly because for SMMU
+so far we have taken the route of having its page table
+walk implementation be completely separate from the one in
+the MMU, even though it's pretty similar: the spec for
+CPU page table walk and the one for SMMU page table walk
+are technically in different documents and don't necessarily
+proceed 100% in sync. Still, the function is a pretty big
+one and our other option would probably end up being
+copy-and-paste, which isn't very attractive.
+
+So my comments below are minor things.
+
 > ---
->   include/hw/arm/smmu-common.h |  4 ++++
->   hw/arm/sbsa-ref.c            | 16 ++++++++++++----
->   hw/arm/smmu-common.c         | 24 ++++++++++++++++++++++++
->   hw/arm/virt.c                | 16 +++++++++++-----
->   4 files changed, 51 insertions(+), 9 deletions(-)
-> 
-> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-> index a6bdb67a983..0f08ae080c9 100644
-> --- a/include/hw/arm/smmu-common.h
-> +++ b/include/hw/arm/smmu-common.h
-> @@ -227,6 +227,10 @@ struct SMMUState {
->       uint8_t bus_num;
->       PCIBus *primary_bus;
->       bool smmu_per_bus; /* SMMU is specific to the primary_bus */
-> +    MemoryRegion *memory;
-> +    AddressSpace as_memory;
-> +    MemoryRegion *secure_memory;
-> +    AddressSpace as_secure_memory;
-
-Has SMMU concept of "secure memory"? My understanding is just a
-different memory to access GPT, so I'd name it "gpt_memory".
-
->   };
->   
->   struct SMMUBaseClass {
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index 45d2e3e946d..840b1a216f4 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -616,7 +616,9 @@ static void create_xhci(const SBSAMachineState *sms)
->       sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(sms->gic, irq));
->   }
->   
-> -static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
-> +static void create_smmu(const SBSAMachineState *sms, PCIBus *bus,
-> +                        MemoryRegion *sysmem,
-> +                        MemoryRegion *secure_sysmem)
->   {
->       hwaddr base = sbsa_ref_memmap[SBSA_SMMU].base;
->       int irq =  sbsa_ref_irqmap[SBSA_SMMU];
-> @@ -628,6 +630,10 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
->       object_property_set_str(OBJECT(dev), "stage", "nested", &error_abort);
->       object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
->                                &error_abort);
-> +    object_property_set_link(OBJECT(dev), "memory", OBJECT(sysmem),
-> +                             &error_abort);
-> +    object_property_set_link(OBJECT(dev), "secure-memory", OBJECT(secure_sysmem),
-> +                             &error_abort);
->       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->       sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
->       for (i = 0; i < NUM_SMMU_IRQS; i++) {
-> @@ -636,7 +642,9 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
->       }
->   }
->   
-> -static void create_pcie(SBSAMachineState *sms)
-> +static void create_pcie(SBSAMachineState *sms,
-> +                        MemoryRegion *sysmem,
-> +                        MemoryRegion *secure_sysmem)
->   {
->       hwaddr base_ecam = sbsa_ref_memmap[SBSA_PCIE_ECAM].base;
->       hwaddr size_ecam = sbsa_ref_memmap[SBSA_PCIE_ECAM].size;
-> @@ -692,7 +700,7 @@ static void create_pcie(SBSAMachineState *sms)
->   
->       pci_create_simple(pci->bus, -1, "bochs-display");
->   
-> -    create_smmu(sms, pci->bus);
-> +    create_smmu(sms, pci->bus, sysmem, secure_sysmem);
-
-As a preliminary cleanup create_pcie() returns the PCI bus, so the
-machine_init() can call create_smmu() itself. I'll post later.
-
->   }
->   
->   static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_size)
-> @@ -831,7 +839,7 @@ static void sbsa_ref_init(MachineState *machine)
->   
->       create_xhci(sms);
->   
-> -    create_pcie(sms);
-> +    create_pcie(sms, sysmem, secure_sysmem);
->   
->       create_secure_ec(secure_sysmem);
->   
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 66367adc2a4..5fbfe825fd0 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -1171,6 +1171,12 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
->           return;
->       }
->   
-> +    g_assert(s->memory);
-> +    address_space_init(&s->as_memory, s->memory, "memory");
-> +    if (s->secure_memory) {
-> +        address_space_init(&s->as_secure_memory, s->secure_memory, "secure-memory");
-> +    }
-
-Allocating AddressSpaces on the heap:
-
-        else {
-            s->as_secure_memory = s->as_memory;
-        }
-
->       /*
->        * We only allow default PCIe Root Complex(pcie.0) or pxb-pcie based extra
->        * root complexes to be associated with SMMU.
-> @@ -1235,10 +1241,28 @@ static void smmu_base_class_init(ObjectClass *klass, const void *data)
->       rc->phases.exit = smmu_base_reset_exit;
->   }
->   
-> +static void smmu_base_instance_init(Object *obj)
-> +{
-> +    SMMUState *s = ARM_SMMU(obj);
+>  target/arm/cpu.h | 14 ++++++++++++++
+>  target/arm/ptw.c | 41 ++++++++++++++++++++++++-----------------
+>  2 files changed, 38 insertions(+), 17 deletions(-)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index efbef0341da..38cc5823a93 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1216,6 +1216,20 @@ void arm_v7m_cpu_do_interrupt(CPUState *cpu);
+>
+>  hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
+>                                           MemTxAttrs *attrs);
 > +
-> +    object_property_add_link(obj, "memory",
-> +                             TYPE_MEMORY_REGION,
-> +                             (Object **)&s->memory,
-> +                             qdev_prop_allow_set_link_before_realize,
-> +                             OBJ_PROP_LINK_STRONG);
+> +typedef struct ARMGranuleProtectionConfig {
+> +    uint64_t gpccr;
+> +    uint64_t gptbr;
+> +    uint8_t parange;
+> +    bool support_sel2;
+> +    AddressSpace *as_secure;
+> +} ARMGranuleProtectionConfig;
 > +
-> +    object_property_add_link(obj, "secure-memory",
-> +                             TYPE_MEMORY_REGION,
-> +                             (Object **)&s->secure_memory,
-> +                             qdev_prop_allow_set_link_before_realize,
-> +                             OBJ_PROP_LINK_STRONG);
-> +}
-> +
->   static const TypeInfo smmu_base_info = {
->       .name          = TYPE_ARM_SMMU,
->       .parent        = TYPE_SYS_BUS_DEVICE,
->       .instance_size = sizeof(SMMUState),
-> +    .instance_init = smmu_base_instance_init,
->       .class_data    = NULL,
->       .class_size    = sizeof(SMMUBaseClass),
->       .class_init    = smmu_base_class_init,
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 5d205eff3a1..d446c3349e9 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1514,8 +1514,9 @@ static void create_smmuv3_dev_dtb(VirtMachineState *vms,
->                              0x0, vms->iommu_phandle, 0x0, 0x10000);
->   }
->   
-> -static void create_smmu(const VirtMachineState *vms,
-> -                        PCIBus *bus)
-> +static void create_smmu(const VirtMachineState *vms, PCIBus *bus,
-> +                        MemoryRegion *sysmem,
-> +                        MemoryRegion *secure_sysmem)
->   {
->       VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->       int irq =  vms->irqmap[VIRT_SMMU];
-> @@ -1549,6 +1550,10 @@ static void create_smmu(const VirtMachineState *vms,
->       object_property_set_str(OBJECT(dev), "stage", stage, &error_fatal);
->       object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
->                                &error_abort);
-> +    object_property_set_link(OBJECT(dev), "memory", OBJECT(sysmem),
-> +                             &error_abort);
-> +    object_property_set_link(OBJECT(dev), "secure-memory", OBJECT(secure_sysmem),
-> +                             &error_abort);
->       sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->       sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
->       for (i = 0; i < NUM_SMMU_IRQS; i++) {
-> @@ -1587,7 +1592,8 @@ static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
->       }
->   }
->   
-> -static void create_pcie(VirtMachineState *vms)
-> +static void create_pcie(VirtMachineState *vms,
-> +                        MemoryRegion *sysmem, MemoryRegion *secure_sysmem)
->   {
->       hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base;
->       hwaddr size_mmio = vms->memmap[VIRT_PCIE_MMIO].size;
-> @@ -1706,7 +1712,7 @@ static void create_pcie(VirtMachineState *vms)
->   
->           switch (vms->iommu) {
->           case VIRT_IOMMU_SMMUV3:
-> -            create_smmu(vms, vms->bus);
-> +            create_smmu(vms, vms->bus, sysmem, secure_sysmem);
->               if (!vms->default_bus_bypass_iommu) {
->                   qemu_fdt_setprop_cells(ms->fdt, nodename, "iommu-map",
->                                          0x0, vms->iommu_phandle, 0x0, 0x10000);
-> @@ -2520,7 +2526,7 @@ static void machvirt_init(MachineState *machine)
->   
->       create_rtc(vms);
->   
-> -    create_pcie(vms);
-> +    create_pcie(vms, sysmem, secure_sysmem);
->       create_cxl_host_reg_region(vms);
->   
->       if (aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
+> +bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
+> +                                  uint64_t paddress,
+> +                                  ARMSecuritySpace pspace,
+> +                                  ARMSecuritySpace ss,
+> +                                  ARMMMUFaultInfo *fi);
 
+Could we have a doc comment for these prototypes, please?
+
+>  #endif /* !CONFIG_USER_ONLY */
+>
+>  int arm_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+> index 2e6b149b2d1..2b620b03014 100644
+> --- a/target/arm/ptw.c
+> +++ b/target/arm/ptw.c
+> @@ -330,24 +330,23 @@ static bool regime_translation_disabled(CPUARMState *env, ARMMMUIdx mmu_idx,
+>      return (regime_sctlr(env, mmu_idx) & SCTLR_M) == 0;
+>  }
+>
+> -static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
+> -                                     ARMSecuritySpace pspace,
+> -                                     ARMSecuritySpace ss,
+> -                                     ARMMMUFaultInfo *fi)
+> +bool arm_granule_protection_check(ARMGranuleProtectionConfig config,
+> +                                  uint64_t paddress,
+> +                                  ARMSecuritySpace pspace,
+> +                                  ARMSecuritySpace ss,
+> +                                  ARMMMUFaultInfo *fi)
+>  {
+
+A comment here noting that we share this function with the SMMU
+would probably help us in avoiding inadvertently introducing
+CPU-specifics in future.
+
+>      MemTxAttrs attrs = {
+>          .secure = true,
+>          .space = ARMSS_Root,
+>      };
+> -    ARMCPU *cpu = env_archcpu(env);
+> -    uint64_t gpccr = env->cp15.gpccr_el3;
+> +    const uint64_t gpccr = config.gpccr;
+>      unsigned pps, pgs, l0gptsz, level = 0;
+>      uint64_t tableaddr, pps_mask, align, entry, index;
+> -    AddressSpace *as;
+>      MemTxResult result;
+>      int gpi;
+>
+> -    if (!FIELD_EX64(gpccr, GPCCR, GPC)) {
+> +    if (!FIELD_EX64(config.gpccr, GPCCR, GPC)) {
+
+We just set up the 'gpccr' local so we don't need to change this line,
+I think ?
+
+Also, the SMMU's SMMU_ROOT_GPT_BASE_CFG does not have the GPC field
+(it keeps its enable bit elsewhere).
+
+>          return true;
+>      }
+>
+> @@ -362,7 +361,7 @@ static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
+>       * physical address size is invalid.
+>       */
+>      pps = FIELD_EX64(gpccr, GPCCR, PPS);
+> -    if (pps > FIELD_EX64_IDREG(&cpu->isar, ID_AA64MMFR0, PARANGE)) {
+> +    if (pps > config.parange) {
+>          goto fault_walk;
+>      }
+>      pps = pamax_map[pps];
+> @@ -432,7 +431,7 @@ static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
+>      }
+>
+>      /* GPC Priority 4: the base address of GPTBR_EL3 exceeds PPS. */
+> -    tableaddr = env->cp15.gptbr_el3 << 12;
+> +    tableaddr = config.gptbr << 12;
+>      if (tableaddr & ~pps_mask) {
+>          goto fault_size;
+>      }
+> @@ -446,12 +445,10 @@ static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
+>      align = MAKE_64BIT_MASK(0, align);
+>      tableaddr &= ~align;
+>
+> -    as = arm_addressspace(env_cpu(env), attrs);
+> -
+>      /* Level 0 lookup. */
+>      index = extract64(paddress, l0gptsz, pps - l0gptsz);
+>      tableaddr += index * 8;
+> -    entry = address_space_ldq_le(as, tableaddr, attrs, &result);
+> +    entry = address_space_ldq_le(config.as_secure, tableaddr, attrs, &result);
+
+as_secure is an odd name for the AS here, because architecturally
+GPT walks are done to the Root physical address space. (This is
+why in the current code we set attrs.space to ARMSS_Root and then
+get the QEMU AddressSpace corresponding to those attrs. It happens
+that at the moment that's the same one we use as Secure, but in
+theory we could have 4 completely separate ones for NS, S, Root
+and Realm.)
+
+>      if (result != MEMTX_OK) {
+>          goto fault_eabt;
+>      }
+> @@ -479,7 +476,7 @@ static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
+>      level = 1;
+>      index = extract64(paddress, pgs + 4, l0gptsz - pgs - 4);
+>      tableaddr += index * 8;
+> -    entry = address_space_ldq_le(as, tableaddr, attrs, &result);
+> +    entry = address_space_ldq_le(config.as_secure, tableaddr, attrs, &result);
+>      if (result != MEMTX_OK) {
+>          goto fault_eabt;
+>      }
+> @@ -513,7 +510,7 @@ static bool granule_protection_check(CPUARMState *env, uint64_t paddress,
+>      case 0b1111: /* all access */
+>          return true;
+>      case 0b1000: /* secure */
+> -        if (!cpu_isar_feature(aa64_sel2, cpu)) {
+> +        if (!config.support_sel2) {
+>              goto fault_walk;
+>          }
+>          /* fall through */
+> @@ -3786,8 +3783,18 @@ static bool get_phys_addr_gpc(CPUARMState *env, S1Translate *ptw,
+>                              memop, result, fi)) {
+>          return true;
+>      }
+> -    if (!granule_protection_check(env, result->f.phys_addr,
+> -                                  result->f.attrs.space, ptw->in_space, fi)) {
+> +
+> +    ARMCPU *cpu = env_archcpu(env);
+> +    struct ARMGranuleProtectionConfig gpc = {
+> +        .gpccr = env->cp15.gpccr_el3,
+> +        .gptbr = env->cp15.gptbr_el3,
+> +        .parange = FIELD_EX64_IDREG(&cpu->isar, ID_AA64MMFR0, PARANGE),
+> +        .support_sel2 = cpu_isar_feature(aa64_sel2, cpu),
+> +        .as_secure = cpu_get_address_space(env_cpu(env), ARMASIdx_S)
+
+Directly coding ARMASIDx_S here is a bit awkward, as noted above.
+
+> +    };
+> +    if (!arm_granule_protection_check(gpc, result->f.phys_addr,
+> +                                      result->f.attrs.space, ptw->in_space,
+> +                                      fi)) {
+>          fi->type = ARMFault_GPCFOnOutput;
+>          return true;
+>      }
+
+thanks
+-- PMM
 

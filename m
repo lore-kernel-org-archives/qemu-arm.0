@@ -4,97 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12BFFD59D77
-	for <qemu-arm@archiver.kernel.org>; Fri, 12 Dec 2025 17:38:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FAE1D59D7C
+	for <qemu-arm@archiver.kernel.org>; Fri, 12 Dec 2025 18:03:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vU75u-0002i5-Ao; Fri, 12 Dec 2025 12:38:18 -0500
+	id 1vU7UK-0001fI-As; Fri, 12 Dec 2025 13:03:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vU75s-0002h1-6Y
- for qemu-arm@nongnu.org; Fri, 12 Dec 2025 12:38:16 -0500
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1vU7UI-0001ee-JU
+ for qemu-arm@nongnu.org; Fri, 12 Dec 2025 13:03:30 -0500
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vU75q-0006PH-1r
- for qemu-arm@nongnu.org; Fri, 12 Dec 2025 12:38:15 -0500
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-29efd139227so16715905ad.1
- for <qemu-arm@nongnu.org>; Fri, 12 Dec 2025 09:38:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765561092; x=1766165892; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=8jlOYjjEsoETYeyFILku4+um3f3qmux/EedRko5/VAI=;
- b=eBxFe5p1i0jq7r8Nxqo++ERZUCbq24fbUuJvkeXdo2pOqlFe8U9cqlmrmhyfBD5oku
- 6pv6SfKYWOq5FPoe+GqasIGaVHAIkYFJqo4iyaxD51XVH8tutIaNpse3Lo7hj8roj1hI
- pwfLTcollCl7OfE0B2nyHw07sjPNOQNz1Q24fxUmjhG1v3EBHdYqt8avKCcB0dx2EzMt
- qvaBp9FcSkLDBTJqRs+2baVqjAV4tArTm0WjTnQC0yqt6Hfk/p+6z2L8rw3qcBMNAE3B
- P/05V06zyUX+Qky9soQGQ6gr9AUrvyPlqwLZxRvaX6thlAELiygxQbka+CgDR1K7pIBz
- sXtg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765561092; x=1766165892;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=8jlOYjjEsoETYeyFILku4+um3f3qmux/EedRko5/VAI=;
- b=soTw6YIDj0L1JCeOJhbAJP7Jp9MgTZy2gd4yB5nUdnx1BiLNEaeIKXMNJzQNt7+1dL
- j7TpxnXxUXbBm0+yqI/DaUbeWmEFK9nBKk26ofNQJDmBJAYQwS8oOSLGBkkTGbW9mQ3z
- /tm6hMyUFfMFAKIEsQ+Nf+Ci+xAmTGkuzj/l6h3Ig2zA82fnhMcW8KBHuJidIZFdT0Ut
- fm4jMn/p3JEA6yzY15/hO2gHIPPOvFALZs0XNKct6m4z8FgynA/xxjly0Nc/UmNkF4vz
- vy4+5CjByLqZK/bFGjWeR82BsrhZjGMLfh+afzlpBmCehjKjeL9kHrajnbQ7JBvWquLh
- ukLw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVAIzItaarMO1ikH/oLBd7QoQUYTVpAabyOV8h8ORYJkWStF3+5B5PQ2EegBFnG9NMiYhW9qNf7+w==@nongnu.org
-X-Gm-Message-State: AOJu0YyjZhvJNm7D49fLjmvwzyjuD6YOccBrFdheWc/NKysoWz6bjLMd
- AYcej7VLI9Dt8HvmkImGK0tJQUNoqqRaWhzzKbu0st6Y23JoXDj1E5AgKdkHFiU8+9U=
-X-Gm-Gg: AY/fxX564az5ZQu3eoL4pS4YhWQoZjkIAGDc3ZV3bT0MVqpbwlWCEMXE9JXbXrXW9bP
- qVRMBa3BlkyvDbVfm+6/d0ufPU/N7YhW+6x1QDX4+qivW+6x/2CJ8xwTsIHC8UveEM4Ng8aMiU1
- mJ3XAXTXfOh038sIyPQKiBxXofTYUcLKcmXoY0MQ0NV2wl2Tl2um025lNvb+3Eh/yys5pC3DXPa
- j9woh6iUXK7mnvCZ1qY+kU1XxGZ9k2xfBRgD9DzzQ3tLtVgKrdoU5c10jb+sN/pOKNy4hDBOXak
- hZ7JKcbVYW7uzdDAFDWuDjYVWsG+ScoHQjaboraP7w2BURodnzeBjeZ0NCW+eVdUNEelpbsd3eS
- p21eSBodnGqYhb8lfgGDlx9nhcbzM4b6z1nQb7wvHzLWUZMw0b0N4HtbWNj6hh+p446rAsX+Pa5
- saBC/XiRRR8W3D2GRp2YZZWS+YXGD7qD9aIV14AkPijzP3sucFjAIGqws=
-X-Google-Smtp-Source: AGHT+IE+9Y0m3KWr5u+YalCxd9MQceMIGgOmhaaQ+vIXP9sdYgsKyBMPaJnKfMx7BKHKXK22OfYiPA==
-X-Received: by 2002:a17:903:2cc:b0:295:888e:9fff with SMTP id
- d9443c01a7336-29f23b5f44dmr25800245ad.20.1765561092402; 
- Fri, 12 Dec 2025 09:38:12 -0800 (PST)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-29eea03fa19sm60386475ad.67.2025.12.12.09.38.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 12 Dec 2025 09:38:12 -0800 (PST)
-Message-ID: <30c78af7-9848-4e83-a3e3-d3234170445b@linaro.org>
-Date: Fri, 12 Dec 2025 09:38:11 -0800
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1vU7UH-00066A-24
+ for qemu-arm@nongnu.org; Fri, 12 Dec 2025 13:03:30 -0500
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id B80BC33900;
+ Fri, 12 Dec 2025 18:03:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1765562605; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=wBdDqoBDaKc582fhWqrgdbTI4EKnEk9T/tbivIR63b0=;
+ b=Bn2tvHxElqOcdbUrs6QzQeD7oq4aY1D/8LJahZN1fCYLZl31tU9/qKBnwvclfCBxhvnic5
+ c8/e93yMIU4v4VOuwyYMLwmzhpNw3GBKBy83M/7msXcAXw7IITlKvfBQs5Tomo4HyYxFr8
+ lmbrX4YLguGdqUDqQkLhWJnt6sl/EbQ=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1765562605;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=wBdDqoBDaKc582fhWqrgdbTI4EKnEk9T/tbivIR63b0=;
+ b=N3Qsg3yvRehwQWtmoeMEuC5LS+KaHLUz5nmh27Pq+N14u1pD6RS8FASlP5D4qUZGNni/SD
+ v2LCNRtgoDb8ypBg==
+Authentication-Results: smtp-out1.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1765562605; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=wBdDqoBDaKc582fhWqrgdbTI4EKnEk9T/tbivIR63b0=;
+ b=Bn2tvHxElqOcdbUrs6QzQeD7oq4aY1D/8LJahZN1fCYLZl31tU9/qKBnwvclfCBxhvnic5
+ c8/e93yMIU4v4VOuwyYMLwmzhpNw3GBKBy83M/7msXcAXw7IITlKvfBQs5Tomo4HyYxFr8
+ lmbrX4YLguGdqUDqQkLhWJnt6sl/EbQ=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1765562605;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=wBdDqoBDaKc582fhWqrgdbTI4EKnEk9T/tbivIR63b0=;
+ b=N3Qsg3yvRehwQWtmoeMEuC5LS+KaHLUz5nmh27Pq+N14u1pD6RS8FASlP5D4qUZGNni/SD
+ v2LCNRtgoDb8ypBg==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 2BFD13EA63;
+ Fri, 12 Dec 2025 18:03:24 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id nHH7NuxYPGkTCQAAD6G6ig
+ (envelope-from <farosas@suse.de>); Fri, 12 Dec 2025 18:03:24 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini
+ <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Eric Auger
+ <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Alex
+ =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Chen Baozi
+ <chenbaozi@phytium.com.cn>, Pierrick Bouvier
+ <pierrick.bouvier@linaro.org>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>, Mostafa Saleh
+ <smostafa@google.com>, CLEMENT MATHIEU--DRIF
+ <clement.mathieu--drif@eviden.com>, Tao Tang <tangtao1634@phytium.com.cn>
+Subject: Re: [RFC v6 3/4] tests/qtest/libqos: Add SMMUv3 helper library
+In-Reply-To: <20251206155203.3015881-4-tangtao1634@phytium.com.cn>
+References: <20251206155203.3015881-1-tangtao1634@phytium.com.cn>
+ <20251206155203.3015881-4-tangtao1634@phytium.com.cn>
+Date: Fri, 12 Dec 2025 15:03:22 -0300
+Message-ID: <87pl8jvaqd.fsf@suse.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] target/arm: Move ARMSecuritySpace to a common header
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
- Tao Tang <tangtao1634@phytium.com.cn>
-References: <20251211234426.2403792-1-pierrick.bouvier@linaro.org>
- <20251211234426.2403792-2-pierrick.bouvier@linaro.org>
- <a40ca4c4-b34b-4315-8e6e-46812dfd5432@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <a40ca4c4-b34b-4315-8e6e-46812dfd5432@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62f.google.com
+Content-Type: text/plain
+X-Spamd-Result: default: False [-4.27 / 50.00]; BAYES_HAM(-2.97)[99.87%];
+ NEURAL_HAM_LONG(-1.00)[-1.000];
+ NEURAL_HAM_SHORT(-0.20)[-0.994]; MIME_GOOD(-0.10)[text/plain];
+ ARC_NA(0.00)[]; MISSING_XM_UA(0.00)[]; RCVD_TLS_ALL(0.00)[];
+ MIME_TRACE(0.00)[0:+]; RCVD_VIA_SMTP_AUTH(0.00)[];
+ RCPT_COUNT_TWELVE(0.00)[15];
+ FUZZY_RATELIMITED(0.00)[rspamd.com];
+ MID_RHS_MATCH_FROM(0.00)[];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ FROM_HAS_DN(0.00)[]; TO_DN_SOME(0.00)[];
+ FROM_EQ_ENVFROM(0.00)[]; TO_MATCH_ENVRCPT_ALL(0.00)[];
+ RCVD_COUNT_TWO(0.00)[2];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid, suse.de:email,
+ phytium.com.cn:email]
+Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:1;
+ envelope-from=farosas@suse.de; helo=smtp-out1.suse.de
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,88 +124,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/12/25 6:56 AM, Richard Henderson wrote:
-> On 12/11/25 17:44, Pierrick Bouvier wrote:
->> From: Tao Tang <tangtao1634@phytium.com.cn>
->>
->> The ARMSecuritySpace enum and its related helpers were defined in the
->> target-specific header target/arm/cpu.h. This prevented common,
->> target-agnostic code like the SMMU model from using these definitions
->> without triggering "cpu.h included from common code" errors.
->>
->> To resolve this, this commit introduces a new, lightweight header,
->> include/hw/arm/arm-security.h, which is safe for inclusion by common
->> code.
->>
->> The following change was made:
->>
->> - The ARMSecuritySpace enum and the arm_space_is_secure() and
->> arm_secure_to_space() helpers have been moved from target/arm/cpu.h
->> to the new hw/arm/arm-security.h header.
->>
->> This refactoring decouples the security state definitions from the core
->> CPU implementation, allowing common hardware models to correctly handle
->> security states without pulling in heavyweight, target-specific headers.
->>
->> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->> Reviewed-by: Eric Auger <eric.auger@redhat.com>
->> Link: https://lists.nongnu.org/archive/html/qemu-arm/2025-09/msg01288.html
->> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->>    include/hw/arm/arm-security.h | 54 +++++++++++++++++++++++++++++++++++
->>    target/arm/cpu.h              | 25 +---------------
->>    2 files changed, 55 insertions(+), 24 deletions(-)
->>    create mode 100644 include/hw/arm/arm-security.h
->>
->> diff --git a/include/hw/arm/arm-security.h b/include/hw/arm/arm-security.h
->> new file mode 100644
->> index 00000000000..9664c0f95e9
->> --- /dev/null
->> +++ b/include/hw/arm/arm-security.h
->> @@ -0,0 +1,54 @@
->> +/*
->> + * ARM security space helpers
->> + *
->> + * Provide ARMSecuritySpace and helpers for code that is not tied to CPU.
->> + *
->> + *  Copyright (c) 2003 Fabrice Bellard
->> + *
->> + * This library is free software; you can redistribute it and/or
->> + * modify it under the terms of the GNU Lesser General Public
->> + * License as published by the Free Software Foundation; either
->> + * version 2.1 of the License, or (at your option) any later version.
->> + *
->> + * This library is distributed in the hope that it will be useful,
->> + * but WITHOUT ANY WARRANTY; without even the implied warranty of
->> + * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
->> + * Lesser General Public License for more details.
->> + *
->> + * You should have received a copy of the GNU Lesser General Public
->> + * License along with this library; if not, see <http://www.gnu.org/licenses/>.
->> + */
-> 
-> Don't add the boilerplate to new files, just SPDX-License-Identifier.
-> This should have tripped a checkpatch error.
-> 
->> +
->> +#ifndef HW_ARM_ARM_SECURITY_H
->> +#define HW_ARM_ARM_SECURITY_H
->> +
->> +#include <stdbool.h>
-> 
-> Already included by osdep.h.
-> 
->> +#endif /* HW_ARM_ARM_SECURITY_H */
->> +
->> +
-> 
-> Watch the extra newlines.
-> 
-> Otherwise,
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> 
-> 
-> r~
+Tao Tang <tangtao1634@phytium.com.cn> writes:
 
-I'll fix the nits you reported, just included this patch from Tao's series.
+> Introduce qos-smmuv3, a reusable library for SMMUv3-related qtest
+> operations. This module encapsulates common tasks like:
+>
+> - SMMUv3 initialization (enabling, configuring command/event queues)
+> - Stream Table Entry (STE) and Context Descriptor (CD) setup
+> - Multi-level page table construction (L0-L3 for 4KB granules)
+> - Support for Stage 1, Stage 2, and nested translation modes
+> - Could be easily extended to support multi-space testing infrastructure
+>     (Non-Secure, Secure, Root, Realm)
+>
+> The library provides high-level abstractions that allow test code to
+> focus on IOMMU behavior validation rather than low-level register
+> manipulation and page table encoding. Key features include:
+>
+> - Automatic memory allocation for translation structures with proper
+>     alignment
+> - Helper functions to build valid STEs/CDs for different translation
+>     scenarios
+> - Page table walkers that handle address offset calculations per
+>     security space
+> - Command queue management for SMMU configuration commands
+>
+> This infrastructure is designed to be used by iommu-testdev-based tests
+> and future SMMUv3 test suites, reducing code duplication and improving
+> test maintainability.
+>
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+
+To the best of my ability:
+
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
 

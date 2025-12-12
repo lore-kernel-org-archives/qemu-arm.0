@@ -4,124 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4621D4922D
-	for <qemu-arm@archiver.kernel.org>; Fri, 12 Dec 2025 15:10:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B00AAD59D66
+	for <qemu-arm@archiver.kernel.org>; Fri, 12 Dec 2025 15:32:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vU4hQ-0001w1-6k; Fri, 12 Dec 2025 10:04:52 -0500
+	id 1vU57w-0006G9-73; Fri, 12 Dec 2025 10:32:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1vU4hN-0001sG-0t
- for qemu-arm@nongnu.org; Fri, 12 Dec 2025 10:04:49 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1vU4hI-0005f3-SH
- for qemu-arm@nongnu.org; Fri, 12 Dec 2025 10:04:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1765551884;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1vU57h-0006Bx-If
+ for qemu-arm@nongnu.org; Fri, 12 Dec 2025 10:32:03 -0500
+Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1vU57d-00058X-G6
+ for qemu-arm@nongnu.org; Fri, 12 Dec 2025 10:32:00 -0500
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
+ [IPv6:2a07:de40:b281:104:10:150:64:97])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id 91AFE5BEE7;
+ Fri, 12 Dec 2025 15:31:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1765553513; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=PjEcZQ1uHJTqefFeQEkw1uWuzKF1uPikpHMJbHt4BwE=;
- b=PlDPbPAUF9yN71VT36c37mAG3bP6JgWzMCfjWXShkbgBq4ctJWqkW4cL6WYAIFolSvznMU
- OOEbc42taqiRaoN5xZ+sCKwBZ6NEdCSCDfwLkKi5bZLzhmVISLqaKewHfjzIDXQ6Asjoeq
- unM3GiTW4/zHuvPYmhzNov0viI+zbKQ=
-Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
- [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-587-rH_qkXS7P2GZAdgLxH0xfg-1; Fri, 12 Dec 2025 10:04:42 -0500
-X-MC-Unique: rH_qkXS7P2GZAdgLxH0xfg-1
-X-Mimecast-MFC-AGG-ID: rH_qkXS7P2GZAdgLxH0xfg_1765551882
-Received: by mail-pl1-f200.google.com with SMTP id
- d9443c01a7336-299ddb0269eso17013035ad.0
- for <qemu-arm@nongnu.org>; Fri, 12 Dec 2025 07:04:42 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765551881; x=1766156681;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=PjEcZQ1uHJTqefFeQEkw1uWuzKF1uPikpHMJbHt4BwE=;
- b=cpNhOYV/8hiPKybEnyivbFIp5pOUYdhM3DO7ink98HnAxMsi8Iz2miul8iu8Wd8EGg
- RJWEvCh7xtNn4pDGiu4HfVRauE27JzjE9saDjNo/7FCD5xVnu4UwwescNjVQ+cotpwgM
- NKK1VI3quNLBOLX9/oIU0oT4o05ZJvac62BsJwDmHjOJu6Y6rzXvI8rMVe6XQXg60475
- FrtZVcyeREbbdCYd2VFATfVvEM1uc8fBe6NlQnvdQb8NnkAF+71tmApBF54A7m9QhPWL
- waEWNTpl8mPIIdnVzWYDSbglJhCAu4wJoZZ6y0/WKKAha3UKQXqQcomjfar/mtM3R6jL
- kuww==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWEWQoL1/PCU7jPRP65A6v2NAGjxFxV///4TFIDlx8E89GNnOqWA66mKAZ/F8lY2BLqmxbjsBnQTA==@nongnu.org
-X-Gm-Message-State: AOJu0YwD5WBo6zS0Zt5UY047by48IrWZT/zj8Z+D4MK/DavUueBnuejT
- 8AhQ30h3Fl0+Sgp2gJCHiOf98WWsCg1NUrkcYfVQvCifT5OqlUDq4NenlQFMC6wsR7jg+f+YMfh
- 4TOOBPeNfsaG/drJ8yxk7j/UhnEmIQ6ufpLOpLWAgYnvc9Ztm3rq/7w==
-X-Gm-Gg: AY/fxX6D4Z3aDasT+yKAXGlabzR8A65DY0kN433YQva+/9P8oR5vsKuqAMbfTYwnkPF
- venVrf1Snohi2JPLmK2aGTNKfayjIxiE1VWh+xzvYkJ5i7DKLT1o57uuBI4JqFke7uatBo6n4Dg
- pPX64FTKX5gRb9acg7ScMHjtf2qrPQs4/GFdbUVcp7YPagZGDaMfuxaPqKQcXZJjihhvdTK6ZYH
- 8FEyVX2KUzgKlSYvmsBZUzHZhdGzeJep47LED4VlVCRPdbb7DNuP5ZxAoJchKGuV3r7Q9adESSZ
- mAP10aYtIHOiQY3xJ8tKARIiFINfYxdz5WfT9MNoxDbXgE0KpC2pKXXDLnNXtMB4Ea3GwIZfw+u
- 23kG95TalvvR7FP0cqmE9KRrIIl8x7SRgRJOO7wDcPhc=
-X-Received: by 2002:a17:903:230a:b0:2a0:81c1:6194 with SMTP id
- d9443c01a7336-2a081c16442mr6958365ad.47.1765551881160; 
- Fri, 12 Dec 2025 07:04:41 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH8yblFgCzrr9m/ubmrYBSTPLesJuI39hqhYZI5/jPqA3lpx4dP+VaBeRXVg2kOQXvwTndbgA==
-X-Received: by 2002:a17:903:230a:b0:2a0:81c1:6194 with SMTP id
- d9443c01a7336-2a081c16442mr6957515ad.47.1765551880158; 
- Fri, 12 Dec 2025 07:04:40 -0800 (PST)
-Received: from rhel9-box.lan ([122.172.173.62])
- by smtp.googlemail.com with ESMTPSA id
- d9443c01a7336-29ee9d38ad1sm57046655ad.29.2025.12.12.07.04.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Dec 2025 07:04:39 -0800 (PST)
-From: Ani Sinha <anisinha@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Marcelo Tosatti <mtosatti@redhat.com>, Song Gao <gaosong@loongson.cn>,
- Huacai Chen <chenhuacai@kernel.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <arikalo@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Chinmay Rath <rathc@linux.ibm.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
- Thomas Huth <thuth@redhat.com>
-Cc: vkuznets@redhat.com, kraxel@redhat.com, qemu-devel@nongnu.org,
- Ani Sinha <anisinha@redhat.com>, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
-Subject: [PATCH v1 04/28] accel/kvm: add changes required to support KVM VM
- file descriptor change
-Date: Fri, 12 Dec 2025 20:33:32 +0530
-Message-ID: <20251212150359.548787-5-anisinha@redhat.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20251212150359.548787-1-anisinha@redhat.com>
-References: <20251212150359.548787-1-anisinha@redhat.com>
+ bh=hy3Ro3a1jm+gnJ7q/j/+N6b8OSrtSeBbcvoVrglGmr4=;
+ b=tLvnjJYtlXENWtKSk2rOXQbt0JiUUrPe0bXb5E+IjmTETOq+ROrcm6X0EzttYhewu503oW
+ eBq/MxmThWU9UXZ5mdhg2dMyR2HPuBaB0TpBBe6yXKJG34Wkxqiz0B9GJ76CG6+njz+c1D
+ f79MAMIQbbzlDhxmXUwBOdQPLsKNfZg=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1765553513;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hy3Ro3a1jm+gnJ7q/j/+N6b8OSrtSeBbcvoVrglGmr4=;
+ b=sqWoDkKCtuZTJ76wE/kxnetMK++3ydfudjdo0AuQAI7Kzo6s6XW5c6JCx3B9GANQ1OEvdB
+ 1wHU6ItRPsYr0uAA==
+Authentication-Results: smtp-out2.suse.de;
+ dkim=pass header.d=suse.de header.s=susede2_rsa header.b=tLvnjJYt;
+ dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=sqWoDkKC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1765553513; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hy3Ro3a1jm+gnJ7q/j/+N6b8OSrtSeBbcvoVrglGmr4=;
+ b=tLvnjJYtlXENWtKSk2rOXQbt0JiUUrPe0bXb5E+IjmTETOq+ROrcm6X0EzttYhewu503oW
+ eBq/MxmThWU9UXZ5mdhg2dMyR2HPuBaB0TpBBe6yXKJG34Wkxqiz0B9GJ76CG6+njz+c1D
+ f79MAMIQbbzlDhxmXUwBOdQPLsKNfZg=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1765553513;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hy3Ro3a1jm+gnJ7q/j/+N6b8OSrtSeBbcvoVrglGmr4=;
+ b=sqWoDkKCtuZTJ76wE/kxnetMK++3ydfudjdo0AuQAI7Kzo6s6XW5c6JCx3B9GANQ1OEvdB
+ 1wHU6ItRPsYr0uAA==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id F3CD03EA63;
+ Fri, 12 Dec 2025 15:31:52 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id ffl4LGg1PGmEfAAAD6G6ig
+ (envelope-from <farosas@suse.de>); Fri, 12 Dec 2025 15:31:52 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini
+ <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Eric Auger
+ <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, Alex
+ =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Chen Baozi
+ <chenbaozi@phytium.com.cn>, Pierrick Bouvier
+ <pierrick.bouvier@linaro.org>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>, Mostafa Saleh
+ <smostafa@google.com>, CLEMENT MATHIEU--DRIF
+ <clement.mathieu--drif@eviden.com>, Tao Tang <tangtao1634@phytium.com.cn>
+Subject: Re: [RFC v6 2/4] hw/misc: Introduce iommu-testdev for bare-metal
+ IOMMU testing
+In-Reply-To: <20251206155203.3015881-3-tangtao1634@phytium.com.cn>
+References: <20251206155203.3015881-1-tangtao1634@phytium.com.cn>
+ <20251206155203.3015881-3-tangtao1634@phytium.com.cn>
+Date: Fri, 12 Dec 2025 12:31:49 -0300
+Message-ID: <87y0n7ra1m.fsf@suse.de>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: eNbGp76uxTFtDc3oZYeIkyQxYrRkFrYJRry6hbl8NkI_1765551882
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Spamd-Result: default: False [-4.51 / 50.00]; BAYES_HAM(-3.00)[100.00%];
+ NEURAL_HAM_LONG(-1.00)[-1.000];
+ R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
+ MX_GOOD(-0.01)[]; FUZZY_RATELIMITED(0.00)[rspamd.com];
+ RCVD_VIA_SMTP_AUTH(0.00)[]; MISSING_XM_UA(0.00)[];
+ ARC_NA(0.00)[]; RCPT_COUNT_TWELVE(0.00)[15];
+ MIME_TRACE(0.00)[0:+]; RCVD_TLS_ALL(0.00)[];
+ MID_RHS_MATCH_FROM(0.00)[];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
+ TO_DN_SOME(0.00)[];
+ SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[linaro.org:email,suse.de:email,suse.de:dkim,suse.de:mid,imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns];
+ RCVD_COUNT_TWO(0.00)[2]; TO_MATCH_ENVRCPT_ALL(0.00)[];
+ DKIM_TRACE(0.00)[suse.de:+]
+X-Rspamd-Action: no action
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Rspamd-Queue-Id: 91AFE5BEE7
+Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:2;
+ envelope-from=farosas@suse.de; helo=smtp-out2.suse.de
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,257 +137,598 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This change adds common kvm specific support to handle KVM VM file descriptor
-change. KVM VM file descriptor can change as a part of confidential guest reset
-mechanism. A new function api kvm_arch_vmfd_change_ops() per
-architecture platform is added in order to implement architecture specific
-changes required to support it. A subsequent patch will add x86 specific
-implementation for kvm_arch_vmfd_change_ops as currently only x86 supports
-confidential guest reset.
+Tao Tang <tangtao1634@phytium.com.cn> writes:
 
-Signed-off-by: Ani Sinha <anisinha@redhat.com>
----
- accel/kvm/kvm-all.c        | 70 ++++++++++++++++++++++++++++++++++++--
- include/system/kvm.h       |  1 +
- target/arm/kvm.c           |  5 +++
- target/i386/kvm/kvm.c      |  5 +++
- target/loongarch/kvm/kvm.c |  5 +++
- target/mips/kvm.c          |  5 +++
- target/ppc/kvm.c           |  5 +++
- target/riscv/kvm/kvm-cpu.c |  5 +++
- target/s390x/kvm/kvm.c     |  5 +++
- 9 files changed, 103 insertions(+), 3 deletions(-)
+> Add a minimal PCI test device designed to exercise IOMMU translation
+> (such as ARM SMMUv3) without requiring guest firmware or OS. The device
+> provides MMIO registers to configure and trigger DMA operations with
+> controllable attributes (security state, address space), enabling
+> deterministic IOMMU testing.
+>
+> Key features:
+> - Bare-metal IOMMU testing via simple MMIO interface
+> - Configurable DMA attributes for security states and address spaces
+> - Write-then-read verification pattern with automatic result checking
+>
+> The device performs a deterministic DMA test pattern: write a known
+> value (0x88888888) to a configured IOVA, read it back, and verify data
+> integrity. Results are reported through a dedicated result register,
+> eliminating the need for complex interrupt handling or driver
+> infrastructure in tests.
+>
+> This is purely a test device and not intended for production use or
+> machine realism. It complements existing test infrastructure like
+> pci-testdev but focuses specifically on IOMMU translation path
+> validation.
+>
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>  docs/specs/index.rst            |   1 +
+>  docs/specs/iommu-testdev.rst    | 109 +++++++++++++
+>  hw/misc/Kconfig                 |   5 +
+>  hw/misc/iommu-testdev.c         | 278 ++++++++++++++++++++++++++++++++
+>  hw/misc/meson.build             |   1 +
+>  hw/misc/trace-events            |  10 ++
+>  include/hw/misc/iommu-testdev.h |  70 ++++++++
+>  7 files changed, 474 insertions(+)
+>  create mode 100644 docs/specs/iommu-testdev.rst
+>  create mode 100644 hw/misc/iommu-testdev.c
+>  create mode 100644 include/hw/misc/iommu-testdev.h
+>
+> diff --git a/docs/specs/index.rst b/docs/specs/index.rst
+> index f19d73c9f6..1fc7fae6bb 100644
+> --- a/docs/specs/index.rst
+> +++ b/docs/specs/index.rst
+> @@ -39,3 +39,4 @@ guest hardware that is specific to QEMU.
+>     riscv-iommu
+>     riscv-aia
+>     aspeed-intc
+> +   iommu-testdev
+> \ No newline at end of file
+> diff --git a/docs/specs/iommu-testdev.rst b/docs/specs/iommu-testdev.rst
+> new file mode 100644
+> index 0000000000..fdc7f2ee89
+> --- /dev/null
+> +++ b/docs/specs/iommu-testdev.rst
+> @@ -0,0 +1,109 @@
+> +iommu-testdev =E2=80=94 IOMMU test device for bare-metal testing
+> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D
+> +
+> +Overview
+> +--------
+> +``iommu-testdev`` is a minimal, test-only PCI device designed to exercise
+> +IOMMU translation (such as ARM SMMUv3) without requiring firmware or a g=
+uest
+> +OS. Tests can populate IOMMU translation tables with known values and tr=
+igger
+> +DMA operations that flow through the IOMMU translation path. It is **not=
+** a
+> +faithful PCIe endpoint and must be considered a QEMU-internal test vehic=
+le.
+> +
+> +Key Features
+> +------------
+> +* **Bare-metal IOMMU testing**: No guest kernel or firmware required
+> +* **Configurable DMA attributes**: Supports address space  configuration=
+ via
+> +  MMIO registers
+> +* **Deterministic verification**: Write-then-read DMA pattern with autom=
+atic
+> +  result checking
+> +
+> +Status
+> +------
+> +* Location: ``hw/misc/iommu-testdev.c``
+> +* Header: ``include/hw/misc/iommu-testdev.h``
+> +* Build guard: ``CONFIG_IOMMU_TESTDEV``
+> +
+> +Device Interface
+> +----------------
+> +The device exposes a single PCI BAR0 with MMIO registers:
+> +
+> +* ``ITD_REG_DMA_TRIGGERING`` (0x00): Reading triggers DMA execution
+> +* ``ITD_REG_DMA_GVA_LO`` (0x04): IOVA/GVA bits [31:0]
+> +* ``ITD_REG_DMA_GVA_HI`` (0x08): IOVA/GVA bits [63:32]
+> +* ``ITD_REG_DMA_LEN`` (0x0C): DMA transfer length
+> +* ``ITD_REG_DMA_RESULT`` (0x10): DMA operation result (0=3Dsuccess)
+> +* ``ITD_REG_DMA_DBELL`` (0x14): Write 1 to arm DMA
+> +* ``ITD_REG_DMA_ATTRS`` (0x18): DMA attributes
+> +
+> +  - bit[0]: secure (1=3DSecure, 0=3DNon-Secure)
+> +  - bits[2:1]: address space (0=3DNon-Secure, 1=3DSecure, 2=3DRoot, 3=3D=
+Realm)
+> +    Only these MemTxAttrs fields (``secure`` and ``space``) are consumed=
+ today;
+> +    other bits are reserved but can be wired up easily if future tests n=
+eed
+> +    to pass extra attributes.
+> +
+> +Translation Setup Workflow
+> +--------------------------
+> +``iommu-testdev`` never builds SMMU/AMD-Vi/RISC-V IOMMU structures on it=
+s own.
+> +Architecture-specific construction lives entirely in qtest/libqos helper=
+s.
+> +Those helpers populate guest memory with page tables/architecture-specif=
+ic
+> +structures and program the emulated IOMMU registers directly. See the
+> +``qsmmu_setup_and_enable_translation()`` function in
+> +``tests/qtest/libqos/qos-smmuv3.c`` for an example of how SMMUv3 transla=
+tion
+> +is set up for this device.
+> +
+> +DMA Operation Flow
+> +------------------
+> +1. Test programs IOMMU translation tables
+> +2. Test configures DMA address (GVA_LO/HI), length, and attributes
+> +3. Test writes 1 to DMA_DBELL to arm the operation
+> +4. Test reads DMA_TRIGGERING to execute DMA
+> +5. Test polls DMA_RESULT:
+> +
+> +   - 0x00000000: Success
+> +   - 0xFFFFFFFE: Busy (still in progress)
+> +   - 0xDEAD000X: Various error codes
+> +
+> +The device performs a write-then-read sequence using a known pattern
+> +(0x88888888) and verifies data integrity automatically.
+> +
+> +Running the qtest
+> +-----------------
+> +The SMMUv3 test suite uses this device and covers multiple translation m=
+odes::
+> +
+> +    cd build-debug
+> +    QTEST_QEMU_BINARY=3D./qemu-system-aarch64 \\
+> +        ./tests/qtest/iommu-smmuv3-test --tap -k
+> +
+> +This test suite exercises:
+> +
+> +* Stage 1 only translation
+> +* Stage 2 only translation
+> +* Nested (Stage 1 + Stage 2) translation
+> +* Multiple security spaces (Non-Secure, Secure, Root, Realm)
+> +
+> +Instantiation
+> +-------------
+> +The device is not wired into any board by default. Tests instantiate it
+> +via QEMU command line::
+> +
+> +    -device iommu-testdev
+> +
+> +For ARM platforms with SMMUv3::
+> +
+> +    -M virt,iommu=3Dsmmuv3 -device iommu-testdev
+> +
+> +The device will be placed behind the IOMMU automatically.
+> +
+> +Limitations
+> +-----------
+> +* No realistic PCIe enumeration, MSI/MSI-X, or interrupt handling
+> +* No ATS/PRI support
+> +* No actual device functionality beyond DMA test pattern
+> +* Test-only; not suitable for production or machine realism
+> +* Address space support (Secure/Root/Realm) is architecture-dependent
+> +
+> +See also
+> +--------
+> +* ``tests/qtest/iommu-smmuv3-test.c`` =E2=80=94 SMMUv3 test suite
+> +* ``tests/qtest/libqos/qos-smmuv3.{c,h}`` =E2=80=94 SMMUv3 test library
+> +* SMMUv3 emulation: ``hw/arm/smmu*``
+> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> index fccd735c24..b5f6fdbd9c 100644
+> --- a/hw/misc/Kconfig
+> +++ b/hw/misc/Kconfig
+> @@ -25,6 +25,11 @@ config PCI_TESTDEV
+>      default y if TEST_DEVICES
+>      depends on PCI
+>=20=20
+> +config IOMMU_TESTDEV
+> +    bool
+> +    default y if TEST_DEVICES
+> +    depends on PCI
+> +
+>  config EDU
+>      bool
+>      default y if TEST_DEVICES
+> diff --git a/hw/misc/iommu-testdev.c b/hw/misc/iommu-testdev.c
+> new file mode 100644
+> index 0000000000..3182ccea4d
+> --- /dev/null
+> +++ b/hw/misc/iommu-testdev.c
+> @@ -0,0 +1,278 @@
+> +/*
+> + * A test device for IOMMU
+> + *
+> + * This test device is a minimal IOMMU-aware device used to test the IOM=
+MU.
+> + *
+> + * Copyright (c) 2025 Phytium Technology
+> + *
+> + * Author:
+> + *  Tao Tang <tangtao1634@phytium.com.cn>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "system/address-spaces.h"
+> +#include "trace.h"
+> +#include "hw/pci/pci_device.h"
+> +#include "hw/qdev-properties.h"
+> +#include "qom/object.h"
+> +#include "hw/misc/iommu-testdev.h"
+> +
+> +#define TYPE_IOMMU_TESTDEV "iommu-testdev"
+> +OBJECT_DECLARE_SIMPLE_TYPE(IOMMUTestDevState, IOMMU_TESTDEV)
+> +
+> +struct IOMMUTestDevState {
+> +    PCIDevice parent_obj;
+> +    MemoryRegion bar0;
+> +    uint64_t dma_vaddr;
+> +    uint32_t dma_len;
+> +    uint32_t dma_result;
+> +    bool dma_pending;
+> +
+> +    AddressSpace *dma_as;   /* IOMMU-mediated DMA AS for this device */
+> +    uint32_t dma_attrs_cfg; /* bit0 secure, bits[2:1] space, bit3 unspec=
+ified */
+> +};
+> +
+> +static void iommu_testdev_maybe_run_dma(IOMMUTestDevState *s)
+> +{
+> +    uint32_t expected_val, actual_val;
+> +    g_autofree uint8_t *write_buf =3D NULL;
+> +    g_autofree uint8_t *read_buf =3D NULL;
+> +    MemTxResult write_res, read_res;
+> +    MemTxAttrs attrs;
+> +    AddressSpace *as;
+> +
+> +    if (!s->dma_pending) {
+> +        s->dma_result =3D ITD_DMA_ERR_NOT_ARMED;
+> +        trace_iommu_testdev_dma_result(s->dma_result);
+> +        return;
+> +    }
+> +    trace_iommu_testdev_dma_start();
+> +
+> +    s->dma_pending =3D false;
+> +
+> +    if (!s->dma_len) {
+> +        s->dma_result =3D ITD_DMA_ERR_BAD_LEN;
+> +        return;
+> +    }
+> +
+> +    write_buf =3D g_malloc(s->dma_len);
+> +    read_buf =3D g_malloc(s->dma_len);
+> +
+> +    /* Initialize MemTxAttrs from generic register */
+> +    attrs =3D MEMTXATTRS_UNSPECIFIED;
+> +    attrs.secure =3D ITD_ATTRS_GET_SECURE(s->dma_attrs_cfg);
+> +
+> +    /*
+> +     * The 'space' field in MemTxAttrs is ARM-specific.
+> +     * On other architectures where this field doesn't exist.
+> +     */
+> +    attrs.space =3D ITD_ATTRS_GET_SPACE(s->dma_attrs_cfg);
+> +
+> +    as =3D s->dma_as;
+> +
+> +    /* Step 1: Write ITD_DMA_WRITE_VAL to DMA address */
+> +    trace_iommu_testdev_dma_write(s->dma_vaddr, s->dma_len);
+> +
+> +    for (int i =3D 0; i < s->dma_len; i++) {
+> +        /* Data is written in little-endian order */
+> +        write_buf[i] =3D (ITD_DMA_WRITE_VAL >> ((i % 4) * 8)) & 0xff;
+> +    }
+> +    write_res =3D dma_memory_write(as, s->dma_vaddr, write_buf, s->dma_l=
+en,
+> +                                 attrs);
+> +
+> +    if (write_res !=3D MEMTX_OK) {
+> +        s->dma_result =3D ITD_DMA_ERR_TX_FAIL;
+> +        trace_iommu_testdev_dma_result(s->dma_result);
+> +        return;
+> +    }
+> +
+> +    /* Step 2: Read back from the same DMA address */
+> +    trace_iommu_testdev_dma_read(s->dma_vaddr, s->dma_len);
+> +
+> +    read_res =3D dma_memory_read(as, s->dma_vaddr, read_buf, s->dma_len,=
+ attrs);
+> +
+> +    if (read_res !=3D MEMTX_OK) {
+> +        s->dma_result =3D ITD_DMA_ERR_RD_FAIL;
+> +        trace_iommu_testdev_dma_result(s->dma_result);
+> +        return;
+> +    }
+> +
+> +    /* Step 3: Verify the read data matches what we wrote */
+> +    for (int i =3D 0; i < s->dma_len; i +=3D 4) {
+> +        int remaining_bytes =3D MIN(4, s->dma_len - i);
+> +
+> +        expected_val =3D 0;
+> +        actual_val =3D 0;
+> +
+> +        for (int j =3D 0; j < remaining_bytes; j++) {
+> +            expected_val |=3D ((uint32_t)write_buf[i + j]) << (j * 8);
+> +            actual_val |=3D ((uint32_t)read_buf[i + j]) << (j * 8);
+> +        }
+> +
+> +        trace_iommu_testdev_dma_verify(expected_val, actual_val);
+> +
+> +        if (expected_val !=3D actual_val) {
+> +            s->dma_result =3D ITD_DMA_ERR_MISMATCH;
+> +            trace_iommu_testdev_dma_result(s->dma_result);
+> +            return;
+> +        }
+> +    }
+> +
+> +    /* All checks passed */
+> +    s->dma_result =3D 0;
+> +    trace_iommu_testdev_dma_result(s->dma_result);
+> +}
+> +
+> +static uint64_t iommu_testdev_mmio_read(void *opaque, hwaddr addr,
+> +                                        unsigned size)
+> +{
+> +    IOMMUTestDevState *s =3D opaque;
+> +    uint64_t value =3D 0;
+> +
+> +    switch (addr) {
+> +    case ITD_REG_DMA_TRIGGERING:
+> +        /*
+> +         * This lets tests poll ITD_REG_DMA_RESULT to observe BUSY before
+> +         * consuming the DMA.
+> +         */
+> +        iommu_testdev_maybe_run_dma(s);
+> +        value =3D 0;
+> +        break;
+> +    case ITD_REG_DMA_GVA_LO:
+> +        value =3D (uint32_t)(s->dma_vaddr & 0xffffffffu);
+> +        break;
+> +    case ITD_REG_DMA_GVA_HI:
+> +        value =3D (uint32_t)(s->dma_vaddr >> 32);
+> +        break;
+> +    case ITD_REG_DMA_LEN:
+> +        value =3D s->dma_len;
+> +        break;
+> +    case ITD_REG_DMA_RESULT:
+> +        value =3D s->dma_result;
+> +        break;
+> +    case ITD_REG_DMA_ATTRS:
+> +        value =3D s->dma_attrs_cfg;
+> +        break;
+> +    default:
+> +        value =3D 0;
+> +        break;
+> +    }
+> +
+> +    trace_iommu_testdev_mmio_read(addr, value, size);
+> +    return value;
+> +}
+> +
+> +static void iommu_testdev_mmio_write(void *opaque, hwaddr addr, uint64_t=
+ val,
+> +                                     unsigned size)
+> +{
+> +    IOMMUTestDevState *s =3D opaque;
+> +    uint32_t data =3D val;
+> +
+> +    trace_iommu_testdev_mmio_write(addr, val, size);
+> +
+> +    switch (addr) {
+> +    case ITD_REG_DMA_GVA_LO:
+> +        s->dma_vaddr =3D (s->dma_vaddr & ~0xffffffffull) | data;
+> +        break;
+> +    case ITD_REG_DMA_GVA_HI:
+> +        s->dma_vaddr =3D (s->dma_vaddr & 0xffffffffull) |
+> +                       ((uint64_t)data << 32);
+> +        break;
+> +    case ITD_REG_DMA_LEN:
+> +        s->dma_len =3D data;
+> +        break;
+> +    case ITD_REG_DMA_RESULT:
+> +        s->dma_result =3D data;
+> +        break;
+> +    case ITD_REG_DMA_DBELL:
+> +        if (data & ITD_DMA_DBELL_ARM) {
+> +            /* Arm the DMA operation */
+> +            s->dma_pending =3D true;
+> +            s->dma_result =3D ITD_DMA_RESULT_BUSY;
+> +            trace_iommu_testdev_dma_pending(true);
+> +        } else {
+> +            /* Disarm the DMA operation */
+> +            s->dma_pending =3D false;
+> +            s->dma_result =3D ITD_DMA_RESULT_IDLE;
+> +            trace_iommu_testdev_dma_pending(false);
+> +        }
+> +        break;
+> +    case ITD_REG_DMA_ATTRS:
+> +        s->dma_attrs_cfg =3D data;
+> +        break;
+> +    default:
+> +        break;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps iommu_testdev_mmio_ops =3D {
+> +    .read =3D iommu_testdev_mmio_read,
+> +    .write =3D iommu_testdev_mmio_write,
+> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+> +    .valid =3D {
+> +        .min_access_size =3D 4,
+> +        .max_access_size =3D 4,
+> +    },
+> +};
+> +
+> +static void iommu_testdev_realize(PCIDevice *pdev, Error **errp)
+> +{
+> +    IOMMUTestDevState *s =3D IOMMU_TESTDEV(pdev);
+> +
+> +    s->dma_vaddr =3D 0;
+> +    s->dma_len =3D 0;
+> +    s->dma_result =3D ITD_DMA_RESULT_IDLE;
+> +    s->dma_pending =3D false;
+> +    s->dma_attrs_cfg =3D 0;
+> +    s->dma_as =3D pci_device_iommu_address_space(pdev);
+> +
+> +    memory_region_init_io(&s->bar0, OBJECT(pdev), &iommu_testdev_mmio_op=
+s, s,
+> +                          TYPE_IOMMU_TESTDEV ".bar0", BAR0_SIZE);
+> +    pci_register_bar(pdev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY, &s->bar0);
+> +}
+> +
+> +static void iommu_testdev_reset(DeviceState *dev)
+> +{
+> +    IOMMUTestDevState *s =3D IOMMU_TESTDEV(dev);
+> +
+> +    s->dma_vaddr =3D 0;
+> +    s->dma_len =3D 0;
+> +    s->dma_result =3D ITD_DMA_RESULT_IDLE;
+> +    s->dma_pending =3D false;
+> +    s->dma_attrs_cfg =3D 0;
+> +}
+> +
+> +static void iommu_testdev_class_init(ObjectClass *klass, const void *dat=
+a)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> +    PCIDeviceClass *pc =3D PCI_DEVICE_CLASS(klass);
+> +
+> +    pc->realize =3D iommu_testdev_realize;
+> +    pc->vendor_id =3D IOMMU_TESTDEV_VENDOR_ID;
+> +    pc->device_id =3D IOMMU_TESTDEV_DEVICE_ID;
+> +    pc->revision =3D 0;
+> +    pc->class_id =3D PCI_CLASS_OTHERS;
+> +    dc->desc =3D "A test device for IOMMU";
+> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+> +    device_class_set_legacy_reset(dc, iommu_testdev_reset);
+> +}
+> +
+> +static const TypeInfo iommu_testdev_info =3D {
+> +    .name          =3D TYPE_IOMMU_TESTDEV,
+> +    .parent        =3D TYPE_PCI_DEVICE,
+> +    .instance_size =3D sizeof(IOMMUTestDevState),
+> +    .class_init    =3D iommu_testdev_class_init,
+> +    .interfaces    =3D (const InterfaceInfo[]) {
+> +        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+> +        { }
+> +    },
+> +};
+> +
+> +static void iommu_testdev_register_types(void)
+> +{
+> +    type_register_static(&iommu_testdev_info);
+> +}
+> +
+> +type_init(iommu_testdev_register_types);
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index b1d8d8e5d2..6f9bb9bb0f 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -4,6 +4,7 @@ system_ss.add(when: 'CONFIG_FW_CFG_DMA', if_true: files('=
+vmcoreinfo.c'))
+>  system_ss.add(when: 'CONFIG_ISA_DEBUG', if_true: files('debugexit.c'))
+>  system_ss.add(when: 'CONFIG_ISA_TESTDEV', if_true: files('pc-testdev.c'))
+>  system_ss.add(when: 'CONFIG_PCI_TESTDEV', if_true: files('pci-testdev.c'=
+))
+> +system_ss.add(when: 'CONFIG_IOMMU_TESTDEV', if_true: files('iommu-testde=
+v.c'))
+>  system_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
+>  system_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
+>  system_ss.add(when: 'CONFIG_LED', if_true: files('led.c'))
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index eeb9243898..84fd349fb8 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -409,3 +409,13 @@ ivshmem_flat_interrupt_peer(uint16_t peer_id, uint16=
+_t vector_id) "Interrupting
+>  i2c_echo_event(const char *id, const char *event) "%s: %s"
+>  i2c_echo_recv(const char *id, uint8_t data) "%s: recv 0x%02" PRIx8
+>  i2c_echo_send(const char *id, uint8_t data) "%s: send 0x%02" PRIx8
+> +
+> +# iommu-testdev.c
+> +iommu_testdev_mmio_read(uint64_t addr, uint64_t value, unsigned size) "a=
+ddr=3D0x%" PRIx64 " value=3D0x%" PRIx64 " size=3D%u"
+> +iommu_testdev_mmio_write(uint64_t addr, uint64_t value, unsigned size) "=
+addr=3D0x%" PRIx64 " value=3D0x%" PRIx64 " size=3D%u"
+> +iommu_testdev_dma_start(void) "DMA operation started"
+> +iommu_testdev_dma_write(uint64_t gva, uint32_t len) "gva=3D0x%" PRIx64 "=
+ len=3D%u"
+> +iommu_testdev_dma_read(uint64_t gva, uint32_t len) "gva=3D0x%" PRIx64 " =
+len=3D%u"
+> +iommu_testdev_dma_verify(uint32_t expected, uint32_t actual) "expected=
+=3D0x%x actual=3D0x%x"
+> +iommu_testdev_dma_result(uint32_t result) "DMA completed result=3D0x%x"
+> +iommu_testdev_dma_pending(bool pending) "pending=3D%d"
+> diff --git a/include/hw/misc/iommu-testdev.h b/include/hw/misc/iommu-test=
+dev.h
+> new file mode 100644
+> index 0000000000..06924e737c
+> --- /dev/null
+> +++ b/include/hw/misc/iommu-testdev.h
+> @@ -0,0 +1,70 @@
+> +/*
+> + * A test device for IOMMU
+> + *
+> + * This test device is a minimal IOMMU-aware device used to test the IOM=
+MU.
+> + *
+> + * Copyright (c) 2025 Phytium Technology
+> + *
+> + * Author:
+> + *  Tao Tang <tangtao1634@phytium.com.cn>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef HW_MISC_IOMMU_TESTDEV_H
+> +#define HW_MISC_IOMMU_TESTDEV_H
+> +
+> +#include "hw/pci/pci.h"
+> +
+> +#define IOMMU_TESTDEV_VENDOR_ID     PCI_VENDOR_ID_REDHAT
+> +#define IOMMU_TESTDEV_DEVICE_ID     PCI_DEVICE_ID_REDHAT_TEST
+> +
+> +/* DMA_ATTRS register bit definitions (architecture-agnostic) */
+> +#define ITD_ATTRS_SECURE_SHIFT      0
+> +#define ITD_ATTRS_SECURE_MASK       0x1
+> +#define ITD_ATTRS_SPACE_SHIFT       1
+> +#define ITD_ATTRS_SPACE_MASK        0x3
+> +
+> +/* Helper macros for setting fields */
+> +#define ITD_ATTRS_SET_SECURE(attrs, val)                              \
+> +    (((attrs) & ~(ITD_ATTRS_SECURE_MASK << ITD_ATTRS_SECURE_SHIFT)) | \
+> +     (((val) & ITD_ATTRS_SECURE_MASK) << ITD_ATTRS_SECURE_SHIFT))
+> +
+> +#define ITD_ATTRS_SET_SPACE(attrs, val)                               \
+> +    (((attrs) & ~(ITD_ATTRS_SPACE_MASK << ITD_ATTRS_SPACE_SHIFT)) |   \
+> +     (((val) & ITD_ATTRS_SPACE_MASK) << ITD_ATTRS_SPACE_SHIFT))
+> +
+> +/* Helper macros for getting fields */
+> +#define ITD_ATTRS_GET_SECURE(attrs)                                   \
+> +    (((attrs) >> ITD_ATTRS_SECURE_SHIFT) & ITD_ATTRS_SECURE_MASK)
+> +
+> +#define ITD_ATTRS_GET_SPACE(attrs)                                    \
+> +    (((attrs) >> ITD_ATTRS_SPACE_SHIFT) & ITD_ATTRS_SPACE_MASK)
+> +
+> +/* DMA result/status values shared with tests */
+> +#define ITD_DMA_RESULT_IDLE   0xffffffffu
+> +#define ITD_DMA_RESULT_BUSY   0xfffffffeu
+> +#define ITD_DMA_ERR_BAD_LEN   0xdead0001u
+> +#define ITD_DMA_ERR_TX_FAIL   0xdead0002u
+> +#define ITD_DMA_ERR_RD_FAIL   0xdead0003u
+> +#define ITD_DMA_ERR_MISMATCH  0xdead0004u
+> +#define ITD_DMA_ERR_NOT_ARMED 0xdead0005u
+> +
+> +#define ITD_DMA_WRITE_VAL     0x88888888u
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 28006d73c5..c9564bf681 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2415,11 +2415,9 @@ void kvm_irqchip_set_qemuirq_gsi(KVMState *s, qemu_irq irq, int gsi)
-     g_hash_table_insert(s->gsimap, irq, GINT_TO_POINTER(gsi));
- }
- 
--static void kvm_irqchip_create(KVMState *s)
-+static void do_kvm_irqchip_create(KVMState *s)
- {
-     int ret;
--
--    assert(s->kernel_irqchip_split != ON_OFF_AUTO_AUTO);
-     if (kvm_check_extension(s, KVM_CAP_IRQCHIP)) {
-         ;
-     } else if (kvm_check_extension(s, KVM_CAP_S390_IRQCHIP)) {
-@@ -2452,7 +2450,13 @@ static void kvm_irqchip_create(KVMState *s)
-         fprintf(stderr, "Create kernel irqchip failed: %s\n", strerror(-ret));
-         exit(1);
-     }
-+}
- 
-+static void kvm_irqchip_create(KVMState *s)
-+{
-+    assert(s->kernel_irqchip_split != ON_OFF_AUTO_AUTO);
-+
-+    do_kvm_irqchip_create(s);
-     kvm_kernel_irqchip = true;
-     /* If we have an in-kernel IRQ chip then we must have asynchronous
-      * interrupt delivery (though the reverse is not necessarily true)
-@@ -2607,6 +2611,65 @@ static int kvm_setup_dirty_ring(KVMState *s)
-     return 0;
- }
- 
-+static int kvm_reset_vmfd(MachineState *ms)
-+{
-+    KVMState *s;
-+    KVMMemoryListener *kml;
-+    int ret, type;
-+    Error *err = NULL;
-+
-+    s = KVM_STATE(ms->accelerator);
-+    kml = &s->memory_listener;
-+
-+    memory_listener_unregister(&kml->listener);
-+    memory_listener_unregister(&kvm_io_listener);
-+
-+    if (s->vmfd >= 0) {
-+        close(s->vmfd);
-+    }
-+
-+    type = find_kvm_machine_type(ms);
-+    if (type < 0) {
-+        return -EINVAL;
-+    }
-+
-+    ret = do_kvm_create_vm(s, type);
-+    if (ret < 0) {
-+        return ret;
-+    }
-+
-+    s->vmfd = ret;
-+
-+    kvm_setup_dirty_ring(s);
-+
-+    /* rebind memory to new vm fd */
-+    ret = ram_block_rebind(&err);
-+    if (ret < 0) {
-+        return ret;
-+    }
-+    assert(!err);
-+
-+    ret = kvm_arch_vmfd_change_ops(ms, s);
-+    if (ret < 0) {
-+        return ret;
-+    }
-+
-+    if (s->kernel_irqchip_allowed) {
-+        do_kvm_irqchip_create(s);
-+    }
-+
-+    /* these can be only called after ram_block_rebind() */
-+    memory_listener_register(&kml->listener, &address_space_memory);
-+    memory_listener_register(&kvm_io_listener, &address_space_io);
-+
-+    /*
-+     * kvm fd has changed. Commit the irq routes to KVM once more.
-+     */
-+    kvm_irqchip_commit_routes(s);
-+
-+    return ret;
-+}
-+
- static int kvm_init(AccelState *as, MachineState *ms)
- {
-     MachineClass *mc = MACHINE_GET_CLASS(ms);
-@@ -4014,6 +4077,7 @@ static void kvm_accel_class_init(ObjectClass *oc, const void *data)
-     AccelClass *ac = ACCEL_CLASS(oc);
-     ac->name = "KVM";
-     ac->init_machine = kvm_init;
-+    ac->reset_vmfd = kvm_reset_vmfd;
-     ac->has_memory = kvm_accel_has_memory;
-     ac->allowed = &kvm_allowed;
-     ac->gdbstub_supported_sstep_flags = kvm_gdbstub_sstep_flags;
-diff --git a/include/system/kvm.h b/include/system/kvm.h
-index 8f9eecf044..ade13dd8cc 100644
---- a/include/system/kvm.h
-+++ b/include/system/kvm.h
-@@ -358,6 +358,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s);
- int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp);
- int kvm_arch_init_vcpu(CPUState *cpu);
- int kvm_arch_destroy_vcpu(CPUState *cpu);
-+int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s);
- 
- #ifdef TARGET_KVM_HAVE_RESET_PARKED_VCPU
- void kvm_arch_reset_parked_vcpu(unsigned long vcpu_id, int kvm_fd);
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 0d57081e69..919bf95ae1 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -1568,6 +1568,11 @@ void kvm_arch_init_irq_routing(KVMState *s)
- {
- }
- 
-+int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
-+{
-+    abort();
-+}
-+
- int kvm_arch_irqchip_create(KVMState *s)
- {
-     if (kvm_kernel_irqchip_split()) {
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index 02819de625..cdfcb70f40 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -3252,6 +3252,11 @@ static int kvm_vm_enable_energy_msrs(KVMState *s)
-     return 0;
- }
- 
-+int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
-+{
-+    abort();
-+}
-+
- int kvm_arch_init(MachineState *ms, KVMState *s)
- {
-     int ret;
-diff --git a/target/loongarch/kvm/kvm.c b/target/loongarch/kvm/kvm.c
-index 26e40c9bdc..4171781346 100644
---- a/target/loongarch/kvm/kvm.c
-+++ b/target/loongarch/kvm/kvm.c
-@@ -1312,6 +1312,11 @@ int kvm_arch_irqchip_create(KVMState *s)
-     return kvm_check_extension(s, KVM_CAP_DEVICE_CTRL);
- }
- 
-+int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
-+{
-+    return 0;
-+}
-+
- void kvm_arch_pre_run(CPUState *cs, struct kvm_run *run)
- {
- }
-diff --git a/target/mips/kvm.c b/target/mips/kvm.c
-index 912cd5dfa0..28730da06b 100644
---- a/target/mips/kvm.c
-+++ b/target/mips/kvm.c
-@@ -44,6 +44,11 @@ unsigned long kvm_arch_vcpu_id(CPUState *cs)
-     return cs->cpu_index;
- }
- 
-+int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
-+{
-+    return 0;
-+}
-+
- int kvm_arch_init(MachineState *ms, KVMState *s)
- {
-     /* MIPS has 128 signals */
-diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-index 43124bf1c7..a48dc7670b 100644
---- a/target/ppc/kvm.c
-+++ b/target/ppc/kvm.c
-@@ -180,6 +180,11 @@ int kvm_arch_irqchip_create(KVMState *s)
-     return 0;
- }
- 
-+int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
-+{
-+    return 0;
-+}
-+
- static int kvm_arch_sync_sregs(PowerPCCPU *cpu)
- {
-     CPUPPCState *cenv = &cpu->env;
-diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
-index 47e672c7aa..ca384a8b85 100644
---- a/target/riscv/kvm/kvm-cpu.c
-+++ b/target/riscv/kvm/kvm-cpu.c
-@@ -1545,6 +1545,11 @@ int kvm_arch_irqchip_create(KVMState *s)
-     return kvm_check_extension(s, KVM_CAP_DEVICE_CTRL);
- }
- 
-+int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
-+{
-+    return 0;
-+}
-+
- int kvm_arch_process_async_events(CPUState *cs)
- {
-     return 0;
-diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
-index 916dac1f14..671c854634 100644
---- a/target/s390x/kvm/kvm.c
-+++ b/target/s390x/kvm/kvm.c
-@@ -393,6 +393,11 @@ int kvm_arch_irqchip_create(KVMState *s)
-     return 0;
- }
- 
-+int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
-+{
-+    return 0;
-+}
-+
- unsigned long kvm_arch_vcpu_id(CPUState *cpu)
- {
-     return cpu->cpu_index;
--- 
-2.42.0
+Is this intended to read the same regardless of endianness? It would
+mask possible endianness bugs.
 
+For the rest of the patch:
+
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
 

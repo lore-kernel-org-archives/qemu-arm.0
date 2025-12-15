@@ -4,93 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0A97D5B85D
-	for <qemu-arm@archiver.kernel.org>; Mon, 15 Dec 2025 17:33:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B530FD5B866
+	for <qemu-arm@archiver.kernel.org>; Mon, 15 Dec 2025 19:55:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vVCQu-000428-Pk; Mon, 15 Dec 2025 12:32:28 -0500
+	id 1vVEfC-0006Uu-UU; Mon, 15 Dec 2025 14:55:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vVCQM-0003v6-IU
- for qemu-arm@nongnu.org; Mon, 15 Dec 2025 12:32:04 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
+ id 1vVEf3-0006SC-EO
+ for qemu-arm@nongnu.org; Mon, 15 Dec 2025 14:55:13 -0500
+Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vVCQK-0000d1-NP
- for qemu-arm@nongnu.org; Mon, 15 Dec 2025 12:31:54 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-47118259fd8so37898125e9.3
- for <qemu-arm@nongnu.org>; Mon, 15 Dec 2025 09:31:52 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
+ id 1vVEf1-0004z7-C2
+ for qemu-arm@nongnu.org; Mon, 15 Dec 2025 14:55:13 -0500
+Received: by mail-qt1-x82d.google.com with SMTP id
+ d75a77b69052e-4ee147baf7bso1751cf.1
+ for <qemu-arm@nongnu.org>; Mon, 15 Dec 2025 11:55:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1765828509; cv=none;
+ d=google.com; s=arc-20240605;
+ b=EEvlOKT/Tq9tTAEbS2rhEzYs0Vh3WaGK+vbtGlnJYmskBaslGp/G2J6baXRuPjKcp3
+ E3f7nioc9kjFxrbWYZGuvxgIClch2dpTN2z0ZvrJ/4hucg4ZMOs3K2obbfqeVMGLqOTu
+ K2u2oI7KakDHsS4qPouLqSzmoAcXuzIR+H7Yi0LPzH7B1bubKSWQAY+JSnSKgH+gW0ej
+ PN9cv66+JHWJiZhsyosY5Ke1wkQJZ1+Iljx+uqnAqSf1uZjFaySp8mY+jNPOFW5yRTHd
+ p+R7M6eCKgE7kcTox8OxGOTtpYwWlzR7H97mhfrsvvksYq02VcGgR9DMV9O3IVt9WUYH
+ swtA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=N/c7i6VPcGhnY9ze/Hxv8Cxes8G194XI+dNW0Y+cbwE=;
+ fh=MOWy9o8SeZbUXd5asuOFvS9OchKyT/a5GxNpWDpm1nM=;
+ b=OrVWF0DcOduLKLzV2JVhHKY7agOPuLrBpHCfcYFt4iyyyJZYvhwBOKbfCiQvcmABri
+ XuZNrtZKf3PkgQWnomfnBekD1Yp8omo20XyLzrfMyMN76sXdUfu0rFMDAZk6tEXernOB
+ Cl3eWaibRT8mtrniuZgwSZ3ZYymK840WFga54BpzEJgsB02WGcAZ8dVR99X1nGCLiEJl
+ 53a7zuARBRwHM576TdaQTEihaTe0Z77r3Qy00WhWQry6vzFe15EZ9DUKaSl3MDWPvHGg
+ WKFim33CD92vjCT9QOYQTWz0KP5tFEJKc4651QJNVvXVNMqBv0G1RFcje7cvQ2gKRnzT
+ Fb3A==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765819911; x=1766424711; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=utk3Qx5d7Bzekg4ne1zgrzBmGVruPDI7zIygOkpdbyo=;
- b=s0GZJakw1y6dU2R7e2nLqUGuKhZ2/AwKsEOrcUacyiQkZogG/JFXifPqyfpgDkfY3e
- TaVbfLCttLX8p7m4B+pPJC4gjy571L4Qfeh9svR7B58FlMTOZRClpp35NOcDg6JiHjN3
- tlbvqP6A1yX3cM/7SKdnJ3y0WcJG8yPO2MaaS0VdH71L09n77BO6r71Dwfwbt8CuIVUI
- 4YsrJKSCzQcMk1IVkSnRFCr6DCRYz1WkvC6XoKZJbh3oWr7cuPLcsMBmEe21TUTkENG5
- viH8pd6Nb8ErIQSylAIMZdi6ZoAN9kiO8NvDQ80vAu62F8q3r9etTuA08WtVNLhX9HnT
- iINQ==
+ d=google.com; s=20230601; t=1765828509; x=1766433309; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=N/c7i6VPcGhnY9ze/Hxv8Cxes8G194XI+dNW0Y+cbwE=;
+ b=tX94Mr0FPxxFmH8/JJ7l1v2KzpA1B544mTTVrnirtXIeohNZyK9krRV7+5SfT8SINI
+ ic0kA/XE7PtMt3rh6GobqUVkTy/zYOHfUr/ywHs8OpY9riC8UiFP9wzrHVmo0bpw/BT1
+ xXGAJD2LEK3qnVU2KwEzhrLx63Uhbktx2D13ky21fHNAZGYigyRLn5e8M+uRVV5r470R
+ LSq2p9wU0rbWlBWf4tOwLrG1NoN2ZcHc3Dje60itWVXtPhcYioyWVm5sAPknCk3qhJn2
+ KRNlHt2xNqrdo/3wLUXda63ceW0ZDv3DXTHbeV4eOjbx0vlxrednZtvbnt8/Z6Ge6RNO
+ IAvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765819911; x=1766424711;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=utk3Qx5d7Bzekg4ne1zgrzBmGVruPDI7zIygOkpdbyo=;
- b=d+OZKVt1QGJkoTtWwzNBW3uyv6o7YTHsu72QeHPWIVvks8Og7VSjQ/HNJ0X0pjzq7m
- KV8uPiBqKG9wG4pQqti433cJZ9nlJsqvHe3GdcJZIzaHkZa+CpMyuqqFfwxmQcqkhPxC
- Gje4ILFYPanRRHCKP5H33q6oBJM73hea+rU+S0TGYDNhyWZHLRLblb4YPcpQIdSDGtZG
- Jt32N2Fc6h9JwTVCkJ1XgiRwmv/xiMrJeWX5WLnb3c97ASNoKVDF6hCZiCNL39aJsyBx
- rk7ztSEZKON74gwoh2Wfvf4VikxVIIqNEP8mYlTUgZaTI2jNE3CkSALjvuSEFTHqZ/P5
- hQSA==
+ d=1e100.net; s=20230601; t=1765828509; x=1766433309;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=N/c7i6VPcGhnY9ze/Hxv8Cxes8G194XI+dNW0Y+cbwE=;
+ b=SrcbsHnTfnIJsxR6FHBqZK7FaRtQcfaVDpkirG4TSGHcX3m2ioYC4yzdRKMB62zvEq
+ apjbhMxyYOWt0/YgE0rjwJywZJAKqNkqCXcWCbfpp/DVZp3OBYwnsgQ2ACviO1I+ST+3
+ CSG6G1y1ZmIKwkoXYcTLvTXT6jYunzVMvZqRp1w0Uext4oEhPTxvt6YcsTjankC0wUfC
+ f2NUijGnasJ0eC7tLYiZGGvfruDFY3miNS6RKb193nVlj7QvE6CdgeJhDA5CeviScoz/
+ 1qdgFD6pSGThoxrTm44h47jPqYTx1mwwBGwBr0pBVPscIIxMHj69FpE0gHnvNFvsDdwm
+ tmLg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW7pPsad5NVG9yfa2YRMoZ/LUmUBQ8TIS+MX045vcgQdqxuiJrrX86zKQp1/fwMzRpKOlTx8Jnh1Q==@nongnu.org
-X-Gm-Message-State: AOJu0YyBO8/5JdwewLtYqFog2CVj5Rjn5OZJN9PY7dENCQcUZIQEI3Kk
- skRmZRdzGKJTOvNpl0upC1ilyT7jc7lhsb4DcsGYv77BDSP0UOmRMSq8I0pj3X5zQ/E=
-X-Gm-Gg: AY/fxX6KM+N6bppVlwOg3S8zFyCp1PRudFo5tytzBBm4+ssbDAeZfCMOxpNQitpBXX1
- gao3o7ty6CVp/bSvAG6KIKkf82GbHMA02H5WDl8BdIgOtk0AZ7qpottJssUVOs9Olwfbd/TOYIQ
- MXQfAyrbP3zFw3m19NpJp9DaADxeCAZQaXp+NzexS5mhE2gQ7NGVhZQq6Mq5bj9XBmuaH47QLGV
- lSrqvZwQUBS0MkwTddefnAUDTiCLpGYd02O5q8Yu59eu1rTd1d7dkqtoOwM5Xf+uqgUJuBFqIxy
- HH+TKiiJMN4m/hFEfHzgQhBpqzxa4c6nexZqJnw1LBuP19/6q1sumvdaqXrl7wvWLWrE0b7hsWh
- 9bqsI+HSABPveMNrl7t5xeJ3bd0AZkf+P4j5lcZPS5Yn1xu7WEDDGY1mb4IjZ7ipqguJgdl/jHE
- Q7wQCJ1VD56bRIupeNlzanC5qn2U0tuINxtXVBsu2I1taxSS5YJrR5xg==
-X-Google-Smtp-Source: AGHT+IH9h5hz60ia6mDCmEyHEwDc4k9tIve52UJKgVrlhMNDAMhPZLgsS6wsonV94nInykNTI0fBAg==
-X-Received: by 2002:a05:600c:4f86:b0:45d:d97c:236c with SMTP id
- 5b1f17b1804b1-47a8f9071c6mr123764175e9.21.1765819911036; 
- Mon, 15 Dec 2025 09:31:51 -0800 (PST)
-Received: from [192.168.69.202] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47a8f7676ffsm201659355e9.4.2025.12.15.09.31.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Dec 2025 09:31:50 -0800 (PST)
-Message-ID: <4ff1ac43-a00f-4353-85c8-6a99aa14658b@linaro.org>
-Date: Mon, 15 Dec 2025 18:31:49 +0100
+ AJvYcCV7aC2HV+Zu73m8ZRQM6xbl1keT/zUh6nc/rI6KaFkWnqXfMy4w02c6poDEDgvRR5TmSpMd4YYBMA==@nongnu.org
+X-Gm-Message-State: AOJu0YyicWWviJ0b4JPlw89oVhC5taWHf6XUqLA2yYuWEgeF8M0Urz/b
+ +UKTCzrOckMMmBQ2Yd+PSfPUuHq1BOssq1vtBhLqaJjNe2qTt/1HKOafxEwh8SU6KC/jwfOa9qa
+ ACnOgRurEi1MSjvS9pFagH5oomUCV0Ck0svLDXkSw
+X-Gm-Gg: AY/fxX6VEMJ0kytiIRzbE/AGcPsC/OPaT6DzMnHF0s4cxAOGMekuQqcN3oFAbyfnKYf
+ lA2b9LLOL9tTpoFqYlc5S4QEzKuv69VU7Xiz6Ko1PGApWnINMp+2tQkwQQO1PNLfmnXAHYrIYbr
+ 6enIFAz5jAQhXvsPOnlC0UhgC3QFVaGbWYvXAeRVgYUp5olNgTdPhROiy6xmRRPVCeyeNmpJtmQ
+ z5uxHLgKBm4qGxJdtgx7hM0K9C28WUwRKIM1BK0LCr6lwnAYXMClokRL8EiyGslYKaPiJzMBQTX
+ 6T1sHDrmoggT/38aHihrk2EElQ==
+X-Google-Smtp-Source: AGHT+IFaPoud79ZQtIL/y7abE6g0Z+mwHHJxHggsQc033QBNsJU/dDjV/ey5lZNLM+w7w+7isw7zAYILIkxZhdv2VX4=
+X-Received: by 2002:a05:622a:65c6:b0:4b7:a72f:55d9 with SMTP id
+ d75a77b69052e-4f1dd5ed363mr912161cf.13.1765828509027; Mon, 15 Dec 2025
+ 11:55:09 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH] hw/misc: make the tz-ppc-port names more useful
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Jim MacArthur <jim.macarthur@linaro.org>,
+References: <20251208074436.1871180-1-kane_chen@aspeedtech.com>
+ <CA+QoejW4vx7U-QYBK6GY10NpwXyQFe92j9M=OeURWz_D5vBbUw@mail.gmail.com>
+ <SI6PR06MB76310C943D65CE7456178A50F7A1A@SI6PR06MB7631.apcprd06.prod.outlook.com>
+In-Reply-To: <SI6PR06MB76310C943D65CE7456178A50F7A1A@SI6PR06MB7631.apcprd06.prod.outlook.com>
+From: Nabih Estefan <nabihestefan@google.com>
+Date: Mon, 15 Dec 2025 11:54:55 -0800
+X-Gm-Features: AQt7F2obMtRVZfcS8Hri0ZacUAb0tpZBcFtY51y9FYqKJWvLltJsp8sL1UBiRGc
+Message-ID: <CA+QoejVrXQ4fr_93-PSj9SPitmmxd2=+2SrsaRCZcN9iVakQpw@mail.gmail.com>
+Subject: Re: [PATCH v3 00/18] hw/arm/aspeed: AST1700 LTPI support and device
+ hookups
+To: Kane Chen <kane_chen@aspeedtech.com>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
  Peter Maydell <peter.maydell@linaro.org>,
- "open list:ARM PrimeCell and..." <qemu-arm@nongnu.org>
-References: <20251215170548.2594651-1-alex.bennee@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251215170548.2594651-1-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ Steven Lee <steven_lee@aspeedtech.com>, 
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ Troy Lee <troy_lee@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82d;
+ envelope-from=nabihestefan@google.com; helo=mail-qt1-x82d.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,101 +129,189 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 15/12/25 18:05, Alex Bennée wrote:
-> The TrustZone peripheral protection controller (tz-ppc) sits between
-> peripherals and the main system. However this results in "info mtree"
-> looking at bit confusing, especially as the sequence numbers can
-> overlap and miss steps:
-> 
->        0000000000000000-ffffffffffffffff (prio -2, i/o): system
->          0000000000000000-00000000003fffff (prio 0, i/o): tz-mpc-upstream
->          0000000000400000-00000000007fffff (prio 0, i/o): alias ssram-0-alias @tz-mpc-upstream 0000000000000000-00000000003fffff
->          0000000028000000-00000000281fffff (prio 0, i/o): tz-mpc-upstream
->          0000000028200000-00000000283fffff (prio 0, i/o): tz-mpc-upstream
->          0000000040080000-0000000040080fff (prio 0, i/o): iotkit-secctl-ns-regs
->          0000000040100000-0000000040100fff (prio 0, i/o): tz-ppc-port[1]
->          0000000040101000-0000000040101fff (prio 0, i/o): tz-ppc-port[2]
->          0000000040102000-0000000040102fff (prio 0, i/o): tz-ppc-port[3]
->          0000000040103000-0000000040103fff (prio 0, i/o): tz-ppc-port[4]
->          0000000040110000-0000000040110fff (prio 0, i/o): tz-ppc-port[0]
->          0000000040111000-0000000040111fff (prio 0, i/o): tz-ppc-port[1]
->          0000000040112000-0000000040112fff (prio 0, i/o): tz-ppc-port[2]
->          0000000040113000-0000000040113fff (prio 0, i/o): tz-ppc-port[3]
->          0000000040200000-0000000040200fff (prio 0, i/o): tz-ppc-port[5]
->          0000000040201000-0000000040201fff (prio 0, i/o): tz-ppc-port[6]
->          0000000040202000-0000000040202fff (prio 0, i/o): tz-ppc-port[7]
->          0000000040203000-0000000040203fff (prio 0, i/o): tz-ppc-port[8]
->          0000000040204000-0000000040204fff (prio 0, i/o): tz-ppc-port[9]
->          0000000040205000-0000000040205fff (prio 0, i/o): tz-ppc-port[0]
->          0000000040206000-0000000040206fff (prio 0, i/o): tz-ppc-port[1]
->          0000000040207000-0000000040207fff (prio 0, i/o): tz-ppc-port[10]
->          0000000040208000-0000000040208fff (prio 0, i/o): tz-ppc-port[11]
->          0000000040209000-0000000040209fff (prio 0, i/o): tz-ppc-port[2]
->          000000004020a000-000000004020afff (prio 0, i/o): tz-ppc-port[3]
->          000000004020b000-000000004020bfff (prio 0, i/o): tz-ppc-port[4]
->          000000004020c000-000000004020cfff (prio 0, i/o): tz-ppc-port[12]
->          000000004020d000-000000004020dfff (prio 0, i/o): tz-ppc-port[13]
->          0000000040300000-0000000040300fff (prio 0, i/o): tz-ppc-port[0]
->          0000000040301000-0000000040301fff (prio 0, i/o): tz-ppc-port[1]
->          0000000040302000-0000000040302fff (prio 0, i/o): tz-ppc-port[2]
->          0000000041000000-000000004113ffff (prio 0, i/o): tz-ppc-port[0]
->          0000000042000000-00000000420000ff (prio 0, i/o): tz-ppc-port[5]
->          0000000048007000-0000000048007fff (prio -1000, i/o): FPGA NS PC
->          0000000050080000-0000000050080fff (prio 0, i/o): iotkit-secctl-s-regs
->          0000000058007000-0000000058007fff (prio 0, i/o): tz-ppc-port[0]
->          0000000058008000-0000000058008fff (prio 0, i/o): tz-ppc-port[1]
->          0000000058009000-0000000058009fff (prio 0, i/o): tz-ppc-port[2]
->          0000000080000000-0000000080ffffff (prio 0, ram): mps.ram
-> 
-> So as a quality of life feature lets expose the name of the underlying
-> region so we get something more useful:
-> 
->      0000000000000000-ffffffffffffffff (prio -2, i/o): system
->        0000000000000000-00000000003fffff (prio 0, i/o): tz-mpc-upstream
->        0000000000400000-00000000007fffff (prio 0, i/o): alias ssram-0-alias @tz-mpc-upstream 0000000000000000-00000000003fffff
->        0000000028000000-00000000281fffff (prio 0, i/o): tz-mpc-upstream
->        0000000028200000-00000000283fffff (prio 0, i/o): tz-mpc-upstream
->        0000000040080000-0000000040080fff (prio 0, i/o): iotkit-secctl-ns-regs
->        0000000040100000-0000000040100fff (prio 0, i/o): tz-ppc-port[gpio0]
->        0000000040101000-0000000040101fff (prio 0, i/o): tz-ppc-port[gpio1]
->        0000000040102000-0000000040102fff (prio 0, i/o): tz-ppc-port[gpio2]
->        0000000040103000-0000000040103fff (prio 0, i/o): tz-ppc-port[gpio3]
->        0000000040110000-0000000040110fff (prio 0, i/o): tz-ppc-port[pl080]
->        0000000040111000-0000000040111fff (prio 0, i/o): tz-ppc-port[pl080]
->        0000000040112000-0000000040112fff (prio 0, i/o): tz-ppc-port[pl080]
->        0000000040113000-0000000040113fff (prio 0, i/o): tz-ppc-port[pl080]
->        0000000040200000-0000000040200fff (prio 0, i/o): tz-ppc-port[uart]
->        0000000040201000-0000000040201fff (prio 0, i/o): tz-ppc-port[uart]
->        0000000040202000-0000000040202fff (prio 0, i/o): tz-ppc-port[uart]
->        0000000040203000-0000000040203fff (prio 0, i/o): tz-ppc-port[uart]
->        0000000040204000-0000000040204fff (prio 0, i/o): tz-ppc-port[uart]
->        0000000040205000-0000000040205fff (prio 0, i/o): tz-ppc-port[pl022]
->        0000000040206000-0000000040206fff (prio 0, i/o): tz-ppc-port[pl022]
->        0000000040207000-0000000040207fff (prio 0, i/o): tz-ppc-port[arm_sbcon_i2c]
->        0000000040208000-0000000040208fff (prio 0, i/o): tz-ppc-port[arm_sbcon_i2c]
->        0000000040209000-0000000040209fff (prio 0, i/o): tz-ppc-port[pl022]
->        000000004020a000-000000004020afff (prio 0, i/o): tz-ppc-port[pl022]
->        000000004020b000-000000004020bfff (prio 0, i/o): tz-ppc-port[pl022]
->        000000004020c000-000000004020cfff (prio 0, i/o): tz-ppc-port[arm_sbcon_i2c]
->        000000004020d000-000000004020dfff (prio 0, i/o): tz-ppc-port[arm_sbcon_i2c]
->        0000000040300000-0000000040300fff (prio 0, i/o): tz-ppc-port[mps2-scc]
->        0000000040301000-0000000040301fff (prio 0, i/o): tz-ppc-port[i2s-audio]
->        0000000040302000-0000000040302fff (prio 0, i/o): tz-ppc-port[mps2-fpgaio]
->        0000000041000000-000000004113ffff (prio 0, i/o): tz-ppc-port[gfx]
->        0000000042000000-00000000420000ff (prio 0, i/o): tz-ppc-port[lan9118-mmio]
->        0000000048007000-0000000048007fff (prio -1000, i/o): FPGA NS PC
->        0000000050080000-0000000050080fff (prio 0, i/o): iotkit-secctl-s-regs
->        0000000058007000-0000000058007fff (prio 0, i/o): tz-ppc-port[tz-mpc-regs]
->        0000000058008000-0000000058008fff (prio 0, i/o): tz-ppc-port[tz-mpc-regs]
->        0000000058009000-0000000058009fff (prio 0, i/o): tz-ppc-port[tz-mpc-regs]
->        0000000080000000-0000000080ffffff (prio 0, ram): mps.ram
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Cc: Jim MacArthur <jim.macarthur@linaro.org>
-> ---
->   hw/misc/tz-ppc.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+On Wed, Dec 10, 2025 at 10:42=E2=80=AFPM Kane Chen <kane_chen@aspeedtech.co=
+m> wrote:
+>
+> Hi Nabih,
+>
+> Thank you for your review and comments. I will wait a few more days
+> to see if there is additional feedback from others. If you encounter
+> anything unexpected in your local environment, please let me know. I
+> will try to address it in the v4 patch if possible.
+>
+> Best regards,
+> Kane
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Hi Kane,
 
+I just discovered that our machines seem to fail to boot halfway
+through the stack, but work as expected at the top of the stack. My
+guess is that the driver for the AST1700 doesn't quite know how to
+deal with half the model existing and half of it missing. Is it
+possible to reorganize the patches so the `hw/arm/aspeed: Integrate
+AST1700 device into AST27X0` patch comes last? That way the driver
+will only know of the existence of the AST1700 when the model fully
+exists in QEMU. Mostly to make sure the machine works in any commit
+and not just at HEAD.
+
+Thanks!
+Nabih
+
+
+> > -----Original Message-----
+> > From: Nabih Estefan <nabihestefan@google.com>
+> > Sent: Thursday, December 11, 2025 7:02 AM
+> > To: Kane Chen <kane_chen@aspeedtech.com>
+> > Cc: C=C3=A9dric Le Goater <clg@kaod.org>; Peter Maydell
+> > <peter.maydell@linaro.org>; Steven Lee <steven_lee@aspeedtech.com>; Tro=
+y
+> > Lee <leetroy@gmail.com>; Jamin Lin <jamin_lin@aspeedtech.com>; Andrew
+> > Jeffery <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>;
+> > open list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC
+> > here <qemu-devel@nongnu.org>; Troy Lee <troy_lee@aspeedtech.com>
+> > Subject: Re: [PATCH v3 00/18] hw/arm/aspeed: AST1700 LTPI support and
+> > device hookups
+> >
+> > On Sun, Dec 7, 2025 at 11:45=E2=80=AFPM Kane Chen via <qemu-devel@nongn=
+u.org>
+> > wrote:
+> > >
+> > > From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> > >
+> > > Hi all,
+> > >
+> > > LTPI (LVDS Tunneling Protocol & Interface) is defined in the OCP
+> > > DC-SCM
+> > > 2.0 specification (see Figure 2):
+> > > https://www.opencompute.org/documents/ocp-dc-scm-2-0-ltpi-ver-1-0-pdf
+> > >
+> > > LTPI provides a protocol and physical interface for tunneling various
+> > > low-speed signals between the Host Processor Module (HPM) and the
+> > > Satellite Controller Module (SCM). In Figure 2 of the specification,
+> > > the AST27x0 SoC (left) integrates two LTPI controllers, allowing it t=
+o
+> > > connect to up to two AST1700 boards. On the other side, the AST1700
+> > > consolidates HPM FPGA functions and multiple peripheral interfaces
+> > > (GPIO, UART, I2C, I3C, etc.) onto a single board.
+> > >
+> > > Because the AST1700 exposes additional I/O interfaces (GPIO, I2C, I3C=
+,
+> > > and others), it acts as an I/O expander. Once connected over LTPI, th=
+e
+> > > AST27x0 can control additional downstream devices through this link.
+> > >
+> > > This patch series is based on the SGPIO changes:
+> > > https://lore.kernel.org/qemu-devel/20251106-aspeed-sgpio-v1-0-b026093=
+7
+> > > 16fa@google.com/
+> > >
+> > > It introduces a basic LTPI controller model and wires it into the
+> > > AST27x0 SoC. The series also adds the AST1700-specific LTPI expander
+> > > device and incrementally connects common peripherals on the AST1700
+> > > model. For the I3C block, which may cause kernel crashes, its MMIO
+> > > region is modeled as an unimplemented device to reserve address space
+> > > and make the missing functionality explicit, ensuring stable guest
+> > > probing.
+> > >
+> > > In the official release images, the AST1700 functions are not include=
+d
+> > > by default. To test the AST1700-related functionality, please include
+> > > the following DTS files for probing:
+> > >
+> > https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/a
+> > > rm64/boot/dts/aspeed/aspeed-ltpi0.dtsi
+> > >
+> > https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/a
+> > > rm64/boot/dts/aspeed/aspeed-ltpi1.dtsi
+> > >
+> > > After including these DTS files in the BMC image, you can verify LTPI
+> > > functionality using the following scenarios:
+> > >
+> > > 1. In U-Boot:
+> > >    Run the ltpi command to trigger the LTPI connection and display th=
+e
+> > >    current connection status.
+> > > 2. In BMC Linux:
+> > >    Run i2cdetect -y <16-38> to scan and test the I2C buses exposed by
+> > >    the AST1700.
+> > >
+> > > Any feedback or suggestions are appreciated!
+> > >
+> > > Kane
+> > >
+> >
+> > I left some nit-picky notes on some of the patches, but after fixing pa=
+tch 03
+> > everything else seems good. FWIW I brought the whole patchset into our
+> > branch and not only does everything compile properly, but I can also se=
+e and
+> > interact with the i2c buses from the AST1700 in our internal platforms.=
+ Will
+> > wait for v4 to add the reviewed and tested tags, but LGTM!
+> >
+> > > ---
+> > >
+> > > ChangeLog
+> > > ---------
+> > > v3:
+> > > - Add PWM model
+> > > - Integrate the SGPIO model
+> > > - Fix I2C test case failure
+> > > - Refine code structure
+> > >
+> > > v2:
+> > > - Separate the AST1700 model into a standalone implementation
+> > > - Refine the mechanism for assigning the AST1700 board number
+> > >
+> > > v1:
+> > > - Initial version
+> > > ---
+> > >
+> > > Kane-Chen-AS (18):
+> > >   hw/misc: Add LTPI controller
+> > >   hw/arm/aspeed: Attach LTPI controller to AST27X0 platform
+> > >   hw/misc: Add basic Aspeed PWM model
+> > >   hw/arm/aspeed: Add AST1700 LTPI expander device model
+> > >   hw/arm/aspeed: Integrate AST1700 device into AST27X0
+> > >   hw/arm/aspeed: Integrate interrupt controller for AST1700
+> > >   hw/arm/aspeed: Attach LTPI controller to AST1700 model
+> > >   hw/arm/aspeed: Attach UART device to AST1700 model
+> > >   hw/arm/aspeed: Attach SRAM device to AST1700 model
+> > >   hw/arm/aspeed: Attach SPI device to AST1700 model
+> > >   hw/arm/aspeed: Attach ADC device to AST1700 model
+> > >   hw/arm/aspeed: Attach SCU device to AST1700 model
+> > >   hw/arm/aspeed: Attach GPIO device to AST1700 model
+> > >   hw/arm/aspeed: attach I2C device to AST1700 model
+> > >   hw/arm/aspeed: Attach WDT device to AST1700 model
+> > >   hw/arm/aspeed: Attach PWM device to AST1700 model
+> > >   hw/arm/aspeed: Attach SGPIOM device to AST1700 model
+> > >   hw/arm/aspeed: Model AST1700 I3C block as unimplemented device
+> > >
+> > >  include/hw/arm/aspeed_ast1700.h |  53 +++++++
+> > >  include/hw/arm/aspeed_soc.h     |  25 ++-
+> > >  include/hw/i2c/aspeed_i2c.h     |   1 +
+> > >  include/hw/intc/aspeed_intc.h   |   2 +
+> > >  include/hw/misc/aspeed_ltpi.h   |  32 ++++
+> > >  include/hw/misc/aspeed_pwm.h    |  31 ++++
+> > >  hw/arm/aspeed_ast1700.c         | 269
+> > ++++++++++++++++++++++++++++++++
+> > >  hw/arm/aspeed_ast27x0.c         | 163 +++++++++++++++++--
+> > >  hw/i2c/aspeed_i2c.c             |  19 ++-
+> > >  hw/intc/aspeed_intc.c           |  60 +++++++
+> > >  hw/misc/aspeed_ltpi.c           | 194 +++++++++++++++++++++++
+> > >  hw/misc/aspeed_pwm.c            | 121 ++++++++++++++
+> > >  hw/arm/meson.build              |   1 +
+> > >  hw/misc/meson.build             |   2 +
+> > >  hw/misc/trace-events            |   4 +
+> > >  15 files changed, 957 insertions(+), 20 deletions(-)  create mode
+> > > 100644 include/hw/arm/aspeed_ast1700.h  create mode 100644
+> > > include/hw/misc/aspeed_ltpi.h  create mode 100644
+> > > include/hw/misc/aspeed_pwm.h  create mode 100644
+> > > hw/arm/aspeed_ast1700.c  create mode 100644 hw/misc/aspeed_ltpi.c
+> > > create mode 100644 hw/misc/aspeed_pwm.c
+> > >
+> > > --
+> > > 2.43.0
+> > >
+> > >
 

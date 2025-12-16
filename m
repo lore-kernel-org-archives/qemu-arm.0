@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F800D64061
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Dec 2025 23:58:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 527DBD64061
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Dec 2025 23:59:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vVewE-0000Xb-PG; Tue, 16 Dec 2025 18:58:42 -0500
+	id 1vVex6-00014P-H9; Tue, 16 Dec 2025 18:59:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vVewD-0000XR-RA
- for qemu-arm@nongnu.org; Tue, 16 Dec 2025 18:58:41 -0500
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+ id 1vVex5-00014A-5s
+ for qemu-arm@nongnu.org; Tue, 16 Dec 2025 18:59:35 -0500
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vVewB-0000qu-P6
- for qemu-arm@nongnu.org; Tue, 16 Dec 2025 18:58:41 -0500
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-7b9215e55e6so3765107b3a.2
- for <qemu-arm@nongnu.org>; Tue, 16 Dec 2025 15:58:39 -0800 (PST)
+ id 1vVex3-0000y9-Q0
+ for qemu-arm@nongnu.org; Tue, 16 Dec 2025 18:59:34 -0500
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-2a0d5c365ceso38970765ad.3
+ for <qemu-arm@nongnu.org>; Tue, 16 Dec 2025 15:59:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765929517; x=1766534317; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1765929572; x=1766534372; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=EF0id/+k3FGCmd4ldUZgaea2Q+pPpVUsEhxcIAFitHc=;
- b=RKQ7QkFR/bdLHEZaO+vq4ROHROwX5+varX8olxxoPrQAr/lZerWNsz3c8XPr8ZrI5f
- 0jczCdyDFTS05kZQvCguGFgl5coJ9997hrpJD1ifiwMT5JoFnvK9w0rXT3xUpFOeUfW5
- Skq8AWPG+WLV9GrSANEMrC5WlZkd6gnmY3UC4x+KP+zxU3dH80BDlg5hn1FQ6UqmeCPz
- jbSWzWQQncz20eLuxGM96IX7kc7iy80Z/6GuPCjX9SojnQ6FQuIBTNDpbk4aUhbMkCrz
- EcDajohIEwdwVFJtSjQJ7Milyx0rzBSXAetZDHKKDVuA2dQD3x+KhmbphmcWCQXd8GMj
- e73w==
+ bh=tV91BRNaDK22iZZZaxQn+mozNe/Wg85fwHSi53iOtps=;
+ b=qm/kjLCGtK/OL2rL4+L0PNHpdZXgJHL3LjozGdAobHy/c6TCjkhOSOwy+ZRSKnd+W2
+ Gf3l9sNhfIVl50HMAlM5M0R3K/pC92xqvnADyqBWkHKTGFWI4UAlZLIQaptO6vKJ8Slk
+ DF+WNqKVP2/6AE3N6B+fQDm87N98oVrTEVIOwNyf46lT4X8AORXyx98hiRCE+7klPJiN
+ tvtZhL+smUhXk/eQUp1QnDXxezeqRf2vZTg+eG9XqXuQ7uS/k7MtZxWmPIb1fdtqXQ1p
+ B8KDvAxiV1kWfVYCxCYdsf2ms34nhc42hi22TxcnXgQbMtfI05XeQbhRLAYOXsgfzrv7
+ Dd4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765929517; x=1766534317;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1765929572; x=1766534372;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=EF0id/+k3FGCmd4ldUZgaea2Q+pPpVUsEhxcIAFitHc=;
- b=rE/dGM9hNNpSsLdJO3nA8qjRkMCZt4BCfJOvgk9a+p6QxIyA5Iv9Hc8OS6nGiMpF8W
- 9uPYvdc/QqizCvV/i5xA4GHkTdDPldag1kmqj9xHUAR6PgsRuDo1XAxEMU9JctkL2acn
- iGEbvVgilZcWocNvNdT13fBDC23wzroJMbDFr6VYxr9DcKjEUSP2mBnsavu7K5gkxwYR
- JraTX7TcpOUeaSfFy9RtLMRh0CHCuEyX7T94103j80/DUH8fXaWUXIGY5TL8L2bKIDfJ
- tJaxA+bmG3cSwQXNj6MErbxXx6zc+VP9/W/X2jfixiLN4VjNgDESwkZtiQtDgd54tLca
- VxpQ==
+ bh=tV91BRNaDK22iZZZaxQn+mozNe/Wg85fwHSi53iOtps=;
+ b=NrCVFtWsUIF81MECoZkee4pXuGt0JKQxupMxeEMuPVcmPLCUIw+cXN2EKnLnuBREPY
+ EIUtX9uLxkAwRwBepU66cCUSQ8jHA0kQYgYG+pUZlPdATGBcjKRUHTFmUh0nqM3K9LKJ
+ MRR4/UgkYYw25H6ttnumWQ1+Sk6S+AYKkzi29RHdxMSn2sPVB/ULUOMlK3OC4MqsUvNO
+ FWpv15eILLjuh1JI95zWbZwnZ96hYO/9GniYZxJF8F3/jXeNEpXLbS9SpH6k9aGfErWB
+ RUbetgT8Z7I2zIf5GbyXnn5v9HFPk+eODPiz21/4VMhpQv7vcxcrafg1b889lqQP0wZL
+ uThQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV+jbHHIWj7Pxu4cIEh2SH+xi3UFtCezl/u1ecJaxUsOMgrz4RX+hKmgSnjfcNoMqb/MtBcH+SWmQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxSQ1OxwPV6Ly7i2kar2C2dglrbvmvqbt/+HvE1sy49ycJmGp8s
- MVquaojYGhwZuvxDrX5+LN/I65EBsuAl7n2PW6XkNXGgFGgsCLl8StBCodd/lgr9oKg=
-X-Gm-Gg: AY/fxX5YQMi+6LcTPd8Yd/cIvsKHbjU3cjs8+1SOXhLaHH4gZRhiOLYuhwdjLbBkA+Z
- sKBEfv9uR4RjGivXggvkPRtyP9bB9/5sZSBrphGpa4Sj4yX14gOYPe+3SsRanaq8k5dnhyWPEgX
- OLzMki5ZKWjfW6dssVDm53dkTiHH+kN4hUXmm1q4ID2NfOX6OYpTPhbv7VreSuTCD9KZKldBNc8
- BLpSMeg4OqUnmcgHFZJyxSQ2oJ1XneEn1G5a5wezGG1buvip5GgMll8yMV9BY/T1rqRwsLOWOLO
- jpW8+lRMZgbYe+ie69C8SpdmyA/eJ1sQUmTnGAgNca8W75u/Bvv1tGvG5LLkylMqDLiZsf8e+bG
- 6TxZGABCC9/CsCTCRN22as0LmbDJq3ayEzWDaHsgO7Hv/UamsbysgUTj0JIEpJqV0hs8PQ7NsEV
- GAwfuGZJYcrJ8dxvDPhOqKQ3xGAIugoKw34aLf9rgUm4ckx9iK4AcKwUs=
-X-Google-Smtp-Source: AGHT+IFeH0wfAGHUWbLWlp3YPJmCRBAYKyediMR2UsDkCqqlfPvjjOAK/9ILsfxv/KnZjQuPxeKGUg==
-X-Received: by 2002:a05:6a00:3391:b0:7e8:4587:e8d2 with SMTP id
- d2e1a72fcca58-7f66a079ee9mr15827110b3a.69.1765929517033; 
- Tue, 16 Dec 2025 15:58:37 -0800 (PST)
+ AJvYcCVNT9nigdkXi0shlwOtB5US23GJsgqoBBOdO9YQ2h64HRyWdfcygG0rn4KD+srDA4hD0sncBHg+5g==@nongnu.org
+X-Gm-Message-State: AOJu0Yy+hv4NE1op0MKAiXbaE9SuK7hbHR/iWYlu0drHkGa24JISODge
+ 0iQF2uOX9xgRcnmvSp3e+WOkc+v18m7w52o50uRRo5OXSmeBPfMdsDEeCYoJW+ttqtM=
+X-Gm-Gg: AY/fxX6pY7Ckv4R8tK7TPRyRm2eU5m6u+OGpuP8/FAGYremGTGP4Mk3TAUnmAg/ZJ8e
+ i7O09WQn6hiEaTqLrDL6PJUtgSQLii4H67OBnUHy5rvwoFeS2xRMNs1pLTcWyuyffyS9ArO5pfd
+ 0L/lYdcPagTQ/V4VxF9lGRNS9aO5yitLGBKzE4EvD2sgXiau8WXhFm6l23h4MBMZFwFBecDxP47
+ Qx9dVNeKlDGScCFV6tNLHPyBGanN6Y3pm2qLAMLMJ6f4wNIQjsHdizBiP5i5qGEWz0+8lhN8jbZ
+ 1wpKkBc7qK4R0DVat/lIXgIBQ1HCTtu6IahZdQh1DrUQPI2i2iK5Bn6rQDKA55K5z7QkP+AI6GV
+ RzXxrq3yYxCnY5fZnD7n5cR8N8YR2xpDh+YGAokLThQiWmCkNf/ERNxgolHV8ixdh3el9yuYy0V
+ 62g9kuxK4ns4UzJzzdRzAfmyYv1g0fDUAjpEzJOxzNW5VCFlIQ3LHcxRM=
+X-Google-Smtp-Source: AGHT+IHgjYS+1yGT4zK8zxS8yggLTimcchIdE/bhu18IO622bZDSBb70Xbhw21NRQ08ipOrOXWVxnw==
+X-Received: by 2002:a17:903:1a2f:b0:297:f09a:51cd with SMTP id
+ d9443c01a7336-29f23b456e6mr174088245ad.14.1765929572056; 
+ Tue, 16 Dec 2025 15:59:32 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7fcbc5a2bd2sm676485b3a.67.2025.12.16.15.58.36
+ d9443c01a7336-29eea01723bsm178230345ad.62.2025.12.16.15.59.31
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Dec 2025 15:58:36 -0800 (PST)
-Message-ID: <5e55a368-a268-4799-ad7b-6e113d11c40f@linaro.org>
-Date: Tue, 16 Dec 2025 15:58:36 -0800
+ Tue, 16 Dec 2025 15:59:31 -0800 (PST)
+Message-ID: <8da88a2a-56ff-473b-97df-1ab1c4462a90@linaro.org>
+Date: Tue, 16 Dec 2025 15:59:31 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] hw/arm/smmu: add memory regions as property for an
+Subject: Re: [PATCH v4] hw/arm/smmu: add memory regions as property for an
  SMMU instance
-To: qemu-devel@nongnu.org
-Cc: tangtao1634@phytium.com.cn, Peter Maydell <peter.maydell@linaro.org>,
- richard.henderson@linaro.org, Eric Auger <eric.auger@redhat.com>,
- Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>
-References: <20251216224845.1673051-1-pierrick.bouvier@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20251216224845.1673051-1-pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: richard.henderson@linaro.org, Radoslaw Biernacki <rad@semihalf.com>,
+ tangtao1634@phytium.com.cn, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>
+References: <20251216235731.1793908-1-pierrick.bouvier@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20251216235731.1793908-1-pierrick.bouvier@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,7 +110,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/16/25 2:48 PM, Pierrick Bouvier wrote:
+On 12/16/25 3:57 PM, Pierrick Bouvier wrote:
 > This will be used to access non-secure and secure memory. Secure support
 > and Granule Protection Check (for RME) for SMMU need to access secure
 > memory.
@@ -118,14 +118,37 @@ On 12/16/25 2:48 PM, Pierrick Bouvier wrote:
 > As well, it allows to remove usage of global address_space_memory,
 > allowing different SMMU instances to have a specific view of memory.
 > 
+> User creatable SMMU are handled as well for virt machine,
+> by setting the memory properties when device is plugged in.
+> 
 > Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > ---
 >   include/hw/arm/smmu-common.h |  4 ++++
+>   include/hw/arm/virt.h        |  2 ++
 >   hw/arm/sbsa-ref.c            | 16 ++++++++++++----
->   hw/arm/smmu-common.c         | 27 +++++++++++++++++++++++++++
->   hw/arm/virt.c                | 16 +++++++++++-----
->   4 files changed, 54 insertions(+), 9 deletions(-)
-Sent v4:
-https://lore.kernel.org/qemu-devel/20251216235731.1793908-1-pierrick.bouvier@linaro.org/T/#u
+>   hw/arm/smmu-common.c         | 25 +++++++++++++++++++++++++
+>   hw/arm/virt.c                | 13 +++++++++++--
+>   5 files changed, 54 insertions(+), 6 deletions(-)
+v4
+--
+
+- set smmu->memory property based on plug callback for virt, thus 
+removing the need to use global get_system_memory on smmu side.
+
+v3
+--
+
+- solved issue with user creatable smmuv3 (found with
+qtest/bios-tables-test, subtest smmuv3-dev), which is not created by
+board file. In this case, smmu->memory is not set, so just use global
+get_system_memory() instead.
+
+v2
+--
+
+- Fix rebase on top of master
+- rename memory and secure-memory address space with
+     "smmu-memory-view" and "smmu-secure-memory-view".
+     If someone prefers any other name, I can change it.
 
 

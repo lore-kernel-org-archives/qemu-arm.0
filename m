@@ -4,89 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA188D609CD
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Dec 2025 16:14:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C19E9D637DB
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Dec 2025 22:49:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vVXgJ-0003HW-DB; Tue, 16 Dec 2025 11:13:47 -0500
+	id 1vVdqk-00046l-8M; Tue, 16 Dec 2025 17:48:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vVXgH-0003GY-P9
- for qemu-arm@nongnu.org; Tue, 16 Dec 2025 11:13:45 -0500
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+ id 1vVdqj-00045y-Nd
+ for qemu-arm@nongnu.org; Tue, 16 Dec 2025 17:48:57 -0500
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vVXgG-0004yI-82
- for qemu-arm@nongnu.org; Tue, 16 Dec 2025 11:13:45 -0500
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-7b9215e55e6so3481522b3a.2
- for <qemu-arm@nongnu.org>; Tue, 16 Dec 2025 08:13:43 -0800 (PST)
+ id 1vVdqh-0008Me-RP
+ for qemu-arm@nongnu.org; Tue, 16 Dec 2025 17:48:57 -0500
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-2a0d67f1877so35083135ad.2
+ for <qemu-arm@nongnu.org>; Tue, 16 Dec 2025 14:48:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765901623; x=1766506423; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=10oyi9nDKeNlIVFMrauOe0l7R48MzuLinYpojqAXQkQ=;
- b=VXmt1a8p4hnpo0GhFnbpjXMO1y/hw3j005UXTga9iieh+lmPnfxWnfFx9qjXtZG1F4
- vxyPEs9aM9Q8VLrDes1xJnPa+f8k0Z7wvFFPeVHzTF6LdOjCrlmIemScUH1lY5epMU0y
- hVlbts4Eukvsnf3ANpAmJQMjoUx58GJmnKSp0xPCIWwcItfHAQB+vw/9+lMU8Z5i9Qon
- VlybhKNpznqB3aNCouhM6x14FVZISgGHd5igIo2yb+KIgqUAyBO86oyT5x8jRrCLtYxI
- Qx3brcu4yQndt3bA+HDIBNWcN9JC9gZ1ZEMGpWGOfDRrB+Tg8WPDf21bmDwzWdmP96iz
- MwQQ==
+ d=linaro.org; s=google; t=1765925334; x=1766530134; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=hxBvBNN1uZq8IchzEaUXh4rpqGrFZZwnhCysTNaRbaE=;
+ b=xJYh2h53mGt9/4glJVsezq5tcDB3VFQwvqQ951acRASg4ffMf4DGOpHYuouNUknaLC
+ AzT65s44c+IISFDHm1LC2yb++JzS+qb2NY7OfXWn6pm7NOXp/x333P97R7lTieiZxa7H
+ ok+JPLKo5uUiiZh/sm/ccoQJdJhRjRS6gNQvHhkeGaFKpikW/NkHFT7g44rhmMGZRrh6
+ v6BUExaoQwppDoI4mYckoCBwQeBgGfnRwgji5xDeCwiVlCXNiZs5BQGEWZKgRzCvS7o7
+ WL/RitdsMkFeCyZ0rJHMeTaBlSod3px+xOFnxtidZW2fswRnr5ksG5PSURE2udKdQQrV
+ EXzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765901623; x=1766506423;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=10oyi9nDKeNlIVFMrauOe0l7R48MzuLinYpojqAXQkQ=;
- b=wU1Np1JwFM0pnOh4PhJrTXMjRct+poS07UbPDeuYkvGsTaVF5CS4F/V7ZYNjn67eJx
- FhFiTlivS5teODI+Qtu0FtW4zKLPzhtsSa1Vy6/45/xF64R6Lk2XcaMRdIvt4tKMapuE
- z4sjExU6xZhCdFt05J5QGq+u6oUr/EAurLAs4GpH2oWgy6UwLfJ5npJCUW1/5EzU8S3i
- 2nKk0mh8D2RvhJHX6tYKt0BavGxI1gzWoRGC5JVWYvus6F6NC47JLeYb897D3fByvHdi
- Lld5eMZlkk7vqT5Ciq4VpfeSUgY0yp4BS8BjRz919FB5enIpzh2quohnbS/Y5EcGFY5g
- pTeg==
-X-Gm-Message-State: AOJu0Yx4z6m2otgxZmh0nVLaxF/bkwFKlNlr0aEmfJewsTU7zgJXqpsj
- RwtEPQgvHvzBjWx99P74EDCPCYAUOJ5QxRojB2pAzwsDlHxUWsDKllQGtTiNf3KKqY4=
-X-Gm-Gg: AY/fxX5ZnoNrgm50eu16bJ/i2jjMu1wlMw92nKp7602p3kH0haLDPg2z0R4qS7QdyqH
- Dq0pHm2+VYi830GJVJdu54Ghu8VswtTI8iQy04L/hDvKRTvYXrx3pQfwLywptUlm5+Fo17hmyJY
- a1li+svUnNIxFVUS6eKuNjn/O7V/t3PIQ24/8clne4GK5PCsHf5Kyxsg8YUfQrY1Zf3mlBry7pa
- CvzbtQF8dIj5Z2TuI9yJHhVb3g6axukBXJLuMZz5563Aj9wMMa9m/HMPr4nbqwCqDxorxb1J2gO
- XygPW+qTqPSqIIz/niHuNlJEPtewbHkFZE6UGv20j3vvhj6HMBmQ5gua73tYA96pKNuZuNW87K7
- hKyejJzT0l2+6/7SS8rNW/4m8za6afZeZkEzhjqn6FB1piorYkwQlIrynfUM3TzBplh7c62yOBe
- +Ov+LKQn2OOf4lKgeZcXRqM17cUEx7+vVkKsQgGaNNvwlkITYZ7YwCztE=
-X-Google-Smtp-Source: AGHT+IGdhdUD1Gvz5OHJoWKZGVaPp+eEGeO/hBoftTPwXmyyLgkno5vg3k+FtLmOC3TB6jF26hIsHQ==
-X-Received: by 2002:a05:6a20:3d86:b0:366:815a:b3a5 with SMTP id
- adf61e73a8af0-369b04ca160mr14367502637.74.1765901622319; 
- Tue, 16 Dec 2025 08:13:42 -0800 (PST)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-34abe3de37asm12286091a91.9.2025.12.16.08.13.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Dec 2025 08:13:41 -0800 (PST)
-Message-ID: <f214e8d4-8864-4806-a3ba-207aa3f67714@linaro.org>
-Date: Tue, 16 Dec 2025 08:13:41 -0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] target/arm/ptw: make granule_protection_check
- usable without a cpu
-To: Tao Tang <tangtao1634@phytium.com.cn>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eric Auger <eric.auger@redhat.com>
-References: <20251216000122.763264-1-pierrick.bouvier@linaro.org>
- <20251216000122.763264-3-pierrick.bouvier@linaro.org>
- <05c30ad2-2836-4f78-9c79-ad03eee2ce00@phytium.com.cn>
-Content-Language: en-US
+ d=1e100.net; s=20230601; t=1765925334; x=1766530134;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=hxBvBNN1uZq8IchzEaUXh4rpqGrFZZwnhCysTNaRbaE=;
+ b=QBxdEEISbCMcapZ7ERZBM6zF0078M0nnWqAlE6uCZUWI4Y6/3lFiNkaDG1m1N7WakG
+ 0biZcDKr1zi6dNiQaZYxaduCf+c4TlKiVBwdJJDqfSUdS87fSUgCxGhwf/4dT2/EK+/5
+ aNiFyxoKT5Bc5CFVfMm/ZcBwWJor94vV7gG0ivrvx/aNKIeidbmi3AHix3WKeazoTs7D
+ 5neFveaqjUMJtxhE4vhm5IL7V4//o2n177fkoDccACM16G4lEiERM0mkoYIeWkpDShv8
+ yrK+BiyooZBNxWuzFrrEhqUze8XGRq1531T+utcJXt/bl75x25SKFY6UQqm3NsUUCBaJ
+ wwSw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWUtt+zyu7FZ6d3REQmJE+/N/pa4uTagTwIlLqaWIQr7syEbwFAi/LZsu5oh7FhE7H4ZFoivxjesg==@nongnu.org
+X-Gm-Message-State: AOJu0YwEh+O0tfJeTlwF/8q8qU7esTknRMZWztJlPryKJX2Rdq63+GUU
+ m510WuIdpq0eJZaNJSS1gqqFcEyw2Lm/F9EHRsYWbLOa5IewXBU8hCYvSBOjuOw3saM=
+X-Gm-Gg: AY/fxX5cCD/SYrrOH8HE5aLIx5Zc4kIaB3Uvsq6oH/9JfD1GQzAXrTywQgek+fkKo1R
+ sQnKA/wYcELP06J2ZavI8EljdXHbBuAwBJtt/L6oqSp8EIaxTQkH4XONBgBbEZtWZ3dQ+cy6+Q4
+ pBKyM1jA3A41zw31GMC29ldHlKNuI7ERkPSucWTaaq5f3vXwc81QRx2JJ71XLiucomw4aqx9hzA
+ 9d0Q4ho5vg+Aj6/Wy6qYmc54V4esIJoQ9YCFQ22lwi/0hSrys9asGenP7PKbMdDRWbi+M7/NVau
+ F40iwjFH765CtdT4a1lQwx2lEwyIHTazChAe+Pjkmq+VKEl9tmRsBZf0qMJRVPHhXta97JhyQ/6
+ giYoVelO565YCeEBEQYV5aRDEDdpH7FF2qtwJsh4whIKFsHf0RtY0pZb3kf48hkz+6opMZfHf3r
+ 4+qiFapI3sriZFLnl5m+1WBh4bq00F6cFlDP6Q6X5Zb/QiprRXWqW2DaHlM8YikgeAMJrH2xnCr
+ g==
+X-Google-Smtp-Source: AGHT+IGTRtcX8ukRua0gXCLRtf5VG0jc9byQ/dh0lsqsGrT1pBAd053ZTxIxnbR/2NKS3NFQ4Gc7PQ==
+X-Received: by 2002:a17:903:3bac:b0:295:560a:e499 with SMTP id
+ d9443c01a7336-29f23b1296cmr159552185ad.5.1765925333676; 
+ Tue, 16 Dec 2025 14:48:53 -0800 (PST)
+Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-7fcbb11ea69sm580707b3a.31.2025.12.16.14.48.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 16 Dec 2025 14:48:53 -0800 (PST)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <05c30ad2-2836-4f78-9c79-ad03eee2ce00@phytium.com.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: qemu-devel@nongnu.org
+Cc: tangtao1634@phytium.com.cn, Peter Maydell <peter.maydell@linaro.org>,
+ richard.henderson@linaro.org, Eric Auger <eric.auger@redhat.com>,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v3] hw/arm/smmu: add memory regions as property for an SMMU
+ instance
+Date: Tue, 16 Dec 2025 14:48:45 -0800
+Message-ID: <20251216224845.1673051-1-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.47.3
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,69 +106,196 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/16/25 5:39 AM, Tao Tang wrote:
-> Hi Pierrick,
-> 
-> On 2025/12/16 08:01, Pierrick Bouvier wrote:
->> By removing cpu details and use a config struct, we can use the
->> same granule_protection_check with other devices, like SMMU.
->>
->> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->>    target/arm/cpu.h | 34 ++++++++++++++++++++++++++++
->>    target/arm/ptw.c | 59 +++++++++++++++++++++++++++++++-----------------
->>    2 files changed, 72 insertions(+), 21 deletions(-)
->>
->> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
->> index efbef0341da..5752e1f58fb 100644
->> --- a/target/arm/cpu.h
->> +++ b/target/arm/cpu.h
->> @@ -1216,6 +1216,40 @@ void arm_v7m_cpu_do_interrupt(CPUState *cpu);
->>    
->>    hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
->>                                             MemTxAttrs *attrs);
->> +
->> +typedef struct ARMGranuleProtectionConfig {
->> +    /* GPCCR_EL3 */
->> +    uint64_t gpccr;
->> +    /* GPTBR_EL3 */
->> +    uint64_t gptbr;
->> +    /* ID_AA64MMFR0_EL1.PARange */
->> +    uint8_t parange;
->> +    /* FEAT_SEL2 */
->> +    bool support_sel2;
->> +    /* Address space to access Granule Protection Table */
->> +    AddressSpace *gpt_as;
->> +} ARMGranuleProtectionConfig;
-> 
-> Would it make sense to add brief comments explaining how the fields in
-> ARMGranuleProtectionConfig map to SMMU registers? This could help
-> clarify that arm_granule_protection_check() is intended as a shared
-> abstraction for both CPU MMU and SMMU.
-> 
+This will be used to access non-secure and secure memory. Secure support
+and Granule Protection Check (for RME) for SMMU need to access secure
+memory.
 
-I'm not sure it's needed.
-If we search for GPCCR/GPTBR/FEAT_SEL2 in SMMU spec, it will 
-unambigously give the answer of which register holds it or what it is.
-I would consider the comment is here to map local name to spec name, but 
-not further than that.
+As well, it allows to remove usage of global address_space_memory,
+allowing different SMMU instances to have a specific view of memory.
 
-Concerning finding which are the callers of this function, code 
-completion tools or grep does a great job at it.
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ include/hw/arm/smmu-common.h |  4 ++++
+ hw/arm/sbsa-ref.c            | 16 ++++++++++++----
+ hw/arm/smmu-common.c         | 27 +++++++++++++++++++++++++++
+ hw/arm/virt.c                | 16 +++++++++++-----
+ 4 files changed, 54 insertions(+), 9 deletions(-)
 
-That said, if we want to add details about SMMU using this, it's 
-definitely worth waiting for the patch using it on SMMU side.
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+index 80d0fecfde8..d9bade3c803 100644
+--- a/include/hw/arm/smmu-common.h
++++ b/include/hw/arm/smmu-common.h
+@@ -162,6 +162,10 @@ struct SMMUState {
+     uint8_t bus_num;
+     PCIBus *primary_bus;
+     bool smmu_per_bus; /* SMMU is specific to the primary_bus */
++    MemoryRegion *memory;
++    AddressSpace memory_as;
++    MemoryRegion *secure_memory;
++    AddressSpace secure_memory_as;
+ };
+ 
+ struct SMMUBaseClass {
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 2205500a8da..cc9d4385826 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -613,7 +613,9 @@ static void create_xhci(const SBSAMachineState *sms)
+     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(sms->gic, irq));
+ }
+ 
+-static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
++static void create_smmu(const SBSAMachineState *sms, PCIBus *bus,
++                        MemoryRegion *sysmem,
++                        MemoryRegion *secure_sysmem)
+ {
+     hwaddr base = sbsa_ref_memmap[SBSA_SMMU].base;
+     int irq =  sbsa_ref_irqmap[SBSA_SMMU];
+@@ -625,6 +627,10 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
+     object_property_set_str(OBJECT(dev), "stage", "nested", &error_abort);
+     object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
+                              &error_abort);
++    object_property_set_link(OBJECT(dev), "memory", OBJECT(sysmem),
++                             &error_abort);
++    object_property_set_link(OBJECT(dev), "secure-memory", OBJECT(secure_sysmem),
++                             &error_abort);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+     for (i = 0; i < NUM_SMMU_IRQS; i++) {
+@@ -633,7 +639,9 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
+     }
+ }
+ 
+-static void create_pcie(SBSAMachineState *sms)
++static void create_pcie(SBSAMachineState *sms,
++                        MemoryRegion *sysmem,
++                        MemoryRegion *secure_sysmem)
+ {
+     hwaddr base_ecam = sbsa_ref_memmap[SBSA_PCIE_ECAM].base;
+     hwaddr size_ecam = sbsa_ref_memmap[SBSA_PCIE_ECAM].size;
+@@ -689,7 +697,7 @@ static void create_pcie(SBSAMachineState *sms)
+ 
+     pci_create_simple(pci->bus, -1, "bochs-display");
+ 
+-    create_smmu(sms, pci->bus);
++    create_smmu(sms, pci->bus, sysmem, secure_sysmem);
+ }
+ 
+ static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_size)
+@@ -825,7 +833,7 @@ static void sbsa_ref_init(MachineState *machine)
+ 
+     create_xhci(sms);
+ 
+-    create_pcie(sms);
++    create_pcie(sms, sysmem, secure_sysmem);
+ 
+     create_secure_ec(secure_sysmem);
+ 
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 62a76121841..2310da781b6 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -944,6 +944,15 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    if (!s->memory) {
++        s->memory = get_system_memory();
++    }
++    address_space_init(&s->memory_as, s->memory, "smmu-memory-view");
++    if (s->secure_memory) {
++        address_space_init(&s->secure_memory_as, s->secure_memory,
++                           "smmu-secure-memory-view");
++    }
++
+     /*
+      * We only allow default PCIe Root Complex(pcie.0) or pxb-pcie based extra
+      * root complexes to be associated with SMMU.
+@@ -1008,10 +1017,28 @@ static void smmu_base_class_init(ObjectClass *klass, const void *data)
+     rc->phases.exit = smmu_base_reset_exit;
+ }
+ 
++static void smmu_base_instance_init(Object *obj)
++{
++    SMMUState *s = ARM_SMMU(obj);
++
++    object_property_add_link(obj, "memory",
++                             TYPE_MEMORY_REGION,
++                             (Object **)&s->memory,
++                             qdev_prop_allow_set_link_before_realize,
++                             OBJ_PROP_LINK_STRONG);
++
++    object_property_add_link(obj, "secure-memory",
++                             TYPE_MEMORY_REGION,
++                             (Object **)&s->secure_memory,
++                             qdev_prop_allow_set_link_before_realize,
++                             OBJ_PROP_LINK_STRONG);
++}
++
+ static const TypeInfo smmu_base_info = {
+     .name          = TYPE_ARM_SMMU,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(SMMUState),
++    .instance_init = smmu_base_instance_init,
+     .class_data    = NULL,
+     .class_size    = sizeof(SMMUBaseClass),
+     .class_init    = smmu_base_class_init,
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 25fb2bab568..32ef51c3ad7 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1514,8 +1514,9 @@ static void create_smmuv3_dev_dtb(VirtMachineState *vms,
+                            0x0, vms->iommu_phandle, 0x0, 0x10000);
+ }
+ 
+-static void create_smmu(const VirtMachineState *vms,
+-                        PCIBus *bus)
++static void create_smmu(const VirtMachineState *vms, PCIBus *bus,
++                        MemoryRegion *sysmem,
++                        MemoryRegion *secure_sysmem)
+ {
+     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+     int irq =  vms->irqmap[VIRT_SMMU];
+@@ -1535,6 +1536,10 @@ static void create_smmu(const VirtMachineState *vms,
+     }
+     object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
+                              &error_abort);
++    object_property_set_link(OBJECT(dev), "memory", OBJECT(sysmem),
++                             &error_abort);
++    object_property_set_link(OBJECT(dev), "secure-memory", OBJECT(secure_sysmem),
++                             &error_abort);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+     for (i = 0; i < NUM_SMMU_IRQS; i++) {
+@@ -1573,7 +1578,8 @@ static void create_virtio_iommu_dt_bindings(VirtMachineState *vms)
+     }
+ }
+ 
+-static void create_pcie(VirtMachineState *vms)
++static void create_pcie(VirtMachineState *vms,
++                        MemoryRegion *sysmem, MemoryRegion *secure_sysmem)
+ {
+     hwaddr base_mmio = vms->memmap[VIRT_PCIE_MMIO].base;
+     hwaddr size_mmio = vms->memmap[VIRT_PCIE_MMIO].size;
+@@ -1692,7 +1698,7 @@ static void create_pcie(VirtMachineState *vms)
+ 
+         switch (vms->iommu) {
+         case VIRT_IOMMU_SMMUV3:
+-            create_smmu(vms, vms->bus);
++            create_smmu(vms, vms->bus, sysmem, secure_sysmem);
+             if (!vms->default_bus_bypass_iommu) {
+                 qemu_fdt_setprop_cells(ms->fdt, nodename, "iommu-map",
+                                        0x0, vms->iommu_phandle, 0x0, 0x10000);
+@@ -2506,7 +2512,7 @@ static void machvirt_init(MachineState *machine)
+ 
+     create_rtc(vms);
+ 
+-    create_pcie(vms);
++    create_pcie(vms, sysmem, secure_sysmem);
+     create_cxl_host_reg_region(vms);
+ 
+     if (aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
+-- 
+2.47.3
 
-> 
-> That said, I’m also happy to defer this until we actually add the SMMU
-> RME support.
-> 
-> 
-> Regards,
-> 
-> Tao
-> 
-
-Thanks,
-Pierrick
 

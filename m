@@ -4,91 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E423D5B87B
-	for <qemu-arm@archiver.kernel.org>; Tue, 16 Dec 2025 00:13:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E972D5B87B
+	for <qemu-arm@archiver.kernel.org>; Tue, 16 Dec 2025 00:15:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vVIgO-000428-Kg; Mon, 15 Dec 2025 19:12:52 -0500
+	id 1vVIiQ-0004cv-M5; Mon, 15 Dec 2025 19:14:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vVIgM-00041m-GJ
- for qemu-arm@nongnu.org; Mon, 15 Dec 2025 19:12:50 -0500
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ id 1vVIiO-0004cM-Tu
+ for qemu-arm@nongnu.org; Mon, 15 Dec 2025 19:14:56 -0500
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vVIgK-00065P-R0
- for qemu-arm@nongnu.org; Mon, 15 Dec 2025 19:12:50 -0500
-Received: by mail-pl1-x631.google.com with SMTP id
- d9443c01a7336-2a0d6f647e2so27200235ad.1
- for <qemu-arm@nongnu.org>; Mon, 15 Dec 2025 16:12:47 -0800 (PST)
+ id 1vVIiL-0006Jo-OU
+ for qemu-arm@nongnu.org; Mon, 15 Dec 2025 19:14:56 -0500
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-2a0d5c365ceso24684145ad.3
+ for <qemu-arm@nongnu.org>; Mon, 15 Dec 2025 16:14:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765843966; x=1766448766; darn=nongnu.org;
+ d=linaro.org; s=google; t=1765844092; x=1766448892; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=GU4SAkcunlzsRFVBrhsYDXaaTWCcBzS0XdyQgsSIQv0=;
- b=rojxIIYoYBdA7XL8i/iCu/d6sbhF1DI128qZaGuabChSzfDW6sPeSDKldBYexSqitM
- ZH847SYnFgBB9yYWyzAx+cSkN9QXKTVBWQXR8nRzeln2ypHvagR6JVK8ZjqZMOk3mRpp
- Rced2ohl6qDiZP/RQgEghgXoks88yOxOcs/CIPKmDQU0j2ljnQ0NgAsY+cMHQ0980pUS
- 4vfp2D8UkOvxOaHdgVHyJeKpK5uXhPzujkNmcEC+RgjoGzZVyJ0DyiVFZkKr1b0noyx9
- vmg0Mv8kG92Lpr1zAp97oWXypSrX4JMnli2ifHZ7F0rSJhU4EFEX7NEAaDJhI8PNPUQx
- ESJg==
+ bh=OuFEIS57RimBz1m6D5sz7mKNjCdSjMvI7LQMzNKUMOU=;
+ b=V+y4LyLMTvwBZ/nTmj4bfoDwpQ9BCQdARgIncd45IOVd13afI/8MEI7FXeTEpvicyr
+ wWj8T0vmxH26BwXGCuwK/hiYGN+kEFlyODTVyPzGmtb8qNOnN4SE/245+P0ADdgbzmeu
+ qAI7mn8CMvvw82ENmfJYoJReKlS294gJ+PgshIdoTKsQ/A+8CdK5x/mJLdnJ2Sqysn2w
+ 5GxTKlMAk24hwaC705twQBNpi8itYdhOUY+jd1mLR8/TjwmFwX6MrqWchX0kN/gS5d9r
+ rrFfyHcFjxxUA2eDd//xQHQBuisZs02DFWH2ZAc4GotGPxANqmh8ZCkJVINDp++SWW10
+ Yt/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765843966; x=1766448766;
+ d=1e100.net; s=20230601; t=1765844092; x=1766448892;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=GU4SAkcunlzsRFVBrhsYDXaaTWCcBzS0XdyQgsSIQv0=;
- b=wGg3oVokEpcuK9WKddNPmfqD7nmNczy3XR+Pso6SBGH/Efrd1WvOKvyOZKIOy8DNHb
- h81CyWLQlnUDkR5ivPd+H1XTHCk7AOx1ew9ByuauLv3YCb8zMr78OTwGF0vjemv2/69Q
- Ee7GzdQE5RfHj2AT3kPDVYfYWtvFjkyNeyU8rI/kUux2PIMQkX0REGAMAiXR6vwKWVwG
- 6j5R+//QO+uWcwRjTB+8Rr5k0TwzBfjTWUvlstAXpfY0hEx/6E4Z0K8g99+wDuFsbuPb
- h2kTiSzrkGtcasQQajZCas23+VfbTlbkn3w+R36DrSOD05Dh9QAkazt/JJDEejJjfI9m
- Bm+Q==
+ bh=OuFEIS57RimBz1m6D5sz7mKNjCdSjMvI7LQMzNKUMOU=;
+ b=gq5qkHCES0Diip4Tzxuw+PekC2Iy2cnEYovpUobu+9yq3jszpsDytfY0gNTd59n4LE
+ RmuU8PraCWKZEVanLus1sSVSfN+aDKP6v8YOLwYmaU1AvEkpsf2X0Zh7MQKez238jqmY
+ faa/an21IwN9rqCtUhMGUt6VSYpbLPgH+WYPRcm11mHKqcA7b7PY0nMbV5a3XlQuq/hb
+ wIif94MU7qBnXRiab4lZflQUOvdmKjoJXVym+nZEZ/IJcbjrG86668o6SAvZTIgSHqKP
+ bb4EHBm56tpBytLZMFwZWfpwcv8PBa/fHgBLBC1BuC71HLD8yF1vLEvRahY6AJj7nJs5
+ DTxg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWvKzUSvv5QYasRvana5UXWjeiKH92d2uWyhbaN61k5U1J4d8PtjnsohCoLtn2yGVHzwAyWE3XVnQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwzB1peAsZMm3S92ohUSh+2gO6UkgcaNKZNyNj41PQeB4c5BL0j
- 3eYM+yYZ6lz8U9s2iozADKv80V57bhwyTvJMXnrhnGbPGqCy41efuiblKLP7W21IFWM=
-X-Gm-Gg: AY/fxX66X1QnclxIDBfNiVnLP4cvc7ObTSbRI3inEiS8sEXaw34uOaes8f6aM20mKoc
- WNV6FdWPhQsbDXY3ZOFiYP9uEs3NDcTsspX88tQYgSJP3LRPQBEVDjCb8DIM7zlXzIqVPahYzGA
- lB4dGN3uWhyLB7fwHjNO+nID9IbT0Ke3IFvtVlxopR7gk031olzI4nyeRiTIrIVtbUQ4sTj3I/e
- 3a6qQFY0IJFr9OVusXU8IKsPv9d/UYt2Rs2cA9RDJl75Y4TtfBEKpaYPmxaKAtGhAs8g/41uuq9
- Ob2n4Ykj4Zjbm4+eMLQLnx6cKwiv6Hz76aqE92E/h40hj7MqjiKUrhaiPAxVNnl/t/4qhgq0NGg
- 7r0C9FfyQNCupyfXjfDJRd09wPAqDyK+Qn0Mt0Tq9Kougjyw8a8q+akLvAT1A3+tfvROsAVG5UV
- 9RkMTwEcTl4741JSISpEzcxm5p26VNI/3TRFcYwVXQEafQKvwcmk3d1pI=
-X-Google-Smtp-Source: AGHT+IEUy6qVuSM/kO4vOW1anZCqsCswVHzMxc8pGPvuZtyg3WGv2pDcDrshS9J4Fw0aGig+xjDYDw==
-X-Received: by 2002:a17:903:19e4:b0:2a0:c954:3bc6 with SMTP id
- d9443c01a7336-2a0c9544164mr77726835ad.22.1765843966313; 
- Mon, 15 Dec 2025 16:12:46 -0800 (PST)
+ AJvYcCXZDVhYHVSJ8Z7ngrEYBSEesmFs1cmYtDH/g2sgp7c8l0/P6ZB7IAiRwDUujSKhDc1K5fnvVYiC0g==@nongnu.org
+X-Gm-Message-State: AOJu0YyIEPUYSDOt9YRbMmePytI5/3vAn+zoqGA6KkK514CPVVo1T3yt
+ UMEAiYpyDt2jNgSMpRc7tZDPe8jQHeqz5MF2J2G34AVJwNeXU7qr5Eu0/5tXo4OsvG4=
+X-Gm-Gg: AY/fxX4BrX32fzs2+ymDeupNqWksRtc9mNx7AeQOEanjJMkbwW+PbEDZCdMKomQjRou
+ 0Dnoh1jC6abn0JNihqsY8phQlKNSpvtii8/7GSdfpsaZ5Pu+l81d2IUEvHB/akFrVBG28zyD88H
+ b8hCvLS44v7jYlaVHrlQLanXAJkExN4pMzfcZ44dGQkpsM2uBQSc1ROd3a2PWOPLrD+WBOVkzGs
+ B+vL7xpRi9IuAC78YDUIMQ4fun/p8yul/GDWcKCrPNtCaxwrCNVyb1SEUcSbnxCxVolA9aJYmpj
+ 3Dz/K1E/kyA23N5b94puKZ94hsfqvcN+FLYlSBkCtTHSrhip5fglKNOLhSOHsY+sOa74dCFjosh
+ Wo5IQx5/11z/Tdd5p4KVhFprsDrj3MeXOLNgdhTWJco8GBzISJ+f7ZOGVI45WxIM7FGnNdLKjTN
+ WU0EsGMB0IVeGK4hMI50jV0wuWfGwLfbFYVU51eCvWtYfHtT1WoXVQH/E=
+X-Google-Smtp-Source: AGHT+IGHNo3ZV5ywMGyqmovUCNnh4r7CoQy/Qp6sEhSiCvSp4Qbz9lRB7gwW+mAiY2i/CS+gH76MyQ==
+X-Received: by 2002:a17:903:2445:b0:2a1:2ed4:ca1e with SMTP id
+ d9443c01a7336-2a12ed4d1ebmr17214875ad.34.1765844092146; 
+ Mon, 15 Dec 2025 16:14:52 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a0e2318990sm48185825ad.38.2025.12.15.16.12.45
+ d9443c01a7336-29f2e40765csm104702855ad.0.2025.12.15.16.14.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Dec 2025 16:12:45 -0800 (PST)
-Message-ID: <72bb831b-8cd2-480c-a144-b26865d503ea@linaro.org>
-Date: Mon, 15 Dec 2025 16:12:45 -0800
+ Mon, 15 Dec 2025 16:14:51 -0800 (PST)
+Message-ID: <7e841ef8-fa50-4ee9-9370-5cc6c23d4a5c@linaro.org>
+Date: Mon, 15 Dec 2025 16:14:50 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/smmu: add memory regions as property for an SMMU
- instance
+Subject: Re: [PATCH v2] hw/arm/smmu: add memory regions as property for an
+ SMMU instance
 Content-Language: en-US
 To: qemu-devel@nongnu.org
-Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
- tangtao1634@phytium.com.cn, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, qemu-arm@nongnu.org, Eric Auger
- <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>
-References: <20251211221715.2206662-1-pierrick.bouvier@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Eric Auger <eric.auger@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>,
+ tangtao1634@phytium.com.cn, Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ richard.henderson@linaro.org
+References: <20251216001053.784223-1-pierrick.bouvier@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251211221715.2206662-1-pierrick.bouvier@linaro.org>
+In-Reply-To: <20251216001053.784223-1-pierrick.bouvier@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,7 +110,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/11/25 2:17 PM, Pierrick Bouvier wrote:
+On 12/15/25 4:10 PM, Pierrick Bouvier wrote:
 > This will be used to access non-secure and secure memory. Secure support
 > and Granule Protection Check (for RME) for SMMU need to access secure
 > memory.
@@ -123,11 +122,15 @@ On 12/11/25 2:17 PM, Pierrick Bouvier wrote:
 > ---
 >   include/hw/arm/smmu-common.h |  4 ++++
 >   hw/arm/sbsa-ref.c            | 16 ++++++++++++----
->   hw/arm/smmu-common.c         | 24 ++++++++++++++++++++++++
+>   hw/arm/smmu-common.c         | 25 +++++++++++++++++++++++++
 >   hw/arm/virt.c                | 16 +++++++++++-----
->   4 files changed, 51 insertions(+), 9 deletions(-)
->
+>   4 files changed, 52 insertions(+), 9 deletions(-)
 
-Sent v2:
-https://lore.kernel.org/qemu-devel/20251216001053.784223-1-pierrick.bouvier@linaro.org/T/#u
+v2
+--
+
+- Fix rebase on top of master
+- rename memory and secure-memory address space with
+   "smmu-memory-view" and "smmu-secure-memory-view".
+   If someone prefers any other name, I can change it.
 

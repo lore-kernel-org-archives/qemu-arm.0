@@ -4,88 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DFF5D66BB3
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 21:22:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4D2ED68BC2
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 23:02:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vVyxP-0000BM-6D; Wed, 17 Dec 2025 16:21:15 -0500
+	id 1vW0X0-0008UJ-Ug; Wed, 17 Dec 2025 18:02:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1vVyxJ-0008Tu-Qb
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 16:21:11 -0500
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1vVyxG-0004cd-HK
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 16:21:08 -0500
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-7b75e366866so2695862b3a.2
- for <qemu-arm@nongnu.org>; Wed, 17 Dec 2025 13:21:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766006465; x=1766611265; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=vW3yF4FTRUZh5FCldFHo0wmFnTNC+Anm6XgXXn1BVVU=;
- b=yiTbWMmN5Q1LhAFXtT/YtxQFbYI4oGW8xUYSYmQWGuAP4qolW9DBgPn6iFs3bvPSA2
- AwFx1gAEVtXPDc88UWfyOclmqOTyUpf1z7LftsWKowLQvPn08iZZO/ncCQIv+qfMve3n
- srO9ENMCpnUmQAUWyiRE01JXDPz87K4ly7dJkMzHoB9/RGuH204daMWkbSN023sAkf91
- +NeABE7pYj7xkjA1deQxr0PX/lRQSfpX2M739uduViXPdK81+GTXl1ElHnJVdKHa5C2y
- PUqmk7xE7iqJbNlFfCpQQFjOmEzW7nabP6UeHXRyMnfxdujjcRqaj1cIHbM0Ftkc3fT2
- XCOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766006465; x=1766611265;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=vW3yF4FTRUZh5FCldFHo0wmFnTNC+Anm6XgXXn1BVVU=;
- b=GU+0ttwfAT+jnFikcrR89e1UJvy0r1eBs85Xl2p1d0PGabepmXDCLRiZuSbivDG4Za
- NR0W80W/Ydpm62G5aqORzmrK3jhynVDCgtAZHUWTblTmRR8mIpLtFZC7tRJjJ4dsdytD
- EHhv3/UpsFiGhGBi+evu6Zm8VtTZkAYDyrxuw2xtkPr+eCtaWoI34EKpR8VQ+DE0C2lP
- 7WjwUu1ZoXcC3Q9RgOv/r8+J2XG+u9dIX/+GBQ481coiDp3IErik3e/d1/tY+p6BVAud
- udwot6DQ7zKclQ1x2ccBP0PKLyjnzqKJeOiWQwc/2F2qvB3M748m5E79oGScJOpwlFzh
- zorw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWGD/JGc5HUbotCi3YQv4o4d8brltAB4iCmYAOqlf+x9njPEh15YiWrX/h9PnJjoNhUqBvUH7fpRQ==@nongnu.org
-X-Gm-Message-State: AOJu0YytvWd8FXWZenH6WjIIu6LXqIZAtqGYeR7lvwIsNsGDMVMBu/Am
- kO5gLh1QUsOP+fXY6FzFCbQFhXyLOhe41TizIpo5rjsM4nM/VvNzhqGb/tDp+Dk/B1U=
-X-Gm-Gg: AY/fxX4dJoPrhZpwvJfNONLMpEMtWbpndl+0Y45MHWS0hnGlt0DMhw90wdGU4cFy7JG
- 5ROAQz3eLzhojMJMThKzWXr66J/VGdUq7EMpY7iO79c9o2ocKfHHvSGD5x8mScjnqqAIjDGzpFv
- 262M/DRHdH068qr6c04yRIiNYmp/strKUEt9nD8RLownG9GrZ8vRPiShs9lOHjaXvw0ovvm1EC9
- NzYW+uQrxjwJtvmQJx4jAnnTFPRwivCsgYPfTFGsTN7j7ZSuEQB6dl6o0cb7Ypl1450w95X96oo
- x4jDWKiKSr67OsaASr1d2gep0gasQO2WqAFLo0nItL291Ipahad8HNzfOYkXJ+T7gB4R83l6pQl
- +wP/jhfaS6FlaoX+ybMGe2t+a7kRN/9hiQekALkbPPGZyT/G9eHCiIV6mC1fgO30xCjpK43xdxs
- HwAFqneBdPJ7+3SeA=
-X-Google-Smtp-Source: AGHT+IFKBgwJTEJ3iwBtGK7Fb7UZbh4PwkpG6DfYZPCkq/yhN1ytfbfPxplCVcnnfl9fuYwcE7L+kA==
-X-Received: by 2002:a05:7022:150b:b0:11a:23fb:16e2 with SMTP id
- a92af1059eb24-11f34bde2e9mr14045006c88.9.1766006464838; 
- Wed, 17 Dec 2025 13:21:04 -0800 (PST)
-Received: from gromero0.. ([191.8.216.160]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-12061ef3383sm1852476c88.0.2025.12.17.13.21.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Dec 2025 13:21:04 -0800 (PST)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, philmd@linaro.org, peter.maydell@linaro.org
-Cc: gustavo.romero@linaro.org
-Subject: [PATCH v2 4/6] system/physmem: Rename cpu_address_space_init
-Date: Wed, 17 Dec 2025 18:20:16 -0300
-Message-Id: <20251217212018.93320-5-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20251217212018.93320-1-gustavo.romero@linaro.org>
-References: <20251217212018.93320-1-gustavo.romero@linaro.org>
+ (Exim 4.90_1) (envelope-from <midnight@trainwit.ch>)
+ id 1vW0Wy-0008Th-RB; Wed, 17 Dec 2025 18:02:05 -0500
+Received: from fhigh-a4-smtp.messagingengine.com ([103.168.172.155])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <midnight@trainwit.ch>)
+ id 1vW0Ww-0002UN-8v; Wed, 17 Dec 2025 18:02:04 -0500
+Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
+ by mailfhigh.phl.internal (Postfix) with ESMTP id 1A1C81400109;
+ Wed, 17 Dec 2025 18:02:00 -0500 (EST)
+Received: from phl-imap-08 ([10.202.2.84])
+ by phl-compute-04.internal (MEProxy); Wed, 17 Dec 2025 18:02:00 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=trainwit.ch; h=
+ cc:cc:content-transfer-encoding:content-type:content-type:date
+ :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to; s=fm1; t=1766012520;
+ x=1766098920; bh=/4lkz2Dr+wnLBNubSA4eO5YhKgzx08Vdptl/tHrANIU=; b=
+ K38xzxkLwgLlDUCd1GUD5STm6SlP3V8ZDNGAo8RXlIRvnBc+6LAfUH0hN/XYoD2j
+ T2p9L7ar5CuvTuViin5761AqppsKR/bwkyvtsX7/6DDQvcz7MEBso6Ty/B8BSPLn
+ T79vMWqFEpK+RDlcza8h1N7ocfNpfN78+BPQu69WMnldT+c3LBu0hKivoqws6x9D
+ cuoFHkOAzTHQDJN/KDFFB/3n99yCmrDpa/K0rJffCZzxfF5mzSiVSgiN52oP+N0Y
+ SUFOJxRUNaAtL4+hCnZvMOc9UVunsPFcGxd+c3C7zsLE3mKyCsto1a11oEEa5yHp
+ j1kRAk5FftBNS8DJbIC6bg==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1766012520; x=
+ 1766098920; bh=/4lkz2Dr+wnLBNubSA4eO5YhKgzx08Vdptl/tHrANIU=; b=K
+ 6qrwOn2zeRCOFbEiY0kXeIq8GC+dWV6DPApVwY4CSzxudoWMQkQeohhnW5DU+MsO
+ Laoy0G9MYmQGhs70Wq7l8G6WuSBXhBNZ3vpCjACzNmyCVV+uvmB8thdRGJ1BBhua
+ IKtP2Al1kl+VN/XrPVmSjCPHrGGFNkpWfdIF7gFbHNghKJn+SiayMsYt6r6pEWnp
+ POZGV0qKHFk22qoqfmw3SyAJ3tLbLhe6L/aXQYPQg1lI/SEfWsog3z7lTmRyM9uN
+ 9CMPtGO8gNLNq6zE3R0xBEFPxd8MfSqoGtB25mbR6oYfnYEIFC4qYDMc7tO3Hxdg
+ K4UzMej7oW3GScuaelYWQ==
+X-ME-Sender: <xms:ZzZDab8V7Wt9hkaaannGTMglYVgDSvs9YcYtv5jpwEhaFJJWNv8Nww>
+ <xme:ZzZDaSiwHn-fyfCFt9G6CVdVGdcWZOGyRAlOFjSjZz-BCDp33N__HeZi6tYLBahXF
+ 86oMM4l0Ywd6600LePhseE_0ySuEwP_D2h6zDIJ63iMMlB2ddjN8JE>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdegfeekfecutefuodetggdotefrod
+ ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
+ ihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjug
+ hrpefoggffhffvvefkjghfufgtgfesthhqredtredtjeenucfhrhhomhepfdhjuhhlihgr
+ ucdlmhhiughnihhghhhtvhgvihhlmddfuceomhhiughnihhghhhtsehtrhgrihhnfihith
+ drtghhqeenucggtffrrghtthgvrhhnpeegleehjedtgffguefhhfeujefgueehkeehueef
+ gfeifefhudeitefhjeelkeekkeenucffohhmrghinhepghhithhlrggsrdgtohhmnecuve
+ hluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepmhhiughnihhg
+ hhhtsehtrhgrihhnfihithdrtghhpdhnsggprhgtphhtthhopeeipdhmohguvgepshhmth
+ hpohhuthdprhgtphhtthhopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhr
+ ghdprhgtphhtthhopehphhhilhhmugeslhhinhgrrhhordhorhhgpdhrtghpthhtohepqh
+ gvmhhuqdgrrhhmsehnohhnghhnuhdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgv
+ lhesnhhonhhgnhhurdhorhhgpdhrtghpthhtohepmhgrrhgtrghnughrvgdrlhhurhgvrg
+ husehrvgguhhgrthdrtghomhdprhgtphhtthhopehpsghonhiiihhnihesrhgvughhrght
+ rdgtohhm
+X-ME-Proxy: <xmx:ZzZDaWSKH7ruR6AdDvfkLe0W4tDXafLqwUYgglwUir2V0IMwWi2VIw>
+ <xmx:ZzZDafcFZdniMQEIJi7CjvzdFJtHIobNW2cmO-V0nJjtkSy40tiMHw>
+ <xmx:ZzZDadrO1k2LLFnzS4jZwnWYglbNU0RUjTy6mQoKsz1HeoHaL_OKLQ>
+ <xmx:ZzZDaY9eM8N-e5tq6Tc5PWL_PyzfqMKinQ_nwf1snTV9dclTpwxLYQ>
+ <xmx:aDZDaZw7ulK0p5Nx8gDl4BUAj9j2ubbx6TJYNcjDCYzDdmnYxiK02u8k>
+Feedback-ID: ib36e48e7:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+ id 9A9A92CE0078; Wed, 17 Dec 2025 18:01:59 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pf1-x429.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-ThreadId: AY8kgBHH1kaR
+Date: Thu, 18 Dec 2025 10:01:39 +1100
+From: "julia (midnightveil)" <midnight@trainwit.ch>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: "Peter Maydell" <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ "Paolo Bonzini" <pbonzini@redhat.com>, qemu-arm@nongnu.org
+Message-Id: <9d4cc1a3-0baf-4c89-8de1-5998c35693d8@app.fastmail.com>
+In-Reply-To: <3c5328f2-f8e7-4154-bab5-e80f46306aae@linaro.org>
+References: <20251217-cmsdk-uart-disabled-warning2-v1-1-847de48840bc@trainwit.ch>
+ <3c5328f2-f8e7-4154-bab5-e80f46306aae@linaro.org>
+Subject: Re: [PATCH] hw/char/cmsdk-apb-uart.c: log guest_errors for r/w to
+ disabled uart
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=103.168.172.155;
+ envelope-from=midnight@trainwit.ch; helo=fhigh-a4-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -102,193 +116,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Rename cpu_address_space_init to cpu_address_space_add in preparation
-for the forthcoming addition of a new cpu_address_space_init.
+Hi Phil,
 
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
----
- include/exec/cpu-common.h          |  6 +++---
- stubs/cpu-destroy-address-spaces.c |  2 +-
- system/cpus.c                      |  2 +-
- system/physmem.c                   |  4 ++--
- target/arm/cpu.c                   | 16 ++++++++--------
- target/arm/cpu.h                   |  2 +-
- target/i386/kvm/kvm-cpu.c          |  2 +-
- target/i386/kvm/kvm.c              |  4 ++--
- target/i386/tcg/system/tcg-cpu.c   |  4 ++--
- 9 files changed, 21 insertions(+), 21 deletions(-)
+Interesting that that's the case for the PL011. I've run into situations=
+ before where turns out it was never enabled and it was still printing, =
+discovered this after turning guest errors on. Do people usually run wit=
+h guest errors on?
 
-diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
-index e0be4ee2b8..126f645354 100644
---- a/include/exec/cpu-common.h
-+++ b/include/exec/cpu-common.h
-@@ -102,7 +102,7 @@ size_t qemu_ram_pagesize(RAMBlock *block);
- size_t qemu_ram_pagesize_largest(void);
- 
- /**
-- * cpu_address_space_init:
-+ * cpu_address_space_add:
-  * @cpu: CPU to add this address space to
-  * @asidx: integer index of this address space
-  * @prefix: prefix to be used as name of address space
-@@ -120,8 +120,8 @@ size_t qemu_ram_pagesize_largest(void);
-  *
-  * Note that with KVM only one address space is supported.
-  */
--void cpu_address_space_init(CPUState *cpu, int asidx,
--                            const char *prefix, MemoryRegion *mr);
-+void cpu_address_space_add(CPUState *cpu, int asidx,
-+                           const char *prefix, MemoryRegion *mr);
- /**
-  * cpu_destroy_address_spaces:
-  * @cpu: CPU for which address spaces need to be destroyed
-diff --git a/stubs/cpu-destroy-address-spaces.c b/stubs/cpu-destroy-address-spaces.c
-index dc6813f5bd..a86e8d4db1 100644
---- a/stubs/cpu-destroy-address-spaces.c
-+++ b/stubs/cpu-destroy-address-spaces.c
-@@ -5,7 +5,7 @@
- 
- /*
-  * user-mode CPUs never create address spaces with
-- * cpu_address_space_init(), so the cleanup function doesn't
-+ * cpu_address_space_add(), so the cleanup function doesn't
-  * need to do anything. We need this stub because cpu-common.c
-  * is built-once so it can't #ifndef CONFIG_USER around the
-  * call; the real function is in physmem.c which is system-only.
-diff --git a/system/cpus.c b/system/cpus.c
-index ef2d2f241f..fa9deafa29 100644
---- a/system/cpus.c
-+++ b/system/cpus.c
-@@ -719,7 +719,7 @@ void qemu_init_vcpu(CPUState *cpu)
-          * give it the default one.
-          */
-         cpu->num_ases = 1;
--        cpu_address_space_init(cpu, 0, "cpu-memory", cpu->memory);
-+        cpu_address_space_add(cpu, 0, "cpu-memory", cpu->memory);
-     }
- 
-     /* accelerators all implement the AccelOpsClass */
-diff --git a/system/physmem.c b/system/physmem.c
-index c9869e4049..4a0c1b74f1 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -775,8 +775,8 @@ hwaddr memory_region_section_get_iotlb(CPUState *cpu,
- 
- #endif /* CONFIG_TCG */
- 
--void cpu_address_space_init(CPUState *cpu, int asidx,
--                            const char *prefix, MemoryRegion *mr)
-+void cpu_address_space_add(CPUState *cpu, int asidx,
-+                           const char *prefix, MemoryRegion *mr)
- {
-     CPUAddressSpace *newas;
-     AddressSpace *as = g_new0(AddressSpace, 1);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 1640b20b4d..1902c510f9 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1681,7 +1681,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-          *
-          * Catch all the cases which might cause us to create more than one
-          * address space for the CPU (otherwise we will assert() later in
--         * cpu_address_space_init()).
-+         * cpu_address_space_add()).
-          */
-         if (arm_feature(env, ARM_FEATURE_M)) {
-             error_setg(errp,
-@@ -2158,22 +2158,22 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         cs->num_ases = 1 + has_secure;
-     }
- 
--    cpu_address_space_init(cs, ARMASIdx_NS, "cpu-memory", cs->memory);
-+    cpu_address_space_add(cs, ARMASIdx_NS, "cpu-memory", cs->memory);
- 
-     if (has_secure) {
-         if (!cpu->secure_memory) {
-             cpu->secure_memory = cs->memory;
-         }
--        cpu_address_space_init(cs, ARMASIdx_S, "cpu-secure-memory",
--                               cpu->secure_memory);
-+        cpu_address_space_add(cs, ARMASIdx_S, "cpu-secure-memory",
-+                              cpu->secure_memory);
-     }
- 
-     if (cpu->tag_memory != NULL) {
--        cpu_address_space_init(cs, ARMASIdx_TagNS, "cpu-tag-memory",
--                               cpu->tag_memory);
-+        cpu_address_space_add(cs, ARMASIdx_TagNS, "cpu-tag-memory",
-+                              cpu->tag_memory);
-         if (has_secure) {
--            cpu_address_space_init(cs, ARMASIdx_TagS, "cpu-tag-memory",
--                                   cpu->secure_tag_memory);
-+            cpu_address_space_add(cs, ARMASIdx_TagS, "cpu-tag-memory",
-+                                  cpu->secure_tag_memory);
-         }
-     }
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 00f5af0fcd..f68552945e 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2330,7 +2330,7 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
- 
- #define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
- 
--/* Indexes used when registering address spaces with cpu_address_space_init */
-+/* Indexes used when registering address spaces with cpu_address_space_add */
- typedef enum ARMASIdx {
-     ARMASIdx_NS = 0,
-     ARMASIdx_S = 1,
-diff --git a/target/i386/kvm/kvm-cpu.c b/target/i386/kvm/kvm-cpu.c
-index 9c25b55839..a6d94d0620 100644
---- a/target/i386/kvm/kvm-cpu.c
-+++ b/target/i386/kvm/kvm-cpu.c
-@@ -99,7 +99,7 @@ static bool kvm_cpu_realizefn(CPUState *cs, Error **errp)
-      * initialized at register_smram_listener() after machine init done.
-      */
-     cs->num_ases = x86_machine_is_smm_enabled(X86_MACHINE(current_machine)) ? 2 : 1;
--    cpu_address_space_init(cs, X86ASIdx_MEM, "cpu-memory", cs->memory);
-+    cpu_address_space_add(cs, X86ASIdx_MEM, "cpu-memory", cs->memory);
- 
-     return true;
- }
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index 60c7981138..dcc7e5eeae 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -2744,14 +2744,14 @@ static void register_smram_listener(Notifier *n, void *unused)
-                                  &smram_address_space, X86ASIdx_SMM, "kvm-smram");
- 
-     CPU_FOREACH(cpu) {
--        cpu_address_space_init(cpu, X86ASIdx_SMM, "cpu-smm", &smram_as_root);
-+        cpu_address_space_add(cpu, X86ASIdx_SMM, "cpu-smm", &smram_as_root);
-     }
- }
- 
- /* It should only be called in cpu's hotplug callback */
- void kvm_smm_cpu_address_space_init(X86CPU *cpu)
- {
--    cpu_address_space_init(CPU(cpu), X86ASIdx_SMM, "cpu-smm", &smram_as_root);
-+    cpu_address_space_add(CPU(cpu), X86ASIdx_SMM, "cpu-smm", &smram_as_root);
- }
- 
- static void *kvm_msr_energy_thread(void *data)
-diff --git a/target/i386/tcg/system/tcg-cpu.c b/target/i386/tcg/system/tcg-cpu.c
-index 7255862c24..231a4bdf55 100644
---- a/target/i386/tcg/system/tcg-cpu.c
-+++ b/target/i386/tcg/system/tcg-cpu.c
-@@ -74,8 +74,8 @@ bool tcg_cpu_realizefn(CPUState *cs, Error **errp)
-     memory_region_set_enabled(cpu->cpu_as_mem, true);
- 
-     cs->num_ases = 2;
--    cpu_address_space_init(cs, X86ASIdx_MEM, "cpu-memory", cs->memory);
--    cpu_address_space_init(cs, X86ASIdx_SMM, "cpu-smm", cpu->cpu_as_root);
-+    cpu_address_space_add(cs, X86ASIdx_MEM, "cpu-memory", cs->memory);
-+    cpu_address_space_add(cs, X86ASIdx_SMM, "cpu-smm", cpu->cpu_as_root);
- 
-     /* ... SMRAM with higher priority, linked from /machine/smram.  */
-     cpu->machine_done.notify = tcg_cpu_machine_done;
--- 
-2.34.1
+At least for this UART it doesn't print until it's enabled, (and if you'=
+re checking the TXFULL bit then the guest is essentially deadlocked if p=
+olling), so that's not an issue.
 
+Julia
+
+On Thu, 18 Dec 2025, at 01:59, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi Julia,
+>
+> On 17/12/25 08:10, julia wrote:
+>> I don't want to admit how many hours I spent trying to figure out why
+>> nothing was being printed (as the enable-ing code hadn't yet run,
+>> even thought it existed).
+>
+> You are not alone, few of us have been there too :/
+>
+> This is why I added this commit for the PL011:
+> https://gitlab.com/qemu-project/qemu/-/commit/abf2b6a0
+> but it had to be reverted, see:
+> https://gitlab.com/qemu-project/qemu/-/commit/5b14454d
+>
+>>=20
+>> Signed-off-by: julia <midnight@trainwit.ch>
+>> ---
+>>   hw/char/cmsdk-apb-uart.c | 8 ++++++++
+>>   1 file changed, 8 insertions(+)
+>
+> Anyway for your patch:
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>
+> Regards,
+>
+> Phil.
 

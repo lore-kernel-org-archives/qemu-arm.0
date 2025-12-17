@@ -4,95 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF703D6554E
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 14:35:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F34F7D65C5A
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 14:52:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vVsaa-00025z-QV; Wed, 17 Dec 2025 09:33:16 -0500
+	id 1vVstS-00052j-Lq; Wed, 17 Dec 2025 09:52:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vVsaZ-00023f-8x
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 09:33:15 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vVsaU-0007Gn-4R
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 09:33:14 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-47a95efd2ceso36165315e9.2
- for <qemu-arm@nongnu.org>; Wed, 17 Dec 2025 06:33:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765981982; x=1766586782; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=npahtTZPNb59B+CU/KRSE/J9yiwWz2PKpOjmrQGOCdA=;
- b=g7Z3X3osHDGvLVW+0g5KjQMQj8GN1odZCDTdd8KzbhojdHwXGqd1SVPmnByP+aTL57
- CobuU3TNyOnH1ehCCXzpD+SAJzUtyUKrVArtVoHpQYF/QKOA8kbDrHlrfeN/7O+4THgt
- kfi61o1KZW/rU0R1g9TXx+Zs4efXOJ1knrRUBF4qHLHy4gQSUNRSBIGw0priWIulQRr1
- RBUlvLjbEXhHcSMpChP/m0gb6ZCviXRXrIAdQcHVapQ273lNWEQginTze+4JEH011oso
- W791bJAahRrkNYn4FQ7NlbkWa28qEum5m4+vprcexy2oNvmZlng6Lyb9siJ88V81rnnL
- nFiQ==
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1vVstH-0004yw-1c
+ for qemu-arm@nongnu.org; Wed, 17 Dec 2025 09:52:35 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1vVstF-0002F0-IH
+ for qemu-arm@nongnu.org; Wed, 17 Dec 2025 09:52:34 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1765983151;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=vKdoBJk0ieECQ/CovJep5Z7wESl20fEzrrXmvm0nark=;
+ b=ImnGgdOjQuaYgMjS8LjTkLXgsr7Tf7JKr72G7VDvAAwhDBUR83Gge3HPAAOyj/9/WUOqjz
+ Zh+y0vsToKugexOAT4oZPG0Ybg0s28SCH5NAWbo8djsryAG2R3w7MPW3+wq1C09yVTXoDl
+ 9Ss0il6znKQ7B2YvrxC4tz8PlGMMFPw=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-310-gU6K8mTDNji1lP9OVMmmDQ-1; Wed, 17 Dec 2025 09:52:21 -0500
+X-MC-Unique: gU6K8mTDNji1lP9OVMmmDQ-1
+X-Mimecast-MFC-AGG-ID: gU6K8mTDNji1lP9OVMmmDQ_1765983140
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-430fd96b440so1664210f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 17 Dec 2025 06:52:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765981982; x=1766586782;
+ d=1e100.net; s=20230601; t=1765983140; x=1766587940;
  h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=npahtTZPNb59B+CU/KRSE/J9yiwWz2PKpOjmrQGOCdA=;
- b=PEADNeKNUG2dG0qdok0XpIU1RXIyAHqVBFiwXrQf1WBxL+OdOwkXgkdUUYlQBmNN4n
- pfMZNRG5b74uf4gofhI0Kyu6QhFwaG8NxRDdWeJUJb9gjFqD0YehmYYrHGGVVC6b5Vb0
- HuoyF1Fi/fdKMnJ8nhlGfzq0q8ZqHj7gldUSCnztSf9M25IJrUtlsG7An5wj/EBDuBkg
- bXQ0hFdLYh8qrGm7NERACQe/Rr151iox528tHazX+YrRf92nzYiUnjG3TpcA779T70EZ
- IbCOOgGmXEkYXnUlXrT4hhR9bsf5KZ2UFsJ2P3Z6A9QZauuRlXuKG4EWE8B0pLIPYzFR
- mSOA==
+ bh=gL5F3xHBPmKGkcE8K+DR/FS+dwcTcYAQDkDaOW4jcUU=;
+ b=meLvLoetMIdyFNXABe/i3v4FLIH15e/xVleDTdcgyAAtpeuIeMXd+2wSvFY0naTYlW
+ ZGNypMjk316pGFUgbWn+OY/liXAd6qZpfBAjOabEcJW1xvOMuGyvuCJSC1FeuWtALb3Q
+ rn0wk0tbZC0W5vl3S8ModvtyKwKDnO9/N48Vwhpngi6LaUzb6hspxShgb/24eFDuVhPD
+ Gpfi/YC3ZDEX9aWS1fAiwcITHux35lgzHi0q4VNW0kCxVbxYbQzflHTJPrtGaPmHikE2
+ Ob2qMd3BTzAABV5WoiwRrElmx+Ip1jTuZjBFlk3b89Tdnq8I+GhR+utLzCpXSlPntnzm
+ nnZg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXKJq1iT8AU4lwOAcoLiJ9LpmBbn9TASsO5Pydilc8G7VQlxkPuv/vkZYw/m5s9vkejg4exfehDEA==@nongnu.org
-X-Gm-Message-State: AOJu0Yzb71/CiSRG4WeHFi0R0JJGzirAWZPsRti4pzBq7OM8qRbWXvPQ
- QsbN0lh0Iic2FldU5aSGI+faz8QJoWsjuurx6wvdLkafvBXF4e/Ry/W6vtBG/x14yuw=
-X-Gm-Gg: AY/fxX7tm23XD3czJJMCj4dZXGAC7NI8Lku6jHWSVTDWG1YbXNNtu4MpQnnRxtZtYhT
- jCUJb/tUf7lmbdJum06pYeWbOIMm9ERL4jSqdCtzfvNbhfUp5t5bHf+z9Ln7dqelUeofLycAXMw
- UcTApLJkTNIAkwWHz0/9O+WGS8traJopx+DRV7mkiq5sRaCy1trJT75vhb9SZtGCRhhEhE2edN2
- PXYSNqHb4z2SrTFD8p7rGaH1xT6oyXdJi4Mx3ET8wJoJwZUFV5lUWTXhuP1AytZoBH6U87fIPLr
- ydNvnmtsZ/impa6swxy3AN7+iQPNxXkSIJHSn6A/3ctwCN5gV152Jht7jth8gflXooE90f4vBYH
- XU2lq6YUkHSpH+GT8QBFpT4FTVyXW+AqMhywGXld66EL+9nmMonmzKQ+yQAtpyCo3f2IFMxjugB
- aiB7CFJEzkAigdnHTSuihTi5uGmZw2Snwooh+k0m/UAwRugIzV+W80nxMgomc8
-X-Google-Smtp-Source: AGHT+IFz4aB2FClE+JBr9xpGXt0+LxuKd8VzhrJ8yc0DmbmXqBBLLPlemFmogH3RTY8odeSjZ8qLpg==
-X-Received: by 2002:a05:600c:8b61:b0:477:6d96:b3ca with SMTP id
- 5b1f17b1804b1-47a8f89b69fmr211658035e9.5.1765981982100; 
- Wed, 17 Dec 2025 06:33:02 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4310ada846bsm5016541f8f.9.2025.12.17.06.33.00
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 17 Dec 2025 06:33:00 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Anton Johansson <anjo@rev.ng>, qemu-arm@nongnu.org,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@kernel.org>, Peter Xu <peterx@redhat.com>
-Subject: [PATCH 09/14] system/memory: Define address_space_ldst[W] endian
- variants via template
-Date: Wed, 17 Dec 2025 15:31:45 +0100
-Message-ID: <20251217143150.94463-10-philmd@linaro.org>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20251217143150.94463-1-philmd@linaro.org>
-References: <20251217143150.94463-1-philmd@linaro.org>
+ AJvYcCVLEUdGtJQUe690FGsol+37MpUr7VpSb16fte3WTlUGMMVLcyjzbtI5jgZ8z6uH8AOIqh4kT8goRw==@nongnu.org
+X-Gm-Message-State: AOJu0YwssFo72gBvk/lehnOBEXWgLAIecez32UFEcuR9mxlGPzRt8/H3
+ XT20+XpMin3NmkZXkI/bo3TQQm7/xK1+/aFQBw3rkkf+vntFnOP4CWh7lJCEBoBQh86UN1JbM6Y
+ bJfzf0ub+pgaIZgr0empyuv+E0QmGOE0/QeZw5286+hIZvkzwr38O8Q==
+X-Gm-Gg: AY/fxX6VXDG4cdrL5+H7NeeEeJJGBObi8tA66kFp8FK8owwoy/X3b4DiNU6JX3l2lsY
+ bCtRq5asla6XM7z8jb6q7X0loxZqnfyh8aradIQd4A6iaXUmxnB+MFJ8Q9ctgrDeP5WftIJSntK
+ EchhhV/A1bvaPTwwqlZJ7tNJ/fh/zMTDDWMf+pKpf1ZzC6mPeJzTjYIn4ewkRlqvE31ZcQ5jmsi
+ 8WHKof2vsmDUrfKx9LPYHKQeEAA6wUYf1R7txQsxlCWmTjETvhEENF4aYFCpb2fVzRlLhhz0qVD
+ kXV0im+YgW8EHvXdGE3HDNTfcs8BW8p44LxsuXEbIsYeH1KN7sFEyLszhPtZ80+xGj+c5A==
+X-Received: by 2002:a05:6000:178e:b0:430:f449:5f18 with SMTP id
+ ffacd0b85a97d-430f44963b3mr14983563f8f.46.1765983140145; 
+ Wed, 17 Dec 2025 06:52:20 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG+T+nY6wdecLEHnqIBz7uHvoT/b3jDw2zvtR6NcYuLs8ihAOzxrKiDhxv5l3pTSsf/IxR8dQ==
+X-Received: by 2002:a05:6000:178e:b0:430:f449:5f18 with SMTP id
+ ffacd0b85a97d-430f44963b3mr14983519f8f.46.1765983139554; 
+ Wed, 17 Dec 2025 06:52:19 -0800 (PST)
+Received: from imammedo ([213.175.37.14]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4310adeee0esm5283851f8f.29.2025.12.17.06.52.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 17 Dec 2025 06:52:19 -0800 (PST)
+Date: Wed, 17 Dec 2025 15:52:14 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, "Michael S . Tsirkin"
+ <mst@redhat.com>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
+ <philmd@linaro.org>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Thomas
+ Huth <thuth@redhat.com>, qemu-devel@nongnu.org, devel@lists.libvirt.org,
+ kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org, Richard
+ Henderson <richard.henderson@linaro.org>, Sergio Lopez <slp@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Laurent Vivier <lvivier@redhat.com>, Jiaxun
+ Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>, Eduardo
+ Habkost <eduardo@habkost.net>, Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>, Marcelo Tosatti
+ <mtosatti@redhat.com>, Weiwei Li <liwei1518@gmail.com>, Amit Shah
+ <amit@kernel.org>, Xiaoyao Li <xiaoyao.li@intel.com>, Yanan Wang
+ <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>, Palmer Dabbelt
+ <palmer@dabbelt.com>, "Daniel P . =?UTF-8?B?QmVycmFuZ8Op?="
+ <berrange@redhat.com>, Ani Sinha <anisinha@redhat.com>, Fabiano Rosas
+ <farosas@suse.de>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?UTF-8?B?Q2zDqW1lbnQ=?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>, Huacai
+ Chen <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>, Mark
+ Cave-Ayland <mark.caveayland@nutanix.com>, BALATON Zoltan
+ <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>, Jiri Denemark
+ <jdenemar@redhat.com>
+Subject: Re: [PATCH v5 15/28] hw/i386: Assume fw_cfg DMA is always enabled
+Message-ID: <20251217155214.71be5008@imammedo>
+In-Reply-To: <20251202162835.3227894-16-zhao1.liu@intel.com>
+References: <20251202162835.3227894-1-zhao1.liu@intel.com>
+ <20251202162835.3227894-16-zhao1.liu@intel.com>
+X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: XbwRr6Cur-pbvMLVmRNWIc2wJN5zWfyZKPZeoKgTwOE_1765983140
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,385 +135,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Like we do for other LD/ST APIs, use one template to declare and
-define all endianness variants of the address_space_lduw() methods.
+On Wed,  3 Dec 2025 00:28:22 +0800
+Zhao Liu <zhao1.liu@intel.com> wrote:
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- MAINTAINERS                                  |  2 +
- include/exec/memory_ldst.h.inc               | 21 ++++----
- include/exec/memory_ldst_phys.h.inc          | 45 ++++------------
- include/system/memory_ldst_endian.h.inc      | 25 +++++++++
- include/system/memory_ldst_phys_endian.h.inc | 37 ++++++++++++++
- system/memory_ldst.c.inc                     | 54 +++++---------------
- system/memory_ldst_endian.c.inc              | 42 +++++++++++++++
- 7 files changed, 136 insertions(+), 90 deletions(-)
- create mode 100644 include/system/memory_ldst_endian.h.inc
- create mode 100644 include/system/memory_ldst_phys_endian.h.inc
- create mode 100644 system/memory_ldst_endian.c.inc
+> From: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>=20
+> Now all calls of x86 machines to fw_cfg_init_io_dma() pass DMA
+> arguments, so the FWCfgState (FWCfgIoState) created by x86 machines
+> enables DMA by default.
+>=20
+> Although other callers of fw_cfg_init_io_dma() besides x86 also pass
+> DMA arguments to create DMA-enabled FwCfgIoState, the "dma_enabled"
+> property of FwCfgIoState cannot yet be removed, because Sun4u and Sun4v
+> still create DMA-disabled FwCfgIoState (bypass fw_cfg_init_io_dma()) in
+> sun4uv_init() (hw/sparc64/sun4u.c).
+>=20
+> Maybe reusing fw_cfg_init_io_dma() for them would be a better choice, or
+> adding fw_cfg_init_io_nodma(). However, before that, first simplify the
+> handling of FwCfgState in x86.
+>=20
+> Considering that FwCfgIoState in x86 enables DMA by default, remove the
+> handling for DMA-disabled cases and replace DMA checks with assertions
+> to ensure that the default DMA-enabled setting is not broken.
+>=20
+> Then 'linuxboot.bin' isn't used anymore, and it will be removed in the
+> next commit.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
+> Changes since v4:
+>  * Keep "dma_enabled" property in fw_cfg_io_properties[].
+>  * Replace DMA checks with assertions for x86 machines.
+> ---
+>  hw/i386/fw_cfg.c     | 16 ++++++++--------
+>  hw/i386/x86-common.c |  6 ++----
+>  2 files changed, 10 insertions(+), 12 deletions(-)
+>=20
+> diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
+> index 5c0bcd5f8a9f..5670e8553eaa 100644
+> --- a/hw/i386/fw_cfg.c
+> +++ b/hw/i386/fw_cfg.c
+> @@ -215,18 +215,18 @@ void fw_cfg_build_feature_control(MachineState *ms,=
+ FWCfgState *fw_cfg)
+>  #ifdef CONFIG_ACPI
+>  void fw_cfg_add_acpi_dsdt(Aml *scope, FWCfgState *fw_cfg)
+>  {
+> +    uint8_t io_size;
+> +    Aml *dev =3D aml_device("FWCF");
+> +    Aml *crs =3D aml_resource_template();
+> +
+>      /*
+>       * when using port i/o, the 8-bit data register *always* overlaps
+>       * with half of the 16-bit control register. Hence, the total size
+> -     * of the i/o region used is FW_CFG_CTL_SIZE; when using DMA, the
+> -     * DMA control register is located at FW_CFG_DMA_IO_BASE + 4
+> +     * of the i/o region used is FW_CFG_CTL_SIZE; And the DMA control
+> +     * register is located at FW_CFG_DMA_IO_BASE + 4
+>       */
+> -    Object *obj =3D OBJECT(fw_cfg);
+> -    uint8_t io_size =3D object_property_get_bool(obj, "dma_enabled", NUL=
+L) ?
+> -        ROUND_UP(FW_CFG_CTL_SIZE, 4) + sizeof(dma_addr_t) :
+> -        FW_CFG_CTL_SIZE;
+> -    Aml *dev =3D aml_device("FWCF");
+> -    Aml *crs =3D aml_resource_template();
+> +    assert(fw_cfg_dma_enabled(fw_cfg));
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c299b84d418..41a45904cd5 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3256,6 +3256,7 @@ F: include/system/ioport.h
- F: include/exec/memop.h
- F: include/system/memory.h
- F: include/system/memory_cached.h
-+F: include/system/memory_ldst*
- F: include/system/physmem.h
- F: include/system/ram_addr.h
- F: include/system/ramblock.h
-@@ -3265,6 +3266,7 @@ F: system/ioport.c
- F: system/memory.c
- F: system/memory_mapping.c
- F: system/physmem.c
-+F: system/memory_ldst*
- F: system/memory-internal.h
- F: system/ram-block-attributes.c
- F: scripts/coccinelle/memory-region-housekeeping.cocci
-diff --git a/include/exec/memory_ldst.h.inc b/include/exec/memory_ldst.h.inc
-index 173164fee3a..73c0366a247 100644
---- a/include/exec/memory_ldst.h.inc
-+++ b/include/exec/memory_ldst.h.inc
-@@ -19,24 +19,16 @@
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-  */
- 
--uint16_t glue(address_space_lduw, SUFFIX)(ARG1_DECL,
--    hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
- uint32_t glue(address_space_ldl, SUFFIX)(ARG1_DECL,
-     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
- uint64_t glue(address_space_ldq, SUFFIX)(ARG1_DECL,
-     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
--void glue(address_space_stw, SUFFIX)(ARG1_DECL,
--    hwaddr addr, uint16_t val, MemTxAttrs attrs, MemTxResult *result);
- void glue(address_space_stl, SUFFIX)(ARG1_DECL,
-     hwaddr addr, uint32_t val, MemTxAttrs attrs, MemTxResult *result);
- void glue(address_space_stq, SUFFIX)(ARG1_DECL,
-     hwaddr addr, uint64_t val, MemTxAttrs attrs, MemTxResult *result);
- uint8_t glue(address_space_ldub, SUFFIX)(ARG1_DECL,
-     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
--uint16_t glue(address_space_lduw_le, SUFFIX)(ARG1_DECL,
--    hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
--uint16_t glue(address_space_lduw_be, SUFFIX)(ARG1_DECL,
--    hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
- uint32_t glue(address_space_ldl_le, SUFFIX)(ARG1_DECL,
-     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
- uint32_t glue(address_space_ldl_be, SUFFIX)(ARG1_DECL,
-@@ -47,10 +39,6 @@ uint64_t glue(address_space_ldq_be, SUFFIX)(ARG1_DECL,
-     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
- void glue(address_space_stb, SUFFIX)(ARG1_DECL,
-     hwaddr addr, uint8_t val, MemTxAttrs attrs, MemTxResult *result);
--void glue(address_space_stw_le, SUFFIX)(ARG1_DECL,
--    hwaddr addr, uint16_t val, MemTxAttrs attrs, MemTxResult *result);
--void glue(address_space_stw_be, SUFFIX)(ARG1_DECL,
--    hwaddr addr, uint16_t val, MemTxAttrs attrs, MemTxResult *result);
- void glue(address_space_stl_le, SUFFIX)(ARG1_DECL,
-     hwaddr addr, uint32_t val, MemTxAttrs attrs, MemTxResult *result);
- void glue(address_space_stl_be, SUFFIX)(ARG1_DECL,
-@@ -60,6 +48,15 @@ void glue(address_space_stq_le, SUFFIX)(ARG1_DECL,
- void glue(address_space_stq_be, SUFFIX)(ARG1_DECL,
-     hwaddr addr, uint64_t val, MemTxAttrs attrs, MemTxResult *result);
- 
-+#define ENDIANNESS
-+#include "system/memory_ldst_endian.h.inc"
-+
-+#define ENDIANNESS              _le
-+#include "system/memory_ldst_endian.h.inc"
-+
-+#define ENDIANNESS              _be
-+#include "system/memory_ldst_endian.h.inc"
-+
- #undef ARG1_DECL
- #undef ARG1
- #undef SUFFIX
-diff --git a/include/exec/memory_ldst_phys.h.inc b/include/exec/memory_ldst_phys.h.inc
-index db67de75251..71c2e64ff0f 100644
---- a/include/exec/memory_ldst_phys.h.inc
-+++ b/include/exec/memory_ldst_phys.h.inc
-@@ -19,12 +19,6 @@
-  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-  */
- 
--static inline uint16_t glue(lduw_phys, SUFFIX)(ARG1_DECL, hwaddr addr)
--{
--    return glue(address_space_lduw, SUFFIX)(ARG1, addr,
--                                            MEMTXATTRS_UNSPECIFIED, NULL);
--}
--
- static inline uint32_t glue(ldl_phys, SUFFIX)(ARG1_DECL, hwaddr addr)
- {
-     return glue(address_space_ldl, SUFFIX)(ARG1, addr,
-@@ -37,12 +31,6 @@ static inline uint64_t glue(ldq_phys, SUFFIX)(ARG1_DECL, hwaddr addr)
-                                            MEMTXATTRS_UNSPECIFIED, NULL);
- }
- 
--static inline void glue(stw_phys, SUFFIX)(ARG1_DECL, hwaddr addr, uint16_t val)
--{
--    glue(address_space_stw, SUFFIX)(ARG1, addr, val,
--                                    MEMTXATTRS_UNSPECIFIED, NULL);
--}
--
- static inline void glue(stl_phys, SUFFIX)(ARG1_DECL, hwaddr addr, uint32_t val)
- {
-     glue(address_space_stl, SUFFIX)(ARG1, addr, val,
-@@ -61,18 +49,6 @@ static inline uint8_t glue(ldub_phys, SUFFIX)(ARG1_DECL, hwaddr addr)
-                                             MEMTXATTRS_UNSPECIFIED, NULL);
- }
- 
--static inline uint16_t glue(lduw_le_phys, SUFFIX)(ARG1_DECL, hwaddr addr)
--{
--    return glue(address_space_lduw_le, SUFFIX)(ARG1, addr,
--                                               MEMTXATTRS_UNSPECIFIED, NULL);
--}
--
--static inline uint16_t glue(lduw_be_phys, SUFFIX)(ARG1_DECL, hwaddr addr)
--{
--    return glue(address_space_lduw_be, SUFFIX)(ARG1, addr,
--                                               MEMTXATTRS_UNSPECIFIED, NULL);
--}
--
- static inline uint32_t glue(ldl_le_phys, SUFFIX)(ARG1_DECL, hwaddr addr)
- {
-     return glue(address_space_ldl_le, SUFFIX)(ARG1, addr,
-@@ -103,18 +79,6 @@ static inline void glue(stb_phys, SUFFIX)(ARG1_DECL, hwaddr addr, uint8_t val)
-                                     MEMTXATTRS_UNSPECIFIED, NULL);
- }
- 
--static inline void glue(stw_le_phys, SUFFIX)(ARG1_DECL, hwaddr addr, uint16_t val)
--{
--    glue(address_space_stw_le, SUFFIX)(ARG1, addr, val,
--                                       MEMTXATTRS_UNSPECIFIED, NULL);
--}
--
--static inline void glue(stw_be_phys, SUFFIX)(ARG1_DECL, hwaddr addr, uint16_t val)
--{
--    glue(address_space_stw_be, SUFFIX)(ARG1, addr, val,
--                                       MEMTXATTRS_UNSPECIFIED, NULL);
--}
--
- static inline void glue(stl_le_phys, SUFFIX)(ARG1_DECL, hwaddr addr, uint32_t val)
- {
-     glue(address_space_stl_le, SUFFIX)(ARG1, addr, val,
-@@ -139,6 +103,15 @@ static inline void glue(stq_be_phys, SUFFIX)(ARG1_DECL, hwaddr addr, uint64_t va
-                                        MEMTXATTRS_UNSPECIFIED, NULL);
- }
- 
-+#define ENDIANNESS
-+#include "system/memory_ldst_phys_endian.h.inc"
-+
-+#define ENDIANNESS  _le
-+#include "system/memory_ldst_phys_endian.h.inc"
-+
-+#define ENDIANNESS  _be
-+#include "system/memory_ldst_phys_endian.h.inc"
-+
- #undef ARG1_DECL
- #undef ARG1
- #undef SUFFIX
-diff --git a/include/system/memory_ldst_endian.h.inc b/include/system/memory_ldst_endian.h.inc
-new file mode 100644
-index 00000000000..4efd7f19f7e
---- /dev/null
-+++ b/include/system/memory_ldst_endian.h.inc
-@@ -0,0 +1,25 @@
-+/*
-+ *  Physical memory access endian templates
-+ *
-+ *  Copyright (c) 2003 Fabrice Bellard
-+ *  Copyright (c) 2015 Linaro, Inc.
-+ *  Copyright (c) 2016 Red Hat, Inc.
-+ *  Copyright (c) 2025 Linaro Ltd.
-+ *
-+ * SPDX-License-Identifier: LGPL-2.1-or-later
-+ */
-+
-+#define ADDRESS_SPACE_LD(size) \
-+    glue(glue(address_space_ld, size), glue(ENDIANNESS, SUFFIX))
-+#define ADDRESS_SPACE_ST(size) \
-+    glue(glue(address_space_st, size), glue(ENDIANNESS, SUFFIX))
-+
-+uint16_t ADDRESS_SPACE_LD(uw)(ARG1_DECL, hwaddr addr,
-+                              MemTxAttrs attrs, MemTxResult *result);
-+void ADDRESS_SPACE_ST(w)(ARG1_DECL, hwaddr addr, uint16_t val,
-+                         MemTxAttrs attrs, MemTxResult *result);
-+
-+#undef ADDRESS_SPACE_LD
-+#undef ADDRESS_SPACE_ST
-+
-+#undef ENDIANNESS
-diff --git a/include/system/memory_ldst_phys_endian.h.inc b/include/system/memory_ldst_phys_endian.h.inc
-new file mode 100644
-index 00000000000..6c00edc2148
---- /dev/null
-+++ b/include/system/memory_ldst_phys_endian.h.inc
-@@ -0,0 +1,37 @@
-+/*
-+ *  Physical memory access endian templates
-+ *
-+ *  Copyright (c) 2003 Fabrice Bellard
-+ *  Copyright (c) 2015 Linaro, Inc.
-+ *  Copyright (c) 2016 Red Hat, Inc.
-+ *  Copyright (c) 2025 Linaro Ltd.
-+ *
-+ * SPDX-License-Identifier: LGPL-2.1-or-later
-+ */
-+
-+#define LD_PHYS(size) \
-+    glue(glue(ld, size), glue(ENDIANNESS, glue(_phys, SUFFIX)))
-+#define ADDRESS_SPACE_LD(size) \
-+    glue(glue(address_space_ld, size), glue(ENDIANNESS, SUFFIX))
-+
-+#define ST_PHYS(size) \
-+    glue(glue(st, size), glue(ENDIANNESS, glue(_phys, SUFFIX)))
-+#define ADDRESS_SPACE_ST(size) \
-+    glue(glue(address_space_st, size), glue(ENDIANNESS, SUFFIX))
-+
-+static inline uint16_t LD_PHYS(uw)(ARG1_DECL, hwaddr addr)
-+{
-+    return ADDRESS_SPACE_LD(uw)(ARG1, addr, MEMTXATTRS_UNSPECIFIED, NULL);
-+}
-+
-+static inline void ST_PHYS(w)(ARG1_DECL, hwaddr addr, uint16_t val)
-+{
-+    ADDRESS_SPACE_ST(w)(ARG1, addr, val, MEMTXATTRS_UNSPECIFIED, NULL);
-+}
-+
-+#undef LD_PHYS
-+#undef ST_PHYS
-+#undef ADDRESS_SPACE_LD
-+#undef ADDRESS_SPACE_ST
-+
-+#undef ENDIANNESS
-diff --git a/system/memory_ldst.c.inc b/system/memory_ldst.c.inc
-index d5776678edf..c37a07b4f4a 100644
---- a/system/memory_ldst.c.inc
-+++ b/system/memory_ldst.c.inc
-@@ -240,27 +240,6 @@ static inline uint16_t glue(address_space_lduw_internal, SUFFIX)(ARG1_DECL,
-     return val;
- }
- 
--uint16_t glue(address_space_lduw, SUFFIX)(ARG1_DECL,
--    hwaddr addr, MemTxAttrs attrs, MemTxResult *result)
--{
--    return glue(address_space_lduw_internal, SUFFIX)(ARG1, addr, attrs, result,
--                                                     DEVICE_NATIVE_ENDIAN);
--}
--
--uint16_t glue(address_space_lduw_le, SUFFIX)(ARG1_DECL,
--    hwaddr addr, MemTxAttrs attrs, MemTxResult *result)
--{
--    return glue(address_space_lduw_internal, SUFFIX)(ARG1, addr, attrs, result,
--                                                     DEVICE_LITTLE_ENDIAN);
--}
--
--uint16_t glue(address_space_lduw_be, SUFFIX)(ARG1_DECL,
--    hwaddr addr, MemTxAttrs attrs, MemTxResult *result)
--{
--    return glue(address_space_lduw_internal, SUFFIX)(ARG1, addr, attrs, result,
--                                       DEVICE_BIG_ENDIAN);
--}
--
- /* warning: addr must be aligned */
- static inline void glue(address_space_stl_internal, SUFFIX)(ARG1_DECL,
-     hwaddr addr, uint32_t val, MemTxAttrs attrs,
-@@ -401,27 +380,6 @@ static inline void glue(address_space_stw_internal, SUFFIX)(ARG1_DECL,
-     RCU_READ_UNLOCK();
- }
- 
--void glue(address_space_stw, SUFFIX)(ARG1_DECL,
--    hwaddr addr, uint16_t val, MemTxAttrs attrs, MemTxResult *result)
--{
--    glue(address_space_stw_internal, SUFFIX)(ARG1, addr, val, attrs, result,
--                                             DEVICE_NATIVE_ENDIAN);
--}
--
--void glue(address_space_stw_le, SUFFIX)(ARG1_DECL,
--    hwaddr addr, uint16_t val, MemTxAttrs attrs, MemTxResult *result)
--{
--    glue(address_space_stw_internal, SUFFIX)(ARG1, addr, val, attrs, result,
--                                             DEVICE_LITTLE_ENDIAN);
--}
--
--void glue(address_space_stw_be, SUFFIX)(ARG1_DECL,
--    hwaddr addr, uint16_t val, MemTxAttrs attrs, MemTxResult *result)
--{
--    glue(address_space_stw_internal, SUFFIX)(ARG1, addr, val, attrs, result,
--                               DEVICE_BIG_ENDIAN);
--}
--
- static inline void glue(address_space_stq_internal, SUFFIX)(ARG1_DECL,
-     hwaddr addr, uint64_t val, MemTxAttrs attrs,
-     MemTxResult *result, enum device_endian endian)
-@@ -486,6 +444,18 @@ void glue(address_space_stq_be, SUFFIX)(ARG1_DECL,
-                                              DEVICE_BIG_ENDIAN);
- }
- 
-+#define ENDIANNESS
-+#define DEVICE_ENDIANNESS       DEVICE_NATIVE_ENDIAN
-+#include "memory_ldst_endian.c.inc"
-+
-+#define ENDIANNESS              _le
-+#define DEVICE_ENDIANNESS       DEVICE_LITTLE_ENDIAN
-+#include "memory_ldst_endian.c.inc"
-+
-+#define ENDIANNESS              _be
-+#define DEVICE_ENDIANNESS       DEVICE_BIG_ENDIAN
-+#include "memory_ldst_endian.c.inc"
-+
- #undef ARG1_DECL
- #undef ARG1
- #undef SUFFIX
-diff --git a/system/memory_ldst_endian.c.inc b/system/memory_ldst_endian.c.inc
-new file mode 100644
-index 00000000000..8aa6ebeebb2
---- /dev/null
-+++ b/system/memory_ldst_endian.c.inc
-@@ -0,0 +1,42 @@
-+/*
-+ *  Physical memory access endian templates
-+ *
-+ *  Copyright (c) 2003 Fabrice Bellard
-+ *  Copyright (c) 2015 Linaro, Inc.
-+ *  Copyright (c) 2016 Red Hat, Inc.
-+ *  Copyright (c) 2025 Linaro Ltd.
-+ *
-+ * SPDX-License-Identifier: LGPL-2.1-or-later
-+ */
-+
-+#define ADDRESS_SPACE_LD(size) \
-+    glue(glue(address_space_ld, size), glue(ENDIANNESS, SUFFIX))
-+#define ADDRESS_SPACE_LD_INTERNAL(size) \
-+    glue(glue(address_space_ld, size), glue(_internal, SUFFIX))
-+
-+#define ADDRESS_SPACE_ST(size) \
-+    glue(glue(address_space_st, size), glue(ENDIANNESS, SUFFIX))
-+#define ADDRESS_SPACE_ST_INTERNAL(size) \
-+    glue(glue(address_space_st, size), glue(_internal, SUFFIX))
-+
-+uint16_t ADDRESS_SPACE_LD(uw)(ARG1_DECL, hwaddr addr,
-+                              MemTxAttrs attrs, MemTxResult *result)
-+{
-+    return ADDRESS_SPACE_LD_INTERNAL(uw)(ARG1, addr, attrs, result,
-+                                         DEVICE_ENDIANNESS);
-+}
-+
-+void ADDRESS_SPACE_ST(w)(ARG1_DECL, hwaddr addr, uint16_t val,
-+                         MemTxAttrs attrs, MemTxResult *result)
-+{
-+    ADDRESS_SPACE_ST_INTERNAL(w)(ARG1, addr, val, attrs, result,
-+                                 DEVICE_ENDIANNESS);
-+}
-+
-+#undef ADDRESS_SPACE_LD
-+#undef ADDRESS_SPACE_LD_INTERNAL
-+#undef ADDRESS_SPACE_ST
-+#undef ADDRESS_SPACE_ST_INTERNAL
-+
-+#undef ENDIANNESS
-+#undef DEVICE_ENDIANNESS
--- 
-2.52.0
+this was supposed to be machine agnostic, but given that it only used by x8=
+6
+it shouldn't cause issues, so
+
+Acked-by: Igor Mammedov <imammedo@redhat.com>
+
+
+> +    io_size =3D ROUND_UP(FW_CFG_CTL_SIZE, 4) + sizeof(dma_addr_t);
+> =20
+>      aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
+> =20
+> diff --git a/hw/i386/x86-common.c b/hw/i386/x86-common.c
+> index 1ee55382dab8..e8dc4d903bd6 100644
+> --- a/hw/i386/x86-common.c
+> +++ b/hw/i386/x86-common.c
+> @@ -1002,10 +1002,8 @@ void x86_load_linux(X86MachineState *x86ms,
+>      }
+> =20
+>      option_rom[nb_option_roms].bootindex =3D 0;
+> -    option_rom[nb_option_roms].name =3D "linuxboot.bin";
+> -    if (fw_cfg_dma_enabled(fw_cfg)) {
+> -        option_rom[nb_option_roms].name =3D "linuxboot_dma.bin";
+> -    }
+> +    assert(fw_cfg_dma_enabled(fw_cfg));
+> +    option_rom[nb_option_roms].name =3D "linuxboot_dma.bin";
+>      nb_option_roms++;
+>  }
+> =20
 
 

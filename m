@@ -4,93 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09B5ED65C5A
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 14:59:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93AFED65C7C
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 17:13:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vVt0G-0007oa-26; Wed, 17 Dec 2025 09:59:48 -0500
+	id 1vVv5U-0005GX-F8; Wed, 17 Dec 2025 12:13:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vVt0E-0007mY-Hz
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 09:59:46 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vVv5L-0005FA-UW
+ for qemu-arm@nongnu.org; Wed, 17 Dec 2025 12:13:12 -0500
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vVt0D-0004MV-4Z
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 09:59:46 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-47796a837c7so43291735e9.0
- for <qemu-arm@nongnu.org>; Wed, 17 Dec 2025 06:59:44 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vVv5K-0004r0-9F
+ for qemu-arm@nongnu.org; Wed, 17 Dec 2025 12:13:11 -0500
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-42fbbc3df8fso2496591f8f.2
+ for <qemu-arm@nongnu.org>; Wed, 17 Dec 2025 09:13:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765983583; x=1766588383; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=AqKdSwcE05MCSufPJevBhc2ZgSmGh9pj74NarAyxQ8k=;
- b=SIIdDXPqFxGE+pnAveJXiANyeFW499NHfuGg6B0ou1P4gxDaW0K8b9+NgsArUPUBQM
- PG+XnfQJsRh5Mo+/HQ9ffmDZAjLCF0P8XfLyD5qMqBnHkBeLfG6mdMZKcAc+CvdtLXKd
- 74UK+hdy6syz4FwLhUpVAbOruKCQHHEMeGPwwpRYrwrKobFiwt1Xes/Fo94ai7gJVBC4
- xNHz1EHfdbDUsasEAKiM3MIxb/nsQU+vepXlsqTNavcTi/wz5TmMpXwfOUrfLH3iyxjy
- YbH7l/+yEi0Z7Y52fQc3wWXiLuy5OTpCf9GrL9ie9v6EHgmAe04YTJEPS9nTTfExXwm4
- SxwA==
+ d=linaro.org; s=google; t=1765991586; x=1766596386; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=0uhcrtD7jnKn0rTYmKdWhCBWBmuzsgB6qyok4bl7+AY=;
+ b=KTNChVIcBFyCT4o1fxAFmYnmRG6qhiOpuNZDug8fDEKZi0kBTP6+rnjsiLj4UaD7ET
+ i7tskS2CrmubYV90TMHvQ1HkD1pHALKiULc4JT2V2oHPTw0ti4yEpeJCP834V8uZRXEQ
+ MP+Yv2ShUkZLUSZutMZqbouHiKEmzmtOnRUkR8x5kxlGV/V+JvhjD2fTkRe6vOcdYRfX
+ bwDruCruLVFTPdROVuIFugXPyyB2ZnouPrFV5OX7FmJ1sK+99jFrxhG6I8irVY8IF5lK
+ +cB/syMm7WU8Sv+VG0D9Tbx1Q4YVzqiOvChDrGaKz8MlcytvqSnK1WGgqk9CjIvmn7Tl
+ kz5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765983583; x=1766588383;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=AqKdSwcE05MCSufPJevBhc2ZgSmGh9pj74NarAyxQ8k=;
- b=EkyRrVmhoFrMVihoynGjjh1oNidMvWVu4SP8BXt+g01CqS5DpW0JPP/eW5y4ulzbnD
- NlLAOgA/63q5b+viILFKeUmVz72kZNORh5ew4YCPDuSG0zDOce57Aqr/6WeZcOZTGgIH
- XWcm8bWeCj1YQskkjM6rCL1BAMRjjdaCvNV8QUq1558s+Tyz010/btjlwB7eg6odIPfj
- EKpJI053v004aCmPSWPzkfVbpAHrPUC4YgAs5J9p6NViMKSmJ0HYOKa86WR1GDyAKCYu
- QKuGvi7k9q3Agmd0D3mM85MD3da3ecXYyKaYLrbvQsEMmquoAvWe/YsfiOu1sa5jF0Cc
- NsUQ==
+ d=1e100.net; s=20230601; t=1765991586; x=1766596386;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=0uhcrtD7jnKn0rTYmKdWhCBWBmuzsgB6qyok4bl7+AY=;
+ b=GdF/z1Q04stGykB2c6jY4jPOkzPd4VoRDFWvDiepuh8n94B7DjAQh4JbtqVhED2AY0
+ R4TpE33vJ9LtNGzrJNsIT6rsxO0NMPRNTPWYP7yd628WPN0/cGyBBAlqHA0VJ5Bx5Bn5
+ MNQ6v6xlsLXtb4poJkS8wOUK0b2/TnTWwk3YoEGwK3AER1BBZ+BU/3vDq74ur7Qugc6P
+ YjuZ8yKMbFuXX4iDR3RYiPeE08hFYnEb62xGIrX1mTLAOUqVxl8nJcWgVOKPM7I0jKNB
+ rAsnHGUkIuEDcQ8ZFNZRuax2pqnYmisCczsrJJkMW17U4+PqvZCsrUpbA4jW/BHyjdAH
+ w3GQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVA7bsZxsUxLxR1zUQCNKS+nYe76fL/jUPev6pSls1BZlR8SjgpjoSIbIctdX1Xl0za1jZUs9gyMw==@nongnu.org
-X-Gm-Message-State: AOJu0YxvCtvhxsE+PUMomuGD+OAvoKgAfW3BmmOrORAgXpNT+cI0HT/P
- i8EDBVDsRIf/4DhVs4ZaJQgLq6CVkYA7VJb35V8sxzb1UXLf3ZAI7vR23wnsQzy0LvI=
-X-Gm-Gg: AY/fxX4glsZinqChYzpT8zvhRT3LdSS0rLgwV4RXlWWUaOtlahU6zac5wQBVFmFmg5+
- Jg6x8sPxHdfSinJ2Jii+XS2GeLISrPvKAgsE5+Pi348pIP+6HYXlqMIx6++bIxq58a9Da7FjamE
- xaq6h47yOC4bvtUAanCLlczBEHScuGJvhB7t6kl99IUOprw9GLawbBRLhM58RvOjPEnr2Ct0Wlv
- l0vu5O/no2kPwi6d5EUrA8ApZks/0QuIOejgTrYFK8LqZ2ubfQaTICxx8xjNwAP1VOGFaQ7DTb1
- ABR0cNBjNp6GQIp9uZB5VuqBI0XkECBzgFJN735eldnd4ki65RVTxl08R5nTsZ6hBtu8HVd1TGD
- dpdP/MGT6xP3RvQ0T59pI3vlICK0wI1cbNyFCHHYwv9ziY4y6vLKDAPGAl6MqfzVy9GVe5G78NS
- lRpXSOoP6Rdgk0B591JbGQaxaCw4ptVAnKg1o9uyaX/xU3U+CJO+3SMg==
-X-Google-Smtp-Source: AGHT+IE/x7QTV9F6uNBJtYJJnbqQhRBUscLeeibZBuP7hwNVu51jLzxSfWPIiIHQC14hZuhuM5WfBA==
-X-Received: by 2002:a05:600c:3e06:b0:471:786:94d3 with SMTP id
- 5b1f17b1804b1-47a8f907f13mr149672895e9.22.1765983583207; 
- Wed, 17 Dec 2025 06:59:43 -0800 (PST)
-Received: from [192.168.69.202] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47bdc1cb6a8sm40679515e9.2.2025.12.17.06.59.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 Dec 2025 06:59:42 -0800 (PST)
-Message-ID: <3c5328f2-f8e7-4154-bab5-e80f46306aae@linaro.org>
-Date: Wed, 17 Dec 2025 15:59:41 +0100
+ AJvYcCVunLrxK1OQvaG3XvFFYjSuAGJ6HdI881BwDaeIfoJs6rRTu5ZGlqbnS8ms81fnBor8qr5xnCxwXw==@nongnu.org
+X-Gm-Message-State: AOJu0Yz/mprE50C2MBkuk6uS+lSuVaBBJd7lw1kV2RWZvKbkh0cccqYJ
+ 9gxEya1zDjEJHO+I6VIzVlVOEXvWKmxWj7C2dcB/bVqw5Bf1uu0Y7m+IS28cXrAWEhw=
+X-Gm-Gg: AY/fxX5A+Ic+MNGyetuX+7hv/CcdpY5a7lyg71EwXjcAJRN2So7PxAG4GnQ4/++cJDV
+ dn9zyh0V4ZcRuCCiEgyhjYuyDWITbrx8Tr60gVWnIY2B33ntOUdvfgeaH8F1MIZ7f5pSX37Ewnb
+ 1gZAfd14dU27FMxzCj4knC+tPUtjv+fJNfenejFXq2chEsuIFk51wLLbZmsYR+WFEKOJWNeyB5n
+ 3Mr0AT+4uVtuEmG0fMm1vATz6AGXzw/152BzmSyFAAYXtXk7yxGSN0zUjDNmCNWys6xwVK0p94J
+ qNudXmcyZn45v77p4LzP2kZwdt2O6N2nRSorbaTdFARfYMxit/a0OH9HA9rksYPxDqXzLn2KrSh
+ TxR8h7J8PEfx9KMAs7XVNFUFFNkLm4Bkk6KURj+8esCOnVP+SQ9ajOi/gANWG9Hnvyv1DLBJS5O
+ 0o/DWmSGvc16M=
+X-Google-Smtp-Source: AGHT+IHoZxiTcmP06/2wwQxulI9RIw3rEjz+BHixGX28IjJKlG5wt0th4U1OTJ8etmtlm0IAvNuTsg==
+X-Received: by 2002:a5d:6282:0:b0:431:4b7:a309 with SMTP id
+ ffacd0b85a97d-43104b7a3famr6454152f8f.20.1765991586050; 
+ Wed, 17 Dec 2025 09:13:06 -0800 (PST)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43244998ed5sm39080f8f.35.2025.12.17.09.13.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 17 Dec 2025 09:13:05 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 94E645F828;
+ Wed, 17 Dec 2025 17:13:04 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org,
+ "Michael S . Tsirkin" <mst@redhat.com>,  Eugenio =?utf-8?Q?P=C3=A9rez?=
+ <eperezma@redhat.com>,  Manos Pitsidianakis
+ <manos.pitsidianakis@linaro.org>,  devel@lists.libvirt.org,  Richard
+ Henderson <richard.henderson@linaro.org>,  Peter Maydell
+ <peter.maydell@linaro.org>,  qemu-arm@nongnu.org,  Jason Wang
+ <jasowang@redhat.com>
+Subject: Re: [PATCH] hw/arm: Deprecate legacy VirtIO devices on big-endian
+ guests
+In-Reply-To: <aUK9f3qG78Plwmgh@redhat.com> ("Daniel P. =?utf-8?Q?Berrang?=
+ =?utf-8?Q?=C3=A9=22's?= message of
+ "Wed, 17 Dec 2025 14:26:07 +0000")
+References: <20251217140658.89715-1-philmd@linaro.org>
+ <aUK9f3qG78Plwmgh@redhat.com>
+User-Agent: mu4e 1.12.14-pre3; emacs 30.1
+Date: Wed, 17 Dec 2025 17:13:04 +0000
+Message-ID: <8734592frz.fsf@draig.linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/char/cmsdk-apb-uart.c: log guest_errors for r/w to
- disabled uart
-Content-Language: en-US
-To: julia <midnight@trainwit.ch>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org
-References: <20251217-cmsdk-uart-disabled-warning2-v1-1-847de48840bc@trainwit.ch>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251217-cmsdk-uart-disabled-warning2-v1-1-847de48840bc@trainwit.ch>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,30 +116,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Julia,
+Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
 
-On 17/12/25 08:10, julia wrote:
-> I don't want to admit how many hours I spent trying to figure out why
-> nothing was being printed (as the enable-ing code hadn't yet run,
-> even thought it existed).
+> On Wed, Dec 17, 2025 at 03:06:57PM +0100, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+>> We couldn't find a way (guest OS with VirtIO drivers) to test
+>> a legacy VirtIO device on a ARM vCPU running in big-endian.
+>>=20
+>> Deprecate for the v11.0 release, giving 1 year to users who
+>> really care to contribute functional tests.
+>>=20
+>> Suggested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>> ---
+>>  docs/about/deprecated.rst | 11 +++++++++++
+>>  1 file changed, 11 insertions(+)
+>>=20
+>> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+>> index ac31a2bce42..3a69facb0f1 100644
+>> --- a/docs/about/deprecated.rst
+>> +++ b/docs/about/deprecated.rst
+>> @@ -515,6 +515,17 @@ It was implemented as a no-op instruction in TCG up=
+ to QEMU 9.0, but
+>>  only with ``-cpu max`` (which does not guarantee migration compatibility
+>>  across versions).
+>>=20=20
+>> +VirtIO devices
+>> +''''''''''''''
+>> +
+>> +Legacy VirtIO devices on Big-Endian ARM architecture (since 11.0)
+>> +^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>> +
+>> +There are no functional tests for legacy virtio devices used by ARM
+>> +machines running in big-endian order, which makes harder to maintain
+>> +the code path while the code base evolve.
+>
+> Lack of test coverage is not a reason to deprecate something.
+>
+> We deprecate things we intend to intentionally remove or intentionally
+> change in an incompatible manner.
 
-You are not alone, few of us have been there too :/
+We also deprecate things that stop us moving the code forward. c.f. the
+long process to deprecate 32 bit hosts.
 
-This is why I added this commit for the PL011:
-https://gitlab.com/qemu-project/qemu/-/commit/abf2b6a0
-but it had to be reverted, see:
-https://gitlab.com/qemu-project/qemu/-/commit/5b14454d
+> If something is not tested, that merely means it has lesser quality
+> guarantees, and is liable to unintenionally get broken at times.
+>
+> If we're planning to *intentionally*  remove the ability to use
+> legacy virtio on big endian, that would be a reason to deprecate.
+> If so the deprecation message should say this, not talk about
+> missing functional testing.
 
-> 
-> Signed-off-by: julia <midnight@trainwit.ch>
-> ---
->   hw/char/cmsdk-apb-uart.c | 8 ++++++++
->   1 file changed, 8 insertions(+)
+As far as I'm aware BE Arm is a very small niche and I'm not even sure
+anyone runs BE Arm systems with VirtIO - let alone legacy VirtIO. If
+there are people that need this functionality they need to at least make
+themselves known.
 
-Anyway for your patch:
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-Regards,
-
-Phil.
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

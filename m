@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81300D66B9D
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 19:12:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAD40D66BA1
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 19:12:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vVww6-0005kn-4N; Wed, 17 Dec 2025 14:11:46 -0500
+	id 1vVwvx-0005dB-Qt; Wed, 17 Dec 2025 14:11:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
- id 1vVwvy-0005dw-RZ; Wed, 17 Dec 2025 14:11:38 -0500
-Received: from fhigh-a1-smtp.messagingengine.com ([103.168.172.152])
+ id 1vVwvw-0005cA-Qu; Wed, 17 Dec 2025 14:11:36 -0500
+Received: from fout-a8-smtp.messagingengine.com ([103.168.172.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
- id 1vVwvx-00015k-92; Wed, 17 Dec 2025 14:11:38 -0500
-Received: from phl-compute-10.internal (phl-compute-10.internal [10.202.2.50])
- by mailfhigh.phl.internal (Postfix) with ESMTP id 6F0CC140009E;
- Wed, 17 Dec 2025 14:11:36 -0500 (EST)
+ id 1vVwvu-00014r-Mc; Wed, 17 Dec 2025 14:11:36 -0500
+Received: from phl-compute-03.internal (phl-compute-03.internal [10.202.2.43])
+ by mailfout.phl.internal (Postfix) with ESMTP id D5924EC011C;
+ Wed, 17 Dec 2025 14:11:33 -0500 (EST)
 Received: from phl-frontend-04 ([10.202.2.163])
- by phl-compute-10.internal (MEProxy); Wed, 17 Dec 2025 14:11:36 -0500
+ by phl-compute-03.internal (MEProxy); Wed, 17 Dec 2025 14:11:33 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stwcx.xyz; h=cc
  :cc:content-transfer-encoding:content-type:content-type:date
  :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to; s=fm3; t=1765998696;
- x=1766085096; bh=ebQk04CyPh/8mC3YTxA9itW1+9QJBQFW7D28xrLm5Qc=; b=
- XQFVrOgcCc+HtX+V8NGxj2eX6rFVBDXxDADFkWgZ+hRiCULm0u79vWDRYZ8UX4OB
- UBczdebNWXuxxlB6ghsshG+wa1n9hitXPIa+dscVK8KIKfo/LLrAhuXL7r6ZwZno
- X0wPaBSRT/V/bh5B0jx1vLvKPeWdDb8O6dgBIEmccL2g4KMqqTXBud4O3EZfoinj
- 4FJn0FPb81WgJqBX9aK1D5dOKAM52eu5oSRMxx8MoScyX6NjWjuMzSt+KPG9TWZx
- IFOiwMYLpB7KI65xVvD4xyDAJqRevH/kCOuhumc3lXx6lDutLG3w/no2nCO8Ptdb
- RjS+UAb21LvmgPM+jXQzow==
+ :references:reply-to:subject:subject:to:to; s=fm3; t=1765998693;
+ x=1766085093; bh=IYNyEYtFuolxuLICrRO3YgG3x5tAFKgZGLn8f+nn+AM=; b=
+ GXwC3eHMtN+RqXYLPZjTju/Mut97Z8eA0GeOlQm8IltLQPa2e9NeWDatd5cux1mB
+ LCatP9deUr2XuZOAXmtq0W+V05sSd25ud1kGzN123mbcetVfnnjecz+LQVlef56c
+ xNjsukJLu8LTqrY+SSLptdae9tCgDWIkYV7HhkfAbLTcgMDSIlEsTauo3FzKkiHo
+ bKaKUU9hgQ9neD2eCNqEjNcKQRY6JlAPUKfnKXTiJxeMIBSw8c+BvZwkim6WawU+
+ XL6xSzb7octU3HQrnb+qp53ZoNnnYzi1+adcsE6gF9A+InZYNTUU+FhMacmd3/RH
+ KR/2BBC7zi567FFFYNfJkA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-transfer-encoding
  :content-type:content-type:date:date:feedback-id:feedback-id
  :from:from:in-reply-to:in-reply-to:message-id:mime-version
  :references:reply-to:subject:subject:to:to:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1765998696; x=
- 1766085096; bh=ebQk04CyPh/8mC3YTxA9itW1+9QJBQFW7D28xrLm5Qc=; b=T
- CkwO4ZMjILrNH1wq6RUvQMp5zaAgQG/9v5paCEjQqVrjidQiz6rLdvXuoMYmIXT1
- nJZbNyWN/xbK5IC5ZnXkz6DBQo2wlC2ihqVNCwIYhr4gq6WRkjjbV8f+ys7jhZHd
- HIK+AjWjJAZpA1x9i42HKLwLg0VDfHXpsLfbE0mA+CaXAR2i3o3TwXT1eQwb20Qx
- v7pzReawldGxBuSAUvGdUP9bRg5y4r0Qkxup56BZtHBz9bQFZroiKXbavNyH5jZa
- 2CBrZO8qpEbtMRVm1NpmCemELOYgwUMVssFp7V536pBkLQ9yTwn+kP2tFoY4pU40
- Sg9yxVjpv+jJDeN92A8KA==
-X-ME-Sender: <xms:aABDacCsQhYqEbYdOPHDEWKHVpMs0-p62Boswpiouj6mGNriYWXCKg>
- <xme:aABDaRkPDVPbnljMekpvkmiL_ASREJkq2X2rHaY7BzNkCc2ONVmmeB_lFA7dz30lH
- Ycd1vBs5zyAMBXX-RNzykotMqBvOU2fLZ06wTTGLMHq1WWbjbjQd0I>
-X-ME-Received: <xmr:aABDaaO7SQ0qXW695dfLSIU2mhSQZicJUg7ZJ10hhnrzUos9qGsOA3QeU5E>
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1765998693; x=
+ 1766085093; bh=IYNyEYtFuolxuLICrRO3YgG3x5tAFKgZGLn8f+nn+AM=; b=J
+ JuripEMixPr9lkiO2sLtpPMZqkXI6rHMD1KHM6O1j/imo6xR9+KetGVROKLjgbQm
+ qDDoIu260ZuvMdiK2JIMbclcyOTA9DZVreb+pLoXUjBEI/lC+LlKN5KZNnDeV+aO
+ LyFAs89qjtjClGO43C/eH1WzbQKA0KGJb5MWE6eyw0sdUOx+8A4CJJreLVjZL1gK
+ M4hAIEr5yLJpZyJQoH0l8ORVy3CAHoNQ/hDl+c5j8WgBX8LqfyYftZGmYhR7EfgM
+ ae3mWXJ/XsKtdqRt/yNjFwQdvAf8Q8cInIxkJps6F0JtQRIt7/ui+BmxsQQk4REp
+ 5yJUq5xAPb5/leCr407JQ==
+X-ME-Sender: <xms:ZQBDaTeMTEYKaICxWOi4d_YXWO7o4d8d2a9-09O3xSvaAptT2QOgNw>
+ <xme:ZQBDacQeutkMC5yrzHuSxucf34HLfetozRyOxu25gA9qmy_uUPhMDJLQ-BD2nET0d
+ LVSFMNWoWUqA_ZSRactl1pFgCtU-k0YJJAP6vT3PqtAkynozD_nFBQ>
+X-ME-Received: <xmr:ZQBDaXIJsZyJIMRtwGfgRenq4jlHSCFK11TgejECir7K17lvFBz_lJHMUR4>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdegfeefjecutefuodetggdotefrod
  ftvfcurfhrohhfihhlvgemucfhrghsthforghilhdpuffrtefokffrpgfnqfghnecuuegr
  ihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenfghrlh
@@ -68,21 +68,21 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgdegfeefjecutefuodetgg
  thhtoheplhgvvghtrhhohiesghhmrghilhdrtghomhdprhgtphhtthhopehqvghmuhdqug
  gvvhgvlhesnhhonhhgnhhurdhorhhgpdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdr
  rghu
-X-ME-Proxy: <xmx:aABDae_NPxR-oBWJxW6TdRBvAwEzd9_iigOWpdUYvo2zVaUEY7Tw-Q>
- <xmx:aABDacHRQ6CaK6yDNf9eYvhdQ7CmmImX60EKhO-oxn3g3LdjvWQXkQ>
- <xmx:aABDadjFsamGe4_v6FoJB51QToZTpf5Vd7Nw1W0br1pTZ9ZxkGqKkQ>
- <xmx:aABDaRsPDDUrTdmOgB827XhqAujQaO9tBx5PYWaYhOiYidBzG6jYnQ>
- <xmx:aABDaSbigWl5j5HBTDGMiAt1ayZfYJGPuz1KkvJ4aQcE3q7w4ziLL0FI>
+X-ME-Proxy: <xmx:ZQBDaRLp9y9dDmwrsVA5kONEw8snnt-gEtUOPTt5gWijszXkWeRAvw>
+ <xmx:ZQBDaajRTDSYvRX3IUQxUaDU8zhMX36IYKCrOBlzctGE-oI0RnID4A>
+ <xmx:ZQBDaTNFZAIJ4-SANllJbt-nXhpmBlp1JKenKxt0KN7lB2TOMEwehA>
+ <xmx:ZQBDadoKXKkU-KsYgsxGH60zGlM59nt77SwyzY4Vkl-4ven3DqUEJw>
+ <xmx:ZQBDaRX2esLNYzIC9ljJxLTNeYy6qPAtI54hCCNmSaTtNzd45Kn64-p5>
 Feedback-ID: i68a1478a:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 17 Dec 2025 14:11:35 -0500 (EST)
+ 17 Dec 2025 14:11:33 -0500 (EST)
 From: Patrick Williams <patrick@stwcx.xyz>
-Date: Wed, 17 Dec 2025 14:11:33 -0500
-Subject: [PATCH 06/11] hw/arm/aspeed: catalina: add HDD FRU EEPROM
+Date: Wed, 17 Dec 2025 14:11:30 -0500
+Subject: [PATCH 03/11] hw/arm/aspeed: catalina: add PDB FRU EEPROM
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20251217-catalina-eeproms-v1-6-dc7b276efd57@stwcx.xyz>
+Message-Id: <20251217-catalina-eeproms-v1-3-dc7b276efd57@stwcx.xyz>
 References: <20251217-catalina-eeproms-v1-0-dc7b276efd57@stwcx.xyz>
 In-Reply-To: <20251217-catalina-eeproms-v1-0-dc7b276efd57@stwcx.xyz>
 To: qemu-devel@nongnu.org
@@ -93,25 +93,25 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
  qemu-arm@nongnu.org, Patrick Williams <patrick@stwcx.xyz>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2964; i=patrick@stwcx.xyz;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3439; i=patrick@stwcx.xyz;
  h=from:subject:message-id;
- bh=VGv2cXOMR+fpR4qDjJxOyivbclt3BXVWQFnOwLWmPl4=;
- b=owEBbQKS/ZANAwAIAasDR8wtAMEZAcsmYgBpQwBgHkBC/J86k60OWDDDph2yfS16063jDeQ3T
- 1weqIgRrj2JAjMEAAEIAB0WIQQEYP2KLgsT1w1uokGrA0fMLQDBGQUCaUMAYAAKCRCrA0fMLQDB
- GYQKD/9ncLM4sCIOjfmixDZBFAQnOgViQxOTLxHz/qXQ+e+HH1ZllJyUw1PWcTYK201OAI0hDcl
- TWl+AFLnHuvYfGJedmW3FUYC5S8DHg+vYn2/Jclbcp421QXo3VYiBWLPNFXT4rN9OPr8pMKU/7y
- bj7YmpbdTFXjRQK5zgyN7d81oG3fV7/UBucJjRfX+0QLnVCJyS4/vtrCJWXRinyWVlVxrt0h6Dz
- NHJ8LhjD+Si/ZfG/7bnfL+WB8zvM6JD7ung/dENorDiwFq5E/ccRv7Vm0X7yxY3f7J4CTUVjptQ
- 8JYp8cXOfYk6LbAtxItlEWDPLzr74WweE6ptN4pHFFK3qSBrIv1g3BHjT26jnwuD2PEjKmS1l+0
- TtkcN1WuNuqYCX4Je8FRkuHWcXtKBWh+P2qHWkhaGsUMf0Avh+eTzREEog204xR3yvsNekAXGyK
- /1WCECz/GX5CHXMxveCURyD7oD5epDMqpGiM0Z6T20eiNHLW5p8IgL+hEsMg4LXxOozFpVP7d8M
- TZGFVCHgcxR74LTd4Sbt6MtFIB9BYFfhbD59z9UTv0AgHxbPvCrN0SK7ITia8b1dLxVOENiWcYj
- diLgSPYWO9dFt+Kpl1t8CRZVg/4jWiyW00hk6xKkkYGb5gC2AHj7+1LiGeGl9RHF/8B88lskrDZ
- xpPmNWpFBy84GAw==
+ bh=743vlcsdT8g1t/2Q0+AWKYAMdQDwHhTqybRKjZPrPVI=;
+ b=owEBbQKS/ZANAwAIAasDR8wtAMEZAcsmYgBpQwBgbh2DvhB1ArR7mzF27ViTfiAV4CawtMjeK
+ hHPjBEzMNaJAjMEAAEIAB0WIQQEYP2KLgsT1w1uokGrA0fMLQDBGQUCaUMAYAAKCRCrA0fMLQDB
+ GY1gD/0b7HRp/1SjkoZmxbs8IblvgBWgZISK/QTXWYf3D+f91bfL/h70LNrK9PhwLXxKukzTNJx
+ ASyJKFT4FSE1WWsbGs9DqqRpX7ScXF6wqQmRg8EH9aaSNAsP42Y5lhMJvaDQ2e1eqCtxCTYXhcu
+ 48R2oYqfBcW9HEj+eAwePgJtR7ZtOU2WOREjclOE8x32nRCzmxvZvg0gZwuqa+ON6APlHjvbsN8
+ TVM/zU0yln6aqrEkY6cm0HocLlWEmDitTCxxu4BHpQ13mBKkHPSapcQMBlxo5EGSb3VqtnFxUAA
+ F6dvF9iwsvGOZC1cgCkbyAdxTnm0LlyPmrvzjkrdpxHP0G3xBwv9echLk7ztas3O7/sQaHZwq71
+ acWF29aKf7ZVa71cKDi6B5y1FKHHJpI3KXOCb+bymqxIwmQ8L2DrnXa8yS4GHaEQnaZqiyl46sX
+ MmpdNeeQW8XEfI06mYIFs7FpkVBfA5jAvfXWftsDQ1MX5fzLK5uRg2B0f9T1ONmUUG3jIREKYwr
+ hvmLKvjG1urhV/p7gWGqldbHYEQBHmZPy4bxvKUZbOzm1h8Y88w49TXI2SnTfCqWexZpM1mOhvn
+ zvjLJQ1MS2Uc4r9ptn+tKovaW9+vna9PLtCi5MYJZKfxGZ/sfvmqnEtf7T7jRpHk9TQ22iCnksO
+ ZUF+70MFsA4AQbw==
 X-Developer-Key: i=patrick@stwcx.xyz; a=openpgp;
  fpr=0460FD8A2E0B13D70D6EA241AB0347CC2D00C119
-Received-SPF: pass client-ip=103.168.172.152; envelope-from=patrick@stwcx.xyz;
- helo=fhigh-a1-smtp.messagingengine.com
+Received-SPF: pass client-ip=103.168.172.151; envelope-from=patrick@stwcx.xyz;
+ helo=fout-a8-smtp.messagingengine.com
 X-Spam_score_int: -2
 X-Spam_score: -0.3
 X-Spam_bar: /
@@ -135,33 +135,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Use ipmitool/frugen tool to generate a HDD image based on a
+Use ipmitool/frugen tool to generate a PDB image based on a
 sanitized set of data from a real device EEPROM.
 
 Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
 ---
- hw/arm/aspeed_ast2600_catalina.c | 41 +++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 40 insertions(+), 1 deletion(-)
+ hw/arm/aspeed_ast2600_catalina.c | 51 +++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 50 insertions(+), 1 deletion(-)
 
 diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
-index 17db9035bd..4cfde870af 100644
+index 6e8f4d39d9..2ba2c5c088 100644
 --- a/hw/arm/aspeed_ast2600_catalina.c
 +++ b/hw/arm/aspeed_ast2600_catalina.c
-@@ -227,6 +227,44 @@ static const uint8_t fio_eeprom[] = {
+@@ -103,6 +103,54 @@ static const uint8_t scm_eeprom[] = {
  };
- static const size_t fio_eeprom_len = sizeof(fio_eeprom);
+ static const size_t scm_eeprom_len = sizeof(scm_eeprom);
  
 +/*
-+ * HDD Carrier Board FRU data. Generated with frugen.
++ * "Power Distribution Board" FRU data. Generated with frugen.
 + *
 + *    {
 + *        "board": {
 + *            "mfg": "Quanta",
-+ *            "pname": "Catalina HDD MP (QEMU)",
++ *            "pname": "Catalina PDB MP (QEMU)",
 + *            "pn": "00000000000",
 + *            "serial": "00000000000000",
 + *            "date": "01/12/2025 00:00",
-+ *            "custom": ["19-100319", "", "", "adc-ina"]
++ *            "custom": [
++ *                "19-100579",
++ *                "",
++ *                "",
++ *                "hsc-ltc fsc-max vr-delta gndsen-ina p12vsen-ina p12vfan-mps"
++ *            ]
 + *        },
 + *        "product": {
 + *            "mfg": "Quanta",
@@ -173,35 +178,40 @@ index 17db9035bd..4cfde870af 100644
 + *        }
 + *    }
 + */
-+static const uint8_t hdd_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x0b, 0x00, 0x00, 0xf3, 0x01, 0x0a, 0x19, 0x8c,
++static const uint8_t pdb_eeprom[] = {
++    0x01, 0x00, 0x00, 0x01, 0x12, 0x00, 0x00, 0xec, 0x01, 0x11, 0x19, 0x8c,
 +    0x19, 0xf0, 0xc6, 0x51, 0x75, 0x61, 0x6e, 0x74, 0x61, 0xd6, 0x43, 0x61,
-+    0x74, 0x61, 0x6c, 0x69, 0x6e, 0x61, 0x20, 0x48, 0x44, 0x44, 0x20, 0x4d,
++    0x74, 0x61, 0x6c, 0x69, 0x6e, 0x61, 0x20, 0x50, 0x44, 0x42, 0x20, 0x4d,
 +    0x50, 0x20, 0x28, 0x51, 0x45, 0x4d, 0x55, 0x29, 0x8b, 0x10, 0x04, 0x41,
 +    0x10, 0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x04, 0x89, 0x10, 0x04, 0x41,
 +    0x10, 0x04, 0x41, 0x10, 0x04, 0x01, 0xc0, 0x87, 0x51, 0xd6, 0x44, 0x10,
-+    0x34, 0x45, 0x19, 0xc0, 0xc0, 0xc7, 0x61, 0x64, 0x63, 0x2d, 0x69, 0x6e,
-+    0x61, 0xc1, 0x00, 0xff, 0x01, 0x07, 0x19, 0xc6, 0x51, 0x75, 0x61, 0x6e,
-+    0x74, 0x61, 0xcb, 0x43, 0x49, 0x2d, 0x43, 0x61, 0x74, 0x61, 0x6c, 0x69,
-+    0x6e, 0x61, 0x89, 0x11, 0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x14, 0x01,
-+    0x82, 0x2d, 0x0c, 0x8b, 0x11, 0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x04,
-+    0x41, 0x10, 0x04, 0x83, 0x71, 0xd9, 0xd6, 0xc0, 0xc1, 0x00, 0x00, 0x37
++    0x54, 0x5d, 0x19, 0xc0, 0xc0, 0xfb, 0x68, 0x73, 0x63, 0x2d, 0x6c, 0x74,
++    0x63, 0x20, 0x66, 0x73, 0x63, 0x2d, 0x6d, 0x61, 0x78, 0x20, 0x76, 0x72,
++    0x2d, 0x64, 0x65, 0x6c, 0x74, 0x61, 0x20, 0x67, 0x6e, 0x64, 0x73, 0x65,
++    0x6e, 0x2d, 0x69, 0x6e, 0x61, 0x20, 0x70, 0x31, 0x32, 0x76, 0x73, 0x65,
++    0x6e, 0x2d, 0x69, 0x6e, 0x61, 0x20, 0x70, 0x31, 0x32, 0x76, 0x66, 0x61,
++    0x6e, 0x2d, 0x6d, 0x70, 0x73, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x00, 0x24,
++    0x01, 0x07, 0x19, 0xc6, 0x51, 0x75, 0x61, 0x6e, 0x74, 0x61, 0xcb, 0x43,
++    0x49, 0x2d, 0x43, 0x61, 0x74, 0x61, 0x6c, 0x69, 0x6e, 0x61, 0x89, 0x11,
++    0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x14, 0x01, 0x82, 0x2d, 0x0c, 0x8b,
++    0x11, 0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x04, 0x83,
++    0x71, 0xd9, 0xd6, 0xc0, 0xc1, 0x00, 0x00, 0x37
 +};
-+static const size_t hdd_eeprom_len = sizeof(hdd_eeprom);
++static const size_t pdb_eeprom_len = sizeof(pdb_eeprom);
 +
  static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
  {
      /* Reference from v6.16-rc2 aspeed-bmc-facebook-catalina.dts */
-@@ -330,7 +368,8 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_mux = i2c_slave_create_simple(i2c[5], TYPE_PCA9548, 0x70);
-     /* i2c5mux0ch6 */
-     /* eeprom@52 */
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 6), 0x52, 8 * KiB);
-+    at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 6), 0x52, 8 * KiB,
-+                          hdd_eeprom, hdd_eeprom_len);
-     /* i2c5mux0ch7 */
-     /* ina230@40 - no model */
-     /* ina230@41 - no model */
+@@ -166,7 +214,8 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+ 
+     /* i2c1mux0ch5 */
+     /* eeprom@54 */
+-    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 5), 0x54, 8 * KiB);
++    at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 5), 0x54, 8 * KiB,
++                          pdb_eeprom, pdb_eeprom_len);
+     /* tpm75@4f */
+     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), TYPE_TMP75, 0x4f);
+ 
 
 -- 
 2.51.2

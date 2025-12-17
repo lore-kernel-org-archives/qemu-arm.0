@@ -4,164 +4,184 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0AFFD66B80
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 17:41:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D63FD66B81
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 18:39:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vVvWQ-00034l-6N; Wed, 17 Dec 2025 12:41:10 -0500
+	id 1vVwQH-0006fP-7P; Wed, 17 Dec 2025 13:38:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vVvWH-00032b-43
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 12:41:02 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vVwQB-0006ZL-2o; Wed, 17 Dec 2025 13:38:50 -0500
+Received: from mail-centralusazlp170110009.outbound.protection.outlook.com
+ ([2a01:111:f403:c111::9] helo=DM5PR21CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vVvWD-0004Pp-EV
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 12:41:00 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1765993255;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=OwVmD92ns0OZ1/fXDmcjec8wo0nIS6cBhKFT8id+tzQ=;
- b=QuW9UvmbZyN1zpwBXUD3Hqv9g4IP3VqdaJOKE+hvN38dfGSArbnN2MhQ1CR49exmBvYV1u
- sqPlTPxGePZGAu6Dq8MBs+f0SXgHFtwry5XC5lyQfMr7fwmDtvQBSqzD6HLLy0fGY92NnC
- kq/Pvfw1fyPhIxxDvDMuAF3I4AyhseY=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-198-uyjGJAWfOI2HEHDEmQ1LlQ-1; Wed, 17 Dec 2025 12:39:03 -0500
-X-MC-Unique: uyjGJAWfOI2HEHDEmQ1LlQ-1
-X-Mimecast-MFC-AGG-ID: uyjGJAWfOI2HEHDEmQ1LlQ_1765993142
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-477a0ddd1d4so41254375e9.0
- for <qemu-arm@nongnu.org>; Wed, 17 Dec 2025 09:39:03 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765993140; x=1766597940;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=OwVmD92ns0OZ1/fXDmcjec8wo0nIS6cBhKFT8id+tzQ=;
- b=NfYApsOovfOD8mVVCARrSn2ulxkaopHgnfVppzffNRnzrZsLRQJt5kJ31COK8VM5hB
- d9WkpnF7Skquf8aa6B3pnXvCN1cSPho6O/hIKTdbhbqh3dzSjbs9bg0hI2uUF6vd1ghZ
- ItZx41XhsESnJU5QXChwL7qwR5Z1vihv7mbgiCF5I5G06n+vni14o6CdLkIg70iEyw3z
- QxLW5tDVFutJvhJKANs7CpWFiO5pAfihxAtlvvgWfTXitXLpRp7w0X/nJ9YiJWGfAMbn
- A9ZJKVStyRVpF2W95I8JjOB8ttdYEc0Lr6sJqWk6GF+uhXcidLbVByTgDcI2oQcpGrPB
- xyYQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCULqGe+9jhhR3UuLSAIJtx6VmBuinnyvFo0vvr4OasFOA/ixLZ9wyntA+xqOsa/a87sXryWv8aB9g==@nongnu.org
-X-Gm-Message-State: AOJu0Yxg5yjbWzrWXdVVYnjsWRD74AZOOSSiTXRo1LgoCu6Jh6C7RilG
- 7XJQGNcXX5itTvGLpVemngXIka5s20F+w3a4DDXs9YD6kaBtGadYyfd56AOlhJnHyd9dn5g4grN
- 0UwW32ybNk/uwMKSm2vDLMec8JtOCYgXG5T12teVm4VS9rT7HSeIVrQ==
-X-Gm-Gg: AY/fxX5QOuR+rRBUsKGpLUQQe+Mq0Wegb6FIeAbu6ZAv5/JMojbrNqoL2XM9Y/8IcoA
- ALoz5UojWeyiHNU5xqZ5M70JsKmlsWzKJw/HEMlJ+21yCHb7EmdexnBWvBwwQ4sdKh7CLTOqLui
- CeF17LNffLtwpqWBsBMZNiCxVymsfAssK6K8ECn7JzEzt3ESFmNURpo/ygJeeuULtPR74ZGLZO6
- 7zlUBoKmzvGApQZQa+ONjR9Qif2bgxZMFQZfnYRbjLDX+dZUu3aIMxx8Tuv4v44gUJZcu5XpWs7
- 5TbWbecu6dkjluJucQfM/UP4WVZFdLqulzKIOsb/QHD9aK+JYa8EurF+g6BNSYTFKemflsWoXWP
- TlCgvGHoLafkcnSaLwYL8JFgPr2F8/x73YD5HTcnYZFI03/r0
-X-Received: by 2002:a05:600c:468c:b0:471:14f5:126f with SMTP id
- 5b1f17b1804b1-47a8f9149e7mr214673895e9.33.1765993140165; 
- Wed, 17 Dec 2025 09:39:00 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGkVAiPPB+AUInEnn8VQDhERLUxxQFg0jRl5Ut5HvjKO8bNDmapU1d69Xxp08Gh6YrCV13jhQ==
-X-Received: by 2002:a05:600c:468c:b0:471:14f5:126f with SMTP id
- 5b1f17b1804b1-47a8f9149e7mr214673565e9.33.1765993139681; 
- Wed, 17 Dec 2025 09:38:59 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47bd9936809sm35759525e9.6.2025.12.17.09.38.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 Dec 2025 09:38:59 -0800 (PST)
-Message-ID: <5b17d7e8-e4d0-4087-b104-c50a418ff24c@redhat.com>
-Date: Wed, 17 Dec 2025 18:38:57 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 05/33] hw/arm/smmuv3-accel: Introduce smmuv3 accel
- device
-To: Shameer Kolothum <skolothumtho@nvidia.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Jason Gunthorpe <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>, Nathan Chen
- <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>,
- "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
- "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vVwQ4-0007lN-6J; Wed, 17 Dec 2025 13:38:45 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=DnzV4IO2zlK9LNYhUy23eJtQHMQxO9YjeYVMCabollkDMWJtCAQvpAPdPkJB5RUNT41FsV0v6EU8hSJDuP+8dghGfTWgEcQ+pAGHM0+LjTHULbljOTrFJBHsWBDHuxX/iuVW2N91LqSV17cDoDDEmGA/JVnVsYsuFP3wcA/+mtJvLsGtH0EeSPlyGj126lL/aBepwbsDZhyy5muUJ/TQsd+Z2kmvaOsVjOM2KlqLxaldTs8UfZCWF3t+vnd7uSks8nQ48jiS9D0Q3uihcmDVnAsburQTM0RUeplbzOp+zhWeMe/I8ZfRdZfPp4SnRwAM6w7HHhliT8QxXqur4UQiDg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=VvPWYS+NDENqvwlo5cFT3Cy3h0uqZ5QeInfqWHsqO3Y=;
+ b=oR+mEG6YgSFSlyKCff1jeFa/Rof/rwGH9MVrwmekS2tgTDJVHt2dDV49Fn0gruAQfjNmfxQGXd1RE2CvrTF3YRIolCyzddKjgy0kcLo3aAA5H0cTwcZntvo09pfVUR0Z2gwaaEPjbjJfV4lw8TgfsuPdANcgx4SHcy5alqMCf5SLmxgsJhiJ6s6pmaSgPHWjXhGFQ7Euqab2pdIiTGt/cx1ItCxlPK8GMA7wFFsSFlC00ZApFpZ3UVxrrBLJT7f96mQgfVqlyuW6VErjTp8yUlGlphbptSny+DfAp3WaUB/gwcxVUisIt9p+v2kbgwCdOsLe4nJtd85njiEDZbpQ4A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=VvPWYS+NDENqvwlo5cFT3Cy3h0uqZ5QeInfqWHsqO3Y=;
+ b=Erfr8i1+unD3CVHLj/GAkRGKZNFGP5yslzezCHlCNdsDJxL5Lgm5f0ME/pe2MMY4uVKoNqRv52DiDR8YVXgBPlRA3OEB2Z5TSMsx9oxsByJYGZrJb5FE5NOD9gPPg7IgSw/KkNJJ2aSpOMwKJi1k+ugtgrdmXYOCUtGQBeLQ/54aNWBJsAvaM/sRCovy/+sp6z3oGNezCYBAUP1W3IU0hXvE2fGAt57o+/QcumoWm8EgloABCJOqsLTgzosumwq+2RRbu+qD2tqgdU7Ah7oIfx7BRSn06terGwTYqqnSg/Hoguh1N/LVn6jpI4B/ItCtbV6egAjgAPZgvzcU/ZtSqg==
+Received: from IA0PR12MB7555.namprd12.prod.outlook.com (2603:10b6:208:43d::5)
+ by SJ0PR12MB7005.namprd12.prod.outlook.com (2603:10b6:a03:486::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9434.6; Wed, 17 Dec
+ 2025 18:38:32 +0000
+Received: from IA0PR12MB7555.namprd12.prod.outlook.com
+ ([fe80::963e:9c86:4830:2ebd]) by IA0PR12MB7555.namprd12.prod.outlook.com
+ ([fe80::963e:9c86:4830:2ebd%6]) with mapi id 15.20.9434.001; Wed, 17 Dec 2025
+ 18:38:32 +0000
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+CC: "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Jason Gunthorpe
+ <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>, Nathan
+ Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, "wangzhou1@hisilicon.com"
+ <wangzhou1@hisilicon.com>, "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>, 
  "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
  "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
- Krishnakant Jaju <kjaju@nvidia.com>
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, "yi.l.liu@intel.com"
+ <yi.l.liu@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>
+Subject: RE: [PATCH v6 05/33] hw/arm/smmuv3-accel: Introduce smmuv3 accel
+ device
+Thread-Topic: [PATCH v6 05/33] hw/arm/smmuv3-accel: Introduce smmuv3 accel
+ device
+Thread-Index: AQHcWiEz3NPQuSLS1Uq+6MXwYU/Cr7Uchm+AgAEZyrCACKOPgIAABZJg
+Date: Wed, 17 Dec 2025 18:38:32 +0000
+Message-ID: <IA0PR12MB75555BE35A7F2CDD8580E7EEABABA@IA0PR12MB7555.namprd12.prod.outlook.com>
 References: <20251120132213.56581-1-skolothumtho@nvidia.com>
  <20251120132213.56581-6-skolothumtho@nvidia.com>
  <6a062129-2b8f-420a-a4b9-87dde7574481@redhat.com>
  <CH3PR12MB7548E01E6CC271356D4D4208ABAEA@CH3PR12MB7548.namprd12.prod.outlook.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSJDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQHJlZGhhdC5jb20+wsGRBBMBCAA7FiEEoPZlSPBIlev+awtgUaNDx8/7
- 7KEFAmTLlVECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AACgkQUaNDx8/77KG0eg//
- S0zIzTcxkrwJ/9XgdcvVTnXLVF9V4/tZPfB7sCp8rpDCEseU6O0TkOVFoGWM39sEMiQBSvyY
- lHrP7p7E/JYQNNLh441MfaX8RJ5Ul3btluLapm8oHp/vbHKV2IhLcpNCfAqaQKdfk8yazYhh
- EdxTBlzxPcu+78uE5fF4wusmtutK0JG0sAgq0mHFZX7qKG6LIbdLdaQalZ8CCFMKUhLptW71
- xe+aNrn7hScBoOj2kTDRgf9CE7svmjGToJzUxgeh9mIkxAxTu7XU+8lmL28j2L5uNuDOq9vl
- hM30OT+pfHmyPLtLK8+GXfFDxjea5hZLF+2yolE/ATQFt9AmOmXC+YayrcO2ZvdnKExZS1o8
- VUKpZgRnkwMUUReaF/mTauRQGLuS4lDcI4DrARPyLGNbvYlpmJWnGRWCDguQ/LBPpbG7djoy
- k3NlvoeA757c4DgCzggViqLm0Bae320qEc6z9o0X0ePqSU2f7vcuWN49Uhox5kM5L86DzjEQ
- RHXndoJkeL8LmHx8DM+kx4aZt0zVfCHwmKTkSTQoAQakLpLte7tWXIio9ZKhUGPv/eHxXEoS
- 0rOOAZ6np1U/xNR82QbF9qr9TrTVI3GtVe7Vxmff+qoSAxJiZQCo5kt0YlWwti2fFI4xvkOi
- V7lyhOA3+/3oRKpZYQ86Frlo61HU3r6d9wzOwU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhW
- pOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNLSoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZ
- KXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVUcP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwp
- bV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6
- TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFU
- CSLB2AE4wXQkJbApye48qnZ09zc929df5gU6hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iS
- YBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616dtb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6g
- LxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7
- JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1cOY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0Sdu
- jWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/Jx
- IqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k
- 8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoXywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjK
- yKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9j
- hQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Tad2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yop
- s302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it+OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/p
- LHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1nHzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBU
- wYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVISl73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lU
- XOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfA
- HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
- izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <CH3PR12MB7548E01E6CC271356D4D4208ABAEA@CH3PR12MB7548.namprd12.prod.outlook.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 5kQwnS2gw2Xyy_ZLDfOgA5akhgrCAt1cmCX3GlXDhIY_1765993142
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ <5b17d7e8-e4d0-4087-b104-c50a418ff24c@redhat.com>
+In-Reply-To: <5b17d7e8-e4d0-4087-b104-c50a418ff24c@redhat.com>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA0PR12MB7555:EE_|SJ0PR12MB7005:EE_
+x-ms-office365-filtering-correlation-id: b850dc0d-59d0-4987-5d00-08de3d9b7ae7
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|7416014|366016|1800799024|38070700021; 
+x-microsoft-antispam-message-info: =?utf-8?B?OWl0Wk95N1VkYmpMUU90QXR5OUdoWnVSRVNpdlFBRzFtNDh5b0hLdUFONy81?=
+ =?utf-8?B?L1FqQ0tOQVJWbjZ1OEVaZGJsN1hvVzh5LytqUUJPSTFFRWFCK0p6NXhNcVlF?=
+ =?utf-8?B?T0htdW5vOTd2NWRicTJGU3ViNlBvcE8vdkhSRFZ5dmJlNHVpM1NKY0Z0SGNn?=
+ =?utf-8?B?WDh2b0dZdXJEMmRCVk4zdEtRMmczM1VDN2dsb1JjQWVrYWlBVitXR0cybGFZ?=
+ =?utf-8?B?RDA1U1dtQzR4alIzZ0x1ZEo1QXlOeGxRZ3hMY3p3UlBVMG9kVUJlQlgxajhH?=
+ =?utf-8?B?Z1RBMHNwdnpsYUhHaVJ5UjB4dEszZlNWcHNWeGd3M1pKNGdnd2IzcGRyeHR1?=
+ =?utf-8?B?NXpKRTBuMmVzSU5FSG1HVXBHajlyNjlYTFhTYlZEWnRncXlKWVVGVW5hRUpQ?=
+ =?utf-8?B?cDFlVHV2ME9ONWF0MFBhT0dBTElKQjhSWlRjWEFuWUtEV0NYb1duNmx6VDVi?=
+ =?utf-8?B?QTdrZ2IzV2VxVTVXcUpyZndHdEhzM0lpa29oQzZGMnVOdUFTOEZKbnl0UUV3?=
+ =?utf-8?B?dFJ0UnhobC80Wnh3L2dRVDVyL0FFZ0Y5cWV0VjVWVzROVTV1YTZLYXArWEZk?=
+ =?utf-8?B?ck9NRENZV2RHU3FySHlINWRQenF6QTZmYnhXZHBIZVpNUkRYSEozRUtkMFVh?=
+ =?utf-8?B?UEcwdktVdnVOZkVaUlRLMmxCMlorZTVrcGRLUW5LN1RVcmh4aDhneXdVYlE0?=
+ =?utf-8?B?eTZVWWdtS2V1SnAzY2dRclNOU3p3NGV3Mit2VnFWT0xlQzRodFUxTlpoSmdO?=
+ =?utf-8?B?ek5rcVMzMm5SZXhkb0gxT1dLYzkzUll5ZFJnQ0lEbjAweUxIUHZVU0d6bEM0?=
+ =?utf-8?B?elJRdzFocW9ycmFUQkFNM1JLa0N2Mk1ueTZJMzNqYjMwaWhDZFRBY2gyMGVR?=
+ =?utf-8?B?Z204SFVwbkVVMmV5aXEvZ085WDVpNWFROURBZVp5Z3VaeW1oVDVJL2lTSnBO?=
+ =?utf-8?B?Q1M0K1Z1bGcwTkJwNFZaZXcweFpPQ2IzWWt3UVZOTE1NVkIxNFY3Z09PdlJV?=
+ =?utf-8?B?RDdyclNwMTExL2UyaGc4UlJsK2ZpQlNoamRJQW00eVpLcktnbUZtY1N0dlJE?=
+ =?utf-8?B?NURiRk0xRHFOcFovVnpqMkQxUW94eVQwc1dEQUU1Q3NLWE03OWR2YmRMcGdS?=
+ =?utf-8?B?bXRQWTZCK25wMGgvWEZ6cWRQNGNiaUs4bThxQ2daZ1M3TUZ2ZWcyaUxUbVR4?=
+ =?utf-8?B?ZXBwUThHN1pCUnNLNUZTMlhXbW1XSlRMWEN3WUVacVdUQW5mTUFaNG9yeVFh?=
+ =?utf-8?B?NlNoa3pGVWtTTFIvTUJsU2Z1UFNzNHpYTjF6SG9TU0tQeXk1S3ZQWEdKRUpw?=
+ =?utf-8?B?Q0hwWG55cGVhSzcrZTljT2hnWDB3SWkvR1ppOC83YzMydnBhSDA4VmdMcWVm?=
+ =?utf-8?B?OGVvSWRCcGxJY1IzMGRwRXhWaTRRa1BMdm5tQUR6WCtiZWJoa2VmOStmRm1i?=
+ =?utf-8?B?aGN5NzVQUDhFVkFLRnQ4cVIxL3M5OFRFcis3UCt0R1Y2NzJvazh3SlpKbkMr?=
+ =?utf-8?B?b1Z1VlNjakxCUERWWVF1clBPWXZ1UGo1eWFaUHhFb0xmTXJ1ZWk4NzZqMURV?=
+ =?utf-8?B?cjZ5ejA5bnRBdFBURDEybllDSlNKcmRIT1EyeVN6b3BSNnExcVhlTFRSNmNm?=
+ =?utf-8?B?dGNjWXhOZzFDTWtpZDN2QUNFUnlIQSthWVZoRVBsREx1ckIySU1EZWNNSWZF?=
+ =?utf-8?B?UHhrM1hMbW5MZ0tCMTNxMVdwUGxrUjlMUzVPUktVNTJLUnhHZFdMMHhLRG0y?=
+ =?utf-8?B?RHNZVWcrWFFvc0lQVFU2b2tVdVU2SFgvNWM3dGVTanFHZnlIT3duejNrbjJ0?=
+ =?utf-8?B?OUNVOWc3QlZ5bitrTkVHQVZmWXlOZ1RvNWZOV21xQXdjWUNCYWM0SGgveHhJ?=
+ =?utf-8?B?aEl2QytpSzkwM2FYWnhXUGVUOEk4YlVTWkdrTm9nQVhIOFVEN1g1bU5kNC9k?=
+ =?utf-8?B?YTFUVUpqWjN0SlNCZ2ZrQlNsOTBSOVFENjhUeGxXQnVTaGkxT2YzdzJMTjFN?=
+ =?utf-8?B?Y0kzcndQZFlRPT0=?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA0PR12MB7555.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(366016)(1800799024)(38070700021); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?LzYrVWk3VjE0UWE5dXVPdXBZdUJMVTNYV1lYbXRXYkdDNHZwTHNML2dibW9J?=
+ =?utf-8?B?OWhxWEE5RUE3SGpNMm0yUzFwRk9GQ0x0VTNpUm1DMmhkc255UUhBcisyTUVG?=
+ =?utf-8?B?WTRyRDFieG9HSW9RTTNzQkx4RStYUWMya0M2QUVzZW9XVW5oWk1qM09lcWF6?=
+ =?utf-8?B?NGk2bEd2cVFpQnhlYW5DMFhkWjZHK3R3b1RSTzRsbWhacTZZaWNoMk9ZRVRR?=
+ =?utf-8?B?UmQ2TUNnQS8xdFhjWSt2U2FSVGVSRmdITTBzRm94WG9JU2hmNkcvZnl4ejJu?=
+ =?utf-8?B?dkFOeHFER1VXaUtCenNKSERaZVdQTXAzRnhYUEFKdmhlWmhUOUlSSkhRWThx?=
+ =?utf-8?B?cUp0Zmthb3VGcnJ4N2hJZCtpeXc2VnRkc0NzWTRXdHpqVURLckFqNUtqZzBr?=
+ =?utf-8?B?OGI5WTBydTdKY0RydWN4UFhpMkJUVzdwTUdZWDl6blludlg5OWhMR2VwZnhF?=
+ =?utf-8?B?c3pKdkRCejhYVXo2S3luazNoOCtYVW5ZbUlOZzVYVDV1bnpwaTN1NXRqVm5s?=
+ =?utf-8?B?R1hyZDd4UDgvMkJRQVpCZEFqK2RRWklkUGFsdHN1NHFmTm1UcXF3MW45VUxp?=
+ =?utf-8?B?U0RxTU9JYTFLdlhCQjBIQjBPNGtDcmRpV1hwME5GNHlEaURLTDhZVElJdDFT?=
+ =?utf-8?B?VGgrMUd2aHlwTXg4bEpVMVBzc1QvTUFxVHNka0o1UU9tQ1pWTzNsMTAyUEdR?=
+ =?utf-8?B?QnZWckdiN2x1UEN0SytUcGdKUjhMSGhORi9waXhqeWt6QktxcGR1WkZYTFly?=
+ =?utf-8?B?WHo2d09pREtTbEhzZ2s4YkFRaDJUYld1NFdadm5rTnJjNmcrQkFmYkI0SldH?=
+ =?utf-8?B?aE9LSWdBUFdqSlBXcklYSVQ4cVdtZytmSGNhRzd5OHBVK2ZhbHdIdDdYNlNM?=
+ =?utf-8?B?NlJ6Z3Q1WlRTSEdGUSttQmFYL1dwcXlwOWdnNlp1blFzVjFvSFdBRUpGTU50?=
+ =?utf-8?B?RnV5aVcrV1lRVkZWb2ZHRWtENzRjS1RoV3IyNVE4R3ovVStsdWRPcjhIbkFH?=
+ =?utf-8?B?aXEvSnVoMEpIREkxZjRObWxLNC9FNVJkKzR0SUVLR1BvdTUyMkdQeWFaajh0?=
+ =?utf-8?B?RVBFODZVVWRmMFd4dnlrUktzcjNVbkpWRTgxdER3bTNwZ2Q4RXVtNlp5bERx?=
+ =?utf-8?B?MnZWa2ZjWTlOemJUYUpqOTk4NEl0Z1BiYzV0Smt3QzJsSmJUdm84VzlyZTRX?=
+ =?utf-8?B?QkFDbG83Ukcvb0czMWgyV2pZdGV0WTAxVEZYUGhyaE1HODJYdlpuZWlBK2RQ?=
+ =?utf-8?B?Smw2UFhTS0lPbHVrOE9aWmdTWlF6d0lueGV2blN1dzlWVk1INEV6WGxFdngr?=
+ =?utf-8?B?L1BHaXhYN21Yd2djWVNRbmRac3NWeWhST3J0elpLQnRWbFhsclBUYVNyZzAr?=
+ =?utf-8?B?L05rNXcwYUhELzNQdzBVVDJiUk9LdTFYdDZhTmJQaHl1L1ZTWk5nRE1VdlM2?=
+ =?utf-8?B?c0k1OWZlTWxjYm9MQW4xeHR4U3QzR2lSQU4xb2MxUnF1Sm9tOHEyNTlrQUdo?=
+ =?utf-8?B?dEQwNU9mTktkM2tXU2JsN3dCdENRTXd1ZzZ6N3hzL0s4dzJJUWc3MHJ2eVls?=
+ =?utf-8?B?Y2c5V2JsTCtZR3pGYkdmWkVqYmdPcXNqREF3Szl5d01GNjY3QmY1S2hxNWNl?=
+ =?utf-8?B?MzV1WnRFQUVuOXdscEk5THNoWllpRG9LUUpwOHFiS1YvLzlZN0ZJUUN6TzVu?=
+ =?utf-8?B?bzh1aDFTSEk1QWdZZk1rc2lJK3d2eXhJcWtCM1ByQ0hGcm16VE44VnIzQTlt?=
+ =?utf-8?B?endua1JoVHVOSm52RWJmUXBRbk1QQVgyRVVFVytKOXNMd3dPRlA1b2F3U2Ja?=
+ =?utf-8?B?VGxTSDVvQVpocW5NQlkwSXQ3VStaRXJHY1ZRQlc2ZDBSZzhtbXdFSlVkNUJ1?=
+ =?utf-8?B?QUFvc3ViZy9TWVBwVVZRdjhlT1RwL3A1TDNPR3h1OVJpVXhrWFhzbHdMQkxE?=
+ =?utf-8?B?RkEwMEphVy9ST2xja2NJanlUZHNnUVVMaUlBVzZjSURnN21PMjQ2cXE5N1lx?=
+ =?utf-8?B?QmV4eTIyZ0ZZWmE2SjFRNThHL3dOTXVRRCtENVFFRE5xZndXVGZqUTI3bEM4?=
+ =?utf-8?B?RVJPejVjNTJDQWhtWXZjQnVoSkNreXMwTGRuM1VLdFYwZ3pubHNPTHNqU21p?=
+ =?utf-8?Q?l5y1IghIQ/Gpm8UtEmCPq9/ic?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA0PR12MB7555.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b850dc0d-59d0-4987-5d00-08de3d9b7ae7
+X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Dec 2025 18:38:32.3994 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: YOz9zj6D4NYInuzEKCt9jxYlcIQFPr6i5QhiIPoL3L8jr0VD1Vmu63PfNc9plN4+wzge0+QmM2pa3QF0ri9PQQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB7005
+Received-SPF: softfail client-ip=2a01:111:f403:c111::9;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=DM5PR21CU001.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -177,325 +197,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello Shameer,
-
-On 12/12/25 06:48, Shameer Kolothum wrote:
-> Hi Cédric,
-> 
->> -----Original Message-----
->> From: Cédric Le Goater <clg@redhat.com>
->> Sent: 11 December 2025 12:55
->> To: Shameer Kolothum <skolothumtho@nvidia.com>; qemu-
->> arm@nongnu.org; qemu-devel@nongnu.org
->> Cc: eric.auger@redhat.com; peter.maydell@linaro.org; Jason Gunthorpe
->> <jgg@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>;
->> ddutile@redhat.com; berrange@redhat.com; Nathan Chen
->> <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
->> smostafa@google.com; wangzhou1@hisilicon.com;
->> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
->> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
->> Krishnakant Jaju <kjaju@nvidia.com>
->> Subject: Re: [PATCH v6 05/33] hw/arm/smmuv3-accel: Introduce smmuv3
->> accel device
->>
->> External email: Use caution opening links or attachments
->>
->>
->> On 11/20/25 14:21, Shameer Kolothum wrote:
->>> Set up dedicated PCIIOMMUOps for the accel SMMUv3, since it will need
->>> different callback handling in upcoming patches. This also adds a
->>> CONFIG_ARM_SMMUV3_ACCEL build option so the feature can be disabled
->>> at compile time. Because we now include CONFIG_DEVICES in the header to
->>> check for ARM_SMMUV3_ACCEL, the meson file entry for smmuv3.c needs
->> to
->>> be changed to arm_ss.add.
->>>
->>> The “accel” property isn’t user visible yet and it will be introduced in
->>> a later patch once all the supporting pieces are ready.
->>>
->>> Signed-off-by: Shameer Kolothum
->> <shameerali.kolothum.thodi@huawei.com>
->>> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
->>> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
->>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
->>> Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
->>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
->>> ---
->>>    hw/arm/Kconfig          |  5 ++++
->>>    hw/arm/meson.build      |  3 ++-
->>>    hw/arm/smmuv3-accel.c   | 59
->> +++++++++++++++++++++++++++++++++++++++++
->>>    hw/arm/smmuv3-accel.h   | 27 +++++++++++++++++++
->>>    hw/arm/smmuv3.c         |  5 ++++
->>>    include/hw/arm/smmuv3.h |  3 +++
->>>    6 files changed, 101 insertions(+), 1 deletion(-)
->>>    create mode 100644 hw/arm/smmuv3-accel.c
->>>    create mode 100644 hw/arm/smmuv3-accel.h
->>>
->>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->>> index 0cdeb60f1f..702b79a02b 100644
->>> --- a/hw/arm/Kconfig
->>> +++ b/hw/arm/Kconfig
->>> @@ -12,6 +12,7 @@ config ARM_VIRT
->>>        select ARM_GIC
->>>        select ACPI
->>>        select ARM_SMMUV3
->>> +    select ARM_SMMUV3_ACCEL
->>>        select GPIO_KEY
->>>        select DEVICE_TREE
->>>        select FW_CFG_DMA
->>> @@ -629,6 +630,10 @@ config FSL_IMX8MP_EVK
->>>    config ARM_SMMUV3
->>>        bool
->>>
->>> +config ARM_SMMUV3_ACCEL
->>> +    bool
->>> +    depends on ARM_SMMUV3 && IOMMUFD
->>> +
->>>    config FSL_IMX6UL
->>>        bool
->>>        default y
->>> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
->>> index aeaf654790..c250487e64 100644
->>> --- a/hw/arm/meson.build
->>> +++ b/hw/arm/meson.build
->>> @@ -84,7 +84,8 @@ arm_common_ss.add(when: 'CONFIG_ARMSSE',
->> if_true: files('armsse.c'))
->>>    arm_common_ss.add(when: 'CONFIG_FSL_IMX7', if_true: files('fsl-imx7.c',
->> 'mcimx7d-sabre.c'))
->>>    arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-
->> imx8mp.c'))
->>>    arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true:
->> files('imx8mp-evk.c'))
->>> -arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true:
->> files('smmuv3.c'))
->>> +arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
->>> +arm_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true:
->> files('smmuv3-accel.c'))
->>>    arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-
->> imx6ul.c', 'mcimx6ul-evk.c'))
->>>    arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true:
->> files('nrf51_soc.c'))
->>>    arm_common_ss.add(when: 'CONFIG_XEN', if_true: files(
->>> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
->>> new file mode 100644
->>> index 0000000000..99ef0db8c4
->>> --- /dev/null
->>> +++ b/hw/arm/smmuv3-accel.c
->>> @@ -0,0 +1,59 @@
->>> +/*
->>> + * Copyright (c) 2025 Huawei Technologies R & D (UK) Ltd
->>> + * Copyright (C) 2025 NVIDIA
->>> + * Written by Nicolin Chen, Shameer Kolothum
->>> + *
->>> + * SPDX-License-Identifier: GPL-2.0-or-later
->>> + */
->>> +
->>> +#include "qemu/osdep.h"
->>> +
->>> +#include "hw/arm/smmuv3.h"
->>> +#include "smmuv3-accel.h"
->>> +
->>> +static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs,
->> SMMUPciBus *sbus,
->>> +                                               PCIBus *bus, int devfn)
->>> +{
->>> +    SMMUDevice *sdev = sbus->pbdev[devfn];
->>> +    SMMUv3AccelDevice *accel_dev;
->>> +
->>> +    if (sdev) {
->>> +        return container_of(sdev, SMMUv3AccelDevice, sdev);
->>> +    }
->>> +
->>> +    accel_dev = g_new0(SMMUv3AccelDevice, 1);
->>
->> oh. This is not a QOM object :/
-> 
-> Right.
-> 
->>
->>> +    sdev = &accel_dev->sdev;
->>> +
->>> +    sbus->pbdev[devfn] = sdev;
->>> +    smmu_init_sdev(bs, sdev, bus, devfn);
->>> +    return accel_dev;
->>> +}
->>> +
->>> +/*
->>> + * Find or add an address space for the given PCI device.
->>> + *
->>> + * If a device matching @bus and @devfn already exists, return its
->>> + * corresponding address space. Otherwise, create a new device entry
->>> + * and initialize address space for it.
->>> + */
->>> +static AddressSpace *smmuv3_accel_find_add_as(PCIBus *bus, void
->> *opaque,
->>> +                                              int devfn)
->>> +{
->>> +    SMMUState *bs = opaque;
->>> +    SMMUPciBus *sbus = smmu_get_sbus(bs, bus);
->>> +    SMMUv3AccelDevice *accel_dev = smmuv3_accel_get_dev(bs, sbus,
->> bus, devfn);
->>> +    SMMUDevice *sdev = &accel_dev->sdev;
->>> +
->>> +    return &sdev->as;
->>> +}
->>> +
->>> +static const PCIIOMMUOps smmuv3_accel_ops = {
->>> +    .get_address_space = smmuv3_accel_find_add_as,
->>> +};
->>> +
->>> +void smmuv3_accel_init(SMMUv3State *s)
->>> +{
->>> +    SMMUState *bs = ARM_SMMU(s);
->>> +
->>> +    bs->iommu_ops = &smmuv3_accel_ops;
->>
->> again, I think this should be a sSMMUv3Class attribute.
-> 
-> See below.
->>
->>> +}
->>> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
->>> new file mode 100644
->>> index 0000000000..0dc6b00d35
->>> --- /dev/null
->>> +++ b/hw/arm/smmuv3-accel.h
->>> @@ -0,0 +1,27 @@
->>> +/*
->>> + * Copyright (c) 2025 Huawei Technologies R & D (UK) Ltd
->>> + * Copyright (C) 2025 NVIDIA
->>> + * Written by Nicolin Chen, Shameer Kolothum
->>> + *
->>> + * SPDX-License-Identifier: GPL-2.0-or-later
->>> + */
->>> +
->>> +#ifndef HW_ARM_SMMUV3_ACCEL_H
->>> +#define HW_ARM_SMMUV3_ACCEL_H
->>> +
->>> +#include "hw/arm/smmu-common.h"
->>> +#include CONFIG_DEVICES
->>> +
->>> +typedef struct SMMUv3AccelDevice {
->>> +    SMMUDevice sdev;
->>> +} SMMUv3AccelDevice;
->>> +
->>> +#ifdef CONFIG_ARM_SMMUV3_ACCEL
->>> +void smmuv3_accel_init(SMMUv3State *s);
->>> +#else
->>> +static inline void smmuv3_accel_init(SMMUv3State *s)
->>> +{
->>> +}
->>> +#endif
->>> +
->>> +#endif /* HW_ARM_SMMUV3_ACCEL_H */
->>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->>> index bcf8af8dc7..ef991cb7d8 100644
->>> --- a/hw/arm/smmuv3.c
->>> +++ b/hw/arm/smmuv3.c
->>> @@ -32,6 +32,7 @@
->>>    #include "qapi/error.h"
->>>
->>>    #include "hw/arm/smmuv3.h"
->>> +#include "smmuv3-accel.h"
->>>    #include "smmuv3-internal.h"
->>>    #include "smmu-internal.h"
->>>
->>> @@ -1882,6 +1883,10 @@ static void smmu_realize(DeviceState *d, Error
->> **errp)
->>>        SysBusDevice *dev = SYS_BUS_DEVICE(d);
->>>        Error *local_err = NULL;
->>>
->>> +    if (s->accel) {
->>> +        smmuv3_accel_init(s);
->>> +    }
->>> +
->>>        c->parent_realize(d, &local_err);
->>>        if (local_err) {
->>>            error_propagate(errp, local_err);
->>> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
->>> index d183a62766..bb7076286b 100644
->>> --- a/include/hw/arm/smmuv3.h
->>> +++ b/include/hw/arm/smmuv3.h
->>> @@ -63,6 +63,9 @@ struct SMMUv3State {
->>>        qemu_irq     irq[4];
->>>        QemuMutex mutex;
->>>        char *stage;
->>> +
->>> +    /* SMMU has HW accelerator support for nested S1 + s2 */
->>> +    bool accel;
->>
->> Have you considered modeling with a QOM object instead ?
-> 
-> A bit of history on this:
-> 
-> The SMMUv3 accel support was introduced first as a separate device,
-> -device arm-smmuv3-accel
-> 
-> https://lore.kernel.org/qemu-devel/20250311141045.66620-4-shameerali.kolothum.thodi@huawei.com/
-> 
-> However, the general consensus at that time was that we should instead
-> model it on the -device arm-smmuv3 itself, with an added "accel" property.
-> 
-> Eric had also suggested making use of something similar to the
-> TYPE_VFIO_IOMMU_IOMMUFD / LEGACY classes for selecting the iommu_ops.
-> https://lore.kernel.org/qemu-devel/1105d100-dd1e-4aca-b518-50f903967416@redhat.com/
-> 
-> In RFCv3, I did introduce a TYPE_ARM_SMMUV3_ACCEL object class, but we
-> later found that it wasn’t doing much beyond helping to retrieve the iommu_ops
-> based on the object type, so decided to drop it.
-> https://lore.kernel.org/qemu-devel/71ca9132-8deb-4f57-abb0-2bcc0fe93ae9@redhat.com/
-> 
->  From your feedback, I understand that you would like to revisit that approach
-> again. Just to make sure I get this right, is the SMMUv3AccelClass you have in
-> mind meant to be an abstract object, like HOST_IOMMU_DEVICE, or are
-> you suggesting another child device object?
-
-HOST_IOMMU_DEVICE are for host IOMMU backends (VFIO IOMMU Type1
-legacy and IOMMUFD). I was imagining an "arm-smmuv3" children class
-for acceleration.
-
-I understand I am jumping a bit late in the discussion. Sorry about
-that and the late reply also.
-
-I have been experimenting with your series on other systems and on
-an ARM system with MLX5 VFs and an L4 GPU. I had to fake CANWBS
-support in the host kernel to make progress. On a side note, I also
-pulled in a patch from Nicolin to add dmabuf support and it seemed
-to behave ok. This would require more in-depth P2P testing. That's
-another topic we should discuss in the QEMU 11.0 cycle.
-
-
-> Please let me know if there is an example/precedent, I can look at for a similar
-> object model in QEMU.
-
-Now regarding modeling, it is more or less a design choice. But while
-I scanned through the code, I felt there was some problems that could
-be solved in a cleaner way with a sub class. The changes are mostly
-about moving code in different places and changing/removing the
-"if (s->accel) parts". Don't change everything now, I will check RFCv3.
-
-Nevertheless, they are several more issues, build breakages and also
-runtime breakage that should be addressed. Let's do that first.
-
-Furthermore, an (idealistic) design principle of QEMU that we tend to
-forget is to offer acceleration when possible and else fallback to
-emulation, in order to guarantee parity of features between different
-hardware. I expected the "arm-smmuv3" device to decide to operate in
-accelerated mode when ever possible, i.e when the IOMMUFD backend
-(the SMMUV3 + the FW) offers the right level of functionality. This
-would allow the machine to maintain a constant view of the sMMUv3
-device and facilitate its integration with management layers and
-ease migration too.
-
-I understand this is complex, it has been done for some interrupt
-controllers, and this is not the approach of the series.
-
-That said, what about integration with libvirt ?
-
-
-Thanks,
-
-C.
-
+SGkgQ8OpZHJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBDw6lk
+cmljIExlIEdvYXRlciA8Y2xnQHJlZGhhdC5jb20+DQo+IFNlbnQ6IDE3IERlY2VtYmVyIDIwMjUg
+MTc6MzkNCj4gVG86IFNoYW1lZXIgS29sb3RodW0gPHNrb2xvdGh1bXRob0BudmlkaWEuY29tPjsg
+cWVtdS0NCj4gYXJtQG5vbmdudS5vcmc7IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZw0KPiBDYzogZXJp
+Yy5hdWdlckByZWRoYXQuY29tOyBwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc7IEphc29uIEd1bnRo
+b3JwZQ0KPiA8amdnQG52aWRpYS5jb20+OyBOaWNvbGluIENoZW4gPG5pY29saW5jQG52aWRpYS5j
+b20+OyBkZHV0aWxlQHJlZGhhdC5jb207DQo+IGJlcnJhbmdlQHJlZGhhdC5jb207IE5hdGhhbiBD
+aGVuIDxuYXRoYW5jQG52aWRpYS5jb20+OyBNYXR0IE9jaHMNCj4gPG1vY2hzQG52aWRpYS5jb20+
+OyBzbW9zdGFmYUBnb29nbGUuY29tOyB3YW5nemhvdTFAaGlzaWxpY29uLmNvbTsNCj4gamlhbmdr
+dW5rdW5AaHVhd2VpLmNvbTsgam9uYXRoYW4uY2FtZXJvbkBodWF3ZWkuY29tOw0KPiB6aGFuZ2Zl
+aS5nYW9AbGluYXJvLm9yZzsgemhlbnpob25nLmR1YW5AaW50ZWwuY29tOyB5aS5sLmxpdUBpbnRl
+bC5jb207DQo+IEtyaXNobmFrYW50IEphanUgPGtqYWp1QG52aWRpYS5jb20+DQo+IFN1YmplY3Q6
+IFJlOiBbUEFUQ0ggdjYgMDUvMzNdIGh3L2FybS9zbW11djMtYWNjZWw6IEludHJvZHVjZSBzbW11
+djMNCj4gYWNjZWwgZGV2aWNlDQo+IA0KDQpbLi4uXQ0KDQo+ID4+DQo+ID4+IEhhdmUgeW91IGNv
+bnNpZGVyZWQgbW9kZWxpbmcgd2l0aCBhIFFPTSBvYmplY3QgaW5zdGVhZCA/DQo+ID4NCj4gPiBB
+IGJpdCBvZiBoaXN0b3J5IG9uIHRoaXM6DQo+ID4NCj4gPiBUaGUgU01NVXYzIGFjY2VsIHN1cHBv
+cnQgd2FzIGludHJvZHVjZWQgZmlyc3QgYXMgYSBzZXBhcmF0ZSBkZXZpY2UsDQo+ID4gLWRldmlj
+ZSBhcm0tc21tdXYzLWFjY2VsDQo+ID4NCj4gPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9xZW11
+LWRldmVsLzIwMjUwMzExMTQxMDQ1LjY2NjIwLTQtDQo+IHNoYW1lZXJhbGkua29sb3RodW0udGhv
+ZGlAaHVhd2VpLmNvbS8NCj4gPg0KPiA+IEhvd2V2ZXIsIHRoZSBnZW5lcmFsIGNvbnNlbnN1cyBh
+dCB0aGF0IHRpbWUgd2FzIHRoYXQgd2Ugc2hvdWxkIGluc3RlYWQNCj4gPiBtb2RlbCBpdCBvbiB0
+aGUgLWRldmljZSBhcm0tc21tdXYzIGl0c2VsZiwgd2l0aCBhbiBhZGRlZCAiYWNjZWwiIHByb3Bl
+cnR5Lg0KPiA+DQo+ID4gRXJpYyBoYWQgYWxzbyBzdWdnZXN0ZWQgbWFraW5nIHVzZSBvZiBzb21l
+dGhpbmcgc2ltaWxhciB0byB0aGUNCj4gPiBUWVBFX1ZGSU9fSU9NTVVfSU9NTVVGRCAvIExFR0FD
+WSBjbGFzc2VzIGZvciBzZWxlY3RpbmcgdGhlDQo+IGlvbW11X29wcy4NCj4gPiBodHRwczovL2xv
+cmUua2VybmVsLm9yZy9xZW11LWRldmVsLzExMDVkMTAwLWRkMWUtNGFjYS1iNTE4LQ0KPiA1MGY5
+MDM5Njc0MTZAcmVkaGF0LmNvbS8NCj4gPg0KPiA+IEluIFJGQ3YzLCBJIGRpZCBpbnRyb2R1Y2Ug
+YSBUWVBFX0FSTV9TTU1VVjNfQUNDRUwgb2JqZWN0IGNsYXNzLCBidXQgd2UNCj4gPiBsYXRlciBm
+b3VuZCB0aGF0IGl0IHdhc27igJl0IGRvaW5nIG11Y2ggYmV5b25kIGhlbHBpbmcgdG8gcmV0cmll
+dmUgdGhlDQo+IGlvbW11X29wcw0KPiA+IGJhc2VkIG9uIHRoZSBvYmplY3QgdHlwZSwgc28gZGVj
+aWRlZCB0byBkcm9wIGl0Lg0KPiA+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwv
+NzFjYTkxMzItOGRlYi00ZjU3LWFiYjAtDQo+IDJiY2MwZmU5M2FlOUByZWRoYXQuY29tLw0KPiA+
+DQo+ID4gIEZyb20geW91ciBmZWVkYmFjaywgSSB1bmRlcnN0YW5kIHRoYXQgeW91IHdvdWxkIGxp
+a2UgdG8gcmV2aXNpdCB0aGF0DQo+IGFwcHJvYWNoDQo+ID4gYWdhaW4uIEp1c3QgdG8gbWFrZSBz
+dXJlIEkgZ2V0IHRoaXMgcmlnaHQsIGlzIHRoZSBTTU1VdjNBY2NlbENsYXNzIHlvdSBoYXZlDQo+
+IGluDQo+ID4gbWluZCBtZWFudCB0byBiZSBhbiBhYnN0cmFjdCBvYmplY3QsIGxpa2UgSE9TVF9J
+T01NVV9ERVZJQ0UsIG9yIGFyZQ0KPiA+IHlvdSBzdWdnZXN0aW5nIGFub3RoZXIgY2hpbGQgZGV2
+aWNlIG9iamVjdD8NCj4gDQo+IEhPU1RfSU9NTVVfREVWSUNFIGFyZSBmb3IgaG9zdCBJT01NVSBi
+YWNrZW5kcyAoVkZJTyBJT01NVSBUeXBlMQ0KPiBsZWdhY3kgYW5kIElPTU1VRkQpLiBJIHdhcyBp
+bWFnaW5pbmcgYW4gImFybS1zbW11djMiIGNoaWxkcmVuIGNsYXNzDQo+IGZvciBhY2NlbGVyYXRp
+b24uDQoNCk9rLiBBcyBtZW50aW9uZWQgYWJvdmUsIHRoZSBhY2NlbGVyYXRlZCBTTU1VdjMgaXMg
+Y3VycmVudGx5IG5vdCBhIHNlcGFyYXRlDQpjaGlsZCBkZXZpY2Ugb2YgImFybS1zbW11djMiLiBJ
+bnN0ZWFkLCBhY2NlbGVyYXRpb24gc3VwcG9ydCBpcyBlbmFibGVkIHZpYSB0aGUNCmFjY2VsIHBy
+b3BlcnR5IG9uICJhcm0tc21tdXYzIi4NCg0KPiBJIHVuZGVyc3RhbmQgSSBhbSBqdW1waW5nIGEg
+Yml0IGxhdGUgaW4gdGhlIGRpc2N1c3Npb24uIFNvcnJ5IGFib3V0DQo+IHRoYXQgYW5kIHRoZSBs
+YXRlIHJlcGx5IGFsc28uDQo+IA0KPiBJIGhhdmUgYmVlbiBleHBlcmltZW50aW5nIHdpdGggeW91
+ciBzZXJpZXMgb24gb3RoZXIgc3lzdGVtcyBhbmQgb24NCj4gYW4gQVJNIHN5c3RlbSB3aXRoIE1M
+WDUgVkZzIGFuZCBhbiBMNCBHUFUuIEkgaGFkIHRvIGZha2UgQ0FOV0JTDQo+IHN1cHBvcnQgaW4g
+dGhlIGhvc3Qga2VybmVsIHRvIG1ha2UgcHJvZ3Jlc3MuIE9uIGEgc2lkZSBub3RlLCBJIGFsc28N
+Cj4gcHVsbGVkIGluIGEgcGF0Y2ggZnJvbSBOaWNvbGluIHRvIGFkZCBkbWFidWYgc3VwcG9ydCBh
+bmQgaXQgc2VlbWVkDQo+IHRvIGJlaGF2ZSBvay4gVGhpcyB3b3VsZCByZXF1aXJlIG1vcmUgaW4t
+ZGVwdGggUDJQIHRlc3RpbmcuIFRoYXQncw0KPiBhbm90aGVyIHRvcGljIHdlIHNob3VsZCBkaXNj
+dXNzIGluIHRoZSBRRU1VIDExLjAgY3ljbGUuDQoNClRoYW5rcyBmb3IgZ2l2aW5nIHRoaXMgYSBz
+cGluLiANCg0KPiANCj4gPiBQbGVhc2UgbGV0IG1lIGtub3cgaWYgdGhlcmUgaXMgYW4gZXhhbXBs
+ZS9wcmVjZWRlbnQsIEkgY2FuIGxvb2sgYXQgZm9yIGENCj4gc2ltaWxhcg0KPiA+IG9iamVjdCBt
+b2RlbCBpbiBRRU1VLg0KPiANCj4gTm93IHJlZ2FyZGluZyBtb2RlbGluZywgaXQgaXMgbW9yZSBv
+ciBsZXNzIGEgZGVzaWduIGNob2ljZS4gQnV0IHdoaWxlDQo+IEkgc2Nhbm5lZCB0aHJvdWdoIHRo
+ZSBjb2RlLCBJIGZlbHQgdGhlcmUgd2FzIHNvbWUgcHJvYmxlbXMgdGhhdCBjb3VsZA0KPiBiZSBz
+b2x2ZWQgaW4gYSBjbGVhbmVyIHdheSB3aXRoIGEgc3ViIGNsYXNzLiBUaGUgY2hhbmdlcyBhcmUg
+bW9zdGx5DQo+IGFib3V0IG1vdmluZyBjb2RlIGluIGRpZmZlcmVudCBwbGFjZXMgYW5kIGNoYW5n
+aW5nL3JlbW92aW5nIHRoZQ0KPiAiaWYgKHMtPmFjY2VsKSBwYXJ0cyIuIERvbid0IGNoYW5nZSBl
+dmVyeXRoaW5nIG5vdywgSSB3aWxsIGNoZWNrIFJGQ3YzLg0KDQpXaXRob3V0IGhhdmluZyBhIHBy
+b3BlciBjaGlsZCBkZXZpY2Ugb2YgImFybS1zbW11djMiLCBpdCBpcyBub3QgY2xlYXIgdG8gbWUN
+CmhvdyB3ZSBjYW4gYXZvaWQgdGhlICJpZiAocy0+YWNjZWwpIiBjaGVja3MuIFBsZWFzZSBsZXQg
+bWUga25vdyBpZiB5b3UgaGF2ZQ0KYW55IHRob3VnaHRzIG9uIHRoaXMuDQogDQo+IE5ldmVydGhl
+bGVzcywgdGhleSBhcmUgc2V2ZXJhbCBtb3JlIGlzc3VlcywgYnVpbGQgYnJlYWthZ2VzIGFuZCBh
+bHNvDQo+IHJ1bnRpbWUgYnJlYWthZ2UgdGhhdCBzaG91bGQgYmUgYWRkcmVzc2VkLiBMZXQncyBk
+byB0aGF0IGZpcnN0Lg0KDQpUaGUgYnVpbGQgYnJlYWthZ2UgeW91IHBvaW50ZWQgb3V0IGlzIHNv
+bWV0aGluZyBJIG1pc3NlZCBkdXJpbmcgbXkNCnRlc3Rpbmcg4pi5LiBUaGUgc2FtZSBhcHBsaWVz
+IHRvIHRoZSBHUFUgbWRldiBjb3JlIGR1bXAuIEhvcGVmdWxseSwgd2UNCmNhbiBhZGRyZXNzIHRo
+ZXNlIHdpdGhvdXQgcmVxdWlyaW5nIG1ham9yIHJld29yay4NCg0KPiBGdXJ0aGVybW9yZSwgYW4g
+KGlkZWFsaXN0aWMpIGRlc2lnbiBwcmluY2lwbGUgb2YgUUVNVSB0aGF0IHdlIHRlbmQgdG8NCj4g
+Zm9yZ2V0IGlzIHRvIG9mZmVyIGFjY2VsZXJhdGlvbiB3aGVuIHBvc3NpYmxlIGFuZCBlbHNlIGZh
+bGxiYWNrIHRvDQo+IGVtdWxhdGlvbiwgaW4gb3JkZXIgdG8gZ3VhcmFudGVlIHBhcml0eSBvZiBm
+ZWF0dXJlcyBiZXR3ZWVuIGRpZmZlcmVudA0KPiBoYXJkd2FyZS4gSSBleHBlY3RlZCB0aGUgImFy
+bS1zbW11djMiIGRldmljZSB0byBkZWNpZGUgdG8gb3BlcmF0ZSBpbg0KPiBhY2NlbGVyYXRlZCBt
+b2RlIHdoZW4gZXZlciBwb3NzaWJsZSwgIGkuZSB3aGVuIHRoZSBJT01NVUZEIGJhY2tlbmQNCj4g
+KHRoZSBTTU1VVjMgKyB0aGUgRlcpIG9mZmVycyB0aGUgcmlnaHQgbGV2ZWwgb2YgZnVuY3Rpb25h
+bGl0eS4NCg0KQWNjZWxlcmF0ZWQgU01NVXYzIHN1cHBvcnQgb25seSBtYWtlcyBzZW5zZSBmb3Ig
+dmZpbyBwY2kgcGFzcy10aHJvdWdoDQpkZXZpY2VzIHdoaWNoIHJlcXVpcmUgdGhlIG5lc3RlZCBz
+dGFnZSBjb25maWd1cmF0aW9uLiBFbXVsYXRlZCBlbmRwb2ludA0KZGV2aWNlcyBhcmUgbm90IGFs
+bG93ZWQgd2l0aCBhY2NlbCBTTU1VdjMuDQoNCiBUaGlzDQo+IHdvdWxkIGFsbG93IHRoZSBtYWNo
+aW5lIHRvIG1haW50YWluIGEgY29uc3RhbnQgdmlldyBvZiB0aGUgc01NVXYzDQo+IGRldmljZSBh
+bmQgZmFjaWxpdGF0ZSBpdHMgaW50ZWdyYXRpb24gd2l0aCBtYW5hZ2VtZW50IGxheWVycyBhbmQN
+Cj4gZWFzZSBtaWdyYXRpb24gdG9vLg0KDQpUaGUgY3VycmVudCBtb2RlbCByZWxpZXMgb24gc3Bl
+Y2lmeWluZyBhbiBhY2NlbGVyYXRlZCBTTU1VdjMgd2l0aCB0aGUNCmRlZmF1bHQgZmVhdHVyZXMg
+b2YgImFybS1zbW11djMiLCBhbG9uZyB3aXRoIHVzZXItc3BlY2lmaWVkIG9wdGlvbmFsDQpmZWF0
+dXJlcyB0aGF0IG1ha2Ugc2Vuc2UgZm9yIGFjY2VsZXJhdGVkIHVzZSBjYXNlcyAoZS5nLiBSSUws
+IFBBU0lEKS4gVGhlDQppbXBsZW1lbnRhdGlvbiBwZXJmb3JtcyBhIGNvbXBhdGliaWxpdHkgY2hl
+Y2sgYWdhaW5zdCB0aGUgaG9zdCBTTU1VdjMNCnRvIGVuc3VyZSB0aGUgcmVxdWVzdGVkIGNvbmZp
+Z3VyYXRpb24gY2FuIGJlIHNhZmVseSBzdXBwb3J0ZWQgKHBhdGNoICMyMCkuDQoNCj4gSSB1bmRl
+cnN0YW5kIHRoaXMgaXMgY29tcGxleCwgaXQgaGFzIGJlZW4gZG9uZSBmb3Igc29tZSBpbnRlcnJ1
+cHQNCj4gY29udHJvbGxlcnMsIGFuZCB0aGlzIGlzIG5vdCB0aGUgYXBwcm9hY2ggb2YgdGhlIHNl
+cmllcy4NCiANCj4gVGhhdCBzYWlkLCB3aGF0IGFib3V0IGludGVncmF0aW9uIHdpdGggbGlidmly
+dCA/DQoNCk5hdGhhbiBoYXMgdGhpcyAiSW1wbGVtZW50IHN1cHBvcnQgZm9yIGlvbW11ZmQgYW5k
+IG11bHRpcGxlIEhXLWFjY2VsDQp2U01NVXMiIGxpYnZpcnQgc2VyaWVzIGhlcmU6DQoNCmh0dHBz
+Oi8vbGlzdHMubGlidmlydC5vcmcvYXJjaGl2ZXMvbGlzdC9kZXZlbEBsaXN0cy5saWJ2aXJ0Lm9y
+Zy90aHJlYWQvRjRYSVVaQ0ROTVhHVzVXQko0N1ZMVlNaTUdYTzVCNkUvDQoNCkFuZCBJIGJlbGll
+dmUgaGlzIHByZWN1cnNvciwg4oCcSW1wbGVtZW50IHN1cHBvcnQgZm9yIG11bHRpcGxlIGRldmlj
+ZS1wbHVnZ2FibGUNClNNTVV2M3PigJ0sIGhhcyBhbHJlYWR5IGJlZW4gYXBwbGllZC4NCmh0dHBz
+Oi8vbGlzdHMubGlidmlydC5vcmcvYXJjaGl2ZXMvbGlzdC9kZXZlbEBsaXN0cy5saWJ2aXJ0Lm9y
+Zy90aHJlYWQvV09KS0RTM04yM042M1NNTURMTFRaSlJWWFdQSEs3RU0vDQoNClRoYW5rcywNClNo
+YW1lZXINCg==
 

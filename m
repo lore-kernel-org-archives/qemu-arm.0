@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 996FFD66B86
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 18:42:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7628D66B81
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 18:44:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vVwTa-0001iy-Sn; Wed, 17 Dec 2025 13:42:20 -0500
+	id 1vVwVK-0002kP-HT; Wed, 17 Dec 2025 13:44:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vVwTY-0001hr-4Q
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 13:42:16 -0500
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ id 1vVwVF-0002fr-F5
+ for qemu-arm@nongnu.org; Wed, 17 Dec 2025 13:44:01 -0500
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vVwTW-0000Ve-20
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 13:42:15 -0500
-Received: by mail-pl1-x629.google.com with SMTP id
- d9443c01a7336-2a12ed4d205so25505265ad.0
- for <qemu-arm@nongnu.org>; Wed, 17 Dec 2025 10:42:12 -0800 (PST)
+ id 1vVwVD-00019w-TN
+ for qemu-arm@nongnu.org; Wed, 17 Dec 2025 13:44:01 -0500
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-2a09a3bd9c5so37815345ad.3
+ for <qemu-arm@nongnu.org>; Wed, 17 Dec 2025 10:43:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765996931; x=1766601731; darn=nongnu.org;
+ d=linaro.org; s=google; t=1765997038; x=1766601838; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=bCLOqGk+DqGS4lnyqYx0zF5KMa+Z9dDgqU4xiG8Sdqw=;
- b=wF962QRRxB3/UK6nPxF1P28fAexAfcqJzwd7pP/cdxhctRWL5klStowuq2qNLZaMd7
- By5zsybrA7rnPArpGQIPLa6/OVAF/Oj1yanncwTZzuikVSngHbTLjKgBGihIG/ZHZq+M
- EKUhrYj6O6zzWJNvxHUPmNS+GeR7xb9DSFTAEx4nurCeE1JW9fed/ewPim02AtiZWpa4
- X65v21KBNCvnxhP1hMTPbzXN6ArCqsk6SR8XNdR5sBtS14620hx/x9vMgwHmIi2UIxCD
- RINYtKf0kdZKitHzmZA3+OKcXvTEM6/y3jA8XAepmSUh/hvOo78JgNs5wLH1YNpXqgwi
- 2fnA==
+ bh=CvdKfb3faPSJ4Hfq58SnU1gsWTM/NgKpvO/xkCilUSM=;
+ b=mL2ZyPcysTMeLB0Jk7c4/4tY6sYrkhCn/9TZno+NcO2ednEOP7sYlSJDIcmNI/RJ/9
+ IoUA7zLbaxSMAvuBU/DogbkriGjiSl11gOG9wqnd372hSurOBHbTdyRWtiUD5WsRaRLU
+ 5hhrGpUVOzVbmHFeY8qtrx9x8hjVNat91vGme/aDauVzybJVORfDQJarwfHH9UTWlbv2
+ O1g5Oez0xD5OAfz+1+2lEQf+ccIhtnYf0XtaMj761G8wmSbYS2pVTQvMijuKj5+WiSzA
+ XtF2T/7b2paXA/kyvFLgV7rAfTcZi9HS6tr2mXrYdG5s4nPZctFswIl+T6e6qsgw2Jtu
+ XASQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765996931; x=1766601731;
+ d=1e100.net; s=20230601; t=1765997038; x=1766601838;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=bCLOqGk+DqGS4lnyqYx0zF5KMa+Z9dDgqU4xiG8Sdqw=;
- b=CrvB7Ab7+3xfN+ZMxC3cJgLOAjbJUdNzZkxiV6q1igOBp1S2JKNzho2oTTC0TSnnUX
- NKS9GJ9y4Y2ff0GC4NaINTP3m0JJVtsNHAqPD3hCIksrckOgCzx4D+A0f/Zz7PtRui/J
- JcF5CpUnCsJ2rlFm+CdK2lM0tM7YzocS6M4MGlu71xW1DJZqOIJGB25bvj8+2d/IX+3X
- 4Vg6VI4xyYzgim1Das0GKY3fwSG9GhPqr1pNYI08bmeAmHShDJPk9RW+vHqfvlcTbEhH
- rTlPyxY/Qlc6u2kmgYha8Octwng//QNx2S+tVpq0Uw1it+QurkejvuZ+4q2e+bCfBbJE
- QIMQ==
+ bh=CvdKfb3faPSJ4Hfq58SnU1gsWTM/NgKpvO/xkCilUSM=;
+ b=ItH8TanJ60BObi75zNJHtGO82yOSRZVOgytsxByLb1RiOXCt3qEK/6bCVuQHKtzado
+ dw/Tn9ujHHzwWP9pdJrNciws6tc08qsjL0fRXBlEQ+3oMpjSTCq4OXZR5AWRzjbuTGqS
+ 5kHPW1MFihY7sVi1zG4KwBZpaq0MgyzkgSbh1h4wzI0Bg5v/Rf8/3YCD6koCSwVRMict
+ 9NoUrNU0jDrAtt2sS8btaLPpa73kdsgYBf9fAdaBA0kwdT7blJC/mtl5UlNlnSXeoHfd
+ TLwCaqRj3EtTjLb44TExqlXz67Bm2BLjAVXM1GhyHOcG58vtGq8cpQzXkWdgRUuDIHUB
+ aOfQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWfhE6RzHncKA/xvV8GDoW2a18Y48aAI5h+o8cTHrNmqHKkVQzQdQN+WOg1ZfQd5UYJVepFQTDcFg==@nongnu.org
-X-Gm-Message-State: AOJu0YxQZbtpMdhz0c65V2e1h3lMOYHAYU+gs6O87IxbSJsRnEg8x2aJ
- 4KtnTywJKXNu90nBGJXGmpwoxYIA9YBcVcBN82xnN3lVZDrthSFW5h1uqh3y2ZpIqAs=
-X-Gm-Gg: AY/fxX5SPMqY9cKtq0hKZ6Oa4cfvsssiwjuoYRoC3Yf4ByscQ5l7+GWMvQv/AAHIPc7
- etsst/F3IV9BW5KWey60uAGYERwo8ta/gtDox8pYTIKnVLv1HlsiUJIxbD2YSwYPg5qoD81KDvG
- J2CJVyz5BiO3/0wfsg8J03oeXTap8bbMKYobAUxvrapU/rjbPToCdFS1EG2MOa/djPF5mkd1Arj
- caIuKyuFJNagvAUgDANCIU1N4O45no7eL9D+oEk7FR1/nfU3wPuMxsPe3dFC7b4is3iV4UWlqdx
- ljY4ThcqtmwRglPABz6KoR6UelT6NGagqenkCGmK33g0uMDd/Mc1HSg+Q5GU1p/0QTnuPGv/hVz
- 7e7WVf38t9a+ocitgVpHZGNEcArjYTK0V7dAiHcTMmqVH3Fse06zINgQu6QetPBScdsAQiKH3/9
- HZjNmcUgHJ17f2WbaFAsWIjyqWcmRMa3fBcJu5GNROa+GgK4H1cgKnz/CW2hKB4kQVZA==
-X-Google-Smtp-Source: AGHT+IE+hJuZUAr9FNfNlaGSwdmEPfnJAVWA2YAzD2N6stJBQ8tFeVPlqzJdZ4KWK9RZbrrarjZmZg==
-X-Received: by 2002:a17:90a:fc45:b0:340:e8e9:cc76 with SMTP id
- 98e67ed59e1d1-34abd7bf1femr17806567a91.11.1765996931254; 
- Wed, 17 Dec 2025 10:42:11 -0800 (PST)
+ AJvYcCUn+USyp6uU3Fu4unpin3Il79MAdogslN+PXsP2zo3xjcHEzhHwSZOw1FAHIFcBClR8mz/xOR0ieg==@nongnu.org
+X-Gm-Message-State: AOJu0Yw9hdWVmNcKgIepk6INUokCijNh4qb0c6477y7JFyl+las0MolE
+ a5OMexmVYYOv5uwrUk67Z0DfpkeirljDz0mMhV4jYxkDsdTQfBJCkPlLIDYWr3/0WCE=
+X-Gm-Gg: AY/fxX5iYyXKianPC3H+6YAY6QoKG2/wgfwVZr6sDwKXXHVjNa18JfA7RSzMB778BTg
+ SJb10S2xTTWaM49GNzibzEvoy9RWpXZnxDXcx0UcOJFXiPs4OQq/2OIW4+KxK9knQXl8S1GoZkm
+ 8Sw+ccVZwpqu8Z+Ko7jZR5Eo2g4w8T5bU24+QTTxvCbmn4+u7fW+6GP0w3hVjlkZ71oQQy2Rzrd
+ oHyskoiElfRVAvsAswt7nnqnP1L5Sz2jAeFzooKKvTvmj3AmcrUVZwuNCZZR55Ifzmp2ZUfr0bk
+ vrq2YUpKWxfNnBni97+2OzPbpolIMRJow7KIWT0TywkJJpmmRYG4xygBSjjCkSFHV1DittEglah
+ nR68GKPoceWYpF/lDdx0K6kyKx43uobG23KvNRfz+9ScLbTBLXNRK/DD6aO8ewWxeWOl/xX833a
+ df6kubz9swvjPnvow8e6Ar1JnXqr+rlKwG2wNQRNGXphzNgOSXObMxxIU=
+X-Google-Smtp-Source: AGHT+IGVa8Nz9/85L8JfoSIRhU1/quaT+TSuGESydnR+07IzyTFDA3PegXCSEhK6fake3957p80WkA==
+X-Received: by 2002:a17:903:110e:b0:2a1:3ee3:d00b with SMTP id
+ d9443c01a7336-2a13ee3d062mr64274895ad.13.1765997038263; 
+ Wed, 17 Dec 2025 10:43:58 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-34e70dbd618sm272674a91.12.2025.12.17.10.42.10
+ d9443c01a7336-2a2d16126dcsm302065ad.65.2025.12.17.10.43.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 Dec 2025 10:42:10 -0800 (PST)
-Message-ID: <ecf4d522-027e-4ca9-a571-9aa46cff14ad@linaro.org>
-Date: Wed, 17 Dec 2025 10:42:08 -0800
+ Wed, 17 Dec 2025 10:43:57 -0800 (PST)
+Message-ID: <e88eb39f-f5bc-4be6-8e8d-5e3bf154d0fd@linaro.org>
+Date: Wed, 17 Dec 2025 10:43:50 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/14] system/physmem: Inline and remove leul_to_cpu()
+Subject: Re: [PATCH 07/14] system/memory: Split MemoryRegionCache API to
+ 'memory_cached.h'
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
@@ -83,13 +84,13 @@ Cc: Anton Johansson <anjo@rev.ng>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  David Hildenbrand <david@kernel.org>, Peter Xu <peterx@redhat.com>
 References: <20251217143150.94463-1-philmd@linaro.org>
- <20251217143150.94463-6-philmd@linaro.org>
+ <20251217143150.94463-8-philmd@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251217143150.94463-6-philmd@linaro.org>
+In-Reply-To: <20251217143150.94463-8-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x629.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,16 +114,22 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 12/17/25 6:31 AM, Philippe Mathieu-Daudé wrote:
-> leul_to_cpu() is only used within physmem.c: inline it
-> and remove.
-> Since @bitmap is of 'unsigned long' type, use its size
-> with ldn_le_p() instead of using HOST_LONG_BITS.
+> We have 115 direct inclusions of "system/memory.h", and 91 headers
+> in include/ use it: hundreds of files have to process it.
+> However only one single header really uses the MemoryRegionCache
+> API: "hw/virtio/virtio-access.h". Split it out to a new header,
+> avoiding processing unused inlined functions hundreds of times.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   include/qemu/bswap.h | 11 -----------
->   system/physmem.c     |  5 +++--
->   2 files changed, 3 insertions(+), 13 deletions(-)
+>   MAINTAINERS                       |   1 +
+>   include/hw/virtio/virtio-access.h |   1 +
+>   include/system/memory.h           | 185 --------------------------
+>   include/system/memory_cached.h    | 207 ++++++++++++++++++++++++++++++
+>   system/physmem.c                  |   1 +
+>   5 files changed, 210 insertions(+), 185 deletions(-)
+>   create mode 100644 include/system/memory_cached.h
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 

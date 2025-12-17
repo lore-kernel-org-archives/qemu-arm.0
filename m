@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48205D65C56
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 14:34:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3A41D65C56
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 14:34:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vVsaC-0001hD-TJ; Wed, 17 Dec 2025 09:32:53 -0500
+	id 1vVsaY-00021V-CO; Wed, 17 Dec 2025 09:33:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vVsZa-0001Zw-3C
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 09:32:18 -0500
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vVsaK-0001m1-H7
+ for qemu-arm@nongnu.org; Wed, 17 Dec 2025 09:33:00 -0500
 Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vVsZX-00073o-Da
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 09:32:13 -0500
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vVsaG-0007EC-JC
+ for qemu-arm@nongnu.org; Wed, 17 Dec 2025 09:32:59 -0500
 Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-47795f6f5c0so37707895e9.1
- for <qemu-arm@nongnu.org>; Wed, 17 Dec 2025 06:32:09 -0800 (PST)
+ 5b1f17b1804b1-47bdbc90dcaso8470615e9.1
+ for <qemu-arm@nongnu.org>; Wed, 17 Dec 2025 06:32:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765981928; x=1766586728; darn=nongnu.org;
+ d=linaro.org; s=google; t=1765981974; x=1766586774; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XUlJJIjbDM2EiiD+qKMGI+yB0A491EkhhPxVSB2GOUQ=;
- b=cdz/JGkV7QX2BMX2n47OwCzpmXVH+BQQPpHMSUX5+p87LEhHM2ZdYYc0D9BsyidC09
- xD8svLMUk4l+MtsNj2PEJW5d5FFEhAXreBTuABJV2naOlfGWmCsvDQUhoDtZfgxbRBlX
- GRqX0wg0cso3Pr3SwPqvtcG71RzJUm9aGsCEx1kIvMki7yoZPtWAzefVYppr9AVAwPtX
- P+3XM8vYPxOjKKqcLw6rZvyKdEwywuKZ6SwHZFPvGaDNZfKjcyU498blH9a+vc5MQ+fy
- 91vRBTPB0l5vOp7zbfV9/WUJdv1qcCPLJlPp4IC+NSPnwTfTIOV9US08Tl3t4H1jTr6z
- hSuA==
+ bh=SKaSMi3pt0gIgplZvrijN03Z46js5TRmGQTJjQZggCk=;
+ b=iw3VW9EnFvgK0Ka7oF0kkKjsnkdNSCHiq87BQ8+HzYJzo/ZpYfyDK/ZIiVJFF5cCNk
+ Ex9085VWscYUJioZA9GOHpQDUY5tYcm/kq3bo/qPgvdV3Nwxo9QxEHngvLp+qeRQnJ7Z
+ wLBZZwmUEFhFXsNF7u2cMOOylRRSDQEtit4MWbcg0Dx5Y92+ee3kwxBudfSPeDpdBIYM
+ zWU8f8My2nhdpjBRNMSpJF/qnQGPEh9WjkOROGvCItkB2a2JqyJ23NJxz69FA9kCt43d
+ PJeBQ0RO3LsOkulXNGTs4RU9qxWpqETbQvZri/BQNRBEcKyo2tlMF4QoQOhvwlbKxi/r
+ Ngww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765981928; x=1766586728;
+ d=1e100.net; s=20230601; t=1765981974; x=1766586774;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=XUlJJIjbDM2EiiD+qKMGI+yB0A491EkhhPxVSB2GOUQ=;
- b=HJm7rP96OewjV7E999t+zXG5uzXmTGqYC3IhhPmymP9BPuf7gbs0JBZ0BqML7zrjw9
- G62FPkIVxBdqYJjM7zuxhLAqLKsf+MTXjjg82U9mzoWWNAQ3ZUB/pS9XrYXJ1s3tIqoC
- tyJ882Fyf5jVAuZ0V1pXxqv5TmyojH04t2wvZNurmQPuTVhYlTs7jli3qGyTqQmQDEUf
- /p8mi4dyElRY1dcg5jB6HcRiHd8CoCVdB8PT9V0HUbtX73pO/HIZG+MuIs+DzG3CL+kQ
- lMskZ/4N5CV3HIPi6rZJ3Yw42FFmVexDqkBfnLusxQVoY96nJlxw5ZIGCZWGFTc3hKxO
- S/ZA==
+ bh=SKaSMi3pt0gIgplZvrijN03Z46js5TRmGQTJjQZggCk=;
+ b=aiJErfsyX2lq6EsjINxqtiSrbbZdpSaytZ3s5QrGGq/O3XKhXxutWq5IHJkoXaMe6J
+ oKOzjHx59ohHbb3mxh21vMjaGXijZU3T252UsSbrbL3/b7Nbz1CbSX1EHn9lLdWZ5D4p
+ dbJk8GU9TRiuiD+h0kEqb4S3FE97pKB2XoACHUZyZ1V8LfviiT0Kh6KWbas4DdJKbtQX
+ CiFyTkF0I7xIxqlx7gs6Luf9sMtsrAY2K10cA2Y72ldr/ZGjjpkD+vDgsRUZZz+OTLuE
+ pdhhgcQPSgwcTjHGi+JEXY5kEOorfwq621ZvgKsLG1zehpJSk3dXYVjRNcMuoNjXs8r+
+ EveA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWC5y5lzgaW5TSG5ZZ7wS+Ofnoy0+EFZB/bnNEy6HB4r4f5/VOCV70yzfq8Wf12snOyYpmc36b8Fg==@nongnu.org
-X-Gm-Message-State: AOJu0YzVW5gGAB/gmYj9UDIYh3DPMI0cZWyuf4L413SkijbJU/ZBPbjv
- g1RO+wlb0H+FHj9edKDjIMCp+i1fRPkHyw3HbYdwBu2Sfu7qLjrffJI7kUzs4j0zeaI=
-X-Gm-Gg: AY/fxX65fG0olpi+ncw299oi6rJTaMe/98p79W0T/ATwSU0p6psV9oZTUWOJZrq4MYT
- whCSts5CqzbRyizZYrhMdzFWM3rsqq8ShfbuSAqSCKgHVq+u/xqfJso4WxA763dGM5jVlK/nIUE
- Hg2XsCEaqbQSXJZkByx/+YjWxG3TQehr6OGmPbQ9JW7720bxFGAaZbJ4qK2npshNNxaNsKKYYoc
- dBw8ShsrWJzHj+A7+ZGf2cp1a8L5qnmcBw1tDI5Xp8LYF1hO6Fxo3ohsgTyur8Xt/86n96oQyfu
- nE6XmRtCvEfR2wCPcOFl6PYgupQ0QSkhmq24t/eWFmHzBqoQGd6xb+MY5HLYVhRTf9Nn1GL9RTN
- leYXI4KrgZMnBh5/JgRBjpQkNExbJUaYJXeaihHQewEHeDS1jIsIpe+VmgANVUcLjG+08JlyUKL
- s8x8kQR3yZKKdbLREqE6xhxG6MQlSfoEd3CRTGaxhUx76OEd6qVYSS2szma2N5
-X-Google-Smtp-Source: AGHT+IGX4yLhEa44exEf/Rh/CWISlnBAjJ9PAnCC0J8qGzSzYorg7KAW+nrmR2GBZzPYfw+iesWwjw==
-X-Received: by 2002:a05:600c:3f08:b0:477:9c73:2680 with SMTP id
- 5b1f17b1804b1-47bdd99afdcmr20270145e9.23.1765981928310; 
- Wed, 17 Dec 2025 06:32:08 -0800 (PST)
+ AJvYcCXcjy5C8N2t5+uxdDdF5PDiP1QEo3eW7pPYVUWLmQ7XEY9xcB3nnK45Ymcyo4W1SEJUlfjgv8LziQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzwXUGuHPzd32pEoRmMZJ7eobGGdWzm59oOVcUxjtQbt54odMj8
+ vQo4BQXQV2+Xe0pK7mbkzDgbhDEU29pnURf3QH3xm78YLqTHuOEevgfU0O1oNi4j4W0=
+X-Gm-Gg: AY/fxX4PL3W4Dm/m3EeV6ZuBJ7ztMtm6NxI+havYmzWeDJfxxPdjYopU6bVamwsXYDq
+ yPnb2jKp5RGD3AtLdDNdj5AnRJSTtvyisuCHaPYlun1g6hL9x3OcB++5dPRNbuyKS+YuXdQrUcj
+ 9wTZFlP4mdy1sMkWbYCKBuz9XqkbjoM8qkWz7U7ujN/ibXSg/NVEq18v3PhTWNNFV1csXDwIfGg
+ 9/w7Qc4x1Ak4br6OeQf2b/oXGXftsSzr71GoNePJwjN8D3jAsgIVP29VJU4n/rspVd1Xp3xM/hD
+ j37g57jT2eMfVE87rCNsmp0WmEh+IB4bpTahmGxxYFEK2seVR5mOTFxKN2xpe2OcK2ObpsyuXj5
+ knYRddQE5F7xcxV0rMFmoDApozOd4Gs6h74w5lCIzXoboQjCH/typXQueFp/QGj7ZiTzSHGb0Y7
+ E9qpCQ2gHO8xt0JrXCKaUWU2dW0vFb53FdYNJOFhXHpXuPsKhK6lpvrbwEWnIH9uV4MIxHEjA=
+X-Google-Smtp-Source: AGHT+IHRVKUtS2MEM4IPi/MXXjtHq2fsKmWv8GwyE05H6zNhhaPwSybZ3Ilytm6Dcec8WiosK2BWMA==
+X-Received: by 2002:a05:600c:a46:b0:477:63b5:6f76 with SMTP id
+ 5b1f17b1804b1-47a8f90cefamr184197965e9.25.1765981974512; 
+ Wed, 17 Dec 2025 06:32:54 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4310ade81absm4996784f8f.21.2025.12.17.06.32.06
+ 5b1f17b1804b1-47bdc1d20absm43939065e9.4.2025.12.17.06.32.52
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 17 Dec 2025 06:32:07 -0800 (PST)
+ Wed, 17 Dec 2025 06:32:53 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -74,9 +74,9 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Artyom Tarasenko <atar4qemu@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  David Hildenbrand <david@kernel.org>, Peter Xu <peterx@redhat.com>
-Subject: [PATCH 02/14] target/sparc: Update MMU page table using stl_phys()
-Date: Wed, 17 Dec 2025 15:31:38 +0100
-Message-ID: <20251217143150.94463-3-philmd@linaro.org>
+Subject: [PATCH 08/14] system/memory: Inline address_space_stq_internal()
+Date: Wed, 17 Dec 2025 15:31:44 +0100
+Message-ID: <20251217143150.94463-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20251217143150.94463-1-philmd@linaro.org>
 References: <20251217143150.94463-1-philmd@linaro.org>
@@ -107,28 +107,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-stl_phys_notdirty() is supposed to do an optimized CODE
-path store. Here we update the page table via the DATA
-path, so can use the normal stl_phys() helper.
+As its name suggests, address_space_stq_internal() is an
+internal method which can be inlined like all the other
+ones in this file.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/sparc/mmu_helper.c | 2 +-
+ system/memory_ldst.c.inc | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
-index 217580a4d8c..46bf500ea83 100644
---- a/target/sparc/mmu_helper.c
-+++ b/target/sparc/mmu_helper.c
-@@ -189,7 +189,7 @@ static int get_physical_address(CPUSPARCState *env, CPUTLBEntryFull *full,
-         if (is_dirty) {
-             pde |= PG_MODIFIED_MASK;
-         }
--        stl_phys_notdirty(cs->as, pde_ptr, pde);
-+        stl_phys(cs->as, pde_ptr, pde);
-     }
+diff --git a/system/memory_ldst.c.inc b/system/memory_ldst.c.inc
+index b45bfecd137..d5776678edf 100644
+--- a/system/memory_ldst.c.inc
++++ b/system/memory_ldst.c.inc
+@@ -422,7 +422,7 @@ void glue(address_space_stw_be, SUFFIX)(ARG1_DECL,
+                                DEVICE_BIG_ENDIAN);
+ }
  
-     /* the page can be put in the TLB */
+-static void glue(address_space_stq_internal, SUFFIX)(ARG1_DECL,
++static inline void glue(address_space_stq_internal, SUFFIX)(ARG1_DECL,
+     hwaddr addr, uint64_t val, MemTxAttrs attrs,
+     MemTxResult *result, enum device_endian endian)
+ {
 -- 
 2.52.0
 

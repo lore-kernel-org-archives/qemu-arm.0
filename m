@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12F40D66B81
-	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 18:39:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6383CD66B8E
+	for <qemu-arm@archiver.kernel.org>; Wed, 17 Dec 2025 18:40:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vVwRF-0007Mk-Hp; Wed, 17 Dec 2025 13:39:53 -0500
+	id 1vVwQI-0006jg-UV; Wed, 17 Dec 2025 13:38:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vVwRD-0007Cb-UT
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 13:39:51 -0500
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+ id 1vVwQC-0006a5-7h
+ for qemu-arm@nongnu.org; Wed, 17 Dec 2025 13:38:52 -0500
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vVwQw-0008H5-FL
- for qemu-arm@nongnu.org; Wed, 17 Dec 2025 13:39:38 -0500
-Received: by mail-pl1-x62d.google.com with SMTP id
- d9443c01a7336-2a1360e1392so21669105ad.2
- for <qemu-arm@nongnu.org>; Wed, 17 Dec 2025 10:39:32 -0800 (PST)
+ id 1vVwQ8-0007o8-98
+ for qemu-arm@nongnu.org; Wed, 17 Dec 2025 13:38:47 -0500
+Received: by mail-pl1-x62b.google.com with SMTP id
+ d9443c01a7336-2a0c20ee83dso47809865ad.2
+ for <qemu-arm@nongnu.org>; Wed, 17 Dec 2025 10:38:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1765996772; x=1766601572; darn=nongnu.org;
+ d=linaro.org; s=google; t=1765996722; x=1766601522; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=2p8bLgGlZF48CbmV5rbMnXHgll7dyQAg8oeKzqnEuWM=;
- b=kwzp88dfa/hDfeKUKnAJF11Ua9ebL+UVhuntaqqwQVrODoTr4EP2Wp6BCEYhmHW28L
- VJ1gjkVIg4FAs2kGXzh6ayj0iE/zcf5oWR4VoTO1L4Nv1in7GJh53sZJeATIQ8NydEvs
- yYpgQgK4I+RfYwV7x+3AP7cOtJOtPsZsRP9wsrAxkxW5FDN9nyT6H/AQT5LdB68e8Zmt
- 7FhQciNqDDkDtUgMgjVSX66Kot/TXCkL1/CIappij+e/BwnBDDavY6SHs5JBRh5VJwjI
- /HoyQbkFb/t+VQjCJkQNCDAfnauVXm9dw9BAhAlAe8I+DwJnobCglvJX6qtPgXjEAoVo
- Uyow==
+ bh=seABeKHpcn3xEvoXlJNdpC7YVLBGOeOifIAM39GElZU=;
+ b=csguFCS+Wo6Y8sHY34zE4hQXDT9q/ZOKrwtirJQK7EMJS18spW9HG2d39mD6KOWmgi
+ r9/MbgAOyReDacmVN8c8Zs9RC6MLw63HY3NnvsatEK1Si3dyo33mNFmcvBWS8kGTdl+T
+ O10m5uT2Mqi0JQ4SCo8b+bJSQOG+YNAggtQBeGn2hGaqhf7MBXJ6Q6uDsqepV6uLFKX0
+ qs7iXx03aiOjmfUeimC2c8nsxD/jNJVrej5+IF2jjL1KLPI3fkP2I+F+lH3Z8/pyGbfO
+ JLk2uEi66wNJAZ9EidBwpU8BI+bAQ100MgJPVjKtFR2zVi2QgM0fG+7hTw6ZfcpeU1IC
+ cOwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1765996772; x=1766601572;
+ d=1e100.net; s=20230601; t=1765996722; x=1766601522;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=2p8bLgGlZF48CbmV5rbMnXHgll7dyQAg8oeKzqnEuWM=;
- b=WiYwv+QMDsXJCcY1ifC1DiJCHi9aGZ1NYBapNfWMpEMfUrVjI69vWMoZWQZLPkTjSv
- lvpDBrgJPnjxCkv1MikMB7OKDlYtu94xhDgMC9qY7nBb4jGkKZ3PwWXDGOIX2XETZDln
- jfBFulQQippDs+SYd0ynIkzOTrzKM7JJauTi0j5AWTjDnY3/clGxDnOLkoLqDsP+bcGB
- GBGs+DsB9jFHkMxg6FO9rjDs8XsEowBmN5PGiNhhohKINpO7weDbECYn/cZQzQwsENt9
- XGhRZAmpC43r/P9cfLz+uSDdShISTXMLJ7IX0cS+x3I57HcgIiCqKfUZ+Jfxq7Pxwtdr
- vyAw==
+ bh=seABeKHpcn3xEvoXlJNdpC7YVLBGOeOifIAM39GElZU=;
+ b=NJ5B/H3oEVZv3Lvqf1U9nxSFcccHrgnXAxELkJfvnHw0U7ODvIOopmu6qdIEb9gnna
+ 9/zOtnubszNru2P7puTV17EfklokdeBTEPrwlk/zotwRn6Ygf8y7XQ3+VQwX4LPyjivV
+ VZpN2cbLBReqyPyudvs8aFDYkQJ68/TlNmTY4QGEQ8/TY7KRuLWPAFXAh2TBo0bBVT14
+ Cj1dUi/fUPGEAMPJuaJHQreguhxcF9x51RqFVYozZdxovy8ux9uwSGbmi845tzwxJky0
+ nFGNfKlp8dqZMTzFeA1OBJDmFW0NzpJ5Y88mSGkcHdU8zQeG5tKPrcQrZpnqxwKWx50p
+ GKKQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUFqZt6XXhaZWGgsMUoGru1ZC/Bzddwb2Z4ADSh+IxTWYg90f7ZZyO8x6l1YJWjZiFq97pYsuIC/A==@nongnu.org
-X-Gm-Message-State: AOJu0Yzw7xJTP4DGDc2Mxd/TWrXn/gN+oW8hT4sbWbtbJFMWBkU5FEKi
- tZ1vg1kY/jfWkdUlNSIaV+Ejld6cBDDxTb19Fh/Eus2hnJRPslDiewS54aBpty3whg4=
-X-Gm-Gg: AY/fxX69STj2VjD8TpN1XkSMbDyAIKPIZP+td1uIlcXgLebBZJjkMCmY8UaT9Xg+Aso
- 2QVCXtKz4KRXhw8FuX1/6ywLx0ISZ+kbA+IhY3Kn2hT6IBrwX3DjqOY+prEjca6oTx6kyXv6b0Z
- d4W8T9S9Fp2hZzJQcfJ0pss3E6RRtr82O9FvvhGZakoKh+OEMRvp9kzyqcT6HuxdSKK4McxFVfe
- GafbHLPg+xYPleDF/WP+bQS6zApG/51UUg1aa7ZWpft3OnaGQdX+GInPmrMQDEy5wYKi+AJrsPT
- SLEqqRulGkZ9tP0iscqo5u47mRayUSfmJT+Ja42KW1cRWKi27Fg5Oj/jm8FFY0SrOF1Q6bvBM0E
- 4HbV7F6aLkvMpzk/MqPwHNsBvXdygDyf3pffuJoVGcxCTKe6czHg80u2PxMJIszzSY3rbX+Par0
- pDMFvV4yxrxUS1daqptW9MtCvQ8dYwxPp8f2hMT1TvoEdJiE9PxozFzU3sqACZzd9m0g==
-X-Google-Smtp-Source: AGHT+IF9KcHsv77UPexlhp6ID7kWycFmbxsvkj3Iqv8KfR9+wAUpi5Z5KSkLW0dQXkNZoDc1Z7z4lA==
-X-Received: by 2002:a17:902:f68f:b0:29f:2b8a:d3d with SMTP id
- d9443c01a7336-29f2b8a256fmr163204105ad.4.1765996771688; 
- Wed, 17 Dec 2025 10:39:31 -0800 (PST)
+ AJvYcCXPoiYpjBeE+Yjbjmio2Y+JmyNt/IHQBMkal4TOUWUFtN3mZKHGXfjw0EjdA7jg+q/M1EldwwabRA==@nongnu.org
+X-Gm-Message-State: AOJu0Yxk477pBNcrCmza8Rez6f/YVq23ddHibzjKiGcFUZYoLWQGD0xU
+ oKveR8VVIL/Dq2/NnmpM+2vLqNiYktnheIScS9nNCmbAqgVy5Vr0zi5VyFlQjt+C6As=
+X-Gm-Gg: AY/fxX7v0DT/ppxdiDf/5xDy7xe4zDMqg4Utmops6YdcVor+KbFT+35/7o6yfrna/7p
+ QiqEvufOLj3uwX8hsz+Z0W9ho1ZywmAwmuKSYhh9xTrAP2XO/1WKsmSBKoBMCDnBgEoe8N5uVRZ
+ iVq3IIiI6IJMYWyNFjmUjXd8y3c10f03vXtY4SsNf6V7l0F9aMxH1UjHkCP2dUdScAbypLZKXVS
+ gEVJb27lN3bbkWMY0PLohij1jO7Un1uobcr1l2o+uj9EW4dnUJDZUupL483oTTpBClH0lCVJ/tR
+ gADnwTmrIXOmtLgTwrn9F0h2AsV6w6guTz5UGE61hf9DDUbLMH0qWP0bqmkQjKqnVhzkkD5Vr1R
+ Y/Vq38M18SK0NvGnC1nGRz4SMpa9YwGITZuw8H39NQgshghjYXlFxD0UeRdxjYQ7mXuUlNLYrku
+ 0jHLUJtCVW4LX7sSbDNAG73CW0kqvEX5B33AGewo/CDc9nTvvCYcNtcpM=
+X-Google-Smtp-Source: AGHT+IEVhglo+Hr2QPGO23r8JcmASMupGhNaTkRzw+hYZgeeYWBybC/0N79C+m0PeIHwcHPmzz6+MA==
+X-Received: by 2002:a17:903:3843:b0:2a0:d403:a2e3 with SMTP id
+ d9443c01a7336-2a0d403a5cemr135330545ad.37.1765996721541; 
+ Wed, 17 Dec 2025 10:38:41 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a2d16125e0sm245905ad.56.2025.12.17.10.39.30
+ d9443c01a7336-2a2d19269f0sm208365ad.79.2025.12.17.10.38.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 Dec 2025 10:39:31 -0800 (PST)
-Message-ID: <722810f7-6d08-442f-ad88-107ed7940c4f@linaro.org>
-Date: Wed, 17 Dec 2025 10:39:30 -0800
+ Wed, 17 Dec 2025 10:38:41 -0800 (PST)
+Message-ID: <c5f0b0f1-cd02-47fe-aae9-1da25c91f6f0@linaro.org>
+Date: Wed, 17 Dec 2025 10:38:40 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/14] hw/arm: Update bootloader generated with '-kernel'
- using stl_phys()
+Subject: Re: [PATCH 01/14] target/i386: Remove x86_stl_phys_notdirty() leftover
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
@@ -83,26 +82,22 @@ Cc: Anton Johansson <anjo@rev.ng>, qemu-arm@nongnu.org,
  Artyom Tarasenko <atar4qemu@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  David Hildenbrand <david@kernel.org>, Peter Xu <peterx@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>
+ Zhao Liu <zhao1.liu@intel.com>
 References: <20251217143150.94463-1-philmd@linaro.org>
- <20251217143150.94463-4-philmd@linaro.org>
+ <20251217143150.94463-2-philmd@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251217143150.94463-4-philmd@linaro.org>
+In-Reply-To: <20251217143150.94463-2-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,25 +114,14 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 12/17/25 6:31 AM, Philippe Mathieu-Daudé wrote:
-> When the MemTxAttrs value is not specified and no MemTxResult
-> provided, address_space_ld/st() is equivalent to the simpler
-> ld/st_phys() API variant. Use the latter.
+> Last use of x86_stl_phys_notdirty() was removed in commit 4a1e9d4d11c
+> ("target/i386: Use atomic operations for pte updates"), let's remove.
 > 
-> The _notdirty() variant is supposed to /not/ mark the updated
-> CODE page as dirty, to not re-translate it. However this code
-> is only used with the '-kernel' CLI option after the machine
-> is created and /before/ the vCPUs run, and *only* during the
-> first (cold) reset; not during following (hot) resets. The
-> optimisation is totally not justified, since we haven't
-> translated any guest code yet. Replace by the normal stl_phys()
-> helper.
-> 
-> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   hw/arm/aspeed.c | 3 +--
->   hw/arm/boot.c   | 6 ++----
->   2 files changed, 3 insertions(+), 6 deletions(-)
+>   target/i386/cpu.h    |  1 -
+>   target/i386/helper.c | 10 ----------
+>   2 files changed, 11 deletions(-)
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 

@@ -4,97 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E513D6ACE5
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Dec 2025 10:48:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D80DD6ACE8
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Dec 2025 11:23:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vWBYE-0003yM-RE; Thu, 18 Dec 2025 05:48:07 -0500
+	id 1vWC5c-0001OI-Oq; Thu, 18 Dec 2025 06:22:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vWBYA-0003xu-0l
- for qemu-arm@nongnu.org; Thu, 18 Dec 2025 05:48:02 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vWBY6-0006sV-KT
- for qemu-arm@nongnu.org; Thu, 18 Dec 2025 05:48:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1766054876;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=pp9UhEKJ7Aa1makSg7Sp20zlDcbU41vV+Bf96yUQzM0=;
- b=chaCpu8vtcqvwqgKW7z4w+5/o3/+6f79bTJ19LgDuQ0/d+jsSB4BWxsP76wTNeey1kR6Qp
- qfiJMtTHJ8vvWRmgJu3lTtVDby+uXLI9e9W+xwyM/atOtbQw15w6yP03Qb+dIXYswriVOT
- dCpAJ3hNSXO8nQLawX9oOme7Hcd569Y=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-133-HAPLjszfMhSSZiOafa4JaQ-1; Thu, 18 Dec 2025 05:47:55 -0500
-X-MC-Unique: HAPLjszfMhSSZiOafa4JaQ-1
-X-Mimecast-MFC-AGG-ID: HAPLjszfMhSSZiOafa4JaQ_1766054874
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-42fb1c2c403so333897f8f.3
- for <qemu-arm@nongnu.org>; Thu, 18 Dec 2025 02:47:55 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vWC5b-0001NM-2n
+ for qemu-arm@nongnu.org; Thu, 18 Dec 2025 06:22:35 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vWC5X-0002pT-Fr
+ for qemu-arm@nongnu.org; Thu, 18 Dec 2025 06:22:34 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-477b198f4bcso3877985e9.3
+ for <qemu-arm@nongnu.org>; Thu, 18 Dec 2025 03:22:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1766056947; x=1766661747; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=dNVuCOcU0WvPTFGbmqWdJaYC8EnlyUQ6JIDvQH8knzY=;
+ b=VXmRODbIDkm798cL/LmkTXXJiVuWwc18Ykg75YvPO1WfYe342mDi+ejm2O7e3Rk5EK
+ V9p4OQp+EPTgsvEd1qcOKvI1O0yaMIoP5dOuigQlEqmb30f4B+NL4UqXXDkAQ35BHohm
+ Llof1yOCvr71qIvs3FIef/BpxczwN5E/BIMaUuXHhVXVTPL902xF536MtOc7mZx9FHFW
+ yxHLPPm5bM39m0ghbXWCj7UZKd6gzKpHmQanQoWfLhWYbpti15NF0MSPB16QVwdUE+EF
+ KlzLDs1eQhap2KwekyYh9Qq2TpPmGnCvgiAChEisRZ+PcU0BpnZjt78MJjPgc+fidZvG
+ Kl8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766054874; x=1766659674;
- h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
- :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1766056947; x=1766661747;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=pp9UhEKJ7Aa1makSg7Sp20zlDcbU41vV+Bf96yUQzM0=;
- b=M1L68iQVwhKoTgc3cDA1/oSfuhLwfYjBjrqbsbk0DYmld5fc/68NdtPZ7DHwiPvRUI
- a705sVVOIQalm03SOSc4zMohJb0BmFZORRFbH7BIJLpn5wQXALT4Vi5Cgxg2UN9uu8BD
- 7hDUp+oAt1LKiwrbrdR/JBZrPaNfRLE1No/P+VeoVxfWvMg1/esxh+8L3iRyZI+fV1aE
- Eh+QiffVVM95jQ83s1tEaDejeGSWQpqtPpwJe04L1r5KPpwx0V/PkAs4jhZnmoPBNR7L
- sRLFm0i1NiVCXUQ3HoZmQr3mh+AMcSNVAIOYzOpUT648nCa4f3KJn23Xh/nBvwMXTBGe
- 0bDg==
-X-Gm-Message-State: AOJu0Yy0hqyH01LOiVjtQWW1fKd9tbQDPEjuBANUeyHk7OhHEruuHIc2
- X71ubqPLkaTnNzdBJW88wKzMkkjQzbxJtUVxcvkjpSJ77Gf1lxO2Ak3a0apNJOlRdMuuGNwLKuX
- T9GCjZ/Ycl/Xx1aQBqXOBL+boLPhCruzbxcCkQaYw7cyY57oIO47Hxw==
-X-Gm-Gg: AY/fxX65PMbQUZwkytPym4xGrrhvsXJrmdyHjMlM+DDX+ne5Avs3K0XF/CHXScgd4vr
- QceMepvbzRK5yKpOVzvqHTa1rWPRet4c8TIKsDPmp66TQkWpGp0laH1oO1WPd2v1Zp+EhoZI8rr
- VxsFCUQXJ8gcxCk5u7Z4jTz4AHmd9sSs5FKUxHHGwgsdkIivaTqm8Jd5HzXzU125y7LmXJM77Py
- FahxtQMpZ3iDLAgtqy90UAiGVkRz2LmgGU6Ug9PjtsDpJLtE1LdYEqSWr9PzLISM4c5lQlApvOG
- gr4ULxeSOycZ4FyBbNHKzZE1r4VStn5RT772Ms0/Q4SPIjKms0uq3GhEcaoRKHrg1jqpZ1uMYKf
- 0rex29CrA3Rqz3cMEjLIilNhhF/oGgQtlpLQBm/3IGaP0hOEGoQ7/rxc5MQ==
-X-Received: by 2002:a05:6000:2310:b0:431:c73:48a8 with SMTP id
- ffacd0b85a97d-4310c7349cfmr5741362f8f.29.1766054874043; 
- Thu, 18 Dec 2025 02:47:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEFuywpjPrOv/NfID+cPGxbswKBxASUTRoemJwfrew+cKOcN66jSr00yj2VRvWLEsTsvRQvgw==
-X-Received: by 2002:a05:6000:2310:b0:431:c73:48a8 with SMTP id
- ffacd0b85a97d-4310c7349cfmr5741323f8f.29.1766054873556; 
- Thu, 18 Dec 2025 02:47:53 -0800 (PST)
-Received: from rh (p200300f6af0aa4009cef065b67c5ea88.dip0.t-ipconnect.de.
- [2003:f6:af0a:a400:9cef:65b:67c5:ea88])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-432449987a4sm4239256f8f.31.2025.12.18.02.47.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Dec 2025 02:47:53 -0800 (PST)
-Date: Thu, 18 Dec 2025 11:47:52 +0100 (CET)
-From: Sebastian Ott <sebott@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger@redhat.com>
-cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org, 
- kvmarm@lists.linux.dev
-Subject: Re: [PATCH v4 0/2] arm: add kvm-psci-version vcpu property
-In-Reply-To: <20251202160853.22560-1-sebott@redhat.com>
-Message-ID: <ea9d0e28-27eb-be68-7292-780c0120f1c1@redhat.com>
-References: <20251202160853.22560-1-sebott@redhat.com>
+ bh=dNVuCOcU0WvPTFGbmqWdJaYC8EnlyUQ6JIDvQH8knzY=;
+ b=Wv2qXi/cVGldO6Wz0XbD6HWjC8DQaYfM5IiHe25c27D/3KTG/pS68AjgweOgqWCxfm
+ i6oN5JYlRmKPeRV/GSaW0Z2DqRjXfEuHYHBwIc5Nk4FkM85KdUf3EcxLdn6GbdHNq9bp
+ VwplYKwhifrgsXxFd0h40b8hiPhOmAGrLVNVs7IzkCv/JnWxgScFsjB580CmfFxwPhiU
+ M2JFXzus6s2iSz6pJkP+EXYJqh0rqmxD5Oq0+T/UH+A79u2lQe+E78/iATm1hJsGlqFU
+ uaGBzadOW5/yvBlDqA/xMg61fdgA1RT2bh9WrIyDMCkTx1k4pMZiOuGMmAEgXHW4WlEA
+ pwZg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU4Eaq/J/+O+cQOjHZy/ePSwyohqSdMUfzr9yzfF+pFyobeAYhcrOUvYTaEqojORi6ZiIKGkHZa5A==@nongnu.org
+X-Gm-Message-State: AOJu0YxSMTTW39nRP+oS15vfUbUlvFBpo4Rg+sgidtAK3WfFi3i2gJsz
+ 3g5LgkA4bPdT+TvTcD0Ypnf7n1u0znPWbakfmqFSSC2SV+U09KkcSx8CgWuQiYy7F9Q=
+X-Gm-Gg: AY/fxX54GIAlq2HrBJYUAtn/p51FoiV15/ubj9OFIPIsAajisVFLMOR8w6R/ZmrnmQ+
+ oml0Q2kJyaRzUnmk8tSdIafZBAkoScewrXN5BCUq6heYVIvIQM8GvPg/5VKfBTQyCpg0J9IQGQJ
+ bAQSRd8038JUDzpVbaNNppVv1umnZmPq53iDekjNtlASdSARPC8khunpY24Bb3Io+BawpaxHmpb
+ bxyjp9Nn+tmrxS3Pz0o+t7ZabqNP6r4njOfuzi/0T+3uoIq49z+QGj0ptHqyuwEMpBALkfeOtc4
+ CUoZEk/DV26PxVdc9gjSrgbsgWaRKvO98kGLVKKpiNv4ymj2skj+QY7KnPRbwwJb7FfNifUAWGk
+ WK8SkOZCEaReYQOrTuzYlzVdyflUS6yuh6B83S1+5EV4lvS9PQrqMFCNERBdD78yt8nhfk8Bj5b
+ jqfJkb72XbrfGcFifA5ms/qzYHLC5e/ukBVqb7sAw9Xrg3Ve6nkXfiZg==
+X-Google-Smtp-Source: AGHT+IHeixqm57kUURBE60Y/aSC37eGIH/Ae6Dy2uYYke1gui4PzzdIFnr4gTma5spaZwJ1sZc9Y8A==
+X-Received: by 2002:a05:600c:1c2a:b0:477:6d96:b3c8 with SMTP id
+ 5b1f17b1804b1-47a8f905313mr231606595e9.23.1766056947364; 
+ Thu, 18 Dec 2025 03:22:27 -0800 (PST)
+Received: from [192.168.69.202] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43244998c8asm4547267f8f.30.2025.12.18.03.22.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 18 Dec 2025 03:22:26 -0800 (PST)
+Message-ID: <7d238d0d-df26-43fd-bfac-a7d94064d486@linaro.org>
+Date: Thu, 18 Dec 2025 12:22:25 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: gbE3gitxQBOCgXrPPRgHKogsyptdnOWoZWnHt3C9CZg_1766054874
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; format=flowed; charset=US-ASCII
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-11.0 v6 08/13] hw/sparc64/sun4u: Use
+ fw_cfg_init_io_nodma()
+Content-Language: en-US
+To: Zhao Liu <zhao1.liu@intel.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, Xiaoyao Li <xiaoyao.li@intel.com>,
+ qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ Artyom Tarasenko <atar4qemu@gmail.com>
+References: <20251203060942.57851-1-philmd@linaro.org>
+ <20251203060942.57851-9-philmd@linaro.org> <aTBccn2LIv7puGzR@intel.com>
+ <05f92a77-7587-4441-a252-01e4705a6892@linaro.org>
+ <c03820b8-7745-4b8e-8e69-a37c872257f8@ilande.co.uk>
+ <aUPAysAYqTPAfgzD@intel.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <aUPAysAYqTPAfgzD@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,48 +112,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello Peter,
+On 18/12/25 09:52, Zhao Liu wrote:
+>>>> I think maybe one reason to use `ebus` is because...
+>>>>
+>>>>> -    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+>>>>> -    memory_region_add_subregion(pci_address_space_io(ebus), BIOS_CFG_IOPORT,
+>>>>                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+>>>> ... because the parent region is managed by ebus.
+>>>>
+>>>> Perhaps we should add another argument: Object *parent?
+>>>
+>>> I thought about it but don't think so, all instances but this one use
+>>> the machine container.
+>>>
+>>> I'll improve the description.
+>>
+>> The reason that the fw_cfg device lives under ebus on sun4u is because the
+>> ebus device is effectively a PCI-ISA bridge, and the fw_cfg port is mapped
+>> into I/O address space along with other ISA devices. I'm not sure that
+>> setting the parent to the machine is the right thing to do here.
+> 
+> Thanks Philippe and Mark, IIUC, ebus doesn't have the hotplug use case,
+> so it lives long enough like the sun4u/v machine, therefore replacing
+> the parent object "ebus" with machine is safe.
+> 
+> And it might be better to explicitly set ebus as not supporting hotplug
+> (via dc->hotpluggable = false).
+> 
+> Adding a "parent" argument to the generic interface fw_cfg_init_io_nodma()
+> doesn't seem necessary at the moment, since using the default machine as
+> parent seems enough to meet all current needs in QEMU.
+> 
+> What do you think?
 
-On Tue, 2 Dec 2025, Sebastian Ott wrote:
-> This series adds a vcpu knob to request a specific PSCI version
-> from KVM via the KVM_REG_ARM_PSCI_VERSION FW register.
->
-> The use case for this is to support migration between host kernels
-> that differ in their default (a.k.a. most recent) PSCI version.
->
-> Note: in order to support PSCI v0.1 we need to drop vcpu
-> initialization with KVM_CAP_ARM_PSCI_0_2 in that case.
-> Alternatively we could limit support to versions >=0.2 .
->
-> Changes since V3 [3]:
-> * changed variable name as requested by Eric
-> * added R-B
-> Changes since V2 [2]:
-> * fix kvm_get_psci_version() when the prop is not specified - thanks Eric!
-> * removed the assertion in kvm_get_psci_version() so that this also works
->  with a future kernel/psci version
-> * added R-B
-> Changes since V1 [1]:
-> * incorporated feedback from Peter and Eric
->
-> [1] https://lore.kernel.org/kvmarm/20250911144923.24259-1-sebott@redhat.com/
-> [2] https://lore.kernel.org/kvmarm/20251030165905.73295-1-sebott@redhat.com/
-> [3] https://lore.kernel.org/kvmarm/20251112181357.38999-1-sebott@redhat.com/
->
-> Sebastian Ott (2):
->  target/arm/kvm: add constants for new PSCI versions
->  target/arm/kvm: add kvm-psci-version vcpu property
->
-> docs/system/arm/cpu-features.rst |  5 +++
-> target/arm/cpu.h                 |  6 +++
-> target/arm/kvm-consts.h          |  2 +
-> target/arm/kvm.c                 | 64 +++++++++++++++++++++++++++++++-
-> 4 files changed, 76 insertions(+), 1 deletion(-)
->
-> --
-
-Anything else that needs to be done to get this merged?
-
-Sebastian
-
+fw_cfg is per guest, and there can only be once instance of it; so IMHO it
+makes sense to use the machine as parent. I should have posted a better
+commit description upfront, sorry.
 

@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 185E0D68BE6
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Dec 2025 07:25:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FF5AD68BE6
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Dec 2025 07:28:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vW8N1-0005cR-Qk; Thu, 18 Dec 2025 02:24:19 -0500
+	id 1vW8Qq-0007N1-Lj; Thu, 18 Dec 2025 02:28:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vW8N0-0005bt-Hm; Thu, 18 Dec 2025 02:24:18 -0500
-Received: from mgamail.intel.com ([198.175.65.17])
+ id 1vW8Ql-0007Md-Gm; Thu, 18 Dec 2025 02:28:11 -0500
+Received: from mgamail.intel.com ([198.175.65.15])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vW8My-0002Ec-PG; Thu, 18 Dec 2025 02:24:18 -0500
+ id 1vW8Qh-00032K-G0; Thu, 18 Dec 2025 02:28:11 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1766042657; x=1797578657;
+ t=1766042888; x=1797578888;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=7DwI0Qs8ZZROCxgks932LOqBfATLVNdCypOv4og2tA4=;
- b=LM2DOk0UNm7pkuByOF6hohpXy4V/D18Cgi5FA2DvLDVji1xwEsmVwl9V
- MozKuJ60R0YIENc9/y/KZJ6+fRc79wCp1wE86LcI1q1WK4kDJYQMiqZNj
- QNyegzmueElo8A1WuF7cyu2aPtqCbafm7fSFDAmq3ilQPpuwFjMD2zP7y
- Tgw+pWYd8yAJZaRdAjeCYV7zP3PiL7Li6VCAn0qzXdbO7jXB0qTSbfUY7
- oYnzR6SqeTK9b3fMGW0tXxsexzCKBfVq5Oums1OJEPdJA7cDIBz7szt3S
- H6vP+ytWComBVuIg+kEsc63bOU0I7Dqa/HmvG4hr9c1jKV0Kgtygo/FWr Q==;
-X-CSE-ConnectionGUID: NbO/Ua8YS5aUt+bL2g+g0A==
-X-CSE-MsgGUID: FJ3spxspQsGfmtNTmfU2jw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11645"; a="67960035"
-X-IronPort-AV: E=Sophos;i="6.21,156,1763452800"; d="scan'208";a="67960035"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Dec 2025 23:24:14 -0800
-X-CSE-ConnectionGUID: sxbUkqeGSCCx2CAtSkrTbQ==
-X-CSE-MsgGUID: oV8BMOWXTn2tBLC3VqwuDw==
+ bh=hWNeVMjmF8yETmL2iScc7y+Xsno1MZFc4t4eczNLXrY=;
+ b=QsdMLGBdBHXysHo0X1nqIlHeNF1yV3Cx0e4xAnlXcy2MlohTRm/baMGj
+ k/CrxK2538yEOsYDHMSiVfzyaGQ8o5rWYLjtniQ4GRAaaPcYckHX65ni5
+ JxQKXELvh5JRUv3OstzVGMikuTcO6c9vyxxHNIP4pNfja/LxpTA7HhZB6
+ bQ2PpmdlBX+UQpsAys2EQ5D4g7TkUuXSeJ6m7G3GLvvxzXOf4JthBtYSC
+ lGBqBLwzm1O0zS4wWzI5Qn/3mWOvyjjC7PlSLbkjPm/y8OACBYF0cFfEt
+ B7Id0h+5rYSJlMZ3+XtS+ScIxZUpD6LIOhUfSJtSfDdD/h6cNk4hkVoWx w==;
+X-CSE-ConnectionGUID: 3C8WZCnUSsOjbEVI02Vetw==
+X-CSE-MsgGUID: zpVkJJ+BT5iVY/WPpUxDyQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11645"; a="71622090"
+X-IronPort-AV: E=Sophos;i="6.21,156,1763452800"; d="scan'208";a="71622090"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Dec 2025 23:28:04 -0800
+X-CSE-ConnectionGUID: v88tZuomTSO56nWrPX/fYg==
+X-CSE-MsgGUID: ulShamx1RQqj9xlNDkLIiQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,156,1763452800"; d="scan'208";a="202898882"
+X-IronPort-AV: E=Sophos;i="6.21,156,1763452800"; d="scan'208";a="229575059"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.39])
- by fmviesa005.fm.intel.com with ESMTP; 17 Dec 2025 23:24:06 -0800
-Date: Thu, 18 Dec 2025 15:48:55 +0800
+ by fmviesa001.fm.intel.com with ESMTP; 17 Dec 2025 23:27:55 -0800
+Date: Thu, 18 Dec 2025 15:52:45 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Igor Mammedov <imammedo@redhat.com>
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -75,16 +75,17 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
  Jiri Denemark <jdenemar@redhat.com>
-Subject: Re: [PATCH v5 07/28] tests/acpi: Update DSDT tables for pc machine
-Message-ID: <aUOx5wor+ysd2lNo@intel.com>
+Subject: Re: [PATCH v5 03/28] pc: Start with modern CPU hotplug interface by
+ default
+Message-ID: <aUOyzVHm+mt1pCfL@intel.com>
 References: <20251202162835.3227894-1-zhao1.liu@intel.com>
- <20251202162835.3227894-8-zhao1.liu@intel.com>
- <20251217151627.3ee7bf07@imammedo>
+ <20251202162835.3227894-4-zhao1.liu@intel.com>
+ <20251217143237.7829af2e@imammedo>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20251217151627.3ee7bf07@imammedo>
-Received-SPF: pass client-ip=198.175.65.17; envelope-from=zhao1.liu@intel.com;
+In-Reply-To: <20251217143237.7829af2e@imammedo>
+Received-SPF: pass client-ip=198.175.65.15; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -43
 X-Spam_score: -4.4
@@ -109,41 +110,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Dec 17, 2025 at 03:16:27PM +0100, Igor Mammedov wrote:
-> Date: Wed, 17 Dec 2025 15:16:27 +0100
+On Wed, Dec 17, 2025 at 02:32:37PM +0100, Igor Mammedov wrote:
+> Date: Wed, 17 Dec 2025 14:32:37 +0100
 > From: Igor Mammedov <imammedo@redhat.com>
-> Subject: Re: [PATCH v5 07/28] tests/acpi: Update DSDT tables for pc machine
+> Subject: Re: [PATCH v5 03/28] pc: Start with modern CPU hotplug interface
+>  by default
 > X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
 > 
-> On Wed,  3 Dec 2025 00:28:14 +0800
+> On Wed,  3 Dec 2025 00:28:10 +0800
 > Zhao Liu <zhao1.liu@intel.com> wrote:
 > 
-> > Now the legacy cpu hotplug way has gone away, and there's no _INIT
-> > method in DSDT table for modern cpu hotplug support.
+> > From: Igor Mammedov <imammedo@redhat.com>
+> ^^^
+> given you resplit original patch, it's better to replace this with you,
+> keeping my SoB is sufficient
+
+Thank you! Will re-organize these signatures
+
+> > For compatibility reasons PC/Q35 will start with legacy CPU hotplug
+> > interface by default but with new CPU hotplug AML code since 2.7
+> > machine type (in commit 679dd1a957df ("pc: use new CPU hotplug interface
+> > since 2.7 machine type")). In that way, legacy firmware that doesn't use
+> > QEMU generated ACPI tables was able to continue using legacy CPU hotplug
+> > interface.
 > > 
-> > Update DSDT tables for pc machine.
+> > While later machine types, with firmware supporting QEMU provided ACPI
+> > tables, generate new CPU hotplug AML, which will switch to new CPU
+> > hotplug interface when guest OS executes its _INI method on ACPI tables
+> > loading.
 > > 
-> > The following diff changes show only _INIT methods are removed from DSDT
-> > tables.
+> > Since 2.6 machine type is now gone, and consider that the legacy BIOS
+> > (based on QEMU ACPI prior to v2.7) should be no longer in use, previous
+> > compatibility requirements are no longer necessary. So initialize
+> > 'modern' hotplug directly from the very beginning for PC/Q35 machines
+> > with cpu_hotplug_hw_init(), and drop _INIT method.
 > > 
+> > Additionally, remove the checks and settings around cpu_hotplug_legacy
+> > in cpuhp VMState (for piix4 & ich9), to eliminate the risk of
+> > segmentation faults, as gpe_cpu no longer has the opportunity to be
+> > initialized. This is safe because all hotplug now start with the modern
+> > way, and it's impossible to switch to legacy way at runtime (even the
+> > "cpu-hotplug-legacy" properties does not allow it either).
+> > 
+> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 > 
-> below diff in commit message confuses git am,
-> I'd suggests to point out only what's deleted  
-> and skip the rest, aka.
-> removed section in x86 DSDTs:
->   -
->   -            Method (_INI, 0, Serialized)  // _INI: Initialize
->   -            {
->   -                CSEL = Zero
->   -            }
+> tested ping pong cross version (master vs master+this patch) migration
+> with 10.1 machine type, nothing is broken, hence
 > 
-> ditto for blurb in the next patch
+> Acked-by: Igor Mammedov <imammedo@redhat.com>
 
-Yes, good idea. Indeed, this nearly duplicated information makes the
-commit message quite lengthy, so I had to split it into two patches.
+Thanks for your test and review!
 
-Will merge these 2 patches (this patch and next patch).
-
-Thanks,
+Regards,
 Zhao
+
 

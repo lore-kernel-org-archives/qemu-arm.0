@@ -4,121 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1648D6ACDC
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Dec 2025 10:42:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E513D6ACE5
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Dec 2025 10:48:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vWBRb-0000ad-0t; Thu, 18 Dec 2025 05:41:15 -0500
+	id 1vWBYE-0003yM-RE; Thu, 18 Dec 2025 05:48:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan.weil@weilnetz.de>)
- id 1vWBRZ-0000Zw-DH; Thu, 18 Dec 2025 05:41:13 -0500
-Received: from mail.weilnetz.de ([37.120.169.71]
- helo=mail.v2201612906741603.powersrv.de)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <stefan.weil@weilnetz.de>)
- id 1vWBRX-0005kk-2s; Thu, 18 Dec 2025 05:41:13 -0500
-Received: from [192.168.178.140] (p5b151e44.dip0.t-ipconnect.de [91.21.30.68])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id EE619DA08A0;
- Thu, 18 Dec 2025 11:41:05 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=weilnetz.de; s=dkim1; 
- t=1766054466;
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vWBYA-0003xu-0l
+ for qemu-arm@nongnu.org; Thu, 18 Dec 2025 05:48:02 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vWBY6-0006sV-KT
+ for qemu-arm@nongnu.org; Thu, 18 Dec 2025 05:48:01 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1766054876;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=UEsENDa2yXR6gst7iHmA0ZTnbfdh6Xy12lF5tPUIDv4=;
- b=nUbTi3lxaz94VLfnhoTx6kkVeb85n/ofoZmsPtRPVjkT3bwg3UtqkNbSFqFRPmzW98CBqh
- 4uA7y3tonFregjg/RIOlzgXcYgTqgMAUNqZMUpDTbzH0OkXg7T9OTMVxwmvRlHOEk2SHpq
- XDwz3MGwPGd0cC3iWLnAcpYFWYNkKMg=
-Authentication-Results: ORIGINATING;
- auth=pass smtp.auth=stefan.weil@weilnetz.de
- smtp.mailfrom=stefan.weil@weilnetz.de
-Message-ID: <d7954d4f-beb9-462e-8b8c-9395a453336f@weilnetz.de>
-Date: Thu, 18 Dec 2025 11:41:05 +0100
+ in-reply-to:in-reply-to:references:references;
+ bh=pp9UhEKJ7Aa1makSg7Sp20zlDcbU41vV+Bf96yUQzM0=;
+ b=chaCpu8vtcqvwqgKW7z4w+5/o3/+6f79bTJ19LgDuQ0/d+jsSB4BWxsP76wTNeey1kR6Qp
+ qfiJMtTHJ8vvWRmgJu3lTtVDby+uXLI9e9W+xwyM/atOtbQw15w6yP03Qb+dIXYswriVOT
+ dCpAJ3hNSXO8nQLawX9oOme7Hcd569Y=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-133-HAPLjszfMhSSZiOafa4JaQ-1; Thu, 18 Dec 2025 05:47:55 -0500
+X-MC-Unique: HAPLjszfMhSSZiOafa4JaQ-1
+X-Mimecast-MFC-AGG-ID: HAPLjszfMhSSZiOafa4JaQ_1766054874
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-42fb1c2c403so333897f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 18 Dec 2025 02:47:55 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1766054874; x=1766659674;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+ :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=pp9UhEKJ7Aa1makSg7Sp20zlDcbU41vV+Bf96yUQzM0=;
+ b=M1L68iQVwhKoTgc3cDA1/oSfuhLwfYjBjrqbsbk0DYmld5fc/68NdtPZ7DHwiPvRUI
+ a705sVVOIQalm03SOSc4zMohJb0BmFZORRFbH7BIJLpn5wQXALT4Vi5Cgxg2UN9uu8BD
+ 7hDUp+oAt1LKiwrbrdR/JBZrPaNfRLE1No/P+VeoVxfWvMg1/esxh+8L3iRyZI+fV1aE
+ Eh+QiffVVM95jQ83s1tEaDejeGSWQpqtPpwJe04L1r5KPpwx0V/PkAs4jhZnmoPBNR7L
+ sRLFm0i1NiVCXUQ3HoZmQr3mh+AMcSNVAIOYzOpUT648nCa4f3KJn23Xh/nBvwMXTBGe
+ 0bDg==
+X-Gm-Message-State: AOJu0Yy0hqyH01LOiVjtQWW1fKd9tbQDPEjuBANUeyHk7OhHEruuHIc2
+ X71ubqPLkaTnNzdBJW88wKzMkkjQzbxJtUVxcvkjpSJ77Gf1lxO2Ak3a0apNJOlRdMuuGNwLKuX
+ T9GCjZ/Ycl/Xx1aQBqXOBL+boLPhCruzbxcCkQaYw7cyY57oIO47Hxw==
+X-Gm-Gg: AY/fxX65PMbQUZwkytPym4xGrrhvsXJrmdyHjMlM+DDX+ne5Avs3K0XF/CHXScgd4vr
+ QceMepvbzRK5yKpOVzvqHTa1rWPRet4c8TIKsDPmp66TQkWpGp0laH1oO1WPd2v1Zp+EhoZI8rr
+ VxsFCUQXJ8gcxCk5u7Z4jTz4AHmd9sSs5FKUxHHGwgsdkIivaTqm8Jd5HzXzU125y7LmXJM77Py
+ FahxtQMpZ3iDLAgtqy90UAiGVkRz2LmgGU6Ug9PjtsDpJLtE1LdYEqSWr9PzLISM4c5lQlApvOG
+ gr4ULxeSOycZ4FyBbNHKzZE1r4VStn5RT772Ms0/Q4SPIjKms0uq3GhEcaoRKHrg1jqpZ1uMYKf
+ 0rex29CrA3Rqz3cMEjLIilNhhF/oGgQtlpLQBm/3IGaP0hOEGoQ7/rxc5MQ==
+X-Received: by 2002:a05:6000:2310:b0:431:c73:48a8 with SMTP id
+ ffacd0b85a97d-4310c7349cfmr5741362f8f.29.1766054874043; 
+ Thu, 18 Dec 2025 02:47:54 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEFuywpjPrOv/NfID+cPGxbswKBxASUTRoemJwfrew+cKOcN66jSr00yj2VRvWLEsTsvRQvgw==
+X-Received: by 2002:a05:6000:2310:b0:431:c73:48a8 with SMTP id
+ ffacd0b85a97d-4310c7349cfmr5741323f8f.29.1766054873556; 
+ Thu, 18 Dec 2025 02:47:53 -0800 (PST)
+Received: from rh (p200300f6af0aa4009cef065b67c5ea88.dip0.t-ipconnect.de.
+ [2003:f6:af0a:a400:9cef:65b:67c5:ea88])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-432449987a4sm4239256f8f.31.2025.12.18.02.47.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Dec 2025 02:47:53 -0800 (PST)
+Date: Thu, 18 Dec 2025 11:47:52 +0100 (CET)
+From: Sebastian Ott <sebott@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger@redhat.com>
+cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org, 
+ kvmarm@lists.linux.dev
+Subject: Re: [PATCH v4 0/2] arm: add kvm-psci-version vcpu property
+In-Reply-To: <20251202160853.22560-1-sebott@redhat.com>
+Message-ID: <ea9d0e28-27eb-be68-7292-780c0120f1c1@redhat.com>
+References: <20251202160853.22560-1-sebott@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 00/28] WHPX support for Arm
-To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, Peter Xu <peterx@redhat.com>,
- Mads Ynddal <mads@ynddal.dk>
-References: <20251121100240.89117-1-mohamed@unpredictable.fr>
-Autocrypt: addr=stefan.weil@weilnetz.de; keydata=
- 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
-In-Reply-To: <20251121100240.89117-1-mohamed@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Rspamd-Server: v2201612906741603
-X-Rspamd-Queue-Id: EE619DA08A0
-X-Spamd-Bar: ---
-X-Spamd-Result: default: False [-3.10 / 12.00]; BAYES_HAM(-3.00)[99.99%];
- MIME_GOOD(-0.10)[text/plain]; FROM_HAS_DN(0.00)[];
- ASN(0.00)[asn:3320, ipnet:91.0.0.0/10, country:DE];
- MIME_TRACE(0.00)[0:+]; RCPT_COUNT_TWELVE(0.00)[12];
- ARC_NA(0.00)[]; RCVD_COUNT_ZERO(0.00)[0];
- MID_RHS_MATCH_FROM(0.00)[];
- DKIM_SIGNED(0.00)[weilnetz.de:s=dkim1]; TO_DN_SOME(0.00)[];
- FROM_EQ_ENVFROM(0.00)[]; TO_MATCH_ENVRCPT_ALL(0.00)[];
- DBL_BLOCKED_OPENRESOLVER(0.00)[p5b151e44.dip0.t-ipconnect.de:rdns]
-X-Rspamd-Action: no action
-Received-SPF: pass client-ip=37.120.169.71;
- envelope-from=stefan.weil@weilnetz.de; helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: gbE3gitxQBOCgXrPPRgHKogsyptdnOWoZWnHt3C9CZg_1766054874
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; format=flowed; charset=US-ASCII
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,53 +107,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Stefan Weil <stefan.weil@weilnetz.de>
-From:  Stefan Weil via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Am 21.11.25 um 11:02 schrieb Mohamed Mediouni:
-> Link to branch: https://github.com/mediouni-m/qemu whpx (tag for this submission: whpx-v11)
-> 
-> Missing features:
-> - PSCI state sync with Hyper-V for VM save/restore (which isn't supported because of the second item)
-> - Interrupt controller save-restore: As such, save/restore of VM state is currently blocked.
-> - SVE register sync: I didn't have the time to test this on pre-release hardware with SVE2 support yet.
-> 
-> Known bugs:
-> - U-Boot still doesn't work (hangs when trying to parse firmware) but EDK2 does.
-> 
-> Note:
-> 
-> "target/arm/kvm: add constants for new PSCI versions" taken from the mailing list.
-> 
-> "accel/system: Introduce hwaccel_enabled() helper" taken from the mailing list, added here
-> as part of this series to make it compilable as a whole.
-> 
-> "hw/arm: virt: add GICv2m for the case when ITS is not available" present in both the HVF
-> vGIC and this series.
-> 
-> "hw: arm: virt-acpi-build: add hack" is not proper, but it's just for keeping the current
-> state of things... What should we do for older VMs to retain the same ACPI tables? Or is
-> that not a concern?
-> 
-> And another note:
-> 
-> Seems that unlike HVF there isn't direct correspondence between WHv registers and the actual register layout,
-> so didn't do changes there to a sysreg.inc.
+Hello Peter,
 
+On Tue, 2 Dec 2025, Sebastian Ott wrote:
+> This series adds a vcpu knob to request a specific PSCI version
+> from KVM via the KVM_REG_ARM_PSCI_VERSION FW register.
+>
+> The use case for this is to support migration between host kernels
+> that differ in their default (a.k.a. most recent) PSCI version.
+>
+> Note: in order to support PSCI v0.1 we need to drop vcpu
+> initialization with KVM_CAP_ARM_PSCI_0_2 in that case.
+> Alternatively we could limit support to versions >=0.2 .
+>
+> Changes since V3 [3]:
+> * changed variable name as requested by Eric
+> * added R-B
+> Changes since V2 [2]:
+> * fix kvm_get_psci_version() when the prop is not specified - thanks Eric!
+> * removed the assertion in kvm_get_psci_version() so that this also works
+>  with a future kernel/psci version
+> * added R-B
+> Changes since V1 [1]:
+> * incorporated feedback from Peter and Eric
+>
+> [1] https://lore.kernel.org/kvmarm/20250911144923.24259-1-sebott@redhat.com/
+> [2] https://lore.kernel.org/kvmarm/20251030165905.73295-1-sebott@redhat.com/
+> [3] https://lore.kernel.org/kvmarm/20251112181357.38999-1-sebott@redhat.com/
+>
+> Sebastian Ott (2):
+>  target/arm/kvm: add constants for new PSCI versions
+>  target/arm/kvm: add kvm-psci-version vcpu property
+>
+> docs/system/arm/cpu-features.rst |  5 +++
+> target/arm/cpu.h                 |  6 +++
+> target/arm/kvm-consts.h          |  2 +
+> target/arm/kvm.c                 | 64 +++++++++++++++++++++++++++++++-
+> 4 files changed, 76 insertions(+), 1 deletion(-)
+>
+> --
 
-Hello,
+Anything else that needs to be done to get this merged?
 
-meanwhile a user of my QEMU installers has asked for ARM binaries with 
-WHPX support.
-
-https://qemu.weilnetz.de/aarch64/2025/qemu-arm-setup-20251218.exe was 
-built with the patches from this series, but seems to fail. The user 
-reported that running a blank -M virt VM caused windows to crash with 
-CLOCK_WATCHDOG_TIMEOUT (0x101).
-
-Regards
-Stefan Weil
+Sebastian
 
 

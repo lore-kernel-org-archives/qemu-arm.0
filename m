@@ -4,112 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20D41D6D22E
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Dec 2025 15:13:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9169D6E2AC
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Dec 2025 15:50:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vWFge-0003yJ-NP; Thu, 18 Dec 2025 10:13:04 -0500
+	id 1vWGFy-0002kp-L8; Thu, 18 Dec 2025 10:49:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vWFgd-0003xk-9j
- for qemu-arm@nongnu.org; Thu, 18 Dec 2025 10:13:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vWGFt-0002iX-OP
+ for qemu-arm@nongnu.org; Thu, 18 Dec 2025 10:49:30 -0500
+Received: from 8.mo552.mail-out.ovh.net ([46.105.37.156])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1vWFgb-00005j-Hf
- for qemu-arm@nongnu.org; Thu, 18 Dec 2025 10:13:02 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1766070781;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=VBKgpQWZHs8lJTk2T5fT6nKl/dnez8JVqP54tztjnZI=;
- b=R7b8gZFfWjt41nQVC2K/5XkK18We2Z5fCw+YjGMPBAO0bSaBr8xj8SyHvjaK58qWDeOExm
- fG+cK7QB+02hrhfV08bMeYv6nCGpSIVMLMYkFFBjR7WoDJtGL8ZyyUwpU586uEsSW2pl3Z
- a3NOD4B0QJj0ENdhfnwp4GiUdxzJToU=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-228-LxYnLBlvP9ywQ4I3D9FNHA-1; Thu, 18 Dec 2025 10:12:57 -0500
-X-MC-Unique: LxYnLBlvP9ywQ4I3D9FNHA-1
-X-Mimecast-MFC-AGG-ID: LxYnLBlvP9ywQ4I3D9FNHA_1766070776
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-477964c22e0so6066365e9.0
- for <qemu-arm@nongnu.org>; Thu, 18 Dec 2025 07:12:57 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766070776; x=1766675576;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=JU0yBhjfPZRL3g4n1uKEh6x3PEVCCoHtJzUO5mlmqTw=;
- b=uvtHk7hcz4a1IVDMywQA8NIh/LCugIKiaRIvtvSv7RXnbMT74/+CjgKDfJ1o7hTmpD
- xOdbc6IYc8TWv9UJ0dVoxjCTM1DwYDuINlzRVy6H+KKxB7jhMnQ9JMOTqw+eQQuSIe9Y
- GN1r99QuF0zBVv35HRW1LrfzgQFtY7Y0E8HLsvtS3nZnINdPZ2moUCrQCwi+D8UXItqA
- 7i4AZBnqJER539FXypPc9ajkOkqbX/xmlqALOzmZMyFqCse0g5du7Lzz+zVteuAXazCP
- Pr+DnpYsPI5wIHoeH9G+Enfuzf/kdzFhiAW1Co4m//3hiVbMb9kEXqnjQnAwUqZq8wRs
- ABBQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW6uh5dL/m1EQulT03SXi2guPbkZJBBHbZ61RMmKE2N7wSPxvg8kxZGRk0KjTAS55jIADqMTuVC1Q==@nongnu.org
-X-Gm-Message-State: AOJu0YxQOG1SyGTYxNpB1/IPMT7MD73309mBNCbnUQDTeFPVJXQyyFom
- qn2nKy/M5SE6q9JXqHEieSTVF1ytXEFYUhpe5so+A4kf2mXr/ZdhpyJhS8re/YTVrGVcDLBfehh
- 6NGDZe2rvxZxENnfye4f3rZ9zrLs0dzwV9pk9Jx2JXrtCcIvrgPYRig==
-X-Gm-Gg: AY/fxX5F6f3J3DXlPtWsdm9LjNRokzP5ta34et6iCewGMnr44dtCTiD0/H4PyPXmG7U
- 1Of8TOfnWQj1ion/sF2bInQbB41trnehfDRr631gdYIKJg2xXh3hSY3vgSYbG+peJupd0Uh4HHI
- bRY+6C9HU0lD6u/nYZkpttuaP0aJiXGBVrJsAqTjjrab8BGfNGBpx9hLGsbuihIRv9dx7PDVPDn
- fX3cH6kAajUqBCZEjLov6HYGouoMy44KxWo2Xa2bqoOHE3vC9Dee3TyXCHss2iypBg1jm/0LXuY
- t+mFi4AuUj79yVK7OWpByIwh+tHTxJPqy8Oyp0AlRhU0p4rZYKyqDMyFg9/+S8sZeLZpEA==
-X-Received: by 2002:a05:600c:4695:b0:47b:e417:9056 with SMTP id
- 5b1f17b1804b1-47be41791b6mr26934165e9.10.1766070776274; 
- Thu, 18 Dec 2025 07:12:56 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IESloWnPFLLwuzbJocWYliz+xo+3vp7nj6GLpeBMnKS4yh4sbWeZtNaIM14JVMTg5+JUYxJmQ==
-X-Received: by 2002:a05:600c:4695:b0:47b:e417:9056 with SMTP id
- 5b1f17b1804b1-47be41791b6mr26933785e9.10.1766070775841; 
- Thu, 18 Dec 2025 07:12:55 -0800 (PST)
-Received: from imammedo ([213.175.46.86]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47be274e407sm47727775e9.8.2025.12.18.07.12.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Dec 2025 07:12:55 -0800 (PST)
-Date: Thu, 18 Dec 2025 16:12:53 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Li Chen <me@linux.beauty>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, "Peter Maydell"
- <peter.maydell@linaro.org>, "Shannon Zhao" <shannon.zhaosl@gmail.com>, "Ani
- Sinha" <anisinha@redhat.com>, "Eduardo Habkost" <eduardo@habkost.net>,
- "Marcel Apfelbaum" <marcel.apfelbaum@gmail.com>, "Philippe =?UTF-8?B?TWF0?=
- =?UTF-8?B?aGlldS1EYXVkw6k=?=" <philmd@linaro.org>, "Yanan Wang"
- <wangyanan55@huawei.com>, "Zhao Liu" <zhao1.liu@intel.com>, "Song Gao"
- <gaosong@loongson.cn>, "Jiaxun Yang" <jiaxun.yang@flygoat.com>, "Sunil V L"
- <sunilvl@ventanamicro.com>, "Palmer Dabbelt" <palmer@dabbelt.com>,
- "Alistair Francis" <alistair.francis@wdc.com>, "Weiwei Li"
- <liwei1518@gmail.com>, "qemu-arm" <qemu-arm@nongnu.org>, "qemu-devel"
- <qemu-devel@nongnu.org>, "qemu-riscv" <qemu-riscv@nongnu.org>
-Subject: Re: [PATCH v6] acpi/virt: suppress UART device & SPCR when guest
- has no serial hardware
-Message-ID: <20251218161253.7f13038f@imammedo>
-In-Reply-To: <19b104a617e.133b3feb891309.6986511857690603518@linux.beauty>
-References: <20251211102025.873506-1-me@linux.beauty>
- <20251211080811-mutt-send-email-mst@kernel.org>
- <19b104a617e.133b3feb891309.6986511857690603518@linux.beauty>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vWGFq-0005pY-TU
+ for qemu-arm@nongnu.org; Thu, 18 Dec 2025 10:49:29 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.37.44])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4dXFTV0M2Wz5yRb;
+ Thu, 18 Dec 2025 15:49:18 +0000 (UTC)
+Received: from kaod.org (37.59.142.112) by DAG3EX1.mxp5.local (172.16.2.21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Thu, 18 Dec
+ 2025 16:49:17 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-112S006953bb45c-39ee-4bc3-994c-7d64fa0d7615,
+ 34212891AAEE040389AFAF6F36D407BF0C31F3D8) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <aee35a8c-10d0-4ba7-b036-83f1ce7d8262@kaod.org>
+Date: Thu, 18 Dec 2025 16:49:16 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: QNVfP2Pm84hrq3IwI9kQfyQ-2cXLLViWJOTl7g6Omnw_1766070776
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/11] hw/arm/aspeed: catalina: add eeproms images
+To: Patrick Williams <patrick@stwcx.xyz>, <qemu-devel@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, <qemu-arm@nongnu.org>
+References: <20251217-catalina-eeproms-v1-0-dc7b276efd57@stwcx.xyz>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20251217-catalina-eeproms-v1-0-dc7b276efd57@stwcx.xyz>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.112]
+X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG3EX1.mxp5.local
+ (172.16.2.21)
+X-Ovh-Tracer-GUID: 46690f1c-9504-4abc-948f-587d22575b61
+X-Ovh-Tracer-Id: 2485142572179884847
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEUlDROTSC9cnoGqY2ZdI5NZuFtSCHCUApPFCCVIlDJCADGS9MPc09r40wmY5mxfXK+sJCOGH9dddTwHWPIhfsTsM66wrGRext+H3tXMGwcpVGBIhh0mOtVxEdhouEbrtdoqlZx72ECLdprLeCqhNBRZHXTBOlNacBtinCUSA+ulgWMgsPp6jWQFz3s6RiNCJ7iLVJQYyDBQZvSuJZQWamf+0JOoHruMUpmthtd8HtqNprfDEcFVxWU+tm7T8xa2BDlcJ/s8sPDbT2R+jJNMwBNB8KVWfr/C2yKzfFdpUU3CP4RFOIbd1211wIFpKHLwVqmOx5Z85aqrVrcfEM5X3l4BsHmBvpwfDepYR8iCxFUFy+4jInf6cZtVe0m0Ng+jHoOtVdUz7BkRkYQ58BaFkeFX7YK1W3nLv19Z6iCzKgaS81/Fa3+RL0LbbQPX2L57G7OY/F+tSbutG2feNDoK0aQaKQ/9EedmCcuPMUvqWNKy1dfYA1pUmBmdNoG+adaRdEI3/W6bJJuOLFR+2ZbGIp+2hnfxHCT/SN0U2PxZKoi1ko3XqNz2b2qYKgU27SgW4K/Kk7+782NMO8DjST3Dh37AESBFrn6tMh8cfETne/wv8mNYI43foszoObrv0M3IOhQMZE+J+DgdRIrXkppZE4RO53r3BQ3IOHuOaGim8OApA
+DKIM-Signature: a=rsa-sha256; bh=dutOzo4efz6vPri/QDtT2QxA7LGa9yFJ1hJJH8PA3ck=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1766072960; v=1;
+ b=TlaiVqCif3ZRwBN1JOIn7T5TJSvzyt/bHS4x3L+4tOULOBN98Esj58ILIa7lvLQCmhrJgK7D
+ LrwdoQ+ca0YXNryE/ON4Cf5zlmk8kP7Z7dFy0Px7eC42ALSwXvqKSCAmQaZiITp+zcpkhaaMRQu
+ 1CJSQinsgq+m3Q/d5hMP0R/tHVQqGd/kU6JhmFrnP5Z+1wJS9dNWXIIKLFKaH4zW916vqxRAdba
+ rXngY6ZtFYbLK+n59C0OfkJp6S4OFeELnHtM/dDzpYSb8+Vglgq2a4nnk2EbrdKlqIe6vekWw1L
+ GphAlS5ZCrBFSyjDSRX1ys67EP60Mkumxy05ZuJL2aa3g==
+Received-SPF: pass client-ip=46.105.37.156; envelope-from=clg@kaod.org;
+ helo=8.mo552.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,107 +128,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 12 Dec 2025 10:01:08 +0800
-Li Chen <me@linux.beauty> wrote:
+On 12/17/25 20:11, Patrick Williams wrote:
+> Since Catalina is a server, made up of a number of FRUs, there are
+> a number of EEPROMs that would contain IPMI-format FRU data.  On
+> OpenBMC, these EEPROMs are parsed by `entity-manager` to determine
+> which devices are physically present in the server (and which variants
+> of those devices).
+> 
+> Add EEPROM images for every FRU in the Catalina server.  There is a
+> utility `frugen` which can take a JSON representation of the IPMI
+> fields and generate a binary image from that.  Use this to create
+> sanitized EEPROM images for every FRU and add the rom-init calls to
+> the appropriate locations in the Catalina model.  I left the JSON
+> source as comments along-side each EEPROM image so they can be updated
+> or recreated as necessary.
+> 
+> Tested by loading the latest version of OpenBMC's Catalina image and
+> confirming the FRUs are detected appropriately by entity-manager.
+> 
+> ```
+> root@catalina:~# busctl tree xyz.openbmc_project.EntityManager | grep "board/[^/]*$"
+>            |- /xyz/openbmc_project/inventory/system/board/BMC_Storage_Module
+>            |- /xyz/openbmc_project/inventory/system/board/Catalina_FIO
+>            |- /xyz/openbmc_project/inventory/system/board/Catalina_HDD_Carrier
+>            |- /xyz/openbmc_project/inventory/system/board/Catalina_HDD_NVMe
+>            |- /xyz/openbmc_project/inventory/system/board/Catalina_OSFP_Carrier
+>            |- /xyz/openbmc_project/inventory/system/board/Catalina_PDB
+>            |- /xyz/openbmc_project/inventory/system/board/Catalina_SCM
+>            |- /xyz/openbmc_project/inventory/system/board/NVIDIA_Cable_Cartridge_0
+>            |- /xyz/openbmc_project/inventory/system/board/NVIDIA_Cable_Cartridge_2
+>            |- /xyz/openbmc_project/inventory/system/board/NVIDIA_GB200_0
+>            |- /xyz/openbmc_project/inventory/system/board/NVIDIA_GB200_1
+>            |- /xyz/openbmc_project/inventory/system/board/NVIDIA_GB200_IO_Board_29
+>            |- /xyz/openbmc_project/inventory/system/board/NVIDIA_GB200_IO_Board_41
+>            |- /xyz/openbmc_project/inventory/system/board/NVIDIA_HMC
+>            |- /xyz/openbmc_project/inventory/system/board/OCP_CX7_NIC_10
+>            `- /xyz/openbmc_project/inventory/system/board/OCP_CX7_NIC_15
+> ```
+> 
+> This result matches the expected results when running the image on a
+> physical Catalina device.
+> 
+> Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
+> ---
+> Patrick Williams (11):
+>        hw/arm/aspeed: catalina: add BSM FRU EEPROM
+>        hw/arm/aspeed: catalina: add DC-SCM FRU EEPROM
+>        hw/arm/aspeed: catalina: add PDB FRU EEPROM
+>        hw/arm/aspeed: catalina: add OSFP FRU EEPROM
+>        hw/arm/aspeed: catalina: add FIO FRU EEPROM
+>        hw/arm/aspeed: catalina: add HDD FRU EEPROM
+>        hw/arm/aspeed: catalina: add GB200 FRU EEPROM
+>        hw/arm/aspeed: catalina: add GB200-IO FRU EEPROM
+>        hw/arm/aspeed: catalina: add HMC FRU EEPROM
+>        hw/arm/aspeed: catalina: add NIC FRU EEPROM
+>        hw/arm/aspeed: catalina: add Cable Cartridge FRU EEPROM
+> 
+>   hw/arm/aspeed_ast2600_catalina.c | 473 +++++++++++++++++++++++++++++++++++++--
+>   1 file changed, 457 insertions(+), 16 deletions(-)
+> ---
+> base-commit: 7154e4df40468012fccb6687ecd2b288c56a4a2d
+> change-id: 20251217-catalina-eeproms-255d80036991
+> 
+> Best regards,
 
-> Hi Michael,
->=20
->  ---- On Thu, 11 Dec 2025 21:10:18 +0800  Michael S. Tsirkin <mst@redhat.=
-com> wrote ---=20
->  > On Thu, Dec 11, 2025 at 06:20:25PM +0800, Li Chen wrote: =20
->  > > From: Li Chen <chenl311@chinatelecom.cn>
->  > >=20
->  > > virt machines always instantiate a PL011/16550 UART at slot 0 and de=
-scribe
->  > > it in ACPI (DSDT and optional SPCR table). When the command line dis=
-ables
->  > > the serial backend (e.g. "-serial none"), the guest still sees the U=
-ART as
->  > > a preferred console even though it is not usable.
->  > >=20
->  > > Teach the virt ACPI code to omit the UART device and SPCR when there=
- is no
->  > > serial backend attached. This matches the hardware that the guest ca=
-n
->  > > actually use and avoids confusing firmware or OS code that relies on=
- SPCR.
->  > >=20
->  > > The bios-tables-test qtests rely on an ACPI UART node and SPCR entry=
- for
->  > > UEFI-based virt machines. To keep those tests working we create a UA=
-RT
->  > > with a "null" chardev backend instead. This preserves the ACPI table=
-s
->  > > while discarding the firmware's serial output so it does not corrupt=
- the
->  > > TAP stdout stream.
->  > >=20
->  > > Suggested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->  > > Signed-off-by: Li Chen <chenl311@chinatelecom.cn>
->  > > Reviewed-by: Sunil V L <sunilvl@ventanamicro.com> =20
->  >=20
->  > This bothers me:
->  > won't this mean number of serial devices changes silently?  So for
->  > example, if you install a guest, see that 1st serial device is broken,
->  > configure it with 2nd one as a work around, now with your change there
->  > is no second one so guest will be broken?
->  >=20
->  >=20
->  > I seems safer to have compat machinery around and avoid
->  > changing this for old machine types. =20
-> =20
-> Thanks for pointing this out, you=E2=80=99re right that changing the numb=
-er of serial=20
-> devices that the guest sees is risky for existing machine types.
->=20
-> For v7 I=E2=80=99m planning to take a more conservative approach and only=
- gate SPCR
-> on the presence of a backend for the primary UART, while  keeping the ACP=
-I
-> UART devices in DSDT unchanged.=20
-> Concretely:
-> - virt ACPI DSDT will continue to unconditionally describe the UART(s) as=
- before,
->    so the guest-visible UART topology doesn=E2=80=99t change for existing=
- virt-* machines.
-> - We only call spcr_setup() when there is a backend attached to UART0 (e.=
-g. serial_hd(0) !=3D NULL),
->   so SPCR doesn=E2=80=99t point at a completely unusable console when the=
- user passes -serial none.
->=20
-> In particular, for a command line like -serial none -serial pty, this mea=
-ns SPCR would not be present
-> (rather than silently switching it to UART1/pty). My reasoning is that, f=
-or existing virt machines,
-> SPCR is meant to describe =E2=80=9Cthe board=E2=80=99s primary console (U=
-ART0)=E2=80=9D, not =E2=80=9Cthe first UART that happens
-> to have a host backend=E2=80=9D, and changing that interpretation feels l=
-ike it would need compat machinery
-> and a new machine type.
->=20
-> The qtests already force -serial null for the UEFI-based virt tests, so t=
-hey will still exercise the SPCR path.
->=20
-> Would this behaviour be acceptable for you, or would you prefer that I go=
- further and also add a compat
-> flag/new machine type where SPCR can follow =E2=80=9Cthe first UART with =
-a backend=E2=80=9D while old virt-* machines
-> keep the current UART/SPCR semantics?
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
+Thanks,
 
-all described above looks complicated.
-In ACPI tables we usually try to avoid compat settings, and do them only if=
- we have to.
-
-So question is how guest enumerates serial ports when
-   '-nodefaults' is used _and_ there is a second serial port configured (is=
- it even possible?)
-check it with and without you patch please, to see what difference the patc=
-h makes.
-
->=20
-> Regards,
-> Li=E2=80=8B
->=20
-
+C.
 

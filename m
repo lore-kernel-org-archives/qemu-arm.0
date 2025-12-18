@@ -4,97 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FF5AD68BE6
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Dec 2025 07:28:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 447CFD68BE8
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Dec 2025 07:57:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vW8Qq-0007N1-Lj; Thu, 18 Dec 2025 02:28:16 -0500
+	id 1vW8sc-00080T-3R; Thu, 18 Dec 2025 02:56:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vW8Ql-0007Md-Gm; Thu, 18 Dec 2025 02:28:11 -0500
-Received: from mgamail.intel.com ([198.175.65.15])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vW8Qh-00032K-G0; Thu, 18 Dec 2025 02:28:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1766042888; x=1797578888;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=hWNeVMjmF8yETmL2iScc7y+Xsno1MZFc4t4eczNLXrY=;
- b=QsdMLGBdBHXysHo0X1nqIlHeNF1yV3Cx0e4xAnlXcy2MlohTRm/baMGj
- k/CrxK2538yEOsYDHMSiVfzyaGQ8o5rWYLjtniQ4GRAaaPcYckHX65ni5
- JxQKXELvh5JRUv3OstzVGMikuTcO6c9vyxxHNIP4pNfja/LxpTA7HhZB6
- bQ2PpmdlBX+UQpsAys2EQ5D4g7TkUuXSeJ6m7G3GLvvxzXOf4JthBtYSC
- lGBqBLwzm1O0zS4wWzI5Qn/3mWOvyjjC7PlSLbkjPm/y8OACBYF0cFfEt
- B7Id0h+5rYSJlMZ3+XtS+ScIxZUpD6LIOhUfSJtSfDdD/h6cNk4hkVoWx w==;
-X-CSE-ConnectionGUID: 3C8WZCnUSsOjbEVI02Vetw==
-X-CSE-MsgGUID: zpVkJJ+BT5iVY/WPpUxDyQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11645"; a="71622090"
-X-IronPort-AV: E=Sophos;i="6.21,156,1763452800"; d="scan'208";a="71622090"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Dec 2025 23:28:04 -0800
-X-CSE-ConnectionGUID: v88tZuomTSO56nWrPX/fYg==
-X-CSE-MsgGUID: ulShamx1RQqj9xlNDkLIiQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,156,1763452800"; d="scan'208";a="229575059"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by fmviesa001.fm.intel.com with ESMTP; 17 Dec 2025 23:27:55 -0800
-Date: Thu, 18 Dec 2025 15:52:45 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- devel@lists.libvirt.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org,
- qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Sergio Lopez <slp@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Laurent Vivier <lvivier@redhat.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Alistair Francis <alistair.francis@wdc.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
- Xiaoyao Li <xiaoyao.li@intel.com>,
- Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- =?iso-8859-1?Q?Cl=E9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Huacai Chen <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
- Jiri Denemark <jdenemar@redhat.com>
-Subject: Re: [PATCH v5 03/28] pc: Start with modern CPU hotplug interface by
- default
-Message-ID: <aUOyzVHm+mt1pCfL@intel.com>
-References: <20251202162835.3227894-1-zhao1.liu@intel.com>
- <20251202162835.3227894-4-zhao1.liu@intel.com>
- <20251217143237.7829af2e@imammedo>
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1vW8sX-0007wQ-EL; Thu, 18 Dec 2025 02:56:53 -0500
+Received: from mail.weilnetz.de ([37.120.169.71]
+ helo=mail.v2201612906741603.powersrv.de)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1vW8sV-000724-GW; Thu, 18 Dec 2025 02:56:53 -0500
+Received: from [192.168.178.140] (p5b151e44.dip0.t-ipconnect.de [91.21.30.68])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id A6A81DA045A;
+ Thu, 18 Dec 2025 08:56:41 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=weilnetz.de; s=dkim1; 
+ t=1766044602;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=WLVjI7qNBJqOzX4ulp3bRld7vOrqA5CUnNqo3FO1yIQ=;
+ b=LaQhU/4G179ZMeLkX5PItHCzuP92WG2S1AWCWq5rLiFXm97hebclt9/KrJyuMB5/378Jb/
+ dmP72erHVGQSbtP0P9arsczWRszEGSlXChvHKGJJ+94sg0ATvYG205+bI2KWJgp3VAKmtW
+ XEfzfzTaEwxAGBEiwKUMmTiYVQtynys=
+Authentication-Results: ORIGINATING;
+ auth=pass smtp.auth=stefan.weil@weilnetz.de smtp.mailfrom=sw@weilnetz.de
+Message-ID: <21c88d7a-10ca-472f-bea0-a6c9ab74f459@weilnetz.de>
+Date: Thu, 18 Dec 2025 08:56:40 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20251217143237.7829af2e@imammedo>
-Received-SPF: pass client-ip=198.175.65.15; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/2] target/arm/kvm: add constants for new PSCI versions
+To: Sebastian Ott <sebott@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, Eric Auger <eric.auger@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
+ kvmarm@lists.linux.dev
+References: <20251202160853.22560-1-sebott@redhat.com>
+ <20251202160853.22560-2-sebott@redhat.com>
+Autocrypt: addr=sw@weilnetz.de; keydata=
+ xsFNBFXCNBcBEACUbHx9FWsS1ATrhLGAS+Nc6bFQHPR3CpUQ4v++RiMg25bF6Ov1RsYEcovI
+ 0DXGh6Ma+l6dRlvUXV8tMvNwqghDUr5KY7LN6tgcFKjBbXdv9VlKiWiMLKBrARcFKxx1sfLp
+ 1P8RiaUdKsgy2Hq4T1PPy9ENTL1/FBG6P/Rw0rO9zOB+yNHcRJ5diDnERbi3x7qoaPUra2Ig
+ lmQk/uxXKC0aNIhpNLNiQ+YpwTUN9q3eG6B9/3CG8RGtFzH9vDPlLvtUX+01a2gCifTi3iH3
+ 8EEK8ACXIRs2dszlxMneKTvflXfvyCM1O+59wGcICQxltxLLhHSCJjOQyWdR2JUtn//XjVWM
+ mf6bBT7Imx3DhhfFRlA+/Lw9Zah66DJrZgiV0LqoN/2f031TzD3FCBiGQEMC072MvSQ1DdJN
+ OiRE1iWO0teLOxaFSbvJS9ij8CFSQQTnSVZs0YXGBal+1kMeaKo9sO4tkaAR2190IlMNanig
+ CTJfeFqxzZkoki378grSHdGUTGKfwNPflTOA6Pw6xuUcxW55LB3lBsPqb0289P8o9dTR7582
+ e6XTkpzqe/z/fYmfI9YXIjGY8WBMRbsuQA30JLq1/n/zwxAOr2P9y4nqTMMgFOtQS8w4G46K
+ UMY/5IspZp2VnPwvazUo2zpYiUSLo1hFHx2jrePYNu2KLROXpwARAQABzRxTdGVmYW4gV2Vp
+ bCA8c3dAd2VpbG5ldHouZGU+wsF6BBMBCAAkAhsDBQsJCAcDBRUKCQgLBRYCAwEAAh4BAheA
+ BQJV04LlAhkBAAoJEOCMIdVndFCtP5QP/1U8yWZzHeHufRFxtMsK1PERiLuKyGRH2oE5NWVc
+ 5QQHZZ2ypXu53o2ZbZxmdy8+4lXiPWWwYVqto3V7bPaMTvQhIT0I3c3ZEZsvwyEEE6QdRs52
+ haZwX+TzNMQ5mOePdM2m4WqO0oU7YHU2WFf54MBmAGtj3FAQEAlZAaMiJs2aApw/4t35ICL1
+ Sb0FY8d8lKBbIFOAaFfrlQTC3y8eMTk1QxOVtdXpRrOl6OE0alWn97NRqeZlBm0P+BEvdgTP
+ Qt+9rxbe4ulgKME2LkbDhLqf0m2+xMXb7T4LiHbQYnnWKGZyogpFaw3PuRVd9m8uxx1F8b4U
+ jNzI9x2Ez5LDv8NHpSY0LGwvVmkgELYbcbyiftbuw81gJuM7k4IW5GR85kTH6y/Sq6JNaI4p
+ 909IK8X4eeoCkAqEVmDOo1D5DytgxIV/PErrin82OIDXLENzOWfPPtUTO+H7qUe80NS2HLPG
+ IveYSjuYKBB6n2JhPkUD7xxMEdh5Ukqi1WIBSV4Tuk3/ubHajP5bqg4QP3Wo1AyICX09A1QQ
+ DajtMkyxXhYxr826EGcRD2WUUprGNYwaks4YiPuvOAJxSYprKWT6UDHzE3S8u4uZZm9H8cyg
+ Fa3pysJwTmbmrBAP1lMolwXHky60dPnKPmFyArGC0utAH7QELXzBybnE/vSNttNT1D+HzsFN
+ BFXcnj0BEAC32cCu2MWeqZEcvShjkoKsXk42mHrGbeuh/viVn8JOQbTO706GZtazoww2weAz
+ uVEYhwqi7u9RATz9MReHf7R5F0KIRhc/2NhNNeixT/7L+E5jffH1LD+0IQdeLPoz6unvg7U/
+ 7OpdKWbHzPM3Lfd0N1dRP5sXULpjtYQKEgiOU58sc4F5rM10KoPFEMz8Ip4j9RbH/CbTPUM0
+ S4PxytRciB3Fjd0ECbVsErTjX7cZc/yBgs3ip7BPVWgbflhrc+utML/MwC6ZqCOIXf/U0ICY
+ fp5I7PDbUSWgMFHvorWegMYJ9EzZ2nTvytL8E75C2U3j5RZAuQH5ysfGpdaTS76CRrYDtkEc
+ ViTL+hRUgrX9qvqzCdNEePbQZr6u6TNx3FBEnaTAZ5GuosfUk7ynvam2+zAzLNU+GTywTZL2
+ WU+tvOePp9z1/mbLnH2LkWHgy3bPu77AFJ1yTbBXl5OEQ/PtTOJeC1urvgeNru26hDFSFyk4
+ gFcqXxswu2PGU7tWYffXZXN+IFipCS718eDcT8eL66ifZ8lqJ8Vu5WJmp9mr1spP9RYbT7Rw
+ pzZ3iiz7e7AZyOtpSMIVJeYZTbtiqJbyN4zukhrTdCgCFYgf0CkA5UGpYXp2sXPr+gVxKX2p
+ tj/gid4n95vR7KMeWV6DJ0YS4hKGtdhkuJCpJfjKP/e8TwARAQABwsFfBBgBCAAJBQJV3J49
+ AhsMAAoJEOCMIdVndFCtYRoQAJOu3RZTEvUBPoFqsnd849VmOKKg77cs+HD3xyLtp95JwQrz
+ hwa/4ouDFrC86jt1vARfpVx5C8nQtNnWhg+5h5kyOIbtB1/27CCTdXAd/hL2k3GyrJXEc+i0
+ 31E9bCqgf2KGY7+aXu4LeAfRIWJT9FGVzdz1f+77pJuRIRRmtSs8VAond2l+OcDdEI9Mjd9M
+ qvyPJwDkDkDvsNptrcv4xeNzvX+2foxkJmYru6dJ+leritsasiAxacUowGB5E41RZEUg6bmV
+ F4SMseIAEKWLy3hPGvYBOzADhq2YLgnM/wn9Y9Z7bEMy+w5e75saBbkFI7TncxDPUnIl/UTE
+ KU1ORi5WWbvXYkUTtfNzZyD0/v3oojcIoZvK1OlpOtXHdlqOodjXF9nLe8eiVHyl8ZnzFxhe
+ EW2QPvX8FLKqmSs9W9saQtk6bhv9LNYIYINjH3EEH/+bbmV+ln4O7a73Wm8L3tnpC3LmdGn2
+ Rm8B6J2ZK6ci1TRDiMpCUWefpnIuE+TibC5VJR5zx0Yh11rxxBFob8mWktRmLZyeEoCcZoBo
+ sbJxD80QxWO03zPpkcJ7d4BrVsQ/BJkBtEe4Jn4iqHqA/OcrzwuEZSv+/MdgoqfblBZhDusm
+ LYfVy7wFDeVClG6eQIiK2EnmDChLRkVIQzbkV0iG+NJVVJHLGK7/OsO47+zq
+In-Reply-To: <20251202160853.22560-2-sebott@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Rspamd-Server: v2201612906741603
+X-Rspamd-Queue-Id: A6A81DA045A
+X-Spamd-Bar: ---
+X-Spamd-Result: default: False [-3.10 / 12.00]; BAYES_HAM(-3.00)[100.00%];
+ MIME_GOOD(-0.10)[text/plain]; RCVD_COUNT_ZERO(0.00)[0];
+ FROM_HAS_DN(0.00)[]; ARC_NA(0.00)[]; MIME_TRACE(0.00)[0:+];
+ RCPT_COUNT_SEVEN(0.00)[8]; MID_RHS_MATCH_FROM(0.00)[];
+ DKIM_SIGNED(0.00)[weilnetz.de:s=dkim1]; TO_DN_SOME(0.00)[];
+ FROM_EQ_ENVFROM(0.00)[]; TO_MATCH_ENVRCPT_ALL(0.00)[];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[p5b151e44.dip0.t-ipconnect.de:rdns]
+X-Rspamd-Action: no action
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,62 +126,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Stefan Weil <sw@weilnetz.de>
+From:  Stefan Weil via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Dec 17, 2025 at 02:32:37PM +0100, Igor Mammedov wrote:
-> Date: Wed, 17 Dec 2025 14:32:37 +0100
-> From: Igor Mammedov <imammedo@redhat.com>
-> Subject: Re: [PATCH v5 03/28] pc: Start with modern CPU hotplug interface
->  by default
-> X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
+Am 02.12.25 um 17:08 schrieb Sebastian Ott:
+> Add constants for PSCI version 1_2 and 1_3.
 > 
-> On Wed,  3 Dec 2025 00:28:10 +0800
-> Zhao Liu <zhao1.liu@intel.com> wrote:
+> Signed-off-by: Sebastian Ott <sebott@redhat.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>   target/arm/kvm-consts.h | 2 ++
+>   1 file changed, 2 insertions(+)
 > 
-> > From: Igor Mammedov <imammedo@redhat.com>
-> ^^^
-> given you resplit original patch, it's better to replace this with you,
-> keeping my SoB is sufficient
+> diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
+> index 54ae5da7ce..9fba3e886d 100644
+> --- a/target/arm/kvm-consts.h
+> +++ b/target/arm/kvm-consts.h
+> @@ -97,6 +97,8 @@ MISMATCH_CHECK(QEMU_PSCI_1_0_FN_PSCI_FEATURES, PSCI_1_0_FN_PSCI_FEATURES);
+>   #define QEMU_PSCI_VERSION_0_2                     0x00002
+>   #define QEMU_PSCI_VERSION_1_0                     0x10000
+>   #define QEMU_PSCI_VERSION_1_1                     0x10001
+> +#define QEMU_PSCI_VERSION_1_2                     0x10002
+> +#define QEMU_PSCI_VERSION_1_3                     0x10003
+>   
+>   MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
+>   /* We don't bother to check every possible version value */
 
-Thank you! Will re-organize these signatures
-
-> > For compatibility reasons PC/Q35 will start with legacy CPU hotplug
-> > interface by default but with new CPU hotplug AML code since 2.7
-> > machine type (in commit 679dd1a957df ("pc: use new CPU hotplug interface
-> > since 2.7 machine type")). In that way, legacy firmware that doesn't use
-> > QEMU generated ACPI tables was able to continue using legacy CPU hotplug
-> > interface.
-> > 
-> > While later machine types, with firmware supporting QEMU provided ACPI
-> > tables, generate new CPU hotplug AML, which will switch to new CPU
-> > hotplug interface when guest OS executes its _INI method on ACPI tables
-> > loading.
-> > 
-> > Since 2.6 machine type is now gone, and consider that the legacy BIOS
-> > (based on QEMU ACPI prior to v2.7) should be no longer in use, previous
-> > compatibility requirements are no longer necessary. So initialize
-> > 'modern' hotplug directly from the very beginning for PC/Q35 machines
-> > with cpu_hotplug_hw_init(), and drop _INIT method.
-> > 
-> > Additionally, remove the checks and settings around cpu_hotplug_legacy
-> > in cpuhp VMState (for piix4 & ich9), to eliminate the risk of
-> > segmentation faults, as gpe_cpu no longer has the opportunity to be
-> > initialized. This is safe because all hotplug now start with the modern
-> > way, and it's impossible to switch to legacy way at runtime (even the
-> > "cpu-hotplug-legacy" properties does not allow it either).
-> > 
-> > Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> 
-> tested ping pong cross version (master vs master+this patch) migration
-> with 10.1 machine type, nothing is broken, hence
-> 
-> Acked-by: Igor Mammedov <imammedo@redhat.com>
-
-Thanks for your test and review!
-
-Regards,
-Zhao
-
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
 

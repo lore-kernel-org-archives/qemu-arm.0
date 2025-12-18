@@ -4,64 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 083F8D68BDD
-	for <qemu-arm@archiver.kernel.org>; Thu, 18 Dec 2025 07:02:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A612ED68BE6
+	for <qemu-arm@archiver.kernel.org>; Thu, 18 Dec 2025 07:21:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vW81b-00062J-Tu; Thu, 18 Dec 2025 02:02:12 -0500
+	id 1vW8Je-0004Ef-VO; Thu, 18 Dec 2025 02:20:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vW81Y-00061G-FM; Thu, 18 Dec 2025 02:02:08 -0500
+ id 1vW8Jc-0004E7-L2; Thu, 18 Dec 2025 02:20:48 -0500
 Received: from mgamail.intel.com ([192.198.163.19])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vW81W-0005Ua-Ny; Thu, 18 Dec 2025 02:02:08 -0500
+ id 1vW8JY-0000ak-B8; Thu, 18 Dec 2025 02:20:45 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1766041327; x=1797577327;
+ t=1766042444; x=1797578444;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:content-transfer-encoding:in-reply-to;
- bh=SVgM/n1v4fzCKsePS0J3ggBaXEGDmRcBzlKaAToDQEk=;
- b=C1CQaCYFwwl899G0eqBn7oXtRVdyuvqlBJtRbQaEStu7jsCDooS7sqmG
- PHGcdH1a1vLtpFU/0iWV69cAJ9lZSEesHNj0IMNkEYv9UTQXVKM0rGtkX
- /l2O86sb1i0J1bRMUBj5u0VkEMqNARuAOIv2wh8U6wX0qHWtJQ24rMke2
- YC0Kz1cLVXtPelYN/cMu1FIS4MOr+CvVY+JHvXpGI1G/9Tm9mi0WowpYs
- gEttlnMg+0u9ofJ/EuSADJtQYzSqiRw9wwKL+oPjlTY0MxXfj3d5gJsKM
- i9+EyZRvmBY2g+o5NQLYYWvicoRbXKsXolYiU7W2uzarDVkYGCa1Jd3bm w==;
-X-CSE-ConnectionGUID: UDhoMSTaThWiXBQ1pzr1Fw==
-X-CSE-MsgGUID: HVIQKW8FThO8kzJYKN3cCQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11645"; a="66985008"
-X-IronPort-AV: E=Sophos;i="6.21,156,1763452800"; d="scan'208";a="66985008"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ bh=WJEIgxu3+zm1akya5uEapVzOpJ64gXw/82xWr1E4ihU=;
+ b=CbxUNgg9L4yKL/BvK4mo/CuQF7nUDrPiDIEVb8fx57kcZPHSGwGlMLsR
+ 1nu+rX9872cTP0o8dTeBLhCtXXV+FZFJCunbo9MrzCNx7owq3friTPoAW
+ GPpJqJen9Km4u0JBM4CT/clyycJ84Z5tO83FKpZgJs0WGKGGBi02z/tno
+ sy1IMTVJ2rM95hbLyc01XS6m8w5CjN5lYjEJHBS2qgZI+CesslmbDUqFr
+ c2X46vjjKYP/v+tHWpGZtoA3/IFrtkUN0+tmynHtydKTl4q0y3w6yCK+2
+ A/mbHcx5OKy43xXD80p5twxNwlKyke77lR94Ztdmb74BW3+q3P2jQx8O4 A==;
+X-CSE-ConnectionGUID: RAoOdFC+RVqOKrAjtI9I8Q==
+X-CSE-MsgGUID: bOCPdOwLQ1ue11vgpjcqww==
+X-IronPort-AV: E=McAfee;i="6800,10657,11645"; a="66986693"
+X-IronPort-AV: E=Sophos;i="6.21,156,1763452800"; d="scan'208";a="66986693"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Dec 2025 23:02:03 -0800
-X-CSE-ConnectionGUID: 0SOkLFsIRGixo+JhvcoTfg==
-X-CSE-MsgGUID: Gtsie+lBTvCsnmsxYn6+OQ==
+ 17 Dec 2025 23:20:30 -0800
+X-CSE-ConnectionGUID: Wvc3fFGoR+mxeHpJsuEI3A==
+X-CSE-MsgGUID: L6Cpx68PQoy7+Y2uTiOR7Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,156,1763452800"; d="scan'208";a="235918890"
+X-IronPort-AV: E=Sophos;i="6.21,156,1763452800"; d="scan'208";a="203582897"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.39])
- by orviesa001.jf.intel.com with ESMTP; 17 Dec 2025 23:02:00 -0800
-Date: Thu, 18 Dec 2025 15:26:50 +0800
+ by orviesa005.jf.intel.com with ESMTP; 17 Dec 2025 23:20:21 -0800
+Date: Thu, 18 Dec 2025 15:45:10 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>, qemu-arm@nongnu.org,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ devel@lists.libvirt.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org,
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Sergio Lopez <slp@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@kernel.org>, Peter Xu <peterx@redhat.com>
-Subject: Re: [PATCH 01/14] target/i386: Remove x86_stl_phys_notdirty() leftover
-Message-ID: <aUOsuvGfQbA61n26@intel.com>
-References: <20251217143150.94463-1-philmd@linaro.org>
- <20251217143150.94463-2-philmd@linaro.org>
+ Laurent Vivier <lvivier@redhat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
+ Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
+ Xiaoyao Li <xiaoyao.li@intel.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?iso-8859-1?Q?Cl=E9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Huacai Chen <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
+ Jiri Denemark <jdenemar@redhat.com>
+Subject: Re: [PATCH v5 16/28] hw/i386: Remove linuxboot.bin
+Message-ID: <aUOxBg3bVii1HAOx@intel.com>
+References: <20251202162835.3227894-1-zhao1.liu@intel.com>
+ <20251202162835.3227894-17-zhao1.liu@intel.com>
+ <20251217155530.3353e904@imammedo>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20251217143150.94463-2-philmd@linaro.org>
+In-Reply-To: <20251217155530.3353e904@imammedo>
 Received-SPF: pass client-ip=192.198.163.19; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -43
@@ -87,21 +110,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Dec 17, 2025 at 03:31:37PM +0100, Philippe Mathieu-Daudé wrote:
-> Date: Wed, 17 Dec 2025 15:31:37 +0100
-> From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Subject: [PATCH 01/14] target/i386: Remove x86_stl_phys_notdirty() leftover
-> X-Mailer: git-send-email 2.52.0
+On Wed, Dec 17, 2025 at 03:55:30PM +0100, Igor Mammedov wrote:
+> Date: Wed, 17 Dec 2025 15:55:30 +0100
+> From: Igor Mammedov <imammedo@redhat.com>
+> Subject: Re: [PATCH v5 16/28] hw/i386: Remove linuxboot.bin
+> X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
 > 
-> Last use of x86_stl_phys_notdirty() was removed in commit 4a1e9d4d11c
-> ("target/i386: Use atomic operations for pte updates"), let's remove.
+> On Wed,  3 Dec 2025 00:28:23 +0800
+> Zhao Liu <zhao1.liu@intel.com> wrote:
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  target/i386/cpu.h    |  1 -
->  target/i386/helper.c | 10 ----------
->  2 files changed, 11 deletions(-)
+> > From: Philippe Mathieu-Daudé <philmd@linaro.org>
+> > 
+> > All machines now use the linuxboot_dma.bin binary, so it's safe to
+> > remove the non-DMA version (linuxboot.bin).
+> 
+> after applying this patch:
+> 
+> git grep linuxboot.bin
+> 
+>     option_rom[nb_option_roms].bootindex = 0;                                    
+>     option_rom[nb_option_roms].name = "linuxboot.bin";                           
+>     if (fw_cfg_dma_enabled(fw_cfg)) {                                            
+>         option_rom[nb_option_roms].name = "linuxboot_dma.bin";                   
+>     }        
+> 
+> perhaps it should be fixed in previous patch
 
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Thanks, I find this change was included in the previous patch (patch 15).
+
+And I have a GitLab branch and hopefully it could help apply and review:
+
+https://gitlab.com/zhao.liu/qemu/-/commits/remove-2.6-and-2.7-pc-v5-11-26-2025
+
+Regards,
+Zhao
 
 

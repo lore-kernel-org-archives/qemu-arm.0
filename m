@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2F70E66882
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Dec 2025 19:09:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B069E66884
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Dec 2025 19:10:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vWfqs-0000jz-Qu; Fri, 19 Dec 2025 14:09:22 -0500
+	id 1vWfqs-0000iz-1F; Fri, 19 Dec 2025 14:09:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vWfqX-0000cj-Pl
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:09:03 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ id 1vWfqV-0000aR-Iu
+ for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:09:01 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vWfqU-0006pJ-1Z
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:09:00 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-430f1cd0026so1499000f8f.0
- for <qemu-arm@nongnu.org>; Fri, 19 Dec 2025 11:08:57 -0800 (PST)
+ id 1vWfqT-0006op-8g
+ for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:08:59 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4779aa4f928so20098165e9.1
+ for <qemu-arm@nongnu.org>; Fri, 19 Dec 2025 11:08:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linaro.org; s=google; t=1766171336; x=1766776136; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Vw9O7QGKvNUJmURJtZXiXFfCdZcxW9QGykR9gjCW338=;
- b=eRHoRXV4GGK2tCs+S3+hmyGhB8rHzXLi69+Jzqy6JB+39KeS5clZKbeCM7Csh1z57s
- mI0yr0iKpcsQJGLR112X29WdtaD4BLPVar/z5dJFFEZ+JTIgyuUCbo3Hz0dgAGwG1n6Y
- Nz7v3FSq3L1U4LMInMHTera1X1cOQJjXrzjXjwoVYotnqtWnKuTUs/klWnGf2TO0Tbdc
- is5FshGVhdOseqPZihUnyOJ34c07rs0YIqyv/MAq1hUaTtlXK3pegKRyVHvNqsnON0ei
- e/lvuHc5zIsNLg0spKxsgFxE4njvRjhywqMuhI60oruKDIsviTchBKm7O/boDntPV/nH
- evfw==
+ bh=Z1Ho9A/XPHpaG24XQJMf5tV6Yy1l2byzrQqypIVDpzA=;
+ b=ux7kVWPeqmtcqvBFWd5xPGxBWI980qM/I/ICO55bI8Ni7yBoOZkuU9rwhvyEj7I5zI
+ mqkcm7rg15DiJtWxYbqF1mYvKvhVteEEvjFLkTU9hhkSvQHFPzcn3FIZ+qkxDqO/69Kq
+ iMU5MDD1CKSYvZn2VQzW9gy+65Qx4SwRc7cDl6uwX0USkX/mnpK51Oa2FgFOQ7sbOLo1
+ C29LnSptdEU68z97zcXMpy8ENIaVFQUD6nQtWZ9yVJjxF5O19Fc/4vfL22cdsE1iVkIe
+ 3GH33NGWrUauKCNcC3IkoNFnG02wz3ar4c00usO9aBm8s3tg/JAr59B7gMo98S9/+dLc
+ qNzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20230601; t=1766171336; x=1766776136;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Vw9O7QGKvNUJmURJtZXiXFfCdZcxW9QGykR9gjCW338=;
- b=Vh0NM95KhP9M+HQRRyUElw297OjzLDA0V8dvbPCLH9rIMX9fCfwx795tdwyVZrNOjA
- A0UinpWbqa8Bkg0MDZ5dQSeZkjKgs6tT+kZSTYHtf6q2OE8Da6jDVbcte4fl921yqJPh
- ZIYR6991d55aIDWh0vuK7R3VugmLRNj4g27ssiEagH+8AlTfNBfiWlArwq/Ck5x2prO+
- wu5oiTy7VkTu9lvtfWOvmRe390xFsCnHBmlfllu1nCeEd17bVjzhxWABWhFCh31ZkzPV
- 32WUMhTD2iNJG+4dOQkuoZx6k2WLTWOe4vGGR2GloEqpgNhLX7IbthN3eV8i5+Hyo8T6
- O86Q==
+ bh=Z1Ho9A/XPHpaG24XQJMf5tV6Yy1l2byzrQqypIVDpzA=;
+ b=gqxgkzhu4KsyLGgU/rxnYbuh3WZYDUgzQs03X0BxD1+KmDTlGeIUZyojbV2I7Dtlyx
+ PPEgee1IFvlwwYLNrv6P/OROQjFeVM9EvFNP25kf0NNcvIi50hP67xq39A8Tdhd54g3F
+ wybi35XC3o61PQ0nUjrFRRnsMky6UrdmdOHp92RA5u3rIDiffPBDbOpvX1OWzSeqGNQM
+ 7RDL3Z/8MZoeCNp152zuQa+gbkec1DNW3m6vtWxF4Zxd/V4+wa1qwG6wAU4MuqHik0lQ
+ mXTwkphHKP/fxRKFrszx9ChsMSTKoZXJ3r8gm5CO7TXijM5lop/8lPQcmnrSBqrxyaCq
+ 79Dw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVVLzc8oU4i3Eclr1YjrLa5ArFQ80bfyVmjfa8iU8bG/QCA3Ftl99+ujrOQGs7SvYjIIbO5CEiG+g==@nongnu.org
-X-Gm-Message-State: AOJu0YxkS7QaphL2l83qqBfZKyk5QIcZODxTObWeNmG3PKQahZRrN0cA
- GL1SuAJQYxJfB8FpibFx0MpNVqkAm+w3ain8ugqVMeNApF+TWRtgbJgBpUa4DZRad2g=
-X-Gm-Gg: AY/fxX7BFGgdXWqnmE34P8DH8edziVvzeTJlpmxL51YqMP3InN9tP0Ru+bdxt+4LGTj
- ohEi0bho2CiWLalqXrrxN04JFLCcAuO/jFcTo4543QjaZbl83vCN/j0bUVS8OuhuGb1wkP3Cj97
- 2b39M4tuLewIaTFX7Od4GKAzHkxK9jwEe/T78txwUErnrDPXG8s41Q0gzp16StMHZB1snS52Amz
- RMNe+DQ8eSB2sG2YvvPl31uNAzaHUFYu9wDahnjhTqagm1A0GTXEawTBaK3QoA8PKj1lDpdBne1
- bdoZ86Ixw3w8wRylINpfzbmAXJ/NYWuOvx/LnNNxtNvOOtW6u6CjmOlU56la4xPsDtQY4glrD0n
- EbYL4pmeKpkC1gl+FjE9B8RXoJWvFkT2lKwwQZaOpevtGh+bSLshsmtSysVUG4TockvD9h2/rCg
- JAh+eFDBVnGKM=
-X-Google-Smtp-Source: AGHT+IHtTFs6vXCwjjVmQbvO8bYOulTtaBQfMoJqmyIsUtGzdORgJKGX6cvOfTdiHWf3m2HcGiN/dw==
-X-Received: by 2002:a05:6000:2305:b0:431:9b2:61c8 with SMTP id
- ffacd0b85a97d-4324e4c3864mr4833959f8f.10.1766171336269; 
- Fri, 19 Dec 2025 11:08:56 -0800 (PST)
+ AJvYcCVFzKSK0MT5krJNT0QiRaS48mIMgWREENWQW2k5lElzWUFKugBeTF1/rCGZnbRGozviM4YqR8623g==@nongnu.org
+X-Gm-Message-State: AOJu0Yzr+QC3E+EliNQRjRGPb6jWgkfmvgfOLGd8Y7qdQwZctlm2FVa2
+ Gi1Pv8DZQQclVPTcI+p5YqRfKHeB0lTGnm49prl/6Fs2FOT82ezh4kCEQcu9sNv5YGw=
+X-Gm-Gg: AY/fxX7fbQTIApbAyDbPR6Poamha1tJeuAnz3VkLuGEMYcQoMkDxKyAJ07NOoW+62DU
+ O/6tn08WXdoRyRWi4W5UyksEkTgsL64t0JxBIndwI2VlWMmo2pxCgrrY4vUBwCYG8lCN6qKL0jB
+ KN45ReuD50uiwgG+ClUEpbDXomU6kM8Nbw8Qf4pHMtcxULdjH86j8jk54Kx5o9z7fkzpKcq8+Se
+ aTZDjckjFP3i+2+d+7zQDQ8tPr4blodUH3IWy7bWEZ4yn/tlOVpIjMe0zYXdHTEPjDuOHlPlUV+
+ 3C89J1AKOpacj6ke1nd7QwOy2XqbdhOP9/LgvcWYYx7FAFrY3y4fUWwwNuARAqG/BRHmaNVSMoF
+ Ncx8wD9zokr7mtDuvggecDqrlrofylvrQNx/1ruWlb1pgRWjB//wpHOv7LhLTDNQfBaGbeHkRU8
+ FPuqGIZtVQjlw=
+X-Google-Smtp-Source: AGHT+IEiRuseyh0saS2WdyWQSI+3lEZVjidRsb7ooPV+14p4ymxQyBFa4fsZZF3Ealju2FknUZz8Fw==
+X-Received: by 2002:a05:600c:1d1d:b0:477:9eb8:97d2 with SMTP id
+ 5b1f17b1804b1-47d1953b8acmr38452675e9.8.1766171335660; 
+ Fri, 19 Dec 2025 11:08:55 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4324eaa64cesm6544516f8f.35.2025.12.19.11.08.52
+ 5b1f17b1804b1-47be2723d19sm123428605e9.2.2025.12.19.11.08.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Fri, 19 Dec 2025 11:08:53 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id CC6A16017D;
+ by draig.lan (Postfix) with ESMTP id 518AD5FE99;
  Fri, 19 Dec 2025 19:08:50 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -84,25 +84,27 @@ Cc: Yanan Wang <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Mark Burton <mburton@qti.qualcomm.com>, Laurent Vivier <laurent@vivier.eu>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Alexandre Iooss <erdnaxe@crans.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 09/12] plugins: split init_hook into create and reset
-Date: Fri, 19 Dec 2025 19:08:46 +0000
-Message-ID: <20251219190849.238323-10-alex.bennee@linaro.org>
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Alex Bradbury <asb@igalia.com>
+Subject: [RFC PATCH 05/12] contrib/plugins/hotblocks: Allow limit to be set as
+ a command line argument
+Date: Fri, 19 Dec 2025 19:08:42 +0000
+Message-ID: <20251219190849.238323-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251219190849.238323-1-alex.bennee@linaro.org>
 References: <20251219190849.238323-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,170 +120,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We need to move the plugin vcpu_init callback to the reset phase so
-all register information is available to plugins. However so as not to
-complicate the initialisation code we still want the call once to do
-our housekeeping.
+From: Alex Bradbury <asb@igalia.com>
 
+Also add documentation for this argument. This allows the default of 20
+to be overridden, and is helpful for using the hotblocks plugin for
+analysis scripts that require collecting data on a larger number of
+blocks (e.g. setting limit=0 to dump information on all blocks).
+
+Signed-off-by: Alex Bradbury <asb@igalia.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-ID: <bf04947f9a694a4d3adf5f0775dbb8d5013fd8c9.1764716538.git.asb@igalia.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/qemu/plugin.h      | 19 ++++++++++++++-----
- include/qemu/qemu-plugin.h |  4 +++-
- hw/core/cpu-common.c       | 21 +++++++++++++++------
- plugins/core.c             | 31 +++++++++++++++++++++++--------
- 4 files changed, 55 insertions(+), 20 deletions(-)
+ docs/about/emulation.rst    |  2 ++
+ contrib/plugins/hotblocks.c | 10 +++++++++-
+ 2 files changed, 11 insertions(+), 1 deletion(-)
 
-diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
-index 91df1e78d2c..6d38b923c73 100644
---- a/include/qemu/plugin.h
-+++ b/include/qemu/plugin.h
-@@ -150,14 +150,23 @@ struct CPUPluginState {
- };
+diff --git a/docs/about/emulation.rst b/docs/about/emulation.rst
+index 543efc4d7dc..e8793b0f9ce 100644
+--- a/docs/about/emulation.rst
++++ b/docs/about/emulation.rst
+@@ -473,6 +473,8 @@ Behaviour can be tweaked with the following arguments:
+     - Description
+   * - inline=true|false
+     - Use faster inline addition of a single counter.
++  * - limit=N
++    - The number of blocks to be printed. (Default: N = 20, use 0 for no limit).
  
- /**
-- * qemu_plugin_create_vcpu_state: allocate plugin state
-+ * qemu_plugin_vcpu_create_hook() - called on vcpu creation
-+ * @cpu: vCPU CPUState
-  *
-- * The returned data must be released with g_free()
-- * when no longer required.
-+ * We don't expose creation to plugins but we need to do internal
-+ * housekeeping of stuff. Called once per vCPU creation.
-  */
--CPUPluginState *qemu_plugin_create_vcpu_state(void);
-+void qemu_plugin_vcpu_create_hook(CPUState *cpu);
-+
-+/**
-+ * qemu_plugin_vcpu_reset_hook() - called on vcpu reset
-+ * @cpu: vCPU CPUState
-+ *
-+ * Called each time the vcpu is reset. This can happen multiple times
-+ * for a given vCPU. We expose this to plugins as vcpu_init.
-+ */
-+void qemu_plugin_vcpu_reset_hook(CPUState *cpu);
+ Hot Pages
+ .........
+diff --git a/contrib/plugins/hotblocks.c b/contrib/plugins/hotblocks.c
+index 40d8dae1cd3..8ecf0339974 100644
+--- a/contrib/plugins/hotblocks.c
++++ b/contrib/plugins/hotblocks.c
+@@ -84,7 +84,8 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
+     if (sorted_counts) {
+         g_string_append_printf(report, "pc, tcount, icount, ecount\n");
  
--void qemu_plugin_vcpu_init_hook(CPUState *cpu);
- void qemu_plugin_vcpu_exit_hook(CPUState *cpu);
- void qemu_plugin_tb_trans_cb(CPUState *cpu, struct qemu_plugin_tb *tb);
- void qemu_plugin_vcpu_idle_cb(CPUState *cpu);
-diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
-index e8db7a72545..a75e323f31d 100644
---- a/include/qemu/qemu-plugin.h
-+++ b/include/qemu/qemu-plugin.h
-@@ -238,7 +238,9 @@ void qemu_plugin_reset(qemu_plugin_id_t id, qemu_plugin_simple_cb_t cb);
-  * @id: plugin ID
-  * @cb: callback function
-  *
-- * The @cb function is called every time a vCPU is initialized.
-+ * The @cb function is called every time a vCPU is initialised. This
-+ * includes resets. NOTE: not all register information may be
-+ * available the first time this is called.
-  *
-  * See also: qemu_plugin_register_vcpu_exit_cb()
-  */
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index 8c306c89e45..8113d83713f 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -100,8 +100,18 @@ void cpu_dump_state(CPUState *cpu, FILE *f, int flags)
- void cpu_reset(CPUState *cpu)
- {
-     device_cold_reset(DEVICE(cpu));
--
-     trace_cpu_reset(cpu->cpu_index);
-+
-+#ifdef CONFIG_TCG
-+    /*
-+     * Because vCPUs get "started" before the machine is ready we often
-+     * can't provide all the information plugins need during
-+     * cpu_common_initfn. However the vCPU will be reset a few times
-+     * before we eventually set things going giving plugins an
-+     * opportunity to update things.
-+     */
-+    qemu_plugin_vcpu_reset_hook(cpu);
-+#endif
- }
- 
- static void cpu_common_reset_hold(Object *obj, ResetType type)
-@@ -328,14 +338,13 @@ static void cpu_common_initfn(Object *obj)
-     cpu_exec_initfn(cpu);
- 
-     /*
--     * Plugin initialization must wait until the cpu start executing
--     * code, but we must queue this work before the threads are
--     * created to ensure we don't race.
-+     * Called once at vCPU creation so the plugin subsystem can do its
-+     * housekeeping. See also cpu_reset() and
-+     * qemu_plugin_vcpu_reset_hook() above.
-      */
- #ifdef CONFIG_PLUGIN
-     if (tcg_enabled()) {
--        cpu->plugin_state = qemu_plugin_create_vcpu_state();
--        qemu_plugin_vcpu_init_hook(cpu);
-+        qemu_plugin_vcpu_create_hook(cpu);
-     }
- #endif
- }
-diff --git a/plugins/core.c b/plugins/core.c
-index 85fabf9ec81..d303256c851 100644
---- a/plugins/core.c
-+++ b/plugins/core.c
-@@ -226,7 +226,7 @@ plugin_register_cb_udata(qemu_plugin_id_t id, enum qemu_plugin_event ev,
-     do_plugin_register_cb(id, ev, func, udata);
- }
- 
--CPUPluginState *qemu_plugin_create_vcpu_state(void)
-+static CPUPluginState *qemu_plugin_create_vcpu_state(void)
- {
-     return g_new0(CPUPluginState, 1);
- }
-@@ -279,7 +279,25 @@ static void plugin_grow_scoreboards__locked(CPUState *cpu)
-     end_exclusive();
- }
- 
--static void qemu_plugin_vcpu_init__async(CPUState *cpu, run_on_cpu_data unused)
-+static void qemu_plugin_vcpu_reset__async(CPUState *cpu, run_on_cpu_data unused)
-+{
-+    assert(cpu->cpu_index != UNASSIGNED_CPU_INDEX);
-+
-+    qemu_plugin_set_cb_flags(cpu, QEMU_PLUGIN_CB_RW_REGS);
-+    plugin_vcpu_cb__simple(cpu, QEMU_PLUGIN_EV_VCPU_INIT);
-+    qemu_plugin_set_cb_flags(cpu, QEMU_PLUGIN_CB_NO_REGS);
-+}
-+
-+void qemu_plugin_vcpu_reset_hook(CPUState *cpu)
-+{
-+    async_run_on_cpu(cpu, qemu_plugin_vcpu_reset__async, RUN_ON_CPU_NULL);
-+}
-+
-+/*
-+ * This is purely internal to plugins as we need to expand scoreboards
-+ * each time a new vCPU is created.
-+ */
-+static void qemu_plugin_vcpu_create__async(CPUState *cpu, run_on_cpu_data unused)
- {
-     bool success;
- 
-@@ -292,16 +310,13 @@ static void qemu_plugin_vcpu_init__async(CPUState *cpu, run_on_cpu_data unused)
-     g_assert(success);
-     plugin_grow_scoreboards__locked(cpu);
-     qemu_rec_mutex_unlock(&plugin.lock);
--
--    qemu_plugin_set_cb_flags(cpu, QEMU_PLUGIN_CB_RW_REGS);
--    plugin_vcpu_cb__simple(cpu, QEMU_PLUGIN_EV_VCPU_INIT);
--    qemu_plugin_set_cb_flags(cpu, QEMU_PLUGIN_CB_NO_REGS);
- }
- 
--void qemu_plugin_vcpu_init_hook(CPUState *cpu)
-+void qemu_plugin_vcpu_create_hook(CPUState *cpu)
- {
-+    cpu->plugin_state = qemu_plugin_create_vcpu_state();
-     /* Plugin initialization must wait until the cpu start executing code */
--    async_run_on_cpu(cpu, qemu_plugin_vcpu_init__async, RUN_ON_CPU_NULL);
-+    async_run_on_cpu(cpu, qemu_plugin_vcpu_create__async, RUN_ON_CPU_NULL);
- }
- 
- void qemu_plugin_vcpu_exit_hook(CPUState *cpu)
+-        for (i = 0, it = sorted_counts; i < limit && it; i++, it = it->next) {
++        for (i = 0, it = sorted_counts; (limit == 0 || i < limit) && it;
++             i++, it = it->next) {
+             ExecCount *rec = (ExecCount *) it->data;
+             g_string_append_printf(
+                 report, "0x%016"PRIx64", %d, %ld, %"PRIu64"\n",
+@@ -170,6 +171,13 @@ int qemu_plugin_install(qemu_plugin_id_t id, const qemu_info_t *info,
+                 fprintf(stderr, "boolean argument parsing failed: %s\n", opt);
+                 return -1;
+             }
++        } else if (g_strcmp0(tokens[0], "limit") == 0) {
++            char *endptr = NULL;
++            limit = g_ascii_strtoull(tokens[1], &endptr, 10);
++            if (endptr == tokens[1] || *endptr != '\0') {
++                fprintf(stderr, "unsigned integer parsing failed: %s\n", opt);
++                return -1;
++            }
+         } else {
+             fprintf(stderr, "option parsing failed: %s\n", opt);
+             return -1;
 -- 
 2.47.3
 

@@ -4,118 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F24E9D7879C
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Dec 2025 17:10:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD973D7879F
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Dec 2025 18:39:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vWdzK-0006xN-3P; Fri, 19 Dec 2025 12:09:58 -0500
+	id 1vWfNa-0002em-RU; Fri, 19 Dec 2025 13:39:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vWdzH-0006wj-OC
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 12:09:55 -0500
-Received: from 6.mo548.mail-out.ovh.net ([188.165.58.48])
+ (Exim 4.90_1) (envelope-from
+ <bT.35ussg3njqp5vm1=eik61rabm3vd=kj9ikaae9w6x87@em483429.getutm.app>)
+ id 1vWfNX-0002eJ-6e
+ for qemu-arm@nongnu.org; Fri, 19 Dec 2025 13:39:03 -0500
+Received: from a2i327.smtp2go.com ([103.47.205.71])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vWdzE-00016F-80
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 12:09:55 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.54.176])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4dXvCx41HMz6T85;
- Fri, 19 Dec 2025 17:09:49 +0000 (UTC)
-Received: from kaod.org (37.59.142.103) by DAG3EX1.mxp5.local (172.16.2.21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Fri, 19 Dec
- 2025 18:09:48 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005d65d07f9-cd26-47cd-8b92-40d516eb0447,
- 13AF5B8175AA3308F51DC8C03696883D036152F7) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <86307089-4e0f-411e-95bb-099efb1533ad@kaod.org>
-Date: Fri, 19 Dec 2025 18:09:48 +0100
+ (Exim 4.90_1) (envelope-from
+ <bT.35ussg3njqp5vm1=eik61rabm3vd=kj9ikaae9w6x87@em483429.getutm.app>)
+ id 1vWfNT-0007ol-3N
+ for qemu-arm@nongnu.org; Fri, 19 Dec 2025 13:39:01 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=smtpservice.net; s=mad0l0.a1-4.dyn; x=1766170437; h=Feedback-ID:
+ X-Smtpcorp-Track:Message-ID:Date:Subject:To:From:Reply-To:Sender:
+ List-Unsubscribe:List-Unsubscribe-Post;
+ bh=kvTUUaMn+jLgW1Zko42A5PWt3BGWZ2R66E4H4FDBLzc=; b=MhrXtwUZZltHUxyEfG9zPobJ+Y
+ U069w7shXABvQ86URhxx7IIJ3j4vyZuH7eO6NhgETDZlPy093mo2Xuz9O/+O7jbpC7s8yIv0RBzGW
+ nyBSiuHaEAPGghQd00lxZueamYZMDaPEHPAPdKK0Yam84jWDjWes/RUN4ZN9bQEqhgUUQxX6PULeH
+ 7sy7rf3b5yr4ZANkWCHUwWPwW5pRCZE1lpIaV+8lFCewXBtFtbMVM5XNU/NSK5DiuURd3q17UUawE
+ cwNHCZgSliLgw5+dm0RS/RcgumEMOsbzaVe+0sFDKSgWgrRXjxXKoI1MVf4ibhSfsSNNw+ZlfE6R+
+ cEy2+/3w==;
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=getutm.app;
+ i=@getutm.app; q=dns/txt; s=s483429; t=1766169537; h=from : subject :
+ to : message-id : date;
+ bh=kvTUUaMn+jLgW1Zko42A5PWt3BGWZ2R66E4H4FDBLzc=;
+ b=TC29zSvG1ykasVyNredj6qZPhR9qsW5RnwUg5ndIPTOYqG4X8JnnkaN46L74Ya9Y/I339
+ nnaFdbzzdfPiPbk8BzJ16h41SI+fkG8NCMj5T7IwB6YDSu59aOwSAcvw1LWq7inIbnTQmKR
+ NhcXnqnJNQpybTBbsRzhlgnQuiyWlC1tB3kkTMRU1SVNy72PzC7QBjCb2DtRlZC8Y2om0e0
+ RUeT/joGLeR06iOH/JvgrCQ2+sn5/cVY7lg/h8wOUH77HM9A5G1GLuVWLlsnzm8a1Pvhz4h
+ v8gdR1jGti/SCnvAL22MeugoZWn81NfggRdRvdXYu/PJ3fClokhotm8Jr+UQ==
+Received: from [10.172.234.246] (helo=SmtpCorp) by smtpcorp.com with esmtpsa
+ (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+ (Exim 4.94.2-S2G) (envelope-from <j@getutm.app>)
+ id 1vWfMX-pH9Upe-B9; Fri, 19 Dec 2025 18:38:01 +0000
+Received: from [10.159.238.187] (helo=localhost.localdomain)
+ by smtpcorp.com with esmtpsa
+ (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA512__CHACHA20_POLY1305:256)
+ (Exim 4.98.1-S2G) (envelope-from <j@getutm.app>)
+ id 1vWfMV-AIkwcC8uj9p-5OS2; Fri, 19 Dec 2025 18:37:59 +0000
+From: Joelle van Dyne <j@getutm.app>
+To: qemu-devel@nongnu.org
+Cc: Joelle van Dyne <j@getutm.app>, Cameron Esfahani <dirty@apple.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Mads Ynddal <mads@ynddal.dk>,
+ Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH] hvf: support changing IPA granule size
+Date: Fri, 19 Dec 2025 10:37:15 -0800
+Message-ID: <20251219183716.4379-1-j@getutm.app>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v3 17/18] hw/arm/aspeed: Attach SGPIOM device to
- AST1700 model
-To: Kane Chen <kane_chen@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>
-References: <20251208074436.1871180-1-kane_chen@aspeedtech.com>
- <20251208074436.1871180-18-kane_chen@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20251208074436.1871180-18-kane_chen@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.103]
-X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG3EX1.mxp5.local
- (172.16.2.21)
-X-Ovh-Tracer-GUID: 9e9d70fe-404e-45d2-826e-4bfba9a89b82
-X-Ovh-Tracer-Id: 9717923575142517682
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEJnZBGCp+KZJKRZDls2m4fXPsyCAMqlzcSlrIQcrq9giDwXeaEIKk+5H4pLHbhToI6bMQZtjwvLva8+ERlHKPJ1+ypbsYIH9QxSfXml6voXMdLw8Q/DEKypOS4vfU7Cw8eXN7rOWDDwazed2qF5VyApQ3vfWGPvrsRCe0AHlZ/NjLhoUi+LA0EcfY7i/jduG3DMUpY3hc0Dr/oGWet6X4YIgfIB3TdsPhTUJZwsqDdl4CAZZsT4pvDaRu5lXusnYDka3Ac5bMznVtxrXSqanpOQgn42UZDssAmFU55FzTqW1wHnDPSPZFi+vl8J+fQCJif9By5Q0AMiDeJCZO2EfWNX6dBYx1Ot7J2KbzXCdcJ7YeuWg3w0Yp6oFj1JxbCaghMvFpykFYpPQV44D9zesWxEKinNCjAfkqNtlcR30OENlKALEBKO9RjhKPcJm73AbD5RWy7RF8MVTiHmWRYXd2QPNJkFV9CLwksItGRkNQKUdP2WkHnN1wEa0wlsHkxHBSETFgAfZqWhHI3seFY2aN5KAlBo0E7JV+gXHOMwJlyA+2fNO1v5DS1t9WTRTJWPc4UgibvPfUn6Og1DhTKauPtp3twU/n396T96txcMHgwf7ZGAgDnUYgXtXea/QzUXiwoDeFKN8PnN82vZg4z6Ej0Nl957c+1J2wsimrR5IJoqQ
-DKIM-Signature: a=rsa-sha256; bh=647K2H6eXjyoiSgMrFDfz16YwbzW/4vUIS8d780CLfI=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1766164190; v=1;
- b=A+jHTceba2dv707FmZrDbnWOAZMNdGcKsaH/fbvM18LHAOr1vPrW13yhhnLhayBwOm6gVOZD
- WUkWHBMHg7CZQrG6s+X7HkRI5mLEw8zhQ6rS6aQF65JsZ4jBYnESOHOkrSYxdJ0yP64zoE9lrRt
- qqurFHRWBaXkbjHC6Wf6SNd5w6GksSA4kWYOUPLzKeSJz+tG6tw+ojrriZlUiubgkT4lN+NmdsK
- BWjmFw5z0SIbQ67VdzPAS3ddgikSm+5QqEaGy3XwAHiczz2YnfkVCLncK0uqsrX+GJaCKvFQlrt
- CWoPsfV8pWUfCRCjdCBZrTplDgUb7wKT08HOUEiBYaa8A==
-Received-SPF: pass client-ip=188.165.58.48; envelope-from=clg@kaod.org;
- helo=6.mo548.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Smtpcorp-Track: BNJqXhDIg0Nf.I-I65KQmdA7o.VpEMCQDNLgC
+Feedback-ID: 483429m:483429abrvJvs:483429sngI8vWHXA
+X-Report-Abuse: Please forward a copy of this message, including all headers, 
+ to <abuse-report@smtp2go.com>
+Received-SPF: pass client-ip=103.47.205.71;
+ envelope-from=bT.35ussg3njqp5vm1=eik61rabm3vd=kj9ikaae9w6x87@em483429.getutm.app;
+ helo=a2i327.smtp2go.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -132,108 +93,221 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/8/25 08:44, Kane Chen wrote:
-> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
-> 
-> Connect the SGPIOM device to AST1700 model.
-> 
-> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
-> ---
->   include/hw/arm/aspeed_ast1700.h |  3 +++
->   hw/arm/aspeed_ast1700.c         | 20 ++++++++++++++++++++
->   2 files changed, 23 insertions(+)
+The IPA granule is the smallest page size hv_vm_map() support. For Venus, we
+need to support 4KiB pages. macOS 26 introduces a public API for setting
+the granule size. We can only use this when compiled with macOS 26 SDK and
+run on macOS 26+. Otherwise, we fall back to an older, private, API which
+achieves the same purpose.
 
-Did you rebase on Yubin Zou's SGPIO series ?
-You can the aspeed-next branch for it.
+Signed-off-by: Joelle van Dyne <j@getutm.app>
+---
+ include/system/hvf_int.h |  4 +++-
+ accel/hvf/hvf-all.c      | 42 ++++++++++++++++++++++++++++++++-
+ target/arm/hvf/hvf.c     | 50 +++++++++++++++++++++++++++++++++++++++-
+ target/i386/hvf/hvf.c    | 10 +++++++-
+ 4 files changed, 102 insertions(+), 4 deletions(-)
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
-
-
-> 
-> diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_ast1700.h
-> index 7292719dc2..490f2a3b05 100644
-> --- a/include/hw/arm/aspeed_ast1700.h
-> +++ b/include/hw/arm/aspeed_ast1700.h
-> @@ -12,6 +12,7 @@
->   #include "hw/misc/aspeed_scu.h"
->   #include "hw/adc/aspeed_adc.h"
->   #include "hw/gpio/aspeed_gpio.h"
-> +#include "hw/gpio/aspeed_sgpio.h"
->   #include "hw/i2c/aspeed_i2c.h"
->   #include "hw/misc/aspeed_ltpi.h"
->   #include "hw/misc/aspeed_pwm.h"
-> @@ -19,6 +20,7 @@
->   #include "hw/watchdog/wdt_aspeed.h"
->   #include "hw/char/serial-mm.h"
->   
-> +#define AST1700_SGPIO_NUM            2
->   #define AST1700_WDT_NUM              9
->   
->   #define TYPE_ASPEED_AST1700 "aspeed.ast1700"
-> @@ -39,6 +41,7 @@ struct AspeedAST1700SoCState {
->       AspeedADCState adc;
->       AspeedSCUState scu;
->       AspeedGPIOState gpio;
-> +    AspeedSGPIOState sgpiom[AST1700_SGPIO_NUM];
->       AspeedI2CState i2c;
->       AspeedPWMState pwm;
->       AspeedWDTState wdt[AST1700_WDT_NUM];
-> diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c
-> index c9d7a97a80..e027ae02ad 100644
-> --- a/hw/arm/aspeed_ast1700.c
-> +++ b/hw/arm/aspeed_ast1700.c
-> @@ -23,6 +23,8 @@ enum {
->       ASPEED_AST1700_DEV_ADC,
->       ASPEED_AST1700_DEV_SCU,
->       ASPEED_AST1700_DEV_GPIO,
-> +    ASPEED_AST1700_DEV_SGPIOM0,
-> +    ASPEED_AST1700_DEV_SGPIOM1,
->       ASPEED_AST1700_DEV_I2C,
->       ASPEED_AST1700_DEV_UART12,
->       ASPEED_AST1700_DEV_LTPI_CTRL,
-> @@ -37,6 +39,8 @@ static const hwaddr aspeed_ast1700_io_memmap[] = {
->       [ASPEED_AST1700_DEV_ADC]       =  0x00C00000,
->       [ASPEED_AST1700_DEV_SCU]       =  0x00C02000,
->       [ASPEED_AST1700_DEV_GPIO]      =  0x00C0B000,
-> +    [ASPEED_AST1700_DEV_SGPIOM0]   =  0x00C0C000,
-> +    [ASPEED_AST1700_DEV_SGPIOM1]   =  0x00C0D000,
->       [ASPEED_AST1700_DEV_I2C]       =  0x00C0F000,
->       [ASPEED_AST1700_DEV_UART12]    =  0x00C33B00,
->       [ASPEED_AST1700_DEV_LTPI_CTRL] =  0x00C34000,
-> @@ -142,6 +146,16 @@ static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
->                           aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_LTPI_CTRL],
->                           sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ltpi), 0));
->   
-> +    /* SGPIOM */
-> +    for (int i = 0; i < AST1700_SGPIO_NUM; i++) {
-> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->sgpiom[i]), errp)) {
-> +            return;
-> +        }
-> +        memory_region_add_subregion(&s->iomem,
-> +                    aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_SGPIOM0 + i],
-> +                    sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->sgpiom[i]), 0));
-> +    }
-> +
->       /* WDT */
->       for (int i = 0; i < AST1700_WDT_NUM; i++) {
->           AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
-> @@ -194,6 +208,12 @@ static void aspeed_ast1700_instance_init(Object *obj)
->       object_initialize_child(obj, "ltpi-ctrl",
->                               &s->ltpi, TYPE_ASPEED_LTPI);
->   
-> +    /* SGPIOM */
-> +    for (int i = 0; i < AST1700_SGPIO_NUM; i++) {
-> +        object_initialize_child(obj, "ioexp-sgpiom[*]", &s->sgpiom[i],
-> +                                "aspeed.sgpio-ast2700");
-> +    }
-> +
->       /* WDT */
->       for (int i = 0; i < AST1700_WDT_NUM; i++) {
->           object_initialize_child(obj, "ioexp-wdt[*]",
+diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
+index 1d2616595cd..881e16e31b6 100644
+--- a/include/system/hvf_int.h
++++ b/include/system/hvf_int.h
+@@ -63,6 +63,7 @@ struct HVFState {
+ 
+     hvf_vcpu_caps *hvf_caps;
+     uint64_t vtimer_offset;
++    uint32_t ipa_granule_size;
+     QTAILQ_HEAD(, hvf_sw_breakpoint) hvf_sw_breakpoints;
+ };
+ extern HVFState *hvf_state;
+@@ -82,7 +83,8 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *file, unsigned int line,
+ #define assert_hvf_ok(EX) assert_hvf_ok_impl((EX), __FILE__, __LINE__, #EX)
+ const char *hvf_return_string(hv_return_t ret);
+ int hvf_arch_init(void);
+-hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range);
++hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range,
++                               uint32_t ipa_granule_size);
+ hvf_slot *hvf_find_overlap_slot(uint64_t, uint64_t);
+ void hvf_kick_vcpu_thread(CPUState *cpu);
+ 
+diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
+index a898359777c..7ebfc9bbe58 100644
+--- a/accel/hvf/hvf-all.c
++++ b/accel/hvf/hvf-all.c
+@@ -17,6 +17,8 @@
+ #include "system/hvf_int.h"
+ #include "hw/core/cpu.h"
+ #include "hw/boards.h"
++#include "qapi/error.h"
++#include "qapi/visitor.h"
+ #include "trace.h"
+ 
+ bool hvf_allowed;
+@@ -152,6 +154,10 @@ static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)
+         }
+     }
+ 
++    if (hvf_state->ipa_granule_size) {
++        page_size = hvf_state->ipa_granule_size;
++    }
++
+     if (!QEMU_IS_ALIGNED(int128_get64(section->size), page_size) ||
+         !QEMU_IS_ALIGNED(section->offset_within_address_space, page_size)) {
+         if (add) {
+@@ -316,7 +322,7 @@ static int hvf_accel_init(AccelState *as, MachineState *ms)
+         }
+     }
+ 
+-    ret = hvf_arch_vm_create(ms, (uint32_t)pa_range);
++    ret = hvf_arch_vm_create(ms, (uint32_t)pa_range, s->ipa_granule_size);
+     if (ret == HV_DENIED) {
+         error_report("Could not access HVF. Is the executable signed"
+                      " with com.apple.security.hypervisor entitlement?");
+@@ -340,6 +346,34 @@ static int hvf_gdbstub_sstep_flags(AccelState *as)
+     return SSTEP_ENABLE | SSTEP_NOIRQ;
+ }
+ 
++static void hvf_get_ipa_granule_size(Object *obj, Visitor *v,
++                                    const char *name, void *opaque,
++                                    Error **errp)
++{
++    HVFState *s = HVF_STATE(obj);
++    uint32_t value = s->ipa_granule_size;
++
++    visit_type_uint32(v, name, &value, errp);
++}
++
++static void hvf_set_ipa_granule_size(Object *obj, Visitor *v,
++                                     const char *name, void *opaque,
++                                     Error **errp)
++{
++    HVFState *s = HVF_STATE(obj);
++    uint32_t value;
++
++    if (!visit_type_uint32(v, name, &value, errp)) {
++        return;
++    }
++    if (value & (value - 1)) {
++        error_setg(errp, "ipa-granule-size must be a power of two.");
++        return;
++    }
++
++    s->ipa_granule_size = value;
++}
++
+ static void hvf_accel_class_init(ObjectClass *oc, const void *data)
+ {
+     AccelClass *ac = ACCEL_CLASS(oc);
+@@ -347,6 +381,12 @@ static void hvf_accel_class_init(ObjectClass *oc, const void *data)
+     ac->init_machine = hvf_accel_init;
+     ac->allowed = &hvf_allowed;
+     ac->gdbstub_supported_sstep_flags = hvf_gdbstub_sstep_flags;
++
++    object_class_property_add(oc, "ipa-granule-size", "uint32",
++        hvf_get_ipa_granule_size, hvf_set_ipa_granule_size,
++        NULL, NULL);
++    object_class_property_set_description(oc, "ipa-granule-size",
++        "Size of a single guest page");
+ }
+ 
+ static const TypeInfo hvf_accel_type = {
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index de1e8fb8a05..7c44325ca64 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -12,6 +12,9 @@
+ #include "qemu/osdep.h"
+ #include "qemu/error-report.h"
+ #include "qemu/log.h"
++#include <dlfcn.h>
++#include <AvailabilityMacros.h>
++#include <TargetConditionals.h>
+ 
+ #include "system/runstate.h"
+ #include "system/hvf.h"
+@@ -880,7 +883,45 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
+     assert_hvf_ok(ret);
+ }
+ 
+-hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
++static hv_return_t hvf_set_ipa_granule(hv_vm_config_t config,
++                                uint32_t ipa_granule_size)
++{
++    static hv_return_t (*set_ipa_granule)(hv_vm_config_t, uint32_t);
++    uint64_t page_size = qemu_real_host_page_size();
++
++    /* macOS 26 introduces a public API for setting granule size */
++#if defined(MAC_OS_X_VERSION_MAX_ALLOWED) && defined(MAC_OS_VERSION_26_0) && \
++    MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_26_0
++    if (__builtin_available(macOS 26, *)) {
++        hv_ipa_granule_t granule = HV_IPA_GRANULE_16KB;
++
++        if (ipa_granule_size == 4096) {
++            granule = HV_IPA_GRANULE_4KB;
++        } else if (ipa_granule_size != 16384) {
++            error_report("Unsupported granule size: 0x%x", ipa_granule_size);
++            return HV_UNSUPPORTED;
++        }
++
++        return hv_vm_config_set_ipa_granule(config, granule);
++    }
++#endif
++
++    /* older macOS need to use a private API */
++    if (!set_ipa_granule) {
++        set_ipa_granule = dlsym(RTLD_NEXT, "_hv_vm_config_set_ipa_granule");
++    }
++    if (set_ipa_granule) {
++        return set_ipa_granule(config, ipa_granule_size);
++    } else if (ipa_granule_size != page_size) {
++        error_report("Failed to find _hv_vm_config_set_ipa_granule");
++        return HV_UNSUPPORTED;
++    }
++
++    return HV_SUCCESS;
++}
++
++hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range,
++                               uint32_t ipa_granule_size)
+ {
+     hv_return_t ret;
+     hv_vm_config_t config = hv_vm_config_create();
+@@ -891,6 +932,13 @@ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
+     }
+     chosen_ipa_bit_size = pa_range;
+ 
++    if (ipa_granule_size) {
++        ret = hvf_set_ipa_granule(config, ipa_granule_size);
++        if (ret != HV_SUCCESS) {
++            goto cleanup;
++        }
++    }
++
+     ret = hv_vm_create(config);
+ 
+ cleanup:
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 16febbac48f..395e13f467e 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -225,8 +225,16 @@ int hvf_arch_init(void)
+     return 0;
+ }
+ 
+-hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
++hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range,
++                               uint32_t ipa_granule_size)
+ {
++    uint64_t page_size = qemu_real_host_page_size();
++
++    if (ipa_granule_size != 0 && ipa_granule_size != page_size) {
++        error_report("Only supported IPA granule size: 0x%llx", page_size);
++        return HV_UNSUPPORTED;
++    }
++
+     return hv_vm_create(HV_VM_DEFAULT);
+ }
+ 
+-- 
+2.50.1 (Apple Git-155)
 
 

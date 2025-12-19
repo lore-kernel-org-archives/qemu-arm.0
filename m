@@ -4,81 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A3B4E66884
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Dec 2025 18:47:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B13E7D78770
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Dec 2025 19:09:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vWfVI-0001cN-1h; Fri, 19 Dec 2025 13:47:04 -0500
+	id 1vWfqT-0000a8-MI; Fri, 19 Dec 2025 14:08:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vWfVG-0001bt-Rc
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 13:47:02 -0500
-Received: from p-west2-cluster5-host8-snip4-3.eps.apple.com ([57.103.71.76]
- helo=outbound.mr.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vWfVD-00026M-UF
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 13:47:02 -0500
-Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-10 (Postfix) with ESMTPS id
- D750C18000B8; Fri, 19 Dec 2025 18:46:55 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=Bep4jY7Sk3/bKH7xP2oBaX1JqNU6QYuP245WqL4hHfk=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=dDAVy/P7UJ8p43sPQ/u98nqQekUgzaUtcyxYSPusF2n9mRYC8NIfAih5grLlvWIY2Kra3OibOTCG4qfLp3+Bp0AIbfgmc+/cAk7UmUMCCtPRCYlELFdcLJXnqiWT3OjJjeKDgMYPaNAaZ27LQobzWPTWLQChbhXl2lLNR0ICRrIDhXvTKTO2nwpK/+x2n2fwj6+d9T7WIP6Uv+o3WfjYRSLSN5ym/+i1LW5Vwt5bPP0GNVyW69ZXWqqiOdVHanJ+5EbIezLjh74CqV5jJ5DYy2x1nJ30UT8rF9SF4ktiKzsT+aXT17jLBLTheDven+P/l+1eEQyfe+PLSXPAK+w8bQ==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.152.38])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-10 (Postfix) with ESMTPSA id
- 070B91800179; Fri, 19 Dec 2025 18:46:53 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
-Subject: Re: [PATCH] hvf: support changing IPA granule size
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <20251219183716.4379-1-j@getutm.app>
-Date: Fri, 19 Dec 2025 19:46:40 +0100
-Cc: qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>,
- Roman Bolshakov <rbolshakov@ddn.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Mads Ynddal <mads@ynddal.dk>,
- Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <1C0540B1-1D8F-470B-8719-34CF03A93573@unpredictable.fr>
-References: <20251219183716.4379-1-j@getutm.app>
-To: Joelle van Dyne <j@getutm.app>
-X-Mailer: Apple Mail (2.3864.300.41.1.7)
-X-Authority-Info: v=2.4 cv=PNoCOPqC c=1 sm=1 tr=0 ts=69459d9f cx=c_apl:c_pps
- a=9OgfyREA4BUYbbCgc0Y0oA==:117 a=9OgfyREA4BUYbbCgc0Y0oA==:17
- a=IkcTkHD0fZMA:10 a=wP3pNCr1ah4A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=zpFRZEGqInM2nEw2eyEA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-ORIG-GUID: k7TYuDhDoUNzT7QevL-Bi3XlF2FCHfJq
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjE5MDE1OCBTYWx0ZWRfX9S1zcgPu6Ntu
- P+0YY1/bTdYJGsnHW/d7JAN4c24/lREHuMHgFrDY2RT4ZLko73bVeRx9vgKUC2kU9GTg12/ER//
- LsOGfQ9np9dspK6GM7qSYsxS38EHt/6rkBFse0JBFee9/TBUXln2rtszeNalt2IyRVeLKK8piiy
- 5d4uDk9oV36a33yQHFRcFkhzxcI8jblxdtsmmIANS/LP5zjoeC/0IW74Df02fznjhVitqU2FhEu
- 8kbgtxebIXLy3pQC+hzI0/xuLLN+2R6dAmo8dWKDuByfVNIp6mC1EZdD0cuKiVND6nvMS21RJMx
- fUqquyei7W8Cj3Wn8mk
-X-Proofpoint-GUID: k7TYuDhDoUNzT7QevL-Bi3XlF2FCHfJq
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
- definitions=2025-12-19_07,2025-12-17_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- spamscore=0 malwarescore=0 adultscore=0
- clxscore=1030 mlxlogscore=603
- bulkscore=0 mlxscore=0 phishscore=0 classifier=spam authscore=0 adjust=0
- reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2512190158
-X-JNJ: AAAAAAABcwEr3bknGrG3N6kzFuy+fMOM/NDNXeZ8OAReJ0bD+K5w4MWNb1RRcs2DVGpIKGh774elmZMM4XLUsohA9Xxosbf6ZRqG9ufDhp2buIF4u5iaF3dRm6AmrIvmzRyFMl6cYZ1yhtvyW61B+ZpX24Vd0VOFK/AyukMUWdFdDBjOODL45s9mhlK242CUs9B6J/iVW3ZDp6SysHxnDdKkagWxVTzjBs5vupfs56M0/CWrj6B45+g2Qx5/RMc+/iR2OfPzLz/w7FEAm8+w66Y/ia/SmShV1WSy/hbL0yfFSaZSxOy+jdOnVpwkdzZZRfY4f+cDs5XktnjYlcyZ3qAn6YSoxDeXHXP29sz/Vet2qlEeq6nKqEZIzbV/EHw0kQ7XDcvTW0q4JHr1vZqEC3vsOd3jFUI+GQvOUja3rzkXB32oxVHi7FrLn2iQBtOpieV5M3DKStnhSBqeR1W5JqZYDGDKk4imePAIROMBARwSmctPOMHuWmq0NNaNIGUPAcAynUAzu2sk1VWpk/q+Z/v2j8uuUkcOj1o8UTu/5SdezqqUmvsySmAfCr4KcKchddTPs6zLsb3PO1A4bPZG0Rnln22qFkuP8j1iDxGYTncg2nMpKCH5KfVc67j9Uo85SH0qGYl4HcZUvKj3yH5sIsB+lajrSGxFsImf8KP+srdQSo+TBD7c+zYwDpkzRp8PtoY1Dgv8bum4SFmMrHE4/KaPs8/roPUS3Q==
-Received-SPF: pass client-ip=57.103.71.76;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vWfqR-0000Yp-WF
+ for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:08:56 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vWfqP-0006n8-4N
+ for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:08:55 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-4779ce2a624so17216685e9.2
+ for <qemu-arm@nongnu.org>; Fri, 19 Dec 2025 11:08:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1766171332; x=1766776132; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ncJUNebs7ZM73hrk151b27J1wkIMha9Y6kzNKacJdwU=;
+ b=q/94JHsRJ+GkMfyohYwwRRoVvhO7IwzheWujSHlnn6C7IVRmWHYjzCRLg4i9kW1O1u
+ S/6m5EOMiWz7Acqhc1tXE3qtwDece5RLIOaqdrpCniEY6m2ogHmTUKxsHgUkUsrpE6ZA
+ thaZVxRUNimUBCa6bbHzxUFWNGwhe5qzbswrtXF3FsH/YXg6fdN8k7uec2JFkQ7A+wYu
+ zIr4UrEVdNzyVthK0nIrei+ItIMUDVqbARcbecS9kk/ATacZKw3FBJwlmut7bEEi0poa
+ AoYjBeFhiqJ594lICwhce0TNXGxz5LAsgFSAFpru7NcwQ9e1C3RY3/uxuUtOefuKV89r
+ NyFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1766171332; x=1766776132;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=ncJUNebs7ZM73hrk151b27J1wkIMha9Y6kzNKacJdwU=;
+ b=mnapya1N9NWOqFpD8XWysIRejtW3RER7RVT+EHR6gx4tCY6PhDoHOgISkEIIhYoRjw
+ KDSDxp7Ohx4E5yTZl6OB2bn4hR0ApOAbRJ979WGh53HPpRSt7NFW0svHhsoKBFDcIe7B
+ XR9Q1fK2zEe9jylFVLIwgNIB5kJpbFJgBNZ2/4FjpHQbqlXHbTs2zqZJa4IZi9gC6x3z
+ 4H5TbENCqndaeix4OkmBAVlLuDDs4vL3C2FbYXDdzv/qO9+UGY43cFXn4UbMmudongTs
+ WpznGFyx1rpjtBCXtm/J0rMoo4qi5DFmDgxPwHwVgTyRd5Q0EXLdMIxUJTsMnFsB15rL
+ 8QXg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWyKtEBM7ggV475XC7H6vZ1asyuowEFzGQABtydupIyt9/s+hAC/gnR1EqwOtDCPtkqoZl7WL3J2w==@nongnu.org
+X-Gm-Message-State: AOJu0YwmTslgvH33X9ZThN5Kog99xAScTmBnA4691nrG8ZBurzLqrh61
+ mX/1ukC7/lbybCZUBTb+Gqve8uDidV//WmzxjzUYQbkAcgyAwdOG8lVJMx9XFAh+31w=
+X-Gm-Gg: AY/fxX6+q/ZRf4E+66oAWUzQNL0A4VSU8JMl4b647ZBY7eZ/hOADrPHhToA5fLvI96p
+ eOUEXNAiGAQw8w7XoXB+8VQLoIVOnFnLU2UrNrCfPKib7gaarSs3NrK+fUgchMwMty6YJC0lId6
+ E8cA9N5hODTDPAp9Q+gWu/ZGleANFlANSZqWYpL7fw0e2WvkZO53QlukKRYZR/S8ibzLeFk4OXT
+ CYa9ZUGriV9ZIHFOfyvICgb3rYgnzOF5OPxETo+gK1/hhW0NCG8XJkb6uWi9isuvSHrBZqA/pIn
+ +x1gyt8PRi+gqeQTn4h73enxfLwdml+/VcFbwQ/YAmqZqqi5vbSnw14AbCZwjHk3ip9iiOIdYs/
+ GTMXmoIMFunPu3rL/tInKIV8277kmCmH2/aJYF2nxqTvyHUPEGba5LT06uyVcVv96KnVbkoOeyM
+ ojaAFXAUEqR9A=
+X-Google-Smtp-Source: AGHT+IEDTpOPtHHV4qDExkgs8HlMd1I1k+4FnT1Ic9yNZd92whd1zb5UBPyt+JRb0F5YDM9/M10TLw==
+X-Received: by 2002:a05:600c:4709:b0:477:9aeb:6a8f with SMTP id
+ 5b1f17b1804b1-47d220b7f4dmr2062125e9.9.1766171331612; 
+ Fri, 19 Dec 2025 11:08:51 -0800 (PST)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4324eaa2bdfsm6615321f8f.32.2025.12.19.11.08.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 19 Dec 2025 11:08:50 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id EA01C5F87A;
+ Fri, 19 Dec 2025 19:08:49 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Yanan Wang <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Alwalid Salama <asalama@qti.qualcomm.com>, qemu-arm@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Riku Voipio <riku.voipio@iki.fi>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Mark Burton <mburton@qti.qualcomm.com>, Laurent Vivier <laurent@vivier.eu>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Alex Bradbury <asb@igalia.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ qemu-stable@nongnu.org
+Subject: [RFC PATCH 01/12] contrib/plugins/hotblocks: Correctly free sorted
+ counts list
+Date: Fri, 19 Dec 2025 19:08:38 +0000
+Message-ID: <20251219190849.238323-2-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20251219190849.238323-1-alex.bennee@linaro.org>
+References: <20251219190849.238323-1-alex.bennee@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,66 +122,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello,
+From: Alex Bradbury <asb@igalia.com>
 
-> On 19. Dec 2025, at 19:37, Joelle van Dyne <j@getutm.app> wrote:
->=20
-> The IPA granule is the smallest page size hv_vm_map() support. For =
-Venus, we
-> need to support 4KiB pages. macOS 26 introduces a public API for =
-setting
-> the granule size. We can only use this when compiled with macOS 26 SDK =
-and
-> run on macOS 26+. Otherwise, we fall back to an older, private, API =
-which
-> achieves the same purpose.
->=20
+g_list_free should be passed the head of the list.
 
-Let=E2=80=99s have an HVF_NO_PRIVATE_API define (or the opposite) to =
-have a single toggle to disable all private API use at build time
+Signed-off-by: Alex Bradbury <asb@igalia.com>
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-ID: <0529ab0212aae1e4a5ff3c287045acc0731e5d01.1764716538.git.asb@igalia.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: qemu-stable@nongnu.org
+---
+ contrib/plugins/hotblocks.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-> +
-> +    /* older macOS need to use a private API */
-> +    if (!set_ipa_granule) {
-> +        set_ipa_granule =3D dlsym(RTLD_NEXT, =
-"_hv_vm_config_set_ipa_granule");
-> +    }
-> +    if (set_ipa_granule) {
-> +        return set_ipa_granule(config, ipa_granule_size);
-> +    } else if (ipa_granule_size !=3D page_size) {
-> +        error_report("Failed to find _hv_vm_config_set_ipa_granule");
-> +        return HV_UNSUPPORTED;
-> +    }
-> +
-> +    return HV_SUCCESS;
-> +}
-> +
-> +hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range,
-> +                               uint32_t ipa_granule_size)
-> {
->     hv_return_t ret;
->     hv_vm_config_t config =3D hv_vm_config_create();
-> @@ -891,6 +932,13 @@ hv_return_t hvf_arch_vm_create(MachineState *ms, =
-uint32_t pa_range)
->     }
->     chosen_ipa_bit_size =3D pa_range;
->=20
-The PA range is actually different depending on the IPA granule size.
-
-An example from M4 Max:
-
-% sysctl -a | grep ipa
-kern.hv.ipa_size_16k: 4398046511104
-kern.hv.ipa_size_4k: 1099511627776
-
-> +    if (ipa_granule_size) {
-> +        ret =3D hvf_set_ipa_granule(config, ipa_granule_size);
-> +        if (ret !=3D HV_SUCCESS) {
-> +            goto cleanup;
-> +        }
-> +    }
-> +
->     ret =3D hv_vm_create(config);
->=20
+diff --git a/contrib/plugins/hotblocks.c b/contrib/plugins/hotblocks.c
+index 98404b68852..d3dd23ed9fa 100644
+--- a/contrib/plugins/hotblocks.c
++++ b/contrib/plugins/hotblocks.c
+@@ -73,15 +73,16 @@ static void exec_count_free(gpointer key, gpointer value, gpointer user_data)
+ static void plugin_exit(qemu_plugin_id_t id, void *p)
+ {
+     g_autoptr(GString) report = g_string_new("collected ");
+-    GList *counts, *it;
++    GList *counts, *sorted_counts, *it;
+     int i;
+ 
+     g_string_append_printf(report, "%d entries in the hash table\n",
+                            g_hash_table_size(hotblocks));
+     counts = g_hash_table_get_values(hotblocks);
+-    it = g_list_sort_with_data(counts, cmp_exec_count, NULL);
++    sorted_counts = g_list_sort_with_data(counts, cmp_exec_count, NULL);
+ 
+-    if (it) {
++    if (sorted_counts) {
++        it = sorted_counts;
+         g_string_append_printf(report, "pc, tcount, icount, ecount\n");
+ 
+         for (i = 0; i < limit && it->next; i++, it = it->next) {
+@@ -94,7 +95,7 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
+                     qemu_plugin_scoreboard_u64(rec->exec_count)));
+         }
+ 
+-        g_list_free(it);
++        g_list_free(sorted_counts);
+     }
+ 
+     qemu_plugin_outs(report->str);
+-- 
+2.47.3
 
 

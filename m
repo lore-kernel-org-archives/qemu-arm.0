@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80D1FE66882
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80DB2E66884
 	for <qemu-arm@archiver.kernel.org>; Fri, 19 Dec 2025 19:10:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vWfqZ-0000eN-Lb; Fri, 19 Dec 2025 14:09:03 -0500
+	id 1vWfqs-0000jP-Dm; Fri, 19 Dec 2025 14:09:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vWfqS-0000Yv-7A
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:08:56 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1vWfqY-0000co-2c
+ for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:09:03 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vWfqP-0006n2-FL
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:08:55 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-47d182a8c6cso6304935e9.1
- for <qemu-arm@nongnu.org>; Fri, 19 Dec 2025 11:08:53 -0800 (PST)
+ id 1vWfqV-0006qS-3N
+ for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:09:01 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-477a219dbcaso18783295e9.3
+ for <qemu-arm@nongnu.org>; Fri, 19 Dec 2025 11:08:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766171331; x=1766776131; darn=nongnu.org;
+ d=linaro.org; s=google; t=1766171338; x=1766776138; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7InpFQ7BTqeavUK3Pc8BqtwXriQXDgmpyYwzlrclqtQ=;
- b=bFov7Yst/kv7x55AGFTTQYiCsPgRXM+cHtldE1A62sN/zyLKY223/3Sp6tq495gzbE
- 8cDjIZPx2aFvTn+zQy48c0uaRd1Je3F36W1gSEWuyKG9hPLCvbu630vX66WGTVqPrQsW
- BrB0sDCyer+ys3wJFRJ8tNNZ18lhHPCCOzcoMYImzQ415JaixcLbcZyWtJydAbw3m2PZ
- g+cZJqUw7NtE1b+XqzDIQIPHAcu0oVytIrrm+EVPTCkRlrwNPyox5h5ShQQQtuBxtxR9
- MEbn3ENwKrn0FiE4CF48U1b2D9lDO3ga+KMvaesebilK92r0r7WDV4B7kqvxN+G58xRB
- WLcQ==
+ bh=exhExtIFkfMLYG9IcRv/g6zEaHCsYLLw3EKLbf6kTV8=;
+ b=L9jS7TA6Olkqqjb4VURbPfJYp7k16GwdX7odVYiejS88xXy2o7AphJsRz+JzOjcldQ
+ 3vczdLvFLGnALH5r4Uchv3+C0AlnrqA68Ph1NwQ38S1Y/w6BMZq3xRuHoGZVJMXX/vhy
+ Of1XQODUe3f8isULCgbSxQa6yUKFBOMQHbqWe2Xmn986hitN4psVrW9q8ZJbzzjJvmDI
+ GCs+Ya5qXYAMXxmtUwXt/8c6Nf0FjxOc2WD8yNXRhxZ0Ei9bsFMzW+PVl9Pi9i3A8j8A
+ KfcGDmfguhY05DPO/OpUP58tdnnk3MCE4Phd0YtULKUxeaIL/jme2vue6rDmI58oRQtB
+ qKjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766171331; x=1766776131;
+ d=1e100.net; s=20230601; t=1766171338; x=1766776138;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=7InpFQ7BTqeavUK3Pc8BqtwXriQXDgmpyYwzlrclqtQ=;
- b=Hutx6mbysDbZDyvDZ2NIJEvRpJOUF2Y+ni+45ojG8s+uQdYH8AGfEBsA8OYzf6fZS5
- F02DeIy9wwqN2Y0eSjlDkZof+/nf7RKyLKNevc/ZR5O99r5w4lX0QDw3N8+L3666ioz7
- uVaGEpn0fZN+1NYOY107PJXwo+HUJGoTtHTXsebOfiPfP737CZoXEF7zP8kS2gMy8XEm
- aCzHLKPsnFIsWGsT58BsFUOL73rw44bXYuh0GI9EYQe6mZrTLR6IeuuJZlcknhj6Ym/5
- SU745X5haqQxu00tr3mS9Vd96e33GGBYQ861ui/tMRUg8RN3pV7lrFvOAPEzHqIHn8rH
- GGEQ==
+ bh=exhExtIFkfMLYG9IcRv/g6zEaHCsYLLw3EKLbf6kTV8=;
+ b=PGcQk/oD+inSgLAndkofjceShEAGeZ2X+KycI7uxm+eZplH42aT6xX//Twj57adUfN
+ 70sFvNV5TqBv9lv+HRta5a32aH3jDQpkCyFlL7dhXrzkDzo5qq/eByNdAG3UXIMl9h15
+ ChfnHiT0gSpUdI/HUGBDhWuNk8aJRq1n2Z7SOUajSHDL4tmbEGeE2iRrm6EWUYZzs81B
+ sW2mUXDkkjV4og/cerCcwocizPNysUBaqATxSsNi8O6Lueamr0go3U0Ol8JvzJ9/xu2M
+ ea9rx/qrDqjHlK0LBorxNxh6u1yiasWCG6S695/RbMA9N3rI+e55wa7g+WlBbMni8UF8
+ CmZQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVmu9Edvx5wsTy8LKXGdollSTYfgBDKF0zo9WBr+BNY5kqpWunhqfQwtSTm2Xgia7dgpUnLGi59ow==@nongnu.org
-X-Gm-Message-State: AOJu0Yw+3EeLbLTtDi1h49m+wN18YnzNNuqBHnpart/CEVbuNa2T9NCP
- NPFREBwK1L1Cg3gf15HIdKmWbokMMqcZb8fr4XTKIYkZwn9RoJIpOFwvV5esp99b/6s=
-X-Gm-Gg: AY/fxX5dcO/WRdfzPCssxcFILC3fO11GMUDOudmZHRIDPxR2cS91tF+/J9we2LBCQXZ
- LWMHb9tEYIVFUrSofbTJSxo2QO0ksYF6vacq5c2GDquIA4m9L8k0SCrFvfR/r8Oinjol0Rn1O+6
- /+q4SvjCrMZh9mgVC/kGDRJTsK1qSnUpYwf9YefhTJHSl0Urmm0FDGja9PJJufdSyyT2swGwEeS
- B4aakEAHZXovz0b/j169XKYZzWfeuvykGO3SuUPlEioctM8jptRUbUsegHaCPSlKg1cmzikYXy6
- OrX9QGeLiwwPvRGFgT8FzQUq3mP7RyG5h6MXSLQV8ukin7YLEhj2FFArxgxqy/iTd95A7AP+vab
- wXC2+Th3MhgoTZX/1iOL5ZTBgM4x5viiOqq/8a+f6HKoVuH0J8m4rdbg3Uow3Sv6kQ3cFil47BB
- 8C2buvj00BAP8=
-X-Google-Smtp-Source: AGHT+IGjJ4d/5pjemsnQ0AshvMwPrp7duwimLFoMgWxw1v60VDF7w1sETbryDdVo+y/CrlNQVCnXZA==
-X-Received: by 2002:a05:600c:6211:b0:45d:e28c:875a with SMTP id
- 5b1f17b1804b1-47d19598fdemr35889845e9.31.1766171331276; 
- Fri, 19 Dec 2025 11:08:51 -0800 (PST)
+ AJvYcCXeiEH57XqRBLQENQPiLR8cCb1bke2GCKNEFJlkehgW/U0K8BXsjq7O7u9BHWx5QxPwwJwfR00rZA==@nongnu.org
+X-Gm-Message-State: AOJu0Yyc+6QKW+T/CIeS4sarZEubdpGPDR2uUk5l9DC1ofXAMccKpAPa
+ 2cvkLpuoFnulgf+8KKHwv4b00G/nIBaF93RZbUSIsVdBIyAV1DtyjkdtbXhj0J1IPYk=
+X-Gm-Gg: AY/fxX6ygn9fSl5bKXq/OxHz6mR6psVWFvvcNPJc3f7LwpFFERpozoDqSQ2qfv/xxVs
+ JEiJagKTmvVEJYZSw37hp3Jvj3O5P+wVOCC15SJ3TsZvrfeblyGEFUYarVg8hyjYWpNNFgEcPUC
+ ZME+Zh5ELLM7zV+euJHVhRaVyC9V2gj0BuES1nePp1fQq1GRgrWoSbS9uZRAZGJ47uXfU/O/32M
+ y+CH3b4x6+YNI40bcIUm3gxw+4fn+cuBWE+S+LEtgorN47vvM1KOpNOKfj36YqjptQznTuUtPg/
+ DOT0o6lB0gAw6iwpsURqJS5XuLOhAyRnVGbGAwmxO/rKg9mcvNVQw9DQGrf8XhU5nLHUAtvLXd8
+ PsCWj/iC6GbRN6/o/DpVEUDrMxz/vaWAEY0edc2bGFfBTzmOJrdrKcNJH2UkjKgMg7t5ETyHms2
+ o7h1LxsxRDx2g=
+X-Google-Smtp-Source: AGHT+IFJALMRzI5PGuNMXQPR8fO9l2JZcG1tkgYlhqKkofOlFKniutHsE5LdORNLcgPau9hBLUaCrw==
+X-Received: by 2002:a05:600c:1d1d:b0:477:9c73:267f with SMTP id
+ 5b1f17b1804b1-47d195aa4bfmr43379675e9.33.1766171337575; 
+ Fri, 19 Dec 2025 11:08:57 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47be273e4d5sm112790995e9.6.2025.12.19.11.08.50
+ 5b1f17b1804b1-47be273e4d5sm112791785e9.6.2025.12.19.11.08.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 19 Dec 2025 11:08:50 -0800 (PST)
+ Fri, 19 Dec 2025 11:08:53 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 0CB2E5FC1E;
+ by draig.lan (Postfix) with ESMTP id 959B5600A1;
  Fri, 19 Dec 2025 19:08:50 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -85,26 +85,25 @@ Cc: Yanan Wang <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Alexandre Iooss <erdnaxe@crans.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Alex Bradbury <asb@igalia.com>, qemu-stable@nongnu.org
-Subject: [RFC PATCH 02/12] contrib/plugins/hotblocks: Fix off by one error in
- iteration of sorted blocks
-Date: Fri, 19 Dec 2025 19:08:39 +0000
-Message-ID: <20251219190849.238323-3-alex.bennee@linaro.org>
+ Ziyang Zhang <functioner@sjtu.edu.cn>, Mingyuan Xia <xiamy@ultrarisc.com>
+Subject: [RFC PATCH 07/12] linux-user: add plugin API to filter syscalls
+Date: Fri, 19 Dec 2025 19:08:44 +0000
+Message-ID: <20251219190849.238323-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251219190849.238323-1-alex.bennee@linaro.org>
 References: <20251219190849.238323-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,39 +119,259 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Alex Bradbury <asb@igalia.com>
+From: Ziyang Zhang <functioner@sjtu.edu.cn>
 
-The logic to iterate over the hottest blocks will never reach the last
-item in the list, as it checks `it->next != NULL` before entering the
-loop. It's hard to trigger this off-by-one error with the default
-limit=20, but it is a bug and is problematic if that default is changed
-to something larger.
+This commit adds a syscall filter API to the TCG plugin API set.
+Plugins can register a filter callback to QEMU to decide whether
+to intercept a syscall, process it and bypass the QEMU syscall
+handler.
 
-Signed-off-by: Alex Bradbury <asb@igalia.com>
+Signed-off-by: Ziyang Zhang <functioner@sjtu.edu.cn>
+Co-authored-by: Mingyuan Xia <xiamy@ultrarisc.com>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-ID: <2e1c404fd21d064610391ebb2ffe24d0c536f8dd.1764716538.git.asb@igalia.com>
+Message-ID: <20251214144620.179282-2-functioner@sjtu.edu.cn>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: qemu-stable@nongnu.org
 ---
- contrib/plugins/hotblocks.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ include/qemu/plugin-event.h  |  1 +
+ include/qemu/plugin.h        | 33 +++++++++++++++++++++++---------
+ include/qemu/qemu-plugin.h   | 32 +++++++++++++++++++++++++++++++
+ include/user/syscall-trace.h | 17 +++++++++++++++++
+ linux-user/syscall.c         |  7 +++++--
+ plugins/api.c                |  7 +++++++
+ plugins/core.c               | 37 ++++++++++++++++++++++++++++++++++++
+ 7 files changed, 123 insertions(+), 11 deletions(-)
 
-diff --git a/contrib/plugins/hotblocks.c b/contrib/plugins/hotblocks.c
-index d3dd23ed9fa..cf4d6b8c363 100644
---- a/contrib/plugins/hotblocks.c
-+++ b/contrib/plugins/hotblocks.c
-@@ -82,10 +82,9 @@ static void plugin_exit(qemu_plugin_id_t id, void *p)
-     sorted_counts = g_list_sort_with_data(counts, cmp_exec_count, NULL);
+diff --git a/include/qemu/plugin-event.h b/include/qemu/plugin-event.h
+index 1100dae2123..7f3c5927f1f 100644
+--- a/include/qemu/plugin-event.h
++++ b/include/qemu/plugin-event.h
+@@ -23,6 +23,7 @@ enum qemu_plugin_event {
+     QEMU_PLUGIN_EV_VCPU_INTERRUPT,
+     QEMU_PLUGIN_EV_VCPU_EXCEPTION,
+     QEMU_PLUGIN_EV_VCPU_HOSTCALL,
++    QEMU_PLUGIN_EV_VCPU_SYSCALL_FILTER,
+     QEMU_PLUGIN_EV_MAX, /* total number of plugin events we support */
+ };
  
-     if (sorted_counts) {
--        it = sorted_counts;
-         g_string_append_printf(report, "pc, tcount, icount, ecount\n");
+diff --git a/include/qemu/plugin.h b/include/qemu/plugin.h
+index cea0a68858b..91df1e78d2c 100644
+--- a/include/qemu/plugin.h
++++ b/include/qemu/plugin.h
+@@ -55,15 +55,16 @@ void qemu_plugin_opt_parse(const char *optstr, QemuPluginList *head);
+ int qemu_plugin_load_list(QemuPluginList *head, Error **errp);
  
--        for (i = 0; i < limit && it->next; i++, it = it->next) {
-+        for (i = 0, it = sorted_counts; i < limit && it; i++, it = it->next) {
-             ExecCount *rec = (ExecCount *) it->data;
-             g_string_append_printf(
-                 report, "0x%016"PRIx64", %d, %ld, %"PRId64"\n",
+ union qemu_plugin_cb_sig {
+-    qemu_plugin_simple_cb_t          simple;
+-    qemu_plugin_udata_cb_t           udata;
+-    qemu_plugin_vcpu_simple_cb_t     vcpu_simple;
+-    qemu_plugin_vcpu_udata_cb_t      vcpu_udata;
+-    qemu_plugin_vcpu_discon_cb_t     vcpu_discon;
+-    qemu_plugin_vcpu_tb_trans_cb_t   vcpu_tb_trans;
+-    qemu_plugin_vcpu_mem_cb_t        vcpu_mem;
+-    qemu_plugin_vcpu_syscall_cb_t    vcpu_syscall;
+-    qemu_plugin_vcpu_syscall_ret_cb_t vcpu_syscall_ret;
++    qemu_plugin_simple_cb_t              simple;
++    qemu_plugin_udata_cb_t               udata;
++    qemu_plugin_vcpu_simple_cb_t         vcpu_simple;
++    qemu_plugin_vcpu_udata_cb_t          vcpu_udata;
++    qemu_plugin_vcpu_discon_cb_t         vcpu_discon;
++    qemu_plugin_vcpu_tb_trans_cb_t       vcpu_tb_trans;
++    qemu_plugin_vcpu_mem_cb_t            vcpu_mem;
++    qemu_plugin_vcpu_syscall_cb_t        vcpu_syscall;
++    qemu_plugin_vcpu_syscall_ret_cb_t    vcpu_syscall_ret;
++    qemu_plugin_vcpu_syscall_filter_cb_t vcpu_syscall_filter;
+     void *generic;
+ };
+ 
+@@ -169,6 +170,11 @@ qemu_plugin_vcpu_syscall(CPUState *cpu, int64_t num, uint64_t a1,
+                          uint64_t a2, uint64_t a3, uint64_t a4, uint64_t a5,
+                          uint64_t a6, uint64_t a7, uint64_t a8);
+ void qemu_plugin_vcpu_syscall_ret(CPUState *cpu, int64_t num, int64_t ret);
++bool
++qemu_plugin_vcpu_syscall_filter(CPUState *cpu, int64_t num, uint64_t a1,
++                                uint64_t a2, uint64_t a3, uint64_t a4,
++                                uint64_t a5, uint64_t a6, uint64_t a7,
++                                uint64_t a8, uint64_t *ret);
+ 
+ void qemu_plugin_vcpu_mem_cb(CPUState *cpu, uint64_t vaddr,
+                              uint64_t value_low,
+@@ -280,6 +286,15 @@ static inline
+ void qemu_plugin_vcpu_syscall_ret(CPUState *cpu, int64_t num, int64_t ret)
+ { }
+ 
++static inline bool
++qemu_plugin_vcpu_syscall_filter(CPUState *cpu, int64_t num, uint64_t a1,
++                                uint64_t a2, uint64_t a3, uint64_t a4,
++                                uint64_t a5, uint64_t a6, uint64_t a7,
++                                uint64_t a8, uint64_t *ret)
++{
++    return false;
++}
++
+ static inline void qemu_plugin_vcpu_mem_cb(CPUState *cpu, uint64_t vaddr,
+                                            uint64_t value_low,
+                                            uint64_t value_high,
+diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
+index 29663591ebf..e8db7a72545 100644
+--- a/include/qemu/qemu-plugin.h
++++ b/include/qemu/qemu-plugin.h
+@@ -798,6 +798,33 @@ typedef void
+                                  uint64_t a3, uint64_t a4, uint64_t a5,
+                                  uint64_t a6, uint64_t a7, uint64_t a8);
+ 
++/**
++ * typedef qemu_plugin_vcpu_syscall_filter_cb_t - vCPU syscall filter callback
++ * function type
++ * @id: plugin id
++ * @vcpu_index: the executing vCPU
++ * @num: the syscall number
++ * @a1: the 1st syscall argument
++ * @a2: the 2nd syscall argument
++ * @a3: the 3rd syscall argument
++ * @a4: the 4th syscall argument
++ * @a5: the 5th syscall argument
++ * @a6: the 6th syscall argument
++ * @a7: the 7th syscall argument
++ * @a8: the 8th syscall argument
++ * @sysret: reference of the syscall return value, must set this if filtered
++ *
++ * Returns true if you want to filter this syscall (i.e. stop it being
++ * handled further), otherwise returns false.
++ */
++typedef bool
++(*qemu_plugin_vcpu_syscall_filter_cb_t)(qemu_plugin_id_t id,
++                                        unsigned int vcpu_index,
++                                        int64_t num, uint64_t a1, uint64_t a2,
++                                        uint64_t a3, uint64_t a4, uint64_t a5,
++                                        uint64_t a6, uint64_t a7, uint64_t a8,
++                                        uint64_t *sysret);
++
+ QEMU_PLUGIN_API
+ void qemu_plugin_register_vcpu_syscall_cb(qemu_plugin_id_t id,
+                                           qemu_plugin_vcpu_syscall_cb_t cb);
+@@ -811,6 +838,11 @@ void
+ qemu_plugin_register_vcpu_syscall_ret_cb(qemu_plugin_id_t id,
+                                          qemu_plugin_vcpu_syscall_ret_cb_t cb);
+ 
++QEMU_PLUGIN_API
++void
++qemu_plugin_register_vcpu_syscall_filter_cb(qemu_plugin_id_t id,
++                                            qemu_plugin_vcpu_syscall_filter_cb_t cb);
++
+ 
+ /**
+  * qemu_plugin_insn_disas() - return disassembly string for instruction
+diff --git a/include/user/syscall-trace.h b/include/user/syscall-trace.h
+index 9bd7ca19c84..4ee6c4e5134 100644
+--- a/include/user/syscall-trace.h
++++ b/include/user/syscall-trace.h
+@@ -39,5 +39,22 @@ static inline void record_syscall_return(CPUState *cpu, int num, abi_long ret)
+     gdb_syscall_return(cpu, num);
+ }
+ 
++static bool send_through_syscall_filters(CPUState *cpu, int num,
++                                         abi_long arg1, abi_long arg2,
++                                         abi_long arg3, abi_long arg4,
++                                         abi_long arg5, abi_long arg6,
++                                         abi_long arg7, abi_long arg8,
++                                         abi_long *sysret)
++{
++    uint64_t sysret64 = 0;
++    bool filtered = qemu_plugin_vcpu_syscall_filter(cpu, num, arg1, arg2,
++                                                    arg3, arg4, arg5, arg6,
++                                                    arg7, arg8, &sysret64);
++    if (filtered) {
++        *sysret = sysret64;
++    }
++    return filtered;
++}
++
+ 
+ #endif /* SYSCALL_TRACE_H */
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 2060e561a20..9ae3c5bfbd7 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -14201,8 +14201,11 @@ abi_long do_syscall(CPUArchState *cpu_env, int num, abi_long arg1,
+         print_syscall(cpu_env, num, arg1, arg2, arg3, arg4, arg5, arg6);
+     }
+ 
+-    ret = do_syscall1(cpu_env, num, arg1, arg2, arg3, arg4,
+-                      arg5, arg6, arg7, arg8);
++    if (!send_through_syscall_filters(cpu, num, arg1, arg2, arg3, arg4, arg5,
++                                      arg6, arg7, arg8, &ret)) {
++        ret = do_syscall1(cpu_env, num, arg1, arg2, arg3, arg4,
++                          arg5, arg6, arg7, arg8);
++    }
+ 
+     if (unlikely(qemu_loglevel_mask(LOG_STRACE))) {
+         print_syscall_ret(cpu_env, num, ret, arg1, arg2,
+diff --git a/plugins/api.c b/plugins/api.c
+index 267fa2fd503..a98c0d3e41a 100644
+--- a/plugins/api.c
++++ b/plugins/api.c
+@@ -208,6 +208,13 @@ qemu_plugin_register_vcpu_syscall_ret_cb(qemu_plugin_id_t id,
+     plugin_register_cb(id, QEMU_PLUGIN_EV_VCPU_SYSCALL_RET, cb);
+ }
+ 
++void
++qemu_plugin_register_vcpu_syscall_filter_cb(qemu_plugin_id_t id,
++                                            qemu_plugin_vcpu_syscall_filter_cb_t cb)
++{
++    plugin_register_cb(id, QEMU_PLUGIN_EV_VCPU_SYSCALL_FILTER, cb);
++}
++
+ /*
+  * Plugin Queries
+  *
+diff --git a/plugins/core.c b/plugins/core.c
+index b4b783008f7..85fabf9ec81 100644
+--- a/plugins/core.c
++++ b/plugins/core.c
+@@ -564,6 +564,43 @@ void qemu_plugin_vcpu_syscall_ret(CPUState *cpu, int64_t num, int64_t ret)
+     }
+ }
+ 
++/*
++ * Disable CFI checks.
++ * The callback function has been loaded from an external library so we do not
++ * have type information
++ */
++QEMU_DISABLE_CFI
++bool
++qemu_plugin_vcpu_syscall_filter(CPUState *cpu, int64_t num, uint64_t a1,
++                                uint64_t a2, uint64_t a3, uint64_t a4,
++                                uint64_t a5, uint64_t a6, uint64_t a7,
++                                uint64_t a8, uint64_t *sysret)
++{
++    struct qemu_plugin_cb *cb, *next;
++    enum qemu_plugin_event ev = QEMU_PLUGIN_EV_VCPU_SYSCALL_FILTER;
++    bool filtered = false;
++
++    if (!test_bit(ev, cpu->plugin_state->event_mask)) {
++        return false;
++    }
++
++    qemu_plugin_set_cb_flags(cpu, QEMU_PLUGIN_CB_RW_REGS);
++
++    QLIST_FOREACH_SAFE_RCU(cb, &plugin.cb_lists[ev], entry, next) {
++        qemu_plugin_vcpu_syscall_filter_cb_t func = cb->f.vcpu_syscall_filter;
++
++        if (func(cb->ctx->id, cpu->cpu_index, num, a1, a2, a3, a4,
++                 a5, a6, a7, a8, sysret)) {
++            filtered = true;
++            break;
++        }
++    }
++
++    qemu_plugin_set_cb_flags(cpu, QEMU_PLUGIN_CB_NO_REGS);
++
++    return filtered;
++}
++
+ void qemu_plugin_vcpu_idle_cb(CPUState *cpu)
+ {
+     /* idle and resume cb may be called before init, ignore in this case */
 -- 
 2.47.3
 

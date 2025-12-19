@@ -4,90 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4E41D74961
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Dec 2025 07:06:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 010E8D7495D
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Dec 2025 08:20:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vWUXo-00043Q-PD; Fri, 19 Dec 2025 02:04:56 -0500
+	id 1vWVij-0001L3-Sz; Fri, 19 Dec 2025 03:20:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3D_lEaQYKCGYcYFMRdKSSKPI.GSQUIQY-EVQRSRKRY.SVK@flex--yubinz.bounces.google.com>)
- id 1vWUXm-0003wy-Qv
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 02:04:54 -0500
-Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3D_lEaQYKCGYcYFMRdKSSKPI.GSQUIQY-EVQRSRKRY.SVK@flex--yubinz.bounces.google.com>)
- id 1vWUXk-0001jb-N5
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 02:04:54 -0500
-Received: by mail-pg1-x549.google.com with SMTP id
- 41be03b00d2f7-b630753cc38so2529132a12.1
- for <qemu-arm@nongnu.org>; Thu, 18 Dec 2025 23:04:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1766127888; x=1766732688; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=oHDRDOqYpkKjKejrjXjhauncK/XJBUAP2DgWEeIg1RQ=;
- b=Bc4YhuDZi/vtNzKMz022YUDjg0jCoMfkweS55JA2sqfiwHDQRtnkuFQ1U12w1RcaGU
- QWXf0aPOz36Sau+9TtcpwZ8eAxgEpiQFaxmfLJjWmcqdxdxIuRDSZB71M2aOpBHSX1gZ
- TAbRr7FW2gaGm32wArfvBTmrc+JYHzDrzORyofrhp4tS/jz0ixMTcQOS+J2TGqmVq8BX
- HHrddEU9ISmNggkBY58f280g+/oYR5bJwIpI2cKw3UVRKGvHLXy1qFDfBBCQ/oOrtcJI
- 5j/EzJtnE6ehQghQoMJmYb8NyDGQbqqj1r7uLrom03kzGAbXmSKHXauR+ZweOp+WTGG8
- 8+xg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766127888; x=1766732688;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oHDRDOqYpkKjKejrjXjhauncK/XJBUAP2DgWEeIg1RQ=;
- b=HSVdx4g81ypbOXHeOuk2vitEPO4NdwkoZrSgmPdf6bVn/zC4684l0L3/xAux8hY1G4
- 6e+U8oQY46eSdWZO3yNMkHJND2uL/l3+hXPXWMFl1yTikNnLvTHdR/uT9jfnBjRNEK8m
- Fle2XKkVKvddVsLD1dq4KhvQOPsYSrLlb/DzgLGZ2UiLtcrTNJwZkP1VznbDkNjySrPN
- b1AdSSdjmmKiOALeqPpvoGcDEpZ8ltojWxjOSmLUvPphqqOGnVkzEDpvbzeR2mdvs9x/
- 8DPrwg8sp+m9SMYuED45ba8yToihssccgNHKKvm9SymYNQDOv093WqlUWMtK2dnKJaWf
- +OVw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWBWr2fVa2GEkkkSgY1qD00BLh0pNykC936HRYesFdHm/Ou+uqi5kzPdnO2ghq4sRlWxBQwkdNw1w==@nongnu.org
-X-Gm-Message-State: AOJu0YwUEzSkANeaZqDfWcHj2iUUt683DighiNtLPKSTopvClnxW/4MA
- baUbULoN2QCK9Nv9BiQU3L3ugqMYRh6ITgnSvI5u3ULvFSo8KCSkfcgCqV8RNiySgkir8vMnKiB
- zW9JpeQ==
-X-Google-Smtp-Source: AGHT+IFCdANWyDLHMdIGZ7AMDeW9wvvBUmAM0nylH1FzibGZule8+w2XFmfbG48uF4nukcLQ+xQAtbFK+EI=
-X-Received: from dlbsw5.prod.google.com ([2002:a05:7022:3a85:b0:11b:b064:f5dc])
- (user=yubinz job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:7022:3c88:b0:11a:6424:f40f
- with SMTP id a92af1059eb24-121722fd1e7mr1630420c88.36.1766127887918; Thu, 18
- Dec 2025 23:04:47 -0800 (PST)
-Date: Fri, 19 Dec 2025 07:04:19 +0000
-In-Reply-To: <20251219-aspeed-sgpio-v5-0-fd5593178144@google.com>
-Mime-Version: 1.0
-References: <20251219-aspeed-sgpio-v5-0-fd5593178144@google.com>
-X-Mailer: b4 0.14.2
-Message-ID: <20251219-aspeed-sgpio-v5-6-fd5593178144@google.com>
-Subject: [PATCH v5 6/6] test/qtest: Add Unit test for Aspeed SGPIO
-From: Yubin Zou <yubinz@google.com>
-To: qemu-devel@nongnu.org
-Cc: "=?utf-8?q?C=C3=A9dric_Le_Goater?=" <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>, 
- Nabih Estefan <nabihestefan@google.com>, qemu-arm@nongnu.org, 
- Yubin Zou <yubinz@google.com>
-Content-Type: text/plain; charset="utf-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
- envelope-from=3D_lEaQYKCGYcYFMRdKSSKPI.GSQUIQY-EVQRSRKRY.SVK@flex--yubinz.bounces.google.com;
- helo=mail-pg1-x549.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1vWVii-0001Kl-9N; Fri, 19 Dec 2025 03:20:16 -0500
+Received: from mgamail.intel.com ([192.198.163.13])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1vWVig-0000bq-8p; Fri, 19 Dec 2025 03:20:16 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1766132414; x=1797668414;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=rbqD8yaIdenCZwbjEjjw/OflDKuC2ytzzOoneMqP9Fc=;
+ b=HOBL+1CT0zHt9OZj5tSl4SWoSkocT/zmSVVlO7kTBsZVy+I70W8DhCcS
+ zuaCoiUnJs2L7LOr5TtUD52D1N0IYmZD+NBqJjDxY/5g/FZ7CPM4qebOP
+ 64w2+FEyeFCZlV+6ACUgL/SL3+o6lnkn+Eqr7cWP2du61q5IFgpQmX2ps
+ hP/PkdbAwJ24bOg0nXRG+ZdMl/38G8BA3sWzz8V0DwOK0lX6YNCpDKYQc
+ udMoy0Ojeq8OuxB3IPHNQBdUY/j0M5vO78JKeJC4I1hoNNiqbBQashFqY
+ bCfDkpXZ0O9xe9/zc+25ZCvB/HfOgwxQdG/P1ZgATKkHJQpNhbgwnTHtz g==;
+X-CSE-ConnectionGUID: mIdrep4iRbGJxeIb6hfTIA==
+X-CSE-MsgGUID: 1pRzE470RNuNJg7/ZZ3dpQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11646"; a="70662220"
+X-IronPort-AV: E=Sophos;i="6.21,159,1763452800"; d="scan'208";a="70662220"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Dec 2025 00:20:10 -0800
+X-CSE-ConnectionGUID: /IV1u42/TVakiYPS8EdN1g==
+X-CSE-MsgGUID: 7sbsnnn2QKuos6f3534EGQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,159,1763452800"; d="scan'208";a="203196386"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.39])
+ by fmviesa005.fm.intel.com with ESMTP; 19 Dec 2025 00:20:01 -0800
+Date: Fri, 19 Dec 2025 16:44:51 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ devel@lists.libvirt.org, kvm@vger.kernel.org, qemu-riscv@nongnu.org,
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Sergio Lopez <slp@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Yi Liu <yi.l.liu@intel.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
+ Weiwei Li <liwei1518@gmail.com>, Amit Shah <amit@kernel.org>,
+ Xiaoyao Li <xiaoyao.li@intel.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ =?iso-8859-1?Q?Cl=E9ment?= Mathieu--Drif <clement.mathieu--drif@eviden.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Huacai Chen <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
+ Jiri Denemark <jdenemar@redhat.com>
+Subject: Re: [PATCH v5 16/28] hw/i386: Remove linuxboot.bin
+Message-ID: <aUUQgyGDiwV7NC0U@intel.com>
+References: <20251202162835.3227894-1-zhao1.liu@intel.com>
+ <20251202162835.3227894-17-zhao1.liu@intel.com>
+ <20251217155530.3353e904@imammedo> <aUOxBg3bVii1HAOx@intel.com>
+ <20251218153333.6cb6e080@imammedo>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20251218153333.6cb6e080@imammedo>
+Received-SPF: pass client-ip=192.198.163.13; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,203 +111,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit introduces a new qtest for the Aspeed SGPIO controller
-The test covers the following:
-  - Setting and clearing SGPIO output pins and verifying the pin state.
-  - Setting and clearing SGPIO input pins and verifying the pin state.
-  - Verifying that level-high interrupts are correctly triggered and cleared.
+> > On Wed, Dec 17, 2025 at 03:55:30PM +0100, Igor Mammedov wrote:
+> > > Date: Wed, 17 Dec 2025 15:55:30 +0100
+> > > From: Igor Mammedov <imammedo@redhat.com>
+> > > Subject: Re: [PATCH v5 16/28] hw/i386: Remove linuxboot.bin
+> > > X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
+> > > 
+> > > On Wed,  3 Dec 2025 00:28:23 +0800
+> > > Zhao Liu <zhao1.liu@intel.com> wrote:
+> > >   
+> > > > From: Philippe Mathieu-Daudé <philmd@linaro.org>
+> > > > 
+> > > > All machines now use the linuxboot_dma.bin binary, so it's safe to
+> > > > remove the non-DMA version (linuxboot.bin).  
+> > > 
+> > > after applying this patch:
+> > > 
+> > > git grep linuxboot.bin
+> > > 
+> > >     option_rom[nb_option_roms].bootindex = 0;                                    
+> > >     option_rom[nb_option_roms].name = "linuxboot.bin";                           
+> > >     if (fw_cfg_dma_enabled(fw_cfg)) {                                            
+> > >         option_rom[nb_option_roms].name = "linuxboot_dma.bin";                   
+> > >     }        
+> > > 
+> > > perhaps it should be fixed in previous patch  
+> > 
+> > Thanks, I find this change was included in the previous patch (patch 15).
+> 
+> Yep, sorry for confusion. /I forgot to apply #15, hence it led to a stray linuxboot.bin/
 
-Signed-off-by: Yubin Zou <yubinz@google.com>
----
- tests/qtest/ast2700-sgpio-test.c | 165 +++++++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build          |   1 +
- 2 files changed, 166 insertions(+)
+You're welcome and thanks for your review!
 
-diff --git a/tests/qtest/ast2700-sgpio-test.c b/tests/qtest/ast2700-sgpio-test.c
-new file mode 100644
-index 0000000000000000000000000000000000000000..14fa4084dad3daedcf78815b05b1282c284f0783
---- /dev/null
-+++ b/tests/qtest/ast2700-sgpio-test.c
-@@ -0,0 +1,165 @@
-+/*
-+ * QTest testcase for the ASPEED AST2700 SGPIO Controller.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2025 Google LLC.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/bitops.h"
-+#include "qobject/qdict.h"
-+#include "libqtest-single.h"
-+#include "hw/registerfields.h"
-+#include "hw/gpio/aspeed_sgpio.h"
-+
-+#define AST2700_SGPIO0_BASE 0x14C0C000
-+#define AST2700_SGPIO1_BASE 0x14C0D000
-+
-+static void test_output_pins(const char *machine, const uint32_t base, int idx)
-+{
-+    QTestState *s = qtest_init(machine);
-+    char name[16];
-+    char qom_path[64];
-+    uint32_t offset = 0;
-+    uint32_t value = 0;
-+    for (int i = 0; i < ASPEED_SGPIO_MAX_PIN_PAIR; i++) {
-+        /* Odd index is output port */
-+        sprintf(name, "sgpio%03d", i * 2 + 1);
-+        sprintf(qom_path, "/machine/soc/sgpio[%d]", idx);
-+        offset = base + (R_SGPIO_0_CONTROL + i) * 4;
-+        /* set serial output */
-+        qtest_writel(s, offset, 0x00000001);
-+        value = qtest_readl(s, offset);
-+        g_assert_cmphex(SHARED_FIELD_EX32(value, SGPIO_SERIAL_OUT_VAL), ==, 1);
-+        g_assert_cmphex(qtest_qom_get_bool(s, qom_path, name), ==, true);
-+
-+        /* clear serial output */
-+        qtest_writel(s, offset, 0x00000000);
-+        value = qtest_readl(s, offset);
-+        g_assert_cmphex(SHARED_FIELD_EX32(value, SGPIO_SERIAL_OUT_VAL), ==, 0);
-+        g_assert_cmphex(qtest_qom_get_bool(s, qom_path, name), ==, false);
-+    }
-+    qtest_quit(s);
-+}
-+
-+static void test_input_pins(const char *machine, const uint32_t base, int idx)
-+{
-+    QTestState *s = qtest_init(machine);
-+    char name[16];
-+    char qom_path[64];
-+    uint32_t offset = 0;
-+    uint32_t value = 0;
-+    for (int i = 0; i < ASPEED_SGPIO_MAX_PIN_PAIR; i++) {
-+        /* Even index is input port */
-+        sprintf(name, "sgpio%03d", i * 2);
-+        sprintf(qom_path, "/machine/soc/sgpio[%d]", idx);
-+        offset = base + (R_SGPIO_0_CONTROL + i) * 4;
-+        /* set serial input */
-+        qtest_qom_set_bool(s, qom_path, name, true);
-+        value = qtest_readl(s, offset);
-+        g_assert_cmphex(SHARED_FIELD_EX32(value, SGPIO_SERIAL_IN_VAL), ==, 1);
-+        g_assert_cmphex(qtest_qom_get_bool(s, qom_path, name), ==, true);
-+
-+        /* clear serial input */
-+        qtest_qom_set_bool(s, qom_path, name, false);
-+        value = qtest_readl(s, offset);
-+        g_assert_cmphex(SHARED_FIELD_EX32(value, SGPIO_SERIAL_IN_VAL), ==, 0);
-+        g_assert_cmphex(qtest_qom_get_bool(s, qom_path, name), ==, false);
-+    }
-+    qtest_quit(s);
-+}
-+
-+static void test_irq_level_high(const char *machine,
-+                                const uint32_t base, int idx)
-+{
-+    QTestState *s = qtest_init(machine);
-+    char name[16];
-+    char qom_path[64];
-+    uint32_t ctrl_offset = 0;
-+    uint32_t int_offset = 0;
-+    uint32_t int_reg_idx = 0;
-+    uint32_t int_bit_idx = 0;
-+    uint32_t value = 0;
-+    for (int i = 0; i < ASPEED_SGPIO_MAX_PIN_PAIR; i++) {
-+        /* Even index is input port */
-+        sprintf(name, "sgpio%03d", i * 2);
-+        sprintf(qom_path, "/machine/soc/sgpio[%d]", idx);
-+        int_reg_idx = i / 32;
-+        int_bit_idx = i % 32;
-+        int_offset = base + (R_SGPIO_INT_STATUS_0 + int_reg_idx) * 4;
-+        ctrl_offset = base + (R_SGPIO_0_CONTROL + i) * 4;
-+
-+        /* Enable the interrupt */
-+        value = SHARED_FIELD_DP32(value, SGPIO_INT_EN, 1);
-+        qtest_writel(s, ctrl_offset, value);
-+
-+        /* Set the interrupt type to level-high trigger */
-+        value = SHARED_FIELD_DP32(qtest_readl(s, ctrl_offset),
-+                                              SGPIO_INT_TYPE, 3);
-+        qtest_writel(s, ctrl_offset, value);
-+
-+        /* Set serial input high */
-+        qtest_qom_set_bool(s, qom_path, name, true);
-+        value = qtest_readl(s, ctrl_offset);
-+        g_assert_cmphex(SHARED_FIELD_EX32(value, SGPIO_SERIAL_IN_VAL), ==, 1);
-+
-+        /* Interrupt status is set */
-+        value = qtest_readl(s, int_offset);
-+        g_assert_cmphex(extract32(value, int_bit_idx, 1), ==, 1);
-+
-+        /* Clear Interrupt */
-+        value = SHARED_FIELD_DP32(qtest_readl(s, ctrl_offset),
-+                                              SGPIO_INT_STATUS, 1);
-+        qtest_writel(s, ctrl_offset, value);
-+        value = qtest_readl(s, int_offset);
-+        g_assert_cmphex(extract32(value, int_bit_idx, 1), ==, 0);
-+
-+        /* Clear serial input */
-+        qtest_qom_set_bool(s, qom_path, name, false);
-+        value = qtest_readl(s, ctrl_offset);
-+        g_assert_cmphex(SHARED_FIELD_EX32(value, SGPIO_SERIAL_IN_VAL), ==, 0);
-+    }
-+    qtest_quit(s);
-+}
-+
-+static void test_ast_2700_sgpio_input(void)
-+{
-+    test_input_pins("-machine ast2700-evb",
-+                    AST2700_SGPIO0_BASE, 0);
-+    test_input_pins("-machine ast2700-evb",
-+                    AST2700_SGPIO1_BASE, 1);
-+}
-+
-+static void test_ast_2700_sgpio_output(void)
-+{
-+    test_output_pins("-machine ast2700-evb",
-+                    AST2700_SGPIO0_BASE, 0);
-+    test_output_pins("-machine ast2700-evb",
-+                    AST2700_SGPIO1_BASE, 1);
-+    test_irq_level_high("-machine ast2700-evb",
-+                    AST2700_SGPIO0_BASE, 0);
-+    test_irq_level_high("-machine ast2700-evb",
-+                    AST2700_SGPIO1_BASE, 1);
-+}
-+
-+static void test_ast_2700_sgpio_irq(void)
-+{
-+    test_irq_level_high("-machine ast2700-evb",
-+                    AST2700_SGPIO0_BASE, 0);
-+    test_irq_level_high("-machine ast2700-evb",
-+                    AST2700_SGPIO1_BASE, 1);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    qtest_add_func("/ast2700/sgpio/ast_2700_sgpio_input",
-+                   test_ast_2700_sgpio_input);
-+    qtest_add_func("/ast2700/sgpio/ast_2700_sgpio_output",
-+                   test_ast_2700_sgpio_output);
-+    qtest_add_func("/ast2700/sgpio/ast_2700_sgpio_irq",
-+                   test_ast_2700_sgpio_irq);
-+
-+    return g_test_run();
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 669d07c06bdedc6be0c69acadeba989dc15ddf3f..5c80b2ed6de1f453d2483db482c1b0e7801ba980 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -221,6 +221,7 @@ qtests_aspeed = \
- qtests_aspeed64 = \
-   ['ast2700-gpio-test',
-    'ast2700-hace-test',
-+   'ast2700-sgpio-test',
-    'ast2700-smc-test']
- 
- qtests_stm32l4x5 = \
-
--- 
-2.52.0.351.gbe84eed79e-goog
+Regards,
+Zhao
 
 

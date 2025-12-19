@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47BC0D78770
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F98DE66886
 	for <qemu-arm@archiver.kernel.org>; Fri, 19 Dec 2025 19:10:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vWfqq-0000i0-J9; Fri, 19 Dec 2025 14:09:20 -0500
+	id 1vWfqn-0000hV-Px; Fri, 19 Dec 2025 14:09:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vWfqX-0000ck-SV
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:09:03 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ id 1vWfqU-0000aI-Mn
+ for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:08:59 -0500
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vWfqU-0006pm-LL
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:09:01 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-47a80d4a065so10311865e9.2
- for <qemu-arm@nongnu.org>; Fri, 19 Dec 2025 11:08:58 -0800 (PST)
+ id 1vWfqR-0006ny-RY
+ for qemu-arm@nongnu.org; Fri, 19 Dec 2025 14:08:58 -0500
+Received: by mail-wm1-x343.google.com with SMTP id
+ 5b1f17b1804b1-477b198f4bcso14983235e9.3
+ for <qemu-arm@nongnu.org>; Fri, 19 Dec 2025 11:08:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766171337; x=1766776137; darn=nongnu.org;
+ d=linaro.org; s=google; t=1766171334; x=1766776134; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=LBlglM9JFPWM18boH0BMxZfCeA1juo9itb3ve4H0EqE=;
- b=Getzhc+vfwMNOdf7+cOOBa2HK6PyGN5FNOsLdHP6pgE75RDSf8BaAcMCtOlFrSoHK6
- XoBdq32Yt/hFSEgqmKNCHu5FZJB1VrUxWCjUABcH4YuKpNRQXi+TUpGCEi92osko9f38
- Eit3uaK2n/WpZhxbDjQ4fobVez3PbzjtG/NEY2RfbuXvYYSHA7IPWpXvH78BNIH9bOmv
- gcDGXtyU0b4UULM0AsDMwjSmVZffyVW0NzbnAlskg7m469/3KwMuaPL7E5AgDUTc8bDM
- hBc29ZuZ/Xxm00I6stgNkJfxmbtmWGjuBJC31zSGfCRdHWSpEVkEVnG8Qtwhf8dS/IvM
- uVtA==
+ bh=IXQ0JVIP0porfp6WIA5UdBF+RCWCKfVXfAFfgt7VfmE=;
+ b=v7UefhSY9E48jM0jLjci2eOy3je2CNFw0qkLH0Uqp2xEspeU0ErWis1Svhub2ty8hz
+ FcccUfnw4eUTF+/+KhiOSnOnLmhujkSf+cG2967vtICHjHYqMr/8JDga78sy/HnzYCrF
+ THtTiWZLN4h4P9Qoi3r2tqf0xL3yuGn3qzRF/NB/wBRwr5911cvMDyCt4pBIRmu3WUwb
+ 7ZmdTZ1r4vIcrAgFcAPjzul3EHpW+8VTl0jnVn6vM3hTLQmQzhEDzP0HDV0zVeGXBD/s
+ LIEe9sb8mHg4KQFpfGaG9GlhrV17vevcdV57pCXKIODodR6uj7D3TW1MM7gkV8tfC6Xm
+ V/GA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766171337; x=1766776137;
+ d=1e100.net; s=20230601; t=1766171334; x=1766776134;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=LBlglM9JFPWM18boH0BMxZfCeA1juo9itb3ve4H0EqE=;
- b=sYzRnN7vWGWhH4XzFDKETtfaeEI3MLmno5PZIEoKTFGYZ1SRu/iI3gQa0zE/wXBZkj
- 0Krh8qiiLc7Dv743ZNI6IPcatm8for8nrJeo8BZMVlSPYQuUI1WG35NSELspOH5zXyMT
- VYbEktKsMniQmDAxJ5gnb2mY6+cyck6YwkWl6znln9ZdC0Iqafi9CFFvstKuMoOVxXLf
- gsdId7IKO/PT7SatpcWPDJxIQTNdj145YZv3lKdoB4SN1rYazDGbDxu1yJTQNsivb5FP
- 2SLxJLEvLlqkobiFl92LiLfSuK5ebwPXyCO6tpcW7EfDjljHaqIWMVXTe9/SVMHPU6KY
- n4uA==
+ bh=IXQ0JVIP0porfp6WIA5UdBF+RCWCKfVXfAFfgt7VfmE=;
+ b=MYDzzHz5r+YH9ercwCgkudKrbezWDtfPC12JIEjHQ3lGYWb/0FODXFaF7QS9Kwr5Wy
+ veAjDCiwUye3C7DszrNw4Ylz5sSvCLj+Y4WoHiTH6s/nUEV58uOWXMFad1pBxonIRAsb
+ F6c1HstGf8L+vId4x6ZYAhGNYsaqZQZS8KhVWHbE3VUzNuqjGCRNj/efTrY3HyH5VQcJ
+ QgarVctPqYtjpTRmYzAWrFvIDw7VSzUYormFbSvjlKdiyktFB+gHi9DPmkkLWDIK6Yt4
+ Hzy7Hn3Y8fiTOp75Se99LaAwChuOCB6vhXLPrNCH+z8v9oXAFSfyEE1BJqz6Xaq4dXik
+ FZUg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWmN80wS4Kwu73fHMCgcwuieH7oCuUBDePctYgux51yjAHdIPm/wND4cfJSau/FOpoTREEdGPOz5g==@nongnu.org
-X-Gm-Message-State: AOJu0YwoR57kA6AqEFuR+BcDd3TXkUez1i0adKKz+lIxAnF08S2vQk2J
- VzpisWUXVTRfcwC8s5CqKMuQAoHNy4oKUO0imMonQc7bwprv7DrFV+cHlQZ6v05W+mI=
-X-Gm-Gg: AY/fxX6hUuVJm+YMNCvsuJCD4o0MxlTIfWqCKrx1hMOTlB3Yr4AlgQP0qnWCaX1VVNH
- 92+LvCkQHIwH716Ty6uEhgbxEpu2+2jx+KRmoqFRZ+h4+TF/tcIumPeMOLK8Y62yRyHV8Trnizx
- CEj8Iek979LMJAHqFJfydLQw2Kib11c2+fYsS3lRoxrNv6a+o4fQsgSB2bNg93fTKNvxiiLFDC/
- hnDE0LxsDOh0X2pXaTqSAYDnAkbZ5AZSjDxY/pr+XTs38lojsE3Vl40aGWbrbWFCCKPmOaZtaw/
- yAZ7HMD4LmTb83eWqH+oFDMA88ik/VJx6rM514Wpfl0W1qQNvuQ7CF/4krr2eois2ccqgg22Qpj
- MPATWB930QBgFfW+HS2h0JSCMql0YIQ/XtStq1ErSwJcZFgVbeWeWHRTa9EupKr4Avm2kt5BgaD
- /3+g0ukw3KcDM=
-X-Google-Smtp-Source: AGHT+IHGZUtcKQEtS4/zvWBFpofDj83AL78J2684Q/jk7+NYYE7bRgd9WFFHNkJyGywnxsCEdbN5ig==
-X-Received: by 2002:a05:600c:c167:b0:477:54f9:6ac2 with SMTP id
- 5b1f17b1804b1-47d194c1e99mr39312485e9.0.1766171336924; 
- Fri, 19 Dec 2025 11:08:56 -0800 (PST)
+ AJvYcCV70BkWo/3NQEuhS6CXTGlphaZIuZbb8tkp/dpQuQLOWSWXXtxqHEpcdwbgz/cAxXMJlgMMobA9ig==@nongnu.org
+X-Gm-Message-State: AOJu0YwayrhXxDvaxgiYook27WbXkG0MP0n+tvS5lLfEZk2IJZSbuVUI
+ HTH4TZMhggxq+BVx5aS1B0iKcUFz0OKY8qjzKQ1wqf4kOc90LYO5MDUCPq2yz5SwySY=
+X-Gm-Gg: AY/fxX6UGEvhWuf+8ybmKB48sh4s+vW41Zm2ocgWLbukelpHzV8LKdb96D1shEqASSH
+ 4vlwC2hFRf2pXV74dN82uyqU8ZiMOZKUeWizbdiwLNNg3zfCDnINa0qDkGjB+LluLWtncPTgvZC
+ /SkZa4tJke1SB/ei5aFzAgg9u5OKlZ+RqPJMB7ay9D4tz6q2Sb9bXwtEKcQyR9HvL190i+H5Q+Q
+ dZ4oUNPu9y6XLNs2wjF8odf2DXmS5bOPBjUjezEnn1HodaE4eEKnmARRIIpUn3/9aTZHr01aI/l
+ tl0jIBHq1z1wmHVqo7Wxec31kk8K0+NEkwkaVMSgzlZN3jqkiaUovccz6Bjgs0SprNZopX8HCvU
+ j5NQRyOH9ad+Nt65PQmvNqfQXWI5L+PTp+lORo7IG2Vom2LitvEylBk1MbH17PXQb9tccX1J/sH
+ rl6x2toJ0hED+ty/gssYvJdQ==
+X-Google-Smtp-Source: AGHT+IFdC0OTekt9ybDbjjAAwIH+3y/8vTzQi7VuvlPdeGli9BRRlgtAH6wvFt2VPfAiMl8LcWGr1w==
+X-Received: by 2002:a05:600c:4595:b0:477:a1a2:d829 with SMTP id
+ 5b1f17b1804b1-47d1953ead3mr33912265e9.13.1766171334131; 
+ Fri, 19 Dec 2025 11:08:54 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47d19346e48sm55343155e9.2.2025.12.19.11.08.52
+ 5b1f17b1804b1-47be3b3a80dsm42226405e9.7.2025.12.19.11.08.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Fri, 19 Dec 2025 11:08:53 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id B0619600FE;
+ by draig.lan (Postfix) with ESMTP id 3A4805FE66;
  Fri, 19 Dec 2025 19:08:50 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -85,19 +85,19 @@ Cc: Yanan Wang <wangyanan55@huawei.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Alexandre Iooss <erdnaxe@crans.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Ziyang Zhang <functioner@sjtu.edu.cn>, Mingyuan Xia <xiamy@ultrarisc.com>
-Subject: [RFC PATCH 08/12] tcg tests: add a test to verify the syscall filter
- plugin API
-Date: Fri, 19 Dec 2025 19:08:45 +0000
-Message-ID: <20251219190849.238323-9-alex.bennee@linaro.org>
+ Alex Bradbury <asb@igalia.com>, qemu-stable@nongnu.org
+Subject: [RFC PATCH 04/12] docs/about/emulation: Add documentation for
+ hotblocks plugin arguments
+Date: Fri, 19 Dec 2025 19:08:41 +0000
+Message-ID: <20251219190849.238323-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251219190849.238323-1-alex.bennee@linaro.org>
 References: <20251219190849.238323-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x343.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,118 +120,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Ziyang Zhang <functioner@sjtu.edu.cn>
+From: Alex Bradbury <asb@igalia.com>
 
-Register a syscall filter callback in tests/tcg/plugins/sycall.c,
-returns a specific value for a magic system call number, and check
-it in tests/tcg/multiarch/test-plugin-syscall-filter.c.
+Currently just 'inline'.
 
-Signed-off-by: Ziyang Zhang <functioner@sjtu.edu.cn>
-Co-authored-by: Mingyuan Xia <xiamy@ultrarisc.com>
+Signed-off-by: Alex Bradbury <asb@igalia.com>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-ID: <20251214144620.179282-3-functioner@sjtu.edu.cn>
+Message-ID: <60f1ad20663f7e5c6cb00dd83fe0f1f5aa6ca4de.1764716538.git.asb@igalia.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: qemu-stable@nongnu.org
 ---
- .../multiarch/test-plugin-syscall-filter.c    | 35 +++++++++++++++++++
- tests/tcg/plugins/syscall.c                   | 19 ++++++++++
- tests/tcg/multiarch/Makefile.target           |  4 ++-
- 3 files changed, 57 insertions(+), 1 deletion(-)
- create mode 100644 tests/tcg/multiarch/test-plugin-syscall-filter.c
+ docs/about/emulation.rst | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/tests/tcg/multiarch/test-plugin-syscall-filter.c b/tests/tcg/multiarch/test-plugin-syscall-filter.c
-new file mode 100644
-index 00000000000..caa2063a461
---- /dev/null
-+++ b/tests/tcg/multiarch/test-plugin-syscall-filter.c
-@@ -0,0 +1,35 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * This test attempts to execute a magic syscall. The syscall test plugin
-+ * should intercept this and return an expected value.
-+ */
-+
-+#include <stdint.h>
-+#include <stdio.h>
-+#include <stdlib.h>
-+#include <unistd.h>
-+
-+int main(int argc, char *argv[])
-+{
-+    /*
-+     * We cannot use a very large magic syscall number, because on some ISAs,
-+     * QEMU will treat it as an illegal instruction and trigger a critical
-+     * exception. For instance, on arm32, the syscall number cannot exceed
-+     * ARM_NR_BASE (0xf0000), as can be seen in
-+     * "linux-user/arm/cpu_loop.c:cpu_loop".
-+     *
-+     * Therefore, we pick 2048 because, as of now, no ISA in Linux uses this
-+     * number. This is just a test case; replace this number as needed in the
-+     * future.
-+     *
-+     * The corresponding syscall filter is implemented in
-+     * "tests/tcg/plugins/syscall.c".
-+     */
-+    long ret = syscall(2048, 0x66CCFF);
-+    if (ret != 0xFFCC66) {
-+        fprintf(stderr, "Error: unexpected syscall return value %ld\n", ret);
-+        return EXIT_FAILURE;
-+    }
-+    return EXIT_SUCCESS;
-+}
-diff --git a/tests/tcg/plugins/syscall.c b/tests/tcg/plugins/syscall.c
-index 42801f5c863..e7d4e9b5895 100644
---- a/tests/tcg/plugins/syscall.c
-+++ b/tests/tcg/plugins/syscall.c
-@@ -170,6 +170,24 @@ static void vcpu_syscall_ret(qemu_plugin_id_t id, unsigned int vcpu_idx,
-     }
- }
+diff --git a/docs/about/emulation.rst b/docs/about/emulation.rst
+index 4a7d1f41780..543efc4d7dc 100644
+--- a/docs/about/emulation.rst
++++ b/docs/about/emulation.rst
+@@ -463,6 +463,16 @@ Example::
+   0x000000004002b0, 1, 4, 66087
+   ...
  
-+static bool vcpu_syscall_filter(qemu_plugin_id_t id, unsigned int vcpu_index,
-+                                int64_t num, uint64_t a1, uint64_t a2,
-+                                uint64_t a3, uint64_t a4, uint64_t a5,
-+                                uint64_t a6, uint64_t a7, uint64_t a8,
-+                                uint64_t *sysret)
-+{
-+    /* Special syscall to test the filter functionality. */
-+    if (num == 2048 && a1 == 0x66CCFF) {
-+        *sysret = 0xFFCC66;
++Behaviour can be tweaked with the following arguments:
 +
-+        if (!statistics) {
-+            qemu_plugin_outs("magic syscall filtered, set magic return\n");
-+        }
-+        return true;
-+    }
-+    return false;
-+}
++.. list-table:: Hot Blocks plugin arguments
++  :widths: 20 80
++  :header-rows: 1
 +
- static void print_entry(gpointer val, gpointer user_data)
- {
-     SyscallStats *entry = (SyscallStats *) val;
-@@ -255,6 +273,7 @@ QEMU_PLUGIN_EXPORT int qemu_plugin_install(qemu_plugin_id_t id,
++  * - Option
++    - Description
++  * - inline=true|false
++    - Use faster inline addition of a single counter.
  
-     qemu_plugin_register_vcpu_syscall_cb(id, vcpu_syscall);
-     qemu_plugin_register_vcpu_syscall_ret_cb(id, vcpu_syscall_ret);
-+    qemu_plugin_register_vcpu_syscall_filter_cb(id, vcpu_syscall_filter);
-     qemu_plugin_register_atexit_cb(id, plugin_exit, NULL);
-     return 0;
- }
-diff --git a/tests/tcg/multiarch/Makefile.target b/tests/tcg/multiarch/Makefile.target
-index f5b4d2b8138..4005e3a8a9a 100644
---- a/tests/tcg/multiarch/Makefile.target
-+++ b/tests/tcg/multiarch/Makefile.target
-@@ -202,8 +202,10 @@ run-plugin-test-plugin-mem-access-with-libmem.so: \
- 	CHECK_PLUGIN_OUTPUT_COMMAND= \
- 	$(SRC_PATH)/tests/tcg/multiarch/check-plugin-output.sh \
- 	$(QEMU) $<
-+run-plugin-test-plugin-syscall-filter-with-libsyscall.so:
- 
--EXTRA_RUNS_WITH_PLUGIN += run-plugin-test-plugin-mem-access-with-libmem.so
-+EXTRA_RUNS_WITH_PLUGIN += run-plugin-test-plugin-mem-access-with-libmem.so \
-+			   			  run-plugin-test-plugin-syscall-filter-with-libsyscall.so
- endif
- 
- # Update TESTS
+ Hot Pages
+ .........
 -- 
 2.47.3
 

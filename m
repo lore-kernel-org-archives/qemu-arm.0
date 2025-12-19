@@ -4,91 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68F4CD74969
-	for <qemu-arm@archiver.kernel.org>; Fri, 19 Dec 2025 09:00:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDCF4D74969
+	for <qemu-arm@archiver.kernel.org>; Fri, 19 Dec 2025 09:03:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vWWLr-0002TR-D3; Fri, 19 Dec 2025 04:00:43 -0500
+	id 1vWWNt-000351-0I; Fri, 19 Dec 2025 04:02:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vWWLh-0002Sm-AR
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 04:00:33 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vWWNl-00034N-6h
+ for qemu-arm@nongnu.org; Fri, 19 Dec 2025 04:02:41 -0500
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vWWLf-0000IW-PT
- for qemu-arm@nongnu.org; Fri, 19 Dec 2025 04:00:33 -0500
-Received: by mail-wm1-x341.google.com with SMTP id
- 5b1f17b1804b1-477a219dbcaso13406455e9.3
- for <qemu-arm@nongnu.org>; Fri, 19 Dec 2025 01:00:31 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vWWNj-0001Ck-OZ
+ for qemu-arm@nongnu.org; Fri, 19 Dec 2025 04:02:40 -0500
+Received: by mail-wm1-x342.google.com with SMTP id
+ 5b1f17b1804b1-47a80d4a065so7439355e9.2
+ for <qemu-arm@nongnu.org>; Fri, 19 Dec 2025 01:02:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766134830; x=1766739630; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1766134958; x=1766739758; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=iw8PYEkc2WSyzh1Yluz9dfu9Sd9QbaIlPFYP+JPcuCk=;
- b=ArvHUJmY8g5Qod2e3NTSxxn3tpnB3eKqqEB0AAkOf1SVvIK/icSHwVYeKvPJiuxVyr
- A3LJfEjQU1Ex9wd3YGaSJJtrc5NDS+q4n1PV//j/UdIiwreIhGn47i3E/mva9Zzo6trd
- 7Mg7xENHKfqN2jmcYLadq4DezyvYjB8rj7ivdv78dcaOUGDZ1108dch2apLjlS0C4sja
- zsUr/DsvCN+Wb88bdD3PvjxzLwdWoi3G1JhsPFoy8FQdXKlZQlxOdvA538KdwXelxbI0
- HpcSEW2cJMQdC7VqsJpHBOoX4OUmqqhFnAZHcjyxoCTsQF0nl8sPu6sSKMjFKE2tyI6G
- q9mw==
+ bh=adpDyaQvxXxXu5Lo/MFb3/3B2CYGte2+JVXQOds1J6s=;
+ b=g4REVI9/bmeVYC50cOARo4Qa8Q8M0/cLPXBp1JvKx5dpLX8pJrQQQzSOzQiB5pMkMo
+ 3ntocjN4Plmkwqw+UZZRXUWM5xxq2tVsrPQDZx3ZCdutRzXJAwyIJ2Hg+g5CGNrA+RoX
+ 57Aneerw070/t3nP7EtR5vCC5GT3Uesk/3yjAGkSkagt6hCFujNY8EO5OkZ8v6uBYTig
+ gfr/qXsEMhEJrvbSja3MTBDMLyVfCwkckTPFGuBNBnJ6nP6X97LKD5d0kqpw7N9JidIw
+ /h0sdMSebFJqdn4qLvZhE1XLR/LQEr31TTiVGUNCnkIjCulaIDfRKaCxyTJ7qtmkKdXh
+ 432g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766134830; x=1766739630;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1766134958; x=1766739758;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=iw8PYEkc2WSyzh1Yluz9dfu9Sd9QbaIlPFYP+JPcuCk=;
- b=Z7G2ymtY+WtqwBkEdnPZuHH4MEpYGvEl7o6xhG9e79Sfnu71BzsAgpiInjgi2GpZR0
- WXr3voCMqshLnbIdwcRk4R1VvmJk37KzGFGQMD97L4VX7eYNSSL+AdDcNtxyQRsIRJiI
- 9hRCT+cx4Hq0XRTZ4b5C3i7OmzKSQ24obIWkodNiJnFWpzgtZ8MpuGwtHzxQv2HNY2fH
- b67jPrXUdndF9ApkjWKnevzSxBy2G4dMozxIo9dobZZgX/aa/FD/5/+QxMciLpJojTn6
- nVEfJpwmeba5u6bJHHgzTBZJu7DUIsbH8Nr7C8a4ex+CHDErEPSEWayxIS+lWfQgJvJl
- VAXg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXYDoVtVi+6rOOeSRqqs+t7ludNZr14xx0a9wI4l3ajkN8Hc6HkMR/JFZ2CWYH6JsvoQ3o88fdHDg==@nongnu.org
-X-Gm-Message-State: AOJu0YziOYMD2qZ41HoUa/wnF9LADeRC7WX3uvxCr4V3rJks+KOfzrLM
- A6hErKuHf3bUShVMWOCG1hjKWicJVDZ00wvmGqgIGYuqrJ4FbU5Opj9Govj/vcFcqew=
-X-Gm-Gg: AY/fxX73sVrLUps0UCEA3lMYSafeTQ1O8I3dF5/Uw7Vd4dGBxuCY7iQr6fBXG+Tqyel
- xqjYG0rU+wQky44BLYxgTgCQDi4rsbRh4YcCt7sUlphMShej+CC9lvh+uIX1JNQC0/qtcbsz2Ww
- L5vmOo/E2/1VZm82KyBez2VN5P6vPftZS0eoIEYKTm3vdxcEpoCrq3WSHIrtSZFbWALo2z2nOli
- zwkbruzMdfpZBTXAI+ojmQCFH916UCJXGtOurl34LpTxqMf/bzC+bUgOSX2JPv4GMfpW75Ry5sR
- Zdi6Hpbs+3gCBwinYkIgbM0mqQTldAFNRdDwy1qMFHbo+LmzU4sjaiKTlw7VzTEX1+JGFPYn/q3
- 8JaM4YdgCYtxLjyxSFkHEDNgkoGIodEwaUdio0kWI7jNLWxPAYf8HgEwKLuhhmxUc125g+VoyEt
- SDRNugegWiDFY97odHl+swUCT7IsEkedwBjCaGnI1jfil/XR8UWt0frQ==
-X-Google-Smtp-Source: AGHT+IFRVSgdezUCKQozNx3Hfty7cZX9Jwxzz0Gqp3IwTeqDfNg+128s+G0UbRMVnTB5XARfeQXLiQ==
-X-Received: by 2002:a05:600c:1d1d:b0:477:9c73:267f with SMTP id
- 5b1f17b1804b1-47d195aa4bfmr20399925e9.33.1766134829266; 
- Fri, 19 Dec 2025 01:00:29 -0800 (PST)
+ bh=adpDyaQvxXxXu5Lo/MFb3/3B2CYGte2+JVXQOds1J6s=;
+ b=ac4wLOVzz1zg348WddPiGFHJcAC3k7MyDP4Kgt2y1KiOWz9in4VCNQsqPLe3Hf6ppa
+ xZyq9x7i/Smq02OM8PfUaIEUJ/bRS5BlmaVUbwQNuRID3yfH/TvTEBt+i4WbmMhQiQKR
+ YQ2hz/8iJDrqyGSQo5nxeG4xAgnIFuLEEKIqYJTaTl9JY+yd6rX12Ovzt/UA5EsKzPxX
+ LW87RtlCt5VfO2/tj/XwnOq0sNMEsyFqT3fZm62UAkoawF6/7+we8FG+QpMn7jhr8oOm
+ cl0EOLBLeDeE9Ph8WSLJT53NoZAuAUW53PqVxa91QnhjM3sBmZLg6P07O+NI6kE6tgvh
+ zmGQ==
+X-Gm-Message-State: AOJu0Yz9yW3BZJriCcNG2akhSlXmSEvT9q4pcpMuZBKdc+Z7jbNdIBG/
+ MqhHEgaoSdxJYFszcErPiL3dORcKihjCMtAIDllKE/A+8BsPE1YnpqHXV6qRcI/e+Xq0u0tjpE3
+ Nm1Vi3hs=
+X-Gm-Gg: AY/fxX5tsXvJ1EOzJaAW2aunIKPMhKgkN7fDGZbcbBjmrg2etWtsPrRS6Uj2Ff1JFLN
+ ClCKpmEPiDoVi3QUN4/zE31kCS7r6aE2lNoUMusW7A6604HVHlC3QDIRCe0rpt+GJ+x/W83nHsG
+ FaE4JKjO1umaOCNj8sk2ddokVcYrPqNEejS8WRrDufFM9qXKe9AReIErssDlvvo7KOWjPPbcMLe
+ 0znNoa3RVBopi2jmhjTCR6nqMSQczvCSmpsp5NO5fKQ/VRB5It49B1Wz2H4Y3hixyrIcpuqZTcM
+ Uc3asxnbx2FQwLbqQ9DOgXhWmovQudGqD00lSsU3YWjwoNdMmLroRCZ+RAYFiTsOFHGRyJHtvzB
+ XttxLhKfg2ZnhiXtqJtNJCZsWxXv8b+e9x7Z95gVxZwrgkyoc9HelLOrVnxQf3DPxafHOzXUZBX
+ ZOLTPMLmXj4MgJw3VKD4arkB8dFMU3j2l7AxbjwgAIpYXnuPGWRSgBuw==
+X-Google-Smtp-Source: AGHT+IFdSJF/v0mWL+Sx+p12JveJPevH0b93ZRvGCWuF0gGXigP2FtBdaoNUqK0iHaB8DQHvzQbtZQ==
+X-Received: by 2002:a05:600c:1d1d:b0:477:632a:fd67 with SMTP id
+ 5b1f17b1804b1-47d19546487mr18032695e9.12.1766134958098; 
+ Fri, 19 Dec 2025 01:02:38 -0800 (PST)
 Received: from [192.168.69.202] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47be3acdb87sm30562125e9.16.2025.12.19.01.00.27
+ 5b1f17b1804b1-47d19346dfcsm41828215e9.1.2025.12.19.01.02.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 19 Dec 2025 01:00:28 -0800 (PST)
-Message-ID: <19c5ae56-35ba-42fe-a330-fec28aad6999@linaro.org>
-Date: Fri, 19 Dec 2025 10:00:27 +0100
+ Fri, 19 Dec 2025 01:02:37 -0800 (PST)
+Message-ID: <a8a2eec0-f458-40e6-bfcc-d51be9333799@linaro.org>
+Date: Fri, 19 Dec 2025 10:02:36 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: Machine max78000fthr not compiled in?
-To: Markus Armbruster <armbru@redhat.com>,
- Jackson Donaldson <jackson88044@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <875xa27ss1.fsf@pond.sub.org>
+Subject: Re: [PATCH] hw/arm: Re-enable the MAX78000FTHR machine in
+ qemu-system-arm/aarch64
 Content-Language: en-US
+To: Jackson Donaldson <jcksn@duck.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>
+References: <20251218214306.63667-1-philmd@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <875xa27ss1.fsf@pond.sub.org>
+In-Reply-To: <20251218214306.63667-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x341.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x342.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,19 +105,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 19/12/25 09:57, Markus Armbruster wrote:
-> docs/system/arm/max78000.rst advises to use
+On 18/12/25 22:43, Philippe Mathieu-Daudé wrote:
+> Unfortunately while rebasing the series registering the
+> ARM/Aarch64 machine interfaces and getting it merged as
+> commit 38c5ab40031 ("hw/arm: Filter machine types for
+> qemu-system-arm/aarch64 binaries") we missed the recent
+> addition of the MAX78000FTHR machine in commit 51eb283dd0e.
+> Correct that.
 > 
->    $ qemu-system-arm -machine max78000fthr -kernel max78000.bin -device loader,file=max78000.bin,addr=0x10000000
-> 
-> My locally built qemu-system-arm rejects this with
-> 
->      qemu-system-arm: unsupported machine type: "max78000fthr"
->      Use -machine help to list supported machines
-> 
-> What's going wrong here?
+> Reported-by: Thomas Huth <thuth@redhat.com>
+> Tested-by: Thomas Huth <thuth@redhat.com>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3248
 
-See the fix:
+We have a functional test for this machine
+(tests/functional/arm/test_max78000fthr.py)
+so I don't understand how we missed this.
 
-https://lore.kernel.org/qemu-devel/20251218214306.63667-1-philmd@linaro.org/
+> Fixes: 38c5ab40031 ("hw/arm: Filter machine types for single binary")
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   hw/arm/max78000fthr.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+
 

@@ -4,87 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3898CE668B4
-	for <qemu-arm@archiver.kernel.org>; Sat, 20 Dec 2025 16:04:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A175E66886
+	for <qemu-arm@archiver.kernel.org>; Sun, 21 Dec 2025 06:29:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vWzQt-0001oC-Jk; Sat, 20 Dec 2025 11:03:52 -0500
+	id 1vXCwM-000472-Bf; Sun, 21 Dec 2025 01:29:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jackson88044@gmail.com>)
- id 1vWyJA-0005iP-92
- for qemu-arm@nongnu.org; Sat, 20 Dec 2025 09:51:48 -0500
-Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jackson88044@gmail.com>)
- id 1vWyJ8-0004f1-St
- for qemu-arm@nongnu.org; Sat, 20 Dec 2025 09:51:48 -0500
-Received: by mail-ot1-x32b.google.com with SMTP id
- 46e09a7af769-7c76f65feb5so1931033a34.0
- for <qemu-arm@nongnu.org>; Sat, 20 Dec 2025 06:51:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1766242305; x=1766847105; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=T5u18xbeTgr335iXaFkYWNpW8fyie7mGSXz+0RaVF6E=;
- b=aIo0sPN9yh/gn0m/Z+Tej2gMzPrTOnrpM2cO/oQI+wkkcbLVWzFLTZkHgaze3VflyU
- qTRFhCOZ12Qm9j0uXLQY4di/6w+pOuCQTRD8FW8wkg+aXAAj/S7gZX6YlSXr8Ct3KvOf
- 2ECQumx1o5LMVDYy4CkcJW3PQQe0KCGlyTVT1J1uZdqpgHRp+V4P2WzGonJLjgdb86on
- I8rC7ZY50ye+8eoCym/GgypLLBRR1O7zq4D0iS7KKAEATq1U2A2wb8aiiPD1aTGubQSp
- D4h7OOwgyyUoZmcviKl+ulsV7vnH8Ys2cAUijQn6LTE+vQucVNqQim53jhNIjaadmU/K
- oskA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766242305; x=1766847105;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=T5u18xbeTgr335iXaFkYWNpW8fyie7mGSXz+0RaVF6E=;
- b=r8mpykb91Y0ZsfexO6TFG78BhVNAzFWa/ObCwmoUqq2VzYy/MwRvpMeqVc7d0EEGsO
- gy/nWQWm59i2ypwzE5/mpv1XMKa2ZwIenqH8ZTT3ygoJSRvcvJLFB/FoaoOQeh1WwiXC
- 0jZHnG7rNrHgWO89CJdv+pQ5Gjq1Fi1Coc7mSTN5kiD7eikYKn4AupTb/MsCfo6w3FK8
- +QwdhjW6JP6fFlkdUrKOd2eTU/I10TrHyriak6xU3zlcVZarlnqBEaVzbPwelcjvMvDs
- D64qRmWtZXiCBe/Nq3bpmYx0H4u6E0U8e2MbHmw2sTKbUMSY62JJOzPj/P3zAMVE8FmS
- tqsA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWWu6zQ74wW9tFIsA1LOwQACnr3SZbsc8Ujy3UfcB8tN1R9pYwvIE5I6vNyWjyqB5RXREEXRrTwqQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzkVDTcxDJ3Zn7SdHv7M3tVuOktcQB+mVMY6b79sECmZDVsnoGu
- QFQjXIn2qd7R09LY+5gMsTF+m2nbIAfoZjwsuCpBjBrpKZgFouHXRV4wp6XD9Q8tyMmftobdd1X
- MAR5uPTmpvgitG4+E01ztf96W6k5YmoA=
-X-Gm-Gg: AY/fxX688Kitobb0pl46QdZKsHq+xvYQJGa3UWYs0DdwmWa+EsDSd0BZ01TsJKeVu4m
- AtlNb8wB2Ryy6aRUxUdIRs9Es4WMVgiqLPiLIGwMKpc7dahVIOJ6KqpjsvoEPk9GpIW2jECCPMz
- X4xE5taAN9t+DsUP1BAdZshjkpE9a1M52EDML8v3vV1HW4XSMciNHPYX5VVHsuywoNVkQL7Qii9
- 8D+byCl7EO+OkQgi7TGwhhaQ/yRyrS/cQk/v/ZmVW0K3w9Nsk7mtZSrZ3on0x5Y6GNiIwJZVPSC
- 2Weh4HZga97hNaY62a3YYiN/e0Mk
-X-Google-Smtp-Source: AGHT+IEtiH2+MGB2j5VKQP7tvnCfIkOySrqNHKk81Ein3natHTxbpyqfJ4OZvyiS+yaOgQd5hMp50bMex6qQ2+gBeks=
-X-Received: by 2002:a05:6820:658c:b0:659:9a49:8f63 with SMTP id
- 006d021491bc7-65d0ea9a76dmr1700863eaf.40.1766242305162; Sat, 20 Dec 2025
- 06:51:45 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vXCwH-00046Y-Hj
+ for qemu-arm@nongnu.org; Sun, 21 Dec 2025 01:29:10 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1vXCwG-0000jE-74
+ for qemu-arm@nongnu.org; Sun, 21 Dec 2025 01:29:09 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1766298546;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:resent-to:
+ resent-from:resent-message-id:in-reply-to:in-reply-to:  references:references; 
+ bh=XrwdbM1I8LaUz/OxGrju4LcD9H8PlOhkitEzhoq86Gk=;
+ b=Up5CzsHIKcXFHyM5g4HGJTOMjIE3a3lye7lYspRb1kpNDh0T4vB46EZrvaGTfUkad64aB9
+ 3ucqQDkT6Uebt58bxu62JPEKMpIszrtLKswxQCKzIi5yz9LcKp+xMsVoRTVgdBupzF5NKr
+ 2c1DlkmC4c54J43lWMFIIxpYJ2FAyvw=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-328-rfR-X3RJPKGP0AoLgwqc8g-1; Sun,
+ 21 Dec 2025 01:29:02 -0500
+X-MC-Unique: rfR-X3RJPKGP0AoLgwqc8g-1
+X-Mimecast-MFC-AGG-ID: rfR-X3RJPKGP0AoLgwqc8g_1766298541
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BE8D41800451; Sun, 21 Dec 2025 06:29:00 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.4])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 441B130001A2; Sun, 21 Dec 2025 06:29:00 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id D388821E6A27; Sun, 21 Dec 2025 07:28:57 +0100 (CET)
+Resent-To: jackson88044@gmail.com, alex.bennee@linaro.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Resent-From: Markus Armbruster <armbru@redhat.com>
+Resent-Date: Sun, 21 Dec 2025 07:28:57 +0100
+Resent-Message-ID: <87pl88xs9i.fsf@pond.sub.org>
+From: Markus Armbruster <armbru@redhat.com>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org,  thuth@redhat.com,  berrange@redhat.com,  Jackson
+ Donaldson <jackson88044@gmail.com>,  qemu-arm@nongnu.org
+Subject: Re: [PATCH 4/4] MAINTAINERS: Add MAX78000FTHR section as orphan
+In-Reply-To: <87ike1z930.fsf@draig.linaro.org> ("Alex =?utf-8?Q?Benn=C3=A9?=
+ =?utf-8?Q?e=22's?= message of "Sat, 20 Dec 2025 11:28:03 +0000")
+References: <20251220072416.3745923-1-armbru@redhat.com>
+ <20251220072416.3745923-5-armbru@redhat.com>
+ <87ike1z930.fsf@draig.linaro.org>
+Date: Sat, 20 Dec 2025 18:28:08 +0100
+Message-ID: <87ecopysev.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-References: <87ike27ucd.fsf@pond.sub.org>
- <CAMyd1rQ6CLN2FPic=4pNpZtcw46io2xftkBDSLfd8V9S+Jyu0A@mail.gmail.com>
- <878qex3ac7.fsf@pond.sub.org>
-In-Reply-To: <878qex3ac7.fsf@pond.sub.org>
-From: Jackson Donaldson <jackson88044@gmail.com>
-Date: Sat, 20 Dec 2025 09:51:34 -0500
-X-Gm-Features: AQt7F2oObooRwahswLNDL-Yvu5u5nuy50z9KGrNHMUPYcJzWPRA_Nw7tVxvmHRQ
-Message-ID: <CAMyd1rR9HLwn-fzWfgqu=ZdtOq_Ae6Den-0oCmZpXAjxbup87A@mail.gmail.com>
-Subject: Re: MAX78000 machine needs a maintainer
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000002fc08e06466355c6"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::32b;
- envelope-from=jackson88044@gmail.com; helo=mail-ot1-x32b.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 20 Dec 2025 11:03:47 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,23 +94,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---0000000000002fc08e06466355c6
-Content-Type: text/plain; charset="UTF-8"
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 
->  Out of curiosity, what was your motivation to add the machine?
+> Markus Armbruster <armbru@redhat.com> writes:
+>
+>> This machine was contributed by Jackson Donaldson a couple of months
+>> ago.  Its RISC-V core is not implemented.  Unfortunately, Jackson
+>> isn't able to serve as maintainer at this time, so add it as orphan.
+>
+> Commit message doesn't match contents.
 
-I wrote the implementation for my university team in the 2025 MITRE
-embedded capture the flag challenge
+Good catch!  I messed up the submission somehow.
 
---0000000000002fc08e06466355c6
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">&gt;=C2=A0
-Out of curiosity, what was your motivation to add the machine?</div><div di=
-r=3D"ltr"><br></div><div>I wrote the implementation for my university team =
-in the 2025 MITRE embedded capture the flag challenge</div><br><div class=
-=3D"gmail_quote gmail_quote_container"><br></div></div>
-
---0000000000002fc08e06466355c6--
 

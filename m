@@ -4,111 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4BC4E674B2
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Dec 2025 13:50:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A96EE674B2
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Dec 2025 13:56:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vXgII-00049M-DO; Mon, 22 Dec 2025 08:49:50 -0500
+	id 1vXgOg-0007Nb-2J; Mon, 22 Dec 2025 08:56:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <csomani@redhat.com>)
- id 1vXYss-0003qY-4g
- for qemu-arm@nongnu.org; Mon, 22 Dec 2025 00:55:09 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vXgOW-0007M0-O4; Mon, 22 Dec 2025 08:56:18 -0500
+Received: from mail-southcentralusazlp170110003.outbound.protection.outlook.com
+ ([2a01:111:f403:c10d::3] helo=SN4PR0501CU005.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <csomani@redhat.com>)
- id 1vXYsp-0004eF-RF
- for qemu-arm@nongnu.org; Mon, 22 Dec 2025 00:55:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1766382901;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=ExaxCKD8rTO0elI1Sno4pWuINzRFrDH7sz7G3F5Jg90=;
- b=XgQuUTdbP//vsJ5qchcjeqr1v5ysCjwV4WcPcWl4h8jAssX/X0v7N8Zr+tkezLXbQKAvOP
- zO0i3M9WZTxQdPafP+Ylf/3vzSdmiUmxJ3Mxdktt0qup4rntmPUwJl4FRGB+LWyWJQxMyJ
- ebvJ4SBqNBRglt6NYziY4zTSMEiowXI=
-Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
- [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-178-B1KA93wuPfuRxBXMp_7VCA-1; Mon, 22 Dec 2025 00:53:46 -0500
-X-MC-Unique: B1KA93wuPfuRxBXMp_7VCA-1
-X-Mimecast-MFC-AGG-ID: B1KA93wuPfuRxBXMp_7VCA_1766382825
-Received: by mail-pj1-f71.google.com with SMTP id
- 98e67ed59e1d1-34c38781efcso6809401a91.2
- for <qemu-arm@nongnu.org>; Sun, 21 Dec 2025 21:53:46 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766382825; x=1766987625;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ExaxCKD8rTO0elI1Sno4pWuINzRFrDH7sz7G3F5Jg90=;
- b=abkXYTiaYjRIF6xZVAALjnjikcTBVHJR4hPYj8M3b6HxRYXKtH/r6wfB5wlZIi4P6w
- XErHcnWj0yHBjrrLqMpbQ/cNwPplHibsEdGGGvf2WkPHbDHwQlFgm6DYRxoE4pNhiimV
- IyHSEt6ZMZccrbOI0rXj+x8638Iy13XQKvGpf1EopE+J29cJZMPVR9/7mp4oeYhcgeki
- PDApGPUbrmY4l/UDf5ifhOfzlVeeEdJQqsj8vOCxl3tK1XzGJ9lV5E7hz2MvqJWg7C26
- 62kEdGnlaPpa7rNHY3bzpdTav3zN2OYrQxG/fZgVoBvCYht9tlWC5/hg4uE/YEGgPrnh
- MyPA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVr+zzMymdw6whmnrqhUiMCKntF2TxblXUWSVqdxlUZWetSYSbfLLpg3+yaZ99+326S1p9FdeJCSw==@nongnu.org
-X-Gm-Message-State: AOJu0YwHd5sAi+cX7L1aVr6jHeruTsinQA7MBAbKzg3FyH2SSH+6aTE8
- Z/4MakeIrHY1/zZNNCyrnUM6wbyTXGUXE7kmXpuBifz51Sdr4sK+TafloDEDbNaggjUuMr72bkc
- tXynaOnYIpyNSEpFw8RACiHjqKK2VChGgqY60NSKIMe/pYNFqUg8RRA==
-X-Gm-Gg: AY/fxX4d1KcsPlFZkwaNaed0s3/y9SzyDZubROkLX1WkqNHHw5ZU9trPrCm5uBY7JGV
- PAzDrJ+WQcg9LdYMdA1nfImCmlBtNN7uopR5r2YJYFHG1YA7qIomejNPtrYmhTTISrM6Nnm5G7U
- gBImzFg9tt6micsw1TWSba27VYiPbTUNWe/PaaauyANF9yvUkDfB5cMFggZosJCbOIPjgCCEMgS
- bWGxId1f6N4z2krjPigZoW27JMZd1Gzb2eW/bQ36yr3n2fP+IeNFZpE4uCYukjWs9oBvnEsF0Tx
- MzKPcP4bUYFc4yiZwSRu6BaUVqKks8/PrdtnEtBK34ZLipAb3ca5CQrWtMMvW3Z1sTQmuad6Ede
- p3oqzl2tViE5QQ/YhdOo/Zj78TWRYR0FRG0fQHDM=
-X-Received: by 2002:a05:7022:6708:b0:119:e569:fbb4 with SMTP id
- a92af1059eb24-12172301f84mr10985916c88.35.1766382825030; 
- Sun, 21 Dec 2025 21:53:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGnZxZYahjHNuLaVbtUUEqxVyizHm1l8MWTKrLP/N5DeCvRlj4CdYT7Yh5pLnkVqoFsGlnlVw==
-X-Received: by 2002:a05:7022:6708:b0:119:e569:fbb4 with SMTP id
- a92af1059eb24-12172301f84mr10985904c88.35.1766382824527; 
- Sun, 21 Dec 2025 21:53:44 -0800 (PST)
-Received: from csomani-thinkpadp1gen7.rmtusca.csb ([47.153.136.179])
- by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-1217254d369sm42898817c88.16.2025.12.21.21.53.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 21 Dec 2025 21:53:44 -0800 (PST)
-From: Chandan Somani <csomani@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: stefanha@redhat.com, Chandan Somani <csomani@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>,
- Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-block@nongnu.org (open list:Block layer core),
- qemu-arm@nongnu.org (open list:Stellaris)
-Subject: [PATCH] qdev: Free property array on release
-Date: Sun, 21 Dec 2025 21:50:05 -0800
-Message-ID: <20251222055009.1050567-1-csomani@redhat.com>
-X-Mailer: git-send-email 2.51.1
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vXgOU-0004dS-Cp; Mon, 22 Dec 2025 08:56:15 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=gNm764bKdpE6VT/JJStHzulAGXu+uAlglaYCDbyRgzK+H/neUpE5mecy6HFBy2TtVvWW0YZsKBxU/aOmfQbYzmT2yUds7r/bl419vU4a660M0twuOBD8T/uY7b1SKxRUIfZ28lcCBDDo7JqASl7O0DOqCHAV4h2M2DDazeXnf5xoMy4bwALBlen8kHvTa4Vq4pSBGhNqb7TSqjuD1007fcjb70lrW3Bmr/PgJBRfHm7foEUgOiMpKYXeB9+jv2hJtzN7jOQ1ThjvJjUW2dkZ6b7sjtAT5xtS5/azdAoCBBBVz46M2ySLr/XJrlyqbSZxPCom8P7TAEcdI8Up+E9PAA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UWkhGlatNGjG4Jax61knJ1WpST7KrJ/61lcSKEwh3Og=;
+ b=a81Yi5nSmEGH+vnLqjP0jTFeBelsVxf8UuQ4t9SlfVJdahvSf7HRib0hnjqj0CGa8PVmWIaPCQqHNrloZJlL/cjEXOYtH3sof6dMnJ8W6EGqFiiICwiV2+ZqFgqOvr8HlwhudgoseFmi1yGKDrM/KLOp9BPSrSyej4ojpjDnreqvUbB2ksIFgIWzQv0vGtruH0gKuRwT6cDe7YNm/CLvhzkNU+mruQuqmFYdUxdY6Fm4EoWkgorJj/furui/Eg6IIQH7Mnfk/jY9myUBwjhtg6lENH7u8gv4/YOOjZA2hqt5DDHNBFcX9ElHM01Lnk63JiAcK9vUzl44m/7dMYy+Kw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UWkhGlatNGjG4Jax61knJ1WpST7KrJ/61lcSKEwh3Og=;
+ b=HZe0JvRdoWOJsXm9W5vhMtSXPQj60bXgNSOe1TXumee9e+iHCOmYbHsdsdW+9N9ZVodGPnFnzUXGChBInrIVnaJsgXvm3H524G/Ze2uuCxBnfL1s1lF2jwgw9CrDEL2BWWPRAmAZi/ljEVdjr9ScbQbEmnXkifpvv6nUahEpJj8UcQuNmGBr/kTef8CBhSfIl/sBDTYFOnxiB4A1nhW/jn2zCHB3yCa3Y3XrnPEre4nKEnrc6P3bFg38L2F2TKqekWCfqo7vWW1+x3vg8usQ7lYllzp/u6zIk8Rz8BhGQqVPFvKXdQ7gT00eVe+QJMd7k04ukmBKtQjRaNvl2tQ/WA==
+Received: from SJ0PR05CA0015.namprd05.prod.outlook.com (2603:10b6:a03:33b::20)
+ by DS7PR12MB8419.namprd12.prod.outlook.com (2603:10b6:8:e9::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9434.11; Mon, 22 Dec
+ 2025 13:56:07 +0000
+Received: from SJ1PEPF0000231F.namprd03.prod.outlook.com
+ (2603:10b6:a03:33b:cafe::ac) by SJ0PR05CA0015.outlook.office365.com
+ (2603:10b6:a03:33b::20) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9456.9 via Frontend Transport; Mon,
+ 22 Dec 2025 13:56:07 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.160) by
+ SJ1PEPF0000231F.mail.protection.outlook.com (10.167.242.235) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9456.9 via Frontend Transport; Mon, 22 Dec 2025 13:56:07 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 22 Dec
+ 2025 05:55:53 -0800
+Received: from NV-2Y5XW94.nvidia.com (10.126.230.35) by rnnvmail201.nvidia.com
+ (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 22 Dec
+ 2025 05:55:51 -0800
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <alex@shazbot.org>, <clg@redhat.com>,
+ <cohuck@redhat.com>, <mst@redhat.com>, <nicolinc@nvidia.com>,
+ <nathanc@nvidia.com>, <mochs@nvidia.com>, <jgg@nvidia.com>,
+ <kjaju@nvidia.com>
+Subject: [PATCH 2/3] hw/net/virtio-net: Adapt hash handling to updated UAPI
+Date: Mon, 22 Dec 2025 13:53:56 +0000
+Message-ID: <20251222135357.143339-3-skolothumtho@nvidia.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20251222135357.143339-1-skolothumtho@nvidia.com>
+References: <20251222135357.143339-1-skolothumtho@nvidia.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: bERFk1I1YR4hNCToD-DOfhqge2G4P_aVmTTDYpbmDwI_1766382825
-X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=csomani@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain
+X-Originating-IP: [10.126.230.35]
+X-ClientProxiedBy: rnnvmail201.nvidia.com (10.129.68.8) To
+ rnnvmail201.nvidia.com (10.129.68.8)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ1PEPF0000231F:EE_|DS7PR12MB8419:EE_
+X-MS-Office365-Filtering-Correlation-Id: 71b0435a-62ab-49d7-1095-08de4161dabb
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|82310400026|376014|1800799024|36860700013; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?IKj4FszupzUa4hfmNYatHP/7xHE9HxNAVBVWf77eJ1LP3Ne8xuv1RVWWyzBo?=
+ =?us-ascii?Q?2O6a/f3eoZbSUzp+3hP1UgsQDQFBGd5rHUgOB3KJ6UTibsN5rwaxaZyfA3Z8?=
+ =?us-ascii?Q?aCfbeooicuiW+ty6xeOy/V61585guHlrsaFZyJ5DnWIv4yxDd++Ezbr0pBOf?=
+ =?us-ascii?Q?qeOXevn7QGVc7czTwDg3P0Qu/8REFQrGbZs7+TxHkzQo+NKnWhBygyyPFaQK?=
+ =?us-ascii?Q?gqHIuKcPeRuzlNOMr7oXf21/czdjCyRWYvvlAhW5xsWN7f4zlHTqLI3Hnsxf?=
+ =?us-ascii?Q?yfCT79oLa2D7tsgo4nfjhHfENdxVeHkKKgIdwSYBLnZOhFvyF89077tadtma?=
+ =?us-ascii?Q?WkQfSryUt4kORtw4f8qZcQT7rvtPH67hi9bMFTqAriXk1Og0RwSjVBisgQUj?=
+ =?us-ascii?Q?hFbDFETlKKz4Sd95O4lziShau7Eh+WB3YjwtZ2EQHaNEEVaQ3XOcZA3sCHjp?=
+ =?us-ascii?Q?MgzkWPQCaT5yiovHFtyK9/GIBH72YU+zZcWawDls/BMPqk13VVUgrrkow+h3?=
+ =?us-ascii?Q?LF1sjCjVf+iXKC0DJAGlFBk/LuS0Mq1y77T5s4MWdgtWCy1Xgi9N6i8s7i39?=
+ =?us-ascii?Q?a2ozSqMD+/r7TpACxwI5RhhjvJ1ndVqP2tnHHdFuZ51hhPpf3Jc9Pf13/F+L?=
+ =?us-ascii?Q?kej0btXUEunHsuHV7D8hQe0VPi3e7Pv2oaUKNSMTEY7ajEqnxvbjTVyYGSPL?=
+ =?us-ascii?Q?+AEA5dLtgXISBS+iIUHsDmV5A5HcnfqIz9QWyOLPFd3UAt5Z6hyKmW+Zyt6m?=
+ =?us-ascii?Q?oZPjz6OhSCgy40UZmbQerJsctdh6ZGO0hvEguu/QxGLGCgDBF/NlpslfdwdI?=
+ =?us-ascii?Q?Fn45VbaTyeo22N8+5t54a9JTinfn3d81e4i6fZrEMY7j8p8RWJN1fun6tdTw?=
+ =?us-ascii?Q?uOoNpDtOnmRW6M7/PVYyRg0TWANRfw4Vcm9kb3EIZL1tI1i5LhF+PRTDnidg?=
+ =?us-ascii?Q?qbT3L1CHdoVqvLoRBQVS3g2CQbAgx3seOIyqLWiLtgMv68W0xaXsQP1ggemp?=
+ =?us-ascii?Q?aum9pVW3IIEOxv+ibHcOZrj90P4ozj012oo3MmhVTyNHUpVZsDLZuDEhIwew?=
+ =?us-ascii?Q?9R7B+QJBgORsYqflWXvyU9CHXEyF+GKmr3MxxQUNyqXlbEsmexoehYfDXVEU?=
+ =?us-ascii?Q?GZe6WVACtYBrFgwTNaoEWvkJINQyk2tv+26M5aQiJ4XgvbNtYfdELipCRG8o?=
+ =?us-ascii?Q?V+Nt16FPmF74UqByyqW4IBpCq4jxYeZtgW10QCxK9MKLDY6Uf2A5nSUgxxIL?=
+ =?us-ascii?Q?0d7X7V5rMOt8YuBsrtGMjba9Ws5CamKTpesPPjbOaNAFUnraQ25frITn1nmq?=
+ =?us-ascii?Q?I3H2Cc2eIATy0KwsuJWcqtzWm1X6DwAFQMiYkTcHWiGKI8ZUr0eIOuRz5BJc?=
+ =?us-ascii?Q?wuL8byph9FhijnQyXxL3v2ti7jjbNPXoODbrUx8T05/8RMVtqAVMTfJPiZAl?=
+ =?us-ascii?Q?yIKeKGNu6ECuzrrnFHx/csk3/XjpHxb12l7iL9KZoSRwFmBM8uMbCkw183Ps?=
+ =?us-ascii?Q?EnIZCNZ7I6V4pz+fcEkeeG5raMgG7ctjwtqL68e7mgO9aDusH4t/NRG/v5WY?=
+ =?us-ascii?Q?GIaKTi0ufY03uDsWMZw=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(82310400026)(376014)(1800799024)(36860700013); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Dec 2025 13:56:07.0072 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 71b0435a-62ab-49d7-1095-08de4161dabb
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF0000231F.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB8419
+Received-SPF: softfail client-ip=2a01:111:f403:c10d::3;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=SN4PR0501CU005.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 22 Dec 2025 08:49:48 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,263 +155,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Before this patch, users of the property array would free the
-array themselves in their cleanup functions. This causes
-inconsistencies where some users leak the array and some free them.
+The virtio_net_hdr_v1_hash layout changed in the Linux UAPI, replacing
+the 32-bit hash_value field with two 16-bit fields, hash_value_lo and
+hash_value_hi.
 
-This patch makes it so that the property array's release function
-frees the property array (instead of just its elements). It fixes any
-leaks and requires less code.
+Update hash handling to populate the new fields correctly and adjust
+offset and size calculations accordingly.
 
-Signed-off-by: Chandan Somani <csomani@redhat.com>
+Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 ---
- block/accounting.c                |  1 -
- hw/core/qdev-properties.c         | 20 ++++++++++----------
- hw/input/stellaris_gamepad.c      |  8 --------
- hw/intc/arm_gicv3_common.c        |  8 --------
- hw/intc/rx_icu.c                  |  8 --------
- hw/misc/arm_sysctl.c              |  2 --
- hw/misc/mps2-scc.c                |  8 --------
- hw/net/rocker/rocker.c            |  1 -
- hw/nvram/xlnx-efuse.c             |  8 --------
- hw/nvram/xlnx-versal-efuse-ctrl.c |  8 --------
- 10 files changed, 10 insertions(+), 62 deletions(-)
+ hw/net/virtio-net.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/block/accounting.c b/block/accounting.c
-index 0933c61f3a..5cf51f029b 100644
---- a/block/accounting.c
-+++ b/block/accounting.c
-@@ -73,7 +73,6 @@ bool block_acct_setup(BlockAcctStats *stats, enum OnOffAuto account_invalid,
+diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+index ca813203d7..8a7558e278 100644
+--- a/hw/net/virtio-net.c
++++ b/hw/net/virtio-net.c
+@@ -1879,7 +1879,8 @@ static int virtio_net_process_rss(NetClientState *nc, const uint8_t *buf,
+                                              n->rss_data.runtime_hash_types);
+     if (net_hash_type > NetPktRssIpV6UdpEx) {
+         if (n->rss_data.populate_hash) {
+-            hdr->hash_value = VIRTIO_NET_HASH_REPORT_NONE;
++            hdr->hash_value_lo = VIRTIO_NET_HASH_REPORT_NONE;
++            hdr->hash_value_hi = VIRTIO_NET_HASH_REPORT_NONE;
+             hdr->hash_report = 0;
+         }
+         return n->rss_data.redirect ? n->rss_data.default_queue : -1;
+@@ -1888,7 +1889,8 @@ static int virtio_net_process_rss(NetClientState *nc, const uint8_t *buf,
+     hash = net_rx_pkt_calc_rss_hash(pkt, net_hash_type, n->rss_data.key);
+ 
+     if (n->rss_data.populate_hash) {
+-        hdr->hash_value = hash;
++        hdr->hash_value_lo = cpu_to_le16(hash & 0xffff);
++        hdr->hash_value_hi = cpu_to_le16((hash >> 16) & 0xffff);
+         hdr->hash_report = reports[net_hash_type];
+     }
+ 
+@@ -1990,10 +1992,11 @@ static ssize_t virtio_net_receive_rcu(NetClientState *nc, const uint8_t *buf,
+ 
+             receive_header(n, sg, elem->in_num, buf, size);
+             if (n->rss_data.populate_hash) {
+-                offset = offsetof(typeof(extra_hdr), hash_value);
++                offset = offsetof(typeof(extra_hdr), hash_value_lo);
+                 iov_from_buf(sg, elem->in_num, offset,
+                              (char *)&extra_hdr + offset,
+-                             sizeof(extra_hdr.hash_value) +
++                             sizeof(extra_hdr.hash_value_lo) +
++                             sizeof(extra_hdr.hash_value_hi) +
+                              sizeof(extra_hdr.hash_report));
              }
-             block_acct_add_interval(stats, stats_intervals[i]);
-         }
--        g_free(stats_intervals);
-     }
-     return true;
- }
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index 0930d64252..455c28535a 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -673,10 +673,8 @@ static Property array_elem_prop(Object *obj, const Property *parent_prop,
- 
- /*
-  * Object property release callback for array properties: We call the
-- * underlying element's property release hook for each element.
-- *
-- * Note that it is the responsibility of the individual device's deinit
-- * to free the array proper.
-+ * underlying element's property release hook for each element and free the
-+ * property array.
-  */
- static void release_prop_array(Object *obj, const char *name, void *opaque)
- {
-@@ -686,14 +684,16 @@ static void release_prop_array(Object *obj, const char *name, void *opaque)
-     char *elem = *arrayptr;
-     int i;
- 
--    if (!prop->arrayinfo->release) {
--        return;
-+    if (prop->arrayinfo->release) {
-+        for (i = 0; i < *alenptr; i++) {
-+            Property elem_prop = array_elem_prop(obj, prop, name, elem);
-+            prop->arrayinfo->release(obj, NULL, &elem_prop);
-+            elem += prop->arrayfieldsize;
-+        }
-     }
- 
--    for (i = 0; i < *alenptr; i++) {
--        Property elem_prop = array_elem_prop(obj, prop, name, elem);
--        prop->arrayinfo->release(obj, NULL, &elem_prop);
--        elem += prop->arrayfieldsize;
-+    if (*arrayptr) {
-+        g_free(*arrayptr);
-     }
- }
- 
-diff --git a/hw/input/stellaris_gamepad.c b/hw/input/stellaris_gamepad.c
-index fec1161c9c..207064dacb 100644
---- a/hw/input/stellaris_gamepad.c
-+++ b/hw/input/stellaris_gamepad.c
-@@ -63,13 +63,6 @@ static void stellaris_gamepad_realize(DeviceState *dev, Error **errp)
-     qemu_input_handler_register(dev, &stellaris_gamepad_handler);
- }
- 
--static void stellaris_gamepad_finalize(Object *obj)
--{
--    StellarisGamepad *s = STELLARIS_GAMEPAD(obj);
--
--    g_free(s->keycodes);
--}
--
- static void stellaris_gamepad_reset_enter(Object *obj, ResetType type)
- {
-     StellarisGamepad *s = STELLARIS_GAMEPAD(obj);
-@@ -98,7 +91,6 @@ static const TypeInfo stellaris_gamepad_info[] = {
-         .name = TYPE_STELLARIS_GAMEPAD,
-         .parent = TYPE_SYS_BUS_DEVICE,
-         .instance_size = sizeof(StellarisGamepad),
--        .instance_finalize = stellaris_gamepad_finalize,
-         .class_init = stellaris_gamepad_class_init,
-     },
- };
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index 2d0df6da86..26d694d2ab 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -488,13 +488,6 @@ static void arm_gicv3_common_realize(DeviceState *dev, Error **errp)
-     s->itslist = g_ptr_array_new();
- }
- 
--static void arm_gicv3_finalize(Object *obj)
--{
--    GICv3State *s = ARM_GICV3_COMMON(obj);
--
--    g_free(s->redist_region_count);
--}
--
- static void arm_gicv3_common_reset_hold(Object *obj, ResetType type)
- {
-     GICv3State *s = ARM_GICV3_COMMON(obj);
-@@ -644,7 +637,6 @@ static const TypeInfo arm_gicv3_common_type = {
-     .instance_size = sizeof(GICv3State),
-     .class_size = sizeof(ARMGICv3CommonClass),
-     .class_init = arm_gicv3_common_class_init,
--    .instance_finalize = arm_gicv3_finalize,
-     .abstract = true,
-     .interfaces = (const InterfaceInfo[]) {
-         { TYPE_ARM_LINUX_BOOT_IF },
-diff --git a/hw/intc/rx_icu.c b/hw/intc/rx_icu.c
-index f8615527b7..85da0624f6 100644
---- a/hw/intc/rx_icu.c
-+++ b/hw/intc/rx_icu.c
-@@ -334,13 +334,6 @@ static void rxicu_init(Object *obj)
-     sysbus_init_irq(d, &icu->_swi);
- }
- 
--static void rxicu_fini(Object *obj)
--{
--    RXICUState *icu = RX_ICU(obj);
--    g_free(icu->map);
--    g_free(icu->init_sense);
--}
--
- static const VMStateDescription vmstate_rxicu = {
-     .name = "rx-icu",
-     .version_id = 1,
-@@ -382,7 +375,6 @@ static const TypeInfo rxicu_info = {
-     .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(RXICUState),
-     .instance_init = rxicu_init,
--    .instance_finalize = rxicu_fini,
-     .class_init = rxicu_class_init,
- };
- 
-diff --git a/hw/misc/arm_sysctl.c b/hw/misc/arm_sysctl.c
-index 0f4e37cd47..e715ff9475 100644
---- a/hw/misc/arm_sysctl.c
-+++ b/hw/misc/arm_sysctl.c
-@@ -618,9 +618,7 @@ static void arm_sysctl_finalize(Object *obj)
- {
-     arm_sysctl_state *s = ARM_SYSCTL(obj);
- 
--    g_free(s->db_voltage);
-     g_free(s->db_clock);
--    g_free(s->db_clock_reset);
- }
- 
- static const Property arm_sysctl_properties[] = {
-diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
-index a9a5d4a535..acb0f5773b 100644
---- a/hw/misc/mps2-scc.c
-+++ b/hw/misc/mps2-scc.c
-@@ -405,13 +405,6 @@ static void mps2_scc_realize(DeviceState *dev, Error **errp)
-     s->oscclk = g_new0(uint32_t, s->num_oscclk);
- }
- 
--static void mps2_scc_finalize(Object *obj)
--{
--    MPS2SCC *s = MPS2_SCC(obj);
--
--    g_free(s->oscclk_reset);
--}
--
- static bool cfg7_needed(void *opaque)
- {
-     MPS2SCC *s = opaque;
-@@ -489,7 +482,6 @@ static const TypeInfo mps2_scc_info = {
-     .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(MPS2SCC),
-     .instance_init = mps2_scc_init,
--    .instance_finalize = mps2_scc_finalize,
-     .class_init = mps2_scc_class_init,
- };
- 
-diff --git a/hw/net/rocker/rocker.c b/hw/net/rocker/rocker.c
-index cc49701dd3..cbc7bd3ed9 100644
---- a/hw/net/rocker/rocker.c
-+++ b/hw/net/rocker/rocker.c
-@@ -1429,7 +1429,6 @@ static void pci_rocker_uninit(PCIDevice *dev)
-             world_free(r->worlds[i]);
-         }
-     }
--    g_free(r->fp_ports_peers);
- }
- 
- static void rocker_reset(DeviceState *dev)
-diff --git a/hw/nvram/xlnx-efuse.c b/hw/nvram/xlnx-efuse.c
-index 4c23f8b931..1875fdb953 100644
---- a/hw/nvram/xlnx-efuse.c
-+++ b/hw/nvram/xlnx-efuse.c
-@@ -224,13 +224,6 @@ static void efuse_realize(DeviceState *dev, Error **errp)
-     }
- }
- 
--static void efuse_finalize(Object *obj)
--{
--    XlnxEFuse *s = XLNX_EFUSE(obj);
--
--    g_free(s->ro_bits);
--}
--
- static void efuse_prop_set_drive(Object *obj, Visitor *v, const char *name,
-                                  void *opaque, Error **errp)
- {
-@@ -288,7 +281,6 @@ static const TypeInfo efuse_info = {
-     .name          = TYPE_XLNX_EFUSE,
-     .parent        = TYPE_DEVICE,
-     .instance_size = sizeof(XlnxEFuse),
--    .instance_finalize = efuse_finalize,
-     .class_init    = efuse_class_init,
- };
- 
-diff --git a/hw/nvram/xlnx-versal-efuse-ctrl.c b/hw/nvram/xlnx-versal-efuse-ctrl.c
-index 6f17f32a0c..4d0c2c8404 100644
---- a/hw/nvram/xlnx-versal-efuse-ctrl.c
-+++ b/hw/nvram/xlnx-versal-efuse-ctrl.c
-@@ -724,13 +724,6 @@ static void efuse_ctrl_init(Object *obj)
-     sysbus_init_irq(sbd, &s->irq_efuse_imr);
- }
- 
--static void efuse_ctrl_finalize(Object *obj)
--{
--    XlnxVersalEFuseCtrl *s = XLNX_VERSAL_EFUSE_CTRL(obj);
--
--    g_free(s->extra_pg0_lock_spec);
--}
--
- static const VMStateDescription vmstate_efuse_ctrl = {
-     .name = TYPE_XLNX_VERSAL_EFUSE_CTRL,
-     .version_id = 1,
-@@ -767,7 +760,6 @@ static const TypeInfo efuse_ctrl_info = {
-     .instance_size = sizeof(XlnxVersalEFuseCtrl),
-     .class_init    = efuse_ctrl_class_init,
-     .instance_init = efuse_ctrl_init,
--    .instance_finalize = efuse_ctrl_finalize,
- };
- 
- static void efuse_ctrl_register_types(void)
+             offset = n->host_hdr_len;
 -- 
-2.51.1
+2.43.0
 
 

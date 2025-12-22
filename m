@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B6EEE674B2
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Dec 2025 13:43:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC3F4E674B3
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Dec 2025 13:43:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vXgAM-0006WN-6R; Mon, 22 Dec 2025 08:41:38 -0500
+	id 1vXgAr-0006bM-AJ; Mon, 22 Dec 2025 08:42:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vXgAE-0006UM-HB
- for qemu-arm@nongnu.org; Mon, 22 Dec 2025 08:41:30 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vXgAc-0006Yj-OH
+ for qemu-arm@nongnu.org; Mon, 22 Dec 2025 08:41:57 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vXgAD-00021p-0s
- for qemu-arm@nongnu.org; Mon, 22 Dec 2025 08:41:30 -0500
+ id 1vXgAb-00026W-B7
+ for qemu-arm@nongnu.org; Mon, 22 Dec 2025 08:41:54 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1766410888;
+ s=mimecast20190719; t=1766410912;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=NlOt9aF9ySyvLe7aqCL+PnopN7u9LhoJ5R7XNpcJf64=;
- b=YLgNdJZOHYJnvKD0f6v7l1KbhujL+R4yAMAvu39Or/2xX1sho4oGc4IrbTORk8/DNxFyKu
- 9PbadkM5bIg2IQAShCVJOR9TK2o4E2FBvuSQwk2mAyCSxyyhHzR9wDnFjhQGvMUmJaIxYE
- Ddf+X3LIx+ZbE0xYz1FTYbvPOvi+AJs=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=VaRLxtGxjeoYi1QgeOQBuc8zGtaMHrmnu5qWpftH/Ew=;
+ b=YcGYEtX5iWw2CSyNXYzttQ0oAGLZ2xMcEGFtjvCtJ+iRfJKvpT547vy6inTq5rXXRsD7LM
+ m4pg8Y7eVSZcVnpPepZPtDoo1AgtwSB33u4UmGETAH0VaMA6CUjjENYKg293IrXhlCyTQq
+ MAOAuZ7xAEkAO192KFK3lGDmUS0mJmk=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-688-Qyx1tUYQPe2PGmbnTCo_oA-1; Mon,
- 22 Dec 2025 08:41:24 -0500
-X-MC-Unique: Qyx1tUYQPe2PGmbnTCo_oA-1
-X-Mimecast-MFC-AGG-ID: Qyx1tUYQPe2PGmbnTCo_oA_1766410883
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-651-qoReW8AENhCHpP9Zgs1uFw-1; Mon,
+ 22 Dec 2025 08:41:49 -0500
+X-MC-Unique: qoReW8AENhCHpP9Zgs1uFw-1
+X-Mimecast-MFC-AGG-ID: qoReW8AENhCHpP9Zgs1uFw_1766410908
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 36A8E180035A; Mon, 22 Dec 2025 13:41:23 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 132071956046; Mon, 22 Dec 2025 13:41:48 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.45.224.58])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E75BE19560AB; Mon, 22 Dec 2025 13:41:18 +0000 (UTC)
+ id E6C7D19560AB; Mon, 22 Dec 2025 13:41:43 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
  maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com,
  gshan@redhat.com, ddutile@redhat.com, peterx@redhat.com, philmd@linaro.org,
  pbonzini@redhat.com
-Subject: [PATCH v4 01/10] hw/arm/virt: Rename arm_virt_compat into
- arm_virt_compat_defaults
-Date: Mon, 22 Dec 2025 14:39:58 +0100
-Message-ID: <20251222134110.3649287-2-eric.auger@redhat.com>
+Subject: [PATCH v4 06/10] target/arm/cpu: Implement hide_reg callback()
+Date: Mon, 22 Dec 2025 14:40:03 +0100
+Message-ID: <20251222134110.3649287-7-eric.auger@redhat.com>
 In-Reply-To: <20251222134110.3649287-1-eric.auger@redhat.com>
 References: <20251222134110.3649287-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,59 +86,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Renaming arm_virt_compat into arm_virt_compat_defaults
-makes more obvious that those compats apply to all machine
-types by default, if not overriden for specific ones. This also
-matches the terminology used for pc-q35.
+Check if the register is hidden.
 
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Sebastian Ott <sebott@redhat.com>
 Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 ---
- hw/arm/virt.c | 13 +++++++------
- 1 file changed, 7 insertions(+), 6 deletions(-)
+ target/arm/cpu.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 25fb2bab56..ec0af8e6e7 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -94,20 +94,21 @@
- #include "hw/cxl/cxl_host.h"
- #include "qemu/guest-random.h"
- 
--static GlobalProperty arm_virt_compat[] = {
-+static GlobalProperty arm_virt_compat_defaults[] = {
-     { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 39292fb9bc..066746d76f 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2369,6 +2369,11 @@ static const TCGCPUOps arm_tcg_ops = {
  };
--static const size_t arm_virt_compat_len = G_N_ELEMENTS(arm_virt_compat);
-+static const size_t arm_virt_compat_defaults_len =
-+    G_N_ELEMENTS(arm_virt_compat_defaults);
+ #endif /* CONFIG_TCG */
  
- /*
-  * This cannot be called from the virt_machine_class_init() because
-  * TYPE_VIRT_MACHINE is abstract and mc->compat_props g_ptr_array_new()
-  * only is called on virt non abstract class init.
-  */
--static void arm_virt_compat_set(MachineClass *mc)
-+static void arm_virt_compat_default_set(MachineClass *mc)
++static inline bool arm_cpu_hide_reg(CPUState *s, uint64_t regidx)
++{
++    return arm_cpu_hidden_reg(ARM_CPU(s), regidx);
++}
++
+ static void arm_cpu_class_init(ObjectClass *oc, const void *data)
  {
--    compat_props_add(mc->compat_props, arm_virt_compat,
--                     arm_virt_compat_len);
-+    compat_props_add(mc->compat_props, arm_virt_compat_defaults,
-+                     arm_virt_compat_defaults_len);
- }
+     ARMCPUClass *acc = ARM_CPU_CLASS(oc);
+@@ -2397,6 +2402,7 @@ static void arm_cpu_class_init(ObjectClass *oc, const void *data)
+     cc->gdb_get_core_xml_file = arm_gdb_get_core_xml_file;
+     cc->gdb_stop_before_watchpoint = true;
+     cc->disas_set_info = arm_disas_set_info;
++    cc->hide_reg = arm_cpu_hide_reg;
  
- #define DEFINE_VIRT_MACHINE_IMPL(latest, ...) \
-@@ -116,7 +117,7 @@ static void arm_virt_compat_set(MachineClass *mc)
-         const void *data) \
-     { \
-         MachineClass *mc = MACHINE_CLASS(oc); \
--        arm_virt_compat_set(mc); \
-+        arm_virt_compat_default_set(mc); \
-         MACHINE_VER_SYM(options, virt, __VA_ARGS__)(mc); \
-         mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " ARM Virtual Machine"; \
-         MACHINE_VER_DEPRECATION(__VA_ARGS__); \
+ #ifdef CONFIG_TCG
+     cc->tcg_ops = &arm_tcg_ops;
 -- 
 2.52.0
 

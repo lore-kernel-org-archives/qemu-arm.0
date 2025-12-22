@@ -4,150 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FA34E674B6
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Dec 2025 13:57:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD7B5E674BD
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Dec 2025 14:58:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vXgPJ-0007cW-C9; Mon, 22 Dec 2025 08:57:06 -0500
+	id 1vXhM4-0004UN-1q; Mon, 22 Dec 2025 09:57:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vXgOS-0007Lk-Fk; Mon, 22 Dec 2025 08:56:17 -0500
-Received: from mail-eastus2azlp170100001.outbound.protection.outlook.com
- ([2a01:111:f403:c110::1] helo=BN1PR04CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vXhM2-0004Tv-Db
+ for qemu-arm@nongnu.org; Mon, 22 Dec 2025 09:57:47 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vXgOQ-0004cm-Q2; Mon, 22 Dec 2025 08:56:12 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=OfqIFxwrRu6TDaC3oZK5kDSCnGmx9v69vjzikKT++Rg2f26+jne0vjZN3EFmOIaqxYu0JyfWzcvBP3O+ADZtOVD4DnM5iYW1ibGhnu3XjeCeJPexSHrhRx6H+WvPERtVJHuRbDB7gF8CdPHIOJLjvFG+O7QiZjZpVdAiTPr20SXrRSGUC+CYw2uTBQrVTtYO/9mbdxPhzFuCfTmPneSMh78RK9j+5z8aRab1uZOtbh377sv2/SWNrAVEtF+5i/TOWXgi6XORcY7cu9otaw5GP+ofHeBGUZyg+cU0hjl6NQhbgfRgaRAQvfUxj+wHXJMI4jz18r/P6vnfRB7z+U5ArQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=pEot3q88iNPj3YS4VFIKFJVD4WTxHrmoIS3c07hyO28=;
- b=yGsFoR/iyozRy1S9a1ands8y3DhEGsrff9WoZUbAvQ6Jb1dJKtJq6G0I4UIa6nZHScnOOC2KuMb8k0XjS14Io+zeMAWYUYBHeS1kBm5oq1JHCUxiMRRTbjACX+YC7+arqs286rC0YBMZ3xMX/QkW6fNrYZ7FS/5tRCg6ziBnIy4rmV8cNZ5EvuyJ6BPwRv5kM/eKAOkVjeLLk8P9Mvqh+lvsUkF5vrZZiNmFqvPuzxtgfJbee4+5k6orL3NLhzu1Qtvi8aJvRwbVdyRKscpNaknzqJMJ5yta9Tx//iRwtdljHzBzvfO+HZOxjrNxuVJdE7dAJBG7ouHGH2JRP6OWsg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=pEot3q88iNPj3YS4VFIKFJVD4WTxHrmoIS3c07hyO28=;
- b=m63MEBzRVJzv4ov7yAyEPjN373LFDPcTZn+ZMM4sPyIVMYHOa4ykEUunc+Qzd4pFj+lAOaAfbSku4t9rgPOMUCH3ydJrKA3UMjyaORUluGt95wuhTqUoQRyn1X7rh5NSoaAaNgqlwvQyd8/jfAhHb+J4eCnBbiv275YT4W65IKvE82+4RJr3IePkNShSn8h9JLaPgH0TaryQSL5Xo6/lI5PKXQJwrbHDhERX0hxZ0+1bCXClM6ITel6a6RGNW8iDx+47g9yoFGKCDj0UDyOJ1MFZ+W412iZZOTon65uFPU78sfBsfG7rTOet+MoEoIC4JTlf1ns/SouoGEp3zS5O8Q==
-Received: from MN0P221CA0005.NAMP221.PROD.OUTLOOK.COM (2603:10b6:208:52a::15)
- by LV0PR12MB999070.namprd12.prod.outlook.com (2603:10b6:408:32a::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9434.11; Mon, 22 Dec
- 2025 13:56:04 +0000
-Received: from BL02EPF00021F68.namprd02.prod.outlook.com
- (2603:10b6:208:52a:cafe::88) by MN0P221CA0005.outlook.office365.com
- (2603:10b6:208:52a::15) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9434.11 via Frontend Transport; Mon,
- 22 Dec 2025 13:56:04 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- BL02EPF00021F68.mail.protection.outlook.com (10.167.249.4) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9456.9 via Frontend Transport; Mon, 22 Dec 2025 13:56:03 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 22 Dec
- 2025 05:55:44 -0800
-Received: from NV-2Y5XW94.nvidia.com (10.126.230.35) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 22 Dec
- 2025 05:55:42 -0800
-From: Shameer Kolothum <skolothumtho@nvidia.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <alex@shazbot.org>, <clg@redhat.com>,
- <cohuck@redhat.com>, <mst@redhat.com>, <nicolinc@nvidia.com>,
- <nathanc@nvidia.com>, <mochs@nvidia.com>, <jgg@nvidia.com>,
- <kjaju@nvidia.com>
-Subject: [PATCH 0/3] vfio: Add DMABUF support for PCI BAR regions
-Date: Mon, 22 Dec 2025 13:53:54 +0000
-Message-ID: <20251222135357.143339-1-skolothumtho@nvidia.com>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vXhM0-0002X6-8p
+ for qemu-arm@nongnu.org; Mon, 22 Dec 2025 09:57:45 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1766415462;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=v09E60ZCznPxnmoN+eZ10YTbyviNvXITWhmByYg1Hpw=;
+ b=KjnJaXM8fgy/WB+Jd9JZYf4XVIMge8NDkdGosnAKes0Y18juSEabAI1+v2Ayuh/XSaa6Es
+ nf4JVCn4OyuL0kW1WpU+KQE6DO7tLM8w+ahul+3XbJ595FtE/NDW9wE4e2rHGMXQOcQEjk
+ mnSFcinYzSyRvDnSoPFKC/OKdnyL0RU=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-685-yU_4i8lYO6mxN76fIFKiiw-1; Mon, 22 Dec 2025 09:57:41 -0500
+X-MC-Unique: yU_4i8lYO6mxN76fIFKiiw-1
+X-Mimecast-MFC-AGG-ID: yU_4i8lYO6mxN76fIFKiiw_1766415460
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-477964c22e0so29881575e9.0
+ for <qemu-arm@nongnu.org>; Mon, 22 Dec 2025 06:57:41 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1766415460; x=1767020260;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=v09E60ZCznPxnmoN+eZ10YTbyviNvXITWhmByYg1Hpw=;
+ b=XhWSznEJeCDIzu4giK/QA8TnCSRy6IbaT4i5zRtIXQzpcAU5mltpX7d/wNQhMRZ5pJ
+ OLhfDGr7ZSvmB5m/MOzozeMKEC4TFPipb8luOBvMhoB7KRH6U7aMn7aBGcKtlxWWDBtu
+ e8qZV1R+/CU4l9Wq5DCqyGhqqvtEi6rHd33GRGFagK0QwBjJ1zQHci+suF9kqCkyEQUm
+ MeqPM7svmAK9tSaeERvVit4pZmlCu7rgequuGgGm97Z26viqoJvfguFxSMqkCa/sMN/G
+ et+EmlaJ3x1/26WTZqEGzYaxufwrDKUSaIuPvj4bUy9b6loYHpIFjnG6o9Uxoh5bz5uS
+ Ud8A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXTFidy8i+WigHnq7NIMILP3aFjgnX47JA1x9GA9sh6USgNt3pwPQ59TH3FAEeUXF1ZwXrH94Xo1Q==@nongnu.org
+X-Gm-Message-State: AOJu0YyoQPXs+aFRaQ4tRYRcfhHidcYcX0+i1LAPd9aMl7/BfVWJIC9u
+ eCMi23nduVmPPp1+tubwk+Xnl7rnQKen841bSuGGaKVNzx3yHiUlX9DXq9kSBglFvHLe4WXggWt
+ Ega3pAHsk0lXz4oLVwP6K0yYQYor0t4FuNZaj8+4l698aogpecHk6qg==
+X-Gm-Gg: AY/fxX5M5gmi0KNlqGZNhM36NtDTv++1iAV7gomcVs8vLqsU9UtCBl9J2UZS7GyNzky
+ YqpaCn0HrN4IqJksvs67JncKk4p0qB0N7o2mnWLufrWIptHc3MmACONFz2HNrxddouRnvR3iGBd
+ hjjWx9vTn7LC2g0wm/Jo6QmEC76Xy2TBUlCq8m/xf1APTPYeXN3z9+AVdFbgvlX6PHb061V5XXm
+ 6YGmeY3Hw+VtfNPHvE0FshTSsOziw7b3ko6Wn1bUeTR70EuRfb6Vi+94YmuR7Z4iJW++31+4a0H
+ mOq0cXsi5IRFEwafGTuxL8ZgJHYYo+Nfhta+lwBmfxIpOerYt/VKo6JHmovfWaHVuWEm8tWTulV
+ 7Rd91TW9uOz8Fc1F/Bfi3c5ZUD+CIeI6IKahEdry0Dav4Rg==
+X-Received: by 2002:a05:600c:c0d7:b0:47a:9b80:7b36 with SMTP id
+ 5b1f17b1804b1-47be299905emr123237595e9.2.1766415460136; 
+ Mon, 22 Dec 2025 06:57:40 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFSFzRRBCh0qyBQSF1zKvJlvok8YN1P5mU02/vb/stJXLrqYrBKTFqEU8PTIORNiGMgZgA1Hg==
+X-Received: by 2002:a05:600c:c0d7:b0:47a:9b80:7b36 with SMTP id
+ 5b1f17b1804b1-47be299905emr123237465e9.2.1766415459723; 
+ Mon, 22 Dec 2025 06:57:39 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:165:d60:2c1a:3780:4e49:dfcf?
+ ([2a01:e0a:165:d60:2c1a:3780:4e49:dfcf])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4324ea830f3sm22345919f8f.22.2025.12.22.06.57.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Dec 2025 06:57:39 -0800 (PST)
+Message-ID: <5098c504-f68c-42c9-9c3a-3b0854418857@redhat.com>
+Date: Mon, 22 Dec 2025 15:57:38 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.126.230.35]
-X-ClientProxiedBy: rnnvmail201.nvidia.com (10.129.68.8) To
- rnnvmail201.nvidia.com (10.129.68.8)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL02EPF00021F68:EE_|LV0PR12MB999070:EE_
-X-MS-Office365-Filtering-Correlation-Id: ad677af2-8d26-413d-4344-08de4161d8df
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|36860700013|82310400026|1800799024; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?Y0hLaDdnSkZmVHFGSGxWMzQ4RXpQbXdPNXJlUGxQNjZvdzRmOXc4NEswa0pV?=
- =?utf-8?B?ODlickdJNk91SnhPUmUzT0tJQmhSR3kvQ0hZcXlPakRha24yZWFaRVJkallL?=
- =?utf-8?B?elJuMzUyTFd2N21GSzN1MDhlc0VSUXZETDIzY0VNNmJoYWxKMXQ3ZjdUM05V?=
- =?utf-8?B?QUo1THl6YnNYT1pZWFdUMitXUC8vdE52amh5aHgzNHd0VU9mTjZMQWpuZFQv?=
- =?utf-8?B?eFV0Q1ZCdXhYaHV6eWlxM1ZWZWMvbnJQN0tIeDhITVcvVXdITFVSLys3VnJR?=
- =?utf-8?B?ZktKZitGY292V1UwcmxlZmpOVVNpZklNWkJzUkkyVHhya1Jsb0JJSDZpczFM?=
- =?utf-8?B?ZVY0QnpEblRaWStFZmpneExLSUFCQjdlYkdYWmFuckFHdXBhNWZDMVY0MTRv?=
- =?utf-8?B?MzFmU0M0Vi9ySmJ0WS90Yi9CQUh5SnlSSnV1N0pZVXNCNTI3Q1Y1NFpuUWNw?=
- =?utf-8?B?aWNCT3NuS01ScHVQSW15eE1mKzhkUWhaV2JWWXkvVi9mKzk0WjhHWG9YZ1hu?=
- =?utf-8?B?aUdLOW40ZWRNVWcrMm16RDdkbGdWbk1PL0lOTGRNUFIxenh2RU9sM2JIK2Jx?=
- =?utf-8?B?V1Ixa0tCRjBVNUhuRkJ1eHpSSGQxZ1FBajYxRVdIOWI1QW1hQytCSXQyQ1VX?=
- =?utf-8?B?UFg3T0NkMHBuVDJ3Umk1V3V4aW10bGZMUEJvMkVyOWFvTVNZR2pwVXRxeXF6?=
- =?utf-8?B?Tkx2ajJ2dXdXeXNJdTgxOHBGM0N4U0lGQ2hGT1ZTMExRNjY4alRDN1NhcGxx?=
- =?utf-8?B?NEVXcTNwRSs3eXhqcldKUTVLbnhwbURaaUJxbHMzSmNXRDFUcWpxWmVSVDRC?=
- =?utf-8?B?MWpTM3lESzZnQkkySkdmU2F5NVBwK3dITGY0M3hQNTBnMWV4WUcxanhyS0tG?=
- =?utf-8?B?OEVnS2toM0VSU1Rydmd6RTAyOGVxRUpvRXFHSE1rV1VxZ1FIdjhYRnZRUG9V?=
- =?utf-8?B?aG1laU9KNUFQUmovemJjWi92dG1WdTVPWksyM0pwQjh5TXEwUUkwRkZabWh5?=
- =?utf-8?B?dGlyR3pOWVZXYjNtUFVMc0t1b3RnN29rYk50SmdJRFA1Mk1xeGlsNU5QWVQw?=
- =?utf-8?B?M1RQNGZCQ3NVbHdMaEJDZnlWeExBQW1nVmVscFIwd1ZxM3psdUFJbVQ3UkJV?=
- =?utf-8?B?QXZQQm0vMUx0Q01JTkhUYndPUENzYlZhSHF5ZWRCdGlqVnFzcmI3SDlrUzRX?=
- =?utf-8?B?SWdHOWgvVS9UVXlUSjdkMjVxd0ZhYkNLWk1kYjdvMzlSZDlhdEJ2cDN2SVBE?=
- =?utf-8?B?VUl1WXIwS2t1MDdYVU1POWdON05jdlEyanFkSUUra2FoQlY0RmNQaTQ0Mnc1?=
- =?utf-8?B?aCtnaVE4M2xUWDFVa0QzTWFKL3FBT09NM2dmckd2eDRxMFNwNnVsWXgyWC83?=
- =?utf-8?B?ck5jZEdHdW05ZVJYTHplRm5TVTNzZkJpWit1T05ocForQnYxcGFVUStEdWsy?=
- =?utf-8?B?T3lJVDdTUUFCU0lNb1lXSlZ5c2ZESS9IQ0ZmQ3FSSnRxRGtEN29pNlVSUU1v?=
- =?utf-8?B?UjdVUmRTSi9YSUFkbFNISTlBQXAyaS9vVS95djZCNEx1WUNSZGd6UmZxSlJF?=
- =?utf-8?B?Q0VLK2VydU9nWW9YbjVTMW9kaWc5d2dPSGIxRmNFUUIwbVJlSjZlazltMkh5?=
- =?utf-8?B?OW1GMTNTUWpyLzNxR0IxTDZtNU1QMUFNaUhyVU1lWjcxTTFvZnZiSWZnNVpi?=
- =?utf-8?B?TG9janVWd1Zqbnh3TjZyZUc5TEVQRENaVTVDVWZsU3BlY2UrQWJnb2FySFJW?=
- =?utf-8?B?cVhaQmpSL3NsMDZadXd2aGEvSnVaREl3bmRDTjNsV0p0ckxGTGZHWTlaZUhY?=
- =?utf-8?B?eDU3Qk5wMUpvTFgrUVlRT3k1bDdFZldYbzltbk1DQkV0WFpEK2ZFTmR5bTBP?=
- =?utf-8?B?MGJqMzcvL0FiV1kxM0o2bEZKRVluQm1oMm9tZkx5S2FhN2I3U24xVkR2eHZm?=
- =?utf-8?B?SVNYZVNkdDdjTlQ0WGdMNXVweU5iZ2cvbkZWU1FBa2hQVU04VjNXWVZpKyta?=
- =?utf-8?B?SDNuT3BCYmlqR0wrdkplUGJBUUczMWg4SVNhc2Y1ajdlQzRmdDhNN0ZIV1Vl?=
- =?utf-8?B?N1lGWGFjS09QY2RId0UvVVBMbUNGcUliRVREdVlvRlVGV054TS8xRHcyYWtK?=
- =?utf-8?Q?si1c=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(376014)(36860700013)(82310400026)(1800799024); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Dec 2025 13:56:03.7508 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ad677af2-8d26-413d-4344-08de4161d8df
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL02EPF00021F68.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV0PR12MB999070
-Received-SPF: softfail client-ip=2a01:111:f403:c110::1;
- envelope-from=skolothumtho@nvidia.com;
- helo=BN1PR04CU002.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] linux-headers: Update to Linux v6.19-rc1
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: eric.auger@redhat.com, alex@shazbot.org, cohuck@redhat.com,
+ mst@redhat.com, nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com,
+ jgg@nvidia.com, kjaju@nvidia.com, Paolo Bonzini <pbonzini@redhat.com>,
+ Magnus Kulke <magnuskulke@linux.microsoft.com>
+References: <20251222135357.143339-1-skolothumtho@nvidia.com>
+ <20251222135357.143339-2-skolothumtho@nvidia.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20251222135357.143339-2-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 2VE42yD0iRGmLL7hIvMW-_oUqKe8eD43vqIPVyMjBjc_1766415460
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -163,69 +163,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+Hello,
 
-Linux now provides a VFIO dmabuf exporter to expose PCI BAR memory for P2P
-use cases. This adds support for vfio devices to create a dmabuf for
-each mapped BAR region.
++Magnus, +Paolo
 
-Requires linux-headers update to 6.19-rc1(patch #1). That update
-introduces a virtio-net build issue, which is addressed by patch #2.
+On 12/22/25 14:53, Shameer Kolothum wrote:
+> Mainly for adding support for VFIO DMABUF. While at it, update all
+> headers.
+> 
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+> I was getting this error from update-linux-headers script:
+> 
+> cp: cannot stat '/tmp/tmp.OfzanvZP6L/headers/include/asm/unistd_32.h':
+>   No such file or directory
+> 
+> I used the hunk below to fix it. This likely requires another patch,
+> though. If this is the right fix, I will include that in v2.
+> 
+> diff --git a/scripts/update-linux-headers.sh b/scripts/update-linux-headers.sh
+> index 844d9cb9f5..d09d8cf4c6 100755
+> --- a/scripts/update-linux-headers.sh
+> +++ b/scripts/update-linux-headers.sh
+> @@ -154,7 +154,6 @@ EOF
+>       mkdir -p "$output/include/standard-headers/asm-$arch"
+>       if [ $arch = s390 ]; then
+>           cp_portable "$hdrdir/include/asm/virtio-ccw.h" "$output/include/standard-headers/asm-s390/"
+> -        cp "$hdrdir/include/asm/unistd_32.h" "$output/linux-headers/asm-s390/"
+>           cp "$hdrdir/include/asm/unistd_64.h" "$output/linux-headers/asm-s390/"
+>       fi
+>       if [ $arch = arm64 ]; then
 
-The dmabuf support was sanity tested on an NVIDIA grace paltform.
+[ ... ]
 
-Please take a look and let me know.
+> diff --git a/linux-headers/linux/mshv.h b/linux-headers/linux/mshv.h
+> index 5bc83db6a3..acceeddc1c 100644
+> --- a/linux-headers/linux/mshv.h
+> +++ b/linux-headers/linux/mshv.h
+> @@ -26,6 +26,7 @@ enum {
+>   	MSHV_PT_BIT_LAPIC,
+>   	MSHV_PT_BIT_X2APIC,
+>   	MSHV_PT_BIT_GPA_SUPER_PAGES,
+> +	MSHV_PT_BIT_CPU_AND_XSAVE_FEATURES,
+>   	MSHV_PT_BIT_COUNT,
+>   };
+>   
+> @@ -41,6 +42,8 @@ enum {
+>    * @pt_flags: Bitmask of 1 << MSHV_PT_BIT_*
+>    * @pt_isolation: MSHV_PT_ISOLATION_*
+>    *
+> + * This is the initial/v1 version for backward compatibility.
+> + *
+>    * Returns a file descriptor to act as a handle to a guest partition.
+>    * At this point the partition is not yet initialized in the hypervisor.
+>    * Some operations must be done with the partition in this state, e.g. setting
+> @@ -52,6 +55,37 @@ struct mshv_create_partition {
+>   	__u64 pt_isolation;
+>   };
+>   
+> +#define MSHV_NUM_CPU_FEATURES_BANKS 2
+> +
+> +/**
+> + * struct mshv_create_partition_v2
+> + *
+> + * This is extended version of the above initial MSHV_CREATE_PARTITION
+> + * ioctl and allows for following additional parameters:
+> + *
+> + * @pt_num_cpu_fbanks: Must be set to MSHV_NUM_CPU_FEATURES_BANKS.
+> + * @pt_cpu_fbanks: Disabled processor feature banks array.
+> + * @pt_disabled_xsave: Disabled xsave feature bits.
+> + *
+> + * pt_cpu_fbanks and pt_disabled_xsave are passed through as-is to the create
+> + * partition hypercall.
+> + *
+> + * Returns : same as above original mshv_create_partition
+> + */
+> +struct mshv_create_partition_v2 {
+> +	__u64 pt_flags;
+> +	__u64 pt_isolation;
+> +	__u16 pt_num_cpu_fbanks;
+> +	__u8  pt_rsvd[6];		/* MBZ */
+> +	__u64 pt_cpu_fbanks[MSHV_NUM_CPU_FEATURES_BANKS];
+> +	__u64 pt_rsvd1[2];		/* MBZ */
+> +#if defined(__x86_64__)
+> +	__u64 pt_disabled_xsave;
+> +#else
+> +	__u64 pt_rsvd2;			/* MBZ */
+> +#endif
+> +} __attribute__((packed));
+> +
+>   /* /dev/mshv */
+>   #define MSHV_CREATE_PARTITION	_IOW(MSHV_IOCTL, 0x00, struct mshv_create_partition)
+>   
+> @@ -89,7 +123,7 @@ enum {
+>    * @rsvd: MBZ
+>    *
+>    * Map or unmap a region of userspace memory to Guest Physical Addresses (GPA).
+> - * Mappings can't overlap in GPA space or userspace.
+> + * Mappings can't overlap in GPA space.
+>    * To unmap, these fields must match an existing mapping.
+>    */
+>   struct mshv_user_mem_region {
+> @@ -288,4 +322,84 @@ struct mshv_get_set_vp_state {
+>    * #define MSHV_ROOT_HVCALL			_IOWR(MSHV_IOCTL, 0x07, struct mshv_root_hvcall)
+>    */
+>   
+> +/* Structure definitions, macros and IOCTLs for mshv_vtl */
+> +
+> +#define MSHV_CAP_CORE_API_STABLE        0x0
+> +#define MSHV_CAP_REGISTER_PAGE          0x1
+> +#define MSHV_CAP_VTL_RETURN_ACTION      0x2
+> +#define MSHV_CAP_DR6_SHARED             0x3
+> +#define MSHV_MAX_RUN_MSG_SIZE                256
+> +
+> +struct mshv_vp_registers {
+> +	__u32 count;	/* supports only 1 register at a time */
+> +	__u32 reserved; /* Reserved for alignment or future use */
+> +	__u64 regs_ptr;	/* pointer to struct hv_register_assoc */
+> +};
+
+I am seeing errors due to the redefinition of 'struct mshv_vp_registers',
+already available in file : include/hw/hyperv/hvgdk_mini.h.
+
+
+Does include/hw/hyperv/hvgdk_mini.h need some clean up first ?
 
 Thanks,
-Shameer
 
-Nicolin Chen (1):
-  hw/vfio/region: Create dmabuf for PCI BAR per region
-
-Shameer Kolothum (2):
-  linux-headers: Update to Linux v6.19-rc1
-  hw/net/virtio-net: Adapt hash handling to updated UAPI
-
- hw/net/virtio-net.c                           |  11 +-
- hw/vfio/region.c                              |  57 ++-
- hw/vfio/trace-events                          |   1 +
- include/standard-headers/drm/drm_fourcc.h     |  25 +-
- include/standard-headers/linux/ethtool.h      |   5 +
- .../linux/input-event-codes.h                 |  14 +-
- include/standard-headers/linux/pci_regs.h     |  89 ++++
- include/standard-headers/linux/virtio_net.h   |   3 +-
- include/standard-headers/linux/virtio_pci.h   |   2 +-
- linux-headers/asm-arm64/kvm.h                 |   2 +-
- linux-headers/asm-arm64/unistd_64.h           |   1 +
- linux-headers/asm-generic/unistd.h            |   4 +-
- linux-headers/asm-loongarch/kvm.h             |   1 +
- linux-headers/asm-loongarch/unistd.h          |   6 +
- linux-headers/asm-loongarch/unistd_64.h       |   1 +
- linux-headers/asm-mips/unistd_n32.h           |   1 +
- linux-headers/asm-mips/unistd_n64.h           |   1 +
- linux-headers/asm-mips/unistd_o32.h           |   1 +
- linux-headers/asm-powerpc/unistd_32.h         |   1 +
- linux-headers/asm-powerpc/unistd_64.h         |   1 +
- linux-headers/asm-riscv/kvm.h                 |   3 +
- linux-headers/asm-riscv/unistd_32.h           |   1 +
- linux-headers/asm-riscv/unistd_64.h           |   1 +
- linux-headers/asm-s390/bitsperlong.h          |   4 -
- linux-headers/asm-s390/unistd.h               |   4 -
- linux-headers/asm-s390/unistd_32.h            | 446 ------------------
- linux-headers/asm-s390/unistd_64.h            |   9 +-
- linux-headers/asm-x86/kvm.h                   |   1 +
- linux-headers/asm-x86/unistd_32.h             |   1 +
- linux-headers/asm-x86/unistd_64.h             |   1 +
- linux-headers/asm-x86/unistd_x32.h            |   1 +
- linux-headers/linux/iommufd.h                 |  10 +
- linux-headers/linux/kvm.h                     |  11 +
- linux-headers/linux/mshv.h                    | 116 ++++-
- linux-headers/linux/psp-sev.h                 |  66 ++-
- linux-headers/linux/vfio.h                    |  28 ++
- 36 files changed, 427 insertions(+), 503 deletions(-)
- delete mode 100644 linux-headers/asm-s390/unistd_32.h
-
--- 
-2.43.0
+C.
 
 

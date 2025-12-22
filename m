@@ -4,60 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9D5DE677E1
-	for <qemu-arm@archiver.kernel.org>; Mon, 22 Dec 2025 15:07:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CBA9E67818
+	for <qemu-arm@archiver.kernel.org>; Mon, 22 Dec 2025 19:25:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vXhVb-0007ZJ-RJ; Mon, 22 Dec 2025 10:07:41 -0500
+	id 1vXlWU-0003bS-EZ; Mon, 22 Dec 2025 14:24:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vXhVa-0007Yv-Ig; Mon, 22 Dec 2025 10:07:38 -0500
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vXhVX-0004SE-Le; Mon, 22 Dec 2025 10:07:38 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwAnLyewXklp6Dv1AQ--.33152S2;
- Mon, 22 Dec 2025 23:07:28 +0800 (CST)
-Received: from [192.168.31.152] (unknown [222.244.182.241])
- by mail (Coremail) with SMTP id AQAAfwAXcO2pXklp7+cNAA--.26115S2;
- Mon, 22 Dec 2025 23:07:27 +0800 (CST)
-Message-ID: <0a788e5b-43d2-40a3-8798-2a4755ef44a4@phytium.com.cn>
-Date: Mon, 22 Dec 2025 23:07:17 +0800
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1vXlWS-0003av-U2; Mon, 22 Dec 2025 14:24:48 -0500
+Received: from mail-southcentralusazlp170130001.outbound.protection.outlook.com
+ ([2a01:111:f403:c10c::1] helo=SA9PR02CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1vXlWR-00079U-83; Mon, 22 Dec 2025 14:24:48 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=vRiahnk0tWohxpM2wweYETX3pAdpmG3aaHqJeHZZ8n+yJSjB2lCQtcYEVu9hxERt04Mci279J6Wt2Jm0H8Bwhu4V+KVnAYVckm1mXyIV38iPWFPzd3I1A0G5rl4Hlzil/Mb/iq629M188wtcaqUN59QXzw66XXgWSmGpjiYxuFZYnyLGMpsYajZKaUaKBgEWqevqMsyWsO6O11wmVaWcrYFOLpxPBzACzegzc3f5DHcqwAhi9jb7H+lE+rFW5DFNBOaiyl7KuXIEamgI1FLPEWCxWQrigtQIYro/MlSe7f56/Zx7B0OrJe60FSKMwRZ6gEBVoON9zXhmEGiLUq7j2A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=o1GQ7fXQz45LuHj22Ce5fVU7a6O2XwKtYigLRIzrFp8=;
+ b=migz3YKiV469D+dk8c7u0ilNIRFoyYw6iWgRqcOD/1hDrEPHTHO+yZxPG+i78Y1MDFkB3orbPItmZ07C+/+ldOASYAVhX8LtAOjbAm7GQP+6ClpKARNsSdd6S3z1VVlCdZtopdFLneLaLnQhnrw7o7a3TgYM/g/H/LDzFiU+fh1iSaPhvzUY0XvlnY9T6BL0JUs++nX45YxIfwdiU453nRsgTX6PxXrjiP58pW7FAIID5hg/fR6LjGwVE/G5wn+4ZL+SGBNPI5UEioyFzudOJhungh4tMXRlaA4uxq5NhFXS8oPN2xcQgHmQOeC8V0DUDgwneO6ZXbghX19v0kSt9w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=o1GQ7fXQz45LuHj22Ce5fVU7a6O2XwKtYigLRIzrFp8=;
+ b=iBnscD1QD6IkAvVNGXVS/P/mwaO978tn+Q4DAybkEZE164auX2iL8G1oTxHqoQAlVIY4t6G0lNKgngBE5ossN+UgtPHO8yf8aA3Wy9f5WXOHpj88aZtLfm10aH6DiA7gAoOum+rhAgBLPRoPo/73T8ayuCfnawJrNn6d5FgGpO+wkWyB2RPpyF6nlk4Yw9OhXP9qedqZzX9BJOZh1Xn71DSLnjn3pvMq6hNMWoNWoZcY2tQ+Jend7C52rJzV2Uk+lntfgzOqe4R+8bTIVD0Dd3LkNJBXztHOs9PP1ow2IjPwZ/RmiIMY1UMFKDkpczj3Lbx98E4kM9B+hBZA7FCT0g==
+Received: from PH8PR05CA0012.namprd05.prod.outlook.com (2603:10b6:510:2cc::11)
+ by IA0PPF64A94D5DF.namprd12.prod.outlook.com
+ (2603:10b6:20f:fc04::bd0) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9434.11; Mon, 22 Dec
+ 2025 19:24:34 +0000
+Received: from CY4PEPF0000EE3E.namprd03.prod.outlook.com
+ (2603:10b6:510:2cc:cafe::70) by PH8PR05CA0012.outlook.office365.com
+ (2603:10b6:510:2cc::11) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9456.10 via Frontend Transport; Mon,
+ 22 Dec 2025 19:24:21 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ CY4PEPF0000EE3E.mail.protection.outlook.com (10.167.242.16) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9456.9 via Frontend Transport; Mon, 22 Dec 2025 19:24:34 +0000
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 22 Dec
+ 2025 11:24:16 -0800
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail205.nvidia.com
+ (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 22 Dec
+ 2025 11:24:16 -0800
+Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com (10.129.68.9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
+ Transport; Mon, 22 Dec 2025 11:24:15 -0800
+Date: Mon, 22 Dec 2025 11:24:13 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameer Kolothum <skolothumtho@nvidia.com>
+CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
+ <peter.maydell@linaro.org>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <jgg@nvidia.com>, <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
+ <zhenzhong.duan@intel.com>, <kjaju@nvidia.com>
+Subject: Re: [PATCH v2 0/4] vEVENTQ support for accelerated SMMUv3 devices
+Message-ID: <aUma3X5YAvPllp+W@Asurada-Nvidia>
+References: <20251204092245.5157-1-skolothumtho@nvidia.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: Is there any manuals or page to show how to setup a nest
- translation environment with stage1 and stage2 page tables on intel-iommu ?
-To: tugouxp <13824125580@163.com>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-References: <8a97dd61-bbb5-4992-a486-5f89d7403d77@phytium.com.cn>
- <52617849.7d02.19b44b18191.Coremail.13824125580@163.com>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <52617849.7d02.19b44b18191.Coremail.13824125580@163.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwAXcO2pXklp7+cNAA--.26115S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAMBWlIVJoHxQAAsl
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW3AF4ktr1UKF1UAryfCrWfKrg_yoW7tF1UpF
- WYyFySgr4Dtr4xCw1vvw1UZryIvr4kJ39xXrn5Wwn5Gan09ry2yFyIkr1YkFyS9Fs5Wr10
- y3yDtr9rWw15AaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20251204092245.5157-1-skolothumtho@nvidia.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000EE3E:EE_|IA0PPF64A94D5DF:EE_
+X-MS-Office365-Filtering-Correlation-Id: 11acc884-deb0-488e-f4ff-08de418fbd16
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|36860700013|376014|82310400026; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?vssiJ0MYiOn8AGWJd9wdZyzFMDl06qujlRCcAOJ8fRFFozimGlHEo9eL/F6N?=
+ =?us-ascii?Q?kEbKayO+XCK0H4MikVF3acu2bl36wYU2MM0LcviwgOH5hyF+ej95CInOGnkQ?=
+ =?us-ascii?Q?kHcjilwJm2S40m/dyshysBNrjxAuz4RDNKlL9NcneKf3k64MFc3NSEOVowhh?=
+ =?us-ascii?Q?Lar9OH1AssTtJCtRzdUFvcyXHSV2qgTpU+S9cbDlJE4Tpo9tRVA6l/uCx/RN?=
+ =?us-ascii?Q?DV3AS0T5DUzzoFQZUOLApWcl9b+iEmHkmF8pkcXPsx7R4Ir7cWV3XDDoMINc?=
+ =?us-ascii?Q?DBoXha9hk7xMJZH8+XMIwwhzHy5GuDqfocSdZ9yv5G1V0hwpj5dADi8lM8I0?=
+ =?us-ascii?Q?dFiJOK27UldYeeg2D53j/ZC0Ly/QGR02qYDJvSjru4n7IeZbNQTjBAmyWMMg?=
+ =?us-ascii?Q?V6muvtvQI9Y3idQAY6lAlmigmmlJaqS1+PNqfJVQ/xQI5bTT/w7OD6Fuqgt4?=
+ =?us-ascii?Q?s98+9q1XyuXsc7as/2l7GuLJPii6untIMko2/YoLaD0d7Ne4+Yjed8s+lOJb?=
+ =?us-ascii?Q?MSLUXKgjf7FY/4XuMK3oL8TXXB/mx7ge4776MZrxmr/y/1nzIQo+fLj8OhXZ?=
+ =?us-ascii?Q?CqjnN2kX6aecAjStOqWe3xmxm+m5RfRlTD1jVW0QVYeq+O4QvU0bRmPZqxKX?=
+ =?us-ascii?Q?k5RKeuzNJ+fIqDALtc47TZeYpdpWEozh8V1dMAzuMO10DPifTVkWtXFcPnHg?=
+ =?us-ascii?Q?Pc+3kJglmCXipfsL0rYEDC8g7KH7EKJZvvFTefviKJPliyWwX8CoLdSODF6s?=
+ =?us-ascii?Q?W8795KZb0sdo6hxcFnpyfwVlrPkynGVDHKJCKSh7tXuTqeY1cCmh9bd6DjqD?=
+ =?us-ascii?Q?7khD9pKoJKX1BXKA/bRRmVHgaOxOFqYEIZ0/8LbQ8paDhWB9dfKRbCRv78Db?=
+ =?us-ascii?Q?/rVP5JjJillhEYGxDscIFTSgkF1N5TKkFkif9DpEPAByvrpnM5dFxOkPo52K?=
+ =?us-ascii?Q?+6SKqLKLAAOKYyzuLn1LcU82+n5M+UGII+2HEc8rqesiM30toRxpgNaVGbMz?=
+ =?us-ascii?Q?QsOZUSLLnwOMCW1W4AAX7w0qqtC52Lcclcrx8ZAL78IuqrWuy8s/UHaNqzcQ?=
+ =?us-ascii?Q?/9/wBAIZhjkFoUUBryQYAzPazoe4ddWOPY9AJer+DoMjyB50D7uzbSD9G+W+?=
+ =?us-ascii?Q?5ttjIgtElX6wRGgiciC04emd9n8vJVYjD/xwDquxAbu5Z+Y+RjMbrJ57RlwS?=
+ =?us-ascii?Q?zQ7jdJSycLf+USBkXXDYaUM+PnUTlvbciGxeTSinaCLzVPZl81RijKZJLYcR?=
+ =?us-ascii?Q?ZqgRpSg8oht2ygK3nPFij7Fht+d8auodvdP0U69t3nG0uJHfhi3olzv8jBVS?=
+ =?us-ascii?Q?wHC/UJquHb7IIGBAjYA43yiyxPWpHkx0sfQ6AMhhkxskXLGhlD/pdiU8nS6E?=
+ =?us-ascii?Q?cnvVLEEa4FcYJsZFC/A3hzZ0A30650e1JnN+EBE1b6SHXXxWIVe34FzRppcp?=
+ =?us-ascii?Q?beiQq4PelJDZv8gCoDiWYGADErF99mMQc2Dq5DJDUi1/n6iYRpvl57+JB7t8?=
+ =?us-ascii?Q?LZrjcti9lfKl7VI50OwpStS3QmAQK3G71ubwRoEnlpX5AR6WSPkWzCWLKueP?=
+ =?us-ascii?Q?34Ma9rladeKyAkbCbfHmB4QP5Gctp+pY5LvACuni?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(1800799024)(36860700013)(376014)(82310400026); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Dec 2025 19:24:34.0377 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 11acc884-deb0-488e-f4ff-08de418fbd16
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000EE3E.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PPF64A94D5DF
+Received-SPF: softfail client-ip=2a01:111:f403:c10c::1;
+ envelope-from=nicolinc@nvidia.com;
+ helo=SA9PR02CU001.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,155 +157,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi tugouxp,
+On Thu, Dec 04, 2025 at 09:22:37AM +0000, Shameer Kolothum wrote:
+> Changes from RFC v1:
+> https://lore.kernel.org/qemu-devel/20251105154657.37386-1-skolothumtho@nvidia.com/
+> 
+>  -Rebased on v6[0] of the "accelerated SMMUv3" series
+>  -Addressed feedback on the RFC. Thanks!
+>  -Dropped the RFC tag as the accelerated series is now more mature, and once
+>   that lands, it makes sense to pick this up as well since it enables the
+>   delivery of SMMUv3 events to the guest.
+> 
+> When accel=on is enabled for an SMMUv3 instance, the host hardware SMMUv3
+> may generate Stage-1 (S1) fault or event notifications that are intended
+> for the vIOMMU instance in userspace.
+> 
+> This series adds QEMU support for receiving such host events through the
+> vEVENTQ interface and propagating them to the guest. The implementation
+> uses the vEVENTQ support provided by the IOMMUFD subsystem in the kernel.
+> 
+> I have lightly this on a Grace platform using some hacks to generate fault
+> events. Further testing and feedback are welcome.
 
-On 2025/12/22 14:14, tugouxp wrote:
-> Hi Tao:
->     Thanks for your answer!
->
->      So your environment involves simulating an AARCH64 VM OS on an X86 host, and then within that simulated AARCH64 VM, you've installed another KVM aarch64 VM? Essentially, it's an environment with two nested aarch64 VMs running on an x86 host? I can hardly believe it — that's a genius idea! I'm quite concerned about its performance, though. Will it be very slow and laggy?
+I've tried a quick sanity test via VCMDQ:
 
-Yes, a virtualization-capable aarch64 TCG VM can be set up using 
--machine virt,virtualization=on regardless of the host architecture, 
-including on an x86 host, thanks to QEMU’s TCG cross-architecture 
-dynamic translation mechanism. TCG emulates the guest CPU and system 
-well enough that the guest OS sees and can exercise ARM virtualization 
-extensions (EL2 and Stage-2), so from the guest kernel’s perspective the 
-machine does genuinely have virtualization support enabled. This makes 
-setting up a KVM VM inside this TCG guest reasonable.
-
-In fact, the Linux kernel and the qemu-system-* binaries running inside 
-the TCG host VM are the same binaries you would run on a physical 
-machine — there is no modification or special build for this TCG 
-environment. Of course, performance will be slower than on real 
-hardware, as TCG interprets and translates guest instructions in 
-software rather than executing them directly on physical virtualization 
-extensions; however, for workloads that are not heavily I/O-intensive, 
-simple tests work fine. For example, I passed through a PCIe NVMe device 
-to the nested VM, mounted it, and was able to read and write files on it 
-just like on real hardware.
-
-
-I'm sure it is doable to do this on aarch64. But I'm not sure how it is 
-on x86_64/i386. I did a cursory search of the code and found it seems to 
-be unsupported to setup a TCG VM with virtualization-capability enabled 
-on x86_64/i386. But I'm not familiar with this so we may need an x86 
-specialist to help with this.
-
-
-> By the way, isn't the KVM （because you use --enale-kvm in the nested aarch64 vm) in the aarch64 VM also emulated? After all, KVM can only be used on the same ISA architecture.
->
-They are all emulated and all aarch64 machine.
-
-
-Regards,
-
-Tao
-
->
->
-> BRs
->
-> zlcao.
->
->
->
->
->
->
->
->
->
->
-> At 2025-12-22 11:49:33, "Tao Tang" <tangtao1634@phytium.com.cn> wrote:
->> Hi zlcao,
->>
->>> Hi guys:
->>>      I want to learn about how Intel IOMMU second-level translation
->>> works. Does anyone have any materials or pages on this topic, such as
->>> WIP repositories, operational guides, etc.? Thanks!
->>> BRs
->>> zlcao.
->>
->>  From my experience, the best approach to learn this is to setup a
->> nested virtualization environment, find the senario that can trigger
->> second-level translation, and then trace all Intel IOMMU events or use
->> gdb to trace line by line in hw/i386/intel_iommu.c. Also you may need to
->> get Intel IOMMU spec and find the related chapter which describes
->> second-level translation.
->>
->>
->> I worked in SMMU these days and had the same problem with you and found
->> that setup a nested virtualization environment then passthrough a PCIe
->> device from TCG Host VM into KVM Guest VM could be a good way to debug
->> IOMMU implementation. This link [1] show how it works in Arm SMMU.
->>
->> [1]
->> https://lore.kernel.org/qemu-devel/20250806151134.365755-1-tangtao1634@phytium.com.cn/
->>
->>
->> ......
->>
->> Non-Secure Regression: To ensure that existing functionality remains
->> intact, I ran a nested virtualization test. A TCG guest was created on
->> the host, with iommu=smmuv3 and with an emulated PCIe NVMe device assigned.
->> Command line of TCG VM is below:
->>
->> qemu-system-aarch64 \
->> -machine virt,virtualization=on,gic-version=3,iommu=smmuv3 \
->> -cpu max -smp 1 -m 4080M \
->> -accel tcg,thread=single,tb-size=512 \
->> -kernel Image \
->> -append 'nokaslr root=/dev/vda rw rootfstype=ext4 iommu.passthrough=on' \
->> -device pcie-root-port,bus=pcie.0,id=rp0,addr=0x4.0,chassis=1,port=0x10 \
->> -device pcie-root-port,bus=pcie.0,id=rp1,addr=0x5.0,chassis=2,port=0x11 \
->> -drive if=none,file=u2204fs.img.qcow2,format=qcow2,id=hd0 \
->> -device virtio-blk-device,drive=hd0 \
->> -qmp unix:/tmp/qmp-sock12,server=on,wait=off \
->> -netdev user,id=eth0,hostfwd=tcp::10022-:22,hostfwd=tcp::59922-:5922 \
->> -device virtio-net-device,netdev=eth0 \
->> -drive if=none,file=nvme.img,format=raw,id=nvme0 \
->> -device nvme,drive=nvme0,serial=deadbeef \
->> -d unimp,guest_errors -trace events=smmu-events.txt -D qemu.log -nographic
->>
->> Inside this TCG VM, a KVM guest was launched, and the same NVMe device was
->> re-assigned to it via VFIO.
->> Command line of KVM VM inside TCG VM is below:
->>
->> sudo qemu-system-aarch64  \
->> -enable-kvm  -m 1024  -cpu host  -M virt \
->> -machine virt,gic-version=3 \
->> -cpu max -append "nokaslr" -smp 1 \
->> -monitor stdio \
->> -kernel 5.15.Image \
->> -initrd rootfs.cpio.gz \
->> -display vnc=:22,id=primary \
->> -device vfio-pci,host=00:01.0
->>
->> The KVM guest was able to perform I/O on the device
->> correctly, confirming that the non-secure path is not broken.
->>
->> ......
->>
->>
->>
->> I'm not familiar with Intel IOMMU so I'm not enable to help with the
->> right options that apply PCIe passthroughing on Intel IOMMU.
->>
->>
->> BTW, I have submitted a patch series introducing iommu-testdev [2] ,
->> which allows testing IOMMU functionality purely with QTest, without
->> setting up a complex software stack. Once you have a clear understanding
->> of the second-level translation, you are very welcome to share your
->> findings and help improve the Intel IOMMU implementation in iommu-testdev.
->>
->>
->> [2]
->> https://lore.kernel.org/qemu-devel/20251206155203.3015881-1-tangtao1634@phytium.com.cn/
->>
->>
->> Regards,
->>
->> Tao
-
+Tested-by: Nicolin Chen <nicolinc@nvidia.com>
 

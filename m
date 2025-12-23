@@ -4,66 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EBCFE6B25E
-	for <qemu-arm@archiver.kernel.org>; Tue, 23 Dec 2025 00:43:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51E3EE6F093
+	for <qemu-arm@archiver.kernel.org>; Tue, 23 Dec 2025 14:01:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vXqUn-0003Lj-8n; Mon, 22 Dec 2025 19:43:32 -0500
+	id 1vY2wc-0004xc-AX; Tue, 23 Dec 2025 09:00:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <13824125580@163.com>)
- id 1vXqUO-0003JK-Cs; Mon, 22 Dec 2025 19:43:02 -0500
-Received: from m16.mail.163.com ([220.197.31.5])
+ (Exim 4.90_1) (envelope-from <ashish.a6@samsung.com>)
+ id 1vY16T-0005Lv-7X
+ for qemu-arm@nongnu.org; Tue, 23 Dec 2025 07:03:01 -0500
+Received: from mailout4.samsung.com ([203.254.224.34])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <13824125580@163.com>)
- id 1vXqUK-0001O6-8i; Mon, 22 Dec 2025 19:43:00 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
- s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
- Message-ID; bh=zoQ1YHnQs0I9qGfvaM8vZ952Y/C+6zXn2H26b3TMN/Q=; b=G
- sRZRVcmH3qOi9Wy2BK+Vq5bAGuspzDbmID9xVOU/DFggKIysIQfeRxsPBoeCsYI9
- l8YclwOwvL161Jtkhak7aJRW9jSEyA6eFF94eFsX1sbg8PAAfIIITWVRcou8rJpR
- DSQh4bdrIDAJXVCyqTBPP8KLqtcBBE9DESj77Rw138=
-Received: from 13824125580$163.com ( [218.13.223.218] ) by
- ajax-webmail-wmsvr-40-104 (Coremail) ; Tue, 23 Dec 2025 08:42:42 +0800
- (CST)
-X-Originating-IP: [218.13.223.218]
-Date: Tue, 23 Dec 2025 08:42:42 +0800 (CST)
-From: tugouxp  <13824125580@163.com>
-To: "Tao Tang" <tangtao1634@phytium.com.cn>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re:Re: Is there any manuals or page to show how to setup a nest
- translation environment with stage1 and stage2 page tables on intel-iommu ?
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
- 20250723(a044bf12) Copyright (c) 2002-2025 www.mailtech.cn 163com
-In-Reply-To: <0a788e5b-43d2-40a3-8798-2a4755ef44a4@phytium.com.cn>
-References: <8a97dd61-bbb5-4992-a486-5f89d7403d77@phytium.com.cn>
- <52617849.7d02.19b44b18191.Coremail.13824125580@163.com>
- <0a788e5b-43d2-40a3-8798-2a4755ef44a4@phytium.com.cn>
-X-NTES-SC: AL_Qu2dBPiev00t5CmZZOkfmUkbhuw6UcWxsv4g1Y5fc+8EiArSwz0Be3huJVz61cmVDiqDjiqueRFlw+VDZoJ9RG+KNpoFPEr1+wjOrRlYiA==
-Content-Type: multipart/alternative; 
- boundary="----=_Part_64252_1389725500.1766450562919"
+ (Exim 4.90_1) (envelope-from <ashish.a6@samsung.com>)
+ id 1vY16M-00028f-3t
+ for qemu-arm@nongnu.org; Tue, 23 Dec 2025 07:03:00 -0500
+Received: from epcas5p2.samsung.com (unknown [182.195.41.40])
+ by mailout4.samsung.com (KnoxPortal) with ESMTP id
+ 20251223120244epoutp04ac9369168270f95574023c7b1ebceeef~D1olWR0eG1670416704epoutp04k
+ for <qemu-arm@nongnu.org>; Tue, 23 Dec 2025 12:02:44 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com
+ 20251223120244epoutp04ac9369168270f95574023c7b1ebceeef~D1olWR0eG1670416704epoutp04k
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1766491364;
+ bh=+jIeGwIatjkyU4t7V93SrU6AI+YxYI+n5AFl/dB/Tsg=;
+ h=From:To:Cc:Subject:Date:References:From;
+ b=dZSgEBbkRnz+wANoz2IL0vTpkCURglkL0mYCZvqeogQ++sM6Qt/JOADVJeE/3c3gs
+ aL2QQ/kwm8Vuv9kXLsMxQ2S4NPnmy9dCzfI/hPI3891B42U9VJYCplzIogfgFIrIuZ
+ woy7bxfcxPQk8KvuVYT7FZ996elca+eXdxkQlhVA=
+Received: from epsnrtp04.localdomain (unknown [182.195.42.156]) by
+ epcas5p4.samsung.com (KnoxPortal) with ESMTPS id
+ 20251223120243epcas5p4fac8c002c8f443f8a716510b0865da50~D1olDvkCi1846618466epcas5p4m;
+ Tue, 23 Dec 2025 12:02:43 +0000 (GMT)
+Received: from epcas5p4.samsung.com (unknown [182.195.38.88]) by
+ epsnrtp04.localdomain (Postfix) with ESMTP id 4dbDCk6m0Lz6B9m5; Tue, 23 Dec
+ 2025 12:02:42 +0000 (GMT)
+Received: from epsmtip1.samsung.com (unknown [182.195.34.30]) by
+ epcas5p4.samsung.com (KnoxPortal) with ESMTPA id
+ 20251223120242epcas5p44b454df5afd0d517a4562a545ad11218~D1ojhtPZe1846618466epcas5p4i;
+ Tue, 23 Dec 2025 12:02:42 +0000 (GMT)
+Received: from test-System-Product-Name.samsungds.net (unknown
+ [107.99.41.85]) by epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20251223120240epsmtip12d23c4881f6573367aa14d8cdc9b0a04~D1ohk4nw03164831648epsmtip19;
+ Tue, 23 Dec 2025 12:02:39 +0000 (GMT)
+From: Ashish Anand <ashish.a6@samsung.com>
+To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, y.kaushal@samsung.com,
+ vishwa.mg@samsung.com, ashish.anand202@gmail.com, "ashish.a6"
+ <ashish.a6@samsung.com>
+Subject: [PATCH] target/arm: Implement WFE, SEV and SEVONPEND for Cortex-M
+Date: Tue, 23 Dec 2025 17:30:12 +0530
+Message-ID: <20251223120012.541777-1-ashish.a6@samsung.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Message-ID: <1e26cc73.3ec9.19b48a88768.Coremail.13824125580@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: aCgvCgBHH0aD5Ulpoi1HAA--.33261W
-X-CM-SenderInfo: bprtmjyurskkiyq6il2tof0z/xtbCzwNGiGlJ5YMWQwAA3R
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
-Received-SPF: pass client-ip=220.197.31.5; envelope-from=13824125580@163.com;
- helo=m16.mail.163.com
-X-Spam_score_int: 6
-X-Spam_score: 0.6
-X-Spam_bar: /
-X-Spam_report: (0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FROM=0.001, FROM_LOCAL_DIGITS=0.001, FROM_LOCAL_HEX=0.006,
- HTML_MESSAGE=0.001, MIME_CHARSET_FARAWAY=2.45, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Transfer-Encoding: 8bit
+X-CMS-MailID: 20251223120242epcas5p44b454df5afd0d517a4562a545ad11218
+X-Msg-Generator: CA
+Content-Type: text/plain; charset="utf-8"
+CMS-TYPE: 105P
+cpgsPolicy: CPGSC10-542,Y
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20251223120242epcas5p44b454df5afd0d517a4562a545ad11218
+References: <CGME20251223120242epcas5p44b454df5afd0d517a4562a545ad11218@epcas5p4.samsung.com>
+Received-SPF: pass client-ip=203.254.224.34;
+ envelope-from=ashish.a6@samsung.com; helo=mailout4.samsung.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 23 Dec 2025 09:00:54 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,344 +94,360 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-------=_Part_64252_1389725500.1766450562919
-Content-Type: text/plain; charset=GBK
-Content-Transfer-Encoding: base64
+From: "ashish.a6" <ashish.a6@samsung.com>
 
-CgpUaGFuayB5b3UsdGFuZyEKCgoKICAgICAgIEkgYW0gY29tcGxldGVseSBjb252aW5jZWQgdGhh
-dCB0aGlzIHBsYW4gaXMgZmVhc2libGUsIGJ1dCBzaW5jZSBteSBob3N0IGlzIFg4Ni1iYXNlZCwg
-SSBtYXkgZW5jb3VudGVyIHNvbWUgZW50aXJlbHkgZGlmZmVyZW50IGlzc3Vlcy4gSSBhbSBjb25j
-ZXJuZWQgdGhhdCBkZWFsaW5nIHdpdGggdGhlc2UgcHJvYmxlbXMgY291bGQgdGFrZSB1cCBhIGxv
-dCBvZiB0aW1lLiBUaGVyZWZvcmUsIEkgd291bGQgbGlrZSB0byBhc2sgYWJvdXQgdGhlIHNwZWNp
-ZmljYXRpb25zIG9mIHlvdXIgaG9zdCBtYWNoaW5loapwZXJoYXBzIG91ciB0ZWFtIGNvdWxkIHB1
-cmNoYXNlIG9uZSBhcyB3ZWxsLiBGb3IgZXhhbXBsZSwgZGV0YWlscyBsaWtlIHRoZSBDUFUgbW9k
-ZWwgb3IgZXZlbiB0aGUgY29tcHV0ZXIgbW9kZWwgd291bGQgYmUgdmVyeSBoZWxwZnVsLiBUaGFu
-ayB5b3UhCgoKCgpCUnMKCnpsY2FvLgoKCgoKCgoKCgoKQXQgMjAyNS0xMi0yMiAyMzowNzoxNywg
-IlRhbyBUYW5nIiA8dGFuZ3RhbzE2MzRAcGh5dGl1bS5jb20uY24+IHdyb3RlOgo+SGkgdHVnb3V4
-cCwKPgo+T24gMjAyNS8xMi8yMiAxNDoxNCwgdHVnb3V4cCB3cm90ZToKPj4gSGkgVGFvOgo+PiAg
-ICAgVGhhbmtzIGZvciB5b3VyIGFuc3dlciEKPj4KPj4gICAgICBTbyB5b3VyIGVudmlyb25tZW50
-IGludm9sdmVzIHNpbXVsYXRpbmcgYW4gQUFSQ0g2NCBWTSBPUyBvbiBhbiBYODYgaG9zdCwgYW5k
-IHRoZW4gd2l0aGluIHRoYXQgc2ltdWxhdGVkIEFBUkNINjQgVk0sIHlvdSd2ZSBpbnN0YWxsZWQg
-YW5vdGhlciBLVk0gYWFyY2g2NCBWTT8gRXNzZW50aWFsbHksIGl0J3MgYW4gZW52aXJvbm1lbnQg
-d2l0aCB0d28gbmVzdGVkIGFhcmNoNjQgVk1zIHJ1bm5pbmcgb24gYW4geDg2IGhvc3Q/IEkgY2Fu
-IGhhcmRseSBiZWxpZXZlIGl0IKGqIHRoYXQncyBhIGdlbml1cyBpZGVhISBJJ20gcXVpdGUgY29u
-Y2VybmVkIGFib3V0IGl0cyBwZXJmb3JtYW5jZSwgdGhvdWdoLiBXaWxsIGl0IGJlIHZlcnkgc2xv
-dyBhbmQgbGFnZ3k/Cj4KPlllcywgYSB2aXJ0dWFsaXphdGlvbi1jYXBhYmxlIGFhcmNoNjQgVENH
-IFZNIGNhbiBiZSBzZXQgdXAgdXNpbmcgCj4tbWFjaGluZSB2aXJ0LHZpcnR1YWxpemF0aW9uPW9u
-IHJlZ2FyZGxlc3Mgb2YgdGhlIGhvc3QgYXJjaGl0ZWN0dXJlLCAKPmluY2x1ZGluZyBvbiBhbiB4
-ODYgaG9zdCwgdGhhbmtzIHRvIFFFTVWhr3MgVENHIGNyb3NzLWFyY2hpdGVjdHVyZSAKPmR5bmFt
-aWMgdHJhbnNsYXRpb24gbWVjaGFuaXNtLiBUQ0cgZW11bGF0ZXMgdGhlIGd1ZXN0IENQVSBhbmQg
-c3lzdGVtIAo+d2VsbCBlbm91Z2ggdGhhdCB0aGUgZ3Vlc3QgT1Mgc2VlcyBhbmQgY2FuIGV4ZXJj
-aXNlIEFSTSB2aXJ0dWFsaXphdGlvbiAKPmV4dGVuc2lvbnMgKEVMMiBhbmQgU3RhZ2UtMiksIHNv
-IGZyb20gdGhlIGd1ZXN0IGtlcm5lbKGvcyBwZXJzcGVjdGl2ZSB0aGUgCj5tYWNoaW5lIGRvZXMg
-Z2VudWluZWx5IGhhdmUgdmlydHVhbGl6YXRpb24gc3VwcG9ydCBlbmFibGVkLiBUaGlzIG1ha2Vz
-IAo+c2V0dGluZyB1cCBhIEtWTSBWTSBpbnNpZGUgdGhpcyBUQ0cgZ3Vlc3QgcmVhc29uYWJsZS4K
-Pgo+SW4gZmFjdCwgdGhlIExpbnV4IGtlcm5lbCBhbmQgdGhlIHFlbXUtc3lzdGVtLSogYmluYXJp
-ZXMgcnVubmluZyBpbnNpZGUgCj50aGUgVENHIGhvc3QgVk0gYXJlIHRoZSBzYW1lIGJpbmFyaWVz
-IHlvdSB3b3VsZCBydW4gb24gYSBwaHlzaWNhbCAKPm1hY2hpbmUgoaogdGhlcmUgaXMgbm8gbW9k
-aWZpY2F0aW9uIG9yIHNwZWNpYWwgYnVpbGQgZm9yIHRoaXMgVENHIAo+ZW52aXJvbm1lbnQuIE9m
-IGNvdXJzZSwgcGVyZm9ybWFuY2Ugd2lsbCBiZSBzbG93ZXIgdGhhbiBvbiByZWFsIAo+aGFyZHdh
-cmUsIGFzIFRDRyBpbnRlcnByZXRzIGFuZCB0cmFuc2xhdGVzIGd1ZXN0IGluc3RydWN0aW9ucyBp
-biAKPnNvZnR3YXJlIHJhdGhlciB0aGFuIGV4ZWN1dGluZyB0aGVtIGRpcmVjdGx5IG9uIHBoeXNp
-Y2FsIHZpcnR1YWxpemF0aW9uIAo+ZXh0ZW5zaW9uczsgaG93ZXZlciwgZm9yIHdvcmtsb2FkcyB0
-aGF0IGFyZSBub3QgaGVhdmlseSBJL08taW50ZW5zaXZlLCAKPnNpbXBsZSB0ZXN0cyB3b3JrIGZp
-bmUuIEZvciBleGFtcGxlLCBJIHBhc3NlZCB0aHJvdWdoIGEgUENJZSBOVk1lIGRldmljZSAKPnRv
-IHRoZSBuZXN0ZWQgVk0sIG1vdW50ZWQgaXQsIGFuZCB3YXMgYWJsZSB0byByZWFkIGFuZCB3cml0
-ZSBmaWxlcyBvbiBpdCAKPmp1c3QgbGlrZSBvbiByZWFsIGhhcmR3YXJlLgo+Cj4KPkknbSBzdXJl
-IGl0IGlzIGRvYWJsZSB0byBkbyB0aGlzIG9uIGFhcmNoNjQuIEJ1dCBJJ20gbm90IHN1cmUgaG93
-IGl0IGlzIAo+b24geDg2XzY0L2kzODYuIEkgZGlkIGEgY3Vyc29yeSBzZWFyY2ggb2YgdGhlIGNv
-ZGUgYW5kIGZvdW5kIGl0IHNlZW1zIHRvIAo+YmUgdW5zdXBwb3J0ZWQgdG8gc2V0dXAgYSBUQ0cg
-Vk0gd2l0aCB2aXJ0dWFsaXphdGlvbi1jYXBhYmlsaXR5IGVuYWJsZWQgCj5vbiB4ODZfNjQvaTM4
-Ni4gQnV0IEknbSBub3QgZmFtaWxpYXIgd2l0aCB0aGlzIHNvIHdlIG1heSBuZWVkIGFuIHg4NiAK
-PnNwZWNpYWxpc3QgdG8gaGVscCB3aXRoIHRoaXMuCj4KPgo+PiBCeSB0aGUgd2F5LCBpc24ndCB0
-aGUgS1ZNIKOoYmVjYXVzZSB5b3UgdXNlIC0tZW5hbGUta3ZtIGluIHRoZSBuZXN0ZWQgYWFyY2g2
-NCB2bSkgaW4gdGhlIGFhcmNoNjQgVk0gYWxzbyBlbXVsYXRlZD8gQWZ0ZXIgYWxsLCBLVk0gY2Fu
-IG9ubHkgYmUgdXNlZCBvbiB0aGUgc2FtZSBJU0EgYXJjaGl0ZWN0dXJlLgo+Pgo+VGhleSBhcmUg
-YWxsIGVtdWxhdGVkIGFuZCBhbGwgYWFyY2g2NCBtYWNoaW5lLgo+Cj4KPlJlZ2FyZHMsCj4KPlRh
-bwo+Cj4+Cj4+Cj4+IEJScwo+Pgo+PiB6bGNhby4KPj4KPj4KPj4KPj4KPj4KPj4KPj4KPj4KPj4K
-Pj4KPj4gQXQgMjAyNS0xMi0yMiAxMTo0OTozMywgIlRhbyBUYW5nIiA8dGFuZ3RhbzE2MzRAcGh5
-dGl1bS5jb20uY24+IHdyb3RlOgo+Pj4gSGkgemxjYW8sCj4+Pgo+Pj4+IEhpIGd1eXM6Cj4+Pj4g
-ICAgICBJIHdhbnQgdG8gbGVhcm4gYWJvdXQgaG93IEludGVsIElPTU1VIHNlY29uZC1sZXZlbCB0
-cmFuc2xhdGlvbgo+Pj4+IHdvcmtzLiBEb2VzIGFueW9uZSBoYXZlIGFueSBtYXRlcmlhbHMgb3Ig
-cGFnZXMgb24gdGhpcyB0b3BpYywgc3VjaCBhcwo+Pj4+IFdJUCByZXBvc2l0b3JpZXMsIG9wZXJh
-dGlvbmFsIGd1aWRlcywgZXRjLj8gVGhhbmtzIQo+Pj4+IEJScwo+Pj4+IHpsY2FvLgo+Pj4KPj4+
-ICBGcm9tIG15IGV4cGVyaWVuY2UsIHRoZSBiZXN0IGFwcHJvYWNoIHRvIGxlYXJuIHRoaXMgaXMg
-dG8gc2V0dXAgYQo+Pj4gbmVzdGVkIHZpcnR1YWxpemF0aW9uIGVudmlyb25tZW50LCBmaW5kIHRo
-ZSBzZW5hcmlvIHRoYXQgY2FuIHRyaWdnZXIKPj4+IHNlY29uZC1sZXZlbCB0cmFuc2xhdGlvbiwg
-YW5kIHRoZW4gdHJhY2UgYWxsIEludGVsIElPTU1VIGV2ZW50cyBvciB1c2UKPj4+IGdkYiB0byB0
-cmFjZSBsaW5lIGJ5IGxpbmUgaW4gaHcvaTM4Ni9pbnRlbF9pb21tdS5jLiBBbHNvIHlvdSBtYXkg
-bmVlZCB0bwo+Pj4gZ2V0IEludGVsIElPTU1VIHNwZWMgYW5kIGZpbmQgdGhlIHJlbGF0ZWQgY2hh
-cHRlciB3aGljaCBkZXNjcmliZXMKPj4+IHNlY29uZC1sZXZlbCB0cmFuc2xhdGlvbi4KPj4+Cj4+
-Pgo+Pj4gSSB3b3JrZWQgaW4gU01NVSB0aGVzZSBkYXlzIGFuZCBoYWQgdGhlIHNhbWUgcHJvYmxl
-bSB3aXRoIHlvdSBhbmQgZm91bmQKPj4+IHRoYXQgc2V0dXAgYSBuZXN0ZWQgdmlydHVhbGl6YXRp
-b24gZW52aXJvbm1lbnQgdGhlbiBwYXNzdGhyb3VnaCBhIFBDSWUKPj4+IGRldmljZSBmcm9tIFRD
-RyBIb3N0IFZNIGludG8gS1ZNIEd1ZXN0IFZNIGNvdWxkIGJlIGEgZ29vZCB3YXkgdG8gZGVidWcK
-Pj4+IElPTU1VIGltcGxlbWVudGF0aW9uLiBUaGlzIGxpbmsgWzFdIHNob3cgaG93IGl0IHdvcmtz
-IGluIEFybSBTTU1VLgo+Pj4KPj4+IFsxXQo+Pj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVt
-dS1kZXZlbC8yMDI1MDgwNjE1MTEzNC4zNjU3NTUtMS10YW5ndGFvMTYzNEBwaHl0aXVtLmNvbS5j
-bi8KPj4+Cj4+Pgo+Pj4gLi4uLi4uCj4+Pgo+Pj4gTm9uLVNlY3VyZSBSZWdyZXNzaW9uOiBUbyBl
-bnN1cmUgdGhhdCBleGlzdGluZyBmdW5jdGlvbmFsaXR5IHJlbWFpbnMKPj4+IGludGFjdCwgSSBy
-YW4gYSBuZXN0ZWQgdmlydHVhbGl6YXRpb24gdGVzdC4gQSBUQ0cgZ3Vlc3Qgd2FzIGNyZWF0ZWQg
-b24KPj4+IHRoZSBob3N0LCB3aXRoIGlvbW11PXNtbXV2MyBhbmQgd2l0aCBhbiBlbXVsYXRlZCBQ
-Q0llIE5WTWUgZGV2aWNlIGFzc2lnbmVkLgo+Pj4gQ29tbWFuZCBsaW5lIG9mIFRDRyBWTSBpcyBi
-ZWxvdzoKPj4+Cj4+PiBxZW11LXN5c3RlbS1hYXJjaDY0IFwKPj4+IC1tYWNoaW5lIHZpcnQsdmly
-dHVhbGl6YXRpb249b24sZ2ljLXZlcnNpb249Myxpb21tdT1zbW11djMgXAo+Pj4gLWNwdSBtYXgg
-LXNtcCAxIC1tIDQwODBNIFwKPj4+IC1hY2NlbCB0Y2csdGhyZWFkPXNpbmdsZSx0Yi1zaXplPTUx
-MiBcCj4+PiAta2VybmVsIEltYWdlIFwKPj4+IC1hcHBlbmQgJ25va2FzbHIgcm9vdD0vZGV2L3Zk
-YSBydyByb290ZnN0eXBlPWV4dDQgaW9tbXUucGFzc3Rocm91Z2g9b24nIFwKPj4+IC1kZXZpY2Ug
-cGNpZS1yb290LXBvcnQsYnVzPXBjaWUuMCxpZD1ycDAsYWRkcj0weDQuMCxjaGFzc2lzPTEscG9y
-dD0weDEwIFwKPj4+IC1kZXZpY2UgcGNpZS1yb290LXBvcnQsYnVzPXBjaWUuMCxpZD1ycDEsYWRk
-cj0weDUuMCxjaGFzc2lzPTIscG9ydD0weDExIFwKPj4+IC1kcml2ZSBpZj1ub25lLGZpbGU9dTIy
-MDRmcy5pbWcucWNvdzIsZm9ybWF0PXFjb3cyLGlkPWhkMCBcCj4+PiAtZGV2aWNlIHZpcnRpby1i
-bGstZGV2aWNlLGRyaXZlPWhkMCBcCj4+PiAtcW1wIHVuaXg6L3RtcC9xbXAtc29jazEyLHNlcnZl
-cj1vbix3YWl0PW9mZiBcCj4+PiAtbmV0ZGV2IHVzZXIsaWQ9ZXRoMCxob3N0ZndkPXRjcDo6MTAw
-MjItOjIyLGhvc3Rmd2Q9dGNwOjo1OTkyMi06NTkyMiBcCj4+PiAtZGV2aWNlIHZpcnRpby1uZXQt
-ZGV2aWNlLG5ldGRldj1ldGgwIFwKPj4+IC1kcml2ZSBpZj1ub25lLGZpbGU9bnZtZS5pbWcsZm9y
-bWF0PXJhdyxpZD1udm1lMCBcCj4+PiAtZGV2aWNlIG52bWUsZHJpdmU9bnZtZTAsc2VyaWFsPWRl
-YWRiZWVmIFwKPj4+IC1kIHVuaW1wLGd1ZXN0X2Vycm9ycyAtdHJhY2UgZXZlbnRzPXNtbXUtZXZl
-bnRzLnR4dCAtRCBxZW11LmxvZyAtbm9ncmFwaGljCj4+Pgo+Pj4gSW5zaWRlIHRoaXMgVENHIFZN
-LCBhIEtWTSBndWVzdCB3YXMgbGF1bmNoZWQsIGFuZCB0aGUgc2FtZSBOVk1lIGRldmljZSB3YXMK
-Pj4+IHJlLWFzc2lnbmVkIHRvIGl0IHZpYSBWRklPLgo+Pj4gQ29tbWFuZCBsaW5lIG9mIEtWTSBW
-TSBpbnNpZGUgVENHIFZNIGlzIGJlbG93Ogo+Pj4KPj4+IHN1ZG8gcWVtdS1zeXN0ZW0tYWFyY2g2
-NCAgXAo+Pj4gLWVuYWJsZS1rdm0gIC1tIDEwMjQgIC1jcHUgaG9zdCAgLU0gdmlydCBcCj4+PiAt
-bWFjaGluZSB2aXJ0LGdpYy12ZXJzaW9uPTMgXAo+Pj4gLWNwdSBtYXggLWFwcGVuZCAibm9rYXNs
-ciIgLXNtcCAxIFwKPj4+IC1tb25pdG9yIHN0ZGlvIFwKPj4+IC1rZXJuZWwgNS4xNS5JbWFnZSBc
-Cj4+PiAtaW5pdHJkIHJvb3Rmcy5jcGlvLmd6IFwKPj4+IC1kaXNwbGF5IHZuYz06MjIsaWQ9cHJp
-bWFyeSBcCj4+PiAtZGV2aWNlIHZmaW8tcGNpLGhvc3Q9MDA6MDEuMAo+Pj4KPj4+IFRoZSBLVk0g
-Z3Vlc3Qgd2FzIGFibGUgdG8gcGVyZm9ybSBJL08gb24gdGhlIGRldmljZQo+Pj4gY29ycmVjdGx5
-LCBjb25maXJtaW5nIHRoYXQgdGhlIG5vbi1zZWN1cmUgcGF0aCBpcyBub3QgYnJva2VuLgo+Pj4K
-Pj4+IC4uLi4uLgo+Pj4KPj4+Cj4+Pgo+Pj4gSSdtIG5vdCBmYW1pbGlhciB3aXRoIEludGVsIElP
-TU1VIHNvIEknbSBub3QgZW5hYmxlIHRvIGhlbHAgd2l0aCB0aGUKPj4+IHJpZ2h0IG9wdGlvbnMg
-dGhhdCBhcHBseSBQQ0llIHBhc3N0aHJvdWdoaW5nIG9uIEludGVsIElPTU1VLgo+Pj4KPj4+Cj4+
-PiBCVFcsIEkgaGF2ZSBzdWJtaXR0ZWQgYSBwYXRjaCBzZXJpZXMgaW50cm9kdWNpbmcgaW9tbXUt
-dGVzdGRldiBbMl0gLAo+Pj4gd2hpY2ggYWxsb3dzIHRlc3RpbmcgSU9NTVUgZnVuY3Rpb25hbGl0
-eSBwdXJlbHkgd2l0aCBRVGVzdCwgd2l0aG91dAo+Pj4gc2V0dGluZyB1cCBhIGNvbXBsZXggc29m
-dHdhcmUgc3RhY2suIE9uY2UgeW91IGhhdmUgYSBjbGVhciB1bmRlcnN0YW5kaW5nCj4+PiBvZiB0
-aGUgc2Vjb25kLWxldmVsIHRyYW5zbGF0aW9uLCB5b3UgYXJlIHZlcnkgd2VsY29tZSB0byBzaGFy
-ZSB5b3VyCj4+PiBmaW5kaW5ncyBhbmQgaGVscCBpbXByb3ZlIHRoZSBJbnRlbCBJT01NVSBpbXBs
-ZW1lbnRhdGlvbiBpbiBpb21tdS10ZXN0ZGV2Lgo+Pj4KPj4+Cj4+PiBbMl0KPj4+IGh0dHBzOi8v
-bG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwvMjAyNTEyMDYxNTUyMDMuMzAxNTg4MS0xLXRhbmd0
-YW8xNjM0QHBoeXRpdW0uY29tLmNuLwo+Pj4KPj4+Cj4+PiBSZWdhcmRzLAo+Pj4KPj4+IFRhbwo=
+    Currently, QEMU implements the 'Wait For Event' (WFE) instruction as a
+    a simple yield. This causes high host CPU usage because Guest
+    RTOS idle loops effectively become busy-wait loops.
 
-------=_Part_64252_1389725500.1766450562919
-Content-Type: text/html; charset=GBK
-Content-Transfer-Encoding: base64
+    To improve efficiency, this patch transitions WFE to use the architectural
+    'Halt' state (EXCP_HLT) for M-profile CPUs. This allows the host thread
+    to sleep when the guest is idle.
 
-PGRpdiBkYXRhLW50ZXM9Im50ZXNfbWFpbF9ib2R5X3Jvb3QiIHN0eWxlPSJsaW5lLWhlaWdodDox
-Ljc7Y29sb3I6IzAwMDAwMDtmb250LXNpemU6MTRweDtmb250LWZhbWlseTpBcmlhbCI+PGRpdiBp
-ZD0ic3BuRWRpdG9yQ29udGVudCI+PGRpdiBzdHlsZT0ibWFyZ2luOiAwOyI+PGJyPjwvZGl2Pjxk
-aXYgc3R5bGU9Im1hcmdpbjogMDsiPlRoYW5rIHlvdSx0YW5nITwvZGl2PjxkaXYgc3R5bGU9Im1h
-cmdpbjogMDsiPjxicj48L2Rpdj48ZGl2IHN0eWxlPSJtYXJnaW46IDA7Ij48ZGl2IGNsYXNzPSJk
-cy1tZXNzYWdlIF82M2M3N2IxIiBzdHlsZT0iY29sb3I6IHJnYigxMjgsIDAsIDEyOCk7IGZvbnQt
-ZmFtaWx5OiBxdW90ZS1jamstcGF0Y2gsIEludGVyLCBzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0s
-IEJsaW5rTWFjU3lzdGVtRm9udCwgJnF1b3Q7U2Vnb2UgVUkmcXVvdDssIFJvYm90bywgT3h5Z2Vu
-LCBVYnVudHUsIENhbnRhcmVsbCwgJnF1b3Q7T3BlbiBTYW5zJnF1b3Q7LCAmcXVvdDtIZWx2ZXRp
-Y2EgTmV1ZSZxdW90Oywgc2Fucy1zZXJpZjsgZm9udC12YXJpYW50LWxpZ2F0dXJlczogbm8tY29u
-dGV4dHVhbDsgLS1wYW5lbC13aWR0aDogMHB4OyI+PGRpdiBjbGFzcz0iZHMtbWFya2Rvd24iIHN0
-eWxlPSItLWRzLW1kLXpvb206IDEuMTQzOyBmb250LXZhcmlhbnQtbGlnYXR1cmVzOiBub3JtYWw7
-IGZvbnQtdmFyaWFudC1udW1lcmljOiBub3JtYWw7IGZvbnQtdmFyaWFudC1lYXN0LWFzaWFuOiBu
-b3JtYWw7IGZvbnQtdmFyaWFudC1hbHRlcm5hdGVzOiBub3JtYWw7IGZvbnQtc2l6ZS1hZGp1c3Q6
-IG5vbmU7IGZvbnQtbGFuZ3VhZ2Utb3ZlcnJpZGU6IG5vcm1hbDsgZm9udC1rZXJuaW5nOiBhdXRv
-OyBmb250LW9wdGljYWwtc2l6aW5nOiBhdXRvOyBmb250LWZlYXR1cmUtc2V0dGluZ3M6IG5vcm1h
-bDsgZm9udC12YXJpYXRpb24tc2V0dGluZ3M6IG5vcm1hbDsgZm9udC12YXJpYW50LXBvc2l0aW9u
-OiBub3JtYWw7IGZvbnQtdmFyaWFudC1lbW9qaTogbm9ybWFsOyBmb250LXN0cmV0Y2g6IG5vcm1h
-bDsgZm9udC1zaXplOiAxNnB4OyBsaW5lLWhlaWdodDogMjhweDsgY29sb3I6IHJnYigxNSwgMTcs
-IDIxKTsiPjxwIGNsYXNzPSJkcy1tYXJrZG93bi1wYXJhZ3JhcGgiIHN0eWxlPSJtYXJnaW4tdG9w
-OiAwcHggIWltcG9ydGFudDsgbWFyZ2luLXJpZ2h0OiAwcHg7IG1hcmdpbi1ib3R0b206IDBweCAh
-aW1wb3J0YW50OyBtYXJnaW4tbGVmdDogMHB4OyI+Jm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7
-SSBhbSBjb21wbGV0ZWx5IGNvbnZpbmNlZCB0aGF0IHRoaXMgcGxhbiBpcyBmZWFzaWJsZSwgYnV0
-IHNpbmNlIG15IGhvc3QgaXMgWDg2LWJhc2VkLCBJIG1heSBlbmNvdW50ZXIgc29tZSBlbnRpcmVs
-eSBkaWZmZXJlbnQgaXNzdWVzLiBJIGFtIGNvbmNlcm5lZCB0aGF0IGRlYWxpbmcgd2l0aCB0aGVz
-ZSBwcm9ibGVtcyBjb3VsZCB0YWtlIHVwIGEgbG90IG9mIHRpbWUuIFRoZXJlZm9yZSwgSSB3b3Vs
-ZCBsaWtlIHRvIGFzayBhYm91dCB0aGUgc3BlY2lmaWNhdGlvbnMgb2YgeW91ciBob3N0IG1hY2hp
-bmWhqnBlcmhhcHMgb3VyIHRlYW0gY291bGQgcHVyY2hhc2Ugb25lIGFzIHdlbGwuIEZvciBleGFt
-cGxlLCBkZXRhaWxzIGxpa2UgdGhlIENQVSBtb2RlbCBvciBldmVuIHRoZSBjb21wdXRlciBtb2Rl
-bCB3b3VsZCBiZSB2ZXJ5IGhlbHBmdWwuIFRoYW5rIHlvdSE8L3A+PHAgY2xhc3M9ImRzLW1hcmtk
-b3duLXBhcmFncmFwaCIgc3R5bGU9Im1hcmdpbi10b3A6IDBweCAhaW1wb3J0YW50OyBtYXJnaW4t
-cmlnaHQ6IDBweDsgbWFyZ2luLWJvdHRvbTogMHB4ICFpbXBvcnRhbnQ7IG1hcmdpbi1sZWZ0OiAw
-cHg7Ij48YnI+PC9wPjxwIGNsYXNzPSJkcy1tYXJrZG93bi1wYXJhZ3JhcGgiIHN0eWxlPSJtYXJn
-aW4tdG9wOiAwcHggIWltcG9ydGFudDsgbWFyZ2luLXJpZ2h0OiAwcHg7IG1hcmdpbi1ib3R0b206
-IDBweCAhaW1wb3J0YW50OyBtYXJnaW4tbGVmdDogMHB4OyI+QlJzPC9wPjxwIGNsYXNzPSJkcy1t
-YXJrZG93bi1wYXJhZ3JhcGgiIHN0eWxlPSJtYXJnaW4tdG9wOiAwcHggIWltcG9ydGFudDsgbWFy
-Z2luLXJpZ2h0OiAwcHg7IG1hcmdpbi1ib3R0b206IDBweCAhaW1wb3J0YW50OyBtYXJnaW4tbGVm
-dDogMHB4OyI+emxjYW8uPC9wPjwvZGl2PjwvZGl2PjxkaXYgY2xhc3M9ImRzLXRoZW1lIiBzdHls
-ZT0iLS1kcy1pbnB1dC1oZWlnaHQtbDogNDRweDsgLS1kcy1pbnB1dC1oZWlnaHQtbTogMzRweDsg
-LS1kcy1pbnB1dC1oZWlnaHQtczogMzBweDsgLS1kcy1pbnB1dC1oZWlnaHQteHM6IDI2cHg7IC0t
-ZHMtZm9udC13ZWlnaHQtc3Ryb25nOiA2MDA7IC0tZHMtZm9udC1zaXplLWw6IDE2cHg7IC0tZHMt
-bGluZS1oZWlnaHQtbDogMjhweDsgLS1kcy1mb250LXNpemUtbTogMTRweDsgLS1kcy1saW5lLWhl
-aWdodC1tOiAyNXB4OyAtLWRzLWZvbnQtc2l6ZS1zcDogMTNweDsgLS1kcy1saW5lLWhlaWdodC1z
-cDogMjNweDsgLS1kcy1mb250LXNpemUtczogMTJweDsgLS1kcy1saW5lLWhlaWdodC1zOiAyMXB4
-OyAtLWRzLWZvbnQtc2l6ZS14c3A6IDExcHg7IC0tZHMtbGluZS1oZWlnaHQteHNwOiAxOS41cHg7
-IC0tZHMtZm9udC1zaXplLXhzOiAxMHB4OyAtLWRzLWxpbmUtaGVpZ2h0LXhzOiAxOHB4OyAtLWRz
-LWVhc2UtaW4tb3V0OiBjdWJpYy1iZXppZXIoLjQsMCwuMiwxKTsgLS1kcy1lYXNlLWluOiBjdWJp
-Yy1iZXppZXIoLjQsMCwxLDEpOyAtLWRzLWVhc2Utb3V0OiBjdWJpYy1iZXppZXIoMCwwLC4yLDEp
-OyAtLWRzLWZvbnQtZmFtaWx5LWNvZGU6IE1lbmxvLE1vbmFjbyxDb25zb2xhcywmcXVvdDtDYXNj
-YWRpYSBNb25vJnF1b3Q7LCZxdW90O1VidW50dSBNb25vJnF1b3Q7LCZxdW90O0RlamFWdSBTYW5z
-IE1vbm8mcXVvdDssJnF1b3Q7TGliZXJhdGlvbiBNb25vJnF1b3Q7LCZxdW90O0pldEJyYWlucyBN
-b25vJnF1b3Q7LCZxdW90O0ZpcmEgQ29kZSZxdW90OyxDb3VzaW5lLCZxdW90O1JvYm90byBNb25v
-JnF1b3Q7LCZxdW90O0NvdXJpZXIgTmV3JnF1b3Q7LENvdXJpZXIsc2Fucy1zZXJpZixzeXN0ZW0t
-dWk7IC0tZHMtdHJhbnNpdGlvbi1kdXJhdGlvbjogLjJzOyAtLWRzLXRyYW5zaXRpb24tZHVyYXRp
-b24tZmFzdDogLjFzOyAtLWRzLXRyYW5zaXRpb24tZHVyYXRpb24tc2xvdzogLjNzOyAtLXdpcC1k
-cy1mb250LXNpemUtMnhzOiAxMnB4OyAtLXdpcC1kcy1saW5lLWhlaWdodC0yeHMtY29tcGFjdDog
-MS41OyAtLXdpcC1kcy1jb2xvci1iZy10b29sdGlwOiAjMmMyYzJlOyBjb2xvcjogcmdiKDEyOCwg
-MCwgMTI4KTsgZm9udC1mYW1pbHk6IHF1b3RlLWNqay1wYXRjaCwgSW50ZXIsIHN5c3RlbS11aSwg
-LWFwcGxlLXN5c3RlbSwgQmxpbmtNYWNTeXN0ZW1Gb250LCAmcXVvdDtTZWdvZSBVSSZxdW90Oywg
-Um9ib3RvLCBPeHlnZW4sIFVidW50dSwgQ2FudGFyZWxsLCAmcXVvdDtPcGVuIFNhbnMmcXVvdDss
-ICZxdW90O0hlbHZldGljYSBOZXVlJnF1b3Q7LCBzYW5zLXNlcmlmOyBmb250LXZhcmlhbnQtbGln
-YXR1cmVzOiBuby1jb250ZXh0dWFsOyAtLWRzLXJnYi1ob3ZlcjogMjQ1IDI0NSAyNDU7IC0tZHMt
-cmdiLXByaW1hcnk6IDc3IDEwNyAyNTQ7IC0tZHMtYnV0dG9uLWhvdmVyLWNvbG9yOiAjMjU2M0VC
-OyAtLWRzLWJvcmRlcmVkLXNlY29uZGFyeS1idXR0b24tY29sb3I6IHJnYigzOCAzOCAzOCk7IC0t
-ZHMtaW5wdXQtcHJlZml4LWNvbG9yOiByZ2IoMzggMzggMzgpOyI+PC9kaXY+PGRpdiBjbGFzcz0i
-ZHMtZmxleCBfMGEzZDkzYiIgc3R5bGU9ImRpc3BsYXk6IGZsZXg7IGZsZXgtd3JhcDogd3JhcDsg
-YWxpZ24taXRlbXM6IGNlbnRlcjsgd2lkdGg6IGNhbGMoMTAwJSArIDZweCk7IG1hcmdpbi10b3A6
-IDEycHg7IG1hcmdpbi1ib3R0b206IDEwcHg7IHBvc2l0aW9uOiByZWxhdGl2ZTsgbGVmdDogLTZw
-eDsgY29sb3I6IHJnYigxMjgsIDAsIDEyOCk7IGZvbnQtZmFtaWx5OiBxdW90ZS1jamstcGF0Y2gs
-IEludGVyLCBzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJnF1
-b3Q7U2Vnb2UgVUkmcXVvdDssIFJvYm90bywgT3h5Z2VuLCBVYnVudHUsIENhbnRhcmVsbCwgJnF1
-b3Q7T3BlbiBTYW5zJnF1b3Q7LCAmcXVvdDtIZWx2ZXRpY2EgTmV1ZSZxdW90Oywgc2Fucy1zZXJp
-ZjsgZm9udC12YXJpYW50LWxpZ2F0dXJlczogbm8tY29udGV4dHVhbDsgZ2FwOiAxMHB4OyI+PGRp
-diBjbGFzcz0iZHMtZmxleCBfOTY1YWJlOSBfNTQ4NjZmNyIgc3R5bGU9ImRpc3BsYXk6IGZsZXg7
-IG9wYWNpdHk6IDE7IHRyYW5zaXRpb246IG9wYWNpdHkgMC4ycyBjdWJpYy1iZXppZXIoMC40LCAw
-LCAwLjIsIDEpOyB3aWxsLWNoYW5nZTogb3BhY2l0eTsgYWxpZ24taXRlbXM6IGNlbnRlcjsgZ2Fw
-OiAxMHB4OyI+PGRpdiBjbGFzcz0iZGIxODMzNjMgZHMtaWNvbi1idXR0b24gZHMtaWNvbi1idXR0
-b24tLW0gZHMtaWNvbi1idXR0b24tLXNpemluZy1jb250YWluZXIiIHRhYmluZGV4PSIwIiByb2xl
-PSJidXR0b24iIGFyaWEtZGlzYWJsZWQ9ImZhbHNlIiBzdHlsZT0iLS1kcy1pY29uLWJ1dHRvbi1m
-b2N1cy1jb2xvcjogIzM5NjRmZTsgLS1kcy1pY29uLWJ1dHRvbi1ob3Zlci1jb2xvcjogcmdiYSgz
-OCw0OSw3MiwuMDYpOyBjdXJzb3I6IHBvaW50ZXI7IGJvcmRlci1yYWRpdXM6IDUwJTsgb3V0bGlu
-ZTogbm9uZTsganVzdGlmeS1jb250ZW50OiBjZW50ZXI7IGFsaWduLWl0ZW1zOiBjZW50ZXI7IGRp
-c3BsYXk6IGlubGluZS1mbGV4OyBwb3NpdGlvbjogcmVsYXRpdmU7IG92ZXJmbG93OiB2aXNpYmxl
-OyBjb2xvcjogcmdiKDEyOSwgMTMzLCAxNDApOyAtLWRzLWljb24tYnV0dG9uLWJhY2tncm91bmQt
-c2l6ZTogMjhweDsgLS1kcy1pY29uLWJ1dHRvbi1pY29uLXNpemU6IDE2cHg7IHdpZHRoOiAyOHB4
-OyBoZWlnaHQ6IDI4cHg7Ij48L2Rpdj48L2Rpdj48L2Rpdj48L2Rpdj48ZGl2IHN0eWxlPSJtYXJn
-aW46IDA7Ij48YnI+PC9kaXY+PGRpdiBzdHlsZT0ibWFyZ2luOiAwOyI+PGJyPjwvZGl2PjxkaXYg
-c3R5bGU9Im1hcmdpbjogMDsiPjxicj48L2Rpdj48L2Rpdj48ZGl2IHN0eWxlPSJwb3NpdGlvbjpy
-ZWxhdGl2ZTt6b29tOjEiPjwvZGl2PjxkaXYgaWQ9ImRpdk5ldGVhc2VNYWlsQ2FyZCI+PC9kaXY+
-PGRpdiBzdHlsZT0ibWFyZ2luOiAwOyI+PGJyPjwvZGl2PjxwcmU+PGJyPkF0IDIwMjUtMTItMjIg
-MjM6MDc6MTcsICJUYW8gVGFuZyIgJmx0O3Rhbmd0YW8xNjM0QHBoeXRpdW0uY29tLmNuJmd0OyB3
-cm90ZToKJmd0O0hpIHR1Z291eHAsCiZndDsKJmd0O09uIDIwMjUvMTIvMjIgMTQ6MTQsIHR1Z291
-eHAgd3JvdGU6CiZndDsmZ3Q7IEhpIFRhbzoKJmd0OyZndDsgICAgIFRoYW5rcyBmb3IgeW91ciBh
-bnN3ZXIhCiZndDsmZ3Q7CiZndDsmZ3Q7ICAgICAgU28geW91ciBlbnZpcm9ubWVudCBpbnZvbHZl
-cyBzaW11bGF0aW5nIGFuIEFBUkNINjQgVk0gT1Mgb24gYW4gWDg2IGhvc3QsIGFuZCB0aGVuIHdp
-dGhpbiB0aGF0IHNpbXVsYXRlZCBBQVJDSDY0IFZNLCB5b3UndmUgaW5zdGFsbGVkIGFub3RoZXIg
-S1ZNIGFhcmNoNjQgVk0/IEVzc2VudGlhbGx5LCBpdCdzIGFuIGVudmlyb25tZW50IHdpdGggdHdv
-IG5lc3RlZCBhYXJjaDY0IFZNcyBydW5uaW5nIG9uIGFuIHg4NiBob3N0PyBJIGNhbiBoYXJkbHkg
-YmVsaWV2ZSBpdCChqiB0aGF0J3MgYSBnZW5pdXMgaWRlYSEgSSdtIHF1aXRlIGNvbmNlcm5lZCBh
-Ym91dCBpdHMgcGVyZm9ybWFuY2UsIHRob3VnaC4gV2lsbCBpdCBiZSB2ZXJ5IHNsb3cgYW5kIGxh
-Z2d5PwomZ3Q7CiZndDtZZXMsIGEgdmlydHVhbGl6YXRpb24tY2FwYWJsZSBhYXJjaDY0IFRDRyBW
-TSBjYW4gYmUgc2V0IHVwIHVzaW5nIAomZ3Q7LW1hY2hpbmUgdmlydCx2aXJ0dWFsaXphdGlvbj1v
-biByZWdhcmRsZXNzIG9mIHRoZSBob3N0IGFyY2hpdGVjdHVyZSwgCiZndDtpbmNsdWRpbmcgb24g
-YW4geDg2IGhvc3QsIHRoYW5rcyB0byBRRU1Voa9zIFRDRyBjcm9zcy1hcmNoaXRlY3R1cmUgCiZn
-dDtkeW5hbWljIHRyYW5zbGF0aW9uIG1lY2hhbmlzbS4gVENHIGVtdWxhdGVzIHRoZSBndWVzdCBD
-UFUgYW5kIHN5c3RlbSAKJmd0O3dlbGwgZW5vdWdoIHRoYXQgdGhlIGd1ZXN0IE9TIHNlZXMgYW5k
-IGNhbiBleGVyY2lzZSBBUk0gdmlydHVhbGl6YXRpb24gCiZndDtleHRlbnNpb25zIChFTDIgYW5k
-IFN0YWdlLTIpLCBzbyBmcm9tIHRoZSBndWVzdCBrZXJuZWyhr3MgcGVyc3BlY3RpdmUgdGhlIAom
-Z3Q7bWFjaGluZSBkb2VzIGdlbnVpbmVseSBoYXZlIHZpcnR1YWxpemF0aW9uIHN1cHBvcnQgZW5h
-YmxlZC4gVGhpcyBtYWtlcyAKJmd0O3NldHRpbmcgdXAgYSBLVk0gVk0gaW5zaWRlIHRoaXMgVENH
-IGd1ZXN0IHJlYXNvbmFibGUuCiZndDsKJmd0O0luIGZhY3QsIHRoZSBMaW51eCBrZXJuZWwgYW5k
-IHRoZSBxZW11LXN5c3RlbS0qIGJpbmFyaWVzIHJ1bm5pbmcgaW5zaWRlIAomZ3Q7dGhlIFRDRyBo
-b3N0IFZNIGFyZSB0aGUgc2FtZSBiaW5hcmllcyB5b3Ugd291bGQgcnVuIG9uIGEgcGh5c2ljYWwg
-CiZndDttYWNoaW5lIKGqIHRoZXJlIGlzIG5vIG1vZGlmaWNhdGlvbiBvciBzcGVjaWFsIGJ1aWxk
-IGZvciB0aGlzIFRDRyAKJmd0O2Vudmlyb25tZW50LiBPZiBjb3Vyc2UsIHBlcmZvcm1hbmNlIHdp
-bGwgYmUgc2xvd2VyIHRoYW4gb24gcmVhbCAKJmd0O2hhcmR3YXJlLCBhcyBUQ0cgaW50ZXJwcmV0
-cyBhbmQgdHJhbnNsYXRlcyBndWVzdCBpbnN0cnVjdGlvbnMgaW4gCiZndDtzb2Z0d2FyZSByYXRo
-ZXIgdGhhbiBleGVjdXRpbmcgdGhlbSBkaXJlY3RseSBvbiBwaHlzaWNhbCB2aXJ0dWFsaXphdGlv
-biAKJmd0O2V4dGVuc2lvbnM7IGhvd2V2ZXIsIGZvciB3b3JrbG9hZHMgdGhhdCBhcmUgbm90IGhl
-YXZpbHkgSS9PLWludGVuc2l2ZSwgCiZndDtzaW1wbGUgdGVzdHMgd29yayBmaW5lLiBGb3IgZXhh
-bXBsZSwgSSBwYXNzZWQgdGhyb3VnaCBhIFBDSWUgTlZNZSBkZXZpY2UgCiZndDt0byB0aGUgbmVz
-dGVkIFZNLCBtb3VudGVkIGl0LCBhbmQgd2FzIGFibGUgdG8gcmVhZCBhbmQgd3JpdGUgZmlsZXMg
-b24gaXQgCiZndDtqdXN0IGxpa2Ugb24gcmVhbCBoYXJkd2FyZS4KJmd0OwomZ3Q7CiZndDtJJ20g
-c3VyZSBpdCBpcyBkb2FibGUgdG8gZG8gdGhpcyBvbiBhYXJjaDY0LiBCdXQgSSdtIG5vdCBzdXJl
-IGhvdyBpdCBpcyAKJmd0O29uIHg4Nl82NC9pMzg2LiBJIGRpZCBhIGN1cnNvcnkgc2VhcmNoIG9m
-IHRoZSBjb2RlIGFuZCBmb3VuZCBpdCBzZWVtcyB0byAKJmd0O2JlIHVuc3VwcG9ydGVkIHRvIHNl
-dHVwIGEgVENHIFZNIHdpdGggdmlydHVhbGl6YXRpb24tY2FwYWJpbGl0eSBlbmFibGVkIAomZ3Q7
-b24mbmJzcDt4ODZfNjQvaTM4Ni4gQnV0IEknbSBub3QgZmFtaWxpYXIgd2l0aCB0aGlzIHNvIHdl
-IG1heSBuZWVkIGFuIHg4NiAKJmd0O3NwZWNpYWxpc3QgdG8gaGVscCB3aXRoIHRoaXMuCiZndDsK
-Jmd0OwomZ3Q7Jmd0OyBCeSB0aGUgd2F5LCBpc24ndCB0aGUgS1ZNIKOoYmVjYXVzZSB5b3UgdXNl
-IC0tZW5hbGUta3ZtIGluIHRoZSBuZXN0ZWQgYWFyY2g2NCB2bSkgaW4gdGhlIGFhcmNoNjQgVk0g
-YWxzbyBlbXVsYXRlZD8gQWZ0ZXIgYWxsLCBLVk0gY2FuIG9ubHkgYmUgdXNlZCBvbiB0aGUgc2Ft
-ZSBJU0EgYXJjaGl0ZWN0dXJlLgomZ3Q7Jmd0OwomZ3Q7VGhleSBhcmUgYWxsIGVtdWxhdGVkIGFu
-ZCBhbGwgYWFyY2g2NCBtYWNoaW5lLgomZ3Q7CiZndDsKJmd0O1JlZ2FyZHMsCiZndDsKJmd0O1Rh
-bwomZ3Q7CiZndDsmZ3Q7CiZndDsmZ3Q7CiZndDsmZ3Q7IEJScwomZ3Q7Jmd0OwomZ3Q7Jmd0OyB6
-bGNhby4KJmd0OyZndDsKJmd0OyZndDsKJmd0OyZndDsKJmd0OyZndDsKJmd0OyZndDsKJmd0OyZn
-dDsKJmd0OyZndDsKJmd0OyZndDsKJmd0OyZndDsKJmd0OyZndDsKJmd0OyZndDsgQXQgMjAyNS0x
-Mi0yMiAxMTo0OTozMywgIlRhbyBUYW5nIiAmbHQ7dGFuZ3RhbzE2MzRAcGh5dGl1bS5jb20uY24m
-Z3Q7IHdyb3RlOgomZ3Q7Jmd0OyZndDsgSGkgemxjYW8sCiZndDsmZ3Q7Jmd0OwomZ3Q7Jmd0OyZn
-dDsmZ3Q7IEhpIGd1eXM6CiZndDsmZ3Q7Jmd0OyZndDsgICAgICBJIHdhbnQgdG8gbGVhcm4gYWJv
-dXQgaG93IEludGVsIElPTU1VIHNlY29uZC1sZXZlbCB0cmFuc2xhdGlvbgomZ3Q7Jmd0OyZndDsm
-Z3Q7IHdvcmtzLiBEb2VzIGFueW9uZSBoYXZlIGFueSBtYXRlcmlhbHMgb3IgcGFnZXMgb24gdGhp
-cyB0b3BpYywgc3VjaCBhcwomZ3Q7Jmd0OyZndDsmZ3Q7IFdJUCByZXBvc2l0b3JpZXMsIG9wZXJh
-dGlvbmFsIGd1aWRlcywgZXRjLj8gVGhhbmtzIQomZ3Q7Jmd0OyZndDsmZ3Q7IEJScwomZ3Q7Jmd0
-OyZndDsmZ3Q7IHpsY2FvLgomZ3Q7Jmd0OyZndDsKJmd0OyZndDsmZ3Q7ICBGcm9tIG15IGV4cGVy
-aWVuY2UsIHRoZSBiZXN0IGFwcHJvYWNoIHRvIGxlYXJuIHRoaXMgaXMgdG8gc2V0dXAgYQomZ3Q7
-Jmd0OyZndDsgbmVzdGVkIHZpcnR1YWxpemF0aW9uIGVudmlyb25tZW50LCBmaW5kIHRoZSBzZW5h
-cmlvIHRoYXQgY2FuIHRyaWdnZXIKJmd0OyZndDsmZ3Q7IHNlY29uZC1sZXZlbCB0cmFuc2xhdGlv
-biwgYW5kIHRoZW4gdHJhY2UgYWxsIEludGVsIElPTU1VIGV2ZW50cyBvciB1c2UKJmd0OyZndDsm
-Z3Q7IGdkYiB0byB0cmFjZSBsaW5lIGJ5IGxpbmUgaW4gaHcvaTM4Ni9pbnRlbF9pb21tdS5jLiBB
-bHNvIHlvdSBtYXkgbmVlZCB0bwomZ3Q7Jmd0OyZndDsgZ2V0IEludGVsIElPTU1VIHNwZWMgYW5k
-IGZpbmQgdGhlIHJlbGF0ZWQgY2hhcHRlciB3aGljaCBkZXNjcmliZXMKJmd0OyZndDsmZ3Q7IHNl
-Y29uZC1sZXZlbCB0cmFuc2xhdGlvbi4KJmd0OyZndDsmZ3Q7CiZndDsmZ3Q7Jmd0OwomZ3Q7Jmd0
-OyZndDsgSSB3b3JrZWQgaW4gU01NVSB0aGVzZSBkYXlzIGFuZCBoYWQgdGhlIHNhbWUgcHJvYmxl
-bSB3aXRoIHlvdSBhbmQgZm91bmQKJmd0OyZndDsmZ3Q7IHRoYXQgc2V0dXAgYSBuZXN0ZWQgdmly
-dHVhbGl6YXRpb24gZW52aXJvbm1lbnQgdGhlbiBwYXNzdGhyb3VnaCBhIFBDSWUKJmd0OyZndDsm
-Z3Q7IGRldmljZSBmcm9tIFRDRyBIb3N0IFZNIGludG8gS1ZNIEd1ZXN0IFZNIGNvdWxkIGJlIGEg
-Z29vZCB3YXkgdG8gZGVidWcKJmd0OyZndDsmZ3Q7IElPTU1VIGltcGxlbWVudGF0aW9uLiBUaGlz
-IGxpbmsgWzFdIHNob3cgaG93IGl0IHdvcmtzIGluIEFybSBTTU1VLgomZ3Q7Jmd0OyZndDsKJmd0
-OyZndDsmZ3Q7IFsxXQomZ3Q7Jmd0OyZndDsgaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1k
-ZXZlbC8yMDI1MDgwNjE1MTEzNC4zNjU3NTUtMS10YW5ndGFvMTYzNEBwaHl0aXVtLmNvbS5jbi8K
-Jmd0OyZndDsmZ3Q7CiZndDsmZ3Q7Jmd0OwomZ3Q7Jmd0OyZndDsgLi4uLi4uCiZndDsmZ3Q7Jmd0
-OwomZ3Q7Jmd0OyZndDsgTm9uLVNlY3VyZSBSZWdyZXNzaW9uOiBUbyBlbnN1cmUgdGhhdCBleGlz
-dGluZyBmdW5jdGlvbmFsaXR5IHJlbWFpbnMKJmd0OyZndDsmZ3Q7IGludGFjdCwgSSByYW4gYSBu
-ZXN0ZWQgdmlydHVhbGl6YXRpb24gdGVzdC4gQSBUQ0cgZ3Vlc3Qgd2FzIGNyZWF0ZWQgb24KJmd0
-OyZndDsmZ3Q7IHRoZSBob3N0LCB3aXRoIGlvbW11PXNtbXV2MyBhbmQgd2l0aCBhbiBlbXVsYXRl
-ZCBQQ0llIE5WTWUgZGV2aWNlIGFzc2lnbmVkLgomZ3Q7Jmd0OyZndDsgQ29tbWFuZCBsaW5lIG9m
-IFRDRyBWTSBpcyBiZWxvdzoKJmd0OyZndDsmZ3Q7CiZndDsmZ3Q7Jmd0OyBxZW11LXN5c3RlbS1h
-YXJjaDY0IFwKJmd0OyZndDsmZ3Q7IC1tYWNoaW5lIHZpcnQsdmlydHVhbGl6YXRpb249b24sZ2lj
-LXZlcnNpb249Myxpb21tdT1zbW11djMgXAomZ3Q7Jmd0OyZndDsgLWNwdSBtYXggLXNtcCAxIC1t
-IDQwODBNIFwKJmd0OyZndDsmZ3Q7IC1hY2NlbCB0Y2csdGhyZWFkPXNpbmdsZSx0Yi1zaXplPTUx
-MiBcCiZndDsmZ3Q7Jmd0OyAta2VybmVsIEltYWdlIFwKJmd0OyZndDsmZ3Q7IC1hcHBlbmQgJ25v
-a2FzbHIgcm9vdD0vZGV2L3ZkYSBydyByb290ZnN0eXBlPWV4dDQgaW9tbXUucGFzc3Rocm91Z2g9
-b24nIFwKJmd0OyZndDsmZ3Q7IC1kZXZpY2UgcGNpZS1yb290LXBvcnQsYnVzPXBjaWUuMCxpZD1y
-cDAsYWRkcj0weDQuMCxjaGFzc2lzPTEscG9ydD0weDEwIFwKJmd0OyZndDsmZ3Q7IC1kZXZpY2Ug
-cGNpZS1yb290LXBvcnQsYnVzPXBjaWUuMCxpZD1ycDEsYWRkcj0weDUuMCxjaGFzc2lzPTIscG9y
-dD0weDExIFwKJmd0OyZndDsmZ3Q7IC1kcml2ZSBpZj1ub25lLGZpbGU9dTIyMDRmcy5pbWcucWNv
-dzIsZm9ybWF0PXFjb3cyLGlkPWhkMCBcCiZndDsmZ3Q7Jmd0OyAtZGV2aWNlIHZpcnRpby1ibGst
-ZGV2aWNlLGRyaXZlPWhkMCBcCiZndDsmZ3Q7Jmd0OyAtcW1wIHVuaXg6L3RtcC9xbXAtc29jazEy
-LHNlcnZlcj1vbix3YWl0PW9mZiBcCiZndDsmZ3Q7Jmd0OyAtbmV0ZGV2IHVzZXIsaWQ9ZXRoMCxo
-b3N0ZndkPXRjcDo6MTAwMjItOjIyLGhvc3Rmd2Q9dGNwOjo1OTkyMi06NTkyMiBcCiZndDsmZ3Q7
-Jmd0OyAtZGV2aWNlIHZpcnRpby1uZXQtZGV2aWNlLG5ldGRldj1ldGgwIFwKJmd0OyZndDsmZ3Q7
-IC1kcml2ZSBpZj1ub25lLGZpbGU9bnZtZS5pbWcsZm9ybWF0PXJhdyxpZD1udm1lMCBcCiZndDsm
-Z3Q7Jmd0OyAtZGV2aWNlIG52bWUsZHJpdmU9bnZtZTAsc2VyaWFsPWRlYWRiZWVmIFwKJmd0OyZn
-dDsmZ3Q7IC1kIHVuaW1wLGd1ZXN0X2Vycm9ycyAtdHJhY2UgZXZlbnRzPXNtbXUtZXZlbnRzLnR4
-dCAtRCBxZW11LmxvZyAtbm9ncmFwaGljCiZndDsmZ3Q7Jmd0OwomZ3Q7Jmd0OyZndDsgSW5zaWRl
-IHRoaXMgVENHIFZNLCBhIEtWTSBndWVzdCB3YXMgbGF1bmNoZWQsIGFuZCB0aGUgc2FtZSBOVk1l
-IGRldmljZSB3YXMKJmd0OyZndDsmZ3Q7IHJlLWFzc2lnbmVkIHRvIGl0IHZpYSBWRklPLgomZ3Q7
-Jmd0OyZndDsgQ29tbWFuZCBsaW5lIG9mIEtWTSBWTSBpbnNpZGUgVENHIFZNIGlzIGJlbG93Ogom
-Z3Q7Jmd0OyZndDsKJmd0OyZndDsmZ3Q7IHN1ZG8gcWVtdS1zeXN0ZW0tYWFyY2g2NCAgXAomZ3Q7
-Jmd0OyZndDsgLWVuYWJsZS1rdm0gIC1tIDEwMjQgIC1jcHUgaG9zdCAgLU0gdmlydCBcCiZndDsm
-Z3Q7Jmd0OyAtbWFjaGluZSB2aXJ0LGdpYy12ZXJzaW9uPTMgXAomZ3Q7Jmd0OyZndDsgLWNwdSBt
-YXggLWFwcGVuZCAibm9rYXNsciIgLXNtcCAxIFwKJmd0OyZndDsmZ3Q7IC1tb25pdG9yIHN0ZGlv
-IFwKJmd0OyZndDsmZ3Q7IC1rZXJuZWwgNS4xNS5JbWFnZSBcCiZndDsmZ3Q7Jmd0OyAtaW5pdHJk
-IHJvb3Rmcy5jcGlvLmd6IFwKJmd0OyZndDsmZ3Q7IC1kaXNwbGF5IHZuYz06MjIsaWQ9cHJpbWFy
-eSBcCiZndDsmZ3Q7Jmd0OyAtZGV2aWNlIHZmaW8tcGNpLGhvc3Q9MDA6MDEuMAomZ3Q7Jmd0OyZn
-dDsKJmd0OyZndDsmZ3Q7IFRoZSBLVk0gZ3Vlc3Qgd2FzIGFibGUgdG8gcGVyZm9ybSBJL08gb24g
-dGhlIGRldmljZQomZ3Q7Jmd0OyZndDsgY29ycmVjdGx5LCBjb25maXJtaW5nIHRoYXQgdGhlIG5v
-bi1zZWN1cmUgcGF0aCBpcyBub3QgYnJva2VuLgomZ3Q7Jmd0OyZndDsKJmd0OyZndDsmZ3Q7IC4u
-Li4uLgomZ3Q7Jmd0OyZndDsKJmd0OyZndDsmZ3Q7CiZndDsmZ3Q7Jmd0OwomZ3Q7Jmd0OyZndDsg
-SSdtIG5vdCBmYW1pbGlhciB3aXRoIEludGVsIElPTU1VIHNvIEknbSBub3QgZW5hYmxlIHRvIGhl
-bHAgd2l0aCB0aGUKJmd0OyZndDsmZ3Q7IHJpZ2h0IG9wdGlvbnMgdGhhdCBhcHBseSBQQ0llIHBh
-c3N0aHJvdWdoaW5nIG9uIEludGVsIElPTU1VLgomZ3Q7Jmd0OyZndDsKJmd0OyZndDsmZ3Q7CiZn
-dDsmZ3Q7Jmd0OyBCVFcsIEkgaGF2ZSBzdWJtaXR0ZWQgYSBwYXRjaCBzZXJpZXMgaW50cm9kdWNp
-bmcgaW9tbXUtdGVzdGRldiBbMl0gLAomZ3Q7Jmd0OyZndDsgd2hpY2ggYWxsb3dzIHRlc3Rpbmcg
-SU9NTVUgZnVuY3Rpb25hbGl0eSBwdXJlbHkgd2l0aCBRVGVzdCwgd2l0aG91dAomZ3Q7Jmd0OyZn
-dDsgc2V0dGluZyB1cCBhIGNvbXBsZXggc29mdHdhcmUgc3RhY2suIE9uY2UgeW91IGhhdmUgYSBj
-bGVhciB1bmRlcnN0YW5kaW5nCiZndDsmZ3Q7Jmd0OyBvZiB0aGUgc2Vjb25kLWxldmVsIHRyYW5z
-bGF0aW9uLCB5b3UgYXJlIHZlcnkgd2VsY29tZSB0byBzaGFyZSB5b3VyCiZndDsmZ3Q7Jmd0OyBm
-aW5kaW5ncyBhbmQgaGVscCBpbXByb3ZlIHRoZSBJbnRlbCBJT01NVSBpbXBsZW1lbnRhdGlvbiBp
-biBpb21tdS10ZXN0ZGV2LgomZ3Q7Jmd0OyZndDsKJmd0OyZndDsmZ3Q7CiZndDsmZ3Q7Jmd0OyBb
-Ml0KJmd0OyZndDsmZ3Q7IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwvMjAyNTEy
-MDYxNTUyMDMuMzAxNTg4MS0xLXRhbmd0YW8xNjM0QHBoeXRpdW0uY29tLmNuLwomZ3Q7Jmd0OyZn
-dDsKJmd0OyZndDsmZ3Q7CiZndDsmZ3Q7Jmd0OyBSZWdhcmRzLAomZ3Q7Jmd0OyZndDsKJmd0OyZn
-dDsmZ3Q7IFRhbwo8L3ByZT48L2Rpdj4=
-------=_Part_64252_1389725500.1766450562919--
+    To support this transition, we implement the full architectural behavior
+    required for WFE, specifically the 'Event Register' and 'SEVONPEND' logic
+    defined in the ARMv7-M specification. This ensures that the CPU correctly
+    identifies wakeup conditions as defined by the architecture.
+
+    Changes include:
+    1.  target/arm/cpu.h: Added 'event_register' to the v7m state struct.
+    2.  target/arm/cpu.c: Ensured event_register is cleared on reset and
+        updated arm_cpu_has_work() to check the event register state.
+    3.  target/arm/machine.c: Added VMState subsection for migration compatibility.
+    4.  hw/intc/armv7m_nvic.h: Added was_pending flag, to check for SEVONPEND logic.
+    5.  hw/intc/armv7m_nvic.c: Implemented SEVONPEND logic in :
+        nvic_recompute_state() and nvic_recompute_state_secure().
+        This sets the event register and kicks the CPU when a new interrupt
+        becomes pending.
+    6.  target/arm/tcg/helper.h: Declare the new helper_sev function.
+    7.  target/arm/tcg/op_helper.c:
+        - Update HELPER(wfe) to use EXCP_HLT for M-profile CPUs.
+        - Implement HELPER(sev) to set the event register and kick all vCPUs.
+    8.  target/arm/tcg/t16.decode / t32.decode: Enable decoding of the SEV
+        instruction in Thumb/Thumb-2 mode.
+    9.  target/arm/tcg/translate.c: Implement trans_SEV using inline
+        TCG generation to ensure system-wide visibility.
+
+    This patch enables resource-efficient idle emulation for Cortex-M.
+
+    Signed-off-by: Ashish Anand ashish.a6@samsung.com
+---
+Testing Notes:
+- Performance Test: Monitored host CPU usage while the guest was in an 
+  idle loop. Usage dropped from 100% (busy-yield) to <5% (EXCP_HALT).
+- Functional Test: Verified SEVONPEND logic using a bare-metal test 
+  case on Cortex-M. Confirmed that pending interrupts correctly 
+  trigger a wakeup when SEVONPEND is enabled, as per Armv7-M spec.
+- Regression Test: 'make check' passes for all ARM targets.
+- Note: 4 x86-specific test cases (lpc-ich9, e1000e) failed, but 
+  I confirmed these also fail on a clean master branch.
+
+ hw/intc/armv7m_nvic.c         | 22 ++++++++++++++++-
+ include/hw/intc/armv7m_nvic.h |  1 +
+ target/arm/cpu.c              |  7 ++++++
+ target/arm/cpu.h              |  1 +
+ target/arm/machine.c          | 19 +++++++++++++++
+ target/arm/tcg/helper.h       |  1 +
+ target/arm/tcg/op_helper.c    | 45 +++++++++++++++++++++++++++++------
+ target/arm/tcg/t16.decode     |  2 +-
+ target/arm/tcg/t32.decode     |  2 +-
+ target/arm/tcg/translate.c    | 20 ++++++++++++----
+ 10 files changed, 106 insertions(+), 14 deletions(-)
+
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index 7c78961040..a60990c71f 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -16,6 +16,7 @@
+ #include "migration/vmstate.h"
+ #include "qemu/timer.h"
+ #include "hw/intc/armv7m_nvic.h"
++#include "hw/arm/armv7m.h"
+ #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+ #include "system/tcg.h"
+@@ -232,6 +233,8 @@ static void nvic_recompute_state_secure(NVICState *s)
+     int pend_irq = 0;
+     bool pending_is_s_banked = false;
+     int pend_subprio = 0;
++    ARMv7MState *armv7m = container_of(s, ARMv7MState, nvic);
++    ARMCPU *cpu = armv7m->cpu;
+ 
+     /* R_CQRV: precedence is by:
+      *  - lowest group priority; if both the same then
+@@ -259,6 +262,14 @@ static void nvic_recompute_state_secure(NVICState *s)
+                 targets_secure = !exc_is_banked(i) && exc_targets_secure(s, i);
+             }
+ 
++            if (!vec->was_pending && vec->pending) {
++                if (cpu->env.v7m.scr[bank] & R_V7M_SCR_SEVONPEND_MASK) {
++                    cpu->env.v7m.event_register = 1;
++                    qemu_cpu_kick(CPU(cpu));
++                }
++            }
++            vec->was_pending = vec->pending;
++
+             prio = exc_group_prio(s, vec->prio, targets_secure);
+             subprio = vec->prio & ~nvic_gprio_mask(s, targets_secure);
+             if (vec->enabled && vec->pending &&
+@@ -293,6 +304,8 @@ static void nvic_recompute_state(NVICState *s)
+     int pend_prio = NVIC_NOEXC_PRIO;
+     int active_prio = NVIC_NOEXC_PRIO;
+     int pend_irq = 0;
++    ARMv7MState *armv7m = container_of(s, ARMv7MState, nvic);
++    ARMCPU *cpu = armv7m->cpu;
+ 
+     /* In theory we could write one function that handled both
+      * the "security extension present" and "not present"; however
+@@ -316,6 +329,13 @@ static void nvic_recompute_state(NVICState *s)
+         if (vec->active && vec->prio < active_prio) {
+             active_prio = vec->prio;
+         }
++        if (!vec->was_pending && vec->pending) {
++            if (cpu->env.v7m.scr[M_REG_NS] & R_V7M_SCR_SEVONPEND_MASK) {
++                cpu->env.v7m.event_register = 1;
++                qemu_cpu_kick(CPU(cpu));
++            }
++        }
++        vec->was_pending = vec->pending;
+     }
+ 
+     if (active_prio > 0) {
+@@ -1657,7 +1677,7 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+         }
+         /* We don't implement deep-sleep so these bits are RAZ/WI.
+          * The other bits in the register are banked.
+-         * QEMU's implementation ignores SEVONPEND and SLEEPONEXIT, which
++         * QEMU's implementation ignores SLEEPONEXIT, which
+          * is architecturally permitted.
+          */
+         value &= ~(R_V7M_SCR_SLEEPDEEP_MASK | R_V7M_SCR_SLEEPDEEPS_MASK);
+diff --git a/include/hw/intc/armv7m_nvic.h b/include/hw/intc/armv7m_nvic.h
+index 7b9964fe7e..305eaf6e6a 100644
+--- a/include/hw/intc/armv7m_nvic.h
++++ b/include/hw/intc/armv7m_nvic.h
+@@ -32,6 +32,7 @@ typedef struct VecInfo {
+     uint8_t pending;
+     uint8_t active;
+     uint8_t level; /* exceptions <=15 never set level */
++    bool was_pending;
+ } VecInfo;
+ 
+ struct NVICState {
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 39292fb9bc..0a044f7254 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -143,6 +143,12 @@ static bool arm_cpu_has_work(CPUState *cs)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+ 
++    if (arm_feature(&cpu->env, ARM_FEATURE_M)) {
++        if (cpu->env.v7m.event_register) {
++            return true;
++        }
++    }
++
+     return (cpu->power_state != PSCI_OFF)
+         && cpu_test_interrupt(cs,
+                CPU_INTERRUPT_FIQ | CPU_INTERRUPT_HARD
+@@ -480,6 +486,7 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
+             ~(R_V7M_FPCCR_LSPEN_MASK | R_V7M_FPCCR_S_MASK);
+         env->v7m.control[M_REG_S] |= R_V7M_CONTROL_FPCA_MASK;
+ #endif
++        env->v7m.event_register = 0;
+     }
+ 
+     /* M profile requires that reset clears the exclusive monitor;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 39f2b2e54d..44433a444c 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -639,6 +639,7 @@ typedef struct CPUArchState {
+         uint32_t nsacr;
+         uint32_t ltpsize;
+         uint32_t vpr;
++        uint32_t event_register;
+     } v7m;
+ 
+     /* Information associated with an exception about to be taken:
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 0befdb0b28..acc79188f2 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -508,6 +508,24 @@ static const VMStateDescription vmstate_m_mve = {
+     },
+ };
+ 
++static bool m_event_needed(void *opaque)
++{
++    ARMCPU *cpu = opaque;
++    /* Only save the state if the event register is set (non-zero) */
++    return cpu->env.v7m.event_register != 0;
++}
++
++static const VMStateDescription vmstate_m_event = {
++    .name = "cpu/m/event",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = m_event_needed,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32(env.v7m.event_register, ARMCPU),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static const VMStateDescription vmstate_m = {
+     .name = "cpu/m",
+     .version_id = 4,
+@@ -535,6 +553,7 @@ static const VMStateDescription vmstate_m = {
+         &vmstate_m_v8m,
+         &vmstate_m_fp,
+         &vmstate_m_mve,
++        &vmstate_m_event,
+         NULL
+     }
+ };
+diff --git a/target/arm/tcg/helper.h b/target/arm/tcg/helper.h
+index 4636d1bc03..5a10a9fba3 100644
+--- a/target/arm/tcg/helper.h
++++ b/target/arm/tcg/helper.h
+@@ -60,6 +60,7 @@ DEF_HELPER_1(yield, void, env)
+ DEF_HELPER_1(pre_hvc, void, env)
+ DEF_HELPER_2(pre_smc, void, env, i32)
+ DEF_HELPER_1(vesb, void, env)
++DEF_HELPER_1(sev, void, env)
+ 
+ DEF_HELPER_3(cpsr_write, void, env, i32, i32)
+ DEF_HELPER_2(cpsr_write_eret, void, env, i32)
+diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+index 4fbd219555..ad79724778 100644
+--- a/target/arm/tcg/op_helper.c
++++ b/target/arm/tcg/op_helper.c
+@@ -469,16 +469,47 @@ void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
+ #endif
+ }
+ 
++void HELPER(sev)(CPUARMState *env)
++{
++    CPUState *cs = env_cpu(env);
++    CPU_FOREACH(cs) {
++        ARMCPU *target_cpu = ARM_CPU(cs);
++        if (arm_feature(&target_cpu->env, ARM_FEATURE_M)) {
++            target_cpu->env.v7m.event_register = 1;
++        }
++        qemu_cpu_kick(cs);
++    }
++}
++
+ void HELPER(wfe)(CPUARMState *env)
+ {
+-    /* This is a hint instruction that is semantically different
+-     * from YIELD even though we currently implement it identically.
+-     * Don't actually halt the CPU, just yield back to top
+-     * level loop. This is not going into a "low power state"
+-     * (ie halting until some event occurs), so we never take
+-     * a configurable trap to a different exception level.
++    /*
++     * WFE (Wait For Event) is a hint instruction.
++     * For Cortex-M (M-profile), we implement the strict architectural behavior:
++     * 1. Check the Event Register (set by SEV or SEVONPEND).
++     * 2. If set, clear it and continue (consume the event).
+      */
+-    HELPER(yield)(env);
++    if (arm_feature(env, ARM_FEATURE_M)) {
++        CPUState *cs = env_cpu(env);
++
++        if (env->v7m.event_register) {
++            env->v7m.event_register = 0;
++            return;
++        }
++
++        cs->exception_index = EXCP_HLT;
++        cs->halted = 1;
++        cpu_loop_exit(cs);
++    } else {
++        /*
++         * For A-profile and others, we rely on the existing "yield" behavior.
++         * Don't actually halt the CPU, just yield back to top
++         * level loop. This is not going into a "low power state"
++         * (ie halting until some event occurs), so we never take
++         * a configurable trap to a different exception level
++         */
++        HELPER(yield)(env);
++    }
+ }
+ 
+ void HELPER(yield)(CPUARMState *env)
+diff --git a/target/arm/tcg/t16.decode b/target/arm/tcg/t16.decode
+index 646c74929d..ac6e24ac14 100644
+--- a/target/arm/tcg/t16.decode
++++ b/target/arm/tcg/t16.decode
+@@ -229,7 +229,7 @@ REVSH           1011 1010 11 ... ...            @rdm
+     WFI         1011 1111 0011 0000
+ 
+     # TODO: Implement SEV, SEVL; may help SMP performance.
+-    # SEV       1011 1111 0100 0000
++    SEV         1011 1111 0100 0000
+     # SEVL      1011 1111 0101 0000
+ 
+     # The canonical nop has the second nibble as 0000, but the whole of the
+diff --git a/target/arm/tcg/t32.decode b/target/arm/tcg/t32.decode
+index d327178829..59b0edf63f 100644
+--- a/target/arm/tcg/t32.decode
++++ b/target/arm/tcg/t32.decode
+@@ -370,7 +370,7 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
+         WFI      1111 0011 1010 1111 1000 0000 0000 0011
+ 
+         # TODO: Implement SEV, SEVL; may help SMP performance.
+-        # SEV    1111 0011 1010 1111 1000 0000 0000 0100
++        SEV      1111 0011 1010 1111 1000 0000 0000 0100
+         # SEVL   1111 0011 1010 1111 1000 0000 0000 0101
+ 
+         ESB      1111 0011 1010 1111 1000 0000 0001 0000
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 63735d9789..bfe2691884 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -3241,14 +3241,25 @@ static bool trans_YIELD(DisasContext *s, arg_YIELD *a)
+     return true;
+ }
+ 
++static bool trans_SEV(DisasContext *s, arg_SEV *a)
++{
++    gen_update_pc(s, curr_insn_len(s));
++    gen_helper_sev(tcg_env);
++    tcg_gen_exit_tb(NULL, 0);
++    s->base.is_jmp = DISAS_NORETURN;
++    return true;
++}
++
+ static bool trans_WFE(DisasContext *s, arg_WFE *a)
+ {
+     /*
+      * When running single-threaded TCG code, use the helper to ensure that
+-     * the next round-robin scheduled vCPU gets a crack.  In MTTCG mode we
+-     * just skip this instruction.  Currently the SEV/SEVL instructions,
+-     * which are *one* of many ways to wake the CPU from WFE, are not
+-     * implemented so we can't sleep like WFI does.
++     * the next round-robin scheduled vCPU gets a crack.
++     *
++     * For Cortex-M, we implement the architectural WFE behavior (sleeping
++     * until an event occurs or the Event Register is set).
++     * For other profiles, we currently treat this as a NOP or yield,
++     * to preserve existing performance characteristics.
+      */
+     if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
+         gen_update_pc(s, curr_insn_len(s));
+@@ -6807,6 +6818,7 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             break;
+         case DISAS_WFE:
+             gen_helper_wfe(tcg_env);
++            tcg_gen_exit_tb(NULL, 0);
+             break;
+         case DISAS_YIELD:
+             gen_helper_yield(tcg_env);
+-- 
+2.43.0
 
 

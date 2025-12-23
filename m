@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67938E6F095
-	for <qemu-arm@archiver.kernel.org>; Tue, 23 Dec 2025 14:27:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8275E6F095
+	for <qemu-arm@archiver.kernel.org>; Tue, 23 Dec 2025 14:31:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vY3MD-0007kc-4u; Tue, 23 Dec 2025 09:27:25 -0500
+	id 1vY3Po-0001cd-Hg; Tue, 23 Dec 2025 09:31:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vY3MB-0007jG-Jt
- for qemu-arm@nongnu.org; Tue, 23 Dec 2025 09:27:23 -0500
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vY3PB-00016b-2F
+ for qemu-arm@nongnu.org; Tue, 23 Dec 2025 09:30:32 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vY3MA-0002oy-1g
- for qemu-arm@nongnu.org; Tue, 23 Dec 2025 09:27:23 -0500
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vY3P5-0003l9-TW
+ for qemu-arm@nongnu.org; Tue, 23 Dec 2025 09:30:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1766500041;
+ s=mimecast20190719; t=1766500222;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=S8CdsuGFlWbmx9W123k4NnksvkPSJHLJkDLmA/H6QUQ=;
- b=WVoDjrjI3x9E0k49xiPEJEQ2aJh5bewrnw6sCafg9X20RZSdi7Tiaq2SAKJKTYA17mWx7d
- 2fBZGkDut7Mwhx8Jx2HCN6ehdNf6rcORcPCJi5EO1W5LGfqNf1Fek1mJObfaIXKZ9kaVXE
- zYuG79bSZdBhXmhwjwKMovRuzr2dcIU=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=XtgQ7msBqfAheb1t0IsmW4BuhZDd8vLXk7X9sBGXXVU=;
+ b=OcmsU61SDnhdMsBq6czZZSyPdURnNCO+v4SYeL5DpgRbpcMv6tXCT8bycYQYrFn9eNghuC
+ uTk0wK36QggM3QX+tm2YipPk/3reYXW7yMpSHTAJkoQUkR183jZz7PxHG22Xz5i2GKxxmo
+ XUAlbwFYXSdyT66tEbYiYtC+kR1SBJk=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-619-nvTSlG_9P6eogh0n574YKA-1; Tue,
- 23 Dec 2025 09:27:17 -0500
-X-MC-Unique: nvTSlG_9P6eogh0n574YKA-1
-X-Mimecast-MFC-AGG-ID: nvTSlG_9P6eogh0n574YKA_1766500036
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-661-dBOiewXnOnKhZffF-PUgcQ-1; Tue,
+ 23 Dec 2025 09:30:19 -0500
+X-MC-Unique: dBOiewXnOnKhZffF-PUgcQ-1
+X-Mimecast-MFC-AGG-ID: dBOiewXnOnKhZffF-PUgcQ_1766500217
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 62E4018002C9; Tue, 23 Dec 2025 14:27:16 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B67471800642; Tue, 23 Dec 2025 14:30:17 +0000 (UTC)
 Received: from localhost (unknown [10.44.32.162])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 788E919560A7; Tue, 23 Dec 2025 14:27:14 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B28621955F43; Tue, 23 Dec 2025 14:30:16 +0000 (UTC)
 From: Cornelia Huck <cohuck@redhat.com>
 To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
  eric.auger@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  peter.maydell@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
  sebott@redhat.com, gshan@redhat.com, ddutile@redhat.com,
  peterx@redhat.com, philmd@linaro.org, pbonzini@redhat.com
-Subject: Re: [PATCH v4 07/10] target/arm/cpu: Expose x-mig-hidden-regs and
- x-mig-safe-missing-regs properties
-In-Reply-To: <20251222134110.3649287-8-eric.auger@redhat.com>
+Subject: Re: [PATCH v4 08/10] hw/arm/virt: Declare AArch32 DBGDTRTX as safe
+ to ignore in incoming stream
+In-Reply-To: <20251222134110.3649287-9-eric.auger@redhat.com>
 Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
  Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
  153243,
  =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
  Avril Crosse O'Flaherty"
 References: <20251222134110.3649287-1-eric.auger@redhat.com>
- <20251222134110.3649287-8-eric.auger@redhat.com>
+ <20251222134110.3649287-9-eric.auger@redhat.com>
 User-Agent: Notmuch/0.39 (https://notmuchmail.org)
-Date: Tue, 23 Dec 2025 15:27:11 +0100
-Message-ID: <87cy45p934.fsf@redhat.com>
+Date: Tue, 23 Dec 2025 15:30:14 +0100
+Message-ID: <87a4z9p8y1.fsf@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -93,41 +93,59 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Mon, Dec 22 2025, Eric Auger <eric.auger@redhat.com> wrote:
 
-> Allows to set both array properties along with arm cpus. Their "x-" prefix
-> reminds that those shall be used carefully for distro specific use cases
-> to enable cross kernel migration.
->
-> This will allow to define such compat machine props like:
->
->     static GlobalProperty arm_virt_kernel_compat_10_1[] = {
->         /* KVM_REG_ARM_VENDOR_HYP_BMAP_2 */
->         { TYPE_ARM_CPU, "x-mig-hidden-regs", "0x6030000000160003" },
->         { TYPE_ARM_CPU, "x-mig-safe-missing-regs",
->           /* TCR_EL1, PIRE0_EL1, PIR_EL1 */
->           "0x603000000013c103, 0x603000000013c512, 0x603000000013c513" },
->     }
->
-> The first one means KVM_REG_ARM_VENDOR_HYP_BMAP_2 shall always
-> be hidden for machine types older than 10.1. The second one means
-> that along with 10.1 machine type we may receive in the incoming
-> migration stream, 3 registers that are unknown on destination.
->
-> Obviously, using the reg index as defined in
-> linux/Documentation/virt/kvm/api.rst is not user friendly. However
-> These options are supposed to be used to enable specific, rare cases,
-> and in general, by people trying to configure distribution defaults
-> familiar with those specific cases.
+> With the new infrastructure in place it is now feasible to teach
+> qemu that it is safe to ignore a sysreg in the incoming migration
+> stream. So with the plan to revert commit 4f2b82f60431 ("target/arm:
+> Reinstate bogus AArch32 DBGDTRTX register for migration compat) from
+
+<pedantic> Missing closing '"' </pedantic>
+
+> qemu 11 onwards, let's add a compat in 10.2 machine options stating
+
+QEMU 11.0?
+
+> that this reg is safe to ignore. from 11.0 onwards we will not need
+> that register anymore.
 >
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 >
 > ---
 >
 > v3 -> v4:
-> - typo and rewording in the commit description (Connie)
+> - add a comment related to DBGDTRTX (Connie)
 > ---
->  target/arm/cpu.c | 5 +++++
->  1 file changed, 5 insertions(+)
+>  hw/arm/virt.c | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index ec0af8e6e7..00948887a2 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -100,6 +100,15 @@ static GlobalProperty arm_virt_compat_defaults[] = {
+>  static const size_t arm_virt_compat_defaults_len =
+>      G_N_ELEMENTS(arm_virt_compat_defaults);
+>  
+> +/* Register erronously exposed on 10.2 and earlier */
+> +#define DBGDTRTX 0x40200000200e0298
+> +
+> +static GlobalProperty arm_virt_compat_10_2[] = {
+> +    { TYPE_ARM_CPU, "x-mig-safe-missing-regs", stringify(DBGDTRTX)},
+> +};
+> +static const size_t arm_virt_compat_10_2_len =
+> +    G_N_ELEMENTS(arm_virt_compat_10_2);
+> +
+>  /*
+>   * This cannot be called from the virt_machine_class_init() because
+>   * TYPE_VIRT_MACHINE is abstract and mc->compat_props g_ptr_array_new()
+> @@ -3536,6 +3545,7 @@ type_init(machvirt_machine_init);
+>  
+>  static void virt_machine_10_2_options(MachineClass *mc)
+>  {
+> +    compat_props_add(mc->compat_props, arm_virt_compat_10_2, arm_virt_compat_10_2_len);
+>  }
+>  DEFINE_VIRT_MACHINE_AS_LATEST(10, 2)
+>  
 
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Hm, maybe rebase this on top of the new machine types?
 
 

@@ -4,91 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 001A0E748FC
-	for <qemu-arm@archiver.kernel.org>; Tue, 23 Dec 2025 22:28:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ADC4E6FE51
+	for <qemu-arm@archiver.kernel.org>; Tue, 23 Dec 2025 22:45:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vYAqW-0005Xw-W5; Tue, 23 Dec 2025 17:27:13 -0500
+	id 1vYB7O-0002Nb-Vq; Tue, 23 Dec 2025 17:44:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1vYAqU-0005WM-VD
- for qemu-arm@nongnu.org; Tue, 23 Dec 2025 17:27:11 -0500
-Received: from mail-dl1-x1229.google.com ([2607:f8b0:4864:20::1229])
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1vYB0V-00014p-O4
+ for qemu-arm@nongnu.org; Tue, 23 Dec 2025 17:37:33 -0500
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1vYAqT-0007NW-Jf
- for qemu-arm@nongnu.org; Tue, 23 Dec 2025 17:27:10 -0500
-Received: by mail-dl1-x1229.google.com with SMTP id
- a92af1059eb24-11b6bc976d6so9472744c88.0
- for <qemu-arm@nongnu.org>; Tue, 23 Dec 2025 14:27:09 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1vYB0S-00037V-7m
+ for qemu-arm@nongnu.org; Tue, 23 Dec 2025 17:37:30 -0500
+Received: by mail-ej1-x630.google.com with SMTP id
+ a640c23a62f3a-b7ffa5d1b80so681625266b.0
+ for <qemu-arm@nongnu.org>; Tue, 23 Dec 2025 14:37:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766528828; x=1767133628; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ux7V/vcnfKVnQVQzXuR5cKKTLtK6T4UuaelCSQB/P7E=;
- b=HdKK4PNgm3qBR16Y9TyYu/kNDw6to1oCzlr38Yy7W38T06RwbvT5cnDWn98RYU1vxy
- Ws9BYn1nW8vOBdLy8dN7QlQ/ZxFBrUj4h3YT7UBWMJTPx/TL25Tz+sVVbw1T9qKXpW/Z
- YIwE27SlVmRrvdVQLWceqRU0yGtN5kEbnPQ92LxbPkyx5upvnop6AE9EkgGZZQypTIHO
- rpR6sTzRmmiJR3W1G9j5QgU3wAAeZ1I9m9A4tNVc+RCAIFSL+T8h8Do0hhFwDNIj+i9F
- ZQ4/yryfAe6SZFP93IN+ivyqGBau5kvl2hgHXTWgAdxAGOSLlBNuLkPXbEtXp/DsRtJy
- JfEA==
+ d=gmail.com; s=20230601; t=1766529443; x=1767134243; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=CmR4Y2GJdN/xImLsWri8JYiI7ERXQ78boDVUrPyU/rc=;
+ b=MqAU3t8uj8jmjxEeteJxANkv1PU5z1ZKVHrMgrHb+pnU7tWKEkz3RCC2AQdV8a+LJ0
+ ynvgzTLZIXiEzGByVE7vantjkdNuZe0BvnwB0tPrk8Kkr859RbqDJsxdE5B+eDkmlsSu
+ 0kHQTrfONGpL56wmPqrnWBqP0ytXtGG/gMcxksxF2KTmMVZ8zq/IewH0TPpW+DvOjK+u
+ 0jGSrbUSsEeB8nVODzmCsjLGRi2mQ9G4MlYLHpqWSYHSxhIcBaR654pDaGIoY+1q5IfI
+ sGmAGPXGWzee4jb73/3JiR/fEs3ljir4NmCAuzLC8w/i5tbt+L12jkuZM0HHArvfNGCb
+ E+Mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766528828; x=1767133628;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=ux7V/vcnfKVnQVQzXuR5cKKTLtK6T4UuaelCSQB/P7E=;
- b=RISKzPGk4U2z3aWyLs2l6IOtTFHIzxhwIeatwhM4WvhKl5NHN5ia9ATpgm+BCNdg1w
- cBbv6+wpKjR3BbUV5lW5zWsBSdC8OkQw/SLP9qvOhWbBoYKC1bnNG8NVlI9thLUJgtnH
- TvcGOlaY/Vy36oNeebwmqK0YMOVTXvokzyGGPFuVModlKFtJVIbc0D/Dk1TvBDCdFE27
- hDXEWV0ewQmMNBN+wmzjAYhviINrMGjbm5MfkqGejGhCDRqruNLa8f2qOhoo1pdEL+Yp
- ugmuBGMB2VW7MMlOHV71+KEel+/nFY9/ImVHGbnWugIRt0z2JZRTWqCDpxgbVZE3YjYB
- 9/dw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXe4pFhZUqtxjj1QQJ8DOvjiR9NNPZMoU8c5bpmTCzxdRhZTHpyNZpgIZkzMv3WlhpElmfuoiWK9g==@nongnu.org
-X-Gm-Message-State: AOJu0Yyq2AZnFHlx0L781EVLsI3joCP2bCjwTaYndh4HXGykB/l21QMi
- uSw+oG6lmGz2MjQ4ByawJ6YkUCemVoIG1dosklSizFllYAB6mVg9ShCstC1JHZkL9Ow=
-X-Gm-Gg: AY/fxX6LznhTUkUL9mHhxXJnvWyMDmDEewy8JX44IbGzeZOMWHdb27vHdtkJ/LYIFft
- w7BQJVI8rWYEmJjhX4zvdNVun7Nm0W72C6pxSRCvrEdyBMWUf32X/d88+FAp02shk0p0OAEXmqi
- eDQ+ae1RtCbdTw3ZnbmGykeTx0xBW/tilwTxJOQb3+J4gk3KqpakPJZIqS9NiXyKpCR9jJDSI/C
- ox1oz1ktwcAboybIAtXbG6O8f5RlbZByKvbEcEhf4fGowb2f2Bzn1UAOOTUD8vqD/5Vl/0Itt5P
- 7ZDpLL8Ouzbz9eoYuanj8W/YTi4EgxNL0rQPXTnTOqim7NB3uiqW+UZj1oDXCizr0YL7wqYSMmt
- Q2JbiMkZQjuRpfFrz0XLeQ9sten62GkN2yWyLNCqlY/KTckJEv5UyVmp7hfb4Vn9PbbTj3h5Xq1
- QsoqA6oLypWYJ7lLsB
-X-Google-Smtp-Source: AGHT+IH19+EvTqHNNFtNuRaE7xkCgFwDqAi0qHrZYmTJQ7d1jpYQGp39xBAw/i70s2RS1toCOubYew==
-X-Received: by 2002:a05:7022:d9a:b0:11e:3e9:3e92 with SMTP id
- a92af1059eb24-12061991f3bmr12231854c88.23.1766528827859; 
- Tue, 23 Dec 2025 14:27:07 -0800 (PST)
-Received: from gromero0.. ([179.93.129.179]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-1217243bbe3sm62803123c88.0.2025.12.23.14.27.06
+ d=1e100.net; s=20230601; t=1766529443; x=1767134243;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=CmR4Y2GJdN/xImLsWri8JYiI7ERXQ78boDVUrPyU/rc=;
+ b=GbveWdk8ZY0J6868FJiH8RM/x91kRmJ//Ti9LTAhM2ehjUTnlndK36SXeAplp/LlxR
+ u+PU20N3MJLII1plcRlimszsvkeCf1a46eHFIucYFniVbO7z24DquWs68+Fpjvh/VG+R
+ x394dDN2x0cgXNW/qa7Lbkyis8H/A+lmU9pjL+L/9z9XtQRexyLzKgzQsppooDI5D13u
+ tk9h/YMeGqSru6PA1VUCJTxkN/WQUAVT9wNn5VX7DW28oeJ1x5ectDBLrM+yic6JKzdZ
+ rm1aXB0zz6N0LCpiwOpRK8IlhHLVVVPAOBPt482Cm/TAbfPC5tuOdZzlg3pAJEIFan+G
+ q66Q==
+X-Gm-Message-State: AOJu0YwCTUGT4Ux3vx67A5rGLm/3HEG1ta/TkSCcBCdvfSZOKohz5DKe
+ ye7mahSKfLMqxYbgs+xvOJULZp6P78eEBL93NCg77ML9D0lV6pU2Dosg
+X-Gm-Gg: AY/fxX7PPZOWtKRDhb5V7Lc1+VGPbaFQLyTMNm+c2wAhGF0QOELrNCmWY6CVEMlxQ0v
+ /WqpPQNvJvj/83dhaS0BVDBmTdhn2jIuNIt+jEM06AmAa5Cs8Q7XYDmaBD1BwGkxSjWALatgRSN
+ UG/cEjfRzBQdJHU/Lx+b8PMQS8mzh4rbanSnXLunbuhlTb7xvd86buz3GP8uHvPX2QvGAc6DVlb
+ l2xuZytpoPSt52UMSrnKuZAh4UQI6UgZaGv8eWuobmy1SvwvBnzhEj0e9MdeKNY+qMUfhdRpzav
+ EYGMijuoMlady3yRe44l5Iw2wdDkdPWJk5TFgrnHNj5xwjNKlqkVIgVr8vg3M1XlwLNzLMDlFsf
+ aQAwRwgEG4m+himHqj9ZcwLPZdIuMcS6Htd9HWYc9g9kNQRsW0VCAppHEYnk7thKfgK4CsshMKc
+ Q3YMKrQdBcsaUA1DVFfsCgwqn0kB2FjuJpnYc4DDFV+V9df2tB1qF3vwif
+X-Google-Smtp-Source: AGHT+IFM3+itG4DFDeh2uLhtshbpTA0WRkWeN7sU7CjJ5AZr+a/QZcH0sfrsBZFev1han3tKKvp80A==
+X-Received: by 2002:a17:907:86a8:b0:b73:8792:c3ca with SMTP id
+ a640c23a62f3a-b80371801fdmr1833902766b.32.1766529442803; 
+ Tue, 23 Dec 2025 14:37:22 -0800 (PST)
+Received: from thinkpad-t470s.. (93-140-179-149.adsl.net.t-com.hr.
+ [93.140.179.149]) by smtp.googlemail.com with ESMTPSA id
+ a640c23a62f3a-b8045a086fasm1352658166b.70.2025.12.23.14.37.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Dec 2025 14:27:07 -0800 (PST)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, philmd@linaro.org, peter.maydell@linaro.org
-Cc: gustavo.romero@linaro.org
-Subject: [PATCH v3 1/4] target/arm: Initialize AS 0 first
-Date: Tue, 23 Dec 2025 19:26:46 -0300
-Message-Id: <20251223222649.187935-2-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20251223222649.187935-1-gustavo.romero@linaro.org>
-References: <20251223222649.187935-1-gustavo.romero@linaro.org>
+ Tue, 23 Dec 2025 14:37:22 -0800 (PST)
+From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+Subject: [RFC PATCH] hw/arm/smmuv3: add support for combined irq
+Date: Tue, 23 Dec 2025 23:37:12 +0100
+Message-ID: <20251223223712.17047-1-ruslichenko.r@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1229;
- envelope-from=gustavo.romero@linaro.org; helo=mail-dl1-x1229.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 23 Dec 2025 17:44:37 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,39 +100,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Move the initialization of AS of index 0 (ARMASIdx_NS) so it happens
-before the initialization of the other address spaces. This is purely a
-code organization change with no effect on behavior.
+From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-Suggested-by: Alex Bennée <alex.bennee@linaro.org>
+Some platforms use combined irq type, in which case
+only single interrupt line is used, instead of 4
+different irq's for each type.
+
+Add emulation support for combined irq mode.
+
+This mode can be selected by platforms by setting
+'combined_irq' property.
+
+Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- target/arm/cpu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/arm/smmuv3.c         | 12 +++++++++++-
+ include/hw/arm/smmuv3.h |  1 +
+ 2 files changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 39292fb9bc..1640b20b4d 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2158,6 +2158,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         cs->num_ases = 1 + has_secure;
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index bcf8af8dc7..2e29ff952a 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -79,6 +79,10 @@ static void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq,
+         break;
      }
- 
-+    cpu_address_space_init(cs, ARMASIdx_NS, "cpu-memory", cs->memory);
+     }
 +
-     if (has_secure) {
-         if (!cpu->secure_memory) {
-             cpu->secure_memory = cs->memory;
-@@ -2175,8 +2177,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         }
-     }
++    if (s->combined_irq)
++        irq = 0;
++
+     if (pulse) {
+             trace_smmuv3_trigger_irq(irq);
+             qemu_irq_pulse(s->irq[irq]);
+@@ -1850,8 +1854,9 @@ static const MemoryRegionOps smmu_mem_ops = {
+ static void smmu_init_irq(SMMUv3State *s, SysBusDevice *dev)
+ {
+     int i;
++    int irq_num = s->combined_irq ? 1 : ARRAY_SIZE(s->irq);
  
--    cpu_address_space_init(cs, ARMASIdx_NS, "cpu-memory", cs->memory);
--
-     /* No core_count specified, default to smp_cpus. */
-     if (cpu->core_count == -1) {
-         cpu->core_count = smp_cpus;
+-    for (i = 0; i < ARRAY_SIZE(s->irq); i++) {
++    for (i = 0; i < irq_num; i++) {
+         sysbus_init_irq(dev, &s->irq[i]);
+     }
+ }
+@@ -1977,6 +1982,11 @@ static const Property smmuv3_properties[] = {
+      * Defaults to stage 1
+      */
+     DEFINE_PROP_STRING("stage", SMMUv3State, stage),
++    /*
++     * Use single IRQ line for each event type,
++     * instead of 4 different irq's
++     */
++    DEFINE_PROP_BOOL("combined_irq", SMMUv3State, combined_irq, false),
+ };
+ 
+ static void smmuv3_instance_init(Object *obj)
+diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+index d183a62766..cb8f7e0422 100644
+--- a/include/hw/arm/smmuv3.h
++++ b/include/hw/arm/smmuv3.h
+@@ -61,6 +61,7 @@ struct SMMUv3State {
+     SMMUQueue eventq, cmdq;
+ 
+     qemu_irq     irq[4];
++    bool         combined_irq;
+     QemuMutex mutex;
+     char *stage;
+ };
 -- 
-2.34.1
+2.43.0
 
 

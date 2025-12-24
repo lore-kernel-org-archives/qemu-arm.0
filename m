@@ -4,40 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6AC3E7544E
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 10:44:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CDCCE75448
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 10:58:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vYMLQ-0006f3-Ro; Wed, 24 Dec 2025 05:43:52 -0500
+	id 1vYMZA-0001yQ-BY; Wed, 24 Dec 2025 05:58:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vYMLP-0006dx-5K
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 05:43:51 -0500
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vYMZ6-0001xY-Jm
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 05:58:01 -0500
 Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vYMLN-0006Wb-Oi
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 05:43:50 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.54.27])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4dbpQC2w91z5w29;
- Wed, 24 Dec 2025 10:43:47 +0000 (UTC)
-Received: from DAG3EX1.mxp5.local (172.16.2.21) by DAG10EX2.mxp5.local
- (172.16.2.102) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Wed, 24 Dec
- 2025 11:43:47 +0100
-Received: from kaod.org (37.59.142.110) by DAG3EX1.mxp5.local (172.16.2.21)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vYMZ3-0003Zj-Pp
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 05:58:00 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.249.5])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4dbpkV496mz5vSX;
+ Wed, 24 Dec 2025 10:57:54 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG3EX1.mxp5.local (172.16.2.21)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Wed, 24 Dec
- 2025 11:43:46 +0100
+ 2025 11:57:53 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-110S0043060b954-8300-4df9-a4c4-75fe4f7575fa,
+ (GARM-97G002fc71e256-4af3-44cc-97a8-e5f44e25eda9,
  9377EA31308664D21D54FC0151EBFE1D7AAB8817) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.66.77.115
-Message-ID: <cf900ae1-e631-46ef-9552-2860a5b25ae6@kaod.org>
-Date: Wed, 24 Dec 2025 11:43:45 +0100
+Message-ID: <465b0714-bd08-40b5-9cf9-5cd206e8548b@kaod.org>
+Date: Wed, 24 Dec 2025 11:57:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 19/19] hw/arm/aspeed: Enable AST1700 IO expander support
+Subject: Re: [PATCH v4 06/19] hw/arm/aspeed: Integrate interrupt controller
+ for AST1700
 To: Kane Chen <kane_chen@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
@@ -46,7 +43,7 @@ To: Kane Chen <kane_chen@aspeedtech.com>, Peter Maydell
  <qemu-devel@nongnu.org>
 CC: <troy_lee@aspeedtech.com>, <nabihestefan@google.com>
 References: <20251224014203.756264-1-kane_chen@aspeedtech.com>
- <20251224014203.756264-20-kane_chen@aspeedtech.com>
+ <20251224014203.756264-7-kane_chen@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -91,25 +88,25 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20251224014203.756264-20-kane_chen@aspeedtech.com>
+In-Reply-To: <20251224014203.756264-7-kane_chen@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.110]
-X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG3EX1.mxp5.local
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG3EX1.mxp5.local
  (172.16.2.21)
-X-Ovh-Tracer-GUID: baf84952-54bc-4434-9fcf-66fcf2da96cf
-X-Ovh-Tracer-Id: 14115125657663015925
+X-Ovh-Tracer-GUID: 806beac0-a051-4b40-a10b-5c6cf94bfee3
+X-Ovh-Tracer-Id: 14353534966020213749
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFeLt67R40tbrSVHdvhE7TXdaPNdNmuyX2lS3Wcs6IbuEm3lFPGexOEGyOw3uU+fMj1SI2aAcI3keHhSS+VcvSQs/wd1g0h0VMMPOFP2JvkDa+PMzhuVLbJEQsmkBDKaWJuYjY+Sn0NOdthUSNZyfUTGD20I5Ybp6Qz/VMXm4iAiZEtQvAUFcLT5JRaPzBUoySAZjvVzz9QheFezQoXECR5fowrpUtBIssqlR2j0yhSvGPJh6psptkTeTF8YYtWD/4EMTY/eiNjAAuWTleIHBdHiO9ymHxJQUcQRWZuICxTD0uAwFu3wEQFnyy8FmW5jzTZdFTCWEVad85Or5uMRIysCXHa89dYsY1nVu2omNc7l/2RGt9D8KeA+rk4QhZMjjyiO5UbX5l3BP5xf8EzeDSKoOvNARu9yVjhiei6B9wYniajajMrKhT4RjtpFu2XSQCIM5JnqCbSPgmrPz/G/d3TmBRiHFRwD1omieeEuzqY5CDYOtZ+43Y6v2Ko0iU1dMpmO6jgYzXeZBpep5pqBfGeWA1xazW2M7SkR+GKIeMDiNDft7pm8EIddCvZurO30DczBrYLBdv+fx5V2zLwJopW8XOIT5sTZIplbEnFsKZf/jaFFNRHiOYNKRf0AUq23H0XTU/8umQ5v+qUR6rANn6xSCHNoBZQM//ViUUbXdyxug
-DKIM-Signature: a=rsa-sha256; bh=pJzdrBJ+XXB4X3QXG77fxRaOE4A5Myj8L5Z3b8Ns65E=; 
+X-VR-SPAMCAUSE: dmFkZTEnrMHoiDHM8SUKqlrMVV8lTa7I0isj+2C3BN691PBrvZllrh4HlTJ8HOcQWAEPnOJGNNPJtW0zb3KnOjyfZMR4SuyBuCS+KI58DquuryMKJeu0EEKsCAS4IZjc3XAuJvi7p8uNeXe3bMTwI5CTzc34M3ojP+L9QlwxE6wxldbzrB02zQ/ojvnWygzXCXbo8F6d9wwMyP9/RXjrZz7TFLhLlFfzscvKrpbZMDt1Bra7uq+UpIAabRsJfaW0ye71voUtuSRqAwlfuxtdiZRemV1uCAndqCVt15FS4Ylk1E1FJqZ+EgYHQEqKqZs6JRsHVwZULTSvX+XKGGqbRdx3CNgwnJ6IZKYF4pl+HNSse3PnFSnpcGsOIxKNeKklJmG3N3Ezsa5t0eKRNUON0zUHPw17SuJn1w1Y2yA0w+2iexpNLuTGnlThbOCCyDKwguMyEwVXV3RrWt6LoQfbCzFqS75mpR9H6DHZezFVkRK6jqa7xsYk8HfPtvwRyQ6UakooOSPvW308Tf9lPlLVzZUtNtXJ/ChbnQYIBVvmIEhIxSuZSIBbqiqoTcuusfYb1x43q6tsVUfSVBXVHc7BCZNnd7yEVWmpYrHNTnKijJLvahs1VBpnJW1elBVirRWrtn3UQsYRBYWHzz4av50menJGVABdJwtNcvraJ6LS5lOQudI0OQ
+DKIM-Signature: a=rsa-sha256; bh=VOU+wDDEem9ZR1EP1m8UhkEWPVDE/h7GGotgW3anrA8=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1766573027; v=1;
- b=CyXZUo1WLjPS9wrN6YSHCc3FGMyqwLDA1nx/U9pvdDgRciVtMa5kipKuYRZNbog4UTSlNL1w
- rQGBDCcVJr2ym6o9m5iz++Z4fwXyz1Ra0ow4wxobAcwTLJGOn1z5M3ZSlyz2A3Tf+FsoT9SiQrq
- 7/ynyZN6kngQzkC4lvr7L2HfUdiFeKqKEq5VSBtdsw/ELiXfT3Hsa16AnfZbJHjeBIqpvb8FZgq
- eAoHtWLPkbg7iAV2zm6ipc/WBD97Gu/3MVIbwqao/LhbKvCQ0pFstUB84m2n90bvVLtJsKe1jiI
- Fh52yYDO2gZ/F1vs4oED5wtdhtJX1IhXpCYpky8qb6lsQ==
+ t=1766573874; v=1;
+ b=JrQSH+Br40I76pyolMOdrrmqSu3N1jsy3PzLc8Pqr6j3tIXTDQg+1n++Ju7SP4kP/gshzLaJ
+ kas8h1O0X3h/SeP/BhNA4VIWDoDOMUArlJq0VI7NsPYEkHGZxt9Dc4E/Qf+7oFcNKg3AxXsAvz6
+ EuNVBHxNvHEb3NbFGCyxyYe5DJ0Ypd8/DVKxcoxMrV6qlyBO4Pf5vCOAeT7eytRntck+vy+FRpt
+ N04vxI1jv43ariL4cuzrGzSpVt7aUE+g2t7BPXWfygzydZSJ6NRwG/RhO5nTdm6KFRHE28LQ8Wk
+ NVQMPOnufV65tRB5J7SKpguAKersrytRK5QMOR60BSroQ==
 Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
  helo=smtpout3.mo529.mail-out.ovh.net
 X-Spam_score_int: -20
@@ -119,7 +116,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,30 +135,232 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 12/24/25 02:41, Kane Chen via wrote:
 > From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 > 
-> Set ioexp_num to 2 to enable AST1700 IO expander support.
+> Connect the AST1700 interrupt lines to the GIC in AST27X0, enabling
+> the propagation of AST1700-originated interrupts to the host SoC.
+> 
+> This patch does not implement interrupt sources in AST1700 itself,
+> only the wiring into AST27X0.
 > 
 > Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 > ---
->   hw/arm/aspeed_ast27x0.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   include/hw/arm/aspeed_soc.h   |  6 +++-
+>   include/hw/intc/aspeed_intc.h |  2 ++
+>   hw/arm/aspeed_ast27x0.c       | 37 +++++++++++++++++++++
+>   hw/intc/aspeed_intc.c         | 60 +++++++++++++++++++++++++++++++++++
+>   4 files changed, 104 insertions(+), 1 deletion(-)
 > 
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index f19bab3457..b051d0eb3a 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -58,6 +58,7 @@
+>   #define ASPEED_UARTS_NUM 13
+>   #define ASPEED_JTAG_NUM  2
+>   #define ASPEED_PCIE_NUM  3
+> +#define ASPEED_INTC_NUM  2
+>   #define ASPEED_IOEXP_NUM 2
+>   
+>   struct AspeedSoCState {
+> @@ -146,7 +147,8 @@ struct Aspeed27x0SoCState {
+>       AspeedSoCState parent;
+>   
+>       ARMCPU cpu[ASPEED_CPUS_NUM];
+> -    AspeedINTCState intc[2];
+> +    AspeedINTCState intc[ASPEED_INTC_NUM];
+> +    AspeedINTCState intcioexp[ASPEED_IOEXP_NUM];
+>       GICv3State gic;
+>       MemoryRegion dram_empty;
+>   };
+> @@ -288,6 +290,8 @@ enum {
+>       ASPEED_DEV_LTPI_CTRL2,
+>       ASPEED_DEV_LTPI_IO0,
+>       ASPEED_DEV_LTPI_IO1,
+> +    ASPEED_DEV_IOEXP0_INTCIO,
+> +    ASPEED_DEV_IOEXP1_INTCIO,
+>   };
+>   
+>   const char *aspeed_soc_cpu_type(const char * const *valid_cpu_types);
+> diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
+> index 51288384a5..4565bbab84 100644
+> --- a/include/hw/intc/aspeed_intc.h
+> +++ b/include/hw/intc/aspeed_intc.h
+> @@ -15,6 +15,8 @@
+>   #define TYPE_ASPEED_INTC "aspeed.intc"
+>   #define TYPE_ASPEED_2700_INTC TYPE_ASPEED_INTC "-ast2700"
+>   #define TYPE_ASPEED_2700_INTCIO TYPE_ASPEED_INTC "io-ast2700"
+> +#define TYPE_ASPEED_2700_INTCIOEXP1 TYPE_ASPEED_INTC "ast2700-ioexp1"
+
+Adding a leading dash would improve readability
+
+... TYPE_ASPEED_INTC "-ast2700-ioexp1"
+
+> +#define TYPE_ASPEED_2700_INTCIOEXP2 TYPE_ASPEED_INTC "ast2700-ioexp2"
+
+same here ^
+
+
+>   #define TYPE_ASPEED_2700SSP_INTC TYPE_ASPEED_INTC "-ast2700ssp"
+>   #define TYPE_ASPEED_2700SSP_INTCIO TYPE_ASPEED_INTC "io-ast2700ssp"
+>   #define TYPE_ASPEED_2700TSP_INTC TYPE_ASPEED_INTC "-ast2700tsp"
 > diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 0807481162..2eb857b8e0 100644
+> index de39a3e7eb..678d4eb6d9 100644
 > --- a/hw/arm/aspeed_ast27x0.c
 > +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -1260,7 +1260,7 @@ static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, const void *data)
->       sc->macs_num     = 3;
->       sc->uarts_num    = 13;
->       sc->num_cpus     = 4;
-> -    sc->ioexp_num    = 0;
-> +    sc->ioexp_num    = 2;
->       sc->uarts_base   = ASPEED_DEV_UART0;
->       sc->irqmap       = aspeed_soc_ast2700a1_irqmap;
->       sc->memmap       = aspeed_soc_ast2700_memmap;
+> @@ -91,7 +91,9 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_DEV_LTPI_CTRL2] =  0x14C35000,
+>       [ASPEED_DEV_WDT]       =  0x14C37000,
+>       [ASPEED_DEV_LTPI_IO0]  =  0x30000000,
+> +    [ASPEED_DEV_IOEXP0_INTCIO] = 0x30C18000,
+>       [ASPEED_DEV_LTPI_IO1]  =  0x50000000,
+> +    [ASPEED_DEV_IOEXP1_INTCIO] = 0x50C18000,
+>       [ASPEED_DEV_PCIE_MMIO0] = 0x60000000,
+>       [ASPEED_DEV_PCIE_MMIO1] = 0x80000000,
+>       [ASPEED_DEV_PCIE_MMIO2] = 0xA0000000,
+> @@ -511,6 +513,10 @@ static void aspeed_soc_ast2700_init(Object *obj)
+>       object_initialize_child(obj, "intc", &a->intc[0], TYPE_ASPEED_2700_INTC);
+>       object_initialize_child(obj, "intcio", &a->intc[1],
+>                               TYPE_ASPEED_2700_INTCIO);
+> +    object_initialize_child(obj, "intcioexp0", &a->intcioexp[0],
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+"intc-ioexp0" reads better,
+
+> +                            TYPE_ASPEED_2700_INTCIOEXP1);
+> +    object_initialize_child(obj, "intcioexp1", &a->intcioexp[1],
+
+and "intc-ioexp1" too.
+
+I can fix the naming if you agree.
 
 Thanks,
 
 C.
+
+> +                            TYPE_ASPEED_2700_INTCIOEXP2);
+>   
+>       snprintf(typename, sizeof(typename), "aspeed.adc-%s", socname);
+>       object_initialize_child(obj, "adc", &s->adc, typename);
+> @@ -755,6 +761,22 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+>       aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&a->intc[1]), 0,
+>                       sc->memmap[ASPEED_DEV_INTCIO]);
+>   
+> +    /* INTCIOEXP0 */
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&a->intcioexp[0]), errp)) {
+> +        return;
+> +    }
+> +
+> +    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&a->intcioexp[0]), 0,
+> +                    sc->memmap[ASPEED_DEV_IOEXP0_INTCIO]);
+> +
+> +    /* INTCIOEXP1 */
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&a->intcioexp[1]), errp)) {
+> +        return;
+> +    }
+> +
+> +    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&a->intcioexp[1]), 0,
+> +                    sc->memmap[ASPEED_DEV_IOEXP1_INTCIO]);
+> +
+>       /* irq sources -> orgates -> INTC */
+>       for (i = 0; i < ic->num_inpins; i++) {
+>           qdev_connect_gpio_out(DEVICE(&a->intc[0].orgates[i]), 0,
+> @@ -1079,6 +1101,21 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+>           }
+>           sysbus_mmio_map(SYS_BUS_DEVICE(&s->ioexp[i]), 0,
+>                           sc->memmap[ASPEED_DEV_LTPI_IO0 + i]);
+> +
+> +        icio = ASPEED_INTC_GET_CLASS(&a->intcioexp[i]);
+> +        /* INTC_IOEXP internal: orgate[i] -> input[i] */
+> +        for (int j = 0; j < icio->num_inpins; j++) {
+> +            irq = qdev_get_gpio_in(DEVICE(&a->intcioexp[i]), j);
+> +            qdev_connect_gpio_out(DEVICE(&a->intcioexp[i].orgates[j]), 0,
+> +                                  irq);
+> +        }
+> +
+> +        /* INTC_IOEXP output[i] -> INTC0.orgate[0].input[i] */
+> +        for (int j = 0; j < icio->num_outpins; j++) {
+> +            irq = qdev_get_gpio_in(DEVICE(&a->intc[0].orgates[0]), j);
+> +            sysbus_connect_irq(SYS_BUS_DEVICE(&a->intcioexp[i]), j,
+> +                               irq);
+> +        }
+>       }
+>   
+>       aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->dpmcu),
+> diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+> index 5cd786dee6..a04005ee7c 100644
+> --- a/hw/intc/aspeed_intc.c
+> +++ b/hw/intc/aspeed_intc.c
+> @@ -924,6 +924,64 @@ static const TypeInfo aspeed_2700_intc_info = {
+>       .class_init = aspeed_2700_intc_class_init,
+>   };
+>   
+> +static AspeedINTCIRQ aspeed_2700_intcioexp2_irqs[ASPEED_INTC_MAX_INPINS] = {
+> +    {0, 8, 1, R_GICINT192_EN, R_GICINT192_STATUS},
+> +    {1, 9, 1, R_GICINT193_EN, R_GICINT193_STATUS},
+> +};
+> +
+> +static void aspeed_2700_intcioexp2_class_init(ObjectClass *klass,
+> +                                              const void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
+> +
+> +    dc->desc = "ASPEED 2700 IOEXP2 INTC Controller";
+> +    aic->num_lines = 32;
+> +    aic->num_inpins = 2;
+> +    aic->num_outpins = 10;
+> +    aic->mem_size = 0x400;
+> +    aic->nr_regs = 0x58 >> 2;
+> +    aic->reg_offset = 0x100;
+> +    aic->reg_ops = &aspeed_intcio_ops;
+> +    aic->irq_table = aspeed_2700_intcioexp2_irqs;
+> +    aic->irq_table_count = ARRAY_SIZE(aspeed_2700_intcioexp2_irqs);
+> +}
+> +
+> +static const TypeInfo aspeed_2700_intcioexp2_info = {
+> +    .name = TYPE_ASPEED_2700_INTCIOEXP2,
+> +    .parent = TYPE_ASPEED_INTC,
+> +    .class_init = aspeed_2700_intcioexp2_class_init,
+> +};
+> +
+> +static AspeedINTCIRQ aspeed_2700_intcioexp1_irqs[ASPEED_INTC_MAX_INPINS] = {
+> +    {0, 6, 1, R_GICINT192_EN, R_GICINT192_STATUS},
+> +    {1, 7, 1, R_GICINT193_EN, R_GICINT193_STATUS},
+> +};
+> +
+> +static void aspeed_2700_intcioexp1_class_init(ObjectClass *klass,
+> +                                              const void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
+> +
+> +    dc->desc = "ASPEED 2700 IOEXP1 INTC Controller";
+> +    aic->num_lines = 32;
+> +    aic->num_inpins = 2;
+> +    aic->num_outpins = 10;
+> +    aic->mem_size = 0x400;
+> +    aic->nr_regs = 0x58 >> 2;
+> +    aic->reg_offset = 0x100;
+> +    aic->reg_ops = &aspeed_intcio_ops;
+> +    aic->irq_table = aspeed_2700_intcioexp1_irqs;
+> +    aic->irq_table_count = ARRAY_SIZE(aspeed_2700_intcioexp1_irqs);
+> +}
+> +
+> +static const TypeInfo aspeed_2700_intcioexp1_info = {
+> +    .name = TYPE_ASPEED_2700_INTCIOEXP1,
+> +    .parent = TYPE_ASPEED_INTC,
+> +    .class_init = aspeed_2700_intcioexp1_class_init,
+> +};
+> +
+>   static AspeedINTCIRQ aspeed_2700_intcio_irqs[ASPEED_INTC_MAX_INPINS] = {
+>       {0, 0, 1, R_GICINT192_EN, R_GICINT192_STATUS},
+>       {1, 1, 1, R_GICINT193_EN, R_GICINT193_STATUS},
+> @@ -1099,6 +1157,8 @@ static void aspeed_intc_register_types(void)
+>       type_register_static(&aspeed_intc_info);
+>       type_register_static(&aspeed_2700_intc_info);
+>       type_register_static(&aspeed_2700_intcio_info);
+> +    type_register_static(&aspeed_2700_intcioexp1_info);
+> +    type_register_static(&aspeed_2700_intcioexp2_info);
+>       type_register_static(&aspeed_2700ssp_intc_info);
+>       type_register_static(&aspeed_2700ssp_intcio_info);
+>       type_register_static(&aspeed_2700tsp_intc_info);
+
 

@@ -4,86 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F92E7545F
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 14:27:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A8B1E776C0
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 15:14:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vYPpL-0003o3-C4; Wed, 24 Dec 2025 09:27:08 -0500
+	id 1vYQZ4-000274-Sh; Wed, 24 Dec 2025 10:14:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1vYPoZ-0003VJ-Bb
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 09:26:15 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQZ3-00026K-Ae
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:14:13 -0500
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1vYPoT-0006Kx-Ml
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 09:26:07 -0500
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-64b9b0b4d5dso9116241a12.1
- for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 06:26:04 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQZ1-0002yn-Np
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:14:12 -0500
+Received: by mail-ej1-x62c.google.com with SMTP id
+ a640c23a62f3a-b7633027cb2so1098515066b.1
+ for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 07:14:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766586364; x=1767191164; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1766589250; x=1767194050; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=A372ZdRxGvYCj4eLyeuk2dNu7PCYAJNxfaa506SwjbQ=;
- b=ZQc2AJzAxSjTU5CFQc/BGANA7Ylgl7o9xGutqBb7Hgsxzowp7VzKf581nMG5ZYdL9Q
- 2nQhBSR/E0u7lLCIgHMWAtl+hFuj7DHkNocnvlc2HhHUfVXp7JZanSzVYgC6ULq85vxv
- po2qHloUioTWcTfSoQp9D7GvUkJ7dky0Efsdu2uhtz4F6lXQlB+4Yh+vvPERreoKJykw
- zjYJ1WrKeghb+CkCymHdP/gDnGNF035JBPFCWqvPqzu3+PzMkQKnSzKfO1j9rsPoDMTx
- yRhkj7OJ3aZBRt0GhLG3ysJLfXdkZ60V3p3NyBViOsR0WjyzH7svMBdy5kt6F1vvEO9b
- j/KQ==
+ bh=NQzy0dLdaSF6COAicvlR6PVbfYgMujeHrja50VAAj50=;
+ b=E2S9SEcbko9BJUpsp/TgaPlG6jiKDpHND7Qh77WGbLTp3CyovdwK91AJ+Acx622J43
+ 3M8muqsSLUpNAO7d9N6aKaXoMXElYJKEDKCWzO3f0WZnXg9hLFw3kYRrXaVW/1Ql+BRJ
+ 8m0t71fCc8TNfW6U1ksDkv1iLNFSUgT0GOYvbeFjsN/1ScGkDqcfpBfq6K3MU9HfQiGS
+ Y7/oWh9YV9ijt33x73qe2hNjMaaUo+/xl+nO9dQy3rdF227tQvfhz+GZjWGJ/yySNB18
+ fOAAUAR8E28VBfabjF9IhB6VmlICQmH12muBTNhZOUtuUg8Y0iKlDdrKXLYy31aR2TaA
+ kqBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766586364; x=1767191164;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20230601; t=1766589250; x=1767194050;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=A372ZdRxGvYCj4eLyeuk2dNu7PCYAJNxfaa506SwjbQ=;
- b=iafIYCf4o3TJMG2SXCX4ypUc9b4lAZM89ZomXwzEkV2/i12JoIh7wadgowleYXnhRT
- TJETBVyWcyRvL+DdH3+a+Zjk/Ooj6tEVtBUDjlORONNicqY4fNP22rJFdUe7uxTeg985
- t/gURuSOBBZ4OyKoQjWg7zLgacogsrawBccu93/ZdxRv4fpOb3ilQioWnaxUvm0geYUA
- yNKmSwg9q1AQOlQsVZgP9MtBsU9MiQUJCFU8LaC57WWLlCSEXVzcW8lWtnd4yhanoo6+
- so1rB7Jt/1HYOlk0sEJZyaWDG+TF/F/W/iqFUeckU3fulDiuVMCJ/pzuWPS3HYfRePtd
- zXAg==
+ bh=NQzy0dLdaSF6COAicvlR6PVbfYgMujeHrja50VAAj50=;
+ b=Re8CfP5g2SviHxGjz3aTdHqODMsErFrJBHHioGuKx87GqMZGp0007aauDigeYTeLvn
+ oCkjpqXHLPb2xyxNvpeQioBoUipzGhKmzGSC/u4Ut+x6LdkjkMrSsdOc7fKPzayV8HmI
+ bE2J9m9Ed1uueiKWN3wbZfeGrwKeNAhdXIccPXrqLNmhHUIMyTeaod0avtuk3B7CtSuq
+ h0kk8qWc6Pu+mbTe1huoSamOnYKFqXxp/oN4hubK+F7OmhqISThg9a2T6MOGZjkRwSoC
+ 2fWUJMiwTn+SugDNaM6c9go8YyTzXjtT6SbOvUb2P0IlcIOCgXqK7LJzWuVXNG9kOgfN
+ 2xQQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWxGrdZV8OM6txG4armpG//LMdw0mmRqKhIQ73c8JKygrLkw96rVtOgcmdtyOVd7CdeF+/gx3lqKQ==@nongnu.org
-X-Gm-Message-State: AOJu0YybvDANblBaH6vvCzlZtbnoLLXPqaVMrf5kaEfFVFbPKuIsWOP8
- AGGT4H5aH3zxzFfPzCPzXSPDtnxhQhRM2Nu51c2lXxzcOg/8RYN63fQZnl11GG9bPF+1LnYvsdi
- hoa9bTCNKktr9eM2GR6+iwvUMXXc39WC6g+MozklWnA==
-X-Gm-Gg: AY/fxX5WyMFbcJObUSMifNt3a1340cMk2SPEfazoqlyG0lVpBExf1bbNjnGrY/eDLqN
- 21iEW0qenQxpb5Et5YGexR0wGx9fLFYO3+51twLkChuInS5w5ESel9EI0Fex6JnuACLhHxOrw3p
- Zrpqeutj5mtfNycMs9chyoo4BmRrvGb0bUjuQ/7fwxz3YY6Bhfh+PYdngKJTDMrKg6LakojT/Wl
- 24i6+7EZU61yWpu+ubwmT1rZX2iaNEVsd13IlvNT5RfAL3SUQYpluUm14dAyEevuyGeXUE=
-X-Google-Smtp-Source: AGHT+IHN1AN67Pz+zD7Jpd4dklo7bAm7KW+3LcjnhS09W90R6ohBEvbQ85seWLRV4mIOFsAahr/jysodY/a0jnDXbpY=
-X-Received: by 2002:a17:906:c145:b0:b79:f984:1557 with SMTP id
- a640c23a62f3a-b8037180307mr1894445366b.46.1766586363567; Wed, 24 Dec 2025
- 06:26:03 -0800 (PST)
-MIME-Version: 1.0
-References: <20251224134644.85582-1-philmd@linaro.org>
- <20251224134644.85582-8-philmd@linaro.org>
-In-Reply-To: <20251224134644.85582-8-philmd@linaro.org>
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Wed, 24 Dec 2025 16:25:37 +0200
-X-Gm-Features: AQt7F2p0MVL9vho_iDpnT9577RMEKAoVCeoNLltHU_qLfFiQ39NNbHXXPh9IZdc
-Message-ID: <CAAjaMXZiYtyc1ucfs5hqxwqVFNNE-ebJeQvd4KZfZwdrBTegXg@mail.gmail.com>
-Subject: Re: [PATCH v2 7/8] rust/system: Stop exposing bogus
- DEVICE_NATIVE_ENDIAN symbol
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
- qemu-rust@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, Anton Johansson <anjo@rev.ng>, 
- Max Filippov <jcmvbkbc@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ AJvYcCXrt2OsetH1PAr8wylc6bFmjMLmI3etKRnfeAJXT4WvCkqmnhe19qzUAOZ5NfCrIYX9L5DFo5cBGQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxxOcSdbHJqej6/IavIg2kicpqfUyPWdjM7qYaNo7ejy6vYE7Zy
+ 6db23/Xw1lABHzadNjKJW9JgINbHsjXGeF6e9a7XIesPxYPJBwzZQJeNjOV9x8+gmXc=
+X-Gm-Gg: AY/fxX5l0Cbi+VQigqdQOPEHkGzempXbQXxTddllRplFQtwShhrmTwdY8DmmCZuaRjU
+ N8NTgbVMgBOjK5W5EuLji+dT9leKchhwGkxDelXUZMAq3JZI7LthvDsIWsqtwrruswpF+qUwM7K
+ qkl76e8rV016KjiX5oEO2R6tPn3Zf7iUyOLKLMxXo/+txa/ZNpQrGaWW1BCNGSkCevXqsWvlz59
+ 6ZM/WUXDMZG9y3xIH/WE+2khofL6Rd7+oXToNgBmogVbQ2frylJ8ID0zgVsv31JqvcHfys1R0pN
+ Zv7xw1l7bywyFojSl77TYkkaZuHoFwEzu/3zjexrd3U9fRlJqAurz3Sc4FwjAVED/M/K1b3qYlO
+ YFaydgTxo7+oqPxfNgexcbf61pGIDLZOiDeMlQdpunI5+xZjdT74H8LrFeemWpixLO0c57XwEWq
+ YIA+SGxZSJnDXqOooNgR4JyDOFK0Qw7PHHSTN0MPgfOzRh1Yx6Cz2wkAI=
+X-Google-Smtp-Source: AGHT+IG1MXjRhMLVLkvNGpMS1CpLHWaxCRCtClGiZg8AGngYKI/lUOhGKo86qATzFu0tPR4tqcpw1g==
+X-Received: by 2002:a17:906:30c1:b0:b80:4101:c99 with SMTP id
+ a640c23a62f3a-b8041010d71mr1260480566b.21.1766589249356; 
+ Wed, 24 Dec 2025 07:14:09 -0800 (PST)
+Received: from localhost.localdomain (188.171.88.92.rev.sfr.net.
+ [92.88.171.188]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b8037f09149sm1772261266b.47.2025.12.24.07.14.05
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 24 Dec 2025 07:14:08 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-arm@nongnu.org,
+ Peter Xu <peterx@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Weiwei Li <liwei1518@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Brian Cain <brian.cain@oss.qualcomm.com>, 
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
+ Anton Johansson <anjo@rev.ng>, David Hildenbrand <david@kernel.org>,
+ qemu-riscv@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Troy Lee <leetroy@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Alistair Francis <alistair.francis@wdc.com>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ed1-x529.google.com
+Subject: [PATCH 1/9] target/i386: Remove x86_stl_phys_notdirty() leftover
+Date: Wed, 24 Dec 2025 16:13:42 +0100
+Message-ID: <20251224151351.86733-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20251224151351.86733-1-philmd@linaro.org>
+References: <20251224151351.86733-1-philmd@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,40 +119,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Dec 24, 2025 at 3:47=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> We want to remove the bogus DEVICE_NATIVE_ENDIAN definition
-> (by only having it explicit, either big or little one). Stop
-> exposing it to rust devices to avoid it spreading further.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
+Last use of x86_stl_phys_notdirty() was removed in commit 4a1e9d4d11c
+("target/i386: Use atomic operations for pte updates"), let's remove.
 
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+---
+ target/i386/cpu.h    |  1 -
+ target/i386/helper.c | 10 ----------
+ 2 files changed, 11 deletions(-)
 
->  rust/system/src/memory.rs | 6 ------
->  1 file changed, 6 deletions(-)
->
-> diff --git a/rust/system/src/memory.rs b/rust/system/src/memory.rs
-> index 4b3316bf767..4e06c16a0b5 100644
-> --- a/rust/system/src/memory.rs
-> +++ b/rust/system/src/memory.rs
-> @@ -78,12 +78,6 @@ pub const fn little_endian(mut self) -> Self {
->          self
->      }
->
-> -    #[must_use]
-> -    pub const fn native_endian(mut self) -> Self {
-> -        self.0.endianness =3D device_endian::DEVICE_NATIVE_ENDIAN;
-> -        self
-> -    }
-> -
->      #[must_use]
->      pub const fn valid_sizes(mut self, min: u32, max: u32) -> Self {
->          self.0.valid.min_access_size =3D min;
-> --
-> 2.52.0
->
+diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+index cee1f692a1c..4c0579a5678 100644
+--- a/target/i386/cpu.h
++++ b/target/i386/cpu.h
+@@ -2623,7 +2623,6 @@ uint32_t x86_lduw_phys(CPUState *cs, hwaddr addr);
+ uint32_t x86_ldl_phys(CPUState *cs, hwaddr addr);
+ uint64_t x86_ldq_phys(CPUState *cs, hwaddr addr);
+ void x86_stb_phys(CPUState *cs, hwaddr addr, uint8_t val);
+-void x86_stl_phys_notdirty(CPUState *cs, hwaddr addr, uint32_t val);
+ void x86_stw_phys(CPUState *cs, hwaddr addr, uint32_t val);
+ void x86_stl_phys(CPUState *cs, hwaddr addr, uint32_t val);
+ void x86_stq_phys(CPUState *cs, hwaddr addr, uint64_t val);
+diff --git a/target/i386/helper.c b/target/i386/helper.c
+index 72b2e195a31..d14f14e0d4d 100644
+--- a/target/i386/helper.c
++++ b/target/i386/helper.c
+@@ -690,16 +690,6 @@ void x86_stb_phys(CPUState *cs, hwaddr addr, uint8_t val)
+     address_space_stb(as, addr, val, attrs, NULL);
+ }
+ 
+-void x86_stl_phys_notdirty(CPUState *cs, hwaddr addr, uint32_t val)
+-{
+-    X86CPU *cpu = X86_CPU(cs);
+-    CPUX86State *env = &cpu->env;
+-    MemTxAttrs attrs = cpu_get_mem_attrs(env);
+-    AddressSpace *as = cpu_addressspace(cs, attrs);
+-
+-    address_space_stl_notdirty(as, addr, val, attrs, NULL);
+-}
+-
+ void x86_stw_phys(CPUState *cs, hwaddr addr, uint32_t val)
+ {
+     X86CPU *cpu = X86_CPU(cs);
+-- 
+2.52.0
+
 

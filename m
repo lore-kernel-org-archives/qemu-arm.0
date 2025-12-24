@@ -4,98 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBF06E75458
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 13:51:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E2B0E77361
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 14:26:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vYPFr-0008Fr-J2; Wed, 24 Dec 2025 08:50:21 -0500
+	id 1vYPp2-0003hN-Va; Wed, 24 Dec 2025 09:26:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYPDf-0006hR-PB
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 08:48:07 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1vYPoI-0003TZ-SK
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 09:26:01 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYPDb-0003ms-DK
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 08:48:02 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-4779cc419b2so47220785e9.3
- for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 05:47:55 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1vYPoD-0006J0-GR
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 09:25:53 -0500
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-b736ffc531fso1080340466b.1
+ for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 06:25:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766584074; x=1767188874; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1766586347; x=1767191147; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=T6TtjB4UQwqwRYPVMTfmB5PB+7achhP09+w7nxCkDKI=;
- b=wync6TykVjBatv8lpk39iwfBgbanM+e3A8BlCo/cxNCcZg6AkKq7+avI6XYftk9bgV
- TtkD3X0P5LIJ8rKcB994sJykLWcLKRuebc/6Rk8Yaqp+Zbr/1ICB7Uz3V8wSbbB+VYQV
- /14phIT6mGneeq3e+bVVmZiKrccc/JCnc1P+4leW8TzB7gTZbR28IGz50D9uVB0Mu98w
- TMC4rnG/rO2PYXYwJjymqpPkULvT/j+abcrZ+T+sj75EJ/xWGQBxbQuYq7hFpVpJNHa3
- trecqj7G8L7/UFj7VBcdpGxYS5wbWfyr+vcIAsdU8vPlvA5AhrmL1EdjO3YcpfK+jv0f
- /5ng==
+ bh=+p61ZJTEpWEtFw1xTacv9g1rqNFEZG18s4o5mFFKLsc=;
+ b=PGJIkX5pN3nQllQkQoIzMVcB02gI0os4yYC50cdOIOAeX0k9nJ1VOGRjMDQTwF7xVG
+ joXRHFATubhCo6HoocONxyadm1AzHfIyxUfzaiAeP/Kudseq9obiskdRUDWOt5G6iqwG
+ TnfHQ8Ep7NnLAVQYULcEV3uiyIeDV9ycFonGyOiE7hwYc7aBuot7WFWuXgLwwcjmeNmU
+ YT2BpcHRqq2gfJTBZ19q7Cy21nQo8mqKE9kJaPR9P+cAs5V62G8b6JzATXmlrIcz5eMJ
+ mgON1/b2+4T0REJI4IFnSG31lt0buvc26ITqpnA9+h0XCuO+HPnZrbDiximCdm/fdxQU
+ lLXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766584074; x=1767188874;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20230601; t=1766586347; x=1767191147;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=T6TtjB4UQwqwRYPVMTfmB5PB+7achhP09+w7nxCkDKI=;
- b=kMHBLU6MZbzg30MhT8ifkGb9wnmv9fyTxxwt2AS/N532B9DbC7YnA/gj0NiEOY3Hs1
- f2OgMt6KppxTtgjq5utRi9LRNm1dHNjE4ptTNitP+FOXFx4yYuGaA4tKuiE3A7ssmHTY
- nAnWOq83JlEHjPa6Yw8fgLlN70nuo7uOvlblA8qroT/cGiLDKFiG+p/8Cb00rAmkLRBT
- biRCyajlsGY15l8bSidxAFATgfgaSGMLlbrbMghc6+odQsYSTdDNEbYNhXMbHs3QWtqA
- qdmRYntcWeYeGOIhJJjrrhVILBiTnZ+d2IAJ8VznLiZBNf6t8YN2CfByICX5C9n88HNT
- Dkyg==
+ bh=+p61ZJTEpWEtFw1xTacv9g1rqNFEZG18s4o5mFFKLsc=;
+ b=E01xBb1zDz8f7BgeaHIrq9TC8XA/jmCvDSjc3tOK9yBM8/DERSYAky7NkaS38C2Paf
+ SacTBPSGnq14efgJgtzzPgafHt6mMJuMnSI38fPTSxD+J+U7MAoScRP+ZQ/oAqIWXCLY
+ eAURPd2+R9kj3NAWZhKNtMIFfyEg4dLYC8NyqU+JMOetg4Y8zVxYOraiYMAHhM2gw9TY
+ 0LAjUFO+Zcko42g+pF9Yb2ictUxG3fbyh6rfWSu+8B6AMeMFMCAA7+SFTllHxBPo7AZA
+ 920sPiO/+QJGNpECVMrNHijFu61xvgU4bvCZNdW7GRMVngI7wjOLekVbYzcXFBkH5JDu
+ 6/Eg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXyoetB5RslP50lz7d+uP0Lndm/d6dVOkC51pa7mYKETyGsS2I99PD/C0p0+aJfmPCBA3K9Jp/94A==@nongnu.org
-X-Gm-Message-State: AOJu0YyEQ91Er/L3kJ8AzPtgJuJWtPyhm/rv7LtGtbs0qlyl+xEg3LNd
- Fu6QlBz/23WMFRyvZde/gYDnoTzqOeyyehj0ZGPlH3chL9dVtPKhl8fCKttN0AzhC5A=
-X-Gm-Gg: AY/fxX589vz+SUUAv1od5T/XvnvlGFZwRm9Nez543A1wbqS1CRdpZrkjFj9s+UYr1FA
- hDvI/w4YAK4ecz4xHjHqo0UzfnbVAGCDFQsj0Zii+0FSYfAo8QNeFybfeILGqVMWXI0hI4YV1SY
- /66A07vyazPXbvwsqBVND0hVKq1nkW4XjCgF0sIneTxAdJ5WBYh34z2bCMKisF8k8dIWCAffF3t
- VhjPPWiqJzydUPU1gy75fdtqSeJs2e2DSHuGsZo3OiMo9fr7NtP9UpD8pUuqZXj7PDzm+9LQaLT
- ljR0f7GzOLR9VHPXRTfSrDwHolwnN0+fvAA2QGvfjIyZIJ93Vzhy9g8Ua75F3uY0NVqfz1ZhSre
- G9YB4N1jwpu3eplORBtkJS/CJ4XQjTe/Dpi79jEofqUX1pl4+mMg1AwTF64N9tvrXUfoT4xoYIy
- OijYtUf9MUqllfG2z8aNozQraurAPy20ORuVO/cSTXUlVTCAs41DQyNQfo92vY
-X-Google-Smtp-Source: AGHT+IEds8kkPJ6QqXB2zu5iwJshyd1rZwMcqEAQN6/5Dria6axRmI64nWzGYXLbhdl7T2C8ApkzLw==
-X-Received: by 2002:a05:600c:8b6d:b0:475:dd8d:2f52 with SMTP id
- 5b1f17b1804b1-47d1959d1d8mr188452035e9.32.1766584074039; 
- Wed, 24 Dec 2025 05:47:54 -0800 (PST)
-Received: from localhost.localdomain (218.170.88.92.rev.sfr.net.
- [92.88.170.218]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47be27b0d5asm352244165e9.13.2025.12.24.05.47.52
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 24 Dec 2025 05:47:53 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Jason Wang <jasowang@redhat.com>, qemu-rust@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Anton Johansson <anjo@rev.ng>,
- Max Filippov <jcmvbkbc@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Brian Cain <brian.cain@oss.qualcomm.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Matheus Tavares Bernardino <matheus.bernardino@oss.qualcomm.com>
-Subject: [PATCH v2 8/8] target/hexagon: Include missing 'cpu.h' header in
- 'internal.h'
-Date: Wed, 24 Dec 2025 14:46:44 +0100
-Message-ID: <20251224134644.85582-9-philmd@linaro.org>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20251224134644.85582-1-philmd@linaro.org>
-References: <20251224134644.85582-1-philmd@linaro.org>
+ AJvYcCXELBHVtAgdVP7/Nyt/quNIOy3CztCPpdOUTb7uB4/hygIBkzxWBxKPDOuw5CWnG/MZHD7WcD+f9Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yy59rGQEXXObXgEVbvh9Qo6ap2/BpeHRcretrY0PoCTJOmkDYXv
+ rwJEiiwZtFOkSYgKvfyCAGqiiqGV9odBSkIWjUL8tDRpwnABnDhlTsaA1w01AvKa770jBQKTSla
+ sYPlGUQRDnqPdf/69W1xTIgpiHh1wKw9LS6A8sjqE1g==
+X-Gm-Gg: AY/fxX4z5jpD0zYmS49gDhuABN4ogy6Lz4dFazfZkiEP6QB7Cl9Jqi0NFB32bi9oU+c
+ 6jRC0cYKeauwZ2YHrXk+0KLmnULeKaqe4RwFCJcUbOdylTj1k/nkALp9mV1H8jtn99lw3zbi3Xl
+ HaLF4ib2K9QWtKb1o49QntucTKqxaev1WuuoIcuzl07iRF/knRNlZt1J8I73wYv7WvGOtvIos4W
+ e8NDhPAqqED26JIODOt2+niuI/Qr2omFa5ps8v3vTr6vXXTZoO38IoH6hQzX8wQWL9wvmM=
+X-Google-Smtp-Source: AGHT+IFcbymrjsLO8CryqpgQ4SSzsT+ScTYUq2i2xSJdECtbCdUJYQ4j7Uo8f5agTgcG238o8czbrgKsYAmVuKrutM8=
+X-Received: by 2002:a17:907:7f1c:b0:b83:976:50f9 with SMTP id
+ a640c23a62f3a-b83097652a7mr246330966b.61.1766586347121; Wed, 24 Dec 2025
+ 06:25:47 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+References: <20251224134644.85582-1-philmd@linaro.org>
+ <20251224134644.85582-7-philmd@linaro.org>
+In-Reply-To: <20251224134644.85582-7-philmd@linaro.org>
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Date: Wed, 24 Dec 2025 16:25:21 +0200
+X-Gm-Features: AQt7F2qSewb8AHj-_6egGrk9J0eIkFxytZwrSHAZnM1GKT8lnuvpPseS6gzLd1s
+Message-ID: <CAAjaMXbheBrj7cqUrFa7ja7WSZxZYMZpbu5KdGuHYMNui4Z_Dw@mail.gmail.com>
+Subject: Re: [PATCH v2 6/8] hw/char/pl011: Mark implementation as being
+ little-endian
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
+ qemu-rust@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>, Anton Johansson <anjo@rev.ng>, 
+ Max Filippov <jcmvbkbc@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Brian Cain <brian.cain@oss.qualcomm.com>, 
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,57 +106,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Both CPUHexagonState and TOTAL_PER_THREAD_REGS are defined
-in "cpu.h" which is luckily indirectly included. However when
-refactoring unrelated files we get:
+On Wed, Dec 24, 2025 at 3:47=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
+<philmd@linaro.org> wrote:
+>
+> The PL011 component is only built / used by ARM targets, which
+> are only built in little endianness. Thus we only ever built
+> as little endian, never testing the big-endian possibility of
+> the DEVICE_NATIVE_ENDIAN definition. Simplify by only keeping
+> the little endian variant.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-  In file included from target/hexagon/helper.h:18,
-                   from include/exec/helper-proto.h.inc:56,
-                   from include/exec/helper-proto.h:13,
-                   from target/hexagon/op_helper.c:22:
-  target/hexagon/internal.h: At top level:
-  target/hexagon/internal.h:29:25: error: unknown type name ‘CPUHexagonState’; did you mean ‘CPUPluginState’?
-     29 | void hexagon_debug_vreg(CPUHexagonState *env, int regnum);
-        |                         ^~~~~~~~~~~~~~~
-        |                         CPUPluginState
-  target/hexagon/internal.h:30:25: error: unknown type name ‘CPUHexagonState’; did you mean ‘CPUPluginState’?
-     30 | void hexagon_debug_qreg(CPUHexagonState *env, int regnum);
-        |                         ^~~~~~~~~~~~~~~
-        |                         CPUPluginState
-  target/hexagon/internal.h:31:20: error: unknown type name ‘CPUHexagonState’; did you mean ‘CPUPluginState’?
-     31 | void hexagon_debug(CPUHexagonState *env);
-        |                    ^~~~~~~~~~~~~~~
-        |                    CPUPluginState
-  target/hexagon/internal.h:33:44: error: ‘TOTAL_PER_THREAD_REGS’ undeclared here (not in a function)
-     33 | extern const char * const hexagon_regnames[TOTAL_PER_THREAD_REGS];
-        |                                            ^~~~~~~~~~~~~~~~~~~~~
+FWIW
 
-Fix that by including the missing header.
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
-We don't need the "qemu/log.h" since commit 0cb73cb5a02 ("target/hexagon:
-Remove HEX_DEBUG/HEX_DEBUG_LOG"): remove it.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Acked-by: Matheus Tavares Bernardino <matheus.bernardino@oss.qualcomm.com>
-Reviewed-by: Brian Cain <brian.cain@oss.qualcomm.com>
----
- target/hexagon/internal.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/target/hexagon/internal.h b/target/hexagon/internal.h
-index 32e96f00d97..5fc837ae229 100644
---- a/target/hexagon/internal.h
-+++ b/target/hexagon/internal.h
-@@ -18,7 +18,7 @@
- #ifndef HEXAGON_INTERNAL_H
- #define HEXAGON_INTERNAL_H
- 
--#include "qemu/log.h"
-+#include "target/hexagon/cpu.h"
- 
- int hexagon_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int hexagon_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
--- 
-2.52.0
-
+>  hw/char/pl011.c                  | 2 +-
+>  rust/hw/char/pl011/src/device.rs | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+> index 01335d9437d..97cd9bd4c54 100644
+> --- a/hw/char/pl011.c
+> +++ b/hw/char/pl011.c
+> @@ -538,7 +538,7 @@ static void pl011_clock_update(void *opaque, ClockEve=
+nt event)
+>  static const MemoryRegionOps pl011_ops =3D {
+>      .read =3D pl011_read,
+>      .write =3D pl011_write,
+> -    .endianness =3D DEVICE_NATIVE_ENDIAN,
+> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+>      .impl.min_access_size =3D 4,
+>      .impl.max_access_size =3D 4,
+>  };
+> diff --git a/rust/hw/char/pl011/src/device.rs b/rust/hw/char/pl011/src/de=
+vice.rs
+> index 04155dabe1a..a6227a99f30 100644
+> --- a/rust/hw/char/pl011/src/device.rs
+> +++ b/rust/hw/char/pl011/src/device.rs
+> @@ -495,7 +495,7 @@ unsafe fn init(mut this: ParentInit<Self>) {
+>          static PL011_OPS: MemoryRegionOps<PL011State> =3D MemoryRegionOp=
+sBuilder::<PL011State>::new()
+>              .read(&PL011State::read)
+>              .write(&PL011State::write)
+> -            .native_endian()
+> +            .little_endian()
+>              .impl_sizes(4, 4)
+>              .build();
+>
+> --
+> 2.52.0
+>
 

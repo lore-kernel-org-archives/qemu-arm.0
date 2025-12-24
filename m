@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4793E7545C
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 15:16:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20482E776C1
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 15:16:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vYQaj-0003iV-3g; Wed, 24 Dec 2025 10:15:57 -0500
+	id 1vYQak-0003zo-VE; Wed, 24 Dec 2025 10:15:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQaA-0002q1-Kd
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:15:26 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQaQ-00039K-H1
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:15:40 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQa5-0003Id-1i
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:15:19 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-47d3ba3a4deso5753655e9.2
- for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 07:15:14 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQaM-0003M3-Vt
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:15:37 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-477a219dbcaso49756035e9.3
+ for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 07:15:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766589314; x=1767194114; darn=nongnu.org;
+ d=linaro.org; s=google; t=1766589332; x=1767194132; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ph2pmdjoZr/k/2utUkSFXBLpUcN9Mg0Sl+yl3bcGaD8=;
- b=t7vCJH4hzNuEGKyyI6H7E0Hrluu3Csjr5bfLCAnebiFtT74k2ChIiK3bql0JgvpNXm
- ZhV5MQjhAH06GtMx4YlniY+SLDrAljQG4AnloX3h5h/DFToH6T2F7MudVGkoiIANpjeO
- GS9HyvbyT4jPcQLxCmEshmETWgMUMLrtvcAiHZ+H8g+2jm63rw7BzCBgZI2j3ynMp5EJ
- v/cZ6fN+NKEETbMDSMVsANNw8mdzg8XWnTBwEcFM44L/aDrOc93jGff6+9InV008lMgh
- NDTsnvrwIFEJ0IFaeCjmhNKnmDAKjp4zvFvtJOzIm1zjYTGw57U5TpAJAk8CebQkyEc0
- MfSw==
+ bh=2STsbh54189qE+1o4laR9gYQuE676566ttls3ZWds+w=;
+ b=C2i+Lu1/lY2l8ogeiQpxwXpWNImyZL5KyamCnrfqss6OcAfRGD/uaYMeFMzjPkFTIL
+ 0XybxnQ4by1IgNOB3dAzqrK0ZLVKd97OejqAFDoa6W9hlCYGwIKng1oL1lEyUcALyC88
+ yaAbP7pav/6nUKfWgGA+EgyKiUIwQQl+5Z4ThyaRo1+rWekHLo1sf+yyVuJDqZsCQECl
+ CJN8+BBwnQRIqA0+pYny+4V0QhQmbYO13rDSEoOJD5b/mJO0j1G9x3taaRngumuoWcBg
+ KEvhYpiX9YYwY7eFhg6lXjE8Rie0F9xBUSRnm9UVG4VwUhEH70X6iGBRssX0ysMMFFb9
+ TC7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766589314; x=1767194114;
+ d=1e100.net; s=20230601; t=1766589332; x=1767194132;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ph2pmdjoZr/k/2utUkSFXBLpUcN9Mg0Sl+yl3bcGaD8=;
- b=s+rrkyMn0HDaTYkO0hIbHXiLf1czLgptjXRXR60CD3ymzlgfFAmXVqQ82G9YoJySmX
- ldSK1/RUPw94QZmnyV5Z6Ac1mDRqxrY3VqJfUS5dHibwbL90o6FKhf0ls8AOZJar43wz
- tZcgwwoTRXqfox5AF5im8Er1sx64K8dFICzEWH4ru72xpJC7L2Hxj1uvFc5ELWwOxLU3
- q5n2dZ9qkRKJ70umsgW4mqVGoosn9eu1o3eKjyHo+GJnRDJQeL6bC5oZV5R7BlmXg5nO
- xDfIXDn3paL84ftCBi5lHIoxrmhYtgt5zn2lGv6jfDdEo2t2a8tNGAQCHNSlGCLW1UON
- 1THA==
+ bh=2STsbh54189qE+1o4laR9gYQuE676566ttls3ZWds+w=;
+ b=S0wilCEfjK56fc7XkvKDRz99tdr36p7JbOfqpxHbtSUrdx2SYZXaWQotYofSd6xDoz
+ gRoeSlhNoUt+ge2PX9Zmvn7a4AlZAbSkSzqaZVhGcXDDEMPpTsa1p7KN26sHffKDOkiG
+ VLJVa0JKfARrblQDuj82638jcgNFQjbD9s07IaIouTfQhMpKvi39+rirtgKL+8dR+n2g
+ bGeKJAk1yt7FlGcUbojted7bvPNT29nDzszMx0Geo4AwTiaO1UsDdViWIsAGi84qP1Qn
+ IJmVd04y2hUrE9z2zh8Gd+2bqUII9skmPKjNVf31HOA1uYtPlECS6c3wsfSkUTTBfl28
+ CeFA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVtt5Geze0MzYCLKiM+bRpMYGTo1Nwd/rnZomMlUQ3WdtfM7WpfkdH8gVELr+eV2nFFV9iDquZyRg==@nongnu.org
-X-Gm-Message-State: AOJu0YwFAW3V7wfZI8/iKJtoXpqQtPhFvuot7deW3oWHtrCkN1bC1Cpw
- CLJs42XSmQT4VIy9QseNeaAjyn1SAPdGJwJpWeBbACkhiytENRLDZ+ztuGToKeQ6hQo=
-X-Gm-Gg: AY/fxX5jgb/imX9qAwznxCSI8gqDNl2HC23zkjj0AZselcWlH9mQoOShogHh7Y0k71s
- Xg7KJz1SamC+wLQ5LJpk3gveg1eyyt8aAp0A/buWPsV5qQxDIC3/S0dr158SHf9NiyPoiUz0rY7
- fVVPlJiHu8CTbDAa0VKFrYQqym3rWxOCgpzUF0fKQ2uftXTGZELcjgagXrPQgcCqHhzlchSbmXI
- 2rGpXZzof3t4byF0rv8EHa6N2SZrKVtyptOnt3Yj6z4d0k0eR+S4OFOoF+DDBXCfb+GwQg15GiB
- 1CvAE+8DIl0xYWmxgXlGw0glEvX4ALcZxy99f8ZUnsq7ZGEMevRgzSl1NntC0AYa0yZ7p27pEq2
- Gns6p5Te/3AmARjd7pt1HregqWFB/oUvWoxZgD8HZC4DOS0UL0hJir3dxmB6qh+OQLgXoKh2NL2
- 6C4+QVVxDHkyWfTjxTumO3MkZHK2tR1ARKkFrGTReA4RjufZG/dNRx4zM=
-X-Google-Smtp-Source: AGHT+IFScwoxBCRqkTeXaQCsqQxt7KS6o7llklEBeQ0REgEuL7FRa07r2QGkzCL9a3oZPernIGWBSw==
-X-Received: by 2002:a05:600c:4e0d:b0:46e:48fd:a1a9 with SMTP id
- 5b1f17b1804b1-47d1959d2b4mr168685985e9.33.1766589313650; 
- Wed, 24 Dec 2025 07:15:13 -0800 (PST)
+ AJvYcCXp8EtkWvJ4u28kTQA2cLPdtuyWwDaH7drki1Ksv0DhgAa0h51rqxGKIBNu+dy+DBGZF0NkUwp+fA==@nongnu.org
+X-Gm-Message-State: AOJu0YwTIa2BK12SWh5zkxtXs9AccDLewOqOETBkLii7Mh6tF+5Emg/b
+ Zv0Mpq8YBM8bIRNd2d5bofOuPjOtxAmOnQtq7sRtklWB796Ht8n8gAhmkm+QGIpyjoA=
+X-Gm-Gg: AY/fxX7JFykrtDJjCdanxMsLCIXJ89gi7T1L7/9GouYbHAdVv4DL/dA8YK94dCxDlzb
+ Qsxe4cRwYmYncAVzPcT/uKWeqN102Wlf4QXmWZ5Nt3KaZW4K5/1eRqaykmfR4tY8XD2xY/IUihW
+ 1IbG035jI2ssg3zd4Tz6iJXgfYkdZiiTzZEH/eq7i6t4op/mUKfa466czX35KDtRv/AGVa7rJwP
+ Te6S+fIESh9AxBnEnrgH0DB+ttxf2Qlhv3D9NNQh8ZXX3vbd7Jx9azziZw336Jvo78CP90koToR
+ EU+8OUDPnstX7FvpM1rp2CtgEVz63GcjDKGJ4FS5f9BWi0Ph6rm/WgkqEHtloGBWRrFDxFgNMdc
+ Axj1txZkamnwcV+OcMiyUD2Zsja3MO3sIy7cOXjaaUomdewL79tyOh02nAJb8b3SAHcREfvywp6
+ h6yx6ZW/BQ+Sr36JNsj5TD1hAe+V0feTeFhpKehw9vqXLNyCLnyeYbJTI=
+X-Google-Smtp-Source: AGHT+IEvgoodsu6aqePYO/wwRACAfiF8+aQZuVYdSTZPgyXTech4Vmn7J/UyE82A49aABPsyHEOu8Q==
+X-Received: by 2002:a05:600c:3b0e:b0:477:b0b9:3129 with SMTP id
+ 5b1f17b1804b1-47d1955b7d1mr180064125e9.3.1766589332150; 
+ Wed, 24 Dec 2025 07:15:32 -0800 (PST)
 Received: from localhost.localdomain (188.171.88.92.rev.sfr.net.
  [92.88.171.188]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47d19362345sm298439715e9.6.2025.12.24.07.15.11
+ 5b1f17b1804b1-47be3a33c1csm152422545e9.1.2025.12.24.07.15.29
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 24 Dec 2025 07:15:13 -0800 (PST)
+ Wed, 24 Dec 2025 07:15:31 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
@@ -85,17 +85,18 @@ Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Alistair Francis <alistair.francis@wdc.com>, Joel Stanley <joel@jms.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 7/9] hw/virtio: Remove unused ldst_phys() helpers
-Date: Wed, 24 Dec 2025 16:13:48 +0100
-Message-ID: <20251224151351.86733-8-philmd@linaro.org>
+Subject: [PATCH 9/9] configs/targets: Mark targets not using legacy
+ ldst_phys() API
+Date: Wed, 24 Dec 2025 16:13:50 +0100
+Message-ID: <20251224151351.86733-10-philmd@linaro.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20251224151351.86733-1-philmd@linaro.org>
 References: <20251224151351.86733-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,131 +119,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-None of the following virtio ldst_phys() inlined helpers are used:
+These targets were only using the legacy ldst_phys() API
+via the virtio load/store helpers, which got cleaned up.
 
- - virtio_lduw_phys()
- - virtio_ldl_phys[_cached]()
- - virtio_ldq_phys[_cached]()
- - virtio_stw_phys()
- - virtio_stl_phys[_cached]()
-
-Just remove them.
+Mark them not using the legacy ldst_phys() API to avoid
+further use, allowing to eventually remove it.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/virtio/virtio-access.h | 85 -------------------------------
- 1 file changed, 85 deletions(-)
+ configs/targets/mips-softmmu.mak     | 1 +
+ configs/targets/mips64-softmmu.mak   | 1 +
+ configs/targets/mips64el-softmmu.mak | 1 +
+ configs/targets/mipsel-softmmu.mak   | 1 +
+ configs/targets/or1k-softmmu.mak     | 1 +
+ configs/targets/riscv32-softmmu.mak  | 1 +
+ configs/targets/riscv64-softmmu.mak  | 1 +
+ configs/targets/sh4-softmmu.mak      | 1 +
+ configs/targets/sh4eb-softmmu.mak    | 1 +
+ configs/targets/sparc64-softmmu.mak  | 1 +
+ configs/targets/xtensa-softmmu.mak   | 1 +
+ configs/targets/xtensaeb-softmmu.mak | 1 +
+ 12 files changed, 12 insertions(+)
 
-diff --git a/include/hw/virtio/virtio-access.h b/include/hw/virtio/virtio-access.h
-index 07aae69042a..c866769cad8 100644
---- a/include/hw/virtio/virtio-access.h
-+++ b/include/hw/virtio/virtio-access.h
-@@ -39,60 +39,6 @@ static inline bool virtio_access_is_big_endian(VirtIODevice *vdev)
- #endif
- }
- 
--static inline uint16_t virtio_lduw_phys(VirtIODevice *vdev, hwaddr pa)
--{
--    AddressSpace *dma_as = vdev->dma_as;
--
--    if (virtio_access_is_big_endian(vdev)) {
--        return lduw_be_phys(dma_as, pa);
--    }
--    return lduw_le_phys(dma_as, pa);
--}
--
--static inline uint32_t virtio_ldl_phys(VirtIODevice *vdev, hwaddr pa)
--{
--    AddressSpace *dma_as = vdev->dma_as;
--
--    if (virtio_access_is_big_endian(vdev)) {
--        return ldl_be_phys(dma_as, pa);
--    }
--    return ldl_le_phys(dma_as, pa);
--}
--
--static inline uint64_t virtio_ldq_phys(VirtIODevice *vdev, hwaddr pa)
--{
--    AddressSpace *dma_as = vdev->dma_as;
--
--    if (virtio_access_is_big_endian(vdev)) {
--        return ldq_be_phys(dma_as, pa);
--    }
--    return ldq_le_phys(dma_as, pa);
--}
--
--static inline void virtio_stw_phys(VirtIODevice *vdev, hwaddr pa,
--                                   uint16_t value)
--{
--    AddressSpace *dma_as = vdev->dma_as;
--
--    if (virtio_access_is_big_endian(vdev)) {
--        stw_be_phys(dma_as, pa, value);
--    } else {
--        stw_le_phys(dma_as, pa, value);
--    }
--}
--
--static inline void virtio_stl_phys(VirtIODevice *vdev, hwaddr pa,
--                                   uint32_t value)
--{
--    AddressSpace *dma_as = vdev->dma_as;
--
--    if (virtio_access_is_big_endian(vdev)) {
--        stl_be_phys(dma_as, pa, value);
--    } else {
--        stl_le_phys(dma_as, pa, value);
--    }
--}
--
- static inline void virtio_stw_p(VirtIODevice *vdev, void *ptr, uint16_t v)
- {
-     if (virtio_access_is_big_endian(vdev)) {
-@@ -166,26 +112,6 @@ static inline uint16_t virtio_lduw_phys_cached(VirtIODevice *vdev,
-     return lduw_le_phys_cached(cache, pa);
- }
- 
--static inline uint32_t virtio_ldl_phys_cached(VirtIODevice *vdev,
--                                              MemoryRegionCache *cache,
--                                              hwaddr pa)
--{
--    if (virtio_access_is_big_endian(vdev)) {
--        return ldl_be_phys_cached(cache, pa);
--    }
--    return ldl_le_phys_cached(cache, pa);
--}
--
--static inline uint64_t virtio_ldq_phys_cached(VirtIODevice *vdev,
--                                              MemoryRegionCache *cache,
--                                              hwaddr pa)
--{
--    if (virtio_access_is_big_endian(vdev)) {
--        return ldq_be_phys_cached(cache, pa);
--    }
--    return ldq_le_phys_cached(cache, pa);
--}
--
- static inline void virtio_stw_phys_cached(VirtIODevice *vdev,
-                                           MemoryRegionCache *cache,
-                                           hwaddr pa, uint16_t value)
-@@ -197,17 +123,6 @@ static inline void virtio_stw_phys_cached(VirtIODevice *vdev,
-     }
- }
- 
--static inline void virtio_stl_phys_cached(VirtIODevice *vdev,
--                                          MemoryRegionCache *cache,
--                                          hwaddr pa, uint32_t value)
--{
--    if (virtio_access_is_big_endian(vdev)) {
--        stl_be_phys_cached(cache, pa, value);
--    } else {
--        stl_le_phys_cached(cache, pa, value);
--    }
--}
--
- static inline void virtio_tswap16s(VirtIODevice *vdev, uint16_t *s)
- {
-     *s = virtio_tswap16(vdev, *s);
+diff --git a/configs/targets/mips-softmmu.mak b/configs/targets/mips-softmmu.mak
+index c9588066b8d..95397af9442 100644
+--- a/configs/targets/mips-softmmu.mak
++++ b/configs/targets/mips-softmmu.mak
+@@ -1,3 +1,4 @@
+ TARGET_ARCH=mips
+ TARGET_BIG_ENDIAN=y
+ TARGET_LONG_BITS=32
++TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
+diff --git a/configs/targets/mips64-softmmu.mak b/configs/targets/mips64-softmmu.mak
+index 7202655fcac..f9cc41b9ed4 100644
+--- a/configs/targets/mips64-softmmu.mak
++++ b/configs/targets/mips64-softmmu.mak
+@@ -2,3 +2,4 @@ TARGET_ARCH=mips64
+ TARGET_BASE_ARCH=mips
+ TARGET_BIG_ENDIAN=y
+ TARGET_LONG_BITS=64
++TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
+diff --git a/configs/targets/mips64el-softmmu.mak b/configs/targets/mips64el-softmmu.mak
+index 3ebeadb29ea..4e7dedc5f30 100644
+--- a/configs/targets/mips64el-softmmu.mak
++++ b/configs/targets/mips64el-softmmu.mak
+@@ -1,3 +1,4 @@
+ TARGET_ARCH=mips64
+ TARGET_BASE_ARCH=mips
+ TARGET_LONG_BITS=64
++TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
+diff --git a/configs/targets/mipsel-softmmu.mak b/configs/targets/mipsel-softmmu.mak
+index 90e09bdc3e5..b0fba8a9d0a 100644
+--- a/configs/targets/mipsel-softmmu.mak
++++ b/configs/targets/mipsel-softmmu.mak
+@@ -1,2 +1,3 @@
+ TARGET_ARCH=mips
+ TARGET_LONG_BITS=32
++TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
+diff --git a/configs/targets/or1k-softmmu.mak b/configs/targets/or1k-softmmu.mak
+index 0e47d9878b0..89f81b75bf7 100644
+--- a/configs/targets/or1k-softmmu.mak
++++ b/configs/targets/or1k-softmmu.mak
+@@ -3,3 +3,4 @@ TARGET_BIG_ENDIAN=y
+ # needed by boot.c and all boards
+ TARGET_NEED_FDT=y
+ TARGET_LONG_BITS=32
++TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
+diff --git a/configs/targets/riscv32-softmmu.mak b/configs/targets/riscv32-softmmu.mak
+index db55275b868..7476e596082 100644
+--- a/configs/targets/riscv32-softmmu.mak
++++ b/configs/targets/riscv32-softmmu.mak
+@@ -4,3 +4,4 @@ TARGET_XML_FILES= gdb-xml/riscv-32bit-cpu.xml gdb-xml/riscv-32bit-fpu.xml gdb-xm
+ # needed by boot.c
+ TARGET_NEED_FDT=y
+ TARGET_LONG_BITS=32
++TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
+diff --git a/configs/targets/riscv64-softmmu.mak b/configs/targets/riscv64-softmmu.mak
+index 2bdd4a62cd2..f836f08c5b9 100644
+--- a/configs/targets/riscv64-softmmu.mak
++++ b/configs/targets/riscv64-softmmu.mak
+@@ -5,3 +5,4 @@ TARGET_XML_FILES= gdb-xml/riscv-64bit-cpu.xml gdb-xml/riscv-32bit-fpu.xml gdb-xm
+ # needed by boot.c
+ TARGET_NEED_FDT=y
+ TARGET_LONG_BITS=64
++TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
+diff --git a/configs/targets/sh4-softmmu.mak b/configs/targets/sh4-softmmu.mak
+index 787d349b501..e0b51f8108d 100644
+--- a/configs/targets/sh4-softmmu.mak
++++ b/configs/targets/sh4-softmmu.mak
+@@ -1,2 +1,3 @@
+ TARGET_ARCH=sh4
+ TARGET_LONG_BITS=32
++TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
+diff --git a/configs/targets/sh4eb-softmmu.mak b/configs/targets/sh4eb-softmmu.mak
+index cdea2c61c58..7850dac8191 100644
+--- a/configs/targets/sh4eb-softmmu.mak
++++ b/configs/targets/sh4eb-softmmu.mak
+@@ -1,3 +1,4 @@
+ TARGET_ARCH=sh4
+ TARGET_BIG_ENDIAN=y
+ TARGET_LONG_BITS=32
++TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
+diff --git a/configs/targets/sparc64-softmmu.mak b/configs/targets/sparc64-softmmu.mak
+index d9d51d21e59..8ee6d057682 100644
+--- a/configs/targets/sparc64-softmmu.mak
++++ b/configs/targets/sparc64-softmmu.mak
+@@ -3,3 +3,4 @@ TARGET_BASE_ARCH=sparc
+ TARGET_BIG_ENDIAN=y
+ TARGET_XML_FILES=gdb-xml/sparc64-core.xml
+ TARGET_LONG_BITS=64
++TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
+diff --git a/configs/targets/xtensa-softmmu.mak b/configs/targets/xtensa-softmmu.mak
+index 2a9797338a6..6aad751e2ba 100644
+--- a/configs/targets/xtensa-softmmu.mak
++++ b/configs/targets/xtensa-softmmu.mak
+@@ -1,2 +1,3 @@
+ TARGET_ARCH=xtensa
+ TARGET_LONG_BITS=32
++TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
+diff --git a/configs/targets/xtensaeb-softmmu.mak b/configs/targets/xtensaeb-softmmu.mak
+index 5204729af8b..537407e11ae 100644
+--- a/configs/targets/xtensaeb-softmmu.mak
++++ b/configs/targets/xtensaeb-softmmu.mak
+@@ -1,3 +1,4 @@
+ TARGET_ARCH=xtensa
+ TARGET_BIG_ENDIAN=y
+ TARGET_LONG_BITS=32
++TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
 -- 
 2.52.0
 

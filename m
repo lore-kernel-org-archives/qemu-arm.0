@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65178E776EA
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 17:06:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F26EE776F0
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 17:07:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vYSJM-0007zM-8F; Wed, 24 Dec 2025 12:06:08 -0500
+	id 1vYSKr-0000Ni-GT; Wed, 24 Dec 2025 12:07:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vYSJL-0007z2-69
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 12:06:07 -0500
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+ id 1vYSKq-0000NP-VF
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 12:07:40 -0500
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vYSJH-0007fJ-Gq
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 12:06:06 -0500
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-7b89c1ce9easo6946312b3a.2
- for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 09:06:00 -0800 (PST)
+ id 1vYSKo-0007mg-FX
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 12:07:40 -0500
+Received: by mail-pf1-x42b.google.com with SMTP id
+ d2e1a72fcca58-7d26a7e5639so6934249b3a.1
+ for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 09:07:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766595960; x=1767200760; darn=nongnu.org;
+ d=linaro.org; s=google; t=1766596057; x=1767200857; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=hRfUgC286zP4KC4X48668Y7WkN+9DMmlhFc/d5D2AxM=;
- b=s9Et5pA760yVf2o74yLg7aOTeioJ/scvJrT9pF8JwKXy5sU72HYPsGGjIDm35Dee21
- lckJ0JiEjfrMXs7uVEQ3KGzNRe4nRTxr8N8KlwqTs02zDbRJOENSuV43cpcN2GHVf4n/
- OVCYPDkjMN5iQIwOPkmhPJYxv6QsYPYDXFl+9NV3OI5N8f94PPEV99Mrgiy6jVz74BX+
- LOpctdLk6FbGKb3/kAA+lsMNOOJIkRroUH5JJPOe3401mONDE0G1Q9vK13jk7f64FigA
- t+IcRLd1teoIt3ObHJTge9pX9sUVmGtq8zn5mnSTbYrcpgohpvXWF0LhX/0uDjvKsKPX
- UNoA==
+ bh=YE+tSS7IqHovaO5lWdvQAvJFPXmQE6W5fRcFccALirk=;
+ b=Z0Isnc6KauKFllBiSFrnZzIHh0pfLpfFWwUFZlLMitlRtVE8Dwa+gbO5NR2mSfK/62
+ WZlMLDCvawgGqcLtXQsVM+n3q4gAo0wPB2pQ9VQ1sc5UVIWO0QaCBAVvV+Fm5b0RPe/k
+ FvxOfkpANXQPgPOSvDiriwK8CHh3QVTGKTK8MkiqA76u8eCRe8JEXrMo2ece2bWbtyXB
+ 8t10RpRyYEH+QQH+pKeBypCtSSb2LeKnhUl0P6GbFi7XSifOjnqLBL+7OzvyjfrCdkea
+ NXEshyhv2vbt1n34XiP9S53vUk3yzpBIQ47xgVBp8sf3yJZGEJhI/S3129w8t4KXwnw5
+ 9jMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766595960; x=1767200760;
+ d=1e100.net; s=20230601; t=1766596057; x=1767200857;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=hRfUgC286zP4KC4X48668Y7WkN+9DMmlhFc/d5D2AxM=;
- b=wlr8K7BvufFhJyzIWA5aRmb5+9eYVBLHqr4di0q+xnMuCjOwI1v6amaAELAvrLwqDJ
- N4MZ2QsfmwUMCDryQDakZK2XQ+iBXXZChWgiVb9yZIJkZttMK0T8lnmqVYMzvMIFHsC6
- xOkPPWsDWbuV9S7eeAaiItipA2aJquhkpbnapeMP2xRKMU7t5tR9lqb7fPUIAR9Rktg9
- IDIEybtNEqkaQ1KEC38GIT6DLPa2BGbbfYtO0G5RmxethwHYBmfNe/Jcti4IkZ0krMK5
- 2s04ypFCB0gbROq60GpAkup4TZvSMQWMAB+AoSt0uUnOKbCMAzulMpPXjMtE9cA9CT2X
- svwg==
+ bh=YE+tSS7IqHovaO5lWdvQAvJFPXmQE6W5fRcFccALirk=;
+ b=mWjd78EqWgsi8RsVyXHSwGmm+zdYH84pLsOajHWFKVC+PtIcDsgE3nAAPNpVH/zFl6
+ CStiUUUf0vhDEUDNfRRYBAdVvpVS3uBpnx7x2fFj0ZGpgBTcUN5wj8/6u83aNvUp6lC7
+ ooI8ezVgFRE0QfJbcWxplNX3XyVo+WgmUdpIgXdaI4yWiUX19Wqu31mu52wp6EZVjFv/
+ OqLKwHIQTGSR6C9si2Se440NnBxt1GXYWqkntDn6KTtF5H78f+dY5YEZLrA9mb+4op9L
+ ImK1/hHwrFkHwCFGwn684K6ggllfrn0Uj0e/oXA44Cs5p0gahIwdnbqePE6JMIX8dmQX
+ 4dMA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUibqnylPRT9+KpQrP3qTYuEFpVICnY9n00NBv+LH4sW/wk2up7Q6cj6hceIKaud2ixD0lKqEEsXg==@nongnu.org
-X-Gm-Message-State: AOJu0YycFAENBxDbaeT3KM4ip1xO7hdeS/IOZKo5dZqnd7unPLTY5uj+
- 4O21Iuv82W4vbPVwDIR9Y1V4reJN4JiMdYGa/8IpDNvEA4Tx9+tnqnoC9nSo9k7ZViA=
-X-Gm-Gg: AY/fxX4JYWRytX35x4Sq6bn+prsFnzwmu1uJqhzLPmHUpJNPN4sLTpXuDBXI7fhFiS1
- /30YLOTPrUmzsMhMkpkacoURCob5B2F72SgVzE6kl+ZFHuTrHbhMQobR+PYcEbvWmU/UtN03cJd
- JkIGW935q3dlTCMOW6QkTXIlndADCnvLOiGxLZOi4VnDS0TcgumnUA8eK/Sqc8reM6kRH15+IEh
- ARKiWcYeQRmaHfvHIWovRXZxKPCk/zJ1SesYwvf0JOvbRSnHfiF2Ww0WuLRS0ar8OeBFgkmD79d
- rPU90167ncdInCCZDJr6DfWUYEVMhD1gHZRUsVUonaAuDKG/R/0XfCatps/iROv++6q+dj0ebOL
- ifA+vnmqSvd1VsnfenehfPaicB9kJRXQXzOZ2jpGFfyRKWJwMFgclti8wpCABn4Et43cpeIFUMb
- kvOPkVImNOarOoU3OuWtvN58m4Qb386uGHsmFnziOOEzIFW1z4Gt6wCHI=
-X-Google-Smtp-Source: AGHT+IEedNVivCQ8TmVkNXSCz29IJvFWoLh9QzZqQer40LaOzyX2k4/UuauK8h8ocKMm1xhDnnCF7g==
-X-Received: by 2002:a05:6a20:3ca6:b0:33e:eb7a:4465 with SMTP id
- adf61e73a8af0-376a8eb7155mr15568344637.22.1766595959436; 
- Wed, 24 Dec 2025 09:05:59 -0800 (PST)
+ AJvYcCWQbM/gsHpBjmVqO0qb2BmMQnvfFwKYauo8vyiZLZdvXtmMg0gACwFx9+1P71Z1GIvtOqQyZJ8jwA==@nongnu.org
+X-Gm-Message-State: AOJu0Yxr3oRqK+pKGduRhV4py6QXtUDieq1890Emo+CRKL8CtmuGHb6O
+ dbG2FP/IS8UmX6pmTngHBo1qYwt2/Sd0firsQCprMz5rXogI7uEHtdmSBuZUC3NhDvA=
+X-Gm-Gg: AY/fxX4Eev84nWJkj6p5QkAks04cXYxqGNTXWX4H8OOO7c7l9axlyFi5IN6wbwSmBj8
+ U0+MU4Gs06JACXUNmGTwHc6YiXaYUexDm+JRwBvIgNr9ItsMEx/igD35xSzTScCpmz8sMf+UNaq
+ G3jACSV4XGuILFhZ2P6ahMwQTwU/dewVDiUN38L6OUK4bvoE4RGOShhEuttnqy3dGtQYrP3cM7o
+ znmRU0jalvV0TtD9ZRNcAL4b8/PUhe8mg9yw5hoODkJgwD53qc01bSjnIKKSPIczifMCV78cTQp
+ Vuui5QyCrZcvJHpSf0+fVA0XePLLsPXDA9Lq4QLZmr2YAROPqc+//+UmC6wYXj5GhXpHkEo8NVo
+ mALVvLt51aD4pTkB4GQingRdwnrFreJPHtl3vsD4aAjII5ZenFmUcKrWeYl/x+8ftsaya/xSDds
+ zOFh//7AV+tS7lwqJaNJddwMdMyiP+aKW0npyGbIMWS64g/M4XgFFBuhM=
+X-Google-Smtp-Source: AGHT+IHzIVOYvvzI/77k0xo0qw4enny/F91N3BmeyZJLHBi/RUhTnWc0HiGRtXOeXLphjgTRYzpMTQ==
+X-Received: by 2002:a05:6a20:3ca6:b0:334:8759:5016 with SMTP id
+ adf61e73a8af0-376a85d3dc8mr17535298637.28.1766596056651; 
+ Wed, 24 Dec 2025 09:07:36 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c1e7a018eb5sm15836548a12.16.2025.12.24.09.05.58
+ 41be03b00d2f7-c1e7961b4d0sm14839335a12.5.2025.12.24.09.07.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 24 Dec 2025 09:05:58 -0800 (PST)
-Message-ID: <473feae0-81a3-48b4-8f1b-cc51c94e41ea@linaro.org>
-Date: Wed, 24 Dec 2025 09:05:59 -0800
+ Wed, 24 Dec 2025 09:07:35 -0800 (PST)
+Message-ID: <d13a730f-c108-4bca-9845-6aceaca76bb2@linaro.org>
+Date: Wed, 24 Dec 2025 09:07:36 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v8 2/7] hw/arm/smmuv3-common: Define STE/CD fields via
- registerfields
+Subject: Re: [RFC v8 0/7] hw/misc: Introduce a generalized IOMMU test framework
 Content-Language: en-US
 To: Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini
  <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
@@ -87,13 +86,12 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Mostafa Saleh <smostafa@google.com>,
  CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
 References: <20251224034647.2596434-1-tangtao1634@phytium.com.cn>
- <20251224034647.2596434-3-tangtao1634@phytium.com.cn>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251224034647.2596434-3-tangtao1634@phytium.com.cn>
+In-Reply-To: <20251224034647.2596434-1-tangtao1634@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42f.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,13 +115,241 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 12/23/25 7:46 PM, Tao Tang wrote:
-> Switch STE/CD bitfield definitions and accessors to the
-> 'hw/registerfields.h' REG/FIELD API.
+> Changes since v7: Following Pierrick’s feedback, this version fixes the
+> uint64_t formatting issue
+> (switching to PRIx64 to avoid %lx mismatches on non-LP64 platforms). I also
+> validated the series with Pierrick’s qemu-ci workflow, and all jobs passed;
+> the CI run is available at:
 > 
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> ---
->   include/hw/arm/smmuv3-common.h | 169 +++++++++++++++++++++++----------
->   1 file changed, 120 insertions(+), 49 deletions(-)
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> https://github.com/hnusdr/qemu/actions/runs/20476259310
+> 
+> Motivation
+> ----------
+> 
+> Currently, thoroughly testing IOMMU emulation (e.g., ARM SMMUv3) requires
+> a significant software stack. We need to boot a full guest operating
+> system (like Linux) with the appropriate drivers (e.g., IOMMUFD) and rely
+> on firmware (e.g., ACPI with IORT tables or Hafnium) to correctly
+> configure the IOMMU and orchestrate DMA from a peripheral device.
+> 
+> This dependency on a complex software stack presents several challenges:
+> 
+> * High Barrier to Entry: Writing targeted tests for specific IOMMU
+>      features (like fault handling, specific translation regimes, etc.)
+>      becomes cumbersome.
+> 
+> * Difficult to Debug: It's hard to distinguish whether a bug originates
+>      from the IOMMU emulation itself, the guest driver, the firmware
+>      tables, or the guest kernel's configuration.
+> 
+> * Slow Iteration: The need to boot a full guest OS slows down the
+>      development and testing cycle.
+> 
+> The primary goal of this work is to create a lightweight, self-contained
+> testing environment that allows us to exercise the IOMMU's core logic
+> directly at the qtest level, removing the need for any guest-side software.
+> 
+> Our Approach: A Dedicated Test Framework
+> -----------------------------------------
+> 
+> To achieve this, we introduce three main components:
+> 
+> * A minimal hardware device: iommu-testdev
+> * A reusable IOMMU helper library: libqos/qos-smmuv3
+> * A comprehensive qtest suite: iommu-smmuv3-test
+> 
+> The iommu-testdev is intentionally not a conformant, general-purpose PCIe
+> or platform device. It is a purpose-built, highly simplified "DMA engine"
+> designed to be analogous to a minimal PCIe Root Complex that bypasses the
+> full, realistic topology (Host Bridges, Switches, Endpoints) to provide a
+> direct, programmable path for a DMA request to reach the IOMMU. Its sole
+> purpose is to trigger a DMA transaction when its registers are written to,
+> making it perfectly suited for direct control from a test environment like
+> qtest.
+> 
+> The Qtest Framework
+> -------------------
+> 
+> The new qtest (iommu-smmuv3-test.c) serves as the "bare-metal driver"
+> for both the IOMMU and the iommu-testdev. It leverages the libqos helper
+> library to manually perform all the setup that would typically be handled
+> by the guest kernel and firmware, but in a completely controlled and
+> predictable manner:
+> 
+> 1.  IOMMU Configuration: It directly initializes the SMMU's registers to a
+>      known state using helper functions from qos-smmuv3.
+> 
+> 2.  Translation Structure Setup: It uses the libqos library to construct
+>      the necessary translation structures in memory, including Stream Table
+>      Entries (STEs), Context Descriptors (CDs), and Page Tables (PTEs).
+> 
+> 3.  DMA Trigger: It programs the iommu-testdev to initiate a DMA operation
+>      targeting a specific IOVA with configurable attributes.
+> 
+> 4.  Verification: It waits for the transaction to complete and verifies
+>      that the memory was accessed correctly after address translation by
+>      the IOMMU.
+> 
+> This framework provides a solid and extensible foundation for validating
+> the IOMMU's core translation paths. The current test suite covers:
+> 
+> - Stage 1 only translation (VA -> PA via CD page tables)
+> - Stage 2 only translation (IPA -> PA via STE S2 tables)
+> - Nested translation (VA -> IPA -> PA, Stage 1 + Stage 2)
+> 
+> The infrastructure is designed to be extended to support additional
+> security spaces and IOMMU features.
+> 
+> 
+> Testing:
+> --------
+> QTEST_QEMU_BINARY=./build/qemu-system-aarch64 \
+>    ./build/tests/qtest/iommu-smmuv3-test --tap -k
+> 
+> 
+> If you want to check coverage report, please follow instructions below
+> which are shared by Pierrick in previous review [1]
+> 
+> # install gcovr if not already installed, `sudo apt install gcovr`
+> # on ubuntu for example
+> $ export CFLAGS="--coverage"
+> $ ./configure --target-list=aarch64-softmmu
+> $ ninja -C build
+> $ QTEST_QEMU_BINARY=./build/qemu-system-aarch64 \
+>    ./build/tests/qtest/iommu-smmuv3-test
+> $ rm -rf build/coverage_html
+> $ mkdir build/coverage_html
+> $ gcovr \
+>        --gcov-ignore-parse-errors suspicious_hits.warn \
+>        --gcov-ignore-parse-errors negative_hits.warn \
+>        --merge-mode-functions=separate \
+>        --html-details build/coverage_html/index.html \
+>        --filter 'hw/arm/smmu*'
+> # check the version of gcovr if meeting some unsupported options error.
+> # Upgrading to 8.4 version may resolve the error.
+> $ gcovr --version
+> $ pip install --user --upgrade gcovr
+> $ echo file://$(pwd)/build/coverage_html/index.html
+> # open this in browser by clicking on your terminal
+> 
+> [1] https://lore.kernel.org/qemu-devel/a361b46f-2173-4c98-a5d3-6b4d2ac004af@linaro.org/
+> 
+> 
+> Major Changes from v7 to v8:
+> -----------------------------
+>    - Fix uint64_t formatting issue by using PRIx64 for portability
+>    - Validate the series with Pierrick's qemu-ci workflow; all jobs passed
+>    - This series is also saved in github repo [5]
+> [5] https://github.com/hnusdr/qemu/tree/iommu-testdev-v8-community
+> 
+> 
+> Major Changes from v6 to v7:
+> -----------------------------
+>    - Split the smmuv3-common.h work into smaller patches
+>      (registerfields conversion, NSCFG bits, helper setters)
+>    - Add MAINTAINERS entries for iommu-testdev and qos-smmuv3 helpers
+>    - Tighten documentation wording and update the DMA test pattern value
+>    - Simplify qtest PCI device discovery and rename QSMMU_IOVA constant
+>    - This series is also saved in github repo [4]
+> 
+> [4] https://github.com/hnusdr/qemu/tree/iommu-testdev-v7-community
+> 
+> 
+> Major Changes from v5 to v6:
+> -----------------------------
+>    - Split batch testing into individual test cases per translation mode
+>    - Removed cleanup functions and related codes or comments
+>    - Improved error handling with explicit assertions
+>    - Add coverage build and test instructions shared by Pierrick
+>    - Keep Reviewed-by and Tested-by from Pierrick's review
+>    - This series is also saved in github repo [2]
+> 
+> [2] https://github.com/hnusdr/qemu/tree/iommu-testdev-v6-community
+> 
+> 
+> Major Changes from v4 to v5:
+> -----------------------------
+>   - Remove a duplicated patch that was accidentally included in v4.
+> 
+> 
+> Major Changes from v3 to v4:
+> -----------------------------
+> 
+> 1. Added shared smmuv3-common.h so both the device and libqos consume the same
+>     STE/CD/register definitions as Alex suggested [3]
+> 2. Slimmed iommu-testdev down to a pure DMA trigger with a tighter MMIO
+>     contract (new doorbell helper, simplified attributes/errors).
+> 3. Updated `qos-smmuv3` and the qtest so they include the common header,
+>     honor per-test expected results, and rely solely on the streamlined device
+>     interface.
+> 4. Compacted changes of v2 to v3.
+> 
+> [3] https://lore.kernel.org/qemu-devel/87zf8jk244.fsf@draig.linaro.org/
+> 
+> 
+> Major Changes from v2 to v3:
+> -----------------------------
+> 
+> 1. Generalization/Renaming: rebranded `smmu-testdev` → `iommu-testdev` (code,
+>     headers, docs) to reflect the broadened scope.
+> 2. Separation of concerns: iommu-testdev is now a pure DMA trigger; all
+>     SMMUv3-specific setup (STE/CD/page tables, multi-mode support, space offsets)
+>     lives in `qos-smmuv3.{c,h}` and is consumed by the new qtest.
+> 3. Improved modularity & coverage: the stacked design (device + helper + qtest)
+>     made it straightforward to add S1/S2/Nested tests, a cleaner config system,
+>     and clearer validation logic.
+> 4. Code/documentation quality: added tracepoints, better error handling/naming,
+>     and refreshed `docs/specs/iommu-testdev.rst` with the new layout.
+> 
+> Future Work
+> -----------
+> 
+> The current implementation focuses on basic translation path validation
+> in the Non-Secure address space. Future extensions could include:
+> 
+> * Multi-space testing (Secure, Root, Realm) for SMMUv3
+> * Support for other IOMMU types (Intel VT-d, AMD-Vi, RISC-V IOMMU)
+> 
+> 
+> Tao Tang (7):
+>    hw/arm/smmuv3: Extract common definitions to smmuv3-common.h
+>    hw/arm/smmuv3-common: Define STE/CD fields via registerfields
+>    hw/misc: Introduce iommu-testdev for bare-metal IOMMU testing
+>    hw/arm/smmuv3-common: Add NSCFG bit definition for CD
+>    hw/arm/smmuv3-common: Add STE/CD set helpers for repeated field setup
+>    tests/qtest/libqos: Add SMMUv3 helper library
+>    tests/qtest: Add SMMUv3 bare-metal test using iommu-testdev
+> 
+>   MAINTAINERS                     |  13 +
+>   docs/specs/index.rst            |   1 +
+>   docs/specs/iommu-testdev.rst    | 112 ++++++
+>   hw/arm/smmuv3-internal.h        | 255 +------------
+>   hw/misc/Kconfig                 |   5 +
+>   hw/misc/iommu-testdev.c         | 271 ++++++++++++++
+>   hw/misc/meson.build             |   1 +
+>   hw/misc/trace-events            |  10 +
+>   include/hw/arm/smmuv3-common.h  | 423 +++++++++++++++++++++
+>   include/hw/misc/iommu-testdev.h |  68 ++++
+>   tests/qtest/iommu-smmuv3-test.c | 121 ++++++
+>   tests/qtest/libqos/meson.build  |   3 +
+>   tests/qtest/libqos/qos-smmuv3.c | 633 ++++++++++++++++++++++++++++++++
+>   tests/qtest/libqos/qos-smmuv3.h | 256 +++++++++++++
+>   tests/qtest/meson.build         |   1 +
+>   15 files changed, 1919 insertions(+), 254 deletions(-)
+>   create mode 100644 docs/specs/iommu-testdev.rst
+>   create mode 100644 hw/misc/iommu-testdev.c
+>   create mode 100644 include/hw/arm/smmuv3-common.h
+>   create mode 100644 include/hw/misc/iommu-testdev.h
+>   create mode 100644 tests/qtest/iommu-smmuv3-test.c
+>   create mode 100644 tests/qtest/libqos/qos-smmuv3.c
+>   create mode 100644 tests/qtest/libqos/qos-smmuv3.h
+> 
 
+Thanks for updating, all CI is green now.
+
+On my side, it's all good and ready to be merged. Let's see if 
+maintainers have final comments to do.
+
+Regards,
+Pierrick
 

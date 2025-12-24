@@ -4,106 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17E1BE77361
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 15:16:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2CC1E77361
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 15:26:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vYQak-0003zD-R9; Wed, 24 Dec 2025 10:15:58 -0500
+	id 1vYQkS-00084r-Gv; Wed, 24 Dec 2025 10:26:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQZx-0002eo-9t
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:15:13 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQkQ-0007s0-SS
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:25:58 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQZu-0003H4-DU
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:15:08 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-477632b0621so38029105e9.2
- for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 07:15:05 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQkO-0005DX-RG
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:25:58 -0500
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-64b8e5d1611so7292556a12.3
+ for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 07:25:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766589304; x=1767194104; darn=nongnu.org;
+ d=linaro.org; s=google; t=1766589955; x=1767194755; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=29OVqUMLaQsKzXt2ITIZ8V00Bi0PBc0R85gFJ4t8yz0=;
- b=n/K2oqf781GnI9En1ybZA0nJrnXX5j7xVHgZNEgPcNdUhdoubkJr0XN4NMyT5Wmech
- dFLkKl6bNt8eNhYrvBf2cVx8qHRLZDPCEAX8pphjQtTx9ot/oZtMELmqVEKGxaBDnSgC
- V0kFAlNyQ2SPxybflodA63Np1GN4uEqP/jpj5iilq+cJ4L/8VdxFyG+mHdwP6biQl7qh
- kr+JQg8kSZuFuacbdUo//NOSPMpnR5UEKARBxS0rLuKqUChwEeTYyhgHC2zTK1ZhDk6F
- TwbzHUO9SJFsPPwoZCuqQhVC3D8nqqZY37pf8YbS7/4SEj59KRK1qf3Ts5+lRHmi64lB
- Zz1g==
+ bh=xSaQ9Qe9gNNW74tyZulPjxgdKifD8+Rh/MPoJOBFnM8=;
+ b=hkndrOPVRp3k1mIL/I0pVWhRuxDCTBm/EL5QunOvcpj21FEb7yAosXNGJBqXgGprBY
+ JVFk2CjygN6613BXyUEUiRyklkUMRoojmitSHiDzCyrP1N+lOnDcZlo6VrXIP0pYEjN9
+ CyMSzXC7GShZuJc3QwMIV4JZFSbWbDK8/9G1ZOW0rzXHOnTsXQ53F4qlMH2Sv8aQabz6
+ liYX+O2uVpCJ1VaXBBISSles4e73b8Uflm3I78bWxYnP6h75adB92bHBLXs0TDMr+hk3
+ BM0pS3V1CGDc8/0LcHacu2ZGZ/LGIB/KozmyxG+XPKtbm5HYeelHYQKQ9tPOqljLKml7
+ DcRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766589304; x=1767194104;
+ d=1e100.net; s=20230601; t=1766589955; x=1767194755;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=29OVqUMLaQsKzXt2ITIZ8V00Bi0PBc0R85gFJ4t8yz0=;
- b=r4CeN73vWRCGejY8ymD4wagYuH2KeI4BgamlOfmVgkYQ2DA/qQEW+xIG5DvcD0N+/b
- tRuHN4/WoV8nQY7ht39A1hFSUNKkXlwhaytJISicU+0zEMfqJ24YDmpUq78PDa9GOijr
- rSEAtsKozUCHu0hQnAiSFNGEB8h8La9aqcmygTpjjxA5mXdM2ySJCrKf++5T+QPtJU0i
- o0p89oHrMCvvQIybHa2CnyJVutxbK0nPAX0HHFsSCBtCYuqFLRUHwlra9mym2d1D7ahN
- WY39Amf9gRTPGs4Z6xYBM+H7dnFXSHX8oP1Y+bymdIsyTeXmBNNGop+e16kJm/v2Bwge
- wBCg==
+ bh=xSaQ9Qe9gNNW74tyZulPjxgdKifD8+Rh/MPoJOBFnM8=;
+ b=OnXl8p173cSVaaCvt8zJ9jFs+u07bhqaoMCr/ISgwa3RWew6mdlkQek8udBG5YKCKU
+ BAuro8AmZw3o1bSxWHjIgMBJnol7LnaYNpAGWuCX8kD3aJaeDo5Jam4fliQD2r+CZKDk
+ jZmWLItRp71W3yglFuDZfwJGL/HYXnv3+EYEE094o4oxO1bc9JnKR08ORPTKQNxBw/pX
+ 1idSSkv+5PBcbi+xOJfjgNxWjouFbGFAX192fRGrepFbk2dof2flHXnjbs5+Vlz3Ghzm
+ 3J2CUb/egTj9MnW2XUdk82XoyOe3fDtGRc8O2sw+ilOTBHUjBQ+/CP4647IcU3zrAs5Q
+ W8XA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX+l4CzAz8oBM0MuZtMUuCY2fzPZTL9BtSSyS7Ng2Bm6GDHJtS7BRWzlSCJBhwytq//KnPAyM7Sew==@nongnu.org
-X-Gm-Message-State: AOJu0Yz//CY4+xaaS1YgentFXm02N82lnOxnsAG8LYlLRVIN1fESi0U1
- RonjB6FZVgHOsZlmLwteWKgrfq+8ADXaC0n4jd5fI8bzUzAJ8pX3LBCirJk68m1Sudo=
-X-Gm-Gg: AY/fxX5Cxa8DNGPiQCg1K2NF4XaNVOASwPtD3ouM+aeni6Ce4SRKtXX3yrDcBl4yJOT
- g5ouOjzWwHJXjjsDZoDCjjkP9ROY4G5jhj2btAPjQKS4E3c85l+avdpJj0wpOsJ6h7Upx2+QU9t
- rUrVeCGzqwWPUsvk5s8pJ75lYUajULQqYT9AH5QvfYoDkLzQs9Zcmt2n8ySTURWmyjC0Px1c+j1
- Zx16vBv2HI6TnGsiM8x7FtK92m744l0eMfAc99MmXFZ4IUrfR+Vf9PSleI+8F/xZxNuxd0wxJXO
- gNZ+M+YwbwUS6ZshHLdlR6Un+vMIkgf/2sAA13pV3kiHtaZYGS5PxuGuIMC9F759yzZbOWSfxbr
- R3pFoh+1OslUnccYe0z9C3S9Rxzvzz4xEKrltMUHZzNVzpgDkV9EW1axbSv8dT7SQGKaWcDgU1V
- XZYURVKZaGdx6Ri5dRClzaY/S1jAcw/S58RpXVRsQqGXftfhBL54QOZtg=
-X-Google-Smtp-Source: AGHT+IE6dxLRujWp4AZgsTWnQKJqg9gYGPiqWzsT4Gjmdxf55S4jKIE38CsLQMbJdU+x/ILiNgp65w==
-X-Received: by 2002:a05:600d:115:b0:46e:37fe:f0e6 with SMTP id
- 5b1f17b1804b1-47d1997e733mr124968935e9.30.1766589304458; 
- Wed, 24 Dec 2025 07:15:04 -0800 (PST)
+ AJvYcCU2XcdgomORn2eIr3n4BRxCLPt9jg+GvHZLVOhlgConAsqIpRtnIoNE8bR+R4N9o0pVIG/250RDDA==@nongnu.org
+X-Gm-Message-State: AOJu0YzIQDNnw905uAkcI5bA+ScimKkCywLq9t1mca//RUWy0+T1yyE6
+ Sd7zKE4Ao4zDta65afXNrksZewfsbbo/Z6rxgveDanNdco6x0gGHnh8czERc+GOhXFk=
+X-Gm-Gg: AY/fxX4JvsieS9vNxsPqC24BvYYzt/PJy9tiBrb4FWxCKYOOsp82zorMXybBaIQj8LU
+ aVFQ4hCD+gLO3qNEsu3abX6QYDPOxz6JPnmnSYfAnnsypLR2QXWKW4nQk3AMGX21Au5eM3OiAVs
+ 7if//trEE0lIcwalEm9u2MO3w4brbExrzZrVkc5yEVcC+TsyVu4SIbtiPN/R+SNqpUuFGom5bDg
+ YAl7BSPOzAf54y2+re0iYXJwM31FCHltXoa2j7SugdgwvLHlkZPDQqN94L2vK9McKhquq2Mcdfg
+ a95FD9arq2G61EMgZ+oe6jfFLhl8QYj1i9mL4gh9Cj3lXupOcw95Yq/tArW9wdiKqaVI5lXyEQT
+ IUdsNrUMrYR0dvMYIyHZ5IanWlw21n0JSdWe+D8g8JxYuPvI5IX/Dh0zEwzS5/GWsFwi6SEwd7o
+ gz+E25XJ/Gd3uhfjbnEUEFT+2BHWvf+2fMWJMHeW8nNw2ktD1/vDpR5aw=
+X-Google-Smtp-Source: AGHT+IFkbLr7aY1nUOqUyXb6DfAsCWmmWLGM/P+M6MBBkPouRZ+JQvcKtbXY6DooiBbooHfGQmxCAQ==
+X-Received: by 2002:a17:907:3fa7:b0:b73:6f8c:6127 with SMTP id
+ a640c23a62f3a-b8036f113femr2073226166b.12.1766589955159; 
+ Wed, 24 Dec 2025 07:25:55 -0800 (PST)
 Received: from localhost.localdomain (188.171.88.92.rev.sfr.net.
  [92.88.171.188]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47be273f147sm361184265e9.7.2025.12.24.07.15.01
+ a640c23a62f3a-b8037f519c0sm1771545366b.71.2025.12.24.07.25.51
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 24 Dec 2025 07:15:03 -0800 (PST)
+ Wed, 24 Dec 2025 07:25:54 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-arm@nongnu.org,
- Peter Xu <peterx@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Weiwei Li <liwei1518@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "Michael S. Tsirkin" <mst@redhat.com>,
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Anton Johansson <anjo@rev.ng>, David Hildenbrand <david@kernel.org>,
- qemu-riscv@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Troy Lee <leetroy@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Zhao Liu <zhao1.liu@intel.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
+ Peter Xu <peterx@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Anton Johansson <anjo@rev.ng>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Alistair Francis <alistair.francis@wdc.com>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 6/9] configs/targets: Mark targets not using legacy
- ldst_phys() API
-Date: Wed, 24 Dec 2025 16:13:47 +0100
-Message-ID: <20251224151351.86733-7-philmd@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Nicholas Piggin <npiggin@gmail.com>, Aditya Gupta <adityag@linux.ibm.com>,
+ Glenn Miles <milesg@linux.ibm.com>, Gautam Menghani <gautam@linux.ibm.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+Subject: [PATCH v3 23/25] tests/qtest: Remove unnecessary 'qemu/bswap.h'
+ include
+Date: Wed, 24 Dec 2025 16:22:06 +0100
+Message-ID: <20251224152210.87880-24-philmd@linaro.org>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20251224151351.86733-1-philmd@linaro.org>
-References: <20251224151351.86733-1-philmd@linaro.org>
+In-Reply-To: <20251224152210.87880-1-philmd@linaro.org>
+References: <20251224152210.87880-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,63 +119,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Luckily these targets don't use the legacy ldst_phys() API at
-all. Set the TARGET_NOT_USING_LEGACY_LDST_PHYS_API variable to
-hide the API to them, avoiding further API uses to creep in.
+None of these files use API declared in "qemu/bswap.h",
+remove the unnecessary inclusion.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- configs/targets/avr-softmmu.mak          | 1 +
- configs/targets/microblaze-softmmu.mak   | 1 +
- configs/targets/microblazeel-softmmu.mak | 1 +
- configs/targets/rx-softmmu.mak           | 1 +
- configs/targets/tricore-softmmu.mak      | 1 +
- 5 files changed, 5 insertions(+)
+ tests/qtest/pnv-xive2-common.h     | 1 -
+ tests/qtest/aspeed_smc-test.c      | 1 -
+ tests/qtest/ast2700-smc-test.c     | 1 -
+ tests/qtest/libqos/fw_cfg.c        | 1 -
+ tests/qtest/libqos/i2c-omap.c      | 1 -
+ tests/qtest/pnv-spi-seeprom-test.c | 1 -
+ tests/qtest/vmcoreinfo-test.c      | 1 -
+ 7 files changed, 7 deletions(-)
 
-diff --git a/configs/targets/avr-softmmu.mak b/configs/targets/avr-softmmu.mak
-index b6157fc465d..baf20fb7f2f 100644
---- a/configs/targets/avr-softmmu.mak
-+++ b/configs/targets/avr-softmmu.mak
-@@ -1,3 +1,4 @@
- TARGET_ARCH=avr
- TARGET_XML_FILES= gdb-xml/avr-cpu.xml
- TARGET_LONG_BITS=32
-+TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
-diff --git a/configs/targets/microblaze-softmmu.mak b/configs/targets/microblaze-softmmu.mak
-index bab7b498c24..cf635798c90 100644
---- a/configs/targets/microblaze-softmmu.mak
-+++ b/configs/targets/microblaze-softmmu.mak
-@@ -4,3 +4,4 @@ TARGET_BIG_ENDIAN=y
- TARGET_NEED_FDT=y
- TARGET_XML_FILES=gdb-xml/microblaze-core.xml gdb-xml/microblaze-stack-protect.xml
- TARGET_LONG_BITS=32
-+TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
-diff --git a/configs/targets/microblazeel-softmmu.mak b/configs/targets/microblazeel-softmmu.mak
-index 8aee7ebc5cf..52feb957b48 100644
---- a/configs/targets/microblazeel-softmmu.mak
-+++ b/configs/targets/microblazeel-softmmu.mak
-@@ -3,3 +3,4 @@ TARGET_ARCH=microblaze
- TARGET_NEED_FDT=y
- TARGET_XML_FILES=gdb-xml/microblaze-core.xml gdb-xml/microblaze-stack-protect.xml
- TARGET_LONG_BITS=32
-+TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
-diff --git a/configs/targets/rx-softmmu.mak b/configs/targets/rx-softmmu.mak
-index 1c250a6450d..3a90f1b9977 100644
---- a/configs/targets/rx-softmmu.mak
-+++ b/configs/targets/rx-softmmu.mak
-@@ -3,3 +3,4 @@ TARGET_XML_FILES= gdb-xml/rx-core.xml
- # all boards require libfdt
- TARGET_NEED_FDT=y
- TARGET_LONG_BITS=32
-+TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
-diff --git a/configs/targets/tricore-softmmu.mak b/configs/targets/tricore-softmmu.mak
-index 781ce49a62f..5e018d81068 100644
---- a/configs/targets/tricore-softmmu.mak
-+++ b/configs/targets/tricore-softmmu.mak
-@@ -1,2 +1,3 @@
- TARGET_ARCH=tricore
- TARGET_LONG_BITS=32
-+TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
+diff --git a/tests/qtest/pnv-xive2-common.h b/tests/qtest/pnv-xive2-common.h
+index 2077c05ebc7..3b842274243 100644
+--- a/tests/qtest/pnv-xive2-common.h
++++ b/tests/qtest/pnv-xive2-common.h
+@@ -15,7 +15,6 @@
+ #define PPC_BITMASK(bs, be)     ((PPC_BIT(bs) - PPC_BIT(be)) | PPC_BIT(bs))
+ #define PPC_BITMASK32(bs, be)   ((PPC_BIT32(bs) - PPC_BIT32(be)) | \
+                                  PPC_BIT32(bs))
+-#include "qemu/bswap.h"
+ #include "hw/intc/pnv_xive2_regs.h"
+ #include "hw/ppc/xive_regs.h"
+ #include "hw/ppc/xive2_regs.h"
+diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
+index 50a87e62500..39af1df0ed7 100644
+--- a/tests/qtest/aspeed_smc-test.c
++++ b/tests/qtest/aspeed_smc-test.c
+@@ -24,7 +24,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu/bswap.h"
+ #include "libqtest-single.h"
+ #include "qemu/bitops.h"
+ #include "aspeed-smc-utils.h"
+diff --git a/tests/qtest/ast2700-smc-test.c b/tests/qtest/ast2700-smc-test.c
+index 62d538d8a3a..33fc47230ee 100644
+--- a/tests/qtest/ast2700-smc-test.c
++++ b/tests/qtest/ast2700-smc-test.c
+@@ -7,7 +7,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "qemu/bswap.h"
+ #include "libqtest-single.h"
+ #include "qemu/bitops.h"
+ #include "aspeed-smc-utils.h"
+diff --git a/tests/qtest/libqos/fw_cfg.c b/tests/qtest/libqos/fw_cfg.c
+index 0ab3959171b..8611f648c14 100644
+--- a/tests/qtest/libqos/fw_cfg.c
++++ b/tests/qtest/libqos/fw_cfg.c
+@@ -17,7 +17,6 @@
+ #include "malloc-pc.h"
+ #include "libqos-malloc.h"
+ #include "../libqtest.h"
+-#include "qemu/bswap.h"
+ #include "hw/nvram/fw_cfg.h"
+ 
+ void qfw_cfg_select(QFWCFG *fw_cfg, uint16_t key)
+diff --git a/tests/qtest/libqos/i2c-omap.c b/tests/qtest/libqos/i2c-omap.c
+index 6f98f54820b..71f70c64f85 100644
+--- a/tests/qtest/libqos/i2c-omap.c
++++ b/tests/qtest/libqos/i2c-omap.c
+@@ -10,7 +10,6 @@
+ #include "i2c.h"
+ 
+ 
+-#include "qemu/bswap.h"
+ #include "../libqtest.h"
+ 
+ enum OMAPI2CRegisters {
+diff --git a/tests/qtest/pnv-spi-seeprom-test.c b/tests/qtest/pnv-spi-seeprom-test.c
+index 8033261758b..44e0b92730b 100644
+--- a/tests/qtest/pnv-spi-seeprom-test.c
++++ b/tests/qtest/pnv-spi-seeprom-test.c
+@@ -7,7 +7,6 @@
+  */
+ #include "qemu/osdep.h"
+ #include "libqtest.h"
+-#include "qemu/bswap.h"
+ #include "hw/ssi/pnv_spi_regs.h"
+ #include "pnv-xscom.h"
+ 
+diff --git a/tests/qtest/vmcoreinfo-test.c b/tests/qtest/vmcoreinfo-test.c
+index dcf3b5ae058..0110dcceffa 100644
+--- a/tests/qtest/vmcoreinfo-test.c
++++ b/tests/qtest/vmcoreinfo-test.c
+@@ -16,7 +16,6 @@
+ #include "libqtest.h"
+ #include "standard-headers/linux/qemu_fw_cfg.h"
+ #include "libqos/fw_cfg.h"
+-#include "qemu/bswap.h"
+ #include "hw/misc/vmcoreinfo.h"
+ 
+ static void test_vmcoreinfo_write_basic(void)
 -- 
 2.52.0
 

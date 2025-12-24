@@ -4,68 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5B69E77361
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 15:16:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4793E7545C
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 15:16:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vYQag-0003bn-NR; Wed, 24 Dec 2025 10:15:56 -0500
+	id 1vYQaj-0003iV-3g; Wed, 24 Dec 2025 10:15:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQZf-0002QQ-8L
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:14:57 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQaA-0002q1-Kd
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:15:26 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQZa-000340-EX
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:14:49 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-64bea6c5819so6260193a12.3
- for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 07:14:45 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQa5-0003Id-1i
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:15:19 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-47d3ba3a4deso5753655e9.2
+ for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 07:15:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766589283; x=1767194083; darn=nongnu.org;
+ d=linaro.org; s=google; t=1766589314; x=1767194114; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=B1b6x18riFiHnFkkcqn+CtPN4j8BBN9191Tesnu/1k0=;
- b=spiv030viaOWA6OU7NT5FMY9cfOHxzGiyYsqM6HS/MrDgkUyKWHVm9HxVodg0m2Xm1
- Z6zJOTKboOmT01s+izUb7CmXi+1rCeBiy2pfnVt/soR43I+sES+O0oEYcgug5aDZMK35
- DHVvVSzj6YE0ImVwI5Di3bQQLC/6KNIJyRloMxCEAMioTyN9/kr3DsT2Ry4XvKIr5O1k
- S+o9VYR+bl0MFlb0QAvqNDESYS4Mqnqmtm7+X7n695cuLCYjs/aY/y1TUlk/A7fQGdZJ
- qddpJXTcq9WrMDd7Ke+6N3bfdVkPOjaeEeZJGMsE+88QEkj5EsBUv6l/vDzF7GVRAT3l
- 9YZg==
+ bh=ph2pmdjoZr/k/2utUkSFXBLpUcN9Mg0Sl+yl3bcGaD8=;
+ b=t7vCJH4hzNuEGKyyI6H7E0Hrluu3Csjr5bfLCAnebiFtT74k2ChIiK3bql0JgvpNXm
+ ZhV5MQjhAH06GtMx4YlniY+SLDrAljQG4AnloX3h5h/DFToH6T2F7MudVGkoiIANpjeO
+ GS9HyvbyT4jPcQLxCmEshmETWgMUMLrtvcAiHZ+H8g+2jm63rw7BzCBgZI2j3ynMp5EJ
+ v/cZ6fN+NKEETbMDSMVsANNw8mdzg8XWnTBwEcFM44L/aDrOc93jGff6+9InV008lMgh
+ NDTsnvrwIFEJ0IFaeCjmhNKnmDAKjp4zvFvtJOzIm1zjYTGw57U5TpAJAk8CebQkyEc0
+ MfSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766589283; x=1767194083;
+ d=1e100.net; s=20230601; t=1766589314; x=1767194114;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=B1b6x18riFiHnFkkcqn+CtPN4j8BBN9191Tesnu/1k0=;
- b=M7hfnGeq3o4Bts/z7vYI9rkOtmYrW5bM+RmQ4jzYZe4RwZhkEjw9ZKB1T0s7F7QgqR
- 7MFjGWO/0zGm95yzeOkFCDtokP9pgYtzNuTPMVY4ws7+4x4a3H4tUFGGCiAd3yh+qrBI
- dOVCzBwhlM2+NrQ5Qqhh/9iOWmqBqk4rBfIxcJUgYo0wASTKEZBsGPJCndUHzJA0ucmk
- TJSWrqXFOytZDEYfoZI0VKxp0DuDanbjz8KlXzOPX+m9ZGuf1Hrq8hxjlLhcq8IeANkX
- 3+1r4s3/2FLld9+tE+pKkg6vSQER4JOzflc/ZZrxGMt5dl0BZvtKRBpX1ouqPVl/bmQv
- ypug==
+ bh=ph2pmdjoZr/k/2utUkSFXBLpUcN9Mg0Sl+yl3bcGaD8=;
+ b=s+rrkyMn0HDaTYkO0hIbHXiLf1czLgptjXRXR60CD3ymzlgfFAmXVqQ82G9YoJySmX
+ ldSK1/RUPw94QZmnyV5Z6Ac1mDRqxrY3VqJfUS5dHibwbL90o6FKhf0ls8AOZJar43wz
+ tZcgwwoTRXqfox5AF5im8Er1sx64K8dFICzEWH4ru72xpJC7L2Hxj1uvFc5ELWwOxLU3
+ q5n2dZ9qkRKJ70umsgW4mqVGoosn9eu1o3eKjyHo+GJnRDJQeL6bC5oZV5R7BlmXg5nO
+ xDfIXDn3paL84ftCBi5lHIoxrmhYtgt5zn2lGv6jfDdEo2t2a8tNGAQCHNSlGCLW1UON
+ 1THA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVWzWhNFZ0x9bRQKKHKavXzfV954ptaIo5EWBKIo8wczu9nQHJRXl4OavMRcdhsYmu+54wBf3vCSw==@nongnu.org
-X-Gm-Message-State: AOJu0YzR0TnHwS48eImoJB8Efe1YpjMtecGbMXQqxfUBJ4VgzujmXBmR
- T8cZSS6Y2XbZGpdNagijv4RAOSDFCmSfj3x5s86wS/h7FBPZK5vab4Ns2BAT6Ywxa6IFWQ/0G/h
- bVdayFIg=
-X-Gm-Gg: AY/fxX7JGsRQgfybymdXDtCvJJTty0b8BbNl7bG6p/aNPTVMN5EarBKFV/ymUczBWry
- efioGxjZVX3c3822B7LcmZnNBnibhiWkKlsmGRMRE/W2ur4fqdMtDkuI3INiwl54Q6NpRgzWxH2
- C91F6IY6lL2EUaqSREukc3/ws4sOSBqoniDs6I9g2PcD350TdEYIotoPAPP4iX/nFDE+2IPKMol
- EB02x1u7vUIONWcUGUI5Yb33SCAN0eNT6UW1MMGjwaNgedHeZStFWOOXglBh0tqV4O3JrJHme9B
- rfg8Dljg8Ky43gIqmZ2o0Xb4/WB7A+8FrmEK03Qm3jqCpSpaTAyZ/DJKBc3aLcIwfZYdH9d10rW
- u8GaIziMvCBOig/KB7PYNFPPbJv33YYP7zFd621zG9Upp9KS8kfVkXAN3arWGJovr4cPhU1Cjvf
- MdMag1PRKI8o0ikZ0PWRSNZKmkDt9kVmmXcccJAKCIvwI5r4958UsC5Lg=
-X-Google-Smtp-Source: AGHT+IGTA1F9pGUvnOxUvBAxEuM5CajhpP2d4b0KJNCfBuEsjq+HRDLQvm8HHAx9wQXKy+k4QHriRw==
-X-Received: by 2002:a17:906:c109:b0:b80:325d:99e2 with SMTP id
- a640c23a62f3a-b803705ddb6mr1961657066b.33.1766589283089; 
- Wed, 24 Dec 2025 07:14:43 -0800 (PST)
+ AJvYcCVtt5Geze0MzYCLKiM+bRpMYGTo1Nwd/rnZomMlUQ3WdtfM7WpfkdH8gVELr+eV2nFFV9iDquZyRg==@nongnu.org
+X-Gm-Message-State: AOJu0YwFAW3V7wfZI8/iKJtoXpqQtPhFvuot7deW3oWHtrCkN1bC1Cpw
+ CLJs42XSmQT4VIy9QseNeaAjyn1SAPdGJwJpWeBbACkhiytENRLDZ+ztuGToKeQ6hQo=
+X-Gm-Gg: AY/fxX5jgb/imX9qAwznxCSI8gqDNl2HC23zkjj0AZselcWlH9mQoOShogHh7Y0k71s
+ Xg7KJz1SamC+wLQ5LJpk3gveg1eyyt8aAp0A/buWPsV5qQxDIC3/S0dr158SHf9NiyPoiUz0rY7
+ fVVPlJiHu8CTbDAa0VKFrYQqym3rWxOCgpzUF0fKQ2uftXTGZELcjgagXrPQgcCqHhzlchSbmXI
+ 2rGpXZzof3t4byF0rv8EHa6N2SZrKVtyptOnt3Yj6z4d0k0eR+S4OFOoF+DDBXCfb+GwQg15GiB
+ 1CvAE+8DIl0xYWmxgXlGw0glEvX4ALcZxy99f8ZUnsq7ZGEMevRgzSl1NntC0AYa0yZ7p27pEq2
+ Gns6p5Te/3AmARjd7pt1HregqWFB/oUvWoxZgD8HZC4DOS0UL0hJir3dxmB6qh+OQLgXoKh2NL2
+ 6C4+QVVxDHkyWfTjxTumO3MkZHK2tR1ARKkFrGTReA4RjufZG/dNRx4zM=
+X-Google-Smtp-Source: AGHT+IFScwoxBCRqkTeXaQCsqQxt7KS6o7llklEBeQ0REgEuL7FRa07r2QGkzCL9a3oZPernIGWBSw==
+X-Received: by 2002:a05:600c:4e0d:b0:46e:48fd:a1a9 with SMTP id
+ 5b1f17b1804b1-47d1959d2b4mr168685985e9.33.1766589313650; 
+ Wed, 24 Dec 2025 07:15:13 -0800 (PST)
 Received: from localhost.localdomain (188.171.88.92.rev.sfr.net.
  [92.88.171.188]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b8080e2177csm782017566b.68.2025.12.24.07.14.40
+ 5b1f17b1804b1-47d19362345sm298439715e9.6.2025.12.24.07.15.11
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 24 Dec 2025 07:14:42 -0800 (PST)
+ Wed, 24 Dec 2025 07:15:13 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
@@ -85,20 +84,18 @@ Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  Artyom Tarasenko <atar4qemu@gmail.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Alistair Francis <alistair.francis@wdc.com>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH 4/9] system/memory: Remove address_space_stl_notdirty and
- stl_phys_notdirty
-Date: Wed, 24 Dec 2025 16:13:45 +0100
-Message-ID: <20251224151351.86733-5-philmd@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 7/9] hw/virtio: Remove unused ldst_phys() helpers
+Date: Wed, 24 Dec 2025 16:13:48 +0100
+Message-ID: <20251224151351.86733-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20251224151351.86733-1-philmd@linaro.org>
 References: <20251224151351.86733-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,105 +118,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-stl_phys_notdirty() was added in commit 8df1cd076cc ("physical memory
-access functions") as a (premature?) optimisation for the CODE path.
-Meanwhile 20 years passed, we might never have understood / used it
-properly; the code evolved and now the recommended way to access the
-CODE path is via the cpu_ld/st_mmu*() API.
+None of the following virtio ldst_phys() inlined helpers are used:
 
-Remove both address_space_stl_notdirty() and stl_phys_notdirty()
-leftovers.
+ - virtio_lduw_phys()
+ - virtio_ldl_phys[_cached]()
+ - virtio_ldq_phys[_cached]()
+ - virtio_stw_phys()
+ - virtio_stl_phys[_cached]()
 
-Suggested-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Just remove them.
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/system/memory.h        |  6 ------
- include/exec/memory_ldst.h.inc |  2 --
- system/memory_ldst.c.inc       | 39 ----------------------------------
- 3 files changed, 47 deletions(-)
+ include/hw/virtio/virtio-access.h | 85 -------------------------------
+ 1 file changed, 85 deletions(-)
 
-diff --git a/include/system/memory.h b/include/system/memory.h
-index 3bd5ffa5e0d..e69171de05a 100644
---- a/include/system/memory.h
-+++ b/include/system/memory.h
-@@ -2850,12 +2850,6 @@ MemTxResult address_space_write_rom(AddressSpace *as, hwaddr addr,
- #define ARG1_DECL    AddressSpace *as
- #include "exec/memory_ldst.h.inc"
- 
--static inline void stl_phys_notdirty(AddressSpace *as, hwaddr addr, uint32_t val)
--{
--    address_space_stl_notdirty(as, addr, val,
--                               MEMTXATTRS_UNSPECIFIED, NULL);
--}
--
- #define SUFFIX
- #define ARG1         as
- #define ARG1_DECL    AddressSpace *as
-diff --git a/include/exec/memory_ldst.h.inc b/include/exec/memory_ldst.h.inc
-index 7270235c600..173164fee3a 100644
---- a/include/exec/memory_ldst.h.inc
-+++ b/include/exec/memory_ldst.h.inc
-@@ -25,8 +25,6 @@ uint32_t glue(address_space_ldl, SUFFIX)(ARG1_DECL,
-     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
- uint64_t glue(address_space_ldq, SUFFIX)(ARG1_DECL,
-     hwaddr addr, MemTxAttrs attrs, MemTxResult *result);
--void glue(address_space_stl_notdirty, SUFFIX)(ARG1_DECL,
--    hwaddr addr, uint32_t val, MemTxAttrs attrs, MemTxResult *result);
- void glue(address_space_stw, SUFFIX)(ARG1_DECL,
-     hwaddr addr, uint16_t val, MemTxAttrs attrs, MemTxResult *result);
- void glue(address_space_stl, SUFFIX)(ARG1_DECL,
-diff --git a/system/memory_ldst.c.inc b/system/memory_ldst.c.inc
-index 333da209d1a..b45bfecd137 100644
---- a/system/memory_ldst.c.inc
-+++ b/system/memory_ldst.c.inc
-@@ -261,45 +261,6 @@ uint16_t glue(address_space_lduw_be, SUFFIX)(ARG1_DECL,
-                                        DEVICE_BIG_ENDIAN);
+diff --git a/include/hw/virtio/virtio-access.h b/include/hw/virtio/virtio-access.h
+index 07aae69042a..c866769cad8 100644
+--- a/include/hw/virtio/virtio-access.h
++++ b/include/hw/virtio/virtio-access.h
+@@ -39,60 +39,6 @@ static inline bool virtio_access_is_big_endian(VirtIODevice *vdev)
+ #endif
  }
  
--/* warning: addr must be aligned. The ram page is not masked as dirty
--   and the code inside is not invalidated. It is useful if the dirty
--   bits are used to track modified PTEs */
--void glue(address_space_stl_notdirty, SUFFIX)(ARG1_DECL,
--    hwaddr addr, uint32_t val, MemTxAttrs attrs, MemTxResult *result)
+-static inline uint16_t virtio_lduw_phys(VirtIODevice *vdev, hwaddr pa)
 -{
--    uint8_t *ptr;
--    MemoryRegion *mr;
--    hwaddr l = 4;
--    hwaddr addr1;
--    MemTxResult r;
--    uint8_t dirty_log_mask;
--    bool release_lock = false;
+-    AddressSpace *dma_as = vdev->dma_as;
 -
--    RCU_READ_LOCK();
--    mr = TRANSLATE(addr, &addr1, &l, true, attrs);
--    if (l < 4 || !memory_access_is_direct(mr, true, attrs)) {
--        release_lock |= prepare_mmio_access(mr);
--
--        r = memory_region_dispatch_write(mr, addr1, val, MO_32, attrs);
--    } else {
--        ptr = qemu_map_ram_ptr(mr->ram_block, addr1);
--        stl_p(ptr, val);
--
--        dirty_log_mask = memory_region_get_dirty_log_mask(mr);
--        dirty_log_mask &= ~(1 << DIRTY_MEMORY_CODE);
--        physical_memory_set_dirty_range(memory_region_get_ram_addr(mr) + addr,
--                                            4, dirty_log_mask);
--        r = MEMTX_OK;
+-    if (virtio_access_is_big_endian(vdev)) {
+-        return lduw_be_phys(dma_as, pa);
 -    }
--    if (result) {
--        *result = r;
--    }
--    if (release_lock) {
--        bql_unlock();
--    }
--    RCU_READ_UNLOCK();
+-    return lduw_le_phys(dma_as, pa);
 -}
 -
- /* warning: addr must be aligned */
- static inline void glue(address_space_stl_internal, SUFFIX)(ARG1_DECL,
-     hwaddr addr, uint32_t val, MemTxAttrs attrs,
+-static inline uint32_t virtio_ldl_phys(VirtIODevice *vdev, hwaddr pa)
+-{
+-    AddressSpace *dma_as = vdev->dma_as;
+-
+-    if (virtio_access_is_big_endian(vdev)) {
+-        return ldl_be_phys(dma_as, pa);
+-    }
+-    return ldl_le_phys(dma_as, pa);
+-}
+-
+-static inline uint64_t virtio_ldq_phys(VirtIODevice *vdev, hwaddr pa)
+-{
+-    AddressSpace *dma_as = vdev->dma_as;
+-
+-    if (virtio_access_is_big_endian(vdev)) {
+-        return ldq_be_phys(dma_as, pa);
+-    }
+-    return ldq_le_phys(dma_as, pa);
+-}
+-
+-static inline void virtio_stw_phys(VirtIODevice *vdev, hwaddr pa,
+-                                   uint16_t value)
+-{
+-    AddressSpace *dma_as = vdev->dma_as;
+-
+-    if (virtio_access_is_big_endian(vdev)) {
+-        stw_be_phys(dma_as, pa, value);
+-    } else {
+-        stw_le_phys(dma_as, pa, value);
+-    }
+-}
+-
+-static inline void virtio_stl_phys(VirtIODevice *vdev, hwaddr pa,
+-                                   uint32_t value)
+-{
+-    AddressSpace *dma_as = vdev->dma_as;
+-
+-    if (virtio_access_is_big_endian(vdev)) {
+-        stl_be_phys(dma_as, pa, value);
+-    } else {
+-        stl_le_phys(dma_as, pa, value);
+-    }
+-}
+-
+ static inline void virtio_stw_p(VirtIODevice *vdev, void *ptr, uint16_t v)
+ {
+     if (virtio_access_is_big_endian(vdev)) {
+@@ -166,26 +112,6 @@ static inline uint16_t virtio_lduw_phys_cached(VirtIODevice *vdev,
+     return lduw_le_phys_cached(cache, pa);
+ }
+ 
+-static inline uint32_t virtio_ldl_phys_cached(VirtIODevice *vdev,
+-                                              MemoryRegionCache *cache,
+-                                              hwaddr pa)
+-{
+-    if (virtio_access_is_big_endian(vdev)) {
+-        return ldl_be_phys_cached(cache, pa);
+-    }
+-    return ldl_le_phys_cached(cache, pa);
+-}
+-
+-static inline uint64_t virtio_ldq_phys_cached(VirtIODevice *vdev,
+-                                              MemoryRegionCache *cache,
+-                                              hwaddr pa)
+-{
+-    if (virtio_access_is_big_endian(vdev)) {
+-        return ldq_be_phys_cached(cache, pa);
+-    }
+-    return ldq_le_phys_cached(cache, pa);
+-}
+-
+ static inline void virtio_stw_phys_cached(VirtIODevice *vdev,
+                                           MemoryRegionCache *cache,
+                                           hwaddr pa, uint16_t value)
+@@ -197,17 +123,6 @@ static inline void virtio_stw_phys_cached(VirtIODevice *vdev,
+     }
+ }
+ 
+-static inline void virtio_stl_phys_cached(VirtIODevice *vdev,
+-                                          MemoryRegionCache *cache,
+-                                          hwaddr pa, uint32_t value)
+-{
+-    if (virtio_access_is_big_endian(vdev)) {
+-        stl_be_phys_cached(cache, pa, value);
+-    } else {
+-        stl_le_phys_cached(cache, pa, value);
+-    }
+-}
+-
+ static inline void virtio_tswap16s(VirtIODevice *vdev, uint16_t *s)
+ {
+     *s = virtio_tswap16(vdev, *s);
 -- 
 2.52.0
 

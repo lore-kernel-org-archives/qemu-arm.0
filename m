@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23596E776C2
-	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 15:16:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFFB7E776C1
+	for <qemu-arm@archiver.kernel.org>; Wed, 24 Dec 2025 15:16:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vYQaQ-00039L-Jf; Wed, 24 Dec 2025 10:15:42 -0500
+	id 1vYQaj-0003mF-Dc; Wed, 24 Dec 2025 10:15:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQZn-0002Ug-Gi
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:14:59 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQaK-00035L-5Y
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:15:33 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQZk-000357-Uf
- for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:14:58 -0500
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-42fb2314eb0so4447855f8f.2
- for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 07:14:56 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vYQaE-0003KG-4q
+ for qemu-arm@nongnu.org; Wed, 24 Dec 2025 10:15:29 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-477bf34f5f5so43666255e9.0
+ for <qemu-arm@nongnu.org>; Wed, 24 Dec 2025 07:15:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766589295; x=1767194095; darn=nongnu.org;
+ d=linaro.org; s=google; t=1766589323; x=1767194123; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=qSSsRmh/IQkwpJa4M1tD2tu2lq9WIQnOoGphHntAkAQ=;
- b=WJ21aNVgDuJSSp3q7jCAHeYA1Er2OP3ix0rNLaORUL7TaWq9DHmYCXYCNVE2Fn51Lm
- 7qYvlo3dpfjg9n3SfX8jHqsO7L4zKASc8I+n/oLRXgd9Rld8caIargmZYkx+AignFmBF
- 4bUYRXWvpjjTMuBgRmDDW6zQw9GiBkSc5cc1tt49jlfGC9ZrotDFpah4r97v5naWxYw2
- Icg10AQpybSyVMgOJgq25lClJEPzd8vyxEwJAm3l6Jh5dKs12uTQsNHdEQCbLn1OLNVb
- 2bzyfUs04iYSS/NZHEB7egNnwPJtJHs6zrffXaDnh5a5OGffIR89gJF/19PgGqJABt+v
- bPBQ==
+ bh=gD8JU2pmVND43MkkfvpIdwWKILzGxGYkTplC6Rgxmp8=;
+ b=CHg5V5NirHhInzglecSmX9OI0yQOe/AHl1E54yBE/wVD/9O7nYzX74X9K6xOx8fCg8
+ IPxlDzx1W2GKPKpdgVS0LqqiAyVoqGsubba49bdTblsYoPC70bUBxZyf0aS9Fw4/o/Uy
+ 7hUFTk4jm3ef/01TRwtNgRHSpjSqlJqNs7vaiisQKkS31bjHML8EmRUId5/utUSN2Kpm
+ ZL4wwUNnckNyR5FpwEVzpxRQSYE+/loX37pW6xxHbHMzCi+E21xXBLZlqeGPxsItTP0Z
+ bDfFnT7KFnmfR9hjqO2jsj2aYNhdUiW0IiohVJRavt6vRvtr5evSq41C6w9+tmiT6x0P
+ 05aA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766589295; x=1767194095;
+ d=1e100.net; s=20230601; t=1766589323; x=1767194123;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=qSSsRmh/IQkwpJa4M1tD2tu2lq9WIQnOoGphHntAkAQ=;
- b=YDSTiMhoRXewkGKBywzxUz0TBn6r+3vkwko8pJ3HUKic8yreBdi1mHVaDaqk72A+pi
- nIoiTzr3CiJeKf0T/nNlLRHZnP1WsUSgK4I3L85mid7Ug+rOAg/k4gpeUopG+VRL/fPS
- nfpkZ6nCgXfkf74oog9Dkgbr7kZ2hj2cZ7ULmxioSPOp/rpWz9jQsIyS1yBBrQZeIA+M
- Oi6JPJLVlpBu1pFmZ3Otbkb92nbnBnrTJmg83Mez/uGhd5A5/pI3irfoSRLzxKXP7uVs
- oTYvmH2W9oye4Gu48u9qJcOBCqE7RjCcZuOp01Ki8xEViLtlGcw6whM8YzkRtm/HR1md
- Nc0w==
+ bh=gD8JU2pmVND43MkkfvpIdwWKILzGxGYkTplC6Rgxmp8=;
+ b=Q7dr4ovu3uX0+ewnSXW44qHDpMkDbB/v9/060p3wvS7pwK9sYhyS1K7Et7m21eyn3Q
+ z0OcO8dnsfV6Y7CzchPS0HqzNVLLSXJhy7AaK+1xsYcMy/ZFpdkYK+ILhZDQNiGRmOZ+
+ mDSkzddArA3rmtAWe3Gmgy5xI3Co5B9EBe+RAwffUjA0/ImGKwDKUFHz/o3aBb23T4kU
+ i5FgdKK3O8m/0S4J3gLbEPe71ejzkyzeQHjPlwmy9V15wxI33qGMZzZUXrKCpsboB9Eq
+ FtBJBu5fCL4w/gWTbqZcO0MMMkgJpYUtfu6A2rOAPFVdYbraUwivEbVcWUQ1jgJT9EQS
+ 2Cbw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVxRTtQIxHlrPu7kf4vJQbvKOVlf5gMHmbx4tvjLjDFe5+Xw6JqI/ocJCQOnOVcOMUYLUM2d0DoOQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yxg1nmh677j7a4KV0UfQUyq39+gyq8ymB4rc28eqHKIEjbsYGt2
- 0OE5nbaXgFfUVpVDLTMrGPqJxErDXdwuOiK1e6kn7/CDD5aYz5mqZ4m02/htX8pj0Po=
-X-Gm-Gg: AY/fxX4G4MgCh1WHEs4NkcpXdqZLpAldyZu+a8DLKlviwOP3dJOJHFy1cFOnpzoCzl4
- LiZI1beQQE8gPs3rF+v2+4WeLjKICmOlNZDcmYUqLUCuWL0fPWQFhCBw6ebdJAufrUoy9Fp9oZp
- rC/6Wuzdld2wwFQxf1+X3SOj1xRRBu54keSZIMjF6gCBkOMqCXGCnzOnayvG27C43Q1RxnFrMZ5
- W1iKvH0BqFB/v0TW1cWGcHiL8r/I6QNp7hu9Ow2LT1WXbOOrd60tyHUrxpRsuC/ffFq2Tztd5es
- 84KrfSAQ2Vc3dCvfwSipV8Bu7oWsLaqMD/RBLk9tlkx5FLX3HiQtnWPYoJrRersaYPUd68kbyaa
- FUP9gZy24rFLn1hw7H9NNbtkOUyci8Z8y3pgFprHuMnDoMEV1UTh3roMmycc/Ku2xwWFerQ+Xfw
- KElcqBNk88LcwzD9HigI6ADTqvEh0tCjG3whdqFpSsjME+UttLxa0Z7xI=
-X-Google-Smtp-Source: AGHT+IH/1qWHjLejlt1atDrHHy69+lHW4Qc4qS7vIzk9OOR+3COYvxQGXxooLC/KYi/aV2P/u2q0/A==
-X-Received: by 2002:a05:6000:22c8:b0:42f:f627:3a90 with SMTP id
- ffacd0b85a97d-4324e4fd938mr21508015f8f.32.1766589294877; 
- Wed, 24 Dec 2025 07:14:54 -0800 (PST)
+ AJvYcCVK+0XVXMuTL6zNyZLNfqnoGcRGcn33BwOaNggKvi95ufaQQSJnNatwrseQwfvBKTrwG4At8zdMIg==@nongnu.org
+X-Gm-Message-State: AOJu0Yw4tgBzh5u3FfF4EZyw2XbmGPo5HdnEBOEZX400vdwQ9F4xqpUJ
+ qcsoBsbso3kQ8OxPeWtXfxNiuSZbWsTurdI5UeNvkJSxeW7llH+uVTH3uzHkYztaagg=
+X-Gm-Gg: AY/fxX59M7+0wHemRwbc2l+uzONn3jfIFHELGELj2DnOevWvYv0/Ddi1SJYcW8Tl4ZR
+ WCNb0pB7HBcPwr0zdqDiLvNlMWstBsYRlTiP0qsimp7GBrGDhgqvg/t2cpfbHkvErW+RBv19Lpt
+ Db3DIc7XsuYOzzAMS7j/05cAyPSiKQENDh2FrPrVPqoQ8SJ1wp+zFRI5xBe8WoIdaT5jXcn2kYF
+ bmh5kUR33nHcKwUOQJaxJAM5USIKR8w/Kx2enCoUG8CwgeSPCkY/zpcX4xRDP2s591uDMLluqIb
+ JY19Z/5fQ7idXlsY/WkGX7rmNBTi0WwujGy1640Wlm8enFL6PseogZVFywH6AHFzY+NvHPftRMm
+ jhS09ZivQt3k3lJadt8xX/ueVQgfXHx6+2iVoT79iAdhAXJl7iR+auQeRGLLbeFhfEwHXPo8Zgg
+ 0ycgHZi8UU2LPhA17RfpOyNRAjcoWMhEOv+SUZpST+2w+5Q8d5sGfLzYJ1S/iqMmkuGw==
+X-Google-Smtp-Source: AGHT+IED5NTiworPy9fGAYaEAYlWnUKoxV7J9qyYBS1cQtso4club+7XuXaQ+qeAhLJvb9Xr4Cvcjg==
+X-Received: by 2002:a05:600c:c091:b0:477:7b9a:bb07 with SMTP id
+ 5b1f17b1804b1-47d195a98d5mr153341105e9.35.1766589322759; 
+ Wed, 24 Dec 2025 07:15:22 -0800 (PST)
 Received: from localhost.localdomain (188.171.88.92.rev.sfr.net.
  [92.88.171.188]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4324ea1b1b1sm34391670f8f.3.2025.12.24.07.14.50
+ 5b1f17b1804b1-47d193d4e91sm291574785e9.13.2025.12.24.07.15.20
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 24 Dec 2025 07:14:54 -0800 (PST)
+ Wed, 24 Dec 2025 07:15:22 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
@@ -85,18 +85,17 @@ Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Alistair Francis <alistair.francis@wdc.com>, Joel Stanley <joel@jms.id.au>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 5/9] system/memory: Allow restricting legacy ldst_phys() API
- usage
-Date: Wed, 24 Dec 2025 16:13:46 +0100
-Message-ID: <20251224151351.86733-6-philmd@linaro.org>
+Subject: [PATCH 8/9] hw/virtio: Reduce virtio_lduw/stw_phys_cached() scope
+Date: Wed, 24 Dec 2025 16:13:49 +0100
+Message-ID: <20251224151351.86733-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20251224151351.86733-1-philmd@linaro.org>
 References: <20251224151351.86733-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,67 +118,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Commit 500131154d6 ("exec.c: Add new address_space_ld*/st*
-functions") added a new API to fix a shortcoming of the
-ld/st*_phys() API, which does blind bus access, not reporting
-failure (and it also allow to provide transaction attributes).
+virtio_lduw_phys_cached() and virtio_stw_phys_cached() are
+only used within hw/virtio/virtio.c: reduce their scope by
+moving their definitions there.
 
-Later commit 42874d3a8c6 ("Switch non-CPU callers from ld/st*_phys
-to address_space_ld/st*") automatically converted the legacy uses
-to the new API, not precising transaction attributes
-(MEMTXATTRS_UNSPECIFIED) and ignoring the transation result (passing
-NULL pointer as MemTxResult).
-
-While this is a faithful replacement, without any logical change,
-we later realized better is to not use MEMTXATTRS_UNSPECIFIED or
-NULL MemTxResult, and adapt each call site on a pair basis, looking
-at the device model datasheet to do the correct behavior (which is
-unlikely to ignore transaction failures).
-
-Since this is quite some work, we defer that to device model
-maintainers. Meanwhile we introduce a definition, to allow a
-target which removed all legacy API call to prohibit further
-legacy API uses, named "TARGET_NOT_USING_LEGACY_LDST_PHYS_API".
-
-Since all targets should be able to check this definition, we
-take care to not poison it.
-
-Suggested-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/system/memory.h       | 2 ++
- scripts/make-config-poison.sh | 1 +
- 2 files changed, 3 insertions(+)
+ include/hw/virtio/virtio-access.h | 21 ---------------------
+ hw/virtio/virtio.c                | 21 +++++++++++++++++++++
+ 2 files changed, 21 insertions(+), 21 deletions(-)
 
-diff --git a/include/system/memory.h b/include/system/memory.h
-index e69171de05a..d5c248f1794 100644
---- a/include/system/memory.h
-+++ b/include/system/memory.h
-@@ -2850,10 +2850,12 @@ MemTxResult address_space_write_rom(AddressSpace *as, hwaddr addr,
- #define ARG1_DECL    AddressSpace *as
- #include "exec/memory_ldst.h.inc"
+diff --git a/include/hw/virtio/virtio-access.h b/include/hw/virtio/virtio-access.h
+index c866769cad8..5b5fff5295e 100644
+--- a/include/hw/virtio/virtio-access.h
++++ b/include/hw/virtio/virtio-access.h
+@@ -102,27 +102,6 @@ static inline uint16_t virtio_tswap16(VirtIODevice *vdev, uint16_t s)
+ #endif
+ }
  
-+#ifndef TARGET_NOT_USING_LEGACY_LDST_PHYS_API
- #define SUFFIX
- #define ARG1         as
- #define ARG1_DECL    AddressSpace *as
- #include "exec/memory_ldst_phys.h.inc"
-+#endif
+-static inline uint16_t virtio_lduw_phys_cached(VirtIODevice *vdev,
+-                                               MemoryRegionCache *cache,
+-                                               hwaddr pa)
+-{
+-    if (virtio_access_is_big_endian(vdev)) {
+-        return lduw_be_phys_cached(cache, pa);
+-    }
+-    return lduw_le_phys_cached(cache, pa);
+-}
+-
+-static inline void virtio_stw_phys_cached(VirtIODevice *vdev,
+-                                          MemoryRegionCache *cache,
+-                                          hwaddr pa, uint16_t value)
+-{
+-    if (virtio_access_is_big_endian(vdev)) {
+-        stw_be_phys_cached(cache, pa, value);
+-    } else {
+-        stw_le_phys_cached(cache, pa, value);
+-    }
+-}
+-
+ static inline void virtio_tswap16s(VirtIODevice *vdev, uint16_t *s)
+ {
+     *s = virtio_tswap16(vdev, *s);
+diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+index 257cda506a4..fba9d347d17 100644
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -216,6 +216,27 @@ static void virtio_check_indirect_feature(VirtIODevice *vdev)
+     }
+ }
  
- struct MemoryRegionCache {
-     uint8_t *ptr;
-diff --git a/scripts/make-config-poison.sh b/scripts/make-config-poison.sh
-index 2b36907e239..937357b3531 100755
---- a/scripts/make-config-poison.sh
-+++ b/scripts/make-config-poison.sh
-@@ -10,6 +10,7 @@ exec sed -n \
-   -e' /CONFIG_TCG/d' \
-   -e '/CONFIG_USER_ONLY/d' \
-   -e '/CONFIG_SOFTMMU/d' \
-+  -e '/TARGET_NOT_USING_LEGACY_LDST_PHYS_API/d' \
-   -e '/^#define / {' \
-   -e    's///' \
-   -e    's/ .*//' \
++static inline uint16_t virtio_lduw_phys_cached(VirtIODevice *vdev,
++                                               MemoryRegionCache *cache,
++                                               hwaddr pa)
++{
++    if (virtio_access_is_big_endian(vdev)) {
++        return lduw_be_phys_cached(cache, pa);
++    }
++    return lduw_le_phys_cached(cache, pa);
++}
++
++static inline void virtio_stw_phys_cached(VirtIODevice *vdev,
++                                          MemoryRegionCache *cache,
++                                          hwaddr pa, uint16_t value)
++{
++    if (virtio_access_is_big_endian(vdev)) {
++        stw_be_phys_cached(cache, pa, value);
++    } else {
++        stw_le_phys_cached(cache, pa, value);
++    }
++}
++
+ /* Called within call_rcu().  */
+ static void virtio_free_region_cache(VRingMemoryRegionCaches *caches)
+ {
 -- 
 2.52.0
 

@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94F59E784BE
-	for <qemu-arm@archiver.kernel.org>; Sun, 28 Dec 2025 23:58:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 818B3E784BE
+	for <qemu-arm@archiver.kernel.org>; Sun, 28 Dec 2025 23:59:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1va0e8-0000FC-R0; Sun, 28 Dec 2025 18:58:00 -0500
+	id 1va0eo-000396-Ss; Sun, 28 Dec 2025 18:58:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1va0e7-00005T-Kb
- for qemu-arm@nongnu.org; Sun, 28 Dec 2025 18:57:59 -0500
-Received: from p-west1-cluster5-host11-snip4-9.eps.apple.com ([57.103.66.220]
+ id 1va0ee-0002g5-Fs
+ for qemu-arm@nongnu.org; Sun, 28 Dec 2025 18:58:32 -0500
+Received: from p-west1-cluster3-host9-snip4-10.eps.apple.com ([57.103.66.93]
  helo=outbound.pv.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1va0e5-0007QI-1H
- for qemu-arm@nongnu.org; Sun, 28 Dec 2025 18:57:59 -0500
+ id 1va0eb-0007Ud-VB
+ for qemu-arm@nongnu.org; Sun, 28 Dec 2025 18:58:31 -0500
 Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-1a-60-percent-5 (Postfix) with ESMTPS id
- E935A18000B9; Sun, 28 Dec 2025 23:57:51 +0000 (UTC)
+ CD1A318000A7; Sun, 28 Dec 2025 23:58:27 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=vIKxdUqmkJfbx59PuPOqxNWNB3HpZRZgAEdMNyICtkQ=;
+ s=sig1; bh=Z3QC1xsGoWlyM6qiWEninqsw442X+pblDFh3uzygGEs=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=RAwgbAJ2X+0zWmItRxY4Oe3N27c6Qy0KT2QxUGarHL/S7m8nlotHJaOxvtqP+kdUsdMi4/ZvQBHsULyeLAqqDFei84+5+7CA2/KSr4tI8alaHY7I4qQ7iCzo/DnTL2/JYpR7X1Y4f16lkmX8GTW8Q12bmpLtm3k8zIyl7qukg1prts9vU0aNbKMQFKhLzO75hi7dP/BAgp5z3yg8v1WCZzzWZN52Lx+QdrwDi4TadMR2uDJ1Qlv5oHEdwHD/mWl/8LcjPt/KCnxfCZgPm3SoxF1emi35+x9mZwjMUI3kiQaiAwq3y/YiGcxaUvng13WAf0dYoBjZ3zlDMWjBVpzijA==
+ b=Lq1UcpCRmd0Jgion/YwXZR0H7y1NrXxtJZpUBvBNtbogJowXcsrfms1SEZobT6mvzAntAV99MpRs1zKKrJxxKwRJDtbrhyAfMEaCYQ77bARwcxpIhLiRIZnRNlNW5adkBJ02yEGuOriQZcPfNwyXuuHuzQUEBj7CgpLw/cTSl9lsSrFXBvRIJGdZPoplW24YCPKC2XjJfkYMkPxmL9pzeiBulhmmeZLH4y594a+jkig2qlZc4WSKyc1oHcYjE5C5iE6qNcViR4jg1gY9gTDw6gOy5JkAJLDY8nGFBID8rjzQPY2pb/lQU9cICauiugjxVcM0Ykog9rnhlbPNCr7rHw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.56.9.36])
  by p00-icloudmta-asmtp-us-west-1a-60-percent-5 (Postfix) with ESMTPSA id
- F240D1800757; Sun, 28 Dec 2025 23:57:44 +0000 (UTC)
+ 1901918000B9; Sun, 28 Dec 2025 23:58:22 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org,
 	mohamed@unpredictable.fr
@@ -53,45 +53,44 @@ Cc: Alexander Graf <agraf@csgraf.de>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Ani Sinha <anisinha@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v12 21/28] whpx: arm64: implement -cpu host
-Date: Mon, 29 Dec 2025 00:54:15 +0100
-Message-ID: <20251228235422.30383-22-mohamed@unpredictable.fr>
+ Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>
+Subject: [PATCH v12 28/28] MAINTAINERS: update the list of maintained files
+ for WHPX
+Date: Mon, 29 Dec 2025 00:54:22 +0100
+Message-ID: <20251228235422.30383-29-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20251228235422.30383-1-mohamed@unpredictable.fr>
 References: <20251228235422.30383-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Info: v=2.4 cv=Jo38bc4C c=1 sm=1 tr=0 ts=6951c403 cx=c_apl:c_pps
+X-Proofpoint-ORIG-GUID: Rj7Romy-xmkHQloxAGTARtkhCR6i1xJp
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjI4MDIyMyBTYWx0ZWRfX3rEriqSZtQEB
+ 3XRWKGytrB7FAPpBOajuYh4D5mzUNS6ONwVX8f0evPrGRMQj1LvLSEVHzmYZTe9ucPnXqTtnRy4
+ caulxXsSvyZiYNZp+YEgSkR885+8KeT4ZbND7R22MTSb2aKl5Ou/KxOA7jlWRNrbn6Tr12Ua3F/
+ Tb9ELXPvOarnd4o+Ge8iq5/HG5W3tBjMG08HzQ2k6s+yPHhkbB6Vb0l0CQPcgLqACIXNLdU3Ilc
+ SpbTFl8XfCGa9OhE6fkJ+BpZcgf6V1t4NemBH5u5/X+pgTy7ROZJ6UUu+94msGjaioe224rBCRZ
+ 267QStjQrjGW4T0k1oa
+X-Authority-Info: v=2.4 cv=ZJTaWH7b c=1 sm=1 tr=0 ts=6951c424 cx=c_apl:c_pps
  a=azHRBMxVc17uSn+fyuI/eg==:117 a=azHRBMxVc17uSn+fyuI/eg==:17
- a=wP3pNCr1ah4A:10 a=VkNPw1HP01LnGYTKEx00:22 a=L6Cw-x9jAAAA:20
- a=KKAkSRfTAAAA:8 a=hGuVB2XOhXFvD5HHq_UA:9 a=cvBusfyB2V15izCimMoJ:22
- a=bA3UWDv6hWIuX7UZL3qL:22
-X-Proofpoint-GUID: hoy6sG7KmspUGRRPVvnM2Dv1UTavCS14
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjI4MDIyMyBTYWx0ZWRfX89HsorR/lor0
- KlK7Uu+vPfr7NOK772QAJqclKytF8kqNshsIXFZD2V4ZGf8zv5f+UwaoR6JcaPdDDZauEXk86Og
- Rpmg6oDvA9C3tsPFuVMfXopxSdp3Rit0zcbY8BoFSn7zH3IswQ3jlFXfgatnFAEVEl2WwusE2C6
- QyUznr9t27GAToE9XPw+lwN5K+I5RdsF4PWIkPiRN2JBALMs9F2lrIOzOxTw2BU63carHYhEm7M
- I3CDm6ftr9gH/Ztw5UXzaq4Skr1/tyROqlfwWRDiMRxvklImItCvVYtJTHWGWdnhup1qDWDnIoJ
- BoK/yEta038RzZSD2TF
-X-Proofpoint-ORIG-GUID: hoy6sG7KmspUGRRPVvnM2Dv1UTavCS14
+ a=t-S863UTctjxRPX8:21 a=wP3pNCr1ah4A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=hdCJvu6vi-O6ykQZt0QA:9
+X-Proofpoint-GUID: Rj7Romy-xmkHQloxAGTARtkhCR6i1xJp
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2025-12-28_07,2025-12-26_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- spamscore=0 clxscore=1030 bulkscore=0 malwarescore=0 mlxlogscore=999
- suspectscore=0 phishscore=0 mlxscore=0 classifier=spam authscore=0 adjust=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ clxscore=1030 mlxlogscore=999 bulkscore=0 malwarescore=0 spamscore=0
+ adultscore=0 suspectscore=0 phishscore=0 classifier=spam authscore=0 adjust=0
  reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2512280223
-X-JNJ: AAAAAAAB9nIe16wmmehUvrw9rYKcTcJH8bKk4R/n+MC6eNj8TK/1CnYfnjCWST0z/4JVxzMwbFgV4BV+0/o+hxTxWpc0D/WMI+FiaaYUu9ZcCZmyajqieJDLvuChyeE5cJtoLxUZKZBOhSBCcOwVzML0eXCeoC7idhjI6Qhvry/M1fJ3LmhipkTU7r1WYw5abRuOyLUZebaBUQfVXbXv1J3REh8sZ+/SuFWWaeL2FDypuJuBqvmm2PDHr3q4q8ojEDch6GNRc8hTKi7FijGPpTtaUTLOWNFCxlbBi5FFgmyNIGMVTcapKQFLDbHvYBkVS9datVP8j6xKLubkIg51ICKRESrQPQKIag98elhWd4ZVDFPwT0dNmLOZwmmtBVIaoneMUkNMcFnUjA9t75wLe+e+z0F1LOcZ09Bu6FMHmQZNQMxALHT8+MicX6D2XuY0WlUPQriH77R2P64K3yjKgweM+ZTYe3zybJFaZytvdWz1TZtRodLGl6MhGyWnz78uo+WElbtbbW2y+/cXbc8d4tfHAbMO9w9NZAYVxYWn37fAEaqTChePNF+0kW+8SZBPhygHIR127EUn5rhFRkQjFyt/M+OmutlW7NGsGBdiGkflRaJbDpRY9M/CCfjPAL43bfHtH/YRzPVDDuPEP+aZGGJjz1wMWtvCPuGkYzGP+HrYr5Z1ZIVjR1HP566YounnQ4HNTLNRgHBTaXvRPsMbqOpnMyL9zzVfbXB+w31QtIW5fwrsoM9xDne3FXEYDg+zidiQH6Df6y6JmhKywQ5I1z2xXowQvt0OtLkmfMJJVLWXUCLJKXlaZuJC+Ji2aHt2S9dQSZRoNvzGDBsxm2I85DtxrQPOupo31yjC9xMh65QTZ0vyYvMjHBY5w1g5x7gFYH5BkeanjxosHc+HmRnVqVkSbZl92egNDG1nGJyvJa3Djxmqv99Hu53xDgbNRNn9ViDWkknXYcRk/TfN9q3bxgtsjkA3YLS
- S7w7a
-Received-SPF: pass client-ip=57.103.66.220;
+X-JNJ: AAAAAAAB0TYzjbInwuLNkWeN2iZyibBPeceX+Ca3t6BsdRotJOWMOnnkbRMPyaL19bBSn6pB6zpT6HXgQ1gH9u7GRXu7nye4+Spz4icVzSK5lxKVYBnRApb+PPbk63VJaWE6xQLLOsfRTqEhzqx0yqcf47fLaMQm1H1yfp/H251uDy17wEUdUtAAHBZi02hpRhl87eYtSPQnjeFdwUy8Sy6IyhMAeaIAdeetO4qe7EP6o09wYufbp27RAEqqJi1vgECdpJUhNzaBBFSCpISOAdFbLE7TalproE+RFnVEtw+yAzRARC23OcOMWzEgfamjznXYtTe7w5htuM2cTl68feguTXC4vhtK+ZvScTBEzpT9kzjbA/6JMYISgRgOXbjQamjKsutlwxYVBiupDznJ4YFGXf/2hwqHEnX0E/PdCeeZtUygwn+jRp10eVo5MQKMoOo4DvEkdclodTGq8a6mHm3DKuUPE1jved/NQwAyh/E8zL0lzUXpEc+W2dvpRNE0x9AmYSHZXX1+gj2dUbMXrrlid6ECnI3N9DxUzCU1rAOOej/Aqi8dLB9MnzAkh8wD194FKac959iTNC5LXQHGhK6vMtTW42N8ulsA5XnPYr5GTmHh+sttRFICTuCvFqfHcZfbXNP7dc4oJ8fF/yKP1TPOEU6TKhR9CpAhcxg4CnDfjWYj4hiOZ/gHeO8CmRue/N8Ew/8L9ffizw7FeGtLW3IbRXi7ZWpgaCO78HcB4gxnFlkCbapQLOUL4Nym6D9IG0DDPsjNsIPCfvkAcNI36jMD+1Pnt3Du0ealGQN+aqGMtr1XetWpCh2NlxvvqMxQIuogyaZdlTWh5ie8EQI77m6LZL4NLlqt6DinHMWQA+38bxdm1fKvdfzBoLUbmIh37NqRSSjODtXG4nFF/MwIILfHbLmgwV88Yv0hMTmicYOFXnaO36s1c/moZaPo/2WFr6dTk7OYgxBf5MGarKlFtP0A
+Received-SPF: pass client-ip=57.103.66.93;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -109,220 +108,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Logic to fetch MIDR_EL1 for cpu 0 adapted from:
-https://github.com/FEX-Emu/FEX/blob/e6de17e72ef03aa88ba14fa0ec13163061608c74/Source/Windows/Common/CPUFeatures.cpp#L62
+Add arm64-specific files.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/cpu64.c         |  17 +++---
- target/arm/whpx/whpx-all.c | 104 +++++++++++++++++++++++++++++++++++++
- target/arm/whpx_arm.h      |   1 +
- 3 files changed, 116 insertions(+), 6 deletions(-)
+ MAINTAINERS | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index bf30381370..689babe822 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -26,10 +26,13 @@
- #include "qemu/units.h"
- #include "system/kvm.h"
- #include "system/hvf.h"
-+#include "system/whpx.h"
-+#include "system/hw_accel.h"
- #include "system/qtest.h"
- #include "system/tcg.h"
- #include "kvm_arm.h"
- #include "hvf_arm.h"
-+#include "whpx_arm.h"
- #include "qapi/visitor.h"
- #include "hw/core/qdev-properties.h"
- #include "internals.h"
-@@ -521,7 +524,7 @@ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
-     isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, APA3, 0);
-     isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, GPA3, 0);
- 
--    if (kvm_enabled() || hvf_enabled()) {
-+    if (hwaccel_enabled()) {
-         /*
-          * Exit early if PAuth is enabled and fall through to disable it.
-          * The algorithm selection properties are not present.
-@@ -598,10 +601,10 @@ void aarch64_add_pauth_properties(Object *obj)
- 
-     /* Default to PAUTH on, with the architected algorithm on TCG. */
-     qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_property);
--    if (kvm_enabled() || hvf_enabled()) {
-+    if (hwaccel_enabled()) {
-         /*
-          * Mirror PAuth support from the probed sysregs back into the
--         * property for KVM or hvf. Is it just a bit backward? Yes it is!
-+         * property for HW accel. Is it just a bit backward? Yes it is!
-          * Note that prop_pauth is true whether the host CPU supports the
-          * architected QARMA5 algorithm or the IMPDEF one. We don't
-          * provide the separate pauth-impdef property for KVM or hvf,
-@@ -769,6 +772,8 @@ static void aarch64_host_initfn(Object *obj)
-     }
- #elif defined(CONFIG_HVF)
-     hvf_arm_set_cpu_features_from_host(cpu);
-+#elif defined(CONFIG_WHPX)
-+    whpx_arm_set_cpu_features_from_host(cpu);
- #else
-     g_assert_not_reached();
- #endif
-@@ -779,8 +784,8 @@ static void aarch64_host_initfn(Object *obj)
- 
- static void aarch64_max_initfn(Object *obj)
- {
--    if (kvm_enabled() || hvf_enabled()) {
--        /* With KVM or HVF, '-cpu max' is identical to '-cpu host' */
-+    if (hwaccel_enabled()) {
-+        /* When hardware acceleration enabled, '-cpu max' is identical to '-cpu host' */
-         aarch64_host_initfn(obj);
-         return;
-     }
-@@ -799,7 +804,7 @@ static const ARMCPUInfo aarch64_cpus[] = {
-     { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
-     { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
-     { .name = "max",                .initfn = aarch64_max_initfn },
--#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
-+#if defined(CONFIG_KVM) || defined(CONFIG_HVF) || defined(CONFIG_WHPX)
-     { .name = "host",               .initfn = aarch64_host_initfn },
- #endif
- };
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index 4254a8aadb..07bb6fae5d 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -41,6 +41,17 @@
- 
- #include <winhvplatform.h>
- #include <winhvplatformdefs.h>
-+#include <winreg.h>
-+
-+typedef struct ARMHostCPUFeatures {
-+    ARMISARegisters isar;
-+    uint64_t features;
-+    uint64_t midr;
-+    uint32_t reset_sctlr;
-+    const char *dtb_compatible;
-+} ARMHostCPUFeatures;
-+
-+static ARMHostCPUFeatures arm_host_cpu_features;
- 
- struct whpx_reg_match {
-     WHV_REGISTER_NAME reg;
-@@ -692,6 +703,99 @@ static void clamp_id_aa64mmfr0_parange_to_ipa_size(ARMISARegisters *isar)
-     SET_IDREG(isar, ID_AA64MMFR0, id_aa64mmfr0);
- }
- 
-+static uint64_t whpx_read_midr(void)
-+{
-+    HKEY key;
-+    uint64_t midr_el1;
-+    DWORD size = sizeof(midr_el1);
-+    const char *path = "Hardware\\Description\\System\\CentralProcessor\\0\\";
-+    assert(!RegOpenKeyExA(HKEY_LOCAL_MACHINE, path, 0, KEY_READ, &key));
-+    assert(!RegGetValueA(key, NULL, "CP 4000", RRF_RT_REG_QWORD, NULL, &midr_el1, &size));
-+    RegCloseKey(key);
-+    return midr_el1;
-+}
-+
-+static bool whpx_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-+{
-+    const struct isar_regs {
-+        WHV_REGISTER_NAME reg;
-+        uint64_t *val;
-+    } regs[] = {
-+        { WHvArm64RegisterIdAa64Pfr0El1, &ahcf->isar.idregs[ID_AA64PFR0_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Pfr1El1, &ahcf->isar.idregs[ID_AA64PFR1_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Dfr0El1, &ahcf->isar.idregs[ID_AA64DFR0_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Dfr1El1 , &ahcf->isar.idregs[ID_AA64DFR1_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Isar0El1, &ahcf->isar.idregs[ID_AA64ISAR0_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Isar1El1, &ahcf->isar.idregs[ID_AA64ISAR1_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Isar2El1, &ahcf->isar.idregs[ID_AA64ISAR2_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Mmfr0El1, &ahcf->isar.idregs[ID_AA64MMFR0_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Mmfr1El1, &ahcf->isar.idregs[ID_AA64MMFR1_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Mmfr2El1, &ahcf->isar.idregs[ID_AA64MMFR2_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Mmfr3El1, &ahcf->isar.idregs[ID_AA64MMFR2_EL1_IDX] }
-+    };
-+
-+    int i;
-+    WHV_REGISTER_VALUE val;
-+
-+    ahcf->dtb_compatible = "arm,armv8";
-+    ahcf->features = (1ULL << ARM_FEATURE_V8) |
-+                     (1ULL << ARM_FEATURE_NEON) |
-+                     (1ULL << ARM_FEATURE_AARCH64) |
-+                     (1ULL << ARM_FEATURE_PMU) |
-+                     (1ULL << ARM_FEATURE_GENERIC_TIMER);
-+
-+    for (i = 0; i < ARRAY_SIZE(regs); i++) {
-+        clean_whv_register_value(&val);
-+        whpx_get_global_reg(regs[i].reg, &val);
-+        *regs[i].val = val.Reg64;
-+    }
-+
-+    /*
-+     * MIDR_EL1 is not a global register on WHPX
-+     * As such, read the CPU0 from the registry to get a consistent value.
-+     * Otherwise, on heterogenous systems, you'll get variance between CPUs.
-+     */
-+    ahcf->midr = whpx_read_midr();
-+
-+    clamp_id_aa64mmfr0_parange_to_ipa_size(&ahcf->isar);
-+
-+    /*
-+     * Disable SVE, which is not supported by QEMU whpx yet.
-+     * Work needed for SVE support:
-+     * - SVE state save/restore
-+     * - any potentially needed VL management
-+     * Also disable SME at the same time. (not currently supported by Hyper-V)
-+     */
-+    SET_IDREG(&ahcf->isar, ID_AA64PFR0,
-+              GET_IDREG(&ahcf->isar, ID_AA64PFR0) & ~R_ID_AA64PFR0_SVE_MASK);
-+
-+    SET_IDREG(&ahcf->isar, ID_AA64PFR1,
-+              GET_IDREG(&ahcf->isar, ID_AA64PFR1) & ~R_ID_AA64PFR1_SME_MASK);
-+
-+    return true;
-+}
-+
-+void whpx_arm_set_cpu_features_from_host(ARMCPU *cpu)
-+{
-+    if (!arm_host_cpu_features.dtb_compatible) {
-+        if (!whpx_enabled() ||
-+            !whpx_arm_get_host_cpu_features(&arm_host_cpu_features)) {
-+            /*
-+             * We can't report this error yet, so flag that we need to
-+             * in arm_cpu_realizefn().
-+             */
-+            cpu->host_cpu_probe_failed = true;
-+            return;
-+        }
-+    }
-+
-+    cpu->dtb_compatible = arm_host_cpu_features.dtb_compatible;
-+    cpu->isar = arm_host_cpu_features.isar;
-+    cpu->env.features = arm_host_cpu_features.features;
-+    cpu->midr = arm_host_cpu_features.midr;
-+    cpu->reset_sctlr = arm_host_cpu_features.reset_sctlr;
-+}
-+
- int whpx_init_vcpu(CPUState *cpu)
- {
-     HRESULT hr;
-diff --git a/target/arm/whpx_arm.h b/target/arm/whpx_arm.h
-index de7406b66f..df65fd753c 100644
---- a/target/arm/whpx_arm.h
-+++ b/target/arm/whpx_arm.h
-@@ -12,5 +12,6 @@
- #include "target/arm/cpu-qom.h"
- 
- uint32_t whpx_arm_get_ipa_bit_size(void);
-+void whpx_arm_set_cpu_features_from_host(ARMCPU *cpu);
- 
- #endif
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 8d84f141cc..7ac1efd904 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -552,6 +552,8 @@ M: Mohamed Mediouni <mohamed@unpredictable.fr>
+ S: Supported
+ F: accel/whpx/
+ F: target/i386/whpx/
++F: target/arm/whpx/
++F: hw/intc/arm_gicv3_whpx.c
+ F: accel/stubs/whpx-stub.c
+ F: include/system/whpx.h
+ F: include/system/whpx-accel-ops.h
 -- 
 2.50.1 (Apple Git-155)
 

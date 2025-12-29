@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62842E92FCB
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58B0CE92FC9
 	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 17:50:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaHO5-0003TU-8y; Mon, 29 Dec 2025 12:50:33 -0500
+	id 1vaHNr-0003GC-3r; Mon, 29 Dec 2025 12:50:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vaHO3-0003Rw-AT
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:50:31 -0500
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ id 1vaHNd-0003BY-Fj
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:50:12 -0500
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vaHO1-0003k1-Pm
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:50:30 -0500
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-7b8bbf16b71so9202557b3a.2
- for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 09:50:29 -0800 (PST)
+ id 1vaHNb-0003QD-Eq
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:50:04 -0500
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-7fbbb84f034so6254657b3a.0
+ for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 09:50:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767030628; x=1767635428; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767030599; x=1767635399; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=NMJvl+26zye/uc6N8hPetEtCSv2kkfCtjjQWUsWfol8=;
- b=CRJkdZei0wytMIcABr7VpzsInWHKa8yEK3eTLIdnxT82ibFbRWpXYgOJM32IGPUqFl
- MRR7vuhdzGVa7JyoL7ROjV0P+7h3hc436d/7Ek3rlRLPAKH1ByJfWt8FVHwXqrBs3iJU
- 2FuDpZuhmKqIIj1DueC5z0LjtjBxmSM1mJ2B64G3c8CkiHIsoi2TU0sSRbYWr/m0Uagn
- ucdpBLsLwZ0ogI7N852say4o8JxT8Vtlav7ri6hmsdkYbmoUdwm9BaNiA+RBH8+6WKLY
- 0VyMvdKbjLtMX/SJalcIPpPdMZxj23dlBToTIk0dTLqjpxjx0bE8KQb/m3ALYHmtxCoe
- qapg==
+ bh=EcAbgDXHVxo//9dE/opdwDSUstPmjyc3Gle9ozu/kak=;
+ b=cSqJlNEy72Yaf1FaAfSSzMtMoBHpjWIjueDjKi8uGZySCg8Qk4lg7qQmx6uDs4MCrO
+ ngv7WoqLCI7geuAvimUHz+XqqRjRsI+bDiaOV5erU8m/a/xg5LxGD2r1bfDZSMwDw+TG
+ yaa/O/aM5AdkF/KHxQQ9b7VfjHUsKAjk8/EuRcDzssTt/QAn9Dv3ZacjQ/QS+5NobzBB
+ Y2f2xVg2YLKa0XA0SKWSvSg19hTw/PWJSh5bik0+tqSYwzTnocI5zmNe8mfL4lWtsJw8
+ wa55E/QG2zC/s8jBmDx22FEOQnkWPzJ+HTwj/RwdwPShPVjkD1mEhlowMf9J+vZ2nljl
+ g8+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767030628; x=1767635428;
+ d=1e100.net; s=20230601; t=1767030599; x=1767635399;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=NMJvl+26zye/uc6N8hPetEtCSv2kkfCtjjQWUsWfol8=;
- b=huVzXfRgB2O0CLBnLc0UiWiZh0lkW1L7Bwk3R2s8KcF+kXRdlLS+9mSYd6yu78hnCO
- 0nN3SK1hYFQ7oTGep70Rrxx/gOixK9yUxraqy/pOjepDX0+zq3SXn6MTNQIdKFdfBEVh
- 8vNsCdWyK7fkNiSo5O6bdW3c0hOuxw/E97Gu/3mAB3idlL5yw2/7eshgYCFWd+OsQ6+d
- Lbg+DByIfecpTHaMtyKJSeOuhrTrdC1U6Ov4RCBjBV8I0dhjiuUBc51nUKNYiPJxLp8C
- HrRThYaHYQl4yUm2JP0gkGlfPokNtnr2g15K1mDkenxFOCD8me7DfE7Hawl23oxX7zEb
- 3Wbw==
+ bh=EcAbgDXHVxo//9dE/opdwDSUstPmjyc3Gle9ozu/kak=;
+ b=CW+ewjIAC6nIqA+dSbIaRuI+ZfIPLI5CCmGEAjmOBRrelG7XQ1OOIgjDV5EsFEo5Q5
+ T95bjaXLxz9nCfb0D8VoixVBVpmd4eDczPj2QYo+HOLf5T29U/PQM5hP+cxf7wgiE4vh
+ dUpjoFeACXTZPxFlIAJK+J4oY+gdEt3HB61zfHZf+NI4rdwY5O84tSyx3CJvjygLhD72
+ bCtX4/WCuSmGsx4M7V8fTc2woemShMVKplBrEJYlltv20xDZvQCWtzKnQcumuLQjyyD4
+ kQCw4JlKunu7fj/P1fNWWFo6jvJsYjcd2fNIjL4EbbrQyfcyOtAMR3/ETkl/z9ovoJWz
+ s66A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX1N3yVHNDnNq0prKxN9RDgCU5v27kO3h6ijUJdSTF4QCvNdsEep8CX8FVZrLdUyo5j2d7+USjcCA==@nongnu.org
-X-Gm-Message-State: AOJu0YyHr5zx5D3FVW7SHKCxhzhkbmlhhj35UkJDSuHI/NJb3jao8S9J
- XJ4Y4xRYtpwCDShtt8PsqAHLhmweCFdQkzyoNQ3IbVnnUE89NYbGCzdsqx/hP3eBN4M=
-X-Gm-Gg: AY/fxX73zTpU9Y/hS0zICfaBRfAbZeu48X9uRBaye/4UHPBU9Pg1amyhOBI6aGNRPpS
- OtTnyG2biHZELYwi1KDrHtQQy7fWkslJmiO2z/slhZuov+ES9d5XPReXiWls2cefPX6w0NIPdm/
- n2Lk6a+QsTsbwpOpMLOPF5AEB2aM/96KJTUWt/TAD8OJeJpII6tNPC6HJouMSdI7EZo5s0+QBaV
- gVe3zwcU0l1yBMexXP852pUMmZtIHJgOL9IvQ7m+VonwkzIGlMibmV22Gg+zap2/8yN0xaUcSY3
- DaLwhMV67NYrfSazDIxCvg/AbBgvoBnL7n693cqZVvlXHhHiQsZha9drLEn7Ja686zsH1/6zoQx
- qHTy6hKpJKEYk/yD1b1a4wEKlEHqiGheIPLwq6rE/HYVnBncIhjEvx4jsUGoLarHyfJGk3X0ggg
- y5pSkrXWmqsnSrIG0aZDcJ9VaT97VBtEarGfq9eI+/LLqONFyfcy3VEaoC0/3rBiHHvbI=
-X-Google-Smtp-Source: AGHT+IGWKwlx6v7gYluQ1MLIMhcafWyUo/A9TAcRutAdcXVCZWqG3IA4aGb+/LU8vGsEZaPt18WRVw==
-X-Received: by 2002:a05:6a00:4c83:b0:7a2:710d:43e7 with SMTP id
- d2e1a72fcca58-7ff648ede90mr25019660b3a.24.1767030628311; 
- Mon, 29 Dec 2025 09:50:28 -0800 (PST)
+ AJvYcCUeUiNAd2xzUBDATFSaRUsLURYLVRuAbJm3N3CiLqAShvI38wKqP4IcTW5qpzqz9wgB+R6SF5/oJw==@nongnu.org
+X-Gm-Message-State: AOJu0Yw50MtylV64wHBKM/aIfZr1DdKJ8Cd70KmtEfV0wKayfd99tT2c
+ kih7DjpcRceqr2GkVlVYUVBngF+MysbPxybCigWUDTsJQQjvnVlBc3kDjz5Lu4iPWnE=
+X-Gm-Gg: AY/fxX7ckNZzplbhsdFBftrmZdxhE8JCEY3yYhHVo/mvABiAD8rO9VMPyRMt9MAHOp5
+ YWsn5Ho4LEmZQmTKPPjSm0bSv4O1Wb/DYk9oj6slmmT105i7ASvWAa0J2gL7MEU7bSo1yACRVkn
+ BgKpyz2FoQzMr7LW7d8deP+QNKcoZg9YiUWfqio6HzO/PI9C10zzLUJRe+P4fWGNB1yexQ9paGS
+ KOI9/6C77ZrHFri+mMuTilVVwhHtbO98s0ln+31vC4vNvq5RdbMTI7ykOq2l6tnTNcgaeKDsFD/
+ ZKOcOF37p/67nbH13SSfEznPY5KMfFfEWAXelMuosr9NbpkKiXgwsJEEls1RC9fFPBm8pkiFwsM
+ xpquBCdr4wzSm61NkRx+NeYcDylHZ5JXMzYh6rYxD9oHm3OZ89TINrUzrqlaWi0EI1TVye0nskZ
+ kOUrkITM6O9W52Wg55ZGEyyXPj7g3NPehzI0sUG381x2Hp8Ee+0gwQMPAS
+X-Google-Smtp-Source: AGHT+IGHkY0NPJFlofxy7Lt+4zSf3MOYzItOPAg2JidTI0ZvomHj5KR6VtjPsNPyzYiGIk6cD5T2YA==
+X-Received: by 2002:a05:6a21:33a0:b0:350:66b2:9723 with SMTP id
+ adf61e73a8af0-376a9acee6emr27007930637.43.1767030599142; 
+ Mon, 29 Dec 2025 09:49:59 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7ff7b31c479sm29978778b3a.24.2025.12.29.09.50.27
+ 41be03b00d2f7-c1e7bd61b4csm26034630a12.18.2025.12.29.09.49.58
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Dec 2025 09:50:27 -0800 (PST)
-Message-ID: <52121d27-59ae-4547-8c07-90514f1f2d74@linaro.org>
-Date: Mon, 29 Dec 2025 09:50:26 -0800
+ Mon, 29 Dec 2025 09:49:58 -0800 (PST)
+Message-ID: <322e53ba-4b89-48df-95b0-98c2a72d174a@linaro.org>
+Date: Mon, 29 Dec 2025 09:49:57 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v12 05/28] tests: data: update AArch64 ACPI tables
+Subject: Re: [PATCH v12 02/28] accel/system: Introduce hwaccel_enabled() helper
 Content-Language: en-US
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>,
@@ -95,13 +95,13 @@ Cc: Alexander Graf <agraf@csgraf.de>,
  "Michael S. Tsirkin" <mst@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
  Cameron Esfahani <dirty@apple.com>
 References: <20251228235422.30383-1-mohamed@unpredictable.fr>
- <20251228235422.30383-6-mohamed@unpredictable.fr>
+ <20251228235422.30383-3-mohamed@unpredictable.fr>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251228235422.30383-6-mohamed@unpredictable.fr>
+In-Reply-To: <20251228235422.30383-3-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x433.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,14 +125,17 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 12/28/25 3:53 PM, Mohamed Mediouni wrote:
-> After the previous commit introducing GICv3 + GICv2m configurations,
-> update the AArch64 ACPI table for the its=off case.
+> From: Philippe Mathieu-Daudé <philmd@linaro.org>
 > 
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> hwaccel_enabled() return whether any hardware accelerator
+> is enabled.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->   tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 164 -> 188 bytes
->   tests/qtest/bios-tables-test-allowed-diff.h |   1 -
->   2 files changed, 1 deletion(-)
+>   include/system/hw_accel.h | 13 +++++++++++++
+>   1 file changed, 13 insertions(+)
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 

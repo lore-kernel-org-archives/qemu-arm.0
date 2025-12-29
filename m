@@ -4,77 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EF27E92FCB
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 17:53:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45FC7E9273E
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 17:54:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaHQy-0005IF-E8; Mon, 29 Dec 2025 12:53:34 -0500
+	id 1vaHRS-0005yO-QB; Mon, 29 Dec 2025 12:54:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vaHQp-00058O-Rg
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:53:24 -0500
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ id 1vaHRK-0005wG-TT
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:53:56 -0500
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vaHQo-00044R-B0
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:53:23 -0500
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-803474aaa8bso3194873b3a.0
- for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 09:53:21 -0800 (PST)
+ id 1vaHRI-0004ZR-Pr
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:53:54 -0500
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-29f30233d8aso107777165ad.0
+ for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 09:53:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767030801; x=1767635601; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767030831; x=1767635631; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=xKebTEGsUkLdh5Qjx0PteMTKZhXxL5LjtYOii44DHnI=;
- b=gpPoV0t5psdphr/lu2+Ol2jcJVB9YANLr6C/N/EWIVBTlSA6mhqxLhZRMnohPpfGxE
- 8OnzJ0+CvVhUOIPqug4QfYguseCxG11XdIfnVsMG5PPx5uMvXbxg3/lWEazurNTseUFg
- yAk/IFu6nYdqcXcKDCdPbgEXw+PPnXfng8PDQsd78Od6TInf4HEZpO6p8e2s/fgtg4+Z
- qwvlOlqKpH0mwTdDQzZK44+fuN1qlkshKAqnYMJh0UU+ThEVtTA/YTMFzdUAkOPiylBn
- R5QUuxY34YOyflq4yz6K2of1td7BfNebgGtbx4GVY0o4K3zevWwg6/OhFEM89s4Rxmx+
- k3dw==
+ bh=lky3eRWjNVZKS+mrPVmhhZW7nvQlMJxhyck2GcA5NUA=;
+ b=TlDleG3Sx69MemQlrm3XDoXoGiqK097toDgtYOGlxY3JnBUf1B7EgEWSG+Yg5G19eh
+ FKKmr6tbmbQaRZaUixs5Jxg7eAYSaSB/G6oCDT/xSWyO5gsngkn8Q9cBjZqLV12zBkYu
+ cCTb5zJBqOqsTWvToQpDNV4J++59n5TueuGGunTywiBopq24MfQSXYvnb5WjLUH8oPed
+ 8kVG/RWh7tpaiw7gooWHqFgTmWwfhV+Vd67PsLMF2F0KKny4DSZM7sXgwRv+WjDaOa1T
+ L+9RWQT6cH3t4c/eBkh3BU8HK4K9fuq815emLNC5V1I4SjpnsFjicGzm2x9yRJelQp+n
+ bX1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767030801; x=1767635601;
+ d=1e100.net; s=20230601; t=1767030831; x=1767635631;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=xKebTEGsUkLdh5Qjx0PteMTKZhXxL5LjtYOii44DHnI=;
- b=flY1FURcT7XW6fH9sowWGrs79Y54SGw1GI9oEKzr7F4Sm08ai84I467XSu0a27wA94
- nwIJWvGqgiB2w4iFqey3GQMaK1Cprwb6BEALaUOV0j6ZoB3k4V8vbi/3otjd0IX0/46/
- ptMw1PF+PB0oHUQpjMR6jT31Jkv45rnGV2ydcL+8gHC89bPauGVUwjY9XtsqCFib6FW6
- 95VcASaQgn3i6dLKYun4rcetgMo+jd1jM9iMUVfIlKFgy7vmdK1DdncnCFQ7GHcnJyj3
- UToofffyhDgjFcra5eIGsWHcA1wCI5x1sDcp1dTqUbn2hPXdy+ZmA38LbZT8tfFhv+N+
- GSIg==
+ bh=lky3eRWjNVZKS+mrPVmhhZW7nvQlMJxhyck2GcA5NUA=;
+ b=MmZAXbVpoLChOagcvYXWdw076nv1Bd5rG8KX2j+0fKWiwMXBKMqI1hAEvy1NRYz+zh
+ mY0p/XN9JiuMZ7rNWBDjlKja480Wi2aUmYex1GbkVVXZAiaMMtnM9xjXQJqrbw9ZK2rG
+ dTwte4fWnzMr+nt6Y+vk4etUuHRzVncSBqbicXH6W28MtsFoOpYt/adG33UMPjMrtNgG
+ 61FIWCx4fLLtQusDo51LPFlHBFTg0qZB/9fnA6O9j9zvnj+Sw/ZsRu4sifxC5ZxR/l4H
+ 1btK1DZWZSKQDSQsNrJJ5k+6wyXWiJaix6lDfZQ3e2tRRY4cbUIOQBDIQPko2FS8XMz2
+ xojQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUp1URlLkoH1jyWIpBnpwzrNU/RocKwB0LZ6RbiL2xN8fWDF1NYw9J28vtpBzxfzqXK7GeeYA/WnA==@nongnu.org
-X-Gm-Message-State: AOJu0YyeXlnGj9mqj+AQUVQR2QjK4yAHe+/h9+nRMnnC1s/w2piqK4Ps
- Ei9x3g9EKwm7ya+Jp2v6THa/LS/cHyfRzPsW0jHyIKWM4e8PetM79Co0TunQRLAvcta+M8cXgON
- RdSYF
-X-Gm-Gg: AY/fxX6vnC/Hlknah13KIY/m+olgvfceR0pnyXjxOrXbJRRGLR/ROBZyrAXWe+UeZpg
- Z7Qo7VAlEcfz32bssMFZFKyhTWYeRrmClsjJIJEWy4iRYFNzav1TQfyeL4Da+o2stgdRhzTROj2
- +lLOcCh4p8uJnmQgBvcOTOarVjhyOB5ICCd9E45GUTO0MahNDHlMcOgehQVtjvfRmNKk5S/qYxF
- iO0dQxa4Gy/iSaQEP/FyyFXQsPcubAVfNbofBg3kkZj0VJl4TzRiNr24j/DQ9yL4aBGFxLbZGW/
- TBKrtFoFrkQ5p4lfzC/N1jY0bIsqRo3CnU50Fc18NSTnhwqeEjTWRHCe5f5jZQ+DegbtXqZ+5/f
- fSZjmWHm+ZoY4Hm8H8S7sw65RDcq8Bi9s1C6b6VLuS92yuqk8D8rFwafTfP1kAqjWefR18WYFtQ
- BfSmbBtm0hGKhWc7YRDAVEpn9Jpkv8XyRMicGxm4qbCNBWbqW3gdYOy9stLjRgEmsOBN8=
-X-Google-Smtp-Source: AGHT+IGVgzQAK/fKu5u3+Z3UqeiiRUCzfsX+fcyo5nUsypedfjWctOq/0yYO4IO5xKpzh8UtaIWt0g==
-X-Received: by 2002:a05:6a20:7346:b0:36a:dbc6:2592 with SMTP id
- adf61e73a8af0-3769f928fb7mr31412985637.31.1767030800854; 
- Mon, 29 Dec 2025 09:53:20 -0800 (PST)
+ AJvYcCXoPwSBxSttYKqsoje/4WGf+bZpFAtkaV53emR7m+ZKWICU0G0QvhkIdyscn2o4Jkcj5ZkJCHbujQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yz33FdzGI6GkeraFWhrYso2msLaN6bOMTsAxH9hJS47ruy0E7Bq
+ d4Ht4udhm2C0voy2vk5FgHZ/pX6drxQTz2MSCHx5c9cWdfRL8lGwPA0tndpsmi+tOv4=
+X-Gm-Gg: AY/fxX46JpcCpmWx9lctez/QoCGX2zHYIZQzpctdmJkjCkJMAyif2nGRapOwifW6M0U
+ ON/xL3ToFh2uWAZO4ZHXBcLnOm/qcs5/4lFZRh3hmuGNP+2FexZ1o8GsMrBgN1NW4oN++/zbEOt
+ VMz6o0Bf0mVA4t8Tj9BXxGkv9PBo22puQqOYf8JV33wYl29J4+fXGwxi0MyWWAMAoYSMAi/1o6Y
+ rPJiGpK2MsG7w6aLkqlC1sO4+24hQedN9a8/RDasFGlnBJrf7j92oIfVoy6QET26TBxBLTNHzXh
+ 0GHxLhO8qE3b2cW8amuaHjRGPc/VkQYUrACIkLHJXL/SpJpYD7QRHpCXHNqzTqF+kc0I9y0Kh2F
+ 0Zcael5LdBctKRFQQEYCNgatBBCZvS67aoiKM7x19HmFC9eMQKv34qFvxO1jtTomqA1PmSjZW8S
+ Ak1bU+xZ0XTMaOvY+Ko5s/pFfqOuyXP2cCMGJu1yLCBTex80CRZ/1pOFPHuZNHT3kqohg=
+X-Google-Smtp-Source: AGHT+IF3q1WBxBVC8iD6QACtpbZ43a201nZhMCGmysPIkpzipaQ8LOlenvNFJc0//WIB7MVZ2DNQXg==
+X-Received: by 2002:a17:902:daca:b0:295:5dbe:f629 with SMTP id
+ d9443c01a7336-2a2f21fc4c9mr274162615ad.8.1767030830730; 
+ Mon, 29 Dec 2025 09:53:50 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c1e79a164d0sm25942432a12.10.2025.12.29.09.53.19
+ d9443c01a7336-2a2f3d4d858sm282363275ad.57.2025.12.29.09.53.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Dec 2025 09:53:20 -0800 (PST)
-Message-ID: <67b6e092-f03c-4638-a72b-6871958fe31f@linaro.org>
-Date: Mon, 29 Dec 2025 09:53:19 -0800
+ Mon, 29 Dec 2025 09:53:50 -0800 (PST)
+Message-ID: <e5607e7b-3523-4d75-b0b6-d134c7c5d1cf@linaro.org>
+Date: Mon, 29 Dec 2025 09:53:49 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v12 08/28] hw: arm: virt-acpi-build: add temporary hack to
- match existing behavior
+Subject: Re: [PATCH v12 09/28] docs: arm: update virt machine model description
 Content-Language: en-US
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>,
@@ -97,13 +95,13 @@ Cc: Alexander Graf <agraf@csgraf.de>,
  "Michael S. Tsirkin" <mst@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
  Cameron Esfahani <dirty@apple.com>
 References: <20251228235422.30383-1-mohamed@unpredictable.fr>
- <20251228235422.30383-9-mohamed@unpredictable.fr>
+ <20251228235422.30383-10-mohamed@unpredictable.fr>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251228235422.30383-9-mohamed@unpredictable.fr>
+In-Reply-To: <20251228235422.30383-10-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x435.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,19 +125,15 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 12/28/25 3:54 PM, Mohamed Mediouni wrote:
-> In the prior Qemu ACPI table handling, GICv2 configurations
-> had vms->its=1... That's broken.
+> Update the documentation to match current QEMU.
 > 
-> Match that assumption to match the existing ACPI tables that
-> have been shipping for quite a while.
-> 
-> And see what to do for older releases. Likely don't
-> want this to be carried around indefinitely.
+> Remove the mention of pre-2.7 machine models as those aren't provided
+> anymore.
 > 
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
->   hw/arm/virt-acpi-build.c | 10 +++++-----
->   1 file changed, 5 insertions(+), 5 deletions(-)
+>   docs/system/arm/virt.rst | 13 ++++++++-----
+>   1 file changed, 8 insertions(+), 5 deletions(-)
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 

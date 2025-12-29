@@ -4,95 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DE40E92FCB
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 19:40:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD1C4E92FD3
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 19:41:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaJ5V-0006FP-4J; Mon, 29 Dec 2025 14:39:31 -0500
+	id 1vaJ4V-0004HZ-Dc; Mon, 29 Dec 2025 14:38:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vaJ4m-0004zJ-IJ
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:54 -0500
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
+ id 1vaJ4F-0003w0-6F
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:12 -0500
+Received: from mail-qt1-x833.google.com ([2607:f8b0:4864:20::833])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vaJ4k-0000Oi-UG
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:44 -0500
-Received: by mail-qt1-x836.google.com with SMTP id
- d75a77b69052e-4ee147baf7bso3868251cf.1
- for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 11:38:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1767037122; cv=none;
+ id 1vaJ4D-0000H8-3l
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:10 -0500
+Received: by mail-qt1-x833.google.com with SMTP id
+ d75a77b69052e-4edb8d6e98aso4444641cf.0
+ for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 11:38:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1767037087; cv=none;
  d=google.com; s=arc-20240605;
- b=l0nTdngsawuT+U0l0tvsTwAMhaQoNprg0hncL4WYwpA1Ox+VXtFJSS3UtKuOp9AsU1
- 5LegQQ/Z5GDk0afMEH2muIlP2Xm8PgcvglqIByAxr0rP0LshqYKrO2kM52IcwiGtMYah
- bkTT+uKAoDEBCi0xA/3iKlHUFYLQSNEp6dfNHLzCgggypnVKFDHAPghhSuSTHVdlwqD/
- OBFkGy4v60JANoZt75hHGGVqhLN2NEUHz+/NPUgFEpMLlsotQQwT5IrEoXD6Gi+HH0KL
- Yzihfs/0cp8KVAynp1XPkFXfSrdSOHNooBmZRURuyPkb/njsETzdsVDSO3L5fb6QLZ0o
- pT7w==
+ b=gr9qFIM8QzYuk0LxkbdxxmTPgbbxH6nXtPfPLLIjO+xzs8if5hA6d8fof+naNf9fug
+ XfdAVJxfH9PIXSa5+ZKUcmspsNEAFkaym1ND36u/QsayeKAxkjsuTSBoWfVZLLgWHhYX
+ gRleqJehcskursqILNmvQXdm9NAyQUgQtOzfB71pI1Z+yPvVY/gdna4bJ/O5QBY7cHs2
+ jszH9A4GTvqVqhvZClBojKKaTYkr1fT4ieV+uD4IDiyTEBiq4fw0LyNQAp2hbhOSk1e7
+ 0aHf9KwfanQsoZ9ATfLDTz7V2mb+/VEiXh0TrgMjs7KRQ1j1HnBOqTrHl5JCKkx46n+x
+ ut/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=u73m9N8obcpsjMR5nj1DHn9VzepxtitMUFYhJ02aFA8=;
- fh=t8gbSIwWCH+iSuHnOYOxraOTJPgOfPAwDXRF9Gr1nGs=;
- b=Cn9r6CDQfEwC//JfVFG5WfGppTiJoZQNyyEf7Ye1Hge/kTz8m9rLPNIq/GbBAJbzhF
- PU6FKiXVb7kO2QbIpprrK8BOQtaOljZcKMTOpsViNkxtzAYx0JppRBMBod23yksZpEbO
- 3uj+lPGy2LMn5Af4qfIHB0LqWR6cnp4kOopV9B+cES5CxsayUMUHm54bwkOeFE3gtKym
- 8b7lCnAjr0Lqf+gxJlZsrjZNI2jhIsjOiLdJryAnvWMqWa1jZ8OweptURHHUS2PSraBE
- EfZOUvgaGS5kjvektNPdneM7N6pgxn6YN3EElSv6Jw6MQ4Xwwq8vHpyP6vFl+ed3ORg3
- zR6w==; darn=nongnu.org
+ bh=zuTJiWk0L++OdECP3jktqysCn72HNQBRFVZi8vZmRxY=;
+ fh=qYB6Z6swtRlDYMqJilOeKElwnRvzKip/VKCKhK2vtaM=;
+ b=NrMKIB9kjQhuhxIwLtd/TkGkKif5Rx2DIo7vHt5U8PbzONyZ3yoB440B1PaDcO6Unr
+ +C+ABQ4bVywKPO46USR4Ppc4TZrUMhFlwMzgr/Pf2MJbhNj6DjWIROGKe9Fu2fcSOvhl
+ 1Q4YOSF/LnN+SvcPkhhDSq7fWOK7htSggo9wDSWFxacyMm3aBh0nMaaP13rESbU7RNt0
+ ncgAXeOu3U74uR76P83GPA1HZ1sFrMOBBYnFvUvPLn84qVDUEW+FMZiNp/H5de39R/R6
+ l2k1DT/lMnum8DFgXWSY07tJDxo5fXqonOQJo/uK9rtclzE3YMgmXTB2XLqFeT4SoB6W
+ 0UCw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1767037122; x=1767641922; darn=nongnu.org;
+ d=google.com; s=20230601; t=1767037087; x=1767641887; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=u73m9N8obcpsjMR5nj1DHn9VzepxtitMUFYhJ02aFA8=;
- b=psIQZzfa0WBRbS/VHM7ra97h50uuPURdAoYFSk/wLhK6dGfk6PWifzBx+XQXR+4ZRS
- wI71TlXSw52kIv/dHHWfmqifOqe8MFBpXKw2lpRNxGd1v/+nl/UxlUTA32wAKb5rlBEs
- ZknFQRGGNAFmA1IhEEfawmgcgaKzF740a6kqAHWHSfb1WUtsUH+XcSk3GDB8B2fNPFCs
- IL+3s5P2aouwZnnrlNcFiF05mSo/8onYNDTgMwjpeTLd/kIT2byDlmTQ/hD/hcsd4U3n
- MpObNop7ZLW6RzSR+trDf8lTtXP6m0O9SuYLfGPgSXrjj7yOSyPHd/dorkufmTLvvTmk
- 0lYQ==
+ bh=zuTJiWk0L++OdECP3jktqysCn72HNQBRFVZi8vZmRxY=;
+ b=KVLi+a3am9aCt2Tzgg1z9vQVjDeZPm8srhHAyxuX0lpdZaDAPMTRXQ7bbBYigLtQqw
+ aCfRKMSB4doY3osdtE0X9KrD1i/kx7W0NDDEf8d71Q/wBcbCgSS1harIwX7l6S28QSgH
+ WYgb2/4Bco9MT1o701UR0kj6UP59Gi6T/7tTbtCJ+HBYOtLEs/ynwCCy4Hn8lLF52fbM
+ rQledspRK019DuE8/mkEWgNtdiGpxMZoOdJQ3iwjCltmsWdQ9gVtxqMSxb0T+NWhRlP2
+ 7CJ1xRvkKMuT7L4eb3GzdRltQ9R/nIzczaTRVg6mb4Lt5A0cKNOROuUHKGt/GfBsJTSu
+ 5tiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767037122; x=1767641922;
+ d=1e100.net; s=20230601; t=1767037087; x=1767641887;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=u73m9N8obcpsjMR5nj1DHn9VzepxtitMUFYhJ02aFA8=;
- b=VnmaNerr8s5/eev6O5/yi0ILg7Ca7bwR9YijMCuaGrp4YEqAJCNe0/GKU2O33HrY6d
- OmbcJ/ikRuQObgcA9lTgss9TCQYPh7W0ovQShdmM0NaXefpvacQHq+ZfkPLQEZUI3Nsk
- FLuCWYGu0hg0hUoOMkVf91eWuGaMhfRCPUfhRmP58DiM8mSf5NWZlgSwWo43Fr7ggtSb
- 4nutwGacaWKwML+wBW7TJA69K2Gl6ouS47aeym0KZa6TTWEg+g2Cm/wi6yB2MadbjlSE
- Cs/qRRlV+C0PSWlifitdp0VTHP0b0s8FLOlBhRJZdEB1YQzQuzRwmXzJXENeWWKyf8NS
- fVOQ==
+ bh=zuTJiWk0L++OdECP3jktqysCn72HNQBRFVZi8vZmRxY=;
+ b=k96xKNZJ8aX11iUztWxk2QVHKc4JNITMjckc1zR/TJQY6mPscxzUJqFIeI3ZxYqYCb
+ Tm5tftCot9sCDZz73wIa/2OwcXYAUTREGPV+BKL263kyW5JXKqyjyapc2umGXA+7wUB7
+ VDe+Fi0Qw5KqmLSQC1XlabpVBqU8R4iTJYjOEusGFncZj3xLO2qq8GRvhu7XK6wCrasj
+ IC5TzKpyXoTZ+/6TIT3x98z0KRPRpz8Bb4QPmhzemp4KDY581iVq5ab4fxWKQ8v6MZIT
+ 0Vh7aOap/jXAxPDZHWZNvzvSswho8v8+8Aqr+wit2mXw/gblg16yQE2MK/4Ei+V218+9
+ ROqw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUbBQMR2GLtqlIDNnhkJhsz0MSrRYl3JX47dR2L15RGqrWeYciZj+cF8QRqX9ciHBXZLv95kHb8Dg==@nongnu.org
-X-Gm-Message-State: AOJu0YzUxy7Z5IouDYZSfUPoU6b345QVHea96q+apKpoxdx5w1Ara0CQ
- 3VK5bDey3Gs5TU0Bk6Qj0g4CpOcKuCDYzj9I1AB2AGfUsqo89P/LbbwV5JcCyzeOb7XJ3sZKU4/
- phuepEBq7p4z5oFm/HiCYyxyTOeTmDOj0131WIaMb
-X-Gm-Gg: AY/fxX4CSpSST681ksOj9I2HUjRHDscxNNt0K0hcGIJtf82OJ+2iyf9IZJMoZwPbVSN
- 0ROldtKhdYNSXfyTXZvKfGoMG9ELhUCcX2QYZHp9fwXH65uDHK0/eEsFHui3lee+tBGxy3BbjYI
- HE5xhHt73e1+HRreW873VRCZjJjv+AjcDfchsbCa9BHOV3BAR7sBORL47X6iJpnf/viKg6xQxfQ
- vuxqQjD8+HlbBJSApr8eZonWsydhqgqqgBUThCtUeIWSDlFrO3SAxhyDs0HK2hZNE4y7jWih2Q/
- 5yPAhf/cA1cw3scekEJpgrfXaQ==
-X-Google-Smtp-Source: AGHT+IHP+6XviAUcyk8HN805MZK+8O0+3TYVEqx3yNoUoWyRwPny9Fc0nFfu/DncIIlIDuTVe0j4nOQqs2CwBP0NarY=
-X-Received: by 2002:ac8:57c2:0:b0:4f0:2e33:81aa with SMTP id
- d75a77b69052e-4f4e5f62fc8mr29427641cf.11.1767037121381; Mon, 29 Dec 2025
- 11:38:41 -0800 (PST)
+ AJvYcCUTDLIiau6xYiO4Zl8Tp1Tf9Pt5O/Cv/qo60+Bpzznu7Yi3nFKc0SaEq8gqkjpMX5Li0cKicYwE8A==@nongnu.org
+X-Gm-Message-State: AOJu0YyVpDYnFtwrmQ0hChE5rUn2Jf3aOfBUvqmeqDM7EJwYzIr86/BR
+ d/F+YELW2WUkBQukIM3VM0qaUEgc8G8nnsJ37KPkZLk0jYwpGY8lRIxTUzreGL033iBE37Tk9Q1
+ fMKxmahJyysEWVj2qFdBB0KS6XZ7jby+SgtMW435E
+X-Gm-Gg: AY/fxX7NWVIPz2XcbaSZV88fPIRkWXGTs//JgiHXEmYXVuuC94wvuGyhPzqh7tlE+gp
+ C85UZ3u0K85vQG0k645EGhpZu0IUz86E68gfAwugg+w+n7XKuDU3ek5j9Xbzo7qqrSwRwuUF+Qs
+ qkeZoqjbEUF9npxnihh1aijIwnm/akECxA8QrPKatRF4UjAVRjXPc1aqrzPxbELsDjiwqfri3VG
+ l2yqbXL0q8mYAdrI9jnZjNJwTI0bV707btOta10TPx6LZsM+p/RH7CY1CqkGKmXlEERTdmpl/Kj
+ 1sriL+bNMTTIDBCEBe0TtQO7JA==
+X-Google-Smtp-Source: AGHT+IGg7vDbpaWDgP0I7HPKJtytO55GbbdrcdtyCzWIr319iyw21CpRPQGJaxT9XUHY8qndw8khYi5ezYf9Wq7ynME=
+X-Received: by 2002:ac8:5ad4:0:b0:4ed:b4e3:cfa9 with SMTP id
+ d75a77b69052e-4f4e5f73bb3mr34920711cf.5.1767037086885; Mon, 29 Dec 2025
+ 11:38:06 -0800 (PST)
 MIME-Version: 1.0
 References: <20251224014203.756264-1-kane_chen@aspeedtech.com>
- <20251224014203.756264-19-kane_chen@aspeedtech.com>
- <473d4888-83fb-4eb8-8487-14c2521fc331@kaod.org>
-In-Reply-To: <473d4888-83fb-4eb8-8487-14c2521fc331@kaod.org>
+ <20251224014203.756264-7-kane_chen@aspeedtech.com>
+ <8d290ffe-351f-4dee-90f0-05dc1d299872@kaod.org>
+In-Reply-To: <8d290ffe-351f-4dee-90f0-05dc1d299872@kaod.org>
 From: Nabih Estefan <nabihestefan@google.com>
-Date: Mon, 29 Dec 2025 11:38:30 -0800
-X-Gm-Features: AQt7F2oYdFrBeM3Y3fB-nE4ykrEwYRPUHZW4bRmqDoqs6_Hgy8FQ-o0o7usnQhM
-Message-ID: <CA+QoejWBKrBfbZfdLa-mT1zgrQWjZzSLCQr6Srj58Rw_yRhRCA@mail.gmail.com>
-Subject: Re: [PATCH v4 18/19] hw/arm/aspeed: Model AST1700 I3C block as
- unimplemented device
+Date: Mon, 29 Dec 2025 11:37:55 -0800
+X-Gm-Features: AQt7F2pndCu4Eh-PKYuMv8R4soaUtN2IgxEWrjNd4FMSgKvFEIgD5eqRCmg4Gv8
+Message-ID: <CA+QoejVUzN0vqyC05R52_jX5vgFcBo0Dxp-91ZDPoff6SBrWsA@mail.gmail.com>
+Subject: Re: [PATCH v4 06/19] hw/arm/aspeed: Integrate interrupt controller
+ for AST1700
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Cc: Kane Chen <kane_chen@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>, 
@@ -104,8 +104,8 @@ Cc: Kane Chen <kane_chen@aspeedtech.com>,
  troy_lee@aspeedtech.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::836;
- envelope-from=nabihestefan@google.com; helo=mail-qt1-x836.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::833;
+ envelope-from=nabihestefan@google.com; helo=mail-qt1-x833.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -113,7 +113,7 @@ X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,24 +129,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Dec 24, 2025 at 2:43=E2=80=AFAM C=C3=A9dric Le Goater <clg@kaod.org=
+On Wed, Dec 24, 2025 at 2:39=E2=80=AFAM C=C3=A9dric Le Goater <clg@kaod.org=
 > wrote:
 >
 > On 12/24/25 02:41, Kane Chen via wrote:
 > > From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 > >
-> > AST1700 exposes more I3C buses than the current dummy I3C model
-> > provides. When Linux probes the I3C devices on AST1700 this mismatch
-> > can trigger a kernel panic. Model the I3C block as an unimplemented
-> > device to make the missing functionality explicit and avoid unexpected
-> > side effects.
+> > Connect the AST1700 interrupt lines to the GIC in AST27X0, enabling
+> > the propagation of AST1700-originated interrupts to the host SoC.
 > >
-> > This wires up the I3C interrupt lines for the IO expanders and adds the
-> > corresponding device entries for the AST1700 model.
-> >
-> > No functional I3C emulation is provided yet; this only prevents crashes=
- and
-> > documents the missing piece.
+> > This patch does not implement interrupt sources in AST1700 itself,
+> > only the wiring into AST27X0.
 > >
 > > Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 >
@@ -155,166 +148,224 @@ On Wed, Dec 24, 2025 at 2:43=E2=80=AFAM C=C3=A9dric Le Goater <clg@kaod.org=
 Reviewed-by: Nabih Estefan <nabihestefan@google.com>
 Tested-by: Nabih Estefan <nabihestefan@google.com>
 
+I agree with the readability notes from Cedric, as for the bus naming,
+I feel like that applied to patch 14 more than it does to this one.
 
 >
 > Thanks,
 >
 > C.
 >
+>
 > > ---
-> >   include/hw/arm/aspeed_ast1700.h |  3 +++
-> >   include/hw/arm/aspeed_soc.h     |  2 ++
-> >   hw/arm/aspeed_ast1700.c         | 15 +++++++++++++++
-> >   hw/arm/aspeed_ast27x0.c         | 18 ++++++++++++++++--
-> >   4 files changed, 36 insertions(+), 2 deletions(-)
+> >   include/hw/arm/aspeed_soc.h   |  6 +++-
+> >   include/hw/intc/aspeed_intc.h |  2 ++
+> >   hw/arm/aspeed_ast27x0.c       | 37 +++++++++++++++++++++
+> >   hw/intc/aspeed_intc.c         | 60 ++++++++++++++++++++++++++++++++++=
++
+> >   4 files changed, 104 insertions(+), 1 deletion(-)
 > >
-> > diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_as=
-t1700.h
-> > index 490f2a3b05..874b4d63fe 100644
-> > --- a/include/hw/arm/aspeed_ast1700.h
-> > +++ b/include/hw/arm/aspeed_ast1700.h
-> > @@ -19,6 +19,7 @@
-> >   #include "hw/ssi/aspeed_smc.h"
-> >   #include "hw/watchdog/wdt_aspeed.h"
-> >   #include "hw/char/serial-mm.h"
-> > +#include "hw/misc/unimp.h"
-> >
-> >   #define AST1700_SGPIO_NUM            2
-> >   #define AST1700_WDT_NUM              9
-> > @@ -45,6 +46,8 @@ struct AspeedAST1700SoCState {
-> >       AspeedI2CState i2c;
-> >       AspeedPWMState pwm;
-> >       AspeedWDTState wdt[AST1700_WDT_NUM];
-> > +
-> > +    UnimplementedDeviceState i3c;
-> >   };
-> >
-> >   #endif /* ASPEED_AST1700_H */
 > > diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> > index 4ea2521041..b185b04186 100644
+> > index f19bab3457..b051d0eb3a 100644
 > > --- a/include/hw/arm/aspeed_soc.h
 > > +++ b/include/hw/arm/aspeed_soc.h
-> > @@ -294,6 +294,8 @@ enum {
-> >       ASPEED_DEV_IOEXP1_I2C,
-> >       ASPEED_DEV_IOEXP0_INTCIO,
-> >       ASPEED_DEV_IOEXP1_INTCIO,
-> > +    ASPEED_DEV_IOEXP0_I3C,
-> > +    ASPEED_DEV_IOEXP1_I3C,
+> > @@ -58,6 +58,7 @@
+> >   #define ASPEED_UARTS_NUM 13
+> >   #define ASPEED_JTAG_NUM  2
+> >   #define ASPEED_PCIE_NUM  3
+> > +#define ASPEED_INTC_NUM  2
+> >   #define ASPEED_IOEXP_NUM 2
+> >
+> >   struct AspeedSoCState {
+> > @@ -146,7 +147,8 @@ struct Aspeed27x0SoCState {
+> >       AspeedSoCState parent;
+> >
+> >       ARMCPU cpu[ASPEED_CPUS_NUM];
+> > -    AspeedINTCState intc[2];
+> > +    AspeedINTCState intc[ASPEED_INTC_NUM];
+> > +    AspeedINTCState intcioexp[ASPEED_IOEXP_NUM];
+> >       GICv3State gic;
+> >       MemoryRegion dram_empty;
+> >   };
+> > @@ -288,6 +290,8 @@ enum {
+> >       ASPEED_DEV_LTPI_CTRL2,
+> >       ASPEED_DEV_LTPI_IO0,
+> >       ASPEED_DEV_LTPI_IO1,
+> > +    ASPEED_DEV_IOEXP0_INTCIO,
+> > +    ASPEED_DEV_IOEXP1_INTCIO,
 > >   };
 > >
 > >   const char *aspeed_soc_cpu_type(const char * const *valid_cpu_types);
-> > diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c
-> > index ca0ce4e2c2..5f3c56e6cc 100644
-> > --- a/hw/arm/aspeed_ast1700.c
-> > +++ b/hw/arm/aspeed_ast1700.c
-> > @@ -15,6 +15,7 @@
-> >
-> >   #define AST2700_SOC_LTPI_SIZE        0x01000000
-> >   #define AST1700_SOC_SRAM_SIZE        0x00040000
-> > +#define AST1700_SOC_I3C_SIZE         0x00010000
-> >
-> >   enum {
-> >       ASPEED_AST1700_DEV_SPI0,
-> > @@ -26,6 +27,7 @@ enum {
-> >       ASPEED_AST1700_DEV_SGPIOM0,
-> >       ASPEED_AST1700_DEV_SGPIOM1,
-> >       ASPEED_AST1700_DEV_I2C,
-> > +    ASPEED_AST1700_DEV_I3C,
-> >       ASPEED_AST1700_DEV_UART12,
-> >       ASPEED_AST1700_DEV_LTPI_CTRL,
-> >       ASPEED_AST1700_DEV_WDT,
-> > @@ -42,6 +44,7 @@ static const hwaddr aspeed_ast1700_io_memmap[] =3D {
-> >       [ASPEED_AST1700_DEV_SGPIOM0]   =3D  0x00C0C000,
-> >       [ASPEED_AST1700_DEV_SGPIOM1]   =3D  0x00C0D000,
-> >       [ASPEED_AST1700_DEV_I2C]       =3D  0x00C0F000,
-> > +    [ASPEED_AST1700_DEV_I3C]       =3D  0x00C20000,
-> >       [ASPEED_AST1700_DEV_UART12]    =3D  0x00C33B00,
-> >       [ASPEED_AST1700_DEV_LTPI_CTRL] =3D  0x00C34000,
-> >       [ASPEED_AST1700_DEV_WDT]       =3D  0x00C37000,
-> > @@ -172,6 +175,14 @@ static void aspeed_ast1700_realize(DeviceState *de=
-v, Error **errp)
-> >                           sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->wdt=
-[i]), 0));
-> >       }
-> >
-> > +    /* I3C */
-> > +    qdev_prop_set_string(DEVICE(&s->i3c), "name", "ioexp-i3c");
-> > +    qdev_prop_set_uint64(DEVICE(&s->i3c), "size", AST1700_SOC_I3C_SIZE=
-);
-> > +    sysbus_realize(SYS_BUS_DEVICE(&s->i3c), errp);
-> > +    memory_region_add_subregion_overlap(&s->iomem,
-> > +                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_I3=
-C],
-> > +                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->i3c)=
-, 0),
-> > +                        -1000);
-> >   }
-> >
-> >   static void aspeed_ast1700_instance_init(Object *obj)
-> > @@ -221,6 +232,10 @@ static void aspeed_ast1700_instance_init(Object *o=
-bj)
-> >                                   &s->wdt[i], "aspeed.wdt-ast2700");
-> >       }
-> >
-> > +    /* I3C */
-> > +    object_initialize_child(obj, "ioexp-i3c[*]", &s->i3c,
-> > +                            TYPE_UNIMPLEMENTED_DEVICE);
-> > +
-> >       return;
-> >   }
-> >
+> > diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_int=
+c.h
+> > index 51288384a5..4565bbab84 100644
+> > --- a/include/hw/intc/aspeed_intc.h
+> > +++ b/include/hw/intc/aspeed_intc.h
+> > @@ -15,6 +15,8 @@
+> >   #define TYPE_ASPEED_INTC "aspeed.intc"
+> >   #define TYPE_ASPEED_2700_INTC TYPE_ASPEED_INTC "-ast2700"
+> >   #define TYPE_ASPEED_2700_INTCIO TYPE_ASPEED_INTC "io-ast2700"
+> > +#define TYPE_ASPEED_2700_INTCIOEXP1 TYPE_ASPEED_INTC "ast2700-ioexp1"
+> > +#define TYPE_ASPEED_2700_INTCIOEXP2 TYPE_ASPEED_INTC "ast2700-ioexp2"
+> >   #define TYPE_ASPEED_2700SSP_INTC TYPE_ASPEED_INTC "-ast2700ssp"
+> >   #define TYPE_ASPEED_2700SSP_INTCIO TYPE_ASPEED_INTC "io-ast2700ssp"
+> >   #define TYPE_ASPEED_2700TSP_INTC TYPE_ASPEED_INTC "-ast2700tsp"
 > > diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> > index ca3adf9a50..0807481162 100644
+> > index de39a3e7eb..678d4eb6d9 100644
 > > --- a/hw/arm/aspeed_ast27x0.c
 > > +++ b/hw/arm/aspeed_ast27x0.c
-> > @@ -206,7 +206,9 @@ static const int aspeed_soc_ast2700a1_irqmap[] =3D =
-{
-> >       [ASPEED_DEV_PECI]      =3D 197,
-> >       [ASPEED_DEV_SDHCI]     =3D 197,
-> >       [ASPEED_DEV_IOEXP0_I2C] =3D 198,
-> > +    [ASPEED_DEV_IOEXP0_I3C] =3D 199,
-> >       [ASPEED_DEV_IOEXP1_I2C] =3D 200,
-> > +    [ASPEED_DEV_IOEXP1_I3C] =3D 201,
+> > @@ -91,7 +91,9 @@ static const hwaddr aspeed_soc_ast2700_memmap[] =3D {
+> >       [ASPEED_DEV_LTPI_CTRL2] =3D  0x14C35000,
+> >       [ASPEED_DEV_WDT]       =3D  0x14C37000,
+> >       [ASPEED_DEV_LTPI_IO0]  =3D  0x30000000,
+> > +    [ASPEED_DEV_IOEXP0_INTCIO] =3D 0x30C18000,
+> >       [ASPEED_DEV_LTPI_IO1]  =3D  0x50000000,
+> > +    [ASPEED_DEV_IOEXP1_INTCIO] =3D 0x50C18000,
+> >       [ASPEED_DEV_PCIE_MMIO0] =3D 0x60000000,
+> >       [ASPEED_DEV_PCIE_MMIO1] =3D 0x80000000,
+> >       [ASPEED_DEV_PCIE_MMIO2] =3D 0xA0000000,
+> > @@ -511,6 +513,10 @@ static void aspeed_soc_ast2700_init(Object *obj)
+> >       object_initialize_child(obj, "intc", &a->intc[0], TYPE_ASPEED_270=
+0_INTC);
+> >       object_initialize_child(obj, "intcio", &a->intc[1],
+> >                               TYPE_ASPEED_2700_INTCIO);
+> > +    object_initialize_child(obj, "intcioexp0", &a->intcioexp[0],
+> > +                            TYPE_ASPEED_2700_INTCIOEXP1);
+> > +    object_initialize_child(obj, "intcioexp1", &a->intcioexp[1],
+> > +                            TYPE_ASPEED_2700_INTCIOEXP2);
+> >
+> >       snprintf(typename, sizeof(typename), "aspeed.adc-%s", socname);
+> >       object_initialize_child(obj, "adc", &s->adc, typename);
+> > @@ -755,6 +761,22 @@ static void aspeed_soc_ast2700_realize(DeviceState=
+ *dev, Error **errp)
+> >       aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&a->intc[1]), 0,
+> >                       sc->memmap[ASPEED_DEV_INTCIO]);
+> >
+> > +    /* INTCIOEXP0 */
+> > +    if (!sysbus_realize(SYS_BUS_DEVICE(&a->intcioexp[0]), errp)) {
+> > +        return;
+> > +    }
+> > +
+> > +    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&a->intcioexp[0]), 0,
+> > +                    sc->memmap[ASPEED_DEV_IOEXP0_INTCIO]);
+> > +
+> > +    /* INTCIOEXP1 */
+> > +    if (!sysbus_realize(SYS_BUS_DEVICE(&a->intcioexp[1]), errp)) {
+> > +        return;
+> > +    }
+> > +
+> > +    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&a->intcioexp[1]), 0,
+> > +                    sc->memmap[ASPEED_DEV_IOEXP1_INTCIO]);
+> > +
+> >       /* irq sources -> orgates -> INTC */
+> >       for (i =3D 0; i < ic->num_inpins; i++) {
+> >           qdev_connect_gpio_out(DEVICE(&a->intc[0].orgates[i]), 0,
+> > @@ -1079,6 +1101,21 @@ static void aspeed_soc_ast2700_realize(DeviceSta=
+te *dev, Error **errp)
+> >           }
+> >           sysbus_mmio_map(SYS_BUS_DEVICE(&s->ioexp[i]), 0,
+> >                           sc->memmap[ASPEED_DEV_LTPI_IO0 + i]);
+> > +
+> > +        icio =3D ASPEED_INTC_GET_CLASS(&a->intcioexp[i]);
+> > +        /* INTC_IOEXP internal: orgate[i] -> input[i] */
+> > +        for (int j =3D 0; j < icio->num_inpins; j++) {
+> > +            irq =3D qdev_get_gpio_in(DEVICE(&a->intcioexp[i]), j);
+> > +            qdev_connect_gpio_out(DEVICE(&a->intcioexp[i].orgates[j]),=
+ 0,
+> > +                                  irq);
+> > +        }
+> > +
+> > +        /* INTC_IOEXP output[i] -> INTC0.orgate[0].input[i] */
+> > +        for (int j =3D 0; j < icio->num_outpins; j++) {
+> > +            irq =3D qdev_get_gpio_in(DEVICE(&a->intc[0].orgates[0]), j=
+);
+> > +            sysbus_connect_irq(SYS_BUS_DEVICE(&a->intcioexp[i]), j,
+> > +                               irq);
+> > +        }
+> >       }
+> >
+> >       aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->dpmcu=
+),
+> > diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+> > index 5cd786dee6..a04005ee7c 100644
+> > --- a/hw/intc/aspeed_intc.c
+> > +++ b/hw/intc/aspeed_intc.c
+> > @@ -924,6 +924,64 @@ static const TypeInfo aspeed_2700_intc_info =3D {
+> >       .class_init =3D aspeed_2700_intc_class_init,
 > >   };
 > >
-> >   /* GICINT 128 */
-> > @@ -275,12 +277,24 @@ static const int ast2700_gic198_intcmap[] =3D {
-> >       [ASPEED_DEV_IOEXP0_I2C]       =3D 0, /* 0 - 15 */
-> >   };
-> >
-> > +/* Primary AST1700 Interrupts */
-> > +/* A1: GINTC 199 */
-> > +static const int ast2700_gic199_intcmap[] =3D {
-> > +    [ASPEED_DEV_IOEXP0_I3C]       =3D 0, /* 0 - 15 */
+> > +static AspeedINTCIRQ aspeed_2700_intcioexp2_irqs[ASPEED_INTC_MAX_INPIN=
+S] =3D {
+> > +    {0, 8, 1, R_GICINT192_EN, R_GICINT192_STATUS},
+> > +    {1, 9, 1, R_GICINT193_EN, R_GICINT193_STATUS},
 > > +};
 > > +
-> >   /* Secondary AST1700 Interrupts */
-> >   /* A1: GINTC 200 */
-> >   static const int ast2700_gic200_intcmap[] =3D {
-> >       [ASPEED_DEV_IOEXP1_I2C]       =3D 0, /* 0 - 15 */
-> >   };
-> >
-> > +/* Secondary AST1700 Interrupts */
-> > +/* A1: GINTC 201 */
-> > +static const int ast2700_gic201_intcmap[] =3D {
-> > +    [ASPEED_DEV_IOEXP1_I3C]       =3D 0, /* 0 - 15 */
+> > +static void aspeed_2700_intcioexp2_class_init(ObjectClass *klass,
+> > +                                              const void *data)
+> > +{
+> > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> > +    AspeedINTCClass *aic =3D ASPEED_INTC_CLASS(klass);
+> > +
+> > +    dc->desc =3D "ASPEED 2700 IOEXP2 INTC Controller";
+> > +    aic->num_lines =3D 32;
+> > +    aic->num_inpins =3D 2;
+> > +    aic->num_outpins =3D 10;
+> > +    aic->mem_size =3D 0x400;
+> > +    aic->nr_regs =3D 0x58 >> 2;
+> > +    aic->reg_offset =3D 0x100;
+> > +    aic->reg_ops =3D &aspeed_intcio_ops;
+> > +    aic->irq_table =3D aspeed_2700_intcioexp2_irqs;
+> > +    aic->irq_table_count =3D ARRAY_SIZE(aspeed_2700_intcioexp2_irqs);
+> > +}
+> > +
+> > +static const TypeInfo aspeed_2700_intcioexp2_info =3D {
+> > +    .name =3D TYPE_ASPEED_2700_INTCIOEXP2,
+> > +    .parent =3D TYPE_ASPEED_INTC,
+> > +    .class_init =3D aspeed_2700_intcioexp2_class_init,
 > > +};
 > > +
-> >   /* GICINT 128 ~ 136 */
-> >   /* GICINT 192 ~ 201 */
-> >   struct gic_intc_irq_info {
-> > @@ -298,9 +312,9 @@ static const struct gic_intc_irq_info ast2700_gic_i=
-ntcmap[] =3D {
-> >       {196, 1, 4, ast2700_gic132_gic196_intcmap},
-> >       {197, 1, 5, ast2700_gic133_gic197_intcmap},
-> >       {198, 2, 0, ast2700_gic198_intcmap},
-> > -    {199, 1, 7, NULL},
-> > +    {199, 2, 1, ast2700_gic199_intcmap},
-> >       {200, 3, 0, ast2700_gic200_intcmap},
-> > -    {201, 1, 9, NULL},
-> > +    {201, 3, 1, ast2700_gic201_intcmap},
-> >       {128, 0, 1, ast2700_gic128_gic192_intcmap},
-> >       {129, 0, 2, NULL},
-> >       {130, 0, 3, ast2700_gic130_gic194_intcmap},
+> > +static AspeedINTCIRQ aspeed_2700_intcioexp1_irqs[ASPEED_INTC_MAX_INPIN=
+S] =3D {
+> > +    {0, 6, 1, R_GICINT192_EN, R_GICINT192_STATUS},
+> > +    {1, 7, 1, R_GICINT193_EN, R_GICINT193_STATUS},
+> > +};
+> > +
+> > +static void aspeed_2700_intcioexp1_class_init(ObjectClass *klass,
+> > +                                              const void *data)
+> > +{
+> > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> > +    AspeedINTCClass *aic =3D ASPEED_INTC_CLASS(klass);
+> > +
+> > +    dc->desc =3D "ASPEED 2700 IOEXP1 INTC Controller";
+> > +    aic->num_lines =3D 32;
+> > +    aic->num_inpins =3D 2;
+> > +    aic->num_outpins =3D 10;
+> > +    aic->mem_size =3D 0x400;
+> > +    aic->nr_regs =3D 0x58 >> 2;
+> > +    aic->reg_offset =3D 0x100;
+> > +    aic->reg_ops =3D &aspeed_intcio_ops;
+> > +    aic->irq_table =3D aspeed_2700_intcioexp1_irqs;
+> > +    aic->irq_table_count =3D ARRAY_SIZE(aspeed_2700_intcioexp1_irqs);
+> > +}
+> > +
+> > +static const TypeInfo aspeed_2700_intcioexp1_info =3D {
+> > +    .name =3D TYPE_ASPEED_2700_INTCIOEXP1,
+> > +    .parent =3D TYPE_ASPEED_INTC,
+> > +    .class_init =3D aspeed_2700_intcioexp1_class_init,
+> > +};
+> > +
+> >   static AspeedINTCIRQ aspeed_2700_intcio_irqs[ASPEED_INTC_MAX_INPINS] =
+=3D {
+> >       {0, 0, 1, R_GICINT192_EN, R_GICINT192_STATUS},
+> >       {1, 1, 1, R_GICINT193_EN, R_GICINT193_STATUS},
+> > @@ -1099,6 +1157,8 @@ static void aspeed_intc_register_types(void)
+> >       type_register_static(&aspeed_intc_info);
+> >       type_register_static(&aspeed_2700_intc_info);
+> >       type_register_static(&aspeed_2700_intcio_info);
+> > +    type_register_static(&aspeed_2700_intcioexp1_info);
+> > +    type_register_static(&aspeed_2700_intcioexp2_info);
+> >       type_register_static(&aspeed_2700ssp_intc_info);
+> >       type_register_static(&aspeed_2700ssp_intcio_info);
+> >       type_register_static(&aspeed_2700tsp_intc_info);
 >
 

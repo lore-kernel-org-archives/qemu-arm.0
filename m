@@ -4,115 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D912BE92FC4
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 19:41:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FFBCE92FC4
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 19:41:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaJ5V-0006FT-40; Mon, 29 Dec 2025 14:39:31 -0500
+	id 1vaJ7Y-00049h-Si; Mon, 29 Dec 2025 14:41:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vaJ4h-0004ww-Mn
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:41 -0500
-Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vaJ7U-0003ob-OF
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:41:33 -0500
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vaJ4g-0000NY-3m
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:39 -0500
-Received: by mail-qt1-x82d.google.com with SMTP id
- d75a77b69052e-4ee243b98caso3941961cf.1
- for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 11:38:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1767037117; cv=none;
- d=google.com; s=arc-20240605;
- b=i/G8m8ViMjCJQePEuG/UqUQxEJv4omt2q7brCkDvoVXRmAwIm/Ivtf9YCmWm8Bbw4a
- 4mE/Trehxnus1ZzTW1GG+iPSK3RwSJTEDNEauiBEhsKjQqVoSJvhGQb79CT419K0DvXw
- DtnRDWBAw+65yJC9NIWI69jmVLoNb5CSsdndQPRWtq0T/0mUnzyy/g4Zkm3NU11ZA2SK
- odriqhrSgY9//BpXoypmPMPuhd5pAJtyHTVQZb//L+405DDa1MdH98jgZFuimZpQkW04
- uBQR46pFEgqql/R3rSiLTxL2FjuN8F+L2l5eq53Dp/5EEKFHsv2g9NdVZULvG8R2juh7
- XQHg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=FnS7ZbKw9aNcaKVTwK+oR+E5vW6qeLZ6zAVdP6qoM+I=;
- fh=UUnof64kFFW4xVCjFpL6+KzmzxtkfQ7K8Xo08oggOmU=;
- b=Iswz3bQnF0dYOsSJZI5HFZpZceRB6rpCq0/Pvxv853TQgx8Cm3lEN8RegEvBi7ANVh
- u8Z/kdzdB1y60DjMuTvmBpUHx6Je4bqgmuiFGugTAnBrUxVUglAAIERsRPwTTBOpgaot
- FXzTQZ/2jWQUaTqW0ooRByGMwptbMh/BZ0dwAYkyX9JdiPavke76VhoWyidkWcWyonUN
- 35To1jFqRWEYJzg/uSMdOr3yJy0vr6PBixuWJIyuuM5heaY+ScgjUXaLhPwHADwfeQlo
- 2vgk1KASRqTVJU0uAcA9XbdpewUrpc+bggKZKUDaWdtYukiddud+LCF6krm+EWBK8+XA
- +6dw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vaJ7S-0000wc-0k
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:41:32 -0500
+Received: by mail-pf1-x443.google.com with SMTP id
+ d2e1a72fcca58-7bab7c997eeso10981816b3a.0
+ for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 11:41:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1767037117; x=1767641917; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=FnS7ZbKw9aNcaKVTwK+oR+E5vW6qeLZ6zAVdP6qoM+I=;
- b=TooNPuuxJoihR7+VU190E/koRQD+1nJxpdJTxbzUGYjgW8iC8slc8YiD9JY0da/c1p
- c1sBtjdeSx69k6iIBb/jbHjgGLgwYmR/9DSn7fxtvUhbuLGBNnX/14CrSjkZ6VnOUDM+
- K1F9/JXRBnTiaovIQfDIzvvc1G89Y+myaZlqQy/0aImhuu0jcetTn2+Y+YO8iCyyFmS5
- doQhyIXP2/yE6osZ9TGFqd8enLeYvH90ZnfG3a+BQQjYx+IL6Ew3qS0d8ip5bje9Ewe6
- cg22NIoAkAy+lBIy6rM9dGEpGEAL4196PoJ6mKRub5YgQGhvnY9pkpHveB3Ol+dNoJUZ
- tnGA==
+ d=linaro.org; s=google; t=1767037288; x=1767642088; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=8nLc5kAL7UgTFB1GCrT5nSSAirEhk5CRg+5f9jqqB2g=;
+ b=c4hcfTxLVEls+dCnY2FsX8Ak8Jx+8TAKb5rP+opWbhbbR0GFid2uc8iMFf+zCIsWTb
+ OLw23vxohcvYeHQOq/BfDuKOUOR3zq8RuwzdLd2kHjxzZst9da182Sv7Zw1CnhoqErjB
+ loktFf4VoaiiQGczsdXLqeO5P3MFyQU24NMwVTI6FK3W7XBA3I0IWRi5GMiZvjlrRBrW
+ DNm5abvX/Z8iSxaALkd5VscXfzsj4+ilJmLLxsVV7WJDBS8BTNBe1bYAoz2YRKbU+L3e
+ Z9bPsvuK37LzHDj45QNZhn40cB3sahuULblq01M759Udrzuf+IHM8BVNbJp2L5sp11c0
+ qqmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767037117; x=1767641917;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=FnS7ZbKw9aNcaKVTwK+oR+E5vW6qeLZ6zAVdP6qoM+I=;
- b=VVVxV9sY4dtd8Ex/z0R+ZY21YuA2rMomCTXdm2JzicAz5POdo4Y8qmWWGmjlfJgQ9o
- k+w1PSm3zkKRNlwPIEjOR9jXKjBHi6nQJk1ABcbMGzxmmxsED0WofaLoXECwMDuz8jZ5
- ab+YYmZBBEq5GH5k0n71aS4dVky7CUazPG4x9gblxXuPNX9IMFJw/9D1VoNv9GqZM+Ne
- Z6ijvg+9gdG9YVkIKWvzd85NmOVU1dKPLXtZyyuo4v8Vj0+dyMQ/MdsaTiwRVUq+OFnJ
- cUT3hATVSLi8FDucujPIIHIevU83wWOyre2fMuKcJ/icOAvAX41Qe+0Fvmn6vdUP1nsa
- l1KQ==
+ d=1e100.net; s=20230601; t=1767037288; x=1767642088;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8nLc5kAL7UgTFB1GCrT5nSSAirEhk5CRg+5f9jqqB2g=;
+ b=vmu0/9kw2ZFfLeWwdyeZYwmmeOoEtFiIQH+0PoCxmpPGb2yIX0IWRbS7XEEnXQoHVa
+ RISThYO4MTxu2Mve7PU4IyQ2rX31/gJmEoQGGOY0f9llP/27Rhl5TAA8eDJZYBbw8GK1
+ ULe0qbL0UWDdhX0v1cFUp8heufDS8Xcr1v1oYWLlE9Lz0HidGknJkm2uMel7u1vOzx4i
+ 4Rfq7ZXP4PfJLNvm/vwcAqLgiXketpXPiNk3P1a3SVzNOHz/bNcdDs3aljmL9B0o0UAx
+ KLjN3JmH7iikx4ncfhbS3VQTn6vBgxlAQtze3yRazYO/F/cZONErS6CFNcFXVRFyy9gg
+ aKYQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVTTIi6tPgoZ0t5mL7UEAlvJlLb7EdvNkFt7VSlnIAoLNdpFamIHyiBqoWYA80Ld+4TCRHFJNugDA==@nongnu.org
-X-Gm-Message-State: AOJu0Yy0c1JyaA8XGcXgERSDs8ch0noScfFBNuNeWNyqwz6w2Cqyylnx
- 52c6qj8Bx+fS2PklrKAC9PMUc4ag+Nve/oXgI2tYurD9mzRUS7YxfbeWkK6HpqeRrVApA87dGPx
- lMcxCXKEMIZmo4oSg24R2S0EzLeebuDWbRA/KG3oH
-X-Gm-Gg: AY/fxX42C9s4rl8drV71ivkhmJX1PpnyxHib2xMRen7K2BaY9HMG2+mWWOD3bmie//+
- eeOQ9rUXfXykjokcL5fCcEAI5Bamewsw9vr1pZPxR8rL9rFW9fzIzczSR9NFh2HlDzDobsx6mqn
- o/zuBKNne8Ute8MnYmEDOwBvUvT2btDPL7tB/Tb95GdpvGxeAxFZDGDty3gRyQD+JLN0BlCzZ3o
- twEc9uZNVRaAHwUqX/lUTOohcJ+zlW+6doT+1Pu2Riqw9ICHaEVi9gUE/jw72LyCgQoESkNAzmp
- SyDRa8wlGnPlpx1HUqR3qbdZexuZC82yaK7v
-X-Google-Smtp-Source: AGHT+IHlBUruX02pGWaUUIRzvK0SB3P0xjXTQFmZqKxxYH74nvJbudWuwUPYPisF99WI9d6AJp0llK1ZJ748N8NPPfY=
-X-Received: by 2002:a05:622a:307:b0:4f3:5474:3cb9 with SMTP id
- d75a77b69052e-4f4e4e2b98bmr40540621cf.14.1767037117052; Mon, 29 Dec 2025
- 11:38:37 -0800 (PST)
+ AJvYcCWOYbCNisEv81D14N/jkmWzzrRp628zF8cpYtHpEWFzRBh241/XcQTHmMQPC8cDn7atLIBvxU46uA==@nongnu.org
+X-Gm-Message-State: AOJu0Ywh8AwWLST/0PwyAd9oQeDOwNlFBplKkGXVKj0pc3/c6wJ3gpgK
+ o3PQ1t53LY07ctk5lECocok0rP9h4BCFIMr9fbAj+Tt32oVxMWjwvIT4dglngs+PikhYQ2Wbn26
+ Sr+U5
+X-Gm-Gg: AY/fxX4BFxcB7p5hQD9y/ao6Ya0HrYV2Tm4rMszEsRzLnxhIa0yWSaMmJvmRItQ11Hp
+ sSZOmy6ElT67KIzQQjRtwMBBshhjGBIIsQSx15g001Cs9J+hWmq+UL+rxfb45SOYgZrY5jI7zpZ
+ E1rA4ctYHGtAILUIUSCm8Hyqqo7aFZoCsd9ugH8RQgl9ghL9hkpGQmx+M702VQwsJcUc/l49AA/
+ A085Irv8RQOmXWtSwenBmehIYhDhNwI0tTYSObBaCUMs5iz5S1nBlUFRkIUw9wpkJ6LpQZdW9D7
+ xKoW5TE4IPCBx68ORNof6UrJZ0R9rOngogVVzHiLoNtfRww3kpfaeD8ui/vYB332bAanFFD/uYp
+ wcAVkpV+7KihBVXW57oFIWHIfDd3Dqnkr5OdiptZVNZyTIk4SYP5MXcmfaLtlSeKo+4y/kbIUGe
+ 7m1iC6c8W28rYhryHhWzrwshhuWtAPgzDu6EXEbIgoSESRAa0mmX17J86n
+X-Google-Smtp-Source: AGHT+IFuqvKSMnz7I0kpznEv4On8NRHmIrdjyfTJBTVSISEoTvYM4SaeUgYlzcp8/T8rdADCS7sVUQ==
+X-Received: by 2002:a05:6a00:1ca7:b0:7e8:4471:ae78 with SMTP id
+ d2e1a72fcca58-7ff6814367cmr25892716b3a.68.1767037288203; 
+ Mon, 29 Dec 2025 11:41:28 -0800 (PST)
+Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-7ff7b71986asm30264809b3a.30.2025.12.29.11.41.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 29 Dec 2025 11:41:27 -0800 (PST)
+Message-ID: <54225b83-9071-495b-a473-eb967e17f475@linaro.org>
+Date: Mon, 29 Dec 2025 11:41:26 -0800
 MIME-Version: 1.0
-References: <20251224014203.756264-1-kane_chen@aspeedtech.com>
- <20251224014203.756264-17-kane_chen@aspeedtech.com>
-In-Reply-To: <20251224014203.756264-17-kane_chen@aspeedtech.com>
-From: Nabih Estefan <nabihestefan@google.com>
-Date: Mon, 29 Dec 2025 11:38:24 -0800
-X-Gm-Features: AQt7F2qnoat-JSv9_B8H8ezIGLpQOxltaU8FQJJhbs05xwmRyDcDUtzKchFOoz4
-Message-ID: <CA+QoejUnESJLFqnyfiCV=d3wiBX6n8NnEqE7jAA6S4tbjUOWbw@mail.gmail.com>
-Subject: Re: [PATCH v4 16/19] hw/arm/aspeed: Attach PWM device to AST1700 model
-To: Kane Chen <kane_chen@aspeedtech.com>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, 
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- troy_lee@aspeedtech.com, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82d;
- envelope-from=nabihestefan@google.com; helo=mail-qt1-x82d.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v12 00/28] WHPX support for Arm
+Content-Language: en-US
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
+Cc: Alexander Graf <agraf@csgraf.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Zhao Liu <zhao1.liu@intel.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ kvm@vger.kernel.org, Roman Bolshakov <rbolshakov@ddn.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Ani Sinha <anisinha@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
+ Cameron Esfahani <dirty@apple.com>
+References: <20251228235422.30383-1-mohamed@unpredictable.fr>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20251228235422.30383-1-mohamed@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::443;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x443.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,96 +124,195 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Dec 23, 2025 at 5:42=E2=80=AFPM Kane Chen <kane_chen@aspeedtech.com=
-> wrote:
->
-> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
->
-> Connect the PWM device to AST1700 model.
->
-> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
-> Reviewed-by: C=C3=A9dric Le Goater <clg@redhat.com>
+On 12/28/25 3:53 PM, Mohamed Mediouni wrote:
+> Link to branch: https://github.com/mediouni-m/qemu whpx (tag for this submission: whpx-v12)
+> 
+> Missing features:
+> - VM save-restore: interrupt controller state notably
+> - SVE register sync: I didn't have the time to test this on pre-release hardware with SVE2 support yet.
+> So SVE2 is currently masked for VMs when running this.
+> 
+> Known bugs:
+> - U-Boot still doesn't work (hangs when trying to parse firmware) but EDK2 does.
+> 
+> Note:
+> 
+> "target/arm/kvm: add constants for new PSCI versions" taken from the mailing list.
+> 
+> "accel/system: Introduce hwaccel_enabled() helper" taken from the mailing list, added here
+> as part of this series to make it compilable as a whole.
+> 
+> "hw/arm: virt: add GICv2m for the case when ITS is not available" present in both the HVF
+> vGIC and this series.
+> 
+> "hw: arm: virt-acpi-build: add temporary hack to match existing behavior" is not proper" is
+> for ACPI stability but what is the right approach to follow there?
+> 
+> And another note:
+> 
+> Seems that unlike HVF there isn't direct correspondence between WHv registers and the actual register layout,
+> so didn't do changes there to a sysreg.inc.
+> 
+> Updates since v11:
+> - Address review comments
+> - Rebase up to latest staging
+> - Switch to assuming Qemu 11.0 as the newest machine model
+> 
+> Updates since v10:
+> - Bring forward to latest Qemu
+> - Fix a typo in the GICv3+GICv2m PR
+> 
+> Updates since v9:
+> - Adding partition reset on the reboot side of things...
+> 
+> Updates since v8:
+> - v9 and v8 were not submitted properly because of my MTA not behaving, sorry for that.
+> - v10 introduces a new argument, -M msi=, to handle MSI-X configuration more granularly.
+> - That surfaced what I think is a bug (?), with vms->its=1 on GICv2 configurations... or I did understand everything wrong.
+> - Oopsie due to email provider ratelimiting.
+> 
+> Updates since v7:
+> - Oops, fixing bug in "hw/arm: virt: cleanly fail on attempt to use the platform vGIC together with ITS".
+> Other commits are unchanged.
+> 
+> Updates since v6:
+> - Rebasing
+> - Fixing a bug in the GICv3+GICv2m case for ACPI table generation
+> - getting rid of the slots infrastructure for memory management
+> - Place the docs commit right after the "cleanly fail on attempt to run GICv3+GICv2m on an unsupported config" one
+> as that's what switches ITS to a tristate.
+> - Fixing a build issue when getting rid of the arch-specific arm64 hvf-stub.
+> 
+> Updates since v5:
+> - Rebasing
+> - Address review comments
+> - Rework ITS enablement to a tristate
+> - On x86: move away from deprecated APIs to get/set APIC state
+> 
+> Updates since v4:
+> - Taking into account review comments
+> - Add migration blocker in the vGICv3 code due to missing interrupt controller save/restore
+> - Debug register sync
+> 
+> Updates since v3:
+> - Disabling SVE on WHPX
+> - Taking into account review comments incl:
+> 
+> - fixing x86 support
+> - reduce the amount of __x86_64__ checks in common code to the minimum (winhvemulation)
+> which can be reduced even further down the road.
+> - generalize get_physical_address_range into something common between hvf and whpx
+> 
+> Updates since v2:
+> - Fixed up a rebase screwup for whpx-internal.h
+> - Fixed ID_AA64ISAR1_EL1 and ID_AA64ISAR2_EL1 feature probe for -cpu host
+> - Switched to ID_AA64PFR1_EL1/ID_AA64DFR0_EL1 instead of their non-AA64 variant
+> 
+> Updates since v1:
+> - Shutdowns and reboots
+> - MPIDR_EL1 register sync
+> - Fixing GICD_TYPER_LPIS value
+> - IPA size clamping
+> - -cpu host now implemented
+> 
+> Mohamed Mediouni (26):
+>    qtest: hw/arm: virt: skip ACPI test for ITS off
+>    hw/arm: virt: add GICv2m for the case when ITS is not available
+>    tests: data: update AArch64 ACPI tables
+>    hw/arm: virt: cleanly fail on attempt to use the platform vGIC
+>      together with ITS
+>    hw: arm: virt: rework MSI-X configuration
+>    hw: arm: virt-acpi-build: add temporary hack to match existing
+>      behavior
+>    docs: arm: update virt machine model description
+>    whpx: Move around files before introducing AArch64 support
+>    whpx: reshuffle common code
+>    whpx: ifdef out winhvemulation on non-x86_64
+>    whpx: common: add WHPX_INTERCEPT_DEBUG_TRAPS define
+>    hw, target, accel: whpx: change apic_in_platform to kernel_irqchip
+>    whpx: interrupt controller support
+>    whpx: add arm64 support
+>    whpx: change memory management logic
+>    target/arm: cpu: mark WHPX as supporting PSCI 1.3
+>    whpx: arm64: clamp down IPA size
+>    hw/arm, accel/hvf, whpx: unify get_physical_address_range between WHPX
+>      and HVF
+>    whpx: arm64: implement -cpu host
+>    target/arm: whpx: instantiate GIC early
+>    whpx: arm64: gicv3: add migration blocker
+>    whpx: enable arm64 builds
+>    whpx: apic: use non-deprecated APIs to control interrupt controller
+>      state
+>    whpx: arm64: check for physical address width after WHPX availability
+>    whpx: arm64: add partition-wide reset on the reboot path
+>    MAINTAINERS: update the list of maintained files for WHPX
+> 
+> Philippe Mathieu-Daudé (1):
+>    accel/system: Introduce hwaccel_enabled() helper
+> 
+> Sebastian Ott (1):
+>    target/arm/kvm: add constants for new PSCI versions
+> 
+>   MAINTAINERS                                   |    6 +
+>   accel/hvf/hvf-all.c                           |    7 +-
+>   accel/meson.build                             |    1 +
+>   accel/stubs/whpx-stub.c                       |    1 +
+>   accel/whpx/meson.build                        |    7 +
+>   {target/i386 => accel}/whpx/whpx-accel-ops.c  |    6 +-
+>   accel/whpx/whpx-common.c                      |  540 +++++++++
+>   docs/system/arm/virt.rst                      |   13 +-
+>   hw/arm/virt-acpi-build.c                      |   16 +-
+>   hw/arm/virt.c                                 |  140 ++-
+>   hw/i386/x86-cpu.c                             |    4 +-
+>   hw/intc/arm_gicv3_common.c                    |    3 +
+>   hw/intc/arm_gicv3_whpx.c                      |  249 ++++
+>   hw/intc/meson.build                           |    1 +
+>   include/hw/arm/virt.h                         |    8 +-
+>   include/hw/core/boards.h                      |    3 +-
+>   include/hw/intc/arm_gicv3_common.h            |    3 +
+>   include/system/hvf_int.h                      |    5 +
+>   include/system/hw_accel.h                     |   13 +
+>   .../whpx => include/system}/whpx-accel-ops.h  |    4 +-
+>   include/system/whpx-all.h                     |   20 +
+>   include/system/whpx-common.h                  |   26 +
+>   .../whpx => include/system}/whpx-internal.h   |   25 +-
+>   include/system/whpx.h                         |    5 +-
+>   meson.build                                   |   20 +-
+>   target/arm/cpu.c                              |    3 +
+>   target/arm/cpu64.c                            |   17 +-
+>   target/arm/hvf-stub.c                         |   20 -
+>   target/arm/hvf/hvf.c                          |    6 +-
+>   target/arm/hvf_arm.h                          |    3 -
+>   target/arm/kvm-consts.h                       |    2 +
+>   target/arm/meson.build                        |    2 +-
+>   target/arm/whpx/meson.build                   |    5 +
+>   target/arm/whpx/whpx-all.c                    | 1020 +++++++++++++++++
+>   target/arm/whpx/whpx-stub.c                   |   15 +
+>   target/arm/whpx_arm.h                         |   17 +
+>   target/i386/cpu-apic.c                        |    2 +-
+>   target/i386/hvf/hvf.c                         |   11 +
+>   target/i386/whpx/meson.build                  |    1 -
+>   target/i386/whpx/whpx-all.c                   |  569 +--------
+>   target/i386/whpx/whpx-apic.c                  |   48 +-
+>   tests/data/acpi/aarch64/virt/APIC.its_off     |  Bin 164 -> 188 bytes
+>   42 files changed, 2219 insertions(+), 648 deletions(-)
+>   create mode 100644 accel/whpx/meson.build
+>   rename {target/i386 => accel}/whpx/whpx-accel-ops.c (96%)
+>   create mode 100644 accel/whpx/whpx-common.c
+>   create mode 100644 hw/intc/arm_gicv3_whpx.c
+>   rename {target/i386/whpx => include/system}/whpx-accel-ops.h (92%)
+>   create mode 100644 include/system/whpx-all.h
+>   create mode 100644 include/system/whpx-common.h
+>   rename {target/i386/whpx => include/system}/whpx-internal.h (88%)
+>   delete mode 100644 target/arm/hvf-stub.c
+>   create mode 100644 target/arm/whpx/meson.build
+>   create mode 100644 target/arm/whpx/whpx-all.c
+>   create mode 100644 target/arm/whpx/whpx-stub.c
+>   create mode 100644 target/arm/whpx_arm.h
+> 
 
-Reviewed-by: Nabih Estefan <nabihestefan@google.com>
-Tested-by: Nabih Estefan <nabihestefan@google.com>
+Series tested by booting an accelerated linux kernel, works fine.
 
-> ---
->  include/hw/arm/aspeed_ast1700.h |  2 ++
->  hw/arm/aspeed_ast1700.c         | 13 +++++++++++++
->  2 files changed, 15 insertions(+)
->
-> diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_ast1=
-700.h
-> index f43c0c5475..7292719dc2 100644
-> --- a/include/hw/arm/aspeed_ast1700.h
-> +++ b/include/hw/arm/aspeed_ast1700.h
-> @@ -14,6 +14,7 @@
->  #include "hw/gpio/aspeed_gpio.h"
->  #include "hw/i2c/aspeed_i2c.h"
->  #include "hw/misc/aspeed_ltpi.h"
-> +#include "hw/misc/aspeed_pwm.h"
->  #include "hw/ssi/aspeed_smc.h"
->  #include "hw/watchdog/wdt_aspeed.h"
->  #include "hw/char/serial-mm.h"
-> @@ -39,6 +40,7 @@ struct AspeedAST1700SoCState {
->      AspeedSCUState scu;
->      AspeedGPIOState gpio;
->      AspeedI2CState i2c;
-> +    AspeedPWMState pwm;
->      AspeedWDTState wdt[AST1700_WDT_NUM];
->  };
->
-> diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c
-> index 9fb84dd159..5a2552aa25 100644
-> --- a/hw/arm/aspeed_ast1700.c
-> +++ b/hw/arm/aspeed_ast1700.c
-> @@ -18,6 +18,7 @@
->
->  enum {
->      ASPEED_AST1700_DEV_SPI0,
-> +    ASPEED_AST1700_DEV_PWM,
->      ASPEED_AST1700_DEV_SRAM,
->      ASPEED_AST1700_DEV_ADC,
->      ASPEED_AST1700_DEV_SCU,
-> @@ -31,6 +32,7 @@ enum {
->
->  static const hwaddr aspeed_ast1700_io_memmap[] =3D {
->      [ASPEED_AST1700_DEV_SPI0]      =3D  0x00030000,
-> +    [ASPEED_AST1700_DEV_PWM]       =3D  0x000C0000,
->      [ASPEED_AST1700_DEV_SRAM]      =3D  0x00BC0000,
->      [ASPEED_AST1700_DEV_ADC]       =3D  0x00C00000,
->      [ASPEED_AST1700_DEV_SCU]       =3D  0x00C02000,
-> @@ -124,6 +126,14 @@ static void aspeed_ast1700_realize(DeviceState *dev,=
- Error **errp)
->                          aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_I2C]=
-,
->                          sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->i2c), =
-0));
->
-> +    /* PWM */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pwm), errp)) {
-> +        return;
-> +    }
-> +    memory_region_add_subregion(&s->iomem,
-> +                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_PWM]=
-,
-> +                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pwm), =
-0));
-> +
->      /* LTPI controller */
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->ltpi), errp)) {
->          return;
-> @@ -177,6 +187,9 @@ static void aspeed_ast1700_instance_init(Object *obj)
->      object_initialize_child(obj, "ioexp-i2c[*]", &s->i2c,
->                              "aspeed.i2c-ast2700");
->
-> +    /* PWM */
-> +    object_initialize_child(obj, "pwm", &s->pwm, TYPE_ASPEED_PWM);
-> +
->      /* LTPI controller */
->      object_initialize_child(obj, "ltpi-ctrl",
->                              &s->ltpi, TYPE_ASPEED_LTPI);
-> --
-> 2.43.0
->
+Regards,
+Pierrick
 

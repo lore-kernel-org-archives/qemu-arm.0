@@ -4,103 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4579D3B7E5
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 01:15:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CA04D3B7E5
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 01:21:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1va1r4-00046w-OA; Sun, 28 Dec 2025 20:15:26 -0500
+	id 1va1wg-0005wd-NA; Sun, 28 Dec 2025 20:21:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1va1r4-00046W-2h
- for qemu-arm@nongnu.org; Sun, 28 Dec 2025 20:15:26 -0500
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ id 1va1wa-0005te-J3
+ for qemu-arm@nongnu.org; Sun, 28 Dec 2025 20:21:10 -0500
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1va1r2-0000qk-Ly
- for qemu-arm@nongnu.org; Sun, 28 Dec 2025 20:15:25 -0500
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-7ade456b6abso6997035b3a.3
- for <qemu-arm@nongnu.org>; Sun, 28 Dec 2025 17:15:24 -0800 (PST)
+ id 1va1wY-0001ye-JW
+ for qemu-arm@nongnu.org; Sun, 28 Dec 2025 20:21:07 -0500
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-2a0c09bb78cso63297535ad.0
+ for <qemu-arm@nongnu.org>; Sun, 28 Dec 2025 17:21:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766970923; x=1767575723; darn=nongnu.org;
+ d=linaro.org; s=google; t=1766971265; x=1767576065; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=P/i18/yK8No4n5AJ7jUqbcaCmwbalEFzuwcmebfMGqw=;
- b=NbuX0xnxnp+ctcb5Vy5EmxXhKqPPpbPbuHqCVujDW+06wPDfI8LcCGyoD7URs1d7vD
- KTh82eZiPcPzDqyolw3p03CiLAdD4kE86HU8EBcYVUPbOulxxNm4PmD1si3egLwA0RWy
- I/SFIRIJoueMi21S+Eqj2BiHI84I7qPymfZ5ZehyCUao54HyJIOouqAZBgono3Bw9hRN
- IXWS0/a9Zp7dXlQ9Ko1mQMCR86xfrdUFsNAU4qZmcAgkhKOSB0vRImG5noufowTwO/vI
- ULivnbE3nUqAPw5za7inkkHArFZ3plvt+dk0GjH6OrdVVz3Feld5gHVRkRviihZZlFvB
- jaCg==
+ bh=+fxO5/XW7dS4LIWLCSkyJ2B8Z7xKSKm4MqH012JIrHE=;
+ b=MG1xfpkflo5iyPaMulwFSgjr1hR1oaG0KK7pgfALYT8D8BlzWvne6XxPvFtqD9gYmG
+ GZVoMJ7DZF622jV5K5OjWLCgMxz5d06KBuyWmHvMbApU2fefOPl4mF57u+OoM7Bi8bO0
+ SWioOpQcIdzbpmxdh5cl3W7RBT0Y2V9hCQxHq+ffrPtTYTFkL0SnLCnwN9t0DEE11VnK
+ LJi1JhdnITsNElJOUkBoNBdez6flnhWPIOKxRCsblef0A1+qoH3n8cTGEOZF298VuAHS
+ EPN4q3KQTbfAPlFmGhhOMPqLym0gOrQrusLkKTExOJbogOL9RWOQZPgz4Wx4hJu6zOHC
+ tM3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766970923; x=1767575723;
+ d=1e100.net; s=20230601; t=1766971265; x=1767576065;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=P/i18/yK8No4n5AJ7jUqbcaCmwbalEFzuwcmebfMGqw=;
- b=IzO5hBbPmRHa+0E4BNM7NBLyungcQulTscNDXXUOJII+CjoIMU3l+5IL9xnTp+ChCM
- 2v2ISzCss0HdTnNkqoB/Ix63pVPbBo1bymb8JD1aElyjqa8qJbfs6KkEdwgjlrI0r/g1
- YjZQFTau2mKjvbaDLk45swCEtEQjiEY1fy0S6jkitukEYgB9+KdIXpHX6U/dtdgHWxjx
- mUG8t342tVFGLdbUCde6aQFCJf5rWUZQS5ccWh/JlwDS8nl+YswhF0ZuZ+dfrzgxc8++
- 8PRf0eDScqvI/DPw27cUoeBJD/OJ60g9aQahh3U4V/4t8r94qP+Ofo2tRfIl30OLFX3R
- QGJg==
+ bh=+fxO5/XW7dS4LIWLCSkyJ2B8Z7xKSKm4MqH012JIrHE=;
+ b=pC5fP1W+VHsawDPHRDFKqEzT5BtwxdkrJ3R1pZHjVpup0v5608lWMcLW7d/8qw5XQl
+ sb5uf7SxDb39oL1TDFpyB7ZeVDr1ensBUKnV0WI/WY/E80XUPizi8Q7bbx9COtkRrYI/
+ KciES4Mc/kHnZ4kHrg1oDKKUOtJHIJtz7VVFAnOciA4fPrHS9xY1//q7phce/cWytnBj
+ DNo/XaB4lXgFRoGUP43JBO4CnhQSpc+2BjVBMRPdB7MZAL2PjLn5LUt2KccbRVeAqfs1
+ 9u+nZ6bkfW6/YSwgM4iIVxvrqnwCIeUQt1h86OBoVgXBkrvCNx/xOxl2MsaY+gwEb6aT
+ h+DQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWHe1Kkio6Ijkwxyc6V/LzglHWwyXwgN0qs0HT2uSlJusKe+yytohsof6CHRmpuHCE7PrbaaBfnXw==@nongnu.org
-X-Gm-Message-State: AOJu0YzSlR6XibN9gHpJmdtoE2HGRNM9knwzEesFKfxCGOAC6GG5HU3s
- DvBooP3iNVcLtfaWPdVBoArM+uEWEUPP3vR5h2d5oV3lJ2hXyvrdxRPEdrkcIPvfPi0=
-X-Gm-Gg: AY/fxX7dkNOQtU3+t5M+sdxx7wTYDan6C/8a1cGgUyz7fA62gzydUB37JzoefJ3/vwg
- TbhBsNzqOLfH2mynUZYCkKzPyvcT5ji6HyP8iVcXpDtJdqOwSGqtwk/oMFbawX6XAT8IyBpNeD4
- kaPhxV60n4hHu0cCnf5Vgz4A5slD6ldkTAEdAHSUL90GSytygRxihYA0mVSXux3cdykbSO45hzG
- 1AHzo7oa6A18r+2gMjjc/L4XgXQl4U/zdhC8N4s1alOxQFmjuiGidpX5qEzSZ0vJ0j/ednps3zb
- W3gGUrQFzO+TzuMoFnGtO8qR/RfPTUy9DPdKlZAMjDatsZ4u4mw+FQmxED+Pv21Xvc8PvdSot3H
- xl/UiobUmxFDQ8R1XGz0rnLEk4y3Kd/2eNFKANZ5PWlLeA6yWGUsZeRYWZXksv7JNeJ2Z7YLXIJ
- gyGOISkYeoJAk3w7rzeOw+bLdCjrKuRwV4+TxjqAr1Tk30fp6HyaQPmcSPGJ+Lg+869szMz8gce
- lLJu4Mc
-X-Google-Smtp-Source: AGHT+IFWoxGnMuAqaOStw4phw5yXvG7g4X1CyY5DsJkTVJECuQ8SpaM4D5B/bULfC9QPQ5GCleRPkQ==
-X-Received: by 2002:a05:6a20:2450:b0:363:b975:2d80 with SMTP id
- adf61e73a8af0-376a77f0cfdmr26421390637.13.1766970922912; 
- Sun, 28 Dec 2025 17:15:22 -0800 (PST)
-Received: from ?IPV6:2406:2d40:40cd:310:f6a1:5e51:f9d7:f095?
- ([2406:2d40:40cd:310:f6a1:5e51:f9d7:f095])
+ AJvYcCVC4JQR7gvCi5kt3pF5GhNFmiLXNa4I3K0i1CeEoPyG2mSONjSJRQK/oLBXusZ9f8EcbUGmP9SuZw==@nongnu.org
+X-Gm-Message-State: AOJu0YwK1TPbbGgQ3kEEfYrY/H/eWLKPozbqicqRV9MpAwDwcIRN2fGo
+ kvFjpsVt4LM4mGah1Azsf+J8XWdervpqWAJYsiNKWtS7o+JiUxvZXklGpjQtWapKfZ0=
+X-Gm-Gg: AY/fxX42783pn2fp41psi6tZR0jsX4NhWq7hPrc4oXPU01XAfMF0k+9POobOKnNlkMv
+ QJVioPpYZMckLP/n4HAEZZ3N6cnXIx2sYCw0/fRKmBRKL3kxbsnTairg/z1dyM9KJFHxB4FumdK
+ I07vqpcaKxPAq0FoAlaLKXhrA4SDrj9KusJ0tHRGM5WbSVjTU4iXTC76bGNkOC1yrYibud6Wuzs
+ YPsFni55URqygC54m4n33sU16OIzKJ7Vep6YI2XVVT/29n0LwKvsmQehdMhkEKB0H0wRHxbTtLW
+ ron2IcD5k5nC6/aLbaOq8gkodRAryEqLNKFPMcwM+6C2VX9FoJfm5iMjgil5Cu4MKESHMWNujc2
+ +1VzInKhWhv632tO8bh83077Cgrmx0cO/tOvdUKUWrg6IP4Omd8VnhA1tKzm9rrxQ/leSLGyvHZ
+ LOJAuERnin+LmCY/KO9/8B7zNZRKo1+xguovpG
+X-Google-Smtp-Source: AGHT+IF2JOBrUIf+UCLWUrYk5ljXAFUI3X+YXTf8WHrBoeBI3O/lOjQZOL0r4ttoBeLM9TTx2Bqagg==
+X-Received: by 2002:a17:903:3508:b0:2a0:9047:a738 with SMTP id
+ d9443c01a7336-2a2cab1635dmr268540075ad.19.1766971264938; 
+ Sun, 28 Dec 2025 17:21:04 -0800 (PST)
+Received: from [192.168.1.105] ([206.83.118.74])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c1e7961c130sm23789407a12.3.2025.12.28.17.15.13
+ d9443c01a7336-2a2f3c8286esm258215635ad.33.2025.12.28.17.20.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 28 Dec 2025 17:15:22 -0800 (PST)
-Message-ID: <a5839e8d-522f-4b2b-8e86-b81326b4d7fb@linaro.org>
-Date: Mon, 29 Dec 2025 12:15:09 +1100
+ Sun, 28 Dec 2025 17:21:04 -0800 (PST)
+Message-ID: <9f1fc42b-1321-471a-a0d5-a5d7f3e2af2f@linaro.org>
+Date: Mon, 29 Dec 2025 12:19:56 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 23/25] tests/qtest: Remove unnecessary 'qemu/bswap.h'
- include
+Subject: Re: [PATCH v2 1/8] hw/arm/Kconfig: Have FSL_IMX6UL SoC select
+ IMX_USBPHY
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, Peter Xu
- <peterx@redhat.com>, Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Anton Johansson <anjo@rev.ng>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Aditya Gupta <adityag@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>,
- Gautam Menghani <gautam@linux.ibm.com>,
+Cc: Jason Wang <jasowang@redhat.com>, qemu-rust@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Anton Johansson <anjo@rev.ng>,
+ Max Filippov <jcmvbkbc@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
-References: <20251224152210.87880-1-philmd@linaro.org>
- <20251224152210.87880-24-philmd@linaro.org>
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>
+References: <20251224134644.85582-1-philmd@linaro.org>
+ <20251224134644.85582-2-philmd@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20251224152210.87880-24-philmd@linaro.org>
+In-Reply-To: <20251224134644.85582-2-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,20 +115,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/25/25 02:22, Philippe Mathieu-Daudé wrote:
-> None of these files use API declared in "qemu/bswap.h",
-> remove the unnecessary inclusion.
+On 12/25/25 00:46, Philippe Mathieu-Daudé wrote:
+> Since commit 17372bd812d, the SoC used by the mcimx6ul-evk
+> machine requires the IMX USB PHY component.
+> As this component is only used by 2 machines, do not select
+> it by default (it will be automatically  selected when
+> necessary).
 > 
+> Fixes: 17372bd812d ("hw/arm/fsl-imx6ul: Wire up USB controllers")
 > Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> Reviewed-by: Thomas Huth<thuth@redhat.com>
 > ---
->   tests/qtest/pnv-xive2-common.h     | 1 -
->   tests/qtest/aspeed_smc-test.c      | 1 -
->   tests/qtest/ast2700-smc-test.c     | 1 -
->   tests/qtest/libqos/fw_cfg.c        | 1 -
->   tests/qtest/libqos/i2c-omap.c      | 1 -
->   tests/qtest/pnv-spi-seeprom-test.c | 1 -
->   tests/qtest/vmcoreinfo-test.c      | 1 -
->   7 files changed, 7 deletions(-)
+>   hw/arm/Kconfig | 1 +
+>   hw/usb/Kconfig | 1 -
+>   2 files changed, 1 insertion(+), 1 deletion(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

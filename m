@@ -4,113 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBD6DE92FE0
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 21:16:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9935AE92FE1
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 21:21:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaKbU-0002Wb-Bx; Mon, 29 Dec 2025 16:16:46 -0500
+	id 1vaKg7-0003ny-RN; Mon, 29 Dec 2025 16:21:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vaKbR-0002W5-IH
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 16:16:33 -0500
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1vaKg6-0003n4-5L
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 16:21:22 -0500
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vaKbP-0008TY-V7
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 16:16:33 -0500
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-2a0f3f74587so134004245ad.2
- for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 13:16:30 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1vaKg4-0000bt-NL
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 16:21:21 -0500
+Received: by mail-oi1-x22f.google.com with SMTP id
+ 5614622812f47-450823a7776so6094889b6e.2
+ for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 13:21:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767042989; x=1767647789; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=qhFsOZyvBBszKZWunrdffetKMiWyonnb2R4wITLXaZg=;
- b=XyvjS/0AWY3ANkIm54Kg7vjri9rE5bD1Z5BKtKUbfwRfJ9Xv9a/mqKUf3MZt8VPi9V
- SnSYdSjV5Xg+zB+yEz2yQnXh+w52AMu8C4EurJ2SlBDYwS6LMGCplWHHGY6wBgrYh9Ob
- GWR/U1DFFoJsqsTuWyrarBydkVz09ztlFBNg7xSb8G+tcNZokqz4nSTgbSbNq2VkEDH1
- L0KH6iMApQFnhoP88lUDq0LvEwNMB3r9DELjA7nJ3jc5CzRJS4zGxrubAO5ipSBpoTcM
- i9bglONtANtoXaXog9+zoUozqETHC/8BEm1Qn4nkuC7W6vr8wGT7IFcpVOdoRaAel2Vc
- nAOA==
+ d=gmail.com; s=20230601; t=1767043279; x=1767648079; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=VPxfSM5/WIj4rg1zaR3SotCvTyqjGa96Y7OUTxJ9MgM=;
+ b=BgPfzaWOxfFpMQWhOfztyxlN2zkhdZYHNqRE5q5O0kau7WUhguYNwXKylv66jynEgD
+ 9QlGoSHk27cZtS6Q/+sxuidxb8sOWb933zXyXJzS7EcN6MXWBM66qBQPWY3cN1LxStJM
+ swY54mJAYQTy173GdYvkugshkpjPVZR5pByvFBdJbbWiqwh2sBvhe2P9if3Yos7nokSA
+ hfqJ4aiwwdgcPxvWA+fJr+/sM/iF/mhGzs4GeO5bQ8IAy8U9kX8caDuHMrhyU/219q8d
+ OXt03PTyx23e7TfJKsx8MUv/h74NO5MBVE6u+ndaJ3fcMR2HsDc6AJvkPoNSXfrKhNzK
+ BbKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767042989; x=1767647789;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=qhFsOZyvBBszKZWunrdffetKMiWyonnb2R4wITLXaZg=;
- b=dQHqqQZbN9ve60V8oRJLA6sLg/H7KPyXkPuLzW8V/Yaji7lbzW39fCec66PKd5ELCh
- 2l3LQAsV6FEokIDDhhMZ6iYZBkmL8n5TevOaX7uhOdsBdmj8q6jrN5pQL11qRZXYacOm
- HV2JAr7sU6nADHSrRqSE6AmkujzX5ZF7DiySnD7WZ32nd32Maxc7H19ZKJCn96zjDysl
- nrB4JiT2+PQ1Arqj6cLF1IkXpCUixM04DxPRUk4EL0IQF4LmRtmY5g7DtifCTOcjK+OK
- fQ9fUexv7E5sSNs1iofpsgwmf+EeB1nLqoaPdSQ9XLbwH6oZBDkzGGihBvMyU9rXhBgu
- I5KA==
+ d=1e100.net; s=20230601; t=1767043279; x=1767648079;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=VPxfSM5/WIj4rg1zaR3SotCvTyqjGa96Y7OUTxJ9MgM=;
+ b=YurOehYpaqNP/02Vr9tOureVEYPAO3fEpreADlGsEHHf0JnYZbV4PXkXX3WEbpVOrM
+ RZg5/qLXUmQ+iOotKHhK5gNyAAdAWtuHQgZW1JtC7YRkAF7YRB1u8sOWur27yVngdcgz
+ hXl89FeCISYztNuAt7CyaCgfMymub5PNW935UoY/pC5vQoCqb2JUqXQkNyEJYWYKJiWB
+ GxFyh2hyxV+7+3hVynSfq4/l+y0pss4KxYROOvOQ31dw6DuUcKLyyyDohl5hiaEg//5L
+ brQa9IvmfmUHZC2LROdP8LI341+fgERZtYMICYDAfvINOEmexuD25/ipyepj7CIbrLfX
+ vOtQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUEuUcpspkagnYnF6z8BDoeCEuQcrRmeVAs5S/38Ah76wQhUO3u8xPjTzUDXWcjpVzvZvcqZ0CDSg==@nongnu.org
-X-Gm-Message-State: AOJu0Yy/l17rV7CKy21yxeVvhAqIAV9f9OUQfA/p3Z0LEDNmhYwq+9RO
- bFrXaaLafY++H2aCydvB6J8HiBBwXlySldr4qeecbVdIJSbGv8dzdTWqfmLeNUXALv0=
-X-Gm-Gg: AY/fxX5z4oV2SUdpNMBEr9yLjCaNQ53lKeFoEozzQmSiwb28ttA2bOZWZNvIo8h8jou
- +sDPqaUHUkRIUomLaEgmcnwOxZdxgC6POLl+WOFc/aplYOLq0oaCDI4Ns6sdjQVCeZ2USnV8a6o
- uq7hfDKbQZH7dVSZmuIyDyTCrnpvdfHkh/VffytGZsudsA1nhzAGhRYTYC6VFaiVpq83PLl7QCw
- 9cTMB5xsr6gU2AaU077TKKihNBV1AOYdMSk1BRayomEXSUIN5q/bGhNIHd0BdlPDSrqhvk7sDPP
- 7AurELgXErO5W3cpLpQbHwK16aRV3PDSF2ablywQTl1znzEe+fVkKXGkS22cpuz9vVmdAldJNO2
- LlAF9UqyfFSIDkTmJB1s2j7/9Lveg9QWqyMfK1xM7Mvi9tDa+V52Qvkn/B4MsjTmdjKGKfeQS5h
- kkeWz0r3BMyLyWdNdXVFNe5/1c0jYCPf7o4mgLnodgY6asVUWEURGChYJ0
-X-Google-Smtp-Source: AGHT+IEGt52KsPDYD4kZ/T/EKTKTWuY3l6wP4cc7Qhm9l5w3PkTsTalivjc5D+ZGTBaFT/NH/WE3jQ==
-X-Received: by 2002:a17:902:ccd1:b0:2a2:f465:1273 with SMTP id
- d9443c01a7336-2a2f4651332mr282066605ad.35.1767042988982; 
- Mon, 29 Dec 2025 13:16:28 -0800 (PST)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a2f3d5d20dsm281656315ad.67.2025.12.29.13.16.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Dec 2025 13:16:28 -0800 (PST)
-Message-ID: <3bb036dc-e38a-4879-bdae-34e1f0ae0ba9@linaro.org>
-Date: Mon, 29 Dec 2025 13:16:27 -0800
+ AJvYcCWYRHtv5bdb4UB2GTdj/3o9kjd435rD5fJMpYVeJTRYUfNTa69K6fjxG2Jdh8oR4EiVQ9THPKYe5w==@nongnu.org
+X-Gm-Message-State: AOJu0YxT7fbJGKUu4qw5bN02QSAZpxED3rTlIOXa9yw+Zpfh5GNVYbRg
+ p9NsTaR5xCOT7VeL16bNp4SIvM9zpIdAuUZfFnhFS1jcRs6i5XnY/daf7hpTxllf2YCfh8Mz6OO
+ bwlESYPsXfnVfDK4GOTC5+TTrNGU5E8k=
+X-Gm-Gg: AY/fxX6jxdqM6aA1urHF8zi7Xq9BKg10XxAwzSexnUtheRE8x1coOz6IB+lfu5Z4a7t
+ gMtKETFE9hSoHmUJP/jixVjJ+kj5UlucA5Z1UAZdzK+0RWfZs9pDRn4Hi2XyFMXo0eR2HoYE1iW
+ fn+N557wU6pBTUpK3sJdG2imJ46CqEUsh75oA4IRs5dmJe6Qib7GFbMzAkkD34wE9zf5nsGpDOH
+ l572Cewfp1lyCLM5AYLyopgofiTcwXWNbk05oO1XDo9RLNHvkCB7YU4W7Y+5xCpboJlNYu/
+X-Google-Smtp-Source: AGHT+IF1jTaw1x+iOGBGYFpMphxF+gudnjnWnQ6m0xhXIBQQExRvkqNqHNbjuJLM7A9Velpqtrhu4SlhW1yFDdqOVug=
+X-Received: by 2002:a05:6820:602:b0:65c:f3ac:2206 with SMTP id
+ 006d021491bc7-65d0ebf2924mr14967074eaf.73.1767043278921; Mon, 29 Dec 2025
+ 13:21:18 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v12 11/28] whpx: reshuffle common code
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Zhao Liu <zhao1.liu@intel.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- kvm@vger.kernel.org, Roman Bolshakov <rbolshakov@ddn.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Ani Sinha <anisinha@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
- Cameron Esfahani <dirty@apple.com>
-References: <20251228235422.30383-1-mohamed@unpredictable.fr>
- <20251228235422.30383-12-mohamed@unpredictable.fr>
- <c8bba373-0ff1-4acc-ac3e-7157b3627247@linaro.org>
- <2F12B75F-5AE5-494A-96E8-5B0766804685@unpredictable.fr>
-Content-Language: en-US
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <2F12B75F-5AE5-494A-96E8-5B0766804685@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62e.google.com
+References: <20251223223712.17047-1-ruslichenko.r@gmail.com>
+ <CAFEAcA_SSnwo0N8j_zz4jRrzcewAiRaVCENj1_gzdBVCthNVFg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_SSnwo0N8j_zz4jRrzcewAiRaVCENj1_gzdBVCthNVFg@mail.gmail.com>
+From: Ruslan <ruslichenko.r@gmail.com>
+Date: Mon, 29 Dec 2025 22:21:06 +0100
+X-Gm-Features: AQt7F2rfk26_H5Giyj4Ttk_6nq6FZxlN3iazRL2SNqi0PQi8Iy0CuBpVzZolWl4
+Message-ID: <CAN-aV1E3Od-ZNy=SFK4XSQfcAFBr=953Vwujne=qmKfxNt5bcw@mail.gmail.com>
+Subject: Re: [RFC PATCH] hw/arm/smmuv3: add support for combined irq
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Eric Auger <eric.auger@redhat.com>,
+ Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::22f;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-oi1-x22f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,27 +99,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/29/25 1:11 PM, Mohamed Mediouni wrote:
-> 
-> 
->> On 29. Dec 2025, at 19:46, Pierrick Bouvier 
->> <pierrick.bouvier@linaro.org> wrote:
->>
->> ERROR: New file 'accel/whpx/whpx-common.c' must not have license 
->> boilerplate header text, only the SPDX-License-Identifier, unless this 
->> file was copied from existing code already having such text.
-> 
-> Hello,
-> 
-> Deliberately didn’t do it because it’s copying chunks of the existing 
-> x86_64 WHPX backend.
-> 
-> Should I still do it despite that?
+On Sun, Dec 28, 2025 at 6:08=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org> wrote:
 >
+> On Tue, 23 Dec 2025 at 22:37, Ruslan Ruslichenko
+> <ruslichenko.r@gmail.com> wrote:
+> >
+> > From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+> >
+> > Some platforms use combined irq type, in which case
+> > only single interrupt line is used, instead of 4
+> > different irq's for each type.
+> >
+> > Add emulation support for combined irq mode.
+> >
+> > This mode can be selected by platforms by setting
+> > 'combined_irq' property.
+>
+> Which platforms?
 
-I think you can remove the GPL boilerplate part yes.
+As I can see in ML Linux there is currently at least one platform
+using such mode:
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/arc=
+h/arm64/boot/dts/xilinx/versal-net.dtsi#n1010
 
-> Thank you,
-> -Mohamed
+In our case we are working to emulate Renesas R-Car X5H SoC, which may
+also use this configuration.
 
+>
+> The other way to approach this would be to have the
+> relevant SoC/platform models create a TYPE_OR_IRQ
+> or gate to wire the interrupts together.
+
+Thank you for suggestion! We will try to implement this approach instead.
+
+>
+> thanks
+> -- PMM
 

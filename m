@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45FC7E9273E
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 17:54:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D4C7E92FCA
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 17:54:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaHRS-0005yO-QB; Mon, 29 Dec 2025 12:54:03 -0500
+	id 1vaHS6-0006Ml-V2; Mon, 29 Dec 2025 12:54:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vaHRK-0005wG-TT
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:53:56 -0500
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ id 1vaHRt-0006IY-JV
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:54:33 -0500
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vaHRI-0004ZR-Pr
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:53:54 -0500
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-29f30233d8aso107777165ad.0
- for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 09:53:51 -0800 (PST)
+ id 1vaHRq-0004nH-Rf
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:54:28 -0500
+Received: by mail-pf1-x42b.google.com with SMTP id
+ d2e1a72fcca58-7f89d0b37f0so4520647b3a.0
+ for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 09:54:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767030831; x=1767635631; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767030865; x=1767635665; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=lky3eRWjNVZKS+mrPVmhhZW7nvQlMJxhyck2GcA5NUA=;
- b=TlDleG3Sx69MemQlrm3XDoXoGiqK097toDgtYOGlxY3JnBUf1B7EgEWSG+Yg5G19eh
- FKKmr6tbmbQaRZaUixs5Jxg7eAYSaSB/G6oCDT/xSWyO5gsngkn8Q9cBjZqLV12zBkYu
- cCTb5zJBqOqsTWvToQpDNV4J++59n5TueuGGunTywiBopq24MfQSXYvnb5WjLUH8oPed
- 8kVG/RWh7tpaiw7gooWHqFgTmWwfhV+Vd67PsLMF2F0KKny4DSZM7sXgwRv+WjDaOa1T
- L+9RWQT6cH3t4c/eBkh3BU8HK4K9fuq815emLNC5V1I4SjpnsFjicGzm2x9yRJelQp+n
- bX1g==
+ bh=5mESAwMIaZhTqkXM52ikDUvB0G0HmjkijOpwFN/LSz0=;
+ b=aDX9kzppoiXMGQ9doY21zNY6tYjuSlX4mNu18gOM8ykY5rRj0SzZ/T4/A7JaYJs1AA
+ juKOLnrXLaTy9kKkD+PUOfCJxUaSqFG+UqN1OaEtVqvjwqTdm8qe4LcCdPcWT45iwv2b
+ 0sJZx0iYmp1j4VnQ+iXR4qfpdVjczHy3w1hqakJ0448koubBo6R1xd+rqCoVxfc8VOhy
+ V62CNlCy6PW2SXeDLFjKNVcM/UorcmT7MK6wL6a/m/kvv7SIZLYyVWCV2aYZyZlE8p85
+ BnvLgl3EEd1z6UL4hxJV8PEXpEJOGeS2y7SFkUG87tvpEw7cCzGztOH3viLUZF3cXMlR
+ wDbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767030831; x=1767635631;
+ d=1e100.net; s=20230601; t=1767030865; x=1767635665;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=lky3eRWjNVZKS+mrPVmhhZW7nvQlMJxhyck2GcA5NUA=;
- b=MmZAXbVpoLChOagcvYXWdw076nv1Bd5rG8KX2j+0fKWiwMXBKMqI1hAEvy1NRYz+zh
- mY0p/XN9JiuMZ7rNWBDjlKja480Wi2aUmYex1GbkVVXZAiaMMtnM9xjXQJqrbw9ZK2rG
- dTwte4fWnzMr+nt6Y+vk4etUuHRzVncSBqbicXH6W28MtsFoOpYt/adG33UMPjMrtNgG
- 61FIWCx4fLLtQusDo51LPFlHBFTg0qZB/9fnA6O9j9zvnj+Sw/ZsRu4sifxC5ZxR/l4H
- 1btK1DZWZSKQDSQsNrJJ5k+6wyXWiJaix6lDfZQ3e2tRRY4cbUIOQBDIQPko2FS8XMz2
- xojQ==
+ bh=5mESAwMIaZhTqkXM52ikDUvB0G0HmjkijOpwFN/LSz0=;
+ b=YySRLetLfAZIl8xJOxrATp08301aFeVnXeh6MaOt04JCFE30vUVeBdrm6FckiplpcL
+ 8/IatbZQJWZauHmJe6CyBJ+o7zON57Zyz+P8MyQw08pA6fYUy9GVNwWFYntSH/n0NjI2
+ zDbSKK06vvhRcG2yXAdtsjFhSJ4bBNZrOntljiZzq3IFhftlQe7iyZO00ES8iVMNJGZG
+ afNz7db5nhoRvjqj0j8Vf9hnuZu/DmaX/PN8/XkmfmjlsIicafUefIKLhiKeEQULpy5I
+ XTUwoNPoQhoazoNbVFlo80zFlplwMrZhj7pFHBaUToqNJT+XruzNYBJ1SnD6/ZMOZDiF
+ SRMw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXoPwSBxSttYKqsoje/4WGf+bZpFAtkaV53emR7m+ZKWICU0G0QvhkIdyscn2o4Jkcj5ZkJCHbujQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz33FdzGI6GkeraFWhrYso2msLaN6bOMTsAxH9hJS47ruy0E7Bq
- d4Ht4udhm2C0voy2vk5FgHZ/pX6drxQTz2MSCHx5c9cWdfRL8lGwPA0tndpsmi+tOv4=
-X-Gm-Gg: AY/fxX46JpcCpmWx9lctez/QoCGX2zHYIZQzpctdmJkjCkJMAyif2nGRapOwifW6M0U
- ON/xL3ToFh2uWAZO4ZHXBcLnOm/qcs5/4lFZRh3hmuGNP+2FexZ1o8GsMrBgN1NW4oN++/zbEOt
- VMz6o0Bf0mVA4t8Tj9BXxGkv9PBo22puQqOYf8JV33wYl29J4+fXGwxi0MyWWAMAoYSMAi/1o6Y
- rPJiGpK2MsG7w6aLkqlC1sO4+24hQedN9a8/RDasFGlnBJrf7j92oIfVoy6QET26TBxBLTNHzXh
- 0GHxLhO8qE3b2cW8amuaHjRGPc/VkQYUrACIkLHJXL/SpJpYD7QRHpCXHNqzTqF+kc0I9y0Kh2F
- 0Zcael5LdBctKRFQQEYCNgatBBCZvS67aoiKM7x19HmFC9eMQKv34qFvxO1jtTomqA1PmSjZW8S
- Ak1bU+xZ0XTMaOvY+Ko5s/pFfqOuyXP2cCMGJu1yLCBTex80CRZ/1pOFPHuZNHT3kqohg=
-X-Google-Smtp-Source: AGHT+IF3q1WBxBVC8iD6QACtpbZ43a201nZhMCGmysPIkpzipaQ8LOlenvNFJc0//WIB7MVZ2DNQXg==
-X-Received: by 2002:a17:902:daca:b0:295:5dbe:f629 with SMTP id
- d9443c01a7336-2a2f21fc4c9mr274162615ad.8.1767030830730; 
- Mon, 29 Dec 2025 09:53:50 -0800 (PST)
+ AJvYcCU30EBkI9W+RWStCjWrEn3V5c9LFgGYPCGPxBr7uPfxBGZV1NE/xuwqj3icFDjhm0+/Zho+RNOt8A==@nongnu.org
+X-Gm-Message-State: AOJu0YzOkBd3FAASJEx3+IS7LLKL5G9MI9C6yrkHked1iZPA9RzpYlUU
+ 0p7t+4Lk5SfI0Tsm6cUctsb/1HtVK3L/xRax5lctESuxTkWzkGRZSWq5O1Y/djCBxEk=
+X-Gm-Gg: AY/fxX41G6JHTMjiZ7BaTMUqx9vMYig9pb/0eASOwiN0rZGdVU7h6RoM7DzwmFdSFJt
+ PuNyfYQnKLui2x31aTNQ47HbDWk9U5p1yW7oW59wYEKzIEzUScuBw6qMlCXsGgKTjGsziJKxEGm
+ kitJzyT/wsML4iAwCwJAlx93BlIhBCS1gbhli64t5nieZJCRb86GJs0y9CmwJzP+7SNU9N+dRqE
+ oVQqqXlu/5t6iO0w28gyonvysjKwu1oEvJmkibEDhwi3PXJgpby9IbYA5m2xI/AsHZWs4/6Uzdh
+ pfwqfwyZvjUf4Qrl/EIjBnOchVnx2y/ftve6SijYWtUtZvtpGtJb0mERW4iWwyHtoPoad2Oy7nc
+ KytgJP1Fdi4BzrRfdHzZL/mxx/MtAPYO30iwQS+tm4EZZsmHvi6Ay9c/tXfKDbbJKvVVn3DWXOL
+ Usl4URru8zMfXac3HaqW+3aFcJ+MFUB2+1a4LQBgGg2tEenvgGiky1xkKmzmy8sfXa+VU=
+X-Google-Smtp-Source: AGHT+IHQ8yYvue4jDg7JeE3lH+Gt+4MdRjzYLTmvkOUCJGp4EE3jFYwbcLmUa8MKW1PV9cUvFd421Q==
+X-Received: by 2002:a05:6a21:99aa:b0:366:14b0:4b17 with SMTP id
+ adf61e73a8af0-3769ff1ba96mr30143190637.34.1767030865328; 
+ Mon, 29 Dec 2025 09:54:25 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a2f3d4d858sm282363275ad.57.2025.12.29.09.53.49
+ 41be03b00d2f7-c1e7c147943sm26110508a12.26.2025.12.29.09.54.24
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Dec 2025 09:53:50 -0800 (PST)
-Message-ID: <e5607e7b-3523-4d75-b0b6-d134c7c5d1cf@linaro.org>
-Date: Mon, 29 Dec 2025 09:53:49 -0800
+ Mon, 29 Dec 2025 09:54:24 -0800 (PST)
+Message-ID: <6f75cae4-817f-495d-98ec-c7af210db9db@linaro.org>
+Date: Mon, 29 Dec 2025 09:54:24 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v12 09/28] docs: arm: update virt machine model description
+Subject: Re: [PATCH v12 14/28] hw, target, accel: whpx: change
+ apic_in_platform to kernel_irqchip
 Content-Language: en-US
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>,
@@ -95,13 +96,13 @@ Cc: Alexander Graf <agraf@csgraf.de>,
  "Michael S. Tsirkin" <mst@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
  Cameron Esfahani <dirty@apple.com>
 References: <20251228235422.30383-1-mohamed@unpredictable.fr>
- <20251228235422.30383-10-mohamed@unpredictable.fr>
+ <20251228235422.30383-15-mohamed@unpredictable.fr>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251228235422.30383-10-mohamed@unpredictable.fr>
+In-Reply-To: <20251228235422.30383-15-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,15 +126,23 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 12/28/25 3:54 PM, Mohamed Mediouni wrote:
-> Update the documentation to match current QEMU.
+> Change terminology to match the KVM one, as APIC is x86-specific.
 > 
-> Remove the mention of pre-2.7 machine models as those aren't provided
-> anymore.
+> And move out whpx_irqchip_in_kernel() to make it usable from common
+> code even when not compiling with WHPX support.
 > 
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
->   docs/system/arm/virt.rst | 13 ++++++++-----
->   1 file changed, 8 insertions(+), 5 deletions(-)
+>   accel/stubs/whpx-stub.c        |  1 +
+>   accel/whpx/whpx-accel-ops.c    |  2 +-
+>   accel/whpx/whpx-common.c       | 10 +---------
+>   hw/i386/x86-cpu.c              |  4 ++--
+>   include/system/whpx-internal.h |  1 -
+>   include/system/whpx.h          |  5 +++--
+>   target/i386/cpu-apic.c         |  2 +-
+>   target/i386/whpx/whpx-all.c    | 14 +++++++-------
+>   8 files changed, 16 insertions(+), 23 deletions(-)  
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 

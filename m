@@ -4,107 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6723E92FD0
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DE40E92FCB
 	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 19:40:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaJ5I-0005Q7-Kr; Mon, 29 Dec 2025 14:39:17 -0500
+	id 1vaJ5V-0006FP-4J; Mon, 29 Dec 2025 14:39:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vaJ4Z-0004TE-7c
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:31 -0500
-Received: from mail-qt1-x82b.google.com ([2607:f8b0:4864:20::82b])
+ id 1vaJ4m-0004zJ-IJ
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:54 -0500
+Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vaJ4X-0000Kk-ER
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:30 -0500
-Received: by mail-qt1-x82b.google.com with SMTP id
- d75a77b69052e-4edb8d6e98aso4444811cf.0
- for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 11:38:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1767037108; cv=none;
+ id 1vaJ4k-0000Oi-UG
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:44 -0500
+Received: by mail-qt1-x836.google.com with SMTP id
+ d75a77b69052e-4ee147baf7bso3868251cf.1
+ for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 11:38:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1767037122; cv=none;
  d=google.com; s=arc-20240605;
- b=J/HUXyzkbuTlChEz4/QZvAn77z2xn88hi13Ra6QDl+8uroihEK5yLceKRzCjoAqejD
- XZuY9XsO8W0SWR1nmplFaIWRdFmxQIzbcz5hseGUOVdkjuRNT5+9PjecOpIgKKV38HRF
- 08fw3PZ9hgNPwfbskS0hwpW+SZkc5cvI+O3LkYxeTot/F+4TlLhhwcE50/W1lTrAM4It
- CZUlJfTPnpVDLbVc3FkHv3CR+fUJO/ZWRO8f1POvD8slOH6MOcDjl/TnwJBrDgEHx3dS
- yjNaKIGHHb2KiMWD/jfez/0UQPd4xR1mpCscwDOQHEH40nSv+tGqZLBgxbcXvjWXjF5V
- 3flA==
+ b=l0nTdngsawuT+U0l0tvsTwAMhaQoNprg0hncL4WYwpA1Ox+VXtFJSS3UtKuOp9AsU1
+ 5LegQQ/Z5GDk0afMEH2muIlP2Xm8PgcvglqIByAxr0rP0LshqYKrO2kM52IcwiGtMYah
+ bkTT+uKAoDEBCi0xA/3iKlHUFYLQSNEp6dfNHLzCgggypnVKFDHAPghhSuSTHVdlwqD/
+ OBFkGy4v60JANoZt75hHGGVqhLN2NEUHz+/NPUgFEpMLlsotQQwT5IrEoXD6Gi+HH0KL
+ Yzihfs/0cp8KVAynp1XPkFXfSrdSOHNooBmZRURuyPkb/njsETzdsVDSO3L5fb6QLZ0o
+ pT7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=qv0jCg2159mDZHHBdB7dewdacOELInSCXp4slgil/GQ=;
- fh=nQ8ZHYPqIYWhgnYPqITS4rOzmQQ6UwE+xMcx8smTLHE=;
- b=PwK51cFf0eEHoUBXveKLmAaf2UGmQPdYh18lWsh//X5V5EIHXBXCeMWaY3vYb0jYKT
- lJcoTX83v40FWKLqx+KTUm59b+GuxKEapU9PhBxmy/retTGecNJ/5xoEBI5FqyZeTQwL
- Da+IADW8WA6js/rEGu3a8BWOpo74IiNINxXBUkL0e5Xe++YJWJ6o4pLG3FOGuFHPQA0j
- UGMQlChGcAmkjJ0TdUghhbQSdu6DinSSEz44ZZ9AtRWMJTh/a28WlNTc77pJaoi1eFRc
- r2zzuXznOY0ivht3YGNPWKJCb2/pzFbyxwVAQayqMtxKjkbb9N+tZgdV+BWcDYsYmOqQ
- Wy0g==; darn=nongnu.org
+ bh=u73m9N8obcpsjMR5nj1DHn9VzepxtitMUFYhJ02aFA8=;
+ fh=t8gbSIwWCH+iSuHnOYOxraOTJPgOfPAwDXRF9Gr1nGs=;
+ b=Cn9r6CDQfEwC//JfVFG5WfGppTiJoZQNyyEf7Ye1Hge/kTz8m9rLPNIq/GbBAJbzhF
+ PU6FKiXVb7kO2QbIpprrK8BOQtaOljZcKMTOpsViNkxtzAYx0JppRBMBod23yksZpEbO
+ 3uj+lPGy2LMn5Af4qfIHB0LqWR6cnp4kOopV9B+cES5CxsayUMUHm54bwkOeFE3gtKym
+ 8b7lCnAjr0Lqf+gxJlZsrjZNI2jhIsjOiLdJryAnvWMqWa1jZ8OweptURHHUS2PSraBE
+ EfZOUvgaGS5kjvektNPdneM7N6pgxn6YN3EElSv6Jw6MQ4Xwwq8vHpyP6vFl+ed3ORg3
+ zR6w==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1767037108; x=1767641908; darn=nongnu.org;
+ d=google.com; s=20230601; t=1767037122; x=1767641922; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=qv0jCg2159mDZHHBdB7dewdacOELInSCXp4slgil/GQ=;
- b=IUGE1PK7aDNSvTk5h6Stpm5exK0iU5yYZbRki5OZFPVWXBuj14pTgwxjO8q8O3n0yr
- CaoHD+lhefxQ9jUzJtXddarl3GJErOsmjHyIcpgOgR5qAKaQavuCvKmZ2bOoZSM78HjP
- O7eRDD/gJcnZRKn784ALAQ4nNeJJoQWkSztT5I30jnB6LEw7zWqGeNCmrhxXA1TKOAy3
- KmsKqZKpGu7id5He7O7Pjb0jB6ETssvptZBLDmIHjpOmiNfJmq6jEvk01bZ0yU+SjdGQ
- cSNgkCf/ofK3nT/f/vQAntARc2Is6hf61Zhizf/GcxQHANE9zzrd6xeOIapqpQa9XHi1
- YkTw==
+ bh=u73m9N8obcpsjMR5nj1DHn9VzepxtitMUFYhJ02aFA8=;
+ b=psIQZzfa0WBRbS/VHM7ra97h50uuPURdAoYFSk/wLhK6dGfk6PWifzBx+XQXR+4ZRS
+ wI71TlXSw52kIv/dHHWfmqifOqe8MFBpXKw2lpRNxGd1v/+nl/UxlUTA32wAKb5rlBEs
+ ZknFQRGGNAFmA1IhEEfawmgcgaKzF740a6kqAHWHSfb1WUtsUH+XcSk3GDB8B2fNPFCs
+ IL+3s5P2aouwZnnrlNcFiF05mSo/8onYNDTgMwjpeTLd/kIT2byDlmTQ/hD/hcsd4U3n
+ MpObNop7ZLW6RzSR+trDf8lTtXP6m0O9SuYLfGPgSXrjj7yOSyPHd/dorkufmTLvvTmk
+ 0lYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767037108; x=1767641908;
+ d=1e100.net; s=20230601; t=1767037122; x=1767641922;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=qv0jCg2159mDZHHBdB7dewdacOELInSCXp4slgil/GQ=;
- b=Xn5fhCjHpC0EU/GTKTW3MbIvioG4PrTxlJQR7ObW8fwz39QLjc3HDUMvtITYhxP0Y1
- ASllCSiov4NNm4lr7wHjXB3ihtYXylDrLqtKuKeFTHTT07FzbzGmGUOV6y2f6a+liN+9
- nCjmC3keIF/7q6Z6JD4qYIe88/HQO8n19B9VLo/QOh6/HL4L3atG2jzq4aZTx+aXf2Hi
- SP52d8OdrrF/BeEXTIO6SuYFtItlS2cgNqks1o3JeGjFxdspyIKHWevDjfqwsfjG6+dQ
- ivqa5gbp+4LV81+fD2L9PgNW5TdwYrh1m74p+IvOYT1PfNh2P25JaXObuDx130j9mlNy
- RZ9g==
+ bh=u73m9N8obcpsjMR5nj1DHn9VzepxtitMUFYhJ02aFA8=;
+ b=VnmaNerr8s5/eev6O5/yi0ILg7Ca7bwR9YijMCuaGrp4YEqAJCNe0/GKU2O33HrY6d
+ OmbcJ/ikRuQObgcA9lTgss9TCQYPh7W0ovQShdmM0NaXefpvacQHq+ZfkPLQEZUI3Nsk
+ FLuCWYGu0hg0hUoOMkVf91eWuGaMhfRCPUfhRmP58DiM8mSf5NWZlgSwWo43Fr7ggtSb
+ 4nutwGacaWKwML+wBW7TJA69K2Gl6ouS47aeym0KZa6TTWEg+g2Cm/wi6yB2MadbjlSE
+ Cs/qRRlV+C0PSWlifitdp0VTHP0b0s8FLOlBhRJZdEB1YQzQuzRwmXzJXENeWWKyf8NS
+ fVOQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWETD3RKxfoEpS9tFFhl3vTU3IpRdwmpnk7bq/ds89JNyM+bfKn7tK9qyJHkxjohJIjLPQcfEKwYA==@nongnu.org
-X-Gm-Message-State: AOJu0YwOzvB4fuCI2BclMHddLYZdrzMhsv5ZWYaYGI6BdhPDH1OLpmLV
- XJuGuyCgtqcqqsnmvpdU6ZU/mQR5EPifdFYuv0JPODRx2epV9IBPcyrSCC8FVEZjFVdnoohN4N5
- VOtaNyWYJmk4VsFd5ylzAg1rnpSAW/VhF5tI9MsFt
-X-Gm-Gg: AY/fxX5uol0hc2wYcb5oJa/PnO3m1DhjVu/A3x237dVgNDtBquPCO6xmCk2OCzt9hvH
- f87dUQzjCb4qRNE3HqKq8cZ1GfUaSvoFbSKCoZ7Ngf/wnXJ2d9ia/owvWfwvujUJ3GXwb+tstnT
- PYmozBNMPuUwsJbxA50h1+QZoaM1GdFKOz6LgL6ucDy0YAkhm6tDmWkrF+ysZuHITzZE78mWdof
- BeVFE3+dTLSXihTBxvEy/bpVy5swarvVoydbf2sJAi/Lx7ZYxuOxRQ/WcCu4AFAVfbMfihfS5t1
- HS2CdFDh1flWRfRLObOekanBtw==
-X-Google-Smtp-Source: AGHT+IFltA75U6hBVtYBQKo5a8T7YYz4REkaWWi7G9FtsoWW9ooij3iNzPoW94aUnGU0DYTngsJHbChgk0Exoqe5TuA=
-X-Received: by 2002:a05:622a:307:b0:4f3:5474:3cb9 with SMTP id
- d75a77b69052e-4f4e4e2b98bmr40539251cf.14.1767037108223; Mon, 29 Dec 2025
- 11:38:28 -0800 (PST)
+ AJvYcCUbBQMR2GLtqlIDNnhkJhsz0MSrRYl3JX47dR2L15RGqrWeYciZj+cF8QRqX9ciHBXZLv95kHb8Dg==@nongnu.org
+X-Gm-Message-State: AOJu0YzUxy7Z5IouDYZSfUPoU6b345QVHea96q+apKpoxdx5w1Ara0CQ
+ 3VK5bDey3Gs5TU0Bk6Qj0g4CpOcKuCDYzj9I1AB2AGfUsqo89P/LbbwV5JcCyzeOb7XJ3sZKU4/
+ phuepEBq7p4z5oFm/HiCYyxyTOeTmDOj0131WIaMb
+X-Gm-Gg: AY/fxX4CSpSST681ksOj9I2HUjRHDscxNNt0K0hcGIJtf82OJ+2iyf9IZJMoZwPbVSN
+ 0ROldtKhdYNSXfyTXZvKfGoMG9ELhUCcX2QYZHp9fwXH65uDHK0/eEsFHui3lee+tBGxy3BbjYI
+ HE5xhHt73e1+HRreW873VRCZjJjv+AjcDfchsbCa9BHOV3BAR7sBORL47X6iJpnf/viKg6xQxfQ
+ vuxqQjD8+HlbBJSApr8eZonWsydhqgqqgBUThCtUeIWSDlFrO3SAxhyDs0HK2hZNE4y7jWih2Q/
+ 5yPAhf/cA1cw3scekEJpgrfXaQ==
+X-Google-Smtp-Source: AGHT+IHP+6XviAUcyk8HN805MZK+8O0+3TYVEqx3yNoUoWyRwPny9Fc0nFfu/DncIIlIDuTVe0j4nOQqs2CwBP0NarY=
+X-Received: by 2002:ac8:57c2:0:b0:4f0:2e33:81aa with SMTP id
+ d75a77b69052e-4f4e5f62fc8mr29427641cf.11.1767037121381; Mon, 29 Dec 2025
+ 11:38:41 -0800 (PST)
 MIME-Version: 1.0
 References: <20251224014203.756264-1-kane_chen@aspeedtech.com>
- <20251224014203.756264-13-kane_chen@aspeedtech.com>
-In-Reply-To: <20251224014203.756264-13-kane_chen@aspeedtech.com>
+ <20251224014203.756264-19-kane_chen@aspeedtech.com>
+ <473d4888-83fb-4eb8-8487-14c2521fc331@kaod.org>
+In-Reply-To: <473d4888-83fb-4eb8-8487-14c2521fc331@kaod.org>
 From: Nabih Estefan <nabihestefan@google.com>
-Date: Mon, 29 Dec 2025 11:38:17 -0800
-X-Gm-Features: AQt7F2oXzmSJqnU0sb2-dfutCYSSeAap9wjitSSYkqyQfHRE9KscjofE_unNvTY
-Message-ID: <CA+QoejV1LAmXR5ygafjuQg0G2A1KLn6sGREMBr6uHWeUL8=31w@mail.gmail.com>
-Subject: Re: [PATCH v4 12/19] hw/arm/aspeed: Attach SCU device to AST1700 model
-To: Kane Chen <kane_chen@aspeedtech.com>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, 
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+Date: Mon, 29 Dec 2025 11:38:30 -0800
+X-Gm-Features: AQt7F2oYdFrBeM3Y3fB-nE4ykrEwYRPUHZW4bRmqDoqs6_Hgy8FQ-o0o7usnQhM
+Message-ID: <CA+QoejWBKrBfbZfdLa-mT1zgrQWjZzSLCQr6Srj58Rw_yRhRCA@mail.gmail.com>
+Subject: Re: [PATCH v4 18/19] hw/arm/aspeed: Model AST1700 I3C block as
+ unimplemented device
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
  "open list:All patches CC here" <qemu-devel@nongnu.org>,
- troy_lee@aspeedtech.com, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+ troy_lee@aspeedtech.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82b;
- envelope-from=nabihestefan@google.com; helo=mail-qt1-x82b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::836;
+ envelope-from=nabihestefan@google.com; helo=mail-qt1-x836.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -128,132 +129,192 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Dec 23, 2025 at 5:42=E2=80=AFPM Kane Chen <kane_chen@aspeedtech.com=
+On Wed, Dec 24, 2025 at 2:43=E2=80=AFAM C=C3=A9dric Le Goater <clg@kaod.org=
 > wrote:
 >
-> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> On 12/24/25 02:41, Kane Chen via wrote:
+> > From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> >
+> > AST1700 exposes more I3C buses than the current dummy I3C model
+> > provides. When Linux probes the I3C devices on AST1700 this mismatch
+> > can trigger a kernel panic. Model the I3C block as an unimplemented
+> > device to make the missing functionality explicit and avoid unexpected
+> > side effects.
+> >
+> > This wires up the I3C interrupt lines for the IO expanders and adds the
+> > corresponding device entries for the AST1700 model.
+> >
+> > No functional I3C emulation is provided yet; this only prevents crashes=
+ and
+> > documents the missing piece.
+> >
+> > Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 >
-> Connect the SCU device to AST1700 model.
->
-> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 > Reviewed-by: C=C3=A9dric Le Goater <clg@redhat.com>
 
 Reviewed-by: Nabih Estefan <nabihestefan@google.com>
 Tested-by: Nabih Estefan <nabihestefan@google.com>
 
 
-> ---
->  include/hw/arm/aspeed_ast1700.h |  3 +++
->  hw/arm/aspeed_ast1700.c         | 17 +++++++++++++++++
->  hw/arm/aspeed_ast27x0.c         |  2 ++
->  3 files changed, 22 insertions(+)
 >
-> diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_ast1=
-700.h
-> index 0c1216c4ba..12c57145c6 100644
-> --- a/include/hw/arm/aspeed_ast1700.h
-> +++ b/include/hw/arm/aspeed_ast1700.h
-> @@ -9,6 +9,7 @@
->  #define ASPEED_AST1700_H
+> Thanks,
 >
->  #include "hw/sysbus.h"
-> +#include "hw/misc/aspeed_scu.h"
->  #include "hw/adc/aspeed_adc.h"
->  #include "hw/misc/aspeed_ltpi.h"
->  #include "hw/ssi/aspeed_smc.h"
-> @@ -23,12 +24,14 @@ struct AspeedAST1700SoCState {
+> C.
 >
->      MemoryRegion iomem;
->      uint8_t board_idx;
-> +    uint32_t silicon_rev;
->
->      AspeedLTPIState ltpi;
->      SerialMM uart;
->      MemoryRegion sram;
->      AspeedSMCState spi;
->      AspeedADCState adc;
-> +    AspeedSCUState scu;
->  };
->
->  #endif /* ASPEED_AST1700_H */
-> diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c
-> index e4d206045f..6494a5c4eb 100644
-> --- a/hw/arm/aspeed_ast1700.c
-> +++ b/hw/arm/aspeed_ast1700.c
-> @@ -20,6 +20,7 @@ enum {
->      ASPEED_AST1700_DEV_SPI0,
->      ASPEED_AST1700_DEV_SRAM,
->      ASPEED_AST1700_DEV_ADC,
-> +    ASPEED_AST1700_DEV_SCU,
->      ASPEED_AST1700_DEV_UART12,
->      ASPEED_AST1700_DEV_LTPI_CTRL,
->      ASPEED_AST1700_DEV_SPI0_MEM,
-> @@ -29,6 +30,7 @@ static const hwaddr aspeed_ast1700_io_memmap[] =3D {
->      [ASPEED_AST1700_DEV_SPI0]      =3D  0x00030000,
->      [ASPEED_AST1700_DEV_SRAM]      =3D  0x00BC0000,
->      [ASPEED_AST1700_DEV_ADC]       =3D  0x00C00000,
-> +    [ASPEED_AST1700_DEV_SCU]       =3D  0x00C02000,
->      [ASPEED_AST1700_DEV_UART12]    =3D  0x00C33B00,
->      [ASPEED_AST1700_DEV_LTPI_CTRL] =3D  0x00C34000,
->      [ASPEED_AST1700_DEV_SPI0_MEM]  =3D  0x04000000,
-> @@ -86,6 +88,16 @@ static void aspeed_ast1700_realize(DeviceState *dev, E=
-rror **errp)
->                          aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_ADC]=
-,
->                          sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->adc), =
-0));
->
-> +    /* SCU */
-> +    qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev",
-> +                         s->silicon_rev);
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
-> +        return;
-> +    }
-> +    memory_region_add_subregion(&s->iomem,
-> +                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_SCU]=
-,
-> +                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->scu), =
-0));
-> +
->      /* LTPI controller */
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->ltpi), errp)) {
->          return;
-> @@ -111,6 +123,10 @@ static void aspeed_ast1700_instance_init(Object *obj=
-)
->      object_initialize_child(obj, "ioexp-adc[*]", &s->adc,
->                              "aspeed.adc-ast2700");
->
-> +    /* SCU */
-> +    object_initialize_child(obj, "ioexp-scu[*]", &s->scu,
-> +                            TYPE_ASPEED_2700_SCU);
-> +
->      /* LTPI controller */
->      object_initialize_child(obj, "ltpi-ctrl",
->                              &s->ltpi, TYPE_ASPEED_LTPI);
-> @@ -120,6 +136,7 @@ static void aspeed_ast1700_instance_init(Object *obj)
->
->  static const Property aspeed_ast1700_props[] =3D {
->      DEFINE_PROP_UINT8("board-idx", AspeedAST1700SoCState, board_idx, 0),
-> +    DEFINE_PROP_UINT32("silicon-rev", AspeedAST1700SoCState, silicon_rev=
+> > ---
+> >   include/hw/arm/aspeed_ast1700.h |  3 +++
+> >   include/hw/arm/aspeed_soc.h     |  2 ++
+> >   hw/arm/aspeed_ast1700.c         | 15 +++++++++++++++
+> >   hw/arm/aspeed_ast27x0.c         | 18 ++++++++++++++++--
+> >   4 files changed, 36 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_as=
+t1700.h
+> > index 490f2a3b05..874b4d63fe 100644
+> > --- a/include/hw/arm/aspeed_ast1700.h
+> > +++ b/include/hw/arm/aspeed_ast1700.h
+> > @@ -19,6 +19,7 @@
+> >   #include "hw/ssi/aspeed_smc.h"
+> >   #include "hw/watchdog/wdt_aspeed.h"
+> >   #include "hw/char/serial-mm.h"
+> > +#include "hw/misc/unimp.h"
+> >
+> >   #define AST1700_SGPIO_NUM            2
+> >   #define AST1700_WDT_NUM              9
+> > @@ -45,6 +46,8 @@ struct AspeedAST1700SoCState {
+> >       AspeedI2CState i2c;
+> >       AspeedPWMState pwm;
+> >       AspeedWDTState wdt[AST1700_WDT_NUM];
+> > +
+> > +    UnimplementedDeviceState i3c;
+> >   };
+> >
+> >   #endif /* ASPEED_AST1700_H */
+> > diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> > index 4ea2521041..b185b04186 100644
+> > --- a/include/hw/arm/aspeed_soc.h
+> > +++ b/include/hw/arm/aspeed_soc.h
+> > @@ -294,6 +294,8 @@ enum {
+> >       ASPEED_DEV_IOEXP1_I2C,
+> >       ASPEED_DEV_IOEXP0_INTCIO,
+> >       ASPEED_DEV_IOEXP1_INTCIO,
+> > +    ASPEED_DEV_IOEXP0_I3C,
+> > +    ASPEED_DEV_IOEXP1_I3C,
+> >   };
+> >
+> >   const char *aspeed_soc_cpu_type(const char * const *valid_cpu_types);
+> > diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c
+> > index ca0ce4e2c2..5f3c56e6cc 100644
+> > --- a/hw/arm/aspeed_ast1700.c
+> > +++ b/hw/arm/aspeed_ast1700.c
+> > @@ -15,6 +15,7 @@
+> >
+> >   #define AST2700_SOC_LTPI_SIZE        0x01000000
+> >   #define AST1700_SOC_SRAM_SIZE        0x00040000
+> > +#define AST1700_SOC_I3C_SIZE         0x00010000
+> >
+> >   enum {
+> >       ASPEED_AST1700_DEV_SPI0,
+> > @@ -26,6 +27,7 @@ enum {
+> >       ASPEED_AST1700_DEV_SGPIOM0,
+> >       ASPEED_AST1700_DEV_SGPIOM1,
+> >       ASPEED_AST1700_DEV_I2C,
+> > +    ASPEED_AST1700_DEV_I3C,
+> >       ASPEED_AST1700_DEV_UART12,
+> >       ASPEED_AST1700_DEV_LTPI_CTRL,
+> >       ASPEED_AST1700_DEV_WDT,
+> > @@ -42,6 +44,7 @@ static const hwaddr aspeed_ast1700_io_memmap[] =3D {
+> >       [ASPEED_AST1700_DEV_SGPIOM0]   =3D  0x00C0C000,
+> >       [ASPEED_AST1700_DEV_SGPIOM1]   =3D  0x00C0D000,
+> >       [ASPEED_AST1700_DEV_I2C]       =3D  0x00C0F000,
+> > +    [ASPEED_AST1700_DEV_I3C]       =3D  0x00C20000,
+> >       [ASPEED_AST1700_DEV_UART12]    =3D  0x00C33B00,
+> >       [ASPEED_AST1700_DEV_LTPI_CTRL] =3D  0x00C34000,
+> >       [ASPEED_AST1700_DEV_WDT]       =3D  0x00C37000,
+> > @@ -172,6 +175,14 @@ static void aspeed_ast1700_realize(DeviceState *de=
+v, Error **errp)
+> >                           sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->wdt=
+[i]), 0));
+> >       }
+> >
+> > +    /* I3C */
+> > +    qdev_prop_set_string(DEVICE(&s->i3c), "name", "ioexp-i3c");
+> > +    qdev_prop_set_uint64(DEVICE(&s->i3c), "size", AST1700_SOC_I3C_SIZE=
+);
+> > +    sysbus_realize(SYS_BUS_DEVICE(&s->i3c), errp);
+> > +    memory_region_add_subregion_overlap(&s->iomem,
+> > +                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_I3=
+C],
+> > +                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->i3c)=
 , 0),
->  };
->
->  static void aspeed_ast1700_class_init(ObjectClass *klass, const void *da=
-ta)
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 84ff8b5557..6b9ad328dc 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -573,6 +573,8 @@ static void aspeed_soc_ast2700_init(Object *obj)
->          /* AST1700 IOEXP */
->          object_initialize_child(obj, "ioexp[*]", &s->ioexp[i],
->                                  TYPE_ASPEED_AST1700);
-> +        qdev_prop_set_uint32(DEVICE(&s->ioexp[i]), "silicon-rev",
-> +                             sc->silicon_rev);
->      }
->
->      object_initialize_child(obj, "dpmcu", &s->dpmcu,
-> --
-> 2.43.0
+> > +                        -1000);
+> >   }
+> >
+> >   static void aspeed_ast1700_instance_init(Object *obj)
+> > @@ -221,6 +232,10 @@ static void aspeed_ast1700_instance_init(Object *o=
+bj)
+> >                                   &s->wdt[i], "aspeed.wdt-ast2700");
+> >       }
+> >
+> > +    /* I3C */
+> > +    object_initialize_child(obj, "ioexp-i3c[*]", &s->i3c,
+> > +                            TYPE_UNIMPLEMENTED_DEVICE);
+> > +
+> >       return;
+> >   }
+> >
+> > diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+> > index ca3adf9a50..0807481162 100644
+> > --- a/hw/arm/aspeed_ast27x0.c
+> > +++ b/hw/arm/aspeed_ast27x0.c
+> > @@ -206,7 +206,9 @@ static const int aspeed_soc_ast2700a1_irqmap[] =3D =
+{
+> >       [ASPEED_DEV_PECI]      =3D 197,
+> >       [ASPEED_DEV_SDHCI]     =3D 197,
+> >       [ASPEED_DEV_IOEXP0_I2C] =3D 198,
+> > +    [ASPEED_DEV_IOEXP0_I3C] =3D 199,
+> >       [ASPEED_DEV_IOEXP1_I2C] =3D 200,
+> > +    [ASPEED_DEV_IOEXP1_I3C] =3D 201,
+> >   };
+> >
+> >   /* GICINT 128 */
+> > @@ -275,12 +277,24 @@ static const int ast2700_gic198_intcmap[] =3D {
+> >       [ASPEED_DEV_IOEXP0_I2C]       =3D 0, /* 0 - 15 */
+> >   };
+> >
+> > +/* Primary AST1700 Interrupts */
+> > +/* A1: GINTC 199 */
+> > +static const int ast2700_gic199_intcmap[] =3D {
+> > +    [ASPEED_DEV_IOEXP0_I3C]       =3D 0, /* 0 - 15 */
+> > +};
+> > +
+> >   /* Secondary AST1700 Interrupts */
+> >   /* A1: GINTC 200 */
+> >   static const int ast2700_gic200_intcmap[] =3D {
+> >       [ASPEED_DEV_IOEXP1_I2C]       =3D 0, /* 0 - 15 */
+> >   };
+> >
+> > +/* Secondary AST1700 Interrupts */
+> > +/* A1: GINTC 201 */
+> > +static const int ast2700_gic201_intcmap[] =3D {
+> > +    [ASPEED_DEV_IOEXP1_I3C]       =3D 0, /* 0 - 15 */
+> > +};
+> > +
+> >   /* GICINT 128 ~ 136 */
+> >   /* GICINT 192 ~ 201 */
+> >   struct gic_intc_irq_info {
+> > @@ -298,9 +312,9 @@ static const struct gic_intc_irq_info ast2700_gic_i=
+ntcmap[] =3D {
+> >       {196, 1, 4, ast2700_gic132_gic196_intcmap},
+> >       {197, 1, 5, ast2700_gic133_gic197_intcmap},
+> >       {198, 2, 0, ast2700_gic198_intcmap},
+> > -    {199, 1, 7, NULL},
+> > +    {199, 2, 1, ast2700_gic199_intcmap},
+> >       {200, 3, 0, ast2700_gic200_intcmap},
+> > -    {201, 1, 9, NULL},
+> > +    {201, 3, 1, ast2700_gic201_intcmap},
+> >       {128, 0, 1, ast2700_gic128_gic192_intcmap},
+> >       {129, 0, 2, NULL},
+> >       {130, 0, 3, ast2700_gic130_gic194_intcmap},
 >
 

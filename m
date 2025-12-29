@@ -4,146 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 764ABE9271B
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 19:28:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C8EBE92FC4
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 19:36:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaIvA-0006y6-Kt; Mon, 29 Dec 2025 14:28:49 -0500
+	id 1vaJ2I-0001Oz-OB; Mon, 29 Dec 2025 14:36:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1vaIv0-0006wc-V3; Mon, 29 Dec 2025 14:28:42 -0500
-Received: from mail-eastus2azlp170100001.outbound.protection.outlook.com
- ([2a01:111:f403:c110::1] helo=BN1PR04CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1vaIuz-00060v-8O; Mon, 29 Dec 2025 14:28:38 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=QGubPDiua11KG5DhKsLIj7rtkE8bUQ8xffAqaqbFMpCP5bJ3SwwU7pq0runfJgVIehqmxG7LrzVqkrHv2B/tb3c5yllW517bSEQS4Oh1zahwW7fH0oXrFz7NyM1T4r7rpK8W+/Q3JAk5Q/bnv1jc6iO/+RH1cAgpRtF/uC70/Rc2CieOF7zJuxfURfzk0uYYXFT9wBtbvfwD0CSMhuRtYqzsEy6mxOJllCVWIx8h8Obp2X3H9D+pvllgS/Geeya5bYxnAakFgMq3AHptzzFIQHzJQ82TrHBeP3bg/7E1dqDBgR8MTOv8hoqAcSmTCjSjxJxV996rgEj4zpxWUTar8w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=7v2xavG1N8Cudz0aOj0F5j+umOaZorTKBR9YTBxLSCE=;
- b=eJkA+IZmrgpEnVUoqm82ALFsuarPL/hT/t1khTFrqlzJXJjA3eyoZ78l7I4FYk3InMk+6jJsEwKKczteaIv3o6nS/gEbTTJCzfVncqkXEJ2fjPJtqaGt21wMqXuNsuTSXQeQ448fhCjv4POoEV2EZ8KwG1BSEcB5Criro3qEQSSlLQ+1t4S/3NR9TT0Tt6fxbRPBA+aVMGQJTKDlKQMLMvq/P9gG4YT9kVvMmABNiZ6UFmX67JKS/sms5GEEol1Ae8KuIvBfI1FCf5n0aFIKzPMRSLdM3AKSjK8/4JvqTHOdg8utAzFfR4gDDr9uwpny8oQ08HhfoxgREHT/Fdkhmw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7v2xavG1N8Cudz0aOj0F5j+umOaZorTKBR9YTBxLSCE=;
- b=kCw5VOXR2C8ZV8/0l3H1uL5VPXy+WxEKTFAtZ7l0cOzMHbxiETY+D8OEUyOXyuacQNbgInphraBabBWSDP70PBxmNePpS/x5/g0jBjI3LwVqQ7/gLD2NsrZ7cpYAZvYVUipbT+MCDJJV/anWjx+4OBT3PPNsWeoONvj5IUlwF3igi/w4jOPXPWBUlVz6/9C72LNfyrwTdEPlyfGXKc71TNaJIBUml/xxtFEVe8YUV9G0gVTTqAcnXK18LKVTJurzaHd1n36zBvZs7STNEc38TPAR001LuPHV4R2/KzAmYDO1hivJBgn4qIHig6m283zUDaAXqcirveqcPcQElt69sQ==
-Received: from DS0PR17CA0011.namprd17.prod.outlook.com (2603:10b6:8:191::13)
- by CH2PR12MB9459.namprd12.prod.outlook.com (2603:10b6:610:27d::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9456.14; Mon, 29 Dec
- 2025 19:28:28 +0000
-Received: from DS1PEPF0001709A.namprd05.prod.outlook.com
- (2603:10b6:8:191:cafe::a8) by DS0PR17CA0011.outlook.office365.com
- (2603:10b6:8:191::13) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9456.14 via Frontend Transport; Mon,
- 29 Dec 2025 19:28:21 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- DS1PEPF0001709A.mail.protection.outlook.com (10.167.18.104) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9478.4 via Frontend Transport; Mon, 29 Dec 2025 19:28:28 +0000
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 29 Dec
- 2025 11:28:13 -0800
-Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail204.nvidia.com
- (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 29 Dec
- 2025 11:28:12 -0800
-Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.129.68.9)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
- Transport; Mon, 29 Dec 2025 11:28:11 -0800
-Date: Mon, 29 Dec 2025 11:28:10 -0800
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Shameer Kolothum <skolothumtho@nvidia.com>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
- <peter.maydell@linaro.org>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
- <jgg@nvidia.com>, <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
- <zhenzhong.duan@intel.com>, <kjaju@nvidia.com>
-Subject: Re: [RFC PATCH 06/16] hw/arm/tegra241-cmdqv: Map VINTF Page0 into
- guest
-Message-ID: <aVLWSp9JCEjXnjvr@Asurada-Nvidia>
-References: <20251210133737.78257-1-skolothumtho@nvidia.com>
- <20251210133737.78257-7-skolothumtho@nvidia.com>
+ (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
+ id 1vaJ2H-0001Np-G1
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:36:09 -0500
+Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
+ id 1vaJ2E-0008IU-Ut
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:36:09 -0500
+Received: by mail-qt1-x836.google.com with SMTP id
+ d75a77b69052e-4ee147baf7bso3866831cf.1
+ for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 11:36:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1767036965; cv=none;
+ d=google.com; s=arc-20240605;
+ b=C9Fb5dF8izwxqgSjJdkK0+DIuGgnMcwrC/AFw3uXtUnAn6XdwGHG5y/sWHeD8rm+pb
+ z8PiDno5rk/p4J4zE0Wl+vz9JqWS5MMNd5w8SKgA2ancNmsehMV0OPV3rLuULKr3doJB
+ 0Dne/i3rB+mNHxy94lYm+FR1ryHQ8yTQ9vfGpQYxc0HUoyyK7g9HYCKxcAX7rgIzOnAF
+ paaHSyMxgLJfc5sB7FJlqHS+hy6CLCg01Kqg6M8fLyOTHzjmywlIkGWTnUxc8hqhBAef
+ rRvSbZvxQYdW2QyF9TEBCXZSsE3m+nTORNsA0WnrNCESIzfkU1BGzYWujefvYhG/J/V2
+ 1Lwg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=ZRR3yxbpq2V3CkfGHou7Vzmk0iQ3VJchRoplq3BvZaI=;
+ fh=sJS8/ZPcs2XlFHzHsRrGuKKzqQ2r4t62mjDtMNHYBPs=;
+ b=Wup0tWT4vhbEij0MOjl7dfhcZqkVJe+DXG/NXFZxRYNnmcIMLAM71fOJSYmUMNPL/u
+ zVm46LpnjvDAMPG0Ha/oysI7CI2dF89/5gHJXhCa8zoa+yZPIZUok/NUDKKmuPkoZhVP
+ afYPQFZF8ll01Gg1Z9piPDJAikO/gCRQAAm+OguKy+aeHu/3FpxEmTfcOKT9rrvVy7Ps
+ Wnv583RR18R+HX/Ewn72jV2K588NeZTQa6ZMdUIfuLomNFpsmG9SYMxcL9KK47MYp6/D
+ U4iOTgUXN+iGkg7OYHENv+iVPBXIKwIGWJpxMOC+YYD/i8FFgfBBJBYMgD0B3HoDQne6
+ G8Hw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1767036965; x=1767641765; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ZRR3yxbpq2V3CkfGHou7Vzmk0iQ3VJchRoplq3BvZaI=;
+ b=28mw1Cwf5x8BpqD0K2whQapPDZpFqtyQfBpK4aI0e9kUjEqo0GsUnLzlb/q4Mm5emS
+ Q+0DH70GM0yI35CTFvdmIyg1+O8XeFA1p0Elw629v+oOSWw0jyPz/xvE4xITPGSs9mSU
+ cfhc9FK2N/EaeXG1GzqmYFTkmJF4i2BJ4i4JjCSDeVRbyFbxKjha9IwGzH9uWgjjSfse
+ zcDZwcHlhJ8weQF+qKYl15Eud7rywcA3VAjHzse5qsa7lVrP35IIySMzoVuBE9lMblGM
+ 66UIHi241G+EtjDrj1s+2IOun6acrHTzdrtZKD+6DS+XmWm+qoOLZowZoiais/iNJVSn
+ UWSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1767036965; x=1767641765;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=ZRR3yxbpq2V3CkfGHou7Vzmk0iQ3VJchRoplq3BvZaI=;
+ b=Vf/qF2JJ9WqlmL9LnkZ2Xa3RbtCb3F74CLM1k0IoTTYHwe5bCELBqJ5ikD1vrBXqCv
+ 6B58GWvXjIIdGCrkbzCgvmSg3Btt6p5G1pQFMTlIH+tcex1gcXWYU5X4C9XSESlrPoNU
+ vsSY1FUa7QvVUbvt/KQK1HyPLLzCVEGn+gqtsUHwSugAM2IlrdCw/Ba/SOcdqmQt08ej
+ +fvhiVc3m8QjEOGcETXFqTCM/2AbAYPMorjhQqYHOOCAsnzFJSrNS1vR6roS35BggsxG
+ WvBlSPKG+Pld1UPcU0zkffXLWgOObQrfdMrylNzcf3c0YCSY9WyPVinbOH1cobSzGhyn
+ PnjA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXUARbCEedfVmqA0aSJXOQMaHLKBUG40MaNJlUVrOvGfyHSLApQ5bpYThLNOQdnMOf/EtqyFOk3+Q==@nongnu.org
+X-Gm-Message-State: AOJu0YwjzI+qCZFeer4XZTHKm5Dz/gt093Iu+DeeRkgXBIJgvU64ksrx
+ Nk7TdjxOpfqygB6dUQZuQSzgFY7ZYSWLB5mKLVlcd6bi/YbCzuc4Lt9Z51Q22/f4XsFCDBw7nEc
+ bhYCIimeFSLb+LMrIl7pvRQBtRB9h0BAEnWuP+IAx
+X-Gm-Gg: AY/fxX43+gHaGszE/8KVRnPIpwpUKPfq+jx0j3tGIx42IJPLZUXbgW7uWVDE6kq1h/O
+ Eu+Tm4zGR7oxIGk7cZxrzoAC6wd8r/gl6fzFa8kGHVLxS1nwOD2QvuCeU28tnEy3RVSkwmbCMi+
+ pwL2Q4tMxNLEeG43QwnMHu94mTPX3cXJr2P2GBkvWFUH88goLo88yXe4HmOXL+mhDrjJot+D6Lc
+ 34jFFQp2jXaviNvRCfcJ1q4cWkccI2GghZOizcYW8FphWSJRfOtUmBwrDHOlecWBcGLjxviVzLc
+ J2eUDYpmyKZN7kTaAmF2jNBXFQ==
+X-Google-Smtp-Source: AGHT+IGt38XSoG40pMa5YuNcdYBSB7uZ/EHfwgb+wVPmZUzlrS9ccxGMkQIbQafNyTPL7DW2K31uGc/D5qsIyf934Hc=
+X-Received: by 2002:a05:622a:102:b0:4f1:aa29:7796 with SMTP id
+ d75a77b69052e-4f4e5f88cd9mr31392371cf.15.1767036964658; Mon, 29 Dec 2025
+ 11:36:04 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20251210133737.78257-7-skolothumtho@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS1PEPF0001709A:EE_|CH2PR12MB9459:EE_
-X-MS-Office365-Filtering-Correlation-Id: 92eb759b-cada-4971-a6ee-08de471071ae
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|82310400026|1800799024|36860700013; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?R10MjljLWWdBvcWby6GeYEJSBOOQyfjgglvZ7EL5Qf79L8VpeC+GQj4w/R+X?=
- =?us-ascii?Q?tYR7ULo2iCCHJlfZU+9amPcazNysXVMrb8kH2FUl2ENeylTwg1oL/uamGd4d?=
- =?us-ascii?Q?BR8yWDDXg5d8JUO0084XxXzzT/yuQ8+2NYEmCl9/VEVYKJwlTp/+WV7qg5EC?=
- =?us-ascii?Q?eKw5nzhfMirqDJkcSjSaX8AoPlwr8Qff845MlaC2hVimzFhLSrRnmxzL+CIF?=
- =?us-ascii?Q?5j/uUs/q0Sj9HhN4fkQcvmp3MbmqfwwVl81MBYEpGHqZxGox9fctM3j3W9r4?=
- =?us-ascii?Q?KnTdBSLAz/ahuZ+uNCWgcn5h70G04T4XrRZcHpZ7SRW4r5D7dcLJklufMGe0?=
- =?us-ascii?Q?jUaSARifloZv1M/a+71sQnn/i9qwBbHgpa4d/kRPEoDrE8HGArk9pQaKeKjc?=
- =?us-ascii?Q?p87eFmW07UK3U5FIyPwQV6Z8bU2sB7lqMX5pnmlrsSKxC73WIdgbFUCQQ3sa?=
- =?us-ascii?Q?qXYgvtx7g18BV8a52HMxKRS0MpG3bQkNqJanYEF7viMsT7yM1lUgUmoVL8b0?=
- =?us-ascii?Q?7Xjb4+5aTenE9mlDSW8qePYYbBv8Xtf3xaMUDGVNdnsQgqwSfV8/j27n1V9I?=
- =?us-ascii?Q?MYaEgGEzBfE9f5vaTXVbd1g6iyQUqeVvVxYXfKv0XH+IYvI51SueHDF6nGJE?=
- =?us-ascii?Q?OxYPz3N2FhssP5peSmTnmUGoAe8/xXLVGl/osYDqtulLAxye/NpQ6VP5cyw+?=
- =?us-ascii?Q?jayqhPg68OnNXhaEQaYFDoRsIX/ZuIJS8XQPPh5MBqJI5RbrXSI9IUr6OohP?=
- =?us-ascii?Q?vWy7nVa8GDG/84IUj8RtsS6g8THVy6a/+WXdRwqfX2x8bNwhkL4aYPi3ttzp?=
- =?us-ascii?Q?17QjDL1fjhgrvSOUtSFqi9a8g/ti4xvcCdGXBoh88ViAkcxTJC8iWouE7Im5?=
- =?us-ascii?Q?QC5AJorReYIjp1CUenZWNluqTKV8K2ua3ls7FyyhUOqZjGTI0gh7gC0WVKl/?=
- =?us-ascii?Q?M6tOjkHZOfnTP2f96AGIUDXR7tZ3klliEHWuQWu+ztzWk0KxXNuZPz1fZJ70?=
- =?us-ascii?Q?BO7eOA8tDPeghhdfPshc9zVRgk7IjhMvXJhPJcOja6F4GVk0hbBYqSR+DMv5?=
- =?us-ascii?Q?tPOe9FpNOlz7/rhFqDtUvU9IkWkVf7jwbRd1iTDyzSR/PhQeldySKUJ805Dw?=
- =?us-ascii?Q?cxcgyDwk16aB/z5nX6waBGzNVBWrTcr5VljDYi6YVsnNMKdIyrtvg6V/LekE?=
- =?us-ascii?Q?cNU6uw4YpJU1mHCVIVMBg9ddtoEiYlqPGoS7dDzLZqpmONfzHftP0doY1vKT?=
- =?us-ascii?Q?ExaPLa3k2RIYMp3ogYP1iQmPdZTf5rm8hG9KbuTP4sJIKEV1lb56SO82rnLM?=
- =?us-ascii?Q?rqYuLS80snan/oX7GFLmFmfzzSQtlyT88+6j/aTMF7Yj+vc2UXVbUD1/IwW6?=
- =?us-ascii?Q?T5djV9zXTZeBIRF8OZTWN3dT/xuzklQEg47zYP4v18fozoZLQfQidAA8oNIf?=
- =?us-ascii?Q?hhxk8ent6BHmwjClKJE+bXXHdVdlG990q/sp0prn3l2uHZTB/4fZEy6pmVlQ?=
- =?us-ascii?Q?Gad8AM4Z2s/VdZM39lOAocsOMihIlIxHf1ncYXKnNApblEwcCVXc2WKRg1ur?=
- =?us-ascii?Q?VBOA5CRqfMI8QNkljpo=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(376014)(82310400026)(1800799024)(36860700013); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Dec 2025 19:28:28.4019 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 92eb759b-cada-4971-a6ee-08de471071ae
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: DS1PEPF0001709A.namprd05.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB9459
-Received-SPF: permerror client-ip=2a01:111:f403:c110::1;
- envelope-from=nicolinc@nvidia.com;
- helo=BN1PR04CU002.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+References: <20251224014203.756264-1-kane_chen@aspeedtech.com>
+ <20251224014203.756264-7-kane_chen@aspeedtech.com>
+ <465b0714-bd08-40b5-9cf9-5cd206e8548b@kaod.org>
+ <SI6PR06MB76312852C6243B1F48202A89F7B0A@SI6PR06MB7631.apcprd06.prod.outlook.com>
+ <55adfce4-0dbc-492a-b586-4c46df78007a@kaod.org>
+ <SI6PR06MB76318E7A596008386B0AE51CF7BFA@SI6PR06MB7631.apcprd06.prod.outlook.com>
+ <ed07c0f2-737d-4d65-917f-d39d02c37063@kaod.org>
+ <006fa26f-6b84-4e82-b6e1-7d1353579441@kaod.org>
+In-Reply-To: <006fa26f-6b84-4e82-b6e1-7d1353579441@kaod.org>
+From: Nabih Estefan <nabihestefan@google.com>
+Date: Mon, 29 Dec 2025 11:35:53 -0800
+X-Gm-Features: AQt7F2ogMb0AC9i6qx8BM0zRYMH-1rriH9lHCIQsM2s8FJdC6js1NAlttpR3eDY
+Message-ID: <CA+QoejXzjvyLA0Pp0xJjCsrwSyegSBRBs-MaT7yP41Nd2B9BcQ@mail.gmail.com>
+Subject: Re: [PATCH v4 06/19] hw/arm/aspeed: Integrate interrupt controller
+ for AST1700
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ Troy Lee <troy_lee@aspeedtech.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::836;
+ envelope-from=nabihestefan@google.com; helo=mail-qt1-x836.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -159,77 +135,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Dec 10, 2025 at 01:37:27PM +0000, Shameer Kolothum wrote:
-> From: Nicolin Chen <nicolinc@nvidia.com>
-> 
-> Tegra241 CMDQV assigns each VINTF a 128KB MMIO region split into two
-> 64 KB pages:
->  - Page0: guest accessible control/status registers for all VCMDQs
->  - Page1: configuration registers (queue GPA/size) that must be trapped
->           by the VMM and translated before programming the HW queue.
-> 
-> This patch implements the Page0 handling in QEMU. Using the vintf offset
-> returned by IOMMUFD during VIOMMU allocation, QEMU maps Page0 into
-> guest physical address space and exposes it via two guest MMIO windows:
->  - 0x10000 :VCMDQ register
+On Mon, Dec 29, 2025 at 8:51=E2=80=AFAM C=C3=A9dric Le Goater <clg@kaod.org=
+> wrote:
+>
+> +phil
+>
+> On 12/29/25 12:41, C=C3=A9dric Le Goater wrote:
+> > On 12/29/25 11:00, Kane Chen wrote:
+> >>> -----Original Message-----
+> >>> From: C=C3=A9dric Le Goater <clg@kaod.org>
+> >>> Sent: Sunday, December 28, 2025 1:51 AM
+> >>> To: Kane Chen <kane_chen@aspeedtech.com>; Peter Maydell
+> >>> <peter.maydell@linaro.org>; Steven Lee <steven_lee@aspeedtech.com>; T=
+roy
+> >>> Lee <leetroy@gmail.com>; Jamin Lin <jamin_lin@aspeedtech.com>; Andrew
+> >>> Jeffery <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>;
+> >>> open list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC
+> >>> here <qemu-devel@nongnu.org>
+> >>> Cc: Troy Lee <troy_lee@aspeedtech.com>; nabihestefan@google.com
+> >>> Subject: Re: [PATCH v4 06/19] hw/arm/aspeed: Integrate interrupt cont=
+roller
+> >>> for AST1700
+> >>>
+> >>> Hello Kane,
+> >>>
+> >>>> Thank you for the suggestion. Since I need to submit a v5 patch to
+> >>>> split the I2C code changes anyway,
+> >>>
+> >>> Can you please introduce the bus label property at the end of the pat=
+ch series ?
+> >>> Please consider adding a functional test and updating the documentati=
+on too.
+> >>>
+> >>>> I will handle the naming adjustments and other minor fixes myself in
+> >>>> that version.
+> >>>
+> >>> Thanks,
+> >>>
+> >>> C.
+> >>
+> >> Hi C=C3=A9dric,
+> >>
+> >> If I move the bus label property to the end of this patch series, it w=
+ill trigger
+> >> a test failure in the current patch series.
+> >
+> > Which test ?
+> >
+> >> To avoid this, I plan to move the bus
+> >> label changes into a separate patch series and submit it before the AS=
+T1700
+> >> series. I believe this approach ensures both series pass the tests pro=
+perly.
+> >> What are your thoughts on this?
+> >
+> > I would like to understand the issue first.
+> I see.
+>
+> The AST2700 functional tests fail :
+>
+>         self.vm.add_args('-device',
+>                           'tmp105,bus=3Daspeed.i2c.bus.1,address=3D0x4d,i=
+d=3Dtmp-test')
+>
+> The "bus label" proposal renames the IO expander I2C buses (32) to avoid
+> the name conflicts :
+>
+>            /aspeed.ioexp0.i2c.bus.0 (i2c-bus)
+>            ...
+>            /aspeed.ioexp0.i2c.bus.15 (i2c-bus)
+>
+>            /aspeed.ioexp1.i2c.bus.0 (i2c-bus)
+>            ...
+>            /aspeed.ioexp1.i2c.bus.15 (i2c-bus)
+>
+> Since this will be exposed in the user API, it would be best to avoid
+> introducing poorly chosen names. Having so many I2C buses (48) in a
+> single machine is somewhat new in QEMU and I am not aware of any naming
+> convention for this.
+>
+> May be others do ?
+>
+> Thanks,
+>
+> C.
 
-global VCMDQ MMIO pages.
+I'm not aware of any convention, but I'd argue the current naming with
+the bus label makes sense. A i2c bus on the main machine is
+"aspeed.i2c.bus.%d" which clearly makes it easy to differenciate but
+see that the two busses are somehow related. Maybe it'd be worth
+changing the `aspeed_i2c_class_init` to make this relation more
+obvious by not using TYPE_ASPEED_I2C_BUS but use the string
+explicitly?
 
->  - 0x30000 :VINTF register
-
-private VINTF MMIO pages
-
-> +static bool tegra241_cmdqv_init_vcmdq_page0(Tegra241CMDQV *cmdqv, Error **errp)
-> +{
-> +    SMMUv3State *smmu = cmdqv->smmu;
-> +    SMMUv3AccelState *s_accel = smmu->s_accel;
-> +    IOMMUFDViommu *viommu;
-> +    char *name;
-> +
-> +    if (!s_accel) {
-> +        return true;
-> +    }
-
-g_assert?
-
-The entire thing can't work without s_accel, so returning true
-doesn't seem to make sense.
-
-> +    viommu = &s_accel->viommu;
-> +    if (!iommufd_backend_viommu_mmap(viommu->iommufd, viommu->viommu_id,
-> +                                     VCMDQ_REG_PAGE_SIZE,
-> +                                     cmdqv->cmdqv_data.out_vintf_mmap_offset,
-> +                                     &cmdqv->vcmdq_page0, errp)) {
-> +        cmdqv->vcmdq_page0 = NULL;
-
-We probably shouldn't nuke the vcmdq_page0.
-
-And I think we should add g_assert(!cmdqv->vcmdq_page0) too. It
-would be a bug if we pass in a valid page0 pointer.
-
-> +    name = g_strdup_printf("%s vcmdq", memory_region_name(&cmdqv->mmio_cmdqv));
-> +    memory_region_init_ram_device_ptr(&cmdqv->mmio_vcmdq_page,
-> +                                      memory_region_owner(&cmdqv->mmio_cmdqv),
-> +                                      name, 0x10000, cmdqv->vcmdq_page0);
-> +    memory_region_add_subregion_overlap(&cmdqv->mmio_cmdqv, 0x10000,
-> +                                        &cmdqv->mmio_vcmdq_page, 1);
-> +    g_free(name);
-> +
-> +    name = g_strdup_printf("%s vintf", memory_region_name(&cmdqv->mmio_cmdqv));
-> +    memory_region_init_ram_device_ptr(&cmdqv->mmio_vintf_page,
-> +                                      memory_region_owner(&cmdqv->mmio_cmdqv),
-> +                                      name, 0x10000, cmdqv->vcmdq_page0);
-> +    memory_region_add_subregion_overlap(&cmdqv->mmio_cmdqv, 0x30000,
-> +                                        &cmdqv->mmio_vintf_page, 1);
-
-Let's add some comments here (maybe something similar in commit log also):
-
-    /*
-     * Each VM can only own one VINTF exposed by the kernel via a VIOMMU object.
-     * And all available VCMDQs are already preallocated in the VINTF. Thus, the
-     * global VCMDQ MMIO page0 and the private VINTF MMIO page0 are effectively
-     * the same, i.e. cmdqv->vcmdq_page0.
-     */
-
-Nicolin
+Thanks,
+Nabih
 

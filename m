@@ -4,93 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3662DE92FD0
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 19:39:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FDD7E92FC4
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 19:39:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaJ5J-0005WR-KV; Mon, 29 Dec 2025 14:39:17 -0500
+	id 1vaJ4d-0004ll-08; Mon, 29 Dec 2025 14:38:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vaJ4c-0004fo-1b
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:34 -0500
-Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
+ id 1vaJ4Q-00043Z-RW
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:23 -0500
+Received: from mail-qt1-x829.google.com ([2607:f8b0:4864:20::829])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vaJ4a-0000MX-FM
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:33 -0500
-Received: by mail-qt1-x82a.google.com with SMTP id
- d75a77b69052e-4ee147baf7bso3868041cf.1
- for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 11:38:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1767037111; cv=none;
+ id 1vaJ4O-0000JS-5K
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 14:38:22 -0500
+Received: by mail-qt1-x829.google.com with SMTP id
+ d75a77b69052e-4ee147baf7bso3867811cf.1
+ for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 11:38:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1767037099; cv=none;
  d=google.com; s=arc-20240605;
- b=MSczb4vFvz1EBaCdEeI8UNCO0AMZtXX0Rg694oi707ACWaSNxUEl7Pe2wcKPQaTSV1
- 6huj0B2RTza+4ny8P5VHDZkWwdzSJOTXEfax7u1LmnQCkPrAfQ4RmMocnlnPWHKKJXvS
- mMEPmkYvb7lfTFH1L/lMq4uf5Dg2Xm2yaEUDDgadfbjotfIeYKvV6iUv60je9ngW6TSf
- xrGMxdcLJHCPQ0nuRdq9bet2jflV6S9m4Opz2ZM85IFboFy4Q8C//7d5k5BaK7FjH8BA
- eW2D1JiSmO1ytbVI+XZV+2w7/FVn29GUenPstjleAewrEpWSv8X2ynJNCUeG3i01fUXu
- AhAw==
+ b=NQPOKOKETpfpaCGT1I8gideJaK2z/tWy8FgC5KiRB6SShCO2B3Hdx6uWHq7Q6cjajD
+ hZyUIY7azam6Sw0m58EdxC2FI3Vr3BQV2iN3G1np3sdo7TBCy5a/H9STLVccESMhh3lF
+ sm2uZaojrlh8sLvsxMlnzBV3ENyNQt4LQ9QXXvtbuhujAR8jCztVQygxuaHD7oOf2EB8
+ niH7I0re91Q4rcTABwYkRCnS3sRGAz8+pe9vU4Tw2CCZxVgIA0U2iVBqL8p5gBYZQM6w
+ LfEg8b89BtGNakk2SIRrPGgKmxJMCJXcHcy1wKZKRUQVis2c1bA0EZ2sRYtoKVdG1Jc+
+ klog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=Oxi2gBJaCbN2rdJRawoPOCu6tIaYlgprDHm68pS7cJY=;
- fh=NN1mLTXCQOtMTKyo/iUam93NwmEFvwcNdAdRduPWb6k=;
- b=M0cGtNgtUh6pOEPedJYEacj87mRqzwN1X5ADrB0WUvFBFpu5FSV+q19/JyB7cazksl
- gEab9pyH4DpVtiDfc9Pv3I5tGKjPu9GjRpOZkUH3uqES34vTzoehwz9/fKwF2QwGUd6F
- AI9kt4l45mlX+Fte7FC+f809/tbNZ891o377evZVD6tczb6Zgz/giooCwrRzy6jkl770
- yXZRHWKOZmYEe70kDoeMXNxc4SKi1PmRXXzzzc1HfItTO4Og6dNz5Y/YUIRpY8Eqy6Sf
- asVJ/7WYPVK5P4voCfaBHx8VmJnoAUriUBr8QFKQUt21leQul3Zki+AXEgFqZvj6/dOk
- X9oA==; darn=nongnu.org
+ bh=iSHe0s9M59jQH1SzGvfiZ1+HXChWWuPGtrcv9A89JEE=;
+ fh=uC3+FyQ+UV6iX4MumeF6FmMOd8rrUWghL4zb0y/u1pk=;
+ b=SZAtGSUULRDvrPz4voOT876dXDwHphQuWCjyjj5JdB5fMZ160IOKdsL2ae0LNoNqW2
+ HWFuMdmG+XfI5H9mE8wFYqmoRre2Knp6xORzc2CD1V+0UNQbCqXYtDY69KslOWZY2lJl
+ bJpdmp1UJSd3pR3s5PLCPfl9LZtm1Kl/+OO1oWyq/XZ4Ydt1rmG+MCVmk0wGiIsAwVBk
+ KhRQhbQqU2HmDzVSWe6PaHmJJuKM98Au39tnkqMlISHHBWfna0RCLbxLnfSQBdxx/oaw
+ 12UM2Ejc98qB/5XRvLBqdXVB8czN0vSLqBBQSts706cxmZJlLthnsOHrKLV/CrmhXSRM
+ d7jA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1767037111; x=1767641911; darn=nongnu.org;
+ d=google.com; s=20230601; t=1767037099; x=1767641899; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Oxi2gBJaCbN2rdJRawoPOCu6tIaYlgprDHm68pS7cJY=;
- b=pA7/lOZARW8UVCrMy0Tf/6Yn7lwrTk3cN42hXpQ7IisHUeSN6a/qopyV/8E9MP17bg
- OwGDflZjOzP825y/MypI/E5EvgUuw4BBSc6LsKABztiLE5QE1fqL5JQ5IOo7olLe84Yo
- tS9BTDfl6QUudoG+qt0mlQJKdk+LThuwewrsUVyIXsNMdrqKzCUTXhJxwCSWgwerxV+e
- sZrzVjfSalyN8z9KMpuUxMgsDrZdwuBfcVJwvXEoDgKoBny0yyYPlwoxXDumU+jBbWlt
- 8D1yH32QJVEN6BGEbHeiP9io9ott/M7K97Nd1BqRnaGy5/uw5bul6j5n3P0jzCJBVlN/
- K3Ug==
+ bh=iSHe0s9M59jQH1SzGvfiZ1+HXChWWuPGtrcv9A89JEE=;
+ b=uFvaz2961zrUSW78eoxwOETFbiA2hMkczveZh+vDeOXQuVauaQeY7wnjivNRGltwa6
+ mEXeKenBWKXTfUHSBCnZxqqPuorechjU553QDgJmFiY1YMpmj0pGfQ5nbq7/5mAqEZTN
+ Y6R9dqFgzvOYj9WZP2+cG1lg15MerEWmG1ItUQpGcpU3WmNq0boUM5hWUdzfZPKx2pKG
+ p3iJIzyfnznyVzeBvC2Hp+JgdpqGLZ+T3BrftUymTvXQAdfDobqQrD+pH7i2XMpNZeBW
+ 9uY6F0VIMQdeFXqYRqwJmH0zmHFOzYLSC7tYCOPVLHO4f5fb4Syua1/T+1e+6o3v399X
+ ZHJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767037111; x=1767641911;
+ d=1e100.net; s=20230601; t=1767037099; x=1767641899;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Oxi2gBJaCbN2rdJRawoPOCu6tIaYlgprDHm68pS7cJY=;
- b=fswmlQB0H6HSTcRcD1R3iTLXRJuHQ62SCFJXBSJDeJWV0Qpd8RLsb4x5aATn3xonkP
- gTVH5Ja+N8A+BVXJS23oSr64UfNP64C2dLHqM8DHwBYFqwfJZTwp7ndQDAgr4ET0V1tM
- 36WlGrW3mag0emYphc35+myXEMjFP8QjONPFxCgDyxelDDzPtWfGkIy5qumQTAm4uUE7
- w64sk4kyIzO5gOl53WmpPNO9oFIy/wLPM3MpTu6GMgDi5WVjE/um++p/Lf9Y/2Lhv2+g
- L0oXX8i+FA2c2kJ4CdopmYxjRMpuNivOz0VgAclllByE57Oj3IHg6XNbiz14zET9UVmj
- YEuA==
+ bh=iSHe0s9M59jQH1SzGvfiZ1+HXChWWuPGtrcv9A89JEE=;
+ b=C3PQRBrPYd9nrxIQbtRa5HRuVY318RSQR95wwak21/LcrMEmwY0AZx75K0DpyVEQHU
+ KDEeX5c2J8colqbXHYl2oy1ycXQb4PPLt8asQCmXVFYsiJz5c5Of4qSK35J1P6CnJNln
+ gTM55zRSb/qVmXc9kY/H77HdCJ+ry1ZDCC9DpCN9hUT3930gSThm1VuIWF4b2tgGrJTQ
+ Dce0LEBEJeTL5gcPuppB4TeL606++FCvz6bjaIuBXHD8syw7KcRItt3xAQJQJ4jzIaF8
+ a+xhS39M8C8SqJU+U53vwrchGGA3mQVGpX7Z72QybQI19bPw3evBqgjH5FMP+948RdoP
+ p1KQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXl1+fPueIIohisxPUI6DnTv7IiORPbNtRCq4brOueT2pbTkKi4Su4IlDKZ74tpv3VA7ut1xvuy4g==@nongnu.org
-X-Gm-Message-State: AOJu0YyQ6zlYqAW0wOTy42XJbcMvnYR9gEu9+hBTflNq/ghN8iitbUY0
- 7ABUgm/CUEDpZiVDAgDWP/SPnTniHXApGF0jaEVE9B3tXd/srt2J/O9xRdBtH6bF34QeqWqu+PP
- DTB0CiLN4ayeck5M8wC+fgm+eAaLDehMJcDlL44Xb
-X-Gm-Gg: AY/fxX6cPLFfEU4q2Ha6ob1SRaKKB1DjSOY9fYg6r0XTUu9wIOkIzj+IRVnvjZFSf8G
- +t/6k/74C0Jk9N1OlAftvHnXrgFm2Q/opnyGEriS/YemsVuF1d3YpUdEz/ETj0KDM2luIl1KYTd
- k8t5omJf7r33p6LUyVIa67un6pLbPd5+QFDqHf2mmUY+eiiWVlc45pxme/bqCjcBwmonlxr8hte
- VMmU86fdp8gVim8uBrcNUTnnfhF1F73/tr6qVRbAYj66xztRpyb7/55juo/nbaxLUJuPC91Frs7
- /CTsnyC6lrtHioOvStuu+ODhLA==
-X-Google-Smtp-Source: AGHT+IGAf3lHT1MDZvPNru5ZFtAyaf9Z2c3a7lsMQulfUCRBdqtOnpSSHR0gCNPWccwzeqeBKiwFzVREXA2l5d+lAJ8=
-X-Received: by 2002:a05:622a:608:b0:4ed:ff79:e678 with SMTP id
- d75a77b69052e-4f4e4e613fcmr28442361cf.18.1767037111207; Mon, 29 Dec 2025
- 11:38:31 -0800 (PST)
+ AJvYcCUNyO1NqjTOIJxp/alICfFGAV/2KEtet9AUTuqKGn1CjQ1co0mxbQ78y4y9AyDtkc1F/sKTmj213w==@nongnu.org
+X-Gm-Message-State: AOJu0YztW0eiAPLnZ8NCXa/sMxArilOFH0tZiMjILk1PuG86GHNaL0Yj
+ e6G7C73LpfIv8t0dpmBtiPqH6eHeHzB6boMBCkU8WR2HW+2IYr++oXejHLNYzDIGoFmmsSkzd9U
+ f/i2LEPSoAsJRKIdLyyCzNv5k6NDk7RRUNhyfR8LD
+X-Gm-Gg: AY/fxX78vebVJK2NDioNKv6hGZH2R87Ye7rOZWwOIo8M62VLLZSJuo7LsHY7oJkJQ3+
+ bysrvLcqgVwW0dz+WTmz7XHl3B6FGaAsdEsbz56QSqCmK1SiNCPp+9mtGw83y23795UNPeMa0so
+ wGDMUNnpAHT7FtWVDkJpyFKvIVURv9w4YL4MhxWqt7IwZklkRtPTbpE9llbofteN3t7vwR2A48y
+ xQt6eF1gvdc/GAEKSaTvrf6La7qdtuBqOcgmQAzsiQYGka9hqf4F5426BDQTSdi/jwRq2mxG0UK
+ eO4WdJUxVG6Ke6k8tADPe2A7yQ==
+X-Google-Smtp-Source: AGHT+IFp+zk5i/1xH0hJ2cC5ENduTb5O1V6JaEXoywsghiQBh0ln2M367h75zm0IU5YIIRCJRZShaH5rvf+qL5qzZw0=
+X-Received: by 2002:a05:622a:1308:b0:4f3:b0f3:62bb with SMTP id
+ d75a77b69052e-4f4e5f746cdmr33506191cf.13.1767037099009; Mon, 29 Dec 2025
+ 11:38:19 -0800 (PST)
 MIME-Version: 1.0
 References: <20251224014203.756264-1-kane_chen@aspeedtech.com>
- <20251224014203.756264-14-kane_chen@aspeedtech.com>
-In-Reply-To: <20251224014203.756264-14-kane_chen@aspeedtech.com>
+ <20251224014203.756264-10-kane_chen@aspeedtech.com>
+In-Reply-To: <20251224014203.756264-10-kane_chen@aspeedtech.com>
 From: Nabih Estefan <nabihestefan@google.com>
-Date: Mon, 29 Dec 2025 11:38:20 -0800
-X-Gm-Features: AQt7F2olQxxVhN3RObQYLvTXV4LPj0KJ167-hU600MkBpFnwNzE3hg_DSxVezBk
-Message-ID: <CA+QoejVH=BqPx6R5LQP+owFEPanLQgxrhTZ4smzP-HJ3N8KF8w@mail.gmail.com>
-Subject: Re: [PATCH v4 13/19] hw/arm/aspeed: Attach GPIO device to AST1700
+Date: Mon, 29 Dec 2025 11:38:07 -0800
+X-Gm-Features: AQt7F2qHyuy0Rjs9h4p2xga7-Nm5mI_12tEjB8I0iD1yXmFVitSSKnEErrcsRr8
+Message-ID: <CA+QoejV4vX4SqX87y7jd81DXL-4hfHRvYhTLBpjwdf+oH4EMaQ@mail.gmail.com>
+Subject: Re: [PATCH v4 09/19] hw/arm/aspeed: Attach SRAM device to AST1700
  model
 To: Kane Chen <kane_chen@aspeedtech.com>
 Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
@@ -104,8 +104,8 @@ Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82a;
- envelope-from=nabihestefan@google.com; helo=mail-qt1-x82a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::829;
+ envelope-from=nabihestefan@google.com; helo=mail-qt1-x829.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -113,7 +113,7 @@ X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,8 +134,7 @@ On Tue, Dec 23, 2025 at 5:42=E2=80=AFPM Kane Chen <kane_chen@aspeedtech.com=
 >
 > From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 >
-> Connect the GPIO controller to the AST1700 model by mapping its MMIO
-> region and wiring its interrupt line.
+> Map the SRAM device to AST1700 model
 >
 > Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 > Reviewed-by: C=C3=A9dric Le Goater <clg@redhat.com>
@@ -146,101 +145,105 @@ Tested-by: Nabih Estefan <nabihestefan@google.com>
 
 > ---
 >  include/hw/arm/aspeed_ast1700.h |  2 ++
->  hw/arm/aspeed_ast1700.c         | 14 ++++++++++++++
->  hw/arm/aspeed_ast27x0.c         |  4 ++++
->  3 files changed, 20 insertions(+)
+>  hw/arm/aspeed_ast1700.c         | 18 ++++++++++++++++++
+>  hw/arm/aspeed_ast27x0.c         |  1 +
+>  3 files changed, 21 insertions(+)
 >
 > diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_ast1=
 700.h
-> index 12c57145c6..7ea6ff4c1a 100644
+> index a0d6b3ae44..23588f7a81 100644
 > --- a/include/hw/arm/aspeed_ast1700.h
 > +++ b/include/hw/arm/aspeed_ast1700.h
-> @@ -11,6 +11,7 @@
->  #include "hw/sysbus.h"
->  #include "hw/misc/aspeed_scu.h"
->  #include "hw/adc/aspeed_adc.h"
-> +#include "hw/gpio/aspeed_gpio.h"
->  #include "hw/misc/aspeed_ltpi.h"
->  #include "hw/ssi/aspeed_smc.h"
->  #include "hw/char/serial-mm.h"
-> @@ -32,6 +33,7 @@ struct AspeedAST1700SoCState {
->      AspeedSMCState spi;
->      AspeedADCState adc;
->      AspeedSCUState scu;
-> +    AspeedGPIOState gpio;
+> @@ -20,9 +20,11 @@ struct AspeedAST1700SoCState {
+>      SysBusDevice parent_obj;
+>
+>      MemoryRegion iomem;
+> +    uint8_t board_idx;
+>
+>      AspeedLTPIState ltpi;
+>      SerialMM uart;
+> +    MemoryRegion sram;
 >  };
 >
 >  #endif /* ASPEED_AST1700_H */
 > diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c
-> index 6494a5c4eb..9a6019908e 100644
+> index f444582795..cb07d94054 100644
 > --- a/hw/arm/aspeed_ast1700.c
 > +++ b/hw/arm/aspeed_ast1700.c
-> @@ -21,6 +21,7 @@ enum {
->      ASPEED_AST1700_DEV_SRAM,
->      ASPEED_AST1700_DEV_ADC,
->      ASPEED_AST1700_DEV_SCU,
-> +    ASPEED_AST1700_DEV_GPIO,
+> @@ -14,13 +14,16 @@
+>  #include "hw/arm/aspeed_ast1700.h"
+>
+>  #define AST2700_SOC_LTPI_SIZE        0x01000000
+> +#define AST1700_SOC_SRAM_SIZE        0x00040000
+>
+>  enum {
+> +    ASPEED_AST1700_DEV_SRAM,
 >      ASPEED_AST1700_DEV_UART12,
 >      ASPEED_AST1700_DEV_LTPI_CTRL,
->      ASPEED_AST1700_DEV_SPI0_MEM,
-> @@ -31,6 +32,7 @@ static const hwaddr aspeed_ast1700_io_memmap[] =3D {
->      [ASPEED_AST1700_DEV_SRAM]      =3D  0x00BC0000,
->      [ASPEED_AST1700_DEV_ADC]       =3D  0x00C00000,
->      [ASPEED_AST1700_DEV_SCU]       =3D  0x00C02000,
-> +    [ASPEED_AST1700_DEV_GPIO]      =3D  0x00C0B000,
+>  };
+>
+>  static const hwaddr aspeed_ast1700_io_memmap[] =3D {
+> +    [ASPEED_AST1700_DEV_SRAM]      =3D  0x00BC0000,
 >      [ASPEED_AST1700_DEV_UART12]    =3D  0x00C33B00,
 >      [ASPEED_AST1700_DEV_LTPI_CTRL] =3D  0x00C34000,
->      [ASPEED_AST1700_DEV_SPI0_MEM]  =3D  0x04000000,
-> @@ -98,6 +100,14 @@ static void aspeed_ast1700_realize(DeviceState *dev, =
+>  };
+> @@ -29,12 +32,21 @@ static void aspeed_ast1700_realize(DeviceState *dev, =
 Error **errp)
->                          aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_SCU]=
-,
->                          sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->scu), =
-0));
+>  {
+>      AspeedAST1700SoCState *s =3D ASPEED_AST1700(dev);
+>      SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+> +    char dev_name[32];
 >
-> +    /* GPIO */
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
-> +        return;
-> +    }
+>      /* Occupy memory space for all controllers in AST1700 */
+>      memory_region_init(&s->iomem, OBJECT(s), TYPE_ASPEED_AST1700,
+>                         AST2700_SOC_LTPI_SIZE);
+>      sysbus_init_mmio(sbd, &s->iomem);
+>
+> +    /* SRAM */
+> +    snprintf(dev_name, sizeof(dev_name), "aspeed.ioexp-sram.%d", s->boar=
+d_idx);
+> +    memory_region_init_ram(&s->sram, OBJECT(s), dev_name,
+> +                           AST1700_SOC_SRAM_SIZE, errp);
 > +    memory_region_add_subregion(&s->iomem,
-> +                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_GPIO=
-],
-> +                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->gpio),=
- 0));
+> +                            aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_=
+SRAM],
+> +                            &s->sram);
 > +
->      /* LTPI controller */
->      if (!sysbus_realize(SYS_BUS_DEVICE(&s->ltpi), errp)) {
->          return;
-> @@ -127,6 +137,10 @@ static void aspeed_ast1700_instance_init(Object *obj=
-)
->      object_initialize_child(obj, "ioexp-scu[*]", &s->scu,
->                              TYPE_ASPEED_2700_SCU);
+>      /* UART */
+>      qdev_prop_set_uint8(DEVICE(&s->uart), "regshift", 2);
+>      qdev_prop_set_uint32(DEVICE(&s->uart), "baudbase", 38400);
+> @@ -69,11 +81,17 @@ static void aspeed_ast1700_instance_init(Object *obj)
 >
-> +    /* GPIO */
-> +    object_initialize_child(obj, "ioexp-gpio[*]", &s->gpio,
-> +                            "aspeed.gpio-ast2700");
+>      return;
+>  }
 > +
->      /* LTPI controller */
->      object_initialize_child(obj, "ltpi-ctrl",
->                              &s->ltpi, TYPE_ASPEED_LTPI);
+> +static const Property aspeed_ast1700_props[] =3D {
+> +    DEFINE_PROP_UINT8("board-idx", AspeedAST1700SoCState, board_idx, 0),
+> +};
+> +
+>  static void aspeed_ast1700_class_init(ObjectClass *klass, const void *da=
+ta)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>
+>      dc->realize =3D aspeed_ast1700_realize;
+> +    device_class_set_props(dc, aspeed_ast1700_props);
+>  }
+>
+>  static const TypeInfo aspeed_ast1700_info =3D {
 > diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index 6b9ad328dc..d998326536 100644
+> index 678d4eb6d9..f2418e0e45 100644
 > --- a/hw/arm/aspeed_ast27x0.c
 > +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -1124,6 +1124,10 @@ static void aspeed_soc_ast2700_realize(DeviceState=
- *dev, Error **errp)
->          sysbus_connect_irq(SYS_BUS_DEVICE(&s->ioexp[i].adc), 0,
->                             aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_ADC)=
-);
+> @@ -1096,6 +1096,7 @@ static void aspeed_soc_ast2700_realize(DeviceState =
+*dev, Error **errp)
 >
-> +        /* GPIO */
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ioexp[i].gpio), 0,
-> +                           aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_GPIO=
-));
-> +
->      }
->
->      aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->dpmcu),
+>      /* IO Expander */
+>      for (i =3D 0; i < sc->ioexp_num; i++) {
+> +        qdev_prop_set_uint8(DEVICE(&s->ioexp[i]), "board-idx", i);
+>          if (!sysbus_realize(SYS_BUS_DEVICE(&s->ioexp[i]), errp)) {
+>              return;
+>          }
 > --
 > 2.43.0
 >

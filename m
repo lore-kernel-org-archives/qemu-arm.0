@@ -4,155 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3FB0E92FC4
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 20:15:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38D30E92FD7
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 21:12:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaJdq-0000Xs-KS; Mon, 29 Dec 2025 15:14:58 -0500
+	id 1vaKXP-0000eG-Ip; Mon, 29 Dec 2025 16:12:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1vaJdn-0000Wd-Ux; Mon, 29 Dec 2025 15:14:56 -0500
-Received: from mail-southcentralusazlp170110003.outbound.protection.outlook.com
- ([2a01:111:f403:c10d::3] helo=SN4PR0501CU005.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vaKXH-0000cK-6C
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 16:12:15 -0500
+Received: from p-east2-cluster4-host10-snip4-3.eps.apple.com ([57.103.78.224]
+ helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1vaJdm-0006NQ-EU; Mon, 29 Dec 2025 15:14:55 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=xRzLPB9vnEI6utOvIsL+g0tTjcS2wt3vpfOcUMSqqgQNtCyfnPChSV8eHb783mpu2jc7hKCXvSozaIGI3VK+Fl0Vy4rHnJekIOoE5pRaVkZtnEj/j2+b0UVpJh85aaL3AcjmcHFsiMvIsjA+9sg8LtZAJB8tR1Tew5PVmp956FUoKtFgXqF52E/hbCgvnqsx/mVS364A9kYewiQ88oeHYYWMazBfCaeETbJ5kAMJPraokixT/SNP9N6mWhm/Sr/zM+qtbw0UAsKzw1BtHl4kyBmPgiRSVaXgLprHFiV+vw6hJtKRZnj8k5VyYpNCV8zv//Mg0TRSzyjcaiZJkOeLpw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=nfwAxKitftY9zUtuWU00iSeteEU9DTWYG4ubQXasdno=;
- b=cJPULL0OKMTe0kjGvZYJdrLoerseNUC/8BGnDNh1HMeIogF0sBQS+Lhbzq32u8rNl4QHLgwcWIu2Mu2QKFseg87nZJe02SUXeuk0tU9xvx3W/XzLznOvL685dTHzp28U7wX/mNokc0fCK8IxLsVaNEHean0Xaxn6p0l7SzF34zz6Zj4gNN6V3w+W8cD/tLZJlRTsqk0s511W9MmrX66mGUoG/NfEMcLVzgbiVl+fx+NrxY+RwzsJo68vM7wes8gNrv9QsHaZbVCLYX5RS1qkRuKF/fg3hw7aLz5HPdmi/Fx2ZJ4ykhlNhgUY16z0b2o12gcR0lq1e+QsrioFPh0GxQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.232) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nfwAxKitftY9zUtuWU00iSeteEU9DTWYG4ubQXasdno=;
- b=MEdDCPMomR7sjWCunO7CPoE4z/uAQSixf6K2xQBuZZfB3z8iGWXnFRe6Ny0QCeHA3R+PeU8spMpaijzLvBDv/QmFID7Ksje7FBhiLH1G4Z4Xg2sjtwla8XeG8f28JMLQRggLawsTLZiaW0kPuF60YZRwJio1t/407eXXPaeeDZUvoqshLQ0ECrWPKZTM5bARm+gsZu/uijM1C2hbW/nZ7mE7SY1ImQxCmTsBZZwNV0uZ7pGw4jzUML1LcYeFO6hdCfiUww13Jpxdk44uMLoWAqF7CC8gucluuLQ2JkcHol8JjJKBnVxj33YCgWtI7vyhXXNJxFW9YzErw7I4idJaXQ==
-Received: from SN6PR04CA0097.namprd04.prod.outlook.com (2603:10b6:805:f2::38)
- by DS4PR12MB9705.namprd12.prod.outlook.com (2603:10b6:8:277::17) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9456.14; Mon, 29 Dec
- 2025 20:14:48 +0000
-Received: from SA2PEPF000015C6.namprd03.prod.outlook.com
- (2603:10b6:805:f2:cafe::25) by SN6PR04CA0097.outlook.office365.com
- (2603:10b6:805:f2::38) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9456.14 via Frontend Transport; Mon,
- 29 Dec 2025 20:14:48 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.232) by
- SA2PEPF000015C6.mail.protection.outlook.com (10.167.241.196) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9478.4 via Frontend Transport; Mon, 29 Dec 2025 20:14:48 +0000
-Received: from drhqmail203.nvidia.com (10.126.190.182) by mail.nvidia.com
- (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 29 Dec
- 2025 12:14:48 -0800
-Received: from drhqmail201.nvidia.com (10.126.190.180) by
- drhqmail203.nvidia.com (10.126.190.182) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.20; Mon, 29 Dec 2025 12:14:47 -0800
-Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.126.190.180)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
- Transport; Mon, 29 Dec 2025 12:14:46 -0800
-Date: Mon, 29 Dec 2025 12:14:45 -0800
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Shameer Kolothum <skolothumtho@nvidia.com>
-CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
- <peter.maydell@linaro.org>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
- <jgg@nvidia.com>, <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
- <zhenzhong.duan@intel.com>, <kjaju@nvidia.com>
-Subject: Re: [RFC PATCH 16/16] hw/arm/smmuv3: Add tegra241-cmdqv property for
- SMMUv3 device
-Message-ID: <aVLhNYKlzHgnj9n8@Asurada-Nvidia>
-References: <20251210133737.78257-1-skolothumtho@nvidia.com>
- <20251210133737.78257-17-skolothumtho@nvidia.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20251210133737.78257-17-skolothumtho@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SA2PEPF000015C6:EE_|DS4PR12MB9705:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8a79d877-cd6f-4317-5c99-08de4716ea90
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|36860700013|1800799024|82310400026; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?NFFCSFBDcWxsQnhWc0pwNldmWUVVaGVkV1ZjQ0ZXbmY2ekNVL2lONVdaY2Rx?=
- =?utf-8?B?MTRjaUIrTHR6ZkIrTVJUVWxTMjVZN1dEWjNnaUlpamxKU0NOYWU4bGdmTC9v?=
- =?utf-8?B?RU42V2EraEhjSVJvTkRUWGdWNk5HTERUYlRSVFdRREdXbXZwcmFwazFlbVhK?=
- =?utf-8?B?OUNGNjdjWTdqUnJ5SHI5WXpyNStHbTd3d1hRQWxRK0RmWWJjOS9aWFlYT2xa?=
- =?utf-8?B?L1JNMFBlLy84ZjRQcHNxdjdjSU9KN3grQWNFM0tLM3BZVVp5N0ZtK09YdTIz?=
- =?utf-8?B?Y0k1dzRsd21VY1gwT2VCcXFTczJoTE15UDhoVFJvaXYwUFpSVmFIWDZSMHMv?=
- =?utf-8?B?M2h1QTZmbDJaU3U2N2hHeHpaMlQ4YnVQYjRPM0FpWHVpbkw2UnYwSzZ0TitU?=
- =?utf-8?B?U2M5c3F0L0FrcHA4SUxRSWlZSm96dFZkUnBsbEpBWDRUZVF4SCtkMjg5N1V1?=
- =?utf-8?B?RHFnMHlRTE1Hd0pmRnljVXk4RTk2L28xTTZpaFJYeVA0eXlYYjR3KzRmTFNz?=
- =?utf-8?B?UEcvQVd0WklmNDRkYkZOeTMzRmRsMy95VHYweFZpbGhEb0wvbzViVVkyb25r?=
- =?utf-8?B?ZndDRDdzekFOZFBxeEpDUnVNNFpHdndmV1o5M3orWmZuTGpnRTUreFgvMVdm?=
- =?utf-8?B?eW9zWFdacVBCU1lheG5wY003L2haRmhTZ0U4UHhOUGNLUFJYdWZ1TDI5VkVm?=
- =?utf-8?B?STdGUm1SMTk1alUwS1Y4SzIxODBWMlFMYWx6Qm5SNlgzT05DUDJmSUI3OUF3?=
- =?utf-8?B?R2RNU0F0WVkvRDZycEM1YmFuS1pNZ3FFNUhrbkY1dmNTN2svQVFxOVlxWWRV?=
- =?utf-8?B?dGNUb2ZRSE1FZFpaUnZZTDlUS0laWjJUWisxekpkZ05xZWpyMkRmeG1IUnNJ?=
- =?utf-8?B?Vkx1ODJ6ajVhck5WcDVacWt0ZnZQS2l5T3R3Wi9VdTN4NHBlQUJTT0pwODNt?=
- =?utf-8?B?c01uMVM2dDBFOEZ4cHkrSHp6RkFRLzB2K1dreXYrUWFyejE4SXR5VkJGV1JK?=
- =?utf-8?B?MDEzL0JjOUdvQ0cwcndiQzZVOW9OMXFodWJHOEg0Mnl6VHdiR00xaXNTSHJS?=
- =?utf-8?B?QXFLRXR5cGVSQzlReE9WTjI0UlRpSWZmOElGVS9hSVRGK1llWkpTS3hBaDdF?=
- =?utf-8?B?czhlVUVqaUd4cmJGaGxuMmw5M2ZLbEpLU2k2ckp0bVgzaUlrTHZvUGdUSHFZ?=
- =?utf-8?B?azFjOEpzYXgxQy9TZEd4anM3dFdZeWJEaTB4dTdJR0xvSitObG1sWjQwTk9I?=
- =?utf-8?B?Uk4xL2FXL05Ncm84VHc0N29JNktWdlI4dXJCR3Nna3dhVUhaMGo0amxzVmVW?=
- =?utf-8?B?aVhqdTF3dW9TVm83S0lGNFV3Z0NyY25jcGRNN1lpdHJFWjQrUzk5Z2hLV2lC?=
- =?utf-8?B?R1o4ZHY4OEQxa1dLZmgvVHY4MGRZZmNla3pjOEdtZTR2L1FpcDAyWWJGYXM0?=
- =?utf-8?B?K3B0bzBsT3gvM095SkM2NVV1bVRxREYwS1FiVjROcFZnQ1MwOWxhS0lGZVlx?=
- =?utf-8?B?OWhNOHR5ZWJvdmhNSXF0cTRqMWlGdnRMUjJ1d2dybEhUUmpZYU1RNy9Rdmp4?=
- =?utf-8?B?S2R4UU1BdUtucFkyVFhUb2psRGhDSWhKRGl2S0I0V0l6MUJJQWZsNHdGNGxw?=
- =?utf-8?B?aFhhQnhxNzd3aVFFR0I4ejMxdEFiRDYvenZkSDFzL0N6Tkt3ZVVuV0k5OUJQ?=
- =?utf-8?B?NkJkcldKQWZlS3c2dUNSaCtBMGU0SGk5cVdBODV5QitFSU0xVHFiWlV5SGRt?=
- =?utf-8?B?NVVJN3dhMUVlRnJjRktWNElsMjJkQ1F5RDlvMjVsT3lDQ1lzalNVbytqRUdI?=
- =?utf-8?B?RDlxN1hLeWZ4RkNMQ2hCTGhvRUJRSWluVXNvTUN1MUNJbkR5ZjBINWlySlhm?=
- =?utf-8?B?a012Tk83WS9lNGU3amhNTWtseDJzWHlEOXZKVFBwODdCNFg5NEJuSXFxbjQw?=
- =?utf-8?B?OTF3a2kzbzJnU1RPV3B6Ly9xOXpGNjVmL08zTWx4VDMzNzhnMzR3OXJGS1pV?=
- =?utf-8?B?T3Ezc3Q1dnZ6b0xydTB6WGlLbUZwZS9pWWJjOGxoREsyMHBQd0VlZFhBdTFx?=
- =?utf-8?B?NTl2RUw3dE9TRHpQTnlGMUtIQlAwWlpmOTRub05pSkxWS0RMUUxDcHpwOVUv?=
- =?utf-8?Q?Nz7Q=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(376014)(36860700013)(1800799024)(82310400026); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Dec 2025 20:14:48.2661 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8a79d877-cd6f-4317-5c99-08de4716ea90
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SA2PEPF000015C6.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS4PR12MB9705
-Received-SPF: permerror client-ip=2a01:111:f403:c10d::3;
- envelope-from=nicolinc@nvidia.com;
- helo=SN4PR0501CU005.outbound.protection.outlook.com
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vaKXF-0007kw-8Q
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 16:12:14 -0500
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-1a-60-percent-4 (Postfix) with ESMTPS id
+ 671251800416; Mon, 29 Dec 2025 21:12:04 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=OtUXijhvSEKfguDH3+XnhVo02DQlxvuoylgbDMGrhIc=;
+ h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
+ b=cG3MT24wNqOgvKBCZEV9rHnewSGyiR1ccA0EqrQfLyGTO4QD7pa3Cuaw4Y5p5B12Aw0NGVBNnjr9WnhHL/Hwq2MR5Wqi3WP9Bard1j/0gfZt1wYikxD1Z6dsqnhoSyEXZRBlonaw35KMGTMo8HtdxsVUMYx0OYCNgLWxSE/ZwJJYm7nA07N8LtvJq9QA+36XuStHQ3jL/WrDXRSalC6HgOdjZ33XfmsSCElChsBfDg8KW2DMoq720ivAx+pRtBnz/z2JjxSJ/WpJ+yctoks55wc2c+vTdhcPpySS/hXry7drOu6kooRkDUqvs/UaOQTUjpAOk7JoIExT6qzb+GWgew==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.42.251.67])
+ by p00-icloudmta-asmtp-us-east-1a-60-percent-4 (Postfix) with ESMTPSA id
+ CB53D1800425; Mon, 29 Dec 2025 21:11:57 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+Message-Id: <2F12B75F-5AE5-494A-96E8-5B0766804685@unpredictable.fr>
+Content-Type: multipart/alternative;
+ boundary="Apple-Mail=_587FF383-DC53-4EC5-AD1C-2D6D0F41ECB3"
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
+Subject: Re: [PATCH v12 11/28] whpx: reshuffle common code
+Date: Mon, 29 Dec 2025 22:11:44 +0100
+In-Reply-To: <c8bba373-0ff1-4acc-ac3e-7157b3627247@linaro.org>
+Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Zhao Liu <zhao1.liu@intel.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
+ kvm@vger.kernel.org, Roman Bolshakov <rbolshakov@ddn.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>, qemu-arm@nongnu.org,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Yanan Wang <wangyanan55@huawei.com>, Peter Xu <peterx@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Ani Sinha <anisinha@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20251228235422.30383-1-mohamed@unpredictable.fr>
+ <20251228235422.30383-12-mohamed@unpredictable.fr>
+ <c8bba373-0ff1-4acc-ac3e-7157b3627247@linaro.org>
+X-Mailer: Apple Mail (2.3864.300.41.1.7)
+X-Proofpoint-GUID: pHejKiP2ef8xMR29enHKsQiLbNY7WR12
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjI5MDE5NCBTYWx0ZWRfX0nOFEwnzwoIJ
+ XXGZoTAjM5pNkTQvF6d4SoQ3gznVmKQ7tpnjdjRKV56mSzFcM7E6MXGfgKTyelzUJNrhbEL7PWq
+ TA1ISeYvYJQDHJQmCQYLA49lcHjYjIW4tf4LFZQ+aWzTPHwPPOuYY6dH9tcyoyGVUNPqk5ot+n8
+ eVrEPYNOSMBmSTV+4ZInUZ/DgEcid7w34SR88MCKt5atwflIil/+eohgeWYP9orNLmQnFKab2eF
+ LQFAX1wfMIPujxCjTDZSLUmHKyvgQkH6YWU0ZMtjpRhQo6uhrS0mWRIhPmEXx5UENJYQkRQkBDe
+ zR6F2OC0Bu8MRwI7xeV
+X-Authority-Info: v=2.4 cv=X/9f6WTe c=1 sm=1 tr=0 ts=6952eea6 cx=c_apl:c_pps
+ a=YrL12D//S6tul8v/L+6tKg==:117 a=YrL12D//S6tul8v/L+6tKg==:17
+ a=wP3pNCr1ah4A:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
+ a=3agsX6oeCuEBZHekYfsA:9 a=QEXdDO2ut3YA:10 a=CfRu4lmQCga3v1vYNv0A:9
+ a=jW965Cys1SRW_oyn:21 a=_W_S_7VecoQA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: pHejKiP2ef8xMR29enHKsQiLbNY7WR12
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-12-29_06,2025-12-29_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
+ spamscore=0 suspectscore=0 mlxscore=0 mlxlogscore=999 malwarescore=0
+ bulkscore=0 adultscore=0 phishscore=0 classifier=spam authscore=0 adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2512290194
+X-JNJ: AAAAAAAByWglAGTDgbITy9AEqAUcDhAmGHZr9hRs2ZzTGGG1wSBc8m+8GlVZah4huuY4D6RWRI8k+JK4bQDLwEmozbHZQw6VKGCdTeE2QcbN8dUhRXOYztj2Tc6VkBTOPQO7zy7rVD0s3/OaBT5P6TYXTPkGmGQyXghv2/QbK4GBSYKzZqHjzBF587Ofp+2do74LuAjBX+7VHTUz15/Yem5GT0/KCtp8HoSzONEpM8nP8DGCmkEHEGnreEqZa6gTqGeJvFM+NQutT1PZWuaP5/R3QTUiDTDMFUteQcbGKCF4a58sBr7cNAx3iQwAPIA/CMP/61IoS1nWPST0749KNzI6BzWTICrA273SZa34abk9EV0nqXajZBWqhsFvGw/Uzr6J/WmDp790fzV2+WYDfDm1Fn1TA4bhIZts8TmtIP7a9iOwVm89CjdfL7UtCH7ZbFFMjmiLUDC6S3uzhoej8maZ68Zy0iUSg8pCpnC2lT9Qvy7b5Pn6w6U4FmNnFH/Cxzz58C1+BekRLD8C+79Z4K2CcG5ABaJXIWsVwmtLV4GtZUmuN6TZ0ib2njYOlsOSuNQRsmdWhuKSSeq22wtJBqxOJ2Fglet1juQAnIz0nVPHe4sZoufIZxQqDeCyT5ox/DB7Ud9ZKMmxvoaN3KgImtWjasJZJUDpkhJsjo39MV4k5t7+f4w64tk42Qa9Ua6p+ErZv0JfPW4Hwlvv5H4o+HgQ7Ar/o4pT339Uh/kYpebDigdMpM540WtwWro7lypweUDs/HQT6QTzBzbobqGufnlfz3hL78WYLMtkycEoEBXixXsUuIQLrqvAEFqIfH4BOfWQfn+YQ2BonmOry2CvURLzyGSghdylaSL/pIypOJakGSm29+yJea7LRCb7QH3VOmm+11ZlZ67qdHKy8YTlPCS9f0EkR5lZbMgIasfGFjUK+VduQkQ7GU5lxqYdRQvE/Xynyq2K81BuaOskFQs=
+Received-SPF: pass client-ip=57.103.78.224;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -168,57 +109,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Dec 10, 2025 at 01:37:37PM +0000, Shameer Kolothum wrote:
-> Introduce a “tegra241-cmdqv” property to enable Tegra241 CMDQV
-> support. This is only enabled for accelerated SMMUv3 devices.
-> 
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  hw/arm/smmuv3.c | 13 +++++++++++++
->  1 file changed, 13 insertions(+)
-> 
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index ec8687d39a..58c35c2af3 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1953,6 +1953,12 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
->          error_setg(errp, "accel=on support not compiled in");
->          return false;
->      }
-> +#endif
-> +#ifndef CONFIG_TEGRA241_CMDQ
-> +    if (s->tegra241_cmdqv) {
-> +        error_setg(errp, "tegra241_cmdqv=on support not compiled in");
-> +        return false;
-> +    }
->  #endif
 
-Instead of adding this..
+--Apple-Mail=_587FF383-DC53-4EC5-AD1C-2D6D0F41ECB3
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=utf-8
 
-> @@ -2109,6 +2119,7 @@ static const Property smmuv3_properties[] = {
->      DEFINE_PROP_BOOL("ats", SMMUv3State, ats, false),
->      DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
->      DEFINE_PROP_BOOL("pasid", SMMUv3State, pasid, false),
-> +    DEFINE_PROP_BOOL("tegra241-cmdqv", SMMUv3State, tegra241_cmdqv, false),
 
-Could this be
 
-+#if CONFIG_TEGRA241_CMDQ
-+    DEFINE_PROP_BOOL("tegra241-cmdqv", SMMUv3State, tegra241_cmdqv, false),
-+endif
+> On 29. Dec 2025, at 19:46, Pierrick Bouvier =
+<pierrick.bouvier@linaro.org> wrote:
+>=20
+> ERROR: New file 'accel/whpx/whpx-common.c' must not have license =
+boilerplate header text, only the SPDX-License-Identifier, unless this =
+file was copied from existing code already having such text.
 
-?
+Hello,
 
-> @@ -2144,6 +2155,8 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
->          "are 44 or 48 bits. Defaults to 44 bits");
->      object_class_property_set_description(klass, "pasid",
->          "Enable/disable PASID support (for accel=on)");
-> +    object_class_property_set_description(klass, "tegra241-cmdqv",
-> +        "Enable/disable Tegra241 CMDQ-Virtualisation support (for accel=on)");
+Deliberately didn=E2=80=99t do it because it=E2=80=99s copying chunks of =
+the existing x86_64 WHPX backend.
 
-And here too.
+Should I still do it despite that?
 
-The current approach looks okay to me though. So either way:
+Thank you,
+-Mohamed=
 
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+--Apple-Mail=_587FF383-DC53-4EC5-AD1C-2D6D0F41ECB3
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=utf-8
+
+<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
+content=3D"text/html; charset=3Dutf-8"></head><body =
+style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
+line-break: after-white-space;"><br =
+id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
+type=3D"cite"><div>On 29. Dec 2025, at 19:46, Pierrick Bouvier =
+&lt;pierrick.bouvier@linaro.org&gt; wrote:</div><br =
+class=3D"Apple-interchange-newline"><div><span style=3D"caret-color: =
+rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
+normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">ERROR: New file 'accel/whpx/whpx-common.c' =
+must not have license boilerplate header text, only the =
+SPDX-License-Identifier, unless this file was copied from existing code =
+already having such text.</span><br style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: =
+solid;"></div></blockquote></div><br><div>Hello,</div><div><br></div><div>=
+Deliberately didn=E2=80=99t do it because it=E2=80=99s copying chunks of =
+the existing x86_64 WHPX backend.</div><div><br></div><div>Should I =
+still do it despite that?</div><div><br></div><div>Thank =
+you,</div><div>-Mohamed</div></body></html>=
+
+--Apple-Mail=_587FF383-DC53-4EC5-AD1C-2D6D0F41ECB3--
 

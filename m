@@ -4,124 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E0CBD3B7E5
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 11:42:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33740E92734
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 15:20:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaBdN-0007Q1-Gj; Mon, 29 Dec 2025 06:41:57 -0500
+	id 1vaF1g-0001VB-T6; Mon, 29 Dec 2025 10:19:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vaBdL-0007P7-3T
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 06:41:55 -0500
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vaF1d-0001UB-Po
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 10:19:14 -0500
+Received: from p-west1-cluster5-host3-snip4-10.eps.apple.com ([57.103.66.161]
+ helo=outbound.pv.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vaBdI-0001Dl-U3
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 06:41:54 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.58.62])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4dfvSh6qSGz5wN3;
- Mon, 29 Dec 2025 11:41:40 +0000 (UTC)
-Received: from kaod.org (37.59.142.109) by DAG3EX1.mxp5.local (172.16.2.21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Mon, 29 Dec
- 2025 12:41:39 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-109S003a1ab1307-cc3b-4287-8705-f39d711e7a34,
- 5019863659778AFB31EB73BEF4A5941D5F0AC883) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 90.14.253.154
-Message-ID: <ed07c0f2-737d-4d65-917f-d39d02c37063@kaod.org>
-Date: Mon, 29 Dec 2025 12:41:38 +0100
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vaF1b-0004cs-Rn
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 10:19:13 -0500
+Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-1a-10-percent-1 (Postfix) with ESMTPS id
+ 60FEE1800164; Mon, 29 Dec 2025 15:19:06 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=EqHRfZnrCznqFeQjrmgx45y9nqB0PoXMKIno3sbxnD0=;
+ h=From:To:Subject:Date:Message-ID:Content-Type:MIME-Version:x-icloud-hme;
+ b=WB6NoyQTfePJwNvL/LaPVSJ1tDBF2iHamGpYe1g/pBNj7ZagqNG/iCozsuzGbayejys95f4A1Nx8/aZmvj4dBfFVYuejzegfC7zL8hDk7NHZhR1Up99CGNBYUwDnaMdg+t0qDkf3uqd2Xzi7eQ5AGkn9JCUZlwizCjh0PwBRSAGH/TQGENDUW0jEYGWrFw6D9WxgidZBcXVN0Iqz57FxL5+81PowBKSr6DRBT2/cV/ra35BXq5r567HmGiIhg1SCuCAJVgkibnpFDyFgTxsD1xoktB4YRZu7D2UZWR7/FJ8azsKHmWtIshRFtBi7zRSw+jG7kQJJ3eSePedW0K01kg==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.56.9.36])
+ by p00-icloudmta-asmtp-us-west-1a-10-percent-1 (Postfix) with ESMTPSA id
+ 678B41800948; Mon, 29 Dec 2025 15:19:04 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Roman Bolshakov <rbolshakov@ddn.com>, Mads Ynddal <mads@ynddal.dk>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+Subject: [RFC v3 0/4] vmapple: making it work on the latest macOS host releases
+Date: Mon, 29 Dec 2025 16:18:46 +0100
+Message-ID: <20251229151850.96852-1-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 06/19] hw/arm/aspeed: Integrate interrupt controller
- for AST1700
-To: Kane Chen <kane_chen@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, "nabihestefan@google.com"
- <nabihestefan@google.com>
-References: <20251224014203.756264-1-kane_chen@aspeedtech.com>
- <20251224014203.756264-7-kane_chen@aspeedtech.com>
- <465b0714-bd08-40b5-9cf9-5cd206e8548b@kaod.org>
- <SI6PR06MB76312852C6243B1F48202A89F7B0A@SI6PR06MB7631.apcprd06.prod.outlook.com>
- <55adfce4-0dbc-492a-b586-4c46df78007a@kaod.org>
- <SI6PR06MB76318E7A596008386B0AE51CF7BFA@SI6PR06MB7631.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <SI6PR06MB76318E7A596008386B0AE51CF7BFA@SI6PR06MB7631.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.109]
-X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG3EX1.mxp5.local
- (172.16.2.21)
-X-Ovh-Tracer-GUID: a152055b-0ef4-42aa-be75-42d7855ffd07
-X-Ovh-Tracer-Id: 7562669675671686133
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFrUSl+gIvuMeDTRavh5VrRc+j9YZPpaL+iVr0DGQV1i39my4ROQk1myaz3n7lSyMrj9KsLaG7CNe4ntgiX8zx/jXvfmhzbVEl+XSvomoo/4Mm6MF0FnJV/7rIu+xL0EaXkkymIRdbJXvvCT1UXQ2z/rmBLygp7k9ZMgTyj7OV42nKoBUmLoIVSRLkolaju02AJJkP/PFN0IT3ak1KAAqbrSFDl7+pytZ3aqT/DXJd50aFaLF52M2vXCeLdOHCApWkPCxTyqcElV88D93wedMe4QbzK0gASbcYEFbXEKhQwpw5yNIV06HGYM+9fbMlNfZYhqZ2sbKlF7KO4CQ16sweYI/zB3QSvJBG+oDvh/vFOJHcjEKnvBi75kwYQ5fOyFmCdJsB3s+kY6nDWHBRDudhwFcKEs1hVpHq7EafAH5XunhdS0kz0bZ1dyFtrDSWfY1411T9tUZUhukIfTQioI3VNMHeFEZGcerjo9k7UF8JM08ipSndZQYi5pblT9NQv6GdjRf1se54iN599pjfnRCCiNlQyZ2v9tVPr7ti7ARjZxvc84xzLLjG/qIAT8tuov36fulquMt8qAt5bCWS2m0nPgKI/jRojFQH0jlFcUyQ1/ZfhnhY6Yr0jECkfhq77/Xkw++84AeiSpMwITuDt7iQ7ENfEHs8SPueamqVQHCrFpA
-DKIM-Signature: a=rsa-sha256; bh=zicvTG6XKMwq/UMI9rB/hUyvVsm4VknBkZBdfB6fjmY=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1767008502; v=1;
- b=ecFhNz5KWs2Ejl1AqwYg9PcTIahW+x9lIaSKYolUGUvwpewoR0Cs+8NyhecWq6P2+Nai6Q9D
- 9y9yxQGqcaTF/rZW5uhonG7sTA97qYppB+YFTwBssJivufTyftApZ2dBdB9wOMUmsNHDEwVXEsi
- JNMCZFbj9ONXA74LlYG32lHXXi+fm3NEKANXS7xoW2Vl5vNo5UGJUvw8Qsdh3jvJuwWtMfdAZ4O
- UgDmiwwEuPuHlzzKPownRTa2BN7MO9FOxaMyI3Px2dOR2jg/43i3x2EEKR+MGIotqg8NvCNTKIQ
- 2zkRlWmJjBh5KmLvj9UZdZz8KTxC+qA/epTwtbfcHoEoA==
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjI5MDE0MCBTYWx0ZWRfX8Qf2WiZChv5G
+ K5kp2id2Qljc74Of/a7muqPkJ2oF3mp0hUCIdHnmyMDPeN5viDY0HwZKlhTMlcA1Zs+Z+rtpN6K
+ 2Ya37GN/L0L03byHPJmqUkWv0mkK2GWPvEvSHZFTUFOI6iMG8O4IMMBSb/eFxcgat+YUiEqxHsk
+ is9H0uRNlvtGU4pUybdvYjkzN7nl6zch9/RnNmUeO0t7F+ZhjVvNtSQUipQLj4OhHvJFpUwfwo9
+ ujL9DkPseEJ/VhwlZZqy2zTuOvpFvqYbcEhx/9Vzn5jEsVl/16COdY0q40QU8Qq5r1WjZJYFzsT
+ 34CyBF9KEbTtthYjWCz
+X-Proofpoint-GUID: _uDmYanV6DjdQ_4eYYpn43y0vVMYz4JH
+X-Authority-Info: v=2.4 cv=GMoF0+NK c=1 sm=1 tr=0 ts=69529bec cx=c_apl:c_pps
+ a=azHRBMxVc17uSn+fyuI/eg==:117 a=azHRBMxVc17uSn+fyuI/eg==:17
+ a=PWwuWOSklEzM4Y2Y:21 a=IkcTkHD0fZMA:10 a=wP3pNCr1ah4A:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=_2RhaUPNESQhlGQwPh0A:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: _uDmYanV6DjdQ_4eYYpn43y0vVMYz4JH
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-12-29_04,2025-12-29_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ suspectscore=0 malwarescore=0 spamscore=0 mlxlogscore=402 mlxscore=0
+ clxscore=1030 phishscore=0 adultscore=0 classifier=spam authscore=0 adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2512290140
+X-JNJ: AAAAAAABxb6ZZZ5Jn5Wiz11+ElCjddtNQGHUxVP3gLqcTsbtztg3XB6YYtRmXRbDPaGDcm92mGBIMbJiz50N1fIuWu+2oFqUpTjFMGDV59rC6kulvbekZOphdBbJLU1Yu6m8BmQVbdxbittqS+6FVJvfWUnXTDTYdtC+M9+y90AJ6QkSMVZEK6B96Og1SV2hiZvMPxjOnsSLmGssC1WtKrN4Eaf/hRSe2e1ErLwY97yJpIeRrSy6exfoOceUs8nsZapu2V2JS6rf8VMBdk4/fePY2qZXmGfgJkJTZJB2kuD6Ec0MEkVJ0swoc7LGJ0hn73ZPI0+1WFvNx1IjcMdZ1RhVM8Ye9KjottAzk+cV9jjlie6ciTQnyAvqWqFMa4B78PMPgWU6HkRI1Wxuus6HV2CiYbqYCxpvzlH92gXagP9DbxSpjRostIeYmuqUhriEAWJwg92NwnN6YtuEY0VM43UAKi5R7WHB4HAUCYnO0a20e6IVDUd7XhzgbWzMhurD5mL4XAXwNnsfEP2KVFq/E67zj8nhhcHfr/Ot3Fx2MYvDRqsHLl7JgjUyuFjtUrZtoZhbIFPFQv0VBZpqGSjiGzGQ7zBnP2PEdYIHa7BDf+/iyRIzK0jPqk+32FRwV0cfxUN9nYID2+cZ/TunW4tymi2/VrMuLtNt3UTQ6KpuBOnI+Bv6I+wcbMsbUjAnPLhQnUcQvJdK
+Received-SPF: pass client-ip=57.103.66.161;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,50 +91,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/29/25 11:00, Kane Chen wrote:
->> -----Original Message-----
->> From: Cédric Le Goater <clg@kaod.org>
->> Sent: Sunday, December 28, 2025 1:51 AM
->> To: Kane Chen <kane_chen@aspeedtech.com>; Peter Maydell
->> <peter.maydell@linaro.org>; Steven Lee <steven_lee@aspeedtech.com>; Troy
->> Lee <leetroy@gmail.com>; Jamin Lin <jamin_lin@aspeedtech.com>; Andrew
->> Jeffery <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>;
->> open list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC
->> here <qemu-devel@nongnu.org>
->> Cc: Troy Lee <troy_lee@aspeedtech.com>; nabihestefan@google.com
->> Subject: Re: [PATCH v4 06/19] hw/arm/aspeed: Integrate interrupt controller
->> for AST1700
->>
->> Hello Kane,
->>
->>> Thank you for the suggestion. Since I need to submit a v5 patch to
->>> split the I2C code changes anyway,
->>
->> Can you please introduce the bus label property at the end of the patch series ?
->> Please consider adding a functional test and updating the documentation too.
->>
->>> I will handle the naming adjustments and other minor fixes myself in
->>> that version.
->>
->> Thanks,
->>
->> C.
-> 
-> Hi Cédric,
-> 
-> If I move the bus label property to the end of this patch series, it will trigger
-> a test failure in the current patch series. 
+Support for newer guest OSes isn't part of this series.
 
-Which test ?
+v2->v3:
+Remove the Apple M4 support workaround part for now, to be part of another patchset perhaps
+Address comments
 
-> To avoid this, I plan to move the bus
-> label changes into a separate patch series and submit it before the AST1700
-> series. I believe this approach ensures both series pass the tests properly.
-> What are your thoughts on this?
+v1->v2:
+Remove some lines that shouldn't have been present...
 
-I would like to understand the issue first.
+Mohamed Mediouni (4):
+  vmapple: add gicv2m
+  vmapple: apple-gfx: make it work on the latest macOS release
+  Revert "hw/arm: Do not build VMapple machine by default"
+  vmapple: apple-gfx: move legacy memory management APIs away from
+    inline
 
-Thanks,
+ configs/devices/aarch64-softmmu/default.mak |  1 -
+ hw/display/apple-gfx-mmio.m                 | 70 ++++++++++++++++-----
+ hw/display/apple-gfx.h                      | 13 ++++
+ hw/display/apple-gfx.m                      | 47 +++++++++++++-
+ hw/vmapple/vmapple.c                        | 23 +++++++
+ 5 files changed, 137 insertions(+), 17 deletions(-)
 
-C.
+-- 
+2.50.1 (Apple Git-155)
+
 

@@ -4,76 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A6E3E92FCA
-	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 17:58:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A74AAE92FCB
+	for <qemu-arm@archiver.kernel.org>; Mon, 29 Dec 2025 17:59:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaHV7-0001Tb-S0; Mon, 29 Dec 2025 12:57:49 -0500
+	id 1vaHV5-0001Lk-AN; Mon, 29 Dec 2025 12:57:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vaHUs-00012m-ML
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:57:34 -0500
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ id 1vaHUi-0000mR-8w
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:57:26 -0500
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vaHUr-0005c2-64
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:57:34 -0500
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-7b8bbf16b71so9207936b3a.2
- for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 09:57:32 -0800 (PST)
+ id 1vaHUg-0005Yd-KI
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 12:57:24 -0500
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-2a0eaf55d58so59495205ad.1
+ for <qemu-arm@nongnu.org>; Mon, 29 Dec 2025 09:57:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767031052; x=1767635852; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767031040; x=1767635840; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=0Xy+8eSeOzDb+k1YRCc4hfaw3xrtM1K2VyUwOhxg/MY=;
- b=Lc9akelTnEcvd0y9hk8Hdi36QBA3uZrJz+b06Wz9myqssHwXHKezKkm2bJvKpMWM1z
- C6EvoywgIMl/4WkU1geWMYMgEop/Yzk1EOjZpnWbWk3Wd1JejFD9zzaxtH97UMjBaEbv
- 0yZbWb6V2TWCBJhgXLos1oJ0w+IBmq2aJOXwcJMuYxAdKohbKhpL5UnSG9WvOLS3LozO
- YQ0ucCxR5TBnG9OBoZi1LgWf0hPIksLd7iW8jTnPvbRQ9KINoEZap+/rf3Luf8ODxRz5
- hlnqwSk4aAWroxhLM0MBX5u5/V3qaSZbf19pl1HPMtbWsLRjNDS1iT4pdgYngnH6JjvB
- iPXg==
+ bh=ptmPtl9PHyVjyFIR9fDjL8hxPyC+ceFfam3bNYTak6I=;
+ b=wz+5AYlcFLijUQdnJXB293BXtAxCepRAQhuVIZ2BNz7aNohKgtM6hIA7H/dmW/SyeJ
+ zmKKjRZbKRHOuavg4BSJDrETOUvplkOA7zG/5xjUrFWjLznkfLKatuvQdiiGfblrlFtK
+ EtGeNcuIXcvVCLfq5Ro8uhIopn4Tb7EN2K0eKcVXfI5Uo4WTDC80uCX0Vq2cfYeaCLZA
+ Br3vJvN58wXKHrHV5ELFpV5bg7uPiuez+YaGehZVhpgNApVUnZhZ0z1+PdaO6j7uNkGC
+ 0mxcvGBLkAhPRHfUb3FyddC41dxbyV94UQUwRez+XSdliyEvEmXToftXbMhwFeGJAlwT
+ 6AMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767031052; x=1767635852;
+ d=1e100.net; s=20230601; t=1767031040; x=1767635840;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=0Xy+8eSeOzDb+k1YRCc4hfaw3xrtM1K2VyUwOhxg/MY=;
- b=XpD/hyKsUU+T4ZbOtDpXPgrD346Mzd/lFFBQ9dGfV2G5IW8V/Y+m+5ksPhvi8QWJHq
- w7UzKsiEbuj39D2P+UZrE3JvqJhv4ywIRlXZpFTP/YuphRDH4hDLxcYwQKBPYjfS97TC
- lXxeGRAQytLHA5ewjT4dhoQwlWwfBIrPyeJ9ii7BF15/Wt16Fo/bTPx5wZyDINKZzBi2
- er4hS5FUKRy2x5OJET5yD46hvKYKK/j04DV3VXoj2buotg5Oczi4WXzeRUSZ+qgaSp8I
- 8cRoNW8sWxT7hgzhvyH9jfkunB3tQsxKsTZM8ISlPNtITVHZYqBwNP3rpOaQcl8UzP5E
- JMEw==
+ bh=ptmPtl9PHyVjyFIR9fDjL8hxPyC+ceFfam3bNYTak6I=;
+ b=aSjR7oBCfwMiW2XKxV3WJ/TUZvwwNgIbVLfu1nNUbEDMsB/0kMKM9kH1aQHKdWQN5O
+ EnaPhgGPUn44GbVygccga5EBNaY/4QPHLLIE0qvLAwWfCsU8UvXefgfhu24+btRyBXCp
+ V4+syGje0rDVb/2PNrDZ1SGvYPCT7GJb7F0mhsUFLiowyIk1CYJfLpohaN4gwTgfMRsI
+ ERG9DX4miEwz1tL8Ph+PKPH4LlyHhACfust8A1pVGoBlTPcn26eRR06DRY0aerPphI5K
+ k9JLv7np2tUU7Ktp7okKrlb9LNeDO/FClNKwVNrj33RR3VsiCTB/rSlCXwAXzipQ679L
+ yKuw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXcijPw+FuHP+arpVQf9ovN3Il72zt6xYxa0IMXh18zo6dJb1li1adbhfMquy1sQQm/raV43zlLFQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz2ry4oeRSarPebdEqfGK4USndxJ449GZjJgHkcswnuBDYzNyw8
- sJK5LLkj9K7ZzektMze1WvSEtmIA0wmIGEtXzRsZir0SLhDtFn9xp4VX+qiQEDphjX4=
-X-Gm-Gg: AY/fxX6F5BQnajfEn4Q8cxwtzRzEDOXVWpWX4ZywsyoyrwSwyEiXDY29To/mFFaOzZZ
- fqJtzGiwFtf/SsF53R6hPkLwcWzjthL6ZJO2VjgJqsRzUSVkeZbdlElfi3+bY58ELfaxhKBsUDG
- fA2+/iIQedM7bXSsAMPsqVtL1d/3dbiOiWmXoAc3bljfMXTD7OVKo5MtwJ4rHCBzCvMiAR/QX0C
- H+h253mYLapuxXGrhp+GdrJeK2SIocfw2NAnHiBwfcheUiz/s1zAsWog9IMiXbE3gkOteQMVKSf
- 1IlRLqN3miNtFyPyGlgJW7IovSeqBN0C5jUJU2HPP8TCsg8UjFEbKhQ9EXFX0JIdfa5TBOcvNMP
- k4WVUIKnTJU6yXhqAFdmP9qeuPwHTKem6XiRBtOTyfssI5W6mgv1LWgNxZmcpQVrLDxVnD7+8Xg
- AdBCN1+XQa5p77IMa7GRb2B7mUgPWHX3Zk0gnCYJDpIkRGBx3Hbbsjg0UU
-X-Google-Smtp-Source: AGHT+IErFKWWqm+GLSQDAJjT1aQGL+KgN1/3vWXPXUMO/eDX2d0jFCrmaASWq0eJP9PPGU3CkfNm5w==
-X-Received: by 2002:a05:6a00:39a1:b0:7ff:9fe7:9811 with SMTP id
- d2e1a72fcca58-7ff9fe7a134mr25809392b3a.31.1767031051602; 
- Mon, 29 Dec 2025 09:57:31 -0800 (PST)
+ AJvYcCW8RtRxFwUbq1CdCJLiEN6HNIx5i0YFHOfmowLThPrDM021jHh+VJil5g0ZQwx8SdGtO5zl3slGQw==@nongnu.org
+X-Gm-Message-State: AOJu0YxtzYImUe10hX4UGfZI87DOXAvUu833+W7Tc1ANHsWYdJmUvx5K
+ tD7hHOoIw2CDlT8TK2XXBAxPXJ1y6C+KqOPGrsZNilwnNAvniCkMnJ7W5WdlRvRiCvk=
+X-Gm-Gg: AY/fxX42pFFAGFOvhpMsF9QNw7cKjsWNGIy51F342Lwq+7P24dqiEts1jXsYr3j+311
+ zuva+vrUSIMKVtzbXxXcyg1Fm/WhU4oXNS90eVjxkydwS+7IWJXaFQtJ4hRHcJQrJ/gKw2n3VBd
+ lC74nHw3bGBabX64Cu0TbfiBgu9BTnKgAX22KJWVvBwGnPs4pLCRUiJCFO+cTe376Q8Vwoly5gB
+ xIhGoF3SQmZ0ADQtIwoGpLUT2A39Xt2nxFO6MB66fqLnCBICn8VpZ6efA2Q7d5W+RGFE45gVY/u
+ Ddk0OnXt+EXGmBg8iVAJIP4vnKmx9C9prjsGBv71faMsdqpLGM6ZBoJrU8MMRE6lSZ1CUOxieyk
+ LRgBMGzSpdUU4ibV+dsxTqstmcgjQZeQyZIEGdROMWFQrlwrnYXKF8CwsNSSvLC3BLDSazJpr6h
+ SM2xWND0c1AwVS82zypTVY00tUbnx1q4DNS5QmSdEGJOrfvJYq2ZIRLE1U
+X-Google-Smtp-Source: AGHT+IGTwUkOJN/s6/eauxTisj2JxoFXKlUcBqUfGxRUgkjrOrbsTX0al3QtAi934g4EBJJoQS5haw==
+X-Received: by 2002:a17:902:ecc5:b0:2a0:e7e0:1d31 with SMTP id
+ d9443c01a7336-2a2caab9181mr388381665ad.11.1767031039524; 
+ Mon, 29 Dec 2025 09:57:19 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7ff7a843a18sm30285572b3a.14.2025.12.29.09.57.30
+ 98e67ed59e1d1-34e7720b52esm13647124a91.7.2025.12.29.09.57.17
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Dec 2025 09:57:31 -0800 (PST)
-Message-ID: <3dac03d3-e87e-4ad4-9fad-2c247c10cd12@linaro.org>
-Date: Mon, 29 Dec 2025 09:57:30 -0800
+ Mon, 29 Dec 2025 09:57:19 -0800 (PST)
+Message-ID: <04228bf4-fdcf-4f4c-b2dc-3279ae5d2e9a@linaro.org>
+Date: Mon, 29 Dec 2025 09:57:17 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v12 28/28] MAINTAINERS: update the list of maintained
- files for WHPX
+Subject: Re: [PATCH v12 27/28] whpx: arm64: add partition-wide reset on the
+ reboot path
 Content-Language: en-US
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: Alexander Graf <agraf@csgraf.de>,
@@ -96,20 +96,20 @@ Cc: Alexander Graf <agraf@csgraf.de>,
  "Michael S. Tsirkin" <mst@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
  Cameron Esfahani <dirty@apple.com>
 References: <20251228235422.30383-1-mohamed@unpredictable.fr>
- <20251228235422.30383-29-mohamed@unpredictable.fr>
+ <20251228235422.30383-28-mohamed@unpredictable.fr>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251228235422.30383-29-mohamed@unpredictable.fr>
+In-Reply-To: <20251228235422.30383-28-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x433.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,12 +126,13 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 12/28/25 3:54 PM, Mohamed Mediouni wrote:
-> Add arm64-specific files.
+> This resets non-architectural state to allow for reboots to succeed.
 > 
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
->   MAINTAINERS | 2 ++
->   1 file changed, 2 insertions(+)
+>   include/system/whpx-internal.h | 2 ++
+>   target/arm/whpx/whpx-all.c     | 2 ++
+>   2 files changed, 4 insertions(+)
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 

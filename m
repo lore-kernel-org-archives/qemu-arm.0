@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17736E92FE3
-	for <qemu-arm@archiver.kernel.org>; Tue, 30 Dec 2025 00:13:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80C5DE94104
+	for <qemu-arm@archiver.kernel.org>; Tue, 30 Dec 2025 00:14:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaNIX-0002Hb-Pw; Mon, 29 Dec 2025 19:09:15 -0500
+	id 1vaNLw-0005hm-OV; Mon, 29 Dec 2025 19:12:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vaNFc-0007dK-RP
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 19:06:18 -0500
-Received: from p-east2-cluster2-host10-snip4-4.eps.apple.com ([57.103.78.77]
+ id 1vaNFr-0007r7-0b
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 19:06:30 -0500
+Received: from p-east2-cluster1-host4-snip4-6.eps.apple.com ([57.103.76.19]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vaNFW-00044n-RU
- for qemu-arm@nongnu.org; Mon, 29 Dec 2025 19:06:10 -0500
+ id 1vaNFo-00046P-0H
+ for qemu-arm@nongnu.org; Mon, 29 Dec 2025 19:06:26 -0500
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-9 (Postfix) with ESMTPS id
- 9E4B218010DD; Tue, 30 Dec 2025 00:06:01 +0000 (UTC)
+ 1CFD718010C9; Tue, 30 Dec 2025 00:06:18 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=+MsdZaXBCYAcv52ZMhpRqZhO9PBpFu3UYyQ8HifZlzo=;
+ s=sig1; bh=ikn0HzDDxg3hSGfBkyUa/ql2C2gbLWDqs4VNlGZIV7w=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=M15zqNQXqfGtNAuoOgV3/UVtuwKy5FV9kiXetV3gjH3dzWZl3HvcGkzx0e3JtmiNxCzWzGT+rjJftFBrXqlTs2vsmbsVVFwNzsRoGrTpf+wbygGCjvxjIrxOU2T4j3rtP30EsHyES9TPeevFQgDHm2gYcYzFf6+/iUz172mILukgxS+SdkxosyBLs0bjBjf+8LPyXmDx9tBLhFtmwg+ydEpiCmyCGuWX1gLWF6jDencBFSxjJ+044iofNszi7EQkvx6nEyY7wZFlvPDF5w/oru10Z8dICyRyjTuW14Gaxan67B/cjgEOOmnIuM75N0Kaao5H9CWABdRXdjqKTzgyFA==
+ b=g+9XCp/U55N+eWCp+HNwSET7HOO74/r+cqf9a6GUSZaIrHmYf4HYHGEUGOv6Ny2dCuCzSBOgCOrJgS0ktM6HPucaDC9+r+NyA810luDBZldtvDqyhqsRKXYAqC0zXjQviuCIQd5jjAnyJL0vhoIBUtEbqvzqk6wTz+np+uMR3FJXC6f5lFjEM7eXThS6kz4NiAIdhuxszEsOIl9s4Z6jiENNtiaebUZ/9AGN6N+KXdqJ1h9pHzH+C2dmBVpRAYOwTVoNzqi/OhjTvKaZi/UiDJjM1VwENa2eElg62ie8xp4YUWzqYYu13nM64qCEAuu8JvgnVZzhqGZiL2eJSfW/Jg==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-9 (Postfix) with ESMTPSA id
- 518C418010C3; Tue, 30 Dec 2025 00:05:57 +0000 (UTC)
+ BECEE1800479; Tue, 30 Dec 2025 00:06:13 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: mohamed@unpredictable.fr,
 	qemu-devel@nongnu.org
@@ -55,36 +55,37 @@ Cc: Yanan Wang <wangyanan55@huawei.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v13 22/28] target/arm: whpx: instantiate GIC early
-Date: Tue, 30 Dec 2025 01:03:54 +0100
-Message-ID: <20251230000401.72124-23-mohamed@unpredictable.fr>
+Subject: [PATCH v13 25/28] whpx: apic: use non-deprecated APIs to control
+ interrupt controller state
+Date: Tue, 30 Dec 2025 01:03:57 +0100
+Message-ID: <20251230000401.72124-26-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20251230000401.72124-1-mohamed@unpredictable.fr>
 References: <20251230000401.72124-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: ic1pj_-3NS7-XbO85S11Mb3Z9WmFkN1J
-X-Proofpoint-ORIG-GUID: ic1pj_-3NS7-XbO85S11Mb3Z9WmFkN1J
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjI5MDIyMiBTYWx0ZWRfXx/mIAEv+WB2+
- 9BWtlinZtlT9b4aCJ4q1Irir5hhyI58K8BYA5k4t2Y+lXpsEnFbji7HMfSQ2x4tDCzkKkPslke0
- ckCqufmEU/2FAUCBmABbKdoKOJXHxtd9rj3KpG2ydE6L/mjFZ9umIiX+lMNgUWk9jMUG4NXq8Uc
- NflhMEIstmTXhsWuf3JANB/U3IJSamD+lQUA1qkOcBangEfS/VQxUJwzMVLTw7JESt93JTYf/R4
- +fqu1kOKKpsgB0oakEk3ej7ljt1CSnDDOIjZBLUGmjMiPcpoKnE3TnoeyCXT3V2DVZT0i7knrba
- syTyZApQ6Vmy3QaeY9n
-X-Authority-Info: v=2.4 cv=SYz6t/Ru c=1 sm=1 tr=0 ts=6953176b cx=c_apl:c_pps
+X-Proofpoint-ORIG-GUID: vmpQQAt2xnlk7uMwHFjNfF6-GSBNQiIM
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjI5MDIyMiBTYWx0ZWRfX7ITmP0IOYR3t
+ RLB332kjU6IVeHbZT/OEcoVN4I8wxXwLEH+mMxjG00ogKx57huTAWixIDPkpS+jrGdjGk1rChJ6
+ Qku7N48CosZ05i5wjJndORGYIkH3XQbP5lVyb0n5cw/girFxNRlZ5uzoa4Hsm4LDUuubqnjtOmn
+ SRgJfK+4aWDXk/LlTmmi7o8vvtwjcAck5e1pDPTj/+Qk5Rkayg703N1gAP80EfjR0jDPlGyPstJ
+ Ccyjm3lMWQYsUoLOeBOWOPgjI67enGoq28Wi78/SCm/yZSrGt1MRzSFYe00xf9a/EUTbtNY9Xpc
+ S/BjzzRmshPQZ71UGBL
+X-Authority-Info: v=2.4 cv=EJ0LElZC c=1 sm=1 tr=0 ts=6953177b cx=c_apl:c_pps
  a=YrL12D//S6tul8v/L+6tKg==:117 a=YrL12D//S6tul8v/L+6tKg==:17
  a=wP3pNCr1ah4A:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
- a=EYz79TNVRTG0waESW9UA:9 a=cvBusfyB2V15izCimMoJ:22
+ a=Zj7cAsCNdc2pAJP8fGYA:9 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: vmpQQAt2xnlk7uMwHFjNfF6-GSBNQiIM
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2025-12-29_07,2025-12-29_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- malwarescore=0 bulkscore=0 suspectscore=0 spamscore=0 mlxscore=0
- mlxlogscore=731 adultscore=0 clxscore=1030 classifier=spam authscore=0
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
- definitions=main-2512290222
-X-JNJ: AAAAAAABt8zchQicPg8swT8o3lt0r7xSk8VIKLVxABu8jp4+Ob8U6puJmrFy4l0tcXYJjS0ucFEFEWuIer+S2EDJk9nyI5SaI5134jhQlRVkGQnn/9kDRf4zcKBXwL2z9qq2PzWX8YmALEvY+NHMzRIE1HI9TR5BK2jqJOL0iGc2VnQ2OV2Q4FyBfg5PwNrhO8DHMtODdcpAuAfwnYQ3zofDyxY6GS0Yf/cbV5FmzeKqHRB0aU1ySZJCSNiVMJTl8dTEUaQ3GCMBrrn+31FbPbspmG/pHkyhkxf0AwbqK9g4DLuVm+1ZuMmEgnWD3L8qcjVfjmHio4QIDg9ADI4YJxKydaEnTG9yJbIaArAB3BFcgN7phFzVsi/nnPKrumAMdw+bHk+P/sdFjWlyV9ojDPTXldIccSJ8XqH0p3ogozIrx/dFzM+qu0kaMCayuIBG2DgLC/wMpf1j3O1Ei6XPabOpRdzX8ohBwV3vvmZpwXX959HwIRIqZr2R4d1x7/MuCItQ31WKMsZRRc8lP7zkKwUkBSJcPNr0MMwcbD1VX9lJzxOCGGZ20S4/uWumpy/zNM7n/DVgcUYpbWZZyuiAketRTrMm6g8s7aipZdMXC1m+IgtvdC2qArGpYdDzULmcCAleOCtLxuDFwOYc8SojRozgDn2fhhYAj7F9UYjwr9GszpHu1kmEgsiQLDWu4fLo+kc7nwWS/IyMQpW/y8IMCNnrhSS4x3YICB+zJxzjRieAhDAKq5nAP45gkFB7K+3OG6VPFFxIYrFVaRGG9BHZqS/u+66ELP3rEIUcaQMvg61KE1/XCnj1L8ag40Q2irEpRi4UYKu5dXxolD4d/Oky1WbyoZsL6f7DslDF428xzw/ATWVDN4Da4QXzE7Yqja5BcV2RuWlbr4ij7XVKUYrACDh72dOgA+EtzjrRfVXMWBrTXyUk+zRq1KW9FtPAQg==
-Received-SPF: pass client-ip=57.103.78.77;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=873
+ mlxscore=0 suspectscore=0 adultscore=0 spamscore=0
+ malwarescore=0
+ phishscore=0 clxscore=1030 bulkscore=0 classifier=spam authscore=0 adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2512290222
+X-JNJ: AAAAAAABR1RI/lv0++ynqMnDJEKbJWNKA9hGNl/lQrnPymcjstDxZnzPyULmLVVBfFO0Q69qiiCPhYo6S2PD/ocVqnfigzPM/gNHTt5WEZvw14S3d+jjCZAw96afZM3Y97ojU+qla8relHA1m6gJ5mHbyGT8eAV9HHVltGBO89mIwkUSIzjO5Hbs8v5nBXxXpHbQG2kESsCxWVY+mUIVU8Hb1OU28SUYtPwzcZiY8re1jHecSL6A9+IGQBzKSXmI0WYjRQYz14Du8bJUxUlW+7gCITagyRz1yKz2kf/E1dW32mHLLfYQqOypZKQXcqTr41dap4EZYvqb0JoRrkh/ptTl0q2hQeDnuKfFCvI5A5D10wXaivefBAKnFaBWDUouMDB1vdDIZSqqcbRFHtocwWhUZg4IuUi/eHcBVgZ5lFFEwfIlhFLUDa0TMLUk1qpFbYiZS6kQOjlgOPEeIrWRKVEwYFOmxqvTQxXXdCrYHvs/suUS4LLl9VRDymqvyPjG/pN+3CIJk0lVytq0uR47VmHg6Ax9+DilIduVG5jNB6Hc4jGWvoVKqULB0xiKAHNgRbTrsxlSoMUv7XoJMCiVHDe3UBCFuCwWuYY9VJ9wKe8Uwn5tzgavlU+kPpHDZTUl6KfnQ3cIXzUQrgxME/XSC6/yB+VPR6EfxsC6Y6qvu1oYyklkrqxyR0eD6pEYrJKx3TTJdH3EU56OQpvYGud+jZhbwxbbwkx1XO3/aDghwNvKyqyr7vpfiz2F7hH7lXrmO8NgXAo1vZesTP2qE+b5mShzsUALg6qhbDn8P0YbVk3lG9IVpZxlCWAszSV+f93xta0tM4R62jCm0UUSakwwMIuxMRXKgYD/WUan3t0hu4w3XkpChQqtiOLtwoSxEO7vBDADFJEwl5LRZfoUxGOI8itJcOaEJLt2n4YiELxjU2p2uYxYRF/Jm/qjU4SOhuj2OqXFPW3hH1O2pg==
+Received-SPF: pass client-ip=57.103.76.19;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -108,51 +109,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-While figuring out a better spot for it, put it in whpx_accel_init.
+WHvGetVirtualProcessorInterruptControllerState2 and
+WHvSetVirtualProcessorInterruptControllerState2 are
+deprecated since Windows 10 version 2004.
 
-Needs to be done before WHvSetupPartition.
+Use the non-deprecated WHvGetVirtualProcessorState and
+WHvSetVirtualProcessorState when available.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/whpx/whpx-all.c | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ include/system/whpx-internal.h |  9 +++++++
+ target/i386/whpx/whpx-apic.c   | 46 +++++++++++++++++++++++++---------
+ 2 files changed, 43 insertions(+), 12 deletions(-)
 
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index 07bb6fae5d..eea20f5e5e 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -973,6 +973,29 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
- 
-     memset(&prop, 0, sizeof(WHV_PARTITION_PROPERTY));
- 
-+    WHV_ARM64_IC_PARAMETERS ic_params = {
-+        .EmulationMode = WHvArm64IcEmulationModeGicV3,
-+        .GicV3Parameters = {
-+            .GicdBaseAddress = 0x08000000,
-+            .GitsTranslaterBaseAddress = 0x08080000,
-+            .GicLpiIntIdBits = 0,
-+            .GicPpiPerformanceMonitorsInterrupt = VIRTUAL_PMU_IRQ,
-+            .GicPpiOverflowInterruptFromCntv = ARCH_TIMER_VIRT_IRQ
-+        }
-+    };
-+    prop.Arm64IcParameters = ic_params;
+diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
+index 8ded54a39b..9e872e5f56 100644
+--- a/include/system/whpx-internal.h
++++ b/include/system/whpx-internal.h
+@@ -86,6 +86,15 @@ void whpx_apic_get(APICCommonState *s);
+   X(HRESULT, WHvSetVirtualProcessorInterruptControllerState2, \
+         (WHV_PARTITION_HANDLE Partition, UINT32 VpIndex, PVOID State, \
+          UINT32 StateSize)) \
++  X(HRESULT, WHvGetVirtualProcessorState, \
++        (WHV_PARTITION_HANDLE Partition, UINT32 VpIndex, \
++        WHV_VIRTUAL_PROCESSOR_STATE_TYPE StateType, PVOID Buffer, \
++        UINT32 BufferSizeInBytes, UINT32 *BytesWritten)) \
++  X(HRESULT, WHvSetVirtualProcessorState, \
++        (WHV_PARTITION_HANDLE Partition, UINT32 VpIndex, \
++        WHV_VIRTUAL_PROCESSOR_STATE_TYPE StateType, PVOID Buffer, \
++        UINT32 BufferSizeInBytes)) \
 +
-+    hr = whp_dispatch.WHvSetPartitionProperty(
-+            whpx->partition,
-+            WHvPartitionPropertyCodeArm64IcParameters,
-+            &prop,
-+            sizeof(WHV_PARTITION_PROPERTY));
-+    if (FAILED(hr)) {
-+        error_report("WHPX: Failed to enable GICv3 interrupt controller, hr=%08lx", hr);
-+        ret = -EINVAL;
-+        goto error;
+ 
+ #define LIST_WINHVEMULATION_FUNCTIONS(X) \
+   X(HRESULT, WHvEmulatorCreateEmulator, (const WHV_EMULATOR_CALLBACKS* Callbacks, WHV_EMULATOR_HANDLE* Emulator)) \
+diff --git a/target/i386/whpx/whpx-apic.c b/target/i386/whpx/whpx-apic.c
+index b934fdcbe1..fa45a64b21 100644
+--- a/target/i386/whpx/whpx-apic.c
++++ b/target/i386/whpx/whpx-apic.c
+@@ -137,11 +137,21 @@ static void whpx_apic_put(CPUState *cs, run_on_cpu_data data)
+     whpx_put_apic_base(CPU(s->cpu), s->apicbase);
+     whpx_put_apic_state(s, &kapic);
+ 
+-    hr = whp_dispatch.WHvSetVirtualProcessorInterruptControllerState2(
+-        whpx_global.partition,
+-        cs->cpu_index,
+-        &kapic,
+-        sizeof(kapic));
++    if (whp_dispatch.WHvSetVirtualProcessorState) {
++        hr = whp_dispatch.WHvSetVirtualProcessorState(
++            whpx_global.partition,
++            cs->cpu_index,
++            WHvVirtualProcessorStateTypeInterruptControllerState2,
++            &kapic,
++            sizeof(kapic));
++    } else {
++        hr = whp_dispatch.WHvSetVirtualProcessorInterruptControllerState2(
++            whpx_global.partition,
++            cs->cpu_index,
++            &kapic,
++            sizeof(kapic));
 +    }
 +
-     hr = whp_dispatch.WHvSetupPartition(whpx->partition);
      if (FAILED(hr)) {
-         error_report("WHPX: Failed to setup partition, hr=%08lx", hr);
+         fprintf(stderr,
+             "WHvSetVirtualProcessorInterruptControllerState failed: %08lx\n",
+@@ -155,16 +165,28 @@ void whpx_apic_get(APICCommonState *s)
+ {
+     CPUState *cpu = CPU(s->cpu);
+     struct whpx_lapic_state kapic;
++    HRESULT hr;
++
++    if (whp_dispatch.WHvGetVirtualProcessorState) {
++        hr = whp_dispatch.WHvGetVirtualProcessorState(
++            whpx_global.partition,
++            cpu->cpu_index,
++            WHvVirtualProcessorStateTypeInterruptControllerState2,
++            &kapic,
++            sizeof(kapic),
++            NULL);
++    } else {
++        hr = whp_dispatch.WHvGetVirtualProcessorInterruptControllerState2(
++            whpx_global.partition,
++            cpu->cpu_index,
++            &kapic,
++            sizeof(kapic),
++            NULL);
++    }
+ 
+-    HRESULT hr = whp_dispatch.WHvGetVirtualProcessorInterruptControllerState2(
+-        whpx_global.partition,
+-        cpu->cpu_index,
+-        &kapic,
+-        sizeof(kapic),
+-        NULL);
+     if (FAILED(hr)) {
+         fprintf(stderr,
+-            "WHvSetVirtualProcessorInterruptControllerState failed: %08lx\n",
++            "WHvGetVirtualProcessorInterruptControllerState failed: %08lx\n",
+             hr);
+ 
+         abort();
 -- 
 2.50.1 (Apple Git-155)
 

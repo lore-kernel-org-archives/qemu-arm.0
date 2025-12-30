@@ -4,56 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3017DEE01FF
-	for <qemu-arm@archiver.kernel.org>; Tue, 30 Dec 2025 14:28:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 794D1EE498E
+	for <qemu-arm@archiver.kernel.org>; Tue, 30 Dec 2025 17:07:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vaaiQ-000454-1o; Tue, 30 Dec 2025 09:28:50 -0500
+	id 1vadBV-0007mQ-Is; Tue, 30 Dec 2025 12:07:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1vaaiP-00044M-G5; Tue, 30 Dec 2025 09:28:49 -0500
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vadB3-0007YD-UQ
+ for qemu-arm@nongnu.org; Tue, 30 Dec 2025 12:06:39 -0500
+Received: from 3.mo552.mail-out.ovh.net ([178.33.254.192])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1vaaiM-0004rB-JL; Tue, 30 Dec 2025 09:28:49 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.37.52])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4dgb6n4wnJz5vqb;
- Tue, 30 Dec 2025 14:28:33 +0000 (UTC)
-Received: from kaod.org (37.59.142.96) by DAG3EX1.mxp5.local (172.16.2.21)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vadAz-0006Ow-Ic
+ for qemu-arm@nongnu.org; Tue, 30 Dec 2025 12:06:33 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.43.6])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4dgfcv28qlz5w9D;
+ Tue, 30 Dec 2025 17:06:22 +0000 (UTC)
+Received: from kaod.org (37.59.142.101) by DAG3EX1.mxp5.local (172.16.2.21)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Tue, 30 Dec
- 2025 15:28:32 +0100
+ 2025 18:06:21 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R001963a86a7-fb2c-4a3e-8a4f-406c98943869,
+ (GARM-101G004c94e92db-3063-4018-a7df-e9c262bfd6f5,
  10BB85812771F3279B7407FE60307F74CBD19E16) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 90.14.253.154
-Message-ID: <d6fa3762-7ea8-4173-af20-9615cc5f92dc@kaod.org>
-Date: Tue, 30 Dec 2025 15:28:32 +0100
+Message-ID: <b67a04d9-3561-4d90-8238-e476ae8896de@kaod.org>
+Date: Tue, 30 Dec 2025 18:06:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 06/19] hw/arm/aspeed: Integrate interrupt controller
- for AST1700
-To: Kane Chen <kane_chen@aspeedtech.com>, Nabih Estefan
- <nabihestefan@google.com>
-CC: Peter Maydell <peter.maydell@linaro.org>, Steven Lee
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
- <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>, Troy Lee
- <troy_lee@aspeedtech.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>
-References: <20251224014203.756264-1-kane_chen@aspeedtech.com>
- <20251224014203.756264-7-kane_chen@aspeedtech.com>
- <465b0714-bd08-40b5-9cf9-5cd206e8548b@kaod.org>
- <SI6PR06MB76312852C6243B1F48202A89F7B0A@SI6PR06MB7631.apcprd06.prod.outlook.com>
- <55adfce4-0dbc-492a-b586-4c46df78007a@kaod.org>
- <SI6PR06MB76318E7A596008386B0AE51CF7BFA@SI6PR06MB7631.apcprd06.prod.outlook.com>
- <ed07c0f2-737d-4d65-917f-d39d02c37063@kaod.org>
- <006fa26f-6b84-4e82-b6e1-7d1353579441@kaod.org>
- <CA+QoejXzjvyLA0Pp0xJjCsrwSyegSBRBs-MaT7yP41Nd2B9BcQ@mail.gmail.com>
- <SI6PR06MB76312518466322BC6BD67DC5F7BCA@SI6PR06MB7631.apcprd06.prod.outlook.com>
+Subject: Re: [PATCH v1 0/4] Remove AST2700 A0
+To: Jamin Lin <jamin_lin@aspeedtech.com>, "reviewer:Incompatible changes"
+ <devel@lists.libvirt.org>, Peter Maydell <peter.maydell@linaro.org>, Steven
+ Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open list:All
+ patches CC here" <qemu-devel@nongnu.org>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, <kane_chen@aspeedtech.com>
+References: <20250901040808.1454742-1-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -98,27 +86,27 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <SI6PR06MB76312518466322BC6BD67DC5F7BCA@SI6PR06MB7631.apcprd06.prod.outlook.com>
+In-Reply-To: <20250901040808.1454742-1-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG3EX1.mxp5.local
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.101]
+X-ClientProxiedBy: DAG3EX1.mxp5.local (172.16.2.21) To DAG3EX1.mxp5.local
  (172.16.2.21)
-X-Ovh-Tracer-GUID: 9a67376b-2b38-49ac-92ef-3e48a726b295
-X-Ovh-Tracer-Id: 16253772530835426296
+X-Ovh-Tracer-GUID: 6000dc71-8dc6-4a30-82ef-dd5ad27c6926
+X-Ovh-Tracer-Id: 472315013890149365
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFz7ulCk6V8EKBEiGoWapd2mwv3yUcCkCImTwag2szEyJ/ZHxW64Eu66TtwEum2UMVYn27odzRh/ZDxP1sL3HpgVLVJ9L2SbDpLzVke82++omYtaX+2UeLNn77+3J5LSlf+ULDWH64xtvCINGjz0d5Xaun3x6j4Vc8t34s2mWG3zPYZq6ZD15wfhNt6N3OiS3eLcge995VkYQvcrumuWxNiPzN+8QnL+4ujeT+RTZDvsKryw6vcNthOqPFz/PrfKIEbUFDCZerS2L02YLU8WCwCPm3NjmUACCcF2InYdNjZkKKsCz5LaM30Fel09h1H3y2mFPP7AD3tzMbtfEjt2EKcGxGxxU69TRt17fmto4qKUG9OKyAn+kx72mPN7za88FBgDphIL18Wjq9EXKxUHPZWIhpzUJM0Fdw5qPIxTgsLAN/l4JfPJL2o6TBDu2HQKXJ7YArphaPTf2rkFaaaTOQhHUCIbr+G1DGtjKFdjbVfo4YkYgw3QQ8WC3KVC3QDIM1oMs35nY7XVfz0Nuh0ejWzObAHjDLha9JQhcU6Kl06SWsLBFV6g3AUgsfb5mr+f88FKPs6haoeyC13H7OFM1kk+Ka/Y39piHTt9GO4+xyQE0wNUwAVnjabTf1Erwz/51vHOVt+lP6Ab7UXGucN6ntnFBoxHYdBkytIsj52cIGOog
-DKIM-Signature: a=rsa-sha256; bh=/ZyaviGEcfL+8cgeDaGqWXjwt0kUTSsmMFX8lqYepSY=; 
+X-VR-SPAMCAUSE: dmFkZTGL3soYvqjCTyXFEPoUCSY/3eN0A10NNb4YLLriUUnvqRnTk7Asso0mVe6NizB0waxBlThWX/f2zC6EI+xMpcOSHW5RFiCVuztH3JoIrkxyfNs56suxoiMOg+okDh1X5DrhWl7m0xQb3wEhrxkOpQNKRplhK27OVQei2abSDNOu74RXXGlx2wOfZ5vUaNidxKU9sjS4sxU2OfHN4SQKfAs6jJQb9WmPnQW2yOmpqlemIBb0WM/EwzR+1uIAVB5jInB9L8OgpDgPBz4ljewMQR0KYdSgD1hT+VEaYrpWQb3IQBbm/a5njJyDMyxceLKPjodt5H2jFUb7ZyFqrpgq2UgFs1f/qfHZF0NQmCGfTUYH0JMQXIixvGlqFPyXsSmSXuIlKuRTyf5u9NKm8hqnuuEHKWsjxlqdMu70bA1Zv2UjzS+5EFeNFhaA+5o7TA14nP+9bfKdXLfpO7Y4Vczmp+c/bfFtF+5lY9oYnlR5kpcYGvVDt5eDbHnUHKaWHUmxD4pPEa0lc1iIic201ec1EX+XHzHiZyhxRMi+xM/O7Wekg+AnfTWHBKD0BGHVFVW0jodWUwJ6UDAyqpr/p16T/c6fZGlX+RBFojdCjF7eayIS/+sJGJhAJp2wqw88ij6HIGRsFCBi40IFpF9JM0Hx/tfZ+7wrsjhBwEZwEAyCclZFOA
+DKIM-Signature: a=rsa-sha256; bh=x74yeCKIlcpYZnHtsmaMTZ3ko2qaE8iVeTjhpj2DNJA=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1767104915; v=1;
- b=R2icl9UA6UJwfMU+op8ytkWKWMkgyxXbx0CkIHgBqbzAY03z/mMyVo56RjKcwZpxcA0O8k2y
- 04N/tnxzKbVQeXTlMFYaxV2fQFS0BzrpM3KC+44CQ4f6SzsHieA8q3FtxpY8LpCRfNqpgw7r2zP
- 3RMZ3dkvPfM2nl3MHrl196XhwxVB2YgHEoUvRV5Z9xRifOjrzKpc3stCUGsi7Op45l32M2a089I
- RSmJZUbBZCqUuo28fz3akVFjnhTQWUVBADPu+vL0o6YbYDIzYopi+eITBNX54yf1O1WQEAR92kE
- ErFfCh241E/Au91yuVsQb52PvX/CTS1BtfFqpK0E5XuvA==
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
+ t=1767114384; v=1;
+ b=Zy/zLNPqidK7GVfpRKXvI6YTp2jnE+Q5yYS63mkFScMFIg88w/CkeFTE8XsmH9Ysn64Ehb63
+ 3ZsiuPYqo/8PtUNgl1QT7+EHIDaG0nHgyHS6O374yv7ymBGjyOQ80PZKjcgUvjPlbuX486fzEZD
+ 1xrY+IV8wGxLlA34snr2wna8SVXqP8XQEbjOf+ZBCejv18l6IznQDc56MSkbiQzU/2/pDGDteY4
+ orLrDJJy5SYCb/IC2L0HJv5REnmpBeEZnCdym8Hrm49owEo8Kz7rUVsYgUh4bqS/B+pDKHx//Wr
+ eWQxWeqtuXtp9f2c/aLl8PQRjWkR68IL2BsoVmmqY9Yzw==
+Received-SPF: pass client-ip=178.33.254.192; envelope-from=clg@kaod.org;
+ helo=3.mo552.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,7 +114,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,31 +130,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello Kane,
-
-> Currently, three devices in our setup support I2C.
-> 1. BMC
-> 2. IO expander 1
-> 3. IO expander 2
+On 9/1/25 06:08, Jamin Lin via wrote:
+> v1:
+>    - Remove ast2700a0-evb machine
+>    - Remove ast2700-a0 SOC
+>    - Remove GIC 128 - 136 for AST2700 A0
 > 
-> Each device supports 16 I2C buses, and the bus indices for each device all start
-> from 0. This leads to naming conflicts under the current naming convention. While
-> we could extend the bus IDs from 16 to 47, doing so would require significant code
-> changes to handle different ID ranges, making the code harder to maintain.
+> *** BLURB HERE ***
 > 
-> Therefore, I believe using readable bus labels would be more intuitive for the user API.
+> Jamin Lin (4):
+>    hw/arm: Remove ast2700a0-evb machine
+>    hw/arm/aspeed_ast27x0: Remove ast2700-a0 SOC
+>    hw/intc/aspeed: Remove GIC 128 - 136
+>    docs/specs/aspeed-intc:  Remove GIC 128 - 136
+> 
+>   docs/about/deprecated.rst                     |   8 --
+>   docs/specs/aspeed-intc.rst                    |  93 ++++----------
+>   hw/arm/aspeed.c                               |  28 +---
+>   hw/arm/aspeed_ast27x0.c                       | 121 ++----------------
+>   hw/intc/aspeed_intc.c                         |  49 +------
+>   .../functional/aarch64/test_aspeed_ast2700.py |  12 --
+>   6 files changed, 39 insertions(+), 272 deletions(-)
+> 
 
-I tend to agree.
 
-> If there are any existing conventions for this use case or if you have any concerns
-> regarding the use of bus labels, please let me know.
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
-Could you please send us the contents of directory :
-
-	/sys/bus/i2c/devices/
-
-on a system with such IO expanders? preferably with some devices
-attached to the I2C buses.
+Applied to aspeed-next.
 
 Thanks,
 

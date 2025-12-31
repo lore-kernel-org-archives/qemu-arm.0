@@ -4,92 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 736FBEEB565
-	for <qemu-arm@archiver.kernel.org>; Wed, 31 Dec 2025 17:10:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9A75EE645E
+	for <qemu-arm@archiver.kernel.org>; Wed, 31 Dec 2025 17:10:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vazhJ-0002dD-2Z; Wed, 31 Dec 2025 12:09:21 -0500
+	id 1vazhD-0002Z4-C7; Wed, 31 Dec 2025 12:09:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vazhB-0002Xd-Cq
- for qemu-arm@nongnu.org; Wed, 31 Dec 2025 12:09:14 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1vazh5-0002Vx-Jw
+ for qemu-arm@nongnu.org; Wed, 31 Dec 2025 12:09:08 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vazh7-0000Zw-8d
- for qemu-arm@nongnu.org; Wed, 31 Dec 2025 12:09:12 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-430f5ecaa08so4467053f8f.3
- for <qemu-arm@nongnu.org>; Wed, 31 Dec 2025 09:09:07 -0800 (PST)
+ id 1vazh1-0000YI-Tz
+ for qemu-arm@nongnu.org; Wed, 31 Dec 2025 12:09:06 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-47bdbc90dcaso68484655e9.1
+ for <qemu-arm@nongnu.org>; Wed, 31 Dec 2025 09:09:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767200946; x=1767805746; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=faxhufLw/EIG5Ph8lvEbPCvkCLmmsEhf639jzh+lM9I=;
- b=FhgrI6xhSQAsKXHYTGTOuh4I5xHlFXNNmdj8jFpf0aeri3UFS08rXrvyZy28SL7O8g
- nkG8TFeSz2hSG6G928lIwe9YZhbCW8FI/PoS7MmQEICUlZdK0m67z53qXQECcMef7Wju
- nY5dhdT7b84DPSN26vdvoTrE+QsWogalVl+bAOV8oqp8VSykVokXdhaZqOB2j1WjhovV
- 0T8bA4k5st+yQcxIP3haW1hPPHuSMijQkY8qbi58bXMYOAuQBCM6El38O5elQ7qnWjLY
- FusYDPINZe/00d80kIsF/EKKkLcF6Mq3xkyJ2rQqFZviux0ZgHiXmKUxD0gCNj1MT3Qt
- 82+Q==
+ d=linaro.org; s=google; t=1767200940; x=1767805740; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZREBp7SWRaBnZ07QaFCmMpeaAK2oXMAOe/k/nbhfrKM=;
+ b=G07XugVBBSIMi+p74QugRHgSX8xn8sxhUQrdrdb+bHnQ5jo3ioPhouCspiN2HfBGb0
+ OstRz+c+HBNAsefPrxCZsd9fjZ+6zON1Y9c+LdseEZjhg1926VSZbObfQgZTI4ij5zmU
+ F01Vqm63aJb06Hkv57/pUa/AN6nQzlweIVKRPRuQ7FAzfdeYPpO62J4hgdp71+LBdcW3
+ VRgNtzphFggGDsJQpR0zHbbe5G1AxT22PKsE8rZjq8K6xStnHuxO2NtIk8cz9KbwqVvN
+ PZjyUryJpW0lfBamO9I/Jlgc67/tPVPLo3hbz6OnucMMuu/nsdhEfLHfli9y0dq6rqIj
+ s8VA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767200946; x=1767805746;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=faxhufLw/EIG5Ph8lvEbPCvkCLmmsEhf639jzh+lM9I=;
- b=FgSee677EKYEer9sHHOV83uUyQ8Um4ks/EH1aqOfFPIHrlDjhMOurQ9M0/XT21ZkAj
- Eivf1D/xonz5sL9wJVCh4io9aBApad6BZxExiBg//Dri2RMJDieNuP6YsdnMn4dF9QqR
- 3vfFV7hcb/RtV8x7qhWQ5FBoHZQraIE5oYcdMoKeOkn96M36t86nErsgoqI7yJ/ABu+6
- oO6WF24buCgELD1dyBkBkemnUbNpzyrvoLKf456m+cDbTXezrH+MYQoaMx/cofuKjYQD
- 0Ba6Y5B6aK5bk+V/jKHM4ggZYdCeZwSm2FNJe4yt/3dKli6lpWIeEhStWcA6zw+DArG8
- kGvA==
-X-Gm-Message-State: AOJu0YykL+58vpHDiPZVBw03EUDI9zSDQy5uO8wmaUMC6Lx5hyYiOEfh
- HozLumKDdXD41TR0dor+OCX3zpEi0vD+J95fl06DX4Yb6oNpA1oQ1ozN8dVYAcpMeNyyhpK8M4A
- B1W1s
-X-Gm-Gg: AY/fxX5dPCIXm7ReO0jBrBq+Lv0Gy0He2VJtYqcsbjsdZcEWKd4hysyJWvqUNqkM6wI
- hkqItJKoI6NKUef+SwRqP3fWnpPzrCQ8yK1/jtN5Y2lVAJgTMmsbAcVfMsX8xoTKBXnRB3k8zMo
- L3tdCv24jk01AnPaGBqTJ97tIJwSY1f6yNdmdfWJIgSIDaJ5Ok70/SHvOk1isEfTCH708291aPt
- XFUyuuQJSjFCw3MRXSSBdcwf9zoKvHMyWcPhJB03lotMyrY8qHUYDwjb9JpdtthnuMhjQqRRMKa
- 1JIIlhgyg17xgiQJPAN42jev0W3IwFayoq3xM3Pg2MaY3hyH+6A6zjZX2+ytCmJ57EILWQ52iJ7
- bazuGnnGhcGtQDXHCeAR2YBr+Xq28yGTFqSJUxcIjzdvMIRd4va3x7ZtOU1u9xzaj/YMBIDoYzv
- pGqBQbXb9WwtdQE42gn3mtlI0uxMSQJ8EvUklwH9Ov0wlXj4wbk3T1TbPmGzM+KQlDx8QGZ/zPW
- j01WNrgHDKKZNYaZHCey0KhiTvIhU4pZUyldIyjAtCekw==
-X-Google-Smtp-Source: AGHT+IGVSVrvMOLQ+ITS353Z2MIs7pQPiWP+RahxI1tDpsL409+UZGMkoGrghgVPbRnsvsRqZGcAsA==
-X-Received: by 2002:a5d:5392:0:b0:42f:edb6:3642 with SMTP id
- ffacd0b85a97d-4324e704c03mr37383761f8f.60.1767200942921; 
- Wed, 31 Dec 2025 09:09:02 -0800 (PST)
+ d=1e100.net; s=20230601; t=1767200940; x=1767805740;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ZREBp7SWRaBnZ07QaFCmMpeaAK2oXMAOe/k/nbhfrKM=;
+ b=E0agxUDpYANGmC4L1BbqlDHoCsQG1Aspn9Vw1yQ5BBWW88ppXR5ynYtyZGHUccHwPX
+ /ykNbBJqsbyNyRV32vCT5dFqWcVfrO2H4k+4iFLZLhd5d+TCro84J6ae0+kKLMH5eRO2
+ vhBw4txA3yJzQQ4ldDi2iM/Rl0tPbWTTo5/JJWMKcUhfpsTPoO4NPt7+Y9hNih/VnNgD
+ fnOhZ2gb9kl5O2HrQGhuFJStj41YrQ+ZwJmJYSE4Y8CzAZldfHin3MsGxLpM05AbrKJE
+ WEvrxG++JutFz2aN03c7RooLSnKIQLN5qssb9ShujUu8Zsn+y7+T2XTuyeIk5wBm7aOm
+ bBeA==
+X-Gm-Message-State: AOJu0YzGgSXiFTuof8KxPaHnNpOxGRO34D5QY8jZHdrGOAGse3+fyKTc
+ jtl6nV1Qg+ZOp9SSfu6AiJFkG33FaMf1ajudTybryH/DCqOScanuZNSo2UuAxBIsC5MKpV89j1F
+ HQeKY
+X-Gm-Gg: AY/fxX7Erp0txeTMwWUxTYICEOYh2V1iHgJF8E7Ihewc5B+JrDb6y4l3cb3J4QpSmmJ
+ 1PayDUTzqmjMviVgmVMrivMyPVo/xQWbodnnuLuK/XHwIIYpOeLoEZG04Ir3SrQO7CoO/T6Oi9/
+ FXEwpSqo1KF2vLy8IWyXiJSLAkwZ49xx7TwuXlQwtWMXzYPukR2rLC5UzlQGOcYO9il7Y/PyD7H
+ dKEfmW3y3U1jTTs6EusSbZrTPbaoR2KyT/XK+mDZDoKiR6BK9whZza1lLqrHgKGml/8hYayDOMJ
+ 1N3yb6w6hBJBjuSgiv0a/l/tbV2Hx8m6+m2yr5P1I5LkPFjgFCMOS/+b2KOOY7Yb55LTnFqzRhx
+ +I/H1Eawg/M5Ek+daOSO2bG4rTCM/ylo06L30Z22rbuvPbDJ3R5tCBvQeP8gTjkUUGAhrB4oY88
+ TAxQh+V7YQ7bMWB87zv6Xh/c+dE328ZgQUG1KBEhtJkPItJ5VaUcE1oBTYmIy839rDXUdxzeUR8
+ csUoS1oKwdVgm2cGnKLxntfvM9BJTfqQDvNLkfqYXMekw==
+X-Google-Smtp-Source: AGHT+IG80Gxmy5DT2xlEdLh+wu5uBDvYw/QB0gqnSC1qjc2jgYxg8PSzVT6sy4O+jI6Khv/L5RQWCA==
+X-Received: by 2002:a05:600c:3b1f:b0:477:bb0:751b with SMTP id
+ 5b1f17b1804b1-47d20423ca4mr429515375e9.27.1767200940170; 
+ Wed, 31 Dec 2025 09:09:00 -0800 (PST)
 Received: from mnementh.archaic.org.uk
  (f.7.f.1.7.5.e.f.f.f.c.5.d.8.2.4.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa.
  [2001:8b0:1d0:0:428d:5cff:fe57:1f7f])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4324eaa64cesm75208990f8f.35.2025.12.31.09.09.02
+ ffacd0b85a97d-4324eaa64cesm75208990f8f.35.2025.12.31.09.08.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 31 Dec 2025 09:09:02 -0800 (PST)
+ Wed, 31 Dec 2025 09:08:59 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: qemu-stable@nongnu.org
-Subject: [PATCH 3/4] target/arm: Correctly trap HCR.TID1 registers in v7A
-Date: Wed, 31 Dec 2025 17:08:57 +0000
-Message-ID: <20251231170858.254594-4-peter.maydell@linaro.org>
+Subject: [PATCH 0/4] target/arm: Fix handling of HCR.TID* on v7A CPUs
+Date: Wed, 31 Dec 2025 17:08:54 +0000
+Message-ID: <20251231170858.254594-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20251231170858.254594-1-peter.maydell@linaro.org>
-References: <20251231170858.254594-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,97 +102,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In v7A HCR.TID1 is defined to trap for TCMTR, TLBTR, REVIDR and AIDR.
-We incorrectly use an accessfn for REVIDR and AIDR that only traps on
-v8A cores.  Fix this by collapsing access_aa64_tid1() and
-access_aa32_tid1() together and never doing a check for v8 vs v7.
+The HCR.TID* bits are intended to cause trapping of various
+register accesses to EL2. Their behaviour changed slightly
+between v7A and v8A. In particular for HCR.TID3:
 
-The accessfn is also used for SMIDR_EL1, which is fine as this
-register is AArch64 only.
+ * v7A has a set of ID regs that definitely must trap:
+    - ID_PFR{0,1}, ID_DFR0, ID_AFR0, ID_MMFR{0,1,2,3},
+      ID_ISAR{0,1,2,3,4,5}, MVFR{0,1}
+   and somewhat vaguely says that "there is no requirement"
+   to trap for registers that are reserved in the ID reg space
+   (i.e. which RAZ and might be used for new ID regs in future)
+ * v8A adds to this list:
+    - ID_PFR2 and MVFR2 must trap
+    - ID_MMFR4, ID_MMFR5, ID_ISAR6, ID_DFR1 and reserved registers
+      in the ID reg space must trap if FEAT_FGT is implemented,
+      and it is IMPDEF if they trap if FEAT_FGT is not implemented
 
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.c | 24 +++++++-----------------
- 1 file changed, 7 insertions(+), 17 deletions(-)
+In QEMU we attempted to implement the v7A/v8A distinction via
+accessfns like access_aa64_tid3() and access_aa32_tid3(). However,
+we didn't use the right accessfns on the right registers, with
+the effect that for a v7A CPU we don't trap on a lot of the
+registers we should trap on, and we do trap on various things
+that the v7A Arm ARM says there is no requirement to trap on.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c4f73eb3f3..0896e90965 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -924,8 +924,8 @@ static uint64_t isr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-     return ret;
- }
- 
--static CPAccessResult access_aa64_tid1(CPUARMState *env, const ARMCPRegInfo *ri,
--                                       bool isread)
-+static CPAccessResult access_tid1(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                  bool isread)
- {
-     if (arm_current_el(env) == 1 && (arm_hcr_el2_eff(env) & HCR_TID1)) {
-         return CP_ACCESS_TRAP_EL2;
-@@ -934,16 +934,6 @@ static CPAccessResult access_aa64_tid1(CPUARMState *env, const ARMCPRegInfo *ri,
-     return CP_ACCESS_OK;
- }
- 
--static CPAccessResult access_aa32_tid1(CPUARMState *env, const ARMCPRegInfo *ri,
--                                       bool isread)
--{
--    if (arm_feature(env, ARM_FEATURE_V8)) {
--        return access_aa64_tid1(env, ri, isread);
--    }
--
--    return CP_ACCESS_OK;
--}
--
- static const ARMCPRegInfo v7_cp_reginfo[] = {
-     /* the old v6 WFI, UNPREDICTABLE in v7 but we choose to NOP */
-     { .name = "NOP", .cp = 15, .crn = 7, .crm = 0, .opc1 = 0, .opc2 = 4,
-@@ -969,7 +959,7 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-     { .name = "AIDR", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 1, .crn = 0, .crm = 0, .opc2 = 7,
-       .access = PL1_R, .type = ARM_CP_CONST,
--      .accessfn = access_aa64_tid1,
-+      .accessfn = access_tid1,
-       .fgt = FGT_AIDR_EL1,
-       .resetvalue = 0 },
-     /*
-@@ -4997,7 +4987,7 @@ static const ARMCPRegInfo sme_reginfo[] = {
-       .writefn = smcr_write, .raw_writefn = raw_write },
-     { .name = "SMIDR_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 1, .crn = 0, .crm = 0, .opc2 = 6,
--      .access = PL1_R, .accessfn = access_aa64_tid1,
-+      .access = PL1_R, .accessfn = access_tid1,
-       /*
-        * IMPLEMENTOR = 0 (software)
-        * REVISION    = 0 (implementation defined)
-@@ -7094,7 +7084,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             { .name = "REVIDR_EL1", .state = ARM_CP_STATE_BOTH,
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 0, .opc2 = 6,
-               .access = PL1_R,
--              .accessfn = access_aa64_tid1,
-+              .accessfn = access_tid1,
-               .fgt = FGT_REVIDR_EL1,
-               .type = ARM_CP_CONST, .resetvalue = cpu->revidr },
-         };
-@@ -7118,7 +7108,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-             { .name = "TCMTR",
-               .cp = 15, .crn = 0, .crm = 0, .opc1 = 0, .opc2 = 2,
-               .access = PL1_R,
--              .accessfn = access_aa32_tid1,
-+              .accessfn = access_tid1,
-               .type = ARM_CP_CONST, .resetvalue = 0 },
-         };
-         /* TLBTR is specific to VMSA */
-@@ -7126,7 +7116,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .name = "TLBTR",
-               .cp = 15, .crn = 0, .crm = 0, .opc1 = 0, .opc2 = 3,
-               .access = PL1_R,
--              .accessfn = access_aa32_tid1,
-+              .accessfn = access_tid1,
-               .type = ARM_CP_CONST, .resetvalue = 0,
-         };
-         /* MPUIR is specific to PMSA V6+ */
+This bug came to light because a recent change to Xen to trap
+guest accesses to ID_PFR0 broke on QEMU's Cortex-A15 model.
+
+This series sorts things out so that for v7A we trap only on the
+things the architecture says we must trap on, and cleans up the
+naming pattern and documentation of the accessfns so that
+hopefully they don't get accidentally applied to the wrong
+registers for any future additions.
+
+thanks
+-- PMM
+
+Peter Maydell (4):
+  target/arm: Don't specify ID_PFR1 accessfn twice
+  target/arm: Correctly honour HCR.TID3 for v7A cores
+  target/arm: Correctly trap HCR.TID1 registers in v7A
+  target/arm: Rename access_aa64_tid5() to access_tid5()
+
+ target/arm/helper.c | 177 +++++++++++++++++++++++---------------------
+ 1 file changed, 91 insertions(+), 86 deletions(-)
+
 -- 
 2.47.3
 

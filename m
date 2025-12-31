@@ -4,131 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F903EE642E
-	for <qemu-arm@archiver.kernel.org>; Wed, 31 Dec 2025 11:49:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5586CEEB565
+	for <qemu-arm@archiver.kernel.org>; Wed, 31 Dec 2025 17:09:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vauhg-0007Gd-1U; Wed, 31 Dec 2025 06:49:24 -0500
+	id 1vazhF-0002an-JU; Wed, 31 Dec 2025 12:09:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vauhf-0007G0-2y
- for qemu-arm@nongnu.org; Wed, 31 Dec 2025 06:49:23 -0500
-Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vauhb-00032A-O4
- for qemu-arm@nongnu.org; Wed, 31 Dec 2025 06:49:22 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.254.105])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4dh7XT0xzQz5w6N;
- Wed, 31 Dec 2025 11:49:13 +0000 (UTC)
-Received: from kaod.org (37.59.142.101) by DAG3EX1.mxp5.local (172.16.2.21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Wed, 31 Dec
- 2025 12:49:12 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G00447e9116c-f7e9-4c36-9b21-6a247c183f4f,
- 103EF19BEDE93C8969063EB27830E61E188F7254) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 90.14.253.154
-Message-ID: <72b2b29e-d5eb-412b-913f-6a0f56b709ae@kaod.org>
-Date: Wed, 31 Dec 2025 12:49:11 +0100
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vazhB-0002Xf-Cm
+ for qemu-arm@nongnu.org; Wed, 31 Dec 2025 12:09:14 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vazh5-0000Yr-F0
+ for qemu-arm@nongnu.org; Wed, 31 Dec 2025 12:09:11 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-477619f8ae5so67818515e9.3
+ for <qemu-arm@nongnu.org>; Wed, 31 Dec 2025 09:09:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1767200941; x=1767805741; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=q9gRGfWHfjtxXAmgTOBvA8NGElHsA6CC6jlKP1KrJHU=;
+ b=AIbkHfikit2Tz2jZ7cC0XshiFuKbP1gj8li2ZetagS0b6N5Oxri+9lurnvFyQwNODq
+ iBqqk/waKooO+KCXtG/exEqg2Uu7cUpAU6sPY0GFT4vBvOEv7WlAgzoujQj10jt6UdX7
+ 2S2fOQhJLRZiEYVzRsIJi7HYLMrmz6B0g5oChp/qwUlSlIo7FGBeu8adMHDqOLprvGbt
+ 99F/YR9yq+zyEvYzg/kU7QmxusEx+n6QJZfufZPrbxNefASxjR5IK84WrRNZ4ZuJesED
+ lzWvQHOTFGZgk5dfxvEifc3Rd9nlo8xb6VzA2bz680cGY+s+O2zPcDKauw4erweXyY4R
+ Zzbg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1767200941; x=1767805741;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=q9gRGfWHfjtxXAmgTOBvA8NGElHsA6CC6jlKP1KrJHU=;
+ b=nkYov1OfrJoCLgyLC3iGxO52S5avvl4r4LnusLC4SZDwv8jTLMXb/4gMlnzdzCGbYA
+ /eSo2hPNh44YEMaRy4P7Jnopiyk9xojjdBXhkHALrtOIS4Y48eJ9Kdy5q2DgDCD3Fvfo
+ /5QQ+akdqA+VsGlg2dwYR+yXob7fGKvf545YeoOIJZ8C5VYFPk3T0YpTm78zjbj7J3/q
+ Pn4p9OCaIhDJvze0p6HLLuUrgWj28YxKqNz6BM/3bt3X0jd5sNAMKZOjt7O3Qf243aMJ
+ hNaVVdizrvs5NjKYqk4qfEkoYgKO/+xwmTpr0J/eBuIkKKMvEBI+zId6/9GZtw0ZfH3x
+ 5DXw==
+X-Gm-Message-State: AOJu0YwlKr5pmZ9rvHEh1gxtttvF3UueD9RT5tncBt8U2Ap1oMqMaKt0
+ rYV8+1ghfuciCBZkzT/QG+cIfp1OG4QaFTa7tVNJDAjpTz31gUbVIhWKtaArffMnKaAWoRW+dzK
+ GtXEb
+X-Gm-Gg: AY/fxX5PG0RRTy6D4ypv3yfoHbP3GoLxbbbgUzEMBQfXKo1Mn6SEV5GF61faBiDvJx2
+ 696j2mGrwp4IHciTj0S1KvRuBGpz3TJ6vXS9T93WszTXuV68u+OTBTnozDrk78SwZAQkrRL1Ell
+ 320xUqhCyUxatHKNzKe5E5ZAFcMku3ozluKwWb80ws4fDvL8Q1tq89foesD2vJYLQJD7XIhzn+t
+ 68UYaISVAZ2Im+yibS8dJUEMhL74MJw2p+7AviHQVTyF59TtgbfjQM+E2TMPqV6GktRHqA2PNfO
+ 3J3uOvL66D5yMSgdoKQ66vx6KFfPoAKIuVVP5kUA6J5yZiFdFcWNB1aoD0dMiP+xXwh4zEbaa90
+ 7GDQ9CSEtqiTo/wUDDe3X+P9KMk+bQOoxf51T/DLQoUSIvWUDtWlhvMVR7LEc0txyGSEGyAtA69
+ s9hmzYoGyEQlCf9esEpEUchd5xjHjpBrHPlUaOsRcO4u0KU7Yi1kXxxC8dRX1as2mY/HcECEM2E
+ ym8XXnVuv3NVqdCPPsB1A3dI1QHwNWH0uZCc6hQmV4Rd7JabWE7fGXF
+X-Google-Smtp-Source: AGHT+IECmRubD8LCUNFDp3y5YP+oy96ChnImbpffFYz3jUA9OxD/Tvx3VADR56J43xIUN/Ndw4I98Q==
+X-Received: by 2002:a05:600c:350b:b0:471:1774:3003 with SMTP id
+ 5b1f17b1804b1-47d1958ef07mr395042785e9.29.1767200941115; 
+ Wed, 31 Dec 2025 09:09:01 -0800 (PST)
+Received: from mnementh.archaic.org.uk
+ (f.7.f.1.7.5.e.f.f.f.c.5.d.8.2.4.0.0.0.0.0.d.1.0.0.b.8.0.1.0.0.2.ip6.arpa.
+ [2001:8b0:1d0:0:428d:5cff:fe57:1f7f])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4324eaa64cesm75208990f8f.35.2025.12.31.09.09.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 31 Dec 2025 09:09:00 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org
+Subject: [PATCH 1/4] target/arm: Don't specify ID_PFR1 accessfn twice
+Date: Wed, 31 Dec 2025 17:08:55 +0000
+Message-ID: <20251231170858.254594-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20251231170858.254594-1-peter.maydell@linaro.org>
+References: <20251231170858.254594-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 06/19] hw/arm/aspeed: Integrate interrupt controller
- for AST1700
-To: Kane Chen <kane_chen@aspeedtech.com>, Nabih Estefan
- <nabihestefan@google.com>
-CC: Peter Maydell <peter.maydell@linaro.org>, Steven Lee
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
- <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>, Troy Lee
- <troy_lee@aspeedtech.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>
-References: <20251224014203.756264-1-kane_chen@aspeedtech.com>
- <20251224014203.756264-7-kane_chen@aspeedtech.com>
- <465b0714-bd08-40b5-9cf9-5cd206e8548b@kaod.org>
- <SI6PR06MB76312852C6243B1F48202A89F7B0A@SI6PR06MB7631.apcprd06.prod.outlook.com>
- <55adfce4-0dbc-492a-b586-4c46df78007a@kaod.org>
- <SI6PR06MB76318E7A596008386B0AE51CF7BFA@SI6PR06MB7631.apcprd06.prod.outlook.com>
- <ed07c0f2-737d-4d65-917f-d39d02c37063@kaod.org>
- <006fa26f-6b84-4e82-b6e1-7d1353579441@kaod.org>
- <CA+QoejXzjvyLA0Pp0xJjCsrwSyegSBRBs-MaT7yP41Nd2B9BcQ@mail.gmail.com>
- <SI6PR06MB76312518466322BC6BD67DC5F7BCA@SI6PR06MB7631.apcprd06.prod.outlook.com>
- <d6fa3762-7ea8-4173-af20-9615cc5f92dc@kaod.org>
- <SI6PR06MB763159AEBF12B77662CE6697F7BDA@SI6PR06MB7631.apcprd06.prod.outlook.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <SI6PR06MB763159AEBF12B77662CE6697F7BDA@SI6PR06MB7631.apcprd06.prod.outlook.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG3EX1.mxp5.local
- (172.16.2.21)
-X-Ovh-Tracer-GUID: 62535980-6652-4e54-a478-7d2b3d0970e7
-X-Ovh-Tracer-Id: 988821594449415160
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEDfOIVsZw2JYLdGehf69KQOiK7i+IIUWQB1UMbPo8utFWi2RUERD35xjMA9jNaQk5+KLyBJzNM6nOiiEtLMzjxuAeaz+5wvaHwiZCbgmifly4uJmWYolF1y00ntw6kVtgahL60QUQqdCeGYQ8eFgci7oxe7PC/cQAA19gBLCVjsrRP8Om5k2dldj4LygtMZTZHoBbv6fOD247DFRjQMZdLvCltfEO4AkZDV8918/ZDI8aqHluZWS8S4hNMmTs2SY71owpasHHNY7EfuAIGBl4w3pFW6LnuNVVrmEvSF7dyZS+wi+0PN6U6GqqPOngfhtwNMkq+qxyKX/EY9ARaj09Mb3dmr56WtKzUyR9wyJTRLdXzJI5ifwlusekwoe8EIOha9AKhwF/umqh34IqhT1zcZrtrVcsIloxPWtSFGa45EMnvGJOLITkvDoXc0vOqdMmC56vswG28qPjgVZpd8nQ7wYRnBMZANF/lJExIycmkPk4BHoTkdaJkItKbArAd3eQI8G1gXFXiG9wiFKfSd35HuY/Mxi5rNUA69ySJqqWDq8yzUCGTfl752q5Jm4k0JqxB4/VMK463hEHr9Wf+MjH5hEjrj5OpHMtEDKRfOxkjGphbnYFoaH+G8GFICdeffJmMostkJKah+m7cwo8AFKcXtwkSs0mP+kWEcxxfB+0CCA
-DKIM-Signature: a=rsa-sha256; bh=zNZXfNKRtkH0CnUL1SZEnoDqw3nz8MjIc8L6i3jTO7c=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1767181754; v=1;
- b=W44ThXw6BZueyN2U0rIWGU3qmx49MuW5eMwCQSgVUG9w7iHXmCpjIwoRLrgA9rK7GJIARZhT
- qalWh2OeVYPAlAxoGWll+z1Eg1iKMqi3fMPs4ZZAjUOGjdy0ymNiAEUkbIjX7gTKviJ6GXcMrjo
- EPt+CDHXdYR/xVrxNXPIyw4O25Tw88NFpp8cU4wGpynBvfherBZIHf3msqrGnzF6zH4VNDcEN1F
- og0MtIkDSMr9a1i7THgn2e0jh5DHbzKQPDWuq6MVEa9enaXuJ7/zaNedQuOeVmUCX97jaPvKVPX
- f/2pTQDrVUNaBHWr2cY1Z6uXafrDNFAfuHgRpcwvyANsA==
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout4.mo529.mail-out.ovh.net
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -144,120 +105,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello Kane,
+In the definition of ID_PFR1 we have an ifdef block; we specify the
+accessfn once in the common part of the ifdef and once in the
+not-user-only part, which is redundant but harmless.
 
-On 12/31/25 11:15, Kane Chen wrote:
->> -----Original Message-----
->> From: Cédric Le Goater <clg@kaod.org>
->> Sent: Tuesday, December 30, 2025 10:29 PM
->> To: Kane Chen <kane_chen@aspeedtech.com>; Nabih Estefan
->> <nabihestefan@google.com>
->> Cc: Peter Maydell <peter.maydell@linaro.org>; Steven Lee
->> <steven_lee@aspeedtech.com>; Troy Lee <leetroy@gmail.com>; Jamin Lin
->> <jamin_lin@aspeedtech.com>; Andrew Jeffery
->> <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>; open
->> list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC here
->> <qemu-devel@nongnu.org>; Troy Lee <troy_lee@aspeedtech.com>; Philippe
->> Mathieu-Daudé <philmd@linaro.org>
->> Subject: Re: [PATCH v4 06/19] hw/arm/aspeed: Integrate interrupt controller
->> for AST1700
->>
->> Hello Kane,
->>
->>> Currently, three devices in our setup support I2C.
->>> 1. BMC
->>> 2. IO expander 1
->>> 3. IO expander 2
->>>
->>> Each device supports 16 I2C buses, and the bus indices for each device
->>> all start from 0. This leads to naming conflicts under the current
->>> naming convention. While we could extend the bus IDs from 16 to 47,
->>> doing so would require significant code changes to handle different ID ranges,
->> making the code harder to maintain.
->>>
->>> Therefore, I believe using readable bus labels would be more intuitive for the
->> user API.
->>
->> I tend to agree.
->>
->>> If there are any existing conventions for this use case or if you have
->>> any concerns regarding the use of bus labels, please let me know.
->>
->> Could you please send us the contents of directory :
->>
->> 	/sys/bus/i2c/devices/
->>
->> on a system with such IO expanders? preferably with some devices attached
->> to the I2C buses.
->>
->> Thanks,
->>
->> C.
-> 
-> Hi Cédric,
-> 
-> I'm afraid I cannot provide data from a physical platform on such short notice.
-> Currently, my AST1700 board is malfunctioning, and our other unit is occupied
-> with different tests. I am reaching out to colleagues to see if a spare is available.
-> 
-> I've attached logs from a QEMU simulation, as the results are expected to be
-> consistent with the actual hardware.. Since our EVB does not have I2C devices
-> connected to these specific buses, I typically use the following command to
-> create a dummy device for testing:
-> echo slave-24c02 0x106c > /sys/bus/i2c/devices/i2c-16/new_device"
+The accessfn will always return success in user-only mode (because
+we won't trap to EL2), so specify it only in the not-user-only
+half of the ifdef, as was probably the intention.
 
-Which command line did you use for the I2C backing device in QEMU ?
+This is only cc'd to stable to avoid a textual conflict with
+the following patch, which is a bug fix.
 
-Is there a specific FW image to use to enable the IO expanders ?
-  
-> System info:
-> ls -l /sys/bus/i2c/devices/
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 10-1010 -> ../../../devices/platform/soc@14000000/soc@14000000:bus@14c0f000/14c0fb00.i2c-bus/i2c-10/10-1010
-> lrwxrwxrwx    1 root     root             0 Dec 31 09:43 16-106c -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f100.i2c-bus/i2c-16/16-106c
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 8-1010 -> ../../../devices/platform/soc@14000000/soc@14000000:bus@14c0f000/14c0f900.i2c-bus/i2c-8/8-1010
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 9-0050 -> ../../../devices/platform/soc@14000000/soc@14000000:bus@14c0f000/14c0fa00.i2c-bus/i2c-9/9-0050
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-10 -> ../../../devices/platform/soc@14000000/soc@14000000:bus@14c0f000/14c0fb00.i2c-bus/i2c-10
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-16 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f100.i2c-bus/i2c-16
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-17 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f200.i2c-bus/i2c-17
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-18 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f300.i2c-bus/i2c-18
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-19 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f400.i2c-bus/i2c-19
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-20 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f500.i2c-bus/i2c-20
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-21 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f600.i2c-bus/i2c-21
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-22 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f700.i2c-bus/i2c-22
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-23 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f800.i2c-bus/i2c-23
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-24 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f900.i2c-bus/i2c-24
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-25 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0fa00.i2c-bus/i2c-25
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-26 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0fb00.i2c-bus/i2c-26
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-27 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0fc00.i2c-bus/i2c-27
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-28 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0fd00.i2c-bus/i2c-28
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-29 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0fe00.i2c-bus/i2c-29
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-30 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0ff00.i2c-bus/i2c-30
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-31 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c10000.i2c-bus/i2c-31
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-32 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f100.i2c-bus/i2c-32
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-33 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f200.i2c-bus/i2c-33
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-34 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f300.i2c-bus/i2c-34
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-35 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f400.i2c-bus/i2c-35
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-36 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f500.i2c-bus/i2c-36
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-37 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f600.i2c-bus/i2c-37
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-38 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f700.i2c-bus/i2c-38
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-39 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f800.i2c-bus/i2c-39
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-40 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f900.i2c-bus/i2c-40
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-41 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0fa00.i2c-bus/i2c-41
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-42 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0fb00.i2c-bus/i2c-42
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-43 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0fc00.i2c-bus/i2c-43
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-44 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0fd00.i2c-bus/i2c-44
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-45 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0fe00.i2c-bus/i2c-45
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-46 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0ff00.i2c-bus/i2c-46
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-47 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c10000.i2c-bus/i2c-47
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-8 -> ../../../devices/platform/soc@14000000/soc@14000000:bus@14c0f000/14c0f900.i2c-bus/i2c-8
-> lrwxrwxrwx    1 root     root             0 Apr  3  2025 i2c-9 -> ../../../devices/platform/soc@14000000/soc@14000000:bus@14c0f000/14c0fa00.i2c-bus/i2c-9
+Cc: qemu-stable@nongnu.org
+Fixes: 0f150c8499e970bd ("target/arm: Constify ID_PFR1 on user emulation")
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Could we order the I2C buses the same way in QEMU ?
-
-Thanks,
-
-C.
-
-
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 27ebc6f29b..ec82ea6203 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6296,7 +6296,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             { .name = "ID_PFR1", .state = ARM_CP_STATE_BOTH,
+               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 1, .opc2 = 1,
+               .access = PL1_R, .type = ARM_CP_NO_RAW,
+-              .accessfn = access_aa32_tid3,
+ #ifdef CONFIG_USER_ONLY
+               .type = ARM_CP_CONST,
+               .resetvalue = GET_IDREG(isar, ID_PFR1),
+-- 
+2.47.3
 
 

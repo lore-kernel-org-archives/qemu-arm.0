@@ -4,110 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26F5CEED626
-	for <qemu-arm@archiver.kernel.org>; Thu,  1 Jan 2026 17:40:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AAA9EED630
+	for <qemu-arm@archiver.kernel.org>; Thu,  1 Jan 2026 19:26:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vbMeC-0002fV-BC; Thu, 01 Jan 2026 12:39:40 -0500
+	id 1vbOJc-00033M-5M; Thu, 01 Jan 2026 14:26:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vbMe7-0002cD-6I
- for qemu-arm@nongnu.org; Thu, 01 Jan 2026 12:39:37 -0500
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vbMe0-0005ad-Ir
- for qemu-arm@nongnu.org; Thu, 01 Jan 2026 12:39:32 -0500
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-42fbc305914so7554352f8f.0
- for <qemu-arm@nongnu.org>; Thu, 01 Jan 2026 09:39:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1767289164; x=1767893964; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=4eXTeWbvFGcK3I3F6QbEeWDS2W9GrykkT7vbfVmHkXY=;
- b=aieKT2Y0rnLk2fiLVnu8UHuUVqgRZNodvDQJtcUxHD/GbKr2Liq5fBB8rJvtWmTUs6
- h1yGjMmbU6JB+shtuGhP3vmWa18bs3KBW8CptUjy45AFkzQf4xq5zpiQUT30zRung/Gk
- WSXPoZx6cUbGw9fVSNGl5zjH1iZwWMFlcJ56iOlCZMKUcp1TI2MYG02gxqqOYXVXzmMh
- gvh0uu9y5O2qiIHpNbWgKRBeS8WVcM3VHaGIn4nscukOMi9XH0Sr4/kYaPMyVMATGIXE
- J1oXAf4CPt7+aHVjSvse+8czcES4vtFKPmNi4ZvSahAnoUgO+u3hL0dL3+uRuBO8DpWD
- EeDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767289164; x=1767893964;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=4eXTeWbvFGcK3I3F6QbEeWDS2W9GrykkT7vbfVmHkXY=;
- b=R79QuyNyD7f5N3E8/G1sydO0ws1cjReEoBgJnvskCtXtNPiIsQKZ7Zk04wnSXoIbGP
- m+QWeqxfFP/f3YJBVl4M9+nsMCvNpjjs6Rl7kLt1ytWfxlgJXlIxIojYu5r/nNBpedBo
- /BOz5hQyWYMQSNT1aQX99yoqH+DOG7QAmnv38eWeL9KqaJ8001uLBYGzQEGqGldxagcl
- CpX2q83GxjlF643T+2JgytP+zIBsU/Kpk5n66dE49eVluMzuaX0hGJQkGq4XsK8i4wPd
- skUyUTJNzP4sBuVCSN4ZqZR3qXuO+exKDaDENGy8Y8Rrz348nIpKut61QgfV3h93v7l9
- QXHA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV2eB90/RFdr1oUAcAft1AbJUvgHjiT0lDfhBTPrkoq+aK3+Kms2f1L7H43MY5GwB7xEHNUuQWb+Q==@nongnu.org
-X-Gm-Message-State: AOJu0YxsDyIg2H6I8HHwkpglUNossXmo96ihigBcpP0IxR2WcJsdlmYJ
- c/kb2/iihnBY8a5HwxfZj5x6/R6YbMO3/ixzfjpKLsewoHhqrGQEMm4yg1syLQ==
-X-Gm-Gg: AY/fxX7DajxMqYrwmAfyU34b8rellGNox25HOCMTAuP0rsyekdMG2FouGzGdOVcehFP
- U5Wt+LNX4dJVNocbdgJpb4HC5BENCN3+migqWIOfaNIZqf3tvnRxbr0TRqNAW5GBr+8cXG3D+Za
- A0Lj9wqV8sbLvtJDc1oJh20dGqyB0YZZreGiTlzfkDihCgnx74uy5Z889zK9yiBEW82XMGnbozX
- ApSA9JoR5F+fpoeonyXfOPAP6jXiJHTCuBkw7di0NCkR9oHyXGiRbvdQxj4UueZqvObjX1t/ydg
- BF6jJvpx648lZZppJGPeMEMYZnspj5nYX83s2cjMZZJxLda+jIDdMg+PTKNmHrVqFstPFiGQmRf
- rvIKc3ZVN4YfOeO9Q4t7WtZjKgZ3v5jAPJJDIpgCwk9y4UL9HikS/Y2NKPcX1JQR7iVTi5EApm2
- nY7g7JPcI8TQTRkdbFQhd22RjE4WOAqJWJziy3NHOvYUtVG3fFcUo7Mn4HOtssgi/wYOPRjhJ1M
- RcfX4XYGxZVcYFiOknop5yWykY1lqed5Ho=
-X-Google-Smtp-Source: AGHT+IE6DWY5bKivZDcY27wGC2bTbNGcXTUwFIb5pCUIIH1qjuenBSLrxzUDlCMxmurLreuZ6bfP/g==
-X-Received: by 2002:a05:6402:520d:b0:643:e2d:1d6c with SMTP id
- 4fb4d7f45d1cf-64b8ea61109mr36256270a12.4.1767282409336; 
- Thu, 01 Jan 2026 07:46:49 -0800 (PST)
-Received: from ehlo.thunderbird.net
- (dynamic-2a02-3100-1ca9-3100-f91d-651c-a220-693b.310.pool.telefonica.de.
- [2a02:3100:1ca9:3100:f91d:651c:a220:693b])
- by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-64b91599721sm40748723a12.26.2026.01.01.07.46.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 01 Jan 2026 07:46:47 -0800 (PST)
-Date: Thu, 01 Jan 2026 15:46:45 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-CC: Yanan Wang <wangyanan55@huawei.com>,
- =?ISO-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>,
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vbOJZ-00032V-Hf
+ for qemu-arm@nongnu.org; Thu, 01 Jan 2026 14:26:29 -0500
+Received: from p-east2-cluster3-host9-snip4-7.eps.apple.com ([57.103.77.138]
+ helo=outbound.st.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vbOJV-0004cW-FO
+ for qemu-arm@nongnu.org; Thu, 01 Jan 2026 14:26:29 -0500
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-11 (Postfix) with ESMTPS id
+ C6C0F1800227; Thu,  1 Jan 2026 19:26:16 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=vgoV7i7yWF3CixOHJRpN2l50tdXA5NhekQ03e7M3Ndk=;
+ h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
+ b=X0e8GHpBUJMKJ5m41mTSAN+y2jBIern/Ti8bOpbg9aDHToYpmQER1s5t2xpENcE01WGBwUR1CB0PEt6BeGH3bLC3y+Nu1xgahrM/YGZabsNEO0Vo0yY1wTlP1/k87E96a7olo24V2xTtLWFl3tCW81wL5CNLq5r37AJuxGjIe6dGumwai6AWEvcS2fTg4hXsNaL0lNYwJs7CUhAJrYxsSxcqOTHovCpR08M5Lx/qwOev0rRA+EpORhNVZA8kzC4zbD3V20G+jajEmbSm5+I9D3nYIaTvR0Qmk+I6tR12H3ieq1SO2aNKb0YPFUrqKKOGbdzNviU2TpBkbrvYZk7LGg==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.42.251.67])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-11 (Postfix) with ESMTPSA id
+ 6BA751800217; Thu,  1 Jan 2026 19:26:12 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+Message-Id: <0F349673-AF6F-4015-8C19-6B6A7AD9BC45@unpredictable.fr>
+Content-Type: multipart/alternative;
+ boundary="Apple-Mail=_D2E17E06-CE3E-4E52-8DC2-2FE15A1034AD"
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
+Subject: Re: [PATCH v13 00/28] WHPX support for Arm
+Date: Thu, 1 Jan 2026 20:26:00 +0100
+In-Reply-To: <9A2E2173-6CF4-4DDE-8D8F-8FFC008F9F2F@gmail.com>
+Cc: qemu-devel@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
  Eduardo Habkost <eduardo@habkost.net>, Mads Ynddal <mads@ynddal.dk>,
  Roman Bolshakov <rbolshakov@ddn.com>, Peter Xu <peterx@redhat.com>,
  Shannon Zhao <shannon.zhaosl@gmail.com>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
- Peter Maydell <peter.maydell@linaro.org>, Cameron Esfahani <dirty@apple.com>, 
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
  Phil Dennis-Jordan <phil@philjordan.eu>, qemu-arm@nongnu.org,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Ani Sinha <anisinha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Alexander Graf <agraf@csgraf.de>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>
-Subject: Re: [PATCH v13 00/28] WHPX support for Arm
-In-Reply-To: <b833265e-0a90-4696-803f-d98a7c1e3456@linaro.org>
+ =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>
+To: Bernhard Beschow <shentey@gmail.com>
 References: <20251230000401.72124-1-mohamed@unpredictable.fr>
  <b833265e-0a90-4696-803f-d98a7c1e3456@linaro.org>
-Message-ID: <9A2E2173-6CF4-4DDE-8D8F-8FFC008F9F2F@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x436.google.com
+ <9A2E2173-6CF4-4DDE-8D8F-8FFC008F9F2F@gmail.com>
+X-Mailer: Apple Mail (2.3864.300.41.1.7)
+X-Proofpoint-GUID: GPdKxdKt6DW8QjekU9KsiJFdmBDL69Iq
+X-Proofpoint-ORIG-GUID: GPdKxdKt6DW8QjekU9KsiJFdmBDL69Iq
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTAxMDE3NiBTYWx0ZWRfXz/dM8Wh2rRm0
+ Oz+3Me4zd6ZUxzP+DU3Xtk81NwpiEYKbfv87C8Z5F5hndf6Bemy/sUqh/JdtkL0qGX9y69N1kEo
+ Z1SKSl07U8tuUFph2tYRzwyDkkntlN/7W7vAN7Tnv+AmUg5lSo+72tbdiEFUW1XHopsDJL+MRzq
+ kU/muCTN/kt5Rkkl2eHjed3AlrcgpDzvIimkK1N4YZfsu1XQgnXwSXkNI+FdG2D7sIhqvqW4h2f
+ QVQzm4M2OTubXsv5kuhAtiU0lrl7oB1xCpjVhE4g2Iexg+rY0eQZgeVTGuhiQDLZKhGXMeSKi8e
+ cWDJtIthBfs28HFEKKx
+X-Authority-Info: v=2.4 cv=T8OBjvKQ c=1 sm=1 tr=0 ts=6956ca5b cx=c_apl:c_pps
+ a=YrL12D//S6tul8v/L+6tKg==:117 a=YrL12D//S6tul8v/L+6tKg==:17
+ a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=NEAV23lmAAAA:8
+ a=VwQbUJbxAAAA:8 a=pGLkceISAAAA:8 a=75YFwcv9Lo7q8SvPfLsA:9 a=lqcHg5cX4UMA:10
+ a=QEXdDO2ut3YA:10 a=VQNnbj1nYAcKpd74NCAA:9 a=YbsLf5McBQe65PcC:21
+ a=_W_S_7VecoQA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2026-01-01_07,2025-12-31_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ malwarescore=0 adultscore=0 bulkscore=0 mlxscore=0 suspectscore=0
+ mlxlogscore=999 phishscore=0 clxscore=1030 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2601010176
+X-JNJ: AAAAAAABMEhghooB3CIAe6atRkeiB7jgBVqp86idv0k0rGf6VF2bEilfCi71CKIJkKIU+cbQ2OM+equ6JWAK4kqp52yogjrTgConznXApvjDVTizHcolke+CIs0nOKDPK0PKQ1agb+nmsKUePeLU0xj9Ky6HKk9WzD8TM506ZzJWKMKbUnTsas+4ovv+y2NCuUhoeYOfSyFEuLPS50+jb4JIwsSV0Garb2jlEH9uwjNrCbV7LXS4z4nWlltRN2mK2sW1v+0OLoHTh7CdZgzRr/EXk/knjmQrxiJR+61Mzf0pQ21hlEI4/AZj0En8xgs+G9d4Dvhmbi4BydfzSTWrVAOgNv/KeCaZ65sFehKOnAEEsehxwtoeV1eSLg2vwcsvxmNIXlHOdUgV2yfu+jC3dXFPqAMTnTX0z9yLIL2dz+HpRN6nBo//0pR4ZaYdzWbEbDQ2f8iI5Vw8P3jONaeWIxK3X27no3k3CURF65kt/CZzWWBiQld+wlChTEF1BhpKjZusECZ7e6Mg9MF6NEZED4QQIuxuA4DtFtFML1tp6QWM4uuX0ceTGI9AKGRxAISVMSdDl21HGuqgAKB0KWH9oDQyzB1v1qF7kVP9GVZe6ff1uW7zxXITMFRgDLsXreQRRkPN8LyPn2vKZ7MmJW3ESOSusHHB+jScB9sErr8lOsGyFcQlayDTghnQQAfosZm+blY2ynuiL3jYf33gkdJUITUlGqt0oV/ALDzfM7Dk1TWKxxKBKay2sV4c2jjjzFy8o0RFHVWeG3S0BlS/qhPVlhW+IMJdik2vRiPQWUzXoCO6zPBa1zVsLwmA2VBpYrLTsM4QsH0Pl9GbGpzvY6ghJ6vaPAtpiHlGhjHFtnnDPthQ06fwMbI9D9yTOhuXAmVMrn4v66y7HjqCpzDvVwOs4EZe+F9+6MpMuMYkbHDB9MfIn5R5uO7faqVrwDl0JAqFBrGMieIfc/XUUBt1XbXGWG7iI6F2RQ=
+ =
+Received-SPF: pass client-ip=57.103.77.138;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,249 +114,707 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
+--Apple-Mail=_D2E17E06-CE3E-4E52-8DC2-2FE15A1034AD
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=utf-8
 
-Am 30=2E Dezember 2025 03:47:20 UTC schrieb Pierrick Bouvier <pierrick=2Eb=
-ouvier@linaro=2Eorg>:
->On 12/29/25 4:03 PM, Mohamed Mediouni wrote:
->> Link to branch: https://github=2Ecom/mediouni-m/qemu whpx (tag for this=
- submission: whpx-v13)
->>=20
->> Missing features:
->> - VM save-restore: interrupt controller state notably
->> - SVE register sync: I didn't have the time to test this on pre-release=
- hardware with SVE2 support yet=2E
->> So SVE2 is currently masked for VMs when running this=2E
->>=20
->> Known bugs:
->> - U-Boot still doesn't work (hangs when trying to parse firmware) but E=
-DK2 does=2E
->>=20
->> Note:
->>=20
->> "target/arm/kvm: add constants for new PSCI versions" taken from the ma=
-iling list=2E
->>=20
->> "accel/system: Introduce hwaccel_enabled() helper" taken from the maili=
-ng list, added here
->> as part of this series to make it compilable as a whole=2E
->>=20
->> "hw/arm: virt: add GICv2m for the case when ITS is not available" prese=
-nt in both the HVF
->> vGIC and this series=2E
->>=20
->> "hw: arm: virt-acpi-build: add temporary hack to match existing behavio=
-r" is
->> for ACPI stability but what is the right approach to follow there?
->>=20
->> And another note:
->>=20
->> Seems that unlike HVF there isn't direct correspondence between WHv reg=
-isters and the actual register layout,
->> so didn't do changes there to a sysreg=2Einc=2E
->>=20
->> Updates since v12:
->> - Address review comments and make sure that checkpatch shows no errors=
-, make test also ran
->> - Tested the Windows x86_64 build too in addition to Windows arm64 and =
-macOS arm64
->> - Hopefully the last revision, should be ready to merge=2E
->>=20
->> Updates since v11:
->> - Address review comments
->> - Rebase up to latest staging
->> - Switch to assuming Qemu 11=2E0 as the newest machine model
->>=20
->> Updates since v10:
->> - Bring forward to latest Qemu
->> - Fix a typo in the GICv3+GICv2m PR
->>=20
->> Updates since v9:
->> - Adding partition reset on the reboot side of things=2E=2E=2E
->>=20
->> Updates since v8:
->> - v9 and v8 were not submitted properly because of my MTA not behaving,=
- sorry for that=2E
->> - v10 introduces a new argument, -M msi=3D, to handle MSI-X configurati=
-on more granularly=2E
->> - That surfaced what I think is a bug (?), with vms->its=3D1 on GICv2 c=
-onfigurations=2E=2E=2E or I did understand everything wrong=2E
->> - Oopsie due to email provider ratelimiting=2E
->>=20
->> Updates since v7:
->> - Oops, fixing bug in "hw/arm: virt: cleanly fail on attempt to use the=
- platform vGIC together with ITS"=2E
->> Other commits are unchanged=2E
->>=20
->> Updates since v6:
->> - Rebasing
->> - Fixing a bug in the GICv3+GICv2m case for ACPI table generation
->> - getting rid of the slots infrastructure for memory management
->> - Place the docs commit right after the "cleanly fail on attempt to run=
- GICv3+GICv2m on an unsupported config" one
->> as that's what switches ITS to a tristate=2E
->> - Fixing a build issue when getting rid of the arch-specific arm64 hvf-=
-stub=2E
->>=20
->> Updates since v5:
->> - Rebasing
->> - Address review comments
->> - Rework ITS enablement to a tristate
->> - On x86: move away from deprecated APIs to get/set APIC state
->>=20
->> Updates since v4:
->> - Taking into account review comments
->> - Add migration blocker in the vGICv3 code due to missing interrupt con=
-troller save/restore
->> - Debug register sync
->>=20
->> Updates since v3:
->> - Disabling SVE on WHPX
->> - Taking into account review comments incl:
->>=20
->> - fixing x86 support
->> - reduce the amount of __x86_64__ checks in common code to the minimum =
-(winhvemulation)
->> which can be reduced even further down the road=2E
->> - generalize get_physical_address_range into something common between h=
-vf and whpx
->>=20
->> Updates since v2:
->> - Fixed up a rebase screwup for whpx-internal=2Eh
->> - Fixed ID_AA64ISAR1_EL1 and ID_AA64ISAR2_EL1 feature probe for -cpu ho=
-st
->> - Switched to ID_AA64PFR1_EL1/ID_AA64DFR0_EL1 instead of their non-AA64=
- variant
->>=20
->> Updates since v1:
->> - Shutdowns and reboots
->> - MPIDR_EL1 register sync
->> - Fixing GICD_TYPER_LPIS value
->> - IPA size clamping
->> - -cpu host now implemented
->>=20
->> Mohamed Mediouni (26):
->>    qtest: hw/arm: virt: skip ACPI test for ITS off
->>    hw/arm: virt: add GICv2m for the case when ITS is not available
->>    tests: data: update AArch64 ACPI tables
->>    hw/arm: virt: cleanly fail on attempt to use the platform vGIC
->>      together with ITS
->>    hw: arm: virt: rework MSI-X configuration
->>    hw: arm: virt-acpi-build: add temporary hack to match existing
->>      behavior
->>    docs: arm: update virt machine model description
->>    whpx: Move around files before introducing AArch64 support
->>    whpx: reshuffle common code
->>    whpx: ifdef out winhvemulation on non-x86_64
->>    whpx: common: add WHPX_INTERCEPT_DEBUG_TRAPS define
->>    hw, target, accel: whpx: change apic_in_platform to kernel_irqchip
->>    whpx: interrupt controller support
->>    whpx: add arm64 support
->>    whpx: change memory management logic
->>    target/arm: cpu: mark WHPX as supporting PSCI 1=2E3
->>    whpx: arm64: clamp down IPA size
->>    hw/arm, accel/hvf, whpx: unify get_physical_address_range between WH=
-PX
->>      and HVF
->>    whpx: arm64: implement -cpu host
->>    target/arm: whpx: instantiate GIC early
->>    whpx: arm64: gicv3: add migration blocker
->>    whpx: enable arm64 builds
->>    whpx: apic: use non-deprecated APIs to control interrupt controller
->>      state
->>    whpx: arm64: check for physical address width after WHPX availabilit=
-y
->>    whpx: arm64: add partition-wide reset on the reboot path
->>    MAINTAINERS: update the list of maintained files for WHPX
->>=20
->> Philippe Mathieu-Daud=C3=A9 (1):
->>    accel/system: Introduce hwaccel_enabled() helper
->>=20
->> Sebastian Ott (1):
->>    target/arm/kvm: add constants for new PSCI versions
->>=20
->>   MAINTAINERS                                   |    6 +
->>   accel/hvf/hvf-all=2Ec                           |    7 +-
->>   accel/meson=2Ebuild                             |    1 +
->>   accel/stubs/whpx-stub=2Ec                       |    1 +
->>   accel/whpx/meson=2Ebuild                        |    7 +
->>   {target/i386 =3D> accel}/whpx/whpx-accel-ops=2Ec  |    6 +-
->>   accel/whpx/whpx-common=2Ec                      |  536 +++++++++
->>   docs/system/arm/virt=2Erst                      |   13 +-
->>   hw/arm/virt-acpi-build=2Ec                      |   16 +-
->>   hw/arm/virt=2Ec                                 |  140 ++-
->>   hw/i386/x86-cpu=2Ec                             |    4 +-
->>   hw/intc/arm_gicv3_common=2Ec                    |    3 +
->>   hw/intc/arm_gicv3_whpx=2Ec                      |  249 ++++
->>   hw/intc/meson=2Ebuild                           |    1 +
->>   include/hw/arm/virt=2Eh                         |    8 +-
->>   include/hw/core/boards=2Eh                      |    3 +-
->>   include/hw/intc/arm_gicv3_common=2Eh            |    3 +
->>   include/system/hvf_int=2Eh                      |    5 +
->>   include/system/hw_accel=2Eh                     |   13 +
->>   =2E=2E=2E/whpx =3D> include/system}/whpx-accel-ops=2Eh  |    4 +-
->>   include/system/whpx-all=2Eh                     |   20 +
->>   include/system/whpx-common=2Eh                  |   26 +
->>   =2E=2E=2E/whpx =3D> include/system}/whpx-internal=2Eh   |   25 +-
->>   include/system/whpx=2Eh                         |    5 +-
->>   meson=2Ebuild                                   |   20 +-
->>   target/arm/cpu=2Ec                              |    3 +
->>   target/arm/cpu64=2Ec                            |   17 +-
->>   target/arm/hvf-stub=2Ec                         |   20 -
->>   target/arm/hvf/hvf=2Ec                          |    6 +-
->>   target/arm/hvf_arm=2Eh                          |    3 -
->>   target/arm/kvm-consts=2Eh                       |    2 +
->>   target/arm/meson=2Ebuild                        |    2 +-
->>   target/arm/whpx/meson=2Ebuild                   |    5 +
->>   target/arm/whpx/whpx-all=2Ec                    | 1020 ++++++++++++++=
-+++
->>   target/arm/whpx/whpx-stub=2Ec                   |   15 +
->>   target/arm/whpx_arm=2Eh                         |   17 +
->>   target/i386/cpu-apic=2Ec                        |    2 +-
->>   target/i386/hvf/hvf=2Ec                         |   11 +
->>   target/i386/whpx/meson=2Ebuild                  |    1 -
->>   target/i386/whpx/whpx-all=2Ec                   |  569 +--------
->>   target/i386/whpx/whpx-apic=2Ec                  |   48 +-
->>   tests/data/acpi/aarch64/virt/APIC=2Eits_off     |  Bin 164 -> 188 byt=
-es
->>   42 files changed, 2215 insertions(+), 648 deletions(-)
->>   create mode 100644 accel/whpx/meson=2Ebuild
->>   rename {target/i386 =3D> accel}/whpx/whpx-accel-ops=2Ec (96%)
->>   create mode 100644 accel/whpx/whpx-common=2Ec
->>   create mode 100644 hw/intc/arm_gicv3_whpx=2Ec
->>   rename {target/i386/whpx =3D> include/system}/whpx-accel-ops=2Eh (92%=
-)
->>   create mode 100644 include/system/whpx-all=2Eh
->>   create mode 100644 include/system/whpx-common=2Eh
->>   rename {target/i386/whpx =3D> include/system}/whpx-internal=2Eh (88%)
->>   delete mode 100644 target/arm/hvf-stub=2Ec
->>   create mode 100644 target/arm/whpx/meson=2Ebuild
->>   create mode 100644 target/arm/whpx/whpx-all=2Ec
->>   create mode 100644 target/arm/whpx/whpx-stub=2Ec
->>   create mode 100644 target/arm/whpx_arm=2Eh
->>=20
->
->Thanks Mohamed=2E
->Looks all good to me, and all checks are passing=2E
->I hope it can be pulled quickly by a maintainer, before this series confl=
-icts with any other changes on this area=2E
 
-Hi,
 
-I still need to revert "whpx: apic: use non-deprecated APIs to control int=
-errupt controller" for QEMU not to crash, see:
-- https://lore=2Ekernel=2Eorg/qemu-devel/4F98A2AD-02A7-4A7F-91B8-269E9EC8E=
-5B1@gmail=2Ecom/
-- https://lore=2Ekernel=2Eorg/qemu-devel/D7E4B026-EF2F-4075-B424-06427346E=
-97B@gmail=2Ecom/
+> On 1. Jan 2026, at 16:46, Bernhard Beschow <shentey@gmail.com> wrote:
+>=20
+>=20
+>=20
+> Am 30. Dezember 2025 03:47:20 UTC schrieb Pierrick Bouvier =
+<pierrick.bouvier@linaro.org <mailto:pierrick.bouvier@linaro.org>>:
+>> On 12/29/25 4:03 PM, Mohamed Mediouni wrote:
+>>> Link to branch: https://github.com/mediouni-m/qemu whpx (tag for =
+this submission: whpx-v13)
+>>>=20
+>>> Missing features:
+>>> - VM save-restore: interrupt controller state notably
+>>> - SVE register sync: I didn't have the time to test this on =
+pre-release hardware with SVE2 support yet.
+>>> So SVE2 is currently masked for VMs when running this.
+>>>=20
+>>> Known bugs:
+>>> - U-Boot still doesn't work (hangs when trying to parse firmware) =
+but EDK2 does.
+>>>=20
+>>> Note:
+>>>=20
+>>> "target/arm/kvm: add constants for new PSCI versions" taken from the =
+mailing list.
+>>>=20
+>>> "accel/system: Introduce hwaccel_enabled() helper" taken from the =
+mailing list, added here
+>>> as part of this series to make it compilable as a whole.
+>>>=20
+>>> "hw/arm: virt: add GICv2m for the case when ITS is not available" =
+present in both the HVF
+>>> vGIC and this series.
+>>>=20
+>>> "hw: arm: virt-acpi-build: add temporary hack to match existing =
+behavior" is
+>>> for ACPI stability but what is the right approach to follow there?
+>>>=20
+>>> And another note:
+>>>=20
+>>> Seems that unlike HVF there isn't direct correspondence between WHv =
+registers and the actual register layout,
+>>> so didn't do changes there to a sysreg.inc.
+>>>=20
+>>> Updates since v12:
+>>> - Address review comments and make sure that checkpatch shows no =
+errors, make test also ran
+>>> - Tested the Windows x86_64 build too in addition to Windows arm64 =
+and macOS arm64
+>>> - Hopefully the last revision, should be ready to merge.
+>>>=20
+>>> Updates since v11:
+>>> - Address review comments
+>>> - Rebase up to latest staging
+>>> - Switch to assuming Qemu 11.0 as the newest machine model
+>>>=20
+>>> Updates since v10:
+>>> - Bring forward to latest Qemu
+>>> - Fix a typo in the GICv3+GICv2m PR
+>>>=20
+>>> Updates since v9:
+>>> - Adding partition reset on the reboot side of things...
+>>>=20
+>>> Updates since v8:
+>>> - v9 and v8 were not submitted properly because of my MTA not =
+behaving, sorry for that.
+>>> - v10 introduces a new argument, -M msi=3D, to handle MSI-X =
+configuration more granularly.
+>>> - That surfaced what I think is a bug (?), with vms->its=3D1 on =
+GICv2 configurations... or I did understand everything wrong.
+>>> - Oopsie due to email provider ratelimiting.
+>>>=20
+>>> Updates since v7:
+>>> - Oops, fixing bug in "hw/arm: virt: cleanly fail on attempt to use =
+the platform vGIC together with ITS".
+>>> Other commits are unchanged.
+>>>=20
+>>> Updates since v6:
+>>> - Rebasing
+>>> - Fixing a bug in the GICv3+GICv2m case for ACPI table generation
+>>> - getting rid of the slots infrastructure for memory management
+>>> - Place the docs commit right after the "cleanly fail on attempt to =
+run GICv3+GICv2m on an unsupported config" one
+>>> as that's what switches ITS to a tristate.
+>>> - Fixing a build issue when getting rid of the arch-specific arm64 =
+hvf-stub.
+>>>=20
+>>> Updates since v5:
+>>> - Rebasing
+>>> - Address review comments
+>>> - Rework ITS enablement to a tristate
+>>> - On x86: move away from deprecated APIs to get/set APIC state
+>>>=20
+>>> Updates since v4:
+>>> - Taking into account review comments
+>>> - Add migration blocker in the vGICv3 code due to missing interrupt =
+controller save/restore
+>>> - Debug register sync
+>>>=20
+>>> Updates since v3:
+>>> - Disabling SVE on WHPX
+>>> - Taking into account review comments incl:
+>>>=20
+>>> - fixing x86 support
+>>> - reduce the amount of __x86_64__ checks in common code to the =
+minimum (winhvemulation)
+>>> which can be reduced even further down the road.
+>>> - generalize get_physical_address_range into something common =
+between hvf and whpx
+>>>=20
+>>> Updates since v2:
+>>> - Fixed up a rebase screwup for whpx-internal.h
+>>> - Fixed ID_AA64ISAR1_EL1 and ID_AA64ISAR2_EL1 feature probe for -cpu =
+host
+>>> - Switched to ID_AA64PFR1_EL1/ID_AA64DFR0_EL1 instead of their =
+non-AA64 variant
+>>>=20
+>>> Updates since v1:
+>>> - Shutdowns and reboots
+>>> - MPIDR_EL1 register sync
+>>> - Fixing GICD_TYPER_LPIS value
+>>> - IPA size clamping
+>>> - -cpu host now implemented
+>>>=20
+>>> Mohamed Mediouni (26):
+>>>   qtest: hw/arm: virt: skip ACPI test for ITS off
+>>>   hw/arm: virt: add GICv2m for the case when ITS is not available
+>>>   tests: data: update AArch64 ACPI tables
+>>>   hw/arm: virt: cleanly fail on attempt to use the platform vGIC
+>>>     together with ITS
+>>>   hw: arm: virt: rework MSI-X configuration
+>>>   hw: arm: virt-acpi-build: add temporary hack to match existing
+>>>     behavior
+>>>   docs: arm: update virt machine model description
+>>>   whpx: Move around files before introducing AArch64 support
+>>>   whpx: reshuffle common code
+>>>   whpx: ifdef out winhvemulation on non-x86_64
+>>>   whpx: common: add WHPX_INTERCEPT_DEBUG_TRAPS define
+>>>   hw, target, accel: whpx: change apic_in_platform to kernel_irqchip
+>>>   whpx: interrupt controller support
+>>>   whpx: add arm64 support
+>>>   whpx: change memory management logic
+>>>   target/arm: cpu: mark WHPX as supporting PSCI 1.3
+>>>   whpx: arm64: clamp down IPA size
+>>>   hw/arm, accel/hvf, whpx: unify get_physical_address_range between =
+WHPX
+>>>     and HVF
+>>>   whpx: arm64: implement -cpu host
+>>>   target/arm: whpx: instantiate GIC early
+>>>   whpx: arm64: gicv3: add migration blocker
+>>>   whpx: enable arm64 builds
+>>>   whpx: apic: use non-deprecated APIs to control interrupt =
+controller
+>>>     state
+>>>   whpx: arm64: check for physical address width after WHPX =
+availability
+>>>   whpx: arm64: add partition-wide reset on the reboot path
+>>>   MAINTAINERS: update the list of maintained files for WHPX
+>>>=20
+>>> Philippe Mathieu-Daud=C3=A9 (1):
+>>>   accel/system: Introduce hwaccel_enabled() helper
+>>>=20
+>>> Sebastian Ott (1):
+>>>   target/arm/kvm: add constants for new PSCI versions
+>>>=20
+>>>  MAINTAINERS                                   |    6 +
+>>>  accel/hvf/hvf-all.c                           |    7 +-
+>>>  accel/meson.build                             |    1 +
+>>>  accel/stubs/whpx-stub.c                       |    1 +
+>>>  accel/whpx/meson.build                        |    7 +
+>>>  {target/i386 =3D> accel}/whpx/whpx-accel-ops.c  |    6 +-
+>>>  accel/whpx/whpx-common.c                      |  536 +++++++++
+>>>  docs/system/arm/virt.rst                      |   13 +-
+>>>  hw/arm/virt-acpi-build.c                      |   16 +-
+>>>  hw/arm/virt.c                                 |  140 ++-
+>>>  hw/i386/x86-cpu.c                             |    4 +-
+>>>  hw/intc/arm_gicv3_common.c                    |    3 +
+>>>  hw/intc/arm_gicv3_whpx.c                      |  249 ++++
+>>>  hw/intc/meson.build                           |    1 +
+>>>  include/hw/arm/virt.h                         |    8 +-
+>>>  include/hw/core/boards.h                      |    3 +-
+>>>  include/hw/intc/arm_gicv3_common.h            |    3 +
+>>>  include/system/hvf_int.h                      |    5 +
+>>>  include/system/hw_accel.h                     |   13 +
+>>>  .../whpx =3D> include/system}/whpx-accel-ops.h  |    4 +-
+>>>  include/system/whpx-all.h                     |   20 +
+>>>  include/system/whpx-common.h                  |   26 +
+>>>  .../whpx =3D> include/system}/whpx-internal.h   |   25 +-
+>>>  include/system/whpx.h                         |    5 +-
+>>>  meson.build                                   |   20 +-
+>>>  target/arm/cpu.c                              |    3 +
+>>>  target/arm/cpu64.c                            |   17 +-
+>>>  target/arm/hvf-stub.c                         |   20 -
+>>>  target/arm/hvf/hvf.c                          |    6 +-
+>>>  target/arm/hvf_arm.h                          |    3 -
+>>>  target/arm/kvm-consts.h                       |    2 +
+>>>  target/arm/meson.build                        |    2 +-
+>>>  target/arm/whpx/meson.build                   |    5 +
+>>>  target/arm/whpx/whpx-all.c                    | 1020 =
++++++++++++++++++
+>>>  target/arm/whpx/whpx-stub.c                   |   15 +
+>>>  target/arm/whpx_arm.h                         |   17 +
+>>>  target/i386/cpu-apic.c                        |    2 +-
+>>>  target/i386/hvf/hvf.c                         |   11 +
+>>>  target/i386/whpx/meson.build                  |    1 -
+>>>  target/i386/whpx/whpx-all.c                   |  569 +--------
+>>>  target/i386/whpx/whpx-apic.c                  |   48 +-
+>>>  tests/data/acpi/aarch64/virt/APIC.its_off     |  Bin 164 -> 188 =
+bytes
+>>>  42 files changed, 2215 insertions(+), 648 deletions(-)
+>>>  create mode 100644 accel/whpx/meson.build
+>>>  rename {target/i386 =3D> accel}/whpx/whpx-accel-ops.c (96%)
+>>>  create mode 100644 accel/whpx/whpx-common.c
+>>>  create mode 100644 hw/intc/arm_gicv3_whpx.c
+>>>  rename {target/i386/whpx =3D> include/system}/whpx-accel-ops.h =
+(92%)
+>>>  create mode 100644 include/system/whpx-all.h
+>>>  create mode 100644 include/system/whpx-common.h
+>>>  rename {target/i386/whpx =3D> include/system}/whpx-internal.h (88%)
+>>>  delete mode 100644 target/arm/hvf-stub.c
+>>>  create mode 100644 target/arm/whpx/meson.build
+>>>  create mode 100644 target/arm/whpx/whpx-all.c
+>>>  create mode 100644 target/arm/whpx/whpx-stub.c
+>>>  create mode 100644 target/arm/whpx_arm.h
+>>>=20
+>>=20
+>> Thanks Mohamed.
+>> Looks all good to me, and all checks are passing.
+>> I hope it can be pulled quickly by a maintainer, before this series =
+conflicts with any other changes on this area.
+>=20
+> Hi,
+>=20
+> I still need to revert "whpx: apic: use non-deprecated APIs to control =
+interrupt controller" for QEMU not to crash, see:
+> - =
+https://lore.kernel.org/qemu-devel/4F98A2AD-02A7-4A7F-91B8-269E9EC8E5B1@gm=
+ail.com/
+> - =
+https://lore.kernel.org/qemu-devel/D7E4B026-EF2F-4075-B424-06427346E97B@gm=
+ail.com/
+>=20
+> The problem can be reproduced by running "qemu-system-x86_64 -accel =
+whpx". Let me know if you need some further details.
+>=20
+> Best regards,
+> Bernhard
 
-The problem can be reproduced by running "qemu-system-x86_64 -accel whpx"=
-=2E Let me know if you need some further details=2E
+Hello,
 
-Best regards,
-Bernhard
+Will be useful to know which platform you saw this on, and that patch is =
+safe to drop on its own.
+Will send the pull request (if needed to send one) without it pending =
+more investigation.
 
->
->Regards,
->Pierrick
->
+Thank you,
+-Mohamed
+>>=20
+>> Regards,
+>> Pierrick
+
+
+--Apple-Mail=_D2E17E06-CE3E-4E52-8DC2-2FE15A1034AD
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=utf-8
+
+<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
+content=3D"text/html; charset=3Dutf-8"></head><body =
+style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
+line-break: after-white-space;"><br =
+id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
+type=3D"cite"><div>On 1. Jan 2026, at 16:46, Bernhard Beschow =
+&lt;shentey@gmail.com&gt; wrote:</div><br =
+class=3D"Apple-interchange-newline"><div><meta charset=3D"UTF-8"><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">Am 30. Dezember 2025 03:47:20 UTC schrieb =
+Pierrick Bouvier &lt;</span><a href=3D"mailto:pierrick.bouvier@linaro.org"=
+ style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px;">pierrick.bouvier@linaro.org</a><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">&gt;:</span><br style=3D"caret-color: =
+rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
+normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: =
+solid;"><blockquote type=3D"cite" style=3D"font-family: Helvetica; =
+font-size: 12px; font-style: normal; font-variant-caps: normal; =
+font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; widows: 2; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-line: =
+none; text-decoration-thickness: auto; text-decoration-style: solid;">On =
+12/29/25 4:03 PM, Mohamed Mediouni wrote:<br><blockquote =
+type=3D"cite">Link to branch: https://github.com/mediouni-m/qemu whpx =
+(tag for this submission: whpx-v13)<br><br>Missing features:<br>- VM =
+save-restore: interrupt controller state notably<br>- SVE register sync: =
+I didn't have the time to test this on pre-release hardware with SVE2 =
+support yet.<br>So SVE2 is currently masked for VMs when running =
+this.<br><br>Known bugs:<br>- U-Boot still doesn't work (hangs when =
+trying to parse firmware) but EDK2 =
+does.<br><br>Note:<br><br>"target/arm/kvm: add constants for new PSCI =
+versions" taken from the mailing list.<br><br>"accel/system: Introduce =
+hwaccel_enabled() helper" taken from the mailing list, added here<br>as =
+part of this series to make it compilable as a whole.<br><br>"hw/arm: =
+virt: add GICv2m for the case when ITS is not available" present in both =
+the HVF<br>vGIC and this series.<br><br>"hw: arm: virt-acpi-build: add =
+temporary hack to match existing behavior" is<br>for ACPI stability but =
+what is the right approach to follow there?<br><br>And another =
+note:<br><br>Seems that unlike HVF there isn't direct correspondence =
+between WHv registers and the actual register layout,<br>so didn't do =
+changes there to a sysreg.inc.<br><br>Updates since v12:<br>- Address =
+review comments and make sure that checkpatch shows no errors, make test =
+also ran<br>- Tested the Windows x86_64 build too in addition to Windows =
+arm64 and macOS arm64<br>- Hopefully the last revision, should be ready =
+to merge.<br><br>Updates since v11:<br>- Address review comments<br>- =
+Rebase up to latest staging<br>- Switch to assuming Qemu 11.0 as the =
+newest machine model<br><br>Updates since v10:<br>- Bring forward to =
+latest Qemu<br>- Fix a typo in the GICv3+GICv2m PR<br><br>Updates since =
+v9:<br>- Adding partition reset on the reboot side of =
+things...<br><br>Updates since v8:<br>- v9 and v8 were not submitted =
+properly because of my MTA not behaving, sorry for that.<br>- v10 =
+introduces a new argument, -M msi=3D, to handle MSI-X configuration more =
+granularly.<br>- That surfaced what I think is a bug (?), with =
+vms-&gt;its=3D1 on GICv2 configurations... or I did understand =
+everything wrong.<br>- Oopsie due to email provider =
+ratelimiting.<br><br>Updates since v7:<br>- Oops, fixing bug in "hw/arm: =
+virt: cleanly fail on attempt to use the platform vGIC together with =
+ITS".<br>Other commits are unchanged.<br><br>Updates since v6:<br>- =
+Rebasing<br>- Fixing a bug in the GICv3+GICv2m case for ACPI table =
+generation<br>- getting rid of the slots infrastructure for memory =
+management<br>- Place the docs commit right after the "cleanly fail on =
+attempt to run GICv3+GICv2m on an unsupported config" one<br>as that's =
+what switches ITS to a tristate.<br>- Fixing a build issue when getting =
+rid of the arch-specific arm64 hvf-stub.<br><br>Updates since v5:<br>- =
+Rebasing<br>- Address review comments<br>- Rework ITS enablement to a =
+tristate<br>- On x86: move away from deprecated APIs to get/set APIC =
+state<br><br>Updates since v4:<br>- Taking into account review =
+comments<br>- Add migration blocker in the vGICv3 code due to missing =
+interrupt controller save/restore<br>- Debug register =
+sync<br><br>Updates since v3:<br>- Disabling SVE on WHPX<br>- Taking =
+into account review comments incl:<br><br>- fixing x86 support<br>- =
+reduce the amount of __x86_64__ checks in common code to the minimum =
+(winhvemulation)<br>which can be reduced even further down the =
+road.<br>- generalize get_physical_address_range into something common =
+between hvf and whpx<br><br>Updates since v2:<br>- Fixed up a rebase =
+screwup for whpx-internal.h<br>- Fixed ID_AA64ISAR1_EL1 and =
+ID_AA64ISAR2_EL1 feature probe for -cpu host<br>- Switched to =
+ID_AA64PFR1_EL1/ID_AA64DFR0_EL1 instead of their non-AA64 =
+variant<br><br>Updates since v1:<br>- Shutdowns and reboots<br>- =
+MPIDR_EL1 register sync<br>- Fixing GICD_TYPER_LPIS value<br>- IPA size =
+clamping<br>- -cpu host now implemented<br><br>Mohamed Mediouni =
+(26):<br>&nbsp;&nbsp;qtest: hw/arm: virt: skip ACPI test for ITS =
+off<br>&nbsp;&nbsp;hw/arm: virt: add GICv2m for the case when ITS is not =
+available<br>&nbsp;&nbsp;tests: data: update AArch64 ACPI =
+tables<br>&nbsp;&nbsp;hw/arm: virt: cleanly fail on attempt to use the =
+platform vGIC<br>&nbsp;&nbsp;&nbsp;&nbsp;together with =
+ITS<br>&nbsp;&nbsp;hw: arm: virt: rework MSI-X =
+configuration<br>&nbsp;&nbsp;hw: arm: virt-acpi-build: add temporary =
+hack to match =
+existing<br>&nbsp;&nbsp;&nbsp;&nbsp;behavior<br>&nbsp;&nbsp;docs: arm: =
+update virt machine model description<br>&nbsp;&nbsp;whpx: Move around =
+files before introducing AArch64 support<br>&nbsp;&nbsp;whpx: reshuffle =
+common code<br>&nbsp;&nbsp;whpx: ifdef out winhvemulation on =
+non-x86_64<br>&nbsp;&nbsp;whpx: common: add WHPX_INTERCEPT_DEBUG_TRAPS =
+define<br>&nbsp;&nbsp;hw, target, accel: whpx: change apic_in_platform =
+to kernel_irqchip<br>&nbsp;&nbsp;whpx: interrupt controller =
+support<br>&nbsp;&nbsp;whpx: add arm64 support<br>&nbsp;&nbsp;whpx: =
+change memory management logic<br>&nbsp;&nbsp;target/arm: cpu: mark WHPX =
+as supporting PSCI 1.3<br>&nbsp;&nbsp;whpx: arm64: clamp down IPA =
+size<br>&nbsp;&nbsp;hw/arm, accel/hvf, whpx: unify =
+get_physical_address_range between WHPX<br>&nbsp;&nbsp;&nbsp;&nbsp;and =
+HVF<br>&nbsp;&nbsp;whpx: arm64: implement -cpu =
+host<br>&nbsp;&nbsp;target/arm: whpx: instantiate GIC =
+early<br>&nbsp;&nbsp;whpx: arm64: gicv3: add migration =
+blocker<br>&nbsp;&nbsp;whpx: enable arm64 builds<br>&nbsp;&nbsp;whpx: =
+apic: use non-deprecated APIs to control interrupt =
+controller<br>&nbsp;&nbsp;&nbsp;&nbsp;state<br>&nbsp;&nbsp;whpx: arm64: =
+check for physical address width after WHPX =
+availability<br>&nbsp;&nbsp;whpx: arm64: add partition-wide reset on the =
+reboot path<br>&nbsp;&nbsp;MAINTAINERS: update the list of maintained =
+files for WHPX<br><br>Philippe Mathieu-Daud=C3=A9 =
+(1):<br>&nbsp;&nbsp;accel/system: Introduce hwaccel_enabled() =
+helper<br><br>Sebastian Ott (1):<br>&nbsp;&nbsp;target/arm/kvm: add =
+constants for new PSCI versions<br><br>&nbsp;MAINTAINERS =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;&nbsp;6 +<br>&nbsp;accel/hvf/hvf-all.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;| &nbsp;&nbsp;&nbsp;7 +-<br>&nbsp;accel/meson.build =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;1 =
++<br>&nbsp;accel/stubs/whpx-stub.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;&nbsp;1 +<br>&nbsp;accel/whpx/meson.build =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;&nbsp;7 +<br>&nbsp;{target/i386 =3D&gt; =
+accel}/whpx/whpx-accel-ops.c &nbsp;| &nbsp;&nbsp;&nbsp;6 =
++-<br>&nbsp;accel/whpx/whpx-common.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;536 =
++++++++++<br>&nbsp;docs/system/arm/virt.rst =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;13 =
++-<br>&nbsp;hw/arm/virt-acpi-build.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;16 =
++-<br>&nbsp;hw/arm/virt.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;140 =
+++-<br>&nbsp;hw/i386/x86-cpu.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;4 =
++-<br>&nbsp;hw/intc/arm_gicv3_common.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;3 =
++<br>&nbsp;hw/intc/arm_gicv3_whpx.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;249 =
+++++<br>&nbsp;hw/intc/meson.build =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;| &nbsp;&nbsp;&nbsp;1 +<br>&nbsp;include/hw/arm/virt.h =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;&nbsp;8 +-<br>&nbsp;include/hw/core/boards.h =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;&nbsp;3 +-<br>&nbsp;include/hw/intc/arm_gicv3_common.h =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;&nbsp;3 +<br>&nbsp;include/system/hvf_int.h =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;&nbsp;5 +<br>&nbsp;include/system/hw_accel.h =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;13 =
++<br>&nbsp;.../whpx =3D&gt; include/system}/whpx-accel-ops.h &nbsp;| =
+&nbsp;&nbsp;&nbsp;4 +-<br>&nbsp;include/system/whpx-all.h =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;20 =
++<br>&nbsp;include/system/whpx-common.h =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;26 +<br>&nbsp;.../whpx =3D&gt; =
+include/system}/whpx-internal.h &nbsp;&nbsp;| &nbsp;&nbsp;25 =
++-<br>&nbsp;include/system/whpx.h =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;&nbsp;5 +-<br>&nbsp;meson.build =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;20 =
++-<br>&nbsp;target/arm/cpu.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;3 =
++<br>&nbsp;target/arm/cpu64.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;| &nbsp;&nbsp;17 +-<br>&nbsp;target/arm/hvf-stub.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;20 -<br>&nbsp;target/arm/hvf/hvf.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;| &nbsp;&nbsp;&nbsp;6 +-<br>&nbsp;target/arm/hvf_arm.h =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;| &nbsp;&nbsp;&nbsp;3 -<br>&nbsp;target/arm/kvm-consts.h =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;&nbsp;2 +<br>&nbsp;target/arm/meson.build =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;&nbsp;2 +-<br>&nbsp;target/arm/whpx/meson.build =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;5 =
++<br>&nbsp;target/arm/whpx/whpx-all.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 1020 =
++++++++++++++++++<br>&nbsp;target/arm/whpx/whpx-stub.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;15 =
++<br>&nbsp;target/arm/whpx_arm.h =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;17 +<br>&nbsp;target/i386/cpu-apic.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;&nbsp;2 +-<br>&nbsp;target/i386/hvf/hvf.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;11 +<br>&nbsp;target/i386/whpx/meson.build =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;1 =
+-<br>&nbsp;target/i386/whpx/whpx-all.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;569 =
++--------<br>&nbsp;target/i386/whpx/whpx-apic.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;48 =
++-<br>&nbsp;tests/data/acpi/aarch64/virt/APIC.its_off =
+&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;Bin 164 -&gt; 188 bytes<br>&nbsp;42 =
+files changed, 2215 insertions(+), 648 deletions(-)<br>&nbsp;create mode =
+100644 accel/whpx/meson.build<br>&nbsp;rename {target/i386 =3D&gt; =
+accel}/whpx/whpx-accel-ops.c (96%)<br>&nbsp;create mode 100644 =
+accel/whpx/whpx-common.c<br>&nbsp;create mode 100644 =
+hw/intc/arm_gicv3_whpx.c<br>&nbsp;rename {target/i386/whpx =3D&gt; =
+include/system}/whpx-accel-ops.h (92%)<br>&nbsp;create mode 100644 =
+include/system/whpx-all.h<br>&nbsp;create mode 100644 =
+include/system/whpx-common.h<br>&nbsp;rename {target/i386/whpx =3D&gt; =
+include/system}/whpx-internal.h (88%)<br>&nbsp;delete mode 100644 =
+target/arm/hvf-stub.c<br>&nbsp;create mode 100644 =
+target/arm/whpx/meson.build<br>&nbsp;create mode 100644 =
+target/arm/whpx/whpx-all.c<br>&nbsp;create mode 100644 =
+target/arm/whpx/whpx-stub.c<br>&nbsp;create mode 100644 =
+target/arm/whpx_arm.h<br><br></blockquote><br>Thanks Mohamed.<br>Looks =
+all good to me, and all checks are passing.<br>I hope it can be pulled =
+quickly by a maintainer, before this series conflicts with any other =
+changes on this area.<br></blockquote><br style=3D"caret-color: rgb(0, =
+0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">Hi,</span><br style=3D"caret-color: rgb(0, =
+0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">I still need to revert "whpx: apic: use =
+non-deprecated APIs to control interrupt controller" for QEMU not to =
+crash, see:</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration-line: none; text-decoration-thickness: auto; =
+text-decoration-style: solid;"><span style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">-<span =
+class=3D"Apple-converted-space">&nbsp;</span></span><a =
+href=3D"https://lore.kernel.org/qemu-devel/4F98A2AD-02A7-4A7F-91B8-269E9EC=
+8E5B1@gmail.com/" style=3D"font-family: Helvetica; font-size: 12px; =
+font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: =
+0px;">https://lore.kernel.org/qemu-devel/4F98A2AD-02A7-4A7F-91B8-269E9EC8E=
+5B1@gmail.com/</a><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration-line: none; text-decoration-thickness: auto; =
+text-decoration-style: solid;"><span style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">-<span =
+class=3D"Apple-converted-space">&nbsp;</span></span><a =
+href=3D"https://lore.kernel.org/qemu-devel/D7E4B026-EF2F-4075-B424-0642734=
+6E97B@gmail.com/" style=3D"font-family: Helvetica; font-size: 12px; =
+font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: =
+0px;">https://lore.kernel.org/qemu-devel/D7E4B026-EF2F-4075-B424-06427346E=
+97B@gmail.com/</a><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration-line: none; text-decoration-thickness: auto; =
+text-decoration-style: solid;"><br style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">The problem can be reproduced by running =
+"qemu-system-x86_64 -accel whpx". Let me know if you need some further =
+details.</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration-line: none; text-decoration-thickness: auto; =
+text-decoration-style: solid;"><br style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">Best regards,</span><br style=3D"caret-color:=
+ rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
+normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">Bernhard</span><br style=3D"caret-color: =
+rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
+normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: =
+solid;"></div></blockquote><div><br></div>Hello,</div><div><br></div><div>=
+Will be useful to know which platform you saw this on, and that patch is =
+safe to drop on its own.</div><div>Will send the pull request (if needed =
+to send one) without it pending more =
+investigation.</div><div><br></div><div>Thank =
+you,</div><div>-Mohamed</div><div><blockquote =
+type=3D"cite"><div><blockquote type=3D"cite" style=3D"font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration-line: none; text-decoration-thickness: auto; =
+text-decoration-style: =
+solid;"><br>Regards,<br>Pierrick</blockquote></div></blockquote></div><br>=
+</body></html>=
+
+--Apple-Mail=_D2E17E06-CE3E-4E52-8DC2-2FE15A1034AD--
 

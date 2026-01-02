@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89616FA372A
-	for <qemu-arm@archiver.kernel.org>; Fri,  2 Jan 2026 11:18:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 021F6FA3726
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Jan 2026 11:21:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vbdA7-00037C-GW; Fri, 02 Jan 2026 06:17:43 -0500
+	id 1vbdDw-0004RK-Qe; Fri, 02 Jan 2026 06:21:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vbd9t-00034b-J8
- for qemu-arm@nongnu.org; Fri, 02 Jan 2026 06:17:31 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ id 1vbdDv-0004QC-Cf
+ for qemu-arm@nongnu.org; Fri, 02 Jan 2026 06:21:39 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vbd9q-0006VC-Hx
- for qemu-arm@nongnu.org; Fri, 02 Jan 2026 06:17:29 -0500
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-42fb5810d39so7687164f8f.2
- for <qemu-arm@nongnu.org>; Fri, 02 Jan 2026 03:17:26 -0800 (PST)
+ id 1vbdDt-00079g-LS
+ for qemu-arm@nongnu.org; Fri, 02 Jan 2026 06:21:39 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-477a219dbcaso96267025e9.3
+ for <qemu-arm@nongnu.org>; Fri, 02 Jan 2026 03:21:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767352645; x=1767957445; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767352895; x=1767957695; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=S9NPlN2SV3AAX5O8IHQIGFCLTeWHuSC+hJP+FsC2uh0=;
- b=awPym7WmliBOvNz91DOBm6GvQsUYzrBQ+EirIOi4PUGOYVFafnQFN47hWJJ4fFwuvR
- GtjErK7WUgyd3B3nXMDIp6w1UprHDmHjp4y7buACTP9sEjBIIpLBMigs8eiXDT69lDMa
- 8UgWU/97zNJuL/GR83xSHoLnE7moakMmVOMnSF7oMiIsDC2jQI2zYY8FLrlZ+xHQiWOY
- WXPQ5Dg1s0iaiDp3GyTkov2du8x+lcwB/eitMDI4UxB+dYUXnY9g38fA5WEhrLEfhE28
- cQn0zzyyBzsqa/Vwyslksc9K9a9yhcP30RVWlfRFZVRJYRRGJzOa7yTiSemQu4WME1Kc
- VNVQ==
+ bh=tFVKHmnkxQ3qobL3YmMQOytbDJSp9SIKyMZ9YJQ6t3U=;
+ b=xue0EDo5KRWc+GRwVFz8b0viM/4/MRRthaIteGCuLsZEXKr0dBZXZAM34Uq6n7I0vs
+ M2drXBm5sRUAwUzl2kSiSRWxKmtaCV4V7CAD8Fx2rtrsbNJOX6RN3y+qdJsA195652y1
+ nt+lW6vG5NSh0Qmzs7kr5IcFd9gWc9ZYUp4XKAr5VfcMssFfD6AVH6Rtct2e3SjoH4my
+ aq/p2WluxD8h3EyZJ9+ECev+uF+ekC3IsjbZvOG+D1Ykg2iepp9zYFpgvzN26BLdd3bM
+ 2p6PIGyPh9dyTFiqMZoVOC3QmikEdLWiRZSgSr2hSCwFpJP991wFzCl9riJaX+WqExg1
+ EiTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767352645; x=1767957445;
+ d=1e100.net; s=20230601; t=1767352895; x=1767957695;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=S9NPlN2SV3AAX5O8IHQIGFCLTeWHuSC+hJP+FsC2uh0=;
- b=NuGAEThe352kBUPkqrTOJzlBVm9vQSVMeemh5ZtZwQY53nyn+AyIEupzVhhtaTTiSK
- 6cZU61TwlOTD6m7q40uLyH+LzYC6w8/AxYf8ir79jan1KDg+2L/mr1XoTqu6VJ7gu/fl
- wg3b9DWE1tCSNGd0dJe8l+9W7xTa/pGU4Zja28TB75KlRLaVUvYquIYfuZ7/yicUn48+
- +7lXLkrpqkK2EyoZll5oAvAnBgIpcFCcnRdvAELpISOQccDiL/jRf0cWY8WH/gE0bKXB
- y0DRd/nNDP6NT/k8isi550Ucw765gop6PKgcezI6NgnNvsIvpve/QJ4J0vNsaaRVfMgw
- x0+w==
-X-Gm-Message-State: AOJu0Yzb8hlMdJ1Da9EHKbTvNJ0RTMNti6Ezu7+fSklrk5xNkYnnxAc2
- KC0J7MyJmX6yul9PdEVsoVdJ7xB+fNHBuAhnsYZgpKz2HmnKsu6OoMYrkzgYusdXXmM=
-X-Gm-Gg: AY/fxX5/eq4O2yRtyNbBdyyojJLlD2UtMZj9X3LTv8xb9icdz2zDCFJdtJUmYw0hbjI
- jC/EMyaJZl+P15QTUqubcXV3JLgc3xAzq1Z6uf3009wy0LE/vHJEoZhWXHap8xtWjxFUKfxkZaX
- dQXRBtjUjAs4up3Ok2hcS/qZK8TFJe5ntsCxCuWqWODKbDlvKCv93XLQtw+J2KRSB0Btcv/LrFP
- LL5C9JDGmqVfq8s9bOCrWIG0VNeRlZF8RYsj/7fg/XVx138Gtsy+dVrqHXLcCXWlYEsGAasCcm7
- lBjnVrTPKJshH8Rrwq5ltpL5UsvualDJ3dtaGYXQgNgZAEjf9cSGOk+jBXErTmjeyesq1c6K1oY
- srP1DALGOy7C5Gr1OgonxHe16rVizz5m4/0O7xcIMWhkfrLJtyfZX+wjSTbEPtBxwQT50e7LM6Q
- vErhKsL8NITzfXxyceeEHBcQ==
-X-Google-Smtp-Source: AGHT+IHNmoiGBEhAT5kQ/0UUMTinucUCHMs8OhKefOsFjOdg/kIu8/2JnwD8NFeXurSB5HPfrN/QSA==
-X-Received: by 2002:a05:6000:26c3:b0:430:f40f:61b9 with SMTP id
- ffacd0b85a97d-4324e4c68e1mr45366727f8f.4.1767352644511; 
- Fri, 02 Jan 2026 03:17:24 -0800 (PST)
+ bh=tFVKHmnkxQ3qobL3YmMQOytbDJSp9SIKyMZ9YJQ6t3U=;
+ b=m22J2s+hcWrkb3Txk4HxmMdf3CYVbrBZJ9r3sr96tEc0QgfXr9pjUgy07xV8ZmXqzr
+ kCeSOUVwiNHYilIMcYipvdw0tTxk0MpLGl1fNJBxRImfQq/nGu3acGJcAUdI0XrUMwz9
+ 2Jjbx58yPuYs0kyk9hJfdN8E1OtZee6IdMSOILJwv0jS9WqS+J3BHbJkKTYV28FpKra0
+ AhQhWK/zIIPTOmOsE9CizXpyS/O77oJfO+fPWqvdJAlfUo39+fBimsWpvaij3WdryfaY
+ GdGOst23LCtb0ONy3koXWQizOsytFUgI6B+Oh2+AkKVFAjqWTWjBqWEGPnS2Yru9i4G4
+ k6fg==
+X-Gm-Message-State: AOJu0YwQL/nAbGVpk16QA/Iu56rgZ4etz+YnfQLf1tgjpZYBe9Ojlhgm
+ Aia0YczfvFEKFSkDOGyLhRUyGHM4g2tIfUFpdNx9ARp3NL5w9qwWyKW8SG0+TJJamb4=
+X-Gm-Gg: AY/fxX58nEOURAVB0ZgRHyAwUEGNm2rEJ9F2xKFgi5v2dBIYqfpOGrbf0lvk+IvVmQg
+ BH+4umZGXRD6sNfIP08Aj1AwJPc4d2DMVqPvEUmkYIg73RTdZ4vTlpKb6+tuLiIohVvkzz43zA9
+ ZEm6EP1l0Ro7jNTe0LpgpLRL18xYhsIKvJJHJj2lrr0PfP5J+A0r3Kohkulf368OeuIUZkFsxVU
+ e4Dcz3nZ9Zgqwstu+rrsHnMqjZK8bFEcQGAoVLm9bl31DerbtxSEO7IDMvHuHYpIpm86z6fTfAK
+ zeUfk9rZxFaWdY3NXzNSRnmr57Bw2ARBtoVFrCwZNfrSJjNEJRiZkeAu2FtYrEEleSXjig5RkWQ
+ V5ufgE8ZswCNRASdI5o/mfVCOc06gb5UR+WwBSWFhqKPJ/abBYYiZfq1ztViq0zHd+b4FqxyFN0
+ ABnNuN3M5szoc=
+X-Google-Smtp-Source: AGHT+IHvaQpeidF9CMkkjwowToaK3zs/8Qn3f70gynWYBZtldegcjyK+vMk3LfHKaXZ895JpWAbKGw==
+X-Received: by 2002:a05:600d:486:10b0:47d:333d:868a with SMTP id
+ 5b1f17b1804b1-47d333d86c2mr318702825e9.33.1767352895490; 
+ Fri, 02 Jan 2026 03:21:35 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4324ea1b1b1sm83486027f8f.3.2026.01.02.03.17.23
+ ffacd0b85a97d-4324eaa2bdfsm85127062f8f.32.2026.01.02.03.21.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Jan 2026 03:17:23 -0800 (PST)
+ Fri, 02 Jan 2026 03:21:34 -0800 (PST)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 284255F7FE;
- Fri, 02 Jan 2026 11:17:23 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 25AE25F7FE;
+ Fri, 02 Jan 2026 11:21:34 +0000 (GMT)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  qemu-stable@nongnu.org
-Subject: Re: [PATCH 2/4] target/arm: Correctly honour HCR.TID3 for v7A cores
-In-Reply-To: <20251231170858.254594-3-peter.maydell@linaro.org> (Peter
- Maydell's message of "Wed, 31 Dec 2025 17:08:56 +0000")
+Subject: Re: [PATCH 4/4] target/arm: Rename access_aa64_tid5() to access_tid5()
+In-Reply-To: <20251231170858.254594-5-peter.maydell@linaro.org> (Peter
+ Maydell's message of "Wed, 31 Dec 2025 17:08:58 +0000")
 References: <20251231170858.254594-1-peter.maydell@linaro.org>
- <20251231170858.254594-3-peter.maydell@linaro.org>
+ <20251231170858.254594-5-peter.maydell@linaro.org>
 User-Agent: mu4e 1.12.14; emacs 30.1
-Date: Fri, 02 Jan 2026 11:17:23 +0000
-Message-ID: <87zf6ww9fg.fsf@draig.linaro.org>
+Date: Fri, 02 Jan 2026 11:21:34 +0000
+Message-ID: <87o6ncw98h.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,126 +107,13 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Peter Maydell <peter.maydell@linaro.org> writes:
 
-> The HCR.TID3 bit defines that we should trap to the hypervisor for
-> reads to a collection of ID registers. Different architecture versions
-> have defined this differently:
+> There is no equivalent access_aa32_tid5() (HCR_EL2.TID5 only exists
+> starting from v8); rename access_aa64_tid5() to access_tid5() to line
+> up with the naming we now have for the TID1 and TID3 check functions.
 >
->  * v7A has a set of ID regs that definitely must trap:
->     - ID_PFR{0,1}, ID_DFR0, ID_AFR0, ID_MMFR{0,1,2,3},
->       ID_ISAR{0,1,2,3,4,5}, MVFR{0,1}
->    and somewhat vaguely says that "there is no requirement"
->    to trap for registers that are reserved in the ID reg space
->    (i.e. which RAZ and might be used for new ID regs in future)
->  * v8A adds to this list:
->     - ID_PFR2 and MVFR2 must trap
->     - ID_MMFR4, ID_MMFR5, ID_ISAR6, ID_DFR1 and reserved registers
->       in the ID reg space must trap if FEAT_FGT is implemented,
->       and it is IMPDEF if they trap if FEAT_FGT is not implemented
->
-> In QEMU we seem to have attempted to implement this distinction
-> (taking the "we do trap" IMPDEF choice if no FEAT_FGT), with
-> access_aa64_tid3() always trapping on TID3 and access_aa32_tid3()
-> trapping only if ARM_FEATURE_V8 is set.  However, we didn't apply
-> these to the right set of registers: we use access_aa32_tid3() on all
-> the 32-bit ID registers *except* ID_PFR2, ID_DFR1, ID_MMFR5 and the
-> RES0 space, which means that for a v7 CPU we don't trap on a lot of
-> registers that we should trap on, and we do trap on various things
-> that the v7A Arm ARM says there is "no requirement" to trap on.
->
-> Straighten this out by naming the access functions more clearly for
-> their purpose, and documenting this: access_v7_tid3() is only for the
-> fixed set of ID registers that v7A traps on HCR.TID3, and
-> access_tid3() is for any others, including the reserved encoding
-> spaces and any new registers we add in future.
-
-I'm confused by the naming - especially as searching the Arm doc site
-with the Armv7-A filter didn't show up an HCR register (although it does
-show up in the PDF).
-
-I guess what you are saying is these registers trap from v7a onwards?
-v8/v9 don't change the trapping on this subset of registers.
-
->
-> AArch32 MVFR2 access is handled differently, in check_hcr_el2_trap;
-> there we already do not trap on TID3 on v7A cores (where MVFR2
-> doesn't exist), because we in the code-generation function we UNDEF
-> if ARM_FEATURE_V8 is not set, without generating code to call
-> check_hcr_el2_trap.
->
-> This bug was causing a problem for Xen which (after a recent change
-> to Xen) expects to be able to trap ID_PFR0 on a Cortex-A15.
->
-> The result of these changes is that our v8A behaviour remains
-> the same, and on v7A we now trap the registers the Arm ARM definitely
-> requires us to trap, and don't trap the reserved space that "there is
-> no requirement" to trap.
->
-> Cc: qemu-stable@nongnu.org
-> Fixes: 6a4ef4e5d1084c ("target/arm: Honor HCR_EL2.TID3 trapping requireme=
-nts")
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/helper.c | 146 ++++++++++++++++++++++++--------------------
->  1 file changed, 81 insertions(+), 65 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index ec82ea6203..c4f73eb3f3 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -5835,9 +5835,18 @@ static const ARMCPRegInfo ccsidr2_reginfo[] =3D {
->        .readfn =3D ccsidr2_read, .type =3D ARM_CP_NO_RAW },
->  };
->=20=20
-> -static CPAccessResult access_aa64_tid3(CPUARMState *env, const ARMCPRegI=
-nfo *ri,
-> -                                       bool isread)
-> +static CPAccessResult access_v7_tid3(CPUARMState *env, const ARMCPRegInf=
-o *ri,
-> +                                     bool isread)
->  {
-> +    /*
-> +     * Trap on TID3 always. This should be used only for the fixed set of
-> +     * registers which are defined to trap on HCR.TID3 in v7A, which is:
-> +     *   ID_PFR{0,1}, ID_DFR0, ID_AFR0, ID_MMFR{0,1,2,3}, ID_ISAR{0,1,2,=
-3,4,5}
-> +     * (MVFR0 and MVFR1 also trap in v7A, but this is not handled via
-> +     * this accessfn but in check_hcr_el2_trap.)
-> +     * Any other registers in the TID3 trap space should use access_tid3=
-(),
-> +     * so that they trap on v8 and above, but not on v7.
-> +     */
->      if ((arm_current_el(env) < 2) && (arm_hcr_el2_eff(env) & HCR_TID3)) {
->          return CP_ACCESS_TRAP_EL2;
->      }
-> @@ -5845,11 +5854,18 @@ static CPAccessResult access_aa64_tid3(CPUARMStat=
-e *env, const ARMCPRegInfo *ri,
->      return CP_ACCESS_OK;
->  }
->=20=20
-> -static CPAccessResult access_aa32_tid3(CPUARMState *env, const ARMCPRegI=
-nfo *ri,
-> -                                       bool isread)
-> +static CPAccessResult access_tid3(CPUARMState *env, const ARMCPRegInfo *=
-ri,
-> +                                  bool isread)
->  {
-> +    /*
-> +     * Trap on TID3, if we implement at least v8. For v8 and above
-> +     * the ID register space is at least IMPDEF permitted to trap,
-> +     * and must trap if FEAT_FGT is implemented. We choose to trap
-> +     * always. Use this function for any new registers that should
-> +     * trap on TID3.
-> +     */
->      if (arm_feature(env, ARM_FEATURE_V8)) {
-> -        return access_aa64_tid3(env, ri, isread);
-> +        return access_v7_tid3(env, ri, isread);
 
-This seems even more incongruous - we test for v8 but use the v7 helper.=20
-
-<snip>
-
-I think I understand whats happening but it is confusing to follow.
-Naming things is hard.
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
 --=20
 Alex Benn=C3=A9e

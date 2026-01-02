@@ -4,74 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A271FFA3748
-	for <qemu-arm@archiver.kernel.org>; Fri,  2 Jan 2026 13:54:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1E24FA3729
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Jan 2026 15:05:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vbfbN-0002AD-46; Fri, 02 Jan 2026 08:54:01 -0500
+	id 1vbgi9-00082i-Hw; Fri, 02 Jan 2026 10:05:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vbfbL-00029q-MN
- for qemu-arm@nongnu.org; Fri, 02 Jan 2026 08:53:59 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1vbgi1-0007xG-Jh; Fri, 02 Jan 2026 10:04:59 -0500
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vbfbJ-0004ac-0E
- for qemu-arm@nongnu.org; Fri, 02 Jan 2026 08:53:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767362034;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=C54gSDSEV3qifavlFKXWwPqy9s7jOOQ45WNs/DMp1Zs=;
- b=ZYmB0SyYw7xlCf/wJCApC689g/fl5E63wHsymgs9tuncV3Lu9jjw600enkVLTsuafJVwF7
- WQjrd4ZTCKMq1acKwMSdwxKKDiC4Ele64dRxpFAsv03hGXBmY+ZjNNv39fiFUTFYn+ssQj
- 1JQrAFIoHBa99Rqk+L5TV3QewirWayY=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-528-lH2aVHUEPT-QKdeongbgoQ-1; Fri,
- 02 Jan 2026 08:53:53 -0500
-X-MC-Unique: lH2aVHUEPT-QKdeongbgoQ-1
-X-Mimecast-MFC-AGG-ID: lH2aVHUEPT-QKdeongbgoQ_1767362032
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B46E518011EE; Fri,  2 Jan 2026 13:53:52 +0000 (UTC)
-Received: from localhost (unknown [10.45.224.220])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B19811800576; Fri,  2 Jan 2026 13:53:51 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Eric Auger
- <eric.auger@redhat.com>
-Subject: Re: [PATCH for-11.0 v2] arm: add DCZID_EL0 to idregs array
-In-Reply-To: <20251127170657.3335112-1-cohuck@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Avril Crosse O'Flaherty"
-References: <20251127170657.3335112-1-cohuck@redhat.com>
-User-Agent: Notmuch/0.39 (https://notmuchmail.org)
-Date: Fri, 02 Jan 2026 14:53:48 +0100
-Message-ID: <87qzs8ruhf.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1vbghy-0001Zz-1B; Fri, 02 Jan 2026 10:04:57 -0500
+Received: from [192.168.10.110] (p865013-ipoe.ipoe.ocn.ne.jp [153.242.222.12])
+ (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 602F1nAk032541
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Sat, 3 Jan 2026 00:02:56 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=1h+hnK3OBi1TOOFX3eCgZtpm9N83bc+D4vaCQwqKoZQ=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=Message-ID:Date:Subject:From:To;
+ s=rs20250326; t=1767366176; v=1;
+ b=cedcn8hXv8DfGQJZXQ2ab/HHZFuyvLMfQnznz9/e/UiaC03r3irIX3AGpn+mB8TV
+ BmzX4cGV1Z22/2On1F6FigZdvd1D5DOtUrmTaTRhENz/58b3L0cRP/f5CLEZ0L6G
+ WVXh0JKjQ4MmNalDkm02RwHarXy4Crxf3meGrnZ0lHu6yISJOGtoh5hxGTS+XBMb
+ Y/Tfer+2+p9wlOStLu3aSSneW1bsBE/f3fw7ZyAxQz5Qv/72s4YaXSfs6h4I1Veo
+ 2h3CuKo1wUwl5AIEzw78wNGp+7Ld6h5xI+c+gijPWSJUW/2ZLiJRcA2OHpP16DCy
+ GBfT93Oz9QNzisghp5x0/g==
+Message-ID: <1806b1fe-c9b0-43d6-8dbf-c5389631f606@rsg.ci.i.u-tokyo.ac.jp>
+Date: Sat, 3 Jan 2026 00:01:49 +0900
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v13 06/28] hw/arm: virt: cleanly fail on attempt to use
+ the platform vGIC together with ITS
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
+Cc: Yanan Wang <wangyanan55@huawei.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Mads Ynddal <mads@ynddal.dk>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Peter Xu <peterx@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Cameron Esfahani
+ <dirty@apple.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Ani Sinha <anisinha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Alexander Graf <agraf@csgraf.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20251230000401.72124-1-mohamed@unpredictable.fr>
+ <20251230000401.72124-7-mohamed@unpredictable.fr>
+ <f0fc8c7c-50ad-408c-9127-a2404af4f28e@rsg.ci.i.u-tokyo.ac.jp>
+Content-Language: en-US
+In-Reply-To: <f0fc8c7c-50ad-408c-9127-a2404af4f28e@rsg.ci.i.u-tokyo.ac.jp>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,299 +91,232 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Nov 27 2025, Cornelia Huck <cohuck@redhat.com> wrote:
+On 2026/01/02 19:24, Akihiko Odaki wrote:
+> On 2025/12/30 9:03, Mohamed Mediouni wrote:
+>> Switch its to a tristate.
+>>
+>> Windows Hypervisor Platform's vGIC doesn't support ITS.
+>> Deal with this by reporting to the user and exiting.
+>>
+>> Regular configuration: GICv3 + ITS
+>> New default configuration with WHPX: GICv3 with GICv2m
+>> And its=off explicitly for the newest machine version: GICv3 + GICv2m
+>>
+>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>> ---
+>>   hw/arm/virt-acpi-build.c | 14 ++++++------
+>>   hw/arm/virt.c            | 46 +++++++++++++++++++++++++++++++---------
+>>   include/hw/arm/virt.h    |  4 +++-
+>>   3 files changed, 46 insertions(+), 18 deletions(-)
+>>
+>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+>> index 40ea6b6dd5..86024a1a73 100644
+>> --- a/hw/arm/virt-acpi-build.c
+>> +++ b/hw/arm/virt-acpi-build.c
+>> @@ -473,7 +473,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, 
+>> VirtMachineState *vms)
+>>           nb_nodes = num_smmus + 1; /* RC and SMMUv3 */
+>>           rc_mapping_count = rc_smmu_idmaps_len;
+>> -        if (vms->its) {
+>> +        if (virt_is_its_enabled(vms)) {
+>>               /*
+>>                * Knowing the ID ranges from the RC to the SMMU, it's 
+>> possible to
+>>                * determine the ID ranges from RC that go directly to ITS.
+>> @@ -484,7 +484,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, 
+>> VirtMachineState *vms)
+>>               rc_mapping_count += rc_its_idmaps->len;
+>>           }
+>>       } else {
+>> -        if (vms->its) {
+>> +        if (virt_is_its_enabled(vms)) {
+>>               nb_nodes = 2; /* RC and ITS */
+>>               rc_mapping_count = 1; /* Direct map to ITS */
+>>           } else {
+>> @@ -499,7 +499,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, 
+>> VirtMachineState *vms)
+>>       build_append_int_noprefix(table_data, IORT_NODE_OFFSET, 4);
+>>       build_append_int_noprefix(table_data, 0, 4); /* Reserved */
+>> -    if (vms->its) {
+>> +    if (virt_is_its_enabled(vms)) {
+>>           /* Table 12 ITS Group Format */
+>>           build_append_int_noprefix(table_data, 0 /* ITS Group */, 
+>> 1); /* Type */
+>>           node_size =  20 /* fixed header size */ + 4 /* 1 GIC ITS 
+>> Identifier */;
+>> @@ -518,7 +518,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, 
+>> VirtMachineState *vms)
+>>           int smmu_mapping_count, offset_to_id_array;
+>>           int irq = sdev->irq;
+>> -        if (vms->its) {
+>> +        if (virt_is_its_enabled(vms)) {
+>>               smmu_mapping_count = 1; /* ITS Group node */
+>>               offset_to_id_array = SMMU_V3_ENTRY_SIZE; /* Just after 
+>> the header */
+>>           } else {
+>> @@ -611,7 +611,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, 
+>> VirtMachineState *vms)
+>>               }
+>>           }
+>> -        if (vms->its) {
+>> +        if (virt_is_its_enabled(vms)) {
+>>               /*
+>>                * Map bypassed (don't go through the SMMU) RIDs (input) to
+>>                * ITS Group node directly: RC -> ITS.
+>> @@ -946,7 +946,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, 
+>> VirtMachineState *vms)
+>>                                             
+>> memmap[VIRT_HIGH_GIC_REDIST2].size);
+>>           }
+>> -        if (vms->its) {
+>> +        if (virt_is_its_enabled(vms)) {
+>>               /*
+>>                * ACPI spec, Revision 6.0 Errata A
+>>                * (original 6.0 definition has invalid Length)
+>> @@ -962,7 +962,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, 
+>> VirtMachineState *vms)
+>>           }
+>>       }
+>> -    if (!(vms->gic_version != VIRT_GIC_VERSION_2 && vms->its)
+>> +    if (!(vms->gic_version != VIRT_GIC_VERSION_2 && 
+>> virt_is_its_enabled(vms))
+>>        && !vms->no_gicv3_with_gicv2m) {
+>>           const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + 
+>> ARM_SPI_BASE;
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 0fb8dcb07d..dcdb740586 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -737,7 +737,7 @@ static void create_its(VirtMachineState *vms)
+>>   {
+>>       DeviceState *dev;
+>> -    assert(vms->its);
+>> +    assert(virt_is_its_enabled(vms));
+>>       if (!kvm_irqchip_in_kernel() && !vms->tcg_its) {
+>>           /*
+>>            * Do nothing if ITS is neither supported by the host nor 
+>> emulated by
+>> @@ -746,6 +746,15 @@ static void create_its(VirtMachineState *vms)
+>>           return;
+>>       }
+>> +    if (whpx_enabled() && vms->tcg_its) {
 
-> This requires a bit of care, since we still have to handle the EL
-> specific part (DCZID_EL0.DZP). Callers can set/access dcz_blocksize
-> via a wrapper working on DCZID_EL.BS.
->
-> KVM currently does not support DCZID_EL0 via ONE_REG, assert that
-> we're not trying to do anything with it until it does.
->
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+The check of vms->tcg_its is apparently extraneous and should be removed.
 
-Oh, it's been some time... the new year might be a good occasion for a
-friendly ping :)
+tcg_its is a compatibility flag that tells not to emulate ITS when kvm 
+is enabled for old machine versions and has nothing to do with whpx. 
+Having vms->tcg_its in the condition lets the machine create ITS for old 
+machine versions even if whpx is enabled.
 
-> ---
-> Changes v1 -> v2:
-> - use extract64/deposit64, tweak helper names
-> - assert that we're not using the reg while running under kvm, instead
->   of providing an incorrect dummy value
-> ---
->  target/arm/cpu-sysregs.h.inc   |  1 +
->  target/arm/cpu.c               |  2 +-
->  target/arm/cpu.h               | 14 ++++++++++++--
->  target/arm/cpu64.c             |  4 ++--
->  target/arm/helper.c            |  5 ++++-
->  target/arm/tcg/cpu64.c         | 22 +++++++++++-----------
->  target/arm/tcg/helper-a64.c    |  2 +-
->  target/arm/tcg/mte_helper.c    |  4 ++--
->  target/arm/tcg/translate-a64.c |  2 +-
->  target/arm/tcg/translate.h     |  2 +-
->  10 files changed, 36 insertions(+), 22 deletions(-)
->
-> diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
-> index 2bb2861c6234..7f3aa8b991aa 100644
-> --- a/target/arm/cpu-sysregs.h.inc
-> +++ b/target/arm/cpu-sysregs.h.inc
-> @@ -39,3 +39,4 @@ DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
->  DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
->  DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
->  DEF(CTR_EL0, 3, 3, 0, 0, 1)
-> +DEF(DCZID_EL0, 3, 3, 0, 0, 7)
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 39292fb9bc1f..557af43a9709 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -2184,7 +2184,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->  #endif
->  
->      if (tcg_enabled()) {
-> -        int dcz_blocklen = 4 << cpu->dcz_blocksize;
-> +        int dcz_blocklen = 4 << get_dczid_bs(cpu);
->  
->          /*
->           * We only support DCZ blocklen that fits on one page.
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 39f2b2e54deb..32f003705551 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1111,8 +1111,6 @@ struct ArchCPU {
->      bool prop_pauth_qarma5;
->      bool prop_lpa2;
->  
-> -    /* DCZ blocksize, in log_2(words), ie low 4 bits of DCZID_EL0 */
-> -    uint8_t dcz_blocksize;
->      /* GM blocksize, in log_2(words), ie low 4 bits of GMID_EL0 */
->      uint8_t gm_blocksize;
->  
-> @@ -1178,6 +1176,18 @@ struct ARMCPUClass {
->      ResettablePhases parent_phases;
->  };
->  
-> +static inline uint8_t get_dczid_bs(ARMCPU *cpu)
-> +{
-> +    return extract64(cpu->isar.idregs[DCZID_EL0_IDX], 0, 4);
-> +}
-> +
-> +static inline void set_dczid_bs(ARMCPU *cpu, uint8_t bs)
-> +{
-> +    /* keep dzp unchanged */
-> +    cpu->isar.idregs[DCZID_EL0_IDX] =
-> +        deposit64(cpu->isar.idregs[DCZID_EL0_IDX], 0, 4, bs);
-> +}
-> +
->  /* Callback functions for the generic timer's timers. */
->  void arm_gt_ptimer_cb(void *opaque);
->  void arm_gt_vtimer_cb(void *opaque);
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index ae84d8e42050..151698fa0472 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -689,7 +689,7 @@ static void aarch64_a57_initfn(Object *obj)
->      cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 3, 64, 48 * KiB, 2);
->      /* 2048KB L2 cache */
->      cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 2 * MiB, 7);
-> -    cpu->dcz_blocksize = 4; /* 64 bytes */
-> +    set_dczid_bs(cpu, 4); /* 64 bytes */
->      cpu->gic_num_lrs = 4;
->      cpu->gic_vpribits = 5;
->      cpu->gic_vprebits = 5;
-> @@ -751,7 +751,7 @@ static void aarch64_a53_initfn(Object *obj)
->      cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 1, 64, 32 * KiB, 2);
->      /* 1024KB L2 cache */
->      cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 1 * MiB, 7);
-> -    cpu->dcz_blocksize = 4; /* 64 bytes */
-> +    set_dczid_bs(cpu, 4); /* 64 bytes */
->      cpu->gic_num_lrs = 4;
->      cpu->gic_vpribits = 5;
->      cpu->gic_vprebits = 5;
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 27ebc6f29b82..aa111ce9c047 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -3320,11 +3320,14 @@ static uint64_t aa64_dczid_read(CPUARMState *env, const ARMCPRegInfo *ri)
->      ARMCPU *cpu = env_archcpu(env);
->      int dzp_bit = 1 << 4;
->  
-> +    assert(!kvm_enabled());
-> +
->      /* DZP indicates whether DC ZVA access is allowed */
->      if (aa64_zva_access(env, NULL, false) == CP_ACCESS_OK) {
->          dzp_bit = 0;
->      }
-> -    return cpu->dcz_blocksize | dzp_bit;
-> +
-> +    return cpu->isar.idregs[DCZID_EL0_IDX] | dzp_bit;
->  }
->  
->  static CPAccessResult sp_el0_access(CPUARMState *env, const ARMCPRegInfo *ri,
-> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-> index 6871956382f7..91b1c53aeb9c 100644
-> --- a/target/arm/tcg/cpu64.c
-> +++ b/target/arm/tcg/cpu64.c
-> @@ -72,7 +72,7 @@ static void aarch64_a35_initfn(Object *obj)
->      SET_IDREG(isar, ID_AA64MMFR0, 0x00101122);
->      SET_IDREG(isar, ID_AA64MMFR1, 0);
->      SET_IDREG(isar, CLIDR, 0x0a200023);
-> -    cpu->dcz_blocksize = 4;
-> +    set_dczid_bs(cpu, 4);
->  
->      /* From B2.4 AArch64 Virtual Memory control registers */
->      cpu->reset_sctlr = 0x00c50838;
-> @@ -219,7 +219,7 @@ static void aarch64_a55_initfn(Object *obj)
->      /* Ordered by B2.4 AArch64 registers by functional group */
->      SET_IDREG(isar, CLIDR, 0x82000023);
->      cpu->ctr = 0x84448004; /* L1Ip = VIPT */
-> -    cpu->dcz_blocksize = 4; /* 64 bytes */
-> +    set_dczid_bs(cpu, 4); /* 64 bytes */
->      SET_IDREG(isar, ID_AA64DFR0, 0x0000000010305408ull);
->      SET_IDREG(isar, ID_AA64ISAR0, 0x0000100010211120ull);
->      SET_IDREG(isar, ID_AA64ISAR1, 0x0000000000100001ull);
-> @@ -325,7 +325,7 @@ static void aarch64_a72_initfn(Object *obj)
->      cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 3, 64, 48 * KiB, 2);
->      /* 1MB L2 cache */
->      cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 1 * MiB, 7);
-> -    cpu->dcz_blocksize = 4; /* 64 bytes */
-> +    set_dczid_bs(cpu, 4); /* 64 bytes */
->      cpu->gic_num_lrs = 4;
->      cpu->gic_vpribits = 5;
->      cpu->gic_vprebits = 5;
-> @@ -352,7 +352,7 @@ static void aarch64_a76_initfn(Object *obj)
->      /* Ordered by B2.4 AArch64 registers by functional group */
->      SET_IDREG(isar, CLIDR, 0x82000023);
->      cpu->ctr = 0x8444C004;
-> -    cpu->dcz_blocksize = 4;
-> +    set_dczid_bs(cpu, 4);
->      SET_IDREG(isar, ID_AA64DFR0, 0x0000000010305408ull);
->      SET_IDREG(isar, ID_AA64ISAR0, 0x0000100010211120ull);
->      SET_IDREG(isar, ID_AA64ISAR1, 0x0000000000100001ull);
-> @@ -424,7 +424,7 @@ static void aarch64_a78ae_initfn(Object *obj)
->      /* Ordered by 3.2.4 AArch64 registers by functional group */
->      SET_IDREG(isar, CLIDR, 0x82000023);
->      cpu->ctr = 0x9444c004;
-> -    cpu->dcz_blocksize = 4;
-> +    set_dczid_bs(cpu, 4);
->      SET_IDREG(isar, ID_AA64DFR0, 0x0000000110305408ull);
->      SET_IDREG(isar, ID_AA64ISAR0, 0x0010100010211120ull);
->      SET_IDREG(isar, ID_AA64ISAR1, 0x0000000001200031ull);
-> @@ -517,7 +517,7 @@ static void aarch64_a64fx_initfn(Object *obj)
->      cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 256, 64 * KiB, 2);
->      /* 8MB L2 cache */
->      cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 256, 8 * MiB, 7);
-> -    cpu->dcz_blocksize = 6; /* 256 bytes */
-> +    set_dczid_bs(cpu, 6); /* 256 bytes */
->      cpu->gic_num_lrs = 4;
->      cpu->gic_vpribits = 5;
->      cpu->gic_vprebits = 5;
-> @@ -673,7 +673,7 @@ static void aarch64_neoverse_n1_initfn(Object *obj)
->      /* Ordered by B2.4 AArch64 registers by functional group */
->      SET_IDREG(isar, CLIDR, 0x82000023);
->      cpu->ctr = 0x8444c004;
-> -    cpu->dcz_blocksize = 4;
-> +    set_dczid_bs(cpu, 4);
->      SET_IDREG(isar, ID_AA64DFR0, 0x0000000110305408ull);
->      SET_IDREG(isar, ID_AA64ISAR0, 0x0000100010211120ull);
->      SET_IDREG(isar, ID_AA64ISAR1, 0x0000000000100001ull);
-> @@ -749,7 +749,7 @@ static void aarch64_neoverse_v1_initfn(Object *obj)
->      /* Ordered by 3.2.4 AArch64 registers by functional group */
->      SET_IDREG(isar, CLIDR, 0x82000023);
->      cpu->ctr = 0xb444c004; /* With DIC and IDC set */
-> -    cpu->dcz_blocksize = 4;
-> +    set_dczid_bs(cpu, 4);
->      SET_IDREG(isar, ID_AA64AFR0, 0x00000000);
->      SET_IDREG(isar, ID_AA64AFR1, 0x00000000);
->      SET_IDREG(isar, ID_AA64DFR0, 0x000001f210305519ull);
-> @@ -1011,7 +1011,7 @@ static void aarch64_a710_initfn(Object *obj)
->      SET_IDREG(isar, CLIDR, 0x0000001482000023ull);
->      cpu->gm_blocksize      = 4;
->      cpu->ctr               = 0x000000049444c004ull;
-> -    cpu->dcz_blocksize     = 4;
-> +    set_dczid_bs(cpu, 4);
->      /* TODO FEAT_MPAM: mpamidr_el1 = 0x0000_0001_0006_003f */
->  
->      /* Section B.5.2: PMCR_EL0 */
-> @@ -1113,7 +1113,7 @@ static void aarch64_neoverse_n2_initfn(Object *obj)
->      SET_IDREG(isar, CLIDR, 0x0000001482000023ull);
->      cpu->gm_blocksize      = 4;
->      cpu->ctr               = 0x00000004b444c004ull;
-> -    cpu->dcz_blocksize     = 4;
-> +    set_dczid_bs(cpu, 4);
->      /* TODO FEAT_MPAM: mpamidr_el1 = 0x0000_0001_001e_01ff */
->  
->      /* Section B.7.2: PMCR_EL0 */
-> @@ -1377,7 +1377,7 @@ void aarch64_max_tcg_initfn(Object *obj)
->       * blocksize since we don't have to follow what the hardware does.
->       */
->      cpu->ctr = 0x80038003; /* 32 byte I and D cacheline size, VIPT icache */
-> -    cpu->dcz_blocksize = 7; /*  512 bytes */
-> +    set_dczid_bs(cpu, 7); /*  512 bytes */
->  #endif
->      cpu->gm_blocksize = 6;  /*  256 bytes */
->  
-> diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-> index ba1d775d818e..e4d2c2e3928c 100644
-> --- a/target/arm/tcg/helper-a64.c
-> +++ b/target/arm/tcg/helper-a64.c
-> @@ -792,7 +792,7 @@ void HELPER(dc_zva)(CPUARMState *env, uint64_t vaddr_in)
->       * (which matches the usual QEMU behaviour of not implementing either
->       * alignment faults or any memory attribute handling).
->       */
-> -    int blocklen = 4 << env_archcpu(env)->dcz_blocksize;
-> +    int blocklen = 4 << get_dczid_bs(env_archcpu(env));
->      uint64_t vaddr = vaddr_in & ~(blocklen - 1);
->      int mmu_idx = arm_env_mmu_index(env);
->      void *mem;
-> diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-> index bb48fe359b8c..08b8e7176a6a 100644
-> --- a/target/arm/tcg/mte_helper.c
-> +++ b/target/arm/tcg/mte_helper.c
-> @@ -545,7 +545,7 @@ void HELPER(stzgm_tags)(CPUARMState *env, uint64_t ptr, uint64_t val)
->       * i.e. 32 bytes, which is an unreasonably small dcz anyway,
->       * to make sure that we can access one complete tag byte here.
->       */
-> -    log2_dcz_bytes = env_archcpu(env)->dcz_blocksize + 2;
-> +    log2_dcz_bytes = get_dczid_bs(env_archcpu(env)) + 2;
->      log2_tag_bytes = log2_dcz_bytes - (LOG2_TAG_GRANULE + 1);
->      dcz_bytes = (intptr_t)1 << log2_dcz_bytes;
->      tag_bytes = (intptr_t)1 << log2_tag_bytes;
-> @@ -945,7 +945,7 @@ uint64_t HELPER(mte_check_zva)(CPUARMState *env, uint32_t desc, uint64_t ptr)
->       * i.e. 32 bytes, which is an unreasonably small dcz anyway, to make
->       * sure that we can access one complete tag byte here.
->       */
-> -    log2_dcz_bytes = env_archcpu(env)->dcz_blocksize + 2;
-> +    log2_dcz_bytes = get_dczid_bs(env_archcpu(env)) + 2;
->      log2_tag_bytes = log2_dcz_bytes - (LOG2_TAG_GRANULE + 1);
->      dcz_bytes = (intptr_t)1 << log2_dcz_bytes;
->      tag_bytes = (intptr_t)1 << log2_tag_bytes;
-> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-> index 08b21d7dbfa6..3ae3faaeed4b 100644
-> --- a/target/arm/tcg/translate-a64.c
-> +++ b/target/arm/tcg/translate-a64.c
-> @@ -10712,7 +10712,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
->      dc->vec_stride = 0;
->      dc->cp_regs = arm_cpu->cp_regs;
->      dc->features = env->features;
-> -    dc->dcz_blocksize = arm_cpu->dcz_blocksize;
-> +    dc->dcz_blocksize = get_dczid_bs(arm_cpu);
->      dc->gm_blocksize = arm_cpu->gm_blocksize;
->  
->  #ifdef CONFIG_USER_ONLY
-> diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-> index b62104b4ae88..1e30d7c77c37 100644
-> --- a/target/arm/tcg/translate.h
-> +++ b/target/arm/tcg/translate.h
-> @@ -193,7 +193,7 @@ typedef struct DisasContext {
->       *  < 0, set by the current instruction.
->       */
->      int8_t btype;
-> -    /* A copy of cpu->dcz_blocksize. */
-> +    /* A copy of DCZID_EL0.BS. */
->      uint8_t dcz_blocksize;
->      /* A copy of cpu->gm_blocksize. */
->      uint8_t gm_blocksize;
-> -- 
-> 2.51.1
+ITS should be disabled whenever whpx is enabled since "ITS is neither 
+supported by the host nor emulated by the machine" as the following 
+comment points out.
+
+>> +        /*
+>> +         * Signal to the user when ITS is neither supported by the host
+>> +         * nor emulated by the machine.
+>> +         */
+>> +        info_report("ITS not supported on WHPX.");
+> 
+> This use of info_report() is unusual. Any other configuration problems 
+> are reported with error_report() in this file. Please maintain consistency.
+> 
+>> +        exit(1);
+>> +    }
+>> +
+>>       dev = qdev_new(its_class_name());
+>>       object_property_set_link(OBJECT(dev), "parent-gicv3", 
+>> OBJECT(vms->gic),
+>> @@ -957,7 +966,7 @@ static void create_gic(VirtMachineState *vms, 
+>> MemoryRegion *mem)
+>>       fdt_add_gic_node(vms);
+>> -    if (vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) {
+>> +    if (vms->gic_version != VIRT_GIC_VERSION_2 && 
+>> virt_is_its_enabled(vms)) {
+>>           create_its(vms);
+>>       } else if (vms->gic_version != VIRT_GIC_VERSION_2 && !vms- 
+>> >no_gicv3_with_gicv2m) {
+>>           create_v2m(vms);
+>> @@ -2699,18 +2708,34 @@ static void virt_set_highmem_mmio_size(Object 
+>> *obj, Visitor *v,
+>>       extended_memmap[VIRT_HIGH_PCIE_MMIO].size = size;
+>>   }
+>> -static bool virt_get_its(Object *obj, Error **errp)
+>> +bool virt_is_its_enabled(VirtMachineState *vms)
+>> +{
+>> +    if (vms->its == ON_OFF_AUTO_OFF) {
+>> +        return false;
+>> +    }
+>> +    if (vms->its == ON_OFF_AUTO_AUTO) {
+>> +        if (whpx_enabled()) {
+>> +            return false;
+>> +        }
+>> +    }
+>> +    return true;
+>> +}
+>> +
+>> +static void virt_get_its(Object *obj, Visitor *v, const char *name,
+>> +                          void *opaque, Error **errp)
+>>   {
+>>       VirtMachineState *vms = VIRT_MACHINE(obj);
+>> +    OnOffAuto its = vms->its;
+>> -    return vms->its;
+>> +    visit_type_OnOffAuto(v, name, &its, errp);
+>>   }
+>> -static void virt_set_its(Object *obj, bool value, Error **errp)
+>> +static void virt_set_its(Object *obj, Visitor *v, const char *name,
+>> +                          void *opaque, Error **errp)
+>>   {
+>>       VirtMachineState *vms = VIRT_MACHINE(obj);
+>> -    vms->its = value;
+>> +    visit_type_OnOffAuto(v, name, &vms->its, errp);
+>>   }
+>>   static bool virt_get_dtb_randomness(Object *obj, Error **errp)
+>> @@ -3427,8 +3452,9 @@ static void virt_machine_class_init(ObjectClass 
+>> *oc, const void *data)
+>>                                             "guest CPU which 
+>> implements the ARM "
+>>                                             "Memory Tagging Extension");
+>> -    object_class_property_add_bool(oc, "its", virt_get_its,
+>> -                                   virt_set_its);
+>> +    object_class_property_add(oc, "its", "OnOffAuto",
+>> +        virt_get_its, virt_set_its,
+>> +        NULL, NULL);
+>>       object_class_property_set_description(oc, "its",
+>>                                             "Set on/off to enable/ 
+>> disable "
+>>                                             "ITS instantiation");
+>> @@ -3488,8 +3514,8 @@ static void virt_instance_init(Object *obj)
+>>       vms->highmem_mmio = true;
+>>       vms->highmem_redists = true;
+>> -    /* Default allows ITS instantiation */
+>> -    vms->its = true;
+>> +    /* Default allows ITS instantiation if available */
+>> +    vms->its = ON_OFF_AUTO_AUTO;
+>>       /* Allow ITS emulation if the machine version supports it */
+>>       vms->tcg_its = !vmc->no_tcg_its;
+>>       vms->no_gicv3_with_gicv2m = false;
+>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>> index c5bc47ee88..394b70c62e 100644
+>> --- a/include/hw/arm/virt.h
+>> +++ b/include/hw/arm/virt.h
+>> @@ -147,7 +147,7 @@ struct VirtMachineState {
+>>       bool highmem_ecam;
+>>       bool highmem_mmio;
+>>       bool highmem_redists;
+>> -    bool its;
+>> +    OnOffAuto its;
+>>       bool tcg_its;
+>>       bool virt;
+>>       bool ras;
+>> @@ -216,4 +216,6 @@ static inline int 
+>> virt_gicv3_redist_region_count(VirtMachineState *vms)
+>>               vms->highmem_redists) ? 2 : 1;
+>>   }
+>> +bool virt_is_its_enabled(VirtMachineState *vms);
+>> +
+>>   #endif /* QEMU_ARM_VIRT_H */
+> 
 
 

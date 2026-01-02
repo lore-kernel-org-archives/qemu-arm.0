@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FB4BFA3727
-	for <qemu-arm@archiver.kernel.org>; Fri,  2 Jan 2026 09:43:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0484FA3726
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Jan 2026 10:27:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vbbgc-0007WU-32; Fri, 02 Jan 2026 04:43:11 -0500
+	id 1vbcNG-0001z2-6m; Fri, 02 Jan 2026 05:27:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vbbgW-0007Un-B8; Fri, 02 Jan 2026 04:43:05 -0500
+ id 1vbcNF-0001yp-0g; Fri, 02 Jan 2026 05:27:13 -0500
 Received: from www3579.sakura.ne.jp ([49.212.243.89])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vbbgP-0003b5-Ks; Fri, 02 Jan 2026 04:43:02 -0500
+ id 1vbcNB-00053H-TJ; Fri, 02 Jan 2026 05:27:12 -0500
 Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
  (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 6029fjCv037334
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 602AOi2u049471
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Fri, 2 Jan 2026 18:41:49 +0900 (JST)
+ Fri, 2 Jan 2026 19:25:57 +0900 (JST)
  (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=AyPWekWPBOxdSCAtxAdJSXgOlEea5UXlyVK1fV0ACGA=; 
+DKIM-Signature: a=rsa-sha256; bh=3geGrFgBt5e0G3GddPQ+io0iQu1LWTDlk/sm73SHQew=; 
  c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
  h=Message-ID:Date:Subject:To:From;
- s=rs20250326; t=1767346910; v=1;
- b=amXil69PcaljsSCIYOnZ8GzJfwsNbiYZ2iCxw0Ov9BCELpYNhElJFjVYsoSPzL34
- G34RUUwSSvk3XdluOzEo18mih4rlAoCmqzBK7GvTdGRZh6mCR2yz+7FGbMfsZuGI
- VItH+7b5+SOIoJiwBJv4l3FBJTroD93M2N3D+cvH/9ueyt7sxdxe5u1toL+NZn0y
- Wnv+P3mzwxfD3T3Soxsmxi5nXDTjBQZknFznqH6f0wauUJdYBJp6ePEs4rK/4/3a
- J8rziGELNQNUZW6Vh38yiqY66qdQWBpdEIeNmcY7FEK3yU1M2T4xyK1pcYOGcxRn
- IlbPV7GlAgC2u61kyDrugQ==
-Message-ID: <99da59b7-8bd8-4746-a0dd-9a04b82c515d@rsg.ci.i.u-tokyo.ac.jp>
-Date: Fri, 2 Jan 2026 18:41:41 +0900
+ s=rs20250326; t=1767349558; v=1;
+ b=vjNGV0JslOkEfDDiSSXEHaGa12Ug3jhgTMnxvILwEIrIpjUdNATvqzEaTZRsg1Sa
+ vK6ZRq8312CFtLL3HJWKMYPPExLsLegR3pscp3xjIT4Soh2gNHmai7hamtUwwAEy
+ hhKNHPit7CmzFdEa6Lb2tyD+IKxHPsbSl/lpK33jdZvOIq6BBD4iwQrsYNqXqYRC
+ gwe93I7IRrvJ9iC1KN6KT5+tWjWC9cGXYjXLGxQFg0c0hHGRxTAHkwwETUr11+XF
+ PYzVRVqXWMxdkUXzNVxYye/pHfxlj24RXbu9BHyA/Wn6DvDt7jxfWnOBHr2x3DAl
+ 7cRU3R4p2St+zp0+eFTwEw==
+Message-ID: <f0fc8c7c-50ad-408c-9127-a2404af4f28e@rsg.ci.i.u-tokyo.ac.jp>
+Date: Fri, 2 Jan 2026 19:24:44 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v13 00/28] WHPX support for Arm
+Subject: Re: [PATCH v13 06/28] hw/arm: virt: cleanly fail on attempt to use
+ the platform vGIC together with ITS
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: Yanan Wang <wangyanan55@huawei.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
  <alex.bennee@linaro.org>, "Michael S. Tsirkin" <mst@redhat.com>,
@@ -56,13 +57,15 @@ Cc: Yanan Wang <wangyanan55@huawei.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
  Alexander Graf <agraf@csgraf.de>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
 References: <20251230000401.72124-1-mohamed@unpredictable.fr>
+ <20251230000401.72124-7-mohamed@unpredictable.fr>
 Content-Language: en-US
 From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <20251230000401.72124-1-mohamed@unpredictable.fr>
+In-Reply-To: <20251230000401.72124-7-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=49.212.243.89;
  envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
 X-Spam_score_int: -16
@@ -88,223 +91,213 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 2025/12/30 9:03, Mohamed Mediouni wrote:
-> Link to branch: https://github.com/mediouni-m/qemu whpx (tag for this submission: whpx-v13)
+> Switch its to a tristate.
 > 
-> Missing features:
-> - VM save-restore: interrupt controller state notably
-> - SVE register sync: I didn't have the time to test this on pre-release hardware with SVE2 support yet.
-> So SVE2 is currently masked for VMs when running this.
+> Windows Hypervisor Platform's vGIC doesn't support ITS.
+> Deal with this by reporting to the user and exiting.
 > 
-> Known bugs:
-> - U-Boot still doesn't work (hangs when trying to parse firmware) but EDK2 does.
+> Regular configuration: GICv3 + ITS
+> New default configuration with WHPX: GICv3 with GICv2m
+> And its=off explicitly for the newest machine version: GICv3 + GICv2m
 > 
-> Note:
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>   hw/arm/virt-acpi-build.c | 14 ++++++------
+>   hw/arm/virt.c            | 46 +++++++++++++++++++++++++++++++---------
+>   include/hw/arm/virt.h    |  4 +++-
+>   3 files changed, 46 insertions(+), 18 deletions(-)
 > 
-> "target/arm/kvm: add constants for new PSCI versions" taken from the mailing list.
-> 
-> "accel/system: Introduce hwaccel_enabled() helper" taken from the mailing list, added here
-> as part of this series to make it compilable as a whole.
-> 
-> "hw/arm: virt: add GICv2m for the case when ITS is not available" present in both the HVF
-> vGIC and this series.
-> 
-> "hw: arm: virt-acpi-build: add temporary hack to match existing behavior" is
-> for ACPI stability but what is the right approach to follow there?
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 40ea6b6dd5..86024a1a73 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -473,7 +473,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>           nb_nodes = num_smmus + 1; /* RC and SMMUv3 */
+>           rc_mapping_count = rc_smmu_idmaps_len;
+>   
+> -        if (vms->its) {
+> +        if (virt_is_its_enabled(vms)) {
+>               /*
+>                * Knowing the ID ranges from the RC to the SMMU, it's possible to
+>                * determine the ID ranges from RC that go directly to ITS.
+> @@ -484,7 +484,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>               rc_mapping_count += rc_its_idmaps->len;
+>           }
+>       } else {
+> -        if (vms->its) {
+> +        if (virt_is_its_enabled(vms)) {
+>               nb_nodes = 2; /* RC and ITS */
+>               rc_mapping_count = 1; /* Direct map to ITS */
+>           } else {
+> @@ -499,7 +499,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>       build_append_int_noprefix(table_data, IORT_NODE_OFFSET, 4);
+>       build_append_int_noprefix(table_data, 0, 4); /* Reserved */
+>   
+> -    if (vms->its) {
+> +    if (virt_is_its_enabled(vms)) {
+>           /* Table 12 ITS Group Format */
+>           build_append_int_noprefix(table_data, 0 /* ITS Group */, 1); /* Type */
+>           node_size =  20 /* fixed header size */ + 4 /* 1 GIC ITS Identifier */;
+> @@ -518,7 +518,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>           int smmu_mapping_count, offset_to_id_array;
+>           int irq = sdev->irq;
+>   
+> -        if (vms->its) {
+> +        if (virt_is_its_enabled(vms)) {
+>               smmu_mapping_count = 1; /* ITS Group node */
+>               offset_to_id_array = SMMU_V3_ENTRY_SIZE; /* Just after the header */
+>           } else {
+> @@ -611,7 +611,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>               }
+>           }
+>   
+> -        if (vms->its) {
+> +        if (virt_is_its_enabled(vms)) {
+>               /*
+>                * Map bypassed (don't go through the SMMU) RIDs (input) to
+>                * ITS Group node directly: RC -> ITS.
+> @@ -946,7 +946,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>                                             memmap[VIRT_HIGH_GIC_REDIST2].size);
+>           }
+>   
+> -        if (vms->its) {
+> +        if (virt_is_its_enabled(vms)) {
+>               /*
+>                * ACPI spec, Revision 6.0 Errata A
+>                * (original 6.0 definition has invalid Length)
+> @@ -962,7 +962,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>           }
+>       }
+>   
+> -    if (!(vms->gic_version != VIRT_GIC_VERSION_2 && vms->its)
+> +    if (!(vms->gic_version != VIRT_GIC_VERSION_2 && virt_is_its_enabled(vms))
+>        && !vms->no_gicv3_with_gicv2m) {
+>           const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
+>   
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 0fb8dcb07d..dcdb740586 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -737,7 +737,7 @@ static void create_its(VirtMachineState *vms)
+>   {
+>       DeviceState *dev;
+>   
+> -    assert(vms->its);
+> +    assert(virt_is_its_enabled(vms));
+>       if (!kvm_irqchip_in_kernel() && !vms->tcg_its) {
+>           /*
+>            * Do nothing if ITS is neither supported by the host nor emulated by
+> @@ -746,6 +746,15 @@ static void create_its(VirtMachineState *vms)
+>           return;
+>       }
+>   
+> +    if (whpx_enabled() && vms->tcg_its) {
+> +        /*
+> +         * Signal to the user when ITS is neither supported by the host
+> +         * nor emulated by the machine.
+> +         */
+> +        info_report("ITS not supported on WHPX.");
 
-Since I missed this question in previous versions and seems no one have 
-answered yet; so I add my answer here:
+This use of info_report() is unusual. Any other configuration problems 
+are reported with error_report() in this file. Please maintain consistency.
 
-If the hack is intended to be temporary, it should be implemented with a 
-compatibility property.
-
-docs/devel/migration/compatibility.rst says "migration is only supposed 
-to work if you use the same machine type in both source and 
-destination." So it is fine to make a sensible change to the 
-guest-visible behavior for newer machine type versions.
-
-What's not tolerated is to break the existing versions. Please note that 
-such a rule is applied for *each patch* instead of the entire series. It 
-looks the patch series once creates a change of the ACPI table and patch 
-"hw: arm: virt-acpi-build: add temporary hack to match existing 
-behavior" reverts it. This prevents git bisect so should be avoided 
-according to: docs/devel/submitting-a-patch.rst
-
-I think making a change is fine as long as the rules described in the 
-documentation are followed and it "makes sense" in general; I cannot 
-really tell if it makes sense since I have rarely touched that 
-particular code, but you can actually send a patch to make the change, 
-possibily with the RFC tag, and ask for review.
-
-Regards,
-Akihiko Odaki
-
-> 
-> And another note:
-> 
-> Seems that unlike HVF there isn't direct correspondence between WHv registers and the actual register layout,
-> so didn't do changes there to a sysreg.inc.
-> 
-> Updates since v12:
-> - Address review comments and make sure that checkpatch shows no errors, make test also ran
-> - Tested the Windows x86_64 build too in addition to Windows arm64 and macOS arm64
-> - Hopefully the last revision, should be ready to merge.
-> 
-> Updates since v11:
-> - Address review comments
-> - Rebase up to latest staging
-> - Switch to assuming Qemu 11.0 as the newest machine model
-> 
-> Updates since v10:
-> - Bring forward to latest Qemu
-> - Fix a typo in the GICv3+GICv2m PR
-> 
-> Updates since v9:
-> - Adding partition reset on the reboot side of things...
-> 
-> Updates since v8:
-> - v9 and v8 were not submitted properly because of my MTA not behaving, sorry for that.
-> - v10 introduces a new argument, -M msi=, to handle MSI-X configuration more granularly.
-> - That surfaced what I think is a bug (?), with vms->its=1 on GICv2 configurations... or I did understand everything wrong.
-> - Oopsie due to email provider ratelimiting.
-> 
-> Updates since v7:
-> - Oops, fixing bug in "hw/arm: virt: cleanly fail on attempt to use the platform vGIC together with ITS".
-> Other commits are unchanged.
-> 
-> Updates since v6:
-> - Rebasing
-> - Fixing a bug in the GICv3+GICv2m case for ACPI table generation
-> - getting rid of the slots infrastructure for memory management
-> - Place the docs commit right after the "cleanly fail on attempt to run GICv3+GICv2m on an unsupported config" one
-> as that's what switches ITS to a tristate.
-> - Fixing a build issue when getting rid of the arch-specific arm64 hvf-stub.
-> 
-> Updates since v5:
-> - Rebasing
-> - Address review comments
-> - Rework ITS enablement to a tristate
-> - On x86: move away from deprecated APIs to get/set APIC state
-> 
-> Updates since v4:
-> - Taking into account review comments
-> - Add migration blocker in the vGICv3 code due to missing interrupt controller save/restore
-> - Debug register sync
-> 
-> Updates since v3:
-> - Disabling SVE on WHPX
-> - Taking into account review comments incl:
-> 
-> - fixing x86 support
-> - reduce the amount of __x86_64__ checks in common code to the minimum (winhvemulation)
-> which can be reduced even further down the road.
-> - generalize get_physical_address_range into something common between hvf and whpx
-> 
-> Updates since v2:
-> - Fixed up a rebase screwup for whpx-internal.h
-> - Fixed ID_AA64ISAR1_EL1 and ID_AA64ISAR2_EL1 feature probe for -cpu host
-> - Switched to ID_AA64PFR1_EL1/ID_AA64DFR0_EL1 instead of their non-AA64 variant
-> 
-> Updates since v1:
-> - Shutdowns and reboots
-> - MPIDR_EL1 register sync
-> - Fixing GICD_TYPER_LPIS value
-> - IPA size clamping
-> - -cpu host now implemented
-> 
-> Mohamed Mediouni (26):
->    qtest: hw/arm: virt: skip ACPI test for ITS off
->    hw/arm: virt: add GICv2m for the case when ITS is not available
->    tests: data: update AArch64 ACPI tables
->    hw/arm: virt: cleanly fail on attempt to use the platform vGIC
->      together with ITS
->    hw: arm: virt: rework MSI-X configuration
->    hw: arm: virt-acpi-build: add temporary hack to match existing
->      behavior
->    docs: arm: update virt machine model description
->    whpx: Move around files before introducing AArch64 support
->    whpx: reshuffle common code
->    whpx: ifdef out winhvemulation on non-x86_64
->    whpx: common: add WHPX_INTERCEPT_DEBUG_TRAPS define
->    hw, target, accel: whpx: change apic_in_platform to kernel_irqchip
->    whpx: interrupt controller support
->    whpx: add arm64 support
->    whpx: change memory management logic
->    target/arm: cpu: mark WHPX as supporting PSCI 1.3
->    whpx: arm64: clamp down IPA size
->    hw/arm, accel/hvf, whpx: unify get_physical_address_range between WHPX
->      and HVF
->    whpx: arm64: implement -cpu host
->    target/arm: whpx: instantiate GIC early
->    whpx: arm64: gicv3: add migration blocker
->    whpx: enable arm64 builds
->    whpx: apic: use non-deprecated APIs to control interrupt controller
->      state
->    whpx: arm64: check for physical address width after WHPX availability
->    whpx: arm64: add partition-wide reset on the reboot path
->    MAINTAINERS: update the list of maintained files for WHPX
-> 
-> Philippe Mathieu-Daudé (1):
->    accel/system: Introduce hwaccel_enabled() helper
-> 
-> Sebastian Ott (1):
->    target/arm/kvm: add constants for new PSCI versions
-> 
->   MAINTAINERS                                   |    6 +
->   accel/hvf/hvf-all.c                           |    7 +-
->   accel/meson.build                             |    1 +
->   accel/stubs/whpx-stub.c                       |    1 +
->   accel/whpx/meson.build                        |    7 +
->   {target/i386 => accel}/whpx/whpx-accel-ops.c  |    6 +-
->   accel/whpx/whpx-common.c                      |  536 +++++++++
->   docs/system/arm/virt.rst                      |   13 +-
->   hw/arm/virt-acpi-build.c                      |   16 +-
->   hw/arm/virt.c                                 |  140 ++-
->   hw/i386/x86-cpu.c                             |    4 +-
->   hw/intc/arm_gicv3_common.c                    |    3 +
->   hw/intc/arm_gicv3_whpx.c                      |  249 ++++
->   hw/intc/meson.build                           |    1 +
->   include/hw/arm/virt.h                         |    8 +-
->   include/hw/core/boards.h                      |    3 +-
->   include/hw/intc/arm_gicv3_common.h            |    3 +
->   include/system/hvf_int.h                      |    5 +
->   include/system/hw_accel.h                     |   13 +
->   .../whpx => include/system}/whpx-accel-ops.h  |    4 +-
->   include/system/whpx-all.h                     |   20 +
->   include/system/whpx-common.h                  |   26 +
->   .../whpx => include/system}/whpx-internal.h   |   25 +-
->   include/system/whpx.h                         |    5 +-
->   meson.build                                   |   20 +-
->   target/arm/cpu.c                              |    3 +
->   target/arm/cpu64.c                            |   17 +-
->   target/arm/hvf-stub.c                         |   20 -
->   target/arm/hvf/hvf.c                          |    6 +-
->   target/arm/hvf_arm.h                          |    3 -
->   target/arm/kvm-consts.h                       |    2 +
->   target/arm/meson.build                        |    2 +-
->   target/arm/whpx/meson.build                   |    5 +
->   target/arm/whpx/whpx-all.c                    | 1020 +++++++++++++++++
->   target/arm/whpx/whpx-stub.c                   |   15 +
->   target/arm/whpx_arm.h                         |   17 +
->   target/i386/cpu-apic.c                        |    2 +-
->   target/i386/hvf/hvf.c                         |   11 +
->   target/i386/whpx/meson.build                  |    1 -
->   target/i386/whpx/whpx-all.c                   |  569 +--------
->   target/i386/whpx/whpx-apic.c                  |   48 +-
->   tests/data/acpi/aarch64/virt/APIC.its_off     |  Bin 164 -> 188 bytes
->   42 files changed, 2215 insertions(+), 648 deletions(-)
->   create mode 100644 accel/whpx/meson.build
->   rename {target/i386 => accel}/whpx/whpx-accel-ops.c (96%)
->   create mode 100644 accel/whpx/whpx-common.c
->   create mode 100644 hw/intc/arm_gicv3_whpx.c
->   rename {target/i386/whpx => include/system}/whpx-accel-ops.h (92%)
->   create mode 100644 include/system/whpx-all.h
->   create mode 100644 include/system/whpx-common.h
->   rename {target/i386/whpx => include/system}/whpx-internal.h (88%)
->   delete mode 100644 target/arm/hvf-stub.c
->   create mode 100644 target/arm/whpx/meson.build
->   create mode 100644 target/arm/whpx/whpx-all.c
->   create mode 100644 target/arm/whpx/whpx-stub.c
->   create mode 100644 target/arm/whpx_arm.h
-> 
+> +        exit(1);
+> +    }
+> +
+>       dev = qdev_new(its_class_name());
+>   
+>       object_property_set_link(OBJECT(dev), "parent-gicv3", OBJECT(vms->gic),
+> @@ -957,7 +966,7 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+>   
+>       fdt_add_gic_node(vms);
+>   
+> -    if (vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) {
+> +    if (vms->gic_version != VIRT_GIC_VERSION_2 && virt_is_its_enabled(vms)) {
+>           create_its(vms);
+>       } else if (vms->gic_version != VIRT_GIC_VERSION_2 && !vms->no_gicv3_with_gicv2m) {
+>           create_v2m(vms);
+> @@ -2699,18 +2708,34 @@ static void virt_set_highmem_mmio_size(Object *obj, Visitor *v,
+>       extended_memmap[VIRT_HIGH_PCIE_MMIO].size = size;
+>   }
+>   
+> -static bool virt_get_its(Object *obj, Error **errp)
+> +bool virt_is_its_enabled(VirtMachineState *vms)
+> +{
+> +    if (vms->its == ON_OFF_AUTO_OFF) {
+> +        return false;
+> +    }
+> +    if (vms->its == ON_OFF_AUTO_AUTO) {
+> +        if (whpx_enabled()) {
+> +            return false;
+> +        }
+> +    }
+> +    return true;
+> +}
+> +
+> +static void virt_get_its(Object *obj, Visitor *v, const char *name,
+> +                          void *opaque, Error **errp)
+>   {
+>       VirtMachineState *vms = VIRT_MACHINE(obj);
+> +    OnOffAuto its = vms->its;
+>   
+> -    return vms->its;
+> +    visit_type_OnOffAuto(v, name, &its, errp);
+>   }
+>   
+> -static void virt_set_its(Object *obj, bool value, Error **errp)
+> +static void virt_set_its(Object *obj, Visitor *v, const char *name,
+> +                          void *opaque, Error **errp)
+>   {
+>       VirtMachineState *vms = VIRT_MACHINE(obj);
+>   
+> -    vms->its = value;
+> +    visit_type_OnOffAuto(v, name, &vms->its, errp);
+>   }
+>   
+>   static bool virt_get_dtb_randomness(Object *obj, Error **errp)
+> @@ -3427,8 +3452,9 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+>                                             "guest CPU which implements the ARM "
+>                                             "Memory Tagging Extension");
+>   
+> -    object_class_property_add_bool(oc, "its", virt_get_its,
+> -                                   virt_set_its);
+> +    object_class_property_add(oc, "its", "OnOffAuto",
+> +        virt_get_its, virt_set_its,
+> +        NULL, NULL);
+>       object_class_property_set_description(oc, "its",
+>                                             "Set on/off to enable/disable "
+>                                             "ITS instantiation");
+> @@ -3488,8 +3514,8 @@ static void virt_instance_init(Object *obj)
+>       vms->highmem_mmio = true;
+>       vms->highmem_redists = true;
+>   
+> -    /* Default allows ITS instantiation */
+> -    vms->its = true;
+> +    /* Default allows ITS instantiation if available */
+> +    vms->its = ON_OFF_AUTO_AUTO;
+>       /* Allow ITS emulation if the machine version supports it */
+>       vms->tcg_its = !vmc->no_tcg_its;
+>       vms->no_gicv3_with_gicv2m = false;
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index c5bc47ee88..394b70c62e 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -147,7 +147,7 @@ struct VirtMachineState {
+>       bool highmem_ecam;
+>       bool highmem_mmio;
+>       bool highmem_redists;
+> -    bool its;
+> +    OnOffAuto its;
+>       bool tcg_its;
+>       bool virt;
+>       bool ras;
+> @@ -216,4 +216,6 @@ static inline int virt_gicv3_redist_region_count(VirtMachineState *vms)
+>               vms->highmem_redists) ? 2 : 1;
+>   }
+>   
+> +bool virt_is_its_enabled(VirtMachineState *vms);
+> +
+>   #endif /* QEMU_ARM_VIRT_H */
 
 

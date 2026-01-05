@@ -4,41 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48358C2A088
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 10:07:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2067BC2A099
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 11:19:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vchUe-0006wz-GC; Mon, 05 Jan 2026 05:07:21 -0500
+	id 1vcic2-0006dn-2f; Mon, 05 Jan 2026 06:19:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1vchUR-0006sI-BX; Mon, 05 Jan 2026 05:07:10 -0500
-Received: from 9.mo548.mail-out.ovh.net ([46.105.48.137])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vcibv-0006cn-6h
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 06:18:56 -0500
+Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1vchUL-0002LS-UM; Mon, 05 Jan 2026 05:07:07 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.37.179])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4dl92B42fQz5vwX;
- Mon,  5 Jan 2026 10:06:58 +0000 (UTC)
-Received: from kaod.org (37.59.142.106) by DAG3EX1.mxp5.local (172.16.2.21)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vcibs-0004hJ-25
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 06:18:54 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.43.6])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4dlBd40kZMz5vq4;
+ Mon,  5 Jan 2026 11:18:48 +0000 (UTC)
+Received: from kaod.org (37.59.142.103) by DAG3EX1.mxp5.local (172.16.2.21)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Mon, 5 Jan
- 2026 11:06:57 +0100
+ 2026 12:18:47 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-106R006a4e1ba45-67ef-4e37-be97-9464d8c7e4d7,
+ (GARM-103G0058d4ecb85-ffd9-4e52-a7a4-156ea7eeb995,
  57A157A87F73C68790EE1B05CA42A5939BFB4281) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <dcd218cd-0554-4b19-9113-13bd92ef83e1@kaod.org>
-Date: Mon, 5 Jan 2026 11:06:57 +0100
+Message-ID: <95701480-83b1-4518-9beb-dccd7b445a4e@kaod.org>
+Date: Mon, 5 Jan 2026 12:18:46 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/19] i3c: aspeed: Add I3C support
-To: Joe Komlodi <komlodi@google.com>, <qemu-devel@nongnu.org>
-CC: <venture@google.com>, <peter.maydell@linaro.org>,
- <steven_lee@aspeedtech.com>, <leetroy@gmail.com>, <jamin_lin@aspeedtech.com>, 
- <andrew@codeconstruct.com.au>, <joel@jms.id.au>, <qemu-arm@nongnu.org>
-References: <20250613000411.1516521-1-komlodi@google.com>
+Subject: Re: [PATCH v4 06/19] hw/arm/aspeed: Integrate interrupt controller
+ for AST1700
+To: Kane Chen <kane_chen@aspeedtech.com>, Nabih Estefan
+ <nabihestefan@google.com>
+CC: Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>, Troy Lee
+ <troy_lee@aspeedtech.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Joe Komlodi <komlodi@google.com>
+References: <20251224014203.756264-1-kane_chen@aspeedtech.com>
+ <20251224014203.756264-7-kane_chen@aspeedtech.com>
+ <465b0714-bd08-40b5-9cf9-5cd206e8548b@kaod.org>
+ <SI6PR06MB76312852C6243B1F48202A89F7B0A@SI6PR06MB7631.apcprd06.prod.outlook.com>
+ <55adfce4-0dbc-492a-b586-4c46df78007a@kaod.org>
+ <SI6PR06MB76318E7A596008386B0AE51CF7BFA@SI6PR06MB7631.apcprd06.prod.outlook.com>
+ <ed07c0f2-737d-4d65-917f-d39d02c37063@kaod.org>
+ <006fa26f-6b84-4e82-b6e1-7d1353579441@kaod.org>
+ <CA+QoejXzjvyLA0Pp0xJjCsrwSyegSBRBs-MaT7yP41Nd2B9BcQ@mail.gmail.com>
+ <SI6PR06MB76312518466322BC6BD67DC5F7BCA@SI6PR06MB7631.apcprd06.prod.outlook.com>
+ <d6fa3762-7ea8-4173-af20-9615cc5f92dc@kaod.org>
+ <SI6PR06MB763159AEBF12B77662CE6697F7BDA@SI6PR06MB7631.apcprd06.prod.outlook.com>
+ <72b2b29e-d5eb-412b-913f-6a0f56b709ae@kaod.org>
+ <dca78653-72eb-43aa-b7a8-031abf0968eb@kaod.org>
+ <SI6PR06MB763148CF78715EC2B1B6436FF786A@SI6PR06MB7631.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -83,27 +103,27 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20250613000411.1516521-1-komlodi@google.com>
+In-Reply-To: <SI6PR06MB763148CF78715EC2B1B6436FF786A@SI6PR06MB7631.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.106]
-X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG3EX1.mxp5.local
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.103]
+X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG3EX1.mxp5.local
  (172.16.2.21)
-X-Ovh-Tracer-GUID: 2206e2eb-78ab-47ec-8042-163716e31a74
-X-Ovh-Tracer-Id: 10178698110403775410
+X-Ovh-Tracer-GUID: 464348ab-79da-474d-aaff-89c65e893793
+X-Ovh-Tracer-Id: 11391855259526532027
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGqvGsGcub4jUl8I2UddcR0Xn7W2HklEXSCzEfRDj1Fck3Isy9z8En7ZUdaxEto4DiupArtbbq8uTuM1hwg2jfa8wiQrB+Eg0do5SzWD4nSTrZ9u57d6hLolzzujjeYD/bYBz0yBRGM2MMFu2SYu0Qub72xOy9kK2j9TLU2PPHpEFyEI9elCwGQ/0Y06tIcitOIv87ln2o41xtzE2ZdwgGHoDZTC+/3bTYZYEtF9mBrru39KamqSZ1+FXY/yYW13RJWyvMQWXihnpYbqHU9/C1kFx8H8f1vV2gzdOz66VWIVirXzOWahyw+c21HkqPsHCsC0x/uKNnSzmHL5+uI7/I8BZjFfaXqdPD/A2FAtqSZZvb+Q8XcKHW5BiLGtd/6TBzLRVJbR+e4FhDAWFC3/R0C54vZkE5pJ06bej0avYb5fPwRlykyCSDe7Fm6Wxtk9GBmfOx0OlsLG9fwRfxevbnmWGelI9GLqyeyrPzF6XihTdShVK0EAW7E69laylJ9JQvwlOu745MVa5QyvCKhdrdNspTwujcdh4Jp1zvH3N8XV24WyhPxovPnivr07ahPAij3OzdQhHEjT7WC57gkCn0z+WeVotssVBqCFsfIUgWEc5DCQyuYqAMxPPfTc7iQ4IoswfmYDhCZMEj5/g2XffPml7SdfBjev0PbzTXCKTgEaA
-DKIM-Signature: a=rsa-sha256; bh=xib+RYV3mZLw8uqzG//SIoXiuK61Q6WcH4TMLyaqHfs=; 
+X-VR-SPAMCAUSE: dmFkZTGMwsonOEJoCYDQLyXcbba6CTGb+Xkv1dKvFR9hsOWuqYoAfZqxwcgugA+Tg31ww7/nYhcnfNwY83j/7rME1509DIP1qJzacbycGl625kyK2qawPF/1zyb4o0DXO/iJQvH8ozzeZxM2qtvIBVqJ/Dgrp2h46m86YaN8FRWh9aOZbheFNYP42soOGsyC9FmlqGw57GlFKTOz6X9JwNMHCIjV3kG3jDCEAh18BlpXxjex5C2vkgxM4acYZQOpdipuPouNwlZAtoSyYK4jDFNk2E4UumMM9S4SMpT4/nKJh6L2OCX0qcGU+rIbuFwSxcqsgZte2ZsSwaJcyhVpMp2At+bNEDqm7oRcl0tS12uJWgdP/6JOkz/GzkLtOEPh0S1dQ+0IEOW7Mr7GAd9oU4j2zVi2wrSbYDfjPzpS+DoFPYJTU7L+ETHOBve6mJ6nGvGZBlmbc/KvDm4lC+CQ9p0P2kPlZdsoJJ+pBJX+hV3Ma0H+0UV0flc7yau/hvQn0vv01tc8STgk1NFtt3RTD+VktdzFC2eztH176am5wrsXZl4tUclTipOnPsMP6G3pHpc9SHr/8pa/EvDP4Ma2Y4Gdl3eGDoqPeknh6wJiVgBb/DMqEJf8xUtvwXhqbrk3BFggSzUT/NyHSUhN6MCBvTJJSNpJwyH8si9lfZ32W7hQzwKvRQ
+DKIM-Signature: a=rsa-sha256; bh=CzrgwnrDMzc9Doa4mvs1Ex1orArwupxeh4HeXCbFf6M=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1767607618; v=1;
- b=Oy3Oi8NZx/DrACLts0BbdsKwyuwWksPNwL8XF2jUYQZQQ589oddTQcBnkhDcxbKKL5aC2wn0
- p/ok/zvLQx1bCsHp4w/E7YlMlb4ueAdnl1+35pI7sN/zn/voCqCPMBVT9cVrBg3StWjzAN+Pjph
- ppKfuc2peCSgaP15+jq9zYsLi+97SPKyiWRPGG5MG5UxphyqpaPY7Fv7pI2GUjlVkHjt3dmH4Mg
- vhuUi0tdyedpGn7zazrclr7UnFm5sCAxKyyKInQ/BCJTDyrtMn5cIaduFIBSufvVywrY5054/0M
- 9iPTsQlN7qxr7WcRRYk/8jQtMjqRNIhKel0HmmO2Wua/g==
-Received-SPF: pass client-ip=46.105.48.137; envelope-from=clg@kaod.org;
- helo=9.mo548.mail-out.ovh.net
+ t=1767611928; v=1;
+ b=TZjZtniG5w0ws0vhl7VEgsb7z2wFW/kw/TuWfdMOLOgDx11JuogQROP3DjFEwy1X3UvFgCoJ
+ bvlZN1037+TWj5OX+gTv8hqMx59qX8Z9yhzGl3vl4LhscFBA9/kExxTOaL/V0qqHjSMczlzW5oK
+ pLaiw5rDjb8faj9eXrJHxn/No8cBHLe30gXbb2Qx8Ij332aqJCG8R/L2vb5CKDa4oR2L2R4dABO
+ kWuw0x0+FLarF3IUlz4FDPjQyGiv+FRi032thCaXpRIXPTuK5YgpIAF8dPQUMVXDvmvwG4Lvxj8
+ p4j4dYbs3fQWuwiBaIwRObhKrL297IiHz5PuDVWks1d4w==
+Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
+ helo=3.mo548.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -127,95 +147,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hello Joe,
+Hello Kane,
 
-On 6/13/25 02:03, Joe Komlodi wrote:
-> Hi all,
-> 
-> This series adds I3C bus support to QEMU and adds more functionality to the
-> Aspeed I3C controller.
-> 
-> This implementation is a basic implementation that introduces IBIs
-> (including hot-join), CCCs, and SDR data transfer. As-is, it doesn't support
-> multi-controller buses or HDR transfers.
-> 
-> First we add the I3C bus and controller model. With that added we extend
-> the functionality of the Aspeed I3C controller so it can do transfers
-> and handle IBIs.
-> 
-> Next, we add a mock I3C target. It's intended to be a very simple target
-> just to verify that I3C is working on the guest. Internally, we've used it
-> on Linux to verify that i3C devices can be probed and can send/receive data
-> and IBIs.
-> This target is sort of like an EEPROM, and it can also send IBIs upon
-> reception of a user-defined magic number.
-> 
-> Lastly we add  hotplugging support. The hotplugging doesn't do anything too
-> complicated, it just adds the device attempting to hotplug to the bus. It
-> is the device's responsibility to hot-join and go through the DAA process
-> to participate on the bus.
-> 
-> Thanks,
-> Joe
-> 
-> Joe Komlodi (19):
->    hw/misc/aspeed_i3c: Move to i3c directory
->    hw/i3c: Add bus support
->    hw/i3c: Split DesignWare I3C out of Aspeed I3C
->    hw/i3c/dw-i3c: Add more register fields
->    hw/i3c/aspeed_i3c: Add more register fields
->    hw/i3c/dw-i3c: Add more reset values
->    hw/i3c/aspeed_i3c: Add register RO field masks
->    hw/i3c/dw-i3c: Add register RO field masks
->    hw/i3c/dw-i3c: Treat more registers as read-as-zero
->    hw/i3c/dw-i3c: Use 32 bits on MMIO writes
->    hw/i3c/dw-i3c: Add IRQ MMIO behavior
->    hw/i3c/dw-i3c: Add data TX and RX
->    hw/i3c/dw-i3c: Add IBI handling
->    hw/i3c/dw-i3c: Add ctrl MMIO handling
->    hw/i3c/dw-i3c: Add controller resets
->    hw/i3c/aspeed: Add I3C bus get function
->    hw/i3c: Add Mock target
->    hw/arm/aspeed: Build with I3C_DEVICES
->    hw/i3c: Add hotplug support
-> 
->   hw/Kconfig                            |    1 +
->   hw/arm/Kconfig                        |    3 +
->   hw/i3c/Kconfig                        |   15 +
->   hw/i3c/aspeed_i3c.c                   |  261 ++++
->   hw/i3c/core.c                         |  669 +++++++++
->   hw/i3c/dw-i3c.c                       | 1881 +++++++++++++++++++++++++
->   hw/i3c/meson.build                    |    6 +
->   hw/i3c/mock-i3c-target.c              |  311 ++++
->   hw/i3c/trace-events                   |   47 +
->   hw/i3c/trace.h                        |    2 +
->   hw/meson.build                        |    1 +
->   hw/misc/aspeed_i3c.c                  |  383 -----
->   hw/misc/meson.build                   |    1 -
->   hw/misc/trace-events                  |    6 -
->   include/hw/arm/aspeed_soc.h           |    2 +-
->   include/hw/{misc => i3c}/aspeed_i3c.h |   22 +-
->   include/hw/i3c/dw-i3c.h               |  201 +++
->   include/hw/i3c/i3c.h                  |  277 ++++
->   include/hw/i3c/mock-i3c-target.h      |   52 +
->   meson.build                           |    1 +
->   20 files changed, 3735 insertions(+), 407 deletions(-)
->   create mode 100644 hw/i3c/Kconfig
->   create mode 100644 hw/i3c/aspeed_i3c.c
->   create mode 100644 hw/i3c/core.c
->   create mode 100644 hw/i3c/dw-i3c.c
->   create mode 100644 hw/i3c/meson.build
->   create mode 100644 hw/i3c/mock-i3c-target.c
->   create mode 100644 hw/i3c/trace-events
->   create mode 100644 hw/i3c/trace.h
->   delete mode 100644 hw/misc/aspeed_i3c.c
->   rename include/hw/{misc => i3c}/aspeed_i3c.h (63%)
->   create mode 100644 include/hw/i3c/dw-i3c.h
->   create mode 100644 include/hw/i3c/i3c.h
->   create mode 100644 include/hw/i3c/mock-i3c-target.h
-> 
++ Joe (for I3C)
 
-Could you please resend a v2 with the R-b tags from Jamin ?
+> I was able to access a functional AST1700 platform today and captured the actual
+> bus states. Below is the output from the real hardware (using the same image as
+> my previous QEMU log):
+> 
+> ls -l /sys/bus/i2c/devices/
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-12 -> ../../../devices/platform/soc@14000000/soc@14000000:bus@14c0f000/14c0fd00.i2c-bus/i2c-12
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-13 -> ../../../devices/platform/soc@14000000/soc@14000000:bus@14c0f000/14c0fe00.i2c-bus/i2c-13
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-16 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f100.i2c-bus/i2c-16
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-17 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f200.i2c-bus/i2c-17
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-18 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f300.i2c-bus/i2c-18
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-19 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f400.i2c-bus/i2c-19
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-20 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f500.i2c-bus/i2c-20
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-21 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f600.i2c-bus/i2c-21
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-22 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f700.i2c-bus/i2c-22
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-23 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f800.i2c-bus/i2c-23
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-24 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0f900.i2c-bus/i2c-24
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-25 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0fa00.i2c-bus/i2c-25
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-26 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0fb00.i2c-bus/i2c-26
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-27 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0fc00.i2c-bus/i2c-27
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-28 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0fd00.i2c-bus/i2c-28
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-29 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0fe00.i2c-bus/i2c-29
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-30 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c0ff00.i2c-bus/i2c-30
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-31 -> ../../../devices/platform/ltpi0_bus@30000000/ltpi0_bus@30000000:bus@30c0f000/30c10000.i2c-bus/i2c-31
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-32 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f100.i2c-bus/i2c-32
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-33 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f200.i2c-bus/i2c-33
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-34 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f300.i2c-bus/i2c-34
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-35 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f400.i2c-bus/i2c-35
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-36 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f500.i2c-bus/i2c-36
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-37 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f600.i2c-bus/i2c-37
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-38 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f700.i2c-bus/i2c-38
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-39 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f800.i2c-bus/i2c-39
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-40 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0f900.i2c-bus/i2c-40
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-41 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0fa00.i2c-bus/i2c-41
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-42 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0fb00.i2c-bus/i2c-42
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-43 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0fc00.i2c-bus/i2c-43
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-44 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0fd00.i2c-bus/i2c-44
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-45 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0fe00.i2c-bus/i2c-45
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-46 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c0ff00.i2c-bus/i2c-46
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-47 -> ../../../devices/platform/ltpi1_bus@50000000/ltpi1_bus@50000000:bus@50c0f000/50c10000.i2c-bus/i2c-47
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-48 -> ../../../devices/platform/soc@14000000/14c21000.i3c1/i2c-48
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-49 -> ../../../devices/platform/soc@14000000/14c23000.i3c3/i2c-49
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-50 -> ../../../devices/platform/soc@14000000/14c25000.i3c5/i2c-50
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-51 -> ../../../devices/platform/soc@14000000/14c27000.i3c7/i2c-51
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-52 -> ../../../devices/platform/soc@14000000/14c29000.i3c9/i2c-52
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-53 -> ../../../devices/platform/soc@14000000/14c2b000.i3c11/i2c-53
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-54 -> ../../../devices/platform/soc@14000000/14c2d000.i3c13/i2c-54
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-55 -> ../../../devices/platform/soc@14000000/14c2f000.i3c15/i2c-55
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-56 -> ../../../devices/platform/ltpi0_bus@30000000/30c21000.i3c1/i2c-56
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-57 -> ../../../devices/platform/ltpi0_bus@30000000/30c23000.i3c3/i2c-57
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-58 -> ../../../devices/platform/ltpi0_bus@30000000/30c25000.i3c5/i2c-58
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-59 -> ../../../devices/platform/ltpi0_bus@30000000/30c27000.i3c7/i2c-59
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-60 -> ../../../devices/platform/ltpi0_bus@30000000/30c29000.i3c9/i2c-60
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-61 -> ../../../devices/platform/ltpi0_bus@30000000/30c2b000.i3c11/i2c-61
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-62 -> ../../../devices/platform/ltpi0_bus@30000000/30c2d000.i3c13/i2c-62
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-63 -> ../../../devices/platform/ltpi0_bus@30000000/30c2f000.i3c15/i2c-63
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-64 -> ../../../devices/platform/ltpi1_bus@50000000/50c21000.i3c1/i2c-64
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-65 -> ../../../devices/platform/ltpi1_bus@50000000/50c23000.i3c3/i2c-65
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-66 -> ../../../devices/platform/ltpi1_bus@50000000/50c25000.i3c5/i2c-66
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-67 -> ../../../devices/platform/ltpi1_bus@50000000/50c27000.i3c7/i2c-67
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-68 -> ../../../devices/platform/ltpi1_bus@50000000/50c29000.i3c9/i2c-68
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-69 -> ../../../devices/platform/ltpi1_bus@50000000/50c2b000.i3c11/i2c-69
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-70 -> ../../../devices/platform/ltpi1_bus@50000000/50c2d000.i3c13/i2c-70
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-71 -> ../../../devices/platform/ltpi1_bus@50000000/50c2f000.i3c15/i2c-71
+> lrwxrwxrwx    1 root     root             0 Jan  5 07:24 i2c-8 -> ../../../devices/platform/soc@14000000/soc@14000000:bus@14c0f000/14c0f900.i2c-bus/i2c-8
+> 
+> As shown above, the real platform incorporates I2C buses via the LTPI (IO expander)
+> and even through I3C controllers. Using a consistent i2c-X naming style across the
+> model should sufficiently cover these use cases.
+> 
+>>
+>> We would need to modify the bus creation in aspeed_i2c_bus_realize() as
+>> follows :
+>>
+>>        s->bus = i2c_init_bus(dev, NULL);
+>>
+>> and fix all tests.
+> 
+> Regarding your suggestion to modify aspeed_i2c_bus_realize() by passing NULL as
+> the second argument to i2c_init_bus():
+> I have tested this change. It results in the following object hierarchy:
+> 
+> BMC I2C: /i2c/bus[0]/i2c-bus.0
+> IOEXP0 (LTPI0): /ioexp[0]/ioexp-i2c[0]/bus[0]/i2c-bus.16
+> IOEXP1 (LTPI1): /ioexp[1]/ioexp-i2c[0]/bus[0]/i2c-bus.32
+> 
+> By adjusting the I2C object names this way, the naming conflicts are resolved, and
+> the automated tests now pass correctly.
+
+Linux doesn’t order the I2C buses in a logical or physical sense. It numbers
+them dynamically as adapters are registered. The I3C device will add another
+group (SOC, LTPI0, LTP1, I3C) of I2C buses and devices.
+
+So, we need to find a way to distinguish these groups at the QEMU machine
+level to add devices on the right bus. Adding a "label" to the I2C bus model
+seems to be a step in the right direction. The idea needs time to mature.
+Insights are welcome.
 
 Thanks,
 

@@ -4,95 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0295C2A062
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 05:40:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91FA4C2A072
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 06:26:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vcdKW-000793-EW; Mon, 05 Jan 2026 00:40:36 -0500
+	id 1vce2R-0002ik-IA; Mon, 05 Jan 2026 01:25:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vcdKV-00078Q-4C
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 00:40:35 -0500
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1vce2M-0002i7-OJ
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 01:25:56 -0500
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vcdKS-0000yO-R1
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 00:40:34 -0500
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-7f89d0b37f0so506168b3a.0
- for <qemu-arm@nongnu.org>; Sun, 04 Jan 2026 21:40:32 -0800 (PST)
+ id 1vce2G-000707-Nh
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 01:25:52 -0500
+Received: by mail-pj1-x102e.google.com with SMTP id
+ 98e67ed59e1d1-34c213f7690so10838800a91.2
+ for <qemu-arm@nongnu.org>; Sun, 04 Jan 2026 22:25:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767591630; x=1768196430; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767594347; x=1768199147; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=L+5BH4fcZ3Ixv3MmLyderUKyxA2MN7ARdKHKTrsFSsM=;
- b=g0Ni/BpfdC0nuvRZozknO1tGXhmXxZ8FLvJtOLX2to/uZ6qvbXICo8TGIc0CfpXj+t
- wWDV2/2wbv+cx6nepmOOjqpUXCXVlVKmzo/a7rTvRGBMvSl9X2T90mmYcbdZ1RUd64VQ
- uW7hA/AY6rIKxIlzuHSZSkTsK/3P3jvd7whW+Sji/0pRATwb6z4p+o6zvnsvF1E6DBMY
- jXV/DjF4IN9eFbdGdQGI6J0HN2bEwMnShAH8f0LBAIeg7svZ8qG4QxTYvlU5I4GWuLOA
- 0BbW7TcRNDf3+Xo9cMZUyawSKnLKhmRyh6Irp2ginZNufIQ1GeFzfT/noyJ3B5BK7oHN
- fAZA==
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=+jbDHBAgGymjbmjV0kCzVLxXci80MxgTcwZZUJVNz5Q=;
+ b=KYNswlklKYqIrC25yDUEjqu+pV9klOt0E4TGRj+0M4sT9IzlbWDhatUdyM+MUbJa+/
+ GgFg0nktIWQN59sYNets+lzo6be1yRYygSannbtN9FlOfIYin9vO76m6kvE/HpNS5wS6
+ eHSaIpYj/BIDbt48rFhH3yIswreD8PZM5SsRujsXjU5aW7Mk1A+do4EnkGboXqViKMJ1
+ GJhMoz58zGKvWc8irQDpYd4h8w+6JuuMdtaqowhJ7rIWyyln4brMT4gzomEB57d9MBVi
+ f5ncavdjvnht5Qr9rl3qybX1wE1/bxz0wdKZEfRPLUh8xJmRvxEule6SFPDFpfsqR6L2
+ oJ3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767591630; x=1768196430;
+ d=1e100.net; s=20230601; t=1767594347; x=1768199147;
  h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=L+5BH4fcZ3Ixv3MmLyderUKyxA2MN7ARdKHKTrsFSsM=;
- b=deNEw/E97v7sN3T7uNX9XNNXmPzOsFAOt1bNVn77dIKc8fA5AXsnWrG9fUoGfHUW/Z
- hi5nAURis6VDeXNPwUMRrsh/BCzdaCXrbyh3bPO+q2kf4ufaTZ862IrvabLenKUPavnn
- hJs2os9LlnJn8dP5jMGPyzomrfhPiQxzC3jMpZCURf57RCt9Wcy9tjEXy2zT+KNM45HK
- zCFoc/oa2SZmt4OkJ2m/YYwswCTPERwbEcr6xo/MzsjHdDPJwpuz1o43I4YBu4fKP4g/
- rU6sS8Hl2L5IBvo27YMUxWEFCT3GXraOmh25UIv6LNh3hmv5xAczGteeSh3t5SXqjpdP
- N3WA==
+ bh=+jbDHBAgGymjbmjV0kCzVLxXci80MxgTcwZZUJVNz5Q=;
+ b=O8ysaO+BI7Gd0BDyPklTAk44ct74B9pMUcemNwK6eutTxQd6yyqUEyj6wStznWK9Mw
+ zxs76aUNLQu2YDHKCsyV8llUp6C8sgqBqI/9CPCwl8QQGUhP7108YlmDVk2tl5HR7aRj
+ giMjxufZOygjls1gwy45gaTmkWiR1bu3/uA/kxisFvx0kqDFDpH1eizf0TU3M+Qj4ad6
+ IfPVoaakuej6S3eQvuN3pBnznhPuv0SbkpFhjtdIr/DeBZgb1lqRhRf3PfpvzUHjFZYq
+ 8gukfsJc3myLOTepipYgO2LH07IiW7a/xBx7Fyqj+9YwOcNu7qY6OEA5/hgnNAAsID1h
+ a1Lg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU7gRkb8gzfDp6tnRe5f3yna6ZTMM/B+EikXmWQgcyyFNMIprnJDjhZOYj86sfCTHuqsAMQ9f65/A==@nongnu.org
-X-Gm-Message-State: AOJu0YxIac5xMIgKHN721rKnSqG8G0y+Kv9HkaSd4EIC8IBXCki7hFdA
- JFBy1hPjlHgOF5QSMvS3bCOT4kdo9h9jjCEAUHDnEkZ33g3jKnNaHfB/9e5+NS9vKKsLkUKutzI
- UAyqdC6M=
-X-Gm-Gg: AY/fxX53Cs5jw5zhqChnBTKwOcaUq19B7TrrMnwR7R/l1MBZufKJU8+X9vjhDKt0RRt
- bUX0MXF8vGrM1ZMhzDkvS+QoEObl/HyAsPqyn5hcT4Nd8PG9FuMtJ94eNjDmM/FBXIg/xnpFwzi
- O27kE61ewCJogjqhX2jVibZhHWsqCIVnVeJJ7ahSeLIEf+tO+17tsIhzzYz1Xb9OQpjpzohBMrs
- JdWl+k4PxyBi67WQxJsaNfvviuhTtjX4574pGNoiICQGqDaGz1ErNtW6hyhVIv0EzKV7wiP+k+z
- cYWVDb3IqnXaGFkk/gx/CRmlTY5HTrMfNJmLHOvOBQ+YFxVQ/HX/2xZaf0zRMcQKfGlkbDyqqnN
- NcMYqgpPPnUrqZ+99DG+Eu44QTFuOJjuHf4Srb/hYUndw1nZhadUKi6HroOwoCS4xd2VQNw0UOD
- cDRLCV6chZEGEbf166fbhOA5kYgxYg5i7LvsGe/A1F
-X-Google-Smtp-Source: AGHT+IFzqoyQKmSF9/P6104vvTmAaCjd5K+Flt8sM8BWqlSZaAXIA1GEwvPzAVMzTuhJioDHTb4Vhg==
-X-Received: by 2002:aa7:8c05:0:b0:77d:98ee:e1c5 with SMTP id
- d2e1a72fcca58-8148a846e53mr3407056b3a.15.1767591630202; 
- Sun, 04 Jan 2026 21:40:30 -0800 (PST)
+ AJvYcCVyx5HT/OZPEw9txTxI4ItZM2UlYYlZPPx+Lj8lB5TO6HkfbDyyn1kCAH0y/qq0AG+Cg4tnFFi7QQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy6jPr6azjoVqUxKQc8WiiSAmMpk3asfyOu0U8Vp++Ad60PANRz
+ 2XzSkWFaiZI2Bi+UZlP2KG/LJX+kxh5oG7EF7MAIPdA6TNfALT/2YO7VxuptOYBcdqHk++SS+Uw
+ J9zGjxMo=
+X-Gm-Gg: AY/fxX5PMOkOJSht+H5kFW2i52GXPlr0NzOyr1ZaNdh5nxHDWNjkkTxP5YJmtzPPyAD
+ +svYeJzUVO0k0EPOvpLYg1AbTNoqZs6fb5BczRIjCc9h05nmZhcWDyDAaOYA6iMdfYz20+yz/Se
+ B3zMUez1K4B6fPUeOgD+ZLux/PDhLgRUk7Qvpq/vXyR9a1oq6y/g0xdCdldW8Z+Nz/RBTc5TvOC
+ 6s83o8M0VmrArtXWbtzMgOZ/5E1g2RnXswJrqw67Lp3WHDLDDlitRZw85oH7adoeqW5o4gXPzrm
+ sHD0EYSz9MxtQ6OkXnNGdagogx2jCnm/i8r1akaTP9USLRegyHDutKDdALhnVmBGH4M+47TxtQl
+ KNtv7JRYZsoKIwXu45bNGFgepWLwMAut0oTp9/Wz/UX9eckaa0H0bSkC4JFaaHc2T4zcEhXHsrV
+ sY7MoDo30Df2Duw73cT2WXni4sJMHOzg==
+X-Google-Smtp-Source: AGHT+IEwplOoD7lxh4cD1vSn4qsUjOo5mOvJWnu1g/PIfZT1R81WFjoo8lq09ZsSjLz5/Y9baV+jEg==
+X-Received: by 2002:a17:90b:2e0c:b0:343:edb0:1012 with SMTP id
+ 98e67ed59e1d1-34e921ac620mr37361230a91.21.1767594346649; 
+ Sun, 04 Jan 2026 22:25:46 -0800 (PST)
 Received: from [192.168.10.140] ([180.233.125.201])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-7ff7e8947a1sm46361077b3a.67.2026.01.04.21.40.27
+ 98e67ed59e1d1-34f45cad3c0sm2948353a91.3.2026.01.04.22.25.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 04 Jan 2026 21:40:29 -0800 (PST)
-Message-ID: <40954ada-f7b5-4709-b5ac-a6711d503015@linaro.org>
-Date: Mon, 5 Jan 2026 16:40:24 +1100
+ Sun, 04 Jan 2026 22:25:46 -0800 (PST)
+Message-ID: <d5ec2589-a831-4f4b-86e5-a4ca1ce443dc@linaro.org>
+Date: Mon, 5 Jan 2026 17:25:39 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-11.0 v2] arm: add DCZID_EL0 to idregs array
-To: Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eric Auger <eric.auger@redhat.com>
-References: <20251127170657.3335112-1-cohuck@redhat.com>
+Subject: Re: [PATCH v3 2/4] target/i386: Add a _MAX sentinel to X86ASIdx enum
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, alex.bennee@linaro.org, philmd@linaro.org,
+ peter.maydell@linaro.org
+References: <20251223222649.187935-1-gustavo.romero@linaro.org>
+ <20251223222649.187935-3-gustavo.romero@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20251127170657.3335112-1-cohuck@redhat.com>
+In-Reply-To: <20251223222649.187935-3-gustavo.romero@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,90 +108,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 11/28/25 04:06, Cornelia Huck wrote:
-> This requires a bit of care, since we still have to handle the EL
-> specific part (DCZID_EL0.DZP). Callers can set/access dcz_blocksize
-> via a wrapper working on DCZID_EL.BS.
+On 12/24/25 09:26, Gustavo Romero wrote:
+> Add a sentinel to the X86ASIdx enum so it can be used when the total
+> number of address spaces is required.
 > 
-> KVM currently does not support DCZID_EL0 via ONE_REG, assert that
-> we're not trying to do anything with it until it does.
-> 
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 > ---
-> Changes v1 -> v2:
-> - use extract64/deposit64, tweak helper names
-> - assert that we're not using the reg while running under kvm, instead
->    of providing an incorrect dummy value
-> ---
->   target/arm/cpu-sysregs.h.inc   |  1 +
->   target/arm/cpu.c               |  2 +-
->   target/arm/cpu.h               | 14 ++++++++++++--
->   target/arm/cpu64.c             |  4 ++--
->   target/arm/helper.c            |  5 ++++-
->   target/arm/tcg/cpu64.c         | 22 +++++++++++-----------
->   target/arm/tcg/helper-a64.c    |  2 +-
->   target/arm/tcg/mte_helper.c    |  4 ++--
->   target/arm/tcg/translate-a64.c |  2 +-
->   target/arm/tcg/translate.h     |  2 +-
->   10 files changed, 36 insertions(+), 22 deletions(-)
+>   target/i386/cpu.h | 2 ++
+>   1 file changed, 2 insertions(+)
 > 
-> diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
-> index 2bb2861c6234..7f3aa8b991aa 100644
-> --- a/target/arm/cpu-sysregs.h.inc
-> +++ b/target/arm/cpu-sysregs.h.inc
-> @@ -39,3 +39,4 @@ DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
->   DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
->   DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
->   DEF(CTR_EL0, 3, 3, 0, 0, 1)
-> +DEF(DCZID_EL0, 3, 3, 0, 0, 7)
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 39292fb9bc1f..557af43a9709 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -2184,7 +2184,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->   #endif
+> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
+> index cee1f692a1..ba0c4fa548 100644
+> --- a/target/i386/cpu.h
+> +++ b/target/i386/cpu.h
+> @@ -2600,6 +2600,8 @@ void cpu_sync_avx_hflag(CPUX86State *env);
+>   typedef enum X86ASIdx {
+>       X86ASIdx_MEM = 0,
+>       X86ASIdx_SMM = 1,
+> +    X86ASIdx_MAX = X86ASIdx_SMM
+> +#define X86ASIdx_COUNT (X86ASIdx_MAX + 1)
+>   } X86ASIdx;
 >   
->       if (tcg_enabled()) {
-> -        int dcz_blocklen = 4 << cpu->dcz_blocksize;
-> +        int dcz_blocklen = 4 << get_dczid_bs(cpu);
->   
->           /*
->            * We only support DCZ blocklen that fits on one page.
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 39f2b2e54deb..32f003705551 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1111,8 +1111,6 @@ struct ArchCPU {
->       bool prop_pauth_qarma5;
->       bool prop_lpa2;
->   
-> -    /* DCZ blocksize, in log_2(words), ie low 4 bits of DCZID_EL0 */
-> -    uint8_t dcz_blocksize;
->       /* GM blocksize, in log_2(words), ie low 4 bits of GMID_EL0 */
->       uint8_t gm_blocksize;
->   
-> @@ -1178,6 +1176,18 @@ struct ARMCPUClass {
->       ResettablePhases parent_phases;
->   };
->   
-> +static inline uint8_t get_dczid_bs(ARMCPU *cpu)
-> +{
-> +    return extract64(cpu->isar.idregs[DCZID_EL0_IDX], 0, 4);
-> +}
-> +
-> +static inline void set_dczid_bs(ARMCPU *cpu, uint8_t bs)
-> +{
-> +    /* keep dzp unchanged */
-> +    cpu->isar.idregs[DCZID_EL0_IDX] =
-> +        deposit64(cpu->isar.idregs[DCZID_EL0_IDX], 0, 4, bs);
-> +}
+>   #ifndef CONFIG_USER_ONLY
 
-Given that dzp is always computed, I don't see the point of this.  Or... is the point that 
-KVM *will* eventually support DCZID_EL0, and we won't be computing DZP along the KVM 
-trap-and-read path?
+But... it's _COUNT that matters, and that doesn't seem to get a mention.
+I don't see the point in adding _MAX.
 
-You could usefully split this patch, introducing the get/set helpers before changing the 
-representation.
 
 r~
 

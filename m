@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A98C4C79F87
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 12:57:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46A90C79F87
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 12:57:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vck8k-0003w5-Po; Mon, 05 Jan 2026 07:56:54 -0500
+	id 1vck99-0004Ks-EP; Mon, 05 Jan 2026 07:57:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8P-0003m4-Ki
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:56:33 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck97-0004JM-Pk
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8N-0007vX-2K
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:56:33 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck95-00084Y-RF
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767617790;
+ s=mimecast20190719; t=1767617833;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JCqeB5q4nk1qZZKh3AiuHmU774j78tSilI9/XgQofrQ=;
- b=P08oaIJ4n6AIC87CVmZgcBQD7+Tns0CnmMpggaaz/oosTCa6IPOAqfMuxTeygwNA0EK897
- HrhHKP9XzJatwHHqY1PI9V8Y8S1EDrC3JVtbK5cwqDCA/z91boIIsa+Wcqfg8teZhViSLi
- mnm0F6Ufw1k5zr2PP4BITm1P9l0eOZQ=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=2eN4X3uyfV9cJriJXGMysA4V49qLGAdRFXwkwfMgEWE=;
+ b=UvmAMWVo3ohxoSs6fe4r2tZnPv/tyZhSi4fQHzcuiIJ43eqEgEQtRjwLjm1lKCBEGY90Up
+ 7+jPHxhmKQtt7+sKt8QECTyPaqpCIWo1T1MeZ3EhiDyQMytvSEYser7pj8UbbsmHNjqB3D
+ 7hwE/kmVljzPoJft1WwkbbmHUd/uvKU=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-510-voe8wOatMe6uHFnH72c_Uw-1; Mon,
- 05 Jan 2026 07:56:28 -0500
-X-MC-Unique: voe8wOatMe6uHFnH72c_Uw-1
-X-Mimecast-MFC-AGG-ID: voe8wOatMe6uHFnH72c_Uw_1767617787
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-659-WwKwJ853MMCFq-PbYxOElg-1; Mon,
+ 05 Jan 2026 07:57:12 -0500
+X-MC-Unique: WwKwJ853MMCFq-PbYxOElg-1
+X-Mimecast-MFC-AGG-ID: WwKwJ853MMCFq-PbYxOElg_1767617831
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id AA1011800610; Mon,  5 Jan 2026 12:56:27 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 40554195609F; Mon,  5 Jan 2026 12:57:11 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.53])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 200BB19560A7; Mon,  5 Jan 2026 12:56:25 +0000 (UTC)
+ id E884B1953984; Mon,  5 Jan 2026 12:57:08 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Yubin Zou <yubinz@google.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 05/36] hw/arm/aspeed_ast10x0: Add common realize function for
- AST10x0 SoCs
-Date: Mon,  5 Jan 2026 13:55:42 +0100
-Message-ID: <20260105125613.622667-6-clg@redhat.com>
+Subject: [PULL 26/36] hw/arm/aspeed_soc: Update Aspeed SoC to support two
+ SGPIO controllers
+Date: Mon,  5 Jan 2026 13:56:03 +0100
+Message-ID: <20260105125613.622667-27-clg@redhat.com>
 In-Reply-To: <20260105125613.622667-1-clg@redhat.com>
 References: <20260105125613.622667-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -85,292 +85,173 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Yubin Zou <yubinz@google.com>
 
-Introduce a new common realize function aspeed_soc_ast10x0_realize()
-for AST10x0 series SoCs. The shared initialization and realization logic
-is now placed in this common function to improve code reuse and reduce
-duplication between different SoCs in the same family.
+This commit updates the Aspeed SoC model to support two SGPIO
+controllers, reflecting the hardware capabilities of the AST2700
 
-The AST1030 realization function aspeed_soc_ast1030_realize() is
-updated to call the new common routine and then perform realization of
-its own specific devices such as LPC and PECI, which are not present on
-future SoCs like AST1060.
+The memory map and interrupt map are updated to include entries for
+two SGPIO controllers (SGPIOM0 and SGPIOM1). This change is a
+prerequisite for the full implementation of the SGPIO device model.
 
-This refactor simplifies maintenance and prepares the framework for
-adding AST1060 support.
-
-No functional changes.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Signed-off-by: Yubin Zou <yubinz@google.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20251112030553.291734-7-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20251219-aspeed-sgpio-v5-4-fd5593178144@google.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast10x0.c | 128 ++++++++++++++++++++++------------------
- 1 file changed, 70 insertions(+), 58 deletions(-)
+ include/hw/arm/aspeed_soc.h |  8 ++++++--
+ hw/arm/aspeed_ast10x0.c     |  6 +++---
+ hw/arm/aspeed_ast27x0.c     | 10 ++++++++++
+ 3 files changed, 19 insertions(+), 5 deletions(-)
 
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 4b8e599f1a53..18ff961a3850 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -32,6 +32,7 @@
+ #include "hw/net/ftgmac100.h"
+ #include "target/arm/cpu.h"
+ #include "hw/gpio/aspeed_gpio.h"
++#include "hw/gpio/aspeed_sgpio.h"
+ #include "hw/sd/aspeed_sdhci.h"
+ #include "hw/usb/hcd-ehci.h"
+ #include "qom/object.h"
+@@ -46,6 +47,7 @@
+ #define VBOOTROM_FILE_NAME  "ast27x0_bootrom.bin"
+ 
+ #define ASPEED_SPIS_NUM  3
++#define ASPEED_SGPIO_NUM 2
+ #define ASPEED_EHCIS_NUM 4
+ #define ASPEED_WDTS_NUM  8
+ #define ASPEED_CPUS_NUM  4
+@@ -89,6 +91,7 @@ struct AspeedSoCState {
+     AspeedMiiState mii[ASPEED_MACS_NUM];
+     AspeedGPIOState gpio;
+     AspeedGPIOState gpio_1_8v;
++    AspeedSGPIOState sgpiom[ASPEED_SGPIO_NUM];
+     AspeedSDHCIState sdhci;
+     AspeedSDHCIState emmc;
+     AspeedLPCState lpc;
+@@ -106,7 +109,6 @@ struct AspeedSoCState {
+     UnimplementedDeviceState pwm;
+     UnimplementedDeviceState espi;
+     UnimplementedDeviceState udc;
+-    UnimplementedDeviceState sgpiom;
+     UnimplementedDeviceState ltpi;
+     UnimplementedDeviceState jtag[ASPEED_JTAG_NUM];
+     AspeedAPB2OPBState fsi[2];
+@@ -166,6 +168,7 @@ struct AspeedSoCClass {
+     uint64_t secsram_size;
+     int pcie_num;
+     int spis_num;
++    int sgpio_num;
+     int ehcis_num;
+     int wdts_num;
+     int macs_num;
+@@ -221,6 +224,8 @@ enum {
+     ASPEED_DEV_SDHCI,
+     ASPEED_DEV_GPIO,
+     ASPEED_DEV_GPIO_1_8V,
++    ASPEED_DEV_SGPIOM0,
++    ASPEED_DEV_SGPIOM1,
+     ASPEED_DEV_RTC,
+     ASPEED_DEV_TIMER1,
+     ASPEED_DEV_TIMER2,
+@@ -263,7 +268,6 @@ enum {
+     ASPEED_DEV_I3C,
+     ASPEED_DEV_ESPI,
+     ASPEED_DEV_UDC,
+-    ASPEED_DEV_SGPIOM,
+     ASPEED_DEV_JTAG0,
+     ASPEED_DEV_JTAG1,
+     ASPEED_DEV_FSI1,
 diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
-index 1dd1a95ea5bd..72a8c78ff890 100644
+index 44e1d59ddb3c..41a4e82c1f87 100644
 --- a/hw/arm/aspeed_ast10x0.c
 +++ b/hw/arm/aspeed_ast10x0.c
-@@ -190,10 +190,9 @@ static void aspeed_soc_ast1030_init(Object *obj)
-     object_initialize_child(obj, "peci", &s->peci, TYPE_ASPEED_PECI);
- }
+@@ -36,7 +36,7 @@ static const hwaddr aspeed_soc_ast1030_memmap[] = {
+     [ASPEED_DEV_ESPI]      = 0x7E6EE000,
+     [ASPEED_DEV_SBC]       = 0x7E6F2000,
+     [ASPEED_DEV_GPIO]      = 0x7E780000,
+-    [ASPEED_DEV_SGPIOM]    = 0x7E780500,
++    [ASPEED_DEV_SGPIOM0]   = 0x7E780500,
+     [ASPEED_DEV_TIMER1]    = 0x7E782000,
+     [ASPEED_DEV_UART1]     = 0x7E783000,
+     [ASPEED_DEV_UART2]     = 0x7E78D000,
+@@ -94,7 +94,7 @@ static const int aspeed_soc_ast1030_irqmap[] = {
+     [ASPEED_DEV_I2C]       = 110, /* 110 ~ 123 */
+     [ASPEED_DEV_KCS]       = 138, /* 138 -> 142 */
+     [ASPEED_DEV_UDC]       = 9,
+-    [ASPEED_DEV_SGPIOM]    = 51,
++    [ASPEED_DEV_SGPIOM0]   = 51,
+     [ASPEED_DEV_JTAG0]     = 27,
+     [ASPEED_DEV_JTAG1]     = 53,
+ };
+@@ -406,7 +406,7 @@ static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCState *a, Error **errp)
+                                   sc->memmap[ASPEED_DEV_UDC], 0x1000);
+     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->sgpiom),
+                                   "aspeed.sgpiom",
+-                                  sc->memmap[ASPEED_DEV_SGPIOM], 0x100);
++                                  sc->memmap[ASPEED_DEV_SGPIOM0], 0x100);
  
--static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-+static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCState *a, Error **errp)
- {
--    Aspeed10x0SoCState *a = ASPEED10X0_SOC(dev_soc);
--    AspeedSoCState *s = ASPEED_SOC(dev_soc);
-+    AspeedSoCState *s = ASPEED_SOC(a);
-     AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-     DeviceState *armv7m;
-     Error *err = NULL;
-@@ -203,7 +202,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
- 
-     if (!clock_has_source(s->sysclk)) {
-         error_setg(errp, "sysclk clock must be wired up by the board code");
--        return;
-+        return false;
-     }
- 
-     /* General I/O memory space to catch all unimplemented device */
-@@ -216,7 +215,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-                                   "aspeed.sbc", sc->memmap[ASPEED_DEV_SBC],
-                                   0x40000);
- 
--    /* AST1030 CPU Core */
-+    /* AST10x0 CPU Core */
-     armv7m = DEVICE(&a->armv7m);
-     qdev_prop_set_uint32(armv7m, "num-irq", 256);
-     qdev_prop_set_string(armv7m, "cpu-type",
-@@ -232,7 +231,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     memory_region_init_ram(&s->sram, OBJECT(s), sram_name, sc->sram_size, &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
--        return;
-+        return false;
-     }
-     memory_region_add_subregion(s->memory,
-                                 sc->memmap[ASPEED_DEV_SRAM],
-@@ -241,14 +240,14 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-                            sc->secsram_size, &err);
-     if (err != NULL) {
-         error_propagate(errp, err);
--        return;
-+        return false;
-     }
-     memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SECSRAM],
-                                 &s->secsram);
- 
-     /* SCU */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->scu), 0,
-                     sc->memmap[ASPEED_DEV_SCU]);
-@@ -258,7 +257,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(&s->sram),
-                              &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->i2c), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->i2c), 0,
-                     sc->memmap[ASPEED_DEV_I2C]);
-@@ -271,7 +270,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
- 
-     /* I3C */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->i3c), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->i3c), 0,
-                     sc->memmap[ASPEED_DEV_I3C]);
-@@ -282,50 +281,11 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->i3c.devices[i]), 0, irq);
-     }
- 
--    /* PECI */
--    if (!sysbus_realize(SYS_BUS_DEVICE(&s->peci), errp)) {
--        return;
--    }
--    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->peci), 0,
--                    sc->memmap[ASPEED_DEV_PECI]);
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
--                       aspeed_soc_ast1030_get_irq(s, ASPEED_DEV_PECI));
--
--    /* LPC */
--    if (!sysbus_realize(SYS_BUS_DEVICE(&s->lpc), errp)) {
--        return;
--    }
--    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->lpc), 0,
--                    sc->memmap[ASPEED_DEV_LPC]);
--
--    /* Connect the LPC IRQ to the GIC. It is otherwise unused. */
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 0,
--                       aspeed_soc_ast1030_get_irq(s, ASPEED_DEV_LPC));
--
--    /*
--     * On the AST1030 LPC subdevice IRQs are connected straight to the GIC.
--     */
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_1,
--                       qdev_get_gpio_in(DEVICE(&a->armv7m),
--                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_1));
--
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_2,
--                       qdev_get_gpio_in(DEVICE(&a->armv7m),
--                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_2));
--
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_3,
--                       qdev_get_gpio_in(DEVICE(&a->armv7m),
--                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_3));
--
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
--                       qdev_get_gpio_in(DEVICE(&a->armv7m),
--                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
--
-     /* UART */
-     for (i = 0, uart = sc->uarts_base; i < sc->uarts_num; i++, uart++) {
-         if (!aspeed_soc_uart_realize(s->memory, &s->uart[i],
-                                      sc->memmap[uart], errp)) {
--            return;
-+            return false;
-         }
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
-                            aspeed_soc_ast1030_get_irq(s, uart));
-@@ -335,7 +295,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     object_property_set_link(OBJECT(&s->timerctrl), "scu", OBJECT(&s->scu),
-                              &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->timerctrl), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->timerctrl), 0,
-                     sc->memmap[ASPEED_DEV_TIMER1]);
-@@ -346,7 +306,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
- 
-     /* ADC */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->adc), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->adc), 0,
-                     sc->memmap[ASPEED_DEV_ADC]);
-@@ -357,7 +317,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     object_property_set_link(OBJECT(&s->fmc), "dram", OBJECT(&s->sram),
-             &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->fmc), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->fmc), 0,
-                     sc->memmap[ASPEED_DEV_FMC]);
-@@ -371,7 +331,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-         object_property_set_link(OBJECT(&s->spi[i]), "dram",
-                                  OBJECT(&s->sram), &error_abort);
-         if (!sysbus_realize(SYS_BUS_DEVICE(&s->spi[i]), errp)) {
--            return;
-+            return false;
-         }
-         aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->spi[i]), 0,
-                         sc->memmap[ASPEED_DEV_SPI1 + i]);
-@@ -383,7 +343,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
- 
-     /* Secure Boot Controller */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->sbc), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->sbc), 0,
-                     sc->memmap[ASPEED_DEV_SBC]);
-@@ -392,7 +352,7 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     object_property_set_link(OBJECT(&s->hace), "dram", OBJECT(&s->sram),
-                              &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->hace), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->hace), 0,
-                     sc->memmap[ASPEED_DEV_HACE]);
-@@ -407,14 +367,14 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-         object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&s->scu),
-                                  &error_abort);
-         if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
--            return;
-+            return false;
-         }
-         aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->wdt[i]), 0, wdt_offset);
-     }
- 
-     /* GPIO */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
--        return;
-+        return false;
-     }
-     aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->gpio), 0,
-                     sc->memmap[ASPEED_DEV_GPIO]);
-@@ -442,6 +402,58 @@ static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->jtag[1]),
+     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->jtag[0]),
                                    "aspeed.jtag",
-                                   sc->memmap[ASPEED_DEV_JTAG1], 0x20);
-+
-+    return true;
-+}
-+
-+static void aspeed_soc_ast1030_realize(DeviceState *dev_soc, Error **errp)
-+{
-+    Aspeed10x0SoCState *a = ASPEED10X0_SOC(dev_soc);
-+    AspeedSoCState *s = ASPEED_SOC(dev_soc);
-+    AspeedSoCClass *sc = ASPEED_SOC_GET_CLASS(s);
-+
-+    if (!aspeed_soc_ast10x0_realize(a, errp)) {
-+        return;
-+    }
-+
-+    /* PECI */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->peci), errp)) {
-+        return;
-+    }
-+    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->peci), 0,
-+                    sc->memmap[ASPEED_DEV_PECI]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peci), 0,
-+                       aspeed_soc_ast1030_get_irq(s, ASPEED_DEV_PECI));
-+
-+    /* LPC */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->lpc), errp)) {
-+        return;
-+    }
-+    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->lpc), 0,
-+                    sc->memmap[ASPEED_DEV_LPC]);
-+
-+    /* Connect the LPC IRQ to the GIC. It is otherwise unused. */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 0,
-+                       aspeed_soc_ast1030_get_irq(s, ASPEED_DEV_LPC));
-+
-+    /*
-+     * On the AST1030 LPC subdevice IRQs are connected straight to the GIC.
-+     */
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_1,
-+                       qdev_get_gpio_in(DEVICE(&a->armv7m),
-+                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_1));
-+
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_2,
-+                       qdev_get_gpio_in(DEVICE(&a->armv7m),
-+                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_2));
-+
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_3,
-+                       qdev_get_gpio_in(DEVICE(&a->armv7m),
-+                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_3));
-+
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->lpc), 1 + aspeed_lpc_kcs_4,
-+                       qdev_get_gpio_in(DEVICE(&a->armv7m),
-+                                sc->irqmap[ASPEED_DEV_KCS] + aspeed_lpc_kcs_4));
- }
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 95f155fcf1ad..9f471c399491 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -69,6 +69,8 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_ADC]       =  0x14C00000,
+     [ASPEED_DEV_SCUIO]     =  0x14C02000,
+     [ASPEED_DEV_GPIO]      =  0x14C0B000,
++    [ASPEED_DEV_SGPIOM0]   =  0x14C0C000,
++    [ASPEED_DEV_SGPIOM1]   =  0x14C0D000,
+     [ASPEED_DEV_I2C]       =  0x14C0F000,
+     [ASPEED_DEV_INTCIO]    =  0x14C18000,
+     [ASPEED_DEV_PCIE_PHY2] =  0x14C1C000,
+@@ -122,6 +124,8 @@ static const int aspeed_soc_ast2700a0_irqmap[] = {
+     [ASPEED_DEV_KCS]       = 128,
+     [ASPEED_DEV_ADC]       = 130,
+     [ASPEED_DEV_GPIO]      = 130,
++    [ASPEED_DEV_SGPIOM0]   = 130,
++    [ASPEED_DEV_SGPIOM1]   = 130,
+     [ASPEED_DEV_I2C]       = 130,
+     [ASPEED_DEV_FMC]       = 131,
+     [ASPEED_DEV_WDT]       = 131,
+@@ -173,6 +177,8 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
+     [ASPEED_DEV_I2C]       = 194,
+     [ASPEED_DEV_ADC]       = 194,
+     [ASPEED_DEV_GPIO]      = 194,
++    [ASPEED_DEV_SGPIOM0]   = 194,
++    [ASPEED_DEV_SGPIOM1]   = 194,
+     [ASPEED_DEV_FMC]       = 195,
+     [ASPEED_DEV_WDT]       = 195,
+     [ASPEED_DEV_PWM]       = 195,
+@@ -214,6 +220,8 @@ static const int ast2700_gic130_gic194_intcmap[] = {
+     [ASPEED_DEV_I2C]        = 0,
+     [ASPEED_DEV_ADC]        = 16,
+     [ASPEED_DEV_GPIO]       = 18,
++    [ASPEED_DEV_SGPIOM0]    = 21,
++    [ASPEED_DEV_SGPIOM1]    = 24,
+ };
  
- static void aspeed_soc_ast1030_class_init(ObjectClass *klass, const void *data)
+ /* GICINT 131 */
+@@ -1063,6 +1071,7 @@ static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, const void *data)
+     sc->sram_size    = 0x20000;
+     sc->pcie_num     = 0;
+     sc->spis_num     = 3;
++    sc->sgpio_num    = 2;
+     sc->ehcis_num    = 2;
+     sc->wdts_num     = 8;
+     sc->macs_num     = 1;
+@@ -1091,6 +1100,7 @@ static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, const void *data)
+     sc->sram_size    = 0x20000;
+     sc->pcie_num     = 3;
+     sc->spis_num     = 3;
++    sc->sgpio_num    = 2;
+     sc->ehcis_num    = 4;
+     sc->wdts_num     = 8;
+     sc->macs_num     = 3;
 -- 
 2.52.0
 

@@ -4,84 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91E7BCD041F
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 22:47:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CF13CD0422
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 23:31:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vctM8-0001jt-Vq; Mon, 05 Jan 2026 17:47:21 -0500
+	id 1vcu2f-00035g-34; Mon, 05 Jan 2026 18:31:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vctLT-0001V1-LI
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 17:46:40 -0500
+ id 1vcu2W-00033r-6Z
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 18:31:13 -0500
 Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vctLS-0007I4-0D
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 17:46:39 -0500
+ id 1vcu2T-0006tE-Ew
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 18:31:07 -0500
 Received: by mail-pj1-x1034.google.com with SMTP id
- 98e67ed59e1d1-34c71f462d2so514396a91.0
- for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 14:46:37 -0800 (PST)
+ 98e67ed59e1d1-34c84dc332cso485394a91.0
+ for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 15:31:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767653196; x=1768257996; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767655864; x=1768260664; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=AtOSIdHEYOKZd3I9JDVuViA2kqFTpsYJ+nWK7u/weiA=;
- b=hZvN/Cmhxy9Tc5maasU5ljWJucmmfxh3/nyaYa98sUvrwdAGbu1EqT2+vFVTsUXOmQ
- ckPpnWKEG0bFIzHzjLRQgOrpzcA7yZm9jKnipQUxH3AbtZ+IKY5ALkb7bNzBimeFR36e
- e1zxbLs/Pr1rcxbMfB0UgBUi68Cnhd2wHTTax6ASv7AWbKnEUh3j/qHKXvlZlfPkKuY4
- kKnwGioyhtY8maRPX0H1XzU2qkrAlbA6hw8+n/KF1QwQ8wph2txI5g5lDJkae+br+nS3
- 7xV2nsMnem/oAR2yoVVewagJLLPFsNAqsSNC0gkXyRrlaQ5LvUnAzT/aLvS6+zOP8CEr
- jarw==
+ bh=wr8JtvqDJtvtrmkimEV+VVoi2qDkZ7OUrc9cihgdCAQ=;
+ b=zDbjGdyCJ7PASPzWl08x+sjwq6mCf1vWME//nvEEhb3jBLYLw8/3Gsi/KO7BTNbYmh
+ M1Ac5wq8YWPp+YlBtv8gTsp9HEFZoeVwGhwl9TAUfHsjbi9Bn4XDthLYqgXVFK8f0ZuB
+ mvMiKAk7qkI60DofYIB8fG70wkB4ynUUZQ4XpU33s+hTWFR9iTC8zAMmQ183FgAQO6pi
+ SOWI/dVIqn+6aejB6I7PbM+B2OzXF1tdLdOOsJ88DzvV8Zqqn0cQR8t9hoyWrzW6Nh7H
+ u1GVqmXICgiytCw7WTaLHzLFu+C177bRLXEOipc0/sV850k0Sh8/me5IoUAoi1nJ1Eax
+ xfkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767653196; x=1768257996;
+ d=1e100.net; s=20230601; t=1767655864; x=1768260664;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=AtOSIdHEYOKZd3I9JDVuViA2kqFTpsYJ+nWK7u/weiA=;
- b=Wxk+IkGkrxbDMxrQGqIsuK8uVlnqzr+2knkLYdQ9+cwi1+4uo5EovsSba8/+3e0Usi
- atsFL7Xzx7zlv6hZgX5JJihZDVKGD1FBlfHQI3p7+iIy7qNu/LbdKB7TtJ7XgwEaAjbC
- sPtj2/mZoL7GzEbyAio5kbUhRw6WkkWwoazszzN6MaqoSIY5yKew9IuglMyP1mwvjDF3
- rbNI/iaDgwZt+XKfeHUBQjOD1s9JfZ8jRsDV+c467ZpUTazjNrwa3EyRAdXVLECyq+Y+
- BOiGMS/nQLNyQGS7cpr8SEg8Icb9l3jrC0NFS22dFKdqDE1s5XonRpc0d2+PncheL5Y/
- ViCA==
+ bh=wr8JtvqDJtvtrmkimEV+VVoi2qDkZ7OUrc9cihgdCAQ=;
+ b=JFP9rHWwWvlldhwemtxgi6BDuA0yveOmT3LZmoDecQ6idre8qCmELk2JFPvULnS5Oj
+ yVVFCSI87TUrjjHALsF40uYhTFvoDuaZzbZDZolamhSd1kPMRV1ZaV+9EoeDfYns5pyF
+ wPgAGwNMSnmw1hJcgjQht/hCHfOfatn+6oIEKJH/QyfIkKDuxwoq8AeBohek+1IhXXiV
+ MCV4jh6o2ZosyL56ihXOWlfluMkzDICrUuwvTOKQIFE32jPTBTmzFwhLAa74q6LfMgDx
+ cT5RnkG5Nm4DdPyj1uVRm/imgp2UWwZnOEprKmyBy41A2HoEeZQyzZOoDWlgEEYhKDfi
+ NnHw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW/SACzH0+7yZhVoYoZArHOC0dxDkia9qbTyP1X+zux4G799KfcucB/JIuo/3Rw0kMAA+jt1HCBjw==@nongnu.org
-X-Gm-Message-State: AOJu0YwiWCold5XUhVYGAANTl7plDaQlNovFTwQP4Df4oGhcnasH38w8
- MZgAskpX7qo0y7cIEbXscG6nIZdpojnn0t3MCFjUCvQY1zUbRjHsee1UMMhLqN7aiDs=
-X-Gm-Gg: AY/fxX6TRiivNaDk+oqqesgD4oZ7ceUv83SU33wEnzaIoCe1EBjMg3fIOIH9rj3e3De
- O/mQVAu+Xb7F1OUXzVQG34XFAXPDxIOs+GmEPEHjBWCse0te09a1FRAgE17buzjWBNXbpM6TaGm
- sfiHNY5Ck0dPEovUkS5UK76uweLx328jW/pyecU7iSfIdsYb39WZFkZVV7yJYvKApPuEom1XUTh
- zMC1hDuHR6HIqxgRxDzjusaJtKu4x9ban1VijJZU2c5yi8pBJ6FP9UgvHNhV6yPdVu0Hdamvj/G
- 2Z7DmXbNEFP8USl8fsjKkUyEgMVao26SqfY3PBhy4PvKDpS4c74JQHD2ln4SMmqnnmA4CgmNRkZ
- wBjQAJM7z4XEViHbKvc/APXv4Sn2IZKM9X2Qltv47JKhRt/agTqUleVy7oMiRpTQqzEmDLnGufZ
- E83PXumAT+Zf0xGLijwJNBztnHw/7KvQ==
-X-Google-Smtp-Source: AGHT+IHIhC6CnVad4mTKVHCAiL2GcNZ4SFhH3O8CeRGIKLFa/KwqH8H1+9DMA2huWnK/2s8VgglFTg==
-X-Received: by 2002:a17:90b:1c0f:b0:340:2a59:45c6 with SMTP id
- 98e67ed59e1d1-34f5f25a1d0mr711483a91.4.1767653196188; 
- Mon, 05 Jan 2026 14:46:36 -0800 (PST)
+ AJvYcCWTUJhoqqnnv+Ul57hLAxUz9HRDTsWDGMok9AJSUCTbHB7SeWFG+C1UOBDZTqMZQz+u8BgIWR5C+A==@nongnu.org
+X-Gm-Message-State: AOJu0YwMUUX2qWFnddlJxoySGx4GNMvToX5FheWyvE2iPmJ0abbYZE6b
+ ufpQzzO6RuQ3QL20V5zE2Bd1tkgz4szCg3vEHpu5bq9SG85vSu5chx/ejrjQAoAz0lIH8/LwXr0
+ 7R16ut18=
+X-Gm-Gg: AY/fxX57C9ncYYdZVs/B/ZKcYuwwlmncd3YN2DbN3xvkOmbRPXoEaE7cjzhgcg4HvFE
+ vIyYkIAnEXtQ55HvMCpzvKz5mr3eqEWU5rPMYdSX+gg8+P54Dnljeoty3+oPyaPTe6lR5ATNubv
+ SpWo9ICuepCMfBf8gslzbmSCjj4eOh4JfpEAvRh6ecird5fzrimIGYC0rGOGTEQr24x1kNU+jeQ
+ 3/aXoOmBzAZAyFRi+MhHJkFBMBJvSK7qINmIc8LTyGtvKL0gilnhWzEER5aFNGmHOWQPQ3bwT21
+ +K+Wm5R3IezpavAHdNlCw7YBIYHT/1B8xBjrHAxdwdc6MZFR0qqwu5/IkNiWtLAZ1wf3odpZud1
+ OQ/qb79DYdN5idTJELtmFI3kfULcSITAWvjPhgYCmUa9fROMKv6tijVyYwKPkhA6P9Ac5oyVQA3
+ KotVR3W9+sf3awcE2UIMwkiWW1hQfFAA==
+X-Google-Smtp-Source: AGHT+IFDRUfkhwCeErHzW6X4TRsi+0fF6MrVJk7eQxIBEGkFw22twoOnKnRguq2ajlU6chjQnZvFig==
+X-Received: by 2002:a17:90a:c890:b0:340:bb51:17eb with SMTP id
+ 98e67ed59e1d1-34f5f287947mr734721a91.15.1767655863838; 
+ Mon, 05 Jan 2026 15:31:03 -0800 (PST)
 Received: from [192.168.10.140] ([180.233.125.201])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-34f5f7b19ebsm374160a91.3.2026.01.05.14.46.32
+ 98e67ed59e1d1-34f60056166sm165352a91.1.2026.01.05.15.31.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Jan 2026 14:46:35 -0800 (PST)
-Message-ID: <8c5f7183-4bb6-4086-901e-87815bcb595a@linaro.org>
-Date: Tue, 6 Jan 2026 09:46:29 +1100
+ Mon, 05 Jan 2026 15:31:03 -0800 (PST)
+Message-ID: <b256c705-808f-41bc-bbbc-69a436bb6fe8@linaro.org>
+Date: Tue, 6 Jan 2026 10:30:57 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v3 04/12] linux-user: add MTE_STORE_ONLY to prctl
+Subject: Re: [PATCH RFC v3 05/12] target/arm: removed TBI bits from MTE check
+ logic
 To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>
 References: <20260105-feat-mte4-v3-0-86a0d99ef2e4@gmail.com>
- <20260105-feat-mte4-v3-4-86a0d99ef2e4@gmail.com>
+ <20260105-feat-mte4-v3-5-86a0d99ef2e4@gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260105-feat-mte4-v3-4-86a0d99ef2e4@gmail.com>
+In-Reply-To: <20260105-feat-mte4-v3-5-86a0d99ef2e4@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
@@ -109,70 +111,17 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/6/26 05:14, Gabriel Brookman wrote:
-> Linux-user processes can now control whether MTE_STORE_ONLY is enabled
-> using the prctl syscall.
-> 
-> Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
-> ---
->   linux-user/aarch64/mte_user_helper.h |  3 +++
->   linux-user/aarch64/target_prctl.h    | 11 +++++++++++
->   tests/tcg/aarch64/mte.h              |  3 +++
->   3 files changed, 17 insertions(+)
-> 
-> diff --git a/linux-user/aarch64/mte_user_helper.h b/linux-user/aarch64/mte_user_helper.h
-> index 0c53abda22..afd2d6dbda 100644
-> --- a/linux-user/aarch64/mte_user_helper.h
-> +++ b/linux-user/aarch64/mte_user_helper.h
-> @@ -20,6 +20,9 @@
->   # define PR_MTE_TAG_SHIFT       3
->   # define PR_MTE_TAG_MASK        (0xffffUL << PR_MTE_TAG_SHIFT)
->   #endif
-> +#ifndef PR_MTE_STORE_ONLY
-> +# define PR_MTE_STORE_ONLY      (1UL << 19)
-> +#endif
->   
->   /**
->    * arm_set_mte_tcf0 - Set TCF0 field in SCTLR_EL1 register
-> diff --git a/linux-user/aarch64/target_prctl.h b/linux-user/aarch64/target_prctl.h
-> index 621be5727f..5207580c1a 100644
-> --- a/linux-user/aarch64/target_prctl.h
-> +++ b/linux-user/aarch64/target_prctl.h
-> @@ -168,6 +168,9 @@ static abi_long do_prctl_set_tagged_addr_ctrl(CPUArchState *env, abi_long arg2)
->       if (cpu_isar_feature(aa64_mte, cpu)) {
->           valid_mask |= PR_MTE_TCF_MASK;
->           valid_mask |= PR_MTE_TAG_MASK;
-> +        if (cpu_isar_feature(aa64_mte4, cpu)) {
-> +            valid_mask |= PR_MTE_STORE_ONLY;
-> +        }
->       }
->   
->       if (arg2 & ~valid_mask) {
-> @@ -185,6 +188,14 @@ static abi_long do_prctl_set_tagged_addr_ctrl(CPUArchState *env, abi_long arg2)
->            */
->           env->cp15.gcr_el1 =
->               deposit64(env->cp15.gcr_el1, 0, 16, ~arg2 >> PR_MTE_TAG_SHIFT);
-> +
-> +        /*
-> +         * If MTE_STORE_ONLY is enabled, set the corresponding sctlr_el1 bit
-> +         */
-> +        if (cpu_isar_feature(aa64_mte4, cpu)) {
-> +            env->cp15.sctlr_el[1] =
-> +                deposit64(env->cp15.sctlr_el[1], 58, 1, extract64(arg2, 19, 1));
-> +        }
+> Previously, the TBI bit was used to mediate whether MTE checks happened.
+> This dependency isn't described in the ARM ARM. See D10.4.1, Tag Checked
+> Memory Accesses, specifically.
 
-Let's not hard-code bit numbers.  There's also no need to re-check cpu_isar_feature.
+I disagree.
 
-So more like
+See R_DRGYL: "Logical Address Tagging is disabled for the VA range being accessed", and 
+R_TQHWL: "TCR_ELx.TBIn".
 
-	if (arg2 & PR_MTE_STORE_ONLY) {
-	    env->cp15.sctlr_el[1] |= SCTLR_TCSO0;
-	} else {
-	    env->cp15.sctlr_el[1] &= ~SCTLR_TCSO0;
-	}
-
-In addition, should be done in arm_set_mte_tcf0, which needs to be expanded to match 
-linux's set_tagged_addr_ctrl.  This code is common to the prctl and to gdbstub.  The 
-function should be renamed at the same time, since it's no longer just tcf0.
+I can agree that you might want to factor this logical address tagging enabled test, since 
+with FEAT_MTE_NO_ADDRESS_TAGS it then includes TCR_ELx.MTXn.
 
 
 r~

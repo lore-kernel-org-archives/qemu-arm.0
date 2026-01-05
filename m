@@ -4,61 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C34DC2A06C
-	for <qemu-arm@archiver.kernel.org>; Sun,  4 Jan 2026 06:16:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58C4AC2A073
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 03:19:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vcHOr-00055d-Gq; Sun, 04 Jan 2026 01:15:38 -0500
+	id 1vcb7y-0001TH-MD; Sun, 04 Jan 2026 22:19:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vcHOq-00053x-7r; Sun, 04 Jan 2026 01:15:36 -0500
-Received: from zg8tmtu5ljy1ljeznc42.icoremail.net ([159.65.134.6])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vcHOh-0004mV-KQ; Sun, 04 Jan 2026 01:15:35 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwD3A11kBVppqePXAg--.57375S2;
- Sun, 04 Jan 2026 14:15:00 +0800 (CST)
-Received: from [10.31.62.13] (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwDXMO5aBVpp4ckQAA--.15601S2;
- Sun, 04 Jan 2026 14:14:57 +0800 (CST)
-Message-ID: <265a2c52-dcf6-41e1-8fc0-c7cc94b5edd2@phytium.com.cn>
-Date: Sun, 4 Jan 2026 14:14:49 +0800
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1vcb7w-0001SZ-I2; Sun, 04 Jan 2026 22:19:28 -0500
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1vcb7u-0005mh-EE; Sun, 04 Jan 2026 22:19:28 -0500
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 5 Jan
+ 2026 11:19:17 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Mon, 5 Jan 2026 11:19:17 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <kane_chen@aspeedtech.com>
+Subject: [PATCH v1 0/1] Remove GIC 128 - 136
+Date: Mon, 5 Jan 2026 11:19:13 +0800
+Message-ID: <20260105031916.1767210-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v13 07/28] hw: arm: virt: rework MSI-X configuration
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Eric Auger <eric.auger@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-References: <c6eafd44-3187-4c63-97b9-bd4bf96595c0@phytium.com.cn>
- <47DF75FA-8539-4748-94E0-74DE080BD71D@unpredictable.fr>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <47DF75FA-8539-4748-94E0-74DE080BD71D@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwDXMO5aBVpp4ckQAA--.15601S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAEBWlYJpgAZAACsp
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW7WFy3Zr1UCr18JF1fJFWUurg_yoW8XF4rpa
- y8KFyYyFs0ya43GasIqr4fXF1Yv3ykGa1UXF1xZry8XF98t3WFqr1jyr4YgFyfZr1rtFW8
- ZF10qw18Wr1rZr7anT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=159.65.134.6;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtu5ljy1ljeznc42.icoremail.net
-X-Spam_score_int: 7
-X-Spam_score: 0.7
-X-Spam_bar: /
-X-Spam_report: (0.7 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_PBL=3.335, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -71,49 +59,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+This patch series is based on legoater/qemu, branch aspeed-next.
+https://github.com/legoater/qemu
 
-On 2026/1/4 11:15, Mohamed Mediouni wrote:
->
->> On 3. Jan 2026, at 06:21, Tao Tang <tangtao1634@phytium.com.cn> wrote:
->>
->> Hi all,
->>
->>> Introduce a -M msi= argument to be able to control MSI-X support independently
->>> from ITS, as part of supporting GICv3 + GICv2m platforms.
->>>
->>> Remove vms->its as it's no longer needed after that change.
->>>
->>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>> ---
->>>   hw/arm/virt-acpi-build.c |   3 +-
->>>   hw/arm/virt.c            | 110 ++++++++++++++++++++++++++++++++-------
->>>   include/hw/arm/virt.h    |   4 +-
->>>   3 files changed, 94 insertions(+), 23 deletions(-)
->>>
->>> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->>> index 86024a1a73..f3adb95cfe 100644
->> I’m trying to clarify the current status of ITS under TCG for the virt machine.(may be a stupid question...)
->>
->> The virt documentation states: "Note that ITS is not modeled in TCG mode." [1]
-> Hello,
->
-> That’s outdated documentation, ITS emulation was added in Qemu 6.2 to cover the TCG case.
->
-> Was implemented in patchset: https://lists.nongnu.org/archive/html/qemu-arm/2021-08/msg00070.html
->
+v1:
+  1.  Remove PSP GIC 128 to 138 for AST2700 A0.
+      Fix this patch lost to update inpins.
+      https://patchwork.kernel.org/project/qemu-devel/patch/20250901040808.1454742-4-jamin_lin@aspeedtech.com/
+  
+Jamin Lin (1):
+  hw/intc/aspeed: Remove GIC 128 - 136
 
-Hi Mohamed,
+ hw/arm/aspeed_ast27x0.c | 17 -----------------
+ hw/intc/aspeed_intc.c   |  2 +-
+ 2 files changed, 1 insertion(+), 18 deletions(-)
 
-Thanks for your reply and the pointer to the original 6.2 patchset. I 
-noticed the commit([PATCH v13 09/28]) updating the virt.rst 
-documentation and appreciate your effort on that. It really helps clear 
-up the ITS/TCG confusion I ran into.
-
-Best regards,
-Tao
+-- 
+2.43.0
 
 

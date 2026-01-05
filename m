@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D07AEC79F8C
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 13:07:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF4D6C79F8C
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 13:07:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vckBL-000757-2q; Mon, 05 Jan 2026 07:59:35 -0500
+	id 1vckAK-0005J9-58; Mon, 05 Jan 2026 07:58:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck9X-0004ko-J3
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:49 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8x-00049h-Lv
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:09 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck9R-00089G-OX
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:40 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8w-000831-5z
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:07 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767617856;
+ s=mimecast20190719; t=1767617825;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kJamzIu5Cl83GuxCo518L71tooIf9xFruKQPqLcFGn4=;
- b=KWoAQgHQs4g6G1aQSrhjH7o6SPziSsW66RMG/r3waUcX4TDL8N2V4Iid3nXROa/63imjbh
- V1VtW3kcqMQQ1jKGsBWKryphlLlktF6Gre4vrOH+TYZ4422M+SnTJ19BgqAivfJvaTenm2
- AgscqkGovby4jxFvotshbkp1xR9QUAI=
+ bh=JVZDGTnneiiEsr9/YzGC7XE1ut9z/hM7iMuXqfl4I90=;
+ b=AlioAac9NYTlYUeI2jVcfZRlvE5vQtCxk7HFLJKakn8T8oX3941acFgfO0j8eV5vIMGw9m
+ A2aG4BQ9y0umAyOWSG3BlfdznnqD7VFxNs8HpPnrIS17vd4bciH+N4DiUWWRZUYK6ShFs9
+ Cn/LVwnnrwimXvcdPiXyzjRk6NTvRdM=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-542-S6rv44lDNZ2OVtk_wdFGwA-1; Mon,
- 05 Jan 2026 07:57:33 -0500
-X-MC-Unique: S6rv44lDNZ2OVtk_wdFGwA-1
-X-Mimecast-MFC-AGG-ID: S6rv44lDNZ2OVtk_wdFGwA_1767617853
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-54-m-yMS8V2MpusPzSiGNfIHg-1; Mon,
+ 05 Jan 2026 07:57:02 -0500
+X-MC-Unique: m-yMS8V2MpusPzSiGNfIHg-1
+X-Mimecast-MFC-AGG-ID: m-yMS8V2MpusPzSiGNfIHg_1767617821
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D85381800626; Mon,  5 Jan 2026 12:57:32 +0000 (UTC)
+ id 6C84618002C1; Mon,  5 Jan 2026 12:57:01 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.53])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3341819560A7; Mon,  5 Jan 2026 12:57:29 +0000 (UTC)
+ id EE43F19560A7; Mon,  5 Jan 2026 12:56:59 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Patrick Williams <patrick@stwcx.xyz>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 36/36] hw/i2c/aspeed: Fix wrong I2CC_DMA_LEN when
- I2CM_DMA_TX/RX_ADDR set first
-Date: Mon,  5 Jan 2026 13:56:13 +0100
-Message-ID: <20260105125613.622667-37-clg@redhat.com>
+Subject: [PULL 22/36] hw/arm/aspeed: catalina: add Cable Cartridge FRU EEPROM
+Date: Mon,  5 Jan 2026 13:55:59 +0100
+Message-ID: <20260105125613.622667-23-clg@redhat.com>
 In-Reply-To: <20260105125613.622667-1-clg@redhat.com>
 References: <20260105125613.622667-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -85,68 +84,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Patrick Williams <patrick@stwcx.xyz>
 
-In the previous design, the I2C model would update I2CC_DMA_LEN (0x54) based on
-the value of I2CM_DMA_LEN (0x1C) when the firmware set either I2CM_DMA_TX_ADDR
-(0x30) or I2CM_DMA_RX_ADDR (0x34). However, this only worked correctly if the
-firmware set I2CM_DMA_LEN before setting I2CM_DMA_TX_ADDR or I2CM_DMA_RX_ADDR.
+Use ipmitool/frugen tool to generate a Cable Cart image based on a
+sanitized set of data from a real device EEPROM.  The EEPROM
+bus/address did not match device tree for one of the EEPROMs so move
+it from bus 13 / 55 to bus 12 / 54.
 
-If the firmware instead set I2CM_DMA_TX_ADDR or I2CM_DMA_RX_ADDR before setting
-I2CM_DMA_LEN, the value written to I2CC_DMA_LEN would be incorrect.
-
-To fix this issue, the model should be updated to set I2CC_DMA_LEN when the
-firmware writes to the I2CM_DMA_LEN register, rather than when it writes to the
-I2CM_DMA_RX_ADDR and I2CM_DMA_TX_ADDR registers.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Fixes: ba2cccd64e90 ("aspeed: i2c: Add new mode support")
+Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260102090746.1130033-4-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20251217-catalina-eeproms-v1-11-dc7b276efd57@stwcx.xyz
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/i2c/aspeed_i2c.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ hw/arm/aspeed_ast2600_catalina.c | 46 +++++++++++++++++++++++++++++---
+ 1 file changed, 43 insertions(+), 3 deletions(-)
 
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index faf2160c0670..1b8ac561c33b 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -656,8 +656,6 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-         bus->dma_dram_offset =
-             deposit64(bus->dma_dram_offset, 0, 32,
-                       FIELD_EX32(value, I2CM_DMA_TX_ADDR, ADDR));
--        bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN,
--                                                     TX_BUF_LEN) + 1;
-         break;
-     case A_I2CM_DMA_RX_ADDR:
-         bus->regs[R_I2CM_DMA_RX_ADDR] = FIELD_EX32(value, I2CM_DMA_RX_ADDR,
-@@ -665,8 +663,6 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-         bus->dma_dram_offset =
-             deposit64(bus->dma_dram_offset, 0, 32,
-                       FIELD_EX32(value, I2CM_DMA_RX_ADDR, ADDR));
--        bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs, I2CM_DMA_LEN,
--                                                     RX_BUF_LEN) + 1;
-         break;
-     case A_I2CM_DMA_LEN:
-         w1t = FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T) ||
-@@ -679,10 +675,16 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
-         if (FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T)) {
-             ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN, RX_BUF_LEN,
-                              FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN));
-+            bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs,
-+                                                         I2CM_DMA_LEN,
-+                                                         RX_BUF_LEN) + 1;
-         }
-         if (FIELD_EX32(value, I2CM_DMA_LEN, TX_BUF_LEN_W1T)) {
-             ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN, TX_BUF_LEN,
-                              FIELD_EX32(value, I2CM_DMA_LEN, TX_BUF_LEN));
-+            bus->regs[R_I2CC_DMA_LEN] = ARRAY_FIELD_EX32(bus->regs,
-+                                                         I2CM_DMA_LEN,
-+                                                         TX_BUF_LEN) + 1;
-         }
-         break;
-     case A_I2CM_DMA_LEN_STS:
+diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
+index 5044441f38d7..4edb30bb16b8 100644
+--- a/hw/arm/aspeed_ast2600_catalina.c
++++ b/hw/arm/aspeed_ast2600_catalina.c
+@@ -419,6 +419,44 @@ static const uint8_t nic_eeprom[] = {
+ };
+ static const size_t nic_eeprom_len = sizeof(nic_eeprom);
+ 
++/*
++ * Cable Cartridge FRU data. Generated with frugen.
++ *
++ *    {
++ *        "board": {
++ *            "mfg": "Nvidia",
++ *            "pname": "18x1RU CBL Cartridge (QEMU)",
++ *            "pn": "000-0000-000",
++ *            "serial": "0000000000000",
++ *            "date": "01/12/2025 00:00"
++ *        },
++ *        "product": {
++ *            "mfg": "Nvidia",
++ *            "pname": "18x1RU CBL Cartridge",
++ *            "pn": "100-00000-0000-001",
++ *            "ver": "E.4",
++ *            "serial": "1000000000001",
++ *            "atag": "QEMU"
++ *        }
++ *    }
++ */
++static const uint8_t cable_eeprom[] = {
++    0x01, 0x00, 0x00, 0x01, 0x0a, 0x00, 0x00, 0xf4, 0x01, 0x09, 0x19, 0x8c,
++    0x19, 0xf0, 0xc6, 0x4e, 0x76, 0x69, 0x64, 0x69, 0x61, 0xdb, 0x31, 0x38,
++    0x78, 0x31, 0x52, 0x55, 0x20, 0x43, 0x42, 0x4c, 0x20, 0x43, 0x61, 0x72,
++    0x74, 0x72, 0x69, 0x64, 0x67, 0x65, 0x20, 0x28, 0x51, 0x45, 0x4d, 0x55,
++    0x29, 0x8a, 0x10, 0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x04, 0x41, 0x10,
++    0x89, 0x10, 0x04, 0x35, 0x10, 0x04, 0x41, 0x0d, 0x04, 0x41, 0xc0, 0xc1,
++    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb1, 0x01, 0x09, 0x19, 0xc6,
++    0x4e, 0x76, 0x69, 0x64, 0x69, 0x61, 0xd4, 0x31, 0x38, 0x78, 0x31, 0x52,
++    0x55, 0x20, 0x43, 0x42, 0x4c, 0x20, 0x43, 0x61, 0x72, 0x74, 0x72, 0x69,
++    0x64, 0x67, 0x65, 0x8e, 0x11, 0x04, 0x35, 0x10, 0x04, 0x41, 0x50, 0x03,
++    0x41, 0x10, 0xd4, 0x40, 0x50, 0x04, 0x83, 0xa5, 0x43, 0x01, 0x8a, 0x11,
++    0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x04, 0x41, 0x11, 0x83, 0x71, 0xd9,
++    0xd6, 0xc0, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x25
++};
++static const size_t cable_eeprom_len = sizeof(cable_eeprom);
++
+ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     /* Reference from v6.16-rc2 aspeed-bmc-facebook-catalina.dts */
+@@ -561,15 +599,17 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+     /* eeprom@50 */
+     at24c_eeprom_init_rom(i2c[12], 0x50, 8 * KiB,
+                           gb200_eeprom, gb200_eeprom_len);
++    /* eeprom@54 */
++    at24c_eeprom_init_rom(i2c[12], 0x54, 256,
++                          cable_eeprom, cable_eeprom_len);
+ 
+     /* &i2c13 */
+     /* eeprom@50 */
+     at24c_eeprom_init_rom(i2c[13], 0x50, 8 * KiB,
+                           gb200_eeprom, gb200_eeprom_len);
+     /* eeprom@54 */
+-    at24c_eeprom_init(i2c[13], 0x54, 256);
+-    /* eeprom@55 */
+-    at24c_eeprom_init(i2c[13], 0x55, 256);
++    at24c_eeprom_init_rom(i2c[13], 0x54, 256,
++                          cable_eeprom, cable_eeprom_len);
+     /* eeprom@57 */
+     at24c_eeprom_init_rom(i2c[13], 0x57, 256, hmc_eeprom, hmc_eeprom_len);
+ 
 -- 
 2.52.0
 

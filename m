@@ -4,100 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36753C79FAF
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 18:28:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2FE0C79FB9
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 19:12:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vcp7Z-0001A0-0x; Mon, 05 Jan 2026 13:16:01 -0500
+	id 1vcpzS-0004pK-Fd; Mon, 05 Jan 2026 14:11:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vcp7P-00015W-5z
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 13:15:51 -0500
-Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vcpzM-0004UL-QE
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 14:11:36 -0500
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vcp77-000352-S2
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 13:15:37 -0500
-Received: by mail-qv1-xf2c.google.com with SMTP id
- 6a1803df08f44-88a26ce6619so1436646d6.3
- for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 10:15:32 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vcpzK-0006OV-AQ
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 14:11:36 -0500
+Received: by mail-pj1-x1036.google.com with SMTP id
+ 98e67ed59e1d1-34c21417781so307673a91.3
+ for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 11:11:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1767636932; x=1768241732; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=BWmrXieWCSWbw5aDZUcuXmz1CVwQXvxz4s+Pt+y6UfI=;
- b=UaFzIHMNCwkGOcpnjf2PbzQvTTCTryUFFz8ZjD1UEeRHpNt106HTxqJTD3cJd9Z2df
- iA7uZ1HNmGONdGqoZf3j8RCdmNb0uIh3zHcCb2lgCpyXXEyyYs9bsPlN/C9mzXCHUhth
- FVvTUPZhylH4WW+rvSvzA+A9/8umG0SaKzqyeUThQqtoZF7QOsa5JQtjstPN9eKYrMeh
- 76t25XOCH/v0qv4dcLiOHoSKKJ8qc8C6L27bk0VrauWjCn5Ft0iQkUTeEftuxswrQiRt
- ssnA92S6RSQuS6E3es3LxmiA6TFrUPiGLJn2kTHMSiXZp8VEfnyxRiSWMT0jXS4P3Mrv
- Jrkw==
+ d=linaro.org; s=google; t=1767640290; x=1768245090; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=FhSHiaUAmchznQpwn/zLomPV++UqAw2HPkNHjU5ciQk=;
+ b=e1FKKSDGFTVinc/kLyElFd07GxIbh9gW50raP9VVVGTHlEZpdxvsMz5oIMyuDtLK9g
+ OP5E8M3/dZBhpIjMaKfD4n4CvmxQmSUZ5uv56Exbi47WrWqyS2GRisdUIkPhRld+rK6n
+ T297uN2Bl0ZJJaHDaVya17JWoVzHR4lMIKu/fJQZSgqJAsvA4LThcdCs6RrOG81xhLh4
+ TWZL5nhNuZpXLrqmUTLzNzvLSX2UIMZCKW75WxctZ8Xh0JPwftCHViCGqHnVk4TX+Vk+
+ LBaIC0ZyuXgU6TAOYP/8Y1plDCoBZDY8jLHWc3h+aJGom2G47tbXCHCTDJR+fa/jpX9B
+ ZC0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767636932; x=1768241732;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=BWmrXieWCSWbw5aDZUcuXmz1CVwQXvxz4s+Pt+y6UfI=;
- b=Qx1+1AEubV+jMw5Q6XBekvYQZl+qXbLqaO2zsOdPiE3WuoQrqI+cVV5zy40Lu9sPW+
- LljdFyd7oTtnVcCfeq4eCUXsmwwCqXyBiRM794988+kJQA4Q5L5yWn4RVAtX6aDXuA2V
- DK0yT+tVCg2/I3SLmZ3ta/YlhMlpvz5MYeLOHXFwwYRcYbsMbu5YCAnflrkSjsGjKdas
- mIq5ddY6hn7I5M6nfTywGoNsK0LW7jmpFZmbis/v+OuGIRpXtNbmOVqq3maHIwJp0iXe
- /Ksk6J5Dqfkfa1tgXc9OmO38Q0D56Ef/ZGVYkEjRGhCXYpFhYXEkn8DKy1Nq0/nkzkXY
- iCgA==
+ d=1e100.net; s=20230601; t=1767640290; x=1768245090;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=FhSHiaUAmchznQpwn/zLomPV++UqAw2HPkNHjU5ciQk=;
+ b=Ab22RkjLM9YTWZ6VUjrL7uO2njZW6NqOb6nI36Ns8sXqIyBIeAVrKz8PQw/lJ/kVg2
+ zsode4etg3ceP+tyGWIckWmzhknpkd4bL3N9OiYwwW9MO1k4AaawDnK9zO4q8tLt3rvk
+ M3BnkI/PLbSgOj3uvSS885dqsQmXnMwMMzM6xQ5o80VBKuC1eM0oyBHDzQaCf8ffvJXC
+ ynB2dzl8493xT5zksO+nfzipV6knznD0V2EUwpXDB+T+oTPtUEdzHgijnUExSeA54ZCy
+ aZiKiyxjZgycEXLnBwHfPMCf/FXgEk6n3SEjJGx6fGKZ0tIAEmu8EhIsFjVKjGCs8GYa
+ 8FwA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUWGWwOsXxzJI2n/Ms3mEpFANdEX0eE8JYpnrsVT6CXpIBODWdP0WZg/RllgFVIjQo4C0CBDTg/eA==@nongnu.org
-X-Gm-Message-State: AOJu0YxMjzBy1Xl/BBvIzaGA4Pm5HfV/swMuNCtU7URtjSDA376JHmMI
- Vh2oBKiBXbSEQrDRGtry/8GL2md8lWlg2OxiyZzlsYbTj/DeAkI7ryip
-X-Gm-Gg: AY/fxX4vBMWDsafD4TjGOKKjpmPXJVqewqHy6+BH22v/VFOBdw7a9sM4JXuv5/oSyjR
- JPzwEkNIrJmabHJn7sQsPw5LeFVqCsSHxi98q6kLzn/fjzvBoQrdzAQvQ8yPTLnCLfq5/LsQ81Y
- l5km7g2xqy2QhpA5JcMFlILVwNgwwm/Zx2WF4meF1k70v4XOTsHPcJeQes2fh5sr1tYD5LbGjI8
- ZOxkwAHEcc4BPkW/larqI/7eFiRQmVFPHSbh21nxNlIMWIhvSSIg9OZB2eTUs6oAjqBt8dz6vMA
- MBIyzN4MTdtXJbPXqL5ij860bp2hnEXJ0jgDN+HjCy2IXn+3O1527suTnbFEWM6tIzz8K2BrhcF
- gSFJY7GduJ4PWkKEtZY9ZlRiALDGl7s+y1A03TkQKnJ+Yc6EKel6uGoXs6XSDiUo/2LqdecrffM
- IyZpSneSjjRCbEve0pVRXXbxNQ
-X-Google-Smtp-Source: AGHT+IHjF8qhvbll+f2NCJXDbsTu75jdWG8PTSweroZXAthjAwRbPR+5lN1OnZ8b6AJ7vJDwULlfQQ==
-X-Received: by 2002:a05:6214:5c43:b0:88a:342f:32a with SMTP id
- 6a1803df08f44-89075d1cce6mr7381786d6.14.1767636931669; 
- Mon, 05 Jan 2026 10:15:31 -0800 (PST)
-Received: from [192.168.1.204] ([185.213.193.254])
+ AJvYcCV71EmI7VUeWn7er8MTLIm2+ycouqIX7JgptVvBzA/aVOhHgAcJgG6SWjppbhVHXtm71q0S2uS/tg==@nongnu.org
+X-Gm-Message-State: AOJu0YzOIH84RfGaxWkYGdRSp2QSI0YniC9C3qAUZh9HUCOInFz4Wfqj
+ +QI129ifw0U36Cz6A0I8yZ0VsHuL9TUCedTiz3Mc+vlv56nCP9P7rZWIQo7h58nuRCM=
+X-Gm-Gg: AY/fxX74IAniPlqLOxTdg5POf4jqfWFAtEXXgirHCE954q6nx6xnpvujg9OIcWhp7cW
+ h9ki481AoW+JJ7Alh3EUEPujjYtworpA+UACUA0gebis6BUNHeZOdlcE271R5Zwv+Sea2Y928pq
+ z0XHyLeSmyZrd6IzW/Iesy2vcRa7kkjQw2L1CSzy3ul4i6K0KNZWM5Oj4XtUpOkBTvLwSBwegVj
+ fEWzVnngnFm+5hzLslx7tCVzVpni5g8b5U2iZtwzXKhtMdo42MirtNVYm4EcpipMlF8lqNavkV8
+ zqjlCcgoBtkspEXIQL9b2MF+ioTytK2p0EWh7PxYWJDSaB6uyOtYJVYRwzbgVg7aCI6N+gS6GpO
+ w0Ha3R0IW9iAQ3OXTWIAY8mQOdhV6GueltppNKH0OMFe5s4ivE5dvOrwwfiT9Dr5eMVLexBP7gM
+ UcFJVeaU6RDOxpNgWyRxPFDCPwn3p+vn6FkAaSskT6p/ykGzTfrguf8IDe
+X-Google-Smtp-Source: AGHT+IFAa/xJ33Kf7LBFZnR4htuVhvTIbaoMejmPyEziTeQ5F8S0JcJg4efLuA3GUddWuvOfqO7jWA==
+X-Received: by 2002:a17:90b:1c07:b0:341:2b78:61b8 with SMTP id
+ 98e67ed59e1d1-34f5f301a25mr232360a91.20.1767640290054; 
+ Mon, 05 Jan 2026 11:11:30 -0800 (PST)
+Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-8907540e24csm3855706d6.25.2026.01.05.10.15.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Jan 2026 10:15:31 -0800 (PST)
-From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Mon, 05 Jan 2026 11:14:53 -0700
-Subject: [PATCH RFC v3 04/12] linux-user: add MTE_STORE_ONLY to prctl
+ 98e67ed59e1d1-34f5fa78f4asm92364a91.3.2026.01.05.11.11.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 05 Jan 2026 11:11:29 -0800 (PST)
+Message-ID: <5cab6793-7bb5-4272-83e0-9dd7a73188b3@linaro.org>
+Date: Mon, 5 Jan 2026 11:11:26 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260105-feat-mte4-v3-4-86a0d99ef2e4@gmail.com>
-References: <20260105-feat-mte4-v3-0-86a0d99ef2e4@gmail.com>
-In-Reply-To: <20260105-feat-mte4-v3-0-86a0d99ef2e4@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] hw/arm/smmu: add memory regions as property for an
+ SMMU instance
+Content-Language: en-US
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, 
- Gustavo Romero <gustavo.romero@linaro.org>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org, 
- Laurent Vivier <laurent@vivier.eu>, 
- Gabriel Brookman <brookmangabriel@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1767636923; l=2508;
- i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=7iu0AGDmcowWfiZU7ESBith02k7QUQRf9isJWo39Au0=;
- b=vbCSYh9KWkv3PitmxrOhYznRIX9v4mkKzvCyvWXkCYtrno7dqUXMocBVOirwNyiocB2S9paCJ
- 0T/pVVcbeOECQ62/QYnTMhUY3tDSfHddMKKP5ytKf3Uhq4AFqESbNP8
-X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
- pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f2c;
- envelope-from=brookmangabriel@gmail.com; helo=mail-qv1-xf2c.google.com
+Cc: richard.henderson@linaro.org, Radoslaw Biernacki <rad@semihalf.com>,
+ tangtao1634@phytium.com.cn, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>
+References: <20251216235731.1793908-1-pierrick.bouvier@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20251216235731.1793908-1-pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1036.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,75 +110,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Linux-user processes can now control whether MTE_STORE_ONLY is enabled
-using the prctl syscall.
+On 12/16/25 3:57 PM, Pierrick Bouvier wrote:
+> This will be used to access non-secure and secure memory. Secure support
+> and Granule Protection Check (for RME) for SMMU need to access secure
+> memory.
+> 
+> As well, it allows to remove usage of global address_space_memory,
+> allowing different SMMU instances to have a specific view of memory.
+> 
+> User creatable SMMU are handled as well for virt machine,
+> by setting the memory properties when device is plugged in.
+> 
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>   include/hw/arm/smmu-common.h |  4 ++++
+>   include/hw/arm/virt.h        |  2 ++
+>   hw/arm/sbsa-ref.c            | 16 ++++++++++++----
+>   hw/arm/smmu-common.c         | 25 +++++++++++++++++++++++++
+>   hw/arm/virt.c                | 13 +++++++++++--
+>   5 files changed, 54 insertions(+), 6 deletions(-)
+Gentle ping on this patch that was not yet reviewed.
 
-Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
----
- linux-user/aarch64/mte_user_helper.h |  3 +++
- linux-user/aarch64/target_prctl.h    | 11 +++++++++++
- tests/tcg/aarch64/mte.h              |  3 +++
- 3 files changed, 17 insertions(+)
-
-diff --git a/linux-user/aarch64/mte_user_helper.h b/linux-user/aarch64/mte_user_helper.h
-index 0c53abda22..afd2d6dbda 100644
---- a/linux-user/aarch64/mte_user_helper.h
-+++ b/linux-user/aarch64/mte_user_helper.h
-@@ -20,6 +20,9 @@
- # define PR_MTE_TAG_SHIFT       3
- # define PR_MTE_TAG_MASK        (0xffffUL << PR_MTE_TAG_SHIFT)
- #endif
-+#ifndef PR_MTE_STORE_ONLY
-+# define PR_MTE_STORE_ONLY      (1UL << 19)
-+#endif
- 
- /**
-  * arm_set_mte_tcf0 - Set TCF0 field in SCTLR_EL1 register
-diff --git a/linux-user/aarch64/target_prctl.h b/linux-user/aarch64/target_prctl.h
-index 621be5727f..5207580c1a 100644
---- a/linux-user/aarch64/target_prctl.h
-+++ b/linux-user/aarch64/target_prctl.h
-@@ -168,6 +168,9 @@ static abi_long do_prctl_set_tagged_addr_ctrl(CPUArchState *env, abi_long arg2)
-     if (cpu_isar_feature(aa64_mte, cpu)) {
-         valid_mask |= PR_MTE_TCF_MASK;
-         valid_mask |= PR_MTE_TAG_MASK;
-+        if (cpu_isar_feature(aa64_mte4, cpu)) {
-+            valid_mask |= PR_MTE_STORE_ONLY;
-+        }
-     }
- 
-     if (arg2 & ~valid_mask) {
-@@ -185,6 +188,14 @@ static abi_long do_prctl_set_tagged_addr_ctrl(CPUArchState *env, abi_long arg2)
-          */
-         env->cp15.gcr_el1 =
-             deposit64(env->cp15.gcr_el1, 0, 16, ~arg2 >> PR_MTE_TAG_SHIFT);
-+
-+        /*
-+         * If MTE_STORE_ONLY is enabled, set the corresponding sctlr_el1 bit
-+         */
-+        if (cpu_isar_feature(aa64_mte4, cpu)) {
-+            env->cp15.sctlr_el[1] =
-+                deposit64(env->cp15.sctlr_el[1], 58, 1, extract64(arg2, 19, 1));
-+        }
-         arm_rebuild_hflags(env);
-     }
-     return 0;
-diff --git a/tests/tcg/aarch64/mte.h b/tests/tcg/aarch64/mte.h
-index 0805676b11..17b932f3f1 100644
---- a/tests/tcg/aarch64/mte.h
-+++ b/tests/tcg/aarch64/mte.h
-@@ -20,6 +20,9 @@
- #ifndef PR_TAGGED_ADDR_ENABLE
- # define PR_TAGGED_ADDR_ENABLE    (1UL << 0)
- #endif
-+#ifndef PR_MTE_STORE_ONLY
-+# define PR_MTE_STORE_ONLY        (1UL << 19)
-+#endif
- #ifndef PR_MTE_TCF_SHIFT
- # define PR_MTE_TCF_SHIFT         1
- # define PR_MTE_TCF_NONE          (0UL << PR_MTE_TCF_SHIFT)
-
--- 
-2.52.0
-
+Regards,
+Pierrick
 

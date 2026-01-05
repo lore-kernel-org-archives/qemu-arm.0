@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0ACDC79FB7
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 18:19:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6400FC79FAF
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 18:20:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vcp7d-0001EM-Ii; Mon, 05 Jan 2026 13:16:06 -0500
+	id 1vcp7b-0001BQ-AY; Mon, 05 Jan 2026 13:16:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vcp7P-00015U-69
+ id 1vcp7P-00015h-83
  for qemu-arm@nongnu.org; Mon, 05 Jan 2026 13:15:51 -0500
-Received: from mail-qv1-xf2b.google.com ([2607:f8b0:4864:20::f2b])
+Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vcp76-00034C-0C
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 13:15:35 -0500
-Received: by mail-qv1-xf2b.google.com with SMTP id
- 6a1803df08f44-88fcc71dbf4so1024616d6.2
- for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 10:15:28 -0800 (PST)
+ id 1vcp78-00035G-6t
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 13:15:37 -0500
+Received: by mail-qv1-xf30.google.com with SMTP id
+ 6a1803df08f44-88a26ce6619so1436936d6.3
+ for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 10:15:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1767636927; x=1768241727; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1767636933; x=1768241733; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=B+Hv/Pd2LCKw/PSMs7i5uhg6AdBJ5kEZzn6b+5/2FjM=;
- b=juFdlLis4zgB/5xn+zxQeORrVjeiLKPYdjG822FSKZxiRxI1/eMgN1h9rjHAwqFNl+
- y8FmtPo+yxJMGOewRVjE90g7nR3wYALJDLDw33kPcblyWN0lbPOSPGi67SuEjIJtVrU/
- zMCbVvHxsWMRVC7KSv+x/Lr23eUVbuKzlnRyzEZbWu+GkayuXRLOA7EI1yOHzinD8mht
- 2UWigWvwMfN7EK9F1lmeDJksX5OlFubYa99fG+ZK0kM91sYYRrXVe6VFFVQPIhdnYkH+
- tHJGVHlM+GJ3LHyFry53NJQ8iTeP6eQP0h72tWX2HkyiGjlpTliASKi2cpyEJ7kLr7zQ
- IWrg==
+ :reply-to; bh=jHcTA6gvDp/xKck7gSYynyMsBMw427kEreNJmMaWlCI=;
+ b=iDTlJo3/9tS3IbxYHvfZz7/Cs618fRjF1PMDUdTZuIyydWgZ+1zzUwbzdrTaSM1M0b
+ e6e2ImcNG7Zn8VJOiu9g+5zfuAgdvfyvHON2HSkg3MkdrGplM7aiCHMFHm6lnEGke7q/
+ 1XnMxyfdB4mdjUfGfa026X3u2FnCGssW0c6L3kODXjNbv8rT0RoMgQKURfPpk0J3TbZU
+ oIhRkRtqpV0MlsotvOH/GiJHOvbbMFxydrfaWdoECwgmoTZfkYDQWqFKDIGWlndYlvY4
+ zwrVmyBIQt6JTknAKu9qUR7onH24r+BemmscI9s19cSLdWOjRh8kSwRFhFZjXegIqlHs
+ x4JA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767636927; x=1768241727;
+ d=1e100.net; s=20230601; t=1767636933; x=1768241733;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=B+Hv/Pd2LCKw/PSMs7i5uhg6AdBJ5kEZzn6b+5/2FjM=;
- b=R0MrV8pV7Gp2/SzPugSC3TIyQaqMt+bX3XC2Wa3tmKFu/qs2blKGNI9SbSaiRt6XOm
- uEZ/PEi4CVB+FC+LCMA4kuaT+wfy6+jz5mWL7P0ENGh2jEacgiiYLH4V0ez+HhlI1/LT
- /JjYcoAuI3ZQ/5DcM/Q4iUqo+9Imq0Dy4RVL4AMOVEeECa242rg7fmOvGOlmrfsXiMoM
- PrTraGWP6Mzpi9+hVvTSIJTNixe3GhdY6a5sFZ2P1kfpGRDn13jvErD8YiHW1/kUqDD+
- 23BWYdAHv1uTeWDavz6cikwD2frZ1rOwVdXlIfXBXzNh9xsw7dM/Fa2OibgK9mkNF5If
- eOOw==
+ bh=jHcTA6gvDp/xKck7gSYynyMsBMw427kEreNJmMaWlCI=;
+ b=LY5Q8W/z3ddCQuKlq76m7UhItoMHlv6EAzhVbR9OF/3DmI/JtLbRaI+mSyleoFvYYh
+ XMQgrEkdjfSoBjhCJgtt2GaR/AerHtRHsB3FfPUbEwe49RAJBx6jh1HmWYm33SrMqLQP
+ SSVc96jeRU3X+gvuMknNE8di16Ue6ybinufdhpeoc3sJYfWQzVG50pjk/dM9RTwshNon
+ e9DCnvZ6O9qvD75ZnRn1KOb5X+A9iAU/all2j5kB1//LG1f/2LzqKlof/v42JvzYIcUP
+ 9xSr/aPlGYmqQtiI0V+8A/SIAGp9Cobsy6BwLeqQZ+ed9ZOGgluFc3adoI4MtGR3UXYM
+ S50A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWlUsw1tTx66f3XiMxigy59rnweaphgsH01QkdWJU9WtRevUXUCVM+mdnKsZpJxYwHt4OanVBaquQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy8zxJXW4GfH5OOSVk9pvcjqoFtl2mSehvf0A7GBuwADasteihd
- Oqyde/5s//cmmQims4Bd2EDkvLRao5HZAtCEppxbKOyFlSkLL4pLwdCu
-X-Gm-Gg: AY/fxX5l8UNZKvjeLyOD9mYro5ToT6VicPjgg+OO2Z1yS7eofMPmCWCERd+JHCtyxk1
- EL89zyRSgLj9JpiWozPqCSpLMAadzAaUPOEjN1mHCKE3RtIn185FLtdpjCwD8EFwCA0lH8wC12A
- OhlYMbPybpzFJEy0bYWtA48fqTJfpB9ouhZK9g9TNL+UTKFO87D5Z+O++isdpCPGf/bnZK+3Ey+
- aV/on8PJGXdiezxkPqAJZEs8AJ9CssxHfZusUB+cGaNACTu/86024r1Aa9h+WfM/nXPl4Wk6yOb
- j+Q99PoXctRFzrC2n1l+C+k6Znc6CZagALI44zNh/dtL9/mKnlXhoA+Z1gkTMzx630kzTqq7z6b
- gdVmJG5dxXLNzEJaHTBu5aFJt/8yXwt7dIIC5g8qn+drrh1iEM2xH8wZ2O7Bwm6d8j65uo5XlKK
- eZkE+4+8ex6M2mlGoh06IZnyjf
-X-Google-Smtp-Source: AGHT+IHYdP20i1E7axKMbgwKe0aKHUb/bZzfMFwriKu5QlYEyH4TDqPUEvh7RcaA5iabb9jxFF7QAg==
-X-Received: by 2002:a05:6214:ca5:b0:88a:2841:bb11 with SMTP id
- 6a1803df08f44-89075e7d88dmr8395466d6.27.1767636927168; 
- Mon, 05 Jan 2026 10:15:27 -0800 (PST)
+ AJvYcCWqcigpZAQoGXaryGr/Q7piH+lOqFeohd9XifHjJZV3oIEtfOYIRygHJIUh7XrbJoa8eTYB7/EoYA==@nongnu.org
+X-Gm-Message-State: AOJu0Ywglh6AVmGeeiu0XfcHBP8E3NnvNIYlWZk6fhlsbOQz1jSIxYx1
+ ppURsKJjMAgP5iTLs+eKiPjnRuVS3+YMujstVcASJv0V8nsTZDoJeHOEebZ8jA==
+X-Gm-Gg: AY/fxX69zaGHqub1PiedfmEFswlOXBZpgWMFVUzr65W1xvte3jLwGE4q9K0bvgoPebc
+ HXRXnGZQidRFLiX41FO0r3beP/CRvqrM/qXXBY47IELqnBoRJ0GsoT8PNto7EM74hRfYtqTzdQa
+ lXEmwNKjlv4h2baqpr2VNhUdcGOFqorUZku0KGUtSCQQdGCDeG8pVWAo8bOvjcLJFdwjA+RFiGM
+ lmepiJ7MNILM527cc/2BKhG0X0YyfIFEv6wCdN4Q275mMvLIVd1p+AsrqKNct24+88mQIJUuwOb
+ UycBNIGDcJHWCUP+RDv3r1zTxZjusJVc3XyCCxMLMnuhsFkNba9meJLzxiHrfzZc1hrK/mVqr79
+ 7tB//buiySiYIx7aeLH74UtSsZlx6/NL7ThQlLD2ackogC63gTiPR0VVWG3F89vR6mm6T/mZZqJ
+ YHjqK/XByS7EjZszbvRdKa7Bxi
+X-Google-Smtp-Source: AGHT+IGIubFrjaDstDhy2HP0AvVgIuVu6sOCYDgkatRaaxDLLIIQsVe/1hGcWjayX1w34wXl5JnI9Q==
+X-Received: by 2002:a05:6214:2d42:b0:888:8088:209e with SMTP id
+ 6a1803df08f44-89075e29387mr8275936d6.16.1767636933005; 
+ Mon, 05 Jan 2026 10:15:33 -0800 (PST)
 Received: from [192.168.1.204] ([185.213.193.254])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-8907540e24csm3855706d6.25.2026.01.05.10.15.26
+ 6a1803df08f44-8907540e24csm3855706d6.25.2026.01.05.10.15.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Jan 2026 10:15:26 -0800 (PST)
+ Mon, 05 Jan 2026 10:15:32 -0800 (PST)
 From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Mon, 05 Jan 2026 11:14:50 -0700
-Subject: [PATCH RFC v3 01/12] target/arm: implement MTE_PERM
+Date: Mon, 05 Jan 2026 11:14:54 -0700
+Subject: [PATCH RFC v3 05/12] target/arm: removed TBI bits from MTE check logic
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260105-feat-mte4-v3-1-86a0d99ef2e4@gmail.com>
+Message-Id: <20260105-feat-mte4-v3-5-86a0d99ef2e4@gmail.com>
 References: <20260105-feat-mte4-v3-0-86a0d99ef2e4@gmail.com>
 In-Reply-To: <20260105-feat-mte4-v3-0-86a0d99ef2e4@gmail.com>
 To: qemu-devel@nongnu.org
@@ -82,15 +82,15 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>, 
  Gabriel Brookman <brookmangabriel@gmail.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1767636923; l=4132;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1767636923; l=4186;
  i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=mE5nY5j9NmtdHiwmNlYtPNB/QFvmyHnfw0X1To8yh9E=;
- b=fw7lNXQ/lCpLWby01FFEWy68Mi+AUEDEqfPihX3PZu8BCygZ+db6AYEfyVp7YeKmNm0UeQKIf
- A06vc40EN3wDWDDr5JdsohyfMknbpaToP0qySQSAUU+yBfhSYfYHQ/z
+ bh=vOLU69w4oknJyo6gD2D8xBaLfCFyetC8olb1OJPcJpo=;
+ b=2kr95j6I9M2WDVhFoE/v1Eu39vFnmhb5EFZ1ctSdedVzZl+ncM6v7GecktttoQPjVvIFXX3Dc
+ K7NbWvpiZCcBAEtqhMfdzuA8cZdFDyKJhhifLZeJZsn2H2s0lM3uN2z
 X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
  pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f2b;
- envelope-from=brookmangabriel@gmail.com; helo=mail-qv1-xf2b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f30;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-qv1-xf30.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,123 +113,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduces a new stage 2 memory attribute, NoTagAccess, that raises a
-stage 2 data abort on a tag check, tag read, or tag write.
+Previously, the TBI bit was used to mediate whether MTE checks happened.
+This dependency isn't described in the ARM ARM. See D10.4.1, Tag Checked
+Memory Accesses, specifically.
+
+Decoupling tag checking from TBI is required to correctly implement
+canonical tag checking, which must function even when TBI is disabled.
 
 Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
 ---
- target/arm/cpu-features.h   |  5 +++++
- target/arm/ptw.c            | 17 ++++++++++++++++-
- target/arm/tcg/mte_helper.c | 31 +++++++++++++++++++++++++++++++
- 3 files changed, 52 insertions(+), 1 deletion(-)
+ target/arm/tcg/helper-a64.c |  9 +--------
+ target/arm/tcg/hflags.c     | 11 ++++-------
+ target/arm/tcg/mte_helper.c | 10 ----------
+ 3 files changed, 5 insertions(+), 25 deletions(-)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index c86a4e667d..48009b5a66 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1139,6 +1139,11 @@ static inline bool isar_feature_aa64_mte3(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64PFR1, MTE) >= 3;
+diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+index ba1d775d81..f64025925d 100644
+--- a/target/arm/tcg/helper-a64.c
++++ b/target/arm/tcg/helper-a64.c
+@@ -1050,20 +1050,13 @@ static int mops_sizereg(uint32_t syndrome)
  }
  
-+static inline bool isar_feature_aa64_mteperm(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64_IDREG(id, ID_AA64PFR2, MTEPERM) == 1;
-+}
-+
- static inline bool isar_feature_aa64_sme(const ARMISARegisters *id)
+ /*
+- * Return true if TCMA and TBI bits mean we need to do MTE checks.
++ * Return true if the TCMA bit means we need to do MTE checks.
+  * We only need to do this once per MOPS insn, not for every page.
+  */
+ static bool mte_checks_needed(uint64_t ptr, uint32_t desc)
  {
-     return FIELD_EX64_IDREG(id, ID_AA64PFR1, SME) != 0;
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 2e6b149b2d..9f864fe837 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -3393,7 +3393,7 @@ static ARMCacheAttrs combine_cacheattrs(uint64_t hcr,
-                                         ARMCacheAttrs s1, ARMCacheAttrs s2)
- {
-     ARMCacheAttrs ret;
--    bool tagged = false;
-+    bool tagged, notagaccess = false;
+     int bit55 = extract64(ptr, 55, 1);
  
-     assert(!s1.is_s2_format);
-     ret.is_s2_format = false;
-@@ -3403,6 +3403,18 @@ static ARMCacheAttrs combine_cacheattrs(uint64_t hcr,
-         s1.attrs = 0xff;
-     }
+-    /*
+-     * Note that tbi_check() returns true for "access checked" but
+-     * tcma_check() returns true for "access unchecked".
+-     */
+-    if (!tbi_check(desc, bit55)) {
+-        return false;
+-    }
+     return !tcma_check(desc, bit55, allocation_tag_from_addr(ptr));
+ }
  
-+    if (hcr & HCR_FWB) {
-+        if (s2.attrs >= 0xe) {
-+            notagaccess = true;
-+            s2.attrs = 0x7;
-+        }
-+    } else {
-+        if (s2.attrs == 0x4) {
-+            notagaccess = true;
-+            s2.attrs = 0xf;
-+        }
-+    }
-+
-     /* Combine shareability attributes (table D4-43) */
-     if (s1.shareability == 2 || s2.shareability == 2) {
-         /* if either are outer-shareable, the result is outer-shareable */
-@@ -3437,6 +3449,9 @@ static ARMCacheAttrs combine_cacheattrs(uint64_t hcr,
-     /* TODO: CombineS1S2Desc does not consider transient, only WB, RWA. */
-     if (tagged && ret.attrs == 0xff) {
-         ret.attrs = 0xf0;
-+        if (notagaccess) {
-+            ret.attrs = 0xe0;
-+        }
-     }
- 
-     return ret;
+diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+index c4696af5d8..80d7ea9349 100644
+--- a/target/arm/tcg/hflags.c
++++ b/target/arm/tcg/hflags.c
+@@ -405,15 +405,13 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+         /*
+          * Set MTE_ACTIVE if any access may be Checked, and leave clear
+          * if all accesses must be Unchecked:
+-         * 1) If no TBI, then there are no tags in the address to check,
+-         * 2) If Tag Check Override, then all accesses are Unchecked,
+-         * 3) If Tag Check Fail == 0, then Checked access have no effect,
+-         * 4) If no Allocation Tag Access, then all accesses are Unchecked.
++         * 1) If Tag Check Override, then all accesses are Unchecked,
++         * 2) If Tag Check Fail == 0, then Checked access have no effect,
++         * 3) If no Allocation Tag Access, then all accesses are Unchecked.
+          */
+         if (allocation_tag_access_enabled(env, el, sctlr)) {
+             DP_TBFLAG_A64(flags, ATA, 1);
+-            if (tbid
+-                && !(env->pstate & PSTATE_TCO)
++            if (!(env->pstate & PSTATE_TCO)
+                 && (sctlr & (el == 0 ? SCTLR_TCF0 : SCTLR_TCF))) {
+                 DP_TBFLAG_A64(flags, MTE_ACTIVE, 1);
+                 if (!EX_TBFLAG_A64(flags, UNPRIV)) {
+@@ -439,7 +437,6 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+         }
+         /* And again for unprivileged accesses, if required.  */
+         if (EX_TBFLAG_A64(flags, UNPRIV)
+-            && tbid
+             && !(env->pstate & PSTATE_TCO)
+             && (sctlr & SCTLR_TCF0)
+             && allocation_tag_access_enabled(env, 0, sctlr)) {
 diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index bb48fe359b..942bd4103d 100644
+index 942bd4103d..f0880991b6 100644
 --- a/target/arm/tcg/mte_helper.c
 +++ b/target/arm/tcg/mte_helper.c
-@@ -57,6 +57,28 @@ static int choose_nonexcluded_tag(int tag, int offset, uint16_t exclude)
-     return tag;
- }
+@@ -819,11 +819,6 @@ static int mte_probe_int(CPUARMState *env, uint32_t desc, uint64_t ptr,
+     bit55 = extract64(ptr, 55, 1);
+     *fault = ptr;
  
-+#ifdef CONFIG_USER_ONLY
-+#else
-+/*
-+ * Constructs S2 Permission Fault as described in ARM ARM "Stage 2 Memory
-+ * Tagging Attributes".
-+ */
-+static void mte_perm_check_fail(CPUARMState *env, uint64_t dirty_ptr,
-+                                uintptr_t ra, bool is_write)
-+{
-+    uint64_t syn;
-+
-+    env->exception.vaddress = dirty_ptr;
-+
-+    syn = syn_data_abort_no_iss(0, 0, 0, 0, 0, is_write, 0);
-+
-+    syn |= BIT_ULL(42); /* TnD is bit 42 */
-+
-+    raise_exception_ra(env, EXCP_DATA_ABORT, syn, 2, ra);
-+    g_assert_not_reached();
-+}
-+#endif
-+
- uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
-                                   uint64_t ptr, MMUAccessType ptr_access,
-                                   int ptr_size, MMUAccessType tag_access,
-@@ -116,6 +138,15 @@ uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
-     }
-     assert(!(flags & TLB_INVALID_MASK));
+-    /* If TBI is disabled, the access is unchecked, and ptr is not dirty. */
+-    if (unlikely(!tbi_check(desc, bit55))) {
+-        return -1;
+-    }
+-
+     ptr_tag = allocation_tag_from_addr(ptr);
  
-+    /*
-+     * If the virtual page MemAttr == Tagged NoTagAccess, throw S2 permission
-+     * fault (conditional on mteperm being implemented and RA != 0).
-+     */
-+    if (ra && cpu_isar_feature(aa64_mteperm, env_archcpu(env))
-+        && full->extra.arm.pte_attrs == 0xe0) {
-+        mte_perm_check_fail(env, ptr, ra, tag_access == 1);
-+    }
-+
-     /* If the virtual page MemAttr != Tagged, access unchecked. */
-     if (full->extra.arm.pte_attrs != 0xf0) {
-         return NULL;
+     if (tcma_check(desc, bit55, ptr_tag)) {
+@@ -960,11 +955,6 @@ uint64_t HELPER(mte_check_zva)(CPUARMState *env, uint32_t desc, uint64_t ptr)
+ 
+     bit55 = extract64(ptr, 55, 1);
+ 
+-    /* If TBI is disabled, the access is unchecked, and ptr is not dirty. */
+-    if (unlikely(!tbi_check(desc, bit55))) {
+-        return ptr;
+-    }
+-
+     ptr_tag = allocation_tag_from_addr(ptr);
+ 
+     if (tcma_check(desc, bit55, ptr_tag)) {
 
 -- 
 2.52.0

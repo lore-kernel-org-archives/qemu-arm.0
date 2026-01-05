@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF93BCD0405
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 21:05:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B74CD040C
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 21:33:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vcrl9-0001f7-84; Mon, 05 Jan 2026 16:05:03 -0500
+	id 1vcsCq-0007Dy-FS; Mon, 05 Jan 2026 16:33:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vcrl8-0001el-9J
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 16:05:02 -0500
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1vcsCd-00075r-UW
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 16:33:29 -0500
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vcrl6-0003pp-CY
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 16:05:01 -0500
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-7e2762ad850so388168b3a.3
- for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 13:04:59 -0800 (PST)
+ id 1vcsCc-0003Kk-EC
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 16:33:27 -0500
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-2a081c163b0so3387795ad.0
+ for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 13:33:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767647099; x=1768251899; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767648805; x=1768253605; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=oojgqbVZJFnZ71rWhStDXV6ptsmCZnMfdxVeg3Qc5V8=;
- b=ailwJBD2h7GqY/FPCJ5982jXD4kV4YHeokCzAOJPmuvND0tneMeQoUa9BR9vJsfCVd
- aV7wo7UPphK2s+3kHZekFgdded+5rJ9m9bWb9Wn35vy1A55xbK0g3LLycOGTnv5glNQy
- jR32rtI/J4eD8dPrKm4abwZsJKa5q6GzTUP9HXR0DefS+pxiS03WHHri0gmumeHGckfk
- FVjoKNNDL+fBEz0fODOgG8WQVWDk7agywqfJB9n1Ckxz2N5R7bUlm19VXaQ0QAqoChWi
- +O2QafLb6/j5OFo1Wdtf2Sgaf43ilvds+e7yBPRhhIYaNDMXJ7LDm19nTxzSua9hyHD1
- LkaA==
+ bh=QaRoVS0sZmfqN3jLRtmuEp8o9Uz2j0VWCn7U6l8V5Jo=;
+ b=dc3AaN7epaj3fbtv+wNVI59SbPhWiVQ7K5J/DN3GMknt+n9MFhiMpCpDmxnpd36B9g
+ Hs56cxsYrp4+bluZAQGDipaTnrqdmSnfspm3fkWh56x0luJAnOL7lUuR8bYhbgS+gdQC
+ ou+EWvdhnOE5HjWcVOH+Swd7Vmw/jLIg5s3x7aj1U2L2UtJzsFafTDpH+4ULmIZEg8+w
+ U0sbjUJll9d8IuC5SmI1T4CV812ncB/K20p8pjP8GQRSZyoCeoBhd6dX2LKx/ZVrZuZK
+ 0bc+dvkmkoiF/j1NIqvZRH8wYsrVih9/bwvX5RfOxl/P/ClIOX+PSzxyq+DGpLc7zK8c
+ 55sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767647099; x=1768251899;
+ d=1e100.net; s=20230601; t=1767648805; x=1768253605;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=oojgqbVZJFnZ71rWhStDXV6ptsmCZnMfdxVeg3Qc5V8=;
- b=rx5ypKTHWSpnT6aX5phs6UAEl2faLYSPTfH8iV2fzcKxXWlyMFJ/FEzgkDVkrBFHBN
- 50trdrQerT3YREmsRQFhZ1eBTMnQydCQtxwPt7ph+6jjLPxcHAujZyveHQGHgCTs0EST
- 8NZhkn38tZ1FWEN3xVR5pOorrrZYKWfQJjgRdBbTXwG/hpKx1VmSfO8uq+4JbUYm3ACV
- tWPa6qrWcUuBXxu0gtIPIkvVu2cTChA5bSJkZETGOK2r7m2fvmoRCftH2xJE3bn/0I2g
- OuTzJKF5N12susArLh/PnGQ3j0Q+U1LXjasIjHN50H/+29SURg7x5SwPiIXRtIYu/OuN
- 6Pqg==
+ bh=QaRoVS0sZmfqN3jLRtmuEp8o9Uz2j0VWCn7U6l8V5Jo=;
+ b=kyOgm1+a9A5r7ylJfMI2zKbBnF8hWNZ6W3cRPMTy1SgrMeGGrwM5vFKBWiGLNBXQjf
+ bQldFbqOo7pa1P8Ewkcwrj7Ta81f1gIJGzosQS7zYYn2jm4RjkHNCiPmWol2dSmGyTMZ
+ Z2DcJ8gSpG+tRKveTl0Wup4awAAQx/K8nCgB8gdDpkgHy06j2Rpzs1nvuax+MUcIVUZb
+ luE971stbrZVLcKL9cnuIJLXlAa5qqfe7zp6g12PqkkqjtWqmqTWZkNq5FEzm+8u1xvg
+ DhTwfxECgIH0OoJ9AUY5uRWgw6K2mgnehqUS9wdBeFaBDbkbtcB9YfWezTLZlZ1QLR4m
+ 96ZQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWJrbPUXY13hlFuI5YEgbD8WjKXYQ5X+k+/W+zlk/1vf7eQBGdBVYwh9f/BLNChoD7+mx6wAgz4fg==@nongnu.org
-X-Gm-Message-State: AOJu0YyjblruUIaNh/LWteN/0txTnrQn45awtEFmnrRDPJAxaHHk6Zxb
- hRSwRTsX4XByWrqBs15plmlIqsFo1+W9hyb2jqh5EpH6OlrptfyMA8/aX9TfBHqeDBw=
-X-Gm-Gg: AY/fxX7GU9pejy0VtsTmvokT4CiarI0uUtbAA/ZgqvrMxYL8gu5WMUoYrm4IHK+hhgu
- GiZZwqb1FyfhB7eD/97C+OKmDYUnE5d2ZTzeTR/KZ7EzS37lG5Rtkg8M6v+CmRepKGk1ZsldG6L
- KmG8KpfBwrgYemm7ThENFKHVNXgT/EPrx4s44K1SMtv4XrsNOZJSFvuryQDg5e8LvCQnuzg3Xlm
- gTOiIaI4WjMVrIavvN8sBi1XB22LczevbTbzwz/1p9i9VWnneohNG1oeCng3qHlCIAAfQY6aVia
- kcKlIsi0lU/O49smjowUjZnAQuEk78gGJGHihy4P6inbcwiEkHEx2Ad69cCwKkisPyHA7SJT5Pp
- Sp62FQbHxELH/ZeJoNNklDAzaEMnGtm5M/fvBlUOaMsxbSvriUd2/c7b0uLqTJmtQb8jySnubOp
- xAPk36Mwk+eYBL9UqzWl2/um+zgoH7XaJzzbyucSr+
-X-Google-Smtp-Source: AGHT+IHlWpvGcF/N+VYlYrplC0gLzwQ1oIes7bqBd1+6Y9c6fEmXx5MrSy9tOfZtf546r6EMe11uIQ==
-X-Received: by 2002:a05:6a00:1d9f:b0:7e8:4433:8fa0 with SMTP id
- d2e1a72fcca58-818825f39d5mr794022b3a.40.1767647098693; 
- Mon, 05 Jan 2026 13:04:58 -0800 (PST)
+ AJvYcCWv5a0cGBk8lYn0la1h8b+j0vpyGVrSiczvDkU2U7wgAs8djpC778tKvWpw1iatjyG8BqsQC9chTA==@nongnu.org
+X-Gm-Message-State: AOJu0YzPGDn6QBMbNuEI7y+2K8Loit4TJdDZDcb4xPlTn6HRQeQUYYw8
+ lm30pTBMvUCcnJHSxtO516RVv/gbU5Oy+AFvOpiiuxdGHc71kamFTOzTRw7CeCnBEqg=
+X-Gm-Gg: AY/fxX4CH83fghKCUD78fr4AG/AD7QDjJnK8AjJruaZQIOZ+nj/azmayIXAkpDqYLOr
+ w9CySickYEjWZyP+TIEK45SQChn1yVZD2un9cYyspXnlWdVyPfwRGi0NFZvao+M4WwZp5euenQD
+ FcvYWpieTir0jk2ZSyGtPr4CczjK8iROGWayw1Fx9bLUjchvLiwijydrpmklFKddsMDVO58hbPV
+ K3zcB7c9AV2sz02AhSHFJfPENMm9fdrk1bs/fojNPiuBKTLmiaa2IX1+5UXvm4dXIqVGXS92rep
+ KxNj7uP+ZluJAH5r58+PNwBPO5tUum8SIN8H/yB20zpU3INGWc2yr6vwzSTb+Co2QC2p/G/0TZA
+ aq0RrGbz2tK5/JZRsqja81EzMCQwe68ookVWQfC7TtaU0f2l0Q7/KrkjLzvppliAm+9PhNtDliJ
+ 3NLc1aG7yf++QayyaLk/+2xro6ughFtg==
+X-Google-Smtp-Source: AGHT+IGWHTXoXkpcOI/OdGXuw2mE9tqFjWdhBWc5BaAnWFHWJE0s0HyAzYbOc8qxXwpYIQ7mIZWDeA==
+X-Received: by 2002:a17:902:c403:b0:2a0:c1ed:c8c2 with SMTP id
+ d9443c01a7336-2a3e2d36061mr8961905ad.55.1767648804719; 
+ Mon, 05 Jan 2026 13:33:24 -0800 (PST)
 Received: from [192.168.10.140] ([180.233.125.201])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-819c52f8952sm63461b3a.39.2026.01.05.13.04.55
+ 41be03b00d2f7-c4cbf28f6cdsm279764a12.6.2026.01.05.13.33.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Jan 2026 13:04:58 -0800 (PST)
-Message-ID: <b83b2bbe-4cf3-487f-9a46-11487db8c062@linaro.org>
-Date: Tue, 6 Jan 2026 08:04:52 +1100
+ Mon, 05 Jan 2026 13:33:24 -0800 (PST)
+Message-ID: <fc94c263-81eb-4013-9fa1-5259b37e3d76@linaro.org>
+Date: Tue, 6 Jan 2026 08:33:18 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v3 01/12] target/arm: implement MTE_PERM
+Subject: Re: [PATCH RFC v3 02/12] target/arm: add TCSO bitmasks to SCTLR
 To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>
 References: <20260105-feat-mte4-v3-0-86a0d99ef2e4@gmail.com>
- <20260105-feat-mte4-v3-1-86a0d99ef2e4@gmail.com>
+ <20260105-feat-mte4-v3-2-86a0d99ef2e4@gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260105-feat-mte4-v3-1-86a0d99ef2e4@gmail.com>
+In-Reply-To: <20260105-feat-mte4-v3-2-86a0d99ef2e4@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,126 +109,67 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/6/26 05:14, Gabriel Brookman wrote:
-> Introduces a new stage 2 memory attribute, NoTagAccess, that raises a
-> stage 2 data abort on a tag check, tag read, or tag write.
+> These are the bitmasks used to control the FEAT_MTE_STORE_ONLY feature.
+> They are now named and setting these fields of SCTLR is ignored if MTE
+> or MTE4 is disabled, as per convention.
 > 
 > Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
 > ---
->   target/arm/cpu-features.h   |  5 +++++
->   target/arm/ptw.c            | 17 ++++++++++++++++-
->   target/arm/tcg/mte_helper.c | 31 +++++++++++++++++++++++++++++++
->   3 files changed, 52 insertions(+), 1 deletion(-)
+>   target/arm/cpu-features.h |  5 +++++
+>   target/arm/cpu.h          |  2 ++
+>   target/arm/helper.c       | 11 +++++++++--
+>   3 files changed, 16 insertions(+), 2 deletions(-)
 > 
 > diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-> index c86a4e667d..48009b5a66 100644
+> index 48009b5a66..3473787ab8 100644
 > --- a/target/arm/cpu-features.h
 > +++ b/target/arm/cpu-features.h
-> @@ -1139,6 +1139,11 @@ static inline bool isar_feature_aa64_mte3(const ARMISARegisters *id)
->       return FIELD_EX64_IDREG(id, ID_AA64PFR1, MTE) >= 3;
+> @@ -1144,6 +1144,11 @@ static inline bool isar_feature_aa64_mteperm(const ARMISARegisters *id)
+>       return FIELD_EX64_IDREG(id, ID_AA64PFR2, MTEPERM) == 1;
 >   }
 >   
-> +static inline bool isar_feature_aa64_mteperm(const ARMISARegisters *id)
+> +static inline bool isar_feature_aa64_mte4(const ARMISARegisters *id)
 > +{
-> +    return FIELD_EX64_IDREG(id, ID_AA64PFR2, MTEPERM) == 1;
+> +    return FIELD_EX64_IDREG(id, ID_AA64PFR2, MTEFAR) == 1;
 > +}
 
-Per the Arm ARM re future expansion, this should be true for any non-zero value.
-See "D24.1.3 Principles of the ID scheme for fields in ID registers".
+There is no ID register field for FEAT_MTE4.
 
-> @@ -3403,6 +3403,18 @@ static ARMCacheAttrs combine_cacheattrs(uint64_t hcr,
->           s1.attrs = 0xff;
->       }
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 263ca29d92..4086423b6f 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -3364,10 +3364,17 @@ static void sctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
 >   
-> +    if (hcr & HCR_FWB) {
-> +        if (s2.attrs >= 0xe) {
-> +            notagaccess = true;
-> +            s2.attrs = 0x7;
+>       if (ri->state == ARM_CP_STATE_AA64 && !cpu_isar_feature(aa64_mte, cpu)) {
+>           if (ri->opc1 == 6) { /* SCTLR_EL3 */
+> -            value &= ~(SCTLR_ITFSB | SCTLR_TCF | SCTLR_ATA);
+> +            value &= ~(SCTLR_ITFSB | SCTLR_TCF | SCTLR_ATA | SCTLR_TCSO);
+>           } else {
+>               value &= ~(SCTLR_ITFSB | SCTLR_TCF0 | SCTLR_TCF |
+> -                       SCTLR_ATA0 | SCTLR_ATA);
+> +                       SCTLR_ATA0 | SCTLR_ATA | SCTLR_TCSO | SCTLR_TCSO0);
 > +        }
-> +    } else {
-> +        if (s2.attrs == 0x4) {
-> +            notagaccess = true;
-> +            s2.attrs = 0xf;
-> +        }
-> +    }
-> +
->       /* Combine shareability attributes (table D4-43) */
->       if (s1.shareability == 2 || s2.shareability == 2) {
->           /* if either are outer-shareable, the result is outer-shareable */
-> @@ -3437,6 +3449,9 @@ static ARMCacheAttrs combine_cacheattrs(uint64_t hcr,
->       /* TODO: CombineS1S2Desc does not consider transient, only WB, RWA. */
->       if (tagged && ret.attrs == 0xff) {
->           ret.attrs = 0xf0;
-> +        if (notagaccess) {
-> +            ret.attrs = 0xe0;
-> +        }
->       }
+> +    } else if (ri->state == ARM_CP_STATE_AA64
+> +            && !cpu_isar_feature(aa64_mte4, cpu)) { /* mte but not mte4 */
+> +        if (ri->opc1 == 6) { /* SCTLR_EL3 */
+> +            value &= ~SCTLR_TCSO;
+> +        } else {
+> +            value &= ~(SCTLR_TCSO | SCTLR_TCSO0);
+>           }
 
-Better as
+(1) Better to refactor to eliminate duplicate checks.
+(2) These bits are explicitly vs FEAT_MTE_STORE_ONLY not FEAT_MTE4.
 
-     ret.attrs = notagaccess ? 0xe0 : 0xf0;
+Thus
 
-Given that this hunk corresponds to J1.3.5.2 EncodePARAttrs, I think it would be worth a 
-comment that FEAT_MTE_PERM is checked in allocation_tag_mem_probe and that the attr 
-encoding is otherwise RESERVED.
-
-
-> diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-> index bb48fe359b..942bd4103d 100644
-> --- a/target/arm/tcg/mte_helper.c
-> +++ b/target/arm/tcg/mte_helper.c
-> @@ -57,6 +57,28 @@ static int choose_nonexcluded_tag(int tag, int offset, uint16_t exclude)
->       return tag;
->   }
->   
-> +#ifdef CONFIG_USER_ONLY
-> +#else
-
-#ifndef
-
-
-> +/*
-> + * Constructs S2 Permission Fault as described in ARM ARM "Stage 2 Memory
-> + * Tagging Attributes".
-> + */
-> +static void mte_perm_check_fail(CPUARMState *env, uint64_t dirty_ptr,
-> +                                uintptr_t ra, bool is_write)
-> +{
-> +    uint64_t syn;
-> +
-> +    env->exception.vaddress = dirty_ptr;
-> +
-> +    syn = syn_data_abort_no_iss(0, 0, 0, 0, 0, is_write, 0);
-> +
-> +    syn |= BIT_ULL(42); /* TnD is bit 42 */
-
-Surely (32 + 9) == 41 for the TagAccess bit.
-
-> +
-> +    raise_exception_ra(env, EXCP_DATA_ABORT, syn, 2, ra);
-> +    g_assert_not_reached();
-> +}
-> +#endif
-> +
->   uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
->                                     uint64_t ptr, MMUAccessType ptr_access,
->                                     int ptr_size, MMUAccessType tag_access,
-> @@ -116,6 +138,15 @@ uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
->       }
->       assert(!(flags & TLB_INVALID_MASK));
->   
-> +    /*
-> +     * If the virtual page MemAttr == Tagged NoTagAccess, throw S2 permission
-> +     * fault (conditional on mteperm being implemented and RA != 0).
-> +     */
-> +    if (ra && cpu_isar_feature(aa64_mteperm, env_archcpu(env))
-> +        && full->extra.arm.pte_attrs == 0xe0) {
-> +        mte_perm_check_fail(env, ptr, ra, tag_access == 1);
-> +    }
-> +
->       /* If the virtual page MemAttr != Tagged, access unchecked. */
->       if (full->extra.arm.pte_attrs != 0xf0) {
->           return NULL;
-> 
+     if (ri->state == ARM_CP_STATE_AA64) {
+         if (!cpu_isar_feature(aa64_mte, cpu)) {
+             ...
+         } else if (!cpu_isar_feature(aa64_mte_store_only, cpu)) {
+             ...
+         }
+     }
 
 
 r~

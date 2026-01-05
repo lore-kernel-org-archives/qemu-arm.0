@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32CEAC79FAF
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 18:21:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C491BC79FB7
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 18:27:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vcp7Z-0001A5-JO; Mon, 05 Jan 2026 13:16:01 -0500
+	id 1vcp7Z-0001A2-8x; Mon, 05 Jan 2026 13:16:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vcp7T-00017I-Ht
+ id 1vcp7U-00017R-1g
  for qemu-arm@nongnu.org; Mon, 05 Jan 2026 13:15:57 -0500
-Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
+Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vcp7O-00037C-NI
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 13:15:53 -0500
-Received: by mail-qt1-x82d.google.com with SMTP id
- d75a77b69052e-4f1b147eaa9so1426641cf.3
- for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 10:15:40 -0800 (PST)
+ id 1vcp7P-00036W-Ej
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 13:15:55 -0500
+Received: by mail-qv1-xf2c.google.com with SMTP id
+ 6a1803df08f44-88860551e39so1144846d6.3
+ for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 10:15:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1767636940; x=1768241740; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1767636937; x=1768241737; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=udHcpN8ZZZt21zmciD7G8BASxGfZmLICDSByJJQKjAw=;
- b=VViVQYq1/5eOSa2IUEdWOvF5imujBC8PLtJfF6ibqMalmjYQm1JXpMRU6j0xV91APS
- RqKxTsHueCq6OpbhroQlxjtV+s0Kn33PrDUljnH7Mf4406iD953mPUrJF47a1hYseEY9
- g9NcqO4dcST7oU/x7ZOywNeCFuMv1EC60IsNRFpSE956uC2wgZwm4xy54rfl63eGPoyv
- LYChPrmDVsyjtA6omZ6IMa7KV3DgKo/HWQ2hPpYTqeKiJZ/TSopkSyFsOPh8a2HT35/k
- rOR5v1dfgT3tSl+J2WHf5q7/cBZmV5n15rHqxXiIxb+RC/+kXMwqkmvi7+v7SncGiHQw
- f6zw==
+ :reply-to; bh=/9Fx5rLfzSRK3bLfXlACPoaE0s79Ml+6B18vzxJguro=;
+ b=RFFkaQwSYDSlkqo+gKhVj6PFok1mcNm9H00txbhy/W5K6Hw+l/EsgSc4FXiqF2kZps
+ r2adOtMYG7qovn2RQMhmZDHc+qWQf1hyVgvFoGUZz+2+JzQKiE02UXjT3p6hHDut6tAo
+ kWEffeej7sLByWs8DGUlZaBDD9NQWeFKI72+xwmES/pj3yiI15hwwhc8dQNOInmjn36y
+ 3nvraUANT8lIqEkCqF8zBfLtor2coB/I10g2brftwwRjqW04re5zLIqOnpXxZCJRXIb1
+ llZuvee2QPl/muYBpRZVqyFQmPThXV6Isw8K/0+5KMANsOwpGHCy7vwRYbMm0+4gcAjq
+ njrg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767636940; x=1768241740;
+ d=1e100.net; s=20230601; t=1767636937; x=1768241737;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=udHcpN8ZZZt21zmciD7G8BASxGfZmLICDSByJJQKjAw=;
- b=CsE8Znt+0cohzzyZlcmIj2RvYBAB1tX2ZH6o3m7l3NRJz8SgaEYtRcrk395R7zpJPh
- JZ4hKoUsm2/VmEBnbtHNiy1fnYrIsmWSy9ThcvL7nMJpLv3rca3fS8dnUTZX/HnGQ2d3
- YDdKyhwkE2wydqasj3F//ncFxbJH6lsoRJaXAGeCPs2NdUnlAw56+XoxklI+6xndswFQ
- 9zjf2oMSW5M8wO8L0wLr2R9hQjuwkXTQvCdTqWBuQpK4HkPwICz9Umo0U7hfSO1iyI9Q
- ulZcRg7lU38XtB8/b6LJhfxbJv9rYQg7nuNo9h2SPib+qfR6V+K/bqoM2Gkapf4W9fZo
- e15w==
+ bh=/9Fx5rLfzSRK3bLfXlACPoaE0s79Ml+6B18vzxJguro=;
+ b=uHAKCsFR22q1DeN1C9bctppEWJsXKvY90qmIye8rCrTHJUBdiYKjTJV0p9W9wpp0Em
+ QY8v63JGXRM06rUpTLJvlUuHwS4ClvH6jYuuSwqTCRzyyOyl2EGRYUIvjKmsa+yoWAVP
+ APYiB1GZ3TuDK5pHZgntqXJ76OqrpCOYnY29OUyMdZvWOc+H7YYCai7QbLoscptl+vHw
+ Gf1AaI/i4oFFc1TcHdzHzGL5WzGAgTGYRbUefWkdwwZXjb3LnNESst1Bexfxfvg9ap9N
+ 049svugjlAAV4/BGPjbtOtQObjt9zT1NwqPlYMzpEzV44sqhY3aHORPVNSwDNqM/rCwa
+ 7yQQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWmDZMzz3gjvkzN7yVeyGvE1677sQrChbxtOj1t6lBTdQ1YBUls8isP2Zhfjo4jpxlh0VfkLhX5HQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzrvkPibSdhhHVpOwPKIMOjcSMeHbp4nbYGr1DtE0j/6vDbAe36
- GgyOG8E6O41yCcmo3i1LW0DIvnKJI6f+1w08GIMu6POVIPLMU5U3hTSJ
-X-Gm-Gg: AY/fxX714SXgVwbbm13ma9/wu4BO+pRWc0zzUvumHN9oeZ7ILAx6MamwGHS7pKE8KJd
- cyd3I6h/7Mx7LR9orLoFPos3owOyxxwTo/n/690UGEsyQqwKi0SRe4+1keVHHLJ4j5GLtN40hH6
- 0lVgiIMxydWLLyxcgxu3sQDkgMM9oVaGgYaRuUR0gauWpNc3muY9tUZuxebMckL4w8/BcoBBUMw
- 0/LIdLuzjmPrPPc2B2iC45HiSOqgdjYc5HW6QNvAdSqkX9yDBYRbr4i9XP+YjLBG+Jp5RHTIWIQ
- zwcYbztSYMfGt7nImWvEPlC+5au5e1+ibZw3oT2IXc226PrTTY1XH1hzAy0f8FMFxKRKtNi/5lp
- njH0bfxtcbJ7f3GZEwH5fgHk46Q2JlvmNMYDfhnUAlu0kHMEB/vDAunV+9z/Zslb3QXMgeI+SKr
- SRWErKTQUAmerxLcXW9zhXTPAd
-X-Google-Smtp-Source: AGHT+IEH1q73W2xEmNCuPVoyRXFU7CwblIqnnjCeffn+13De9y7qMnrq+Z1Usj1DLFFk8Oq3949RtQ==
-X-Received: by 2002:ac8:5e0d:0:b0:4ee:24b8:2275 with SMTP id
- d75a77b69052e-4ffa769a0a5mr6418201cf.1.1767636939776; 
- Mon, 05 Jan 2026 10:15:39 -0800 (PST)
+ AJvYcCU6PS/P1O2myKWApER1q6H3/KMgKSIHHMlnx8kFLwMXcdQruJ42GEHpLfWsv8dsbPeQ2s4c07+zHg==@nongnu.org
+X-Gm-Message-State: AOJu0YwkfpSw8iDrrPcdRMbnVTF/p1ardqN9yVANG8npS8uWVxeTgtKA
+ +MCvGQZ5tC8XJBE/9ewwV9+rzlN6BkZX7/3BVsUaOcb5xxH1WTSgEtc9
+X-Gm-Gg: AY/fxX7fdPPnMiikQzg26O9Imqob03F2ODteecvzDH7X0MwOR3ICXk6Fg8aMccVv7Np
+ C0NmpYb/5FnnofI6LuFrrwIzsc/ObXBT8e65OYZ/oxjlnCDeF74UZDj6+v71HeVR4X34zT3tQsZ
+ CJHCRmtn0t6jyMhp4kbQ6mcSaY0Au6F8pNITuECMjkmvUeON1PxXFUqTIeSNOVUR/K0vEPe0vJA
+ c5GLnNTaOxrimWmaZ6GKxts220p0lyDVUQcXj0KuRg+NVpRhkCTqlbLYNA45ywhvF6ucgOvVSUu
+ 45TVxwFkHdir4NWdewvlrVszpKfja9SLeiEh0jHsuC4LzBHJz4yc1WJMMGD+6nOpRMThw8dooD8
+ 0EVQji7loNRtF+SNwpIYf038uIfbk1a2zHUq9t1YS+b5rNuRgeTvhXD7TelhL3B+Yx094OXRm3z
+ U9Yt8KyoZK8bydY6I8D1c+URH9
+X-Google-Smtp-Source: AGHT+IGH0yXr0l71SERYlH3uPyirXQAI7liNy2+TqYI4q0I2pPz76zhuNWbwN83FnL+DB/uz4WD+3A==
+X-Received: by 2002:a05:6214:1306:b0:87d:cad9:ccba with SMTP id
+ 6a1803df08f44-89075ce86a4mr7720336d6.14.1767636936937; 
+ Mon, 05 Jan 2026 10:15:36 -0800 (PST)
 Received: from [192.168.1.204] ([185.213.193.254])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-8907540e24csm3855706d6.25.2026.01.05.10.15.38
+ 6a1803df08f44-8907540e24csm3855706d6.25.2026.01.05.10.15.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Jan 2026 10:15:39 -0800 (PST)
+ Mon, 05 Jan 2026 10:15:36 -0800 (PST)
 From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Mon, 05 Jan 2026 11:14:59 -0700
-Subject: [PATCH RFC v3 10/12] docs: add MTE4 features to docs
+Date: Mon, 05 Jan 2026 11:14:57 -0700
+Subject: [PATCH RFC v3 08/12] target/arm: storing to canonical tags faults
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260105-feat-mte4-v3-10-86a0d99ef2e4@gmail.com>
+Message-Id: <20260105-feat-mte4-v3-8-86a0d99ef2e4@gmail.com>
 References: <20260105-feat-mte4-v3-0-86a0d99ef2e4@gmail.com>
 In-Reply-To: <20260105-feat-mte4-v3-0-86a0d99ef2e4@gmail.com>
 To: qemu-devel@nongnu.org
@@ -82,15 +82,15 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>, 
  Gabriel Brookman <brookmangabriel@gmail.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1767636923; l=2273;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1767636923; l=3655;
  i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=DsmbxIwUBXC/gS0c7G0YS6d9ziseoKdUCW31wFQg4u8=;
- b=7hq6iEvTw/7SdRedRqlvPiN7gXImWHLziKMoojuFus0lGNbf1qb1QAjzwnRwFSfrvYKkEVybz
- ixarxY83VGVDFVqdLBO1SeR2wLoDOvp2mHrJqMq0OfkviO3gECE5gVO
+ bh=CcVL5fRovpSirzVToytYO4z5WjM+viKj7dzMRsgL4n8=;
+ b=L3eBBGvMSl3dbAJ47+QpgN+q6PinoV2TJRj5h3VA4xv2vaoatW8f0+18BKcnj8F5mEJu+hoXv
+ fam2POjTgaBArYmdd30LJxysWvUOoHws02jKLvNFwYN2bmQUqQDg/Rj
 X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
  pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82d;
- envelope-from=brookmangabriel@gmail.com; helo=mail-qt1-x82d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f2c;
+ envelope-from=brookmangabriel@gmail.com; helo=mail-qv1-xf2c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,53 +113,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The implemented MTE4 features are now present in
-docs/system/arm/emulation.rst
+According to ARM ARM, section "Memory region tagging types", tag-store
+instructions targeting canonically tagged regions cause a stage 1
+permission fault.
 
 Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- docs/system/arm/emulation.rst | 5 +++++
- target/arm/tcg/cpu64.c        | 8 ++++++++
- 2 files changed, 13 insertions(+)
+ target/arm/tcg/mte_helper.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 31a5878a8f..12662189fc 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -106,6 +106,11 @@ the following architecture extensions:
- - FEAT_MTE3 (MTE Asymmetric Fault Handling)
- - FEAT_MTE_ASYM_FAULT (Memory tagging asymmetric faults)
- - FEAT_MTE_ASYNC (Asynchronous reporting of Tag Check Fault)
-+- FEAT_MTE_PERM (NoTagAccess memory attribute)
-+- FEAT_MTE_TAGGED_FAR (Full address reporting of Tag Check Fault)
-+- FEAT_MTE_STORE_ONLY (Store-only tag checking)
-+- FEAT_MTE_CANONICAL_TAGS (Canonical tag checking)
-+- FEAT_MTE_NO_ADDRESS_TAGS (Address tagging disabled)
- - FEAT_NMI (Non-maskable Interrupt)
- - FEAT_NV (Nested Virtualization)
- - FEAT_NV2 (Enhanced nested virtualization support)
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 917db5bb09..4ba126f4f8 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1281,8 +1281,16 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64PFR1, CSV2_FRAC, 0); /* FEAT_CSV2_3 */
-     t = FIELD_DP64(t, ID_AA64PFR1, NMI, 1);       /* FEAT_NMI */
-     t = FIELD_DP64(t, ID_AA64PFR1, GCS, 1);       /* FEAT_GCS */
-+    t = FIELD_DP64(t, ID_AA64PFR1,
-+            MTEX, 1);   /* FEAT_MTE_NO_ADDRESS_TAGS + FEAT_MTE_CANONICAL_TAGS */
-     SET_IDREG(isar, ID_AA64PFR1, t);
+diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
+index 795a5ad20b..8f06ed3162 100644
+--- a/target/arm/tcg/mte_helper.c
++++ b/target/arm/tcg/mte_helper.c
+@@ -227,6 +227,20 @@ uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
+ #endif
+ }
  
-+    t = GET_IDREG(isar, ID_AA64PFR2);
-+    t = FIELD_DP64(t, ID_AA64PFR2, MTEFAR, 1);    /* FEAT_MTE_TAGGED_FAR */
-+    t = FIELD_DP64(t, ID_AA64PFR2, MTESTOREONLY, 1);   /* FEAT_MTE_STORE_ONLY */
-+    t = FIELD_DP64(t, ID_AA64PFR2, MTEPERM, 1);    /* FEAT_MTE_PERM */
-+    SET_IDREG(isar, ID_AA64PFR2, t);
++static void canonical_tag_write_fail(CPUARMState *env,
++                                uint64_t dirty_ptr, uintptr_t ra)
++{
++    uint64_t syn;
 +
-     t = GET_IDREG(isar, ID_AA64MMFR0);
-     t = FIELD_DP64(t, ID_AA64MMFR0, PARANGE, 6); /* FEAT_LPA: 52 bits */
-     t = FIELD_DP64(t, ID_AA64MMFR0, TGRAN16, 1);   /* 16k pages supported */
++    env->exception.vaddress = dirty_ptr;
++
++    syn = syn_data_abort_no_iss(arm_current_el(env) != 0, 0, 0, 0, 0, 1, 0);
++    syn |= BIT_ULL(42); /* TnD is bit 42 */
++
++    raise_exception_ra(env, EXCP_DATA_ABORT, syn, exception_target_el(env), ra);
++    g_assert_not_reached();
++}
++
+ static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
+                                    uint64_t ptr, MMUAccessType ptr_access,
+                                    int ptr_size, MMUAccessType tag_access,
+@@ -363,6 +377,11 @@ static inline void do_stg(CPUARMState *env, uint64_t ptr, uint64_t xt,
+     int mmu_idx = arm_env_mmu_index(env);
+     uint8_t *mem;
+ 
++    if (mtx_check(env, 1 & (ptr >> 55))) {
++        canonical_tag_write_fail(env, ptr, ra);
++        return;
++    }
++
+     check_tag_aligned(env, ptr, ra);
+ 
+     /* Trap if accessing an invalid page.  */
+@@ -390,6 +409,11 @@ void HELPER(stg_stub)(CPUARMState *env, uint64_t ptr)
+     int mmu_idx = arm_env_mmu_index(env);
+     uintptr_t ra = GETPC();
+ 
++    if (mtx_check(env, 1 & (ptr >> 55))) {
++        canonical_tag_write_fail(env, ptr, ra);
++        return;
++    }
++
+     check_tag_aligned(env, ptr, ra);
+     probe_write(env, ptr, TAG_GRANULE, mmu_idx, ra);
+ }
+@@ -401,6 +425,11 @@ static inline void do_st2g(CPUARMState *env, uint64_t ptr, uint64_t xt,
+     int tag = allocation_tag_from_addr(xt);
+     uint8_t *mem1, *mem2;
+ 
++    if (mtx_check(env, 1 & (ptr >> 55))) {
++        canonical_tag_write_fail(env, ptr, ra);
++        return;
++    }
++
+     check_tag_aligned(env, ptr, ra);
+ 
+     /*
+@@ -449,6 +478,11 @@ void HELPER(st2g_stub)(CPUARMState *env, uint64_t ptr)
+     uintptr_t ra = GETPC();
+     int in_page = -(ptr | TARGET_PAGE_MASK);
+ 
++    if (mtx_check(env, 1 & (ptr >> 55))) {
++        canonical_tag_write_fail(env, ptr, ra);
++        return;
++    }
++
+     check_tag_aligned(env, ptr, ra);
+ 
+     if (likely(in_page >= 2 * TAG_GRANULE)) {
+@@ -548,6 +582,11 @@ void HELPER(stgm)(CPUARMState *env, uint64_t ptr, uint64_t val)
+ 
+     ptr = QEMU_ALIGN_DOWN(ptr, gm_bs_bytes);
+ 
++    if (mtx_check(env, 1 & (ptr >> 55))) {
++        canonical_tag_write_fail(env, ptr, ra);
++        return;
++    }
++
+     /* Trap if accessing an invalid page.  */
+     tag_mem = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_STORE,
+                                  gm_bs_bytes, MMU_DATA_LOAD, ra);
+@@ -594,6 +633,11 @@ void HELPER(stzgm_tags)(CPUARMState *env, uint64_t ptr, uint64_t val)
+     intptr_t dcz_bytes, tag_bytes;
+     uint8_t *mem;
+ 
++    if (mtx_check(env, 1 & (ptr >> 55))) {
++        canonical_tag_write_fail(env, ptr, ra);
++        return;
++    }
++
+     /*
+      * In arm_cpu_realizefn, we assert that dcz > LOG2_TAG_GRANULE+1,
+      * i.e. 32 bytes, which is an unreasonably small dcz anyway,
 
 -- 
 2.52.0

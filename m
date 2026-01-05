@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6028BCD041F
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 22:38:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91E7BCD041F
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 22:47:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vct8W-0002MV-SG; Mon, 05 Jan 2026 17:33:16 -0500
+	id 1vctM8-0001jt-Vq; Mon, 05 Jan 2026 17:47:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vct8L-0002F7-EG
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 17:33:06 -0500
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+ id 1vctLT-0001V1-LI
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 17:46:40 -0500
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vct8J-000470-OA
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 17:33:05 -0500
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-2a0ac29fca1so3997345ad.2
- for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 14:33:03 -0800 (PST)
+ id 1vctLS-0007I4-0D
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 17:46:39 -0500
+Received: by mail-pj1-x1034.google.com with SMTP id
+ 98e67ed59e1d1-34c71f462d2so514396a91.0
+ for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 14:46:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767652382; x=1768257182; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767653196; x=1768257996; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=+Rn4zgYufMW7rIMHFO5uTe8EU5x+JDUJ8tv9sxcWIH8=;
- b=etZtkWwtUDVq9YkwsDYOfWyZ0ZydO9u5QlimPwXBh4y/424HdIve8ErAy1P9lN1srV
- wHNDQr8WXO18HgoFp597lIQ95ECUNIn/0X4hWPOc/37wxdQnfBG43Ar/4o6SJ52igeIA
- xdYeKvjvmOB0Uhz9n6Uho0Kn0EXDUXT7nWfM/jolXGIS/zHnqb3eZw7b4UQDfWbBtMoc
- NKJWnOK3hgA9kbbkgEY91poFMBJSRUdbgdHBhZpvUvptuJrVq9KM37AX0kI7zA7V38A2
- j+nBwa8RXqLv1BfZgmg3Y3cugwO5W8DeiVVxLWHvjrQ4sWb8fCTqZRJh02gxD6lwMjY2
- YHjg==
+ bh=AtOSIdHEYOKZd3I9JDVuViA2kqFTpsYJ+nWK7u/weiA=;
+ b=hZvN/Cmhxy9Tc5maasU5ljWJucmmfxh3/nyaYa98sUvrwdAGbu1EqT2+vFVTsUXOmQ
+ ckPpnWKEG0bFIzHzjLRQgOrpzcA7yZm9jKnipQUxH3AbtZ+IKY5ALkb7bNzBimeFR36e
+ e1zxbLs/Pr1rcxbMfB0UgBUi68Cnhd2wHTTax6ASv7AWbKnEUh3j/qHKXvlZlfPkKuY4
+ kKnwGioyhtY8maRPX0H1XzU2qkrAlbA6hw8+n/KF1QwQ8wph2txI5g5lDJkae+br+nS3
+ 7xV2nsMnem/oAR2yoVVewagJLLPFsNAqsSNC0gkXyRrlaQ5LvUnAzT/aLvS6+zOP8CEr
+ jarw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767652382; x=1768257182;
+ d=1e100.net; s=20230601; t=1767653196; x=1768257996;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=+Rn4zgYufMW7rIMHFO5uTe8EU5x+JDUJ8tv9sxcWIH8=;
- b=f6wlPwMCCDCKk01w3Q0fHVZHbAwcVUfm/l10wDG1HHns44XUPAHKx5uwfMFu0Fry+L
- gq5pdgqp7r3fkb+vUq25LG9IeQTtpAxZOlry72t+QZnqYTymXOUQTGW2w890o2zeN4VX
- nDztoXDcOSo6DFl3uBjPpcpWZzHmbEJ/HqJoAJbQ/QvrtobzqMUCvXucv6J8fGOsQElr
- OWehUqo7JN5NNRySQCZsrrFySy8Sl50dA8YdsmndqqHQO5oC/DAF4zMwhGx9v8SdYf9I
- dybCV9U0zBZh3nbi9ChB9c5gy/WPcSjfgD66ekdR9v9ZtoVfH7v+aFhOjCxlWW0rNLCp
- kG5A==
+ bh=AtOSIdHEYOKZd3I9JDVuViA2kqFTpsYJ+nWK7u/weiA=;
+ b=Wxk+IkGkrxbDMxrQGqIsuK8uVlnqzr+2knkLYdQ9+cwi1+4uo5EovsSba8/+3e0Usi
+ atsFL7Xzx7zlv6hZgX5JJihZDVKGD1FBlfHQI3p7+iIy7qNu/LbdKB7TtJ7XgwEaAjbC
+ sPtj2/mZoL7GzEbyAio5kbUhRw6WkkWwoazszzN6MaqoSIY5yKew9IuglMyP1mwvjDF3
+ rbNI/iaDgwZt+XKfeHUBQjOD1s9JfZ8jRsDV+c467ZpUTazjNrwa3EyRAdXVLECyq+Y+
+ BOiGMS/nQLNyQGS7cpr8SEg8Icb9l3jrC0NFS22dFKdqDE1s5XonRpc0d2+PncheL5Y/
+ ViCA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXbQpMTiecDzIRch1ygxdxX2shoNKY1JHU5clNGD7sCPl9n20vQ6zAJ1KJMby3BHBHzbRHKoXVooQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyhwylkqUUtVhkQ9fMtFtuiAY1EMzepE7aEOH1qSEhjiOivLetu
- Bh0tokogBVAnxSyX5bO1lXE7EJ73m5SsDojglltRD5e3/QdkhluwYMzEGFhqku5AnC8=
-X-Gm-Gg: AY/fxX4m6ymGl3oxGvP7ImUJeIDbdYwitvLaxIy7Wpp2G+9l9LjvdQwps1CVxzxgjqr
- 5hY2dmsq5zkS9VketbsdpAxKSJ0jPTh+QpXkrM7qQmWMDKnc3vgyDKs9lwnMRBWZ2XX8ZMj3NI1
- F+BQOrlA7mCkxADp9T9LhKvChLaRkec0FJLOZPjC75WqVQLj40DkJk8ojM4c0Lcpo0MXQs3/VCl
- JiCC2J9TSyG0RxuIDEXXYfEt08q20RFQBj2e4BIBCuHdMhDb3iYrHCzyr9Wgi1y6lP9SMTJO/uJ
- p0Fn5LfyCXSQxjwJBLq4MfxeWD25RA+tQTvdXTrDbowKI8Svx3txlYzDw23+AftSPO0LpsNvS1T
- X13DM/9+v4BX+yPO3o5Cc/gE8b0Xy/FkwPAiEVwWOuzToSC4PXL6RR09peCdIOSzEObWY5YuBA1
- 2cApMazH79C4n8LlJm19acJpBYp5tkKQ==
-X-Google-Smtp-Source: AGHT+IHdqFjaOzlPDrbCcbqaIb2hcqvT1VIzaLvjMCs+EV7x/nXnnQMlvxq26yS4MUgVuLTI6voMqw==
-X-Received: by 2002:a17:903:2f8f:b0:2a1:5f23:7ddf with SMTP id
- d9443c01a7336-2a3e2c92066mr10946115ad.6.1767652381528; 
- Mon, 05 Jan 2026 14:33:01 -0800 (PST)
+ AJvYcCW/SACzH0+7yZhVoYoZArHOC0dxDkia9qbTyP1X+zux4G799KfcucB/JIuo/3Rw0kMAA+jt1HCBjw==@nongnu.org
+X-Gm-Message-State: AOJu0YwiWCold5XUhVYGAANTl7plDaQlNovFTwQP4Df4oGhcnasH38w8
+ MZgAskpX7qo0y7cIEbXscG6nIZdpojnn0t3MCFjUCvQY1zUbRjHsee1UMMhLqN7aiDs=
+X-Gm-Gg: AY/fxX6TRiivNaDk+oqqesgD4oZ7ceUv83SU33wEnzaIoCe1EBjMg3fIOIH9rj3e3De
+ O/mQVAu+Xb7F1OUXzVQG34XFAXPDxIOs+GmEPEHjBWCse0te09a1FRAgE17buzjWBNXbpM6TaGm
+ sfiHNY5Ck0dPEovUkS5UK76uweLx328jW/pyecU7iSfIdsYb39WZFkZVV7yJYvKApPuEom1XUTh
+ zMC1hDuHR6HIqxgRxDzjusaJtKu4x9ban1VijJZU2c5yi8pBJ6FP9UgvHNhV6yPdVu0Hdamvj/G
+ 2Z7DmXbNEFP8USl8fsjKkUyEgMVao26SqfY3PBhy4PvKDpS4c74JQHD2ln4SMmqnnmA4CgmNRkZ
+ wBjQAJM7z4XEViHbKvc/APXv4Sn2IZKM9X2Qltv47JKhRt/agTqUleVy7oMiRpTQqzEmDLnGufZ
+ E83PXumAT+Zf0xGLijwJNBztnHw/7KvQ==
+X-Google-Smtp-Source: AGHT+IHIhC6CnVad4mTKVHCAiL2GcNZ4SFhH3O8CeRGIKLFa/KwqH8H1+9DMA2huWnK/2s8VgglFTg==
+X-Received: by 2002:a17:90b:1c0f:b0:340:2a59:45c6 with SMTP id
+ 98e67ed59e1d1-34f5f25a1d0mr711483a91.4.1767653196188; 
+ Mon, 05 Jan 2026 14:46:36 -0800 (PST)
 Received: from [192.168.10.140] ([180.233.125.201])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a3e3c48d77sm2380185ad.41.2026.01.05.14.32.58
+ 98e67ed59e1d1-34f5f7b19ebsm374160a91.3.2026.01.05.14.46.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Jan 2026 14:33:01 -0800 (PST)
-Message-ID: <76dfc640-b8db-4ed5-9232-41ede17da314@linaro.org>
-Date: Tue, 6 Jan 2026 09:32:55 +1100
+ Mon, 05 Jan 2026 14:46:35 -0800 (PST)
+Message-ID: <8c5f7183-4bb6-4086-901e-87815bcb595a@linaro.org>
+Date: Tue, 6 Jan 2026 09:46:29 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v3 03/12] target/arm: mte_check unemitted on
- STORE_ONLY load
+Subject: Re: [PATCH RFC v3 04/12] linux-user: add MTE_STORE_ONLY to prctl
 To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>
 References: <20260105-feat-mte4-v3-0-86a0d99ef2e4@gmail.com>
- <20260105-feat-mte4-v3-3-86a0d99ef2e4@gmail.com>
+ <20260105-feat-mte4-v3-4-86a0d99ef2e4@gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260105-feat-mte4-v3-3-86a0d99ef2e4@gmail.com>
+In-Reply-To: <20260105-feat-mte4-v3-4-86a0d99ef2e4@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x636.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1034.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,63 +109,70 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/6/26 05:14, Gabriel Brookman wrote:
-> This feature disables generation of the mte check helper on loads when
-> STORE_ONLY tag checking mode is enabled.
+> Linux-user processes can now control whether MTE_STORE_ONLY is enabled
+> using the prctl syscall.
 > 
 > Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
 > ---
->   target/arm/cpu.h               |  2 ++
->   target/arm/tcg/hflags.c        | 14 ++++++++++++++
->   target/arm/tcg/translate-a64.c |  8 ++++++--
->   target/arm/tcg/translate.h     |  2 ++
->   4 files changed, 24 insertions(+), 2 deletions(-)
+>   linux-user/aarch64/mte_user_helper.h |  3 +++
+>   linux-user/aarch64/target_prctl.h    | 11 +++++++++++
+>   tests/tcg/aarch64/mte.h              |  3 +++
+>   3 files changed, 17 insertions(+)
 > 
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 393bfc0dc9..4087484faf 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -2496,6 +2496,8 @@ FIELD(TBFLAG_A64, ZT0EXC_EL, 39, 2)
->   FIELD(TBFLAG_A64, GCS_EN, 41, 1)
->   FIELD(TBFLAG_A64, GCS_RVCEN, 42, 1)
->   FIELD(TBFLAG_A64, GCSSTR_EL, 43, 2)
-> +FIELD(TBFLAG_A64, MTE_STORE_ONLY, 45, 1)
-> +FIELD(TBFLAG_A64, MTE0_STORE_ONLY, 46, 1)
+> diff --git a/linux-user/aarch64/mte_user_helper.h b/linux-user/aarch64/mte_user_helper.h
+> index 0c53abda22..afd2d6dbda 100644
+> --- a/linux-user/aarch64/mte_user_helper.h
+> +++ b/linux-user/aarch64/mte_user_helper.h
+> @@ -20,6 +20,9 @@
+>   # define PR_MTE_TAG_SHIFT       3
+>   # define PR_MTE_TAG_MASK        (0xffffUL << PR_MTE_TAG_SHIFT)
+>   #endif
+> +#ifndef PR_MTE_STORE_ONLY
+> +# define PR_MTE_STORE_ONLY      (1UL << 19)
+> +#endif
+>   
+>   /**
+>    * arm_set_mte_tcf0 - Set TCF0 field in SCTLR_EL1 register
+> diff --git a/linux-user/aarch64/target_prctl.h b/linux-user/aarch64/target_prctl.h
+> index 621be5727f..5207580c1a 100644
+> --- a/linux-user/aarch64/target_prctl.h
+> +++ b/linux-user/aarch64/target_prctl.h
+> @@ -168,6 +168,9 @@ static abi_long do_prctl_set_tagged_addr_ctrl(CPUArchState *env, abi_long arg2)
+>       if (cpu_isar_feature(aa64_mte, cpu)) {
+>           valid_mask |= PR_MTE_TCF_MASK;
+>           valid_mask |= PR_MTE_TAG_MASK;
+> +        if (cpu_isar_feature(aa64_mte4, cpu)) {
+> +            valid_mask |= PR_MTE_STORE_ONLY;
+> +        }
+>       }
+>   
+>       if (arg2 & ~valid_mask) {
+> @@ -185,6 +188,14 @@ static abi_long do_prctl_set_tagged_addr_ctrl(CPUArchState *env, abi_long arg2)
+>            */
+>           env->cp15.gcr_el1 =
+>               deposit64(env->cp15.gcr_el1, 0, 16, ~arg2 >> PR_MTE_TAG_SHIFT);
+> +
+> +        /*
+> +         * If MTE_STORE_ONLY is enabled, set the corresponding sctlr_el1 bit
+> +         */
+> +        if (cpu_isar_feature(aa64_mte4, cpu)) {
+> +            env->cp15.sctlr_el[1] =
+> +                deposit64(env->cp15.sctlr_el[1], 58, 1, extract64(arg2, 19, 1));
+> +        }
 
-Skipping bit 44?
+Let's not hard-code bit numbers.  There's also no need to re-check cpu_isar_feature.
 
-> diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
-> index 5c9b9bec3b..c4696af5d8 100644
-> --- a/target/arm/tcg/hflags.c
-> +++ b/target/arm/tcg/hflags.c
-> @@ -425,6 +425,16 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
->                        */
->                       DP_TBFLAG_A64(flags, MTE0_ACTIVE, 1);
->                   }
-> +                /*
-> +                 * Repeat for MTE_STORE_ONLY
-> +                 */
-> +                if (cpu_isar_feature(aa64_mte4, env_archcpu(env)) &&
-> +                    ((el == 0 ? SCTLR_TCSO0 : SCTLR_TCSO) & sctlr)) {
-> +                    DP_TBFLAG_A64(flags, MTE_STORE_ONLY, 1);
-> +                    if (!EX_TBFLAG_A64(flags, UNPRIV)) {
-> +                        DP_TBFLAG_A64(flags, MTE0_STORE_ONLY, 1);
-> +                    }
-> +                }
->               }
->           }
->           /* And again for unprivileged accesses, if required.  */
-> @@ -434,6 +444,10 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
->               && (sctlr & SCTLR_TCF0)
->               && allocation_tag_access_enabled(env, 0, sctlr)) {
->               DP_TBFLAG_A64(flags, MTE0_ACTIVE, 1);
-> +            if (cpu_isar_feature(aa64_mte4, env_archcpu(env)) &&
-> +                (SCTLR_TCSO0 & sctlr)) {
-> +                DP_TBFLAG_A64(flags, MTE0_STORE_ONLY, 1);
-> +            }
->           }
+So more like
 
-These two hunks don't need to check cpu_isar_feature, because we already did that when 
-filtering the valid SCTLR bits.
+	if (arg2 & PR_MTE_STORE_ONLY) {
+	    env->cp15.sctlr_el[1] |= SCTLR_TCSO0;
+	} else {
+	    env->cp15.sctlr_el[1] &= ~SCTLR_TCSO0;
+	}
+
+In addition, should be done in arm_set_mte_tcf0, which needs to be expanded to match 
+linux's set_tagged_addr_ctrl.  This code is common to the prctl and to gdbstub.  The 
+function should be renamed at the same time, since it's no longer just tcf0.
 
 
 r~

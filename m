@@ -4,65 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E0AAC79F87
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 12:56:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9119C79F8F
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 12:57:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vck8K-0003kV-KO; Mon, 05 Jan 2026 07:56:29 -0500
+	id 1vck8k-0003w6-Pz; Mon, 05 Jan 2026 07:56:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8I-0003im-8D
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:56:26 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8e-0003sR-QR
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:56:49 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8F-0007W4-CS
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:56:25 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8b-0007yP-Sd
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:56:48 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767617781;
+ s=mimecast20190719; t=1767617803;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=bjc2sFFSAIqs9+zFNtIGAFFECmb4vOU26rCHQa2kbNQ=;
- b=RmL8KBTcmL3skWl0LfZ0mLNyC/DPKHQhuPLmvBDq1If4Wt0IoCAgyy7JgRZHP6XsVXz2ED
- UxdFu7t1kpD6QVJaXYt3jiPK1upMpzky8sPGjJfrH7q4HxUjUy8U5wJ4yWvFdS3xFx85qp
- +3vUh8HKlFhILuo/uJXzYkJaHUOCUgM=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pgScfA+yBMg9P14PP4V/MiHScFQJmqGIiDTtMN/i71M=;
+ b=jGPXmSxmmqiW3mvSismD4XrYfI4exoTyfN3caAr5lD1+gZvedBD+TPdppzLN/FDtfUhCIA
+ /5M8myM2ZGEJLOVjMFmpkq4wbSUYyYpOojvj4t23ooNH5tjm2qOK2k178xX0EvvI7t+ZN6
+ XR+N9kOXzSrHEUY9Q8zTJRejbk9XPsU=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-477-GJGnD9NLM8SYplKIMb4Bxw-1; Mon,
- 05 Jan 2026 07:56:18 -0500
-X-MC-Unique: GJGnD9NLM8SYplKIMb4Bxw-1
-X-Mimecast-MFC-AGG-ID: GJGnD9NLM8SYplKIMb4Bxw_1767617778
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-622-8cl8JiOOMnisCgN6ZjEUIg-1; Mon,
+ 05 Jan 2026 07:56:40 -0500
+X-MC-Unique: 8cl8JiOOMnisCgN6ZjEUIg-1
+X-Mimecast-MFC-AGG-ID: 8cl8JiOOMnisCgN6ZjEUIg_1767617799
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 957521956054; Mon,  5 Jan 2026 12:56:17 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7024B1956096; Mon,  5 Jan 2026 12:56:39 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.53])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0C41419560A7; Mon,  5 Jan 2026 12:56:15 +0000 (UTC)
+ id F1B9E19560A7; Mon,  5 Jan 2026 12:56:37 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 00/36] aspeed queue
-Date: Mon,  5 Jan 2026 13:55:37 +0100
-Message-ID: <20260105125613.622667-1-clg@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 11/36] docs/system/arm/aspeed: Update Aspeed MiniBMC section to
+ include AST1060 processor
+Date: Mon,  5 Jan 2026 13:55:48 +0100
+Message-ID: <20260105125613.622667-12-clg@redhat.com>
+In-Reply-To: <20260105125613.622667-1-clg@redhat.com>
+References: <20260105125613.622667-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -80,106 +85,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The following changes since commit 159107e390609f71b78268a4888563dcdce6ac65:
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-  Merge tag 'pull-hex-20260102' of https://github.com/quic/qemu into staging (2026-01-05 07:35:40 +1100)
+Added details describing AST1060 as a Platform Root of Trust processor board alongside
+AST1030 MiniBMC, and extended the list of missing devices to include
+SMBus Filter and QSPI Monitor controllers.
 
-are available in the Git repository at:
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20251112030553.291734-13-jamin_lin@aspeedtech.com
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ docs/system/arm/aspeed.rst | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
 
-  https://github.com/legoater/qemu/ tags/pull-aspeed-20260105
-
-for you to fetch changes up to 9cbd8ee7f67fceee51d3c993a282e5adc397b6b9:
-
-  hw/i2c/aspeed: Fix wrong I2CC_DMA_LEN when I2CM_DMA_TX/RX_ADDR set first (2026-01-05 10:38:02 +0100)
-
-----------------------------------------------------------------
-aspeed queue:
-
-* Removed the ast2700-a0 SoC and ast2700a0-evb machine.
-* Added SGPIO support to the ast2700 SoC, including unit tests.
-* Added several FRU EEPROMs to the Catalina board.
-* Added support for the new AST1060 SoC and ast1060-evb machine,
-  including functional tests.
-* Fixed the silicon revision ID register for AST2600 and AST1030 SoCs.
-* Added an SFDP table for a Winbond flash chip.
-* Updated documentation for Aspeed boards.
-
-----------------------------------------------------------------
-Cédric Le Goater (1):
-      tests/functional: Fix URL of gb200nvl-bmc image
-
-Jamin Lin (18):
-      hw/block/m25p80: Add SFDP table for Winbond W25Q02JVM flash
-      hw/misc/aspeed_scu: Fix the revision ID cannot be set in the SOC layer for AST2600 and AST1030
-      hhw/misc/aspeed_scu: Add AST1060 A2 silicon revision definition
-      hw/arm/aspeed_ast10x0: Add common init function for AST10x0 SoCs
-      hw/arm/aspeed_ast10x0: Add common realize function for AST10x0 SoCs
-      hw/arm/aspeed_ast10x0: Pass SoC name to common init for AST10x0 family reuse
-      hw/arm/aspeed_ast10x0: Add AST1060 SoC support
-      hw/arm/aspeed_ast10x0_evb: Add AST1060 EVB machine support
-      tests/functional/arm/test_aspeed_ast1060: Add functional tests for Aspeed AST1060 SoC
-      docs/system/arm/aspeed: Update Aspeed and 2700 family boards list
-      docs/system/arm/aspeed: Update Aspeed MiniBMC section to include AST1060 processor
-      hw/arm: Remove ast2700a0-evb machine
-      hw/arm/aspeed_ast27x0: Remove ast2700-a0 SOC
-      hw/intc/aspeed: Remove GIC 128 - 136
-      docs/specs/aspeed-intc: Remove GIC 128 - 136
-      hw/intc/aspeed: Remove SSP 128 - 138
-      hw/intc/aspeed: Remove TSP 128 - 138
-      hw/i2c/aspeed: Fix wrong I2CC_DMA_LEN when I2CM_DMA_TX/RX_ADDR set first
-
-Patrick Williams (11):
-      hw/arm/aspeed: catalina: add BSM FRU EEPROM
-      hw/arm/aspeed: catalina: add DC-SCM FRU EEPROM
-      hw/arm/aspeed: catalina: add PDB FRU EEPROM
-      hw/arm/aspeed: catalina: add OSFP FRU EEPROM
-      hw/arm/aspeed: catalina: add FIO FRU EEPROM
-      hw/arm/aspeed: catalina: add HDD FRU EEPROM
-      hw/arm/aspeed: catalina: add GB200 FRU EEPROM
-      hw/arm/aspeed: catalina: add GB200-IO FRU EEPROM
-      hw/arm/aspeed: catalina: add HMC FRU EEPROM
-      hw/arm/aspeed: catalina: add NIC FRU EEPROM
-      hw/arm/aspeed: catalina: add Cable Cartridge FRU EEPROM
-
-Yubin Zou (6):
-      hw/gpio/aspeed_sgpio: Add basic device model for Aspeed SGPIO
-      hw/gpio/aspeed_sgpio: Add QOM property accessors for SGPIO pins
-      hw/gpio/aspeed_sgpio: Implement SGPIO interrupt handling
-      hw/arm/aspeed_soc: Update Aspeed SoC to support two SGPIO controllers
-      hw/arm/aspeed_ast27x0: Wire SGPIO controller to AST2700 SoC
-      test/qtest: Add Unit test for Aspeed SGPIO
-
- docs/about/deprecated.rst                        |   8 -
- docs/about/removed-features.rst                  |   8 +
- docs/specs/aspeed-intc.rst                       |  92 ++---
- docs/system/arm/aspeed.rst                       |  27 +-
- hw/block/m25p80_sfdp.h                           |   1 +
- include/hw/arm/aspeed_soc.h                      |   8 +-
- include/hw/gpio/aspeed_sgpio.h                   |  68 ++++
- include/hw/misc/aspeed_scu.h                     |   1 +
- hw/arm/aspeed_ast10x0.c                          | 213 ++++++----
- hw/arm/aspeed_ast10x0_evb.c                      |  23 ++
- hw/arm/aspeed_ast2600_catalina.c                 | 473 ++++++++++++++++++++++-
- hw/arm/aspeed_ast27x0-ssp.c                      |  13 +-
- hw/arm/aspeed_ast27x0-tsp.c                      |  13 +-
- hw/arm/aspeed_ast27x0.c                          | 151 ++------
- hw/arm/aspeed_ast27x0_evb.c                      |  26 --
- hw/block/m25p80.c                                |   2 +
- hw/block/m25p80_sfdp.c                           |  36 ++
- hw/gpio/aspeed_sgpio.c                           | 346 +++++++++++++++++
- hw/i2c/aspeed_i2c.c                              |  10 +-
- hw/intc/aspeed_intc.c                            | 161 +-------
- hw/misc/aspeed_scu.c                             |   5 +-
- tests/qtest/ast2700-sgpio-test.c                 | 165 ++++++++
- hw/gpio/meson.build                              |   1 +
- tests/functional/arm/meson.build                 |   1 +
- tests/functional/arm/test_aspeed_ast1060.py      |  52 +++
- tests/functional/arm/test_aspeed_gb200nvl_bmc.py |   2 +-
- tests/qtest/meson.build                          |   1 +
- 27 files changed, 1403 insertions(+), 504 deletions(-)
- create mode 100644 include/hw/gpio/aspeed_sgpio.h
- create mode 100644 hw/gpio/aspeed_sgpio.c
- create mode 100644 tests/qtest/ast2700-sgpio-test.c
- create mode 100644 tests/functional/arm/test_aspeed_ast1060.py
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 81a96994559c..4fa1739cb549 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -448,23 +448,24 @@ Use ``tio`` or another terminal emulator to connect to the consoles:
+    $ tio /dev/pts/57
+ 
+ 
+-Aspeed minibmc family boards (``ast1030-evb``)
+-==================================================================
++Aspeed MiniBMC and Platform Root of Trust processor family boards (``ast1030-evb``, ``ast1060-evb``)
++====================================================================================================
+ 
+-The QEMU Aspeed machines model mini BMCs of various Aspeed evaluation
+-boards. They are based on different releases of the
+-Aspeed SoC : the AST1030 integrating an ARM Cortex M4F CPU (200MHz).
++The QEMU Aspeed machines model mini BMCs and Platform Root of Trust processors of various Aspeed
++evaluation boards. They are based on different releases of the Aspeed SoC : the AST1030 (MiniBMC)
++and AST1060 (Platform Root of Trust Processor), both integrating an ARM Cortex M4F CPU (200MHz).
+ 
+ The SoC comes with SRAM, SPI, I2C, etc.
+ 
+-AST1030 SoC based machines :
++AST10x0 SoC based machines :
+ 
+ - ``ast1030-evb``          Aspeed AST1030 Evaluation board (Cortex-M4F)
++- ``ast1060-evb``          Aspeed AST1060 Evaluation board (Cortex-M4F)
+ 
+ Supported devices
+ -----------------
+ 
+- * SMP (for the AST1030 Cortex-M4F)
++ * SMP (for the Cortex-M4F)
+  * Interrupt Controller (VIC)
+  * Timer Controller
+  * I2C Controller
+@@ -492,6 +493,8 @@ Missing devices
+  * Virtual UART
+  * eSPI Controller
+  * I3C Controller
++ * SMBus Filter Controller
++ * QSPI Monitor Controller
+ 
+ Boot options
+ ------------
+@@ -507,4 +510,4 @@ To boot a kernel directly from a Zephyr build tree:
+ .. code-block:: bash
+ 
+   $ qemu-system-arm -M ast1030-evb -nographic \
+-        -kernel zephyr.elf
++        -kernel zephyr.bin
+-- 
+2.52.0
 
 

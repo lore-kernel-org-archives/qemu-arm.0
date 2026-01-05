@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D547CC79F8B
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 13:08:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7608FC79F8C
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 13:08:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vckB3-0006aO-Md; Mon, 05 Jan 2026 07:59:19 -0500
+	id 1vck93-0004DU-OC; Mon, 05 Jan 2026 07:57:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck99-0004Kf-73
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:19 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8f-0003sm-VY
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:56:51 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck97-00085U-Kb
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:18 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8c-0007yb-Df
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:56:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767617837;
+ s=mimecast20190719; t=1767617805;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qJiqQOiiuVQUHxcT633H/HXmNFo7n9Ya1EAjY7hqJhg=;
- b=FSZiNM6OqQhr/RPtZzQcZg9icEqC7ieOM+d0zAhyF9zmYW4qTmF2cV/b7FeDjtdrclLeQN
- OoZuJMEE+l6x9g5SqnDMqhDrFBucsr3cfTjY4EGqDFzVEB4pR0oR4fE7zZzUHNQOgXe3My
- D6vhrvSwHo5sBi5D+92b+n6cisR4uvE=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=o+iOQ0Z/TKdAXFko9sfzKmC7GBm/i0hT4cyAVeqXfC4=;
+ b=bY8jgUpLmevlTnIYEhj7SIGNquEDXSZfzCn1Il92KAQUThKxY/LShYGoImhvAgm05TN/qv
+ Hu0ASVzAHjIEIaTx4mnJ2SrBTelY0GVaoigjFvmkpTb3uovOKXmJ8qnxotcyXSOqmlLese
+ gQeX9A8yXAxAoECyP3Q1YptYZNwJgzY=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-502-vYyNX9iJMxWD8tEbwrIRRw-1; Mon,
- 05 Jan 2026 07:57:14 -0500
-X-MC-Unique: vYyNX9iJMxWD8tEbwrIRRw-1
-X-Mimecast-MFC-AGG-ID: vYyNX9iJMxWD8tEbwrIRRw_1767617833
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-263-1e3vl20FPxK2skrgRkLCDA-1; Mon,
+ 05 Jan 2026 07:56:44 -0500
+X-MC-Unique: 1e3vl20FPxK2skrgRkLCDA-1
+X-Mimecast-MFC-AGG-ID: 1e3vl20FPxK2skrgRkLCDA_1767617803
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 23F0118002DE; Mon,  5 Jan 2026 12:57:13 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 89CED1956046; Mon,  5 Jan 2026 12:56:43 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.53])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A55B91953984; Mon,  5 Jan 2026 12:57:11 +0000 (UTC)
+ id 0ADEA19560A7; Mon,  5 Jan 2026 12:56:41 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Yubin Zou <yubinz@google.com>,
+Cc: Patrick Williams <patrick@stwcx.xyz>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 27/36] hw/arm/aspeed_ast27x0: Wire SGPIO controller to AST2700
- SoC
-Date: Mon,  5 Jan 2026 13:56:04 +0100
-Message-ID: <20260105125613.622667-28-clg@redhat.com>
+Subject: [PULL 13/36] hw/arm/aspeed: catalina: add DC-SCM FRU EEPROM
+Date: Mon,  5 Jan 2026 13:55:50 +0100
+Message-ID: <20260105125613.622667-14-clg@redhat.com>
 In-Reply-To: <20260105125613.622667-1-clg@redhat.com>
 References: <20260105125613.622667-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,52 +84,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Yubin Zou <yubinz@google.com>
+From: Patrick Williams <patrick@stwcx.xyz>
 
-This commit integrates the Aspeed SGPIO controller into the AST2700
+Use ipmitool/frugen tool to generate a DC-SCM image based on a
+sanitized set of data from a real device EEPROM.
 
-Signed-off-by: Yubin Zou <yubinz@google.com>
+Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20251219-aspeed-sgpio-v5-5-fd5593178144@google.com
+Link: https://lore.kernel.org/qemu-devel/20251217-catalina-eeproms-v1-2-dc7b276efd57@stwcx.xyz
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast27x0.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ hw/arm/aspeed_ast2600_catalina.c | 41 +++++++++++++++++++++++++++++++-
+ 1 file changed, 40 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 9f471c399491..70be3871bb12 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -519,6 +519,11 @@ static void aspeed_soc_ast2700_init(Object *obj)
-     snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
-     object_initialize_child(obj, "gpio", &s->gpio, typename);
+diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
+index 0f229f4dc695..6e8f4d39d97e 100644
+--- a/hw/arm/aspeed_ast2600_catalina.c
++++ b/hw/arm/aspeed_ast2600_catalina.c
+@@ -64,6 +64,45 @@ static const uint8_t bsm_eeprom[] = {
+ };
+ static const size_t bsm_eeprom_len = sizeof(bsm_eeprom);
  
-+    snprintf(typename, sizeof(typename), "aspeed.sgpio-%s", socname);
-+    for (i = 0; i < sc->sgpio_num; i++) {
-+        object_initialize_child(obj, "sgpio[*]", &s->sgpiom[i], typename);
-+    }
++/*
++ * "Secure Control Module" FRU data. Generated with frugen.
++ *
++ *    {
++ *      "board": {
++ *        "mfg": "Quanta",
++ *        "pname": "Catalina SCM MP (QEMU)",
++ *        "pn": "00000000000",
++ *        "serial": "00000000000000",
++ *        "date": "01/12/2025 00:00",
++ *        "custom": ["19-100325"]
++ *      },
++ *      "product": {
++ *        "mfg": "Quanta",
++ *        "pname": "CI-Catalina",
++ *        "pn": "10000000001",
++ *        "ver": "MP",
++ *        "serial": "10000000000000",
++ *        "atag": "QEMU"
++ *      }
++ *    }
++ *
++ */
++static const uint8_t scm_eeprom[] = {
++    0x01, 0x00, 0x00, 0x01, 0x0a, 0x00, 0x00, 0xf4, 0x01, 0x09, 0x19, 0x8c,
++    0x19, 0xf0, 0xc6, 0x51, 0x75, 0x61, 0x6e, 0x74, 0x61, 0xd6, 0x43, 0x61,
++    0x74, 0x61, 0x6c, 0x69, 0x6e, 0x61, 0x20, 0x53, 0x43, 0x4d, 0x20, 0x4d,
++    0x50, 0x20, 0x28, 0x51, 0x45, 0x4d, 0x55, 0x29, 0x8b, 0x10, 0x04, 0x41,
++    0x10, 0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x04, 0x89, 0x10, 0x04, 0x41,
++    0x10, 0x04, 0x41, 0x10, 0x04, 0x01, 0xc0, 0x87, 0x51, 0xd6, 0x44, 0x10,
++    0x34, 0x49, 0x15, 0xc1, 0x00, 0x00, 0x00, 0xc1, 0x01, 0x07, 0x19, 0xc6,
++    0x51, 0x75, 0x61, 0x6e, 0x74, 0x61, 0xcb, 0x43, 0x49, 0x2d, 0x43, 0x61,
++    0x74, 0x61, 0x6c, 0x69, 0x6e, 0x61, 0x89, 0x11, 0x04, 0x41, 0x10, 0x04,
++    0x41, 0x10, 0x14, 0x01, 0x82, 0x2d, 0x0c, 0x8b, 0x11, 0x04, 0x41, 0x10,
++    0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x04, 0x83, 0x71, 0xd9, 0xd6, 0xc0,
++    0xc1, 0x00, 0x00, 0x37
++};
++static const size_t scm_eeprom_len = sizeof(scm_eeprom);
 +
-     object_initialize_child(obj, "rtc", &s->rtc, TYPE_ASPEED_RTC);
+ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     /* Reference from v6.16-rc2 aspeed-bmc-facebook-catalina.dts */
+@@ -183,7 +222,7 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+     /* temperature-sensor@4b - tpm75 */
+     i2c_slave_create_simple(i2c[9], TYPE_TMP75, 0x4b);
+     /* eeprom@50 */
+-    at24c_eeprom_init(i2c[9], 0x50, 8 * KiB);
++    at24c_eeprom_init_rom(i2c[9], 0x50, 8 * KiB, scm_eeprom, scm_eeprom_len);
+     /* eeprom@56 */
+     at24c_eeprom_init_rom(i2c[9], 0x56, 8 * KiB, bsm_eeprom, bsm_eeprom_len);
  
-     snprintf(typename, sizeof(typename), "aspeed.sdhci-%s", socname);
-@@ -975,6 +980,17 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
-                        aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_GPIO));
- 
-+    /* SGPIO */
-+    for (i = 0; i < sc->sgpio_num; i++) {
-+        if (!sysbus_realize(SYS_BUS_DEVICE(&s->sgpiom[i]), errp)) {
-+            return;
-+        }
-+        aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->sgpiom[i]), 0,
-+                        sc->memmap[ASPEED_DEV_SGPIOM0 + i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->sgpiom[i]), 0,
-+                        aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_SGPIOM0 + i));
-+    }
-+
-     /* RTC */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->rtc), errp)) {
-         return;
 -- 
 2.52.0
 

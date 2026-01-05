@@ -4,87 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BAB2C2A072
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 04:29:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7412BC2A062
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 04:30:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vccDr-0008Uk-G2; Sun, 04 Jan 2026 23:29:39 -0500
+	id 1vccEO-0000UZ-KF; Sun, 04 Jan 2026 23:30:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vccDq-0008TX-BB
- for qemu-arm@nongnu.org; Sun, 04 Jan 2026 23:29:38 -0500
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ id 1vccEN-0000Sa-Jj
+ for qemu-arm@nongnu.org; Sun, 04 Jan 2026 23:30:11 -0500
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vccDn-0006jD-Sc
- for qemu-arm@nongnu.org; Sun, 04 Jan 2026 23:29:38 -0500
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-2a0fe77d141so156793745ad.1
- for <qemu-arm@nongnu.org>; Sun, 04 Jan 2026 20:29:35 -0800 (PST)
+ id 1vccEL-0006xD-BK
+ for qemu-arm@nongnu.org; Sun, 04 Jan 2026 23:30:11 -0500
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-2a110548cdeso183008685ad.0
+ for <qemu-arm@nongnu.org>; Sun, 04 Jan 2026 20:30:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767587374; x=1768192174; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767587408; x=1768192208; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=ReBQO6iEVhGHetLBShgz7qNhZiTkVSuU8pAjASl99Ls=;
- b=TsDLTzYvYa/wZSzA8L/lOCOgTOrw5fTGQgxFtT2H8qHYc1NnDyNtFCs52P1ItK1u3Z
- 1rE6oXohQZ3pRRvmPS6PDnraDbUR437LgAAXzNTtRKbJnKGSjs9zXh9GEW9umnuc3w/e
- /dzVioOIbsDJW+HoZJJfIdTAf0hT9uw29NW2umnT2KFYcQ59OlVzYJWns35O9Bip9LZ0
- VxvXehlUj20r4k72EI0T2BbnR9TZ/ycxjXzLSaMCcuWrR6M0W3R5GyYO2waZBPxmTQk/
- WB5B1Wj0ixHU1/nz7gF7UrHC+/c2DqgijoX//iS2m9/2eQjDOcZ0KElUC4nCoeBZQq0D
- fsxQ==
+ bh=cmURYcj4Z0IPJrFeY/4ayi0qRX2k8lhAtEZ0Ob8xht0=;
+ b=YDxhvFAfG/IaC1wJISEORVACyQo0rQ/JOt9Ol0JTvdBBxzMFHmyV/NnhDnRH0Pz9am
+ v6QSxK3Z5jmJ/GmVapxd2EOMwuTSxVJr6EQ9HIvKK5Y8KbcPHe8d/9rFbsQyA7BhVlpS
+ uBUMaUBNlfw3BNLeb6wrPYaBJXs1nuo8ZAduCqrIAPS+/T6Q3ndd0AT7MShfIpVm5m54
+ fr0xoIwC9t3T/XDGBP+ziPGYikuPQ0qMusR+Txr/sxGr2mDsMhc4cEqeOpGktGkHSA8u
+ R4tOSgawSUIdtJRasWFTt2OHd8f8vUGZr0l1KK93MuBjhAUKxQQkWaUT7UsrFNcrwS1F
+ 7mww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767587374; x=1768192174;
+ d=1e100.net; s=20230601; t=1767587408; x=1768192208;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=ReBQO6iEVhGHetLBShgz7qNhZiTkVSuU8pAjASl99Ls=;
- b=gBQG0C6cDRvmXP8XA9EBXCXz/DmCcRZUh9irl9pjipC5V0peCFelL/ikXO8dZ+amAz
- FMMZ2Hs5BTBNeovKB+w5sXjfSuARZB5OugeKKgLnO2TpqIpOwQwFZMb3T1kTMGFNEk5g
- 83hkpZSeOus6+npwRe20f37YTS3WVD5XTDGb3787lOChYALE9paJMFGRiW/NZhzXun5S
- f2lWhyQ1qu1mM9GeQAanNSkAjKjLJVX+oYSOHpY0CC0nkIhUPgtiwnHcJz3j8hOGtA2X
- cbwVQhl18CIbbJNwv/5UQ4vy3bibjwtNqTB2Tmo0qKWwuJvhaV57xaYrBFy+Rnv3oh6L
- 6cRw==
+ bh=cmURYcj4Z0IPJrFeY/4ayi0qRX2k8lhAtEZ0Ob8xht0=;
+ b=K4Z0MjO6hXGou5eoQdLUPR2AaZZWzmNAm+T9PRg96vMopBilBvFuLFz4wHz1kmrxLK
+ 5gokYgT9tpNE6FbVEa09w0FpLe54SXb2wqOLivzb6Y4fJXbgELqKhEdhv5dYPyEZmLxS
+ Jm40nADXSG3s1dEO5DLvM5iR0aUymWqoimXdofPUGuuWtCgjE7m+FEHYEVq7Sz8h2PR6
+ nrzzVOIuQYf5mnTr+yUMM/llGZ9ByxrGwlfSOmsdVuJlR/A6JR9IEpBGkiinPTKft/q+
+ 3BR4s+9288IwDQz4/TYmXKdRRBxDTS0oZmIWt+CSfTp0Uy7FczO45lqYlt5Pf+gbEuFf
+ rRSQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVMUvG93+SttDIcNa+V1EtORKtEtKf6etrSNUUIm0+mAQwJn1jYu+EqPw1g8jz+e7niMDs1CmwXDQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yw1dUE7b4wNZHqJ4pc4O+PmLHNPKaO7HP+XMGxLc6xvV86Jbp0W
- uGm9P0EHp29eBGhWwW4IJYyQOqyVS9ZFIcen+8MDD+XTXnwnOrnWqPO8EFZKYnOO8t8=
-X-Gm-Gg: AY/fxX791UnkdQoiKoDy+jI/oc4LzWV1UrHeIkiT1iiz8KjSRohpsY7C3vHbNvKHQoG
- hWigM3R4L601fONPije4CtYQpqscp0OsFBjwEOLRYKcsP0TNlxNCCxnJXEAMshsfkdsCg8xmsXF
- VlddL6ihjCS9nzb30JyDEZ5Y3WWijVq5z3pcMOy7paKtFVGaMWlNQ1eW1F2E0/ajq79Ctgad/Hh
- S1yx0edcaDRthjvv+rGIB/NRshmG5Q5GV6BklqezVvyiGyNQ/Y1hauIiwX6UfAjCIe+Pctw7IM2
- 06gSoYvTS3YGu5/DNe2luNJ9yLw9tE4Z1QtALgx5UWGYFunXYzGwP7GL3nS0a93xEPIDQcq1Y79
- 5q1EwAYOTVprJz/YGtSSy2txi/3ce09+aRaJ5Ve88pRyhxXn/E/ktLyzJF/rDmK9+MDxSFjWVhm
- gHoBrmrdtvwKiZdFcKqraHKQAQko48ZQ==
-X-Google-Smtp-Source: AGHT+IEmb0iLTHokOIPzVM5WptPSh6UXZkQNTkt8+ASO6Cm8HeU581bQ9oqhLVEtLnmzVhSYsInMcA==
-X-Received: by 2002:a17:902:da85:b0:2a1:10f6:3c1 with SMTP id
- d9443c01a7336-2a2f242d304mr453735035ad.26.1767587374235; 
- Sun, 04 Jan 2026 20:29:34 -0800 (PST)
+ AJvYcCUjAwkB2YY9YJ50HG0osvjmgVh2t/C07aq+vTlnLvzJn/G8bCpbVlnFzbtSQRo6N28xWkNz7v1zEw==@nongnu.org
+X-Gm-Message-State: AOJu0YyaZNpkZPM1yzQTjn/yFCsmopWR5zaPn76iStZZPX1ApFS5D7d4
+ 2ofrEPUhjQGo8QYHSTW0jgEozlZ9HJ4yuxqd6ynojWmc4AHtFlPXtGFBipLNlkw2qtysGI+dTxV
+ vzLwHJNc=
+X-Gm-Gg: AY/fxX4jtVNQiHOr1rw8WrqMLxEk8BO7c/a2xHDRH8sq1mcrfPmK8wzQc7quYKwd7C9
+ GLxifbAF2E0zJ7JzZh/x2OqQvUj4Wc4MxETze3jfUfYeiB3zUuQmo95F01F18uoDl3s5P875wBy
+ up0QQCnpv7Jyq9WHeBb69y1e66Kxp8heWQdA5XCd/FkXjSrPK2pA4/1Sqcwm0qqf7hlki6FLrkB
+ tVwta1YV9ldcgKZL8yq5m3/IGNwCePmmHaIbzI/vg6T487TI6RAvgIvS9ZtZEuw0MPFOMIXDOYb
+ nSHU6cfMfjr43L+vXPjZgdO8SHqbq9+PalJMCiRX8rsnlXsbXzoBKGB9xdLdDoiJ10bD2DEr5x0
+ /fzGTImKBCL1PyqPBgiq4+lj8IitmA7gx2CVrHTwmeL43+WG3veBrM4yPISar/qM9hA4KIshXLj
+ rh+0a8I5GEzzBFgLCfrwasQ6ETz56YfQ==
+X-Google-Smtp-Source: AGHT+IGBZlCzrkzOqmgxn14gfXh1iamwkAQbc+lvHXagI6UcvqxZB4vgn8lFI40J1oEnlA8OOqzWlg==
+X-Received: by 2002:a17:903:245:b0:2a0:bb0a:a5dd with SMTP id
+ d9443c01a7336-2a2f2a4af0amr491313975ad.57.1767587407680; 
+ Sun, 04 Jan 2026 20:30:07 -0800 (PST)
 Received: from [192.168.10.140] ([180.233.125.201])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a2f3d5e467sm364098505ad.83.2026.01.04.20.29.32
+ d9443c01a7336-2a2f3c66465sm442745295ad.15.2026.01.04.20.30.05
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 04 Jan 2026 20:29:33 -0800 (PST)
-Message-ID: <00ed6a0a-a058-4289-a515-37678f0843a3@linaro.org>
-Date: Mon, 5 Jan 2026 15:29:29 +1100
+ Sun, 04 Jan 2026 20:30:07 -0800 (PST)
+Message-ID: <d864eaf2-4a48-4c0b-9396-740c8ee70556@linaro.org>
+Date: Mon, 5 Jan 2026 15:30:02 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/4] target/arm: Correctly trap HCR.TID1 registers in v7A
+Subject: Re: [PATCH 4/4] target/arm: Rename access_aa64_tid5() to access_tid5()
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: qemu-stable@nongnu.org
 References: <20251231170858.254594-1-peter.maydell@linaro.org>
- <20251231170858.254594-4-peter.maydell@linaro.org>
+ <20251231170858.254594-5-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20251231170858.254594-4-peter.maydell@linaro.org>
+In-Reply-To: <20251231170858.254594-5-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,19 +109,14 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/1/26 04:08, Peter Maydell wrote:
-> In v7A HCR.TID1 is defined to trap for TCMTR, TLBTR, REVIDR and AIDR.
-> We incorrectly use an accessfn for REVIDR and AIDR that only traps on
-> v8A cores.  Fix this by collapsing access_aa64_tid1() and
-> access_aa32_tid1() together and never doing a check for v8 vs v7.
+> There is no equivalent access_aa32_tid5() (HCR_EL2.TID5 only exists
+> starting from v8); rename access_aa64_tid5() to access_tid5() to line
+> up with the naming we now have for the TID1 and TID3 check functions.
 > 
-> The accessfn is also used for SMIDR_EL1, which is fine as this
-> register is AArch64 only.
-> 
-> Cc:qemu-stable@nongnu.org
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   target/arm/helper.c | 24 +++++++-----------------
->   1 file changed, 7 insertions(+), 17 deletions(-)
+>   target/arm/helper.c | 6 +++---
+>   1 file changed, 3 insertions(+), 3 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

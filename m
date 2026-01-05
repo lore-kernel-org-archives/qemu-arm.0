@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13EF5C79F8D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25E61C79F8F
 	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 13:02:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vck97-0004JC-Hw; Mon, 05 Jan 2026 07:57:17 -0500
+	id 1vck8l-0003wf-Kl; Mon, 05 Jan 2026 07:56:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck93-0004Ds-Vz
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:14 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8c-0003rh-42
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:56:46 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck92-00083v-4R
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:13 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8X-0007xt-84
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:56:42 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767617831;
+ s=mimecast20190719; t=1767617800;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=4z+D4ZsW6OqU9NquvRk/j5XFtDXv6j6Es+pB2xr6DMA=;
- b=OWstOhtbxLuOrc7k9+gr2PzHOtmn1XY+LmBW+1AQ78oyy/MAhicpZ18cxHVYqs+tErtts2
- YpFJclJwKm5V3X8EhTttUkDM239haiJGvpeiwS02cZa8bXmJmZoiG+QRFsi3Pw+OWSMA/q
- y7QIhX48RYNGPNc5VyALkS1cxAdw3qU=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=xGnMfdF6G4uUQw2uzyCr9taP/1Mlago7zualsFQFCLg=;
+ b=UKoTPW2CYTCvMRNHh4vsVeWkWrfLJwv4/TCKKZr2I3LE1tI0+oq05Ci7WZEnw4HVCJK9Ce
+ jhHV3lCtXeRfdhaSXNWKmjUvGhmWDBbovOGriXouyXXVKb3L9T5Uz+bKU67VsTDsE70dS8
+ TbHV2pLcmMN2hW0NpOX0RLQK3MOhmB0=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-312-aaOJZt5ONoKPLyIZZ5_rcQ-1; Mon,
- 05 Jan 2026 07:57:09 -0500
-X-MC-Unique: aaOJZt5ONoKPLyIZZ5_rcQ-1
-X-Mimecast-MFC-AGG-ID: aaOJZt5ONoKPLyIZZ5_rcQ_1767617828
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-418-lzSEMYAsNTOi54Sy2NvY-g-1; Mon,
+ 05 Jan 2026 07:56:36 -0500
+X-MC-Unique: lzSEMYAsNTOi54Sy2NvY-g-1
+X-Mimecast-MFC-AGG-ID: lzSEMYAsNTOi54Sy2NvY-g_1767617795
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7884C1800639; Mon,  5 Jan 2026 12:57:08 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 92ED7195609F; Mon,  5 Jan 2026 12:56:35 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.53])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 79CAD1953984; Mon,  5 Jan 2026 12:57:06 +0000 (UTC)
+ id 1ECD519560A7; Mon,  5 Jan 2026 12:56:33 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Yubin Zou <yubinz@google.com>, Kane Chen <kane_chen@aspeedtech.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 25/36] hw/gpio/aspeed_sgpio: Implement SGPIO interrupt handling
-Date: Mon,  5 Jan 2026 13:56:02 +0100
-Message-ID: <20260105125613.622667-26-clg@redhat.com>
+Subject: [PULL 09/36] tests/functional/arm/test_aspeed_ast1060: Add functional
+ tests for Aspeed AST1060 SoC
+Date: Mon,  5 Jan 2026 13:55:46 +0100
+Message-ID: <20260105125613.622667-10-clg@redhat.com>
 In-Reply-To: <20260105125613.622667-1-clg@redhat.com>
 References: <20260105125613.622667-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -68,7 +69,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,197 +85,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Yubin Zou <yubinz@google.com>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The SGPIO controller can generate interrupts based on various pin state
-changes, such as rising/falling edges or high/low levels. This change
-adds the necessary logic to detect these events, update the interrupt
-status registers, and signal the interrupt to the SoC.
+Add functional tests for the Aspeed AST1060 SoC and its evaluation board.
+The new test test_aspeed_ast1060.py validates booting the AST1060 EVB
+machine using the Zephyr OS and ASPEED PROT application (ast1060_prot_v03.02.tgz)
+and ensures basic console functionality.
 
-Signed-off-by: Yubin Zou <yubinz@google.com>
-Reviewed-by: Kane Chen <kane_chen@aspeedtech.com>
-Link: https://lore.kernel.org/qemu-devel/20251219-aspeed-sgpio-v5-3-fd5593178144@google.com
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20251112030553.291734-11-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/gpio/aspeed_sgpio.h |   2 +
- hw/gpio/aspeed_sgpio.c         | 126 ++++++++++++++++++++++++++++++++-
- 2 files changed, 126 insertions(+), 2 deletions(-)
+ tests/functional/arm/meson.build            |  1 +
+ tests/functional/arm/test_aspeed_ast1060.py | 52 +++++++++++++++++++++
+ 2 files changed, 53 insertions(+)
+ create mode 100644 tests/functional/arm/test_aspeed_ast1060.py
 
-diff --git a/include/hw/gpio/aspeed_sgpio.h b/include/hw/gpio/aspeed_sgpio.h
-index 7da48920eebf..68276baf81da 100644
---- a/include/hw/gpio/aspeed_sgpio.h
-+++ b/include/hw/gpio/aspeed_sgpio.h
-@@ -58,7 +58,9 @@ struct AspeedSGPIOState {
+diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
+index d1ed076a6aa8..1762a496049d 100644
+--- a/tests/functional/arm/meson.build
++++ b/tests/functional/arm/meson.build
+@@ -28,6 +28,7 @@ tests_arm_system_quick = [
  
-     /*< public >*/
-     MemoryRegion iomem;
-+    int pending;
-     qemu_irq irq;
-+    qemu_irq sgpios[ASPEED_SGPIO_MAX_PIN_PAIR];
-     uint32_t ctrl_regs[ASPEED_SGPIO_MAX_PIN_PAIR];
-     uint32_t int_regs[ASPEED_SGPIO_MAX_INT];
- };
-diff --git a/hw/gpio/aspeed_sgpio.c b/hw/gpio/aspeed_sgpio.c
-index cf5efa70e8d0..0c53b03464e4 100644
---- a/hw/gpio/aspeed_sgpio.c
-+++ b/hw/gpio/aspeed_sgpio.c
-@@ -12,9 +12,130 @@
- #include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "qapi/visitor.h"
-+#include "hw/core/irq.h"
- #include "hw/core/qdev-properties.h"
- #include "hw/gpio/aspeed_sgpio.h"
- 
-+/*
-+ *  For each set of gpios there are three sensitivity registers that control
-+ *  the interrupt trigger mode.
-+ *
-+ *  | 2 | 1 | 0 | trigger mode
-+ *  -----------------------------
-+ *  | 0 | 0 | 0 | falling-edge
-+ *  | 0 | 0 | 1 | rising-edge
-+ *  | 0 | 1 | 0 | level-low
-+ *  | 0 | 1 | 1 | level-high
-+ *  | 1 | X | X | dual-edge
-+ */
+ tests_arm_system_thorough = [
+   'aspeed_ast1030',
++  'aspeed_ast1060',
+   'aspeed_palmetto',
+   'aspeed_romulus',
+   'aspeed_witherspoon',
+diff --git a/tests/functional/arm/test_aspeed_ast1060.py b/tests/functional/arm/test_aspeed_ast1060.py
+new file mode 100644
+index 000000000000..034efa534262
+--- /dev/null
++++ b/tests/functional/arm/test_aspeed_ast1060.py
+@@ -0,0 +1,52 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots the ASPEED SoCs with firmware
++#
++# Copyright (C) 2025 ASPEED Technology Inc
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
-+/* GPIO Interrupt Triggers */
-+#define ASPEED_FALLING_EDGE 0
-+#define ASPEED_RISING_EDGE  1
-+#define ASPEED_LEVEL_LOW    2
-+#define ASPEED_LEVEL_HIGH   3
-+#define ASPEED_DUAL_EDGE    4
++from aspeed import AspeedTest
++from qemu_test import Asset, exec_command_and_wait_for_pattern
 +
-+static void aspeed_clear_irq(AspeedSGPIOState *s, int idx)
-+{
-+    uint32_t reg_index = idx / 32;
-+    uint32_t bit_index = idx % 32;
-+    uint32_t pending = extract32(s->int_regs[reg_index], bit_index, 1);
 +
-+    assert(s->pending >= pending);
++class AST1060Machine(AspeedTest):
++    ASSET_ASPEED_AST1060_PROT_3_02 = Asset(
++        ('https://github.com/AspeedTech-BMC'
++         '/aspeed-zephyr-project/releases/download/v03.02'
++         '/ast1060_prot_v03.02.tgz'),
++         'dd5f1adc935316ddd1906506a02e15567bd7290657b52320f1a225564cc175bd')
 +
-+    /* No change to s->pending if pending is 0 */
-+    s->pending -= pending;
++    def test_arm_ast1060_prot_3_02(self):
++        self.set_machine('ast1060-evb')
 +
-+    /*
-+     * The write acknowledged the interrupt regardless of whether it
-+     * was pending or not. The post-condition is that it mustn't be
-+     * pending. Unconditionally clear the status bit.
-+     */
-+    s->int_regs[reg_index] = deposit32(s->int_regs[reg_index], bit_index, 1, 0);
-+}
++        kernel_name = "ast1060_prot/zephyr.bin"
++        kernel_file = self.archive_extract(
++            self.ASSET_ASPEED_AST1060_PROT_3_02, member=kernel_name)
 +
-+static void aspeed_evaluate_irq(AspeedSGPIOState *s, int sgpio_prev_high,
-+                                int sgpio_curr_high, int idx)
-+{
-+    uint32_t ctrl = s->ctrl_regs[idx];
-+    uint32_t falling_edge = 0, rising_edge = 0;
-+    uint32_t int_trigger = SHARED_FIELD_EX32(ctrl, SGPIO_INT_TYPE);
-+    uint32_t int_enabled = SHARED_FIELD_EX32(ctrl, SGPIO_INT_EN);
-+    uint32_t reg_index = idx / 32;
-+    uint32_t bit_index = idx % 32;
++        self.vm.set_console()
++        self.vm.add_args('-kernel', kernel_file, '-nographic')
++        self.vm.launch()
++        self.wait_for_console_pattern("Booting Zephyr OS")
++        exec_command_and_wait_for_pattern(self, "help",
++                                          "Available commands")
 +
-+    if (!int_enabled) {
-+        return;
-+    }
++    def test_arm_ast1060_otp_blockdev_device(self):
++        self.vm.set_machine("ast1060-evb")
 +
-+    /* Detect edges */
-+    if (sgpio_curr_high && !sgpio_prev_high) {
-+        rising_edge = 1;
-+    } else if (!sgpio_curr_high && sgpio_prev_high) {
-+        falling_edge = 1;
-+    }
++        kernel_name = "ast1060_prot/zephyr.bin"
++        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_02,
++                                           member=kernel_name)
++        otp_img = self.generate_otpmem_image()
 +
-+    if (((int_trigger == ASPEED_FALLING_EDGE)  && falling_edge)   ||
-+        ((int_trigger == ASPEED_RISING_EDGE)  && rising_edge)     ||
-+        ((int_trigger == ASPEED_LEVEL_LOW)  && !sgpio_curr_high)  ||
-+        ((int_trigger == ASPEED_LEVEL_HIGH)  && sgpio_curr_high)  ||
-+        ((int_trigger >= ASPEED_DUAL_EDGE)  && (rising_edge || falling_edge)))
-+    {
-+        s->int_regs[reg_index] = deposit32(s->int_regs[reg_index],
-+                                              bit_index, 1, 1);
-+        /* Trigger the VIC IRQ */
-+        s->pending++;
-+    }
-+}
++        self.vm.set_console()
++        self.vm.add_args(
++            "-kernel", kernel_file,
++            "-blockdev", f"driver=file,filename={otp_img},node-name=otp",
++            "-global", "aspeed-otp.drive=otp",
++        )
++        self.vm.launch()
++        self.wait_for_console_pattern("Booting Zephyr OS")
 +
-+static void aspeed_sgpio_update(AspeedSGPIOState *s, uint32_t idx,
-+                                uint32_t value)
-+{
-+    uint32_t old = s->ctrl_regs[idx];
-+    uint32_t new = value;
-+    uint32_t diff = (old ^ new);
-+    if (diff) {
-+        /* If the interrupt clear bit is set */
-+        if (SHARED_FIELD_EX32(new, SGPIO_INT_STATUS)) {
-+            aspeed_clear_irq(s, idx);
-+            /* Clear the interrupt clear bit */
-+            new &= ~SGPIO_INT_STATUS_MASK;
-+        }
-+
-+        /* Update the control register. */
-+        s->ctrl_regs[idx] = new;
-+
-+        /* If the output value is changed */
-+        if (SHARED_FIELD_EX32(diff, SGPIO_SERIAL_OUT_VAL)) {
-+            /* ...trigger the line-state IRQ */
-+            qemu_set_irq(s->sgpios[idx], 1);
-+        }
-+
-+        /* If the input value is changed */
-+        if (SHARED_FIELD_EX32(diff, SGPIO_SERIAL_IN_VAL)) {
-+            aspeed_evaluate_irq(s,
-+                            SHARED_FIELD_EX32(old, SGPIO_SERIAL_IN_VAL),
-+                            SHARED_FIELD_EX32(new, SGPIO_SERIAL_IN_VAL),
-+                            idx);
-+        }
-+    }
-+    qemu_set_irq(s->irq, !!(s->pending));
-+}
-+
-+static uint64_t aspeed_sgpio_2700_read_int_status_reg(AspeedSGPIOState *s,
-+                                                      uint32_t reg)
-+{
-+    uint32_t idx = reg - R_SGPIO_INT_STATUS_0;
-+    if (idx >= ASPEED_SGPIO_MAX_INT) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                         "%s: interrupt status index: %d, out of bounds\n",
-+                         __func__, idx);
-+        return 0;
-+    }
-+    return s->int_regs[idx];
-+}
-+
- static uint64_t aspeed_sgpio_2700_read_control_reg(AspeedSGPIOState *s,
-                                 uint32_t reg)
- {
-@@ -38,7 +159,7 @@ static void aspeed_sgpio_2700_write_control_reg(AspeedSGPIOState *s,
-                       __func__, idx);
-         return;
-     }
--    s->ctrl_regs[idx] = data;
-+    aspeed_sgpio_update(s, idx, data);
- }
- 
- static uint64_t aspeed_sgpio_2700_read(void *opaque, hwaddr offset,
-@@ -52,6 +173,7 @@ static uint64_t aspeed_sgpio_2700_read(void *opaque, hwaddr offset,
- 
-     switch (reg) {
-     case R_SGPIO_INT_STATUS_0 ... R_SGPIO_INT_STATUS_7:
-+        value = aspeed_sgpio_2700_read_int_status_reg(s, reg);
-         break;
-     case R_SGPIO_0_CONTROL ... R_SGPIO_255_CONTROL:
-         value = aspeed_sgpio_2700_read_control_reg(s, reg);
-@@ -116,7 +238,7 @@ static void aspeed_sgpio_set_pin_level(AspeedSGPIOState *s, int pin, bool level)
-     } else {
-         value &= ~bit_mask;
-     }
--    s->ctrl_regs[pin >> 1] = value;
-+    aspeed_sgpio_update(s, pin >> 1, value);
- }
- 
- static void aspeed_sgpio_get_pin(Object *obj, Visitor *v, const char *name,
++if __name__ == '__main__':
++    AspeedTest.main()
 -- 
 2.52.0
 

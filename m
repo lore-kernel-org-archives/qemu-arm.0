@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C491BC79FB7
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 18:27:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36753C79FAF
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 18:28:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vcp7Z-0001A2-8x; Mon, 05 Jan 2026 13:16:01 -0500
+	id 1vcp7Z-0001A0-0x; Mon, 05 Jan 2026 13:16:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vcp7U-00017R-1g
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 13:15:57 -0500
+ id 1vcp7P-00015W-5z
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 13:15:51 -0500
 Received: from mail-qv1-xf2c.google.com ([2607:f8b0:4864:20::f2c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <brookmangabriel@gmail.com>)
- id 1vcp7P-00036W-Ej
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 13:15:55 -0500
+ id 1vcp77-000352-S2
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 13:15:37 -0500
 Received: by mail-qv1-xf2c.google.com with SMTP id
- 6a1803df08f44-88860551e39so1144846d6.3
- for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 10:15:37 -0800 (PST)
+ 6a1803df08f44-88a26ce6619so1436646d6.3
+ for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 10:15:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1767636937; x=1768241737; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1767636932; x=1768241732; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=/9Fx5rLfzSRK3bLfXlACPoaE0s79Ml+6B18vzxJguro=;
- b=RFFkaQwSYDSlkqo+gKhVj6PFok1mcNm9H00txbhy/W5K6Hw+l/EsgSc4FXiqF2kZps
- r2adOtMYG7qovn2RQMhmZDHc+qWQf1hyVgvFoGUZz+2+JzQKiE02UXjT3p6hHDut6tAo
- kWEffeej7sLByWs8DGUlZaBDD9NQWeFKI72+xwmES/pj3yiI15hwwhc8dQNOInmjn36y
- 3nvraUANT8lIqEkCqF8zBfLtor2coB/I10g2brftwwRjqW04re5zLIqOnpXxZCJRXIb1
- llZuvee2QPl/muYBpRZVqyFQmPThXV6Isw8K/0+5KMANsOwpGHCy7vwRYbMm0+4gcAjq
- njrg==
+ :reply-to; bh=BWmrXieWCSWbw5aDZUcuXmz1CVwQXvxz4s+Pt+y6UfI=;
+ b=UaFzIHMNCwkGOcpnjf2PbzQvTTCTryUFFz8ZjD1UEeRHpNt106HTxqJTD3cJd9Z2df
+ iA7uZ1HNmGONdGqoZf3j8RCdmNb0uIh3zHcCb2lgCpyXXEyyYs9bsPlN/C9mzXCHUhth
+ FVvTUPZhylH4WW+rvSvzA+A9/8umG0SaKzqyeUThQqtoZF7QOsa5JQtjstPN9eKYrMeh
+ 76t25XOCH/v0qv4dcLiOHoSKKJ8qc8C6L27bk0VrauWjCn5Ft0iQkUTeEftuxswrQiRt
+ ssnA92S6RSQuS6E3es3LxmiA6TFrUPiGLJn2kTHMSiXZp8VEfnyxRiSWMT0jXS4P3Mrv
+ Jrkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767636937; x=1768241737;
+ d=1e100.net; s=20230601; t=1767636932; x=1768241732;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=/9Fx5rLfzSRK3bLfXlACPoaE0s79Ml+6B18vzxJguro=;
- b=uHAKCsFR22q1DeN1C9bctppEWJsXKvY90qmIye8rCrTHJUBdiYKjTJV0p9W9wpp0Em
- QY8v63JGXRM06rUpTLJvlUuHwS4ClvH6jYuuSwqTCRzyyOyl2EGRYUIvjKmsa+yoWAVP
- APYiB1GZ3TuDK5pHZgntqXJ76OqrpCOYnY29OUyMdZvWOc+H7YYCai7QbLoscptl+vHw
- Gf1AaI/i4oFFc1TcHdzHzGL5WzGAgTGYRbUefWkdwwZXjb3LnNESst1Bexfxfvg9ap9N
- 049svugjlAAV4/BGPjbtOtQObjt9zT1NwqPlYMzpEzV44sqhY3aHORPVNSwDNqM/rCwa
- 7yQQ==
+ bh=BWmrXieWCSWbw5aDZUcuXmz1CVwQXvxz4s+Pt+y6UfI=;
+ b=Qx1+1AEubV+jMw5Q6XBekvYQZl+qXbLqaO2zsOdPiE3WuoQrqI+cVV5zy40Lu9sPW+
+ LljdFyd7oTtnVcCfeq4eCUXsmwwCqXyBiRM794988+kJQA4Q5L5yWn4RVAtX6aDXuA2V
+ DK0yT+tVCg2/I3SLmZ3ta/YlhMlpvz5MYeLOHXFwwYRcYbsMbu5YCAnflrkSjsGjKdas
+ mIq5ddY6hn7I5M6nfTywGoNsK0LW7jmpFZmbis/v+OuGIRpXtNbmOVqq3maHIwJp0iXe
+ /Ksk6J5Dqfkfa1tgXc9OmO38Q0D56Ef/ZGVYkEjRGhCXYpFhYXEkn8DKy1Nq0/nkzkXY
+ iCgA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU6PS/P1O2myKWApER1q6H3/KMgKSIHHMlnx8kFLwMXcdQruJ42GEHpLfWsv8dsbPeQ2s4c07+zHg==@nongnu.org
-X-Gm-Message-State: AOJu0YwkfpSw8iDrrPcdRMbnVTF/p1ardqN9yVANG8npS8uWVxeTgtKA
- +MCvGQZ5tC8XJBE/9ewwV9+rzlN6BkZX7/3BVsUaOcb5xxH1WTSgEtc9
-X-Gm-Gg: AY/fxX7fdPPnMiikQzg26O9Imqob03F2ODteecvzDH7X0MwOR3ICXk6Fg8aMccVv7Np
- C0NmpYb/5FnnofI6LuFrrwIzsc/ObXBT8e65OYZ/oxjlnCDeF74UZDj6+v71HeVR4X34zT3tQsZ
- CJHCRmtn0t6jyMhp4kbQ6mcSaY0Au6F8pNITuECMjkmvUeON1PxXFUqTIeSNOVUR/K0vEPe0vJA
- c5GLnNTaOxrimWmaZ6GKxts220p0lyDVUQcXj0KuRg+NVpRhkCTqlbLYNA45ywhvF6ucgOvVSUu
- 45TVxwFkHdir4NWdewvlrVszpKfja9SLeiEh0jHsuC4LzBHJz4yc1WJMMGD+6nOpRMThw8dooD8
- 0EVQji7loNRtF+SNwpIYf038uIfbk1a2zHUq9t1YS+b5rNuRgeTvhXD7TelhL3B+Yx094OXRm3z
- U9Yt8KyoZK8bydY6I8D1c+URH9
-X-Google-Smtp-Source: AGHT+IGH0yXr0l71SERYlH3uPyirXQAI7liNy2+TqYI4q0I2pPz76zhuNWbwN83FnL+DB/uz4WD+3A==
-X-Received: by 2002:a05:6214:1306:b0:87d:cad9:ccba with SMTP id
- 6a1803df08f44-89075ce86a4mr7720336d6.14.1767636936937; 
- Mon, 05 Jan 2026 10:15:36 -0800 (PST)
+ AJvYcCUWGWwOsXxzJI2n/Ms3mEpFANdEX0eE8JYpnrsVT6CXpIBODWdP0WZg/RllgFVIjQo4C0CBDTg/eA==@nongnu.org
+X-Gm-Message-State: AOJu0YxMjzBy1Xl/BBvIzaGA4Pm5HfV/swMuNCtU7URtjSDA376JHmMI
+ Vh2oBKiBXbSEQrDRGtry/8GL2md8lWlg2OxiyZzlsYbTj/DeAkI7ryip
+X-Gm-Gg: AY/fxX4vBMWDsafD4TjGOKKjpmPXJVqewqHy6+BH22v/VFOBdw7a9sM4JXuv5/oSyjR
+ JPzwEkNIrJmabHJn7sQsPw5LeFVqCsSHxi98q6kLzn/fjzvBoQrdzAQvQ8yPTLnCLfq5/LsQ81Y
+ l5km7g2xqy2QhpA5JcMFlILVwNgwwm/Zx2WF4meF1k70v4XOTsHPcJeQes2fh5sr1tYD5LbGjI8
+ ZOxkwAHEcc4BPkW/larqI/7eFiRQmVFPHSbh21nxNlIMWIhvSSIg9OZB2eTUs6oAjqBt8dz6vMA
+ MBIyzN4MTdtXJbPXqL5ij860bp2hnEXJ0jgDN+HjCy2IXn+3O1527suTnbFEWM6tIzz8K2BrhcF
+ gSFJY7GduJ4PWkKEtZY9ZlRiALDGl7s+y1A03TkQKnJ+Yc6EKel6uGoXs6XSDiUo/2LqdecrffM
+ IyZpSneSjjRCbEve0pVRXXbxNQ
+X-Google-Smtp-Source: AGHT+IHjF8qhvbll+f2NCJXDbsTu75jdWG8PTSweroZXAthjAwRbPR+5lN1OnZ8b6AJ7vJDwULlfQQ==
+X-Received: by 2002:a05:6214:5c43:b0:88a:342f:32a with SMTP id
+ 6a1803df08f44-89075d1cce6mr7381786d6.14.1767636931669; 
+ Mon, 05 Jan 2026 10:15:31 -0800 (PST)
 Received: from [192.168.1.204] ([185.213.193.254])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-8907540e24csm3855706d6.25.2026.01.05.10.15.35
+ 6a1803df08f44-8907540e24csm3855706d6.25.2026.01.05.10.15.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Jan 2026 10:15:36 -0800 (PST)
+ Mon, 05 Jan 2026 10:15:31 -0800 (PST)
 From: Gabriel Brookman <brookmangabriel@gmail.com>
-Date: Mon, 05 Jan 2026 11:14:57 -0700
-Subject: [PATCH RFC v3 08/12] target/arm: storing to canonical tags faults
+Date: Mon, 05 Jan 2026 11:14:53 -0700
+Subject: [PATCH RFC v3 04/12] linux-user: add MTE_STORE_ONLY to prctl
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260105-feat-mte4-v3-8-86a0d99ef2e4@gmail.com>
+Message-Id: <20260105-feat-mte4-v3-4-86a0d99ef2e4@gmail.com>
 References: <20260105-feat-mte4-v3-0-86a0d99ef2e4@gmail.com>
 In-Reply-To: <20260105-feat-mte4-v3-0-86a0d99ef2e4@gmail.com>
 To: qemu-devel@nongnu.org
@@ -82,11 +82,11 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>, 
  Gabriel Brookman <brookmangabriel@gmail.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1767636923; l=3655;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1767636923; l=2508;
  i=brookmangabriel@gmail.com; s=20251009; h=from:subject:message-id;
- bh=CcVL5fRovpSirzVToytYO4z5WjM+viKj7dzMRsgL4n8=;
- b=L3eBBGvMSl3dbAJ47+QpgN+q6PinoV2TJRj5h3VA4xv2vaoatW8f0+18BKcnj8F5mEJu+hoXv
- fam2POjTgaBArYmdd30LJxysWvUOoHws02jKLvNFwYN2bmQUqQDg/Rj
+ bh=7iu0AGDmcowWfiZU7ESBith02k7QUQRf9isJWo39Au0=;
+ b=vbCSYh9KWkv3PitmxrOhYznRIX9v4mkKzvCyvWXkCYtrno7dqUXMocBVOirwNyiocB2S9paCJ
+ 0T/pVVcbeOECQ62/QYnTMhUY3tDSfHddMKKP5ytKf3Uhq4AFqESbNP8
 X-Developer-Key: i=brookmangabriel@gmail.com; a=ed25519;
  pk=m9TtPDal6WzoHNnQiHHKf8dTrv3DUCPUUTujuo8vNrw=
 Received-SPF: pass client-ip=2607:f8b0:4864:20::f2c;
@@ -113,112 +113,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-According to ARM ARM, section "Memory region tagging types", tag-store
-instructions targeting canonically tagged regions cause a stage 1
-permission fault.
+Linux-user processes can now control whether MTE_STORE_ONLY is enabled
+using the prctl syscall.
 
 Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
 ---
- target/arm/tcg/mte_helper.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+ linux-user/aarch64/mte_user_helper.h |  3 +++
+ linux-user/aarch64/target_prctl.h    | 11 +++++++++++
+ tests/tcg/aarch64/mte.h              |  3 +++
+ 3 files changed, 17 insertions(+)
 
-diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index 795a5ad20b..8f06ed3162 100644
---- a/target/arm/tcg/mte_helper.c
-+++ b/target/arm/tcg/mte_helper.c
-@@ -227,6 +227,20 @@ uint8_t *allocation_tag_mem_probe(CPUARMState *env, int ptr_mmu_idx,
+diff --git a/linux-user/aarch64/mte_user_helper.h b/linux-user/aarch64/mte_user_helper.h
+index 0c53abda22..afd2d6dbda 100644
+--- a/linux-user/aarch64/mte_user_helper.h
++++ b/linux-user/aarch64/mte_user_helper.h
+@@ -20,6 +20,9 @@
+ # define PR_MTE_TAG_SHIFT       3
+ # define PR_MTE_TAG_MASK        (0xffffUL << PR_MTE_TAG_SHIFT)
  #endif
- }
++#ifndef PR_MTE_STORE_ONLY
++# define PR_MTE_STORE_ONLY      (1UL << 19)
++#endif
  
-+static void canonical_tag_write_fail(CPUARMState *env,
-+                                uint64_t dirty_ptr, uintptr_t ra)
-+{
-+    uint64_t syn;
+ /**
+  * arm_set_mte_tcf0 - Set TCF0 field in SCTLR_EL1 register
+diff --git a/linux-user/aarch64/target_prctl.h b/linux-user/aarch64/target_prctl.h
+index 621be5727f..5207580c1a 100644
+--- a/linux-user/aarch64/target_prctl.h
++++ b/linux-user/aarch64/target_prctl.h
+@@ -168,6 +168,9 @@ static abi_long do_prctl_set_tagged_addr_ctrl(CPUArchState *env, abi_long arg2)
+     if (cpu_isar_feature(aa64_mte, cpu)) {
+         valid_mask |= PR_MTE_TCF_MASK;
+         valid_mask |= PR_MTE_TAG_MASK;
++        if (cpu_isar_feature(aa64_mte4, cpu)) {
++            valid_mask |= PR_MTE_STORE_ONLY;
++        }
+     }
+ 
+     if (arg2 & ~valid_mask) {
+@@ -185,6 +188,14 @@ static abi_long do_prctl_set_tagged_addr_ctrl(CPUArchState *env, abi_long arg2)
+          */
+         env->cp15.gcr_el1 =
+             deposit64(env->cp15.gcr_el1, 0, 16, ~arg2 >> PR_MTE_TAG_SHIFT);
 +
-+    env->exception.vaddress = dirty_ptr;
-+
-+    syn = syn_data_abort_no_iss(arm_current_el(env) != 0, 0, 0, 0, 0, 1, 0);
-+    syn |= BIT_ULL(42); /* TnD is bit 42 */
-+
-+    raise_exception_ra(env, EXCP_DATA_ABORT, syn, exception_target_el(env), ra);
-+    g_assert_not_reached();
-+}
-+
- static uint8_t *allocation_tag_mem(CPUARMState *env, int ptr_mmu_idx,
-                                    uint64_t ptr, MMUAccessType ptr_access,
-                                    int ptr_size, MMUAccessType tag_access,
-@@ -363,6 +377,11 @@ static inline void do_stg(CPUARMState *env, uint64_t ptr, uint64_t xt,
-     int mmu_idx = arm_env_mmu_index(env);
-     uint8_t *mem;
- 
-+    if (mtx_check(env, 1 & (ptr >> 55))) {
-+        canonical_tag_write_fail(env, ptr, ra);
-+        return;
-+    }
-+
-     check_tag_aligned(env, ptr, ra);
- 
-     /* Trap if accessing an invalid page.  */
-@@ -390,6 +409,11 @@ void HELPER(stg_stub)(CPUARMState *env, uint64_t ptr)
-     int mmu_idx = arm_env_mmu_index(env);
-     uintptr_t ra = GETPC();
- 
-+    if (mtx_check(env, 1 & (ptr >> 55))) {
-+        canonical_tag_write_fail(env, ptr, ra);
-+        return;
-+    }
-+
-     check_tag_aligned(env, ptr, ra);
-     probe_write(env, ptr, TAG_GRANULE, mmu_idx, ra);
- }
-@@ -401,6 +425,11 @@ static inline void do_st2g(CPUARMState *env, uint64_t ptr, uint64_t xt,
-     int tag = allocation_tag_from_addr(xt);
-     uint8_t *mem1, *mem2;
- 
-+    if (mtx_check(env, 1 & (ptr >> 55))) {
-+        canonical_tag_write_fail(env, ptr, ra);
-+        return;
-+    }
-+
-     check_tag_aligned(env, ptr, ra);
- 
-     /*
-@@ -449,6 +478,11 @@ void HELPER(st2g_stub)(CPUARMState *env, uint64_t ptr)
-     uintptr_t ra = GETPC();
-     int in_page = -(ptr | TARGET_PAGE_MASK);
- 
-+    if (mtx_check(env, 1 & (ptr >> 55))) {
-+        canonical_tag_write_fail(env, ptr, ra);
-+        return;
-+    }
-+
-     check_tag_aligned(env, ptr, ra);
- 
-     if (likely(in_page >= 2 * TAG_GRANULE)) {
-@@ -548,6 +582,11 @@ void HELPER(stgm)(CPUARMState *env, uint64_t ptr, uint64_t val)
- 
-     ptr = QEMU_ALIGN_DOWN(ptr, gm_bs_bytes);
- 
-+    if (mtx_check(env, 1 & (ptr >> 55))) {
-+        canonical_tag_write_fail(env, ptr, ra);
-+        return;
-+    }
-+
-     /* Trap if accessing an invalid page.  */
-     tag_mem = allocation_tag_mem(env, mmu_idx, ptr, MMU_DATA_STORE,
-                                  gm_bs_bytes, MMU_DATA_LOAD, ra);
-@@ -594,6 +633,11 @@ void HELPER(stzgm_tags)(CPUARMState *env, uint64_t ptr, uint64_t val)
-     intptr_t dcz_bytes, tag_bytes;
-     uint8_t *mem;
- 
-+    if (mtx_check(env, 1 & (ptr >> 55))) {
-+        canonical_tag_write_fail(env, ptr, ra);
-+        return;
-+    }
-+
-     /*
-      * In arm_cpu_realizefn, we assert that dcz > LOG2_TAG_GRANULE+1,
-      * i.e. 32 bytes, which is an unreasonably small dcz anyway,
++        /*
++         * If MTE_STORE_ONLY is enabled, set the corresponding sctlr_el1 bit
++         */
++        if (cpu_isar_feature(aa64_mte4, cpu)) {
++            env->cp15.sctlr_el[1] =
++                deposit64(env->cp15.sctlr_el[1], 58, 1, extract64(arg2, 19, 1));
++        }
+         arm_rebuild_hflags(env);
+     }
+     return 0;
+diff --git a/tests/tcg/aarch64/mte.h b/tests/tcg/aarch64/mte.h
+index 0805676b11..17b932f3f1 100644
+--- a/tests/tcg/aarch64/mte.h
++++ b/tests/tcg/aarch64/mte.h
+@@ -20,6 +20,9 @@
+ #ifndef PR_TAGGED_ADDR_ENABLE
+ # define PR_TAGGED_ADDR_ENABLE    (1UL << 0)
+ #endif
++#ifndef PR_MTE_STORE_ONLY
++# define PR_MTE_STORE_ONLY        (1UL << 19)
++#endif
+ #ifndef PR_MTE_TCF_SHIFT
+ # define PR_MTE_TCF_SHIFT         1
+ # define PR_MTE_TCF_NONE          (0UL << PR_MTE_TCF_SHIFT)
 
 -- 
 2.52.0

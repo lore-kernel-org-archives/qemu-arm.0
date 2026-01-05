@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37030C79F8B
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 13:02:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B531C79F89
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 13:02:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vck8w-00048v-1L; Mon, 05 Jan 2026 07:57:07 -0500
+	id 1vckAY-0005Ta-D8; Mon, 05 Jan 2026 07:58:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8o-0003y9-72
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:56:58 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8z-0004AF-6D
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:09 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8m-00080w-JQ
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:56:57 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8x-00083C-8L
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:08 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767617815;
+ s=mimecast20190719; t=1767617826;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ojx8t/JOOXnrO76s37xrrqs9UhJmP5zF5kkm4P3shTQ=;
- b=OFFOSdLUq+mJFQxxGdYR0ty3Bjj5hT+HulLaV75K+s6uXlJdtHe3PK+V7j39ORPtf8075g
- a+90jjDnMceculyqRf72nO4V//wtnAWsWrQFSg65lWSuJlwPRtzDR3OOv4SuolOQM3yNex
- Vey34Ls2I6HOTYK6nlh6SjnChWvLiaw=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=2tCMD84IGf4Vsqx5fEI1vPIx4poAsnadZX2OcXtZz4w=;
+ b=Owb/olV8raQjr0eVUyBpcDoDiHhgs+K/jbZkyPTFoZRYvQSiJ2NnIA92WL+JXpS7Ebggih
+ ywPsSoeceHQgSXX9BwlQCsNvM/rDOGqFV2i1Q+cVDDWHp06sXPqqZqEoeuA2PshOnHr30B
+ 6i0GUEuJ8S7uf/2LHWhMHEuU8yO4VHY=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-7-wRcapylMN06hsNLGKCc3Ew-1; Mon,
- 05 Jan 2026 07:56:52 -0500
-X-MC-Unique: wRcapylMN06hsNLGKCc3Ew-1
-X-Mimecast-MFC-AGG-ID: wRcapylMN06hsNLGKCc3Ew_1767617811
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-509-cfCqArDdNU-02eyLysAVRg-1; Mon,
+ 05 Jan 2026 07:57:04 -0500
+X-MC-Unique: cfCqArDdNU-02eyLysAVRg-1
+X-Mimecast-MFC-AGG-ID: cfCqArDdNU-02eyLysAVRg_1767617823
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 87729180065F; Mon,  5 Jan 2026 12:56:51 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9D304195FCDC; Mon,  5 Jan 2026 12:57:03 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.53])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 14A5B19560A7; Mon,  5 Jan 2026 12:56:49 +0000 (UTC)
+ id DDC70195398A; Mon,  5 Jan 2026 12:57:01 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Patrick Williams <patrick@stwcx.xyz>,
+Cc: Yubin Zou <yubinz@google.com>, Kane Chen <kane_chen@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 17/36] hw/arm/aspeed: catalina: add HDD FRU EEPROM
-Date: Mon,  5 Jan 2026 13:55:54 +0100
-Message-ID: <20260105125613.622667-18-clg@redhat.com>
+Subject: [PULL 23/36] hw/gpio/aspeed_sgpio: Add basic device model for Aspeed
+ SGPIO
+Date: Mon,  5 Jan 2026 13:56:00 +0100
+Message-ID: <20260105125613.622667-24-clg@redhat.com>
 In-Reply-To: <20260105125613.622667-1-clg@redhat.com>
 References: <20260105125613.622667-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -84,78 +85,258 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Patrick Williams <patrick@stwcx.xyz>
+From: Yubin Zou <yubinz@google.com>
 
-Use ipmitool/frugen tool to generate a HDD image based on a
-sanitized set of data from a real device EEPROM.
+This initial implementation includes the basic device structure,
+memory-mapped register definitions, and read/write handlers for the
+SGPIO control registers.
 
-Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20251217-catalina-eeproms-v1-6-dc7b276efd57@stwcx.xyz
+Signed-off-by: Yubin Zou <yubinz@google.com>
+Reviewed-by: Kane Chen <kane_chen@aspeedtech.com>
+Link: https://lore.kernel.org/qemu-devel/20251219-aspeed-sgpio-v5-1-fd5593178144@google.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast2600_catalina.c | 41 +++++++++++++++++++++++++++++++-
- 1 file changed, 40 insertions(+), 1 deletion(-)
+ include/hw/gpio/aspeed_sgpio.h |  66 +++++++++++++++
+ hw/gpio/aspeed_sgpio.c         | 145 +++++++++++++++++++++++++++++++++
+ hw/gpio/meson.build            |   1 +
+ 3 files changed, 212 insertions(+)
+ create mode 100644 include/hw/gpio/aspeed_sgpio.h
+ create mode 100644 hw/gpio/aspeed_sgpio.c
 
-diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
-index 17db9035bda5..4cfde870affa 100644
---- a/hw/arm/aspeed_ast2600_catalina.c
-+++ b/hw/arm/aspeed_ast2600_catalina.c
-@@ -227,6 +227,44 @@ static const uint8_t fio_eeprom[] = {
- };
- static const size_t fio_eeprom_len = sizeof(fio_eeprom);
- 
+diff --git a/include/hw/gpio/aspeed_sgpio.h b/include/hw/gpio/aspeed_sgpio.h
+new file mode 100644
+index 000000000000..7da48920eebf
+--- /dev/null
++++ b/include/hw/gpio/aspeed_sgpio.h
+@@ -0,0 +1,66 @@
 +/*
-+ * HDD Carrier Board FRU data. Generated with frugen.
++ * ASPEED Serial GPIO Controller
 + *
-+ *    {
-+ *        "board": {
-+ *            "mfg": "Quanta",
-+ *            "pname": "Catalina HDD MP (QEMU)",
-+ *            "pn": "00000000000",
-+ *            "serial": "00000000000000",
-+ *            "date": "01/12/2025 00:00",
-+ *            "custom": ["19-100319", "", "", "adc-ina"]
-+ *        },
-+ *        "product": {
-+ *            "mfg": "Quanta",
-+ *            "pname": "CI-Catalina",
-+ *            "pn": "10000000001",
-+ *            "ver": "MP",
-+ *            "serial": "10000000000000",
-+ *            "atag": "QEMU"
-+ *        }
-+ *    }
++ * Copyright 2025 Google LLC.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
-+static const uint8_t hdd_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x0b, 0x00, 0x00, 0xf3, 0x01, 0x0a, 0x19, 0x8c,
-+    0x19, 0xf0, 0xc6, 0x51, 0x75, 0x61, 0x6e, 0x74, 0x61, 0xd6, 0x43, 0x61,
-+    0x74, 0x61, 0x6c, 0x69, 0x6e, 0x61, 0x20, 0x48, 0x44, 0x44, 0x20, 0x4d,
-+    0x50, 0x20, 0x28, 0x51, 0x45, 0x4d, 0x55, 0x29, 0x8b, 0x10, 0x04, 0x41,
-+    0x10, 0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x04, 0x89, 0x10, 0x04, 0x41,
-+    0x10, 0x04, 0x41, 0x10, 0x04, 0x01, 0xc0, 0x87, 0x51, 0xd6, 0x44, 0x10,
-+    0x34, 0x45, 0x19, 0xc0, 0xc0, 0xc7, 0x61, 0x64, 0x63, 0x2d, 0x69, 0x6e,
-+    0x61, 0xc1, 0x00, 0xff, 0x01, 0x07, 0x19, 0xc6, 0x51, 0x75, 0x61, 0x6e,
-+    0x74, 0x61, 0xcb, 0x43, 0x49, 0x2d, 0x43, 0x61, 0x74, 0x61, 0x6c, 0x69,
-+    0x6e, 0x61, 0x89, 0x11, 0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x14, 0x01,
-+    0x82, 0x2d, 0x0c, 0x8b, 0x11, 0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x04,
-+    0x41, 0x10, 0x04, 0x83, 0x71, 0xd9, 0xd6, 0xc0, 0xc1, 0x00, 0x00, 0x37
-+};
-+static const size_t hdd_eeprom_len = sizeof(hdd_eeprom);
++#ifndef ASPEED_SGPIO_H
++#define ASPEED_SGPIO_H
 +
- static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
- {
-     /* Reference from v6.16-rc2 aspeed-bmc-facebook-catalina.dts */
-@@ -330,7 +368,8 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_mux = i2c_slave_create_simple(i2c[5], TYPE_PCA9548, 0x70);
-     /* i2c5mux0ch6 */
-     /* eeprom@52 */
--    at24c_eeprom_init(pca954x_i2c_get_bus(i2c_mux, 6), 0x52, 8 * KiB);
-+    at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 6), 0x52, 8 * KiB,
-+                          hdd_eeprom, hdd_eeprom_len);
-     /* i2c5mux0ch7 */
-     /* ina230@40 - no model */
-     /* ina230@41 - no model */
++#include "hw/core/sysbus.h"
++#include "qom/object.h"
++#include "hw/core/registerfields.h"
++
++#define TYPE_ASPEED_SGPIO "aspeed.sgpio"
++OBJECT_DECLARE_TYPE(AspeedSGPIOState, AspeedSGPIOClass, ASPEED_SGPIO)
++
++#define ASPEED_SGPIO_MAX_PIN_PAIR 256
++#define ASPEED_SGPIO_MAX_INT 8
++
++/* AST2700 SGPIO Register Address Offsets */
++REG32(SGPIO_INT_STATUS_0, 0x40)
++REG32(SGPIO_INT_STATUS_1, 0x44)
++REG32(SGPIO_INT_STATUS_2, 0x48)
++REG32(SGPIO_INT_STATUS_3, 0x4C)
++REG32(SGPIO_INT_STATUS_4, 0x50)
++REG32(SGPIO_INT_STATUS_5, 0x54)
++REG32(SGPIO_INT_STATUS_6, 0x58)
++REG32(SGPIO_INT_STATUS_7, 0x5C)
++/* AST2700 SGPIO_0 - SGPIO_255 Control Register */
++REG32(SGPIO_0_CONTROL, 0x80)
++    SHARED_FIELD(SGPIO_SERIAL_OUT_VAL, 0, 1)
++    SHARED_FIELD(SGPIO_PARALLEL_OUT_VAL, 1, 1)
++    SHARED_FIELD(SGPIO_INT_EN, 2, 1)
++    SHARED_FIELD(SGPIO_INT_TYPE, 3, 3)
++    SHARED_FIELD(SGPIO_RESET_POLARITY, 6, 1)
++    SHARED_FIELD(SGPIO_RESERVED_1, 7, 2)
++    SHARED_FIELD(SGPIO_INPUT_MASK, 9, 1)
++    SHARED_FIELD(SGPIO_PARALLEL_EN, 10, 1)
++    SHARED_FIELD(SGPIO_PARALLEL_IN_MODE, 11, 1)
++    SHARED_FIELD(SGPIO_INT_STATUS, 12, 1)
++    SHARED_FIELD(SGPIO_SERIAL_IN_VAL, 13, 1)
++    SHARED_FIELD(SGPIO_PARALLEL_IN_VAL, 14, 1)
++    SHARED_FIELD(SGPIO_RESERVED_2, 15, 12)
++    SHARED_FIELD(SGPIO_WRITE_PROTECT, 31, 1)
++REG32(SGPIO_255_CONTROL, 0x47C)
++
++struct AspeedSGPIOClass {
++    SysBusDeviceClass parent_class;
++    uint32_t nr_sgpio_pin_pairs;
++    uint64_t mem_size;
++    const MemoryRegionOps *reg_ops;
++};
++
++struct AspeedSGPIOState {
++    /* <private> */
++    SysBusDevice parent;
++
++    /*< public >*/
++    MemoryRegion iomem;
++    qemu_irq irq;
++    uint32_t ctrl_regs[ASPEED_SGPIO_MAX_PIN_PAIR];
++    uint32_t int_regs[ASPEED_SGPIO_MAX_INT];
++};
++
++#endif /* ASPEED_SGPIO_H */
+diff --git a/hw/gpio/aspeed_sgpio.c b/hw/gpio/aspeed_sgpio.c
+new file mode 100644
+index 000000000000..538fb5145c3d
+--- /dev/null
++++ b/hw/gpio/aspeed_sgpio.c
+@@ -0,0 +1,145 @@
++/*
++ * ASPEED Serial GPIO Controller
++ *
++ * Copyright 2025 Google LLC.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/host-utils.h"
++#include "qemu/log.h"
++#include "qemu/error-report.h"
++#include "qapi/error.h"
++#include "qapi/visitor.h"
++#include "hw/core/qdev-properties.h"
++#include "hw/gpio/aspeed_sgpio.h"
++
++static uint64_t aspeed_sgpio_2700_read_control_reg(AspeedSGPIOState *s,
++                                uint32_t reg)
++{
++    AspeedSGPIOClass *agc = ASPEED_SGPIO_GET_CLASS(s);
++    uint32_t idx = reg - R_SGPIO_0_CONTROL;
++    if (idx >= agc->nr_sgpio_pin_pairs) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: pin index: %d, out of bounds\n",
++                      __func__, idx);
++        return 0;
++    }
++    return s->ctrl_regs[idx];
++}
++
++static void aspeed_sgpio_2700_write_control_reg(AspeedSGPIOState *s,
++                                uint32_t reg, uint64_t data)
++{
++    AspeedSGPIOClass *agc = ASPEED_SGPIO_GET_CLASS(s);
++    uint32_t idx = reg - R_SGPIO_0_CONTROL;
++    if (idx >= agc->nr_sgpio_pin_pairs) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: pin index: %d, out of bounds\n",
++                      __func__, idx);
++        return;
++    }
++    s->ctrl_regs[idx] = data;
++}
++
++static uint64_t aspeed_sgpio_2700_read(void *opaque, hwaddr offset,
++                                uint32_t size)
++{
++    AspeedSGPIOState *s = ASPEED_SGPIO(opaque);
++    uint64_t value = 0;
++    uint64_t reg;
++
++    reg = offset >> 2;
++
++    switch (reg) {
++    case R_SGPIO_0_CONTROL ... R_SGPIO_255_CONTROL:
++        value = aspeed_sgpio_2700_read_control_reg(s, reg);
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
++                      HWADDR_PRIx"\n", __func__, offset);
++        return 0;
++    }
++
++    return value;
++}
++
++static void aspeed_sgpio_2700_write(void *opaque, hwaddr offset, uint64_t data,
++                                uint32_t size)
++{
++    AspeedSGPIOState *s = ASPEED_SGPIO(opaque);
++    uint64_t reg;
++
++    reg = offset >> 2;
++
++    switch (reg) {
++    case R_SGPIO_0_CONTROL ... R_SGPIO_255_CONTROL:
++        aspeed_sgpio_2700_write_control_reg(s, reg, data);
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: no setter for offset 0x%"
++                      HWADDR_PRIx"\n", __func__, offset);
++        return;
++    }
++}
++
++static const MemoryRegionOps aspeed_sgpio_2700_ops = {
++    .read       = aspeed_sgpio_2700_read,
++    .write      = aspeed_sgpio_2700_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++};
++
++static void aspeed_sgpio_realize(DeviceState *dev, Error **errp)
++{
++    AspeedSGPIOState *s = ASPEED_SGPIO(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++    AspeedSGPIOClass *agc = ASPEED_SGPIO_GET_CLASS(s);
++
++    /* Interrupt parent line */
++    sysbus_init_irq(sbd, &s->irq);
++
++    memory_region_init_io(&s->iomem, OBJECT(s), agc->reg_ops, s,
++                          TYPE_ASPEED_SGPIO, agc->mem_size);
++
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static void aspeed_sgpio_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = aspeed_sgpio_realize;
++    dc->desc = "Aspeed SGPIO Controller";
++}
++
++static void aspeed_sgpio_2700_class_init(ObjectClass *klass, const void *data)
++{
++    AspeedSGPIOClass *agc = ASPEED_SGPIO_CLASS(klass);
++    agc->nr_sgpio_pin_pairs = ASPEED_SGPIO_MAX_PIN_PAIR;
++    agc->mem_size = 0x1000;
++    agc->reg_ops = &aspeed_sgpio_2700_ops;
++}
++
++static const TypeInfo aspeed_sgpio_info = {
++    .name           = TYPE_ASPEED_SGPIO,
++    .parent         = TYPE_SYS_BUS_DEVICE,
++    .instance_size  = sizeof(AspeedSGPIOState),
++    .class_size     = sizeof(AspeedSGPIOClass),
++    .class_init     = aspeed_sgpio_class_init,
++    .abstract       = true,
++};
++
++static const TypeInfo aspeed_sgpio_ast2700_info = {
++    .name           = TYPE_ASPEED_SGPIO "-ast2700",
++    .parent         = TYPE_ASPEED_SGPIO,
++    .class_init     = aspeed_sgpio_2700_class_init,
++};
++
++static void aspeed_sgpio_register_types(void)
++{
++    type_register_static(&aspeed_sgpio_info);
++    type_register_static(&aspeed_sgpio_ast2700_info);
++}
++
++type_init(aspeed_sgpio_register_types);
+diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+index 74840619c01b..6a67ee958faa 100644
+--- a/hw/gpio/meson.build
++++ b/hw/gpio/meson.build
+@@ -16,5 +16,6 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
+ ))
+ system_ss.add(when: 'CONFIG_STM32L4X5_SOC', if_true: files('stm32l4x5_gpio.c'))
+ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_gpio.c'))
++system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_sgpio.c'))
+ system_ss.add(when: 'CONFIG_SIFIVE_GPIO', if_true: files('sifive_gpio.c'))
+ system_ss.add(when: 'CONFIG_PCF8574', if_true: files('pcf8574.c'))
 -- 
 2.52.0
 

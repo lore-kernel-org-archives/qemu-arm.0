@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF4D6C79F8C
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 13:07:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F73FC79F8C
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 13:08:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vckAK-0005J9-58; Mon, 05 Jan 2026 07:58:32 -0500
+	id 1vckAg-0005eh-9G; Mon, 05 Jan 2026 07:58:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8x-00049h-Lv
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:09 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck9J-0004aH-Oy
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:33 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck8w-000831-5z
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:07 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck9E-00087R-DW
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:25 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767617825;
+ s=mimecast20190719; t=1767617843;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JVZDGTnneiiEsr9/YzGC7XE1ut9z/hM7iMuXqfl4I90=;
- b=AlioAac9NYTlYUeI2jVcfZRlvE5vQtCxk7HFLJKakn8T8oX3941acFgfO0j8eV5vIMGw9m
- A2aG4BQ9y0umAyOWSG3BlfdznnqD7VFxNs8HpPnrIS17vd4bciH+N4DiUWWRZUYK6ShFs9
- Cn/LVwnnrwimXvcdPiXyzjRk6NTvRdM=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=dUNgTCcgVwMHoRdHx+5eUBcnLo70zMvS6I1BEpTwZDs=;
+ b=ag2PPGADtmdEAxXFsKGopyzzPnuunzwr49IRfWnI7TaMPj3QTlxur9QRZuG/G5SzvBqwSj
+ 3oEz5Z3v3DaAygmx7GaICKlpG7R1tDCbRSmSXFEuzlTKisjFAKMjHtNXsRuRTyWzmbbsm9
+ lJhQ/ru2THl5rT57t7W62DBX0ATspxM=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-54-m-yMS8V2MpusPzSiGNfIHg-1; Mon,
- 05 Jan 2026 07:57:02 -0500
-X-MC-Unique: m-yMS8V2MpusPzSiGNfIHg-1
-X-Mimecast-MFC-AGG-ID: m-yMS8V2MpusPzSiGNfIHg_1767617821
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-510-k9RJQIkBNnOYT-gWkwdDJg-1; Mon,
+ 05 Jan 2026 07:57:20 -0500
+X-MC-Unique: k9RJQIkBNnOYT-gWkwdDJg-1
+X-Mimecast-MFC-AGG-ID: k9RJQIkBNnOYT-gWkwdDJg_1767617839
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6C84618002C1; Mon,  5 Jan 2026 12:57:01 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BC31419560A5; Mon,  5 Jan 2026 12:57:19 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.53])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id EE43F19560A7; Mon,  5 Jan 2026 12:56:59 +0000 (UTC)
+ id 49C6619560A7; Mon,  5 Jan 2026 12:57:18 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Patrick Williams <patrick@stwcx.xyz>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 22/36] hw/arm/aspeed: catalina: add Cable Cartridge FRU EEPROM
-Date: Mon,  5 Jan 2026 13:55:59 +0100
-Message-ID: <20260105125613.622667-23-clg@redhat.com>
+Subject: [PULL 30/36] hw/arm: Remove ast2700a0-evb machine
+Date: Mon,  5 Jan 2026 13:56:07 +0100
+Message-ID: <20260105125613.622667-31-clg@redhat.com>
 In-Reply-To: <20260105125613.622667-1-clg@redhat.com>
 References: <20260105125613.622667-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -84,91 +84,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Patrick Williams <patrick@stwcx.xyz>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Use ipmitool/frugen tool to generate a Cable Cart image based on a
-sanitized set of data from a real device EEPROM.  The EEPROM
-bus/address did not match device tree for one of the EEPROMs so move
-it from bus 13 / 55 to bus 12 / 54.
+The ast2700a0-evb machine represents the first revision of the AST2700 and
+serves as the initial engineering sample rather than a production version.
+A newer revision, A1, is now supported, and the ast2700a1-evb should replace
+the older A0 version.
 
-Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20251217-catalina-eeproms-v1-11-dc7b276efd57@stwcx.xyz
+Link: https://lore.kernel.org/qemu-devel/20250901040808.1454742-2-jamin_lin@aspeedtech.com
+[ clg: Updated docs/about/removed-features.rst ]
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast2600_catalina.c | 46 +++++++++++++++++++++++++++++---
- 1 file changed, 43 insertions(+), 3 deletions(-)
+ docs/about/deprecated.rst       |  8 --------
+ docs/about/removed-features.rst |  8 ++++++++
+ hw/arm/aspeed_ast27x0_evb.c     | 26 --------------------------
+ 3 files changed, 8 insertions(+), 34 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
-index 5044441f38d7..4edb30bb16b8 100644
---- a/hw/arm/aspeed_ast2600_catalina.c
-+++ b/hw/arm/aspeed_ast2600_catalina.c
-@@ -419,6 +419,44 @@ static const uint8_t nic_eeprom[] = {
- };
- static const size_t nic_eeprom_len = sizeof(nic_eeprom);
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index ac31a2bce427..7abb3dab592b 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -280,14 +280,6 @@ deprecated; use the new name ``dtb-randomness`` instead. The new name
+ better reflects the way this property affects all random data within
+ the device tree blob, not just the ``kaslr-seed`` node.
  
-+/*
-+ * Cable Cartridge FRU data. Generated with frugen.
-+ *
-+ *    {
-+ *        "board": {
-+ *            "mfg": "Nvidia",
-+ *            "pname": "18x1RU CBL Cartridge (QEMU)",
-+ *            "pn": "000-0000-000",
-+ *            "serial": "0000000000000",
-+ *            "date": "01/12/2025 00:00"
-+ *        },
-+ *        "product": {
-+ *            "mfg": "Nvidia",
-+ *            "pname": "18x1RU CBL Cartridge",
-+ *            "pn": "100-00000-0000-001",
-+ *            "ver": "E.4",
-+ *            "serial": "1000000000001",
-+ *            "atag": "QEMU"
-+ *        }
-+ *    }
-+ */
-+static const uint8_t cable_eeprom[] = {
-+    0x01, 0x00, 0x00, 0x01, 0x0a, 0x00, 0x00, 0xf4, 0x01, 0x09, 0x19, 0x8c,
-+    0x19, 0xf0, 0xc6, 0x4e, 0x76, 0x69, 0x64, 0x69, 0x61, 0xdb, 0x31, 0x38,
-+    0x78, 0x31, 0x52, 0x55, 0x20, 0x43, 0x42, 0x4c, 0x20, 0x43, 0x61, 0x72,
-+    0x74, 0x72, 0x69, 0x64, 0x67, 0x65, 0x20, 0x28, 0x51, 0x45, 0x4d, 0x55,
-+    0x29, 0x8a, 0x10, 0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x04, 0x41, 0x10,
-+    0x89, 0x10, 0x04, 0x35, 0x10, 0x04, 0x41, 0x0d, 0x04, 0x41, 0xc0, 0xc1,
-+    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xb1, 0x01, 0x09, 0x19, 0xc6,
-+    0x4e, 0x76, 0x69, 0x64, 0x69, 0x61, 0xd4, 0x31, 0x38, 0x78, 0x31, 0x52,
-+    0x55, 0x20, 0x43, 0x42, 0x4c, 0x20, 0x43, 0x61, 0x72, 0x74, 0x72, 0x69,
-+    0x64, 0x67, 0x65, 0x8e, 0x11, 0x04, 0x35, 0x10, 0x04, 0x41, 0x50, 0x03,
-+    0x41, 0x10, 0xd4, 0x40, 0x50, 0x04, 0x83, 0xa5, 0x43, 0x01, 0x8a, 0x11,
-+    0x04, 0x41, 0x10, 0x04, 0x41, 0x10, 0x04, 0x41, 0x11, 0x83, 0x71, 0xd9,
-+    0xd6, 0xc0, 0xc1, 0x00, 0x00, 0x00, 0x00, 0x25
-+};
-+static const size_t cable_eeprom_len = sizeof(cable_eeprom);
+-Arm ``ast2700a0-evb`` machine (since 10.1)
+-''''''''''''''''''''''''''''''''''''''''''
+-
+-The ``ast2700a0-evb`` machine represents the first revision of the AST2700
+-and serves as the initial engineering sample rather than a production version.
+-A newer revision, A1, is now supported, and the ``ast2700a1-evb`` should
+-replace the older A0 version.
+-
+ Arm ``sonorapass-bmc`` machine (since 10.2)
+ '''''''''''''''''''''''''''''''''''''''''''
+ 
+diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+index 422b9c98d354..e81d79da47f2 100644
+--- a/docs/about/removed-features.rst
++++ b/docs/about/removed-features.rst
+@@ -1136,6 +1136,14 @@ Mips ``mipssim`` machine (removed in 10.2)
+ Linux dropped support for this virtual machine type in kernel v3.7, and
+ there was also no binary available online to use with that board.
+ 
++Arm ``ast2700a0-evb`` machine (since 11.0)
++''''''''''''''''''''''''''''''''''''''''''
 +
- static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
++The ``ast2700a0-evb`` machine represents the first revision of the AST2700
++and serves as the initial engineering sample rather than a production version.
++A newer revision, A1, is now supported, and the ``ast2700a1-evb`` should
++replace the older A0 version.
++
+ linux-user mode CPUs
+ --------------------
+ 
+diff --git a/hw/arm/aspeed_ast27x0_evb.c b/hw/arm/aspeed_ast27x0_evb.c
+index 0c4e9cd9cd8e..31f7d61117a9 100644
+--- a/hw/arm/aspeed_ast27x0_evb.c
++++ b/hw/arm/aspeed_ast27x0_evb.c
+@@ -28,27 +28,6 @@ static void ast2700_evb_i2c_init(AspeedMachineState *bmc)
+                             TYPE_TMP105, 0x4d);
+ }
+ 
+-static void aspeed_machine_ast2700a0_evb_class_init(ObjectClass *oc,
+-                                                    const void *data)
+-{
+-    MachineClass *mc = MACHINE_CLASS(oc);
+-    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+-
+-    mc->desc = "Aspeed AST2700 A0 EVB (Cortex-A35)";
+-    amc->soc_name  = "ast2700-a0";
+-    amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
+-    amc->hw_strap2 = AST2700_EVB_HW_STRAP2;
+-    amc->fmc_model = "w25q01jvq";
+-    amc->spi_model = "w25q512jv";
+-    amc->num_cs    = 2;
+-    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON;
+-    amc->uart_default = ASPEED_DEV_UART12;
+-    amc->i2c_init  = ast2700_evb_i2c_init;
+-    amc->vbootrom = true;
+-    mc->default_ram_size = 1 * GiB;
+-    aspeed_machine_class_init_cpus_defaults(mc);
+-}
+-
+ static void aspeed_machine_ast2700a1_evb_class_init(ObjectClass *oc,
+                                                     const void *data)
  {
-     /* Reference from v6.16-rc2 aspeed-bmc-facebook-catalina.dts */
-@@ -561,15 +599,17 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
-     /* eeprom@50 */
-     at24c_eeprom_init_rom(i2c[12], 0x50, 8 * KiB,
-                           gb200_eeprom, gb200_eeprom_len);
-+    /* eeprom@54 */
-+    at24c_eeprom_init_rom(i2c[12], 0x54, 256,
-+                          cable_eeprom, cable_eeprom_len);
+@@ -73,11 +52,6 @@ static void aspeed_machine_ast2700a1_evb_class_init(ObjectClass *oc,
  
-     /* &i2c13 */
-     /* eeprom@50 */
-     at24c_eeprom_init_rom(i2c[13], 0x50, 8 * KiB,
-                           gb200_eeprom, gb200_eeprom_len);
-     /* eeprom@54 */
--    at24c_eeprom_init(i2c[13], 0x54, 256);
--    /* eeprom@55 */
--    at24c_eeprom_init(i2c[13], 0x55, 256);
-+    at24c_eeprom_init_rom(i2c[13], 0x54, 256,
-+                          cable_eeprom, cable_eeprom_len);
-     /* eeprom@57 */
-     at24c_eeprom_init_rom(i2c[13], 0x57, 256, hmc_eeprom, hmc_eeprom_len);
- 
+ static const TypeInfo aspeed_ast27x0_evb_types[] = {
+     {
+-        .name          = MACHINE_TYPE_NAME("ast2700a0-evb"),
+-        .parent        = TYPE_ASPEED_MACHINE,
+-        .class_init    = aspeed_machine_ast2700a0_evb_class_init,
+-        .interfaces    = aarch64_machine_interfaces,
+-    }, {
+         .name          = MACHINE_TYPE_NAME("ast2700a1-evb"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_ast2700a1_evb_class_init,
 -- 
 2.52.0
 

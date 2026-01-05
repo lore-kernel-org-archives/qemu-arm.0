@@ -4,84 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7B74CD040C
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 21:33:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6028BCD041F
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 22:38:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vcsCq-0007Dy-FS; Mon, 05 Jan 2026 16:33:40 -0500
+	id 1vct8W-0002MV-SG; Mon, 05 Jan 2026 17:33:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vcsCd-00075r-UW
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 16:33:29 -0500
+ id 1vct8L-0002F7-EG
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 17:33:06 -0500
 Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vcsCc-0003Kk-EC
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 16:33:27 -0500
+ id 1vct8J-000470-OA
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 17:33:05 -0500
 Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-2a081c163b0so3387795ad.0
- for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 13:33:25 -0800 (PST)
+ d9443c01a7336-2a0ac29fca1so3997345ad.2
+ for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 14:33:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767648805; x=1768253605; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767652382; x=1768257182; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=QaRoVS0sZmfqN3jLRtmuEp8o9Uz2j0VWCn7U6l8V5Jo=;
- b=dc3AaN7epaj3fbtv+wNVI59SbPhWiVQ7K5J/DN3GMknt+n9MFhiMpCpDmxnpd36B9g
- Hs56cxsYrp4+bluZAQGDipaTnrqdmSnfspm3fkWh56x0luJAnOL7lUuR8bYhbgS+gdQC
- ou+EWvdhnOE5HjWcVOH+Swd7Vmw/jLIg5s3x7aj1U2L2UtJzsFafTDpH+4ULmIZEg8+w
- U0sbjUJll9d8IuC5SmI1T4CV812ncB/K20p8pjP8GQRSZyoCeoBhd6dX2LKx/ZVrZuZK
- 0bc+dvkmkoiF/j1NIqvZRH8wYsrVih9/bwvX5RfOxl/P/ClIOX+PSzxyq+DGpLc7zK8c
- 55sw==
+ bh=+Rn4zgYufMW7rIMHFO5uTe8EU5x+JDUJ8tv9sxcWIH8=;
+ b=etZtkWwtUDVq9YkwsDYOfWyZ0ZydO9u5QlimPwXBh4y/424HdIve8ErAy1P9lN1srV
+ wHNDQr8WXO18HgoFp597lIQ95ECUNIn/0X4hWPOc/37wxdQnfBG43Ar/4o6SJ52igeIA
+ xdYeKvjvmOB0Uhz9n6Uho0Kn0EXDUXT7nWfM/jolXGIS/zHnqb3eZw7b4UQDfWbBtMoc
+ NKJWnOK3hgA9kbbkgEY91poFMBJSRUdbgdHBhZpvUvptuJrVq9KM37AX0kI7zA7V38A2
+ j+nBwa8RXqLv1BfZgmg3Y3cugwO5W8DeiVVxLWHvjrQ4sWb8fCTqZRJh02gxD6lwMjY2
+ YHjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767648805; x=1768253605;
+ d=1e100.net; s=20230601; t=1767652382; x=1768257182;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=QaRoVS0sZmfqN3jLRtmuEp8o9Uz2j0VWCn7U6l8V5Jo=;
- b=kyOgm1+a9A5r7ylJfMI2zKbBnF8hWNZ6W3cRPMTy1SgrMeGGrwM5vFKBWiGLNBXQjf
- bQldFbqOo7pa1P8Ewkcwrj7Ta81f1gIJGzosQS7zYYn2jm4RjkHNCiPmWol2dSmGyTMZ
- Z2DcJ8gSpG+tRKveTl0Wup4awAAQx/K8nCgB8gdDpkgHy06j2Rpzs1nvuax+MUcIVUZb
- luE971stbrZVLcKL9cnuIJLXlAa5qqfe7zp6g12PqkkqjtWqmqTWZkNq5FEzm+8u1xvg
- DhTwfxECgIH0OoJ9AUY5uRWgw6K2mgnehqUS9wdBeFaBDbkbtcB9YfWezTLZlZ1QLR4m
- 96ZQ==
+ bh=+Rn4zgYufMW7rIMHFO5uTe8EU5x+JDUJ8tv9sxcWIH8=;
+ b=f6wlPwMCCDCKk01w3Q0fHVZHbAwcVUfm/l10wDG1HHns44XUPAHKx5uwfMFu0Fry+L
+ gq5pdgqp7r3fkb+vUq25LG9IeQTtpAxZOlry72t+QZnqYTymXOUQTGW2w890o2zeN4VX
+ nDztoXDcOSo6DFl3uBjPpcpWZzHmbEJ/HqJoAJbQ/QvrtobzqMUCvXucv6J8fGOsQElr
+ OWehUqo7JN5NNRySQCZsrrFySy8Sl50dA8YdsmndqqHQO5oC/DAF4zMwhGx9v8SdYf9I
+ dybCV9U0zBZh3nbi9ChB9c5gy/WPcSjfgD66ekdR9v9ZtoVfH7v+aFhOjCxlWW0rNLCp
+ kG5A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWv5a0cGBk8lYn0la1h8b+j0vpyGVrSiczvDkU2U7wgAs8djpC778tKvWpw1iatjyG8BqsQC9chTA==@nongnu.org
-X-Gm-Message-State: AOJu0YzPGDn6QBMbNuEI7y+2K8Loit4TJdDZDcb4xPlTn6HRQeQUYYw8
- lm30pTBMvUCcnJHSxtO516RVv/gbU5Oy+AFvOpiiuxdGHc71kamFTOzTRw7CeCnBEqg=
-X-Gm-Gg: AY/fxX4CH83fghKCUD78fr4AG/AD7QDjJnK8AjJruaZQIOZ+nj/azmayIXAkpDqYLOr
- w9CySickYEjWZyP+TIEK45SQChn1yVZD2un9cYyspXnlWdVyPfwRGi0NFZvao+M4WwZp5euenQD
- FcvYWpieTir0jk2ZSyGtPr4CczjK8iROGWayw1Fx9bLUjchvLiwijydrpmklFKddsMDVO58hbPV
- K3zcB7c9AV2sz02AhSHFJfPENMm9fdrk1bs/fojNPiuBKTLmiaa2IX1+5UXvm4dXIqVGXS92rep
- KxNj7uP+ZluJAH5r58+PNwBPO5tUum8SIN8H/yB20zpU3INGWc2yr6vwzSTb+Co2QC2p/G/0TZA
- aq0RrGbz2tK5/JZRsqja81EzMCQwe68ookVWQfC7TtaU0f2l0Q7/KrkjLzvppliAm+9PhNtDliJ
- 3NLc1aG7yf++QayyaLk/+2xro6ughFtg==
-X-Google-Smtp-Source: AGHT+IGWHTXoXkpcOI/OdGXuw2mE9tqFjWdhBWc5BaAnWFHWJE0s0HyAzYbOc8qxXwpYIQ7mIZWDeA==
-X-Received: by 2002:a17:902:c403:b0:2a0:c1ed:c8c2 with SMTP id
- d9443c01a7336-2a3e2d36061mr8961905ad.55.1767648804719; 
- Mon, 05 Jan 2026 13:33:24 -0800 (PST)
+ AJvYcCXbQpMTiecDzIRch1ygxdxX2shoNKY1JHU5clNGD7sCPl9n20vQ6zAJ1KJMby3BHBHzbRHKoXVooQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyhwylkqUUtVhkQ9fMtFtuiAY1EMzepE7aEOH1qSEhjiOivLetu
+ Bh0tokogBVAnxSyX5bO1lXE7EJ73m5SsDojglltRD5e3/QdkhluwYMzEGFhqku5AnC8=
+X-Gm-Gg: AY/fxX4m6ymGl3oxGvP7ImUJeIDbdYwitvLaxIy7Wpp2G+9l9LjvdQwps1CVxzxgjqr
+ 5hY2dmsq5zkS9VketbsdpAxKSJ0jPTh+QpXkrM7qQmWMDKnc3vgyDKs9lwnMRBWZ2XX8ZMj3NI1
+ F+BQOrlA7mCkxADp9T9LhKvChLaRkec0FJLOZPjC75WqVQLj40DkJk8ojM4c0Lcpo0MXQs3/VCl
+ JiCC2J9TSyG0RxuIDEXXYfEt08q20RFQBj2e4BIBCuHdMhDb3iYrHCzyr9Wgi1y6lP9SMTJO/uJ
+ p0Fn5LfyCXSQxjwJBLq4MfxeWD25RA+tQTvdXTrDbowKI8Svx3txlYzDw23+AftSPO0LpsNvS1T
+ X13DM/9+v4BX+yPO3o5Cc/gE8b0Xy/FkwPAiEVwWOuzToSC4PXL6RR09peCdIOSzEObWY5YuBA1
+ 2cApMazH79C4n8LlJm19acJpBYp5tkKQ==
+X-Google-Smtp-Source: AGHT+IHdqFjaOzlPDrbCcbqaIb2hcqvT1VIzaLvjMCs+EV7x/nXnnQMlvxq26yS4MUgVuLTI6voMqw==
+X-Received: by 2002:a17:903:2f8f:b0:2a1:5f23:7ddf with SMTP id
+ d9443c01a7336-2a3e2c92066mr10946115ad.6.1767652381528; 
+ Mon, 05 Jan 2026 14:33:01 -0800 (PST)
 Received: from [192.168.10.140] ([180.233.125.201])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c4cbf28f6cdsm279764a12.6.2026.01.05.13.33.21
+ d9443c01a7336-2a3e3c48d77sm2380185ad.41.2026.01.05.14.32.58
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Jan 2026 13:33:24 -0800 (PST)
-Message-ID: <fc94c263-81eb-4013-9fa1-5259b37e3d76@linaro.org>
-Date: Tue, 6 Jan 2026 08:33:18 +1100
+ Mon, 05 Jan 2026 14:33:01 -0800 (PST)
+Message-ID: <76dfc640-b8db-4ed5-9232-41ede17da314@linaro.org>
+Date: Tue, 6 Jan 2026 09:32:55 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v3 02/12] target/arm: add TCSO bitmasks to SCTLR
+Subject: Re: [PATCH RFC v3 03/12] target/arm: mte_check unemitted on
+ STORE_ONLY load
 To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
  Laurent Vivier <laurent@vivier.eu>
 References: <20260105-feat-mte4-v3-0-86a0d99ef2e4@gmail.com>
- <20260105-feat-mte4-v3-2-86a0d99ef2e4@gmail.com>
+ <20260105-feat-mte4-v3-3-86a0d99ef2e4@gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260105-feat-mte4-v3-2-86a0d99ef2e4@gmail.com>
+In-Reply-To: <20260105-feat-mte4-v3-3-86a0d99ef2e4@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
@@ -109,67 +110,63 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/6/26 05:14, Gabriel Brookman wrote:
-> These are the bitmasks used to control the FEAT_MTE_STORE_ONLY feature.
-> They are now named and setting these fields of SCTLR is ignored if MTE
-> or MTE4 is disabled, as per convention.
+> This feature disables generation of the mte check helper on loads when
+> STORE_ONLY tag checking mode is enabled.
 > 
 > Signed-off-by: Gabriel Brookman <brookmangabriel@gmail.com>
 > ---
->   target/arm/cpu-features.h |  5 +++++
->   target/arm/cpu.h          |  2 ++
->   target/arm/helper.c       | 11 +++++++++--
->   3 files changed, 16 insertions(+), 2 deletions(-)
+>   target/arm/cpu.h               |  2 ++
+>   target/arm/tcg/hflags.c        | 14 ++++++++++++++
+>   target/arm/tcg/translate-a64.c |  8 ++++++--
+>   target/arm/tcg/translate.h     |  2 ++
+>   4 files changed, 24 insertions(+), 2 deletions(-)
 > 
-> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-> index 48009b5a66..3473787ab8 100644
-> --- a/target/arm/cpu-features.h
-> +++ b/target/arm/cpu-features.h
-> @@ -1144,6 +1144,11 @@ static inline bool isar_feature_aa64_mteperm(const ARMISARegisters *id)
->       return FIELD_EX64_IDREG(id, ID_AA64PFR2, MTEPERM) == 1;
->   }
->   
-> +static inline bool isar_feature_aa64_mte4(const ARMISARegisters *id)
-> +{
-> +    return FIELD_EX64_IDREG(id, ID_AA64PFR2, MTEFAR) == 1;
-> +}
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 393bfc0dc9..4087484faf 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -2496,6 +2496,8 @@ FIELD(TBFLAG_A64, ZT0EXC_EL, 39, 2)
+>   FIELD(TBFLAG_A64, GCS_EN, 41, 1)
+>   FIELD(TBFLAG_A64, GCS_RVCEN, 42, 1)
+>   FIELD(TBFLAG_A64, GCSSTR_EL, 43, 2)
+> +FIELD(TBFLAG_A64, MTE_STORE_ONLY, 45, 1)
+> +FIELD(TBFLAG_A64, MTE0_STORE_ONLY, 46, 1)
 
-There is no ID register field for FEAT_MTE4.
+Skipping bit 44?
 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 263ca29d92..4086423b6f 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -3364,10 +3364,17 @@ static void sctlr_write(CPUARMState *env, const ARMCPRegInfo *ri,
->   
->       if (ri->state == ARM_CP_STATE_AA64 && !cpu_isar_feature(aa64_mte, cpu)) {
->           if (ri->opc1 == 6) { /* SCTLR_EL3 */
-> -            value &= ~(SCTLR_ITFSB | SCTLR_TCF | SCTLR_ATA);
-> +            value &= ~(SCTLR_ITFSB | SCTLR_TCF | SCTLR_ATA | SCTLR_TCSO);
->           } else {
->               value &= ~(SCTLR_ITFSB | SCTLR_TCF0 | SCTLR_TCF |
-> -                       SCTLR_ATA0 | SCTLR_ATA);
-> +                       SCTLR_ATA0 | SCTLR_ATA | SCTLR_TCSO | SCTLR_TCSO0);
-> +        }
-> +    } else if (ri->state == ARM_CP_STATE_AA64
-> +            && !cpu_isar_feature(aa64_mte4, cpu)) { /* mte but not mte4 */
-> +        if (ri->opc1 == 6) { /* SCTLR_EL3 */
-> +            value &= ~SCTLR_TCSO;
-> +        } else {
-> +            value &= ~(SCTLR_TCSO | SCTLR_TCSO0);
+> diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+> index 5c9b9bec3b..c4696af5d8 100644
+> --- a/target/arm/tcg/hflags.c
+> +++ b/target/arm/tcg/hflags.c
+> @@ -425,6 +425,16 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+>                        */
+>                       DP_TBFLAG_A64(flags, MTE0_ACTIVE, 1);
+>                   }
+> +                /*
+> +                 * Repeat for MTE_STORE_ONLY
+> +                 */
+> +                if (cpu_isar_feature(aa64_mte4, env_archcpu(env)) &&
+> +                    ((el == 0 ? SCTLR_TCSO0 : SCTLR_TCSO) & sctlr)) {
+> +                    DP_TBFLAG_A64(flags, MTE_STORE_ONLY, 1);
+> +                    if (!EX_TBFLAG_A64(flags, UNPRIV)) {
+> +                        DP_TBFLAG_A64(flags, MTE0_STORE_ONLY, 1);
+> +                    }
+> +                }
+>               }
+>           }
+>           /* And again for unprivileged accesses, if required.  */
+> @@ -434,6 +444,10 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+>               && (sctlr & SCTLR_TCF0)
+>               && allocation_tag_access_enabled(env, 0, sctlr)) {
+>               DP_TBFLAG_A64(flags, MTE0_ACTIVE, 1);
+> +            if (cpu_isar_feature(aa64_mte4, env_archcpu(env)) &&
+> +                (SCTLR_TCSO0 & sctlr)) {
+> +                DP_TBFLAG_A64(flags, MTE0_STORE_ONLY, 1);
+> +            }
 >           }
 
-(1) Better to refactor to eliminate duplicate checks.
-(2) These bits are explicitly vs FEAT_MTE_STORE_ONLY not FEAT_MTE4.
-
-Thus
-
-     if (ri->state == ARM_CP_STATE_AA64) {
-         if (!cpu_isar_feature(aa64_mte, cpu)) {
-             ...
-         } else if (!cpu_isar_feature(aa64_mte_store_only, cpu)) {
-             ...
-         }
-     }
+These two hunks don't need to check cpu_isar_feature, because we already did that when 
+filtering the valid SCTLR bits.
 
 
 r~

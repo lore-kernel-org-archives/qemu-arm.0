@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91FA4C2A072
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 06:26:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 254FAC2A072
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 06:33:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vce2R-0002ik-IA; Mon, 05 Jan 2026 01:25:59 -0500
+	id 1vce9r-0004Sc-Cu; Mon, 05 Jan 2026 01:33:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vce2M-0002i7-OJ
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 01:25:56 -0500
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+ id 1vce9S-0004PQ-7O
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 01:33:20 -0500
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vce2G-000707-Nh
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 01:25:52 -0500
-Received: by mail-pj1-x102e.google.com with SMTP id
- 98e67ed59e1d1-34c213f7690so10838800a91.2
- for <qemu-arm@nongnu.org>; Sun, 04 Jan 2026 22:25:47 -0800 (PST)
+ id 1vce9Q-0007R9-Ms
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 01:33:13 -0500
+Received: by mail-pl1-x642.google.com with SMTP id
+ d9443c01a7336-2a0d6f647e2so223219555ad.1
+ for <qemu-arm@nongnu.org>; Sun, 04 Jan 2026 22:33:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767594347; x=1768199147; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767594791; x=1768199591; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:to:subject:user-agent:mime-version:date:message-id:from
  :to:cc:subject:date:message-id:reply-to;
- bh=+jbDHBAgGymjbmjV0kCzVLxXci80MxgTcwZZUJVNz5Q=;
- b=KYNswlklKYqIrC25yDUEjqu+pV9klOt0E4TGRj+0M4sT9IzlbWDhatUdyM+MUbJa+/
- GgFg0nktIWQN59sYNets+lzo6be1yRYygSannbtN9FlOfIYin9vO76m6kvE/HpNS5wS6
- eHSaIpYj/BIDbt48rFhH3yIswreD8PZM5SsRujsXjU5aW7Mk1A+do4EnkGboXqViKMJ1
- GJhMoz58zGKvWc8irQDpYd4h8w+6JuuMdtaqowhJ7rIWyyln4brMT4gzomEB57d9MBVi
- f5ncavdjvnht5Qr9rl3qybX1wE1/bxz0wdKZEfRPLUh8xJmRvxEule6SFPDFpfsqR6L2
- oJ3g==
+ bh=g3SyVIRDBAVhHVfXY1CWSQMOPPeGcE2SDiBiidPF/Dk=;
+ b=WknNn3q35xdQSxoJMDyPbYeeqBMU0QN/PuLegZkWwKOWRxiKnQtnZmUvDUMPia/6Xl
+ e2JadIBmoQPDQhiTgvTcWWY47AJ+CJ+NZ+G3Tby02s4o/NABMJapFd7ROuV0hR2huBv9
+ tgE4xgdk/hWtGcZfl1wb7jBm/KhSjCb4h79wgvGJ+WlCVexStpn2ehwl4bF6lzs0E7wm
+ 6Rh8WCpZN8kfBoTKzvxFkKXdJOIZG7OgJCO4PdIaB3Tpii5FNifRyZhQXp/vS18pYkfr
+ Lsur2ylt6M6673wJTd+VYg3ZbvWBHx1A4aexsb82suk1XL8+wZUIrLopNf2bR5OZXs84
+ 18Vw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767594347; x=1768199147;
+ d=1e100.net; s=20230601; t=1767594791; x=1768199591;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=+jbDHBAgGymjbmjV0kCzVLxXci80MxgTcwZZUJVNz5Q=;
- b=O8ysaO+BI7Gd0BDyPklTAk44ct74B9pMUcemNwK6eutTxQd6yyqUEyj6wStznWK9Mw
- zxs76aUNLQu2YDHKCsyV8llUp6C8sgqBqI/9CPCwl8QQGUhP7108YlmDVk2tl5HR7aRj
- giMjxufZOygjls1gwy45gaTmkWiR1bu3/uA/kxisFvx0kqDFDpH1eizf0TU3M+Qj4ad6
- IfPVoaakuej6S3eQvuN3pBnznhPuv0SbkpFhjtdIr/DeBZgb1lqRhRf3PfpvzUHjFZYq
- 8gukfsJc3myLOTepipYgO2LH07IiW7a/xBx7Fyqj+9YwOcNu7qY6OEA5/hgnNAAsID1h
- a1Lg==
+ bh=g3SyVIRDBAVhHVfXY1CWSQMOPPeGcE2SDiBiidPF/Dk=;
+ b=L9ty/IloLPJktqVnnZxVH1BAgCrEAgfBGUJ5Sl1tHzcFQ4xDutXF8gsRN3vg+/OG4s
+ BmdXvGfo0O4FFMeht9oz75RajMjCPTO5Ges9hCsFKZix1osP/7pTSGMzuTV3rrdKZ18X
+ 0IB/qVzbErNR04zQVsX/Lhn4af7xJgljnt/lF18MXTFB5ilughcRo2K427VAl9FXk81e
+ gmUDgUC581C3iDewVACzdNZi+jrL2HZuu99Amq+KjoH+e8cfZkzNSvBpw3P8MOfOOVQG
+ KXpNldhywdYh/2kEsUCCO2Czk8Y+vH+Chvn69t4K23XY6gSjdeF1AB1mDxDCWUl+78Z6
+ y11w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVyx5HT/OZPEw9txTxI4ItZM2UlYYlZPPx+Lj8lB5TO6HkfbDyyn1kCAH0y/qq0AG+Cg4tnFFi7QQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy6jPr6azjoVqUxKQc8WiiSAmMpk3asfyOu0U8Vp++Ad60PANRz
- 2XzSkWFaiZI2Bi+UZlP2KG/LJX+kxh5oG7EF7MAIPdA6TNfALT/2YO7VxuptOYBcdqHk++SS+Uw
- J9zGjxMo=
-X-Gm-Gg: AY/fxX5PMOkOJSht+H5kFW2i52GXPlr0NzOyr1ZaNdh5nxHDWNjkkTxP5YJmtzPPyAD
- +svYeJzUVO0k0EPOvpLYg1AbTNoqZs6fb5BczRIjCc9h05nmZhcWDyDAaOYA6iMdfYz20+yz/Se
- B3zMUez1K4B6fPUeOgD+ZLux/PDhLgRUk7Qvpq/vXyR9a1oq6y/g0xdCdldW8Z+Nz/RBTc5TvOC
- 6s83o8M0VmrArtXWbtzMgOZ/5E1g2RnXswJrqw67Lp3WHDLDDlitRZw85oH7adoeqW5o4gXPzrm
- sHD0EYSz9MxtQ6OkXnNGdagogx2jCnm/i8r1akaTP9USLRegyHDutKDdALhnVmBGH4M+47TxtQl
- KNtv7JRYZsoKIwXu45bNGFgepWLwMAut0oTp9/Wz/UX9eckaa0H0bSkC4JFaaHc2T4zcEhXHsrV
- sY7MoDo30Df2Duw73cT2WXni4sJMHOzg==
-X-Google-Smtp-Source: AGHT+IEwplOoD7lxh4cD1vSn4qsUjOo5mOvJWnu1g/PIfZT1R81WFjoo8lq09ZsSjLz5/Y9baV+jEg==
-X-Received: by 2002:a17:90b:2e0c:b0:343:edb0:1012 with SMTP id
- 98e67ed59e1d1-34e921ac620mr37361230a91.21.1767594346649; 
- Sun, 04 Jan 2026 22:25:46 -0800 (PST)
+ AJvYcCXQkxPmFlTGgk+lw/C7qlzxqeL1dc2wSfltu2d//fz/HMksQDSFHeJfKsb6yvswBVI/mq+YSezXWw==@nongnu.org
+X-Gm-Message-State: AOJu0YzD0PQYVb8bgBW8AemVS9OSpNmPRepQ7zr/i6fI67IPfUnfQ7A1
+ 8nkPtnYAafdyJ8MkVL3kVjYo2HTsAabh02DnHcXkfGH23TLQR4kTfLSUj5kDGxpPHX8=
+X-Gm-Gg: AY/fxX5Emq2fhxqrnnJJJz2bRkHKY9LZt8iexaTPP8tEtvAAIdEXo+Cy7zWibq6ltQS
+ YKTD/sEQUqWGzT257XXk+fe+jcEymWCYyPEpSKx98QhGreok1YbS6d7d1jKQQ6ETUxMeGp4WlBO
+ KQEJdDSoET4SzZ7sLzXhqIXOonyQUGWO1yaTliMFbtFmFUKtciVSVUXZMq/TgxP9JiaUwW7OaHd
+ TpRMbjqPi2IkzdfTaPHslIlHBxRb3MOPHkZ0axPexxGoMjIrj2IJhBMuObNsCFB8S9fN8Rm8yKB
+ RTz49KAUIyQiJn7GqQUqviWU2eJE4q0B0sTGzQMPtAZrc1w0G/tjjUObGMiqTY9tHXxrUJOgPwV
+ O4ihMC1ItNrlalUbsmnpPey8v86GeBVUYCXQvnQ7Lk4bgVoobhlpaGE0DRAE46Y6wKDIQNCzrSv
+ vTWuJI0DwyyAxw9B3lMcXLDnKVkyc0Ig==
+X-Google-Smtp-Source: AGHT+IERjwodSAwbAbtrrr2nw9dfv+MLZe/M94DXeMbLrLvgEO1fgXnnQo0iWfyzinLs+BGxD8zqcw==
+X-Received: by 2002:a17:902:f54b:b0:2a1:3cd9:a737 with SMTP id
+ d9443c01a7336-2a2f2738124mr475377445ad.36.1767594790613; 
+ Sun, 04 Jan 2026 22:33:10 -0800 (PST)
 Received: from [192.168.10.140] ([180.233.125.201])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-34f45cad3c0sm2948353a91.3.2026.01.04.22.25.43
+ d9443c01a7336-2a2f3c66bd3sm436364955ad.1.2026.01.04.22.33.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 04 Jan 2026 22:25:46 -0800 (PST)
-Message-ID: <d5ec2589-a831-4f4b-86e5-a4ca1ce443dc@linaro.org>
-Date: Mon, 5 Jan 2026 17:25:39 +1100
+ Sun, 04 Jan 2026 22:33:10 -0800 (PST)
+Message-ID: <c0623237-626d-4580-9795-293f22d3000f@linaro.org>
+Date: Mon, 5 Jan 2026 17:33:04 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/4] target/i386: Add a _MAX sentinel to X86ASIdx enum
+Subject: Re: [PATCH v3 4/4] cpus: Define total number of address spaces in
+ CPUClass
 To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, alex.bennee@linaro.org, philmd@linaro.org,
  peter.maydell@linaro.org
 References: <20251223222649.187935-1-gustavo.romero@linaro.org>
- <20251223222649.187935-3-gustavo.romero@linaro.org>
+ <20251223222649.187935-5-gustavo.romero@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20251223222649.187935-3-gustavo.romero@linaro.org>
+In-Reply-To: <20251223222649.187935-5-gustavo.romero@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,30 +109,26 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 12/24/25 09:26, Gustavo Romero wrote:
-> Add a sentinel to the X86ASIdx enum so it can be used when the total
-> number of address spaces is required.
-> 
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> ---
->   target/i386/cpu.h | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-> index cee1f692a1..ba0c4fa548 100644
-> --- a/target/i386/cpu.h
-> +++ b/target/i386/cpu.h
-> @@ -2600,6 +2600,8 @@ void cpu_sync_avx_hflag(CPUX86State *env);
->   typedef enum X86ASIdx {
->       X86ASIdx_MEM = 0,
->       X86ASIdx_SMM = 1,
-> +    X86ASIdx_MAX = X86ASIdx_SMM
-> +#define X86ASIdx_COUNT (X86ASIdx_MAX + 1)
->   } X86ASIdx;
->   
->   #ifndef CONFIG_USER_ONLY
+> +void cpu_exec_initfn(CPUState *cpu)
+> +{
+> +
+> +    /*
+> +     * If the total number of address spaces for CPUs is not defined explicitly
+> +     * by the arch the default is 1 address space.
+> +     */
+> +    unsigned num_ases = cpu->cc->num_ases ? cpu->cc->num_ases : 1;
+> +
+> +    cpu->cpu_ases = g_new0(CPUAddressSpace, num_ases);
+> +    cpu->num_ases = num_ases;
+> +
+> +    cpu->memory = get_system_memory();
+> +    object_ref(OBJECT(cpu->memory));
+> +}
 
-But... it's _COUNT that matters, and that doesn't seem to get a mention.
-I don't see the point in adding _MAX.
+Why do we need cpu->num_ases?
+
+We could have cpu->cc->max_as, left as 0 by default, and remove the CPUState field.  Then 
+we *do* want your _MAX definitions per the previous patches and not the _COUNT define.
 
 
 r~

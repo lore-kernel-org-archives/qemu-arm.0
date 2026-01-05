@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECEEEC79F8B
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 13:08:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D547CC79F8B
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 13:08:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vckAH-0005Ej-OC; Mon, 05 Jan 2026 07:58:30 -0500
+	id 1vckB3-0006aO-Md; Mon, 05 Jan 2026 07:59:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck9P-0004e2-S1
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:45 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck99-0004Kf-73
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:19 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck9J-00087g-IE
- for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:32 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vck97-00085U-Kb
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 07:57:18 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767617845;
+ s=mimecast20190719; t=1767617837;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=9nyCI6Sy88qGcEs2t2mZ8Esp7vOW+H+nEdg2NcqpXI4=;
- b=XYAuGFQ0BQ0/Z+O7q1/bVWdIRXY5rbP+Sfu+WywjGUPEwV8oqvhAGht2k0rhRJyt+G6A7b
- R2yFumTVv12o/0y8B9ODkSi5f2W+ep7CtFqcwUPgOTz2O/Y2n+IOTQ7H4EtSX+VC4ajCDA
- 7KtCeWpUk3KHIsw4AcY4M+48fSmpmF4=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=qJiqQOiiuVQUHxcT633H/HXmNFo7n9Ya1EAjY7hqJhg=;
+ b=FSZiNM6OqQhr/RPtZzQcZg9icEqC7ieOM+d0zAhyF9zmYW4qTmF2cV/b7FeDjtdrclLeQN
+ OoZuJMEE+l6x9g5SqnDMqhDrFBucsr3cfTjY4EGqDFzVEB4pR0oR4fE7zZzUHNQOgXe3My
+ D6vhrvSwHo5sBi5D+92b+n6cisR4uvE=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-194-NhSc7oMpMCuU-THUww-wgw-1; Mon,
- 05 Jan 2026 07:57:22 -0500
-X-MC-Unique: NhSc7oMpMCuU-THUww-wgw-1
-X-Mimecast-MFC-AGG-ID: NhSc7oMpMCuU-THUww-wgw_1767617841
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-502-vYyNX9iJMxWD8tEbwrIRRw-1; Mon,
+ 05 Jan 2026 07:57:14 -0500
+X-MC-Unique: vYyNX9iJMxWD8tEbwrIRRw-1
+X-Mimecast-MFC-AGG-ID: vYyNX9iJMxWD8tEbwrIRRw_1767617833
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id AC21C1800654; Mon,  5 Jan 2026 12:57:21 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 23F0118002DE; Mon,  5 Jan 2026 12:57:13 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.53])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 39F3819560A7; Mon,  5 Jan 2026 12:57:19 +0000 (UTC)
+ id A55B91953984; Mon,  5 Jan 2026 12:57:11 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Yubin Zou <yubinz@google.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 31/36] hw/arm/aspeed_ast27x0: Remove ast2700-a0 SOC
-Date: Mon,  5 Jan 2026 13:56:08 +0100
-Message-ID: <20260105125613.622667-32-clg@redhat.com>
+Subject: [PULL 27/36] hw/arm/aspeed_ast27x0: Wire SGPIO controller to AST2700
+ SoC
+Date: Mon,  5 Jan 2026 13:56:04 +0100
+Message-ID: <20260105125613.622667-28-clg@redhat.com>
 In-Reply-To: <20260105125613.622667-1-clg@redhat.com>
 References: <20260105125613.622667-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -84,130 +85,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Yubin Zou <yubinz@google.com>
 
-The ast2700-a1 SOC represented the first revision of the AST2700 and
-was intended as an early engineering sample rather than a production
-platform. A newer revision, A1, is now supported, and the ast2700-a1
-SOC should replace the older A0 version.
+This commit integrates the Aspeed SGPIO controller into the AST2700
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Signed-off-by: Yubin Zou <yubinz@google.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250901040808.1454742-3-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20251219-aspeed-sgpio-v5-5-fd5593178144@google.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast27x0.c | 84 -----------------------------------------
- 1 file changed, 84 deletions(-)
+ hw/arm/aspeed_ast27x0.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
 diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 70be3871bb12..6d6ffe31272c 100644
+index 9f471c399491..70be3871bb12 100644
 --- a/hw/arm/aspeed_ast27x0.c
 +++ b/hw/arm/aspeed_ast27x0.c
-@@ -100,56 +100,6 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
- #define AST2700_MAX_IRQ 256
+@@ -519,6 +519,11 @@ static void aspeed_soc_ast2700_init(Object *obj)
+     snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
+     object_initialize_child(obj, "gpio", &s->gpio, typename);
  
- /* Shared Peripheral Interrupt values below are offset by -32 from datasheet */
--static const int aspeed_soc_ast2700a0_irqmap[] = {
--    [ASPEED_DEV_SDMC]      = 0,
--    [ASPEED_DEV_HACE]      = 4,
--    [ASPEED_DEV_XDMA]      = 5,
--    [ASPEED_DEV_UART4]     = 8,
--    [ASPEED_DEV_SCU]       = 12,
--    [ASPEED_DEV_RTC]       = 13,
--    [ASPEED_DEV_EMMC]      = 15,
--    [ASPEED_DEV_TIMER1]    = 16,
--    [ASPEED_DEV_TIMER2]    = 17,
--    [ASPEED_DEV_TIMER3]    = 18,
--    [ASPEED_DEV_TIMER4]    = 19,
--    [ASPEED_DEV_TIMER5]    = 20,
--    [ASPEED_DEV_TIMER6]    = 21,
--    [ASPEED_DEV_TIMER7]    = 22,
--    [ASPEED_DEV_TIMER8]    = 23,
--    [ASPEED_DEV_DP]        = 28,
--    [ASPEED_DEV_EHCI1]     = 33,
--    [ASPEED_DEV_EHCI2]     = 37,
--    [ASPEED_DEV_LPC]       = 128,
--    [ASPEED_DEV_IBT]       = 128,
--    [ASPEED_DEV_KCS]       = 128,
--    [ASPEED_DEV_ADC]       = 130,
--    [ASPEED_DEV_GPIO]      = 130,
--    [ASPEED_DEV_SGPIOM0]   = 130,
--    [ASPEED_DEV_SGPIOM1]   = 130,
--    [ASPEED_DEV_I2C]       = 130,
--    [ASPEED_DEV_FMC]       = 131,
--    [ASPEED_DEV_WDT]       = 131,
--    [ASPEED_DEV_PWM]       = 131,
--    [ASPEED_DEV_I3C]       = 131,
--    [ASPEED_DEV_UART0]     = 132,
--    [ASPEED_DEV_UART1]     = 132,
--    [ASPEED_DEV_UART2]     = 132,
--    [ASPEED_DEV_UART3]     = 132,
--    [ASPEED_DEV_UART5]     = 132,
--    [ASPEED_DEV_UART6]     = 132,
--    [ASPEED_DEV_UART7]     = 132,
--    [ASPEED_DEV_UART8]     = 132,
--    [ASPEED_DEV_UART9]     = 132,
--    [ASPEED_DEV_UART10]    = 132,
--    [ASPEED_DEV_UART11]    = 132,
--    [ASPEED_DEV_UART12]    = 132,
--    [ASPEED_DEV_ETH1]      = 132,
--    [ASPEED_DEV_ETH2]      = 132,
--    [ASPEED_DEV_ETH3]      = 132,
--    [ASPEED_DEV_PECI]      = 133,
--    [ASPEED_DEV_SDHCI]     = 133,
--};
--
- static const int aspeed_soc_ast2700a1_irqmap[] = {
-     [ASPEED_DEV_SDMC]      = 0,
-     [ASPEED_DEV_HACE]      = 4,
-@@ -1069,35 +1019,6 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-                                   AST2700_SOC_IOMEM_SIZE);
- }
++    snprintf(typename, sizeof(typename), "aspeed.sgpio-%s", socname);
++    for (i = 0; i < sc->sgpio_num; i++) {
++        object_initialize_child(obj, "sgpio[*]", &s->sgpiom[i], typename);
++    }
++
+     object_initialize_child(obj, "rtc", &s->rtc, TYPE_ASPEED_RTC);
  
--static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, const void *data)
--{
--    static const char * const valid_cpu_types[] = {
--        ARM_CPU_TYPE_NAME("cortex-a35"),
--        NULL
--    };
--    DeviceClass *dc = DEVICE_CLASS(oc);
--    AspeedSoCClass *sc = ASPEED_SOC_CLASS(oc);
--
--    /* Reason: The Aspeed SoC can only be instantiated from a board */
--    dc->user_creatable = false;
--    dc->realize      = aspeed_soc_ast2700_realize;
--
--    sc->valid_cpu_types = valid_cpu_types;
--    sc->silicon_rev  = AST2700_A0_SILICON_REV;
--    sc->sram_size    = 0x20000;
--    sc->pcie_num     = 0;
--    sc->spis_num     = 3;
--    sc->sgpio_num    = 2;
--    sc->ehcis_num    = 2;
--    sc->wdts_num     = 8;
--    sc->macs_num     = 1;
--    sc->uarts_num    = 13;
--    sc->num_cpus     = 4;
--    sc->uarts_base   = ASPEED_DEV_UART0;
--    sc->irqmap       = aspeed_soc_ast2700a0_irqmap;
--    sc->memmap       = aspeed_soc_ast2700_memmap;
--}
--
- static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, const void *data)
- {
-     static const char * const valid_cpu_types[] = {
-@@ -1133,11 +1054,6 @@ static const TypeInfo aspeed_soc_ast27x0_types[] = {
-         .parent         = TYPE_ASPEED_SOC,
-         .instance_size  = sizeof(Aspeed27x0SoCState),
-         .abstract       = true,
--    }, {
--        .name           = "ast2700-a0",
--        .parent         = TYPE_ASPEED27X0_SOC,
--        .instance_init  = aspeed_soc_ast2700_init,
--        .class_init     = aspeed_soc_ast2700a0_class_init,
-     },
-     {
-         .name           = "ast2700-a1",
+     snprintf(typename, sizeof(typename), "aspeed.sdhci-%s", socname);
+@@ -975,6 +980,17 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
+                        aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_GPIO));
+ 
++    /* SGPIO */
++    for (i = 0; i < sc->sgpio_num; i++) {
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->sgpiom[i]), errp)) {
++            return;
++        }
++        aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->sgpiom[i]), 0,
++                        sc->memmap[ASPEED_DEV_SGPIOM0 + i]);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->sgpiom[i]), 0,
++                        aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_SGPIOM0 + i));
++    }
++
+     /* RTC */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->rtc), errp)) {
+         return;
 -- 
 2.52.0
 

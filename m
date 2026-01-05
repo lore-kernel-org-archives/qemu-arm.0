@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7412BC2A062
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 04:30:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0295C2A062
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Jan 2026 05:40:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vccEO-0000UZ-KF; Sun, 04 Jan 2026 23:30:12 -0500
+	id 1vcdKW-000793-EW; Mon, 05 Jan 2026 00:40:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vccEN-0000Sa-Jj
- for qemu-arm@nongnu.org; Sun, 04 Jan 2026 23:30:11 -0500
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ id 1vcdKV-00078Q-4C
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 00:40:35 -0500
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vccEL-0006xD-BK
- for qemu-arm@nongnu.org; Sun, 04 Jan 2026 23:30:11 -0500
-Received: by mail-pl1-x631.google.com with SMTP id
- d9443c01a7336-2a110548cdeso183008685ad.0
- for <qemu-arm@nongnu.org>; Sun, 04 Jan 2026 20:30:08 -0800 (PST)
+ id 1vcdKS-0000yO-R1
+ for qemu-arm@nongnu.org; Mon, 05 Jan 2026 00:40:34 -0500
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-7f89d0b37f0so506168b3a.0
+ for <qemu-arm@nongnu.org>; Sun, 04 Jan 2026 21:40:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767587408; x=1768192208; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767591630; x=1768196430; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=cmURYcj4Z0IPJrFeY/4ayi0qRX2k8lhAtEZ0Ob8xht0=;
- b=YDxhvFAfG/IaC1wJISEORVACyQo0rQ/JOt9Ol0JTvdBBxzMFHmyV/NnhDnRH0Pz9am
- v6QSxK3Z5jmJ/GmVapxd2EOMwuTSxVJr6EQ9HIvKK5Y8KbcPHe8d/9rFbsQyA7BhVlpS
- uBUMaUBNlfw3BNLeb6wrPYaBJXs1nuo8ZAduCqrIAPS+/T6Q3ndd0AT7MShfIpVm5m54
- fr0xoIwC9t3T/XDGBP+ziPGYikuPQ0qMusR+Txr/sxGr2mDsMhc4cEqeOpGktGkHSA8u
- R4tOSgawSUIdtJRasWFTt2OHd8f8vUGZr0l1KK93MuBjhAUKxQQkWaUT7UsrFNcrwS1F
- 7mww==
+ bh=L+5BH4fcZ3Ixv3MmLyderUKyxA2MN7ARdKHKTrsFSsM=;
+ b=g0Ni/BpfdC0nuvRZozknO1tGXhmXxZ8FLvJtOLX2to/uZ6qvbXICo8TGIc0CfpXj+t
+ wWDV2/2wbv+cx6nepmOOjqpUXCXVlVKmzo/a7rTvRGBMvSl9X2T90mmYcbdZ1RUd64VQ
+ uW7hA/AY6rIKxIlzuHSZSkTsK/3P3jvd7whW+Sji/0pRATwb6z4p+o6zvnsvF1E6DBMY
+ jXV/DjF4IN9eFbdGdQGI6J0HN2bEwMnShAH8f0LBAIeg7svZ8qG4QxTYvlU5I4GWuLOA
+ 0BbW7TcRNDf3+Xo9cMZUyawSKnLKhmRyh6Irp2ginZNufIQ1GeFzfT/noyJ3B5BK7oHN
+ fAZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767587408; x=1768192208;
+ d=1e100.net; s=20230601; t=1767591630; x=1768196430;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=cmURYcj4Z0IPJrFeY/4ayi0qRX2k8lhAtEZ0Ob8xht0=;
- b=K4Z0MjO6hXGou5eoQdLUPR2AaZZWzmNAm+T9PRg96vMopBilBvFuLFz4wHz1kmrxLK
- 5gokYgT9tpNE6FbVEa09w0FpLe54SXb2wqOLivzb6Y4fJXbgELqKhEdhv5dYPyEZmLxS
- Jm40nADXSG3s1dEO5DLvM5iR0aUymWqoimXdofPUGuuWtCgjE7m+FEHYEVq7Sz8h2PR6
- nrzzVOIuQYf5mnTr+yUMM/llGZ9ByxrGwlfSOmsdVuJlR/A6JR9IEpBGkiinPTKft/q+
- 3BR4s+9288IwDQz4/TYmXKdRRBxDTS0oZmIWt+CSfTp0Uy7FczO45lqYlt5Pf+gbEuFf
- rRSQ==
+ bh=L+5BH4fcZ3Ixv3MmLyderUKyxA2MN7ARdKHKTrsFSsM=;
+ b=deNEw/E97v7sN3T7uNX9XNNXmPzOsFAOt1bNVn77dIKc8fA5AXsnWrG9fUoGfHUW/Z
+ hi5nAURis6VDeXNPwUMRrsh/BCzdaCXrbyh3bPO+q2kf4ufaTZ862IrvabLenKUPavnn
+ hJs2os9LlnJn8dP5jMGPyzomrfhPiQxzC3jMpZCURf57RCt9Wcy9tjEXy2zT+KNM45HK
+ zCFoc/oa2SZmt4OkJ2m/YYwswCTPERwbEcr6xo/MzsjHdDPJwpuz1o43I4YBu4fKP4g/
+ rU6sS8Hl2L5IBvo27YMUxWEFCT3GXraOmh25UIv6LNh3hmv5xAczGteeSh3t5SXqjpdP
+ N3WA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUjAwkB2YY9YJ50HG0osvjmgVh2t/C07aq+vTlnLvzJn/G8bCpbVlnFzbtSQRo6N28xWkNz7v1zEw==@nongnu.org
-X-Gm-Message-State: AOJu0YyaZNpkZPM1yzQTjn/yFCsmopWR5zaPn76iStZZPX1ApFS5D7d4
- 2ofrEPUhjQGo8QYHSTW0jgEozlZ9HJ4yuxqd6ynojWmc4AHtFlPXtGFBipLNlkw2qtysGI+dTxV
- vzLwHJNc=
-X-Gm-Gg: AY/fxX4jtVNQiHOr1rw8WrqMLxEk8BO7c/a2xHDRH8sq1mcrfPmK8wzQc7quYKwd7C9
- GLxifbAF2E0zJ7JzZh/x2OqQvUj4Wc4MxETze3jfUfYeiB3zUuQmo95F01F18uoDl3s5P875wBy
- up0QQCnpv7Jyq9WHeBb69y1e66Kxp8heWQdA5XCd/FkXjSrPK2pA4/1Sqcwm0qqf7hlki6FLrkB
- tVwta1YV9ldcgKZL8yq5m3/IGNwCePmmHaIbzI/vg6T487TI6RAvgIvS9ZtZEuw0MPFOMIXDOYb
- nSHU6cfMfjr43L+vXPjZgdO8SHqbq9+PalJMCiRX8rsnlXsbXzoBKGB9xdLdDoiJ10bD2DEr5x0
- /fzGTImKBCL1PyqPBgiq4+lj8IitmA7gx2CVrHTwmeL43+WG3veBrM4yPISar/qM9hA4KIshXLj
- rh+0a8I5GEzzBFgLCfrwasQ6ETz56YfQ==
-X-Google-Smtp-Source: AGHT+IGBZlCzrkzOqmgxn14gfXh1iamwkAQbc+lvHXagI6UcvqxZB4vgn8lFI40J1oEnlA8OOqzWlg==
-X-Received: by 2002:a17:903:245:b0:2a0:bb0a:a5dd with SMTP id
- d9443c01a7336-2a2f2a4af0amr491313975ad.57.1767587407680; 
- Sun, 04 Jan 2026 20:30:07 -0800 (PST)
+ AJvYcCU7gRkb8gzfDp6tnRe5f3yna6ZTMM/B+EikXmWQgcyyFNMIprnJDjhZOYj86sfCTHuqsAMQ9f65/A==@nongnu.org
+X-Gm-Message-State: AOJu0YxIac5xMIgKHN721rKnSqG8G0y+Kv9HkaSd4EIC8IBXCki7hFdA
+ JFBy1hPjlHgOF5QSMvS3bCOT4kdo9h9jjCEAUHDnEkZ33g3jKnNaHfB/9e5+NS9vKKsLkUKutzI
+ UAyqdC6M=
+X-Gm-Gg: AY/fxX53Cs5jw5zhqChnBTKwOcaUq19B7TrrMnwR7R/l1MBZufKJU8+X9vjhDKt0RRt
+ bUX0MXF8vGrM1ZMhzDkvS+QoEObl/HyAsPqyn5hcT4Nd8PG9FuMtJ94eNjDmM/FBXIg/xnpFwzi
+ O27kE61ewCJogjqhX2jVibZhHWsqCIVnVeJJ7ahSeLIEf+tO+17tsIhzzYz1Xb9OQpjpzohBMrs
+ JdWl+k4PxyBi67WQxJsaNfvviuhTtjX4574pGNoiICQGqDaGz1ErNtW6hyhVIv0EzKV7wiP+k+z
+ cYWVDb3IqnXaGFkk/gx/CRmlTY5HTrMfNJmLHOvOBQ+YFxVQ/HX/2xZaf0zRMcQKfGlkbDyqqnN
+ NcMYqgpPPnUrqZ+99DG+Eu44QTFuOJjuHf4Srb/hYUndw1nZhadUKi6HroOwoCS4xd2VQNw0UOD
+ cDRLCV6chZEGEbf166fbhOA5kYgxYg5i7LvsGe/A1F
+X-Google-Smtp-Source: AGHT+IFzqoyQKmSF9/P6104vvTmAaCjd5K+Flt8sM8BWqlSZaAXIA1GEwvPzAVMzTuhJioDHTb4Vhg==
+X-Received: by 2002:aa7:8c05:0:b0:77d:98ee:e1c5 with SMTP id
+ d2e1a72fcca58-8148a846e53mr3407056b3a.15.1767591630202; 
+ Sun, 04 Jan 2026 21:40:30 -0800 (PST)
 Received: from [192.168.10.140] ([180.233.125.201])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a2f3c66465sm442745295ad.15.2026.01.04.20.30.05
+ d2e1a72fcca58-7ff7e8947a1sm46361077b3a.67.2026.01.04.21.40.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 04 Jan 2026 20:30:07 -0800 (PST)
-Message-ID: <d864eaf2-4a48-4c0b-9396-740c8ee70556@linaro.org>
-Date: Mon, 5 Jan 2026 15:30:02 +1100
+ Sun, 04 Jan 2026 21:40:29 -0800 (PST)
+Message-ID: <40954ada-f7b5-4709-b5ac-a6711d503015@linaro.org>
+Date: Mon, 5 Jan 2026 16:40:24 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] target/arm: Rename access_aa64_tid5() to access_tid5()
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+Subject: Re: [PATCH for-11.0 v2] arm: add DCZID_EL0 to idregs array
+To: Cornelia Huck <cohuck@redhat.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org
-References: <20251231170858.254594-1-peter.maydell@linaro.org>
- <20251231170858.254594-5-peter.maydell@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eric Auger <eric.auger@redhat.com>
+References: <20251127170657.3335112-1-cohuck@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20251231170858.254594-5-peter.maydell@linaro.org>
+In-Reply-To: <20251127170657.3335112-1-cohuck@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,17 +108,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/1/26 04:08, Peter Maydell wrote:
-> There is no equivalent access_aa32_tid5() (HCR_EL2.TID5 only exists
-> starting from v8); rename access_aa64_tid5() to access_tid5() to line
-> up with the naming we now have for the TID1 and TID3 check functions.
+On 11/28/25 04:06, Cornelia Huck wrote:
+> This requires a bit of care, since we still have to handle the EL
+> specific part (DCZID_EL0.DZP). Callers can set/access dcz_blocksize
+> via a wrapper working on DCZID_EL.BS.
 > 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> KVM currently does not support DCZID_EL0 via ONE_REG, assert that
+> we're not trying to do anything with it until it does.
+> 
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 > ---
->   target/arm/helper.c | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
+> Changes v1 -> v2:
+> - use extract64/deposit64, tweak helper names
+> - assert that we're not using the reg while running under kvm, instead
+>    of providing an incorrect dummy value
+> ---
+>   target/arm/cpu-sysregs.h.inc   |  1 +
+>   target/arm/cpu.c               |  2 +-
+>   target/arm/cpu.h               | 14 ++++++++++++--
+>   target/arm/cpu64.c             |  4 ++--
+>   target/arm/helper.c            |  5 ++++-
+>   target/arm/tcg/cpu64.c         | 22 +++++++++++-----------
+>   target/arm/tcg/helper-a64.c    |  2 +-
+>   target/arm/tcg/mte_helper.c    |  4 ++--
+>   target/arm/tcg/translate-a64.c |  2 +-
+>   target/arm/tcg/translate.h     |  2 +-
+>   10 files changed, 36 insertions(+), 22 deletions(-)
+> 
+> diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
+> index 2bb2861c6234..7f3aa8b991aa 100644
+> --- a/target/arm/cpu-sysregs.h.inc
+> +++ b/target/arm/cpu-sysregs.h.inc
+> @@ -39,3 +39,4 @@ DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
+>   DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
+>   DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
+>   DEF(CTR_EL0, 3, 3, 0, 0, 1)
+> +DEF(DCZID_EL0, 3, 3, 0, 0, 7)
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 39292fb9bc1f..557af43a9709 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -2184,7 +2184,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>   #endif
+>   
+>       if (tcg_enabled()) {
+> -        int dcz_blocklen = 4 << cpu->dcz_blocksize;
+> +        int dcz_blocklen = 4 << get_dczid_bs(cpu);
+>   
+>           /*
+>            * We only support DCZ blocklen that fits on one page.
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 39f2b2e54deb..32f003705551 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1111,8 +1111,6 @@ struct ArchCPU {
+>       bool prop_pauth_qarma5;
+>       bool prop_lpa2;
+>   
+> -    /* DCZ blocksize, in log_2(words), ie low 4 bits of DCZID_EL0 */
+> -    uint8_t dcz_blocksize;
+>       /* GM blocksize, in log_2(words), ie low 4 bits of GMID_EL0 */
+>       uint8_t gm_blocksize;
+>   
+> @@ -1178,6 +1176,18 @@ struct ARMCPUClass {
+>       ResettablePhases parent_phases;
+>   };
+>   
+> +static inline uint8_t get_dczid_bs(ARMCPU *cpu)
+> +{
+> +    return extract64(cpu->isar.idregs[DCZID_EL0_IDX], 0, 4);
+> +}
+> +
+> +static inline void set_dczid_bs(ARMCPU *cpu, uint8_t bs)
+> +{
+> +    /* keep dzp unchanged */
+> +    cpu->isar.idregs[DCZID_EL0_IDX] =
+> +        deposit64(cpu->isar.idregs[DCZID_EL0_IDX], 0, 4, bs);
+> +}
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Given that dzp is always computed, I don't see the point of this.  Or... is the point that 
+KVM *will* eventually support DCZID_EL0, and we won't be computing DZP along the KVM 
+trap-and-read path?
+
+You could usefully split this patch, introducing the get/set helpers before changing the 
+representation.
 
 r~
 

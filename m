@@ -4,87 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56707C47BDD
-	for <qemu-arm@archiver.kernel.org>; Tue,  6 Jan 2026 10:23:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61D41C47BEA
+	for <qemu-arm@archiver.kernel.org>; Tue,  6 Jan 2026 10:55:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vd4DM-00027M-KI; Tue, 06 Jan 2026 05:23:00 -0500
+	id 1vd4iN-00075y-MD; Tue, 06 Jan 2026 05:55:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vd4DK-00021q-Ql
- for qemu-arm@nongnu.org; Tue, 06 Jan 2026 05:22:58 -0500
+ id 1vd4iN-00075g-35
+ for qemu-arm@nongnu.org; Tue, 06 Jan 2026 05:55:03 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vd4DH-0000kq-KM
- for qemu-arm@nongnu.org; Tue, 06 Jan 2026 05:22:58 -0500
+ id 1vd4iK-0004Gn-Qq
+ for qemu-arm@nongnu.org; Tue, 06 Jan 2026 05:55:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767694973;
+ s=mimecast20190719; t=1767696900;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=llg43gDynVGCw++CHowB2UFCSpaRan5HDgehlUilQ8U=;
- b=WjJN3MEe6HUn/GaPBZGcIEXRKX777hSq7k+mB770Y7Vw8I49oOlm/YD08aSyGCSm4IsuhU
- 8tOs/Mbu0eCdiUGLKH9MunHTgl7yUQeE2gI5Gw9XujNw+A3VbcjjhdESieiF48HNRmlHPi
- o/o9CawNeoRtP9CzvxIVE0v2RTT8ygM=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=luT4qiijpLJBZ58KW/k+hzS/YkHK1GZLBOqhc9h8oZM=;
+ b=f9Ge+055AqstPuWrkKgg6yE442JZigYFlpYgwnpuQOndus8Y46+prCBpZzfeAJ8W3PsUCZ
+ 0A50b46EseSQAMj5sE+UlYqQArZhXWRgnQ0lLu8kVt+JbWc90Qvu7dN72zrxs3jYvC+YiS
+ TdwQpy7tjfR7uKGZeJQEQqy3H23gRvE=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-607-9YcRxclOPI243bim_Bq48A-1; Tue, 06 Jan 2026 05:22:52 -0500
-X-MC-Unique: 9YcRxclOPI243bim_Bq48A-1
-X-Mimecast-MFC-AGG-ID: 9YcRxclOPI243bim_Bq48A_1767694971
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-47788165c97so5029785e9.0
- for <qemu-arm@nongnu.org>; Tue, 06 Jan 2026 02:22:52 -0800 (PST)
+ us-mta-187-NrtCSdFNOf65CRBuRQ7iMA-1; Tue, 06 Jan 2026 05:54:57 -0500
+X-MC-Unique: NrtCSdFNOf65CRBuRQ7iMA-1
+X-Mimecast-MFC-AGG-ID: NrtCSdFNOf65CRBuRQ7iMA_1767696896
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-430fcb6b2ebso442972f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 06 Jan 2026 02:54:56 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767694971; x=1768299771;
+ d=1e100.net; s=20230601; t=1767696894; x=1768301694;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=llg43gDynVGCw++CHowB2UFCSpaRan5HDgehlUilQ8U=;
- b=CFdrDKitHYfvO1xulzwwCgh9qfQzdl5z5awqbN/HCSVSw9lUFeGVIXSpfiFEo5BntW
- mer7CzLPbmoU8jomZQOwP2nOxyRujf//OWd5dpZa2oUJAHVn68RQYFMH7hJrwZkQPrkp
- ex1dpPirk9zst2w5nO/13f7l/w6kU1bXI7NhpLBNx33bs++m68qxYSu9+k2kM2GN5aQK
- aWT2be5SD0+Q2dqE2PdzLuDqB8RkbFF1t7/PZf/+unn7GSP7v5z+Y3j5sIA95A1uWo9k
- +77GB+m7O42eecmiMDYm37sjS6we61vJXbUrM/z0vudVVryajGjdiqL/7E+sS/wGaqtw
- HA5Q==
+ bh=luT4qiijpLJBZ58KW/k+hzS/YkHK1GZLBOqhc9h8oZM=;
+ b=ekk258aHYbbQS7NiAGMy51hGpMbajw9trZ5RgQAbqKbaMQyKLiGKI+SDlbJRQ4MIS7
+ K2AaChZ3/ASKJehTE4QQ0KdGgYJ2MFvstqWQTnkVOMjAPae6AN9N4eo4LotNtMCMoE3J
+ DSukZ7Fh7HmWGqQ1ueYfKdIEJrRrXvgR7wB1kIIPMzNshQP1zAVEvjK6Wz7CkAjTxTrK
+ rGbslphjle2kh5WH2ENXdjxbYC4scVehc92k6FidPmmhm9GLaXxKec/DKOlFXKMzBT6h
+ dRvadxFfvsuBSSxDp5vh0nxWAESJF3oyrocA1mNrXCxe/1/AG40m3V3+oMVkp0tK6Qh1
+ mGwA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXdCK3/k26JbBVov6Agwk8JyEGtlwha9dyFQHiNIi2LdWiLoegGmrNy+yQv/MepUhpXqRmPQlgPbg==@nongnu.org
-X-Gm-Message-State: AOJu0Yy7b594nyE4FZdgN5gE2GNJY+50WlFy8ynGgcypSazszLNQA6jl
- IVdqNS7To3DJa/x1HStokFcUcOBMUIkz1LiGNXXwSDxQ94QuOjWPnxE10vaqCDTeYIcEGTQWi0b
- /h3gkh7X8/CMXgLeMqfefXZaRoQKAdjh1i0liOxZoJJpuiKywWiHokQ==
-X-Gm-Gg: AY/fxX5grprj6opnX4XUoBQxulQy1wg5hcwRiFmX67KJjvqZs32dSf2ZrjLoYo0cxuf
- mr1VHuXthR5Q1fBgyiwTGEOg0E/UhGaU1ICmKzrPcicRhL3kcioPmQL0UNHl72/GOiTO1C6Sa1z
- LQ1hiHiPEQCrzMIpNNWsl7B8B0f57tFPPxVvGNvzoUim6o0jSQjTZYUoSc1KM5tKaQ9V3qYxGyg
- NOQL0Puz4e9d5Pobagbl9A2iwKR/Qh/b2l16JWEFXfbqo+MjtEP/4bIsrMVMTbGrH7kTKw+ucpw
- K6E4ICY6rElug8Nj3eEh7e5gI1cwiarcj6rSl2t3UDK95Y3Y8bL72czxofpdmWfJZStwXrQWr/2
- tgCAzpTSdOH8AMcuGhScEjG6V3DXCdDovHCCfThaAa35lWaNRsaoERT3ZOA==
-X-Received: by 2002:a05:600c:154e:b0:47b:df60:8a14 with SMTP id
- 5b1f17b1804b1-47d7f07064amr26724085e9.9.1767694970863; 
- Tue, 06 Jan 2026 02:22:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEVwAY5cBoM5rzt4u4+HMxvSpiNl5QALB9/P0mStGAWzwW3fFA0iOsLT/WkULv05GozvgDqVQ==
-X-Received: by 2002:a05:600c:154e:b0:47b:df60:8a14 with SMTP id
- 5b1f17b1804b1-47d7f07064amr26723815e9.9.1767694970389; 
- Tue, 06 Jan 2026 02:22:50 -0800 (PST)
+ AJvYcCUth9RhRKap2XDYba1yV4MTe1IVQgj+fYEsf/339ZfKwRyP0UerkhtjB463veIlh/HO/hQUp7T7+A==@nongnu.org
+X-Gm-Message-State: AOJu0Yy4IRRrjjcufCCdu8C3VAu7aY1A9GUYI69LIJN1zNLo0yKl4lms
+ ab2FYkA+5FNYE/yP/kRdDxUII1Ss+/P66Xa57z6u33VE5TO0djdd/lPL4DtIfQwFsudVL/Zudsu
+ 1lQMCUZQaGI2OMRRLaxfZ2MRYq49fhPw/fIvMkkxswXGvQN7oggQw7A==
+X-Gm-Gg: AY/fxX6alWn03HOSX6Ee2MwKmJzvfdMPJHgwb4fYYUHt9PesGADbxCBle6KTQb3Lmxp
+ Af+j/oaWlAPNUQhtIq7pJtdpE3yKggXyOoPZd0bfFwJsoCX92HfIN3f5fJs0crK2s8HorWLm5uY
+ GYcbP+AIEZ9UovZRQDy3sdrDVK2r4LanP6J05No/UKOTk0gGBRO9SMU8s3fEDKouM7sCFwKDbkx
+ ct75v99rw1SYMOB3xQu5HuwCkCe73VsMy1JKXloHoINEP0ZSp6IOn6Q5D55KOodwgxEi0iXIGxi
+ B3yIiMe1lh/tC4PivQOq0OzVv0WOxUkYQdgzK+LGDPK654LjHJZrQW3UFnQpSQ1atz5VxdhRsiA
+ J6z01FmW9HdlMGVEq6gjxrqpMKITlZJyGdxECrrTktB3XybKNUGc1dL3QlQ==
+X-Received: by 2002:a05:6000:22c2:b0:430:f622:8cca with SMTP id
+ ffacd0b85a97d-432bca5790bmr2626828f8f.56.1767696894503; 
+ Tue, 06 Jan 2026 02:54:54 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEYCp84H9fzjSawsEughzGU0Iz/m2pYPIzSTka+aG9K9Te1WoQtbyAP5oBzjJ2UI/lYjl/sFw==
+X-Received: by 2002:a05:6000:22c2:b0:430:f622:8cca with SMTP id
+ ffacd0b85a97d-432bca5790bmr2626806f8f.56.1767696893989; 
+ Tue, 06 Jan 2026 02:54:53 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-432bd0dad8bsm3681643f8f.8.2026.01.06.02.22.48
+ ffacd0b85a97d-432bd5df91fsm3843192f8f.23.2026.01.06.02.54.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jan 2026 02:22:49 -0800 (PST)
-Message-ID: <1b7a3d29-8660-47ca-b98d-b59103baf600@redhat.com>
-Date: Tue, 6 Jan 2026 11:22:47 +0100
+ Tue, 06 Jan 2026 02:54:53 -0800 (PST)
+Message-ID: <4a1e1e8a-8480-4294-a176-b5e630b7d0c7@redhat.com>
+Date: Tue, 6 Jan 2026 11:54:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 05/33] hw/arm/smmuv3-accel: Introduce smmuv3 accel
- device
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- Shameer Kolothum <skolothumtho@nvidia.com>,
+Subject: Re: [PATCH v6 32/33] vfio: Synthesize vPASID capability to VM
+To: Shameer Kolothum <skolothumtho@nvidia.com>, Yi Liu <yi.l.liu@intel.com>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
@@ -98,21 +96,20 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
  "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
  "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
  "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
- Krishnakant Jaju <kjaju@nvidia.com>
+ Krishnakant Jaju <kjaju@nvidia.com>, "alex@shazbot.org" <alex@shazbot.org>
 References: <20251120132213.56581-1-skolothumtho@nvidia.com>
- <20251120132213.56581-6-skolothumtho@nvidia.com>
- <6a062129-2b8f-420a-a4b9-87dde7574481@redhat.com>
- <CH3PR12MB7548E01E6CC271356D4D4208ABAEA@CH3PR12MB7548.namprd12.prod.outlook.com>
- <5b17d7e8-e4d0-4087-b104-c50a418ff24c@redhat.com>
+ <20251120132213.56581-33-skolothumtho@nvidia.com>
+ <7dc608a7-b36b-4250-befd-d26115b54e26@redhat.com>
+ <483fa0e2-aeb5-43b7-a136-692bbd24d0ba@intel.com>
+ <CH3PR12MB75489918DACE8B009A8F4F32AB86A@CH3PR12MB7548.namprd12.prod.outlook.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <5b17d7e8-e4d0-4087-b104-c50a418ff24c@redhat.com>
+In-Reply-To: <CH3PR12MB75489918DACE8B009A8F4F32AB86A@CH3PR12MB7548.namprd12.prod.outlook.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: HqhijUaaW-yz6ccbbe16lGPs8ecoY5dcGkxvWLL8Ruo_1767694971
+X-Mimecast-MFC-PROC-ID: B-yA1TVLbj9S6Hn7HmCTzWIyLlT38xYBiC8iR6kAu0A_1767696896
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -139,368 +136,356 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Cédric, Shameer,
+Hi Shameer,
 
-On 12/17/25 6:38 PM, Cédric Le Goater wrote:
-> Hello Shameer,
+On 1/5/26 5:33 PM, Shameer Kolothum wrote:
+> Hi Eric/ Yi,
 >
-> On 12/12/25 06:48, Shameer Kolothum wrote:
->> Hi Cédric,
+> [Cc: Alex]
+>
+>> -----Original Message-----
+>> From: Yi Liu <yi.l.liu@intel.com>
+>> Sent: 09 December 2025 11:17
+>> To: eric.auger@redhat.com; Shameer Kolothum
+>> <skolothumtho@nvidia.com>; qemu-arm@nongnu.org; qemu-
+>> devel@nongnu.org
+>> Cc: peter.maydell@linaro.org; Jason Gunthorpe <jgg@nvidia.com>; Nicolin
+>> Chen <nicolinc@nvidia.com>; ddutile@redhat.com; berrange@redhat.com;
+>> Nathan Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
+>> smostafa@google.com; wangzhou1@hisilicon.com;
+>> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
+>> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; Krishnakant Jaju
+>> <kjaju@nvidia.com>
+>> Subject: Re: [PATCH v6 32/33] vfio: Synthesize vPASID capability to VM
 >>
->>> -----Original Message-----
->>> From: Cédric Le Goater <clg@redhat.com>
->>> Sent: 11 December 2025 12:55
->>> To: Shameer Kolothum <skolothumtho@nvidia.com>; qemu-
->>> arm@nongnu.org; qemu-devel@nongnu.org
->>> Cc: eric.auger@redhat.com; peter.maydell@linaro.org; Jason Gunthorpe
->>> <jgg@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>;
->>> ddutile@redhat.com; berrange@redhat.com; Nathan Chen
->>> <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
->>> smostafa@google.com; wangzhou1@hisilicon.com;
->>> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
->>> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
->>> Krishnakant Jaju <kjaju@nvidia.com>
->>> Subject: Re: [PATCH v6 05/33] hw/arm/smmuv3-accel: Introduce smmuv3
->>> accel device
->>>
->>> External email: Use caution opening links or attachments
->>>
->>>
->>> On 11/20/25 14:21, Shameer Kolothum wrote:
->>>> Set up dedicated PCIIOMMUOps for the accel SMMUv3, since it will need
->>>> different callback handling in upcoming patches. This also adds a
->>>> CONFIG_ARM_SMMUV3_ACCEL build option so the feature can be disabled
->>>> at compile time. Because we now include CONFIG_DEVICES in the
->>>> header to
->>>> check for ARM_SMMUV3_ACCEL, the meson file entry for smmuv3.c needs
->>> to
->>>> be changed to arm_ss.add.
+>> External email: Use caution opening links or attachments
+>>
+>>
+>> On 2025/12/9 17:51, Eric Auger wrote:
+>>> Hi Shameer,
+>>> On 11/20/25 2:22 PM, Shameer Kolothum wrote:
+>>>> From: Yi Liu <yi.l.liu@intel.com>
 >>>>
->>>> The “accel” property isn’t user visible yet and it will be
->>>> introduced in
->>>> a later patch once all the supporting pieces are ready.
+>>>> If user wants to expose PASID capability in vIOMMU, then VFIO would also
+>>>> need to report the PASID cap for this device if the underlying hardware
+>>>> supports it as well.
 >>>>
->>>> Signed-off-by: Shameer Kolothum
->>> <shameerali.kolothum.thodi@huawei.com>
->>>> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
->>>> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
->>>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>>>> As a start, this chooses to put the vPASID cap in the last 8 bytes of the
+>>>> vconfig space. This is a choice in the good hope of no conflict with any
+>>>> existing cap or hidden registers. For the devices that has hidden registers,
+>>>> user should figure out a proper offset for the vPASID cap. This may require
+>>>> an option for user to config it. Here we leave it as a future extension.
+>>>> There are more discussions on the mechanism of finding the proper offset.
+>>>>
+>>>>
+>> https://lore.kernel.org/kvm/BN9PR11MB5276318969A212AD0649C7BE8C
+>> BE2@BN9PR11MB5276.namprd11.prod.outlook.com/
+>>>> Since we add a check to ensure the vIOMMU supports PASID, only devices
+>>>> under those vIOMMUs can synthesize the vPASID capability. This gives
+>>>> users control over which devices expose vPASID.
+>>>>
+>>>> Signed-off-by: Yi Liu <yi.l.liu@intel.com>
 >>>> Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
+>>>> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
 >>>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 >>>> ---
->>>>    hw/arm/Kconfig          |  5 ++++
->>>>    hw/arm/meson.build      |  3 ++-
->>>>    hw/arm/smmuv3-accel.c   | 59
->>> +++++++++++++++++++++++++++++++++++++++++
->>>>    hw/arm/smmuv3-accel.h   | 27 +++++++++++++++++++
->>>>    hw/arm/smmuv3.c         |  5 ++++
->>>>    include/hw/arm/smmuv3.h |  3 +++
->>>>    6 files changed, 101 insertions(+), 1 deletion(-)
->>>>    create mode 100644 hw/arm/smmuv3-accel.c
->>>>    create mode 100644 hw/arm/smmuv3-accel.h
+>>>>   hw/vfio/pci.c      | 38 ++++++++++++++++++++++++++++++++++++++
+>>>>   include/hw/iommu.h |  1 +
+>>>>   2 files changed, 39 insertions(+)
 >>>>
->>>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->>>> index 0cdeb60f1f..702b79a02b 100644
->>>> --- a/hw/arm/Kconfig
->>>> +++ b/hw/arm/Kconfig
->>>> @@ -12,6 +12,7 @@ config ARM_VIRT
->>>>        select ARM_GIC
->>>>        select ACPI
->>>>        select ARM_SMMUV3
->>>> +    select ARM_SMMUV3_ACCEL
->>>>        select GPIO_KEY
->>>>        select DEVICE_TREE
->>>>        select FW_CFG_DMA
->>>> @@ -629,6 +630,10 @@ config FSL_IMX8MP_EVK
->>>>    config ARM_SMMUV3
->>>>        bool
+>>>> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+>>>> index 8b8bc5a421..e11e39d667 100644
+>>>> --- a/hw/vfio/pci.c
+>>>> +++ b/hw/vfio/pci.c
+>>>> @@ -24,6 +24,7 @@
+>>>>   #include <sys/ioctl.h>
 >>>>
->>>> +config ARM_SMMUV3_ACCEL
->>>> +    bool
->>>> +    depends on ARM_SMMUV3 && IOMMUFD
+>>>>   #include "hw/hw.h"
+>>>> +#include "hw/iommu.h"
+>>>>   #include "hw/pci/msi.h"
+>>>>   #include "hw/pci/msix.h"
+>>>>   #include "hw/pci/pci_bridge.h"
+>>>> @@ -2500,7 +2501,12 @@ static int
+>> vfio_setup_rebar_ecap(VFIOPCIDevice *vdev, uint16_t pos)
+>>>>   static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
+>>>>   {
+>>>> +    HostIOMMUDevice *hiod = vdev->vbasedev.hiod;
+>>>> +    HostIOMMUDeviceClass *hiodc =
+>> HOST_IOMMU_DEVICE_GET_CLASS(hiod);
+>>>>       PCIDevice *pdev = PCI_DEVICE(vdev);
+>>>> +    uint64_t max_pasid_log2 = 0;
+>>>> +    bool pasid_cap_added = false;
+>>>> +    uint64_t hw_caps;
+>>>>       uint32_t header;
+>>>>       uint16_t cap_id, next, size;
+>>>>       uint8_t cap_ver;
+>>>> @@ -2578,12 +2584,44 @@ static void vfio_add_ext_cap(VFIOPCIDevice
+>> *vdev)
+>>>>                   pcie_add_capability(pdev, cap_id, cap_ver, next, size);
+>>>>               }
+>>>>               break;
+>>>> +        /*
+>>>> +         * VFIO kernel does not expose the PASID CAP today. We may
+>> synthesize
+>>>> +         * one later through IOMMUFD APIs. If VFIO ever starts exposing it,
+>>>> +         * record its presence here so we do not create a duplicate CAP.
+>>>> +         */
+>>>> +        case PCI_EXT_CAP_ID_PASID:
+>>>> +             pasid_cap_added = true;
+>>>> +             /* fallthrough */
+>>>>           default:
+>>>>               pcie_add_capability(pdev, cap_id, cap_ver, next, size);
+>>>>           }
+>>>>
+>>>>       }
+>>>>
+>>>> +#ifdef CONFIG_IOMMUFD
+>>>> +    /* Try to retrieve PASID CAP through IOMMUFD APIs */
+>>>> +    if (!pasid_cap_added && hiodc && hiodc->get_cap) {
+>>>> +        hiodc->get_cap(hiod, HOST_IOMMU_DEVICE_CAP_GENERIC_HW,
+>> &hw_caps, NULL);
+>>>> +        hiodc->get_cap(hiod,
+>> HOST_IOMMU_DEVICE_CAP_MAX_PASID_LOG2,
+>>>> +                       &max_pasid_log2, NULL);
+>>>> +    }
 >>>> +
->>>>    config FSL_IMX6UL
->>>>        bool
->>>>        default y
->>>> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
->>>> index aeaf654790..c250487e64 100644
->>>> --- a/hw/arm/meson.build
->>>> +++ b/hw/arm/meson.build
->>>> @@ -84,7 +84,8 @@ arm_common_ss.add(when: 'CONFIG_ARMSSE',
->>> if_true: files('armsse.c'))
->>>>    arm_common_ss.add(when: 'CONFIG_FSL_IMX7', if_true:
->>>> files('fsl-imx7.c',
->>> 'mcimx7d-sabre.c'))
->>>>    arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-
->>> imx8mp.c'))
->>>>    arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true:
->>> files('imx8mp-evk.c'))
->>>> -arm_common_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true:
->>> files('smmuv3.c'))
->>>> +arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
->>>> +arm_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true:
->>> files('smmuv3-accel.c'))
->>>>    arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-
->>> imx6ul.c', 'mcimx6ul-evk.c'))
->>>>    arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true:
->>> files('nrf51_soc.c'))
->>>>    arm_common_ss.add(when: 'CONFIG_XEN', if_true: files(
->>>> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
->>>> new file mode 100644
->>>> index 0000000000..99ef0db8c4
->>>> --- /dev/null
->>>> +++ b/hw/arm/smmuv3-accel.c
->>>> @@ -0,0 +1,59 @@
->>>> +/*
->>>> + * Copyright (c) 2025 Huawei Technologies R & D (UK) Ltd
->>>> + * Copyright (C) 2025 NVIDIA
->>>> + * Written by Nicolin Chen, Shameer Kolothum
->>>> + *
->>>> + * SPDX-License-Identifier: GPL-2.0-or-later
->>>> + */
+>>>> +    /*
+>>>> +     * If supported, adds the PASID capability in the end of the PCIe config
+>>>> +     * space. TODO: Add option for enabling pasid at a safe offset.
+>>>> +     */
+>>>> +    if (max_pasid_log2 && (pci_device_get_viommu_flags(pdev) &
+>>>> +                           VIOMMU_FLAG_PASID_SUPPORTED)) {
+>>>> +        bool exec_perm = (hw_caps & IOMMU_HW_CAP_PCI_PASID_EXEC);
+>>>> +        bool priv_mod = (hw_caps & IOMMU_HW_CAP_PCI_PASID_PRIV);
 >>>> +
->>>> +#include "qemu/osdep.h"
->>>> +
->>>> +#include "hw/arm/smmuv3.h"
->>>> +#include "smmuv3-accel.h"
->>>> +
->>>> +static SMMUv3AccelDevice *smmuv3_accel_get_dev(SMMUState *bs,
->>> SMMUPciBus *sbus,
->>>> +                                               PCIBus *bus, int
->>>> devfn)
->>>> +{
->>>> +    SMMUDevice *sdev = sbus->pbdev[devfn];
->>>> +    SMMUv3AccelDevice *accel_dev;
->>>> +
->>>> +    if (sdev) {
->>>> +        return container_of(sdev, SMMUv3AccelDevice, sdev);
->>>> +    }
->>>> +
->>>> +    accel_dev = g_new0(SMMUv3AccelDevice, 1);
->>>
->>> oh. This is not a QOM object :/
->>
->> Right.
->>
->>>
->>>> +    sdev = &accel_dev->sdev;
->>>> +
->>>> +    sbus->pbdev[devfn] = sdev;
->>>> +    smmu_init_sdev(bs, sdev, bus, devfn);
->>>> +    return accel_dev;
->>>> +}
->>>> +
->>>> +/*
->>>> + * Find or add an address space for the given PCI device.
->>>> + *
->>>> + * If a device matching @bus and @devfn already exists, return its
->>>> + * corresponding address space. Otherwise, create a new device entry
->>>> + * and initialize address space for it.
->>>> + */
->>>> +static AddressSpace *smmuv3_accel_find_add_as(PCIBus *bus, void
->>> *opaque,
->>>> +                                              int devfn)
->>>> +{
->>>> +    SMMUState *bs = opaque;
->>>> +    SMMUPciBus *sbus = smmu_get_sbus(bs, bus);
->>>> +    SMMUv3AccelDevice *accel_dev = smmuv3_accel_get_dev(bs, sbus,
->>> bus, devfn);
->>>> +    SMMUDevice *sdev = &accel_dev->sdev;
->>>> +
->>>> +    return &sdev->as;
->>>> +}
->>>> +
->>>> +static const PCIIOMMUOps smmuv3_accel_ops = {
->>>> +    .get_address_space = smmuv3_accel_find_add_as,
->>>> +};
->>>> +
->>>> +void smmuv3_accel_init(SMMUv3State *s)
->>>> +{
->>>> +    SMMUState *bs = ARM_SMMU(s);
->>>> +
->>>> +    bs->iommu_ops = &smmuv3_accel_ops;
->>>
->>> again, I think this should be a sSMMUv3Class attribute.
->>
->> See below.
->>>
->>>> +}
->>>> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
->>>> new file mode 100644
->>>> index 0000000000..0dc6b00d35
->>>> --- /dev/null
->>>> +++ b/hw/arm/smmuv3-accel.h
->>>> @@ -0,0 +1,27 @@
->>>> +/*
->>>> + * Copyright (c) 2025 Huawei Technologies R & D (UK) Ltd
->>>> + * Copyright (C) 2025 NVIDIA
->>>> + * Written by Nicolin Chen, Shameer Kolothum
->>>> + *
->>>> + * SPDX-License-Identifier: GPL-2.0-or-later
->>>> + */
->>>> +
->>>> +#ifndef HW_ARM_SMMUV3_ACCEL_H
->>>> +#define HW_ARM_SMMUV3_ACCEL_H
->>>> +
->>>> +#include "hw/arm/smmu-common.h"
->>>> +#include CONFIG_DEVICES
->>>> +
->>>> +typedef struct SMMUv3AccelDevice {
->>>> +    SMMUDevice sdev;
->>>> +} SMMUv3AccelDevice;
->>>> +
->>>> +#ifdef CONFIG_ARM_SMMUV3_ACCEL
->>>> +void smmuv3_accel_init(SMMUv3State *s);
->>>> +#else
->>>> +static inline void smmuv3_accel_init(SMMUv3State *s)
->>>> +{
->>>> +}
+>>>> +        pcie_pasid_init(pdev, PCIE_CONFIG_SPACE_SIZE -
+>> PCI_EXT_CAP_PASID_SIZEOF,
+>>>> +                        max_pasid_log2, exec_perm, priv_mod);
+>>>> +        /* PASID capability is fully emulated by QEMU */
+>>>> +        memset(vdev->emulated_config_bits + pdev->exp.pasid_cap, 0xff, 8);
+>>>> +    }
 >>>> +#endif
 >>>> +
->>>> +#endif /* HW_ARM_SMMUV3_ACCEL_H */
->>>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->>>> index bcf8af8dc7..ef991cb7d8 100644
->>>> --- a/hw/arm/smmuv3.c
->>>> +++ b/hw/arm/smmuv3.c
->>>> @@ -32,6 +32,7 @@
->>>>    #include "qapi/error.h"
+>>>>       /* Cleanup chain head ID if necessary */
+>>>>       if (pci_get_word(pdev->config + PCI_CONFIG_SPACE_SIZE) == 0xFFFF) {
+>>>>           pci_set_word(pdev->config + PCI_CONFIG_SPACE_SIZE, 0);
+>>>> diff --git a/include/hw/iommu.h b/include/hw/iommu.h
+>>>> index 9b8bb94fc2..9635770bee 100644
+>>>> --- a/include/hw/iommu.h
+>>>> +++ b/include/hw/iommu.h
+>>>> @@ -20,6 +20,7 @@
+>>>>   enum viommu_flags {
+>>>>       /* vIOMMU needs nesting parent HWPT to create nested HWPT */
+>>>>       VIOMMU_FLAG_WANT_NESTING_PARENT = BIT_ULL(0),
+>>>> +    VIOMMU_FLAG_PASID_SUPPORTED = BIT_ULL(1),
+>>>>   };
 >>>>
->>>>    #include "hw/arm/smmuv3.h"
->>>> +#include "smmuv3-accel.h"
->>>>    #include "smmuv3-internal.h"
->>>>    #include "smmu-internal.h"
->>>>
->>>> @@ -1882,6 +1883,10 @@ static void smmu_realize(DeviceState *d, Error
->>> **errp)
->>>>        SysBusDevice *dev = SYS_BUS_DEVICE(d);
->>>>        Error *local_err = NULL;
->>>>
->>>> +    if (s->accel) {
->>>> +        smmuv3_accel_init(s);
->>>> +    }
->>>> +
->>>>        c->parent_realize(d, &local_err);
->>>>        if (local_err) {
->>>>            error_propagate(errp, local_err);
->>>> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
->>>> index d183a62766..bb7076286b 100644
->>>> --- a/include/hw/arm/smmuv3.h
->>>> +++ b/include/hw/arm/smmuv3.h
->>>> @@ -63,6 +63,9 @@ struct SMMUv3State {
->>>>        qemu_irq     irq[4];
->>>>        QemuMutex mutex;
->>>>        char *stage;
->>>> +
->>>> +    /* SMMU has HW accelerator support for nested S1 + s2 */
->>>> +    bool accel;
+>>>>   #endif /* HW_IOMMU_H */
+>>> Besides the fact the offset is arbitrarily chosen so that this is the
+>>> last cap of the vconfig space, the code looks good to me.
+>>> So
+>>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
 >>>
->>> Have you considered modeling with a QOM object instead ?
+>>> Just wondering whether we couldn't add some generic pcie code that
+>>> parses the extended cap linked list to check the offset range is not
+>>> used by another cap before allowing the insertion at a given offset?
+>>> This wouldn't prevent a subsequent addition from failing but at least we
+>>> would know if there is some collision.this could be added later on though.
+>>>
+>> You're absolutely right. My approach of using the last 8 bytes was a
+>> shortcut to avoid implementing proper capability parsing logic
+>> (importing pci_regs.h and maintaining a cap_id-to-cap_size mapping
+>> table), and it simplified PASID capability detection by only examining
+>> the last 8bytes by a simple dump :(. However, this approach is not
+>> good as we cannot guarantee that the last 8bytes are unused by any
+>> device.
 >>
->> A bit of history on this:
->>
->> The SMMUv3 accel support was introduced first as a separate device,
->> -device arm-smmuv3-accel
->>
->> https://lore.kernel.org/qemu-devel/20250311141045.66620-4-shameerali.kolothum.thodi@huawei.com/
->>
->>
->> However, the general consensus at that time was that we should instead
->> model it on the -device arm-smmuv3 itself, with an added "accel"
->> property.
->>
->> Eric had also suggested making use of something similar to the
->> TYPE_VFIO_IOMMU_IOMMUFD / LEGACY classes for selecting the iommu_ops.
->> https://lore.kernel.org/qemu-devel/1105d100-dd1e-4aca-b518-50f903967416@redhat.com/
->>
->>
->> In RFCv3, I did introduce a TYPE_ARM_SMMUV3_ACCEL object class, but we
->> later found that it wasn’t doing much beyond helping to retrieve the
->> iommu_ops
->> based on the object type, so decided to drop it.
->> https://lore.kernel.org/qemu-devel/71ca9132-8deb-4f57-abb0-2bcc0fe93ae9@redhat.com/
->>
->>
->>  From your feedback, I understand that you would like to revisit that
->> approach
->> again. Just to make sure I get this right, is the SMMUv3AccelClass
->> you have in
->> mind meant to be an abstract object, like HOST_IOMMU_DEVICE, or are
->> you suggesting another child device object?
->
-> HOST_IOMMU_DEVICE are for host IOMMU backends (VFIO IOMMU Type1
-> legacy and IOMMUFD). I was imagining an "arm-smmuv3" children class
-> for acceleration. 
-We were trying to find similar examples of inheritance in the qemu tree.
-I also inspected hw/intc, for instance the GICv3 but it is not really
-similar as the choice between the kvm and tcg one is not made by an option.
-
-As Shameer explained, we attempted to use a class and eventually we
-noticed it did not bring any real benefit besides complexifying the code.
-
-Note that on intel_iommu, the "vfio" integration is opted-in with the
-caching-mode option. so using an accel option sounds a similar knob.
-
-
->
-> I understand I am jumping a bit late in the discussion. Sorry about
-> that and the late reply also.
->
-> I have been experimenting with your series on other systems and on
-> an ARM system with MLX5 VFs and an L4 GPU. I had to fake CANWBS
-> support in the host kernel to make progress. On a side note, I also 
-I also encountered this issue but as my HW does support CANWBS, this is
-a FW issue. So this does not relate to that series.
-> pulled in a patch from Nicolin to add dmabuf support and it seemed
-> to behave ok. This would require more in-depth P2P testing. That's
-> another topic we should discuss in the QEMU 11.0 cycle. 
-I tested the functionality with P2P. I am waiting for the respin before
-sending my T-b.
->
->
->> Please let me know if there is an example/precedent, I can look at
->> for a similar
->> object model in QEMU.
->
-> Now regarding modeling, it is more or less a design choice. But while
-> I scanned through the code, I felt there was some problems that could
-> be solved in a cleaner way with a sub class. The changes are mostly
-> about moving code in different places and changing/removing the
-> "if (s->accel) parts". Don't change everything now, I will check RFCv3.
->
-> Nevertheless, they are several more issues, build breakages and also
-> runtime breakage that should be addressed. Let's do that first. 
-
-I don't know where we stand with that respect. Shameer, were you able to
-address those breakages?
->
-> Furthermore, an (idealistic) design principle of QEMU that we tend to
-> forget is to offer acceleration when possible and else fallback to
-> emulation, in order to guarantee parity of features between different
-> hardware. I expected the "arm-smmuv3" device to decide to operate in
-> accelerated mode when ever possible, i.e when the IOMMUFD backend
-> (the SMMUV3 + the FW) offers the right level of functionality. This
-> would allow the machine to maintain a constant view of the sMMUv3
-> device and facilitate its integration with management layers and
-> ease migration too. 
-
-I don't think it makes sense to fall back to a non accel mode anyway
-because the protected end point device wouldn't work. SMMU has no
-cachine mode as Intel. So either it works in accelerated mode along with
-VFIO devices or it is not able to protected host assigned devices.
+>> Let's just implement the logic to walk the linked list of ext_caps to
+>> find an appropriate offset for our use case.
+> I had a go at this. Based on my understanding, even if we walk the PCIe
+> extended capability linked list, we still can't easily determine the size
+> occupied by the last capability as the extended capability header does not
+> encode a length, it only provides the "next" pointer, and for the last entry
+> next == 0.
+If my understanding is correct when walking the linked list, you can
+enumerate the start index and the PCIe extended Capability variable size
+which is made of fix header size + register block variable size which
+depends on the capability ID). After that we shall be able to allocate a
+slot within holes or at least check that adding the new prop at the end
+of the 4kB is safe, no?. What do I miss?
 
 Thanks
 
 Eric
 >
-> I understand this is complex, it has been done for some interrupt
-> controllers, and this is not the approach of the series.
+> Given that, I tried the following approach,
 >
-> That said, what about integration with libvirt ?
+> -locate the last extended capability (using the existing helper),
+> -reserve a fixed window (512 bytes) for that final capability,
+> -and synthesize PASID at the end of PCIe config space (0xff8) only if it
+> looks like there is enough room.
 >
+> Maybe I am missing something here.. Please let me know if there is a
+> better way to address this.
 >
 > Thanks,
+> Shameer
 >
-> C.
+> diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
+> index b302de6419..89178f2b7e 100644
+> --- a/hw/pci/pcie.c
+> +++ b/hw/pci/pcie.c
+> @@ -1005,8 +1005,8 @@ bool pcie_cap_is_arifwd_enabled(const PCIDevice *dev)
+>   */
+>
+>  /* Passing a cap_id value > 0xffff will return 0 and put end of list in prev */
+> -static uint16_t pcie_find_capability_list(PCIDevice *dev, uint32_t cap_id,
+> -                                          uint16_t *prev_p)
+> +uint16_t pcie_find_capability_list(PCIDevice *dev, uint32_t cap_id,
+> +                                   uint16_t *prev_p)
+>  {
+>      uint16_t prev = 0;
+>      uint16_t next;
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index 8b8bc5a421..e8354e8b8d 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -24,6 +24,7 @@
+>  #include <sys/ioctl.h>
+>
+>  #include "hw/hw.h"
+> +#include "hw/iommu.h"
+>  #include "hw/pci/msi.h"
+>  #include "hw/pci/msix.h"
+>  #include "hw/pci/pci_bridge.h"
+> @@ -2498,9 +2499,72 @@ static int vfio_setup_rebar_ecap(VFIOPCIDevice *vdev, uint16_t pos)
+>      return 0;
+>  }
+>
+> +/*
+> + * Try to retrieve PASID capability information via IOMMUFD APIs and,
+> + * if supported, synthesize a PASID PCIe extended capability for the
+> + * VFIO device.
+> + *
+> + * The PASID capability is placed at the end of the PCIe extended
+> + * configuration space. Determining the exact size of the last
+> + * existing extended capability is non trivial, as PCIe extended
+> + * capabilities do not generically encode their total size and
+> + * vendor defined extensions are permitted.
+> + *
+> + * For now, reserve a fixed window (512 bytes) for the last extended
+> + * capability and only insert  PASID if sufficient space remains.
+> + */
+> +static void vfio_pci_synthesize_pasid_cap(VFIOPCIDevice *vdev)
+> +{
+> +    HostIOMMUDevice *hiod = vdev->vbasedev.hiod;
+> +    HostIOMMUDeviceClass *hiodc;
+> +    HostIOMMUDevicePasidInfo pasid_info;
+> +    PCIDevice *pdev = PCI_DEVICE(vdev);
+> +    uint16_t last = 0;
+> +    uint16_t pasid_offset;
+> +
+> +    if (vdev->vbasedev.mdev) {
+> +        return;
+> +    }
+> +
+> +    hiodc = HOST_IOMMU_DEVICE_GET_CLASS(hiod);
+> +    if (!hiodc || !hiodc->get_pasid_info ||
+> +        !hiodc->get_pasid_info(hiod, &pasid_info) ||
+> +        !(pci_device_get_viommu_flags(pdev) & VIOMMU_FLAG_PASID_SUPPORTED)) {
+> +        return;
+> +    }
+> +
+> +    /*
+> +     * Locate the last PCIe extended capability present in the device
+> +     * configuration space.
+> +     */
+> +    pcie_find_capability_list(pdev, 0x1ffff, &last);
+> +
+> +    /*
+> +     * Reserve space at the end of PCIe configuration space for PASID.
+> +     * If the last extended capability appears too close to the end,
+> +     * refuse to insert PASID.
+> +     */
+> +    if (last + 512 > PCIE_CONFIG_SPACE_SIZE - PCI_EXT_CAP_PASID_SIZEOF) {
+> +        warn_report("vfio: no space to synthesize PASID extended capability");
+> +        return;
+> +    }
+> +
+> +    pasid_offset = PCIE_CONFIG_SPACE_SIZE - PCI_EXT_CAP_PASID_SIZEOF;
+> +
+> +    pcie_pasid_init(pdev, pasid_offset,
+> +                    pasid_info.max_pasid_log2,
+> +                    pasid_info.exec_perm,
+> +                    pasid_info.priv_mod);
+> +
+> +    /* PASID capability is fully emulated by QEMU */
+> +    memset(vdev->emulated_config_bits + pdev->exp.pasid_cap, 0xff,
+> +           PCI_EXT_CAP_PASID_SIZEOF);
+> +}
+> +
+>  static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
+>  {
+>      PCIDevice *pdev = PCI_DEVICE(vdev);
+> +    bool pasid_cap_added = false;
+>      uint32_t header;
+>      uint16_t cap_id, next, size;
+>      uint8_t cap_ver;
+> @@ -2562,6 +2626,7 @@ static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
+>           * accesses, exact size doesn't seem worthwhile.
+>           */
+>          size = vfio_ext_cap_max_size(config, next);
+> +        printf("%s: Shameer: cap_id 0x%x size 0x%x\n",__func__, cap_id, size);
+>
+>          /* Use emulated next pointer to allow dropping extended caps */
+>          pci_long_test_and_set_mask(vdev->emulated_config_bits + next,
+> @@ -2578,12 +2643,24 @@ static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
+>                  pcie_add_capability(pdev, cap_id, cap_ver, next, size);
+>              }
+>              break;
+> +        /*
+> +         * VFIO kernel does not expose the PASID CAP today. We may synthesize
+> +         * one later through IOMMUFD APIs. If VFIO ever starts exposing it,
+> +         * record its presence here so we do not create a duplicate CAP.
+> +         */
+> +        case PCI_EXT_CAP_ID_PASID:
+> +             pasid_cap_added = true;
+> +             /* fallthrough */
+>          default:
+>              pcie_add_capability(pdev, cap_id, cap_ver, next, size);
+>          }
+>
+>      }
+>
+> +    if (!pasid_cap_added) {
+> +        vfio_pci_synthesize_pasid_cap(vdev);
+> +    }
+> +
+>      /* Cleanup chain head ID if necessary */
+>      if (pci_get_word(pdev->config + PCI_CONFIG_SPACE_SIZE) == 0xFFFF) {
+>          pci_set_word(pdev->config + PCI_CONFIG_SPACE_SIZE, 0);
+> diff --git a/include/hw/pci/pcie.h b/include/hw/pci/pcie.h
+> index 42cebcd033..1a477b05b2 100644
+> --- a/include/hw/pci/pcie.h
+> +++ b/include/hw/pci/pcie.h
+> @@ -130,6 +130,8 @@ bool pcie_cap_is_arifwd_enabled(const PCIDevice *dev);
+>
+>  /* PCI express extended capability helper functions */
+>  uint16_t pcie_find_capability(PCIDevice *dev, uint16_t cap_id);
+> +uint16_t pcie_find_capability_list(PCIDevice *dev, uint32_t cap_id,
+> +                                   uint16_t *prev_p);
+>  void pcie_add_capability(PCIDevice *dev,
+>                           uint16_t cap_id, uint8_t cap_ver,
+>                           uint16_t offset, uint16_t size);
+> @@ -138,6 +140,7 @@ void pcie_sync_bridge_lnk(PCIDevice *dev);
+>  void pcie_acs_init(PCIDevice *dev, uint16_t offset);
+>  void pcie_acs_reset(PCIDevice *dev);
+>
+> +uint16_t pcie_get_ext_cap_next_offset(PCIDevice *pdev, uint16_t cap_size);
+>  void pcie_ari_init(PCIDevice *dev, uint16_t offset);
+>  void pcie_dev_ser_num_init(PCIDevice *dev, uint16_t offset, uint64_t ser_num);
+>  void pcie_ats_init(PCIDevice *dev, uint16_t offset, bool aligned);
+>
 >
 
 

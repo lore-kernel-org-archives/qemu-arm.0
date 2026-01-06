@@ -4,88 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8972CD0421
-	for <qemu-arm@archiver.kernel.org>; Tue,  6 Jan 2026 05:23:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67EB3CD0421
+	for <qemu-arm@archiver.kernel.org>; Tue,  6 Jan 2026 05:26:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vczXS-0004hD-53; Tue, 06 Jan 2026 00:23:26 -0500
+	id 1vczZg-0005Uw-4C; Tue, 06 Jan 2026 00:25:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vczXQ-0004gT-FV
- for qemu-arm@nongnu.org; Tue, 06 Jan 2026 00:23:24 -0500
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1vczZe-0005Uf-Ut
+ for qemu-arm@nongnu.org; Tue, 06 Jan 2026 00:25:43 -0500
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vczXO-0005qS-Uw
- for qemu-arm@nongnu.org; Tue, 06 Jan 2026 00:23:24 -0500
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-7b8eff36e3bso966140b3a.2
- for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 21:23:22 -0800 (PST)
+ id 1vczZd-0007Hu-9I
+ for qemu-arm@nongnu.org; Tue, 06 Jan 2026 00:25:42 -0500
+Received: by mail-pl1-x62e.google.com with SMTP id
+ d9443c01a7336-2a1388cdac3so5328125ad.0
+ for <qemu-arm@nongnu.org>; Mon, 05 Jan 2026 21:25:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767677000; x=1768281800; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767677140; x=1768281940; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=W4U7GKAOi+DBgNgFxG6tVG9Jdw7fSE/UlxtvmwWvK5g=;
- b=QwDcacedoht68mHcQyuXMn5RjHVIcXJS+g7jJsACFM+I/cZiBHz8GnjLUnqsHh5pD2
- quwb3sCQ6ijSdJEDVKfN2mF3S7xCxfNb/opprNO4xwegKD8dSVkYvmPhsuPYFXRrW78e
- vwWwBzy32JR6KQXrkIHW3ptaxRd4QPCWvm4ezcIIgsdAp+1X6i9NxGzmdTgGk5DkvHZB
- X8wxLlt8Yvl0m7UOaZGd/fS2xNrabRjuME/6KW8kIbdkb3GwVD91CUNEQJip35naGGTz
- xdcbWodo0U91kAsl6HNJEJTlLe/HRjiHZCEKl96nugkVC75P0d0tun9rczHMLF7MPjTX
- A6RA==
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=OagJyw204oOcrZ3boHqyagBPaZ+eBts0fowwxGClcUo=;
+ b=VjLJzHrfHiaEcnnCALA1NZdhya58D+2AnjFPLIlQ1m/nvuqKQoKxbTSe6XY8t0G2lI
+ ko8eM0CAlKhL2Nwwi0kUGkPkTruYSnhQh052FezR8ZZ+ykQnRAMWHsMH8DLJL4hrFwjD
+ jALlleH1C8AwZXrHjSTZrMCj7gA1nXzOKD9RaAFxSbRT8TD4gkT/W+0H5eJcGLsRbQi+
+ h0PAXHbhmlFS7ZiMgewLgaO6VVDB9U1Ubykp3J/FiqTLTPpytMVVYKjfM/1eVMLCz21D
+ wo7tULeQ86yxjiy3C+oDa6U+QD/FzVv4kkLqJWCHYC+yYI2fFuVdgvPqOlIaYKyeTV/+
+ itnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767677000; x=1768281800;
+ d=1e100.net; s=20230601; t=1767677140; x=1768281940;
  h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=W4U7GKAOi+DBgNgFxG6tVG9Jdw7fSE/UlxtvmwWvK5g=;
- b=aX37OwvguXhxglJ/ptjVosyUkHWIoeZENfSGEb9LfJVNtQxJkLJMJfhriXcuffT3r9
- fwO1zC2Uc8lK7efh9R1xg+/cx4GSFxJckNDUiSc3i2XpC7COCi3T+umcpSqLphmJrtz3
- JjHjYCDeT/zoOyWRpjxPeS4t7MJPAAaNRyH6W816/dqSVyNVNKgb7Vqnz/Uf6d9WTJUD
- Xc012lkpS30/qQ79v9akZG+AHO972jJZ+Ee+GzYsNjnjPWS8YqWJJ6gAwLI02SRlkmns
- sAaTWxsmvv5L3eWQZ8MB9+MzVqeh8FBZzTle0USijj6Ht1YBxQX8xD+ESTf02HZs6HEb
- yrIw==
+ bh=OagJyw204oOcrZ3boHqyagBPaZ+eBts0fowwxGClcUo=;
+ b=PiuqHt1vW7vn/B1vpJJzrNy3oGaX9F5XGwRY6slpRC+s8erlbAYVxL+K4qO6fNvSbH
+ z8DE79aMOxMcVd8bkyy4aeCCd+a5xoAQ9aQ6n6KDnI9XakOSduS/2KWymM2ttCf8GdSg
+ 9yhURtq4d7tZHJZh5+NQJANBiEtflIOcLL0AYtpr9tpKgmwZqPPYAP8UCB2bVarXzEwA
+ dpbKeH677JEbHZsPwkBAUbixb8gukXlfJP7SrreIWywOxBE/XBxfKqn04o/Rwe6g0r36
+ kSxLPQPBMdEOvShzsOzP9zuym0Qefo8bQCfEiS7bFVovC0d/lS1zgVFgW+1Vo3/Z05Ly
+ /1FQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWPDv2FCW6uMvNF/bRJwN4fX/aMK/YonvUENz5ZhzOspDQJVxFdIHHEx12g9sNjiZXUFkQOjbFRRw==@nongnu.org
-X-Gm-Message-State: AOJu0YxoNf1I2qHRojViREAM/08EL0X44Qi6+A8PyNyCNrib/24IkkGy
- PrTSVFzsBanVptiCwqDcKNcjlEOvaoV/nvaffG4DU144IqBnqO6WjRGHHfzmquYlYwk=
-X-Gm-Gg: AY/fxX47FT9Z3oYe0YfErnKxNfvg6jg7ibnKx07tM4FOucscJt3a+HI1jSMMs9EecZo
- JmF9Wb04j/BU+a2JAiGJbHIKPSRmo3XoxqWt0NrPnlGQlhKpv0wCQhwYEZCFvTTFGoMl3V2CDhy
- KclaJwq6SUexsdt4o8rtEaJHXsYB67iaU/RKk+URMg7h1X977PuCJmtVWTgH3psnp6/XNj4rYpM
- moqRhZsvhHYKm4pqMgK+qEqg1u8O85+s7CPw038DLHe1i8hkrWBkFXJtqZpy8060vwgMz95q32b
- Rci3aQF4BWNmgI3TNNLYpSGCCL5ber3EucIedBAxoTkawS34npocNMT1Uwv9xoRqlUVY0ZwcFDP
- aHEcFRDiIEiMJf+g+y79FHPGbwpgBAE3JyTKx0DUTbjJ+6K/iF9nnKpZsFsTQ4ujBgOfCC5g+Cn
- Iv5Pypvl0HZNp8tUQy2Y001AGQLnNrGA==
-X-Google-Smtp-Source: AGHT+IHnWIB5IIfaV32AyO9rAeD20DYGknObQ53/TXEKe9RJaxWf5+Jg6LwjDNHWWbKNhMlx7Jyvyw==
-X-Received: by 2002:a05:6a00:e8c:b0:7b8:16af:3bbc with SMTP id
- d2e1a72fcca58-81881e0b984mr1551960b3a.31.1767677000465; 
- Mon, 05 Jan 2026 21:23:20 -0800 (PST)
+ AJvYcCVT5sejbCjv83eVbgC8g6z4UkyBOajVl1lCgvHYfFFvckDLi9WfgU5/bRxx5hn9JM+HBqNF4NHWMw==@nongnu.org
+X-Gm-Message-State: AOJu0YyC+/Shv8k3LoS/pB/RD69vPrnxLKORrfwFLDPXernhr6Qhwa6I
+ j85w1Q0OwORAj/qc30I3PmT5+flL4MV8YeNjmk4LkmEUxmjGVrxpdZhpAkWCFqcgw/KhmEeniZ/
+ hEE9X/Bg=
+X-Gm-Gg: AY/fxX4Iwtx0B8UL+qGKieU708M4bbZXL7en79uCE5omKnYBxulaueAAOZTMRYvARuV
+ JvkaPHq7xn/r9JAUjaMk85TTevP0zZQ2Mr6A25zviozdHJ0SbB7pNiceplI8houEgTzWQuXmj7I
+ 3v8aDAyCHvdLvaK2DQoqzH5Ojbk6QB4IwjbPZOYpe/6Lbw7SsgyKsPbZchgy2LzJrAv5QBVh15E
+ S4EgdaUt+oZRTx3TAdPL9crKEctFcwNsA0x9/tT/XgfhH85jIKLcUyM/PZcMzvr1/owWHgne3bC
+ y/w9AZKwaJ7mKsj6lVGFSpr0lRIMvEtflEaS7UJDJz2ne21erQe/WL11Rqw40En4Vs4wmgE+ARX
+ 3to6K+JqkQp/hlOYO5OegXNGZxJsWBa6HJgLsllu5nEiPnesO9NPTb1o5CdN9N0nPvMjJPVO3C2
+ Ae0aq+iCjDmeJsigL5KrzdsciKmHBiNQ==
+X-Google-Smtp-Source: AGHT+IHMoQArOgOcd3HvdbkaScaTxW8IzpTJsi4ern51FMAMQDEw+SUZ9D4Su7MM9cAoQWJpJL2xPA==
+X-Received: by 2002:a17:903:950:b0:290:ac36:2ed6 with SMTP id
+ d9443c01a7336-2a3e2d5b815mr21229995ad.14.1767677139587; 
+ Mon, 05 Jan 2026 21:25:39 -0800 (PST)
 Received: from [192.168.10.140] ([180.233.125.201])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-819baa195e4sm793887b3a.3.2026.01.05.21.23.17
+ d9443c01a7336-2a3e3c47390sm8624125ad.25.2026.01.05.21.25.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Jan 2026 21:23:19 -0800 (PST)
-Message-ID: <165e6b10-97f2-4b15-a38c-a7df17c75e11@linaro.org>
-Date: Tue, 6 Jan 2026 16:23:13 +1100
+ Mon, 05 Jan 2026 21:25:39 -0800 (PST)
+Message-ID: <3647fe54-7a2a-4ec3-ade5-2cbb23e395aa@linaro.org>
+Date: Tue, 6 Jan 2026 16:25:35 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFC v3 12/12] tests/tcg: add test for MTE_STORE_ONLY
-To: Gabriel Brookman <brookmangabriel@gmail.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Gustavo Romero <gustavo.romero@linaro.org>, qemu-arm@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>
-References: <20260105-feat-mte4-v3-0-86a0d99ef2e4@gmail.com>
- <20260105-feat-mte4-v3-12-86a0d99ef2e4@gmail.com>
+Subject: Re: [PULL 00/36] aspeed queue
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20260105125613.622667-1-clg@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260105-feat-mte4-v3-12-86a0d99ef2e4@gmail.com>
+In-Reply-To: <20260105125613.622667-1-clg@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,26 +106,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/6/26 05:15, Gabriel Brookman wrote:
-> --- a/tests/tcg/aarch64/mte.h
-> +++ b/tests/tcg/aarch64/mte.h
-> @@ -51,6 +51,18 @@ static void enable_mte(int tcf)
->       }
->   }
->   
-> +static void enable_mte_store_only(int tcf)
-> +{
-> +    int r = prctl(PR_SET_TAGGED_ADDR_CTRL,
-> +                  PR_TAGGED_ADDR_ENABLE | PR_MTE_STORE_ONLY | tcf |
-> +                  (0xfffe << PR_MTE_TAG_SHIFT),
-> +                  0, 0, 0);
+On 1/5/26 23:55, Cédric Le Goater wrote:
+> The following changes since commit 159107e390609f71b78268a4888563dcdce6ac65:
+> 
+>    Merge tag 'pull-hex-20260102' ofhttps://github.com/quic/qemu into staging (2026-01-05 07:35:40 +1100)
+> 
+> are available in the Git repository at:
+> 
+>    https://github.com/legoater/qemu/ tags/pull-aspeed-20260105
+> 
+> for you to fetch changes up to 9cbd8ee7f67fceee51d3c993a282e5adc397b6b9:
+> 
+>    hw/i2c/aspeed: Fix wrong I2CC_DMA_LEN when I2CM_DMA_TX/RX_ADDR set first (2026-01-05 10:38:02 +0100)
+> 
+> ----------------------------------------------------------------
+> aspeed queue:
+> 
+> * Removed the ast2700-a0 SoC and ast2700a0-evb machine.
+> * Added SGPIO support to the ast2700 SoC, including unit tests.
+> * Added several FRU EEPROMs to the Catalina board.
+> * Added support for the new AST1060 SoC and ast1060-evb machine,
+>    including functional tests.
+> * Fixed the silicon revision ID register for AST2600 and AST1030 SoCs.
+> * Added an SFDP table for a Winbond flash chip.
+> * Updated documentation for Aspeed boards.
 
-Just rename the parameter for enable_mte() to 'flags'
-and use 'PR_MTE_TCF_SYNC | PR_MTE_STORE_ONLY' in the new test.
-
-With that,
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
+Applied, thanks.  Please update https://wiki.qemu.org/ChangeLog/11.0 as appropriate.
 
 r~
 

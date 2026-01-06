@@ -4,49 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B683CE9D6E
-	for <qemu-arm@archiver.kernel.org>; Tue,  6 Jan 2026 15:52:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFA53CE9D70
+	for <qemu-arm@archiver.kernel.org>; Tue,  6 Jan 2026 15:59:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vd9MD-0000S5-N1; Tue, 06 Jan 2026 10:52:30 -0500
+	id 1vd9SK-00046q-JI; Tue, 06 Jan 2026 10:58:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vd9MC-0000RL-Pw; Tue, 06 Jan 2026 10:52:28 -0500
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1vd9SJ-0003yx-EE; Tue, 06 Jan 2026 10:58:47 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vd9MA-0005H0-Kf; Tue, 06 Jan 2026 10:52:28 -0500
-Received: from mail.maildlp.com (unknown [172.18.224.83])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4dlwfC2Qt0zJ46rw;
- Tue,  6 Jan 2026 23:52:19 +0800 (CST)
-Received: from dubpeml100005.china.huawei.com (unknown [7.214.146.113])
- by mail.maildlp.com (Postfix) with ESMTPS id 213CA40569;
- Tue,  6 Jan 2026 23:52:21 +0800 (CST)
-Received: from localhost (10.195.245.156) by dubpeml100005.china.huawei.com
- (7.214.146.113) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.36; Tue, 6 Jan
- 2026 15:52:20 +0000
-Date: Tue, 6 Jan 2026 15:52:18 +0000
-To: <AlanoSong@163.com>
-CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <cminyard@mvista.com>,
- <peter.maydell@linaro.org>, <philmd@linaro.org>, <ani@anisinha.ca>,
- <pbonzini@redhat.com>, <shannon.zhaosl@gmail.com>
-Subject: Re: [PATCH 1/2] hw/i2c/dw: Add DesignWare I2C controller emulator
-Message-ID: <20260106155218.0000310f@huawei.com>
-In-Reply-To: <20260106131253.16192-2-AlanoSong@163.com>
-References: <20260106131253.16192-1-AlanoSong@163.com>
- <20260106131253.16192-2-AlanoSong@163.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
+ id 1vd9SG-0006jd-4C; Tue, 06 Jan 2026 10:58:47 -0500
+Received: from mail.maildlp.com (unknown [172.18.224.107])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4dlwnL6qCFzJ46CZ;
+ Tue,  6 Jan 2026 23:58:30 +0800 (CST)
+Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
+ by mail.maildlp.com (Postfix) with ESMTPS id B819A40571;
+ Tue,  6 Jan 2026 23:58:32 +0800 (CST)
+Received: from a2303103017.china.huawei.com (10.47.31.135) by
+ dubpeml500005.china.huawei.com (7.214.145.207) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Tue, 6 Jan 2026 15:58:31 +0000
+To: <qemu-devel@nongnu.org>, <gustavo.romero@linaro.org>
+CC: <anisinha@redhat.com>, <armbru@redhat.com>, <berrange@redhat.com>,
+ <dapeng1.mi@linux.intel.com>, <eric.auger@redhat.com>,
+ <farman@linux.ibm.com>, <imammedo@redhat.com>, <jiangkunkun@huawei.com>,
+ <maobibo@loongson.cn>, <mst@redhat.com>, <mtosatti@redhat.com>,
+ <peter.maydell@linaro.org>, <philmd@linaro.org>, <qemu-arm@nongnu.org>,
+ <richard.henderson@linaro.org>, <shannon.zhaosl@gmail.com>,
+ <yangyicong@hisilicon.com>, <jonathan.cameron@huawei.com>,
+ <linuxarm@huawei.com>, <zhao1.liu@intel.com>
+Subject: [PATCH v17 0/8] Specifying cache topology on ARM
+Date: Tue, 6 Jan 2026 15:58:19 +0000
+Message-ID: <20260106155828.643-1-alireza.sanaee@huawei.com>
+X-Mailer: git-send-email 2.51.0.windows.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.195.245.156]
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.47.31.135]
 X-ClientProxiedBy: lhrpeml500010.china.huawei.com (7.191.174.240) To
- dubpeml100005.china.huawei.com (7.214.146.113)
+ dubpeml500005.china.huawei.com (7.214.145.207)
 Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+ envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -66,119 +68,184 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
+From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue,  6 Jan 2026 21:12:52 +0800
-AlanoSong@163.com wrote:
+Specifying the cache layout in virtual machines is useful for
+applications and operating systems to fetch accurate information about
+the cache structure and make appropriate adjustments. Enforcing correct
+sharing information can lead to better optimizations. Patches that allow
+for an interface to express caches was landed in the prior cycles. This
+patchset uses the interface as a foundation.  Thus, the device tree and
+ACPI/PPTT table, and device tree are populated based on
+user-provided information and CPU topology.
 
-> Add DesignWare I2C controller according to DesignWare
-> I2C databook v2.01a.
-> Confirmed the model with i2c-tools under v6.18
-> linux driver.
-> 
-> The slave mode is not implemented, cause this feature
-> is usually not used.
-> 
-> The 10 bit slave address is not implemented, cause
-> this feature is usually not used, and not supported
-> by qemu I2C core bus currently.
-> 
-> Signed-off-by: Alano Song <AlanoSong@163.com>
-Hi Alano,
+Example:
 
-A very superficial review. Sadly I don't have time to dig
-much deeper at the moment.
-
-Good to see this support.
-
-Jonathan
-
-> diff --git a/hw/i2c/dw_i2c.c b/hw/i2c/dw_i2c.c
-> new file mode 100644
-> index 0000000000..a5a31ec78c
-> --- /dev/null
-> +++ b/hw/i2c/dw_i2c.c
-> @@ -0,0 +1,517 @@
-> +/*
-> + *  DesignWare I2C Bus Serial Interface Emulation
-> + *
-> + *  Copyright (C) 2026 Alano Song <AlanoSong@163.com>
-> + *
-> + *  This program is free software; you can redistribute it and/or modify it
-> + *  under the terms of the GNU General Public License as published by the
-> + *  Free Software Foundation; either version 2 of the License, or
-> + *  (at your option) any later version.
-> + *
-> + *  This program is distributed in the hope that it will be useful, but WITHOUT
-> + *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> + *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-> + *  for more details.
-> + *
-> + *  You should have received a copy of the GNU General Public License along
-> + *  with this program; if not, see <http://www.gnu.org/licenses/>.
-> + *
-> + */
-As below. Can probably replace the boilerplate with an SPDX license
-line and just have the copyright + intro text here.
++----------------+                         +----------------+
+|    Socket 0    |                         |    Socket 1    |
+|    (L3 Cache)  |                         |    (L3 Cache)  |
++--------+-------+                         +--------+-------+
+         |                                          |
++--------+--------+                        +--------+--------+
+|   Cluster 0     |                        |   Cluster 0     |
+|   (L2 Cache)    |                        |   (L2 Cache)    |
++--------+--------+                        +--------+--------+
+         |                                          |
++--------+--------+  +--------+--------+   +--------+--------+  +--------+----+
+|   Core 0         | |   Core 1        |   |   Core 0        |  |   Core 1    |
+|   (L1i, L1d)     | |   (L1i, L1d)    |   |   (L1i, L1d)    |  |   (L1i, L1d)|
++--------+--------+  +--------+--------+   +--------+--------+  +--------+----+
+         |                    |                     |                    |
++--------+              +--------+             +--------+           +--------+
+|Thread 0|              |Thread 1|             |Thread 1|           |Thread 0|
++--------+              +--------+             +--------+           +--------+
+|Thread 1|              |Thread 0|             |Thread 0|           |Thread 1|
++--------+              +--------+             +--------+           +--------+
 
 
-> diff --git a/include/hw/i2c/dw_i2c.h b/include/hw/i2c/dw_i2c.h
-> new file mode 100644
-> index 0000000000..512c749f21
-> --- /dev/null
-> +++ b/include/hw/i2c/dw_i2c.h
-> @@ -0,0 +1,151 @@
-> +/*
-> + *  DesignWare I2C Bus Serial Interface Emulation
-> + *
-> + *  Copyright (C) 2026 Alano Song <AlanoSong@163.com>
-> + *
-> + *  This program is free software; you can redistribute it and/or modify it
-> + *  under the terms of the GNU General Public License as published by the
-> + *  Free Software Foundation; either version 2 of the License, or
-> + *  (at your option) any later version.
-> + *
-> + *  This program is distributed in the hope that it will be useful, but WITHOUT
-> + *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> + *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-> + *  for more details.
-> + *
-> + *  You should have received a copy of the GNU General Public License along
-> + *  with this program; if not, see <http://www.gnu.org/licenses/>.
+The following command will represent the system relying on **ACPI PPTT tables**.
 
-For new code in QEMU I think we are fine with just SPDX.  See many examples
-in tree.  It saves on repeating this boilerplate.
+./qemu-system-aarch64 \
+ -machine virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluster,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
+ -initrd rootfs.cpio.gz \
+ -bios ./edk2-aarch64-code.fd \
+ -nographic
 
-> + *
-> + */
-> +
-> +#ifndef DW_I2C_H
-> +#define DW_I2C_H
-> +
-> +#include "hw/core/sysbus.h"
-> +#include "qom/object.h"
-> +#include "qemu/fifo8.h"
-> +
-> +#define TYPE_DW_I2C "dw.i2c"
-> +OBJECT_DECLARE_SIMPLE_TYPE(DWI2CState, DW_I2C)
-> +
-> +#define DW_I2C_TX_FIFO_DEPTH        16
-> +#define DW_I2C_RX_FIFO_DEPTH        16
+The following command will represent the system relying on **the device tree**.
 
-> +
-> +#define DW_IC_CON_MASTER            BIT(0)
-> +#define DW_IC_CON_SPEED_STANDARD    (0x1 << 1)
-> +#define DW_IC_CON_SPEED_FAST        (0x2 << 1)
-> +#define DW_IC_CON_SPEED_HIGH        (0x3 << 1)
+./qemu-system-aarch64 \
+ -machine virt,acpi=off,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluster,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=off" \
+ -initrd rootfs.cpio.gz \
+ -nographic
 
-Smells of value being written to a field rather than
-a series of values with meaning on their own. Qemu
-has a rich set of register field macros. I'd look
-at using those to make your life easier.
+Failure cases:
+    1) There are scenarios where caches exist in systems' registers but
+    left unspecified by users. In this case qemu returns failure.
 
-> +#define DW_IC_CON_RESTART_EN        BIT(5)
+    2) SMT threads cannot share caches which is not very common. More
+    discussions here [1].
+
+Currently only three levels of caches are supported to be specified from
+the command line. However, increasing the value does not require
+significant changes. Further, this patch assumes l2 and l3 unified
+caches and does not allow l(2/3)(i/d). The level terminology is
+thread/core/cluster/socket. Hierarchy assumed in this patch:
+Socket level = Cluster level + 1 = Core level + 2 = Thread level + 3;
+
+Possible future enhancements:
+  1) Separated data and instruction cache at L2 and L3.
+  2) Additional cache controls.  e.g. size of L3 may not want to just
+  match the underlying system, because only some of the associated host
+  CPUs may be bound to this VM.
+
+[1] https://lore.kernel.org/devicetree-spec/20250203120527.3534-1-alireza.sanaee@huawei.com/
+
+Change Log:
+  v16->v17:
+    * Rebased to 0fc482b73d8e085d1375b4e17b0647fd2e6fe8f0.
+    * Addressed Gustavo's comments. Thanks for the review.
+    * v16: https://lore.kernel.org/all/20250827142152.206-1-alireza.sanaee@huawei.com/
+
+  v15->v16:
+    * Rebase to e771ba98de25c9f43959f79fc7099cf7fbba44cce.
+    * v15: https://lore.kernel.org/qemu-devel/20250812122829.204-1-alireza.sanaee@huawei.com/
+
+  v14->v15:
+   * Introduced a separate patch for loongarch64 build_pptt function.
+   * Made sure loongarch64 tests pass.
+   * Downgraded to V2 for ACPI PPTT. Removed PPTT IDs as was not necessary.
+   * Removed dependency as it's been merged in the recent cycle.
+     -- 20250604115233.1234-1-alireza.sanaee@huawei.com
+   * Fixed styling issues and removed irrelevant changes.
+   * Moved cache headers to core/cpu.h to be used in both acpi and virt.
+   * v14: https://lore.kernel.org/qemu-devel/20250707121908.155-1-alireza.sanaee@huawei.com/
+   # Thanks to Jonathan and Zhao for their comments.
+
+  v13->v14:
+   * Rebased on latest staging.
+   * Made some naming changes to machine-smp.c, addd docs added to the
+        same file.
+
+  v12->v13:
+   * Applied comments from Zhao.
+   * Introduced a new patch for machine specific cache topology functions.
+   * Base: bc98ffdc7577e55ab8373c579c28fe24d600c40f.
+
+  v11->v12:
+   * Patch #4 couldn't not merge properly as the main file diverged. Now it is fixed (hopefully).
+   * Loonarch build_pptt function updated.
+   * Rebased on 09be8a511a2e278b45729d7b065d30c68dd699d0.
+
+  v10->v11:
+   * Fix some coding style issues.
+   * Rename some variables.
+
+  v9->v10:
+   * PPTT rev down to 2.
+
+  v8->v9:
+   * rebase to 10
+   * Fixed a bug in device-tree generation related to a scenario when
+        caches are shared at core in higher levels than 1.
+  v7->v8:
+   * rebase: Merge tag 'pull-nbd-2024-08-26' of https://repo.or.cz/qemu/ericb into staging
+   * I mis-included a file in patch #4 and I removed it in this one.
+
+  v6->v7:
+   * Intel stuff got pulled up, so rebase.
+   * added some discussions on device tree.
+
+  v5->v6:
+   * Minor bug fix.
+   * rebase based on new Intel patchset.
+     - https://lore.kernel.org/qemu-devel/20250110145115.1574345-1-zhao1.liu@intel.com/
+
+  v4->v5:
+    * Added Reviewed-by tags.
+    * Applied some comments.
+
+  v3->v4:
+    * Device tree added.
+
+Alireza Sanaee (8):
+  target/arm/tcg: increase cache level for cpu=max
+  hw/core/machine: topology functions capabilities added
+  hw/arm/virt: add cache hierarchy to device tree
+  bios-tables-test: prepare to change ARM ACPI virt PPTT
+  acpi: add caches to ACPI build_pptt table function
+  hw/acpi: add cache hierarchy to pptt table
+  tests/qtest/bios-table-test: testing new ARM ACPI PPTT topology
+  Update the ACPI tables based on new aml-build.c
+
+ hw/acpi/aml-build.c                        | 203 +++++++++++-
+ hw/arm/virt-acpi-build.c                   |   8 +-
+ hw/arm/virt.c                              | 364 ++++++++++++++++++++-
+ hw/core/machine-smp.c                      |  52 +++
+ hw/loongarch/virt-acpi-build.c             |   4 +-
+ include/hw/acpi/aml-build.h                |   4 +-
+ include/hw/acpi/cpu.h                      |  10 +
+ include/hw/arm/virt.h                      |  17 +-
+ include/hw/core/boards.h                   |   5 +
+ include/hw/core/cpu.h                      |  12 +
+ target/arm/tcg/cpu64.c                     |  10 +
+ tests/data/acpi/aarch64/virt/PPTT.topology | Bin 356 -> 516 bytes
+ tests/qtest/bios-tables-test.c             |   4 +
+ 13 files changed, 678 insertions(+), 15 deletions(-)
+
+-- 
+2.43.0
 
 

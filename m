@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D61EDCE9D5B
-	for <qemu-arm@archiver.kernel.org>; Tue,  6 Jan 2026 15:46:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B683CE9D6E
+	for <qemu-arm@archiver.kernel.org>; Tue,  6 Jan 2026 15:52:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vd9Fi-0004Pe-4X; Tue, 06 Jan 2026 10:45:46 -0500
+	id 1vd9MD-0000S5-N1; Tue, 06 Jan 2026 10:52:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vd9Fg-0004HZ-F8; Tue, 06 Jan 2026 10:45:44 -0500
+ id 1vd9MC-0000RL-Pw; Tue, 06 Jan 2026 10:52:28 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vd9Fd-00040t-4P; Tue, 06 Jan 2026 10:45:44 -0500
-Received: from mail.maildlp.com (unknown [172.18.224.107])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4dlwVD63sjzJ46k3;
- Tue,  6 Jan 2026 23:45:24 +0800 (CST)
+ id 1vd9MA-0005H0-Kf; Tue, 06 Jan 2026 10:52:28 -0500
+Received: from mail.maildlp.com (unknown [172.18.224.83])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4dlwfC2Qt0zJ46rw;
+ Tue,  6 Jan 2026 23:52:19 +0800 (CST)
 Received: from dubpeml100005.china.huawei.com (unknown [7.214.146.113])
- by mail.maildlp.com (Postfix) with ESMTPS id 9BA9740570;
- Tue,  6 Jan 2026 23:45:26 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 213CA40569;
+ Tue,  6 Jan 2026 23:52:21 +0800 (CST)
 Received: from localhost (10.195.245.156) by dubpeml100005.china.huawei.com
  (7.214.146.113) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.36; Tue, 6 Jan
- 2026 15:45:25 +0000
-Date: Tue, 6 Jan 2026 15:45:22 +0000
+ 2026 15:52:20 +0000
+Date: Tue, 6 Jan 2026 15:52:18 +0000
 To: <AlanoSong@163.com>
 CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <cminyard@mvista.com>,
  <peter.maydell@linaro.org>, <philmd@linaro.org>, <ani@anisinha.ca>,
  <pbonzini@redhat.com>, <shannon.zhaosl@gmail.com>
-Subject: Re: [PATCH 2/2] hw/arm/virt: Add DesignWare I2C controller
-Message-ID: <20260106154522.000046a6@huawei.com>
-In-Reply-To: <20260106131253.16192-3-AlanoSong@163.com>
+Subject: Re: [PATCH 1/2] hw/i2c/dw: Add DesignWare I2C controller emulator
+Message-ID: <20260106155218.0000310f@huawei.com>
+In-Reply-To: <20260106131253.16192-2-AlanoSong@163.com>
 References: <20260106131253.16192-1-AlanoSong@163.com>
- <20260106131253.16192-3-AlanoSong@163.com>
+ <20260106131253.16192-2-AlanoSong@163.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -71,167 +71,114 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue,  6 Jan 2026 21:12:53 +0800
+On Tue,  6 Jan 2026 21:12:52 +0800
 AlanoSong@163.com wrote:
 
-> From: Alano Song <AlanoSong@163.com>
+> Add DesignWare I2C controller according to DesignWare
+> I2C databook v2.01a.
+> Confirmed the model with i2c-tools under v6.18
+> linux driver.
 > 
-> Add DesignWare I2C controller onto virt board,
-> and also an at24c eeprom for r/w operation.
+> The slave mode is not implemented, cause this feature
+> is usually not used.
 > 
-> Add these two devices into arm virt acpi table.
+> The 10 bit slave address is not implemented, cause
+> this feature is usually not used, and not supported
+> by qemu I2C core bus currently.
 > 
-> Confirmed with i2c-tools under v6.18 linux driver.
-> 
+> Signed-off-by: Alano Song <AlanoSong@163.com>
 Hi Alano,
 
-> Signed-off-by: Alano Song <AlanoSong@163.com>
+A very superficial review. Sadly I don't have time to dig
+much deeper at the moment.
 
-Perhaps a silly question but why do you want this on arm/virt?
+Good to see this support.
 
-I've been carrying a backed up version of the aspeed i2c but for
-that we are using it with MCTP (I'm guessing this one isn't capable
-enough) and devices on that are inherently discoverable unlike
-normal I2C devices.  Even so I don't plan to upstream that as for
-the CXL fabric stuff I can use MCTP over USB instead and don't
-need to change arm/virt at all.
+Jonathan
 
-I'm not sure how useful an eeprom is beyond verifying your control emulation,
-but perhaps that's all that is intended?
+> diff --git a/hw/i2c/dw_i2c.c b/hw/i2c/dw_i2c.c
+> new file mode 100644
+> index 0000000000..a5a31ec78c
+> --- /dev/null
+> +++ b/hw/i2c/dw_i2c.c
+> @@ -0,0 +1,517 @@
+> +/*
+> + *  DesignWare I2C Bus Serial Interface Emulation
+> + *
+> + *  Copyright (C) 2026 Alano Song <AlanoSong@163.com>
+> + *
+> + *  This program is free software; you can redistribute it and/or modify it
+> + *  under the terms of the GNU General Public License as published by the
+> + *  Free Software Foundation; either version 2 of the License, or
+> + *  (at your option) any later version.
+> + *
+> + *  This program is distributed in the hope that it will be useful, but WITHOUT
+> + *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+> + *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+> + *  for more details.
+> + *
+> + *  You should have received a copy of the GNU General Public License along
+> + *  with this program; if not, see <http://www.gnu.org/licenses/>.
+> + *
+> + */
+As below. Can probably replace the boilerplate with an SPDX license
+line and just have the copyright + intro text here.
 
 
-> ---
->  hw/arm/Kconfig           |  1 +
->  hw/arm/virt-acpi-build.c | 32 ++++++++++++++++++++++++++++++++
->  hw/arm/virt.c            | 38 +++++++++++++++++++++++++++++++++++++-
->  include/hw/arm/virt.h    |  1 +
->  4 files changed, 71 insertions(+), 1 deletion(-)
+> diff --git a/include/hw/i2c/dw_i2c.h b/include/hw/i2c/dw_i2c.h
+> new file mode 100644
+> index 0000000000..512c749f21
+> --- /dev/null
+> +++ b/include/hw/i2c/dw_i2c.h
+> @@ -0,0 +1,151 @@
+> +/*
+> + *  DesignWare I2C Bus Serial Interface Emulation
+> + *
+> + *  Copyright (C) 2026 Alano Song <AlanoSong@163.com>
+> + *
+> + *  This program is free software; you can redistribute it and/or modify it
+> + *  under the terms of the GNU General Public License as published by the
+> + *  Free Software Foundation; either version 2 of the License, or
+> + *  (at your option) any later version.
+> + *
+> + *  This program is distributed in the hope that it will be useful, but WITHOUT
+> + *  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+> + *  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
+> + *  for more details.
+> + *
+> + *  You should have received a copy of the GNU General Public License along
+> + *  with this program; if not, see <http://www.gnu.org/licenses/>.
 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 03b4342574..3d06356169 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -100,6 +100,34 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
->      aml_append(scope, dev);
->  }
->  
+For new code in QEMU I think we are fine with just SPDX.  See many examples
+in tree.  It saves on repeating this boilerplate.
 
-An example of the AML blob would be useful in the patch description (or
-the one updating the ACPI test tables).
-I'd also expect a lot of bios test failures given you didn't change the
-data files.  Run make check-qtest and see what blow up.
-
-> +static void acpi_dsdt_add_i2c(Aml *scope, const MemMapEntry *i2c_memmap,
-> +                               uint32_t i2c_irq)
-> +{
-> +    Aml *i2c_dev, *eprm_dev, *crs;
+> + *
+> + */
 > +
-> +    i2c_dev = aml_device("I2C0");
-> +    aml_append(i2c_dev, aml_name_decl("_HID", aml_string("INT3433")));
-
-That seems to be a valid intel PNP ID, but please add a reference to where it
-came from (I'll guess the kernel driver rather than some document?)
-
-> +    aml_append(i2c_dev, aml_name_decl("_UID", aml_int(0)));
+> +#ifndef DW_I2C_H
+> +#define DW_I2C_H
 > +
-> +    crs = aml_resource_template();
-> +    aml_append(crs, aml_memory32_fixed(i2c_memmap->base,
-> +                                       i2c_memmap->size, AML_READ_WRITE));
-> +    aml_append(crs, aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
-> +                                  AML_EXCLUSIVE, &i2c_irq, 1));
-> +    aml_append(i2c_dev, aml_name_decl("_CRS", crs));
+> +#include "hw/core/sysbus.h"
+> +#include "qom/object.h"
+> +#include "qemu/fifo8.h"
 > +
-> +    eprm_dev = aml_device("EPRM");
-> +    aml_append(eprm_dev, aml_name_decl("_HID", aml_string("INT3499")));
-
-Likewise, a reference for this PNP format ACPI ID would be good.
-
-> +    aml_append(eprm_dev, aml_name_decl("_UID", aml_int(0)));
+> +#define TYPE_DW_I2C "dw.i2c"
+> +OBJECT_DECLARE_SIMPLE_TYPE(DWI2CState, DW_I2C)
 > +
-> +    crs = aml_resource_template();
-> +    aml_append(crs, aml_i2c_serial_bus_device(0x50, "^"));
+> +#define DW_I2C_TX_FIFO_DEPTH        16
+> +#define DW_I2C_RX_FIFO_DEPTH        16
 
-This is the bit that made me ask for a blob in the patch description.
-I have very little idea what that actually does in AML :( (the "^"
-in particular)
-
-> +    aml_append(eprm_dev, aml_name_decl("_CRS", crs));
 > +
-> +    aml_append(i2c_dev, eprm_dev);
-> +    aml_append(scope, i2c_dev);
-> +}
+> +#define DW_IC_CON_MASTER            BIT(0)
+> +#define DW_IC_CON_SPEED_STANDARD    (0x1 << 1)
+> +#define DW_IC_CON_SPEED_FAST        (0x2 << 1)
+> +#define DW_IC_CON_SPEED_HIGH        (0x3 << 1)
 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index fd0e28f030..8fd37126d1 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -38,6 +38,8 @@
->  #include "hw/arm/boot.h"
->  #include "hw/arm/primecell.h"
->  #include "hw/arm/virt.h"
-> +#include "hw/i2c/dw_i2c.h"
-> +#include "hw/nvram/eeprom_at24c.h"
->  #include "hw/arm/machines-qom.h"
->  #include "hw/block/flash.h"
->  #include "hw/display/ramfb.h"
-> @@ -193,7 +195,8 @@ static const MemMapEntry base_memmap[] = {
->      [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
->      [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
->      [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
-> -    [VIRT_ACPI_PCIHP] =         { 0x090c0000, ACPI_PCIHP_SIZE },
-> +    [VIRT_I2C] =                { 0x090c0000, 0x00001000 },
-> +    [VIRT_ACPI_PCIHP] =         { 0x090d0000, ACPI_PCIHP_SIZE },
+Smells of value being written to a field rather than
+a series of values with meaning on their own. Qemu
+has a rich set of register field macros. I'd look
+at using those to make your life easier.
 
-This breaks VM migration.  You need to put your new memory in a hole
-in the memory map, not move things.
-
->      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
->      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
->      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-> @@ -245,6 +248,7 @@ static const int a15irqmap[] = {
->      [VIRT_GPIO] = 7,
->      [VIRT_UART1] = 8,
->      [VIRT_ACPI_GED] = 9,
-> +    [VIRT_I2C] = 10,
->      [VIRT_MMIO] = 16, /* ...to 16 + NUM_VIRTIO_TRANSPORTS - 1 */
->      [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
->      [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
-> @@ -1016,6 +1020,36 @@ static void create_uart(const VirtMachineState *vms, int uart,
->      g_free(nodename);
->  }
->  
-> +static void create_i2c(const VirtMachineState *vms, int i2c)
-> +{
-> +    char *nodename = NULL;
-
-Always overridden so don't set initial value.  Maybe use a g_autofree
-to avoid having to tidy it up on exit from the function. 
-
-> +    hwaddr base = vms->memmap[i2c].base;
-> +    hwaddr size = vms->memmap[i2c].size;
-> +    int irq = vms->irqmap[i2c];
-> +    MachineState *ms = MACHINE(vms);
-> +    DeviceState *dev = sysbus_create_simple(TYPE_DW_I2C, base,
-> +                                            qdev_get_gpio_in(vms->gic, irq));
-> +    DWI2CState *s = DW_I2C(dev);
-> +
-> +    nodename = g_strdup_printf("/dw-i2c@%" PRIx64, base);
-> +    qemu_fdt_add_subnode(ms->fdt, nodename);
-> +    qemu_fdt_setprop_string(ms->fdt, nodename, "compatible",
-> +                            "snps,designware-i2c");
-> +    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
-> +                                 2, base, 2, size);
-> +    qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupts",
-> +                           GIC_FDT_IRQ_TYPE_SPI, irq,
-> +                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-> +
-> +    if (s && s->bus) {
-> +        at24c_eeprom_init(s->bus, 0x50, 256);
-> +    } else {
-> +        fprintf(stderr, "Warning: DW I2C created but bus not available\n");
-> +    }
-> +
-> +    g_free(nodename);
-> +}
+> +#define DW_IC_CON_RESTART_EN        BIT(5)
 
 

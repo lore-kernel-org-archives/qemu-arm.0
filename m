@@ -4,58 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEF98CF6C1F
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Jan 2026 09:48:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A319ACFD641
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Jan 2026 14:54:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdQ9D-0002Re-P4; Wed, 07 Jan 2026 04:48:13 -0500
+	id 1vdUv3-0005Jp-LN; Wed, 07 Jan 2026 09:53:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vdQ8z-0002Qz-L7; Wed, 07 Jan 2026 04:47:59 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vdUv0-0005JD-4p
+ for qemu-arm@nongnu.org; Wed, 07 Jan 2026 09:53:51 -0500
+Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vdQ8u-0005dE-9t; Wed, 07 Jan 2026 04:47:54 -0500
-Received: from mail.maildlp.com (unknown [172.18.224.83])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4dmNW05jMHzHnGk2;
- Wed,  7 Jan 2026 17:47:40 +0800 (CST)
-Received: from dubpeml100005.china.huawei.com (unknown [7.214.146.113])
- by mail.maildlp.com (Postfix) with ESMTPS id AFE4740086;
- Wed,  7 Jan 2026 17:47:46 +0800 (CST)
-Received: from localhost (10.203.177.15) by dubpeml100005.china.huawei.com
- (7.214.146.113) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.36; Wed, 7 Jan
- 2026 09:47:45 +0000
-Date: Wed, 7 Jan 2026 09:47:44 +0000
-To: Alano Song <alanosong@163.com>
-CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <cminyard@mvista.com>,
- <peter.maydell@linaro.org>, <philmd@linaro.org>, <ani@anisinha.ca>,
- <pbonzini@redhat.com>, <shannon.zhaosl@gmail.com>
-Subject: Re: [PATCH 2/2] hw/arm/virt: Add DesignWare I2C controller
-Message-ID: <20260107094744.00005e57@huawei.com>
-In-Reply-To: <619b5c6f.5d81.19b9747e84d.Coremail.alanosong@163.com>
-References: <20260106131253.16192-1-AlanoSong@163.com>
- <20260106131253.16192-3-AlanoSong@163.com>
- <20260106154522.000046a6@huawei.com>
- <619b5c6f.5d81.19b9747e84d.Coremail.alanosong@163.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vdUux-0001oH-J9
+ for qemu-arm@nongnu.org; Wed, 07 Jan 2026 09:53:49 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.58.195])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4dmWHt60LRz5vtM;
+ Wed,  7 Jan 2026 14:53:30 +0000 (UTC)
+Received: from kaod.org (37.59.142.102) by DAG3EX1.mxp5.local (172.16.2.21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Wed, 7 Jan
+ 2026 15:53:29 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-102R0045c61bf26-2af8-405f-bc92-3bd885641d5a,
+ B17C28E31DD9158A39196EDC3B37DBE8CF9EC635) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <1a3595d9-eac7-4575-a31f-1b869c6175f3@kaod.org>
+Date: Wed, 7 Jan 2026 15:53:28 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 14/19] hw/arm/aspeed: attach I2C device to AST1700 model
+To: Kane Chen <kane_chen@aspeedtech.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, <nabihestefan@google.com>
+References: <20251224014203.756264-1-kane_chen@aspeedtech.com>
+ <20251224014203.756264-15-kane_chen@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20251224014203.756264-15-kane_chen@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.15]
-X-ClientProxiedBy: lhrpeml500011.china.huawei.com (7.191.174.215) To
- dubpeml100005.china.huawei.com (7.214.146.113)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Originating-IP: [37.59.142.102]
+X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG3EX1.mxp5.local
+ (172.16.2.21)
+X-Ovh-Tracer-GUID: 66d33847-14f1-43af-b54a-e3b799a65b17
+X-Ovh-Tracer-Id: 8316459662018120693
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEFqX41aXdzZNolpssloLHnK6UAggV3VtD7bWovfZizjs2dM43lWx8AyvLntyDml8150rahQRncdVnHjYNqQASNLd41Z0ifbskrsDA6b1fkPARqf/c62qc+yETBP53v4j9+1Fz14DrxoQEEvZhv+ntDM5r9EQGsIvQtP6kcLQRcWQvtWqVsDAYuMYT0NGTA0vfqqZLKik7iPgos01MrNFSXfAdAGMZEJXWtrJieXCq+O3hmbJBg3KSza39v8g5k0XucVtH3hAJBoM58yPeZhs7Ptv/vDC9GpQGP7YOQOL+a0Byl3dKprIST+23GeA8etR0dml76IuQMed0+vLajmVpqhrraVmcxmNN+/nCwfP+J8RYD3Q/XCGuzk4y5DQGUfN0VroeItRKhg9tu/CXxFDj0c72EyYZSgQhFs7fWQsh7kawTrgrEsY/mia/S/EbVpCkVsCnVfQm4lyUXegz3iiZBKDm5xzd86nexOqUpo/TMhpYzri15xPD/7aWsmmZq4h3cwjIa2iM5+EsNcKLRwGjTpyWVNRHz6iu5hsMlMGfeAOonPe9PGTK6u3gf6VDC5i1OM7pqAy/LUknFJmCuMdxd0hUKg0wVG1udrDqnxII0VRfgXqgYPR5QcXkin2VNGctUPt5xi/nr3irMv9ePz61FilT5Ezcv/MGkRFLRfj2rnA
+DKIM-Signature: a=rsa-sha256; bh=zBQ8wJDd+bgv7wbxHCuySd6huWjzWXOFWvrjAmf6j/s=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1767797612; v=1;
+ b=gymPvplqiwR8QIPmzzjIdCVjiuRVrr1ZIGWgL1EjZqixB6RiU6B2YnA/cKbnhVSK4JFdHrHM
+ ehoQe6ceEpBU+DsnxPO/PLRxlZiDgqynx4EA5JNN/oqDb/PJcLffxA0JsHCKZz0tscC2i0Z2ozq
+ F9E+ezaMfC1QHJBqZW0Nk9kWQ/X77SkanxBTHjdBOAckzCI7hj4fPysY41D5J4j3bwm7u5tbR0L
+ nW/WxyC2qLIRyYeZaoThnxtAbtLPQCs4lCeJPKpQbnGbx9x60O6daORJmPUK6/dxGtOpuFFV2aH
+ rpiMjzmOCzdiBO+VlMPAUP6yepIJE18INur1NgHybD9Qg==
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo529.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -68,121 +128,95 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <jonathan.cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 7 Jan 2026 15:07:10 +0800 (CST)
-"Alano Song" <alanosong@163.com> wrote:
+Hello Kane,
 
-> At 2026-01-06 23:45:22, "Jonathan Cameron via" <qemu-devel@nongnu.org> wrote:
-> >On Tue,  6 Jan 2026 21:12:53 +0800
-> >AlanoSong@163.com wrote:
-> >  
-> >> From: Alano Song <AlanoSong@163.com>
-> >> 
-> >> Add DesignWare I2C controller onto virt board,
-> >> and also an at24c eeprom for r/w operation.
-> >> 
-> >> Add these two devices into arm virt acpi table.
-> >> 
-> >> Confirmed with i2c-tools under v6.18 linux driver.
-> >>   
-> >Hi Alano,
-> >  
-> >> Signed-off-by: Alano Song <AlanoSong@163.com>  
-> >
-> >Perhaps a silly question but why do you want this on arm/virt?
-> >
-> >I've been carrying a backed up version of the aspeed i2c but for
-> >that we are using it with MCTP (I'm guessing this one isn't capable
-> >enough) and devices on that are inherently discoverable unlike
-> >normal I2C devices.  Even so I don't plan to upstream that as for
-> >the CXL fabric stuff I can use MCTP over USB instead and don't
-> >need to change arm/virt at all.
-> >  
-> 
-> 
-> Cause we are emulating our soc chip on qemu, and our first choice of
-> machine board is arm/virt.
-Are you planning to ultimately upstream support for emulating your SoC?
-If you do, is a new emulated board perhaps appropriate?
+I agree we need a way to distinguish the I2C buses belonging to
+the Aspeed Soc from those of the Aspeed IO Expander, so devices
+can be attached on the correct bus.
 
-> But we unfortunately found there is no DesignWare I2C model and no
-> I2C device in arm/virt.
-> 
-> Someone else may encounter this problem as well, so I decide to solve it.
+Let's proceed with your proposal. Below are some refinements.
 
-It's definitely good to have emulation of this fairly common IP.
+[ ... ]
 
-> 
-> 
-> >I'm not sure how useful an eeprom is beyond verifying your control emulation,
-> >but perhaps that's all that is intended?
-> >  
-> 
-> >  
-> 
-> 
-> Yes you are right, single I2C controller cannot be verified, so I
-> add an eeprom to work with it.
-
-Within arm virt one concern is that this unconditionally enabled
-so attacks on emulation code are a real possibility (in VM usecases)
-
-> 
-> 
-> >> ---
-
-> >> +static void acpi_dsdt_add_i2c(Aml *scope, const MemMapEntry *i2c_memmap,
-> >> +                               uint32_t i2c_irq)
-> >> +{
-> >> +    Aml *i2c_dev, *eprm_dev, *crs;
-> >> +
-> >> +    i2c_dev = aml_device("I2C0");
-> >> +    aml_append(i2c_dev, aml_name_decl("_HID", aml_string("INT3433")));  
-> >
-> >That seems to be a valid intel PNP ID, but please add a reference to where it
-> >came from (I'll guess the kernel driver rather than some document?)  
-> 
-> >  
-> 
-> 
-> Yes, you are right, this PNP ID comes from kernel
-> driver(i2c-designware-platdrv.c/dw_i2c_acpi_match)
-> it's just for testing convenience under linux kernel.
-
-If you are ultimately emulating a real SoC I'd suggest using
-an ID issued by they vendor of the board or the SoC.  They will need
-to have a suitable ACPI or PNP ID though (and so be a member of
-UEFI.org)  That will allow for any quirks in the kernel driver
-(and you'd need to emulate them as well).  Who knows what slight
-differences there might be with the Intel version of the IP.
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -1261,6 +1261,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+>   static const Property aspeed_i2c_properties[] = {
+>       DEFINE_PROP_LINK("dram", AspeedI2CState, dram_mr,
+>                        TYPE_MEMORY_REGION, MemoryRegion *),
+> +    DEFINE_PROP_STRING("bus-label", AspeedI2CState, bus_label),
+>   };
+>   
+>   static void aspeed_i2c_class_init(ObjectClass *klass, const void *data)
+> @@ -1421,14 +1422,28 @@ static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
+>   {
+>       AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
+>       AspeedI2CClass *aic;
+> -    g_autofree char *name = g_strdup_printf(TYPE_ASPEED_I2C_BUS ".%d", s->id);
 
 
+I would prefer if you added a new property to AspeedI2CBus :
 
-> 
-> 
-> >> +    aml_append(eprm_dev, aml_name_decl("_UID", aml_int(0)));
-> >> +
-> >> +    crs = aml_resource_template();
-> >> +    aml_append(crs, aml_i2c_serial_bus_device(0x50, "^"));  
-> >
-> >This is the bit that made me ask for a blob in the patch description.
-> >I have very little idea what that actually does in AML :( (the "^"
-> >in particular)  
-> 
-> >  
-> 
-> 
-> Here, "^" represents the father device of eeprom ("EPRM"),
-> just the I2C controller device ("I2C0").
-> I will add description for it in patch v2.
+     DEFINE_PROP_STRING("name", AspeedI2CBus, name),
 
-Ah. Ok.  I didn't know about that and couldn't find it in the ACPI
-spec :(  A more specific reference like you suggest is fine.
+which would be set in aspeed_i2c_realize() :
+
+	/* default value */
+	if (!s->bus_label) {
+             s->bus_label = g_strdup(TYPE_ASPEED_I2C_BUS);
+	}
+
+	g_autofree char *name = g_strdup_printf("%s.%d", s->bus_label, i);
+
+         if (!object_property_set_str(bus, "bus-name", name, errp)) {
+             return;
+         }
+
+The naming should be a higher level decision, made at the SoC level.
+So, aspeed_ast1700_realize() should be adjusted when the "bus-label"
+property is set.
+
+I don't think we need to keep the "aspeed.%s.i2c.bus" prefix. How about
+removing "aspeed" (which is redudant anyhow on an Aspeed machine) ?
+
+   "ioexp%d.i2c.bus"
+
+Also, in aspeed_i2c_bus_realize(), please make sure AspeedI2CBus::name
+is set, like s->controller. This could be an assert too.
+
+Thanks,
+
+C.
 
 
-Jonathan
+> -    g_autofree char *pool_name = g_strdup_printf("%s.pool", name);
+> +    g_autofree char *name = NULL;
+> +    g_autofree char *pool_name = NULL;
+>   
+>       if (!s->controller) {
+>           error_setg(errp, TYPE_ASPEED_I2C_BUS ": 'controller' link not set");
+>           return;
+>       }
+>   
+> +    /*
+> +     * I2C bus naming:
+> +     *   - Empty bus_label -> BMC internal controller, use default name.
+> +     *   - Non-empty bus_label -> external/addon controller, prefix with label
+> +     *     to avoid conflicts and show bus origin.
+> +     */
+> +    if (!s->controller->bus_label || (strlen(s->controller->bus_label) == 0)) {
+> +        name = g_strdup_printf(TYPE_ASPEED_I2C_BUS ".%d", s->id);
+> +    } else {
+> +        name = g_strdup_printf("aspeed.%s.i2c.bus.%d",
+> +                               s->controller->bus_label, s->id);
+> +    }
+> +    pool_name = g_strdup_printf("%s.pool", name);
+> +
+>       aic = ASPEED_I2C_GET_CLASS(s->controller);
+>   
+>       sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+
 

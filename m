@@ -4,105 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52368CEFD0C
-	for <qemu-arm@archiver.kernel.org>; Tue,  6 Jan 2026 23:21:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AFE2CF6BE3
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Jan 2026 01:52:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdGLM-0005hY-7R; Tue, 06 Jan 2026 18:20:04 -0500
+	id 1vdIiE-0001EN-0t; Tue, 06 Jan 2026 20:51:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vdGLF-0005a6-Pk
- for qemu-arm@nongnu.org; Tue, 06 Jan 2026 18:19:58 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vdGLA-0001PU-TB
- for qemu-arm@nongnu.org; Tue, 06 Jan 2026 18:19:57 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-47a95efd2ceso12978665e9.2
- for <qemu-arm@nongnu.org>; Tue, 06 Jan 2026 15:19:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767741591; x=1768346391; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=SBL1ZMxoMddvQu3XmAwycOMhL36GgLgIZLEqZeSot6o=;
- b=VLygTXBYBh4dcdLudkFriOGutoUF9fwkxRxDi1mkcfCAG56m8Qqwacu/UJtOP803m8
- Cn1XSmEX/geb/L9upTm7qhyUq38yaxSfLO8VX8Kqm9VJ+9BIdVzJndXW1zUVHyUsPA4s
- MLk5kYIhYeTI1uAxUerefNvr4RozXpTYdc7kbkHL8NAEZ29c9Ng/cARAvR5PfmV2QA4l
- yCdiPUNjV1vl5inG20vz8dj3Kywb0uXXVqoqsfnfmqI5q3K6G1AMgfLc2pHeuDHtCX3u
- lqeoe980pPlzBos9l7zalYc45IJczbTxPLBfMgsYI5gwsNwOX0Vyckn+LxJ6vf5353fA
- 7DqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767741591; x=1768346391;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=SBL1ZMxoMddvQu3XmAwycOMhL36GgLgIZLEqZeSot6o=;
- b=r2ZaeD1BdzFjnDCzOA6BXaAjxh7P+yVNTrxjWVGHZz9eXiF4LejPuS/mncn11yN17w
- L1EhYlYA/y/wlKRiN4qb+0iq2P6RiMJUMRa+ume/cXP8mobsNuvTxSYrQbonad1P/wQg
- w09yqupgjHYe71FkO538GU6VgTuuuHliU8k9IriekG2Q5R01esQs9CIrWwWpIKVN3hz1
- xms9KAn9HVUOqrv9JHG3PCIwNddj4hLasMA3tTPy1T3wBiC2/zRjodNk0JwtSXGJ1B0t
- AixrfL0PBru7sAHc0zmg/zVZBYbRZeDBtWojweRBddsUaWVOnsvmPj+fk5Nv83SbxR/c
- aHZg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWkc8C64NbUhQ8WfrS3hbkXzpQNig9EOBfx8OmfSvM7P1FBFs9g6q2y59OaosSKueiu0OU9antbzg==@nongnu.org
-X-Gm-Message-State: AOJu0Yw/QZ00tAH9YnAHRt61xMwG7YFEnm/x4gdIjctl4l/55G2eJ3jt
- 3RTugMfIUIgXxkmUOdTVVZgFtVxtaGMIolvhMRYSliPPqhUjCiafR14OyhuTXzRNpeO26bFM5Db
- Lto2POHQ=
-X-Gm-Gg: AY/fxX4fG2v51JmYSYZqVYmf3HuEsdo5ViC5V8BEiFzPjMyCU/Kml+L30g0AX1Yx1ms
- iUuVxIeUBF63pDd7iBzbSxXOSCtRRzPBnturuFefSpDX4YVHxgBZezaHKbZ6I7UMpjD/TC32Pfo
- /13zVgNXSH0WeFbjHtzjqE9iPPhadRIAXJwfYCwg0gnoAqbuHQ9T+eD9UhViAe+p+N7T4aqrKv8
- wO9PGeYWNcj5eoYX6JXiLjQwhdPUQIhI8bEkYNvtKNQDRK9TW2BBDdvr0Zo3W3BipXsc04nfTIG
- Q4AOr0PeA7sUjooqmtgsg4vO76r97iLKiRKA5LsWtoANKk8CpDmtnkow+0rVLNHR95gq1V9/Ia6
- vLYtAB26xI2GJcd0VGIuI/wG+wg2xhtYOZjIMAnl/hznQBjXULH6eKQRoXYNdE3+4LBiMAjvrDh
- 7VdtIRBB3+tFZEcq59d5RmTiimcvlP14TuBwMiNFfsRCweoAtDfCMgKbXbUGRT
-X-Google-Smtp-Source: AGHT+IHVCxE5blTHbEC0RaoSPuxSM4nNjMnLsdTcFcYruZESuYLCh4iYd/oS7OTneHP0gEn4MkBDIg==
-X-Received: by 2002:a05:6000:2dc2:b0:432:851d:217e with SMTP id
- ffacd0b85a97d-432c37d2fc4mr770069f8f.44.1767741590983; 
- Tue, 06 Jan 2026 15:19:50 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-432bd0e17aasm6993698f8f.15.2026.01.06.15.19.47
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 06 Jan 2026 15:19:49 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-riscv@nongnu.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Riku Voipio <riku.voipio@iki.fi>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, Chinmay Rath <rathc@linux.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
- Thomas Huth <thuth@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH 5/5] accel/tcg: Unify watchpoint API
-Date: Wed,  7 Jan 2026 00:19:07 +0100
-Message-ID: <20260106231908.16756-6-philmd@linaro.org>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260106231908.16756-1-philmd@linaro.org>
-References: <20260106231908.16756-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <alanosong@163.com>)
+ id 1vdIi5-0000QQ-Cp; Tue, 06 Jan 2026 20:51:42 -0500
+Received: from m16.mail.163.com ([220.197.31.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alanosong@163.com>)
+ id 1vdIhz-0002EE-K3; Tue, 06 Jan 2026 20:51:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+ s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
+ Message-ID; bh=bf2y4uyIP7OyXYhW8eOthhUaH5FQUa2SIlWaE8bWaaY=; b=X
+ fKkUIeiSnZrGIvAaDLfNKbyO5Q68dT311tb80WN4BJtVoS5o4kyomG4PBWUQ0SIU
+ za0+MS2H2vySr0YcqRUdfkOvEigdlPDZw6aCtWQhv79CPig/nQoH892ypnukpZSW
+ McwArtS3ncb08GWZ+IGDGTKlDcPul99pXrKC9SYjMA=
+Received: from alanosong$163.com ( [240e:36a:147b:2000:d38e:9b18:e15d:c338]
+ ) by ajax-webmail-wmsvr-40-134 (Coremail) ; Wed, 7 Jan 2026 09:50:59 +0800
+ (CST)
+X-Originating-IP: [240e:36a:147b:2000:d38e:9b18:e15d:c338]
+Date: Wed, 7 Jan 2026 09:50:59 +0800 (CST)
+From: "Alano Song" <alanosong@163.com>
+To: "Jonathan Cameron" <jonathan.cameron@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, cminyard@mvista.com,
+ peter.maydell@linaro.org, philmd@linaro.org, ani@anisinha.ca,
+ pbonzini@redhat.com, shannon.zhaosl@gmail.com
+Subject: Re:Re: [PATCH 1/2] hw/i2c/dw: Add DesignWare I2C controller emulator
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
+ 20250723(a044bf12) Copyright (c) 2002-2026 www.mailtech.cn 163com
+In-Reply-To: <20260106155218.0000310f@huawei.com>
+References: <20260106131253.16192-1-AlanoSong@163.com>
+ <20260106131253.16192-2-AlanoSong@163.com>
+ <20260106155218.0000310f@huawei.com>
+X-NTES-SC: AL_Qu2dBfuev04u7yCdZukfmkwShuw7Uca1uPog1YBec8MFoTjN8AIlYF1cEH7o086yCR2pij2bVTRP5/xmTJFeIze9FpdcDALBcpR1S2B9Zw==
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_22895_1330778720.1767750659065"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+Message-ID: <5ac72b55.177d.19b96266bf9.Coremail.alanosong@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: higvCgDn7+MDvF1phhdRAA--.16321W
+X-CM-SenderInfo: xdod00pvrqwqqrwthudrp/xtbC9gPg9GldvAPYegAA3I
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
+Received-SPF: pass client-ip=220.197.31.2; envelope-from=alanosong@163.com;
+ helo=m16.mail.163.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,751 +76,176 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently "exec/breakpoint.h" contains both BreakPoint *and*
-WatchPoint APIs, however very few files requires the former,
-and more the latter:
+------=_Part_22895_1330778720.1767750659065
+Content-Type: text/plain; charset=GBK
+Content-Transfer-Encoding: base64
 
-  $ git grep -l CPUBreakpoint | wc -l
-        12
-  $ git grep -l CPUWatchpoint | wc -l
-        25
+CgpBdCAyMDI2LTAxLTA2IDIzOjUyOjE4LCAiSm9uYXRoYW4gQ2FtZXJvbiIgPGpvbmF0aGFuLmNh
+bWVyb25AaHVhd2VpLmNvbT4gd3JvdGU6Cj5PbiBUdWUsICA2IEphbiAyMDI2IDIxOjEyOjUyICsw
+ODAwCj5BbGFub1NvbmdAMTYzLmNvbSB3cm90ZToKPgo+PiBBZGQgRGVzaWduV2FyZSBJMkMgY29u
+dHJvbGxlciBhY2NvcmRpbmcgdG8gRGVzaWduV2FyZQo+PiBJMkMgZGF0YWJvb2sgdjIuMDFhLgo+
+PiBDb25maXJtZWQgdGhlIG1vZGVsIHdpdGggaTJjLXRvb2xzIHVuZGVyIHY2LjE4Cj4+IGxpbnV4
+IGRyaXZlci4KPj4gCj4+IFRoZSBzbGF2ZSBtb2RlIGlzIG5vdCBpbXBsZW1lbnRlZCwgY2F1c2Ug
+dGhpcyBmZWF0dXJlCj4+IGlzIHVzdWFsbHkgbm90IHVzZWQuCj4+IAo+PiBUaGUgMTAgYml0IHNs
+YXZlIGFkZHJlc3MgaXMgbm90IGltcGxlbWVudGVkLCBjYXVzZQo+PiB0aGlzIGZlYXR1cmUgaXMg
+dXN1YWxseSBub3QgdXNlZCwgYW5kIG5vdCBzdXBwb3J0ZWQKPj4gYnkgcWVtdSBJMkMgY29yZSBi
+dXMgY3VycmVudGx5Lgo+PiAKPj4gU2lnbmVkLW9mZi1ieTogQWxhbm8gU29uZyA8QWxhbm9Tb25n
+QDE2My5jb20+Cj5IaSBBbGFubywKPgo+QSB2ZXJ5IHN1cGVyZmljaWFsIHJldmlldy4gU2FkbHkg
+SSBkb24ndCBoYXZlIHRpbWUgdG8gZGlnCj5tdWNoIGRlZXBlciBhdCB0aGUgbW9tZW50Lgo+Cj5H
+b29kIHRvIHNlZSB0aGlzIHN1cHBvcnQuCj4KPkpvbmF0aGFuCgo+CgoKU3RpbGwgYXBwcmVjaWF0
+ZSBmb3IgeW91ciBwYXRpZW50IHJldmlldyBhbmQgcmVwbHkhCgoKPj4gZGlmZiAtLWdpdCBhL2h3
+L2kyYy9kd19pMmMuYyBiL2h3L2kyYy9kd19pMmMuYwo+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+
+PiBpbmRleCAwMDAwMDAwMDAwLi5hNWEzMWVjNzhjCj4+IC0tLSAvZGV2L251bGwKPj4gKysrIGIv
+aHcvaTJjL2R3X2kyYy5jCj4+IEBAIC0wLDAgKzEsNTE3IEBACj4+ICsvKgo+PiArICogIERlc2ln
+bldhcmUgSTJDIEJ1cyBTZXJpYWwgSW50ZXJmYWNlIEVtdWxhdGlvbgo+PiArICoKPj4gKyAqICBD
+b3B5cmlnaHQgKEMpIDIwMjYgQWxhbm8gU29uZyA8QWxhbm9Tb25nQDE2My5jb20+Cj4+ICsgKgo+
+PiArICogIFRoaXMgcHJvZ3JhbSBpcyBmcmVlIHNvZnR3YXJlOyB5b3UgY2FuIHJlZGlzdHJpYnV0
+ZSBpdCBhbmQvb3IgbW9kaWZ5IGl0Cj4+ICsgKiAgdW5kZXIgdGhlIHRlcm1zIG9mIHRoZSBHTlUg
+R2VuZXJhbCBQdWJsaWMgTGljZW5zZSBhcyBwdWJsaXNoZWQgYnkgdGhlCj4+ICsgKiAgRnJlZSBT
+b2Z0d2FyZSBGb3VuZGF0aW9uOyBlaXRoZXIgdmVyc2lvbiAyIG9mIHRoZSBMaWNlbnNlLCBvcgo+
+PiArICogIChhdCB5b3VyIG9wdGlvbikgYW55IGxhdGVyIHZlcnNpb24uCj4+ICsgKgo+PiArICog
+IFRoaXMgcHJvZ3JhbSBpcyBkaXN0cmlidXRlZCBpbiB0aGUgaG9wZSB0aGF0IGl0IHdpbGwgYmUg
+dXNlZnVsLCBidXQgV0lUSE9VVAo+PiArICogIEFOWSBXQVJSQU5UWTsgd2l0aG91dCBldmVuIHRo
+ZSBpbXBsaWVkIHdhcnJhbnR5IG9mIE1FUkNIQU5UQUJJTElUWSBvcgo+PiArICogIEZJVE5FU1Mg
+Rk9SIEEgUEFSVElDVUxBUiBQVVJQT1NFLiBTZWUgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNl
+bnNlCj4+ICsgKiAgZm9yIG1vcmUgZGV0YWlscy4KPj4gKyAqCj4+ICsgKiAgWW91IHNob3VsZCBo
+YXZlIHJlY2VpdmVkIGEgY29weSBvZiB0aGUgR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UgYWxv
+bmcKPj4gKyAqICB3aXRoIHRoaXMgcHJvZ3JhbTsgaWYgbm90LCBzZWUgPGh0dHA6Ly93d3cuZ251
+Lm9yZy9saWNlbnNlcy8+Lgo+PiArICoKPj4gKyAqLwo+QXMgYmVsb3cuIENhbiBwcm9iYWJseSBy
+ZXBsYWNlIHRoZSBib2lsZXJwbGF0ZSB3aXRoIGFuIFNQRFggbGljZW5zZQo+bGluZSBhbmQganVz
+dCBoYXZlIHRoZSBjb3B5cmlnaHQgKyBpbnRybyB0ZXh0IGhlcmUuCgo+CgoKT2theSwgSSB3aWxs
+IHN1Ym1pdCB2ZXJzaW9uIDIgcGF0Y2ggdG8gcmVmaW5lIGl0LgoKCj4KPj4gZGlmZiAtLWdpdCBh
+L2luY2x1ZGUvaHcvaTJjL2R3X2kyYy5oIGIvaW5jbHVkZS9ody9pMmMvZHdfaTJjLmgKPj4gbmV3
+IGZpbGUgbW9kZSAxMDA2NDQKPj4gaW5kZXggMDAwMDAwMDAwMC4uNTEyYzc0OWYyMQo+PiAtLS0g
+L2Rldi9udWxsCj4+ICsrKyBiL2luY2x1ZGUvaHcvaTJjL2R3X2kyYy5oCj4+IEBAIC0wLDAgKzEs
+MTUxIEBACj4+ICsvKgo+PiArICogIERlc2lnbldhcmUgSTJDIEJ1cyBTZXJpYWwgSW50ZXJmYWNl
+IEVtdWxhdGlvbgo+PiArICoKPj4gKyAqICBDb3B5cmlnaHQgKEMpIDIwMjYgQWxhbm8gU29uZyA8
+QWxhbm9Tb25nQDE2My5jb20+Cj4+ICsgKgo+PiArICogIFRoaXMgcHJvZ3JhbSBpcyBmcmVlIHNv
+ZnR3YXJlOyB5b3UgY2FuIHJlZGlzdHJpYnV0ZSBpdCBhbmQvb3IgbW9kaWZ5IGl0Cj4+ICsgKiAg
+dW5kZXIgdGhlIHRlcm1zIG9mIHRoZSBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSBhcyBwdWJs
+aXNoZWQgYnkgdGhlCj4+ICsgKiAgRnJlZSBTb2Z0d2FyZSBGb3VuZGF0aW9uOyBlaXRoZXIgdmVy
+c2lvbiAyIG9mIHRoZSBMaWNlbnNlLCBvcgo+PiArICogIChhdCB5b3VyIG9wdGlvbikgYW55IGxh
+dGVyIHZlcnNpb24uCj4+ICsgKgo+PiArICogIFRoaXMgcHJvZ3JhbSBpcyBkaXN0cmlidXRlZCBp
+biB0aGUgaG9wZSB0aGF0IGl0IHdpbGwgYmUgdXNlZnVsLCBidXQgV0lUSE9VVAo+PiArICogIEFO
+WSBXQVJSQU5UWTsgd2l0aG91dCBldmVuIHRoZSBpbXBsaWVkIHdhcnJhbnR5IG9mIE1FUkNIQU5U
+QUJJTElUWSBvcgo+PiArICogIEZJVE5FU1MgRk9SIEEgUEFSVElDVUxBUiBQVVJQT1NFLiBTZWUg
+dGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlCj4+ICsgKiAgZm9yIG1vcmUgZGV0YWlscy4K
+Pj4gKyAqCj4+ICsgKiAgWW91IHNob3VsZCBoYXZlIHJlY2VpdmVkIGEgY29weSBvZiB0aGUgR05V
+IEdlbmVyYWwgUHVibGljIExpY2Vuc2UgYWxvbmcKPj4gKyAqICB3aXRoIHRoaXMgcHJvZ3JhbTsg
+aWYgbm90LCBzZWUgPGh0dHA6Ly93d3cuZ251Lm9yZy9saWNlbnNlcy8+Lgo+Cj5Gb3IgbmV3IGNv
+ZGUgaW4gUUVNVSBJIHRoaW5rIHdlIGFyZSBmaW5lIHdpdGgganVzdCBTUERYLiAgU2VlIG1hbnkg
+ZXhhbXBsZXMKPmluIHRyZWUuICBJdCBzYXZlcyBvbiByZXBlYXRpbmcgdGhpcyBib2lsZXJwbGF0
+ZS4KCj4KCgpPa2F5LCBJIHdpbGwgc3VibWl0IHZlcnNpb24gMiBwYXRjaCB0byByZWZpbmUgaXQu
+CgoKPj4gKyAqCj4+ICsgKi8KPj4gKwo+PiArI2lmbmRlZiBEV19JMkNfSAo+PiArI2RlZmluZSBE
+V19JMkNfSAo+PiArCj4+ICsjaW5jbHVkZSAiaHcvY29yZS9zeXNidXMuaCIKPj4gKyNpbmNsdWRl
+ICJxb20vb2JqZWN0LmgiCj4+ICsjaW5jbHVkZSAicWVtdS9maWZvOC5oIgo+PiArCj4+ICsjZGVm
+aW5lIFRZUEVfRFdfSTJDICJkdy5pMmMiCj4+ICtPQkpFQ1RfREVDTEFSRV9TSU1QTEVfVFlQRShE
+V0kyQ1N0YXRlLCBEV19JMkMpCj4+ICsKPj4gKyNkZWZpbmUgRFdfSTJDX1RYX0ZJRk9fREVQVEgg
+ICAgICAgIDE2Cj4+ICsjZGVmaW5lIERXX0kyQ19SWF9GSUZPX0RFUFRIICAgICAgICAxNgo+Cj4+
+ICsKPj4gKyNkZWZpbmUgRFdfSUNfQ09OX01BU1RFUiAgICAgICAgICAgIEJJVCgwKQo+PiArI2Rl
+ZmluZSBEV19JQ19DT05fU1BFRURfU1RBTkRBUkQgICAgKDB4MSA8PCAxKQo+PiArI2RlZmluZSBE
+V19JQ19DT05fU1BFRURfRkFTVCAgICAgICAgKDB4MiA8PCAxKQo+PiArI2RlZmluZSBEV19JQ19D
+T05fU1BFRURfSElHSCAgICAgICAgKDB4MyA8PCAxKQo+Cj5TbWVsbHMgb2YgdmFsdWUgYmVpbmcg
+d3JpdHRlbiB0byBhIGZpZWxkIHJhdGhlciB0aGFuCj5hIHNlcmllcyBvZiB2YWx1ZXMgd2l0aCBt
+ZWFuaW5nIG9uIHRoZWlyIG93bi4gUWVtdQo+aGFzIGEgcmljaCBzZXQgb2YgcmVnaXN0ZXIgZmll
+bGQgbWFjcm9zLiBJJ2QgbG9vawo+YXQgdXNpbmcgdGhvc2UgdG8gbWFrZSB5b3VyIGxpZmUgZWFz
+aWVyLgoKPgoKCllvdXIgc3VnZ2VzdGlvbiBpcyBnb29kLCBJIHdpbGwgcmVmaW5lIHRoaXMgcGFy
+dAppbiB2ZXJzaW9uIDIgcGF0Y2guCgoKPj4gKyNkZWZpbmUgRFdfSUNfQ09OX1JFU1RBUlRfRU4g
+ICAgICAgIEJJVCg1KQo=
+------=_Part_22895_1330778720.1767750659065
+Content-Type: text/html; charset=GBK
+Content-Transfer-Encoding: base64
 
-So extracting the WatchPoint API to its own header will reduce
-compilation pressure.
-
-But more importantly, the API is scattered in two distinct headers.
-Unify them ("accel/tcg/cpu-ops.h" and "exec/watchpoint.h") to the
-new "accel/tcg/watchpoint.h" header, making the emphasis the API is
-specific to TCG.
-
-Have accel/tcg/watchpoint.c absorb system/watchpoint.c code.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- MAINTAINERS                         |   1 -
- include/accel/tcg/cpu-ops.h         |  28 +-------
- include/accel/tcg/watchpoint.h      |  57 ++++++++++++++++
- include/exec/breakpoint.h           |  10 ---
- include/exec/watchpoint.h           |  18 -----
- include/hw/core/cpu.h               |   3 +-
- target/arm/internals.h              |   2 +-
- target/ppc/internal.h               |   2 +-
- target/riscv/debug.h                |   2 +-
- accel/tcg/cputlb.c                  |   1 +
- accel/tcg/tcg-accel-ops.c           |   2 +-
- accel/tcg/user-exec-stub.c          |   3 +-
- accel/tcg/watchpoint.c              |  83 +++++++++++++++++++++-
- system/watchpoint.c                 | 102 ----------------------------
- target/arm/debug_helper.c           |   2 +-
- target/arm/tcg/mte_helper.c         |   2 +-
- target/arm/tcg/sve_helper.c         |   2 +-
- target/i386/cpu.c                   |   2 +-
- target/i386/machine.c               |   2 +-
- target/i386/tcg/system/bpt_helper.c |   2 +-
- target/ppc/cpu.c                    |   2 +-
- target/ppc/cpu_init.c               |   2 +-
- target/riscv/cpu_helper.c           |   2 +-
- target/riscv/debug.c                |   2 +-
- target/s390x/helper.c               |   2 +-
- target/s390x/tcg/debug.c            |   2 +-
- target/s390x/tcg/excp_helper.c      |   2 +-
- target/s390x/tcg/mem_helper.c       |   1 +
- target/xtensa/dbg_helper.c          |   2 +-
- system/meson.build                  |   1 -
- 30 files changed, 162 insertions(+), 182 deletions(-)
- create mode 100644 include/accel/tcg/watchpoint.h
- delete mode 100644 include/exec/watchpoint.h
- delete mode 100644 system/watchpoint.c
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 0afee64a625..7c1c0d526a0 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -155,7 +155,6 @@ Overall TCG CPUs
- M: Richard Henderson <richard.henderson@linaro.org>
- R: Paolo Bonzini <pbonzini@redhat.com>
- S: Maintained
--F: system/watchpoint.c
- F: page-vary-target.c
- F: page-vary-common.c
- F: accel/tcg/
-diff --git a/include/accel/tcg/cpu-ops.h b/include/accel/tcg/cpu-ops.h
-index 5950cdcaab1..e20a79325e5 100644
---- a/include/accel/tcg/cpu-ops.h
-+++ b/include/accel/tcg/cpu-ops.h
-@@ -10,7 +10,7 @@
- #ifndef TCG_CPU_OPS_H
- #define TCG_CPU_OPS_H
- 
--#include "exec/breakpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "exec/hwaddr.h"
- #include "exec/memattrs.h"
- #include "exec/memop.h"
-@@ -281,32 +281,6 @@ struct TCGCPUOps {
- #endif /* !CONFIG_USER_ONLY */
- };
- 
--/**
-- * cpu_check_watchpoint:
-- * @cpu: cpu context
-- * @addr: guest virtual address
-- * @len: access length
-- * @attrs: memory access attributes
-- * @flags: watchpoint access type
-- * @ra: unwind return address
-- *
-- * Check for a watchpoint hit in [addr, addr+len) of the type
-- * specified by @flags.  Exit via exception with a hit.
-- */
--void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
--                          MemTxAttrs attrs, int flags, uintptr_t ra);
--
--/**
-- * cpu_watchpoint_address_matches:
-- * @cpu: cpu context
-- * @addr: guest virtual address
-- * @len: access length
-- *
-- * Return the watchpoint flags that apply to [addr, addr+len).
-- * If no watchpoint is registered for the range, the result is 0.
-- */
--int cpu_watchpoint_address_matches(CPUState *cpu, vaddr addr, vaddr len);
--
- /*
-  * Common pointer_wrap implementations.
-  */
-diff --git a/include/accel/tcg/watchpoint.h b/include/accel/tcg/watchpoint.h
-new file mode 100644
-index 00000000000..f28be5fc67f
---- /dev/null
-+++ b/include/accel/tcg/watchpoint.h
-@@ -0,0 +1,57 @@
-+/*
-+ * CPU watchpoints
-+ *
-+ * Copyright (c) 2012 SUSE LINUX Products GmbH
-+ * SPDX-License-Identifier: LGPL-2.1-or-later
-+ */
-+
-+#ifndef ACCEL_TCG_WATCHPOINT_H
-+#define ACCEL_TCG_WATCHPOINT_H
-+
-+#include "qemu/queue.h"
-+#include "exec/vaddr.h"
-+#include "exec/memattrs.h"
-+
-+typedef struct CPUWatchpoint {
-+    vaddr vaddr;
-+    vaddr len;
-+    vaddr hitaddr;
-+    MemTxAttrs hitattrs;
-+    int flags; /* BP_* */
-+    QTAILQ_ENTRY(CPUWatchpoint) entry;
-+} CPUWatchpoint;
-+
-+int cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
-+                          int flags, CPUWatchpoint **watchpoint);
-+int cpu_watchpoint_remove(CPUState *cpu, vaddr addr,
-+                          vaddr len, int flags);
-+void cpu_watchpoint_remove_by_ref(CPUState *cpu, CPUWatchpoint *watchpoint);
-+void cpu_watchpoint_remove_all(CPUState *cpu, int mask);
-+
-+/**
-+ * cpu_check_watchpoint:
-+ * @cpu: cpu context
-+ * @addr: guest virtual address
-+ * @len: access length
-+ * @attrs: memory access attributes
-+ * @flags: watchpoint access type
-+ * @ra: unwind return address
-+ *
-+ * Check for a watchpoint hit in [addr, addr+len) of the type
-+ * specified by @flags.  Exit via exception with a hit.
-+ */
-+void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
-+                          MemTxAttrs attrs, int flags, uintptr_t ra);
-+
-+/**
-+ * cpu_watchpoint_address_matches:
-+ * @cpu: cpu context
-+ * @addr: guest virtual address
-+ * @len: access length
-+ *
-+ * Return the watchpoint flags that apply to [addr, addr+len).
-+ * If no watchpoint is registered for the range, the result is 0.
-+ */
-+int cpu_watchpoint_address_matches(CPUState *cpu, vaddr addr, vaddr len);
-+
-+#endif /* ACCEL_TCG_WATCHPOINT_H */
-diff --git a/include/exec/breakpoint.h b/include/exec/breakpoint.h
-index 95f0482e6d0..ccc302fea0f 100644
---- a/include/exec/breakpoint.h
-+++ b/include/exec/breakpoint.h
-@@ -10,7 +10,6 @@
- 
- #include "qemu/queue.h"
- #include "exec/vaddr.h"
--#include "exec/memattrs.h"
- 
- typedef struct CPUBreakpoint {
-     vaddr pc;
-@@ -18,13 +17,4 @@ typedef struct CPUBreakpoint {
-     QTAILQ_ENTRY(CPUBreakpoint) entry;
- } CPUBreakpoint;
- 
--typedef struct CPUWatchpoint {
--    vaddr vaddr;
--    vaddr len;
--    vaddr hitaddr;
--    MemTxAttrs hitattrs;
--    int flags; /* BP_* */
--    QTAILQ_ENTRY(CPUWatchpoint) entry;
--} CPUWatchpoint;
--
- #endif
-diff --git a/include/exec/watchpoint.h b/include/exec/watchpoint.h
-deleted file mode 100644
-index c4d069425ba..00000000000
---- a/include/exec/watchpoint.h
-+++ /dev/null
-@@ -1,18 +0,0 @@
--/*
-- * CPU watchpoints
-- *
-- * Copyright (c) 2012 SUSE LINUX Products GmbH
-- * SPDX-License-Identifier: LGPL-2.1-or-later
-- */
--
--#ifndef EXEC_WATCHPOINT_H
--#define EXEC_WATCHPOINT_H
--
--int cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
--                          int flags, CPUWatchpoint **watchpoint);
--int cpu_watchpoint_remove(CPUState *cpu, vaddr addr,
--                          vaddr len, int flags);
--void cpu_watchpoint_remove_by_ref(CPUState *cpu, CPUWatchpoint *watchpoint);
--void cpu_watchpoint_remove_all(CPUState *cpu, int mask);
--
--#endif /* EXEC_WATCHPOINT_H */
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index f6f17df9e64..9648ba8f6f6 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -28,6 +28,7 @@
- #include "exec/memattrs.h"
- #include "exec/mmu-access-type.h"
- #include "exec/tlb-common.h"
-+#include "accel/tcg/watchpoint.h"
- #include "qapi/qapi-types-machine.h"
- #include "qapi/qapi-types-run-state.h"
- #include "qemu/bitmap.h"
-@@ -84,8 +85,6 @@ DECLARE_CLASS_CHECKERS(CPUClass, CPU,
-     typedef struct ArchCPU CpuInstanceType; \
-     OBJECT_DECLARE_TYPE(ArchCPU, CpuClassType, CPU_MODULE_OBJ_NAME);
- 
--typedef struct CPUWatchpoint CPUWatchpoint;
--
- /* see physmem.c */
- struct CPUAddressSpace;
- 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 9cd4bf74efb..e7d83836242 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -27,7 +27,7 @@
- 
- #include "exec/hwaddr.h"
- #include "exec/vaddr.h"
--#include "exec/breakpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "accel/tcg/tb-cpu-state.h"
- #include "hw/core/registerfields.h"
- #include "tcg/tcg-gvec-desc.h"
-diff --git a/target/ppc/internal.h b/target/ppc/internal.h
-index 58f315ffcf5..f468bcbb7fa 100644
---- a/target/ppc/internal.h
-+++ b/target/ppc/internal.h
-@@ -18,7 +18,7 @@
- #ifndef PPC_INTERNAL_H
- #define PPC_INTERNAL_H
- 
--#include "exec/breakpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "hw/core/registerfields.h"
- #include "exec/page-protection.h"
- #include "accel/tcg/tb-cpu-state.h"
-diff --git a/target/riscv/debug.h b/target/riscv/debug.h
-index f76b8f944a2..7aa9dfd89f9 100644
---- a/target/riscv/debug.h
-+++ b/target/riscv/debug.h
-@@ -22,7 +22,7 @@
- #ifndef RISCV_DEBUG_H
- #define RISCV_DEBUG_H
- 
--#include "exec/breakpoint.h"
-+#include "accel/tcg/watchpoint.h"
- 
- #define RV_MAX_TRIGGERS         2
- 
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index c30073326a3..922fc503874 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -28,6 +28,7 @@
- #include "system/physmem.h"
- #include "accel/tcg/cpu-ldst-common.h"
- #include "accel/tcg/cpu-mmu-index.h"
-+#include "accel/tcg/watchpoint.h"
- #include "exec/cputlb.h"
- #include "exec/tb-flush.h"
- #include "system/ramblock.h"
-diff --git a/accel/tcg/tcg-accel-ops.c b/accel/tcg/tcg-accel-ops.c
-index 3bd98005042..2a6423aab8d 100644
---- a/accel/tcg/tcg-accel-ops.c
-+++ b/accel/tcg/tcg-accel-ops.c
-@@ -38,7 +38,7 @@
- #include "exec/hwaddr.h"
- #include "exec/tb-flush.h"
- #include "exec/translation-block.h"
--#include "exec/watchpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "gdbstub/enums.h"
- 
- #include "hw/core/cpu.h"
-diff --git a/accel/tcg/user-exec-stub.c b/accel/tcg/user-exec-stub.c
-index 28286e11a60..a5e2534f2bf 100644
---- a/accel/tcg/user-exec-stub.c
-+++ b/accel/tcg/user-exec-stub.c
-@@ -1,8 +1,7 @@
- #include "qemu/osdep.h"
- #include "hw/core/cpu.h"
--#include "accel/tcg/cpu-ops.h"
- #include "exec/replay-core.h"
--#include "exec/watchpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "internal-common.h"
- 
- void cpu_resume(CPUState *cpu)
-diff --git a/accel/tcg/watchpoint.c b/accel/tcg/watchpoint.c
-index cfb37a49e72..0d9de0fca2e 100644
---- a/accel/tcg/watchpoint.c
-+++ b/accel/tcg/watchpoint.c
-@@ -19,10 +19,14 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/main-loop.h"
--#include "exec/breakpoint.h"
-+#include "qemu/error-report.h"
-+#include "accel/tcg/watchpoint.h"
- #include "exec/cpu-interrupt.h"
-+#include "exec/cputlb.h"
- #include "exec/page-protection.h"
-+#include "exec/target_page.h"
- #include "exec/translation-block.h"
-+#include "accel/tcg/watchpoint.h"
- #include "system/tcg.h"
- #include "system/replay.h"
- #include "accel/tcg/cpu-ops.h"
-@@ -139,3 +143,80 @@ void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
-         }
-     }
- }
-+
-+/* Add a watchpoint.  */
-+int cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
-+                          int flags, CPUWatchpoint **watchpoint)
-+{
-+    CPUWatchpoint *wp;
-+    vaddr in_page;
-+
-+    /* forbid ranges which are empty or run off the end of the address space */
-+    if (len == 0 || (addr + len - 1) < addr) {
-+        error_report("tried to set invalid watchpoint at %"
-+                     VADDR_PRIx ", len=%" VADDR_PRIu, addr, len);
-+        return -EINVAL;
-+    }
-+    wp = g_malloc(sizeof(*wp));
-+
-+    wp->vaddr = addr;
-+    wp->len = len;
-+    wp->flags = flags;
-+
-+    /* keep all GDB-injected watchpoints in front */
-+    if (flags & BP_GDB) {
-+        QTAILQ_INSERT_HEAD(&cpu->watchpoints, wp, entry);
-+    } else {
-+        QTAILQ_INSERT_TAIL(&cpu->watchpoints, wp, entry);
-+    }
-+
-+    in_page = -(addr | TARGET_PAGE_MASK);
-+    if (len <= in_page) {
-+        tlb_flush_page(cpu, addr);
-+    } else {
-+        tlb_flush(cpu);
-+    }
-+
-+    if (watchpoint) {
-+        *watchpoint = wp;
-+    }
-+    return 0;
-+}
-+
-+/* Remove a specific watchpoint.  */
-+int cpu_watchpoint_remove(CPUState *cpu, vaddr addr, vaddr len,
-+                          int flags)
-+{
-+    CPUWatchpoint *wp;
-+
-+    QTAILQ_FOREACH(wp, &cpu->watchpoints, entry) {
-+        if (addr == wp->vaddr && len == wp->len
-+                && flags == (wp->flags & ~BP_WATCHPOINT_HIT)) {
-+            cpu_watchpoint_remove_by_ref(cpu, wp);
-+            return 0;
-+        }
-+    }
-+    return -ENOENT;
-+}
-+
-+/* Remove a specific watchpoint by reference.  */
-+void cpu_watchpoint_remove_by_ref(CPUState *cpu, CPUWatchpoint *watchpoint)
-+{
-+    QTAILQ_REMOVE(&cpu->watchpoints, watchpoint, entry);
-+
-+    tlb_flush_page(cpu, watchpoint->vaddr);
-+
-+    g_free(watchpoint);
-+}
-+
-+/* Remove all matching watchpoints.  */
-+void cpu_watchpoint_remove_all(CPUState *cpu, int mask)
-+{
-+    CPUWatchpoint *wp, *next;
-+
-+    QTAILQ_FOREACH_SAFE(wp, &cpu->watchpoints, entry, next) {
-+        if (wp->flags & mask) {
-+            cpu_watchpoint_remove_by_ref(cpu, wp);
-+        }
-+    }
-+}
-diff --git a/system/watchpoint.c b/system/watchpoint.c
-deleted file mode 100644
-index 21d0bb36cae..00000000000
---- a/system/watchpoint.c
-+++ /dev/null
-@@ -1,102 +0,0 @@
--/*
-- * CPU watchpoints
-- *
-- *  Copyright (c) 2003 Fabrice Bellard
-- *
-- * This library is free software; you can redistribute it and/or
-- * modify it under the terms of the GNU Lesser General Public
-- * License as published by the Free Software Foundation; either
-- * version 2.1 of the License, or (at your option) any later version.
-- *
-- * This library is distributed in the hope that it will be useful,
-- * but WITHOUT ANY WARRANTY; without even the implied warranty of
-- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-- * Lesser General Public License for more details.
-- *
-- * You should have received a copy of the GNU Lesser General Public
-- * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-- */
--
--#include "qemu/osdep.h"
--#include "qemu/error-report.h"
--#include "exec/cputlb.h"
--#include "exec/target_page.h"
--#include "exec/watchpoint.h"
--#include "hw/core/cpu.h"
--
--/* Add a watchpoint.  */
--int cpu_watchpoint_insert(CPUState *cpu, vaddr addr, vaddr len,
--                          int flags, CPUWatchpoint **watchpoint)
--{
--    CPUWatchpoint *wp;
--    vaddr in_page;
--
--    /* forbid ranges which are empty or run off the end of the address space */
--    if (len == 0 || (addr + len - 1) < addr) {
--        error_report("tried to set invalid watchpoint at %"
--                     VADDR_PRIx ", len=%" VADDR_PRIu, addr, len);
--        return -EINVAL;
--    }
--    wp = g_malloc(sizeof(*wp));
--
--    wp->vaddr = addr;
--    wp->len = len;
--    wp->flags = flags;
--
--    /* keep all GDB-injected watchpoints in front */
--    if (flags & BP_GDB) {
--        QTAILQ_INSERT_HEAD(&cpu->watchpoints, wp, entry);
--    } else {
--        QTAILQ_INSERT_TAIL(&cpu->watchpoints, wp, entry);
--    }
--
--    in_page = -(addr | TARGET_PAGE_MASK);
--    if (len <= in_page) {
--        tlb_flush_page(cpu, addr);
--    } else {
--        tlb_flush(cpu);
--    }
--
--    if (watchpoint) {
--        *watchpoint = wp;
--    }
--    return 0;
--}
--
--/* Remove a specific watchpoint.  */
--int cpu_watchpoint_remove(CPUState *cpu, vaddr addr, vaddr len,
--                          int flags)
--{
--    CPUWatchpoint *wp;
--
--    QTAILQ_FOREACH(wp, &cpu->watchpoints, entry) {
--        if (addr == wp->vaddr && len == wp->len
--                && flags == (wp->flags & ~BP_WATCHPOINT_HIT)) {
--            cpu_watchpoint_remove_by_ref(cpu, wp);
--            return 0;
--        }
--    }
--    return -ENOENT;
--}
--
--/* Remove a specific watchpoint by reference.  */
--void cpu_watchpoint_remove_by_ref(CPUState *cpu, CPUWatchpoint *watchpoint)
--{
--    QTAILQ_REMOVE(&cpu->watchpoints, watchpoint, entry);
--
--    tlb_flush_page(cpu, watchpoint->vaddr);
--
--    g_free(watchpoint);
--}
--
--/* Remove all matching watchpoints.  */
--void cpu_watchpoint_remove_all(CPUState *cpu, int mask)
--{
--    CPUWatchpoint *wp, *next;
--
--    QTAILQ_FOREACH_SAFE(wp, &cpu->watchpoints, entry, next) {
--        if (wp->flags & mask) {
--            cpu_watchpoint_remove_by_ref(cpu, wp);
--        }
--    }
--}
-diff --git a/target/arm/debug_helper.c b/target/arm/debug_helper.c
-index 579516e1541..9dc8d47f664 100644
---- a/target/arm/debug_helper.c
-+++ b/target/arm/debug_helper.c
-@@ -11,7 +11,7 @@
- #include "internals.h"
- #include "cpu-features.h"
- #include "cpregs.h"
--#include "exec/watchpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "system/tcg.h"
- 
- #define HELPER_H "tcg/helper.h"
-diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index bb48fe359b8..f71ed4d9178 100644
---- a/target/arm/tcg/mte_helper.c
-+++ b/target/arm/tcg/mte_helper.c
-@@ -31,9 +31,9 @@
- #endif
- #include "accel/tcg/cpu-ldst.h"
- #include "accel/tcg/probe.h"
-+#include "accel/tcg/watchpoint.h"
- #include "exec/helper-proto.h"
- #include "exec/tlb-flags.h"
--#include "accel/tcg/cpu-ops.h"
- #include "qapi/error.h"
- #include "qemu/guest-random.h"
- #include "mte_helper.h"
-diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
-index c442fcb540d..7aa88fdeea0 100644
---- a/target/arm/tcg/sve_helper.c
-+++ b/target/arm/tcg/sve_helper.c
-@@ -31,8 +31,8 @@
- #include "sve_ldst_internal.h"
- #include "accel/tcg/cpu-ldst.h"
- #include "accel/tcg/helper-retaddr.h"
--#include "accel/tcg/cpu-ops.h"
- #include "accel/tcg/probe.h"
-+#include "accel/tcg/watchpoint.h"
- #ifdef CONFIG_USER_ONLY
- #include "user/page-protection.h"
- #endif
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 9831e2bc210..e7273d67369 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -36,7 +36,7 @@
- #include "standard-headers/asm-x86/kvm_para.h"
- #include "hw/core/qdev-properties.h"
- #include "hw/i386/topology.h"
--#include "exec/watchpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #ifndef CONFIG_USER_ONLY
- #include "confidential-guest.h"
- #include "system/reset.h"
-diff --git a/target/i386/machine.c b/target/i386/machine.c
-index c9139612813..863769b9c9b 100644
---- a/target/i386/machine.c
-+++ b/target/i386/machine.c
-@@ -7,7 +7,7 @@
- #include "hw/i386/x86.h"
- #include "kvm/kvm_i386.h"
- #include "hw/xen/xen.h"
--#include "exec/watchpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "system/kvm.h"
- #include "system/kvm_xen.h"
- #include "system/tcg.h"
-diff --git a/target/i386/tcg/system/bpt_helper.c b/target/i386/tcg/system/bpt_helper.c
-index aebb5caac37..f722774bb91 100644
---- a/target/i386/tcg/system/bpt_helper.c
-+++ b/target/i386/tcg/system/bpt_helper.c
-@@ -20,7 +20,7 @@
- #include "qemu/osdep.h"
- #include "cpu.h"
- #include "exec/helper-proto.h"
--#include "exec/watchpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "tcg/helper-tcg.h"
- 
- 
-diff --git a/target/ppc/cpu.c b/target/ppc/cpu.c
-index 9cb3f00aa88..25d950aeedc 100644
---- a/target/ppc/cpu.c
-+++ b/target/ppc/cpu.c
-@@ -22,7 +22,7 @@
- #include "cpu-models.h"
- #include "cpu-qom.h"
- #include "exec/log.h"
--#include "exec/watchpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "fpu/softfloat-helpers.h"
- #include "mmu-hash64.h"
- #include "helper_regs.h"
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index 929254827d6..cca2096fb57 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -40,7 +40,7 @@
- #include "qemu/cutils.h"
- #include "disas/capstone.h"
- #include "fpu/softfloat.h"
--#include "exec/watchpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "helper_regs.h"
- #include "internal.h"
- #include "spr_common.h"
-diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-index c4fb68b5de8..1db4a6fc36f 100644
---- a/target/riscv/cpu_helper.c
-+++ b/target/riscv/cpu_helper.c
-@@ -29,7 +29,7 @@
- #include "system/memory.h"
- #include "instmap.h"
- #include "tcg/tcg-op.h"
--#include "accel/tcg/cpu-ops.h"
-+#include "accel/tcg/watchpoint.h"
- #include "trace.h"
- #include "semihosting/common-semi.h"
- #include "exec/icount.h"
-diff --git a/target/riscv/debug.c b/target/riscv/debug.c
-index 56644667497..f3a72dd4b7a 100644
---- a/target/riscv/debug.c
-+++ b/target/riscv/debug.c
-@@ -29,7 +29,7 @@
- #include "cpu.h"
- #include "trace.h"
- #include "exec/helper-proto.h"
--#include "exec/watchpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "system/cpu-timers.h"
- #include "exec/icount.h"
- 
-diff --git a/target/s390x/helper.c b/target/s390x/helper.c
-index 8d1e03f6768..7dede1e7ed3 100644
---- a/target/s390x/helper.c
-+++ b/target/s390x/helper.c
-@@ -28,7 +28,7 @@
- #include "system/memory.h"
- #include "system/runstate.h"
- #include "exec/target_page.h"
--#include "exec/watchpoint.h"
-+#include "accel/tcg/watchpoint.h"
- 
- void s390x_tod_timer(void *opaque)
- {
-diff --git a/target/s390x/tcg/debug.c b/target/s390x/tcg/debug.c
-index 12ae95d4fe8..74c1d5f3242 100644
---- a/target/s390x/tcg/debug.c
-+++ b/target/s390x/tcg/debug.c
-@@ -10,7 +10,7 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "exec/watchpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "target/s390x/cpu.h"
- #include "tcg_s390x.h"
- 
-diff --git a/target/s390x/tcg/excp_helper.c b/target/s390x/tcg/excp_helper.c
-index d4a096f5998..1485dbf83be 100644
---- a/target/s390x/tcg/excp_helper.c
-+++ b/target/s390x/tcg/excp_helper.c
-@@ -24,7 +24,7 @@
- #include "exec/helper-proto.h"
- #include "exec/cputlb.h"
- #include "exec/target_page.h"
--#include "exec/watchpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "s390x-internal.h"
- #include "tcg_s390x.h"
- #ifndef CONFIG_USER_ONLY
-diff --git a/target/s390x/tcg/mem_helper.c b/target/s390x/tcg/mem_helper.c
-index 2972b7ddb97..b94d12ee7f8 100644
---- a/target/s390x/tcg/mem_helper.c
-+++ b/target/s390x/tcg/mem_helper.c
-@@ -33,6 +33,7 @@
- #include "exec/tlb-flags.h"
- #include "accel/tcg/cpu-ops.h"
- #include "accel/tcg/helper-retaddr.h"
-+#include "accel/tcg/watchpoint.h"
- #include "qemu/int128.h"
- #include "qemu/atomic128.h"
- 
-diff --git a/target/xtensa/dbg_helper.c b/target/xtensa/dbg_helper.c
-index 3b91f7c38ac..25341dc0a71 100644
---- a/target/xtensa/dbg_helper.c
-+++ b/target/xtensa/dbg_helper.c
-@@ -30,7 +30,7 @@
- #include "cpu.h"
- #include "exec/helper-proto.h"
- #include "qemu/host-utils.h"
--#include "exec/watchpoint.h"
-+#include "accel/tcg/watchpoint.h"
- #include "system/address-spaces.h"
- 
- void HELPER(wsr_ibreakenable)(CPUXtensaState *env, uint32_t v)
-diff --git a/system/meson.build b/system/meson.build
-index 4b69ef0f5fb..d24efbb44ba 100644
---- a/system/meson.build
-+++ b/system/meson.build
-@@ -29,7 +29,6 @@ system_ss.add(files(
-   'runstate-hmp-cmds.c',
-   'runstate.c',
-   'tpm-hmp-cmds.c',
--  'watchpoint.c',
- ))
- 
- if have_tpm
--- 
-2.52.0
+PGRpdiBkYXRhLW50ZXM9Im50ZXNfbWFpbF9ib2R5X3Jvb3QiIHN0eWxlPSJsaW5lLWhlaWdodDox
+Ljc7Y29sb3I6IzAwMDAwMDtmb250LXNpemU6MTRweDtmb250LWZhbWlseTpBcmlhbCI+PGJyPjxw
+cmU+QXQgMjAyNi0wMS0wNiAyMzo1MjoxOCwgIkpvbmF0aGFuIENhbWVyb24iICZsdDtqb25hdGhh
+bi5jYW1lcm9uQGh1YXdlaS5jb20mZ3Q7IHdyb3RlOgomZ3Q7T24gVHVlLCAgNiBKYW4gMjAyNiAy
+MToxMjo1MiArMDgwMAomZ3Q7QWxhbm9Tb25nQDE2My5jb20gd3JvdGU6CiZndDsKJmd0OyZndDsg
+QWRkIERlc2lnbldhcmUgSTJDIGNvbnRyb2xsZXIgYWNjb3JkaW5nIHRvIERlc2lnbldhcmUKJmd0
+OyZndDsgSTJDIGRhdGFib29rIHYyLjAxYS4KJmd0OyZndDsgQ29uZmlybWVkIHRoZSBtb2RlbCB3
+aXRoIGkyYy10b29scyB1bmRlciB2Ni4xOAomZ3Q7Jmd0OyBsaW51eCBkcml2ZXIuCiZndDsmZ3Q7
+IAomZ3Q7Jmd0OyBUaGUgc2xhdmUgbW9kZSBpcyBub3QgaW1wbGVtZW50ZWQsIGNhdXNlIHRoaXMg
+ZmVhdHVyZQomZ3Q7Jmd0OyBpcyB1c3VhbGx5IG5vdCB1c2VkLgomZ3Q7Jmd0OyAKJmd0OyZndDsg
+VGhlIDEwIGJpdCBzbGF2ZSBhZGRyZXNzIGlzIG5vdCBpbXBsZW1lbnRlZCwgY2F1c2UKJmd0OyZn
+dDsgdGhpcyBmZWF0dXJlIGlzIHVzdWFsbHkgbm90IHVzZWQsIGFuZCBub3Qgc3VwcG9ydGVkCiZn
+dDsmZ3Q7IGJ5IHFlbXUgSTJDIGNvcmUgYnVzIGN1cnJlbnRseS4KJmd0OyZndDsgCiZndDsmZ3Q7
+IFNpZ25lZC1vZmYtYnk6IEFsYW5vIFNvbmcgJmx0O0FsYW5vU29uZ0AxNjMuY29tJmd0OwomZ3Q7
+SGkgQWxhbm8sCiZndDsKJmd0O0EgdmVyeSBzdXBlcmZpY2lhbCByZXZpZXcuIFNhZGx5IEkgZG9u
+J3QgaGF2ZSB0aW1lIHRvIGRpZwomZ3Q7bXVjaCBkZWVwZXIgYXQgdGhlIG1vbWVudC4KJmd0Owom
+Z3Q7R29vZCB0byBzZWUgdGhpcyBzdXBwb3J0LgomZ3Q7CiZndDtKb25hdGhhbgo8L3ByZT48ZGl2
+PiZndDs8L2Rpdj48ZGl2Pjxicj48L2Rpdj48ZGl2PjxwcmU+U3RpbGwgYXBwcmVjaWF0ZSBmb3Ig
+eW91ciBwYXRpZW50IHJldmlldyBhbmQgcmVwbHkhPC9wcmU+PC9kaXY+PGRpdj48YnI+PC9kaXY+
+PHByZT4mZ3Q7Jmd0OyBkaWZmIC0tZ2l0IGEvaHcvaTJjL2R3X2kyYy5jIGIvaHcvaTJjL2R3X2ky
+Yy5jCiZndDsmZ3Q7IG5ldyBmaWxlIG1vZGUgMTAwNjQ0CiZndDsmZ3Q7IGluZGV4IDAwMDAwMDAw
+MDAuLmE1YTMxZWM3OGMKJmd0OyZndDsgLS0tIC9kZXYvbnVsbAomZ3Q7Jmd0OyArKysgYi9ody9p
+MmMvZHdfaTJjLmMKJmd0OyZndDsgQEAgLTAsMCArMSw1MTcgQEAKJmd0OyZndDsgKy8qCiZndDsm
+Z3Q7ICsgKiAgRGVzaWduV2FyZSBJMkMgQnVzIFNlcmlhbCBJbnRlcmZhY2UgRW11bGF0aW9uCiZn
+dDsmZ3Q7ICsgKgomZ3Q7Jmd0OyArICogIENvcHlyaWdodCAoQykgMjAyNiBBbGFubyBTb25nICZs
+dDtBbGFub1NvbmdAMTYzLmNvbSZndDsKJmd0OyZndDsgKyAqCiZndDsmZ3Q7ICsgKiAgVGhpcyBw
+cm9ncmFtIGlzIGZyZWUgc29mdHdhcmU7IHlvdSBjYW4gcmVkaXN0cmlidXRlIGl0IGFuZC9vciBt
+b2RpZnkgaXQKJmd0OyZndDsgKyAqICB1bmRlciB0aGUgdGVybXMgb2YgdGhlIEdOVSBHZW5lcmFs
+IFB1YmxpYyBMaWNlbnNlIGFzIHB1Ymxpc2hlZCBieSB0aGUKJmd0OyZndDsgKyAqICBGcmVlIFNv
+ZnR3YXJlIEZvdW5kYXRpb247IGVpdGhlciB2ZXJzaW9uIDIgb2YgdGhlIExpY2Vuc2UsIG9yCiZn
+dDsmZ3Q7ICsgKiAgKGF0IHlvdXIgb3B0aW9uKSBhbnkgbGF0ZXIgdmVyc2lvbi4KJmd0OyZndDsg
+KyAqCiZndDsmZ3Q7ICsgKiAgVGhpcyBwcm9ncmFtIGlzIGRpc3RyaWJ1dGVkIGluIHRoZSBob3Bl
+IHRoYXQgaXQgd2lsbCBiZSB1c2VmdWwsIGJ1dCBXSVRIT1VUCiZndDsmZ3Q7ICsgKiAgQU5ZIFdB
+UlJBTlRZOyB3aXRob3V0IGV2ZW4gdGhlIGltcGxpZWQgd2FycmFudHkgb2YgTUVSQ0hBTlRBQklM
+SVRZIG9yCiZndDsmZ3Q7ICsgKiAgRklUTkVTUyBGT1IgQSBQQVJUSUNVTEFSIFBVUlBPU0UuIFNl
+ZSB0aGUgR05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UKJmd0OyZndDsgKyAqICBmb3IgbW9yZSBk
+ZXRhaWxzLgomZ3Q7Jmd0OyArICoKJmd0OyZndDsgKyAqICBZb3Ugc2hvdWxkIGhhdmUgcmVjZWl2
+ZWQgYSBjb3B5IG9mIHRoZSBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSBhbG9uZwomZ3Q7Jmd0
+OyArICogIHdpdGggdGhpcyBwcm9ncmFtOyBpZiBub3QsIHNlZSAmbHQ7aHR0cDovL3d3dy5nbnUu
+b3JnL2xpY2Vuc2VzLyZndDsuCiZndDsmZ3Q7ICsgKgomZ3Q7Jmd0OyArICovCiZndDtBcyBiZWxv
+dy4gQ2FuIHByb2JhYmx5IHJlcGxhY2UgdGhlIGJvaWxlcnBsYXRlIHdpdGggYW4gU1BEWCBsaWNl
+bnNlCiZndDtsaW5lIGFuZCBqdXN0IGhhdmUgdGhlIGNvcHlyaWdodCArIGludHJvIHRleHQgaGVy
+ZS4KPC9wcmU+PGRpdj4mZ3Q7PC9kaXY+PGRpdj48YnI+PC9kaXY+PGRpdj48cHJlPk9rYXksIEkg
+d2lsbCBzdWJtaXQgdmVyc2lvbiAyIHBhdGNoIHRvIHJlZmluZSBpdC48L3ByZT48L2Rpdj48ZGl2
+Pjxicj48L2Rpdj48cHJlPiZndDsKJmd0OyZndDsgZGlmZiAtLWdpdCBhL2luY2x1ZGUvaHcvaTJj
+L2R3X2kyYy5oIGIvaW5jbHVkZS9ody9pMmMvZHdfaTJjLmgKJmd0OyZndDsgbmV3IGZpbGUgbW9k
+ZSAxMDA2NDQKJmd0OyZndDsgaW5kZXggMDAwMDAwMDAwMC4uNTEyYzc0OWYyMQomZ3Q7Jmd0OyAt
+LS0gL2Rldi9udWxsCiZndDsmZ3Q7ICsrKyBiL2luY2x1ZGUvaHcvaTJjL2R3X2kyYy5oCiZndDsm
+Z3Q7IEBAIC0wLDAgKzEsMTUxIEBACiZndDsmZ3Q7ICsvKgomZ3Q7Jmd0OyArICogIERlc2lnbldh
+cmUgSTJDIEJ1cyBTZXJpYWwgSW50ZXJmYWNlIEVtdWxhdGlvbgomZ3Q7Jmd0OyArICoKJmd0OyZn
+dDsgKyAqICBDb3B5cmlnaHQgKEMpIDIwMjYgQWxhbm8gU29uZyAmbHQ7QWxhbm9Tb25nQDE2My5j
+b20mZ3Q7CiZndDsmZ3Q7ICsgKgomZ3Q7Jmd0OyArICogIFRoaXMgcHJvZ3JhbSBpcyBmcmVlIHNv
+ZnR3YXJlOyB5b3UgY2FuIHJlZGlzdHJpYnV0ZSBpdCBhbmQvb3IgbW9kaWZ5IGl0CiZndDsmZ3Q7
+ICsgKiAgdW5kZXIgdGhlIHRlcm1zIG9mIHRoZSBHTlUgR2VuZXJhbCBQdWJsaWMgTGljZW5zZSBh
+cyBwdWJsaXNoZWQgYnkgdGhlCiZndDsmZ3Q7ICsgKiAgRnJlZSBTb2Z0d2FyZSBGb3VuZGF0aW9u
+OyBlaXRoZXIgdmVyc2lvbiAyIG9mIHRoZSBMaWNlbnNlLCBvcgomZ3Q7Jmd0OyArICogIChhdCB5
+b3VyIG9wdGlvbikgYW55IGxhdGVyIHZlcnNpb24uCiZndDsmZ3Q7ICsgKgomZ3Q7Jmd0OyArICog
+IFRoaXMgcHJvZ3JhbSBpcyBkaXN0cmlidXRlZCBpbiB0aGUgaG9wZSB0aGF0IGl0IHdpbGwgYmUg
+dXNlZnVsLCBidXQgV0lUSE9VVAomZ3Q7Jmd0OyArICogIEFOWSBXQVJSQU5UWTsgd2l0aG91dCBl
+dmVuIHRoZSBpbXBsaWVkIHdhcnJhbnR5IG9mIE1FUkNIQU5UQUJJTElUWSBvcgomZ3Q7Jmd0OyAr
+ICogIEZJVE5FU1MgRk9SIEEgUEFSVElDVUxBUiBQVVJQT1NFLiBTZWUgdGhlIEdOVSBHZW5lcmFs
+IFB1YmxpYyBMaWNlbnNlCiZndDsmZ3Q7ICsgKiAgZm9yIG1vcmUgZGV0YWlscy4KJmd0OyZndDsg
+KyAqCiZndDsmZ3Q7ICsgKiAgWW91IHNob3VsZCBoYXZlIHJlY2VpdmVkIGEgY29weSBvZiB0aGUg
+R05VIEdlbmVyYWwgUHVibGljIExpY2Vuc2UgYWxvbmcKJmd0OyZndDsgKyAqICB3aXRoIHRoaXMg
+cHJvZ3JhbTsgaWYgbm90LCBzZWUgJmx0O2h0dHA6Ly93d3cuZ251Lm9yZy9saWNlbnNlcy8mZ3Q7
+LgomZ3Q7CiZndDtGb3IgbmV3IGNvZGUgaW4gUUVNVSBJIHRoaW5rIHdlIGFyZSBmaW5lIHdpdGgg
+anVzdCBTUERYLiAgU2VlIG1hbnkgZXhhbXBsZXMKJmd0O2luIHRyZWUuICBJdCBzYXZlcyBvbiBy
+ZXBlYXRpbmcgdGhpcyBib2lsZXJwbGF0ZS4KPC9wcmU+PGRpdj4mZ3Q7PC9kaXY+PGRpdj48YnI+
+PC9kaXY+PGRpdj48cHJlPk9rYXksIEkgd2lsbCBzdWJtaXQgdmVyc2lvbiAyIHBhdGNoIHRvIHJl
+ZmluZSBpdC48L3ByZT48L2Rpdj48ZGl2Pjxicj48L2Rpdj48cHJlPiZndDsmZ3Q7ICsgKgomZ3Q7
+Jmd0OyArICovCiZndDsmZ3Q7ICsKJmd0OyZndDsgKyNpZm5kZWYgRFdfSTJDX0gKJmd0OyZndDsg
+KyNkZWZpbmUgRFdfSTJDX0gKJmd0OyZndDsgKwomZ3Q7Jmd0OyArI2luY2x1ZGUgImh3L2NvcmUv
+c3lzYnVzLmgiCiZndDsmZ3Q7ICsjaW5jbHVkZSAicW9tL29iamVjdC5oIgomZ3Q7Jmd0OyArI2lu
+Y2x1ZGUgInFlbXUvZmlmbzguaCIKJmd0OyZndDsgKwomZ3Q7Jmd0OyArI2RlZmluZSBUWVBFX0RX
+X0kyQyAiZHcuaTJjIgomZ3Q7Jmd0OyArT0JKRUNUX0RFQ0xBUkVfU0lNUExFX1RZUEUoRFdJMkNT
+dGF0ZSwgRFdfSTJDKQomZ3Q7Jmd0OyArCiZndDsmZ3Q7ICsjZGVmaW5lIERXX0kyQ19UWF9GSUZP
+X0RFUFRIICAgICAgICAxNgomZ3Q7Jmd0OyArI2RlZmluZSBEV19JMkNfUlhfRklGT19ERVBUSCAg
+ICAgICAgMTYKJmd0OwomZ3Q7Jmd0OyArCiZndDsmZ3Q7ICsjZGVmaW5lIERXX0lDX0NPTl9NQVNU
+RVIgICAgICAgICAgICBCSVQoMCkKJmd0OyZndDsgKyNkZWZpbmUgRFdfSUNfQ09OX1NQRUVEX1NU
+QU5EQVJEICAgICgweDEgJmx0OyZsdDsgMSkKJmd0OyZndDsgKyNkZWZpbmUgRFdfSUNfQ09OX1NQ
+RUVEX0ZBU1QgICAgICAgICgweDIgJmx0OyZsdDsgMSkKJmd0OyZndDsgKyNkZWZpbmUgRFdfSUNf
+Q09OX1NQRUVEX0hJR0ggICAgICAgICgweDMgJmx0OyZsdDsgMSkKJmd0OwomZ3Q7U21lbGxzIG9m
+IHZhbHVlIGJlaW5nIHdyaXR0ZW4gdG8gYSBmaWVsZCByYXRoZXIgdGhhbgomZ3Q7YSBzZXJpZXMg
+b2YgdmFsdWVzIHdpdGggbWVhbmluZyBvbiB0aGVpciBvd24uIFFlbXUKJmd0O2hhcyBhIHJpY2gg
+c2V0IG9mIHJlZ2lzdGVyIGZpZWxkIG1hY3Jvcy4gSSdkIGxvb2sKJmd0O2F0IHVzaW5nIHRob3Nl
+IHRvIG1ha2UgeW91ciBsaWZlIGVhc2llci4KPC9wcmU+PGRpdj4mZ3Q7PC9kaXY+PGRpdj48YnI+
+PC9kaXY+PGRpdj48cHJlPllvdXIgc3VnZ2VzdGlvbiBpcyBnb29kLCBJIHdpbGwgcmVmaW5lIHRo
+aXMgcGFydDxicj5pbiB2ZXJzaW9uIDIgcGF0Y2guPC9wcmU+PGJyPjwvZGl2PjxwcmU+Jmd0OyZn
+dDsgKyNkZWZpbmUgRFdfSUNfQ09OX1JFU1RBUlRfRU4gICAgICAgIEJJVCg1KQo8L3ByZT48L2Rp
+dj4=
+------=_Part_22895_1330778720.1767750659065--
 
 

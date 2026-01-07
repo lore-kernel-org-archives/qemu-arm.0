@@ -4,79 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 091FFCFD65E
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Jan 2026 16:32:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D387DD0D145
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Jan 2026 17:18:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdWRz-0001bw-9d; Wed, 07 Jan 2026 11:31:59 -0500
+	id 1vdXAD-0007cl-J1; Wed, 07 Jan 2026 12:17:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vdWRp-0001CJ-HQ
- for qemu-arm@nongnu.org; Wed, 07 Jan 2026 11:31:50 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vdXAC-0007c1-1v
+ for qemu-arm@nongnu.org; Wed, 07 Jan 2026 12:17:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vdWRn-0002jV-VW
- for qemu-arm@nongnu.org; Wed, 07 Jan 2026 11:31:49 -0500
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vdXAA-000666-4R
+ for qemu-arm@nongnu.org; Wed, 07 Jan 2026 12:17:39 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767803506;
+ s=mimecast20190719; t=1767806256;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=/tt61r6RcnT6MglHsHAvo9Hs+UsIKoxr5LrnVDRl/UI=;
- b=UUg6LaakKahN6rUpiOLwUE2X/3hzHRhBJahwkwFeHBKAI8/rQT04rBCQdvafmS4rWl7a47
- eWLAXsKkTNE4bsh2CYtIwUA6i0COMqDehRZiew8g31xLgtEhWF3WpUQGTloJjhioPTh9Zl
- lVjO/4vA7gbRpGWKZiEe+DsmVkczwWY=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-460-vCZ9aMBiP2y3u0PEkN1EZA-1; Wed,
- 07 Jan 2026 11:31:42 -0500
-X-MC-Unique: vCZ9aMBiP2y3u0PEkN1EZA-1
-X-Mimecast-MFC-AGG-ID: vCZ9aMBiP2y3u0PEkN1EZA_1767803501
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C12AE1956071; Wed,  7 Jan 2026 16:31:40 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.169])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1B7DC1955F24; Wed,  7 Jan 2026 16:31:36 +0000 (UTC)
-Date: Wed, 7 Jan 2026 16:31:33 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: Chandan Somani <csomani@redhat.com>, qemu-devel@nongnu.org,
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- Yoshinori Sato <yoshinori.sato@nifty.com>,
- Jiri Pirko <jiri@resnulli.us>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- "open list:Block layer core" <qemu-block@nongnu.org>,
- "open list:Stellaris" <qemu-arm@nongnu.org>
-Subject: Re: [PATCH] qdev: Free property array on release
-Message-ID: <aV6KZQOOU__dXBIz@redhat.com>
-References: <20251222055009.1050567-1-csomani@redhat.com>
- <20260106203018.GE123256@fedora>
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ogQPloa2DzPuFTXZoNCOktVvP4bj4AUDgrYz/amyzc4=;
+ b=gTRMrK/1mvvMnDw2hu91P0xSpxVBHFHZ3zG5zegxmWkOVJBqLDEbIrjN+0SKgMn5m6M2FQ
+ w/WVW3HroreQM3bm2YIvYmyvJJKhwwbvGKNN2xYx6JpJ6jlvK7ka4lrW1z5qKMksh4Aqzr
+ 57O0nWRNFWSlunXCH8PvmPIb7+QJPQw=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-629-p7ovYOllNZSDNsmxW3TgLA-1; Wed, 07 Jan 2026 12:17:35 -0500
+X-MC-Unique: p7ovYOllNZSDNsmxW3TgLA-1
+X-Mimecast-MFC-AGG-ID: p7ovYOllNZSDNsmxW3TgLA_1767806254
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-b8395cae8c8so13650066b.3
+ for <qemu-arm@nongnu.org>; Wed, 07 Jan 2026 09:17:35 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1767806254; x=1768411054;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ogQPloa2DzPuFTXZoNCOktVvP4bj4AUDgrYz/amyzc4=;
+ b=SrfpEX60mHRlbV+Jj+7D7e154gWMmq39mbqpbt2CIlb98+a5fFUsy8WlJr0iuk1xkD
+ caDN/j1amEbmQlgJnfand1qXZh+QhGuu12rFIz7ook2H7+/uSIyhyhoBNFqRcVSeMeBo
+ Hsi4CT9/Wv2PssdVDZuSpUQlQ3nsVYQQga1+G5gTH5NY3uRGIgtE2wJZZXeyC4sst1ui
+ quEdd1qzn/gWX2MLCk44k3uYs4oSOFEIQri2PpBG2xys5EM/XanvwXluRgsC8ublVtpO
+ ENS320k58BBRGyUqsSN9zUtS+fGMZqtcDMfS99fpYQ1u4tzk9TBm6WzSTWyRU94I/Q0L
+ 7lGA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV22ypRwFylZqgJKGUilYCslotfHRpqj4OXRwoIJWODDBAVbcHQKDgRxBu8JksV9PcMPQkb5MqZ1Q==@nongnu.org
+X-Gm-Message-State: AOJu0YwGOjUIDASAaWl3e8e7NUr8xgIRiqPvtXwVhUo0PysEeICkjZqy
+ r4AWSEXr9dBNCfc7PqYSEOaCnp2w1nHrgE0yizvi0VpB5q0KDEK/LDZ3ABn+1i1I1KdQSMV/Hc9
+ wbbv+PFeptgr2vcLMJpZR4cMWzan6yDKidE8W3Palvdzh9bmw7KIPnA==
+X-Gm-Gg: AY/fxX6oMflhZnoEDKuq2ef1OynZUjzsKbhPmK5TgKajJensPRInkz5vP2Cz+e1UnSE
+ VVyoVGtUYYAmoM9NAEQ49KqGkfzvdg0Ju2i1Anoq0Sb4NMMWEaomjEuNdRMsF3OqrWFGRzf5IG1
+ UoUGFrfyRqgvS/8lKxrWac6PMIXpCw1g8G5vzgvOjshJQTYPiAjJ8vjvg5jX61qwRfHlEIeEm9n
+ R+y2HbxCKXb7cHCD+UUcoYQxiQVReZ43FdeVdSYDS+TKlozQ3E71+1vLi9jey7/jWFPkcOOgVA3
+ SUMgZ3UJ/SkEt0BEsnnynHde1Dlirn75gRIE8VIqKXyOIMsNbU7SSqFWFS64dX5OcDBZzM0rrdq
+ Izvo45zqnpwlQkZ/CCO0ao01iCZcRpMbPCf93yz9zrXc3HDi9LuZHG0Gs7w==
+X-Received: by 2002:a17:906:ef0c:b0:b79:f4e4:b544 with SMTP id
+ a640c23a62f3a-b8444f21f65mr357128266b.21.1767806253971; 
+ Wed, 07 Jan 2026 09:17:33 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFVUtFmIA8FeQ049X3xAPv+NPwcz/Wp4P4fpFIvGXHocKrZ1z7YPaya/DHo1T6Lqjt/lZ+PFA==
+X-Received: by 2002:a17:906:ef0c:b0:b79:f4e4:b544 with SMTP id
+ a640c23a62f3a-b8444f21f65mr357125666b.21.1767806253560; 
+ Wed, 07 Jan 2026 09:17:33 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b842a22ff58sm560729466b.6.2026.01.07.09.17.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 07 Jan 2026 09:17:33 -0800 (PST)
+Message-ID: <90618806-8562-4bab-964e-19e0c5998774@redhat.com>
+Date: Wed, 7 Jan 2026 18:17:31 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260106203018.GE123256@fedora>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 00/10] Mitigation of "failed to load
+ cpu:cpreg_vmstate_array_len" migration failures
+To: Sebastian Ott <sebott@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, cohuck@redhat.com, maz@kernel.org,
+ oliver.upton@linux.dev, gshan@redhat.com, ddutile@redhat.com,
+ peterx@redhat.com, philmd@linaro.org, pbonzini@redhat.com
+References: <20251222134110.3649287-1-eric.auger@redhat.com>
+ <efc862fb-d393-67a7-672d-9f6cfd2ed3a9@redhat.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <efc862fb-d393-67a7-672d-9f6cfd2ed3a9@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: -JIhB03b4dNqynoP33YhkANww4soJSH9YGfK12fyQcE_1767806254
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -91,49 +120,91 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jan 06, 2026 at 03:30:18PM -0500, Stefan Hajnoczi wrote:
-> On Sun, Dec 21, 2025 at 09:50:05PM -0800, Chandan Somani wrote:
-> > @@ -686,14 +684,16 @@ static void release_prop_array(Object *obj, const char *name, void *opaque)
-> >      char *elem = *arrayptr;
-> >      int i;
-> >  
-> > -    if (!prop->arrayinfo->release) {
-> > -        return;
-> > +    if (prop->arrayinfo->release) {
-> > +        for (i = 0; i < *alenptr; i++) {
-> > +            Property elem_prop = array_elem_prop(obj, prop, name, elem);
-> > +            prop->arrayinfo->release(obj, NULL, &elem_prop);
-> > +            elem += prop->arrayfieldsize;
-> > +        }
-> >      }
-> >  
-> > -    for (i = 0; i < *alenptr; i++) {
-> > -        Property elem_prop = array_elem_prop(obj, prop, name, elem);
-> > -        prop->arrayinfo->release(obj, NULL, &elem_prop);
-> > -        elem += prop->arrayfieldsize;
-> > +    if (*arrayptr) {
-> > +        g_free(*arrayptr);
-> >      }
-> 
-> Optional cleanup to protect against use-after-free and similar issues:
-> 
-> *arrayptr = NULL;
+Hi Sebastian,
 
-Even better use  "g_clear_pointer(arrayptr, g_free)" 
+On 1/7/26 4:02 PM, Sebastian Ott wrote:
+> Hey Eric,
+>
+> On Mon, 22 Dec 2025, Eric Auger wrote:
+>> When migrating ARM guests accross same machines with different host
+>> kernels we are likely to encounter failures such as:
+>>
+>> "failed to load cpu:cpreg_vmstate_array_len"
+>>
+>> This is due to the fact KVM exposes a different number of registers
+>> to qemu on source and destination. When trying to migrate a bigger
+>> register set to a smaller one, qemu cannot save the CPU state.
+>>
+>> For example, recently we faced such kind of situations with:
+>> - unconditionnal exposure of KVM_REG_ARM_VENDOR_HYP_BMAP_2 FW pseudo
+>>  register from v6.16 onwards. Causes backward migration failure.
+>> - removal of unconditionnal exposure of TCR2_EL1, PIRE0_EL1, PIR_EL1
+>>  from v6.13 onwards. Causes forward migration failure.
+>>
+>> This situation is really problematic for distributions which want to
+>> guarantee forward and backward migration of a given machine type
+>> between different releases.
+>>
+>> While the series mainly targets KVM acceleration, this problem
+>> also exists with TCG. For instance some registers may be exposed
+>> while they shouldn't. Then it is tricky to fix that situation
+>> without breaking forward migration. An example was provided by
+>> Peter: 4f2b82f60 ("target/arm: Reinstate bogus AArch32 DBGDTRTX
+>> register for migration compat).
+>>
+>> This series introduces 2 CPU array properties that list
+>> - the CPU registers to hide from the exposes sysregs (aims
+>>  at removing registers from the destination)
+>> - The CPU registers that may not exist but which can be found
+>>  in the incoming migration stream (aims at ignoring extra
+>>  registers in the incoming state)
+>>
+>> An example is given to illustrate how those props
+>> could be used to apply compats for machine types supposed to "see" the
+>> same register set accross various host kernels.
+>>
+>> Mitigation of DBGDTRTX issue would be achived by setting
+>> x-mig-safe-missing-regs=0x40200000200e0298 which matches
+>> AArch32 DBGDTRTX register index.
+>>
+>> The first patch improves the tracing so that we can quickly detect
+>> which registers do not match between the incoming stream and the
+>> exposed sysregs
+>>
+>
+> I've played around with these and for virt-10.1 I get:
+> ./build/qemu-system-aarch64 -M virt-10.1 [...]
+> Unexpected error in set_prop_array() at ../hw/core/qdev-properties.c:717:
+> qemu-system-aarch64: can't apply global
+> arm-cpu.x-mig-safe-missing-regs=0x603000000013c103,
+> 0x603000000013c512, 0x603000000013c513: array size property
+> x-mig-safe-missing-regs may not be set more than once
+> Aborted (core dumped)
+>
+> Is it possible to aggregate these, when there are compats at more than
+> one level? 
+Thank you for testing!
 
-> *alenptr = 0;
+The problem relates to my last patch (not to be upstreamed) that leads
+x-mig-safe-missing-regs to be set twice.
 
+virt_machine_10_1_options() calls virt_machine_10_2_options which sets
+x-mig-safe-missing-regs to DBGDTRTX first (through arm_virt_compat_10_2
+compat) and then sets it in virt_machine_10_1_options() to "TCE_EL1,
+PIRE0_EL1, PIR_EL1 " (through arm_virt_kernel_compat_10_1). Effectively
+this cannot be aggregated that way.
 
+I need to rework that example.
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Thanks
+
+Eric
+>
+> Sebastian
+>
 
 

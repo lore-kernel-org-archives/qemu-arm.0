@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3821D14899
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:10:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FFF5D1489C
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:10:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdgOy-0006I5-IH; Wed, 07 Jan 2026 22:09:33 -0500
+	id 1vdgPa-0007B4-LW; Wed, 07 Jan 2026 22:10:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgNx-0005Ro-9M; Wed, 07 Jan 2026 22:08:35 -0500
+ id 1vdgON-0005YL-Mi; Wed, 07 Jan 2026 22:08:57 -0500
 Received: from mgamail.intel.com ([198.175.65.9])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgNv-0005QV-FC; Wed, 07 Jan 2026 22:08:29 -0500
+ id 1vdgOM-0005U3-3G; Wed, 07 Jan 2026 22:08:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1767841708; x=1799377708;
+ t=1767841735; x=1799377735;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=h8hJFCjpgWizV8fThY8EPP7MvzRhJoCodMT4qRBYUn4=;
- b=Pw0DkrCrqKOQiRHn39u8mWfRTFvw9v15e1kDlqTsTjGd1WjmKAA8Hg95
- v1IJXsHZP9r70t5h6L7QcgRMsM2hCVPrb8GnqruXMWLgAgd/GKm0Pmxn4
- R3+mUTNvnNfgkX/PMAMtURew2ePMSv/w7nEsTfZTUl1oRITjpC0wmYvBU
- lfrQ9O+uphEcM7kLJpZe0lcgCNcueqwbfw11ASOd1UjpT6kHw6OpUssZq
- uXAzYCPAngemNbhAXRONLiIAP33Jmc+M2FduxnXZpZRqqKc7xHTn2uKIK
- 0HaHS+uylJ4b8MT0bW9mVwK9cti8u9gMeEKj0Kxo++/ySHNYKTLjbcMzS w==;
-X-CSE-ConnectionGUID: x/1cAEnjT0qSBkMhMC1sQw==
-X-CSE-MsgGUID: +E0qamU5R2ObHPkjgMaXxQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877434"
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877434"
+ bh=xejOAq+bFW6xoyJ41YFTEFZRpWNzRTBD9POBrU3YhrA=;
+ b=IMkDWkAX0ngLRlxgmh36M9XFL7mNTCp/oIYiQY+SROh7xqOBcA0JoABS
+ AzCBNP6BVOo1EQy3YvuSS3my9ZAch+eM6bjuJbZcr14hN2dtZPJ5AJBe2
+ Ohnk2cA1q3PZ4BKqK8LxfkYdOK249vxkC0E7WFVE793/f7XsdJxPFc5Pn
+ Da/kFw10s/j4sK84jO2MieCpqsIROwCc/2vYhDQYaQTvJg/Ua3ZV915f9
+ JbCdEQvlAGuWPa7P+7069izYGvs5LoaRU7TpsE8KUdmsMBOBNnEniA9ga
+ J6uXuyB5MYROOFAs14VGC/wHv93OcSmhp997zFSAdJBZQ67Ytp4ZURrsk A==;
+X-CSE-ConnectionGUID: r1yTFqcHRfqyXRuj+3ZY2w==
+X-CSE-MsgGUID: i36SkxgiSFGauR4F7h05pw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877516"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877516"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jan 2026 19:08:25 -0800
-X-CSE-ConnectionGUID: 6TvJYjOgRyeStfX/4UyOcg==
-X-CSE-MsgGUID: xek6c36hSEuXJpHy++malg==
+ 07 Jan 2026 19:08:53 -0800
+X-CSE-ConnectionGUID: QeaaR3ZcS/GCyk4pHbqDXA==
+X-CSE-MsgGUID: QP/qxYHGQt2VmzYGLblkNA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202211137"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202211209"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
- by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:08:15 -0800
+ by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:08:43 -0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
  "Michael S . Tsirkin" <mst@redhat.com>,
@@ -72,9 +72,9 @@ Cc: qemu-devel@nongnu.org, devel@lists.libvirt.org, kvm@vger.kernel.org,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
  Jiri Denemark <jdenemar@redhat.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v6 18/27] hw/core/machine: Remove hw_compat_2_6[] array
-Date: Thu,  8 Jan 2026 11:30:42 +0800
-Message-Id: <20260108033051.777361-19-zhao1.liu@intel.com>
+Subject: [PATCH v6 21/27] hw/i386/pc: Remove pc_compat_2_7[] array
+Date: Thu,  8 Jan 2026 11:30:45 +0800
+Message-Id: <20260108033051.777361-22-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260108033051.777361-1-zhao1.liu@intel.com>
 References: <20260108033051.777361-1-zhao1.liu@intel.com>
@@ -108,51 +108,55 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-The hw_compat_2_6[] array was only used by the pc-q35-2.6 and
-pc-i440fx-2.6 machines, which got removed. Remove it.
+The pc_compat_2_7[] array was only used by the pc-q35-2.7
+and pc-i440fx-2.7 machines, which got removed. Remove it.
 
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/core/machine.c        | 8 --------
- include/hw/core/boards.h | 3 ---
- 2 files changed, 11 deletions(-)
+ hw/i386/pc.c         | 10 ----------
+ include/hw/i386/pc.h |  3 ---
+ 2 files changed, 13 deletions(-)
 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 51c28468ff96..b01838c88a60 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -290,14 +290,6 @@ GlobalProperty hw_compat_2_7[] = {
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 4b5b7f24d7de..4dfdd040fb13 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -253,16 +253,6 @@ GlobalProperty pc_compat_2_8[] = {
  };
- const size_t hw_compat_2_7_len = G_N_ELEMENTS(hw_compat_2_7);
+ const size_t pc_compat_2_8_len = G_N_ELEMENTS(pc_compat_2_8);
  
--GlobalProperty hw_compat_2_6[] = {
--    { "virtio-mmio", "format_transport_address", "off" },
--    /* Optional because not all virtio-pci devices support legacy mode */
--    { "virtio-pci", "disable-modern", "on",  .optional = true },
--    { "virtio-pci", "disable-legacy", "off", .optional = true },
+-GlobalProperty pc_compat_2_7[] = {
+-    { TYPE_X86_CPU, "l3-cache", "off" },
+-    { TYPE_X86_CPU, "full-cpuid-auto-level", "off" },
+-    { "Opteron_G3" "-" TYPE_X86_CPU, "family", "15" },
+-    { "Opteron_G3" "-" TYPE_X86_CPU, "model", "6" },
+-    { "Opteron_G3" "-" TYPE_X86_CPU, "stepping", "1" },
+-    { "isa-pcspk", "migrate", "off" },
 -};
--const size_t hw_compat_2_6_len = G_N_ELEMENTS(hw_compat_2_6);
+-const size_t pc_compat_2_7_len = G_N_ELEMENTS(pc_compat_2_7);
 -
- MachineState *current_machine;
+ /*
+  * @PC_FW_DATA:
+  * Size of the chunk of memory at the top of RAM for the BIOS ACPI tables
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 0f7d656b3f3b..5d698d024258 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -292,9 +292,6 @@ extern const size_t pc_compat_2_9_len;
+ extern GlobalProperty pc_compat_2_8[];
+ extern const size_t pc_compat_2_8_len;
  
- static char *machine_get_kernel(Object *obj, Error **errp)
-diff --git a/include/hw/core/boards.h b/include/hw/core/boards.h
-index 815845207b01..b0e3a523a107 100644
---- a/include/hw/core/boards.h
-+++ b/include/hw/core/boards.h
-@@ -882,7 +882,4 @@ extern const size_t hw_compat_2_8_len;
- extern GlobalProperty hw_compat_2_7[];
- extern const size_t hw_compat_2_7_len;
- 
--extern GlobalProperty hw_compat_2_6[];
--extern const size_t hw_compat_2_6_len;
+-extern GlobalProperty pc_compat_2_7[];
+-extern const size_t pc_compat_2_7_len;
 -
- #endif
+ #define DEFINE_PC_MACHINE(suffix, namestr, initfn, optsfn) \
+     static void pc_machine_##suffix##_class_init(ObjectClass *oc, \
+                                                  const void *data) \
 -- 
 2.34.1
 

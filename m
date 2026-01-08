@@ -4,168 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E41F4D148A5
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 06:14:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DE58D148A3
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 06:45:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdjHj-00063R-9x; Thu, 08 Jan 2026 01:14:16 -0500
+	id 1vdjlg-0005Jc-Vj; Thu, 08 Jan 2026 01:45:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vdjHf-0005pg-6F
- for qemu-arm@nongnu.org; Thu, 08 Jan 2026 01:14:11 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1vdjld-0005HD-HR; Thu, 08 Jan 2026 01:45:09 -0500
+Received: from mgamail.intel.com ([198.175.65.16])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vdjHc-0005tQ-P9
- for qemu-arm@nongnu.org; Thu, 08 Jan 2026 01:14:10 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767852847;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=l/lzNt1si/El5u/3JxuEqXHb6Skth5KuEneedRtr6Z4=;
- b=bvKRBOZ1F/HsDBwOFzkGDlENtt+TgrhtltYUJdB3cEru18pUC5t654RJv3TuKzDEYQwBA2
- +n0UbdDMB6S3cnJbHAO6cC2oiIEdSk1qo68qf119E9iwMfykQPd3S6zn1vO2yCZlHuC6eu
- jPRi6KHBxo8ePViB0E/rEThkmbxCUYc=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-156-KGv4n8ZvM2SywpfWWSEG0A-1; Thu, 08 Jan 2026 01:14:06 -0500
-X-MC-Unique: KGv4n8ZvM2SywpfWWSEG0A-1
-X-Mimecast-MFC-AGG-ID: KGv4n8ZvM2SywpfWWSEG0A_1767852845
-Received: by mail-ej1-f70.google.com with SMTP id
- a640c23a62f3a-b771bfe9802so336010266b.1
- for <qemu-arm@nongnu.org>; Wed, 07 Jan 2026 22:14:06 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767852845; x=1768457645;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=l/lzNt1si/El5u/3JxuEqXHb6Skth5KuEneedRtr6Z4=;
- b=cwIcXimGWtUhicrPcWoO1tk5UMJIVTMew/mw7pqoFEeCnEehUiswXHLhiyggPEml9J
- isWggT8FX+U75PpOwJDoRtd3GQwL42R5wPgjOlk66cKKL4zRE58YxWUQdYYB7RGF+5dS
- bjPtDWBJQbA2mXYok3CdrSjF1LXAfZyWqzAaTNtBh0Jk7upjkVbAVyq8reB/V9bTPQiA
- IsBPFqiHOS1dGMpsZXa5wN0Tz6nDDjRYgp4NUNH7sXcIcjB+9UzQ6EypbKlgQvQsD76k
- pCX7LXLfTzd9AVAr0H0goKlQ3IZoFrH4ChD9rwq1m8UmITlUzAciauOJ87SC7Q8nwIwC
- TGkA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXIEIlyse9KVWs4vaQKJFMM+3y4U1x5GycXwtkPWx1Vn78USSLQZ3F4mnOoyIU4/l6ohpcPWajVIw==@nongnu.org
-X-Gm-Message-State: AOJu0Ywgo4zQ2zCjAHpS2sH9qdOOsn9Hzmfxq629fD1EZIh/dBH6VZBg
- 6AVMBwWFRrCTflTPEEwnh1sBCnBkrZGy2Wg39tm4AqId3HB5Gv8RAh90hbKQgUzF/GBv+WAxE48
- 13cgg3OEuEMMCq7tCA6yzZ02R/o8GtnAU++t6GwSTBhzhldkq6vxwIA==
-X-Gm-Gg: AY/fxX7hYCV8ngv11DLNO5UuSlg9y8khQo0mdDltaXZcanT3vT1GX4ZAzQf/tFkvAmX
- WyDL7C4iJb59hq/jRln1zuP644rR9idZvqjuxbdpeRT+a7LmtCmlo/8grJRa7TbHZ2u+CNt0Jn3
- flBx+u/xZpn2Eqpgdla1KEtGPymw4JgK/I/a+XLzo71ZYpVPxZdeSi11tm+zvcFtXQ28umeFO1/
- zycRrVx8K3xoYH2H1WSQppbj+UQcv5GLoFJkIlB0ecSgZqst9b3SefjjiUOcRDx7J2r0eJ5gS23
- BTh/HVKHEshbFD21qnfAmAsnAmbeYxf9skN+uURBy96ejWzc9ea0iLZ4mOlvts1Beq/6mnlC/KX
- ZjuyiAww=
-X-Received: by 2002:a17:907:2daa:b0:b83:972a:cb85 with SMTP id
- a640c23a62f3a-b8444c99d69mr493962866b.21.1767852845035; 
- Wed, 07 Jan 2026 22:14:05 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHVRsnS9p9n7drdpE60e89TgHoiXqmd2qOHrMYP6giCCfm+VLK5zTWUF3eXR7xUrA4bvP5uMg==
-X-Received: by 2002:a17:907:2daa:b0:b83:972a:cb85 with SMTP id
- a640c23a62f3a-b8444c99d69mr493958166b.21.1767852844503; 
- Wed, 07 Jan 2026 22:14:04 -0800 (PST)
-Received: from [192.168.0.9] ([47.64.114.194])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b842a564284sm729832166b.62.2026.01.07.22.14.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Jan 2026 22:14:04 -0800 (PST)
-Message-ID: <87cda384-3199-42b5-905f-a4a0488dfaba@redhat.com>
-Date: Thu, 8 Jan 2026 07:14:01 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 14/27] hw/i386: Assume fw_cfg DMA is always enabled
-To: Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Cc: qemu-devel@nongnu.org, devel@lists.libvirt.org, kvm@vger.kernel.org,
- qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1vdjla-0003RQ-OC; Thu, 08 Jan 2026 01:45:09 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1767854707; x=1799390707;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=ZdjK3CN3w2PQzyiNpSWvDzi9Dfm/4LQykNr7WIiHgKw=;
+ b=YtS+R3vcRTtg8Ntrr2pH4b57ydNEwZIH56/847u2da2EagWBgbIGsuH/
+ IK3CsQDaWvhEWGTWEHPoPSCkQxqrAW822MZUNln75xKPf4/toYZc3k2hM
+ 9K0rbDT8hv/a+l2Bsq4BeStqmw8dYd4I7VJQ26adGFoWP11l9pH+VJ1Qd
+ qIw5GMkgP/p5Dwxi1A4YAQTMuE/flPjcLZw50s0nkq2NuCAR+8oJBBpfQ
+ ux4cAApRjCOUyK2l15Rx2nkWh0nPtusNs1M1WUt9NKETOaq4J20fFVvBx
+ Pf2KRQ8Mc/r/Vyd+efgVaIIOH6ttlesJXpDd2XhK0vLMiKGKSWaav8uBe Q==;
+X-CSE-ConnectionGUID: LUVShMRFS/GqcPmuteH9CQ==
+X-CSE-MsgGUID: E/+vyHjBSVSzqoaC17HinQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="69388293"
+X-IronPort-AV: E=Sophos;i="6.21,210,1763452800"; d="scan'208";a="69388293"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Jan 2026 22:45:01 -0800
+X-CSE-ConnectionGUID: 1u9ug1S3Rl6Y8I31eJbghg==
+X-CSE-MsgGUID: Q6s4aJWSTumCIgTiOhXtEw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,210,1763452800"; d="scan'208";a="203145748"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.39])
+ by orviesa007.jf.intel.com with ESMTP; 07 Jan 2026 22:44:58 -0800
+Date: Thu, 8 Jan 2026 15:10:24 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Sergio Lopez <slp@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Laurent Vivier
- <lvivier@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Yi Liu <yi.l.liu@intel.com>, Eduardo Habkost <eduardo@habkost.net>,
- Alistair Francis <alistair.francis@wdc.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
- Amit Shah <amit@kernel.org>, Xiaoyao Li <xiaoyao.li@intel.com>,
- Yanan Wang <wangyanan55@huawei.com>, Helge Deller <deller@gmx.de>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- =?UTF-8?Q?Cl=C3=A9ment_Mathieu--Drif?= <clement.mathieu--drif@eviden.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Huacai Chen <chenhuacai@kernel.org>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
- Jiri Denemark <jdenemar@redhat.com>
-References: <20260108033051.777361-1-zhao1.liu@intel.com>
- <20260108033051.777361-15-zhao1.liu@intel.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20260108033051.777361-15-zhao1.liu@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: I5pDFeFoGt8qCoYvCLkZQeHP_YM1dVGLmbIw36o5YQs_1767852845
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ qemu-ppc@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH 1/5] target/i386: Restrict WatchPoint API to TCG
+Message-ID: <aV9YYE3Yind7Y/Nc@intel.com>
+References: <20260106231908.16756-1-philmd@linaro.org>
+ <20260106231908.16756-2-philmd@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+In-Reply-To: <20260106231908.16756-2-philmd@linaro.org>
+Received-SPF: pass client-ip=198.175.65.16; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -181,42 +85,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 08/01/2026 04.30, Zhao Liu wrote:
-> From: Philippe Mathieu-DaudÃ© <philmd@linaro.org>
+On Wed, Jan 07, 2026 at 12:19:03AM +0100, Philippe Mathieu-Daudé wrote:
+> Date: Wed,  7 Jan 2026 00:19:03 +0100
+> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Subject: [PATCH 1/5] target/i386: Restrict WatchPoint API to TCG
+> X-Mailer: git-send-email 2.52.0
 > 
-> Now all calls of x86 machines to fw_cfg_init_io_dma() pass DMA
-> arguments, so the FWCfgState (FWCfgIoState) created by x86 machines
-> enables DMA by default.
+> Watchpoints are specific to the TCG accelerator. Restrict
+> the cpu_watchpoint_remove_all() call.
 > 
-> Although other callers of fw_cfg_init_io_dma() besides x86 also pass
-> DMA arguments to create DMA-enabled FwCfgIoState, the "dma_enabled"
-> property of FwCfgIoState cannot yet be removed, because Sun4u and Sun4v
-> still create DMA-disabled FwCfgIoState (bypass fw_cfg_init_io_dma()) in
-> sun4uv_init() (hw/sparc64/sun4u.c).
-> 
-> Maybe reusing fw_cfg_init_io_dma() for them would be a better choice, or
-> adding fw_cfg_init_io_nodma(). However, before that, first simplify the
-> handling of FwCfgState in x86.
-> 
-> Considering that FwCfgIoState in x86 enables DMA by default, remove the
-> handling for DMA-disabled cases and replace DMA checks with assertions
-> to ensure that the default DMA-enabled setting is not broken.
-> 
-> Then 'linuxboot.bin' isn't used anymore, and it will be removed in the
-> next commit.
-> 
-> Signed-off-by: Philippe Mathieu-DaudÃ© <philmd@linaro.org>
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> Acked-by: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
-> Changes since v4:
->   * Keep "dma_enabled" property in fw_cfg_io_properties[].
->   * Replace DMA checks with assertions for x86 machines.
-> ---
->   hw/i386/fw_cfg.c     | 16 ++++++++--------
->   hw/i386/x86-common.c |  6 ++----
->   2 files changed, 10 insertions(+), 12 deletions(-)
+>  target/i386/cpu.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
 

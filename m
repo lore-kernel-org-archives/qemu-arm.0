@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C9B6D1489B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FA24D14899
 	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:07:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdgLc-0006eW-9N; Wed, 07 Jan 2026 22:06:04 -0500
+	id 1vdgMl-0000Ya-QZ; Wed, 07 Jan 2026 22:07:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgLY-0006dy-B2; Wed, 07 Jan 2026 22:06:02 -0500
+ id 1vdgMk-0000VW-PF; Wed, 07 Jan 2026 22:07:14 -0500
 Received: from mgamail.intel.com ([198.175.65.9])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgLW-0004rS-IX; Wed, 07 Jan 2026 22:06:00 -0500
+ id 1vdgMj-00058c-24; Wed, 07 Jan 2026 22:07:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1767841559; x=1799377559;
+ t=1767841634; x=1799377634;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=e4mdg7MHTyp2siZ7qIaL0Pyfd9suhc4f/nJUY1HSAmA=;
- b=SKKaiyUI5ERzv/D7+TK9Bksu4LWt3bXgWM6vtlw70lzKM+kQqe6eeSr5
- jw2SYGlP9HwrVRKXT4pAcARcdR2XXDwA7xgG578Faw/iXEyQpnOOKrW9Z
- csVTpq3yRFCUSbjamVfmURTOT4jIegQqWCs0BKAfl9npx7xPKRHARYsVi
- Z/NnjjTyP7FW9/JBRB+XfWtk2wd2YtDTNnj1wp8xTEB1g4nucAqqyR+IY
- xKNuAD2gsl2ObvkehATIwevHrVPTGV1JWLLj/MxzUbW9dQjA5G5CkxL8t
- htxxc6o/hgd8IDMzzjO49J70P71i4OdBZ5kRsNmy0a+n0PnHLgTQd8Lq+ A==;
-X-CSE-ConnectionGUID: 14cHzEjXQe2V9ynUvCF/lA==
-X-CSE-MsgGUID: u/wbTHKfTcSSTsUqKWCybQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91876942"
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91876942"
+ bh=+W2nuu0RATsALTShNsBWCjQLHRQFKTYW61n5Szq2eRA=;
+ b=mOjSiVVmLFBNe5Q3L/oCk09Tesj3KmNSi9ws73DLg25tW6Nk9NKPyfnk
+ vEOVNOKIRjbrqRbc+8CjMP0+P9oBGziMmH+2HnmyPgADT4z3itvxfnajd
+ WjWD+Q2Y2SfOQp86T4KKSQn6zxOsJsJQHKCkY6UdZw79V3OZCEhAkYO5c
+ qYit9NU9WwGptiJxou4elziM5pqS5jxoV6b9XzRLAXG2yHsW3wHP6ynD0
+ K0t6xA3EULs0jDUFLictJ0N7FrUruECiXqy94H3nSt4XLlsrnYpQ0M63b
+ PwKoWEusEPG0555QU6yser8U2Pag5jhyuYNlIuVdw+TDIrunvx0DtbabG Q==;
+X-CSE-ConnectionGUID: f8ujD27RS76r86nY/5cS7A==
+X-CSE-MsgGUID: PPDGTK4HSTGGeiK63x4+NQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877192"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877192"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jan 2026 19:05:56 -0800
-X-CSE-ConnectionGUID: mihR4b1eT/6FccPosTDzhg==
-X-CSE-MsgGUID: Q3sHnPP3TSOKNiEXbULI8Q==
+ 07 Jan 2026 19:07:11 -0800
+X-CSE-ConnectionGUID: 1axfT+9ORDaOUvqICDifyQ==
+X-CSE-MsgGUID: xBlaUGDlSmWMvr0XoQBtsA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202210527"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202210810"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
- by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:05:46 -0800
+ by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:07:01 -0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
  "Michael S . Tsirkin" <mst@redhat.com>,
@@ -72,13 +72,15 @@ Cc: qemu-devel@nongnu.org, devel@lists.libvirt.org, kvm@vger.kernel.org,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
  Jiri Denemark <jdenemar@redhat.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v6 02/27] tests/acpi: Allow DSDT table change for x86 machines
-Date: Thu,  8 Jan 2026 11:30:26 +0800
-Message-Id: <20260108033051.777361-3-zhao1.liu@intel.com>
+Subject: [PATCH v6 10/27] hw/nvram/fw_cfg: Factor fw_cfg_init_mem_internal()
+ out
+Date: Thu,  8 Jan 2026 11:30:34 +0800
+Message-Id: <20260108033051.777361-11-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260108033051.777361-1-zhao1.liu@intel.com>
 References: <20260108033051.777361-1-zhao1.liu@intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=198.175.65.9; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
@@ -105,70 +107,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Igor Mammedov <imammedo@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Before dropping legacy CPU hotplug code, mark and allow the affected
-ACPI tables, to avoid breaking ACPI table testing.
+Factor fw_cfg_init_mem_internal() out of fw_cfg_init_mem_wide().
+In fw_cfg_init_mem_wide(), assert DMA arguments are provided.
+Callers without DMA have to use the fw_cfg_init_mem() helper.
 
-Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Reviewed-by: Xiaoyao Li <xiaoyao.li@intel.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
 Changes since v4:
- * New patch split off from Igor's v5 [*].
-
-[*]: https://lore.kernel.org/qemu-devel/20251031142825.179239-1-imammedo@redhat.com/
+ * Fix a "typo" argument in fw_cfg_init_mem_wide().
 ---
- tests/qtest/bios-tables-test-allowed-diff.h | 42 +++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ hw/nvram/fw_cfg.c | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8bf4..eed8ded69335 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,43 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/x86/pc/DSDT",
-+"tests/data/acpi/x86/pc/DSDT.bridge",
-+"tests/data/acpi/x86/pc/DSDT.ipmikcs",
-+"tests/data/acpi/x86/pc/DSDT.cphp",
-+"tests/data/acpi/x86/pc/DSDT.numamem",
-+"tests/data/acpi/x86/pc/DSDT.nohpet",
-+"tests/data/acpi/x86/pc/DSDT.memhp",
-+"tests/data/acpi/x86/pc/DSDT.dimmpxm",
-+"tests/data/acpi/x86/pc/DSDT.acpihmat",
-+"tests/data/acpi/x86/pc/DSDT.acpierst",
-+"tests/data/acpi/x86/pc/DSDT.roothp",
-+"tests/data/acpi/x86/pc/DSDT.hpbridge",
-+"tests/data/acpi/x86/pc/DSDT.hpbrroot",
-+"tests/data/acpi/x86/q35/DSDT",
-+"tests/data/acpi/x86/q35/DSDT.tis.tpm2",
-+"tests/data/acpi/x86/q35/DSDT.tis.tpm12",
-+"tests/data/acpi/x86/q35/DSDT.bridge",
-+"tests/data/acpi/x86/q35/DSDT.noacpihp",
-+"tests/data/acpi/x86/q35/DSDT.multi-bridge",
-+"tests/data/acpi/x86/q35/DSDT.ipmibt",
-+"tests/data/acpi/x86/q35/DSDT.cphp",
-+"tests/data/acpi/x86/q35/DSDT.numamem",
-+"tests/data/acpi/x86/q35/DSDT.nohpet",
-+"tests/data/acpi/x86/q35/DSDT.acpihmat-noinitiator",
-+"tests/data/acpi/x86/q35/DSDT.acpihmat-generic-x",
-+"tests/data/acpi/x86/q35/DSDT.memhp",
-+"tests/data/acpi/x86/q35/DSDT.dimmpxm",
-+"tests/data/acpi/x86/q35/DSDT.acpihmat",
-+"tests/data/acpi/x86/q35/DSDT.mmio64",
-+"tests/data/acpi/x86/q35/DSDT.acpierst",
-+"tests/data/acpi/x86/q35/DSDT.applesmc",
-+"tests/data/acpi/x86/q35/DSDT.pvpanic-isa",
-+"tests/data/acpi/x86/q35/DSDT.ivrs",
-+"tests/data/acpi/x86/q35/DSDT.type4-count",
-+"tests/data/acpi/x86/q35/DSDT.core-count",
-+"tests/data/acpi/x86/q35/DSDT.core-count2",
-+"tests/data/acpi/x86/q35/DSDT.thread-count",
-+"tests/data/acpi/x86/q35/DSDT.thread-count2",
-+"tests/data/acpi/x86/q35/DSDT.viot",
-+"tests/data/acpi/x86/q35/DSDT.cxl",
-+"tests/data/acpi/x86/q35/DSDT.ipmismbus",
-+"tests/data/acpi/x86/q35/DSDT.xapic",
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index a0315ea9ae6b..3c1d0b9c1d09 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -1054,9 +1054,9 @@ FWCfgState *fw_cfg_init_io_dma(uint32_t iobase, uint32_t dma_iobase,
+     return s;
+ }
+ 
+-FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
+-                                 hwaddr data_addr, uint32_t data_width,
+-                                 hwaddr dma_addr, AddressSpace *dma_as)
++static FWCfgState *fw_cfg_init_mem_internal(hwaddr ctl_addr,
++                                            hwaddr data_addr, uint32_t data_width,
++                                            hwaddr dma_addr, AddressSpace *dma_as)
+ {
+     DeviceState *dev;
+     SysBusDevice *sbd;
+@@ -1088,10 +1088,19 @@ FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
+     return s;
+ }
+ 
++FWCfgState *fw_cfg_init_mem_wide(hwaddr ctl_addr,
++                                 hwaddr data_addr, uint32_t data_width,
++                                 hwaddr dma_addr, AddressSpace *dma_as)
++{
++    assert(dma_addr && dma_as);
++    return fw_cfg_init_mem_internal(ctl_addr, data_addr, data_width,
++                                    dma_addr, dma_as);
++}
++
+ FWCfgState *fw_cfg_init_mem_nodma(hwaddr ctl_addr, hwaddr data_addr,
+                                   unsigned data_width)
+ {
+-    return fw_cfg_init_mem_wide(ctl_addr, data_addr, data_width, 0, NULL);
++    return fw_cfg_init_mem_internal(ctl_addr, data_addr, data_width, 0, NULL);
+ }
+ 
+ 
 -- 
 2.34.1
 

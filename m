@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FFF5D1489C
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:10:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 360F1D1489A
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:10:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdgPa-0007B4-LW; Wed, 07 Jan 2026 22:10:11 -0500
+	id 1vdgNN-00021F-QV; Wed, 07 Jan 2026 22:07:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgON-0005YL-Mi; Wed, 07 Jan 2026 22:08:57 -0500
+ id 1vdgN5-0001Vw-3S; Wed, 07 Jan 2026 22:07:42 -0500
 Received: from mgamail.intel.com ([198.175.65.9])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgOM-0005U3-3G; Wed, 07 Jan 2026 22:08:55 -0500
+ id 1vdgN1-0005BC-CD; Wed, 07 Jan 2026 22:07:32 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1767841735; x=1799377735;
+ t=1767841652; x=1799377652;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=xejOAq+bFW6xoyJ41YFTEFZRpWNzRTBD9POBrU3YhrA=;
- b=IMkDWkAX0ngLRlxgmh36M9XFL7mNTCp/oIYiQY+SROh7xqOBcA0JoABS
- AzCBNP6BVOo1EQy3YvuSS3my9ZAch+eM6bjuJbZcr14hN2dtZPJ5AJBe2
- Ohnk2cA1q3PZ4BKqK8LxfkYdOK249vxkC0E7WFVE793/f7XsdJxPFc5Pn
- Da/kFw10s/j4sK84jO2MieCpqsIROwCc/2vYhDQYaQTvJg/Ua3ZV915f9
- JbCdEQvlAGuWPa7P+7069izYGvs5LoaRU7TpsE8KUdmsMBOBNnEniA9ga
- J6uXuyB5MYROOFAs14VGC/wHv93OcSmhp997zFSAdJBZQ67Ytp4ZURrsk A==;
-X-CSE-ConnectionGUID: r1yTFqcHRfqyXRuj+3ZY2w==
-X-CSE-MsgGUID: i36SkxgiSFGauR4F7h05pw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877516"
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877516"
+ bh=H2ATAxl6nc2NxJwHUemV2+/REmRtA2iQc1/q560G/jk=;
+ b=JAanG+nKw3hpdovR3xqAAGduVghOps4NukZi/4C67GCsUZDWHT3HufKk
+ +ea6xQw2rLgU/QL6c9CETjMdtNTDrUWSOFgZjb7GNpjd7za2KaHFr6pgH
+ t+qtAnMgf0ZetkxS+PMXuNfMT64wIViUK5C49m/t6lUYSfCgCt6SHHFuo
+ 4PaYoWF5sWuy4iWcOEE3egGVcmmG2bhanK/jymz7NZmqRNa3Yxgq25x/M
+ p7LXCVGE5lOPQ49AiYyXg3yys96fZSGDmy3L3cDLtR9rIZN4UgBJkKv2t
+ 3YJPS3z7HEV3JG9/zYmmPCYTXni/2J36GNaSL/SPbXO2DwMFf9pWfUB7r Q==;
+X-CSE-ConnectionGUID: djbX56+aQ26P4b2hJhHNxg==
+X-CSE-MsgGUID: 6vpBdsNXQA+mJxB5TWjmKQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877262"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877262"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jan 2026 19:08:53 -0800
-X-CSE-ConnectionGUID: QeaaR3ZcS/GCyk4pHbqDXA==
-X-CSE-MsgGUID: QP/qxYHGQt2VmzYGLblkNA==
+ 07 Jan 2026 19:07:30 -0800
+X-CSE-ConnectionGUID: X3UNGXX6S7e/WJqtSXmOhQ==
+X-CSE-MsgGUID: ASqkVwIvSP2kfXhBiioB+g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202211209"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202210880"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
- by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:08:43 -0800
+ by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:07:20 -0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
  "Michael S . Tsirkin" <mst@redhat.com>,
@@ -72,9 +72,10 @@ Cc: qemu-devel@nongnu.org, devel@lists.libvirt.org, kvm@vger.kernel.org,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
  Jiri Denemark <jdenemar@redhat.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v6 21/27] hw/i386/pc: Remove pc_compat_2_7[] array
-Date: Thu,  8 Jan 2026 11:30:45 +0800
-Message-Id: <20260108033051.777361-22-zhao1.liu@intel.com>
+Subject: [PATCH v6 12/27] hw/i386/x86: Remove
+ X86MachineClass::fwcfg_dma_enabled field
+Date: Thu,  8 Jan 2026 11:30:36 +0800
+Message-Id: <20260108033051.777361-13-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260108033051.777361-1-zhao1.liu@intel.com>
 References: <20260108033051.777361-1-zhao1.liu@intel.com>
@@ -108,55 +109,124 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-The pc_compat_2_7[] array was only used by the pc-q35-2.7
-and pc-i440fx-2.7 machines, which got removed. Remove it.
+The X86MachineClass::fwcfg_dma_enabled boolean was only used
+by the pc-q35-2.6 and pc-i440fx-2.6 machines, which got
+removed. Remove it and simplify.
 
-Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+'multiboot.bin' isn't used anymore, we'll remove it in the
+next commit.
+
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/i386/pc.c         | 10 ----------
- include/hw/i386/pc.h |  3 ---
- 2 files changed, 13 deletions(-)
+ hw/i386/microvm.c     | 3 ---
+ hw/i386/multiboot.c   | 7 +------
+ hw/i386/x86-common.c  | 3 +--
+ hw/i386/x86.c         | 2 --
+ include/hw/i386/x86.h | 2 --
+ 5 files changed, 2 insertions(+), 15 deletions(-)
 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 4b5b7f24d7de..4dfdd040fb13 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -253,16 +253,6 @@ GlobalProperty pc_compat_2_8[] = {
+diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
+index 8cf99ad66237..7ff205126365 100644
+--- a/hw/i386/microvm.c
++++ b/hw/i386/microvm.c
+@@ -640,7 +640,6 @@ GlobalProperty microvm_properties[] = {
+ 
+ static void microvm_class_init(ObjectClass *oc, const void *data)
+ {
+-    X86MachineClass *x86mc = X86_MACHINE_CLASS(oc);
+     MicrovmMachineClass *mmc = MICROVM_MACHINE_CLASS(oc);
+     MachineClass *mc = MACHINE_CLASS(oc);
+     HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
+@@ -674,8 +673,6 @@ static void microvm_class_init(ObjectClass *oc, const void *data)
+     hc->unplug_request = microvm_device_unplug_request_cb;
+     hc->unplug = microvm_device_unplug_cb;
+ 
+-    x86mc->fwcfg_dma_enabled = true;
+-
+     object_class_property_add(oc, MICROVM_MACHINE_RTC, "OnOffAuto",
+                               microvm_machine_get_rtc,
+                               microvm_machine_set_rtc,
+diff --git a/hw/i386/multiboot.c b/hw/i386/multiboot.c
+index 8b6acfee9ba8..0e960a15dda4 100644
+--- a/hw/i386/multiboot.c
++++ b/hw/i386/multiboot.c
+@@ -153,7 +153,6 @@ int load_multiboot(X86MachineState *x86ms,
+                    int kernel_file_size,
+                    uint8_t *header)
+ {
+-    bool multiboot_dma_enabled = X86_MACHINE_GET_CLASS(x86ms)->fwcfg_dma_enabled;
+     int i, is_multiboot = 0;
+     uint32_t flags = 0;
+     uint32_t mh_entry_addr;
+@@ -402,11 +401,7 @@ int load_multiboot(X86MachineState *x86ms,
+     fw_cfg_add_bytes(fw_cfg, FW_CFG_INITRD_DATA, mb_bootinfo_data,
+                      sizeof(bootinfo));
+ 
+-    if (multiboot_dma_enabled) {
+-        option_rom[nb_option_roms].name = "multiboot_dma.bin";
+-    } else {
+-        option_rom[nb_option_roms].name = "multiboot.bin";
+-    }
++    option_rom[nb_option_roms].name = "multiboot_dma.bin";
+     option_rom[nb_option_roms].bootindex = 0;
+     nb_option_roms++;
+ 
+diff --git a/hw/i386/x86-common.c b/hw/i386/x86-common.c
+index 85b90ff43248..192e91042f22 100644
+--- a/hw/i386/x86-common.c
++++ b/hw/i386/x86-common.c
+@@ -645,7 +645,6 @@ void x86_load_linux(X86MachineState *x86ms,
+                     int acpi_data_size,
+                     bool pvh_enabled)
+ {
+-    bool linuxboot_dma_enabled = X86_MACHINE_GET_CLASS(x86ms)->fwcfg_dma_enabled;
+     uint16_t protocol;
+     int setup_size, kernel_size, cmdline_size;
+     int dtb_size, setup_data_offset;
+@@ -1004,7 +1003,7 @@ void x86_load_linux(X86MachineState *x86ms,
+ 
+     option_rom[nb_option_roms].bootindex = 0;
+     option_rom[nb_option_roms].name = "linuxboot.bin";
+-    if (linuxboot_dma_enabled && fw_cfg_dma_enabled(fw_cfg)) {
++    if (fw_cfg_dma_enabled(fw_cfg)) {
+         option_rom[nb_option_roms].name = "linuxboot_dma.bin";
+     }
+     nb_option_roms++;
+diff --git a/hw/i386/x86.c b/hw/i386/x86.c
+index c29856c810a5..01872cba0733 100644
+--- a/hw/i386/x86.c
++++ b/hw/i386/x86.c
+@@ -375,14 +375,12 @@ static void x86_machine_initfn(Object *obj)
+ static void x86_machine_class_init(ObjectClass *oc, const void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+-    X86MachineClass *x86mc = X86_MACHINE_CLASS(oc);
+     NMIClass *nc = NMI_CLASS(oc);
+ 
+     mc->cpu_index_to_instance_props = x86_cpu_index_to_props;
+     mc->get_default_cpu_node_id = x86_get_default_cpu_node_id;
+     mc->possible_cpu_arch_ids = x86_possible_cpu_arch_ids;
+     mc->kvm_type = x86_kvm_type;
+-    x86mc->fwcfg_dma_enabled = true;
+     nc->nmi_monitor_handler = x86_nmi;
+ 
+     object_class_property_add(oc, X86_MACHINE_SMM, "OnOffAuto",
+diff --git a/include/hw/i386/x86.h b/include/hw/i386/x86.h
+index 0dffba95f9a4..23be62743774 100644
+--- a/include/hw/i386/x86.h
++++ b/include/hw/i386/x86.h
+@@ -30,8 +30,6 @@
+ struct X86MachineClass {
+     MachineClass parent;
+ 
+-    /* use DMA capable linuxboot option rom */
+-    bool fwcfg_dma_enabled;
+     /* CPU and apic information: */
+     bool apic_xrupt_override;
  };
- const size_t pc_compat_2_8_len = G_N_ELEMENTS(pc_compat_2_8);
- 
--GlobalProperty pc_compat_2_7[] = {
--    { TYPE_X86_CPU, "l3-cache", "off" },
--    { TYPE_X86_CPU, "full-cpuid-auto-level", "off" },
--    { "Opteron_G3" "-" TYPE_X86_CPU, "family", "15" },
--    { "Opteron_G3" "-" TYPE_X86_CPU, "model", "6" },
--    { "Opteron_G3" "-" TYPE_X86_CPU, "stepping", "1" },
--    { "isa-pcspk", "migrate", "off" },
--};
--const size_t pc_compat_2_7_len = G_N_ELEMENTS(pc_compat_2_7);
--
- /*
-  * @PC_FW_DATA:
-  * Size of the chunk of memory at the top of RAM for the BIOS ACPI tables
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 0f7d656b3f3b..5d698d024258 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -292,9 +292,6 @@ extern const size_t pc_compat_2_9_len;
- extern GlobalProperty pc_compat_2_8[];
- extern const size_t pc_compat_2_8_len;
- 
--extern GlobalProperty pc_compat_2_7[];
--extern const size_t pc_compat_2_7_len;
--
- #define DEFINE_PC_MACHINE(suffix, namestr, initfn, optsfn) \
-     static void pc_machine_##suffix##_class_init(ObjectClass *oc, \
-                                                  const void *data) \
 -- 
 2.34.1
 

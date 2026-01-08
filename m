@@ -4,83 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5259D148A3
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 06:50:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56182CF6A84
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 08:32:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdjpK-0006vu-SB; Thu, 08 Jan 2026 01:48:58 -0500
+	id 1vdlRH-0001P4-GC; Thu, 08 Jan 2026 03:32:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdjpE-0006tv-Tx; Thu, 08 Jan 2026 01:48:52 -0500
-Received: from mgamail.intel.com ([198.175.65.16])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdjpD-0003tg-57; Thu, 08 Jan 2026 01:48:52 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1767854931; x=1799390931;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=JRPOPhmweRQ3H6XT2e/WjxxJl9QFkoppv+reiNng4GI=;
- b=fpjitBMKAhAaqa6PD7PUm17iHwZI4KVs/5k1CDL+qnVC5gj6IGiAiRd2
- QBRfXzrvPm08JuaO48gvVvVMDzCz3p81TojBAaJAf2RR94d8SQEh1ydPU
- naav7GTnX723bnl8wlpRe+q/SYfKJ1vXJm1pQihOE0ksHAVSyzZCPWdCz
- a4tHp0TPR1ZkohWvi20Acun5sVPUQq+6CRlUii0LMLfT04VxvEsN1WPzj
- z5q4X2IRnaE60kP4JMzgB/soB9Tg3T1bf4seUg7QTV6pEo5xiEhfYgG0q
- MXdoUzWma9Zpq7IvhHEqLyPlg1QbHbX7vlI8p+v70MFbmjxLFREdofVqv w==;
-X-CSE-ConnectionGUID: blgA4MMTRcu9j0JyyWOz1w==
-X-CSE-MsgGUID: owEZ/DhCRQSzxdQyiAAM3Q==
-X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="69388700"
-X-IronPort-AV: E=Sophos;i="6.21,210,1763452800"; d="scan'208";a="69388700"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jan 2026 22:48:47 -0800
-X-CSE-ConnectionGUID: JLUq/h99QVOLg+Kpqa5ffw==
-X-CSE-MsgGUID: HUlh0KyCQGaALaH392hZGg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,210,1763452800"; d="scan'208";a="207658794"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by orviesa004.jf.intel.com with ESMTP; 07 Jan 2026 22:48:42 -0800
-Date: Thu, 8 Jan 2026 15:14:08 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-ppc@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Riku Voipio <riku.voipio@iki.fi>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, Chinmay Rath <rathc@linux.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
- Thomas Huth <thuth@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: Re: [PATCH 5/5] accel/tcg: Unify watchpoint API
-Message-ID: <aV9ZQJhvaNcKOfJ7@intel.com>
-References: <20260106231908.16756-1-philmd@linaro.org>
- <20260106231908.16756-6-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1vdlR8-0001Gd-9v
+ for qemu-arm@nongnu.org; Thu, 08 Jan 2026 03:32:06 -0500
+Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1vdlR6-0004uV-6z
+ for qemu-arm@nongnu.org; Thu, 08 Jan 2026 03:32:06 -0500
+Received: by mail-qt1-x834.google.com with SMTP id
+ d75a77b69052e-4f1aecac2c9so20238541cf.1
+ for <qemu-arm@nongnu.org>; Thu, 08 Jan 2026 00:32:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1767861123; x=1768465923; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1GPLNgm47Xm+JmFQLwzXm2g+/zkJ8FH9Sj4CzeV/bCc=;
+ b=HitO/CHNgOJ/4E57+tysdl76tqr9/JO0jhegqeSoA1r3qUI7cZ+h2Mxv4bG9SSn2lm
+ PeZuEHY6JDwkT7E9gPcdb9rgj6bImBXdVY3QDXk3RHjsapZ0AOGdOAox2qz3s5pUMFwR
+ k/T+x+epITYu2/XPHsmkD38NQnIbNEg5GfL93dt3bsp4OX+tRvIYVD6Q1KGI6CveCK25
+ a29llEdTapqet7NFkYiTiRShOCv+jIY3YuL2dShAwEGVcl6G0BOWwwMSY8uDM3H+MH/D
+ 1lrcAh/UXCVcFs0zzdipJDKg66gKqVI+nNAuWCgWRAJi8B9IEpfZzABP9TOKzuJa9qBK
+ RElw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1767861123; x=1768465923;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=1GPLNgm47Xm+JmFQLwzXm2g+/zkJ8FH9Sj4CzeV/bCc=;
+ b=IEEguad1Zx+s4og1QtJTKqQrWbDvNPi3K4APMg39F9oNFziAP4MDERafyRPkeBkH/M
+ x86Gyjka7imqmqYpLzGBqI3XRxyk79yu4c9XYboOk40fIezoHE1RINIuujwp48nFTEW8
+ e3aNtFKpu4qNXBz8E4/v+UoVHrUk54UDzS5p5G+8uevCTF16jtPzBdbXiaPgdOm31eOw
+ keFDwngMZgPGZLBA+pwdZ77e4FdLeiX3C9Yr7kN/NWzPTaxOpfsc/WCCpgZXSP0L6WRF
+ JLMOXL1+K9hgF3PInIMC8sG2qmoRYMM6mQMXdRJgSpxXbVRhVKCypKQlohGqkf7OF95J
+ Y9Zg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXSR3I+iVAtEdGORyx2pD4Rc8VLuiiLESsjj+50hbOwIEPXxS0rgd2YiugaFXQcGqon2j5bM6vZNA==@nongnu.org
+X-Gm-Message-State: AOJu0YxPLhjNJc0GixK1PhS3tbGdai3W5OwxNpUFoIOPwqlD7rpqgY4G
+ HBLEeLtwGJF9KehBFVRtdVfRsR+eI/jKkj5nJbufUlyL4bv8IHzDzDv1Ml64ha+g5D4Hv44h8nl
+ btp0Ng0YRiYdPJy6hDaOK7mT9UjvpmII=
+X-Gm-Gg: AY/fxX6jDNO8odbrt00vPsA+yFfKHg1z2EohrP5fKuHR5nXg36u286b6duQYQkHjeIs
+ S6fzm0O/psF/6zMJy1HryXQwCG4zYkZbvTFMLjttOPbVYKK4JyWGlhCZLoZH+7l74rfFbjjyyMd
+ CDa2hhKd2O/EiqADqpxANGwpgjXszS+Q6yHaQSMZONkUg2TtnF/05RbEwkYOC3wCiLD23929K3C
+ cjM2xXKaKFzrcgGIlInseHku3kAyATL0hcGI+FErLKZyb+Bs2KpzPX2yrlSpjJvFGPljjBZ8ZKe
+ vucKv2r6LL5SzQaT+JJNoS/KtRo=
+X-Google-Smtp-Source: AGHT+IEuSRA3h6q6BjUia1cZDo92lgDrVAuwUJCt2KcgICcrc5PeWKTpo/8pvfTQ5J35kxef7QubkiVwOW7stBxIyAo=
+X-Received: by 2002:ac8:5fcb:0:b0:4ff:82aa:d845 with SMTP id
+ d75a77b69052e-4ffb40324b5mr77611061cf.41.1767861123015; Thu, 08 Jan 2026
+ 00:32:03 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260106231908.16756-6-philmd@linaro.org>
-Received-SPF: pass client-ip=198.175.65.16; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+References: <20251222055009.1050567-1-csomani@redhat.com>
+In-Reply-To: <20251222055009.1050567-1-csomani@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Thu, 8 Jan 2026 12:31:51 +0400
+X-Gm-Features: AQt7F2ps4R0tHMDia8Z4jkNwP17vZBrLJyA6lne9IVnU4RSV5rRdnpSJ0Ew9VEc
+Message-ID: <CAJ+F1CJOkeNQ+QXLOx2SW582BYDLNMz_ukFkYN5_5urVB28rCQ@mail.gmail.com>
+Subject: Re: [PATCH] qdev: Free property array on release
+To: Chandan Somani <csomani@redhat.com>
+Cc: qemu-devel@nongnu.org, stefanha@redhat.com, Kevin Wolf <kwolf@redhat.com>, 
+ Hanna Reitz <hreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
+ Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ "open list:Block layer core" <qemu-block@nongnu.org>,
+ "open list:Stellaris" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::834;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-qt1-x834.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -97,68 +105,292 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Jan 07, 2026 at 12:19:07AM +0100, Philippe Mathieu-Daudé wrote:
-> Date: Wed,  7 Jan 2026 00:19:07 +0100
-> From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Subject: [PATCH 5/5] accel/tcg: Unify watchpoint API
-> X-Mailer: git-send-email 2.52.0
-> 
-> Currently "exec/breakpoint.h" contains both BreakPoint *and*
-> WatchPoint APIs, however very few files requires the former,
-> and more the latter:
-> 
->   $ git grep -l CPUBreakpoint | wc -l
->         12
->   $ git grep -l CPUWatchpoint | wc -l
->         25
-> 
-> So extracting the WatchPoint API to its own header will reduce
-> compilation pressure.
-> 
-> But more importantly, the API is scattered in two distinct headers.
-> Unify them ("accel/tcg/cpu-ops.h" and "exec/watchpoint.h") to the
-> new "accel/tcg/watchpoint.h" header, making the emphasis the API is
-> specific to TCG.
-> 
-> Have accel/tcg/watchpoint.c absorb system/watchpoint.c code.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Hi Chandan
+
+On Mon, Dec 22, 2025 at 9:56=E2=80=AFAM Chandan Somani <csomani@redhat.com>=
+ wrote:
+>
+> Before this patch, users of the property array would free the
+> array themselves in their cleanup functions. This causes
+> inconsistencies where some users leak the array and some free them.
+>
+> This patch makes it so that the property array's release function
+> frees the property array (instead of just its elements). It fixes any
+> leaks and requires less code.
+>
+> Signed-off-by: Chandan Somani <csomani@redhat.com>
+
+I sent a similar series earlier and forgot about it:
+https://patchew.org/QEMU/20250429140306.190384-1-marcandre.lureau@redhat.co=
+m/
+
+Maybe you could combine the two?
+
 > ---
->  MAINTAINERS                         |   1 -
->  include/accel/tcg/cpu-ops.h         |  28 +-------
->  include/accel/tcg/watchpoint.h      |  57 ++++++++++++++++
->  include/exec/breakpoint.h           |  10 ---
->  include/exec/watchpoint.h           |  18 -----
->  include/hw/core/cpu.h               |   3 +-
->  target/arm/internals.h              |   2 +-
->  target/ppc/internal.h               |   2 +-
->  target/riscv/debug.h                |   2 +-
->  accel/tcg/cputlb.c                  |   1 +
->  accel/tcg/tcg-accel-ops.c           |   2 +-
->  accel/tcg/user-exec-stub.c          |   3 +-
->  accel/tcg/watchpoint.c              |  83 +++++++++++++++++++++-
->  system/watchpoint.c                 | 102 ----------------------------
->  target/arm/debug_helper.c           |   2 +-
->  target/arm/tcg/mte_helper.c         |   2 +-
->  target/arm/tcg/sve_helper.c         |   2 +-
->  target/i386/cpu.c                   |   2 +-
->  target/i386/machine.c               |   2 +-
->  target/i386/tcg/system/bpt_helper.c |   2 +-
->  target/ppc/cpu.c                    |   2 +-
->  target/ppc/cpu_init.c               |   2 +-
->  target/riscv/cpu_helper.c           |   2 +-
->  target/riscv/debug.c                |   2 +-
->  target/s390x/helper.c               |   2 +-
->  target/s390x/tcg/debug.c            |   2 +-
->  target/s390x/tcg/excp_helper.c      |   2 +-
->  target/s390x/tcg/mem_helper.c       |   1 +
->  target/xtensa/dbg_helper.c          |   2 +-
->  system/meson.build                  |   1 -
->  30 files changed, 162 insertions(+), 182 deletions(-)
->  create mode 100644 include/accel/tcg/watchpoint.h
->  delete mode 100644 include/exec/watchpoint.h
->  delete mode 100644 system/watchpoint.c
+>  block/accounting.c                |  1 -
+>  hw/core/qdev-properties.c         | 20 ++++++++++----------
+>  hw/input/stellaris_gamepad.c      |  8 --------
+>  hw/intc/arm_gicv3_common.c        |  8 --------
+>  hw/intc/rx_icu.c                  |  8 --------
+>  hw/misc/arm_sysctl.c              |  2 --
+>  hw/misc/mps2-scc.c                |  8 --------
+>  hw/net/rocker/rocker.c            |  1 -
+>  hw/nvram/xlnx-efuse.c             |  8 --------
+>  hw/nvram/xlnx-versal-efuse-ctrl.c |  8 --------
+>  10 files changed, 10 insertions(+), 62 deletions(-)
+>
+> diff --git a/block/accounting.c b/block/accounting.c
+> index 0933c61f3a..5cf51f029b 100644
+> --- a/block/accounting.c
+> +++ b/block/accounting.c
+> @@ -73,7 +73,6 @@ bool block_acct_setup(BlockAcctStats *stats, enum OnOff=
+Auto account_invalid,
+>              }
+>              block_acct_add_interval(stats, stats_intervals[i]);
+>          }
+> -        g_free(stats_intervals);
+>      }
+>      return true;
+>  }
+> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
+> index 0930d64252..455c28535a 100644
+> --- a/hw/core/qdev-properties.c
+> +++ b/hw/core/qdev-properties.c
+> @@ -673,10 +673,8 @@ static Property array_elem_prop(Object *obj, const P=
+roperty *parent_prop,
+>
+>  /*
+>   * Object property release callback for array properties: We call the
+> - * underlying element's property release hook for each element.
+> - *
+> - * Note that it is the responsibility of the individual device's deinit
+> - * to free the array proper.
+> + * underlying element's property release hook for each element and free =
+the
+> + * property array.
+>   */
+>  static void release_prop_array(Object *obj, const char *name, void *opaq=
+ue)
+>  {
+> @@ -686,14 +684,16 @@ static void release_prop_array(Object *obj, const c=
+har *name, void *opaque)
+>      char *elem =3D *arrayptr;
+>      int i;
+>
+> -    if (!prop->arrayinfo->release) {
+> -        return;
+> +    if (prop->arrayinfo->release) {
+> +        for (i =3D 0; i < *alenptr; i++) {
+> +            Property elem_prop =3D array_elem_prop(obj, prop, name, elem=
+);
+> +            prop->arrayinfo->release(obj, NULL, &elem_prop);
+> +            elem +=3D prop->arrayfieldsize;
+> +        }
+>      }
+>
+> -    for (i =3D 0; i < *alenptr; i++) {
+> -        Property elem_prop =3D array_elem_prop(obj, prop, name, elem);
+> -        prop->arrayinfo->release(obj, NULL, &elem_prop);
+> -        elem +=3D prop->arrayfieldsize;
+> +    if (*arrayptr) {
+> +        g_free(*arrayptr);
+>      }
+>  }
+>
+> diff --git a/hw/input/stellaris_gamepad.c b/hw/input/stellaris_gamepad.c
+> index fec1161c9c..207064dacb 100644
+> --- a/hw/input/stellaris_gamepad.c
+> +++ b/hw/input/stellaris_gamepad.c
+> @@ -63,13 +63,6 @@ static void stellaris_gamepad_realize(DeviceState *dev=
+, Error **errp)
+>      qemu_input_handler_register(dev, &stellaris_gamepad_handler);
+>  }
+>
+> -static void stellaris_gamepad_finalize(Object *obj)
+> -{
+> -    StellarisGamepad *s =3D STELLARIS_GAMEPAD(obj);
+> -
+> -    g_free(s->keycodes);
+> -}
+> -
+>  static void stellaris_gamepad_reset_enter(Object *obj, ResetType type)
+>  {
+>      StellarisGamepad *s =3D STELLARIS_GAMEPAD(obj);
+> @@ -98,7 +91,6 @@ static const TypeInfo stellaris_gamepad_info[] =3D {
+>          .name =3D TYPE_STELLARIS_GAMEPAD,
+>          .parent =3D TYPE_SYS_BUS_DEVICE,
+>          .instance_size =3D sizeof(StellarisGamepad),
+> -        .instance_finalize =3D stellaris_gamepad_finalize,
+>          .class_init =3D stellaris_gamepad_class_init,
+>      },
+>  };
+> diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
+> index 2d0df6da86..26d694d2ab 100644
+> --- a/hw/intc/arm_gicv3_common.c
+> +++ b/hw/intc/arm_gicv3_common.c
+> @@ -488,13 +488,6 @@ static void arm_gicv3_common_realize(DeviceState *de=
+v, Error **errp)
+>      s->itslist =3D g_ptr_array_new();
+>  }
+>
+> -static void arm_gicv3_finalize(Object *obj)
+> -{
+> -    GICv3State *s =3D ARM_GICV3_COMMON(obj);
+> -
+> -    g_free(s->redist_region_count);
+> -}
+> -
+>  static void arm_gicv3_common_reset_hold(Object *obj, ResetType type)
+>  {
+>      GICv3State *s =3D ARM_GICV3_COMMON(obj);
+> @@ -644,7 +637,6 @@ static const TypeInfo arm_gicv3_common_type =3D {
+>      .instance_size =3D sizeof(GICv3State),
+>      .class_size =3D sizeof(ARMGICv3CommonClass),
+>      .class_init =3D arm_gicv3_common_class_init,
+> -    .instance_finalize =3D arm_gicv3_finalize,
+>      .abstract =3D true,
+>      .interfaces =3D (const InterfaceInfo[]) {
+>          { TYPE_ARM_LINUX_BOOT_IF },
+> diff --git a/hw/intc/rx_icu.c b/hw/intc/rx_icu.c
+> index f8615527b7..85da0624f6 100644
+> --- a/hw/intc/rx_icu.c
+> +++ b/hw/intc/rx_icu.c
+> @@ -334,13 +334,6 @@ static void rxicu_init(Object *obj)
+>      sysbus_init_irq(d, &icu->_swi);
+>  }
+>
+> -static void rxicu_fini(Object *obj)
+> -{
+> -    RXICUState *icu =3D RX_ICU(obj);
+> -    g_free(icu->map);
+> -    g_free(icu->init_sense);
+> -}
+> -
+>  static const VMStateDescription vmstate_rxicu =3D {
+>      .name =3D "rx-icu",
+>      .version_id =3D 1,
+> @@ -382,7 +375,6 @@ static const TypeInfo rxicu_info =3D {
+>      .parent =3D TYPE_SYS_BUS_DEVICE,
+>      .instance_size =3D sizeof(RXICUState),
+>      .instance_init =3D rxicu_init,
+> -    .instance_finalize =3D rxicu_fini,
+>      .class_init =3D rxicu_class_init,
+>  };
+>
+> diff --git a/hw/misc/arm_sysctl.c b/hw/misc/arm_sysctl.c
+> index 0f4e37cd47..e715ff9475 100644
+> --- a/hw/misc/arm_sysctl.c
+> +++ b/hw/misc/arm_sysctl.c
+> @@ -618,9 +618,7 @@ static void arm_sysctl_finalize(Object *obj)
+>  {
+>      arm_sysctl_state *s =3D ARM_SYSCTL(obj);
+>
+> -    g_free(s->db_voltage);
+>      g_free(s->db_clock);
+> -    g_free(s->db_clock_reset);
+>  }
+>
+>  static const Property arm_sysctl_properties[] =3D {
+> diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
+> index a9a5d4a535..acb0f5773b 100644
+> --- a/hw/misc/mps2-scc.c
+> +++ b/hw/misc/mps2-scc.c
+> @@ -405,13 +405,6 @@ static void mps2_scc_realize(DeviceState *dev, Error=
+ **errp)
+>      s->oscclk =3D g_new0(uint32_t, s->num_oscclk);
+>  }
+>
+> -static void mps2_scc_finalize(Object *obj)
+> -{
+> -    MPS2SCC *s =3D MPS2_SCC(obj);
+> -
+> -    g_free(s->oscclk_reset);
+> -}
+> -
+>  static bool cfg7_needed(void *opaque)
+>  {
+>      MPS2SCC *s =3D opaque;
+> @@ -489,7 +482,6 @@ static const TypeInfo mps2_scc_info =3D {
+>      .parent =3D TYPE_SYS_BUS_DEVICE,
+>      .instance_size =3D sizeof(MPS2SCC),
+>      .instance_init =3D mps2_scc_init,
+> -    .instance_finalize =3D mps2_scc_finalize,
+>      .class_init =3D mps2_scc_class_init,
+>  };
+>
+> diff --git a/hw/net/rocker/rocker.c b/hw/net/rocker/rocker.c
+> index cc49701dd3..cbc7bd3ed9 100644
+> --- a/hw/net/rocker/rocker.c
+> +++ b/hw/net/rocker/rocker.c
+> @@ -1429,7 +1429,6 @@ static void pci_rocker_uninit(PCIDevice *dev)
+>              world_free(r->worlds[i]);
+>          }
+>      }
+> -    g_free(r->fp_ports_peers);
+>  }
+>
+>  static void rocker_reset(DeviceState *dev)
+> diff --git a/hw/nvram/xlnx-efuse.c b/hw/nvram/xlnx-efuse.c
+> index 4c23f8b931..1875fdb953 100644
+> --- a/hw/nvram/xlnx-efuse.c
+> +++ b/hw/nvram/xlnx-efuse.c
+> @@ -224,13 +224,6 @@ static void efuse_realize(DeviceState *dev, Error **=
+errp)
+>      }
+>  }
+>
+> -static void efuse_finalize(Object *obj)
+> -{
+> -    XlnxEFuse *s =3D XLNX_EFUSE(obj);
+> -
+> -    g_free(s->ro_bits);
+> -}
+> -
+>  static void efuse_prop_set_drive(Object *obj, Visitor *v, const char *na=
+me,
+>                                   void *opaque, Error **errp)
+>  {
+> @@ -288,7 +281,6 @@ static const TypeInfo efuse_info =3D {
+>      .name          =3D TYPE_XLNX_EFUSE,
+>      .parent        =3D TYPE_DEVICE,
+>      .instance_size =3D sizeof(XlnxEFuse),
+> -    .instance_finalize =3D efuse_finalize,
+>      .class_init    =3D efuse_class_init,
+>  };
+>
+> diff --git a/hw/nvram/xlnx-versal-efuse-ctrl.c b/hw/nvram/xlnx-versal-efu=
+se-ctrl.c
+> index 6f17f32a0c..4d0c2c8404 100644
+> --- a/hw/nvram/xlnx-versal-efuse-ctrl.c
+> +++ b/hw/nvram/xlnx-versal-efuse-ctrl.c
+> @@ -724,13 +724,6 @@ static void efuse_ctrl_init(Object *obj)
+>      sysbus_init_irq(sbd, &s->irq_efuse_imr);
+>  }
+>
+> -static void efuse_ctrl_finalize(Object *obj)
+> -{
+> -    XlnxVersalEFuseCtrl *s =3D XLNX_VERSAL_EFUSE_CTRL(obj);
+> -
+> -    g_free(s->extra_pg0_lock_spec);
+> -}
+> -
+>  static const VMStateDescription vmstate_efuse_ctrl =3D {
+>      .name =3D TYPE_XLNX_VERSAL_EFUSE_CTRL,
+>      .version_id =3D 1,
+> @@ -767,7 +760,6 @@ static const TypeInfo efuse_ctrl_info =3D {
+>      .instance_size =3D sizeof(XlnxVersalEFuseCtrl),
+>      .class_init    =3D efuse_ctrl_class_init,
+>      .instance_init =3D efuse_ctrl_init,
+> -    .instance_finalize =3D efuse_ctrl_finalize,
+>  };
+>
+>  static void efuse_ctrl_register_types(void)
+> --
+> 2.51.1
+>
+>
 
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
+--=20
+Marc-Andr=C3=A9 Lureau
 

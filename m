@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F891D1D462
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 14:37:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF180D1D461
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 14:37:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdr67-0007A2-KA; Thu, 08 Jan 2026 09:34:48 -0500
+	id 1vdr6A-0007CR-V0; Thu, 08 Jan 2026 09:34:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vdr5t-00071G-Si
- for qemu-arm@nongnu.org; Thu, 08 Jan 2026 09:34:34 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ id 1vdr5r-000712-0N
+ for qemu-arm@nongnu.org; Thu, 08 Jan 2026 09:34:33 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vdr5p-0000gn-DM
- for qemu-arm@nongnu.org; Thu, 08 Jan 2026 09:34:31 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-430f9ffd4e8so944934f8f.0
- for <qemu-arm@nongnu.org>; Thu, 08 Jan 2026 06:34:28 -0800 (PST)
+ id 1vdr5o-0000gL-1N
+ for qemu-arm@nongnu.org; Thu, 08 Jan 2026 09:34:30 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-4779adb38d3so22898545e9.2
+ for <qemu-arm@nongnu.org>; Thu, 08 Jan 2026 06:34:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767882868; x=1768487668; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767882866; x=1768487666; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=JrvdGZYfUVb/G7Ck+UxozbwBKfyc29iJxW1XdKqiM0k=;
- b=WyGdm3xQ59BQsfUKgWOkLSVQzWu9j/s9Zkw+xNuHNdXgi+GOujx87FAOevePisW8pJ
- foJo2lXXNSMZqMm+E/HuIsuarocykrHXcbHuSod+bOJ6baXY9smCM/0nP8qpct+dN0bD
- oVxL5hYVIq6oN7suCKVWg8V17AnmjdUgB7QxArTEB5KpHA/ZaQAMPc5ASLKJ2mnZtsZT
- U4bfn5qJZH48ULHsEQsMaLZiWmSB7Jr5FPb+F7EaFNlDOhcvQvp2Jj7Zreir2uQLYuzj
- 2jGhJac2JMVg3vdY9kecBcG0Ur8wV6NbIOi3fxQ3o48641y8c9vEqeo0/bQI2WlWTwvB
- ZDqw==
+ bh=xegit4ejNTk5f0W5DGBT7IrkTCynuOYYrskO3sfAUpw=;
+ b=HLpPbAvlBYEuciJnAg7EivyOW+LuSPk3JAulHjUj09RdTwuxwJqy+ckyKgfQSqm0Mn
+ TnHFPRYgvBzvZ69hx8hK/aQMYqiKQYJSuKUUCmSM5neGqYdePXVW2RAKi34QZWX/mf/+
+ iEhbUMG61bMt5sVILtbC3+Px55YDKKObMy55yvl4QoE/HEv5S5vJiGjGJAgVnlnKOSKQ
+ acPAo34zdYI9oO9wpnb74OzJEXUNLgDAUkRNXBWrXb7G8cpnwwC9bViqQ9L6dBG5B7i+
+ /EZKJX4apDSpAUXdWD7z8T5J/kvqGxg81QcBtCWP+jy36vhekb509ezA4eY3repaNxtF
+ q3lA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767882868; x=1768487668;
+ d=1e100.net; s=20230601; t=1767882866; x=1768487666;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=JrvdGZYfUVb/G7Ck+UxozbwBKfyc29iJxW1XdKqiM0k=;
- b=VnhObpcYfy99RaX/4gmyEIUcGUQ3r79D+3S6gVheaflx0/+pmRhbkEhpYVOeavqCvE
- k3rUpcxKTpuiL7F3EVCgNOCujXPKqmY7P3tBopR9ushKGZR8Sn1K5xYaQrwaNZSSFdrr
- AOmVkPP0NK8zOic7KSvh06FVFx6T5BpK+1FDyUtJa6y1e3G1/uxHEYFveoLSCPTfxi4P
- 21ZvoDEjs9s9RnyYBjfF/z4bxItSZIGHS3tE7bsRiPet8u8c+i0DLOgrsYeo8HbbA69K
- qK9ZE/vu/wXPqucjWuPvx3t0/z0g64gJdVw3C/pQ802FYtIRcXRDBrCaRLzIMGf7jVOA
- ixaA==
+ bh=xegit4ejNTk5f0W5DGBT7IrkTCynuOYYrskO3sfAUpw=;
+ b=WJ9loSbtfl2Y0Vjr1oIAhsJ9cSqwCKoNGICK4wQQDKsyMqiEASJDuZ6QTvMF6POAIx
+ fAK8+V27t0PkJC0I1VQBBvJXSei9rEBo0BR1hBqllvv9PsB4stl53fYxS0+heZka9okd
+ uK01DgZc2BlMETMEhz/21g4itHY2yDo083OByAxNNifMRe1K+OKsemB3nJTyGyRgQHUV
+ ttM6WyPu8kKKpqEK3+HnlaQhew7+2/B9DqOZU6Ngyo1pq3he4Js+7Ky5clCuFId44r09
+ kl+lNMixEKqpspDGmG5GpUZmjuhAAuK5jrA1MH2ywBF5E74jNUThlvplJRddoqWp899W
+ uOxw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXJL1IiLAFJeTl5TLKcZ64dOxCnljkZgeV3eUbSFg0QK300nRBhM0Kr3R5qmh9I1JI9bRAQEFRjbw==@nongnu.org
-X-Gm-Message-State: AOJu0YyiBKaBXYGdobHNEUPR/qunSmRgs87QJvcGVn43ksR1kPKOSP7W
- UUBs6wDVipKYVU8aPFkLZ+DE2jbt0bnnslrc1Zcqk6SfUdo8cDe+PBMrEkg7fgM6VrU=
-X-Gm-Gg: AY/fxX7u0WwM+xuJUH2th818WMb/6IAoxuEjyQLDUHnmfGCjjV2iV4mRu1xYb2PBhqO
- TGRN8Vj9UhSz1Cm2slkse0kbL9wqSHoGp1XxHYH0AF+k36TGN/+jEFrzwiFP58qf0uYJ5n63K4y
- uYNFgFNB4oFg+O3DgMpetL9nuTKAvMz3qQNNqF70RMhNFAio+vjVSGpLpzraxlH9H6i0g8o1f1M
- 9nMWYI5kDHiagqqBJfoGMy/Lf3d84dGg26nvygVxSPhhWXrDSHv60Vve0Mpb5kKutAXF5sqv/q3
- k3am+TRuaYPEqR987NaxZLmhFi+33e7YKoi3rHPNk0++vJ+2dzpo9nVY8vFtKzQt54FWQUncU9t
- FVe5Hlcdlg4cCDamFqZaslc2EDTZViWwuCkZ3auDq+rhCzr+8aRLZCBxexyxeWAn0E0KXlhZgjF
- bS2M9CmMdoCi8=
-X-Google-Smtp-Source: AGHT+IGDHIfwJErYbSMAyAu5Hd64Y5pQD62DUstZYKJavFXL02WDUeDl9svWVvVL744sh9c/Ayw0Dw==
-X-Received: by 2002:a5d:64c7:0:b0:431:327:5dd6 with SMTP id
- ffacd0b85a97d-432c3634312mr7519174f8f.8.1767882867572; 
- Thu, 08 Jan 2026 06:34:27 -0800 (PST)
-Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-432bd5df939sm16366478f8f.21.2026.01.08.06.34.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ AJvYcCVf7Y+BEshfct1gPKzQNkUGTsIRqx9DNtZZ2vyHYRcbxXJPYYMss3umoFn9hcpr2a66YU6nrE6J7Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yzcv5KdRbkprPpRXRGpEtl6WeqOPDJo7a/A7PJH2iZP5NB4n05D
+ q21PrplSO5MsLpGlgeH6jmxDAPJnnStxUNL2g3607KOMAHHi/5F7SJ+mZe9QVTuuj+U=
+X-Gm-Gg: AY/fxX7ImK4LO6hkSk6m+NVwe5otHO4e3G3lzDS6ogvYlM9G3oZqQkIQzB7B5Lnnhno
+ IELz/F8z0FM4tmcqS7xjHBWZ7GhVvBIxtWYe0FKS/Qr1puBsDPGVo8nKXvygOqoTwlk7GJHOJOG
+ NmDa5rVHMdhnybwuf0UlRiAeEFpfAatHLOd8ASQCj6QMPlqQmWiBDOKLRKumww6+YD8wgHbihnK
+ haqhBf9Dy5ldCfOW2jZHnmULGuFkf7J1BuBRTdGGL9GKW7uz5eeDzIzMOim4zqqFfJCtO8k1QON
+ R1HJgoAU9yLqzlLy9AVBjbvh930Ai5dBgcVh6oSPJC8Mogfg2BfJVEsyttcqRLi73LhUIE6ZFL4
+ zl2jEgDY52Fr++0E4yYbWwiRIJx8y+sPbTl2NE+dEvMbitK3m8zkV3EpFJ3fyKCQevLwgzmuZ4Y
+ DWXETvfyCRPSg=
+X-Google-Smtp-Source: AGHT+IEx+WjdFSQNuvpe/UppetDTRNkYuwVaL12fCmNTmDl4lE5Wr+4Uohf6JheTbqrvNh2aXPuT0A==
+X-Received: by 2002:a05:600c:470c:b0:477:79f8:da9d with SMTP id
+ 5b1f17b1804b1-47d84b3b522mr82961925e9.24.1767882865921; 
  Thu, 08 Jan 2026 06:34:25 -0800 (PST)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-47d7f410c6csm167037385e9.1.2026.01.08.06.34.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Jan 2026 06:34:24 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 351915F90C;
+ by draig.lan (Postfix) with ESMTP id 21A055F8ED;
  Thu, 08 Jan 2026 14:34:24 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -82,17 +82,17 @@ Cc: Aurelien Jarno <aurelien@aurel32.net>,
  Yanan Wang <wangyanan55@huawei.com>, Aleksandar Rikalo <arikalo@gmail.com>,
  Thomas Huth <huth@tuxfamily.org>, Eduardo Habkost <eduardo@habkost.net>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 04/12] hw/m68k: register a mcf5208evb_cpu_reset handler
-Date: Thu,  8 Jan 2026 14:34:15 +0000
-Message-ID: <20260108143423.1378674-5-alex.bennee@linaro.org>
+Subject: [RFC PATCH 03/12] hw/m68k: register a nextcube_cpu_reset handler
+Date: Thu,  8 Jan 2026 14:34:14 +0000
+Message-ID: <20260108143423.1378674-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260108143423.1378674-1-alex.bennee@linaro.org>
 References: <20260108143423.1378674-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,31 +115,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-It looks like allowing a -kernel to override any firmware setting is
-intentional.
+This is a fairly simple migration to the handler. Alternatively we
+could eschew stashing the value in reset_pc and just re-read the ROM
+on reset.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- hw/m68k/mcf5208.c | 25 +++++++++++++++++++------
- 1 file changed, 19 insertions(+), 6 deletions(-)
+ hw/m68k/next-cube.c | 23 +++++++++++++++++------
+ 1 file changed, 17 insertions(+), 6 deletions(-)
 
-diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
-index c6d1c5fae9f..5680d516a23 100644
---- a/hw/m68k/mcf5208.c
-+++ b/hw/m68k/mcf5208.c
-@@ -27,6 +27,7 @@
- #include "qemu/timer.h"
- #include "hw/core/ptimer.h"
+diff --git a/hw/m68k/next-cube.c b/hw/m68k/next-cube.c
+index 26177c7b867..3d66f5e7607 100644
+--- a/hw/m68k/next-cube.c
++++ b/hw/m68k/next-cube.c
+@@ -16,6 +16,7 @@
+ #include "exec/cpu-interrupt.h"
  #include "system/system.h"
-+#include "system/reset.h"
  #include "system/qtest.h"
- #include "net/net.h"
++#include "system/reset.h"
+ #include "hw/core/irq.h"
+ #include "hw/m68k/next-cube.h"
  #include "hw/core/boards.h"
-@@ -274,6 +275,20 @@ static void mcf_fec_init(MemoryRegion *sysmem, hwaddr base, qemu_irq *irqs)
-     memory_region_add_subregion(sysmem, base, sysbus_mmio_get_region(s, 0));
- }
+@@ -1249,6 +1250,19 @@ static const TypeInfo next_pc_info = {
+     .class_init = next_pc_class_init,
+ };
  
-+static void mcf5208evb_cpu_reset(void *opaque)
++static void nextcube_cpu_reset(void *opaque)
 +{
 +    M68kCPU *cpu = opaque;
 +    CPUM68KState *env = &cpu->env;
@@ -148,46 +149,38 @@ index c6d1c5fae9f..5680d516a23 100644
 +    cpu_reset(cs);
 +    /* Initialize CPU registers.  */
 +    env->vbr = 0;
-+    /* TODO: Configure BARs.  */
-+    env->aregs[7] = ldl_phys(cs->as, 0);
++    env->sr  = 0x2700;
 +    env->pc = env->reset_pc;
 +}
 +
- static void mcf5208evb_init(MachineState *machine)
+ static void next_cube_init(MachineState *machine)
  {
-     ram_addr_t ram_size = machine->ram_size;
-@@ -289,11 +304,9 @@ static void mcf5208evb_init(MachineState *machine)
-     MemoryRegion *sram = g_new(MemoryRegion, 1);
- 
-     cpu = M68K_CPU(cpu_create(machine->cpu_type));
--    env = &cpu->env;
-+    qemu_register_reset(mcf5208evb_cpu_reset, cpu);
+     NeXTState *m = NEXT_MACHINE(machine);
+@@ -1264,12 +1278,9 @@ static void next_cube_init(MachineState *machine)
+         error_report("Unable to find m68k CPU definition");
+         exit(1);
+     }
++    qemu_register_reset(nextcube_cpu_reset, cpu);
+     env = &cpu->env;
  
 -    /* Initialize CPU registers.  */
 -    env->vbr = 0;
--    /* TODO: Configure BARs.  */
-+    env = &cpu->env;
- 
-     /* ROM at 0x00000000 */
-     memory_region_init_rom(rom, NULL, "mcf5208.rom", ROM_SIZE, &error_fatal);
-@@ -359,7 +372,7 @@ static void mcf5208evb_init(MachineState *machine)
+-    env->sr  = 0x2700;
+-
+     /* Peripheral Controller */
+     pcdev = qdev_new(TYPE_NEXT_PC);
+     object_property_set_link(OBJECT(pcdev), "cpu", OBJECT(cpu), &error_abort);
+@@ -1335,8 +1346,8 @@ static void next_cube_init(MachineState *machine)
          /* Initial PC is always at offset 4 in firmware binaries */
-         ptr = rom_ptr(0x4, 4);
-         assert(ptr != NULL);
+         ptr = rom_ptr(0x01000004, 4);
+         g_assert(ptr != NULL);
 -        env->pc = ldl_be_p(ptr);
+-        if (env->pc >= 0x01020000) {
 +        env->reset_pc = ldl_be_p(ptr);
-     }
- 
-     /* Load kernel.  */
-@@ -388,7 +401,7 @@ static void mcf5208evb_init(MachineState *machine)
-         exit(1);
-     }
- 
--    env->pc = entry;
-+    env->reset_pc = entry;
- }
- 
- static void mcf5208evb_machine_init(MachineClass *mc)
++        if (env->reset_pc >= 0x01020000) {
+             error_report("'%s' does not seem to be a valid firmware image.",
+                          bios_name);
+             exit(1);
 -- 
 2.47.3
 

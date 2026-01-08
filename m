@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0849BD148A5
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 06:11:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E41F4D148A5
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 06:14:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdjEY-0002tU-N2; Thu, 08 Jan 2026 01:10:58 -0500
+	id 1vdjHj-00063R-9x; Thu, 08 Jan 2026 01:14:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vdjEX-0002si-Bp
- for qemu-arm@nongnu.org; Thu, 08 Jan 2026 01:10:57 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vdjHf-0005pg-6F
+ for qemu-arm@nongnu.org; Thu, 08 Jan 2026 01:14:11 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vdjEV-00055W-Fw
- for qemu-arm@nongnu.org; Thu, 08 Jan 2026 01:10:56 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vdjHc-0005tQ-P9
+ for qemu-arm@nongnu.org; Thu, 08 Jan 2026 01:14:10 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767852654;
+ s=mimecast20190719; t=1767852847;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=GqqoIUnlcs+Zjb3qCkKwSMLUW1dKlhjaUAgjxZyVoPI=;
- b=ZLUnmAWzHfYfk+Mv66hlhwkLJAyeD+UzuI2Q/9TIwnXkuVrOJRJqvlSalMfjzbXSPwDReg
- KkRxHYyWBPzoGhEa/CZDeL6ID9t8rQwPWXRlFiAsdOyPd+/tpoao+XyaqbJin11CqKSKij
- b7axTJmpWDELvr9PmMDc/Dlis+3fZ/o=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=l/lzNt1si/El5u/3JxuEqXHb6Skth5KuEneedRtr6Z4=;
+ b=bvKRBOZ1F/HsDBwOFzkGDlENtt+TgrhtltYUJdB3cEru18pUC5t654RJv3TuKzDEYQwBA2
+ +n0UbdDMB6S3cnJbHAO6cC2oiIEdSk1qo68qf119E9iwMfykQPd3S6zn1vO2yCZlHuC6eu
+ jPRi6KHBxo8ePViB0E/rEThkmbxCUYc=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-675-30RveGB3OemZklbRUmWbGg-1; Thu, 08 Jan 2026 01:10:50 -0500
-X-MC-Unique: 30RveGB3OemZklbRUmWbGg-1
-X-Mimecast-MFC-AGG-ID: 30RveGB3OemZklbRUmWbGg_1767852649
-Received: by mail-ej1-f71.google.com with SMTP id
- a640c23a62f3a-b8395caeab6so466520166b.2
- for <qemu-arm@nongnu.org>; Wed, 07 Jan 2026 22:10:50 -0800 (PST)
+ us-mta-156-KGv4n8ZvM2SywpfWWSEG0A-1; Thu, 08 Jan 2026 01:14:06 -0500
+X-MC-Unique: KGv4n8ZvM2SywpfWWSEG0A-1
+X-Mimecast-MFC-AGG-ID: KGv4n8ZvM2SywpfWWSEG0A_1767852845
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-b771bfe9802so336010266b.1
+ for <qemu-arm@nongnu.org>; Wed, 07 Jan 2026 22:14:06 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767852649; x=1768457449;
+ d=1e100.net; s=20230601; t=1767852845; x=1768457645;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GqqoIUnlcs+Zjb3qCkKwSMLUW1dKlhjaUAgjxZyVoPI=;
- b=LR27Lm/f/3f+b2QLQplEw9yVJ1V62P3bWDpymhodGWLBjY7xDeYRBkpITvX5ZNjImw
- QaOCZULE6HGtAPOZVghrhWcLbEF4UZrnktSe8+OKDtePtqiegrJz7+a+h/Ls59fEBS8v
- 18jZPo9Y1AjwbAwn+jr/vauwg4AJ9m5rBd3vcR/hAH7MdyNkPKxXeMuf7TOHGRCHGPBO
- 7qpir+7ZKtumGRiWnq7kHZe0AqMJa774pzu4oVsgP70qC/wyeFRnKinIE3ygU89F8ZDv
- iO+u7DokSMGzOfKCmDmTk4iQX/RVUKwBzeDsRDAe/pabObhRx8LGRNq707DGSp7+H0Nk
- qyjQ==
+ bh=l/lzNt1si/El5u/3JxuEqXHb6Skth5KuEneedRtr6Z4=;
+ b=cwIcXimGWtUhicrPcWoO1tk5UMJIVTMew/mw7pqoFEeCnEehUiswXHLhiyggPEml9J
+ isWggT8FX+U75PpOwJDoRtd3GQwL42R5wPgjOlk66cKKL4zRE58YxWUQdYYB7RGF+5dS
+ bjPtDWBJQbA2mXYok3CdrSjF1LXAfZyWqzAaTNtBh0Jk7upjkVbAVyq8reB/V9bTPQiA
+ IsBPFqiHOS1dGMpsZXa5wN0Tz6nDDjRYgp4NUNH7sXcIcjB+9UzQ6EypbKlgQvQsD76k
+ pCX7LXLfTzd9AVAr0H0goKlQ3IZoFrH4ChD9rwq1m8UmITlUzAciauOJ87SC7Q8nwIwC
+ TGkA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWS9dSc3tXD55pqNG7AnZFuVheFL19HTibX7W6mj3hffeNnu5uCVqgCDkB9lqYZCkiZFqEUbFg8zg==@nongnu.org
-X-Gm-Message-State: AOJu0Yw7MplYRXqZnVTwih5J557aLOyIjlZ6jlvL+kA2jud6NrIz6sx9
- 4KRSATfYGf838Y36vQQaNHi98dNwLcljV0nfA5UWCNQDO6f1LrMY1UpnWMA/MV33jOJs9NLYpiX
- suXI8MfqrSaRHm2Py9oTQqk95+/RjXeU8badxyuRhqnoeqTfs3dd+2g==
-X-Gm-Gg: AY/fxX5dk9f6jn9gehSICPrKylXvrGLQwnB6LU8jI1kYA+6vUNLlMB5jbUGWlxXsUig
- +J92SxS5G62Ah47xPyEZDJ1oIwPCLkd8lAuvqS5M7Rmpn+uh/7TEmAC2IvA4Ec3UeEBFmDkPceI
- eY30XSrhwXedyMzNz0TJcoRXBKxJjukPN5K1FikSwadLNZwpoLKa7hO7rHTrWM//WXp0XlNeVa/
- 4VtKtMF7AWVRWWFBXhRkZMhzpOpYlCl3KKz7HijFXJIF5l4gCsGPBRY36PsH1yIvns7k8mUk9fJ
- DMxBSmLBzHWs1zxRTaAFlyDUoYvSlR5kiO9pJb+uShH7HPBk2W+GYboHxcSVZzfti+DdYgVwKWg
- tCkhVoow=
-X-Received: by 2002:a17:907:3da0:b0:b83:95c7:e984 with SMTP id
- a640c23a62f3a-b84453ab79emr460302866b.49.1767852649301; 
- Wed, 07 Jan 2026 22:10:49 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHYdqj39oEPTJdzVEMg8TkaPsz+8ATfse0lKQJoqTGKvMVG2VGHcHoGM4ob2+mdqAIIhK9ksA==
-X-Received: by 2002:a17:907:3da0:b0:b83:95c7:e984 with SMTP id
- a640c23a62f3a-b84453ab79emr460299266b.49.1767852648854; 
- Wed, 07 Jan 2026 22:10:48 -0800 (PST)
+ AJvYcCXIEIlyse9KVWs4vaQKJFMM+3y4U1x5GycXwtkPWx1Vn78USSLQZ3F4mnOoyIU4/l6ohpcPWajVIw==@nongnu.org
+X-Gm-Message-State: AOJu0Ywgo4zQ2zCjAHpS2sH9qdOOsn9Hzmfxq629fD1EZIh/dBH6VZBg
+ 6AVMBwWFRrCTflTPEEwnh1sBCnBkrZGy2Wg39tm4AqId3HB5Gv8RAh90hbKQgUzF/GBv+WAxE48
+ 13cgg3OEuEMMCq7tCA6yzZ02R/o8GtnAU++t6GwSTBhzhldkq6vxwIA==
+X-Gm-Gg: AY/fxX7hYCV8ngv11DLNO5UuSlg9y8khQo0mdDltaXZcanT3vT1GX4ZAzQf/tFkvAmX
+ WyDL7C4iJb59hq/jRln1zuP644rR9idZvqjuxbdpeRT+a7LmtCmlo/8grJRa7TbHZ2u+CNt0Jn3
+ flBx+u/xZpn2Eqpgdla1KEtGPymw4JgK/I/a+XLzo71ZYpVPxZdeSi11tm+zvcFtXQ28umeFO1/
+ zycRrVx8K3xoYH2H1WSQppbj+UQcv5GLoFJkIlB0ecSgZqst9b3SefjjiUOcRDx7J2r0eJ5gS23
+ BTh/HVKHEshbFD21qnfAmAsnAmbeYxf9skN+uURBy96ejWzc9ea0iLZ4mOlvts1Beq/6mnlC/KX
+ ZjuyiAww=
+X-Received: by 2002:a17:907:2daa:b0:b83:972a:cb85 with SMTP id
+ a640c23a62f3a-b8444c99d69mr493962866b.21.1767852845035; 
+ Wed, 07 Jan 2026 22:14:05 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHVRsnS9p9n7drdpE60e89TgHoiXqmd2qOHrMYP6giCCfm+VLK5zTWUF3eXR7xUrA4bvP5uMg==
+X-Received: by 2002:a17:907:2daa:b0:b83:972a:cb85 with SMTP id
+ a640c23a62f3a-b8444c99d69mr493958166b.21.1767852844503; 
+ Wed, 07 Jan 2026 22:14:04 -0800 (PST)
 Received: from [192.168.0.9] ([47.64.114.194])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b842a51577bsm702015666b.56.2026.01.07.22.10.46
+ a640c23a62f3a-b842a564284sm729832166b.62.2026.01.07.22.14.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Jan 2026 22:10:48 -0800 (PST)
-Message-ID: <bc31cc25-ce64-4954-b896-ba9f30c041ac@redhat.com>
-Date: Thu, 8 Jan 2026 07:10:45 +0100
+ Wed, 07 Jan 2026 22:14:04 -0800 (PST)
+Message-ID: <87cda384-3199-42b5-905f-a4a0488dfaba@redhat.com>
+Date: Thu, 8 Jan 2026 07:14:01 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 15/27] hw/i386: Remove linuxboot.bin
+Subject: Re: [PATCH v6 14/27] hw/i386: Assume fw_cfg DMA is always enabled
 To: Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
  "Michael S . Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -105,7 +105,7 @@ Cc: qemu-devel@nongnu.org, devel@lists.libvirt.org, kvm@vger.kernel.org,
  BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
  Jiri Denemark <jdenemar@redhat.com>
 References: <20260108033051.777361-1-zhao1.liu@intel.com>
- <20260108033051.777361-16-zhao1.liu@intel.com>
+ <20260108033051.777361-15-zhao1.liu@intel.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -149,23 +149,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20260108033051.777361-16-zhao1.liu@intel.com>
+In-Reply-To: <20260108033051.777361-15-zhao1.liu@intel.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Hy4nZmre1GUAuQ9WPbT2iGhCe7zaNURPvWgYEjRwZ5Y_1767852649
+X-Mimecast-MFC-PROC-ID: I5pDFeFoGt8qCoYvCLkZQeHP_YM1dVGLmbIw36o5YQs_1767852845
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -184,24 +184,38 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 08/01/2026 04.30, Zhao Liu wrote:
 > From: Philippe Mathieu-Daudé <philmd@linaro.org>
 > 
-> All machines now use the linuxboot_dma.bin binary, so it's safe to
-> remove the non-DMA version (linuxboot.bin).
+> Now all calls of x86 machines to fw_cfg_init_io_dma() pass DMA
+> arguments, so the FWCfgState (FWCfgIoState) created by x86 machines
+> enables DMA by default.
 > 
-> Suggested-by: Thomas Huth <thuth@redhat.com>
-> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+> Although other callers of fw_cfg_init_io_dma() besides x86 also pass
+> DMA arguments to create DMA-enabled FwCfgIoState, the "dma_enabled"
+> property of FwCfgIoState cannot yet be removed, because Sun4u and Sun4v
+> still create DMA-disabled FwCfgIoState (bypass fw_cfg_init_io_dma()) in
+> sun4uv_init() (hw/sparc64/sun4u.c).
+> 
+> Maybe reusing fw_cfg_init_io_dma() for them would be a better choice, or
+> adding fw_cfg_init_io_nodma(). However, before that, first simplify the
+> handling of FwCfgState in x86.
+> 
+> Considering that FwCfgIoState in x86 enables DMA by default, remove the
+> handling for DMA-disabled cases and replace DMA checks with assertions
+> to ensure that the default DMA-enabled setting is not broken.
+> 
+> Then 'linuxboot.bin' isn't used anymore, and it will be removed in the
+> next commit.
+> 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> Acked-by: Igor Mammedov <imammedo@redhat.com>
 > ---
 > Changes since v4:
->   * Update commit message: not only pc, but also microvm enables
->     DMA for FwCfgState (in microvm_memory_init).
+>   * Keep "dma_enabled" property in fw_cfg_io_properties[].
+>   * Replace DMA checks with assertions for x86 machines.
 > ---
->   hw/i386/pc.c                  |   3 +-
->   pc-bios/meson.build           |   1 -
->   pc-bios/optionrom/Makefile    |   2 +-
->   pc-bios/optionrom/linuxboot.S | 195 ----------------------------------
->   4 files changed, 2 insertions(+), 199 deletions(-)
->   delete mode 100644 pc-bios/optionrom/linuxboot.S
+>   hw/i386/fw_cfg.c     | 16 ++++++++--------
+>   hw/i386/x86-common.c |  6 ++----
+>   2 files changed, 10 insertions(+), 12 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 

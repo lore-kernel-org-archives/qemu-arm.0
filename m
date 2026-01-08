@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A323D1489B
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:10:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CD0FD1489A
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:10:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdgOz-0006J2-Aq; Wed, 07 Jan 2026 22:09:35 -0500
+	id 1vdgPi-0007fA-Jq; Wed, 07 Jan 2026 22:10:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgO6-0005TK-FV; Wed, 07 Jan 2026 22:08:44 -0500
+ id 1vdgOh-0005mY-BE; Wed, 07 Jan 2026 22:09:16 -0500
 Received: from mgamail.intel.com ([198.175.65.9])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgO4-0005Ri-Pg; Wed, 07 Jan 2026 22:08:38 -0500
+ id 1vdgOf-0005YH-N2; Wed, 07 Jan 2026 22:09:15 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1767841717; x=1799377717;
+ t=1767841753; x=1799377753;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=Q2S1HbfA2OWc8pT/OJc71U77jdxwWD7j1qTYdHBk0fg=;
- b=kFFpRCRh4bwBTnMslBhyKmuu7RFa+44ZDA7TDCKFXueXLf4/IM4L2da9
- VvuddEE2YIRv0auQyXW09oUH43YcYBam/IDLHEhTV0NRiwxgQp2i8nH5T
- JzhvfwFFKzt5Cv9GPUpzlm07v/9f5+VoCLagyvUMFZQDGRuWDoF60UHDX
- dNJbktvV0poXPbtIEyx/RCRbERvBK2InGQ2Iuho2B65Ux00249EKrCtWd
- 3z0KCMDhgCsB3tIfuHYVJnm0yxQ+WkdeWQ4QSRVX7Yxy4EmpdV40fqG9c
- Xvg2Xf9gm49IY6Ypealj2HBr9Vv0iZig08AFS6ZinorEYYOV9P+Wl0yEr Q==;
-X-CSE-ConnectionGUID: Ljx2KXscQPWkNsqLfoR1PQ==
-X-CSE-MsgGUID: wMS6wA9iTxyTY7Y+hred5w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877465"
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877465"
+ bh=kNYkiaNSgjNxHBpmze7LKKP0q9ceZ2SXtXvlRLGlXSo=;
+ b=FextAjlPKUJ5Rw3lP4xiM51Er8D3VJi/l+OE+51WrkI0NuTZBwzqEi4u
+ 3Y8bf9mHv8vgFH+YXpC31ZWcLXTd6TBfQV9t+mkwgo4IHfZey1AtvJmKg
+ CBH0iPbpSxFQhYrS69Tezn9nOjVozB1M487RAsU5ZJFhwLRAb6+I5ukWS
+ kXHcukyROwX79XkvuVjQ9jjyxT3+R7u+p9PFvBcszR1CtlOcUuY1IXb9C
+ n4LcBhdE1FzwmLmocnk1rpBW9KT6olT4uRHX66zviO59QuCtKokYHNuZK
+ ns9xJbvsBhH5N7mTNgzrkfntJrqu3f7LMd18P1TOMC3nKAYmX+OhLZ5VS Q==;
+X-CSE-ConnectionGUID: BbsCl4e8TDWqjHxyF/uB3g==
+X-CSE-MsgGUID: kKFX1X2SQJe6mWW9hG5MOw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877570"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877570"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jan 2026 19:08:35 -0800
-X-CSE-ConnectionGUID: Zt7DD7dHSre3gamWpWGPog==
-X-CSE-MsgGUID: 7KNtoah0RZ2dbmCmnpAKyA==
+ 07 Jan 2026 19:09:11 -0800
+X-CSE-ConnectionGUID: tPOD766tROaPRuJG7KUpiQ==
+X-CSE-MsgGUID: lx/Vopy/STe1TSWeU+qq0w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202211171"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202211235"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
- by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:08:25 -0800
+ by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:09:02 -0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
  "Michael S . Tsirkin" <mst@redhat.com>,
@@ -72,10 +72,9 @@ Cc: qemu-devel@nongnu.org, devel@lists.libvirt.org, kvm@vger.kernel.org,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
  Jiri Denemark <jdenemar@redhat.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v6 19/27] hw/virtio/virtio-mmio: Remove
- VirtIOMMIOProxy::format_transport_address field
-Date: Thu,  8 Jan 2026 11:30:43 +0800
-Message-Id: <20260108033051.777361-20-zhao1.liu@intel.com>
+Subject: [PATCH v6 23/27] hw/audio/pcspk: Remove PCSpkState::migrate field
+Date: Thu,  8 Jan 2026 11:30:47 +0800
+Message-Id: <20260108033051.777361-24-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260108033051.777361-1-zhao1.liu@intel.com>
 References: <20260108033051.777361-1-zhao1.liu@intel.com>
@@ -109,67 +108,60 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-The VirtIOMMIOProxy::format_transport_address boolean was only set
-in the hw_compat_2_6[] array, via the 'format_transport_address=off'
-property. We removed all machines using that array, lets remove
-that property, simplifying virtio_mmio_bus_get_dev_path().
+The PCSpkState::migrate boolean was only set in the
+pc_compat_2_7[] array, via the 'migrate=off' property.
+We removed all machines using that array, lets remove
+that property, simplifying vmstate_spk[].
 
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/virtio/virtio-mmio.c         | 15 ---------------
- include/hw/virtio/virtio-mmio.h |  1 -
- 2 files changed, 16 deletions(-)
+ hw/audio/pcspk.c | 10 ----------
+ 1 file changed, 10 deletions(-)
 
-diff --git a/hw/virtio/virtio-mmio.c b/hw/virtio/virtio-mmio.c
-index 0b0412b22f23..742ca3d3e4d3 100644
---- a/hw/virtio/virtio-mmio.c
-+++ b/hw/virtio/virtio-mmio.c
-@@ -764,8 +764,6 @@ static void virtio_mmio_pre_plugged(DeviceState *d, Error **errp)
- /* virtio-mmio device */
+diff --git a/hw/audio/pcspk.c b/hw/audio/pcspk.c
+index 916c56fa4c0a..0b01544941cb 100644
+--- a/hw/audio/pcspk.c
++++ b/hw/audio/pcspk.c
+@@ -57,7 +57,6 @@ struct PCSpkState {
+     unsigned int play_pos;
+     uint8_t data_on;
+     uint8_t dummy_refresh_clock;
+-    bool migrate;
+ };
  
- static const Property virtio_mmio_properties[] = {
--    DEFINE_PROP_BOOL("format_transport_address", VirtIOMMIOProxy,
--                     format_transport_address, true),
-     DEFINE_PROP_BOOL("force-legacy", VirtIOMMIOProxy, legacy, true),
-     DEFINE_PROP_BIT("ioeventfd", VirtIOMMIOProxy, flags,
-                     VIRTIO_IOMMIO_FLAG_USE_IOEVENTFD_BIT, true),
-@@ -827,19 +825,6 @@ static char *virtio_mmio_bus_get_dev_path(DeviceState *dev)
-     virtio_mmio_proxy = VIRTIO_MMIO(virtio_mmio_bus->parent);
-     proxy_path = qdev_get_dev_path(DEVICE(virtio_mmio_proxy));
+ static const char *s_spk = "pcspk";
+@@ -202,18 +201,10 @@ static void pcspk_realizefn(DeviceState *dev, Error **errp)
+     }
+ }
  
--    /*
--     * If @format_transport_address is false, then we just perform the same as
--     * virtio_bus_get_dev_path(): we delegate the address formatting for the
--     * device on the virtio-mmio bus to the bus that the virtio-mmio proxy
--     * (i.e., the device that implements the virtio-mmio bus) resides on. In
--     * this case the base address of the virtio-mmio transport will be
--     * invisible.
--     */
--    if (!virtio_mmio_proxy->format_transport_address) {
--        return proxy_path;
--    }
+-static bool migrate_needed(void *opaque)
+-{
+-    PCSpkState *s = opaque;
 -
--    /* Otherwise, we append the base address of the transport. */
-     section = memory_region_find(&virtio_mmio_proxy->iomem, 0, 0x200);
-     assert(section.mr);
+-    return s->migrate;
+-}
+-
+ static const VMStateDescription vmstate_spk = {
+     .name = "pcspk",
+     .version_id = 1,
+     .minimum_version_id = 1,
+-    .needed = migrate_needed,
+     .fields = (const VMStateField[]) {
+         VMSTATE_UINT8(data_on, PCSpkState),
+         VMSTATE_UINT8(dummy_refresh_clock, PCSpkState),
+@@ -224,7 +215,6 @@ static const VMStateDescription vmstate_spk = {
+ static const Property pcspk_properties[] = {
+     DEFINE_AUDIO_PROPERTIES(PCSpkState, audio_be),
+     DEFINE_PROP_UINT32("iobase", PCSpkState, iobase,  0x61),
+-    DEFINE_PROP_BOOL("migrate", PCSpkState, migrate,  true),
+     DEFINE_PROP_LINK("pit", PCSpkState, pit, TYPE_PIT_COMMON, PITCommonState *),
+ };
  
-diff --git a/include/hw/virtio/virtio-mmio.h b/include/hw/virtio/virtio-mmio.h
-index 1eab3c0decef..1644d0981050 100644
---- a/include/hw/virtio/virtio-mmio.h
-+++ b/include/hw/virtio/virtio-mmio.h
-@@ -66,7 +66,6 @@ struct VirtIOMMIOProxy {
-     uint32_t guest_page_shift;
-     /* virtio-bus */
-     VirtioBusState bus;
--    bool format_transport_address;
-     /* Fields only used for non-legacy (v2) devices */
-     uint32_t guest_features[2];
-     VirtIOMMIOQueue vqs[VIRTIO_QUEUE_MAX];
 -- 
 2.34.1
 

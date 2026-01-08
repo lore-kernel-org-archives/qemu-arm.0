@@ -4,91 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3313FD14880
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 00:56:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E08A2D14880
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 00:58:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdeKb-00084J-Sy; Wed, 07 Jan 2026 19:56:53 -0500
+	id 1vdeLM-0002wv-JO; Wed, 07 Jan 2026 19:57:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vdeKX-0007sL-Gt
- for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:56:49 -0500
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+ id 1vdeLL-0002ow-1D
+ for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:57:39 -0500
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vdeKU-0002Mu-QW
- for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:56:49 -0500
-Received: by mail-pf1-x441.google.com with SMTP id
- d2e1a72fcca58-7e2762ad850so2265869b3a.3
- for <qemu-arm@nongnu.org>; Wed, 07 Jan 2026 16:56:46 -0800 (PST)
+ id 1vdeLJ-0002Rs-Mb
+ for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:57:38 -0500
+Received: by mail-pl1-x62f.google.com with SMTP id
+ d9443c01a7336-2a0a33d0585so19357155ad.1
+ for <qemu-arm@nongnu.org>; Wed, 07 Jan 2026 16:57:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767833805; x=1768438605; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767833856; x=1768438656; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=rgZ1l0BhhAb8pf1FzZY0kqkTwaheDvDDkZKncVzOuvc=;
- b=BN3bn4b0GcNbXDlx0yFu9H0yBynrE5xMmW+Vh9zXaiOPfySVTTrOM1WOqr573dCoOD
- 46Q1RRPp2MTXeBmOVG+8b+W5EKgljo1NSwp+CC0GYZRZ/zAPXVXKbOYDnbq3utV53ZST
- 2CVCnbhcD9tiCF0+iAJPYTBpJWRMv/H5WLWLHLyLFpTPq0x0+lDc2LmhlW0CzllBDCR9
- fhcxZvRBVGAaUn/qbKg3wX25nukEb/fYtT7ytJZSwXdSVdMp77WCUWD/6ngyfsdspQBY
- Km3OhXV0XYeyK5fqysQsaVivfCt79+wzSD376Rx+1MRVJ4fGDZDV/vJBi0B0/wawq/3b
- CW8g==
+ bh=T7t6+wM+8OZKJoq57Ivh4In2mIxjkP+zkTI1/cumdnE=;
+ b=j4WyUL1Nj3ATNtuk+JaZsmiMQCBzxWFC3YNex3M5VufYBU0ibqvpAxl4KwqIERiF4u
+ qWSO42cN5DfhHmOSf52T44EmHmQtOPKG6lpTSlOchPOtY3jI102UDrrSjW2G1552BAxZ
+ zXnUzH2ObZFTDkqq6YwI+Ukw2N1Eam6k8AqeAtRig6ih3lbWq15Vc9wri40PhjsJ7HnU
+ wCx0+AC5eLGPlTjKTXyhaXDLlntDF9lt2o2e46LdpUCbdYDzSR0LV4LZP4ZE+7tP1+A7
+ 60dHjNCmUEyMhmZLyUevtIHxKbkbOwADwU4sCzUvXV6CIjK89nrVhLq8E+Pp+ZTVTsi9
+ OR5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767833805; x=1768438605;
+ d=1e100.net; s=20230601; t=1767833856; x=1768438656;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=rgZ1l0BhhAb8pf1FzZY0kqkTwaheDvDDkZKncVzOuvc=;
- b=UYUd4BwFblExSIO7gm3C5VJoJj7EPBqI++lSw8/8uYoc9JTFR78nM5kM5QYy1VmuxV
- sP24vIX95r/p3ETH6R+i+T3BSAZ3fSrWKu+u0dTAQz1DCKmZVdfr2mV41aAasG3LPVCn
- ouUdhcOsDagQZsnJHa27QbfI0FQYQiL5XlO0w9jeTZsEwT95tsnvC/JSEguaMC4Hg0Jw
- xV3t6KaF5yCuC4jdtSpyR62FFgWGNj2WYrRN+rMUGQ4TLM5V6OPzMfLf2GtykwPNvzCA
- 2jrJBCrr0j6wGFRXSqMITbD6t/vgwQhzhZmJjA2Pe3J+FBD8nDPqHnO5mUocUVvTZNJp
- RXrA==
+ bh=T7t6+wM+8OZKJoq57Ivh4In2mIxjkP+zkTI1/cumdnE=;
+ b=KSSu+/y5YCukVuf53r7bH0g+jdAzSrMhWIHB5egwpfG26xhPpHBw2B6SA1+CWGwB6Y
+ XwqDAPVjuZZDXwlmKIuYFL3N8sHcNOzKtP2rSgL5UYpfJcQL0aylkjIzsDanjegKw5P4
+ M49cvuahPixfDGcPBLkxmgG4NeWHvq6wWZiWMCI6uuPRIhSFEA2YlcnoTXm5EoWH98GI
+ YRn7nJVuPRV/iJ27QRrHDryfiMNDNSOD7W+9W+9YsTq+Fq/sxrTnZNHGRsGQKnvEiRO+
+ IiOa9TQ4xtiADVaiFuIoFdYPixHRZS4KKKvSPDJmDcyKv7s2vDwYCiTA3QJDEQQqZ8U1
+ FBCg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUchmS8aByyAolohZA11bEBfmP6KWd2TccVw5K5UqiLday7FH9s5OPZD+cowfuzPxB9brZmFYDOxg==@nongnu.org
-X-Gm-Message-State: AOJu0YzKxOirsbQbc5Y0iNAEmtNxFHgPQ9zlQd2COx47dRd1LJDWtsJf
- Z9mY8o1nG/wAQtNdC+8LzbwKHAuAKybUXHJpqAUjJJ4RBawTkgk9jf/XztYKbzqu9kw=
-X-Gm-Gg: AY/fxX7kFZCcr6K0sN/UEdviLabtXES3ms/y+mmJHbyZDnrcWGjWKkW51V5KrF9F6rh
- dh8PquF8vjjinyMhQOjeuKl6I8PeV8VCe9d4dUrleQlUnJ6DVoG1LwFPQD6b9mlQIVwmmVbG6WD
- jRuUwrkV12alkAkmTqnSXvkKrfY/vBhP6tnBvydq3dHWaiRlWelU9O+a5Gv/VyAWV+E1M3qAqsk
- bajiHK0NuGi5vdI2Y1dlngKk7eVa7afyki1jpuL92i8+smHmOY7E6BOdmgV2FG9gUZebaU4R0DQ
- YFoCCCPFYaaSarr5zdWLxnsL6K8YPoy+qpnfqaF0ub5pmPawA9gwDjOZh5PREa3cc+Pdb2/oAge
- bYIS6MgUGJ+bhAYEWRiwwBBnP6PwboD7Jyj0KnFt7xlgXAk70IQJFEC94jKGxCMa+hFT2sf2o9l
- urthw3RxCbXA2ifJKFKkfb7R39xIWuKO6W2wa9oumxxmT6j04ooQbelHzGwFBCu+MRQ/s=
-X-Google-Smtp-Source: AGHT+IEWVQW2ek8FMnrs0ghLPGKdmI1MA6QB6X26zEjPjtMGQbWEtBl3y88mKmk/S+rQQ5qGBAS9Mg==
-X-Received: by 2002:a05:6a00:4299:b0:7e8:4433:8fa2 with SMTP id
- d2e1a72fcca58-81b7f9d33d3mr3962663b3a.42.1767833805314; 
- Wed, 07 Jan 2026 16:56:45 -0800 (PST)
+ AJvYcCUkC882Wxq0POtH56m8zuknuIx0b6/rRGIwYETL3zLxmN+cCHlAkp50S5QJw81KtBpLFADbWXNzgw==@nongnu.org
+X-Gm-Message-State: AOJu0Yxv+GObxjHhJ6H91Bq7vh+VnzMkfDeecOw/V9s7ED102oR8VtC3
+ PQHkWIXThDOgZ4teAHiAUzazW4M2lKmM5X5IYHECzGAPkbzL8e+W2cdpJCWL633QQWQ=
+X-Gm-Gg: AY/fxX6IVpFalxqYtuKSMLYIAtYZ+Dn+V0poJIuRP6SeEZxVmZkUd4G5DWXwYs9epa1
+ RAA4aYGh2uQcWyVjJtP0O6mNffUHD2j3lB6LFDkbEXV79HK5q3QqyrnsbTkSip2xTRvHEKhIiMS
+ n6+RVkmJh2d9lcslL6dAjFg4XIVlOKEANw2roTXdbs5ZtrVLWN78Wlf60tqLUhCLIPOHzesQUQA
+ KjennsWGXLRnHgI7LV+jiYXrxT8VbefSYIk93ajiEKS2XPRkqo+XWgpXK95o4Ik1U1kHSVumQFi
+ VraymnLgSKjsLEmhGH9BNVjhPSyr7J/y9fj7Em0wuTxyVoi1fPGyBix+4rLHS4FHswsz4qS7cMV
+ F2D5ZYHnmop2oJ/3+Gyf16yLKZTPKkfbAZ0b2eDD9CHB7Kcb665ErLochV6lVntQesInolK7y8J
+ inVaTMgLqkQjfP3dmM1EgW9IhO1BXDhvQuVe3+LfsOPePmrmPv1tTyYpqZ
+X-Google-Smtp-Source: AGHT+IEtjWhRfSxvbfI/MFZGTHK/jhiTFYOr5Aha2Y8sRMXoj0VlDMZHdNCxEmnWdcr+yIKm10oVvg==
+X-Received: by 2002:a17:902:d4ca:b0:2a0:9040:637b with SMTP id
+ d9443c01a7336-2a3ee443be3mr36420505ad.26.1767833856046; 
+ Wed, 07 Jan 2026 16:57:36 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-819c59df961sm5919083b3a.47.2026.01.07.16.56.44
+ d9443c01a7336-2a3e3cd492esm61760945ad.98.2026.01.07.16.57.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Jan 2026 16:56:44 -0800 (PST)
-Message-ID: <f3fd0232-17b2-4b51-b5d3-082f9cef1a46@linaro.org>
-Date: Wed, 7 Jan 2026 16:56:44 -0800
+ Wed, 07 Jan 2026 16:57:35 -0800 (PST)
+Message-ID: <3640a20b-9578-402c-a16e-dff0c6464516@linaro.org>
+Date: Wed, 7 Jan 2026 16:57:35 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/5] target/s390x: Restrict WatchPoint API to TCG
+Subject: Re: [PATCH 4/5] accel/tcg: Un-inline WatchPoint API user-emulation
+ stubs
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
  qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Thomas Huth <thuth@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- David Hildenbrand <david@kernel.org>
+ Riku Voipio <riku.voipio@iki.fi>
 References: <20260106231908.16756-1-philmd@linaro.org>
- <20260106231908.16756-4-philmd@linaro.org>
+ <20260106231908.16756-5-philmd@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20260106231908.16756-4-philmd@linaro.org>
+In-Reply-To: <20260106231908.16756-5-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x441.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,22 +112,17 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/6/26 3:19 PM, Philippe Mathieu-Daudé wrote:
-> By inverting the 'tcg_enabled()' check in s390_cpu_set_psw()
-> we can let the compiler elide the s390_cpu_recompute_watchpoints()
-> call when TCG is not available. Move it to a TCG specific
-> file to avoid compiling dead code on KVM. This restricts the
-> WatchPoint API calls to TCG.
+> Currently we can not build files including "exec/watchpoint.h"
+> as meson common objects because the CONFIG_USER_ONLY definition
+> is poisoned. We can easily fix that by un-inlining the
+> user-emulation stubs.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   target/s390x/s390x-internal.h |  1 -
->   target/s390x/tcg/tcg_s390x.h  |  4 +++
->   target/s390x/cpu.c            | 30 ++++++++++----------
->   target/s390x/helper.c         | 38 -------------------------
->   target/s390x/tcg/debug.c      | 53 +++++++++++++++++++++++++++++++++++
->   target/s390x/tcg/meson.build  |  3 ++
->   6 files changed, 75 insertions(+), 54 deletions(-)
->   create mode 100644 target/s390x/tcg/debug.c
+>   include/accel/tcg/cpu-ops.h | 17 -----------------
+>   include/exec/watchpoint.h   | 23 -----------------------
+>   accel/tcg/user-exec-stub.c  | 33 +++++++++++++++++++++++++++++++++
+>   3 files changed, 33 insertions(+), 40 deletions(-)
 > 
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>

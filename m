@@ -4,91 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E08A2D14880
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 00:58:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD29CD14882
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 00:58:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdeLM-0002wv-JO; Wed, 07 Jan 2026 19:57:40 -0500
+	id 1vdeMF-0004YV-K1; Wed, 07 Jan 2026 19:58:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vdeLL-0002ow-1D
- for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:57:39 -0500
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ id 1vdeMA-0004FQ-7Q
+ for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:58:31 -0500
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vdeLJ-0002Rs-Mb
- for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:57:38 -0500
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2a0a33d0585so19357155ad.1
- for <qemu-arm@nongnu.org>; Wed, 07 Jan 2026 16:57:37 -0800 (PST)
+ id 1vdeM7-0002b6-F0
+ for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:58:29 -0500
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-2a12ebe4b74so28227545ad.0
+ for <qemu-arm@nongnu.org>; Wed, 07 Jan 2026 16:58:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767833856; x=1768438656; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767833906; x=1768438706; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=T7t6+wM+8OZKJoq57Ivh4In2mIxjkP+zkTI1/cumdnE=;
- b=j4WyUL1Nj3ATNtuk+JaZsmiMQCBzxWFC3YNex3M5VufYBU0ibqvpAxl4KwqIERiF4u
- qWSO42cN5DfhHmOSf52T44EmHmQtOPKG6lpTSlOchPOtY3jI102UDrrSjW2G1552BAxZ
- zXnUzH2ObZFTDkqq6YwI+Ukw2N1Eam6k8AqeAtRig6ih3lbWq15Vc9wri40PhjsJ7HnU
- wCx0+AC5eLGPlTjKTXyhaXDLlntDF9lt2o2e46LdpUCbdYDzSR0LV4LZP4ZE+7tP1+A7
- 60dHjNCmUEyMhmZLyUevtIHxKbkbOwADwU4sCzUvXV6CIjK89nrVhLq8E+Pp+ZTVTsi9
- OR5w==
+ bh=QlPSSgauNlrXNjIGEFV++/r4mAtNMTFDarcGers0OOA=;
+ b=qzIxgbpKY6tdu642JM3jQ+jUVlWW4+uvvMsuTWmD26//mmq6GkjMgIa09CVUmP7z+j
+ Fg2klp264zLBYPDUJ34p2wL+k0fIIpDGTLSm7OWw7balyUgY1EF7OBEnc2plv4bmHbUq
+ oSmflTlIZ3ko1DMstD54ygL1kyMOmK70PuWBfEswoZ1chbfMDT7IsvLgUVaUNMu0pKxi
+ K4BC3Vkq0d/L7bJozBlI81XwkBA83Ap+y1ukSMzykHRrQpnmShRpHFOaqBlin3jsB56c
+ rjO970dZUuWmDo5t4hkrJWMSWAceiat9fL+G82qFwWX13NB89UXJyPWwk/eYKY2na6NS
+ gpsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767833856; x=1768438656;
+ d=1e100.net; s=20230601; t=1767833906; x=1768438706;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=T7t6+wM+8OZKJoq57Ivh4In2mIxjkP+zkTI1/cumdnE=;
- b=KSSu+/y5YCukVuf53r7bH0g+jdAzSrMhWIHB5egwpfG26xhPpHBw2B6SA1+CWGwB6Y
- XwqDAPVjuZZDXwlmKIuYFL3N8sHcNOzKtP2rSgL5UYpfJcQL0aylkjIzsDanjegKw5P4
- M49cvuahPixfDGcPBLkxmgG4NeWHvq6wWZiWMCI6uuPRIhSFEA2YlcnoTXm5EoWH98GI
- YRn7nJVuPRV/iJ27QRrHDryfiMNDNSOD7W+9W+9YsTq+Fq/sxrTnZNHGRsGQKnvEiRO+
- IiOa9TQ4xtiADVaiFuIoFdYPixHRZS4KKKvSPDJmDcyKv7s2vDwYCiTA3QJDEQQqZ8U1
- FBCg==
+ bh=QlPSSgauNlrXNjIGEFV++/r4mAtNMTFDarcGers0OOA=;
+ b=CK3baYmM2hr5BirWq/YFwqEycCVgR2UGlr4+UHVQMjBEgW4XYjBir0acJXCxqIjTZ8
+ V1G2XIeDW3cyNwtO6DG2oQXQtXKJe1JQYNmfJt+cZSTUTKaRQUqv2KezYjzWRUn/xmen
+ maDdKOSlW1AshwGrm0EJcCz0TwxROh9PBdxFj0krbMq9HgBEqsXCiOKmefYPVgcnbtSZ
+ PBUpOKqamtRfS+LHHWcIWDPiwEpQjfH5r8ifXHP7BI4TMmjEgEA72S1WPG7179zxxhCk
+ cLYBQktEd7sxEkbVLWJd+xLddIoz8IjKWeAxUKvLnCwhVdN8rMN3tBmql593xM/JpPzN
+ lEIg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUkC882Wxq0POtH56m8zuknuIx0b6/rRGIwYETL3zLxmN+cCHlAkp50S5QJw81KtBpLFADbWXNzgw==@nongnu.org
-X-Gm-Message-State: AOJu0Yxv+GObxjHhJ6H91Bq7vh+VnzMkfDeecOw/V9s7ED102oR8VtC3
- PQHkWIXThDOgZ4teAHiAUzazW4M2lKmM5X5IYHECzGAPkbzL8e+W2cdpJCWL633QQWQ=
-X-Gm-Gg: AY/fxX6IVpFalxqYtuKSMLYIAtYZ+Dn+V0poJIuRP6SeEZxVmZkUd4G5DWXwYs9epa1
- RAA4aYGh2uQcWyVjJtP0O6mNffUHD2j3lB6LFDkbEXV79HK5q3QqyrnsbTkSip2xTRvHEKhIiMS
- n6+RVkmJh2d9lcslL6dAjFg4XIVlOKEANw2roTXdbs5ZtrVLWN78Wlf60tqLUhCLIPOHzesQUQA
- KjennsWGXLRnHgI7LV+jiYXrxT8VbefSYIk93ajiEKS2XPRkqo+XWgpXK95o4Ik1U1kHSVumQFi
- VraymnLgSKjsLEmhGH9BNVjhPSyr7J/y9fj7Em0wuTxyVoi1fPGyBix+4rLHS4FHswsz4qS7cMV
- F2D5ZYHnmop2oJ/3+Gyf16yLKZTPKkfbAZ0b2eDD9CHB7Kcb665ErLochV6lVntQesInolK7y8J
- inVaTMgLqkQjfP3dmM1EgW9IhO1BXDhvQuVe3+LfsOPePmrmPv1tTyYpqZ
-X-Google-Smtp-Source: AGHT+IEtjWhRfSxvbfI/MFZGTHK/jhiTFYOr5Aha2Y8sRMXoj0VlDMZHdNCxEmnWdcr+yIKm10oVvg==
-X-Received: by 2002:a17:902:d4ca:b0:2a0:9040:637b with SMTP id
- d9443c01a7336-2a3ee443be3mr36420505ad.26.1767833856046; 
- Wed, 07 Jan 2026 16:57:36 -0800 (PST)
+ AJvYcCXgvSrbTwtjoOTGzCGivUdfCrLJ/dl4gTl38U7XNAUqWKfwnFKucxN24Py+DbDExs5MswINw7/Dcg==@nongnu.org
+X-Gm-Message-State: AOJu0Ywg/5m5ebDh9nIrPIVGI6NmRElahZL/Ydf9pKXOHSvNirsuNOLK
+ AOGOPZuE1FJTtD9acbqhCLj0ptqHuqhxZEEUjh6iBPzjsBClu34x+sjsNIco9W+Wt+o=
+X-Gm-Gg: AY/fxX5WsBUeOnLKZoXxN05Ji3u5s0+sl5H8aikTpAZxN+XWOR2+R5h7qIVq7NdSjAL
+ zDF1aGV1CQcpIqBKKlgluTAnRHQSDO4tT55deALG9OOlB16AAW/K4Yx1MRH3jPHPGaRI3wDd6cs
+ ak2CGkvUpfY158ekCwTML9dw4X0RTMRYuCsSkWZI7e/rEOJKDuQ2Eo2fKHeB0A1rkgxy4yBC0vx
+ dO6RggFgYKNwPxnfg0SATXviFiBh9CnDzdduNr/gYDALDhQUr8Zb0b+bdBc7X6mUHm6JWv48UMg
+ U7BhoOjW2McIprUwrvVIj57+tSvbQjr+yHorQXhA1Y+1CWz86d/nPlOKc//RBNsC1CtOhWzHvTJ
+ WjKCIKoSPQHbeGHHXUiyhBiEkYwnbe8G/TtGuZqOEyYz/g30HO6C1FnAszTVRh4eTJTQXfE1Z2R
+ epB4h7I3GVcC2NTMJWQ4FLsH6EbJgIRnq/TGlwQ+LTx5BvTRAg+zRMG9E8
+X-Google-Smtp-Source: AGHT+IHLSpoEyKSoxz3EE89zMEqcLjvEkhQNGwRfRB3tTdUBz1Ryoo4Gp2Hu59gpJSlRNb18MSH2Ag==
+X-Received: by 2002:a17:902:f70e:b0:2a0:a0cc:9997 with SMTP id
+ d9443c01a7336-2a3ee4b4c12mr38861615ad.50.1767833905764; 
+ Wed, 07 Jan 2026 16:58:25 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a3e3cd492esm61760945ad.98.2026.01.07.16.57.35
+ d9443c01a7336-2a3e3cc88c2sm60519245ad.79.2026.01.07.16.58.24
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Jan 2026 16:57:35 -0800 (PST)
-Message-ID: <3640a20b-9578-402c-a16e-dff0c6464516@linaro.org>
-Date: Wed, 7 Jan 2026 16:57:35 -0800
+ Wed, 07 Jan 2026 16:58:25 -0800 (PST)
+Message-ID: <bc12abcc-8140-4321-8f3a-d15b569b5544@linaro.org>
+Date: Wed, 7 Jan 2026 16:58:24 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/5] accel/tcg: Un-inline WatchPoint API user-emulation
- stubs
+Subject: Re: [PATCH 5/5] accel/tcg: Unify watchpoint API
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
  qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Riku Voipio <riku.voipio@iki.fi>
+ Riku Voipio <riku.voipio@iki.fi>, Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Nicholas Piggin
+ <npiggin@gmail.com>, Chinmay Rath <rathc@linux.ibm.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
+ <liwei1518@gmail.com>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
+ Thomas Huth <thuth@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>
 References: <20260106231908.16756-1-philmd@linaro.org>
- <20260106231908.16756-5-philmd@linaro.org>
+ <20260106231908.16756-6-philmd@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20260106231908.16756-5-philmd@linaro.org>
+In-Reply-To: <20260106231908.16756-6-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,17 +121,61 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/6/26 3:19 PM, Philippe Mathieu-Daudé wrote:
-> Currently we can not build files including "exec/watchpoint.h"
-> as meson common objects because the CONFIG_USER_ONLY definition
-> is poisoned. We can easily fix that by un-inlining the
-> user-emulation stubs.
+> Currently "exec/breakpoint.h" contains both BreakPoint *and*
+> WatchPoint APIs, however very few files requires the former,
+> and more the latter:
+> 
+>    $ git grep -l CPUBreakpoint | wc -l
+>          12
+>    $ git grep -l CPUWatchpoint | wc -l
+>          25
+> 
+> So extracting the WatchPoint API to its own header will reduce
+> compilation pressure.
+> 
+> But more importantly, the API is scattered in two distinct headers.
+> Unify them ("accel/tcg/cpu-ops.h" and "exec/watchpoint.h") to the
+> new "accel/tcg/watchpoint.h" header, making the emphasis the API is
+> specific to TCG.
+> 
+> Have accel/tcg/watchpoint.c absorb system/watchpoint.c code.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   include/accel/tcg/cpu-ops.h | 17 -----------------
->   include/exec/watchpoint.h   | 23 -----------------------
->   accel/tcg/user-exec-stub.c  | 33 +++++++++++++++++++++++++++++++++
->   3 files changed, 33 insertions(+), 40 deletions(-)
+>   MAINTAINERS                         |   1 -
+>   include/accel/tcg/cpu-ops.h         |  28 +-------
+>   include/accel/tcg/watchpoint.h      |  57 ++++++++++++++++
+>   include/exec/breakpoint.h           |  10 ---
+>   include/exec/watchpoint.h           |  18 -----
+>   include/hw/core/cpu.h               |   3 +-
+>   target/arm/internals.h              |   2 +-
+>   target/ppc/internal.h               |   2 +-
+>   target/riscv/debug.h                |   2 +-
+>   accel/tcg/cputlb.c                  |   1 +
+>   accel/tcg/tcg-accel-ops.c           |   2 +-
+>   accel/tcg/user-exec-stub.c          |   3 +-
+>   accel/tcg/watchpoint.c              |  83 +++++++++++++++++++++-
+>   system/watchpoint.c                 | 102 ----------------------------
+>   target/arm/debug_helper.c           |   2 +-
+>   target/arm/tcg/mte_helper.c         |   2 +-
+>   target/arm/tcg/sve_helper.c         |   2 +-
+>   target/i386/cpu.c                   |   2 +-
+>   target/i386/machine.c               |   2 +-
+>   target/i386/tcg/system/bpt_helper.c |   2 +-
+>   target/ppc/cpu.c                    |   2 +-
+>   target/ppc/cpu_init.c               |   2 +-
+>   target/riscv/cpu_helper.c           |   2 +-
+>   target/riscv/debug.c                |   2 +-
+>   target/s390x/helper.c               |   2 +-
+>   target/s390x/tcg/debug.c            |   2 +-
+>   target/s390x/tcg/excp_helper.c      |   2 +-
+>   target/s390x/tcg/mem_helper.c       |   1 +
+>   target/xtensa/dbg_helper.c          |   2 +-
+>   system/meson.build                  |   1 -
+>   30 files changed, 162 insertions(+), 182 deletions(-)
+>   create mode 100644 include/accel/tcg/watchpoint.h
+>   delete mode 100644 include/exec/watchpoint.h
+>   delete mode 100644 system/watchpoint.c
 > 
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>

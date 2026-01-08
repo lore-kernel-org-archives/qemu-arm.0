@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DF66D14899
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:08:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CCE1D1489B
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:08:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdgMM-00081h-KJ; Wed, 07 Jan 2026 22:06:50 -0500
+	id 1vdgM3-00076A-18; Wed, 07 Jan 2026 22:06:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgMK-0007yc-KI; Wed, 07 Jan 2026 22:06:48 -0500
+ id 1vdgM1-0006xz-FU; Wed, 07 Jan 2026 22:06:29 -0500
 Received: from mgamail.intel.com ([198.175.65.9])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgMH-00053Y-Hr; Wed, 07 Jan 2026 22:06:48 -0500
+ id 1vdgLy-0004y8-Dm; Wed, 07 Jan 2026 22:06:29 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1767841606; x=1799377606;
+ t=1767841587; x=1799377587;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=db3qja+kX083B6+UzCGJxLKjvW/gb7ZPUoZ7IK0uF60=;
- b=GZzDmsKJgwH+XwuGcmrQcA999diKNn8t8p/qxvSyZF01Bqh1XvsHROYt
- bmgbYMuDsGHArnRCG0vXoITtbUngm2tToKLI7R0AGzxaXPMnpEivYGqKm
- nwjZGoyZ29sEjm6Vufs5wn/wXVSHotFQbiaXH3Dvr22g4RbIiPmu1vm2S
- ZUI7rCETawIUD1ETPCN2ADkcKlGMSAAR/xNYv3e14wtKLV9pxv38UYc4d
- swOQGlUy5yCy1+xrNMZJNKekDOrZb9FIZ3eNYyqr/hHCan15pUT0qmQbt
- z/y1N4UIxzbMH8nytCfzpL2OVNMBkGAOcopeARkAX9fRLdrk5aGuXdrJz w==;
-X-CSE-ConnectionGUID: nRVzpUlqR0WaYKpp56y6TA==
-X-CSE-MsgGUID: 2FfYJGo8TE6g4A/Wet8gKg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877094"
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877094"
+ bh=mx/dL+IDNJOtHQOeEz1gLdTNaWGg6GyN6sHNNZGP66g=;
+ b=ZWehBK7M3h/qBnmtriGh48vgO0Y9U2OLVEop9sBj5Js+VfBM+aJur/7Y
+ kJfNg+wW+lwMuxdoTqC4cAgI5hjyBBJfEp7K1LMls5FZ9d9B9E+QHHns1
+ nhL/XMNIxmMkWGyk6YW5qf5ensJ3vxu+mW9SeUr+iKI2XXwt2p5n1sqzy
+ kQha7OJUkjNS/ya+gAw+jPFGsR8jHEtAfuUJs5Xqlnrk6cu4LrPJyMKwU
+ DlA8uHouAXa27u9O+QbIvDGNsv9MmZ9nCWqXAjlGxTbLHWkJ0EBVtWcQS
+ KVuFewv2SzvBiNbE/4GC6z4oMJNlWrqTJZCl0g/XhDAe1KGmJhzhasgyd g==;
+X-CSE-ConnectionGUID: oVl8d5bqTEqoQusHV/W62w==
+X-CSE-MsgGUID: h3kj6GibTRKXKAMGYoRT1w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877039"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877039"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jan 2026 19:06:43 -0800
-X-CSE-ConnectionGUID: jhjTk7MuQ02pJA2MeiRrCQ==
-X-CSE-MsgGUID: 25rxTYTyTMijk2mwGBJf9A==
+ 07 Jan 2026 19:06:24 -0800
+X-CSE-ConnectionGUID: lt8bSH+2Sla4s+UtAp15fQ==
+X-CSE-MsgGUID: //GEWv+QRQSqkeB7sQ6vEQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202210696"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202210634"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
- by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:06:33 -0800
+ by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:06:14 -0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
  "Michael S . Tsirkin" <mst@redhat.com>,
@@ -72,9 +72,9 @@ Cc: qemu-devel@nongnu.org, devel@lists.libvirt.org, kvm@vger.kernel.org,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
  Jiri Denemark <jdenemar@redhat.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v6 07/27] tests/acpi: Update DSDT tables for pc & q35 machines
-Date: Thu,  8 Jan 2026 11:30:31 +0800
-Message-Id: <20260108033051.777361-8-zhao1.liu@intel.com>
+Subject: [PATCH v6 05/27] acpi: Remove legacy cpu hotplug utilities
+Date: Thu,  8 Jan 2026 11:30:29 +0800
+Message-Id: <20260108033051.777361-6-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260108033051.777361-1-zhao1.liu@intel.com>
 References: <20260108033051.777361-1-zhao1.liu@intel.com>
@@ -105,540 +105,557 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now the legacy cpu hotplug way has gone away, and there's no _INIT
-method in DSDT table for modern cpu hotplug support.
+The cpu_hotplug.h and cpu_hotplug.c contain legacy cpu hotplug
+utilities. Now there's no use case of legacy cpu hotplug, so it's safe
+to drop legacy cpu hotplug support totally.
 
-Update DSDT tables for pc machine, and_INIT methods are removed from
-DSDT tables:
-
-  -            Method (_INI, 0, Serialized)  // _INI: Initialize
-  -            {
-  -                CSEL = Zero
-  -            }
-
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 Acked-by: Igor Mammedov <imammedo@redhat.com>
 ---
-Changes since v5:
- * Merge pc & q35 changes into one patch and simplify the commit
-   message.
-
 Changes since v4:
- * New patch.
+ * New patch split off from Igor's v5 [*].
+
+[*]: https://lore.kernel.org/qemu-devel/20251031142825.179239-1-imammedo@redhat.com/
 ---
- tests/data/acpi/x86/pc/DSDT                   | Bin 8611 -> 8598 bytes
- tests/data/acpi/x86/pc/DSDT.acpierst          | Bin 8522 -> 8509 bytes
- tests/data/acpi/x86/pc/DSDT.acpihmat          | Bin 9936 -> 9923 bytes
- tests/data/acpi/x86/pc/DSDT.bridge            | Bin 15482 -> 15469 bytes
- tests/data/acpi/x86/pc/DSDT.cphp              | Bin 9075 -> 9062 bytes
- tests/data/acpi/x86/pc/DSDT.dimmpxm           | Bin 10265 -> 10252 bytes
- tests/data/acpi/x86/pc/DSDT.hpbridge          | Bin 8562 -> 8549 bytes
- tests/data/acpi/x86/pc/DSDT.hpbrroot          | Bin 5100 -> 5087 bytes
- tests/data/acpi/x86/pc/DSDT.ipmikcs           | Bin 8683 -> 8670 bytes
- tests/data/acpi/x86/pc/DSDT.memhp             | Bin 9970 -> 9957 bytes
- tests/data/acpi/x86/pc/DSDT.nohpet            | Bin 8469 -> 8456 bytes
- tests/data/acpi/x86/pc/DSDT.numamem           | Bin 8617 -> 8604 bytes
- tests/data/acpi/x86/pc/DSDT.roothp            | Bin 12404 -> 12391 bytes
- tests/data/acpi/x86/q35/DSDT                  | Bin 8440 -> 8427 bytes
- tests/data/acpi/x86/q35/DSDT.acpierst         | Bin 8457 -> 8444 bytes
- tests/data/acpi/x86/q35/DSDT.acpihmat         | Bin 9765 -> 9752 bytes
- .../data/acpi/x86/q35/DSDT.acpihmat-generic-x | Bin 12650 -> 12637 bytes
- .../acpi/x86/q35/DSDT.acpihmat-noinitiator    | Bin 8719 -> 8706 bytes
- tests/data/acpi/x86/q35/DSDT.applesmc         | Bin 8486 -> 8473 bytes
- tests/data/acpi/x86/q35/DSDT.bridge           | Bin 12053 -> 12040 bytes
- tests/data/acpi/x86/q35/DSDT.core-count       | Bin 12998 -> 12985 bytes
- tests/data/acpi/x86/q35/DSDT.core-count2      | Bin 33855 -> 33842 bytes
- tests/data/acpi/x86/q35/DSDT.cphp             | Bin 8904 -> 8891 bytes
- tests/data/acpi/x86/q35/DSDT.cxl              | Bin 13231 -> 13218 bytes
- tests/data/acpi/x86/q35/DSDT.dimmpxm          | Bin 10094 -> 10081 bytes
- tests/data/acpi/x86/q35/DSDT.ipmibt           | Bin 8515 -> 8502 bytes
- tests/data/acpi/x86/q35/DSDT.ipmismbus        | Bin 8528 -> 8515 bytes
- tests/data/acpi/x86/q35/DSDT.ivrs             | Bin 8457 -> 8444 bytes
- tests/data/acpi/x86/q35/DSDT.memhp            | Bin 9799 -> 9786 bytes
- tests/data/acpi/x86/q35/DSDT.mmio64           | Bin 9570 -> 9557 bytes
- tests/data/acpi/x86/q35/DSDT.multi-bridge     | Bin 13293 -> 13280 bytes
- tests/data/acpi/x86/q35/DSDT.noacpihp         | Bin 8302 -> 8289 bytes
- tests/data/acpi/x86/q35/DSDT.nohpet           | Bin 8298 -> 8285 bytes
- tests/data/acpi/x86/q35/DSDT.numamem          | Bin 8446 -> 8433 bytes
- tests/data/acpi/x86/q35/DSDT.pvpanic-isa      | Bin 8541 -> 8528 bytes
- tests/data/acpi/x86/q35/DSDT.thread-count     | Bin 12998 -> 12985 bytes
- tests/data/acpi/x86/q35/DSDT.thread-count2    | Bin 33855 -> 33842 bytes
- tests/data/acpi/x86/q35/DSDT.tis.tpm12        | Bin 9046 -> 9033 bytes
- tests/data/acpi/x86/q35/DSDT.tis.tpm2         | Bin 9072 -> 9059 bytes
- tests/data/acpi/x86/q35/DSDT.type4-count      | Bin 18674 -> 18661 bytes
- tests/data/acpi/x86/q35/DSDT.viot             | Bin 14697 -> 14684 bytes
- tests/data/acpi/x86/q35/DSDT.xapic            | Bin 35803 -> 35790 bytes
- tests/qtest/bios-tables-test-allowed-diff.h   |  42 ------------------
- 43 files changed, 42 deletions(-)
-
-diff --git a/tests/data/acpi/x86/pc/DSDT b/tests/data/acpi/x86/pc/DSDT
-index 4beb5194b84a711fcb52e3e52cc2096497d18442..6ea2d36d138daffb59a8636759078500adc58f24 100644
-GIT binary patch
-delta 39
-vcmZ4NJk6QQCD<ionj!-O<M)kRr+K(so#KO?;-j0qIVa!enYp=@S55=~{=N*|
-
-delta 53
-zcmbQ{yx5t`CD<iou_6Nl<A;r0r+K)Xoa2L?;-i~9xF+A{naL}{6YuHg$x*=I9PH||
-Jxq??t1OUPD58VI&
-
-diff --git a/tests/data/acpi/x86/pc/DSDT.acpierst b/tests/data/acpi/x86/pc/DSDT.acpierst
-index abda6863b64c5dc8ba5aba1a286cbfa76772a1e4..d8c173aa613f51b1c76ea7b9dee19e899cba240d 100644
-GIT binary patch
-delta 39
-vcmX@*wAYEtCD<jzR*`{$(S9S>X&x?Dr}$u}_~<5Y&dK+AW^QifJt_<U?(Yn~
-
-delta 53
-zcmdn%bjpd#CD<jzOOb(r(PAUlX&x>o=lEc!_~<4NuF3a#X7Y;g#C!UAauhH)2fO-g
-JuHZc?3;?HG5552Z
-
-diff --git a/tests/data/acpi/x86/pc/DSDT.acpihmat b/tests/data/acpi/x86/pc/DSDT.acpihmat
-index d081db26d7ba504b3344fad130d5812419291ac0..ba363d6af76af728b7c88bbaf47f7e0ea3dcb41f 100644
-GIT binary patch
-delta 39
-vcmccMd)SxDCD<k8uo?pc<CcwFr+K(sJmQ0$;-j0qIVa!enYp=@*IN<*4-pM<
-
-delta 53
-zcmX@?d%>5>CD<k8f*Jz@<Jyf}r+K&>J>!F&;-i~9xF+A{naL}{6YuHg$x*=I9PH||
-Jxq{bQ5&+kc5ODwi
-
-diff --git a/tests/data/acpi/x86/pc/DSDT.bridge b/tests/data/acpi/x86/pc/DSDT.bridge
-index e16897dc5f0fbb3f7b4de8db913884046246cc3b..b68302363cb24181988d6e3dceb04a0946838d5e 100644
-GIT binary patch
-delta 39
-vcmexW@wS4?CD<h-*M@<Ck#!^2X&x?Dr}$u}_~<5Y&dK+AW^Qif{i+855Lyl9
-
-delta 53
-zcmaD`@vDN%CD<jT%7%e~@!v+S(>z>G&hf!c@zG5lT$Atf%;Xi}iTCvL<S1Zp4tDj~
-JT*3QQ4*>hl5#|5@
-
-diff --git a/tests/data/acpi/x86/pc/DSDT.cphp b/tests/data/acpi/x86/pc/DSDT.cphp
-index e95711cd9cde5d50b841b701ae0fed5a4b15e872..20688edf2da41146ece4faa4141517408a42870c 100644
-GIT binary patch
-delta 39
-vcmezD_RNjTCD<h-O__m#F>52&X&x@u`1oL__~<5Y&dK+AW^QifeJ2V42kQ;C
-
-delta 53
-zcmaFn_SucgCD<jTSeb!=F?l1`X&x@8g!o{m_~<4NuF3a#X7Y;g#C!UAauhH)2fO-g
-JuHbzq3INN05VimS
-
-diff --git a/tests/data/acpi/x86/pc/DSDT.dimmpxm b/tests/data/acpi/x86/pc/DSDT.dimmpxm
-index 90ba66b9164f9a958d5a3c4371b1eec03e922828..8d4be05d2c71ca8de6d732d3e48e0e323143160c 100644
-GIT binary patch
-delta 39
-vcmbOk&=bJr66_Mfqrt$yD87;FJ`a~)aD1>+d~}mH=j6{kGdIuVZIA*0-<AwM
-
-delta 53
-zcmeAPm>Iz366_KpslmX&D6o<1J`b07NPMtUd~}ls*W}MUGkHaL;ywL5ISLq@gI#?#
-J_wY7I0RWRv4?X|@
-
-diff --git a/tests/data/acpi/x86/pc/DSDT.hpbridge b/tests/data/acpi/x86/pc/DSDT.hpbridge
-index 0eafe5fbf3d73719c9c3e6e26371863bfb44ed2f..2b5b885b862a2fe8bc4a24446400dccf685dab85 100644
-GIT binary patch
-delta 39
-vcmez5^wf#VCD<h-Rgr;#QF|lTX&x?Dr}$u}_~<5Y&dK+AW^QifeJczA{o4&n
-
-delta 53
-zcmaFr^vQ|KCD<jTNRfeoQDr07X&x>o=lEc!_~<4NuF3a#X7Y;g#C!UAauhH)2fO-g
-JuHbzu3;?^p5J~_5
-
-diff --git a/tests/data/acpi/x86/pc/DSDT.hpbrroot b/tests/data/acpi/x86/pc/DSDT.hpbrroot
-index 077a4cc988dc417a1bc9317dddd2dbd96ff1ff50..cc6f26a3f8fe85f34a8acb5432bab3cf4d3ab1f6 100644
-GIT binary patch
-delta 39
-vcmaE(eqWu-CD<k8zAys=W7bBl9BwXGr}$u}_~<5Y&dCkjGdHX89AgIn`U?zT
-
-delta 53
-zcmcbw{zje4CD<k8jW7cPWAa9>9BwWr=lEc!_~<4NuE`DDGkHaL;ywL5ISLq@gI#?#
-JOY$6J2LQ7!4`2WQ
-
-diff --git a/tests/data/acpi/x86/pc/DSDT.ipmikcs b/tests/data/acpi/x86/pc/DSDT.ipmikcs
-index 8d465f027772f9c59b0c328c1a099e374a6d2a90..052a84e294eee4ecef9a36341493f841caf887a5 100644
-GIT binary patch
-delta 39
-vcmaFue9xK7CD<k8o+1MSWAR3=(>z?RPVvD`@zG7*oRjbK%-r0{n<fGP5J?Sr
-
-delta 53
-zcmccT{MwnzCD<k8wITxpW6nmd(>z>G&hf!c@zG5lT$Atf%;Xi}iTCvL<S1Zp4tDj~
-JT)~?r0sz<r5P1Lq
-
-diff --git a/tests/data/acpi/x86/pc/DSDT.memhp b/tests/data/acpi/x86/pc/DSDT.memhp
-index e3b49757cb7abd7536ee89a6824967d2cb2485cf..7efc12a46cb87c0684b7d880b2cc94d302744e03 100644
-GIT binary patch
-delta 39
-vcmez5`_z}qCD<k8sTu<V<LQlDr+K)%o#KO?;-j0qIVa!enYp=@H&+q>AHfb0
-
-delta 53
-zcmaFr`^lHfCD<k8lNtj9<B^SAr+K(Moa2L?;-i~9xF+A{naL}{6YuHg$x*=I9PH||
-Jxq>%W5&-Wd5fK0Y
-
-diff --git a/tests/data/acpi/x86/pc/DSDT.nohpet b/tests/data/acpi/x86/pc/DSDT.nohpet
-index 9e772c1316d0ea07c51717466c4c7e383553f345..7eedfcd64ebd0193744864b4f6cbead35c7c3ab2 100644
-GIT binary patch
-delta 39
-vcmbR0)ZxVC66_Mfp~%3%cwi%!Ef1HgQ+%*fd~}mH=j1@1nVY}!$cX>|)oKe*
-
-delta 53
-zcmeBhn(D;m66_Kps>r~=xN{?yEf1HIb9}H<d~}ls*W^H+nY<!A@t%I390d%{!LB}=
-JU-8I^004Ze4o?68
-
-diff --git a/tests/data/acpi/x86/pc/DSDT.numamem b/tests/data/acpi/x86/pc/DSDT.numamem
-index 9bfbfc28213713c208dfc38a85abb46fb190871d..910b4952a0757025cfed1c60416d16054e70846f 100644
-GIT binary patch
-delta 39
-vcmZ4KJja>KCD<iojv@mCWAjF?(>z?>PVvD`@zG7*oRjbK%-r0{t0Dpb_GAo)
-
-delta 53
-zcmbQ^ywaJ=CD<ior6L0ZW6egc(>z=r&hf!c@zG5lT$Atf%;Xi}iTCvL<S1Zp4tDj~
-JT*0d%0syp+4~GB%
-
-diff --git a/tests/data/acpi/x86/pc/DSDT.roothp b/tests/data/acpi/x86/pc/DSDT.roothp
-index efbee6d8aa5c62ff4fcb83e6c5cff59542977850..45d3dbe1b69143a956b4f829913ca47f07134741 100644
-GIT binary patch
-delta 39
-vcmey8@H~ObCD<h--GG6Cv3VocX&x?Dr}$u}_~<5Y&dK+AW^QifeXj%n5y%b%
-
-delta 53
-zcmaE!@FjuECD<jT#DIZ;v1TLJX&x>o=lEc!_~<4NuF3a#X7Y;g#C!UAauhH)2fO-g
-JuHb#I1OV9F5d;7L
-
-diff --git a/tests/data/acpi/x86/q35/DSDT b/tests/data/acpi/x86/q35/DSDT
-index e5e8d1e041e20e1b3ee56a5c93fe3d6ebd721ee6..377e880175f6f11101548c0c64da61b5aee00bd9 100644
-GIT binary patch
-delta 39
-vcmez2_}Y=nCD<k8wE_bJ<I#;=l9F7mPVvD`@zG7*oRf7WXKubMsmcxj3Rw)V
-
-delta 53
-zcmaFu_`{LQCD<k8hXMlw<Gzhtl9F6b&hf!c@zG5lT$6PrXYz{h#C!UAauhH)2fO-g
-JJ|?Nk4gkhs53c|K
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.acpierst b/tests/data/acpi/x86/q35/DSDT.acpierst
-index 072a3fe2cd17dfe06658dfd82588f69787810114..026bfdfebf66c1803f158ac8c115eb5f49b5cb19 100644
-GIT binary patch
-delta 39
-vcmeBl`s2vu66_N4M}dKXF?A!Cq$HQCQ+%*fd~}mH=VV>UnVT<5ny~`_^t=od
-
-delta 53
-zcmez4*y+UO66_MfsmQ><7`u^6Qj*KbIX>7aKDx<+YqGB7OkNS5cuzl1jsgbfU{{~b
-I$0W_z0eo!^6aWAK
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.acpihmat b/tests/data/acpi/x86/q35/DSDT.acpihmat
-index 2a4f2fc1d5c5649673353186e67ff5b5e59e8d53..f1b8483d8da21dd57f3e5e7a1e4eb787df2c38ac 100644
-GIT binary patch
-delta 39
-vcmZ4LGsB0=CD<iILXClev2i1pq$HP%M|`kTd~}mH=VV>UnVT<52Jrv@*4zt4
-
-delta 53
-zcmbQ?v($&nCD<iIRgHmxv1%iiq$HQ4XMC_zd~}ls*JNGEnY<!A@t%I390d%{!LB}=
-Jk4Xmc004Yz4n+U}
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.acpihmat-generic-x b/tests/data/acpi/x86/q35/DSDT.acpihmat-generic-x
-index 7911c058bba5005d318b8db8d6da5c1ee381b0f1..a7731403f460a235bf705770a1547dafeee069ab 100644
-GIT binary patch
-delta 39
-vcmaErbT^61CD<h-){udL(R3r1q$HP<Uwp7rd~}mH=VV>UnVT<5P8SCN^mq(Y
-
-delta 53
-zcmcbc^eTzVCD<h-%aDPAQGO$rq$HQWUwp7rd~}ls*JNGEnY<!A@t%I390d%{!LB}=
-Jk4a7!2LPlJ4^sdD
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.acpihmat-noinitiator b/tests/data/acpi/x86/q35/DSDT.acpihmat-noinitiator
-index 580b4a456a20fc0cc0a832eaf74193b46d8ae8b1..cb4995de7e33cd9f2d134ec96651d217873d6944 100644
-GIT binary patch
-delta 39
-ucmeBoX>#Fm33dr#Qet3WwBE=iDaqv%93SiyAKm25Iayb7=H|<iHXH!OR0^U1
-
-delta 53
-zcmZp2>389B33dtLS7KmbG}*`{Daqv-5+CdoAKm1^HCb13Ca(xjyr-WhM*)L#u&dAJ
-IW0E!;0Apnhq5uE@
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.applesmc b/tests/data/acpi/x86/q35/DSDT.applesmc
-index 5e8220e38d6f88b103f6eb3eb7c78dfa466882dc..92c8fdb6cbb8ae8bdf5ede9679eea92486eaf372 100644
-GIT binary patch
-delta 39
-vcmZ4HG}DR8CD<iIQjvjyamz+7Nl7kOr}$u}_~<5Y&dIuxGdEwB3}y!a*l-J3
-
-delta 53
-zcmbQ~w9JXiCD<iIO_70taqUJfNl7jz=lEc!_~<4NuF1NRGkHaL;ywL5ISLq@gI#?#
-JACnAb2LOLh4p{&I
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.bridge b/tests/data/acpi/x86/q35/DSDT.bridge
-index ee039453af1071e00a81ee7b37cf8f417f524257..957b3ad90c787616eac212865bce0a19a5ac1e6e 100644
-GIT binary patch
-delta 39
-vcmbOl*Ad6%66_Mfq0hj;_+TTKq$HQCQ+%*fd~}mH=VV>UnVT<5I*9@R-%JaY
-
-delta 53
-zcmeB(n;OUE66_Kps?Wf{cyl9{q$HP<b9}H<d~}ls*JNGEnY<!A@t%I390d%{!LB}=
-Jk4ZX-0sx7f4wV1^
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.core-count b/tests/data/acpi/x86/q35/DSDT.core-count
-index 7ebfceeb66460d0ad98471924ce224b7153e87ef..50ca91b065d9a2ba95f97d01856865f0e7c615f6 100644
-GIT binary patch
-delta 40
-wcmX?>x-*r_CD<iorx61KqwPj6NlEVJc*gi(r}*e5Z_dejk~247k^Ce900Y(yC;$Ke
-
-delta 54
-zcmdm)dMuU8CD<k8m=Oa5quE9-NlEU81jhJar}*e553b32k~4Wlc;Y?%JUI#&oP%9`
-KHXoP#Bmn@rP7o*n
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.core-count2 b/tests/data/acpi/x86/q35/DSDT.core-count2
-index d0394558a1faa0b4ba43abab66d474d96b477ff3..f460be2bf74ae512db8f24418b42e8cf2a56202d 100644
-GIT binary patch
-delta 42
-ycmdnr!L+G^iOVI}CB&$Ofq}7aBbTHkcTX8xe6Uk|bdxvdWIf55o3BV_X8`~d01a>e
-
-delta 56
-zcmdng!L+}FiOVI}CB(jkfq}7oBbTHkcV{_Ue6Uk|bdv|yWIf55ydpgDo_?Mj1q{x?
-Mu0ETOOJ-*Q0MS7ZZ~y=R
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.cphp b/tests/data/acpi/x86/q35/DSDT.cphp
-index a055c2e7d3c4f5a00a03be20fd73227e322283a4..7c87d41d03fcfd2b5b82f2581f16de6bc0bb10bf 100644
-GIT binary patch
-delta 39
-vcmX@%y4#h@CD<iow-N&bqs2xpNl7l(`1oL__~<5Y&dIuxGdEwB{K^3U?XnDt
-
-delta 53
-zcmdn(dcu{<CD<k8gc1V-qv1v_Nl7lJg!o{m_~<4NuF1NRGkHaL;ywL5ISLq@gI#?#
-JACvsb0RWs;4~hT)
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.cxl b/tests/data/acpi/x86/q35/DSDT.cxl
-index 20843549f54af1cb0e6017c4cfff7463318d9eb7..da86b25f51b550ab20771111cb0a2bc49e713186 100644
-GIT binary patch
-delta 39
-vcmZ3Vz9^l`CD<iokud`U<Ijy;l9F7mPVvD`@zG7*oRf7WXKubMc}Efe|Hln5
-
-delta 53
-zcmZ3KzCNAHCD<ioy)gp=<EM>Wl9F6b&hf!c@zG5lT$6PrXYz{h#C!UAauhH)2fO-g
-JJ|=lb5&*aE5HJ7$
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.dimmpxm b/tests/data/acpi/x86/q35/DSDT.dimmpxm
-index 664e926e90765550136242f7e3e0bdc7719c1853..a2d812e5a23a3ce7739789246b342e703f8c96c0 100644
-GIT binary patch
-delta 39
-vcmaFo_t1~aCD<h-QJsN-@##h`T}dv#;P_yt_~<5Y&dH9FGdDk%Z07|41ThT|
-
-delta 53
-zcmaFp_s);YCD<h-Po05*@!m!*T}dwQkoaJy_~<4NuE~y)GkHaL;ywL5ISLq@gI#?#
-J-;!+S1pvOk5D)+W
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.ipmibt b/tests/data/acpi/x86/q35/DSDT.ipmibt
-index 4066a76d26aa380dfbecc58aa3f83ab5db2baadb..43ac1bd693d1b3f67d2a9e89ccaf8a56656df22d 100644
-GIT binary patch
-delta 39
-vcmX@?w9SdjCD<jzOp$?s@yA9kNl7kOr}$u}_~<5Y&dIuxGdEwBEMNx!>rf04
-
-delta 53
-zcmdnybl8c@CD<jzS&@N(@#97=Nl7jz=lEc!_~<4NuF1NRGkHaL;ywL5ISLq@gI#?#
-JACoL#2LPI>4-o(W
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.ipmismbus b/tests/data/acpi/x86/q35/DSDT.ipmismbus
-index 6d0b6b95c2a9fd01befc37b26650781ee1562e2a..1b998820d46e522b3129e42a867ed691c1f83e8f 100644
-GIT binary patch
-delta 39
-vcmccMbl8c@CD<jzS&@N(F>@oAq$HQCQ+%*fd~}mH=VV>UnVT<5*0KWt;?)bb
-
-delta 53
-zcmX@?bis+sCD<h-K#_rgF=->0q$HP<b9}H<d~}ls*JNGEnY<!A@t%I390d%{!LB}=
-Jk4e_D0|1PE4z>UQ
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.ivrs b/tests/data/acpi/x86/q35/DSDT.ivrs
-index 072a3fe2cd17dfe06658dfd82588f69787810114..026bfdfebf66c1803f158ac8c115eb5f49b5cb19 100644
-GIT binary patch
-delta 39
-vcmeBl`s2vu66_N4M}dKXF?A!Cq$HQCQ+%*fd~}mH=VV>UnVT<5ny~`_^t=od
-
-delta 53
-zcmez4*y+UO66_MfsmQ><7`u^6Qj*KbIX>7aKDx<+YqGB7OkNS5cuzl1jsgbfU{{~b
-I$0W_z0eo!^6aWAK
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.memhp b/tests/data/acpi/x86/q35/DSDT.memhp
-index 4f2f9bcfceff076490cc49b8286380295a340004..7346125d23fb3174c0ce678a2cdf2fdc77c4a9fa 100644
-GIT binary patch
-delta 39
-vcmX@^v&)CeCD<jzN{xYmamGe2Nl7kmr}$u}_~<5Y&dIuxGdEwBEa3qF=Zp*G
-
-delta 53
-zcmdnxbKHl^CD<jzU5$Z(apFcUNl7jb=lEc!_~<4NuF1NRGkHaL;ywL5ISLq@gI#?#
-JACoNM0RWT#4&?v<
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.mmio64 b/tests/data/acpi/x86/q35/DSDT.mmio64
-index 0fb6aab16f1bd79f3c0790cc9f644f7e52ac37b1..15a291dbfb62e6ceb0249e02eb25b319744e351f 100644
-GIT binary patch
-delta 39
-vcmaFlb=8Z@CD<h-RF#2&F>)i9q$HQOQ+%*fd~}mH=VV>UnVT<5_HzRO>=z6S
-
-delta 53
-zcmccW^~j6MCD<h-NtJ<tF=!)~q$HPzb9}H<d~}ls*JNGEnY<!A@t%I390d%{!LB}=
-Jk4g4(0|1#o4-5bR
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.multi-bridge b/tests/data/acpi/x86/q35/DSDT.multi-bridge
-index f6afa6d96d2525d512cc46f17439f7a49962b730..889a9040d950dd08980408d57f1037a5fc20c961 100644
-GIT binary patch
-delta 39
-vcmaEx{ve&pCD<k8fiVLE<E@Qcl9F7mPVvD`@zG7*oRf7WXKubMDJ2B}6!;Aa
-
-delta 53
-zcmaEm{x+S<CD<k8tuX@w<K>N9l9F6b&hf!c@zG5lT$6PrXYz{h#C!UAauhH)2fO-g
-JJ|-z81pw8G5DEYQ
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.noacpihp b/tests/data/acpi/x86/q35/DSDT.noacpihp
-index 9f7261d1b06bbf5d8a3e5a7a46b247a2a21eb544..780616774f97a2d7305faf9e9a9d12afeb0e2fa2 100644
-GIT binary patch
-delta 39
-vcmaFo@X&$FCD<h-QGtPhars8BUE*A>PVvD`@zG7*oRiOq&)i%h@rxY*2F?wn
-
-delta 53
-zcmaFp@XmqDCD<h-Pl17faluBeUE*9$&hf!c@zG5lT$9g<&*T;1iTCvL<S1Zp4tDj~
-JoG$T;9RSJJ5TpPA
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.nohpet b/tests/data/acpi/x86/q35/DSDT.nohpet
-index 99ad629c9171ff6ab346d6b4c519e77ca23e5b1c..0f862ab2938e0e11aa8335630fad389095b37edd 100644
-GIT binary patch
-delta 39
-vcmaFmaMyv$CD<h-R)K+mv2P<+w*;4~Q+%*fd~}mH=j8bkGdH_Rs<HzB`rQm5
-
-delta 53
-zcmccX@XCS9CD<h-OM!ubv3(;~w*;4yb9}H<d~}ls*W~#UGkHaL;ywL5ISLq@gI#?#
-JTS%(10|2(>4<G;l
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.numamem b/tests/data/acpi/x86/q35/DSDT.numamem
-index fd1d8a79d3d9b071c8796e5e99b76698a9a8d29c..df8edc05b69ecd1331973b16e534b44616b50f58 100644
-GIT binary patch
-delta 39
-vcmez8_|cKeCD<k8qXGj1W8g+ENl7kmr}$u}_~<5Y&dIuxGdEwB)Mf_&0sjnH
-
-delta 53
-zcmez9_|K8cCD<k8p8^8|qt`|*Nl7jb=lEc!_~<4NuF1NRGkHaL;ywL5ISLq@gI#?#
-JACuH(2LQPL4_N>J
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.pvpanic-isa b/tests/data/acpi/x86/q35/DSDT.pvpanic-isa
-index 89032fa0290f496be0c06c6382586541aa1118a8..da3ce12787c28e555b6ba5eacb26275bdd4587f1 100644
-GIT binary patch
-delta 39
-vcmccXbis+sCD<h-K#_rgv3w(!q$HQCQ+%*fd~}mH=VV>UnVT<5cCiBh>8}g;
-
-delta 53
-zcmccMbk~W?CD<h-R*`{$v0x*Yq$HP<b9}H<d~}ls*JNGEnY<!A@t%I390d%{!LB}=
-Jk4bj10|1sj4)_27
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.thread-count b/tests/data/acpi/x86/q35/DSDT.thread-count
-index 7ebfceeb66460d0ad98471924ce224b7153e87ef..50ca91b065d9a2ba95f97d01856865f0e7c615f6 100644
-GIT binary patch
-delta 40
-wcmX?>x-*r_CD<iorx61KqwPj6NlEVJc*gi(r}*e5Z_dejk~247k^Ce900Y(yC;$Ke
-
-delta 54
-zcmdm)dMuU8CD<k8m=Oa5quE9-NlEU81jhJar}*e553b32k~4Wlc;Y?%JUI#&oP%9`
-KHXoP#Bmn@rP7o*n
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.thread-count2 b/tests/data/acpi/x86/q35/DSDT.thread-count2
-index d0394558a1faa0b4ba43abab66d474d96b477ff3..f460be2bf74ae512db8f24418b42e8cf2a56202d 100644
-GIT binary patch
-delta 42
-ycmdnr!L+G^iOVI}CB&$Ofq}7aBbTHkcTX8xe6Uk|bdxvdWIf55o3BV_X8`~d01a>e
-
-delta 56
-zcmdng!L+}FiOVI}CB(jkfq}7oBbTHkcV{_Ue6Uk|bdv|yWIf55ydpgDo_?Mj1q{x?
-Mu0ETOOJ-*Q0MS7ZZ~y=R
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.tis.tpm12 b/tests/data/acpi/x86/q35/DSDT.tis.tpm12
-index f2ed40ca70cb13e733e39f4bad756be8688e01fe..67ebd7c158759221b801ecb67d8562d92fa219d5 100644
-GIT binary patch
-delta 39
-vcmccScG8W@CD<jzQ<;H*@#{t|Nl7kOr}$u}_~<5Y&dIuxGdEwBY~}<2^lc1g
-
-delta 53
-zcmX@<cFm2;CD<h-Oqqd!@!du)Nl7jz=lEc!_~<4NuF1NRGkHaL;ywL5ISLq@gI#?#
-JACqk61OTT-4`u)W
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.tis.tpm2 b/tests/data/acpi/x86/q35/DSDT.tis.tpm2
-index 5c975d2162d0bfee5a3a089e79b5ba038f82b7ef..c6b58472157d575e2625557d1346586be06b927c 100644
-GIT binary patch
-delta 39
-vcmez1_SlWfCD<h-S($->as5UvNl7kOr}$u}_~<5Y&dIuxGdEwBoXZIS_>T;T
-
-delta 53
-zcmaFt_Q8$ICD<jTK$(Goam7Y1Nl7jz=lEc!_~<4NuF1NRGkHaL;ywL5ISLq@gI#?#
-JACsKR2>`3u4~PH&
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.type4-count b/tests/data/acpi/x86/q35/DSDT.type4-count
-index 3194a82b8b4f66aff1ecf7d2d60b4890181fc600..17a64adb2055ad3168754ca121bf29851d2ee496 100644
-GIT binary patch
-delta 42
-ycmew~k@4w7MlP3Nmyo9(3=E7>8@VJUx%&??#RogZM>lzMPS%s0x%rBuoIU_FstxM^
-
-delta 56
-zcmaDlk@3?+MlP3Nmyk~$3=E9H8@VJUxqA*V#RogZM>lzJP1ci~$t%JW@9F2sQNZ9F
-M?CP`mxTKsu001Nq>i_@%
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.viot b/tests/data/acpi/x86/q35/DSDT.viot
-index 129d43e1e561be3fd7cd71406829ab81d0a8aba0..6eb30e8f4b2c54e4789c649475adff356c8c58a4 100644
-GIT binary patch
-delta 39
-vcmaD^bf<{RCD<h-#*%@7ar#CsNl7kOr}$u}_~<5Y&dIuxGdEwBoF)$d0-g-m
-
-delta 53
-zcmcap^s<P{CD<h-(~^OKal%F}Nl7jz=lEc!_~<4NuF1NRGkHaL;ywL5ISLq@gI#?#
-JACsIW4*<Dl57+<z
-
-diff --git a/tests/data/acpi/x86/q35/DSDT.xapic b/tests/data/acpi/x86/q35/DSDT.xapic
-index b37ab591110d1c8201575ad6bba83449d7b90b21..111bb041dc0d114351add07c040dde61643d157a 100644
-GIT binary patch
-delta 42
-ycmcaTo$1_kCN7s?mymPa3=E828@VJUxjR0v#RogZM>lzMPS%s0x%rADdl3LU$qs)2
-
-delta 56
-zcmX>%o$2;;CN7s?myp}t3=E9T8@VJUxm!Q7#RogZM>lzJP1ci~$t%JW@9F2sQNZ9F
-M?CP`mxFmZK01fjIe*gdg
-
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index eed8ded69335..dfb8523c8bf4 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,43 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/x86/pc/DSDT",
--"tests/data/acpi/x86/pc/DSDT.bridge",
--"tests/data/acpi/x86/pc/DSDT.ipmikcs",
--"tests/data/acpi/x86/pc/DSDT.cphp",
--"tests/data/acpi/x86/pc/DSDT.numamem",
--"tests/data/acpi/x86/pc/DSDT.nohpet",
--"tests/data/acpi/x86/pc/DSDT.memhp",
--"tests/data/acpi/x86/pc/DSDT.dimmpxm",
--"tests/data/acpi/x86/pc/DSDT.acpihmat",
--"tests/data/acpi/x86/pc/DSDT.acpierst",
--"tests/data/acpi/x86/pc/DSDT.roothp",
--"tests/data/acpi/x86/pc/DSDT.hpbridge",
--"tests/data/acpi/x86/pc/DSDT.hpbrroot",
--"tests/data/acpi/x86/q35/DSDT",
--"tests/data/acpi/x86/q35/DSDT.tis.tpm2",
--"tests/data/acpi/x86/q35/DSDT.tis.tpm12",
--"tests/data/acpi/x86/q35/DSDT.bridge",
--"tests/data/acpi/x86/q35/DSDT.noacpihp",
--"tests/data/acpi/x86/q35/DSDT.multi-bridge",
--"tests/data/acpi/x86/q35/DSDT.ipmibt",
--"tests/data/acpi/x86/q35/DSDT.cphp",
--"tests/data/acpi/x86/q35/DSDT.numamem",
--"tests/data/acpi/x86/q35/DSDT.nohpet",
--"tests/data/acpi/x86/q35/DSDT.acpihmat-noinitiator",
--"tests/data/acpi/x86/q35/DSDT.acpihmat-generic-x",
--"tests/data/acpi/x86/q35/DSDT.memhp",
--"tests/data/acpi/x86/q35/DSDT.dimmpxm",
--"tests/data/acpi/x86/q35/DSDT.acpihmat",
--"tests/data/acpi/x86/q35/DSDT.mmio64",
--"tests/data/acpi/x86/q35/DSDT.acpierst",
--"tests/data/acpi/x86/q35/DSDT.applesmc",
--"tests/data/acpi/x86/q35/DSDT.pvpanic-isa",
--"tests/data/acpi/x86/q35/DSDT.ivrs",
--"tests/data/acpi/x86/q35/DSDT.type4-count",
--"tests/data/acpi/x86/q35/DSDT.core-count",
--"tests/data/acpi/x86/q35/DSDT.core-count2",
--"tests/data/acpi/x86/q35/DSDT.thread-count",
--"tests/data/acpi/x86/q35/DSDT.thread-count2",
--"tests/data/acpi/x86/q35/DSDT.viot",
--"tests/data/acpi/x86/q35/DSDT.cxl",
--"tests/data/acpi/x86/q35/DSDT.ipmismbus",
--"tests/data/acpi/x86/q35/DSDT.xapic",
+ hw/acpi/acpi-cpu-hotplug-stub.c |  19 +-
+ hw/acpi/cpu_hotplug.c           | 348 --------------------------------
+ hw/acpi/generic_event_device.c  |   1 +
+ hw/acpi/ich9.c                  |   1 +
+ hw/acpi/meson.build             |   2 +-
+ hw/acpi/piix4.c                 |   2 +-
+ hw/i386/acpi-build.c            |   1 +
+ hw/i386/pc.c                    |   3 +-
+ hw/i386/x86-common.c            |   1 -
+ include/hw/acpi/ich9.h          |   2 +-
+ include/hw/acpi/piix4.h         |   2 +-
+ 11 files changed, 10 insertions(+), 372 deletions(-)
+ delete mode 100644 hw/acpi/cpu_hotplug.c
+
+diff --git a/hw/acpi/acpi-cpu-hotplug-stub.c b/hw/acpi/acpi-cpu-hotplug-stub.c
+index 9872dd55e43f..72c5f05f5c4e 100644
+--- a/hw/acpi/acpi-cpu-hotplug-stub.c
++++ b/hw/acpi/acpi-cpu-hotplug-stub.c
+@@ -1,22 +1,10 @@
+ #include "qemu/osdep.h"
+-#include "hw/acpi/cpu_hotplug.h"
+ #include "migration/vmstate.h"
+-
++#include "hw/acpi/cpu.h"
+ 
+ /* Following stubs are all related to ACPI cpu hotplug */
+ const VMStateDescription vmstate_cpu_hotplug;
+ 
+-void acpi_switch_to_modern_cphp(AcpiCpuHotplug *gpe_cpu,
+-                                CPUHotplugState *cpuhp_state,
+-                                uint16_t io_port)
+-{
+-}
+-
+-void legacy_acpi_cpu_hotplug_init(MemoryRegion *parent, Object *owner,
+-                                  AcpiCpuHotplug *gpe_cpu, uint16_t base)
+-{
+-}
+-
+ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+                          CPUHotplugState *state, hwaddr base_addr)
+ {
+@@ -31,11 +19,6 @@ void acpi_cpu_plug_cb(HotplugHandler *hotplug_dev,
+ {
+ }
+ 
+-void legacy_acpi_cpu_plug_cb(HotplugHandler *hotplug_dev,
+-                             AcpiCpuHotplug *g, DeviceState *dev, Error **errp)
+-{
+-}
+-
+ void acpi_cpu_unplug_cb(CPUHotplugState *cpu_st,
+                         DeviceState *dev, Error **errp)
+ {
+diff --git a/hw/acpi/cpu_hotplug.c b/hw/acpi/cpu_hotplug.c
+deleted file mode 100644
+index aa0e1e3efa54..000000000000
+--- a/hw/acpi/cpu_hotplug.c
++++ /dev/null
+@@ -1,348 +0,0 @@
+-/*
+- * QEMU ACPI hotplug utilities
+- *
+- * Copyright (C) 2013 Red Hat Inc
+- *
+- * Authors:
+- *   Igor Mammedov <imammedo@redhat.com>
+- *
+- * This work is licensed under the terms of the GNU GPL, version 2 or later.
+- * See the COPYING file in the top-level directory.
+- */
+-#include "qemu/osdep.h"
+-#include "hw/acpi/cpu_hotplug.h"
+-#include "qapi/error.h"
+-#include "hw/core/cpu.h"
+-#include "hw/i386/x86.h"
+-#include "hw/pci/pci_device.h"
+-#include "qemu/error-report.h"
+-
+-#define CPU_EJECT_METHOD "CPEJ"
+-#define CPU_MAT_METHOD "CPMA"
+-#define CPU_ON_BITMAP "CPON"
+-#define CPU_STATUS_METHOD "CPST"
+-#define CPU_STATUS_MAP "PRS"
+-#define CPU_SCAN_METHOD "PRSC"
+-
+-static uint64_t cpu_status_read(void *opaque, hwaddr addr, unsigned int size)
+-{
+-    AcpiCpuHotplug *cpus = opaque;
+-    uint64_t val = cpus->sts[addr];
+-
+-    return val;
+-}
+-
+-static void cpu_status_write(void *opaque, hwaddr addr, uint64_t data,
+-                             unsigned int size)
+-{
+-    /* firmware never used to write in CPU present bitmap so use
+-       this fact as means to switch QEMU into modern CPU hotplug
+-       mode by writing 0 at the beginning of legacy CPU bitmap
+-     */
+-    if (addr == 0 && data == 0) {
+-        AcpiCpuHotplug *cpus = opaque;
+-        object_property_set_bool(cpus->device, "cpu-hotplug-legacy", false,
+-                                 &error_abort);
+-    }
+-}
+-
+-static const MemoryRegionOps AcpiCpuHotplug_ops = {
+-    .read = cpu_status_read,
+-    .write = cpu_status_write,
+-    .endianness = DEVICE_LITTLE_ENDIAN,
+-    .valid = {
+-        .min_access_size = 1,
+-        .max_access_size = 4,
+-    },
+-    .impl = {
+-        .max_access_size = 1,
+-    },
+-};
+-
+-static void acpi_set_cpu_present_bit(AcpiCpuHotplug *g, CPUState *cpu,
+-                                     bool *swtchd_to_modern)
+-{
+-    int64_t cpu_id;
+-
+-    cpu_id = cpu->cc->get_arch_id(cpu);
+-    if ((cpu_id / 8) >= ACPI_GPE_PROC_LEN) {
+-        object_property_set_bool(g->device, "cpu-hotplug-legacy", false,
+-                                 &error_abort);
+-        *swtchd_to_modern = true;
+-        return;
+-    }
+-
+-    *swtchd_to_modern = false;
+-    g->sts[cpu_id / 8] |= (1 << (cpu_id % 8));
+-}
+-
+-void legacy_acpi_cpu_plug_cb(HotplugHandler *hotplug_dev,
+-                             AcpiCpuHotplug *g, DeviceState *dev, Error **errp)
+-{
+-    bool swtchd_to_modern;
+-    Error *local_err = NULL;
+-
+-    acpi_set_cpu_present_bit(g, CPU(dev), &swtchd_to_modern);
+-    if (swtchd_to_modern) {
+-        /* propagate the hotplug to the modern interface */
+-        hotplug_handler_plug(hotplug_dev, dev, &local_err);
+-    } else {
+-        acpi_send_event(DEVICE(hotplug_dev), ACPI_CPU_HOTPLUG_STATUS);
+-    }
+-}
+-
+-void legacy_acpi_cpu_hotplug_init(MemoryRegion *parent, Object *owner,
+-                                  AcpiCpuHotplug *gpe_cpu, uint16_t base)
+-{
+-    CPUState *cpu;
+-    bool swtchd_to_modern;
+-
+-    memory_region_init_io(&gpe_cpu->io, owner, &AcpiCpuHotplug_ops,
+-                          gpe_cpu, "acpi-cpu-hotplug", ACPI_GPE_PROC_LEN);
+-    memory_region_add_subregion(parent, base, &gpe_cpu->io);
+-    gpe_cpu->device = owner;
+-
+-    CPU_FOREACH(cpu) {
+-        acpi_set_cpu_present_bit(gpe_cpu, cpu, &swtchd_to_modern);
+-    }
+-}
+-
+-void acpi_switch_to_modern_cphp(AcpiCpuHotplug *gpe_cpu,
+-                                CPUHotplugState *cpuhp_state,
+-                                uint16_t io_port)
+-{
+-    MemoryRegion *parent = pci_address_space_io(PCI_DEVICE(gpe_cpu->device));
+-
+-    memory_region_del_subregion(parent, &gpe_cpu->io);
+-    cpu_hotplug_hw_init(parent, gpe_cpu->device, cpuhp_state, io_port);
+-}
+-
+-void build_legacy_cpu_hotplug_aml(Aml *ctx, MachineState *machine,
+-                                  uint16_t io_base)
+-{
+-    Aml *dev;
+-    Aml *crs;
+-    Aml *pkg;
+-    Aml *field;
+-    Aml *method;
+-    Aml *if_ctx;
+-    Aml *else_ctx;
+-    int i, apic_idx;
+-    Aml *sb_scope = aml_scope("_SB");
+-    uint8_t madt_tmpl[8] = {0x00, 0x08, 0x00, 0x00, 0x00, 0, 0, 0};
+-    Aml *cpu_id = aml_arg(1);
+-    Aml *apic_id = aml_arg(0);
+-    Aml *cpu_on = aml_local(0);
+-    Aml *madt = aml_local(1);
+-    Aml *cpus_map = aml_name(CPU_ON_BITMAP);
+-    Aml *zero = aml_int(0);
+-    Aml *one = aml_int(1);
+-    MachineClass *mc = MACHINE_GET_CLASS(machine);
+-    const CPUArchIdList *apic_ids = mc->possible_cpu_arch_ids(machine);
+-    X86MachineState *x86ms = X86_MACHINE(machine);
+-
+-    /*
+-     * _MAT method - creates an madt apic buffer
+-     * apic_id = Arg0 = Local APIC ID
+-     * cpu_id  = Arg1 = Processor ID
+-     * cpu_on = Local0 = CPON flag for this cpu
+-     * madt = Local1 = Buffer (in madt apic form) to return
+-     */
+-    method = aml_method(CPU_MAT_METHOD, 2, AML_NOTSERIALIZED);
+-    aml_append(method,
+-        aml_store(aml_derefof(aml_index(cpus_map, apic_id)), cpu_on));
+-    aml_append(method,
+-        aml_store(aml_buffer(sizeof(madt_tmpl), madt_tmpl), madt));
+-    /* Update the processor id, lapic id, and enable/disable status */
+-    aml_append(method, aml_store(cpu_id, aml_index(madt, aml_int(2))));
+-    aml_append(method, aml_store(apic_id, aml_index(madt, aml_int(3))));
+-    aml_append(method, aml_store(cpu_on, aml_index(madt, aml_int(4))));
+-    aml_append(method, aml_return(madt));
+-    aml_append(sb_scope, method);
+-
+-    /*
+-     * _STA method - return ON status of cpu
+-     * apic_id = Arg0 = Local APIC ID
+-     * cpu_on = Local0 = CPON flag for this cpu
+-     */
+-    method = aml_method(CPU_STATUS_METHOD, 1, AML_NOTSERIALIZED);
+-    aml_append(method,
+-        aml_store(aml_derefof(aml_index(cpus_map, apic_id)), cpu_on));
+-    if_ctx = aml_if(cpu_on);
+-    {
+-        aml_append(if_ctx, aml_return(aml_int(0xF)));
+-    }
+-    aml_append(method, if_ctx);
+-    else_ctx = aml_else();
+-    {
+-        aml_append(else_ctx, aml_return(zero));
+-    }
+-    aml_append(method, else_ctx);
+-    aml_append(sb_scope, method);
+-
+-    method = aml_method(CPU_EJECT_METHOD, 2, AML_NOTSERIALIZED);
+-    aml_append(method, aml_sleep(200));
+-    aml_append(sb_scope, method);
+-
+-    method = aml_method(CPU_SCAN_METHOD, 0, AML_NOTSERIALIZED);
+-    {
+-        Aml *while_ctx, *if_ctx2, *else_ctx2;
+-        Aml *bus_check_evt = aml_int(1);
+-        Aml *remove_evt = aml_int(3);
+-        Aml *status_map = aml_local(5); /* Local5 = active cpu bitmap */
+-        Aml *byte = aml_local(2); /* Local2 = last read byte from bitmap */
+-        Aml *idx = aml_local(0); /* Processor ID / APIC ID iterator */
+-        Aml *is_cpu_on = aml_local(1); /* Local1 = CPON flag for cpu */
+-        Aml *status = aml_local(3); /* Local3 = active state for cpu */
+-
+-        aml_append(method, aml_store(aml_name(CPU_STATUS_MAP), status_map));
+-        aml_append(method, aml_store(zero, byte));
+-        aml_append(method, aml_store(zero, idx));
+-
+-        /* While (idx < SizeOf(CPON)) */
+-        while_ctx = aml_while(aml_lless(idx, aml_sizeof(cpus_map)));
+-        aml_append(while_ctx,
+-            aml_store(aml_derefof(aml_index(cpus_map, idx)), is_cpu_on));
+-
+-        if_ctx = aml_if(aml_and(idx, aml_int(0x07), NULL));
+-        {
+-            /* Shift down previously read bitmap byte */
+-            aml_append(if_ctx, aml_shiftright(byte, one, byte));
+-        }
+-        aml_append(while_ctx, if_ctx);
+-
+-        else_ctx = aml_else();
+-        {
+-            /* Read next byte from cpu bitmap */
+-            aml_append(else_ctx, aml_store(aml_derefof(aml_index(status_map,
+-                       aml_shiftright(idx, aml_int(3), NULL))), byte));
+-        }
+-        aml_append(while_ctx, else_ctx);
+-
+-        aml_append(while_ctx, aml_store(aml_and(byte, one, NULL), status));
+-        if_ctx = aml_if(aml_lnot(aml_equal(is_cpu_on, status)));
+-        {
+-            /* State change - update CPON with new state */
+-            aml_append(if_ctx, aml_store(status, aml_index(cpus_map, idx)));
+-            if_ctx2 = aml_if(aml_equal(status, one));
+-            {
+-                aml_append(if_ctx2,
+-                    aml_call2(AML_NOTIFY_METHOD, idx, bus_check_evt));
+-            }
+-            aml_append(if_ctx, if_ctx2);
+-            else_ctx2 = aml_else();
+-            {
+-                aml_append(else_ctx2,
+-                    aml_call2(AML_NOTIFY_METHOD, idx, remove_evt));
+-            }
+-        }
+-        aml_append(if_ctx, else_ctx2);
+-        aml_append(while_ctx, if_ctx);
+-
+-        aml_append(while_ctx, aml_increment(idx)); /* go to next cpu */
+-        aml_append(method, while_ctx);
+-    }
+-    aml_append(sb_scope, method);
+-
+-    /* The current AML generator can cover the APIC ID range [0..255],
+-     * inclusive, for VCPU hotplug. */
+-    QEMU_BUILD_BUG_ON(ACPI_CPU_HOTPLUG_ID_LIMIT > 256);
+-    if (x86ms->apic_id_limit > ACPI_CPU_HOTPLUG_ID_LIMIT) {
+-        error_report("max_cpus is too large. APIC ID of last CPU is %u",
+-                     x86ms->apic_id_limit - 1);
+-        exit(1);
+-    }
+-
+-    /* create PCI0.PRES device and its _CRS to reserve CPU hotplug MMIO */
+-    dev = aml_device("PCI0." stringify(CPU_HOTPLUG_RESOURCE_DEVICE));
+-    aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A06")));
+-    aml_append(dev,
+-        aml_name_decl("_UID", aml_string("CPU Hotplug resources"))
+-    );
+-    /* device present, functioning, decoding, not shown in UI */
+-    aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+-    crs = aml_resource_template();
+-    aml_append(crs,
+-        aml_io(AML_DECODE16, io_base, io_base, 1, ACPI_GPE_PROC_LEN)
+-    );
+-    aml_append(dev, aml_name_decl("_CRS", crs));
+-    aml_append(sb_scope, dev);
+-    /* declare CPU hotplug MMIO region and PRS field to access it */
+-    aml_append(sb_scope, aml_operation_region(
+-        "PRST", AML_SYSTEM_IO, aml_int(io_base), ACPI_GPE_PROC_LEN));
+-    field = aml_field("PRST", AML_BYTE_ACC, AML_NOLOCK, AML_PRESERVE);
+-    aml_append(field, aml_named_field("PRS", 256));
+-    aml_append(sb_scope, field);
+-
+-    /* build Processor object for each processor */
+-    for (i = 0; i < apic_ids->len; i++) {
+-        int cpu_apic_id = apic_ids->cpus[i].arch_id;
+-
+-        assert(cpu_apic_id < ACPI_CPU_HOTPLUG_ID_LIMIT);
+-
+-        dev = aml_processor(i, 0, 0, "CP%.02X", cpu_apic_id);
+-
+-        method = aml_method("_MAT", 0, AML_NOTSERIALIZED);
+-        aml_append(method,
+-            aml_return(aml_call2(CPU_MAT_METHOD,
+-                                 aml_int(cpu_apic_id), aml_int(i))
+-        ));
+-        aml_append(dev, method);
+-
+-        method = aml_method("_STA", 0, AML_NOTSERIALIZED);
+-        aml_append(method,
+-            aml_return(aml_call1(CPU_STATUS_METHOD, aml_int(cpu_apic_id))));
+-        aml_append(dev, method);
+-
+-        method = aml_method("_EJ0", 1, AML_NOTSERIALIZED);
+-        aml_append(method,
+-            aml_return(aml_call2(CPU_EJECT_METHOD, aml_int(cpu_apic_id),
+-                aml_arg(0)))
+-        );
+-        aml_append(dev, method);
+-
+-        aml_append(sb_scope, dev);
+-    }
+-
+-    /* build this code:
+-     *   Method(NTFY, 2) {If (LEqual(Arg0, 0x00)) {Notify(CP00, Arg1)} ...}
+-     */
+-    /* Arg0 = APIC ID */
+-    method = aml_method(AML_NOTIFY_METHOD, 2, AML_NOTSERIALIZED);
+-    for (i = 0; i < apic_ids->len; i++) {
+-        int cpu_apic_id = apic_ids->cpus[i].arch_id;
+-
+-        if_ctx = aml_if(aml_equal(aml_arg(0), aml_int(cpu_apic_id)));
+-        aml_append(if_ctx,
+-            aml_notify(aml_name("CP%.02X", cpu_apic_id), aml_arg(1))
+-        );
+-        aml_append(method, if_ctx);
+-    }
+-    aml_append(sb_scope, method);
+-
+-    /* build "Name(CPON, Package() { One, One, ..., Zero, Zero, ... })"
+-     *
+-     * Note: The ability to create variable-sized packages was first
+-     * introduced in ACPI 2.0. ACPI 1.0 only allowed fixed-size packages
+-     * ith up to 255 elements. Windows guests up to win2k8 fail when
+-     * VarPackageOp is used.
+-     */
+-    pkg = x86ms->apic_id_limit <= 255 ? aml_package(x86ms->apic_id_limit) :
+-                                        aml_varpackage(x86ms->apic_id_limit);
+-
+-    for (i = 0, apic_idx = 0; i < apic_ids->len; i++) {
+-        int cpu_apic_id = apic_ids->cpus[i].arch_id;
+-
+-        for (; apic_idx < cpu_apic_id; apic_idx++) {
+-            aml_append(pkg, aml_int(0));
+-        }
+-        aml_append(pkg, aml_int(apic_ids->cpus[i].cpu ? 1 : 0));
+-        apic_idx = cpu_apic_id + 1;
+-    }
+-    aml_append(sb_scope, aml_name_decl(CPU_ON_BITMAP, pkg));
+-    aml_append(ctx, sb_scope);
+-
+-    method = aml_method("\\_GPE._E02", 0, AML_NOTSERIALIZED);
+-    aml_append(method, aml_call0("\\_SB." CPU_SCAN_METHOD));
+-    aml_append(ctx, method);
+-}
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index 6741f46723cb..30dab43a00ce 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -13,6 +13,7 @@
+ #include "qapi/error.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/pcihp.h"
++#include "hw/acpi/cpu.h"
+ #include "hw/acpi/generic_event_device.h"
+ #include "hw/pci/pci.h"
+ #include "hw/core/irq.h"
+diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
+index f254f3879716..bbb1bd60a206 100644
+--- a/hw/acpi/ich9.c
++++ b/hw/acpi/ich9.c
+@@ -40,6 +40,7 @@
+ #include "hw/southbridge/ich9.h"
+ #include "hw/mem/pc-dimm.h"
+ #include "hw/mem/nvdimm.h"
++#include "hw/acpi/pc-hotplug.h"
+ 
+ static void ich9_pm_update_sci_fn(ACPIREGS *regs)
+ {
+diff --git a/hw/acpi/meson.build b/hw/acpi/meson.build
+index 56b5d1ec9691..66c978aae836 100644
+--- a/hw/acpi/meson.build
++++ b/hw/acpi/meson.build
+@@ -6,7 +6,7 @@ acpi_ss.add(files(
+   'core.c',
+   'utils.c',
+ ))
+-acpi_ss.add(when: 'CONFIG_ACPI_CPU_HOTPLUG', if_true: files('cpu.c', 'cpu_hotplug.c'))
++acpi_ss.add(when: 'CONFIG_ACPI_CPU_HOTPLUG', if_true: files('cpu.c'))
+ acpi_ss.add(when: 'CONFIG_ACPI_CPU_HOTPLUG', if_false: files('acpi-cpu-hotplug-stub.c'))
+ acpi_ss.add(when: 'CONFIG_ACPI_MEMORY_HOTPLUG', if_true: files('memory_hotplug.c'))
+ acpi_ss.add(when: 'CONFIG_ACPI_MEMORY_HOTPLUG', if_false: files('acpi-mem-hotplug-stub.c'))
+diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+index 05f9d6372a9b..138ac3d39408 100644
+--- a/hw/acpi/piix4.c
++++ b/hw/acpi/piix4.c
+@@ -33,7 +33,6 @@
+ #include "system/xen.h"
+ #include "qapi/error.h"
+ #include "qemu/range.h"
+-#include "hw/acpi/cpu_hotplug.h"
+ #include "hw/acpi/cpu.h"
+ #include "hw/core/hotplug.h"
+ #include "hw/mem/pc-dimm.h"
+@@ -43,6 +42,7 @@
+ #include "migration/vmstate.h"
+ #include "hw/core/cpu.h"
+ #include "qom/object.h"
++#include "hw/acpi/pc-hotplug.h"
+ 
+ #define GPE_BASE 0xafe0
+ #define GPE_LEN 4
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index bf7ed2e50837..a744eb6c3a9b 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -35,6 +35,7 @@
+ #include "hw/acpi/acpi-defs.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/cpu.h"
++#include "hw/acpi/pc-hotplug.h"
+ #include "hw/nvram/fw_cfg.h"
+ #include "hw/acpi/bios-linker-loader.h"
+ #include "hw/acpi/acpi_aml_interface.h"
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 1478a26f11b7..15d21f380c43 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -48,7 +48,8 @@
+ #include "hw/xen/xen.h"
+ #include "qobject/qlist.h"
+ #include "qemu/error-report.h"
+-#include "hw/acpi/cpu_hotplug.h"
++#include "hw/acpi/acpi.h"
++#include "hw/acpi/pc-hotplug.h"
+ #include "acpi-build.h"
+ #include "hw/mem/nvdimm.h"
+ #include "hw/cxl/cxl_host.h"
+diff --git a/hw/i386/x86-common.c b/hw/i386/x86-common.c
+index c1c922403924..85b90ff43248 100644
+--- a/hw/i386/x86-common.c
++++ b/hw/i386/x86-common.c
+@@ -36,7 +36,6 @@
+ #include "hw/rtc/mc146818rtc.h"
+ #include "target/i386/sev.h"
+ 
+-#include "hw/acpi/cpu_hotplug.h"
+ #include "hw/core/irq.h"
+ #include "hw/core/loader.h"
+ #include "multiboot.h"
+diff --git a/include/hw/acpi/ich9.h b/include/hw/acpi/ich9.h
+index 6a21472eb32e..019f0915c110 100644
+--- a/include/hw/acpi/ich9.h
++++ b/include/hw/acpi/ich9.h
+@@ -22,12 +22,12 @@
+ #define HW_ACPI_ICH9_H
+ 
+ #include "hw/acpi/acpi.h"
+-#include "hw/acpi/cpu_hotplug.h"
+ #include "hw/acpi/cpu.h"
+ #include "hw/acpi/pcihp.h"
+ #include "hw/acpi/memory_hotplug.h"
+ #include "hw/acpi/acpi_dev_interface.h"
+ #include "hw/acpi/ich9_tco.h"
++#include "hw/acpi/cpu.h"
+ 
+ #define ACPI_PCIHP_ADDR_ICH9 0x0cc0
+ 
+diff --git a/include/hw/acpi/piix4.h b/include/hw/acpi/piix4.h
+index e075f0cbeaf1..863382a814ad 100644
+--- a/include/hw/acpi/piix4.h
++++ b/include/hw/acpi/piix4.h
+@@ -24,11 +24,11 @@
+ 
+ #include "hw/pci/pci_device.h"
+ #include "hw/acpi/acpi.h"
+-#include "hw/acpi/cpu_hotplug.h"
+ #include "hw/acpi/memory_hotplug.h"
+ #include "hw/acpi/pcihp.h"
+ #include "hw/i2c/pm_smbus.h"
+ #include "hw/isa/apm.h"
++#include "hw/acpi/cpu.h"
+ 
+ #define TYPE_PIIX4_PM "PIIX4_PM"
+ OBJECT_DECLARE_SIMPLE_TYPE(PIIX4PMState, PIIX4_PM)
 -- 
 2.34.1
 

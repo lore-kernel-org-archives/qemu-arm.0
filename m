@@ -4,100 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD29CD14882
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 00:58:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E792D1488A
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 01:50:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdeMF-0004YV-K1; Wed, 07 Jan 2026 19:58:35 -0500
+	id 1vdfAL-0004S0-3w; Wed, 07 Jan 2026 20:50:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vdeMA-0004FQ-7Q
- for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:58:31 -0500
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ id 1vdf9q-0004F0-RJ
+ for qemu-arm@nongnu.org; Wed, 07 Jan 2026 20:50:00 -0500
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vdeM7-0002b6-F0
- for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:58:29 -0500
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-2a12ebe4b74so28227545ad.0
- for <qemu-arm@nongnu.org>; Wed, 07 Jan 2026 16:58:26 -0800 (PST)
+ id 1vdf9n-0004Mj-2F
+ for qemu-arm@nongnu.org; Wed, 07 Jan 2026 20:49:49 -0500
+Received: by mail-pg1-x52b.google.com with SMTP id
+ 41be03b00d2f7-c2a9a9b43b1so1747390a12.2
+ for <qemu-arm@nongnu.org>; Wed, 07 Jan 2026 17:49:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767833906; x=1768438706; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767836984; x=1768441784; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=QlPSSgauNlrXNjIGEFV++/r4mAtNMTFDarcGers0OOA=;
- b=qzIxgbpKY6tdu642JM3jQ+jUVlWW4+uvvMsuTWmD26//mmq6GkjMgIa09CVUmP7z+j
- Fg2klp264zLBYPDUJ34p2wL+k0fIIpDGTLSm7OWw7balyUgY1EF7OBEnc2plv4bmHbUq
- oSmflTlIZ3ko1DMstD54ygL1kyMOmK70PuWBfEswoZ1chbfMDT7IsvLgUVaUNMu0pKxi
- K4BC3Vkq0d/L7bJozBlI81XwkBA83Ap+y1ukSMzykHRrQpnmShRpHFOaqBlin3jsB56c
- rjO970dZUuWmDo5t4hkrJWMSWAceiat9fL+G82qFwWX13NB89UXJyPWwk/eYKY2na6NS
- gpsA==
+ bh=Gk+CyYanCTAdBZJFPVZch6NcYMx+HD2mLMndY3lq/Eo=;
+ b=D5Zgya1Y7bW9+rGJUb+SfRORRjkxvAQ+jJI3s/25bPqvRu9I9DMuS9K88EaPzcXr4z
+ RGfxTrKKNM0UhOzuHh1mpTPrznE9BqrMIyEZX7DnzneEcoqCMn5hrii2SXsczGzIjziL
+ vXk9zTBkmy0Yirn71EscPh3uX9zEGSvyG+77rJP3xvd5/m9Pkc9xTZT0L3V6Ik+AoS0x
+ j0BgnugYa437g5lugNHs3tbbw3BksI55+FzJTBio8PKTC9z2W2q69+GmVZ3HBzrKPnLB
+ KlwcIUX4+Jreg1UYNexdCschVUMT8VkwsidxLIdDPboB2+8uM+5TvfU0/wx6dLuo0wcy
+ EtKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767833906; x=1768438706;
+ d=1e100.net; s=20230601; t=1767836984; x=1768441784;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=QlPSSgauNlrXNjIGEFV++/r4mAtNMTFDarcGers0OOA=;
- b=CK3baYmM2hr5BirWq/YFwqEycCVgR2UGlr4+UHVQMjBEgW4XYjBir0acJXCxqIjTZ8
- V1G2XIeDW3cyNwtO6DG2oQXQtXKJe1JQYNmfJt+cZSTUTKaRQUqv2KezYjzWRUn/xmen
- maDdKOSlW1AshwGrm0EJcCz0TwxROh9PBdxFj0krbMq9HgBEqsXCiOKmefYPVgcnbtSZ
- PBUpOKqamtRfS+LHHWcIWDPiwEpQjfH5r8ifXHP7BI4TMmjEgEA72S1WPG7179zxxhCk
- cLYBQktEd7sxEkbVLWJd+xLddIoz8IjKWeAxUKvLnCwhVdN8rMN3tBmql593xM/JpPzN
- lEIg==
+ bh=Gk+CyYanCTAdBZJFPVZch6NcYMx+HD2mLMndY3lq/Eo=;
+ b=Sx/PzYFnNSb+QVlSIPbFebFU3kXlIyQyX0l0Kb8GyMjIilPbFtm7vjqf2x069qVS19
+ Lm8BfOuEhAJK4hrNq87r3+eU2rtUmm5vB3wkwDz+ERYce2ESsbuPCi/Abq0zb4B9803Y
+ fd+AbmvpvGQYt999qK2towauew0F5dp82c5kZ2lfqfUTJ+Os/FDbM1KDoQDqOkIayIJo
+ 0mcmnidoVVWflF8z4sPkKJ/wmpL7l8iww8ACpsNTm/jpBQi/iQlEdjHkwWNinl3I8QzH
+ /LSdRc3b+/47eBKgkQrmpiAaOgpd+p8NOi+dQEG1/IHJgTGjvgdBSIjbaYMAf1SSw3FP
+ q5YA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXgvSrbTwtjoOTGzCGivUdfCrLJ/dl4gTl38U7XNAUqWKfwnFKucxN24Py+DbDExs5MswINw7/Dcg==@nongnu.org
-X-Gm-Message-State: AOJu0Ywg/5m5ebDh9nIrPIVGI6NmRElahZL/Ydf9pKXOHSvNirsuNOLK
- AOGOPZuE1FJTtD9acbqhCLj0ptqHuqhxZEEUjh6iBPzjsBClu34x+sjsNIco9W+Wt+o=
-X-Gm-Gg: AY/fxX5WsBUeOnLKZoXxN05Ji3u5s0+sl5H8aikTpAZxN+XWOR2+R5h7qIVq7NdSjAL
- zDF1aGV1CQcpIqBKKlgluTAnRHQSDO4tT55deALG9OOlB16AAW/K4Yx1MRH3jPHPGaRI3wDd6cs
- ak2CGkvUpfY158ekCwTML9dw4X0RTMRYuCsSkWZI7e/rEOJKDuQ2Eo2fKHeB0A1rkgxy4yBC0vx
- dO6RggFgYKNwPxnfg0SATXviFiBh9CnDzdduNr/gYDALDhQUr8Zb0b+bdBc7X6mUHm6JWv48UMg
- U7BhoOjW2McIprUwrvVIj57+tSvbQjr+yHorQXhA1Y+1CWz86d/nPlOKc//RBNsC1CtOhWzHvTJ
- WjKCIKoSPQHbeGHHXUiyhBiEkYwnbe8G/TtGuZqOEyYz/g30HO6C1FnAszTVRh4eTJTQXfE1Z2R
- epB4h7I3GVcC2NTMJWQ4FLsH6EbJgIRnq/TGlwQ+LTx5BvTRAg+zRMG9E8
-X-Google-Smtp-Source: AGHT+IHLSpoEyKSoxz3EE89zMEqcLjvEkhQNGwRfRB3tTdUBz1Ryoo4Gp2Hu59gpJSlRNb18MSH2Ag==
-X-Received: by 2002:a17:902:f70e:b0:2a0:a0cc:9997 with SMTP id
- d9443c01a7336-2a3ee4b4c12mr38861615ad.50.1767833905764; 
- Wed, 07 Jan 2026 16:58:25 -0800 (PST)
+ AJvYcCXCjNVou/2p54AIJkG4Ouz7r1MKR60r+NcvIea+5ApWwrhsAmj/P8eWnVczNf4qXkbWuPbOTnnhKw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy7dP99q9Qw526CoZPVdVJH1IxJaixiXgYrAPTLCBE6fkce/Jb1
+ zH8DkaNmlmi6H0RDG1d1hT9kA1QDNdCrDXzQlVN33uyqeaGXBj3TX+Zz3C21srP2mtp/i8AxV4N
+ ERBcf
+X-Gm-Gg: AY/fxX493yoUAXTpovB/CzFmi26r+voG4aGNB/+HhZ9Nkc/iNj9pDlXg9BAyCvTI0Zd
+ QOQCoMCAj9Pid0nFbhu1lK6V9KF7OFeRuCshzeaQZpTO6/1Ph0QZriMNXZWTqRkC2w9CIhDVyzp
+ euUszDq5SGayJdsgV9egI/VCNj4gQGlZKb0oEoWzOPlEsC6VQjjTVZ4ZdZoMYBsk8eKmJ1OoLtI
+ S2v2ZUxuXRK8Q35vHwZZjVWM3/ZPVkEjHeJ/aJQCXTldDIQK23h+FYBq2UqtQlcdQLQ7B3UB0od
+ KTjQ4KYKSoKlX70ziENByZiaZsHOtcmHTc8BD2gX2Lz1Kl1saOhuOYMdL7SrecRrDx0ZiMW6BKA
+ 2NKQErWmzBQuNdms3IxwlpCLkS0RYp1zv+LlaqAzPEezviDAmqL1NEBaVUWt0PCklfqR1Z2g1JK
+ 947TkPBMh1qqbRwhEaTd2GpKoHjorxvtEVO8RmLMW+docysL/iYnhIbNXN
+X-Google-Smtp-Source: AGHT+IG76fgREJGkzqTBRet5XUMhi8/XWOcQkuJ8jMYn0osoVA9PrFJjx4g/Xf5gmrUpz9dd8ZoXAQ==
+X-Received: by 2002:a17:902:7205:b0:2a2:ecb6:55ac with SMTP id
+ d9443c01a7336-2a3ee424c0bmr28887215ad.7.1767836984206; 
+ Wed, 07 Jan 2026 17:49:44 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a3e3cc88c2sm60519245ad.79.2026.01.07.16.58.24
+ d9443c01a7336-2a3e3c4795fsm62263215ad.33.2026.01.07.17.49.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Jan 2026 16:58:25 -0800 (PST)
-Message-ID: <bc12abcc-8140-4321-8f3a-d15b569b5544@linaro.org>
-Date: Wed, 7 Jan 2026 16:58:24 -0800
+ Wed, 07 Jan 2026 17:49:43 -0800 (PST)
+Message-ID: <6f35a609-6499-4645-9aa5-94871a9c0bc6@linaro.org>
+Date: Wed, 7 Jan 2026 17:49:43 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/5] accel/tcg: Unify watchpoint API
+Subject: Re: [PATCH v4] hw/arm/smmu: add memory regions as property for an
+ SMMU instance
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Riku Voipio <riku.voipio@iki.fi>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- Peter Maydell <peter.maydell@linaro.org>, Nicholas Piggin
- <npiggin@gmail.com>, Chinmay Rath <rathc@linux.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
- <liwei1518@gmail.com>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
- Thomas Huth <thuth@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>
-References: <20260106231908.16756-1-philmd@linaro.org>
- <20260106231908.16756-6-philmd@linaro.org>
+Cc: richard.henderson@linaro.org, Radoslaw Biernacki <rad@semihalf.com>,
+ tangtao1634@phytium.com.cn, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>
+References: <20251216235731.1793908-1-pierrick.bouvier@linaro.org>
+ <a8afadf0-fcec-444a-86d8-a75676f8bd76@linaro.org>
+ <a467095a-b796-4581-8237-665f1989f7d3@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20260106231908.16756-6-philmd@linaro.org>
+In-Reply-To: <a467095a-b796-4581-8237-665f1989f7d3@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,63 +113,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/6/26 3:19 PM, Philippe Mathieu-Daudé wrote:
-> Currently "exec/breakpoint.h" contains both BreakPoint *and*
-> WatchPoint APIs, however very few files requires the former,
-> and more the latter:
+On 1/5/26 12:10 PM, Philippe Mathieu-Daudé wrote:
+> On 5/1/26 21:05, Philippe Mathieu-Daudé wrote:
+>> On 17/12/25 00:57, Pierrick Bouvier wrote:
+>>> This will be used to access non-secure and secure memory. Secure support
+>>> and Granule Protection Check (for RME) for SMMU need to access secure
+>>> memory.
+>>>
+>>> As well, it allows to remove usage of global address_space_memory,
+>>> allowing different SMMU instances to have a specific view of memory.
+>>>
+>>> User creatable SMMU are handled as well for virt machine,
+>>> by setting the memory properties when device is plugged in.
+>>>
+>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>> ---
+>>>    include/hw/arm/smmu-common.h |  4 ++++
+>>>    include/hw/arm/virt.h        |  2 ++
+>>>    hw/arm/sbsa-ref.c            | 16 ++++++++++++----
+>>>    hw/arm/smmu-common.c         | 25 +++++++++++++++++++++++++
+>>>    hw/arm/virt.c                | 13 +++++++++++--
+>>>    5 files changed, 54 insertions(+), 6 deletions(-)
+>>
+>>
+>>> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+>>> index 62a76121841..9a67ce857fe 100644
+>>> --- a/hw/arm/smmu-common.c
+>>> +++ b/hw/arm/smmu-common.c
+>>> @@ -944,6 +944,13 @@ static void smmu_base_realize(DeviceState *dev,
+>>> Error **errp)
+>>>            return;
+>>>        }
+>>> +    g_assert(s->memory);
+>>> +    address_space_init(&s->memory_as, s->memory, "smmu-memory-view");
+>>> +    if (s->secure_memory) {
+>>> +        address_space_init(&s->secure_memory_as, s->secure_memory,
+>>> +                           "smmu-secure-memory-view");
 > 
->    $ git grep -l CPUBreakpoint | wc -l
->          12
->    $ git grep -l CPUWatchpoint | wc -l
->          25
+> Preferrably: "smmu-normal-view" and "smmu-secure-view" (IMO 'memory'
+> is more confusing than helping).
+>
+
+A bit of bike shedding, but I'm not sure what "normal" is supposed to 
+mean. Basically, it's the view of main memory, as opposed to secure 
+view. Especially, "normal" is used to access realm memory also, so I 
+would prefer to have something hinting it's global vs secure memory, 
+thus the names chosen.
+
+>> Else, are we sure the SMMU implementations will behave correctly?
 > 
-> So extracting the WatchPoint API to its own header will reduce
-> compilation pressure.
+> Alternatively, use AddressSpace pointers, then:
 > 
-> But more importantly, the API is scattered in two distinct headers.
-> Unify them ("accel/tcg/cpu-ops.h" and "exec/watchpoint.h") to the
-> new "accel/tcg/watchpoint.h" header, making the emphasis the API is
-> specific to TCG.
+>           } else {
 > 
-> Have accel/tcg/watchpoint.c absorb system/watchpoint.c code.
+>               s->secure_memory_as = s->memory_as;
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   MAINTAINERS                         |   1 -
->   include/accel/tcg/cpu-ops.h         |  28 +-------
->   include/accel/tcg/watchpoint.h      |  57 ++++++++++++++++
->   include/exec/breakpoint.h           |  10 ---
->   include/exec/watchpoint.h           |  18 -----
->   include/hw/core/cpu.h               |   3 +-
->   target/arm/internals.h              |   2 +-
->   target/ppc/internal.h               |   2 +-
->   target/riscv/debug.h                |   2 +-
->   accel/tcg/cputlb.c                  |   1 +
->   accel/tcg/tcg-accel-ops.c           |   2 +-
->   accel/tcg/user-exec-stub.c          |   3 +-
->   accel/tcg/watchpoint.c              |  83 +++++++++++++++++++++-
->   system/watchpoint.c                 | 102 ----------------------------
->   target/arm/debug_helper.c           |   2 +-
->   target/arm/tcg/mte_helper.c         |   2 +-
->   target/arm/tcg/sve_helper.c         |   2 +-
->   target/i386/cpu.c                   |   2 +-
->   target/i386/machine.c               |   2 +-
->   target/i386/tcg/system/bpt_helper.c |   2 +-
->   target/ppc/cpu.c                    |   2 +-
->   target/ppc/cpu_init.c               |   2 +-
->   target/riscv/cpu_helper.c           |   2 +-
->   target/riscv/debug.c                |   2 +-
->   target/s390x/helper.c               |   2 +-
->   target/s390x/tcg/debug.c            |   2 +-
->   target/s390x/tcg/excp_helper.c      |   2 +-
->   target/s390x/tcg/mem_helper.c       |   1 +
->   target/xtensa/dbg_helper.c          |   2 +-
->   system/meson.build                  |   1 -
->   30 files changed, 162 insertions(+), 182 deletions(-)
->   create mode 100644 include/accel/tcg/watchpoint.h
->   delete mode 100644 include/exec/watchpoint.h
->   delete mode 100644 system/watchpoint.c
+>>> +    }
+>>> +
+>>>        /*
+>>>         * We only allow default PCIe Root Complex(pcie.0) or pxb-pcie
+>>> based extra
+>>>         * root complexes to be associated with SMMU.
+>>> @@ -1008,10 +1015,28 @@ static void smmu_base_class_init(ObjectClass
+>>> *klass, const void *data)
+>>>        rc->phases.exit = smmu_base_reset_exit;
+>>>    }
+>>> +static void smmu_base_instance_init(Object *obj)
+>>> +{
+>>> +    SMMUState *s = ARM_SMMU(obj);
+>>> +
+>>> +    object_property_add_link(obj, "memory",
+>>> +                             TYPE_MEMORY_REGION,
+>>> +                             (Object **)&s->memory,
+>>> +                             qdev_prop_allow_set_link_before_realize,
+>>> +                             OBJ_PROP_LINK_STRONG);
+>>> +
+>>> +    object_property_add_link(obj, "secure-memory",
+>>> +                             TYPE_MEMORY_REGION,
+>>> +                             (Object **)&s->secure_memory,
+>>> +                             qdev_prop_allow_set_link_before_realize,
+>>> +                             OBJ_PROP_LINK_STRONG);
+>>
+>> Why can't we use device_class_set_props(&static_properties)
+>> in smmu_base_class_init()?
+>>
+>>> +}
+>>> +
+>>>    static const TypeInfo smmu_base_info = {
+>>>        .name          = TYPE_ARM_SMMU,
+>>>        .parent        = TYPE_SYS_BUS_DEVICE,
+>>>        .instance_size = sizeof(SMMUState),
+>>> +    .instance_init = smmu_base_instance_init,
+>>>        .class_data    = NULL,
+>>>        .class_size    = sizeof(SMMUBaseClass),
+>>>        .class_init    = smmu_base_class_init,
+>>
+>> Anyhow this is functional and I suppose this can be improved on top, so:
+>>
+>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>
 > 
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 

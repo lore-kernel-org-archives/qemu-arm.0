@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C00BFD14899
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:09:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF7A5D14899
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:09:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdgNQ-0002IO-7E; Wed, 07 Jan 2026 22:07:56 -0500
+	id 1vdgNh-0004S1-AX; Wed, 07 Jan 2026 22:08:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgNN-00021V-Tk; Wed, 07 Jan 2026 22:07:53 -0500
+ id 1vdgNe-00047J-Vv; Wed, 07 Jan 2026 22:08:11 -0500
 Received: from mgamail.intel.com ([198.175.65.9])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgNL-0005Eu-Ul; Wed, 07 Jan 2026 22:07:53 -0500
+ id 1vdgNd-0005Lk-3T; Wed, 07 Jan 2026 22:08:10 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1767841673; x=1799377673;
+ t=1767841690; x=1799377690;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=IRTgZmIWz6CsY+7Oa1ePtlrcNoid6wNT/jzG8t5hBVc=;
- b=IlRzMC/9iRnBceIYpvZL4H8L58YUVVb65T7a1Tl3G+9VKFEvkHRTg+eI
- eIIsuxy5YolLgoJx0YyU8m4hN+4m++8LP7DcrFfakxI/l7zJmY2g32RMr
- sM8mdaPue/nPGo6PK5Pt7/Dg4k8CRCilh6ZUes55gJ9Qp7OZZbdtODR8p
- 9ltui/mAA79DUF1WMnetg02+6QjtOoWA+mgJqNNoENw38PVOVIR0lasGE
- fLUPHrUupns/8MsXrLOqluPONJSJFhEg2KjhyT4JeZmrIyZLlvX9mLT1q
- OH1a8xwbd0RrMUwO0CcNA3zeIUzUJRFT6rIAAzWmVEqAsDQidSUz96Ai2 w==;
-X-CSE-ConnectionGUID: lHkPksKFTI2+5T0Rq0xbgg==
-X-CSE-MsgGUID: UJy8Jg+vTlK49dee0qx5WA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877296"
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877296"
+ bh=ckSnMyvgyGeZ6bDNlS111ojYxxq4qhk1knTSa06gqf0=;
+ b=O6M1zEbs+b2ps5iqtj14RO03XrvmqzJtjkQ7JI03BnIfe5tZ8iwHj/IM
+ TzbnbZhBBnYeO8OoX8LlMyBFchyumXJ/pGERE1nH2bUMo8QDiEMEz+uny
+ UiM+ZFTaIrwJgWQeOExiNaxO9ZTm19rW3BLz1JwXx2Xd/pDiR4lJ4OeJt
+ deCOcCGxv8ywhtsfNZTsW9b9NqsPPNC+4is9is7cNnwW6/W3qAAan9elJ
+ o8aV436ErKiur/Kf+ZyhRyIwgKi1ZwgT30Fkoo5vt0dXau5F0FHvGKKmb
+ qbeUo8Rse7faLK/YlfdEwzqXD8RfE2EQoXgK2jG1iECIUqpcIAQ4yvDrc A==;
+X-CSE-ConnectionGUID: Il/l8DjzT8KQxK4dWc7BLg==
+X-CSE-MsgGUID: j+PM9o4iSGmD57ha63e5NA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877365"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877365"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jan 2026 19:07:48 -0800
-X-CSE-ConnectionGUID: muz8WEMJR1aLs41oUukI4w==
-X-CSE-MsgGUID: nZtYAevLSdqV6SnKthR/1w==
+ 07 Jan 2026 19:08:07 -0800
+X-CSE-ConnectionGUID: zRNw9JwVQaSJl0olFtIhew==
+X-CSE-MsgGUID: SbQo8FEXQlKfMzmxoAHulg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202210997"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202211059"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
- by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:07:38 -0800
+ by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:07:57 -0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
  "Michael S . Tsirkin" <mst@redhat.com>,
@@ -72,9 +72,9 @@ Cc: qemu-devel@nongnu.org, devel@lists.libvirt.org, kvm@vger.kernel.org,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
  Jiri Denemark <jdenemar@redhat.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v6 14/27] hw/i386: Assume fw_cfg DMA is always enabled
-Date: Thu,  8 Jan 2026 11:30:38 +0800
-Message-Id: <20260108033051.777361-15-zhao1.liu@intel.com>
+Subject: [PATCH v6 16/27] hw/i386/pc: Remove pc_compat_2_6[] array
+Date: Thu,  8 Jan 2026 11:30:40 +0800
+Message-Id: <20260108033051.777361-17-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260108033051.777361-1-zhao1.liu@intel.com>
 References: <20260108033051.777361-1-zhao1.liu@intel.com>
@@ -108,87 +108,53 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Now all calls of x86 machines to fw_cfg_init_io_dma() pass DMA
-arguments, so the FWCfgState (FWCfgIoState) created by x86 machines
-enables DMA by default.
+The pc_compat_2_6[] array was only used by the pc-q35-2.6
+and pc-i440fx-2.6 machines, which got removed. Remove it.
 
-Although other callers of fw_cfg_init_io_dma() besides x86 also pass
-DMA arguments to create DMA-enabled FwCfgIoState, the "dma_enabled"
-property of FwCfgIoState cannot yet be removed, because Sun4u and Sun4v
-still create DMA-disabled FwCfgIoState (bypass fw_cfg_init_io_dma()) in
-sun4uv_init() (hw/sparc64/sun4u.c).
-
-Maybe reusing fw_cfg_init_io_dma() for them would be a better choice, or
-adding fw_cfg_init_io_nodma(). However, before that, first simplify the
-handling of FwCfgState in x86.
-
-Considering that FwCfgIoState in x86 enables DMA by default, remove the
-handling for DMA-disabled cases and replace DMA checks with assertions
-to ensure that the default DMA-enabled setting is not broken.
-
-Then 'linuxboot.bin' isn't used anymore, and it will be removed in the
-next commit.
-
+Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Acked-by: Igor Mammedov <imammedo@redhat.com>
 ---
-Changes since v4:
- * Keep "dma_enabled" property in fw_cfg_io_properties[].
- * Replace DMA checks with assertions for x86 machines.
----
- hw/i386/fw_cfg.c     | 16 ++++++++--------
- hw/i386/x86-common.c |  6 ++----
- 2 files changed, 10 insertions(+), 12 deletions(-)
+ hw/i386/pc.c         | 8 --------
+ include/hw/i386/pc.h | 3 ---
+ 2 files changed, 11 deletions(-)
 
-diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
-index 5c0bcd5f8a9f..5670e8553eaa 100644
---- a/hw/i386/fw_cfg.c
-+++ b/hw/i386/fw_cfg.c
-@@ -215,18 +215,18 @@ void fw_cfg_build_feature_control(MachineState *ms, FWCfgState *fw_cfg)
- #ifdef CONFIG_ACPI
- void fw_cfg_add_acpi_dsdt(Aml *scope, FWCfgState *fw_cfg)
- {
-+    uint8_t io_size;
-+    Aml *dev = aml_device("FWCF");
-+    Aml *crs = aml_resource_template();
-+
-     /*
-      * when using port i/o, the 8-bit data register *always* overlaps
-      * with half of the 16-bit control register. Hence, the total size
--     * of the i/o region used is FW_CFG_CTL_SIZE; when using DMA, the
--     * DMA control register is located at FW_CFG_DMA_IO_BASE + 4
-+     * of the i/o region used is FW_CFG_CTL_SIZE; And the DMA control
-+     * register is located at FW_CFG_DMA_IO_BASE + 4
-      */
--    Object *obj = OBJECT(fw_cfg);
--    uint8_t io_size = object_property_get_bool(obj, "dma_enabled", NULL) ?
--        ROUND_UP(FW_CFG_CTL_SIZE, 4) + sizeof(dma_addr_t) :
--        FW_CFG_CTL_SIZE;
--    Aml *dev = aml_device("FWCF");
--    Aml *crs = aml_resource_template();
-+    assert(fw_cfg_dma_enabled(fw_cfg));
-+    io_size = ROUND_UP(FW_CFG_CTL_SIZE, 4) + sizeof(dma_addr_t);
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 4783216c5e09..4b5b7f24d7de 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -263,14 +263,6 @@ GlobalProperty pc_compat_2_7[] = {
+ };
+ const size_t pc_compat_2_7_len = G_N_ELEMENTS(pc_compat_2_7);
  
-     aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
+-GlobalProperty pc_compat_2_6[] = {
+-    { TYPE_X86_CPU, "cpuid-0xb", "off" },
+-    { "vmxnet3", "romfile", "" },
+-    { TYPE_X86_CPU, "fill-mtrr-mask", "off" },
+-    { "apic-common", "legacy-instance-id", "on", }
+-};
+-const size_t pc_compat_2_6_len = G_N_ELEMENTS(pc_compat_2_6);
+-
+ /*
+  * @PC_FW_DATA:
+  * Size of the chunk of memory at the top of RAM for the BIOS ACPI tables
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 3f94bc5652a9..0f7d656b3f3b 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -295,9 +295,6 @@ extern const size_t pc_compat_2_8_len;
+ extern GlobalProperty pc_compat_2_7[];
+ extern const size_t pc_compat_2_7_len;
  
-diff --git a/hw/i386/x86-common.c b/hw/i386/x86-common.c
-index 192e91042f22..de4cd7650a40 100644
---- a/hw/i386/x86-common.c
-+++ b/hw/i386/x86-common.c
-@@ -1002,10 +1002,8 @@ void x86_load_linux(X86MachineState *x86ms,
-     }
- 
-     option_rom[nb_option_roms].bootindex = 0;
--    option_rom[nb_option_roms].name = "linuxboot.bin";
--    if (fw_cfg_dma_enabled(fw_cfg)) {
--        option_rom[nb_option_roms].name = "linuxboot_dma.bin";
--    }
-+    assert(fw_cfg_dma_enabled(fw_cfg));
-+    option_rom[nb_option_roms].name = "linuxboot_dma.bin";
-     nb_option_roms++;
- }
- 
+-extern GlobalProperty pc_compat_2_6[];
+-extern const size_t pc_compat_2_6_len;
+-
+ #define DEFINE_PC_MACHINE(suffix, namestr, initfn, optsfn) \
+     static void pc_machine_##suffix##_class_init(ObjectClass *oc, \
+                                                  const void *data) \
 -- 
 2.34.1
 

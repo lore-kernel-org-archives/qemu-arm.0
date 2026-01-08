@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CD0FD1489A
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:10:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3821D14899
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:10:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdgPi-0007fA-Jq; Wed, 07 Jan 2026 22:10:18 -0500
+	id 1vdgOy-0006I5-IH; Wed, 07 Jan 2026 22:09:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgOh-0005mY-BE; Wed, 07 Jan 2026 22:09:16 -0500
+ id 1vdgNx-0005Ro-9M; Wed, 07 Jan 2026 22:08:35 -0500
 Received: from mgamail.intel.com ([198.175.65.9])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgOf-0005YH-N2; Wed, 07 Jan 2026 22:09:15 -0500
+ id 1vdgNv-0005QV-FC; Wed, 07 Jan 2026 22:08:29 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1767841753; x=1799377753;
+ t=1767841708; x=1799377708;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=kNYkiaNSgjNxHBpmze7LKKP0q9ceZ2SXtXvlRLGlXSo=;
- b=FextAjlPKUJ5Rw3lP4xiM51Er8D3VJi/l+OE+51WrkI0NuTZBwzqEi4u
- 3Y8bf9mHv8vgFH+YXpC31ZWcLXTd6TBfQV9t+mkwgo4IHfZey1AtvJmKg
- CBH0iPbpSxFQhYrS69Tezn9nOjVozB1M487RAsU5ZJFhwLRAb6+I5ukWS
- kXHcukyROwX79XkvuVjQ9jjyxT3+R7u+p9PFvBcszR1CtlOcUuY1IXb9C
- n4LcBhdE1FzwmLmocnk1rpBW9KT6olT4uRHX66zviO59QuCtKokYHNuZK
- ns9xJbvsBhH5N7mTNgzrkfntJrqu3f7LMd18P1TOMC3nKAYmX+OhLZ5VS Q==;
-X-CSE-ConnectionGUID: BbsCl4e8TDWqjHxyF/uB3g==
-X-CSE-MsgGUID: kKFX1X2SQJe6mWW9hG5MOw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877570"
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877570"
+ bh=h8hJFCjpgWizV8fThY8EPP7MvzRhJoCodMT4qRBYUn4=;
+ b=Pw0DkrCrqKOQiRHn39u8mWfRTFvw9v15e1kDlqTsTjGd1WjmKAA8Hg95
+ v1IJXsHZP9r70t5h6L7QcgRMsM2hCVPrb8GnqruXMWLgAgd/GKm0Pmxn4
+ R3+mUTNvnNfgkX/PMAMtURew2ePMSv/w7nEsTfZTUl1oRITjpC0wmYvBU
+ lfrQ9O+uphEcM7kLJpZe0lcgCNcueqwbfw11ASOd1UjpT6kHw6OpUssZq
+ uXAzYCPAngemNbhAXRONLiIAP33Jmc+M2FduxnXZpZRqqKc7xHTn2uKIK
+ 0HaHS+uylJ4b8MT0bW9mVwK9cti8u9gMeEKj0Kxo++/ySHNYKTLjbcMzS w==;
+X-CSE-ConnectionGUID: x/1cAEnjT0qSBkMhMC1sQw==
+X-CSE-MsgGUID: +E0qamU5R2ObHPkjgMaXxQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877434"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877434"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jan 2026 19:09:11 -0800
-X-CSE-ConnectionGUID: tPOD766tROaPRuJG7KUpiQ==
-X-CSE-MsgGUID: lx/Vopy/STe1TSWeU+qq0w==
+ 07 Jan 2026 19:08:25 -0800
+X-CSE-ConnectionGUID: 6TvJYjOgRyeStfX/4UyOcg==
+X-CSE-MsgGUID: xek6c36hSEuXJpHy++malg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202211235"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202211137"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
- by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:09:02 -0800
+ by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:08:15 -0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
  "Michael S . Tsirkin" <mst@redhat.com>,
@@ -72,9 +72,9 @@ Cc: qemu-devel@nongnu.org, devel@lists.libvirt.org, kvm@vger.kernel.org,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
  Jiri Denemark <jdenemar@redhat.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v6 23/27] hw/audio/pcspk: Remove PCSpkState::migrate field
-Date: Thu,  8 Jan 2026 11:30:47 +0800
-Message-Id: <20260108033051.777361-24-zhao1.liu@intel.com>
+Subject: [PATCH v6 18/27] hw/core/machine: Remove hw_compat_2_6[] array
+Date: Thu,  8 Jan 2026 11:30:42 +0800
+Message-Id: <20260108033051.777361-19-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260108033051.777361-1-zhao1.liu@intel.com>
 References: <20260108033051.777361-1-zhao1.liu@intel.com>
@@ -108,60 +108,51 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-The PCSpkState::migrate boolean was only set in the
-pc_compat_2_7[] array, via the 'migrate=off' property.
-We removed all machines using that array, lets remove
-that property, simplifying vmstate_spk[].
+The hw_compat_2_6[] array was only used by the pc-q35-2.6 and
+pc-i440fx-2.6 machines, which got removed. Remove it.
 
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/audio/pcspk.c | 10 ----------
- 1 file changed, 10 deletions(-)
+ hw/core/machine.c        | 8 --------
+ include/hw/core/boards.h | 3 ---
+ 2 files changed, 11 deletions(-)
 
-diff --git a/hw/audio/pcspk.c b/hw/audio/pcspk.c
-index 916c56fa4c0a..0b01544941cb 100644
---- a/hw/audio/pcspk.c
-+++ b/hw/audio/pcspk.c
-@@ -57,7 +57,6 @@ struct PCSpkState {
-     unsigned int play_pos;
-     uint8_t data_on;
-     uint8_t dummy_refresh_clock;
--    bool migrate;
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 51c28468ff96..b01838c88a60 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -290,14 +290,6 @@ GlobalProperty hw_compat_2_7[] = {
  };
+ const size_t hw_compat_2_7_len = G_N_ELEMENTS(hw_compat_2_7);
  
- static const char *s_spk = "pcspk";
-@@ -202,18 +201,10 @@ static void pcspk_realizefn(DeviceState *dev, Error **errp)
-     }
- }
- 
--static bool migrate_needed(void *opaque)
--{
--    PCSpkState *s = opaque;
+-GlobalProperty hw_compat_2_6[] = {
+-    { "virtio-mmio", "format_transport_address", "off" },
+-    /* Optional because not all virtio-pci devices support legacy mode */
+-    { "virtio-pci", "disable-modern", "on",  .optional = true },
+-    { "virtio-pci", "disable-legacy", "off", .optional = true },
+-};
+-const size_t hw_compat_2_6_len = G_N_ELEMENTS(hw_compat_2_6);
 -
--    return s->migrate;
--}
--
- static const VMStateDescription vmstate_spk = {
-     .name = "pcspk",
-     .version_id = 1,
-     .minimum_version_id = 1,
--    .needed = migrate_needed,
-     .fields = (const VMStateField[]) {
-         VMSTATE_UINT8(data_on, PCSpkState),
-         VMSTATE_UINT8(dummy_refresh_clock, PCSpkState),
-@@ -224,7 +215,6 @@ static const VMStateDescription vmstate_spk = {
- static const Property pcspk_properties[] = {
-     DEFINE_AUDIO_PROPERTIES(PCSpkState, audio_be),
-     DEFINE_PROP_UINT32("iobase", PCSpkState, iobase,  0x61),
--    DEFINE_PROP_BOOL("migrate", PCSpkState, migrate,  true),
-     DEFINE_PROP_LINK("pit", PCSpkState, pit, TYPE_PIT_COMMON, PITCommonState *),
- };
+ MachineState *current_machine;
  
+ static char *machine_get_kernel(Object *obj, Error **errp)
+diff --git a/include/hw/core/boards.h b/include/hw/core/boards.h
+index 815845207b01..b0e3a523a107 100644
+--- a/include/hw/core/boards.h
++++ b/include/hw/core/boards.h
+@@ -882,7 +882,4 @@ extern const size_t hw_compat_2_8_len;
+ extern GlobalProperty hw_compat_2_7[];
+ extern const size_t hw_compat_2_7_len;
+ 
+-extern GlobalProperty hw_compat_2_6[];
+-extern const size_t hw_compat_2_6_len;
+-
+ #endif
 -- 
 2.34.1
 

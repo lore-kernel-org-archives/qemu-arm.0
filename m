@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBFA8D1D461
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 14:37:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE0F5D1D461
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 14:37:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdr6I-0007WH-HA; Thu, 08 Jan 2026 09:34:58 -0500
+	id 1vdr6E-0007M9-J5; Thu, 08 Jan 2026 09:34:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vdr5y-00073a-Ej
+ id 1vdr5x-00072C-6W
  for qemu-arm@nongnu.org; Thu, 08 Jan 2026 09:34:38 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vdr5v-0000jS-AB
- for qemu-arm@nongnu.org; Thu, 08 Jan 2026 09:34:38 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-47d63594f7eso20128855e9.0
- for <qemu-arm@nongnu.org>; Thu, 08 Jan 2026 06:34:34 -0800 (PST)
+ id 1vdr5t-0000hn-PY
+ for qemu-arm@nongnu.org; Thu, 08 Jan 2026 09:34:36 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4775ae77516so36079085e9.1
+ for <qemu-arm@nongnu.org>; Thu, 08 Jan 2026 06:34:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767882874; x=1768487674; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767882870; x=1768487670; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=M6tH0CF/GJKELoBmGqjsJGSOS1a50aHiTGJ/qCRa94o=;
- b=HS4Qf1jSb82GjuDAbydiaDt/Eq83vsu8awTfomJ+OQlCi5rZ4LJO5j4enPSPWw1NGe
- LoYslHzbFB8ymK5PDtr4jTT1NtotBfSCKaeKCgscWJCiaBm+ZcngXPW52j9w7+6X0tbA
- OVI+wDDJNxFdsWqhEvkQjv99ew0h4psNfVy6TfuLvIA9Wclst9gNFKMF8P781IXVUqMQ
- 9P0VK20EmFroxRNesi4s/3FBteuw+f8db1HkOE9C4q3I5DJvMga2tr2xBINGSFDnJg4s
- Dhlninp/BZwvgo9gqhR5I9tdSbD510fzE091ytZALInU9KXEBuBKDntjibtrBIRQrtvA
- qDoA==
+ bh=CJzuVbaZdIwgkAzM484kEZrNbs3ZhkcE6xTd5j2Mceg=;
+ b=HYygImr4GhSEdt1R/SIEM+pDUdO/MLWXiAIlyg60A2D7iOkfkyc+ASIL8LdRoUyDcX
+ o0tlFgzlwHsAcuL+6svx36tTurp4oJbD5AwEwF1b4tnT3Ztmg26+4tylczwPC7/DZkWo
+ g+wvu/DnzehhcreiVR+HKqquU9LSuThe1cbe9WmhDhmbM02/MjiMZB0BqlqHeHf4I1LN
+ Bz8QVfTJ5uDtnB/dU78Z/2rRjqJR3FzIKZ5aJry44ap4HoabZiuX1pflO4X3ba8x29mh
+ 2fmwqDYHlZrq9nhuxnwER9w4dPt5ABrQbU2BII4x8QRvE7yi7w8BH9OLbEokVvvoLq5+
+ O/wQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767882874; x=1768487674;
+ d=1e100.net; s=20230601; t=1767882870; x=1768487670;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=M6tH0CF/GJKELoBmGqjsJGSOS1a50aHiTGJ/qCRa94o=;
- b=dOrNPUg5LQptN6hHVIOcJDOFN6YqwJ11bcTI5PpaywhJpGsZpnoss/mjPZhfYOqiH6
- SN0R6r7a67ggpZjazIMVVTMiYGuEu6cnSLeF98BsNlavM68IY5b9p4csF74lGg4MTZwj
- W8owEFS6h0zcCJWtIcxKqb371zLdFCtWl/sKIvkdgFtSF24/hgBdxulhFJt217TOLuHq
- lF7G8f7bcOzgPWCkd6dkk69JjjUrbx14GMP5DR0mrxzXxs9Re0PJeQoO+IEdSlbZlLP2
- +U4cnkkiXUqFrkVgIdeJdYHwJC7x3U611fLR8lNpYP7rgFqD17zUQQ/KIE5zoGOL3kWS
- 7AUg==
+ bh=CJzuVbaZdIwgkAzM484kEZrNbs3ZhkcE6xTd5j2Mceg=;
+ b=g0MO1qgJ8a2ONF0Nc6qLYJfCpGRt1vaq18UlY2Gs9rZKCzn+aFDRVgFN5PiI15wFdj
+ GyMbIDbNRvx/yvhfcFOfjdNS9cHN/6rBMj6lkvDOa7OR1BQRFaKi9XmYc0v6Nde3bElX
+ uyO9w3eBl9/ZIHjtTs0S46aUnrG6GdVNvtiArYLbWDd+vhjpTptn610bxq+HwRcc3k6X
+ j0sjifPGj4houQ3Z0g1fFKhF43dBGV7TJjMPYk08fpgcMRYKsCXbzecQL5PbhowD9e0z
+ 645Zd5YeDosSwohXdFPbmW59EX+IlJFTC8XQF7u8TFlEAU7JQZqa7J7jCWC2UiFmFu8A
+ ZAhw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWFwSuXLuip1NtpaQ/6j+2eoGXUFReXUmSKxCJhryNdl2s72MqoUFewJCttZ/kmQmkMfdnN7hodJw==@nongnu.org
-X-Gm-Message-State: AOJu0Yzy5ytXx+ZbyUGBwXOpsm0lV7j8OObzUUPSk0A+EKEHYMGJ2TW8
- e7MWmSs/OHlkRPOZtOm6PVKR+XZ9PzYJO1WfZvY0Aemhr2hSA9w3lDXQ/8MT0BpEJAPsRREKYoi
- K44L8
-X-Gm-Gg: AY/fxX5YNRxEb38GYCdCspv7hWtpJO6UegXCM5BuO13ZJV3fDpg5XMDupPdCUnSUlLd
- pRE/zMV2Ctro7bsv1CmGTgzO5JuDdW27sceHSTEfxsD34SrvwuJ/Q26w64iTTVIdglZ+y+fyGpE
- R61J3kaP+8tv4Xw44qM0hvibMD2chzr4PQy3x38dIN8NpLFf+5T0iNuM0YeJk6GqhxSQ0L7E02u
- TW3pF7pz/uS+ZnceSSkRcgabvPr91Dye3U9/th0Bo8/PG82KENB7iXpfVFVbDNlJ8LBPhtwhlxY
- Dl5Lyh9a+1IT3YXHYQIkk29LK/KPGqYGr1HSNctH7TzAv7LqoWsH60V90dgXdxvVvJ2tFtzwes4
- 4e/BlOZ0cK/GjAhnhcwjdjGcFVWBC4xLE5JGwOqdskuC21A2Qo+V3yawU6wfAbGLk+g0wk8JC6P
- t2k2dEzPOJZQk=
-X-Google-Smtp-Source: AGHT+IFQ2b7jHgSZCCtLDyudNjBkpAYBfcgv7i5tpvjUUC07gUibqxAEQZnVr+TfhdHtcSVluMmqnQ==
-X-Received: by 2002:a05:600c:1392:b0:477:6d96:b3c8 with SMTP id
- 5b1f17b1804b1-47d84b34673mr79074405e9.23.1767882873727; 
- Thu, 08 Jan 2026 06:34:33 -0800 (PST)
+ AJvYcCXBvG6anbeHjlJSC6KhvliDnnouj6dpqBUQ6uRc0l0T7HG8pMVbqrHjeys32bpsqGqO7nFvQjSYcw==@nongnu.org
+X-Gm-Message-State: AOJu0YycHh3akvAQuowYFAYTUhd8Y8GP2Ncv8LbPADdGsX7NeD5UNmQX
+ KM8hLjtvFassiBU64V5+gctfooSboU4ksyyc4/FY+2L//uKW3PSU3XAT2Q2t4JXtH0A=
+X-Gm-Gg: AY/fxX5ClaRkkeuVOOHnK+Ku4so2GcT96t4ew78E9zuTIzG95B7v0OLsyF8lT7ac0JR
+ 7EJBkySh0gDZ3JSsemE3NiJ6GDERdoNK1wxTKV50Xd9R0VTMrc/SmO6frpcNGBLk/yTVOaKETq6
+ YsmXiLYxtq3x/eGCSylHMPwuxfdSebB3i4N7KM6yrXDO5Agup7U+nU/wM4qAn6pcSjh3UzJsEbu
+ 0/rIRETCO5IDQpHU+6wuy47h2Ffua/wRKIDPYN0usKnQmD1QUIwCrhN4oYwJNm6xB8Lwr4zazKR
+ /O/3B3OhbgoJPioBa+x0mHEZqO/THFovbBAUpljO/sdCFHWo5EHmYgBHivhSGxVq4vjfgdDwGlB
+ 9A5zU5WWw/GYAzUCLi6rk1vsdjqTkDENaJXzbIbWPNvj+HUn3ZLm46/9PVbt44G49ET9PRHyfvw
+ J7oJ8GadTCnBLm/D1ktWxDTw==
+X-Google-Smtp-Source: AGHT+IEszrccpcodAmK2Okm4qvXdSHUt71l38BB9KgWymhwhe6pMkgAQT1Emcr+HTay4HgOGZdg82w==
+X-Received: by 2002:a05:600c:4fc6:b0:477:5ad9:6df1 with SMTP id
+ 5b1f17b1804b1-47d84b0aaa3mr69677235e9.3.1767882870170; 
+ Thu, 08 Jan 2026 06:34:30 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-432bd0e16d2sm17391256f8f.13.2026.01.08.06.34.28
+ 5b1f17b1804b1-47d8719e695sm37602105e9.17.2026.01.08.06.34.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 08 Jan 2026 06:34:32 -0800 (PST)
+ Thu, 08 Jan 2026 06:34:27 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id E9D995FADF;
+ by draig.lan (Postfix) with ESMTP id 6156D5F943;
  Thu, 08 Jan 2026 14:34:24 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -83,17 +82,17 @@ Cc: Aurelien Jarno <aurelien@aurel32.net>,
  Yanan Wang <wangyanan55@huawei.com>, Aleksandar Rikalo <arikalo@gmail.com>,
  Thomas Huth <huth@tuxfamily.org>, Eduardo Habkost <eduardo@habkost.net>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH 12/12] include/hw: expand cpu_reset function docs
-Date: Thu,  8 Jan 2026 14:34:23 +0000
-Message-ID: <20260108143423.1378674-13-alex.bennee@linaro.org>
+Subject: [RFC PATCH 06/12] hw/m68k: just use reset_pc for virt platform
+Date: Thu,  8 Jan 2026 14:34:17 +0000
+Message-ID: <20260108143423.1378674-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260108143423.1378674-1-alex.bennee@linaro.org>
 References: <20260108143423.1378674-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,27 +115,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a hint to the developer that this should only be called from a
-reset chain.
+We never actually set initial_stack so revert to the previous
+behaviour and stash pc in the common env->reset_pc holding place.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/hw/core/cpu.h | 3 +++
- 1 file changed, 3 insertions(+)
+ hw/m68k/virt.c | 24 +++++++-----------------
+ 1 file changed, 7 insertions(+), 17 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index f6f17df9e64..9f938e00492 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -811,6 +811,9 @@ void cpu_list_remove(CPUState *cpu);
- /**
-  * cpu_reset:
-  * @cpu: The CPU whose state is to be reset.
-+ *
-+ * You should refrain from calling this during CPU realization and
-+ * make sure this is called from the reset logic instead.
-  */
- void cpu_reset(CPUState *cpu);
+diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
+index e67900c727d..6af74b7ba1d 100644
+--- a/hw/m68k/virt.c
++++ b/hw/m68k/virt.c
+@@ -87,21 +87,14 @@
+ #define VIRT_VIRTIO_MMIO_BASE 0xff010000     /* MMIO: 0xff010000 - 0xff01ffff */
+ #define VIRT_VIRTIO_IRQ_BASE  PIC_IRQ(2, 1)  /* PIC: 2, 3, 4, 5, IRQ: ALL */
+ 
+-typedef struct {
+-    M68kCPU *cpu;
+-    hwaddr initial_pc;
+-    hwaddr initial_stack;
+-} ResetInfo;
+-
+ static void main_cpu_reset(void *opaque)
+ {
+-    ResetInfo *reset_info = opaque;
+-    M68kCPU *cpu = reset_info->cpu;
++    M68kCPU *cpu = opaque;
+     CPUState *cs = CPU(cpu);
+ 
+     cpu_reset(cs);
+-    cpu->env.aregs[7] = reset_info->initial_stack;
+-    cpu->env.pc = reset_info->initial_pc;
++    cpu->env.aregs[7] = ldl_phys(cs->as, 0);
++    cpu->env.pc = cpu->env.reset_pc;
+ }
+ 
+ static void rerandomize_rng_seed(void *opaque)
+@@ -129,8 +122,8 @@ static void virt_init(MachineState *machine)
+     SysBusDevice *sysbus;
+     hwaddr io_base;
+     int i;
+-    ResetInfo *reset_info;
+     uint8_t rng_seed[32];
++    CPUM68KState *env;
+ 
+     if (ram_size > 3399672 * KiB) {
+         /*
+@@ -142,13 +135,10 @@ static void virt_init(MachineState *machine)
+         exit(1);
+     }
+ 
+-    reset_info = g_new0(ResetInfo, 1);
+-
+     /* init CPUs */
+     cpu = M68K_CPU(cpu_create(machine->cpu_type));
+-
+-    reset_info->cpu = cpu;
+-    qemu_register_reset(main_cpu_reset, reset_info);
++    qemu_register_reset(main_cpu_reset, cpu);
++    env = &cpu->env;
+ 
+     /* RAM */
+     memory_region_add_subregion(get_system_memory(), 0, machine->ram);
+@@ -235,7 +225,7 @@ static void virt_init(MachineState *machine)
+             error_report("could not load kernel '%s'", kernel_filename);
+             exit(1);
+         }
+-        reset_info->initial_pc = elf_entry;
++        env->reset_pc = elf_entry;
+         parameters_base = (high + 1) & ~1;
+         param_ptr = param_blob;
  
 -- 
 2.47.3

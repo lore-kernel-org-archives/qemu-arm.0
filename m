@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FB6ED14880
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 00:55:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E63AD14880
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 00:56:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdeId-0008E1-3F; Wed, 07 Jan 2026 19:54:51 -0500
+	id 1vdeJv-0002S5-Js; Wed, 07 Jan 2026 19:56:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vdeIa-000857-VG
- for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:54:48 -0500
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642])
+ id 1vdeJa-0002Gp-23
+ for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:55:50 -0500
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vdeIZ-00021e-Ab
- for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:54:48 -0500
-Received: by mail-pl1-x642.google.com with SMTP id
- d9443c01a7336-2a12ed4d205so18802905ad.0
- for <qemu-arm@nongnu.org>; Wed, 07 Jan 2026 16:54:46 -0800 (PST)
+ id 1vdeJW-0002Fo-Jf
+ for qemu-arm@nongnu.org; Wed, 07 Jan 2026 19:55:49 -0500
+Received: by mail-pf1-x444.google.com with SMTP id
+ d2e1a72fcca58-7fc0c1d45a4so1650757b3a.0
+ for <qemu-arm@nongnu.org>; Wed, 07 Jan 2026 16:55:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1767833686; x=1768438486; darn=nongnu.org;
+ d=linaro.org; s=google; t=1767833743; x=1768438543; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=K0Y97GfwIUeGjV7WhFgn2+cDOBfhZblbtIsq7uReysM=;
- b=srxaHJ810pMDcGkwHe5GMU5S2tC0dm8JAW/ft1zKQd02oZXk72OjMCLsmZvlOpXhug
- ziGJdpfgGDbXqkfn6rrdV3tC6LmwRFoYDGc0YHfu8XZ1P8gjud95rOQN5HIShU81OQwS
- pKuhu45wumaxzU3QWsADjx2DdXsMVn4d4vVI13p3S9fTyfD7JOEEY5VLmDe4oVra18tB
- MR8aI2uETTk7QUxJjodrx5P9Hsu6lWxylN0CsjfDYB6Yhtu5wAJYdLfFNoHggzLOKF+Z
- Rvnwal+46a05z8H2ArZpmx0oXWkqt2XshH2u9WUlHOEQx1mxIN/eQk9ZEWrZ0Vd2XRom
- HFww==
+ bh=Q5mWpV+nMrFaSU7KOv04C5BaT8Y0Row3HFqjRukRKxk=;
+ b=BBb4x4/2d8kcorDKsLn9VaZzFc7ZWsvJjCo9t1nKk5lzOjP/8U8KR55BHAYYQVTomr
+ ms9C3M1SJjfRH91MQax7n8Kb3whiFXZy0gU0wtwkPsna3ygdcPs/xkBYWS1ANaUL15cG
+ lBvVm7KZPX0z0c/QFonoX6vi+mhNu56v28m8YZi7hJb5JE8wBUzfXppZ78aOlNUfMOh2
+ vBkL0pbwSyPmqv4shbSptIO7tC238T8b17mnQLOy+riMn3W5E7iQDBqXBq4AAp5QyqQa
+ czlYdXT+ePmRBYiI1V+u2A2reByJWb/DHQymBFTONo+Ogil9ATQtZIJXg9z7hfM9K8QM
+ UCuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767833686; x=1768438486;
+ d=1e100.net; s=20230601; t=1767833743; x=1768438543;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=K0Y97GfwIUeGjV7WhFgn2+cDOBfhZblbtIsq7uReysM=;
- b=pVZtofUqxUfxccYjmMh84zlp+TcoiIr7W5Yn0x1hyqiq9EhARq8EOLoA3YNd9y8/nM
- wQHKn7190Cjxfqjssr37Cx/0zbBv/63RBeq7esQF1z2S52TPGUmGuv8qLGbX+CpKtNe6
- M8mH3aPEcGjfSCL4oN9LbSwwVMkTusBlKy248bh4w7aMn70H60QqCn/waSdqMz6arGQU
- HdlX7Pxefs96BUaWJl5aXDT1HkqFztFIeG6NY00IbYdTpVtw40+jsW7PaAsndGgifGQS
- r8spLBT5XH84UoGvUi4qk7i09QFYEWek58ZrDY9IWdGzWanJcJghNWdQ9qXPSC2eCWIk
- GakA==
+ bh=Q5mWpV+nMrFaSU7KOv04C5BaT8Y0Row3HFqjRukRKxk=;
+ b=r6+edBtr18F82GYheio2a3npJejKE26SLEscRp7a6FbvEyqPJtcEBqwZjADFv5ROPl
+ vqVoy6ij/ifGY/ZVR/TVfonsFjHT/AYGqaYLlljRGhF+wnqWfl56VHtsRvcI90yfeJW+
+ iet270CuYy5Bp9PSyY/eJwCbU0AaCpi9ACu/bhUWVAc6yjoxSZGxKywVgCje4uLFeu7i
+ ++TiJJqLG7V1+rZu3kCuEJVEBnz/q8BNYY1yKwGXa94xs9f5ZR3WAeCkkuwcx/uFLRaV
+ kpBH+zZpIE9iqmkm7gqn2rRDPgnd8XHQrCPs31mUiZpBwmdfZ7CFAgRNjzMAhhKOJF9Z
+ N25w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWPhPfruPQlTSD2pzSlwoe6Y7noH2Hp9ZTea8Zeh2EEWHQqTJt4YO1cWZJ4Po+jwNzH1V6hdsYNdA==@nongnu.org
-X-Gm-Message-State: AOJu0YzFgSQrVhB8mkKgsA/FF09HxJ5vPM9U/R7ixFMAXSAjEW3mqTmi
- StXGTULf74XVkYRMEGOM3v9b4+XcmGrSKjj8q925yUQuSBglfQtxh0B+NGv/pFA0PtQ=
-X-Gm-Gg: AY/fxX7BMgU5hjqnAKHPuFlg0Z7WGcGCtsLzJZy4bzAkzxVD1tMB4x5rolZ/1slSbwv
- 64QjFHMixIN9Qi5F3hTK9aY7bx3SdHXbhcBw1I5RsJe0R9fuCTMug+dSsfWezlzS/aQXXKnvnIe
- J05w1brUJqafqAuEmHVUKVnXgJ6HzJczHTWYEHvLIbelvYM6y3Uj46dYvT1mM84lYhmUkAezDwt
- J/RGw0Rx3C1cajDaxpf9UD7j13ZYAz5GycFDHH2+s6P9F3FdLQJjIKcq6UMwG+5RINkNVwy3P3h
- JOl9L0wQjltqjkGzbgZbBfmS1h7/Z7SVkK0Y3ahsC/tNzkcH7Mt2OrHwY91QLPY8LnxC8k/05x0
- Ps5fkHzB+9VMtv9ZrwO9OJOZembU9afULJ8kjqY4KvQAz0/JoWCgWka2e0m9N8mV/ZpmJz3u7/V
- g1u5aTkUHiJU8UGHbEjKPCKI9YVnnKc2fg2Ts949h6XEbmRJPRlfK3e/f9
-X-Google-Smtp-Source: AGHT+IHrhL1/L+aJVULGqMJE4OxHaxulGzE4ax6OBWGkBO17sxRQ0IjXhD0n749vw4bX8xezADd0iA==
-X-Received: by 2002:a17:902:e749:b0:297:d6c2:d06 with SMTP id
- d9443c01a7336-2a3ee435e58mr40779415ad.20.1767833685617; 
- Wed, 07 Jan 2026 16:54:45 -0800 (PST)
+ AJvYcCXfNcJY61aveyoCFoiMrlmziolzQ/GdTa3czeFj1dz8lGupw7oxe1utWp3mr6F/blJ7x2MaRZbhmw==@nongnu.org
+X-Gm-Message-State: AOJu0YwesK9hOzh3nbiUsKEqH683Y7dBCIfGOsS64JYeNVuSNBGjzN7f
+ EunCQRQyJg8BEbEaOgeMH7ARFrDAvXsOGk2dSaMVzCjz5eqU81VilpO8TQSPPKY+XHM=
+X-Gm-Gg: AY/fxX6KrI4OWfyi7FLx43QQomsdU4NVhsLwOgBKogK84xjDlfkL6R3YkgFLEnQjVBl
+ kfSbAjamRpJtpu0nbB996qQ3qncr0tm3SAXTqM2CVtcjCRhuYp1hSdCcI2k9KboCfFyZsF8JLmt
+ vQOgrW83ikdSpCtEliO+EsbWvqnJL7CraROGvFCoeYIIXLLMaEf8wsBnw0jYzpJfoYh0bMYr3se
+ 9GcOwsSH6gADVMC23Je5+sct/P5AfKqIMbUO0D2cydLTkfFdvwBER3cgU9lkSYT1oDMMQijoBUf
+ aguq78H5u5p4I124y5s82TC+0qiLpT0okLU9IpYDxui/SFU7Lgac6IiLjvYL4xlqbOBysIYcHJe
+ kBq+uh5SlwleXG3ob5L3YbDPYBTaCrY68SAgd0swo4MKK91FUucyQcuXQR7KRao4vOvAYHMqM/m
+ 1jVW2J42fkTSqp0SevS6hxYjFs/M691gEiVZUPOIjhBbm9ooYycBzhiNXEmmSIEMT8RU4=
+X-Google-Smtp-Source: AGHT+IEAiZLTcykHkEiL3899LlkRRNtRX4UmgV9mwPEoc1JqkiRFieSn7ZeNnaFjKKbQSKLYoFD+Ow==
+X-Received: by 2002:a05:6a20:19a9:b0:389:93e3:ca96 with SMTP id
+ adf61e73a8af0-38993e3cae9mr2294803637.21.1767833742759; 
+ Wed, 07 Jan 2026 16:55:42 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a3e3cd3632sm61416805ad.95.2026.01.07.16.54.44
+ 41be03b00d2f7-c4cbf28f678sm6236384a12.3.2026.01.07.16.55.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Jan 2026 16:54:45 -0800 (PST)
-Message-ID: <d1611864-a119-4b5f-8df7-894ee7160f38@linaro.org>
-Date: Wed, 7 Jan 2026 16:54:44 -0800
+ Wed, 07 Jan 2026 16:55:42 -0800 (PST)
+Message-ID: <d3038eeb-0d28-4f07-8034-4ffe944decc2@linaro.org>
+Date: Wed, 7 Jan 2026 16:55:41 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] target/i386: Restrict WatchPoint API to TCG
+Subject: Re: [PATCH 2/5] target/ppc: Restrict WatchPoint API to TCG
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
  qemu-riscv@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>
+ Nicholas Piggin <npiggin@gmail.com>, Chinmay Rath <rathc@linux.ibm.com>
 References: <20260106231908.16756-1-philmd@linaro.org>
- <20260106231908.16756-2-philmd@linaro.org>
+ <20260106231908.16756-3-philmd@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20260106231908.16756-2-philmd@linaro.org>
+In-Reply-To: <20260106231908.16756-3-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x642.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x444.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,13 +111,18 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/6/26 3:19 PM, Philippe Mathieu-Daudé wrote:
-> Watchpoints are specific to the TCG accelerator. Restrict
-> the cpu_watchpoint_remove_all() call.
+> Watchpoints are specific to the TCG accelerator. Since the
+> Data Address Watchpoint helpers are only called from
+> translated code, move them to a new 'watchpoint.c' file,
+> specific to TCG. Thus restricting the WatchPoint API to TCG.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   target/i386/cpu.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
+>   target/ppc/cpu.c        | 81 +----------------------------------
+>   target/ppc/watchpoint.c | 93 +++++++++++++++++++++++++++++++++++++++++
+>   target/ppc/meson.build  |  1 +
+>   3 files changed, 96 insertions(+), 79 deletions(-)
+>   create mode 100644 target/ppc/watchpoint.c
 > 
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>

@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDE4AD14898
-	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:06:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 504B3D14899
+	for <qemu-arm@archiver.kernel.org>; Thu,  8 Jan 2026 03:06:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vdgLO-0006cU-Jb; Wed, 07 Jan 2026 22:05:50 -0500
+	id 1vdgLt-0006oS-K5; Wed, 07 Jan 2026 22:06:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgLN-0006c2-Iw; Wed, 07 Jan 2026 22:05:49 -0500
+ id 1vdgLr-0006m4-DN; Wed, 07 Jan 2026 22:06:19 -0500
 Received: from mgamail.intel.com ([198.175.65.9])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vdgLL-0004nn-TZ; Wed, 07 Jan 2026 22:05:49 -0500
+ id 1vdgLp-0004vX-3v; Wed, 07 Jan 2026 22:06:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1767841549; x=1799377549;
+ t=1767841578; x=1799377578;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=sC2TimUoEZyzkwnU9qkeCub4FiWSqIV2ZeA71FBODSU=;
- b=HJX3T7qq454w0gEyxzNsqiLs5UxI8ggau5HII76jSgdtyKrrgdeCWWMZ
- Xn87Sy+ZGVQgYSlEU6ID80HgmzL23DoLhik8SnKJTHW2dAHpU5eQnQwOM
- G90Igg+ZUHPBtegpwVrMtCXep1vhEbUnjGwpD+pqdAhISsJq5my6f9rI8
- 7tme3LTz15++/PpDVLXUhAp7FQ/OlT9MDcfq72Crr8gLIDGU0LBTdY+4O
- Q3gJLxi0edoyxyjuMuUKbEiBa5YRO0sgQKkPHC0Y5VS0CY8HFoQVD+QBK
- 80aojj6PgSzvtJUueOR08ZTxZo7qLOHaccPGD1NoxmMLtZfYHS0OhIMZ/ A==;
-X-CSE-ConnectionGUID: BUfYhk0+QoyNMRSC91oGkQ==
-X-CSE-MsgGUID: RwD5EvZfSjeX82RU+sEGgw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91876905"
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91876905"
+ bh=a1ICcoG/sdPEZBhfNZMIZQHiXJHJ1kxZx56nCigH7eM=;
+ b=PjHCX1Y5TDcqdJBZ3BIfC7SfTrO8fqHqA/VRr8qZo/uRrNhmpA3XZvDO
+ uCsrbE4S87N7zC1nWFwrRzkdv42LThzX2ysbzlrxETeOmH06y2OeP0woe
+ AZy6h5qx4jnn0ngKm2H2QcWMCEW4YgiiTct+EimBc77AdvFaBBph42vII
+ a3jW+TWWu0V1z0ninqz8S5SZhfDWsYuJuG3eaQasZ4rSnKW8VuQ5zqpHe
+ DGaHaLx5FbIVPUqIDbwYanots+Jms/4JJF2uLZUiLrUQx7i7QSB8LYD5r
+ TvJ4+lK0RVEPiKeIaCvtyh7vXc/iQDTJyNU0FwIg/ryPug1yQYLm+dRrT Q==;
+X-CSE-ConnectionGUID: Gd/cDavORI24BAshRhq9Kw==
+X-CSE-MsgGUID: e2C21tAJT1+k6cp/qii+aA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11664"; a="91877014"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="91877014"
 Received: from orviesa006.jf.intel.com ([10.64.159.146])
  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jan 2026 19:05:47 -0800
-X-CSE-ConnectionGUID: xZVaV3FaSOCzS+IH/Lh2Og==
-X-CSE-MsgGUID: mBgmgwvKSEuLYKJ+Bwq06A==
+ 07 Jan 2026 19:06:15 -0800
+X-CSE-ConnectionGUID: NGU+oToITJKS8JMAp4mXWw==
+X-CSE-MsgGUID: Z8PrBmNGScGOPr1prHU5Vw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202210503"
+X-IronPort-AV: E=Sophos;i="6.21,209,1763452800"; d="scan'208";a="202210617"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
- by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:05:37 -0800
+ by orviesa006.jf.intel.com with ESMTP; 07 Jan 2026 19:06:05 -0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>,
  "Michael S . Tsirkin" <mst@redhat.com>,
@@ -72,10 +72,10 @@ Cc: qemu-devel@nongnu.org, devel@lists.libvirt.org, kvm@vger.kernel.org,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  BALATON Zoltan <balaton@eik.bme.hu>, Peter Krempa <pkrempa@redhat.com>,
  Jiri Denemark <jdenemar@redhat.com>, Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v6 01/27] hw/i386/pc: Remove deprecated pc-q35-2.6 and
- pc-i440fx-2.6 machines
-Date: Thu,  8 Jan 2026 11:30:25 +0800
-Message-Id: <20260108033051.777361-2-zhao1.liu@intel.com>
+Subject: [PATCH v6 04/27] hw/i386/pc: Remove
+ PCMachineClass::legacy_cpu_hotplug field
+Date: Thu,  8 Jan 2026 11:30:28 +0800
+Message-Id: <20260108033051.777361-5-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260108033051.777361-1-zhao1.liu@intel.com>
 References: <20260108033051.777361-1-zhao1.liu@intel.com>
@@ -109,69 +109,264 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-These machines has been supported for a period of more than 6 years.
-According to our versioned machine support policy (see commit
-ce80c4fa6ff "docs: document special exception for machine type
-deprecation & removal") they can now be removed.
+Now all PC & Q35 machiens are using modern hotplug from the beginning,
+and all legacy_cpu_hotplug flags keep false during runtime.
 
-Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+So it's safe to remove legacy_cpu_hotplug flags and related properties,
+with unused gpe_cpu field.
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+Acked-by: Igor Mammedov <imammedo@redhat.com>
 ---
- hw/i386/pc_piix.c | 14 --------------
- hw/i386/pc_q35.c  | 14 --------------
- 2 files changed, 28 deletions(-)
+Changes since v4:
+ * Referring Igor's v5 [*], drop gpe_cpu field and does not only remove
+   build_legacy_cpu_hotplug_aml(), but instead remove the entire
+   cpu_hotplug.c file in a separate patch.
 
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 2e2671d60502..fa1025dcfd85 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -733,20 +733,6 @@ static void pc_i440fx_machine_2_7_options(MachineClass *m)
- 
- DEFINE_I440FX_MACHINE(2, 7);
- 
--static void pc_i440fx_machine_2_6_options(MachineClass *m)
--{
--    X86MachineClass *x86mc = X86_MACHINE_CLASS(m);
--    PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
--
--    pc_i440fx_machine_2_7_options(m);
--    pcmc->legacy_cpu_hotplug = true;
--    x86mc->fwcfg_dma_enabled = false;
--    compat_props_add(m->compat_props, hw_compat_2_6, hw_compat_2_6_len);
--    compat_props_add(m->compat_props, pc_compat_2_6, pc_compat_2_6_len);
--}
--
--DEFINE_I440FX_MACHINE(2, 6);
--
- #ifdef CONFIG_XEN
- static void xenfv_machine_4_2_options(MachineClass *m)
- {
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index 18158ad15e41..7214a4232ffc 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -681,17 +681,3 @@ static void pc_q35_machine_2_7_options(MachineClass *m)
+[*]: https://lore.kernel.org/qemu-devel/20251031142825.179239-1-imammedo@redhat.com/
+---
+ hw/acpi/ich9.c          | 40 ++++------------------------------------
+ hw/acpi/piix4.c         | 40 ++++------------------------------------
+ hw/i386/acpi-build.c    |  4 +---
+ include/hw/acpi/ich9.h  |  2 --
+ include/hw/acpi/piix4.h |  2 --
+ include/hw/i386/pc.h    |  3 ---
+ 6 files changed, 9 insertions(+), 82 deletions(-)
+
+diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
+index 54590129c695..f254f3879716 100644
+--- a/hw/acpi/ich9.c
++++ b/hw/acpi/ich9.c
+@@ -339,26 +339,6 @@ static void ich9_pm_get_gpe0_blk(Object *obj, Visitor *v, const char *name,
+     visit_type_uint32(v, name, &value, errp);
  }
  
- DEFINE_Q35_MACHINE(2, 7);
--
--static void pc_q35_machine_2_6_options(MachineClass *m)
+-static bool ich9_pm_get_cpu_hotplug_legacy(Object *obj, Error **errp)
 -{
--    X86MachineClass *x86mc = X86_MACHINE_CLASS(m);
--    PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+-    ICH9LPCState *s = ICH9_LPC_DEVICE(obj);
 -
--    pc_q35_machine_2_7_options(m);
--    pcmc->legacy_cpu_hotplug = true;
--    x86mc->fwcfg_dma_enabled = false;
--    compat_props_add(m->compat_props, hw_compat_2_6, hw_compat_2_6_len);
--    compat_props_add(m->compat_props, pc_compat_2_6, pc_compat_2_6_len);
+-    return s->pm.cpu_hotplug_legacy;
 -}
 -
--DEFINE_Q35_MACHINE(2, 6);
+-static void ich9_pm_set_cpu_hotplug_legacy(Object *obj, bool value,
+-                                           Error **errp)
+-{
+-    ICH9LPCState *s = ICH9_LPC_DEVICE(obj);
+-
+-    assert(!value);
+-    if (s->pm.cpu_hotplug_legacy && value == false) {
+-        acpi_switch_to_modern_cphp(&s->pm.gpe_cpu, &s->pm.cpuhp_state,
+-                                   ICH9_CPU_HOTPLUG_IO_BASE);
+-    }
+-    s->pm.cpu_hotplug_legacy = value;
+-}
+-
+ static bool ich9_pm_get_enable_tco(Object *obj, Error **errp)
+ {
+     ICH9LPCState *s = ICH9_LPC_DEVICE(obj);
+@@ -403,7 +383,6 @@ void ich9_pm_add_properties(Object *obj, ICH9LPCPMRegs *pm)
+ {
+     static const uint32_t gpe0_len = ICH9_PMIO_GPE0_LEN;
+     pm->acpi_memory_hotplug.is_enabled = true;
+-    pm->cpu_hotplug_legacy = false;
+     pm->disable_s3 = 0;
+     pm->disable_s4 = 0;
+     pm->s4_val = 2;
+@@ -422,9 +401,6 @@ void ich9_pm_add_properties(Object *obj, ICH9LPCPMRegs *pm)
+                         NULL, NULL, pm);
+     object_property_add_uint32_ptr(obj, ACPI_PM_PROP_GPE0_BLK_LEN,
+                                    &gpe0_len, OBJ_PROP_FLAG_READ);
+-    object_property_add_bool(obj, "cpu-hotplug-legacy",
+-                             ich9_pm_get_cpu_hotplug_legacy,
+-                             ich9_pm_set_cpu_hotplug_legacy);
+     object_property_add_uint8_ptr(obj, ACPI_PM_PROP_S3_DISABLED,
+                                   &pm->disable_s3, OBJ_PROP_FLAG_READWRITE);
+     object_property_add_uint8_ptr(obj, ACPI_PM_PROP_S4_DISABLED,
+@@ -477,11 +453,7 @@ void ich9_pm_device_plug_cb(HotplugHandler *hotplug_dev, DeviceState *dev,
+                                 dev, errp);
+         }
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+-        if (lpc->pm.cpu_hotplug_legacy) {
+-            legacy_acpi_cpu_plug_cb(hotplug_dev, &lpc->pm.gpe_cpu, dev, errp);
+-        } else {
+-            acpi_cpu_plug_cb(hotplug_dev, &lpc->pm.cpuhp_state, dev, errp);
+-        }
++        acpi_cpu_plug_cb(hotplug_dev, &lpc->pm.cpuhp_state, dev, errp);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
+         acpi_pcihp_device_plug_cb(hotplug_dev, &lpc->pm.acpi_pci_hotplug,
+                                   dev, errp);
+@@ -500,8 +472,7 @@ void ich9_pm_device_unplug_request_cb(HotplugHandler *hotplug_dev,
+         acpi_memory_unplug_request_cb(hotplug_dev,
+                                       &lpc->pm.acpi_memory_hotplug, dev,
+                                       errp);
+-    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU) &&
+-               !lpc->pm.cpu_hotplug_legacy) {
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+         uint64_t negotiated = lpc->smi_negotiated_features;
+ 
+         if (negotiated & BIT_ULL(ICH9_LPC_SMI_F_BROADCAST_BIT) &&
+@@ -533,8 +504,7 @@ void ich9_pm_device_unplug_cb(HotplugHandler *hotplug_dev, DeviceState *dev,
+ 
+     if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+         acpi_memory_unplug_cb(&lpc->pm.acpi_memory_hotplug, dev, errp);
+-    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU) &&
+-               !lpc->pm.cpu_hotplug_legacy) {
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+         acpi_cpu_unplug_cb(&lpc->pm.cpuhp_state, dev, errp);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
+         acpi_pcihp_device_unplug_cb(hotplug_dev, &lpc->pm.acpi_pci_hotplug,
+@@ -556,7 +526,5 @@ void ich9_pm_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
+     ICH9LPCState *s = ICH9_LPC_DEVICE(adev);
+ 
+     acpi_memory_ospm_status(&s->pm.acpi_memory_hotplug, list);
+-    if (!s->pm.cpu_hotplug_legacy) {
+-        acpi_cpu_ospm_status(&s->pm.cpuhp_state, list);
+-    }
++    acpi_cpu_ospm_status(&s->pm.cpuhp_state, list);
+ }
+diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+index 0eda692084d3..05f9d6372a9b 100644
+--- a/hw/acpi/piix4.c
++++ b/hw/acpi/piix4.c
+@@ -336,11 +336,7 @@ static void piix4_device_plug_cb(HotplugHandler *hotplug_dev,
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
+         acpi_pcihp_device_plug_cb(hotplug_dev, &s->acpi_pci_hotplug, dev, errp);
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+-        if (s->cpu_hotplug_legacy) {
+-            legacy_acpi_cpu_plug_cb(hotplug_dev, &s->gpe_cpu, dev, errp);
+-        } else {
+-            acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
+-        }
++        acpi_cpu_plug_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
+     } else {
+         g_assert_not_reached();
+     }
+@@ -358,8 +354,7 @@ static void piix4_device_unplug_request_cb(HotplugHandler *hotplug_dev,
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
+         acpi_pcihp_device_unplug_request_cb(hotplug_dev, &s->acpi_pci_hotplug,
+                                             dev, errp);
+-    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU) &&
+-               !s->cpu_hotplug_legacy) {
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+         acpi_cpu_unplug_request_cb(hotplug_dev, &s->cpuhp_state, dev, errp);
+     } else {
+         error_setg(errp, "acpi: device unplug request for not supported device"
+@@ -378,8 +373,7 @@ static void piix4_device_unplug_cb(HotplugHandler *hotplug_dev,
+     } else if (object_dynamic_cast(OBJECT(dev), TYPE_PCI_DEVICE)) {
+         acpi_pcihp_device_unplug_cb(hotplug_dev, &s->acpi_pci_hotplug, dev,
+                                     errp);
+-    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU) &&
+-               !s->cpu_hotplug_legacy) {
++    } else if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+         acpi_cpu_unplug_cb(&s->cpuhp_state, dev, errp);
+     } else {
+         error_setg(errp, "acpi: device unplug for not supported device"
+@@ -523,26 +517,6 @@ static const MemoryRegionOps piix4_gpe_ops = {
+     .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+-
+-static bool piix4_get_cpu_hotplug_legacy(Object *obj, Error **errp)
+-{
+-    PIIX4PMState *s = PIIX4_PM(obj);
+-
+-    return s->cpu_hotplug_legacy;
+-}
+-
+-static void piix4_set_cpu_hotplug_legacy(Object *obj, bool value, Error **errp)
+-{
+-    PIIX4PMState *s = PIIX4_PM(obj);
+-
+-    assert(!value);
+-    if (s->cpu_hotplug_legacy && value == false) {
+-        acpi_switch_to_modern_cphp(&s->gpe_cpu, &s->cpuhp_state,
+-                                   PIIX4_CPU_HOTPLUG_IO_BASE);
+-    }
+-    s->cpu_hotplug_legacy = value;
+-}
+-
+ static void piix4_acpi_system_hot_add_init(MemoryRegion *parent,
+                                            PCIBus *bus, PIIX4PMState *s)
+ {
+@@ -558,10 +532,6 @@ static void piix4_acpi_system_hot_add_init(MemoryRegion *parent,
+         qbus_set_hotplug_handler(BUS(pci_get_bus(PCI_DEVICE(s))), OBJECT(s));
+     }
+ 
+-    s->cpu_hotplug_legacy = false;
+-    object_property_add_bool(OBJECT(s), "cpu-hotplug-legacy",
+-                             piix4_get_cpu_hotplug_legacy,
+-                             piix4_set_cpu_hotplug_legacy);
+     cpu_hotplug_hw_init(parent, OBJECT(s), &s->cpuhp_state,
+                         PIIX4_CPU_HOTPLUG_IO_BASE);
+ 
+@@ -576,9 +546,7 @@ static void piix4_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
+     PIIX4PMState *s = PIIX4_PM(adev);
+ 
+     acpi_memory_ospm_status(&s->acpi_memory_hotplug, list);
+-    if (!s->cpu_hotplug_legacy) {
+-        acpi_cpu_ospm_status(&s->cpuhp_state, list);
+-    }
++    acpi_cpu_ospm_status(&s->cpuhp_state, list);
+ }
+ 
+ static void piix4_send_gpe(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 23147ddc25e7..bf7ed2e50837 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -960,9 +960,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+     }
+     aml_append(dsdt, scope);
+ 
+-    if (pcmc->legacy_cpu_hotplug) {
+-        build_legacy_cpu_hotplug_aml(dsdt, machine, pm->cpu_hp_io_base);
+-    } else {
++    {
+         CPUHotplugFeatures opts = {
+             .acpi_1_compatible = true,
+             .smi_path = pm->smi_on_cpuhp ? "\\_SB.PCI0.SMI0.SMIC" : NULL,
+diff --git a/include/hw/acpi/ich9.h b/include/hw/acpi/ich9.h
+index 245fe08dc245..6a21472eb32e 100644
+--- a/include/hw/acpi/ich9.h
++++ b/include/hw/acpi/ich9.h
+@@ -53,8 +53,6 @@ typedef struct ICH9LPCPMRegs {
+     uint32_t pm_io_base;
+     Notifier powerdown_notifier;
+ 
+-    bool cpu_hotplug_legacy;
+-    AcpiCpuHotplug gpe_cpu;
+     CPUHotplugState cpuhp_state;
+ 
+     bool keep_pci_slot_hpc;
+diff --git a/include/hw/acpi/piix4.h b/include/hw/acpi/piix4.h
+index eb1c122d8069..e075f0cbeaf1 100644
+--- a/include/hw/acpi/piix4.h
++++ b/include/hw/acpi/piix4.h
+@@ -63,8 +63,6 @@ struct PIIX4PMState {
+     uint8_t disable_s4;
+     uint8_t s4_val;
+ 
+-    bool cpu_hotplug_legacy;
+-    AcpiCpuHotplug gpe_cpu;
+     CPUHotplugState cpuhp_state;
+ 
+     MemHotplugState acpi_memory_hotplug;
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index b3a45ab71a8b..3f94bc5652a9 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -110,9 +110,6 @@ struct PCMachineClass {
+     bool enforce_amd_1tb_hole;
+     bool isa_bios_alias;
+ 
+-    /* generate legacy CPU hotplug AML */
+-    bool legacy_cpu_hotplug;
+-
+     /* use PVH to load kernels that support this feature */
+     bool pvh_enabled;
+ 
 -- 
 2.34.1
 

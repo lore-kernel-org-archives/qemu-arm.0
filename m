@@ -4,156 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07A0AD26D77
-	for <qemu-arm@archiver.kernel.org>; Fri,  9 Jan 2026 17:05:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCC4BD277C1
+	for <qemu-arm@archiver.kernel.org>; Fri,  9 Jan 2026 23:56:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1veFvc-0005we-5o; Fri, 09 Jan 2026 12:05:36 -0500
+	id 1veMLE-0001A8-Kz; Fri, 09 Jan 2026 18:56:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1veFvY-0005vU-A5
- for qemu-arm@nongnu.org; Fri, 09 Jan 2026 12:05:33 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1veFvV-0003PQ-7x
- for qemu-arm@nongnu.org; Fri, 09 Jan 2026 12:05:31 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1767978328;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=UJnHNRlzjoXSJnvBIJEf1dtyGessMC3YA2MYiA5d2yM=;
- b=Vq2JFPh90hzpPKpsfKBJpq5XUVnVH5ZQazqdY2gyAeqcVClmcION3jHPU7UVSRbPNNqLCE
- lqfVcqLcRs3gBOMyPbWJxsscvO4Z3DT2Xw+1lrXES9Y2oUzKNAAuiJTO+OSzHaVBcSnQrz
- ipg3GRsBZukJxPxjZh3FmKyFgA9nlXM=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-679-Dbf6_G1ZNJmPAY3QFsmhrg-1; Fri, 09 Jan 2026 12:05:24 -0500
-X-MC-Unique: Dbf6_G1ZNJmPAY3QFsmhrg-1
-X-Mimecast-MFC-AGG-ID: Dbf6_G1ZNJmPAY3QFsmhrg_1767978324
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-477cf2230c8so44542165e9.0
- for <qemu-arm@nongnu.org>; Fri, 09 Jan 2026 09:05:24 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1veML9-0000zA-Dv
+ for qemu-arm@nongnu.org; Fri, 09 Jan 2026 18:56:23 -0500
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1veML6-0003qL-Dn
+ for qemu-arm@nongnu.org; Fri, 09 Jan 2026 18:56:22 -0500
+Received: by mail-pl1-x644.google.com with SMTP id
+ d9443c01a7336-2a0833b5aeeso48985475ad.1
+ for <qemu-arm@nongnu.org>; Fri, 09 Jan 2026 15:56:19 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1768002978; x=1768607778; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=QGNyw6s5MTr0RaZ4KmcfEpmjKqGLLGsTn8L5MxuLE50=;
+ b=k9/aolF8IWQ0jy2ZHQj5c1o9bH6PLB6ydW1yHMNf9HEH4T8/f6JhQ7dKI0YWnezSzp
+ c+8w+dx9V/15exZPp6veWZ2sNA0lufRMGd5yGRVizdiJffDxF8xZNurRnxi04+7jt9bV
+ eR19d4EFJ7ysssNC0xKVKCtnYBwp/8Y6jCEdWyoxXzOkE3ZlENivSy/g0au+dB6d3n0I
+ ZCfIBrWOb+bv3XoG/aM32XDaRS+l6GAEB8g3j7qqG7Fj2EAGTDDxAzDEz9sYkpozfGBC
+ JAzLvzE8btZgyp62TT0zOPVFJSUC1gBnHxzk8ya3L/nebycGcOKhBl1TD7lsac4sGiaF
+ t9bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1767978324; x=1768583124;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=UJnHNRlzjoXSJnvBIJEf1dtyGessMC3YA2MYiA5d2yM=;
- b=oBVS154VfQ1eHWEpAzW3c227+mEXX/WwrS/3RWLx7r5CVM0q0JqlSH2UoUzIApzoGA
- eu/lzSWxoYjrdbvsHMop6+AtQldWUlzTACr72eFygngSugr+OB8pyu7NBvIhsGf/R49F
- ScdzwM3WWfczqZuO1v6aixit+rqDiAmkgkuX8641E4UQkN3oT4i6DXuJZ5rez+6pWOms
- 6xAvBvi8jyNGiSGR7YTsyw5gk+apYTdD+tTeKKrl5+vKI9P7GsmqnPQ0Uayx1D7DNwuc
- wHMVwI+0WIATnbxzmR3Vg20el+qCDyOMJ89NrAvB+rYi/WLbxWl7cDzng22D/hJCY8Zp
- 2qzg==
+ d=1e100.net; s=20230601; t=1768002978; x=1768607778;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=QGNyw6s5MTr0RaZ4KmcfEpmjKqGLLGsTn8L5MxuLE50=;
+ b=soY7r10KUZUa2+7/kx6zloBgKUpuru/KkzlP50xcG43pQUTr3HCXQlD4/NhN3v3KkZ
+ p2Zowp8KtAgNr5GWw/eVewDiXMSSJCh4RBpw1gDeFVFjwN68wRR+N/hfY4fNN9x9NiE/
+ heq2Hlmy/JBPBuDY8eJw13hEm7QVqMfk/LUNF8I8M5t9nHM8geaN7KPWtOQgFU+G6hYz
+ YfPGnDSF77yZk3GTiOo2kqJzYcb8jKWm0XAmzjNU5iYrBjHs+LowFfbgjymj4IaExL9Q
+ DFgopdMgfRUwKxSj/QnGLeadphkK7und4t2lkLFDDwHNBJbqSmvwgXR2F8dKdxaHHA9D
+ Xhsg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVQuIRYAlYpX9PnyPr5bHBdxP0gX9xXVoA3nh9BDaZMynZRietB5jvLMZz+jYsgNp/aRmjQp/beiA==@nongnu.org
-X-Gm-Message-State: AOJu0YyxzvcHrI6WJ8xU59jYGMOnfatL1cdh3wY9Djal65eXiz59NWnQ
- 7KGdBJbHwzbvbdhemHxrjH8gLEyCnaWdTgO9FF6f9zGxTG6+Hs29v0SvrciIvbnHmIv3SwGy60a
- 0IFZYixtAW6fadh/avvnRE3ZOmOW4yUliKJMFi2U912hr6kpX+12z4A==
-X-Gm-Gg: AY/fxX5NqF2g3+LW6bLvOytNeR7qB+Qieb62bRMf1Toj3d6xOUsDxJTv4JQH83NGpJN
- xzo6cuRuLM9Iy4h7CbooAXBaCUlAygVYw7ZprbVw9/W6n8m+bWMnBI6A92tgE+xrDzB7kgp28gI
- rYRW6N1LrdRPRDbgAJb85u3uxVmzEy/7n16Er3TPCqbx3BGlWDUKPD2BQUrxYKa0nSGr8f/k7kM
- 0SlT1hKi/10cqyodA8qdkVKc/JgBAldeeSTqrvaPAvS4p/vyn/NDLAM9IyYo5IdntzQE9YvF/gZ
- 57xD3EMBrV/uUxww2H90ThoBbh7WpEdIT+U6WPqsOSyx/wFsDIxhVp7YzSQ6x47h+L2E/BcybAd
- S+eUVVcXXfAquuFOtIHDCVuqVIeUTvf4GRokSj7oBDnqspSzj
-X-Received: by 2002:a05:600c:190e:b0:475:dd7f:f6cd with SMTP id
- 5b1f17b1804b1-47d84b3f21fmr123010095e9.35.1767978323620; 
- Fri, 09 Jan 2026 09:05:23 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHUJmEzhZrofmKrGVVurwf2jTtwPJEM4qHiTME7Y1D5b1s6RmMM5p3lb1dOc+DGVcnRtLK5kw==
-X-Received: by 2002:a05:600c:190e:b0:475:dd7f:f6cd with SMTP id
- 5b1f17b1804b1-47d84b3f21fmr123009655e9.35.1767978323167; 
- Fri, 09 Jan 2026 09:05:23 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ AJvYcCUJF6uvT1175tmVgeZu5MjQ9t2tMkkdFvZ6tKd5BjAldNYSAugvT1C1QxOOIOalzLXh1HC8kaEpFg==@nongnu.org
+X-Gm-Message-State: AOJu0YwQxMPDgV08QWjFUVrWq1YoXMV/j6R/rHdVNoqpBmXYSIwoKRAG
+ kiVZHLImG0GVs59drq8+g0CBR6gmyzTfp98e6EEx2Ep3xPtTYtiWTeCvFmoDLNWGOls=
+X-Gm-Gg: AY/fxX70ZYADzkr9aR0HggBQMfy3WthO+TUCQlhTAECMjuB8RN19m6MoAp6pHknlH6R
+ x1E/TV6UVHrmUrmHou4HBhwfR9MJlCTAJbpQsuSiT5PRJsug/Lu2bCF4BdFXYiMeVDchdvnHRSY
+ BMXU0gHMRSBklZPbHDXKLDct9jCUoRrl2ifTZQMH/rkSUcx0BQlfA29HiBwXjM7RAbVBXk0im/0
+ 9bkSlNGTPzUDPxABHRUOurCXAtk8DKDPtuzMZGAq3I1n1UMLeNByff6QOqtOrnJ5Xu2KNEpJagN
+ /LJ2kPnSjHE0VAjSOdP0jwe1gwB6f+pZIlwdWLTq/bWXEeo0Igd4TOkKC4UjnuEwZXusA3O3RrK
+ cytsvc5oxCK2e8KfrEnYRKS2Zi86PjzXzOgCKv60J4wFYBjmGPBTiD8wjQJ5mBC9Pfmjo3I8SA/
+ UgEY/D6RtJpf6slfmpZ6eqW301ww==
+X-Google-Smtp-Source: AGHT+IGcVl3XSpvoYN//cKumS8BX07cD5U8g1ZP56WcGVKOfuyXEYFnXOUyXIwGhEm6zBM/307wf0g==
+X-Received: by 2002:a17:903:37d0:b0:295:543a:f7e3 with SMTP id
+ d9443c01a7336-2a3ee458e26mr103697125ad.27.1768002978331; 
+ Fri, 09 Jan 2026 15:56:18 -0800 (PST)
+Received: from [172.23.81.179] ([202.86.209.61])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47d7f410c6csm229701005e9.1.2026.01.09.09.05.20
+ d9443c01a7336-2a3e3c48dc1sm112810845ad.40.2026.01.09.15.56.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 09 Jan 2026 09:05:20 -0800 (PST)
-Message-ID: <d40cc8da-4003-4a40-b0de-32c79cbe6faa@redhat.com>
-Date: Fri, 9 Jan 2026 18:05:19 +0100
+ Fri, 09 Jan 2026 15:56:17 -0800 (PST)
+Message-ID: <4be5bd97-21a5-40fe-9a9c-a4e05b11a1ea@linaro.org>
+Date: Sat, 10 Jan 2026 10:56:11 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] hw/vfio/region: Create dmabuf for PCI BAR per region
-To: Shameer Kolothum <skolothumtho@nvidia.com>,
- "Duan, Zhenzhong" <zhenzhong.duan@intel.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "alex@shazbot.org" <alex@shazbot.org>, "cohuck@redhat.com"
- <cohuck@redhat.com>, "mst@redhat.com" <mst@redhat.com>,
- Nicolin Chen <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>,
- Matt Ochs <mochs@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
- Krishnakant Jaju <kjaju@nvidia.com>
-References: <20251222135357.143339-1-skolothumtho@nvidia.com>
- <20251222135357.143339-4-skolothumtho@nvidia.com>
- <d043f6e1-8fa4-4215-95ed-7570ae002e11@intel.com>
- <CH3PR12MB75485C401917E76FF22E0122AB85A@CH3PR12MB7548.namprd12.prod.outlook.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSJDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQHJlZGhhdC5jb20+wsGRBBMBCAA7FiEEoPZlSPBIlev+awtgUaNDx8/7
- 7KEFAmTLlVECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AACgkQUaNDx8/77KG0eg//
- S0zIzTcxkrwJ/9XgdcvVTnXLVF9V4/tZPfB7sCp8rpDCEseU6O0TkOVFoGWM39sEMiQBSvyY
- lHrP7p7E/JYQNNLh441MfaX8RJ5Ul3btluLapm8oHp/vbHKV2IhLcpNCfAqaQKdfk8yazYhh
- EdxTBlzxPcu+78uE5fF4wusmtutK0JG0sAgq0mHFZX7qKG6LIbdLdaQalZ8CCFMKUhLptW71
- xe+aNrn7hScBoOj2kTDRgf9CE7svmjGToJzUxgeh9mIkxAxTu7XU+8lmL28j2L5uNuDOq9vl
- hM30OT+pfHmyPLtLK8+GXfFDxjea5hZLF+2yolE/ATQFt9AmOmXC+YayrcO2ZvdnKExZS1o8
- VUKpZgRnkwMUUReaF/mTauRQGLuS4lDcI4DrARPyLGNbvYlpmJWnGRWCDguQ/LBPpbG7djoy
- k3NlvoeA757c4DgCzggViqLm0Bae320qEc6z9o0X0ePqSU2f7vcuWN49Uhox5kM5L86DzjEQ
- RHXndoJkeL8LmHx8DM+kx4aZt0zVfCHwmKTkSTQoAQakLpLte7tWXIio9ZKhUGPv/eHxXEoS
- 0rOOAZ6np1U/xNR82QbF9qr9TrTVI3GtVe7Vxmff+qoSAxJiZQCo5kt0YlWwti2fFI4xvkOi
- V7lyhOA3+/3oRKpZYQ86Frlo61HU3r6d9wzOwU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhW
- pOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNLSoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZ
- KXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVUcP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwp
- bV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6
- TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFU
- CSLB2AE4wXQkJbApye48qnZ09zc929df5gU6hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iS
- YBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616dtb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6g
- LxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7
- JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1cOY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0Sdu
- jWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/Jx
- IqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k
- 8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoXywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjK
- yKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9j
- hQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Tad2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yop
- s302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it+OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/p
- LHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1nHzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBU
- wYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVISl73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lU
- XOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfA
- HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
- izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <CH3PR12MB75485C401917E76FF22E0122AB85A@CH3PR12MB7548.namprd12.prod.outlook.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: XoAjZHlJpjK6Ck0bySxOw8QiLuQeroHFZ_KFcIT2hjw_1767978324
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
+Subject: Re: [PATCH 0/5] accel/tcg: Restrict WatchPoint API to TCG
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-riscv@nongnu.org,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org
+References: <20260106231908.16756-1-philmd@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260106231908.16756-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::644;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x644.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -169,196 +108,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/8/26 12:04, Shameer Kolothum wrote:
+On 1/7/26 10:19, Philippe Mathieu-Daudé wrote:
+> Hi,
 > 
+> This series is related to single binary, where we want
+> to build compilation units once. Headers using the
+> 'CONFIG_USER_ONLY' definition are "poisoned", except if
+> we duplicate the meson source set, in that case we define
+> COMPILING_SYSTEM_VS_USER and CONFIG_USER_ONLY is no more
+> poisoned.
 > 
->> -----Original Message-----
->> From: Duan, Zhenzhong <zhenzhong.duan@intel.com>
->> Sent: 08 January 2026 09:41
->> To: Shameer Kolothum <skolothumtho@nvidia.com>; qemu-
->> arm@nongnu.org; qemu-devel@nongnu.org
->> Cc: eric.auger@redhat.com; alex@shazbot.org; clg@redhat.com;
->> cohuck@redhat.com; mst@redhat.com; Nicolin Chen <nicolinc@nvidia.com>;
->> Nathan Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
->> Jason Gunthorpe <jgg@nvidia.com>; Krishnakant Jaju <kjaju@nvidia.com>
->> Subject: Re: [PATCH 3/3] hw/vfio/region: Create dmabuf for PCI BAR per
->> region
->>
->> External email: Use caution opening links or attachments
->>
->>
->> On 12/22/2025 9:53 PM, Shameer Kolothum wrote:
->>> From: Nicolin Chen <nicolinc@nvidia.com>
->>>
->>> Linux now provides a VFIO dmabuf exporter to expose PCI BAR memory for
->>> P2P use cases. Create a dmabuf for each mapped BAR region after the
->>> mmap is set up, and store the returned fd in the region’s RAMBlock.
->>> This allows QEMU to pass the fd to dma_map_file(), enabling iommufd to
->>> import the dmabuf and map the BAR correctly in the host IOMMU page
->> table.
->>>
->>> If the kernel lacks support or dmabuf setup fails, QEMU skips the
->>> setup and continues with normal mmap handling.
->>>
->>> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
->>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
->>> ---
->>>    hw/vfio/region.c     | 57
->> +++++++++++++++++++++++++++++++++++++++++++-
->>>    hw/vfio/trace-events |  1 +
->>>    2 files changed, 57 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/hw/vfio/region.c b/hw/vfio/region.c index
->>> b165ab0b93..6949f6779c 100644
->>> --- a/hw/vfio/region.c
->>> +++ b/hw/vfio/region.c
->>> @@ -29,6 +29,7 @@
->>>    #include "qemu/error-report.h"
->>>    #include "qemu/units.h"
->>>    #include "monitor/monitor.h"
->>> +#include "system/ramblock.h"
->>>    #include "vfio-helpers.h"
->>>
->>>    /*
->>> @@ -238,13 +239,52 @@ static void vfio_subregion_unmap(VFIORegion
->> *region, int index)
->>>        region->mmaps[index].mmap = NULL;
->>>    }
->>>
->>> +static int vfio_region_create_dma_buf(VFIORegion *region) {
->>> +    g_autofree struct vfio_device_feature *feature = NULL;
->>> +    VFIODevice *vbasedev = region->vbasedev;
->>> +    struct vfio_device_feature_dma_buf *dma_buf;
->>> +    size_t total_size;
->>> +    int i, ret;
->>> +
->>> +    g_assert(region->nr_mmaps);
->>> +
->>> +    total_size = sizeof(*feature) + sizeof(*dma_buf) +
->>> +                 sizeof(struct vfio_region_dma_range) * region->nr_mmaps;
->>> +    feature = g_malloc0(total_size);
->>> +    *feature = (struct vfio_device_feature) {
->>> +        .argsz = total_size,
->>> +        .flags = VFIO_DEVICE_FEATURE_GET |
->> VFIO_DEVICE_FEATURE_DMA_BUF,
->>> +    };
->>> +
->>> +    dma_buf = (void *)feature->data;
->>> +    *dma_buf = (struct vfio_device_feature_dma_buf) {
->>> +        .region_index = region->nr,
->>> +        .open_flags = O_RDWR,
->>> +        .nr_ranges = region->nr_mmaps,
->>> +    };
->>> +
->>> +    for (i = 0; i < region->nr_mmaps; i++) {
->>> +        dma_buf->dma_ranges[i].offset = region->mmaps[i].offset;
->>> +        dma_buf->dma_ranges[i].length = region->mmaps[i].size;
->>> +    }
->>> +
->>> +    ret = vbasedev->io_ops->device_feature(vbasedev, feature);
->>
->> vbasedev->io_ops->device_feature may be NULL for other backend like vfio-
->> user.
+> Looking at the watchpoint API, CONFIG_USER_ONLY is only
+> used to avoid stubs, so it can easily be reworked to avoid
+> the need of duplicated source set.
 > 
-> Ah..Ok. I will add a check.
+> Since here, we also restrict the API to TCG, and unify it
+> in a single header: "accel/tcg/watchpoint.h", since it is
+> distinct to the BreakPoint API which can be used by hardware
+> accelerators.
 
-Could you please add a global routine :
+Watchpoints could be used on aarch64 kvm.
 
-   int vfio_device_get_feature(VFIODevice *vbasedev, struct vfio_device_feature *feature)
+They probably could be used on other kvm, with modifications to kvm -- at present the api 
+presented to the hypervisor is breakpoint specific, and I'm not sure why.
+
+I think it would be shame to preclude other accelerators from handling watchpoints, even 
+if none currently do so.
 
 
-
-> 
->>
->>> +    for (i = 0; i < region->nr_mmaps; i++) {
->>> +        trace_vfio_region_dmabuf(region->vbasedev->name, ret, region->nr,
->>> +                                 region->mem->name, region->mmaps[i].offset,
->>> +                                 region->mmaps[i].size);
->>> +    }
->>> +    return ret;
->>> +}
->>> +
->>>    int vfio_region_mmap(VFIORegion *region)
->>>    {
->>>        int i, ret, prot = 0;
->>>        char *name;
->>>        int fd;
->>>
->>> -    if (!region->mem) {
->>> +    if (!region->mem || !region->nr_mmaps) {
->>
->> Just curious, when will above check return true?
-> I think `!region->mem` covers cases where no MemoryRegion was created
-> (e.g. zero sized regions).  And nr_mmaps checks regions with mmap
-> support exists (VFIO_REGION_INFO_FLAG_MMAP/ _CAP_SPARSE_MMAP).
-> 
->>
->>>            return 0;
->>>        }
->>>
->>> @@ -305,6 +345,21 @@ int vfio_region_mmap(VFIORegion *region)
->>>                                   region->mmaps[i].size - 1);
->>>        }
->>>
->>> +    ret = vfio_region_create_dma_buf(region);
->>> +    if (ret < 0) {
->>> +        if (ret == -ENOTTY) {
->>> +            warn_report_once("VFIO dmabuf not supported in kernel");
->>> +        } else {
->>> +            error_report("%s: failed to create dmabuf: %s",
->>> +                         memory_region_name(region->mem), strerror(errno));
-
-Shouldn't we return 'ret' in this case ?
-
-Thanks,
-
-C.
-
->>> +        }
->>> +    } else {
->>> +        MemoryRegion *mr = &region->mmaps[0].mem;
->>
->> Do we need to support region->mmaps[1]?
-> 
-> My understanding is all region->mmaps[] entries for a VFIO region share
-> the same RAMBlock. And the kernel returns a single dmabuf fd per region,
-> not per subrange.
-> 
-> Thanks,
-> Shameer
->>
->> Thanks
->>
->> Zhenzhong
->>
->>> +        RAMBlock *ram_block = mr->ram_block;
->>> +
->>> +        ram_block->fd = ret;
->>> +    }
->>> +
->>>        return 0;
->>>
->>>    no_mmap:
->>> diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events index
->>> 1e895448cd..592a0349d4 100644
->>> --- a/hw/vfio/trace-events
->>> +++ b/hw/vfio/trace-events
->>> @@ -117,6 +117,7 @@ vfio_device_put(int fd) "close vdev->fd=%d"
->>>    vfio_region_write(const char *name, int index, uint64_t addr, uint64_t
->> data, unsigned size) " (%s:region%d+0x%"PRIx64", 0x%"PRIx64 ", %d)"
->>>    vfio_region_read(char *name, int index, uint64_t addr, unsigned size,
->> uint64_t data) " (%s:region%d+0x%"PRIx64", %d) = 0x%"PRIx64
->>>    vfio_region_setup(const char *dev, int index, const char *name, unsigned
->> long flags, unsigned long offset, unsigned long size) "Device %s, region %d
->> \"%s\", flags: 0x%lx, offset: 0x%lx, size: 0x%lx"
->>> +vfio_region_dmabuf(const char *dev, int fd, int index,  const char *name,
->> unsigned long offset, unsigned long size) "Device %s, dmabuf fd %d region %d
->> \"%s\", offset: 0x%lx, size: 0x%lx"
->>>    vfio_region_mmap_fault(const char *name, int index, unsigned long offset,
->> unsigned long size, int fault) "Region %s mmaps[%d], [0x%lx - 0x%lx], fault:
->> %d"
->>>    vfio_region_mmap(const char *name, unsigned long offset, unsigned long
->> end) "Region %s [0x%lx - 0x%lx]"
->>>    vfio_region_exit(const char *name, int index) "Device %s, region %d"
-
+r~
 

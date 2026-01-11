@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7897DD2502D
-	for <qemu-arm@archiver.kernel.org>; Sun, 11 Jan 2026 20:08:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D324D25031
+	for <qemu-arm@archiver.kernel.org>; Sun, 11 Jan 2026 20:08:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vf1Y7-0006eq-Su; Sun, 11 Jan 2026 14:56:31 -0500
+	id 1vf1b1-0004kH-1k; Sun, 11 Jan 2026 14:59:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vf1Y6-0006dv-Cp; Sun, 11 Jan 2026 14:56:30 -0500
-Received: from mail-eastus2azlp170100001.outbound.protection.outlook.com
- ([2a01:111:f403:c110::1] helo=BN1PR04CU002.outbound.protection.outlook.com)
+ id 1vf1ad-0003Qf-6K; Sun, 11 Jan 2026 14:59:08 -0500
+Received: from mail-westcentralusazlp170100005.outbound.protection.outlook.com
+ ([2a01:111:f403:c112::5] helo=CY7PR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vf1Y4-0003s6-VM; Sun, 11 Jan 2026 14:56:30 -0500
+ id 1vf1ab-0004FM-Cy; Sun, 11 Jan 2026 14:59:06 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=rT1/FLjsdizrbSZvC3Lisex1/GYWLow9MQ4JiEOJNgZP7La0oJZaTFzQ0jsdMOdJHucpgvEpaE5sdgxtvlcRqokTjU6cibKYDNysuu31c0EpgQTRp+ge+W4dQTspnMrBFy1yxL6LBBf1QSIhn5UaG+UOtpxAqa/rxoBNqsxxOR/VX5HNEJj3jRuEZn4oXWlZ4F66/XhEj8P2cbtQYhSrVVnEYYKUVJI4pm2m2h4A4OG3jJv91PSWrUaJ75hDUg5+BjYblkM1UVHq5bT9OqUpLPbCFGIf5ljwIC0geWRzukzAauD4KvXUOrI7eBzzpQ7BMlGYPewuvvTyiepvQzQW5Q==
+ b=oKp9IUfL2LMJLgn36GtkZ9J7u7tEfySppG1EkL3VMMCOnd4sniatAir21s9yNbhSs980MCDJhsoutgUZi96nL7oPgw9FPOztzLhGHHUS8ASRDVbQxAOAvcQLuMPWO+C5Z9MhTzNfaG+eUqNqlMLIWQLSHS857SgRk2yg3GTnen7tkhUzCP+ADuYQ1RoT24eGN8a/FiFkKybBs+Fk7LEo/fiKOnmxtCHNzLgW7QOA6C8yCFtMcwDZHWIgSn8k9qEwVANVu0bDrgwDBBU0/1llugySrmtii64DWaQaS9kh1lYF9miDFhnepzH3QLsElvw5eBfLPaicnId/RtuReEkz7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=YlLt15/mAHiDoXl6RWBxvgXTYW0tMNmaTYq32DllFZo=;
- b=Tp/U2R6rpAVkMtqyv0xS1r7Pp3PoJmVuzS/uK8WbzwPSFw224SFFoq+xZaYRBtv9sOFq0veU+2Ugj42kQEsvCnz+6EirprjEU+ZVTdp0tF64ADJnNfOTOpXjZ89brQ9MbZDo3suZ6LHShmKbtrHDZmW2t0VXLWmuTxh3zy/qiyjxRX0KLiqKTv++K7aq6SX38pyg+tEO8kHn5gjHT+fKzldQks7PA9JZucNGnqoE22uz8swZRc/bzM7lPGwoug2Ni6TTBWgwSMonHV28QRo04F4YK0C7LDSWVyTyFiR9fEw2qFl++ea5CBaXVKE8qXXCBjquSagX3cnW/E9+8rwJRw==
+ bh=OvaxIvZ+vgjrIkUKsm+UhDhGQlso4n7i3HJ1max+gOk=;
+ b=WXVfcSyhLYsdNmob+LMhaGP+n8SVHgXYWsiT7JtyV3GsBuzwHMB8tmS5c7Pqo72AzFyBu0V8m88wZ5bMOThk0iFwuzIxv9xa74/loq3KUSQlvA2yu3NmNa34FFvomFWBHgBo+7RlovzbcUrGLABVLup+++hIWPiulUktlaNSEa6v6vnxqvpKXPATwylw+lQIhfimxWj5C9pSyoxToR2YgpAxBti3EAXcSJPQFjMAdM0Kc5B02lgtYdt0oi3bBTL3+zQ+rseLoDZ8a6YbKIQ+7/m/48Tq3gpGMD5vzwbhGjieYiR+8Y90hEu4O6WdcUqyr+AiQPaBOLbwZ3dM44jDuw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
  dkim=none (message not signed); arc=none (0)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=YlLt15/mAHiDoXl6RWBxvgXTYW0tMNmaTYq32DllFZo=;
- b=cBjdDTpC6K60m1Eq1XfrYjPGgQhVfKNve6tz+8msn42PAAUDZBJ22mgX+dQL3jOAWbBlVqgMaOeYSB3dgeHl/Fh8m8QBMrnvR4bpo+5aLuMS2XFKePGa3gzlxNoDSyeejpfWpG6W7fls7mCtLusqP5jK0Od1uL8gIPe4VF9AicX7lg7S4Z2o92ieq1TCUu8Wz7zEDJSC5vW95Nf68pEroPEIjep/yFJIaqVyXIROzyJZv4vaOFWOrIFG449/Bvww7Q5pg2+ZP694KokAJQayVTmYTvvGhX83msKsUlra0JuncO5XykcGc19c+DUBZbucEAC5xxSga/pHSNzTC+xONQ==
-Received: from SN6PR05CA0024.namprd05.prod.outlook.com (2603:10b6:805:de::37)
- by CY5PR12MB6408.namprd12.prod.outlook.com (2603:10b6:930:3b::8) with
+ bh=OvaxIvZ+vgjrIkUKsm+UhDhGQlso4n7i3HJ1max+gOk=;
+ b=NIHuiUby5TA11yyDp0+8erw0BMd0q3Go5ZVgyGqNSNzvJR1/84IpnRg6rOpUCqKFqvq7BYxIXaraKcZjr39MiiMiS/UwzM6zSIY2Lue3ui9zd3xIfpBMqpmIPm2BVPeMMrnDQ50GhVk8XhOdbEjDJYTvcLfaxa+rK+/bSobmKf2c4Hqiovjdh3RfJ0+Lw6gPr26iWT15XtLCkOA5Zh8dcmHIQLBx2aCEGeVj7hT2tIWCOmVUgI4yryVVYLAqkl5vomisW55wtoofaM2VGQgV6V65NTCLzskeYu9NrLrqIpb5JN+ek+bGMBhKZw9Uo56njU/PO48vGLZtC4NPsaYuFQ==
+Received: from SA0PR11CA0046.namprd11.prod.outlook.com (2603:10b6:806:d0::21)
+ by DM4PR12MB5889.namprd12.prod.outlook.com (2603:10b6:8:65::18) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.6; Sun, 11 Jan
- 2026 19:56:23 +0000
-Received: from SN1PEPF0002636C.namprd02.prod.outlook.com
- (2603:10b6:805:de:cafe::8e) by SN6PR05CA0024.outlook.office365.com
- (2603:10b6:805:de::37) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9520.4 via Frontend Transport; Sun,
- 11 Jan 2026 19:56:23 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.7; Sun, 11 Jan
+ 2026 19:58:59 +0000
+Received: from SN1PEPF0002BA4D.namprd03.prod.outlook.com
+ (2603:10b6:806:d0:cafe::66) by SA0PR11CA0046.outlook.office365.com
+ (2603:10b6:806:d0::21) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9499.6 via Frontend Transport; Sun,
+ 11 Jan 2026 19:59:01 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=nvidia.com;
 Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- SN1PEPF0002636C.mail.protection.outlook.com (10.167.241.137) with Microsoft
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ SN1PEPF0002BA4D.mail.protection.outlook.com (10.167.242.70) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9520.1 via Frontend Transport; Sun, 11 Jan 2026 19:56:22 +0000
+ 15.20.9520.1 via Frontend Transport; Sun, 11 Jan 2026 19:58:59 +0000
 Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Sun, 11 Jan
- 2026 11:56:14 -0800
+ 2026 11:58:53 -0800
 Received: from NV-2Y5XW94.nvidia.com (10.126.231.35) by rnnvmail201.nvidia.com
  (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Sun, 11 Jan
- 2026 11:56:09 -0800
+ 2026 11:58:48 -0800
 From: Shameer Kolothum <skolothumtho@nvidia.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
@@ -72,11 +72,11 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <mochs@nvidia.com>, <smostafa@google.com>, <wangzhou1@hisilicon.com>,
  <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
  <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>,
- <kjaju@nvidia.com>, "Michael S . Tsirkin" <mst@redhat.com>
-Subject: [PATCH v7 06/36] hw/pci/pci: Move pci_init_bus_master() after adding
- device to bus
-Date: Sun, 11 Jan 2026 19:52:52 +0000
-Message-ID: <20260111195508.106943-7-skolothumtho@nvidia.com>
+ <kjaju@nvidia.com>
+Subject: [PATCH v7 35/36] hw/vfio/pci: Synthesize PASID capability for
+ vfio-pci devices
+Date: Sun, 11 Jan 2026 19:53:21 +0000
+Message-ID: <20260111195508.106943-36-skolothumtho@nvidia.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260111195508.106943-1-skolothumtho@nvidia.com>
 References: <20260111195508.106943-1-skolothumtho@nvidia.com>
@@ -88,56 +88,56 @@ X-ClientProxiedBy: rnnvmail202.nvidia.com (10.129.68.7) To
  rnnvmail201.nvidia.com (10.129.68.8)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN1PEPF0002636C:EE_|CY5PR12MB6408:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7bb3c39f-699a-4a3c-af5c-08de514b7f25
+X-MS-TrafficTypeDiagnostic: SN1PEPF0002BA4D:EE_|DM4PR12MB5889:EE_
+X-MS-Office365-Filtering-Correlation-Id: 05c00e13-d753-44a5-3a35-08de514bdc6e
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|7416014|82310400026|1800799024|36860700013; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?QdV7pfSIvANKnR70G2zysLVIonMb0Q8znU2uTMlC/UUWkuYLy5OO09wdJa5n?=
- =?us-ascii?Q?7M7yvjASU+Im59jWjOI/NJ/2ei+vSNqWExiJST0stFwH43cur/X3O4TxkI+p?=
- =?us-ascii?Q?MYei1a/9xxicZboA+1PtCb9gVus/OdE8P5vAD2+LVQ+E0DallKCyt3ur90a2?=
- =?us-ascii?Q?HgEkw5ixdkee8dJzID9san5DLk44VFNWJgOBjovsUJyIt3A1BSKnoDi33cmh?=
- =?us-ascii?Q?eHegXsMcnOnkcwghDz4JWpvbjDyCwclyWw3jk8Nukyks1fHeCQY8GzzEv7jC?=
- =?us-ascii?Q?G2tqn0gNCBeleb9g9usk37nI9CthZApuq/ONZDycaw/PoYspREpkQHWzQSos?=
- =?us-ascii?Q?kU1bwz9p4twcplELT6q325SmzMX6cQX31MzQXCAYe8vgyTa8+De1iyB6b1nm?=
- =?us-ascii?Q?I6k++bCofF5pi2JRyhYf7ePeakrQT7E7POz4v/Pz8rfAB6/GjttMNPfbNpKP?=
- =?us-ascii?Q?SUSbffXp3ajXGn/2nxsjFISIcBhaoqwVHEMCGH8DM1srdgRHp0g+hEXh66V8?=
- =?us-ascii?Q?0iEFeEXQRZSS/J72r22Xdu9Zzu+6fZOXBvDIj7s2F6Ze/Y321FkLyjVIQNnA?=
- =?us-ascii?Q?4xSbDK4AnMhtvrV4mG31zLi+dcNHPxqa3OgbGQff9ONPNtcRch3piZgOQAda?=
- =?us-ascii?Q?n5zKELoCxyNuBgmYuPiHdjQoSiaDU1YL0wTOV7eJQpLAXYz3iodqFggJwuW1?=
- =?us-ascii?Q?+wyKCaxIOI9bvBHbYjykTtHAxwbFSmZ8lvyOJLN0Bl9BGFDpHiHIiQqzhnst?=
- =?us-ascii?Q?EJEm/jjhDdQz6690C9mu9L9rqoFNBk+Qd7/tijOdt5rMydEu6cva6lGoBH/i?=
- =?us-ascii?Q?p1VWiHYBx6v/OFOI3mvYt0L7UtoCCmBi6S/VWXHJU0KAK1JNTBaylqSh2Llo?=
- =?us-ascii?Q?DofG5dWOnCM/zwJKDhf2GG5aQw+buROCOh2GLqQR9+56ORgC+iH6WDCgrjpb?=
- =?us-ascii?Q?Vqi5Ow/Rgm+SqG0+Pg4vuHf0LvMg4Dmoa8Yn/UFhT3tL7b/7tISEPsgtSLI8?=
- =?us-ascii?Q?/C8ImgqhkB4DPrjqdnIDBxqYN+AmRRHqGBFQgrn10/BhstuZ5hzT2ijLXvDQ?=
- =?us-ascii?Q?mE9fIWxVOsWRBsSlQX7TjqLggJc9xkZWAxDhxmvR5Qh6Pwv0boo3frBaToZJ?=
- =?us-ascii?Q?Eb9OmkryY75L/hCj0PC8MlYRZbPLmO8cdkxl2UrEWlZUymakMC9ro22FZ19d?=
- =?us-ascii?Q?w5A5nUrveH0rYwaOP9esZBmVksbKcganpId1yJ2wn33G/nggorUCYNKEYatj?=
- =?us-ascii?Q?IgN+sty/mobJhJGTQEvhenHY0YQmNm8IAzt4ks2WzP4TBR23fmhzgysDJFJg?=
- =?us-ascii?Q?T1GZPKGuzveJB2g/OKTCM+o57ekfnEIQj+wwg3By9EmdXvhDUVzZYHhpE1Kp?=
- =?us-ascii?Q?UQRtPPv9Q5D9CkRB2O+5PHQGAnbhjNK4VhQle2zxWlPwv4vH69Fv18Pkqf9F?=
- =?us-ascii?Q?hqnmDA10d6sCvFR9Ya0r6GeX48CsdfJ8B1X05Qy9FLWK+4LvPtakzXLgKgGk?=
- =?us-ascii?Q?lb0BWGUEl8QRSBMCyItaoY+GGUy8aRXEDbnNjA7By9DU2bJp4gcj56e8p9wb?=
- =?us-ascii?Q?+EsE/FRNm8x6+SL38qs=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(82310400026)(1800799024)(36860700013); DIR:OUT;
+ ARA:13230040|82310400026|376014|36860700013|1800799024|7416014; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Iuk/0ZpQrHWgNYnoiAWUbqsFD9+6jy+ce0twj+iVLSkNXXsW5ogA3bUEnaRp?=
+ =?us-ascii?Q?y6haSlbLrEqtPa4i8UeE+HgtxD6kUgOfdzISZiz3/0yXbG0fmCefyBKW4RfS?=
+ =?us-ascii?Q?1fcDzN+GmmYnegV2LYNpFFsu9hGR1zecEH7P3wy8XJul3cAdTz3wfAVbvI2C?=
+ =?us-ascii?Q?5aarMI2wzW2SlkwG1ehGdGt6yPO0ENCpA0Eyty2jobM9Xm+L5kr7An/y+7Td?=
+ =?us-ascii?Q?JZ5JrxmvuJlLVIZaVYXAbJgV6YQu2XjGu35V3BtgbACAtz3zpRCpW/Pwo1UP?=
+ =?us-ascii?Q?Bt6+wTxRWnIJVvpoihL7kwRTTbDbesGXxn1cD1mWW9q9PSprBbJxKRILuEwD?=
+ =?us-ascii?Q?WgARLr7AvvkR5PlqVzqaOB/0Uv/3bXSECG3XDi8hTB8waRznS7hZzI0POq2l?=
+ =?us-ascii?Q?lsodD5seX52nxg+FfPDxPo66XCUQlLmTzHIHXjo69wZs9hekk0pBzcb+xY42?=
+ =?us-ascii?Q?4Lv37+ztbKel6Nam19W/gg2P15+IWZYHcapqKl4JNP/pt9M9lFKTQJao/jj+?=
+ =?us-ascii?Q?4ugg40YLAgT99WPkcC56IIhnYod/9wtGny6Qs7blE829jJUjLx2O7KTYlbnn?=
+ =?us-ascii?Q?T6n26aSxgwrEGOPSa73VSo4Y1AR9kMbqPLc+IZ+HUHGjALXZZodGpbC5eedn?=
+ =?us-ascii?Q?oe+Xo6mIFRT271exQLoEOXGJfxZSznm9ngbXJrnbmWxRkDt6vRIeLTIAzBZP?=
+ =?us-ascii?Q?E3uebA08ohfHBvu0c/EPwS/jJk7y4Bz1VCADQwwEimI3hqWfbfgjjBGLn8AP?=
+ =?us-ascii?Q?U7oFOjPffKjdN4c6M4c/PbbGxkN7GnOARIN+Rf6Rl7LbRs5+pEk0U1blSkGl?=
+ =?us-ascii?Q?XfL4n/GgA3EF47vUtCj5Up39Sz7oBNmdGP/oQzgMRt/y9orpfDGetfcYR/hB?=
+ =?us-ascii?Q?Slg5pWqCmkRrVejdWYa/BlaDdVyV5DKaQyT3bMIxNWByRHSjs54SV0zdfDvS?=
+ =?us-ascii?Q?f8N77s9pyJfW9BoiUA+4pq6TNyhUXWJrVZ4acoN5pHCKauicNCxy4H8YzkqN?=
+ =?us-ascii?Q?4ZG08J+QQCxZ4UV8MMkhZSgnY+O27iuPnvdoTJ9NJ4SWm5056R1+0hQkrTge?=
+ =?us-ascii?Q?swma7lDbdxR1+luv1nEPYQqHXc6h2L9JwbHKfhtxnSeagduQeej8uV+YuyEW?=
+ =?us-ascii?Q?7Zqhvfxl/JRi2eZyN0/qmV171TpquvirwNEXS9geet41EwqK3lJvQpSjDSfD?=
+ =?us-ascii?Q?rQzHoD30Y4dwdV0RvG7+7qQOzQDA5nXgAQAcY+MDP4L62Dpr0sSBK8UFuUsK?=
+ =?us-ascii?Q?t/LIOqvR2Exfo//ZQY8u8bDp0wPP5tVMA6uaGPsKhlk52WjusVCL0s5aybRb?=
+ =?us-ascii?Q?hNBib00qZhI75FKWOl5X25dSKZY4to2QCsfmgOZlEeCUxLkYIaqvKEIih78T?=
+ =?us-ascii?Q?QI92ULJKV+rFw/oJK1XR/2ROGLPO9ZjZujt9gLrEjvUhtYyeJzHrldrCTH3K?=
+ =?us-ascii?Q?jBVYP9LtNlbtL0zsYwuKqV1+F3NYZP56S6q0iE1ymNC/5OozJZMsF0t0BNMv?=
+ =?us-ascii?Q?V1HIxLRYwnvoJ8SYOCPyac3iYRKEPhgXAYT6tA3Bjj9NfwSdqQwdlD/uCP4O?=
+ =?us-ascii?Q?9JH3dCOPRIkxsi5Iv24=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(82310400026)(376014)(36860700013)(1800799024)(7416014); DIR:OUT;
  SFP:1101; 
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jan 2026 19:56:22.9232 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7bb3c39f-699a-4a3c-af5c-08de514b7f25
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Jan 2026 19:58:59.4312 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 05c00e13-d753-44a5-3a35-08de514bdc6e
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SN1PEPF0002636C.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: SN1PEPF0002BA4D.namprd03.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR12MB6408
-Received-SPF: permerror client-ip=2a01:111:f403:c110::1;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5889
+Received-SPF: permerror client-ip=2a01:111:f403:c112::5;
  envelope-from=skolothumtho@nvidia.com;
- helo=BN1PR04CU002.outbound.protection.outlook.com
+ helo=CY7PR03CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -160,55 +160,182 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-During PCI hotplug, in do_pci_register_device(), pci_init_bus_master()
-is called before storing the pci_dev pointer in bus->devices[devfn].
+Add support for synthesizing a PCIe PASID extended capability for
+vfio-pci devices when PASID is enabled via a vIOMMU and supported by
+the host IOMMU backend.
 
-This causes a problem if pci_init_bus_master() (via its
-get_address_space() callback) attempts to retrieve the device using
-pci_find_device(), since the PCI device is not yet visible on the bus.
+PASID capability parameters are retrieved via IOMMUFD APIs and the
+capability is inserted into the PCIe extended capability list using
+the insertion helper. A new x-vpasid-cap-offset property allows
+explicit control over the placement; by default the capability is
+placed at the end of the PCIe extended configuration space.
 
-Fix this by moving the pci_init_bus_master() call to after the device
-has been added to bus->devices[devfn].
+If the kernel does not expose PASID information or insertion fails,
+the device continues without PASID support.
 
-This prepares for a subsequent patch where the accel SMMUv3
-get_address_space() callback retrieves the pci_dev to identify the
-attached device type.
-
-No functional change intended.
-
-Cc: Michael S. Tsirkin <mst@redhat.com>
-Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
 Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 ---
- hw/pci/pci.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/vfio/pci.c           | 84 +++++++++++++++++++++++++++++++++++++++++
+ hw/vfio/pci.h           |  1 +
+ include/hw/core/iommu.h |  1 +
+ 3 files changed, 86 insertions(+)
 
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index a136e772a3..a852694cc9 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -1381,9 +1381,6 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
-     pci_dev->bus_master_as.max_bounce_buffer_size =
-         pci_dev->max_bounce_buffer_size;
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index c734472721..96990576ac 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -24,6 +24,7 @@
+ #include <sys/ioctl.h>
  
--    if (phase_check(PHASE_MACHINE_READY)) {
--        pci_init_bus_master(pci_dev);
--    }
-     pci_dev->irq_state = 0;
-     pci_config_alloc(pci_dev);
- 
-@@ -1427,6 +1424,9 @@ static PCIDevice *do_pci_register_device(PCIDevice *pci_dev,
-     pci_dev->config_write = config_write;
-     bus->devices[devfn] = pci_dev;
-     pci_dev->version_id = 2; /* Current pci device vmstate version */
-+    if (phase_check(PHASE_MACHINE_READY)) {
-+        pci_init_bus_master(pci_dev);
-+    }
-     return pci_dev;
+ #include "hw/core/hw-error.h"
++#include "hw/core/iommu.h"
+ #include "hw/pci/msi.h"
+ #include "hw/pci/msix.h"
+ #include "hw/pci/pci_bridge.h"
+@@ -2498,9 +2499,71 @@ static int vfio_setup_rebar_ecap(VFIOPCIDevice *vdev, uint16_t pos)
+     return 0;
  }
  
++/*
++ * Try to retrieve PASID capability information via IOMMUFD APIs and,
++ * if supported, synthesize a PASID PCIe extended capability for the
++ * VFIO device.
++ *
++ * Use user-specified PASID capability offset if provided, otherwise
++ * place it at the end of the PCIe extended configuration space.
++ */
++static void vfio_pci_synthesize_pasid_cap(VFIOPCIDevice *vdev)
++{
++    HostIOMMUDevice *hiod = vdev->vbasedev.hiod;
++    HostIOMMUDeviceClass *hiodc;
++    PasidInfo pasid_info;
++    PCIDevice *pdev = PCI_DEVICE(vdev);
++    uint16_t pasid_offset;
++
++    if (vdev->vbasedev.mdev) {
++        return;
++    }
++
++    hiodc = HOST_IOMMU_DEVICE_GET_CLASS(hiod);
++    if (!hiodc || !hiodc->get_pasid_info ||
++        !hiodc->get_pasid_info(hiod, &pasid_info) ||
++        !(pci_device_get_viommu_flags(pdev) & VIOMMU_FLAG_PASID_SUPPORTED)) {
++        return;
++    }
++
++    /*
++     * Check if user has specified an offset to place PASID CAP,
++     * else select the last offset as default
++     */
++    if (vdev->vpasid_cap_offset) {
++        if (!QEMU_IS_ALIGNED(vdev->vpasid_cap_offset, PCI_EXT_CAP_ALIGN) ||
++            vdev->vpasid_cap_offset < PCI_CONFIG_SPACE_SIZE ||
++            vdev->vpasid_cap_offset + PCI_EXT_CAP_PASID_SIZEOF >
++                PCIE_CONFIG_SPACE_SIZE) {
++            error_report("vfio: invalid x-vpasid-cap-offset 0x%x, skipping PASID",
++                        vdev->vpasid_cap_offset);
++            return;
++        }
++        pasid_offset = vdev->vpasid_cap_offset;
++    } else {
++        pasid_offset = PCIE_CONFIG_SPACE_SIZE - PCI_EXT_CAP_PASID_SIZEOF;
++        warn_report("vfio: PASID capability offset(x-vpasid-cap-offset) not specified, "
++                    "placing at the default offset 0x%x",
++                    pasid_offset);
++    }
++
++    if (!pcie_insert_capability(pdev, PCI_EXT_CAP_ID_PASID, PCI_PASID_VER,
++                                pasid_offset, PCI_EXT_CAP_PASID_SIZEOF)) {
++        error_report("vfio: Placing PASID capability at offset 0x%x failed",
++                     pasid_offset);
++    }
++    pcie_pasid_common_init(pdev, pasid_offset, pasid_info.max_pasid_log2,
++                           pasid_info.exec_perm, pasid_info.priv_mod);
++
++    /* PASID capability is fully emulated by QEMU */
++    memset(vdev->emulated_config_bits + pdev->exp.pasid_cap, 0xff,
++           PCI_EXT_CAP_PASID_SIZEOF);
++}
++
+ static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
+ {
+     PCIDevice *pdev = PCI_DEVICE(vdev);
++    bool pasid_cap_added = false;
+     uint32_t header;
+     uint16_t cap_id, next, size;
+     uint8_t cap_ver;
+@@ -2578,12 +2641,24 @@ static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
+                 pcie_add_capability(pdev, cap_id, cap_ver, next, size);
+             }
+             break;
++        /*
++         * VFIO kernel does not expose the PASID CAP today. We may synthesize
++         * one later through IOMMUFD APIs. If VFIO ever starts exposing it,
++         * record its presence here so we do not create a duplicate CAP.
++         */
++        case PCI_EXT_CAP_ID_PASID:
++            pasid_cap_added = true;
++            /* fallthrough */
+         default:
+             pcie_add_capability(pdev, cap_id, cap_ver, next, size);
+         }
+ 
+     }
+ 
++    if (!pasid_cap_added) {
++        vfio_pci_synthesize_pasid_cap(vdev);
++    }
++
+     /* Cleanup chain head ID if necessary */
+     if (pci_get_word(pdev->config + PCI_CONFIG_SPACE_SIZE) == 0xFFFF) {
+         pci_set_word(pdev->config + PCI_CONFIG_SPACE_SIZE, 0);
+@@ -3756,6 +3831,8 @@ static const Property vfio_pci_properties[] = {
+                      TYPE_IOMMUFD_BACKEND, IOMMUFDBackend *),
+ #endif
+     DEFINE_PROP_BOOL("skip-vsc-check", VFIOPCIDevice, skip_vsc_check, true),
++    DEFINE_PROP_UINT16("x-vpasid-cap-offset", VFIOPCIDevice,
++                       vpasid_cap_offset, 0),
+ };
+ 
+ #ifdef CONFIG_IOMMUFD
+@@ -3913,6 +3990,13 @@ static void vfio_pci_class_init(ObjectClass *klass, const void *data)
+                                           "destination when doing live "
+                                           "migration of device state via "
+                                           "multifd channels");
++   object_class_property_set_description(klass, /* 11.0 */
++                                          "x-vpasid-cap-offset",
++                                          "PCIe extended configuration space offset at which to place a "
++                                          "synthetic PASID extended capability when PASID is enabled via "
++                                          "a vIOMMU. A value of 0 (default) places the capability at the "
++                                          "end of the extended configuration space. The offset must be "
++                                          "4-byte aligned and within the PCIe extended configuration space");
+ }
+ 
+ static const TypeInfo vfio_pci_info = {
+diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+index 0f78cf9cdb..d6495d7f29 100644
+--- a/hw/vfio/pci.h
++++ b/hw/vfio/pci.h
+@@ -187,6 +187,7 @@ struct VFIOPCIDevice {
+     bool defer_kvm_irq_routing;
+     bool clear_parent_atomics_on_exit;
+     bool skip_vsc_check;
++    uint16_t vpasid_cap_offset;
+     VFIODisplay *dpy;
+     Notifier irqchip_change_notifier;
+     VFIOPCICPR cpr;
+diff --git a/include/hw/core/iommu.h b/include/hw/core/iommu.h
+index 9b8bb94fc2..9635770bee 100644
+--- a/include/hw/core/iommu.h
++++ b/include/hw/core/iommu.h
+@@ -20,6 +20,7 @@
+ enum viommu_flags {
+     /* vIOMMU needs nesting parent HWPT to create nested HWPT */
+     VIOMMU_FLAG_WANT_NESTING_PARENT = BIT_ULL(0),
++    VIOMMU_FLAG_PASID_SUPPORTED = BIT_ULL(1),
+ };
+ 
+ #endif /* HW_IOMMU_H */
 -- 
 2.43.0
 

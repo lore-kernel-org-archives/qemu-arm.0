@@ -4,85 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2CB3D277CE
-	for <qemu-arm@archiver.kernel.org>; Sat, 10 Jan 2026 05:54:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCD12D2502F
+	for <qemu-arm@archiver.kernel.org>; Sun, 11 Jan 2026 07:55:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1veRv9-0001hf-3e; Sat, 10 Jan 2026 00:53:55 -0500
+	id 1veqFk-0002QE-JO; Sun, 11 Jan 2026 02:52:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <th.huth@gmail.com>) id 1veRv8-0001hM-0G
- for qemu-arm@nongnu.org; Sat, 10 Jan 2026 00:53:54 -0500
-Received: from mail-ej1-f41.google.com ([209.85.218.41])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1veqFj-0002Pu-Hd
+ for qemu-arm@nongnu.org; Sun, 11 Jan 2026 02:52:47 -0500
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <th.huth@gmail.com>) id 1veRv6-0004YT-Et
- for qemu-arm@nongnu.org; Sat, 10 Jan 2026 00:53:53 -0500
-Received: by mail-ej1-f41.google.com with SMTP id
- a640c23a62f3a-b7277324204so763108666b.0
- for <qemu-arm@nongnu.org>; Fri, 09 Jan 2026 21:53:48 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1veqFi-0003IV-3h
+ for qemu-arm@nongnu.org; Sun, 11 Jan 2026 02:52:47 -0500
+Received: by mail-pj1-x1032.google.com with SMTP id
+ 98e67ed59e1d1-34c30f0f12eso3141537a91.1
+ for <qemu-arm@nongnu.org>; Sat, 10 Jan 2026 23:52:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1768117964; x=1768722764; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=SEeSTgm7Tcfb79fz11fqjFg7zq5pHy0h092GyRg0F2A=;
+ b=uORmUad4LD5a9mdYIBGlfav4h276OH0OWlI5enLP60adgqbpG5fLF6HBvCauKzzVep
+ MBw5YVEa5W2dBVfOvRPGdAnpoPApy6nxaJmJMogiF89BWycySwWks07ZioosBJtoa0wH
+ L5/iMvnh5EghcqmDxQZ/g/JJ1o2Q7ohjVYVmJvZUodib3UszS9r/MEGMI/XA61S06lyP
+ J0BPaV4aNvnm2oCGnoBTuKXk1pYZoBDZ4RRRiucYis1osoOJ41qR0Wbj4i4jCTJCJLws
+ rNx16V1m390NwTBPJW/umok9PNUqL6biwIAqn5L55u+U6LF6RgDDQAnCX/ktHvDNjYa4
+ AC6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768024427; x=1768629227;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=mT5azy9eTop/x7ps35SVvRiOgyNftOAc/6RiwumWPCE=;
- b=kcDE96GHafGkli4eVJF3nSuotro4ufVGwfTfXFjXnzmIBdbYfG/ZF42BpswSlK6MCU
- XnEpMgIKgTMFJRg09qXxFuQgSWfNl8NmFwotEVA1mKdR6i16E3t8n1FWGr9YGK6Lwi6S
- /L8MCo/iv0BTXUlAtZuAVHv4yakUTjr7bFqmobYKeEvESAgj68GMmiOD4kRfsvOOQvy0
- FuLdIOTcqDGxpI81sHjmOYFTQnUDV/GqI5Dhbu6gNtux/79RWiBP7PL1L80qOGhIk+pj
- IJo6AHDYl1UJ4wR2RP8/REd0rW14Of8d8CRy1z8irdeQGz9WM4L0acF2FAPF0Q9RYV7o
- ykRA==
+ d=1e100.net; s=20230601; t=1768117964; x=1768722764;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=SEeSTgm7Tcfb79fz11fqjFg7zq5pHy0h092GyRg0F2A=;
+ b=sNewh655IqnZcwFtkwNm+8kLd4QCgnDYysidobFBzZgUNvyPctUr0o0dRrWZL2OeND
+ S60G8biDQU3mTuliLRhWWdS+s5pSyUjUxLcwC0pbIN36P9J2QOC6bYPkDLHkDIIknGRj
+ RJrhpxpJoPb11VtqisjVQemmlO3W4o8XBBgHAjlNd8w+VEH5ebjprGtl0ChywEKOqh2E
+ 3eVVn4BcEbDSN1mdpGdHS8Dt0nID4iXb+XiJ6WLUXnopwfP5RiiErxFN6pSobxeesMPW
+ yvOQaqAGNfMuv46N4WkOslCc/HwJrsTni0JICeJab9IqOGAldzrB7pwOTkK66C0zM+1U
+ 3dWQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUXPNKVDGP7DqU1lvSkKYXhLjchMW6seSV0cyr4ms2gVidLv0bi8ifNweRC00j10X0UTDngIXIFZQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwLiT5ljgS7MtvNbmcPmsd8EzLs1cq1Zv+FzoJNLjPGP5bEXn/4
- tAEDuTxwoHq4MyRroHZGWnGDEI//6CuwJ/YflTKXhtVRo6Mnc42mMDyS
-X-Gm-Gg: AY/fxX4p7h9yUx3okxVzQoNQTuhUQ0UrljmFxISppZuvCmrumvt84LOeW7UTpk71VCg
- L1m04GgcpYNo7g2bg4D9apG7uK5IFx/3Dk8mRo+bs3wY+FkDUJFeT/vuiv+ZTuEdnc9FDe7hpX2
- FjiJTZ70enRLQxnlmC3cIYVGiT0eKU2vsMmv2s2dXguwSNE1Y9RAHbUGWpFegryEJvH5D3/403t
- a5dG/Aw/3NKoMK9yNaWtAV6dtmsdGuBerFzaXyyyJGGXrqWC0K1KQmEby/58gTeG3gPm19tziFZ
- 3Zyf6C8SOr6SZIIeCGI4NbY5+zY/hReQ2IMeWt8EAT9JhJWj4hG5VFf2C8Z5vZfBh5ejagYDl98
- 0zWSVq+qRLKI5AuEBgQjbKvXKGg2IiJfYLgnhK6MP4Rabv8hBwQOrr1fI56zY1/FrCSNYTH6BGO
- VA64RbDW35rA==
-X-Google-Smtp-Source: AGHT+IFNSU24NwRSUvhOOLY242Wlu8YeoO8mPHa37E/9wpqhULSpbwfskqGtXXXW59JnEjJTKRRaIA==
-X-Received: by 2002:a17:907:2da6:b0:b72:134a:48c8 with SMTP id
- a640c23a62f3a-b8445232b14mr1158177266b.14.1768024426785; 
- Fri, 09 Jan 2026 21:53:46 -0800 (PST)
-Received: from tpx1 ([47.64.114.194]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b86f61d2774sm72212966b.41.2026.01.09.21.53.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 09 Jan 2026 21:53:46 -0800 (PST)
-Date: Sat, 10 Jan 2026 06:53:44 +0100
-From: Thomas Huth <huth@tuxfamily.org>
-To: Alex =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>, Jiaxun
- Yang <jiaxun.yang@flygoat.com>, Bastian Koppelmann
- <kbastian@rumtueddeln.de>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVk?=
- =?UTF-8?B?w6k=?= <philmd@linaro.org>, qemu-arm@nongnu.org, Yoshinori Sato
- <yoshinori.sato@nifty.com>, Yanan Wang <wangyanan55@huawei.com>, Aleksandar
- Rikalo <arikalo@gmail.com>, Eduardo Habkost <eduardo@habkost.net>
-Subject: Re: [RFC PATCH 07/12] target/m68k: drop cpu_reset on realizefn
-Message-ID: <20260110065344.783237f3@tpx1>
-In-Reply-To: <20260108143423.1378674-8-alex.bennee@linaro.org>
-References: <20260108143423.1378674-1-alex.bennee@linaro.org>
- <20260108143423.1378674-8-alex.bennee@linaro.org>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+ AJvYcCUzPpB8cqaQkcGkPCfjhePmNcsBS2DmaTlvrTHkM4/lnDbBFs7pjSp6cPJECrBXAX0hu9V42YVfgQ==@nongnu.org
+X-Gm-Message-State: AOJu0YybIohKt2vXA0i7FTanOjWvSUq/gcqGAl0t7614OiD4p82v6Cuf
+ YsFZUy+3uhrnQ2eMObb5OXBeXtrzIaSur/3+cc4Z64a06frQ7G8yFSno7h5BGERM9Xg=
+X-Gm-Gg: AY/fxX7AVWJaCd74QfDpab5xApfwiW9iZ/4JQ6M4aMCo15LUhyZ2f6zsXKFIeTelfG2
+ NXvjUUaUjmkGrLjcl45Jkjp6W7MNiwY4O8gPlhvLsr4AvbGQNJEowsbPBj26k4PbvesynPT151L
+ l+R7iZE+pF58j1mUTXpAnKC+ibtafdfpo3Va2DaBmRm16H/C+lgIdDF6IoQPnn0L6+jLc2WKAAg
+ ahP0uaoGEY4sfx9ybQwRHjjgcobFNTSzcBTVzVFhLZ5CbWqQJImucmNOGfaShUYYnENlgP5ccu+
+ Gm33gufo+VU4iTCIjfwM03g8XYMYz0WH4B/kyXviS6VZ4XOUkDKSW2Y+JYXH27ZVh0km/cj+h3f
+ IHxmjxc6kCs55oi3J5yg9ehZeYxFFjoWS0LYb+lx7eOPEi8Mz6X8fQThgtjFJlLGFekonU42dkG
+ E4+0QIz0jizWhBWWFci9S8sB0CmQ==
+X-Google-Smtp-Source: AGHT+IHh5dOL340vnZQtxeK0XL1LuM+YwiaXz3rCAfh7BCPlgGW5KIbsnM5riPtddxu1f1FJp151qA==
+X-Received: by 2002:a17:90b:1ccd:b0:34c:c866:81f2 with SMTP id
+ 98e67ed59e1d1-34f68b4dfe1mr13090464a91.4.1768117964432; 
+ Sat, 10 Jan 2026 23:52:44 -0800 (PST)
+Received: from [172.23.81.179] ([202.86.209.61])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-81c96d762f8sm9195774b3a.64.2026.01.10.23.52.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 10 Jan 2026 23:52:44 -0800 (PST)
+Message-ID: <f9ad7045-9e66-4271-b3d9-006958824f55@linaro.org>
+Date: Sun, 11 Jan 2026 18:52:35 +1100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.218.41; envelope-from=th.huth@gmail.com;
- helo=mail-ej1-f41.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 02/12] target/m68k: introduce env->reset_pc
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Bastian Koppelmann <kbastian@rumtueddeln.de>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Zhao Liu
+ <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org, Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Aleksandar Rikalo <arikalo@gmail.com>,
+ Thomas Huth <huth@tuxfamily.org>, Eduardo Habkost <eduardo@habkost.net>
+References: <20260108143423.1378674-1-alex.bennee@linaro.org>
+ <20260108143423.1378674-3-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260108143423.1378674-3-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,30 +116,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Am Thu,  8 Jan 2026 14:34:18 +0000
-schrieb Alex Benn=C3=A9e <alex.bennee@linaro.org>:
-
-> Now all the m68k machines have cpu reset handlers we can drop this
-> extra case here.
->=20
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+On 1/9/26 01:34, Alex Bennée wrote:
+> To transition CPUs to use the multi-phase resettable logic we need to
+> stash some information for the reset handlers. Arm does this with
+> arm_boot_info but for m68k all we really need is the PC we should
+> reset to.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->  target/m68k/cpu.c | 1 -
->  1 file changed, 1 deletion(-)
->=20
-> diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
-> index f1b673119d6..a540a754969 100644
-> --- a/target/m68k/cpu.c
-> +++ b/target/m68k/cpu.c
-> @@ -392,7 +392,6 @@ static void m68k_cpu_realizefn(DeviceState *dev, Erro=
-r **errp)
-> =20
->      m68k_cpu_init_gdb(cpu);
-> =20
-> -    cpu_reset(cs);
->      qemu_init_vcpu(cs);
-> =20
->      mcc->parent_realize(dev, errp);
+>   target/m68k/cpu.h | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
+> index d9db6a486a8..fda015c4b7b 100644
+> --- a/target/m68k/cpu.h
+> +++ b/target/m68k/cpu.h
+> @@ -155,6 +155,7 @@ typedef struct CPUArchState {
+>   
+>       /* Fields from here on are preserved across CPU reset. */
+>       uint64_t features;
+> +    uint32_t reset_pc;
+>   } CPUM68KState;
+>   
+>   /*
 
-Reviewed-by: Thomas Huth <huth@tuxfamily.org>
+I think this ought to merge with something else.
+Just adding the field is clearly incomplete.
+
+r~
 

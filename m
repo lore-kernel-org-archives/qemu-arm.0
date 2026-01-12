@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59C9FC9EC94
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 14:56:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96206C9EC94
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 14:57:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfJJw-0007v4-H0; Mon, 12 Jan 2026 09:55:04 -0500
+	id 1vfJJi-0007k6-Rv; Mon, 12 Jan 2026 09:54:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vfJJf-0007eC-UT
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:54:48 -0500
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vfJJc-0007c1-7y
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:54:44 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vfJJc-0001Wd-7M
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:54:47 -0500
-Received: by mail-ej1-x62d.google.com with SMTP id
- a640c23a62f3a-b86f81d8051so292041066b.1
- for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 06:54:43 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vfJJX-0001V3-UU
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:54:42 -0500
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-b87003e998bso265324466b.1
+ for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 06:54:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1768229683; x=1768834483; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1rPn6RrafNXG2RcHcgcC/D23Cz4zUHe4Dy7SUb3RB1g=;
- b=T3xNvQEGThwMKJpTmATSqA5ssHsewvXE5aIjEqVxLePaHDv3RxwxgXbGbtDwmPMqFL
- GTfYM3Z/0mwobHQoieVR9pEElfpqXhuoXiFJ9dSYiR2bB4eGgL773Xc/eoulCsu9gf7S
- A0KilLDk4rCzg3BA/eAy6Me4BGftHvCnls5KnlzfT32pdnjvRj5VtDfaPqUwVocFOft8
- FkoNNtjPPappT55Cx10KF/57fnDySSAMlXEoEPy5pnv93q9pPkdFS0NraZ1jvzsMhiE7
- AOv/JTK15/uViQq6JnGyQJDj7yi70OJXVaDMUKpa2nOJF/yIBplanb+85UZgjUQx1WKM
- tZbA==
+ d=gmail.com; s=20230601; t=1768229678; x=1768834478; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=VFgA0VYu8L2qZdFtLSG59wFQUG2ZdcKw/tAAwdRTa1c=;
+ b=gqtdL9FIpzsbyywjd+94uEzSl3JmqEftPIrV4wSKfljzl+126omcgHJu1PN9oZ2ON/
+ PxKid8LVRPsHBdTC1g26uBBvia9u+XavqZiQUXzvcRLh27ldPk+9JDAZ2MLzNdz2mF19
+ ivdXxyZoh7RZ06f1Oufuw0jMZfOs2hXxpjovDN1YAHgIMCnyDm3NSeA1ST0tQ6zbQEWN
+ 5q48RYLZc56ph5A1ZEzrk6nnVRxnmKk9lHUqFzJOUOtw7E2W9OL1RzZI3xpbImd6w8hm
+ op0ZKs0YDpm3F/5Nj4l3lPQctsyNu7XdqhVplcFZy0bNrpvQKRRbi1euUxttQ6IyzAfa
+ 7B1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768229683; x=1768834483;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=1rPn6RrafNXG2RcHcgcC/D23Cz4zUHe4Dy7SUb3RB1g=;
- b=FRbyCmjuu1OC9FviBD6ua3DvYksuqAZQr+ox6yz6yN8pePKtYdLAgqKYfTitX7uDcV
- IiPs0VqEItKtjjJnkGhDidMc+1ymvtkfRuZ74AYZ1MPOIDbPxfkH8thBiEEiB+Kb5mS+
- losv7GPZ46ZXe8yz62JPZ629pXumthCK2MFG9yvpwEdwpbtsmcatkO+3xVR57+krxCDD
- z7tQTY5xnSbRLPefmgxWroIAnJVzdWdsLubBsg9/pz87DJKUNQWOd/ETp9rotBw4oGX5
- Ou4ffDr5kb9Jukqr5ZC3b6O8PAYNfwjqJqhtkuIRnu1GxjvWNzyx/x6dNVEPdMsYKKgP
- Eyqw==
+ d=1e100.net; s=20230601; t=1768229678; x=1768834478;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=VFgA0VYu8L2qZdFtLSG59wFQUG2ZdcKw/tAAwdRTa1c=;
+ b=NxpCwdyuz0Ye8dPy1wIbSEF5rZLDCVhaq+EM5V88nZZX+T9oMviGv/9Djcpx4RO36q
+ aCzs+BXmukA3iVggAdbRSZOPLRe0/EHHoPNt92DNwyQ0gieeawNLuaMI9ApG3Ja4aSpX
+ GWX0DCNtC1hz53yJ+DmG67stEVVTN2fzGCf4IcOwjSwD5XRfdeQUK3Kb4rwkHRnxFl8T
+ WAbDrIlJ/+oQd5IyFg1mRTx0MFaZupTi2jmUCDV4zRt1sSG51ECfhX4EMo194Mc0dMYg
+ UhuHzjIgSyKMP7k3zOCK4jjjL2HhV6Jt+xR2LI7x+O23tuReGy4HGiohooa5YNclyAG/
+ 4Wdw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXTBd39o0GOM+tIATmckm476QVYFPKkAqnh1v5oNnXInl/IeWt7rmp4THpft0a/adY1zu9w01271w==@nongnu.org
-X-Gm-Message-State: AOJu0YwGUILFM5Z7YJBJU8GlCMJxqSRBpvgy0grgoXGrjM+HpN7MlVgU
- ZwaJjRRWugDS+Fcgwo6uW1Pk7v14rR3P1QqUCNVztKn/LLZwnDFLzLGf
-X-Gm-Gg: AY/fxX59xdxqE88q2bLTBWe1H7xFGYwipL73RPkK+PHFjI5UL0WwyY1J8ObD/A20JSJ
- J5GK1E7M4wcVqLZPTpjb4GiMS5c6vUPbxPPJjVkeqLxpUtyKrNZeo+g3RTEOKAZrdJTilV12pE0
- Uk9vl7AMOIRrBIsbG5kdFolGqO765tFwBV5MdvGN80HXnsYAtu7q0gNwZWDnU+AUOCFtOfrh7AX
- ZQlaEmeA8Y4sBrGA1RQql4Sv9aB60nLxT52xavsvQUa4rebEDO8uDgvm+O/GW8W0UjDbP8oShMt
- STWUmBs0mHNxen6Bjsqt1WvDotX8IYRXUKKqyEtEYaYMCAQi148f+eKf3V1jZ5qD32fJ8SE0wZg
- 9G1O2dHSUcheBAdlJ72ogdQGSevnO61/quZZzM2wL5R1Sv8ZmCxhJKZuJbcS+sWASVJy3b3OF36
- QKkwkTqtVV9aXhS7Sv4nXldWUKK+aGcczr5WUCvZ/RA96oJiM5JD8p519Y3lw6QjFi1pAgigB/
-X-Google-Smtp-Source: AGHT+IHqMvtkYlJMFRymhakMTyVu2RxZy0qKe9a+opLTAZ3Z6hqM5jcRAKhh1eQawAQQMUnGVBkDfg==
-X-Received: by 2002:a17:907:3f1c:b0:b87:2abc:4a2a with SMTP id
- a640c23a62f3a-b872abc6586mr159869166b.1.1768229682424; 
- Mon, 12 Jan 2026 06:54:42 -0800 (PST)
+ AJvYcCWqKj18wtG9DcY5InIZ+J3hUbyyWOERax4ndRAekFg01AZRBWPqtSEwWS7Sb1Pn5YmccS+cL6TUIA==@nongnu.org
+X-Gm-Message-State: AOJu0Yz4+VaXn0oR4V7fq11C8Xzru+hMi+kSn2KE3tDcP/7m0P0TQuSZ
+ Wa2y+Zq8lOub78ejHvqUZqAnR+d7elHz+ZU0IfpfhApNex6SBd7Zxkct
+X-Gm-Gg: AY/fxX7qTjZMNH6NWc2BXT0creAbc6y5bxiAOsvM8wGRo86/ggmkt/D+DBggvWXHceT
+ x1xmY51l1Zb1clQzkng2K7Dt7en6ER+OwQBu8Qvf60Vvvu9iBedTtswlxZV5MFOd0mWWX1hGYyU
+ YtcpomvkMa/budDgCCbkh6re4nCX6glCRr27nxWAydtQu7tM7H8HV0d0ZL3B314QkF/yo9bIqCt
+ bEOW9882O/fXVkGDZwimw9yXTZ4zHZ0Vja4DrtsYkh1uPFnNFyj7iFo3scUTb8bRhsDYYnUV4TV
+ fvJegyspsgFxe7jp5RVnEDgbzzQtTBILWbPD3dQnwgyhWz2TT4E1WpQP+IKiGEy6L7EIo9vLyi9
+ 0bh+NZWMBu1wyn0I0FAaZFSecihWLZe/ZGd1QaMg6bFjOlMHP+gKVa8hxf/2bMuha3jxOqAa9ed
+ vqO5nCR8zcQidZXnGjGKoY1q+gA7lzGKabC8xQrF6rbRLG5UvkbsgjoEEnrkQNgXfR6xPpTSH+
+X-Google-Smtp-Source: AGHT+IHIg1ku7OTq2gU3v/l4VTJ6T+C0jaYK7M9bhoHnEwBV5Q3wdRQEehiZ3YcHcYHqRi7SDLn4TQ==
+X-Received: by 2002:a17:906:8a65:b0:b87:8c1:1ea5 with SMTP id
+ a640c23a62f3a-b8708c120femr408800966b.5.1768229677697; 
+ Mon, 12 Jan 2026 06:54:37 -0800 (PST)
 Received: from archlinux (dynamic-077-188-226-222.77.188.pool.telefonica.de.
  [77.188.226.222]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b8731f0718asm37387966b.67.2026.01.12.06.54.41
+ a640c23a62f3a-b8731f0718asm37387966b.67.2026.01.12.06.54.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Jan 2026 06:54:42 -0800 (PST)
+ Mon, 12 Jan 2026 06:54:37 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -73,16 +72,15 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Bin Meng <bmeng.cn@gmail.com>, Thomas Huth <thuth@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
  qemu-ppc@nongnu.org
-Subject: [PATCH 05/14] Revert "hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*"
-Date: Mon, 12 Jan 2026 15:54:09 +0100
-Message-ID: <20260112145418.220506-6-shentey@gmail.com>
+Subject: [PATCH 00/14] Freescale SDHCI Fixes
+Date: Mon, 12 Jan 2026 15:54:04 +0100
+Message-ID: <20260112145418.220506-1-shentey@gmail.com>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260112145418.220506-1-shentey@gmail.com>
-References: <20260112145418.220506-1-shentey@gmail.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62d.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,155 +103,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This reverts commit 1e76667f7adf48c6c3596aaa26b8886b57b8498d.
-
-Unaware that the constants were named after Linux and U-Boot code,
-commit 1e76667f7adf ("hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*")
-changed the naming to be consistent with the function names. Fix the
-constant naming to be consistent with Linux and U-Boot again. In the
-next step, the function names will be renamed according to Linux and
-U-Boot code as well.
-
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/sd/sdhci.c | 66 +++++++++++++++++++++++++--------------------------
- 1 file changed, 33 insertions(+), 33 deletions(-)
-
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 23d8f7cbc8..ccdfc59af8 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -1639,24 +1639,24 @@ static void sdhci_bus_class_init(ObjectClass *klass, const void *data)
- 
- /* --- qdev i.MX eSDHC --- */
- 
--#define USDHC_MIX_CTRL                  0x48
-+#define ESDHC_MIX_CTRL                  0x48
- 
--#define USDHC_VENDOR_SPEC               0xc0
--#define USDHC_IMX_FRC_SDCLK_ON          (1 << 8)
-+#define ESDHC_VENDOR_SPEC               0xc0
-+#define ESDHC_IMX_FRC_SDCLK_ON          (1 << 8)
- 
--#define USDHC_DLL_CTRL                  0x60
-+#define ESDHC_DLL_CTRL                  0x60
- 
--#define USDHC_TUNING_CTRL               0xcc
--#define USDHC_TUNE_CTRL_STATUS          0x68
--#define USDHC_WTMK_LVL                  0x44
-+#define ESDHC_TUNING_CTRL               0xcc
-+#define ESDHC_TUNE_CTRL_STATUS          0x68
-+#define ESDHC_WTMK_LVL                  0x44
- 
- /* Undocumented register used by guests working around erratum ERR004536 */
--#define USDHC_UNDOCUMENTED_REG27        0x6c
-+#define ESDHC_UNDOCUMENTED_REG27        0x6c
- 
--#define USDHC_CTRL_4BITBUS              (0x1 << 1)
--#define USDHC_CTRL_8BITBUS              (0x2 << 1)
-+#define ESDHC_CTRL_4BITBUS              (0x1 << 1)
-+#define ESDHC_CTRL_8BITBUS              (0x2 << 1)
- 
--#define USDHC_PRNSTS_SDSTB              (1 << 3)
-+#define ESDHC_PRNSTS_SDSTB              (1 << 3)
- 
- static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
- {
-@@ -1677,11 +1677,11 @@ static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
-         hostctl1 = SDHC_DMA_TYPE(s->hostctl1) << (8 - 3);
- 
-         if (s->hostctl1 & SDHC_CTRL_8BITBUS) {
--            hostctl1 |= USDHC_CTRL_8BITBUS;
-+            hostctl1 |= ESDHC_CTRL_8BITBUS;
-         }
- 
-         if (s->hostctl1 & SDHC_CTRL_4BITBUS) {
--            hostctl1 |= USDHC_CTRL_4BITBUS;
-+            hostctl1 |= ESDHC_CTRL_4BITBUS;
-         }
- 
-         ret  = hostctl1;
-@@ -1692,21 +1692,21 @@ static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
- 
-     case SDHC_PRNSTS:
-         /* Add SDSTB (SD Clock Stable) bit to PRNSTS */
--        ret = sdhci_read(opaque, offset, size) & ~USDHC_PRNSTS_SDSTB;
-+        ret = sdhci_read(opaque, offset, size) & ~ESDHC_PRNSTS_SDSTB;
-         if (s->clkcon & SDHC_CLOCK_INT_STABLE) {
--            ret |= USDHC_PRNSTS_SDSTB;
-+            ret |= ESDHC_PRNSTS_SDSTB;
-         }
-         break;
- 
--    case USDHC_VENDOR_SPEC:
-+    case ESDHC_VENDOR_SPEC:
-         ret = s->vendor_spec;
-         break;
--    case USDHC_DLL_CTRL:
--    case USDHC_TUNE_CTRL_STATUS:
--    case USDHC_UNDOCUMENTED_REG27:
--    case USDHC_TUNING_CTRL:
--    case USDHC_MIX_CTRL:
--    case USDHC_WTMK_LVL:
-+    case ESDHC_DLL_CTRL:
-+    case ESDHC_TUNE_CTRL_STATUS:
-+    case ESDHC_UNDOCUMENTED_REG27:
-+    case ESDHC_TUNING_CTRL:
-+    case ESDHC_MIX_CTRL:
-+    case ESDHC_WTMK_LVL:
-         ret = 0;
-         break;
-     }
-@@ -1722,16 +1722,16 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
-     uint32_t value = (uint32_t)val;
- 
-     switch (offset) {
--    case USDHC_DLL_CTRL:
--    case USDHC_TUNE_CTRL_STATUS:
--    case USDHC_UNDOCUMENTED_REG27:
--    case USDHC_TUNING_CTRL:
--    case USDHC_WTMK_LVL:
-+    case ESDHC_DLL_CTRL:
-+    case ESDHC_TUNE_CTRL_STATUS:
-+    case ESDHC_UNDOCUMENTED_REG27:
-+    case ESDHC_TUNING_CTRL:
-+    case ESDHC_WTMK_LVL:
-         break;
- 
--    case USDHC_VENDOR_SPEC:
-+    case ESDHC_VENDOR_SPEC:
-         s->vendor_spec = value;
--        if (value & USDHC_IMX_FRC_SDCLK_ON) {
-+        if (value & ESDHC_IMX_FRC_SDCLK_ON) {
-             s->prnsts &= ~SDHC_IMX_CLOCK_GATE_OFF;
-         } else {
-             s->prnsts |= SDHC_IMX_CLOCK_GATE_OFF;
-@@ -1796,12 +1796,12 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
-          * Second, split "Data Transfer Width" from bits 2 and 1 in to
-          * bits 5 and 1
-          */
--        if (value & USDHC_CTRL_8BITBUS) {
-+        if (value & ESDHC_CTRL_8BITBUS) {
-             hostctl1 |= SDHC_CTRL_8BITBUS;
-         }
- 
--        if (value & USDHC_CTRL_4BITBUS) {
--            hostctl1 |= USDHC_CTRL_4BITBUS;
-+        if (value & ESDHC_CTRL_4BITBUS) {
-+            hostctl1 |= ESDHC_CTRL_4BITBUS;
-         }
- 
-         /*
-@@ -1824,7 +1824,7 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
-         sdhci_write(opaque, offset, value, size);
-         break;
- 
--    case USDHC_MIX_CTRL:
-+    case ESDHC_MIX_CTRL:
-         /*
-          * So, when SD/MMC stack in Linux tries to write to "Transfer
-          * Mode Register", ESDHC i.MX quirk code will translate it
--- 
-2.52.0
-
+This series splits TYPE_IMX_USDHC into three device models which fixes issu=
+es=0D
+in the ppce500 and some i.MX machines. In particular, it introduces uSDHC's=
+=0D
+predecessor eSDHC in big and little endian variants. Once the eSDHCs are=0D
+split off, uSDHC emulation is improved which is a stepping stone towards=0D
+running u-boot on the i.MX8MP (not implemented yet).=0D
+=0D
+In a way this series picks up previous efforts:=0D
+* https://lore.kernel.org/qemu-devel/20250310000620.70120-14-philmd@linaro.=
+org=0D
+* https://lore.kernel.org/qemu-devel/20250310000620.70120-15-philmd@linaro.=
+org=0D
+=0D
+There is quite some code churn involved to fix all the issues addressed in=
+=0D
+this series. Let me know if you have any better ideas to achieve the same.=
+=0D
+=0D
+Best regards,=0D
+Bernhard=0D
+=0D
+Testing done:=0D
+* make check=0D
+* Boot https://www.qemu-advent-calendar.org/2018/download/day19.tar.xz in=0D
+ppce500=0D
+* Boot guest in imx8mp-evk=0D
+=0D
+Bernhard Beschow (14):=0D
+  hw/sd/sdhci: Fix TYPE_IMX_USDHC to implement sd-spec-version 3 by=0D
+    default=0D
+  hw/arm/fsl-imx6: Remove now redundant setting of "sd-spec-version"=0D
+    property=0D
+  hw/arm/fsl-imx6: Fix naming of SDHCI related constants and attributes=0D
+  hw/arm/fsl-imx25: Apply missing reset quirk=0D
+  Revert "hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*"=0D
+  hw/sd/sdhci: Consolidate eSDHC constants=0D
+  hw/sd/sdhci: Rename usdhc_ functions=0D
+  hw/sd/sdhci: Add TYPE_FSL_ESDHC_BE=0D
+  hw/ppc/e500: Use TYPE_FSL_ESDHC_BE=0D
+  hw/arm/fsl-imx25: Extract TYPE_FSL_ESDHC_LE=0D
+  hw/sd/sdhci: Remove endianness property=0D
+  hw/sd/sdhci: Add uSDHC-specific quirk=0D
+  hw/sd/sdhci: Remove vendor property=0D
+  hw/sd/trace-events: Remove redundant "SWITCH " command name=0D
+=0D
+ hw/sd/sdhci-internal.h    |   3 -=0D
+ include/hw/arm/fsl-imx6.h |   4 +-=0D
+ include/hw/sd/sdhci.h     |   8 +-=0D
+ hw/arm/fsl-imx25.c        |   5 +-=0D
+ hw/arm/fsl-imx6.c         |  18 ++--=0D
+ hw/ppc/e500.c             |  10 +-=0D
+ hw/sd/sdhci.c             | 201 ++++++++++++++++++++++++--------------=0D
+ hw/sd/trace-events        |   2 +-=0D
+ 8 files changed, 146 insertions(+), 105 deletions(-)=0D
+=0D
+-- =0D
+2.52.0=0D
+=0D
 

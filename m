@@ -4,198 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 974E0D2502E
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 02:39:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5889DD25050
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 08:37:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vf7pP-0001Eq-Db; Sun, 11 Jan 2026 21:38:47 -0500
+	id 1vfDKZ-0005CM-70; Mon, 12 Jan 2026 03:31:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1vf7pN-0001EY-Ds; Sun, 11 Jan 2026 21:38:45 -0500
-Received: from mgamail.intel.com ([192.198.163.16])
+ (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
+ id 1vfDKN-00055H-I6; Mon, 12 Jan 2026 03:31:12 -0500
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1vf7pJ-0002hX-Bq; Sun, 11 Jan 2026 21:38:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1768185521; x=1799721521;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=O0xgvauTGSyC5Qb/FmXYdeGwn3omkrMA1OUlsRhH5/0=;
- b=fHRvYyty/x/h+UCCluJ+/FCqBOM0SAZiwZgqARgYglMN/ySDaaAetV8r
- sj24ZFkEUT/4qW3OvDFfRcO+cdkvfXcXAXGDM7w0C5qBETll6ym+g6OWm
- VEousiJ8umG+rcqIfWzmDyJm4k30JgVLW6fowJEzzuSammExPaZnPljqA
- /k7krwKJT49v/NSWKoiwjCSpmfl0tu1rg0dxbyBZuJPh+SFpJ0IKJ15Ej
- 4woyVrNXh7TV71SBdYpn92cideQjsC4pFZK5cm1+IOb/PZldII7YAumn4
- G4IHtZ7tqyLL9NxpV+KZUj3y490RJsSb1k1cZdpYYH9n8q+FeLcGtc+jp Q==;
-X-CSE-ConnectionGUID: Hcp/w3rqRwi9J7wi+eqNjQ==
-X-CSE-MsgGUID: vE8mkQKUT3CdGtK1sePTqQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11668"; a="57010151"
-X-IronPort-AV: E=Sophos;i="6.21,219,1763452800"; d="scan'208";a="57010151"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jan 2026 18:38:37 -0800
-X-CSE-ConnectionGUID: NCNzVQfoRqq3rHvbZY4KTg==
-X-CSE-MsgGUID: 5On4JmwURZCTI/t2W+CI+w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,219,1763452800"; d="scan'208";a="208812769"
-Received: from orsmsx902.amr.corp.intel.com ([10.22.229.24])
- by fmviesa004.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jan 2026 18:38:22 -0800
-Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Sun, 11 Jan 2026 18:38:22 -0800
-Received: from ORSEDG901.ED.cps.intel.com (10.7.248.11) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29 via Frontend Transport; Sun, 11 Jan 2026 18:38:22 -0800
-Received: from CO1PR03CU002.outbound.protection.outlook.com (52.101.46.59) by
- edgegateway.intel.com (134.134.137.111) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Sun, 11 Jan 2026 18:38:21 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=EqfUF8iJnkRPOve30mJO1P6II9ZZlK/KMgfvw1Q36Gr4eJ1r3YhCZpRZOeFkame2snedObSU/Pu6RuPb6SM4Ss70X20OdYADjPg0/ZuZGdmSKhKpDMelMbOeG7tAykLXVTFUXk3RvVJ0BWTxRnWL9MZC5Rtuim1dJo+qFVn/ooR+1QtVsEpp2dx3Ubc76f34frr1sxeU1uo+2asjHr5WnDMGFYunCll6sO299fjU442lSSAVC2ZvYi3Utk1qADJTcHJIroLKjsTOkFNt2kped6VdsuFrBDVuhEnNhlQwWAEx7DN3vJyFupPK6Zwqg0LcoS0sV1nRtO9SufSYmO8e1A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=QEK7FoaF7lBWudM/991GcuF8TalRnH804m5Q2/pbgg0=;
- b=fz0rylp5OWjeJmbyMKlZCd8mf1y+Dg5BdNyEkqPLI0drxsgxPM4gFD+lz2mkAk+QwE3HbuxQ2X+FFWVP2ShY9wniSMMNMsdmG6vxh9b0cefjGY8XluOYpVvAbWTcumdIy6iYqGtobZl4F6hBR2dt7pNSwEY+ldH67SgmmuJCY6Zn5kLWrJn9Bh0fEq6RBMLNr32gl2SRievHrVjlbCd+4cgvPaZvo59QRFy1nneDdpyqWsXl0oCDMqK/3h5k90PMfxQN5q6kwt4pCzjTyDIGgXdyJs+ILPA2IG7a9Ed4Uq8FYyeOgJ7c/D6PJewr61Gfs6xvr+JSgoosyl6G03/8Zg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA3PR11MB9136.namprd11.prod.outlook.com (2603:10b6:208:574::12)
- by SN7PR11MB6897.namprd11.prod.outlook.com (2603:10b6:806:2a5::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.7; Mon, 12 Jan
- 2026 02:38:19 +0000
-Received: from IA3PR11MB9136.namprd11.prod.outlook.com
- ([fe80::604b:77a4:b1be:3f13]) by IA3PR11MB9136.namprd11.prod.outlook.com
- ([fe80::604b:77a4:b1be:3f13%7]) with mapi id 15.20.9499.005; Mon, 12 Jan 2026
- 02:38:19 +0000
-From: "Duan, Zhenzhong" <zhenzhong.duan@intel.com>
-To: Shameer Kolothum <skolothumtho@nvidia.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
- <jgg@nvidia.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>, "berrange@redhat.com"
- <berrange@redhat.com>, "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org"
- <alex@shazbot.org>, "nathanc@nvidia.com" <nathanc@nvidia.com>,
- "mochs@nvidia.com" <mochs@nvidia.com>, "smostafa@google.com"
- <smostafa@google.com>, "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
- "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>, "Liu, Yi L"
- <yi.l.liu@intel.com>, "kjaju@nvidia.com" <kjaju@nvidia.com>
-Subject: RE: [PATCH v7 35/36] hw/vfio/pci: Synthesize PASID capability for
- vfio-pci devices
-Thread-Topic: [PATCH v7 35/36] hw/vfio/pci: Synthesize PASID capability for
- vfio-pci devices
-Thread-Index: AQHcgzTG3jo8a+wKEUiJWDVa5+dzprVN0g8Q
-Date: Mon, 12 Jan 2026 02:38:19 +0000
-Message-ID: <IA3PR11MB9136783F330F8F38E9EB986F9281A@IA3PR11MB9136.namprd11.prod.outlook.com>
-References: <20260111195508.106943-1-skolothumtho@nvidia.com>
- <20260111195508.106943-36-skolothumtho@nvidia.com>
-In-Reply-To: <20260111195508.106943-36-skolothumtho@nvidia.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA3PR11MB9136:EE_|SN7PR11MB6897:EE_
-x-ms-office365-filtering-correlation-id: dd29d312-7d9d-40a0-d6f3-08de5183a587
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|376014|7416014|1800799024|38070700021; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?gktVAer1gJ1Aiqq39cn9w9VRLTmbqT9J9i9Apzjqj4n4O+mVIIqEQnVj2Fav?=
- =?us-ascii?Q?YKdEwjo3ZD0rk5ZqOE9UMUUC8lpCBMkXnrEk3FRjSRdNbtlsbRJ9Q0Mc5sru?=
- =?us-ascii?Q?ZuaV2zA6rESougZHnK0lnIUeC7hXhkca6hbKyH923D+hwAKHr8pyP0CxdIyg?=
- =?us-ascii?Q?b/G8HRedVJehHYsuFsdleFx95Na1xUO8JBTwCz9lN0qO9ZjPiX50/8kVBvK6?=
- =?us-ascii?Q?tx89VCwnYshVI1I/+5H3+Qe6VPmdnN9G/+bseD6SwAdRoyfJDP9sBqeTz4jN?=
- =?us-ascii?Q?OMVzpgyy3TrtSLV5IgJMEaMBuTlZjeFMQJmMkKoQPESs0oEEHnaEdBm89iEp?=
- =?us-ascii?Q?o6/diOv9LNGcXTguXkwLc/N9rRW//QKsAbSAHh9huEf+he5nTNTVZRJ7es+L?=
- =?us-ascii?Q?w5nt//WEd5B8AIyHC6xhwlMTOezdllefYYcSliMh2FwTjcqGDQLDnEmtvcyL?=
- =?us-ascii?Q?M4k5Jt1ONy+fNh5EFqwzfENhTmiQ4z6cFTT+TWguxCUAEkB6nyJ3yEIPXzBo?=
- =?us-ascii?Q?AomehFBUGeu6w8JbntjUmTziRf6U+qv6JjFTy3xRrFHxKEzBV9c69EdpQBmt?=
- =?us-ascii?Q?EeLxd2aRVNx8LlrVrjExTAvcBTfOSST47tnitc8peF7NTXsXpewK9DSDEhj2?=
- =?us-ascii?Q?aDohqQLlcFj6tQwjJ7pV/GXtdX/8Gn5yXh7WPG21+sRAlVYT8nW12T3IP1Ht?=
- =?us-ascii?Q?sBh8bxCxqj9bJZKmq1NiquPVeqh/sR4SjnvD1hVoE+KSHrxMrnjjYTsWuaRV?=
- =?us-ascii?Q?thbZK2Vp+OhHtBBXXndYRVeBcWhgrIMMcnDbtqs0QL4H2zkLd0J1yY4vDD/5?=
- =?us-ascii?Q?46NeaT0JKpjB6eC3Q8D4vwlvhhs8Udl0bV7Cp30jvZg94fjhgF3UQUXURprL?=
- =?us-ascii?Q?VPAAUc9VjT8934Jt8RgJYLOXlUhW4Zx0cNhCmrhC7lDnJjTw34nhlpdyN8em?=
- =?us-ascii?Q?+kIWTZi0dtTwTz+34BILDhtKFULgNBOrTX190WUoTwV1c4zpBfYaWq8yNhWi?=
- =?us-ascii?Q?YOHJI4nVB71K2R9zyuQEZcLiPWh/ay19TielYN8PkjxXCdVs7z2oxZeR28v9?=
- =?us-ascii?Q?fF6ipM3gek+GUiekwfnX+qzqIw4zhzXZAHCdp03BtI99WmDYx/30NPZzs6G8?=
- =?us-ascii?Q?26d9jbkCdKCzWzOWZz3sBRb5QOXurWsy5zEagDrJ3rPt9fDJQm5+755ds/JT?=
- =?us-ascii?Q?o57FGsn9zM5QdndXB7df4YFO8gVCzNKNPN/iNwqWxVs3+ecQHFhO0rPg2MRK?=
- =?us-ascii?Q?7udTlGSGeuSpVVNJqQ27ITYzYXBqPJELDUYIE8IZAYq0wruSoFGRnIMMKZn8?=
- =?us-ascii?Q?rbR1NSNdx4hnB3+TycxA9Q75s0XiEmNWp52+vixwHcw/NC7pSbq4cbmGODua?=
- =?us-ascii?Q?Od70jJOq/p55shJjOH2NdKDydfDDTS6j6Uu93axtCXU4m6hCpcaF3kBs+kZw?=
- =?us-ascii?Q?MlsdQBmfbA5zBneG1FeG90z4lRK/OZSOMIff5kEP6NJzN/pqAo0nJiDXK7oH?=
- =?us-ascii?Q?2Ognk+KjqusaO+rEe7xcVlMMW5QnQIMMY94U?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA3PR11MB9136.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(7416014)(1800799024)(38070700021); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?EvFF6WmZZSUSdaichMWBfZgcKBXEXGUbxAyhU3hxpRhMfmIiGhzN9Eb5lf2s?=
- =?us-ascii?Q?gzb2jCu6LryT/TSxTdKk/gCvmg1cRsy8ckERNiG7ft5nMgEXzx+Yegq3eUD0?=
- =?us-ascii?Q?NNa811+jejSKtiro5weGToi2RTRxcge2PrMlCRDwWHy/9dMq+O7DhS55CvTa?=
- =?us-ascii?Q?r2tsXvJ4AnulaZk7bftPlE9vUVPxrusAPquMAchLkbwstQ4ovNHF4LwqIPpz?=
- =?us-ascii?Q?FC31g92F104e7JWRXUwxZGuhMMMD+Mk3ZbFXW214r5fD9WY13R5cKzucS4he?=
- =?us-ascii?Q?Hl8NOQs7UE4FHyRqjc+bDY4TKjtvt8/JIhTlWJofB5JUEfnzL6lYmE705kr2?=
- =?us-ascii?Q?waRbL4JVVBSZhiwjIuBx7bBO2CHUByySJjzEdsOCxv2FLRwFEtCpFLH3ZNrc?=
- =?us-ascii?Q?SGkatm/tvFACgmL7ZBvT4a/i57vaVqNJsuO7Ll3gmHsQQyIsL5iMmC1N21j9?=
- =?us-ascii?Q?yc1Qb3UZwGHZVhJ/3VXviyEYshHmyKL8nS7O7fdqJeDswnVdlykzf/rZjqIV?=
- =?us-ascii?Q?Ctr4GbiUUx7HRmFIfaH4c4u3KKOY/WVEv3G/Z3UZpNx8pL7SnaHPBJW9snBl?=
- =?us-ascii?Q?TbZ1a1hlDixLbI/abMxS6WGTDUtDHpO3WJWgdhQHv0VMxiuOi98fq/5cYcPz?=
- =?us-ascii?Q?38GXk2QHXExN9RYirfiLKQ/WHGrt5VVFWxjdt6MM2vo0n5ffEi1AUOVkzDgE?=
- =?us-ascii?Q?7LrGnCDRtHuDpqlXLRQz6s9rZbahzGFXNmu5FZmdtUK7AwAlNaq4FMFWxnqJ?=
- =?us-ascii?Q?JgBAxIhrUXPvunuLFCIRGC7wbIskpuoar7FrQ/9Tszv7GsVwrXcDjjOeHzys?=
- =?us-ascii?Q?lS74+o5hgCqPYcqMEGj47kd3fA4iyWtMZgnhtP+ake469RL/3Pgvp2XYSRbj?=
- =?us-ascii?Q?dArIscuJZamPubcQSGkUL2+V7tPnSJwIAQkwigWK6IBfV9GeZjcfXnntH5Sk?=
- =?us-ascii?Q?pkfHG4qW/1uKMRF5Q9UqGoeQ2ldupUcv03tNomHA/sVn4Qkc2X0VU7T4W6zt?=
- =?us-ascii?Q?Kjmv8unww9VYXL+01SpBsSC/EDcl3vJpChvObWDKGScDMRweKqD5Y6Cqfe1b?=
- =?us-ascii?Q?F1n79SLoVq74yWxzWgOOgF/yzFwAQXQlEgK+6y3Fv57v2+fdpYPagGrFg25T?=
- =?us-ascii?Q?BmIzZvVUrE4KDZtG0DVvYFT3dmFqJiUyRF+ydqn8WhIA5iIEPWnRppsk2OsV?=
- =?us-ascii?Q?hlidBd1/p5C4HbrIJ9swtWEZVCW2D+hVsYJ7rCHl9QqSLHdwEAG7cY96FHJP?=
- =?us-ascii?Q?P0s77EPQE3TklsmNhIsLAMJH0JMu31URF7QhZKsSV2fdAm/S4m68qzOBdVnr?=
- =?us-ascii?Q?Eh51j/BUNOGRhKgf7XMHAFvlXkFD9Re8pjKNDn+wnfN2RIJAUKFUefwaQ+EO?=
- =?us-ascii?Q?nUTURvLIdnSLwkZ0tebHoC1ls/inxZJEHxAhmt91IDM9AYXxqZSP6zHiG0ag?=
- =?us-ascii?Q?mbNWxb9O65S5nPoNby56Ry0nEbzmfJpvhUhQxAqRbe310jOV+GibwuJXZUC2?=
- =?us-ascii?Q?67DtoJMrSaGaBGyst895bnRPQspKwZbYfjeyc5lrOTuJ9sSd7R/P1NaH64dS?=
- =?us-ascii?Q?thho3yv4rYfobLIMguiwetp/SmibpXtd4HCcZUmPr1NF9piA2l3+XAE0pF1a?=
- =?us-ascii?Q?phF3R/OFTbfNF89rvUgFAvQaiBq+IST9a+ZTJCdGn68p9YmMnqfr0/G0A7Rt?=
- =?us-ascii?Q?JoPx7eTllbcdJE+KUOOXFVWCuAvAMw4+P4vQvurJQSQrQN6hotYtHpN43BCy?=
- =?us-ascii?Q?3anKiMMJ8Q=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
+ id 1vfDKL-0008QA-Tj; Mon, 12 Jan 2026 03:31:07 -0500
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Mon, 12 Jan
+ 2026 16:30:55 +0800
+Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
+ Transport; Mon, 12 Jan 2026 16:30:55 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>
+Subject: [PATCH v1 1/1] hw/i2c/aspeed: Introduce 'bus-label' to customize bus
+ naming
+Date: Mon, 12 Jan 2026 16:30:53 +0800
+Message-ID: <20260112083054.4151945-2-kane_chen@aspeedtech.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260112083054.4151945-1-kane_chen@aspeedtech.com>
+References: <20260112083054.4151945-1-kane_chen@aspeedtech.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB9136.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: dd29d312-7d9d-40a0-d6f3-08de5183a587
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Jan 2026 02:38:19.2362 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: M0DL44K70rlX5pWM8tXpiUzVUVBQ+RrZou2U/xxfwwnavskU6XArCTF5t+1quWLri+b9kdMOpWyuKu6WxHekm3RphQOFkLMMDECaq+IHD4g=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB6897
-X-OriginatorOrg: intel.com
-Received-SPF: pass client-ip=192.198.163.16;
- envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=kane_chen@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -208,229 +62,136 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Kane Chen <kane_chen@aspeedtech.com>
+From:  Kane Chen via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
+On some Aspeed-based machines, multiple I2C controllers may exist
+across different components, such as the primary SoC and an external
+IO expander or co-processor (e.g., AST1700). Using the current static
+naming convention results in object name conflicts when multiple
+controllers attempt to instantiate buses with the same ID.
 
->-----Original Message-----
->From: Shameer Kolothum <skolothumtho@nvidia.com>
->Subject: [PATCH v7 35/36] hw/vfio/pci: Synthesize PASID capability for
->vfio-pci devices
->
->Add support for synthesizing a PCIe PASID extended capability for
->vfio-pci devices when PASID is enabled via a vIOMMU and supported by
->the host IOMMU backend.
->
->PASID capability parameters are retrieved via IOMMUFD APIs and the
->capability is inserted into the PCIe extended capability list using
->the insertion helper. A new x-vpasid-cap-offset property allows
->explicit control over the placement; by default the capability is
->placed at the end of the PCIe extended configuration space.
->
->If the kernel does not expose PASID information or insertion fails,
->the device continues without PASID support.
->
->Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
->---
-> hw/vfio/pci.c           | 84
->+++++++++++++++++++++++++++++++++++++++++
-> hw/vfio/pci.h           |  1 +
-> include/hw/core/iommu.h |  1 +
-> 3 files changed, 86 insertions(+)
->
->diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
->index c734472721..96990576ac 100644
->--- a/hw/vfio/pci.c
->+++ b/hw/vfio/pci.c
->@@ -24,6 +24,7 @@
-> #include <sys/ioctl.h>
->
-> #include "hw/core/hw-error.h"
->+#include "hw/core/iommu.h"
-> #include "hw/pci/msi.h"
-> #include "hw/pci/msix.h"
-> #include "hw/pci/pci_bridge.h"
->@@ -2498,9 +2499,71 @@ static int vfio_setup_rebar_ecap(VFIOPCIDevice
->*vdev, uint16_t pos)
->     return 0;
-> }
->
->+/*
->+ * Try to retrieve PASID capability information via IOMMUFD APIs and,
->+ * if supported, synthesize a PASID PCIe extended capability for the
->+ * VFIO device.
->+ *
->+ * Use user-specified PASID capability offset if provided, otherwise
->+ * place it at the end of the PCIe extended configuration space.
->+ */
->+static void vfio_pci_synthesize_pasid_cap(VFIOPCIDevice *vdev)
->+{
->+    HostIOMMUDevice *hiod =3D vdev->vbasedev.hiod;
->+    HostIOMMUDeviceClass *hiodc;
->+    PasidInfo pasid_info;
->+    PCIDevice *pdev =3D PCI_DEVICE(vdev);
->+    uint16_t pasid_offset;
->+
->+    if (vdev->vbasedev.mdev) {
->+        return;
->+    }
+This patch introduces a 'bus-label' property for the Aspeed I2C
+controller. This allows higher-level layers, such as the SoC realize
+function, to provide a unique identifier for the buses. The I2C bus
+object name is then constructed using this label (e.g., "ioexp0.0"
+instead of the default "aspeed.i2c.bus.0").
 
-I'm not sure if checking hiod directly is more accurate, vdev->vbasedev.mde=
-v can be false
-for mdev device if fd passing is used.
+This enhancement ensures unique bus identifiers across the system and
+resolves naming conflicts in multi-controller configurations.
 
-Thanks
-Zhenzhong
+Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+---
+ include/hw/i2c/aspeed_i2c.h |  2 ++
+ hw/i2c/aspeed_i2c.c         | 27 +++++++++++++++++++++------
+ 2 files changed, 23 insertions(+), 6 deletions(-)
 
->+
->+    hiodc =3D HOST_IOMMU_DEVICE_GET_CLASS(hiod);
->+    if (!hiodc || !hiodc->get_pasid_info ||
->+        !hiodc->get_pasid_info(hiod, &pasid_info) ||
->+        !(pci_device_get_viommu_flags(pdev) &
->VIOMMU_FLAG_PASID_SUPPORTED)) {
->+        return;
->+    }
->+
->+    /*
->+     * Check if user has specified an offset to place PASID CAP,
->+     * else select the last offset as default
->+     */
->+    if (vdev->vpasid_cap_offset) {
->+        if (!QEMU_IS_ALIGNED(vdev->vpasid_cap_offset,
->PCI_EXT_CAP_ALIGN) ||
->+            vdev->vpasid_cap_offset < PCI_CONFIG_SPACE_SIZE ||
->+            vdev->vpasid_cap_offset + PCI_EXT_CAP_PASID_SIZEOF >
->+                PCIE_CONFIG_SPACE_SIZE) {
->+            error_report("vfio: invalid x-vpasid-cap-offset 0x%x, skippin=
-g
->PASID",
->+                        vdev->vpasid_cap_offset);
->+            return;
->+        }
->+        pasid_offset =3D vdev->vpasid_cap_offset;
->+    } else {
->+        pasid_offset =3D PCIE_CONFIG_SPACE_SIZE -
->PCI_EXT_CAP_PASID_SIZEOF;
->+        warn_report("vfio: PASID capability offset(x-vpasid-cap-offset) n=
-ot
->specified, "
->+                    "placing at the default offset 0x%x",
->+                    pasid_offset);
->+    }
->+
->+    if (!pcie_insert_capability(pdev, PCI_EXT_CAP_ID_PASID,
->PCI_PASID_VER,
->+                                pasid_offset,
->PCI_EXT_CAP_PASID_SIZEOF)) {
->+        error_report("vfio: Placing PASID capability at offset 0x%x faile=
-d",
->+                     pasid_offset);
->+    }
->+    pcie_pasid_common_init(pdev, pasid_offset,
->pasid_info.max_pasid_log2,
->+                           pasid_info.exec_perm,
->pasid_info.priv_mod);
->+
->+    /* PASID capability is fully emulated by QEMU */
->+    memset(vdev->emulated_config_bits + pdev->exp.pasid_cap, 0xff,
->+           PCI_EXT_CAP_PASID_SIZEOF);
->+}
->+
-> static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
-> {
->     PCIDevice *pdev =3D PCI_DEVICE(vdev);
->+    bool pasid_cap_added =3D false;
->     uint32_t header;
->     uint16_t cap_id, next, size;
->     uint8_t cap_ver;
->@@ -2578,12 +2641,24 @@ static void vfio_add_ext_cap(VFIOPCIDevice
->*vdev)
->                 pcie_add_capability(pdev, cap_id, cap_ver, next, size);
->             }
->             break;
->+        /*
->+         * VFIO kernel does not expose the PASID CAP today. We may
->synthesize
->+         * one later through IOMMUFD APIs. If VFIO ever starts exposing
->it,
->+         * record its presence here so we do not create a duplicate CAP.
->+         */
->+        case PCI_EXT_CAP_ID_PASID:
->+            pasid_cap_added =3D true;
->+            /* fallthrough */
->         default:
->             pcie_add_capability(pdev, cap_id, cap_ver, next, size);
->         }
->
->     }
->
->+    if (!pasid_cap_added) {
->+        vfio_pci_synthesize_pasid_cap(vdev);
->+    }
->+
->     /* Cleanup chain head ID if necessary */
->     if (pci_get_word(pdev->config + PCI_CONFIG_SPACE_SIZE) =3D=3D 0xFFFF)=
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+index ffcff2580f..68bd138026 100644
+--- a/include/hw/i2c/aspeed_i2c.h
++++ b/include/hw/i2c/aspeed_i2c.h
+@@ -252,6 +252,7 @@ struct AspeedI2CBus {
+     MemoryRegion mr_pool;
+ 
+     I2CBus *bus;
++    char *name;
+     uint8_t id;
+     qemu_irq irq;
+ 
+@@ -269,6 +270,7 @@ struct AspeedI2CState {
+     uint32_t intr_status;
+     uint32_t ctrl_global;
+     uint32_t new_clk_divider;
++    char *bus_label;
+     MemoryRegion pool_iomem;
+     uint8_t share_pool[ASPEED_I2C_SHARE_POOL_SIZE];
+ 
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 1b8ac561c3..7cf92423c7 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -1215,9 +1215,16 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+                           "aspeed.i2c", aic->mem_size);
+     sysbus_init_mmio(sbd, &s->iomem);
+ 
++    /* default value */
++    if (!s->bus_label) {
++        s->bus_label = g_strdup(TYPE_ASPEED_I2C_BUS);
++    }
++
+     for (i = 0; i < aic->num_busses; i++) {
+         Object *bus = OBJECT(&s->busses[i]);
+         int offset = i < aic->gap ? 1 : 5;
++        g_autofree char *name = g_strdup_printf("%s.%d",
++                                                s->bus_label, i);
+ 
+         if (!object_property_set_link(bus, "controller", OBJECT(s), errp)) {
+             return;
+@@ -1227,6 +1234,10 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+             return;
+         }
+ 
++        if (!object_property_set_str(bus, "bus-name", name, errp)) {
++            return;
++        }
++
+         if (!sysbus_realize(SYS_BUS_DEVICE(bus), errp)) {
+             return;
+         }
+@@ -1263,6 +1274,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
+ static const Property aspeed_i2c_properties[] = {
+     DEFINE_PROP_LINK("dram", AspeedI2CState, dram_mr,
+                      TYPE_MEMORY_REGION, MemoryRegion *),
++    DEFINE_PROP_STRING("bus-label", AspeedI2CState, bus_label),
+ };
+ 
+ static void aspeed_i2c_class_init(ObjectClass *klass, const void *data)
+@@ -1423,24 +1435,26 @@ static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
  {
->         pci_set_word(pdev->config + PCI_CONFIG_SPACE_SIZE, 0);
->@@ -3756,6 +3831,8 @@ static const Property vfio_pci_properties[] =3D {
->                      TYPE_IOMMUFD_BACKEND, IOMMUFDBackend
->*),
-> #endif
->     DEFINE_PROP_BOOL("skip-vsc-check", VFIOPCIDevice, skip_vsc_check,
->true),
->+    DEFINE_PROP_UINT16("x-vpasid-cap-offset", VFIOPCIDevice,
->+                       vpasid_cap_offset, 0),
-> };
->
-> #ifdef CONFIG_IOMMUFD
->@@ -3913,6 +3990,13 @@ static void vfio_pci_class_init(ObjectClass *klass,
->const void *data)
->                                           "destination when doing
->live "
->                                           "migration of device
->state via "
->                                           "multifd channels");
->+   object_class_property_set_description(klass, /* 11.0 */
->+                                          "x-vpasid-cap-offset",
->+                                          "PCIe extended
->configuration space offset at which to place a "
->+                                          "synthetic PASID
->extended capability when PASID is enabled via "
->+                                          "a vIOMMU. A value of 0
->(default) places the capability at the "
->+                                          "end of the extended
->configuration space. The offset must be "
->+                                          "4-byte aligned and
->within the PCIe extended configuration space");
-> }
->
-> static const TypeInfo vfio_pci_info =3D {
->diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
->index 0f78cf9cdb..d6495d7f29 100644
->--- a/hw/vfio/pci.h
->+++ b/hw/vfio/pci.h
->@@ -187,6 +187,7 @@ struct VFIOPCIDevice {
->     bool defer_kvm_irq_routing;
->     bool clear_parent_atomics_on_exit;
->     bool skip_vsc_check;
->+    uint16_t vpasid_cap_offset;
->     VFIODisplay *dpy;
->     Notifier irqchip_change_notifier;
->     VFIOPCICPR cpr;
->diff --git a/include/hw/core/iommu.h b/include/hw/core/iommu.h
->index 9b8bb94fc2..9635770bee 100644
->--- a/include/hw/core/iommu.h
->+++ b/include/hw/core/iommu.h
->@@ -20,6 +20,7 @@
-> enum viommu_flags {
->     /* vIOMMU needs nesting parent HWPT to create nested HWPT */
->     VIOMMU_FLAG_WANT_NESTING_PARENT =3D BIT_ULL(0),
->+    VIOMMU_FLAG_PASID_SUPPORTED =3D BIT_ULL(1),
-> };
->
-> #endif /* HW_IOMMU_H */
->--
->2.43.0
+     AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
+     AspeedI2CClass *aic;
+-    g_autofree char *name = g_strdup_printf(TYPE_ASPEED_I2C_BUS ".%d", s->id);
+-    g_autofree char *pool_name = g_strdup_printf("%s.pool", name);
++    g_autofree char *pool_name = NULL;
+ 
+-    if (!s->controller) {
+-        error_setg(errp, TYPE_ASPEED_I2C_BUS ": 'controller' link not set");
++    if (!s->controller || !s->name) {
++        error_setg(errp, TYPE_ASPEED_I2C_BUS
++                   ": 'controller' or 'bus-name' not set");
+         return;
+     }
+ 
++    pool_name = g_strdup_printf("%s.pool", s->name);
++
+     aic = ASPEED_I2C_GET_CLASS(s->controller);
+ 
+     sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+ 
+-    s->bus = i2c_init_bus(dev, name);
++    s->bus = i2c_init_bus(dev, s->name);
+     s->slave = i2c_slave_create_simple(s->bus, TYPE_ASPEED_I2C_BUS_SLAVE,
+                                        0xff);
+ 
+     memory_region_init_io(&s->mr, OBJECT(s), &aspeed_i2c_bus_ops,
+-                          s, name, aic->reg_size);
++                          s, s->name, aic->reg_size);
+     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
+ 
+     memory_region_init_io(&s->mr_pool, OBJECT(s), &aspeed_i2c_bus_pool_ops,
+@@ -1452,6 +1466,7 @@ static const Property aspeed_i2c_bus_properties[] = {
+     DEFINE_PROP_UINT8("bus-id", AspeedI2CBus, id, 0),
+     DEFINE_PROP_LINK("controller", AspeedI2CBus, controller, TYPE_ASPEED_I2C,
+                      AspeedI2CState *),
++    DEFINE_PROP_STRING("bus-name", AspeedI2CBus, name),
+ };
+ 
+ static void aspeed_i2c_bus_class_init(ObjectClass *klass, const void *data)
+-- 
+2.43.0
 
 

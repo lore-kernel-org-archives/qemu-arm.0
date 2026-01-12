@@ -4,109 +4,166 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2466D2505B
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 09:16:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E41E9D2505E
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 09:46:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfE1s-0004aC-C1; Mon, 12 Jan 2026 04:16:06 -0500
+	id 1vfEUu-0001bt-Kn; Mon, 12 Jan 2026 04:46:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vfE1q-0004XY-Mh
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 04:16:02 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vfEUs-0001b9-W3; Mon, 12 Jan 2026 04:46:03 -0500
+Received: from mail-southcentralusazlp170120001.outbound.protection.outlook.com
+ ([2a01:111:f403:c10d::1] helo=SN4PR2101CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vfE1m-0006Wb-SK
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 04:16:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768209357;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MWWWqeK64ec0+Sc+BsA42lXcR5YfvvX2aTtBOanWLHs=;
- b=L3zHpvI6C3JE6l98mM6fy24l+YVZtVS3VI37Z2Mxgz3fcxZ4vx5DDeZilb8gZ9OCHvVLNL
- J3a+m5TcIhV6VZD89fjQbXjkNmqLagHsOyaFMIM5MedfUHOXDghQ6gSPucHk7HdjXARj9a
- excIVrCJw0lWF7fI4uxU/IZVgRSqbB4=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-632-3xr38UwXMOOSJ9fUAtxbrw-1; Mon, 12 Jan 2026 04:15:55 -0500
-X-MC-Unique: 3xr38UwXMOOSJ9fUAtxbrw-1
-X-Mimecast-MFC-AGG-ID: 3xr38UwXMOOSJ9fUAtxbrw_1768209354
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-430fdc1fff8so3592181f8f.3
- for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 01:15:55 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768209354; x=1768814154;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=MWWWqeK64ec0+Sc+BsA42lXcR5YfvvX2aTtBOanWLHs=;
- b=B3ys5apO+5+PhbKMfgSxmvKXBXfe6/5LyB/YCfvlcsbfH0jic0kZEaBagOMXopYqqc
- fsmITIeElC2usY0+S7hF1ewubMlqKakNPXSJ4s/7MKXIgQhyPilNEaHEoIbTUPxMTHSc
- NLotBv57Z992zAjVxsGqpGGe5HYQiptmo/0jQddgXqEy79PyVHMfsDa1Ont/PA/8kUFQ
- QdEK4RbhDiNC2DQyYYomNP6j4rGY151RxmEVOyM7BOf7xITVx9M3jCdEV+NmnkxH00nC
- rV8WKxuWGboUKhO+kGxpzCBPqEPNzziEAsmaCcrRfrUIzdPl0uPl1B8sgnZQw072X29Y
- DR5w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWPLUsGSGrxw8AugfOoEF6i8MiuKuKvfxQLzi+s4RE3v6axF1DAS9+dVX/DzhExfPmY5DlNS1j24g==@nongnu.org
-X-Gm-Message-State: AOJu0Yy8Rm1Dw82CbQLdig6bV1RnRGK3Ez+cRR4Vy+i4OHCQKnqZa2/5
- bXR6PkR51eYwyFSkNgIrxJRy+9I4THLJxqh1W8FagtrBCDd9ax+20qOzRJaa39pOBrDZLSf6os6
- Tr2XvG+hL8LQ2LC5WiCMk96npY/4OJXkqR67d2IxuMIRvq/qyVrwPxxf9KuPwtg==
-X-Gm-Gg: AY/fxX5S7SEJHNmKj/f8lnmPLEIVcgfNOPHJiarHolpjpV8N3PLOBCcBYUxC0KoqmXh
- Ka4r+Pgij+vlOvx0KCGfQ0z0Nizax1cHvcbLg6QS3e/MzRmMuJTOZUjAa9i6ZVuorOqgbA2NIRT
- cN+BmFaV2EPV3KawSKLyLDTqxwuObWvwZBmvQQgvgPC/v6Fy3hR7A+IijrUgbVEzqsdoVfeuxnw
- hCM1O1uN7uilmb89sysDjRK6gffkehjWHHWAgDbm4vNepi5Hl/1/CXdQuzosR3PgGPYlz7YfnKJ
- L6jxLDKailIEZ3OnvU6gKORgF3IkXrcdchut0ikkzXsBdsuqKDuJBMeEKO0gc+qY00Rp8HQSjO1
- tBn2MwVTAe+bRY7Nm3ntMR28Ryp0fINwGSSta37eHpk7HwnQJpU4gqnBPyw==
-X-Received: by 2002:a05:6000:1842:b0:42f:f627:3aa7 with SMTP id
- ffacd0b85a97d-432c3632b03mr18708421f8f.16.1768209353724; 
- Mon, 12 Jan 2026 01:15:53 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHB0HbCPjl3t9l4wLv7Dbaq3ryXmDzOT9tYzmC/ThaRXt0AgV61JTMXChMYrifEPtyjlUp5iw==
-X-Received: by 2002:a05:6000:1842:b0:42f:f627:3aa7 with SMTP id
- ffacd0b85a97d-432c3632b03mr18708375f8f.16.1768209353254; 
- Mon, 12 Jan 2026 01:15:53 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-432bd5ff0b2sm37510157f8f.42.2026.01.12.01.15.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Jan 2026 01:15:52 -0800 (PST)
-Message-ID: <af8904cf-cce9-476f-be8a-34a85668cdb3@redhat.com>
-Date: Mon, 12 Jan 2026 10:15:51 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] hw/vfio/region: Create dmabuf for PCI BAR per region
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: alex@shazbot.org, clg@redhat.com, cohuck@redhat.com, mst@redhat.com,
- nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jgg@nvidia.com,
- kjaju@nvidia.com
-References: <20251222135357.143339-1-skolothumtho@nvidia.com>
- <20251222135357.143339-4-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251222135357.143339-4-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: jX83c7GF62_t7PTzi4aU6j6mkZtmhir5cymHy2XjR7w_1768209354
-X-Mimecast-Originator: redhat.com
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vfEUq-0002hI-Iy; Mon, 12 Jan 2026 04:46:02 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=cj+mYHyVJFru/wsKcOz6OZF55/K6jkgtpotnXjIm/xKUU5Xl97lVEHqq6YUL58OYX7gQ/rBV4i1Gf1Pydb4ioqwsT6N5Gg3InhX9sZhuGVj43DeNOjlgaLjdbZtZzpINCRjIPRvHChl1jCF4SNJm3QNI5jgc0U92Fb8Y0nraMoh7tC+5pyfZRMJB8GmOUYloUoxtvuopmW4KP/YZGeyC9Q6ybA5j9VQlA+/lxfsEyoNgy4lt/lRUnD6Krj/qndXqzKXt0IvL4kxm5s8q4V4UTBM7OumIbRF25C9n6aCXL8jtldnyVHWqBCsAOIfquw3o/IH/Gid4vpaXuHD49lSVOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=HKvpTGKHzBi1hhZh6R8LnqLb2fASPazqJApHAYTSKTo=;
+ b=U0Ygw87OcVhqnocw2SE5EW/0/SkcLqDfDlESf8apjxVsiKsMECNy7bz3Z6KGHeWKiD1S/JGEhGljA8Ka/FC0xFplwyA4iRznb8LHyu6LmqxSrl3zA5sfWtl0JDH8zK77tiHgAz3GFdgK3L4s2YajUcvGhdQPZjMdma/XKrxZLrLGKpnwnTOSoUmsEG0/P6WsnZz8H9piabxvHdJAMNkCiZobbv1iP4inxRn7t5nnRvTnxhE7O2GpR6cavVyBJ18m7mnOKPjlTZiAmcjWuECqOvbuZ+Nh+pFIpCAiik/9+cDOd09XzmYiexMQnKmqooqY0fP9IraFN/r87X7HtYlqjg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=HKvpTGKHzBi1hhZh6R8LnqLb2fASPazqJApHAYTSKTo=;
+ b=EfHbCM5thTSbgk7RYFuGfN99sDrS1M8jpB3Sa3Xqh3EwI8xyDe+bm/j3aliai8ukVtGJOHiT/vsxcPdw3o+X/P7XuQ98pvrkUWtDoS1XEpbz0Dt57Wi1r+eJU4njlfAxf6xOHOjwuySMFHuCPLvPvFn249fi8P9x+/EHgLH9CCQWDyqJRLPRIZnhFwRxVbZMX1iVdDrrSxB5FA4F3vh1IUV2ivHYSOwyj2C0IdieFnXefpj/MBnmSYPrWqV9WlG7SthP5aA8lZxBIrTQKVDPnUn4Uu5tNWlgcvPGjkOtoOpitYKDHwtZxIKQCDygIFhI59fmadIJPU6tgxZNL1yVEg==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by PH7PR12MB8122.namprd12.prod.outlook.com (2603:10b6:510:2b7::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.7; Mon, 12 Jan
+ 2026 09:45:54 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%5]) with mapi id 15.20.9499.005; Mon, 12 Jan 2026
+ 09:45:54 +0000
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Jason Gunthorpe
+ <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+ "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
+ Nathan Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, "wangzhou1@hisilicon.com"
+ <wangzhou1@hisilicon.com>, "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>, 
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, "yi.l.liu@intel.com"
+ <yi.l.liu@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>
+Subject: RE: [PATCH v7 17/36] hw/arm/virt: Set msi-gpa property
+Thread-Topic: [PATCH v7 17/36] hw/arm/virt: Set msi-gpa property
+Thread-Index: AQHcg0NmIofDyvvrj0mrc0xS48ivF7VOLyAw
+Date: Mon, 12 Jan 2026 09:45:53 +0000
+Message-ID: <CH3PR12MB7548B4E80C4660147906DC6CAB81A@CH3PR12MB7548.namprd12.prod.outlook.com>
+References: <20260111195508.106943-1-skolothumtho@nvidia.com>
+ <20260111195508.106943-18-skolothumtho@nvidia.com>
+ <526B3AB7-B0D4-4104-AF8F-012ED34EC990@unpredictable.fr>
+In-Reply-To: <526B3AB7-B0D4-4104-AF8F-012ED34EC990@unpredictable.fr>
+Accept-Language: en-US, en-GB
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|PH7PR12MB8122:EE_
+x-ms-office365-filtering-correlation-id: 00a1cb43-24ea-40ed-c1e1-08de51bf60db
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|7416014|376014|366016|1800799024|38070700021; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?fYEZbv5JN4qQSQhdiOEZnReRQxJ3J2C1IkWLs2ah9wumdj1WuTVOOpowawEr?=
+ =?us-ascii?Q?ZFVFuXtZP/bvt4WK8LvdRDG1KLd3BAyTTEz4pXBhrvY6a0S3KjE3yvSVUP9N?=
+ =?us-ascii?Q?AdFxxL2CBsYdhtPskpbZ9ANVWvhZvWGJB1WH9hSkN7Ii9WtJLfyO6sQY+JFc?=
+ =?us-ascii?Q?xAGd2lGytMG3G8epBtz3V44W2XJW+8xqzsIO7mkNDSHWGJ52DBk2F03dvJsK?=
+ =?us-ascii?Q?pqeIeOUuwC8laSTqzIz5pmapnA/X2AQs8u/u/BYBRcG6pQuSZGYGk2LZDI4i?=
+ =?us-ascii?Q?DeThaXvyoEDExRlw+hPEDeBiEARmDymH3jSUcNRel+Fdocq+qMgxz9awcS3S?=
+ =?us-ascii?Q?Wj7LHPM1aJ91YjkVedVPslLaH8pq1mp8wxf9gfgNOqUu71LQcgpX4iAjRMtw?=
+ =?us-ascii?Q?U2/0AA/gk8YPQo1WLbuA97UMVWyDncVjnBJa9EaidSvw7r0xKcigk1mNmO7X?=
+ =?us-ascii?Q?lxxczVz/mfBXVJG9KYpKV9umYMj3J5Zk9U+dmlOqQhsM0h2qJyUXbiBJ/7VK?=
+ =?us-ascii?Q?hUCsRkPDB9HLXlE6qfKiKPKXsLf3N7JHSHx/h94hHa2KUqHCfI31mZO8arZF?=
+ =?us-ascii?Q?zf+8BuE5w85hLqklMcC2yrIbmZeHaJvqYSD2lr/a0woqEcPT0+6iK+EK+B9Y?=
+ =?us-ascii?Q?KSnyVSJYetfae5fARPAuICuGHwDrwQRtYwdMwAFBk9oQuGsDaFKxq09hFhwV?=
+ =?us-ascii?Q?szXyenCj0cVzbsomaBmyl7ZOX2sn8MhDqT86VfZ2nN4IGkjkqMLNDdcOqoK0?=
+ =?us-ascii?Q?uYARpjhyWlk0F7LChxMzAsNi82qvnkHDun92hmCI9tVDlCRVc80F3Atk85OD?=
+ =?us-ascii?Q?El/l6QOxE77skZhZTN7tigRwXgjtXuO1rED5jNY2SCnuccLcieBFenqmfSs8?=
+ =?us-ascii?Q?6Pozht+7xxNdn5qkn5vPOn1iQ6JG7r3OyJe6PPBBYN1DECMPzF+j0Rqlxnfl?=
+ =?us-ascii?Q?pvy6WExda5ggTOTSXSp0asrIXdVWYmXohkaH9fhzm3QYheBNzWJxC8LyUVoy?=
+ =?us-ascii?Q?E2MzE3BXnv+zULg6KevQegzmYBfXH/Y48QMyRh3grZKVIOKvould9fDlOkV+?=
+ =?us-ascii?Q?TmYsRI8mSp4vgohdtXz5n+bLYAg7kMzRN2MYxEx4DKRjGZjNgQCkqtV3kZjE?=
+ =?us-ascii?Q?rm9IrVLxVdzScQPucxwvKnyFrHK2X4aQh+jNcI6cRyYl6paUXyRR8bvxlKQs?=
+ =?us-ascii?Q?bgSqd37HhzdyfFCMphTbt5CPedtsiSbSwjwLctNutAj/ESnKoLR/xnYpmUmo?=
+ =?us-ascii?Q?gkfWewjPpC1pZBpsNN7K/XwvEgo4+B1wRroKVgLLFGAXGNqWD1upXBIkxNCa?=
+ =?us-ascii?Q?7FtdhKTECOWWKmCUdv3DmyVe6PG9Bh3l02I9e1Ss948x/dd4tYu9dYfzl+yV?=
+ =?us-ascii?Q?CrYgE9LCL5NEsEvAyToBDlns9WvONBdg3PjnRfNSta7Jw/LAyKKbgJ9Gu4lx?=
+ =?us-ascii?Q?BBFCt/WNJp7/laW3kKngasQxauVyYFIa+6VhqiQWqIEpUhzAet102eZWCm+0?=
+ =?us-ascii?Q?qRoTN6eKcI70je1w91S50yGWO1cFa/6n/NeT?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(366016)(1800799024)(38070700021); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?62Izyao/Vvems+JHXK5wB/2JYlYOAmc4dPVCPii6wcL5pf1dEnVIgcioVgAO?=
+ =?us-ascii?Q?xPJP5XX6+ixpr/UeUTf4A402AdOdanMj7bTE58Nr8Ldsf2Px9lG6kL4JMiCj?=
+ =?us-ascii?Q?7m9/9tBIn9Z56h6rC6swGlajUWshYYyVvzzVvbto4zZpaSs3s9RyCGs/sQzX?=
+ =?us-ascii?Q?zxJ4nfMTP8uHjjduoMWwI2hAje8xtk11mp0hOBe9TVXlEpnnE5gvyUQ+eJUg?=
+ =?us-ascii?Q?efYEcSyPLl2wLJSElCqe6Ut6lABSEl5b0RGLOWz6khwilTdZ5PA+DItxBmxz?=
+ =?us-ascii?Q?HkcY5ZWckBk1rRoxpgR5dUMIrCLKgjdYI8ThjqdvI5A1q6Xjw+hmXi+Ue7T/?=
+ =?us-ascii?Q?DQfOsH5l+omqz4oKtl8QBAbJ2zUKT9w/Wkf2Y9acbpCI4QNuQwbpCSskkIGl?=
+ =?us-ascii?Q?yu95A/Lpxu3DYBFZT9a2sprrGOznNyhcwuz7Qbw/q8BOcrjXdX4dRl14vPW5?=
+ =?us-ascii?Q?EJnxGrjvi/fbJU+tM0MJdI0ZjiN6J3VyChSU5HN+l5OMwKVdsAmXFyRuqhPO?=
+ =?us-ascii?Q?ff5qwvsEEwz6T29+b/3yO5R31VrDEZGk3hcydnbBzmLb50Qc7ee/ZIiv+O3X?=
+ =?us-ascii?Q?6KUQdhUn1aFHrDzjGRUSmrxo6Bo8Jc9OocM4dVBmBzhPb5q/ubHEhgqL2K1+?=
+ =?us-ascii?Q?QcPv/sF6j7JHWfxRCmYtWrO+8iAYVjavkrKTmd55G7DZ8G2Aa1XvFsQaGN86?=
+ =?us-ascii?Q?WtxjP3lGs4T5l1ERXQhbNE8YoJLIQOEbIi+ayOZ7TKj/fBi8iFlBhqm+/ky/?=
+ =?us-ascii?Q?etdXys2WrwG9J6dgG9O7nOhixOp32fk4QvH8QIFFgxZpjbdDdBR6ti3xd8P9?=
+ =?us-ascii?Q?3Clam9C75yBJ7nafvET5dbz3c6uS+AkGlUSufUVe9jFMZum7iwTeuh04fTz9?=
+ =?us-ascii?Q?jtYK0PBeOeBo5PVtvuVlF3/EcAKiiyPtgpkXfLrTi1OtY/k965iLeiGxyLvj?=
+ =?us-ascii?Q?BDnp+qonx9UcpmCtvBy8LkNjVDYh/IFQ3UQQ6qHvwdJme/aHc1fvbhOllp6E?=
+ =?us-ascii?Q?/3sM4keJUd19nQeseLoXMKb3514fPy5dk8PolMBmRflOzO8cRCbk1HX11iEV?=
+ =?us-ascii?Q?8lkz5uvBl08+TK3s6QErzI72aSXy3fw1OM/08jPLc037TS/flk71XpElL5FA?=
+ =?us-ascii?Q?C1Up+sqv9aD63emWHT//avLyM0R+ScYgPGVwvBkd9epZbNdmzfI75Xs3N/jh?=
+ =?us-ascii?Q?LkTQ+8TambjGWUKFOv9LbRGiDx/KBZoDEOHesC2mN/48mYUCAL+MLNMjFaZp?=
+ =?us-ascii?Q?PSMXGUvcQC5jMDVmzXOy3gx7YCVvT9YIcFM0crqeu5A1moPt5ncNAl3I4+Wg?=
+ =?us-ascii?Q?P+GzKgg3MmWx3yMY0pI6o/qRij4CeXSc7cpKCHuzzeKqkOCRrZxpWkrlz5BJ?=
+ =?us-ascii?Q?BfkexLzr0kr2MewLT+QwmZdj/KEDNQc/954FL4dM/cO93Z1CLTOFunuAl+92?=
+ =?us-ascii?Q?WNQBJFSwsLIo6gnBzRKjhfPLLfVDFeyQ7rvCq5NwryrswdPQ0QrB9q8TN4HW?=
+ =?us-ascii?Q?1EWPRu1IVHrlgRhvp3yotCSBIkkyVBS5pP8WYh8/ahXmmMNQsYOp3zwqj+zF?=
+ =?us-ascii?Q?tBYBFPMFtIZOeAHr+awRcZzaAm/JoXnAv65ozpV5kfIILMzgFLI1zk7VDDlx?=
+ =?us-ascii?Q?tH1GuafkC3U1d4AW/59BHXfgzcjt+kJ4zclvNYLNNxJMMPu6sl3Icqq0RWRb?=
+ =?us-ascii?Q?URU8oInPgVQ52pPD/VVCOA0JSE989wjyJABF2UGGl6ONxziXlr+/mphHk6JK?=
+ =?us-ascii?Q?y/6x5eQcUw=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 00a1cb43-24ea-40ed-c1e1-08de51bf60db
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Jan 2026 09:45:53.8203 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: pmK2GGeGqkD4JvoNJQch5zVi5b5yZiXK/lRNUtq4Kp+kqR/lALusWXWHiPnFBt5qcTCQucl9HkPp90iKrj7vhw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB8122
+Received-SPF: permerror client-ip=2a01:111:f403:c10d::1;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=SN4PR2101CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ FORGED_SPF_HELO=0.001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,153 +176,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
-
-On 12/22/25 2:53 PM, Shameer Kolothum wrote:
-> From: Nicolin Chen <nicolinc@nvidia.com>
->
-> Linux now provides a VFIO dmabuf exporter to expose PCI BAR memory for P2P
-> use cases. Create a dmabuf for each mapped BAR region after the mmap is set
-> up, and store the returned fd in the region’s RAMBlock. This allows QEMU to
-> pass the fd to dma_map_file(), enabling iommufd to import the dmabuf and map
-> the BAR correctly in the host IOMMU page table.
-
-I tested the series with upstream kernel and your
-master-smmuv3-accel-v6-veventq-v2-vcmdq-rfcv1-dmabuf-v1 branch
-
-It works fine with Grace Hopper GPU passthrough, without cmdqv. However
-with cmdqv, I get
-
-qemu-system-aarch64: warning: IOMMU_IOAS_MAP failed: Bad address, PCI BAR?
-qemu-system-aarch64: warning: vfio_container_dma_map(0xaaaea68471b0,
-0xc090000, 0x10000, 0xffffb5c90000) = -14 (Bad address)
-qemu-system-aarch64: warning: IOMMU_IOAS_MAP failed: Bad address, PCI BAR?
-
-Maybe this is unrelated to this series and rather relates to the cmdqv one.
-
-Wonder if you get the same warning, and in the positive, if the root
-cause is understood and maybe fixed elsewhere.
-
-Thank you in advance
-
-Eric
 
 
+> -----Original Message-----
+> From: Mohamed Mediouni <mohamed@unpredictable.fr>
+> Sent: 11 January 2026 21:44
+> To: Shameer Kolothum <skolothumtho@nvidia.com>
+> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> eric.auger@redhat.com; peter.maydell@linaro.org; Jason Gunthorpe
+> <jgg@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>;
+> ddutile@redhat.com; berrange@redhat.com; clg@redhat.com;
+> alex@shazbot.org; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
+> <mochs@nvidia.com>; smostafa@google.com; wangzhou1@hisilicon.com;
+> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
+> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
+> Krishnakant Jaju <kjaju@nvidia.com>
+> Subject: Re: [PATCH v7 17/36] hw/arm/virt: Set msi-gpa property
+>=20
+> External email: Use caution opening links or attachments
+>=20
+>=20
+> > On 11. Jan 2026, at 20:53, Shameer Kolothum <skolothumtho@nvidia.com>
+> wrote:
+> >
+> > Set the MSI doorbell GPA property for accelerated SMMUv3 devices for us=
+e
+> > by KVM MSI setup. Also, since any meaningful use of vfio-pci devices wi=
+th
+> > an accelerated SMMUv3 requires both KVM and a kernel irqchip, ensure
+> > those are specified when accel=3Don is selected.
+> >
+> > Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+> > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> > ---
+> > hw/arm/virt.c | 20 ++++++++++++++++++++
+> > 1 file changed, 20 insertions(+)
+> >
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index 9d0568a7d5..08feadf0a8 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -3052,6 +3052,26 @@ static void
+> virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+> >             /* The new SMMUv3 device is specific to the PCI bus */
+> >             object_property_set_bool(OBJECT(dev), "smmu_per_bus", true,
+> NULL);
+> >         }
+> > +        if (object_property_find(OBJECT(dev), "accel") &&
+> > +            object_property_get_bool(OBJECT(dev), "accel", &error_abor=
+t)) {
+> > +            hwaddr db_start;
+> > +
+> > +            if (!kvm_enabled() || !kvm_irqchip_in_kernel()) {
+> > +                error_setg(errp, "SMMUv3 accel=3Don requires KVM with =
+"
+> > +                           "kernel-irqchip=3Don support");
+> > +                    return;
+> > +            }
+> > +
+> > +            if (vms->msi_controller =3D=3D VIRT_MSI_CTRL_ITS) {
+> > +                /* GITS_TRANSLATER page + offset */
+> > +                db_start =3D base_memmap[VIRT_GIC_ITS].base + 0x10000 =
++ 0x40;
+> > +            } else {
+> > +                /* MSI_SETSPI_NS page + offset */
+> > +                db_start =3D base_memmap[VIRT_GIC_V2M].base + 0x40;
+> > +            }
+> Hello,
+>=20
+> Currently (but soon no longer the case for virt-11.0+), its=3Doff means n=
+o MSI
+> controller at all instead of
+> GICv3 + GICv2m.
+>=20
+> Would an else if with an error returned if no MSI controller is enabled b=
+e
+> adequate?
 
->
-> If the kernel lacks support or dmabuf setup fails, QEMU skips the setup
-> and continues with normal mmap handling.
->
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  hw/vfio/region.c     | 57 +++++++++++++++++++++++++++++++++++++++++++-
->  hw/vfio/trace-events |  1 +
->  2 files changed, 57 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/vfio/region.c b/hw/vfio/region.c
-> index b165ab0b93..6949f6779c 100644
-> --- a/hw/vfio/region.c
-> +++ b/hw/vfio/region.c
-> @@ -29,6 +29,7 @@
->  #include "qemu/error-report.h"
->  #include "qemu/units.h"
->  #include "monitor/monitor.h"
-> +#include "system/ramblock.h"
->  #include "vfio-helpers.h"
->  
->  /*
-> @@ -238,13 +239,52 @@ static void vfio_subregion_unmap(VFIORegion *region, int index)
->      region->mmaps[index].mmap = NULL;
->  }
->  
-> +static int vfio_region_create_dma_buf(VFIORegion *region)
-> +{
-> +    g_autofree struct vfio_device_feature *feature = NULL;
-> +    VFIODevice *vbasedev = region->vbasedev;
-> +    struct vfio_device_feature_dma_buf *dma_buf;
-> +    size_t total_size;
-> +    int i, ret;
-> +
-> +    g_assert(region->nr_mmaps);
-> +
-> +    total_size = sizeof(*feature) + sizeof(*dma_buf) +
-> +                 sizeof(struct vfio_region_dma_range) * region->nr_mmaps;
-> +    feature = g_malloc0(total_size);
-> +    *feature = (struct vfio_device_feature) {
-> +        .argsz = total_size,
-> +        .flags = VFIO_DEVICE_FEATURE_GET | VFIO_DEVICE_FEATURE_DMA_BUF,
-> +    };
-> +
-> +    dma_buf = (void *)feature->data;
-> +    *dma_buf = (struct vfio_device_feature_dma_buf) {
-> +        .region_index = region->nr,
-> +        .open_flags = O_RDWR,
-> +        .nr_ranges = region->nr_mmaps,
-> +    };
-> +
-> +    for (i = 0; i < region->nr_mmaps; i++) {
-> +        dma_buf->dma_ranges[i].offset = region->mmaps[i].offset;
-> +        dma_buf->dma_ranges[i].length = region->mmaps[i].size;
-> +    }
-> +
-> +    ret = vbasedev->io_ops->device_feature(vbasedev, feature);
-> +    for (i = 0; i < region->nr_mmaps; i++) {
-> +        trace_vfio_region_dmabuf(region->vbasedev->name, ret, region->nr,
-> +                                 region->mem->name, region->mmaps[i].offset,
-> +                                 region->mmaps[i].size);
-> +    }
-> +    return ret;
-> +}
-> +
->  int vfio_region_mmap(VFIORegion *region)
->  {
->      int i, ret, prot = 0;
->      char *name;
->      int fd;
->  
-> -    if (!region->mem) {
-> +    if (!region->mem || !region->nr_mmaps) {
->          return 0;
->      }
->  
-> @@ -305,6 +345,21 @@ int vfio_region_mmap(VFIORegion *region)
->                                 region->mmaps[i].size - 1);
->      }
->  
-> +    ret = vfio_region_create_dma_buf(region);
-> +    if (ret < 0) {
-> +        if (ret == -ENOTTY) {
-> +            warn_report_once("VFIO dmabuf not supported in kernel");
-> +        } else {
-> +            error_report("%s: failed to create dmabuf: %s",
-> +                         memory_region_name(region->mem), strerror(errno));
-> +        }
-> +    } else {
-> +        MemoryRegion *mr = &region->mmaps[0].mem;
-> +        RAMBlock *ram_block = mr->ram_block;
-> +
-> +        ram_block->fd = ret;
-> +    }
-> +
->      return 0;
->  
->  no_mmap:
-> diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
-> index 1e895448cd..592a0349d4 100644
-> --- a/hw/vfio/trace-events
-> +++ b/hw/vfio/trace-events
-> @@ -117,6 +117,7 @@ vfio_device_put(int fd) "close vdev->fd=%d"
->  vfio_region_write(const char *name, int index, uint64_t addr, uint64_t data, unsigned size) " (%s:region%d+0x%"PRIx64", 0x%"PRIx64 ", %d)"
->  vfio_region_read(char *name, int index, uint64_t addr, unsigned size, uint64_t data) " (%s:region%d+0x%"PRIx64", %d) = 0x%"PRIx64
->  vfio_region_setup(const char *dev, int index, const char *name, unsigned long flags, unsigned long offset, unsigned long size) "Device %s, region %d \"%s\", flags: 0x%lx, offset: 0x%lx, size: 0x%lx"
-> +vfio_region_dmabuf(const char *dev, int fd, int index,  const char *name, unsigned long offset, unsigned long size) "Device %s, dmabuf fd %d region %d \"%s\", offset: 0x%lx, size: 0x%lx"
->  vfio_region_mmap_fault(const char *name, int index, unsigned long offset, unsigned long size, int fault) "Region %s mmaps[%d], [0x%lx - 0x%lx], fault: %d"
->  vfio_region_mmap(const char *name, unsigned long offset, unsigned long end) "Region %s [0x%lx - 0x%lx]"
->  vfio_region_exit(const char *name, int index) "Device %s, region %d"
+The MSI doorbell setup here is only required for MSI translation cases.
+When ITS is off (and no MSI controller is present), passthrough devices
+cannot use MSI/MSI-X, so no MSI translation is required. Is that right?
 
+If so,  skipping the doorbell setup is expected and correct, and returning
+an error would unnecessarily reject a valid configuration.
+
+Thanks,
+Shameer
 

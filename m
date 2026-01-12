@@ -4,94 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69CAFC9EC97
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 15:05:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EDFAC9EC97
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 15:05:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfJJg-0007ff-PZ; Mon, 12 Jan 2026 09:54:48 -0500
+	id 1vfJQf-0007Nb-VB; Mon, 12 Jan 2026 10:02:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vfJJc-0007bs-4F
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:54:44 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vfJJY-0001VB-GN
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:54:42 -0500
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-b8710c9cddbso192175066b.2
- for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 06:54:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1768229679; x=1768834479; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=c9E9nBJERza2cHSSGZ/56X3Psf+p38WCxtaLvvfm5Kk=;
- b=V7mmSi9/YQwuPVDAk/iqa2utT0MnvOdfjSZaHaQROVTHj5EdXMRbX/gNc+uyTeo38h
- 4s43ZdNhlFMwZ5eupcXs14fg1/oR8+HCpBrLtgp7vpCk0oQAw9hyvIS9nyv9Or1r2+Ka
- zZ+XC32RW1sB3iFGD+1RPqQ1z27JGLHfVXQ12y5qkLJGx0m0Oq/wEHVg9i60GMQ7m9lf
- FKIjM9/Czsx8NZYb6yTLbbWLyqkKLdN38Ky6qMphl3wZl5AEG7ZwdEitQJIR2Ttts9E0
- WWeYldUT7eAmw5xsJcUJorrSmkNIF70a5jzcbOzNFlM/oVTLIbAqWQ8RH+tjEYP1tWGo
- QDfg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768229679; x=1768834479;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=c9E9nBJERza2cHSSGZ/56X3Psf+p38WCxtaLvvfm5Kk=;
- b=edsJE1qAa3Ofs06pziDe/o43Us6EKnap5yIWwTS+taoBlo082q9k1TYEPMR0PpEM+9
- jib5eJULkQ5odmML7UY0Dh5AOpYEtijxtTz5GYHSh2JUeTF6wN9ban6lixc421qI2Hgd
- LrPaBkuTW3hahkwGd64m6k/t9/AUZJzp7+5wDMpDfXpPHDMAy7PUQD1TNSUjiehF7kDi
- 6XyMHRUFT9NIJ2cSClkTNIor8Gb4uRCLlMhwFuzYDfhaiRFSWTHIG/ML49TePGhv/Jka
- FZ30K6IoBvBqzvqtKXEtT43Ki/jwlneZ6aaG1ZxtqQSDPMASEQz3lcFdmvsweOJ7P8Rw
- I1Uw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV7b/pM61JNnjQFFeMfx/zv1NlqxGkjAUPEyO3Kzk25HjHRMXNTE4Jbhmw1IeFnwgICVfPMu7ZTDQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzLU3pZyizYySq/0F3HSPXa7nxDlemhhjX1lMVOznQRiWaGG/89
- 4MQNrAE2PLj20RfHaoow6q6rjfxrOsD8zCQA8Ls9D4P/QeAXwGk94qQJ
-X-Gm-Gg: AY/fxX5/j/4eqmccx1azU97hPRsc9XIeHURuPo1pHS+EAUugglJB76dfNL58rxQkhcd
- CLUPIIcbQBiYYWqKSaC8vwqKpW7JfCMdfl0Wm3blR3MJNVN8dYWKhG/UsMC5Jj2rLHPTSYUOfSz
- sLr4neAaVrDrF7J63gW2Ec4ijv20rGytdT438uVdQ9fXbfrf3NTc4olqm5c2VTTY7cX7U5sWMza
- LgJymQh7X+WdD0wnh1a/g74QvHgvDMkwdbFRgbwiGikUzDkU0HvNBfcBFdFOdtDY3pdKnjmcOcT
- UkBRUoEeh6WBs45IuyZe/OlgkNmviGRf835geVCOicvyjHSAKMgZbopL9fHWZZ6CZdqiueIOEHJ
- XSEMKHa9GMegqxtxxOg9xPbZSQEtyWgauuzpusOHxwGU7BRe54aFmSR0V/oY/ez8BBHAiuBbK7/
- eyq0MgUURm3P5JhAXhJmGRB/aKk2OZvEHMul4NQX90ZXc+iPlSOZiKr8ZHZ7xlLytQfhKrKHRW2
- 5dawkwtzcg=
-X-Google-Smtp-Source: AGHT+IHL54xx7rm0k/txbFmkMEyEBwLCj51POjQlV2qOk5/n32Y3UKQc6bEwkvv2RfBzzoqLE230MA==
-X-Received: by 2002:a17:907:7282:b0:b87:892:f440 with SMTP id
- a640c23a62f3a-b8708930758mr491424666b.38.1768229678584; 
- Mon, 12 Jan 2026 06:54:38 -0800 (PST)
-Received: from archlinux (dynamic-077-188-226-222.77.188.pool.telefonica.de.
- [77.188.226.222]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b8731f0718asm37387966b.67.2026.01.12.06.54.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Jan 2026 06:54:38 -0800 (PST)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- Bernhard Beschow <shentey@gmail.com>, Guenter Roeck <linux@roeck-us.net>,
- Bin Meng <bmeng.cn@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- qemu-ppc@nongnu.org
-Subject: [PATCH 01/14] hw/sd/sdhci: Fix TYPE_IMX_USDHC to implement
- sd-spec-version 3 by default
-Date: Mon, 12 Jan 2026 15:54:05 +0100
-Message-ID: <20260112145418.220506-2-shentey@gmail.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260112145418.220506-1-shentey@gmail.com>
-References: <20260112145418.220506-1-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vfJQ9-00074H-DG; Mon, 12 Jan 2026 10:01:38 -0500
+Received: from mail-northcentralusazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c105::5] helo=CH5PR02CU005.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vfJQ4-0002VE-KU; Mon, 12 Jan 2026 10:01:29 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=KLU/WstmNc8JENs7/5oyvR0SCHXS27LKLQ4zyAbaW+ltGigjf5oPzqcpwVMZw0Hp0t5a5Ir2GkXgLrsr6T3gDJm7HQdymYU3Pm1hDLrkxP73KgtNRwH93gPf0SyTLo2hADH1QSnCYw5dJHOBsD03lx1bv1w2bOnFj24ZaftRPQDiCpURdm0MdlUSyvjT8IJQI4MFwa/7G64aHzOhLi/nc9xqanjH6vOJKw67PB4s5qHkaaWSp3n88T/XJjUeE+2WrPTd+qweeCsZULpi7RUr8Z3pWgXOlVJem/YYu9eHm1QcGtm5zrtC9Q5dr4uKa0OMyO6JrMab84fhkuLGfZh0Pw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Zs6nGgQ1leiCCqSkWO9StfNhJi/IJnr8WMo/4wpalVs=;
+ b=adyP8GIpKXXAOvY5UltR1H4jdzrffB6Kec7ZhR0HoJL40tIknqxhbGf46Tukhc5MDt9tSTtMlr9bXyBnwtR/JYN8FX6GS5tQCcShn79QTWxz7qYaSms32y8mGins9dVR6OW5rxYPnB9q0PxPqBbGW3On9vT8mE1FDU8V8JvnIyqTZ4BTmzRcRXALVhvvR64buDBdNrULH5MTPH1niHTevoDNBGXMfLA+L0fVBoB/NEtV5o2RPDfOadaKOdZGCvitlJVtR9VXEtDIRPyVhuZbG49mTQFMQGuT1ICgqchkCzGztWE92qov33+r62Q6V9MrYvAGy2RVbsM8qTF52PMiaw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Zs6nGgQ1leiCCqSkWO9StfNhJi/IJnr8WMo/4wpalVs=;
+ b=QXvqNJkt/xBFnqONa9xtFbOdoTbNLJ36/Q2E4VTM0+sE5bySwC9invxn5gcjVloeRaDR6p99h7swVn7vvMVx95oZB3A6WvwjmcWYgdBZuVoHECybwsEhibj8Lc9pHPpmL+jSmWyw+nKE0nVzhB/a0mpc7/TT1ynJXFRbs2EoxbQjShwTXU+Kc9v8TvMIts5V/YpyPjt8pTWyYSsxdKVJeO+Q5jFM6p4kaYy0idPG16V1FwBxEH7hOzZRABZhIbugCBeH78ms/IcDgPpFSSWsNnOqETlCR48IydKldReNRCkAIQjAvCDDScG3s15nxzyfBQ2Jy4Wh20blMsi8Bh2F0Q==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by PH7PR12MB7114.namprd12.prod.outlook.com (2603:10b6:510:1ed::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.7; Mon, 12 Jan
+ 2026 15:01:14 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%5]) with mapi id 15.20.9499.005; Mon, 12 Jan 2026
+ 15:01:13 +0000
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Jason Gunthorpe
+ <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+ "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
+ Nathan Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, "wangzhou1@hisilicon.com"
+ <wangzhou1@hisilicon.com>, "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>, 
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, "yi.l.liu@intel.com"
+ <yi.l.liu@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>
+Subject: RE: [PATCH v7 17/36] hw/arm/virt: Set msi-gpa property
+Thread-Topic: [PATCH v7 17/36] hw/arm/virt: Set msi-gpa property
+Thread-Index: AQHcg0NmIofDyvvrj0mrc0xS48ivF7VOLyAwgAAjxgCAAEyl8A==
+Date: Mon, 12 Jan 2026 15:01:13 +0000
+Message-ID: <CH3PR12MB7548A36B20A7A4B96CE214EBAB81A@CH3PR12MB7548.namprd12.prod.outlook.com>
+References: <20260111195508.106943-1-skolothumtho@nvidia.com>
+ <20260111195508.106943-18-skolothumtho@nvidia.com>
+ <526B3AB7-B0D4-4104-AF8F-012ED34EC990@unpredictable.fr>
+ <CH3PR12MB7548B4E80C4660147906DC6CAB81A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <8ACCC1BD-8696-4A02-A295-269713AB0614@unpredictable.fr>
+In-Reply-To: <8ACCC1BD-8696-4A02-A295-269713AB0614@unpredictable.fr>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|PH7PR12MB7114:EE_
+x-ms-office365-filtering-correlation-id: 244747d9-9c4d-44b2-95f7-08de51eb6deb
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|7416014|376014|366016|1800799024|38070700021; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?M/a/AvgLssVD0Ppkgo0c9bpY6iUla6k/8aktGm9nvYcpUhCSsFMy/TmY5SvE?=
+ =?us-ascii?Q?VG+qN08kAsbjX3l7UScHZ3RK0g0gYXNK/oWiHMIKu1hHcI2Ro2vSg3Ix4PrT?=
+ =?us-ascii?Q?AUIb3wd39j4ydPUR0bGjm46gdnW8gPLk/YgQLJBpW8Sp4DeVXTKZ0MqBO/Fo?=
+ =?us-ascii?Q?rM0N42gG/0mAU6VcKHndsHk0sPZqMn/eaKWcJAUhdHqVe7Jfhe1IPDUehPYf?=
+ =?us-ascii?Q?Dz9hU9dwpJ7QzhvVUXlEANKJJuWZjNyMF6ItPWn6pR4wzfL5TWPNcL5arKTS?=
+ =?us-ascii?Q?nmB/1+RWbMMOmXmcuCaoN7POfpr0Qy3Tv1kR1/Wkx9lxlL4x7OenfB+sm+8P?=
+ =?us-ascii?Q?X+NDobGhma2wjIVfYdMYD/LiZttx9VNc7Hkim/fcIe+dnH1LWFZ5PViZZ1Tk?=
+ =?us-ascii?Q?11Xlll1cOjv5kE7m6+ewwG1iItjz7mHQEb6T1K4NYACg7sys30RWO16l8wUq?=
+ =?us-ascii?Q?maMEgYdStcUd0syDAy1Do/F+qNH+oCRDpS3f31XwY0Wr5tlBynbvQTf4OVwJ?=
+ =?us-ascii?Q?Yxp6ILV13b72EEHwmSDTe955++UcdCovFsGCDssnG2WrEleVEPohcLPPRHdp?=
+ =?us-ascii?Q?6/68u/AVsLDiG94Oyctglrn4FMZ/z7teoxLs+e1WdGtqcne3otfMq34NCkZs?=
+ =?us-ascii?Q?9TeSIQyjHSJYD1LqNTV6iwAWO6ro7Vjc/pruHpclJz5GyKIzytza3gdRhmlg?=
+ =?us-ascii?Q?kyhyErtGgP+UOLLhxiaBOE0eUkS5GiKHZ8fTeReDxEF2DC6c64UQhLjSPAiD?=
+ =?us-ascii?Q?g1o8YuK2FZtXO7confW3yTp/BqvwwW2HUTmsYcKC3iIXVbuolCvW2uQURTsK?=
+ =?us-ascii?Q?z3R6vxjw3PSs2WT2b6q5kIIPaI46DsEEOFWmvaQ2zeVN9neU/LvvQ53huaFN?=
+ =?us-ascii?Q?yBY6T+mhW73iBddOnjASbfpE8SOuJCkKrCFbXIYuwqV4ZldltqTmqaUwPG7u?=
+ =?us-ascii?Q?6JTYpmOw+qTPw5GyoTbpt7e+xYFy5D9LhYw/GggdQdl0N3EDo/h/e12jnqc7?=
+ =?us-ascii?Q?zgDBWN17VgUsHJX4u3yy5o/cfbDV8tRhutm//TNBbc3XvOGzzbtvP+/MXnUY?=
+ =?us-ascii?Q?zYwOzs6A0EUvuHhEppilzR/f4/QOthTtmPYHX76vBYXtxD+Aj/9aMD/x+UKD?=
+ =?us-ascii?Q?toiYptlW9HMjY8NcfXSDkPgcOj2VrxlGheP7UJqvXT4xz2PbsOn+Enf8eABv?=
+ =?us-ascii?Q?sP7SJC2Kwt6/LnfXkOPz3srXCIuJujdKFPvTbQplmkXv+nUdBvUrFw0SzHtW?=
+ =?us-ascii?Q?duJD4Uw9dw7Epronfg/zQM7BbCdWI+ZXRcColK5HBceQgijGc/nWt32aKrrV?=
+ =?us-ascii?Q?PGt5CWT1rDImEo2q5RVrCsZCD5bBSsA4cYUA20chBBb4ua3nlFA0luJSYBHQ?=
+ =?us-ascii?Q?AX3eA/xGFHaopNE0ngQDyOTXg9MnyB3SiI2IkPFztqQQTV5LMn4SjNrIAQLa?=
+ =?us-ascii?Q?b3TvwgtUHHTdfGi3tOIp1EYtsCCFZaRWmKUw816+EA91wtAuOCXoZ7cF6lbl?=
+ =?us-ascii?Q?VE2k+9LsQ23HHnKb6exwsXpadlfipE0FieEV?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(366016)(1800799024)(38070700021); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?HTEOvnRhFxTJU06P/0BUYi6x/ZJAlJV8ulJ0A2fKq6f1+2aVQvWlpLgSBGFB?=
+ =?us-ascii?Q?hNXKBHJ+B8IxhbTQmndRR4jVZdwpEN5plzuR4TEjlLsAPe+zUgQMkO0Kcvzu?=
+ =?us-ascii?Q?kKPEj2zgmCmIuAeSGep4pufUiWj/H0fjeuyrQzjBy6CKuj1xYxXkzNiXj9Lz?=
+ =?us-ascii?Q?FETrYfEr43uG0/VAXpKVvEltBWOfRl1lgeCZq1KmkKqunScWQEKLhXXg/3W5?=
+ =?us-ascii?Q?/Pb3JxBuiVU5eu02gAUuw7hQLSYbX8iugsAMZmDyLo1xSfx2pqiNPQHEEgSu?=
+ =?us-ascii?Q?ot06gI+3uQgRyc2OOQehlWcP0v65bovEtKLuCTuhpYiLnOlQX43UNt7SWvMR?=
+ =?us-ascii?Q?oSawDiErNiRaD3wML5O0DHuOvFdtNgp//VPi/+K9oLBDNnYHXwMFIIYLh1yi?=
+ =?us-ascii?Q?+BdWy7zuGcj4D74Kbb5optJEe7Bf57pjWwzyGXKT4vcmJV31IwT3qkCDAXFI?=
+ =?us-ascii?Q?wid1UByRUbe1ZkYyvPwJsYt2jzU3Fy/7fzy1edST67/JkrjRrfz9LFqJ0y97?=
+ =?us-ascii?Q?mfpVO2/Hd3GL8++QOizX9fnB7MkSSgmRPoc9EiTrBwapWudFizmEYYxUGN+p?=
+ =?us-ascii?Q?1DZF6Ux0T4w8XFuSS9B+shTY+VyJfGc07iRzzVIkBjbHAUjBAjKosgXe/g8K?=
+ =?us-ascii?Q?3mRV/Mf50zIuVjb2u9zQN68L12+IQkDPY2ymenhmhFwW4K4l9NtXrpsOBVyU?=
+ =?us-ascii?Q?qjczn8pE9NwFbdyFbON4ky+z2njgFze4xIG6d22ft0op9ywn8WyoT1Kh1Yxr?=
+ =?us-ascii?Q?KTzVMfTDrzTT4JzUeYDnfix0xPRYoxe6/KFnqcdWF3VG+RpvCYFAZyhaNvss?=
+ =?us-ascii?Q?sm/fGsl6uwNpfuTM12rWXS4zzRBcL7OH+mxQ/werUYIuWmFEmst7wn6Py5vV?=
+ =?us-ascii?Q?pIcrim9OCD8eI2jym2VpfQM0tIpLSZWJlsb7agFQOQKstYPKweQGAiFNBFFG?=
+ =?us-ascii?Q?oEZRlj2XGQxBJgY+/vuuTGqNOFjqxyvJbhjMlhD+QZj7ivl0E/89OdOog3hv?=
+ =?us-ascii?Q?DMnlTrznfmModmfFhto9YnraqlxY6NcjS0/hHAFc0Rb3d1HHouezz0H7w3JY?=
+ =?us-ascii?Q?YxtvOCsUgwC/jQO4VYk3IcgkHntr3PFB1eqKeO5DppIKkkzOnPavnVhHFIgo?=
+ =?us-ascii?Q?rKK9UKDOoaVMlAj+Qe1eOJpVA7N7CiYz2jlEcsj6osOH/nNA7h2X0d/sAWuq?=
+ =?us-ascii?Q?J+6E9iXOxFD8mL7lK0RV66+5SQc+oUejvMaYSqAbP6aCSH1mGQoB5CjRLJO5?=
+ =?us-ascii?Q?bGh4Jl7umgYwPBV+Zuc9sXw69JcK0oUtodtnvH5ePqCfcmdwDF4xMs9gyPRE?=
+ =?us-ascii?Q?YXuBzLagAIoalaYMrGiVYj7ct0hY6A/zC4+wZgPD/HhTmEkvM4Inyzr8ebCM?=
+ =?us-ascii?Q?gWwIwJ1PkHjeFLMVmj8W9aElyoO4RO4GkW4pGbMG4vbyK4hZqkU91/juks1G?=
+ =?us-ascii?Q?2Zg3r7wzEDb86JWLdygEXzvoUOzURa9PV8zIq8lL0adot5WMKRjxOqgcVJTO?=
+ =?us-ascii?Q?IKRT4tYx544608y0T8aaWR60GgsaJY33x/1M2tw/uQSYvwPV4JXRrcD0BvcO?=
+ =?us-ascii?Q?wa+f7dygCrxCM5sBOKogMlQwM6/GjCmLzy3EyefjMkyLMEQcAcYczM7QQUG5?=
+ =?us-ascii?Q?zVLOE4KYSVWaNd8fiJg0KjCXHpHSODxQpBVIPBtajlaBKOLRwl3sLusqRuAd?=
+ =?us-ascii?Q?+hYuNR9SdsRnftFL2TNXf81TfzeamZbW9p93Mu527PVBIy8UNJaIQ1fsC8Rw?=
+ =?us-ascii?Q?EaIbs4qDwg=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 244747d9-9c4d-44b2-95f7-08de51eb6deb
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Jan 2026 15:01:13.6181 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: /0De3tJ8YbRIVmpdydKYYF7unnnDM8BIrvT1cRLxPLn4TXxlXgMlsnuyh+u9SI8qIbwqmPI+3/VAPY01YLXBLw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB7114
+Received-SPF: permerror client-ip=2a01:111:f403:c105::5;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=CH5PR02CU005.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,37 +181,127 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Fixes TYPE_FSL_IMX6UL, TYPE_FSL_IMX7, and TYPE_FSL_IMX8MP to implement
-version 3 of the SD specification.
 
-Note that TYPE_FSL_IMX6 already had "sd-spec-version" set accordingly and
-that TYPE_FSL_IMX25 correctly sets the same property to version 2 since the
-real hardware is an eSDHC which is the uSDHC's predecessor.
 
-Fixes: fd1e5c817964 ("sdhci: Add i.MX specific subtype of SDHCI")
-cc: qemu-stable
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/sd/sdhci.c | 2 ++
- 1 file changed, 2 insertions(+)
+> -----Original Message-----
+> From: Mohamed Mediouni <mohamed@unpredictable.fr>
+> Sent: 12 January 2026 10:18
+> To: Shameer Kolothum <skolothumtho@nvidia.com>
+> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> eric.auger@redhat.com; peter.maydell@linaro.org; Jason Gunthorpe
+> <jgg@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>; ddutile@redhat.com;
+> berrange@redhat.com; clg@redhat.com; alex@shazbot.org; Nathan Chen
+> <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
+> smostafa@google.com; wangzhou1@hisilicon.com;
+> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
+> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
+> Krishnakant Jaju <kjaju@nvidia.com>
+> Subject: Re: [PATCH v7 17/36] hw/arm/virt: Set msi-gpa property
+>=20
+> External email: Use caution opening links or attachments
+>=20
+>=20
+> > On 12. Jan 2026, at 10:45, Shameer Kolothum
+> <skolothumtho@nvidia.com> wrote:
+> >
+> >
+> >
+> >> -----Original Message-----
+> >> From: Mohamed Mediouni <mohamed@unpredictable.fr>
+> >> Sent: 11 January 2026 21:44
+> >> To: Shameer Kolothum <skolothumtho@nvidia.com>
+> >> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> >> eric.auger@redhat.com; peter.maydell@linaro.org; Jason Gunthorpe
+> >> <jgg@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>;
+> >> ddutile@redhat.com; berrange@redhat.com; clg@redhat.com;
+> >> alex@shazbot.org; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
+> >> <mochs@nvidia.com>; smostafa@google.com; wangzhou1@hisilicon.com;
+> >> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
+> >> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; yi.l.liu@intel.com;
+> >> Krishnakant Jaju <kjaju@nvidia.com>
+> >> Subject: Re: [PATCH v7 17/36] hw/arm/virt: Set msi-gpa property
+> >>
+> >> External email: Use caution opening links or attachments
+> >>
+> >>
+> >>> On 11. Jan 2026, at 20:53, Shameer Kolothum
+> <skolothumtho@nvidia.com>
+> >> wrote:
+> >>>
+> >>> Set the MSI doorbell GPA property for accelerated SMMUv3 devices for
+> use
+> >>> by KVM MSI setup. Also, since any meaningful use of vfio-pci devices =
+with
+> >>> an accelerated SMMUv3 requires both KVM and a kernel irqchip, ensure
+> >>> those are specified when accel=3Don is selected.
+> >>>
+> >>> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+> >>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> >>> ---
+> >>> hw/arm/virt.c | 20 ++++++++++++++++++++
+> >>> 1 file changed, 20 insertions(+)
+> >>>
+> >>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> >>> index 9d0568a7d5..08feadf0a8 100644
+> >>> --- a/hw/arm/virt.c
+> >>> +++ b/hw/arm/virt.c
+> >>> @@ -3052,6 +3052,26 @@ static void
+> >> virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+> >>>            /* The new SMMUv3 device is specific to the PCI bus */
+> >>>            object_property_set_bool(OBJECT(dev), "smmu_per_bus", true=
+,
+> >> NULL);
+> >>>        }
+> >>> +        if (object_property_find(OBJECT(dev), "accel") &&
+> >>> +            object_property_get_bool(OBJECT(dev), "accel", &error_ab=
+ort)) {
+> >>> +            hwaddr db_start;
+> >>> +
+> >>> +            if (!kvm_enabled() || !kvm_irqchip_in_kernel()) {
+> >>> +                error_setg(errp, "SMMUv3 accel=3Don requires KVM wit=
+h "
+> >>> +                           "kernel-irqchip=3Don support");
+> >>> +                    return;
+> >>> +            }
+> >>> +
+> >>> +            if (vms->msi_controller =3D=3D VIRT_MSI_CTRL_ITS) {
+> >>> +                /* GITS_TRANSLATER page + offset */
+> >>> +                db_start =3D base_memmap[VIRT_GIC_ITS].base + 0x1000=
+0 +
+> 0x40;
+> >>> +            } else {
+> >>> +                /* MSI_SETSPI_NS page + offset */
+> >>> +                db_start =3D base_memmap[VIRT_GIC_V2M].base + 0x40;
+> >>> +            }
+> >> Hello,
+> >>
+> >> Currently (but soon no longer the case for virt-11.0+), its=3Doff mean=
+s no MSI
+> >> controller at all instead of
+> >> GICv3 + GICv2m.
+> >>
+> >> Would an else if with an error returned if no MSI controller is enable=
+d be
+> >> adequate?
+> >
+> > The MSI doorbell setup here is only required for MSI translation cases.
+> > When ITS is off (and no MSI controller is present), passthrough devices
+> > cannot use MSI/MSI-X, so no MSI translation is required. Is that right?
+> >
+> > If so,  skipping the doorbell setup is expected and correct, and return=
+ing
+> > an error would unnecessarily reject a valid configuration.
+> Hello,
+>=20
+> Could it be better then to have an else if for the GICv2m case and a sepa=
+rate
+> else with setting db_start to 0 or something instead of an invalid (becau=
+se not
+> present device) address to make things clearer?
 
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 9146e0cde0..23d8f7cbc8 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -1884,9 +1884,11 @@ static const MemoryRegionOps usdhc_mmio_ops = {
- static void imx_usdhc_init(Object *obj)
- {
-     SDHCIState *s = SYSBUS_SDHCI(obj);
-+    DeviceState *dev = DEVICE(obj);
- 
-     s->io_ops = &usdhc_mmio_ops;
-     s->quirks = SDHCI_QUIRK_NO_BUSY_IRQ;
-+    qdev_prop_set_uint8(dev, "sd-spec-version", 3);
- }
- 
- /* --- qdev Samsung s3c --- */
--- 
-2.52.0
+Sure, will do.
+
+Thanks,
+Shameer
 
 

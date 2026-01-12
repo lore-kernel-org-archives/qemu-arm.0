@@ -4,153 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9D1FC9EC77
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 11:45:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5216DC9EC8B
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 13:28:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfGMG-0007K2-2u; Mon, 12 Jan 2026 06:45:17 -0500
+	id 1vfHuE-0003Iw-82; Mon, 12 Jan 2026 08:24:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vfGMB-0007FQ-UW
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 06:45:12 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1vfHtb-0002ib-8H
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 08:23:48 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vfGMA-0004fY-4e
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 06:45:11 -0500
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1vfHtW-0003hc-FB
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 08:23:45 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768218308;
+ s=mimecast20190719; t=1768224221;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=68FKbIRYPA5moLbkgPsZxgaBLh7tBsg1Fb25YY+NDyg=;
- b=IXfBRMSVTPmiWMe2CBSmmpfeS6ZSqpRyN17EA7EsFyA9jW0natA4j57k1cSdqQNBe0clcJ
- TIZtL6ywrBbnp4NYSFIkzqSb2hrwoKzx7I+EIaurhRxGhy9FNiWzcdT/WGMDMVcOgLDcrE
- a2g3OBvVWfSdBJRu8zC1qDkB/mRocuQ=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references;
+ bh=NdnbksSUGyPUrHjkY0R7TYIIf5kvOcbV2JSCja1oOlA=;
+ b=Ev0svYnCHz/u8AHOTJjJ35ytitea3msh6dP03jisHWcav7c/8Gs534wmhkKeaEELYMY/Xh
+ 7YYmJvTvcAMFNHHosyLbwhmSDM9gMssZVeE1whBMsOEk4Dv4Nkfor6GVuczzj5/mm+GE3h
+ jx34nA4pXHtzCxxn1jzhhaDHMpWD3as=
+Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
+ [209.85.215.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-665-ak8H7ic2M6qc0JTb_DPs7w-1; Mon, 12 Jan 2026 06:45:06 -0500
-X-MC-Unique: ak8H7ic2M6qc0JTb_DPs7w-1
-X-Mimecast-MFC-AGG-ID: ak8H7ic2M6qc0JTb_DPs7w_1768218305
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-4325cc15176so3179921f8f.1
- for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 03:45:06 -0800 (PST)
+ us-mta-410-r-PpMir8P5GJ7OA9qtRbJw-1; Mon, 12 Jan 2026 08:23:40 -0500
+X-MC-Unique: r-PpMir8P5GJ7OA9qtRbJw-1
+X-Mimecast-MFC-AGG-ID: r-PpMir8P5GJ7OA9qtRbJw_1768224219
+Received: by mail-pg1-f197.google.com with SMTP id
+ 41be03b00d2f7-c52779e9e65so1797986a12.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 05:23:40 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768218305; x=1768823105;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=68FKbIRYPA5moLbkgPsZxgaBLh7tBsg1Fb25YY+NDyg=;
- b=f+2Yu6Cj+P5p6snaSp6D+B94QwtCmQFKp1EH9sfSEuJHHX1nHp8LoYskeTMBWWO2r2
- pG1Mm/ibocIszTXXm3B9cDk2fuLQQav6QHhXlBddjS6vo/6YyVpW8wVv/6BGt5FTmi6B
- JczdQVubb20WXsLl9TikZpJqRtEUAVtREZ8Q4c/1kiR0PjWAmgVP1NKUxkIwWk9uT61K
- uj6a8Ix9ufFKa73TIgC06Cc6sQJMH2NO9fUAcV00Rby1fVBQ1i5jUnZUkFAaCv/2X0uP
- agl3i7olbPR0x0BcuH8cjr1DhW+Ct/HGgXtb2x4R2SmP6SHLrfoMKPnWuHVwWoFBzoFE
- lKyg==
+ d=1e100.net; s=20230601; t=1768224219; x=1768829019;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=NdnbksSUGyPUrHjkY0R7TYIIf5kvOcbV2JSCja1oOlA=;
+ b=PerAB05vmnhZWb/dDozOVEANlU1uMn0uDjQKx8TtRN5NMWTIbunumh0OGaW3MRkUcu
+ VuC+S2wKus0j2JJqPwEoPuvDaGSqjjpHeBxMbS6yqZ3E+Hd7ZbdBkSA3jvyQ55TH7FbZ
+ LLmwE5HGnlEsMlL1zbR4rHihzmRA/crtxcr82zbkEHJ5E0zTnCuMarQJw86Jz2spsaLy
+ aSvBvRVWYEPyXXtjg/B/aoRmpdXrewAX73iTYCQpJIHSSPemC0KF6UCHkBGrivP4hcmw
+ DAT6TQHTgdpLyniCPNhfnGWZsB8hGTHwlNJNpDFA9U3Au3ybdQdFNxIt/krFxG4fgnwi
+ MMpw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVnQJzggsS299frdoRYPFvA0lz1OHDqLdWIR6Yj2mP1501pdRPibQq0fwNlkqa8Xg+o58kuFSDFWA==@nongnu.org
-X-Gm-Message-State: AOJu0YwGz5B6lGfaCoEJoztCf/zI1/N1utYFE7KDBH9eMq5BX504ri3M
- RBJwriPw3kAFrves2ttvCH2WVE+YAQTmnq8jIPKKKjC6oxOQdj4/svFftXcbT/mJzIB+OUX4QOi
- kJzNdrAMbebrXozKR49n5RUCaOwCA1uTdyUPl2ebFMbv93durv2K9sQ==
-X-Gm-Gg: AY/fxX6xhJSZSX67RrCsc7h5eJnobyV3iJtre3AECSrXXTSRpA14Sxre8iNsPBXnwJW
- DBVqvHdCsUvqWHmTK5/MObXRmUfoqPtaboNxFDg+1kVvgBm5R9/PAIzNNEcHkZ9sUx/1LO1UqIx
- BwZ+tsRNpvvvzvYV8zcUU3QOp0gu2YlX0TC1j6X63F2eJn8+YzYHmaHc1Zc3cuHGWu5lVFzuaRV
- 2ai12JhFIlIVoMxh8xO/48XvHtpDP5BbgYUNaDwZMyw1JmK2m06CEvdSy8pPbbsnUTUVdYjQ3Wa
- GcGFiAgnO2WHPVIFd1dN89BnbtMcV1vOuTv9i0qSYX6SklTRYikGb1SE1uAIbz7g+r0AwqjAa0e
- zX3sYhMxMyXYrIjVuSjfcawhkg1rWlOLIATINwxAJAPS3PHd6
-X-Received: by 2002:a05:6000:1449:b0:430:fd9f:e705 with SMTP id
- ffacd0b85a97d-432c3787561mr21610265f8f.27.1768218305417; 
- Mon, 12 Jan 2026 03:45:05 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEvZaLF4t/QXrnLZls7jOh7oifonI1qS39UeTvcHlYhoOW1QGx24WtBNKA8GxgjhoD8c4XoyA==
-X-Received: by 2002:a05:6000:1449:b0:430:fd9f:e705 with SMTP id
- ffacd0b85a97d-432c3787561mr21610214f8f.27.1768218304924; 
- Mon, 12 Jan 2026 03:45:04 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-432bd0daa78sm38725179f8f.6.2026.01.12.03.45.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Jan 2026 03:45:04 -0800 (PST)
-Message-ID: <30913bca-0c73-4448-82e2-02e1ea42cf09@redhat.com>
-Date: Mon, 12 Jan 2026 12:45:02 +0100
+ AJvYcCVw9Rs+elfLWWYTXFcYbDwNtZqQQsJ/AZZe8+ADvRqy+Iw7mE5l3bpFTmprynmwyyBe0wWiw3OyJg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy28+clHDgap1EyXIDw63bVNGOvVo9uvNZV1pzMPjI4IPBAMQ/S
+ q2Z+EGyoAPR/Ji8bGZjNsIj/OPFIZiWPmxwAhxl/L1zPdyEEvR5XZNtp9dfVamseUlJBt+94L6+
+ iSEoldfDF4hhhTEJKXeKh+R5m7bo9N2j4kSVzggEgJK3SOt2X2+D9PQ==
+X-Gm-Gg: AY/fxX5EKQWPWdQrzv8gH2o6ZM8r5p3IooVWjlLm5hrwmL0sNnAz0M5/+AasqyXE6yS
+ vW1TQ58HPckzRytM9PjpNnBpR0Iot2daDT8vqxob2aCz9D60iLcAQ/i4zWTzv/X1FKtT5pwaqJM
+ 2vV8//B/MTrs2hxnKnPolSvewjS8+5zGTc8n4Y/u+CYfiDBEsM/ss2BA9pbZbuKjyZ2ayIKJXRS
+ QzM5pcc+D+RRnFJsWsPO3+MDcNXsBf+9MgNsVpoKVK0hBG7md3vw+JG66Aq/it2mMRvR1cCQ+oQ
+ Vsr/m2tGti0Z3wbXjd3q/897TZZFFRvntr/mAQp1GEj/T7la4mChjoeH7fZHqnzCPjwPRZh5+/y
+ aymiUKHTC8uEo4SDdK/OLS30BRkz/rVmgvwGIikcwc0E=
+X-Received: by 2002:a05:6a20:4320:b0:371:5a31:e486 with SMTP id
+ adf61e73a8af0-3898f8f5575mr16343759637.6.1768224219086; 
+ Mon, 12 Jan 2026 05:23:39 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEcv47eltF1dqyqoHkRdnfdwpRjEXwbJhJgpR2WonnKMpNVeugyliTsyRBpgsUG9mJ4idnyIg==
+X-Received: by 2002:a05:6a20:4320:b0:371:5a31:e486 with SMTP id
+ adf61e73a8af0-3898f8f5575mr16343740637.6.1768224218597; 
+ Mon, 12 Jan 2026 05:23:38 -0800 (PST)
+Received: from rhel9-box.lan ([110.227.88.119])
+ by smtp.googlemail.com with ESMTPSA id
+ 41be03b00d2f7-c4cc05cd87asm17544771a12.15.2026.01.12.05.23.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Jan 2026 05:23:38 -0800 (PST)
+From: Ani Sinha <anisinha@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcelo Tosatti <mtosatti@redhat.com>, Song Gao <gaosong@loongson.cn>,
+ Huacai Chen <chenhuacai@kernel.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Chinmay Rath <rathc@linux.ibm.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>
+Cc: Ani Sinha <anisinha@redhat.com>, kvm@vger.kernel.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, qemu-s390x@nongnu.org
+Subject: [PATCH v2 04/32] accel/kvm: add changes required to support KVM VM
+ file descriptor change
+Date: Mon, 12 Jan 2026 18:52:17 +0530
+Message-ID: <20260112132259.76855-5-anisinha@redhat.com>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20260112132259.76855-1-anisinha@redhat.com>
+References: <20260112132259.76855-1-anisinha@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 01/36] backends/iommufd: Introduce
- iommufd_backend_alloc_vdev
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: eric.auger@redhat.com, peter.maydell@linaro.org, jgg@nvidia.com,
- nicolinc@nvidia.com, ddutile@redhat.com, berrange@redhat.com,
- alex@shazbot.org, nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, yi.l.liu@intel.com, kjaju@nvidia.com
-References: <20260111195508.106943-1-skolothumtho@nvidia.com>
- <20260111195508.106943-2-skolothumtho@nvidia.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSJDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQHJlZGhhdC5jb20+wsGRBBMBCAA7FiEEoPZlSPBIlev+awtgUaNDx8/7
- 7KEFAmTLlVECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4AACgkQUaNDx8/77KG0eg//
- S0zIzTcxkrwJ/9XgdcvVTnXLVF9V4/tZPfB7sCp8rpDCEseU6O0TkOVFoGWM39sEMiQBSvyY
- lHrP7p7E/JYQNNLh441MfaX8RJ5Ul3btluLapm8oHp/vbHKV2IhLcpNCfAqaQKdfk8yazYhh
- EdxTBlzxPcu+78uE5fF4wusmtutK0JG0sAgq0mHFZX7qKG6LIbdLdaQalZ8CCFMKUhLptW71
- xe+aNrn7hScBoOj2kTDRgf9CE7svmjGToJzUxgeh9mIkxAxTu7XU+8lmL28j2L5uNuDOq9vl
- hM30OT+pfHmyPLtLK8+GXfFDxjea5hZLF+2yolE/ATQFt9AmOmXC+YayrcO2ZvdnKExZS1o8
- VUKpZgRnkwMUUReaF/mTauRQGLuS4lDcI4DrARPyLGNbvYlpmJWnGRWCDguQ/LBPpbG7djoy
- k3NlvoeA757c4DgCzggViqLm0Bae320qEc6z9o0X0ePqSU2f7vcuWN49Uhox5kM5L86DzjEQ
- RHXndoJkeL8LmHx8DM+kx4aZt0zVfCHwmKTkSTQoAQakLpLte7tWXIio9ZKhUGPv/eHxXEoS
- 0rOOAZ6np1U/xNR82QbF9qr9TrTVI3GtVe7Vxmff+qoSAxJiZQCo5kt0YlWwti2fFI4xvkOi
- V7lyhOA3+/3oRKpZYQ86Frlo61HU3r6d9wzOwU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhW
- pOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNLSoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZ
- KXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVUcP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwp
- bV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6
- TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFU
- CSLB2AE4wXQkJbApye48qnZ09zc929df5gU6hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iS
- YBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616dtb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6g
- LxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7
- JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1cOY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0Sdu
- jWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/Jx
- IqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k
- 8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoXywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjK
- yKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9j
- hQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Tad2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yop
- s302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it+OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/p
- LHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1nHzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBU
- wYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVISl73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lU
- XOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfA
- HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
- izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260111195508.106943-2-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Cp3V86UYupRJY_xWOz8z4qymaJ60je-waZdR7hL6bUg_1768218305
+X-Mimecast-MFC-PROC-ID: EEiqWtQoqh1dU0veq0SLBQb2Jws4vdp1lT1p3bgpp0Q_1768224219
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -166,113 +136,316 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/11/26 20:52, Shameer Kolothum wrote:
-> From: Nicolin Chen <nicolinc@nvidia.com>
-> 
-> Add a helper to allocate an iommufd device's virtual device (in the user
-> space) per a viommu instance.
-> 
-> While at it, introduce a struct IOMMUFDVdev for later use by vendor
-> IOMMU implementations.
-> 
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-> Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->   backends/iommufd.c       | 27 +++++++++++++++++++++++++++
->   backends/trace-events    |  1 +
->   include/system/iommufd.h | 12 ++++++++++++
->   3 files changed, 40 insertions(+)
-> 
-> diff --git a/backends/iommufd.c b/backends/iommufd.c
-> index 3d4a4ae736..e68a2c934f 100644
-> --- a/backends/iommufd.c
-> +++ b/backends/iommufd.c
-> @@ -472,6 +472,33 @@ bool iommufd_backend_alloc_viommu(IOMMUFDBackend *be, uint32_t dev_id,
->       return true;
->   }
->   
-> +bool iommufd_backend_alloc_vdev(IOMMUFDBackend *be, uint32_t dev_id,
-> +                                uint32_t viommu_id, uint64_t virt_id,
-> +                                uint32_t *out_vdev_id, Error **errp)
-> +{
-> +    int ret;
-> +    struct iommu_vdevice_alloc alloc_vdev = {
-> +        .size = sizeof(alloc_vdev),
-> +        .viommu_id = viommu_id,
-> +        .dev_id = dev_id,
-> +        .virt_id = virt_id,
-> +    };
-> +
-> +    ret = ioctl(be->fd, IOMMU_VDEVICE_ALLOC, &alloc_vdev);
-> +
-> +    trace_iommufd_backend_alloc_vdev(be->fd, dev_id, viommu_id, virt_id,
-> +                                     alloc_vdev.out_vdevice_id, ret);
-> +
-> +    if (ret) {
-> +        error_setg_errno(errp, errno, "IOMMU_VDEVICE_ALLOC failed");
-> +        return false;
-> +    }
-> +
-> +    g_assert(out_vdev_id);
-> +    *out_vdev_id = alloc_vdev.out_vdevice_id;
-> +    return true;
-> +}
-> +
->   bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
->                                              uint32_t hwpt_id, Error **errp)
->   {
-> diff --git a/backends/trace-events b/backends/trace-events
-> index 01c2d9bde9..8408dc8701 100644
-> --- a/backends/trace-events
-> +++ b/backends/trace-events
-> @@ -22,3 +22,4 @@ iommufd_backend_set_dirty(int iommufd, uint32_t hwpt_id, bool start, int ret) "
->   iommufd_backend_get_dirty_bitmap(int iommufd, uint32_t hwpt_id, uint64_t iova, uint64_t size, uint64_t page_size, int ret) " iommufd=%d hwpt=%u iova=0x%"PRIx64" size=0x%"PRIx64" page_size=0x%"PRIx64" (%d)"
->   iommufd_backend_invalidate_cache(int iommufd, uint32_t id, uint32_t data_type, uint32_t entry_len, uint32_t entry_num, uint32_t done_num, uint64_t data_ptr, int ret) " iommufd=%d id=%u data_type=%u entry_len=%u entry_num=%u done_num=%u data_ptr=0x%"PRIx64" (%d)"
->   iommufd_backend_alloc_viommu(int iommufd, uint32_t dev_id, uint32_t type, uint32_t hwpt_id, uint32_t viommu_id, int ret) " iommufd=%d type=%u dev_id=%u hwpt_id=%u viommu_id=%u (%d)"
-> +iommufd_backend_alloc_vdev(int iommufd, uint32_t dev_id, uint32_t viommu_id, uint64_t virt_id, uint32_t vdev_id, int ret) " iommufd=%d dev_id=%u viommu_id=%u virt_id=0x%"PRIx64" vdev_id=%u (%d)"
-> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
-> index c0d7c50f7e..67c42f78a3 100644
-> --- a/include/system/iommufd.h
-> +++ b/include/system/iommufd.h
-> @@ -48,6 +48,14 @@ typedef struct IOMMUFDViommu {
->       uint32_t viommu_id;  /* virtual IOMMU ID of allocated object */
->   } IOMMUFDViommu;
->   
-> +/*
-> + * Virtual device object for a physical device bind to a vIOMMU.
-> + */
-> +typedef struct IOMMUFDVdev {
-> +    uint32_t vdevice_id; /* object handle for vDevice */
-> +    uint32_t virt_id;  /* virtual device ID */
-> +} IOMMUFDVdev;
-> +
->   bool iommufd_backend_connect(IOMMUFDBackend *be, Error **errp);
->   void iommufd_backend_disconnect(IOMMUFDBackend *be);
->   
-> @@ -73,6 +81,10 @@ bool iommufd_backend_alloc_viommu(IOMMUFDBackend *be, uint32_t dev_id,
->                                     uint32_t viommu_type, uint32_t hwpt_id,
->                                     uint32_t *out_hwpt, Error **errp);
->   
-> +bool iommufd_backend_alloc_vdev(IOMMUFDBackend *be, uint32_t dev_id,
-> +                                uint32_t viommu_id, uint64_t virt_id,
-> +                                uint32_t *out_vdev_id, Error **errp);
-> +
->   bool iommufd_backend_set_dirty_tracking(IOMMUFDBackend *be, uint32_t hwpt_id,
->                                           bool start, Error **errp);
->   bool iommufd_backend_get_dirty_bitmap(IOMMUFDBackend *be, uint32_t hwpt_id,
+This change adds common kvm specific support to handle KVM VM file descriptor
+change. KVM VM file descriptor can change as a part of confidential guest reset
+mechanism. A new function api kvm_arch_vmfd_change_ops() per
+architecture platform is added in order to implement architecture specific
+changes required to support it. A subsequent patch will add x86 specific
+implementation for kvm_arch_vmfd_change_ops as currently only x86 supports
+confidential guest reset.
 
-It looks like we are missing patch :
+Signed-off-by: Ani Sinha <anisinha@redhat.com>
+---
+ accel/kvm/kvm-all.c        | 80 ++++++++++++++++++++++++++++++++++++--
+ accel/kvm/trace-events     |  1 +
+ include/system/kvm.h       |  2 +
+ target/arm/kvm.c           | 10 +++++
+ target/i386/kvm/kvm.c      | 10 +++++
+ target/loongarch/kvm/kvm.c | 10 +++++
+ target/mips/kvm.c          | 10 +++++
+ target/ppc/kvm.c           | 10 +++++
+ target/riscv/kvm/kvm-cpu.c | 10 +++++
+ target/s390x/kvm/kvm.c     | 10 +++++
+ 10 files changed, 150 insertions(+), 3 deletions(-)
 
-  "backends/iommufd: Introduce iommufd_backend_alloc_viommu"
-
-I took the one from v6.
-
-Thanks,
-
-C.
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index f85eb42d78..762f302551 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2415,11 +2415,9 @@ void kvm_irqchip_set_qemuirq_gsi(KVMState *s, qemu_irq irq, int gsi)
+     g_hash_table_insert(s->gsimap, irq, GINT_TO_POINTER(gsi));
+ }
+ 
+-static void kvm_irqchip_create(KVMState *s)
++static void do_kvm_irqchip_create(KVMState *s)
+ {
+     int ret;
+-
+-    assert(s->kernel_irqchip_split != ON_OFF_AUTO_AUTO);
+     if (kvm_check_extension(s, KVM_CAP_IRQCHIP)) {
+         ;
+     } else if (kvm_check_extension(s, KVM_CAP_S390_IRQCHIP)) {
+@@ -2452,7 +2450,13 @@ static void kvm_irqchip_create(KVMState *s)
+         fprintf(stderr, "Create kernel irqchip failed: %s\n", strerror(-ret));
+         exit(1);
+     }
++}
+ 
++static void kvm_irqchip_create(KVMState *s)
++{
++    assert(s->kernel_irqchip_split != ON_OFF_AUTO_AUTO);
++
++    do_kvm_irqchip_create(s);
+     kvm_kernel_irqchip = true;
+     /* If we have an in-kernel IRQ chip then we must have asynchronous
+      * interrupt delivery (though the reverse is not necessarily true)
+@@ -2607,6 +2611,75 @@ static int kvm_setup_dirty_ring(KVMState *s)
+     return 0;
+ }
+ 
++static int kvm_reset_vmfd(MachineState *ms)
++{
++    KVMState *s;
++    KVMMemoryListener *kml;
++    int ret = 0, type;
++    Error *err = NULL;
++
++    /*
++     * bail if the current architecture does not support VM file
++     * descriptor change.
++     */
++    if (!kvm_arch_supports_vmfd_change()) {
++        error_report("This target architecture does not support KVM VM "
++                     "file descriptor change.");
++        return -EOPNOTSUPP;
++    }
++
++    s = KVM_STATE(ms->accelerator);
++    kml = &s->memory_listener;
++
++    memory_listener_unregister(&kml->listener);
++    memory_listener_unregister(&kvm_io_listener);
++
++    if (s->vmfd >= 0) {
++        close(s->vmfd);
++    }
++
++    type = find_kvm_machine_type(ms);
++    if (type < 0) {
++        return -EINVAL;
++    }
++
++    ret = do_kvm_create_vm(s, type);
++    if (ret < 0) {
++        return ret;
++    }
++
++    s->vmfd = ret;
++
++    kvm_setup_dirty_ring(s);
++
++    /* rebind memory to new vm fd */
++    ret = ram_block_rebind(&err);
++    if (ret < 0) {
++        return ret;
++    }
++    assert(!err);
++
++    ret = kvm_arch_vmfd_change_ops(ms, s);
++    if (ret < 0) {
++        return ret;
++    }
++
++    if (s->kernel_irqchip_allowed) {
++        do_kvm_irqchip_create(s);
++    }
++
++    /* these can be only called after ram_block_rebind() */
++    memory_listener_register(&kml->listener, &address_space_memory);
++    memory_listener_register(&kvm_io_listener, &address_space_io);
++
++    /*
++     * kvm fd has changed. Commit the irq routes to KVM once more.
++     */
++    kvm_irqchip_commit_routes(s);
++    trace_kvm_reset_vmfd();
++    return ret;
++}
++
+ static int kvm_init(AccelState *as, MachineState *ms)
+ {
+     MachineClass *mc = MACHINE_GET_CLASS(ms);
+@@ -4014,6 +4087,7 @@ static void kvm_accel_class_init(ObjectClass *oc, const void *data)
+     AccelClass *ac = ACCEL_CLASS(oc);
+     ac->name = "KVM";
+     ac->init_machine = kvm_init;
++    ac->reset_vmfd = kvm_reset_vmfd;
+     ac->has_memory = kvm_accel_has_memory;
+     ac->allowed = &kvm_allowed;
+     ac->gdbstub_supported_sstep_flags = kvm_gdbstub_sstep_flags;
+diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
+index e43d18a869..e4beda0148 100644
+--- a/accel/kvm/trace-events
++++ b/accel/kvm/trace-events
+@@ -14,6 +14,7 @@ kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
+ kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) "index: %d id: %lu"
+ kvm_unpark_vcpu(unsigned long arch_cpu_id, const char *msg) "id: %lu %s"
+ kvm_irqchip_commit_routes(void) ""
++kvm_reset_vmfd(void) ""
+ kvm_irqchip_add_msi_route(char *name, int vector, int virq) "dev %s vector %d virq %d"
+ kvm_irqchip_update_msi_route(int virq) "Updating MSI route virq=%d"
+ kvm_irqchip_release_virq(int virq) "virq %d"
+diff --git a/include/system/kvm.h b/include/system/kvm.h
+index 8f9eecf044..a5ab22421d 100644
+--- a/include/system/kvm.h
++++ b/include/system/kvm.h
+@@ -358,6 +358,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s);
+ int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp);
+ int kvm_arch_init_vcpu(CPUState *cpu);
+ int kvm_arch_destroy_vcpu(CPUState *cpu);
++bool kvm_arch_supports_vmfd_change(void);
++int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s);
+ 
+ #ifdef TARGET_KVM_HAVE_RESET_PARKED_VCPU
+ void kvm_arch_reset_parked_vcpu(unsigned long vcpu_id, int kvm_fd);
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 48f853fff8..10cd94a57d 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1569,6 +1569,16 @@ void kvm_arch_init_irq_routing(KVMState *s)
+ {
+ }
+ 
++int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
++{
++    abort();
++}
++
++bool kvm_arch_supports_vmfd_change(void)
++{
++    return false;
++}
++
+ int kvm_arch_irqchip_create(KVMState *s)
+ {
+     if (kvm_kernel_irqchip_split()) {
+diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+index 3fdb2a3f62..6aa17cecba 100644
+--- a/target/i386/kvm/kvm.c
++++ b/target/i386/kvm/kvm.c
+@@ -3253,6 +3253,16 @@ static int kvm_vm_enable_energy_msrs(KVMState *s)
+     return 0;
+ }
+ 
++int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
++{
++    abort();
++}
++
++bool kvm_arch_supports_vmfd_change(void)
++{
++    return false;
++}
++
+ int kvm_arch_init(MachineState *ms, KVMState *s)
+ {
+     int ret;
+diff --git a/target/loongarch/kvm/kvm.c b/target/loongarch/kvm/kvm.c
+index ef3359ced9..9d5c73f3a3 100644
+--- a/target/loongarch/kvm/kvm.c
++++ b/target/loongarch/kvm/kvm.c
+@@ -1312,6 +1312,16 @@ int kvm_arch_irqchip_create(KVMState *s)
+     return kvm_check_extension(s, KVM_CAP_DEVICE_CTRL);
+ }
+ 
++int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
++{
++    abort();
++}
++
++bool kvm_arch_supports_vmfd_change(void)
++{
++    return false;
++}
++
+ void kvm_arch_pre_run(CPUState *cs, struct kvm_run *run)
+ {
+ }
+diff --git a/target/mips/kvm.c b/target/mips/kvm.c
+index a85e162409..fbef498bd7 100644
+--- a/target/mips/kvm.c
++++ b/target/mips/kvm.c
+@@ -44,6 +44,16 @@ unsigned long kvm_arch_vcpu_id(CPUState *cs)
+     return cs->cpu_index;
+ }
+ 
++int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
++{
++    abort();
++}
++
++bool kvm_arch_supports_vmfd_change(void)
++{
++    return false;
++}
++
+ int kvm_arch_init(MachineState *ms, KVMState *s)
+ {
+     /* MIPS has 128 signals */
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index 3b2f1077da..7cdc0d09f4 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -180,6 +180,16 @@ int kvm_arch_irqchip_create(KVMState *s)
+     return 0;
+ }
+ 
++int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
++{
++    abort();
++}
++
++bool kvm_arch_supports_vmfd_change(void)
++{
++    return false;
++}
++
+ static int kvm_arch_sync_sregs(PowerPCCPU *cpu)
+ {
+     CPUPPCState *cenv = &cpu->env;
+diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
+index 5d792563b9..548ea3aeab 100644
+--- a/target/riscv/kvm/kvm-cpu.c
++++ b/target/riscv/kvm/kvm-cpu.c
+@@ -1545,6 +1545,16 @@ int kvm_arch_irqchip_create(KVMState *s)
+     return kvm_check_extension(s, KVM_CAP_DEVICE_CTRL);
+ }
+ 
++int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
++{
++    abort();
++}
++
++bool kvm_arch_supports_vmfd_change(void)
++{
++    return false;
++}
++
+ int kvm_arch_process_async_events(CPUState *cs)
+ {
+     return 0;
+diff --git a/target/s390x/kvm/kvm.c b/target/s390x/kvm/kvm.c
+index bd6c440aef..6374246416 100644
+--- a/target/s390x/kvm/kvm.c
++++ b/target/s390x/kvm/kvm.c
+@@ -393,6 +393,16 @@ int kvm_arch_irqchip_create(KVMState *s)
+     return 0;
+ }
+ 
++int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
++{
++    abort();
++}
++
++bool kvm_arch_supports_vmfd_change(void)
++{
++    return false;
++}
++
+ unsigned long kvm_arch_vcpu_id(CPUState *cpu)
+ {
+     return cpu->cpu_index;
+-- 
+2.42.0
 
 

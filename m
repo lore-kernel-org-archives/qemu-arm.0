@@ -4,87 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73C88C9EC94
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 14:52:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47C18C9EC8D
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 14:55:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfJ85-00005i-Oj; Mon, 12 Jan 2026 09:42:51 -0500
+	id 1vfJJm-0007ns-Lp; Mon, 12 Jan 2026 09:54:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vfJ7o-0008Ua-Jt
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:42:35 -0500
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vfJJh-0007i3-Up
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:54:49 -0500
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vfJ7l-0007t4-Tx
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:42:31 -0500
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-6446d7a8eadso5732275d50.0
- for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 06:42:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vfJJd-0001Xf-S8
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:54:49 -0500
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-b87003e998bso265336266b.1
+ for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 06:54:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768228948; x=1768833748; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=gmail.com; s=20230601; t=1768229684; x=1768834484; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=buNAGQBfalbAJmlCHEuVbuvIMsReOMXWM8BJbuivDJc=;
- b=qOimXgvAW8qI/zxhusA8saXcmYfOPGdEanV1ZPP5KGYWAuQSmGmeiC/Oin8RXCLC7a
- Lp0pkv/kDXv2pWfg/jutsJub3Zh/7mVdNztuVlmgltUF1sg0owQg+gyzvh4VVdzY86cE
- JknM5lPtaBZUAYtJfnHsbOv7YoFEu+RygkmW63KYySA2Ar3W6A3XGH71wE7YZW8I/KN4
- 7gFv3kjJgxNiSg4waVgVDWpr9VcIQLaG+9PvYwiB45byJCZrTVOhA0GMEaAKxZxbsSej
- QeNy946XdWuHQ6w+2URxLz+pHOdBBGstCLeDCJ0KvMOI+GzDIuN2S03nQTt9aSXf4uTJ
- Mflg==
+ bh=Y1LxjYjMYUoswFZn9nDXTMgtS1rPNwvvyqGhy82qro8=;
+ b=AUHxeNgI9ciszVJcOgOPwwdTIX+UJbMz0uO6pMIG6DDk4ZUay/Zpo/K+m55+zF85gu
+ e+xlU1kr1pE4Nnqz7veBfqqmrWlrN3oCcZwGZulGcYOj0OKqlKK1xlCcXXUxViuturrr
+ UgMz6UdOvTvrvqe4GDSIOf93oxiUcTJ63thV8c9fwE6Sy6WrX/Aaf7zJE8G++4zwFJdq
+ jWjnH9vUKWDYmtfcyjJmqhFSA6CI4Lko48m/5gwHEPpMDlIBfaV99BlA4dYUVOtibN6J
+ tlF0+hXqKX40YYlE0Ncec6sg3+TyjYckS+Km3lgT10p65HCK236yXmb2BaZISeUpRLb0
+ jOWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768228948; x=1768833748;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20230601; t=1768229684; x=1768834484;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=buNAGQBfalbAJmlCHEuVbuvIMsReOMXWM8BJbuivDJc=;
- b=sAqrGWN7XTRdNo2fj24gLxlSxcq0tSgDNndXPQGM00Ln/2ED9hYuZ9GXEkI9CH0OOv
- FjuWTbZIjgfs4ATpbPDI7KeaY4yBBeixTo9RBKw53fyQUcWJIrQGrcYC2X8UchaeoJdd
- PM4ECpNwNnJ8KMr2RctmLtOfjmziU/FOBhTwZpVlM6f0dmQF78vWw+eyvIqMa6ZtgtB0
- PlCVL9ZEQrQECcrGqRsYmU0Z0n4GnXZ4EXTKdIYQt9OXj8nGFxkJReTzJXLaXodUNBOv
- gg12f3jSKRpYg5rAx3NKWLEWjTmvX2pI4eUE2ZV7MRUoP5z6i8OvDhPZvxiLrIj2dEkp
- CBIA==
+ bh=Y1LxjYjMYUoswFZn9nDXTMgtS1rPNwvvyqGhy82qro8=;
+ b=d/krUYl+jNeRX6CxyPUaeDa28PO2sBW7A1WkTbmalz28OX1E9noFXAfjRznRufIx2O
+ ohgzTtrlxw9Dv0DRF6Szt+lziFGBgfP9BYQhXWbA2lF9xsJy60JDii0+SIiVkdrJ1Bxr
+ uVg/59coHTU1Rhq2Nr+p0f5Uz7aRn6N+tkCKYMnA2AQJgaCjfBz428BypjQcRob9lNPS
+ G4/cX4o+GtM0GY8zck8Vw41HdNDLhXVdI/fuJ7vk82ubSrh4FVIsWOtEYeOZAB1e43KE
+ YbbnyTCWIh8/l8v8M6WrgFg4VHObbZwSebGDDnqY9QVP+5ytML97+riYCe6aAgjV2Kcf
+ 3ivw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUYQauJZxQrsrZfLIq0wWMVLbsgDUIOud4UdCzjZSo9Z5YSO4Gn0PyXwFao/v1RpwR07xF87YG6RQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yx3lkUCgPd78GB2KyAG3ROBUStbfSUVSeRYjXBiBI6Bt87yWOI/
- Tr63Mf1iYvkhoFresllQkhu07KRhimRHO+uSRO4rrW/A56b+OK1mcOIQTJJoRE4a7+ubgpRCiBm
- Hbgi8gvANkeh+JDH5e9yK26zkkaZUCvMi/G2co+tlIg==
-X-Gm-Gg: AY/fxX7MWDTwWBLEHAhb+Pg6zBf5f6AN/UZWAVUzexRHAx5ICFtU5YRLDx90CnIIDhE
- C7aa6JInUVvCSKgBlupXQGBH+MCqdSewnlzqyRVV/wi6y92lFku+hoT3rYIKlfUXVbg6KLINDWc
- oaEzavSRTbLnCg/BKhSAgPkQHIgajxkJpUotyfOSoM9qSFEK1O/U0Uvf1vCFD2Unw3BB+blFD9A
- i2sgiChnwn/+0kLPMV+GTSn54GGD8k1Ab/I5UbrOmXIpzKgwdE3L35+K+f3XA8tlGMgtJkLRlaQ
- lqHr7laQ0D8tYa8SPRZCBhs=
-X-Google-Smtp-Source: AGHT+IEM/F4U5UwuVj1leGNwdru4kViCn08eNM8SNVJiz1vZnSlviFWQND2aWv9k+Weo3aP2PD4aUmrO5K3wy17UrjI=
-X-Received: by 2002:a05:690e:d8d:b0:643:79b:fb1b with SMTP id
- 956f58d0204a3-64716b71fc2mr14212491d50.21.1768228948539; Mon, 12 Jan 2026
- 06:42:28 -0800 (PST)
+ AJvYcCX8EOk5/7Ydo4UpBMRaDCmtVyb/XjBniwsNxYGPMZdKQMtPGMx/evRA8TRF3LG4oUF2b7GyGT9XBQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyItKmQ1aFUphUTkzTy6Gfnu3tveE4YhR1/w6SEqwz6lcHo8vPT
+ EojpBZMxHDt0zqppTdxaiyWNtghPKyiyznE+F1QTTkedX6Ob0FxBcZ5F
+X-Gm-Gg: AY/fxX7RxleFw4XPhf+7FhunjCMwFbJAtuGuUip8owUxla4kFt/bQ6idSZvHMipiVLp
+ fvb31b5nGTYZlJ6avws8j3mO/7Cctz4y4B7Y6jkGnX32q0Y76jejyQyPrkhn5WUbkx+szJSWpzs
+ b82MVCbFCVCLXPVtdKihui+7jlcIzOPPT+ueq550IWAdEhaRWnU6pFP1xdelZHN8+m7QifC3Fsd
+ /T1o0l6kieYrwiVNr/QlR5UvE4BXjYipVM3m1C3Kc9ImehpxoFIxwpjeqUIYm9rtwTlOukGIJyw
+ vFQyBRC34w16uQNC0JYl4vVaKU4blnti5U/TJntPzCx/to5DHZGPRgxnU+6unjfOG9Nob6I2YlS
+ l4Qb6mcM74gRFgLkmmTYzb4VhK/sy8d99Yp7WHvH+PYvE7ieyvQPAA9BM9/iVDR2RWILttlHMii
+ rYYEV/KWzLIzdSvkoecwCkc5k3G7ntTubaZIs6Ac9SEGQyw8G/tbmLH0mfl0omIt2w4BsC9A0h
+X-Google-Smtp-Source: AGHT+IEl+b07bG8+3Z0hGlXN5mIYnTrF9fwmZuhOzzlOmo0yshFxPLv4Z0v/ew312KsuxIKCV3GQag==
+X-Received: by 2002:a17:907:7b86:b0:b87:1891:48fb with SMTP id
+ a640c23a62f3a-b8718916cf6mr383338366b.23.1768229683536; 
+ Mon, 12 Jan 2026 06:54:43 -0800 (PST)
+Received: from archlinux (dynamic-077-188-226-222.77.188.pool.telefonica.de.
+ [77.188.226.222]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b8731f0718asm37387966b.67.2026.01.12.06.54.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Jan 2026 06:54:43 -0800 (PST)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ Bernhard Beschow <shentey@gmail.com>, Guenter Roeck <linux@roeck-us.net>,
+ Bin Meng <bmeng.cn@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ qemu-ppc@nongnu.org
+Subject: [PATCH 06/14] hw/sd/sdhci: Consolidate eSDHC constants
+Date: Mon, 12 Jan 2026 15:54:10 +0100
+Message-ID: <20260112145418.220506-7-shentey@gmail.com>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <20260112145418.220506-1-shentey@gmail.com>
+References: <20260112145418.220506-1-shentey@gmail.com>
 MIME-Version: 1.0
-References: <20251218214306.63667-1-philmd@linaro.org>
-In-Reply-To: <20251218214306.63667-1-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 12 Jan 2026 14:42:16 +0000
-X-Gm-Features: AZwV_QjOg70A_0pri56CpDZGx9brPDIUKsu3IHkSe4waXjTSNHPzwdGnkxhs3ag
-Message-ID: <CAFEAcA-vKfpDQJws5m7C1H_N2taPmGXE=gH8hRFxHH7L3u+w=w@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm: Re-enable the MAX78000FTHR machine in
- qemu-system-arm/aarch64
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: Jackson Donaldson <jcksn@duck.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,28 +105,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 18 Dec 2025 at 21:43, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> Unfortunately while rebasing the series registering the
-> ARM/Aarch64 machine interfaces and getting it merged as
-> commit 38c5ab40031 ("hw/arm: Filter machine types for
-> qemu-system-arm/aarch64 binaries") we missed the recent
-> addition of the MAX78000FTHR machine in commit 51eb283dd0e.
-> Correct that.
->
-> Reported-by: Thomas Huth <thuth@redhat.com>
-> Tested-by: Thomas Huth <thuth@redhat.com>
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3248
-> Fixes: 38c5ab40031 ("hw/arm: Filter machine types for single binary")
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  hw/arm/max78000fthr.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+Drop the "IMX_" part of the names since these are actually {E,U}SDHC
+specific and apply for PowerPC-based SoCs as well. While at it
+consolidate all ESDHC constants into the ESDHC section.
 
-Applied to target-arm.next, thanks.
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/sd/sdhci-internal.h | 1 -
+ hw/sd/sdhci.c          | 9 +++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-Should we cc stable? (My feeling is 'yes'.)
+diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
+index 3e81821dd1..f24532eed2 100644
+--- a/hw/sd/sdhci-internal.h
++++ b/hw/sd/sdhci-internal.h
+@@ -75,7 +75,6 @@
+ #define SDHC_CMD_INHIBIT               0x00000001
+ #define SDHC_DATA_INHIBIT              0x00000002
+ #define SDHC_DAT_LINE_ACTIVE           0x00000004
+-#define SDHC_IMX_CLOCK_GATE_OFF        0x00000080
+ #define SDHC_DOING_WRITE               0x00000100
+ #define SDHC_DOING_READ                0x00000200
+ #define SDHC_SPACE_AVAILABLE           0x00000400
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index ccdfc59af8..779f411bab 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -1642,7 +1642,7 @@ static void sdhci_bus_class_init(ObjectClass *klass, const void *data)
+ #define ESDHC_MIX_CTRL                  0x48
+ 
+ #define ESDHC_VENDOR_SPEC               0xc0
+-#define ESDHC_IMX_FRC_SDCLK_ON          (1 << 8)
++#define ESDHC_FRC_SDCLK_ON              (1 << 8)
+ 
+ #define ESDHC_DLL_CTRL                  0x60
+ 
+@@ -1657,6 +1657,7 @@ static void sdhci_bus_class_init(ObjectClass *klass, const void *data)
+ #define ESDHC_CTRL_8BITBUS              (0x2 << 1)
+ 
+ #define ESDHC_PRNSTS_SDSTB              (1 << 3)
++#define ESDHC_PRNSTS_CLOCK_GATE_OFF     BIT(7)
+ 
+ static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
+ {
+@@ -1731,10 +1732,10 @@ usdhc_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+ 
+     case ESDHC_VENDOR_SPEC:
+         s->vendor_spec = value;
+-        if (value & ESDHC_IMX_FRC_SDCLK_ON) {
+-            s->prnsts &= ~SDHC_IMX_CLOCK_GATE_OFF;
++        if (value & ESDHC_FRC_SDCLK_ON) {
++            s->prnsts &= ~ESDHC_PRNSTS_CLOCK_GATE_OFF;
+         } else {
+-            s->prnsts |= SDHC_IMX_CLOCK_GATE_OFF;
++            s->prnsts |= ESDHC_PRNSTS_CLOCK_GATE_OFF;
+         }
+         break;
+ 
+-- 
+2.52.0
 
--- PMM
 

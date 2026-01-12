@@ -4,97 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D211AD26D97
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 16:31:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947FCD25041
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 16:33:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfKnS-0007EI-LA; Mon, 12 Jan 2026 11:29:38 -0500
+	id 1vfKh8-0003uR-9B; Mon, 12 Jan 2026 11:23:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vfKnO-0007Do-N2
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 11:29:34 -0500
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+ id 1vfKfq-0003Yw-7r
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 11:21:48 -0500
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vfKnM-0000gL-JZ
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 11:29:34 -0500
-Received: by mail-pj1-x102b.google.com with SMTP id
- 98e67ed59e1d1-34be2be4b7cso3311071a91.3
- for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 08:29:31 -0800 (PST)
+ id 1vfKfo-00088i-NP
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 11:21:46 -0500
+Received: by mail-pf1-x42b.google.com with SMTP id
+ d2e1a72fcca58-81e7477828bso1521025b3a.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 08:21:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768235370; x=1768840170; darn=nongnu.org;
+ d=linaro.org; s=google; t=1768234903; x=1768839703; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=TVzFKj5L+YvB/BrFdOmu8AqXFlecRiGXkwutuExEh1k=;
- b=T0kkP+yFGHXSOJA71eCS4L+KYFZBe/Uaz6+l2AiTchSv/j0A/+io5qvH6YaQMmh6gt
- XYLSulA60/Yhq3RwOw+VAwgQFsjPjbmp8inQsWCq6J3KPF/OwdMrkGAEdedFzfnRBfez
- yy6vQRpNFgqN5YiOnTA8m8p+FIS1mFNyZQQvZn6vGLniRclGMjX+QYTJkcDjYDXT/4fx
- +neejuDWOK5HzAjJVu2OpEloIdhBKmyghdlKO9iICNh8kt7jlJbv/YRVBOK31V5Sq1fQ
- ZMz7Fhg4GY4sb5tarmrw+FAljTHDHysRJVlP78uB/dgafm9TDfkn+rSrSlhY/7QNxu8n
- 6VkA==
+ bh=wlkIiqSZlMDBvce3juhwVe0pZE4IZJdrPBREhvrFg9Y=;
+ b=kajoJkZQN4ZbzV9psUDdFqMztujzFS+tSIg6KGJCti+dKhpLW9yH8EzpqDBSba6ENE
+ cQbt6/2HOqfbs7ThrOlq5kX/XhipnO5XBbHa8KsUMr+NMqv2Cbz1bAlkA+D4KJg/oAKE
+ IGsLYgboiqAH6JOIE2FdLNaKf7CM2rtkuYOcwEj7JNI/tR8GsKf0P/1cNi047YhLwoRo
+ UfzdoKgLD8DpncP61ZAwk98oy1FtNmdHwZ5ZxRZpDFItzbOSJC1zbIcmO5VAYNtbjOOB
+ FHs3UaJ5Wu1WMOmHyT509aH1/yvWyakWUCrq2dg5dx7fXRuVeu78S2ZmifdPRMU9HqrH
+ ym0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768235370; x=1768840170;
+ d=1e100.net; s=20230601; t=1768234903; x=1768839703;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=TVzFKj5L+YvB/BrFdOmu8AqXFlecRiGXkwutuExEh1k=;
- b=mxgVC+ufv+bQ2UIJkKkYoocyj0lZrlUT8DngJ4UsrQmAGxd5gFlGBZ+XPKpfphCPyb
- DqDCVP7TNLyYmFnBvng95/kWcC5PoB41Obz6osnWX/sfUkQGUIzPZYx6EN72KjS33KHJ
- IZEhZIzKahl1M/gFPV+mxiEm6iF4+C8JVFHwd5ROnwpvJ0u+NLXqBPSzKCPDBQshHU3U
- JB6qUjm0LWqvQX8P6gYVf3s3NLvbM6LukiCd1KCE2eKb/rymeEd6zptqTbaSzfpJGV5c
- bNzTJnfp2RTcYIgD5Y11nQwvZpYc8DTJxE1pCJFSNFV7xAtjPU8x8APbvDfhmwbw2tnd
- geGg==
+ bh=wlkIiqSZlMDBvce3juhwVe0pZE4IZJdrPBREhvrFg9Y=;
+ b=amZyZkq0JgK1k7bCEvyzyLZhZT7A90/evt+N6xuhpoo8yxIE3YZE5B/OyN9RbfvJFB
+ Oy0qQux1H+fRjFHsiXQw5j3ZnpQpOGk8zbOtk+oGSy5EhHCa0p9WE6FXXtbBYLNgfpjC
+ /zeSENVH5GT+wxmE1d8+x88+9a8regaIGCQaupRtvI07XsDpJs9pPP5K36rWy8o636El
+ mdLctxqT5YtVwOtHqcCyrd6E/x9Jynf8iQGxajRxBXDr0Rwxe9azmlebeomSO49Fs+hE
+ 5lbZDu70xPjo6HK3Ab9C0+6VEylzbbXpPJi8gQ02++uTGTNTIY1fdpbvqM9NAt1Uswn0
+ xstQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVGSnAWEQS3tiyJN3ZAn4Mg2V11rTfzifl3Da4zJecSABKTtHYPvfiAUwFvR4CaDBzyUnOEDx3f1A==@nongnu.org
-X-Gm-Message-State: AOJu0YxoETMpVPnZB+s3bSQ5eYigVzs0RxHU/uowKn8iGXx3ElahhurO
- CSKdFbMJSFxPPkNDpfP8jMgTpl4Yb16SimADyBIy3Fx2Uh7e6LoXfjlmzxphpvjRx4c=
-X-Gm-Gg: AY/fxX4mdYPfL2gYL0dwWQoI1cfy00NYf8ONuvFs63A2MYkc9x3863m8QjHnpT3kNTQ
- XnQLSXCGwU4TFNQhNvFAhN9ulRJjSG8DrGIusE1ann74ucDCRN6xJoVxitwfxqXVimCGq0YJqPL
- /8tQT6jjTL2/BDcSXl5n0KVPl4Rrc+XUEIuUKp5w8HCePMFEZtrxNdSTSrdeC/BzCOoPtAuUwJ3
- /VVSaYMBYAHGT9nQ9zlpnSaVhhINJGgAm/7wNuuJhlm+QqXy0XFbbtci+jSCkKIgwoGraisp+0T
- kTokbDEw1ro4in2CyV34LiFRDRhhZGIKtTGK9Mzx+5BSE9XBf/KcwNyHu4w1v01AZ39hM8cUgF/
- SO1oVszLJ9x8nYqm/G2N5A5y2xaqHyaS/PUsoheVNvP9ZUlkioB+VeeaRpsp8i2LKmtSdQbuGFr
- JIo7eV/vngUdMMugZD3EF0Ui6QEV1bm4u5iBjoy3TefvKb1P2HO/QSZ2Ll
-X-Google-Smtp-Source: AGHT+IG/9OqAzC2Ah/WDr+X5+vKKVMXHq6vRdlE2q/mXhMSYxyyxhupuERKRMDju3GUWa45DqkeAgg==
-X-Received: by 2002:a17:90b:57f0:b0:341:134:a962 with SMTP id
- 98e67ed59e1d1-34f68c277b0mr14677098a91.28.1768235369943; 
- Mon, 12 Jan 2026 08:29:29 -0800 (PST)
+ AJvYcCWSgmfIUE9+OHQb2k1masOeNxG8qBeem6TEvvlWJBN3RScp0LAtkDBiOYvt6Rep2XBjPBSaPxKd3Q==@nongnu.org
+X-Gm-Message-State: AOJu0YwzFfIUrks56pzPHtKSb2QBqurPUiI8DfFEw3rsQ1Q2GGvbKpCX
+ eBPVO+UgttN1MJSpnZmAVvvVexiZbPxOGvMtJ1iWSUPuy2gIAuxivp5PBpOREZ4G3SQ=
+X-Gm-Gg: AY/fxX4Pk9kLNQUk+4mAGkwFeSYW6XofFqN1CaYOGYBX0xmiDtOMvT6fWfOyGxluJR7
+ jnKH3Pyh+QbRNsitdDgcobfYiraHKYVmQKNKUHQVeVf6btGs1ilhEA2T3sH8s+rSuhBgy5paDBi
+ R5sootKRUAjRDOOg3kTiBhfgWbdboWPm1DCMFyEoo+fU15FiZqAsnDC9tk/nhOfPQgpWuf18eqc
+ nn6dNdUouL5eYlHfVnirKoLqG/HfzgCeVBQ02ezTXM4TaSBAjKuxPxLZFgIvALvmGC5y/jLchDE
+ GsAoQ7WTreYaK5FE8f/SJTkO+Txb4/7Yg0D8NwjPtRlIK8tZkpS8AseMCt42kWq5gMY6wn/LHiM
+ LcxMAKtLpInKNd5hC9nDjPktVoZFDZyzTs8U7Pxk71TO0Rr9WmzT19M9+nqlgnDHUhxOrycb54b
+ MJXeKsY5UIg7nawxzmFb2DUsYrbg5UW3TFIpDMoTdGzhpgNz36zJLeAdUvU0LsG+q/7rY=
+X-Google-Smtp-Source: AGHT+IHJ8bRZuqmFgbPVPBltyIHJGwivpcTtezTUqOJ1M5Qy5nFpGXH5sxvyr8IxaEuVTjxAAX3zeQ==
+X-Received: by 2002:a05:6a00:8c10:b0:818:1e8c:a513 with SMTP id
+ d2e1a72fcca58-81b77eea322mr17038321b3a.17.1768234902818; 
+ Mon, 12 Jan 2026 08:21:42 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-34f6b29e117sm7237768a91.2.2026.01.12.08.29.28
+ d2e1a72fcca58-81f32ccb4aesm7443647b3a.9.2026.01.12.08.21.41
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Jan 2026 08:29:28 -0800 (PST)
-Message-ID: <c8e80923-d837-4874-a072-d5ae579576a4@linaro.org>
-Date: Mon, 12 Jan 2026 08:29:27 -0800
+ Mon, 12 Jan 2026 08:21:41 -0800 (PST)
+Message-ID: <82940e3b-f9a7-4172-8ae7-680bc1a5785b@linaro.org>
+Date: Mon, 12 Jan 2026 08:21:42 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/2] target/arm: make granule_protection_check usable
- from SMMU
+Subject: Re: [PATCH v5] hw/arm/smmu: add memory regions as property for an
+ SMMU instance
 Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Tao Tang <tangtao1634@phytium.com.cn>, qemu-arm@nongnu.org,
+To: eric.auger@redhat.com, qemu-devel@nongnu.org
+Cc: Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org,
+ tangtao1634@phytium.com.cn, richard.henderson@linaro.org,
+ Radoslaw Biernacki <rad@semihalf.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eric Auger <eric.auger@redhat.com>
-References: <20251216000122.763264-1-pierrick.bouvier@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20260108210453.2280733-1-pierrick.bouvier@linaro.org>
+ <08c42104-d7c5-4df8-b25f-7138ddc94a94@redhat.com>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20251216000122.763264-1-pierrick.bouvier@linaro.org>
+In-Reply-To: <08c42104-d7c5-4df8-b25f-7138ddc94a94@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102b.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42b;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,82 +111,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 12/15/25 4:01 PM, Pierrick Bouvier wrote:
-> This series prepare granule_protection_check to be usable from SMMU, for
-> implementing RME feature.
-> It's based on Tao's commit [1] extracting ARMSecuritySpace from cpu.h header for
-> convenience.
+On 1/12/26 1:58 AM, Eric Auger wrote:
 > 
-> [1] https://lore.kernel.org/qemu-devel/20251012150701.4127034-5-tangtao1634@phytium.com.cn/
 > 
-> To demonstrate the purpose, this is the (wip) change to use that from SMMU:
+> On 1/8/26 10:04 PM, Pierrick Bouvier wrote:
+>> This will be used to access non-secure and secure memory. Secure support
+>> and Granule Protection Check (for RME) for SMMU need to access secure
+>> memory.
+>>
+>> As well, it allows to remove usage of global address_space_memory,
+>> allowing different SMMU instances to have a specific view of memory.
+>>
+>> User creatable SMMU are handled as well for virt machine,
+>> by setting the memory properties when device is plugged in.
+>>
+>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
 > 
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 80f48df3dda..1acff3bbd66 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1055,12 +1056,36 @@ static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
->       }
+> Thanks
 > 
->       cached_entry = smmu_translate(bs, cfg, addr, flag, &ptw_info);
->       if (desc_s2_translation) {
->           cfg->asid = asid;
->           cfg->stage = stage;
->       }
-> 
-> +    if (cached_entry) {
-> +        /* The fields in SMMU_ROOT_GPT_BASE_CFG are the same as for GPCCR_EL3,
-> +         * except there is no copy of GPCCR_EL3.GPC. See SMMU_ROOT_CR0.GPCEN. */
-> +        const bool gpc_enabled = FIELD_EX32(s->root.cr0, ROOT_CR0, GPCEN);
-> +        if (gpc_enabled) {
-> +            hwaddr paddress = CACHED_ENTRY_TO_ADDR(cached_entry, addr);
-> +            ARMSecuritySpace pspace = sec_sid_to_security_space(cfg->sec_sid);
-> +            ARMSecuritySpace ss = ARMSS_Root;
-> +            ARMMMUFaultInfo fi;
-> +
-> +            ARMGranuleProtectionConfig config = {
-> +                .gpccr = s->root.gpt_base_cfg,
-> +                .gptbr = s->root.gpt_base >> 12,
-> +                .parange = 6, /* 52 bits */
-> +                .support_sel2 = false,
-> +                .gpt_as = &s->smmu_state.as_secure_memory
-> +            };
-> +            if (!arm_granule_protection_check(config, paddress,
-> +                                              pspace, ss, &fi)) {
-> +                printf("ERROR: fi.type=%d fi.gpcf=%d\n", fi.type, fi.gpcf);
-> +                g_assert_not_reached();
-> +            }
-> +        }
-> +    }
-> +
->       if (!cached_entry) {
->           /* All faults from PTW has S2 field. */
->           event->u.f_walk_eabt.s2 = (ptw_info.stage == SMMU_STAGE_2);
-> 
-> v2
-> --
-> 
-> - remove extra boilerplate/include/line from arm-security.h
-> - use local var gpccr instead of config.gpccr
-> - extract GPC enable check out of arm_granule_protection_check
-> - rename as_secure in gpt_as
-> - use arm_addresspace to retrieve gpt address space
-> 
-> Pierrick Bouvier (1):
->    target/arm/ptw: make granule_protection_check usable without a cpu
-> 
-> Tao Tang (1):
->    target/arm: Move ARMSecuritySpace to a common header
-> 
->   include/hw/arm/arm-security.h | 37 ++++++++++++++++++++++
->   target/arm/cpu.h              | 59 +++++++++++++++++++++--------------
->   target/arm/ptw.c              | 59 ++++++++++++++++++++++-------------
->   3 files changed, 110 insertions(+), 45 deletions(-)
->   create mode 100644 include/hw/arm/arm-security.h
-> 
+> Eric
 
-Another gentle ping.
-This series has been reviewed and should be ready to be pulled.
+Would you be ok to pull this patch, or would you prefer someone else to 
+do it?
 
 Regards,
 Pierrick

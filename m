@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E090AC9EC8D
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 15:07:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51158C9EC97
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 15:07:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfJKD-0008Q7-13; Mon, 12 Jan 2026 09:55:21 -0500
+	id 1vfJKD-0008SC-J3; Mon, 12 Jan 2026 09:55:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vfJJo-0007pv-Ua
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:54:57 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vfJJq-0007qE-F8
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:55:00 -0500
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vfJJj-0001bw-TQ
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:54:56 -0500
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-b8719ac9af7so163870266b.0
- for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 06:54:51 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vfJJl-0001dD-Gw
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 09:54:58 -0500
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-64b608ffca7so10106032a12.3
+ for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 06:54:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1768229690; x=1768834490; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1768229692; x=1768834492; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=BaTAsRHnOdECfannlW8tUPW9PoxsrFLrXmi2zEMp9G8=;
- b=MTQ/2uSc5O9PXCLhD/gtb0LZ8iBdIOX7gECSII7u5tE0k7ai5HnR6pWvnRXENI/sUq
- rYA+xewxih7k+8yQcM2oxt03rayu0lYVo5Akb3mAk14Souxu+yY2u0tDRZQ4sjTnqGFQ
- HVs+77+Xh9Oj7dqbw17fQEhwyQmLZnsgZBiXq4VdGBwEpQeSqLYiulWQDAhA1+Qwiqd7
- T+6QkJeSHpGv9TyIfEOtME6X/Ks+pySwpO2sVZeaoxzOOH5fHipgjx9XeTC8XoGlW5ho
- 1QGdQFlmvqudpQX00ae/lSaqbU4RVvaq7U5DdkjQj1Vj+69PsqCWnXEp82tXUj+zRH4s
- GSWQ==
+ bh=vae9tFKipWcRHp6Pwi3fV7Q94asRnHBvfdec3wvV7X0=;
+ b=VSLnl5zWu8g0+7bqphvX/i8TFE3e8n0Xh91Hrz1SRYL5m0Z1LIyN7MdLusBTB0sllW
+ jnNgKVzGamopC/BXzPvkiKO5YoGzUV3yZDUyeLPjhjl9dUF8vHN8absKh8cmlT2uRV2I
+ tfGZjgy0pvMplacU/jNxEzKpPJ9hvT+dVEv8/yMNofHobUEhOCgJ7oJ5l3BRwBtpw1my
+ yDZmOpmIZP9jad89EOietJE2HMRLZlMG10ISTn/jQldHJIcX2ycD97G6bfVCFQo29uh9
+ TcMxeoC0TXNLcFyUk+UnTDUqRZRy8Bfwx0KEx8TIMPN/sDBQ3Mq4pUP/0+4ueRb+oWR8
+ rXHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768229690; x=1768834490;
+ d=1e100.net; s=20230601; t=1768229692; x=1768834492;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=BaTAsRHnOdECfannlW8tUPW9PoxsrFLrXmi2zEMp9G8=;
- b=CUWKGHq9BZrWE/cKQOw3LIwf6thYQwAwyj/N0qcYmYurnych23JDNXlIAEqTmDoQdt
- e4dF1ABUdvlQDpNNwNW0oMjctAMEKqadW77FFRrCd4S6gNiFMIiuglOFAbhEw4YKuhBF
- ZFN1OrLLJuiyLaA7BsJ8iZn2UrKFd29Ugu6kr4gvU6sebr/zEPpddmuZYdGe6KELmWl5
- pPT9ZeKz0pPwstNll7v+t2HqtNNvv6UnbczpZT03CnoTxcM2HiCNXy6QqnlhfNTG3uXe
- BMGyUowCFnV7awe4DtV43xcpwg9OLdZ6dsPjor02r9m6OzPWxfuuHLJzxVjwBEPV6GJs
- pe+w==
+ bh=vae9tFKipWcRHp6Pwi3fV7Q94asRnHBvfdec3wvV7X0=;
+ b=iNf1QMW468XhU/BGK55IyQPWVCgnA/WcmUnES7Gk5pCX38qccVChU2c/YJjQEVpv5l
+ KrcmXFVvu52NDeTfUk63nzWWue5JpYbrfblkjnTKz8RKpUxawqpBfd/6Twy6EShjLAkS
+ RfDEyvGRqAaa5sSTw/mMuujGZFzrA7kg04l16+CduLra010gGE/tdB4dPTnnoUSiY2PX
+ h7OQQCU+WL3c2ksY4/TUGJZml8Rv5Z2S07A2LONkGu7f18Jfizt8+Zxn8FS0lUTfoU23
+ U7vOmpgBhWjP+JvsZo16WaXeDyFBw2KiEvHK66j9w145WFcQb2U+hbfDk+WNMgLo0uAm
+ tF6g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUiJIMBdL7dCrCJJS+aysU/sAuwiHk/wM6W1a3NaSF6cJMcoLWIlRsxIOjsQgJgUlpm0CabG9Zkdw==@nongnu.org
-X-Gm-Message-State: AOJu0YxkkMcsJMMexFDygk/w1zl5IA+z01+yejhHTrXDzaUhW6Gi9sTy
- Lc5/keI7oZnV/q1h2xfW9efauKLAHMDOwxP48ZdfXwCO7QkB+e8Ke2RX
-X-Gm-Gg: AY/fxX7ApjQMl8EQRf05e0KsvLGKcUf3Vy3uDp/PD0zypvKrAZqCCcz3D8g/SXuY24g
- l92bsTTsYQP8XryiM+8/RrQt63a8TgiUW35M3Pynt6j8rVtfdbOSfG4lq0+t7gudPonZGof6mnN
- TebtbUUf5+qawZ6RqC3fEjlAIXBxkrZxLemDVlwaOVb4opqwQZXpq7kPkRuLS0ArleNq+74O9N3
- w2rHcv7oKYSHgYegSIlD5X/EJcCV0tmRiYuEy4lRhVotQ15Qe0xclhLTugy6xfJTmzMu6uqmvhU
- 4j6QQWPywIXikOdEecPCR1vGhqg3rmaw95lg1rzXMVeiqVWnTW/r9Q1MX1EkAaV5/rNsnLGFkHp
- nXShpUwUoi8v2KMcBgVJ02+DvU4GqiZU3qXZ8i/c3vHbdW35HMZzPqO6/FcIFhU5aC+/PHcTLUT
- MA2nsY5SDA5aCOxqFcH6kbe3gxeCQ86Q2lqC7BhrM8UGf2vRlLPXvVdcvk8XhCdFX5JAEKB5bF
-X-Google-Smtp-Source: AGHT+IEz8v3qcfC80squY01h4UmdnPHp3L38lnKYF+Tv3/pLx9Cjve+BGkNsM/QhYpadj5iIGsRm/Q==
-X-Received: by 2002:a17:907:3d11:b0:b80:3fb7:8e68 with SMTP id
- a640c23a62f3a-b84299be630mr2295540766b.21.1768229690028; 
- Mon, 12 Jan 2026 06:54:50 -0800 (PST)
+ AJvYcCUktY9aC02v5c01KyqVnd57SouqgJqvJalldD1y8y4LtaeQwRijlx+RW9fn7uMEhMg5xyMQtVdGFg==@nongnu.org
+X-Gm-Message-State: AOJu0Yw4M99R3oY3h2Zuj+bbcPpBIf9+MYRx2eUKrt/R6sVPcZHYaXMV
+ bRa/eiLJ7Q/IFf5fq6RBS54cmprvFX6Ui39WEbmeYOedzc8CbywrvjOR
+X-Gm-Gg: AY/fxX5UJ0htG1mSFIQlDg2qoGPDPYTxHhnNu82ethKplpJUvELqGYceatbR8RLEMR7
+ ahdVA4buaILsmKYgRJA501Ufib4W2FQb9WXUddP6CACcnfuCEhVk51XzKMypkLGg1dc76Zaor5y
+ 2J7U7+jiB12pz0rzpXAoNFTz+jytnGRkTmEbWJunUDnj7XZvzk5nEZE5ODcLCiOLq7pmburW51v
+ Yu8bbPe/b677UUARawSA5f3tkDvNU/c9cV5dKgy11UWxELljl7RMlWFSZ4Aangar8IPWrq3WPvC
+ QbNIzMMUjoHz0sdHRKEoeg+4ngSqhiEZjXlORyCCAQJzx3N22DT2lPPMoRrQzSt4irlmp58WA2Z
+ m54OuKj7dFXQ9bp1wFn3AeGVRz/BRSp3vKSBPVnKJgLRK5KzrWf+Fwgk+FzrH+Lf0BKe78sBhDc
+ nNIAWQBSsadz8+GNmRQ7P/UlfpkjlhHWnH4OXG4pDjm6WLuBKjlL90wE3UDp6Sc+VibjXI1jST
+X-Google-Smtp-Source: AGHT+IGyuG3YbVzCEJjBV8WcMWIzeNjwbNjEW1diFhtb9EUGoLtMrPtxrUUIbIsBg8ur63ED4UY2Lw==
+X-Received: by 2002:a17:907:d1d:b0:b84:2075:b902 with SMTP id
+ a640c23a62f3a-b844534526emr1714653566b.36.1768229692047; 
+ Mon, 12 Jan 2026 06:54:52 -0800 (PST)
 Received: from archlinux (dynamic-077-188-226-222.77.188.pool.telefonica.de.
  [77.188.226.222]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b8731f0718asm37387966b.67.2026.01.12.06.54.49
+ a640c23a62f3a-b8731f0718asm37387966b.67.2026.01.12.06.54.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Jan 2026 06:54:49 -0800 (PST)
+ Mon, 12 Jan 2026 06:54:51 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -73,23 +73,24 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Bin Meng <bmeng.cn@gmail.com>, Thomas Huth <thuth@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
  qemu-ppc@nongnu.org
-Subject: [PATCH 12/14] hw/sd/sdhci: Add uSDHC-specific quirk
-Date: Mon, 12 Jan 2026 15:54:16 +0100
-Message-ID: <20260112145418.220506-13-shentey@gmail.com>
+Subject: [PATCH 14/14] hw/sd/trace-events: Remove redundant "SWITCH " command
+ name
+Date: Mon, 12 Jan 2026 15:54:18 +0100
+Message-ID: <20260112145418.220506-15-shentey@gmail.com>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260112145418.220506-1-shentey@gmail.com>
 References: <20260112145418.220506-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,53 +106,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This quirk is required for imx8mp-evk to boot via u-boot successfully.
+"switch" is already part of the function name. No need to repeat it.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/sd/sdhci.c | 28 ++++++++++++++++++++++++++--
- 1 file changed, 26 insertions(+), 2 deletions(-)
+ hw/sd/trace-events | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index eab814096d..3b0a26ef53 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -1892,9 +1892,33 @@ static void fsl_esdhc_le_init(Object *obj)
-     qdev_prop_set_uint8(dev, "vendor", SDHCI_VENDOR_FSL);
- }
+diff --git a/hw/sd/trace-events b/hw/sd/trace-events
+index d30daa2143..4ec52d2a81 100644
+--- a/hw/sd/trace-events
++++ b/hw/sd/trace-events
+@@ -58,7 +58,7 @@ sdcard_write_data(const char *proto, const char *cmd_desc, uint8_t cmd, uint32_t
+ sdcard_read_data(const char *proto, const char *cmd_desc, uint8_t cmd, uint32_t offset, uint64_t size, uint32_t blklen) "%s %20s/ CMD%02d ofs %"PRIu32" size %"PRIu64" blklen %" PRIu32
+ sdcard_set_voltage(uint16_t millivolts) "%u mV"
+ sdcard_ext_csd_update(unsigned index, uint8_t oval, uint8_t nval) "index %u: 0x%02x -> 0x%02x"
+-sdcard_switch(unsigned access, unsigned index, unsigned value, unsigned set) "SWITCH acc:%u idx:%u val:%u set:%u"
++sdcard_switch(unsigned access, unsigned index, unsigned value, unsigned set) "acc:%u idx:%u val:%u set:%u"
+ sdcard_rpmb_read_block(uint16_t resp, uint16_t read_addr, uint16_t result) "resp 0x%x read_addr 0x%x result 0x%x"
+ sdcard_rpmb_write_block(uint16_t req, uint16_t result) "req 0x%x result 0x%x"
  
-+static uint64_t usdhc_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    if (offset == SDHC_CLKCON) {
-+        /* we force the reset value of the lower nibble since QEMU alters it */
-+        return esdhc_read(opaque, offset, size) | 0xf;
-+    }
-+
-+    return esdhc_read(opaque, offset, size);
-+}
-+
-+static void usdhc_write(void *opaque, hwaddr offset, uint64_t val,
-+                        unsigned size)
-+{
-+    if (offset == SDHC_CLKCON) {
-+        if ((val & 0xf) != 1) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: SYS_CTRL[3..0] shall always be written as 0xf",
-+                          DEVICE(opaque)->canonical_path);
-+        }
-+    }
-+
-+    esdhc_write(opaque, offset, val, size);
-+}
-+
- static const MemoryRegionOps usdhc_mmio_ops = {
--    .read = esdhc_read,
--    .write = esdhc_write,
-+    .read = usdhc_read,
-+    .write = usdhc_write,
-     .valid = {
-         .min_access_size = 1,
-         .max_access_size = 4,
 -- 
 2.52.0
 

@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B661C9EC67
-	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 10:33:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7BB1C9EC63
+	for <qemu-arm@archiver.kernel.org>; Mon, 12 Jan 2026 10:33:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfFEF-0007kd-O6; Mon, 12 Jan 2026 05:32:56 -0500
+	id 1vfFCd-00011O-4M; Mon, 12 Jan 2026 05:31:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vfFEA-0007Z3-Nf
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 05:32:51 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vfFCb-0000xA-RQ
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 05:31:13 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vfFE9-0001y4-5y
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 05:32:50 -0500
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-431048c4068so3049225f8f.1
- for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 02:32:48 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vfFCa-0001h3-1F
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 05:31:13 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-42fb4eeb482so3493917f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 02:31:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768213967; x=1768818767; darn=nongnu.org;
+ d=linaro.org; s=google; t=1768213870; x=1768818670; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Yi610Iff36R1meHawrJl8o7aP+kuOQieFdALRJG5fMk=;
- b=uHwd7mSJO4KV+3p+shCXRZbxjuqG+QzFhQikOHjKY8vs2N5FwEzjAtuvcTCtFfcUt+
- iIaHAzoqSCZ/SkEzTgHAJYwc3GFM1As5iG6uqWe2Hq58W8w1QrU2zx6RNxVH9dtJJAs7
- E6E91S8gMAcjL4Sbp3RwNXkQu7kRzg/2TR0/TSP3yNkL7jXn7A1W6anzO4GEVGyM/Dxi
- luVgphGqCU6aM3Zc/gk7iiZIG+Qo3PdN0/LyQgDMYmcE7tzXpGbPOrsHv9kVD3cj+O57
- vyrcKbeVE8jGzMupCQQ8iPJlbgm/s++Ax2FSSvV3sJXPtMeiEK64rv8y5gLuqQkHQhw6
- FpoA==
+ bh=CXbd4IKEO7Yjpowq+VWguY9db9jI9msI2RfrvzCs7NU=;
+ b=VpFOxpviNZLGwr8rg3SM0PmDB+Vikp4WlAatwbInqU/Tx8HK+DSOG3BWMTtpHJHnOe
+ 8rsxXcgZXUbswughuktmbI0RQIvBtvKPkuoLU49teUisAiIuOnqtsUaLPAzKLqjoD6Bj
+ vv5p5oPNhjngCuLfKZcgrwhWMXEL4NEviRuF3dWkefWuXsP5UHxoAEeFpZndLc9f4RrQ
+ 74Lrdz0nXiYWeUaw07JUvKanJ7BALF/VzPrTGJQlZerZ8XoTVD7e2+A2wCuXERFom9Pd
+ 8/9XL/8sHGAoJxQ86RlSFwIwrImGYADxCrz7soTx66pKCevwiBfz/OtQXGjFwFI9SVbJ
+ mq1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768213967; x=1768818767;
+ d=1e100.net; s=20230601; t=1768213870; x=1768818670;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Yi610Iff36R1meHawrJl8o7aP+kuOQieFdALRJG5fMk=;
- b=eQgKkwoE+kdxVOETemxhsYDmhD24zLd0z9L0ZN1aq12/r8MIecnCq7baKqocj9NWVD
- QEuRQKV5knLoXeMwlpD+a+kNEhnHlCnof9YXnAlWEcev6oUYDeHla1Si0YCcsoXEusx9
- qzwL0laUMlHG3u1PlALiNxxDOWqG0b2HdYkVpQXafTI3FE8M67zXBS77Nu9MI3EG1tis
- IVT7Ki0PETuqNq9RMmn2qjsJt8N3TuwDH+/sW3FC3FR0ca+1yaUfe5UAmtdQn11pQ5Ex
- DrKPw579/n3ktOGV4X7hiSgxnpzcZDrHXShY3Q2fQ15HS1cOOMdXkwiRgghWJCxgCQea
- /v0Q==
+ bh=CXbd4IKEO7Yjpowq+VWguY9db9jI9msI2RfrvzCs7NU=;
+ b=Wy7FizZy+sIwib+7C2d190y69J2VoQG1opp1qOLhQAWYJDmnU4t9q1WsYWRf3V1fLp
+ ivMGshw+Jkcd0stbRqBKSil0J/dhWTL0Dj1RXGCnBD1QtFd8T6nx2nBmH5DPUjz6h+jp
+ 3U7Uu84nd5wt03T5w9kfidfbKSkKVYOSrhFnCBEwpegjFIqwgzCtn2wZ2Sz09OBZesRj
+ 5LIYcLVxKSWqzHsaCrWdV8Ae4Uc3ftFn6KHuaNuEVbo1h/W7A1bBlj/uXmyxvSdK+fjn
+ bu9H4Z2CbmHrIFPHa2GCftfPMGhH3QtVWABL2IVQBcE1vPnUVpWz/NX17207nZmorX9C
+ 84lg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVZMP5ocpxnXs/fz7rm0Yt4YxJOJfmqEZi0ir9uP9zFVVpQloCkoKFfdp0+wZmm9qHbpCSbdi49Kw==@nongnu.org
-X-Gm-Message-State: AOJu0YwpyH9VDpGmJbptURRLFhsybVAnnQlHeeHXOXTvGQSTr5fW5W+h
- YItfrXrFT99OuvlMB+f70gm1/pH6eNdfo1TMqka40oksyGIrMjSWZjTGt6wroqpBMVA=
-X-Gm-Gg: AY/fxX52gfmjYV2SlPT08wP/QFF4fQyx/KyGim8OwPWxhRQA9Ti2vOY8vI6rjgoQiPp
- V17gTE+LhKJyemN+al79/GoWah/vEE/DVuXEYfiijo5k6PSFh868KTL8agFhPVuKf/9qTVFpjTC
- UxxZlvIkEyOCTUHCt4bIhcx8Q50KWJQebdzC+9HRm9kYcVFjQZQ2mRjn9jjz91JbpKAw9UWX5M5
- N4Cr4kPFgLPmcVPCElhSJwCE8KFjulZecJ81pkoBQjRSIIOrqT+/x92RBz5I+TiYnZ0nzRlkRbq
- 0uD6LJAPVVOe2k7M8L8O9H/w2QCHvC/l49QXM48inXFUxZal1SF6Pt7ZzM0d0UQcHvAEKSv2v8Y
- 8KT8iQp0XPmf7ZIZ7zm3DqnG7mhu2t6mMJa79v66umZWV6PBwARnK2maBJh+qA5kbmuLPgL0YeA
- hNJjvJ3xj4PT2kNgLbjb98OWMCNpFpMbCH9netfPITYNfKpdbDWf7z065yNuYr
-X-Google-Smtp-Source: AGHT+IEquge7pQgNftHMqxDhYSqaA5qSgQc2zbRqg0p+uHgbrKs5zaILl9asfJozY1p/Zs0HpN7Mfg==
-X-Received: by 2002:a5d:5f51:0:b0:432:84f6:827f with SMTP id
- ffacd0b85a97d-432bcfa133emr25428395f8f.9.1768213967293; 
- Mon, 12 Jan 2026 02:32:47 -0800 (PST)
+ AJvYcCXoZ5Kdf1V8osnMp9/qU/g3nJktMsZbijL1F4ijWJE973bd3gzfksPVq+hBAu+JqTSRwVx+KwHVtg==@nongnu.org
+X-Gm-Message-State: AOJu0YyYwptF6hYxpKPGGbEh/P0JMOQ9GE61lSKXmWI8llYxly7t8HSJ
+ eFMze8yXx3LMJ+iw777HWutvB/Pmyd7ExDzNpU2GBBvVs7yCsEDswg60HcstKCtvZrc=
+X-Gm-Gg: AY/fxX5JI6Pm/sSOsEGiYSPipvRzwsQx42XXcDBsJlAU1CufE+UOrDm4/Hg9CV5q4UE
+ BmHpk08POgNDAhobayeLlBWqOXxP68qucLXpbU80GpGiMC0WXRiBj9uFb7nDVpVjT+u0/Fe/5hy
+ lZdDm54cPby5to1VMj956/y+5K/tMgTnCLw+wLEXRvLsQjKgnpqBh3CjXJ2zy/gNA/V+96GGIM+
+ 54zj3u2BvcYohQ7/rUjjlgvIF2Ba0fq5PoB1p+4P7F4xBbiJql2ZtrKWpf2C+nobIRolq0J0U37
+ OWXG213Ui/jhHJ2PLXN5H8Isq7mVt03XKtzpJ2Jj8qrRJJdOvt6w+BkIvjG5bmz3iQcGHQNsb31
+ M8ReL1n1QSondYQTWvi42S7ZTT3OnMORapZtdvKYdZTuotT4yJJFYxf5l9TKfmi+LPJ3bq73lvw
+ i8GYAUzQqj7QzS1IQTvt3D7slUq96BqmHiaCzq7J7iXPKcdoQYg1qUqmRE5cwV
+X-Google-Smtp-Source: AGHT+IEjcypaFFeEkp9bj/xQCnQ7dKTD0qxZvP201i+RQFNCuzf0fZBezE939nGdivjjpC1gkSHxlw==
+X-Received: by 2002:a05:6000:2410:b0:430:f58d:40cf with SMTP id
+ ffacd0b85a97d-432c3633514mr18598022f8f.16.1768213870400; 
+ Mon, 12 Jan 2026 02:31:10 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-432bd0e16d2sm39252711f8f.13.2026.01.12.02.32.46
+ ffacd0b85a97d-432d9610671sm20189887f8f.34.2026.01.12.02.31.09
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 12 Jan 2026 02:32:46 -0800 (PST)
+ Mon, 12 Jan 2026 02:31:09 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -77,17 +77,18 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
  Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v6 19/19] target/arm: Only allow disabling NEON when using TCG
-Date: Mon, 12 Jan 2026 11:30:33 +0100
-Message-ID: <20260112103034.65310-20-philmd@linaro.org>
+Subject: [PATCH v6 05/19] target/i386/hvf: Use address_space_translate in
+ ept_emulation_fault
+Date: Mon, 12 Jan 2026 11:30:19 +0100
+Message-ID: <20260112103034.65310-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.52.0
 In-Reply-To: <20260112103034.65310-1-philmd@linaro.org>
 References: <20260112103034.65310-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,42 +111,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Only allow disabling NEON when using TCG.
+From: Richard Henderson <richard.henderson@linaro.org>
 
-This avoids confusing user experience:
+The hvf_slot structure is a poor replacement for properly
+looking up a memory region in the address space.
+Use memory_region_get_dirty_log_mask instead of HVF_SLOT_LOG.
 
-  $ qemu-system-aarch64 -M virt -accel hvf \
-                        -cpu host,neon=off,vfp=off,vfp-d32=off
-  qemu-system-aarch64: AArch64 CPUs must have both VFP and Neon or neither
-
-  $ qemu-system-aarch64 -M virt -accel hvf \
-                        -cpu host,neon=off,vfp=off,vfp-d32=off
-  qemu-system-aarch64: ARM CPUs must have both VFP-D32 and Neon or neither
-
-  $ qemu-system-aarch64 -M virt -accel hvf \
-                        -cpu host,neon=off,vfp=off,vfp-d32=off
-  qemu-system-aarch64: can't apply global host-arm-cpu.vfp-d32=off: Property 'host-arm-cpu.vfp-d32' not found
-
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- target/arm/cpu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/i386/hvf/hvf.c | 37 ++++++++++++++++++-------------------
+ 1 file changed, 18 insertions(+), 19 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index c1087bf5b92..05fa3339b1a 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1460,7 +1460,7 @@ static void arm_cpu_post_init(Object *obj)
- 
-     if (arm_feature(&cpu->env, ARM_FEATURE_NEON)) {
-         cpu->has_neon = true;
--        if (!kvm_enabled()) {
-+        if (tcg_enabled() || qtest_enabled()) {
-             qdev_property_add_static(DEVICE(obj), &arm_cpu_has_neon_property);
-         }
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 1610000d9ca..e3e54c10bd5 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -119,9 +119,12 @@ void hvf_handle_io(CPUState *env, uint16_t port, void *buffer,
      }
+ }
+ 
+-static bool ept_emulation_fault(hvf_slot *slot, uint64_t gpa, uint64_t ept_qual)
++static bool ept_emulation_fault(CPUState *cs, uint64_t gpa, uint64_t ept_qual)
+ {
+-    int read, write;
++    bool read, write;
++    MemoryRegion *mr;
++    hwaddr gpa_page = gpa & qemu_real_host_page_mask();
++    hwaddr xlat;
+ 
+     /* EPT fault on an instruction fetch doesn't make sense here */
+     if (ept_qual & EPT_VIOLATION_INST_FETCH) {
+@@ -129,21 +132,22 @@ static bool ept_emulation_fault(hvf_slot *slot, uint64_t gpa, uint64_t ept_qual)
+     }
+ 
+     /* EPT fault must be a read fault or a write fault */
+-    read = ept_qual & EPT_VIOLATION_DATA_READ ? 1 : 0;
+-    write = ept_qual & EPT_VIOLATION_DATA_WRITE ? 1 : 0;
+-    if ((read | write) == 0) {
++    read = ept_qual & EPT_VIOLATION_DATA_READ;
++    write = ept_qual & EPT_VIOLATION_DATA_WRITE;
++    if (!read && !write) {
+         return false;
+     }
+ 
+-    if (write && slot) {
+-        if (slot->flags & HVF_SLOT_LOG) {
+-            uintptr_t page_size = qemu_real_host_page_size();
+-            intptr_t page_mask = -(intptr_t)page_size;
+-            uint64_t dirty_page_start = gpa & page_mask;
++    mr = address_space_translate(cpu_get_address_space(cs, X86ASIdx_MEM),
++                                 gpa_page, &xlat, NULL, write,
++                                 MEMTXATTRS_UNSPECIFIED);
+ 
+-            memory_region_set_dirty(slot->region, gpa - slot->start, 1);
+-            hvf_unprotect_dirty_range(dirty_page_start, page_size);
+-        }
++    /* Handle dirty page logging for ram. */
++    if (write && memory_region_get_dirty_log_mask(mr)) {
++        uintptr_t page_size = qemu_real_host_page_size();
++
++        memory_region_set_dirty(mr, gpa_page + xlat, page_size);
++        hvf_unprotect_dirty_range(gpa_page, page_size);
+     }
+ 
+     /*
+@@ -156,9 +160,6 @@ static bool ept_emulation_fault(hvf_slot *slot, uint64_t gpa, uint64_t ept_qual)
+         return false;
+     }
+ 
+-    if (!slot) {
+-        return true;
+-    }
+     if (!memory_region_is_ram(slot->region) &&
+         !(read && memory_region_is_romd(slot->region))) {
+         return true;
+@@ -765,7 +766,6 @@ static int hvf_handle_vmexit(CPUState *cpu)
+     /* Need to check if MMIO or unmapped fault */
+     case EXIT_REASON_EPT_FAULT:
+     {
+-        hvf_slot *slot;
+         uint64_t gpa = rvmcs(cpu->accel->fd, VMCS_GUEST_PHYSICAL_ADDRESS);
+ 
+         if (((idtvec_info & VMCS_IDT_VEC_VALID) == 0) &&
+@@ -773,9 +773,8 @@ static int hvf_handle_vmexit(CPUState *cpu)
+             vmx_set_nmi_blocking(cpu);
+         }
+ 
+-        slot = hvf_find_overlap_slot(gpa, 1);
+         /* mmio */
+-        if (ept_emulation_fault(slot, gpa, exit_qual)) {
++        if (ept_emulation_fault(cpu, gpa, exit_qual)) {
+             struct x86_decode decode;
+ 
+             hvf_load_regs(cpu);
 -- 
 2.52.0
 

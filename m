@@ -4,63 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25E86D30CC1
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 20:05:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82DDAD30CC1
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 21:03:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfkd6-0003by-GA; Tue, 13 Jan 2026 15:04:40 -0500
+	id 1vflWz-00052K-VI; Tue, 13 Jan 2026 16:02:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1vfkd4-0003bS-Nu; Tue, 13 Jan 2026 15:04:38 -0500
-Received: from sea.source.kernel.org ([172.234.252.31])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1vfkd2-0007vI-MJ; Tue, 13 Jan 2026 15:04:38 -0500
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sea.source.kernel.org (Postfix) with ESMTP id 59B1E4376D;
- Tue, 13 Jan 2026 20:04:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB965C116C6;
- Tue, 13 Jan 2026 20:04:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1768334673;
- bh=Yt7WZzZlEyOF/hmM4ffb9LNBFiydhSiYJWhMX3a7mxs=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=bjhAnr8vRJCb3HpWdph9h5Orxkb1vUrQ8mR7KAg3tblTR5SiM3/vs3vC4iRZ0T9fB
- NiLtdnOv2uWT5ikO7mC8ldx2B7fsj1jo13Q9ZjruBWDNpfCyZ3OmELjH/qQszuRq/d
- ff0rZ9N1dJYoiek/fv+0wZRTuQFYQ8QVTWkm39htevHZQ2kHqSVmk7O5ieefZONoii
- 2FXXYx0daFmucckpLzbwG2XOQTHLR48H39dH1v3ib6WlbGetz/HwaB0yR3ZannRq6q
- ZKjHScKzUfBoDe1nIvyolBNHelhkJBDLn0EFrU/Wr+PG8t9syLrD62dMzId0ZuVpvk
- 9NJ3Te7wyGfYA==
-Date: Tue, 13 Jan 2026 21:04:27 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: John Snow <jsnow@redhat.com>
-Cc: "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>, Peter
- Maydell <peter.maydell@linaro.org>, Igor Mammedov <imammedo@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
- <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH 0/1] Sync kernel-doc.py with Linux upstream
-Message-ID: <20260113210427.632e9550@foz.lan>
-In-Reply-To: <CAFn=p-YzSP_v0TAzGOGH+mGMczqQLpN5OTda3c1MdbNGETcd4A@mail.gmail.com>
-References: <cover.1767716928.git.mchehab+huawei@kernel.org>
- <CAFEAcA_TMuZG8VJMs2JZ49Xq+wVxcq_7UGOMF+2FUe0k7AUgwA@mail.gmail.com>
- <aWY10BYoJjck3xX8@redhat.com>
- <CAFn=p-YzSP_v0TAzGOGH+mGMczqQLpN5OTda3c1MdbNGETcd4A@mail.gmail.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.51; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vflWr-0004zx-Mo
+ for qemu-arm@nongnu.org; Tue, 13 Jan 2026 16:02:17 -0500
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vflWo-0002l8-Pg
+ for qemu-arm@nongnu.org; Tue, 13 Jan 2026 16:02:16 -0500
+Received: by mail-pj1-x1031.google.com with SMTP id
+ 98e67ed59e1d1-34c363eb612so4703375a91.0
+ for <qemu-arm@nongnu.org>; Tue, 13 Jan 2026 13:02:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1768338133; x=1768942933; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=5vv+ot4BC/0VQdnLdrgZK8fZZEu2LmZMegyDAM36c0g=;
+ b=t+7u+vaBb2V3WZmX2HEzdF3meKsVIzNke/njjWR9fscBtcrqTsUztRVjouo3JiUatE
+ luqrULEVisJCMsY4QRYEbFxiSCMVzNrZvLvwOwCcrqkvmvP+f7Alca4h3R/t2iq59Gc8
+ nv7szTH6fhGQQTQpyJPTDu3PzRwZyDhIxV0DWKVaYdYaop/Pd9LhmzkPjemfFE/nbXhF
+ vChAr0taWqwTJa9lCmxLsx2A91fQ3qR3NKJOWMQ47c49tKTEESFXc8j/y9SGfVLUte9l
+ ZyEd/KdlvgKOUljxbEY0SBF79HXK5k0jHmd6FLgGyEvdM0t+A35W1Hzmf+1L3wP6AMMa
+ Wx1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1768338133; x=1768942933;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=5vv+ot4BC/0VQdnLdrgZK8fZZEu2LmZMegyDAM36c0g=;
+ b=WNdIFUwju6JQ5Tl5otoCktYUpTn/Azs5s4fjyL26uW94tfkHIz4v1ONA7IOvE+jwJB
+ +v2TLJxk/wl3xj62QFKjyOb4VIPhgiXuKBoPkjFPgnWWEEq8OjnW3p1slVSVq/77ESOi
+ KBhi2PBdAnR0kqAzWJCJfpEo0XFKe48wpEuZN7RBnyCIumjuMqY/+EZiEuNpJAoHUYmv
+ +DnNQ0liIGBBFX6IAwGyo+z1ojgA+aJfDMWJcRjP5iX9G71fZyfc3II788On9L0NSb3p
+ u6kMAV+4f+gu61J6/nYQF4Id7FREdHJQBn/S99myl04UKr/K1g8+P5Mq8wnhQstnI2Ks
+ dUkQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXq5QDcGpSnYOOzuG2jgBnEzYNPCksARVWdUrD5Y/CpDPmy18XktO8ivibmGTaUN5y9QshW0hE+Aw==@nongnu.org
+X-Gm-Message-State: AOJu0YyF+xQ2knD6Eyf75sOug4cAvDWuX5Slg6JX9ULqR3VrZ83SdyX0
+ F5cvAQmuuQdB2TH4/OH7PO1nKt6EDh1Xy2On84848r0nvwJMH3lBXo6yke7CFKX4cZw=
+X-Gm-Gg: AY/fxX74uEEo/7mxnMIvXcj8Z/LWZ6UUz9UfgUkAq/hJC/czUYMLrm/mzJtag/zzvTk
+ hTZ59rC0FxLCPfXRebi8w7YiQR65cDrsKtDlRa3vKF9rUMC493D/w/RbtfAiEd4jvvXKf3J9bah
+ el5+VEa8pfmjQtSiYsdxWkwbmaxgs390+taawJR7W9zUYM93qoZW6bidNTV+y31IFJ+8VCHb4LL
+ LJlrt3lSdM2svDWf9c2fLmHTIRYoklTz9vJa85pLc2bBXBNM3UfGvnn69c6pSljM8vyp27/pBLs
+ BZeYxg0LqtkppbnPn3xTOHWO3NdJzvrj3ivw/1jUvimL89KYtAvmgCFSScNSlZOQK8+I540LhX2
+ mXMeauH1kFqIx1b1UWaBQDjQwcGgoB4Ohyv9frK9l+ew0u9yxeWDN/5GhZY8XpTabolO05wVNav
+ K0lcJjTMrXo2eXzR5wREL9K1AmdxnL3eiPzyrb8GYr5NoPMtxul9+ln0za
+X-Received: by 2002:a17:90b:4c45:b0:349:3fe8:e7de with SMTP id
+ 98e67ed59e1d1-3510913e893mr326323a91.28.1768338132961; 
+ Tue, 13 Jan 2026 13:02:12 -0800 (PST)
+Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
+ by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-c4cbf28ebe4sm20965070a12.4.2026.01.13.13.02.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 13 Jan 2026 13:02:12 -0800 (PST)
+Message-ID: <d2554bf9-5c20-48f0-a666-481e6b75ed4e@linaro.org>
+Date: Tue, 13 Jan 2026 13:02:11 -0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=172.234.252.31;
- envelope-from=mchehab+huawei@kernel.org; helo=sea.source.kernel.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5] hw/arm/smmu: add memory regions as property for an
+ SMMU instance
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: eric.auger@redhat.com, qemu-devel@nongnu.org,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org,
+ tangtao1634@phytium.com.cn, richard.henderson@linaro.org,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+References: <20260108210453.2280733-1-pierrick.bouvier@linaro.org>
+ <08c42104-d7c5-4df8-b25f-7138ddc94a94@redhat.com>
+ <82940e3b-f9a7-4172-8ae7-680bc1a5785b@linaro.org>
+ <CAFEAcA8ZiViYfkvBJ6P5rqGmChTw3VyN5iaEqxhfNb59ba2RdA@mail.gmail.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Content-Language: en-US
+In-Reply-To: <CAFEAcA8ZiViYfkvBJ6P5rqGmChTw3VyN5iaEqxhfNb59ba2RdA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1031.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,143 +112,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Em Tue, 13 Jan 2026 14:52:56 -0500
-John Snow <jsnow@redhat.com> escreveu:
+On 1/13/26 7:30 AM, Peter Maydell wrote:
+> On Mon, 12 Jan 2026 at 16:21, Pierrick Bouvier
+> <pierrick.bouvier@linaro.org> wrote:
+>>
+>> On 1/12/26 1:58 AM, Eric Auger wrote:
+>>>
+>>>
+>>> On 1/8/26 10:04 PM, Pierrick Bouvier wrote:
+>>>> This will be used to access non-secure and secure memory. Secure support
+>>>> and Granule Protection Check (for RME) for SMMU need to access secure
+>>>> memory.
+>>>>
+>>>> As well, it allows to remove usage of global address_space_memory,
+>>>> allowing different SMMU instances to have a specific view of memory.
+>>>>
+>>>> User creatable SMMU are handled as well for virt machine,
+>>>> by setting the memory properties when device is plugged in.
+>>>>
+>>>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>>>
+>>> Thanks
+>>>
+>>> Eric
+>>
+>> Would you be ok to pull this patch, or would you prefer someone else to
+>> do it?
+> 
+> Since it's been reviewed, I'll take it into target-arm.next.
+> 
+> thanks
+> -- PMM
 
-> On Tue, Jan 13, 2026 at 7:09=E2=80=AFAM Daniel P. Berrang=C3=A9 <berrange=
-@redhat.com> wrote:
-> >
-> > On Tue, Jan 13, 2026 at 11:44:51AM +0000, Peter Maydell wrote: =20
-> > > On Tue, 6 Jan 2026 at 16:38, Mauro Carvalho Chehab
-> > > <mchehab+huawei@kernel.org> wrote: =20
-> > > >
-> > > > Hi Peter/John,
-> > > >
-> > > > There were several updates at kernel-doc upstream fixing bugs,
-> > > > doing cleanups and a couple of improvements.
-> > > >
-> > > > Better to keep QEMU in sync with such changes.
-> > > >
-> > > > Worth mentioning that we did some changes on Linux at the
-> > > > kernel-doc.py script itself, to avoid Kernel build to crash
-> > > > with too old Python versions, as there docs build is a
-> > > > separate target, and python >=3D 3.6 is a new requirement
-> > > > there.
-> > > >
-> > > > On kernel, if python < 3.6, it will simply ignore docs
-> > > > build (emitting a warning).
-> > > >
-> > > > I opted to not backport such changes, but if you prefer
-> > > > doing that, I can do that on a v2.
-> > > > ---
-> > > >
-> > > > For now, I opted to keep kernel-doc libraries at the same
-> > > > directory as before - e.g. at scripts/lib/kdoc. On Linux,
-> > > > we ended moving it to tools/lib/python/kdoc. It could make
-> > > > sense to move it on QEMU too, as it makes a little bit
-> > > > easier to keep things in sync.
-> > > >
-> > > > What do you think? =20
-> > >
-> > > Hi; thanks for doing this backport. I checked that the output
-> > > with this patch applied is still the same as with the old
-> > > kernel-doc, and eyeballed the diffs between our kernel-doc
-> > > and the Linux version, to confirm that we have kept our two
-> > > minor QEMU-specific modifications and haven't missed anything
-> > > from Linux's version that we ought to have. So:
-> > >
-> > > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> > >
-> > > On your two questions:
-> > >
-> > > (1) As Dan says, QEMU already enforces a new enough
-> > > Python version, so we don't need to handle 3.6. I think
-> > > the main thing driving a choice to backport or not those
-> > > changes would be simply keeping in sync with Linux's
-> > > version of the script so we don't diverge. We want to
-> > > make future re-syncing of the script as easy as possible.
-> > >
-> > > (2) Regarding the location of the kernel-doc libraries:
-> > > we seem to have two things here, possibly in tension:
-> > >  - we don't want to gratuitously diverge from Linux
-> > >  - QEMU's directory hierarchy is not the kernel's
-> > >
-> > > In particular, I'm not sure tools/ is where we would
-> > > naturally put python libraries used during the build
-> > > process. Maybe that would be python/ for us, but I defer
-> > > to John or another Python expert on that. =20
-> >
-> > I tend to see the 'python' directory as being for stuff we formally
-> > maintain as a python API for use by multiple internal consumers. =20
->=20
-> I more or less agree with Dan - that is how it is currently arranged.
->=20
-> In the past, however, I have suggested moving certain other modules
-> that are bigger than a single file into python/ for the sake of being
-> able to maintain them more aggressively: i.e. I do not regularly check
-> for Python regression and compatibility issues for things under
-> scripts/, except for qapi, which is also something I proposed moving
-> to python/ before.
->=20
-> The current state of things is that I aggressively check and test these t=
-hings:
->=20
-> - python/*
-> - scripts/qapi/
-> - docs/sphinx/qapi_domain.py
-> - docs/sphinx/qapidoc.py
-
-Giving my 2 cents here: at Linux Kernel, we're moving documentation
-to tools/docs document because just scripts/ became too messy. Also,
-having a directory specifically for python modules makes sense.
-So, we just moved libraries to tools/python/lib.=20
-
-> Everything else is just "best effort" which generally means "I fix it
-> when I notice that it is broken". If it is not a multi-file module and
-> not necessary for configure+build to run, I think for now it is best
-> kept outside of python/.
-
-In the specific case of kernel-doc + modules this is required at build
-time, if docs are enabled.
-
-> > This is just a bunch of helper files exclusively for use by the kernel-=
-doc
-> > tool, and so the scripts/ directory is a decent fit for it, given that =
-this
-> > dir is for a collection of arbitary supporting tools & scripts.
-
-Not quite: those files are the actual kernel-doc implementation.
-
-The exec is just a shell to call them. At the Linux Kernel, we don't even
-run kernel-doc exec anymore: they're called directly by the Sphinx=20
-kerneldoc extension. We use the exec just to allow us to run manually,=20
-as it can be helpful to see the ReST result when problems rise.
-
-Right now on QEMU we're still running the exec, but this can change
-some day.
-
-> >
-> > As precedent, see the tracetool, which keeps all its helpers under
-> > scripts/tracetool too.
-> >
-> > TL;DR: I would not want to see a new top level tools/ directory
-> > created, and don't think it fits in python/ either; scripts/ is
-> > a fine home.
-> >
-> > With regards,
-> > Daniel
-> > --
-> > |: https://berrange.com      -o-    https://www.flickr.com/photos/dberr=
-ange :|
-> > |: https://libvirt.org         -o-            https://fstop138.berrange=
-.com :|
-> > |: https://entangle-photo.org    -o-    https://www.instagram.com/dberr=
-ange :|
-> > =20
->=20
-
-
-
-Thanks,
-Mauro
+Thanks Peter!
 

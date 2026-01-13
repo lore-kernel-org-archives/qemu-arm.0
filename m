@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3595CF45C6
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 01:17:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF610CF45C6
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 01:19:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfT2A-0001Hb-Ko; Mon, 12 Jan 2026 20:17:23 -0500
+	id 1vfT4B-0001uK-UH; Mon, 12 Jan 2026 20:19:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vfT26-0001Bp-3B
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 20:17:18 -0500
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+ id 1vfT49-0001hA-UY
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 20:19:25 -0500
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vfT24-0001PM-Ku
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 20:17:17 -0500
-Received: by mail-pj1-x102e.google.com with SMTP id
- 98e67ed59e1d1-34c21417781so4653284a91.3
- for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 17:17:16 -0800 (PST)
+ id 1vfT48-0001cs-Fi
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 20:19:25 -0500
+Received: by mail-pf1-x429.google.com with SMTP id
+ d2e1a72fcca58-81e93c5961cso2557505b3a.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 17:19:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768267035; x=1768871835; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=WNIxp9+oIDhWbXbqZljoYOObsGQg/DyVvwPoYUgmhgw=;
- b=qgqjetGftw4YzcXlzoUI8+3LDda77s3kzmUf0+OpWoRvarqRvvfr9TOMKRcBJuLCBO
- tuAcxdSaSqAr5PCsvj9Y2wnF43Gzufj7z0q2euYMI9d3lOR9CGARAolf29TaL9I1O7Ln
- GwKiFBhZJ+GobUcs4DCDcFdC0zQx+Tv8Y6aEMM7OMAi7uAOoSgGd9x+UL/TKw/T7ZyTa
- CmuBB1ALdXzGZQaPxGvk1YAvnt/t6bW+fbWnwDw7Ao3xMqtO00OBrBA6vC0aODRyiENk
- Xuhin//edsAkBCCugDAa3FRlR+XPRBEwfdK1wMbk/DakG+WI0/dVQkfS66ywjSnMrSn0
- FO+g==
+ d=linaro.org; s=google; t=1768267163; x=1768871963; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=2bpPa26c5eU+alk3SooULZpSqHmkr4dyfvja6AA7i0w=;
+ b=VoMhOJ4mh6sgE9R9hmMfSZHxy3tV0kPOf/AXVUPxsiZMXuBLy+MpEHhJ22PBRju3Jv
+ q/jBoUwtZTCw5/PoHft7nw6VRcQYZXSwBI1rzbF8wwck0LZgRlLA9lKxKpBaX5TYBVZm
+ 6HOs6GMJtIX3yLFgpjBsHX/H/mnoxo+GcxopuZGBj+b1kPo6cxQNw3j1anNdCKxcCgfb
+ +jEkB1mh0j+AByJXs6UPVXbsX3mD1PF/KOJMIwDauztpjLDc+KttsPpqLNjD7f+vGkQX
+ S9A1D+VlYp+oV2AzDw3kWdH8d+P32cIhVfBkFw0KqmcdD+jHAm3iefydtUTZJSnTcRQj
+ 3ujQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768267035; x=1768871835;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=WNIxp9+oIDhWbXbqZljoYOObsGQg/DyVvwPoYUgmhgw=;
- b=RNgqtbzBMoVE42EphIbe70ptVY/qGP6TQbUD0CKQiMQ1xp1Bx8h0M3jjvahFKAV38B
- aO6O3TyZHt8kJKSogZ2xd0hm90gMxKWOihilljYv17geJ8crBUIvXNnfBmbSAVFEliWQ
- qvYyVj++yvT3s1Vg0Yp4hkuBQoTstKMU4sBAPUpQRHkcuq1MG7NMxE/Q5MtrkILIXIQ0
- hASF+BBuImWDJxXZVYeoJbyNK/OKsqVxGnabBfjJJhZuiTdMJTNjjKFKJFPkz8coiSdD
- hI4fokqf8etsVRHKSzx8XhAaA5Cpszy/jDeou6sJNSgDigmzYdAIz+tTSXaI/CrqXyIh
- ZAhA==
+ d=1e100.net; s=20230601; t=1768267163; x=1768871963;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=2bpPa26c5eU+alk3SooULZpSqHmkr4dyfvja6AA7i0w=;
+ b=o8sfcRX/kjI2dxQjHe1eYZOzHPmrjUh7X65qTpFLoBNHKhS59FH8rBDOdF7gGJDOmx
+ Rz02ZGitz6dkRB3AXPeanb/Rc7Z15SkMWYt8fUPffukvIyxx3CnZZhRgF/QifTTMfInF
+ t1qt3g0ZhaqKPSGnf0njNVom/pIWolE0uq7aGT1LFr9clFYpSH8+aFy2ZZo7fdZwqQUY
+ LGy9vwPDeNLoe9lY5i+zBpU/D0+HeG44OJhSkM7LP+3xEPT7/Ego6IHKsZOyd1vg+VxQ
+ Ds4XQJiQ1Pad9fehjWR6kgmCBwWF4dSv6YZ28dzz5HKu2OEuFyYVWRl8nkZUF+hkKn2A
+ /sew==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVp5D1gmvkroPWpiVFBeRr2tUTguMKQif3FJkwdFw5EWvb0r1st8q0JRqvl88KiqKP2Y39wlIOL5w==@nongnu.org
-X-Gm-Message-State: AOJu0YxzE5o0CbQSWg+NwvrIyJw0ZjNoURU53KpLa/Qx7N2+bwEEHqrv
- xI4zqH7BbUzja7ZcRo++eU1PBr/RE7vbnYAugirLD5JTHXZsLiXxk0ag6qclgFDU9o8=
-X-Gm-Gg: AY/fxX6z/g1tsrHIKjghILfaNhBD3LLsFBIfQpQiW0411e3byANG3sykl+ZRnbu8mkN
- ToZID/VztmA4rTcjsakSNJMN9q2dxdXjDyKUCWoOoSUaC/o6G4cbP6+gfJfqz9Hd0CfKBbP4Xxr
- IVT30zYt3nRcha/0ptFl5uHWa6Nfsvndl+ERcmXWnNQhA25Qy1G+DQ9WrcY5TaCem5B3cdBzBNW
- OJ3xOY/h7wt9OW6NvjiXHJJJQT8qQOChEYb0/FeaDFHtHVUgdQatbX68ipk01m5UL6FPkOWWL5m
- PsLBYN1jKUIhGf73GUxJVMlJoY8pVELIP0rMa2euTAffnEt9ztNUwEWxI171uTwIGH4UKcY1uA/
- BtpXs9eJtMOZrWSPrwt/SvRyT1rn/Ip83rmUUUhRe9PxNh7FXTr47BZcu+ao0ivbFD75up3Q6LE
- nfcH+LpF2sci8gt1C6AYv7mLtlslQ=
-X-Google-Smtp-Source: AGHT+IFKE61Z9YBOke4ODn3SMYictQ0cZ5Ql6gin9FH9Q7r8gFrAZdSyCYDlLngTqYTw8b5kJvReiw==
-X-Received: by 2002:a17:90b:3e43:b0:34a:b4a2:f0bf with SMTP id
- 98e67ed59e1d1-34f68c28716mr19082495a91.16.1768267034639; 
- Mon, 12 Jan 2026 17:17:14 -0800 (PST)
+ AJvYcCVV1Js4I0vDCRYWdN5ay3YC5ogNMmdJzCBoWdYi/UEuIVPLfNz56+sADyvfmqfgQobM65L4VDxKYQ==@nongnu.org
+X-Gm-Message-State: AOJu0YykWOSI7G4eIQ8LDdGOLUPALyw3y4D4svPzqNg9x8PpiNDD31Sh
+ njyItZLHcWC+dqMJ8627qLsIFoHWkBzalhEzytX1x5XR3UX6fgDIX6n+mJ1UFGVzXc4=
+X-Gm-Gg: AY/fxX4GNJ4vuT+dZ2bPlZkWQKPQm2xnXBfAZnFqlrXAqWsKW60DpRSFZ2TihO8pVD+
+ GFqyYBXMY4TsslqzgEBqLu+Lch9ugGCQBO05oCfXY7GFh26uG8rWZ6P95b5vn0hTAvF2hXRIM18
+ m2xohnx/E31M+Q6JbpzcqTwtfmXhgQ+RKImcYy5pXaxPAz/r6lFn22Y1Yju/31j0lIoSuBaGGxi
+ +pIRkSqgz+mH4RznA3KQeeX5+yCfcgcroCd7BVTNiuUOfCKHNi3tE5N3bnEgiHIUKrhQ/4zl8qU
+ a7DT8AB5+bKUjozgS6uqsgnBY7nMn4PP0yT1DEk3uW41C7aoVBw9TtXGvo/VHWVzUyN3xfkY7Ue
+ CfZxaho3XJVfvqM/jakFF0Z+4mMRBLIrgsAGdm++d2K7GQkqwpMXGDbQQanzY7dCM9R5+rYBxBv
+ pms/Ja0AyBIXmSbBOorBQ37jqusjQ=
+X-Google-Smtp-Source: AGHT+IGaN73LNVf/l0wG+Vb3AWeqaTyN+9ZV44ccGSDb3mTCvH4sQxntY6fRo/aByk2LAjp4FAGD8w==
+X-Received: by 2002:a05:6a00:1bcd:b0:81f:52d9:5f5 with SMTP id
+ d2e1a72fcca58-81f52d90cf1mr5087236b3a.10.1768267163025; 
+ Mon, 12 Jan 2026 17:19:23 -0800 (PST)
 Received: from [192.168.15.8] ([101.187.175.172])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-350ff06dc07sm172123a91.4.2026.01.12.17.17.08
+ d2e1a72fcca58-819c5adf1cfsm18479149b3a.57.2026.01.12.17.19.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Jan 2026 17:17:14 -0800 (PST)
-Message-ID: <216accff-56e3-4658-8cb3-d033b5e837b0@linaro.org>
-Date: Tue, 13 Jan 2026 12:17:05 +1100
+ Mon, 12 Jan 2026 17:19:22 -0800 (PST)
+Message-ID: <e79fd7d3-5a5e-44e9-a258-a707d3e60080@linaro.org>
+Date: Tue, 13 Jan 2026 12:19:13 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 02/12] target/m68k: introduce env->reset_pc
-From: Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [RFC PATCH 06/12] hw/m68k: just use reset_pc for virt platform
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Aurelien Jarno <aurelien@aurel32.net>,
@@ -86,14 +86,14 @@ Cc: Aurelien Jarno <aurelien@aurel32.net>,
  Yanan Wang <wangyanan55@huawei.com>, Aleksandar Rikalo <arikalo@gmail.com>,
  Thomas Huth <huth@tuxfamily.org>, Eduardo Habkost <eduardo@habkost.net>
 References: <20260108143423.1378674-1-alex.bennee@linaro.org>
- <20260108143423.1378674-3-alex.bennee@linaro.org>
- <f9ad7045-9e66-4271-b3d9-006958824f55@linaro.org>
+ <20260108143423.1378674-7-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <f9ad7045-9e66-4271-b3d9-006958824f55@linaro.org>
+In-Reply-To: <20260108143423.1378674-7-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,34 +116,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/11/26 18:52, Richard Henderson wrote:
-> On 1/9/26 01:34, Alex Bennée wrote:
->> To transition CPUs to use the multi-phase resettable logic we need to
->> stash some information for the reset handlers. Arm does this with
->> arm_boot_info but for m68k all we really need is the PC we should
->> reset to.
->>
->> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->> ---
->>   target/m68k/cpu.h | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
->> index d9db6a486a8..fda015c4b7b 100644
->> --- a/target/m68k/cpu.h
->> +++ b/target/m68k/cpu.h
->> @@ -155,6 +155,7 @@ typedef struct CPUArchState {
->>       /* Fields from here on are preserved across CPU reset. */
->>       uint64_t features;
->> +    uint32_t reset_pc;
->>   } CPUM68KState;
->>   /*
-> 
-> I think this ought to merge with something else.
-> Just adding the field is clearly incomplete.
+On 1/9/26 01:34, Alex Bennée wrote:
+> @@ -129,8 +122,8 @@ static void virt_init(MachineState *machine)
+>       SysBusDevice *sysbus;
+>       hwaddr io_base;
+>       int i;
+> -    ResetInfo *reset_info;
+>       uint8_t rng_seed[32];
+> +    CPUM68KState *env;
+>   
+>       if (ram_size > 3399672 * KiB) {
+>           /*
+> @@ -142,13 +135,10 @@ static void virt_init(MachineState *machine)
+>           exit(1);
+>       }
+>   
+> -    reset_info = g_new0(ResetInfo, 1);
+> -
+>       /* init CPUs */
+>       cpu = M68K_CPU(cpu_create(machine->cpu_type));
+> -
+> -    reset_info->cpu = cpu;
+> -    qemu_register_reset(main_cpu_reset, reset_info);
+> +    qemu_register_reset(main_cpu_reset, cpu);
+> +    env = &cpu->env;
+>   
+>       /* RAM */
+>       memory_region_add_subregion(get_system_memory(), 0, machine->ram);
+> @@ -235,7 +225,7 @@ static void virt_init(MachineState *machine)
+>               error_report("could not load kernel '%s'", kernel_filename);
+>               exit(1);
+>           }
+> -        reset_info->initial_pc = elf_entry;
+> +        env->reset_pc = elf_entry;
+>           parameters_base = (high + 1) & ~1;
+>           param_ptr = param_blob;
+>   
 
-Nevermind, I now see how it's used for the various m68k machines.
+Why introduce env rather than use cpu->env like elsewhere in the function?
 
+Otherwise,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 

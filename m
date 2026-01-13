@@ -4,99 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82DDAD30CC1
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 21:03:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59F33D30CE5
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 22:12:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vflWz-00052K-VI; Tue, 13 Jan 2026 16:02:29 -0500
+	id 1vfmcm-0005jZ-Oq; Tue, 13 Jan 2026 17:12:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vflWr-0004zx-Mo
- for qemu-arm@nongnu.org; Tue, 13 Jan 2026 16:02:17 -0500
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vflWo-0002l8-Pg
- for qemu-arm@nongnu.org; Tue, 13 Jan 2026 16:02:16 -0500
-Received: by mail-pj1-x1031.google.com with SMTP id
- 98e67ed59e1d1-34c363eb612so4703375a91.0
- for <qemu-arm@nongnu.org>; Tue, 13 Jan 2026 13:02:14 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768338133; x=1768942933; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=5vv+ot4BC/0VQdnLdrgZK8fZZEu2LmZMegyDAM36c0g=;
- b=t+7u+vaBb2V3WZmX2HEzdF3meKsVIzNke/njjWR9fscBtcrqTsUztRVjouo3JiUatE
- luqrULEVisJCMsY4QRYEbFxiSCMVzNrZvLvwOwCcrqkvmvP+f7Alca4h3R/t2iq59Gc8
- nv7szTH6fhGQQTQpyJPTDu3PzRwZyDhIxV0DWKVaYdYaop/Pd9LhmzkPjemfFE/nbXhF
- vChAr0taWqwTJa9lCmxLsx2A91fQ3qR3NKJOWMQ47c49tKTEESFXc8j/y9SGfVLUte9l
- ZyEd/KdlvgKOUljxbEY0SBF79HXK5k0jHmd6FLgGyEvdM0t+A35W1Hzmf+1L3wP6AMMa
- Wx1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768338133; x=1768942933;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=5vv+ot4BC/0VQdnLdrgZK8fZZEu2LmZMegyDAM36c0g=;
- b=WNdIFUwju6JQ5Tl5otoCktYUpTn/Azs5s4fjyL26uW94tfkHIz4v1ONA7IOvE+jwJB
- +v2TLJxk/wl3xj62QFKjyOb4VIPhgiXuKBoPkjFPgnWWEEq8OjnW3p1slVSVq/77ESOi
- KBhi2PBdAnR0kqAzWJCJfpEo0XFKe48wpEuZN7RBnyCIumjuMqY/+EZiEuNpJAoHUYmv
- +DnNQ0liIGBBFX6IAwGyo+z1ojgA+aJfDMWJcRjP5iX9G71fZyfc3II788On9L0NSb3p
- u6kMAV+4f+gu61J6/nYQF4Id7FREdHJQBn/S99myl04UKr/K1g8+P5Mq8wnhQstnI2Ks
- dUkQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXq5QDcGpSnYOOzuG2jgBnEzYNPCksARVWdUrD5Y/CpDPmy18XktO8ivibmGTaUN5y9QshW0hE+Aw==@nongnu.org
-X-Gm-Message-State: AOJu0YyF+xQ2knD6Eyf75sOug4cAvDWuX5Slg6JX9ULqR3VrZ83SdyX0
- F5cvAQmuuQdB2TH4/OH7PO1nKt6EDh1Xy2On84848r0nvwJMH3lBXo6yke7CFKX4cZw=
-X-Gm-Gg: AY/fxX74uEEo/7mxnMIvXcj8Z/LWZ6UUz9UfgUkAq/hJC/czUYMLrm/mzJtag/zzvTk
- hTZ59rC0FxLCPfXRebi8w7YiQR65cDrsKtDlRa3vKF9rUMC493D/w/RbtfAiEd4jvvXKf3J9bah
- el5+VEa8pfmjQtSiYsdxWkwbmaxgs390+taawJR7W9zUYM93qoZW6bidNTV+y31IFJ+8VCHb4LL
- LJlrt3lSdM2svDWf9c2fLmHTIRYoklTz9vJa85pLc2bBXBNM3UfGvnn69c6pSljM8vyp27/pBLs
- BZeYxg0LqtkppbnPn3xTOHWO3NdJzvrj3ivw/1jUvimL89KYtAvmgCFSScNSlZOQK8+I540LhX2
- mXMeauH1kFqIx1b1UWaBQDjQwcGgoB4Ohyv9frK9l+ew0u9yxeWDN/5GhZY8XpTabolO05wVNav
- K0lcJjTMrXo2eXzR5wREL9K1AmdxnL3eiPzyrb8GYr5NoPMtxul9+ln0za
-X-Received: by 2002:a17:90b:4c45:b0:349:3fe8:e7de with SMTP id
- 98e67ed59e1d1-3510913e893mr326323a91.28.1768338132961; 
- Tue, 13 Jan 2026 13:02:12 -0800 (PST)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c4cbf28ebe4sm20965070a12.4.2026.01.13.13.02.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Jan 2026 13:02:12 -0800 (PST)
-Message-ID: <d2554bf9-5c20-48f0-a666-481e6b75ed4e@linaro.org>
-Date: Tue, 13 Jan 2026 13:02:11 -0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5] hw/arm/smmu: add memory regions as property for an
- SMMU instance
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1vfmcl-0005iy-TX; Tue, 13 Jan 2026 17:12:27 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1vfmcj-000521-QU; Tue, 13 Jan 2026 17:12:27 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id BEBC15969FF;
+ Tue, 13 Jan 2026 23:12:21 +0100 (CET)
+X-Virus-Scanned: amavis at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
+ id 5oVUWoZqCWQX; Tue, 13 Jan 2026 23:12:19 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id A68FC596A0D; Tue, 13 Jan 2026 23:12:19 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id A3D6A5969E4;
+ Tue, 13 Jan 2026 23:12:19 +0100 (CET)
+Date: Tue, 13 Jan 2026 23:12:19 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: eric.auger@redhat.com, qemu-devel@nongnu.org,
- Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org,
- tangtao1634@phytium.com.cn, richard.henderson@linaro.org,
- Radoslaw Biernacki <rad@semihalf.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20260108210453.2280733-1-pierrick.bouvier@linaro.org>
- <08c42104-d7c5-4df8-b25f-7138ddc94a94@redhat.com>
- <82940e3b-f9a7-4172-8ae7-680bc1a5785b@linaro.org>
- <CAFEAcA8ZiViYfkvBJ6P5rqGmChTw3VyN5iaEqxhfNb59ba2RdA@mail.gmail.com>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Content-Language: en-US
-In-Reply-To: <CAFEAcA8ZiViYfkvBJ6P5rqGmChTw3VyN5iaEqxhfNb59ba2RdA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1031.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+cc: =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, 
+ qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>, 
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Bastian Koppelmann <kbastian@rumtueddeln.de>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Zhao Liu <zhao1.liu@intel.com>, Laurent Vivier <laurent@vivier.eu>, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
+ qemu-arm@nongnu.org, Yoshinori Sato <yoshinori.sato@nifty.com>, 
+ Yanan Wang <wangyanan55@huawei.com>, Aleksandar Rikalo <arikalo@gmail.com>, 
+ Thomas Huth <huth@tuxfamily.org>, Eduardo Habkost <eduardo@habkost.net>
+Subject: Re: [RFC PATCH 04/12] hw/m68k: register a mcf5208evb_cpu_reset handler
+In-Reply-To: <CAFEAcA9b8hnZ24+XMyXxVVV5ZEVZUFbMmR678hJ0eWqdi1r0Fg@mail.gmail.com>
+Message-ID: <c35bd54e-1b6b-4676-493e-d225a6386d8f@eik.bme.hu>
+References: <20260108143423.1378674-1-alex.bennee@linaro.org>
+ <20260108143423.1378674-5-alex.bennee@linaro.org>
+ <CAFEAcA_Y_fTBo_0qg4Lm+7WrMdEown=-RrHHjcsKKE6WRX3eRw@mail.gmail.com>
+ <b2c72aef-4a60-76af-4cd8-dd3142e46d2a@eik.bme.hu>
+ <CAFEAcA9b8hnZ24+XMyXxVVV5ZEVZUFbMmR678hJ0eWqdi1r0Fg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="3866299591-707201850-1768342339=:27486"
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,39 +77,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/13/26 7:30 AM, Peter Maydell wrote:
-> On Mon, 12 Jan 2026 at 16:21, Pierrick Bouvier
-> <pierrick.bouvier@linaro.org> wrote:
->>
->> On 1/12/26 1:58 AM, Eric Auger wrote:
->>>
->>>
->>> On 1/8/26 10:04 PM, Pierrick Bouvier wrote:
->>>> This will be used to access non-secure and secure memory. Secure support
->>>> and Granule Protection Check (for RME) for SMMU need to access secure
->>>> memory.
->>>>
->>>> As well, it allows to remove usage of global address_space_memory,
->>>> allowing different SMMU instances to have a specific view of memory.
->>>>
->>>> User creatable SMMU are handled as well for virt machine,
->>>> by setting the memory properties when device is plugged in.
->>>>
->>>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
->>>
->>> Thanks
->>>
->>> Eric
->>
->> Would you be ok to pull this patch, or would you prefer someone else to
->> do it?
-> 
-> Since it's been reviewed, I'll take it into target-arm.next.
-> 
-> thanks
-> -- PMM
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Thanks Peter!
+--3866299591-707201850-1768342339=:27486
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
+
+On Tue, 13 Jan 2026, Peter Maydell wrote:
+> On Tue, 13 Jan 2026 at 18:08, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>> On Tue, 13 Jan 2026, Peter Maydell wrote:
+>>> On Thu, 8 Jan 2026 at 14:34, Alex Bennée <alex.bennee@linaro.org> wrote:
+>>>>
+>>>> It looks like allowing a -kernel to override any firmware setting is
+>>>> intentional.
+>>>>
+>>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>>> ---
+>>>>  hw/m68k/mcf5208.c | 25 +++++++++++++++++++------
+>>>>  1 file changed, 19 insertions(+), 6 deletions(-)
+>>>>
+>>>> diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
+>>>> index c6d1c5fae9f..5680d516a23 100644
+>>>> --- a/hw/m68k/mcf5208.c
+>>>> +++ b/hw/m68k/mcf5208.c
+>>>> @@ -27,6 +27,7 @@
+>>>>  #include "qemu/timer.h"
+>>>>  #include "hw/core/ptimer.h"
+>>>>  #include "system/system.h"
+>>>> +#include "system/reset.h"
+>>>>  #include "system/qtest.h"
+>>>>  #include "net/net.h"
+>>>>  #include "hw/core/boards.h"
+>>>> @@ -274,6 +275,20 @@ static void mcf_fec_init(MemoryRegion *sysmem, hwaddr base, qemu_irq *irqs)
+>>>>      memory_region_add_subregion(sysmem, base, sysbus_mmio_get_region(s, 0));
+>>>>  }
+>>>>
+>>>> +static void mcf5208evb_cpu_reset(void *opaque)
+>>>> +{
+>>>> +    M68kCPU *cpu = opaque;
+>>>> +    CPUM68KState *env = &cpu->env;
+>>>> +    CPUState *cs = CPU(cpu);
+>>>> +
+>>>> +    cpu_reset(cs);
+>>>> +    /* Initialize CPU registers.  */
+>>>> +    env->vbr = 0;
+>>>> +    /* TODO: Configure BARs.  */
+>>>> +    env->aregs[7] = ldl_phys(cs->as, 0);
+>>>> +    env->pc = env->reset_pc;
+>>>> +}
+>>>
+>>> It looks from my quick skim of the m68k manual like
+>>> "on reset, initial PC is read from offset 4, initial
+>>> SP is read from offset 0" is part of the architected
+>>> CPU reset, not board-specific. Maybe we should model
+>>> that inside the CPU reset method? Compare M-profile
+>>> Arm, which does basically the same thing in
+>>> arm_cpu_reset_hold().
+>>>
+>>> (I really need to look again at whether we can move
+>>> that to the reset_exit phase now and drop the awkward
+>>> "maybe we need to look at a rom blob" special casing.)
+>>
+>> Real machines usually have a way to remap ROM to address 0 on reset
+>> shadowing RAM and then the firmware flips the bits needed to set up the
+>> memory map with RAM at 0 and ROM at somewhere higher up but the way to do
+>> it is different for each board. Maybe in QEMU we don't bother to model
+>> this and have this special case instead to simplify things and be able to
+>> start from the final ROM address without needing to model this ROM remap
+>> thing. So modeling real CPU behaviour might make board models more
+>> complex.
+>
+> To me it looks like we are already modelling "load SP
+> and PC from memory", we're just doing it in each
+> board model rather than in the CPU model for some reason...
+
+Only q800 seems to do that, virt passes this info in a struct not thorugh 
+memory and other boards don't seem to have a cpu reset function at all and 
+just poke the cpu object directly without resetting it unless I missed 
+something. Looks like each board came up with its own way independently 
+but could be cleaned up the way you propose implementing the proper reset 
+behaviour of the CPU then changing boards to just put the addresses in 
+memory or do the ROM remap if needed. But how could boards write the 
+addresses on reset without using qemu_register_reset or needing a lot of 
+boilerplate to add a reset method to machine? Maybe it is simple and I 
+just don't remember how machine reset works for machine or it could be 
+that MACHINE class needs a simple way for boards to register a reset 
+method. Maybe this is the reason why several boards use a boot info struct 
+to pass reset info into cpu_reset and don't model board reset?
+
+Regards,
+BALATON Zoltan
+--3866299591-707201850-1768342339=:27486--
 

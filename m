@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 091ACD29DC9
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 05:23:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB52ED29DC9
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 05:50:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfWrq-0005MW-D8; Tue, 13 Jan 2026 00:22:58 -0500
+	id 1vfXIP-0006ar-NB; Tue, 13 Jan 2026 00:50:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1vfWrn-0005LU-QV
- for qemu-arm@nongnu.org; Tue, 13 Jan 2026 00:22:55 -0500
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1vfXIN-0006Zn-P1
+ for qemu-arm@nongnu.org; Tue, 13 Jan 2026 00:50:23 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1vfWrm-0007pD-JP
- for qemu-arm@nongnu.org; Tue, 13 Jan 2026 00:22:55 -0500
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1vfXIM-0002z8-3R
+ for qemu-arm@nongnu.org; Tue, 13 Jan 2026 00:50:23 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768281774;
+ s=mimecast20190719; t=1768283421;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UuSFWBRTF/a4F2rYUMOuTIPAqFb+YSyzOAe/OHdCM6Q=;
- b=ESO3xLToGwItXwvBGUrUs7TYYx71LkBqa1mhAl5xp0U6+9vUZJrzyhAhR2pYGThyguq6nA
- 03hxxjT4k8uS9rsKrCqmginRSu56hBHz1KhcoSHKup/IV8ldGvHb1SK0fksAfrHlfIQvQ/
- w2aGrlw8TWXWosaRry9Pi0dT0NRHTew=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Qs7zhcW/UVOSbsLU/f5/0UkeBgNfQxpoFiaHDgUVOH8=;
+ b=SyaUPUeorFD67KE+MwOR3xq2NFjdxUv5W8WmLkKdq4bBJyJDgq5TZZ8OOsqw2hQRNg9GzA
+ F16uJwgLnOrQJvRD6EcuR4wcM9A91/SReG3jBeIEIImCesMvwEJiZoeUPeMY7Oxf7hZdmk
+ kCU1gPfGwbfgk0LHr4ruBUIQ9ymNQxc=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-346-OsXxb1bSMliYU3T7KCOIAw-1; Tue, 13 Jan 2026 00:22:50 -0500
-X-MC-Unique: OsXxb1bSMliYU3T7KCOIAw-1
-X-Mimecast-MFC-AGG-ID: OsXxb1bSMliYU3T7KCOIAw_1768281770
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-8b6963d163eso1838177485a.3
- for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 21:22:50 -0800 (PST)
+ us-mta-590-LG-3XRnEPamIBDY0PAdiMA-1; Tue, 13 Jan 2026 00:50:20 -0500
+X-MC-Unique: LG-3XRnEPamIBDY0PAdiMA-1
+X-Mimecast-MFC-AGG-ID: LG-3XRnEPamIBDY0PAdiMA_1768283419
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-430fdc1fff8so4176793f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 21:50:19 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768281770; x=1768886570;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=UuSFWBRTF/a4F2rYUMOuTIPAqFb+YSyzOAe/OHdCM6Q=;
- b=Vq5i+VLq/ct4AdH4u4ixtwbvDb6FNe0s6oWRzLshQ7J+akxyMf9FbFb0c2FUm3Doga
- 7ijF1MQo0iYzLv4yE4q5Nes2HZNGclGg2J59W07trWR+bixFj8zoPEM724zgaCoB94dI
- kw3JSxfdgGuK/3AN0OHL0MUqHMKvwVvwFhHL9I8eGw5daN7SsxKtT990voBRDXaQ6tWC
- yHSY8/BXONpD6vm2f+ESDCJHHRgiwecwKbonyl/jHc5gbT4Er9jtq60DY6qdhLWL1AWD
- UBoJc2M6YhwIJQ+Jb32uZtzhLFYSOeJNEQRTrMr5FNc+dFHmXW7MtBL/rY2Vg7ODi69q
- hA3w==
+ d=1e100.net; s=20230601; t=1768283419; x=1768888219;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Qs7zhcW/UVOSbsLU/f5/0UkeBgNfQxpoFiaHDgUVOH8=;
+ b=Q+sqckiwJ+TULPQfc44Gcs9y0xJ5ATxf5YnivXTpVQTjx3VWHHWVl2NJg+9UFJBGiT
+ 2tSN5IpG3pspeONs3jwZaJP8OSIIcz7ox+RdLPDtpOaDwIKp9TwP2UgQxrIj5CbFhXpk
+ fqOnVUKbQyLuGaWWvRYmqPZJwOU+TzANHL4Q6ZXPwdOf0Z6OqH6Xiz2v/vN4Nnk8u8RG
+ CDhDmIvA3mCfeLeA5mH9Hm+xLiLAdlMSHTF4ctKKQKiJo59QSGQsXoFrss9YSRTV+Y0q
+ Rxht96ZAUKmM/D6PfvRQK7ti3o6e1DYft+aEJKns2+uhvjnnV2AdjMxtpFJ252Fotjtb
+ 2UjQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCViC0U+N23z0nYCBjNeHHG9cRpCvZbw7TJ5sbjvI/YX8BjTYIWtRZEuf4VU6+6upkPC2VXywqHvCQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyEulJZwHo4UR4KmAOfMpgFE7asiJZTPqQ3FoaWFKHtqRWjSKW9
- PMCZf200Fe0BFuQIDDJMHDxBi96vlKvXId2KkdGb65ptK2hjtjkrcSrYAlihluk071CLGy178SN
- Uug9EqJW+KEqRstOXJLrLriHldloDLvw8H2PNDyfkFmQM5HqlFuXERS2Hfp+bOzx+xR2ZkVprPO
- xP8xNNtOHdXm4vBY8VahALUgLyf31u
-X-Gm-Gg: AY/fxX7VNz0pluyBco2Yhhs+KwA36G7H6p6+m/nelUhTkpnm6uJe/+BOK6rQyQCd6UE
- //OpRlIKlFYmAaE947w+zPE84SMUD0QWmc3ttwCBoW+JR32FW7GiUw0ZNeAYnNinlTyqUXvN8jV
- 6VyntPxPRMh3oj2ZNmpcVlWq9rAJrynOPPW1Yuo4Q2xfv87JQrYj0QOGYEfM6z9X9TMWxFDM+R0
- cInjP1Tgpb4SaUyxLzqLes5rKg=
-X-Received: by 2002:a05:620a:708e:b0:88f:ee0a:3d66 with SMTP id
- af79cd13be357-8c389414f29mr2813737485a.80.1768281770013; 
- Mon, 12 Jan 2026 21:22:50 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHiH8WsY7O+xC9FcuVzBoC//WNKiyql+/5CHoVxcW31leO6vvM+yMfQ0AGwfBR8EBJ7MkShs5cyX1cMDyDXACE=
-X-Received: by 2002:a05:620a:708e:b0:88f:ee0a:3d66 with SMTP id
- af79cd13be357-8c389414f29mr2813734385a.80.1768281769619; Mon, 12 Jan 2026
- 21:22:49 -0800 (PST)
+ AJvYcCXUA4goX4450iz0z/VP6mYBPcfxhmzI0yYmTm3KquZElEfUn92JGoOBWvqqyPaOVyW5f6Y3D+I3LQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwQg5d/6pVQ3d0ykF7P53A5zgBAiYYjmgpL3qVkMi+3rhgziV9H
+ Fo/KIlRuPpuaaAJv/WRx4xR8xFWkTXpyiYVyfhH1BcLx3IVfLY8XP04LiL32MkGy0KLQHAne0+w
+ zgsMIOMpWmjo/ZMd9prMRqlYRFGDuiKRQjfb+1j5zT0tSJEa3TVpM782UAW0PCEHWtsN0OXEZLh
+ WPFmFokXrqxvdScB4csCpR2iiuBBDm
+X-Gm-Gg: AY/fxX4ZLduuP59OaHmC43hCHK1qLNQ4hPmxkMEsg9RDPSOfxrxTMxCbdTbcdND6nEw
+ H68FWB7/ECARnIPOYPRsT2iRlGYJYWcLQ8TAmFBC49ES3jDpfsiy6sp6p5Ux5n0eqRZT58e4QbG
+ LGtHk/ef/Z5kX0ewL4ZLNGBfn7wVcYcPf4jCjQRa2OXParwf/3Gy4t03uOq8XMX+OxDQ7lEQjRN
+ dMZvSyGHP9qlBviHsr75JseWmlttAZmR3YZPMqufeFqnockm6whkmEFTOEUMMniGGO++g==
+X-Received: by 2002:a05:6000:2085:b0:431:104:6dc2 with SMTP id
+ ffacd0b85a97d-432c362811cmr19726022f8f.8.1768283418751; 
+ Mon, 12 Jan 2026 21:50:18 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEPWxQNrcWE5zzwIRFg7QrWYT8fRVrUis+5YlZmgqwjJj33i5p+0PiklUStuQq49OSFRkSZ2PiqLPPt12RPsq0=
+X-Received: by 2002:a05:6000:2085:b0:431:104:6dc2 with SMTP id
+ ffacd0b85a97d-432c362811cmr19725977f8f.8.1768283418358; Mon, 12 Jan 2026
+ 21:50:18 -0800 (PST)
 MIME-Version: 1.0
 References: <20260112132259.76855-1-anisinha@redhat.com>
  <20260112132259.76855-5-anisinha@redhat.com>
  <CABgObfbDTAvm6E0imC=HSm2=BAC4rzUDmuHcoUbVjJ-YeXFw-w@mail.gmail.com>
-In-Reply-To: <CABgObfbDTAvm6E0imC=HSm2=BAC4rzUDmuHcoUbVjJ-YeXFw-w@mail.gmail.com>
-From: Ani Sinha <anisinha@redhat.com>
-Date: Tue, 13 Jan 2026 10:52:38 +0530
-X-Gm-Features: AZwV_Qh-HDldufjqbgWd4d5gXuNVRPG-KFr5tvZM8MpWL8MTjAupkr2EFt14Opo
-Message-ID: <CAK3XEhOWn_zecQjvFvzsRu_dmHBAjJ4gaSfKKp6BHviQmz2D2g@mail.gmail.com>
+ <CAK3XEhOWn_zecQjvFvzsRu_dmHBAjJ4gaSfKKp6BHviQmz2D2g@mail.gmail.com>
+In-Reply-To: <CAK3XEhOWn_zecQjvFvzsRu_dmHBAjJ4gaSfKKp6BHviQmz2D2g@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Tue, 13 Jan 2026 06:50:07 +0100
+X-Gm-Features: AZwV_Qis5VsfOLzY6XbOPFF70nqRNXDlvk1xQ65pKarvD6noNf4B3av6VmmnO0Q
+Message-ID: <CABgObfaMhQqSDLCudcn5sJ48p3Z0bOTzeX97=0PZNEgnEHNPbQ@mail.gmail.com>
 Subject: Re: [PATCH v2 04/32] accel/kvm: add changes required to support KVM
  VM file descriptor change
-To: Paolo Bonzini <pbonzini@redhat.com>
+To: Ani Sinha <anisinha@redhat.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Marcelo Tosatti <mtosatti@redhat.com>, 
  Song Gao <gaosong@loongson.cn>, Huacai Chen <chenhuacai@kernel.org>, 
@@ -97,25 +97,26 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Matthew Rosato <mjrosato@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
  Richard Henderson <richard.henderson@linaro.org>,
  Ilya Leoshkevich <iii@linux.ibm.com>, 
- David Hildenbrand <david@kernel.org>, kvm@vger.kernel.org,
- qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, 
- qemu-s390x@nongnu.org
+ David Hildenbrand <david@kernel.org>, kvm <kvm@vger.kernel.org>, 
+ qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ "zmta06.collab.prod.int.phx2.redhat.com, list@suse.de" <qemu-ppc@nongnu.org>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>, 
+ qemu-s390x <qemu-s390x@nongnu.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 4gZbXueJmrxIsQCO73kv4sOezmlWuZ_jxj1GKdY50UI_1768281770
+X-Mimecast-MFC-PROC-ID: dRJDRd3EDtzAAGfbSQAypgaIkl3t4OpQIG7jAIyLmKQ_1768283419
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
+Content-Type: multipart/alternative; boundary="00000000000003901b06483e9159"
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,15 +132,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Jan 12, 2026 at 10:32=E2=80=AFPM Paolo Bonzini <pbonzini@redhat.com=
-> wrote:
->
-> On Mon, Jan 12, 2026 at 2:23=E2=80=AFPM Ani Sinha <anisinha@redhat.com>:
->  > +int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
->
-> Weird name since there are no "operations". Maybe kvm_arch_on_vmfd_change=
-?
+--00000000000003901b06483e9159
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I meant the operations the arch wants to do on vmfd change.
+Il mar 13 gen 2026, 06:22 Ani Sinha <anisinha@redhat.com> ha scritto:
+
+> On Mon, Jan 12, 2026 at 10:32=E2=80=AFPM Paolo Bonzini <pbonzini@redhat.c=
+om>
+> wrote:
+> >
+> > On Mon, Jan 12, 2026 at 2:23=E2=80=AFPM Ani Sinha <anisinha@redhat.com>=
+:
+> >  > +int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s)
+> >
+> > Weird name since there are no "operations". Maybe
+> kvm_arch_on_vmfd_change?
+>
+> I meant the operations the arch wants to do on vmfd change.
+>
+
+All callbacks are "operations that the implementor wants to do", aren't
+they? But "ops" is usually a suffix in types that group multiple callbacks,
+not individual functions.
+
+Paolo
+
+
+>
+
+--00000000000003901b06483e9159
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote gmail_quote_contai=
+ner"><div dir=3D"ltr" class=3D"gmail_attr">Il mar 13 gen 2026, 06:22 Ani Si=
+nha &lt;<a href=3D"mailto:anisinha@redhat.com">anisinha@redhat.com</a>&gt; =
+ha scritto:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
+0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On M=
+on, Jan 12, 2026 at 10:32=E2=80=AFPM Paolo Bonzini &lt;<a href=3D"mailto:pb=
+onzini@redhat.com" target=3D"_blank" rel=3D"noreferrer">pbonzini@redhat.com=
+</a>&gt; wrote:<br>
+&gt;<br>
+&gt; On Mon, Jan 12, 2026 at 2:23=E2=80=AFPM Ani Sinha &lt;<a href=3D"mailt=
+o:anisinha@redhat.com" target=3D"_blank" rel=3D"noreferrer">anisinha@redhat=
+.com</a>&gt;:<br>
+&gt;=C2=A0 &gt; +int kvm_arch_vmfd_change_ops(MachineState *ms, KVMState *s=
+)<br>
+&gt;<br>
+&gt; Weird name since there are no &quot;operations&quot;. Maybe kvm_arch_o=
+n_vmfd_change?<br>
+<br>
+I meant the operations the arch wants to do on vmfd change.<br></blockquote=
+></div></div><div dir=3D"auto"><br></div><div dir=3D"auto">All callbacks ar=
+e &quot;operations that the implementor wants to do&quot;, aren&#39;t they?=
+ But &quot;ops&quot; is usually a suffix in types that group multiple callb=
+acks, not individual functions.</div><div dir=3D"auto"><br></div><div dir=
+=3D"auto">Paolo</div><div dir=3D"auto"><br></div><div dir=3D"auto"><div cla=
+ss=3D"gmail_quote gmail_quote_container"><blockquote class=3D"gmail_quote" =
+style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pa=
+dding-left:1ex">
+<br>
+</blockquote></div></div></div>
+
+--00000000000003901b06483e9159--
 
 

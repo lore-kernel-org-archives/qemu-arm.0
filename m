@@ -4,61 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04AD8D2F34C
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 18:09:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD420D2F352
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 18:30:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfipq-0003Gg-7I; Tue, 13 Jan 2026 13:09:42 -0500
+	id 1vfjA6-0004Rd-IN; Tue, 13 Jan 2026 13:30:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1vfiot-0002vJ-No; Tue, 13 Jan 2026 13:08:57 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1vfioq-0007Oc-2n; Tue, 13 Jan 2026 13:08:43 -0500
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 630B7596A0D;
- Tue, 13 Jan 2026 19:08:34 +0100 (CET)
-X-Virus-Scanned: amavis at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
- id SgVe6PxfnXyB; Tue, 13 Jan 2026 19:08:32 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 4EF7C5969FF; Tue, 13 Jan 2026 19:08:32 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 4C89B5969E4;
- Tue, 13 Jan 2026 19:08:32 +0100 (CET)
-Date: Tue, 13 Jan 2026 19:08:32 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Peter Maydell <peter.maydell@linaro.org>
-cc: =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, 
- qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, 
- Bastian Koppelmann <kbastian@rumtueddeln.de>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Zhao Liu <zhao1.liu@intel.com>, Laurent Vivier <laurent@vivier.eu>, 
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
- qemu-arm@nongnu.org, Yoshinori Sato <yoshinori.sato@nifty.com>, 
- Yanan Wang <wangyanan55@huawei.com>, Aleksandar Rikalo <arikalo@gmail.com>, 
- Thomas Huth <huth@tuxfamily.org>, Eduardo Habkost <eduardo@habkost.net>
-Subject: Re: [RFC PATCH 04/12] hw/m68k: register a mcf5208evb_cpu_reset handler
-In-Reply-To: <CAFEAcA_Y_fTBo_0qg4Lm+7WrMdEown=-RrHHjcsKKE6WRX3eRw@mail.gmail.com>
-Message-ID: <b2c72aef-4a60-76af-4cd8-dd3142e46d2a@eik.bme.hu>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vfj9y-0004Q2-C2
+ for qemu-arm@nongnu.org; Tue, 13 Jan 2026 13:30:30 -0500
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vfj9w-00028F-N3
+ for qemu-arm@nongnu.org; Tue, 13 Jan 2026 13:30:30 -0500
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-79018a412edso80978767b3.0
+ for <qemu-arm@nongnu.org>; Tue, 13 Jan 2026 10:30:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1768329026; x=1768933826; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=taZ7BUP7QZtM0k5fqd+s0oR+IkuwSLbucA5+I6GacLs=;
+ b=tMzKanUQP/W381S5jgDaCGqKoOXMukL+/++TSt4qAMCDLN76kVN2gusRHU87bknfwJ
+ 3OJY76kTivP7v/1/zPdHKVznFqATRSbIinxWrY+LkF88IUAS6nAEXXKODUOQGm4mV79t
+ heoacnuupRCGSHXJKY8NAAWnb+VK8XsrQtUMZY7SL4kiYOKy1bWsVbfndDQSXzERvUPe
+ ZKs73o9YYrNTJETvmPasKTiFkRjoGENhbUMgad2yR/UEUsN1qxsk/9kD5m2Qa3lZDHy6
+ QQYMZVYnbUhDL1xl56QfPfU4m9f/5DGEBnjTHt4OAgFv/dtiK8IQvnyI61Bxpjl1DF1A
+ lQiQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1768329026; x=1768933826;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=taZ7BUP7QZtM0k5fqd+s0oR+IkuwSLbucA5+I6GacLs=;
+ b=K2q/qrdB+9pymS2vgFrbIrYZR/nJUetZGNbVwsCWo0//4pkNH4mTGoeJvUIbVpRZ+P
+ 05Pa/pdQ7a4E0+lSgd+KtlX1GOQKMrRBD9oDCn3ASwik8lqtu0+Y26mj/HeoCcM7bPcz
+ YDOYzFscFk7ZlwL3xCGfrasFPJFzLzijqWbBlQ4nFFVSUbAi89Keu8MLjStRX2P36MZH
+ jBthQM70najGlSopWVUFOWKEUPhZkR6nYbwmLOIwAV2UC7V9WqE1jV/7r3wLcCZqWgHN
+ TWYQVFfGiNP7H3QRo1xuGajs6IAGXTr3LHrUIkI6EHV1kuXXg9pcxs77ePhf1rupoGqz
+ jevg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU+8qhqYPTcah1JaXYFevyMK9HEj7e4yASvhjEr3NQ86vPkEayyzoqCmYPAXLmJVTlRk9d7DIo7sg==@nongnu.org
+X-Gm-Message-State: AOJu0YwqwFGrfizab0LwoDnP9snOd5CLccUThJzDwWRY2QafHotrlXyt
+ v2equl9+PlOsGGrn2YFEBtT3cFRDKVIPe3ZTCdnM6BO5zbq/WMLHgJHKSpPgL+0Z9+S9oMhiRZd
+ Gfqtm/6UKp04EXMKFmmS6WT9jOMDElyUeHI9KGjdEqg==
+X-Gm-Gg: AY/fxX57bWqCI1pq5ENhYnOuCojOWbXafvlcJ6jm84q46uBKB4R5X7FGB3zGbn/bdu3
+ 9uFUIqiEMJdAqMDzwQlsRrEMbCfDZbw+4fJdkYKyJ+t3kBckAqGMk22T7NR4cbYmfwgfXw8HeOK
+ ctoNdLt/v3oVhXZ9T7plZKmMOzviQtl3fUBut44gbRIpcd10JBShbRk/sMcLp2BVWN7NZ/LnhXx
+ 4FZ0XHI7lboo3LbrIBvT1smMHd8W+L2oM4UvzkaKn2k1fwuSsZlHrqSKGXj4hh87rNIfsxuObaC
+ xRhf7z3xe29t8w3Ph4K0iBE=
+X-Received: by 2002:a05:690e:d5a:b0:646:7c08:62d1 with SMTP id
+ 956f58d0204a3-64901b2f5a3mr128852d50.84.1768329026227; Tue, 13 Jan 2026
+ 10:30:26 -0800 (PST)
+MIME-Version: 1.0
 References: <20260108143423.1378674-1-alex.bennee@linaro.org>
  <20260108143423.1378674-5-alex.bennee@linaro.org>
  <CAFEAcA_Y_fTBo_0qg4Lm+7WrMdEown=-RrHHjcsKKE6WRX3eRw@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-927016346-1768327712=:58111"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <b2c72aef-4a60-76af-4cd8-dd3142e46d2a@eik.bme.hu>
+In-Reply-To: <b2c72aef-4a60-76af-4cd8-dd3142e46d2a@eik.bme.hu>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 13 Jan 2026 18:30:13 +0000
+X-Gm-Features: AZwV_QhDP20C_RHTCmRI9xlV6sFdSUUfd50VwRAsPMP_nyKxHVL_dY4Y-9SwM4c
+Message-ID: <CAFEAcA9b8hnZ24+XMyXxVVV5ZEVZUFbMmR678hJ0eWqdi1r0Fg@mail.gmail.com>
+Subject: Re: [RFC PATCH 04/12] hw/m68k: register a mcf5208evb_cpu_reset handler
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>, 
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Bastian Koppelmann <kbastian@rumtueddeln.de>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Zhao Liu <zhao1.liu@intel.com>, 
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-arm@nongnu.org, Yoshinori Sato <yoshinori.sato@nifty.com>, 
+ Yanan Wang <wangyanan55@huawei.com>, Aleksandar Rikalo <arikalo@gmail.com>, 
+ Thomas Huth <huth@tuxfamily.org>, Eduardo Habkost <eduardo@habkost.net>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,76 +108,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---3866299591-927016346-1768327712=:58111
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
-
-On Tue, 13 Jan 2026, Peter Maydell wrote:
-> On Thu, 8 Jan 2026 at 14:34, Alex Bennée <alex.bennee@linaro.org> wrote:
->>
->> It looks like allowing a -kernel to override any firmware setting is
->> intentional.
->>
->> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->> ---
->>  hw/m68k/mcf5208.c | 25 +++++++++++++++++++------
->>  1 file changed, 19 insertions(+), 6 deletions(-)
->>
->> diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
->> index c6d1c5fae9f..5680d516a23 100644
->> --- a/hw/m68k/mcf5208.c
->> +++ b/hw/m68k/mcf5208.c
->> @@ -27,6 +27,7 @@
->>  #include "qemu/timer.h"
->>  #include "hw/core/ptimer.h"
->>  #include "system/system.h"
->> +#include "system/reset.h"
->>  #include "system/qtest.h"
->>  #include "net/net.h"
->>  #include "hw/core/boards.h"
->> @@ -274,6 +275,20 @@ static void mcf_fec_init(MemoryRegion *sysmem, hwaddr base, qemu_irq *irqs)
->>      memory_region_add_subregion(sysmem, base, sysbus_mmio_get_region(s, 0));
->>  }
->>
->> +static void mcf5208evb_cpu_reset(void *opaque)
->> +{
->> +    M68kCPU *cpu = opaque;
->> +    CPUM68KState *env = &cpu->env;
->> +    CPUState *cs = CPU(cpu);
->> +
->> +    cpu_reset(cs);
->> +    /* Initialize CPU registers.  */
->> +    env->vbr = 0;
->> +    /* TODO: Configure BARs.  */
->> +    env->aregs[7] = ldl_phys(cs->as, 0);
->> +    env->pc = env->reset_pc;
->> +}
+On Tue, 13 Jan 2026 at 18:08, BALATON Zoltan <balaton@eik.bme.hu> wrote:
 >
-> It looks from my quick skim of the m68k manual like
-> "on reset, initial PC is read from offset 4, initial
-> SP is read from offset 0" is part of the architected
-> CPU reset, not board-specific. Maybe we should model
-> that inside the CPU reset method? Compare M-profile
-> Arm, which does basically the same thing in
-> arm_cpu_reset_hold().
+> On Tue, 13 Jan 2026, Peter Maydell wrote:
+> > On Thu, 8 Jan 2026 at 14:34, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
+wrote:
+> >>
+> >> It looks like allowing a -kernel to override any firmware setting is
+> >> intentional.
+> >>
+> >> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> >> ---
+> >>  hw/m68k/mcf5208.c | 25 +++++++++++++++++++------
+> >>  1 file changed, 19 insertions(+), 6 deletions(-)
+> >>
+> >> diff --git a/hw/m68k/mcf5208.c b/hw/m68k/mcf5208.c
+> >> index c6d1c5fae9f..5680d516a23 100644
+> >> --- a/hw/m68k/mcf5208.c
+> >> +++ b/hw/m68k/mcf5208.c
+> >> @@ -27,6 +27,7 @@
+> >>  #include "qemu/timer.h"
+> >>  #include "hw/core/ptimer.h"
+> >>  #include "system/system.h"
+> >> +#include "system/reset.h"
+> >>  #include "system/qtest.h"
+> >>  #include "net/net.h"
+> >>  #include "hw/core/boards.h"
+> >> @@ -274,6 +275,20 @@ static void mcf_fec_init(MemoryRegion *sysmem, hw=
+addr base, qemu_irq *irqs)
+> >>      memory_region_add_subregion(sysmem, base, sysbus_mmio_get_region(=
+s, 0));
+> >>  }
+> >>
+> >> +static void mcf5208evb_cpu_reset(void *opaque)
+> >> +{
+> >> +    M68kCPU *cpu =3D opaque;
+> >> +    CPUM68KState *env =3D &cpu->env;
+> >> +    CPUState *cs =3D CPU(cpu);
+> >> +
+> >> +    cpu_reset(cs);
+> >> +    /* Initialize CPU registers.  */
+> >> +    env->vbr =3D 0;
+> >> +    /* TODO: Configure BARs.  */
+> >> +    env->aregs[7] =3D ldl_phys(cs->as, 0);
+> >> +    env->pc =3D env->reset_pc;
+> >> +}
+> >
+> > It looks from my quick skim of the m68k manual like
+> > "on reset, initial PC is read from offset 4, initial
+> > SP is read from offset 0" is part of the architected
+> > CPU reset, not board-specific. Maybe we should model
+> > that inside the CPU reset method? Compare M-profile
+> > Arm, which does basically the same thing in
+> > arm_cpu_reset_hold().
+> >
+> > (I really need to look again at whether we can move
+> > that to the reset_exit phase now and drop the awkward
+> > "maybe we need to look at a rom blob" special casing.)
 >
-> (I really need to look again at whether we can move
-> that to the reset_exit phase now and drop the awkward
-> "maybe we need to look at a rom blob" special casing.)
+> Real machines usually have a way to remap ROM to address 0 on reset
+> shadowing RAM and then the firmware flips the bits needed to set up the
+> memory map with RAM at 0 and ROM at somewhere higher up but the way to do
+> it is different for each board. Maybe in QEMU we don't bother to model
+> this and have this special case instead to simplify things and be able to
+> start from the final ROM address without needing to model this ROM remap
+> thing. So modeling real CPU behaviour might make board models more
+> complex.
 
-Real machines usually have a way to remap ROM to address 0 on reset 
-shadowing RAM and then the firmware flips the bits needed to set up the 
-memory map with RAM at 0 and ROM at somewhere higher up but the way to do 
-it is different for each board. Maybe in QEMU we don't bother to model 
-this and have this special case instead to simplify things and be able to 
-start from the final ROM address without needing to model this ROM remap 
-thing. So modeling real CPU behaviour might make board models more 
-complex.
+To me it looks like we are already modelling "load SP
+and PC from memory", we're just doing it in each
+board model rather than in the CPU model for some reason...
 
-Regards,
-BALATON Zoltan
---3866299591-927016346-1768327712=:58111--
+-- PMM
 

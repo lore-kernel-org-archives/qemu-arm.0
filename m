@@ -4,77 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CE07D2D0E3
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 12:09:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF03BD2D0ED
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 13:05:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfdDQ-0000Qx-He; Tue, 13 Jan 2026 07:09:40 -0500
+	id 1vfe53-0000FM-Aq; Tue, 13 Jan 2026 08:05:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vfdDJ-0000Nb-JS
- for qemu-arm@nongnu.org; Tue, 13 Jan 2026 07:09:35 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vfdDA-0000uK-UH
- for qemu-arm@nongnu.org; Tue, 13 Jan 2026 07:09:26 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768306164;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=eVR5A1RjRWkEbd7StRLCkXwqSmbJR8p/VK/bXm3k5no=;
- b=jHObFPOSsr62ZluiA1Ay8gf8tTIPEvjOl370SWRKj+p7DZFr+NbxdPkP8P827Mlb9d0l5d
- 9S4uOokqEaT4DpJ1SutIGFAr8sNMq+MzGb4kMiOSHfFQxpbT35DBV7IOiUoiG+9lzNY4w5
- d9yWGrKTMK3xZLV3Ee1/7rrTdS9AEzY=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-657-I9-1vEhxPSeSPxD6Tm9b1w-1; Tue,
- 13 Jan 2026 07:09:12 -0500
-X-MC-Unique: I9-1vEhxPSeSPxD6Tm9b1w-1
-X-Mimecast-MFC-AGG-ID: I9-1vEhxPSeSPxD6Tm9b1w_1768306149
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 55EA41801369; Tue, 13 Jan 2026 12:09:00 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.87])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 57B5619541AA; Tue, 13 Jan 2026 12:08:56 +0000 (UTC)
-Date: Tue, 13 Jan 2026 12:08:48 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Igor Mammedov <imammedo@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, John Snow <jsnow@redhat.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH 0/1] Sync kernel-doc.py with Linux upstream
-Message-ID: <aWY10BYoJjck3xX8@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vfe51-0000BJ-Ml
+ for qemu-arm@nongnu.org; Tue, 13 Jan 2026 08:05:03 -0500
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vfe4z-0001cP-9Z
+ for qemu-arm@nongnu.org; Tue, 13 Jan 2026 08:05:03 -0500
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-78fb6c7874cso82017787b3.0
+ for <qemu-arm@nongnu.org>; Tue, 13 Jan 2026 05:05:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1768309500; x=1768914300; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=GGP9pogrURu6COy4QscKhkqpeRI6BYk1AL6F+e+sjmw=;
+ b=sgfcXrdH0G04BQKQ70bGwxibZByOc+zG6c9ogCYLox2NscucUCRfPnsAQKPWg2JPq1
+ Qomev3RQ4XcD+iSKZZlD5H9StmVC5zrcpfvbDbQJI2EvRavRzbkXEZgLvooGPoOFi9Wc
+ P/19ITcJ0W4od3IAabipESHjKmG7Eeu3k5Y0yi3do6Xis5w78qofVocuEWVCrqdn+luM
+ SLhHYBXKUXJCVSYoYgBbnH2S4m95kL+0+UCeWPyfp8YtC83Hiq0S4hF7yz1vD33phzVE
+ KBcnMMcG8evOgt09GZKDji+HyIr3HaVdfuY9PRfMNrNbXfNVWd1AdQr072cxuPIUB2KR
+ 39/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1768309500; x=1768914300;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=GGP9pogrURu6COy4QscKhkqpeRI6BYk1AL6F+e+sjmw=;
+ b=GcZVrKNPHd0D+gXaVKmHkPVMN4aW+nvo34L3+j5cOkHGQZ/0eok3nLZYAHz3cuL5KC
+ 7S3WNpBQKv7k7Ww3djxdRl5AgVfN7VJs1TsVlQjStQVWIJ2Ot36OQs9/hwXfZVF6q5wq
+ iGEkFGEmCc3CndZ2zjcaht2KyIDJOiP7hw/dD8ZzYWhg8aCTxsvs9Jnc4IOGcSkaSUTz
+ /cQlSkjZqNYv2nDMXcoIWvKkC72zrj/MWpkh5QAop+xam5TmpgJBolb1IBTCoyUtdpgR
+ dgJBiSCNh1SxVYKeoU5aImepLZysL1tMkl70nTY/k2YOTKYtwDAKhxmThJ/g6pnrEbsK
+ m3/A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXC7aGL9XO7acvSYWXdcNX4gOh93haS9BFIpd2cC1y0jYd2uiKAgoxItAXS0gXT/mHIMRC2dVT6iw==@nongnu.org
+X-Gm-Message-State: AOJu0Yxbov7amwGvc8dHKteuF80fD0qSWW+pDuwjF0BwTW5bgNdEjIim
+ 5syqjXAkagvy7XoZgfl1qoc78TCnSJVcoQG3GkTWktJbqcOo0d05t9wYJvwxt7paZg1XGf6M4ne
+ uV5v2w+7JGuijSgaFDik3ScCGmYX+0rBJdea2yfBWaQ==
+X-Gm-Gg: AY/fxX7B8PEdoR0/9UCwXVApASAhDQkXulcqfsMIBLcuAb9xXo5pG81yHEyP7+62P8Y
+ mOGlPf5z5nrCz6YMQ3NgjAkOeeURlDpftC0HGVdY0E+VyFsDXXaDy/425yp/ktquJ+881GhDoJS
+ NoUr0O77hK7kwqXE+N2tYbQ2xT7qqTqcosDaaES32cCzm4M8UsOeCtKjjghptZWr4kBYzeKJVvo
+ 9I5rsJdnjjRfOZKNBgFzfgXZO5qnCYx/GFw2w6cBfS6kevML0eOMFp6EGX4EtV2igy0dZ/lhcVD
+ +5jV1iz7iDypvf/hPMLgFBQ=
+X-Google-Smtp-Source: AGHT+IHQtHtKnt78UsVyFuVtrBhh4vIgmO871yuANhGR3F7ABjae7Y+nc8JoZfq4vxZ9+DkHUlhRhF9MCTQSrarUCcc=
+X-Received: by 2002:a05:690e:4195:b0:646:7a21:f03c with SMTP id
+ 956f58d0204a3-64716c9dd66mr17404436d50.81.1768309499959; Tue, 13 Jan 2026
+ 05:04:59 -0800 (PST)
+MIME-Version: 1.0
 References: <cover.1767716928.git.mchehab+huawei@kernel.org>
  <CAFEAcA_TMuZG8VJMs2JZ49Xq+wVxcq_7UGOMF+2FUe0k7AUgwA@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_TMuZG8VJMs2JZ49Xq+wVxcq_7UGOMF+2FUe0k7AUgwA@mail.gmail.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+ <aWY10BYoJjck3xX8@redhat.com>
+In-Reply-To: <aWY10BYoJjck3xX8@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 13 Jan 2026 13:04:48 +0000
+X-Gm-Features: AZwV_QgnWogDDwf6bylM0e_z-Ke0E-6T6CGTvYJ-MkEz1ntFVBkkixZ9VzADUI8
+Message-ID: <CAFEAcA9wnmZOLnA3zb6FPfjrEs-3PRBmyBs=FfiQW2OY5GJfTw@mail.gmail.com>
+Subject: Re: [PATCH 0/1] Sync kernel-doc.py with Linux upstream
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Igor Mammedov <imammedo@redhat.com>, 
+ "Michael S . Tsirkin" <mst@redhat.com>, John Snow <jsnow@redhat.com>, 
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,89 +101,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jan 13, 2026 at 11:44:51AM +0000, Peter Maydell wrote:
-> On Tue, 6 Jan 2026 at 16:38, Mauro Carvalho Chehab
-> <mchehab+huawei@kernel.org> wrote:
-> >
-> > Hi Peter/John,
-> >
-> > There were several updates at kernel-doc upstream fixing bugs,
-> > doing cleanups and a couple of improvements.
-> >
-> > Better to keep QEMU in sync with such changes.
-> >
-> > Worth mentioning that we did some changes on Linux at the
-> > kernel-doc.py script itself, to avoid Kernel build to crash
-> > with too old Python versions, as there docs build is a
-> > separate target, and python >= 3.6 is a new requirement
-> > there.
-> >
-> > On kernel, if python < 3.6, it will simply ignore docs
-> > build (emitting a warning).
-> >
-> > I opted to not backport such changes, but if you prefer
-> > doing that, I can do that on a v2.
-> > ---
-> >
-> > For now, I opted to keep kernel-doc libraries at the same
-> > directory as before - e.g. at scripts/lib/kdoc. On Linux,
-> > we ended moving it to tools/lib/python/kdoc. It could make
-> > sense to move it on QEMU too, as it makes a little bit
-> > easier to keep things in sync.
-> >
-> > What do you think?
-> 
-> Hi; thanks for doing this backport. I checked that the output
-> with this patch applied is still the same as with the old
-> kernel-doc, and eyeballed the diffs between our kernel-doc
-> and the Linux version, to confirm that we have kept our two
-> minor QEMU-specific modifications and haven't missed anything
-> from Linux's version that we ought to have. So:
-> 
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> 
-> On your two questions:
-> 
-> (1) As Dan says, QEMU already enforces a new enough
-> Python version, so we don't need to handle 3.6. I think
-> the main thing driving a choice to backport or not those
-> changes would be simply keeping in sync with Linux's
-> version of the script so we don't diverge. We want to
-> make future re-syncing of the script as easy as possible.
-> 
-> (2) Regarding the location of the kernel-doc libraries:
-> we seem to have two things here, possibly in tension:
->  - we don't want to gratuitously diverge from Linux
->  - QEMU's directory hierarchy is not the kernel's
-> 
-> In particular, I'm not sure tools/ is where we would
-> naturally put python libraries used during the build
-> process. Maybe that would be python/ for us, but I defer
-> to John or another Python expert on that.
+On Tue, 13 Jan 2026 at 12:09, Daniel P. Berrang=C3=A9 <berrange@redhat.com>=
+ wrote:
+> TL;DR: I would not want to see a new top level tools/ directory
+> created, and don't think it fits in python/ either; scripts/ is
+> a fine home.
 
-I tend to see the 'python' directory as being for stuff we formally
-maintain as a python API for use by multiple internal consumers.
+We do already have a tools/ directory, as it happens.
+It has two things in it...
 
-This is just a bunch of helper files exclusively for use by the kernel-doc
-tool, and so the scripts/ directory is a decent fit for it, given that this
-dir is for a collection of arbitary supporting tools & scripts.
+Personally I think tools/ ought to be for the set of
+things that we build if you --enable-tools in configure
+and which we document in docs/tools.
+tools/i386/qemu-vmsr-helper.c fits in that idea of
+what the directory is for. tools/ebpf/ does not, but
+I don't know enough about what it's for to suggest
+a better home for it.
 
-As precedent, see the tracetool, which keeps all its helpers under
-scripts/tracetool too.
+We might at some point want to tidy up the qemu-io.c,
+qemu-bridge-helper.c, etc that currently live in the
+top level directory so they go in tools/ instead.
 
-TL;DR: I would not want to see a new top level tools/ directory
-created, and don't think it fits in python/ either; scripts/ is
-a fine home.
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+thanks
+-- PMM
 

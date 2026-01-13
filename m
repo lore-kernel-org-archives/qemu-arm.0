@@ -4,95 +4,151 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F920D2F345
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 16:51:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A426BD2F34D
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 17:57:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfhcQ-000051-E9; Tue, 13 Jan 2026 11:51:46 -0500
+	id 1vfie4-00046t-UX; Tue, 13 Jan 2026 12:57:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vfhcN-0008W8-5A
- for qemu-arm@nongnu.org; Tue, 13 Jan 2026 11:51:43 -0500
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vfhcL-0003gs-Ba
- for qemu-arm@nongnu.org; Tue, 13 Jan 2026 11:51:42 -0500
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-7926b269f03so28987657b3.2
- for <qemu-arm@nongnu.org>; Tue, 13 Jan 2026 08:51:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768323100; x=1768927900; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=jZ3xmBg/5+E5AU7vqt/R0sEj7r59u2o3tDSNNfAralE=;
- b=No1/8D3iEp9xgjwvPC8X6Bee2JY0DqphGNCSNLXVVuHn9wQJiOfbdbPvdrJ+y4iwoE
- W1UiBM/L9+8H4o7+1JqkMBj1wxb3Ce8Cad5t1HJauLnxpjyfYEyOpYdK4IJV9wnX5G35
- 9oRDp1jcjURsnGGIXK7I8TuRX+KWIK2jP0+MumBruZjVHX+f+tZ3e4tGWtOE48gJCw3n
- OcvUdeKh1aiv9OZfvQsJFxa0BErgAq6uFie+2uNZISqgTlm9RrRcFFxmAJqtOeeARA5r
- /TS47153mH4glKLbytQdl4RD60e7mJAySSWxViJZz29xXS7UiF22r8E911wxqoJ62IXZ
- 4hDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768323100; x=1768927900;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=jZ3xmBg/5+E5AU7vqt/R0sEj7r59u2o3tDSNNfAralE=;
- b=A46pnu5AaiIn2AJgDUdrdSE4ES33RDgzse/3DYI0CG18QvzO80jR3Jyuh43PfNMaNe
- r94xvdZCKfCTPT9ZuWSK5O2db4DmLKaiG+HG1ap4KOktiKnOpCyk63/T1JixMxsSSXf5
- 0beUS+nTnSxe4jcp5/LOpnIGibj5oYNMqoKjbPV1ulZUzhKhEKY7QarzaZB+8TaDwBNy
- DXHLUINcQ3pgugHzfJ1PO4LjughQq8YXLd7IR3XDtJQa612o4V5/j5YTGAolxcyrzsD0
- vXGGm12dmfPnSvOGA1nV8ZY2nGRVSBwp7vKVF5RMLKznuQq2X3pdRQaYPyuWiMCeLe6f
- xQCw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXugCdW3YjieR1qZT/tMytEm89e1fSZgqxoJS2rAsVrZExIC5nFa3+NuA4whb1WdYLUYzSeu4VNOw==@nongnu.org
-X-Gm-Message-State: AOJu0YwtWfUyRIpO8TK0Ef/3YydwJCBJHiOTuLBx1wpoEarlXySnO15w
- KM0/SfpBt6j+Og+tHHEU734e2qGK/7DCRTaIWb6s8EFk0vF0kZ/cCrJDM5ehvnC8QJWPHguBYBD
- fSFUSt58nydCzFVENi2gRsy4nI27qigi47WxgaQ2xog==
-X-Gm-Gg: AY/fxX538J1C/5d4xRo0CAUu0OCwY++HEgbUTzgSrv2gu+qCszb2q0vxkDjr0lfLEdy
- VbzWudk2v2RbYysjmU01zFSSTAHYb9YQfBaen4niR9YJ7viPesfm5UbcDZycxoLVAlq7kCLC2/l
- udR7IKulMgRthxMitat0QoeHf5KgmufHKBe+wQuDJPxlCcYQByGKzSa7EYQ1YC/KfiKxXdEdUvb
- iBNe2VEJ7WNHaTv4uv1baPZzExldwc5O1Ue/zTLtQDZIfffe9VsTF4hyM9olLBcRJ8GLhNGPhdX
- i6jtZwSU4ynuqcTpLfG9OF9QNiosxmUfqQ==
-X-Google-Smtp-Source: AGHT+IF2rFAIWooJMvbtpXVH/O0+EyADvQ6+mWTRunfqqAp6f7S8Ger1FvKxKoZv5eVy4OI5NEn98EktOk07KlQfSSw=
-X-Received: by 2002:a05:690c:e3c6:b0:788:e74:b267 with SMTP id
- 00721157ae682-790b584a483mr429407617b3.65.1768323099767; Tue, 13 Jan 2026
- 08:51:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1vfidZ-0003xa-Lb; Tue, 13 Jan 2026 12:57:03 -0500
+Received: from mail-westus3azlp170120001.outbound.protection.outlook.com
+ ([2a01:111:f403:c107::1] helo=PH8PR06CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1vfidX-0005ks-Hw; Tue, 13 Jan 2026 12:57:00 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=sNCCwMXXPFKzYD/484MLHyMQUD3fxSK+1idVTdGeJK887xQN11lZxOI0SsIB4i5tsiCdIuqXIEsom9mNQfjWayPw9Nr2Bw+RWkRUl0AaVMzj+ZfE73KbNuMgAI2eA7+hvFSZicy1lUSaPlnBKo82xkg0UwsyIJIVospYKcsTmetxVhZ82SXjbGIav6FppRg2EhL1wW6qWoMFs4e7kFdj55Y6+Ex/SUwr5QGV/BcplJLy0rkxDz86cm21Xxo7L4nNHqnTVl9g+JyNBNMrkwpwUqf2TZxkMx8Rwv8wNsbSkKNOWQW4f8K96VMBA0P/xeTcqYjfzA8upqeCwzH1bYyyPg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=aYQcRdBvyKmoA0j3Wj78FIBtyG0sidpENmvp67xbkPs=;
+ b=nELK/8hGZs9TQFqxg91bb2gzdBeM69JKAVlqEJ0a2b+X/65+RoHx9mY0dzo57jvl1ewBxnJYJ5h7jXiwJbzW2FRWlo5+nOYlEqJ3FnFKsv5HOW+b3n4FpkcoZ4HBFA4MZjcDqApk0lqebHCOiJl0D+Z/8TuVd8j+uSKDFNHitPDlpjrASSY0KCI6QGUuEYQoopeTh186KsxJwCHBj9uQAnZmtdbX4vRVuuZO9WQ+ZWPuMjWKV8glJq0s69Z49frHq2H872epw7okweD35TkU+2DWQERZDPS+aHcNoi2xb/XZTMWoX0GhBAVDRarrGLaqOO0WjoWxz82vJTbI4388vA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=aYQcRdBvyKmoA0j3Wj78FIBtyG0sidpENmvp67xbkPs=;
+ b=pws/3Kmdt3BqLl2s+5zhT7OdaF45E8AMws/q9ItzWmBxDNYvrkOz/p3hplCk6uPyMpHfeis+hK6ydkqMUmTsVzBBRhjN4Y3eixIFY4uWT7Wgk/ixJ/i27xudtS0x5JKLyvXJVk/o8Dch3vuLtCRZgbLlItLrEU0BqAk4buAPTRI8ovyqvAPYsY/bUZzVox37WtkohPBbpwUbOmsZYoj2hRnjlCgakSSQiXbWsYn6uu2r+oQYlWHqySjMXjr4C849vHVVgVp5iIKOxpWIzlE8k75avvzJwIQ/Fr1rYDr8uqgZOKjNSFniOlnICcYy5ElHfdEOzs6vfbtgwDhYp+BXGA==
+Received: from MN0P221CA0023.NAMP221.PROD.OUTLOOK.COM (2603:10b6:208:52a::9)
+ by SA3PR12MB7950.namprd12.prod.outlook.com (2603:10b6:806:31c::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9499.7; Tue, 13 Jan
+ 2026 17:56:49 +0000
+Received: from BL02EPF0001A105.namprd05.prod.outlook.com
+ (2603:10b6:208:52a:cafe::ba) by MN0P221CA0023.outlook.office365.com
+ (2603:10b6:208:52a::9) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9499.7 via Frontend Transport; Tue,
+ 13 Jan 2026 17:56:35 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ BL02EPF0001A105.mail.protection.outlook.com (10.167.241.137) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9520.1 via Frontend Transport; Tue, 13 Jan 2026 17:56:48 +0000
+Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 13 Jan
+ 2026 09:56:26 -0800
+Received: from rnnvmail202.nvidia.com (10.129.68.7) by rnnvmail202.nvidia.com
+ (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Tue, 13 Jan
+ 2026 09:56:25 -0800
+Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com (10.129.68.7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
+ Transport; Tue, 13 Jan 2026 09:56:24 -0800
+Date: Tue, 13 Jan 2026 09:56:23 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameer Kolothum <skolothumtho@nvidia.com>
+CC: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Nathan Chen
+ <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>, Jason Gunthorpe
+ <jgg@nvidia.com>, "jonathan.cameron@huawei.com"
+ <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
+ <zhangfei.gao@linaro.org>, "zhenzhong.duan@intel.com"
+ <zhenzhong.duan@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>
+Subject: Re: [RFC PATCH 05/16] hw/arm/tegra241-cmdqv: Add initial Tegra241
+ CMDQ-Virtualisation support
+Message-ID: <aWaHR/SEgDs+2RJX@Asurada-Nvidia>
+References: <20251210133737.78257-1-skolothumtho@nvidia.com>
+ <20251210133737.78257-6-skolothumtho@nvidia.com>
+ <309bce2f-be34-4d3b-83e3-2a115f1ace80@redhat.com>
+ <CH3PR12MB7548CCE21D0E447A18E190BAAB8EA@CH3PR12MB7548.namprd12.prod.outlook.com>
 MIME-Version: 1.0
-References: <20260108143423.1378674-1-alex.bennee@linaro.org>
- <79bd03ad-3fc5-4d83-ab4f-55f8f840cc6c@linaro.org>
- <87wm1s83ng.fsf@draig.linaro.org>
-In-Reply-To: <87wm1s83ng.fsf@draig.linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 13 Jan 2026 16:51:27 +0000
-X-Gm-Features: AZwV_Qgwdi1AyXMBvtTqkVPyBmLb8O_D__UPtl40vsQaJPLBzsVOKHVIikahOWw
-Message-ID: <CAFEAcA-PEY8utD0OiUmhOBJb24_znFpQwOtzS_BPgbYGJ=8cmg@mail.gmail.com>
-Subject: Re: [RFC PATCH 00/12] cpu_reset clean-ups for arm, sh4, mips, m68k
- and tricore
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-devel@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Bastian Koppelmann <kbastian@rumtueddeln.de>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Zhao Liu <zhao1.liu@intel.com>, 
- Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org, 
- Yoshinori Sato <yoshinori.sato@nifty.com>, Yanan Wang <wangyanan55@huawei.com>,
- Aleksandar Rikalo <arikalo@gmail.com>, Thomas Huth <huth@tuxfamily.org>, 
- Eduardo Habkost <eduardo@habkost.net>, Igor Mammedov <imammedo@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <CH3PR12MB7548CCE21D0E447A18E190BAAB8EA@CH3PR12MB7548.namprd12.prod.outlook.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL02EPF0001A105:EE_|SA3PR12MB7950:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3e569efa-2e22-49b0-8bd1-08de52cd1fff
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|82310400026|36860700013|376014; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Q0jP9F1RLALBtPnbEdM1HfNO+P8PnlUJ87KIz4sTVn/w6NhHnj7E4BmENo+N?=
+ =?us-ascii?Q?OOb23Qawc9lChvCQSMHVpv4EHG7MKCGtqNIT+I/w881oapfby7zX3Z2556no?=
+ =?us-ascii?Q?A2Mn4gI3SxbPMKlGRkKunc3FLykGHw7PX7t+YDDuEQgNsLEVc/tF/B6f5Yck?=
+ =?us-ascii?Q?PtUag6ybPOAXyGGY3/AW0gCGzaVyJ1HzXKT1uHHYQgkuieoir9gCNuNGdWjO?=
+ =?us-ascii?Q?3gjMPazOTddICG3Q25GTS50nFrBklAJDfAO5T+NM46pl2s/3fXmOPPcmIqD1?=
+ =?us-ascii?Q?1dVWFOcgrNj13W6ej8kmoaM2OQ4KrJJUWLefDW0XlEG1btfqqZTG1g3LzZvQ?=
+ =?us-ascii?Q?V1zgPIn4V126E2KaAMFFLecOoGd/+j59v9drz45HLeMYLBF1ik1gj7v27Ve7?=
+ =?us-ascii?Q?BF64vFsLAA6JXk+fPmEm3cUXrLvr695hM1q7ve0VoGvqf60Y0V2UZxSU6D8S?=
+ =?us-ascii?Q?8Q05oGfS7c4AJevIpkXSrG0Kf/2urOYmSAKpFNjRqSE53UbS6dBGqGchYed8?=
+ =?us-ascii?Q?a70iUfAsPgHEmhqK7D4VlYPufHYztQF3MxGE+lnlAMthU423oc4q9teOIv0x?=
+ =?us-ascii?Q?SMQyYHU1+bzfTU9xz+ev6AKH9IDC2Mp0BzN0hTPK/UBz4rRxJXr9fvF7w8vZ?=
+ =?us-ascii?Q?F1JP2HTTYYP5K1XBF2rc9K3VLWDxRwjVDZ2pD4/k+FhmonrWQaxDDU7Xf2Z8?=
+ =?us-ascii?Q?ppsaou3Lkg30ZEcxggCakZTjzIqqalRVezTv9haI4ep+6I7/+gCnSLTL3Sz3?=
+ =?us-ascii?Q?cucVhSwO7NtVpMUWgEJe5R78I199DlARqDFgP/ly29yWVPkG9CeCPMAFxxs8?=
+ =?us-ascii?Q?CjIyxCr/QdZEXOtS24Zgho8623uIVAu4Dxbiu7ZhdFXqf3+i2tTYYwfIIzeS?=
+ =?us-ascii?Q?JC+feTsP6qVzg9eOSgkWgJikQTasZTXt1YjFIkjU0a3AXRaPBQ8DebJtZXtq?=
+ =?us-ascii?Q?P8H5pltdTmY6Z/e7lvCR3JxgD43+lwm+W5eu45AmZzrk5oLDeEMkDn0ceGT7?=
+ =?us-ascii?Q?TEqTGRAxSCt5JQaVAnmePv7kqKvILLBq2bjBT9z6hTwLUjpmx3sRhxeJfvdY?=
+ =?us-ascii?Q?SgtTTX7JWmLcV9rsEIFnPG19pFytluusxSCTPS6CvjxvV3yFIjZ25izD2N2X?=
+ =?us-ascii?Q?OuaZwxoLHDuXHINCCQNNrmBWKwkxwLqt3f4rSIaSho6MG+Cig2OROGo3iEtQ?=
+ =?us-ascii?Q?zpaQQFUAQ5qgNG5/d/gryehl30Y1/CTXdQtRUW4Dc/JVp3UU+56hiCjN0tkK?=
+ =?us-ascii?Q?pD9UO5W4eOK46+l4eT63HlY1/7EpFEioV+k6j9hlWAWpWLiIEUQvXpTbKuKp?=
+ =?us-ascii?Q?WEBXDLmR7QM5QBzv3tBCRMlLHq+1qRLedVC0ypQyo7wGEHdF9xYSMq58jSFc?=
+ =?us-ascii?Q?WTTSUtlOOZtr3t0Ftb6o6fkkfmaSl9FRodeoBfyl7esodQGIzk95VzaOLbO+?=
+ =?us-ascii?Q?A1TZPY3qSzQjcQtBberthwKxgt7/ZWsQ434yWYjOtUwPJR/aLLoxwdbH+83D?=
+ =?us-ascii?Q?JbluMQbK5q6MS/DqpY18kg+TgdDDLAGWIfQooFr8IJEakCfEhXNYzwd5e/76?=
+ =?us-ascii?Q?C9fhwUnxd+dnj/QY/1I=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(1800799024)(82310400026)(36860700013)(376014); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jan 2026 17:56:48.9967 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3e569efa-2e22-49b0-8bd1-08de52cd1fff
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BL02EPF0001A105.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR12MB7950
+Received-SPF: permerror client-ip=2a01:111:f403:c107::1;
+ envelope-from=nicolinc@nvidia.com;
+ helo=PH8PR06CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,88 +164,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 8 Jan 2026 at 16:34, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
->
-> > On 8/1/26 15:34, Alex Benn=C3=A9e wrote:
-> >> We tend to apply cpu_reset inconsistently throughout our various
-> >> models which leads to unintended ordering dependencies. This got in
-> >> the way in my last plugins series:
-> >>    https://patchew.org/QEMU/20251219190849.238323-1-alex.bennee@linaro=
-.org/
-> >> where I needed to shuffle things around to ensure that gdb register
-> >> creation was done after dependant peripherals had created their cpu
-> >> interfaces.
-> >> Regardless of that we do have a proper reset interface now and most
-> >> architectures have moved to it. This series attempts to clean-up the
-> >> remaining cases with proper qemu_register_reset() calls so reset is
-> >> called when we intend to.
-> >
-> > Last time I was blocked at this comment:
-> > https://lore.kernel.org/qemu-devel/20231128170008.57ddb03e@imammedo.use=
-rs.ipa.redhat.com/
->
-> From that:
->
->  --cpu_reset()  <- brings cpu to known (after reset|poweron) state
->    cpu_common_realizefn()
->        if (dev->hotplugged) {
->            cpu_synchronize_post_init(cpu);
->            cpu_resume(cpu);
->        }
->  ++cpu_reset()  <-- looks to be too late, we already told hypervisor to r=
-un undefined CPU, didn't we?
->
-> I would posit that the hotplug path is different as we online the CPU as
-> soon as its ready. Maybe that is just special cased as:
->
->        if (dev->hotplugged) {
->            cpu_reset(cpu);
->            cpu_synchronize_post_init(cpu);
->            cpu_resume(cpu);
->        }
->
-> Unless hotplug should also honour the reset tree in which case that
-> logic could be moved:
->
->   void cpu_reset(CPUState *cpu)
->   {
->       DeviceState *dev =3D DEVICE(cpu);
->
->       if (!dev->hotplugged) {
->           device_cold_reset(DEVICE(cpu));
->       } else {
->           /* hotplugging implies we should know how to setup */
->           cpu_synchronize_post_init(cpu);
->       }
->       trace_cpu_reset(cpu->cpu_index);
->
->   #ifdef CONFIG_TCG
->       /*
->        * Because vCPUs get "started" before the machine is ready we often
->        * can't provide all the information plugins need during
->        * cpu_common_initfn. However the vCPU will be reset a few times
->        * before we eventually set things going giving plugins an
->        * opportunity to update things.
->        */
->       qemu_plugin_vcpu_reset_hook(cpu);
->   #endif
->   }
+On Tue, Jan 13, 2026 at 06:41:03AM -0800, Shameer Kolothum wrote:
+> > > -    if (!iommufd_backend_alloc_viommu(idev->iommufd, idev->devid,
+> > > +    if (s->tegra241_cmdqv && !tegra241_cmdqv_alloc_viommu(s, idev,
+> > &viommu_id,
+> > > +                                                          errp)) {
+> > > +        return false;
 
-You don't want to special case anything in the cpu_reset()
-function, because it is valid (indeed, encouraged :-)) to
-reset CPU objects in ways that don't pass through it.
-For instance, qemu_register_resettable(OBJECT(cpu)) is one way.
+> > I am confused. In tegra241_cmdqv_alloc_viommu() it returns false if
+> > alloc_viommu fails. but you seem to reset s->tegra241_cmdqv as if you
+> > would fall back to non cmdqv setup. What do you try do, fallback or
+> > execute either tegra241 code or default code. Or maybe I misunderstand
+> > the uapi call sequence?
+> 
+> No fallback intended. Currently, if the user has enabled tegra241_cmdqv and
+> tegra241_cmdqv_alloc_viommu() fails, we fail the device init. Sorry about
+> that to reset s->tegra241_cmdqv and !viommu_id logic, , that was a left
+> over logic from previous internal branch I had.
+> 
+> @Nicolin, is there any such requirement for a fallback in this case?
 
-The problem with cpu_reset() is that it is not 3-phase aware,
-so (like everything that calls device_cold_reset()) it will
-call all 3 reset phases for the CPU at once, even in the middle
-of doing a full-system 3-phase reset. It's fine for the
-special case of "we are resetting nothing else except the CPU",
-but there's a lot of places where we aren't using it like that.
+Likely no. I agree that we should do in the cleaner way.
 
-thanks
--- PMM
+Nicolin
 

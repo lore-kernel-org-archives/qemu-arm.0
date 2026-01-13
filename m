@@ -4,91 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3452D2F338
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 15:31:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2608D2F339
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 16:19:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfgMC-0007uh-FG; Tue, 13 Jan 2026 10:30:57 -0500
+	id 1vfh7O-0000E7-GR; Tue, 13 Jan 2026 11:19:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vfgM6-0007sF-VO
- for qemu-arm@nongnu.org; Tue, 13 Jan 2026 10:30:51 -0500
-Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vfgM2-0007o6-Ck
- for qemu-arm@nongnu.org; Tue, 13 Jan 2026 10:30:49 -0500
-Received: by mail-yx1-xb129.google.com with SMTP id
- 956f58d0204a3-6420c0cf4abso6896866d50.1
- for <qemu-arm@nongnu.org>; Tue, 13 Jan 2026 07:30:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768318243; x=1768923043; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=eW6PvoSICJHJNz4coqHX84UgMdzKOsoSZg7aH86/zjU=;
- b=Me4lfOE9mT31M69EyAye5BhqhhzTlguI8tRhffUuNSCVrQBAzQWjj9MyUesHSxtdId
- 1SrbuwedSbExZKANp/PYyc9vn+vtIXa3krTjYGLkPY2OaC75KrkwblWnB3RTTzM7KfzE
- Yu2I/c/LnSutnkeCoo3SQWigD9fiL2R4txeMqs8/99sOP5+DDCSBEC5OnxgVYlwIPvjg
- Mie875CiFHH8v40oyFUkqtjLDbIA8uUVTTyQBwseJSDVIXzRC0OW+/8Rm1RQWrkyG5+r
- ReDdJpZyz/pOgCtVJH7rKAUyI9Jah47767NpiKHIQ5vczmQYeh/86stFli069nwjIeFB
- xrNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768318243; x=1768923043;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=eW6PvoSICJHJNz4coqHX84UgMdzKOsoSZg7aH86/zjU=;
- b=AB/PZwKnFGKT4jTVKnVWMkpp5JC82bILfz70aajPSbCm+1y9HW9FzYaOvxy0dMDGIf
- 6MHbyoi+qo0BAJwOmPwK2Ek0YqJKS7CYWlTa6AidVt6UW3MoHdqfCXtZ2u/xhR7ga8mw
- WuISc/5YABkvC7kYmhzCGtP9WMTKiZPQUz+AgRhA/hnVD3JoEC8PdnEpZNxk8IKQWm0k
- XsNhugysIKuvDRgw38JtOlyKtIeSQg5w2Si5+B9kY09lUGAxuebNYByv5fDTei1MikNh
- 1ga0JvX3sdrQGyV2rFyMreckmJXnOW12KFGvYiSAyj1NVAn3wplYgZ2ryjraQkHyVx1e
- Ddew==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXUHTYe5ARyFZjamCCBPCGXrpZ52S0Qnd3o5Zl+PgAR5qGp1hMnx/KxXFujqZGUaDpFENGMpYJWZA==@nongnu.org
-X-Gm-Message-State: AOJu0YxzC1UdlhONQPXb5x/gGbYtdvXUrIW/D6kCEmBao2hdYeoZETuV
- OYAiwlCEufDI8JuY9svtWgIR606CczOV/8luzYuDMdH4NOf8jn+LcigfNLCxIYeXAQgYnsXFRBj
- 2fmLcLyVczMKrit6/Oqti6HIuH7WAPlhzENfo4RMkiw==
-X-Gm-Gg: AY/fxX4RjVzs/ZJx/Cj2+7GRe/De8xr4ycNbOI4IolJWV94VOvk8XL01OO5YX4E+XPc
- +QJquDNj6fWkZ+s7v3KJmrOJG+mM1N6YB//B8R7QdBxyt6xwxklpmSLrQjDqL5YQIC+R3gvMH9g
- yM6jTmmX73DpuLQMFvkQMzO2DmEtCMDD0JxPJWeIvK/5DK7r4hPXDSxbR6IDp4o9qYlhred8kTW
- f279XKm2Pmv3f5SzyWlghd6x9xJdbZTuJghnf16DcljmEyqKqwY5WGGgAnhAFeVkmyJnklP2ZsU
- rpe9WlL9p0GkYp+kL1w2wLWj3+7Lp0hU/A==
-X-Google-Smtp-Source: AGHT+IG3dSkgNOoJ/BdcaaS2plBFMB9YKt90Oon9KshYmD8OLYGFbljxMkyW0O3TnZ5ptvcfFe6NmH659ZKSuNRnYAo=
-X-Received: by 2002:a05:690e:138e:b0:646:7064:368 with SMTP id
- 956f58d0204a3-64716c19af0mr18225539d50.53.1768318242784; Tue, 13 Jan 2026
- 07:30:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vfh6s-0008Vf-PT
+ for qemu-arm@nongnu.org; Tue, 13 Jan 2026 11:19:15 -0500
+Received: from 1.mo552.mail-out.ovh.net ([178.32.96.117])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vfh6p-0006R4-Gi
+ for qemu-arm@nongnu.org; Tue, 13 Jan 2026 11:19:10 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.254.35])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4drDvq4rnZz5w8v;
+ Tue, 13 Jan 2026 16:19:03 +0000 (UTC)
+Received: from kaod.org (37.59.142.96) by DAG3EX1.mxp5.local (172.16.2.21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Tue, 13 Jan
+ 2026 17:19:03 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R00181cfafac-44f0-4985-b40f-d5bf8faed3f8,
+ CD8D63582BF20F4415B5621A262754E3DD632153) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <770e5e68-f8a9-4321-821a-aa0930db0d95@kaod.org>
+Date: Tue, 13 Jan 2026 17:19:02 +0100
 MIME-Version: 1.0
-References: <20260108210453.2280733-1-pierrick.bouvier@linaro.org>
- <08c42104-d7c5-4df8-b25f-7138ddc94a94@redhat.com>
- <82940e3b-f9a7-4172-8ae7-680bc1a5785b@linaro.org>
-In-Reply-To: <82940e3b-f9a7-4172-8ae7-680bc1a5785b@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 13 Jan 2026 15:30:30 +0000
-X-Gm-Features: AZwV_QjDKnwoYKAyN9SdqyefnGdycyruckyE5ntR0WojJLVlHxhbMv0Do6VBdnI
-Message-ID: <CAFEAcA8ZiViYfkvBJ6P5rqGmChTw3VyN5iaEqxhfNb59ba2RdA@mail.gmail.com>
-Subject: Re: [PATCH v5] hw/arm/smmu: add memory regions as property for an
- SMMU instance
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: eric.auger@redhat.com, qemu-devel@nongnu.org, 
- Leif Lindholm <leif.lindholm@oss.qualcomm.com>, qemu-arm@nongnu.org, 
- tangtao1634@phytium.com.cn, richard.henderson@linaro.org, 
- Radoslaw Biernacki <rad@semihalf.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb129.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] tests/functional: migrate aspeed_rainier image
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ <qemu-devel@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+References: <20260113135941.3361163-1-alex.bennee@linaro.org>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260113135941.3361163-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.96]
+X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG3EX1.mxp5.local
+ (172.16.2.21)
+X-Ovh-Tracer-GUID: 4e404326-bb17-4a40-8f46-cb8988887666
+X-Ovh-Tracer-Id: 8103946055148604207
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEw1SG6xogxKYvIGWIHudQySMRI7CSXA9EIw5MR2PZONOHDTc89t9Tvvk3aLIUcvjsXdGS2oYMtOC0Wf7DJ3kfBJklzS/ABe7hf72VHvKdb7vJh7ykcJbnuNkQ5IURwqfxcBo7mYyo127QnKrIJbk2DxZLpWHdBKk2F+GyBXgcZQrF8WH7PYY1BBXjoTsHlMyD+ZqDP1oWZr0Q31x8isRJnaAZP8CuCulUzr8Bv1XbanKWPNat3IMN62WRiGpC/oVlKdN+VWloXLsbmzJ4dUZ97gPBFltwUSTeczprTu4UM+Dwrh5k1ImIDwYul6FzzpRvAvzbN8OGzxvBuuDL/5UbOg6iGWi9kuE/zAtgjz6LCgs+bo7BVOj/MzSUVtKj01a550QuQHzVSlboQyAimFCdCwveiUjTGgoATHUS+G2YmpceF2KW1Q8PWQjd/06KImfTB1MsbXGY+ddtIDKn1SSewGwFHJ6Smm4Gmv7KtzptBFdx0NcU7Qas66vOUv95bAxgkM0hAhBBpbrE+KT90s24hP6TkviUOMxm2UMgDuQnBUaA/ny1g7p2t4iQ4qTF8zLVX5CudOb1dX1baARMl/p4O7pq5a3GrTD3rN0R/ZL8p9THa/7EIdkuE8H8aBVeI06cROcHetbwLkYndaxxZBwQEicdCPsMaGPA/wPrlvkTdMg
+DKIM-Signature: a=rsa-sha256; bh=Xmq1zL+CNFD42SXZ/dJLVBiN/EVMlH6ew5Llh9JPr1Q=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1768321144; v=1;
+ b=tLHmfiAYrTim4CwdtTe2FZ+rNwPehyBo++kpCVISGKEEV6jZPExgcNiXNPey3tOyjcp5/FGw
+ Bc6wKG59kDbTFzHBXg3WCivCr0JSn+ebNWxiwuQWm55pRYjH/zfzY7byln5HNGROqFdci34LFz9
+ eofGVx4/tKxOtXuLy63q/e+hT1G3iJmwdfTjhMDINkEu/YGMh4LZYGhA1KhgCmz84RPMVEWO+1d
+ aSgyrBQyLcneAFl4Cv1Q7WhZm+Ni4qDTZyl1i4bXxppkMwBR+O141oAyIl9VVMDqXlJxxdG3LYs
+ uBAAjktxFd24C5z7fzuUgGfAN6bXuu2G/I/MXcc+5QvZw==
+Received-SPF: pass client-ip=178.32.96.117; envelope-from=clg@kaod.org;
+ helo=1.mo552.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,37 +129,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 12 Jan 2026 at 16:21, Pierrick Bouvier
-<pierrick.bouvier@linaro.org> wrote:
->
-> On 1/12/26 1:58 AM, Eric Auger wrote:
-> >
-> >
-> > On 1/8/26 10:04 PM, Pierrick Bouvier wrote:
-> >> This will be used to access non-secure and secure memory. Secure suppo=
-rt
-> >> and Granule Protection Check (for RME) for SMMU need to access secure
-> >> memory.
-> >>
-> >> As well, it allows to remove usage of global address_space_memory,
-> >> allowing different SMMU instances to have a specific view of memory.
-> >>
-> >> User creatable SMMU are handled as well for virt machine,
-> >> by setting the memory properties when device is plugged in.
-> >>
-> >> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> >> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> > Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> >
-> > Thanks
-> >
-> > Eric
->
-> Would you be ok to pull this patch, or would you prefer someone else to
-> do it?
+On 1/13/26 14:59, Alex Bennée wrote:
+> Cedric has a host for the file which allows us to keep the name.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Cédric Le Goater <clg@kaod.org>
+> 
+> ---
+> v2
+>    - host at kaod instead to keep filename
+> ---
+>   tests/functional/arm/test_aspeed_rainier.py | 6 ++----
+>   1 file changed, 2 insertions(+), 4 deletions(-)
+> 
+> diff --git a/tests/functional/arm/test_aspeed_rainier.py b/tests/functional/arm/test_aspeed_rainier.py
+> index 602d6194ac8..30827beca35 100755
+> --- a/tests/functional/arm/test_aspeed_rainier.py
+> +++ b/tests/functional/arm/test_aspeed_rainier.py
+> @@ -9,10 +9,8 @@
+>   
+>   class RainierMachine(AspeedTest):
+>   
+> -    ASSET_RAINIER_EMMC = Asset(
+> -        ('https://fileserver.linaro.org/s/B6pJTwWEkzSDi36/download/'
+> -         'mmc-p10bmc-20240617.qcow2'),
+> -        'd523fb478d2b84d5adc5658d08502bc64b1486955683814f89c6137518acd90b')
+> +    ASSET_RAINIER_EMMC = Asset('https://kaod.org/qemu/aspeed/rainier/mmc-p10bmc-20240617.qcow2',
+> +                               'd523fb478d2b84d5adc5658d08502bc64b1486955683814f89c6137518acd90b')
+>   
+>       def test_arm_aspeed_emmc_boot(self):
+>           self.set_machine('rainier-bmc')
 
-Since it's been reviewed, I'll take it into target-arm.next.
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
-thanks
--- PMM
+Thanks,
+
+C.
 

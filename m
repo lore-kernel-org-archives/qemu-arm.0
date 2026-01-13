@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 552E4CF45C6
-	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 01:21:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F598CF45D4
+	for <qemu-arm@archiver.kernel.org>; Tue, 13 Jan 2026 01:22:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vfT6R-0006Xh-Qr; Mon, 12 Jan 2026 20:21:47 -0500
+	id 1vfT6P-0006Oe-Tk; Mon, 12 Jan 2026 20:21:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vfT6B-00060R-Mj
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 20:21:33 -0500
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+ id 1vfT5W-0005fI-U2
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 20:20:51 -0500
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vfT67-00023p-NN
- for qemu-arm@nongnu.org; Mon, 12 Jan 2026 20:21:30 -0500
-Received: by mail-pf1-x42d.google.com with SMTP id
- d2e1a72fcca58-7b75e366866so1510679b3a.2
- for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 17:21:27 -0800 (PST)
+ id 1vfT5U-0001yy-Ru
+ for qemu-arm@nongnu.org; Mon, 12 Jan 2026 20:20:50 -0500
+Received: by mail-pl1-x62e.google.com with SMTP id
+ d9443c01a7336-2a0c09bb78cso43838015ad.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Jan 2026 17:20:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768267286; x=1768872086; darn=nongnu.org;
+ d=linaro.org; s=google; t=1768267247; x=1768872047; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Wgro1hR3cprhNDxL4FMXoZkAQhWmMLATGzSncgFQWVc=;
- b=ByVsQu2aiMlPfCc3/TNUm94GFrGh/pQ6ZTpOqs5xBKJVM+nLfCDpxBkSYdVyB0T/7q
- RzLYZCKn6KMGnzE5T+KeUcuba0YjQVpQffjIG+2IFfzCouCEhJAd5fQirOMTHbztSM2k
- 8AY3u9lp/r9r1AyL8ZQ6G4SWvdU4i+40mdO+9ySUQJF79lr/lqJElDuApvJUv/Vp8LPj
- Clj9kVsBpVoZnkuVrKnTxFe2RTOPQtzQe1aNO/GG+v6CpRkkdwelOOUdLgG0iQ4GGl5t
- ZdXN4cxnUgp4Rlve8QNm9ys9tBUHaz7MvL+FU/8YCnrUJfCt/7XcEjJwic2GeViqnesO
- 6cgA==
+ bh=H/KA3sfCKde+1lDvxy4Qi6KcSUidmC22RMDt2hOFbAw=;
+ b=aTI61s/vWi69YMUjZi8l1sCqyQlepdSRZX9csxAKkHLxUmFMbrqziLKU2oPGnNJThL
+ Zpk6kUU3nN5c39olqo7W0w7rw+CgfuOPsAuzKVb+LHGwloap/+8SZAprkO+8t6q9HTtV
+ YFcsAzVP2rwnbmioyRCwgsbWkD1hwiOrfJFU+Ss4XzgHiFS7t5PwSVdXnzhTKEL7qRpX
+ ti4uokTTFzQ18XpOTho5sAbliKiEY430uutvCU9AB0Vx8LMlRZtCAdGydFtZ6qC+Eu8d
+ es0OGFDUAGeIbM+FpO0cjZp/OsXg+ORH98DCWMNRuHfh9/KgegBhHDPzp81p/Pq2IK5k
+ 6C6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768267286; x=1768872086;
+ d=1e100.net; s=20230601; t=1768267247; x=1768872047;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Wgro1hR3cprhNDxL4FMXoZkAQhWmMLATGzSncgFQWVc=;
- b=H307ALyBj1xmu3UnnnP84+hpWfwQoBnaJDH6DXqVYBKZjLy3VD6tpLV8RgImNDvZbh
- BJ3mtpd5esT8lemqZB9ttVuDHWGMxqWSTBRi5lbECws4EXipR7PR9DKndNGiQGnM26nw
- URHRF3ONIv01LTrB5H/WFnHYqmofc4v3n/JVK0pqLXBH/Nj/a9H4y8PHJ4PQJcM/09Kf
- LmgbzQ1YHlGdqfdmaTFUTNUueHbyH7H4Z7V5U3tpaPtlH0CgRLsP89QegrIOguE74SPv
- s/5H/ypZUJsvNGI8LoChKgHaXBioLJpZ3fYhsE2EEi+TlJ4l40r5btKceYdFrFq6MOrb
- GNsA==
+ bh=H/KA3sfCKde+1lDvxy4Qi6KcSUidmC22RMDt2hOFbAw=;
+ b=v5TrfdSfPJvFBKFEIgYB3VUxcpdYAQ/+tMHQd4X4widSc9bzHq25XPyMfR1eNEwlax
+ 8/icIdUOVAoo4hzwGH/044VmQ0uTNuhUVsiuchy2IZGGXM0tWe3vvRmPZyZgC1J0UZrr
+ uudra0mOiHFCbo22Q59K3IQPDkOymQVFMJme4N4PB7fDHh8V7BZUQ1EcCMVXpwP3ah0/
+ II17Fn72iYEviZXLFT7VBWWjy/uyqv8/GeAivBTtzr65eGOls/dfSTIwjZDyGpREum7x
+ 7HTfXGcj5rJd6BpIkcp/G9SABssgVPxRncnuEmCluXXvLS651Qn6nb0HQ+me6lqNEV0K
+ ksTA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXKWRx9XWCecTCJxSp0xRXEvW4zRDhE5tqExXknD56F+WEwlGUXeEAAG72eOCq9N72xJMUxEuJPrQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwFDZgRXkclnFmHSyq2ppia6jQIVIX5lZ0RZEMkyX5FGnaREcgr
- VIDOWuz16jl8zwtT8yHbbsoxMwh2Cw4fg7yiof7FTWpg/rGJ5Tt+2DZ3de/qS5cKhr0=
-X-Gm-Gg: AY/fxX69G937VrvGt0L3t+By9YXrVP2/TlUityth9x/6d4cssfaaTJWPAj/KODm8+DX
- +RhdpXZPGhVsBNpKq9wJrhmEVyv+GnFXAJLr0RTSgzYQtdOhB481c2HO1ezu1nZCNg2eaRdnP5S
- 1K/n4Gaefut+IqchYJzHxIiyLw+Ehwi7PgdbLoLWvM6hcBnew3FEycRzwAnbqNRu54/ztqCqs7e
- kDXt3XlLXo5X2gu+8RhejGreswi2xAyAUAzY4EikCr2mkp9KuqlWMnEwYDq+TaeyrGew1HHybO5
- mFPU2+ji9VirRYf2jz5gZP2qDXHhYMS8+OqB8OgjOgjfpBNsUxvqgtNgVoXiPVjPnMED+elXhwK
- jOl/zc/9IEFGiDsFWR2tlt2s2brhBmRcz3PaDprWB+OLy8lodWlACKUKKw0qbye+LBd2IMsNChr
- spcebvlVa3ayrV2wQOF3uFj3XGrP0=
-X-Google-Smtp-Source: AGHT+IHDg+dMh4mWZOKZ2urkwjrP4qE04zjq0TblbV2UPeMr8YnREH2ipYJ1fJkNk5yedPswu8Xjcg==
-X-Received: by 2002:a05:6a00:f88:b0:81f:17b:c70f with SMTP id
- d2e1a72fcca58-81f017bd35emr9200873b3a.29.1768267286177; 
- Mon, 12 Jan 2026 17:21:26 -0800 (PST)
+ AJvYcCWGSJr1bNcoKONZJrCLEkX7oZ4neO7GiDLnOTM8+yobLORv/1Dn/HXsDltFzlBQzd6Fq3F6BKvG7g==@nongnu.org
+X-Gm-Message-State: AOJu0Yyqq43Ez5bo57nFPS4fXiXBDRUG9ArvPPApgNaQqZeVJ4T5v6n+
+ jgjgYLVabkaOGDDjK/tDQGmaNGJpq/9piJwgkV1zvzcYEfwxTlbjVh+GMAi1cKJFvyjYsBaQ3Fc
+ tvuOk7Y4=
+X-Gm-Gg: AY/fxX4GD5A3PFFO+gFzNNsjeVRUGZ7Wt6nbkNxGXlJDi1LkH36AZ+8iWfHvFjmx+d7
+ 7wDlRH30zoi3j88V7v2vlzgM6QFPBzVq0HemcponIskpqQyfExKy7t3mKTgApU50YZWmILXWsTX
+ 6t7Pq0O8zrvboQScD3+Sm0daJqgsYTttX9D1Tdcq/9mcqDYGil72g/+HvglTHyuDV8yuuoBHxu3
+ AZN/7kS4DyEwDdtknOzpxWQRtzJSgGs7JL9jpjyUDq6UOH0DznWYTTaQBF3e/8u1QzMufErDnCL
+ aZoaA7PHGIo2avCozqceuWzRfOi7mP/fDXPt+xQZhRsfD3ZKvYmvmW0hM6O38gNHafdyC53AN2V
+ NXhuqA3weRYH3pmMrCtZFQK2oic9AkCMa3v83eoaQRCW8Hc+4IulDvFKvz8e0Gc3GxnUh2LhbkW
+ gUabWYupWtM+BP8SR2RnS47gZP3ChY1JkObqdaZw==
+X-Google-Smtp-Source: AGHT+IEYhtsB0qtxmR5KG9cbfJ8jv8WA/f+enpJB8/+LXxUg3f7PrGI5DlYmHo6akS4d6YIH0cbseA==
+X-Received: by 2002:a17:902:db08:b0:2a0:971b:151 with SMTP id
+ d9443c01a7336-2a58b4b5f69mr10908375ad.2.1768267247027; 
+ Mon, 12 Jan 2026 17:20:47 -0800 (PST)
 Received: from [192.168.15.8] ([101.187.175.172])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-819c52f88casm18702037b3a.34.2026.01.12.17.21.20
+ d9443c01a7336-2a3e3c4796asm186920075ad.34.2026.01.12.17.20.41
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Jan 2026 17:21:25 -0800 (PST)
-Message-ID: <d497d932-3430-4608-a909-a25c5487236c@linaro.org>
-Date: Tue, 13 Jan 2026 12:21:16 +1100
+ Mon, 12 Jan 2026 17:20:46 -0800 (PST)
+Message-ID: <7f0d5a47-6462-4b10-b34a-07bdd7feb63e@linaro.org>
+Date: Tue, 13 Jan 2026 12:20:37 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 04/12] hw/m68k: register a mcf5208evb_cpu_reset handler
+Subject: Re: [RFC PATCH 03/12] hw/m68k: register a nextcube_cpu_reset handler
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Aurelien Jarno <aurelien@aurel32.net>,
@@ -86,14 +87,14 @@ Cc: Aurelien Jarno <aurelien@aurel32.net>,
  Yanan Wang <wangyanan55@huawei.com>, Aleksandar Rikalo <arikalo@gmail.com>,
  Thomas Huth <huth@tuxfamily.org>, Eduardo Habkost <eduardo@habkost.net>
 References: <20260108143423.1378674-1-alex.bennee@linaro.org>
- <20260108143423.1378674-5-alex.bennee@linaro.org>
+ <20260108143423.1378674-4-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260108143423.1378674-5-alex.bennee@linaro.org>
+In-Reply-To: <20260108143423.1378674-4-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,13 +118,14 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/9/26 01:34, Alex Bennée wrote:
-> It looks like allowing a -kernel to override any firmware setting is
-> intentional.
+> This is a fairly simple migration to the handler. Alternatively we
+> could eschew stashing the value in reset_pc and just re-read the ROM
+> on reset.
 > 
 > Signed-off-by: Alex Bennée<alex.bennee@linaro.org>
 > ---
->   hw/m68k/mcf5208.c | 25 +++++++++++++++++++------
->   1 file changed, 19 insertions(+), 6 deletions(-)
+>   hw/m68k/next-cube.c | 23 +++++++++++++++++------
+>   1 file changed, 17 insertions(+), 6 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

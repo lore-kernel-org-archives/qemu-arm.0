@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB095D37E3B
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Jan 2026 13:47:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54C29D37E3E
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Jan 2026 13:47:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vg19O-00010m-N0; Wed, 14 Jan 2026 08:43:06 -0500
+	id 1vg18O-0007kP-1v; Wed, 14 Jan 2026 08:42:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vg19N-0000rF-Em
- for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:43:05 -0500
-Received: from p-east2-cluster5-host12-snip4-8.eps.apple.com ([57.103.79.81]
+ id 1vg18J-0007ja-Gi
+ for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:42:01 -0500
+Received: from p-east2-cluster5-host3-snip4-8.eps.apple.com ([57.103.79.51]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vg19K-00085L-DC
- for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:43:04 -0500
+ id 1vg18G-0005pw-3N
+ for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:41:58 -0500
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-2 (Postfix) with ESMTPS id
- 510861800499; Wed, 14 Jan 2026 13:42:55 +0000 (UTC)
+ CADEA180033E; Wed, 14 Jan 2026 13:41:53 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=F9oLyg/qgYRJ/JZV5dNJO6abkXMsGF/lMhk1P5D4R60=;
+ s=sig1; bh=+fMggmtg/uZNHz3nywgemPAlDNuqwqAYkYrWDswgN9E=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=O4+uEOaSqJ54hV8Z8Jed76yZLjrm1E5BZzNphkD0dli8kh8wHm2E6y8/7SXKRLeQK/9XqtPx+IpXXzx4tq6KeYTmL+9og3w7whoKfjDYqoUwArwGx5626LIY6KWzB+sIZRYK2HQ3KlKxHV1PrUnEmw54iDYOUJtYVn9UEqXgs+ahh8k0vwTViAbyJGhN2qhNIU4W7leBOQcBmkN2KX3JXjJ4fFTvbgtMDWlgx9R0gNbUKb4JBSrZD2Dg8S4RT/3VBjgewe3nNSUrY4R2R5HKxe9y6EoWOm1ngnLVocHXVeSgF2gpU6smfs9OoUKiaQBwMWUN2f4rrCvK9ufnnB9Fgw==
+ b=EsRYpYGP/t0m/rLnATTZbW9wKpoybIRotW00WyIUK+l6hFwGAhbqhKC1Avi8YvxDgqPx03nS7IEk+vb5AHFvzwjlUUa2qN3WV6eo950yEuY9f+q28+iQZ3n6vIPtTTlIOL7r22NbDPE17QJbPIq+mLT5GlKWFSZYnDVxBaHpehhzRh4xtfSrv1ebEgZszDqDHd6d0TtglBHYtP+ALQRQPzH9AFVXS8qYRXL0mY8N6kspmi3qSwZXvaYxjAlBoNppQ5baI70IvAdGS9/2S3XIiSKRt62NhdW5SGMie6NIOraRKWo7mmOj8nzhzWCCCQJXIyho7X9deLGNiupP9dT61A==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-100-percent-2 (Postfix) with ESMTPSA id
- DA92D1800498; Wed, 14 Jan 2026 13:42:49 +0000 (UTC)
+ 73F66180015F; Wed, 14 Jan 2026 13:41:50 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: mohamed@unpredictable.fr,
 	qemu-devel@nongnu.org
@@ -52,38 +52,38 @@ Cc: qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  Peter Xu <peterx@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
  Igor Mammedov <imammedo@redhat.com>, Alexander Graf <agraf@csgraf.de>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Cameron Esfahani <dirty@apple.com>,
+ Cameron Esfahani <dirty@apple.com>, Sebastian Ott <sebott@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v14 16/26] whpx: change memory management logic
-Date: Wed, 14 Jan 2026 14:41:33 +0100
-Message-ID: <20260114134143.26198-17-mohamed@unpredictable.fr>
+Subject: [PATCH v14 01/26] target/arm/kvm: add constants for new PSCI versions
+Date: Wed, 14 Jan 2026 14:41:18 +0100
+Message-ID: <20260114134143.26198-2-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260114134143.26198-1-mohamed@unpredictable.fr>
 References: <20260114134143.26198-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE0MDExNCBTYWx0ZWRfX9DkWNfA3NUBL
- dpTwxZZTZih5xOEPtB0PJTNF4D4wpf1lKx8VFpk29NOkOBefvfz+VQKyv6renEofs+0AihsRj2x
- W7Oj6SojaY1k09I9tXQ+sAyxqKXG+YIdpzbIwA+/PiMIFe6yY7PaIbq1Epbm9rW2ZgTLqUQ8WiQ
- HlnI7sLvuvHqhLcXS9ARpZdCKZq/n/ymnDl0dnJl8Qwe1AgsIz5STakUu74owVyIHRww3ebRgr3
- rt0/i083RLYiKahOlMQGsMxESvurKtRZxiCt0zuUoYgZ0LxFuRXLdql1hwEXjNOGjxjuCSxiyeo
- r9vSJuuigJvF+dE9tKW
-X-Authority-Info: v=2.4 cv=XZeEDY55 c=1 sm=1 tr=0 ts=69679d63
+X-Authority-Info: v=2.4 cv=GM8F0+NK c=1 sm=1 tr=0 ts=69679d22
  cx=c_apl:c_apl_out:c_pps a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=KKAkSRfTAAAA:8 a=Warxv3Xc6ASOjn9-k1MA:9 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: -vxp6_LJlwuT514UZo8GHiD0jc_Dxy-k
-X-Proofpoint-ORIG-GUID: -vxp6_LJlwuT514UZo8GHiD0jc_Dxy-k
+ a=20KFwNOVAAAA:8 a=KKAkSRfTAAAA:8 a=DAm2dGrMCKCYv6Tpj9cA:9
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE0MDExNCBTYWx0ZWRfX4v/uzu4JCdx5
+ Na/mTMDdBFLcoUg9FWejEYQcKZ7dVt95QCx+a5dv2239I3YZnzXgkd3+g2j0DhHZqzuG0i+gN/D
+ v9tLVwqK1pBdnwl04m7h2TPPjdCISbjGz9Z4aCJ0bLN30iH6589l/MAVMnlGGrLwPI9LVxmWi+R
+ xRhhexCjnWc4Vdm1UbQ/75QPCIIDUYE3Z6oK8x1j6D1l29aVx7n1RObuJmLBrpJQip2A/DeI6PI
+ 5FQUqMXp73tRtBuEgtwZK+ojIt0ecZvd5MrYFMaz9m6FU4VBlqIrXvtZpn8cnPKhfuAokeCZoSG
+ WPWwRnfAnXJJDn/A9IK
+X-Proofpoint-GUID: 31TOOjUwacCEpyc4E23NqzcZokk7VUBy
+X-Proofpoint-ORIG-GUID: 31TOOjUwacCEpyc4E23NqzcZokk7VUBy
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2026-01-14_04,2026-01-14_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- mlxscore=0 clxscore=1030 suspectscore=0 phishscore=0 bulkscore=0
- malwarescore=0 spamscore=0 mlxlogscore=999 classifier=spam authscore=0
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
- definitions=main-2601140114
-X-JNJ: AAAAAAABua+KEvI1IsVWvgm6kN8ski8KYXpcne0GIpGaUHgvHrnLKPbnl85iIuo5sO1V5fDYoQuAAGRX+Abv7uS2rdg86VQ+0uf0nRGjbQs8PDzmTpPPkMrWcBaE4NZvZI9j+KwFWbKA7iKaHBlgWgjt9oxwPvTVQSpblW4rQYVDRQrIPtbzshrkMyTGcahL4zENV3vxj6dRJnmij1DU8oxr4a+02EzgY+tmpoxPXvomemlQGStZzTIPlK+KVeU7VHQf6Tsz1hA6Mt65/fGDbXAPmmyRcEf0zKgwlT5HJvxX/Na3KwmUwoGuiNTiF7kuPWlA3RtBiGrxgQXfLfP5sLssrZybcW2rBU6h6um2cu0f+RUrcVcTP8odNy3EkGV3loGqvj1tj3CVkKAy4mcn1w2g4qIYzlczXXNzFRN6keXVJtCNddVoImvoM/5yULZZ5OgVO4gwyfiqOUFMGDWJEIqT8bQ9G2QUNmhogyyse11hn9/8g+J4rCQykfqFKyxaJzVsKsDPvr2hymnmjyi3EgsETzYDmF+RRyWoixUVPGosdjAzm9kvUbh9igCilEv5T5JAIhdluqHpHawvIlrN5Eo5RRMvFb+VNn83/hDg0Gbm7sL06CeNQj0XhSAsmQjjEKpRZQPJXyUwqUcQ/L3Vslw3tNTx0C1BhCl89bW7hUz3EIwdFDE3kqPu04QJkui6CzCaQkg6QYC+JTusPfce/FN0cZg1HqV5bpaAa7Opvry6/WdNNhdodDk/Vb2C0P6xlNFxnUKxL2DymzNC+pOrpj95hCBQYo0EQUW4PDG+yITOzj8KMSC8G2Te/H+Z7+hPmp4V2YKJsbJBxCPbfVF1TEVfWcE7dwIMRHPCyCxi7yiQr2+3gCS5g/kONzW+aQe1O+InjDufoWIlpd0cCn3wFUiIsYe67dnPiG026JkczWj6pNcd+w==
-Received-SPF: pass client-ip=57.103.79.81;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ bulkscore=0 adultscore=0 mlxlogscore=999 malwarescore=0 clxscore=1030
+ mlxscore=0 suspectscore=0 phishscore=0 classifier=spam authscore=0 adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2601140114
+X-JNJ: AAAAAAABm9zPgXNFfcJkDuUSvnWaOpK0tAUQy5mUsCvrRugSIdK0jliGJTy8FuJ9Ifbb2L4sLBxBi38qpAe8P9bBDToMnlf53Mwu09LRxZMRe1+hKtfBtXabYF8zMh7G7ple8MQiZQRnYcljjJUpAW+POm2VfQ9nGlNKO/ccK4+BL1g55Qx/VA9ZQ42tmPXtvfJq2FoqcFp+FZzmR1Hgrly8reX2Y0ndaGYosBWH8HhI7NwcU7w1wb3aOYmTQe5JAqKShHbTYtz58frGGSaS3+FB9VvN7ATHEA5fq5swKEak7AotJAP6BHq2irZHjOjF819fsIOhRtFWuJq4r5PduTq4LvcHfAva+sQuuG98mc7GZWq+6YGlFRIkFI1kXpNnAH6Uf7AyHPSorK2n/TI1ITSyngmz6G6VFl596eQi2WVFT3slqyZgQdSvbVFMjESRaO+saetjqFW9T/AwWG/6/YiqRxpqWMJVFFm7V3s/zSFqse1xU+zAN3Pc1remlYXyIHAgQbs+Z1V1EcA0c5A+h69hZxv+mc1eT3N/CyxBtFpByPKwuffBE23h2YGGjGK71PwGkf67of/NE3RX97MhRzDkEvOBF77DaQ6tvjnUfAwxP5MYD64xV3KGTxUZ9BYPQDuxJTiuD0DRmF6oBecb5z9oEx03dA3usnt+yGTb90yz+A2NozlexkI07GXK4LqTdklwLYbaM7wUdmLi6UqCkZ6MM3b8Qw2Ox/5lgKy3wf49F8OXJEGWv/JPwRQPdnirLS86PB3MZ6JCYI93ihnWhHARZBYQXdQAEuNd/HUy7Zmwcf2f6jFVAW6QwIEJGye2PmSAXXQJM0za90wIE3soHz61ZwjIGBSpgnGSdxHCIBJyiMxpO3hwWgkN7u3f8LcAMiKsVLZO+ZA7/Nuj4gLvdb1R+eOtC6Tr8nEX68Ixmc8=
+Received-SPF: pass client-ip=57.103.79.51;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -107,144 +107,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This allows edk2 to work on Arm, although u-boot is still not functional.
+From: Sebastian Ott <sebott@redhat.com>
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+Add constants for PSCI version 1_2 and 1_3.
+
+Signed-off-by: Sebastian Ott <sebott@redhat.com>
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- accel/whpx/whpx-common.c | 97 +++++++++++++++-------------------------
- 1 file changed, 36 insertions(+), 61 deletions(-)
+ target/arm/kvm-consts.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
-index 827f50f3e0..f018a8f5c7 100644
---- a/accel/whpx/whpx-common.c
-+++ b/accel/whpx/whpx-common.c
-@@ -255,89 +255,64 @@ void whpx_vcpu_kick(CPUState *cpu)
-  * Memory support.
-  */
+diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
+index 54ae5da7ce..9fba3e886d 100644
+--- a/target/arm/kvm-consts.h
++++ b/target/arm/kvm-consts.h
+@@ -97,6 +97,8 @@ MISMATCH_CHECK(QEMU_PSCI_1_0_FN_PSCI_FEATURES, PSCI_1_0_FN_PSCI_FEATURES);
+ #define QEMU_PSCI_VERSION_0_2                     0x00002
+ #define QEMU_PSCI_VERSION_1_0                     0x10000
+ #define QEMU_PSCI_VERSION_1_1                     0x10001
++#define QEMU_PSCI_VERSION_1_2                     0x10002
++#define QEMU_PSCI_VERSION_1_3                     0x10003
  
--static void whpx_update_mapping(hwaddr start_pa, ram_addr_t size,
--                                void *host_va, int add, int rom,
--                                const char *name)
-+static void whpx_set_phys_mem(MemoryRegionSection *section, bool add)
- {
-     struct whpx_state *whpx = &whpx_global;
-+    MemoryRegion *area = section->mr;
-+    bool writable = !area->readonly && !area->rom_device;
-+    WHV_MAP_GPA_RANGE_FLAGS flags;
-+    uint64_t page_size = qemu_real_host_page_size();
-+    uint64_t gva = section->offset_within_address_space;
-+    uint64_t size = int128_get64(section->size);
-     HRESULT hr;
-+    void *mem;
- 
--    /*
--    if (add) {
--        printf("WHPX: ADD PA:%p Size:%p, Host:%p, %s, '%s'\n",
--               (void*)start_pa, (void*)size, host_va,
--               (rom ? "ROM" : "RAM"), name);
--    } else {
--        printf("WHPX: DEL PA:%p Size:%p, Host:%p,      '%s'\n",
--               (void*)start_pa, (void*)size, host_va, name);
--    }
--    */
--
--    if (add) {
--        hr = whp_dispatch.WHvMapGpaRange(whpx->partition,
--                                         host_va,
--                                         start_pa,
--                                         size,
--                                         (WHvMapGpaRangeFlagRead |
--                                          WHvMapGpaRangeFlagExecute |
--                                          (rom ? 0 : WHvMapGpaRangeFlagWrite)));
--    } else {
--        hr = whp_dispatch.WHvUnmapGpaRange(whpx->partition,
--                                           start_pa,
--                                           size);
--    }
--
--    if (FAILED(hr)) {
--        error_report("WHPX: Failed to %s GPA range '%s' PA:%p, Size:%p bytes,"
--                     " Host:%p, hr=%08lx",
--                     (add ? "MAP" : "UNMAP"), name,
--                     (void *)(uintptr_t)start_pa, (void *)size, host_va, hr);
-+    if (!memory_region_is_ram(area)) {
-+        if (writable) {
-+            return;
-+        } else if (!memory_region_is_romd(area)) {
-+            add = false;
-+        }
-     }
--}
--
--static void whpx_process_section(MemoryRegionSection *section, int add)
--{
--    MemoryRegion *mr = section->mr;
--    hwaddr start_pa = section->offset_within_address_space;
--    ram_addr_t size = int128_get64(section->size);
--    unsigned int delta;
--    uint64_t host_va;
- 
--    if (!memory_region_is_ram(mr)) {
--        return;
-+    if (!QEMU_IS_ALIGNED(size, page_size) ||
-+        !QEMU_IS_ALIGNED(gva, page_size)) {
-+        /* Not page aligned, so we can not map as RAM */
-+        add = false;
-     }
- 
--    delta = qemu_real_host_page_size() - (start_pa & ~qemu_real_host_page_mask());
--    delta &= ~qemu_real_host_page_mask();
--    if (delta > size) {
--        return;
--    }
--    start_pa += delta;
--    size -= delta;
--    size &= qemu_real_host_page_mask();
--    if (!size || (start_pa & ~qemu_real_host_page_mask())) {
-+    if (!add) {
-+        hr = whp_dispatch.WHvUnmapGpaRange(whpx->partition,
-+                gva, size);
-+        if (FAILED(hr)) {
-+            error_report("WHPX: failed to unmap GPA range");
-+            abort();
-+        }
-         return;
-     }
- 
--    host_va = (uintptr_t)memory_region_get_ram_ptr(mr)
--            + section->offset_within_region + delta;
-+    flags = WHvMapGpaRangeFlagRead | WHvMapGpaRangeFlagExecute
-+     | (writable ? WHvMapGpaRangeFlagWrite : 0);
-+    mem = memory_region_get_ram_ptr(area) + section->offset_within_region;
- 
--    whpx_update_mapping(start_pa, size, (void *)(uintptr_t)host_va, add,
--                        memory_region_is_rom(mr), mr->name);
-+    hr = whp_dispatch.WHvMapGpaRange(whpx->partition,
-+         mem, gva, size, flags);
-+    if (FAILED(hr)) {
-+        error_report("WHPX: failed to map GPA range");
-+        abort();
-+    }
- }
- 
- static void whpx_region_add(MemoryListener *listener,
-                            MemoryRegionSection *section)
- {
--    memory_region_ref(section->mr);
--    whpx_process_section(section, 1);
-+    whpx_set_phys_mem(section, true);
- }
- 
- static void whpx_region_del(MemoryListener *listener,
-                            MemoryRegionSection *section)
- {
--    whpx_process_section(section, 0);
--    memory_region_unref(section->mr);
-+    whpx_set_phys_mem(section, false);
- }
- 
- static void whpx_transaction_begin(MemoryListener *listener)
+ MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
+ /* We don't bother to check every possible version value */
 -- 
 2.50.1 (Apple Git-155)
 

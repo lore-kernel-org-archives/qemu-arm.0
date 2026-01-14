@@ -4,94 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54C29D37E3E
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Jan 2026 13:47:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C87ED37E3A
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Jan 2026 14:14:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vg18O-0007kP-1v; Wed, 14 Jan 2026 08:42:06 -0500
+	id 1vg1dg-0003lh-JC; Wed, 14 Jan 2026 09:14:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vg18J-0007ja-Gi
- for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:42:01 -0500
-Received: from p-east2-cluster5-host3-snip4-8.eps.apple.com ([57.103.79.51]
- helo=outbound.st.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vg18G-0005pw-3N
- for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:41:58 -0500
-Received: from outbound.st.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-1a-100-percent-2 (Postfix) with ESMTPS id
- CADEA180033E; Wed, 14 Jan 2026 13:41:53 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=+fMggmtg/uZNHz3nywgemPAlDNuqwqAYkYrWDswgN9E=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=EsRYpYGP/t0m/rLnATTZbW9wKpoybIRotW00WyIUK+l6hFwGAhbqhKC1Avi8YvxDgqPx03nS7IEk+vb5AHFvzwjlUUa2qN3WV6eo950yEuY9f+q28+iQZ3n6vIPtTTlIOL7r22NbDPE17QJbPIq+mLT5GlKWFSZYnDVxBaHpehhzRh4xtfSrv1ebEgZszDqDHd6d0TtglBHYtP+ALQRQPzH9AFVXS8qYRXL0mY8N6kspmi3qSwZXvaYxjAlBoNppQ5baI70IvAdGS9/2S3XIiSKRt62NhdW5SGMie6NIOraRKWo7mmOj8nzhzWCCCQJXIyho7X9deLGNiupP9dT61A==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.42.251.67])
- by p00-icloudmta-asmtp-us-east-1a-100-percent-2 (Postfix) with ESMTPSA id
- 73F66180015F; Wed, 14 Jan 2026 13:41:50 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: mohamed@unpredictable.fr,
-	qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Ani Sinha <anisinha@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Xu <peterx@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
- Igor Mammedov <imammedo@redhat.com>, Alexander Graf <agraf@csgraf.de>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Cameron Esfahani <dirty@apple.com>, Sebastian Ott <sebott@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v14 01/26] target/arm/kvm: add constants for new PSCI versions
-Date: Wed, 14 Jan 2026 14:41:18 +0100
-Message-ID: <20260114134143.26198-2-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260114134143.26198-1-mohamed@unpredictable.fr>
-References: <20260114134143.26198-1-mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
+ id 1vg1de-0003hl-0J; Wed, 14 Jan 2026 09:14:22 -0500
+Received: from mail.csgraf.de ([85.25.223.15] helo=zulu616.server4you.de)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <agraf@csgraf.de>)
+ id 1vg1da-0001AI-Va; Wed, 14 Jan 2026 09:14:21 -0500
+Received: from [0.0.0.0] (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com
+ [3.122.114.9]) by csgraf.de (Postfix) with ESMTPSA id 2787960801E5;
+ Wed, 14 Jan 2026 15:14:13 +0100 (CET)
+Message-ID: <27f2e668-c324-4f3a-a485-06fb43bded7b@csgraf.de>
+Date: Wed, 14 Jan 2026 15:14:12 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] hvf/arm: handle FEAT_SME2 migration
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Phil_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Mads Ynddal <mads@ynddal.dk>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org
+References: <20260114-sme2-hvf-v1-0-ce9599596736@linaro.org>
+ <20260114-sme2-hvf-v1-1-ce9599596736@linaro.org>
+ <6edbbdd7-8992-420e-9aee-7596afbcf00d@csgraf.de>
+ <CAAjaMXZehMtdZC+7obmRZgfE+T2Dn64GTY2MqncPq9grKGcSsw@mail.gmail.com>
+Content-Language: en-US
+From: Alexander Graf <agraf@csgraf.de>
+In-Reply-To: <CAAjaMXZehMtdZC+7obmRZgfE+T2Dn64GTY2MqncPq9grKGcSsw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Authority-Info: v=2.4 cv=GM8F0+NK c=1 sm=1 tr=0 ts=69679d22
- cx=c_apl:c_apl_out:c_pps a=YrL12D//S6tul8v/L+6tKg==:117
- a=YrL12D//S6tul8v/L+6tKg==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=20KFwNOVAAAA:8 a=KKAkSRfTAAAA:8 a=DAm2dGrMCKCYv6Tpj9cA:9
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE0MDExNCBTYWx0ZWRfX4v/uzu4JCdx5
- Na/mTMDdBFLcoUg9FWejEYQcKZ7dVt95QCx+a5dv2239I3YZnzXgkd3+g2j0DhHZqzuG0i+gN/D
- v9tLVwqK1pBdnwl04m7h2TPPjdCISbjGz9Z4aCJ0bLN30iH6589l/MAVMnlGGrLwPI9LVxmWi+R
- xRhhexCjnWc4Vdm1UbQ/75QPCIIDUYE3Z6oK8x1j6D1l29aVx7n1RObuJmLBrpJQip2A/DeI6PI
- 5FQUqMXp73tRtBuEgtwZK+ojIt0ecZvd5MrYFMaz9m6FU4VBlqIrXvtZpn8cnPKhfuAokeCZoSG
- WPWwRnfAnXJJDn/A9IK
-X-Proofpoint-GUID: 31TOOjUwacCEpyc4E23NqzcZokk7VUBy
-X-Proofpoint-ORIG-GUID: 31TOOjUwacCEpyc4E23NqzcZokk7VUBy
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
- definitions=2026-01-14_04,2026-01-14_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- bulkscore=0 adultscore=0 mlxlogscore=999 malwarescore=0 clxscore=1030
- mlxscore=0 suspectscore=0 phishscore=0 classifier=spam authscore=0 adjust=0
- reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2601140114
-X-JNJ: AAAAAAABm9zPgXNFfcJkDuUSvnWaOpK0tAUQy5mUsCvrRugSIdK0jliGJTy8FuJ9Ifbb2L4sLBxBi38qpAe8P9bBDToMnlf53Mwu09LRxZMRe1+hKtfBtXabYF8zMh7G7ple8MQiZQRnYcljjJUpAW+POm2VfQ9nGlNKO/ccK4+BL1g55Qx/VA9ZQ42tmPXtvfJq2FoqcFp+FZzmR1Hgrly8reX2Y0ndaGYosBWH8HhI7NwcU7w1wb3aOYmTQe5JAqKShHbTYtz58frGGSaS3+FB9VvN7ATHEA5fq5swKEak7AotJAP6BHq2irZHjOjF819fsIOhRtFWuJq4r5PduTq4LvcHfAva+sQuuG98mc7GZWq+6YGlFRIkFI1kXpNnAH6Uf7AyHPSorK2n/TI1ITSyngmz6G6VFl596eQi2WVFT3slqyZgQdSvbVFMjESRaO+saetjqFW9T/AwWG/6/YiqRxpqWMJVFFm7V3s/zSFqse1xU+zAN3Pc1remlYXyIHAgQbs+Z1V1EcA0c5A+h69hZxv+mc1eT3N/CyxBtFpByPKwuffBE23h2YGGjGK71PwGkf67of/NE3RX97MhRzDkEvOBF77DaQ6tvjnUfAwxP5MYD64xV3KGTxUZ9BYPQDuxJTiuD0DRmF6oBecb5z9oEx03dA3usnt+yGTb90yz+A2NozlexkI07GXK4LqTdklwLYbaM7wUdmLi6UqCkZ6MM3b8Qw2Ox/5lgKy3wf49F8OXJEGWv/JPwRQPdnirLS86PB3MZ6JCYI93ihnWhHARZBYQXdQAEuNd/HUy7Zmwcf2f6jFVAW6QwIEJGye2PmSAXXQJM0za90wIE3soHz61ZwjIGBSpgnGSdxHCIBJyiMxpO3hwWgkN7u3f8LcAMiKsVLZO+ZA7/Nuj4gLvdb1R+eOtC6Tr8nEX68Ixmc8=
-Received-SPF: pass client-ip=57.103.79.51;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
+ helo=zulu616.server4you.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,31 +63,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Sebastian Ott <sebott@redhat.com>
 
-Add constants for PSCI version 1_2 and 1_3.
+On 14.01.26 12:51, Manos Pitsidianakis wrote:
+> On Wed, Jan 14, 2026 at 1:19 PM Alexander Graf <agraf@csgraf.de> wrote:
+>> Hi Manos!
+>>
+>> On 14.01.26 09:35, Manos Pitsidianakis wrote:
+>>> SME2 support adds the following state for HVF guests:
+>>>
+>>> - Vector registers Z0, ... , Z31 (introduced by FEAT_SVE but HVF does
+>>>     not support it)
+>>> - Predicate registers P0, .., P15 (also FEAT_SVE)
+>>> - ZA register
+>>> - ZT0 register
+>>> - PSTATE.{SM,ZA} bits (SVCR pseudo-register)
+>>> - SMPRI_EL1 which handles the PE's priority in the SMCU
+>>> - TPIDR2_EL0 the thread local ID register for SME
+>>>
+>>> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+>>
+>> Thanks a lot for the patches. I don't have an M4/M5 handy (yet), so I
+>> can't test the code works correctly. But it sounds like you did that, so
+>> I have no concerns on functionality.
+> Yes, I tested it on Linaro's M4 machine. Adding a functional test
+> using Arm's benchmark is possible, but I couldn't be bothered to
+> create vm image assets just for this :)
+>
+> Note: testing migration is tricky because the CPU has to be in SME
+> mode for the Z/P registers to have meaningful values, so you need to
+> savevm while SME instructions are executed to get a useful migration
+> state. I modified Arm's benchmark to compare the SME matrix
+> calculations against the non-SME calculation to ensure they are the
+> same and I savevm/loadvm a bunch of times while it ran with added
+> printfs in the get/put methods to print whether SME was active or not.
+>
+>> However, I have concerns on a few maintainability aspects. You #ifdef
+>> out a lot of code conditionally on the target macOS version. Any of that
+>> code that is in ifdef may or may not end up getting compiled in CI or
+>> other test builds, which means you are missing out on a lot of
+>> compilation test coverage. As a general rule of thumb, please reduce
+>> #ifdef to the bare minimum.
+> I agree completely, the problem is two-fold here: the HVF exposes APIs
+> with API_AVAILABLE(...) (clang's availability attribute) and also with
+> plain ifdefs (__MAC_OS_X_VERSION_MAX_ALLOWED >= 150200), and
+> specifically the HV_SME_FOO_REG variants, which cannot be protected
+> with the availability attribute. )
+>
+> So every time an SME type such as hv_vcpu_sme_state_t is used, it has
+> to be guarded :/ __builtin_available(...) check is not sufficient
+> because it will not compile due to undefined types.
+>
+>
+>> One thing I like to do (when possible) is to use the ifdef to define a
+>> global const variable or an inline function. That way the compiler's
+>> dead code analysis will eliminate the non-active aspects of your code,
+>> but all previous compiler phases still run which means you get syntax
+>> checks.
+>>
+>> How much of the code down here really does require #ifdefs? And if it's
+>> a lot, maybe we just bump the minimum required macOS version instead.
+>>
+> The missing type definitions and missing function declarations will
+> still raise compiler errors unfortunately. We could add those missing
+> type definitions as stubs if they are not defined so that it compiles,
+> but I chose to ifdef instead. What would you prefer?
 
-Signed-off-by: Sebastian Ott <sebott@redhat.com>
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
----
- target/arm/kvm-consts.h | 2 ++
- 1 file changed, 2 insertions(+)
+How about you create a separate #include'd header that provides stubs 
+and defines the same way the original headers would? You can #ifdef your 
+way inside there all you want. And then you write the generic code with 
+the base assumption that all definitions are available.
 
-diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
-index 54ae5da7ce..9fba3e886d 100644
---- a/target/arm/kvm-consts.h
-+++ b/target/arm/kvm-consts.h
-@@ -97,6 +97,8 @@ MISMATCH_CHECK(QEMU_PSCI_1_0_FN_PSCI_FEATURES, PSCI_1_0_FN_PSCI_FEATURES);
- #define QEMU_PSCI_VERSION_0_2                     0x00002
- #define QEMU_PSCI_VERSION_1_0                     0x10000
- #define QEMU_PSCI_VERSION_1_1                     0x10001
-+#define QEMU_PSCI_VERSION_1_2                     0x10002
-+#define QEMU_PSCI_VERSION_1_3                     0x10003
- 
- MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
- /* We don't bother to check every possible version value */
--- 
-2.50.1 (Apple Git-155)
+Alex
+
 
 

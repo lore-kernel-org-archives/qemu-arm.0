@@ -4,78 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59EBED37E2A
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Jan 2026 13:35:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C743D37E33
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Jan 2026 13:42:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vg11b-0004zs-Sc; Wed, 14 Jan 2026 08:35:05 -0500
+	id 1vg18Z-0007oN-W5; Wed, 14 Jan 2026 08:42:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ashish.a6@samsung.com>)
- id 1vg11M-0004wY-Vk
- for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:34:50 -0500
-Received: from mailout3.samsung.com ([203.254.224.33])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vg18Y-0007ns-B3
+ for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:42:14 -0500
+Received: from p-east2-cluster3-host5-snip4-7.eps.apple.com ([57.103.77.198]
+ helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ashish.a6@samsung.com>)
- id 1vg11K-0001Gz-BT
- for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:34:48 -0500
-Received: from epcas5p3.samsung.com (unknown [182.195.41.41])
- by mailout3.samsung.com (KnoxPortal) with ESMTP id
- 20260114133437epoutp0382262198070be1cebb66916e21687e77~KnFGEKby52762827628epoutp03f
- for <qemu-arm@nongnu.org>; Wed, 14 Jan 2026 13:34:37 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com
- 20260114133437epoutp0382262198070be1cebb66916e21687e77~KnFGEKby52762827628epoutp03f
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1768397677;
- bh=etVFenIhIxSsHEzltnL7HAxnnWzjPlQugjOs0XYHjeA=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=E7jdGEtsO7W6IEM8npsZEZnEz3PzhM1RSvkmtRhFUoqCk4QckBTybaVoSQkDvf+Hv
- dLUTE46HH2Ley+C++u9Q9bh4zfyaV29tT62ifCXaKo2Jf9G8UR53XqRGUS/W01da/q
- MZpotWDbWI0pwNXjJ26JSQKC629qg98OLmZcCRME=
-Received: from epsnrtp04.localdomain (unknown [182.195.42.156]) by
- epcas5p1.samsung.com (KnoxPortal) with ESMTPS id
- 20260114133437epcas5p18526dbc9e3bb973369e1d82a5ab8025c~KnFFvaxle1496614966epcas5p15;
- Wed, 14 Jan 2026 13:34:37 +0000 (GMT)
-Received: from epcas5p1.samsung.com (unknown [182.195.38.90]) by
- epsnrtp04.localdomain (Postfix) with ESMTP id 4drnCc29GPz6B9m6; Wed, 14 Jan
- 2026 13:34:36 +0000 (GMT)
-Received: from epsmtip2.samsung.com (unknown [182.195.34.31]) by
- epcas5p3.samsung.com (KnoxPortal) with ESMTPA id
- 20260114133434epcas5p377118eb1a39e8fd591ec44b0bd9e56e0~KnFDam6c80773107731epcas5p3Q;
- Wed, 14 Jan 2026 13:34:34 +0000 (GMT)
-Received: from test-System-Product-Name (unknown [107.99.41.85]) by
- epsmtip2.samsung.com (KnoxPortal) with ESMTPA id
- 20260114133433epsmtip21d66f9174c90a385f2b04635fd3daf4a~KnFCLzECD0906409064epsmtip2u;
- Wed, 14 Jan 2026 13:34:33 +0000 (GMT)
-Date: Wed, 14 Jan 2026 19:01:51 +0530
-From: Ashish Anand <ashish.a6@samsung.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, saurabh@samsung.com,
- y.kaushal@samsung.com, vishwa.mg@samsung.com, ashish.anand202@gmail.com
-Subject: Re: [PATCH] target/arm: Implement WFE, SEV and SEVONPEND for Cortex-M
-Message-ID: <yytwea73bmlkyi32l47wdkbqe4d2we5qe6edevity5uymntu22@vzzwz7cpgwfv>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vg18W-0006TC-Im
+ for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:42:13 -0500
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-2 (Postfix) with ESMTPS id
+ 2C2D7180031B; Wed, 14 Jan 2026 13:42:05 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=pnYhzV+5jiiMNx1pcU6+RM5m8iDu5NPUOmI5LVpVt6Q=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=BLkcQe8gcW9aYEo24oXlkAkklo86lTTBU8D+C2Qx3j+80tKe9m8Oad5vmwibbbS1Ewh6KJTN+6eCN1P7VIp+13ID05wxETOIkUMQCKMcvfmRAKJKs+6tSmC1e/01fO7fIW27zMIt4yQn+khi0gjSjq886EY1P/x7TkXkkLNykjXr2DWcT16DSMrmNoxvLh/3/2C94gN/Hh7l7nGvpe0HkMmbTy+bTPEI0cf32sVCi/lAvDIQraxvP3Db7uHMZTYcnL+RWCezJehe7YTC2gLzL9YRIybX9GAsnxMMAJWms/qNUTeWQni9SIhdL9nb1PbLua8Sctnn3a2IdQ+moiBNCg==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.42.251.67])
+ by p00-icloudmta-asmtp-us-east-1a-100-percent-2 (Postfix) with ESMTPSA id
+ 1743A1800499; Wed, 14 Jan 2026 13:42:01 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: mohamed@unpredictable.fr,
+	qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Ani Sinha <anisinha@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Xu <peterx@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
+ Igor Mammedov <imammedo@redhat.com>, Alexander Graf <agraf@csgraf.de>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Cameron Esfahani <dirty@apple.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v14 04/26] hw/arm: virt: add GICv2m for the case when ITS is
+ not available
+Date: Wed, 14 Jan 2026 14:41:21 +0100
+Message-ID: <20260114134143.26198-5-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260114134143.26198-1-mohamed@unpredictable.fr>
+References: <20260114134143.26198-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9Ok=yT_t1kTLSnw8fiG1i5fZXZfKB-Bb=Lw5MeAjA7hQ@mail.gmail.com>
-X-CMS-MailID: 20260114133434epcas5p377118eb1a39e8fd591ec44b0bd9e56e0
-X-Msg-Generator: CA
-Content-Type: multipart/mixed;
- boundary="----Rvty6Ov.E7w8fqTiecbGSIlWaDZOz3Joz9WFZpHBwcJNCC2Q=_f8a40_"
-CMS-TYPE: 105P
-cpgsPolicy: CPGSC10-542,Y
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20251223120242epcas5p44b454df5afd0d517a4562a545ad11218
-References: <CGME20251223120242epcas5p44b454df5afd0d517a4562a545ad11218@epcas5p4.samsung.com>
- <20251223120012.541777-1-ashish.a6@samsung.com>
- <CAFEAcA9Ok=yT_t1kTLSnw8fiG1i5fZXZfKB-Bb=Lw5MeAjA7hQ@mail.gmail.com>
-Received-SPF: pass client-ip=203.254.224.33;
- envelope-from=ashish.a6@samsung.com; helo=mailout3.samsung.com
+Content-Transfer-Encoding: 8bit
+X-Authority-Info: v=2.4 cv=UsVu9uwB c=1 sm=1 tr=0 ts=69679d31
+ cx=c_apl:c_apl_out:c_pps a=YrL12D//S6tul8v/L+6tKg==:117
+ a=YrL12D//S6tul8v/L+6tKg==:17 a=8tVNtdTugjW4QW2w:21 a=vUbySO9Y5rIA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=GHBMd-oUYIP45a8agUkA:9
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: lXdXJrTA2PuaAsf8L9GSfbS0r0tTQIv2
+X-Proofpoint-ORIG-GUID: lXdXJrTA2PuaAsf8L9GSfbS0r0tTQIv2
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE0MDExNCBTYWx0ZWRfXxqeBsayU/LN0
+ 4qN1mGzONenNBJ50c6bkvRsUVl1XeGGQEXCNPw/TZ28cCdUUcgrWvGu8buSUwqCLRzy7Qtt7yxc
+ vAonVAqXMDO30/Y663AM316L1ShYtE1DOv+CptEW3EuzBFEMcQOKCctYbV3NczDIqoLIDtzV4k1
+ z2AsGTMjZK2vBfW2sBoBcwhX+nkpokncRfMMezTzf4kG8VZMTBvEY7m+3Edpqpbgk7PZv0Iw/Zq
+ 3yuSl+N/OWn3df5GYGCj15tYOIhRbzXh8ahDsuhwsHw8loksLumGfbnT1CZU6A/AmDNTPvj1Jsg
+ jDvQppPCP2q2T8T4Igq
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2026-01-14_04,2026-01-14_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ mlxlogscore=999 adultscore=0 bulkscore=0 phishscore=0 malwarescore=0
+ suspectscore=0 spamscore=0 clxscore=1030 classifier=spam authscore=0 adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2601140114
+X-JNJ: AAAAAAABuH+WtjXUkZm0oi9Hlc5BDNyb0sZ33djuJiQVDTjVwOsrwPkSrHDDtGD5ZjEB9sWnKFSzluTGMnrsHpUh8KAO89f6Ov9WLpwXovKSdZP5dWL+XL82T0xd8IEenjF3qf9lPcCqP20orfialxzLecCYD1a2txShAqUUrSlj33udD1YbaWa1Q7uLx+ixAd/q98c14tagY21zBXr+8CLWDtG/mOPAv+9q0kREMKUBtnEWHuGJZN/oC5gmO3+K97V2eQmhnHGMJHQJsWcH6eJ1WQ5dzZmSrHqrH0dbFiz3eExBaikMrvNSRO26YyLLNFd7O58prxeDq8UBLoWwf0MxcJnG5FpXvZSkR5Nfjja+NluealxswPB8Om9RiEMWJKB0Y2VIy/lw8zstXwYYB8itNfGc1TELcM0mnfRTxa2DyCcT+E37L0F7qIjPrDCrphssAnXV4ATb4M2EBYiIlzqJZJvCvq38hN3d8VPZs0CtJcN0mmOproxJsUiBjpL6h4Mg4Or1G1NxkB+a8+cMfFueXPJeQYzu3EMBTUtjXeRGnY5tqleRZuxIXJRKvYkELr4tNpRm3vAX5pu15wp7ByWC53EFukXyXrgx1JN0u4uakHRFZEuL3mNGo8iNmflpYtVddwaSpxlVCvwHbqcKkcYxhf/mTogtWrkSyXXAtC+oLyeH4ssnKpEMNyvZsksBkzvuGH9BYwQpt3tOvWNQxGVgavkv86K+TAaupH1vyG3ce80SJwUrt1W/hXfQkCwnJ+gJudUO4BgnMrR60AzQhR4be9ZeLiGCRoN/L+HLXevlZNtEgZg31AqpJl0662/FQiWHOuGdgR5GO0fjezxDHuE+hLnWdpdf0/K94rFuFcHV4sBadwM9X0xY1y3F6MpAuBQLNpm9ED71x+0JvNj6q3UPvUVUVBIX/UHB9q0u/VnBw6ofsOg=
+Received-SPF: pass client-ip=57.103.77.198;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -93,79 +108,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-------Rvty6Ov.E7w8fqTiecbGSIlWaDZOz3Joz9WFZpHBwcJNCC2Q=_f8a40_
-Content-Type: text/plain; charset="utf-8"; format="flowed"
-Content-Disposition: inline
+On Hypervisor.framework for macOS and WHPX for Windows, the provided environment is a GICv3 without ITS.
 
-On 13/01/26 03:21PM, Peter Maydell wrote:
->On Tue, 23 Dec 2025 at 12:02, Ashish Anand <ashish.a6@samsung.com> wrote:
->>
->> From: "ashish.a6" <ashish.a6@samsung.com>
->>
->>     Currently, QEMU implements the 'Wait For Event' (WFE) instruction as a
->>     a simple yield. This causes high host CPU usage because Guest
->>     RTOS idle loops effectively become busy-wait loops.
->>
->>     To improve efficiency, this patch transitions WFE to use the architectural
->>     'Halt' state (EXCP_HLT) for M-profile CPUs. This allows the host thread
->>     to sleep when the guest is idle.
->
->
->> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
->> index 39f2b2e54d..44433a444c 100644
->> --- a/target/arm/cpu.h
->> +++ b/target/arm/cpu.h
->> @@ -639,6 +639,7 @@ typedef struct CPUArchState {
->>          uint32_t nsacr;
->>          uint32_t ltpsize;
->>          uint32_t vpr;
->> +        uint32_t event_register;
->>      } v7m;
->
->One more small thing that I thought of -- although we're only
->implementing WFE support for M-profile here, the concept of the
->event register is the same for A-profile. So we should put the
->field in the top level of the CPU state struct, not inside the v7m
->sub-struct. That way it's available for us to use and share
->if and when we ever do it for A-profile.
->
->> +static bool m_event_needed(void *opaque)
->> +{
->> +    ARMCPU *cpu = opaque;
->> +    /* Only save the state if the event register is set (non-zero) */
->> +    return cpu->env.v7m.event_register != 0;
->> +}
->> +
->> +static const VMStateDescription vmstate_m_event = {
->> +    .name = "cpu/m/event",
->> +    .version_id = 1,
->> +    .minimum_version_id = 1,
->> +    .needed = m_event_needed,
->> +    .fields = (const VMStateField[]) {
->> +        VMSTATE_UINT32(env.v7m.event_register, ARMCPU),
->> +        VMSTATE_END_OF_LIST()
->> +    }
->> +};
->
->...and so similarly the migration handling should not have
->anything M-profile specific to it.
->
->thanks
->-- PMM
+As such, support a GICv3 w/ GICv2m for that scenario.
 
-Hi Peter,
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 
-Thanks for the detailed review. I acknowledge the comments and will incorporate the suggested changes and send a v2 shortly.
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ hw/arm/virt-acpi-build.c | 5 ++++-
+ hw/arm/virt.c            | 8 ++++++++
+ include/hw/arm/virt.h    | 2 ++
+ 3 files changed, 14 insertions(+), 1 deletion(-)
 
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 03b4342574..40ea6b6dd5 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -960,7 +960,10 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+             build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
+             build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
+         }
+-    } else {
++    }
++
++    if (!(vms->gic_version != VIRT_GIC_VERSION_2 && vms->its)
++     && !vms->no_gicv3_with_gicv2m) {
+         const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
+ 
+         /* 5.2.12.16 GIC MSI Frame Structure */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 9d0568a7d5..4fad34e108 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -959,6 +959,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+ 
+     if (vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) {
+         create_its(vms);
++    } else if (vms->gic_version != VIRT_GIC_VERSION_2 && !vms->no_gicv3_with_gicv2m) {
++        create_v2m(vms);
+     } else if (vms->gic_version == VIRT_GIC_VERSION_2) {
+         create_v2m(vms);
+     }
+@@ -2444,6 +2446,8 @@ static void machvirt_init(MachineState *machine)
+     vms->ns_el2_virt_timer_irq = ns_el2_virt_timer_present() &&
+         !vmc->no_ns_el2_virt_timer_irq;
+ 
++    vms->no_gicv3_with_gicv2m = vmc->no_gicv3_with_gicv2m;
++
+     fdt_add_timer_nodes(vms);
+     fdt_add_cpu_nodes(vms);
+ 
+@@ -3488,6 +3492,7 @@ static void virt_instance_init(Object *obj)
+     vms->its = true;
+     /* Allow ITS emulation if the machine version supports it */
+     vms->tcg_its = !vmc->no_tcg_its;
++    vms->no_gicv3_with_gicv2m = false;
+ 
+     /* Default disallows iommu instantiation */
+     vms->iommu = VIRT_IOMMU_NONE;
+@@ -3540,7 +3545,10 @@ DEFINE_VIRT_MACHINE_AS_LATEST(11, 0)
+ 
+ static void virt_machine_10_2_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
++
+     virt_machine_11_0_options(mc);
++    vmc->no_gicv3_with_gicv2m = true;
+     compat_props_add(mc->compat_props, hw_compat_10_2, hw_compat_10_2_len);
+ }
+ DEFINE_VIRT_MACHINE(10, 2)
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 8694aaa4e2..c5bc47ee88 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -130,6 +130,7 @@ struct VirtMachineClass {
+     bool no_cpu_topology;
+     bool no_tcg_lpa2;
+     bool no_ns_el2_virt_timer_irq;
++    bool no_gicv3_with_gicv2m;
+     bool no_nested_smmu;
+ };
+ 
+@@ -178,6 +179,7 @@ struct VirtMachineState {
+     char *oem_id;
+     char *oem_table_id;
+     bool ns_el2_virt_timer_irq;
++    bool no_gicv3_with_gicv2m;
+     CXLState cxl_devices_state;
+     bool legacy_smmuv3_present;
+ };
+-- 
+2.50.1 (Apple Git-155)
 
-Regards,
-Ashish
-
->
-
-------Rvty6Ov.E7w8fqTiecbGSIlWaDZOz3Joz9WFZpHBwcJNCC2Q=_f8a40_
-Content-Type: text/plain; charset="utf-8"
-
-
-------Rvty6Ov.E7w8fqTiecbGSIlWaDZOz3Joz9WFZpHBwcJNCC2Q=_f8a40_--
 

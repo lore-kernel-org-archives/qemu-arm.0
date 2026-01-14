@@ -4,116 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFF1DD29FFE
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Jan 2026 12:35:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26CFDD37E25
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Jan 2026 13:05:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vg05l-0000Vi-J3; Wed, 14 Jan 2026 07:35:17 -0500
+	id 1vg0Z7-0003x9-J5; Wed, 14 Jan 2026 08:05:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vg05i-0000II-I2
- for qemu-arm@nongnu.org; Wed, 14 Jan 2026 07:35:15 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vg0Yq-0003rp-Tn
+ for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:05:29 -0500
+Received: from p-west1-cluster4-host3-snip4-3.eps.apple.com ([57.103.65.194]
+ helo=outbound.pv.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vg05f-0004h0-JZ
- for qemu-arm@nongnu.org; Wed, 14 Jan 2026 07:35:13 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768394109;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=teVed9wkpF4YrY622OZwfCVxWWIea5vtN1+xtUYhAhU=;
- b=CGFenmS4eUTqJD3jP80UikTP8hTSSerfl5eH8Gy63vi9fye7bg0LPldRHJPMLQyzpHGkjs
- Qaz19xm7tScH7tbeWRwaLrdx285N9JMdnXBIMAYmN5e7NiD8LUo7bZIt6epYnGjv91M3yR
- ppRMcZmsszopaw/AaOAKiPw3lbHaHs0=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-448-1l4yWoPuNSyFxbSRcljF8w-1; Wed, 14 Jan 2026 07:35:08 -0500
-X-MC-Unique: 1l4yWoPuNSyFxbSRcljF8w-1
-X-Mimecast-MFC-AGG-ID: 1l4yWoPuNSyFxbSRcljF8w_1768394106
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-477cf25ceccso75792555e9.0
- for <qemu-arm@nongnu.org>; Wed, 14 Jan 2026 04:35:07 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768394106; x=1768998906;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=teVed9wkpF4YrY622OZwfCVxWWIea5vtN1+xtUYhAhU=;
- b=Tsg3hVzdwOYr0VMy/7vk5WUvSbnIQ7DXR1G9C+QzfoGfYKSpXMzFSBXCMbbRBkMVpo
- l4YAC/U6DJkUV0n6Bmkn7lTlER5CnM2nh94jFC69jfcBQX56gguAps3BaBJE1LeYFAHT
- KA8nxf8XkajRX0wkDFN5otOo/UeS8O4tIad5HCegy6GkCKteM31Qpoh+2/clMEIlTV8V
- J/wopXA8fzw7WIMirz4L3Wkq/ynfr0z/15ROZMNqX5Ub/ssLuIQbsCUFd8SiipSfZNVV
- 8dFQFW8I015vQvQ/6Q5HOLl3y2PmLUd6EIDZT84zTTztDrrnwZ3EPBfLfU18UqvGBd43
- bEHw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWZlIX6Z9J5p3ZHRylW7ElPsnzU5FaqS7Tisa34eaIkqLsntEes4VRkoDE5+Ks6ENjuIvfxfvNQEg==@nongnu.org
-X-Gm-Message-State: AOJu0YweqUEN0qRXVQ12K2ztW+4v8c5Gy92cpn7xYLpkYytmREMSuESH
- cN1XrDHwF/jH6dZYRKFWeeFC1hNh5PeWD9ltaWaqOKrITBmoF7BOrCIOV4IUqXrUQAC2PJbrTYh
- foEJhrvsWjAqP9b3KL9/BIa4GNj4sFO+zfwBqmRnqjzff6AZwOSDpHQ==
-X-Gm-Gg: AY/fxX5+d39b18Q/QrzVvuebSSkbLa5GZx/pXyZtjlzg3yg9EZxEpUk4UD6TK0T9rSg
- NFaT+BTgMCa7s9DFhu6zKCzybbIazreN+2ZoWuGpMLZI4u/B3gDAgLN+eI+2cmT+q5XmscatyUV
- 4y50X1U0Tz39LUBLXdek+57MP2utbK/TMRYpUuCKFWU2jcDPaC8GfNr0Nl0kzHjO+aCdQ2oep9h
- KkxRrdl4khx3fKDJ7Lfj9pWbS50sXbkUgWkhgvETnqfrCZ0u7YSnKwPsY55AyyaIeURtyhBV3rn
- lDPx8d+uIGdWNO4KnttOGqGTOEP6tH0JOl/e5g3JgHELCT7+mBeqHwta4GfC3G29pNOQMG2/dBI
- GRoX7WOOl8gDItQC1MMgTGyCcosg2LbA=
-X-Received: by 2002:a05:600c:a4c:b0:477:7975:30ea with SMTP id
- 5b1f17b1804b1-47ee338a820mr30066435e9.29.1768394106137; 
- Wed, 14 Jan 2026 04:35:06 -0800 (PST)
-X-Received: by 2002:a05:600c:a4c:b0:477:7975:30ea with SMTP id
- 5b1f17b1804b1-47ee338a820mr30066105e9.29.1768394105575; 
- Wed, 14 Jan 2026 04:35:05 -0800 (PST)
-Received: from redhat.com (IGLD-80-230-35-22.inter.net.il. [80.230.35.22])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47ee1189f5fsm22615875e9.2.2026.01.14.04.35.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Jan 2026 04:35:05 -0800 (PST)
-Date: Wed, 14 Jan 2026 07:35:01 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Shameer Kolothum <skolothumtho@nvidia.com>
-Cc: Jonathan Cameron <jonathan.cameron@huawei.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Jason Gunthorpe <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
- Nathan Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
- "smostafa@google.com" <smostafa@google.com>,
- "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
- "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- "yi.l.liu@intel.com" <yi.l.liu@intel.com>,
- Krishnakant Jaju <kjaju@nvidia.com>
-Subject: Re: [PATCH v7 33/36] hw/pci: Add helper to insert PCIe extended
- capability at a fixed offset
-Message-ID: <20260114073338-mutt-send-email-mst@kernel.org>
-References: <20260111195508.106943-1-skolothumtho@nvidia.com>
- <20260111195508.106943-34-skolothumtho@nvidia.com>
- <20260114114556.0000153c@huawei.com>
- <CH3PR12MB7548C1DABCCCB8CB332B59A0AB8FA@CH3PR12MB7548.namprd12.prod.outlook.com>
-MIME-Version: 1.0
-In-Reply-To: <CH3PR12MB7548C1DABCCCB8CB332B59A0AB8FA@CH3PR12MB7548.namprd12.prod.outlook.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: xsYu5edxM6TFLxuu4w8MhCE8pEJf43iCoHtnhqL8E64_1768394106
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vg0Yb-00058C-4C
+ for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:05:17 -0500
+Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-1a-60-percent-11 (Postfix) with ESMTPS id
+ 90ADF1800653; Wed, 14 Jan 2026 13:04:59 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; bh=gNibVEpEv/woE2ACsOSNkoNVqZy6Zb2MY0/JP2Icblg=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=azwgA+j/fS4kK+0XknGqHQDA6t7UGEI9uTo0XbjeZoh2j0ciM7uS+2Sajhz/AE3g2Op1z8LLA193vJ1gt9gor3WuU/xnlcvkbkQwt3dPWSy/BZJB8+usImY3XsGJiM+hMc4o1+V+iE8pN9gIvzyb0JR3/yhW2hgCbJvyOsc/qkTfnyc40Yp7WHLPiyuJMM1FiCQ3D4sopeSMyWJkVIFOhsk2dx2bISdzhs9UUZ8yZuf45uYs9tuqSA1HUMrbwo0ovRd96HYd5VfuEaKD8CMMJUDpgIbuXh8W1EXUfo8OBXCNxSYpgvE5UX8dvJCYjE9wRnrQJzvwcM+PIoTTJPfgGg==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.56.9.36])
+ by p00-icloudmta-asmtp-us-west-1a-60-percent-11 (Postfix) with ESMTPSA id
+ 4E7871800651; Wed, 14 Jan 2026 13:04:55 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
+Subject: Re: [PATCH 0/2] arm/hvf: Add SME2 support
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <20260114-sme2-hvf-v1-0-ce9599596736@linaro.org>
+Date: Wed, 14 Jan 2026 14:04:43 +0100
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ =?utf-8?Q?Phil_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <35D03F6D-9D42-44B4-9D93-F754BB2C3D9A@unpredictable.fr>
+References: <20260114-sme2-hvf-v1-0-ce9599596736@linaro.org>
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+X-Mailer: Apple Mail (2.3864.300.41.1.7)
+X-Proofpoint-ORIG-GUID: datfttwv8cUg5VfTl4CUjbFbe0H34a2f
+X-Proofpoint-GUID: datfttwv8cUg5VfTl4CUjbFbe0H34a2f
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE0MDEwOSBTYWx0ZWRfX3K0+4HwXmVLj
+ TGafB9xvMr+naJF+6L7LMBMg8AwRETDWSGxqF4/6/oOWwT/wom+z1XuQnXHXNV6S+2X1ahTe1Ef
+ wc4CfqOdLWCwHTtBhYnMTiwstOQkg3a0xzjDgOEWV61mf7BcS7zgUgVKh/rq5un0qXhQXZYpgx3
+ aKvv+TZjSwwU9dpN6+7LswhWtqmUA5X0Ku2jpLzPpYNfXztj6sBqS9Eebjo+ZF22pG9VdeNw42l
+ nj+/PhcTlej6aEM+MwNSA325d32GmljU8+mzSdT0snmtO14PVRY7qhIMv/7XAzeW0Quv1CAM3YB
+ oxmrkxvf9t/y3mrEjKR
+X-Authority-Info: v=2.4 cv=KNFXzVFo c=1 sm=1 tr=0 ts=6967947c
+ cx=c_apl:c_apl_out:c_pps a=azHRBMxVc17uSn+fyuI/eg==:117
+ a=azHRBMxVc17uSn+fyuI/eg==:17 a=IkcTkHD0fZMA:10 a=vUbySO9Y5rIA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=7CQSdrXTAAAA:8 a=KKAkSRfTAAAA:8
+ a=zAkTo8E5J1WCcoI_fgMA:9 a=NqO74GWdXPXpGKcKHaDJD/ajO6k=:19 a=QEXdDO2ut3YA:10
+ a=a-qgeE7W1pNrGK8U0ZQC:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2026-01-14_04,2026-01-09_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ suspectscore=0 phishscore=0 spamscore=0 mlxlogscore=730 adultscore=0
+ clxscore=1030 malwarescore=0 mlxscore=0 classifier=spam authscore=0 adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2601140109
+X-JNJ: AAAAAAABHp6m4bBJZ7gY+Cp6Z0sATBMLDCq3V58adsmZlQqmMPPdULjsaTKwDM7eBbyg72skVPBWyTVLGyx0k8ThjDyDMfh4XRSBXXFEDOapEkuB4Pg6fMbc7QbhQQNZ/wo3/s4Oufu4hDdIeFgqwG9yKSmtjq5iI0iPNrNZAitdkYwMBub48bw3WbNpjtQ321uuoycKw+yU7UCc/Qrilm2XFjt+7cLO6gf5Pa69BK9o8ZaA5iEkxwaMpfDuz6BpwqBmsk85kQjMGPqgYIPLmfYDIe9THJimt0OZJfNGZhA6/CQMtY/Iqzcy4zij1nbewLmSLLQaG+n0XOo3daau3NYWsZcK844qCXw7sS+Fj+sAxHYySgcfHxfma574rN/1630VuZ2rkirK/7AIDRRhejxPs/m4/r6Gite76Qi66wGwU6Chm8AbM/8Y+qevT6Ar1eIS5Vf+dDJOXg5afPe66SrYuAQhSybuuPg4NBxOQNFFJVHzJPeQhvuHunUc/E/DdTBvLfClrjC9pE5vkASMpCDqnTqBtWAhJinb9myr7JW5CQTxPsNntdVbNAdjFB0aWNk+9Dinv/IH9qEhQnelgxhpA4lKdCrBNX706hwftzGdocOqzAQPMpDgWRwpJL4NlpC2Be6GXa6tmw+v2oQBEehy8nCTBfDNlLv4DOb6l9c2TyisOZRAXDuvrrFPgBk+MeaoC6UPwX6r1MbwJHUL+A==
+Received-SPF: pass client-ip=57.103.65.194;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -131,173 +94,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Jan 14, 2026 at 12:26:29PM +0000, Shameer Kolothum wrote:
-> 
-> 
-> > -----Original Message-----
-> > From: Jonathan Cameron <jonathan.cameron@huawei.com>
-> > Sent: 14 January 2026 11:46
-> > To: Shameer Kolothum <skolothumtho@nvidia.com>
-> > Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
-> > eric.auger@redhat.com; peter.maydell@linaro.org; Jason Gunthorpe
-> > <jgg@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>; ddutile@redhat.com;
-> > berrange@redhat.com; clg@redhat.com; alex@shazbot.org; Nathan Chen
-> > <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
-> > smostafa@google.com; wangzhou1@hisilicon.com;
-> > jiangkunkun@huawei.com; zhangfei.gao@linaro.org;
-> > zhenzhong.duan@intel.com; yi.l.liu@intel.com; Krishnakant Jaju
-> > <kjaju@nvidia.com>; Michael S . Tsirkin <mst@redhat.com>
-> > Subject: Re: [PATCH v7 33/36] hw/pci: Add helper to insert PCIe extended
-> > capability at a fixed offset
-> > 
-> > External email: Use caution opening links or attachments
-> > 
-> > 
-> > On Sun, 11 Jan 2026 19:53:19 +0000
-> > Shameer Kolothum <skolothumtho@nvidia.com> wrote:
-> > 
-> > > Add pcie_insert_capability(), a helper to insert a PCIe extended
-> > > capability into an existing extended capability list at a
-> > > caller-specified offset.
-> > >
-> > > Unlike pcie_add_capability(), which always appends a capability to the
-> > > end of the list, this helper preserves the existing list ordering while
-> > > allowing insertion at an arbitrary offset.
-> > >
-> > > The helper only validates that the insertion does not overwrite an
-> > > existing PCIe extended capability header, since corrupting a header
-> > > would break the extended capability linked list. Validation of overlaps
-> > > with other configuration space registers or capability-specific
-> > > register blocks is left to the caller.
-> > >
-> > > Cc: Michael S. Tsirkin <mst@redhat.com>
-> > > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> > Hi Shameer.
-> 
-> Happy new year!
-> 
-> > 
-> > Random musings inline... Maybe I'm just failing in my spec grep skills.
-> > 
-> > > ---
-> > >  hw/pci/pcie.c         | 58
-> > +++++++++++++++++++++++++++++++++++++++++++
-> > >  include/hw/pci/pcie.h |  2 ++
-> > >  2 files changed, 60 insertions(+)
-> > >
-> > > diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
-> > > index b302de6419..8568a062a5 100644
-> > > --- a/hw/pci/pcie.c
-> > > +++ b/hw/pci/pcie.c
-> > > @@ -1050,6 +1050,64 @@ static void pcie_ext_cap_set_next(PCIDevice
-> > *dev, uint16_t pos, uint16_t next)
-> > >      pci_set_long(dev->config + pos, header);
-> > >  }
-> > >
-> > > +/*
-> > > + * Insert a PCIe extended capability at a given offset.
-> > > + *
-> > > + * This helper only validates that the insertion does not overwrite an
-> > > + * existing PCIe extended capability header, as corrupting a header would
-> > > + * break the extended capability linked list.
-> > > + *
-> > > + * The caller must ensure that (offset, size) does not overlap with other
-> > > + * registers or capability-specific register blocks. Overlaps with
-> > > + * capability-specific registers are not checked and are considered a
-> > > + * user-controlled override.
-> > > + */
-> > > +bool pcie_insert_capability(PCIDevice *dev, uint16_t cap_id, uint8_t
-> > cap_ver,
-> > > +                            uint16_t offset, uint16_t size)
-> > > +{
-> > > +    uint16_t prev = 0, next = 0;
-> > > +    uint16_t cur = pci_get_word(dev->config + PCI_CONFIG_SPACE_SIZE);
-> > > +
-> > > +    /* Walk the ext cap list to find insertion point */
-> > > +    while (cur) {
-> > > +        uint32_t hdr = pci_get_long(dev->config + cur);
-> > > +        next = PCI_EXT_CAP_NEXT(hdr);
-> > > +
-> > > +        /* Check we are not overwriting any existing CAP header area */
-> > > +        if (offset >= cur && offset < cur + PCI_EXT_CAP_ALIGN) {
-> > > +            return false;
-> > > +        }
-> > > +
-> > > +        prev = cur;
-> > > +        cur = next;
-> > > +        if (next == 0 || next > offset) {
-> > 
-> > So this (sort of) relies on a thing I've never been able to find a clear
-> > statement of in the PCIe spec.  Does Next Capability Offset have to be
-> > larger than the offset of the current record?  I.e. Can we have
-> > backwards pointers?
-> 
-> That’s right. I also couldn’t find a place in the spec that explicitly
-> says the list must be forward only. A device doing a backward walk
-> would be pretty odd, hopefully nothing like that exists in the wild.
-
-Yes, there's no reason not to have such pointers, with either
-PCIe or classical PCI capability.
 
 
-> > Meh, I think this is fine, it just came up before and I couldn't find
-> > a reference to prove it!
-> > 
-> > More importantly, if it isn't a requirement and a rare device turns up
-> > that has a backwards pointer, that just means there isn't a 'right'
-> > point in the list to put this at, so any random choice is fine and
-> > the next == 0 condition means we always fine an option.
-> 
-> Yes. 
-> 
-> > 
-> > > +            break;
-> > > +        }
-> > > +    }
-> > > +
-> > > +   /* Make sure, next CAP header area is not over written either */
-> > 
-> > Looks like one space too few.
-> > 
-> > > +    if (next && (offset + size) >= next) {
-> > > +        return false;
-> > > +    }
-> > > +
-> > > +    /* Insert new cap */
-> > > +    pci_set_long(dev->config + offset,
-> > > +                 PCI_EXT_CAP(cap_id, cap_ver, cur));
-> > > +    if (prev) {
-> > > +        pcie_ext_cap_set_next(dev, prev, offset);
-> > > +    } else {
-> > > +        /* Insert at head (0x100) */
-> > 
-> > Comment is a little confusing as you aren't inserting the new capability
-> > there.  What I think this is actually doing is
-> > 
-> > /*
-> >  * Insert a Null Extended Capability (7.9.28 in the PCI 6.2 spec)
-> >  * at head when there are no extended capabilities and use that to
-> >  * point to the inserted capability at offset.
-> >  */
-> 
-> Sure. However, Zhangfei has reported a crash with this and I have
-> reworked the logic a bit to cover few corner cases. Based on his
-> tests I will update this.
-> 
-> Thanks,
-> Shameer
-> 
-> > > +        pci_set_word(dev->config + PCI_CONFIG_SPACE_SIZE, offset);
-> > > +    }
-> > > +
-> > > +    /* Make capability read-only by default */
-> > > +    memset(dev->wmask + offset, 0, size);
-> > > +    memset(dev->w1cmask + offset, 0, size);
-> > > +    /* Check capability by default */
-> > > +    memset(dev->cmask + offset, 0xFF, size);
-> > > +    return true;
-> > > +}
-> > 
-> 
+> On 14. Jan 2026, at 09:35, Manos Pitsidianakis =
+<manos.pitsidianakis@linaro.org> wrote:
+>=20
+> M4/M5 Macs support SME2, and HVF exposes this functionality in its
+> public API.
+>=20
+> Add support for it in QEMU.
+>=20
+> This was tested by running an SME2 benchmark from Arm [0]. savevm and
+> loadvm during the benchmark's run were used to verify migration works.
+>=20
+> [0]:
+> =
+https://learn.arm.com/learning-paths/cross-platform/multiplying-matrices-w=
+ith-sme2/1-get-started/
+>=20
+> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> ---
+> Manos Pitsidianakis (2):
+>      hvf/arm: handle FEAT_SME2 migration
+>      hvf/arm: expose FEAT_SME2 to guest if available
+>=20
+Hello,
+
+For this series:
+
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+
+Random note: For running on older macOS releases when built with a new =
+SDK, you might also need -weak_framework, but not sure meson supports =
+that=E2=80=A6
+
+>=20
+>  target/arm/cpu.c            |   4 +-
+> target/arm/cpu64.c          |  13 +-
+> target/arm/hvf/hvf.c        | 318 =
+++++++++++++++++++++++++++++++++++++++++++--
+> target/arm/hvf/sysreg.c.inc |  10 ++
+> target/arm/hvf_arm.h        |  46 +++++++
+> target/arm/machine.c        |   2 +-
+> 6 files changed, 376 insertions(+), 17 deletions(-)
+> ---
+> base-commit: cf3e71d8fc8ba681266759bb6cb2e45a45983e3e
+> change-id: 20260114-sme2-hvf-105767189521
+>=20
+> --
+> =CE=B3=CE=B1=E1=BF=96=CE=B1 =CF=80=CF=85=CF=81=CE=AF =CE=BC=CE=B9=CF=87=CE=
+=B8=CE=AE=CF=84=CF=89
+>=20
+>=20
 
 

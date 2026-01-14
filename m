@@ -4,85 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6246AD37E2E
-	for <qemu-arm@archiver.kernel.org>; Wed, 14 Jan 2026 13:13:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 685DCD37E32
+	for <qemu-arm@archiver.kernel.org>; Wed, 14 Jan 2026 13:32:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vg0gm-0000hR-QS; Wed, 14 Jan 2026 08:13:33 -0500
+	id 1vg0yJ-00039B-Vt; Wed, 14 Jan 2026 08:31:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vg0gY-0000aO-N8
- for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:13:23 -0500
-Received: from p-west1-cluster3-host5-snip4-7.eps.apple.com ([57.103.66.10]
- helo=outbound.pv.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vg0gW-0002ZK-QQ
- for qemu-arm@nongnu.org; Wed, 14 Jan 2026 08:13:18 -0500
-Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-1a-100-percent-12 (Postfix) with ESMTPS id
- 4B2FA18002A2; Wed, 14 Jan 2026 13:13:12 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=XBDnJjLY4j0IHtHcJd9nxSwRKudljfaQ1JcdAc6f5RA=;
- h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
- b=TwxUrnDDSoqLWCCOPfFYwz4U80uRn7AMa6s+tIcuMzWL/+UGorcduKvQRQyaf5I4mabdN9HdalaMJaltvpyytI6UwGSdhyTHBlRMUDQdFypSk55bGS8cvIfzZpA7BejxO4zDCMfQCjHqAXpm90aAFmmNssfbOzLdGl2EdOdlbGX50QoBjoLRaWSmpyZHpeqq7PrYd2uKXChIWftqe1nOdO/1KTJ6ell0zr8+mYCz2lJEEA1EberJ8F7Q49TbCoA3SkTwiwvV1QxnMld4rf5mFPwL+cfk+jWhRGY7hDwYT4L7syTU7KNkAQ6Puf6bYFcc7iGNK+ImNR47BTXn2Mu/5A==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.56.9.36])
- by p00-icloudmta-asmtp-us-west-1a-100-percent-12 (Postfix) with ESMTPSA id
- C667218002A4; Wed, 14 Jan 2026 13:13:10 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-Message-Id: <3A952EB6-9EC4-40F1-87C6-766379808DD7@unpredictable.fr>
-Content-Type: multipart/alternative;
- boundary="Apple-Mail=_0B70B3B2-3BA4-4780-9BB0-E58C1536AF6D"
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
-Subject: Re: [PATCH 1/2] hvf/arm: handle FEAT_SME2 migration
-Date: Wed, 14 Jan 2026 14:12:58 +0100
-In-Reply-To: <CAAjaMXZehMtdZC+7obmRZgfE+T2Dn64GTY2MqncPq9grKGcSsw@mail.gmail.com>
-Cc: Alexander Graf <agraf@csgraf.de>, qemu-devel@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- =?utf-8?Q?Phil_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Mads Ynddal <mads@ynddal.dk>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-References: <20260114-sme2-hvf-v1-0-ce9599596736@linaro.org>
- <20260114-sme2-hvf-v1-1-ce9599596736@linaro.org>
- <6edbbdd7-8992-420e-9aee-7596afbcf00d@csgraf.de>
- <CAAjaMXZehMtdZC+7obmRZgfE+T2Dn64GTY2MqncPq9grKGcSsw@mail.gmail.com>
-X-Mailer: Apple Mail (2.3864.300.41.1.7)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE0MDExMCBTYWx0ZWRfX+LMtQ+T5Cqm1
- ABMRw3ej+69VOmmQKaTZJ5ScQX4wFkOLSJZdqO53+jnQdrb78pW+9uz6KBxemSL2e6y3EDRKh1Q
- QoAtPyifNxTN4/Vje1MXbWLZeyAVHG8w0vNTC01WU8dr+V0qpU5/XRaACLHWKqJcQJ9VGiO3ktC
- C0Alp1G544x71y1GEjv7ioeQm4uP1s1/O/tJWc9aAOrtraLgBhgWcKBfOBbyXr7CZpepLgBFdt4
- xWY0U/VzS5YLeXp4KrbF4puRmvUE2IBCIH0k/5U56lwg6sxfIDduV3egpn1r0Y3ZvXGDF9H+6bl
- XBH88qe1WeARBP/RcZb
-X-Proofpoint-GUID: axa2rg2wbDZA3NMWqRIZbqdADUGcPXQY
-X-Proofpoint-ORIG-GUID: axa2rg2wbDZA3NMWqRIZbqdADUGcPXQY
-X-Authority-Info: v=2.4 cv=N90k1m9B c=1 sm=1 tr=0 ts=69679669
- cx=c_apl:c_apl_out:c_pps a=azHRBMxVc17uSn+fyuI/eg==:117
- a=azHRBMxVc17uSn+fyuI/eg==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=KKAkSRfTAAAA:8 a=7JoiO3d9rUHgviZBdYkA:9 a=CjuIK1q_8ugA:10
- a=tMk-nljNnkZwi1k34TAA:9 a=2hQirLpjCCEEXmJT:21 a=_W_S_7VecoQA:10
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
- definitions=2026-01-14_04,2026-01-09_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- bulkscore=0 mlxscore=0 phishscore=0 mlxlogscore=772 spamscore=0
- suspectscore=0 malwarescore=0 clxscore=1030 classifier=spam authscore=0
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
- definitions=main-2601140110
-X-JNJ: AAAAAAABIKlXfxSRsKoJU73MLiIYHNM+KCWQDTrI1DcEFA6bUcpPQp8n77FzsoJkyON8+aTVPb0zWd4XmyMm0hgvtBwWsiSt1BKyJPy9dh/kOnj0EDX2kwDBiomf5SGpWR8KY77EWe+8thocyW1USxXKLAWjIORTMbSMv4LhGASfTJbORK/IsaRJf5uQxYY797GaoXZjFTNZ8zSG+zwKReYv9A6fWJKv9Hg/nfCRyb+/Ed8+T6elehQ/q52TzZf7hUbxsHR0nwRGw6n9eSCh2oLJVyg/MalLrvg6DkLmREzqPwDWGa5khkrcRPIgMVfHj+EDzJkdGuZpvLJ1dv3cmP2geI8rvmTsYnqSnaX1qh4/J/19bxKwpFxxMIompTwBaoR0Mdyx+la+3RfiOyXtWx0mlCG51J2JscMF0uLkq1WLVeZUojd9GIf2Os3pFo1CsLy5Ai6hLWKjZLUJoIb37C86fC+xb07GSp53MRJg2UwMQBBEQwbD2lotn7kvMdF1WJkQs8ZA/5r5xedIOVO5Oxmd79tmysCIv2/nVNZ6AlDdYYeWIHrIiDgXd/dYhhx5nJguBDQgKqPjeaojWV1WOaaO2GbQ3E2GXmnTb3ExR2YAYOCL2hdiCs/IJUQwydTgdkeZGQuXdq+0DJDloxeOMDvfU5Dpv+8tmPkJVZmE6Rh3M2fKIeXPkAE=
-Received-SPF: pass client-ip=57.103.66.10;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vg0xq-000314-LH; Wed, 14 Jan 2026 08:31:21 -0500
+Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1vg0xn-0008Py-7G; Wed, 14 Jan 2026 08:31:10 -0500
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwD3A12PmmdpXDceAw--.14103S2;
+ Wed, 14 Jan 2026 21:30:55 +0800 (CST)
+Received: from [192.168.31.151] (unknown [113.246.119.109])
+ by mail (Coremail) with SMTP id AQAAfwD3TeuEmmdpr6oTAA--.19949S2;
+ Wed, 14 Jan 2026 21:30:53 +0800 (CST)
+Message-ID: <6d50c3fe-e235-48e8-b461-fe0689f12070@phytium.com.cn>
+Date: Wed, 14 Jan 2026 21:30:42 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC v8 0/7] hw/misc: Introduce a generalized IOMMU test framework
+To: Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>,
+ CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
+References: <20251224034647.2596434-1-tangtao1634@phytium.com.cn>
+From: Tao Tang <tangtao1634@phytium.com.cn>
+In-Reply-To: <20251224034647.2596434-1-tangtao1634@phytium.com.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAfwD3TeuEmmdpr6oTAA--.19949S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAPBWlmpwAGbgAAsL
+Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
+ 4@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoW3ur18GFW5Gr15Gw1UGrykXwb_yoWDAr1kpa
+ yfGa9IkF48Jr1fCr4xAw48ZFy5Jan3Ja17Ar17Kw1F9390yryIvr15KryrKF9rJrW8ZF47
+ Za10qF1DWF4YyrJanT9S1TB71UUUUUJqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=129.150.39.64;
+ envelope-from=tangtao1634@phytium.com.cn; helo=sgoci-sdnproxy-4.icoremail.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,164 +79,249 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
---Apple-Mail=_0B70B3B2-3BA4-4780-9BB0-E58C1536AF6D
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=us-ascii
+A gentle ping on this series. Any further suggestions would be greatly 
+appreciated.
 
 
+Link:
 
-> On 14. Jan 2026, at 12:51, Manos Pitsidianakis =
-<manos.pitsidianakis@linaro.org> wrote:
->=20
-> I agree completely, the problem is two-fold here: the HVF exposes APIs
-> with API_AVAILABLE(...) (clang's availability attribute) and also with
-> plain ifdefs (__MAC_OS_X_VERSION_MAX_ALLOWED >=3D 150200), and
-> specifically the HV_SME_FOO_REG variants, which cannot be protected
-> with the availability attribute. )
->=20
-> So every time an SME type such as hv_vcpu_sme_state_t is used, it has
-> to be guarded :/ __builtin_available(...) check is not sufficient
-> because it will not compile due to undefined types.
+https://lore.kernel.org/qemu-devel/20251224034647.2596434-1-tangtao1634@phytium.com.cn/
 
 
-Hello,
+Best regards,
 
-Newer SDKs can still target older OSes so we might get away with
-just requiring a new SDK but still running on older OSes I think?
-
+Tao
 
 
+On 2025/12/24 11:46, Tao Tang wrote:
+> Changes since v7: Following Pierrick’s feedback, this version fixes the
+> uint64_t formatting issue
+> (switching to PRIx64 to avoid %lx mismatches on non-LP64 platforms). I also
+> validated the series with Pierrick’s qemu-ci workflow, and all jobs passed;
+> the CI run is available at:
+>
+> https://github.com/hnusdr/qemu/actions/runs/20476259310
+>
+> Motivation
+> ----------
+>
+> Currently, thoroughly testing IOMMU emulation (e.g., ARM SMMUv3) requires
+> a significant software stack. We need to boot a full guest operating
+> system (like Linux) with the appropriate drivers (e.g., IOMMUFD) and rely
+> on firmware (e.g., ACPI with IORT tables or Hafnium) to correctly
+> configure the IOMMU and orchestrate DMA from a peripheral device.
+>
+> This dependency on a complex software stack presents several challenges:
+>
+> * High Barrier to Entry: Writing targeted tests for specific IOMMU
+>      features (like fault handling, specific translation regimes, etc.)
+>      becomes cumbersome.
+>
+> * Difficult to Debug: It's hard to distinguish whether a bug originates
+>      from the IOMMU emulation itself, the guest driver, the firmware
+>      tables, or the guest kernel's configuration.
+>
+> * Slow Iteration: The need to boot a full guest OS slows down the
+>      development and testing cycle.
+>
+> The primary goal of this work is to create a lightweight, self-contained
+> testing environment that allows us to exercise the IOMMU's core logic
+> directly at the qtest level, removing the need for any guest-side software.
+>
+> Our Approach: A Dedicated Test Framework
+> -----------------------------------------
+>
+> To achieve this, we introduce three main components:
+>
+> * A minimal hardware device: iommu-testdev
+> * A reusable IOMMU helper library: libqos/qos-smmuv3
+> * A comprehensive qtest suite: iommu-smmuv3-test
+>
+> The iommu-testdev is intentionally not a conformant, general-purpose PCIe
+> or platform device. It is a purpose-built, highly simplified "DMA engine"
+> designed to be analogous to a minimal PCIe Root Complex that bypasses the
+> full, realistic topology (Host Bridges, Switches, Endpoints) to provide a
+> direct, programmable path for a DMA request to reach the IOMMU. Its sole
+> purpose is to trigger a DMA transaction when its registers are written to,
+> making it perfectly suited for direct control from a test environment like
+> qtest.
+>
+> The Qtest Framework
+> -------------------
+>
+> The new qtest (iommu-smmuv3-test.c) serves as the "bare-metal driver"
+> for both the IOMMU and the iommu-testdev. It leverages the libqos helper
+> library to manually perform all the setup that would typically be handled
+> by the guest kernel and firmware, but in a completely controlled and
+> predictable manner:
+>
+> 1.  IOMMU Configuration: It directly initializes the SMMU's registers to a
+>      known state using helper functions from qos-smmuv3.
+>
+> 2.  Translation Structure Setup: It uses the libqos library to construct
+>      the necessary translation structures in memory, including Stream Table
+>      Entries (STEs), Context Descriptors (CDs), and Page Tables (PTEs).
+>
+> 3.  DMA Trigger: It programs the iommu-testdev to initiate a DMA operation
+>      targeting a specific IOVA with configurable attributes.
+>
+> 4.  Verification: It waits for the transaction to complete and verifies
+>      that the memory was accessed correctly after address translation by
+>      the IOMMU.
+>
+> This framework provides a solid and extensible foundation for validating
+> the IOMMU's core translation paths. The current test suite covers:
+>
+> - Stage 1 only translation (VA -> PA via CD page tables)
+> - Stage 2 only translation (IPA -> PA via STE S2 tables)
+> - Nested translation (VA -> IPA -> PA, Stage 1 + Stage 2)
+>
+> The infrastructure is designed to be extended to support additional
+> security spaces and IOMMU features.
+>
+>
+> Testing:
+> --------
+> QTEST_QEMU_BINARY=./build/qemu-system-aarch64 \
+>    ./build/tests/qtest/iommu-smmuv3-test --tap -k
+>
+>
+> If you want to check coverage report, please follow instructions below
+> which are shared by Pierrick in previous review [1]
+>
+> # install gcovr if not already installed, `sudo apt install gcovr`
+> # on ubuntu for example
+> $ export CFLAGS="--coverage"
+> $ ./configure --target-list=aarch64-softmmu
+> $ ninja -C build
+> $ QTEST_QEMU_BINARY=./build/qemu-system-aarch64 \
+>    ./build/tests/qtest/iommu-smmuv3-test
+> $ rm -rf build/coverage_html
+> $ mkdir build/coverage_html
+> $ gcovr \
+>        --gcov-ignore-parse-errors suspicious_hits.warn \
+>        --gcov-ignore-parse-errors negative_hits.warn \
+>        --merge-mode-functions=separate \
+>        --html-details build/coverage_html/index.html \
+>        --filter 'hw/arm/smmu*'
+> # check the version of gcovr if meeting some unsupported options error.
+> # Upgrading to 8.4 version may resolve the error.
+> $ gcovr --version
+> $ pip install --user --upgrade gcovr
+> $ echo file://$(pwd)/build/coverage_html/index.html
+> # open this in browser by clicking on your terminal
+>
+> [1] https://lore.kernel.org/qemu-devel/a361b46f-2173-4c98-a5d3-6b4d2ac004af@linaro.org/
+>
+>
+> Major Changes from v7 to v8:
+> -----------------------------
+>    - Fix uint64_t formatting issue by using PRIx64 for portability
+>    - Validate the series with Pierrick's qemu-ci workflow; all jobs passed
+>    - This series is also saved in github repo [5]
+> [5] https://github.com/hnusdr/qemu/tree/iommu-testdev-v8-community
+>
+>
+> Major Changes from v6 to v7:
+> -----------------------------
+>    - Split the smmuv3-common.h work into smaller patches
+>      (registerfields conversion, NSCFG bits, helper setters)
+>    - Add MAINTAINERS entries for iommu-testdev and qos-smmuv3 helpers
+>    - Tighten documentation wording and update the DMA test pattern value
+>    - Simplify qtest PCI device discovery and rename QSMMU_IOVA constant
+>    - This series is also saved in github repo [4]
+>
+> [4] https://github.com/hnusdr/qemu/tree/iommu-testdev-v7-community
+>
+>
+> Major Changes from v5 to v6:
+> -----------------------------
+>    - Split batch testing into individual test cases per translation mode
+>    - Removed cleanup functions and related codes or comments
+>    - Improved error handling with explicit assertions
+>    - Add coverage build and test instructions shared by Pierrick
+>    - Keep Reviewed-by and Tested-by from Pierrick's review
+>    - This series is also saved in github repo [2]
+>
+> [2] https://github.com/hnusdr/qemu/tree/iommu-testdev-v6-community
+>
+>
+> Major Changes from v4 to v5:
+> -----------------------------
+>   - Remove a duplicated patch that was accidentally included in v4.
+>
+>
+> Major Changes from v3 to v4:
+> -----------------------------
+>
+> 1. Added shared smmuv3-common.h so both the device and libqos consume the same
+>     STE/CD/register definitions as Alex suggested [3]
+> 2. Slimmed iommu-testdev down to a pure DMA trigger with a tighter MMIO
+>     contract (new doorbell helper, simplified attributes/errors).
+> 3. Updated `qos-smmuv3` and the qtest so they include the common header,
+>     honor per-test expected results, and rely solely on the streamlined device
+>     interface.
+> 4. Compacted changes of v2 to v3.
+>
+> [3] https://lore.kernel.org/qemu-devel/87zf8jk244.fsf@draig.linaro.org/
+>
+>
+> Major Changes from v2 to v3:
+> -----------------------------
+>
+> 1. Generalization/Renaming: rebranded `smmu-testdev` → `iommu-testdev` (code,
+>     headers, docs) to reflect the broadened scope.
+> 2. Separation of concerns: iommu-testdev is now a pure DMA trigger; all
+>     SMMUv3-specific setup (STE/CD/page tables, multi-mode support, space offsets)
+>     lives in `qos-smmuv3.{c,h}` and is consumed by the new qtest.
+> 3. Improved modularity & coverage: the stacked design (device + helper + qtest)
+>     made it straightforward to add S1/S2/Nested tests, a cleaner config system,
+>     and clearer validation logic.
+> 4. Code/documentation quality: added tracepoints, better error handling/naming,
+>     and refreshed `docs/specs/iommu-testdev.rst` with the new layout.
+>
+> Future Work
+> -----------
+>
+> The current implementation focuses on basic translation path validation
+> in the Non-Secure address space. Future extensions could include:
+>
+> * Multi-space testing (Secure, Root, Realm) for SMMUv3
+> * Support for other IOMMU types (Intel VT-d, AMD-Vi, RISC-V IOMMU)
+>
+>
+> Tao Tang (7):
+>    hw/arm/smmuv3: Extract common definitions to smmuv3-common.h
+>    hw/arm/smmuv3-common: Define STE/CD fields via registerfields
+>    hw/misc: Introduce iommu-testdev for bare-metal IOMMU testing
+>    hw/arm/smmuv3-common: Add NSCFG bit definition for CD
+>    hw/arm/smmuv3-common: Add STE/CD set helpers for repeated field setup
+>    tests/qtest/libqos: Add SMMUv3 helper library
+>    tests/qtest: Add SMMUv3 bare-metal test using iommu-testdev
+>
+>   MAINTAINERS                     |  13 +
+>   docs/specs/index.rst            |   1 +
+>   docs/specs/iommu-testdev.rst    | 112 ++++++
+>   hw/arm/smmuv3-internal.h        | 255 +------------
+>   hw/misc/Kconfig                 |   5 +
+>   hw/misc/iommu-testdev.c         | 271 ++++++++++++++
+>   hw/misc/meson.build             |   1 +
+>   hw/misc/trace-events            |  10 +
+>   include/hw/arm/smmuv3-common.h  | 423 +++++++++++++++++++++
+>   include/hw/misc/iommu-testdev.h |  68 ++++
+>   tests/qtest/iommu-smmuv3-test.c | 121 ++++++
+>   tests/qtest/libqos/meson.build  |   3 +
+>   tests/qtest/libqos/qos-smmuv3.c | 633 ++++++++++++++++++++++++++++++++
+>   tests/qtest/libqos/qos-smmuv3.h | 256 +++++++++++++
+>   tests/qtest/meson.build         |   1 +
+>   15 files changed, 1919 insertions(+), 254 deletions(-)
+>   create mode 100644 docs/specs/iommu-testdev.rst
+>   create mode 100644 hw/misc/iommu-testdev.c
+>   create mode 100644 include/hw/arm/smmuv3-common.h
+>   create mode 100644 include/hw/misc/iommu-testdev.h
+>   create mode 100644 tests/qtest/iommu-smmuv3-test.c
+>   create mode 100644 tests/qtest/libqos/qos-smmuv3.c
+>   create mode 100644 tests/qtest/libqos/qos-smmuv3.h
+>
 
---Apple-Mail=_0B70B3B2-3BA4-4780-9BB0-E58C1536AF6D
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=us-ascii
-
-<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
-content=3D"text/html; charset=3Dus-ascii"></head><body =
-style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
-line-break: after-white-space;"><br =
-id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
-type=3D"cite"><div>On 14. Jan 2026, at 12:51, Manos Pitsidianakis =
-&lt;manos.pitsidianakis@linaro.org&gt; wrote:</div><br =
-class=3D"Apple-interchange-newline"><div><span style=3D"caret-color: =
-rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
-normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
-normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
-none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">I agree completely, the problem is two-fold =
-here: the HVF exposes APIs</span><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">with API_AVAILABLE(...) (clang's =
-availability attribute) and also with</span><br style=3D"caret-color: =
-rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
-normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
-normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
-none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">plain ifdefs =
-(__MAC_OS_X_VERSION_MAX_ALLOWED &gt;=3D 150200), and</span><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">specifically the HV_SME_FOO_REG variants, =
-which cannot be protected</span><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">with the availability attribute. =
-)</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; =
-font-size: 12px; font-style: normal; font-variant-caps: normal; =
-font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; widows: 2; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-line: =
-none; text-decoration-thickness: auto; text-decoration-style: =
-solid;"><br style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; =
-font-size: 12px; font-style: normal; font-variant-caps: normal; =
-font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; widows: 2; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-line: =
-none; text-decoration-thickness: auto; text-decoration-style: =
-solid;"><span style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none; float: none; display: inline !important;">So =
-every time an SME type such as hv_vcpu_sme_state_t is used, it =
-has</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration-line: none; text-decoration-thickness: auto; =
-text-decoration-style: solid;"><span style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">to be guarded :/ __builtin_available(...) =
-check is not sufficient</span><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">because it will not compile due to =
-undefined types.</span><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: =
-solid;"></div></blockquote></div><div><br></div>Hello,<div><br><div>Newer =
-SDKs can still target older OSes so we might get away =
-with</div><div>just requiring a new SDK but still running on older OSes =
-I =
-think?</div><div><br></div><div><br></div><div><br></div></div></body></ht=
-ml>=
-
---Apple-Mail=_0B70B3B2-3BA4-4780-9BB0-E58C1536AF6D--
 

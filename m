@@ -4,90 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8619ED41179
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 11:58:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B1EED4117F
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 12:45:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgLyy-0002w4-I1; Thu, 15 Jan 2026 06:57:44 -0500
+	id 1vgMj7-0005yC-63; Thu, 15 Jan 2026 07:45:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vgLyv-0002tk-Cn
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 06:57:42 -0500
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vgLys-00044q-D5
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 06:57:41 -0500
-Received: by mail-yw1-x1132.google.com with SMTP id
- 00721157ae682-790b7b3e594so7058707b3.3
- for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 03:57:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768478252; x=1769083052; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=hhSQBKfxXI2WsQjOVZiYLAiw51bdDJWmLOFxmvaZu5g=;
- b=WSF8uMykznuMrV8KcA6V01i5Wy5gczge6rB7ALAlBr14G5xxHQItngdaIP7DvJE6LK
- dEH4VFTsVzOeudbITp3a1bCPvrl0Nwurn1ZLAnBpXpym9ydW1wRKOMSG09D0ScoTa0CC
- wdPvwrqVPxVucwDuPv6JyeIPxs/2EHHt0DWi2mzn+nUyoFhIo0FX6G1unRVd5XxMHUis
- JGpgedqLFDhCqCkOrr4F5K0dwApZJKrjcJG8XCdsjrLYBCqkgZlz8QPhV2bxSXyFGO83
- IDIuRwET1S6K3GmOfLjTqvGbV4ITWL9PtwwtT4qdxf8+au+N6+o0FSPZH8o1bSR7ixSM
- SryQ==
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vgMic-0005hQ-AY
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 07:44:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vgMia-0002LJ-G6
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 07:44:53 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1768481089;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=diCN32yadw+M+p+dim/v/PRbRLDey/3McuQQoWLNtzM=;
+ b=iVqUhkKopT6ao6+QDkUKTMURNqRcneG/+eTAaHrjk4uKODzwkTljalI8OU7LDGwpWM0yvO
+ 6F7rHFpHPZRKnavX4NtBlJZ1TU6Ls0nvLLftHPoKutgN00knUkHqvmn5toAz3u/LqGoAWA
+ G4M56P3iapdLMX2GMo6UTsPyuxPACAA=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-372-nD3cn9rFN-CLzl01b2Nhog-1; Thu, 15 Jan 2026 07:44:48 -0500
+X-MC-Unique: nD3cn9rFN-CLzl01b2Nhog-1
+X-Mimecast-MFC-AGG-ID: nD3cn9rFN-CLzl01b2Nhog_1768481087
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4801d21c280so1344385e9.1
+ for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 04:44:48 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768478252; x=1769083052;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=hhSQBKfxXI2WsQjOVZiYLAiw51bdDJWmLOFxmvaZu5g=;
- b=OORaaA/iKFVQ21E2FsA6QcrXSIcsNLY7hCxmshno5DKX8/nVetvHhlzJ736iDgVYiL
- 2baZVWFJVrypFiPKhrD0ZIPqT+/1sjO1MlpcDhgjbh0HMuxFkZtyVoNNwQY6PcEU+yAD
- 2cpN3ip+XICc3tEL9YMtSyXMKY3giXm1GXjm79wLTq5tiTV6j9w0/HLQ2Tzd8THYGtSF
- xJe7Gatx2O6iSl+PNA7a93EvfjEixVdf3nlUPxePB66fR6m6OV5J93LoL0290V+Y+fW7
- nxYmTiQ+PLiCtazBgz3M/fU0o4jcJmrNtdA5m1gz61znq8KwF7RTkMelIrVzdgJ8V3Vj
- IjAg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX3HByGBvuw7qQekSnx7P+vhUu6i+MOFcCLfqgLadSrMqJIvJQ5YHasymXvXIwVRPKylUGtqsYlvw==@nongnu.org
-X-Gm-Message-State: AOJu0YwsE3BN8QxK9doWhYfLBy5byfp5MISYmVDJs1KjigSXlG+WwUWx
- 7qInXlo8Qia3GtDNRozraY8WLfX7RC+apPtumEQquBmxbk3Twss2dkVQ78o/U0BAX9qnT9HSFYt
- hzQ4mmXEeUoqjgYeCtGZuJSObBDLipfr5kYMVucCQFw==
-X-Gm-Gg: AY/fxX5oCrYft2OtlhhIh7Aql3APsZJPN5h1ZN1Ru92dPxQuj09TOch1BrvZM/etl1O
- mOKU83tqrGgyrWV2jEaWeWMkKecpBY0iQoX3X4pm1zhcVw/YlxWNq31M/BhDT502fyGO7dIpQ/6
- nj20oh6SP+ahpbwIvSC3XwDUV1h5yBREUQJAzbI1BOJ/UeaS5QC+M/6uzLTVrP/MOjhJT/61M+g
- ZZYWhAu2iSr5Km52cuwd+BDIeBqIQCrwtEreP1GcLxiAPnFPNKRqx9x0RfO2alYIOXAGlARu6nq
- j/ixJ7istke9yTQwbiG2fyE=
-X-Received: by 2002:a05:690e:1898:b0:646:ba5e:4cf4 with SMTP id
- 956f58d0204a3-64903b45b26mr4252154d50.51.1768478251501; Thu, 15 Jan 2026
- 03:57:31 -0800 (PST)
+ d=1e100.net; s=20230601; t=1768481087; x=1769085887;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=diCN32yadw+M+p+dim/v/PRbRLDey/3McuQQoWLNtzM=;
+ b=hsN0Xz78r04re43x2gWN/oP/WI1W+dEMBpp6lVTk8xUtEDtV2Pcgd5FaiMkBIcLQai
+ QPypagCSiqPgt/FE1O/huQ5bW7XPJDmLmMw55dxpmWiZp1N0Y7xC72voDS3to59bs9ue
+ 81Klum/AvL1/2oD9iYBaeh7cIkRGXH0qkq+bjYrZ7agNoT+hNE8iLrnPbHuMie1Xb6HO
+ wcmyiOffDySTkvS4kYR0z3VPuYllH/3PFQjYqt6tThaaCgGiNJbTbGZcHhNQqDQLP3ca
+ z36KGP1HYayGwdHbcrprrJbW0C1n7+rdLYry+oa8qCyxjFpUXSWgTkc8XnlE1JmLdZ8w
+ lqmA==
+X-Gm-Message-State: AOJu0YxUgDENMJU/G0cG9OxHYnATNbiEzqUCirzibkyoY4cdqxEAOLML
+ 8zDKhTLK6cbPRwsYHu+rho0/15/JUrDE2LYvhoXbD3NIcXgrgY6WfDtrQVHbvU3iYGLrGB1ZA6n
+ 1NSe61w3qjIkMTlyADujQpKX63q5NeE6D7C6xcaOihdrfA/FPwvlJAA==
+X-Gm-Gg: AY/fxX7p0DG8f6x63iT5JBcl8hzw7jgmJOOqh+6z4MF7oQudFqqzudzMOuXsk9qNYxx
+ idHx3VL0FpJiPfe4JHplrM8BaihPvbnBfub3j60GgeCL0EOlNjdWGGKq1fVB9QbjGIDGiIRlg6z
+ xYPif3Wrfxu5jSXrwajREVBph82UJg71OZErhPM08BqoxqfASVBAvMAQ/6W0Cm2rcuJ/x0JnTUq
+ G/Ln+f0CcVo7fZ0vsol3TkMsax8gJKh+xj2/LmWiYW22B4AwvpWoX95kZkbKhgMpKfYeDZXQULG
+ 0A4ezujZ5IgZf+Eh/JVjhEaNO7a20W3C8olV1sV4RI3ZvH6l3JbfNDJnWQw6XHp04Phe/k0fB0D
+ CoAk6xPsLO/1DGRHFrGDeoQXssgGbqLSaJuXjN5NYuCk2Jb/w
+X-Received: by 2002:a05:600c:3544:b0:479:2f95:5179 with SMTP id
+ 5b1f17b1804b1-47ee335494fmr77437185e9.15.1768481087461; 
+ Thu, 15 Jan 2026 04:44:47 -0800 (PST)
+X-Received: by 2002:a05:600c:3544:b0:479:2f95:5179 with SMTP id
+ 5b1f17b1804b1-47ee335494fmr77436825e9.15.1768481087111; 
+ Thu, 15 Jan 2026 04:44:47 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-434af64a5bbsm5572550f8f.2.2026.01.15.04.44.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 15 Jan 2026 04:44:46 -0800 (PST)
+Message-ID: <219d7d36-65da-4638-91a3-f26aa364ffc7@redhat.com>
+Date: Thu, 15 Jan 2026 13:44:45 +0100
 MIME-Version: 1.0
-References: <20251204093502.50582-1-corvin.koehne@gmail.com>
- <20251204093502.50582-16-corvin.koehne@gmail.com>
-In-Reply-To: <20251204093502.50582-16-corvin.koehne@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Jan 2026 11:57:20 +0000
-X-Gm-Features: AZwV_Qg2qS95djnbs1LQP81AeoC4hcz9OBzeKUlAiFOlXgF8vAqjY1OMyOaxDBE
-Message-ID: <CAFEAcA-fU1qxTCoHaEQfGOmPPHyFL2Q74DXvLyti+28xe2bM+Q@mail.gmail.com>
-Subject: Re: [PATCH v5 15/15] docs/system/arm: Add support for Beckhoff CX7200
-To: =?UTF-8?Q?Corvin_K=C3=B6hne?= <corvin.koehne@gmail.com>
-Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- qemu-arm@nongnu.org, 
- Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org, 
- =?UTF-8?Q?Corvin_K=C3=B6hne?= <c.koehne@beckhoff.com>, 
- Hanna Reitz <hreitz@redhat.com>,
- =?UTF-8?Q?Yannick_Vo=C3=9Fen?= <y.vossen@beckhoff.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/4] hw/vfio: Add helper to retrieve device feature
+To: Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Shameer Kolothum <skolothumtho@nvidia.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
+ alex@shazbot.org, cohuck@redhat.com, mst@redhat.com, nicolinc@nvidia.com,
+ nathanc@nvidia.com, mochs@nvidia.com, jgg@nvidia.com, kjaju@nvidia.com
+References: <20260113113754.1189-1-skolothumtho@nvidia.com>
+ <20260113113754.1189-4-skolothumtho@nvidia.com>
+ <20260114101949.0000669d@huawei.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20260114101949.0000669d@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: X-awNnYDg612Izj3JcLw0rSCr1fFxRe56r2rdLLLslM_1768481087
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,107 +160,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 4 Dec 2025 at 09:35, Corvin K=C3=B6hne <corvin.koehne@gmail.com> wr=
-ote:
->
-> From: YannickV <Y.Vossen@beckhoff.com>
->
-> This commit offers some documentation on the Beckhoff CX7200
-> qemu emulation.
->
-> Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
-> ---
->  docs/system/arm/beckhoff-cx7200.rst | 57 +++++++++++++++++++++++++++++
->  docs/system/target-arm.rst          |  1 +
->  2 files changed, 58 insertions(+)
->  create mode 100644 docs/system/arm/beckhoff-cx7200.rst
->
-> diff --git a/docs/system/arm/beckhoff-cx7200.rst b/docs/system/arm/beckho=
-ff-cx7200.rst
-> new file mode 100644
-> index 0000000000..f060319b0f
-> --- /dev/null
-> +++ b/docs/system/arm/beckhoff-cx7200.rst
-> @@ -0,0 +1,57 @@
-> +Beckhoff CX7200 (``beckhoff-cx7200``)
-> +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> +The Beckhoff CX7200 is based on the same architecture as the Xilinx Zynq=
- A9.
-> +The Zynq 7000 family is based on the AMD SoC architecture. These product=
-s
-> +integrate a feature-rich dual or single-core Arm Cortex-A9 MPCore based
-> +processing system (PS) and AMD programmable logic (PL) in a single devic=
-e.
-> +The Beckhoff Communication Controller (CCAT) can be found in the PL of Z=
-ynq.
-> +
-> +More details here:
-> +https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM/Zynq-7000-SoC-Techn=
-ical-Reference-Manual
-> +https://www.beckhoff.com/de-de/produkte/ipc/embedded-pcs/cx7000-arm-r-co=
-rtex-r/cx7293.html
+On 1/14/26 11:19, Jonathan Cameron wrote:
+> On Tue, 13 Jan 2026 11:37:53 +0000
+> Shameer Kolothum <skolothumtho@nvidia.com> wrote:
+> 
+>> Add vfio_device_get_feature() as a common helper to retrieve
+>> VFIO device features.
+>>
+>> No functional change intended.
+>>
+>> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> Hi Shameer,
+> 
+> Happy new year.
+> 
+> Trivial thing noticed whilst glancing at this.
+> 
+>> diff --git a/hw/vfio/device.c b/hw/vfio/device.c
+>> index 100532f35d..0d9f42a1f0 100644
+>> --- a/hw/vfio/device.c
+>> +++ b/hw/vfio/device.c
+>> @@ -516,6 +516,7 @@ void vfio_device_unprepare(VFIODevice *vbasedev)
+>>       vbasedev->bcontainer = NULL;
+>>   }
+>>   
+>> +
+> 
+> Stray change.
 
-This doesn't render very nicely in the HTML documentation,
-because it comes out as two bare URLs with no line break
-between them. Can you write this as something which uses
-the rST syntax for links, please, e.g:
+Yeah I can fix that when applying. No need to resend.
 
-You can find more detail about this board on
-`the manufacturer's product page <https://....>`__.
-The SoC is documented in the
-`Zynq 7000 Technical Reference manual <https://...>`__.
+Thanks,
 
-Also, is there an English language version of the product
-page? Since QEMU's documentation is in English that would
-be the better link if it exists. Otherwise we should warn
-the reader by adding "(in German)" when we point them at it.
+C.
+> 
+>>   bool vfio_device_get_viommu_flags_want_nesting(VFIODevice *vbasedev)
+>>   {
+>>       VFIOPCIDevice *vdev = vfio_pci_from_vfio_device(vbasedev);
+>> @@ -527,6 +528,15 @@ bool vfio_device_get_viommu_flags_want_nesting(VFIODevice *vbasedev)
+>>       return false;
+>>   }
+> 
 
-> +
-> +The CX7200 supports following devices:
-
-"the following"
-
-> +    - A9 MPCORE
-> +        - cortex-a9
-> +        - GIC v1
-> +        - Generic timer
-> +        - wdt
-> +    - OCM 256KB
-> +    - SMC SRAM@0xe2000000 64MB
-
-The "SRAM@0xe2000000" renders as an email address hyperlink,
-which probably isn't what you intended. I don't think the
-address of the RAM is particularly important to the reader
-of the docs, so we could just omit it.
-
-For docs changes, I recommend making sure your build
-is building the docs by passing --enable-docs to configure.
-Then you can look at the HTML that is generated in your
-build directory under docs/manual/ to check that it hasn't
-come out with any unintentional markup issues
-
-> +    - Zynq SLCR
-> +    - SPI x2
-> +    - QSPI
-> +    - UART
-> +    - TTC x2
-> +    - Gigabit Ethernet Controller
-> +    - SD Controller
-> +    - XADC
-> +    - Arm PrimeCell DMA Controller
-> +    - DDR Memory
-> +    - DDR Controller
-> +    - Beckhoff Communication Controller (CCAT)
-> +        - EEPROM Interface
-> +        - DMA Controller
-> +
-> +Following devices are not supported:
-
-"The following"
-
-> +    - I2C
-
-thanks
--- PMM
 

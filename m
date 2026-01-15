@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 269A7D3CC8C
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 00:18:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17989D3CC84
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 00:18:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgB3S-0003Ow-9Q; Wed, 14 Jan 2026 19:17:38 -0500
+	id 1vgB3l-0005HQ-AM; Wed, 14 Jan 2026 19:17:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vgB3O-000335-98
- for qemu-arm@nongnu.org; Wed, 14 Jan 2026 19:17:34 -0500
-Received: from p-west3-cluster5-host5-snip4-6.eps.apple.com ([57.103.72.49]
+ id 1vgB3j-00058w-Up
+ for qemu-arm@nongnu.org; Wed, 14 Jan 2026 19:17:55 -0500
+Received: from p-west3-cluster4-host1-snip4-6.eps.apple.com ([57.103.74.177]
  helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vgB3M-0002E8-Qs
- for qemu-arm@nongnu.org; Wed, 14 Jan 2026 19:17:34 -0500
+ id 1vgB3i-0002Is-Cn
+ for qemu-arm@nongnu.org; Wed, 14 Jan 2026 19:17:55 -0500
 Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-3a-60-percent-0 (Postfix) with ESMTPS id
- 4848F18000EA; Thu, 15 Jan 2026 00:17:28 +0000 (UTC)
+ 766611800412; Thu, 15 Jan 2026 00:17:50 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=ECjpVySg6XZ/QHOAAJ+X/A1Hu2Jhdy4KwMcQqAyYNsk=;
+ s=sig1; bh=j3gxaGgJ/UOlr7E7Wf1HhS3Y6+PzTtQg7lYYYapxm5A=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=UemdLdlnW3pw756109SGHhqjByNQoXkKy8QR53VjtLsW4QmTIiiZQ200Xy4OId6+BeqNUQyRAX/B1uxpRmIA0mNfLtHATtYarZslj2FOuuJ5KEGaXi1TFj0UbL4s+fcVN4X/LjOrNDqdnWMPHzO+jHoxQsRKEj3rI4Ry3dnUw42cQ/IzjXz0BDOdHskI10kE1NY5tqvAq1A3/jUCiLNou5tqudCb4w6spfTyKdt18NyF29HSNcVJMHFfQqKk+sRj2x7x1p5QVRRndTi4J77EdWDH7ogeG325s7iz3+JavmReVNiNU8daXT3UMEdJ5EvKHzRgFn4rfQouSIxa3TIKtA==
+ b=WUPKWO3G+qTUjzeVfm3tOxfIIkQVN0eECH5wH2/qmIW60WWGmYtkWvAu91watGYvWfEo4ejWnFCd2nvJDvGQMV7HGKVKeWBdusNPLbFh+PGS+sxcoV9ySFP4o2TdRdI5pgl00mA6heV3rlH78aq4kOmJheIYPD6iuhpksAUvPjSf7zMMcwzEjUMOird3Hv5v4zErxqlWshNxIaf0xz4WtMcNER9F8AIViFAqMy4cJdBMQkjrJrrYh5B9fWH3Z1blWAU+8QhePa0FFaigzsVJw2+5n1syAwuiHHMXta6QyPC0hBpXCS2oYw+5DXbFIvKJpjIdC3IrnT2p9xyHnJJe2g==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.154.37])
  by p00-icloudmta-asmtp-us-west-3a-60-percent-0 (Postfix) with ESMTPSA id
- 23E181800464; Thu, 15 Jan 2026 00:17:20 +0000 (UTC)
+ DCE571800440; Thu, 15 Jan 2026 00:17:42 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: mohamed@unpredictable.fr,
 	qemu-devel@nongnu.org
@@ -55,36 +55,36 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Zhao Liu <zhao1.liu@intel.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v15 21/26] target/arm: whpx: instantiate GIC early
-Date: Thu, 15 Jan 2026 01:15:00 +0100
-Message-ID: <20260115001505.57237-22-mohamed@unpredictable.fr>
+Subject: [PATCH v15 24/26] whpx: arm64: check for physical address width after
+ WHPX availability
+Date: Thu, 15 Jan 2026 01:15:03 +0100
+Message-ID: <20260115001505.57237-25-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260115001505.57237-1-mohamed@unpredictable.fr>
 References: <20260115001505.57237-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Info: v=2.4 cv=NcvrFmD4 c=1 sm=1 tr=0 ts=6968321a
+X-Authority-Info: v=2.4 cv=a7c9NESF c=1 sm=1 tr=0 ts=69683230
  cx=c_apl:c_apl_out:c_pps a=qkKslKyYc0ctBTeLUVfTFg==:117 a=vUbySO9Y5rIA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=EYz79TNVRTG0waESW9UA:9
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=lhTSZ31de6YUvqMuns4A:9
  a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: -A4VqT8Yb9eqdo194hmSRYXls96GieF_
-X-Proofpoint-GUID: -A4VqT8Yb9eqdo194hmSRYXls96GieF_
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE1MDAwMCBTYWx0ZWRfX134Ykxz/O9dZ
- qdUr0a7n9t/nBu39RWn+MvRLDdC0uWWn2m8xeLfR5xbCAMxH1EtvqfzHhew7+z2TBbRKE7FtUmb
- yHXWXnpHBkOn50tcYxxzvRpp3xPnnVozTDY460wSemaqJCOx1bFsm9FIkxbdPgdT1xYjbFnjML3
- luSb5wEUwmOYlEPki564bjAmjgbA+3LyvPd3NqBHdFtuO3WQgPp2RPQUMJMR4yt1VKJwUYhjX1c
- Xoq2NL1laGaEGsbCIpa/vwmbjd2FgUIfQKXVuBgvTIJfoMU88/FoyFRKdcG4NdQQ2QNk4hQCB6t
- tKRHXll/M+jh9TerOcE
+X-Proofpoint-GUID: BuuWRK_Lf1o0Y0N85gXC5QsfmjBvE1cH
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE1MDAwMCBTYWx0ZWRfX7HAmcsrnwADA
+ Mfh4zNbG2bZJp6womv0C97Yfnoa9kr16AfsymB+GG6xzWoJ7KhE/Xf1u6vijddYm09tSaNBoBmM
+ ihYFx4MncKEBLXPDEwqOJ27+2rU8mtcna9pKB2Mv4i0H75T2mzVE6tw8ChlwEQkFxGt3O8jea49
+ t+ariZjcCHOePPDHt57uORPArb4FlcrtamLipQtdjq/XeEAIR9FmpcyRxhJZrgOEgULbX2Bpsi1
+ 5DqJbIarIxbQdMg6tEP6nBYvXxmLBsDRll0e/OMTzofSpKNql4DqAivSTQr4+T1puxNj34X6026
+ QMRmMzIZPjnAiaHubD8
+X-Proofpoint-ORIG-GUID: BuuWRK_Lf1o0Y0N85gXC5QsfmjBvE1cH
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2026-01-14_07,2026-01-14_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- clxscore=1030 malwarescore=0 phishscore=0
- mlxscore=0 spamscore=0 adultscore=0
- bulkscore=0 mlxlogscore=729 classifier=spam authscore=0 adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2510240001 definitions=main-2601150000
-X-JNJ: AAAAAAAB/g9miUHotC68RiIo/rG/KyaoUrevrCalQcvf3K7BMUg696QP243Wy8hynCqU2v0hes0HxxQSriSW59wxu1ZqSyLMqL5XDwL2o9/GYTkVWoskctwOdfck28UZcU4yODbMWUNrxTLKOTzx4aS7Ezb94e66NxYBSQULsPK23yGupbnL2k+o7sbnmUQnLIuXp9HeJ5BmYs39Y2ggnPMdbPrdN5HFESNhMSWYwkxioCpfE93vK+IBxE1ZaE8V0Ts5Ojsibu29/czvTUBKBMUopnm0jmMZMiYxcbxkI/kEgAIPmhUMQFP8Na7FhqU6sJxLOCmo7lyk8tZjyp8nC0DK22INasjsXFUOCykshvBVwrQeIJFI8LZrJPhwdCS07imq/GJ9p1tuB4lZof26jjkJtjhmV+tybae+wBZnwM+qXaN4q3NqQYRIuFCGrTG5zP+FeCeGntRx4jhyz7s1kVQxFgTQzV+U2rCLIgNNZY9XPZilqOddXhBXXDX3uzQ+okJgH4Z4obvo1XgK/pIza5RMF0OFEXBwpTAHmmXa2WXdJpbHzSdPnHthEeYkVkgBt4lnOaaCU1xI5YEQpgZBfJx/bXISx3NheJsRgTdiGnjYUhEpVKaYAeUe2OvsBUHYTRwlNX7eG2CWB2Ecmn/WBAqnesf8d0W8OwKprHVoHETcc3tLB521gImGpIAVWfkD5JBze43rs4vdHQNS1CbghqRgmftY/970AphdV/8fioo6s0bHFDta/Sa0AvaoMDIntc60tcueS5Lc1AWr+sCwdUedy+yMSls6U20cQ+NS7w7WGWwrAyULZz418gl5yW1/Pb7/zUuB8AM8TJVCVDiTTrIjyg6HucpTNduyveMpenRhpATEywh0mJUn8LWPtIrHlvl9zQ7BbmXIwovL9eFPfIZH5RC7CjkRFBRb0hVLI+dQrI8jxDACA5J0iI0TFw==
-Received-SPF: pass client-ip=57.103.72.49;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ bulkscore=0 suspectscore=0 spamscore=0 malwarescore=0 clxscore=1030
+ adultscore=0 mlxlogscore=999 mlxscore=0 classifier=spam authscore=0 adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2601150000
+X-JNJ: AAAAAAABRHA02LwuS8bMOV//VuGbwwN7qP1XWZWUe9FCH8SMcFY8uI578w7jFeKiJKviayplt5Aq4+z/heNzIT+b/Eoq9KVNXzJqmF/V9CkMTNvJN2Gj7umedawJh6osIlTVw2FGk9CiuBhjFGs+4IW81zbBdnNTuO6L069xizv/uJxj49QsTro3N7Pyap7Yr/WZjyJKsGEiVikAWGT3AZnuvUPQONjNheTy/2PXNjxaxJFK0GFDTbbHyqB7PYEm1l1ON9uWJd/Z8oIZqAh/UzOyD+DCgH77QNJ2Twrv61qviTUYAhK7xftTAeld+CBXS5Upzt8lQ5rPWrze8Mzl9Yb/0cpvzN4kQVTjQL5CDW4BpaKsEkilBjEkD3Vbc6osMnojJGV/L5zZyAFzTf0SeUVw4VLgZQ9Ll9SB4n12yIVrc5bWJ1VLIgdw74QvgHYTjog/fZuh7xtM+j1r08+hBUh+iQGoq1H33gL3ZTRlF3g2glkpEkqvvt2QQ57ZKS12aYluJt5YlhTs0/Gou6lc852qy1KN9vY7gATo1zrdYYgarL6fBgmTMb6XMMI3UjIJX0xb97xjIixcDJBM4Fb6vXnl/HVqSi2FnO+07B8N7KPsaIetGz2nRvsl5+k+1rVH7pkBmIjfmlVsDGW6eQf/X1IdhBxDclsTrUxUyB1rZBDcSFqb5spyGcHObFax+HGDVQq+EamBXShnQxOjOXZyNQYd2LmXjbdtHB/BxVuZUQwCgWWZ7kpJ1ZpEQ8tX1JBdXkO5Q5gQDQigBopDyzGHIlrU+uTmlrJjLVOg9Y/+egYBut4QK249wLRfH6csbmdgdU0Lraw+N27Uge/GwKuwgrQtGbevXKfBxeOR7KmDVRXL0I8z50vFdq9SrSVFCfs1Vj9wTQAntxpTezhT3Z8KlHYt/eXVenKbxrtYo6kgIV49L8OSDNQ9iZAMeGKvJ7gl05qcZZyO3ul2FdRpYTGeavVt
+Received-SPF: pass client-ip=57.103.74.177;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -108,51 +108,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-While figuring out a better spot for it, put it in whpx_accel_init.
-
-Needs to be done before WHvSetupPartition.
+In the case where WHPX isn't supported on the platform, makes the
+intended error appear instead of failing at getting the IPA width.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/whpx/whpx-all.c | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ target/arm/whpx/whpx-all.c | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
 
 diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index 3b79b8b376..ab31371aea 100644
+index ab31371aea..def85988e7 100644
 --- a/target/arm/whpx/whpx-all.c
 +++ b/target/arm/whpx/whpx-all.c
-@@ -945,6 +945,29 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+@@ -654,7 +654,7 @@ uint32_t whpx_arm_get_ipa_bit_size(void)
+         WHvCapabilityCodePhysicalAddressWidth, &whpx_cap,
+         sizeof(whpx_cap), &whpx_cap_size);
+     if (FAILED(hr)) {
+-        error_report("WHPX: failed to get supported"
++        error_report("WHPX: failed to get supported "
+              "physical address width, hr=%08lx", hr);
+     }
  
-     memset(&prop, 0, sizeof(prop));
+@@ -879,15 +879,6 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+         goto error;
+     }
  
-+    WHV_ARM64_IC_PARAMETERS ic_params = {
-+        .EmulationMode = WHvArm64IcEmulationModeGicV3,
-+        .GicV3Parameters = {
-+            .GicdBaseAddress = 0x08000000,
-+            .GitsTranslaterBaseAddress = 0x08080000,
-+            .GicLpiIntIdBits = 0,
-+            .GicPpiPerformanceMonitorsInterrupt = VIRTUAL_PMU_IRQ,
-+            .GicPpiOverflowInterruptFromCntv = ARCH_TIMER_VIRT_IRQ
+-    if (mc->get_physical_address_range) {
+-        pa_range = mc->get_physical_address_range(ms,
+-            whpx_arm_get_ipa_bit_size(), whpx_arm_get_ipa_bit_size());
+-        if (pa_range < 0) {
+-            ret = -EINVAL;
+-            goto error;
+-        }
+-    }
+-
+     whpx->mem_quota = ms->ram_size;
+ 
+     hr = whp_dispatch.WHvGetCapability(
+@@ -915,6 +906,14 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+         goto error;
+     }
+ 
++    if (mc->get_physical_address_range) {
++        pa_range = mc->get_physical_address_range(ms,
++            whpx_arm_get_ipa_bit_size(), whpx_arm_get_ipa_bit_size());
++        if (pa_range < 0) {
++            return -EINVAL;
 +        }
-+    };
-+    prop.Arm64IcParameters = ic_params;
-+
-+    hr = whp_dispatch.WHvSetPartitionProperty(
-+            whpx->partition,
-+            WHvPartitionPropertyCodeArm64IcParameters,
-+            &prop,
-+            sizeof(prop));
-+    if (FAILED(hr)) {
-+        error_report("WHPX: Failed to enable GICv3 interrupt controller, hr=%08lx", hr);
-+        ret = -EINVAL;
-+        goto error;
 +    }
 +
-     hr = whp_dispatch.WHvSetupPartition(whpx->partition);
+     hr = whp_dispatch.WHvCreatePartition(&whpx->partition);
      if (FAILED(hr)) {
-         error_report("WHPX: Failed to setup partition, hr=%08lx", hr);
+         error_report("WHPX: Failed to create partition, hr=%08lx", hr);
 -- 
 2.50.1 (Apple Git-155)
 

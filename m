@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4C50D44C51
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 14:43:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F805D44C5A
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 14:47:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgOZ9-0001w3-Jj; Thu, 15 Jan 2026 09:43:15 -0500
+	id 1vgOcf-00052o-3T; Thu, 15 Jan 2026 09:46:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vgOZ8-0001rY-OA
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 09:43:14 -0500
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+ id 1vgOax-0003vT-S1
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 09:45:10 -0500
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vgOZ7-0000s9-9k
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 09:43:14 -0500
-Received: by mail-yw1-x1130.google.com with SMTP id
- 00721157ae682-78d6a3c3b77so23492367b3.0
- for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 06:43:12 -0800 (PST)
+ id 1vgOar-0001ou-K1
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 09:45:04 -0500
+Received: by mail-yx1-xb134.google.com with SMTP id
+ 956f58d0204a3-640e065991dso765579d50.3
+ for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 06:45:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768488191; x=1769092991; darn=nongnu.org;
+ d=linaro.org; s=google; t=1768488300; x=1769093100; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=yGYX73FexNOZzJXnqTQjYpmSrqQbh8LUca7FoXltfRE=;
- b=ge0sG5Awg/OXBNAWbXj3geU5C8+wRNhVNZOokG3DTz5qE/jHr+Vbs07lSA4w36B4b2
- jG9YaeZq3idbvZFefqxzq8T5K/M3Skx47lEnZHdisyQOvT6NyFj65rrDoCjMk6Y/OCTt
- 87qV/dQLlX1xz6VEq/oYZTwipXoLvAdrjKwSN0qjU4k97icz5IetKnqDWtc++pJt2aZk
- oRu5M03zFsafAGpgTRIYJUGhAnYgHcG1VkYUQUIKDbdpnKI/qcjZeI1vDWjYIG0qzJqD
- j77dfPA0iDkPP1xn82g9KvUcuU1ZFtw3fGUyU1SfOKL7ATQFPC3Z8dnKPDVjHhFdeANK
- +13A==
+ bh=U0kStazpEK+tQh/bB+hGCrN08JkxnxoJZhaDYNhSHMk=;
+ b=du69JuKP8SSe5S1NMgd8trSMb0aAfQ3e+DwPnRj1f4xepmnEhn7PbWiwoCUVY8eGsv
+ KlNa9v4jOGuQUNncM0Ur5a+aRN2OH5r7OlMN6tPSnMIjwbiF72vfn8TYVnnADTCttOP/
+ KTHf/qcjAHfw5Pbr8hUH+dL1jkVrYlj1MBX0bKxu4lZVvwR68LPWmPRUPaEIFJ6e5Zuz
+ /vvQv+Eji/Q1MKjUcX9oA04yDvBqxxmq/L0T0Ce9Rtto5SmdlP4FDUKTncta2g9O/PF9
+ OrGIe8qZOmSxVQFuGcaFGGI9rDhU4CrGXdpSlD744xv4V+IEtOuc1z0k9KYklXWOqBda
+ EShA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768488191; x=1769092991;
+ d=1e100.net; s=20230601; t=1768488300; x=1769093100;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=yGYX73FexNOZzJXnqTQjYpmSrqQbh8LUca7FoXltfRE=;
- b=dvdahNHZWlsYacGHqGGkv/u+Md91sRuKGtLASU3mj7bUs5fY9Lk0vUDIcEZ+7asFft
- ZlPO/kklAO0E9R3R2rTyboa59rH20VhZ9n7aXthYHbU6cBmscjok2+F05S6ttMAHQneN
- Owaco76gBtZ1q8kkFjF2vP22dYY3Ft9DIvodiwya7EeI7nasf5yfFuEKKgbR9Yl9XfeI
- c14LU5cDtmfdu7F3PpK3YlEzgvqRmmehVqMFLKrgmoYxNRHXNRi9XWgsLPFxQbouNoU4
- ZUxaCDAUDa2IG+972O/Z40YAfSBIlEtBk5LI/29WOoL7476bZbpVUEpuhiHz6TGKraEY
- ojFQ==
+ bh=U0kStazpEK+tQh/bB+hGCrN08JkxnxoJZhaDYNhSHMk=;
+ b=D44gZAk+LFhrUWniO1EUrSjBmEqMDB33TSCSs9cGuPNavK4LMTiV07NnaUc03/Zp+r
+ rxKbWHDloHKP/8+c/CYz6GTq68DMLS2ric+tjLvOIaBssBdEXkl9fYttGtoXqt/Y63vF
+ FaFHIrzp1fD5LEltxUN1nhrLxOy0MOJNqG8B4D7UBG3/q/3d3b8URzO2FznXwRooL3PC
+ DF+v4CJiTJfFDhq7VTwhYI/2wJBCGDDwOL6Kb2UEN6dsGIensKeWrJMmGc3TIdJ4fmgB
+ jGYBkoQLLYCdTV310+j3GOgzdvXkoxvhVTVfGt2nitdkIZoOs0PAcxzsM/NKl8k+rgRT
+ eKoQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVeg4Y3GkheRaVa63w6humMdZ3S0uencqnlZ+mpmvgfrCB0Y/rTjGl8P2aAct/+CHr9JQ8tKnsbvg==@nongnu.org
-X-Gm-Message-State: AOJu0YyxYe/IEkv3ohjjgbXJFb2vZew2f1fD3PzadU9zUmR/ANOjgGV1
- EF7+wAcovEptkEh0i5HbSfUzLJL7EeGmgpSLGisuO/3JWzOj1boodjhBio9YX54oE7qmjU1u1YU
- NjD07rcweZC0JCP1sKvb39tds4lNm6DO3HZlHdP+Ahw==
-X-Gm-Gg: AY/fxX73tcQCgkshAUZN0c9DofshLZBWbxAgbij3bG5qcPex9dw7g9KOrf4aIhjSYIN
- puxCAyzYs5G3sdeiSgEztyZgkwYtQwfI/CzNKYywpCqQxTLJmEsxvQJKnhTiyTtssfJAxVWPzbf
- blEkWyguB9CCJoLgmGaoWALBIZCXSzoe2Fq0caHoka4taAjaox9NKSAHvohHUzKHFuQW3Eh7LHy
- JMW52mdNoWW7cAXFuxr/Jt19h1XyzSXTJEgZG+WHTt5znIN0bInYhWVYYeK9aCc0yIlTt8PFXk7
- rUnOnxB3nkKYIclS6ZVJjXo=
-X-Received: by 2002:a05:690e:134b:b0:644:5317:4bd1 with SMTP id
- 956f58d0204a3-6490a608ffbmr2271918d50.9.1768488191269; Thu, 15 Jan 2026
- 06:43:11 -0800 (PST)
+ AJvYcCVFRpxcZMqkud3hErSnrR16v8v762x5nE/kdDU6jHvX2SKxqo+A06QadBlaNQ+QKqxgdxGPz+Urxw==@nongnu.org
+X-Gm-Message-State: AOJu0YzqlOPHQ0w3D5Y3OS1t6g1LXymniY0ZbkgitP+Cz+ypBd0NVQ9l
+ y2ICX1cXj4bjVQpY4G3V33Jty2AZln6hRmf/EE80GzAjRQLLnrHUq+AzUc/5aTpp20y680H+Sw2
+ CQDmnHHhf90zoo9PaV5Lwc2YqVmZufxUmC0efVdSbDAKCmrSGtOb1
+X-Gm-Gg: AY/fxX4eLnoDbuq1qy4gY4vqFnNiVhUXamZsDFjGQzylnad2j9KJ599bPFG7jRInazW
+ rJVBWPQBtbVD8mAwUU8CkBTwPZzKwOKEfQVL7nnJUUOlrYjwyeJWeCT9rd3G2bFSfNaiFh4/oHO
+ PhdeUVI+tgamtPP+2smCQErmglYNLzkBlRm1D3WTyZ9eo801L9+ujGQSvjH6iAD+RaWO0qQYt1K
+ CMRXt8dk6ottgxB6Nr58tzweEeiW8ncYFWlAcabVLAYecPSJ5jTPsHGwUf4YXrtu5wlcYs5WgT8
+ DcKjD/jCzdiA5T3sJveQm0Y=
+X-Received: by 2002:a05:690e:1407:b0:63f:b444:da92 with SMTP id
+ 956f58d0204a3-64903b11c5amr4059761d50.31.1768488300253; Thu, 15 Jan 2026
+ 06:45:00 -0800 (PST)
 MIME-Version: 1.0
 References: <20251204093502.50582-1-corvin.koehne@gmail.com>
- <20251204093502.50582-12-corvin.koehne@gmail.com>
-In-Reply-To: <20251204093502.50582-12-corvin.koehne@gmail.com>
+ <20251204093502.50582-13-corvin.koehne@gmail.com>
+In-Reply-To: <20251204093502.50582-13-corvin.koehne@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Jan 2026 14:43:00 +0000
-X-Gm-Features: AZwV_QhU-36j7qQeSvQxqeU3zKHVzKRM4P04LJxfIOFXxOo0WCI_KbEFCdCsdOk
-Message-ID: <CAFEAcA9pELkMfgcB-0WSjy2gf4T=Pn38pPRfd3wz7K0MYQHYVQ@mail.gmail.com>
-Subject: Re: [PATCH v5 11/15] hw/block/m25p80: Add HAS_SR_TB flag for
- is25lp016d
+Date: Thu, 15 Jan 2026 14:44:47 +0000
+X-Gm-Features: AZwV_QjuwcoS2662mXJ9L3tbarrdVmTq0K_c0pPmhV23RABKYzKzF1azr9AFt-A
+Message-ID: <CAFEAcA8+2dgKtZ6MmL9qoR6F-NvZsHBAHei1cG11kvVwqjmbeA@mail.gmail.com>
+Subject: Re: [PATCH v5 12/15] hw/arm/xilinx_zynq: Split xilinx_zynq into
+ header and implementation files
 To: =?UTF-8?Q?Corvin_K=C3=B6hne?= <corvin.koehne@gmail.com>
 Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
  Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair@alistair23.me>,
@@ -80,8 +80,8 @@ Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  =?UTF-8?Q?Yannick_Vo=C3=9Fen?= <y.vossen@beckhoff.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,30 +109,42 @@ ote:
 >
 > From: YannickV <Y.Vossen@beckhoff.com>
 >
-> The is25lp016d has 4 Block Write Protect Bits. BP3 specifies
-> whether the upper or lower range should be protected. Therefore,
-> we add the HAS_SR_TB flag to the is25lp016d flags.
+> Create xilinx_zynq.h header file to expose ZynqMachineState and
+> related definitions for machine inheritance. This enables creation
+> of derived machines based on the Zynq platform.
 >
 > Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
-> ---
->  hw/block/m25p80.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index a5336d92ff..1df223ee81 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -217,7 +217,8 @@ static const FlashPartInfo known_devices[] =3D {
->      /* ISSI */
->      { INFO("is25lq040b",  0x9d4013,      0,  64 << 10,   8, ER_4K) },
->      { INFO("is25lp080d",  0x9d6014,      0,  64 << 10,  16, ER_4K) },
-> -    { INFO("is25lp016d",  0x9d6015,      0,  64 << 10,  32, ER_4K) },
-> +    { INFO("is25lp016d",  0x9d6015,      0,  64 << 10,  32,
-> +           ER_4K | HAS_SR_TB) },
->      { INFO("is25lp032",   0x9d6016,      0,  64 << 10,  64, ER_4K) },
->      { INFO("is25lp064",   0x9d6017,      0,  64 << 10, 128, ER_4K) },
->      { INFO("is25lp128",   0x9d6018,      0,  64 << 10, 256, ER_4K) },
-> --
+
+
+> diff --git a/include/hw/arm/xilinx_zynq.h b/include/hw/arm/xilinx_zynq.h
+> new file mode 100644
+> index 0000000000..ec80441e7c
+> --- /dev/null
+> +++ b/include/hw/arm/xilinx_zynq.h
+> @@ -0,0 +1,36 @@
+> +/*
+> + * Xilinx Zynq Baseboard System emulation.
+> + *
+> + * Copyright (c) 2010 Xilinx.
+> + * Copyright (c) 2012 Peter A.G. Crosthwaite (peter.croshtwaite@petalogi=
+x.com)
+> + * Copyright (c) 2012 Petalogix Pty Ltd.
+> + * Written by Haibing Ma
+> + *
+> + * This program is free software; you can redistribute it and/or
+> + * modify it under the terms of the GNU General Public License
+> + * as published by the Free Software Foundation; either version
+> + * 2 of the License, or (at your option) any later version.
+> + *
+> + * You should have received a copy of the GNU General Public License alo=
+ng
+> + * with this program; if not, see <http://www.gnu.org/licenses/>.
+> + */
+
+Checkpatch probably complains about the missing SPDX line.
+
+Otherwise
+
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks

@@ -4,87 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 666FFD4117F
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 12:46:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80186D41178
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 12:46:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgMjW-0006Da-8S; Thu, 15 Jan 2026 07:45:51 -0500
+	id 1vgMk6-0006cu-Fq; Thu, 15 Jan 2026 07:46:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vgMjO-00067J-FK
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 07:45:43 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vgMjc-0006J0-Pb
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 07:46:06 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vgMjM-0002fb-AJ
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 07:45:42 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vgMjb-0002jl-BN
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 07:45:56 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768481136;
+ s=mimecast20190719; t=1768481153;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=5+yrN+3BXklppUOU72Bp8gOwoD7nshbDGmOuXMJ56tY=;
- b=KnCcF6+OBHtZYXAG2UVObMy7CpgAA2EYWs7Dkjp9LtskRxCKNgImdqA5K1HuETXv5yb+a5
- 3q902uvCTeaD7vG/NzXgNvxspyh7RSnNwXKvkCeLHGOTkzyWHwIoaeXFcvRB2CHTHidgzn
- kRtxaMkai5emb7P6neJ/UDSlaaeWZ0I=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=i2+ZEyCo26xdZk43w8WDiymE0C3ctBIU+/uaebrygC4=;
+ b=NTmaf/UAg6Dgy6aLDjfQHYk384XQoDPPPD7iXenvTdOLdVAc+CCalw7B6bVJIYI4/gG1+x
+ F02bbjKTNbNXQrwxjL7HQhcWSk6Acf6v7KpkfOzWVPnv1JTIeMZSBmhsuaB1kgu53KmA5V
+ oq57L9+EFwl2LkBd9nReCq87putOJ4Q=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-517-feOd9i1-NDqImzRuMQWEiA-1; Thu, 15 Jan 2026 07:45:35 -0500
-X-MC-Unique: feOd9i1-NDqImzRuMQWEiA-1
-X-Mimecast-MFC-AGG-ID: feOd9i1-NDqImzRuMQWEiA_1768481134
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-43009df5ab3so542571f8f.1
- for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 04:45:35 -0800 (PST)
+ us-mta-161-VvazPWV8OUq3gwBIuWB_9g-1; Thu, 15 Jan 2026 07:45:52 -0500
+X-MC-Unique: VvazPWV8OUq3gwBIuWB_9g-1
+X-Mimecast-MFC-AGG-ID: VvazPWV8OUq3gwBIuWB_9g_1768481151
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4779edba8f3so9673825e9.3
+ for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 04:45:51 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768481134; x=1769085934;
+ d=1e100.net; s=20230601; t=1768481151; x=1769085951;
  h=content-transfer-encoding:in-reply-to:autocrypt:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5+yrN+3BXklppUOU72Bp8gOwoD7nshbDGmOuXMJ56tY=;
- b=dMBw3ckTT8cq5s8QH5Sbnk8xEckf3M8v3+/VFbUgqZLnhGuAlPKOG8vaSLUFY0bW12
- vcyRxtg2gYQLPhQ2AuUu/aBEiEq09D97irJi5VwYpdwoH+rOFuCuXncpC5olHo1ESLuo
- dFoYy39qE5vbu69uuDMqYCoQt35wpUFLZlazUFFxBJEe5E9jQbD2bY3o8vP96M7te8i/
- jJrNcrEy9vFaHDrZwe7mc9JdKUMKafOtaIUxD7zEVXFwto0lShg60SosPMiawY+Ckybe
- CPAa0MqlKeSuWCbvcwS2Xg0Vb28x3vynCfyqjUxBMvSbazFgbHUL1Yr4vaLXCRUY/9c1
- 1wxg==
+ bh=i2+ZEyCo26xdZk43w8WDiymE0C3ctBIU+/uaebrygC4=;
+ b=ZxS25TDPrP9d05i1UFztu7w6WvaCOQiuqcawmH7rWi1G+Cdo73DKOBnqzCa0BFUMLB
+ S4IDhSbGq3SQcz5amIqXdrNtgifxcLIgQ3gSuaXNvx7t3IN46ZwwNFUIsY3+1leKCA0Q
+ Soi6actWnqS5P3dcuXSegxH1wyBQGkuWFslXOaS3JOctlPDsNLv0lLhUkfxA3/ARYcgw
+ /mr834dDme2IfNpNTcmDEM7Fp0+NE7+Ag8nSlkivOsHqY/6LzVS+esy70b5TzAVI79U2
+ HygJStWhA0zqYL16QtUtew0yNzDnIIJab7DD9HOnIOnekPrYf7SDx9FXNeCHdFR/bscW
+ Mg+w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWCX+t9bGJNuJk7eIycfVkfFGiEJW2na1XwgLB1aSUonPLOgMaiCq6Ib66Cw+Dv6eiIpbcLR4pqzA==@nongnu.org
-X-Gm-Message-State: AOJu0YxYSxdN0FtT3ey0VS82Y5LjkOF1bUOLN1UaKcLS7adQVa//h0gr
- gXd4eDkUBAH/h71msdlhJk7ODSdRaerC7BJMX46Q9G73BUnveBR65oHXPAQCMzpVUmulgmA1Ekw
- TNWSp3aqfSWDxecRZ5WrDycMf7NlRfGKc5oqS9In6S+kvfD82KDYLWA==
-X-Gm-Gg: AY/fxX5hTvhb2qiID1c9Ii5sOnLnsSrBm/WkmU/P48gSxcayLMy3IQx8k6wXZLyBoPK
- O2JuucQBaPaGzzfGQCsj+m8VDqjid4w7sAXQKrv1dcjegzbNCN4EflkuyGQdfoUYzzRI2xiqdia
- thJZdN35wu2u7xTuvsxRYqUbEALs5L36zF4nvpORlIrIFA/xVKOwjICF6DNl/joADL+9r6M7Hha
- KdBBGXy1pddnBY1DmU+9UWc1sR8V2L9mBweZ63pj96dYswLLnNENBEVsQEdfVrluE6Mlu3j3ngL
- YQxs//OYsHjQPV6qrA5H6sshlCaQQQlWrEjUtmfPX7iuiOdr+S3ojwxqN/cIkT9ThYILDSOEUfz
- vWGEYQ5n9srmtdK1yCp5RvOzbThQy5YW0ju6KHvdkm+K8VBAu
-X-Received: by 2002:a05:6000:184a:b0:431:74:cca with SMTP id
- ffacd0b85a97d-4342c557665mr7720829f8f.44.1768481134077; 
- Thu, 15 Jan 2026 04:45:34 -0800 (PST)
-X-Received: by 2002:a05:6000:184a:b0:431:74:cca with SMTP id
- ffacd0b85a97d-4342c557665mr7720791f8f.44.1768481133595; 
- Thu, 15 Jan 2026 04:45:33 -0800 (PST)
+ AJvYcCW+tlCeJzNL5CcypqjZ4LkgCEntlxrn2bUV4K80O7sU8Dk0AbawtzwW6xHaZD/pPgiUBF07D7ozCA==@nongnu.org
+X-Gm-Message-State: AOJu0YwR+UX2P6lSwt60RBYHUMwq7E/Biesm4Gn9TTh7+X9Pc9HcLFEd
+ UY29s6bUZhN6pwPCflalMG3oPyJGEHvPMn5Gxwr5Dt2dbqNzRPJ3GL5VzQWiEvHWB6JevnmN6Tj
+ G1X0owXkQgDbJ5Fhvi/VMJ65wkFDeH5aGrPnFKVjyoKj9yAe6EU5UEw==
+X-Gm-Gg: AY/fxX5goxGsdEjlN+dSu9IxeP+H6wsjrlXDBAye3EK5rcTXptjzmgNYUcHd1hVju6b
+ wIsiyyPvhizmlsywFS+ht3Go29odHb5GWs1DntWAXdweOL0J6gzFYU2G5uBMuogpdw9xSnQilI9
+ K3tVl52EpyCN7T966R9gIKkklfs3Sj27Or7WL1ao0QtJC4lZrbzKYO2bCONw4yld/7d6D4ChtjU
+ bRXmglCXjQG0k/z3dIyWEtzoI0OiN74AaTNii8Q9T1XmrJTgCEV4jRtPwPti6+/EP2Lbe4vj/9g
+ dPPSzbMbQr2wkGDsZk4/+jyU15J7V28uF8ojtAFnUJAWgy3uSJOTum6G3aQSXYOoBirJKGkjoBe
+ lDI5TLBy2kFIF2gpF6vJMFJ0GQ+LE2UO9tJJzHiJWeEmAdUIO
+X-Received: by 2002:a05:600c:3e8d:b0:47d:6c69:bf28 with SMTP id
+ 5b1f17b1804b1-47ee481cf37mr65913425e9.24.1768481150858; 
+ Thu, 15 Jan 2026 04:45:50 -0800 (PST)
+X-Received: by 2002:a05:600c:3e8d:b0:47d:6c69:bf28 with SMTP id
+ 5b1f17b1804b1-47ee481cf37mr65913045e9.24.1768481150375; 
+ Thu, 15 Jan 2026 04:45:50 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
  ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-434af6fc833sm5632474f8f.38.2026.01.15.04.45.32
+ 5b1f17b1804b1-47f429071a2sm43991055e9.11.2026.01.15.04.45.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Jan 2026 04:45:33 -0800 (PST)
-Message-ID: <1a529024-6e2f-464e-b03f-5c4d93a3b6d2@redhat.com>
-Date: Thu, 15 Jan 2026 13:45:32 +0100
+ Thu, 15 Jan 2026 04:45:49 -0800 (PST)
+Message-ID: <e813790d-5ea5-41b0-9012-c4c88e9b88b2@redhat.com>
+Date: Thu, 15 Jan 2026 13:45:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/4] linux-headers: Update to Linux v6.19-rc1
+Subject: Re: [PATCH v2 2/4] hw/net/virtio-net: Adapt hash handling to updated
+ UAPI
 To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: eric.auger@redhat.com, alex@shazbot.org, cohuck@redhat.com,
  mst@redhat.com, nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com,
- jgg@nvidia.com, kjaju@nvidia.com
+ jgg@nvidia.com, kjaju@nvidia.com, Jason Wang <jasowang@redhat.com>
 References: <20260113113754.1189-1-skolothumtho@nvidia.com>
- <20260113113754.1189-2-skolothumtho@nvidia.com>
+ <20260113113754.1189-3-skolothumtho@nvidia.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -129,9 +130,9 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260113113754.1189-2-skolothumtho@nvidia.com>
+In-Reply-To: <20260113113754.1189-3-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 5dFF-doseRoUT0zworKLBHvELyYvxYSqU8UpYwFFM2o_1768481134
+X-Mimecast-MFC-PROC-ID: AfP5arin_SO0kxMFR-VTdJLcXTvcC4b3He1WK8SmM9Q_1768481151
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -162,47 +163,58 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/13/26 12:37, Shameer Kolothum wrote:
-> Mainly for adding support for VFIO DMABUF. While at it, update all
-> headers.
+> The virtio_net_hdr_v1_hash layout changed in the Linux UAPI, replacing
+> the 32-bit hash_value field with two 16-bit fields, hash_value_lo and
+> hash_value_hi.
 > 
+> Update hash handling to populate the new fields correctly and adjust
+> offset and size calculations accordingly.
+> 
+> Cc: Michael S. Tsirkin <mst@redhat.com>
+> Cc: Jason Wang <jasowang@redhat.com>
 > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 > ---
->   include/standard-headers/drm/drm_fourcc.h     |  25 +-
->   include/standard-headers/linux/ethtool.h      |   5 +
->   .../linux/input-event-codes.h                 |  14 +-
->   include/standard-headers/linux/pci_regs.h     |  89 ++++
->   include/standard-headers/linux/virtio_net.h   |   3 +-
->   include/standard-headers/linux/virtio_pci.h   |   2 +-
->   linux-headers/asm-arm64/kvm.h                 |   2 +-
->   linux-headers/asm-arm64/unistd_64.h           |   1 +
->   linux-headers/asm-generic/unistd.h            |   4 +-
->   linux-headers/asm-loongarch/kvm.h             |   1 +
->   linux-headers/asm-loongarch/unistd.h          |   6 +
->   linux-headers/asm-loongarch/unistd_64.h       |   1 +
->   linux-headers/asm-mips/unistd_n32.h           |   1 +
->   linux-headers/asm-mips/unistd_n64.h           |   1 +
->   linux-headers/asm-mips/unistd_o32.h           |   1 +
->   linux-headers/asm-powerpc/unistd_32.h         |   1 +
->   linux-headers/asm-powerpc/unistd_64.h         |   1 +
->   linux-headers/asm-riscv/kvm.h                 |   3 +
->   linux-headers/asm-riscv/unistd_32.h           |   1 +
->   linux-headers/asm-riscv/unistd_64.h           |   1 +
->   linux-headers/asm-s390/bitsperlong.h          |   4 -
->   linux-headers/asm-s390/unistd.h               |   4 -
->   linux-headers/asm-s390/unistd_32.h            | 446 ------------------
->   linux-headers/asm-s390/unistd_64.h            |   9 +-
->   linux-headers/asm-x86/kvm.h                   |   1 +
->   linux-headers/asm-x86/unistd_32.h             |   1 +
->   linux-headers/asm-x86/unistd_64.h             |   1 +
->   linux-headers/asm-x86/unistd_x32.h            |   1 +
->   linux-headers/linux/iommufd.h                 |  10 +
->   linux-headers/linux/kvm.h                     |  11 +
->   linux-headers/linux/mshv.h                    | 116 ++++-
->   linux-headers/linux/psp-sev.h                 |  66 ++-
->   linux-headers/linux/vfio.h                    |  28 ++
->   33 files changed, 363 insertions(+), 498 deletions(-)
->   delete mode 100644 linux-headers/asm-s390/unistd_32.h
-
+>   hw/net/virtio-net.c | 11 +++++++----
+>   1 file changed, 7 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+> index 317f1ad23b..512a7c02c9 100644
+> --- a/hw/net/virtio-net.c
+> +++ b/hw/net/virtio-net.c
+> @@ -1879,7 +1879,8 @@ static int virtio_net_process_rss(NetClientState *nc, const uint8_t *buf,
+>                                                n->rss_data.runtime_hash_types);
+>       if (net_hash_type > NetPktRssIpV6UdpEx) {
+>           if (n->rss_data.populate_hash) {
+> -            hdr->hash_value = VIRTIO_NET_HASH_REPORT_NONE;
+> +            hdr->hash_value_lo = VIRTIO_NET_HASH_REPORT_NONE;
+> +            hdr->hash_value_hi = VIRTIO_NET_HASH_REPORT_NONE;
+>               hdr->hash_report = 0;
+>           }
+>           return n->rss_data.redirect ? n->rss_data.default_queue : -1;
+> @@ -1888,7 +1889,8 @@ static int virtio_net_process_rss(NetClientState *nc, const uint8_t *buf,
+>       hash = net_rx_pkt_calc_rss_hash(pkt, net_hash_type, n->rss_data.key);
+>   
+>       if (n->rss_data.populate_hash) {
+> -        hdr->hash_value = hash;
+> +        hdr->hash_value_lo = cpu_to_le16(hash & 0xffff);
+> +        hdr->hash_value_hi = cpu_to_le16((hash >> 16) & 0xffff);
+>           hdr->hash_report = reports[net_hash_type];
+>       }
+>   
+> @@ -1990,10 +1992,11 @@ static ssize_t virtio_net_receive_rcu(NetClientState *nc, const uint8_t *buf,
+>   
+>               receive_header(n, sg, elem->in_num, buf, size);
+>               if (n->rss_data.populate_hash) {
+> -                offset = offsetof(typeof(extra_hdr), hash_value);
+> +                offset = offsetof(typeof(extra_hdr), hash_value_lo);
+>                   iov_from_buf(sg, elem->in_num, offset,
+>                                (char *)&extra_hdr + offset,
+> -                             sizeof(extra_hdr.hash_value) +
+> +                             sizeof(extra_hdr.hash_value_lo) +
+> +                             sizeof(extra_hdr.hash_value_hi) +
+>                                sizeof(extra_hdr.hash_report));
+>               }
+>               offset = n->host_hdr_len;
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 

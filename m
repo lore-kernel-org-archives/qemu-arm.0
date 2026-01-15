@@ -4,90 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A940D4661B
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 19:48:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 493E3D46624
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 20:57:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgTKE-0002KB-Cs; Thu, 15 Jan 2026 14:48:10 -0500
+	id 1vgUOk-0005b8-Gq; Thu, 15 Jan 2026 15:56:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vgTK7-0002J8-Jl
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 14:48:05 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vgUOi-0005XY-JU
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 15:56:52 -0500
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vgTK5-0008RG-Ho
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 14:48:03 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-47d63594f7eso8870365e9.0
- for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 11:48:01 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vgUOg-0004oV-VG
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 15:56:52 -0500
+Received: by mail-pg1-x534.google.com with SMTP id
+ 41be03b00d2f7-c5513f598c0so521949a12.0
+ for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 12:56:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768506480; x=1769111280; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1768510609; x=1769115409; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Ug1YcFGOinbtgTHpfnbojUD33mGP8SL3zLP1Ja1h7sM=;
- b=xVtnIliIXWPNWcsxZAA800r/8VZtUtq0hGc+Of4grGDiPcaKeZ+jaP27LMj20OqwQ1
- Rchf0NCgR+bqy9xPM/z6rrlBABHa2+e+N/ZIP/cWa4PEed7H4ucqOb0LRJLUP2UTcka3
- ARI4odRiQ2dMC/S96wMGcZSf2fOew7mhIo7Rc0oHHbSFi/xxziAs9/Bhas0mxJVgBPlD
- Nk//nETB5HDNviBDhhzyJ4ChV+EFlTKds4ubt8Xu22ajT5ObyCVkJqbVEopJoRIzyGKq
- Pe1hbdCpDW0yauW8HfeYgkzsGBvgWoDVNLLCUiAMriSH9RTfHPicVNe3YxO0Iq16hhZD
- b4bg==
+ bh=AZhn7/UNyIxdSAp2QAEnN+LvzdqMK2nI+ujidapkSsQ=;
+ b=hmfy9M4stYGm2PK2BgACAkL4I6mWU8MuwBLcBk0Xv6T2Zyo/XufaQzxSaflHfxkTn9
+ p6Z5b8YrNppjSdZfWJe4RUEoYwjJFsfMhNqtg58+uYAmLNwUDXRG9SexbDHH5v7GSqEm
+ 4qQOu2ggxlgezNgOe/o0qI6LWEAiqX2QpxBwQMV0IvSTPF6uvJif7mNVrllL6SHwnzkl
+ ckNXuKjGOJJic7T/rU3u1++x7WiOqJCGMDzq8zMlLQyZg8fKgiXtEooofg5SeisilPIs
+ dy00qm5hsl7BijoyAKgRhp0WL7/2flPUS4mErLfq/yrA2xRhZWw45uXXEd5NSPSYSd01
+ 7Cpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768506480; x=1769111280;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1768510609; x=1769115409;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Ug1YcFGOinbtgTHpfnbojUD33mGP8SL3zLP1Ja1h7sM=;
- b=WTG575UMXDyvXsS5tWmO44qQ2rr4dgI21DrUg1GeDNBCaM95nDeFL46S8jIrpDwFgp
- 9n6n7RIwoBYRQzVfkncAz1E/HjbWRJWq4tRacLyt/UDnHb2dad+az9bd2XORPAxLFBlM
- 7hrahuz+tzrJ8xT7KKArqstJOLs1vClbYwf49AX37EC5KwyDdSGfbPhfE2jn+9QDKsgP
- VfLFvZ5vRtcxqc2j4iA0TnQROritwjpMtQc94mt3Wy0886tKxQTg9hZBkAbzqjalN7zY
- yGPDBGNP9WfE9iHtqPaXSnlV6jQPAiX0RPgqnbPROE69MmJDhSM1RxtCcWm8qXntNZ7d
- KqHg==
+ bh=AZhn7/UNyIxdSAp2QAEnN+LvzdqMK2nI+ujidapkSsQ=;
+ b=U3/w7kx9Q1DC5gtbPxVbG4SH0GK99M1UXEcwhR/Rrvbw3VCXrCEmzs9GTgSbyABGfn
+ cdocjzmTC9O6ilXBtQ6LNxD1l1KO0edxBfRo16fByFI7QITKjdFhNhxLtIL9WkgodZUp
+ 2iPeAI8aqsjqdV22m66yVQFlOX3+3D5QyDAZGoFvAAYX3Xj69obkut9rCo64x26zmMQV
+ S88VgfcpQVFjivCHIHU7t4Iw+1WdMGJ+fK4t8XNPwqlwo24FVQZL3UzTPh+cjrXJ6ypl
+ 9dJVBdLmDwpcIu/9fsge+qMKGsQ5LLF02Lj9Y6qhINvuK6qnkZAER0UhrKbXxT1FUHDu
+ cvjQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWE3eVbDPKlDR5IpnEs2kWzMJHjmM3s6GhTi9zxHG2VpHq6P66xEhYQs1xX+JHutZcvPo7P3ITWig==@nongnu.org
-X-Gm-Message-State: AOJu0YxGn0LV0Gg4JpocGuoRyOLaYa1824qI4CUZzh7Hm4N9SY0YDW8f
- sMiv/f2heYnoe1U1V+IbMFDL3E8i8lOfg8cKnTrRBZuJaaZVcgkGh485dQChYggTqyU=
-X-Gm-Gg: AY/fxX4lxgCp0C+TOUnoon9jnzLo79ZiQOJD9ACUMTzGHi8VRbJnLOLbDa0a8SpGqOq
- A21AYfFAOFXU+EUdyXeRXHc4JDHtQcbXRwOd5nDGd81M9cuizvigrO7Id0xxB4bcfkazREPfJZE
- FWqZM3dvaoL/62ONHGVL2uulBLnB+9oj8aCHUYmAlItsnPu/MxWbpO4ZjV2Mxw04F4RQ1iKdFzG
- bd4gOY0Qsp17Br2HQ/CC4D5Udeclt2fCIGmXCII1G85tio/dhuAYrpuigpn2Vmdb5zVAL4lfvxs
- 2jSgwgwdHirZt87beNoKeVU66ZIWbKLHPPydsHABnAAEFmzEfaJlTpUGlyLcFnM5fxHHQ6B9vZ2
- KN3W4719FetiZ+mBeHVACPmn2YAMtSFRwAAIFIRYlm8cFpvepaLN/4MIKTdhNh3eBEKCeIPND/T
- rkSYkuWClTV2sbwHlgnZzAq+0eYtq/VO2K/UXPVfE6150cVkQwP4YmvA==
-X-Received: by 2002:a05:600c:4513:b0:477:9cdb:e337 with SMTP id
- 5b1f17b1804b1-4801e2fc2e3mr12628575e9.7.1768506479413; 
- Thu, 15 Jan 2026 11:47:59 -0800 (PST)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47f4b2672d6sm63511675e9.14.2026.01.15.11.47.56
+ AJvYcCVmMfrPIbP+cqCFF7Nl98AdWI+xwHgNaWFaPvxTDadIHVYW4JftqIVR9ewJowvl44OvVTLuefRHbQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxHMO2cp2Y73/OXFt/yf0HqfU87wCzpOHqLxFXorNjIN4ecADTu
+ PWp276BOh2eQRkX1PsUvJzLURJ9LCps9USou7sN55cgw4JKy79jtYLbT+/Lm2oeyMCLlX5UrbI+
+ HcW7B
+X-Gm-Gg: AY/fxX4BIycR2H2NiSEZfi1/qfsn3NSVE+B+74pz3d6UtZ36shphX05Bzv+ebbEIBpe
+ rQ5S2LCRp/djIHV1gXAGh19XHFYqw4Ucr+g+uTjRrVdPQWlq4W5+olh0nGlEuferHgxcWQKfdKf
+ o11HWlIBzC312EWfnTGM5q172vcoqtuybYpFfUc2gVEK3nCQaVNX2pLJzWd3YnKjxFIQo8srUw5
+ qKsIhIbOT2Ag3LZTs+790oNp2gcSQa8yJt2zbvlaBsEuYCU7GnHiMMcM6lDVbGs9sWYltea9dHW
+ /RLO+QrW+QlUnZMmJOFu3GNMzUPnFYoyQGc8qPGWkG/cd7D90dtCOtDUK2uzTdspAf00Eln4qnE
+ V10Gbr/ryvIYwXIvaYhgLKRswM8xUXOl2WP1Bb300wch9NMlkDG0nVF9GLxBPf3SWx9aFqkfZZp
+ wDl1GJBuz3VoiipHEkl7KBL622b1zs5La/OpFjBo7DtjbSbPd6SvfTgkWX
+X-Received: by 2002:a17:90b:4fc1:b0:340:ad5e:c3 with SMTP id
+ 98e67ed59e1d1-35272ee0d43mr534117a91.1.1768510609472; 
+ Thu, 15 Jan 2026 12:56:49 -0800 (PST)
+Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-81fa108bf00sm246347b3a.10.2026.01.15.12.56.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Jan 2026 11:47:58 -0800 (PST)
-Message-ID: <5e72f6d4-6914-4797-85f6-6131af0d1349@linaro.org>
-Date: Thu, 15 Jan 2026 20:47:56 +0100
+ Thu, 15 Jan 2026 12:56:49 -0800 (PST)
+Message-ID: <7881bfff-59f0-496f-967e-32a697ff11fb@linaro.org>
+Date: Thu, 15 Jan 2026 12:56:48 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 0/1] hw/i2c/aspeed: Introduce 'bus-label' to customize
- bus naming
+Subject: Re: [RFC v8 0/7] hw/misc: Introduce a generalized IOMMU test framework
 Content-Language: en-US
-To: Kane Chen <kane_chen@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Markus Armbruster <armbru@redhat.com>
-Cc: troy_lee@aspeedtech.com
-References: <20260112083054.4151945-1-kane_chen@aspeedtech.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260112083054.4151945-1-kane_chen@aspeedtech.com>
+To: eric.auger@redhat.com, Tao Tang <tangtao1634@phytium.com.cn>,
+ Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>,
+ CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
+References: <20251224034647.2596434-1-tangtao1634@phytium.com.cn>
+ <6d50c3fe-e235-48e8-b461-fe0689f12070@phytium.com.cn>
+ <9fba7ded-d31d-4789-b83d-efcc96f5448e@linaro.org>
+ <10e1b40c-2edd-400f-8c8e-e0f3ad4c6f75@redhat.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
+ 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
+ ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
+In-Reply-To: <10e1b40c-2edd-400f-8c8e-e0f3ad4c6f75@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,54 +151,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
-
-Cc'ing Markus.
-
-On 12/1/26 09:30, Kane Chen via qemu development wrote:
-> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+On 1/15/26 9:47 AM, Eric Auger wrote:
+> Hi Pierrick,
 > 
-> Currently, the Aspeed I2C controller uses a static naming convention
-> for its buses (e.g., "aspeed.i2c.bus.0"). This approach leads to
-> object name conflicts in machine models that incorporate multiple I2C
-> controllers, such as an Aspeed SoC paired with an external IO expander
-> or a co-processor like the AST1700.
+> On 1/15/26 12:39 AM, Pierrick Bouvier wrote:
+>> On 1/14/26 5:30 AM, Tao Tang wrote:
+>>>
+>>> A gentle ping on this series. Any further suggestions would be greatly
+>>> appreciated.
+>>>
+>>>
+>>> Link:
+>>>
+>>> https://lore.kernel.org/qemu-devel/20251224034647.2596434-1-tangtao1634@phytium.com.cn/
+>>>
+>>>
+>>>
+>>> Best regards,
+>>>
+>>> Tao
+>>>
+>> This version is in good shape and is ready to be merged.
+>> Eric, do you feel like merging it, or would you prefer someone else to
+>> pick it up?
 > 
-
-Is this a side-effect of Problem 4: 'The /machine/unattached/ orphanage'
-described here?
-https://lore.kernel.org/qemu-devel/87o7d1i7ky.fsf@pond.sub.org/
-
-This problem isn't specific to I2C nor Aspeed.
-
-> This patch series introduces a 'bus-label' property to the Aspeed I2C
-> controller. By setting this property, higher-level platform code
-> (e.g., the SoC realize function) can provide a unique prefix for the
-> I2C buses.
+> Peter generally sends the PRs for the vSMMU. Maybe this can also be
+> taken by qtests maintainers too.
 > 
-> Changes in v1:
-> 
-> Added bus-label property to AspeedI2CState.
-> Added bus-name property to AspeedI2CBus.
-> Modified aspeed_i2c_realize to generate bus names based on the label.
-> Updated aspeed_i2c_bus_realize to use the customized name for bus
-> initialization and memory region naming.
-> 
-> Example usage: If a controller's bus-label is set to "ioexp0", its buses
-> will be named "ioexp0.0", "ioexp0.1", etc., instead of the default
-> "aspeed.i2c.bus.0".
-> 
-> Any feedback or suggestions are appreciated.
-> 
-> Best Regards,
-> Kane
-> 
-> Kane-Chen-AS (1):
->    hw/i2c/aspeed: Introduce 'bus-label' to customize bus naming
-> 
->   include/hw/i2c/aspeed_i2c.h |  2 ++
->   hw/i2c/aspeed_i2c.c         | 27 +++++++++++++++++++++------
->   2 files changed, 23 insertions(+), 6 deletions(-)
+> Thanks
+>
+> Eric
+>>
+>> Regards,
+>> Pierrick
+>>
 > 
 
+Ok, thanks.
+We really need to help Tao to get this in, as it's really useful and he 
+put a lot of effort into it, and waiting times between two reviews makes 
+it probably a bit complicated for him.
+
+Regards,
+Pierrick
 

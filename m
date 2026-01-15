@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0717D44C5E
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 14:57:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D60B7D44C60
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 15:00:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgOn5-0007Ai-Fz; Thu, 15 Jan 2026 09:57:41 -0500
+	id 1vgOpG-000071-N5; Thu, 15 Jan 2026 09:59:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vgOn2-00078w-Lq
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 09:57:36 -0500
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ id 1vgOp0-0008M5-B4
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 09:59:39 -0500
+Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vgOn0-0006Vc-Jj
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 09:57:35 -0500
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-78f89501423so22885017b3.1
- for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 06:57:34 -0800 (PST)
+ id 1vgOox-0007Mf-88
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 09:59:38 -0500
+Received: by mail-yx1-xb12e.google.com with SMTP id
+ 956f58d0204a3-6467b7c3853so763898d50.0
+ for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 06:59:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768489053; x=1769093853; darn=nongnu.org;
+ d=linaro.org; s=google; t=1768489173; x=1769093973; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KLju0veGxDRCaNlNCZ9kxVtqnhSLkNS5jHDofzqZdqk=;
- b=fdaebW7ep900y9P/aSxFwOEyd6lcbTaYJwm+0zdgL9vx/gEJOsa9Q8E6RqkolcgaW5
- grWPj0ojcQyXXpvsjRdbMm5sAyDMDMnJ0t5e/gD8V6MRMjCFhsMcB6HTnT/E1rhAkD8l
- pqujt13WuRz7qtMoBxujonzpnkPmINk6ZvKT039nUCGDBpU4Rx4wJiWa78bpZE3FW3BQ
- /KLfISdbjYKn1RNTNwc/oaBWOGQTAMjFDCjRnzmxJQpCnwnA4d1Zd0nB00WPGgF1+pDo
- VQAAHTBeqLXwb9t3mQ8JiY8VhwDKIL4Zd2ximlXsFC8evhV+Mo/I0VQnm94JemuMKbeG
- WG4w==
+ bh=JXLZnAZvRwHnq2PUi9dkxfby2U/w5lz7DGcJF0nU5QY=;
+ b=ym+znmv4b5kY6qjcyme0dLPWgv8sBcdDZbD3F+HaQWmkZZHvyVuA+7uvjURbzhhBjc
+ gKpY7FcKMrfW228murmuYlC9gKPfudGVJ2PrYcIx5Q10vSWzGxc/cHFU3XNFJI2wAVBQ
+ tSwNtKvL+irI9LxKbH3bjwf29pp4zIgGy480iFItCJ4ZQCJIGkUIcArwH8fzv+aXnYdq
+ 9cb6QnXZEibxyU3lwQtf3kfjJPjHSv/jQ0TXljIKw2TXQyYK3mz8bfFJ2Yp9ssPUT1m2
+ Xb9J4vYkVngSLg/l3XRR/lKerbzhADaxdkzu5gKkHSOSWjGC741OHxiyhCSrAxHqtmul
+ c2bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768489053; x=1769093853;
+ d=1e100.net; s=20230601; t=1768489173; x=1769093973;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=KLju0veGxDRCaNlNCZ9kxVtqnhSLkNS5jHDofzqZdqk=;
- b=cTjo/SZQMs0ZZ8LWkFxxbeKQEojIJaiRNwfauEcKgpy9+ok/bZ7iP30fgH0+f3A5Mc
- vm9swRST9t1oZWdGpIYZkFoSpNuxoIhyavJY7I/kLcAZA5lJrrd+tM/o9c+3C0cSSy/b
- kWvCk9kgMf1+9YGgycXHbgaLfmYgP8dWnKrBPuo38OP6Q+gJXz36bbx32xt4HWD4px9D
- 0GVti0RsZ42BGLQ9JaDK06JHtzsGAdfP9tYJOh2l9u46DUsV0TgSUrgNlyK0qpJFXUO9
- mofv1eAnJsZVDIbJ+pZZNBbdPiLL2qurjnFD4jwUPDYn7V4aMlD9uXstGFvcGyoW70gH
- ajEw==
+ bh=JXLZnAZvRwHnq2PUi9dkxfby2U/w5lz7DGcJF0nU5QY=;
+ b=CTxiPEh57c33DEZzSFwmyAHzANnroyDgBCjOc8qi3z/TvwawYPwibQlFO3T0Blv6XR
+ bFIxT9jjDXqa/02/P0QZ7+Tw/eBmr3lrZdK4qgJ3A+LdkvnwtGIm4RGvNlDRx3aiNBwR
+ e9YnGadaKCuH3FLG7Xtn4C6xptsvdsCACPSjkEwA6bavNtdb9Kt88SMzHm6UanNHhRsE
+ MUUFI41GrBT9X5SLVSOvHOYMRCCAnkjalUrJh3XWOEGIxxh5VZsRqmODdtTQZ4F3hX2i
+ qK1H48m4o4LTiUpjMON4kjzMbLC+NZD6qPc8XqQVL4zjwCD6jh/rlI5A2nHAKqFka1SI
+ A9ew==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXe0Mxpzu+ugS4vRqmyLhwPJWHXJ8ZfG3znJEhqm4NBk05ITWW52lmVmNQJowLYF2SCAwi728lIKw==@nongnu.org
-X-Gm-Message-State: AOJu0YxdTkt4g34ux+vWCikioQ9s0tHLibqFccQ9Y6VWutz4KBtiqWwE
- 9c03FEGYlBp/yhikFsgtZT4NoKH+tbEehEBtwrT5prk8GlppPVopKyTz2/bB4X1h2ITP5q3fzZo
- nsdlYyg9BNBWNuyvUUtereIJ/AYKpc7j/rNs4Qrzofg==
-X-Gm-Gg: AY/fxX4fcBwdtRD7urZAHdusRQk7nD6oxRGc53EUm9mmifERqMJ04Q5vGHXAvuZrpNa
- ytSXH+FOAeFImPPNqOB+piJf0UJdDslkLKUzRG9009C5sa0mE2m792xdcgMGvbwL4DalkvfKxNG
- NuQUPPF11ANTEmErUave4jCIiwbbYmz85b8JVvfs8ncn3O91EcQJoQydFSN7vfUskuB+lNPbfJu
- DMkAvZ26bjX8cCdafIe0yVcQETmiJTybc2TzLdpekRmkvqicV+6hTcYJ/mmNUyoDgp9SxZFqW/9
- aQNzDT8b+Q4mzr/chBfF2mQ=
-X-Received: by 2002:a05:690e:16a0:b0:644:4431:5742 with SMTP id
- 956f58d0204a3-6490a634d1bmr2335112d50.23.1768489053206; Thu, 15 Jan 2026
- 06:57:33 -0800 (PST)
+ AJvYcCWdtQ7tc6XBDuvDLGyZGYlrAqX+F1FFzBMpzOQYdLPk8IP+Mfdp3JJga5ehNdidiOprdUThhCVYFA==@nongnu.org
+X-Gm-Message-State: AOJu0Yzh1fRkwsYrxldXU1sB6SKwHXIqxEC3IDi618c1IasNCDbvRJlU
+ EZe/1tE1B7brgbdrUDnDSLOYsZ9xdm61A/7dEKUy/na+ygagkpSQujhOwQiuN+2df2GeLPwh/aO
+ iCy4nkdGXL/4xJlY0v12M4yY4pyOG99aCF1zdOObrjQ==
+X-Gm-Gg: AY/fxX4+JEUobq9uXcVjq/NfHQxywrLqDTe1eichb3yP43BDTw6WPjxgFv6PEPXi8/v
+ Dtu50QNqWc+M16ebWR2OyQRoqtRm0iwz8VPbb67+oyCMJCYtGmD9H2MFWMRVba10EHD8eC0qVtX
+ mGxUrPKm627mB1+YIKm61MswiQg2cXnGLrHu+b4pg8zWlX5mrwkifZBdNvnBP+3jJCIvTrIppHZ
+ 0AWrUBfQsMXR+c2i/kRmBOmlBfjitxOSgaZieYOvv9XNzIdKAU5VoMoq3wcPjrh1aivSFet0aRd
+ jtpf3ROgT7IlGhb/0cmMhXQ=
+X-Received: by 2002:a05:690e:d5a:b0:644:60d9:866d with SMTP id
+ 956f58d0204a3-64901b2fc83mr3986656d50.94.1768489172949; Thu, 15 Jan 2026
+ 06:59:32 -0800 (PST)
 MIME-Version: 1.0
 References: <20251204093502.50582-1-corvin.koehne@gmail.com>
- <20251204093502.50582-14-corvin.koehne@gmail.com>
-In-Reply-To: <20251204093502.50582-14-corvin.koehne@gmail.com>
+ <20251204093502.50582-15-corvin.koehne@gmail.com>
+In-Reply-To: <20251204093502.50582-15-corvin.koehne@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Jan 2026 14:57:21 +0000
-X-Gm-Features: AZwV_QgipE8e9I0ddnG3h3pWcNpLvGxV7Tm9kKn0Nff5rlgV4Un4-Vn-kGgd7fk
-Message-ID: <CAFEAcA9w2r4Od5o3BqU=Q_SHTshb1_gHB8oG0aj9spF1Z7tMGQ@mail.gmail.com>
-Subject: Re: [PATCH v5 13/15] hw/arm/xilinx_zynq: Add flash-type property
+Date: Thu, 15 Jan 2026 14:59:21 +0000
+X-Gm-Features: AZwV_Qi4YPYBHEkKF0YAXAzTIEMPZ14dQhaGQgrhS_b2z_PPlMbio1ogoSx6BPk
+Message-ID: <CAFEAcA82FoVFwmoj2CrBK_bjzQ52NxrUYKcZrVYw6Dx2yJfLFQ@mail.gmail.com>
+Subject: Re: [PATCH v5 14/15] hw/arm: Add new machine based on xilinx-zynq-a9
+ for Beckhoff CX7200
 To: =?UTF-8?Q?Corvin_K=C3=B6hne?= <corvin.koehne@gmail.com>
 Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
  Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair@alistair23.me>,
@@ -79,15 +80,15 @@ Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  =?UTF-8?Q?Yannick_Vo=C3=9Fen?= <y.vossen@beckhoff.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,23 +109,36 @@ ote:
 >
 > From: YannickV <Y.Vossen@beckhoff.com>
 >
-> Read flash-type value as machine property and set the flash type
-> accordingly.
->
-> Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
+> Introduce a new machine type 'beckhoff-cx7200' that inherits from the
+> xilinx-zynq-a9 machine. The CX7200 is an industrial PC based on the
+> Xilinx Zynq-7000 SoC.
+> The machine preserves all standard Zynq features (boot-mode selection,
+> SPI, UART, Ethernet, etc.) while adding CX7200-specific hardware
+> components.
 
-Machine properties are user-facing : this one seems to let
-the user specify any random device name with no error checking
-which it will then try to instantiate. I think it would be
-better to have the base class code know via some other
-mechanism what kind of flash device it should create.
+> +    /* Find A9MPCore and set timer frequencies directly */
+> +    a9mpcore_dev =3D DEVICE(object_resolve_path_type("", TYPE_A9MPCORE_P=
+RIV,
+> +                                                   NULL));
+> +    if (a9mpcore_dev) {
+> +        a9mp_priv_state =3D A9MPCORE_PRIV(a9mpcore_dev);
+> +
+> +        /* Direct struct access - devices are already realized */
+> +        a9mp_priv_state->gtimer.freq_hz =3D CX7200_PS7_CPU_CLK_FREQUENCY=
+;
+> +        a9mp_priv_state->gtimer.periphclk_divider =3D CX7200_PERIPHCLK_D=
+IVIDER;
+> +        a9mp_priv_state->mptimer.freq_hz =3D CX7200_PS7_CPU_CLK_FREQUENC=
+Y;
+> +        a9mp_priv_state->mptimer.periphclk_divider =3D CX7200_PERIPHCLK_=
+DIVIDER;
+> +        a9mp_priv_state->wdt.freq_hz =3D CX7200_PS7_CPU_CLK_FREQUENCY;
+> +        a9mp_priv_state->wdt.periphclk_divider =3D CX7200_PERIPHCLK_DIVI=
+DER;
 
-One approach would be to have suitable information in the
-machine class struct, which is filled in by the class
-init function. You can see this in hw/arm/raspi.c, for
-instance, where we set a board_rev field that then the
-code creating the board can look at.
+You shouldn't be reaching inside the device's private state
+struct fields like this -- please find another way to
+configure it with the correct frequency info.
 
-thanks
 -- PMM
 

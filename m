@@ -4,86 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B1EED4117F
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 12:45:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 666FFD4117F
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 12:46:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgMj7-0005yC-63; Thu, 15 Jan 2026 07:45:26 -0500
+	id 1vgMjW-0006Da-8S; Thu, 15 Jan 2026 07:45:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vgMic-0005hQ-AY
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 07:44:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vgMjO-00067J-FK
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 07:45:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vgMia-0002LJ-G6
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 07:44:53 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vgMjM-0002fb-AJ
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 07:45:42 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768481089;
+ s=mimecast20190719; t=1768481136;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=diCN32yadw+M+p+dim/v/PRbRLDey/3McuQQoWLNtzM=;
- b=iVqUhkKopT6ao6+QDkUKTMURNqRcneG/+eTAaHrjk4uKODzwkTljalI8OU7LDGwpWM0yvO
- 6F7rHFpHPZRKnavX4NtBlJZ1TU6Ls0nvLLftHPoKutgN00knUkHqvmn5toAz3u/LqGoAWA
- G4M56P3iapdLMX2GMo6UTsPyuxPACAA=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=5+yrN+3BXklppUOU72Bp8gOwoD7nshbDGmOuXMJ56tY=;
+ b=KnCcF6+OBHtZYXAG2UVObMy7CpgAA2EYWs7Dkjp9LtskRxCKNgImdqA5K1HuETXv5yb+a5
+ 3q902uvCTeaD7vG/NzXgNvxspyh7RSnNwXKvkCeLHGOTkzyWHwIoaeXFcvRB2CHTHidgzn
+ kRtxaMkai5emb7P6neJ/UDSlaaeWZ0I=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-372-nD3cn9rFN-CLzl01b2Nhog-1; Thu, 15 Jan 2026 07:44:48 -0500
-X-MC-Unique: nD3cn9rFN-CLzl01b2Nhog-1
-X-Mimecast-MFC-AGG-ID: nD3cn9rFN-CLzl01b2Nhog_1768481087
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4801d21c280so1344385e9.1
- for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 04:44:48 -0800 (PST)
+ us-mta-517-feOd9i1-NDqImzRuMQWEiA-1; Thu, 15 Jan 2026 07:45:35 -0500
+X-MC-Unique: feOd9i1-NDqImzRuMQWEiA-1
+X-Mimecast-MFC-AGG-ID: feOd9i1-NDqImzRuMQWEiA_1768481134
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-43009df5ab3so542571f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 04:45:35 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768481087; x=1769085887;
+ d=1e100.net; s=20230601; t=1768481134; x=1769085934;
  h=content-transfer-encoding:in-reply-to:autocrypt:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=diCN32yadw+M+p+dim/v/PRbRLDey/3McuQQoWLNtzM=;
- b=hsN0Xz78r04re43x2gWN/oP/WI1W+dEMBpp6lVTk8xUtEDtV2Pcgd5FaiMkBIcLQai
- QPypagCSiqPgt/FE1O/huQ5bW7XPJDmLmMw55dxpmWiZp1N0Y7xC72voDS3to59bs9ue
- 81Klum/AvL1/2oD9iYBaeh7cIkRGXH0qkq+bjYrZ7agNoT+hNE8iLrnPbHuMie1Xb6HO
- wcmyiOffDySTkvS4kYR0z3VPuYllH/3PFQjYqt6tThaaCgGiNJbTbGZcHhNQqDQLP3ca
- z36KGP1HYayGwdHbcrprrJbW0C1n7+rdLYry+oa8qCyxjFpUXSWgTkc8XnlE1JmLdZ8w
- lqmA==
-X-Gm-Message-State: AOJu0YxUgDENMJU/G0cG9OxHYnATNbiEzqUCirzibkyoY4cdqxEAOLML
- 8zDKhTLK6cbPRwsYHu+rho0/15/JUrDE2LYvhoXbD3NIcXgrgY6WfDtrQVHbvU3iYGLrGB1ZA6n
- 1NSe61w3qjIkMTlyADujQpKX63q5NeE6D7C6xcaOihdrfA/FPwvlJAA==
-X-Gm-Gg: AY/fxX7p0DG8f6x63iT5JBcl8hzw7jgmJOOqh+6z4MF7oQudFqqzudzMOuXsk9qNYxx
- idHx3VL0FpJiPfe4JHplrM8BaihPvbnBfub3j60GgeCL0EOlNjdWGGKq1fVB9QbjGIDGiIRlg6z
- xYPif3Wrfxu5jSXrwajREVBph82UJg71OZErhPM08BqoxqfASVBAvMAQ/6W0Cm2rcuJ/x0JnTUq
- G/Ln+f0CcVo7fZ0vsol3TkMsax8gJKh+xj2/LmWiYW22B4AwvpWoX95kZkbKhgMpKfYeDZXQULG
- 0A4ezujZ5IgZf+Eh/JVjhEaNO7a20W3C8olV1sV4RI3ZvH6l3JbfNDJnWQw6XHp04Phe/k0fB0D
- CoAk6xPsLO/1DGRHFrGDeoQXssgGbqLSaJuXjN5NYuCk2Jb/w
-X-Received: by 2002:a05:600c:3544:b0:479:2f95:5179 with SMTP id
- 5b1f17b1804b1-47ee335494fmr77437185e9.15.1768481087461; 
- Thu, 15 Jan 2026 04:44:47 -0800 (PST)
-X-Received: by 2002:a05:600c:3544:b0:479:2f95:5179 with SMTP id
- 5b1f17b1804b1-47ee335494fmr77436825e9.15.1768481087111; 
- Thu, 15 Jan 2026 04:44:47 -0800 (PST)
+ bh=5+yrN+3BXklppUOU72Bp8gOwoD7nshbDGmOuXMJ56tY=;
+ b=dMBw3ckTT8cq5s8QH5Sbnk8xEckf3M8v3+/VFbUgqZLnhGuAlPKOG8vaSLUFY0bW12
+ vcyRxtg2gYQLPhQ2AuUu/aBEiEq09D97irJi5VwYpdwoH+rOFuCuXncpC5olHo1ESLuo
+ dFoYy39qE5vbu69uuDMqYCoQt35wpUFLZlazUFFxBJEe5E9jQbD2bY3o8vP96M7te8i/
+ jJrNcrEy9vFaHDrZwe7mc9JdKUMKafOtaIUxD7zEVXFwto0lShg60SosPMiawY+Ckybe
+ CPAa0MqlKeSuWCbvcwS2Xg0Vb28x3vynCfyqjUxBMvSbazFgbHUL1Yr4vaLXCRUY/9c1
+ 1wxg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWCX+t9bGJNuJk7eIycfVkfFGiEJW2na1XwgLB1aSUonPLOgMaiCq6Ib66Cw+Dv6eiIpbcLR4pqzA==@nongnu.org
+X-Gm-Message-State: AOJu0YxYSxdN0FtT3ey0VS82Y5LjkOF1bUOLN1UaKcLS7adQVa//h0gr
+ gXd4eDkUBAH/h71msdlhJk7ODSdRaerC7BJMX46Q9G73BUnveBR65oHXPAQCMzpVUmulgmA1Ekw
+ TNWSp3aqfSWDxecRZ5WrDycMf7NlRfGKc5oqS9In6S+kvfD82KDYLWA==
+X-Gm-Gg: AY/fxX5hTvhb2qiID1c9Ii5sOnLnsSrBm/WkmU/P48gSxcayLMy3IQx8k6wXZLyBoPK
+ O2JuucQBaPaGzzfGQCsj+m8VDqjid4w7sAXQKrv1dcjegzbNCN4EflkuyGQdfoUYzzRI2xiqdia
+ thJZdN35wu2u7xTuvsxRYqUbEALs5L36zF4nvpORlIrIFA/xVKOwjICF6DNl/joADL+9r6M7Hha
+ KdBBGXy1pddnBY1DmU+9UWc1sR8V2L9mBweZ63pj96dYswLLnNENBEVsQEdfVrluE6Mlu3j3ngL
+ YQxs//OYsHjQPV6qrA5H6sshlCaQQQlWrEjUtmfPX7iuiOdr+S3ojwxqN/cIkT9ThYILDSOEUfz
+ vWGEYQ5n9srmtdK1yCp5RvOzbThQy5YW0ju6KHvdkm+K8VBAu
+X-Received: by 2002:a05:6000:184a:b0:431:74:cca with SMTP id
+ ffacd0b85a97d-4342c557665mr7720829f8f.44.1768481134077; 
+ Thu, 15 Jan 2026 04:45:34 -0800 (PST)
+X-Received: by 2002:a05:6000:184a:b0:431:74:cca with SMTP id
+ ffacd0b85a97d-4342c557665mr7720791f8f.44.1768481133595; 
+ Thu, 15 Jan 2026 04:45:33 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
  ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-434af64a5bbsm5572550f8f.2.2026.01.15.04.44.46
+ ffacd0b85a97d-434af6fc833sm5632474f8f.38.2026.01.15.04.45.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Jan 2026 04:44:46 -0800 (PST)
-Message-ID: <219d7d36-65da-4638-91a3-f26aa364ffc7@redhat.com>
-Date: Thu, 15 Jan 2026 13:44:45 +0100
+ Thu, 15 Jan 2026 04:45:33 -0800 (PST)
+Message-ID: <1a529024-6e2f-464e-b03f-5c4d93a3b6d2@redhat.com>
+Date: Thu, 15 Jan 2026 13:45:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/4] hw/vfio: Add helper to retrieve device feature
-To: Jonathan Cameron <jonathan.cameron@huawei.com>,
- Shameer Kolothum <skolothumtho@nvidia.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
- alex@shazbot.org, cohuck@redhat.com, mst@redhat.com, nicolinc@nvidia.com,
- nathanc@nvidia.com, mochs@nvidia.com, jgg@nvidia.com, kjaju@nvidia.com
+Subject: Re: [PATCH v2 1/4] linux-headers: Update to Linux v6.19-rc1
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: eric.auger@redhat.com, alex@shazbot.org, cohuck@redhat.com,
+ mst@redhat.com, nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com,
+ jgg@nvidia.com, kjaju@nvidia.com
 References: <20260113113754.1189-1-skolothumtho@nvidia.com>
- <20260113113754.1189-4-skolothumtho@nvidia.com>
- <20260114101949.0000669d@huawei.com>
+ <20260113113754.1189-2-skolothumtho@nvidia.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -128,23 +129,23 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260114101949.0000669d@huawei.com>
+In-Reply-To: <20260113113754.1189-2-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: X-awNnYDg612Izj3JcLw0rSCr1fFxRe56r2rdLLLslM_1768481087
+X-Mimecast-MFC-PROC-ID: 5dFF-doseRoUT0zworKLBHvELyYvxYSqU8UpYwFFM2o_1768481134
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -160,46 +161,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/14/26 11:19, Jonathan Cameron wrote:
-> On Tue, 13 Jan 2026 11:37:53 +0000
-> Shameer Kolothum <skolothumtho@nvidia.com> wrote:
+On 1/13/26 12:37, Shameer Kolothum wrote:
+> Mainly for adding support for VFIO DMABUF. While at it, update all
+> headers.
 > 
->> Add vfio_device_get_feature() as a common helper to retrieve
->> VFIO device features.
->>
->> No functional change intended.
->>
->> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> Hi Shameer,
-> 
-> Happy new year.
-> 
-> Trivial thing noticed whilst glancing at this.
-> 
->> diff --git a/hw/vfio/device.c b/hw/vfio/device.c
->> index 100532f35d..0d9f42a1f0 100644
->> --- a/hw/vfio/device.c
->> +++ b/hw/vfio/device.c
->> @@ -516,6 +516,7 @@ void vfio_device_unprepare(VFIODevice *vbasedev)
->>       vbasedev->bcontainer = NULL;
->>   }
->>   
->> +
-> 
-> Stray change.
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>   include/standard-headers/drm/drm_fourcc.h     |  25 +-
+>   include/standard-headers/linux/ethtool.h      |   5 +
+>   .../linux/input-event-codes.h                 |  14 +-
+>   include/standard-headers/linux/pci_regs.h     |  89 ++++
+>   include/standard-headers/linux/virtio_net.h   |   3 +-
+>   include/standard-headers/linux/virtio_pci.h   |   2 +-
+>   linux-headers/asm-arm64/kvm.h                 |   2 +-
+>   linux-headers/asm-arm64/unistd_64.h           |   1 +
+>   linux-headers/asm-generic/unistd.h            |   4 +-
+>   linux-headers/asm-loongarch/kvm.h             |   1 +
+>   linux-headers/asm-loongarch/unistd.h          |   6 +
+>   linux-headers/asm-loongarch/unistd_64.h       |   1 +
+>   linux-headers/asm-mips/unistd_n32.h           |   1 +
+>   linux-headers/asm-mips/unistd_n64.h           |   1 +
+>   linux-headers/asm-mips/unistd_o32.h           |   1 +
+>   linux-headers/asm-powerpc/unistd_32.h         |   1 +
+>   linux-headers/asm-powerpc/unistd_64.h         |   1 +
+>   linux-headers/asm-riscv/kvm.h                 |   3 +
+>   linux-headers/asm-riscv/unistd_32.h           |   1 +
+>   linux-headers/asm-riscv/unistd_64.h           |   1 +
+>   linux-headers/asm-s390/bitsperlong.h          |   4 -
+>   linux-headers/asm-s390/unistd.h               |   4 -
+>   linux-headers/asm-s390/unistd_32.h            | 446 ------------------
+>   linux-headers/asm-s390/unistd_64.h            |   9 +-
+>   linux-headers/asm-x86/kvm.h                   |   1 +
+>   linux-headers/asm-x86/unistd_32.h             |   1 +
+>   linux-headers/asm-x86/unistd_64.h             |   1 +
+>   linux-headers/asm-x86/unistd_x32.h            |   1 +
+>   linux-headers/linux/iommufd.h                 |  10 +
+>   linux-headers/linux/kvm.h                     |  11 +
+>   linux-headers/linux/mshv.h                    | 116 ++++-
+>   linux-headers/linux/psp-sev.h                 |  66 ++-
+>   linux-headers/linux/vfio.h                    |  28 ++
+>   33 files changed, 363 insertions(+), 498 deletions(-)
+>   delete mode 100644 linux-headers/asm-s390/unistd_32.h
 
-Yeah I can fix that when applying. No need to resend.
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
-> 
->>   bool vfio_device_get_viommu_flags_want_nesting(VFIODevice *vbasedev)
->>   {
->>       VFIOPCIDevice *vdev = vfio_pci_from_vfio_device(vbasedev);
->> @@ -527,6 +528,15 @@ bool vfio_device_get_viommu_flags_want_nesting(VFIODevice *vbasedev)
->>       return false;
->>   }
-> 
 
 

@@ -4,179 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25A9DD3CCB2
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 07:19:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00EFAD41143
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 08:43:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgHdW-0003eC-Qx; Thu, 15 Jan 2026 02:19:19 -0500
+	id 1vgIx2-0005LJ-9p; Thu, 15 Jan 2026 03:43:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vgHdV-0003cy-7N; Thu, 15 Jan 2026 02:19:17 -0500
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vgIx0-0005HO-1H
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 03:43:30 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vgHdR-0000YG-Ub; Thu, 15 Jan 2026 02:19:16 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=QClch7SP/bKwWAFjwGWPCD/8Ulv35uZIgPFrE6uf3hhkveehe6ieg3fj5S5coGU5M9GqKxRDu7A46yw9S7TNxNTZEkrbBPwIgKk1nvQ3grP/djDZRXy94TE3XvbGvsrkqOFrhvJ7MfhZOXCaL1CBkbt0+zTwQg1Hl1D8nWPop2WUyHXuLfdATYIZ5bADP4w1z3qfawcL1jjFRErCphBlNqOrQQLI0TwWj0AzVnVKiOqYewoC/dEzwuTrx5MiM0KtKV68oCJ2GJoj7TLX6cAxOmwuVNBdsazirpTt+Ht8q26ByNTrBHAraM83DfMd5ynn67wYgQ/kHevYETNzeo/Skw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=1ZKbvJY8IVFLz/vuVLhO8R3rWeS0Aru75FOBNlGUd2U=;
- b=lWYXsBdlwAG+Zzfj8mw9KREobOCVYi2Cmpj+mfgFF5SuUQHb9Et6MsZ4u99apusoX7i0uDr8hFTJdiOKDWUVa7A/RCuNoQYFUKV9wmVuhHv9vHDWd7+MToaBwoBnuYzYN1cNQ8mKCChD5NnGx6zw4A8QwMuevqzIo1sbzVmeqQ69qP40WYF4gu70UxHdHILE0l8iTL+bYpgOjSkfoINmfAfdRu+RNY/i5sIhdbKYpsgbaJ3KzZiYPcYH4bHKMstMwYx4GyI2w94GNXO9X0+R6fcqATn8nZrkX9VYHGbUV93Ih/ie+jReHOZDiM2DpoIK2BfVhivYhJg35Yp57ngthA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=1ZKbvJY8IVFLz/vuVLhO8R3rWeS0Aru75FOBNlGUd2U=;
- b=j2pjpQST/KiVAcaY/4D8iLc63ngMGYg+lIOLuH+ecDFyYm3EQB8XLfj/PobGm/oFX14fbEdE2FZWXvMUmV6AlQnA4GtMajoCQ7NNWMKwdMKpQGLxT/z3DeutHyoOBW3PPH3jlxCvW8ScjTo2WehYUI9Z8vxh4FBAQ33Kh6/F/dCNoy2LWogINi6MRjK9WHIsevxTlOmnTP7clIICTOAl+Y4JmJr9c+Yu6e3xYqjGVsxHOhhi1Swl+ED9FF053VnEpVaqBLlKIM1PnXKyRQk/g79P0kbU8fnffYbaGCvJ+gACN9yRaPsdnJJ/03dOtFstair+lluCddgbt10Zo2sdZw==
-Received: from SI6PR06MB7631.apcprd06.prod.outlook.com (2603:1096:4:239::11)
- by OSQPR06MB7974.apcprd06.prod.outlook.com (2603:1096:604:429::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.6; Thu, 15 Jan
- 2026 07:19:07 +0000
-Received: from SI6PR06MB7631.apcprd06.prod.outlook.com
- ([fe80::afe5:a3f1:b435:e43c]) by SI6PR06MB7631.apcprd06.prod.outlook.com
- ([fe80::afe5:a3f1:b435:e43c%4]) with mapi id 15.20.9520.005; Thu, 15 Jan 2026
- 07:19:07 +0000
-From: Kane Chen <kane_chen@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>
-Subject: RE: [PATCH v1 1/1] hw/i2c/aspeed: Introduce 'bus-label' to customize
- bus naming
-Thread-Topic: [PATCH v1 1/1] hw/i2c/aspeed: Introduce 'bus-label' to customize
- bus naming
-Thread-Index: AQHcg53HErTDWlIB9UOtfzo9nCKDrLVS1jKAgAAAfgA=
-Date: Thu, 15 Jan 2026 07:19:07 +0000
-Message-ID: <SI6PR06MB7631282EF8FFF2DDEDE798F5F78CA@SI6PR06MB7631.apcprd06.prod.outlook.com>
-References: <20260112083054.4151945-1-kane_chen@aspeedtech.com>
- <20260112083054.4151945-2-kane_chen@aspeedtech.com>
- <cd9a0f11-7d36-4e58-afc8-96113ceb3613@kaod.org>
-In-Reply-To: <cd9a0f11-7d36-4e58-afc8-96113ceb3613@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI6PR06MB7631:EE_|OSQPR06MB7974:EE_
-x-ms-office365-filtering-correlation-id: e619d1c3-c547-4a5e-d69a-08de54065ede
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|376014|366016|1800799024|38070700021;
-x-microsoft-antispam-message-info: =?utf-8?B?ODNJUm03NVFrQTBSRWRBVFYrUXJqakR6SFY1OHV1RWp1MXhBNm9IZzBJQmlS?=
- =?utf-8?B?Um9pNDBkTENNalkxblB5SjI1QjNOUnpHTWtwNkdlT1N0aUc1dHRmOCtzTE9D?=
- =?utf-8?B?bkRuWTlaYXN2c0sxckJzVGR4ZDdwNFBqQ0Uyd0s1Y1h5ZVNBWjlPQThxM2dW?=
- =?utf-8?B?MHNKMVJ2SUh3Ynl5RHVIMVp0L2p6Y0VlaEpHVnlWNWFkZG9sLzRYOE9NM3dn?=
- =?utf-8?B?UGVlaU9HOThDRDZPRjJwczlmSXk0bTJaN1ZKYllkRkh5N2NxeWFITlMwT09C?=
- =?utf-8?B?M2hFY3duelhISGYrMXdyL2xoNXgvMUlhMG9DNVdhaUcrQUQ2TE81VDFEVldh?=
- =?utf-8?B?Qk5NSzd3aHBldUZwYW9OYVhTM2gyNi9ReWdLUGNCaTFIWTBSQ1BlaXI0MWUr?=
- =?utf-8?B?UVNINTZwSHZtYWk2aDBnYzZNcmNDaVM1MnJ2Wkk1TVRYVDF3Yk8wYUdNbkJl?=
- =?utf-8?B?ZzBmbWVMem1YZHhqN05HWklWdWtPU2U4aFdSQnpPeWtEWk9vNTBtc0l6QWRn?=
- =?utf-8?B?TzVpbW0xUU1ZSDRGeXFPbEQvL1FHVmtiVVNadGU3WjZ4dVUzUE04YmVQeTN4?=
- =?utf-8?B?Rmk4UUhVTlhRMVhSRWtmZW9LSU9jN0NoTmhGdVNEWUJvTWJ4OVNpeVo0RWpR?=
- =?utf-8?B?TDE3NUY2aVBIUlRZelQxc0p2QTAvekIzM3F0OGZIZjJKcW1yaGQybndXUUVS?=
- =?utf-8?B?K3RwK2wwekEyZzllRWw0eWdwNXQzRTZla2tDaXZldktJUXVDcitsZ3VTVy9z?=
- =?utf-8?B?YkxBTUpoVG0rakJxYVVsUUxqcDdBd1JnOEtVcUpPMSt5UHI3dWl3NE9MY1JL?=
- =?utf-8?B?SWpjQk5LdVRjZy9qRFE2cmVsd2s2c01xbUY2Nm9temEvbmNvZnU0YklIVU9M?=
- =?utf-8?B?MXgzSFNueVdRL2FPS29oNHRibytQVU1YOXloTy9LN3VIaG5vaEgwUVNWRElB?=
- =?utf-8?B?VHIvdlJ3cWtoUWFsZUFBK1hTSC9sU0xocldhWmUzQmhpQnExUVI1TVpoY0xy?=
- =?utf-8?B?WHZJRmlvVlJCOGh5SDNxZnl6V05qOGNPd0d0OW1LSnVRaitBTGVGL01UbEpv?=
- =?utf-8?B?clByQnIxWXlrMkhxOFhBRURHYXhhMVR3cHFhUjdDV0RYcU01MEJNSnZYNTRF?=
- =?utf-8?B?djVDMlNaR3JwQU9jNVNyWjBGa0I5Y1JjQW5NRWsxaDExUUtaQUl0Z1d1b29p?=
- =?utf-8?B?Q3VKK1U5U3k2OVRMVHpyelZEbS9FV01vOHFEbEZvRzVQdFdiRkgwamhFeERY?=
- =?utf-8?B?Q1pZUThQd3JHSkw4d1RmMGFPNTlYWTAveWhDSEpvamZ3eitCOGpXQ1A5emRp?=
- =?utf-8?B?RjBKL0RsR3JNblhzRDBORHRVdHBVNE5pUEZ5dGk4RlIwd1RyZzNnNU14dDl5?=
- =?utf-8?B?R0k1cjE3Q1IwRVppYWJZc0VNZXlGRkdTdnJOWWxPVXB5RDZXbWxoSDBDUWNx?=
- =?utf-8?B?VGx6c0c1Q1MzOVA2QitRM3d3Z2NlT1hPZ1UwSUxMOUsvZkpvcDc5bDRvOGZE?=
- =?utf-8?B?WU0zVE1vaXBtbmRzK0VleGl3aythcko1YmI3MDZkNGFtWDZTc2tXY29ZQzVU?=
- =?utf-8?B?eSt6blprR3dxd05DSHJoNEczeFdBSnJOeDREQVNidHNmUk5idVZxVno0eFE0?=
- =?utf-8?B?czJnLzZmNVBHb0l1NHRBaXgvTDNIU0FZczFvOURFRENreThNK2pZcWlzMHEw?=
- =?utf-8?B?cU9BRzBZZjF4T0Y1S0gvT1BRM01oUlFkYzNvTnVHNHkzWkh0V1RGUm8weExQ?=
- =?utf-8?B?dnk2VDQyUWUvaFhKWE5Cc2J3M2dTNjZ6ZVZHQkg0U2RGNUk0U1NzbWF0cXNK?=
- =?utf-8?B?V1dBRVVuOE8rM0F0eWFkNms3RkhEVm5JdEl5Z1JzRS9kd1U4S3AwUXkzZHNP?=
- =?utf-8?B?cFROVUlWT05mQmM0U2JNN3NQQjBUMDZWZURsSUJnY1JxV2ZuUEVHQkhEYmM3?=
- =?utf-8?B?MlRFRldIK0p0VTllWnlFc0MxMXhZUGZZUUtXWEdiMXJYRmUySXVrVTNCb0F5?=
- =?utf-8?B?UjN0UHdrcVZDcXF2NHBLL2FYeTRNK2NvMHc3eTJSak1kWjVQUitmSEw0MkE5?=
- =?utf-8?B?MUg3TFdqVDN3TDQ3dUgvVnBLOUZnSVoyWVl1NWZIZHROTTcyM3NKbmVhbU1G?=
- =?utf-8?B?Q3hoeUhUVWZPNUYvNDRtY1MwV1ptaHh1bjJuQkJqWjd1SGhIZHhLdlV1SEV6?=
- =?utf-8?Q?pbXQE84FoYP5CjEHlQf1ziI=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SI6PR06MB7631.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE; SFS:(13230040)(376014)(366016)(1800799024)(38070700021); DIR:OUT;
- SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZUJ1QWhjalVRNGNIL0FnYWxCU3U3RE84S3ZNZXFBbmhQby9ZbW5OWi9hcDcx?=
- =?utf-8?B?YUppZnBhdFowdWFqMmJTR29SNWRURWE2ckJUTytsWlVsWkZHSHBSMWxKYVNh?=
- =?utf-8?B?Y25FQ0YxczBVRjVVT29CRUZXVzJPNWZOanJnQ3lZTnUzaHZ4Y00xV2EwNUJm?=
- =?utf-8?B?YTV6UlFYWWF1SWtHRFovS1ZmWWpINiswOG00NURPRk5nUndFdGRuVGVmREtz?=
- =?utf-8?B?Y1dVMU1VeUo0Wk9CQjc5cmhRMytjcVFrNVVaaVJkWEdTYWR5N0V0UGR3UE05?=
- =?utf-8?B?Uk9Nci9PM3VhQk5HejlSdFd0UnlxaWs1RjR2Y3dGTGQ4ZGxTSVZFQytDbHhR?=
- =?utf-8?B?MzNIRjV1UFRzUnEwQ0c5VERxY0NyOHEyYVRqU2ZtZktkNjRKd0NwUE04LzlE?=
- =?utf-8?B?SkFUY1NnbXZDZG5iMTBRNE5OQkxaTURWUTRkWkJUdnduZ1FiN0hRaUxVV1Mx?=
- =?utf-8?B?bDRiQzQ5bzZENFVOZE9nQXB1bnA0K1RrTHlDQlpKaytialNNL1BNeFF4d3hp?=
- =?utf-8?B?WC9qNlhGalpUMGk2U2ZtNlQ2RGwxVDhTeU5FQlJITXhQaHM1SEd6WU9yTzA5?=
- =?utf-8?B?M1kxWG1tcHplZ1h3YUh0SkNCSlZzRXdGb2I5Z0lyMkZ6K3llWjg4UnJmdjBH?=
- =?utf-8?B?QTR0SEVBL3lTYngwdEYxYUQvUDY2WkhLV0JhVEdJWXRNNkRRT1ZDYzA0aTFM?=
- =?utf-8?B?ZElmalptNHpLZHFOd3dXVjhOMmlrQmVSVHp1eVliYzlNMlQ5OTlrZDA2T3c4?=
- =?utf-8?B?MHJMeVg2blJYNUk2SjBVQ1k0NW9CTDZUalZMbEpkSlY4VDlCaTljYlh4VUFF?=
- =?utf-8?B?V2M4QnJYRm51QXI2RHFpc2ppK005SDZVRERUZWMzZnVRRVhSUXgyWHBRSWMw?=
- =?utf-8?B?anZTTmhpbW8zSlQrKzhESWpmQVRreEhJWGZiY3NwT0hOcEpPUjBSeURUZzh4?=
- =?utf-8?B?ckdyNzF3TkY0L0RJVWZCNjdZK1FCVGZVb3lMSEJubm16U3luK21CeG9RcElC?=
- =?utf-8?B?M0lpZnYrNmdNMmQ1ZXdIdEh6aUdIUDRxVHpoVG1GOFdJKy9sUE03a2FjVDln?=
- =?utf-8?B?QzhhUkIxbGpMQ05DcEY5a01TZSsrTkVpcHB4SGVMRGNGQWt6N2tMaWthRkI3?=
- =?utf-8?B?QjlNUXgxc0JDNWxyS2N6OGY5MlRoL1dSVW1xSVJsZFUyUFV0MGJ2M0J2YTRE?=
- =?utf-8?B?ZUV3b2c2UzRPd2hsU2h5TkY2clVQZ3Ztcm9GNjMzU0tXYTFHcTBxNFV2L2k4?=
- =?utf-8?B?WkFOQ0ZhSnpHMnYrZHJGQy9EUFNQL1BGRkxndiszYVJ6WEZzTnVpczhMNEls?=
- =?utf-8?B?UVFob25vV3RjODk4Vi9pRFdyUVRXa1V4R3FmMGtHY3RUcmx2VHNHUm4vVG5T?=
- =?utf-8?B?QVUzVWM3V21Nd1k1dG9Kcm1xMnBOdUlhb1UzallYbVFUUjB2Vm1OY0IvaTJk?=
- =?utf-8?B?RzZOOGlacWthd1pDV2xjL3JBSHNyQ0VJdUt0Y28zYnFBYmhQLzV0R0NjWWRy?=
- =?utf-8?B?TCszYkhKUjJQaURpRFJ4YTRJUlNxUFI5SU1OVzVYcHg1a0t4c0prU2Z2MFI5?=
- =?utf-8?B?cjg5ajUzME9zS3dmYWZHV2xQVW1tNWo2cUlKay9obXZ6MnpRdDVwYWUzcjlx?=
- =?utf-8?B?Sjd6Q2lHTm9US21QS1VyNUM1ZmpBT0RFYzE4TmJIb3c1KzJtR0Rwdzl2N3ZQ?=
- =?utf-8?B?MzFiRDMzSjdMS1QrMjBpbWErK1hFNlJ0NWFDYWs2TVJXVWNMaG95WnNDMDdx?=
- =?utf-8?B?eCtUMjRzNHBsZm1YNkRZak8zVGZyUnpSREpoTnN5QjhBWk5iVVJ1RkRNV1Yy?=
- =?utf-8?B?bmlUMUcvWjVzUHlLSFgzTTBzWG5FSzFLZXlaSm81anZ4R1FhYnIyL0tsZGxy?=
- =?utf-8?B?bVBLdDl4cTFlYjRmK3lNSm1PcDI2RisrbzZGbzh0SGVHeDBkMkk3Qm8yczVt?=
- =?utf-8?B?RTZ5TERFRHpGYWxLY1NMeG81WTV1VVNrYUpkbEdLemorZUVBZEgvTzRwZDVQ?=
- =?utf-8?B?N0hXZHhRMU1CTlhWSnRZeTRFdWdnOWhBdEV1L1VUbTZnVElLZTlDWWZYSVNz?=
- =?utf-8?B?QTRhYWcrYzNuVXB6SU1yV0lrOXNpanUzVy9xUXpFMXZKWEhUSGtZWXBsT0sw?=
- =?utf-8?B?YUpjUUN6QjRrK2w5bU9tWm1NNUluM1lkbUJsUURHREV0OUU4Ulh1bmpsdFRx?=
- =?utf-8?B?YkZJdmFXdFRqVlhENW0weUl1cVpNNm4xdEVzRjRZMGNTK1A2UjFhYWpCYnlY?=
- =?utf-8?B?ZUhqL3JUb0FZdUU0NitUN1E4K01SeC9mQitlazMvdWRMSG1vV3IvR2ZHaDM2?=
- =?utf-8?B?ejBXMTQ3TDlxbXFyOTc5WGF4QlJGME5EWGZWTklDeURtOEFSeGQ5UT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vgIwx-000509-7b
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 03:43:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1768466605;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7R/i8PSx6hkEYVtXAbLS4TG1LDEKBS4CWRWeDwI7Bk8=;
+ b=PYxPXwSIPsJg4DfqeI2MEywqiCYZENwMrjBv9ylbloNoOB/wJkI+cJXXeQTe+pk5dQli1x
+ n8mzVw8J2JHEn5qWK47PxW5Sy77M3SgKQTgerSPt1fxXDy2edvDHfc5W4aCfNiwwVYy5Xy
+ wtSo6keURI6upxSZc8H+FTABwi3xXwo=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-278-Xb-zG2kUPMWE6ds88_JeoQ-1; Thu, 15 Jan 2026 03:43:22 -0500
+X-MC-Unique: Xb-zG2kUPMWE6ds88_JeoQ-1
+X-Mimecast-MFC-AGG-ID: Xb-zG2kUPMWE6ds88_JeoQ_1768466601
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-47d3c9b8c56so7942915e9.0
+ for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 00:43:22 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1768466601; x=1769071401;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=7R/i8PSx6hkEYVtXAbLS4TG1LDEKBS4CWRWeDwI7Bk8=;
+ b=X80oe5Lj9dycS8QwJmyzsWXvgrWRWd6/q7SxTVf9+53xMucFuJTcGXBJ9NB7VJI+zg
+ aQSE5+e0GzKu8Bn86dnNCB+xIyH7zK5WQZo9SHgBOD9mYFkpjUGCgObrKq14B3aJiOcO
+ n2Pe9gIZMWLRvpKbXNBHMsUIqzAMAmi2KgvUeZZEYkmB8F+n9g1zifl/GUC0PHNFELCb
+ YvQUohRHsQ/3rTQgHSvftYjiGhgwnCmxUYzIIYbh3PCX46QwNLRh/R/pmtOBrrFtajkw
+ vs88241Tg6ZQacivpG98fhrZstu2bPS/pXSLYgChxFcgPbrS5MCRImVQQsPmJq1AynA2
+ j7Fg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXWi4hsc335dIcHlJNhAPXOFPmI4uiyXNvJX8kUPxPp7s1L9Sn1vkDNvQJljxEdifExwnhXYf/QAg==@nongnu.org
+X-Gm-Message-State: AOJu0YzoSJedpg77WuDgeWGhnibisbgT0DOOe+kdpnL8KI1TJOJfEn99
+ eDHY8qveAEC+uP6zhzDZUMoF7w8DRHDZ5VnI58eVAMaJ+OvHufyTfto9ZyjBIWtONm/v+SYRtoo
+ pmf3BbQIHiqLiuQHVNGfveUTBWXnGgWrw5WhZiGZQtxxBqP41gBavGw==
+X-Gm-Gg: AY/fxX4c+CtmgEk1AqNA4iiqrBZmyGlbEjMwv0kXkcQ4bP9i2jGMt3ZLfdsGzbKwEyg
+ QA9wVSTVVntTXhZItq+fSng1yE0BNgUhQpcQyEiJGp5B//LTdizuRpgQNRp8XUJEI+QAL9bYR+v
+ 7aaw560uIkurymY5MUwYqMjUpLufm9y99mG1OIj4N7aIfXHK2HBgS/t3cmqNNxjIiEfdWkNpZ2n
+ 2NOvflNjm86V8ECSBnj/q9YFIgDSfBicKxhrX6Tu8bXqR61pjCg8FyJXq2D1iN78OFHBSXXvF3A
+ 6es1FffCQ/Vc5kN94ytVnKDcWY9XNpYigTUnm9CTcC8AormaVQN1ugUtxpGeBC+mxL01yoxoQG/
+ uzGzuN7QOH45EHsa/21/rgMuZE3rjM60w+FyvwED98b6Zig5ejnz9qLtaxw==
+X-Received: by 2002:a05:600c:a415:b0:47e:e779:36e with SMTP id
+ 5b1f17b1804b1-47ee7790531mr43397475e9.19.1768466601281; 
+ Thu, 15 Jan 2026 00:43:21 -0800 (PST)
+X-Received: by 2002:a05:600c:a415:b0:47e:e779:36e with SMTP id
+ 5b1f17b1804b1-47ee7790531mr43397085e9.19.1768466600814; 
+ Thu, 15 Jan 2026 00:43:20 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-434af6e09acsm4361880f8f.35.2026.01.15.00.43.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 15 Jan 2026 00:43:20 -0800 (PST)
+Message-ID: <f28112f7-5f54-4fa5-92b9-9e391e6630f2@redhat.com>
+Date: Thu, 15 Jan 2026 09:43:19 +0100
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI6PR06MB7631.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e619d1c3-c547-4a5e-d69a-08de54065ede
-X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Jan 2026 07:19:07.0973 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 4j0BKD70CjzGRNdrp1hTD9so+p0kKGutOuw7RBJWXIR8A/YzjNoIPjUNU/jLkaH2SbYvW1FcgUOyzswVamTsCeZsBnHNBYaUrWjls5m7qcU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSQPR06MB7974
-Received-SPF: pass client-ip=2a01:111:f403:c405::5;
- envelope-from=kane_chen@aspeedtech.com;
- helo=TYPPR03CU001.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC v8 1/7] hw/arm/smmuv3: Extract common definitions to
+ smmuv3-common.h
+To: Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini
+ <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>,
+ CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
+References: <20251224034647.2596434-1-tangtao1634@phytium.com.cn>
+ <20251224034647.2596434-2-tangtao1634@phytium.com.cn>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20251224034647.2596434-2-tangtao1634@phytium.com.cn>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: kSg7XEtf2NA3zkmrNH7dHbrW-aeY8MpL4-wgpnn1YK4_1768466601
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -189,118 +126,600 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBDw6lkcmljIExlIEdvYXRlciA8
-Y2xnQGthb2Qub3JnPg0KPiBTZW50OiBUaHVyc2RheSwgSmFudWFyeSAxNSwgMjAyNiAzOjE1IFBN
-DQo+IFRvOiBLYW5lIENoZW4gPGthbmVfY2hlbkBhc3BlZWR0ZWNoLmNvbT47IFBldGVyIE1heWRl
-bGwNCj4gPHBldGVyLm1heWRlbGxAbGluYXJvLm9yZz47IFN0ZXZlbiBMZWUgPHN0ZXZlbl9sZWVA
-YXNwZWVkdGVjaC5jb20+OyBUcm95DQo+IExlZSA8bGVldHJveUBnbWFpbC5jb20+OyBKYW1pbiBM
-aW4gPGphbWluX2xpbkBhc3BlZWR0ZWNoLmNvbT47IEFuZHJldw0KPiBKZWZmZXJ5IDxhbmRyZXdA
-Y29kZWNvbnN0cnVjdC5jb20uYXU+OyBKb2VsIFN0YW5sZXkgPGpvZWxAam1zLmlkLmF1PjsNCj4g
-b3BlbiBsaXN0OkFTUEVFRCBCTUNzIDxxZW11LWFybUBub25nbnUub3JnPjsgb3BlbiBsaXN0OkFs
-bCBwYXRjaGVzIENDDQo+IGhlcmUgPHFlbXUtZGV2ZWxAbm9uZ251Lm9yZz4NCj4gQ2M6IFRyb3kg
-TGVlIDx0cm95X2xlZUBhc3BlZWR0ZWNoLmNvbT4NCj4gU3ViamVjdDogUmU6IFtQQVRDSCB2MSAx
-LzFdIGh3L2kyYy9hc3BlZWQ6IEludHJvZHVjZSAnYnVzLWxhYmVsJyB0byBjdXN0b21pemUNCj4g
-YnVzIG5hbWluZw0KPiANCj4gT24gMS8xMi8yNiAwOTozMCwgS2FuZSBDaGVuIHZpYSB3cm90ZToN
-Cj4gPiBGcm9tOiBLYW5lLUNoZW4tQVMgPGthbmVfY2hlbkBhc3BlZWR0ZWNoLmNvbT4NCj4gPg0K
-PiA+IE9uIHNvbWUgQXNwZWVkLWJhc2VkIG1hY2hpbmVzLCBtdWx0aXBsZSBJMkMgY29udHJvbGxl
-cnMgbWF5IGV4aXN0DQo+ID4gYWNyb3NzIGRpZmZlcmVudCBjb21wb25lbnRzLCBzdWNoIGFzIHRo
-ZSBwcmltYXJ5IFNvQyBhbmQgYW4gZXh0ZXJuYWwNCj4gPiBJTyBleHBhbmRlciBvciBjby1wcm9j
-ZXNzb3IgKGUuZy4sIEFTVDE3MDApLiBVc2luZyB0aGUgY3VycmVudCBzdGF0aWMNCj4gPiBuYW1p
-bmcgY29udmVudGlvbiByZXN1bHRzIGluIG9iamVjdCBuYW1lIGNvbmZsaWN0cyB3aGVuIG11bHRp
-cGxlDQo+ID4gY29udHJvbGxlcnMgYXR0ZW1wdCB0byBpbnN0YW50aWF0ZSBidXNlcyB3aXRoIHRo
-ZSBzYW1lIElELg0KPiA+DQo+ID4gVGhpcyBwYXRjaCBpbnRyb2R1Y2VzIGEgJ2J1cy1sYWJlbCcg
-cHJvcGVydHkgZm9yIHRoZSBBc3BlZWQgSTJDDQo+ID4gY29udHJvbGxlci4gVGhpcyBhbGxvd3Mg
-aGlnaGVyLWxldmVsIGxheWVycywgc3VjaCBhcyB0aGUgU29DIHJlYWxpemUNCj4gPiBmdW5jdGlv
-biwgdG8gcHJvdmlkZSBhIHVuaXF1ZSBpZGVudGlmaWVyIGZvciB0aGUgYnVzZXMuIFRoZSBJMkMg
-YnVzDQo+ID4gb2JqZWN0IG5hbWUgaXMgdGhlbiBjb25zdHJ1Y3RlZCB1c2luZyB0aGlzIGxhYmVs
-IChlLmcuLCAiaW9leHAwLjAiDQo+ID4gaW5zdGVhZCBvZiB0aGUgZGVmYXVsdCAiYXNwZWVkLmky
-Yy5idXMuMCIpLg0KPiA+DQo+ID4gVGhpcyBlbmhhbmNlbWVudCBlbnN1cmVzIHVuaXF1ZSBidXMg
-aWRlbnRpZmllcnMgYWNyb3NzIHRoZSBzeXN0ZW0gYW5kDQo+ID4gcmVzb2x2ZXMgbmFtaW5nIGNv
-bmZsaWN0cyBpbiBtdWx0aS1jb250cm9sbGVyIGNvbmZpZ3VyYXRpb25zLg0KPiA+DQo+ID4gU2ln
-bmVkLW9mZi1ieTogS2FuZS1DaGVuLUFTIDxrYW5lX2NoZW5AYXNwZWVkdGVjaC5jb20+DQo+IA0K
-PiBSZXZpZXdlZC1ieTogQ8OpZHJpYyBMZSBHb2F0ZXIgPGNsZ0ByZWRoYXQuY29tPg0KPiANCj4g
-VGhhbmtzLA0KPiANCj4gQy4NCkhpIEPDqWRyaWMsDQoNClRoYW5rcyBmb3IgeW91ciByZXZpZXcu
-DQoNCkJlc3QgUmVnYXJkcywNCkthbmUNCj4gDQo+ID4gLS0tDQo+ID4gICBpbmNsdWRlL2h3L2ky
-Yy9hc3BlZWRfaTJjLmggfCAgMiArKw0KPiA+ICAgaHcvaTJjL2FzcGVlZF9pMmMuYyAgICAgICAg
-IHwgMjcgKysrKysrKysrKysrKysrKysrKysrLS0tLS0tDQo+ID4gICAyIGZpbGVzIGNoYW5nZWQs
-IDIzIGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEv
-aW5jbHVkZS9ody9pMmMvYXNwZWVkX2kyYy5oIGIvaW5jbHVkZS9ody9pMmMvYXNwZWVkX2kyYy5o
-DQo+ID4gaW5kZXggZmZjZmYyNTgwZi4uNjhiZDEzODAyNiAxMDA2NDQNCj4gPiAtLS0gYS9pbmNs
-dWRlL2h3L2kyYy9hc3BlZWRfaTJjLmgNCj4gPiArKysgYi9pbmNsdWRlL2h3L2kyYy9hc3BlZWRf
-aTJjLmgNCj4gPiBAQCAtMjUyLDYgKzI1Miw3IEBAIHN0cnVjdCBBc3BlZWRJMkNCdXMgew0KPiA+
-ICAgICAgIE1lbW9yeVJlZ2lvbiBtcl9wb29sOw0KPiA+DQo+ID4gICAgICAgSTJDQnVzICpidXM7
-DQo+ID4gKyAgICBjaGFyICpuYW1lOw0KPiA+ICAgICAgIHVpbnQ4X3QgaWQ7DQo+ID4gICAgICAg
-cWVtdV9pcnEgaXJxOw0KPiA+DQo+ID4gQEAgLTI2OSw2ICsyNzAsNyBAQCBzdHJ1Y3QgQXNwZWVk
-STJDU3RhdGUgew0KPiA+ICAgICAgIHVpbnQzMl90IGludHJfc3RhdHVzOw0KPiA+ICAgICAgIHVp
-bnQzMl90IGN0cmxfZ2xvYmFsOw0KPiA+ICAgICAgIHVpbnQzMl90IG5ld19jbGtfZGl2aWRlcjsN
-Cj4gPiArICAgIGNoYXIgKmJ1c19sYWJlbDsNCj4gPiAgICAgICBNZW1vcnlSZWdpb24gcG9vbF9p
-b21lbTsNCj4gPiAgICAgICB1aW50OF90IHNoYXJlX3Bvb2xbQVNQRUVEX0kyQ19TSEFSRV9QT09M
-X1NJWkVdOw0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2h3L2kyYy9hc3BlZWRfaTJjLmMgYi9ody9p
-MmMvYXNwZWVkX2kyYy5jIGluZGV4DQo+ID4gMWI4YWM1NjFjMy4uN2NmOTI0MjNjNyAxMDA2NDQN
-Cj4gPiAtLS0gYS9ody9pMmMvYXNwZWVkX2kyYy5jDQo+ID4gKysrIGIvaHcvaTJjL2FzcGVlZF9p
-MmMuYw0KPiA+IEBAIC0xMjE1LDkgKzEyMTUsMTYgQEAgc3RhdGljIHZvaWQgYXNwZWVkX2kyY19y
-ZWFsaXplKERldmljZVN0YXRlICpkZXYsDQo+IEVycm9yICoqZXJycCkNCj4gPiAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgImFzcGVlZC5pMmMiLCBhaWMtPm1lbV9zaXplKTsNCj4gPiAgICAg
-ICBzeXNidXNfaW5pdF9tbWlvKHNiZCwgJnMtPmlvbWVtKTsNCj4gPg0KPiA+ICsgICAgLyogZGVm
-YXVsdCB2YWx1ZSAqLw0KPiA+ICsgICAgaWYgKCFzLT5idXNfbGFiZWwpIHsNCj4gPiArICAgICAg
-ICBzLT5idXNfbGFiZWwgPSBnX3N0cmR1cChUWVBFX0FTUEVFRF9JMkNfQlVTKTsNCj4gPiArICAg
-IH0NCj4gPiArDQo+ID4gICAgICAgZm9yIChpID0gMDsgaSA8IGFpYy0+bnVtX2J1c3NlczsgaSsr
-KSB7DQo+ID4gICAgICAgICAgIE9iamVjdCAqYnVzID0gT0JKRUNUKCZzLT5idXNzZXNbaV0pOw0K
-PiA+ICAgICAgICAgICBpbnQgb2Zmc2V0ID0gaSA8IGFpYy0+Z2FwID8gMSA6IDU7DQo+ID4gKyAg
-ICAgICAgZ19hdXRvZnJlZSBjaGFyICpuYW1lID0gZ19zdHJkdXBfcHJpbnRmKCIlcy4lZCIsDQo+
-ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHMtPmJ1
-c19sYWJlbCwNCj4gaSk7DQo+ID4NCj4gPiAgICAgICAgICAgaWYgKCFvYmplY3RfcHJvcGVydHlf
-c2V0X2xpbmsoYnVzLCAiY29udHJvbGxlciIsIE9CSkVDVChzKSwgZXJycCkpDQo+IHsNCj4gPiAg
-ICAgICAgICAgICAgIHJldHVybjsNCj4gPiBAQCAtMTIyNyw2ICsxMjM0LDEwIEBAIHN0YXRpYyB2
-b2lkIGFzcGVlZF9pMmNfcmVhbGl6ZShEZXZpY2VTdGF0ZSAqZGV2LA0KPiBFcnJvciAqKmVycnAp
-DQo+ID4gICAgICAgICAgICAgICByZXR1cm47DQo+ID4gICAgICAgICAgIH0NCj4gPg0KPiA+ICsg
-ICAgICAgIGlmICghb2JqZWN0X3Byb3BlcnR5X3NldF9zdHIoYnVzLCAiYnVzLW5hbWUiLCBuYW1l
-LCBlcnJwKSkgew0KPiA+ICsgICAgICAgICAgICByZXR1cm47DQo+ID4gKyAgICAgICAgfQ0KPiA+
-ICsNCj4gPiAgICAgICAgICAgaWYgKCFzeXNidXNfcmVhbGl6ZShTWVNfQlVTX0RFVklDRShidXMp
-LCBlcnJwKSkgew0KPiA+ICAgICAgICAgICAgICAgcmV0dXJuOw0KPiA+ICAgICAgICAgICB9DQo+
-ID4gQEAgLTEyNjMsNiArMTI3NCw3IEBAIHN0YXRpYyB2b2lkIGFzcGVlZF9pMmNfcmVhbGl6ZShE
-ZXZpY2VTdGF0ZSAqZGV2LA0KPiBFcnJvciAqKmVycnApDQo+ID4gICBzdGF0aWMgY29uc3QgUHJv
-cGVydHkgYXNwZWVkX2kyY19wcm9wZXJ0aWVzW10gPSB7DQo+ID4gICAgICAgREVGSU5FX1BST1Bf
-TElOSygiZHJhbSIsIEFzcGVlZEkyQ1N0YXRlLCBkcmFtX21yLA0KPiA+ICAgICAgICAgICAgICAg
-ICAgICAgICAgVFlQRV9NRU1PUllfUkVHSU9OLCBNZW1vcnlSZWdpb24gKiksDQo+ID4gKyAgICBE
-RUZJTkVfUFJPUF9TVFJJTkcoImJ1cy1sYWJlbCIsIEFzcGVlZEkyQ1N0YXRlLCBidXNfbGFiZWwp
-LA0KPiA+ICAgfTsNCj4gPg0KPiA+ICAgc3RhdGljIHZvaWQgYXNwZWVkX2kyY19jbGFzc19pbml0
-KE9iamVjdENsYXNzICprbGFzcywgY29uc3Qgdm9pZA0KPiA+ICpkYXRhKSBAQCAtMTQyMywyNCAr
-MTQzNSwyNiBAQCBzdGF0aWMgdm9pZA0KPiBhc3BlZWRfaTJjX2J1c19yZWFsaXplKERldmljZVN0
-YXRlICpkZXYsIEVycm9yICoqZXJycCkNCj4gPiAgIHsNCj4gPiAgICAgICBBc3BlZWRJMkNCdXMg
-KnMgPSBBU1BFRURfSTJDX0JVUyhkZXYpOw0KPiA+ICAgICAgIEFzcGVlZEkyQ0NsYXNzICphaWM7
-DQo+ID4gLSAgICBnX2F1dG9mcmVlIGNoYXIgKm5hbWUgPSBnX3N0cmR1cF9wcmludGYoVFlQRV9B
-U1BFRURfSTJDX0JVUw0KPiAiLiVkIiwgcy0+aWQpOw0KPiA+IC0gICAgZ19hdXRvZnJlZSBjaGFy
-ICpwb29sX25hbWUgPSBnX3N0cmR1cF9wcmludGYoIiVzLnBvb2wiLCBuYW1lKTsNCj4gPiArICAg
-IGdfYXV0b2ZyZWUgY2hhciAqcG9vbF9uYW1lID0gTlVMTDsNCj4gPg0KPiA+IC0gICAgaWYgKCFz
-LT5jb250cm9sbGVyKSB7DQo+ID4gLSAgICAgICAgZXJyb3Jfc2V0ZyhlcnJwLCBUWVBFX0FTUEVF
-RF9JMkNfQlVTICI6ICdjb250cm9sbGVyJyBsaW5rIG5vdA0KPiBzZXQiKTsNCj4gPiArICAgIGlm
-ICghcy0+Y29udHJvbGxlciB8fCAhcy0+bmFtZSkgew0KPiA+ICsgICAgICAgIGVycm9yX3NldGco
-ZXJycCwgVFlQRV9BU1BFRURfSTJDX0JVUw0KPiA+ICsgICAgICAgICAgICAgICAgICAgIjogJ2Nv
-bnRyb2xsZXInIG9yICdidXMtbmFtZScgbm90IHNldCIpOw0KPiA+ICAgICAgICAgICByZXR1cm47
-DQo+ID4gICAgICAgfQ0KPiA+DQo+ID4gKyAgICBwb29sX25hbWUgPSBnX3N0cmR1cF9wcmludGYo
-IiVzLnBvb2wiLCBzLT5uYW1lKTsNCj4gPiArDQo+ID4gICAgICAgYWljID0gQVNQRUVEX0kyQ19H
-RVRfQ0xBU1Mocy0+Y29udHJvbGxlcik7DQo+ID4NCj4gPiAgICAgICBzeXNidXNfaW5pdF9pcnEo
-U1lTX0JVU19ERVZJQ0UoZGV2KSwgJnMtPmlycSk7DQo+ID4NCj4gPiAtICAgIHMtPmJ1cyA9IGky
-Y19pbml0X2J1cyhkZXYsIG5hbWUpOw0KPiA+ICsgICAgcy0+YnVzID0gaTJjX2luaXRfYnVzKGRl
-diwgcy0+bmFtZSk7DQo+ID4gICAgICAgcy0+c2xhdmUgPSBpMmNfc2xhdmVfY3JlYXRlX3NpbXBs
-ZShzLT5idXMsDQo+IFRZUEVfQVNQRUVEX0kyQ19CVVNfU0xBVkUsDQo+ID4gICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAweGZmKTsNCj4gPg0KPiA+ICAgICAgIG1lbW9y
-eV9yZWdpb25faW5pdF9pbygmcy0+bXIsIE9CSkVDVChzKSwgJmFzcGVlZF9pMmNfYnVzX29wcywN
-Cj4gPiAtICAgICAgICAgICAgICAgICAgICAgICAgICBzLCBuYW1lLCBhaWMtPnJlZ19zaXplKTsN
-Cj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICBzLCBzLT5uYW1lLCBhaWMtPnJlZ19zaXpl
-KTsNCj4gPiAgICAgICBzeXNidXNfaW5pdF9tbWlvKFNZU19CVVNfREVWSUNFKGRldiksICZzLT5t
-cik7DQo+ID4NCj4gPiAgICAgICBtZW1vcnlfcmVnaW9uX2luaXRfaW8oJnMtPm1yX3Bvb2wsIE9C
-SkVDVChzKSwNCj4gPiAmYXNwZWVkX2kyY19idXNfcG9vbF9vcHMsIEBAIC0xNDUyLDYgKzE0NjYs
-NyBAQCBzdGF0aWMgY29uc3QgUHJvcGVydHkNCj4gYXNwZWVkX2kyY19idXNfcHJvcGVydGllc1td
-ID0gew0KPiA+ICAgICAgIERFRklORV9QUk9QX1VJTlQ4KCJidXMtaWQiLCBBc3BlZWRJMkNCdXMs
-IGlkLCAwKSwNCj4gPiAgICAgICBERUZJTkVfUFJPUF9MSU5LKCJjb250cm9sbGVyIiwgQXNwZWVk
-STJDQnVzLCBjb250cm9sbGVyLA0KPiBUWVBFX0FTUEVFRF9JMkMsDQo+ID4gICAgICAgICAgICAg
-ICAgICAgICAgICBBc3BlZWRJMkNTdGF0ZSAqKSwNCj4gPiArICAgIERFRklORV9QUk9QX1NUUklO
-RygiYnVzLW5hbWUiLCBBc3BlZWRJMkNCdXMsIG5hbWUpLA0KPiA+ICAgfTsNCj4gPg0KPiA+ICAg
-c3RhdGljIHZvaWQgYXNwZWVkX2kyY19idXNfY2xhc3NfaW5pdChPYmplY3RDbGFzcyAqa2xhc3Ms
-IGNvbnN0IHZvaWQNCj4gPiAqZGF0YSkNCg0KDQo=
+
+
+On 12/24/25 4:46 AM, Tao Tang wrote:
+> Move register definitions, command enums, and Stream Table Entry (STE) /
+> Context Descriptor (CD) structure definitions from the internal header
+> hw/arm/smmuv3-internal.h to a new common header
+> include/hw/arm/smmuv3-common.h.
+>
+> This allows other components, such as generic SMMUv3 tests or test devices,
+> to utilize these definitions without including the specific SMMUv3 device
+> internal state.
+>
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Eric
+> ---
+>  hw/arm/smmuv3-internal.h       | 255 +------------------------------
+>  include/hw/arm/smmuv3-common.h | 268 +++++++++++++++++++++++++++++++++
+>  2 files changed, 269 insertions(+), 254 deletions(-)
+>  create mode 100644 include/hw/arm/smmuv3-common.h
+>
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> index b6b7399347..8679ab6d09 100644
+> --- a/hw/arm/smmuv3-internal.h
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -23,6 +23,7 @@
+>  
+>  #include "hw/registerfields.h"
+>  #include "hw/arm/smmu-common.h"
+> +#include "hw/arm/smmuv3-common.h"
+>  
+>  typedef enum SMMUTranslationStatus {
+>      SMMU_TRANS_DISABLE,
+> @@ -38,147 +39,6 @@ typedef enum SMMUTranslationClass {
+>      SMMU_CLASS_IN,
+>  } SMMUTranslationClass;
+>  
+> -/* MMIO Registers */
+> -
+> -REG32(IDR0,                0x0)
+> -    FIELD(IDR0, S2P,         0 , 1)
+> -    FIELD(IDR0, S1P,         1 , 1)
+> -    FIELD(IDR0, TTF,         2 , 2)
+> -    FIELD(IDR0, COHACC,      4 , 1)
+> -    FIELD(IDR0, BTM,         5 , 1)
+> -    FIELD(IDR0, HTTU,        6 , 2)
+> -    FIELD(IDR0, DORMHINT,    8 , 1)
+> -    FIELD(IDR0, HYP,         9 , 1)
+> -    FIELD(IDR0, ATS,         10, 1)
+> -    FIELD(IDR0, NS1ATS,      11, 1)
+> -    FIELD(IDR0, ASID16,      12, 1)
+> -    FIELD(IDR0, MSI,         13, 1)
+> -    FIELD(IDR0, SEV,         14, 1)
+> -    FIELD(IDR0, ATOS,        15, 1)
+> -    FIELD(IDR0, PRI,         16, 1)
+> -    FIELD(IDR0, VMW,         17, 1)
+> -    FIELD(IDR0, VMID16,      18, 1)
+> -    FIELD(IDR0, CD2L,        19, 1)
+> -    FIELD(IDR0, VATOS,       20, 1)
+> -    FIELD(IDR0, TTENDIAN,    21, 2)
+> -    FIELD(IDR0, ATSRECERR,   23, 1)
+> -    FIELD(IDR0, STALL_MODEL, 24, 2)
+> -    FIELD(IDR0, TERM_MODEL,  26, 1)
+> -    FIELD(IDR0, STLEVEL,     27, 2)
+> -    FIELD(IDR0, RME_IMPL,    30, 1)
+> -
+> -REG32(IDR1,                0x4)
+> -    FIELD(IDR1, SIDSIZE,      0 , 6)
+> -    FIELD(IDR1, SSIDSIZE,     6 , 5)
+> -    FIELD(IDR1, PRIQS,        11, 5)
+> -    FIELD(IDR1, EVENTQS,      16, 5)
+> -    FIELD(IDR1, CMDQS,        21, 5)
+> -    FIELD(IDR1, ATTR_PERMS_OVR, 26, 1)
+> -    FIELD(IDR1, ATTR_TYPES_OVR, 27, 1)
+> -    FIELD(IDR1, REL,          28, 1)
+> -    FIELD(IDR1, QUEUES_PRESET, 29, 1)
+> -    FIELD(IDR1, TABLES_PRESET, 30, 1)
+> -    FIELD(IDR1, ECMDQ,        31, 1)
+> -
+> -#define SMMU_IDR1_SIDSIZE 16
+> -#define SMMU_CMDQS   19
+> -#define SMMU_EVENTQS 19
+> -
+> -REG32(IDR2,                0x8)
+> -     FIELD(IDR2, BA_VATOS, 0, 10)
+> -
+> -REG32(IDR3,                0xc)
+> -     FIELD(IDR3, HAD,         2, 1);
+> -     FIELD(IDR3, PBHA,        3, 1);
+> -     FIELD(IDR3, XNX,         4, 1);
+> -     FIELD(IDR3, PPS,         5, 1);
+> -     FIELD(IDR3, MPAM,        7, 1);
+> -     FIELD(IDR3, FWB,         8, 1);
+> -     FIELD(IDR3, STT,         9, 1);
+> -     FIELD(IDR3, RIL,        10, 1);
+> -     FIELD(IDR3, BBML,       11, 2);
+> -     FIELD(IDR3, E0PD,       13, 1);
+> -     FIELD(IDR3, PTWNNC,     14, 1);
+> -     FIELD(IDR3, DPT,        15, 1);
+> -
+> -REG32(IDR4,                0x10)
+> -
+> -REG32(IDR5,                0x14)
+> -     FIELD(IDR5, OAS,         0, 3);
+> -     FIELD(IDR5, GRAN4K,      4, 1);
+> -     FIELD(IDR5, GRAN16K,     5, 1);
+> -     FIELD(IDR5, GRAN64K,     6, 1);
+> -     FIELD(IDR5, VAX,        10, 2);
+> -     FIELD(IDR5, STALL_MAX,  16, 16);
+> -
+> -#define SMMU_IDR5_OAS 4
+> -
+> -REG32(IIDR,                0x18)
+> -REG32(AIDR,                0x1c)
+> -REG32(CR0,                 0x20)
+> -    FIELD(CR0, SMMU_ENABLE,   0, 1)
+> -    FIELD(CR0, EVENTQEN,      2, 1)
+> -    FIELD(CR0, CMDQEN,        3, 1)
+> -
+> -#define SMMU_CR0_RESERVED 0xFFFFFC20
+> -
+> -REG32(CR0ACK,              0x24)
+> -REG32(CR1,                 0x28)
+> -REG32(CR2,                 0x2c)
+> -REG32(STATUSR,             0x40)
+> -REG32(GBPA,                0x44)
+> -    FIELD(GBPA, ABORT,        20, 1)
+> -    FIELD(GBPA, UPDATE,       31, 1)
+> -
+> -/* Use incoming. */
+> -#define SMMU_GBPA_RESET_VAL 0x1000
+> -
+> -REG32(IRQ_CTRL,            0x50)
+> -    FIELD(IRQ_CTRL, GERROR_IRQEN,        0, 1)
+> -    FIELD(IRQ_CTRL, PRI_IRQEN,           1, 1)
+> -    FIELD(IRQ_CTRL, EVENTQ_IRQEN,        2, 1)
+> -
+> -REG32(IRQ_CTRL_ACK,        0x54)
+> -REG32(GERROR,              0x60)
+> -    FIELD(GERROR, CMDQ_ERR,           0, 1)
+> -    FIELD(GERROR, EVENTQ_ABT_ERR,     2, 1)
+> -    FIELD(GERROR, PRIQ_ABT_ERR,       3, 1)
+> -    FIELD(GERROR, MSI_CMDQ_ABT_ERR,   4, 1)
+> -    FIELD(GERROR, MSI_EVENTQ_ABT_ERR, 5, 1)
+> -    FIELD(GERROR, MSI_PRIQ_ABT_ERR,   6, 1)
+> -    FIELD(GERROR, MSI_GERROR_ABT_ERR, 7, 1)
+> -    FIELD(GERROR, MSI_SFM_ERR,        8, 1)
+> -
+> -REG32(GERRORN,             0x64)
+> -
+> -#define A_GERROR_IRQ_CFG0  0x68 /* 64b */
+> -REG32(GERROR_IRQ_CFG1, 0x70)
+> -REG32(GERROR_IRQ_CFG2, 0x74)
+> -
+> -#define A_STRTAB_BASE      0x80 /* 64b */
+> -
+> -#define SMMU_BASE_ADDR_MASK 0xfffffffffffc0
+> -
+> -REG32(STRTAB_BASE_CFG,     0x88)
+> -    FIELD(STRTAB_BASE_CFG, FMT,      16, 2)
+> -    FIELD(STRTAB_BASE_CFG, SPLIT,    6 , 5)
+> -    FIELD(STRTAB_BASE_CFG, LOG2SIZE, 0 , 6)
+> -
+> -#define A_CMDQ_BASE        0x90 /* 64b */
+> -REG32(CMDQ_PROD,           0x98)
+> -REG32(CMDQ_CONS,           0x9c)
+> -    FIELD(CMDQ_CONS, ERR, 24, 7)
+> -
+> -#define A_EVENTQ_BASE      0xa0 /* 64b */
+> -REG32(EVENTQ_PROD,         0xa8)
+> -REG32(EVENTQ_CONS,         0xac)
+> -
+> -#define A_EVENTQ_IRQ_CFG0  0xb0 /* 64b */
+> -REG32(EVENTQ_IRQ_CFG1,     0xb8)
+> -REG32(EVENTQ_IRQ_CFG2,     0xbc)
+> -
+> -#define A_IDREGS           0xfd0
+> -
+>  static inline int smmu_enabled(SMMUv3State *s)
+>  {
+>      return FIELD_EX32(s->cr[0], CR0, SMMU_ENABLE);
+> @@ -272,37 +132,6 @@ static inline void smmu_write_cmdq_err(SMMUv3State *s, uint32_t err_type)
+>      s->cmdq.cons = FIELD_DP32(s->cmdq.cons, CMDQ_CONS, ERR, err_type);
+>  }
+>  
+> -/* Commands */
+> -
+> -typedef enum SMMUCommandType {
+> -    SMMU_CMD_NONE            = 0x00,
+> -    SMMU_CMD_PREFETCH_CONFIG       ,
+> -    SMMU_CMD_PREFETCH_ADDR,
+> -    SMMU_CMD_CFGI_STE,
+> -    SMMU_CMD_CFGI_STE_RANGE,
+> -    SMMU_CMD_CFGI_CD,
+> -    SMMU_CMD_CFGI_CD_ALL,
+> -    SMMU_CMD_CFGI_ALL,
+> -    SMMU_CMD_TLBI_NH_ALL     = 0x10,
+> -    SMMU_CMD_TLBI_NH_ASID,
+> -    SMMU_CMD_TLBI_NH_VA,
+> -    SMMU_CMD_TLBI_NH_VAA,
+> -    SMMU_CMD_TLBI_EL3_ALL    = 0x18,
+> -    SMMU_CMD_TLBI_EL3_VA     = 0x1a,
+> -    SMMU_CMD_TLBI_EL2_ALL    = 0x20,
+> -    SMMU_CMD_TLBI_EL2_ASID,
+> -    SMMU_CMD_TLBI_EL2_VA,
+> -    SMMU_CMD_TLBI_EL2_VAA,
+> -    SMMU_CMD_TLBI_S12_VMALL  = 0x28,
+> -    SMMU_CMD_TLBI_S2_IPA     = 0x2a,
+> -    SMMU_CMD_TLBI_NSNH_ALL   = 0x30,
+> -    SMMU_CMD_ATC_INV         = 0x40,
+> -    SMMU_CMD_PRI_RESP,
+> -    SMMU_CMD_RESUME          = 0x44,
+> -    SMMU_CMD_STALL_TERM,
+> -    SMMU_CMD_SYNC,
+> -} SMMUCommandType;
+> -
+>  static const char *cmd_stringify[] = {
+>      [SMMU_CMD_PREFETCH_CONFIG] = "SMMU_CMD_PREFETCH_CONFIG",
+>      [SMMU_CMD_PREFETCH_ADDR]   = "SMMU_CMD_PREFETCH_ADDR",
+> @@ -525,64 +354,6 @@ typedef struct SMMUEventInfo {
+>  
+>  void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);
+>  
+> -/* Configuration Data */
+> -
+> -/* STE Level 1 Descriptor */
+> -typedef struct STEDesc {
+> -    uint32_t word[2];
+> -} STEDesc;
+> -
+> -/* CD Level 1 Descriptor */
+> -typedef struct CDDesc {
+> -    uint32_t word[2];
+> -} CDDesc;
+> -
+> -/* Stream Table Entry(STE) */
+> -typedef struct STE {
+> -    uint32_t word[16];
+> -} STE;
+> -
+> -/* Context Descriptor(CD) */
+> -typedef struct CD {
+> -    uint32_t word[16];
+> -} CD;
+> -
+> -/* STE fields */
+> -
+> -#define STE_VALID(x)   extract32((x)->word[0], 0, 1)
+> -
+> -#define STE_CONFIG(x)  extract32((x)->word[0], 1, 3)
+> -#define STE_CFG_S1_ENABLED(config) (config & 0x1)
+> -#define STE_CFG_S2_ENABLED(config) (config & 0x2)
+> -#define STE_CFG_ABORT(config)      (!(config & 0x4))
+> -#define STE_CFG_BYPASS(config)     (config == 0x4)
+> -
+> -#define STE_S1FMT(x)       extract32((x)->word[0], 4 , 2)
+> -#define STE_S1CDMAX(x)     extract32((x)->word[1], 27, 5)
+> -#define STE_S1STALLD(x)    extract32((x)->word[2], 27, 1)
+> -#define STE_EATS(x)        extract32((x)->word[2], 28, 2)
+> -#define STE_STRW(x)        extract32((x)->word[2], 30, 2)
+> -#define STE_S2VMID(x)      extract32((x)->word[4], 0 , 16)
+> -#define STE_S2T0SZ(x)      extract32((x)->word[5], 0 , 6)
+> -#define STE_S2SL0(x)       extract32((x)->word[5], 6 , 2)
+> -#define STE_S2TG(x)        extract32((x)->word[5], 14, 2)
+> -#define STE_S2PS(x)        extract32((x)->word[5], 16, 3)
+> -#define STE_S2AA64(x)      extract32((x)->word[5], 19, 1)
+> -#define STE_S2ENDI(x)      extract32((x)->word[5], 20, 1)
+> -#define STE_S2AFFD(x)      extract32((x)->word[5], 21, 1)
+> -#define STE_S2HD(x)        extract32((x)->word[5], 23, 1)
+> -#define STE_S2HA(x)        extract32((x)->word[5], 24, 1)
+> -#define STE_S2S(x)         extract32((x)->word[5], 25, 1)
+> -#define STE_S2R(x)         extract32((x)->word[5], 26, 1)
+> -
+> -#define STE_CTXPTR(x)                                   \
+> -    ((extract64((x)->word[1], 0, 16) << 32) |           \
+> -     ((x)->word[0] & 0xffffffc0))
+> -
+> -#define STE_S2TTB(x)                                    \
+> -    ((extract64((x)->word[7], 0, 16) << 32) |           \
+> -     ((x)->word[6] & 0xfffffff0))
+> -
+>  static inline int oas2bits(int oas_field)
+>  {
+>      switch (oas_field) {
+> @@ -603,30 +374,6 @@ static inline int oas2bits(int oas_field)
+>      g_assert_not_reached();
+>  }
+>  
+> -/* CD fields */
+> -
+> -#define CD_VALID(x)   extract32((x)->word[0], 31, 1)
+> -#define CD_ASID(x)    extract32((x)->word[1], 16, 16)
+> -#define CD_TTB(x, sel)                                          \
+> -    ((extract64((x)->word[(sel) * 2 + 3], 0, 19) << 32) |       \
+> -     ((x)->word[(sel) * 2 + 2] & ~0xfULL))
+> -
+> -#define CD_HAD(x, sel)   extract32((x)->word[(sel) * 2 + 2], 1, 1)
+> -
+> -#define CD_TSZ(x, sel)   extract32((x)->word[0], (16 * (sel)) + 0, 6)
+> -#define CD_TG(x, sel)    extract32((x)->word[0], (16 * (sel)) + 6, 2)
+> -#define CD_EPD(x, sel)   extract32((x)->word[0], (16 * (sel)) + 14, 1)
+> -#define CD_ENDI(x)       extract32((x)->word[0], 15, 1)
+> -#define CD_IPS(x)        extract32((x)->word[1], 0 , 3)
+> -#define CD_AFFD(x)       extract32((x)->word[1], 3 , 1)
+> -#define CD_TBI(x)        extract32((x)->word[1], 6 , 2)
+> -#define CD_HD(x)         extract32((x)->word[1], 10 , 1)
+> -#define CD_HA(x)         extract32((x)->word[1], 11 , 1)
+> -#define CD_S(x)          extract32((x)->word[1], 12, 1)
+> -#define CD_R(x)          extract32((x)->word[1], 13, 1)
+> -#define CD_A(x)          extract32((x)->word[1], 14, 1)
+> -#define CD_AARCH64(x)    extract32((x)->word[1], 9 , 1)
+> -
+>  /**
+>   * tg2granule - Decodes the CD translation granule size field according
+>   * to the ttbr in use
+> diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
+> new file mode 100644
+> index 0000000000..9da817f41a
+> --- /dev/null
+> +++ b/include/hw/arm/smmuv3-common.h
+> @@ -0,0 +1,268 @@
+> +/*
+> + * ARM SMMUv3 support - Common API
+> + *
+> + * Copyright (C) 2014-2016 Broadcom Corporation
+> + * Copyright (c) 2017 Red Hat, Inc.
+> + * Written by Prem Mallappa, Eric Auger
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef HW_ARM_SMMUV3_COMMON_H
+> +#define HW_ARM_SMMUV3_COMMON_H
+> +
+> +/* Configuration Data */
+> +
+> +/* STE Level 1 Descriptor */
+> +typedef struct STEDesc {
+> +    uint32_t word[2];
+> +} STEDesc;
+> +
+> +/* CD Level 1 Descriptor */
+> +typedef struct CDDesc {
+> +    uint32_t word[2];
+> +} CDDesc;
+> +
+> +/* Stream Table Entry(STE) */
+> +typedef struct STE {
+> +    uint32_t word[16];
+> +} STE;
+> +
+> +/* Context Descriptor(CD) */
+> +typedef struct CD {
+> +    uint32_t word[16];
+> +} CD;
+> +
+> +/* STE fields */
+> +
+> +#define STE_VALID(x)   extract32((x)->word[0], 0, 1)
+> +
+> +#define STE_CONFIG(x)  extract32((x)->word[0], 1, 3)
+> +#define STE_CFG_S1_ENABLED(config) (config & 0x1)
+> +#define STE_CFG_S2_ENABLED(config) (config & 0x2)
+> +#define STE_CFG_ABORT(config)      (!(config & 0x4))
+> +#define STE_CFG_BYPASS(config)     (config == 0x4)
+> +
+> +#define STE_S1FMT(x)       extract32((x)->word[0], 4 , 2)
+> +#define STE_S1CDMAX(x)     extract32((x)->word[1], 27, 5)
+> +#define STE_S1STALLD(x)    extract32((x)->word[2], 27, 1)
+> +#define STE_EATS(x)        extract32((x)->word[2], 28, 2)
+> +#define STE_STRW(x)        extract32((x)->word[2], 30, 2)
+> +#define STE_S2VMID(x)      extract32((x)->word[4], 0 , 16)
+> +#define STE_S2T0SZ(x)      extract32((x)->word[5], 0 , 6)
+> +#define STE_S2SL0(x)       extract32((x)->word[5], 6 , 2)
+> +#define STE_S2TG(x)        extract32((x)->word[5], 14, 2)
+> +#define STE_S2PS(x)        extract32((x)->word[5], 16, 3)
+> +#define STE_S2AA64(x)      extract32((x)->word[5], 19, 1)
+> +#define STE_S2ENDI(x)      extract32((x)->word[5], 20, 1)
+> +#define STE_S2AFFD(x)      extract32((x)->word[5], 21, 1)
+> +#define STE_S2HD(x)        extract32((x)->word[5], 23, 1)
+> +#define STE_S2HA(x)        extract32((x)->word[5], 24, 1)
+> +#define STE_S2S(x)         extract32((x)->word[5], 25, 1)
+> +#define STE_S2R(x)         extract32((x)->word[5], 26, 1)
+> +
+> +#define STE_CTXPTR(x)                                   \
+> +    ((extract64((x)->word[1], 0, 16) << 32) |           \
+> +     ((x)->word[0] & 0xffffffc0))
+> +
+> +#define STE_S2TTB(x)                                    \
+> +    ((extract64((x)->word[7], 0, 16) << 32) |           \
+> +     ((x)->word[6] & 0xfffffff0))
+> +
+> +/* CD fields */
+> +
+> +#define CD_VALID(x)   extract32((x)->word[0], 31, 1)
+> +#define CD_ASID(x)    extract32((x)->word[1], 16, 16)
+> +#define CD_TTB(x, sel)                                          \
+> +    ((extract64((x)->word[(sel) * 2 + 3], 0, 19) << 32) |       \
+> +     ((x)->word[(sel) * 2 + 2] & ~0xfULL))
+> +
+> +#define CD_HAD(x, sel)   extract32((x)->word[(sel) * 2 + 2], 1, 1)
+> +
+> +#define CD_TSZ(x, sel)   extract32((x)->word[0], (16 * (sel)) + 0, 6)
+> +#define CD_TG(x, sel)    extract32((x)->word[0], (16 * (sel)) + 6, 2)
+> +#define CD_EPD(x, sel)   extract32((x)->word[0], (16 * (sel)) + 14, 1)
+> +#define CD_ENDI(x)       extract32((x)->word[0], 15, 1)
+> +#define CD_IPS(x)        extract32((x)->word[1], 0 , 3)
+> +#define CD_AFFD(x)       extract32((x)->word[1], 3 , 1)
+> +#define CD_TBI(x)        extract32((x)->word[1], 6 , 2)
+> +#define CD_HD(x)         extract32((x)->word[1], 10 , 1)
+> +#define CD_HA(x)         extract32((x)->word[1], 11 , 1)
+> +#define CD_S(x)          extract32((x)->word[1], 12, 1)
+> +#define CD_R(x)          extract32((x)->word[1], 13, 1)
+> +#define CD_A(x)          extract32((x)->word[1], 14, 1)
+> +#define CD_AARCH64(x)    extract32((x)->word[1], 9 , 1)
+> +
+> +/* MMIO Registers */
+> +
+> +REG32(IDR0,                0x0)
+> +    FIELD(IDR0, S2P,         0 , 1)
+> +    FIELD(IDR0, S1P,         1 , 1)
+> +    FIELD(IDR0, TTF,         2 , 2)
+> +    FIELD(IDR0, COHACC,      4 , 1)
+> +    FIELD(IDR0, BTM,         5 , 1)
+> +    FIELD(IDR0, HTTU,        6 , 2)
+> +    FIELD(IDR0, DORMHINT,    8 , 1)
+> +    FIELD(IDR0, HYP,         9 , 1)
+> +    FIELD(IDR0, ATS,         10, 1)
+> +    FIELD(IDR0, NS1ATS,      11, 1)
+> +    FIELD(IDR0, ASID16,      12, 1)
+> +    FIELD(IDR0, MSI,         13, 1)
+> +    FIELD(IDR0, SEV,         14, 1)
+> +    FIELD(IDR0, ATOS,        15, 1)
+> +    FIELD(IDR0, PRI,         16, 1)
+> +    FIELD(IDR0, VMW,         17, 1)
+> +    FIELD(IDR0, VMID16,      18, 1)
+> +    FIELD(IDR0, CD2L,        19, 1)
+> +    FIELD(IDR0, VATOS,       20, 1)
+> +    FIELD(IDR0, TTENDIAN,    21, 2)
+> +    FIELD(IDR0, ATSRECERR,   23, 1)
+> +    FIELD(IDR0, STALL_MODEL, 24, 2)
+> +    FIELD(IDR0, TERM_MODEL,  26, 1)
+> +    FIELD(IDR0, STLEVEL,     27, 2)
+> +    FIELD(IDR0, RME_IMPL,    30, 1)
+> +
+> +REG32(IDR1,                0x4)
+> +    FIELD(IDR1, SIDSIZE,      0 , 6)
+> +    FIELD(IDR1, SSIDSIZE,     6 , 5)
+> +    FIELD(IDR1, PRIQS,        11, 5)
+> +    FIELD(IDR1, EVENTQS,      16, 5)
+> +    FIELD(IDR1, CMDQS,        21, 5)
+> +    FIELD(IDR1, ATTR_PERMS_OVR, 26, 1)
+> +    FIELD(IDR1, ATTR_TYPES_OVR, 27, 1)
+> +    FIELD(IDR1, REL,          28, 1)
+> +    FIELD(IDR1, QUEUES_PRESET, 29, 1)
+> +    FIELD(IDR1, TABLES_PRESET, 30, 1)
+> +    FIELD(IDR1, ECMDQ,        31, 1)
+> +
+> +#define SMMU_IDR1_SIDSIZE 16
+> +#define SMMU_CMDQS   19
+> +#define SMMU_EVENTQS 19
+> +
+> +REG32(IDR2,                0x8)
+> +     FIELD(IDR2, BA_VATOS, 0, 10)
+> +
+> +REG32(IDR3,                0xc)
+> +     FIELD(IDR3, HAD,         2, 1);
+> +     FIELD(IDR3, PBHA,        3, 1);
+> +     FIELD(IDR3, XNX,         4, 1);
+> +     FIELD(IDR3, PPS,         5, 1);
+> +     FIELD(IDR3, MPAM,        7, 1);
+> +     FIELD(IDR3, FWB,         8, 1);
+> +     FIELD(IDR3, STT,         9, 1);
+> +     FIELD(IDR3, RIL,        10, 1);
+> +     FIELD(IDR3, BBML,       11, 2);
+> +     FIELD(IDR3, E0PD,       13, 1);
+> +     FIELD(IDR3, PTWNNC,     14, 1);
+> +     FIELD(IDR3, DPT,        15, 1);
+> +
+> +REG32(IDR4,                0x10)
+> +
+> +REG32(IDR5,                0x14)
+> +     FIELD(IDR5, OAS,         0, 3);
+> +     FIELD(IDR5, GRAN4K,      4, 1);
+> +     FIELD(IDR5, GRAN16K,     5, 1);
+> +     FIELD(IDR5, GRAN64K,     6, 1);
+> +     FIELD(IDR5, VAX,        10, 2);
+> +     FIELD(IDR5, STALL_MAX,  16, 16);
+> +
+> +#define SMMU_IDR5_OAS 4
+> +
+> +REG32(IIDR,                0x18)
+> +REG32(AIDR,                0x1c)
+> +REG32(CR0,                 0x20)
+> +    FIELD(CR0, SMMU_ENABLE,   0, 1)
+> +    FIELD(CR0, EVENTQEN,      2, 1)
+> +    FIELD(CR0, CMDQEN,        3, 1)
+> +
+> +#define SMMU_CR0_RESERVED 0xFFFFFC20
+> +
+> +REG32(CR0ACK,              0x24)
+> +REG32(CR1,                 0x28)
+> +REG32(CR2,                 0x2c)
+> +REG32(STATUSR,             0x40)
+> +REG32(GBPA,                0x44)
+> +    FIELD(GBPA, ABORT,        20, 1)
+> +    FIELD(GBPA, UPDATE,       31, 1)
+> +
+> +/* Use incoming. */
+> +#define SMMU_GBPA_RESET_VAL 0x1000
+> +
+> +REG32(IRQ_CTRL,            0x50)
+> +    FIELD(IRQ_CTRL, GERROR_IRQEN,        0, 1)
+> +    FIELD(IRQ_CTRL, PRI_IRQEN,           1, 1)
+> +    FIELD(IRQ_CTRL, EVENTQ_IRQEN,        2, 1)
+> +
+> +REG32(IRQ_CTRL_ACK,        0x54)
+> +REG32(GERROR,              0x60)
+> +    FIELD(GERROR, CMDQ_ERR,           0, 1)
+> +    FIELD(GERROR, EVENTQ_ABT_ERR,     2, 1)
+> +    FIELD(GERROR, PRIQ_ABT_ERR,       3, 1)
+> +    FIELD(GERROR, MSI_CMDQ_ABT_ERR,   4, 1)
+> +    FIELD(GERROR, MSI_EVENTQ_ABT_ERR, 5, 1)
+> +    FIELD(GERROR, MSI_PRIQ_ABT_ERR,   6, 1)
+> +    FIELD(GERROR, MSI_GERROR_ABT_ERR, 7, 1)
+> +    FIELD(GERROR, MSI_SFM_ERR,        8, 1)
+> +
+> +REG32(GERRORN,             0x64)
+> +
+> +#define A_GERROR_IRQ_CFG0  0x68 /* 64b */
+> +REG32(GERROR_IRQ_CFG1, 0x70)
+> +REG32(GERROR_IRQ_CFG2, 0x74)
+> +
+> +#define A_STRTAB_BASE      0x80 /* 64b */
+> +
+> +#define SMMU_BASE_ADDR_MASK 0xfffffffffffc0
+> +
+> +REG32(STRTAB_BASE_CFG,     0x88)
+> +    FIELD(STRTAB_BASE_CFG, FMT,      16, 2)
+> +    FIELD(STRTAB_BASE_CFG, SPLIT,    6 , 5)
+> +    FIELD(STRTAB_BASE_CFG, LOG2SIZE, 0 , 6)
+> +
+> +#define A_CMDQ_BASE        0x90 /* 64b */
+> +REG32(CMDQ_PROD,           0x98)
+> +REG32(CMDQ_CONS,           0x9c)
+> +    FIELD(CMDQ_CONS, ERR, 24, 7)
+> +
+> +#define A_EVENTQ_BASE      0xa0 /* 64b */
+> +REG32(EVENTQ_PROD,         0xa8)
+> +REG32(EVENTQ_CONS,         0xac)
+> +
+> +#define A_EVENTQ_IRQ_CFG0  0xb0 /* 64b */
+> +REG32(EVENTQ_IRQ_CFG1,     0xb8)
+> +REG32(EVENTQ_IRQ_CFG2,     0xbc)
+> +
+> +#define A_IDREGS           0xfd0
+> +
+> +/* Commands */
+> +
+> +typedef enum SMMUCommandType {
+> +    SMMU_CMD_NONE            = 0x00,
+> +    SMMU_CMD_PREFETCH_CONFIG       ,
+> +    SMMU_CMD_PREFETCH_ADDR,
+> +    SMMU_CMD_CFGI_STE,
+> +    SMMU_CMD_CFGI_STE_RANGE,
+> +    SMMU_CMD_CFGI_CD,
+> +    SMMU_CMD_CFGI_CD_ALL,
+> +    SMMU_CMD_CFGI_ALL,
+> +    SMMU_CMD_TLBI_NH_ALL     = 0x10,
+> +    SMMU_CMD_TLBI_NH_ASID,
+> +    SMMU_CMD_TLBI_NH_VA,
+> +    SMMU_CMD_TLBI_NH_VAA,
+> +    SMMU_CMD_TLBI_EL3_ALL    = 0x18,
+> +    SMMU_CMD_TLBI_EL3_VA     = 0x1a,
+> +    SMMU_CMD_TLBI_EL2_ALL    = 0x20,
+> +    SMMU_CMD_TLBI_EL2_ASID,
+> +    SMMU_CMD_TLBI_EL2_VA,
+> +    SMMU_CMD_TLBI_EL2_VAA,
+> +    SMMU_CMD_TLBI_S12_VMALL  = 0x28,
+> +    SMMU_CMD_TLBI_S2_IPA     = 0x2a,
+> +    SMMU_CMD_TLBI_NSNH_ALL   = 0x30,
+> +    SMMU_CMD_ATC_INV         = 0x40,
+> +    SMMU_CMD_PRI_RESP,
+> +    SMMU_CMD_RESUME          = 0x44,
+> +    SMMU_CMD_STALL_TERM,
+> +    SMMU_CMD_SYNC,
+> +} SMMUCommandType;
+> +
+> +#endif /* HW_ARM_SMMUV3_COMMON_H */
+
 

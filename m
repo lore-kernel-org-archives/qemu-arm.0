@@ -4,80 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 732B6D4116C
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 11:24:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BF89D41173
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 11:24:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgLPB-0002MA-JQ; Thu, 15 Jan 2026 06:20:45 -0500
+	id 1vgLPD-0002Mz-BU; Thu, 15 Jan 2026 06:20:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1vgLP6-0002Kq-NP
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 06:20:42 -0500
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ id 1vgLPA-0002LM-1o
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 06:20:44 -0500
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1vgLP4-00075D-Vv
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 06:20:40 -0500
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-432dc56951eso526803f8f.0
- for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 03:20:38 -0800 (PST)
+ id 1vgLP6-00076E-Pw
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 06:20:43 -0500
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-432d2c96215so647238f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 03:20:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768476036; x=1769080836; darn=nongnu.org;
- h=cc:to:content-transfer-encoding:mime-version:message-id:date
- :subject:from:from:to:cc:subject:date:message-id:reply-to;
- bh=42J8E2yjZd915Jl/XBPl4yp2FAGqLZDZu1rH8FK2eIQ=;
- b=ioMiWOgnzLY9ep+09M6seCtvona6RIU3ZhwZvHqquXAaL2jXC9wJpDQln7//I8WL/T
- ZwqQYmEhizqoXkXk+q/6Q7je8iYD7g+yqLZRgbW/F7UzDxZa5E+8b2RtB70Kk9IyUMrQ
- Az0sSjZi88+4yXXQmW12Z9N7Bp3Li6JrjFyCIBUKjvLmwjgb7gYX+AXAY+b9Sa0eT8o7
- wsFIzVtyZ5NV18P9msvfwJJBQ3TSiXHzYTVbzh3MytvKTrPrmO4ax1Qu5z7xCWWrlJvI
- JNVgJBZb4KrV45qH8XrKPlUhUv6rJ1sp0BrKu/BwJTYJTJjqDVwqBBThCriKgvCQw2/L
- lkhg==
+ d=linaro.org; s=google; t=1768476039; x=1769080839; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=gxdv/yxf7Gc06BBnTyaRhxTtJwT1Uo1vV5jtTthLm+g=;
+ b=qS7xQvlG09iPolSzKFa9wG+FO4M3svfLGuB7L7k2xfnFc6I9DJHJ4KzuN7dUrD88tC
+ KuRUc6zFkLjS0CrPx5Ur9/mbnF2xCmTSeZ6YBuu7lwBMAT2ZB4zuoPEQHRi0hTOqFaeX
+ AXKOMsWbiAanlVMMsD6wNY2S7iCx6RJFgQ2ozdqIW7YLP5yMT3KWgCHXsEqZcBEUuOad
+ dkFcyGRPLAE/yXAn9cHr4KmEwVO7Jk2Wu7a2vLFLrcHvmv9FUKN5DpnNRcmYisVo326P
+ RvLaxF+1caRAwfxNiwpXBZzdq2AzbDfBeXMoh8WKi087z8W1JcNwsm31JVlZ/ggvjyBP
+ o67g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768476036; x=1769080836;
- h=cc:to:content-transfer-encoding:mime-version:message-id:date
- :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=42J8E2yjZd915Jl/XBPl4yp2FAGqLZDZu1rH8FK2eIQ=;
- b=AqOsDk+7+Ra0FT8izwy8dNK52/nQjdEkwvh5kS3mDrMSysfUEs6xjjJdQH/i/EzUgQ
- tJrzasHqwI5YMaBtwkyQIdyGO2L0Sr8ErY+Uq1aw6wviOwgZHQowJyvX2ceMu1vUX2aW
- Rn+mbRVB6uW0xFJvxn5WqJ0jRN5/X5q0cFpZShR9I4coilcwlSKjMe9jqh7g7HjwPsEw
- U3vHhu2mU8AZMh12i2Qul6dZfxTyHXF3ei0pTQNNhDBJ2PXBzCmhAX2QFRhs6XeD+SKU
- 8dAWxOCMd06JZ2HEeAJ6KYks0Btz2s+H1ysw1DboBWZ9DhZM13JpgG9K89NljP7l29ST
- j/kQ==
+ d=1e100.net; s=20230601; t=1768476039; x=1769080839;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=gxdv/yxf7Gc06BBnTyaRhxTtJwT1Uo1vV5jtTthLm+g=;
+ b=nXIAyyZ6pZ6pAMZ+w/r28+zYKxpsyN9U370L5Q04RE9Pqd3PBvRoCmLl8Fqu4xFfBV
+ Gma+sUpj4f29PHIu6V+fUhxZDqz+9Q2W2kjNABOQQYpZsvg7mMMTAvQyZ7JOgI5mDvMp
+ AYT6OKOq7PfzMOCCNkh4OmJ/Mnh8eh+kJPEZ5mLRE+BFrhA1nwkPUy3SWnE8ee9VOnVP
+ gBDejNx+dnBYnuWdMD44C/CR8ZShwMV2uQ72a+Qm2G6zGLMTFm3dA9TPJJUpSLPxO4X1
+ 6rFaid9aGDeK/9yqhtYvLqv2z8YYZxztkd7kW1ORHt+1F1GO8ffL0B7pyBlTCkNJkE6u
+ Qlfg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW0n0ZCNUIs59btR7mHDeFuY2pqA5NxC1sb3x86oytTxLSuiVBmcyA4+AGX59eVZWJnJst5xev0+Q==@nongnu.org
-X-Gm-Message-State: AOJu0Ywoi0Qt2MrdIcUd1LYhnDIQoGFZOAE1p+iOctG1Xbe1xRymmHWy
- H+UBi7iCERnWmOwWDQMfDjQ7ZcFOdHfKw0MMaVgqxNU+xM7snLRIiJK4B5XjL7dQ3hmwHf/vuxi
- I3ARPrxU=
-X-Gm-Gg: AY/fxX7NzPFCckTtLph+RY7oC6hGZUnfN2kWATnSTAKhY4RygdewPlwqIiGHf5aAvxM
- 9HHjvzLULwss33eFRauNbAzg6i9izhLV2nbY7jI4ZIRU4p6HujpK1M/q1PtMdDRSyLZdXhrjuDs
- 2k+QKrfjB7u2mfzBH5iWsi82ovU2FlR6NHrDaTKc3UZLCSQI3rCjTRfjSlB7w7GzyJ+tPZDfSHW
- vEz1Ao6xvo/XoUaK8P5q7cMbUZFoWxXs9YP98Vv8gGdLacMT85DIq3EGI44vsQt9moYUfQwPJgx
- PjRMcj/IrbxpI+fV89pN8amopqL5hzNiIaG/mH2lw3NQRkXa+xW4Wu+jbRKA5LlAYxrbTENCBwC
- VUOJbWIb7p5LJrnUd1SfMrNbegdgZGlUmM9l+6Zeqx5dkzOGZUGvQRTpvVF4ZPRGdcIIIRE4sRm
- Ygw6m7eqWdrPcMQsakamO9qKe8uSdAyUZ/YCGJHJdRVjRggnJU3dxUuM06tHqchoG4tDrq6MRfn
- dy/gE7gm6uu8kaz9zuX3eX9
-X-Received: by 2002:a05:6000:200d:b0:430:fd9f:e6e2 with SMTP id
- ffacd0b85a97d-4342c4ee846mr6288916f8f.9.1768476036138; 
- Thu, 15 Jan 2026 03:20:36 -0800 (PST)
+ AJvYcCXQNjFJHZ/0mVFopMLYINc27uYK5jRZpwhvkWDjFoNYW1mQPBg41mCimQfe2c1rsJPmzTtN7hlf9w==@nongnu.org
+X-Gm-Message-State: AOJu0YyPqLC9tP/C6vO0nhdnLnB2d4XX8LU2iqjeYvM23hbHqdyINJ4j
+ LY/JQS8LAmG5RzGI6dEMiW/RyAElWwUdoKbnER2wUFhqLaYGjZJp4C/AAIcvlxH2JFU=
+X-Gm-Gg: AY/fxX5P5bEu/52ZNHgpsZpxG2G0al5bT3mWRvtsbJvIqmDTqOfrJzTV+fZ7BmBpQdw
+ WxxoyNNOVb+sYCViCT8/ZOLeIb4vlAajTM4oDX0uAnMJxPQcTzh/F5/NREJuMKRnHa8bemYXK0u
+ zaN10qa7Z/vKK54Q29m/QmZBdky4LuM6L2holqqzGwKrHsy1hmcydK0r8xQE5d4WfPodYX8s0YV
+ X3xd8PRqwOKyPxd+Mizm9jCYvRX1ZreIJZdEdWdnauf/tjiPDHKM0GL9U2S+61H83Al5XGJzSOj
+ Rd34gZSXsgtPY5F5Ufub2WZYB7/w7slJo6ScrA+QdiomqtxKUQYUznnOiMUDNEnFa3QKg3STeBB
+ FBvUm0QNczD/wNTEfCEKaiw1aWK/M0DCcJ093vPRwvY2k/AIHwpfTSv9unO4i1g68Wzu8ZJwqs7
+ te0oW+fX0ys4QDYYuFnCo1LJuA2xfVZbrbCPN6VoW+kzoOh+E4NGxrJmncWMBWhRj5i+RvWXRLF
+ hAsNodRA6lnc2CY92BRMPRF
+X-Received: by 2002:a05:6000:438a:b0:431:35a:4a8f with SMTP id
+ ffacd0b85a97d-4342d5ced24mr7738335f8f.47.1768476038866; 
+ Thu, 15 Jan 2026 03:20:38 -0800 (PST)
 Received: from [127.0.1.1] (ppp-2-86-214-23.home.otenet.gr. [2.86.214.23])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-434af64a778sm5302085f8f.3.2026.01.15.03.20.34
+ ffacd0b85a97d-434af64a778sm5302085f8f.3.2026.01.15.03.20.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Jan 2026 03:20:35 -0800 (PST)
+ Thu, 15 Jan 2026 03:20:38 -0800 (PST)
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: [PATCH v2 0/2] arm/hvf: Add SME2 support
-Date: Thu, 15 Jan 2026 13:20:27 +0200
-Message-Id: <20260115-sme2-hvf-v2-0-2eca481bd7ee@linaro.org>
+Date: Thu, 15 Jan 2026 13:20:29 +0200
+Subject: [PATCH v2 2/2] hvf/arm: expose FEAT_SME2 to guest if available
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIAHvNaGkC/22MQQrCMBBFr1JmbSQTTWJdeQ/potRpM6CJTCQoJ
- Xc3di38zfs83gqZhCnDuVtBqHDmFBuYXQdTGONCim+NwWjjNOJR5QcZFcqsUFvvPJ56axCa/hS
- a+b2lrkPjwPmV5LOVC/7eP5GCSquJetu3OX9wlzvHUdI+yQJDrfULOoSiT6EAAAA=
-X-Change-ID: 20260114-sme2-hvf-105767189521
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260115-sme2-hvf-v2-2-2eca481bd7ee@linaro.org>
+References: <20260115-sme2-hvf-v2-0-2eca481bd7ee@linaro.org>
+In-Reply-To: <20260115-sme2-hvf-v2-0-2eca481bd7ee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>, 
  =?utf-8?q?Phil_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
@@ -86,37 +83,37 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Mohamed Mediouni <mohamed@unpredictable.fr>, 
  Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1314;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3824;
  i=manos.pitsidianakis@linaro.org; h=from:subject:message-id;
- bh=ehbrwOichnlLxH7AGqQJD2uv79r+o7S4dFAolUUu9f8=;
+ bh=X+YHhHK/0kmvaB/J4/1t1nqbn+MaGoCBFh2QSc+9wsw=;
  b=LS0tLS1CRUdJTiBQR1AgTUVTU0FHRS0tLS0tCgpvd0VCYlFLUy9aQU5Bd0FLQVhjcHgzQi9mZ
- 25RQWNzbVlnQnBhTTJDSkZhQkV0ZWxUSlM1dTVmaW1TME56Tm54CkYreDhzQUlZN3p0R0xPWW96
- VG1KQWpNRUFBRUtBQjBXSVFUTVhCdE9SS0JXODRkd0hSQjNLY2R3ZjM0SjBBVUMKYVdqTmdnQUt
- DUkIzS2Nkd2YzNEowSWxjRUFDRkdKYmJYRXlzcU9rd3ZZMWM1S0dab0tQcUw5UDlycWxNbjJWVg
- ptMC93RGtOZllHWnRLUjZacHhycTNiRFdwK0hCZUVJTjFVblZ0TW1QNGJxTE9uVUxSZXRDZm9kY
- 042WWNXbTJjClErM1hVZVU1VTJ6aGNDdjBPWm0wSmNDODhxa2ZiZ2RmeXM5UnVQZGFjSnBsOFl2
- ckRoLzVZUU9od2xOYTBkd1EKVDRmdys5V3hEOTR1NlZuNjE1R3BzR01IMmI5WmlMT3hSYlkxamh
- wRlpvTWk5ZzV4Y3FMSDRmQVM2OHE2a1VwVgo3Y1NKV05rWGRLZjFsKzVaZWlGNUt3cmtqTm1IQ1
- E3MUMyTUkwS05aR0dJN2hpUmpRVDFoclVCZXNXMDZmWlJDClord2RpY2cyK1ppc1RUWFZJc0RYc
- GhLbm9pZmJWb2sxWXphSHZiNm44cFNXeGE4UzloTkhOUnkzZVFYMndVdmsKb3Q3eHVvUUpFQ3VJ
- VFVEWlZRdGo2ZnBWK1N3WmZxbFFJa1hLWW1XbkNVbUtoVklzUmU0ZTNIOGFoVnVpUjhZWgo4Q1l
- pQWtPeUkvU3RjbEdvZzdTTWhKc0lHOGpNTW16V2cvb0pyK1NRQzZScXphUkd5UzV6dEdDMFpLTG
- hnQkp4Ck9CaDAwM0lOOHI1Wk4vTHZzMG9GNE9Zci8rRC9NT0NvS09KNmR4MHgwZXJsQk1FU3E0M
- is3YlIxVmhIczI3LzkKaVh4U0lzQURrYkVHUXRkY0dTdWdrb2UxdmxzWEJuT2sreldlN25qT0dy
- VmcxSEhHQUNqbTJ1Y0FwQ2REZGJsbgpiOGd0bHJRek9aemFaMmsycnVBYnJUVjhvM3FJc1QwSkM
- 0UUVtaHJCWHYxU1N5YVJndkx6NnJIUyswS3BNc3RlClRQWk1nZz09Cj1sRm9YCi0tLS0tRU5EIF
+ 25RQWNzbVlnQnBhTTJDVS84ZldCWkNBa0FnTy9qWTNyM25qYWxTCkozUS9xMFoxZWtoQWJvUVNS
+ Nk9KQWpNRUFBRUtBQjBXSVFUTVhCdE9SS0JXODRkd0hSQjNLY2R3ZjM0SjBBVUMKYVdqTmdnQUt
+ DUkIzS2Nkd2YzNEowQ2FBRUFDSkNma2FkNm1BYXFXZjFaZFYrdnhmZ20rMzRWSHVWMXJJUTNZNg
+ pTSWRROE4wOWRycHN3Kzh6NXhnSUdwaE9EamloVEZLTHh5M1FOSnppMGZvTkY4dlIvdlRHMmRpc
+ WVTYjJlZHN6ClhzL1cvRHM5SDczM2JxMVR3T0tCTlB5bWFMSTdqN1ZmWkF5VEdTeEFRUG9EVmRB
+ YzFpWndHWnRWVXlSRllleUgKQ1NIYTBsVS9TTkxFYzNCb01UV3p1UWx1ZjB0OU1VRERSbUp0WER
+ xRlNnRU5CcXpsMnJQQjQ1SWd2aStSeXpISQpwMDBUekxqcU02OXhodURjNExGNDhBTnhHc1NaT0
+ crejhZSmFwRVA2ZDNOUlBxWkFMN09HNTA2OGJ4Y00xUFF2CjJUaDdtSFlTNlNnK3VTeUdaYkFET
+ Dl2b2c1OWlnaXVLYWw4ZXAyc1JObEkxVzFsTFBEWk5vRTJPTU51T1EvdlAKeHpQWXliaTNwQ1lU
+ cVc1dkpjN3ZEVTdyeE53RkVrME00UXZvZXlIWHNUL1FSWVBVWHZ1WmhMK1dCQTVVRUJNOQpIaWh
+ EWVR3T2REOU14a0dRYkVHamNoc3BQcWpGZG8yNHRoRVZuZ0ZodnIwSE9NSjhmTjlZTzI4T2RRTy
+ 9IQ0JCClNFckxBdUdXUGxSbEdaVGt1cXpCL2lZMzU0S0JhNGk1ZGtud3QxbU9wN2plMkJZUEY5O
+ HhXejVxNEV4REtIckEKWmYwQWhFRGZLTVBsU1VlZ21jQXRwcG8ybDRrbUV1Z1hyTVRUcXNKL28y
+ RHJrQ2hESWdUUXd5anRUcmt5Tk03ZQpIOHJrcTdpWnBtZXpxRzZObWFkWm1CejgyVGpzUFRhdlN
+ 5TGZPdjFmZUNHaWxQejBWdkQwTU12OHM1bWFETW0vCjZYdURlQT09Cj1LU3dKCi0tLS0tRU5EIF
  BHUCBNRVNTQUdFLS0tLS0K
 X-Developer-Key: i=manos.pitsidianakis@linaro.org; a=openpgp;
  fpr=7C721DF9DB3CC7182311C0BF68BC211D47B421E1
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x436.google.com
-X-Spam_score_int: 0
-X-Spam_score: -0.1
-X-Spam_bar: /
-X-Spam_report: (-0.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URI_TRY_3LD=1.999 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,41 +129,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-M4/M5 Macs support SME2, and HVF exposes this functionality in its
-public API.
+Starting from M4 cores and MacOS 15.2 SDK, HVF can virtualise FEAT_SME2.
 
-Add support for it in QEMU.
-
-This was tested by running an SME2 benchmark from Arm [0]. savevm and
-loadvm during the benchmark's run were used to verify migration works.
-
-[0]:
-https://learn.arm.com/learning-paths/cross-platform/multiplying-matrices-with-sme2/1-get-started/
-
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
-Changes in v2:
-- Added stubs if hvf 15.2 headers are not available (suggested by agraf)
-- Link to v1: https://lore.kernel.org/qemu-devel/20260114-sme2-hvf-v1-0-ce9599596736@linaro.org
+ target/arm/cpu.c     |  4 +++-
+ target/arm/cpu64.c   | 13 ++++++++++++-
+ target/arm/hvf/hvf.c | 25 +++++++++++++------------
+ 3 files changed, 28 insertions(+), 14 deletions(-)
 
----
-Manos Pitsidianakis (2):
-      hvf/arm: handle FEAT_SME2 migration
-      hvf/arm: expose FEAT_SME2 to guest if available
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index caf7980b1fc5244c5c2f130e79ba869456c20c88..7f4ebfdf61217db6075495119c1b642bc2abf295 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1577,7 +1577,9 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
+          * assumes it, so if the user asked for sve=off then turn off SME also.
+          * (KVM doesn't currently support SME at all.)
+          */
+-        if (cpu_isar_feature(aa64_sme, cpu) && !cpu_isar_feature(aa64_sve, cpu)) {
++        if (!hvf_enabled()
++            && cpu_isar_feature(aa64_sme, cpu)
++            && !cpu_isar_feature(aa64_sve, cpu)) {
+             object_property_set_bool(OBJECT(cpu), "sme", false, &error_abort);
+         }
+ 
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index bf303813701972648fa6751ffe352ba074ca6442..8dd9eb46c783a799a53891a6ddad40b930e95eb4 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -329,9 +329,20 @@ void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
+ {
+     uint32_t vq_map = cpu->sme_vq.map;
+     uint32_t vq_init = cpu->sme_vq.init;
+-    uint32_t vq_supported = cpu->sme_vq.supported;
++    uint32_t vq_supported;
+     uint32_t vq;
+ 
++    if (hvf_enabled()) {
++        if (hvf_arm_sme2_supported()) {
++            vq_supported = hvf_arm_sme2_get_svl();
++        } else {
++            assert(!cpu_isar_feature(aa64_sme, cpu));
++            vq_supported = 0;
++        }
++    } else {
++        vq_supported = cpu->sme_vq.supported;
++    }
++
+     if (vq_map == 0) {
+         if (!cpu_isar_feature(aa64_sme, cpu)) {
+             SET_IDREG(&cpu->isar, ID_AA64SMFR0, 0);
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 6c5061742862635ae394f764188114f939259703..01bbb90b962156885021da75a0d62ae3c39ff5b0 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1043,18 +1043,18 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ 
+     clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar);
+ 
+-    /*
+-     * Disable SME, which is not properly handled by QEMU hvf yet.
+-     * To allow this through we would need to:
+-     * - make sure that the SME state is correctly handled in the
+-     *   get_registers/put_registers functions
+-     * - get the SME-specific CPU properties to work with accelerators
+-     *   other than TCG
+-     * - fix any assumptions we made that SME implies SVE (since
+-     *   on the M4 there is SME but not SVE)
+-     */
+-    SET_IDREG(&host_isar, ID_AA64PFR1,
+-              GET_IDREG(&host_isar, ID_AA64PFR1) & ~R_ID_AA64PFR1_SME_MASK);
++    if (hvf_arm_sme2_supported()) {
++        t = GET_IDREG(&host_isar, ID_AA64PFR1);
++        t = FIELD_DP64(t, ID_AA64PFR1, SME, 2);       /* FEAT_SME2 */
++        SET_IDREG(&host_isar, ID_AA64PFR1, t);
++
++        t = GET_IDREG(&host_isar, ID_AA64SMFR0);
++        t = FIELD_DP64(t, ID_AA64SMFR0, SMEVER, 1);   /* FEAT_SME2 */
++        SET_IDREG(&host_isar, ID_AA64SMFR0, t);
++    } else {
++        SET_IDREG(&host_isar, ID_AA64PFR1,
++                GET_IDREG(&host_isar, ID_AA64PFR1) & ~R_ID_AA64PFR1_SME_MASK);
++    }
+ 
+     ahcf->isar = host_isar;
+ 
+@@ -1252,6 +1252,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
+                               arm_cpu->isar.idregs[ID_AA64MMFR0_EL1_IDX]);
+     assert_hvf_ok(ret);
+ 
++    aarch64_add_sme_properties(OBJECT(cpu));
+     return 0;
+ }
+ 
 
- target/arm/cpu.c               |   4 +-
- target/arm/cpu64.c             |  13 +-
- target/arm/hvf/hvf.c           | 310 +++++++++++++++++++++++++++++++++++++++--
- target/arm/hvf/hvf_sme_stubs.h | 158 +++++++++++++++++++++
- target/arm/hvf/sysreg.c.inc    |   8 ++
- target/arm/hvf_arm.h           |  41 ++++++
- target/arm/machine.c           |   2 +-
- 7 files changed, 519 insertions(+), 17 deletions(-)
----
-base-commit: cf3e71d8fc8ba681266759bb6cb2e45a45983e3e
-change-id: 20260114-sme2-hvf-105767189521
-
---
-γαῖα πυρί μιχθήτω
+-- 
+2.47.3
 
 

@@ -4,116 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A69EFD46607
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 17:46:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D84DED4660A
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 17:49:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgRQ4-0000R8-Gk; Thu, 15 Jan 2026 12:46:04 -0500
+	id 1vgRS7-0001h9-AR; Thu, 15 Jan 2026 12:48:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vgRPR-000078-Uo
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 12:45:28 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1vgRRf-0001St-L5
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 12:47:48 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vgRPP-0007D4-8e
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 12:45:25 -0500
+ id 1vgRRb-0007Ni-DM
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 12:47:40 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768499121;
+ s=mimecast20190719; t=1768499258;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YwuuURJOphYbKG+K5Cg50gwJY5ISiq0Af9cSrz+ssII=;
- b=T7aGKkaygW1//TcY6PQFgYu7IIjWhLCVHoqP+6cJNnD56PwlmOx8cH0KmcOWyo+CdoKIFs
- Ypctoat+DVY80XSKIof2eV2tEDGsF0bRRJlX+LiivdSWadnr7PVn0s9yLevKfGYoUUr6y8
- YYcU1H1c8BST4/zowPhleIdnx1uXm6Y=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=8oIPbPyKo0LM7b/44liJmIiPppv77sNpTIw2vKZtNUw=;
+ b=hUPLC1H6prx97AEavuync7gs18dLB6PnU5EwWlLplRu9FIU3jV5iusdtUSEO//6mNtr3tC
+ M9WZA1LEQ+gsAGC+sk50dGsOJeOmQQx1sGGPmNdsqDdxh1Ta+HgUdJtfStFAdZzAffxXM1
+ YhLf3DmZ+sBEKzs955XNGDPn1t3Af2Y=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-385-CJmpbYcmPOqyHvVeJz0_XA-1; Thu, 15 Jan 2026 12:45:20 -0500
-X-MC-Unique: CJmpbYcmPOqyHvVeJz0_XA-1
-X-Mimecast-MFC-AGG-ID: CJmpbYcmPOqyHvVeJz0_XA_1768499119
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-431054c09e3so1111761f8f.0
- for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 09:45:20 -0800 (PST)
+ us-mta-470-AeCUJdCfNyuhu357-4cUhw-1; Thu, 15 Jan 2026 12:47:35 -0500
+X-MC-Unique: AeCUJdCfNyuhu357-4cUhw-1
+X-Mimecast-MFC-AGG-ID: AeCUJdCfNyuhu357-4cUhw_1768499254
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-42fdbba545fso1358447f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 09:47:34 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768499119; x=1769103919;
+ d=1e100.net; s=20230601; t=1768499254; x=1769104054;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YwuuURJOphYbKG+K5Cg50gwJY5ISiq0Af9cSrz+ssII=;
- b=oZbs87hOnqczVyO9YEh6WUlx1JwwdxQVGgY0lJycti7hIowJEpKEMA1dtedM9GGAfJ
- 3bN98f9kGtSgzast+M2BgHvIxP7BOkkBwX6vFQTjIdqU1YNADkzYZnHzAsrXZxND2u1H
- NA96P0uYpK123Ld6OToUHLqoA8kQafOLIkizmNf5j479s5BlVSZoqk+cpfLWn9s0SzAE
- OPSrXhhATIZtb0+32ywEZHTF+66o5F3o+ch6owmvBjqknIuHK3Jsmz9gUU0RJJsmjAGy
- Wul0GUtUIcC6upc87DuBHUANCxWJSKps0XzxYZE1ZRXRTvhttMmUW7JnELWV+ZFwD9u/
- x4Rg==
+ bh=8oIPbPyKo0LM7b/44liJmIiPppv77sNpTIw2vKZtNUw=;
+ b=RV2IKr0wPwtZYGsST0SkqrYEuBPzbLp1A+xE96vvQpymZozaEEBKgtZmnX7ZKspsoT
+ MGg+LVRwuJeUYW1yOrsfhEnQOAsDBYUrZk2APGvsmM+LPt88tlO1UHerMRC3HBX8XLVN
+ 72//u49O0A+x98kWANdCThA2UmOLyE01wOH/wx9Vkrt5hVou8j6eqw3PldKKDV2+0YcZ
+ fqwJ191ZVPnuclbSe8tvGETHnCOp3MlcjefR0kutO+eik9UEc2EZd+pSObxeRs7yWNWF
+ EbPoUqtco6X7Fxwri97CEMPMQc1lkyD2Ty9jkw46sbLOyt5bDULYdTvvMKJ5Jx5d15w4
+ ACKA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXsfm+5B6Y4b3dW5E4qep06jYzBHbJEjOxLRl3vDdAejd6nbsfp4z3o1DFU6SzttRw70YcJ3Yq/EQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwRCiT6w2n4Ckwf8IvoVPSnToe1Vouz5ynGgMoogIsxqclhUG7W
- Jiiv8pO00ZnfV4wSBtv6c8mnzIHYXym6LYR5KfOTDfJEenp4s2pHPPZ3kEiRX6rvS3JXaVSQU0E
- ac3Fx9ID5sUqLcMu+MYJs7/R91sBj68NM2XFncnjvGScxk74xyUEFKQ==
-X-Gm-Gg: AY/fxX7DTPk5po770N6j/nZTbhyI/by6uYs0i+JB/v241ekInx4PfpmAZsBioGpHnjJ
- Ngqp10t9us6Otfc7+OOp1AKLK95NjjXZhjxsW9Tm5X7JRmyxvWAkIG0LQWiz30C+MKp0d2Z1DO1
- vqs9c4lnCCHd19FxhEDr25JWSS3+km+SUYckWeNfK51PfyIL4UizXnrhndYMIyLb0VaHOI0VJ4z
- 53LWNZM/Q981Ya7Pp09/Kdb+I++K50lbLjvAlBAg6+myEiO8Z87X4dvt+fV9ZjFDBxEoCA+ckmF
- i2zSqeyeEG8grg50y5aknw09mrU2/OrUbDn3Ca7Y/UJ1nzEnw+jaotq8zaqv+O2D0CyeON1TjQ5
- TjfcNtfFKL4Eqt9USuDXmGaVVW81gL4C3CByr0NU3U99eVJ9WPgmp0UU1qw==
-X-Received: by 2002:a05:6000:24c6:b0:432:bc90:2cfa with SMTP id
- ffacd0b85a97d-43569bbd3e8mr230596f8f.33.1768499118997; 
- Thu, 15 Jan 2026 09:45:18 -0800 (PST)
-X-Received: by 2002:a05:6000:24c6:b0:432:bc90:2cfa with SMTP id
- ffacd0b85a97d-43569bbd3e8mr230563f8f.33.1768499118565; 
- Thu, 15 Jan 2026 09:45:18 -0800 (PST)
+ AJvYcCUYlcW2n3skw7w/gy0A2vzcaoSB97IU1wdjhLeQHHBBTlQNN+8vOCer8OiHUHy/c3/I7J6IzncQbQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxrYtlPI3tzdTD860AEd3ORmYuUNF48SFQ7TeZD4f5Nt3kud9ur
+ mFcU+izQYmWENN3G25ScpwT2BZnrYnBCGf8keneXogCHeh1oAsEhSXUNaUe2izOYGIJoWVU7VWS
+ LslnaqwlHc2t2SfdHKr9NQl2adx1Q2Kvk4yHqicoiBYC0hbWNbae9Tw==
+X-Gm-Gg: AY/fxX5s1m6kzMAmNHzgLVlGtNP4ccgERT8plLHEvBshyiuk6zHqO9SpPWRJPowhIyA
+ TrL5MUXnafZK9F2jkh5Xeni2sZSIwZcdZobPmRMEawvlqmNrd+C3ZLNJlO8cgb+4TagZYO1VGZg
+ dMIZVSslIz0JKZ7hE8njtIerVY6gvmstHlme/Ky1YRcradbQvTUi6QrtzJQKm+ZB5HcNQDtGrIG
+ RB+jIguxo/xo9B33oOpQzzt5q9h/gxAHigsXzw1RbA9XqFbHICNi4IEQq2QAwXQdbnU1Q70ZJXx
+ 64qhyixb5n+5MKOMig+S/gk9bKXwaLBtKH5y2996vZAODFFiHPOOyf1ujx+ciiBXAscLoHVvnA2
+ fwCeyCkA2MBjs/MGeGmvja82JLpQ0mw0NgqJVI0N1wvxGjVALjuyVDIonKA==
+X-Received: by 2002:a05:6000:40df:b0:432:da7c:5750 with SMTP id
+ ffacd0b85a97d-435695651aamr405020f8f.20.1768499253700; 
+ Thu, 15 Jan 2026 09:47:33 -0800 (PST)
+X-Received: by 2002:a05:6000:40df:b0:432:da7c:5750 with SMTP id
+ ffacd0b85a97d-435695651aamr404993f8f.20.1768499253308; 
+ Thu, 15 Jan 2026 09:47:33 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43569921dedsm295479f8f.9.2026.01.15.09.45.17
+ ffacd0b85a97d-4356992681esm303138f8f.11.2026.01.15.09.47.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Jan 2026 09:45:18 -0800 (PST)
-Message-ID: <eb30eab5-40b4-4635-aeab-6e7b62c233fe@redhat.com>
-Date: Thu, 15 Jan 2026 18:45:16 +0100
+ Thu, 15 Jan 2026 09:47:32 -0800 (PST)
+Message-ID: <10e1b40c-2edd-400f-8c8e-e0f3ad4c6f75@redhat.com>
+Date: Thu, 15 Jan 2026 18:47:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v8 5/7] hw/arm/smmuv3-common: Add STE/CD set helpers for
- repeated field setup
-To: Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini
- <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>
+Subject: Re: [RFC v8 0/7] hw/misc: Introduce a generalized IOMMU test framework
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini <pbonzini@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Jean-Philippe Brucker <jean-philippe@linaro.org>,
  Mostafa Saleh <smostafa@google.com>,
  CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
 References: <20251224034647.2596434-1-tangtao1634@phytium.com.cn>
- <20251224034647.2596434-6-tangtao1634@phytium.com.cn>
+ <6d50c3fe-e235-48e8-b461-fe0689f12070@phytium.com.cn>
+ <9fba7ded-d31d-4789-b83d-efcc96f5448e@linaro.org>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20251224034647.2596434-6-tangtao1634@phytium.com.cn>
+In-Reply-To: <9fba7ded-d31d-4789-b83d-efcc96f5448e@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: bXtBFqFyp7ctC4VwkXBS1OM10anRaE4Mxa1Omx4sHek_1768499119
+X-Mimecast-MFC-PROC-ID: QY1QqjBCLilRyQd6ipuam6govAAhU96b7lDJiea1qec_1768499254
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,117 +129,38 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Pierrick,
 
+On 1/15/26 12:39 AM, Pierrick Bouvier wrote:
+> On 1/14/26 5:30 AM, Tao Tang wrote:
+>>
+>> A gentle ping on this series. Any further suggestions would be greatly
+>> appreciated.
+>>
+>>
+>> Link:
+>>
+>> https://lore.kernel.org/qemu-devel/20251224034647.2596434-1-tangtao1634@phytium.com.cn/
+>>
+>>
+>>
+>> Best regards,
+>>
+>> Tao
+>>
+> This version is in good shape and is ready to be merged.
+> Eric, do you feel like merging it, or would you prefer someone else to
+> pick it up? 
 
-On 12/24/25 4:46 AM, Tao Tang wrote:
-> This change introduces STE_SET_* and CD_SET_* helpers to centralize and
-> simplify repeated field setting logic.
->
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Peter generally sends the PRs for the vSMMU. Maybe this can also be
+taken by qtests maintainers too.
+
+Thanks
 
 Eric
-> ---
->  include/hw/arm/smmuv3-common.h | 79 ++++++++++++++++++++++++++++++++++
->  1 file changed, 79 insertions(+)
 >
-> diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
-> index 7f7dd02221..0c6c162288 100644
-> --- a/include/hw/arm/smmuv3-common.h
-> +++ b/include/hw/arm/smmuv3-common.h
-> @@ -100,6 +100,37 @@ REG32(STE_7, 28)
->  #define STE_CFG_ABORT(config)      (!(config & 0x4))
->  #define STE_CFG_BYPASS(config)     (config == 0x4)
->  
-> +/* Update STE fields */
-> +#define STE_SET_VALID(ste, v)                                                 \
-> +    ((ste)->word[0] = FIELD_DP32((ste)->word[0], STE_0, VALID, (v)))
-> +#define STE_SET_CONFIG(ste, v)                                                \
-> +    ((ste)->word[0] = FIELD_DP32((ste)->word[0], STE_0, CONFIG, (v)))
-> +
-> +#define STE_SET_CTXPTR(ste, v) do {                                           \
-> +    (ste)->word[0] = FIELD_DP32((ste)->word[0], STE_0, CTXPTR_LO, (v) >> 6);  \
-> +    (ste)->word[1] = FIELD_DP32((ste)->word[1], STE_1, CTXPTR_HI, (v) >> 32); \
-> +} while (0)
-> +#define STE_SET_S2T0SZ(ste, v)                                                \
-> +    ((ste)->word[5] = FIELD_DP32((ste)->word[5], STE_5, S2T0SZ, (v)))
-> +#define STE_SET_S2SL0(ste, v)                                                 \
-> +    ((ste)->word[5] = FIELD_DP32((ste)->word[5], STE_5, S2SL0, (v)))
-> +#define STE_SET_S2TG(ste, v)                                                  \
-> +    ((ste)->word[5] = FIELD_DP32((ste)->word[5], STE_5, S2TG, (v)))
-> +#define STE_SET_S2PS(ste, v)                                                  \
-> +    ((ste)->word[5] = FIELD_DP32((ste)->word[5], STE_5, S2PS, (v)))
-> +#define STE_SET_S2AA64(ste, v)                                                \
-> +    ((ste)->word[5] = FIELD_DP32((ste)->word[5], STE_5, S2AA64, (v)))
-> +#define STE_SET_S2ENDI(ste, v)                                                \
-> +    ((ste)->word[5] = FIELD_DP32((ste)->word[5], STE_5, S2ENDI, (v)))
-> +#define STE_SET_S2AFFD(ste, v)                                                \
-> +    ((ste)->word[5] = FIELD_DP32((ste)->word[5], STE_5, S2AFFD, (v)))
-> +#define STE_SET_S2S(ste, v)                                                   \
-> +    ((ste)->word[5] = FIELD_DP32((ste)->word[5], STE_5, S2S, (v)))
-> +#define STE_SET_S2TTB(ste, v) do {                                            \
-> +    (ste)->word[6] = FIELD_DP32((ste)->word[6], STE_6, S2TTB_LO, (v) >> 4);   \
-> +    (ste)->word[7] = FIELD_DP32((ste)->word[7], STE_7, S2TTB_HI, (v) >> 32);  \
-> +} while (0)
-> +
->  /* CD fields */
->  
->  REG32(CD_0, 0)
-> @@ -169,6 +200,54 @@ REG32(CD_5, 20)
->               (((uint64_t)FIELD_EX32((x)->word[3], CD_3, TTB0_HI) << 32) | \
->                ((uint64_t)FIELD_EX32((x)->word[2], CD_2, TTB0_LO) << 4)))
->  
-> +/* Update CD fields */
-> +#define CD_SET_VALID(cd, v)                                                   \
-> +    ((cd)->word[0] = FIELD_DP32((cd)->word[0], CD_0, VALID, (v)))
-> +#define CD_SET_ASID(cd, v)                                                    \
-> +    ((cd)->word[1] = FIELD_DP32((cd)->word[1], CD_1, ASID, (v)))
-> +#define CD_SET_TTB(cd, sel, v) do {                                           \
-> +    if (sel) {                                                                \
-> +        (cd)->word[4] = FIELD_DP32((cd)->word[4], CD_4, TTB1_LO, (v) >> 4);   \
-> +        (cd)->word[5] = FIELD_DP32((cd)->word[5], CD_5, TTB1_HI, (v) >> 32);  \
-> +    } else {                                                                  \
-> +        (cd)->word[2] = FIELD_DP32((cd)->word[2], CD_2, TTB0_LO, (v) >> 4);   \
-> +        (cd)->word[3] = FIELD_DP32((cd)->word[3], CD_3, TTB0_HI, (v) >> 32);  \
-> +    }                                                                         \
-> +} while (0)
-> +
-> +#define CD_SET_TSZ(cd, sel, v)                                                \
-> +    ((cd)->word[0] = (sel) ? FIELD_DP32((cd)->word[0], CD_0, TSZ1, (v)) :     \
-> +                             FIELD_DP32((cd)->word[0], CD_0, TSZ0, (v)))
-> +#define CD_SET_TG(cd, sel, v)                                                 \
-> +    ((cd)->word[0] = (sel) ? FIELD_DP32((cd)->word[0], CD_0, TG1, (v)) :      \
-> +                             FIELD_DP32((cd)->word[0], CD_0, TG0, (v)))
-> +#define CD_SET_EPD(cd, sel, v)                                                \
-> +    ((cd)->word[0] = (sel) ? FIELD_DP32((cd)->word[0], CD_0, EPD1, (v)) :     \
-> +                             FIELD_DP32((cd)->word[0], CD_0, EPD0, (v)))
-> +#define CD_SET_ENDI(cd, v)                                                    \
-> +    ((cd)->word[0] = FIELD_DP32((cd)->word[0], CD_0, ENDI, (v)))
-> +#define CD_SET_IPS(cd, v)                                                     \
-> +    ((cd)->word[1] = FIELD_DP32((cd)->word[1], CD_1, IPS, (v)))
-> +#define CD_SET_AFFD(cd, v)                                                    \
-> +    ((cd)->word[1] = FIELD_DP32((cd)->word[1], CD_1, AFFD, (v)))
-> +#define CD_SET_TBI(cd, v)                                                     \
-> +    ((cd)->word[1] = FIELD_DP32((cd)->word[1], CD_1, TBI, (v)))
-> +#define CD_SET_HD(cd, v)                                                      \
-> +    ((cd)->word[1] = FIELD_DP32((cd)->word[1], CD_1, HD, (v)))
-> +#define CD_SET_HA(cd, v)                                                      \
-> +    ((cd)->word[1] = FIELD_DP32((cd)->word[1], CD_1, HA, (v)))
-> +#define CD_SET_S(cd, v)                                                       \
-> +    ((cd)->word[1] = FIELD_DP32((cd)->word[1], CD_1, S, (v)))
-> +#define CD_SET_R(cd, v)                                                       \
-> +    ((cd)->word[1] = FIELD_DP32((cd)->word[1], CD_1, R, (v)))
-> +#define CD_SET_A(cd, v)                                                       \
-> +    ((cd)->word[1] = FIELD_DP32((cd)->word[1], CD_1, A, (v)))
-> +#define CD_SET_AARCH64(cd, v)                                                 \
-> +    ((cd)->word[1] = FIELD_DP32((cd)->word[1], CD_1, AARCH64, (v)))
-> +#define CD_SET_NSCFG(cd, sel, v)                                              \
-> +    ((sel) ? ((cd)->word[4] = FIELD_DP32((cd)->word[4], CD_4, NSCFG1, (v))) : \
-> +             ((cd)->word[2] = FIELD_DP32((cd)->word[2], CD_2, NSCFG0, (v))))
-> +
->  /* MMIO Registers */
->  
->  REG32(IDR0,                0x0)
+> Regards,
+> Pierrick
+>
 
 

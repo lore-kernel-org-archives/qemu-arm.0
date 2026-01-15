@@ -4,81 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ADC4D41169
-	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 10:44:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A928CD4116C
+	for <qemu-arm@archiver.kernel.org>; Thu, 15 Jan 2026 11:17:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgKq7-0003c8-Lp; Thu, 15 Jan 2026 05:44:34 -0500
+	id 1vgLLN-0000ZJ-Io; Thu, 15 Jan 2026 06:16:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vgKq5-0003aM-HU
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 05:44:29 -0500
-Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
+ id 1vgLLL-0000Xg-TQ
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 06:16:48 -0500
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vgKq3-0004Xe-Ai
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 05:44:28 -0500
-Received: by mail-yx1-xb132.google.com with SMTP id
- 956f58d0204a3-646e2b3600fso576981d50.1
- for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 02:44:26 -0800 (PST)
+ id 1vgLLJ-0004YE-Vh
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 06:16:47 -0500
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-7939e7b648aso7755877b3.1
+ for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 03:16:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768473866; x=1769078666; darn=nongnu.org;
+ d=linaro.org; s=google; t=1768475804; x=1769080604; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=y0qy+W4B8slotUaUKZ+AgAKzxweFIy3Nmf0uGPwfoS4=;
- b=fgB8zvsPo+Cs3hIBWC1siBnIQEAzoxm8L1bV2J4av3pVU4Uk4zh4piBA+2901FjR64
- 5MdtX/JfUf3UriNdKpGeRVcm8jFrmvsDP+YZXhjBBgWlVwtF99IP69tVXbVx3yp/bS7m
- nPELGo5iFUIBuSHkfeoIyJe7XsnEwCivPd8TmNotIdJZhDTyuNxYVU8CxmWtrUKRHV2T
- +IRolxxhAvqaZuEZ2T6wGRD/gO4YcFX9YtfERq3NrvkNrDkTIY69ZUJLlKQ8dyFQOGtf
- NO0Hcp5XHh8q03VZoRopbvfLR/+tcTOD/I41v8TNH58pVrj2Ddt0gzlXkhGewbbrUvkj
- 5yYw==
+ bh=CcZF/7GWxixuSqAgv6ZHAwCssT4mDSUi4FgpBykfzsQ=;
+ b=S6uXIkoJvUT/ooUovFZ9t6rZv3xSPWNwAjTXz6mFDPQzDIRGPkSb22ypbD1B8Fih35
+ 48ona1qZHo5XDxhdTyViYEcY+4lVrEgl8YMrWEwsT8682lNyEKW5UK1fckQ1XWUjkZdB
+ s1Wg/KEMCD0UAM61HnK7oHP8sG4xwd3w0J4H5YCIYP/s4jCOHim7IYic5pOnqdEBq1vi
+ J4WE8E2u6LMe/XDmnyKf4wMEJq3Ea5meSZvCEKcYnIyz9pA5qG8FpjPkKS3hNJauWguE
+ /uFGAH1Cn+61godjGBBSsm2V767AKZJIBloCAn46StX2/DByukf5qhqpWr/Byj6TvQPK
+ tEaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768473866; x=1769078666;
+ d=1e100.net; s=20230601; t=1768475804; x=1769080604;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=y0qy+W4B8slotUaUKZ+AgAKzxweFIy3Nmf0uGPwfoS4=;
- b=jOcB7yf8sO9+m8ezFxhUJPmWG9U7i+oKRELMsJaU3LUSidaGoiogtSSqYBsgf8buk3
- nLzlxJod5CX8uBclc1vXdrrVW3uEdQ1oGGEuiTLS5FyFKaUcd0cXZqvTd5ryiyiBxA9e
- liSdas3pXZjCH59+4H85GwcJEloBTME/qa8oc4dRE0ZmvhstVJ/58itXDI/eoYX9pz/5
- oYFuOED5tmSwBjWvbF0iwBxJLFIB29yBjsIGyrlu/pVVS6/kXreKj3dyT8e2CHIm/NMe
- cTzm2hxg/iviCBUwMaLh7V9/Kxk3BEC25TOqa6JFGFRRQmU8hvC/+xxT0s8UJcF8pJv6
- fXHg==
+ bh=CcZF/7GWxixuSqAgv6ZHAwCssT4mDSUi4FgpBykfzsQ=;
+ b=Cf4MJOX3wDJtkRQ9VpeKtMsGEk/BIbDSmXRGQsZgZykzJttxGdT4GW2f7Y5+PTd5iE
+ mkJWI3zaQ9E3XSq36633WuiekwAp+a0FsbAzoeVt28SKcStiWQzpGwgJRtCGAve3Ojuw
+ UGFXoxAUA+QUeJFRnEsHCcp2igxSp+rYXDIfi5vk0r+4NQ3JzZQtkh84BWLNQlMkRENF
+ 7rELMW35+W/oJg1lAy9Zv87CZdYr8XzXLaKXsGDjxM+6mxbqW/n3Bu0+yCl58qOFEwEm
+ osOv7Drd5YuUf8SU4uCOa0acWQkbpDxXbJEjSOUz2vuiMF4dz5a6ieiOeM7+XezlLJTp
+ 6fUw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV0bOpQmMFtiUKPHcvlbyeQOtht3k3rBjNetw/Zu+8NMeS+DNXqr96ZNsYmGP3QUxeLM0FNPkDgFA==@nongnu.org
-X-Gm-Message-State: AOJu0YyCnXGjQ/0Bo3W32ICHe1e/NNdj1BDxYhXCCtH77L2ybPrvpQvh
- iMwZrhWjjme4+BFOpfrzsbJlDRdazYvMSCz/pC97QhXwUPHbpCjiykTAQpXnbzHBPuXQE92X8Rh
- ksTV1ydBDb2bHiZ9yzOoe7zM+K10FPqd0cKhmS+7jAw==
-X-Gm-Gg: AY/fxX4VayVSMcvwghGZrEn+jXVkglFD7099jTsXf+svfF41c5t+pRIQ2Fwf+zDCGAS
- VtoUVSZBSi96qLZp3onSzGu+kRzS6/cO2Pt6gL1/gAaOk6/2Lvr15mQGVn2tWtsj2wuzGCUQKro
- tD56lfbfabl7/F+rG9lDLy8Y/y6r9pKmXoagQ8Yx1Nh4wfiTvhWsMThzR8CTNWbHBqxqeMWysVu
- VXZKCGmJ2qekYyDtFRQ4Q4coF8AxYoaQMGAUzXVsdDgJslMiwPl4pMgc907HeZLtZL1ukpYRhgr
- tfrXb0CFmrjqDmlyLa9FP3A=
-X-Received: by 2002:a05:690e:b4e:b0:644:60d9:7528 with SMTP id
- 956f58d0204a3-64903b61a9fmr3443195d50.90.1768473865834; Thu, 15 Jan 2026
- 02:44:25 -0800 (PST)
+ AJvYcCU0A0LlHEkI2bOoWUj2tI66TPbAShBcRAh/IUDpDlEyI0mXDzVQqOhb787lrCWrwvKfOeEmKjGOdQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxCNTr8krsbNZ2NYuCLHSTpT6elhx/WJHJ7Tb3/gujTSQBJIaaR
+ eQqlQe44kXpzb7XQvT/eAL8uayq3NIKdkpEJ4bBH5tycDY0jlqPfj5h5kfzur1gkxUOUs6TX3av
+ It84jF8C93rsDX3+gGQFXaCbONZhE5uy2CLPOFi7Rpw==
+X-Gm-Gg: AY/fxX7IgKyJbeaUCA/7hAru0eKh3wAuCOC0vNrjYEYqZqeROfnyBbiB7He1UMLb533
+ HfqaISPt5NADU5P7tdBjK4eIXqYB/4kyc1skkkj5XBX69OSq/6Dlqur2wQshhK1j5F6fmD0eCNN
+ ZP/RSy0SWZc0lylZNOKLZNqz7Lk4rRlgcBFT7BL21qzrRU88bxJxW3JEWpIOELRfZPQ8kSLQsGn
+ zH9OnLFspuPHYQAH/uB9eSi5DGKVNl4RGDz4chicgI0T8tAqY58qZTe/c0CjPVt3ihBJhOD81qu
+ 49hvkkmrcfJ/2nfRRcyFkps=
+X-Received: by 2002:a05:690e:d08:b0:645:5540:2cd3 with SMTP id
+ 956f58d0204a3-64903af906amr3520014d50.3.1768475804147; Thu, 15 Jan 2026
+ 03:16:44 -0800 (PST)
 MIME-Version: 1.0
-References: <20260113135941.3361163-1-alex.bennee@linaro.org>
- <770e5e68-f8a9-4321-821a-aa0930db0d95@kaod.org>
-In-Reply-To: <770e5e68-f8a9-4321-821a-aa0930db0d95@kaod.org>
+References: <20251204093502.50582-1-corvin.koehne@gmail.com>
+ <20251204093502.50582-2-corvin.koehne@gmail.com>
+In-Reply-To: <20251204093502.50582-2-corvin.koehne@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Jan 2026 10:44:13 +0000
-X-Gm-Features: AZwV_QjsnUeWMFgniBYf7EQ0VimJM_8yHx93jA4QjIPKMzD0weFUTQMmZCXVe20
-Message-ID: <CAFEAcA9dz5BPdpB+2wukcJ=jgGCwkCTa7Y=FA4s+qzymg7gHRg@mail.gmail.com>
-Subject: Re: [PATCH v2] tests/functional: migrate aspeed_rainier image
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- qemu-devel@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>, 
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+Date: Thu, 15 Jan 2026 11:16:32 +0000
+X-Gm-Features: AZwV_QifDk-lQRCx7or8kxbFwFChpTNLSImgbJvR7xHAVS8PMBOdqymYrls1M30
+Message-ID: <CAFEAcA8UB1yc5t71s5bYWSANK0t-Cgd_e2CntZRfMNqq-QEooQ@mail.gmail.com>
+Subject: Re: [PATCH v5 01/15] hw/timer: Make frequency configurable
+To: =?UTF-8?Q?Corvin_K=C3=B6hne?= <corvin.koehne@gmail.com>
+Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ qemu-arm@nongnu.org, 
+ Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org, 
+ =?UTF-8?Q?Corvin_K=C3=B6hne?= <c.koehne@beckhoff.com>, 
+ Hanna Reitz <hreitz@redhat.com>,
+ =?UTF-8?Q?Yannick_Vo=C3=9Fen?= <y.vossen@beckhoff.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,25 +103,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 13 Jan 2026 at 16:19, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Thu, 4 Dec 2025 at 09:35, Corvin K=C3=B6hne <corvin.koehne@gmail.com> wr=
+ote:
 >
-> On 1/13/26 14:59, Alex Benn=C3=A9e wrote:
-> > Cedric has a host for the file which allows us to keep the name.
-> >
-> > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> > Cc: C=C3=A9dric Le Goater <clg@kaod.org>
-> >
-> > ---
-> > v2
-> >    - host at kaod instead to keep filename
-> > ---
-> >   tests/functional/arm/test_aspeed_rainier.py | 6 ++----
-> >   1 file changed, 2 insertions(+), 4 deletions(-)
+> From: YannickV <Y.Vossen@beckhoff.com>
+>
+> The a9 global timer and arm mp timers rely on the PERIPHCLK as
+> their clock source. The current implementation does not take
+> that into account. That causes problems for applications assuming
+> other frequencies than 1 GHz.
+>
+> We can now configure frequencies for the a9 global timer and
+> arm mp timer. By allowing these values to be set according to
+> the application's needs, we ensure that the timers behave
+> consistently with the expected system configuration. The SoC
+> configures the device correctly.
+>
+> Information can be found in the Zynq 7000 SoC Technical
+> Reference Manual under Timers.
+> https://docs.amd.com/r/en-US/ug585-zynq-7000-SoC-TRM
+>
+> Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
+> ---
 
-Applied to target-arm.next, thanks.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-I've added a cc:stable tag since the old URL will be going
-away shortly.
-
+thanks
 -- PMM
 

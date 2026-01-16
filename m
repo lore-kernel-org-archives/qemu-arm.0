@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A2EFC79FBF
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 14:00:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47779C79FBF
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 14:01:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgkHK-0004pY-HB; Fri, 16 Jan 2026 08:54:18 -0500
+	id 1vgkFt-0002tP-BQ; Fri, 16 Jan 2026 08:52:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vgkGh-0003Vv-0c
- for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:53:41 -0500
-Received: from ci-2004a-snip4-11.eps.apple.com ([57.103.89.13]
+ id 1vgkFr-0002sP-8h
+ for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:52:47 -0500
+Received: from ci-2003e-snip4-11.eps.apple.com ([57.103.91.181]
  helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vgkGd-0002K1-Bm
- for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:53:36 -0500
+ id 1vgkFp-00023m-Um
+ for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:52:47 -0500
 Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-central-1k-60-percent-15 (Postfix) with ESMTPS id
- BD79918000A4; Fri, 16 Jan 2026 13:53:31 +0000 (UTC)
+ 97D4D180020A; Fri, 16 Jan 2026 13:52:42 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=4VCTN0/YnZF1hrPtx7tmA3Evz6xoJllzV/zRgIOe0mw=;
+ s=sig1; bh=+fMggmtg/uZNHz3nywgemPAlDNuqwqAYkYrWDswgN9E=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=CmQBvKXf9ycDHxoSnfg7AnGfUAdsEI4lk/KiaG+8W7dIp6qqmDWKn9qIf/Aa9kjeKXsWD3dyhKBBDDtS7p96beJubbSAVcrI6zJ5opCxHQyU+8ya20k9fvF9zy7ojm3no0nEAndc4K+40A2q+amO/TYi50wYgYqQ5T0JkYzRPmRFQWaqvXBdZqx24vn5PaS7ZpilRG9K2gZJrkZqPV8MSrL8XzU7/AI3JA29/quF3d1+DGwQUH1dO5zpd9kFTbz3rNd5hJDgigqY0MnWjjXrhlGW/vl8HUzvZY4+pLWU6aALo9/QIKxm9CpGBWvOv4Ktd+SEuTnCzy66k9qmLpa3Eg==
+ b=LjsE9MwZeWl6ex5s4DyMRNt53cRORgqXLN74QeacFr9hx8z4sNsGKlWgDCcDSFn4jOMGhSQRX7OfJVtiXLvjkXQUa3jNjXGtYjK41okKlURRW//NhlScewk+FounwY4/jEYSnzxUBia3jWXoKq4XFjJ6hmX9n6Ngcbieo2T39Or7eVmyw+YulajeKqBGaqgbWzN5yOvC32TRqGfn5uzCdKGklTsVg+RteTwyBa1uzncOOu+rYwIUsDQMVIf5ZjT+KVinMhAcxUzGpz8chHDTlt8AQLxl2OuwuVxuTZe6AhRLMbDDpQTNYH2xKP7SMLRJyPeWclVQAFRs0VPQOvFe/w==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.156.36])
  by p00-icloudmta-asmtp-us-central-1k-60-percent-15 (Postfix) with ESMTPSA id
- ECAB8180F909; Fri, 16 Jan 2026 13:53:28 +0000 (UTC)
+ D89FD18007F1; Fri, 16 Jan 2026 13:52:39 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: mohamed@unpredictable.fr,
 	qemu-devel@nongnu.org
@@ -45,36 +45,38 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
+ Sebastian Ott <sebott@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v16 21/26] target/arm: whpx: instantiate GIC early
-Date: Fri, 16 Jan 2026 14:52:30 +0100
-Message-ID: <20260116135235.38092-22-mohamed@unpredictable.fr>
+Subject: [PATCH v16 01/26] target/arm/kvm: add constants for new PSCI versions
+Date: Fri, 16 Jan 2026 14:52:10 +0100
+Message-ID: <20260116135235.38092-2-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260116135235.38092-1-mohamed@unpredictable.fr>
 References: <20260116135235.38092-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE2MDA5NyBTYWx0ZWRfXxJF5FRx/yw03
- TmRd1LniPWZUekvv6BCfdEZOA8FACbCw6GHcS6OG5DJCHImneBfg0ssyrTP7v7autWy1Omc2FUS
- FwK939g/2lqkfa9P1nu42RKdRpQGDCJZ85bYdF8Pem0ykTgdMWZdPWpw2wBbzyUVy0bI8z7VR5H
- Rzfycjb8Wp18jFgxbLjNmq6UOAVRqOeLmCr78IXaEcDQwdOXoFu4eOEuMI6RBkhiFSOhkdvY8d7
- kfeZ0Kyd5SfJI8b8UiI+ePG4EwEaHEUcKWBKxEvbU/u1tXvF7n+7yTk4iPAyx8k9yza/sST6Y9h
- 1I3t/rR7amJxN1CQFOo
-X-Proofpoint-ORIG-GUID: CJYHErZ9CJaEkwJcOwPzVZMYfy9455Wc
-X-Authority-Info: v=2.4 cv=ZOTaWH7b c=1 sm=1 tr=0 ts=696a42dd
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE2MDA5NyBTYWx0ZWRfX2bV8hADP8fPk
+ Aae/zPOFscAihtEVnAv/DSULSe1aMONwThXvLTzMHo5o1tv/cyQ4I8SOXN1RakQDQj7ciJqfvsC
+ +ZAOtb69BYkjvSHaO7LO5L6anX1gNe8bMoaH7oZRQqmwQk2HuuJsXgU6wemLLZmjemRy5dxTRfC
+ VmGSHaJZZzTJqI2/NMtgWNEHDb0tyOdO/OPDV+17BxCGZMOXbdC4e5jud8giW6HxHaoSjV3ezaV
+ 3HtsVeW1B5ffNCeouPHG/5nFB0MEcX55FS4qDEg39CN0AqKcKWg6BYO/9QOVcQtgVKvupK6Cdju
+ vbojavULE6X/0gQjzXA
+X-Authority-Info: v=2.4 cv=T8+BjvKQ c=1 sm=1 tr=0 ts=696a42ac
  cx=c_apl:c_apl_out:c_pps a=2G65uMN5HjSv0sBfM2Yj2w==:117
  a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=KKAkSRfTAAAA:8 a=EYz79TNVRTG0waESW9UA:9 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: CJYHErZ9CJaEkwJcOwPzVZMYfy9455Wc
+ a=20KFwNOVAAAA:8 a=KKAkSRfTAAAA:8 a=DAm2dGrMCKCYv6Tpj9cA:9
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: qgyhaYsES5xwQg6MLArLNa9_Yzyp8oDa
+X-Proofpoint-GUID: qgyhaYsES5xwQg6MLArLNa9_Yzyp8oDa
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2026-01-16_05,2026-01-15_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- mlxlogscore=640 clxscore=1030 adultscore=0 spamscore=0 malwarescore=0
- phishscore=0 suspectscore=0 mlxscore=0 classifier=spam authscore=0 adjust=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ adultscore=0 bulkscore=0 phishscore=0 suspectscore=0 mlxlogscore=939
+ malwarescore=0 clxscore=1030 mlxscore=0 classifier=spam authscore=0 adjust=0
  reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2601160097
-X-JNJ: AAAAAAABoeu5OZ4N5/JXv44v/IzlNcrhhG9edLXkaLHio0eN6qz8nyXCeRwNMGX43LmxAzjpeMxAbv7Qele3zGUETw8z96C0Zr6qyAVVNGD5A2jMvZzW2B3ZkAu/IGdNlAst8NVEGpv6z3VmgdHUx3Lgvb+Tsx7xmeiKviB+hC1yaUeMwphjsScUqAe6ierThUCvV1UVXZP15RImhiXhx5xrYgmZwwakqd0pLEP1CYHIdF2NJlWv8M94e/I+vXrFSwCi2fqcbQyBc1CqgfKZdyq8CgoFpJz9l2eLJx68NuHE3gD+eAZYlosqPUFGpSzZxxscT3bYbIpm/kzRN/9eE4Hpyk05ulAMcwrmbfdVkrN2qbQ4F+6W5Ow8jTe0Gv7iRK+vlaqdnp3Skyc/K0Oq8oL74kJBeb7TYGboxyM2Op13tPrpxTSh7GGhYX/AUBQ7j00LtUXw5RCmzmKbwxk4ZRRKJgtn0B0pi8pLbne+Uoob2xQzmF6TUL6PyNdv3C3PUrIUyfuU0MSHUhAr/fZydUOS/FziAuXurVrS6UYPQ+6ZvEnGWEjEEwTQsTH3qofObedICR0cUSXae8etg5NltPt9p8T0t0DT5xdtAGBHDypzg/HFxya1mPWWYfJD7X6VScsaSO+2yOnzOMS4HGjIY7SNruC2zewCj1RpfM75upycAtKRiIEBtAkQOEDBlNAOo/np6pblUdV0dYIQ5tWJFGQBHUUx5MnjY+4hFbUD+UxmtP7f1MiolgphVlEGWqhTwo6oT1Z6O6Y09RVouK7bN6vfa1Mt1nrHERtlc+O2KPc=
-Received-SPF: pass client-ip=57.103.89.13;
+X-JNJ: AAAAAAABquP5xaAzWxHEwvIP8LPZLpAH9+37B7XOMrfemLHVzx5Fe2Xe3ePtlVUoWEORS2LvoSIMbkdPbOdNpIflLGmLg1KAT7sOxls6QDK03PcyyegCRHzHBRvYEi2q/LlnP6SGFRBH82Djp+oUYeXu+9czKbteA8KggqA3LnalUBY0F5Zz+dkAbs59qkCJJ5nFCHr+sXmNVxkqI5q4DipVO18X/SYekd5Una2g16bSWrt5nMXauRllq/CFu66aTjwnTlUtQPGyJNaBi9Pt7jAaXqaYhHumY8r00WI+t3ZdjqJOmhAty3xCO/fb8PyOc08a99tgYTY9XQAXxiz6AfS7tY7SC7UlyhTkt7go5pkQRJSyaPwM/u2D+YE57ZarW3ljw5r9vxzQKElfjq9J/bCXM9fUcTa+YRqaMRi012zd6X48JkV7Canv00dFoL65T6heJSdkz7nOaNcWGe1yqpjNS/RO9F+8yMaB50JKwzIXRyiS+lvAEdto5hammNy5+KYVv69sVWi9eM7r3WjPYVjR0t0uA63aM8KA4vD0Sp98XFBVKfMOCijwJETyucY77778YmH/9FFYFvY1wBXm2DEHEh1+W4/KXtIsB9bg8a8+XSUKGM1jvUrKffKacsgWKhA+b5vIXU05CXbsddfO7rxLGpdvqw1M1AfBS15ASP+i6vMtOJERmbTmNtdQD/CMkf3gJe1iKjKDyRK+JEuaVswBJfwpYfNVfFOdmyQpdPuWdsF2OZVeSsEQWZ9Haxw2/L4/eJuTVi+ZCn7UcKis85RFF7D2Q2cCQ+S/73rXAmMy6S3mkBMCSC+cVQY=
+Received-SPF: pass client-ip=57.103.91.181;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -99,51 +101,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-While figuring out a better spot for it, put it in whpx_accel_init.
+From: Sebastian Ott <sebott@redhat.com>
 
-Needs to be done before WHvSetupPartition.
+Add constants for PSCI version 1_2 and 1_3.
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+Signed-off-by: Sebastian Ott <sebott@redhat.com>
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/whpx/whpx-all.c | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ target/arm/kvm-consts.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index 78ec109589..3329deeb57 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -940,6 +940,29 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
+diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
+index 54ae5da7ce..9fba3e886d 100644
+--- a/target/arm/kvm-consts.h
++++ b/target/arm/kvm-consts.h
+@@ -97,6 +97,8 @@ MISMATCH_CHECK(QEMU_PSCI_1_0_FN_PSCI_FEATURES, PSCI_1_0_FN_PSCI_FEATURES);
+ #define QEMU_PSCI_VERSION_0_2                     0x00002
+ #define QEMU_PSCI_VERSION_1_0                     0x10000
+ #define QEMU_PSCI_VERSION_1_1                     0x10001
++#define QEMU_PSCI_VERSION_1_2                     0x10002
++#define QEMU_PSCI_VERSION_1_3                     0x10003
  
-     memset(&prop, 0, sizeof(prop));
- 
-+    WHV_ARM64_IC_PARAMETERS ic_params = {
-+        .EmulationMode = WHvArm64IcEmulationModeGicV3,
-+        .GicV3Parameters = {
-+            .GicdBaseAddress = 0x08000000,
-+            .GitsTranslaterBaseAddress = 0x08080000,
-+            .GicLpiIntIdBits = 0,
-+            .GicPpiPerformanceMonitorsInterrupt = VIRTUAL_PMU_IRQ,
-+            .GicPpiOverflowInterruptFromCntv = ARCH_TIMER_VIRT_IRQ
-+        }
-+    };
-+    prop.Arm64IcParameters = ic_params;
-+
-+    hr = whp_dispatch.WHvSetPartitionProperty(
-+            whpx->partition,
-+            WHvPartitionPropertyCodeArm64IcParameters,
-+            &prop,
-+            sizeof(prop));
-+    if (FAILED(hr)) {
-+        error_report("WHPX: Failed to enable GICv3 interrupt controller, hr=%08lx", hr);
-+        ret = -EINVAL;
-+        goto error;
-+    }
-+
-     hr = whp_dispatch.WHvSetupPartition(whpx->partition);
-     if (FAILED(hr)) {
-         error_report("WHPX: Failed to setup partition, hr=%08lx", hr);
+ MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
+ /* We don't bother to check every possible version value */
 -- 
 2.50.1 (Apple Git-155)
 

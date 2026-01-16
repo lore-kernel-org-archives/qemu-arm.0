@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36820C9830A
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 22:50:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA53BC98302
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 22:51:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgsdn-0004P6-PG; Fri, 16 Jan 2026 17:50:04 -0500
+	id 1vgsek-0005N6-UC; Fri, 16 Jan 2026 17:51:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vgsdV-0004IW-Ev
- for qemu-arm@nongnu.org; Fri, 16 Jan 2026 17:49:46 -0500
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ id 1vgse4-0004aP-ID
+ for qemu-arm@nongnu.org; Fri, 16 Jan 2026 17:50:27 -0500
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vgsdU-0007uV-2S
- for qemu-arm@nongnu.org; Fri, 16 Jan 2026 17:49:45 -0500
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2a0bae9aca3so17815565ad.3
- for <qemu-arm@nongnu.org>; Fri, 16 Jan 2026 14:49:42 -0800 (PST)
+ id 1vgse1-00089F-LO
+ for qemu-arm@nongnu.org; Fri, 16 Jan 2026 17:50:20 -0500
+Received: by mail-pf1-x433.google.com with SMTP id
+ d2e1a72fcca58-81e98a1f55eso1333767b3a.3
+ for <qemu-arm@nongnu.org>; Fri, 16 Jan 2026 14:50:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768603782; x=1769208582; darn=nongnu.org;
+ d=linaro.org; s=google; t=1768603816; x=1769208616; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=GNDoo/uuZxNmeJ+znfqBny/4DOvQJzon4fHjGV9VJmU=;
- b=mtFxMEc/IwVquxm3M4xIb60osoNvvutj0mvrbKv9fPw9K3ZNIgMAgOrh92LTIlnVMR
- Q7b7lc4aLuz2JhoOlLL8vx4iPLa5qucuNaSHNiumj4L/ATSp/OxfSR2l3xcbATPvTKsK
- ir3i2qcLwKIUTEDGDOQ9c2sMWkvuBxMPu3MgXbF0oxqMEsfIBqb4gLGswthg3QjWmTn9
- LW6HTulw80Di1O9JyMmgDg+mw7b/PnfhS0MCqmbsanLAOuIDEk+3Hvt86mrtq/ZYPpXQ
- dt0ha98loqiuGJfKAswS+HeBBxJKFQl8Kc/7uuMdvRL2W5YGo6oJJtJd+iloWrHdwwAA
- IcgA==
+ bh=kG0icGy8/yAhRchptWfmzofN4/QVM4H/cNHwsacLbz0=;
+ b=QUtf11AyGq1jgIa79UQsGookRoHH1FK1kTQzf4DVSc6CSI/ih+uNx5cFm3yYat7+wt
+ MZ6ZT7eQMa1PEWG56VRLNczCURz2VEYg00oeWedKcgmZSkZsqmzx/ulpAC8VYYOxEbKD
+ TP7u8ypEigRqO9rEoEr8C348Vy9xW6BLXHHqVRLbbuLdaoK6G3vyDm+iu9zP19ZHWkkS
+ AVGFYxO3xHts7zIO/LeWThD0Ed5ASjYX5PGNZnCnvMnCumosv7gF/q6sAy5tsTCXHZfB
+ SwjpuzekOiEAEQPAibbh58OD27pdfrMwi7XuaamrZxlQs7zq8e7BJCVYJJwGF4TaaKcY
+ 07RA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768603782; x=1769208582;
+ d=1e100.net; s=20230601; t=1768603816; x=1769208616;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=GNDoo/uuZxNmeJ+znfqBny/4DOvQJzon4fHjGV9VJmU=;
- b=OlvzZ19kRtqp22rjGEPajiAVrOZRxGwsvXpwf8PjD+uk7jP+w3EVLS49vCQ2ECdjY6
- yPl362prAE6xGlccN7LTarV5U6Pne8qmt9lLpvD6LlsUZS3/+Wm8cl8hE6WtOiWDJk7B
- a9JpuqyZMtjVj5uehX/fBTjj0zRDc15fIhZ4NPiWn5DiR1IgQuZ8u8A3UauDG0Tr6eMh
- 9qFlceIHO6sGcvCxJ2OXfkOm8ycXPPF/5wTUPKO1SFv1SpSt92Osv6w9DIlZxiy2cBoD
- DANabdsqNrHGwF1kWM1o3YQ+APki4IcP+s+uKAdKvvpGMPhcpuSI/1g7waz42mizu0wF
- SS5Q==
+ bh=kG0icGy8/yAhRchptWfmzofN4/QVM4H/cNHwsacLbz0=;
+ b=KGjnZAIImmvk+MmJRMMCnh/VGPgONaeEAOVDeHH567G7CVq2RqHFgVT2sUtJUtyjoI
+ r7KoiLPqO6RZk7KIuNwzJXZ10VXlzikPR3RboCzUaCDZ8pAWej9golVjlbJUInsMCrcx
+ Zb7ay2Q1uNMM7j3vhOYmcYyJpKm19TBMeHIuLZM4uPycF4ZBoR+ZLeA3xHyhX1JnhrM5
+ oATCa1CMySvKKKauOtle+HriOUrgvMWZLMOr2SBJnrguJX9sy5FvLXPuwA1Bm2XVV+r0
+ 5BHZoI4EL5gPtycH3NdX7jpKFliL5D8GspDXc2IkBSeLQPL3/Y4exgNYVyZtuu3DR6r6
+ Ea7w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUp6blOdbSDGXjnEHH3E75ZgVrB8hnGc7LbHmPS5R8h9Wt0pwZyd8Al9geCCrY6uRU0Ggvl6RVoZg==@nongnu.org
-X-Gm-Message-State: AOJu0YwgPMZlKQOb337IyJrlm74mGohCTERu+nQQkpoiggIs+ZhUtya4
- 61Jca68vPbzXEhfEQi50Viss8R9WeoR5hIE1dkGJy6rnGujJDB3e4LxuM8jZ/k1BtW4=
-X-Gm-Gg: AY/fxX6aQtLZkqooWTt2vNs/MAdL7n3Yg5YRamNqvhbszms2Rg+UFW5RCHYykd1XwAW
- lK9n3Y+FAGXHTJ/XQ9r+kk8CTRcr1zwN/0zRP6VfSxGGPKQGEQsM+zJRbE9O0nqs+1XHEN+Yuqe
- 44xQqI2LwvmYohE2YCLl7+XX7nfG9KEmksNx1C6cPy538hkFU87wcEgF/fYxZTlr1I1GKqJim7b
- w8cBQfS7Vq4orJlA//sdTYT7i3ZBpkiEIUmMJmM+t2iGFglcAVri4C4ykqR52C64tQcvUgFw9YV
- tF3+Sj4mOdmcyDnjqXyHxwqLvLsWsV6STEhEAeJLNojRbzytjLimBFrf4QlaFzeXvOpUVTV29Je
- NQa/Pvn8+PuS3mZh0/+/FREwNewSvDtBU6vQGD4bo/wG/KYm8aVko1brdJgNe+z8oyoU+waev8b
- i5Ek4noDRlCXF2P1ECxl/3L7BV5noXfsCe3glLftRbmCTMUC24uPaqD/yn
-X-Received: by 2002:a17:902:eccc:b0:29f:1fb:730d with SMTP id
- d9443c01a7336-2a717552deamr45658695ad.25.1768603781557; 
- Fri, 16 Jan 2026 14:49:41 -0800 (PST)
+ AJvYcCVgsUV1nrxb0bDIBt5O9/DKAQAXBU0Ur34GP6GtPqPoxlLDPomAJiV+EVh9hKSH7/AHfOK+aumZ2g==@nongnu.org
+X-Gm-Message-State: AOJu0YzUifG7wpDrp558ALibzpb7EWUHMZ1+yiu0jKU4gyn1I09mkkdj
+ D9G0MFgkkZtHsjwyK/5hFJ4EMPmKE0HXH4vGSU63RhIiW3noWnwi/GD1WVDQvhY1vEs=
+X-Gm-Gg: AY/fxX5h0940bqULVWU1kddccWOr1aqwLy3RpR+2zOvdj2oFBKSmealgxTzYPcb5p9+
+ rBbUp2BkS1DHD/C4HX/FTxpJ5qV3FBxMJOc1Vq3PMXX7mbBf/K8TtCcXrIz01ZG8w5j7g0sGEv1
+ ahTb7syOVNg68Qumh6IJjIVYWUARF4kfu/rM94sQ+tMEICa3uGKJDxaxIk2pP8NQjDyomI++igL
+ +2+Nuld76JzwuyDNKLAi6y0Ujp5I/qj1idcYzOtpkPwiyNzq+9tOLnyiHzwSCk7BXtDGkVm+XV9
+ oef64FZCbO3Fl6EI3pY400q5l0Bej+qzDRlqo0Wy0KGCW2mWcQQqJ93zFGAiyjBoqT3OAFtZS0q
+ KtkF9PyfNNCHjZIYqm4R2NCE3v3DxqdjFHlEepFOm+IpLRyON1F36aApGeaChf86bxrjKm/8c1Z
+ Ls2kfMpmpAfNmybKGOV3M57cXR5XVO8H/3+SGfpIF+Plds0PH4Mk9wI5iSsGli0FC8kxA=
+X-Received: by 2002:a05:6a00:14c3:b0:81d:d666:72e1 with SMTP id
+ d2e1a72fcca58-81fa17729fdmr3398624b3a.10.1768603815966; 
+ Fri, 16 Jan 2026 14:50:15 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a71941b915sm30249635ad.90.2026.01.16.14.49.40
+ d2e1a72fcca58-81fa10bcf66sm2903424b3a.18.2026.01.16.14.50.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Jan 2026 14:49:41 -0800 (PST)
-Message-ID: <b7b0e9e4-b84e-4a6b-82bb-6648e65d5dca@linaro.org>
-Date: Fri, 16 Jan 2026 14:49:40 -0800
+ Fri, 16 Jan 2026 14:50:15 -0800 (PST)
+Message-ID: <e51aee33-81bb-4fb7-94df-b0c3fcaa32f6@linaro.org>
+Date: Fri, 16 Jan 2026 14:50:14 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/4] target/i386: Add a _MAX sentinel to X86ASIdx enum
+Subject: Re: [PATCH v4 4/4] cpus: Allocate maximum number of ASes supported by
+ the arch
 Content-Language: en-US
 To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, richard.henderson@linaro.org, alex.bennee@linaro.org,
  philmd@linaro.org, peter.maydell@linaro.org
 References: <20260116185814.108560-1-gustavo.romero@linaro.org>
- <20260116185814.108560-3-gustavo.romero@linaro.org>
+ <20260116185814.108560-5-gustavo.romero@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
@@ -113,18 +114,18 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260116185814.108560-3-gustavo.romero@linaro.org>
+In-Reply-To: <20260116185814.108560-5-gustavo.romero@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62f.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,13 +142,27 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/16/26 10:58 AM, Gustavo Romero wrote:
-> Add a sentinel to the X86ASIdx enum so it can be used to compute the
-> total number of address spaces supported by the arch.
+> From: Philippe Mathieu-Daudé <philmd@linaro.org>
 > 
+> Instead of computing the number of address spaces used for a given
+> architecture, machine, and CPU configuration, simplify the code by
+> always allocating the maximum number of CPUAddressSpaces supported
+> by the architecture.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 > ---
->   target/i386/cpu.h | 1 +
->   1 file changed, 1 insertion(+)
+>   hw/core/cpu-common.c             |  1 -
+>   hw/core/cpu-system.c             |  2 +-
+>   include/exec/cpu-common.h        |  4 ----
+>   include/hw/core/cpu.h            |  7 +++++--
+>   system/cpus.c                    |  1 -
+>   system/physmem.c                 |  8 ++++----
+>   target/arm/cpu.c                 | 11 +----------
+>   target/i386/cpu.c                |  1 +
+>   target/i386/kvm/kvm-cpu.c        |  1 -
+>   target/i386/tcg/system/tcg-cpu.c |  1 -
+>   10 files changed, 12 insertions(+), 25 deletions(-)
 > 
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>

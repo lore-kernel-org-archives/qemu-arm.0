@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47779C79FBF
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 14:01:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AED65C79FBC
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 14:01:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgkFt-0002tP-BQ; Fri, 16 Jan 2026 08:52:49 -0500
+	id 1vgkHa-0005MN-7Y; Fri, 16 Jan 2026 08:54:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vgkFr-0002sP-8h
- for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:52:47 -0500
-Received: from ci-2003e-snip4-11.eps.apple.com ([57.103.91.181]
+ id 1vgkGq-0003lE-GL
+ for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:53:54 -0500
+Received: from ci-2004e-snip4-2.eps.apple.com ([57.103.89.45]
  helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vgkFp-00023m-Um
- for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:52:47 -0500
+ id 1vgkGm-0002M7-IS
+ for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:53:45 -0500
 Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-central-1k-60-percent-15 (Postfix) with ESMTPS id
- 97D4D180020A; Fri, 16 Jan 2026 13:52:42 +0000 (UTC)
+ 0906718000A5; Fri, 16 Jan 2026 13:53:40 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=+fMggmtg/uZNHz3nywgemPAlDNuqwqAYkYrWDswgN9E=;
+ s=sig1; bh=HVZ0nutBP3XUU2ghyFsHVCq59Pl0T83DQcCmyje5ufw=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=LjsE9MwZeWl6ex5s4DyMRNt53cRORgqXLN74QeacFr9hx8z4sNsGKlWgDCcDSFn4jOMGhSQRX7OfJVtiXLvjkXQUa3jNjXGtYjK41okKlURRW//NhlScewk+FounwY4/jEYSnzxUBia3jWXoKq4XFjJ6hmX9n6Ngcbieo2T39Or7eVmyw+YulajeKqBGaqgbWzN5yOvC32TRqGfn5uzCdKGklTsVg+RteTwyBa1uzncOOu+rYwIUsDQMVIf5ZjT+KVinMhAcxUzGpz8chHDTlt8AQLxl2OuwuVxuTZe6AhRLMbDDpQTNYH2xKP7SMLRJyPeWclVQAFRs0VPQOvFe/w==
+ b=LiXmzf1C2u9wIhus3e2EA9ZBWG++Qmz/5sRzDiWZtZsL1d1Tta3vT5VLNf305fFfHUQTVX/zdYwdCScHBoDfgxWGWBLQohe3SyAWmNFquuW1Bp6aPW3XJIWBI+XOQfNcrzPJd6JhnXop0/hx7nnLwkanEja4LfctcxNGiJDMNckCKsYwpZpDTYzmlPTsmbQ8nerRYBuQrOFLnEYUwZ6re3TkRVwjLDjqrEMfUBV9gmE7zgMFw63JzYupxzX01d8CW+3mA4Cz4ayDV8Xo7I0nyljMjcXQdj6JEd+4pTnGRWx03kpkJRIGlkVhYGzrFscB5FBgb4FFIPUH7z/5Upz1tA==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.156.36])
  by p00-icloudmta-asmtp-us-central-1k-60-percent-15 (Postfix) with ESMTPSA id
- D89FD18007F1; Fri, 16 Jan 2026 13:52:39 +0000 (UTC)
+ 797E8180013D; Fri, 16 Jan 2026 13:53:38 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: mohamed@unpredictable.fr,
 	qemu-devel@nongnu.org
@@ -45,47 +45,47 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
- Sebastian Ott <sebott@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v16 01/26] target/arm/kvm: add constants for new PSCI versions
-Date: Fri, 16 Jan 2026 14:52:10 +0100
-Message-ID: <20260116135235.38092-2-mohamed@unpredictable.fr>
+Subject: [PATCH v16 25/26] whpx: arm64: add partition-wide reset on the reboot
+ path
+Date: Fri, 16 Jan 2026 14:52:34 +0100
+Message-ID: <20260116135235.38092-26-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260116135235.38092-1-mohamed@unpredictable.fr>
 References: <20260116135235.38092-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE2MDA5NyBTYWx0ZWRfX2bV8hADP8fPk
- Aae/zPOFscAihtEVnAv/DSULSe1aMONwThXvLTzMHo5o1tv/cyQ4I8SOXN1RakQDQj7ciJqfvsC
- +ZAOtb69BYkjvSHaO7LO5L6anX1gNe8bMoaH7oZRQqmwQk2HuuJsXgU6wemLLZmjemRy5dxTRfC
- VmGSHaJZZzTJqI2/NMtgWNEHDb0tyOdO/OPDV+17BxCGZMOXbdC4e5jud8giW6HxHaoSjV3ezaV
- 3HtsVeW1B5ffNCeouPHG/5nFB0MEcX55FS4qDEg39CN0AqKcKWg6BYO/9QOVcQtgVKvupK6Cdju
- vbojavULE6X/0gQjzXA
-X-Authority-Info: v=2.4 cv=T8+BjvKQ c=1 sm=1 tr=0 ts=696a42ac
+X-Authority-Info: v=2.4 cv=CcEFJbrl c=1 sm=1 tr=0 ts=696a42e6
  cx=c_apl:c_apl_out:c_pps a=2G65uMN5HjSv0sBfM2Yj2w==:117
  a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=20KFwNOVAAAA:8 a=KKAkSRfTAAAA:8 a=DAm2dGrMCKCYv6Tpj9cA:9
+ a=KKAkSRfTAAAA:8 a=h5GvOLqLgfJ3vAEETv4A:9 a=NqO74GWdXPXpGKcKHaDJD/ajO6k=:19
  a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: qgyhaYsES5xwQg6MLArLNa9_Yzyp8oDa
-X-Proofpoint-GUID: qgyhaYsES5xwQg6MLArLNa9_Yzyp8oDa
+X-Proofpoint-GUID: 9ZvnnfcX4Q06VY8nx76EWrQeAa9KIBak
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE2MDA5NyBTYWx0ZWRfX5RY20OQqmk0T
+ S0jn6Wn92GLQdPAJhOp2nC05ZNOGfIAPKS/Ooz/6yDSWLB4hdV3Iw2NEQZbEOgoO3zsUeONCAlo
+ wa+z4LMm5cPrEersbRMrjUXgb/HG6ZKkmssztBPZSH19hH7toszmf2nOYWTHl5SuNpxBly3H9Ij
+ 3+F/b8gPNQWPLDoYh5L3xCL+1NNJXZSMn15ViCLG1S+sMKe2hHK6rlIcNMMy3EWmA1KBXXqqIY3
+ modXYllwSare5k5nYTm+ejXWZLGwr7DJarwPH79eoIvG+3sUab0hlTUQr8BXyurCUtmeqtmKMOY
+ nV7M0WJLLJMC/hGwokU
+X-Proofpoint-ORIG-GUID: 9ZvnnfcX4Q06VY8nx76EWrQeAa9KIBak
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2026-01-16_05,2026-01-15_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- adultscore=0 bulkscore=0 phishscore=0 suspectscore=0 mlxlogscore=939
- malwarescore=0 clxscore=1030 mlxscore=0 classifier=spam authscore=0 adjust=0
- reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2601160097
-X-JNJ: AAAAAAABquP5xaAzWxHEwvIP8LPZLpAH9+37B7XOMrfemLHVzx5Fe2Xe3ePtlVUoWEORS2LvoSIMbkdPbOdNpIflLGmLg1KAT7sOxls6QDK03PcyyegCRHzHBRvYEi2q/LlnP6SGFRBH82Djp+oUYeXu+9czKbteA8KggqA3LnalUBY0F5Zz+dkAbs59qkCJJ5nFCHr+sXmNVxkqI5q4DipVO18X/SYekd5Una2g16bSWrt5nMXauRllq/CFu66aTjwnTlUtQPGyJNaBi9Pt7jAaXqaYhHumY8r00WI+t3ZdjqJOmhAty3xCO/fb8PyOc08a99tgYTY9XQAXxiz6AfS7tY7SC7UlyhTkt7go5pkQRJSyaPwM/u2D+YE57ZarW3ljw5r9vxzQKElfjq9J/bCXM9fUcTa+YRqaMRi012zd6X48JkV7Canv00dFoL65T6heJSdkz7nOaNcWGe1yqpjNS/RO9F+8yMaB50JKwzIXRyiS+lvAEdto5hammNy5+KYVv69sVWi9eM7r3WjPYVjR0t0uA63aM8KA4vD0Sp98XFBVKfMOCijwJETyucY77778YmH/9FFYFvY1wBXm2DEHEh1+W4/KXtIsB9bg8a8+XSUKGM1jvUrKffKacsgWKhA+b5vIXU05CXbsddfO7rxLGpdvqw1M1AfBS15ASP+i6vMtOJERmbTmNtdQD/CMkf3gJe1iKjKDyRK+JEuaVswBJfwpYfNVfFOdmyQpdPuWdsF2OZVeSsEQWZ9Haxw2/L4/eJuTVi+ZCn7UcKis85RFF7D2Q2cCQ+S/73rXAmMy6S3mkBMCSC+cVQY=
-Received-SPF: pass client-ip=57.103.91.181;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ phishscore=0 spamscore=0 suspectscore=0 clxscore=1030 adultscore=0
+ mlxlogscore=842 mlxscore=0 malwarescore=0 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2601160097
+X-JNJ: AAAAAAABOWKM0l64/ezOweRz5bcp0yiN9Gev4J1KoREaOHfDEz1AwMJlKhoPtUYKaatQReZpC9MoLbjsZA02i9LVnxTask6Ot1AISzxj8qacueYqYEOS/8vu/HurdekMmKtrEAMw7KbuDN/53db/65688eEQwRw7SvHEFqRbIAk+l4IICFuYTSaD2I9SfL2qeNHVh43WaqlR/BkuQ61/GWYHJZgCk4zqleQX2g/Sbrpj8fBmxKuU1NA+W83kWTmAYI0DGvmYnJ9tdXWhQyLzKNsReYkfVzmAnKFNCMMJvxE2StOm7Jz//aYPeCHQQ/LIqtwolufO/NMMKoIaM02U5C7yNwryOQT1xrriYizFSBxA9WNlxDq54ye2VedOux0He5S7flloiUFayLOOps9YaTWTIpi2i9zEt1LnO1PvfDOeVqclQMEU0LVYPYRheBIV6VO2v+h2+wa3oiecN5kSb4HuL2+n3p4CLj/47WtDmk+IkznS8e4NyzvxsLG0VAl5Y8Mqj8qROZgoxjryVudxrkXtayVNvQJYhNuPaFgBJYAyPUWFBosYRXj3/1xdkajfByRguDKExHJlF4UAidvcolXMvvxn+piXqdw6RXQ+t4PsVzs2DOJP6TrLeGD8q6WmdVUYAs4AEyUDppKkBR+BOni/y8VaEwHQ10nQzGN/9hjZ/rQ6WNexlVDxLPo2u+bYTRvik4+XP+R1m8rFlJVCft5y86L96KbG9xsA6aoc16fLOXAJRkXmWaNPHfRTCqMFYajLwLWE4vhqDtszAxSmSXwfyzDz+rkh4sGWVj5SAMcvBCkSUm4=
+Received-SPF: pass client-ip=57.103.89.45;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,30 +101,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Sebastian Ott <sebott@redhat.com>
+This resets non-architectural state to allow for reboots to succeed.
 
-Add constants for PSCI version 1_2 and 1_3.
-
-Signed-off-by: Sebastian Ott <sebott@redhat.com>
-
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/kvm-consts.h | 2 ++
- 1 file changed, 2 insertions(+)
+ include/system/whpx-internal.h | 2 ++
+ target/arm/whpx/whpx-all.c     | 2 ++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
-index 54ae5da7ce..9fba3e886d 100644
---- a/target/arm/kvm-consts.h
-+++ b/target/arm/kvm-consts.h
-@@ -97,6 +97,8 @@ MISMATCH_CHECK(QEMU_PSCI_1_0_FN_PSCI_FEATURES, PSCI_1_0_FN_PSCI_FEATURES);
- #define QEMU_PSCI_VERSION_0_2                     0x00002
- #define QEMU_PSCI_VERSION_1_0                     0x10000
- #define QEMU_PSCI_VERSION_1_1                     0x10001
-+#define QEMU_PSCI_VERSION_1_2                     0x10002
-+#define QEMU_PSCI_VERSION_1_3                     0x10003
+diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
+index 8ded54a39b..ad6ade223e 100644
+--- a/include/system/whpx-internal.h
++++ b/include/system/whpx-internal.h
+@@ -86,6 +86,8 @@ void whpx_apic_get(APICCommonState *s);
+   X(HRESULT, WHvSetVirtualProcessorInterruptControllerState2, \
+         (WHV_PARTITION_HANDLE Partition, UINT32 VpIndex, PVOID State, \
+          UINT32 StateSize)) \
++  X(HRESULT, WHvResetPartition, \
++        (WHV_PARTITION_HANDLE Partition)) \
  
- MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
- /* We don't bother to check every possible version value */
+ #define LIST_WINHVEMULATION_FUNCTIONS(X) \
+   X(HRESULT, WHvEmulatorCreateEmulator, (const WHV_EMULATOR_CALLBACKS* Callbacks, WHV_EMULATOR_HANDLE* Emulator)) \
+diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
+index 79e9065d3a..7434735a4f 100644
+--- a/target/arm/whpx/whpx-all.c
++++ b/target/arm/whpx/whpx-all.c
+@@ -497,6 +497,8 @@ int whpx_vcpu_run(CPUState *cpu)
+             if (arm_cpu->power_state != PSCI_OFF) {
+                 whpx_psci_cpu_off(arm_cpu);
+             }
++            /* Partition-wide reset, to reset state for reboots to succeed. */
++            whp_dispatch.WHvResetPartition(whpx->partition);
+             bql_unlock();
+             break;
+         case WHvRunVpExitReasonNone:
 -- 
 2.50.1 (Apple Git-155)
 

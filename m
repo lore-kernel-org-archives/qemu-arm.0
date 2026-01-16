@@ -4,76 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE95CD47CA4
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 01:14:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF826D47CAF
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 01:14:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgYPz-0007X2-4u; Thu, 15 Jan 2026 20:14:27 -0500
+	id 1vgYPW-0007MQ-KP; Thu, 15 Jan 2026 20:13:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vgYPo-0007Tq-Hf
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 20:14:16 -0500
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ id 1vgYPT-0007Jk-8I
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 20:13:55 -0500
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vgYPn-0004B6-24
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 20:14:16 -0500
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-2a09a3bd9c5so10755925ad.3
- for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 17:14:14 -0800 (PST)
+ id 1vgYPR-0004AF-Ow
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 20:13:54 -0500
+Received: by mail-pl1-x62e.google.com with SMTP id
+ d9443c01a7336-29efd139227so9484375ad.1
+ for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 17:13:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768526054; x=1769130854; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Sw3ixO1XydiMFGlaf7LEcmHMVIdOeCKGQYR5Oxw14l8=;
- b=rpbbRBP7P5eDxfak4/OzVJEdjvFyAF0nrEarQe5nCIHWq7kaq0fHk6RoSAJyFMRxIA
- FgTChBR6KZhlnibrakh4NkspFlZwjwDgb4EkfiI5F11F2i4SnY4fKMqf6/829J+WYDrF
- u0S+KZtXeNkAVK24923kmq92EZqB4ePO3ms4LsJ1Hm2v6Q/xptxbX0HgSt3EzSPX6cYd
- j2mTv52QEkaz/WIMmi7CbyRRuUUjK8wCkF6DSICAU0OdqkftB3dpZc7mY8PDzcr/zcnT
- yQt95bWIASmWAd+cKwVwOxdElMsidgQytK2B7NfbLKAKbdE5cGzlPMrmSbvoEPKQom1s
- +afw==
+ d=linaro.org; s=google; t=1768526031; x=1769130831; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to;
+ bh=M3/Sniajm1GuEWA6Y2rlJYwUwPZAmxKiZQDs4S+19yg=;
+ b=HEWV20giEur1fUA6YQkle4FJA4RMbx9WDQy+G6dcfb111+CiqF855V4cnv02smCCMO
+ 7ijXyTETMQUpjt8cMY/Sy62jZ2knr0qtBBG/4w9ajOhof+l7Mub2Ec8yqiEjXxl5ASt7
+ Ebu5TmAVheD+ey6lH/48jjfEJLc5IovOW3MIx+BZMc3WoagP2kg/XfXagnQ2mg5CAWrz
+ tbHd0bbn76pQ2yBcsLucUYCjEzob0mH7d9dCCkUot5YnXMjVeUJbTqTcrt8FGHwQQmpi
+ HYfDacLPiOtTltIPfzlxX16lm4kxaj1dICEFFIFks+YLyethKS4mhzKJRxnAp0ysic5J
+ a0aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768526054; x=1769130854;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Sw3ixO1XydiMFGlaf7LEcmHMVIdOeCKGQYR5Oxw14l8=;
- b=PGoEdXqG45tlTCdCiAeqhtrdt3dr8P/gM7endc+mBeAQO8uQF2eqUOtRt9rXBhO595
- o130cjtmC+3bWl+FufIehQOo3vaRZjqXeIKAmVDyV7qQ+82Jwwf/L7SMpYmL0t4lib6W
- bZAgCxntjx1ajdqpqp29pkMbfhSW7XuU/b6N5mFuzNk4R/dQ8tCszAXItXokOYF/8Q5L
- HGGecQpFyywxwV4yFRR9P8DBLKiHnP01G9+saNP7qBZ/nZ8R7fKE9LhJD5avC6Xm9bi6
- xC6H9ZEKYqLzgjNoIA5Cb450AIbxJDTwRTCkAzZoOBuoNxyodHeg+Ipr00Q0CB5IN7Jd
- vaug==
+ d=1e100.net; s=20230601; t=1768526031; x=1769130831;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=M3/Sniajm1GuEWA6Y2rlJYwUwPZAmxKiZQDs4S+19yg=;
+ b=I2D5iD1kdGjCSp6YmO00bybEP/dPGnQ3nDVLEJY+hQtNqx8hRX4bGTqg3G7Ve3kR8y
+ ycYrqmVsWOFYfLmowZLwDqCRcrIqp6aGAv33jadYRUSZXW0jURX+LkFpi3GA41y8LorR
+ KAHsUu/sp8dCqUG5U73W0BjapZyJMl5c8XWmVx8G/aa0hSaHAAragEhLr+zToX+eF2Yu
+ DSdrMrwLTTduItIpOzFM8hFtE+GnNdT7N4InJYiHWQPry0tRUqCnxknly1V9q5dZNfDn
+ 0BaklbRsgmwpU5wOcWl06SDKm0YSXrpVldARjdDbAPeHAwLeHEjpD4Kltc3JjQOc0G8U
+ TuKA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVHhgeki2H/58zS7QdZ30qx5etQUXtwN+MCmw0QJ2xlq0tfyIKFAydW1b4TZGMnLoNWNnO9Gag5rw==@nongnu.org
-X-Gm-Message-State: AOJu0YxqFUlEqUDVDEcVoCxQeVej94FY2ZN2xAjxYG2ot3Pv0MpSG6Sw
- H8kry/fW2g3o9g43KYJzV5FjsDga/8lnnQeTlzoaEeI7iTQ2Fgi9FrDA/BhXCPBz8mc=
-X-Gm-Gg: AY/fxX5PCxVjEKiZVESNhIuvzXsGaF9p+yuhDKCIohKRqmQ/x8ETJQEIHj+onWb+ALS
- dddl/Gr/0NZa2puhFyGBvBBz1D8RMuMK7ao7G7mOgZpQtOdVMz6gy4lSH2ijtok0hX+m8UJFN6L
- nPPxKT5kWx32/ai5aCzIjx6O3Qp7VIA9AqWhkicJUs8mixykAR76ooCPtT36lHoxu9uDUm/3hSE
- ALxSYruLoVDRUPAK3eiGO7pTBDRugfNqEjL1t5VpE4iSHyvFS1URtdok/r/v/FrwH+qM2WXbWpZ
- j8HNzGnTx+3x6cBQ07ZRhbGDl5eV7YSYD8XLGal7OA30YIMAVSZngcHoEvpehOacfmb5Oss2lxs
- jnKzXkCL8oV1b8sH9ILebr/V89IQYTpmURBqPXuS3jLpakIMKk5diGJml0UfupyR0glhhhJdoZr
- 7wlSiDuwsDbqYU1PkoSSIAT7dncLLgjM/Vc7ngyzMbJfN3bHyqHawzinha
-X-Received: by 2002:a17:902:f78a:b0:297:ece8:a3cb with SMTP id
- d9443c01a7336-2a7188a1a0dmr10092845ad.25.1768526053542; 
- Thu, 15 Jan 2026 17:14:13 -0800 (PST)
+ AJvYcCXfaFzwoR8GdwwYeP4ix5U+dWzi3uJC74X4iDH7RY+tlKZKR0safzhJHVmO/YvP14dD4RoaF0IpRg==@nongnu.org
+X-Gm-Message-State: AOJu0YyJZli7IFMsHtmil7W6eA0Ep6waAj6Ijj08JcoqIyOKdZvsI4SI
+ aCJiypy2LcurpXnRbHc92S8mLbLGbXQstO3JijKvPFS6fhovZWtkavQk59vJSm93GtQ=
+X-Gm-Gg: AY/fxX6uqnCamHtmAk7RBH6cNz/AvW2pK3Rz30Z2FggeRq3pPr/8Rpfw84NcvvxqWGl
+ X/BRrNUI0XIpGiorUn7G1S4Vavspn/d1EUq+0EsSC2JbNBShqtFY8JADhzzlcfoi8Y+1Q5iuBVg
+ LJo8tpKGo2NSr/De0EQCGzlat73ey3SoAs4qtz7Y4CuEEndNgSGs4WKiPZLLJCt+R0M2KT123uZ
+ RGfrDEMXY07obSxunYTWEiIdogyQmEZQ57b0MWRGWqRCEfNELPJt4s1jYDhIW3vb5+zygsQlIZk
+ 7bwsGklgIPttHTlUN8kKlJeUZ1IzHbrZt71AgOf/iXdMShaH1a9J2X6Jln5GDwbO89JHmh6LQW/
+ y/lZiVlb+oRbxW/wzeNwcBoad9oC5OUZShPo7xfn49e+LAE0hs5rQ1YI/VuzAq8ZAmGFlrB5Nc4
+ niJksIxBBu09OCMslg1ms3//cU45RR499jCzgJGxub28VKGGzvOknKpWdJ
+X-Received: by 2002:a17:902:d9d3:b0:2a2:d4fb:2e4 with SMTP id
+ d9443c01a7336-2a71888b473mr8044425ad.3.1768526031392; 
+ Thu, 15 Jan 2026 17:13:51 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a7190ab96fsm4826285ad.13.2026.01.15.17.14.11
+ d9443c01a7336-2a7193dbb28sm4560215ad.49.2026.01.15.17.13.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Jan 2026 17:14:13 -0800 (PST)
-Message-ID: <4f3cd44e-70cb-47a9-8749-27c81bf28bf5@linaro.org>
-Date: Thu, 15 Jan 2026 17:14:10 -0800
+ Thu, 15 Jan 2026 17:13:50 -0800 (PST)
+Message-ID: <6364bd7b-057f-428d-9e3c-a13c687f04c4@linaro.org>
+Date: Thu, 15 Jan 2026 17:13:49 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v15 06/26] hw/arm: virt: cleanly fail on attempt to use
- the platform vGIC together with ITS
-Content-Language: en-US
+Subject: Re: [PATCH v15 15/26] whpx: add arm64 support
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>, 
  Phil Dennis-Jordan <phil@philjordan.eu>,
@@ -93,8 +91,9 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
  qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  Zhao Liu <zhao1.liu@intel.com>
 References: <20260115001505.57237-1-mohamed@unpredictable.fr>
- <20260115001505.57237-7-mohamed@unpredictable.fr>
+ <20260115001505.57237-16-mohamed@unpredictable.fr>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Content-Language: en-US
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
  eOiRCUY9l7IbtPYPHN5YVx+7W3vo6v89I7mL940oYAW8loPZRSMbyCiUeSoiN4gWPXetoNBg
@@ -129,11 +128,11 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260115001505.57237-7-mohamed@unpredictable.fr>
+In-Reply-To: <20260115001505.57237-16-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x635.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -157,21 +156,15 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/14/26 4:14 PM, Mohamed Mediouni wrote:
-> Switch its to a tristate.
-> 
-> Windows Hypervisor Platform's vGIC doesn't support ITS.
-> Deal with this by reporting to the user and exiting.
-> 
-> Regular configuration: GICv3 + ITS
-> New default configuration with WHPX: GICv3 with GICv2m
-> And its=off explicitly for the newest machine version: GICv3 + GICv2m
-> 
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
->   hw/arm/virt-acpi-build.c | 14 ++++++------
->   hw/arm/virt.c            | 46 +++++++++++++++++++++++++++++++---------
->   include/hw/arm/virt.h    |  4 +++-
->   3 files changed, 46 insertions(+), 18 deletions(-)
+>   accel/whpx/whpx-common.c    |   1 +
+>   target/arm/meson.build      |   1 +
+>   target/arm/whpx/meson.build |   3 +
+>   target/arm/whpx/whpx-all.c  | 815 ++++++++++++++++++++++++++++++++++++
+>   4 files changed, 820 insertions(+)
+>   create mode 100644 target/arm/whpx/meson.build
+>   create mode 100644 target/arm/whpx/whpx-all.c
 > 
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>

@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19EDAC2A07F
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 13:54:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1C83C2A06C
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 13:54:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgkGi-0003YK-Rz; Fri, 16 Jan 2026 08:53:42 -0500
+	id 1vgkG5-00033B-J7; Fri, 16 Jan 2026 08:53:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vgkGF-0003CV-5M
- for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:53:11 -0500
-Received: from ci-2004i-snip4-11.eps.apple.com ([57.103.89.93]
+ id 1vgkG3-00030F-5X
+ for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:52:59 -0500
+Received: from ci-2003k-snip4-4.eps.apple.com ([57.103.91.235]
  helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vgkGA-000279-UM
- for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:53:09 -0500
+ id 1vgkG1-00025v-S7
+ for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:52:58 -0500
 Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-central-1k-60-percent-15 (Postfix) with ESMTPS id
- 16A02180F914; Fri, 16 Jan 2026 13:53:00 +0000 (UTC)
+ 9545118007C8; Fri, 16 Jan 2026 13:52:54 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=WIhlnxgxBCyc+dWCY0SbNhn5OBvUHdUcvG79a1EP0Gg=;
+ s=sig1; bh=hV2Yybxjg6na+16RP+CDNexXZ22gE/2/GrNlo4/7dxE=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=I4vr2TS9kAGIBsfxbERJ5pxPSsLyrHQ4d2GMZBMVJUKKf0aGsAYDbGIdzyN7QlAB5yzwaKgg4YVTZ5r+jF/5B09+f5Swea+F60DJ8fsmk7Bi9Ocs4HwtZE8SGNqNlA00VG1QOZY+er98GTYwJTjPxpiRszCXZgx41LO19qBOEq/edpbUKlN60WWGhutyGxNOhQTdf9Lufi1V1lPry4d+ZkiMpJf6zRmJHp86ILDM2JWlQE5+bLuca4V9UAbd3sxKnKW4iC97CIX0IHVR9PguzP7uBe3gJNRCEzZP+2L1LTnAR/8CP+YpN+p89fv6AIpwDqpi5H2mmQsqsPg2VzP/5Q==
+ b=goA/VrHNJqtb0hPhjjJ9bid4L7ThJWQ4dFPg0CLJ8DSG5+H8iUNBxrWwv2NpxVVvh2CLuEzzfrJ5gt4CboDvJe9vY2lMc669Mz0kezoz3WylXiTkXK370Acv7I1uyjCap+J7mZIoPVqQs3e/rP8RD6eGpQJ2mlM4bGiYbS3fPgPA7OUOXF+eQ7dyKEVsJYuXRkbXNYqM1WJnEDJ9Wavzcj0NyVJlpyGK9eQZ6lQeqfU/K21h0jluCjv5Ydwwgu+e5hV0IBIs1HDAA89OpD7nTOts/MovdTYOOEoepQS3/2vSwTMIvsq6kCzLPF4sORPYsz5ya0r65tOsPMBJoISW5w==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.156.36])
  by p00-icloudmta-asmtp-us-central-1k-60-percent-15 (Postfix) with ESMTPSA id
- 8E9D718000A4; Fri, 16 Jan 2026 13:52:58 +0000 (UTC)
+ E5C93180F919; Fri, 16 Jan 2026 13:52:51 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: mohamed@unpredictable.fr,
 	qemu-devel@nongnu.org
@@ -46,42 +46,42 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v16 08/26] docs: arm: update virt machine model description
-Date: Fri, 16 Jan 2026 14:52:17 +0100
-Message-ID: <20260116135235.38092-9-mohamed@unpredictable.fr>
+Subject: [PATCH v16 05/26] tests: data: update AArch64 ACPI tables
+Date: Fri, 16 Jan 2026 14:52:14 +0100
+Message-ID: <20260116135235.38092-6-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260116135235.38092-1-mohamed@unpredictable.fr>
 References: <20260116135235.38092-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE2MDA5NyBTYWx0ZWRfX0vARsX7Wgb/U
- lwxnhxRaVRnGa3BtuGskq/cZ8ucV8b0mQev0277f0xtbvqM21aT65AoIFCnWvGTrtbvCVXI+hDB
- rzOwcTEEGJgg1hQ43hsk+usZ1a51iacuaOr3Usy7QBi/vOOHCk+UwjK6juUOTRoT9gi6UiY+R0i
- d2LrsLazzzzt+TdHtQ5fv79aDmgCTUChEd7Y9CHjINgwDtv9fUIIHargwHqFfnqFXV6fOlE8MFy
- iiy/eB8CYrZXRvVML9674lS7u2VFCqN/IgBQnAXi0FT9KTeu4STgTYnOqf08iqILkxAuAQEiQe8
- MXEFsaZnvPQwPMOSqYE
-X-Proofpoint-ORIG-GUID: yAl4kIizYxx4W336QSnJhB8L6cCWvxjp
-X-Authority-Info: v=2.4 cv=ZOTaWH7b c=1 sm=1 tr=0 ts=696a42be
+X-Authority-Info: v=2.4 cv=CcEFJbrl c=1 sm=1 tr=0 ts=696a42b7
  cx=c_apl:c_apl_out:c_pps a=2G65uMN5HjSv0sBfM2Yj2w==:117
  a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=KKAkSRfTAAAA:8 a=UWX6RoDBcPCHCN3xbnsA:9 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: yAl4kIizYxx4W336QSnJhB8L6cCWvxjp
+ a=KKAkSRfTAAAA:8 a=CvHhVyPyXxbOnLnphYAA:9 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: hzy6tkvpEy03wEEz8foc-GlIQmQnRivM
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE2MDA5NyBTYWx0ZWRfXwdWLn31HOdMc
+ HkNIkTdGd8vAFIu26ExPTkxmBGuNMJpTfnZG8yZOdJVoS6lXGOuJVPyD46HU2B8nRI6L8zGX3b4
+ 9hjG7M79GBEG9vNs5v7hMFOFTICkDYcuG7DxsAy1ev37fqsPHi/Ng75OalUNHqqArwY4ZUZw+IR
+ 5EZ6dioZe//bednEkqQUBvMlbvDQRqhoij1iUJv0m71xB0OWice4gNU1iQM5lVzks7gGjgLFfo4
+ QSlPcwb+aaOj6V+yiaS2Beuj2NI8ZE8rIln6fg3m2w4wvgCgHoMgFjHIz0ekwZZVvEwKPUVSq5y
+ uV4hcLLCebb7csUYAj3
+X-Proofpoint-ORIG-GUID: hzy6tkvpEy03wEEz8foc-GlIQmQnRivM
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2026-01-16_05,2026-01-15_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- mlxlogscore=999 clxscore=1030 adultscore=0 spamscore=0 malwarescore=0
- phishscore=0 suspectscore=0 mlxscore=0 classifier=spam authscore=0 adjust=0
- reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2601160097
-X-JNJ: AAAAAAABtRPL1EnVv0qKcotpu0t1LKxV4Y5QMn7c1DHMsJdk3I4lw3NWanbBd5AMs+UWmaJqiCpNUw9ka07Y2mviewh/C0Uz1qUiuev1Xq+W7zbpBAxZJVfIfeo0p0mrBWMU45rUcqKn2cIlqI2clpGNTZxTbyUWj4iJXdnUU1jTzXX1OH+43G0eLMzPNwcCyLUsDkXufbQqbj5/s2HdN7rgUZsNS2/GPaGGGT4X0vKhWedkeVhCdnyupz9Udv4FP8iF5wPTvxChxZJKTS5tEvBO5KvKiRLXnN4PaOMzygi8habhL5R0O+KIqUTG+8g20GC2hJtHn1Pr0UWyBoDycjH8J60EYGZ6eiSUt7lIbAghD/j6XGK0mnk30jwTuaKz1H+IEieTLXTqYqjK2urStfWLofSyeZVmbCU34YCgslpavwTxQigGtH1fKQsUQuFoXZQsLjRtEU0cfX3/yainIYyadDdebATLJ6SUjoiiHmB5nxGrGtSL1tIr0kfoQxcC5alZaJ1kW07zH5m07K2OXoV7KXJu+iRYmEC1e3VJmV7ktmO/MdO8rhH2ReS2UnTYS+gsAthCiMkzNmRb8wor31mqxU8LF87z4+JHmPldB6YtMK16Pubsp1IFlEcoiMk1l2JKTPmPpOxTHr0pczHEUejUdEzrCYp+o03iY628m/tXkXAYTpf8yUGkO8QPeZ6K/sEUPFtDcKAx0QY20LAl6SKUmmrfbeAO5eOfI2HckaHoU7BWEaXoshbqLHYWQ4Exx4GXxToNZ2dGu5RFZeWl92Vbs7m1wpHO6hfEHWJjN59Tp1iYa2JiEjtAOA==
-Received-SPF: pass client-ip=57.103.89.93;
+ phishscore=0 spamscore=0 suspectscore=0 clxscore=1030 adultscore=0
+ mlxlogscore=940 mlxscore=0 malwarescore=0 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2601160097
+X-JNJ: AAAAAAABu9enEF+Qt7j9jJxZSqqo88jIIb8cyXo1sV9VkN2qXdMKuE8n0ebgwxVsFQ1RsZChWflRVxOcbQ7ygMM36K0WffoHyndeAOJX6SK7XP3jfK33chAnK8didcr92VGLMGMMcWSHrYpdvsNqzBnO9nf3IsdVErJXnmRdKC/BODSzL7GYDmPvOGWloWsVLY8pPBXeYWxn1v0Lg8YDRmqiCA6x+xmfP0+OQgaGtAMW6nd6PXjlU9DQaqo9HEmhzTF+ttG2Ks4muW01ITV3RYCaL6eNoKJ81q65YilalQUlXxV6L1l1ZM1OdhoGyCpYv9E5SS97xgD0JbUiWXvpkUOB+SBlKGnRlZbBuBybALfJ5utpk2QUWEQKpv6BUs0WehBXQeoW5mwS/v6BMbkOInLrvPkBRiXKG8PTERcIVlkaZmf2tx1io+ZVHyREufSu+h3PNzndj24EMJn8rEtWf/HsxhTXJd/nhWvd/Kc/NMeJmuE6dXvKbtLoyXVniVLVeuogfv7WgMNEPzdV4rTbVwZVyvPmTF/LiLGU1nlmEgzJQaaBIeOSDJ5NtlVeWD6iTjgJhZyOwlhWMo4c3A6jbOp0h+uBpKpuIoRnXcuVnhWTB2ZI/4lXaGJ482AvLmEn0jcRBbTdhC8pQAIAPycuEFFFY111nejFCG3SKVyvT2xbfYg61NgIfl+dpNU9pF4HMQocN13pa/Ijk8SBUgLoyEYzdis37k6VrirSM7CayWBhRnNsm+HjsEbk4L4UcdZMRJBsP1IkF/nC+8RmFMyjT5Wo8cpS6yCgBxioSyPxbFJtUytV0LiT2OyNvVrgwF//u+Q=
+Received-SPF: pass client-ip=57.103.91.235;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -99,49 +99,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Update the documentation to match current QEMU.
-
-Remove the mention of pre-2.7 machine models as those aren't provided
-anymore.
+After the previous commit introducing GICv3 + GICv2m configurations,
+update the AArch64 ACPI table for the its=off case.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- docs/system/arm/virt.rst | 13 ++++++++-----
- 1 file changed, 8 insertions(+), 5 deletions(-)
+ tests/data/acpi/aarch64/virt/APIC.its_off   | Bin 164 -> 188 bytes
+ tests/qtest/bios-tables-test-allowed-diff.h |   1 -
+ 2 files changed, 1 deletion(-)
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index e5570773ba..b6e88c4f13 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -41,9 +41,10 @@ The virt board supports:
- - User-creatable SMMUv3 devices (see below for example)
- - hotpluggable DIMMs
- - hotpluggable NVDIMMs
--- An MSI controller (GICv2M or ITS). GICv2M is selected by default along
--  with GICv2. ITS is selected by default with GICv3 (>= virt-2.7). Note
--  that ITS is not modeled in TCG mode.
-+- An MSI controller (GICv2m or ITS).
-+  - When using a GICv3, ITS is selected by default when available on the platform.
-+  - If using a GICv2 or when ITS is not available or disabled, a GICv2m is provided by default instead.
-+  - Before virt-11.0, when using a GICv3 without the ITS, a GICv2m is not provided.
- - 32 virtio-mmio transport devices
- - running guests using the KVM accelerator on aarch64 hardware
- - large amounts of RAM (at least 255GB, and more if using highmem)
-@@ -167,9 +168,11 @@ gic-version
-     with TCG this is currently ``3`` if ``virtualization`` is ``off`` and
-     ``4`` if ``virtualization`` is ``on``, but this may change in future)
- 
-+msi
-+  Set ``auto``/``gicv2m``/``its``/``none`` to control MSI controller configuration. The default is ``auto``.
-+
- its
--  Set ``on``/``off`` to enable/disable ITS instantiation. The default is ``on``
--  for machine types later than ``virt-2.7``.
-+  Set ``on``/``off``/``auto`` to control ITS instantiation. The default is ``auto``.
- 
- iommu
-   Set the IOMMU type to create for the guest. Valid values are:
+diff --git a/tests/data/acpi/aarch64/virt/APIC.its_off b/tests/data/acpi/aarch64/virt/APIC.its_off
+index 6130cb7d07103b326feb4dcd7034f85808bebadf..16a01a17c0af605daf64f3cd2de3572be9e60cab 100644
+GIT binary patch
+delta 43
+qcmZ3&xQCI;F~HM#4+8@Oi@`*$SrWVwKqeS4aeydBAa-B~U;qHCpaq8j
+
+delta 18
+ZcmdnPxP+0*F~HM#2?GNI3&%vRSpY3v1aANU
+
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index bfc4d60124..dfb8523c8b 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,2 +1 @@
+ /* List of comma-separated changed AML files to ignore */
+-"tests/data/acpi/aarch64/virt/APIC.its_off",
 -- 
 2.50.1 (Apple Git-155)
 

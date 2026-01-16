@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CFEBC79FBC
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 14:09:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84A68C79FBF
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 14:09:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgkUw-00049Y-0n; Fri, 16 Jan 2026 09:08:22 -0500
+	id 1vgkWK-0005TW-PD; Fri, 16 Jan 2026 09:09:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vgkUu-00049I-Ep
- for qemu-arm@nongnu.org; Fri, 16 Jan 2026 09:08:20 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vgkWG-0005Sd-TF
+ for qemu-arm@nongnu.org; Fri, 16 Jan 2026 09:09:45 -0500
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vgkUs-0005jH-Nx
- for qemu-arm@nongnu.org; Fri, 16 Jan 2026 09:08:20 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-47f5c2283b6so13309755e9.1
- for <qemu-arm@nongnu.org>; Fri, 16 Jan 2026 06:08:17 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vgkWC-0005np-KW
+ for qemu-arm@nongnu.org; Fri, 16 Jan 2026 09:09:43 -0500
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-432755545fcso1250840f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 16 Jan 2026 06:09:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768572496; x=1769177296; darn=nongnu.org;
+ d=linaro.org; s=google; t=1768572579; x=1769177379; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=MlVhHj2fazwXQUvFAwPS57eaA6wBdf4bc+MmU9XWzyA=;
- b=x9G04d1+RyPUSoVhOoHSuOwHnZwN+7fVTYgPGEm5SYwZaby1ywZvzn1ArSUYXuH1f1
- Fs4/NYHrtsup+jKJahfyFcCVnY2KfboqsKz9ZeP999hvy4K3oDL693B66nb9VPbQbaO3
- 7Ii8zxuRDg6lF8YMgQ2stxeex96eB/pyoJk1AE9ITMtQ46z1i8Cu/mCoiWgVzmn47bHs
- rnLPqH7itgtv1JhVC1Y7uPqPuH4hxCYzgvIBlbynzcfx8x9JnHYvQvoKnZlr5sMPHXc7
- HLOaLr5lpw94xgt57RrR23ivojz4ZJQ+1OpfEiiI6o5FzVc7iDWWT2wXEZ6es27QWlyf
- BGXA==
+ bh=AgSbVulJ1PCvqcq19AvJIFz1s1dFjKCRUz9jOCGwYB0=;
+ b=a3kNojNRiGc4UVaDcPL+0YJ0jLbODyd/Cob79imnRiaFKilk2U3Z0NuvDO/mbQQ4U+
+ FiLNY+iAn9Q6qznNGg5Fj2RAxW/l6b++Qsd1Be6K+sXWw3TxS1iTCcpvpG/tSm+dwLXK
+ kuixsn9EFpYYsLndCXG6LP6eOvaQ2LEcQ0USCeurjztotb1f2u+9rN4pBAMDFeYY2h1f
+ X0rdl4o3xBbaINRJ1uQWCDN68aYSM1qZLHCGMHwKKrSKmAfXtVXDXxf1BhTszQHy2myJ
+ 1p1U32uvjjH3YE+i9YEIPhC/FyklJjsVx8MD097zPUDmt02Be9CPzPl4KXb8vqeZYJfh
+ qJUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768572496; x=1769177296;
+ d=1e100.net; s=20230601; t=1768572579; x=1769177379;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=MlVhHj2fazwXQUvFAwPS57eaA6wBdf4bc+MmU9XWzyA=;
- b=aeKEIxF2XTvMG4wPXXy8DuSbpQB+a3FBISSwHNwgVei5dPsZESOwcCWuYUtt0MBd88
- 86e3pt+zaZvOQY87ol3vSAeIY/qLtH/5nGNr4yP0XkIVdDc8cxvIDgJilRhS5eg90NxF
- nGZLOBXr6xfJnaaa5aSGLvEqdSK6a+6tdfIn1ofh1oKsc9FOlEQE26BEPMOZJPJ6+kaz
- e8i9g/P9ljXwDidZ2Cb7UoO4fvlZbf9coKSkfnhiSpd1VFUEg2s0zqRgZdVh23SXWML0
- XLVXavBs6z2v2DSd6cA43CptPKnHJtrpRY3/6QMHKPqK3pTAXp5oFgym5lO62SijFARu
- F6lQ==
+ bh=AgSbVulJ1PCvqcq19AvJIFz1s1dFjKCRUz9jOCGwYB0=;
+ b=qXauRLd9EjPmEHsIAjJZXyZ39QUN3IgU+JJh3R1MGB2yL3PFk/MWD2xM0nk39B5SJU
+ kyuGLHCzuP+WQIU+6puPoOHSpUVMT6GIrVo9DD36OWUDa6WuBerNJEuVtqdKGmBRZA/0
+ bWVhDYvZCXxP0TwdCPI/AtNuxRT/zOMRsY7xF5K4VeHia/8h2JZKRVqBTaj2yxTEaFrV
+ AjWTUK8ML51lUNL4n3rUl9wEKxTqyYfPL/LDGlpj+ZlCDvh0RyZqH7dbDDnJAuFRU1pq
+ TGxnxaUiefC/NTMpEcxGypSTS00UCjzWeB2i4OzdSSVwL4k5Qxt2jzcKlruzZAmV8+/N
+ ApnA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXS/09VtEg4FeSY/Vx+qB9wPWIncswS1ydQsFn9OvxAI1Wa22slXnO/eSM41kwvLLYbF6SthEEBzg==@nongnu.org
-X-Gm-Message-State: AOJu0YyviTkXE/xkbDoNg5PU1+JXjsy+1sHbm/Ct38jb3LkqIs2lln8U
- Jua3zWH7HAPVMri+bw6OZDwetCmZyRMdnAy9uET4qTjx29cTHpl5eS7d7mHJLFN88fg=
-X-Gm-Gg: AY/fxX595bn7zssoJJOBRvwVVpEPf/wblhhm0TQMu24wjBhBfxiS0OTAhH2n9LBJ+vT
- qu82QyvLU05q1IGP9VVVdDriQCjZeVqWhAQLj1ve8QG+sDA71Npb813xfP2OJ8p67ikhmKQcaCm
- Gj1OWF+MEXxKAoKIyo/Lr6om994XH7Vkn0sx7dsjFjUUWAjM6Ugbm4tgBtUEq+pEMlBlzF4tKNZ
- g7+Tgf/Tw9W7v+10oMV3OwkBAU4NpA6VMIrZSK7el1NcoeXqq3OhfUeW/bSxMVuUolAihYk+37Z
- PqVG1Ar5IQVjPbTWE6JV+q18jYWuNoNKhdf26t1OwcuFNgHUflOvjQiV5ETsbEL/Zo4tt5O5dMu
- CpgLawjkVUaCmzuyvH/VugqALozmcP/tpyjhBsLXcYLzZXO/wPMH0EOYaqesE9zBDoTcj/hwrwz
- QnAS6TFQ+mwrWZ03LOtBWDqS1c1ah4aDjkXiSqRgb/o3dOTnJVVnGPBloX/EzfUIu+
-X-Received: by 2002:a05:600c:4ed3:b0:47e:e91d:73c0 with SMTP id
- 5b1f17b1804b1-4801e3397d6mr38910535e9.19.1768572496131; 
- Fri, 16 Jan 2026 06:08:16 -0800 (PST)
+ AJvYcCXK88SgjBx4zKvnwvqj2Y2jR4rhs7M/D47EFRfQsytG1FJSdgrQ2pGNu5dHJljJPYvTcmezxAvCqw==@nongnu.org
+X-Gm-Message-State: AOJu0YwYtCSZ9FGbQVmPicumyEq0JbUn4vNCEU9/3zINupSayFFKF1J0
+ GlSimC/PF+NCKCjQLTaf6NQCR6RmTXEMAmSTJbLj80iCZryfbgSVKhWsi40oxtBzSr0=
+X-Gm-Gg: AY/fxX4pNYl1XAL52Cr0UZqZ0aU5bSoqft6g1SoyL2k9nEkkoLoCPNBdjH1zvsAAwcO
+ nP9JAXWVQTsKXUGpwIf8v61U5RvqaqXqzEjpaMaRd7ChZIZyaq7v34BQMcz6gi3UsTE/jSo8n4L
+ YVC0Do9Moiv9LUrUXFj9FV1wCCsuFNUJVx7ne54SsVEYCduvwaAJg/84JgHHyH7m3bLCBpl4IZe
+ AuEgkvQOIGu8WwI23xpM6V/RNV+Gtr0WJhOaXGW14SiYALkA2Qftujf8rgPpkvpdINib1lq6wpa
+ sMwsi+kLRyAbgxKa05pkN9/27CIsOegSntVaqrcNNYAWgPiupM0GTXSNuPOlvWxPXgEaC3lKynj
+ Dib85yCqNzIk5Pjte9mmwdFLXqbYJfDzuosaztm4cG406vLtk47rou/+5VdSq6ZalYZ6CWDpU6v
+ wcPAzLGIOBbbur/orBs8XqYnsCm1L3jAwVxMe0oxkSwm8G463KnYKcNnVMxBv5tFrU
+X-Received: by 2002:a05:6000:40e0:b0:42f:bb3f:c5f1 with SMTP id
+ ffacd0b85a97d-43569bc7395mr3688873f8f.44.1768572578801; 
+ Fri, 16 Jan 2026 06:09:38 -0800 (PST)
 Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48020312253sm16187565e9.14.2026.01.16.06.08.14
+ ffacd0b85a97d-43569921dddsm5651653f8f.6.2026.01.16.06.09.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Jan 2026 06:08:15 -0800 (PST)
-Message-ID: <c84ed056-6ba6-4a00-a493-94fa9f13170a@linaro.org>
-Date: Fri, 16 Jan 2026 15:08:14 +0100
+ Fri, 16 Jan 2026 06:09:38 -0800 (PST)
+Message-ID: <aa9056fd-03e8-4ab9-9ce2-1c8a57fe599d@linaro.org>
+Date: Fri, 16 Jan 2026 15:09:37 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v16 09/26] whpx: Move around files before introducing
- AArch64 support
+Subject: Re: [PATCH v16 11/26] whpx: ifdef out winhvemulation on non-x86_64
 Content-Language: en-US
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
@@ -84,13 +83,13 @@ Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
 References: <20260116135235.38092-1-mohamed@unpredictable.fr>
- <20260116135235.38092-10-mohamed@unpredictable.fr>
+ <20260116135235.38092-12-mohamed@unpredictable.fr>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260116135235.38092-10-mohamed@unpredictable.fr>
+In-Reply-To: <20260116135235.38092-12-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,32 +112,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Mohamed,
-
 On 16/1/26 14:52, Mohamed Mediouni wrote:
-> Switch to a design where we can share whpx code between x86 and AArch64 when it makes sense to do so.
+> winhvemulation is x86_64 only.
+> 
+> In the future, we might want to get rid of winhvemulation usage
+> entirely.
 > 
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 > Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > ---
->   MAINTAINERS                                           | 2 ++
->   accel/meson.build                                     | 1 +
->   accel/whpx/meson.build                                | 6 ++++++
->   {target/i386 => accel}/whpx/whpx-accel-ops.c          | 4 ++--
->   {target/i386/whpx => include/system}/whpx-accel-ops.h | 4 ++--
->   {target/i386/whpx => include/system}/whpx-internal.h  | 6 ++++--
->   target/i386/whpx/meson.build                          | 1 -
->   target/i386/whpx/whpx-all.c                           | 4 ++--
->   target/i386/whpx/whpx-apic.c                          | 2 +-
->   9 files changed, 20 insertions(+), 10 deletions(-)
->   create mode 100644 accel/whpx/meson.build
->   rename {target/i386 => accel}/whpx/whpx-accel-ops.c (97%)
->   rename {target/i386/whpx => include/system}/whpx-accel-ops.h (92%)
->   rename {target/i386/whpx => include/system}/whpx-internal.h (97%)
+>   accel/whpx/whpx-common.c       | 14 ++++++++++++--
+>   include/system/whpx-common.h   |  2 ++
+>   include/system/whpx-internal.h |  7 ++++++-
+>   3 files changed, 20 insertions(+), 3 deletions(-)
 
-Just wondering, could we have target/i386/whpx/whpx-internal.h moved
-to accel/whpx/whpx-internal.h? (can be done on top in another patch)
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

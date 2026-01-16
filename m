@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF826D47CAF
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 01:14:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 762ADD47CA3
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 01:15:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgYPW-0007MQ-KP; Thu, 15 Jan 2026 20:13:58 -0500
+	id 1vgYQD-0007hg-TI; Thu, 15 Jan 2026 20:14:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vgYPT-0007Jk-8I
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 20:13:55 -0500
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ id 1vgYQC-0007fR-RM
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 20:14:40 -0500
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vgYPR-0004AF-Ow
- for qemu-arm@nongnu.org; Thu, 15 Jan 2026 20:13:54 -0500
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-29efd139227so9484375ad.1
- for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 17:13:52 -0800 (PST)
+ id 1vgYQB-0004Bs-ES
+ for qemu-arm@nongnu.org; Thu, 15 Jan 2026 20:14:40 -0500
+Received: by mail-pf1-x42f.google.com with SMTP id
+ d2e1a72fcca58-81f416c0473so1336553b3a.3
+ for <qemu-arm@nongnu.org>; Thu, 15 Jan 2026 17:14:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768526031; x=1769130831; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=M3/Sniajm1GuEWA6Y2rlJYwUwPZAmxKiZQDs4S+19yg=;
- b=HEWV20giEur1fUA6YQkle4FJA4RMbx9WDQy+G6dcfb111+CiqF855V4cnv02smCCMO
- 7ijXyTETMQUpjt8cMY/Sy62jZ2knr0qtBBG/4w9ajOhof+l7Mub2Ec8yqiEjXxl5ASt7
- Ebu5TmAVheD+ey6lH/48jjfEJLc5IovOW3MIx+BZMc3WoagP2kg/XfXagnQ2mg5CAWrz
- tbHd0bbn76pQ2yBcsLucUYCjEzob0mH7d9dCCkUot5YnXMjVeUJbTqTcrt8FGHwQQmpi
- HYfDacLPiOtTltIPfzlxX16lm4kxaj1dICEFFIFks+YLyethKS4mhzKJRxnAp0ysic5J
- a0aw==
+ d=linaro.org; s=google; t=1768526078; x=1769130878; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=uhKMfvRt7621rL/vgi8lvItva823mlDjblYrb5dT2Lw=;
+ b=H9rMoiWlO/cyKE5+DYpAJD+PkfkRYkK7bJqfpy/mZSeZguP2+iMk4GC++fcdD8ARx7
+ 8mfZO41po9agte0Iu+rQIF43drFlB3hjCqM73+WoK6795dAjkFzhKR5Vw01dPr64B3JI
+ vG15l3GxCgP03xvd717KOswT6tTl8douBXfyI1VO2qjJtyAZAnYZ4c/HUTolMFtKn+kM
+ xOfKedGvjMSua3RL645+fTIXjgEKEEl7jQDSY9FstvpLND2vUPRe1VbhP+qgUwI7caxN
+ 2A0qS8ln4fSL+tEOj56Ym6jjiUChVfz1UJbVISn1LFvtF6Cck8sttUrVN+xNJxpQ2bR4
+ Rxyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768526031; x=1769130831;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=M3/Sniajm1GuEWA6Y2rlJYwUwPZAmxKiZQDs4S+19yg=;
- b=I2D5iD1kdGjCSp6YmO00bybEP/dPGnQ3nDVLEJY+hQtNqx8hRX4bGTqg3G7Ve3kR8y
- ycYrqmVsWOFYfLmowZLwDqCRcrIqp6aGAv33jadYRUSZXW0jURX+LkFpi3GA41y8LorR
- KAHsUu/sp8dCqUG5U73W0BjapZyJMl5c8XWmVx8G/aa0hSaHAAragEhLr+zToX+eF2Yu
- DSdrMrwLTTduItIpOzFM8hFtE+GnNdT7N4InJYiHWQPry0tRUqCnxknly1V9q5dZNfDn
- 0BaklbRsgmwpU5wOcWl06SDKm0YSXrpVldARjdDbAPeHAwLeHEjpD4Kltc3JjQOc0G8U
- TuKA==
+ d=1e100.net; s=20230601; t=1768526078; x=1769130878;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=uhKMfvRt7621rL/vgi8lvItva823mlDjblYrb5dT2Lw=;
+ b=j0kmWS8s71XMKS5EKVmpsfxA53KUo1H0z4JAqZvJQQsqMnKFzeJSrsD8cx30rAsC7p
+ 4tIV/s8dAaOn0yTu26urujFd1J8Vbeq0FqZuJ+kaFRHlYLDHiDJs1JBBOtSQBgB3oNBF
+ 2dTxiMQpHKqZ23HZnyYc7o2nVEdZGVZongs8wc80R6mgeJifnNhEowWszBtmIM7eMle9
+ dfRTHpBXjyGsD0McVRnHibtz+PAg/r8Hw1JcAuuJY4jOtkeisWw62DO5UHnzNAypZ+/Q
+ EBjjOx9XukKpUPHNwAFqx+zJIrPv3l0tK6G0RX1ASWd679SKSlL01B/p6yPdcpbHyAnA
+ TapQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXfaFzwoR8GdwwYeP4ix5U+dWzi3uJC74X4iDH7RY+tlKZKR0safzhJHVmO/YvP14dD4RoaF0IpRg==@nongnu.org
-X-Gm-Message-State: AOJu0YyJZli7IFMsHtmil7W6eA0Ep6waAj6Ijj08JcoqIyOKdZvsI4SI
- aCJiypy2LcurpXnRbHc92S8mLbLGbXQstO3JijKvPFS6fhovZWtkavQk59vJSm93GtQ=
-X-Gm-Gg: AY/fxX6uqnCamHtmAk7RBH6cNz/AvW2pK3Rz30Z2FggeRq3pPr/8Rpfw84NcvvxqWGl
- X/BRrNUI0XIpGiorUn7G1S4Vavspn/d1EUq+0EsSC2JbNBShqtFY8JADhzzlcfoi8Y+1Q5iuBVg
- LJo8tpKGo2NSr/De0EQCGzlat73ey3SoAs4qtz7Y4CuEEndNgSGs4WKiPZLLJCt+R0M2KT123uZ
- RGfrDEMXY07obSxunYTWEiIdogyQmEZQ57b0MWRGWqRCEfNELPJt4s1jYDhIW3vb5+zygsQlIZk
- 7bwsGklgIPttHTlUN8kKlJeUZ1IzHbrZt71AgOf/iXdMShaH1a9J2X6Jln5GDwbO89JHmh6LQW/
- y/lZiVlb+oRbxW/wzeNwcBoad9oC5OUZShPo7xfn49e+LAE0hs5rQ1YI/VuzAq8ZAmGFlrB5Nc4
- niJksIxBBu09OCMslg1ms3//cU45RR499jCzgJGxub28VKGGzvOknKpWdJ
-X-Received: by 2002:a17:902:d9d3:b0:2a2:d4fb:2e4 with SMTP id
- d9443c01a7336-2a71888b473mr8044425ad.3.1768526031392; 
- Thu, 15 Jan 2026 17:13:51 -0800 (PST)
+ AJvYcCU9+g/3k6RO0TqQLbjdOSA9ernTTXKZPF4iH9S/tcsSTaZ9V7ObxQaL4uZpXeuEES7XuG5ba4dt+w==@nongnu.org
+X-Gm-Message-State: AOJu0YzIPrvONZJkEwVvVdwKbBJxBcH705Kt0ezRaWvryfMTKkYNELpA
+ IUVOnrBwYGK0gK6UMZnWBUZAIDR5uoYL2bPJS8nuCimgxkyKx2+z+92wgnHPJlRKPHg=
+X-Gm-Gg: AY/fxX6O/XWIVlHkvhHcPSXfvva2Gb/XMvQEa6F+dJhXUaoxUMBX9IauXaVQuM6lPKd
+ mPjX6bZCn6zZ9Sm+Kavfqiv+EK2G6/amFHkQCgUYRrxotTWoaBo3ImDtJxJuW49lxT/pfq9lGJN
+ Pq7AX7Em4L4PT+eRA6wA9CGbdXQVJsTtPHJdjCgpyrMvKCM6qKn3tXFzWnH/101LHZeEB9CB3uD
+ xehqQBJLQGOakZRA9oC0I4Bba/N7sspHR/mNYbx2GRWizS9IYQ/IT5qYn1USiXICO9r1XYsUVNt
+ uvNNGIjavCXySsMTf7k8y0qd1Q5fuuOy9zmL09AgBz+T+kR76wDxBOeRtL6STxT/Qa4KUhgfkJA
+ OojD3558na3pSgbLOoY97sjLsASBby8lCfVpH5utcXQcoYA3mjh8DjRv/ngLXqnV/lcnsdC1gN+
+ fYLrGVM8ilZGROzIGEIzWIYi7nGL9LA0jwyDa4ix35NrGDQffXlhMBaRMP
+X-Received: by 2002:a05:6a00:3e19:b0:81f:3f88:89ee with SMTP id
+ d2e1a72fcca58-81f9f684e7bmr1414302b3a.12.1768526077794; 
+ Thu, 15 Jan 2026 17:14:37 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a7193dbb28sm4560215ad.49.2026.01.15.17.13.50
+ d2e1a72fcca58-81fa12b50fasm504918b3a.64.2026.01.15.17.14.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Jan 2026 17:13:50 -0800 (PST)
-Message-ID: <6364bd7b-057f-428d-9e3c-a13c687f04c4@linaro.org>
-Date: Thu, 15 Jan 2026 17:13:49 -0800
+ Thu, 15 Jan 2026 17:14:37 -0800 (PST)
+Message-ID: <500e5146-9823-4ffa-a4b9-c106f4208e45@linaro.org>
+Date: Thu, 15 Jan 2026 17:14:36 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v15 15/26] whpx: add arm64 support
+Subject: Re: [PATCH v15 07/26] hw: arm: virt: rework MSI-X configuration
+Content-Language: en-US
 To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>, 
  Phil Dennis-Jordan <phil@philjordan.eu>,
@@ -91,9 +92,8 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
  qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  Zhao Liu <zhao1.liu@intel.com>
 References: <20260115001505.57237-1-mohamed@unpredictable.fr>
- <20260115001505.57237-16-mohamed@unpredictable.fr>
+ <20260115001505.57237-8-mohamed@unpredictable.fr>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Content-Language: en-US
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
  eOiRCUY9l7IbtPYPHN5YVx+7W3vo6v89I7mL940oYAW8loPZRSMbyCiUeSoiN4gWPXetoNBg
@@ -128,18 +128,18 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260115001505.57237-16-mohamed@unpredictable.fr>
+In-Reply-To: <20260115001505.57237-8-mohamed@unpredictable.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,15 +156,17 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/14/26 4:14 PM, Mohamed Mediouni wrote:
+> Introduce a -M msi= argument to be able to control MSI-X support independently
+> from ITS, as part of supporting GICv3 + GICv2m platforms.
+> 
+> Remove vms->its as it's no longer needed after that change.
+> 
 > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
->   accel/whpx/whpx-common.c    |   1 +
->   target/arm/meson.build      |   1 +
->   target/arm/whpx/meson.build |   3 +
->   target/arm/whpx/whpx-all.c  | 815 ++++++++++++++++++++++++++++++++++++
->   4 files changed, 820 insertions(+)
->   create mode 100644 target/arm/whpx/meson.build
->   create mode 100644 target/arm/whpx/whpx-all.c
+>   hw/arm/virt-acpi-build.c |  24 +++++---
+>   hw/arm/virt.c            | 116 ++++++++++++++++++++++++++++++++-------
+>   include/hw/arm/virt.h    |   4 +-
+>   3 files changed, 116 insertions(+), 28 deletions(-)
 > 
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>

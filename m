@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3811DC2A06C
-	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 13:53:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8265AC2A06C
+	for <qemu-arm@archiver.kernel.org>; Fri, 16 Jan 2026 13:53:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vgkFz-0002vz-HJ; Fri, 16 Jan 2026 08:52:56 -0500
+	id 1vgkG5-00033Z-PE; Fri, 16 Jan 2026 08:53:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vgkFv-0002uP-Cm
- for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:52:51 -0500
-Received: from ci-2003d-snip4-7.eps.apple.com ([57.103.91.168]
+ id 1vgkG2-0002zl-2c
+ for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:52:59 -0500
+Received: from ci-2003a-snip4-11.eps.apple.com ([57.103.91.141]
  helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vgkFs-00024h-VB
- for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:52:51 -0500
+ id 1vgkFz-00025h-UC
+ for qemu-arm@nongnu.org; Fri, 16 Jan 2026 08:52:57 -0500
 Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-central-1k-60-percent-15 (Postfix) with ESMTPS id
- 75F4D18007F0; Fri, 16 Jan 2026 13:52:45 +0000 (UTC)
+ 613401800135; Fri, 16 Jan 2026 13:52:52 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; bh=ksqwamjc+5RKV9piY5vkALtcG0RUP+bOT4m8O729l+Y=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=GTh9gostxkOef5jssb2a8xOxa7O2jATrtTpgU/gUEX1/8n0CAcaOz9AqmmOS9qfNYKzoAO9t5WkQQ3HGrGPcXYLORWXXeDkCHhdzlhAD3oLT1tGJCLbwwwHe7hQ2DRqUGyPBWcsovlQRbo4qGN9y1uUPsptDWhyQxJ9sFFraV6tYKoB0nNDXdieCxq4m4PbdG/2PKGLJw5Hyi1nO7FzNeKeOUrvy/MA5Hio7JMrr8IhyKuLaMBua4H7203a2gwt86kGnq9qrWq9TOmlsRvwV2/DDPkDlSpb24H7mXNViJYjgndM3XBp1Rv1qnYRSP28rdNL6MBSdR1QSAgzEu1bHQQ==
+ s=sig1; bh=IRh8UKRU225HT8b9oQN8hIs6Dl68wlCfuPh9dj3ZRIA=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=MWH/QDyFVRRGHI81bdamgAdn/M9pNKQsYJFCDdSZSRXYv1lFmUCZKeoQ7khGRQysTiZcsXc4jmDsCouxtVV60qZVcXS7ubaEB1x7jGD+iiAjS3/0ZPt7txXSJn+d/NXefKrq8WSqx2lNIvs16LRNXFZ9hC0Uf3PFLsmxv2k7xVLY3Uh5m7sgql5qGU8xVjKgVSoGfgLpnjgkYveJuhmruw5IlEf87/M9Ifh0D8PzGzWUPDE4TNmGEiY8suFQAOqWQGhR7axCQMgQYCcoNI/Xbu26cIsggJhDOiGwS/hMiJm9/B4fOjoFBssXfPZulgJg+M5NecAKi4uDLaqOXogNtg==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.156.36])
  by p00-icloudmta-asmtp-us-central-1k-60-percent-15 (Postfix) with ESMTPSA id
- 2E638180F919; Fri, 16 Jan 2026 13:52:42 +0000 (UTC)
+ B61471800211; Fri, 16 Jan 2026 13:52:49 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: mohamed@unpredictable.fr,
 	qemu-devel@nongnu.org
@@ -46,46 +46,47 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v16 02/26] accel/system: Introduce hwaccel_enabled() helper
-Date: Fri, 16 Jan 2026 14:52:11 +0100
-Message-ID: <20260116135235.38092-3-mohamed@unpredictable.fr>
+Subject: [PATCH v16 04/26] hw/arm: virt: add GICv2m for the case when ITS is
+ not available
+Date: Fri, 16 Jan 2026 14:52:13 +0100
+Message-ID: <20260116135235.38092-5-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260116135235.38092-1-mohamed@unpredictable.fr>
 References: <20260116135235.38092-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Authority-Info: v=2.4 cv=CcEFJbrl c=1 sm=1 tr=0 ts=696a42ae
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE2MDA5NyBTYWx0ZWRfX12D8r+RJVwZJ
+ PPfeKiNJQlPQCxZid3BmIL5CbQP0Sdsk/tcC/veBiWVUUfmGT+lj5YYHAhYTfD0pLohUJB5u9Q8
+ WypR9iz4JnPsxN/tjQBe/hP91qgq6CvW8PkJKjQvg39E6NDzbF7hK7Y8ygdUXn0THvCWibCuYX4
+ 5RSwEAoPOeOhVuo/0YXXwzCRdKZe/nowQsgrEZ/iWOIsJ165gox/x2Lt/CiyzCBCv7zeCGbzojN
+ /uIoji8P5SB3Ome+BpP/YTnITA5BFBIk6cnd+G2JrJxxNsVCDS3O2qCXyG7VYiRG/tY45uMmkdd
+ aXSLFonez3p4qDtQqhM
+X-Authority-Info: v=2.4 cv=LtqfC3dc c=1 sm=1 tr=0 ts=696a42b5
  cx=c_apl:c_apl_out:c_pps a=2G65uMN5HjSv0sBfM2Yj2w==:117
- a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=IkcTkHD0fZMA:10 a=vUbySO9Y5rIA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=zYwLhoXY7WJC0OmO1EgA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: Y0smF5NtWqI19Mecxy6e5KsISPuGYowK
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE2MDA5NyBTYWx0ZWRfX4bQRisPaBtpK
- QYRWNP7t/gK/0j7b1e3NpGXYGwmtpOIK+NFaPa7hXHo2IdFJNTmQFTp7q21xwkTK86Y9iUT6TV5
- yvTHNJPUrxMZjsueGi3ECRJR5rzSnZ2LKrazhBJzrG+nr7PN5AbFK6Xok9eSmQ/fKecKIo2h82T
- t0PK5XmGuEqDkuHi82i3RAeeonHUr23yO01JsHr5Br+WsjA0R9trvSGYpaTsPoogJMkWqwVwKyX
- oO7ruQZd7ypRZiRVkkIj8G+NRX3r+cHyV+wfcwPFk8PvfRXyGv3ZR2d8uqTYQsl1jFaq2r1q/07
- /IrkVwvfE+jDyn0vIli
-X-Proofpoint-ORIG-GUID: Y0smF5NtWqI19Mecxy6e5KsISPuGYowK
+ a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=8tVNtdTugjW4QW2w:21 a=vUbySO9Y5rIA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=GHBMd-oUYIP45a8agUkA:9
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: MqRUHi5OD6B-KkOC8buEbcuD_Y67cMTZ
+X-Proofpoint-GUID: MqRUHi5OD6B-KkOC8buEbcuD_Y67cMTZ
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2026-01-16_05,2026-01-15_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- phishscore=0 spamscore=0 suspectscore=0 clxscore=1030 adultscore=0
- mlxlogscore=999 mlxscore=0 malwarescore=0 classifier=spam authscore=0
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
- definitions=main-2601160097
-X-JNJ: AAAAAAABfHICVNlQpcT7s/hw5PxnLPNJDi9NhRYhcrKW1bKDDm1w3zWswKmRsJFq9bSDlhNR//QU30VHTFh/mw4tMcfahzw4/TK1mAseXD/VZaJInn84cmus1/my0y+YaM+JeE9ULnTxkqSGQa+237a7a/7m1G/xQFQbiWJxC9jgE0G4VwVzGctpx6A+bm6N99y+kWoQNdSLm+ug3P4iUyeyw3p2XYCBVMyK5I944k6OM+Fk0QVwzfk+1ZrQwiuOA+DsmHyNuLwMSdokGxAIe/QAsoR+Hgwwc84YyvwApCR3TvCCvAqdYdIfI2WezFqA/PRKEWOXsuwivKhcBg73AyCkqErApq6R79P8U5n795TxUvUZFgyagcel4b7QVkiWh5J4I0rzazENhrl/m9nRmt8GXS4/z3ue7EDkeIrBZdaCQA5vrY1jVjk4iTagX8KDx5908SbmF4xbT7lL5KXVmmTYO5+066J2j5CP1+KMD4kmziFF8tX9txNlazJmU16cYQShf0TN7N0SfSIHYBkVm0Mww8YMbBMRC51ufczT3VrgjVhAm6CwllcVaIWLlAjfUpyl5Sk2tVLjskesVZ5bnWgY25vqQisbqBAq/LK4lsUTe5naMx8hNc0PCv21425w0M1l+3/7+xEgavo5Ax/7Dp8v9/8VYs352Xel96udHUPckPmWOY4d8veo99NtzXA+3PFWEn0YO/DzdP1n+L4gIMYkb2Yvia0HBcQgXfdpr6KAUjVOauZfrW9FxQgTnwaBJ+wErgWhBV4Gy10Y1VxePyX+WAFZMKJITAzJsg8zLooawNuf+KazjB8p2tiRVPfwD4K4RQ==
-Received-SPF: pass client-ip=57.103.91.168;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ mlxscore=0 clxscore=1030 bulkscore=0 spamscore=0
+ suspectscore=0 adultscore=0
+ phishscore=0 mlxlogscore=999 classifier=spam authscore=0 adjust=0 reason=mlx
+ scancount=1 engine=8.22.0-2510240001 definitions=main-2601160097
+X-JNJ: AAAAAAABJ6RYuf67u/mdVU+67w//tf9iuLoT1B4RTMjN1xG9DnN2YKSqHOQI4X4dNeFCL9YqkWeDV6VRsRGOEJGilI0pq5JQLrGk3wDaGjn3olPuLjCjvRSXNW9qrM/VMEg0kN3KDs2s48+uRq6+p/MENcmN+5JJxV1+qZAV3qQBuk58EI8UYDRv3uxqKDgnPEM90usHlCtowsvEno7KlkyeyH5gt3wE1be/kzXKxs3oRKfvB8SzqbiyvKLZJtyPHpv/W0L2xFleBZ136ej6BPiPxYhnXnJIrlzbYwThNEntsqNXkmrNtK+5yzZ9YvhQb32CNXbnHQSMIp1H909A7SEYcI8/gpN3Q9PILGnK8bNJsBMcXUoGvuiRAXzu+qZxHpFXcTZhwdUa8qvasoABHaC88m9FclCerQmHzvT9Jm0JsATI2OTtnBRedl3tSsxjLrtjqTAoFS1spqdURDBFZOj0q1TuqWvB+Q1bRZARTDM2GUv7NW1oDjorDuJBc2SOmwKHn26gC/Ty2fAb7jkGr4ZJWRCJxdpCYMr4TI87XmCX2bBJwZWf+F0ee8qAPW+4EGSQuzZCunGdTjozL1YENC7JPpIjMsXibdgQlc/RpA4gSYeDpAq0BMrLOtnfndfNsUcTepns7pN/rrAZ7U5dN3zhkJLABHA+5H5lw3CmJ09hydxHKdoZe398IarhR8KCG+g5TzG7zzWij5Sg0sI4mnU+M1JoP+UtUDtAP/kUGjlYuqj39sPaEEZbvgGK2gkbuPwH1VbZm4N3nHWeaiM5izO7GQLK/0K1EEfMJJdDP5mglSOWTwG0NHqWep8r
+Received-SPF: pass client-ip=57.103.91.141;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,40 +102,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+On Hypervisor.framework for macOS and WHPX for Windows, the provided environment is a GICv3 without ITS.
 
-hwaccel_enabled() return whether any hardware accelerator
-is enabled.
+As such, support a GICv3 w/ GICv2m for that scenario.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- include/system/hw_accel.h | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ hw/arm/virt-acpi-build.c | 5 ++++-
+ hw/arm/virt.c            | 8 ++++++++
+ include/hw/arm/virt.h    | 2 ++
+ 3 files changed, 14 insertions(+), 1 deletion(-)
 
-diff --git a/include/system/hw_accel.h b/include/system/hw_accel.h
-index 55497edc29..628a50e066 100644
---- a/include/system/hw_accel.h
-+++ b/include/system/hw_accel.h
-@@ -40,4 +40,17 @@ void cpu_synchronize_pre_loadvm(CPUState *cpu);
- void cpu_synchronize_post_reset(CPUState *cpu);
- void cpu_synchronize_post_init(CPUState *cpu);
- 
-+/**
-+ * hwaccel_enabled:
-+ *
-+ * Returns: %true if a hardware accelerator is enabled, %false otherwise.
-+ */
-+static inline bool hwaccel_enabled(void)
-+{
-+    return hvf_enabled()
-+        || kvm_enabled()
-+        || nvmm_enabled()
-+        || whpx_enabled();
-+}
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 03b4342574..40ea6b6dd5 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -960,7 +960,10 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+             build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
+             build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
+         }
+-    } else {
++    }
 +
- #endif /* QEMU_HW_ACCEL_H */
++    if (!(vms->gic_version != VIRT_GIC_VERSION_2 && vms->its)
++     && !vms->no_gicv3_with_gicv2m) {
+         const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
+ 
+         /* 5.2.12.16 GIC MSI Frame Structure */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 4badc1a734..275f26d439 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -959,6 +959,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+ 
+     if (vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) {
+         create_its(vms);
++    } else if (vms->gic_version != VIRT_GIC_VERSION_2 && !vms->no_gicv3_with_gicv2m) {
++        create_v2m(vms);
+     } else if (vms->gic_version == VIRT_GIC_VERSION_2) {
+         create_v2m(vms);
+     }
+@@ -2449,6 +2451,8 @@ static void machvirt_init(MachineState *machine)
+     vms->ns_el2_virt_timer_irq = ns_el2_virt_timer_present() &&
+         !vmc->no_ns_el2_virt_timer_irq;
+ 
++    vms->no_gicv3_with_gicv2m = vmc->no_gicv3_with_gicv2m;
++
+     fdt_add_timer_nodes(vms);
+     fdt_add_cpu_nodes(vms);
+ 
+@@ -3497,6 +3501,7 @@ static void virt_instance_init(Object *obj)
+     vms->its = true;
+     /* Allow ITS emulation if the machine version supports it */
+     vms->tcg_its = !vmc->no_tcg_its;
++    vms->no_gicv3_with_gicv2m = false;
+ 
+     /* Default disallows iommu instantiation */
+     vms->iommu = VIRT_IOMMU_NONE;
+@@ -3549,7 +3554,10 @@ DEFINE_VIRT_MACHINE_AS_LATEST(11, 0)
+ 
+ static void virt_machine_10_2_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
++
+     virt_machine_11_0_options(mc);
++    vmc->no_gicv3_with_gicv2m = true;
+     compat_props_add(mc->compat_props, hw_compat_10_2, hw_compat_10_2_len);
+ }
+ DEFINE_VIRT_MACHINE(10, 2)
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 5907d41dbb..b7e59b8c63 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -130,6 +130,7 @@ struct VirtMachineClass {
+     bool no_cpu_topology;
+     bool no_tcg_lpa2;
+     bool no_ns_el2_virt_timer_irq;
++    bool no_gicv3_with_gicv2m;
+     bool no_nested_smmu;
+ };
+ 
+@@ -178,6 +179,7 @@ struct VirtMachineState {
+     char *oem_id;
+     char *oem_table_id;
+     bool ns_el2_virt_timer_irq;
++    bool no_gicv3_with_gicv2m;
+     CXLState cxl_devices_state;
+     bool legacy_smmuv3_present;
+     MemoryRegion *sysmem;
 -- 
 2.50.1 (Apple Git-155)
 

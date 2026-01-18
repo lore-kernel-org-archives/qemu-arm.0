@@ -4,69 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 211D6C98328
-	for <qemu-arm@archiver.kernel.org>; Sat, 17 Jan 2026 13:31:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCF40D4A5F4
+	for <qemu-arm@archiver.kernel.org>; Sun, 18 Jan 2026 18:24:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vh6Or-0003ln-3T; Sat, 17 Jan 2026 08:31:33 -0500
+	id 1vhXQk-0006Pm-GG; Sun, 18 Jan 2026 13:23:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vh6Oo-0003kv-OC; Sat, 17 Jan 2026 08:31:31 -0500
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vh6Om-00011H-GO; Sat, 17 Jan 2026 08:31:30 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwBHricrj2tpOnkrAw--.5736S2;
- Sat, 17 Jan 2026 21:31:23 +0800 (CST)
-Received: from [192.168.31.151] (unknown [113.246.235.43])
- by mail (Coremail) with SMTP id AQAAfwCX7+wnj2tpv3MUAA--.36582S2;
- Sat, 17 Jan 2026 21:31:19 +0800 (CST)
-Message-ID: <9d0c3136-d638-4b05-b6ed-70fa5f0e9b7e@phytium.com.cn>
-Date: Sat, 17 Jan 2026 21:31:18 +0800
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vhXQi-0006N6-KA
+ for qemu-arm@nongnu.org; Sun, 18 Jan 2026 13:23:17 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vhXQh-0000Bw-4l
+ for qemu-arm@nongnu.org; Sun, 18 Jan 2026 13:23:16 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-47ee937ecf2so25584265e9.0
+ for <qemu-arm@nongnu.org>; Sun, 18 Jan 2026 10:23:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1768760593; x=1769365393; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=XEsuZ2C9AXD2j/4UoVjq8Dd5rAdmuTsgzxDGxkYkryU=;
+ b=Dy6eJlDdsQhIw4HlfuXJWDTFsM6K6cEikA+87vCcmdd7wqsfOj4rK1NdnTiVR+vep3
+ JzbmtekAb9j/wbZ8Rc4Gmgtx8nN0Xd+sC1EpjwjuNkPM6HJNwmuhrEjW8ShKW3xibq4e
+ eE8CU9tyPeuqKrv2N0pDJVGTCV4pSPPHF+k8TGF5wdAnZQt6jXiOLhsgAQ2fmYK9JKIK
+ GNZDNr/ohx4XRO5vked4Tp2r/4OIAk92hALBKb2vEZXQvr+TPeuYtmlciqpCm+wRvYep
+ duUE13hU4F+KjlqM5HqtOZBSl9NO7myCfr7b8/VlR2Cg43BKCER6U1bP+jMMQMmL6Pxz
+ Cyig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1768760593; x=1769365393;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XEsuZ2C9AXD2j/4UoVjq8Dd5rAdmuTsgzxDGxkYkryU=;
+ b=w8Gxk2Z9L/1EoR3EmdG8Rlixw+4VDBubxcrnVD40YQbdEyuou134AjbMhBwf7dM3AN
+ h/nEenORc8TQWngOMZ5zr/vAPQu/s1Jh5wAuDpAf3dzdAuVsSUyPcbvT1TY2/XENsVRI
+ Oy0ixRVUiW7ok9IrmKLhd6M1aq4eo1CT+wJM54qOUa0Kn25f32NG9BGdTTtEeHS0yYAS
+ DYzrO1tHnx+cbNksxZvUKjYcybL+U7LBSTZV9jegUEOzJl7q9xmEkG/cSq0QhCWlfrQF
+ Fp6Tr9OKbCpkHYq2+37Ys4u8eFlClcG4E/lAw2kZSWleLQ7Hw8QreM2I417GbejMT15f
+ YWAA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUXSb0V3G9c1Eyec6Wdmw1cNDXMh+qSbl2gk9+xOyA8dL3V1SzBaQrnoxkE/YzVr/UjNpIHGIStFw==@nongnu.org
+X-Gm-Message-State: AOJu0Yxncg1Az+HsJG93O0mzM3RgRdpeoATeu1wT/9fjbPUTIofIcMK2
+ wYElpapyKF1IUg/pG506DuSJMIJNtE7W+4uP2eAhMjYyn9TItFeznG39xd/Q1enOflU=
+X-Gm-Gg: AY/fxX4MWU3/0wPt6O8giHPPJDxrff3+eRN5EQF2IoZQYUzgM0GtzGyL3LT3OC+VMXt
+ 78C9Gs72evPAvNN/oLlMtobzsi4ShdQvaE9ohSmEq2QHFNnhJINSPIJdc2jV1hoQ8y1z3X5oI5W
+ gu3vbw+Ve+6IzQVeWFxVXnl+HM2tvwxPVxB7UyDz/fFNAOsJOFJoMly2Txm3oI9ZImSqymBgpqh
+ Y8so2Kpi1R9RNjzUJ3N0Eet7+74t6imV5qMueACRFTn5lAVJ2x/xH7GkrIRmYt6GMCFc47ltf9E
+ ibi62U2MvcLF7+XUUISeY/eAoozswmsEwu5NVh7tPfAfw6Kw/bb/JLyKcV8xDtcxqVv8jcCvhzW
+ kb84zcaksw7XWk/KaNq+0M59l2pl5RMxBwiMVH7nUm/tQghhKU8pDi3xDejvLeRu6U3Tl2C0qqt
+ 4VGyzmltx1CWIOBi1EKluOkOWW8TRzslbUMrB//nPr054DgufmuwEEHA==
+X-Received: by 2002:a05:600c:470d:b0:477:9e0c:f59 with SMTP id
+ 5b1f17b1804b1-4801e530e35mr106376595e9.2.1768760593177; 
+ Sun, 18 Jan 2026 10:23:13 -0800 (PST)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-47f4b26764fsm208083585e9.12.2026.01.18.10.23.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 18 Jan 2026 10:23:12 -0800 (PST)
+Message-ID: <4add79fa-6cee-4795-96e9-033ae98c472e@linaro.org>
+Date: Sun, 18 Jan 2026 19:23:11 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v8 7/7] tests/qtest: Add SMMUv3 bare-metal test using
- iommu-testdev
-To: eric.auger@redhat.com, Paolo Bonzini <pbonzini@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>,
- CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
-References: <20251224034647.2596434-1-tangtao1634@phytium.com.cn>
- <20251224034647.2596434-8-tangtao1634@phytium.com.cn>
- <0b4b21e5-40e4-4d09-8624-7507dbb220e3@redhat.com>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <0b4b21e5-40e4-4d09-8624-7507dbb220e3@redhat.com>
+Subject: Re: [PATCH 00/14] Freescale SDHCI Fixes
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ Guenter Roeck <linux@roeck-us.net>, Bin Meng <bmeng.cn@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, qemu-ppc@nongnu.org
+References: <20260112145418.220506-1-shentey@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260112145418.220506-1-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwCX7+wnj2tpv3MUAA--.36582S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQARBWlpSgQHHAAIsI
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxAry3CFy8JF1DCr4xGryxuFg_yoW5tr1Dpa
- sxCa47tFWxJr1xAwnrJw1kWr1rtrs7Aw1UAry3Jrn3uw4qyryUtr18KrW0gas7XrWkZ3W8
- Zw40k3W5Gr4UJFJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,86 +105,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Eric,
+> Bernhard Beschow (14):
+>    hw/sd/sdhci: Fix TYPE_IMX_USDHC to implement sd-spec-version 3 by
+>      default
+>    hw/arm/fsl-imx6: Remove now redundant setting of "sd-spec-version"
+>      property
+>    hw/arm/fsl-imx6: Fix naming of SDHCI related constants and attributes
+>    hw/arm/fsl-imx25: Apply missing reset quirk
+>    Revert "hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*"
+>    hw/sd/sdhci: Consolidate eSDHC constants
+>    hw/sd/sdhci: Rename usdhc_ functions
+>    hw/sd/sdhci: Add TYPE_FSL_ESDHC_BE
+>    hw/ppc/e500: Use TYPE_FSL_ESDHC_BE
+>    hw/arm/fsl-imx25: Extract TYPE_FSL_ESDHC_LE
+>    hw/sd/sdhci: Remove endianness property
+>    hw/sd/sdhci: Add uSDHC-specific quirk
+>    hw/sd/sdhci: Remove vendor property
+>    hw/sd/trace-events: Remove redundant "SWITCH " command name
 
-On 2026/1/17 18:04, Eric Auger wrote:
-> Hi Tao,
->
-> On 12/24/25 4:46 AM, Tao Tang wrote:
->> Add a qtest suite that validates ARM SMMUv3 translation without guest
->> firmware or OS. The tests leverage iommu-testdev to trigger DMA
->> operations and the qos-smmuv3 library to configure IOMMU translation
->> structures.
->>
->> This test suite targets the virt machine and covers:
->> - Stage 1 only translation (VA -> PA via CD page tables)
->> - Stage 2 only translation (IPA -> PA via STE S2 tables)
->> - Nested translation (VA -> IPA -> PA, Stage 1 + Stage 2)
->> - Design to extended to support multiple security spaces
->>      (Non-Secure, Secure, Root, Realm)
->>
->> Each test case follows this sequence:
->> 1. Initialize SMMUv3 with appropriate command/event queues
->> 2. Build translation tables (STE/CD/PTE) for the target scenario
->> 3. Configure iommu-testdev with IOVA and DMA attributes via MMIO
->> 4. Trigger DMA and validate successful translation
->> 5. Verify data integrity through a deterministic write-read pattern
->>
->> This bare-metal approach provides deterministic IOMMU testing with
->> minimal dependencies, making failures directly attributable to the SMMU
->> translation path.
->>
->> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->> Tested-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->>   tests/qtest/iommu-smmuv3-test.c | 121 ++++++++++++++++++++++++++++++++
->>   tests/qtest/meson.build         |   1 +
->>   2 files changed, 122 insertions(+)
->>   create mode 100644 tests/qtest/iommu-smmuv3-test.c
->>
->> ------------------------------<snip>------------------------------
->>
->>
->>
->> ------------------------------<snip>------------------------------
->> +
->> +int main(int argc, char **argv)
->> +{
->> +    g_test_init(&argc, &argv, NULL);
->> +    qtest_add_func("/iommu-testdev/translation/ns-s1-only",
->> +                   test_smmuv3_ns_s1_only);
->> +    qtest_add_func("/iommu-testdev/translation/ns-s2-only",
->> +                   test_smmuv3_ns_s2_only);
->> +    qtest_add_func("/iommu-testdev/translation/ns-nested",
->> +                   test_smmuv3_ns_nested);
->> +    return g_test_run();
->> +}
->> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
->> index 669d07c06b..e2d2e68092 100644
->> --- a/tests/qtest/meson.build
->> +++ b/tests/qtest/meson.build
->> @@ -263,6 +263,7 @@ qtests_aarch64 = \
->>      config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
->>     (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
->>     (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
->> +  (config_all_devices.has_key('CONFIG_IOMMU_TESTDEV') ? ['iommu-smmuv3-test'] : []) + \
-> One question: since it can only run along with VIRT machine, how do we
-> make sure this only runs with that machine enabled?
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-
-Thanks for the catch. I'll address this in two places:
-
-- Build-time: the test is now added only when both CONFIG_IOMMU_TESTDEV 
-and CONFIG_ARM_VIRT are enabled in meson.build.
-
-- Run-time: the test checks qtest_has_machine("virt") and calls 
-g_test_skip() if the virt machine is not available.
-
-This ensures the test is only built/selected when virt is present and 
-also skips cleanly if the machine isn’t supported at runtime.
-
-Best regards,
-Tao
-
+and queued, thanks!
 

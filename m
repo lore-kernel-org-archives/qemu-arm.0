@@ -4,98 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAACDC9830C
-	for <qemu-arm@archiver.kernel.org>; Sun, 18 Jan 2026 22:04:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 678BEC98315
+	for <qemu-arm@archiver.kernel.org>; Sun, 18 Jan 2026 23:21:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vhas8-0007vQ-7q; Sun, 18 Jan 2026 17:03:49 -0500
+	id 1vhc57-0008Bh-Qg; Sun, 18 Jan 2026 18:21:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vhas3-0007rx-DW
- for qemu-arm@nongnu.org; Sun, 18 Jan 2026 17:03:45 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vhc56-0008Aq-G4
+ for qemu-arm@nongnu.org; Sun, 18 Jan 2026 18:21:16 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vhas1-0000Pt-IW
- for qemu-arm@nongnu.org; Sun, 18 Jan 2026 17:03:42 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-47ee0291921so23661085e9.3
- for <qemu-arm@nongnu.org>; Sun, 18 Jan 2026 14:03:41 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vhc54-0003jw-Sx
+ for qemu-arm@nongnu.org; Sun, 18 Jan 2026 18:21:16 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-47fedb7c68dso24094805e9.2
+ for <qemu-arm@nongnu.org>; Sun, 18 Jan 2026 15:21:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768773820; x=1769378620; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=FaZNk12IqzS05+aUpzyIrcevxknb2qrEovM9BwTaCGo=;
- b=XbuKK7uZEJNauF/GjSU9N+aZn8Q+67PHXqJO1pwBeaVVb5QPkI8y0t4W1VVNzkgY5k
- cnRhHFdzD4m2EjoFqI9BI1gGVucydMJ9vVZjWOAMrt6ZCpl+HzKuQZ82tsjdArDCuuGF
- lW5WOleAA02FopT00P5dxeZnwn/OKNKJeJN/XaBTDk6cWTsoVF8Bpn1dIyN6M98XKvcq
- MI/HUNbTuV6E5EfJJJaLDG/d9xlMDkzGkpETIi7I5TkSv+scwh9ukOmC7vH0GwjsWPrS
- EVmQE+le0A5tnlsNHkSl0xQHDIRfeQz06Z0qyGUd/kPuLf7bABC3WR0e6kLr34hlGOv3
- NnGg==
+ d=gmail.com; s=20230601; t=1768778473; x=1769383273; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Oi+8iRPhyIsFnki7pDengp9/o/rjfpHUeK4b5AYYbhs=;
+ b=gzRtUbQr4Kn5WEeItBwS/7o0v+k5dUsgrnb3gfKaTcqpG6cW9VyAp5APsp9X2iUTBL
+ AQHOvNTDbcDx6VPf521I4l9sFzXPwGvtabQpBVeLSc5kd3F2R8bIpinCRuUEocVs4KiX
+ s2u3Qozg9S+S+gphPUlanCUtjfJuL/hi1TE1V6gBVaOTwgEoDr1AdVD8q20hhDkf1H7P
+ PFSGGLyWlnxFFhE1kJkIcCeh0lGmgWNz0PeCiOV4C5bk+QR3pBJLpkwrL6PYKkZ0f9U1
+ j00b/mh5tHPNEfq74FjJ7+PLwsRPFt0LD0QaDBoDEVWW5xZ7gFvortnxd0DmfHyc9XSZ
+ UrVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768773820; x=1769378620;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=FaZNk12IqzS05+aUpzyIrcevxknb2qrEovM9BwTaCGo=;
- b=i7fJgyl68vZdSc5J0uYlHlrbOoNDYMAVuBd53sa9bv8cquwzXl5hO7v+2xaJC+BRfa
- hkSm2SIqPpTUpCtNVajTwuJ1eW+o4gXMw6SMe60olstG6x9HTw4rEwQWsQmisCXTPMUR
- Ts5Xz20GOav8jxiO/7Lb5ZcbX6uvi3rnyLWASEFJHUnZz5q94QWI6zOXqUOFwQZJfgmU
- qSGAGIT9Nzp4G0nrqbsJqkayDYCRgbJptGdf6+2Qh7iPI+IVuQu56D3vUxqk0BmJ9z9Y
- rep3pfmoatvRIrm0tf4FMM3h+MXkv1x8y14RRH5B/d1fPQGEFV/iyAMzhoGofihjlBq/
- UPRg==
+ d=1e100.net; s=20230601; t=1768778473; x=1769383273;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=Oi+8iRPhyIsFnki7pDengp9/o/rjfpHUeK4b5AYYbhs=;
+ b=HnzymM+4KNCt+MugNUVZx6wsPFcHw25DBZuXDB/EGenvyFKbzEiXXZo2DOb2o276Xl
+ SCDN+t3rcne5icwkgDzAr7zXPhX75fefrwzY5mok4CcgQe5vjdsnZRz/kwoVkIZ9MhUv
+ vAZsNr507s0FZA/8NAI0eRvLS9p9PFjWfpktYD5s3bWHlEcxCYQpx5dhj2SQ1DM3VKdX
+ Ehrcm67r76RlUSiKPqmcdK5XwN91kjD9doEtqnhoZnXtRg6fp6/FGGIfbWTO572EGFCt
+ vR12MMeIxM402gemkeTdNnfSOVjmAzBnbQLb2UjB7abGanVRy5tQsiT3Gk1w0NzdX/B8
+ vMwg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVX/VLD0TBlWtPIQoWSSuviJlYdsZsO10hLkeeFZX4D6V0gm1FvxB2XVGaf2x0dOQe+udrKwtzOfQ==@nongnu.org
-X-Gm-Message-State: AOJu0Ywd2yrgSa4yJqdispSKMAIRDDMbKDrWMuPHcCVaf976lzMwPiNH
- TOJGlFFTXMChMxEan7s2mBmHuY4tUUKEGH83sb6doMBWMoJZf+eIYsF66wXp5sE4bNk=
-X-Gm-Gg: AY/fxX4PtEzk8xw7PxbDVay8ItC9KvmATYTKITE1CXRu0fIb5FFJD0Zju8vlIwTkkMo
- Ud94Q7GrO9zH3ZNyIoBYJ4bSu+LSZIQV5+9s4FFmEJwd3ew6xJARyPy0KCIOIewW0WsAE+0x0nr
- dgt35Fe7Kh9ts5UHzDY4EjkZzb1i7hOdeysuwfBUKJR9+iDrV6JE8izaDqWsXhpC382NprV799J
- yu2J5CRLh7SO/FTdTlw7ULI/vWPAKws/2fbm+hi9GOVD0iPQxucdZktKF4KG34m/a90wsNHsBqJ
- VPFxwJdW69/BRSgOa1A9IawxMXhaWsttHQ3bKDTCUpDJDWy5rHYkoo2w5T8u2Lz8TQwlT6fJeQy
- fqqR9lwxngtPn0V0xSINCWbY7SbDmdzER5EWFeW0KqzG/iOIVXnv0cMx6nF38/XSaAx7THr1gLI
- 6QGAdQ89NmLvyLDTo8mDRxYpqlchRqgNh6LZrbJOEG7sIYZpoFVPHjxg==
-X-Received: by 2002:a05:600c:3b8e:b0:47e:de23:dd6f with SMTP id
- 5b1f17b1804b1-4801eac0a1dmr101632225e9.12.1768773819837; 
- Sun, 18 Jan 2026 14:03:39 -0800 (PST)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4801e879537sm160228885e9.5.2026.01.18.14.03.38
+ AJvYcCWyfZqou7sp86njjoiaCAfDgXEf+rG+cBPYsWiXH/F396CRBqSQPGPsW+LIWCYlMRs87YtL/3Kt7Q==@nongnu.org
+X-Gm-Message-State: AOJu0YxdJfj+/PamA04xUIaRwGyBZPQxA1uWzWKsyWF1vxd23OKQPx9C
+ hVUAF2Npp6WbAYytuDY1jWkISv+2afoCZq3BaqIxZye1y7ngS2k8UzVq
+X-Gm-Gg: AY/fxX47OwlvLyyrU3UIF83bPuK2unFpZN5PK+DMaRAyDWvnSC49/xbz0WVF22lAWCN
+ g/oaw9QGeykEnhPfO/MNO08rTVEL3re1vxhFGoOe6jW2H8q4q1zFK2HmQX6W37Rc9UamTc+cF9F
+ q4R1vgOlT8aFocz9lmfr1jAowjaOgm6A4Xbnovap+2q/EGBHBIB1RuYDB+V2g00QXjNrIUwjbeX
+ RcGPcrXY2Q0qHs9Nn8BHpPxtkoZMC6RBJgsKw1YHznRRrxHR8UmRlBPcV5MXaqLzgk5OuRViTpq
+ YniUm73JAAu9m9aiEtPDpWx7h5JVz/1/chy0chm6b88dNf4fkQGTPXRU327MNMu9CDSNRVHIPND
+ Ud2xsyStIaWdc+HWe8RgauqVJWKCR1uYH/lStdIJL61SKvgtPV1IkjcTNS/Zbmv+PrwpL8VW4Y5
+ j8EMz+XAGBvHK+TYeRo4PzPu3oxjyJPqo8K3l9aEqcYrdB6NwJG50HMVOnGBP9WbJkIU//iqxqI
+ kftqWr/r0fXTVtvevkvEhvYs/alEtUXYP5C9LVl3iPorQ==
+X-Received: by 2002:a05:6000:2c0a:b0:430:ff41:5c87 with SMTP id
+ ffacd0b85a97d-43569bd490amr11644588f8f.60.1768778472368; 
+ Sun, 18 Jan 2026 15:21:12 -0800 (PST)
+Received: from ehlo.thunderbird.net
+ (dynamic-2a02-3100-2f50-f200-f91d-651c-a220-693b.310.pool.telefonica.de.
+ [2a02:3100:2f50:f200:f91d:651c:a220:693b])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43569997f41sm18664913f8f.38.2026.01.18.15.21.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 18 Jan 2026 14:03:39 -0800 (PST)
-Message-ID: <8af2b03c-6fc3-48c6-a307-7d49d38532b4@linaro.org>
-Date: Sun, 18 Jan 2026 23:03:37 +0100
+ Sun, 18 Jan 2026 15:21:11 -0800 (PST)
+Date: Sun, 18 Jan 2026 22:56:29 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+CC: Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ Guenter Roeck <linux@roeck-us.net>, Bin Meng <bmeng.cn@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, qemu-ppc@nongnu.org
+Subject: Re: [PATCH 00/14] Freescale SDHCI Fixes
+In-Reply-To: <4add79fa-6cee-4795-96e9-033ae98c472e@linaro.org>
+References: <20260112145418.220506-1-shentey@gmail.com>
+ <4add79fa-6cee-4795-96e9-033ae98c472e@linaro.org>
+Message-ID: <3F4EA15D-0769-4FF6-BC25-B1052EA69032@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 51/59] hw/arm/virt: Warn when HVF doesn't report IPA
- bit length
-Content-Language: en-US
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
- qemu-arm@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Peter Collingbourne <pcc@google.com>,
- Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>
-References: <20251028054238.14949-1-philmd@linaro.org>
- <20251028054238.14949-52-philmd@linaro.org>
- <cd27bf13-a8ef-4b7a-bfea-0e4220091ec1@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <cd27bf13-a8ef-4b7a-bfea-0e4220091ec1@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,39 +108,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 28/10/25 13:07, Richard Henderson wrote:
-> On 10/28/25 06:42, Philippe Mathieu-Daudé wrote:
->> Emit a warning when HVF doesn't return the IPA bit length
->> and return -1 as "this accelerator is not usable", allowing
->> QEMU to try with the next one (when using '-accel hvf:tcg').
->>
->> Reported-by: Ivan Krasilnikov
->> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2981
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   hw/arm/virt.c | 8 ++++++--
->>   1 file changed, 6 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 175023897a7..1d65fa471dc 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -3225,8 +3225,12 @@ static int 
->> virt_hvf_get_physical_address_range(MachineState *ms)
->>   {
->>       VirtMachineState *vms = VIRT_MACHINE(ms);
->> -    int default_ipa_size = hvf_arm_get_default_ipa_bit_size();
->> -    int max_ipa_size = hvf_arm_get_max_ipa_bit_size();
->> +    uint32_t default_ipa_size = hvf_arm_get_default_ipa_bit_size();
->> +    uint32_t max_ipa_size = hvf_arm_get_max_ipa_bit_size();
->> +    if (!default_ipa_size || !max_ipa_size) {
->> +        warn_report("HVF didn't report IPA bit length");
->> +        return -1;
->> +    }
-> 
-> I suppose this goes back to the previous patch.
-> It might have been slightly less confusing to merge them, but the 
-> underlying questions about when and how this can fail remain.
 
-Right. I'm dropping this patch.
+
+Am 18=2E Januar 2026 18:23:11 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <p=
+hilmd@linaro=2Eorg>:
+>> Bernhard Beschow (14):
+>>    hw/sd/sdhci: Fix TYPE_IMX_USDHC to implement sd-spec-version 3 by
+>>      default
+>>    hw/arm/fsl-imx6: Remove now redundant setting of "sd-spec-version"
+>>      property
+>>    hw/arm/fsl-imx6: Fix naming of SDHCI related constants and attribute=
+s
+>>    hw/arm/fsl-imx25: Apply missing reset quirk
+>>    Revert "hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*"
+>>    hw/sd/sdhci: Consolidate eSDHC constants
+>>    hw/sd/sdhci: Rename usdhc_ functions
+>>    hw/sd/sdhci: Add TYPE_FSL_ESDHC_BE
+>>    hw/ppc/e500: Use TYPE_FSL_ESDHC_BE
+>>    hw/arm/fsl-imx25: Extract TYPE_FSL_ESDHC_LE
+>>    hw/sd/sdhci: Remove endianness property
+>>    hw/sd/sdhci: Add uSDHC-specific quirk
+>>    hw/sd/sdhci: Remove vendor property
+>>    hw/sd/trace-events: Remove redundant "SWITCH " command name
+>
+>Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
+>
+>and queued, thanks!
+
+Thanks, Phil!
+
+Could you do me a favor and drop patch "hw/sd/sdhci: Add uSDHC-specific qu=
+irk" for now? Although the patch does solve a boot problem I think it needs=
+ some more thought=2E Thanks!
+
+Best regards,
+Bernhard
 

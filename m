@@ -4,111 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 444ACD29C2D
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 14:06:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47276D29C2D
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 14:10:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vhptf-0004BU-0T; Mon, 19 Jan 2026 09:06:23 -0500
+	id 1vhpwp-00063N-06; Mon, 19 Jan 2026 09:09:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vhptT-0003pR-AE
- for qemu-arm@nongnu.org; Mon, 19 Jan 2026 09:06:11 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vhptR-0006XA-Bb
- for qemu-arm@nongnu.org; Mon, 19 Jan 2026 09:06:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768831566;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+ICCTMnjrU73v4nBR3EVR2zTSJwnG39AXJqrZBQY8Hg=;
- b=dGZQhKTZ5N6i6RPbDqLWk0s7ENeiot41Jh7E9JjPdtGvs9KQvxh+JFnDKoQwK6AtRBwbdR
- QJAub8MOvLJS5tOeQFTw6a8Vkbg3D8XWYvYevMAEGw3TxpG4Vj14n/68TkBvbQd0MROL93
- +MZXSlPVr0R0f2FVO1woMZmUGBtI/+I=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-244-lep40TuQNH22kT1AF_7Wig-1; Mon, 19 Jan 2026 09:06:05 -0500
-X-MC-Unique: lep40TuQNH22kT1AF_7Wig-1
-X-Mimecast-MFC-AGG-ID: lep40TuQNH22kT1AF_7Wig_1768831564
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-43284edbbc8so3519277f8f.0
- for <qemu-arm@nongnu.org>; Mon, 19 Jan 2026 06:06:05 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768831564; x=1769436364;
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vhpwm-00062E-TD
+ for qemu-arm@nongnu.org; Mon, 19 Jan 2026 09:09:37 -0500
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vhpwk-000758-GZ
+ for qemu-arm@nongnu.org; Mon, 19 Jan 2026 09:09:36 -0500
+Received: by mail-wm1-x344.google.com with SMTP id
+ 5b1f17b1804b1-4801bc328easo35005415e9.3
+ for <qemu-arm@nongnu.org>; Mon, 19 Jan 2026 06:09:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1768831773; x=1769436573; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+ICCTMnjrU73v4nBR3EVR2zTSJwnG39AXJqrZBQY8Hg=;
- b=tff2qSaIJknNCBg1VxGqpBucipDxh3E326KKdchN3/zaEnQhSx95zfduYXljfrTA/y
- IPdMsvuNwLAICIXiap8lMaZq/6dXWUqaY4nf/r1OEpXoFnU3hracJ9RO5fgwuHa2XFe+
- I5k6yOs0B0VXSPY+rtwT67b46jpncrVEMjrkkPvfHxeq2ddotYgQphbEmtAftVjoWFpd
- myXOcK6+BRNejMxlRi2VKtMcouyRndHvJ8KSUXXmrCtprPZ7i3priXAGA8evrb98ltgL
- UyWUwE9sG9PxUJaayWRniAvtZjdzovn7S+eleaUO+wlXjY+AwYDA3qtglna0McEChzDf
- Cjyw==
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=IwKIh8LIEad7aH6Tqt5/QHLConUDcBI4y2gsj9RRJfA=;
+ b=TuZILqF997+21e8wY+7NaeYDBOAIom7o1KwhqZMIvl9My6aQsne2Fm0FOSSeVzNGvm
+ WsRpim479MV+LGWBeBZ2XFcVuchM6rJNDWluTX309dljUnQBGwcqxDdRWbVw7KjCiiwi
+ f1cOX8muoBoAEmOhh6uB1PEmPBTpg+ZI21XxUxFUjHg0QaVVyca9s8IfM2F61rTSfDDM
+ iEMMSsheKCeGcq9AzFVAGmrnEvJgluleyQ61IV7RPSBEZm2DG4VFRwYShBQX1YEFhKOB
+ pnnPAk0LSWFSVBAN+sR19Ly6JV3conTyoI535WdHAcbDssqWtZn7Mqr8DZeoUv3+FXW+
+ dN9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1768831773; x=1769436573;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=IwKIh8LIEad7aH6Tqt5/QHLConUDcBI4y2gsj9RRJfA=;
+ b=IRt76/BLgpFC+okLdfg7cVJaTdADyEuMIXP9spUeS7zxvNrFtX6PqeGeSchkfNoUWA
+ YlPKGdwjSMYRXjYPTfAywC1FKALjsbC8Wc36z9nWUu9Mnc9SEv/AQahfscELoQ5tsZ/J
+ WWI9s3Y+V2aLZedFoICLbmS6iQyud4mZyRIveyUqw85AWunsIwAPqufNC1tTyM4i9+WR
+ 6QtWZb7Ns0L7QhP9jypXRpqhDHPOyRPKV8XRSgYVm2VoUvfl6yr+se2FrtvyFkW9crDO
+ ALkXGaujia/QdRGT/jQEh4qXypIy5VsdIZ4astAVmF+6IQjmcWNbRsQ7OL/x46/3pK78
+ 4rJw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXIkS59oesvjApxg9jnmSEepXwT6gSkKJK+DrX4+3QfW2RcS1KK8J54yobxlsmh4ubMnRrO8Z10TA==@nongnu.org
-X-Gm-Message-State: AOJu0YwAoB+vFiP4bKcwHqajz04oWbkfgpSthOpz4W0tEikK0/7iMwZJ
- a4ytn6TiJ4KE0D7UhxlUVQ0hZO8ECpR+1WoxhnK0o5WYNi0yE0Akj3sIAehiJZgyb++N28S9ci/
- v3fjBR3cPWB5SBapLRq5yWUZxZAo7dHKRsIspnU7uZAaranyOmYw1dg==
-X-Gm-Gg: AZuq6aL3+aKaBmHGSLxD9c6fucFeCWegs5Ll2m2wnCjYBA5zDT5NgttnVGgI5xFvztt
- gmPJEpiIybftrHxieplJHV20vKd5/+x8nNIh4gc4IN9KFjPzzvc00wmWqEuHPMtIQup8BxtMNFo
- gKcb/O7vc2iTW0ksS72fxCSmDrWNqvPogE2jm48oZmlasEN1jzpYd9noMum1byxEx0l/3rsJ3d7
- IGV4q1IWZNUXfyszHlGpSa1qDmktlgBOPDx086x4+aYboU2TMEYnf91DrLhS80fHs/7nlsew2PY
- poESn/lDSfFiFYtrP55E0UCpcal9vhySLAufcDU+tpI/FY06ZWcOk4HtNPtgw011/+rpTsaz1zm
- UYqHRsGB11fO7PFS6vEqhtsGUrfPq/S34OBXUOzpHMDkLtxHExlHEj1ob8Q==
-X-Received: by 2002:a05:6000:26d1:b0:430:f494:6aad with SMTP id
- ffacd0b85a97d-4356996f2damr13625925f8f.2.1768831564071; 
- Mon, 19 Jan 2026 06:06:04 -0800 (PST)
-X-Received: by 2002:a05:6000:26d1:b0:430:f494:6aad with SMTP id
- ffacd0b85a97d-4356996f2damr13625859f8f.2.1768831563547; 
- Mon, 19 Jan 2026 06:06:03 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43569926648sm24210514f8f.10.2026.01.19.06.06.02
+ AJvYcCXM6laTDCJzZAyaa0SIjKp0drDdUNXulBqrKAFjfBEU3Z4irheV4PbpLl2/QnXrZhYLXoecYhvFbQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzSBZoHY8i/Y0BQLXUktrV5tuhfoEAWnbTa6V9J0wkq865lz5dX
+ MfA2LLp1+cg9BC7ibTxKU7NnWvKrgm2JP+uk1ChCjAqw7tb3vCmOQEcMyDevaKjCmhs=
+X-Gm-Gg: AY/fxX6E0stC6qgJ/1i4ZriM0IvG5xLbADvxJ5zmAzPMRFfPfMI5kltaHd+NrV/F7XM
+ tqg/6Gg+OotglflEp5qvLGvBdBxQW3RMybnvMm/gJUvXgs3R8tRJqwcu0c3pX2a2/FqZHVZdqXi
+ Sdhustg/cy58VnWW6RAhMs7l+0FVygqS4yb6IYTi9LPB/+LEFtqCmNEbdK0Cv1ePJsLbt/xgRkr
+ RARvaErjwoS2MrsbO4Qs8q2J5taPLCQ+ykMXI4aZJPWd3RVgb5PJRkLrTdS6HNfbYSS3TktPdpo
+ OX6BPpy8SUHucuBFqQRwRf6sxnVGg2N66YGje8B2hWAl0OtYfzk2+NLhkbRhycNaKxKE1MzuSJe
+ L3zKIbrd9pS8/a8b/lOPPiQsGidI3dNjkWXlBUfHZ2IQQiRTwBePLoFTG+2/uJ6EpYi4u81pWCQ
+ UEAQBrQw+zp4ziwM+44PKsvSWqjdTDMNaQK77HXvH0JJRB+xDEgJBsXaVcm875hc9Z
+X-Received: by 2002:a05:600c:310c:b0:47e:e20e:bbb2 with SMTP id
+ 5b1f17b1804b1-4801eaadcc0mr133159705e9.7.1768831772723; 
+ Mon, 19 Jan 2026 06:09:32 -0800 (PST)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4801fe47dddsm81031305e9.13.2026.01.19.06.09.31
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Jan 2026 06:06:03 -0800 (PST)
-Message-ID: <45e53597-9117-4d68-b7e5-d80e5f28bc12@redhat.com>
-Date: Mon, 19 Jan 2026 15:06:01 +0100
+ Mon, 19 Jan 2026 06:09:32 -0800 (PST)
+Message-ID: <82fd0099-8041-43c2-9c4e-94c9f0398fac@linaro.org>
+Date: Mon, 19 Jan 2026 15:09:30 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 32/36] backends/iommufd: Add get_pasid_info() callback
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, berrange@redhat.com, clg@redhat.com, alex@shazbot.org,
- nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, yi.l.liu@intel.com, kjaju@nvidia.com
-References: <20260111195508.106943-1-skolothumtho@nvidia.com>
- <20260111195508.106943-33-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260111195508.106943-33-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: pmwAEmGXD1OcxuSWm4tmo6Pn_oTLnaS-w7Zebso3uMc_1768831564
-X-Mimecast-Originator: redhat.com
+Subject: Re: [RFC v8 0/7] hw/misc: Introduce a generalized IOMMU test framework
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, eric.auger@redhat.com,
+ Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini <pbonzini@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>,
+ CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
+References: <20251224034647.2596434-1-tangtao1634@phytium.com.cn>
+ <6d50c3fe-e235-48e8-b461-fe0689f12070@phytium.com.cn>
+ <9fba7ded-d31d-4789-b83d-efcc96f5448e@linaro.org>
+ <10e1b40c-2edd-400f-8c8e-e0f3ad4c6f75@redhat.com>
+ <7881bfff-59f0-496f-967e-32a697ff11fb@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <7881bfff-59f0-496f-967e-32a697ff11fb@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x344.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.016,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,94 +111,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 15/1/26 21:56, Pierrick Bouvier wrote:
+> On 1/15/26 9:47 AM, Eric Auger wrote:
+>> Hi Pierrick,
+>>
+>> On 1/15/26 12:39 AM, Pierrick Bouvier wrote:
+>>> On 1/14/26 5:30 AM, Tao Tang wrote:
+>>>>
+>>>> A gentle ping on this series. Any further suggestions would be greatly
+>>>> appreciated.
+>>>>
+>>>>
+>>>> Link:
+>>>>
+>>>> https://lore.kernel.org/qemu-devel/20251224034647.2596434-1- 
+>>>> tangtao1634@phytium.com.cn/
+>>>>
+>>>>
+>>>>
+>>>> Best regards,
+>>>>
+>>>> Tao
+>>>>
+>>> This version is in good shape and is ready to be merged.
+>>> Eric, do you feel like merging it, or would you prefer someone else to
+>>> pick it up?
+>>
+>> Peter generally sends the PRs for the vSMMU. Maybe this can also be
+>> taken by qtests maintainers too.
+>>
+>> Thanks
+>>
+>> Eric
+>>>
+>>> Regards,
+>>> Pierrick
+>>>
+>>
+> 
+> Ok, thanks.
+> We really need to help Tao to get this in, as it's really useful and he 
+> put a lot of effort into it, and waiting times between two reviews makes 
+> it probably a bit complicated for him.
 
-
-On 1/11/26 8:53 PM, Shameer Kolothum wrote:
-> The get_pasid_info callback retrieves PASID capability information
-> when the HostIOMMUDevice backend supports it. Currently, only the
-> Linux IOMMUFD backend provides this information.
->
-> This will be used by a subsequent patch to synthesize a PASID
-> capability for vfio-pci devices behind a vIOMMU that supports PASID.
->
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
-> ---
->  backends/iommufd.c                 | 17 +++++++++++++++++
->  include/system/host_iommu_device.h | 15 +++++++++++++++
->  2 files changed, 32 insertions(+)
->
-> diff --git a/backends/iommufd.c b/backends/iommufd.c
-> index 6381f9664b..f1707eadc6 100644
-> --- a/backends/iommufd.c
-> +++ b/backends/iommufd.c
-> @@ -538,11 +538,28 @@ static int hiod_iommufd_get_cap(HostIOMMUDevice *hiod, int cap, Error **errp)
->      }
->  }
->  
-> +static bool hiod_iommufd_get_pasid_info(HostIOMMUDevice *hiod,
-> +                                        PasidInfo *pasid_info)
-> +{
-> +    HostIOMMUDeviceCaps *caps = &hiod->caps;
-> +
-> +    if (!caps->max_pasid_log2) {
-> +        return false;
-> +    }
-> +
-> +    g_assert(pasid_info);
-> +    pasid_info->exec_perm = (caps->hw_caps & IOMMU_HW_CAP_PCI_PASID_EXEC);
-> +    pasid_info->priv_mod = (caps->hw_caps & IOMMU_HW_CAP_PCI_PASID_PRIV);
-> +    pasid_info->max_pasid_log2 = caps->max_pasid_log2;
-> +    return true;
-> +}
-> +
->  static void hiod_iommufd_class_init(ObjectClass *oc, const void *data)
->  {
->      HostIOMMUDeviceClass *hioc = HOST_IOMMU_DEVICE_CLASS(oc);
->  
->      hioc->get_cap = hiod_iommufd_get_cap;
-> +    hioc->get_pasid_info = hiod_iommufd_get_pasid_info;
->  };
->  
->  static const TypeInfo types[] = {
-> diff --git a/include/system/host_iommu_device.h b/include/system/host_iommu_device.h
-> index bfb2b60478..4fbada638f 100644
-> --- a/include/system/host_iommu_device.h
-> +++ b/include/system/host_iommu_device.h
-> @@ -59,6 +59,12 @@ struct HostIOMMUDevice {
->  #endif
->  };
->  
-> +typedef struct PasidInfo {
-> +    bool exec_perm;
-> +    bool priv_mod;
-> +    uint8_t max_pasid_log2;
-> +} PasidInfo;
-> +
->  /**
->   * struct HostIOMMUDeviceClass - The base class for all host IOMMU devices.
->   *
-> @@ -116,6 +122,15 @@ struct HostIOMMUDeviceClass {
->       * @hiod: handle to the host IOMMU device
->       */
->      uint64_t (*get_page_size_mask)(HostIOMMUDevice *hiod);
-> +    /**
-> +     * @get_pasid_info: Return the PASID information associated with the Host
-> +     * IOMMU device.
-> +     *
-> +     * @pasid_info: If success, returns the PASID related information.
-> +     *
-> +     * Returns: true on success, false on failure.
-> +     */
-> +    bool (*get_pasid_info)(HostIOMMUDevice *hiod, PasidInfo *pasid_info);
->  };
->  
->  /*
+Since this series subject starts with 'hw/misc:' I'll queue it via
+my hw-misc tree, thanks all!
 
 

@@ -4,26 +4,26 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9615D29C41
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 16:12:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 010D2D29C43
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 16:12:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vhrqz-0005ZQ-5N; Mon, 19 Jan 2026 11:11:45 -0500
+	id 1vhrqx-0005YE-Mh; Mon, 19 Jan 2026 11:11:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vhrqv-0005WW-E9; Mon, 19 Jan 2026 11:11:41 -0500
+ id 1vhrqt-0005VI-F0; Mon, 19 Jan 2026 11:11:39 -0500
 Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vhrqt-00028s-6o; Mon, 19 Jan 2026 11:11:41 -0500
+ id 1vhrqp-00026x-AL; Mon, 19 Jan 2026 11:11:39 -0500
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwAH6CS0V25panw4Aw--.48494S2;
- Tue, 20 Jan 2026 00:11:32 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwDHzJitV25pAGoEBg--.4001S2;
+ Tue, 20 Jan 2026 00:11:25 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwCX8O2mV25pCfIUAA--.37135S9;
- Tue, 20 Jan 2026 00:11:31 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAfwCX8O2mV25pCfIUAA--.37135S5;
+ Tue, 20 Jan 2026 00:11:23 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
 To: Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
  Laurent Vivier <lvivier@redhat.com>, Eric Auger <eric.auger@redhat.com>,
@@ -36,21 +36,22 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Mostafa Saleh <smostafa@google.com>,
  CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>,
  Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [RFC v9 6/8] tests/qtest: Add libqos iommu-testdev helpers
-Date: Tue, 20 Jan 2026 00:11:10 +0800
-Message-Id: <20260119161112.3841386-7-tangtao1634@phytium.com.cn>
+Subject: [RFC v9 2/8] hw/arm/smmuv3-common: Define STE/CD fields via
+ registerfields
+Date: Tue, 20 Jan 2026 00:11:06 +0800
+Message-Id: <20260119161112.3841386-3-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260119161112.3841386-1-tangtao1634@phytium.com.cn>
 References: <20260119161112.3841386-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwCX8O2mV25pCfIUAA--.37135S9
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAABWltPrkFLgAAss
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
+X-CM-TRANSID: AQAAfwCX8O2mV25pCfIUAA--.37135S5
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAABWltPrkFJgAAsk
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxtw4DuF4fZFyDKFWfJrW3trb_yoW7Zr1fpF
- 1Uuayag3yxGF4fGrn3Gw10yw1rtr4kAF17uryfGas3ZrWxZry8Jr9rKFyY9r9rX3yUZF1r
- Zan0vFZ5WF1rZaDanT9S1TB71UUUUUJqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoW3XrWfKw4UCF4UAFW7ZrWkWFg_yoW3tw1rpF
+ 1xCa4vg398WF4xCwn5tr45GrsxZws2yw1fJry7KrWxG3ZxG3s7Z3s2gFW5tF1Uurs5Z3W3
+ ursa93y5WFnIyrDanT9S1TB71UUUUjUqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
 Received-SPF: pass client-ip=129.150.39.64;
@@ -77,190 +78,214 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce a libqos helper module for the iommu-testdev
-device used by qtests. This module provides some common functions to
-all IOMMU test cases using iommu-testdev.
+Switch STE/CD bitfield definitions and accessors to the
+'registerfields.h' REG/FIELD API.
 
-Wire the new sources into tests/qtest/libqos/meson.build so
-they are built as part of the qtest support library.
+FOLLOW-UP: Fix CTXPTR_HI/S2TTB_HI/TTB0_HI/TTB1_HI high bits width
+(should be 24 bits, not 16).
 
 Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 ---
- MAINTAINERS                            |  5 ++
- tests/qtest/libqos/meson.build         |  3 +
- tests/qtest/libqos/qos-iommu-testdev.c | 82 ++++++++++++++++++++++++++
- tests/qtest/libqos/qos-iommu-testdev.h | 43 ++++++++++++++
- 4 files changed, 133 insertions(+)
- create mode 100644 tests/qtest/libqos/qos-iommu-testdev.c
- create mode 100644 tests/qtest/libqos/qos-iommu-testdev.h
+ include/hw/arm/smmuv3-common.h | 169 +++++++++++++++++++++++----------
+ 1 file changed, 120 insertions(+), 49 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 1abfec594f..ee8f6eb3af 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3578,6 +3578,11 @@ F: docs/devel/testing/qtest.rst
- X: tests/qtest/bios-tables-test*
- X: tests/qtest/migration-*
+diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
+index 9da817f41a..6b48b5414d 100644
+--- a/include/hw/arm/smmuv3-common.h
++++ b/include/hw/arm/smmuv3-common.h
+@@ -11,6 +11,8 @@
+ #ifndef HW_ARM_SMMUV3_COMMON_H
+ #define HW_ARM_SMMUV3_COMMON_H
  
-+QTest IOMMU helpers
-+M: Tao Tang <tangtao1634@phytium.com.cn>
-+S: Maintained
-+F: tests/qtest/libqos/qos-iommu*
++#include "hw/core/registerfields.h"
 +
- Device Fuzzing
- M: Alexander Bulekov <alxndr@bu.edu>
- R: Paolo Bonzini <pbonzini@redhat.com>
-diff --git a/tests/qtest/libqos/meson.build b/tests/qtest/libqos/meson.build
-index 1ddaf7b095..9805d63a29 100644
---- a/tests/qtest/libqos/meson.build
-+++ b/tests/qtest/libqos/meson.build
-@@ -60,6 +60,9 @@ libqos_srcs = files(
-         'x86_64_pc-machine.c',
-         'riscv-virt-machine.c',
-         'loongarch-virt-machine.c',
-+
-+        # SMMU:
-+        'qos-iommu-testdev.c',
- )
+ /* Configuration Data */
  
- if have_virtfs
-diff --git a/tests/qtest/libqos/qos-iommu-testdev.c b/tests/qtest/libqos/qos-iommu-testdev.c
-new file mode 100644
-index 0000000000..91718a5673
---- /dev/null
-+++ b/tests/qtest/libqos/qos-iommu-testdev.c
-@@ -0,0 +1,82 @@
-+/*
-+ * IOMMU test device helpers for libqos qtests
-+ *
-+ * Copyright (c) 2026 Phytium Technology
-+ *
-+ * Author:
-+ *  Tao Tang <tangtao1634@phytium.com.cn>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
+ /* STE Level 1 Descriptor */
+@@ -35,63 +37,132 @@ typedef struct CD {
+ 
+ /* STE fields */
+ 
+-#define STE_VALID(x)   extract32((x)->word[0], 0, 1)
++REG32(STE_0, 0)
++    FIELD(STE_0, VALID, 0, 1)
++    FIELD(STE_0, CONFIG, 1, 3)
++    FIELD(STE_0, S1FMT, 4, 2)
++    FIELD(STE_0, CTXPTR_LO, 6, 26)
++REG32(STE_1, 4)
++    FIELD(STE_1, CTXPTR_HI, 0, 16)
++    FIELD(STE_1, S1CDMAX, 27, 5)
++REG32(STE_2, 8)
++    FIELD(STE_2, S1STALLD, 27, 1)
++    FIELD(STE_2, EATS, 28, 2)
++    FIELD(STE_2, STRW, 30, 2)
++REG32(STE_4, 16)
++    FIELD(STE_4, S2VMID, 0, 16)
++REG32(STE_5, 20)
++    FIELD(STE_5, S2T0SZ, 0, 6)
++    FIELD(STE_5, S2SL0, 6, 2)
++    FIELD(STE_5, S2TG, 14, 2)
++    FIELD(STE_5, S2PS, 16, 3)
++    FIELD(STE_5, S2AA64, 19, 1)
++    FIELD(STE_5, S2ENDI, 20, 1)
++    FIELD(STE_5, S2AFFD, 21, 1)
++    FIELD(STE_5, S2HD, 23, 1)
++    FIELD(STE_5, S2HA, 24, 1)
++    FIELD(STE_5, S2S, 25, 1)
++    FIELD(STE_5, S2R, 26, 1)
++REG32(STE_6, 24)
++    FIELD(STE_6, S2TTB_LO, 4, 28)
++REG32(STE_7, 28)
++    FIELD(STE_7, S2TTB_HI, 0, 16)
 +
-+#include "qemu/osdep.h"
-+#include "../libqtest.h"
-+#include "pci.h"
-+#include "qos-iommu-testdev.h"
++/* Get STE fields */
++#define STE_VALID(x)      FIELD_EX32((x)->word[0], STE_0, VALID)
++#define STE_CONFIG(x)     FIELD_EX32((x)->word[0], STE_0, CONFIG)
++#define STE_S1FMT(x)      FIELD_EX32((x)->word[0], STE_0, S1FMT)
++#define STE_CTXPTR(x)                                               \
++    (((uint64_t)FIELD_EX32((x)->word[0], STE_0, CTXPTR_LO) << 6) |  \
++     ((uint64_t)FIELD_EX32((x)->word[1], STE_1, CTXPTR_HI) << 32))
++#define STE_S1CDMAX(x)    FIELD_EX32((x)->word[1], STE_1, S1CDMAX)
++#define STE_S1STALLD(x)   FIELD_EX32((x)->word[2], STE_2, S1STALLD)
++#define STE_EATS(x)       FIELD_EX32((x)->word[2], STE_2, EATS)
++#define STE_STRW(x)       FIELD_EX32((x)->word[2], STE_2, STRW)
++#define STE_S2VMID(x)     FIELD_EX32((x)->word[4], STE_4, S2VMID)
++#define STE_S2T0SZ(x)     FIELD_EX32((x)->word[5], STE_5, S2T0SZ)
++#define STE_S2SL0(x)      FIELD_EX32((x)->word[5], STE_5, S2SL0)
++#define STE_S2TG(x)       FIELD_EX32((x)->word[5], STE_5, S2TG)
++#define STE_S2PS(x)       FIELD_EX32((x)->word[5], STE_5, S2PS)
++#define STE_S2AA64(x)     FIELD_EX32((x)->word[5], STE_5, S2AA64)
++#define STE_S2ENDI(x)     FIELD_EX32((x)->word[5], STE_5, S2ENDI)
++#define STE_S2AFFD(x)     FIELD_EX32((x)->word[5], STE_5, S2AFFD)
++#define STE_S2HD(x)       FIELD_EX32((x)->word[5], STE_5, S2HD)
++#define STE_S2HA(x)       FIELD_EX32((x)->word[5], STE_5, S2HA)
++#define STE_S2S(x)        FIELD_EX32((x)->word[5], STE_5, S2S)
++#define STE_S2R(x)        FIELD_EX32((x)->word[5], STE_5, S2R)
++#define STE_S2TTB(x)                                                \
++    (((uint64_t)FIELD_EX32((x)->word[6], STE_6, S2TTB_LO) << 4) |   \
++     ((uint64_t)FIELD_EX32((x)->word[7], STE_7, S2TTB_HI) << 32))
+ 
+-#define STE_CONFIG(x)  extract32((x)->word[0], 1, 3)
+ #define STE_CFG_S1_ENABLED(config) (config & 0x1)
+ #define STE_CFG_S2_ENABLED(config) (config & 0x2)
+ #define STE_CFG_ABORT(config)      (!(config & 0x4))
+ #define STE_CFG_BYPASS(config)     (config == 0x4)
+ 
+-#define STE_S1FMT(x)       extract32((x)->word[0], 4 , 2)
+-#define STE_S1CDMAX(x)     extract32((x)->word[1], 27, 5)
+-#define STE_S1STALLD(x)    extract32((x)->word[2], 27, 1)
+-#define STE_EATS(x)        extract32((x)->word[2], 28, 2)
+-#define STE_STRW(x)        extract32((x)->word[2], 30, 2)
+-#define STE_S2VMID(x)      extract32((x)->word[4], 0 , 16)
+-#define STE_S2T0SZ(x)      extract32((x)->word[5], 0 , 6)
+-#define STE_S2SL0(x)       extract32((x)->word[5], 6 , 2)
+-#define STE_S2TG(x)        extract32((x)->word[5], 14, 2)
+-#define STE_S2PS(x)        extract32((x)->word[5], 16, 3)
+-#define STE_S2AA64(x)      extract32((x)->word[5], 19, 1)
+-#define STE_S2ENDI(x)      extract32((x)->word[5], 20, 1)
+-#define STE_S2AFFD(x)      extract32((x)->word[5], 21, 1)
+-#define STE_S2HD(x)        extract32((x)->word[5], 23, 1)
+-#define STE_S2HA(x)        extract32((x)->word[5], 24, 1)
+-#define STE_S2S(x)         extract32((x)->word[5], 25, 1)
+-#define STE_S2R(x)         extract32((x)->word[5], 26, 1)
+-
+-#define STE_CTXPTR(x)                                   \
+-    ((extract64((x)->word[1], 0, 16) << 32) |           \
+-     ((x)->word[0] & 0xffffffc0))
+-
+-#define STE_S2TTB(x)                                    \
+-    ((extract64((x)->word[7], 0, 16) << 32) |           \
+-     ((x)->word[6] & 0xfffffff0))
+-
+ /* CD fields */
+ 
+-#define CD_VALID(x)   extract32((x)->word[0], 31, 1)
+-#define CD_ASID(x)    extract32((x)->word[1], 16, 16)
+-#define CD_TTB(x, sel)                                          \
+-    ((extract64((x)->word[(sel) * 2 + 3], 0, 19) << 32) |       \
+-     ((x)->word[(sel) * 2 + 2] & ~0xfULL))
+-
+-#define CD_HAD(x, sel)   extract32((x)->word[(sel) * 2 + 2], 1, 1)
+-
+-#define CD_TSZ(x, sel)   extract32((x)->word[0], (16 * (sel)) + 0, 6)
+-#define CD_TG(x, sel)    extract32((x)->word[0], (16 * (sel)) + 6, 2)
+-#define CD_EPD(x, sel)   extract32((x)->word[0], (16 * (sel)) + 14, 1)
+-#define CD_ENDI(x)       extract32((x)->word[0], 15, 1)
+-#define CD_IPS(x)        extract32((x)->word[1], 0 , 3)
+-#define CD_AFFD(x)       extract32((x)->word[1], 3 , 1)
+-#define CD_TBI(x)        extract32((x)->word[1], 6 , 2)
+-#define CD_HD(x)         extract32((x)->word[1], 10 , 1)
+-#define CD_HA(x)         extract32((x)->word[1], 11 , 1)
+-#define CD_S(x)          extract32((x)->word[1], 12, 1)
+-#define CD_R(x)          extract32((x)->word[1], 13, 1)
+-#define CD_A(x)          extract32((x)->word[1], 14, 1)
+-#define CD_AARCH64(x)    extract32((x)->word[1], 9 , 1)
++REG32(CD_0, 0)
++    FIELD(CD_0, TSZ0, 0, 6)
++    FIELD(CD_0, TG0, 6, 2)
++    FIELD(CD_0, EPD0, 14, 1)
++    FIELD(CD_0, ENDI, 15, 1)
++    FIELD(CD_0, TSZ1, 16, 6)
++    FIELD(CD_0, TG1, 22, 2)
++    FIELD(CD_0, EPD1, 30, 1)
++    FIELD(CD_0, VALID, 31, 1)
++REG32(CD_1, 4)
++    FIELD(CD_1, IPS, 0, 3)
++    FIELD(CD_1, AFFD, 3, 1)
++    FIELD(CD_1, TBI, 6, 2)
++    FIELD(CD_1, AARCH64, 9, 1)
++    FIELD(CD_1, HD, 10, 1)
++    FIELD(CD_1, HA, 11, 1)
++    FIELD(CD_1, S, 12, 1)
++    FIELD(CD_1, R, 13, 1)
++    FIELD(CD_1, A, 14, 1)
++    FIELD(CD_1, ASID, 16, 16)
++REG32(CD_2, 8)
++    FIELD(CD_2, HAD0, 1, 1)
++    FIELD(CD_2, TTB0_LO, 4, 28)
++REG32(CD_3, 12)
++    FIELD(CD_3, TTB0_HI, 0, 19)
++REG32(CD_4, 16)
++    FIELD(CD_4, HAD1, 1, 1)
++    FIELD(CD_4, TTB1_LO, 4, 28)
++REG32(CD_5, 20)
++    FIELD(CD_5, TTB1_HI, 0, 19)
 +
-+uint32_t qos_iommu_testdev_trigger_dma(QPCIDevice *dev, QPCIBar bar,
-+                                       uint64_t iova, uint64_t gpa,
-+                                       uint32_t len, uint32_t attrs)
-+{
-+    uint32_t result = ITD_DMA_RESULT_BUSY;
-+
-+    qpci_io_writel(dev, bar, ITD_REG_DMA_GVA_LO, (uint32_t)iova);
-+    qpci_io_writel(dev, bar, ITD_REG_DMA_GVA_HI, (uint32_t)(iova >> 32));
-+    qpci_io_writel(dev, bar, ITD_REG_DMA_GPA_LO, (uint32_t)gpa);
-+    qpci_io_writel(dev, bar, ITD_REG_DMA_GPA_HI, (uint32_t)(gpa >> 32));
-+    qpci_io_writel(dev, bar, ITD_REG_DMA_LEN, len);
-+    qpci_io_writel(dev, bar, ITD_REG_DMA_ATTRS, attrs);
-+
-+    qpci_io_writel(dev, bar, ITD_REG_DMA_DBELL, ITD_DMA_DBELL_ARM);
-+    qpci_io_readl(dev, bar, ITD_REG_DMA_TRIGGERING);
-+
-+    for (int i = 0; i < 1000; i++) {
-+        result = qpci_io_readl(dev, bar, ITD_REG_DMA_RESULT);
-+        if (result != ITD_DMA_RESULT_BUSY) {
-+            break;
-+        }
-+        g_usleep(1000);
-+    }
-+
-+    if (result == ITD_DMA_RESULT_BUSY) {
-+        return ITD_DMA_ERR_TX_FAIL;
-+    }
-+
-+    return result;
-+}
-+
-+void qos_iommu_testdev_single_translation(const QOSIOMMUTestdevDmaCfg *dma,
-+                                          void *opaque,
-+                                          QOSIOMMUTestdevSetupFn setup_fn,
-+                                          QOSIOMMUTestdevAttrsFn attrs_fn,
-+                                          QOSIOMMUTestdevValidateFn validate_fn,
-+                                          QOSIOMMUTestdevReportFn report_fn,
-+                                          uint32_t *dma_result_out)
-+{
-+    uint32_t config_result;
-+    uint32_t dma_result;
-+    uint32_t attrs_val;
-+
-+    g_assert(dma);
-+    g_assert(setup_fn);
-+    g_assert(attrs_fn);
-+
-+    config_result = setup_fn(opaque);
-+    g_assert_cmpuint(config_result, ==, 0);
-+
-+    attrs_val = attrs_fn(opaque);
-+    dma_result = qos_iommu_testdev_trigger_dma(dma->dev, dma->bar,
-+                                               dma->iova, dma->gpa,
-+                                               dma->len, attrs_val);
-+    if (dma_result_out) {
-+        *dma_result_out = dma_result;
-+    }
-+
-+    if (report_fn) {
-+        report_fn(opaque, dma_result);
-+    }
-+
-+    if (validate_fn) {
-+        g_assert_true(validate_fn(opaque));
-+    }
-+}
-diff --git a/tests/qtest/libqos/qos-iommu-testdev.h b/tests/qtest/libqos/qos-iommu-testdev.h
-new file mode 100644
-index 0000000000..3713b89ea4
---- /dev/null
-+++ b/tests/qtest/libqos/qos-iommu-testdev.h
-@@ -0,0 +1,43 @@
-+/*
-+ * IOMMU test device helpers for libqos qtests
-+ *
-+ * Copyright (c) 2026 Phytium Technology
-+ *
-+ * Author:
-+ *  Tao Tang <tangtao1634@phytium.com.cn>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef QTEST_LIBQOS_IOMMU_TESTDEV_H
-+#define QTEST_LIBQOS_IOMMU_TESTDEV_H
-+
-+#include "pci.h"
-+#include "hw/misc/iommu-testdev.h"
-+
-+typedef uint32_t (*QOSIOMMUTestdevSetupFn)(void *opaque);
-+typedef uint32_t (*QOSIOMMUTestdevAttrsFn)(void *opaque);
-+typedef bool (*QOSIOMMUTestdevValidateFn)(void *opaque);
-+typedef void (*QOSIOMMUTestdevReportFn)(void *opaque, uint32_t dma_result);
-+
-+typedef struct QOSIOMMUTestdevDmaCfg {
-+    QPCIDevice *dev;
-+    QPCIBar bar;
-+    uint64_t iova;
-+    uint64_t gpa;
-+    uint32_t len;
-+} QOSIOMMUTestdevDmaCfg;
-+
-+uint32_t qos_iommu_testdev_trigger_dma(QPCIDevice *dev, QPCIBar bar,
-+                                       uint64_t iova, uint64_t gpa,
-+                                       uint32_t len, uint32_t attrs);
-+
-+void qos_iommu_testdev_single_translation(const QOSIOMMUTestdevDmaCfg *dma,
-+                                          void *opaque,
-+                                          QOSIOMMUTestdevSetupFn setup_fn,
-+                                          QOSIOMMUTestdevAttrsFn attrs_fn,
-+                                          QOSIOMMUTestdevValidateFn validate_fn,
-+                                          QOSIOMMUTestdevReportFn report_fn,
-+                                          uint32_t *dma_result_out);
-+
-+#endif /* QTEST_LIBQOS_IOMMU_TESTDEV_H */
++/* Get CD fields */
++#define CD_TSZ(x, sel)   ((sel) ?          \
++    FIELD_EX32((x)->word[0], CD_0, TSZ1) : \
++    FIELD_EX32((x)->word[0], CD_0, TSZ0))
++#define CD_TG(x, sel)    ((sel) ?          \
++    FIELD_EX32((x)->word[0], CD_0, TG1) :  \
++    FIELD_EX32((x)->word[0], CD_0, TG0))
++#define CD_EPD(x, sel)   ((sel) ?          \
++    FIELD_EX32((x)->word[0], CD_0, EPD1) : \
++    FIELD_EX32((x)->word[0], CD_0, EPD0))
++#define CD_ENDI(x)       FIELD_EX32((x)->word[0], CD_0, ENDI)
++#define CD_VALID(x)      FIELD_EX32((x)->word[0], CD_0, VALID)
++#define CD_IPS(x)        FIELD_EX32((x)->word[1], CD_1, IPS)
++#define CD_AFFD(x)       FIELD_EX32((x)->word[1], CD_1, AFFD)
++#define CD_TBI(x)        FIELD_EX32((x)->word[1], CD_1, TBI)
++#define CD_AARCH64(x)    FIELD_EX32((x)->word[1], CD_1, AARCH64)
++#define CD_HD(x)         FIELD_EX32((x)->word[1], CD_1, HD)
++#define CD_HA(x)         FIELD_EX32((x)->word[1], CD_1, HA)
++#define CD_S(x)          FIELD_EX32((x)->word[1], CD_1, S)
++#define CD_R(x)          FIELD_EX32((x)->word[1], CD_1, R)
++#define CD_A(x)          FIELD_EX32((x)->word[1], CD_1, A)
++#define CD_ASID(x)       FIELD_EX32((x)->word[1], CD_1, ASID)
++#define CD_HAD(x, sel)   ((sel) ?                                         \
++    FIELD_EX32((x)->word[4], CD_4, HAD1) :                                \
++    FIELD_EX32((x)->word[2], CD_2, HAD0))
++#define CD_TTB(x, sel)                                                    \
++    ((sel) ? (((uint64_t)FIELD_EX32((x)->word[5], CD_5, TTB1_HI) << 32) | \
++              ((uint64_t)FIELD_EX32((x)->word[4], CD_4, TTB1_LO) << 4)) : \
++             (((uint64_t)FIELD_EX32((x)->word[3], CD_3, TTB0_HI) << 32) | \
++              ((uint64_t)FIELD_EX32((x)->word[2], CD_2, TTB0_LO) << 4)))
+ 
+ /* MMIO Registers */
+ 
 -- 
 2.34.1
 

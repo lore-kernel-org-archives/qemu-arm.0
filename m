@@ -4,86 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23766CA600D
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 08:18:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 785AFCCF2C5
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 08:37:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vhkSl-0004iN-1a; Mon, 19 Jan 2026 03:18:15 -0500
+	id 1vhkkm-0007X5-1N; Mon, 19 Jan 2026 03:36:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhangfei.gao@linaro.org>)
- id 1vhkST-0004bh-QK
- for qemu-arm@nongnu.org; Mon, 19 Jan 2026 03:17:59 -0500
-Received: from mail-lj1-x235.google.com ([2a00:1450:4864:20::235])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <zhangfei.gao@linaro.org>)
- id 1vhkSQ-0001NK-R4
- for qemu-arm@nongnu.org; Mon, 19 Jan 2026 03:17:56 -0500
-Received: by mail-lj1-x235.google.com with SMTP id
- 38308e7fff4ca-38301bf7864so43511471fa.0
- for <qemu-arm@nongnu.org>; Mon, 19 Jan 2026 00:17:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768810672; x=1769415472; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=p2gpQ3rF1sUTzlmS/B3wJsIxT8D9IIdKIdjdwD5Xcmo=;
- b=GitOCYvhPZTvTBvHQAYQ3X+GZNTdq/WNobdWdjch2HXLE3rpvUPcIDIFOo/iNnJens
- zOhiPW3LDABwYJqLZre42GXBlgmG6Y4xy2jh1CWSABctg8bicAGD1af6n6zaaohD9N3U
- dUiAgi1oBe8yjGcaOaAPC9qsXpVn76f3q7IYH6JocTt8KGLcoaEaxPaU9+oBTLT8fDAf
- HBSCSykgIUGdadBJ22HuMavNvYT0KI/dh5bglSiPbCLKAmgbjDygf5+0eAG1MUpmbHb4
- w2ZSzOZFdvtl8kMNDLF80Oq4QH5p14JFFRkdZOhtqb5o8+MrCxhYr4SzJtV4QqTu6JHO
- ptLw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768810672; x=1769415472;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=p2gpQ3rF1sUTzlmS/B3wJsIxT8D9IIdKIdjdwD5Xcmo=;
- b=g+WmAK1d9uYK4O1vFZ9OzCIJ4O/qG6fSPBGGGrhtwI6hHL5AIFY2+IXJ63XBeWofgV
- 7ZViqzVXotwEb5k95SjLUQSWsns7FuoBWON+ewXieVPtMmbl0fnWaOxjV073gVhv0ZHw
- 8MXRS/gay7He5MJEylqMhoQs10ipIPjVw6hpJy0vvUGwS07l6RR3QI8GeiqSe9xUmzrm
- nDEkW2p4SL6/wymb9lairG6S5AYL5mrUbG9i0tcT9EOP8z7XKm51ghm2AE+3s5hp6LlR
- BUQ9Nz8j1sY41Ivq095oI+xRjyLK8TjQxL7dPls35cyAQZEe/0FvJLAL2hLI/qIskzHa
- 0Dtw==
-X-Gm-Message-State: AOJu0YxPlXWP2bKwXJ8HbWidgD3c9gfePrvnLyxDKzYfZqmzgrnAyk4Y
- xnBKSpOXZb678U3N3OUMsIszDr56vPoUtdeDGEfpUQbnnm4g13gybuCWKO3PXfY0ts6aTgyR1GG
- 1Uqp+c1RAtM82vkiJuXD8QnDQll7+hWcDuRtprR7cUw==
-X-Gm-Gg: AY/fxX4t/FFEqZFiTlIuUbOpHrQFEOX7SJNvRi7rFtNZeIghxzssJ6ymNOHHxAyH1RG
- dp6p6+sOyiRnNKbJlV0PsLiIzxenmH4l8WoNTpHtl89//qVEdc11wRtpjA6EFqYFGXEmC88bucL
- nAYxJ27geHSKcGT1Jbr+Gz2/P1u3PsQibC5Kd0L9Ykr5J/kHWZL7PjSCmXAJmKuzHjb3SakVqdO
- vQoE3IbYtF4iqH8nPcY+qsCKjwZDcjJJesPnWrjSgsgFJkpnzZO7W/Bs2ZtLX2mkos5CQ==
-X-Received: by 2002:a05:651c:43c9:10b0:383:3f0e:adef with SMTP id
- 38308e7fff4ca-3836ef60220mr41861281fa.1.1768810672122; Mon, 19 Jan 2026
- 00:17:52 -0800 (PST)
-MIME-Version: 1.0
-References: <20260111195508.106943-1-skolothumtho@nvidia.com>
-In-Reply-To: <20260111195508.106943-1-skolothumtho@nvidia.com>
-From: Zhangfei Gao <zhangfei.gao@linaro.org>
-Date: Mon, 19 Jan 2026 16:17:40 +0800
-X-Gm-Features: AZwV_Qh063PZ5KtmJ5jw-3MP97vQQPxXwUHPjeQjPPvzzdGqGcKDgFJCmoicLv4
-Message-ID: <CABQgh9HD=2CJC2n5_h0vwFn3yr3SKbvTJWKGqWBo4ppSFgjj3w@mail.gmail.com>
-Subject: Re: [PATCH v7 00/36] hw/arm/virt: Add support for user-creatable
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vhkkk-0007VX-Dj; Mon, 19 Jan 2026 03:36:50 -0500
+Received: from mail-southcentralusazlp170130001.outbound.protection.outlook.com
+ ([2a01:111:f403:c10c::1] helo=SA9PR02CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vhkki-0005aY-SX; Mon, 19 Jan 2026 03:36:50 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=cLlsRkk4121jZvyg/FWrxWh4h7933HcX4UWUwckh/Nw3fCvHTTvrHYr850BrmsGIxAzhUMHonMUYU4ErjUqXfcSkCAqA22BW+VhPmW8TeBl04ZVtAil2VQgJnZ9n7SEwr3hHDk7MXDp5OYfFMFwGFEuGUKZvaBycHLjzbTYwlryX24UVWZMTAtnwdMfoY5qYfyTVmksZdTtoNeJrCHP1efrncFZ9vQrC3IrN+hNgKGOTEovda2loi2kURzZwMYlzqb8Wok0leMrBs2oqLGuRPWdSpW4FWvvH2l4XdrFMG8BjnVSjhRgCJH+/UWwyNWOMcop02phz2RvaKbPozhGNFA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=VfdfTOPt4MopyJY2T7+G5cCmMV4WTbKjFrUrOEgK+NU=;
+ b=fI1mRjrcJUv52E6pt0blDEntcrGF+MZZUUbDa2wXbFQhZizII/4IrMOmgK6XSqeBa74XqfahEQl9wgsXSvakFmHF2q1PLlzSPIUUgVLZkvNpZNR63ynqgqKH+2/KmvM0VV4xO9KOhLbIfq3pObtU8tgTcq5cgB/uGx6jfvtEoWkns9zWvdgsAhW1NRKWQWWT7NvaX6+wksgVCtEuTrYq5Oj44cso+GURY6oz0xUI0dzsEToynlJ60nhhc1sI0xGFLfn4vltBbU8/BMs/k54nD35VuyVEedR9W5GnJftjE9QW2y8QFxb76lrRIIzaUTRJvBt4ZLdltIhEhTZZH94kLw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=VfdfTOPt4MopyJY2T7+G5cCmMV4WTbKjFrUrOEgK+NU=;
+ b=pH0KtKKIuam/7GyYRJz23mUho/1Q3ZsptsBK8LjYAiEqBsE+wuJ3TAOk9bcmL++I+DUwZzac7ahO4mBQCuT9A7VGGj1U/MTSbrjUcWk3TB7Z5kthsA7WRlGWOeaSLKNTWsRTa+u9FXEUHreZXZsWD8SUoq/PDtfwoHwjjXC8W7H/dPckhwTCwQO+7gXUYBI5ztleDCDh5PmllEErxh+GxUzl0pn7psKBpdBblrhOaVXSdt0CUakmesT+zqdNSKulBLzGgD/7BY+2PM3cajf91ctcuf1LEVzs4Kx1z3NNlhk4N3OxEbfRI6R7BewH1zHsaV3fEDj2Wxh0qDBOVkeykw==
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
+ by CH2PR12MB4152.namprd12.prod.outlook.com (2603:10b6:610:a7::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.12; Mon, 19 Jan
+ 2026 08:36:41 +0000
+Received: from CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
+ ([fe80::b710:d6a1:ab16:76de%5]) with mapi id 15.20.9520.011; Mon, 19 Jan 2026
+ 08:36:41 +0000
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: Zhangfei Gao <zhangfei.gao@linaro.org>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Jason Gunthorpe
+ <jgg@nvidia.com>, Nicolin Chen <nicolinc@nvidia.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+ "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
+ Nathan Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ "smostafa@google.com" <smostafa@google.com>, "wangzhou1@hisilicon.com"
+ <wangzhou1@hisilicon.com>, "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>, 
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, "yi.l.liu@intel.com"
+ <yi.l.liu@intel.com>, Krishnakant Jaju <kjaju@nvidia.com>
+Subject: RE: [PATCH v7 00/36] hw/arm/virt: Add support for user-creatable
  accelerated SMMUv3
-To: Shameer Kolothum <skolothumtho@nvidia.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, eric.auger@redhat.com, 
- peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com, 
- ddutile@redhat.com, berrange@redhat.com, clg@redhat.com, alex@shazbot.org, 
- nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com, 
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com, jonathan.cameron@huawei.com, 
- zhenzhong.duan@intel.com, yi.l.liu@intel.com, kjaju@nvidia.com
-Content-Type: text/plain; charset="UTF-8"
+Thread-Topic: [PATCH v7 00/36] hw/arm/virt: Add support for user-creatable
+ accelerated SMMUv3
+Thread-Index: AQHciRwfDQFIat0mIEueFhGIHGVjs7VZKGWg
+Date: Mon, 19 Jan 2026 08:36:41 +0000
+Message-ID: <CH3PR12MB7548FE8A47AC85B80754C3C8AB88A@CH3PR12MB7548.namprd12.prod.outlook.com>
+References: <20260111195508.106943-1-skolothumtho@nvidia.com>
+ <CABQgh9HD=2CJC2n5_h0vwFn3yr3SKbvTJWKGqWBo4ppSFgjj3w@mail.gmail.com>
+In-Reply-To: <CABQgh9HD=2CJC2n5_h0vwFn3yr3SKbvTJWKGqWBo4ppSFgjj3w@mail.gmail.com>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|CH2PR12MB4152:EE_
+x-ms-office365-filtering-correlation-id: 11b0ca4a-a900-4f21-1a33-08de5735decd
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|376014|7416014|1800799024|38070700021; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?QEDGIJ1zMgeRE4GuowFI1no/boidYKNIzNhIYTpQB9IFFovodvcIMJuNyB7j?=
+ =?us-ascii?Q?ZOqd5fqbRD8IWCbhWckX6OgyaRC2XTMuixCoWOQU4aziR2x5bztHiYc/lUMB?=
+ =?us-ascii?Q?mGrwezSIh6RJojDzM5eycCzAQ7k77wxdvS6/8UyLX+POpRODGKG4CvYBQDqL?=
+ =?us-ascii?Q?Rqi0GEcXBDXBhg6f5QdxATjGg0m1weM53Z/CHN9+7w2gGb9XKL/6ds3+jlOW?=
+ =?us-ascii?Q?YH5curq34GCyFZqvA395PpZIjF87N63kNbdOTLDoOiPEO1FnXs8OvSO7bzRZ?=
+ =?us-ascii?Q?7hr+KFl3XO2G7FbNaeyxxxPvEZdNw51ZgUnYgBn2/0Mqil1bW5qNuJT+HCou?=
+ =?us-ascii?Q?in2kb/Wd5sDiI84RXE2Sg6wooa6uFWeEOGvysM+WOPyKwbiLEJJkVGHJ5p8c?=
+ =?us-ascii?Q?k1hgWsnWdOytR2KprGk/WzXJlPFFhamXxm7h007GAaZAwzL7x04w/f/Dkeml?=
+ =?us-ascii?Q?QR4UsaE9uJ4DUKO93xMwdgDsKWbgg8dPNU3BWLLpBNo5rQkTrRAzXlIdLSPO?=
+ =?us-ascii?Q?h/er/H+0dJECZUGm1xlHMYPEO40+KEglwxMAWxGMQD4g+dHephfavlbua7XP?=
+ =?us-ascii?Q?GpHviqBQp9C7EkE8yh2bDFyylrahavhxT6EHHTQ4wbLC9bxmB3EC8lUPqJRI?=
+ =?us-ascii?Q?RKlJzklGzd7S7cVsILo07j90/rp/Ny5eqRDFw38AtOI9fU2wc0ZNl9vEEEbe?=
+ =?us-ascii?Q?unCLckZ827ZhK9fqdox7Oz3O1QULaD2dK3gazxU00egrdDyLA1tCHaiQbNnI?=
+ =?us-ascii?Q?UaCVObWJslA7de3fwKWa/P4eI81xRt5J5632PjHauNcBcXJoCIw8GtSYCNj7?=
+ =?us-ascii?Q?+PuLM8m246N4q+s2KIvUh19SpD84Xti+laiiK0L7q/BynyhRRl4TLbC8BMWX?=
+ =?us-ascii?Q?hF5mpYyy3Nwt4Om7tr27TSatVJDUn/zXwFmfcotJqGxmesJ/Kkq5eB/lDPKT?=
+ =?us-ascii?Q?NmA10MUAxuLyzve8/4gz7suK4KzdgcZEBUnJqvPTqI6D/5LWlTpN84qBCbqQ?=
+ =?us-ascii?Q?0diSF/A6/DNPFO5J8/PKc7nZQIPdx1j/omgMmtiN+8EFYgUTGpxRKcdQHhY6?=
+ =?us-ascii?Q?Y4bYIqPBdEeVWlIlGuj4BG2mRTmtB5tMWL4vKyyUWGVte5Q4ba2nwelcu8i7?=
+ =?us-ascii?Q?I+FGh+Ydq9uy0MHN73XiL98PHA0VQCcHl7bQ0MQ/iS+/+hebAm4dyzwomva/?=
+ =?us-ascii?Q?FysNwu8j3fX/ki31/glNXxhkmJBlkj4+dH5g00Y3WV94HR4ohHmZnq0fzB1B?=
+ =?us-ascii?Q?HTwm/1K5FWfTFZl8Is9OiSAbzANf+n+NnKLuXOKaStBj4r8Ls9vbZOoaVdia?=
+ =?us-ascii?Q?PnpjRzE/VfW9P4Ot/chIvwQZLH9OCJg9Y0EiebhtK10PZcTUHRwBXUtIQz/w?=
+ =?us-ascii?Q?Jmgg2lfTbBSdPheJcOe4hq+0SiTYOTv3/WOKbdg1bwqO5t1aH6ZXM9ZKE/QS?=
+ =?us-ascii?Q?Q121hbQ0UQK5mrmzQ4XrMGYfqXTozwHMFIocE9j2BIRD7srSH7aPryoBqdLY?=
+ =?us-ascii?Q?xFr0w6ISirRS7xkPCHj5komx53pBdrfnCNGrmsziw5mO+yhDVL5ruKpl57/v?=
+ =?us-ascii?Q?1dOB8TDhSBXNvrlkf6g2gOLveI2JX3ywY1G7P195c47gtJZitrQ4VD9vMDyL?=
+ =?us-ascii?Q?BvIeYfwbpz5dmyeaHS7XGpI=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(376014)(7416014)(1800799024)(38070700021); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?RUyd2mQQTsNOc8Py7m1JnYXei+HVML12IaIkD410yiupe9x6rwtJOtfU5ahX?=
+ =?us-ascii?Q?OvrdYpK40dzaleick7ldcf7o5N5Nj77RgjeEQqZEzfr44FEZr3ijNRNaP08m?=
+ =?us-ascii?Q?dK4RMMNaSNheCDCVFX8ESgz5xpfZhpAKpmtiw0LZDhIM88b7AL3CdgYiWdQd?=
+ =?us-ascii?Q?/ORv4bYBHhD+UE0OiGjBrbN40iTf++2zgLFf/SbrdfRKcT62iqDqGyamNWCO?=
+ =?us-ascii?Q?Haya0fDiapz1GPsh0HPj1JoY7+TLRb9beD57BO69zNPvseZX0nj/eaV9+j5g?=
+ =?us-ascii?Q?yrjL34Wep2jKeG3IE7emxi/QXltISuV+29W0nfmXG7OyjI4+t/jscJr8Vf2k?=
+ =?us-ascii?Q?7h3tdSBA9WEfPwOpyLe0kQlln7Yu71xugZiBi5h/pmt7Tzi6nBGNnXZFCkuK?=
+ =?us-ascii?Q?e0DaQK5Ca/d3x+HIOoY0WTfFKUzlUev7DjvnbnlyBv0VNgWzHXF6spT4xCDW?=
+ =?us-ascii?Q?YIrTwrFTy10V69Jqqx1Qb0WJ3RQc5PZ/6iXQjVzl55+kNjhJLFgXs6PZc7Xf?=
+ =?us-ascii?Q?BOLBKgXSlWHFp5qxxheCoYWq9+854wLVFiV5rIjLS6GqY6jw3fiSdlgJMqmS?=
+ =?us-ascii?Q?JGei6s7Uva2LoczLLiLRi6nctWGhVRC616BV7Pow1X599M+6PHogE/1NwFTo?=
+ =?us-ascii?Q?/SKp7UEON2rIh8zOdlARZG9+E4EXf5lmCOnC2KjIjwvDjPV199+SdaVkeISj?=
+ =?us-ascii?Q?eJnZwciAoU/yPS3I+ClULDAwyK9qWUQgO0gSqennW603OpyR3ifmn5M759Qd?=
+ =?us-ascii?Q?R2OjQtY/AR9tyqKq+s8hQpUwRRa6xQ6Qedr2ZSZooQwEJzwgTjrn/sYVaitH?=
+ =?us-ascii?Q?UlY6N5bcKiW7Mt5SZgwIwVBfHxrEP/Lurpm/IOmoCXUCPFYGKMPTi7ysH8MC?=
+ =?us-ascii?Q?2AozshneWu39kz7I63uvAdF6EZ8X7nqn26pJLAeWtTiq8suVxDqQ92iJTN3o?=
+ =?us-ascii?Q?cXUCezJJAp0AfN30Pbn6pa1gVgPh0RJKi7WKg1YvNN7cfuPt33oRtMATr5lz?=
+ =?us-ascii?Q?HRItsi8xSZKmSTg9664Uvp4TbVJtYYXn8nK3oRPn+tdpqcu5MvH45LvfwpV+?=
+ =?us-ascii?Q?vdR3bgxNZpzKeTQJd3E8cMEWp71syIrWm/uIVoYfTIFwuiZjTAkLGlnBqTq2?=
+ =?us-ascii?Q?q740jOCRDQs0Hb/HvGvX1mkkbMGn43ckGDVCy4tdSq118FpgFuADqJxWqG/d?=
+ =?us-ascii?Q?3isBSBrauUeGavKtg8QZft+RNMZsm4w2LQfETR/L7mMopPibvRtnweit462U?=
+ =?us-ascii?Q?MxgyVSZQeGac/PU8msuZTtcM/qVlourNm1ux8M5FoC+HKblB4xHfjfiZ0CTg?=
+ =?us-ascii?Q?aBMnbsgdDGGnBHb8jNAY0IzNLG3dClUJjG8l+6L/WeW12Q3k4bAtvt/EEYKx?=
+ =?us-ascii?Q?AgpCsVkb4dUB9PpKrkmQq4SwBEKUsstO5tDxlF6moB7Jz6jjQzpu6DiHjUfj?=
+ =?us-ascii?Q?vL0Fznbd7m7aRpXKsvGa0BCN4XhhMTUg3RyTSzY7hDIMvk3vPke/HU2LBKrw?=
+ =?us-ascii?Q?Ue4p/mc6QiVt1NeGi4t4ymEz/hUALBv5K9pL9GjRVWtlshq03VVaBf1NQRt3?=
+ =?us-ascii?Q?JAW+uVzRUzZ3Y4rFuAh/mh+Oj9zcF25BZ3+XfvysCifW4tqoqIs3DTcHjTlJ?=
+ =?us-ascii?Q?LNCUm7mLzlUY75i3Z445SDwHyqlTfQq+S6WqJneq1UrX1KPbve57myIXL5uf?=
+ =?us-ascii?Q?vEf4Zwwpkb4NwZSOgqzhM8nFAtC34njOaWc5eLkagf5L+VPBXxj+gl6dt6Of?=
+ =?us-ascii?Q?hU1Bx4P6YQ=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::235;
- envelope-from=zhangfei.gao@linaro.org; helo=mail-lj1-x235.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 11b0ca4a-a900-4f21-1a33-08de5735decd
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Jan 2026 08:36:41.5765 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: i+6FGnQTMZO8L0IPofFSuhZqkYYNzznLHUt8eWH4/OAE8I78V+eZbYSwRr+0Ng4eerqD07xTbeAwI/J4u6yFOg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4152
+Received-SPF: permerror client-ip=2a01:111:f403:c10c::1;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=SA9PR02CU001.outbound.protection.outlook.com
+X-Spam_score_int: 2
+X-Spam_score: 0.2
+X-Spam_bar: /
+X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.077,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=2.399, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,93 +181,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 12 Jan 2026 at 03:55, Shameer Kolothum <skolothumtho@nvidia.com> wr=
-ote:
->
-> Hi,
->
-> Major changes since v6:
->  https://lore.kernel.org/qemu-devel/20251120132213.56581-1-skolothumtho@n=
-vidia.com/
->
->  - Addressed feedback from v6 and picked up R-by tags. Thanks!
->  - Fixed build and compilation issues reported on multiple architectures.
->  - Reworked and introduced a HostIOMMUDeviceClass callback to retrieve
->    pasid info(patch #32)
->  - Added an helper to insert a CAP ID at an offset in PCIe config space
->    (patch #33)
->  - Added an x-vpasid-cap-offset property for vfio-pci devices to allow
->    opt-in synthesis of the PASID capability (patch #35).
->  - Renamed the pasid property to ssidsize (patch #36).
->  - VFIO/IOMMUFD changes depend on Zhenzhong=E2=80=99s pass-through suppor=
-t series,
->    patches 4/5/8 [0].
->
-> Patch organization:
->
-> 1=E2=80=9327: Enable accelerated SMMUv3 with features aligned to the defa=
-ult QEMU
-> SMMUv3 implementation, including IORT RMR-based MSI support.
->
-> 28=E2=80=9330: Add user-configurable options for RIL, ATS, and OAS featur=
-es.
->
-> 31=E2=80=9336: Add PASID support, including required VFIO changes.
->
-> Testing:
->  Basic sanity testing was performed on an NVIDIA Grace platform with GPU
->  device assignment. A CUDA test application was used to validate the SVA
->  use case. Additional testing and feedback are welcome.
->
-> Eg: Qemu Cmd line:
->
-> qemu-system-aarch64 -machine virt,gic-version=3D3,highmem-mmio-size=3D2T =
-\
-> -cpu host -smp cpus=3D4 -m size=3D16G,slots=3D2,maxmem=3D66G -nographic \
-> -bios QEMU_EFI.fd -object iommufd,id=3Diommufd0 -enable-kvm \
-> -object memory-backend-ram,size=3D8G,id=3Dm0 \
-> -object memory-backend-ram,size=3D8G,id=3Dm1 \
-> -numa node,memdev=3Dm0,cpus=3D0-3,nodeid=3D0 -numa node,memdev=3Dm1,nodei=
-d=3D1 \
-> -numa node,nodeid=3D2 -numa node,nodeid=3D3 -numa node,nodeid=3D4 -numa n=
-ode,nodeid=3D5 \
-> -numa node,nodeid=3D6 -numa node,nodeid=3D7 -numa node,nodeid=3D8 -numa n=
-ode,nodeid=3D9 \
-> -device pxb-pcie,id=3Dpcie.1,bus_nr=3D1,bus=3Dpcie.0 \
-> -device arm-smmuv3,primary-bus=3Dpcie.1,id=3Dsmmuv3.0,accel=3Don,ats=3Don=
-,ril=3Doff,ssidsize=3D20,oas=3D48 \
-> -device pcie-root-port,id=3Dpcie.port1,bus=3Dpcie.1,chassis=3D1,pref64-re=
-serve=3D512G,id=3Ddev0 \
-> -device vfio-pci,host=3D0019:06:00.0,rombar=3D0,id=3Ddev0,iommufd=3Diommu=
-fd0,bus=3Dpcie.port1,x-vpasid-cap-offset=3D0xff8 \
-> -object acpi-generic-initiator,id=3Dgi0,pci-dev=3Ddev0,node=3D2 \
-> ...
-> -object acpi-generic-initiator,id=3Dgi7,pci-dev=3Ddev0,node=3D9 \
-> -device pxb-pcie,id=3Dpcie.2,bus_nr=3D8,bus=3Dpcie.0 \
-> -device arm-smmuv3,primary-bus=3Dpcie.2,id=3Dsmmuv3.1,accel=3Don,ats=3Don=
-,ril=3Doff,ssidsize=3D20,oas=3D48 \
-> -device pcie-root-port,id=3Dpcie.port2,bus=3Dpcie.2,chassis=3D2,pref64-re=
-serve=3D512G \
-> -device vfio-pci,host=3D0018:06:00.0,rombar=3D0,id=3Ddev1,iommufd=3Diommu=
-fd0,bus=3Dpcie.port2,x-vpasid-cap-offset=3D0xff8 \
-> -device virtio-blk-device,drive=3Dfs \
-> -drive file=3Dimage.qcow2,index=3D0,media=3Ddisk,format=3Dqcow2,if=3Dnone=
-,id=3Dfs \
-> -net none \
-> -nographic
->
-> A complete branch can be found here,
-> https://github.com/shamiali2008/qemu-master/tree/master-smmuv3-accel-v7-e=
-xt
->
-> Please take a look and let me know your feedback.
 
-Thanks Shameer
 
-The whole series is tested well with Shameer's fix of patch 33.
-Tested-by:  Zhangfei Gao <zhangfei.gao@linaro.org>
+> -----Original Message-----
+> From: Zhangfei Gao <zhangfei.gao@linaro.org>
+> Sent: 19 January 2026 08:18
+> To: Shameer Kolothum <skolothumtho@nvidia.com>
+> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+> eric.auger@redhat.com; peter.maydell@linaro.org; Jason Gunthorpe
+> <jgg@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>;
+> ddutile@redhat.com; berrange@redhat.com; clg@redhat.com;
+> alex@shazbot.org; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
+> <mochs@nvidia.com>; smostafa@google.com; wangzhou1@hisilicon.com;
+> jiangkunkun@huawei.com; jonathan.cameron@huawei.com;
+> zhenzhong.duan@intel.com; yi.l.liu@intel.com; Krishnakant Jaju
+> <kjaju@nvidia.com>
+> Subject: Re: [PATCH v7 00/36] hw/arm/virt: Add support for user-creatable
+> accelerated SMMUv3
 
-https://github.com/Linaro/qemu/tree/master-smmuv3-accel-v7
+[...]
+> >
+> > Please take a look and let me know your feedback.
+>=20
+> Thanks Shameer
+>=20
+> The whole series is tested well with Shameer's fix of patch 33.
+> Tested-by:  Zhangfei Gao <zhangfei.gao@linaro.org>
 
-Thanks
+Many Thanks, Zhangfei!
+
+I will include that fix in v8.
+
+Hi All,
+
+I'm planning to respin this later this week, incorporating the fix
+mentioned above and the other feedback received so far. Please take
+a look and let me know if there are any further suggestions. I believe
+the series is in good shape now and would like it to go into the
+11.0 window.
+
+Thanks,
+Shameer
 

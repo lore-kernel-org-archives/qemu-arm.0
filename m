@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8A38D29C4F
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 17:28:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55ABFD29C4F
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 17:28:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vht2c-0001Am-JQ; Mon, 19 Jan 2026 12:27:50 -0500
+	id 1vht2g-0001Or-Ot; Mon, 19 Jan 2026 12:27:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vht2Z-00011r-RX
- for qemu-arm@nongnu.org; Mon, 19 Jan 2026 12:27:47 -0500
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vht2f-0001Kl-7Q
+ for qemu-arm@nongnu.org; Mon, 19 Jan 2026 12:27:53 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vht2Y-000092-8u
- for qemu-arm@nongnu.org; Mon, 19 Jan 2026 12:27:47 -0500
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vht2d-0000BO-Qr
+ for qemu-arm@nongnu.org; Mon, 19 Jan 2026 12:27:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768843665;
+ s=mimecast20190719; t=1768843671;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=I9oUB9ONJfwCSwp9vRpulE30gQM7Lcw40drktSGZgXY=;
- b=ZBFkQ+LoCLu+INsnLWbvBXG8YGuUh40bMHz/cWzEp57pQ+nBLxV5I0tlKpp76cH16l+Tnv
- rffAufC9wJd8j0MWRmLUuYVRQ/OkUAayv3AB77vS5vqgyrusjuHnfiYp1MLwXoDKRZWNRI
- uuzJIrliSNcKFnPU2m6mNoVr4L9PpYI=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=aPvnPaaK0u+4ohUVkIOSAe2b7NOHsNsQPRfXZZ57nGg=;
+ b=YgSUXwJidVfEr25xInx2RoLlYr3ns0TI7Vcx/VAaHXorerwAYGYGaj9/oUG/QIBwY9KVG+
+ tMlXxx0h4NAtMQUK9guAZ6PaUmplVYG0e/dFFuKSnFY/+4nzdimDM2fKl5HaPzo61WZ4ci
+ yWyIyFqNFCXFlUDIgMVA5S+e2AM0LsI=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-125-aBfBevRMMbiJd-4kk6SmTA-1; Mon,
- 19 Jan 2026 12:27:42 -0500
-X-MC-Unique: aBfBevRMMbiJd-4kk6SmTA-1
-X-Mimecast-MFC-AGG-ID: aBfBevRMMbiJd-4kk6SmTA_1768843661
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-349-3vyIL3JZNGqiYUmB6tx-Qw-1; Mon,
+ 19 Jan 2026 12:27:46 -0500
+X-MC-Unique: 3vyIL3JZNGqiYUmB6tx-Qw-1
+X-Mimecast-MFC-AGG-ID: 3vyIL3JZNGqiYUmB6tx-Qw_1768843665
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 13C5618003FD; Mon, 19 Jan 2026 17:27:41 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E28C71956046; Mon, 19 Jan 2026 17:27:44 +0000 (UTC)
 Received: from gondolin.str.redhat.com (dhcp-192-210.str.redhat.com
  [10.33.192.210])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A85E819560A2; Mon, 19 Jan 2026 17:27:39 +0000 (UTC)
+ id 5697419560A2; Mon, 19 Jan 2026 17:27:43 +0000 (UTC)
 From: Cornelia Huck <cohuck@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eric Auger <eric.auger@redhat.com>, Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH RFC 1/3] arm: handle demuxed ID registers
-Date: Mon, 19 Jan 2026 18:27:30 +0100
-Message-ID: <20260119172732.140613-2-cohuck@redhat.com>
+Subject: [PATCH RFC 3/3] arm/kvm: get demuxed ID registers from kvm
+Date: Mon, 19 Jan 2026 18:27:32 +0100
+Message-ID: <20260119172732.140613-4-cohuck@redhat.com>
 In-Reply-To: <20260119172732.140613-1-cohuck@redhat.com>
 References: <20260119172732.140613-1-cohuck@redhat.com>
 MIME-Version: 1.0
@@ -69,7 +69,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.016,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,74 +85,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-For some registers, we do not have a single ID register, but actually
-an array of values (e.g. CCSIDR_EL1, where the actual value is
-determined by whatever CSSELR_EL1 points to.) If we want to avoid
-using a different way to handle registers like that for every
-instance, we should provide some kind of infrastructure. Therefore,
-add accessors {GET,SET}_IDREG_DEMUX that are similar to the accessors
-we already use for regular ID registers.
+We now have the infrastructure in place to get and save demuxed ID
+registers from kvm. Use it to get the values that kvm emulates for
+CCSIDR_EL1.
 
 Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 ---
- target/arm/cpu-sysregs.h |  5 +++++
- target/arm/cpu.h         | 20 ++++++++++++++++++++
- 2 files changed, 25 insertions(+)
+ target/arm/kvm.c | 33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
 
-diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
-index 7877a3b06a8e..31f82c6a0afc 100644
---- a/target/arm/cpu-sysregs.h
-+++ b/target/arm/cpu-sysregs.h
-@@ -35,6 +35,11 @@ typedef enum ARMSysRegs {
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 48f853fff80e..ab73b3a29f0f 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -243,6 +243,33 @@ static int get_host_cpu_reg(int fd, ARMHostCPUFeatures *ahcf,
+     return ret;
+ }
  
- #undef DEF
++static int get_host_cpu_reg_demux(int fd, ARMHostCPUFeatures *ahcf,
++                                  ARMIDRegisterIdx index, int subindex)
++{
++
++    struct kvm_one_reg one_reg = {
++        .id = KVM_REG_ARM64 | KVM_REG_SIZE_U32 | KVM_REG_ARM_DEMUX,
++    };
++    ARMIDRegisterDemuxIdx demux_index;
++
++    switch (index) {
++    case CCSIDR_EL1_IDX:
++        if (subindex < 14) {
++            one_reg.id |= KVM_REG_ARM_DEMUX_ID_CCSIDR | subindex;
++        } else {
++            return -EINVAL;
++        }
++        demux_index = CCSIDR_EL1_DEMUX_IDX;
++        break;
++    default:
++        return -EINVAL;
++    }
++    one_reg.addr = (uintptr_t)&ahcf->isar.idregs_demux[demux_index][subindex];
++
++    return ioctl(fd, KVM_GET_ONE_REG, &one_reg);
++
++}
++
+ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ {
+     /* Identify the feature bits corresponding to the host CPU, and
+@@ -256,6 +283,7 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     bool pmu_supported = false;
+     uint64_t features = 0;
+     int err;
++    int i;
  
-+/* ID registers that vary based upon another register */
-+typedef enum ARMIDRegisterDemuxIdx {
-+    NUM_ID_DEMUX_IDX,
-+} ARMIDRegisterDemuxIdx;
-+
- extern const uint32_t id_register_sysreg[NUM_ID_IDX];
+     /*
+      * target = -1 informs kvm_arm_create_scratch_host_vcpu()
+@@ -416,6 +444,11 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+              */
+             err |= get_host_cpu_reg(fd, ahcf, ID_AA64ZFR0_EL1_IDX);
+         }
++        /* grab demuxed registers */
++        for (i = 0; i < 14; i++) {
++            /* KVM only allows 0..13 */
++            err |= get_host_cpu_reg_demux(fd, ahcf, CCSIDR_EL1_IDX, i);
++        }
+     }
  
- int get_sysreg_idx(ARMSysRegs sysreg);
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 08b7d3fb936a..f7bd19f26fbd 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -905,6 +905,25 @@ typedef struct {
-         i_->idregs[REG ## _EL1_IDX];                                    \
-     })
- 
-+#define SET_IDREG_DEMUX(ISAR, REG, INDEX, VALUE)                        \
-+    ({                                                                  \
-+        ARMISARegisters *i_ = (ISAR);                                   \
-+        i_->idregs_demux[REG ## _EL1_DEMUX_IDX][INDEX] = VALUE;         \
-+    })
-+
-+#define GET_IDREG_DEMUX(ISAR, REG, INDEX)                               \
-+    ({                                                                  \
-+        ARMISARegisters *i_ = (ISAR);                                   \
-+        i_->idregs_demux[REG ## _EL1_DEMUX_IDX][INDEX];                 \
-+    })
-+
-+#define COPY_IDREG_DEMUX(ISAR, REG, FROM_INDEX, TO_INDEX)               \
-+    ({                                                                  \
-+        ARMISARegisters *i_ = (ISAR);                                   \
-+        i_->idregs_demux[REG ## _EL1_DEMUX_IDX][TO_INDEX] =             \
-+            i_->idregs_demux[REG ## _EL1_DEMUX_IDX][FROM_INDEX];        \
-+    })
-+
- /**
-  * ARMCPU:
-  * @env: #CPUARMState
-@@ -1083,6 +1102,7 @@ struct ArchCPU {
-         uint32_t dbgdevid1;
-         uint64_t reset_pmcr_el0;
-         uint64_t idregs[NUM_ID_IDX];
-+        uint64_t idregs_demux[NUM_ID_DEMUX_IDX][16];
-     } isar;
-     uint64_t midr;
-     uint32_t revidr;
+     kvm_arm_destroy_scratch_host_vcpu(fdarray);
 -- 
 2.52.0
 

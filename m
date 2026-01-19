@@ -4,112 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38D04D29C2E
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 16:17:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12D49D29C3C
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 16:19:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vhrwC-0003uC-JZ; Mon, 19 Jan 2026 11:17:08 -0500
+	id 1vhryG-0006Kk-AQ; Mon, 19 Jan 2026 11:19:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vhrw5-0003o2-NY
- for qemu-arm@nongnu.org; Mon, 19 Jan 2026 11:17:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vhrw2-0003e6-1P
- for qemu-arm@nongnu.org; Mon, 19 Jan 2026 11:17:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768839416;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Xi1X6rkQoxNixq6jbHULaCA65UN8glv9KoT4WWVarcM=;
- b=emjCqALS6gWLU4pV4dT9hlK3xBfal8cX0zbG32HP3wYYcNucat2ii+3IoWCoeOb+I3Kzz8
- WwGRtG5VMf19Ava752kTsK7viDm/c5YWR0J6oL+j48tpZ3fS00tSNQi1Lf2ZhxNJKfffjt
- T2fcvCvLNetbN6dqY2xOgn1yHXwDDhQ=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-163-uHJUbfoUOGCJ-u9V5wvuZA-1; Mon, 19 Jan 2026 11:16:55 -0500
-X-MC-Unique: uHJUbfoUOGCJ-u9V5wvuZA-1
-X-Mimecast-MFC-AGG-ID: uHJUbfoUOGCJ-u9V5wvuZA_1768839414
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-477cf25ceccso45635915e9.0
- for <qemu-arm@nongnu.org>; Mon, 19 Jan 2026 08:16:54 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1vhrxu-0006H9-EG
+ for qemu-arm@nongnu.org; Mon, 19 Jan 2026 11:18:54 -0500
+Received: from mail-dy1-x132a.google.com ([2607:f8b0:4864:20::132a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1vhrxs-0004BF-5E
+ for qemu-arm@nongnu.org; Mon, 19 Jan 2026 11:18:54 -0500
+Received: by mail-dy1-x132a.google.com with SMTP id
+ 5a478bee46e88-2b4520f6b32so5943044eec.0
+ for <qemu-arm@nongnu.org>; Mon, 19 Jan 2026 08:18:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1768839530; cv=none;
+ d=google.com; s=arc-20240605;
+ b=CqXXde3SxeGLQYIIkAPOZQoy1jVJttjz2pOr1W53LBx0qWZDq+VUehQZEF8Thg7TR1
+ /fCKCkjwhuMVciD6NqqHGyrkSBAfYXfcqIo9ID1GfQXhVY/+g8I433cK/gPupgiFCK75
+ um9gdKaVkRPlBA3ou8FEf2ORgUwjL/EfpfhBNKZlBBWUJrxh9hf0X0sJwNsujJji4w4D
+ o2C7fPgcxm+dggBEnD+Qs/qcoipdQ4TORR5EdFzkAGVDmNorR8OnaU3P7EIC+QorQrD5
+ V33cFCuTA8guuw/AX0+p4CUhi2uUxwWqERfFGWAOBatcbuRCNOas8Ar923aJToKYw7JY
+ 0QQg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=kwcW/N2PB9gevNDalUT2JCmOXQ6WOQFA1+HTySw47DI=;
+ fh=BgF974v3YMGRFxRe3J090HiQiMaXV3rhjUXxfgd/ZnA=;
+ b=Zrl4BNzPeLDAyLT6yOI7RzS2r58B1NAGvXhwSIntRyHv0uBb9w6ThuTSOBhqk+Aebk
+ +75rKxCsrt46bIOhUZI2+m0MJx3K39fX7ka1b2tDIVZovduTZciPijvp+68Y+i4yXE+j
+ tqd8oIj/DmQ69Ur3JuKo9P1AE5PfxLZWaKkHs24M8KXMToFhulZoOUgL5+T7Wa7kY8YS
+ waYqXr1p2+DUxJI2SPXz0KsZFER6CFVvQ7/BCmjqHHhWUzpZZ2yBxdSeMzGE4CuuAemk
+ xXqxY/hDhmEyoEPk0F92IQB7+etLo2qJOnh6QffhZ4npQeSvy0xxhSwrTtlFAZYHb0t/
+ FAVw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1768839530; x=1769444330; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=kwcW/N2PB9gevNDalUT2JCmOXQ6WOQFA1+HTySw47DI=;
+ b=Dk1+MT60E1eHyQVvnk0ye6KaHjMbP6/BI6uYgUBKEGKoLkcLYLI3MqJITSJmB0dYd1
+ sOJMRRZVU8awiLFD7boFVsqD90bD9GCQ5P5uNrnqA5QiU1zKzBhardFZGeCCHOG3ji60
+ IZIblN28gWH/603zu5Yf4qp7mRxcAdoRbrV5rtMI1I+HPsT/rjLffVmNxvhowo81SgLW
+ kBGpdRpjYiUOVx3Yr1I2cotq6utKOPZw4uD4QJckp9u9ovAJxSXtxh46c33lhFJqVyw0
+ hTWDwlrawUcMtTQQF+xB4kMu4H0Ew73tB2J9phyPFVHpJOequUF70/2o9jP4VuqgbchJ
+ dxYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768839414; x=1769444214;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1768839530; x=1769444330;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Xi1X6rkQoxNixq6jbHULaCA65UN8glv9KoT4WWVarcM=;
- b=saT/dxpn2XVvSJ0fcZpjSWv6CWFQquJILABejBgN9exgLA5RJ4+Pc7Ry3pJbSYHNnq
- 8Dx/o9auYyS7J5b8X5AtwbZSbbvXJ9xyvWIXA4OuhPuxrlyO8z7p4DHcRfljVvKtHtm/
- mJG1WC05jDk9zQcdVSgL9B1RRbg3mxx4yOKy6zbl/vJJbWhiJIp/y3BcLPRL4oDFqXcw
- OpoWhsm7l1P3BPMouxgadp6gyVntXe7Wl+toKosB7v+zVBJO3FEOlWbTU1RpF5C+1Yx3
- jlZJqZt/TSEH7vK6crvfPW1GJdrm+1hYzeS9XeAXdwwGxbn79h32XRNRhcz4vNp25uKx
- 9fRA==
+ bh=kwcW/N2PB9gevNDalUT2JCmOXQ6WOQFA1+HTySw47DI=;
+ b=o+wEQ7+3KrRRWZNP13D/WKVSR9cAwtkUSE0HmYVXWz+el7TMBhwJvEJRmi+fWVH5Uv
+ zYNrl4IZpJwIW1FZAilCDHjRQA2kXyYEixjbK8gePydBr3dD/zhxw0U7lmJ8Bqf5NZSS
+ WDd2LO24q9UhgdcpSJhBjKlP7jpxwdLTJ9e6SgQUz1EeAhm9M4iBbnxSuQYolZA3E50n
+ rOaevHHoVjWTNcsBUGpCIWyYWAgMQ6B5DlwA8sYaoQYNheAWaHzM4VjC7Pz8CuWvjDzK
+ GTyXyDZTydmgWbczhOL5Sgd8xE0w6uj5nV7PIYhPYKK0i4qBtGw6yqYsM5K6FdfP0d+3
+ li7g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU+6boOnnc7lqEZjBJ9ZlF+uRH/wMKWGtfHrDVY9+4heDD8WUIEnFF+dzBEPPz+dqOyPKat6LVW5A==@nongnu.org
-X-Gm-Message-State: AOJu0YzRD8NqPVczGmv5VqPF9t53PeeACFLNVmOyzy3nki8jL0qThDWu
- YibsIJpeImzwWO4IRH95YHSaxHnFZFEycZTb4bz8XQujwL3minScGiejflewwxZNHSVDaUksHJK
- TZEfLtsYuB2duoxQNMCNkEr/z4yVORrUcPBYypOsuK998/8lczmmLaA==
-X-Gm-Gg: AY/fxX7kB+INE68WozBGHoVPyeeW+TxsyqTJ98QW24bcnKpOfVglL3GHiOpFmiIElp+
- hZPpO/D8Qiuk/B6e7RMzeUiP7NNVFDPds60SCqD+S1UIb7GwTi5drVal/CfN8y23naPKNICHEdM
- y+xWKktlIvvlyC92oa4CsxyFPYSs5WyHx7UMlaRjWNBHQXdpZ5ux2azqKs+u1AE6QmFeZ4y6vaT
- HmaqFwShnzMR1L3sGpvDVKTIQCfZoc16riBBhlixUUBFaepQ85b7VkpnchgoS4ZRzqGpZI/IfdU
- zRzXLOfrptej+3s0imXKDxeuIqaVcjYW5mfCKcLw2OX+Xs7SAqbjUtWQFuHRq8meC6IRQhL9/V9
- AFOVVZ3vo4ZkQjwjUHwXHU/0OOs2uotcBntvWEIE5Y7vRXNN4LeObeSdEgQ==
-X-Received: by 2002:a05:600c:6215:b0:477:6e02:54a5 with SMTP id
- 5b1f17b1804b1-4801e3388b6mr137977405e9.18.1768839413566; 
- Mon, 19 Jan 2026 08:16:53 -0800 (PST)
-X-Received: by 2002:a05:600c:6215:b0:477:6e02:54a5 with SMTP id
- 5b1f17b1804b1-4801e3388b6mr137976925e9.18.1768839413102; 
- Mon, 19 Jan 2026 08:16:53 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43569921dddsm24946343f8f.6.2026.01.19.08.16.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Jan 2026 08:16:52 -0800 (PST)
-Message-ID: <d285998e-0250-40eb-97a3-996d5471abac@redhat.com>
-Date: Mon, 19 Jan 2026 17:16:50 +0100
+ AJvYcCUB5ZN3bjvqSpdVCHpfOf1xS6AAxDktqf+r5LradX1g6RqaKu4jjCG8XU9HRgLlWdtb6h0CIXC90A==@nongnu.org
+X-Gm-Message-State: AOJu0YyBsDOE3c91D9Ler2O7IMtiuA3obK6KWO/e9UJ7BWGE2ChK6Znj
+ 7gxG6JUOSy5VuIUw6o8NLs9ozOuDJbkVB+874dnCT1B/wUaMGyPWwDNS2FFgZpRJRyp2grg/Rws
+ 6fkMOwvEH0C/AtdAr35WKTZqp1mYZzpU=
+X-Gm-Gg: AZuq6aITz5K4ENPzrh+xUh0PklUC8joyNDl/VmFpbZbDG91KEED0SdC3GgytmwBOJSg
+ GgjsU1Sxsavfon1SYYAFUB7iNYNNt8d22KcTa2j/SS/GFX0MgJUckYWY2FQznISu6BTsENrTVZ7
+ eNrStKS3NspDF+bH06R/KmuQ1/BGi5YKLuB4exQ6IkH+Roo0Q09P2hCe7taHaBB6eeu7T44P9Bg
+ 1egcPBD2zQeXBGNnifL6dIdK1O+XYRvtbs4f7ZVwUM487R11AU5F6G6uteFShm4RqdCoA==
+X-Received: by 2002:a05:693c:60d6:b0:2b6:c03d:9ff0 with SMTP id
+ 5a478bee46e88-2b6c03da307mr6475091eec.22.1768839526824; Mon, 19 Jan 2026
+ 08:18:46 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 35/36] hw/vfio/pci: Synthesize PASID capability for
- vfio-pci devices
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, berrange@redhat.com, clg@redhat.com, alex@shazbot.org,
- nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, yi.l.liu@intel.com, kjaju@nvidia.com
-References: <20260111195508.106943-1-skolothumtho@nvidia.com>
- <20260111195508.106943-36-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260111195508.106943-36-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: xH9YfIeJyPsA68pFo66Q-SesAeTyN3EfXva8KXlrwUA_1768839414
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+References: <20251219222439.2497195-1-ruslan_ruslichenko@epam.com>
+ <CAFEAcA-VYhtvXK5tyVJWfskqqKFim43DsKfWrpaMxteWueR6aQ@mail.gmail.com>
+ <CAN-aV1FsbAp3JrqoPgz+c4ORayBjsGxTLWOkDMc0WyE2nD-aZw@mail.gmail.com>
+ <CAN-aV1ERa6uE9U8cPArmXCv+WOJhP7ZgGAF2VEDaAEbiebyawQ@mail.gmail.com>
+ <CAFEAcA8D19toNxsLsRcSoLgBAGVnV8OXWLP41m7aTLsNSw++PA@mail.gmail.com>
+In-Reply-To: <CAFEAcA8D19toNxsLsRcSoLgBAGVnV8OXWLP41m7aTLsNSw++PA@mail.gmail.com>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Mon, 19 Jan 2026 17:18:34 +0100
+X-Gm-Features: AZwV_QiwKbY4ew_OqFjf3WbMOw5aao5FB_Lkxjcx7WpCGmxYjqXvwlURHbSx5dc
+Message-ID: <CAJy5ezqhrFiNbAKCpXThqh10g4EfT5Ec34Na1=imovtB1P9jqA@mail.gmail.com>
+Subject: Re: [RFC PATCH 0/6] hw/arm/smmuv3: Add SMMUv3 sysbus support
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Ruslan Ruslichenko <ruslichenko.r@gmail.com>, ruslan_ruslichenko@epam.com, 
+ artem_mygaiev@epam.com, volodymyr_babchuk@epam.com, 
+ takahiro.nakata.wr@renesas.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Eric Auger <eric.auger@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000a9409d0648c00b2b"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::132a;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-dy1-x132a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.016,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,195 +118,203 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
+--000000000000a9409d0648c00b2b
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 1/11/26 8:53 PM, Shameer Kolothum wrote:
-> Add support for synthesizing a PCIe PASID extended capability for
-> vfio-pci devices when PASID is enabled via a vIOMMU and supported by
-> the host IOMMU backend.
->
-> PASID capability parameters are retrieved via IOMMUFD APIs and the
-> capability is inserted into the PCIe extended capability list using
-> the insertion helper. A new x-vpasid-cap-offset property allows
-> explicit control over the placement; by default the capability is
-> placed at the end of the PCIe extended configuration space.
->
-> If the kernel does not expose PASID information or insertion fails,
-> the device continues without PASID support.
->
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->  hw/vfio/pci.c           | 84 +++++++++++++++++++++++++++++++++++++++++
->  hw/vfio/pci.h           |  1 +
->  include/hw/core/iommu.h |  1 +
->  3 files changed, 86 insertions(+)
->
-> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-> index c734472721..96990576ac 100644
-> --- a/hw/vfio/pci.c
-> +++ b/hw/vfio/pci.c
-> @@ -24,6 +24,7 @@
->  #include <sys/ioctl.h>
->  
->  #include "hw/core/hw-error.h"
-> +#include "hw/core/iommu.h"
->  #include "hw/pci/msi.h"
->  #include "hw/pci/msix.h"
->  #include "hw/pci/pci_bridge.h"
-> @@ -2498,9 +2499,71 @@ static int vfio_setup_rebar_ecap(VFIOPCIDevice *vdev, uint16_t pos)
->      return 0;
->  }
->  
-> +/*
-> + * Try to retrieve PASID capability information via IOMMUFD APIs and,
-> + * if supported, synthesize a PASID PCIe extended capability for the
-> + * VFIO device.
-> + *
-> + * Use user-specified PASID capability offset if provided, otherwise
-> + * place it at the end of the PCIe extended configuration space.
-> + */
-> +static void vfio_pci_synthesize_pasid_cap(VFIOPCIDevice *vdev)
-> +{
-> +    HostIOMMUDevice *hiod = vdev->vbasedev.hiod;
-> +    HostIOMMUDeviceClass *hiodc;
-> +    PasidInfo pasid_info;
-> +    PCIDevice *pdev = PCI_DEVICE(vdev);
-> +    uint16_t pasid_offset;
-> +
-> +    if (vdev->vbasedev.mdev) {
-> +        return;
-> +    }
-> +
-> +    hiodc = HOST_IOMMU_DEVICE_GET_CLASS(hiod);
-> +    if (!hiodc || !hiodc->get_pasid_info ||
-> +        !hiodc->get_pasid_info(hiod, &pasid_info) ||
-> +        !(pci_device_get_viommu_flags(pdev) & VIOMMU_FLAG_PASID_SUPPORTED)) {
-> +        return;
-> +    }
-> +
-> +    /*
-> +     * Check if user has specified an offset to place PASID CAP,
-> +     * else select the last offset as default
-> +     */
-> +    if (vdev->vpasid_cap_offset) {
-> +        if (!QEMU_IS_ALIGNED(vdev->vpasid_cap_offset, PCI_EXT_CAP_ALIGN) ||
-For other checks you put an assert i pcie_insert_capability()
-> +            vdev->vpasid_cap_offset < PCI_CONFIG_SPACE_SIZE ||
-> +            vdev->vpasid_cap_offset + PCI_EXT_CAP_PASID_SIZEOF >
-> +                PCIE_CONFIG_SPACE_SIZE) {
-> +            error_report("vfio: invalid x-vpasid-cap-offset 0x%x, skipping PASID",
-> +                        vdev->vpasid_cap_offset);
-> +            return;
-> +        }
-> +        pasid_offset = vdev->vpasid_cap_offset;
-> +    } else {
-> +        pasid_offset = PCIE_CONFIG_SPACE_SIZE - PCI_EXT_CAP_PASID_SIZEOF;
-> +        warn_report("vfio: PASID capability offset(x-vpasid-cap-offset) not specified, "
-> +                    "placing at the default offset 0x%x",
-> +                    pasid_offset);
-I am not sure we want a warn_report() if this is a normal behavior. Add
-a trace point instead?
-> +    }
-> +
-> +    if (!pcie_insert_capability(pdev, PCI_EXT_CAP_ID_PASID, PCI_PASID_VER,
-> +                                pasid_offset, PCI_EXT_CAP_PASID_SIZEOF)) {
-> +        error_report("vfio: Placing PASID capability at offset 0x%x failed",
-> +                     pasid_offset);
-instead of having asserts in pcie_insert_capability() you could
-factorize all checks there including the 4B alignment check and return
-false if any fails. Then you could propably get rifd of above checks
-which are partially redundant. Thanks Eric
-> +    }
-> +    pcie_pasid_common_init(pdev, pasid_offset, pasid_info.max_pasid_log2,
-> +                           pasid_info.exec_perm, pasid_info.priv_mod);
-> +
-> +    /* PASID capability is fully emulated by QEMU */
-> +    memset(vdev->emulated_config_bits + pdev->exp.pasid_cap, 0xff,
-> +           PCI_EXT_CAP_PASID_SIZEOF);
-> +}
-> +
->  static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
->  {
->      PCIDevice *pdev = PCI_DEVICE(vdev);
-> +    bool pasid_cap_added = false;
->      uint32_t header;
->      uint16_t cap_id, next, size;
->      uint8_t cap_ver;
-> @@ -2578,12 +2641,24 @@ static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
->                  pcie_add_capability(pdev, cap_id, cap_ver, next, size);
->              }
->              break;
-> +        /*
-> +         * VFIO kernel does not expose the PASID CAP today. We may synthesize
-> +         * one later through IOMMUFD APIs. If VFIO ever starts exposing it,
-> +         * record its presence here so we do not create a duplicate CAP.
-> +         */
-> +        case PCI_EXT_CAP_ID_PASID:
-> +            pasid_cap_added = true;
-> +            /* fallthrough */
->          default:
->              pcie_add_capability(pdev, cap_id, cap_ver, next, size);
->          }
->  
->      }
->  
-> +    if (!pasid_cap_added) {
-> +        vfio_pci_synthesize_pasid_cap(vdev);
-> +    }
-> +
->      /* Cleanup chain head ID if necessary */
->      if (pci_get_word(pdev->config + PCI_CONFIG_SPACE_SIZE) == 0xFFFF) {
->          pci_set_word(pdev->config + PCI_CONFIG_SPACE_SIZE, 0);
-> @@ -3756,6 +3831,8 @@ static const Property vfio_pci_properties[] = {
->                       TYPE_IOMMUFD_BACKEND, IOMMUFDBackend *),
->  #endif
->      DEFINE_PROP_BOOL("skip-vsc-check", VFIOPCIDevice, skip_vsc_check, true),
-> +    DEFINE_PROP_UINT16("x-vpasid-cap-offset", VFIOPCIDevice,
-> +                       vpasid_cap_offset, 0),
->  };
->  
->  #ifdef CONFIG_IOMMUFD
-> @@ -3913,6 +3990,13 @@ static void vfio_pci_class_init(ObjectClass *klass, const void *data)
->                                            "destination when doing live "
->                                            "migration of device state via "
->                                            "multifd channels");
-> +   object_class_property_set_description(klass, /* 11.0 */
-> +                                          "x-vpasid-cap-offset",
-> +                                          "PCIe extended configuration space offset at which to place a "
-> +                                          "synthetic PASID extended capability when PASID is enabled via "
-> +                                          "a vIOMMU. A value of 0 (default) places the capability at the "
-> +                                          "end of the extended configuration space. The offset must be "
-> +                                          "4-byte aligned and within the PCIe extended configuration space");
->  }
->  
->  static const TypeInfo vfio_pci_info = {
-> diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
-> index 0f78cf9cdb..d6495d7f29 100644
-> --- a/hw/vfio/pci.h
-> +++ b/hw/vfio/pci.h
-> @@ -187,6 +187,7 @@ struct VFIOPCIDevice {
->      bool defer_kvm_irq_routing;
->      bool clear_parent_atomics_on_exit;
->      bool skip_vsc_check;
-> +    uint16_t vpasid_cap_offset;
->      VFIODisplay *dpy;
->      Notifier irqchip_change_notifier;
->      VFIOPCICPR cpr;
-> diff --git a/include/hw/core/iommu.h b/include/hw/core/iommu.h
-> index 9b8bb94fc2..9635770bee 100644
-> --- a/include/hw/core/iommu.h
-> +++ b/include/hw/core/iommu.h
-> @@ -20,6 +20,7 @@
->  enum viommu_flags {
->      /* vIOMMU needs nesting parent HWPT to create nested HWPT */
->      VIOMMU_FLAG_WANT_NESTING_PARENT = BIT_ULL(0),
-> +    VIOMMU_FLAG_PASID_SUPPORTED = BIT_ULL(1),
->  };
->  
->  #endif /* HW_IOMMU_H */
+On Mon, Jan 19, 2026 at 3:57=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org>
+wrote:
 
+> On Mon, 19 Jan 2026 at 14:42, Ruslan Ruslichenko
+> <ruslichenko.r@gmail.com> wrote:
+> >
+> > On Fri, Jan 2, 2026 at 4:36=E2=80=AFPM Ruslan Ruslichenko
+> > <ruslichenko.r@gmail.com> wrote:
+> > >
+> > > On Sun, Dec 28, 2025 at 5:59=E2=80=AFPM Peter Maydell <
+> peter.maydell@linaro.org> wrote:
+> > > >
+> > > > On Fri, 19 Dec 2025 at 22:25, <ruslichenko.r@gmail.com> wrote:
+> > > > >
+> > > > > By SMMUv3 specification it can be attached either to PCIe Root
+> > > > > Complex or regular IO bus devices. However, current
+> > > > > implementation only allow to associate with PCI bus.
+> > > > >
+> > > > > This patch series add support to use SMMU for sysbus devices.
+> > > > >
+> > > > > One usage example implemented for virtio-mmio, which allow
+> > > > > devices to perform DMA operations SMMUv3 with address translation
+> > > > > and isolation.
+> > > >
+> > > > If you want virtio devices behind an SMMU, why not use
+> > > > the PCI virtio?
+> > > >
+> > > > The only SMMU sysbus requirement I'm aware of is that for
+> > > > RME we will want to have things like the GIC do GPT lookups,
+> > > > which is most conveniently done by having them route through
+> > > > the existing for-PCI SMMU, rather than by having an extra
+> > > > SMMU just for them.
+> > >
+> > > There may be several reasons for supporting SMMU on sysbus:
+> > >
+> > > Some embedded platforms may not use and don't want to include a full
+> > > PCI subsystem, but still want IOMMU isolation with virtio-mmio.
+> > >
+> > > The other reason is to emulate existing SoC platforms. The model may
+> > > need to be closer to real-world HW and SMMU is widely used outside th=
+e
+> > > PCI subsystem.
+> > >
+> > > One more reason is Remote-Port devices in our case, currently ongoing
+> > > development here:
+> > > https://lists.nongnu.org/archive/html/qemu-devel/2025-12/msg02121.htm=
+l
+> .
+> > > Those are platform devices which are emulated by external services.
+> > > These devices need to perform SMMU operations for DMA transactions
+> > > when they are bus-masters.
+> > >
+> >
+> > A gentle ping on this series.
+> >
+> > Hi Peter!
+> >
+> > Do you think we can continue discussion on this topic?
+>
+> We would want a reason that applied to upstream QEMU. If you
+> have a platform that uses this that you're modelling upstream,
+> we can think about the SMMU parts of that at that point.
+> At the moment all this patchset does is let you put a
+> virtio-mmio device behind an SMMU, which is something I
+> don't want because it's a pile of extra complexity for
+> a use case that is better handled by using PCI.
+>
+> thanks
+> -- PMM
+>
+
+
+Hi,
+
+Xilinx Versal boards have AMBA platform devices (non-PCI) that sit behind
+an SMMU, this feature would be useful there.
+I haven't looked carefully at this series, but the way we implemented it in
+our Xilinx tree was by changing the SMMU code to use the Memory API rather
+than use a parallel interface in both IOMMU and DMA devs. Instead, DMA
+devices stay the same except that they need to be able to set their
+Transaction ID when issuing memory accesses...
+
+Best regards,
+Edgar
+
+--000000000000a9409d0648c00b2b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><div class=3D"gmail_quote gmail=
+_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Jan 19, 202=
+6 at 3:57=E2=80=AFPM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@lina=
+ro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex">On Mon, 19 Jan 2026 at 14:42, Ruslan Rusli=
+chenko<br>
+&lt;<a href=3D"mailto:ruslichenko.r@gmail.com" target=3D"_blank">ruslichenk=
+o.r@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; On Fri, Jan 2, 2026 at 4:36=E2=80=AFPM Ruslan Ruslichenko<br>
+&gt; &lt;<a href=3D"mailto:ruslichenko.r@gmail.com" target=3D"_blank">rusli=
+chenko.r@gmail.com</a>&gt; wrote:<br>
+&gt; &gt;<br>
+&gt; &gt; On Sun, Dec 28, 2025 at 5:59=E2=80=AFPM Peter Maydell &lt;<a href=
+=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro=
+.org</a>&gt; wrote:<br>
+&gt; &gt; &gt;<br>
+&gt; &gt; &gt; On Fri, 19 Dec 2025 at 22:25, &lt;<a href=3D"mailto:rusliche=
+nko.r@gmail.com" target=3D"_blank">ruslichenko.r@gmail.com</a>&gt; wrote:<b=
+r>
+&gt; &gt; &gt; &gt;<br>
+&gt; &gt; &gt; &gt; By SMMUv3 specification it can be attached either to PC=
+Ie Root<br>
+&gt; &gt; &gt; &gt; Complex or regular IO bus devices. However, current<br>
+&gt; &gt; &gt; &gt; implementation only allow to associate with PCI bus.<br=
+>
+&gt; &gt; &gt; &gt;<br>
+&gt; &gt; &gt; &gt; This patch series add support to use SMMU for sysbus de=
+vices.<br>
+&gt; &gt; &gt; &gt;<br>
+&gt; &gt; &gt; &gt; One usage example implemented for virtio-mmio, which al=
+low<br>
+&gt; &gt; &gt; &gt; devices to perform DMA operations SMMUv3 with address t=
+ranslation<br>
+&gt; &gt; &gt; &gt; and isolation.<br>
+&gt; &gt; &gt;<br>
+&gt; &gt; &gt; If you want virtio devices behind an SMMU, why not use<br>
+&gt; &gt; &gt; the PCI virtio?<br>
+&gt; &gt; &gt;<br>
+&gt; &gt; &gt; The only SMMU sysbus requirement I&#39;m aware of is that fo=
+r<br>
+&gt; &gt; &gt; RME we will want to have things like the GIC do GPT lookups,=
+<br>
+&gt; &gt; &gt; which is most conveniently done by having them route through=
+<br>
+&gt; &gt; &gt; the existing for-PCI SMMU, rather than by having an extra<br=
+>
+&gt; &gt; &gt; SMMU just for them.<br>
+&gt; &gt;<br>
+&gt; &gt; There may be several reasons for supporting SMMU on sysbus:<br>
+&gt; &gt;<br>
+&gt; &gt; Some embedded platforms may not use and don&#39;t want to include=
+ a full<br>
+&gt; &gt; PCI subsystem, but still want IOMMU isolation with virtio-mmio.<b=
+r>
+&gt; &gt;<br>
+&gt; &gt; The other reason is to emulate existing SoC platforms. The model =
+may<br>
+&gt; &gt; need to be closer to real-world HW and SMMU is widely used outsid=
+e the<br>
+&gt; &gt; PCI subsystem.<br>
+&gt; &gt;<br>
+&gt; &gt; One more reason is Remote-Port devices in our case, currently ong=
+oing<br>
+&gt; &gt; development here:<br>
+&gt; &gt; <a href=3D"https://lists.nongnu.org/archive/html/qemu-devel/2025-=
+12/msg02121.html" rel=3D"noreferrer" target=3D"_blank">https://lists.nongnu=
+.org/archive/html/qemu-devel/2025-12/msg02121.html</a>.<br>
+&gt; &gt; Those are platform devices which are emulated by external service=
+s.<br>
+&gt; &gt; These devices need to perform SMMU operations for DMA transaction=
+s<br>
+&gt; &gt; when they are bus-masters.<br>
+&gt; &gt;<br>
+&gt;<br>
+&gt; A gentle ping on this series.<br>
+&gt;<br>
+&gt; Hi Peter!<br>
+&gt;<br>
+&gt; Do you think we can continue discussion on this topic?<br>
+<br>
+We would want a reason that applied to upstream QEMU. If you<br>
+have a platform that uses this that you&#39;re modelling upstream,<br>
+we can think about the SMMU parts of that at that point.<br>
+At the moment all this patchset does is let you put a<br>
+virtio-mmio device behind an SMMU, which is something I<br>
+don&#39;t want because it&#39;s a pile of extra complexity for<br>
+a use case that is better handled by using PCI.<br>
+<br>
+thanks<br>
+-- PMM<br></blockquote><div><br></div><div><br></div><div>Hi,</div><div><br=
+></div><div>Xilinx Versal boards have AMBA platform devices (non-PCI) that =
+sit behind an SMMU, this feature would be useful there.</div><div>I haven&#=
+39;t looked carefully at this series, but the way we implemented it in our =
+Xilinx tree was by changing=C2=A0the SMMU code to use the Memory API rather=
+ than use a parallel interface in both IOMMU and DMA devs. Instead, DMA dev=
+ices stay the same except that they need to be able to set their Transactio=
+n ID when issuing memory accesses...</div><div><br></div><div>Best regards,=
+</div><div>Edgar</div></div></div>
+
+--000000000000a9409d0648c00b2b--
 

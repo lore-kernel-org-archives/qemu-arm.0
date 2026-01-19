@@ -4,89 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9952CCF2F4
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 12:13:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10AD1CCF2F2
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 12:22:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vho8M-0000pD-MY; Mon, 19 Jan 2026 07:13:26 -0500
+	id 1vhoGM-0005cg-Nw; Mon, 19 Jan 2026 07:21:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vho8L-0000og-8a
- for qemu-arm@nongnu.org; Mon, 19 Jan 2026 07:13:25 -0500
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vhoGL-0005cR-Dq
+ for qemu-arm@nongnu.org; Mon, 19 Jan 2026 07:21:41 -0500
 Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vho8J-00027h-K9
- for qemu-arm@nongnu.org; Mon, 19 Jan 2026 07:13:25 -0500
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vhoGJ-00038u-By
+ for qemu-arm@nongnu.org; Mon, 19 Jan 2026 07:21:41 -0500
 Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-47ee76e8656so48700755e9.0
- for <qemu-arm@nongnu.org>; Mon, 19 Jan 2026 04:13:23 -0800 (PST)
+ 5b1f17b1804b1-47ee807a4c5so30897985e9.2
+ for <qemu-arm@nongnu.org>; Mon, 19 Jan 2026 04:21:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768824802; x=1769429602; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=linaro.org; s=google; t=1768825296; x=1769430096; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Xtc6cFMkMrTwWDzqDVH3d9bbU1X1HAVFUvGF5tfinQI=;
- b=JJ44Tkk21b/WC1QjaXvGnsiGVgZKX7OS/zLOgpCc/ghwCmgx+Xt/NebKX696tQpRTT
- Dt7v4cjd5By5nlW7ZYdk1ZDEFPdUhp0bq/0yn8ylS/Sh1407lfJFziEWn/z6ioE7D3o/
- pGvKc+K9mn9mYNZTNmgj8JolOpA2fSEeSQY1rkyIXoGYRmg0el3o7v1w3QJbXTCoKmEd
- r9q4rAE3YbbJvKLN2dPr4huAPLhSXREfG965wRauN3p6xFlcvpxU70H5dYFyYnRkAXt/
- M/jBjM2+f3SAz2oh4c+PyIyz+Te2rO5AaLWNqQoBfvRChlKHlkklr/Mm9OZF59CURn0g
- 3n1g==
+ bh=kV71xEhQHf/cZb4fuDtl4xSNy/zYzrpI8vgqn6T1PzE=;
+ b=kJF9onYLIOzJ3lxqqkRGtL//XmkAfxHycVR2IjsVTasnCRGEVipcb5NU4sDpA1FEzn
+ Czjd17QlUr0JsXiL/dGKuhM2im5yv8ORRPgODpX2zL4UAwiy2XNA53YJ3NWMiKw2EaM+
+ ZgcFuPi1ZU61dbNY53NX/qXJpSagPqoG4O8PGzJP6IdyUwYytnQTzSZ8i4pTfp04pDrd
+ jfmpz84137PTXmMfvjZRepY13uL6fbCvrrTHsuRAyBXWNnkGZhT9w/6IIKP9PovbtvFy
+ S1JqUEkX0Q8YdsVNMj0s5SnSUlSFmyYSUi57fAbkVr2i1Nzfsg6tAdjkg2NEyZLy/aHw
+ Kgaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768824802; x=1769429602;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=1e100.net; s=20230601; t=1768825296; x=1769430096;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Xtc6cFMkMrTwWDzqDVH3d9bbU1X1HAVFUvGF5tfinQI=;
- b=sKi1QpuDftY3ZfA7N+jajhzFPkR47HrZM5zf3HKx35TWsdYrtrk/PCs7HMIPz/HMr0
- pt5i3cFAMB0PolMTnroveGDEtNhWqEpyrlj+n+YwhLnPOcJGMW2A39vyWaHnuanxwlr6
- FMa6bVPKHgj1eWVHQDEacftJBrOJiOgVr2MwNHo426Dl4upCpPygXWbdd9U/5GW8EvYf
- zZYnD0AGSOrs2wyNkNFxhFfaRwW78Egg7ybgVNs91nfl/l4njeuH1rnfTYnEWLlmHlH1
- zNxcGtK64lBiHLEYThwl9FkONM9GgrF5Im0LHNP8bMx8+Z1gHvSZApDs/ZbMbWA0PFiV
- wcDA==
+ bh=kV71xEhQHf/cZb4fuDtl4xSNy/zYzrpI8vgqn6T1PzE=;
+ b=YrG18Ktlew9XIr1gbPehTooRzQ1YyX+1E/bkiogLhwBVaHen5zbXnnwoPW7rY3/FXe
+ /9cyyJ99ds8jVjkw0VD6wvILybXIfyBjONQqmtCuMnAgCyolKlVmu6hudVArc6t24v02
+ d7UJXIK4YN1iK0xzVsU3qV0svLDY5YKlviPoPFOcYVyLqeWsOBD3eC7KwuFcaECsiFvx
+ xzKbIF1ANV2jNuO4F+6hP6K2IodPL97O1VExqOVXwvtpxTmPVZ7djJLSpJgo2JCUykwG
+ AJ6SN7mbRhNydVQ+5raNKkcVWZRVM6/ME38UlyHhIelpmSy6/g/vRoTGByH0X1eYjFpO
+ aIFA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWyIVCWtnc8OJefIZe7KKX/fr5G4yMeuuUJ0TNgiblgIVmcQDO8aWSs9YCKCpeLXLiWBwn0evv63A==@nongnu.org
-X-Gm-Message-State: AOJu0YzHJOEtESZxQeh4G1eH8P89fjItcGdfa5G5RTS7bTPS0tcxtGAU
- i17skgdbODFsoCz+8abRS5K6bbI2FkpyDQqeQrdnYbmHBalW7P6VCczJfrzlHjXgDcg=
-X-Gm-Gg: AY/fxX5afm4Ir3BjJ+ZwKk/pkoT0KI5oyiaVakW1JT3/I1K3CWh9X2pqVoyFm749vn7
- JlDbwWpez6F4B3o1fro8RbDQBEGQwYXB0AMdewNTWl9M71OunTHaUXfmjoyJV5r6ufclF9nUis7
- Z7e/lwXzLIogMILGpdnrfiGtWyvncRv5UqX2oIJuRurWmWXOyHkykiD3WXfeNo2USHOKLov7z2U
- wCpgoI14skHyyBJl7BeccqIAX6iSK9LPj1qAaUZmBj6Qmi8kH+/LpdvraTKEuvGjJVbzTxALEhT
- uVrR+a+fC9pZMpzk+CB6G7oBDTh9/VV1ROxTn9+0PC6Hi/SFL1R2D0Ridjv/5afAjmasw6KvgPI
- HufNZYj9hV68dBy+NTFmFQDtD1xcLl5nn979SHoLsYGvHT92LHLbjkVff1dX7phqjtEEvHA6sgF
- FgO8ZAH9SRE6FeLzHJ1Ok4z4au9LgFX9pwwaq3+rvt2DGrmV/2XMiDyA==
-X-Received: by 2002:a05:600c:4513:b0:477:6d96:b3e5 with SMTP id
- 5b1f17b1804b1-4801e2f9105mr148420835e9.7.1768824801912; 
- Mon, 19 Jan 2026 04:13:21 -0800 (PST)
+ AJvYcCXCXnGy5Gh7j5FoDsXK9C+F7nSZXQG2POgxNfNaAfiR18gheQXHagEadgOqLJVlQ6OyPfAXcERXSg==@nongnu.org
+X-Gm-Message-State: AOJu0YwxSCuMuZBq/PG05NemQrA6VRJ/iq2GJy3IY47NWGoXhng2PpPJ
+ AH4imj0InVzilIuUlN5DNVwYcXLdywgdMP/nfVhxkS0Gg3gF2IsNx8irLG25FuybypIeOz34HDt
+ 5MmvPx6o=
+X-Gm-Gg: AY/fxX7UEjSiSqbElOl77qrxgQScz1xjJsC+JBru9tLscMFY0ttiS8jH8QwY5ByWlqP
+ UOuFDDbled1i6djb/wOp43UMgmic+2KoqInwk9RRUTpiNAp7j0KNWAgVbOjQdr0iGueaqU8Qulf
+ rSjMoMv4ALcxIsHy60QI/l41kb8JJ8+SvZymNTRLjseQ6/ERl95nb1w1kn+1ImjdofeSlJAfnYs
+ KteUbZVfHTh/ffxfrMNvyQDj2Qn97RvkWorXMEN/uo+pPcOJYX1i5NAZ/GHLSbwe69MoiXDwpUK
+ MgJLP0168kNPQ8m4EIyrX+Dyahgnsbb2jaEw8Gntp9G08YBYTitiR3AoTUAoDGdG6kxStONsioh
+ GdbGFwOaIQLsNqUJMe8Sn8HKxkfMquID10W8Yekm0rfbVMdihpt37PmEvDapT0QecyqawlEwvKU
+ 9NsW+liEYQOOpAUhcL1qENXBxvvosljFzja3G/erugNpBtrGatwy8qRQ==
+X-Received: by 2002:a05:600c:6206:b0:47a:9560:5944 with SMTP id
+ 5b1f17b1804b1-4801eb14c40mr133063625e9.34.1768825295896; 
+ Mon, 19 Jan 2026 04:21:35 -0800 (PST)
 Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47f428acae8sm247410705e9.4.2026.01.19.04.13.20
+ 5b1f17b1804b1-4801e8c0499sm195008685e9.9.2026.01.19.04.21.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Jan 2026 04:13:21 -0800 (PST)
-Message-ID: <6b934c5a-bfbc-4877-8e53-b7e89db1531b@linaro.org>
-Date: Mon, 19 Jan 2026 13:13:19 +0100
+ Mon, 19 Jan 2026 04:21:35 -0800 (PST)
+Message-ID: <2d379a95-d3ec-4f6b-8b21-188540656019@linaro.org>
+Date: Mon, 19 Jan 2026 13:21:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 51/59] hw/arm/virt: Warn when HVF doesn't report IPA
- bit length
+Subject: Re: [RFC PATCH] hw/intc: avoid byte swap fiddling in gicv3 its path
 Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM cores" <qemu-arm@nongnu.org>
+References: <20260119120030.2593993-1-alex.bennee@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Mads Ynddal <mads@ynddal.dk>, Cameron Esfahani <dirty@apple.com>,
- qemu-arm@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Peter Collingbourne <pcc@google.com>,
- Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
- Joelle van Dyne <j@getutm.app>
-References: <20251028054238.14949-1-philmd@linaro.org>
- <20251028054238.14949-52-philmd@linaro.org>
- <cd27bf13-a8ef-4b7a-bfea-0e4220091ec1@linaro.org>
- <8af2b03c-6fc3-48c6-a307-7d49d38532b4@linaro.org>
-In-Reply-To: <8af2b03c-6fc3-48c6-a307-7d49d38532b4@linaro.org>
+In-Reply-To: <20260119120030.2593993-1-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
@@ -97,7 +89,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,75 +105,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 18/1/26 23:03, Philippe Mathieu-Daudé wrote:
-> On 28/10/25 13:07, Richard Henderson wrote:
->> On 10/28/25 06:42, Philippe Mathieu-Daudé wrote:
->>> Emit a warning when HVF doesn't return the IPA bit length
->>> and return -1 as "this accelerator is not usable", allowing
->>> QEMU to try with the next one (when using '-accel hvf:tcg').
->>>
->>> Reported-by: Ivan Krasilnikov
->>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2981
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> ---
->>>   hw/arm/virt.c | 8 ++++++--
->>>   1 file changed, 6 insertions(+), 2 deletions(-)
->>>
->>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>> index 175023897a7..1d65fa471dc 100644
->>> --- a/hw/arm/virt.c
->>> +++ b/hw/arm/virt.c
->>> @@ -3225,8 +3225,12 @@ static int 
->>> virt_hvf_get_physical_address_range(MachineState *ms)
->>>   {
->>>       VirtMachineState *vms = VIRT_MACHINE(ms);
->>> -    int default_ipa_size = hvf_arm_get_default_ipa_bit_size();
->>> -    int max_ipa_size = hvf_arm_get_max_ipa_bit_size();
->>> +    uint32_t default_ipa_size = hvf_arm_get_default_ipa_bit_size();
->>> +    uint32_t max_ipa_size = hvf_arm_get_max_ipa_bit_size();
->>> +    if (!default_ipa_size || !max_ipa_size) {
->>> +        warn_report("HVF didn't report IPA bit length");
->>> +        return -1;
->>> +    }
->>
->> I suppose this goes back to the previous patch.
->> It might have been slightly less confusing to merge them, but the 
->> underlying questions about when and how this can fail remain.
+On 19/1/26 13:00, Alex Bennée wrote:
+> The GIC should always be a little-endian device as big-endian
+> behaviour is a function of the current CPU configuration not the
+> system as a whole. This allows us to keep the MSI data in plain host
+> order rather then potentially truncating with multiple byte swaps of
+> different sizes.
 > 
-> Right. I'm dropping this patch.
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   hw/intc/arm_gicv3_its_common.c | 4 ++--
+>   hw/intc/arm_gicv3_its_kvm.c    | 2 +-
+>   2 files changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
+> index e946e3fb87b..60a5abd8d3e 100644
+> --- a/hw/intc/arm_gicv3_its_common.c
+> +++ b/hw/intc/arm_gicv3_its_common.c
+> @@ -81,7 +81,7 @@ static MemTxResult gicv3_its_trans_write(void *opaque, hwaddr offset,
+>       if (offset == 0x0040 && ((size == 2) || (size == 4))) {
+>           GICv3ITSState *s = ARM_GICV3_ITS_COMMON(opaque);
+>           GICv3ITSCommonClass *c = ARM_GICV3_ITS_COMMON_GET_CLASS(s);
+> -        int ret = c->send_msi(s, le64_to_cpu(value), attrs.requester_id);
+> +        int ret = c->send_msi(s, value, attrs.requester_id);
+>   
+>           if (ret <= 0) {
+>               qemu_log_mask(LOG_GUEST_ERROR,
+> @@ -97,7 +97,7 @@ static MemTxResult gicv3_its_trans_write(void *opaque, hwaddr offset,
+>   static const MemoryRegionOps gicv3_its_trans_ops = {
+>       .read_with_attrs = gicv3_its_trans_read,
+>       .write_with_attrs = gicv3_its_trans_write,
+> -    .endianness = DEVICE_NATIVE_ENDIAN,
+> +    .endianness = DEVICE_LITTLE_ENDIAN,
+>   };
+>   
+>   void gicv3_its_init_mmio(GICv3ITSState *s, const MemoryRegionOps *ops,
+> diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
+> index ae12d41eee1..a8d6d4fb540 100644
+> --- a/hw/intc/arm_gicv3_its_kvm.c
+> +++ b/hw/intc/arm_gicv3_its_kvm.c
+> @@ -58,7 +58,7 @@ static int kvm_its_send_msi(GICv3ITSState *s, uint32_t value, uint16_t devid)
+>   
+>       msi.address_lo = extract64(s->gits_translater_gpa, 0, 32);
+>       msi.address_hi = extract64(s->gits_translater_gpa, 32, 32);
+> -    msi.data = le32_to_cpu(value);
+> +    msi.data = value;
+>       msi.flags = KVM_MSI_VALID_DEVID;
+>       msi.devid = devid;
+>       memset(msi.pad, 0, sizeof(msi.pad));
 
-BTW I was looking at the extra-commits in GetUTM and noticed one
-related to this:
+Could we also clean the other GIC uses in the same patch?
 
-commit c387fd021064cfb7b895877d0a04660a795887ee
-Author: Joelle van Dyne <j@getutm.app>
-Date:   Mon Dec 23 00:15:08 2024 -0800
-
-     hw/arm/virt: handle hvf with unknown max IPA size
-
-     When it is not possible to determine the max IPA bit size, the helper
-     function will return 0. We do not try to set up the memmap in this case
-     and instead fall back to the default in machvirt_init().
-
-     Signed-off-by: Joelle van Dyne <j@getutm.app>
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 5b1e375726d..251fc58b42c 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3047,6 +3047,11 @@ static int 
-virt_hvf_get_physical_address_range(MachineState *ms)
-      int default_ipa_size = hvf_arm_get_default_ipa_bit_size();
-      int max_ipa_size = hvf_arm_get_max_ipa_bit_size();
-
-+    /* Unknown max ipa size, we'll let the caller figure it out */
-+    if (max_ipa_size == 0) {
-+        return 0;
-+    }
-+
-      /* We freeze the memory map to compute the highest gpa */
-      virt_set_memmap(vms, max_ipa_size);
-
-(https://github.com/utmapp/qemu/commit/c387fd021064cfb7b895877d0a04660a795887ee)
+$ git grep DEVICE_NATIVE_ENDIAN hw/intc/arm_gic*
+hw/intc/arm_gic.c:2065:        .endianness = DEVICE_NATIVE_ENDIAN,
+hw/intc/arm_gic.c:2070:        .endianness = DEVICE_NATIVE_ENDIAN,
+hw/intc/arm_gic.c:2077:    .endianness = DEVICE_NATIVE_ENDIAN,
+hw/intc/arm_gic.c:2084:        .endianness = DEVICE_NATIVE_ENDIAN,
+hw/intc/arm_gic.c:2089:        .endianness = DEVICE_NATIVE_ENDIAN,
+hw/intc/arm_gic.c:2096:    .endianness = DEVICE_NATIVE_ENDIAN,
+hw/intc/arm_gicv3.c:420:        .endianness = DEVICE_NATIVE_ENDIAN,
+hw/intc/arm_gicv3.c:429:        .endianness = DEVICE_NATIVE_ENDIAN,
+hw/intc/arm_gicv3_its.c:1909:    .endianness = DEVICE_NATIVE_ENDIAN,
+hw/intc/arm_gicv3_its.c:1919:    .endianness = DEVICE_NATIVE_ENDIAN,
+hw/intc/arm_gicv3_its_common.c:100:    .endianness = DEVICE_NATIVE_ENDIAN,
 
 

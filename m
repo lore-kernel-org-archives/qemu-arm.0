@@ -4,101 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47276D29C2D
-	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 14:10:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1F20D29C2A
+	for <qemu-arm@archiver.kernel.org>; Mon, 19 Jan 2026 14:13:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vhpwp-00063N-06; Mon, 19 Jan 2026 09:09:39 -0500
+	id 1vhpzq-0000j5-8f; Mon, 19 Jan 2026 09:12:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vhpwm-00062E-TD
- for qemu-arm@nongnu.org; Mon, 19 Jan 2026 09:09:37 -0500
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vhpwk-000758-GZ
- for qemu-arm@nongnu.org; Mon, 19 Jan 2026 09:09:36 -0500
-Received: by mail-wm1-x344.google.com with SMTP id
- 5b1f17b1804b1-4801bc328easo35005415e9.3
- for <qemu-arm@nongnu.org>; Mon, 19 Jan 2026 06:09:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768831773; x=1769436573; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=IwKIh8LIEad7aH6Tqt5/QHLConUDcBI4y2gsj9RRJfA=;
- b=TuZILqF997+21e8wY+7NaeYDBOAIom7o1KwhqZMIvl9My6aQsne2Fm0FOSSeVzNGvm
- WsRpim479MV+LGWBeBZ2XFcVuchM6rJNDWluTX309dljUnQBGwcqxDdRWbVw7KjCiiwi
- f1cOX8muoBoAEmOhh6uB1PEmPBTpg+ZI21XxUxFUjHg0QaVVyca9s8IfM2F61rTSfDDM
- iEMMSsheKCeGcq9AzFVAGmrnEvJgluleyQ61IV7RPSBEZm2DG4VFRwYShBQX1YEFhKOB
- pnnPAk0LSWFSVBAN+sR19Ly6JV3conTyoI535WdHAcbDssqWtZn7Mqr8DZeoUv3+FXW+
- dN9w==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vhpzo-0000gI-OW
+ for qemu-arm@nongnu.org; Mon, 19 Jan 2026 09:12:44 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vhpzl-0007qg-O4
+ for qemu-arm@nongnu.org; Mon, 19 Jan 2026 09:12:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1768831960;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4yJcbJXxa0NBg6e/UZTm6jpNfPmN7vOTkKCXm18lRc0=;
+ b=FY8d8fxqjWnZRNfz7+uWGvDwKZ6aoB/R+YFzn6yyTHvbe0Oi+xatJQMflJfqGifc7RAXBZ
+ hUH/G80sOsz9cSVZxAFpmzXKN8P/ia/OucnM492Er4qmgYC3kp8Wu8fmqgSGS636xviJrt
+ nlt3m86AbTVKTN9XUYN9+7E6dYscwt8=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-155-_FJVtLANPwKtC9Yq4a3izQ-1; Mon, 19 Jan 2026 09:12:37 -0500
+X-MC-Unique: _FJVtLANPwKtC9Yq4a3izQ-1
+X-Mimecast-MFC-AGG-ID: _FJVtLANPwKtC9Yq4a3izQ_1768831956
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4801ad6e51cso35937125e9.2
+ for <qemu-arm@nongnu.org>; Mon, 19 Jan 2026 06:12:37 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768831773; x=1769436573;
+ d=1e100.net; s=20230601; t=1768831956; x=1769436756;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=IwKIh8LIEad7aH6Tqt5/QHLConUDcBI4y2gsj9RRJfA=;
- b=IRt76/BLgpFC+okLdfg7cVJaTdADyEuMIXP9spUeS7zxvNrFtX6PqeGeSchkfNoUWA
- YlPKGdwjSMYRXjYPTfAywC1FKALjsbC8Wc36z9nWUu9Mnc9SEv/AQahfscELoQ5tsZ/J
- WWI9s3Y+V2aLZedFoICLbmS6iQyud4mZyRIveyUqw85AWunsIwAPqufNC1tTyM4i9+WR
- 6QtWZb7Ns0L7QhP9jypXRpqhDHPOyRPKV8XRSgYVm2VoUvfl6yr+se2FrtvyFkW9crDO
- ALkXGaujia/QdRGT/jQEh4qXypIy5VsdIZ4astAVmF+6IQjmcWNbRsQ7OL/x46/3pK78
- 4rJw==
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=4yJcbJXxa0NBg6e/UZTm6jpNfPmN7vOTkKCXm18lRc0=;
+ b=ejHvT1X3F4qhFzUgkCeiKNPSiBp0/6dSrGJACx6VPeSgA1vdki1P4yRaunqXbORQay
+ /PS9SfPYFyCEOt9MfQm5V4pUJRVHblgCcjTxL182tHcS9niO5LEZtSeQ1Tsca4cqNHwk
+ ohtJ0e8rZeZ4xHqRSh57h/iY64zpVoOgGeGz9TINWCJ/4/0ANfkoBbAdPeU+EdimsriH
+ pP0B11LyIvAeYKqb25zOwfUBRSgoHS0tEHCqOd5vG/qrLvdj4+Uzg+DpKMs5uZjpwYLr
+ uM2zdQYHKQQfd1mIb+C8puYx3COnZty/b/bywS1A/8a4ddLHltspAhdbSYYqySN0Idsn
+ g2Ig==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXM6laTDCJzZAyaa0SIjKp0drDdUNXulBqrKAFjfBEU3Z4irheV4PbpLl2/QnXrZhYLXoecYhvFbQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzSBZoHY8i/Y0BQLXUktrV5tuhfoEAWnbTa6V9J0wkq865lz5dX
- MfA2LLp1+cg9BC7ibTxKU7NnWvKrgm2JP+uk1ChCjAqw7tb3vCmOQEcMyDevaKjCmhs=
-X-Gm-Gg: AY/fxX6E0stC6qgJ/1i4ZriM0IvG5xLbADvxJ5zmAzPMRFfPfMI5kltaHd+NrV/F7XM
- tqg/6Gg+OotglflEp5qvLGvBdBxQW3RMybnvMm/gJUvXgs3R8tRJqwcu0c3pX2a2/FqZHVZdqXi
- Sdhustg/cy58VnWW6RAhMs7l+0FVygqS4yb6IYTi9LPB/+LEFtqCmNEbdK0Cv1ePJsLbt/xgRkr
- RARvaErjwoS2MrsbO4Qs8q2J5taPLCQ+ykMXI4aZJPWd3RVgb5PJRkLrTdS6HNfbYSS3TktPdpo
- OX6BPpy8SUHucuBFqQRwRf6sxnVGg2N66YGje8B2hWAl0OtYfzk2+NLhkbRhycNaKxKE1MzuSJe
- L3zKIbrd9pS8/a8b/lOPPiQsGidI3dNjkWXlBUfHZ2IQQiRTwBePLoFTG+2/uJ6EpYi4u81pWCQ
- UEAQBrQw+zp4ziwM+44PKsvSWqjdTDMNaQK77HXvH0JJRB+xDEgJBsXaVcm875hc9Z
-X-Received: by 2002:a05:600c:310c:b0:47e:e20e:bbb2 with SMTP id
- 5b1f17b1804b1-4801eaadcc0mr133159705e9.7.1768831772723; 
- Mon, 19 Jan 2026 06:09:32 -0800 (PST)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4801fe47dddsm81031305e9.13.2026.01.19.06.09.31
+ AJvYcCVgrIFLm52b+fUqDAarjLiMhSz+uK4oySqIeCxDnDvm0tbJhv4bkOZCulbQ6n6vE+WKqnYxGoDmxQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yz9pXpEpsZoWIPDajA52CrjQCorPq3yWOfrsvR3SAm1T1VBDY0k
+ UrK+cwAW4mh/ALiObfy4UF6AF/aqiEC6wM23L1aOuNDy3lWdBYnb3zWP72eIwGQo0dID5xxQxue
+ X+yB7BrixfLAOxBSO9Ihd7xPS6T644X9Ilaa9pT0f997efdm0tfhitA==
+X-Gm-Gg: AY/fxX7W0T8c6SBrvH6Jm7hk95u78XKmCZi0MChzArGVwZ8+My+uhXENu7o0fV3Tq/z
+ tFad3UqBJxYJ5iu6Ub8/PRZELt1pDWwSxWbRkLWhUECA+xQ5LhGee1knWYTacSgGeBS/g2gEQC8
+ h6Mpp/3syQJW2gricIIQkQgQD/gSEMyUQR2dXvV2oW3vZD7XPJFTzLdsDwPyIXP27RnDN+tVqHF
+ UGLJSf/ZoUuARz1sfjbsY32e4dWOFmv4LPl/BOUiuZESSUC6gbiYMsToEUZ+E+I1dcZCkFPTweP
+ Qb+L+USbyjitauLzrxyS8ZIZFg/maF+n36ik55ow8n8RR6MMWU3LF9G53nhhqR5QVbP+h69lwGW
+ QJAe9oW0IcDTVAiObmLqZloqlVVA45c+CX9iKeAqoyh4ychjSrY1w8Oq0jg==
+X-Received: by 2002:a05:600c:5487:b0:477:755b:5587 with SMTP id
+ 5b1f17b1804b1-4801e2f055amr141807845e9.8.1768831956316; 
+ Mon, 19 Jan 2026 06:12:36 -0800 (PST)
+X-Received: by 2002:a05:600c:5487:b0:477:755b:5587 with SMTP id
+ 5b1f17b1804b1-4801e2f055amr141807355e9.8.1768831955838; 
+ Mon, 19 Jan 2026 06:12:35 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4801e8d90b3sm200129445e9.15.2026.01.19.06.12.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Jan 2026 06:09:32 -0800 (PST)
-Message-ID: <82fd0099-8041-43c2-9c4e-94c9f0398fac@linaro.org>
-Date: Mon, 19 Jan 2026 15:09:30 +0100
+ Mon, 19 Jan 2026 06:12:35 -0800 (PST)
+Message-ID: <386995bf-b5fc-4cb3-9a9e-8d598c86927f@redhat.com>
+Date: Mon, 19 Jan 2026 15:12:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v8 0/7] hw/misc: Introduce a generalized IOMMU test framework
+Subject: Re: [PATCH v7 34/36] hw/pci: Factor out common PASID capability
+ initialization
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+ ddutile@redhat.com, berrange@redhat.com, clg@redhat.com, alex@shazbot.org,
+ nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com,
+ wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
+ jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
+ zhenzhong.duan@intel.com, yi.l.liu@intel.com, kjaju@nvidia.com,
+ "Michael S . Tsirkin" <mst@redhat.com>
+References: <20260111195508.106943-1-skolothumtho@nvidia.com>
+ <20260111195508.106943-35-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260111195508.106943-35-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 4-ovcVLcN6XSq2G92-HcYMTPPYlJMvcoi_Llr8oTJBU_1768831956
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, eric.auger@redhat.com,
- Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini <pbonzini@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Mostafa Saleh <smostafa@google.com>,
- CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
-References: <20251224034647.2596434-1-tangtao1634@phytium.com.cn>
- <6d50c3fe-e235-48e8-b461-fe0689f12070@phytium.com.cn>
- <9fba7ded-d31d-4789-b83d-efcc96f5448e@linaro.org>
- <10e1b40c-2edd-400f-8c8e-e0f3ad4c6f75@redhat.com>
- <7881bfff-59f0-496f-967e-32a697ff11fb@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <7881bfff-59f0-496f-967e-32a697ff11fb@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.016,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,53 +123,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 15/1/26 21:56, Pierrick Bouvier wrote:
-> On 1/15/26 9:47 AM, Eric Auger wrote:
->> Hi Pierrick,
->>
->> On 1/15/26 12:39 AM, Pierrick Bouvier wrote:
->>> On 1/14/26 5:30 AM, Tao Tang wrote:
->>>>
->>>> A gentle ping on this series. Any further suggestions would be greatly
->>>> appreciated.
->>>>
->>>>
->>>> Link:
->>>>
->>>> https://lore.kernel.org/qemu-devel/20251224034647.2596434-1- 
->>>> tangtao1634@phytium.com.cn/
->>>>
->>>>
->>>>
->>>> Best regards,
->>>>
->>>> Tao
->>>>
->>> This version is in good shape and is ready to be merged.
->>> Eric, do you feel like merging it, or would you prefer someone else to
->>> pick it up?
->>
->> Peter generally sends the PRs for the vSMMU. Maybe this can also be
->> taken by qtests maintainers too.
->>
->> Thanks
->>
->> Eric
->>>
->>> Regards,
->>> Pierrick
->>>
->>
-> 
-> Ok, thanks.
-> We really need to help Tao to get this in, as it's really useful and he 
-> put a lot of effort into it, and waiting times between two reviews makes 
-> it probably a bit complicated for him.
 
-Since this series subject starts with 'hw/misc:' I'll queue it via
-my hw-misc tree, thanks all!
+
+On 1/11/26 8:53 PM, Shameer Kolothum wrote:
+> Refactor PCIe PASID capability initialization by moving the common
+> register init into a new helper, pcie_pasid_common_init().
+>
+> Subsequent patch to synthesize a vPASID will make use of this
+> helper.
+>
+> No functional change intended.
+>
+> Cc: Michael S. Tsirkin <mst@redhat.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Eric
+> ---
+>  hw/pci/pcie.c         | 19 ++++++++++++-------
+>  include/hw/pci/pcie.h |  2 ++
+>  2 files changed, 14 insertions(+), 7 deletions(-)
+>
+> diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
+> index 8568a062a5..efd5588e96 100644
+> --- a/hw/pci/pcie.c
+> +++ b/hw/pci/pcie.c
+> @@ -1273,18 +1273,13 @@ void pcie_acs_reset(PCIDevice *dev)
+>      }
+>  }
+>  
+> -/* PASID */
+> -void pcie_pasid_init(PCIDevice *dev, uint16_t offset, uint8_t pasid_width,
+> -                     bool exec_perm, bool priv_mod)
+> +void pcie_pasid_common_init(PCIDevice *dev, uint16_t offset,
+> +                            uint8_t pasid_width, bool exec_perm, bool priv_mod)
+>  {
+>      static const uint16_t control_reg_rw_mask = 0x07;
+>      uint16_t capability_reg;
+>  
+>      assert(pasid_width <= PCI_EXT_CAP_PASID_MAX_WIDTH);
+> -
+> -    pcie_add_capability(dev, PCI_EXT_CAP_ID_PASID, PCI_PASID_VER, offset,
+> -                        PCI_EXT_CAP_PASID_SIZEOF);
+> -
+>      capability_reg = ((uint16_t)pasid_width) << PCI_PASID_CAP_WIDTH_SHIFT;
+>      capability_reg |= exec_perm ? PCI_PASID_CAP_EXEC : 0;
+>      capability_reg |= priv_mod  ? PCI_PASID_CAP_PRIV : 0;
+> @@ -1296,6 +1291,16 @@ void pcie_pasid_init(PCIDevice *dev, uint16_t offset, uint8_t pasid_width,
+>      pci_set_word(dev->wmask + offset + PCI_PASID_CTRL, control_reg_rw_mask);
+>  
+>      dev->exp.pasid_cap = offset;
+> +
+> +}
+> +
+> +/* PASID */
+> +void pcie_pasid_init(PCIDevice *dev, uint16_t offset, uint8_t pasid_width,
+> +                     bool exec_perm, bool priv_mod)
+> +{
+> +    pcie_add_capability(dev, PCI_EXT_CAP_ID_PASID, PCI_PASID_VER, offset,
+> +                        PCI_EXT_CAP_PASID_SIZEOF);
+> +    pcie_pasid_common_init(dev, offset, pasid_width, exec_perm, priv_mod);
+>  }
+>  
+>  /* PRI */
+> diff --git a/include/hw/pci/pcie.h b/include/hw/pci/pcie.h
+> index d68bfa6257..fc02aeb169 100644
+> --- a/include/hw/pci/pcie.h
+> +++ b/include/hw/pci/pcie.h
+> @@ -155,6 +155,8 @@ void pcie_cap_slot_unplug_cb(HotplugHandler *hotplug_dev, DeviceState *dev,
+>  void pcie_cap_slot_unplug_request_cb(HotplugHandler *hotplug_dev,
+>                                       DeviceState *dev, Error **errp);
+>  
+> +void pcie_pasid_common_init(PCIDevice *dev, uint16_t offset,
+> +                            uint8_t pasid_width, bool exec_perm, bool priv_mod);
+>  void pcie_pasid_init(PCIDevice *dev, uint16_t offset, uint8_t pasid_width,
+>                       bool exec_perm, bool priv_mod);
+>  void pcie_pri_init(PCIDevice *dev, uint16_t offset, uint32_t outstanding_pr_cap,
 
 

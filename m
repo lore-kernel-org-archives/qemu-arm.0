@@ -4,70 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8681AD2ED0F
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 12:22:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D180AD2ECE9
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 12:24:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viAk8-0005e4-4j; Tue, 20 Jan 2026 07:21:57 -0500
+	id 1viAmk-0008Ue-6q; Tue, 20 Jan 2026 07:24:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1viAje-0005Lt-Gq
- for qemu-arm@nongnu.org; Tue, 20 Jan 2026 07:21:30 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <ppandit@redhat.com>)
+ id 1viAma-0008NX-Up
+ for qemu-arm@nongnu.org; Tue, 20 Jan 2026 07:24:30 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1viAjb-0008F9-Lx
- for qemu-arm@nongnu.org; Tue, 20 Jan 2026 07:21:25 -0500
+ (Exim 4.90_1) (envelope-from <ppandit@redhat.com>)
+ id 1viAmY-0000Bi-ML
+ for qemu-arm@nongnu.org; Tue, 20 Jan 2026 07:24:27 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768911682;
+ s=mimecast20190719; t=1768911865;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=ShMc2XHbUAPIbnNN5HY4lv4NPM3nDKydBPkK/9xe5Zg=;
- b=UW/574At3lZU/o4QyW+ayzC6kWX28fvGWTSYGQAbAreDJR2FOBHK+Rt0Qbys6EcCC66S2E
- 5wi/CcjfNu2/b5lDzOT19Fo3DBlbiZ583XnvikLqwQ2m+4WFDHEP9xiEBLgdbkdcfqYUWf
- k5GuH9INUsSJ2oK7hXFLBNFJxp4JKVI=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-442-zrtLTfGNPN-r8amCIVfXZg-1; Tue,
- 20 Jan 2026 07:21:16 -0500
-X-MC-Unique: zrtLTfGNPN-r8amCIVfXZg-1
-X-Mimecast-MFC-AGG-ID: zrtLTfGNPN-r8amCIVfXZg_1768911675
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EF10F18005A7; Tue, 20 Jan 2026 12:21:14 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.45.226.98])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D8A1B30001A2; Tue, 20 Jan 2026 12:21:10 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- qemu-arm@nongnu.org
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-devel@nongnu.org
-Subject: [PATCH] hw/arm: Move the "arm-cpu" compat settings out of
- hw/core/machine.c
-Date: Tue, 20 Jan 2026 13:21:08 +0100
-Message-ID: <20260120122108.131708-1-thuth@redhat.com>
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=9je19wIsyBuozw+rhD3RjIBV+rBhjXZKLgdw4oh4Y9I=;
+ b=QwKT6o6tvPH82aVoXkXEQ/uaOzrSA6ag2d8QVBtNQfVfFV2oANZsvDLqNDFzglpsmNkFcF
+ /1cWMa9mXbGcXxHqcMki7sFzX9dXBhTXY+MMUf98Mb1xmhT2ituLzFEuRgQA0yXk6/eZkX
+ FRspSJzifshUdmXtSs7NDgmZBYBthx4=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-475-gGtgALxCOMKwZXCpp-c5Hw-1; Tue, 20 Jan 2026 07:24:24 -0500
+X-MC-Unique: gGtgALxCOMKwZXCpp-c5Hw-1
+X-Mimecast-MFC-AGG-ID: gGtgALxCOMKwZXCpp-c5Hw_1768911863
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-477c49f273fso49916105e9.3
+ for <qemu-arm@nongnu.org>; Tue, 20 Jan 2026 04:24:24 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1768911863; x=1769516663;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=9je19wIsyBuozw+rhD3RjIBV+rBhjXZKLgdw4oh4Y9I=;
+ b=QSUQ6+LRJx20gBeh6Nond9EQcebGroO4eSiQw1OTCJfn94MEVYT3LomE6mzs45caGb
+ GlEX3+uUh3bpySKBsgCNmyLWg2JYAJFA/WWsGWpdO5nUIxRurSufHzNdxyBVCYCYXtsQ
+ L200JvrZMsvS5YvD3ygZggHGVhlCCSDFQxIcdlLFgQmnoWjYNinfchBAreYtzZHuJIxs
+ QZO8GJGUS/UYaY7sy4Buq9/7Y2tauClMqSJ6r2PdWlh4CL0RVhjHz2jNg7TINmsfe5AE
+ LKUGs4d6Vob9NWvRxj+7nxCOnVm171Yb5o2qoji/XRWpHS8GrP64y0baDEdchK4T8MCT
+ sG1A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUYCp7bg9Evp93PL70gO58h+/ijM5ZlkbCKi5e3KNF66p7NARZ/BFCeCJXO1lZoVLgjC1pSBu1YGA==@nongnu.org
+X-Gm-Message-State: AOJu0Yynf0w4H8pd8I9Y6xr0m0AAWiqMoNSZ+aAfjREb58AhxymmHBL0
+ BuDlYkwZkS4pTUdCgGCB3Rw5vZctdCnEbjza5noCqQu1a0K724UgZKcb4nSKp9Tzv0c+w3iNtg2
+ O/bWd/7wYPcAHM7jT1lfXxLkRvfhUqk1tVO1xGH0QEoByD+Ie3WY9Yr8vSTQx3NAxQpRA2P2rok
+ tXB7GUlUyZO1Fsw8/2iwTwCmaIJXuf
+X-Gm-Gg: AY/fxX5a79IYvog8O8Rg/EuNTJ1W6z2UXAiPWoLXYFgAicRdlILan4WmfRd97DS6udM
+ 6skrpXFeNzgus+EMsRgTJ0ovQBhUw9HEdyAbiLuq49snw3Wuop5/DUJ/q6sVuPwRKlE4PR/2Iph
+ /zTQwZr+qjsP00TUhC/f7y/+w/Aub7WEBwAR+KdbuX3LnGwmz9u0j//7YjQZGun+DWpF6Fgb0zT
+ cUDIAlPWKbQLl8jGpg1oxv6+upTdPdtx19vf9FkqD/F4yaZ37I/pTEW
+X-Received: by 2002:a05:600c:8b8c:b0:46f:c55a:5a8d with SMTP id
+ 5b1f17b1804b1-4801e2efd61mr183569205e9.4.1768911863202; 
+ Tue, 20 Jan 2026 04:24:23 -0800 (PST)
+X-Received: by 2002:a05:600c:8b8c:b0:46f:c55a:5a8d with SMTP id
+ 5b1f17b1804b1-4801e2efd61mr183568745e9.4.1768911862760; Tue, 20 Jan 2026
+ 04:24:22 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+References: <20260116135235.38092-1-mohamed@unpredictable.fr>
+ <20260116135235.38092-23-mohamed@unpredictable.fr>
+In-Reply-To: <20260116135235.38092-23-mohamed@unpredictable.fr>
+From: Prasad Pandit <ppandit@redhat.com>
+Date: Tue, 20 Jan 2026 17:54:06 +0530
+X-Gm-Features: AZwV_Qhtw5CsOxCan4HN2G6Un9pq1T_I_qORSudBsDoj2a_cQ18XT6wEQH-jwtg
+Message-ID: <CAE8KmOwJ-Gs+4gNaMmyxOXBZzU-exTCVS-vdLFBsX8f=H=K-VA@mail.gmail.com>
+Subject: Re: [PATCH v16 22/26] whpx: arm64: gicv3: add migration blocker
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: s5Fdq-7P47Vc2GERll1SSBs3P8gWbhI_qHKeaiFxe3Y_1768911863
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=ppandit@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.087,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,75 +117,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+On Fri, 16 Jan 2026 at 19:31, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+> GICv3 state save-restore is currently not implemented yet.
+>
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>  hw/intc/arm_gicv3_whpx.c | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
+>
+> diff --git a/hw/intc/arm_gicv3_whpx.c b/hw/intc/arm_gicv3_whpx.c
+> index 9bc036d1ac..84ef16d9b7 100644
+> --- a/hw/intc/arm_gicv3_whpx.c
+> +++ b/hw/intc/arm_gicv3_whpx.c
+> @@ -17,6 +17,7 @@
+>  #include "system/whpx-internal.h"
+>  #include "gicv3_internal.h"
+>  #include "vgic_common.h"
+> +#include "migration/blocker.h"
+>  #include "qom/object.h"
+>  #include "target/arm/cpregs.h"
+>
+> @@ -204,6 +205,15 @@ static void whpx_gicv3_realize(DeviceState *dev, Error **errp)
+>          error_setg(errp, "Nested virtualisation not currently supported by WHPX.");
+>          return;
+>      }
+> +
+> +    Error *whpx_migration_blocker = NULL;
+> +
+> +    error_setg(&whpx_migration_blocker,
+> +        "Live migration disabled because GIC state save/restore not supported on WHPX");
+> +    if (migrate_add_blocker(&whpx_migration_blocker, errp)) {
+> +        error_free(whpx_migration_blocker);
 
-The hw_compat_* arrays in hw/core/machine.c should be used for generic
-compat settings that might affect all (or at least multiple) machines.
-Target specific settings should rather go into the target specific
-source files instead. For arm/aarch64, the virt machine is the only
-one that cares about compat settings, so move the "arm-cpu" related
-switches to hw/arm/virt.c now.
+* This error_free() might cause an issue, IIUC
+     migrate_add_blocker(&wphx_migration_blocker
+      -> migrate_add_blocker_modes(reasonp,
+       -> is_only_migratable(reasonp, ...) /  is_busy(reasonp, ...)
+            ...
+            error_propagate_prepend(errp, *reasonp, ...)
+            *reasonp = NULL;
+            return true;
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+* ie. when error_propagate_prepend() happens, errp starts pointing to
+*reasonp, so *reasonp is set to NULL above. Instead of error_free() ->
+say -> error_report_err(errp) above;
+
+Thank you.
 ---
- hw/arm/virt.c     | 10 ++++++++++
- hw/core/machine.c |  2 --
- 2 files changed, 10 insertions(+), 2 deletions(-)
-
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 4badc1a7348..99040e08f6a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -3571,8 +3571,13 @@ DEFINE_VIRT_MACHINE(10, 0)
- 
- static void virt_machine_9_2_options(MachineClass *mc)
- {
-+    static GlobalProperty compat_9_2[] = {
-+        { "arm-cpu", "backcompat-pauth-default-use-qarma5", "true"},
-+    };
-+
-     virt_machine_10_0_options(mc);
-     compat_props_add(mc->compat_props, hw_compat_9_2, hw_compat_9_2_len);
-+    compat_props_add(mc->compat_props, compat_9_2, G_N_ELEMENTS(compat_9_2));
- }
- DEFINE_VIRT_MACHINE(9, 2)
- 
-@@ -3589,9 +3594,14 @@ DEFINE_VIRT_MACHINE(9, 1)
- 
- static void virt_machine_9_0_options(MachineClass *mc)
- {
-+    static GlobalProperty compat_9_0[] = {
-+        { "arm-cpu", "backcompat-cntfrq", "true" },
-+    };
-+
-     virt_machine_9_1_options(mc);
-     mc->smbios_memory_device_size = 16 * GiB;
-     compat_props_add(mc->compat_props, hw_compat_9_0, hw_compat_9_0_len);
-+    compat_props_add(mc->compat_props, compat_9_0, G_N_ELEMENTS(compat_9_0));
- }
- DEFINE_VIRT_MACHINE(9, 0)
- 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 6411e68856b..1c1de7b5d18 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -59,7 +59,6 @@ GlobalProperty hw_compat_10_0[] = {
- const size_t hw_compat_10_0_len = G_N_ELEMENTS(hw_compat_10_0);
- 
- GlobalProperty hw_compat_9_2[] = {
--    { "arm-cpu", "backcompat-pauth-default-use-qarma5", "true"},
-     { "virtio-balloon-pci", "vectors", "0" },
-     { "virtio-balloon-pci-transitional", "vectors", "0" },
-     { "virtio-balloon-pci-non-transitional", "vectors", "0" },
-@@ -76,7 +75,6 @@ GlobalProperty hw_compat_9_1[] = {
- const size_t hw_compat_9_1_len = G_N_ELEMENTS(hw_compat_9_1);
- 
- GlobalProperty hw_compat_9_0[] = {
--    { "arm-cpu", "backcompat-cntfrq", "true" },
-     { "scsi-hd", "migrate-emulated-scsi-request", "false" },
-     { "scsi-cd", "migrate-emulated-scsi-request", "false" },
-     { "vfio-pci", "skip-vsc-check", "false" },
--- 
-2.52.0
+  - Prasad
 
 

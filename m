@@ -4,93 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D597CA5FB5
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 17:00:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB264CA5FB7
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 17:11:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viF5N-0000nG-QL; Tue, 20 Jan 2026 12:00:09 -0500
+	id 1viF9Y-0004GN-It; Tue, 20 Jan 2026 12:04:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1viF5E-0000ew-Ad
- for qemu-arm@nongnu.org; Tue, 20 Jan 2026 12:00:00 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1viF5C-000784-JA
- for qemu-arm@nongnu.org; Tue, 20 Jan 2026 11:59:59 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-47ff94b46afso193355e9.1
- for <qemu-arm@nongnu.org>; Tue, 20 Jan 2026 08:59:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768928397; x=1769533197; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=LmCUs282K4/tylcg9QZD7xuR1Rh/5OFRlrbEouPAO4w=;
- b=qU1ZXc3De0YYhLmx3UNEl3UpQAK3R93Y3Zt7sQETkluD+dMm3fqMkOrizos8ocTjqT
- fYbvrxIrMdZBOhN//lyCud+8KauFVIfrUD1Ak2Sk7m9SmSbMX7a4tJWloqWNT331RchF
- bry1sWRLhEGaBi2QUi3qOj4Ga3NA5YS2/Rjh9fx6dSgzsFan0DGkhYcBrX2Ks9uU2guM
- KBWnQ/ahsmQsxYQiUWJcb5iSWyKgqAQmeu0qkx4Ii0qiltDw9ov4Ed3nnB3h09dmy47W
- zOD3x6xTz/Voy2aG2eVHPCRwxqWdhPCLt7zSvSzDdEdo0sLCtwgM+mEDpx0HxBUgM7J5
- F/AA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768928397; x=1769533197;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=LmCUs282K4/tylcg9QZD7xuR1Rh/5OFRlrbEouPAO4w=;
- b=tutSEfmmsjJYrL5KhknQapWYem8i7PdFb+jQFU1/Oy150dAUAmOSaO46oU0lnv89iE
- 2L5EddfvEgJVwCu8558IrYofP0F5RXX1XJRX4DAlGVFIuKuxlS2zeIj4c3K1F6h0m0vs
- aYnyTycznqeCxPUikF2UDb3AM4Sye1/ZyDJJ0R7JTJfnhCUkVVFbd/xfhZX73zEkaIZg
- jQeZcWu4d6zyqwv08EN6b/XIT9/3+lwGyUtDkf2ENZ09kiAmNhJrT1inAFX1lc+44gED
- DWl+AtlvjaR2IOWIQj9f50cWcSBJRXfRHisgYpjxzYAMW7cjPyDJbI8Hn8m9LQ7NSxGN
- PXSQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVGbp/7Y3lDu/QSRz3pDxe7Wto8j6QiiIMDqgG8Z1xmUbsZj3mmBxMk06Vx9YmCkpVV+lgBNqgDOA==@nongnu.org
-X-Gm-Message-State: AOJu0Yx7DIYAOF1JKI+BAbe5OxS1pccGwOvqVK+l7yzzMBMtFxguAXwW
- ZR1sdHpn/rPQmke9IyBvp9n76vtC7ECNUM57BKw2HGtb38s7mtDWKVHTLenwTnvx5NM=
-X-Gm-Gg: AY/fxX5l5xJ8SHIXwRpbPlyVITk76uEZgASDuJjI2UlhWU9we68NmJc4pBuT7T4G9Qd
- xciYFqlQOUWm+1unPtIe6l94flLEMfcDPhcTy4YLoN/9Pts0X2sR9cWzRTqIpq18uLrJGA0ZliJ
- lyhFD6zdYWUd7JWG7IPWLmtHj9WUcKkNQ7yU+rvDpz7X6TZ+zarTC+SL19qV/P9xj8k6l+67AL6
- wIplaD1XiL1j+R4MX+80lJ1fjJcPI13SHDgzEjDTN/X7NX0afVBXfY7UXf78aGXeMgSijKnbCo9
- 1s7HEZofqyRca8DA3JI3L/flbMjou+Oxc64LP7sOzXsWFQPrzlD+CnF3EZKe0uxvc3JC/yhGIQz
- 3Mj/UWvOhoG5dmaghuoIQMnW7YAKQeBNVFXRRBpv57K4Xa3kd66W1OS2zSou297CdOVKHvQ7GW8
- ltr2Whpq4DOL4oXndqSZ993Lj06tlYQcwiVlc1ZDAyl2S6w1VeABOLeg==
-X-Received: by 2002:a05:600c:8208:b0:47e:e981:78b4 with SMTP id
- 5b1f17b1804b1-4801e67b738mr194331985e9.12.1768928396810; 
- Tue, 20 Jan 2026 08:59:56 -0800 (PST)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4801e86c00esm252289045e9.2.2026.01.20.08.59.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Jan 2026 08:59:56 -0800 (PST)
-Message-ID: <ae4c2553-c82e-4ba5-a79d-535e02b39e44@linaro.org>
-Date: Tue, 20 Jan 2026 17:59:55 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/14] Freescale SDHCI Fixes
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- Guenter Roeck <linux@roeck-us.net>, Bin Meng <bmeng.cn@gmail.com>,
- Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1viF9L-0004Bg-NM; Tue, 20 Jan 2026 12:04:20 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1viF9I-00083M-2X; Tue, 20 Jan 2026 12:04:15 -0500
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id D01E9596ABC;
+ Tue, 20 Jan 2026 18:04:06 +0100 (CET)
+X-Virus-Scanned: amavis at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
+ id e_JtQ4S0D29p; Tue, 20 Jan 2026 18:04:04 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 6EC1B596ABB; Tue, 20 Jan 2026 18:04:04 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 6CE28596A0D;
+ Tue, 20 Jan 2026 18:04:04 +0100 (CET)
+Date: Tue, 20 Jan 2026 18:04:04 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Bernhard Beschow <shentey@gmail.com>
+cc: qemu-devel@nongnu.org, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org, 
+ Guenter Roeck <linux@roeck-us.net>, Bin Meng <bmeng.cn@gmail.com>, 
+ Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
  qemu-block@nongnu.org, qemu-ppc@nongnu.org
+Subject: Re: [PATCH 00/14] Freescale SDHCI Fixes
+In-Reply-To: <20260112145418.220506-1-shentey@gmail.com>
+Message-ID: <ae54581c-2a49-b6c2-cde1-d50bbde70a84@eik.bme.hu>
 References: <20260112145418.220506-1-shentey@gmail.com>
- <4add79fa-6cee-4795-96e9-033ae98c472e@linaro.org>
- <3F4EA15D-0769-4FF6-BC25-B1052EA69032@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <3F4EA15D-0769-4FF6-BC25-B1052EA69032@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -107,35 +67,175 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 18/1/26 23:56, Bernhard Beschow wrote:
-> 
-> 
-> Am 18. Januar 2026 18:23:11 UTC schrieb "Philippe Mathieu-Daudé" <philmd@linaro.org>:
->>> Bernhard Beschow (14):
->>>     hw/sd/sdhci: Fix TYPE_IMX_USDHC to implement sd-spec-version 3 by
->>>       default
->>>     hw/arm/fsl-imx6: Remove now redundant setting of "sd-spec-version"
->>>       property
->>>     hw/arm/fsl-imx6: Fix naming of SDHCI related constants and attributes
->>>     hw/arm/fsl-imx25: Apply missing reset quirk
->>>     Revert "hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*"
->>>     hw/sd/sdhci: Consolidate eSDHC constants
->>>     hw/sd/sdhci: Rename usdhc_ functions
->>>     hw/sd/sdhci: Add TYPE_FSL_ESDHC_BE
->>>     hw/ppc/e500: Use TYPE_FSL_ESDHC_BE
->>>     hw/arm/fsl-imx25: Extract TYPE_FSL_ESDHC_LE
->>>     hw/sd/sdhci: Remove endianness property
->>>     hw/sd/sdhci: Add uSDHC-specific quirk
->>>     hw/sd/sdhci: Remove vendor property
->>>     hw/sd/trace-events: Remove redundant "SWITCH " command name
->>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>
->> and queued, thanks!
-> 
-> Thanks, Phil!
-> 
-> Could you do me a favor and drop patch "hw/sd/sdhci: Add uSDHC-specific quirk" for now? Although the patch does solve a boot problem I think it needs some more thought. Thanks!
+On Mon, 12 Jan 2026, Bernhard Beschow wrote:
+> This series splits TYPE_IMX_USDHC into three device models which fixes issues
+> in the ppce500 and some i.MX machines. In particular, it introduces uSDHC's
+> predecessor eSDHC in big and little endian variants. Once the eSDHCs are
+> split off, uSDHC emulation is improved which is a stepping stone towards
+> running u-boot on the i.MX8MP (not implemented yet).
+>
+> In a way this series picks up previous efforts:
+> * https://lore.kernel.org/qemu-devel/20250310000620.70120-14-philmd@linaro.org
+> * https://lore.kernel.org/qemu-devel/20250310000620.70120-15-philmd@linaro.org
+>
+> There is quite some code churn involved to fix all the issues addressed in
+> this series. Let me know if you have any better ideas to achieve the same.
+>
+> Best regards,
+> Bernhard
+>
+> Testing done:
+> * make check
+> * Boot https://www.qemu-advent-calendar.org/2018/download/day19.tar.xz in
+> ppce500
+> * Boot guest in imx8mp-evk
 
-Done.
+I've tried it with the A1222 U-Boot and it still works the same with this 
+series as before so:
+
+Tested-by: BALATON Zoltan <balaton@eik.bme.hu>
+
+Looks like after this series I can revert this change:
+
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 5d8dad7bba..c86dfa281f 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -614,11 +614,11 @@ static void 
+sdhci_sdma_transfer_multi_blocks(SDHCIState *s)
+       * XXX: Some sd/mmc drivers (for example, u-boot-slp) do not account for
+       * possible stop at page boundary if initial address is not page aligned,
+       * allow them to work properly
+       */
+      if ((s->sdmasysad % boundary_chk) == 0) {
+-//        page_aligned = true;
++        page_aligned = true;
+      }
+
+      s->prnsts |= SDHC_DATA_INHIBIT | SDHC_DAT_LINE_ACTIVE;
+      if (s->trnmod & SDHC_TRNS_READ) {
+          s->prnsts |= SDHC_DOING_READ;
+
+which needed to be commented out before but now works with or without 
+this change. Is this XXX hack still needed?
+
+Another change I see is that before it ended in:
+
+SDHC wr_4b @0x44 <- 0x00000010 read-only
+SDHC wr_4b @0x44 <- 0x00000010 read-only
+
+repeated 18 times which now says:
+
+SD: CMD12 in a wrong state: transfer (spec v3.01)
+SD: CMD12 in a wrong state: transfer (spec v3.01)
+
+repeated 17 times. But this fails after not finding a bootable device so 
+I'm not sure this is not a bug in this U-Boot version. With more traces 
+enabled it seems to do some transfer then get these errors when trying to 
+continue reading:
+
+sdcard_read_data SD    READ_SINGLE_BLOCK/ CMD17 ofs 509 size 512 blklen 512
+sdbus_read @sd-bus value 0x00
+sdcard_read_data SD    READ_SINGLE_BLOCK/ CMD17 ofs 510 size 512 blklen 512
+sdbus_read @sd-bus value 0x55
+sdcard_read_data SD    READ_SINGLE_BLOCK/ CMD17 ofs 511 size 512 blklen 512
+sdbus_read @sd-bus value 0xaa
+sdhci_end_transfer Automatically issue CMD12 0x00000000
+sdbus_command @sd-bus CMD12 arg 0x00000000
+sdcard_normal_command SD    STOP_TRANSMISSION/ CMD12 arg 0x00000000 (mode transfer, state transfer)
+SD: CMD12 in a wrong state: transfer (spec v3.01)
+sdcard_response ILLEGAL RESP (sz:0)
+sdhci_access wr32: addr[0x000c] <- 0x113a0037 (289013815)
+sdhci_access rd32: addr[0x0030] -> 0x0000000b (11)
+sdhci_access rd32: addr[0x0030] -> 0x0000000b (11)
+sdhci_access rd32: addr[0x0010] -> 0x00000900 (2304)
+sdhci_access rd32: addr[0x0030] -> 0x0000000b (11)
+sdhci_access wr32: addr[0x0030] <- 0xfffffeff (4294967039)
+sdhci_access wr32: addr[0x0030] <- 0xfffffeff (4294967039)
+sdbus_get_dat_lines @sd-bus dat_lines: 15
+sdbus_get_cmd_line @sd-bus cmd_line: 1
+sdhci_access rd32: addr[0x0024] -> 0x01ff0000 (33488896)
+sdbus_get_dat_lines @sd-bus dat_lines: 15
+sdbus_get_cmd_line @sd-bus cmd_line: 1
+sdhci_access rd32: addr[0x0024] -> 0x01ff0000 (33488896)
+sdbus_get_dat_lines @sd-bus dat_lines: 15
+sdbus_get_cmd_line @sd-bus cmd_line: 1
+sdhci_access rd32: addr[0x0024] -> 0x01ff0000 (33488896)
+sdhci_access wr32: addr[0x0038] <- 0x00000000 (0)
+sdhci_access wr32: addr[0x0008] <- 0x00000200 (512)
+sdhci_send_command CMD16 ARG[0x00000200]
+sdbus_command @sd-bus CMD16 arg 0x00000200
+sdcard_normal_command SD         SET_BLOCKLEN/ CMD16 arg 0x00000200 (mode transfer, state transfer)
+sdcard_set_blocklen block len 0x200
+sdcard_response RESP#1 (normal cmd) (sz:4)
+sdhci_response4 RSPREG[31..0]=0x00400900
+sdhci_access wr32: addr[0x000c] <- 0x101a0037 (270139447)
+sdhci_access rd32: addr[0x0030] -> 0x00000001 (1)
+sdhci_access rd32: addr[0x0030] -> 0x00000001 (1)
+sdhci_access rd32: addr[0x0010] -> 0x00400900 (4196608)
+sdhci_access wr32: addr[0x0030] <- 0xfffffeff (4294967039)
+sdhci_access wr32: addr[0x0030] <- 0xfffffeff (4294967039)
+sdbus_get_dat_lines @sd-bus dat_lines: 15
+sdbus_get_cmd_line @sd-bus cmd_line: 1
+sdhci_access rd32: addr[0x0024] -> 0x01ff0000 (33488896)
+sdbus_get_dat_lines @sd-bus dat_lines: 15
+sdbus_get_cmd_line @sd-bus cmd_line: 1
+sdhci_access rd32: addr[0x0024] -> 0x01ff0000 (33488896)
+sdbus_get_dat_lines @sd-bus dat_lines: 15
+sdbus_get_cmd_line @sd-bus cmd_line: 1
+sdhci_access rd32: addr[0x0024] -> 0x01ff0000 (33488896)
+sdhci_access wr32: addr[0x0000] <- 0x79401de8 (2034245096)
+sdhci_access wr32: addr[0x0004] <- 0x00017200 (94720)
+sdhci_access rd32: addr[0x002c] -> 0x000b011f (721183)
+sdhci_access wr32: addr[0x002c] <- 0x000b011f (721183)
+sdhci_access wr32: addr[0x0038] <- 0x00000000 (0)
+sdhci_access wr32: addr[0x0008] <- 0x00000200 (512)
+sdhci_send_command CMD17 ARG[0x00000200]
+sdbus_command @sd-bus CMD17 arg 0x00000200
+sdcard_normal_command SD    READ_SINGLE_BLOCK/ CMD17 arg 0x00000200 (mode transfer, state transfer)
+sdcard_req_addr req 0x200 addr 0x200
+sdcard_read_block addr 0x200 size 0x200
+sdcard_response RESP#1 (normal cmd) (sz:4)
+sdhci_response4 RSPREG[31..0]=0x00000900
+sdcard_read_data SD    READ_SINGLE_BLOCK/ CMD17 ofs 0 size 512 blklen 512
+sdbus_read @sd-bus value 0x00
+sdcard_read_data SD    READ_SINGLE_BLOCK/ CMD17 ofs 1 size 512 blklen 512
+sdbus_read @sd-bus value 0x00
+
+Regards,
+BALATON Zoltan
+
+> Bernhard Beschow (14):
+>  hw/sd/sdhci: Fix TYPE_IMX_USDHC to implement sd-spec-version 3 by
+>    default
+>  hw/arm/fsl-imx6: Remove now redundant setting of "sd-spec-version"
+>    property
+>  hw/arm/fsl-imx6: Fix naming of SDHCI related constants and attributes
+>  hw/arm/fsl-imx25: Apply missing reset quirk
+>  Revert "hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*"
+>  hw/sd/sdhci: Consolidate eSDHC constants
+>  hw/sd/sdhci: Rename usdhc_ functions
+>  hw/sd/sdhci: Add TYPE_FSL_ESDHC_BE
+>  hw/ppc/e500: Use TYPE_FSL_ESDHC_BE
+>  hw/arm/fsl-imx25: Extract TYPE_FSL_ESDHC_LE
+>  hw/sd/sdhci: Remove endianness property
+>  hw/sd/sdhci: Add uSDHC-specific quirk
+>  hw/sd/sdhci: Remove vendor property
+>  hw/sd/trace-events: Remove redundant "SWITCH " command name
+>
+> hw/sd/sdhci-internal.h    |   3 -
+> include/hw/arm/fsl-imx6.h |   4 +-
+> include/hw/sd/sdhci.h     |   8 +-
+> hw/arm/fsl-imx25.c        |   5 +-
+> hw/arm/fsl-imx6.c         |  18 ++--
+> hw/ppc/e500.c             |  10 +-
+> hw/sd/sdhci.c             | 201 ++++++++++++++++++++++++--------------
+> hw/sd/trace-events        |   2 +-
+> 8 files changed, 146 insertions(+), 105 deletions(-)
+>
+> --
+> 2.52.0
+>
+>
+>
 

@@ -4,46 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8D35D2ECF9
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 05:20:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6251D2ECF7
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 05:20:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vi49Q-0004N9-7G; Tue, 20 Jan 2026 00:19:36 -0500
+	id 1vi4AQ-0006Aw-CF; Tue, 20 Jan 2026 00:20:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vi49O-0004Ll-I7; Tue, 20 Jan 2026 00:19:34 -0500
+ id 1vi4AC-0005fe-Qx; Tue, 20 Jan 2026 00:20:24 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vi49N-0004ZS-6p; Tue, 20 Jan 2026 00:19:34 -0500
+ id 1vi4AB-0004v7-6K; Tue, 20 Jan 2026 00:20:24 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 20 Jan
- 2026 13:19:02 +0800
+ 2026 13:19:05 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 20 Jan 2026 13:19:02 +0800
+ Transport; Tue, 20 Jan 2026 13:19:05 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
  <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
  list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>, Nabih Estefan
- <nabihestefan@google.com>
-Subject: [PATCH v5 07/22] hw/arm/aspeed: Attach LTPI controller to AST1700
- model
-Date: Tue, 20 Jan 2026 13:18:38 +0800
-Message-ID: <20260120051859.1920565-8-kane_chen@aspeedtech.com>
+CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>
+Subject: [PATCH v5 14/22] hw/arm/aspeed: Introduce 'bus-label' property for
+ AST1700 SoC
+Date: Tue, 20 Jan 2026 13:18:45 +0800
+Message-ID: <20260120051859.1920565-15-kane_chen@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260120051859.1920565-1-kane_chen@aspeedtech.com>
 References: <20260120051859.1920565-1-kane_chen@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=kane_chen@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -71,92 +69,67 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
-Connect the LTPI controller to the AST1700 model by mapping its MMIO
-region.
+The AST2700 SoC can be integrated with multiple AST1700 IO expanders.
+Without unique identifiers, the I2C bus object names for the primary
+BMC SoC and multiple expander chips may collide in the QOM
+(QEMU Object Model) tree.
+
+To resolve this, introduce a bus-label property to the AST1700 SoC.
+This allows the parent SoC (AST2700) to assign a unique prefix
+(e.g., "ioexp0", "ioexp1") to each AST1700 instance. These labels
+ensure that the bus naming hierarchy remains distinct and traceable
+across different expanders.
 
 Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Reviewed-by: Nabih Estefan <nabihestefan@google.com>
-Tested-by: Nabih Estefan <nabihestefan@google.com>
 ---
- include/hw/arm/aspeed_ast1700.h |  3 +++
- hw/arm/aspeed_ast1700.c         | 28 ++++++++++++++++++++++++++++
- 2 files changed, 31 insertions(+)
+ include/hw/arm/aspeed_ast1700.h | 1 +
+ hw/arm/aspeed_ast1700.c         | 1 +
+ hw/arm/aspeed_ast27x0.c         | 3 +++
+ 3 files changed, 5 insertions(+)
 
 diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_ast1700.h
-index 378dcb437a..addea3ab1f 100644
+index 63cfcb4c24..d364203175 100644
 --- a/include/hw/arm/aspeed_ast1700.h
 +++ b/include/hw/arm/aspeed_ast1700.h
-@@ -9,6 +9,7 @@
- #define ASPEED_AST1700_H
+@@ -27,6 +27,7 @@ struct AspeedAST1700SoCState {
+     MemoryRegion *dram_mr;
+     uint8_t board_idx;
+     uint32_t silicon_rev;
++    char *bus_label;
  
- #include "hw/core/sysbus.h"
-+#include "hw/misc/aspeed_ltpi.h"
- 
- #define TYPE_ASPEED_AST1700 "aspeed.ast1700"
- 
-@@ -18,6 +19,8 @@ struct AspeedAST1700SoCState {
-     SysBusDevice parent_obj;
- 
-     MemoryRegion iomem;
-+
-+    AspeedLTPIState ltpi;
- };
- 
- #endif /* ASPEED_AST1700_H */
+     AspeedLTPIState ltpi;
+     SerialMM uart;
 diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c
-index dd38b819b8..e4c8565d3f 100644
+index c7eaf583e2..0f2d2c381d 100644
 --- a/hw/arm/aspeed_ast1700.c
 +++ b/hw/arm/aspeed_ast1700.c
-@@ -13,6 +13,14 @@
- 
- #define AST2700_SOC_LTPI_SIZE        0x01000000
- 
-+enum {
-+    ASPEED_AST1700_DEV_LTPI_CTRL,
-+};
-+
-+static const hwaddr aspeed_ast1700_io_memmap[] = {
-+    [ASPEED_AST1700_DEV_LTPI_CTRL] =  0x00C34000,
-+};
-+
- static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
- {
-     AspeedAST1700SoCState *s = ASPEED_AST1700(dev);
-@@ -22,6 +30,25 @@ static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
-     memory_region_init(&s->iomem, OBJECT(s), TYPE_ASPEED_AST1700,
-                        AST2700_SOC_LTPI_SIZE);
-     sysbus_init_mmio(sbd, &s->iomem);
-+
-+    /* LTPI controller */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ltpi), errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(&s->iomem,
-+                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_LTPI_CTRL],
-+                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ltpi), 0));
-+}
-+
-+static void aspeed_ast1700_instance_init(Object *obj)
-+{
-+    AspeedAST1700SoCState *s = ASPEED_AST1700(obj);
-+
-+    /* LTPI controller */
-+    object_initialize_child(obj, "ltpi-ctrl",
-+                            &s->ltpi, TYPE_ASPEED_LTPI);
-+
-+    return;
- }
- 
- static void aspeed_ast1700_class_init(ObjectClass *klass, const void *data)
-@@ -36,6 +63,7 @@ static const TypeInfo aspeed_ast1700_info = {
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(AspeedAST1700SoCState),
-     .class_init    = aspeed_ast1700_class_init,
-+    .instance_init = aspeed_ast1700_instance_init,
+@@ -156,6 +156,7 @@ static void aspeed_ast1700_instance_init(Object *obj)
+ static const Property aspeed_ast1700_props[] = {
+     DEFINE_PROP_UINT8("board-idx", AspeedAST1700SoCState, board_idx, 0),
+     DEFINE_PROP_UINT32("silicon-rev", AspeedAST1700SoCState, silicon_rev, 0),
++    DEFINE_PROP_STRING("bus-label", AspeedAST1700SoCState, bus_label),
+     DEFINE_PROP_LINK("dram", AspeedAST1700SoCState, dram_mr,
+                      TYPE_MEMORY_REGION, MemoryRegion *),
  };
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 58977e2fa3..b4b5afe6d3 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -503,11 +503,14 @@ static void aspeed_soc_ast2700_init(Object *obj)
+     }
  
- static void aspeed_ast1700_register_types(void)
+     for (i = 0; i < sc->ioexp_num; i++) {
++        g_autofree char *bus_label = g_strdup_printf("ioexp%d", i);
+         /* AST1700 IOEXP */
+         object_initialize_child(obj, "ioexp[*]", &s->ioexp[i],
+                                 TYPE_ASPEED_AST1700);
+         qdev_prop_set_uint32(DEVICE(&s->ioexp[i]), "silicon-rev",
+                              sc->silicon_rev);
++        qdev_prop_set_string(DEVICE(&s->ioexp[i]), "bus-label",
++                             bus_label);
+     }
+ 
+     object_initialize_child(obj, "dpmcu", &s->dpmcu,
 -- 
 2.43.0
 

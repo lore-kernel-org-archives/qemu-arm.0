@@ -4,103 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B875CA5FCC
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 17:58:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B68DBCA5FB8
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 18:03:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viFzH-0003Fu-CV; Tue, 20 Jan 2026 12:57:55 -0500
+	id 1viG4c-0006MM-1V; Tue, 20 Jan 2026 13:03:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1viFzF-0003EA-R4
- for qemu-arm@nongnu.org; Tue, 20 Jan 2026 12:57:53 -0500
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1viG4P-0006FI-QP
+ for qemu-arm@nongnu.org; Tue, 20 Jan 2026 13:03:21 -0500
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1viFzE-0008KW-4j
- for qemu-arm@nongnu.org; Tue, 20 Jan 2026 12:57:53 -0500
-Received: by mail-wr1-x442.google.com with SMTP id
- ffacd0b85a97d-430f57cd471so3008388f8f.0
- for <qemu-arm@nongnu.org>; Tue, 20 Jan 2026 09:57:51 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1viG4O-0000R0-2A
+ for qemu-arm@nongnu.org; Tue, 20 Jan 2026 13:03:13 -0500
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-79028cb7f92so46859877b3.2
+ for <qemu-arm@nongnu.org>; Tue, 20 Jan 2026 10:03:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1768932191; cv=none;
+ d=google.com; s=arc-20240605;
+ b=VNpXSK4eAVU0xasIcQe+wg5fkxzqLZ77AUhn8IeCl8s9SJOcL2+vNFr+t9EzXslPLW
+ Dg1MEs0xjQ/sR/rCk6NjO06fN1C1kMaND9TWow7csDFx4zfbnjZLWVg7FCAUHF+8Yw2A
+ 6qNMlEi6b7vVqmo8VUUf1VUaKD+STYIs2n5vvN0Todx3HvNJhnamwNfR0UUK5D3e4498
+ u/NvOUTE3qW68gJ6fQk8QZdfW3eIFveboUJh7s5djhFO6O4HQMfOaxwleL+K+R/DcdOg
+ nv3VJtztSLE74G4zc/35LCDwx3cdVKRW5Bi20O8UfpdmgXnXNw+PCx1utReTzoBQQkvi
+ apjw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=NDi/W0I+/+kW+XukCQLUwooPVxYe/yxhyjh9j/z90ig=;
+ fh=AQi4GhIBbQVMLUI9v7mbcKjX1LCGSwgWmU6L7P9q2j4=;
+ b=fUtx4zQ8UMdSgqfPmOknWn2Z6Sl+VQH4o0s0wEhTbSaoVA9slZOimwR34xcBqxXWAn
+ Ijlabr5O/dFmLhDA6tSCdGEpDCR7+Zj6tytq1c3we/PUB927m0yJrSFLcmsatFhmMYxM
+ Ve8WGA+hNr9brIP2+8aKSrRJzOmPrqgcDcK9VC2QU7/e5C5a14leiu6ED/7Zvi1g/aBn
+ Q3TSSTlls53gbnx4d7wceRzZxHGSMJdwRODS5+iQISnW4XqU1iyLMDV6ByeL+BwLsB9Y
+ EUuJjlpVcCANplhD8cnh9RDqD8C9yNQhhVmfD3gkG36L8X4c+6Sd+x/lCorGWPrTeFYV
+ YkHg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768931870; x=1769536670; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=zyNG9T6CxyJn1QssaX5e35tMUVXdK/wUfcLIas+BmYY=;
- b=mRhdKwA559G7AzLYCYDV7WTI6YimXm9feZDCEQH1NqRRWZRkcmO21P+cqbZRI1emnX
- HyyITys1pbVLye+iOq6e11t6bt1n7npkPlyIu2TqjxAR3pDflJifCyBYUoL+ahSpPvj0
- 3hFg8by9wyiFcdHkigNcggZ9Mhru5uyCxBpkRRo5Z5JpQMKoT54AipyTQ/KPFExU+dx/
- yQ3766ZcFdvKLdVUWn4YpHtE1UzghzVQ7ZUL+wCPQNfxDR7FoUfQBHD7e+2sFM+y1Kx+
- cryS00yL+OCS+cSPKH1HPg0sZSZH2AwSjzUMijKn55U4Ow+t++2US2WP5eZS9BaybWOA
- J5hw==
+ d=linaro.org; s=google; t=1768932191; x=1769536991; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=NDi/W0I+/+kW+XukCQLUwooPVxYe/yxhyjh9j/z90ig=;
+ b=yTMz9qq1t5fi8wud8fYcwfNd5izhGIMo1HrBSBF69v7o7M1Eg5SomI+FittlOQn5/d
+ oMLsau/nDhunAd3ZlxfmOA7w+ycRt4BtAm5gFTkLbZkwr9LzZRPGlq9vbJiAQnsYFNFB
+ ktIhIcakKkazO5UgiIo2bAjlj8fq+i4tu9foW/u39wtLkW/OV9dvChM1ixTn/6vWRuSf
+ NBU/uLX7Ia0H9PIx162TLr7W7lvckqRMAk6dD3VGSxHoaeUH5/RiS6wYNAAMGSoSwQZU
+ sZj6+kQCVr7lzRoEfjtEvdas1j/A6dwZ6NrBZIrpRtKTXNXSYq/HhwPlo9q70dOj/Om0
+ IFuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768931870; x=1769536670;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=zyNG9T6CxyJn1QssaX5e35tMUVXdK/wUfcLIas+BmYY=;
- b=rTcoiMgntcyrulhM7a+sXMxQkDK92DhAYNzV3fHBhdyH7eauktMkRDwbAGByuqxc8D
- Bm5WKJr8gfqeZe/s1sn5HyX/X2dYcCaYdazwgHQHdf6VmjUiWY/CoW5o6oOIAlPoetsk
- 9mpFVlL97syzhTclRocmlgzNt4UsQ+EvkM+Z0hmX71vCIevJBiW8kGSXrzBXx4shcXhi
- 0q3NubkEhFnW+XJ7Fx0j3jyuRpA6PhJ8H17VVgG0u8HIkyVilmDv8ddTqnzCbSPpu7+J
- y76XvYfz9j587Px5XxM90ryC4rlpCaFqln4vu5obhbYPza27BXtoam9/0er3Qno6u7Uv
- jD6A==
+ d=1e100.net; s=20230601; t=1768932191; x=1769536991;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=NDi/W0I+/+kW+XukCQLUwooPVxYe/yxhyjh9j/z90ig=;
+ b=kwMWtADU8ySE0RS0jIY0lRlgGNCivXbH5tTT20zRpzxTS1UpVg4xCD5U3WCaqMK425
+ C6W9K0Qyg5eYQydREj0zLtZL/hG/SC6MVy23ccms4TcrLWJHYQ8u/bE0XjBnJiJUu1F0
+ 6zbvyRPkRIZYKFDduSnTyO/OAOpO+LSUq4S2S/5eal3VzXajxqFem578eGqbAjIEc4/A
+ hkYBUq9UPhztWlOnqg79eIi9NRdMiNGhTLArjiNJl6TgtKV5o+J5bPzC6mjdnaxpOi3m
+ Ubf7olX2Mip7Q8eUJ3pRI/tDdfj27WbCKnNUTGqn2ijX+2O5OYfhG+cp2ewPaJb2EIbQ
+ mXoA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWaFNinsYA/sPkHkz0USUG2mq0r/zGW6o5BCG/NOp+azbCEmr+sIbSDcCZGNAls7/SV0dyJcp44Hw==@nongnu.org
-X-Gm-Message-State: AOJu0Yy4EZqEcakz4mRyR5KvmT9h02ueA5pXJ9KCSYjoyINy03tTUnjl
- TSAh7/+PFVfUwfDA7xIJ2VWMQ3gs5H30dvs8jgRXBwkIsyP9vxogDRAlI+9sO5w6JxA=
-X-Gm-Gg: AZuq6aI35kgu68eo+wBqL+uzsHprseXkAAaiCSRVxIqsVxSeZU2dK3/fqUzrCqrgzJG
- bkON9LXRFJJwL6N3q/pqXpvVmZLpXM/YRJlb99hCKOud23/hlPB0guLoecTOy6jLNeMAsFQ53My
- ZJ/GyV/CCs8ie/HR/v6FiFSlBjBL4rwETS6mx39HlswfrRwe5lQmxyat5I++zfFcIAUV+Ky2oYZ
- tHhPQbs8TVoFz24SJWd4qn7dNETsK74b1hkKk+M0qkAYnFPpZcsZgUSJBMp9Yf+S+s0z9G+b6ib
- KH/iMS2QI5hp5mG2ug1ZpS2/X2IK1OFkQPmhE+Uz6eyNbONenoOY8NFSv2VrEPw3SyQbMwwcdBZ
- dbFs9Bvpes0e3j+xs/kgXdUnp5nbEs/aga3ci8k6Ia9uWTE4ZK+miw4pCZ7lffC36MU5SGftvKJ
- BSPbMApoqEqRFLzGRPyOshVHDhz4eGfg+ixjhyl9V/dxkW+nTHBswoqQ==
-X-Received: by 2002:a05:6000:ec2:b0:435:924e:3d73 with SMTP id
- ffacd0b85a97d-435924e3e7fmr3250528f8f.58.1768931869783; 
- Tue, 20 Jan 2026 09:57:49 -0800 (PST)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43596b62700sm1617505f8f.42.2026.01.20.09.57.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Jan 2026 09:57:49 -0800 (PST)
-Message-ID: <595f75a4-7a85-4319-a8b2-8d5e10459068@linaro.org>
-Date: Tue, 20 Jan 2026 18:57:47 +0100
+ AJvYcCWPluTBC20CLBLX7Z7Z0flXqmZk2ua0zh/IYlDfLetYYqrvmwyVkhXd01VFjzS/kWLq9HajgShGdA==@nongnu.org
+X-Gm-Message-State: AOJu0YyHCGEY0PVqz+jAXScpRqFF9HyZlcdPKikclJeZOvsfrNQqfZtV
+ MicZxpLRjz5WlFnWVjmYZJIlbyR9CmCkAZTRjxnq1hF9Gg3Ye+J1S80G8FZH4z+ZQcqfgn3gBbZ
+ DV2bq7tNiGUyX06WtXttwAJxMtgmUpXz51FTQUC8oaw==
+X-Gm-Gg: AZuq6aLdzczSYLOC+p/LFacWRVp6PiWsvop9vHe64/QYGRas4SvqVev57dQFT9gJRlb
+ zkE6Bz0gV0AqxIXJbDtWLRUowTotYhORSqHm6em1EJFJnsO7a+F3fMUQdrmusAggjyQBoX5oPII
+ w5jr4Xcpg1FPwkaOFPLpmcAWRue6vgY0CT+gxQKvQQMJ/MbbLSJMutTVBYJFj+wh2qCNlwrMVMa
+ mXOFbQ21HpSNgCGczDSFmQFU8q9FBsVQgFg58dIqNk9muM6qlZK4yTc6CBbSuIMQRge+Q==
+X-Received: by 2002:a05:690c:5:b0:78f:a6e7:76fc with SMTP id
+ 00721157ae682-793c671d131mr116039317b3.24.1768932189149; Tue, 20 Jan 2026
+ 10:03:09 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v9 2/8] hw/arm/smmuv3-common: Define STE/CD fields via
- registerfields
-Content-Language: en-US
-To: Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini
- <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Mostafa Saleh <smostafa@google.com>,
- CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
-References: <20260119161112.3841386-1-tangtao1634@phytium.com.cn>
- <20260119161112.3841386-3-tangtao1634@phytium.com.cn>
- <fa73ef10-4a1e-486d-9d80-550c91eef11f@linaro.org>
- <0e71fdee-3569-4f83-afc8-46e0cbe565d0@phytium.com.cn>
- <ad975568-9ff4-420f-9b98-725d0c3e7c64@linaro.org>
- <0d1ab48f-e537-49de-b5ae-f8ddcabdd8a0@phytium.com.cn>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <0d1ab48f-e537-49de-b5ae-f8ddcabdd8a0@phytium.com.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x442.google.com
+References: <20260116135235.38092-1-mohamed@unpredictable.fr>
+ <20260116135235.38092-5-mohamed@unpredictable.fr>
+In-Reply-To: <20260116135235.38092-5-mohamed@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 20 Jan 2026 18:02:56 +0000
+X-Gm-Features: AZwV_QgsQqZLoqCe6lU68ohPxKsx5IohRR9xjA1qQRHSrALtyUvwTyacYdORsXY
+Message-ID: <CAFEAcA-3P6i_w3b7SaFTn4Zmwnot5vpDs89y+zpjcJ=-mEnP5w@mail.gmail.com>
+Subject: Re: [PATCH v16 04/26] hw/arm: virt: add GICv2m for the case when ITS
+ is not available
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Pedro Barbuda <pbarbuda@microsoft.com>, Eduardo Habkost <eduardo@habkost.net>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,131 +125,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Tao,
+On Fri, 16 Jan 2026 at 13:52, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+>
+> On Hypervisor.framework for macOS and WHPX for Windows, the provided environment is a GICv3 without ITS.
+>
+> As such, support a GICv3 w/ GICv2m for that scenario.
+>
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>  hw/arm/virt-acpi-build.c | 5 ++++-
+>  hw/arm/virt.c            | 8 ++++++++
+>  include/hw/arm/virt.h    | 2 ++
+>  3 files changed, 14 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 03b4342574..40ea6b6dd5 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -960,7 +960,10 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>              build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
+>              build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
+>          }
+> -    } else {
+> +    }
+> +
+> +    if (!(vms->gic_version != VIRT_GIC_VERSION_2 && vms->its)
+> +     && !vms->no_gicv3_with_gicv2m) {
+>          const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
+>
+>          /* 5.2.12.16 GIC MSI Frame Structure */
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 4badc1a734..275f26d439 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -959,6 +959,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+>
+>      if (vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) {
+>          create_its(vms);
+> +    } else if (vms->gic_version != VIRT_GIC_VERSION_2 && !vms->no_gicv3_with_gicv2m) {
+> +        create_v2m(vms);
+>      } else if (vms->gic_version == VIRT_GIC_VERSION_2) {
+>          create_v2m(vms);
+>      }
+> @@ -2449,6 +2451,8 @@ static void machvirt_init(MachineState *machine)
+>      vms->ns_el2_virt_timer_irq = ns_el2_virt_timer_present() &&
+>          !vmc->no_ns_el2_virt_timer_irq;
+>
+> +    vms->no_gicv3_with_gicv2m = vmc->no_gicv3_with_gicv2m;
+> +
+>      fdt_add_timer_nodes(vms);
+>      fdt_add_cpu_nodes(vms);
+>
+> @@ -3497,6 +3501,7 @@ static void virt_instance_init(Object *obj)
+>      vms->its = true;
+>      /* Allow ITS emulation if the machine version supports it */
+>      vms->tcg_its = !vmc->no_tcg_its;
+> +    vms->no_gicv3_with_gicv2m = false;
+>
+>      /* Default disallows iommu instantiation */
+>      vms->iommu = VIRT_IOMMU_NONE;
+> @@ -3549,7 +3554,10 @@ DEFINE_VIRT_MACHINE_AS_LATEST(11, 0)
+>
+>  static void virt_machine_10_2_options(MachineClass *mc)
+>  {
+> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> +
+>      virt_machine_11_0_options(mc);
+> +    vmc->no_gicv3_with_gicv2m = true;
+>      compat_props_add(mc->compat_props, hw_compat_10_2, hw_compat_10_2_len);
+>  }
 
-On 20/1/26 02:02, Tao Tang wrote:
-> On 2026/1/20 01:22, Philippe Mathieu-Daudé wrote:
->> On 19/1/26 17:51, Tao Tang wrote:
->>> Hi Philippe,
->>>
->>> On 2026/1/20 00:38, Philippe Mathieu-Daudé wrote:
->>>> On 19/1/26 17:11, Tao Tang wrote:
->>>>> Switch STE/CD bitfield definitions and accessors to the
->>>>> 'registerfields.h' REG/FIELD API.
->>>>>
->>>>> FOLLOW-UP: Fix CTXPTR_HI/S2TTB_HI/TTB0_HI/TTB1_HI high bits width
->>>>> (should be 24 bits, not 16).
->>>>
->>>> Right, but ...
->>>>
->>>>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->>>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>>>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
->>>>> ---
->>>>>   include/hw/arm/smmuv3-common.h | 169 ++++++++++++++++++++++ 
->>>>> +----------
->>>>>   1 file changed, 120 insertions(+), 49 deletions(-)
->>>>
->>>>
->>>>> -#define STE_VALID(x) extract32((x)->word[0], 0, 1)
->>>>> +REG32(STE_0, 0)
->>>>> +    FIELD(STE_0, VALID, 0, 1)
->>>>> +    FIELD(STE_0, CONFIG, 1, 3)
->>>>> +    FIELD(STE_0, S1FMT, 4, 2)
->>>>> +    FIELD(STE_0, CTXPTR_LO, 6, 26)
->>>>> +REG32(STE_1, 4)
->>>>> +    FIELD(STE_1, CTXPTR_HI, 0, 16)
->>>>
->>>> ... not followed up?
->>>
->>>
->>> Sorry, there's a typo here. What I was thinking at the time was that 
->>> I would submit a separate patch follow this series.
->>
->> I squashed:
->>
->> --  >8 --
->> diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3- 
->> common.h
->> index 6b48b5414dd..db30331441a 100644
->> --- a/include/hw/arm/smmuv3-common.h
->> +++ b/include/hw/arm/smmuv3-common.h
->> @@ -43,7 +43,7 @@ REG32(STE_0, 0)
->>      FIELD(STE_0, S1FMT, 4, 2)
->>      FIELD(STE_0, CTXPTR_LO, 6, 26)
->>  REG32(STE_1, 4)
->> -    FIELD(STE_1, CTXPTR_HI, 0, 16)
->> +    FIELD(STE_1, CTXPTR_HI, 0, 24)
->>      FIELD(STE_1, S1CDMAX, 27, 5)
->>  REG32(STE_2, 8)
->>      FIELD(STE_2, S1STALLD, 27, 1)
->> (1/2) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
->> @@ -66,7 +66,7 @@ REG32(STE_5, 20)
->>  REG32(STE_6, 24)
->>      FIELD(STE_6, S2TTB_LO, 4, 28)
->>  REG32(STE_7, 28)
->> -    FIELD(STE_7, S2TTB_HI, 0, 16)
->> +    FIELD(STE_7, S2TTB_HI, 0, 24)
->>
->> ---
->>
->> Is that OK with you? Do TTB0_HI/TTB1_HI need update too?
-> 
-> Yes we should update TTB0_HI/TTB1_HI too. A total of four modifications 
-> are needed here:
-> 
-> CTXPTR_HI
-> 
-> S2TTB_HI
-> 
-> TTB0_HI
-> 
-> TTB1_HI
+The MSI controller selection logic is already pretty confusing,
+and this is making it more complicated. I don't think we should
+need this machine back compatibility, because currently there
+is no setup where you can have a GICv3 that doesn't also have
+either an ITS or no MSI controller.
 
-I am just trying to help you getting your series merged. I know this is
-v9 and you might be frustrated, but simply providing the correct 4
-values would have helped both of us and save further exchanges.
+I think also that we can make the code cleaner if we:
+(1) clean the existing "pick an MSI controller" logic up
+so that we do it up front, the same way we do "pick a GIC
+version"
+(2) add the new "msi" property and deprecate the old "its" one
+(3) then add the gicv3-with-gicv2m-on-hvf logic to that
 
-In v8 Eric said to change 16 -> 24 for 4 fields and you confirmed:
-https://lore.kernel.org/qemu-devel/2255d30c-cc58-4a45-974c-f7fd89694c26@phytium.com.cn/
+I see this series adds an "msi" property, but it also
+makes the old "its" property an OnOffAuto -- do we really
+need both ?
 
-Looking at ARM IHI 0070G.b this is only valid for CTXPTR_HI, for the
-rest only 20 bits remains, 4 are RES0 (SMMUv3.1).
+I wrote some code for this this afternoon before I realised
+that you'd done the "msi" property in that series (so the
+duplication with your work is my fault). I'll send them
+out as an RFC to give an idea of what I have in mind.
 
-It would have saved me some hours checking the spec if you had
-provided the correct values beforehand. I'm going to squash the
-following instead:
-
--- >8 --
-diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
-index 6b48b5414dd..f0e1dd85715 100644
---- a/include/hw/arm/smmuv3-common.h
-+++ b/include/hw/arm/smmuv3-common.h
-@@ -45,3 +45,3 @@ REG32(STE_0, 0)
-  REG32(STE_1, 4)
--    FIELD(STE_1, CTXPTR_HI, 0, 16)
-+    FIELD(STE_1, CTXPTR_HI, 0, 24)
-      FIELD(STE_1, S1CDMAX, 27, 5)
-@@ -68,3 +68,3 @@ REG32(STE_6, 24)
-  REG32(STE_7, 28)
--    FIELD(STE_7, S2TTB_HI, 0, 16)
-+    FIELD(STE_7, S2TTB_HI, 0, 20)
-
-@@ -128,3 +128,3 @@ REG32(CD_2, 8)
-  REG32(CD_3, 12)
--    FIELD(CD_3, TTB0_HI, 0, 19)
-+    FIELD(CD_3, TTB0_HI, 0, 20)
-  REG32(CD_4, 16)
-@@ -133,3 +133,3 @@ REG32(CD_4, 16)
-  REG32(CD_5, 20)
--    FIELD(CD_5, TTB1_HI, 0, 19)
-+    FIELD(CD_5, TTB1_HI, 0, 20)
-
----
-
-If you disagree, please post a patch on top to correct.
-
-Regards,
-
-Phil.
+thanks
+-- PMM
 

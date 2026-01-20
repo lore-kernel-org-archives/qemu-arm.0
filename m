@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2762ACA5FB8
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 18:04:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA39ACA5FD7
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 18:04:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viG5A-0006w3-EE; Tue, 20 Jan 2026 13:04:01 -0500
+	id 1viG5D-0006zP-NI; Tue, 20 Jan 2026 13:04:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1viG50-0006eE-VX
+ id 1viG4y-0006bO-SJ
  for qemu-arm@nongnu.org; Tue, 20 Jan 2026 13:03:52 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1viG4y-0000UO-Ky
- for qemu-arm@nongnu.org; Tue, 20 Jan 2026 13:03:50 -0500
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-432d2c7dd52so5184454f8f.2
- for <qemu-arm@nongnu.org>; Tue, 20 Jan 2026 10:03:47 -0800 (PST)
+ id 1viG4v-0000Tc-MP
+ for qemu-arm@nongnu.org; Tue, 20 Jan 2026 13:03:47 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-42fed090e5fso3301258f8f.1
+ for <qemu-arm@nongnu.org>; Tue, 20 Jan 2026 10:03:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768932227; x=1769537027; darn=nongnu.org;
+ d=linaro.org; s=google; t=1768932224; x=1769537024; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=L0ZMXUtic4MuRKS7Dby22dacdT6+N9i2g5JnhZrBGrY=;
- b=DqqYywy6J8hRy8ZrLXIRrwgWM8xYBRzt78drH6gIX626+8/H5kg3XDviE+xHd+Boos
- NE3ihhHB2XnQ+GL8mCWLx6vtGMjH3L9aJhCcIA+dh367SOSZlfMnID/gCtJD75m01Mup
- OhuylGN0haZSWMMFxfZZ/+5ySDsGbE9gELIMuoVeKf3ZxK6n8JioeCTM50RPF7JFEAyW
- H5kq0dqkNcH1C6vo0/H4GD96w62RLsSpI3vckcdrTJhiqU5vymWFH4/XZxeLmi9f+nzY
- sYM/lnv5NGEVzoKNjhIP6JEbLUfCoG5wPYxONXULZizgCYC0nBGb0pHLkeAy5ZLi4N23
- xtIA==
+ bh=NRzT62H79hhfu62kmgyNxqbBArhK3Nz4ofwZjq+4f9M=;
+ b=yaOWa+S8VlTzAJkrLD5RrzSVHGJF1tAUf4QKXkivO5JRvsP1NOZp+2zUhAxcFz6aDe
+ FDnXObURFZp4f/04mL3V0V8OgTKOxDg3/ejh9W9JCZkoSowcfvOA4q0iruApNz619pvI
+ 6OPxS2bD4lE8P0PAISiK1PmwR060/ZCeX88xhphMyWEkIg7YKoCDrdieXU6QqwSueViP
+ nxFarWrWqAgGcUlASV0vmpsjAxty3yRlOcCAZOgkU7iAZPqfhBrGYAMnwg3dFjXT0auL
+ AdGMbAu06bpAM20KAOU0thbE2m5KQMjyFRu0+QDRYH3pmp7Fg2khjtFBriZsSjRPljee
+ cSyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768932227; x=1769537027;
+ d=1e100.net; s=20230601; t=1768932224; x=1769537024;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=L0ZMXUtic4MuRKS7Dby22dacdT6+N9i2g5JnhZrBGrY=;
- b=hvgQ05JA84u5u7JY/X7oyZStRKRABQLLuqA5bdmIZ53snyNYXYjmPD+wCRjXq6I6N8
- Qb1HCwKF6j60ZkAU+AA+wMugggb3LU/gTxRKCo8BO/FZhIO9tcvxmqGHorYbug53yZ1k
- QdHLlOHfJ2DLj/CPp25IBP+Ok9hBDvp2Udp9RmpWNdLLD8W37fOtHGDFSGg87ZVWt1jJ
- DAIs+hDMEQLk2Eczo9NHfPVl0GYtCuzCHc60ioC4yJF0x5KwVeOwt3IkeRFHtX4WByre
- FZT6tgpxFg4aNVx1YW/z+jNvxXBeR9inLkfC+xxCADQhpvgqSkEwzLk+ixOAf88sE1+J
- YMDA==
-X-Gm-Message-State: AOJu0YzUxlb7g6OI/htBxYzlgZoGGIrXFhlQB07M9mtm8965pTIpL7hc
- +aauMo82Y3OjeNc7bdqBOsxzyvnyVYYY8O44LTQD5gdjHHH+WpS9AMse64bPV7STxZvFVqyMkxI
- dSW3a36s=
-X-Gm-Gg: AZuq6aJpBJW5X3WsBSAVhlUSmqJGhAFmLen1Mmww/3sZiwbs9GOV6qtYiG1L5ulyj9J
- 0KRJkzEFsntX4TIo7UpFSUaC1T+VcnYm04liCOxHmoUIUwGJmxL/Q4dn+FaNxh96kLVx1FMGlK7
- nKMeqi3WJPqsQwE8MS37J5CNQJ1G0jfQckTgQgaoQcwLKs1Y8HP6LO7u7kEyBi8Ob5QWg2/ZFEF
- 3KcBCGvM5ap7GYoOCJYYDOHwlCP1B4jEfLUB3ydvgloc0MT/3z+tAPztOv3TH4shVroTfN2AZU9
- MDbWimbjdx8bG1qCjPyFUxM2OY+mYaIn6yHeQENcjfiVB3HeToOHz5TqouUZoM5LIEnLx0UCybp
- SCcdkDyKJgL0ScL6snS2XTfiQe2c5HWop54c+EcDxJUi0LULAij2Y86W4WIhAT9v835Qam8C3Ow
- 67bS56S2eXNKbhphE5UkY5rmrfnGwkZoWS4xFSz/58dPb65GOkK1PsLBanXWyV4Ns=
-X-Received: by 2002:a05:6000:4383:b0:433:24c7:880e with SMTP id
- ffacd0b85a97d-4358ff26a86mr4252941f8f.33.1768932225035; 
- Tue, 20 Jan 2026 10:03:45 -0800 (PST)
+ bh=NRzT62H79hhfu62kmgyNxqbBArhK3Nz4ofwZjq+4f9M=;
+ b=mOrZ/yBB4j90vHCz+ZJVyOlX98eN9NwXUODQQnYJfb+2f7Q4/Vnq4/omqfxbYWxEkh
+ jf+vuzGnAHgM9mgdVtkEVC9AS56+hezRvfEYhC6zRjB0xtBuKjV0CWiyKYqYgxbtcZxT
+ NifjCprnT/BIX+kNJMGRBVjRJf7daLdqbj+1jTo+bUul1mXF2O4T924m26GxgN2hJNh8
+ fOf6TH6/yT/i7e+L8kAFppZEYjAbpMWa84s5GvTQaneyt6OSMOpASqT3Oc67Yl8b3BAb
+ uuH5uSCV9/F8A/lhRMpznrKOH14ltwWx7/TcQOyg43Ljs2LIg95Wf3Yh8m3OnugwzZvr
+ WrBg==
+X-Gm-Message-State: AOJu0Yyx6p8ThsN7KDwwy42giFsHoeGnWY/rsxNI7cS4QIKWkr9FxB8a
+ fmbFrWx9QFE1QcRvYCUnl0+ZnHS1B0vpZks7k5e8FReAeWgQ7+8JzDyzBxdzPhAbwMUOZfEVrXV
+ Rnmp3Cq8=
+X-Gm-Gg: AZuq6aLcmwyWoV/QLzrfeuAco1BZIZPKsMqJh9kAYjpgKIdaVoEiddLvSgyNYX6C45N
+ +Y2qbrNXJJ2nvDyFXt/jkezG9POw5elrYdsGu431yj2bcuKycs9JBbt41JQZ8d7/fM7ekEimWPQ
+ T5QfSBWk3EpAT3qamfF82pDR8ERifUeJE1VHG3d/Q+1njsZqhSQ+yo16JPl31TG4yQ44sLwh3vK
+ PxNV5a6mP/nj8qUfbT/hTmpdJpdl29JJpJfYzR1s5vxzprRtmz/6GG+bLvxB5aMZXBOUDvx01xK
+ 5Pu1GT4qbl22cT4DYS+1nKn9xSLooxmgULkJn3zE4Y/U40q4u0U6ZrCW4YIxNrNgGlrjvN9M0ld
+ CRvzPAYeFsJZpL+ytQZaz2qJfQ/4qGJwASqoZhMPzZ1p7ToasAuLGZK46T7NPtUspdRRPqLAr6D
+ e1n/KN0YniD/Kjb2/eCLRjy0N11e3vu+RmBzHWLHaENk/fUjeyNeB/
+X-Received: by 2002:a05:6000:186f:b0:432:c37c:d83b with SMTP id
+ ffacd0b85a97d-43569994296mr21748670f8f.20.1768932224074; 
+ Tue, 20 Jan 2026 10:03:44 -0800 (PST)
 Received: from mnementh.archaic.org.uk (mnementh.archaic.org.uk.
  [81.2.115.146]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4356996cf58sm31310889f8f.22.2026.01.20.10.03.44
+ ffacd0b85a97d-4356996cf58sm31310889f8f.22.2026.01.20.10.03.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Jan 2026 10:03:44 -0800 (PST)
+ Tue, 20 Jan 2026 10:03:43 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [RFC PATCH 4/4] hw/arm/virt: new "msi" property
-Date: Tue, 20 Jan 2026 18:03:39 +0000
-Message-ID: <20260120180339.1416328-5-peter.maydell@linaro.org>
+Subject: [RFC PATCH 3/4] hw/arm/virt: Drop VirtMachineState::tcg_its
+Date: Tue, 20 Jan 2026 18:03:38 +0000
+Message-ID: <20260120180339.1416328-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260120180339.1416328-1-peter.maydell@linaro.org>
 References: <20260120180339.1416328-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,219 +102,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The virt board currently only supports either a GICv2 with a possible
-GICv2m for handling MSI interrupts, or else a GICv3 with a possible
-ITS for handling MSI interrupts.  There is one board property, which
-lets you say "its=(off|on)" and controls only whether there is an ITS
-or not.
-
-This is awkward for macOS HVF, where you get a GICv3
-without ITS and MSI handling needs a GICv2m.
-
-Create a new board property "msi" which gives the user clearer
-control over how MSI interrupts are handled:
-
- - msi=its : create an ITS
- - msi=gicv2m : create a GICv2m
- - msi=off : do not create any MSI handling device
- - msi=auto : create the best MSI handling device available
-              for the GIC version and accelerator
-
-The default is 'auto'.
-
-The existing 'its' property becomes a deprecated property
-kept for compatibility. Existing users of "its=on" should
-prefer "msi=auto"; users of "its=off" should use "msi=off".
-
-The backwards compatibility cases we need to support are:
- (1) TCG, virt-6.1 and earlier: no_tcg_its is set
-   -- you can have a gicv2 (always with a gicv2m)
-   -- if you specify gic-version=3 you get a GICv3 without ITS
- (2) TCG, virt-6.2 and later:
-   -- gic-version=2 still has gicv2m
-   -- gic-version=3 by default gives you an ITS; if you also
-      say its=off you get GICv3 with no ITS
-   -- there is no case where we provide a GICv3 and are
-      unable to provide an ITS for it
- (3) KVM (any version):
-   -- gic-version=2 has a gicv2m
-   -- gic-version=3 gives you an ITS by default; its=off
-      will remove it
-   -- there is no case where we provide a GICv3 and are
-      unable to provide an ITS for it
- (4) HVF:
-   -- only gic-version=2 works, you get a gicv2m
+We now use VirtMachineState::tcg_its only in the
+finalize_msi_controller() function, and it is always the inverse of
+the VirtMachineClass::no_tcg_its class field.  We can simplify to use
+no_tcg_its and drop the VirtMachineState field entirely.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- docs/system/arm/virt.rst | 21 ++++++++++++-
- hw/arm/virt.c            | 64 +++++++++++++++++++++++++++++++++++++++-
- include/hw/arm/virt.h    |  1 +
- 3 files changed, 84 insertions(+), 2 deletions(-)
+ hw/arm/virt.c         | 6 +++---
+ include/hw/arm/virt.h | 1 -
+ 2 files changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index e5570773ba..4cc54e38db 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -167,9 +167,28 @@ gic-version
-     with TCG this is currently ``3`` if ``virtualization`` is ``off`` and
-     ``4`` if ``virtualization`` is ``on``, but this may change in future)
- 
-+msi
-+  Specify the MSI controller to use to handle MSI and MSI-X interrupts
-+  from PCI devices. Valid values are:
-+
-+  ``its``
-+     ITS, which can be used with a GICv3 or better.
-+  ``gicv2m``
-+     The GICv2m; this is typically used with a GICv2, but it is possible
-+     to use it with a GICv3.
-+  ``none``
-+     Do not provide any MSI controller. MSI and MSI-X interrupts will
-+     not be supported.
-+  ``auto``
-+     Pick the best available controller. This will be an ITS if the
-+     GIC and virtualization accelerator support it, and a GICv2m if not.
-+     This is the default.
-+
- its
-   Set ``on``/``off`` to enable/disable ITS instantiation. The default is ``on``
--  for machine types later than ``virt-2.7``.
-+  for machine types later than ``virt-2.7``. This is a deprecated option;
-+  instead of ``its=on`` use ``msi=its`` or ``msi=auto``, and instead of
-+  ``its=off`` use ``msi=none``.
- 
- iommu
-   Set the IOMMU type to create for the guest. Valid values are:
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index b65f571532..471852e4b1 100644
+index a231aef268..b65f571532 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -957,6 +957,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
-     case VIRT_MSI_CTRL_GICV2M:
-         create_v2m(vms);
-         break;
-+    default:
-+        g_assert_not_reached();
-     }
- }
- 
-@@ -2084,6 +2086,23 @@ static void finalize_msi_controller(VirtMachineState *vms)
+@@ -2082,8 +2082,10 @@ static void finalize_msi_controller(VirtMachineState *vms)
+      * the relevant user settings and compat data. Called
+      * after finalizing the GIC version.
       */
-     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
- 
-+    if (vms->msi_controller != VIRT_MSI_CTRL_NOSEL) {
-+        /*
-+         * User specified an "msi" option: check what they
-+         * specified, and use it.
-+         */
-+        if (vms->msi_controller == VIRT_MSI_CTRL_ITS &&
-+            vms->gic_version == VIRT_GIC_VERSION_2) {
-+            error_report("A GICv2 cannot use an ITS");
-+            exit(1);
-+        }
-+        return;
-+    }
++    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
 +
-+    /*
-+     * Pick a "best available" MSI controller, including handling
-+     * the legacy "its" option and the no_tcg_its compat flag.
-+     */
      if (vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) {
-         if (!kvm_irqchip_in_kernel() && vmc->no_tcg_its) {
+-        if (!kvm_irqchip_in_kernel() && !vms->tcg_its) {
++        if (!kvm_irqchip_in_kernel() && vmc->no_tcg_its) {
              vms->msi_controller = VIRT_MSI_CTRL_NONE;
-@@ -2092,6 +2111,8 @@ static void finalize_msi_controller(VirtMachineState *vms)
-         }
-     } else if (vms->gic_version == VIRT_GIC_VERSION_2) {
-         vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
-+    } else {
-+        vms->msi_controller = VIRT_MSI_CTRL_NONE;
-     }
- }
+         } else {
+             vms->msi_controller = VIRT_MSI_CTRL_ITS;
+@@ -3511,8 +3513,6 @@ static void virt_instance_init(Object *obj)
  
-@@ -2881,6 +2902,36 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
-     }
- }
- 
-+static const char *msi_option_values[] = {
-+    [VIRT_MSI_CTRL_NONE] = "off",
-+    [VIRT_MSI_CTRL_GICV2M] = "gicv2m",
-+    [VIRT_MSI_CTRL_ITS] = "its",
-+    [VIRT_MSI_CTRL_NOSEL] = "auto",
-+};
-+
-+static char *virt_get_msi(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    assert(vms->msi_controller >= 0 &&
-+           vms->msi_controller < ARRAY_SIZE(msi_option_values));
-+    return g_strdup(msi_option_values[vms->msi_controller]);
-+}
-+
-+static void virt_set_msi(Object *obj, const char *value, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    for (int i = 0; i < ARRAY_SIZE(msi_option_values); i++) {
-+        if (!strcmp(value, msi_option_values[i])) {
-+            vms->msi_controller = i;
-+            return;
-+        }
-+    }
-+    error_setg(errp, "Invalid msi value");
-+    error_append_hint(errp, "Valid values are off, its, gicv2m, auto.\n");
-+}
-+
- static char *virt_get_iommu(Object *obj, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
-@@ -3056,6 +3107,8 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-             db_start = base_memmap[VIRT_GIC_V2M].base;
-             db_end = db_start + base_memmap[VIRT_GIC_V2M].size - 1;
-             break;
-+        default:
-+            g_assert_not_reached();
-         }
-         resv_prop_str = g_strdup_printf("0x%"PRIx64":0x%"PRIx64":%u",
-                                         db_start, db_end,
-@@ -3454,7 +3507,13 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
-                                    virt_set_its);
-     object_class_property_set_description(oc, "its",
-                                           "Set on/off to enable/disable "
--                                          "ITS instantiation");
-+                                          "ITS instantiation. Deprecated; "
-+                                          "use the msi option instead");
-+
-+    object_class_property_add_str(oc, "msi", virt_get_msi, virt_set_msi);
-+    object_class_property_set_description(oc, "msi",
-+                                          "Set to configure MSI handling. "
-+                                          "Valid values are auto, its, gicv2m, and off");
- 
-     object_class_property_add_bool(oc, "dtb-randomness",
-                                    virt_get_dtb_randomness,
-@@ -3514,6 +3573,9 @@ static void virt_instance_init(Object *obj)
      /* Default allows ITS instantiation */
      vms->its = true;
+-    /* Allow ITS emulation if the machine version supports it */
+-    vms->tcg_its = !vmc->no_tcg_its;
  
-+    /* Default to autoselection of MSI controller */
-+    vms->msi_controller = VIRT_MSI_CTRL_NOSEL;
-+
      /* Default disallows iommu instantiation */
      vms->iommu = VIRT_IOMMU_NONE;
- 
 diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 577b4b3362..53f1dc2199 100644
+index 5907d41dbb..577b4b3362 100644
 --- a/include/hw/arm/virt.h
 +++ b/include/hw/arm/virt.h
-@@ -103,6 +103,7 @@ typedef enum VirtMSIControllerType {
-     VIRT_MSI_CTRL_NONE,
-     VIRT_MSI_CTRL_GICV2M,
-     VIRT_MSI_CTRL_ITS,
-+    VIRT_MSI_CTRL_NOSEL,
- } VirtMSIControllerType;
- 
- typedef enum VirtGICType {
+@@ -147,7 +147,6 @@ struct VirtMachineState {
+     bool highmem_mmio;
+     bool highmem_redists;
+     bool its;
+-    bool tcg_its;
+     bool virt;
+     bool ras;
+     bool mte;
 -- 
 2.47.3
 

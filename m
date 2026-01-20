@@ -4,45 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35FF5D2ECF9
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 05:23:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C890BD2ECF9
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 05:24:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vi4Aa-00072e-86; Tue, 20 Jan 2026 00:20:48 -0500
+	id 1vi4BC-0001MU-6P; Tue, 20 Jan 2026 00:21:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vi4AM-00067m-Tz; Tue, 20 Jan 2026 00:20:38 -0500
+ id 1vi4B7-00018F-Gs; Tue, 20 Jan 2026 00:21:21 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vi4AK-0004v7-Kw; Tue, 20 Jan 2026 00:20:33 -0500
+ id 1vi4B5-00053q-FU; Tue, 20 Jan 2026 00:21:20 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 20 Jan
- 2026 13:19:06 +0800
+ 2026 13:19:08 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 20 Jan 2026 13:19:06 +0800
+ Transport; Tue, 20 Jan 2026 13:19:08 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
  <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
  list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>, Nabih Estefan
- <nabihestefan@google.com>
-Subject: [PATCH v5 17/22] hw/arm/aspeed: Attach PWM device to AST1700 model
-Date: Tue, 20 Jan 2026 13:18:48 +0800
-Message-ID: <20260120051859.1920565-18-kane_chen@aspeedtech.com>
+CC: <troy_lee@aspeedtech.com>, Kane-Chen-AS <kane_chen@aspeedtech.com>
+Subject: [PATCH v5 22/22] test/functional/aarch64: Add I2C test for AST1700 IO
+ expanders
+Date: Tue, 20 Jan 2026 13:18:53 +0800
+Message-ID: <20260120051859.1920565-23-kane_chen@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260120051859.1920565-1-kane_chen@aspeedtech.com>
 References: <20260120051859.1920565-1-kane_chen@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=kane_chen@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -70,82 +69,61 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Kane-Chen-AS <kane_chen@aspeedtech.com>
 
-Connect the PWM device to AST1700 model.
+Extend the AST2700 test suite to verify I2C connectivity on AST1700
+IO expanders using the DCSCM image. This validates the new bus-label
+naming scheme by testing communication on both primary and
+expander-attached I2C buses.
 
 Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Reviewed-by: Nabih Estefan <nabihestefan@google.com>
-Tested-by: Nabih Estefan <nabihestefan@google.com>
 ---
- include/hw/arm/aspeed_ast1700.h |  2 ++
- hw/arm/aspeed_ast1700.c         | 13 +++++++++++++
- 2 files changed, 15 insertions(+)
+ .../functional/aarch64/test_aspeed_ast2700.py | 24 +++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
-diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_ast1700.h
-index a830392798..5fc363d0c2 100644
---- a/include/hw/arm/aspeed_ast1700.h
-+++ b/include/hw/arm/aspeed_ast1700.h
-@@ -14,6 +14,7 @@
- #include "hw/gpio/aspeed_gpio.h"
- #include "hw/i2c/aspeed_i2c.h"
- #include "hw/misc/aspeed_ltpi.h"
-+#include "hw/misc/aspeed_pwm.h"
- #include "hw/ssi/aspeed_smc.h"
- #include "hw/watchdog/wdt_aspeed.h"
- #include "hw/char/serial-mm.h"
-@@ -41,6 +42,7 @@ struct AspeedAST1700SoCState {
-     AspeedSCUState scu;
-     AspeedGPIOState gpio;
-     AspeedI2CState i2c;
-+    AspeedPWMState pwm;
-     AspeedWDTState wdt[AST1700_WDT_NUM];
- };
+diff --git a/tests/functional/aarch64/test_aspeed_ast2700.py b/tests/functional/aarch64/test_aspeed_ast2700.py
+index 438f7eb37c..f2bdac5177 100755
+--- a/tests/functional/aarch64/test_aspeed_ast2700.py
++++ b/tests/functional/aarch64/test_aspeed_ast2700.py
+@@ -50,10 +50,21 @@ def verify_openbmc_boot_and_login(self, name):
+         exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+         exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
  
-diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c
-index 94e0110501..108804f35b 100644
---- a/hw/arm/aspeed_ast1700.c
-+++ b/hw/arm/aspeed_ast1700.c
-@@ -18,6 +18,7 @@
- 
- enum {
-     ASPEED_AST1700_DEV_SPI0,
-+    ASPEED_AST1700_DEV_PWM,
-     ASPEED_AST1700_DEV_SRAM,
-     ASPEED_AST1700_DEV_ADC,
-     ASPEED_AST1700_DEV_SCU,
-@@ -31,6 +32,7 @@ enum {
- 
- static const hwaddr aspeed_ast1700_io_memmap[] = {
-     [ASPEED_AST1700_DEV_SPI0]      =  0x00030000,
-+    [ASPEED_AST1700_DEV_PWM]       =  0x000C0000,
-     [ASPEED_AST1700_DEV_SRAM]      =  0x00BC0000,
-     [ASPEED_AST1700_DEV_ADC]       =  0x00C00000,
-     [ASPEED_AST1700_DEV_SCU]       =  0x00C02000,
-@@ -133,6 +135,14 @@ static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
-                         aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_I2C],
-                         sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->i2c), 0));
- 
-+    /* PWM */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pwm), errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(&s->iomem,
-+                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_PWM],
-+                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pwm), 0));
++    def bring_up_ast1700_and_login(self, name):
++        wait_for_console_pattern(self, 'Hit any key to stop autoboot')
++        exec_command_and_wait_for_pattern(self, '0', '=>')
++        exec_command_and_wait_for_pattern(self, 'cp.b 100420000 403000000 800000; bootm 403000000#conf-ast2700-dcscm_ast1700-evb.dtb', f'{name} login:')
++        exec_command_and_wait_for_pattern(self, 'root', 'Password:')
++        exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
 +
-     /* LTPI controller */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->ltpi), errp)) {
-         return;
-@@ -186,6 +196,9 @@ static void aspeed_ast1700_instance_init(Object *obj)
-     object_initialize_child(obj, "ioexp-i2c[*]", &s->i2c,
-                             "aspeed.i2c-ast2700");
+     ASSET_SDK_V908_AST2700A1 = Asset(
+             'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.08/ast2700-default-obmc.tar.gz',
+             'eac3dc409b7ea3cd4b03d4792d3cebd469792ad893cb51e1d15f0fc20bd1e2cd')
  
-+    /* PWM */
-+    object_initialize_child(obj, "pwm", &s->pwm, TYPE_ASPEED_PWM);
++    ASSET_SDK_V908_AST2700A1_DCSCM = Asset(
++            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.08/ast2700-dcscm-obmc.tar.gz',
++            '59dc1282db886087342419824edf91806bb4f83febf916ec5350238aa5613268')
 +
-     /* LTPI controller */
-     object_initialize_child(obj, "ltpi-ctrl",
-                             &s->ltpi, TYPE_ASPEED_LTPI);
+     def do_ast2700_i2c_test(self, bus_id):
+         bus_str = str(bus_id)
+         exec_command_and_wait_for_pattern(self,
+@@ -148,5 +159,18 @@ def test_aarch64_ast2700a1_evb_sdk_vbootrom_v09_08(self):
+         self.verify_vbootrom_firmware_flow()
+         self.verify_openbmc_boot_start()
+ 
++    def test_aarch64_ast2700a1_evb_ioexp_v09_08(self):
++        self.set_machine('ast2700a1-evb')
++        self.require_netdev('user')
++
++        self.archive_extract(self.ASSET_SDK_V908_AST2700A1_DCSCM)
++        self.vm.set_machine('ast2700a1-evb,fmc-model=w25q512jv')
++        self.vm.add_args('-device',
++                         'tmp105,bus=ioexp0.0,address=0x4d,id=tmp-test-16')
++        self.start_ast2700_test_vbootrom('ast2700-dcscm', 8)
++        self.bring_up_ast1700_and_login('ast2700-dcscm')
++        self.do_ast2700_i2c_test(8)
++        self.do_ast2700_i2c_test(16)
++
+ if __name__ == '__main__':
+     QemuSystemTest.main()
 -- 
 2.43.0
 

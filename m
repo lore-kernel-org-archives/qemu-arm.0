@@ -4,150 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 261D2CA5FB8
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 17:38:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B875CA5FCC
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 17:58:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viFgC-0003Xy-U8; Tue, 20 Jan 2026 12:38:14 -0500
+	id 1viFzH-0003Fu-CV; Tue, 20 Jan 2026 12:57:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1viFg6-0003Sv-QI
- for qemu-arm@nongnu.org; Tue, 20 Jan 2026 12:38:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1viFg3-0004sy-Nd
- for qemu-arm@nongnu.org; Tue, 20 Jan 2026 12:38:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768930682;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=+4QxSpkNjF2EkzZAKQPlQPI6YXNQ66sF9tBW1H0t1mA=;
- b=FMNMu5SWO4KowYpp8dKGRJndp6OYvjSXhIiemaxuyxybCdtfhOIFyAcO9SmdaLSnPVbvyd
- pqj2Yx8sv6eVMO1YZHTiCVDM/wrkV582/7s+kOonWXQz3SYaP1rOMZjYz8mqqJBLbqLGX+
- K78N5OdwyhDkxOTAlYaWY/YmRcj9lWk=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-253-FjTL3JDlPbi5wX-UGg8ccQ-1; Tue, 20 Jan 2026 12:38:01 -0500
-X-MC-Unique: FjTL3JDlPbi5wX-UGg8ccQ-1
-X-Mimecast-MFC-AGG-ID: FjTL3JDlPbi5wX-UGg8ccQ_1768930680
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-47d62cc05daso39878305e9.3
- for <qemu-arm@nongnu.org>; Tue, 20 Jan 2026 09:38:00 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1viFzF-0003EA-R4
+ for qemu-arm@nongnu.org; Tue, 20 Jan 2026 12:57:53 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1viFzE-0008KW-4j
+ for qemu-arm@nongnu.org; Tue, 20 Jan 2026 12:57:53 -0500
+Received: by mail-wr1-x442.google.com with SMTP id
+ ffacd0b85a97d-430f57cd471so3008388f8f.0
+ for <qemu-arm@nongnu.org>; Tue, 20 Jan 2026 09:57:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1768931870; x=1769536670; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=zyNG9T6CxyJn1QssaX5e35tMUVXdK/wUfcLIas+BmYY=;
+ b=mRhdKwA559G7AzLYCYDV7WTI6YimXm9feZDCEQH1NqRRWZRkcmO21P+cqbZRI1emnX
+ HyyITys1pbVLye+iOq6e11t6bt1n7npkPlyIu2TqjxAR3pDflJifCyBYUoL+ahSpPvj0
+ 3hFg8by9wyiFcdHkigNcggZ9Mhru5uyCxBpkRRo5Z5JpQMKoT54AipyTQ/KPFExU+dx/
+ yQ3766ZcFdvKLdVUWn4YpHtE1UzghzVQ7ZUL+wCPQNfxDR7FoUfQBHD7e+2sFM+y1Kx+
+ cryS00yL+OCS+cSPKH1HPg0sZSZH2AwSjzUMijKn55U4Ow+t++2US2WP5eZS9BaybWOA
+ J5hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768930680; x=1769535480;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+4QxSpkNjF2EkzZAKQPlQPI6YXNQ66sF9tBW1H0t1mA=;
- b=sEERpZWkauhI1SHiAMDzyoALIfo/ykaqGUZJtdmDs7H5eyokdrtu8OmynnurkvLxUd
- jFCECco/EaFoAyMWRiXFH2NpPL2dpRT+XQMbWBlfo6I+i6BjoDTu+nn2g4gHqGeyepjG
- nMngRnx4zyAPuhqBGfOBkuI5fI2l/Q2wCdutzvwhE9fnK0WTUypebjfeaS+E9wR5O/wT
- +BLqvCXCLHchhOOdohd21eC7goTtABRg8Oe+20QhulQd/73kHlQvkegP+ZpHbJEBqLxa
- uX3bwNkYX7sHnWoOKaWqztYAUJnAgKJZuTjizJbbFSEHgm49BvXJzd3ZYzSUMXwWRTZQ
- MA4Q==
+ d=1e100.net; s=20230601; t=1768931870; x=1769536670;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=zyNG9T6CxyJn1QssaX5e35tMUVXdK/wUfcLIas+BmYY=;
+ b=rTcoiMgntcyrulhM7a+sXMxQkDK92DhAYNzV3fHBhdyH7eauktMkRDwbAGByuqxc8D
+ Bm5WKJr8gfqeZe/s1sn5HyX/X2dYcCaYdazwgHQHdf6VmjUiWY/CoW5o6oOIAlPoetsk
+ 9mpFVlL97syzhTclRocmlgzNt4UsQ+EvkM+Z0hmX71vCIevJBiW8kGSXrzBXx4shcXhi
+ 0q3NubkEhFnW+XJ7Fx0j3jyuRpA6PhJ8H17VVgG0u8HIkyVilmDv8ddTqnzCbSPpu7+J
+ y76XvYfz9j587Px5XxM90ryC4rlpCaFqln4vu5obhbYPza27BXtoam9/0er3Qno6u7Uv
+ jD6A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUSB2MaSpklgRK2rABNdbh1AlPGpxTbcf5xbYqykTvqQojUyP1h7BCpfNSte+T5IIj+Bw6bZ8EgNg==@nongnu.org
-X-Gm-Message-State: AOJu0YwJdFUNWE0Cec9XXWTLH5DCggv3V7bjkiyaGkOES1bcay2JzpBv
- AKeFs73V45Bo5lj59y1JNL1A13lbIt4KPuqYlbH12hOAjPXQzFyi3r4teZJYeucY53xIxKPXxTt
- buEEOccJTth/aGbJeuW7xCIpdC+E62LKtrQqza1T+ngZI0+7ZHljDhw==
-X-Gm-Gg: AY/fxX5k/VwsVV38tWycf/89xXIPMSxMkvYFjK/2aB6ojz4q5+KPvGOgsuUdNmcoh+6
- CkE+7RxLPHgRz/6lt8waeM/GhWnDyjWFzM65aUY6sjLZYIbWA204jp30F/06+Wt7JB3RPxVo083
- MmW2QJ/6cOY8tOR+qPJ3D3StlZsl3zbk2AEaUBPbPggiZGLbnaclQkjbbEOe9Chsvux3bFnF63C
- JQilCYnQ6UjEZZSz5lTJzUlqUcsiWnaYNn1iaPDtoq6vAJRL1XLJm2Hfgha7IC9HPk7c5NsT1FJ
- v89EKf+qC+p9h7s5coKOqVy5RqTkwmwm/cBmsylU1uNZChhJ/JE8jk9phA6Z4ifNCLdj52/xRM1
- HSfuG4tcL3oUrlAHvMcTnDr24hGk5Bgt97wCVyKqWZlBdOGon
-X-Received: by 2002:a05:600c:3e0d:b0:479:3a86:dc1c with SMTP id
- 5b1f17b1804b1-4803e803c1amr41563305e9.36.1768930679832; 
- Tue, 20 Jan 2026 09:37:59 -0800 (PST)
-X-Received: by 2002:a05:600c:3e0d:b0:479:3a86:dc1c with SMTP id
- 5b1f17b1804b1-4803e803c1amr41563045e9.36.1768930679409; 
- Tue, 20 Jan 2026 09:37:59 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
- ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4801fe6e703sm109326375e9.18.2026.01.20.09.37.58
+ AJvYcCWaFNinsYA/sPkHkz0USUG2mq0r/zGW6o5BCG/NOp+azbCEmr+sIbSDcCZGNAls7/SV0dyJcp44Hw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy4EZqEcakz4mRyR5KvmT9h02ueA5pXJ9KCSYjoyINy03tTUnjl
+ TSAh7/+PFVfUwfDA7xIJ2VWMQ3gs5H30dvs8jgRXBwkIsyP9vxogDRAlI+9sO5w6JxA=
+X-Gm-Gg: AZuq6aI35kgu68eo+wBqL+uzsHprseXkAAaiCSRVxIqsVxSeZU2dK3/fqUzrCqrgzJG
+ bkON9LXRFJJwL6N3q/pqXpvVmZLpXM/YRJlb99hCKOud23/hlPB0guLoecTOy6jLNeMAsFQ53My
+ ZJ/GyV/CCs8ie/HR/v6FiFSlBjBL4rwETS6mx39HlswfrRwe5lQmxyat5I++zfFcIAUV+Ky2oYZ
+ tHhPQbs8TVoFz24SJWd4qn7dNETsK74b1hkKk+M0qkAYnFPpZcsZgUSJBMp9Yf+S+s0z9G+b6ib
+ KH/iMS2QI5hp5mG2ug1ZpS2/X2IK1OFkQPmhE+Uz6eyNbONenoOY8NFSv2VrEPw3SyQbMwwcdBZ
+ dbFs9Bvpes0e3j+xs/kgXdUnp5nbEs/aga3ci8k6Ia9uWTE4ZK+miw4pCZ7lffC36MU5SGftvKJ
+ BSPbMApoqEqRFLzGRPyOshVHDhz4eGfg+ixjhyl9V/dxkW+nTHBswoqQ==
+X-Received: by 2002:a05:6000:ec2:b0:435:924e:3d73 with SMTP id
+ ffacd0b85a97d-435924e3e7fmr3250528f8f.58.1768931869783; 
+ Tue, 20 Jan 2026 09:57:49 -0800 (PST)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43596b62700sm1617505f8f.42.2026.01.20.09.57.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Jan 2026 09:37:58 -0800 (PST)
-Message-ID: <77ffcbad-cd45-412e-8d46-dca2c6c6e7f6@redhat.com>
-Date: Tue, 20 Jan 2026 18:37:57 +0100
+ Tue, 20 Jan 2026 09:57:49 -0800 (PST)
+Message-ID: <595f75a4-7a85-4319-a8b2-8d5e10459068@linaro.org>
+Date: Tue, 20 Jan 2026 18:57:47 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/4] hw/net/virtio-net: Adapt hash handling to updated
- UAPI
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: eric.auger@redhat.com, alex@shazbot.org, cohuck@redhat.com,
- mst@redhat.com, nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com,
- jgg@nvidia.com, jonathan.cameron@huawei.com, zhenzhong.duan@intel.com,
- vivek.kasireddy@intel.com, kjaju@nvidia.com, Jason Wang <jasowang@redhat.com>
-References: <20260116092950.15796-1-skolothumtho@nvidia.com>
- <20260116092950.15796-3-skolothumtho@nvidia.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260116092950.15796-3-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 4PIvQsstMoGoL4wBQ9cIwtkSEIykRTPu3dCjQJaH1mE_1768930680
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
+Subject: Re: [RFC v9 2/8] hw/arm/smmuv3-common: Define STE/CD fields via
+ registerfields
+Content-Language: en-US
+To: Tao Tang <tangtao1634@phytium.com.cn>, Paolo Bonzini
+ <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Mostafa Saleh <smostafa@google.com>,
+ CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
+References: <20260119161112.3841386-1-tangtao1634@phytium.com.cn>
+ <20260119161112.3841386-3-tangtao1634@phytium.com.cn>
+ <fa73ef10-4a1e-486d-9d80-550c91eef11f@linaro.org>
+ <0e71fdee-3569-4f83-afc8-46e0cbe565d0@phytium.com.cn>
+ <ad975568-9ff4-420f-9b98-725d0c3e7c64@linaro.org>
+ <0d1ab48f-e537-49de-b5ae-f8ddcabdd8a0@phytium.com.cn>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <0d1ab48f-e537-49de-b5ae-f8ddcabdd8a0@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x442.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.087,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -163,67 +116,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Michael, Jason,
+Hi Tao,
 
-I am about to send a PR for this series. Are you OK with this change ?
-
-Thanks,
-
-C.
-
-On 1/16/26 10:29, Shameer Kolothum wrote:
-> The virtio_net_hdr_v1_hash layout changed in the Linux UAPI, replacing
-> the 32-bit hash_value field with two 16-bit fields, hash_value_lo and
-> hash_value_hi.
+On 20/1/26 02:02, Tao Tang wrote:
+> On 2026/1/20 01:22, Philippe Mathieu-Daudé wrote:
+>> On 19/1/26 17:51, Tao Tang wrote:
+>>> Hi Philippe,
+>>>
+>>> On 2026/1/20 00:38, Philippe Mathieu-Daudé wrote:
+>>>> On 19/1/26 17:11, Tao Tang wrote:
+>>>>> Switch STE/CD bitfield definitions and accessors to the
+>>>>> 'registerfields.h' REG/FIELD API.
+>>>>>
+>>>>> FOLLOW-UP: Fix CTXPTR_HI/S2TTB_HI/TTB0_HI/TTB1_HI high bits width
+>>>>> (should be 24 bits, not 16).
+>>>>
+>>>> Right, but ...
+>>>>
+>>>>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>>>>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>>>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>>>>> ---
+>>>>>   include/hw/arm/smmuv3-common.h | 169 ++++++++++++++++++++++ 
+>>>>> +----------
+>>>>>   1 file changed, 120 insertions(+), 49 deletions(-)
+>>>>
+>>>>
+>>>>> -#define STE_VALID(x) extract32((x)->word[0], 0, 1)
+>>>>> +REG32(STE_0, 0)
+>>>>> +    FIELD(STE_0, VALID, 0, 1)
+>>>>> +    FIELD(STE_0, CONFIG, 1, 3)
+>>>>> +    FIELD(STE_0, S1FMT, 4, 2)
+>>>>> +    FIELD(STE_0, CTXPTR_LO, 6, 26)
+>>>>> +REG32(STE_1, 4)
+>>>>> +    FIELD(STE_1, CTXPTR_HI, 0, 16)
+>>>>
+>>>> ... not followed up?
+>>>
+>>>
+>>> Sorry, there's a typo here. What I was thinking at the time was that 
+>>> I would submit a separate patch follow this series.
+>>
+>> I squashed:
+>>
+>> --  >8 --
+>> diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3- 
+>> common.h
+>> index 6b48b5414dd..db30331441a 100644
+>> --- a/include/hw/arm/smmuv3-common.h
+>> +++ b/include/hw/arm/smmuv3-common.h
+>> @@ -43,7 +43,7 @@ REG32(STE_0, 0)
+>>      FIELD(STE_0, S1FMT, 4, 2)
+>>      FIELD(STE_0, CTXPTR_LO, 6, 26)
+>>  REG32(STE_1, 4)
+>> -    FIELD(STE_1, CTXPTR_HI, 0, 16)
+>> +    FIELD(STE_1, CTXPTR_HI, 0, 24)
+>>      FIELD(STE_1, S1CDMAX, 27, 5)
+>>  REG32(STE_2, 8)
+>>      FIELD(STE_2, S1STALLD, 27, 1)
+>> (1/2) Stage this hunk [y,n,q,a,d,k,K,j,J,g,/,e,p,P,?]? y
+>> @@ -66,7 +66,7 @@ REG32(STE_5, 20)
+>>  REG32(STE_6, 24)
+>>      FIELD(STE_6, S2TTB_LO, 4, 28)
+>>  REG32(STE_7, 28)
+>> -    FIELD(STE_7, S2TTB_HI, 0, 16)
+>> +    FIELD(STE_7, S2TTB_HI, 0, 24)
+>>
+>> ---
+>>
+>> Is that OK with you? Do TTB0_HI/TTB1_HI need update too?
 > 
-> Update hash handling to populate the new fields correctly and adjust
-> offset and size calculations accordingly.
+> Yes we should update TTB0_HI/TTB1_HI too. A total of four modifications 
+> are needed here:
 > 
-> Cc: Michael S. Tsirkin <mst@redhat.com>
-> Cc: Jason Wang <jasowang@redhat.com>
-> Reviewed-by: Cédric Le Goater <clg@redhat.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-> ---
->   hw/net/virtio-net.c | 11 +++++++----
->   1 file changed, 7 insertions(+), 4 deletions(-)
+> CTXPTR_HI
 > 
-> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-> index 317f1ad23b..512a7c02c9 100644
-> --- a/hw/net/virtio-net.c
-> +++ b/hw/net/virtio-net.c
-> @@ -1879,7 +1879,8 @@ static int virtio_net_process_rss(NetClientState *nc, const uint8_t *buf,
->                                                n->rss_data.runtime_hash_types);
->       if (net_hash_type > NetPktRssIpV6UdpEx) {
->           if (n->rss_data.populate_hash) {
-> -            hdr->hash_value = VIRTIO_NET_HASH_REPORT_NONE;
-> +            hdr->hash_value_lo = VIRTIO_NET_HASH_REPORT_NONE;
-> +            hdr->hash_value_hi = VIRTIO_NET_HASH_REPORT_NONE;
->               hdr->hash_report = 0;
->           }
->           return n->rss_data.redirect ? n->rss_data.default_queue : -1;
-> @@ -1888,7 +1889,8 @@ static int virtio_net_process_rss(NetClientState *nc, const uint8_t *buf,
->       hash = net_rx_pkt_calc_rss_hash(pkt, net_hash_type, n->rss_data.key);
->   
->       if (n->rss_data.populate_hash) {
-> -        hdr->hash_value = hash;
-> +        hdr->hash_value_lo = cpu_to_le16(hash & 0xffff);
-> +        hdr->hash_value_hi = cpu_to_le16((hash >> 16) & 0xffff);
->           hdr->hash_report = reports[net_hash_type];
->       }
->   
-> @@ -1990,10 +1992,11 @@ static ssize_t virtio_net_receive_rcu(NetClientState *nc, const uint8_t *buf,
->   
->               receive_header(n, sg, elem->in_num, buf, size);
->               if (n->rss_data.populate_hash) {
-> -                offset = offsetof(typeof(extra_hdr), hash_value);
-> +                offset = offsetof(typeof(extra_hdr), hash_value_lo);
->                   iov_from_buf(sg, elem->in_num, offset,
->                                (char *)&extra_hdr + offset,
-> -                             sizeof(extra_hdr.hash_value) +
-> +                             sizeof(extra_hdr.hash_value_lo) +
-> +                             sizeof(extra_hdr.hash_value_hi) +
->                                sizeof(extra_hdr.hash_report));
->               }
->               offset = n->host_hdr_len;
+> S2TTB_HI
+> 
+> TTB0_HI
+> 
+> TTB1_HI
 
+I am just trying to help you getting your series merged. I know this is
+v9 and you might be frustrated, but simply providing the correct 4
+values would have helped both of us and save further exchanges.
+
+In v8 Eric said to change 16 -> 24 for 4 fields and you confirmed:
+https://lore.kernel.org/qemu-devel/2255d30c-cc58-4a45-974c-f7fd89694c26@phytium.com.cn/
+
+Looking at ARM IHI 0070G.b this is only valid for CTXPTR_HI, for the
+rest only 20 bits remains, 4 are RES0 (SMMUv3.1).
+
+It would have saved me some hours checking the spec if you had
+provided the correct values beforehand. I'm going to squash the
+following instead:
+
+-- >8 --
+diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
+index 6b48b5414dd..f0e1dd85715 100644
+--- a/include/hw/arm/smmuv3-common.h
++++ b/include/hw/arm/smmuv3-common.h
+@@ -45,3 +45,3 @@ REG32(STE_0, 0)
+  REG32(STE_1, 4)
+-    FIELD(STE_1, CTXPTR_HI, 0, 16)
++    FIELD(STE_1, CTXPTR_HI, 0, 24)
+      FIELD(STE_1, S1CDMAX, 27, 5)
+@@ -68,3 +68,3 @@ REG32(STE_6, 24)
+  REG32(STE_7, 28)
+-    FIELD(STE_7, S2TTB_HI, 0, 16)
++    FIELD(STE_7, S2TTB_HI, 0, 20)
+
+@@ -128,3 +128,3 @@ REG32(CD_2, 8)
+  REG32(CD_3, 12)
+-    FIELD(CD_3, TTB0_HI, 0, 19)
++    FIELD(CD_3, TTB0_HI, 0, 20)
+  REG32(CD_4, 16)
+@@ -133,3 +133,3 @@ REG32(CD_4, 16)
+  REG32(CD_5, 20)
+-    FIELD(CD_5, TTB1_HI, 0, 19)
++    FIELD(CD_5, TTB1_HI, 0, 20)
+
+---
+
+If you disagree, please post a patch on top to correct.
+
+Regards,
+
+Phil.
 

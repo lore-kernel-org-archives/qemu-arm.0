@@ -4,117 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C816CA5FA0
-	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 16:16:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D597CA5FB5
+	for <qemu-arm@archiver.kernel.org>; Tue, 20 Jan 2026 17:00:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viEIH-0002mM-H0; Tue, 20 Jan 2026 11:09:26 -0500
+	id 1viF5N-0000nG-QL; Tue, 20 Jan 2026 12:00:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1viEIE-0002m5-A0
- for qemu-arm@nongnu.org; Tue, 20 Jan 2026 11:09:22 -0500
-Received: from 3.mo548.mail-out.ovh.net ([188.165.32.156])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1viEIA-0006Pv-7J
- for qemu-arm@nongnu.org; Tue, 20 Jan 2026 11:09:22 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.254.86])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4dwXMC4FbWz5vrn;
- Tue, 20 Jan 2026 16:09:11 +0000 (UTC)
-Received: from kaod.org (37.59.142.98) by DAG3EX1.mxp5.local (172.16.2.21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.61; Tue, 20 Jan
- 2026 17:09:10 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-98R00292744a0c-444c-43c1-96ca-4913ae1004a1,
- 21EA59D4F1114275CF698448FAF8CB5A144B01CF) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <1433fb86-bb1b-41f7-b7ec-45560e52146a@kaod.org>
-Date: Tue, 20 Jan 2026 17:09:10 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1viF5E-0000ew-Ad
+ for qemu-arm@nongnu.org; Tue, 20 Jan 2026 12:00:00 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1viF5C-000784-JA
+ for qemu-arm@nongnu.org; Tue, 20 Jan 2026 11:59:59 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-47ff94b46afso193355e9.1
+ for <qemu-arm@nongnu.org>; Tue, 20 Jan 2026 08:59:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1768928397; x=1769533197; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=LmCUs282K4/tylcg9QZD7xuR1Rh/5OFRlrbEouPAO4w=;
+ b=qU1ZXc3De0YYhLmx3UNEl3UpQAK3R93Y3Zt7sQETkluD+dMm3fqMkOrizos8ocTjqT
+ fYbvrxIrMdZBOhN//lyCud+8KauFVIfrUD1Ak2Sk7m9SmSbMX7a4tJWloqWNT331RchF
+ bry1sWRLhEGaBi2QUi3qOj4Ga3NA5YS2/Rjh9fx6dSgzsFan0DGkhYcBrX2Ks9uU2guM
+ KBWnQ/ahsmQsxYQiUWJcb5iSWyKgqAQmeu0qkx4Ii0qiltDw9ov4Ed3nnB3h09dmy47W
+ zOD3x6xTz/Voy2aG2eVHPCRwxqWdhPCLt7zSvSzDdEdo0sLCtwgM+mEDpx0HxBUgM7J5
+ F/AA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1768928397; x=1769533197;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=LmCUs282K4/tylcg9QZD7xuR1Rh/5OFRlrbEouPAO4w=;
+ b=tutSEfmmsjJYrL5KhknQapWYem8i7PdFb+jQFU1/Oy150dAUAmOSaO46oU0lnv89iE
+ 2L5EddfvEgJVwCu8558IrYofP0F5RXX1XJRX4DAlGVFIuKuxlS2zeIj4c3K1F6h0m0vs
+ aYnyTycznqeCxPUikF2UDb3AM4Sye1/ZyDJJ0R7JTJfnhCUkVVFbd/xfhZX73zEkaIZg
+ jQeZcWu4d6zyqwv08EN6b/XIT9/3+lwGyUtDkf2ENZ09kiAmNhJrT1inAFX1lc+44gED
+ DWl+AtlvjaR2IOWIQj9f50cWcSBJRXfRHisgYpjxzYAMW7cjPyDJbI8Hn8m9LQ7NSxGN
+ PXSQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVGbp/7Y3lDu/QSRz3pDxe7Wto8j6QiiIMDqgG8Z1xmUbsZj3mmBxMk06Vx9YmCkpVV+lgBNqgDOA==@nongnu.org
+X-Gm-Message-State: AOJu0Yx7DIYAOF1JKI+BAbe5OxS1pccGwOvqVK+l7yzzMBMtFxguAXwW
+ ZR1sdHpn/rPQmke9IyBvp9n76vtC7ECNUM57BKw2HGtb38s7mtDWKVHTLenwTnvx5NM=
+X-Gm-Gg: AY/fxX5l5xJ8SHIXwRpbPlyVITk76uEZgASDuJjI2UlhWU9we68NmJc4pBuT7T4G9Qd
+ xciYFqlQOUWm+1unPtIe6l94flLEMfcDPhcTy4YLoN/9Pts0X2sR9cWzRTqIpq18uLrJGA0ZliJ
+ lyhFD6zdYWUd7JWG7IPWLmtHj9WUcKkNQ7yU+rvDpz7X6TZ+zarTC+SL19qV/P9xj8k6l+67AL6
+ wIplaD1XiL1j+R4MX+80lJ1fjJcPI13SHDgzEjDTN/X7NX0afVBXfY7UXf78aGXeMgSijKnbCo9
+ 1s7HEZofqyRca8DA3JI3L/flbMjou+Oxc64LP7sOzXsWFQPrzlD+CnF3EZKe0uxvc3JC/yhGIQz
+ 3Mj/UWvOhoG5dmaghuoIQMnW7YAKQeBNVFXRRBpv57K4Xa3kd66W1OS2zSou297CdOVKHvQ7GW8
+ ltr2Whpq4DOL4oXndqSZ993Lj06tlYQcwiVlc1ZDAyl2S6w1VeABOLeg==
+X-Received: by 2002:a05:600c:8208:b0:47e:e981:78b4 with SMTP id
+ 5b1f17b1804b1-4801e67b738mr194331985e9.12.1768928396810; 
+ Tue, 20 Jan 2026 08:59:56 -0800 (PST)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4801e86c00esm252289045e9.2.2026.01.20.08.59.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 20 Jan 2026 08:59:56 -0800 (PST)
+Message-ID: <ae4c2553-c82e-4ba5-a79d-535e02b39e44@linaro.org>
+Date: Tue, 20 Jan 2026 17:59:55 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 00/22] hw/arm/aspeed: AST1700 LTPI support and device
- hookups
-To: Kane Chen <kane_chen@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <troy_lee@aspeedtech.com>
-References: <20260120051859.1920565-1-kane_chen@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
- BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
- M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
- 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
- jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
- TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
- neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
- VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
- QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
- ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
- WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
- wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
- SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
- cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
- S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
- 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
- hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
- tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
- t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
- OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
- KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
- o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
- ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
- IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
- d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
- +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
- HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
- l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
- 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
- ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
- KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260120051859.1920565-1-kane_chen@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+Subject: Re: [PATCH 00/14] Freescale SDHCI Fixes
+Content-Language: en-US
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ Guenter Roeck <linux@roeck-us.net>, Bin Meng <bmeng.cn@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-block@nongnu.org, qemu-ppc@nongnu.org
+References: <20260112145418.220506-1-shentey@gmail.com>
+ <4add79fa-6cee-4795-96e9-033ae98c472e@linaro.org>
+ <3F4EA15D-0769-4FF6-BC25-B1052EA69032@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <3F4EA15D-0769-4FF6-BC25-B1052EA69032@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.98]
-X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG3EX1.mxp5.local
- (172.16.2.21)
-X-Ovh-Tracer-GUID: 842f24e1-b751-4961-81ce-cc7d92fad1a6
-X-Ovh-Tracer-Id: 12152682123131194290
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFa9cxNgNqvbSuC3CQR12dLi8tFcYAvU56LW4p6FoyoyvtiV2hGqHxTKs+hVPevy21clvi0a6g8cOr/c0hEw40Az5RnLKFk2Vx2bO8fw4EizpYbhUbF1jgFYuGqUl0fGPhDirgosRrhO4QUxqMarwZbQpTF8iXGFAiCYVQVVzXc/g9VVH0OvxK5NM/oFRNe1WSArsbKJaEnC5frf35UDoDN8RQmx2yFlW1jhQhd4DOsGqbj5tkmYKjHfnibTvKaVQC91qXrUxR1jYLhPYnvd1Vxyb/RdUjAl2K4E6MGYThXEJ1H0L8Zp6jZtedaet9IHDPP3VnblVQDx074AJipqcPneLVPcthTgCtXKfZ+V6riN/gOywsLziAMxLzDWVuLQ08214Fk5N1ykKZx9Kck3S/FzHFwFvbc5i4b3Pe+Mdh1wWLvAzy6+FkShOPmYR/0c0lB24C89PCsMN3oOxpL/BdJq+63RPoUBTX0ok11gMncrge+7c7TogL+1zWBA6HB+lpLid0jNZ8WPP2QxRzR0ADL2xhu31upBdwlRpwWwgBSov9pZ2V8w4CQi6M7b9UoA1lg4VHB7+GAeXrAxSYEOFN9oXHBzxwapIBwlTHccoiRPnREI1eeplHmv3b4I4fQoFfmRwONT5C2Utpi8SG0nNFN26iREVzvJMLGEeivGwhqkQ
-DKIM-Signature: a=rsa-sha256; bh=ddIZh+0aniWV4BokIFLg/3rus/0Il6t6CBNbSWXos80=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1768925352; v=1;
- b=OhG8Wsj0aC3E0CF4YTXbuqWOwk8fZ7AnUfJ79ymRwnolw7vLtubMw3/wKLkXq/WB6mudsF2H
- rycZVjlbN5BzE6TLfin8wWGs0pGVXMPYdAO41VUp4KoFVl/M0qJeLrHEjkMiFBbCEbZquV9HjWZ
- vjqZ3vrNB1NOAA7DJ7kcQqLertHaEw/TJXDCisOLVXIBEsPE9wyBzctMuQ0+nscX6PZBFEuV6My
- Thpq8V7lQKCXVFBLFUT/e22G261jVn9f1KHdbMUMcpIGlU6lTB5ujXvrojeOUsy6FbCyTxrMIEg
- toGLqbMTUfznYHdhB5KPAQYpue0ziMmAUPeHOgCGV+OYw==
-Received-SPF: pass client-ip=188.165.32.156; envelope-from=clg@kaod.org;
- helo=3.mo548.mail-out.ovh.net
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -131,145 +107,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Kane, Jamin,
+On 18/1/26 23:56, Bernhard Beschow wrote:
+> 
+> 
+> Am 18. Januar 2026 18:23:11 UTC schrieb "Philippe Mathieu-Daudé" <philmd@linaro.org>:
+>>> Bernhard Beschow (14):
+>>>     hw/sd/sdhci: Fix TYPE_IMX_USDHC to implement sd-spec-version 3 by
+>>>       default
+>>>     hw/arm/fsl-imx6: Remove now redundant setting of "sd-spec-version"
+>>>       property
+>>>     hw/arm/fsl-imx6: Fix naming of SDHCI related constants and attributes
+>>>     hw/arm/fsl-imx25: Apply missing reset quirk
+>>>     Revert "hw/sd/sdhci: Rename ESDHC_* defines to USDHC_*"
+>>>     hw/sd/sdhci: Consolidate eSDHC constants
+>>>     hw/sd/sdhci: Rename usdhc_ functions
+>>>     hw/sd/sdhci: Add TYPE_FSL_ESDHC_BE
+>>>     hw/ppc/e500: Use TYPE_FSL_ESDHC_BE
+>>>     hw/arm/fsl-imx25: Extract TYPE_FSL_ESDHC_LE
+>>>     hw/sd/sdhci: Remove endianness property
+>>>     hw/sd/sdhci: Add uSDHC-specific quirk
+>>>     hw/sd/sdhci: Remove vendor property
+>>>     hw/sd/trace-events: Remove redundant "SWITCH " command name
+>>
+>> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>
+>> and queued, thanks!
+> 
+> Thanks, Phil!
+> 
+> Could you do me a favor and drop patch "hw/sd/sdhci: Add uSDHC-specific quirk" for now? Although the patch does solve a boot problem I think it needs some more thought. Thanks!
 
-For some reason, I don't receive your proposals anymore. My provider
-seems to drop silently these emails. Have you changed anything recently ?
-
-Thanks,
-
-C.
-
-On 1/20/26 06:18, Kane Chen via qemu development wrote:
-> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
-> 
-> Hi all,
-> 
-> LTPI (LVDS Tunneling Protocol & Interface) is defined in the OCP DC-SCM
-> 2.0 specification (see Figure 2):
-> https://www.opencompute.org/documents/ocp-dc-scm-2-0-ltpi-ver-1-0-pdf
-> 
-> LTPI provides a protocol and physical interface for tunneling various
-> low-speed signals between the Host Processor Module (HPM) and the
-> Satellite Controller Module (SCM). In Figure 2 of the specification,
-> the AST27x0 SoC (left) integrates two LTPI controllers, allowing it to
-> connect to up to two AST1700 boards. On the other side, the AST1700
-> consolidates HPM FPGA functions and multiple peripheral interfaces
-> (GPIO, UART, I2C, I3C, etc.) onto a single board.
-> 
-> Because the AST1700 exposes additional I/O interfaces (GPIO, I2C, I3C,
-> and others), it acts as an I/O expander. Once connected over LTPI,
-> the AST27x0 can control additional downstream devices through this link.
-> 
-> This patch series is based on the aspeed_next branch and incorporates
-> recent I2C bus label changes.
-> Ref: https://patchwork.kernel.org/project/qemu-devel/patch/20260112083054.4151945-2-kane_chen@aspeedtech.com/
-> 
-> It introduces a basic LTPI controller model and wires it into the
-> AST27x0 SoC. The series also adds the AST1700-specific LTPI expander
-> device and incrementally connects common peripherals on the AST1700
-> model. For the I3C block, which may cause kernel crashes, its MMIO
-> region is modeled as an unimplemented device to reserve address space
-> and make the missing functionality explicit, ensuring stable guest
-> probing.
-> 
-> In the official release images, the AST1700 functions are not included
-> by default. To test the AST1700-related functionality, please include
-> the following DTS files for probing:
-> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm64/boot/dts/aspeed/aspeed-ltpi0.dtsi
-> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm64/boot/dts/aspeed/aspeed-ltpi1.dtsi
-> 
-> After including these DTS files in the BMC image, you can verify LTPI
-> functionality using the following scenarios:
-> 
-> 1. In U-Boot:
->     Run the ltpi command to trigger the LTPI connection and display the
->     current connection status.
-> 2. In BMC Linux:
->     Run i2cdetect -y <16-38> to scan and test the I2C buses exposed by
->     the AST1700.
-> 
-> Any feedback or suggestions are appreciated!
-> 
-> Kane
-> 
-> ---
-> 
-> ChangeLog
-> ---------
-> v5:
-> - Add functional test case for AST1700 I2C
-> - Corrected the From attribution
-> - Fixed incorrect DRAM setting for SPI and I2C controllers
-> - Refine code structure
-> 
-> v4:
-> - Add missing Signed-off-by
-> - Fix checkpatch.pl warnings
-> - Refine code structure
-> - Enable AST1700 support only after all devices are ready
-> 
-> v3:
-> - Add PWM model
-> - Integrate the SGPIO model
-> - Fix I2C test case failure
-> - Refine code structure
-> 
-> v2:
-> - Separate the AST1700 model into a standalone implementation
-> - Refine the mechanism for assigning the AST1700 board number
-> 
-> v1:
-> - Initial version
-> ---
-> 
-> Cédric Le Goater (1):
->    hw/misc: Add basic Aspeed PWM model
-> 
-> Kane-Chen-AS (21):
->    hw/misc: Add LTPI controller
->    hw/arm/aspeed: Attach LTPI controller to AST27X0 platform
->    hw/arm/aspeed: Add AST1700 LTPI expander device model
->    hw/arm/aspeed: Integrate AST1700 device into AST27X0
->    hw/arm/aspeed: Integrate interrupt controller for AST1700
->    hw/arm/aspeed: Attach LTPI controller to AST1700 model
->    hw/arm/aspeed: Attach UART device to AST1700 model
->    hw/arm/aspeed: Attach SRAM device to AST1700 model
->    hw/arm/aspeed: Attach SPI device to AST1700 model
->    hw/arm/aspeed: Attach ADC device to AST1700 model
->    hw/arm/aspeed: Attach SCU device to AST1700 model
->    hw/arm/aspeed: Attach GPIO device to AST1700 model
->    hw/arm/aspeed: Introduce 'bus-label' property for AST1700 SoC
->    hw/arm/aspeed: attach I2C device to AST1700 model
->    hw/arm/aspeed: Attach WDT device to AST1700 model
->    hw/arm/aspeed: Attach PWM device to AST1700 model
->    hw/arm/aspeed: Attach SGPIOM device to AST1700 model
->    hw/arm/aspeed: Model AST1700 I3C block as unimplemented device
->    hw/arm/aspeed: Enable AST1700 IO expander support
->    test/functional/aarch64: Parameterize I2C bus ID in AST2700 test
->    test/functional/aarch64: Add I2C test for AST1700 IO expanders
-> 
->   include/hw/arm/aspeed_ast1700.h               |  55 ++++
->   include/hw/arm/aspeed_soc.h                   |  25 +-
->   include/hw/intc/aspeed_intc.h                 |   2 +
->   include/hw/misc/aspeed_ltpi.h                 |  33 +++
->   include/hw/misc/aspeed_pwm.h                  |  31 ++
->   hw/arm/aspeed_ast1700.c                       | 280 ++++++++++++++++++
->   hw/arm/aspeed_ast27x0.c                       | 170 ++++++++++-
->   hw/intc/aspeed_intc.c                         |  60 ++++
->   hw/misc/aspeed_ltpi.c                         | 193 ++++++++++++
->   hw/misc/aspeed_pwm.c                          | 121 ++++++++
->   hw/arm/meson.build                            |   1 +
->   hw/misc/meson.build                           |   2 +
->   hw/misc/trace-events                          |   4 +
->   .../functional/aarch64/test_aspeed_ast2700.py |  52 +++-
->   14 files changed, 999 insertions(+), 30 deletions(-)
->   create mode 100644 include/hw/arm/aspeed_ast1700.h
->   create mode 100644 include/hw/misc/aspeed_ltpi.h
->   create mode 100644 include/hw/misc/aspeed_pwm.h
->   create mode 100644 hw/arm/aspeed_ast1700.c
->   create mode 100644 hw/misc/aspeed_ltpi.c
->   create mode 100644 hw/misc/aspeed_pwm.c
-> 
-
+Done.
 

@@ -4,96 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0694C44522
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 12:28:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06BC6C44525
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 12:44:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viXKK-0002lB-En; Wed, 21 Jan 2026 07:28:48 -0500
+	id 1viXYu-00047W-OU; Wed, 21 Jan 2026 07:43:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1viXJI-00082Z-AA
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 07:27:44 -0500
-Received: from ci-2002i-snip4-8.eps.apple.com ([57.103.88.219]
- helo=outbound.ci.icloud.com)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1viXS1-0000Ww-8l
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 07:36:45 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1viXJE-0002aE-I5
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 07:27:43 -0500
-Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-central-1k-100-percent-12 (Postfix) with ESMTPS id
- CA1D518001FC; Wed, 21 Jan 2026 12:27:33 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1768998458; x=1771590458;
- bh=Yht18MJmfuiIF51o4n4O5AQVwJszwT3sToSE4/L74hg=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=FL1OcAsscNV965k4mNTPJtTDsRkHqMs8mEmfZrrAUdfK0INAI/V2HWxZNIXILDliBBOZ+ghD1v4aac/r0gHSrBlAnhkV4J7CXIaN9QliPsAB6cAy5Nx8tdymGG6h4jekaLlJ8gGB4DEHByUx/JvP7YRMk7qDw557aae4GY8cl8gYuLyQU6GwuQUK/vhnEJaNdcW/C0s3R2dU+6Dk5BeMCGzbjbHLhIfdSN/WUnnc5Eiwu3vspA/8hwZJBRg7ew2yb6BWZhhFeHy10XFdCWZJxHzY1OUzZei/r19YUbZOqHbOTtW+96F2x5OO0DEhyVilI0YFR/rvRPfudZppCP0g2A==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.156.36])
- by p00-icloudmta-asmtp-us-central-1k-100-percent-12 (Postfix) with ESMTPSA id
- 012D118001F1; Wed, 21 Jan 2026 12:27:30 +0000 (UTC)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
-Subject: Re: [PATCH v16 04/26] hw/arm: virt: add GICv2m for the case when ITS
- is not available
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <CAFEAcA9FMiNZXgRP8OZgvAyPJXfBphXXs4eB1kBZtDgqYDTYUQ@mail.gmail.com>
-Date: Wed, 21 Jan 2026 13:27:19 +0100
-Cc: qemu-devel@nongnu.org,
- =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <0A38F8AC-2756-4BDD-AA0A-AD1502E2F715@unpredictable.fr>
-References: <20260116135235.38092-1-mohamed@unpredictable.fr>
- <20260116135235.38092-5-mohamed@unpredictable.fr>
- <CAFEAcA-3P6i_w3b7SaFTn4Zmwnot5vpDs89y+zpjcJ=-mEnP5w@mail.gmail.com>
- <8158CEFE-8EA2-40A4-970E-01B30BACC019@unpredictable.fr>
- <CAFEAcA9JC1HRboZ=722dsT7a4nDQNF_ECjLK+z84T5MJisfppg@mail.gmail.com>
- <2FD2C3C6-8FBA-4833-B890-5E81637BE7EE@unpredictable.fr>
- <CAFEAcA-MAsQpaaUx0dJHRHjUJ6bEWwnf58VZN965Npmi7_kHXQ@mail.gmail.com>
- <FF6F91A9-9A09-48B1-8857-FF213C9A4644@unpredictable.fr>
- <CAFEAcA9FMiNZXgRP8OZgvAyPJXfBphXXs4eB1kBZtDgqYDTYUQ@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.3864.300.41.1.7)
-X-Proofpoint-ORIG-GUID: ROUE6FrLG-QJKFWefmJifvU-lferh8Y2
-X-Proofpoint-GUID: ROUE6FrLG-QJKFWefmJifvU-lferh8Y2
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTIxMDEwNCBTYWx0ZWRfX+fr+hRgH3BhE
- 1Ltm/xnb7Fn0mXLdfQwf2N95NSWbaR1mGTVBJBgzbLGJwUQ1yAPIQDVHReThE90HXDjxmGIRsci
- GUFDYJRHkb+p3495jm5aQAfkCoL6J0+ik3uDepOxb6EGYmMXLQA4eQ+jcmOkeIN53TIk5nR54G5
- v/eMQKwuhnL9X89dcdKcfp4B//F7rQBU+LeFSpg8+hy70W78K0aJWJwZCWVTNz2eL8H9MoR40fM
- 0+yJRvIA5Bv566F5klEYWRfYgFuHzfwZs2hsKkWGI5iuELCT7jVhENseYTf/jCS/E1VbFDLYj1G
- OBbJWYBHCazljQWH7eFBOBYuIftjBKvX3AbPS3PQursLM0MqJOoaEA6s2qxgzU=
-X-Authority-Info-Out: v=2.4 cv=AdW83nXG c=1 sm=1 tr=0 ts=6970c637
- cx=c_apl:c_apl_out:c_pps a=2G65uMN5HjSv0sBfM2Yj2w==:117
- a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=8tVNtdTugjW4QW2w:21 a=kj9zAlcOel0A:10
- a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
- a=ABBp3Z9_OFQcteDbQAsA:9 a=CjuIK1q_8ugA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.20,FMLib:17.12.100.49
- definitions=2026-01-21_01,2026-01-20_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 spamscore=0 adultscore=0 mlxscore=0 phishscore=0
- mlxlogscore=936 clxscore=1030 suspectscore=0 bulkscore=0 malwarescore=0
- classifier=spam authscore=0 adjust=0 reason=mlx scancount=1
- engine=8.22.0-2601080000 definitions=main-2601210104
-X-JNJ: AAAAAAABmu3Zi9UJIi1LUc4zq9pV6/vnrkMeI5Yu0h9/jC6fqiMMbQnh3saLusPLzqHpPZOa0J1ZGUwQFFmLGbPV4ZO1oAbItxoCNowI6TmbXuULg2+kdiaKhYCGh/eGbEmNt5rNXSICtZMh9cx3Tyk7jDQoHLA53qL5Zcn3+bidXpiYr2avl6X5796KJ+KR27ejHD4dY+qUXNVTm+/YgN/qrBSefM0CJddrQ8yOSictKRsJVObo/KtFwhnfVhEI6Bzsrk2SDJsousPzjMjY7xM5i19pAVtBQLvR8F2tZgZJNW2lTvVUYJcRHpprlp7AMXhpw4WF/AP81JVlv5q2XIjFD0rIQlSaj5VpOwsWtK3redHkGt00wv6sdH83wA3wIaHTbT1x8KBDRVbG+wFQJQSHA3WGUQVboKRTr76+5nTwRk0JD3G5sM3gMUc+qOhc9wTv36j1v6Umip1x3ubXnfffit3qHx+UNkPg9YAtVo8bDQWNL2phaXdvrempgRLrI3d8Z9z1x5TS6mX3roiJ1naKU612g9+r6uCmkFFJ6lcJf04jFniseExfGdBUhoQigQOEEHn3GPLNA6tATLATiwTPP0cGPCY0d2VaV5QNxwsD5zGOaJvT+HV+zZCwe3YUJ3jowcYXdnKPVFJdJjomBc9GwR1V8JvxlnUHknbfu5yJIx+KnLSlEeBysUaCjQxxpzuw0DlBz3XwnEXLyFdHGBnwT+NujBHPiWjk1lCDzsUmqLywGMupQX9o5H4KRcJ5gijQqRjJjEt9VCN0Z+z70rNkjndCWjcK11XOEIVF1vpY59De2FpbBpuOCp3A
-Received-SPF: pass client-ip=57.103.88.219;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1viXRx-0004YU-Un
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 07:36:44 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1768999000;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=FliO+0+N6yK98z0Fg6EgwNxlGjUJONnnw/NVFutu8WU=;
+ b=dyldfiQYLIWo7PNJZVceia8f30wXsNmOIgls81B72zYIChB1B5ozaHoByMoKZX+0lGobir
+ GEKLM8IL3TEZAyV/7TI3uuXwQSUyNdtw8FP3X4KaxMx4GdZUtCrg/h7UUkRbgo67if9KCT
+ y2K+DeINzTqEr1qvaEltLvzZs19rVL0=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-657-eu4vOj4GNFew4X-IWl06aw-1; Wed, 21 Jan 2026 07:36:38 -0500
+X-MC-Unique: eu4vOj4GNFew4X-IWl06aw-1
+X-Mimecast-MFC-AGG-ID: eu4vOj4GNFew4X-IWl06aw_1768998997
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-47edc79ff28so42143595e9.2
+ for <qemu-arm@nongnu.org>; Wed, 21 Jan 2026 04:36:38 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1768998997; x=1769603797;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=FliO+0+N6yK98z0Fg6EgwNxlGjUJONnnw/NVFutu8WU=;
+ b=UfZviYZVmXz/PuapEU9N2Q+uLjeGH2RH/7i/kNuKA4FlpGBOpJQCTbNNTXBR3Yqf/o
+ Uu3mmiQlNG8WCI9ImM5XtQLilkrNVKHsaKT0tqdw+7Byj3Wie1X7TtHqg0I9NGNBfuhV
+ YfIf54AbT2j8oEGC+0GDwO36WUhgfP8iqLH7K5OMuE4CzpU+p0AFg650PIfQnFFN8zM+
+ DBok6ZEbkjKNNVyqbA/ewjw6BxA5Ubu8u7dSBCLXt9N855sBaQs9U1pPAGO9LRp04lC4
+ M+OkkUu+zzHRNuTobKUH9N2+7/oKbxUIgfteZoYbtDEcHloWyJCUH8nwl1HiCYzMsZD5
+ RhnQ==
+X-Gm-Message-State: AOJu0Yx3ZdNJF6l0BKka4ufnEPndsY5fC+M/ji/7Q5MZ03Rc9j4vc4IN
+ S7ZiQwijSrco/fptU1tStgc7NKbvQvmVb7zCp89am+zh8/e7s6bZn+bwfyK6lYzJbX/l0u1u+Au
+ KjgifxQaFbkxsbc48KyhGP7RWBLioMh6ZRNfqaIgJ68yMb1re7rAX4Q==
+X-Gm-Gg: AZuq6aL01BEPAvsD7P2baTJZ1ggSi9Fg6uKbuMZrZKxHD9vIAloloac+gBoU7Zs6xqy
+ cCqSpTx6INgasby4YrUixYCAZhfy1txTSnH3uEyL2KocLVd7nDJ8FRIKsRinM0WH82K771MS1rI
+ 8rMc/qre5JNYJ+QWSORQ9Z9NV8U5NAqkM2FiI6dDtRBR7ej8TaV4aIordfn55TaVBTG7L/Oxlbu
+ dt+2qVfi/FNEhPOxjuBPulYq6+5KurB8PnYRz8bMbCY9aQ0bo/uw+7OVrFwxOdXXOCt1DLxjazP
+ mcshWxEbNH5VHEhVvhAFLhkxX5ajiPrwEbHRiYIItNr/mfxwOuu0j/ffPdx8SNfBkryTd8Oskri
+ 4JGvoxz42JZkg0enj5w2HHpaOd1qo+RE=
+X-Received: by 2002:a05:600c:5493:b0:480:3a71:92b2 with SMTP id
+ 5b1f17b1804b1-4803a71968bmr123530465e9.26.1768998997382; 
+ Wed, 21 Jan 2026 04:36:37 -0800 (PST)
+X-Received: by 2002:a05:600c:5493:b0:480:3a71:92b2 with SMTP id
+ 5b1f17b1804b1-4803a71968bmr123530015e9.26.1768998996913; 
+ Wed, 21 Jan 2026 04:36:36 -0800 (PST)
+Received: from redhat.com (IGLD-80-230-35-22.inter.net.il. [80.230.35.22])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-480424c4b8bsm21616655e9.6.2026.01.21.04.36.34
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 21 Jan 2026 04:36:36 -0800 (PST)
+Date: Wed, 21 Jan 2026 07:36:33 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Shameer Kolothum <skolothumtho@nvidia.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
+ alex@shazbot.org, clg@redhat.com, cohuck@redhat.com,
+ nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com,
+ jgg@nvidia.com, jonathan.cameron@huawei.com,
+ zhenzhong.duan@intel.com, vivek.kasireddy@intel.com, kjaju@nvidia.com
+Subject: Re: [PATCH v4 0/3] vfio: Add DMABUF support for PCI BAR regions
+Message-ID: <20260121073625-mutt-send-email-mst@kernel.org>
+References: <20260121114111.34045-1-skolothumtho@nvidia.com>
+MIME-Version: 1.0
+In-Reply-To: <20260121114111.34045-1-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 3Zk-9SRS35HTeiLZ-kZv900GqRsutw7x2xoYbds4HWA_1768998997
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.069,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -111,57 +111,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Wed, Jan 21, 2026 at 11:41:08AM +0000, Shameer Kolothum wrote:
+> Hi,
+> 
+> Linux now provides a VFIO dmabuf exporter to expose PCI BAR memory for P2P
+> use cases. This adds support for vfio devices to create a dmabuf for
+> each mapped BAR region.
+> 
+> Changes from v3:
+>  https://lore.kernel.org/qemu-devel/20260116092950.15796-1-skolothumtho@nvidia.com/
+>  
+>  - Folded in patch #2 to linux-headers update to avoid bisect failure
+>    due to build error.
 
 
-> On 21. Jan 2026, at 13:19, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->=20
-> On Wed, 21 Jan 2026 at 12:00, Mohamed Mediouni =
-<mohamed@unpredictable.fr> wrote:
->>=20
->>=20
->>=20
->>> On 21. Jan 2026, at 12:33, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->>>=20
->>> which I think means we do need
->>> the its option to be an on/off/auto one
->>=20
->> Hello,
->>=20
->> Would this be ok instead?
->>=20
->> typedef enum VirtMSIControllerType {
->> VIRT_MSI_CTRL_NONE,
->> /* This value is overriden at runtime.*/
->> VIRT_MSI_CTRL_AUTO,
->> /* Legacy option: its=3Doff provides a GICv2m when using GICv2.*/
->> VIRT_MSI_LEGACY_OPT_ITS_OFF,
->> VIRT_MSI_CTRL_GICV2M,
->> VIRT_MSI_CTRL_ITS,
->> } VirtMSIControllerType;
->>=20
->> Combined with:
->>=20
->> static void finalize_msi_controller(VirtMachineState *vms)
->> {
->> if (vms->msi_controller =3D=3D VIRT_MSI_LEGACY_OPT_ITS_OFF) {
->> if (vms->gic_version =3D=3D 2) {
->> vms->msi_controller =3D VIRT_MSI_CTRL_GICV2M;
->> }
->> else {
->> vms->msi_controller =3D VIRT_MSI_CTRL_NONE;
->> }
->> }
->=20
-> Is this with the idea that the its option get/set
-> functions would set msi_controller (to ITS_OFF or ITS) ?
->=20
-Yes, vms->its is completely gone in my tree.
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
-Going to post a rev with it soon, would you prefer to have it separate =
-instead of a whole WHPX series?
-> thanks
-> -- PMM
+> The dmabuf support was sanity tested on an NVIDIA grace paltform.
+> 
+> Please take a look and let me know.
+> 
+> Thanks,
+> Shameer
+> 
+> Nicolin Chen (1):
+>   hw/vfio/region: Create dmabuf for PCI BAR per region
+> 
+> Shameer Kolothum (2):
+>   linux-headers: Update to Linux v6.19-rc1
+>   hw/vfio: Add helper to retrieve device feature
+> 
+>  hw/net/virtio-net.c                           |  11 +-
+>  hw/vfio/container.c                           |   2 +-
+>  hw/vfio/device.c                              |   9 ++
+>  hw/vfio/listener.c                            |   4 +-
+>  hw/vfio/region.c                              |  65 +++++++++-
+>  hw/vfio/trace-events                          |   1 +
+>  include/hw/vfio/vfio-device.h                 |   3 +
+>  include/standard-headers/drm/drm_fourcc.h     |  25 ++--
+>  include/standard-headers/linux/ethtool.h      |   5 +
+>  .../linux/input-event-codes.h                 |  14 ++-
+>  include/standard-headers/linux/pci_regs.h     |  89 ++++++++++++++
+>  include/standard-headers/linux/virtio_net.h   |   3 +-
+>  include/standard-headers/linux/virtio_pci.h   |   2 +-
+>  linux-headers/asm-arm64/kvm.h                 |   2 +-
+>  linux-headers/asm-arm64/unistd_64.h           |   1 +
+>  linux-headers/asm-generic/unistd.h            |   4 +-
+>  linux-headers/asm-loongarch/kvm.h             |   1 +
+>  linux-headers/asm-loongarch/unistd.h          |   6 +
+>  linux-headers/asm-loongarch/unistd_64.h       |   1 +
+>  linux-headers/asm-mips/unistd_n32.h           |   1 +
+>  linux-headers/asm-mips/unistd_n64.h           |   1 +
+>  linux-headers/asm-mips/unistd_o32.h           |   1 +
+>  linux-headers/asm-powerpc/unistd_32.h         |   1 +
+>  linux-headers/asm-powerpc/unistd_64.h         |   1 +
+>  linux-headers/asm-riscv/kvm.h                 |   3 +
+>  linux-headers/asm-riscv/unistd_32.h           |   1 +
+>  linux-headers/asm-riscv/unistd_64.h           |   1 +
+>  linux-headers/asm-s390/bitsperlong.h          |   4 -
+>  linux-headers/asm-s390/unistd.h               |   4 -
+>  linux-headers/asm-s390/unistd_64.h            |   9 +-
+>  linux-headers/asm-x86/kvm.h                   |   1 +
+>  linux-headers/asm-x86/unistd_32.h             |   1 +
+>  linux-headers/asm-x86/unistd_64.h             |   1 +
+>  linux-headers/asm-x86/unistd_x32.h            |   1 +
+>  linux-headers/linux/iommufd.h                 |  10 ++
+>  linux-headers/linux/kvm.h                     |  11 ++
+>  linux-headers/linux/mshv.h                    | 116 +++++++++++++++++-
+>  linux-headers/linux/psp-sev.h                 |  66 ++++++----
+>  linux-headers/linux/vfio.h                    |  28 +++++
+>  39 files changed, 450 insertions(+), 60 deletions(-)
+> 
+> -- 
+> 2.43.0
 
 

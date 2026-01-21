@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F9D1C44536
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FA03C4453A
 	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 13:43:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viYSo-0004aD-U3; Wed, 21 Jan 2026 08:41:39 -0500
+	id 1viYTw-0006G6-Ir; Wed, 21 Jan 2026 08:42:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1viYSm-0004XW-RK
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:41:36 -0500
-Received: from qs-2003h-snip4-10.eps.apple.com ([57.103.86.82]
+ id 1viYTQ-00055N-HE
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:42:18 -0500
+Received: from qs-2001i-snip4-11.eps.apple.com ([57.103.87.93]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1viYSl-0001Bs-Cj
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:41:36 -0500
+ id 1viYTN-0001Nd-0t
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:42:15 -0500
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-60-percent-14 (Postfix) with ESMTPS id
- 8AA2E18001B0; Wed, 21 Jan 2026 13:41:33 +0000 (UTC)
+ D01301800135; Wed, 21 Jan 2026 13:42:09 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1769002894; x=1771594894;
- bh=ctbJXzUM+EvVedcghhTZxfriWpjcatMtmi/eA3/zXUc=;
+ s=sig1; t=1769002932; x=1771594932;
+ bh=sbPjhD1HbjqmKWH8q+YsBZgWt0PU5qx63I+bE83pR2M=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=Ea6kyHE7uvJIzIsGTQMPOaOeLsQd+r1/A34XA50FOI+5/v/CTeB/+0jqdZCrM+EyW037B7W4gJD+cvR/b6+9AdeKCPsk7UDfd3Fp0npwx8o3hPMasaTE9ZQOOMCJqympn1CofcowHuOnt7EaEquNcm5tQJi82HppXeYYEidJp7NEyclkqbsOM3mg3AZ5xwg7SxfxshPNMvU64q/9KL7sHiN3/KnLuesGRA5SE5cHbJkjT6hhejSNbVFWSnAM+XqKWC3AyFLVUeiSHm+h6iSyIkFswsmXW+PxYhnI0CXVrZiYJwI1c7jS38C7VePLy70jE8gsxpW7jh058CtQNx1BLQ==
+ b=Bu6nH3JEsOl+6Ss0HjMCYttDwoZeuAL5UusRoXjx3uWALj7bUydi1UZcZhyv3/wyB/mXHK5CbYXBLMpWNTzikspFj/i/Ij1f2G8hDzefHM3KvGkVpGOeXtbcmFT3JXNNasBHMSV94gPEgj1v3fyNI9kEoPwaa0szktC8tQ1D7LcHbkOUwZ7uesG8IJDNYpkEwTtltE4zRLqm9LtsbUP6Tc6HbuOTkfkx0tHY5lc60jrEuU+VbXZr0uVblkP427LRy9PRBGLOgFRm4gfJDkkBzNgpGmvGeKA1xSgSrUnpbr96H+SF/Gf+MF5o0zF5NFw+0cfYLcAA3iQ+koUXXe3VwA==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-60-percent-14 (Postfix) with ESMTPSA id
- D5022180012D; Wed, 21 Jan 2026 13:41:30 +0000 (UTC)
+ 9848A18003C2; Wed, 21 Jan 2026 13:42:06 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: mohamed@unpredictable.fr,
 	qemu-devel@nongnu.org
@@ -49,45 +49,47 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  Zhao Liu <zhao1.liu@intel.com>, Roman Bolshakov <rbolshakov@ddn.com>,
  Ani Sinha <anisinha@redhat.com>, Pedro Barbuda <pbarbuda@microsoft.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>
-Subject: [PATCH v17 05/21] docs: arm: update virt machine model description
-Date: Wed, 21 Jan 2026 14:40:56 +0100
-Message-ID: <20260121134114.9781-6-mohamed@unpredictable.fr>
+ Yanan Wang <wangyanan55@huawei.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v17 18/21] target/arm: whpx: instantiate GIC early
+Date: Wed, 21 Jan 2026 14:41:09 +0100
+Message-ID: <20260121134114.9781-19-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260121134114.9781-1-mohamed@unpredictable.fr>
 References: <20260121134114.9781-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: utxM6Mkb7SHzZpQh7XX2lf9AXJbdWDoO
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTIxMDExNSBTYWx0ZWRfXwI16/IoUaHTw
- XdYQaVeVok9U1t4i4I0c90jH3GWD68rWVMdvCiGycNI31QJN4Y0qwiHYn5wsc/oGKhRsOCO4YIj
- 1qKICjKkU8ZgOuFOT3WUpPbQhsbQKwKgnKA9hhAOfioKvMtQcMCvMs8I76D+w4jCBkCZiL1xsB6
- MGEJSUTfVzLihRrpWswno4P0g37JzmmV/UajBaWkXhXu/8dOKkWG2PG8CVleJBPYZb55s2zmaS7
- hvmaMKMCJs+7xG3a+9Cjr6C8v2euYIKLm2SMQ75BZs5S2Yj39+nm29lRDXermhbY7Bm5TdBx5Nt
- awRNU/DA29Sw2BaLTtJ
-X-Authority-Info-Out: v=2.4 cv=AojjHe9P c=1 sm=1 tr=0 ts=6970d78e
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTIxMDExNSBTYWx0ZWRfX9s8IGHtUFhOg
+ sztlcPFL/npoCWbGdVWgRnIogtzMYYySmflCnge/N8h3r2Vf+kv/vBR4HeYH+8bS+NrqYGf2lfl
+ dOhchQLj63yOKe94pjxhZs0wfXQ7MIKgknTK8Q9PRPdQMQHd7mtyJW5U59HO8aFpaLJWzFBQ8eZ
+ VOLHDYS5TOU0VyMiH7q51Iy3fdImv4BIgwOfb+xeAb1bh9jF/VlHwxuIrnTGVIu1k53VMq+MBEY
+ XidBHuzCOa0XONAbCNcc8UiDGgAjSr+mKsCunLXoNDSC8bZm346UZMvFcIsRNiPKFnl0WcbUplQ
+ jFpq+LYXrroWpQ7dyk1
+X-Proofpoint-ORIG-GUID: 4F32_9lhCjIRz_K1q-JDD3hVOcz5gfUn
+X-Authority-Info-Out: v=2.4 cv=ZOzaWH7b c=1 sm=1 tr=0 ts=6970d7b3
  cx=c_apl:c_apl_out:c_pps a=bsP7O+dXZ5uKcj+dsLqiMw==:117
  a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=G9h577CSrmnrssGYHncA:9
-X-Proofpoint-ORIG-GUID: utxM6Mkb7SHzZpQh7XX2lf9AXJbdWDoO
+ a=KKAkSRfTAAAA:8 a=EYz79TNVRTG0waESW9UA:9 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: 4F32_9lhCjIRz_K1q-JDD3hVOcz5gfUn
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.20,FMLib:17.12.100.49
  definitions=2026-01-21_01,2026-01-20_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- clxscore=1030 malwarescore=0 mlxscore=0 spamscore=0
- phishscore=0 bulkscore=0
- mlxlogscore=999 adultscore=0 classifier=spam authscore=0 adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2510240001 definitions=main-2601210115
-X-JNJ: AAAAAAAB5BuVC4U2B9/VJa/y4ayQcvAVTEk+qqJt1TxSliaImorJv4TPZxeNKnrjZ/cq5r1Owl8PatU1Z3b+y2EyZyRO2NUvj/na7hV5wSNz+1Vxrl24+XqltR+DXx3FRdLOQmenCBF0wgyXPA5TOemwoPe9FeG7poKuc3BmeyAf8tjBVqIVIhkgNfL9bXzT+2JM0uDts3kbendveC4v09n/oBkW+2pGquWzi6Mu0y5o/dAKjPm4+td0GFTVNI/EqqIscCtcBacQScfJ2TKBDDyD1lgi1gM3yKkPAlSBcPtF4pYBEM0brmTYtCpGfwFEaiGM31f6Ith6+oW7wgeuyd4rDwoHnrMlmsA7M0fdvdyfQHxL2ak+7bXgJYCdcfc9CAbWcnUIQE7BySeZZKnpyFSkleMMBK3AR1tjimVwdGrx3qgoYf/3Bpg9N5eax0QqaM6H1h0sK2pODmA37NJFwvnjnN1+Pq5TYTGL/wg/TbNrBa3+RTBSMR9/+doVIhy4WgboiZH9URwX+oCyfYyk3VYFpmEuQz6iyjJVRXNQCA5eCXewtey2NjlUYawGwUmnXqZ6juUnWJ5Ej8WIFuW8UaKMtVIw/woPbJ+eIov9Fzo1efwFnuSSnIUS5LditHlGKWDy81Y+bUPPlhwyYp5j5g3ur5BbSdkGIEM5EAI2XkqpCxQvu8BCbJPhT3cJ0VvV8wcgfvoysuySvK9jy7mYTECodUHp1RBPfyykXGfKlOn9ypElccQIo4uTRn2uy6T7TxNw6YLHUCsS37ehZHo5b2+Mv9Dj1R0hxx8xpnk8xXzeL7E5WAjaPaTYfmoVWQ6eu9wDm4ljTJ5XqrIUqHut7V70J9vdjLfnK/TkIbcLCYToA+xo8FPkngWjn2yIYHCEYJA=
-Received-SPF: pass client-ip=57.103.86.82;
+ spamscore=0 mlxlogscore=804 bulkscore=0
+ malwarescore=0 clxscore=1030
+ adultscore=0 mlxscore=0 phishscore=0 classifier=spam authscore=0 adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2601210115
+X-JNJ: AAAAAAABF+KLQgMruWkHV4oOtrqXgMR+D9FbyM1UehlGUs2gnDcL393i2WBaF9BD4p6CZrZcgMiWENTDwxMQXjAckdn+e8GXY3hVzDMbOUA2hK4DVNnimqv6q0KNsoXVGgGaErZT+VivcGUZDDq+/2hTDX9bphJl/dR0u0gOgDkxGok66vtsXVOGa2uEpBIk5KgS3YLyirm+41Sw6EdCI3t/SnWWwuDoK4lFXl+IOLtk5H8qwDJr9/1ZtC90I+ag/47b9yY6P956v/Z8s/e+TFgw41jYCgqTaj+Ue1O0f5Z32pbc6JTouwCxribfPQuMlsstneWvnXWd1KbsSsPCoNBCPRcNxKy3mfoWb/wpl57FqMwrO/glAIhsZxfkJ+9nvWHtV3/aEWbdWSoJ+PxxAusk16E1UTbU5s0cXi8dEQ4wpXh+EcgX/LaglnBjJVcK5LZDSAaC58RDFnSuyccazE8DAanUTxkgCHP3U0SAXE8NdGQMaJwRC5ESKlaBWgESNdVQwO3+mgfatvdyriQwr1CiDN9L2iJVBgEdJQyNSgJaVSEw+B57SAikH6KPyypN2IriTSt5j0eMkWeaJiQTejdhkGdgaNxtu7Rgp8JttGdvpJWrpVzE7/aduXBrFZHaVC/H7PPWKbiRIiUfWfjGH5G86QNyyQhCIVfH5Qm6C/2/yPDQ6KfQLv3+U1l859gLshiJ9Pm9kimgkjSofwFIQNMSvvIEwRoZlpswYoOfHPdghISYn33NLZ1+GGLZd/0FcEfFQVX5UOMEarQ4GAJbVKSn8MX5z1t82oA0PDgg31UibU9QnjngO2IK8rUQwKAcyxZrEcSm2HIGb5E8SafrpUIIRHflvCD6n6go/Kdi9Y9E6NvPyB5nb/YSGX6CAg==
+Received-SPF: pass client-ip=57.103.87.93;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,48 +105,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Update the documentation to match current QEMU.
+While figuring out a better spot for it, put it in whpx_accel_init.
 
-Remove the mention of pre-2.7 machine models as those aren't provided
-anymore.
+Needs to be done before WHvSetupPartition.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- docs/system/arm/virt.rst | 13 ++++++++-----
- 1 file changed, 8 insertions(+), 5 deletions(-)
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index e5570773ba..3799d2237e 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -41,9 +41,10 @@ The virt board supports:
- - User-creatable SMMUv3 devices (see below for example)
- - hotpluggable DIMMs
- - hotpluggable NVDIMMs
--- An MSI controller (GICv2M or ITS). GICv2M is selected by default along
--  with GICv2. ITS is selected by default with GICv3 (>= virt-2.7). Note
--  that ITS is not modeled in TCG mode.
-+- An MSI controller (GICv2m or ITS).
-+  - When using GICv3, ITS is selected by default when available on the platform.
-+  - If using GICv2, a GICv2m is provided by default instead.
-+  - When ITS is not available on a GICv3 platform, a GICv2m is provided by default.
- - 32 virtio-mmio transport devices
- - running guests using the KVM accelerator on aarch64 hardware
- - large amounts of RAM (at least 255GB, and more if using highmem)
-@@ -167,9 +168,11 @@ gic-version
-     with TCG this is currently ``3`` if ``virtualization`` is ``off`` and
-     ``4`` if ``virtualization`` is ``on``, but this may change in future)
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+---
+ target/arm/whpx/whpx-all.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
+index c88c67a9e2..55773555b7 100644
+--- a/target/arm/whpx/whpx-all.c
++++ b/target/arm/whpx/whpx-all.c
+@@ -939,6 +939,29 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
  
-+msi
-+  Set ``auto``/``gicv2m``/``its``/``none`` to control MSI controller configuration. The default is ``auto``.
+     memset(&prop, 0, sizeof(prop));
+ 
++    WHV_ARM64_IC_PARAMETERS ic_params = {
++        .EmulationMode = WHvArm64IcEmulationModeGicV3,
++        .GicV3Parameters = {
++            .GicdBaseAddress = 0x08000000,
++            .GitsTranslaterBaseAddress = 0x08080000,
++            .GicLpiIntIdBits = 0,
++            .GicPpiPerformanceMonitorsInterrupt = VIRTUAL_PMU_IRQ,
++            .GicPpiOverflowInterruptFromCntv = ARCH_TIMER_VIRT_IRQ
++        }
++    };
++    prop.Arm64IcParameters = ic_params;
 +
- its
--  Set ``on``/``off`` to enable/disable ITS instantiation. The default is ``on``
--  for machine types later than ``virt-2.7``.
-+  Set ``on``/``off`` to control ITS instantiation. This is a deprecated option, use ``msi`` instead.
- 
- iommu
-   Set the IOMMU type to create for the guest. Valid values are:
++    hr = whp_dispatch.WHvSetPartitionProperty(
++            whpx->partition,
++            WHvPartitionPropertyCodeArm64IcParameters,
++            &prop,
++            sizeof(prop));
++    if (FAILED(hr)) {
++        error_report("WHPX: Failed to enable GICv3 interrupt controller, hr=%08lx", hr);
++        ret = -EINVAL;
++        goto error;
++    }
++
+     hr = whp_dispatch.WHvSetupPartition(whpx->partition);
+     if (FAILED(hr)) {
+         error_report("WHPX: Failed to setup partition, hr=%08lx", hr);
 -- 
 2.50.1 (Apple Git-155)
 

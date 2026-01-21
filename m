@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56727C44532
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 13:33:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7748BC44536
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 13:41:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viYL4-0005ZE-E2; Wed, 21 Jan 2026 08:33:43 -0500
+	id 1viYSe-0004KY-Qk; Wed, 21 Jan 2026 08:41:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1viYKa-0005W9-PB
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:33:11 -0500
-Received: from qs-2001i-snip4-11.eps.apple.com ([57.103.87.93]
+ id 1viYSd-0004IA-Lc
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:41:27 -0500
+Received: from p-east3-cluster5-host9-snip4-10.eps.apple.com ([57.103.86.221]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1viYKX-0006r4-7Z
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:33:07 -0500
+ id 1viYSa-00019c-S0
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:41:27 -0500
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-60-percent-15 (Postfix) with ESMTPS id
- AB034180039B; Wed, 21 Jan 2026 13:33:00 +0000 (UTC)
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-14 (Postfix) with ESMTPS id
+ E87001800120; Wed, 21 Jan 2026 13:41:20 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1769002383; x=1771594383;
- bh=wNb5eiry54YOrWs/lZjI4Le9RV9HahCtR9rjd6Jq9Jc=;
- h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
- b=P8/Jigvy3NXrQ5elcbML2xLTrN/rU88+oAz1F3oMI0CcVltX+imFUdJZsEG/oGVwYAMCXoTde5Aw7b5jXwOIjsOOA/QBf9jCowUUG/vG22kcxy2jSeEqRNEft++UnH9A0CEfX4g047y33xa1594noMgxfX08UmzpAEDwtieMrjeTQYjRUY9sVrx2txhfgWMR9+wV+uh85hQVsWlJsRCIkuHaWBm4oi/l6xaNu68FRBDfMFfNv0CPCnJRi6ls2e8DR17pkYUgsmlmm+r3w0lxgWJMi3GtbaJnk3cVbFH+/p8bVofZve+KRQ4vHE6XbeXohEnKvaBLl6NR7qswRxa2vw==
+ s=sig1; t=1769002883; x=1771594883;
+ bh=4cjYuahheRTHDHA+6eUjUj4UrBehWsjNu/xkb/ODd84=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
+ b=GmvJ/o847Z9Yt/FkXubQc/cYE1Gn0VMbyIoETDiz54JdehZvJ9lCu12MOPbcsq/cUeJMACKYaNJsE4ckatQYGxBISpY73Ju07sSUNB3k+9944NBUf9v7Owh7zFKJkIKQeYGUEc97Q7kWgZrwLlBu7fwmQrpWMlHV9y6aNp8ggPH/2mOJvK0Ll6iSYm0dk+PTVEJZhHg9yBuTcUFI7O80my9NwbEUJfHZlVwFcgC+rClF8g1RIKdJ2sJyb3lHk0sbLhanLUN3T6HnLq6rgCBMynHXFizYFay5e7sRDTa8DlQ26pCrXiBTc5PEQDtu99SOaUjCcBx27WIMKESOLwGW/g==
 mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-60-percent-15 (Postfix) with ESMTPSA id
- 6A7701800177; Wed, 21 Jan 2026 13:32:58 +0000 (UTC)
+Received: from localhost.localdomain (unknown [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-14 (Postfix) with ESMTPSA id
+ 5E3391800153; Wed, 21 Jan 2026 13:41:17 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
-Message-Id: <3A3AFA55-F23F-4BBE-BC55-7DE1852C7AB0@unpredictable.fr>
-Content-Type: multipart/alternative;
- boundary="Apple-Mail=_42248C7F-1A32-4D6B-86DC-3179A59B634A"
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
-Subject: Re: [PATCH v16 10/26] whpx: reshuffle common code
-Date: Wed, 21 Jan 2026 14:32:46 +0100
-In-Reply-To: <344c726f-32d0-44a9-9084-edfc64dedb75@linaro.org>
-Cc: qemu-devel@nongnu.org,
- =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
+To: mohamed@unpredictable.fr,
+	qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
+ Igor Mammedov <imammedo@redhat.com>, Cameron Esfahani <dirty@apple.com>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Roman Bolshakov <rbolshakov@ddn.com>,
+ Ani Sinha <anisinha@redhat.com>, Pedro Barbuda <pbarbuda@microsoft.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20260116135235.38092-1-mohamed@unpredictable.fr>
- <20260116135235.38092-11-mohamed@unpredictable.fr>
- <344c726f-32d0-44a9-9084-edfc64dedb75@linaro.org>
-X-Mailer: Apple Mail (2.3864.300.41.1.7)
-X-Authority-Info-Out: v=2.4 cv=HOrO14tv c=1 sm=1 tr=0 ts=6970d58d
+ Yanan Wang <wangyanan55@huawei.com>
+Subject: [PATCH v17 00/21] WHPX support for Arm
+Date: Wed, 21 Jan 2026 14:40:51 +0100
+Message-ID: <20260121134114.9781-1-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Authority-Info-Out: v=2.4 cv=PcvyRyhd c=1 sm=1 tr=0 ts=6970d782
  cx=c_apl:c_apl_out:c_pps a=bsP7O+dXZ5uKcj+dsLqiMw==:117
- a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=KKAkSRfTAAAA:8 a=2tszAsSru-KCW1Neg1kA:9 a=QEXdDO2ut3YA:10
- a=lfeUBk0vAohLVyIIPfsA:9 a=8J9mXnSVkOHv8ThS:21 a=_W_S_7VecoQA:10
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: bMZpBH6QQgGRb8DMUp6iou27YEjuc1gD
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTIxMDExNCBTYWx0ZWRfXyINjIZ5aFX2Z
- xYirf8NlgPtDmqwapz7OzoeZITTvyYyQorlmyOOxkJT1WcvwPECi/JjB+heVj4LRQPKiRD9S7eL
- BmuuvXpfzDh9ShLJck2KArpRyhl3x5WC42AgcFqzY2NYWB/mBCMwK8mO32ExpOn6AY/blz9qL67
- BARG7IE9VITsa94FFUgknunT7tbyVZ/SYU5Dqvhjh8CZsePVXbAQlNcQdxJDUvrGahdbFsIqdh0
- 7rplFiW8mTktbaMCfvjDTfSrcGwfF4Iya1Y2W9XAwUnLvqB2j8ZpkTcPCQQAH4vJrm6f1siFbMZ
- Rm6+vWOAdlyHr0Z8NHQ
-X-Proofpoint-ORIG-GUID: bMZpBH6QQgGRb8DMUp6iou27YEjuc1gD
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=IkcTkHD0fZMA:10 a=vUbySO9Y5rIA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=NEAV23lmAAAA:8 a=mDV3o1hIAAAA:8
+ a=2CSUmbMKgiS_FIm3Z54A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: thk9wvICh17GPsT0tDtL2WJJa6fgq56m
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTIxMDExNSBTYWx0ZWRfX+CkDb2W/JzEY
+ FmRBLDRIRurbPnlDIEI5KKGXhG0RrTIoUFyNPfpHqmLS+j2MZXUMjf6Y4Yw+0ZVUeT57jxR+Kmq
+ RctwX6DmP0FFL+iZx8XiowXEApsiDru+DT7xIhAbelQcmusmHtgo9o2tLB5v1jKAjpMfQUISl0B
+ 3d54KxSDo6qHpqxVez6Cv23lS7K+BlWRU1eqsM68SvrhhMAALdF6vMnjyQim6atVTWqt4bHLK5M
+ JZ8AUtSWTbJLEycCIS+b6CcIFT7yaT4evuxxVKR82RZksB0DCX8X10AUqAABUQLjQxG3ffr+SWf
+ XUYKJr1qD7vrlqFQWI2
+X-Proofpoint-GUID: thk9wvICh17GPsT0tDtL2WJJa6fgq56m
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.20,FMLib:17.12.100.49
  definitions=2026-01-21_01,2026-01-20_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- mlxlogscore=482 suspectscore=0 malwarescore=0 phishscore=0 bulkscore=0
- adultscore=0 mlxscore=0 clxscore=1030 classifier=spam authscore=0 adjust=0
- reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2601210114
-X-JNJ: AAAAAAABvpFPVDDv32hxe/R08W8UMsDjK2zalGdDhvhelbn/kmyNdmsY3dbNljS5XIAhu9ej965e4tY2yQczDCXIDBsw/XoECn/HTlN9TxLrVKqE9jb9Pg87RpgvzU8eDrii99mUY9rVQwjob3AysyhNmJ7QBwLqmO62ddQeHnsz+fzevzDXhoznh2MZmVsnAuaCLZPN+otCEmynt3QKGFrgaf6TIK1rsQ3U2wVv0zObtLAGh6M5v7x13yCeHIj1VltZNj87mf/3vimHeSD4kENRFcRXbDc2b9IzFtdkGIfbfanoEauhWL/FpaF2nNPXob0Lpp7rpydSKwEwzOXfJGnNBXNJVEjBGr2ptDk111cOKb2xjtCEGydg8j5/T05hN+bTeIz1tn2G+N0vyZrJhtL1sF3v3eZvUdCKhDZlItLmJeqUw4fb61xV0IrCfVFnzCpWsBubvGU04uKWbk+xRjiKmfGiW6DReborJEQtdCBlUT4fTe/8IKmXuGGbdB4McapmTaNXK9h4lD9Y2TbU12R88IxHnUOPELekynRLkk3XJKF5zkrqqm1WdoWjbwDbGSUeN2a5jx64woItoqh9xF74+fuOunwW0DUr6p75BnwCTfvhDoyIgQE3pM2CfUreJzuEa3JLRnzAsJkdgan0mW1dSl32WA574tmedHw3A5eUJZ3TdiplDsA9i7tHGp3WaSpOUjvE1Ce6kdM7Vd0VH5QTia2DWjLjE3W7cjZuw5595wzrDD45Hd5kv2WDNWFRTRWDZW2JupKaDh62DNr6+LxEPl9vCg+wISpqcCavTlOmUg5zAw==
-Received-SPF: pass client-ip=57.103.87.93;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ malwarescore=0 mlxscore=0 spamscore=0 adultscore=0 suspectscore=0
+ phishscore=0 clxscore=1030 mlxlogscore=999 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2601210115
+X-JNJ: AAAAAAAB8b7N1plv0JzvqYT4HK5UKglV9QZ6scRxumzwnCdtPqNc41B5NXEKSrqq+UHj5IR0k8vvcb6GVLD//QOowhgJ/Ffb8500epKvlHYOg6+xfosWnD2WjcjeOAfM6zEc0EClqomOqwshgrkH+KkP/qOsAIVgLKaS+iIT8duADbDCSs8l36AyzEDiCI99oGV7jG8l1aFHFkwEWr0+N2ZJWf45c6zVrbBrwE4IFA2tXfUywXOBQz0LethkQA1La0ImvjFk9NXtKhJQ1LHJkF3QdVClgVuL621dkWH+ntic9VPoOCiweM7OhXkWuDH0jrFmWiNxB2pZg/udLy9DG95+54qtCSlXeDfsbkxYQuhg9BzcYaWNLNGsJyUDLv61F3RR+PSLWXrcV9NZ0MoC911CfyXRzcHAFAiiA0uVDAQnFu0reP4glRiZ6gFs32EVN2LAFG2PhMObdkW+EG/oaYUndlWFe2yOaFhPet1l8iMqYizX0HSSnc+mjtsHDUkIAm2Q8uWgn2kgucwrSfnvwBHr0xti3fD5puoAoVsbd7Z9GLAQYw/N4hoq+v1EugkxqBed8oWa9hjgpqBFEsD3yT9QMu1DVFyJH2uyOYtRnku1wDZdC1MibI3XTb9UE+LXSGCy0V1MpPqP+BlerT3689BpKwhsM7rS1C/U93r4KGin10EscnMrrlUskdKLWExx0llhwFR0ZWqauWvRsc0LwZmLv4XpUUQsZhCBwYwz/MUKcbfg5/+MdnrDyJGrxT90f5erpqlPMWje09zjiWSljCpSRRbPveHs3RlHdK2YowCku4VWFUeMB9A9MKDru/aVJh8fOcgYUcMSLC14RFM4QL8r6ATcdUHWOFU4CcpVU0uZ9MGLqrVz08T7nxkVJg==
+Received-SPF: pass client-ip=57.103.86.221;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
@@ -104,256 +104,212 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Link to branch: https://github.com/mediouni-m/qemu whpx (tag for this submission: whpx-v18)
 
---Apple-Mail=_42248C7F-1A32-4D6B-86DC-3179A59B634A
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=utf-8
+Missing features:
+- VM save-restore: interrupt controller state notably
+- SVE register sync: I didn't have the time to test this on pre-release hardware with SVE2 support yet.
+So SVE2 is currently masked for VMs when running this.
 
+Known bugs:
+- U-Boot still doesn't work (hangs when trying to parse firmware) but EDK2 does.
 
+Note:
 
-> On 16. Jan 2026, at 15:20, Philippe Mathieu-Daud=C3=A9 =
-<philmd@linaro.org> wrote:
->=20
-> On 16/1/26 14:52, Mohamed Mediouni wrote:
->> Some code can be shared between x86_64 and arm64 WHPX. Do so as much =
-as reasonable.
->> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->>  MAINTAINERS                  |   2 +
->>  accel/whpx/meson.build       |   1 +
->>  accel/whpx/whpx-common.c     | 558 =
-+++++++++++++++++++++++++++++++++++
->>  include/system/whpx-all.h    |  20 ++
->>  include/system/whpx-common.h |  21 ++
->>  target/i386/whpx/whpx-all.c  | 551 =
-+---------------------------------
->>  6 files changed, 612 insertions(+), 541 deletions(-)
->>  create mode 100644 accel/whpx/whpx-common.c
->>  create mode 100644 include/system/whpx-all.h
->>  create mode 100644 include/system/whpx-common.h
->=20
->=20
->> diff --git a/include/system/whpx-all.h b/include/system/whpx-all.h
->> new file mode 100644
->> index 0000000000..f13cdf7f66
->> --- /dev/null
->> +++ b/include/system/whpx-all.h
->> @@ -0,0 +1,20 @@
->> +/* SPDX-License-Identifier: GPL-2.0-or-later */
->> +#ifndef SYSTEM_WHPX_ALL_H
->> +#define SYSTEM_WHPX_ALL_H
->> +
->> +/* Called by whpx-common */
->> +int whpx_vcpu_run(CPUState *cpu);
->> +void whpx_get_registers(CPUState *cpu);
->> +void whpx_set_registers(CPUState *cpu, int level);
->> +int whpx_accel_init(AccelState *as, MachineState *ms);
->> +void whpx_cpu_instance_init(CPUState *cs);
->> +HRESULT whpx_set_exception_exit_bitmap(UINT64 exceptions);
->> +void whpx_apply_breakpoints(
->> +struct whpx_breakpoint_collection *breakpoints,
->> +    CPUState *cpu,
->> +    bool resuming);
->> +void whpx_translate_cpu_breakpoints(
->> +    struct whpx_breakpoints *breakpoints,
->> +    CPUState *cpu,
->> +    int cpu_breakpoint_count);
->> +#endif
->> diff --git a/include/system/whpx-common.h =
-b/include/system/whpx-common.h
->> new file mode 100644
->> index 0000000000..e549c7539c
->> --- /dev/null
->> +++ b/include/system/whpx-common.h
->> @@ -0,0 +1,21 @@
->> +/* SPDX-License-Identifier: GPL-2.0-or-later */
->> +#ifndef SYSTEM_WHPX_COMMON_H
->> +#define SYSTEM_WHPX_COMMON_H
->> +
->> +struct AccelCPUState {
->> +    WHV_EMULATOR_HANDLE emulator;
->> +    bool window_registered;
->> +    bool interruptable;
->> +    bool ready_for_pic_interrupt;
->> +    uint64_t tpr;
->> +    uint64_t apic_base;
->> +    bool interruption_pending;
->> +    /* Must be the last field as it may have a tail */
->> +    WHV_RUN_VP_EXIT_CONTEXT exit_ctx;
->> +};
->> +
->> +int whpx_first_vcpu_starting(CPUState *cpu);
->> +int whpx_last_vcpu_stopping(CPUState *cpu);
->> +void whpx_memory_init(void);
->> +struct whpx_breakpoint *whpx_lookup_breakpoint_by_addr(uint64_t =
-address);
->> +#endif
-> I'd rather rename the target-specific handlers as
-> whpx_foo() -> whpx_arch_foo() to help follow in common code
-> when we are calling target-specific implementations.
-> (can be done on top later if the series is good to go)
+"target/arm/kvm: add constants for new PSCI versions" taken from the mailing list.
 
-Hello,
+"accel/system: Introduce hwaccel_enabled() helper" taken from the mailing list, added here
+as part of this series to make it compilable as a whole.
 
-Going to take care of this one with a post-merge follow-up patch, along
-with moving the header location.
+And another note:
 
+Seems that unlike HVF there isn't direct correspondence between WHv registers and the actual register layout,
+so didn't do changes there to a sysreg.inc.
 
+Updates for v17:
+- Reworking the MSI-X configuration patches
+- Accordingly, its= retains the same behavior as before, so add a test case for GICv3 + GICv2m.
+- Squashing "whpx: arm64: check for physical address width after WHPX availability"
+with "whpx: arm64: clamp down IPA size"
+- Not worthwhile to have a separate GICv3 + GICv2m patch, squash it into the "rework MSI-X
+configuration" patch
+- Address review comment on "whpx: arm64: gicv3: add migration blocker"
 
---Apple-Mail=_42248C7F-1A32-4D6B-86DC-3179A59B634A
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=utf-8
+Updates since v16:
+- Address some last review comments
+- Rebase with the latest origin/staging
 
-<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
-content=3D"text/html; charset=3Dutf-8"></head><body =
-style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
-line-break: after-white-space;"><br =
-id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
-type=3D"cite"><div>On 16. Jan 2026, at 15:20, Philippe Mathieu-Daud=C3=A9 =
-&lt;philmd@linaro.org&gt; wrote:</div><br =
-class=3D"Apple-interchange-newline"><div><meta charset=3D"UTF-8"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">On 16/1/26 14:52, Mohamed Mediouni =
-wrote:</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration-line: none; text-decoration-thickness: auto; =
-text-decoration-style: solid;"><blockquote type=3D"cite" =
-style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;">Some =
-code can be shared between x86_64 and arm64 WHPX. Do so as much as =
-reasonable.<br>Signed-off-by: Mohamed Mediouni =
-&lt;mohamed@unpredictable.fr&gt;<br>Reviewed-by: Pierrick Bouvier =
-&lt;pierrick.bouvier@linaro.org&gt;<br>---<br>&nbsp;MAINTAINERS =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;2 =
-+<br>&nbsp;accel/whpx/meson.build &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
-&nbsp;&nbsp;1 +<br>&nbsp;accel/whpx/whpx-common.c =
-&nbsp;&nbsp;&nbsp;&nbsp;| 558 =
-+++++++++++++++++++++++++++++++++++<br>&nbsp;include/system/whpx-all.h =
-&nbsp;&nbsp;&nbsp;| &nbsp;20 ++<br>&nbsp;include/system/whpx-common.h | =
-&nbsp;21 ++<br>&nbsp;target/i386/whpx/whpx-all.c &nbsp;| 551 =
-+---------------------------------<br>&nbsp;6 files changed, 612 =
-insertions(+), 541 deletions(-)<br>&nbsp;create mode 100644 =
-accel/whpx/whpx-common.c<br>&nbsp;create mode 100644 =
-include/system/whpx-all.h<br>&nbsp;create mode 100644 =
-include/system/whpx-common.h<br></blockquote><br style=3D"caret-color: =
-rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
-normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
-normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
-none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: =
-solid;"><blockquote type=3D"cite" style=3D"font-family: Helvetica; =
-font-size: 12px; font-style: normal; font-variant-caps: normal; =
-font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; widows: 2; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-line: =
-none; text-decoration-thickness: auto; text-decoration-style: =
-solid;">diff --git a/include/system/whpx-all.h =
-b/include/system/whpx-all.h<br>new file mode 100644<br>index =
-0000000000..f13cdf7f66<br>--- /dev/null<br>+++ =
-b/include/system/whpx-all.h<br>@@ -0,0 +1,20 @@<br>+/* =
-SPDX-License-Identifier: GPL-2.0-or-later */<br>+#ifndef =
-SYSTEM_WHPX_ALL_H<br>+#define SYSTEM_WHPX_ALL_H<br>+<br>+/* Called by =
-whpx-common */<br>+int whpx_vcpu_run(CPUState *cpu);<br>+void =
-whpx_get_registers(CPUState *cpu);<br>+void whpx_set_registers(CPUState =
-*cpu, int level);<br>+int whpx_accel_init(AccelState *as, MachineState =
-*ms);<br>+void whpx_cpu_instance_init(CPUState *cs);<br>+HRESULT =
-whpx_set_exception_exit_bitmap(UINT64 exceptions);<br>+void =
-whpx_apply_breakpoints(<br>+struct whpx_breakpoint_collection =
-*breakpoints,<br>+ &nbsp;&nbsp;&nbsp;CPUState *cpu,<br>+ =
-&nbsp;&nbsp;&nbsp;bool resuming);<br>+void =
-whpx_translate_cpu_breakpoints(<br>+ &nbsp;&nbsp;&nbsp;struct =
-whpx_breakpoints *breakpoints,<br>+ &nbsp;&nbsp;&nbsp;CPUState =
-*cpu,<br>+ &nbsp;&nbsp;&nbsp;int =
-cpu_breakpoint_count);<br>+#endif<br>diff --git =
-a/include/system/whpx-common.h b/include/system/whpx-common.h<br>new =
-file mode 100644<br>index 0000000000..e549c7539c<br>--- /dev/null<br>+++ =
-b/include/system/whpx-common.h<br>@@ -0,0 +1,21 @@<br>+/* =
-SPDX-License-Identifier: GPL-2.0-or-later */<br>+#ifndef =
-SYSTEM_WHPX_COMMON_H<br>+#define SYSTEM_WHPX_COMMON_H<br>+<br>+struct =
-AccelCPUState {<br>+ &nbsp;&nbsp;&nbsp;WHV_EMULATOR_HANDLE =
-emulator;<br>+ &nbsp;&nbsp;&nbsp;bool window_registered;<br>+ =
-&nbsp;&nbsp;&nbsp;bool interruptable;<br>+ &nbsp;&nbsp;&nbsp;bool =
-ready_for_pic_interrupt;<br>+ &nbsp;&nbsp;&nbsp;uint64_t tpr;<br>+ =
-&nbsp;&nbsp;&nbsp;uint64_t apic_base;<br>+ &nbsp;&nbsp;&nbsp;bool =
-interruption_pending;<br>+ &nbsp;&nbsp;&nbsp;/* Must be the last field =
-as it may have a tail */<br>+ &nbsp;&nbsp;&nbsp;WHV_RUN_VP_EXIT_CONTEXT =
-exit_ctx;<br>+};<br>+<br>+int whpx_first_vcpu_starting(CPUState =
-*cpu);<br>+int whpx_last_vcpu_stopping(CPUState *cpu);<br>+void =
-whpx_memory_init(void);<br>+struct whpx_breakpoint =
-*whpx_lookup_breakpoint_by_addr(uint64_t =
-address);<br>+#endif<br></blockquote><span style=3D"caret-color: rgb(0, =
-0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">I'd rather rename the target-specific =
-handlers as</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration-line: none; text-decoration-thickness: auto; =
-text-decoration-style: solid;"><span style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">whpx_foo() -&gt; whpx_arch_foo() to help =
-follow in common code</span><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">when we are calling target-specific =
-implementations.</span><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
-white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration-line: none; =
-text-decoration-thickness: auto; text-decoration-style: solid;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">(can be done on top later if the series is =
-good to =
-go)</span></div></blockquote><br></div><div>Hello,</div><div><br></div><di=
-v>Going to take care of this one with a post-merge follow-up patch, =
-along</div><div>with moving the header =
-location.</div><div><br></div><br></body></html>=
+Updates since v15:
+- Some last tiny changes addressed.
 
---Apple-Mail=_42248C7F-1A32-4D6B-86DC-3179A59B634A--
+Updates since v14:
+- Working around https://gcc.gnu.org/bugzilla/show_bug.cgi?id=87950
+
+It turns out that we can't avoid default: in case with an enum on GCC without warnings,
+although Clang allows that behavior.
+
+Updates since v13:
+- Addressing review comments from Akihiko Odaki
+- Squash GICv2 ACPI workaround patch and have it documented as a separate function
+- Rebase with current origin/staging
+
+Updates since v12:
+- Address review comments and make sure that checkpatch shows no errors, make test also ran
+- Tested the Windows x86_64 build too in addition to Windows arm64 and macOS arm64
+- Hopefully the last revision, should be ready to merge.
+
+Updates since v11:
+- Address review comments
+- Rebase up to latest staging
+- Switch to assuming Qemu 11.0 as the newest machine model
+
+Updates since v10:
+- Bring forward to latest Qemu
+- Fix a typo in the GICv3+GICv2m PR
+
+Updates since v9:
+- Adding partition reset on the reboot side of things...
+
+Updates since v8:
+- v9 and v8 were not submitted properly because of my MTA not behaving, sorry for that.
+- v10 introduces a new argument, -M msi=, to handle MSI-X configuration more granularly.
+- That surfaced what I think is a bug (?), with vms->its=1 on GICv2 configurations... or I did understand everything wrong.
+- Oopsie due to email provider ratelimiting.
+
+Updates since v7:
+- Oops, fixing bug in "hw/arm: virt: cleanly fail on attempt to use the platform vGIC together with ITS".
+Other commits are unchanged.
+
+Updates since v6:
+- Rebasing
+- Fixing a bug in the GICv3+GICv2m case for ACPI table generation
+- getting rid of the slots infrastructure for memory management
+- Place the docs commit right after the "cleanly fail on attempt to run GICv3+GICv2m on an unsupported config" one
+as that's what switches ITS to a tristate.
+- Fixing a build issue when getting rid of the arch-specific arm64 hvf-stub.
+
+Updates since v5:
+- Rebasing
+- Address review comments
+- Rework ITS enablement to a tristate
+- On x86: move away from deprecated APIs to get/set APIC state
+
+Updates since v4:
+- Taking into account review comments
+- Add migration blocker in the vGICv3 code due to missing interrupt controller save/restore
+- Debug register sync
+
+Updates since v3:
+- Disabling SVE on WHPX
+- Taking into account review comments incl:
+
+- fixing x86 support
+- reduce the amount of __x86_64__ checks in common code to the minimum (winhvemulation)
+which can be reduced even further down the road.
+- generalize get_physical_address_range into something common between hvf and whpx
+
+Updates since v2:
+- Fixed up a rebase screwup for whpx-internal.h
+- Fixed ID_AA64ISAR1_EL1 and ID_AA64ISAR2_EL1 feature probe for -cpu host
+- Switched to ID_AA64PFR1_EL1/ID_AA64DFR0_EL1 instead of their non-AA64 variant
+
+Updates since v1:
+- Shutdowns and reboots
+- MPIDR_EL1 register sync
+- Fixing GICD_TYPER_LPIS value
+- IPA size clamping
+- -cpu host now implemented
+
+Mohamed Mediouni (19):
+  hw: arm: virt: rework MSI-X configuration
+  qtest: hw/arm: virt: add new test case for GICv3 + GICv2m
+  docs: arm: update virt machine model description
+  whpx: Move around files before introducing AArch64 support
+  whpx: reshuffle common code
+  whpx: ifdef out winhvemulation on non-x86_64
+  whpx: common: add WHPX_INTERCEPT_DEBUG_TRAPS define
+  hw, target, accel: whpx: change apic_in_platform to kernel_irqchip
+  whpx: interrupt controller support
+  whpx: add arm64 support
+  whpx: change memory management logic
+  target/arm: cpu: mark WHPX as supporting PSCI 1.3
+  whpx: arm64: clamp down IPA size
+  hw/arm, accel/hvf, whpx: unify get_physical_address_range between WHPX
+    and HVF
+  whpx: arm64: implement -cpu host
+  target/arm: whpx: instantiate GIC early
+  whpx: arm64: gicv3: add migration blocker
+  whpx: enable arm64 builds
+  whpx: arm64: add partition-wide reset on the reboot path
+
+Philippe Mathieu-Daudé (1):
+  accel/system: Introduce hwaccel_enabled() helper
+
+Sebastian Ott (1):
+  target/arm/kvm: add constants for new PSCI versions
+
+ MAINTAINERS                                   |   6 +
+ accel/hvf/hvf-all.c                           |   7 +-
+ accel/meson.build                             |   1 +
+ accel/stubs/whpx-stub.c                       |   1 +
+ accel/whpx/meson.build                        |   7 +
+ {target/i386 => accel}/whpx/whpx-accel-ops.c  |   6 +-
+ accel/whpx/whpx-common.c                      | 536 ++++++++++
+ docs/system/arm/virt.rst                      |  13 +-
+ hw/arm/virt-acpi-build.c                      |  27 +-
+ hw/arm/virt.c                                 | 160 ++-
+ hw/i386/x86-cpu.c                             |   4 +-
+ hw/intc/arm_gicv3_common.c                    |   3 +
+ hw/intc/arm_gicv3_whpx.c                      | 247 +++++
+ hw/intc/meson.build                           |   1 +
+ include/hw/arm/virt.h                         |   8 +-
+ include/hw/core/boards.h                      |   3 +-
+ include/hw/intc/arm_gicv3_common.h            |   3 +
+ include/system/hvf_int.h                      |   4 +
+ include/system/hw_accel.h                     |  13 +
+ .../whpx => include/system}/whpx-accel-ops.h  |   4 +-
+ include/system/whpx-all.h                     |  20 +
+ include/system/whpx-common.h                  |  26 +
+ .../whpx => include/system}/whpx-internal.h   |  16 +-
+ include/system/whpx.h                         |   5 +-
+ meson.build                                   |  20 +-
+ target/arm/cpu.c                              |   3 +
+ target/arm/cpu64.c                            |  17 +-
+ target/arm/hvf-stub.c                         |  20 -
+ target/arm/hvf/hvf.c                          |   6 +-
+ target/arm/hvf_arm.h                          |   3 -
+ target/arm/kvm-consts.h                       |   2 +
+ target/arm/meson.build                        |   2 +-
+ target/arm/whpx/meson.build                   |   5 +
+ target/arm/whpx/whpx-all.c                    | 985 ++++++++++++++++++
+ target/arm/whpx/whpx-stub.c                   |  15 +
+ target/arm/whpx_arm.h                         |  17 +
+ target/i386/cpu-apic.c                        |   2 +-
+ target/i386/hvf/hvf.c                         |  11 +
+ target/i386/whpx/meson.build                  |   1 -
+ target/i386/whpx/whpx-all.c                   | 569 +---------
+ target/i386/whpx/whpx-apic.c                  |   2 +-
+ tests/data/acpi/aarch64/virt/APIC.msi_gicv2m  | Bin 0 -> 188 bytes
+ tests/data/acpi/aarch64/virt/IORT.msi_gicv2m  | Bin 0 -> 172 bytes
+ tests/qtest/bios-tables-test.c                |  21 +
+ 44 files changed, 2186 insertions(+), 636 deletions(-)
+ create mode 100644 accel/whpx/meson.build
+ rename {target/i386 => accel}/whpx/whpx-accel-ops.c (96%)
+ create mode 100644 accel/whpx/whpx-common.c
+ create mode 100644 hw/intc/arm_gicv3_whpx.c
+ rename {target/i386/whpx => include/system}/whpx-accel-ops.h (92%)
+ create mode 100644 include/system/whpx-all.h
+ create mode 100644 include/system/whpx-common.h
+ rename {target/i386/whpx => include/system}/whpx-internal.h (95%)
+ delete mode 100644 target/arm/hvf-stub.c
+ create mode 100644 target/arm/whpx/meson.build
+ create mode 100644 target/arm/whpx/whpx-all.c
+ create mode 100644 target/arm/whpx/whpx-stub.c
+ create mode 100644 target/arm/whpx_arm.h
+ create mode 100644 tests/data/acpi/aarch64/virt/APIC.msi_gicv2m
+ create mode 100644 tests/data/acpi/aarch64/virt/IORT.msi_gicv2m
+
+-- 
+2.50.1 (Apple Git-155)
+
 

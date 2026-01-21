@@ -4,122 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32CF3C44536
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 18:18:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 208D5C44508
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 20:33:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viclv-0002Na-CH; Wed, 21 Jan 2026 13:17:39 -0500
+	id 1viesk-0003mr-7U; Wed, 21 Jan 2026 15:32:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
- id 1viclq-0002CC-Dp; Wed, 21 Jan 2026 13:17:34 -0500
-Received: from fout-a2-smtp.messagingengine.com ([103.168.172.145])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <patrick@stwcx.xyz>)
- id 1viclo-0003Jk-GP; Wed, 21 Jan 2026 13:17:34 -0500
-Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
- by mailfout.phl.internal (Postfix) with ESMTP id D026EEC00A2;
- Wed, 21 Jan 2026 13:17:27 -0500 (EST)
-Received: from phl-frontend-04 ([10.202.2.163])
- by phl-compute-06.internal (MEProxy); Wed, 21 Jan 2026 13:17:27 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stwcx.xyz; h=cc
- :cc:content-transfer-encoding:content-type:content-type:date
- :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to; s=fm1; t=1769019447;
- x=1769105847; bh=hyKU/nzPKi18SdSxCcqbGHCC6zAhLnYL9X5JvFMi5vA=; b=
- umTEsr3+S46Wui+JXKteDj0nP8XrimJRRQuAweZO8R7Upoipq+glqUHzEF24AHxz
- zISxPJ3h6Ckh6pJLKTk1v1EVKTATjeMTXbjxqsRwz1105Nc96gkhk5CGyFh2AP+i
- tzVSAmdBo84gcoPth0WEKsbMlloPRV6biNmEHRK6XBvbD1AoUQslqQdH2IwP6tpB
- QO++7Ym+PyfNiX5Vj5pqqVH/o2+KQ5aZ8yzgOVQiNdKurt0nRHcSmzWFNjMVVgrl
- BRQWnSLZaZLrbh991w7rQlAWWb9k1AnoV2x6zzygECt3frsGkywP2cPxYE6FPt3I
- 4/ig/Ymj6DdLdImHBw5iGQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:content-type:date:date:feedback-id:feedback-id
- :from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1769019447; x=
- 1769105847; bh=hyKU/nzPKi18SdSxCcqbGHCC6zAhLnYL9X5JvFMi5vA=; b=W
- L9yLZKXah2F8A7qXWnNKvRIkHhWb8DjDr6IFtTFw2ji0ta86rr9mFMYe1cFcq74z
- SBgfL0JYQzCMeGgXuYZiKTzphh4PRSf5qclpl/L4Wn6OxN3xRykrsABjyDbjQ03X
- /+y8BrlFt7NFlEW/qwm/2m+W5vAAD0/01BMzbYfiAs2yMNVcJ/0O2jaK3APy+JSi
- e8dwkFZFoCESwLizPBGHTPX9myDxwnXtohxKzV0vgBZK8Zv1OKVz9g38gq+nRBom
- Y2l1RLZgc2GiNbjgT2DYc7JE253UetnpfiGVoyb8KVvrz6drgxSwYgCPYFHj075n
- z9zqgJj19gFZ0ILCBufjg==
-X-ME-Sender: <xms:NxhxaQeFhnbCAiGTW6FVsvQ0STB9CGGqUtC1mUV2GIB53h9bW8X_1A>
- <xme:NxhxaaW_PTLTcopNFMb5MTD4a4XnJ-WyFD7AKHCBqbSfUoImbnYbW5gGJF7SfY55T
- QtJHA2kledrl8y_RSTUpe-rfKHthAVSSaAt166AoSwc7g5AqCJBSg>
-X-ME-Received: <xmr:NxhxaRDlLWofrbWzu1F3hD_xkLKttaV55Ps0LH27kexaj8A2RoliBrtPjtc>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgddugeefleekucetufdoteggodetrf
- dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
- rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnegfrh
- hlucfvnfffucdljedtmdenucfjughrpefhfffugggtgffkfhgjvfevofesthejredtredt
- jeenucfhrhhomheprfgrthhrihgtkhcuhghilhhlihgrmhhsuceophgrthhrihgtkhessh
- htfigtgidrgiihiieqnecuggftrfgrthhtvghrnhepheejjefhkeettdeutdfggeejkedv
- jefgheevleehtdffhfduveejieekhefgledtnecuvehluhhsthgvrhfuihiivgeptdenuc
- frrghrrghmpehmrghilhhfrhhomhepphgrthhrihgtkhesshhtfigtgidrgiihiidpnhgs
- pghrtghpthhtohepuddvpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopehlvggvth
- hrohihsehgmhgrihhlrdgtohhmpdhrtghpthhtohepqhgvmhhuqdhpphgtsehnohhnghhn
- uhdrohhrghdprhgtphhtthhopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdroh
- hrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgpdhrtghpthht
- ohepjhhovghlsehjmhhsrdhiugdrrghupdhrtghpthhtohepmhhilhgvshhgsehlihhnuh
- igrdhisghmrdgtohhmpdhrtghpthhtoheprghnughrvgifsegtohguvggtohhnshhtrhhu
- tghtrdgtohhmrdgruhdprhgtphhtthhopehprghtrhhitghksehsthiftgigrdighiiipd
- hrtghpthhtohepshhtvghvvghnpghlvggvsegrshhpvggvughtvggthhdrtghomh
-X-ME-Proxy: <xmx:NxhxaV5mgc54fZeUjTTBT5yOOm4XIMZg02tWxfavfY1gNif8yc8knA>
- <xmx:NxhxaY0rqY6LnA79ZtD0wO8AkCP-eYIa8JaRmzMoHt76mOhFRCKLZw>
- <xmx:NxhxaZnYkYwxkSnLzeSWx6GAEdSsqaw75ZaKhSp4kpHQtlMVrLoOhA>
- <xmx:Nxhxae65qNZQ9j-rJr2CCDE1efJcbL_Tl01H0GXdG5Y6nr3aVHq1OQ>
- <xmx:NxhxaZJIWCIVKbphqVBACZaZmTpujdi3-c8X3Ajz8eUGcjYRJhMDcPPY>
-Feedback-ID: i68a1478a:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 21 Jan 2026 13:17:27 -0500 (EST)
-From: Patrick Williams <patrick@stwcx.xyz>
-Date: Wed, 21 Jan 2026 13:17:06 -0500
-Subject: [PATCH 2/2] hw/arm/aspeed: catalina: use pca9535
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1viesi-0003lM-MI
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 15:32:48 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1viesg-00013r-Qe
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 15:32:48 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-47ee76e8656so3559695e9.0
+ for <qemu-arm@nongnu.org>; Wed, 21 Jan 2026 12:32:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1769027564; x=1769632364; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=+xr/2LllmT1S3RTDZxTnLU3mtpnLJpr75Yd8uPrFY9M=;
+ b=gMuSxbAvTteKzjb7RYVEzmYYPqdkBk92wEBRyjrjSYlEp0gphgiDJt5tdYLxZ3ao76
+ Jt6otp9yw5jxgurwuXfBh0zbINv61uLVN12yE3mD/bNSWqhyK0ZA/moFv8Ko+bawXlAN
+ okVaAvBCP46EbKLjTESOnOPyA6J16YZPOYUXnz4N1Z7drkZln02cZJmaUlC5/XP5zkAD
+ Y5rSe5euoBfbb4+AeXdY087Z+IK8yQ16I2hGTNV+t2iMB0g0idm7gq5t5L3aEyQ3NIDf
+ q8YQ3UENi8lCls4UaQOgXd1G35UX4zhHrve0+76d7MbKgogWr/4T9JKOtBeiOCO5urls
+ 0Uyg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1769027564; x=1769632364;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=+xr/2LllmT1S3RTDZxTnLU3mtpnLJpr75Yd8uPrFY9M=;
+ b=iymGa9lp7aOH3gN38m1McDUMTnopjAaZvafpxLx+ffu81y7FlWXOq2lFR79bS6c8tI
+ 2+ZcpLQWqGKtlorpY61QwOo/B6D/rmb9rmhDziDh0BBIj9vB46ZqURuiOsooJZBbPqUp
+ ylH15SqgXbqjiuyrCSxrA2+VdLybcjwHcsuRLRpnZfQhOuEwIyLB6pcylI2ugz6RnvA2
+ snFbCxpKGb1znZndRVzD7BKpwBTOZmr04KsVtsf/T0fYMhYxWeZqxuiocr+Zjn82ie8L
+ wuXMCKxEkfzD8ttTqa4z0YSgJDbqXfudm3L0OVianUcN//m0M3cTE8e522t4I4SqMUAG
+ Bk2Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXqMwT9QfpdesDLRoJPTZP4coq9bPePwbAD/tUDCIdY0695+P7faSMIgoqIJVA7o862HE0lC+iQmg==@nongnu.org
+X-Gm-Message-State: AOJu0YyyC2I+Uca3J9abvWdQAg3lFqCQFjsIJNOc7c9kQ9OU5LHqq+uG
+ bANDtJOW0nOlCP+BXd2khJ5E35YxWMux6BAsbavBoeEb0o+b4y7uR3d4K0pN2fSnc2I=
+X-Gm-Gg: AZuq6aKePnOO3/LN6tjhCtDwugnhgtTcO1NMpGHq16Ah9AF/LSGYD34V5LsRAUQM6O8
+ 9X5+W4qTB/mcWzPO311cW+zoLzM2DmWaY6+VFopa19vKXoeUqJjYEkoGfcxypROt5Yh2Iybry5z
+ 3mfyfjSt1+XZtWXAGZhyp897Lm+bIuCYOg7YPWoMpZ0bsp6rRK3ArqjglOxHcCVIX6BektfYvzn
+ uuIAQr9dnpMDMANHt2FOz8Mt+5r4D6coVz5/N9zxDrZj99hpkZ2UYt5viLOe3PVGrTp8VhyXhsG
+ ff62gJnDIRNX/AaQXv6FN9eJESA6snisXuEt3u9jPuD+N1wRlntCjRxbOTZYxanZ582EqKoSkcG
+ oKSmc886FWeeODCR9RtsiqwbyI5l1U8HgtYqqZ4vrTMHLjxaASDJUCUB1rmR8FJ4wSgnYuEI3xE
+ yCfiyA8shgA0gCURklWo9IeOwK/tc2Mztt3ceN/xXcjPPEgPs6SoJZ4PdtnkMWkH0H
+X-Received: by 2002:a05:600c:474a:b0:477:5c58:3d42 with SMTP id
+ 5b1f17b1804b1-4803e7a2c6dmr109656075e9.10.1769027563701; 
+ Wed, 21 Jan 2026 12:32:43 -0800 (PST)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-435924ae6f1sm12323997f8f.33.2026.01.21.12.32.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 21 Jan 2026 12:32:43 -0800 (PST)
+Message-ID: <fe7038e9-5675-43da-b75c-d7c316b14ea7@linaro.org>
+Date: Wed, 21 Jan 2026 21:32:41 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260121-pca9535-v1-2-164640e622ff@stwcx.xyz>
-References: <20260121-pca9535-v1-0-164640e622ff@stwcx.xyz>
-In-Reply-To: <20260121-pca9535-v1-0-164640e622ff@stwcx.xyz>
-To: qemu-devel@nongnu.org
-Cc: Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
- qemu-arm@nongnu.org, =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
- Patrick Williams <patrick@stwcx.xyz>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1475; i=patrick@stwcx.xyz;
- h=from:subject:message-id;
- bh=MLT6OB2X8S5dkaMqs+SY/xPIl09Y2hCJfnP/u4HCPJY=;
- b=owEBbQKS/ZANAwAIAasDR8wtAMEZAcsmYgBpcRgyUuNBTf6s52zLCxmM8omLdXWOc11AUD4pT
- 4BaGmntt/KJAjMEAAEIAB0WIQQEYP2KLgsT1w1uokGrA0fMLQDBGQUCaXEYMgAKCRCrA0fMLQDB
- GVQ7D/9EVWpzU47eFwfYCg66+14OFseA9jHn0PG5UQUoaSlF1+IGl17V6F43bdxIHdKYFGVfL9m
- 9GxsYHUULWsdoN8XhLxhEIUAC4xIn0mKktbRFAFmYBeV93CmItWOWkzPNDiuGUToMT4lo5KCds1
- nz8zCFBVfnoltdIwXWM9wD7V1KQu2YBUIOwl6frcWS5dphufEoPqtlmsDwijTapb+ssUEPtl9ih
- cF3umM6HBR59s5N2AEWmOWrqKP96y5iUzn+uiNcC3h4xTol99e0Ds6aJnXzVpNNrnS6tukX5tM3
- Gd/wjbnixiKLVZxsvEjqy683yxlx+D+QPFFrsQ7vtlFvq2yjTTbuVAs5jrV8QrUQiInpbX9Ma1+
- ZHLE/PJWr7Kyqq9XOaZu9vtGwSSWkLM1ZJy8EA+/3QM5p9vQsY2Q/NrNuLKUrPJ07394AvMYYgI
- xp50qAjYpqRXF22aIxlhtiJTaCc5zpZp2TFGTKYqoLSfVF2IAm7JgimN6FFNQc5qDuuaA370vHO
- 00xl1jBhpNe33KclQBWbxKqyJTbDYaDHFfbNWTExQviboqNNMCOiUqMXjfmr7RhJmMizU52t7XS
- B2gj0yKsE9OWkUGMrMvnYkolS0OsDuiy9nIglbAd051FwW3kMdbRfDY3ZJiPmkoNfP39kGHSnGR
- KHpowPuE3yDC7Ug==
-X-Developer-Key: i=patrick@stwcx.xyz; a=openpgp;
- fpr=0460FD8A2E0B13D70D6EA241AB0347CC2D00C119
-Received-SPF: pass client-ip=103.168.172.145; envelope-from=patrick@stwcx.xyz;
- helo=fout-a2-smtp.messagingengine.com
-X-Spam_score_int: -2
-X-Spam_score: -0.3
-X-Spam_bar: /
-X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v17 01/21] target/arm/kvm: add constants for new PSCI
+ versions
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Phil Dennis-Jordan
+ <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
+ Igor Mammedov <imammedo@redhat.com>, Cameron Esfahani <dirty@apple.com>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, qemu-arm@nongnu.org,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Roman Bolshakov <rbolshakov@ddn.com>,
+ Ani Sinha <anisinha@redhat.com>, Pedro Barbuda <pbarbuda@microsoft.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Sebastian Ott <sebott@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20260121134114.9781-1-mohamed@unpredictable.fr>
+ <20260121134114.9781-2-mohamed@unpredictable.fr>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260121134114.9781-2-mohamed@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FROM_SUSPICIOUS_NTLD=0.499, PDS_OTHER_BAD_TLD=1.999, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,39 +117,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-A few entries in the catalina model were using the PCA9552 chip
-because it was "close enough" in function.  Since there is a PCA9535
-model now, switch to use it.
+On 21/1/26 14:40, Mohamed Mediouni wrote:
+> From: Sebastian Ott <sebott@redhat.com>
+> 
+> Add constants for PSCI version 1_2 and 1_3.
+> 
+> Signed-off-by: Sebastian Ott <sebott@redhat.com>
+> 
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+> ---
+>   target/arm/kvm-consts.h | 2 ++
+>   1 file changed, 2 insertions(+)
 
-Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
----
- hw/arm/aspeed_ast2600_catalina.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
-index 4edb30bb16..65495a524e 100644
---- a/hw/arm/aspeed_ast2600_catalina.c
-+++ b/hw/arm/aspeed_ast2600_catalina.c
-@@ -480,7 +480,7 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
-     /* i2c0mux1ch1 */
-     /* io_expander7 - pca9535@20 */
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
--                            TYPE_PCA9552, 0x20);
-+                            TYPE_PCA9535, 0x20);
-     /* eeprom@50 */
-     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB,
-                           gb200io_eeprom, gb200io_eeprom_len);
-@@ -497,7 +497,7 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
-     /* i2c0mux4ch1 */
-     /* io_expander8 - pca9535@21 */
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
--                            TYPE_PCA9552, 0x21);
-+                            TYPE_PCA9535, 0x21);
-     /* eeprom@50 */
-     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB,
-                           gb200io_eeprom, gb200io_eeprom_len);
-
--- 
-2.51.2
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

@@ -4,68 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF456C44536
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 15:43:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0E8CC44536
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 16:03:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viaME-0007ZD-Tf; Wed, 21 Jan 2026 10:43:00 -0500
+	id 1viaey-0004K0-88; Wed, 21 Jan 2026 11:02:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1viaMA-0007RD-Vk; Wed, 21 Jan 2026 10:42:55 -0500
-Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1viaM7-00028D-T4; Wed, 21 Jan 2026 10:42:54 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwA3PlL083Bp62BHAw--.11475S2;
- Wed, 21 Jan 2026 23:42:44 +0800 (CST)
-Received: from [192.168.31.151] (unknown [113.246.118.47])
- by mail (Coremail) with SMTP id AQAAfwCX8e7y83BpE38VAA--.44000S2;
- Wed, 21 Jan 2026 23:42:42 +0800 (CST)
-Message-ID: <014d8d81-cf3f-41bf-ac0b-e7746aed520f@phytium.com.cn>
-Date: Wed, 21 Jan 2026 23:42:41 +0800
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1viaei-00049y-Nu
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 11:02:08 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1viaee-0007x7-AL
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 11:02:04 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-47ee07570deso60085e9.1
+ for <qemu-arm@nongnu.org>; Wed, 21 Jan 2026 08:01:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1769011318; x=1769616118; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=cR5zNIGLc6jF31wai4UyLd4hZGb5cEinB/KIQx3lvoI=;
+ b=FxS3YrXST6d/f1ub9OSBNto4pZLo5f45H7SJIVUaO/NbHdh/g5snDnkxEDZyPqLbvh
+ JmVc9uDxUHRET1c8HXbvn42AgR+vZpfBQeInSy4hp4J/H0CCDLFKuDoyc9AcYYraFXaz
+ PfzAqgUzmgBLMgUCSlkhVnBfpZl8tO8qmCFJqnMHkYnArArdzZD8pVYSQ9Kcy75iMv6W
+ zlrII4ens4YmOSnuuHX4BkKLF/w6ICDBLjFgmGzmZ1TgwghajtiBRNf3pHhfaF4UDrSL
+ 6eDLSAkcqG715mBa8QJFgZE/gkeIZT78MrL/93GdUT6nIIEpe0Q5NVig65Cdcd9yj0k3
+ IRvg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1769011318; x=1769616118;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=cR5zNIGLc6jF31wai4UyLd4hZGb5cEinB/KIQx3lvoI=;
+ b=alYCr6rXas6lHxLKHnjsU8w44fOrKTEwjZiU00P3Kr2haI6/wSQ7QiDsZsu/Xz86wp
+ HxrzaxrrY0miFtucTKEk/vy/Av+pgXK6hUNQKoKyI4VvZN4TFv8DjVT51Y0fqfcIRRw2
+ XTZ59pgMjdIqeBABI+gsZZ1dvMZh70ft0u0EgBRoADZX52Wm6HPt7o3C88+wz3cdKRsK
+ STdNUZqd2h57zHeRZlDF5QeeUPuA1hnWrMDosACXizwgbIIuwkhveqOwd0K270H4jK7a
+ 8GgKTGHNugKtJso2XleUuTS46kYk/zlJZAmMqhO9/tBhS6/ERwlVzj5d2g8woDhMpJAO
+ Rb9g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUEvxLBAkvwaDhydmMkQPAeoY0ZPSfQqaKrU/G+obiebeCqXdHZYCOsBvtrc+GvrC3OiRyc+3wdCg==@nongnu.org
+X-Gm-Message-State: AOJu0YyhYxPiL6vuPfyYnlY/fqAQemz/ORJsvY9kABzadTlEIIe1/vwK
+ b7hhtZfM5YvppUWY61px4ueUpIG2ILGqbALo4g+29PxCQIsTatlAX3ehCzedEWA5v4E=
+X-Gm-Gg: AZuq6aJAR4bvuXS8qINeFfG3Yt7JJ+U/Gfbj+n2LjCbEPUfclnwuapruWfxgKGvvfdE
+ /IE2jKvtQKE5cRigCGrEx3iwwCkBGrWDRyn9xK6BRAFYb0eJwuvv5IKTJIMz2cYZp+imQxYw5l5
+ DDcKH9aNXmsUdsDKzX8jhD6QXiNFKCLoT/oxG5lrjeaeK0rRSbe0Fg3m6IP8FmeVvOvDa7s14wg
+ W1txyfTZF5l6IsLvbMg0hKgPHye6bjXRzWnpEor1OOWQCEbrrwtLCVm/J5ylnbOBEJ2xaadetGa
+ qVw4ra/ldVFktJsSUU1bgRwNLS1bMN1lCluUrwV0dHixFhAsBKHXwiK/n1Ed4DyovX2Pu9s8ITz
+ BPjic8NJQ4u76IWAxSFq5Nrx2cWijpTNh3F/GglFbdCfodwp3PcRl9XtfPHFrX2kVT1NGVYsbXt
+ kivQc/WcjuFR+X
+X-Received: by 2002:a05:600c:1c28:b0:45d:f81d:eae7 with SMTP id
+ 5b1f17b1804b1-4801eb109e0mr247893785e9.28.1769011317611; 
+ Wed, 21 Jan 2026 08:01:57 -0800 (PST)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43596291e0asm8772328f8f.15.2026.01.21.08.01.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 21 Jan 2026 08:01:56 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id C9F415FDE8;
+ Wed, 21 Jan 2026 16:01:55 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Ashish Anand <ashish.a6@samsung.com>
+Cc: qemu-devel@nongnu.org,  peter.maydell@linaro.org,  qemu-arm@nongnu.org,
+ saurabh@samsung.com,  vishwa.mg@samsung.com,  y.kaushal@samsung.com,
+ ashish.anand202@gmail.com
+Subject: Re: [PATCH v2] target/arm: Implement WFE, SEV and SEVONPEND for
+ Cortex-M
+In-Reply-To: <20260121132421.2220928-1-ashish.a6@samsung.com> (Ashish Anand's
+ message of "Wed, 21 Jan 2026 18:54:21 +0530")
+References: <CGME20260121132716epcas5p1cab4021fbcd469b95d13ef4b4adc757f@epcas5p1.samsung.com>
+ <20260121132421.2220928-1-ashish.a6@samsung.com>
+User-Agent: mu4e 1.12.15; emacs 30.1
+Date: Wed, 21 Jan 2026 16:01:55 +0000
+Message-ID: <875x8vosy4.fsf@draig.linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v9 3/8] hw/misc: Introduce iommu-testdev for bare-metal
- IOMMU testing
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Mostafa Saleh <smostafa@google.com>,
- CLEMENT MATHIEU--DRIF <clement.mathieu--drif@eviden.com>
-References: <20260119161112.3841386-1-tangtao1634@phytium.com.cn>
- <20260119161112.3841386-4-tangtao1634@phytium.com.cn>
- <c9308d86-889f-4ca3-8f67-eb6b253987da@linaro.org>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <c9308d86-889f-4ca3-8f67-eb6b253987da@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwCX8e7y83BpE38VAA--.44000S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQACBWlv4X8GvAABsl
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxWr1rGF1xGrW7WFy5ur48JFb_yoWrWw4DpF
- ykGFWfKFW8JrWxCr1fZw18tFy5GF4kJw1jkr1xtF15Wr9xAry0qr1jgryjg348Gw4kZF10
- vw1Dta4Uuw4rZaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=209.97.181.73;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,120 +109,306 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Ashish Anand <ashish.a6@samsung.com> writes:
 
-On 2026/1/21 02:31, Philippe Mathieu-Daudé wrote:
-> On 19/1/26 17:11, Tao Tang wrote:
->> Add a minimal PCI test device designed to exercise IOMMU translation
->> (such as ARM SMMUv3) without requiring guest firmware or OS. The device
->> provides MMIO registers to configure and trigger DMA operations with
->> controllable attributes (security state, address space), enabling
->> deterministic IOMMU testing.
->>
->> Key features:
->> - Bare-metal IOMMU testing via simple MMIO interface
->> - Configurable DMA attributes for security states and address spaces
->> - Write-then-read verification pattern with automatic result checking
->>
->> The device performs a deterministic DMA test pattern: write a known
->> value (0x12345678) to a configured GVA, read it back, and verify data
->> integrity. Results are reported through a dedicated result register,
->> eliminating the need for complex interrupt handling or driver
->> infrastructure in tests.
->>
->> This is purely a test device and not intended for production use or
->> machine realism. It complements existing test infrastructure like
->> pci-testdev but focuses specifically on IOMMU translation path
->> validation.
->>
->> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> Reviewed-by: Clément Mathieu--Drif <clement.mathieu--drif@eviden.com>
->> Reviewed-by: Fabiano Rosas <farosas@suse.de>
->> ---
->>   MAINTAINERS                     |   7 +
->>   docs/specs/index.rst            |   1 +
->>   docs/specs/iommu-testdev.rst    | 138 ++++++++++++++
->>   hw/misc/Kconfig                 |   5 +
->>   hw/misc/iommu-testdev.c         | 318 ++++++++++++++++++++++++++++++++
->>   hw/misc/meson.build             |   1 +
->>   hw/misc/trace-events            |  10 +
->>   include/hw/misc/iommu-testdev.h |  87 +++++++++
->>   8 files changed, 567 insertions(+)
->>   create mode 100644 docs/specs/iommu-testdev.rst
->>   create mode 100644 hw/misc/iommu-testdev.c
->>   create mode 100644 include/hw/misc/iommu-testdev.h
+> Currently, QEMU implements the 'Wait For Event' (WFE) instruction as a
+> simple yield. This causes high host CPU usage because guest
+> RTOS idle loops effectively become busy-wait loops.
+>
+> To improve efficiency, this patch transitions WFE to use the architectural
+> 'Halt' state (EXCP_HLT) for M-profile CPUs. This allows the host thread
+> to sleep when the guest is idle.
+>
+> To support this transition, we implement the full architectural behavior
+> required for WFE, specifically the 'Event Register', 'SEVONPEND' logic,
+> and 'R_BPBR' exception handling requirements defined in the ARM
+> Architecture Reference Manual.
+>
+> This patch enables resource-efficient idle emulation for Cortex-M.
+>
+> Signed-off-by: Ashish Anand <ashish.a6@samsung.com>
+> ---
+> Changes in v2:
+> 1. Added R_BPBR handling as required by the Armv8-M architecture.
+> 2. Unified pending-state updates to detect interrupt transitions for SEVO=
+NPEND.
+> 3. Moved the Event Register to the top-level ARM CPU state, since it is
+>    architecturally shared between A-profile and M-profile CPUs.
+> 4. Updated migration handling to be profile-agnostic so the state can be
+>    reused if A-profile WFE support is implemented in the future.=20
+> 5. Added CONFIG_USER_ONLY handling for WFE/SEV and tightened profile chec=
+ks.
+> 6. Addressed review comments and fixes raised during v1 discussion.=20
+>
+> Link to v1 - https://lore.kernel.org/qemu-devel/20251223120012.541777-1-a=
+shish.a6@samsung.com/
 >
 >
->> diff --git a/docs/specs/iommu-testdev.rst b/docs/specs/iommu-testdev.rst
->> new file mode 100644
->> index 0000000000..e15f9a55a7
->> --- /dev/null
->> +++ b/docs/specs/iommu-testdev.rst
->> @@ -0,0 +1,138 @@
->
-> Squashing 'SPDX-License-Identifier: GPL-2.0-or-later' like .c & .h.
+<snip>
+>=20=20
+> +    /*
+> +     * The event register is shared by all ARM profiles (A/R/M),
+> +     * so it is stored in the top-level CPU state.
+> +     * WFE/SEV handling is currently implemented only for M-profile.
+> +     */
+> +    uint32_t event_register;
+> +
 
-Hi Philippe,
+Looking at the Arm ARM for armv8m it says:
 
-Thanks for catching this. I’ll pay attention to this in the future.
+  The Event register is a single-bit register for each PE in the system.
+  Software cannot read, and cannot write to, the Event register directly.
 
-Regards,
+So I wonder if this could simply be a bool - and in that case some of
+the logic simplifies.
 
-Tao
+>      /* Fields up to this point are cleared by a CPU reset */
+>      struct {} end_reset_fields;
+>=20=20
+> diff --git a/target/arm/machine.c b/target/arm/machine.c
+> index 0befdb0b28..814a74745f 100644
+> --- a/target/arm/machine.c
+> +++ b/target/arm/machine.c
+> @@ -508,6 +508,24 @@ static const VMStateDescription vmstate_m_mve =3D {
+>      },
+>  };
+>=20=20
+> +static bool event_needed(void *opaque)
+> +{
+> +    ARMCPU *cpu =3D opaque;
+> +    /* Only save the state if the event register is set (non-zero) */
+> +    return cpu->env.event_register !=3D 0;
+> +}
+> +
+> +static const VMStateDescription vmstate_event =3D {
+> +    .name =3D "cpu/event",
+> +    .version_id =3D 1,
+> +    .minimum_version_id =3D 1,
+> +    .needed =3D event_needed,
+> +    .fields =3D (const VMStateField[]) {
+> +        VMSTATE_UINT32(env.event_register, ARMCPU),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+>  static const VMStateDescription vmstate_m =3D {
+>      .name =3D "cpu/m",
+>      .version_id =3D 4,
+> @@ -1210,6 +1228,7 @@ const VMStateDescription vmstate_arm_cpu =3D {
+>          &vmstate_wfxt_timer,
+>          &vmstate_syndrome64,
+>          &vmstate_pstate64,
+> +        &vmstate_event,
+>          NULL
+>      }
+>  };
+> diff --git a/target/arm/tcg/helper.h b/target/arm/tcg/helper.h
+> index 4636d1bc03..5a10a9fba3 100644
+> --- a/target/arm/tcg/helper.h
+> +++ b/target/arm/tcg/helper.h
+> @@ -60,6 +60,7 @@ DEF_HELPER_1(yield, void, env)
+>  DEF_HELPER_1(pre_hvc, void, env)
+>  DEF_HELPER_2(pre_smc, void, env, i32)
+>  DEF_HELPER_1(vesb, void, env)
+> +DEF_HELPER_1(sev, void, env)
+>=20=20
+>  DEF_HELPER_3(cpsr_write, void, env, i32, i32)
+>  DEF_HELPER_2(cpsr_write_eret, void, env, i32)
+> diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+> index 3fb24c7790..2a2224c996 100644
+> --- a/target/arm/tcg/m_helper.c
+> +++ b/target/arm/tcg/m_helper.c
+> @@ -962,7 +962,9 @@ static void v7m_exception_taken(ARMCPU *cpu, uint32_t=
+ lr, bool dotailchain,
+>       * Now we've done everything that might cause a derived exception
+>       * we can go ahead and activate whichever exception we're going to
+>       * take (which might now be the derived exception).
+> +     * Exception entry sets the event register (ARM ARM R_BPBR)
+>       */
+> +    env->event_register =3D 1;
+>      armv7m_nvic_acknowledge_irq(env->nvic);
+>=20=20
+>      /* Switch to target security state -- must do this before writing SP=
+SEL */
+> @@ -1906,6 +1908,9 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
+>      /* Otherwise, we have a successful exception exit. */
+>      arm_clear_exclusive(env);
+>      arm_rebuild_hflags(env);
+> +
+> +    /* Exception return sets the event register (ARM ARM R_BPBR) */
+> +    env->event_register =3D 1;
+>      qemu_log_mask(CPU_LOG_INT, "...successful exception return\n");
+>  }
+>=20=20
+> diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+> index 4fbd219555..9f385dae6d 100644
+> --- a/target/arm/tcg/op_helper.c
+> +++ b/target/arm/tcg/op_helper.c
+> @@ -469,16 +469,58 @@ void HELPER(wfit)(CPUARMState *env, uint64_t timeou=
+t)
+>  #endif
+>  }
+>=20=20
+> +void HELPER(sev)(CPUARMState *env)
+> +{
+> +    CPUState *cs =3D env_cpu(env);
+> +    CPU_FOREACH(cs) {
+> +        ARMCPU *target_cpu =3D ARM_CPU(cs);
+> +        if (arm_feature(&target_cpu->env, ARM_FEATURE_M)) {
+> +            target_cpu->env.event_register =3D 1;
+> +        }
+> +        if (!qemu_cpu_is_self(cs)) {
+> +            qemu_cpu_kick(cs);
+> +        }
+> +    }
+> +}
+> +
+>  void HELPER(wfe)(CPUARMState *env)
+>  {
+> -    /* This is a hint instruction that is semantically different
+> -     * from YIELD even though we currently implement it identically.
+> -     * Don't actually halt the CPU, just yield back to top
+> -     * level loop. This is not going into a "low power state"
+> -     * (ie halting until some event occurs), so we never take
+> -     * a configurable trap to a different exception level.
+> +#ifdef CONFIG_USER_ONLY
+> +    /*
+> +     * WFE in the user-mode emulator is a NOP. Real-world user-mode code
+> +     * shouldn't execute WFE, but if it does, we make it a NOP rather th=
+an
+> +     * aborting when we try to raise EXCP_HLT.
+> +     */
+> +    return;
+> +#else
+> +    /*
+> +     * WFE (Wait For Event) is a hint instruction.
+> +     * For Cortex-M (M-profile), we implement the strict architectural b=
+ehavior:
+> +     * 1. Check the Event Register (set by SEV or SEVONPEND).
+> +     * 2. If set, clear it and continue (consume the event).
+>       */
+> -    HELPER(yield)(env);
+> +    if (arm_feature(env, ARM_FEATURE_M)) {
+> +        CPUState *cs =3D env_cpu(env);
+> +
+> +        if (env->event_register) {
+> +            env->event_register =3D 0;
+> +            return;
+> +        }
+> +
+> +        cs->exception_index =3D EXCP_HLT;
+> +        cs->halted =3D 1;
+> +        cpu_loop_exit(cs);
+> +    } else {
+> +        /*
+> +         * For A-profile and others, we rely on the existing "yield" beh=
+avior.
+> +         * Don't actually halt the CPU, just yield back to top
+> +         * level loop. This is not going into a "low power state"
+> +         * (ie halting until some event occurs), so we never take
+> +         * a configurable trap to a different exception level
+> +         */
+> +        HELPER(yield)(env);
+> +    }
+> +#endif
+>  }
+>=20=20
+>  void HELPER(yield)(CPUARMState *env)
+> diff --git a/target/arm/tcg/t16.decode b/target/arm/tcg/t16.decode
+> index 646c74929d..778fbf1627 100644
+> --- a/target/arm/tcg/t16.decode
+> +++ b/target/arm/tcg/t16.decode
+> @@ -228,8 +228,9 @@ REVSH           1011 1010 11 ... ...            @rdm
+>      WFE         1011 1111 0010 0000
+>      WFI         1011 1111 0011 0000
+>=20=20
+> -    # TODO: Implement SEV, SEVL; may help SMP performance.
+> -    # SEV       1011 1111 0100 0000
+> +    # M-profile SEV is implemented.
+> +    # TODO: Implement SEV for other profiles, and SEVL for all profiles;=
+ may help SMP performance.
+> +    SEV         1011 1111 0100 0000
+>      # SEVL      1011 1111 0101 0000
+>=20=20
+>      # The canonical nop has the second nibble as 0000, but the whole of =
+the
+> diff --git a/target/arm/tcg/t32.decode b/target/arm/tcg/t32.decode
+> index d327178829..49b8d0037e 100644
+> --- a/target/arm/tcg/t32.decode
+> +++ b/target/arm/tcg/t32.decode
+> @@ -369,8 +369,9 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 .=
+...      @rdm
+>          WFE      1111 0011 1010 1111 1000 0000 0000 0010
+>          WFI      1111 0011 1010 1111 1000 0000 0000 0011
+>=20=20
+> -        # TODO: Implement SEV, SEVL; may help SMP performance.
+> -        # SEV    1111 0011 1010 1111 1000 0000 0000 0100
+> +        # M-profile SEV is implemented.
+> +        # TODO: Implement SEV for other profiles, and SEVL for all profi=
+les; may help SMP performance.
+> +        SEV      1111 0011 1010 1111 1000 0000 0000 0100
+>          # SEVL   1111 0011 1010 1111 1000 0000 0000 0101
+>=20=20
+>          ESB      1111 0011 1010 1111 1000 0000 0001 0000
+> diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+> index 63735d9789..c90b0106f7 100644
+> --- a/target/arm/tcg/translate.c
+> +++ b/target/arm/tcg/translate.c
+> @@ -3241,14 +3241,30 @@ static bool trans_YIELD(DisasContext *s, arg_YIEL=
+D *a)
+>      return true;
+>  }
+>=20=20
+> +static bool trans_SEV(DisasContext *s, arg_SEV *a)
+> +{
+> +    /*
+> +     * Currently SEV is a NOP for non-M-profile and in user-mode emulati=
+on.
+> +     * For system-mode M-profile, it sets the event register.
+> +     */
+> +#ifndef CONFIG_USER_ONLY
+> +    if (arm_dc_feature(s, ARM_FEATURE_M)) {
+> +        gen_helper_sev(tcg_env);
+> +    }
+> +#endif
+> +    return true;
+> +}
+> +
+>  static bool trans_WFE(DisasContext *s, arg_WFE *a)
+>  {
+>      /*
+>       * When running single-threaded TCG code, use the helper to ensure t=
+hat
+> -     * the next round-robin scheduled vCPU gets a crack.  In MTTCG mode =
+we
+> -     * just skip this instruction.  Currently the SEV/SEVL instructions,
+> -     * which are *one* of many ways to wake the CPU from WFE, are not
+> -     * implemented so we can't sleep like WFI does.
+> +     * the next round-robin scheduled vCPU gets a crack.
+> +     *
+> +     * For Cortex-M, we implement the architectural WFE behavior (sleepi=
+ng
+> +     * until an event occurs or the Event Register is set).
+> +     * For other profiles, we currently treat this as a NOP or yield,
+> +     * to preserve existing performance characteristics.
+>       */
+>      if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
+>          gen_update_pc(s, curr_insn_len(s));
+> @@ -6807,6 +6823,11 @@ static void arm_tr_tb_stop(DisasContextBase *dcbas=
+e, CPUState *cpu)
+>              break;
+>          case DISAS_WFE:
+>              gen_helper_wfe(tcg_env);
+> +            /*
+> +             * The helper can return if the event register is set, so we
+> +             * must go back to the main loop to check for events.
+> +             */
+> +            tcg_gen_exit_tb(NULL, 0);
+>              break;
+>          case DISAS_YIELD:
+>              gen_helper_yield(tcg_env);
 
-
->
->> +iommu-testdev — IOMMU test device for bare-metal testing
->> +=========================================================
->> +
->> +Overview
->> +--------
->> +``iommu-testdev`` is a minimal, test-only PCI device designed to 
->> exercise
->> +IOMMU translation (such as ARM SMMUv3) without requiring firmware or 
->> a guest
->> +OS. Tests can populate IOMMU translation tables with known values 
->> and trigger
->> +DMA operations that flow through the IOMMU translation path. It is 
->> **not** a
->> +faithful PCIe endpoint and must be considered a QEMU-internal test 
->> vehicle.
->   ...
->
->> diff --git a/hw/misc/iommu-testdev.c b/hw/misc/iommu-testdev.c
->> new file mode 100644
->> index 0000000000..15eb6de78a
->> --- /dev/null
->> +++ b/hw/misc/iommu-testdev.c
->> @@ -0,0 +1,318 @@
->> +/*
->> + * A test device for IOMMU
->> + *
->> + * Copyright (c) 2026 Phytium Technology
->> + *
->> + * Author:
->> + *  Tao Tang <tangtao1634@phytium.com.cn>
->> + *
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + */
->
->
->> diff --git a/include/hw/misc/iommu-testdev.h 
->> b/include/hw/misc/iommu-testdev.h
->> new file mode 100644
->> index 0000000000..338365947c
->> --- /dev/null
->> +++ b/include/hw/misc/iommu-testdev.h
->> @@ -0,0 +1,87 @@
->> +/*
->> + * A test device for IOMMU
->> + *
->> + * Copyright (c) 2026 Phytium Technology
->> + *
->> + * Author:
->> + *  Tao Tang <tangtao1634@phytium.com.cn>
->> + *
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + */
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5320CC44507
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 11:01:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF49AC44501
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 11:01:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viVw6-0003fN-Hw; Wed, 21 Jan 2026 05:59:42 -0500
+	id 1viVw7-0003ll-R6; Wed, 21 Jan 2026 05:59:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1viVw4-0003QV-GF
+ id 1viVw4-0003Q5-Ek
  for qemu-arm@nongnu.org; Wed, 21 Jan 2026 05:59:40 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1viVw2-0007wZ-Dh
+ id 1viVw1-0007wC-RK
  for qemu-arm@nongnu.org; Wed, 21 Jan 2026 05:59:40 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-47ee9817a35so38374545e9.1
- for <qemu-arm@nongnu.org>; Wed, 21 Jan 2026 02:59:38 -0800 (PST)
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-48039fdc8aeso13500245e9.3
+ for <qemu-arm@nongnu.org>; Wed, 21 Jan 2026 02:59:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768993177; x=1769597977; darn=nongnu.org;
+ d=linaro.org; s=google; t=1768993176; x=1769597976; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=zZ6t9XZ5QAwAxAU+JLleQRkqn02gh51WB6UgsTIMHoY=;
- b=wUn3sSDaHFQkfCu9Dd2ptx8jwNrib3HP7Uw6k5W5ZyWmx3Szz8RSY1iGHjMClsgqXk
- y6Dry96mpaHzpiro9wl2GZ8eg8XRj0UhTJ+3fgTrJLQkKRJOpxLM0o3nRAUqCF+36ACK
- Gmf+kaWd0tC5lm3ka3+t5kQjcSR0YVtR+Dgo3RdOT4FwuqB05sVBIojk+J87EBWD6NV1
- khMiM9eorcVW9g8bemubBORVhXOlas8tAQ41U/7nmXZyUyPmDV1Jiwad68yIEgo2OPrY
- Gg0GtWTw9lELsw9mEBgM8VZYuFpi74ms8bmrvGvlvZM9Lv/WhaY5z84lmHtDoqdYY81/
- xKow==
+ bh=pn0EjWaNv7S6kMlVE1xbMWo8X7UOesxQvgr8dCGqmNM=;
+ b=b2VPyJk6JT7rQ88CB+SXUtcJJ9YW1Vu5xAPpahLFgQ5//U39YMmo2+e9m9XyNUZ8EA
+ 3Uwu+jnFjkggd0FZSes5jtkPcG2mxnnbw7FxgDVXjh3z2vWy4CNXEI7jkaYhUl0+y8dF
+ PTjyZyKTqWmMEV3LzkwkHXY9rF3Z6dZn9C0DSDGChaf6aJ28FQfYho3sLV7fyaQSczzt
+ G7ekx6JcL8J6aEr4h7+RRH4cSYjfGwtsd0x5m6RAq715haJbVLD30Pasi+l4EbspTPa/
+ LZ4c374vpqyLx+UQtd+kpxf7q9jBxylhaVzQboCjzpzcFx7j5LOyAxQDp/FkGzK0KGvv
+ edMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768993177; x=1769597977;
+ d=1e100.net; s=20230601; t=1768993176; x=1769597976;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=zZ6t9XZ5QAwAxAU+JLleQRkqn02gh51WB6UgsTIMHoY=;
- b=SmpTVs/WG8aqak1RSvjX31bxykpuvlDGIUQCpPEcWVmVF9dHyP00BuxbWt48MgARxF
- mIL3yK8vJuaffY2ps9zsyqKk6qD9RcfrAULjVr4J2V1MDHhfyIukTxBg6is8Yd2HCHHb
- cFZcR5nGWHfaON8VSacol4O/nBwfwxsyKFxunWa+D5kLgLm1cktetMUhDSpZZvXkhQqw
- GHphPDHR2rkk2zfrHXWbOHqvVdDV1QSDQ0Y0/ea1rcfIJhVkonBrEV3MJJHsj9bs5pfO
- wom8whCkbdiUKHS+u25dDs7lzP/6VbSvLcWEg7Wke05AjPoAKJ1Lx411yp0uD7K5wkoV
- 4x3Q==
-X-Gm-Message-State: AOJu0Yz2asCRv1WSVk9Py6CrnZ5+3DGXFtXbVC3o4u16imLQcEKR2LVv
- X7jQUclwQ6z4Rux9qrTMxqL24sXQ8txN3rsDIaHfUAYjU6JlhmaaIULHNK7xOa7A6R4=
-X-Gm-Gg: AZuq6aLcXG/udkkZu46aIFYM6O/Wx/fl4b7mvR2mvS4hGXh2hAe16NLlXQmAxzkvEeK
- WTQdEpWGpACZ7Pni9qogCaneePNyEaUr3SXYigKqxOgRuNA0QbzohMGQv/1J0NZEVMTZWFbcsd9
- pUeuZh44MzushcONl+m4Rr+SKZMoCHp+XvQ7ifgQhJK4HIDjKT8muMkPldxdsl4g7jgIJNyO3az
- BE05Y48np4Dfii6beoax5l7KHoePsroOlsE/qErOyCctZcXpZE1Qx0yQNLtgqwBi/+2FF5CpjYZ
- Ud75TnIO8ePPTpKJtvKo3rI+PSopSN7e1IQclZUj9lo314uOpJrRwAZUgPITN5lY6jpwN1DMEH0
- 5vC3Mip4ziz/D1P3B2QnpO2MwU5qQDXSgv5avYRMW15+J8/cVlgsDpaDDs2AE9ca9pQao+9v6dP
- huFe9t1s/kl6RQ
-X-Received: by 2002:a05:600c:8b75:b0:477:b734:8c22 with SMTP id
- 5b1f17b1804b1-4803e79b7famr76971705e9.8.1768993176662; 
+ bh=pn0EjWaNv7S6kMlVE1xbMWo8X7UOesxQvgr8dCGqmNM=;
+ b=sFgLlZIW6R2rxBFSs0KzBMLGf8FZkI2hYkLHLNAd7TlvlQIV/+tOAWTtsq+Cu93iOo
+ Nmn/TztiU20v+50XU+kXRUJ1IisFR0U43wD91YA2aMDwDq1tvpoLldJgSWhVuNk9sHRw
+ auGm3NFaCiVLJ3VNwaLss7rWiEXgQxxyflEItcZ6apqBCZ1Fl/K5c/f0sHxDk+BG4mcg
+ nkdud2fcb0m6eTg+lpuZsYEUlGxAHWrj/gQKmK7a1Px4QsD+SMRb3OJbv544CJzDpBy+
+ vXeMeNJiBeye8DRTR3VG0/SaSIbGRl/lMJAG3eFw1OWDVr6yalo8sNA6xLUHBx/DesK7
+ JHzA==
+X-Gm-Message-State: AOJu0YymxxToRGEoCRTt+gk+WSiXTl+ruQHqf3vsUM+RYxikihrNhFdJ
+ mC9q+LPn6cozUdeE8XvGzcknncPzm4FJEl9Bm0+OaCzH6aNWIHWlOitV0Y5I0ymLmG8=
+X-Gm-Gg: AZuq6aLzp7g+d60cmtmC93FLQ8rPU+rdTUurjOCMnoNxevgbrmLCGwrZ+gug5X4WsUh
+ 5nCXaIs84klxRREEsx+kKIvsiPIBukY9wRilrwouGfV1MOYbL5gieC+IxUMb7Y3fnsCVEh2LpEE
+ tt7U53zo5wtUAbgrlZeHuWyjsstsLbaAIs+Llb0hkVUFtQzzhcoJCTMsNR88LTPel5H+Met3CQn
+ bJel0HSUgZlSkZCd6m9s52QDaBz5P+s1E+aLUu7FFb4ANV8ICyMP6Dgsuik2B/UUwP4d5cmp+zw
+ Ild4GNlNG6A94v/cZp3FKD9rP6z98K31rgiIrvCGR9sICJsCvlREm+os+WYrxRvHtAseM/LbK9x
+ mBfWifGRjCab3RmoZIOJ8YY+fLDP0rOsw1Pl+78Na2XtDg+BABe56TzrGzBM2A8yL2CWifUsiXn
+ qDCLlAqs+DerEX
+X-Received: by 2002:a05:600c:4fcb:b0:470:fe3c:a3b7 with SMTP id
+ 5b1f17b1804b1-4803e79b805mr71580545e9.5.1768993176128; 
  Wed, 21 Jan 2026 02:59:36 -0800 (PST)
 Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47f428acae8sm359509295e9.4.2026.01.21.02.59.33
+ 5b1f17b1804b1-47f4b267661sm365924795e9.13.2026.01.21.02.59.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Wed, 21 Jan 2026 02:59:33 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id BE65A5FE90;
+ by draig.lan (Postfix) with ESMTP id A46175FE75;
  Wed, 21 Jan 2026 10:59:32 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-stable@nongnu.org
-Subject: [PATCH 4/4] hw/intc: avoid byte swap fiddling in gicv3 its path
-Date: Wed, 21 Jan 2026 10:59:32 +0000
-Message-ID: <20260121105932.135676-5-alex.bennee@linaro.org>
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 3/4] hw/intc: declare GICv3 regions as little endian
+Date: Wed, 21 Jan 2026 10:59:31 +0000
+Message-ID: <20260121105932.135676-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260121105932.135676-1-alex.bennee@linaro.org>
 References: <20260121105932.135676-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,50 +103,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This allows us to keep the MSI data in plain host order all the way
-from the MemoryRegionOps write method to the final KVM_SIGNAL_MSI
-ioctl. This fixes a theoretical bug on big-endian hosts because we
-were using different size byte swaps which would have truncated the data.
+The GIC should always be a little-endian device as big-endian
+behaviour is a function of the current CPU configuration not the
+system as a whole. This should have no functional effect as the GIC
+cannot be instantiated on a BE system but will help the single binary
+efforts.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: qemu-stable@nongnu.org
-
 ---
-v2
-  - split from DEVICE_LITTLE_ENDIAN changes
-  - expanded the commit message
-  - cc stable
----
+ hw/intc/arm_gicv3.c            | 4 ++--
+ hw/intc/arm_gicv3_its.c        | 4 ++--
  hw/intc/arm_gicv3_its_common.c | 2 +-
- hw/intc/arm_gicv3_its_kvm.c    | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
+diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
+index 6059ce926a6..542f81ea49a 100644
+--- a/hw/intc/arm_gicv3.c
++++ b/hw/intc/arm_gicv3.c
+@@ -417,7 +417,7 @@ static const MemoryRegionOps gic_ops[] = {
+     {
+         .read_with_attrs = gicv3_dist_read,
+         .write_with_attrs = gicv3_dist_write,
+-        .endianness = DEVICE_NATIVE_ENDIAN,
++        .endianness = DEVICE_LITTLE_ENDIAN,
+         .valid.min_access_size = 1,
+         .valid.max_access_size = 8,
+         .impl.min_access_size = 1,
+@@ -426,7 +426,7 @@ static const MemoryRegionOps gic_ops[] = {
+     {
+         .read_with_attrs = gicv3_redist_read,
+         .write_with_attrs = gicv3_redist_write,
+-        .endianness = DEVICE_NATIVE_ENDIAN,
++        .endianness = DEVICE_LITTLE_ENDIAN,
+         .valid.min_access_size = 1,
+         .valid.max_access_size = 8,
+         .impl.min_access_size = 1,
+diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
+index cce3486d74c..b639c03b67c 100644
+--- a/hw/intc/arm_gicv3_its.c
++++ b/hw/intc/arm_gicv3_its.c
+@@ -1906,7 +1906,7 @@ static const MemoryRegionOps gicv3_its_control_ops = {
+     .valid.max_access_size = 8,
+     .impl.min_access_size = 4,
+     .impl.max_access_size = 8,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static const MemoryRegionOps gicv3_its_translation_ops = {
+@@ -1916,7 +1916,7 @@ static const MemoryRegionOps gicv3_its_translation_ops = {
+     .valid.max_access_size = 4,
+     .impl.min_access_size = 2,
+     .impl.max_access_size = 4,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static void gicv3_arm_its_realize(DeviceState *dev, Error **errp)
 diff --git a/hw/intc/arm_gicv3_its_common.c b/hw/intc/arm_gicv3_its_common.c
-index 9fc51ad1e0b..60a5abd8d3e 100644
+index e946e3fb87b..9fc51ad1e0b 100644
 --- a/hw/intc/arm_gicv3_its_common.c
 +++ b/hw/intc/arm_gicv3_its_common.c
-@@ -81,7 +81,7 @@ static MemTxResult gicv3_its_trans_write(void *opaque, hwaddr offset,
-     if (offset == 0x0040 && ((size == 2) || (size == 4))) {
-         GICv3ITSState *s = ARM_GICV3_ITS_COMMON(opaque);
-         GICv3ITSCommonClass *c = ARM_GICV3_ITS_COMMON_GET_CLASS(s);
--        int ret = c->send_msi(s, le64_to_cpu(value), attrs.requester_id);
-+        int ret = c->send_msi(s, value, attrs.requester_id);
+@@ -97,7 +97,7 @@ static MemTxResult gicv3_its_trans_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps gicv3_its_trans_ops = {
+     .read_with_attrs = gicv3_its_trans_read,
+     .write_with_attrs = gicv3_its_trans_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
  
-         if (ret <= 0) {
-             qemu_log_mask(LOG_GUEST_ERROR,
-diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
-index ae12d41eee1..a8d6d4fb540 100644
---- a/hw/intc/arm_gicv3_its_kvm.c
-+++ b/hw/intc/arm_gicv3_its_kvm.c
-@@ -58,7 +58,7 @@ static int kvm_its_send_msi(GICv3ITSState *s, uint32_t value, uint16_t devid)
- 
-     msi.address_lo = extract64(s->gits_translater_gpa, 0, 32);
-     msi.address_hi = extract64(s->gits_translater_gpa, 32, 32);
--    msi.data = le32_to_cpu(value);
-+    msi.data = value;
-     msi.flags = KVM_MSI_VALID_DEVID;
-     msi.devid = devid;
-     memset(msi.pad, 0, sizeof(msi.pad));
+ void gicv3_its_init_mmio(GICv3ITSState *s, const MemoryRegionOps *ops,
 -- 
 2.47.3
 

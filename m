@@ -4,118 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 638A5C4451C
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 11:34:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3679C4451C
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 11:35:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viWTU-0004Fa-4O; Wed, 21 Jan 2026 06:34:12 -0500
+	id 1viWUo-0005oe-DG; Wed, 21 Jan 2026 06:35:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1viWTS-0004Ea-Hb
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 06:34:10 -0500
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+ id 1viWUa-0005jx-AV
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 06:35:20 -0500
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1viWTQ-00019h-Qd
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 06:34:10 -0500
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-79273a294edso64451537b3.3
- for <qemu-arm@nongnu.org>; Wed, 21 Jan 2026 03:34:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1768995247; cv=none;
+ id 1viWUV-0001ay-4U
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 06:35:16 -0500
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-78fc4425b6bso60605817b3.1
+ for <qemu-arm@nongnu.org>; Wed, 21 Jan 2026 03:35:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1768995314; cv=none;
  d=google.com; s=arc-20240605;
- b=FQ7dVGGEcS+goqwT//3k/xI+kRMBt8Js5bUydHRY3+9C0c90l374dRTWurR4pVF8WS
- gpGjkwSVsu/4p2phB6ALFiUoKe/7iZ0jMvoLS28odDE/30NR8YbcJp3L2PqIleipNgUG
- 0VaNf50AynLF6svOW5CRyStiQ5xGkkThiBTYSUn/3eHkckNWh9FPnAiTP0syEeI88aOC
- WXGhr1G2kFZ66QuwawbOnVN19avfcFfOLgM5ZouYgSqcAYRc3rxIzZw1KAtPeuk8HCdq
- 5pIdi6QW4KEAdh0sUB37GQ7B/jpOzTEkSM1YKHwNfn4L1ITjIW37vK2vl2JReTmrpOQl
- Jp2Q==
+ b=Q94mUJrO63R2H7dOJy3jJ7g0M9FoghW3cg4FlXHeGT/Bevde0iPsskYZAR4205II7S
+ 7/u9lprxiCGPanyQTa5VjEbJCvkPNUHtc0vFDTjLJkfy5zLnEkveqyVLnow9DZAySVx2
+ TG10HHfPUMLlpsn4lfa3u/9M1Ws21qO60gX7TZupAuzBgmiYgTR/ZUeZFID6XF5G+gVd
+ zSSq0PFO4YN3lJZvk5biycpMr5zDadN7EVW1fORsn4VyWLziFvYvu07BI448AdLhQbTJ
+ 1qM3gA0341h75UxG6TWm0F6F9FleBV2pHjpku/A3Edy2u6PGPE9xyZdw8Ekmp/13B0tQ
+ rvKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=mLuZJvGCivU4rESBYg6drY90vTgnZPRoAgmHJHo2J6E=;
- fh=76c1IVmVyR1fEjmfC2fZ3JGMXuTBieWQ0lnF5F7IudI=;
- b=HQ5B54Y1K8iR2zF/5A13B25Ai8qFTx5MmVdsrpGzchwtLFlXoU15rENdnjUDqKUmG5
- iyDwozMrBtvDSl/ELf+5Ao4FkzK9Np2j5xPApzlDl9yAe4m4dbKj5cWM7nR/gfWqaCEo
- 7R/hhvZDzzo+Re+RXPZlK6T1AcN/NaXLkgIOTR0sHgdreUwtF1cnACQs3t86W7YKT1Bo
- kG4QA5s03sarMSfMGBTg3aXP+D52Mtv4FDDUq0wPts5jmaqpi9trIfMeHEYIadopg0Ol
- dQJPsIxvE41/fiTYF26nM2Dqrs+EZr0+NYqbvPad7tzO2RGkaCycfrvaErJtnwnp9pko
- xSAQ==; darn=nongnu.org
+ bh=sOy3FU1FVyZOzKUYawtQthgZ1eqLYED3LxtlLUFq+ww=;
+ fh=0i+GkzPHuHwB9RvMymJnACEZyRVsgbNtu21O3Csajkc=;
+ b=VmQi4rsR0q9gMyIvPQkkyMsOBwKbg5UdiAco7clhLxczp5lRIB0nf66zyZhLRQMarz
+ QtDeNUsUPRxr29lEQEGN+HHFCU3PyNXtNQ6HvufkWHRFRLDeGVMFysSm8T57rH4EZTPU
+ f7NQv1TaHAlyK2cSNl34XBdloJiLT5al9Cc/vhQYEUm1p7b58v3pTZdPsIgQ0UnoOVBj
+ mY+LHcX1oNGIFAUlw3f0YApCcVse+E8+t2o8obHaN9wGU/ZXchZqAG9p+CdMAf0Baduf
+ cg89weYePDNqUjUSRyl2xdNKuPt1JmeSeeEEUbRFJ5OXc0twncXx/qBnG1iQBL3FGv6v
+ 40/w==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768995247; x=1769600047; darn=nongnu.org;
+ d=linaro.org; s=google; t=1768995314; x=1769600114; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mLuZJvGCivU4rESBYg6drY90vTgnZPRoAgmHJHo2J6E=;
- b=QhRT7jDXGLC+0eWangDWv4zeu6sZBiVIJwt05Vu5XhGyAWdlZadUvIawQrkpReUeLT
- 5Uri7y+6RScxyN/oHmt5x5BmFzRyL6DHSo+3gAX5GTm4oDCZdyZMJgWx78BU//fOFsNI
- z4exmThIQdq6q8E9+9LNXK1XRnjDTVPsZZADI5AQoldqVbnes/VsFNlWC629wD4BYPmu
- ZF6zStLF8lUueTsPFT7a8ATv+AZCCUI+5GrEdKuXSYz43l1vK1pDelgJtL5oAZy+w1Ld
- Fi0/RT0l3+M+e3tYIpQkWhzccarYQLpVZj0f7X69FOaGQhkALdcgv35a7ucE28CA902e
- dGIA==
+ bh=sOy3FU1FVyZOzKUYawtQthgZ1eqLYED3LxtlLUFq+ww=;
+ b=xD+kV0AtYErz55avvTKl8krwMdAuEIh4upm4oyQB2wNJ+cervtIfG8tnEj2q+Z6yxK
+ PcLSA87M4PsJgA4oX5jaO8qz38I5DjzBZGWn5YElytq3xzIZxf8b4LF8Yut/8xnfNOEZ
+ EOfvCnt/QKSw5aPSvCq/jDLgIm6QoadkaPfmvVi86KNk1Q62AVr0Ui5DVpSDVLxAImfV
+ RNGpw1NdMWzAnfEe/Z9yJ97xD//G8pqs715Lszz0Maq9DyrnfDg4kyCPb/qC+wsdQw1e
+ VVnlEuuIFwJev3XlkgUnk/PlD52MLrZWPT+fsx891GO7pGHjx0iYdxxWtkdRUYNehjlN
+ zOyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768995247; x=1769600047;
+ d=1e100.net; s=20230601; t=1768995314; x=1769600114;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=mLuZJvGCivU4rESBYg6drY90vTgnZPRoAgmHJHo2J6E=;
- b=A1ms447SoFUa7s7Kj3LBrC785yOl+9zw4NXKcEEOzzhqPRlZbmNcSJRVEw9VRRSH0X
- 1ovfVUmv3434jsKv7OdAuKy8kKFmARS8PqhzCsbBji69vN6OLSMUUTazZQhjnUBXxrlQ
- aDLQzQtACh7W1on7abZhEQkBIj1iCbHQju+5oOQv/iJMgPYN9kxH4yvz55ob2rgA/7xd
- jivmLDQEPPQ/5OvnfxRtT5T04UTlyeY0znjhhEicKVnbjb5L2tD1fVVtv/NBw13M0UMY
- iQUyfP4p0qABVkd/uNOcVMlybvrVKg/BFbj2RHblEVzwftmi5Oy9zeZ07z+EygjUrWrT
- kRIA==
+ bh=sOy3FU1FVyZOzKUYawtQthgZ1eqLYED3LxtlLUFq+ww=;
+ b=ilUOjEeT0y+WjH5MLba6IXmcn4/wxxixh5LxIrwsNtmaN0LK/usRCSjkfeL6AUXjZS
+ KS1aWh79a7L1XstPFV6l7Lg2zn3R65PH3GFt6cC9sxsxdVY5kEvBQZKsB0qXqVkF7nhA
+ 2KvJ6fud1/DNiZeFq3e/zGmhZMxAkmSORZ/q24bEJeGj0knWK2o6W5YrrFBsvzJ6By6k
+ CEQihFNGsw6KGP3atnba25nC2giCUGdeeDc7Bkeww0zHuKw9zMVMsSpCuhArnf0Cs+2L
+ 7cNDbd8yt3+a/8BdRkV4xODOHGv77f+LW1dTEGIVnRQFKjNDtttJJxFWtYiQBAZ9wfTE
+ 2K/Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWiZIO68QKwWRkMRfAT1qoqm582R76Vn6CiFMsz2nISM5yPowHVm3Wa2tPUyLB/ZV5NW49pRx+mvQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyL+YJ+9ncTffdigTBB0eF7Z9/GksuhxfMUKDBZhcglKjP0hVye
- i0z+5g9UvZtOHifsDO0yXd5cV0UofhMrGidimEo1SkCp/UAz1o5YQMgyXLxTbtiefkVfi7bcqci
- DtsEOgUxC0mjXIFkb+g/HpX8mgspgLflnNW+Yesm4uw==
-X-Gm-Gg: AZuq6aK9CTjKhAVUv8D+qxdZ2Pq/7eGN8xjn0y8hK/VAnGCX4dkbTmFx7ZR69noRGAK
- W+2VYXd7/lBfYouerFNslwjlbmxplG6oQmuvLNr85pzfSX63P9Fn8VURTfLis8fPFz/yVOdKwOl
- nqSsY8e7qJdb+Yw6wuiBa8Pq9A5dabgUp8TSWu7BqGhFP7qIZ+OmR2neUq9kQ+qGNfJEvv2ka4p
- sZ5WmrcZqNp8hEpA8EiwE9dAAaCiGRNcY5QcKmgq1WpGKHsgFSGX395J2IOOWgHthJx9A==
-X-Received: by 2002:a05:690c:310:b0:784:952f:922b with SMTP id
- 00721157ae682-7940a376c27mr43328177b3.63.1768995246835; Wed, 21 Jan 2026
- 03:34:06 -0800 (PST)
+ AJvYcCWQqWd5cTXNosUBP2W/1LSekHhORw/wjJ5glkI18jjCkSDIIW+dR+gl74QBJtiELV+qwkGT4etw/w==@nongnu.org
+X-Gm-Message-State: AOJu0YzVPAQM8Av5Om7yCGCSqhOMUSn6YHUqVnuoOohwpajyQrTHZs04
+ 2E4BoRIdeQ27SdKXcMY/teieWO1rSUKBaatkLtwiMFDoJasuBSS12oWwpCLW46R1JqqVxkqcwlV
+ fZJXL7PQvbu2ASKhEmbi7JfJ4DP1roNlLze+xw3OeIg==
+X-Gm-Gg: AZuq6aK8t5BHoNY6Xu0/khiGhdq3C6ALr/WcTxc+ym3K0nzpxUba9bYLVJl8kSK/Pi/
+ tumSkqw3/IRPQaaK9yRIpAZFE2lKRMxB4g1thGVrio35psSSgDvi0HvibIxCxelld/y7jY+5qQk
+ Ovlu+O8iFrXlycvj9BOiPkBR6SD2mQVfgpPQDt+2RzvSrRNfqt2vkgnggWVgDzUQBzBV58wuwwV
+ IfrAwfhX3UJZKEYsV5BTSwD/31URw85wwpsjJt4ICwjfnSAuaO9QGSa174qPsDlVqMqYw==
+X-Received: by 2002:a05:690c:c4e8:b0:78c:28b7:88e4 with SMTP id
+ 00721157ae682-7940a4b09c7mr38618837b3.69.1768995313694; Wed, 21 Jan 2026
+ 03:35:13 -0800 (PST)
 MIME-Version: 1.0
-References: <20260116135235.38092-1-mohamed@unpredictable.fr>
- <20260116135235.38092-5-mohamed@unpredictable.fr>
- <CAFEAcA-3P6i_w3b7SaFTn4Zmwnot5vpDs89y+zpjcJ=-mEnP5w@mail.gmail.com>
- <8158CEFE-8EA2-40A4-970E-01B30BACC019@unpredictable.fr>
- <CAFEAcA9JC1HRboZ=722dsT7a4nDQNF_ECjLK+z84T5MJisfppg@mail.gmail.com>
- <2FD2C3C6-8FBA-4833-B890-5E81637BE7EE@unpredictable.fr>
-In-Reply-To: <2FD2C3C6-8FBA-4833-B890-5E81637BE7EE@unpredictable.fr>
+References: <20260121105932.135676-1-alex.bennee@linaro.org>
+ <20260121105932.135676-2-alex.bennee@linaro.org>
+In-Reply-To: <20260121105932.135676-2-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 21 Jan 2026 11:33:55 +0000
-X-Gm-Features: AZwV_QgqMRQrWXZHWGXER70p5bRiQr55Gyh70nqhj9c4jX-SyrNj2yBjFIEPr2k
-Message-ID: <CAFEAcA-MAsQpaaUx0dJHRHjUJ6bEWwnf58VZN965Npmi7_kHXQ@mail.gmail.com>
-Subject: Re: [PATCH v16 04/26] hw/arm: virt: add GICv2m for the case when ITS
- is not available
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Pedro Barbuda <pbarbuda@microsoft.com>, Eduardo Habkost <eduardo@habkost.net>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Date: Wed, 21 Jan 2026 11:35:01 +0000
+X-Gm-Features: AZwV_Qjqb5_4XxhvuTEpTBmwvOV-e9CscKoPP3byuMJGy98n3s8Vm9O7TJ6jtto
+Message-ID: <CAFEAcA_NAGoWi2Vra6nVEwQ-+FnrD++eoZQ=QnqVp=nxj3w_uQ@mail.gmail.com>
+Subject: Re: [PATCH 1/4] hw/intc: declare NVIC regions as little endian
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
-X-Spam_score_int: -4
-X-Spam_score: -0.5
-X-Spam_bar: /
-X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_SBL=1.623 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,112 +117,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 21 Jan 2026 at 10:19, Mohamed Mediouni <mohamed@unpredictable.fr> w=
-rote:
->
->
->
-> > On 21. Jan 2026, at 10:27, Peter Maydell <peter.maydell@linaro.org> wro=
+On Wed, 21 Jan 2026 at 10:59, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
 te:
-> >
-> > On Tue, 20 Jan 2026 at 18:44, Mohamed Mediouni <mohamed@unpredictable.f=
-r> wrote:
-> >>
-> >>
-> >>
-> >>> On 20. Jan 2026, at 19:02, Peter Maydell <peter.maydell@linaro.org> w=
-rote:
-> >>
-> >>
-> >>> The MSI controller selection logic is already pretty confusing,
-> >>> and this is making it more complicated. I don't think we should
-> >>> need this machine back compatibility, because currently there
-> >>> is no setup where you can have a GICv3 that doesn't also have
-> >>> either an ITS or no MSI controller.
-> >>>
-> >> Hello,
-> >>
-> >> This was to replicate the =E2=80=9Cno_tcg_its=E2=80=9D where this was =
-done when introducing TCG.
-> >> And for the purpose of VM save/restore on HVF with the older machine t=
-ype continuing to work as expected.
-> >
-> > no_tcg_its is there for backwards compatibility: on older
-> > QEMU versions before we added the TCG ITS, if you said
-> > "-machine virt,gic-version=3D3 -accel tcg" you didn't get an
-> > ITS; we wanted to change the default in new machine versions,
-> > so we needed the back compat switch.
-> >
-> > What is the command line that works today and where we
-> > want to go from "default to GICv3 without ITS or v2m"
-> > to "default to GICv3 with v2m" ? I might have missed it
-> > but back last year when I was looking at the current
-> > configs I didn't think we had one.
-> Hello,
 >
-> None, was thinking about what its=3Doff should mean but perhaps
-> the right behaviour to do there is to have it mean no MSI-X controller.
+> The NVIC should always be a little-endian device as big-endian
+> behaviour is a function of the current CPU configuration not the
+> system as a whole. Indeed the Armv8-M architecture reference manual
+> declares:
+>
+>   All accesses to the Private Peripheral Bus (PPB) are always
+>   little-endian, which means that the PE assumes a little-endian
+>   arrangement of the PPB registers.
+>
+> This should have no functional effect as the NVIC cannot be
+> instantiated on a BE system but will help the single binary efforts.
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> ---
+>  hw/intc/armv7m_nvic.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Yeah, this is a bit tricky. I think that at the moment
-we allow "gic-version=3D2,its=3Doff" and you still get a gicv2m.
-So we need to retain that behaviour (though I doubt anybody
-is deliberately using it), which I think means we do need
-the its option to be an on/off/auto one. On the other
-hand that means that the finalize_msi_controller() logic
-(see https://patchew.org/QEMU/20260120180339.1416328-1-peter.maydell@linaro=
-.org/
-that I posted yesterday) can look relatively neat:
-
-   if (vms->its !=3D auto) {
-       /*
-        * User set the legacy "its" option, which traditionally
-        * meant "ignored if GICv2 (always provide GICv2m), enable
-        * or disable ITS for GICv3".
-        * Translate into its "msi" option equivalent:
-        *  - "its=3Dno" means "msi=3Dgicv2m" for a GICv2, "msi=3Dnone"
-        *    for GICv3 and up.
-        *  - "its=3Dyes" means "msi=3Dauto"
-        */
-       if (vms->msi_controller !=3D VIRT_MSI_CTRL_NOSEL) {
-           error("msi and its options cannot be used together");
-           exit(1);
-       }
-       if (vms->its =3D=3D off) {
-           if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
-               vms->msi_controller =3D VIRT_MSI_CTRL_GICV2M;
-           } else {
-               vms->msi_controller =3D VIRT_MSI_CTRL_NONE;
-           }
-       }
-       /* for vms->its =3D=3D on we leave msi_controller at NOSEL */
-   }
-
-   if (vms->msi_controller !=3D VIRT_MSI_CTRL_NOSEL) {
-       /*
-         * User specified an "msi" option: check what they
-         * specified, and use it.
-         */
-        if (vms->msi_controller =3D=3D VIRT_MSI_CTRL_ITS &&
-            vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
-            error_report("A GICv2 cannot use an ITS");
-            exit(1);
-        }
-        /* other error checks here as needed */
-        return;
-    }
-
-    /* logic to pick the best msi_controller goes here */
-
-This puts all the option handling code in one function that
-has three parts:
- * deal with the legacy its=3D option by converting it to
-   the equivalent msi=3D option
- * error check any explicitly set msi option
- * pick an msi for the user if they didn't specify
-
-Then the rest of the code in virt.c doesn't need to care
-about the option flags or back-compat stuff directly, it
-can look at just the final resulting msi_controller setting.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

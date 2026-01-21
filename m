@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA982C44536
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 18:04:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1162BC44508
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 18:04:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vicVa-0004AP-QY; Wed, 21 Jan 2026 13:00:49 -0500
+	id 1vicUI-0001sd-Ju; Wed, 21 Jan 2026 12:59:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vicTv-0000ao-Oj; Wed, 21 Jan 2026 12:59:07 -0500
+ id 1vicTs-0000ZR-H7; Wed, 21 Jan 2026 12:59:03 -0500
 Received: from mail-centralusazlp170100005.outbound.protection.outlook.com
  ([2a01:111:f403:c111::5] helo=DM1PR04CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vicTs-0002Fs-JO; Wed, 21 Jan 2026 12:59:03 -0500
+ id 1vicTe-0002Eo-Hv; Wed, 21 Jan 2026 12:58:51 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=I1/TGdWNXJ7FPXxIhifFtOq2jg8VeIzMIplPV6u20YDgUj5WtGhc0LH5/WW8VSMZRYubKOd/j8r1LX9IBTqPtgp/kmcIevJ2wGczwlFchDXeZXh8ahGOX7zPkki7jJX0u1XCrarfK7xJg+bIInu4V2LPMLgFtXY2aOAGziomLwDX/1Tw0MQqwFBCDwSnVay6WQhmeo2VnssZYl9HjmOKHshlRKJOfet2WXRLxfjeE2eCYju3Ymf/bbH3rmaoNJpHhoIE7UuZKPf6m1cC0x0yCLdi11aIDVoAcXUOSd0A/6l4+MAsy8ZqnC1EHQ9gC63xlkq6ibwj4CLu7PEyY2XXLQ==
+ b=uajbbs8lkIG6RsjlZDa09etIIeIk8m0KNPZc9DG4jNcS3brxILu9jt7uJf4MA2NmR41WyE/Aj6TtnlMmSfysEf0LadTwKHDwslxerNDWttlzqiZjfgKFBbyrW+JpIoEFfspvDrBGepIIFiGGsuGmqLtgtMHHVlGIzwBhsziPHhZEFVr/mLxS0mpAVPljJdEkjjxQILMtUTRp6SAHhtXW/0mgMPl/XholI5qTRZVIwX7vhyR3MEBkLstY75uxvx+3KIJkiYobBcClGPgDkl3d/qOpqMI89sLI8IbJbju0uUyTqXnAcAeqbvKwlRPDpKrzqjaFH+OrlW1uZ0FFmBF2yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Ov4tQAUHPzrhFsFrfKxGL6wrulTQ2yGB8yRjycHkvuM=;
- b=yODJHLQqvJatFewQdMyGrD6lY/EkmcwXEls1MRmnOCZwnN6sKWjD+/nsOpvGfOhxD48fPz9swVhDlCqnp1HNrkcOLbF6QHFPLcbRJlQoHpTwbb6rocnAOI6NcYLaRkvER/BCkarM88Ey1n7NieHs4Wo92zgtdWJ3clmz+5T1mbjj6ukNkilVSECn5inuCMqN1AHegVP0YABWVBYnW/V1DBq70U+ZcOCJ5RvbFyDtkn3/yZSUSrbbwEtdDLpTzKnwY33FR8AViYkLsBFOr5YyJJsy8jFlfJ88xtvXt3z3pzAZv0RVFw35jy17ptLXSbn21/YOvxfYVBZAqR6LPvtHtw==
+ bh=zgKRp3DjqksvvHTw48SGxcL4co/PkzPcXD/TGY6+Hi0=;
+ b=iQovIjGu0dOIY5xNyZFo/1ocScc3JQZlefwD46jlIFrC4oUJilmITekmXqJr+qWA9opMy8eDif7lj7yvMk/HH/K30PHQ8lOwVekpa8AwtQZsNnpb/idVFBwLdHCG+IltpQ4x9WPQejDfnspPTpbOUzq1B4sF+rT4IRaCio95cKg4Tzop61ttDRhpI5xe4zX55xMFUq8IvCbUmI8C2I9Vci3ovj5lC5axCwXwvwG8PWQ1sgDv4u9mKIljxiyVguqASY5VD6UYKbQ0a7lz0uZ6uRQ9xqzQf62rXPsCdi6LHJZBvhG9fJV9JVrdoHrhqTzn/qyMic/CeGE4LTC50mutsw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
@@ -33,18 +33,18 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ov4tQAUHPzrhFsFrfKxGL6wrulTQ2yGB8yRjycHkvuM=;
- b=NNomd51BviKmGYSpF7JAbiPvZ2KCHG4OSxP1EYk34Z1l/mHQg0mWWr2kzLTmd0zqBx7z4M51C8AcAf/p+eoOHxUAFYGwW3fe+ri1aJM0dNMBTFRpdnp7fPBPpIXhwzjb39MFr0jl9BGmwDNa8MB9SCXiUe1eKgaBdjTS+BKO71U8K1RRAeKqqyXSOshz4iKa7vgKfA8z4SMd5BnsDm5TcQvrTLjBm81EVmrazzS6Km3B2ctoK5yeubFvUMjbJzePnHBUEePTWCFkpFt8AxBUffOa4ACu/l6UM1NTtgxWb6t/FgJwojmI3J6qBRLXyghdD+cFQXxaYxqCWAcGa1Pkug==
-Received: from BN9PR03CA0287.namprd03.prod.outlook.com (2603:10b6:408:f5::22)
- by MN0PR12MB6001.namprd12.prod.outlook.com (2603:10b6:208:37d::6)
+ bh=zgKRp3DjqksvvHTw48SGxcL4co/PkzPcXD/TGY6+Hi0=;
+ b=mzgNkngH7tjeF4BrLxzttmVT+vK09TLqUhRNM8J5ILjIxgwH+4FZVDc/THR6AyX8O7b+FuJXiBKiFoG9uu7rn2+GjuITXvDKc4askQMRgXffZilfJLdiAQ0HPttWYY4SgTJbEpQX1S/1Va/SpYjCzMtFAuw7KMaNhQg+gp3QEwmnC9QQvYSWrShURfeyqHXY611jdwm9aiRpD3ui4aw+Ty2yqI3BxOUVnKf2RCdJCzUw25f18k91DoJZRRipdZYztvhQAygKVpz+gW4eUMkvq33Fb6O0rBb3tFk8xSYahhewdv3PwST0HjffrIWQkMpiPo62dYup+CINo58SAQ/Pkw==
+Received: from BN0PR02CA0047.namprd02.prod.outlook.com (2603:10b6:408:e5::22)
+ by LV2PR12MB999072.namprd12.prod.outlook.com (2603:10b6:408:354::22)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.9; Wed, 21 Jan
- 2026 17:58:47 +0000
-Received: from BN3PEPF0000B06B.namprd21.prod.outlook.com
- (2603:10b6:408:f5:cafe::39) by BN9PR03CA0287.outlook.office365.com
- (2603:10b6:408:f5::22) with Microsoft SMTP Server (version=TLS1_3,
+ 2026 17:58:40 +0000
+Received: from BN3PEPF0000B06E.namprd21.prod.outlook.com
+ (2603:10b6:408:e5:cafe::a1) by BN0PR02CA0047.outlook.office365.com
+ (2603:10b6:408:e5::22) with Microsoft SMTP Server (version=TLS1_3,
  cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.10 via Frontend Transport; Wed,
- 21 Jan 2026 17:58:47 +0000
+ 21 Jan 2026 17:58:38 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
@@ -53,17 +53,17 @@ Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
  216.228.117.160 as permitted sender) receiver=protection.outlook.com;
  client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
 Received: from mail.nvidia.com (216.228.117.160) by
- BN3PEPF0000B06B.mail.protection.outlook.com (10.167.243.70) with Microsoft
+ BN3PEPF0000B06E.mail.protection.outlook.com (10.167.243.73) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9564.0 via Frontend Transport; Wed, 21 Jan 2026 17:58:46 +0000
+ 15.20.9564.0 via Frontend Transport; Wed, 21 Jan 2026 17:58:40 +0000
 Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
  (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Wed, 21 Jan
- 2026 09:58:25 -0800
+ 2026 09:58:17 -0800
 Received: from NV-2Y5XW94.nvidia.com (10.126.231.35) by rnnvmail201.nvidia.com
  (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Wed, 21 Jan
- 2026 09:58:20 -0800
+ 2026 09:58:13 -0800
 From: Shameer Kolothum <skolothumtho@nvidia.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
@@ -73,10 +73,10 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
  <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>,
  <kjaju@nvidia.com>, <skolothumtho@nvidia.com>
-Subject: [PATCH v8 37/37] hw/arm/smmuv3-accel: Make SubstreamID support
- configurable
-Date: Wed, 21 Jan 2026 17:52:42 +0000
-Message-ID: <20260121175248.87649-38-skolothumtho@nvidia.com>
+Subject: [PATCH v8 36/37] hw/vfio/pci: Synthesize PASID capability for
+ vfio-pci devices
+Date: Wed, 21 Jan 2026 17:52:41 +0000
+Message-ID: <20260121175248.87649-37-skolothumtho@nvidia.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260121175248.87649-1-skolothumtho@nvidia.com>
 References: <20260121175248.87649-1-skolothumtho@nvidia.com>
@@ -88,55 +88,55 @@ X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
  rnnvmail201.nvidia.com (10.129.68.8)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN3PEPF0000B06B:EE_|MN0PR12MB6001:EE_
-X-MS-Office365-Filtering-Correlation-Id: fca8c885-176a-40c8-8ffe-08de5916b984
+X-MS-TrafficTypeDiagnostic: BN3PEPF0000B06E:EE_|LV2PR12MB999072:EE_
+X-MS-Office365-Filtering-Correlation-Id: ab4999e2-1e87-4546-ca4b-08de5916b5dc
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|376014|36860700013|7416014|82310400026; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?HGhF6oCTw4zyVPFjC1zEzrJnFkxVidwQEm1jfAtK5P1QiN+sLCY3LFtlZ3A4?=
- =?us-ascii?Q?Hisq+2ug+BwJt6WIyBXrHpKTO4HWJVc3Ae3ieue6QX8PqofinFkN6m+wkwcO?=
- =?us-ascii?Q?owHhtO+IlHqhtDgRz8X22biWvni2DYNX/CslbeC3oPJAiIKf/sQXtbXZ54km?=
- =?us-ascii?Q?HEoVxqmEN2zOIxRpjTqUbQa9eJB5+M7LqExiWkb51sOl0E0yvzAWPn+9AkTu?=
- =?us-ascii?Q?lB/feUr5wP0dvLCEj6O4vXOcPxVJiOqGGT49dFY/guSmzJ9l3wsVcTbhApWU?=
- =?us-ascii?Q?zpHBuQ4PPqWrS4MIfdUEi2OOEuY/Upk+dDtn46Tfuvq9WFDAlwpOB/02OBw4?=
- =?us-ascii?Q?ODKnpGfpw3b3dluxvQluX33TBNsoIBDKuxdPGvbuD/8AxcCc1HA5lZyIhfyb?=
- =?us-ascii?Q?1Ns+bRi4MQm8Uyesma4scvi306al8aDA4Z9GzrtvGlalJoxQW8UHL5+bN0jP?=
- =?us-ascii?Q?XgHth6MNS/aRjQCy9u5pxdd6NQTMY9GT1t1Ma1MYEENauw3NPcaln7Q0Qgmr?=
- =?us-ascii?Q?2NO3ENRtQx0KuaW3YzD+5Ol9Ljte5VlXnnTs8U+TUP5KQoUn0aK1Tev7gJDC?=
- =?us-ascii?Q?B6d3h8LRJ1R9U2djDKCw6MDSioqbUTuFiqeFa9EtSbWosd1yxBagXDIXu5ta?=
- =?us-ascii?Q?MLmfgJmYYQtPCr2Wy4IyNNgHQPCrkklwJX26jJWf3s/Xr0kNSnumShZO1NqU?=
- =?us-ascii?Q?75WDXeFk4vIF88EDrJDb+2vX7HtbOIXXSag6dHbMx+rDvIpBDPxCEQTpuYOJ?=
- =?us-ascii?Q?eSUi1JnVN0A2n3jhGwpb4IKNbNfwzJstR6EWUqbGRa/krcJoPn/PZLjVEpNx?=
- =?us-ascii?Q?WuQLV4AgPdgzzPtMwKbNQD+sThElpXq4x++7EYOwLsDNHghKkQBT0SOnX4JS?=
- =?us-ascii?Q?umMBRBdlnN8+hkNS4tX+of1oxEtZldBji0I796x4vV2DeSGQDDI3Q+6AeIdZ?=
- =?us-ascii?Q?cN++y8aakJwMO/84j4LrBmQjYgsf0DMe52D714WY/Chzjk8zdiRh2GDxVPX1?=
- =?us-ascii?Q?igCS6877/TYFmxZoN28iNGICkv6dbBAgC8qbG49i4LJVCW3G78djOhCS3Ode?=
- =?us-ascii?Q?ieH4PQpKhHzFmQHpaU9qdWBmQDLmDhoZ+SWvW/xar3grUMdJXpIzAWoOaq5n?=
- =?us-ascii?Q?s9L1TIzztGoxO4ehXoTLTsv+RXjualO+0u+qenmztcDAsKhSt8RFprMtlA9B?=
- =?us-ascii?Q?rtLVxt5ISB+dPfFMyiPgOHQjKIepp1tY2DpkcJM7boJTZOjc4KegenreED4Z?=
- =?us-ascii?Q?DIz8bmN/qn8i209T/9+FYpCN3bpt8LbpVvtzz/d6ovOeq5lpMVte4/byW9SL?=
- =?us-ascii?Q?xlAl6RO1R0XtURzM33vz3jI4WkgrhWWd5LHGZN3qIJnxOLKwMmvKfW9FW7bx?=
- =?us-ascii?Q?I0qK3OeYNL0dsTzaMP/9V5UGd0pjiRIcMbXRU951BA6teVTyj7WHBt8w5sEp?=
- =?us-ascii?Q?ttVRT23sVt4MPyosZH4jf7GLEBpt4DxuI5for5fZViNRfZOB+2KKShkM5ovI?=
- =?us-ascii?Q?1eoTYWL8NTzNYzCAaqtoIOe7LgLXUxwGcahOu1vbrOya8P3TeqqxlmDfySHT?=
- =?us-ascii?Q?p07ka2X7HSy3qmqzALyTbiZRKjXlnNKfmn/QVqtSlJky9IptJR5XLbdE9RTK?=
- =?us-ascii?Q?+NGTy1iXoP8CG6O1blzCg/lFfJAgZltLeCdJy82D9rXLpmlTD3ny2d085fIH?=
- =?us-ascii?Q?awvcjA=3D=3D?=
+ ARA:13230040|376014|7416014|82310400026|36860700013|1800799024; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?/v7nDkJkCg4WHH4f5/RiXG6S8CMUIVqB7ndtG+tlBhd8G5Ppfjl9/28i4nGS?=
+ =?us-ascii?Q?JjDDCxaGkrcumL1vH/j3P0QbWzZejiw2rZ1ps53rHEb4XSTlHh7Pd+PknRM7?=
+ =?us-ascii?Q?c4Sy9uZmJ4K7rtsbcZ2FGdUZnio3fKt5h8UM7qdIHFY6XlYd/AHG+G+Y7ZIW?=
+ =?us-ascii?Q?7riwH0rJqrTy3yJaDlhAv6Y1vtVSOuOml1OWQAQDBGzFm0T+W57Tn16uaXkJ?=
+ =?us-ascii?Q?4kNtbLsyjSQFqrJyxaDmxiDYusQkzeBnfSJRWl/3S+8S3E427v60jjLqUiOQ?=
+ =?us-ascii?Q?YUFluynEPsUJOu5RzKnniyiHrDP5A5Nynh+WrS2x4jUSSJvQqIdCO5aZ+rAI?=
+ =?us-ascii?Q?FOwIAMyy1S40KIZ/ND9akKVkYiIKcW3J6BoFxmE+ZK2zo6M80z7Z7hUhgGHQ?=
+ =?us-ascii?Q?l5kneSc0SZtFiCGd+30aDVn7z0RKFN1O6FCMbDH4pmPTgz3KvQVo/pa8+yIy?=
+ =?us-ascii?Q?B4Hsz/uuY0ZG88Hqzv3XYFBMs6+TR1IQT3y1yW0Q+Fpz91eLA71tMwQ2RELX?=
+ =?us-ascii?Q?mF9DDGk7NxeAiV2WJ9baI1tlftqXR39K/iy97j5lDcWP9NScnEef02u29jHe?=
+ =?us-ascii?Q?vfEoj/OhrgPGMFO0zlfmJVuo0qKtveN+fNglwsS5MgJm8hciGi7iKpa1X0Sf?=
+ =?us-ascii?Q?tFkAdiKfdz7Vp4y6nhg8jR3hLa4OFw704VOhyfmaAEYssQvPHoWEPhcHgk5T?=
+ =?us-ascii?Q?M/VK+CPWemLEc7IL4gba7EbxlHWxaMj0pjlMTX2CsYkTgujia38Joci+GniA?=
+ =?us-ascii?Q?+cZNGlzgKq0UsR6PzvtAfJj9/gVMeOfIp2sb9BHtWPfHPZ/kQYriSLf3R+Io?=
+ =?us-ascii?Q?bPbRkjmVqmspM1MfCugkwpg6NWlOj4vHovFiYvwktq7wt8Tsqdltf27ZVxI5?=
+ =?us-ascii?Q?uh+FCgl8yZ7OZTz5hMvGrP5Q7MXg3KUoU+ozca6Pj4iiNtvoIQeFJG3/VMpY?=
+ =?us-ascii?Q?Q3++x315TCZOiBEBm3OLzfJexlc6U4W4hFUjTUafr+0K+W5UVz3FNytNHozE?=
+ =?us-ascii?Q?2EWoQvED33bpOYUK8mu01xkcC8OjQ21UV0/LKOPwPt8/dSiUTwk3x/+04evA?=
+ =?us-ascii?Q?IFSdR9BJaPLHveEt/es0B0Mo9yMVxNAJnRL4zOhF+KqGG2953kvy96F1csuq?=
+ =?us-ascii?Q?OwxnFD42MkpackKsh8i1IoISjX+LCpZ5uiTg9yaRFoFkSx4JMh75AsrUWq8t?=
+ =?us-ascii?Q?KK+E5Y7B9SKelSVWtDxmVfIO0D3mBHABFbGM1WSZ/Z+4r7m1XVIAgjuJR+J3?=
+ =?us-ascii?Q?josBoPzk0cVgCFZCs++Kn7NSF558Glrvf2pTRm+/UocnemeDwhjqI4WTnKur?=
+ =?us-ascii?Q?K25rW5t5sexAzv0tKlOxJb4286Nnx5xu3KEMCfhAfat0qzC4T2IW8+01oGv2?=
+ =?us-ascii?Q?+c76fJZHuoCZI3yufwXyBQY50WBElaygEbVmV1h6Q0F2IsKKZz203gXhxCHd?=
+ =?us-ascii?Q?lfER9ZNh8hHfasHjJh9Qbc5Kdx3Mpf9Z+T5oArDf3dABA/jl3NPbGwKzlkIm?=
+ =?us-ascii?Q?vag8qkRRCtSrXIHc/nLNPcz562SGzyx7ork6p+gfC+5ENft//whHtrrzDGcE?=
+ =?us-ascii?Q?GufgD5gfZA3GbBN8WWhELNYw4s7bPcqnpiN1Kglqast20zGteNRvCG0zajVd?=
+ =?us-ascii?Q?Vb7v7ABS0S9W1F5msqsV34aVqKaX3zshbad6BcvA8NDWCxG267YO4KwanhN4?=
+ =?us-ascii?Q?SDWRLA=3D=3D?=
 X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(36860700013)(7416014)(82310400026); DIR:OUT;
+ SFS:(13230040)(376014)(7416014)(82310400026)(36860700013)(1800799024); DIR:OUT;
  SFP:1101; 
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jan 2026 17:58:46.8052 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: fca8c885-176a-40c8-8ffe-08de5916b984
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jan 2026 17:58:40.6725 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ab4999e2-1e87-4546-ca4b-08de5916b5dc
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN3PEPF0000B06B.namprd21.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: BN3PEPF0000B06E.namprd21.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR12MB6001
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR12MB999072
 Received-SPF: permerror client-ip=2a01:111:f403:c111::5;
  envelope-from=skolothumtho@nvidia.com;
  helo=DM1PR04CU001.outbound.protection.outlook.com
@@ -162,167 +162,189 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-QEMU SMMUv3 currently reports no SubstreamID support, forcing SSID to
-zero. This prevents accelerated use cases such as Shared Virtual
-Addressing (SVA), which require multiple Stage-1 context descriptors
-indexed by SubstreamID.
+Add support for synthesizing a PCIe PASID extended capability for
+vfio-pci devices when PASID is enabled via a vIOMMU and supported by
+the host IOMMU backend.
 
-Add a new "ssidsize" property to explicitly configure the number of bits
-used for SubstreamIDs. A value greater than zero enables SubstreamID
-support and advertises PASID capability to the vIOMMU.
+PASID capability parameters are retrieved via IOMMUFD APIs and the
+capability is inserted into the PCIe extended capability list using
+the insertion helper. A new x-vpasid-cap-offset property allows
+explicit control over the placement; by default the capability is
+placed at the end of the PCIe extended configuration space.
 
-The requested SSIDSIZE is validated against host SMMUv3 capabilities and
-is only supported when accel=on.
+If the kernel does not expose PASID information or insertion fails,
+the device continues without PASID support.
 
 Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
 Tested-by: Eric Auger <eric.auger@redhat.com>
 Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
 Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 ---
- hw/arm/smmuv3-accel.c          | 25 ++++++++++++++++++++++++-
- hw/arm/smmuv3.c                | 22 ++++++++++++++++++++--
- include/hw/arm/smmuv3-common.h |  1 +
- include/hw/arm/smmuv3.h        |  1 +
- 4 files changed, 46 insertions(+), 3 deletions(-)
+ hw/vfio/pci.c           | 75 +++++++++++++++++++++++++++++++++++++++++
+ hw/vfio/pci.h           |  1 +
+ hw/vfio/trace-events    |  1 +
+ include/hw/core/iommu.h |  1 +
+ 4 files changed, 78 insertions(+)
 
-diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-index 342944da23..f5cd4df336 100644
---- a/hw/arm/smmuv3-accel.c
-+++ b/hw/arm/smmuv3-accel.c
-@@ -76,6 +76,16 @@ smmuv3_accel_check_hw_compatible(SMMUv3State *s,
-         return false;
-     }
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index c734472721..36d8fbe872 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -24,6 +24,7 @@
+ #include <sys/ioctl.h>
  
-+    /* Check SSIDSIZE value opted-in is compatible with Host SMMUv3 SSIDSIZE */
-+    if (FIELD_EX32(info->idr[1], IDR1, SSIDSIZE) <
-+                FIELD_EX32(s->idr[1], IDR1, SSIDSIZE)) {
-+        error_setg(errp, "Host SMMUv3 SSIDSIZE not compatible "
-+                   "(host=%u, QEMU=%u)",
-+                   FIELD_EX32(info->idr[1], IDR1, SSIDSIZE),
-+                   FIELD_EX32(s->idr[1], IDR1, SSIDSIZE));
+ #include "hw/core/hw-error.h"
++#include "hw/core/iommu.h"
+ #include "hw/pci/msi.h"
+ #include "hw/pci/msix.h"
+ #include "hw/pci/pci_bridge.h"
+@@ -2498,9 +2499,62 @@ static int vfio_setup_rebar_ecap(VFIOPCIDevice *vdev, uint16_t pos)
+     return 0;
+ }
+ 
++/*
++ * Try to retrieve PASID capability information via IOMMUFD APIs and,
++ * if supported, synthesize a PASID PCIe extended capability for the
++ * VFIO device.
++ *
++ * Use user-specified PASID capability offset if provided, otherwise
++ * place it at the end of the PCIe extended configuration space.
++ */
++static bool vfio_pci_synthesize_pasid_cap(VFIOPCIDevice *vdev, Error **errp)
++{
++    HostIOMMUDevice *hiod = vdev->vbasedev.hiod;
++    HostIOMMUDeviceClass *hiodc;
++    PasidInfo pasid_info;
++    PCIDevice *pdev = PCI_DEVICE(vdev);
++    uint16_t pasid_offset;
++
++    if (!hiod) {
++        return true;
++    }
++
++    hiodc = HOST_IOMMU_DEVICE_GET_CLASS(hiod);
++    if (!hiodc || !hiodc->get_pasid_info ||
++        !hiodc->get_pasid_info(hiod, &pasid_info) ||
++        !(pci_device_get_viommu_flags(pdev) & VIOMMU_FLAG_PASID_SUPPORTED)) {
++        return true;
++    }
++
++    /* Use user-specified offset if set, otherwise place PASID at the end. */
++    if (vdev->vpasid_cap_offset) {
++        pasid_offset = vdev->vpasid_cap_offset;
++    } else {
++        pasid_offset = PCIE_CONFIG_SPACE_SIZE - PCI_EXT_CAP_PASID_SIZEOF;
++    }
++
++    if (!pcie_insert_capability(pdev, PCI_EXT_CAP_ID_PASID, PCI_PASID_VER,
++                                pasid_offset, PCI_EXT_CAP_PASID_SIZEOF)) {
++        error_setg(errp, "vfio: Placing PASID capability at offset 0x%x failed",
++                   pasid_offset);
 +        return false;
 +    }
++    trace_vfio_pci_synthesize_pasid_cap(vdev->vbasedev.name, pasid_offset);
 +
-     /* User can disable QEMU SMMUv3 Range Invalidation support */
-     if (FIELD_EX32(info->idr[3], IDR3, RIL) <
-                 FIELD_EX32(s->idr[3], IDR3, RIL)) {
-@@ -652,7 +662,14 @@ static uint64_t smmuv3_accel_get_viommu_flags(void *opaque)
-      * The real HW nested support should be reported from host SMMUv3 and if
-      * it doesn't, the nesting parent allocation will fail anyway in VFIO core.
-      */
--    return VIOMMU_FLAG_WANT_NESTING_PARENT;
-+    uint64_t flags = VIOMMU_FLAG_WANT_NESTING_PARENT;
-+    SMMUState *bs = opaque;
-+    SMMUv3State *s = ARM_SMMUV3(bs);
++    pcie_pasid_common_init(pdev, pasid_offset, pasid_info.max_pasid_log2,
++                           pasid_info.exec_perm, pasid_info.priv_mod);
 +
-+    if (s->ssidsize) {
-+        flags |= VIOMMU_FLAG_PASID_SUPPORTED;
-+    }
-+    return flags;
- }
- 
- static const PCIIOMMUOps smmuv3_accel_ops = {
-@@ -680,6 +697,12 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
-     if (s->oas == SMMU_OAS_48BIT) {
-         s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS_48);
-     }
++    /* PASID capability is fully emulated by QEMU */
++    memset(vdev->emulated_config_bits + pdev->exp.pasid_cap, 0xff,
++           PCI_EXT_CAP_PASID_SIZEOF);
++    return true;
++}
 +
-+    /*
-+     * By default QEMU SMMUv3 has no SubstreamID support. Update IDR1 if user
-+     * has enabled it.
-+     */
-+    s->idr[1] = FIELD_DP32(s->idr[1], IDR1, SSIDSIZE, s->ssidsize);
- }
- 
- /* Based on SMUUv3 GPBA.ABORT configuration, attach a corresponding HWPT */
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index cb02184d2d..c08d58c579 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -611,9 +611,11 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
+ static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
+ {
+     PCIDevice *pdev = PCI_DEVICE(vdev);
++    bool pasid_cap_added = false;
++    Error *err = NULL;
+     uint32_t header;
+     uint16_t cap_id, next, size;
+     uint8_t cap_ver;
+@@ -2578,12 +2632,24 @@ static void vfio_add_ext_cap(VFIOPCIDevice *vdev)
+                 pcie_add_capability(pdev, cap_id, cap_ver, next, size);
+             }
+             break;
++        /*
++         * VFIO kernel does not expose the PASID CAP today. We may synthesize
++         * one later through IOMMUFD APIs. If VFIO ever starts exposing it,
++         * record its presence here so we do not create a duplicate CAP.
++         */
++        case PCI_EXT_CAP_ID_PASID:
++            pasid_cap_added = true;
++            /* fallthrough */
+         default:
+             pcie_add_capability(pdev, cap_id, cap_ver, next, size);
          }
+ 
      }
  
--    if (STE_S1CDMAX(ste) != 0) {
-+    /* Multiple context descriptors require SubstreamID support */
-+    if (!s->ssidsize && STE_S1CDMAX(ste) != 0) {
-         qemu_log_mask(LOG_UNIMP,
--                      "SMMUv3 does not support multiple context descriptors yet\n");
-+                "SMMUv3: multiple S1 context descriptors require SubstreamID support. "
-+                "Configure ssidsize > 0 (requires accel=on)\n");
-         goto bad_ste;
-     }
- 
-@@ -1954,6 +1956,10 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
-             error_setg(errp, "OAS must be 44 bits when accel=off");
-             return false;
-         }
-+        if (s->ssidsize) {
-+            error_setg(errp, "ssidsize can only be set if accel=on");
-+            return false;
-+        }
-         return true;
-     }
- 
-@@ -1968,6 +1974,11 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
-         error_setg(errp, "OAS can only be set to 44 or 48 bits");
-         return false;
-     }
-+    if (s->ssidsize > SMMU_SSID_MAX_BITS) {
-+        error_setg(errp, "ssidsize must be in the range 0 to %d",
-+                   SMMU_SSID_MAX_BITS);
-+        return false;
++    if (!pasid_cap_added && !vfio_pci_synthesize_pasid_cap(vdev, &err)) {
++        error_report_err(err);
 +    }
- 
-     return true;
- }
-@@ -2096,6 +2107,7 @@ static const Property smmuv3_properties[] = {
-     DEFINE_PROP_BOOL("ril", SMMUv3State, ril, true),
-     DEFINE_PROP_BOOL("ats", SMMUv3State, ats, false),
-     DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
-+    DEFINE_PROP_UINT8("ssidsize", SMMUv3State, ssidsize, 0),
++
+     /* Cleanup chain head ID if necessary */
+     if (pci_get_word(pdev->config + PCI_CONFIG_SPACE_SIZE) == 0xFFFF) {
+         pci_set_word(pdev->config + PCI_CONFIG_SPACE_SIZE, 0);
+@@ -3756,6 +3822,8 @@ static const Property vfio_pci_properties[] = {
+                      TYPE_IOMMUFD_BACKEND, IOMMUFDBackend *),
+ #endif
+     DEFINE_PROP_BOOL("skip-vsc-check", VFIOPCIDevice, skip_vsc_check, true),
++    DEFINE_PROP_UINT16("x-vpasid-cap-offset", VFIOPCIDevice,
++                       vpasid_cap_offset, 0),
  };
  
- static void smmuv3_instance_init(Object *obj)
-@@ -2129,6 +2141,12 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
-     object_class_property_set_description(klass, "oas",
-         "Specify Output Address Size (for accel=on). Supported values "
-         "are 44 or 48 bits. Defaults to 44 bits");
-+    object_class_property_set_description(klass, "ssidsize",
-+        "Number of bits used to represent SubstreamIDs (SSIDs). "
-+        "A value of N allows SSIDs in the range [0 .. 2^N - 1]. "
-+        "Valid range is 0-20, where 0 disables SubstreamID support. "
-+        "Defaults to 0. A value greater than 0 is required to enable "
-+        "PASID support.");
+ #ifdef CONFIG_IOMMUFD
+@@ -3913,6 +3981,13 @@ static void vfio_pci_class_init(ObjectClass *klass, const void *data)
+                                           "destination when doing live "
+                                           "migration of device state via "
+                                           "multifd channels");
++   object_class_property_set_description(klass, /* 11.0 */
++                                          "x-vpasid-cap-offset",
++                                          "PCIe extended configuration space offset at which to place a "
++                                          "synthetic PASID extended capability when PASID is enabled via "
++                                          "a vIOMMU. A value of 0 (default) places the capability at the "
++                                          "end of the extended configuration space. The offset must be "
++                                          "4-byte aligned and within the PCIe extended configuration space");
  }
  
- static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
-index abe3565357..67a23fbeaa 100644
---- a/include/hw/arm/smmuv3-common.h
-+++ b/include/hw/arm/smmuv3-common.h
-@@ -311,6 +311,7 @@ REG32(IDR1,                0x4)
-     FIELD(IDR1, TABLES_PRESET, 30, 1)
-     FIELD(IDR1, ECMDQ,        31, 1)
- 
-+#define SMMU_SSID_MAX_BITS 20
- #define SMMU_IDR1_SIDSIZE 16
- #define SMMU_CMDQS   19
- #define SMMU_EVENTQS 19
-diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-index d488a39cd0..26b2fc42fd 100644
---- a/include/hw/arm/smmuv3.h
-+++ b/include/hw/arm/smmuv3.h
-@@ -72,6 +72,7 @@ struct SMMUv3State {
-     bool ril;
-     bool ats;
-     uint8_t oas;
-+    uint8_t ssidsize;
+ static const TypeInfo vfio_pci_info = {
+diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+index 0f78cf9cdb..d6495d7f29 100644
+--- a/hw/vfio/pci.h
++++ b/hw/vfio/pci.h
+@@ -187,6 +187,7 @@ struct VFIOPCIDevice {
+     bool defer_kvm_irq_routing;
+     bool clear_parent_atomics_on_exit;
+     bool skip_vsc_check;
++    uint16_t vpasid_cap_offset;
+     VFIODisplay *dpy;
+     Notifier irqchip_change_notifier;
+     VFIOPCICPR cpr;
+diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+index 180e3d526b..b48c4abe7a 100644
+--- a/hw/vfio/trace-events
++++ b/hw/vfio/trace-events
+@@ -40,6 +40,7 @@ vfio_pci_hot_reset_result(const char *name, const char *result) "%s hot reset: %
+ vfio_pci_populate_device_config(const char *name, unsigned long size, unsigned long offset, unsigned long flags) "Device '%s' config: size: 0x%lx, offset: 0x%lx, flags: 0x%lx"
+ vfio_pci_populate_device_get_irq_info_failure(const char *errstr) "VFIO_DEVICE_GET_IRQ_INFO failure: %s"
+ vfio_mdev(const char *name, bool is_mdev) " (%s) is_mdev %d"
++vfio_pci_synthesize_pasid_cap(const char *name,  uint16_t offset)  "%s offset: 0x%x"
+ vfio_add_ext_cap_dropped(const char *name, uint16_t cap, uint16_t offset) "%s 0x%x@0x%x"
+ vfio_pci_reset(const char *name) " (%s)"
+ vfio_pci_reset_flr(const char *name) "%s FLR/VFIO_DEVICE_RESET"
+diff --git a/include/hw/core/iommu.h b/include/hw/core/iommu.h
+index d5401a397b..86af315c15 100644
+--- a/include/hw/core/iommu.h
++++ b/include/hw/core/iommu.h
+@@ -20,6 +20,7 @@
+ enum viommu_flags {
+     /* vIOMMU needs nesting parent HWPT to create nested HWPT */
+     VIOMMU_FLAG_WANT_NESTING_PARENT = BIT_ULL(0),
++    VIOMMU_FLAG_PASID_SUPPORTED = BIT_ULL(1),
  };
  
- typedef enum {
+ /* Host IOMMU quirks. Extracted from host IOMMU capabilities */
 -- 
 2.43.0
 

@@ -4,79 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 837A3C4452E
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 13:28:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56727C44532
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 13:33:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viYFM-0002zp-1R; Wed, 21 Jan 2026 08:27:45 -0500
+	id 1viYL4-0005ZE-E2; Wed, 21 Jan 2026 08:33:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ashish.a6@samsung.com>)
- id 1viYFG-0002xi-GF
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:27:40 -0500
-Received: from mailout4.samsung.com ([203.254.224.34])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1viYKa-0005W9-PB
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:33:11 -0500
+Received: from qs-2001i-snip4-11.eps.apple.com ([57.103.87.93]
+ helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ashish.a6@samsung.com>)
- id 1viYFA-0005ZU-GU
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:27:37 -0500
-Received: from epcas5p4.samsung.com (unknown [182.195.41.42])
- by mailout4.samsung.com (KnoxPortal) with ESMTP id
- 20260121132718epoutp04ccc4b6dec0b242ef3c8c0b6a506787f1~Mwfs04I0i0278502785epoutp04h
- for <qemu-arm@nongnu.org>; Wed, 21 Jan 2026 13:27:18 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com
- 20260121132718epoutp04ccc4b6dec0b242ef3c8c0b6a506787f1~Mwfs04I0i0278502785epoutp04h
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1769002038;
- bh=Gwi1TxQwmoZPtcBbpA+OJn2qQ9CTofn5+hjRbCesp9I=;
- h=From:To:Cc:Subject:Date:References:From;
- b=YMSyEbdsGi1BDgAENI1qL+DhWggaaUGiY/p6t4zy2336GCTDCgzJxkTB8AyZRzfxh
- PRA/fe8vWpK+IYsWPa6GkAUwR4tWtbvHPxSRgBtG+9mNYK6+fL9XrJmh7hoc4J7c+A
- 6kouqrOskpLHTJS6KKpnNZjMIPNfqfUXVsq+iiZ8=
-Received: from epsnrtp01.localdomain (unknown [182.195.42.153]) by
- epcas5p2.samsung.com (KnoxPortal) with ESMTPS id
- 20260121132717epcas5p2f74288df36f59c6fd92828dc5355ca44~MwfsAUxJ51144411444epcas5p2e;
- Wed, 21 Jan 2026 13:27:17 +0000 (GMT)
-Received: from epcas5p3.samsung.com (unknown [182.195.38.92]) by
- epsnrtp01.localdomain (Postfix) with ESMTP id 4dx4jw3KhFz6B9m7; Wed, 21 Jan
- 2026 13:27:16 +0000 (GMT)
-Received: from epsmtip1.samsung.com (unknown [182.195.34.30]) by
- epcas5p1.samsung.com (KnoxPortal) with ESMTPA id
- 20260121132716epcas5p1cab4021fbcd469b95d13ef4b4adc757f~MwfqsRN1k3003430034epcas5p1k;
- Wed, 21 Jan 2026 13:27:16 +0000 (GMT)
-Received: from test-System-Product-Name.samsungds.net (unknown
- [107.99.41.85]) by epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20260121132714epsmtip1236b07de3006579a5b0315605f27635f~MwfpmHgkg3097530975epsmtip14;
- Wed, 21 Jan 2026 13:27:14 +0000 (GMT)
-From: Ashish Anand <ashish.a6@samsung.com>
-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, saurabh@samsung.com,
- vishwa.mg@samsung.com, y.kaushal@samsung.com, ashish.anand202@gmail.com,
- Ashish Anand <ashish.a6@samsung.com>
-Subject: [PATCH v2] target/arm: Implement WFE, SEV and SEVONPEND for Cortex-M
-Date: Wed, 21 Jan 2026 18:54:21 +0530
-Message-ID: <20260121132421.2220928-1-ashish.a6@samsung.com>
-X-Mailer: git-send-email 2.43.0
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CMS-MailID: 20260121132716epcas5p1cab4021fbcd469b95d13ef4b4adc757f
-X-Msg-Generator: CA
-Content-Type: text/plain; charset="utf-8"
-CMS-TYPE: 105P
-cpgsPolicy: CPGSC10-542,Y
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20260121132716epcas5p1cab4021fbcd469b95d13ef4b4adc757f
-References: <CGME20260121132716epcas5p1cab4021fbcd469b95d13ef4b4adc757f@epcas5p1.samsung.com>
-Received-SPF: pass client-ip=203.254.224.34;
- envelope-from=ashish.a6@samsung.com; helo=mailout4.samsung.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1viYKX-0006r4-7Z
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:33:07 -0500
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-15 (Postfix) with ESMTPS id
+ AB034180039B; Wed, 21 Jan 2026 13:33:00 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1769002383; x=1771594383;
+ bh=wNb5eiry54YOrWs/lZjI4Le9RV9HahCtR9rjd6Jq9Jc=;
+ h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
+ b=P8/Jigvy3NXrQ5elcbML2xLTrN/rU88+oAz1F3oMI0CcVltX+imFUdJZsEG/oGVwYAMCXoTde5Aw7b5jXwOIjsOOA/QBf9jCowUUG/vG22kcxy2jSeEqRNEft++UnH9A0CEfX4g047y33xa1594noMgxfX08UmzpAEDwtieMrjeTQYjRUY9sVrx2txhfgWMR9+wV+uh85hQVsWlJsRCIkuHaWBm4oi/l6xaNu68FRBDfMFfNv0CPCnJRi6ls2e8DR17pkYUgsmlmm+r3w0lxgWJMi3GtbaJnk3cVbFH+/p8bVofZve+KRQ4vHE6XbeXohEnKvaBLl6NR7qswRxa2vw==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-15 (Postfix) with ESMTPSA id
+ 6A7701800177; Wed, 21 Jan 2026 13:32:58 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+Message-Id: <3A3AFA55-F23F-4BBE-BC55-7DE1852C7AB0@unpredictable.fr>
+Content-Type: multipart/alternative;
+ boundary="Apple-Mail=_42248C7F-1A32-4D6B-86DC-3179A59B634A"
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
+Subject: Re: [PATCH v16 10/26] whpx: reshuffle common code
+Date: Wed, 21 Jan 2026 14:32:46 +0100
+In-Reply-To: <344c726f-32d0-44a9-9084-edfc64dedb75@linaro.org>
+Cc: qemu-devel@nongnu.org,
+ =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+References: <20260116135235.38092-1-mohamed@unpredictable.fr>
+ <20260116135235.38092-11-mohamed@unpredictable.fr>
+ <344c726f-32d0-44a9-9084-edfc64dedb75@linaro.org>
+X-Mailer: Apple Mail (2.3864.300.41.1.7)
+X-Authority-Info-Out: v=2.4 cv=HOrO14tv c=1 sm=1 tr=0 ts=6970d58d
+ cx=c_apl:c_apl_out:c_pps a=bsP7O+dXZ5uKcj+dsLqiMw==:117
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=KKAkSRfTAAAA:8 a=2tszAsSru-KCW1Neg1kA:9 a=QEXdDO2ut3YA:10
+ a=lfeUBk0vAohLVyIIPfsA:9 a=8J9mXnSVkOHv8ThS:21 a=_W_S_7VecoQA:10
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: bMZpBH6QQgGRb8DMUp6iou27YEjuc1gD
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTIxMDExNCBTYWx0ZWRfXyINjIZ5aFX2Z
+ xYirf8NlgPtDmqwapz7OzoeZITTvyYyQorlmyOOxkJT1WcvwPECi/JjB+heVj4LRQPKiRD9S7eL
+ BmuuvXpfzDh9ShLJck2KArpRyhl3x5WC42AgcFqzY2NYWB/mBCMwK8mO32ExpOn6AY/blz9qL67
+ BARG7IE9VITsa94FFUgknunT7tbyVZ/SYU5Dqvhjh8CZsePVXbAQlNcQdxJDUvrGahdbFsIqdh0
+ 7rplFiW8mTktbaMCfvjDTfSrcGwfF4Iya1Y2W9XAwUnLvqB2j8ZpkTcPCQQAH4vJrm6f1siFbMZ
+ Rm6+vWOAdlyHr0Z8NHQ
+X-Proofpoint-ORIG-GUID: bMZpBH6QQgGRb8DMUp6iou27YEjuc1gD
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.20,FMLib:17.12.100.49
+ definitions=2026-01-21_01,2026-01-20_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ mlxlogscore=482 suspectscore=0 malwarescore=0 phishscore=0 bulkscore=0
+ adultscore=0 mlxscore=0 clxscore=1030 classifier=spam authscore=0 adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2601210114
+X-JNJ: AAAAAAABvpFPVDDv32hxe/R08W8UMsDjK2zalGdDhvhelbn/kmyNdmsY3dbNljS5XIAhu9ej965e4tY2yQczDCXIDBsw/XoECn/HTlN9TxLrVKqE9jb9Pg87RpgvzU8eDrii99mUY9rVQwjob3AysyhNmJ7QBwLqmO62ddQeHnsz+fzevzDXhoznh2MZmVsnAuaCLZPN+otCEmynt3QKGFrgaf6TIK1rsQ3U2wVv0zObtLAGh6M5v7x13yCeHIj1VltZNj87mf/3vimHeSD4kENRFcRXbDc2b9IzFtdkGIfbfanoEauhWL/FpaF2nNPXob0Lpp7rpydSKwEwzOXfJGnNBXNJVEjBGr2ptDk111cOKb2xjtCEGydg8j5/T05hN+bTeIz1tn2G+N0vyZrJhtL1sF3v3eZvUdCKhDZlItLmJeqUw4fb61xV0IrCfVFnzCpWsBubvGU04uKWbk+xRjiKmfGiW6DReborJEQtdCBlUT4fTe/8IKmXuGGbdB4McapmTaNXK9h4lD9Y2TbU12R88IxHnUOPELekynRLkk3XJKF5zkrqqm1WdoWjbwDbGSUeN2a5jx64woItoqh9xF74+fuOunwW0DUr6p75BnwCTfvhDoyIgQE3pM2CfUreJzuEa3JLRnzAsJkdgan0mW1dSl32WA574tmedHw3A5eUJZ3TdiplDsA9i7tHGp3WaSpOUjvE1Ce6kdM7Vd0VH5QTia2DWjLjE3W7cjZuw5595wzrDD45Hd5kv2WDNWFRTRWDZW2JupKaDh62DNr6+LxEPl9vCg+wISpqcCavTlOmUg5zAw==
+Received-SPF: pass client-ip=57.103.87.93;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.069,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,483 +104,256 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently, QEMU implements the 'Wait For Event' (WFE) instruction as a
-simple yield. This causes high host CPU usage because guest
-RTOS idle loops effectively become busy-wait loops.
 
-To improve efficiency, this patch transitions WFE to use the architectural
-'Halt' state (EXCP_HLT) for M-profile CPUs. This allows the host thread
-to sleep when the guest is idle.
-
-To support this transition, we implement the full architectural behavior
-required for WFE, specifically the 'Event Register', 'SEVONPEND' logic,
-and 'R_BPBR' exception handling requirements defined in the ARM
-Architecture Reference Manual.
-
-This patch enables resource-efficient idle emulation for Cortex-M.
-
-Signed-off-by: Ashish Anand <ashish.a6@samsung.com>
----
-Changes in v2:
-1. Added R_BPBR handling as required by the Armv8-M architecture.
-2. Unified pending-state updates to detect interrupt transitions for SEVONPEND.
-3. Moved the Event Register to the top-level ARM CPU state, since it is
-   architecturally shared between A-profile and M-profile CPUs.
-4. Updated migration handling to be profile-agnostic so the state can be
-   reused if A-profile WFE support is implemented in the future. 
-5. Added CONFIG_USER_ONLY handling for WFE/SEV and tightened profile checks.
-6. Addressed review comments and fixes raised during v1 discussion. 
-
-Link to v1 - https://lore.kernel.org/qemu-devel/20251223120012.541777-1-ashish.a6@samsung.com/
+--Apple-Mail=_42248C7F-1A32-4D6B-86DC-3179A59B634A
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=utf-8
 
 
- hw/intc/armv7m_nvic.c      | 85 ++++++++++++++++++++++++++++++--------
- target/arm/cpu.c           |  6 +++
- target/arm/cpu.h           |  7 ++++
- target/arm/machine.c       | 19 +++++++++
- target/arm/tcg/helper.h    |  1 +
- target/arm/tcg/m_helper.c  |  5 +++
- target/arm/tcg/op_helper.c | 56 +++++++++++++++++++++----
- target/arm/tcg/t16.decode  |  5 ++-
- target/arm/tcg/t32.decode  |  5 ++-
- target/arm/tcg/translate.c | 29 +++++++++++--
- 10 files changed, 185 insertions(+), 33 deletions(-)
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 3a31eb56f3..854d27e413 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -221,6 +221,40 @@ static int exc_group_prio(NVICState *s, int rawprio, bool targets_secure)
-     return rawprio;
- }
- 
-+/*
-+ * Update the pending state of an exception vector.
-+ * This is the central function for all updates to vec->pending.
-+ * Handles SEVONPEND: if this is a 0->1 transition on an external interrupt
-+ * and SEVONPEND is set in the appropriate SCR, sets the event register.
-+ */
-+static void nvic_update_pending_state(NVICState *s, int irq, bool secure,
-+                                      uint8_t next_pending_val)
-+{
-+    VecInfo *vec;
-+    int scr_bank;
-+    uint8_t prev_pending_val;
-+
-+    if (secure && exc_is_banked(irq)) {
-+        vec = &s->sec_vectors[irq];
-+        scr_bank = M_REG_S;
-+    } else {
-+        vec = &s->vectors[irq];
-+        scr_bank = M_REG_NS;
-+    }
-+
-+    prev_pending_val = vec->pending;
-+    vec->pending = next_pending_val;
-+
-+    /* Check for 0->1 transition on interrupts (>= NVIC_FIRST_IRQ) only */
-+    if (!prev_pending_val && next_pending_val && irq >= NVIC_FIRST_IRQ) {
-+        /* SEVONPEND: interrupt going to pending is a WFE wakeup event */
-+        if (s->cpu->env.v7m.scr[scr_bank] & R_V7M_SCR_SEVONPEND_MASK) {
-+            s->cpu->env.event_register = 1;
-+            qemu_cpu_kick(CPU(s->cpu));
-+        }
-+    }
-+}
-+
- /* Recompute vectpending and exception_prio for a CPU which implements
-  * the Security extension
-  */
-@@ -516,7 +550,7 @@ static void armv7m_nvic_clear_pending(NVICState *s, int irq, bool secure)
-     }
-     trace_nvic_clear_pending(irq, secure, vec->enabled, vec->prio);
-     if (vec->pending) {
--        vec->pending = 0;
-+        nvic_update_pending_state(s, irq, secure, 0);
-         nvic_irq_update(s);
-     }
- }
-@@ -656,7 +690,7 @@ static void do_armv7m_nvic_set_pending(void *opaque, int irq, bool secure,
-     }
- 
-     if (!vec->pending) {
--        vec->pending = 1;
-+        nvic_update_pending_state(s, irq, secure, 1);
-         nvic_irq_update(s);
-     }
- }
-@@ -753,7 +787,7 @@ void armv7m_nvic_set_pending_lazyfp(NVICState *s, int irq, bool secure)
-         s->cpu->env.v7m.hfsr |= R_V7M_HFSR_FORCED_MASK;
-     }
-     if (!vec->pending) {
--        vec->pending = 1;
-+        nvic_update_pending_state(s, irq, secure, 1);
-         /*
-          * We do not call nvic_irq_update(), because we know our caller
-          * is going to handle causing us to take the exception by
-@@ -790,7 +824,12 @@ void armv7m_nvic_acknowledge_irq(NVICState *s)
-     trace_nvic_acknowledge_irq(pending, s->vectpending_prio);
- 
-     vec->active = 1;
--    vec->pending = 0;
-+    /*
-+     * s->vectpending_is_s_banked already represents secure && exc_is_banked()
-+     * nvic_update_pending_state uses the secure parameter with exc_is_banked()
-+     * internally to select the right vector, so we can pass this directly.
-+     */
-+    nvic_update_pending_state(s, pending, s->vectpending_is_s_banked, 0);
- 
-     write_v7m_exception(env, s->vectpending);
- 
-@@ -898,7 +937,7 @@ int armv7m_nvic_complete_irq(NVICState *s, int irq, bool secure)
-          * happens for external IRQs
-          */
-         assert(irq >= NVIC_FIRST_IRQ);
--        vec->pending = 1;
-+        nvic_update_pending_state(s, irq, secure, 1);
-     }
- 
-     nvic_irq_update(s);
-@@ -1657,7 +1696,7 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
-         }
-         /* We don't implement deep-sleep so these bits are RAZ/WI.
-          * The other bits in the register are banked.
--         * QEMU's implementation ignores SEVONPEND and SLEEPONEXIT, which
-+         * QEMU's implementation ignores SLEEPONEXIT, which
-          * is architecturally permitted.
-          */
-         value &= ~(R_V7M_SCR_SLEEPDEEP_MASK | R_V7M_SCR_SLEEPDEEPS_MASK);
-@@ -1722,38 +1761,47 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
-                 (value & (1 << 10)) != 0;
-             s->sec_vectors[ARMV7M_EXCP_SYSTICK].active =
-                 (value & (1 << 11)) != 0;
--            s->sec_vectors[ARMV7M_EXCP_USAGE].pending =
--                (value & (1 << 12)) != 0;
--            s->sec_vectors[ARMV7M_EXCP_MEM].pending = (value & (1 << 13)) != 0;
--            s->sec_vectors[ARMV7M_EXCP_SVC].pending = (value & (1 << 15)) != 0;
-+            nvic_update_pending_state(s, ARMV7M_EXCP_USAGE, attrs.secure,
-+                                      (value & (1 << 12)) != 0);
-+            nvic_update_pending_state(s, ARMV7M_EXCP_MEM, attrs.secure,
-+                                      (value & (1 << 13)) != 0);
-+            nvic_update_pending_state(s, ARMV7M_EXCP_SVC, attrs.secure,
-+                                      (value & (1 << 15)) != 0);
-             s->sec_vectors[ARMV7M_EXCP_MEM].enabled = (value & (1 << 16)) != 0;
-             s->sec_vectors[ARMV7M_EXCP_BUS].enabled = (value & (1 << 17)) != 0;
-             s->sec_vectors[ARMV7M_EXCP_USAGE].enabled =
-                 (value & (1 << 18)) != 0;
--            s->sec_vectors[ARMV7M_EXCP_HARD].pending = (value & (1 << 21)) != 0;
-+            nvic_update_pending_state(s, ARMV7M_EXCP_HARD, attrs.secure,
-+                                      (value & (1 << 21)) != 0);
-             /* SecureFault not banked, but RAZ/WI to NS */
-             s->vectors[ARMV7M_EXCP_SECURE].active = (value & (1 << 4)) != 0;
-             s->vectors[ARMV7M_EXCP_SECURE].enabled = (value & (1 << 19)) != 0;
--            s->vectors[ARMV7M_EXCP_SECURE].pending = (value & (1 << 20)) != 0;
-+            nvic_update_pending_state(s, ARMV7M_EXCP_SECURE, attrs.secure,
-+                                      (value & (1 << 20)) != 0);
-         } else {
-             s->vectors[ARMV7M_EXCP_MEM].active = (value & (1 << 0)) != 0;
-             if (arm_feature(&cpu->env, ARM_FEATURE_V8)) {
-                 /* HARDFAULTPENDED is not present in v7M */
--                s->vectors[ARMV7M_EXCP_HARD].pending = (value & (1 << 21)) != 0;
-+                nvic_update_pending_state(s, ARMV7M_EXCP_HARD, attrs.secure,
-+                                          (value & (1 << 21)) != 0);
-             }
-             s->vectors[ARMV7M_EXCP_USAGE].active = (value & (1 << 3)) != 0;
-             s->vectors[ARMV7M_EXCP_SVC].active = (value & (1 << 7)) != 0;
-             s->vectors[ARMV7M_EXCP_PENDSV].active = (value & (1 << 10)) != 0;
-             s->vectors[ARMV7M_EXCP_SYSTICK].active = (value & (1 << 11)) != 0;
--            s->vectors[ARMV7M_EXCP_USAGE].pending = (value & (1 << 12)) != 0;
--            s->vectors[ARMV7M_EXCP_MEM].pending = (value & (1 << 13)) != 0;
--            s->vectors[ARMV7M_EXCP_SVC].pending = (value & (1 << 15)) != 0;
-+            nvic_update_pending_state(s, ARMV7M_EXCP_USAGE, attrs.secure,
-+                                      (value & (1 << 12)) != 0);
-+            nvic_update_pending_state(s, ARMV7M_EXCP_MEM, attrs.secure,
-+                                      (value & (1 << 13)) != 0);
-+            nvic_update_pending_state(s, ARMV7M_EXCP_SVC, attrs.secure,
-+                                      (value & (1 << 15)) != 0);
-             s->vectors[ARMV7M_EXCP_MEM].enabled = (value & (1 << 16)) != 0;
-             s->vectors[ARMV7M_EXCP_USAGE].enabled = (value & (1 << 18)) != 0;
-         }
-         if (attrs.secure || (cpu->env.v7m.aircr & R_V7M_AIRCR_BFHFNMINS_MASK)) {
-             s->vectors[ARMV7M_EXCP_BUS].active = (value & (1 << 1)) != 0;
--            s->vectors[ARMV7M_EXCP_BUS].pending = (value & (1 << 14)) != 0;
-+            nvic_update_pending_state(s, ARMV7M_EXCP_BUS, attrs.secure,
-+                                      (value & (1 << 14)) != 0);
-             s->vectors[ARMV7M_EXCP_BUS].enabled = (value & (1 << 17)) != 0;
-         }
-         /* NMIACT can only be written if the write is of a zero, with
-@@ -2389,7 +2437,8 @@ static MemTxResult nvic_sysreg_write(void *opaque, hwaddr addr,
-                 (attrs.secure || s->itns[startvec + i]) &&
-                 !(setval == 0 && s->vectors[startvec + i].level &&
-                   !s->vectors[startvec + i].active)) {
--                s->vectors[startvec + i].pending = setval;
-+                nvic_update_pending_state(s, startvec + i, attrs.secure,
-+                                          setval);
-             }
-         }
-         nvic_irq_update(s);
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 05fa3339b1..9fc93b51bb 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -143,6 +143,12 @@ static bool arm_cpu_has_work(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
- 
-+    if (arm_feature(&cpu->env, ARM_FEATURE_M)) {
-+        if (cpu->env.event_register) {
-+            return true;
-+        }
-+    }
-+
-     return (cpu->power_state != PSCI_OFF)
-         && cpu_test_interrupt(cs,
-                CPU_INTERRUPT_FIQ | CPU_INTERRUPT_HARD
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 2f124d1b15..bf3a2ef03e 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -760,6 +760,13 @@ typedef struct CPUArchState {
-     /* Optional fault info across tlb lookup. */
-     ARMMMUFaultInfo *tlb_fi;
- 
-+    /*
-+     * The event register is shared by all ARM profiles (A/R/M),
-+     * so it is stored in the top-level CPU state.
-+     * WFE/SEV handling is currently implemented only for M-profile.
-+     */
-+    uint32_t event_register;
-+
-     /* Fields up to this point are cleared by a CPU reset */
-     struct {} end_reset_fields;
- 
-diff --git a/target/arm/machine.c b/target/arm/machine.c
-index 0befdb0b28..814a74745f 100644
---- a/target/arm/machine.c
-+++ b/target/arm/machine.c
-@@ -508,6 +508,24 @@ static const VMStateDescription vmstate_m_mve = {
-     },
- };
- 
-+static bool event_needed(void *opaque)
-+{
-+    ARMCPU *cpu = opaque;
-+    /* Only save the state if the event register is set (non-zero) */
-+    return cpu->env.event_register != 0;
-+}
-+
-+static const VMStateDescription vmstate_event = {
-+    .name = "cpu/event",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = event_needed,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32(env.event_register, ARMCPU),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_m = {
-     .name = "cpu/m",
-     .version_id = 4,
-@@ -1210,6 +1228,7 @@ const VMStateDescription vmstate_arm_cpu = {
-         &vmstate_wfxt_timer,
-         &vmstate_syndrome64,
-         &vmstate_pstate64,
-+        &vmstate_event,
-         NULL
-     }
- };
-diff --git a/target/arm/tcg/helper.h b/target/arm/tcg/helper.h
-index 4636d1bc03..5a10a9fba3 100644
---- a/target/arm/tcg/helper.h
-+++ b/target/arm/tcg/helper.h
-@@ -60,6 +60,7 @@ DEF_HELPER_1(yield, void, env)
- DEF_HELPER_1(pre_hvc, void, env)
- DEF_HELPER_2(pre_smc, void, env, i32)
- DEF_HELPER_1(vesb, void, env)
-+DEF_HELPER_1(sev, void, env)
- 
- DEF_HELPER_3(cpsr_write, void, env, i32, i32)
- DEF_HELPER_2(cpsr_write_eret, void, env, i32)
-diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
-index 3fb24c7790..2a2224c996 100644
---- a/target/arm/tcg/m_helper.c
-+++ b/target/arm/tcg/m_helper.c
-@@ -962,7 +962,9 @@ static void v7m_exception_taken(ARMCPU *cpu, uint32_t lr, bool dotailchain,
-      * Now we've done everything that might cause a derived exception
-      * we can go ahead and activate whichever exception we're going to
-      * take (which might now be the derived exception).
-+     * Exception entry sets the event register (ARM ARM R_BPBR)
-      */
-+    env->event_register = 1;
-     armv7m_nvic_acknowledge_irq(env->nvic);
- 
-     /* Switch to target security state -- must do this before writing SPSEL */
-@@ -1906,6 +1908,9 @@ static void do_v7m_exception_exit(ARMCPU *cpu)
-     /* Otherwise, we have a successful exception exit. */
-     arm_clear_exclusive(env);
-     arm_rebuild_hflags(env);
-+
-+    /* Exception return sets the event register (ARM ARM R_BPBR) */
-+    env->event_register = 1;
-     qemu_log_mask(CPU_LOG_INT, "...successful exception return\n");
- }
- 
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index 4fbd219555..9f385dae6d 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -469,16 +469,58 @@ void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
- #endif
- }
- 
-+void HELPER(sev)(CPUARMState *env)
-+{
-+    CPUState *cs = env_cpu(env);
-+    CPU_FOREACH(cs) {
-+        ARMCPU *target_cpu = ARM_CPU(cs);
-+        if (arm_feature(&target_cpu->env, ARM_FEATURE_M)) {
-+            target_cpu->env.event_register = 1;
-+        }
-+        if (!qemu_cpu_is_self(cs)) {
-+            qemu_cpu_kick(cs);
-+        }
-+    }
-+}
-+
- void HELPER(wfe)(CPUARMState *env)
- {
--    /* This is a hint instruction that is semantically different
--     * from YIELD even though we currently implement it identically.
--     * Don't actually halt the CPU, just yield back to top
--     * level loop. This is not going into a "low power state"
--     * (ie halting until some event occurs), so we never take
--     * a configurable trap to a different exception level.
-+#ifdef CONFIG_USER_ONLY
-+    /*
-+     * WFE in the user-mode emulator is a NOP. Real-world user-mode code
-+     * shouldn't execute WFE, but if it does, we make it a NOP rather than
-+     * aborting when we try to raise EXCP_HLT.
-+     */
-+    return;
-+#else
-+    /*
-+     * WFE (Wait For Event) is a hint instruction.
-+     * For Cortex-M (M-profile), we implement the strict architectural behavior:
-+     * 1. Check the Event Register (set by SEV or SEVONPEND).
-+     * 2. If set, clear it and continue (consume the event).
-      */
--    HELPER(yield)(env);
-+    if (arm_feature(env, ARM_FEATURE_M)) {
-+        CPUState *cs = env_cpu(env);
-+
-+        if (env->event_register) {
-+            env->event_register = 0;
-+            return;
-+        }
-+
-+        cs->exception_index = EXCP_HLT;
-+        cs->halted = 1;
-+        cpu_loop_exit(cs);
-+    } else {
-+        /*
-+         * For A-profile and others, we rely on the existing "yield" behavior.
-+         * Don't actually halt the CPU, just yield back to top
-+         * level loop. This is not going into a "low power state"
-+         * (ie halting until some event occurs), so we never take
-+         * a configurable trap to a different exception level
-+         */
-+        HELPER(yield)(env);
-+    }
-+#endif
- }
- 
- void HELPER(yield)(CPUARMState *env)
-diff --git a/target/arm/tcg/t16.decode b/target/arm/tcg/t16.decode
-index 646c74929d..778fbf1627 100644
---- a/target/arm/tcg/t16.decode
-+++ b/target/arm/tcg/t16.decode
-@@ -228,8 +228,9 @@ REVSH           1011 1010 11 ... ...            @rdm
-     WFE         1011 1111 0010 0000
-     WFI         1011 1111 0011 0000
- 
--    # TODO: Implement SEV, SEVL; may help SMP performance.
--    # SEV       1011 1111 0100 0000
-+    # M-profile SEV is implemented.
-+    # TODO: Implement SEV for other profiles, and SEVL for all profiles; may help SMP performance.
-+    SEV         1011 1111 0100 0000
-     # SEVL      1011 1111 0101 0000
- 
-     # The canonical nop has the second nibble as 0000, but the whole of the
-diff --git a/target/arm/tcg/t32.decode b/target/arm/tcg/t32.decode
-index d327178829..49b8d0037e 100644
---- a/target/arm/tcg/t32.decode
-+++ b/target/arm/tcg/t32.decode
-@@ -369,8 +369,9 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
-         WFE      1111 0011 1010 1111 1000 0000 0000 0010
-         WFI      1111 0011 1010 1111 1000 0000 0000 0011
- 
--        # TODO: Implement SEV, SEVL; may help SMP performance.
--        # SEV    1111 0011 1010 1111 1000 0000 0000 0100
-+        # M-profile SEV is implemented.
-+        # TODO: Implement SEV for other profiles, and SEVL for all profiles; may help SMP performance.
-+        SEV      1111 0011 1010 1111 1000 0000 0000 0100
-         # SEVL   1111 0011 1010 1111 1000 0000 0000 0101
- 
-         ESB      1111 0011 1010 1111 1000 0000 0001 0000
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index 63735d9789..c90b0106f7 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -3241,14 +3241,30 @@ static bool trans_YIELD(DisasContext *s, arg_YIELD *a)
-     return true;
- }
- 
-+static bool trans_SEV(DisasContext *s, arg_SEV *a)
-+{
-+    /*
-+     * Currently SEV is a NOP for non-M-profile and in user-mode emulation.
-+     * For system-mode M-profile, it sets the event register.
-+     */
-+#ifndef CONFIG_USER_ONLY
-+    if (arm_dc_feature(s, ARM_FEATURE_M)) {
-+        gen_helper_sev(tcg_env);
-+    }
-+#endif
-+    return true;
-+}
-+
- static bool trans_WFE(DisasContext *s, arg_WFE *a)
- {
-     /*
-      * When running single-threaded TCG code, use the helper to ensure that
--     * the next round-robin scheduled vCPU gets a crack.  In MTTCG mode we
--     * just skip this instruction.  Currently the SEV/SEVL instructions,
--     * which are *one* of many ways to wake the CPU from WFE, are not
--     * implemented so we can't sleep like WFI does.
-+     * the next round-robin scheduled vCPU gets a crack.
-+     *
-+     * For Cortex-M, we implement the architectural WFE behavior (sleeping
-+     * until an event occurs or the Event Register is set).
-+     * For other profiles, we currently treat this as a NOP or yield,
-+     * to preserve existing performance characteristics.
-      */
-     if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
-         gen_update_pc(s, curr_insn_len(s));
-@@ -6807,6 +6823,11 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
-             break;
-         case DISAS_WFE:
-             gen_helper_wfe(tcg_env);
-+            /*
-+             * The helper can return if the event register is set, so we
-+             * must go back to the main loop to check for events.
-+             */
-+            tcg_gen_exit_tb(NULL, 0);
-             break;
-         case DISAS_YIELD:
-             gen_helper_yield(tcg_env);
--- 
-2.43.0
+> On 16. Jan 2026, at 15:20, Philippe Mathieu-Daud=C3=A9 =
+<philmd@linaro.org> wrote:
+>=20
+> On 16/1/26 14:52, Mohamed Mediouni wrote:
+>> Some code can be shared between x86_64 and arm64 WHPX. Do so as much =
+as reasonable.
+>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>> ---
+>>  MAINTAINERS                  |   2 +
+>>  accel/whpx/meson.build       |   1 +
+>>  accel/whpx/whpx-common.c     | 558 =
++++++++++++++++++++++++++++++++++++
+>>  include/system/whpx-all.h    |  20 ++
+>>  include/system/whpx-common.h |  21 ++
+>>  target/i386/whpx/whpx-all.c  | 551 =
++---------------------------------
+>>  6 files changed, 612 insertions(+), 541 deletions(-)
+>>  create mode 100644 accel/whpx/whpx-common.c
+>>  create mode 100644 include/system/whpx-all.h
+>>  create mode 100644 include/system/whpx-common.h
+>=20
+>=20
+>> diff --git a/include/system/whpx-all.h b/include/system/whpx-all.h
+>> new file mode 100644
+>> index 0000000000..f13cdf7f66
+>> --- /dev/null
+>> +++ b/include/system/whpx-all.h
+>> @@ -0,0 +1,20 @@
+>> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+>> +#ifndef SYSTEM_WHPX_ALL_H
+>> +#define SYSTEM_WHPX_ALL_H
+>> +
+>> +/* Called by whpx-common */
+>> +int whpx_vcpu_run(CPUState *cpu);
+>> +void whpx_get_registers(CPUState *cpu);
+>> +void whpx_set_registers(CPUState *cpu, int level);
+>> +int whpx_accel_init(AccelState *as, MachineState *ms);
+>> +void whpx_cpu_instance_init(CPUState *cs);
+>> +HRESULT whpx_set_exception_exit_bitmap(UINT64 exceptions);
+>> +void whpx_apply_breakpoints(
+>> +struct whpx_breakpoint_collection *breakpoints,
+>> +    CPUState *cpu,
+>> +    bool resuming);
+>> +void whpx_translate_cpu_breakpoints(
+>> +    struct whpx_breakpoints *breakpoints,
+>> +    CPUState *cpu,
+>> +    int cpu_breakpoint_count);
+>> +#endif
+>> diff --git a/include/system/whpx-common.h =
+b/include/system/whpx-common.h
+>> new file mode 100644
+>> index 0000000000..e549c7539c
+>> --- /dev/null
+>> +++ b/include/system/whpx-common.h
+>> @@ -0,0 +1,21 @@
+>> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+>> +#ifndef SYSTEM_WHPX_COMMON_H
+>> +#define SYSTEM_WHPX_COMMON_H
+>> +
+>> +struct AccelCPUState {
+>> +    WHV_EMULATOR_HANDLE emulator;
+>> +    bool window_registered;
+>> +    bool interruptable;
+>> +    bool ready_for_pic_interrupt;
+>> +    uint64_t tpr;
+>> +    uint64_t apic_base;
+>> +    bool interruption_pending;
+>> +    /* Must be the last field as it may have a tail */
+>> +    WHV_RUN_VP_EXIT_CONTEXT exit_ctx;
+>> +};
+>> +
+>> +int whpx_first_vcpu_starting(CPUState *cpu);
+>> +int whpx_last_vcpu_stopping(CPUState *cpu);
+>> +void whpx_memory_init(void);
+>> +struct whpx_breakpoint *whpx_lookup_breakpoint_by_addr(uint64_t =
+address);
+>> +#endif
+> I'd rather rename the target-specific handlers as
+> whpx_foo() -> whpx_arch_foo() to help follow in common code
+> when we are calling target-specific implementations.
+> (can be done on top later if the series is good to go)
 
+Hello,
+
+Going to take care of this one with a post-merge follow-up patch, along
+with moving the header location.
+
+
+
+--Apple-Mail=_42248C7F-1A32-4D6B-86DC-3179A59B634A
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=utf-8
+
+<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
+content=3D"text/html; charset=3Dutf-8"></head><body =
+style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
+line-break: after-white-space;"><br =
+id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
+type=3D"cite"><div>On 16. Jan 2026, at 15:20, Philippe Mathieu-Daud=C3=A9 =
+&lt;philmd@linaro.org&gt; wrote:</div><br =
+class=3D"Apple-interchange-newline"><div><meta charset=3D"UTF-8"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">On 16/1/26 14:52, Mohamed Mediouni =
+wrote:</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration-line: none; text-decoration-thickness: auto; =
+text-decoration-style: solid;"><blockquote type=3D"cite" =
+style=3D"font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;">Some =
+code can be shared between x86_64 and arm64 WHPX. Do so as much as =
+reasonable.<br>Signed-off-by: Mohamed Mediouni =
+&lt;mohamed@unpredictable.fr&gt;<br>Reviewed-by: Pierrick Bouvier =
+&lt;pierrick.bouvier@linaro.org&gt;<br>---<br>&nbsp;MAINTAINERS =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;2 =
++<br>&nbsp;accel/whpx/meson.build &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;1 +<br>&nbsp;accel/whpx/whpx-common.c =
+&nbsp;&nbsp;&nbsp;&nbsp;| 558 =
++++++++++++++++++++++++++++++++++++<br>&nbsp;include/system/whpx-all.h =
+&nbsp;&nbsp;&nbsp;| &nbsp;20 ++<br>&nbsp;include/system/whpx-common.h | =
+&nbsp;21 ++<br>&nbsp;target/i386/whpx/whpx-all.c &nbsp;| 551 =
++---------------------------------<br>&nbsp;6 files changed, 612 =
+insertions(+), 541 deletions(-)<br>&nbsp;create mode 100644 =
+accel/whpx/whpx-common.c<br>&nbsp;create mode 100644 =
+include/system/whpx-all.h<br>&nbsp;create mode 100644 =
+include/system/whpx-common.h<br></blockquote><br style=3D"caret-color: =
+rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
+normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: =
+solid;"><blockquote type=3D"cite" style=3D"font-family: Helvetica; =
+font-size: 12px; font-style: normal; font-variant-caps: normal; =
+font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; widows: 2; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-line: =
+none; text-decoration-thickness: auto; text-decoration-style: =
+solid;">diff --git a/include/system/whpx-all.h =
+b/include/system/whpx-all.h<br>new file mode 100644<br>index =
+0000000000..f13cdf7f66<br>--- /dev/null<br>+++ =
+b/include/system/whpx-all.h<br>@@ -0,0 +1,20 @@<br>+/* =
+SPDX-License-Identifier: GPL-2.0-or-later */<br>+#ifndef =
+SYSTEM_WHPX_ALL_H<br>+#define SYSTEM_WHPX_ALL_H<br>+<br>+/* Called by =
+whpx-common */<br>+int whpx_vcpu_run(CPUState *cpu);<br>+void =
+whpx_get_registers(CPUState *cpu);<br>+void whpx_set_registers(CPUState =
+*cpu, int level);<br>+int whpx_accel_init(AccelState *as, MachineState =
+*ms);<br>+void whpx_cpu_instance_init(CPUState *cs);<br>+HRESULT =
+whpx_set_exception_exit_bitmap(UINT64 exceptions);<br>+void =
+whpx_apply_breakpoints(<br>+struct whpx_breakpoint_collection =
+*breakpoints,<br>+ &nbsp;&nbsp;&nbsp;CPUState *cpu,<br>+ =
+&nbsp;&nbsp;&nbsp;bool resuming);<br>+void =
+whpx_translate_cpu_breakpoints(<br>+ &nbsp;&nbsp;&nbsp;struct =
+whpx_breakpoints *breakpoints,<br>+ &nbsp;&nbsp;&nbsp;CPUState =
+*cpu,<br>+ &nbsp;&nbsp;&nbsp;int =
+cpu_breakpoint_count);<br>+#endif<br>diff --git =
+a/include/system/whpx-common.h b/include/system/whpx-common.h<br>new =
+file mode 100644<br>index 0000000000..e549c7539c<br>--- /dev/null<br>+++ =
+b/include/system/whpx-common.h<br>@@ -0,0 +1,21 @@<br>+/* =
+SPDX-License-Identifier: GPL-2.0-or-later */<br>+#ifndef =
+SYSTEM_WHPX_COMMON_H<br>+#define SYSTEM_WHPX_COMMON_H<br>+<br>+struct =
+AccelCPUState {<br>+ &nbsp;&nbsp;&nbsp;WHV_EMULATOR_HANDLE =
+emulator;<br>+ &nbsp;&nbsp;&nbsp;bool window_registered;<br>+ =
+&nbsp;&nbsp;&nbsp;bool interruptable;<br>+ &nbsp;&nbsp;&nbsp;bool =
+ready_for_pic_interrupt;<br>+ &nbsp;&nbsp;&nbsp;uint64_t tpr;<br>+ =
+&nbsp;&nbsp;&nbsp;uint64_t apic_base;<br>+ &nbsp;&nbsp;&nbsp;bool =
+interruption_pending;<br>+ &nbsp;&nbsp;&nbsp;/* Must be the last field =
+as it may have a tail */<br>+ &nbsp;&nbsp;&nbsp;WHV_RUN_VP_EXIT_CONTEXT =
+exit_ctx;<br>+};<br>+<br>+int whpx_first_vcpu_starting(CPUState =
+*cpu);<br>+int whpx_last_vcpu_stopping(CPUState *cpu);<br>+void =
+whpx_memory_init(void);<br>+struct whpx_breakpoint =
+*whpx_lookup_breakpoint_by_addr(uint64_t =
+address);<br>+#endif<br></blockquote><span style=3D"caret-color: rgb(0, =
+0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">I'd rather rename the target-specific =
+handlers as</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration-line: none; text-decoration-thickness: auto; =
+text-decoration-style: solid;"><span style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">whpx_foo() -&gt; whpx_arch_foo() to help =
+follow in common code</span><br style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">when we are calling target-specific =
+implementations.</span><br style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">(can be done on top later if the series is =
+good to =
+go)</span></div></blockquote><br></div><div>Hello,</div><div><br></div><di=
+v>Going to take care of this one with a post-merge follow-up patch, =
+along</div><div>with moving the header =
+location.</div><div><br></div><br></body></html>=
+
+--Apple-Mail=_42248C7F-1A32-4D6B-86DC-3179A59B634A--
 

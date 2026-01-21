@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70920C4453A
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 13:44:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8F2EC4453A
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 13:45:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viYTr-0005dH-AX; Wed, 21 Jan 2026 08:42:43 -0500
+	id 1viYTx-0006Iv-23; Wed, 21 Jan 2026 08:42:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1viYTF-00050v-4Y
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:42:07 -0500
-Received: from qs-2001k-snip4-2.eps.apple.com ([57.103.87.105]
+ id 1viYTW-0005BW-Ag
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:42:26 -0500
+Received: from qs-2001j-snip4-2.eps.apple.com ([57.103.87.95]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1viYTD-0001IL-94
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:42:04 -0500
+ id 1viYTQ-0001ON-R9
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 08:42:20 -0500
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-60-percent-14 (Postfix) with ESMTPS id
- B5EF5180009A; Wed, 21 Jan 2026 13:41:58 +0000 (UTC)
+ 81AD618003C2; Wed, 21 Jan 2026 13:42:12 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1769002922; x=1771594922;
- bh=HZFE5wKi/P+B2jYZ3RcbjRGS58KxloRLD04g+NruaBU=;
+ s=sig1; t=1769002935; x=1771594935;
+ bh=6sj2MTGR9DeD6ecUqy07jp7nwwk06hbw8XC/wHHnLFM=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=c9z3TunsqH7Ez5PdhcavRE2gjgVhdEd5yCCL3oUEiAzPw3XxUL1c55P5gxrkmXQ5EFSNFp9U1j/D8FVnoosauHb/qbpO+93VAM0Vh1w0D9vZknFhUhillcCx1VBk6wECdmx7jSc5YSM2rAgJHtZniBQ3vmzNvyksAzp/7Nyc4GIk6XSY/26d5LLtXHvoQXuwWOlV6mHGCVNM7FUgTa8uvLE40UKH64y211oGNM0OVgl9j5Ei/QFK2ZJvSo77Q7gJBxKDJNvVs2KWor8sTLTcID19bUuTt6dwtZ/VriDV0L80vipC9lKOxfAI+DJKA4Na74lGN3n2yMqB52z1SewyOA==
+ b=REgM2oGA9Fc/1DghUB6WKJnajuZR+2CSDbNtTKnRuHegEe1TQoGxOwpJRaVMN8Nj4Y10jUxMwFzc6hOcUP8e3A9WFoRCSKSZUVFeXMh7bk+uR8pHX4ZzFJxGR6dIIZpYFbfSsdvgnw/lMJtnkIbWAHVYnXXu5WRuvDzcqguNmdmOAfFHZlv1PdhXeqiw1c4nMk/Mfg9r8Mh8sTePgQnLvBZMU5iGmquIkxCA1hpi+Zme8sVAxSmAJqwBnuGpyAVjO16NRZzwMEaLq2Ffg8lylb026uXz5gDSvdevj6HX+FNxTpxYkjDeC0+Fdv23LT4oqZeWyCcQm41kYpQ6ksnEjw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-60-percent-14 (Postfix) with ESMTPSA id
- 907B318001BA; Wed, 21 Jan 2026 13:41:55 +0000 (UTC)
+ 6599D1800126; Wed, 21 Jan 2026 13:42:09 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: mohamed@unpredictable.fr,
 	qemu-devel@nongnu.org
@@ -51,35 +51,36 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Yanan Wang <wangyanan55@huawei.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v17 14/21] target/arm: cpu: mark WHPX as supporting PSCI 1.3
-Date: Wed, 21 Jan 2026 14:41:05 +0100
-Message-ID: <20260121134114.9781-15-mohamed@unpredictable.fr>
+Subject: [PATCH v17 19/21] whpx: arm64: gicv3: add migration blocker
+Date: Wed, 21 Jan 2026 14:41:10 +0100
+Message-ID: <20260121134114.9781-20-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260121134114.9781-1-mohamed@unpredictable.fr>
 References: <20260121134114.9781-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTIxMDExNSBTYWx0ZWRfX/SHz/wEri24h
- +XMTIUZS44M6UWvc66b9JjP8s3GJZkMuqrFBxpLIBhxMxImMxqWhj6kcPJBKvc2f90SnZz1sdWD
- fw7W1wPY82EYlbZvPZ/2dB3t3cpW3oYfx+qyY0AERtZ7bofxmfDhTTKL8k9gA9IYnen1j1TRzQf
- 57GTlwh9m0LBbCKbq4weMk3AqDYETWUYPBhm0vcYTqolOUXeYe5RZ65eRiaC6Cm9i+1KuEbLJcW
- oharkQ+YEFcv5iGTLctkdsTmzYo4vXV+PRdVIBY5w6AymszIXZRAUrlHriqWyDZp+Xm1UBu7xyd
- 5HNo6T/1zQsOfal7JoN
-X-Authority-Info-Out: v=2.4 cv=Du1bOW/+ c=1 sm=1 tr=0 ts=6970d7a8
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTIxMDExNSBTYWx0ZWRfXwYulBIdsACTW
+ BGFr22DaKssmfNo90uK3+dVa7EyRyj1COScmHuCOITcMqf0zC4Mvy/ah29dumIHVZP/5DltJNWc
+ ns/YhJTjm8jHBOwikwXGvUXAem3KTGkBlLO7uc1D/mXV5M/VKsIclWVY9hdn4zOsZoXrgCp3wAX
+ QvD8xmXklw17KMOo9uE4LkMx2/gXLoXCPZJ96ZHH6Pp+7ZWAsZDZM8QZTtuR9YE3XxQLE2v5M6d
+ upuxl2MW1lCBVXrLHSUmuXEMS+mQGGKwnRnYtsTSwrZp2vW3QXX5EZgtlAWDSFN5Fcw2XwYiWNF
+ X2nedaIzZYdGuDTOD1M
+X-Proofpoint-GUID: 6T-xkvzQjmYajEcDNU3Kf86vhLfd7iAE
+X-Proofpoint-ORIG-GUID: 6T-xkvzQjmYajEcDNU3Kf86vhLfd7iAE
+X-Authority-Info-Out: v=2.4 cv=N4Qk1m9B c=1 sm=1 tr=0 ts=6970d7b6
  cx=c_apl:c_apl_out:c_pps a=bsP7O+dXZ5uKcj+dsLqiMw==:117
  a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=KKAkSRfTAAAA:8 a=emIkxkYSJqCgyAM8kcYA:9 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: zWVaTRwP8MgxpFEkgRxqJOj55X4DutZM
-X-Proofpoint-GUID: zWVaTRwP8MgxpFEkgRxqJOj55X4DutZM
+ a=KKAkSRfTAAAA:8 a=ZsnAEJ0dk2gu5naU1fIA:9 a=cvBusfyB2V15izCimMoJ:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.20,FMLib:17.12.100.49
  definitions=2026-01-21_01,2026-01-20_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- suspectscore=0 malwarescore=0 bulkscore=0 adultscore=0 clxscore=1030
- mlxlogscore=999 phishscore=0 mlxscore=0 classifier=spam authscore=0 adjust=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ adultscore=0 mlxlogscore=999 bulkscore=0
+ spamscore=0 malwarescore=0
+ mlxscore=0 clxscore=1030 phishscore=0 classifier=spam authscore=0 adjust=0
  reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2601210115
-X-JNJ: AAAAAAABNoBcZBvj8WeOQ91UcFaTWT8tmaIPx7/2l1iKgWb6H9z21AjXEA5O+SGDNIYWvmoWsWxZweoIqy2fNnut0awSfTMhVL+7gAe/irWi85euJijfzAFyGla1cGFtiPulXe0kbhp8pcFJPk/YLNMUEdQQfOJx+NDIYEF/Xu4ISEFraySIuS10UvfkW0Lgj4TXhWa1w7LKlw/c71XSXBHqZcprf8X52oxZ9qvsJpJchGXLtWah6Ykwv+KGSZMo2FdruB20Qgi5ZiF50f19gOSk3TcxwHMmIxrlHwQKgYjKPnNvmqpygnhoctcwHhEHIiOOezZPQOC7L5T2wfnZuw4So8CclCdmlBVcntH9hRhYb/UNZmrLn+x2STNHwhgv6KrIUGDzeXk2lFGqNkGzFNgdvWVRkI/cLtZo055bSyLkgLLR+rsrQWdYVry4tCO89yK6KJN+BqqpkXod/VjBH9WyPDRugblxRw2kqifkN5P52E8nXVIPVrMacLXxMAcI4YBlbUqFy5/6VfX7aTn6PTt7fMX+D1joFwuDmhlG4xe8meVzPuUESLVFd9KOX+XDF5m8a5cZeRVyLViUv4nNbje471KGhjOexeLNyAEmoUDSoxrtrTpfxAFbTI1d6xFyPy9I8OAGL6gBMixoFDxiVVQ+f2hZ2F6fOGW1tA1uODosbwYWKMD3MJ57a4bbCXxWrYb03YueSDoURHso4E9KJN0mMIIc5BXyvmuvmHrvyA0uWS0Uv8ENkk7OcxV8W8y0b1+/bhnzGk+GvywRPVt1FjcGAtg4bCUoEMFBo3S3422GH5AXKqIb76qoH2N5CIT4dGWz9eas1wubdYcGzDlQ348ff0SJ6EjEmjzTHEgxFy1Aga4/acGRoaoHCwSVBhBQmXc865fLu/iOGn8oxaK1kwEUE4iEx1i2QBE/spbVpXG5UA0=
-Received-SPF: pass client-ip=57.103.87.105;
+X-JNJ: AAAAAAABBCEu9MlsAihlKDQiMZZn3VMI7SKVD/PHzGomG7R6PIKW+uaw06JLantmqMNP10BK7hkGvByaa43IEISzFboFrkjjEKwl6atnZmJYSFfeaGjoSSHgmOtC9N7S8mo1WsDl/5a0FMk41Kl0OR3WYr21A6Lp4RGueCU/bNbzGbB4Df4S3jdtoZ5Grd8v4zpbSj648c5IBIa7pYqUl8DKx/4qGT4FCQ5i1xZF6xzHv4/+CyXdhfRK4J7l87dNiuybPKZieX2zJCFIYia8XJ9OnzDCxWP9x9pYil80FtBg/8uyz1Nz4BVImpI8cuH1WRzJv9RCOmeAac7zmYOMIW4h5FeGYoxVgRD/b8Wk5ZRrm0RdqJTCCfwWmSp+gC+x/kCNogpTPmMGPBbB7XztVNxrgY+m04mQ8Z3EqEhQiIufppiN4m0ypn3Tb5tUBqeMyDXHc9RWE9Oor0pXLTus9JpRUShmeLJk9pPxeplBd/9M5XFwqL6rwfCuk/ZmqTD671Tna4Xq4P2s5rhWg1TqMGGCK1Y3T5BtPm46cVLJdFqlRx1eZzpug3pzHayw+AJeVptDCohwf/jAwUGceBothVFoQ6CF/LWGmBvFQ+VkhqYZYb/wXRWC15qRTMzzkJp1qgE32Nh4SuanUf3mySxkY4RNypg2hP98Bh7q4dXo+o0U9B1rwelQ94S9MRdJ+5PHTgEaq+QRDXTe2q8R2gkuR1ShbQ5r4O74MTBdYUgwvZY1tT3MMlVWRXmHmV9mUCNto9HyaG9ePaW4h/2j4E2GwixrH2PD+YP2uip/TkH84MoTx4l74elAPXCOFIxPRB+xK1T6+1BR2oqwhddakaT1CFVGcCqIFREjxAoXWwXa8TGxxhupI0llGgwosjwlOPtatRuyfg8lgtqfYDzUEoO7gw==
+Received-SPF: pass client-ip=57.103.87.95;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -103,39 +104,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hyper-V supports PSCI 1.3, and that implementation is exposed through
-WHPX.
+GICv3 state save-restore is currently not implemented yet.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- target/arm/cpu.c | 3 +++
- 1 file changed, 3 insertions(+)
+ hw/intc/arm_gicv3_whpx.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 05fa3339b1..fd1e3197ad 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -23,6 +23,7 @@
- #include "qemu/timer.h"
- #include "qemu/log.h"
- #include "exec/page-vary.h"
-+#include "system/whpx.h"
- #include "target/arm/idau.h"
- #include "qemu/module.h"
- #include "qapi/error.h"
-@@ -1143,6 +1144,8 @@ static void arm_cpu_initfn(Object *obj)
-     if (tcg_enabled() || hvf_enabled()) {
-         /* TCG and HVF implement PSCI 1.1 */
-         cpu->psci_version = QEMU_PSCI_VERSION_1_1;
-+    } else if (whpx_enabled()) {
-+        cpu->psci_version = QEMU_PSCI_VERSION_1_3;
+diff --git a/hw/intc/arm_gicv3_whpx.c b/hw/intc/arm_gicv3_whpx.c
+index 9bc036d1ac..a2f8e3c5fb 100644
+--- a/hw/intc/arm_gicv3_whpx.c
++++ b/hw/intc/arm_gicv3_whpx.c
+@@ -17,6 +17,7 @@
+ #include "system/whpx-internal.h"
+ #include "gicv3_internal.h"
+ #include "vgic_common.h"
++#include "migration/blocker.h"
+ #include "qom/object.h"
+ #include "target/arm/cpregs.h"
+ 
+@@ -204,6 +205,14 @@ static void whpx_gicv3_realize(DeviceState *dev, Error **errp)
+         error_setg(errp, "Nested virtualisation not currently supported by WHPX.");
+         return;
      }
++
++    Error *whpx_migration_blocker = NULL;
++
++    error_setg(&whpx_migration_blocker,
++        "Live migration disabled because GIC state save/restore not supported on WHPX");
++    if (migrate_add_blocker(&whpx_migration_blocker, errp) < 0) {
++        error_report_err(*errp);
++    }
  }
  
+ static void whpx_gicv3_class_init(ObjectClass *klass, const void *data)
 -- 
 2.50.1 (Apple Git-155)
 

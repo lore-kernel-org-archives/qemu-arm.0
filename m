@@ -4,109 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB175C44501
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 09:49:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13899C44501
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 10:20:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viUpX-0000vq-SQ; Wed, 21 Jan 2026 04:48:52 -0500
+	id 1viVJZ-0005jL-OO; Wed, 21 Jan 2026 05:19:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1viUpW-0000v1-CA
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 04:48:50 -0500
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1viUpU-0004JM-9H
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 04:48:50 -0500
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-b87cc82fd85so564706866b.2
- for <qemu-arm@nongnu.org>; Wed, 21 Jan 2026 01:48:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1768988926; cv=none;
- d=google.com; s=arc-20240605;
- b=VNBVoZQapeZpRPiq8THHuUghcD0tyBkIez7SfOwQS58qhplALtXBqDeuSDXJNxLzFi
- dz6JozdGzIgpNOAuqV11RTMeRLxp1wk55VzX2GvnuTbZu/i2GxdB3YhgBRraBFOhJ4ws
- W2WaB0NcrF+rYsQwmA+1jRKPNL0y+Gpt9+c5ubNyPUKrDiDzwMrHyHIOPWSMIGhniilv
- xLJx14eACO00PAZ5RRfXFITiqfkW8EcoN176o48Zvg4tEnDV2Rp85KDAezynmBc7EiS7
- 7uzWk0hDqOEnx5LklLGPlDUb+YcOduBFqKDoampOeqjgC2BkndLbl2Rzk7JkfjGigDzt
- mAxA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=Kyi9fncuN4cOT9Qwbze6uf3r3BG4aXoohtJV2Ki5cU0=;
- fh=5sH9K55ntY269PiHybdlJ/SfOxsw6bvBpQU24QB5Mrs=;
- b=R4fTs1LjyaOynXha4GVpRSeLFJltDF8uvjXyDblY6oWD9J0lytSqf4oXAxXNbwCim8
- hEIqoQWBK0paalrq79gFnn6olMpQHD9rypjq9mX7Iw5CvHLPIIuBG/dKH7KrXjHHNyTY
- b2Aa0eyRTgWbZn0rbsyiF8433kkw83L/VrXhv+Q4oCLiKM5iVKghssYoH5pRPXbnMsM8
- aRkA6MWBSAvb4msBVqU1k1gjB0i9gPG37Fo5FXXMvQDEqCGX1GBcl+TsogB5NbX0RqvE
- LYobR6pHCradE07eXEC0eR1dUdwVRAZTZ59RMGzee8cHx44632NdVYY6sWheVlYZwMAB
- 5mmQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768988926; x=1769593726; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Kyi9fncuN4cOT9Qwbze6uf3r3BG4aXoohtJV2Ki5cU0=;
- b=xh2Cj/zwFlZfGeb+vdJxqMaBmQbxtaLcmkCt0Jd1EbKukInNAW5jQPlT1ue1gkPUVd
- wivJ9/ANq7FId56mnCNyPKB8VYKYstf7ziEue30dEfBKyMUv3jCYk6sDvAscQ5+mMNaV
- +ZKK/KbuF3O1f6aeta/toFXxZ2KH6D26T8+u1EVTB7o4ByofA4Kcs9mz4Rv0erLr5LPX
- dBVB7qNQFdm8IIq8qkf7wJEnGNm0xuMvoYFJ1Ix+1txvbN7rXK4UbAzXN9xVH2cPhGvd
- wlDpOV9qwDIqmhJJ5zXWHsCAH4X0XyPuf2NG0Ocz0W1wT98Q1OB+Pb31CWXGI5otpqaw
- xi/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768988926; x=1769593726;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=Kyi9fncuN4cOT9Qwbze6uf3r3BG4aXoohtJV2Ki5cU0=;
- b=VoHCBp12z7C/zkF/mP9tipeL+dkDo43s987wec2QtRCN/TCe/dpdk7bl/kJDPPfgv2
- oojhIYUcwLJlDEDioNkMOUOBXL6BoeDiMcmYqjUbmDcHg8UtpXCWYlfeqGq3AWtCEY3j
- waOkmCwz0m+d/GaN1pK9JTU9xGjwNXu91NgySPlDmZ4aULcWFRk4U1psjRoO28YjhsDd
- YrttYnea0guEvA4r0CGA1aD5Fv187chbIVievSfNlld7ujAvepGAd9EQPQuRmXf87r/I
- Hms+yBGg+lDkyjFslC/Vf2Yr45I6/67YQMc5G5rhHED91HtVz1qjymOu33j6OuQo2onU
- 1gQQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW2kLU9C+BHXbUshg7RII0VD49FFpOa8GVf0xZkA4UrVDbA7Hym8dphL1sOHWUMxzF3/XShFLHNiA==@nongnu.org
-X-Gm-Message-State: AOJu0YyfyVlrpnjRDy8NgtExvIuGGaRxrh9UR617dFAGqbWlFZcJwi6h
- GqZtc3KHzXUR8tP/jnPoGqC/T6EqrxYvAd8TQ/EW7YTrzeULCcCpTVRt2vmpDlr8V5nTvs6TajL
- ymJ4rn33zf4z1pFxVfaqzd3xGVUTIMxb4ORg8m92W3w==
-X-Gm-Gg: AZuq6aJw9TYfgXCMMpvICr/xKgYJ45WDT7vx2UhiMU2nWYg+JFFXmWrtkrm+7IExGsm
- yNF7/uj6Zr3ZVo0m7USvQjomj2VGbIaHXVrUdB7f9cPrxr1PuvRG3yn96/MWvutbvV6R8Ej8/3h
- zwwU6tZ/yFq6UCZHaP8zhynyphwx51bVP1VUVaymTh8LWiXTAI6l2Y1AZRVahKiC1RGs7cVJUTB
- g1gqMA8n2qDdqo4sJaQC1sTQSm8osWJanmmyS42nNqzEufoIOPaAJtTEk8uCNMi74un4FtZe+69
- D6Sb4iGmlLAKgtwXx3ZPsyslF9brYq/WhlSt
-X-Received: by 2002:a17:907:7282:b0:b87:4c37:7fd8 with SMTP id
- a640c23a62f3a-b8796b953bamr1452579966b.49.1768988925589; Wed, 21 Jan 2026
- 01:48:45 -0800 (PST)
-MIME-Version: 1.0
-References: <20260115-sme2-hvf-v2-0-2eca481bd7ee@linaro.org>
- <20260115-sme2-hvf-v2-1-2eca481bd7ee@linaro.org>
- <1b0bd534-dd41-4ace-b5b3-37d854ae3d31@linaro.org>
-In-Reply-To: <1b0bd534-dd41-4ace-b5b3-37d854ae3d31@linaro.org>
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Wed, 21 Jan 2026 11:48:19 +0200
-X-Gm-Features: AZwV_QieMxmGOt5h_uUsgXx8uINFPJk2u-1YhanMM975plgOrem57jmfn9aUJG4
-Message-ID: <CAAjaMXbHe_zZ_dbz2VD95LAnfZzUkbFgZ2x4N39AEzWRssF7mw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] hvf/arm: handle FEAT_SME2 migration
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Content-Type: text/plain; charset="UTF-8"
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1viVJS-0005iQ-Ef
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 05:19:46 -0500
+Received: from ci-2005d-snip4-3.eps.apple.com ([57.103.89.164]
+ helo=outbound.ci.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1viVJP-00040x-Rh
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 05:19:45 -0500
+Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-15 (Postfix) with ESMTPS id
+ 0D5221800226; Wed, 21 Jan 2026 10:19:33 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1768990779; x=1771582779;
+ bh=n/2hISps0nO6IYaHjtQmwBh7VVIpR/iItNzogwjO0+A=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=CK4rQFwHVCuM/WDlsJEkRo/BRtYyZBlD6X6vFSYWL+p8cz4SkNSArDxQc/tbBZelN/tv6RfVSTNKmHeeNNE9zldSQRFP8TCkfLcRAEiPOLPKe1QNEKOS4QgeD021Nrg+Vu4bV+rlOwe5b0HtOHUyu2cmeN9y22GVJpAtodaUV1AIuOlrx4Vx949rEL4btzK9J+ZwUYOsHfZQyfivevNpRQMpTAieQktaku1Ue8HdI8UsF7NKcJWwtzGi7HeaDlYUSr2XgiuUccsTvUFVcKq+HhWuetb6j1OO/wbLgw1luBnphWhSyPU6oW+pUvyX39RaWKT8KjENL5O6L0Lc3wn5Bg==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.156.36])
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-15 (Postfix) with ESMTPSA id
+ EB4E2180008D; Wed, 21 Jan 2026 10:19:30 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
+Subject: Re: [PATCH v16 04/26] hw/arm: virt: add GICv2m for the case when ITS
+ is not available
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <CAFEAcA9JC1HRboZ=722dsT7a4nDQNF_ECjLK+z84T5MJisfppg@mail.gmail.com>
+Date: Wed, 21 Jan 2026 11:19:19 +0100
+Cc: qemu-devel@nongnu.org,
+ =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62a.google.com
+Message-Id: <2FD2C3C6-8FBA-4833-B890-5E81637BE7EE@unpredictable.fr>
+References: <20260116135235.38092-1-mohamed@unpredictable.fr>
+ <20260116135235.38092-5-mohamed@unpredictable.fr>
+ <CAFEAcA-3P6i_w3b7SaFTn4Zmwnot5vpDs89y+zpjcJ=-mEnP5w@mail.gmail.com>
+ <8158CEFE-8EA2-40A4-970E-01B30BACC019@unpredictable.fr>
+ <CAFEAcA9JC1HRboZ=722dsT7a4nDQNF_ECjLK+z84T5MJisfppg@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+X-Mailer: Apple Mail (2.3864.300.41.1.7)
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTIxMDA4NiBTYWx0ZWRfX9zVbE3WGCXag
+ CcahGr0MKMSldxlW2qM4e4MKtb+EQG3ROq+Dj8hiLcRB2bhn9H+y+Axfm2sHB84bMHAWWhVYWPx
+ euRQT2+qafFXp1tOSN/cyFY62hxC+paddvm+QaYOBlDM6s4cZHbDhBwCCK/OkJCYQEroPUJNIDd
+ u+GwR8GqDz8T7UyDdVo8ygHCJZB2dkn01d7obhiS5ivlzmiI84LQDNHy4oOcofx2xJqTxbVGiGz
+ 58S3dZymt0uDcaXYiBtCXFCd+c4hjxiYenpTo7HWqqAXfxvNsL8RWvpnH774JDVbdzt2Kyg3M/x
+ kD/yiTgwsf1t9M43iIT
+X-Proofpoint-ORIG-GUID: 5kBUN3drdqW2TYbYcO4RyJf3NFeCElOZ
+X-Authority-Info-Out: v=2.4 cv=NtTcssdJ c=1 sm=1 tr=0 ts=6970a838
+ cx=c_apl:c_apl_out:c_pps a=2G65uMN5HjSv0sBfM2Yj2w==:117
+ a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=8tVNtdTugjW4QW2w:21 a=IkcTkHD0fZMA:10
+ a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8
+ a=ILVyFMIZgqNhlbEAeMkA:9 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: 5kBUN3drdqW2TYbYcO4RyJf3NFeCElOZ
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.20,FMLib:17.12.100.49
+ definitions=2026-01-21_01,2026-01-20_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ adultscore=0 clxscore=1030 spamscore=0 bulkscore=0
+ suspectscore=0
+ phishscore=0 mlxscore=0 mlxlogscore=999 classifier=spam authscore=0 adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2601210086
+X-JNJ: AAAAAAABRPRlKuYMXrJfns+5kOsC+YnY+S4CnNaHQgt1UQSHA5w0pobXrruHKVKNlL3z7d3deXBHFRNeiRUrXG6Q1mN6l8JZIQU1C2mNseAo4L3E3/A2ydzQ5VGEyRSDZV0fVk08XYCqBDaX8he6+VQFAeKnseDbidpRqAZbgBUh3GygCD2ZH8OwBXKEfFKpt5Ikzn7Rtt0tL8rh5Rni4BsbLh1XwAxAQs146mZOMDt2Ayv+8TeWAehvWCDOsPoohoNEroYHg6MHDuGBsIi9ypQ9MRCSrX/uhDEnPMkS70bWv5wX41acP6aLzGLVYZtGW4/MotvgPjoyhMyy9f5S/QCiCcwPH8eSMhI0JEWDuxjfZv/5P+9zCnIPnHVIwOe6lKF3DhHOq5Pycd4+8F6LGAhDxG4zx83xVLUJUK/Ox8mPRVqOpGKOEJxe/P0GsOnZPaOmQ0TMnzubqBG1HnyK49yAIxB8aa28BRkdGjT2xgS4KPS+cUA2NJytGvX5YcmwlDx039JBtVRa5Ew2I5i5aUwWwprP7dIwCKuQngCPEmILFkjbip3lyo5uuKozXxa65OiMsUqzEt+vsNPkE7ZwwfdUGGrru0FXuiu0y3QL4/O2LvO2zuKwMhxm/f7Bffvj2wKgzkZQUNwbsWrYYIFFr3Ugyi4RHK74Vg2aaxsPqhwhgsSaF14sf78c2uzYc2j552tL7nveZ0BUwW2QpGCNqBSh2oHfTC14PK9TMuSK6xS8rpZEtVNamYM1xTgPALfurJoNh86mw8uvIxMUwKUfQPB4R9+L6d49RqMsB6sHkqY/dtxFvOoEkdDzjXWZ
+Received-SPF: pass client-ip=57.103.89.164;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,353 +107,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jan 20, 2026 at 12:47=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> Hi Manos,
->
-> Mostly nitpicking comments :)
->
-> On 15/1/26 12:20, Manos Pitsidianakis wrote:
-> > SME2 support adds the following state for HVF guests:
-> >
-> > - Vector registers Z0, ... , Z31 (introduced by FEAT_SVE but HVF does
-> >    not support it)
-> > - Predicate registers P0, .., P15 (also FEAT_SVE)
-> > - ZA register
-> > - ZT0 register
-> > - PSTATE.{SM,ZA} bits (SVCR pseudo-register)
-> > - SMPRI_EL1 which handles the PE's priority in the SMCU
-> > - TPIDR2_EL0 the thread local ID register for SME
-> >
-> > Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-> > ---
-> >   target/arm/hvf/hvf.c           | 285 ++++++++++++++++++++++++++++++++=
-++++++++-
-> >   target/arm/hvf/hvf_sme_stubs.h | 158 +++++++++++++++++++++++
-> >   target/arm/hvf/sysreg.c.inc    |   8 ++
-> >   target/arm/hvf_arm.h           |  41 ++++++
-> >   target/arm/machine.c           |   2 +-
-> >   5 files changed, 491 insertions(+), 3 deletions(-)
->
->
-> >   int hvf_arch_get_registers(CPUState *cpu)
-> >   {
-> > @@ -465,6 +698,10 @@ int hvf_arch_get_registers(CPUState *cpu)
-> >           uint64_t kvm_id =3D arm_cpu->cpreg_indexes[i];
-> >           int hvf_id =3D KVMID_TO_HVF(kvm_id);
-> >
-> > +        if (kvm_id =3D=3D HVF_TO_KVMID(SVCR)) {
-> > +            continue;
-> > +        }
-> > +
-> >           if (cpu->accel->guest_debug_enabled) {
-> >               /* Handle debug registers */
-> >               switch (hvf_id) {
-> > @@ -558,6 +795,11 @@ int hvf_arch_get_registers(CPUState *cpu)
-> >
-> >           arm_cpu->cpreg_values[i] =3D val;
-> >       }
-> > +    if (__builtin_available(macOS 15.2, *)) {
-> > +        if (cpu_isar_feature(aa64_sme, arm_cpu)) {
-> > +            hvf_arch_get_sme(cpu);
-> > +        }
-> > +    }
->
-> What about:
->
->         if (cpu_isar_feature(aa64_sme, arm_cpu)) {
->             if (__builtin_available(macOS 15.2, *)) {
->                 hvf_arch_get_sme(cpu);
->             } else {
->                 g_assert_not_reached();
->             }
->         }
->
-> ?
 
-Yes, that's definitely better.
 
->
-> >       assert(write_list_to_cpustate(arm_cpu));
-> >
-> >       aarch64_restore_sp(env, arm_current_el(env));
-> > @@ -603,6 +845,10 @@ int hvf_arch_put_registers(CPUState *cpu)
-> >           uint64_t kvm_id =3D arm_cpu->cpreg_indexes[i];
-> >           int hvf_id =3D KVMID_TO_HVF(kvm_id);
-> >
-> > +        if (kvm_id =3D=3D HVF_TO_KVMID(SVCR)) {
-> > +            continue;
-> > +        }
-> > +
-> >           if (cpu->accel->guest_debug_enabled) {
-> >               /* Handle debug registers */
-> >               switch (hvf_id) {
-> > @@ -687,6 +933,11 @@ int hvf_arch_put_registers(CPUState *cpu)
-> >       ret =3D hv_vcpu_set_vtimer_offset(cpu->accel->fd, hvf_state->vtim=
-er_offset);
-> >       assert_hvf_ok(ret);
-> >
-> > +    if (__builtin_available(macOS 15.2, *)) {
-> > +        if (cpu_isar_feature(aa64_sme, arm_cpu)) {
-> > +            hvf_arch_put_sme(cpu);
-> > +        }
-> > +    }
-> >       return 0;
-> >   }
-> >
-> > @@ -909,6 +1160,18 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-> >       hv_return_t ret;
-> >       int i;
-> >
-> > +    if (__builtin_available(macOS 15.2, *)) {
-> > +        sregs_match_len +=3D ARRAY_SIZE(hvf_sreg_list_sme2) + 1;
-> > +
-> > +#define DEF_SYSREG_15_02(HVF_ID, ...) \
-> > +        g_assert(HVF_ID =3D=3D KVMID_TO_HVF(KVMID_AA64_SYS_REG64(__VA_=
-ARGS__)));
-> > +#define DEF_SYSREG(...)
-> > +
-> > +#include "sysreg.c.inc"
-> > +
-> > +#undef DEF_SYSREG
-> > +#undef DEF_SYSREG_15_02
-> > +    }
-> >       env->aarch64 =3D true;
-> >       asm volatile("mrs %0, cntfrq_el0" : "=3Dr"(arm_cpu->gt_cntfrq_hz)=
-);
-> >
-> > @@ -927,7 +1190,7 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-> >       memset(arm_cpu->cpreg_values, 0, sregs_match_len * sizeof(uint64_=
-t));
-> >
-> >       /* Populate cp list for all known sysregs */
-> > -    for (i =3D 0; i < sregs_match_len; i++) {
-> > +    for (i =3D 0; i < ARRAY_SIZE(hvf_sreg_list); i++) {
-> >           hv_sys_reg_t hvf_id =3D hvf_sreg_list[i];
-> >           uint64_t kvm_id =3D HVF_TO_KVMID(hvf_id);
-> >           uint32_t key =3D kvm_to_cpreg_id(kvm_id);
-> > @@ -938,6 +1201,24 @@ int hvf_arch_init_vcpu(CPUState *cpu)
-> >               arm_cpu->cpreg_indexes[sregs_cnt++] =3D kvm_id;
-> >           }
-> >       }
-> > +    if (__builtin_available(macOS 15.2, *)) {
-> > +        for (i =3D 0; i < ARRAY_SIZE(hvf_sreg_list_sme2); i++) {
-> > +            hv_sys_reg_t hvf_id =3D hvf_sreg_list_sme2[i];
-> > +            uint64_t kvm_id =3D HVF_TO_KVMID(hvf_id);
-> > +            uint32_t key =3D kvm_to_cpreg_id(kvm_id);
-> > +            const ARMCPRegInfo *ri =3D get_arm_cp_reginfo(arm_cpu->cp_=
-regs, key);
-> > +
-> > +            if (ri) {
-> > +                assert(!(ri->type & ARM_CP_NO_RAW));
-> > +                arm_cpu->cpreg_indexes[sregs_cnt++] =3D kvm_id;
-> > +            }
-> > +        }
-> > +        /*
-> > +         * Add SVCR last. It is elsewhere assumed its index is after
-> > +         * hvf_sreg_list and hvf_sreg_list_sme2.
-> > +         */
-> > +        arm_cpu->cpreg_indexes[sregs_cnt++] =3D HVF_TO_KVMID(SVCR);
-> > +    }
->
-> Could we add as a hvf_arch_init_sme() helper instead?
->
+> On 21. Jan 2026, at 10:27, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>=20
+> On Tue, 20 Jan 2026 at 18:44, Mohamed Mediouni =
+<mohamed@unpredictable.fr> wrote:
+>>=20
+>>=20
+>>=20
+>>> On 20. Jan 2026, at 19:02, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>>=20
+>>=20
+>>> The MSI controller selection logic is already pretty confusing,
+>>> and this is making it more complicated. I don't think we should
+>>> need this machine back compatibility, because currently there
+>>> is no setup where you can have a GICv3 that doesn't also have
+>>> either an ITS or no MSI controller.
+>>>=20
+>> Hello,
+>>=20
+>> This was to replicate the =E2=80=9Cno_tcg_its=E2=80=9D where this was =
+done when introducing TCG.
+>> And for the purpose of VM save/restore on HVF with the older machine =
+type continuing to work as expected.
+>=20
+> no_tcg_its is there for backwards compatibility: on older
+> QEMU versions before we added the TCG ITS, if you said
+> "-machine virt,gic-version=3D3 -accel tcg" you didn't get an
+> ITS; we wanted to change the default in new machine versions,
+> so we needed the back compat switch.
+>=20
+> What is the command line that works today and where we
+> want to go from "default to GICv3 without ITS or v2m"
+> to "default to GICv3 with v2m" ? I might have missed it
+> but back last year when I was looking at the current
+> configs I didn't think we had one.
+Hello,
 
-Will do in next revision
+None, was thinking about what its=3Doff should mean but perhaps=20
+the right behaviour to do there is to have it mean no MSI-X controller.
 
-> >       arm_cpu->cpreg_array_len =3D sregs_cnt;
-> >       arm_cpu->cpreg_vmstate_array_len =3D sregs_cnt;
-> >
-> > diff --git a/target/arm/hvf/hvf_sme_stubs.h b/target/arm/hvf/hvf_sme_st=
-ubs.h
-> > new file mode 100644
-> > index 0000000000000000000000000000000000000000..9c679b711017448681e532b=
-88ce10a07ebfd5122
-> > --- /dev/null
-> > +++ b/target/arm/hvf/hvf_sme_stubs.h
-> > @@ -0,0 +1,158 @@
-> > +/* SPDX-License-Identifier: GPL-2.0-or-later */
-> > +
-> > +typedef int32_t hv_return_t;
-> > +typedef uint64_t hv_vcpu_t;
->
-> We certainly already have these.
+The no_gicv3_with_gicv2m flag is solely used for the its=20
+config option (which is legacy) and not used for the msi
+config option.
 
-We don't, hvf sdk header provides these. If you include the hvf header
-here, there will be a bunch of definitions that are available and a
-bunch that are not (guarded by availability attribute) so it's far
-easier to just typedef these two in the stub header.
+Will make the next patch rev make its=3Doff mean no MSI-X controller at =
+all
+and remove the no_gicv3_with_gicv2m flag then.
 
->
-> > +
-> > +static inline bool hvf_arm_sme2_supported(void)
-> > +{
-> > +    return false;
-> > +}
-> > +
-> > +static inline uint32_t hvf_arm_sme2_get_svl(void)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
-> > +
-> > +typedef enum hv_sme_p_reg_t {
-> > +    HV_SME_P_REG_0,
-> > +    HV_SME_P_REG_1,
-> > +    HV_SME_P_REG_2,
-> > +    HV_SME_P_REG_3,
-> > +    HV_SME_P_REG_4,
-> > +    HV_SME_P_REG_5,
-> > +    HV_SME_P_REG_6,
-> > +    HV_SME_P_REG_7,
-> > +    HV_SME_P_REG_8,
-> > +    HV_SME_P_REG_9,
-> > +    HV_SME_P_REG_10,
-> > +    HV_SME_P_REG_11,
-> > +    HV_SME_P_REG_12,
-> > +    HV_SME_P_REG_13,
-> > +    HV_SME_P_REG_14,
-> > +    HV_SME_P_REG_15,
-> > +} hv_sme_p_reg_t;
-> > +
-> > +typedef __attribute__((ext_vector_type(64))) uint8_t hv_sme_zt0_uchar6=
-4_t;
-> > +
-> > +typedef enum hv_sme_z_reg_t {
-> > +    HV_SME_Z_REG_0,
-> > +    HV_SME_Z_REG_1,
-> > +    HV_SME_Z_REG_2,
-> > +    HV_SME_Z_REG_3,
-> > +    HV_SME_Z_REG_4,
-> > +    HV_SME_Z_REG_5,
-> > +    HV_SME_Z_REG_6,
-> > +    HV_SME_Z_REG_7,
-> > +    HV_SME_Z_REG_8,
-> > +    HV_SME_Z_REG_9,
-> > +    HV_SME_Z_REG_10,
-> > +    HV_SME_Z_REG_11,
-> > +    HV_SME_Z_REG_12,
-> > +    HV_SME_Z_REG_13,
-> > +    HV_SME_Z_REG_14,
-> > +    HV_SME_Z_REG_15,
-> > +    HV_SME_Z_REG_16,
-> > +    HV_SME_Z_REG_17,
-> > +    HV_SME_Z_REG_18,
-> > +    HV_SME_Z_REG_19,
-> > +    HV_SME_Z_REG_20,
-> > +    HV_SME_Z_REG_21,
-> > +    HV_SME_Z_REG_22,
-> > +    HV_SME_Z_REG_23,
-> > +    HV_SME_Z_REG_24,
-> > +    HV_SME_Z_REG_25,
-> > +    HV_SME_Z_REG_26,
-> > +    HV_SME_Z_REG_27,
-> > +    HV_SME_Z_REG_28,
-> > +    HV_SME_Z_REG_29,
-> > +    HV_SME_Z_REG_30,
-> > +    HV_SME_Z_REG_31,
-> > +} hv_sme_z_reg_t;
->
-> Hmm do we need those? Could we just define the typedef?
+> thanks
+> -- PMM
 
-Yes, they are used in the static const hvf_reg_match arrays.
 
->
->    typedef uint32_t hv_sme_p_reg_t;
->    typedef uint32_t hv_sme_z_reg_t;
->    typedef void *hv_sme_zt0_uchar64_t;
->
-> > +
-> > +enum {
-> > +  HV_SYS_REG_SMCR_EL1,
-> > +  HV_SYS_REG_SMPRI_EL1,
-> > +  HV_SYS_REG_TPIDR2_EL0,
-> > +  HV_SYS_REG_ID_AA64ZFR0_EL1,
-> > +  HV_SYS_REG_ID_AA64SMFR0_EL1,
-> > +};
-> > +
-> > +typedef struct {
-> > +    bool streaming_sve_mode_enabled;
-> > +    bool za_storage_enabled;
-> > +} hv_vcpu_sme_state_t;
-> > +
-> > +static inline hv_return_t hv_sme_config_get_max_svl_bytes(size_t *valu=
-e)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
-> > +
-> > +static inline hv_return_t hv_vcpu_get_sme_state(hv_vcpu_t vcpu,
-> > +                                                hv_vcpu_sme_state_t *s=
-me_state)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
-> > +
-> > +static inline hv_return_t hv_vcpu_set_sme_state(hv_vcpu_t vcpu,
-> > +                                                const hv_vcpu_sme_stat=
-e_t *sme_state)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
-> > +
-> > +static inline hv_return_t hv_vcpu_get_sme_z_reg(hv_vcpu_t vcpu,
-> > +                                                hv_sme_z_reg_t reg,
-> > +                                                uint8_t *value,
-> > +                                                size_t length)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
-> > +
-> > +static inline hv_return_t hv_vcpu_set_sme_z_reg(hv_vcpu_t vcpu,
-> > +                                                hv_sme_z_reg_t reg,
-> > +                                                const uint8_t *value,
-> > +                                                size_t length)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
-> > +
-> > +static inline hv_return_t hv_vcpu_get_sme_p_reg(hv_vcpu_t vcpu,
-> > +                                                hv_sme_p_reg_t reg,
-> > +                                                uint8_t *value,
-> > +                                                size_t length)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
-> > +
-> > +static inline hv_return_t hv_vcpu_set_sme_p_reg(hv_vcpu_t vcpu,
-> > +                                                hv_sme_p_reg_t reg,
-> > +                                                const uint8_t *value,
-> > +                                                size_t length)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
-> > +
-> > +static inline hv_return_t hv_vcpu_get_sme_za_reg(hv_vcpu_t vcpu,
-> > +                                                 uint8_t *value,
-> > +                                                 size_t length)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
-> > +
-> > +static inline hv_return_t hv_vcpu_set_sme_za_reg(hv_vcpu_t vcpu,
-> > +                                                 const uint8_t *value,
-> > +                                                 size_t length)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
-> > +
-> > +static inline hv_return_t hv_vcpu_get_sme_zt0_reg(hv_vcpu_t vcpu,
-> > +                                                  hv_sme_zt0_uchar64_t=
- *value)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
-> > +
-> > +static inline hv_return_t hv_vcpu_set_sme_zt0_reg(hv_vcpu_t vcpu,
-> > +                                                  const hv_sme_zt0_uch=
-ar64_t *value)
-> > +{
-> > +    g_assert_not_reached();
-> > +}
 

@@ -4,100 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0B03C44503
-	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 11:07:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 638A5C4451C
+	for <qemu-arm@archiver.kernel.org>; Wed, 21 Jan 2026 11:34:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1viW3S-0007XT-SB; Wed, 21 Jan 2026 06:07:18 -0500
+	id 1viWTU-0004Fa-4O; Wed, 21 Jan 2026 06:34:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1viW3Q-0007X4-WF
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 06:07:17 -0500
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1viWTS-0004Ea-Hb
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 06:34:10 -0500
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1viW3O-0000qn-Dz
- for qemu-arm@nongnu.org; Wed, 21 Jan 2026 06:07:16 -0500
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-432d2670932so4892263f8f.2
- for <qemu-arm@nongnu.org>; Wed, 21 Jan 2026 03:07:13 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1viWTQ-00019h-Qd
+ for qemu-arm@nongnu.org; Wed, 21 Jan 2026 06:34:10 -0500
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-79273a294edso64451537b3.3
+ for <qemu-arm@nongnu.org>; Wed, 21 Jan 2026 03:34:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1768995247; cv=none;
+ d=google.com; s=arc-20240605;
+ b=FQ7dVGGEcS+goqwT//3k/xI+kRMBt8Js5bUydHRY3+9C0c90l374dRTWurR4pVF8WS
+ gpGjkwSVsu/4p2phB6ALFiUoKe/7iZ0jMvoLS28odDE/30NR8YbcJp3L2PqIleipNgUG
+ 0VaNf50AynLF6svOW5CRyStiQ5xGkkThiBTYSUn/3eHkckNWh9FPnAiTP0syEeI88aOC
+ WXGhr1G2kFZ66QuwawbOnVN19avfcFfOLgM5ZouYgSqcAYRc3rxIzZw1KAtPeuk8HCdq
+ 5pIdi6QW4KEAdh0sUB37GQ7B/jpOzTEkSM1YKHwNfn4L1ITjIW37vK2vl2JReTmrpOQl
+ Jp2Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=mLuZJvGCivU4rESBYg6drY90vTgnZPRoAgmHJHo2J6E=;
+ fh=76c1IVmVyR1fEjmfC2fZ3JGMXuTBieWQ0lnF5F7IudI=;
+ b=HQ5B54Y1K8iR2zF/5A13B25Ai8qFTx5MmVdsrpGzchwtLFlXoU15rENdnjUDqKUmG5
+ iyDwozMrBtvDSl/ELf+5Ao4FkzK9Np2j5xPApzlDl9yAe4m4dbKj5cWM7nR/gfWqaCEo
+ 7R/hhvZDzzo+Re+RXPZlK6T1AcN/NaXLkgIOTR0sHgdreUwtF1cnACQs3t86W7YKT1Bo
+ kG4QA5s03sarMSfMGBTg3aXP+D52Mtv4FDDUq0wPts5jmaqpi9trIfMeHEYIadopg0Ol
+ dQJPsIxvE41/fiTYF26nM2Dqrs+EZr0+NYqbvPad7tzO2RGkaCycfrvaErJtnwnp9pko
+ xSAQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1768993632; x=1769598432; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1768995247; x=1769600047; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AvXIcUcFIHl+FOT/5XufFwBd/hO4ZWyaRo3/VOlVw7A=;
- b=TNTjtXGPrgwhOnlyntXQR2sRddGNSKRd9EsvEV8fR4m0AqUL/1z2AMcbdRYmnyMbKK
- 61LsJOxL31OvpiNZXozY4vDlXd/N0U05atFsDONhX4lOcGuc83r3vr/M68DTD5MRzHWi
- Ibi2EqTXWhC1+ROPc1l5+aPprAuY/Glf02+xRswR+5hzBjjNxSi9n4hEhujUvMz5B111
- 3kT19AF2jtR7cR6ZB55B4WEHuCybf+CHXZSIcBQgJTCyy1S7RZLwQOtms1iIHEyN0l4Q
- nWvcsVT+XP1FdJu/5EJlERn7wM76FLGFw/mg72sxZV7ksQFx09IxSHI0MK3nfKEHmLcb
- S7Og==
+ bh=mLuZJvGCivU4rESBYg6drY90vTgnZPRoAgmHJHo2J6E=;
+ b=QhRT7jDXGLC+0eWangDWv4zeu6sZBiVIJwt05Vu5XhGyAWdlZadUvIawQrkpReUeLT
+ 5Uri7y+6RScxyN/oHmt5x5BmFzRyL6DHSo+3gAX5GTm4oDCZdyZMJgWx78BU//fOFsNI
+ z4exmThIQdq6q8E9+9LNXK1XRnjDTVPsZZADI5AQoldqVbnes/VsFNlWC629wD4BYPmu
+ ZF6zStLF8lUueTsPFT7a8ATv+AZCCUI+5GrEdKuXSYz43l1vK1pDelgJtL5oAZy+w1Ld
+ Fi0/RT0l3+M+e3tYIpQkWhzccarYQLpVZj0f7X69FOaGQhkALdcgv35a7ucE28CA902e
+ dGIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768993632; x=1769598432;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20230601; t=1768995247; x=1769600047;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=AvXIcUcFIHl+FOT/5XufFwBd/hO4ZWyaRo3/VOlVw7A=;
- b=BEGPRC3sD49ybNYdBwNXHu2SXd6RWbfpK/WCRI6MzMvY2jPYuUi1JytUFO7RJGu4Ji
- cLwHwkHh5x360ADIcFSyvhH57IFZHCnW4OnLVYa3f5l3EGr0whs6plV5vjSohk1LFtu6
- IHPIfG071vd7PZv5WlpmRd2lOOv7Gh1J/VDgBglD9H91y5RnybZZbCKxktrHUiJr53yr
- GRgrfda8ykWgzCunsb0ONBfh2JJDaqdcW6NeOHOpEoOMxD9N822L///oBQlcEDTVpIrZ
- tyAzEDHzCshBgOp7MVpY3gCPwprGFNl9eVzUqq+lkwjhp1vhMX3l08yDJc0/Ptce2OKE
- imWQ==
+ bh=mLuZJvGCivU4rESBYg6drY90vTgnZPRoAgmHJHo2J6E=;
+ b=A1ms447SoFUa7s7Kj3LBrC785yOl+9zw4NXKcEEOzzhqPRlZbmNcSJRVEw9VRRSH0X
+ 1ovfVUmv3434jsKv7OdAuKy8kKFmARS8PqhzCsbBji69vN6OLSMUUTazZQhjnUBXxrlQ
+ aDLQzQtACh7W1on7abZhEQkBIj1iCbHQju+5oOQv/iJMgPYN9kxH4yvz55ob2rgA/7xd
+ jivmLDQEPPQ/5OvnfxRtT5T04UTlyeY0znjhhEicKVnbjb5L2tD1fVVtv/NBw13M0UMY
+ iQUyfP4p0qABVkd/uNOcVMlybvrVKg/BFbj2RHblEVzwftmi5Oy9zeZ07z+EygjUrWrT
+ kRIA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUOdVvv1f1skRkYpQNqmXdYdmqYJEMJEGMuAmIf8qB33lFtpwsnuNBWnrWmLfdyKd8xgQ1WDoJ23w==@nongnu.org
-X-Gm-Message-State: AOJu0YyUJbv59P39rqFmG38XvkZZOzyA4RG+8lfeNHMP/NPNcGhCFels
- W/uTNVrFWEqHrFxx1GkX8U0UxmKFpwWXEZJ9SCXXFUSE1SrWBpY0baoW
-X-Gm-Gg: AZuq6aJt6gxCDAPBmgUXZjqaOez2+4lmZOfuxg/VGp14M9z9HQKpUXO3FZsvdSZOe0z
- domhHPTtdSIvyWUYpPHRUvWMhP35SlB/egpjJDVgPD4Ea00qJubDKP2vI5/84rLWZ9XgIPjLZqP
- Km4tZd1MkXWLF2vKqr6G5LOV+f23ColD9CwtcUIPtOZyJTKdVg5Qxlvszze0l+alEdZ6/5+rekb
- U0Yfml7aw8/vshzd5P7EVqcROtaol1SDzDViQ30HXbe8TEakRPTeEis8iO9AHQigyiIJzcFb0rR
- 8Gs/dn7BgprygcydHHGaA2H5VhZz1xepzh63ncuwqp9F+PUyO4twU/qsb2yNeORk9GqoxNXNGFh
- BYO3B/jdK6gCuNPRFhFJXGZS2CeQhgoGx/UtfpGp/8JzeXd8zuVyRNioxdU9LZw4k1l115BPEKx
- 5K/ItyKbuoFX6jfGUCA1qyTDRkho7mTpGzO11TkQNDucLExXZCFwa0hmC/RPnyMBgJV14j6UNfH
- Cci95pOnUGRo2d6zYr2iUFwHIVsE94R3uo=
-X-Received: by 2002:a05:6000:240f:b0:435:a370:2d77 with SMTP id
- ffacd0b85a97d-435a3702f2dmr281300f8f.27.1768993631938; 
- Wed, 21 Jan 2026 03:07:11 -0800 (PST)
-Received: from ehlo.thunderbird.net
- (dynamic-2a02-3100-2d8a-c300-f91d-651c-a220-693b.310.pool.telefonica.de.
- [2a02:3100:2d8a:c300:f91d:651c:a220:693b])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4356992c6f2sm34639669f8f.19.2026.01.21.03.07.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 21 Jan 2026 03:07:11 -0800 (PST)
-Date: Wed, 21 Jan 2026 11:07:09 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>,
- mohamed@unpredictable.fr
-CC: =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH v16 00/26] WHPX support for Arm
-In-Reply-To: <20260116135235.38092-1-mohamed@unpredictable.fr>
-References: <20260116135235.38092-1-mohamed@unpredictable.fr>
-Message-ID: <26F1A1BC-1E1E-4277-B8D4-7B586FBE8DDE@gmail.com>
+ AJvYcCWiZIO68QKwWRkMRfAT1qoqm582R76Vn6CiFMsz2nISM5yPowHVm3Wa2tPUyLB/ZV5NW49pRx+mvQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyL+YJ+9ncTffdigTBB0eF7Z9/GksuhxfMUKDBZhcglKjP0hVye
+ i0z+5g9UvZtOHifsDO0yXd5cV0UofhMrGidimEo1SkCp/UAz1o5YQMgyXLxTbtiefkVfi7bcqci
+ DtsEOgUxC0mjXIFkb+g/HpX8mgspgLflnNW+Yesm4uw==
+X-Gm-Gg: AZuq6aK9CTjKhAVUv8D+qxdZ2Pq/7eGN8xjn0y8hK/VAnGCX4dkbTmFx7ZR69noRGAK
+ W+2VYXd7/lBfYouerFNslwjlbmxplG6oQmuvLNr85pzfSX63P9Fn8VURTfLis8fPFz/yVOdKwOl
+ nqSsY8e7qJdb+Yw6wuiBa8Pq9A5dabgUp8TSWu7BqGhFP7qIZ+OmR2neUq9kQ+qGNfJEvv2ka4p
+ sZ5WmrcZqNp8hEpA8EiwE9dAAaCiGRNcY5QcKmgq1WpGKHsgFSGX395J2IOOWgHthJx9A==
+X-Received: by 2002:a05:690c:310:b0:784:952f:922b with SMTP id
+ 00721157ae682-7940a376c27mr43328177b3.63.1768995246835; Wed, 21 Jan 2026
+ 03:34:06 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+References: <20260116135235.38092-1-mohamed@unpredictable.fr>
+ <20260116135235.38092-5-mohamed@unpredictable.fr>
+ <CAFEAcA-3P6i_w3b7SaFTn4Zmwnot5vpDs89y+zpjcJ=-mEnP5w@mail.gmail.com>
+ <8158CEFE-8EA2-40A4-970E-01B30BACC019@unpredictable.fr>
+ <CAFEAcA9JC1HRboZ=722dsT7a4nDQNF_ECjLK+z84T5MJisfppg@mail.gmail.com>
+ <2FD2C3C6-8FBA-4833-B890-5E81637BE7EE@unpredictable.fr>
+In-Reply-To: <2FD2C3C6-8FBA-4833-B890-5E81637BE7EE@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 21 Jan 2026 11:33:55 +0000
+X-Gm-Features: AZwV_QgqMRQrWXZHWGXER70p5bRiQr55Gyh70nqhj9c4jX-SyrNj2yBjFIEPr2k
+Message-ID: <CAFEAcA-MAsQpaaUx0dJHRHjUJ6bEWwnf58VZN965Npmi7_kHXQ@mail.gmail.com>
+Subject: Re: [PATCH v16 04/26] hw/arm: virt: add GICv2m for the case when ITS
+ is not available
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Pedro Barbuda <pbarbuda@microsoft.com>, Eduardo Habkost <eduardo@habkost.net>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+X-Spam_score_int: -4
+X-Spam_score: -0.5
+X-Spam_bar: /
+X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_SBL=1.623 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,235 +131,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Wed, 21 Jan 2026 at 10:19, Mohamed Mediouni <mohamed@unpredictable.fr> w=
+rote:
+>
+>
+>
+> > On 21. Jan 2026, at 10:27, Peter Maydell <peter.maydell@linaro.org> wro=
+te:
+> >
+> > On Tue, 20 Jan 2026 at 18:44, Mohamed Mediouni <mohamed@unpredictable.f=
+r> wrote:
+> >>
+> >>
+> >>
+> >>> On 20. Jan 2026, at 19:02, Peter Maydell <peter.maydell@linaro.org> w=
+rote:
+> >>
+> >>
+> >>> The MSI controller selection logic is already pretty confusing,
+> >>> and this is making it more complicated. I don't think we should
+> >>> need this machine back compatibility, because currently there
+> >>> is no setup where you can have a GICv3 that doesn't also have
+> >>> either an ITS or no MSI controller.
+> >>>
+> >> Hello,
+> >>
+> >> This was to replicate the =E2=80=9Cno_tcg_its=E2=80=9D where this was =
+done when introducing TCG.
+> >> And for the purpose of VM save/restore on HVF with the older machine t=
+ype continuing to work as expected.
+> >
+> > no_tcg_its is there for backwards compatibility: on older
+> > QEMU versions before we added the TCG ITS, if you said
+> > "-machine virt,gic-version=3D3 -accel tcg" you didn't get an
+> > ITS; we wanted to change the default in new machine versions,
+> > so we needed the back compat switch.
+> >
+> > What is the command line that works today and where we
+> > want to go from "default to GICv3 without ITS or v2m"
+> > to "default to GICv3 with v2m" ? I might have missed it
+> > but back last year when I was looking at the current
+> > configs I didn't think we had one.
+> Hello,
+>
+> None, was thinking about what its=3Doff should mean but perhaps
+> the right behaviour to do there is to have it mean no MSI-X controller.
 
+Yeah, this is a bit tricky. I think that at the moment
+we allow "gic-version=3D2,its=3Doff" and you still get a gicv2m.
+So we need to retain that behaviour (though I doubt anybody
+is deliberately using it), which I think means we do need
+the its option to be an on/off/auto one. On the other
+hand that means that the finalize_msi_controller() logic
+(see https://patchew.org/QEMU/20260120180339.1416328-1-peter.maydell@linaro=
+.org/
+that I posted yesterday) can look relatively neat:
 
-Am 16=2E Januar 2026 13:52:09 UTC schrieb Mohamed Mediouni <mohamed@unpred=
-ictable=2Efr>:
->Link to branch: https://github=2Ecom/mediouni-m/qemu whpx (tag for this s=
-ubmission: whpx-v17)
->
->Missing features:
->- VM save-restore: interrupt controller state notably
->- SVE register sync: I didn't have the time to test this on pre-release h=
-ardware with SVE2 support yet=2E
->So SVE2 is currently masked for VMs when running this=2E
->
->Known bugs:
->- U-Boot still doesn't work (hangs when trying to parse firmware) but EDK=
-2 does=2E
->
->Note:
->
->"target/arm/kvm: add constants for new PSCI versions" taken from the mail=
-ing list=2E
->
->"accel/system: Introduce hwaccel_enabled() helper" taken from the mailing=
- list, added here
->as part of this series to make it compilable as a whole=2E
->
->And another note:
->
->Seems that unlike HVF there isn't direct correspondence between WHv regis=
-ters and the actual register layout,
->so didn't do changes there to a sysreg=2Einc=2E
->
->Updates since v16:
+   if (vms->its !=3D auto) {
+       /*
+        * User set the legacy "its" option, which traditionally
+        * meant "ignored if GICv2 (always provide GICv2m), enable
+        * or disable ITS for GICv3".
+        * Translate into its "msi" option equivalent:
+        *  - "its=3Dno" means "msi=3Dgicv2m" for a GICv2, "msi=3Dnone"
+        *    for GICv3 and up.
+        *  - "its=3Dyes" means "msi=3Dauto"
+        */
+       if (vms->msi_controller !=3D VIRT_MSI_CTRL_NOSEL) {
+           error("msi and its options cannot be used together");
+           exit(1);
+       }
+       if (vms->its =3D=3D off) {
+           if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
+               vms->msi_controller =3D VIRT_MSI_CTRL_GICV2M;
+           } else {
+               vms->msi_controller =3D VIRT_MSI_CTRL_NONE;
+           }
+       }
+       /* for vms->its =3D=3D on we leave msi_controller at NOSEL */
+   }
 
-I suppose: s/since/for/
+   if (vms->msi_controller !=3D VIRT_MSI_CTRL_NOSEL) {
+       /*
+         * User specified an "msi" option: check what they
+         * specified, and use it.
+         */
+        if (vms->msi_controller =3D=3D VIRT_MSI_CTRL_ITS &&
+            vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
+            error_report("A GICv2 cannot use an ITS");
+            exit(1);
+        }
+        /* other error checks here as needed */
+        return;
+    }
 
->- Address some last review comments
->- Rebase with the latest origin/staging
+    /* logic to pick the best msi_controller goes here */
 
-Works for me! So, for x86_64:
+This puts all the option handling code in one function that
+has three parts:
+ * deal with the legacy its=3D option by converting it to
+   the equivalent msi=3D option
+ * error check any explicitly set msi option
+ * pick an msi for the user if they didn't specify
 
-Tested-by: Bernhard Beschow <shentey@gmail=2Ecom>
+Then the rest of the code in virt.c doesn't need to care
+about the option flags or back-compat stuff directly, it
+can look at just the final resulting msi_controller setting.
 
->
->Updates since v15:
->- Some last tiny changes addressed=2E
->
->Updates since v14:
->- Working around https://gcc=2Egnu=2Eorg/bugzilla/show_bug=2Ecgi?id=3D879=
-50
->
->It turns out that we can't avoid default: in case with an enum on GCC wit=
-hout warnings,
->although Clang allows that behavior=2E
->
->Updates since v13:
->- Addressing review comments from Akihiko Odaki
->- Squash GICv2 ACPI workaround patch and have it documented as a separate=
- function
->- Rebase with current origin/staging
->
->Updates since v12:
->- Address review comments and make sure that checkpatch shows no errors, =
-make test also ran
->- Tested the Windows x86_64 build too in addition to Windows arm64 and ma=
-cOS arm64
->- Hopefully the last revision, should be ready to merge=2E
->
->Updates since v11:
->- Address review comments
->- Rebase up to latest staging
->- Switch to assuming Qemu 11=2E0 as the newest machine model
->
->Updates since v10:
->- Bring forward to latest Qemu
->- Fix a typo in the GICv3+GICv2m PR
->
->Updates since v9:
->- Adding partition reset on the reboot side of things=2E=2E=2E
->
->Updates since v8:
->- v9 and v8 were not submitted properly because of my MTA not behaving, s=
-orry for that=2E
->- v10 introduces a new argument, -M msi=3D, to handle MSI-X configuration=
- more granularly=2E
->- That surfaced what I think is a bug (?), with vms->its=3D1 on GICv2 con=
-figurations=2E=2E=2E or I did understand everything wrong=2E
->- Oopsie due to email provider ratelimiting=2E
->
->Updates since v7:
->- Oops, fixing bug in "hw/arm: virt: cleanly fail on attempt to use the p=
-latform vGIC together with ITS"=2E
->Other commits are unchanged=2E
->
->Updates since v6:
->- Rebasing
->- Fixing a bug in the GICv3+GICv2m case for ACPI table generation
->- getting rid of the slots infrastructure for memory management
->- Place the docs commit right after the "cleanly fail on attempt to run G=
-ICv3+GICv2m on an unsupported config" one
->as that's what switches ITS to a tristate=2E
->- Fixing a build issue when getting rid of the arch-specific arm64 hvf-st=
-ub=2E
->
->Updates since v5:
->- Rebasing
->- Address review comments
->- Rework ITS enablement to a tristate
->- On x86: move away from deprecated APIs to get/set APIC state
->
->Updates since v4:
->- Taking into account review comments
->- Add migration blocker in the vGICv3 code due to missing interrupt contr=
-oller save/restore
->- Debug register sync
->
->Updates since v3:
->- Disabling SVE on WHPX
->- Taking into account review comments incl:
->
->- fixing x86 support
->- reduce the amount of __x86_64__ checks in common code to the minimum (w=
-inhvemulation)
->which can be reduced even further down the road=2E
->- generalize get_physical_address_range into something common between hvf=
- and whpx
->
->Updates since v2:
->- Fixed up a rebase screwup for whpx-internal=2Eh
->- Fixed ID_AA64ISAR1_EL1 and ID_AA64ISAR2_EL1 feature probe for -cpu host
->- Switched to ID_AA64PFR1_EL1/ID_AA64DFR0_EL1 instead of their non-AA64 v=
-ariant
->
->Updates since v1:
->- Shutdowns and reboots
->- MPIDR_EL1 register sync
->- Fixing GICD_TYPER_LPIS value
->- IPA size clamping
->- -cpu host now implemented
->
->Mohamed Mediouni (24):
->  qtest: hw/arm: virt: skip ACPI test for ITS off
->  hw/arm: virt: add GICv2m for the case when ITS is not available
->  tests: data: update AArch64 ACPI tables
->  hw/arm: virt: cleanly fail on attempt to use the platform vGIC
->    together with ITS
->  hw: arm: virt: rework MSI-X configuration
->  docs: arm: update virt machine model description
->  whpx: Move around files before introducing AArch64 support
->  whpx: reshuffle common code
->  whpx: ifdef out winhvemulation on non-x86_64
->  whpx: common: add WHPX_INTERCEPT_DEBUG_TRAPS define
->  hw, target, accel: whpx: change apic_in_platform to kernel_irqchip
->  whpx: interrupt controller support
->  whpx: add arm64 support
->  whpx: change memory management logic
->  target/arm: cpu: mark WHPX as supporting PSCI 1=2E3
->  whpx: arm64: clamp down IPA size
->  hw/arm, accel/hvf, whpx: unify get_physical_address_range between WHPX
->    and HVF
->  whpx: arm64: implement -cpu host
->  target/arm: whpx: instantiate GIC early
->  whpx: arm64: gicv3: add migration blocker
->  whpx: enable arm64 builds
->  whpx: arm64: check for physical address width after WHPX availability
->  whpx: arm64: add partition-wide reset on the reboot path
->  MAINTAINERS: update the list of maintained files for WHPX
->
->Philippe Mathieu-Daud=C3=A9 (1):
->  accel/system: Introduce hwaccel_enabled() helper
->
->Sebastian Ott (1):
->  target/arm/kvm: add constants for new PSCI versions
->
-> MAINTAINERS                                   |   6 +
-> accel/hvf/hvf-all=2Ec                           |   7 +-
-> accel/meson=2Ebuild                             |   1 +
-> accel/stubs/whpx-stub=2Ec                       |   1 +
-> accel/whpx/meson=2Ebuild                        |   7 +
-> {target/i386 =3D> accel}/whpx/whpx-accel-ops=2Ec  |   6 +-
-> accel/whpx/whpx-common=2Ec                      | 536 ++++++++++
-> docs/system/arm/virt=2Erst                      |  13 +-
-> hw/arm/virt-acpi-build=2Ec                      |  27 +-
-> hw/arm/virt=2Ec                                 | 140 ++-
-> hw/i386/x86-cpu=2Ec                             |   4 +-
-> hw/intc/arm_gicv3_common=2Ec                    |   3 +
-> hw/intc/arm_gicv3_whpx=2Ec                      | 248 +++++
-> hw/intc/meson=2Ebuild                           |   1 +
-> include/hw/arm/virt=2Eh                         |   8 +-
-> include/hw/core/boards=2Eh                      |   3 +-
-> include/hw/intc/arm_gicv3_common=2Eh            |   3 +
-> include/system/hvf_int=2Eh                      |   4 +
-> include/system/hw_accel=2Eh                     |  13 +
-> =2E=2E=2E/whpx =3D> include/system}/whpx-accel-ops=2Eh  |   4 +-
-> include/system/whpx-all=2Eh                     |  20 +
-> include/system/whpx-common=2Eh                  |  26 +
-> =2E=2E=2E/whpx =3D> include/system}/whpx-internal=2Eh   |  16 +-
-> include/system/whpx=2Eh                         |   5 +-
-> meson=2Ebuild                                   |  20 +-
-> target/arm/cpu=2Ec                              |   3 +
-> target/arm/cpu64=2Ec                            |  17 +-
-> target/arm/hvf-stub=2Ec                         |  20 -
-> target/arm/hvf/hvf=2Ec                          |   6 +-
-> target/arm/hvf_arm=2Eh                          |   3 -
-> target/arm/kvm-consts=2Eh                       |   2 +
-> target/arm/meson=2Ebuild                        |   2 +-
-> target/arm/whpx/meson=2Ebuild                   |   5 +
-> target/arm/whpx/whpx-all=2Ec                    | 985 ++++++++++++++++++
-> target/arm/whpx/whpx-stub=2Ec                   |  15 +
-> target/arm/whpx_arm=2Eh                         |  17 +
-> target/i386/cpu-apic=2Ec                        |   2 +-
-> target/i386/hvf/hvf=2Ec                         |  11 +
-> target/i386/whpx/meson=2Ebuild                  |   1 -
-> target/i386/whpx/whpx-all=2Ec                   | 569 +---------
-> target/i386/whpx/whpx-apic=2Ec                  |   2 +-
-> tests/data/acpi/aarch64/virt/APIC=2Eits_off     | Bin 164 -> 188 bytes
-> 42 files changed, 2146 insertions(+), 636 deletions(-)
-> create mode 100644 accel/whpx/meson=2Ebuild
-> rename {target/i386 =3D> accel}/whpx/whpx-accel-ops=2Ec (96%)
-> create mode 100644 accel/whpx/whpx-common=2Ec
-> create mode 100644 hw/intc/arm_gicv3_whpx=2Ec
-> rename {target/i386/whpx =3D> include/system}/whpx-accel-ops=2Eh (92%)
-> create mode 100644 include/system/whpx-all=2Eh
-> create mode 100644 include/system/whpx-common=2Eh
-> rename {target/i386/whpx =3D> include/system}/whpx-internal=2Eh (95%)
-> delete mode 100644 target/arm/hvf-stub=2Ec
-> create mode 100644 target/arm/whpx/meson=2Ebuild
-> create mode 100644 target/arm/whpx/whpx-all=2Ec
-> create mode 100644 target/arm/whpx/whpx-stub=2Ec
-> create mode 100644 target/arm/whpx_arm=2Eh
->
+thanks
+-- PMM
 

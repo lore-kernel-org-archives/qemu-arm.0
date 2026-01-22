@@ -4,104 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A8BFC44500
-	for <qemu-arm@archiver.kernel.org>; Thu, 22 Jan 2026 11:32:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBB2BD3EE62
+	for <qemu-arm@archiver.kernel.org>; Thu, 22 Jan 2026 13:04:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1visv1-0004bN-0R; Thu, 22 Jan 2026 06:32:12 -0500
+	id 1viuLX-0002wQ-2Z; Thu, 22 Jan 2026 08:03:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1visum-0004a4-B7
- for qemu-arm@nongnu.org; Thu, 22 Jan 2026 06:31:54 -0500
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1visuk-0007Wf-Co
- for qemu-arm@nongnu.org; Thu, 22 Jan 2026 06:31:52 -0500
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-79088484065so8159727b3.1
- for <qemu-arm@nongnu.org>; Thu, 22 Jan 2026 03:31:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1769081509; cv=none;
- d=google.com; s=arc-20240605;
- b=TLxeLMIarTTbDgzG3Ur87LGUmpfflon4RcT4rvQgxhO0qdpqCSz2cW9oH9zhSFxFs2
- S/MzX/bAL91L2jQEZe55aGgphSKbGpnCv0wB6Zlhf1qdjll6BPfRwF6o1FHvpCVrKfkW
- SHxBuTso26fSTLiiVZ4gJ/g0qMMPa4zC0BcUkKyvFlm7nUM9Ri9Y9UWO1T4Xef7CBe1h
- q+oPzVeizOpqvcvehSGMWSPFT6bUKueu7x+DL1HnKib4wI2aS4zp64LCN8SDtaI4Ra7w
- 0Zw86lBe1ElDCp3uPFCZ6uRPSjzyTPPv40AOiT3Nzn4llJuXPT+/NX+LA1tZXRdK1tDC
- AIcA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=ZoIC6va/3cQgSH2eFyktj7RW0CONziEpklpiJPgaDbU=;
- fh=0Hhym2QQ4C0Iol3i/kX6qmgZqhPJyU8ZytUZqOwTwWc=;
- b=Vt/E6s3+59Lig1FoWsuK0W6v4XOBHLOUHsqDCnXDAnTioGG1n/gmpoXdGnkfjUzqXi
- Zso8afa1eu8yoaDBD35Vnz92UI0Jm6bV2pY7YERx1yhD92bWF4tVZW0azrp645Z0xY8r
- W1R7gniEVLj/E8tjdN6T6eEp215GDIRgKtUuNXg+LCYwwMuNGskgU5XizPV7nir7Q/bw
- wDq+Pi9yn/celw0QkgtLzuBT8hj11iXtR5INqHo+FQsPdERMiwz2Ph5xu0LDxx5ztoht
- JkYK8DHOnAj2M0DM0vR8vquxFibVHiZzp/P18xWRRsnK7MD9/46XlUsmXfNQq/isP+sj
- D5zA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769081509; x=1769686309; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ZoIC6va/3cQgSH2eFyktj7RW0CONziEpklpiJPgaDbU=;
- b=rpDZEbu/T6M9vWlmITb9ZsCHIPdDzu8O79Oe5L3UyzIA9Hj+eZDoHPAa10Lf07kEcy
- 9y8cYy/+FiqXrqVL0NFgpnsLwsIAh3sDP6SR5JKK61ahQwqmENR73vLI1hEf9vVIyhTI
- 5HHEwBCWC4/g73G9ECP5zmOUNXahUGkwEGzAyfOJ9GCrmSiB1bUYeTwHT3osD6GkypGH
- sbqMYBZ3vlDtC49FDU+xCaXZelev1OuejIWUj/KO9cpEHTFx77dwvTYTnEZm6tIOYfmJ
- 3DYO/qZ53PDIp8M8P7PT7cLYTNuL/3+PHF9L9gUk3luG+tOG/moNvS5R2O7Xzj9UJswf
- cxmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769081509; x=1769686309;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ZoIC6va/3cQgSH2eFyktj7RW0CONziEpklpiJPgaDbU=;
- b=umt4r15bmgIR4O+EZL8tDrqhPnpJB7KnQ48GwdEVEZVKkCUMQMmC6pFCI12wSg3w8A
- WIvMmV1LgmPvvVODTfnTusRDUA9YjR+5Qf5XpL8GGmj7Q8Z/8ZtaBU9Iz6d5bUBMHgVV
- ak0pV1WJx2RNHg3xd815LrxW3aplbXeaho6EsD+dW6H9H9IC5Dud8rlvZMo2aUIidkRm
- Jb9M8UcZJtgWx3wOW2wda58u6m+OPd4TyI/ruA2/ormRRCuwnTT2yYht33G/NNHw9CDJ
- cjnNXPBCSKD59nYdtLsCVQp/JQ8fujwZFHVq9zRcnzCDwjjQt6OXYgc85wi52NaeBoFQ
- FPRA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUBw2d3mD9YZLNnUQUdF1gHikO9Wk0/B2fxezuutUeq2v8MCntlqj8sBsZOA43tq3W24o3AUd9Ygw==@nongnu.org
-X-Gm-Message-State: AOJu0YxvaHtKJbENsHG7xygF4K+iaCHz40pqdWY5xcQZAzEoBMC8Baa8
- dXYD9D3Sfnrma4d2GBv/B8gbyNKoL0AATvO38GBP6L6fWfzY+iGG58ZzJtlErveFE8niSwuqogi
- bTORgJnT/vKBL6t/v5Z+AnJoe3YcGfZnU/k3CXaNevw==
-X-Gm-Gg: AZuq6aI+Pcru164fnWB0K6rgFa3aTGj0rj86Da8tMmCwRVczjYzEyLYhyfLiD985PCS
- EhvmeYFrbJhCJ0rXfMFfFa6oYGwMZii+BMpVvbq6iIf4YWGpXfIJaD8JJubtm42tClcmWmM3YCo
- SL4sWmkQefmQ4fUG1JdME4Kf5j/yGntBAhKTEyDo95dwi4W+uU4L6bsfMgjESw7Rno234VPBCgb
- FL/9i0M3jhlpNdoZJ0WWfzTdeSV181rjGCPkVbXCz8Eykp7mKTl5vAPwu1oYKU8bZQ3Sg==
-X-Received: by 2002:a05:690c:ec2:b0:792:6980:36df with SMTP id
- 00721157ae682-7940a0e6fdcmr163020747b3.6.1769081508931; Thu, 22 Jan 2026
- 03:31:48 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1viuL5-0002ni-Rh
+ for qemu-arm@nongnu.org; Thu, 22 Jan 2026 08:03:08 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1viuL1-0007z7-Fc
+ for qemu-arm@nongnu.org; Thu, 22 Jan 2026 08:03:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1769086981;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Wq2frxsSJFNTTiaSHRKMChY9yPGdkks7kpnX5RpTcW8=;
+ b=Y2+BxNV4OSD5GgzYJCKi7/Bq8tOjvoAk8r9f0TC3a3RiU9puzrvj33V8cQsqaiPODpvvR/
+ sjkds9hfHEexF3BEYhbK48ygf62ml7VcSZIh0HZfEziwywgkl3qko3Jz6SbM81wYIKjW+d
+ ELegJXbQg135I6+XPNkj/1P5wzif5ys=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-91-iWzBwAIWP4u66gnqNZentQ-1; Thu,
+ 22 Jan 2026 08:02:58 -0500
+X-MC-Unique: iWzBwAIWP4u66gnqNZentQ-1
+X-Mimecast-MFC-AGG-ID: iWzBwAIWP4u66gnqNZentQ_1769086976
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A61181800372; Thu, 22 Jan 2026 13:02:54 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.3])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 68C971800109; Thu, 22 Jan 2026 13:02:52 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 14E5A21E692D; Thu, 22 Jan 2026 14:02:50 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Kane Chen
+ <kane_chen@aspeedtech.com>,  Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,  Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,  Andrew Jeffery
+ <andrew@codeconstruct.com.au>,  Joel Stanley <joel@jms.id.au>,  "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>,  "open list:All patches CC here"
+ <qemu-devel@nongnu.org>,  <troy_lee@aspeedtech.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  "Daniel P. Berrange" <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>
+Subject: Re: [PATCH v1 0/1] hw/i2c/aspeed: Introduce 'bus-label' to
+ customize bus naming
+In-Reply-To: <62cc752e-fd06-48c9-9aa8-badbea8562dd@kaod.org>
+ (=?utf-8?Q?=22C=C3=A9dric?= Le
+ Goater"'s message of "Thu, 22 Jan 2026 11:42:44 +0100")
+References: <20260112083054.4151945-1-kane_chen@aspeedtech.com>
+ <5e72f6d4-6914-4797-85f6-6131af0d1349@linaro.org>
+ <7b67c00a-2bf3-4a25-aae4-9d4dd932486a@kaod.org>
+ <877btdn0gv.fsf@pond.sub.org>
+ <ba5b61db-64ad-495d-90f4-03e5553bf38e@kaod.org>
+ <875x8win97.fsf@pond.sub.org>
+ <62cc752e-fd06-48c9-9aa8-badbea8562dd@kaod.org>
+Date: Thu, 22 Jan 2026 14:02:50 +0100
+Message-ID: <87ms25er5x.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-References: <CGME20260121132716epcas5p1cab4021fbcd469b95d13ef4b4adc757f@epcas5p1.samsung.com>
- <20260121132421.2220928-1-ashish.a6@samsung.com>
-In-Reply-To: <20260121132421.2220928-1-ashish.a6@samsung.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 22 Jan 2026 11:31:37 +0000
-X-Gm-Features: AZwV_QjoLqvHF6D-uCiLDuYZPj2COvdDKLSisRRv5dl_OfsJAfAL5xesCMv0iw0
-Message-ID: <CAFEAcA_-DBkPbb_47vqeOhtPrdHq5dOkbtBmQgVRj8aBP1kyhQ@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm: Implement WFE,
- SEV and SEVONPEND for Cortex-M
-To: Ashish Anand <ashish.a6@samsung.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, saurabh@samsung.com, 
- vishwa.mg@samsung.com, y.kaushal@samsung.com, ashish.anand202@gmail.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.07,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,88 +102,331 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 21 Jan 2026 at 13:27, Ashish Anand <ashish.a6@samsung.com> wrote:
->
-> Currently, QEMU implements the 'Wait For Event' (WFE) instruction as a
-> simple yield. This causes high host CPU usage because guest
-> RTOS idle loops effectively become busy-wait loops.
->
-> To improve efficiency, this patch transitions WFE to use the architectural
-> 'Halt' state (EXCP_HLT) for M-profile CPUs. This allows the host thread
-> to sleep when the guest is idle.
->
-> To support this transition, we implement the full architectural behavior
-> required for WFE, specifically the 'Event Register', 'SEVONPEND' logic,
-> and 'R_BPBR' exception handling requirements defined in the ARM
-> Architecture Reference Manual.
->
-> This patch enables resource-efficient idle emulation for Cortex-M.
->
-> Signed-off-by: Ashish Anand <ashish.a6@samsung.com>
-> ---
-> Changes in v2:
-> 1. Added R_BPBR handling as required by the Armv8-M architecture.
-> 2. Unified pending-state updates to detect interrupt transitions for SEVONPEND.
-> 3. Moved the Event Register to the top-level ARM CPU state, since it is
->    architecturally shared between A-profile and M-profile CPUs.
-> 4. Updated migration handling to be profile-agnostic so the state can be
->    reused if A-profile WFE support is implemented in the future.
-> 5. Added CONFIG_USER_ONLY handling for WFE/SEV and tightened profile checks.
-> 6. Addressed review comments and fixes raised during v1 discussion.
->
-> Link to v1 - https://lore.kernel.org/qemu-devel/20251223120012.541777-1-ashish.a6@samsung.com/
->
->
->  hw/intc/armv7m_nvic.c      | 85 ++++++++++++++++++++++++++++++--------
->  target/arm/cpu.c           |  6 +++
->  target/arm/cpu.h           |  7 ++++
->  target/arm/machine.c       | 19 +++++++++
->  target/arm/tcg/helper.h    |  1 +
->  target/arm/tcg/m_helper.c  |  5 +++
->  target/arm/tcg/op_helper.c | 56 +++++++++++++++++++++----
->  target/arm/tcg/t16.decode  |  5 ++-
->  target/arm/tcg/t32.decode  |  5 ++-
->  target/arm/tcg/translate.c | 29 +++++++++++--
->  10 files changed, 185 insertions(+), 33 deletions(-)
->
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index 3a31eb56f3..854d27e413 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -221,6 +221,40 @@ static int exc_group_prio(NVICState *s, int rawprio, bool targets_secure)
->      return rawprio;
->  }
->
-> +/*
-> + * Update the pending state of an exception vector.
-> + * This is the central function for all updates to vec->pending.
-> + * Handles SEVONPEND: if this is a 0->1 transition on an external interrupt
-> + * and SEVONPEND is set in the appropriate SCR, sets the event register.
-> + */
-> +static void nvic_update_pending_state(NVICState *s, int irq, bool secure,
-> +                                      uint8_t next_pending_val)
-> +{
-> +    VecInfo *vec;
-> +    int scr_bank;
-> +    uint8_t prev_pending_val;
-> +
-> +    if (secure && exc_is_banked(irq)) {
-> +        vec = &s->sec_vectors[irq];
-> +        scr_bank = M_REG_S;
-> +    } else {
-> +        vec = &s->vectors[irq];
-> +        scr_bank = M_REG_NS;
-> +    }
+C=C3=A9dric Le Goater <clg@kaod.org> writes:
 
-You already have the VecInfo pointer at all the callsites,
-so I think it would be better to pass it to this function
-rather than recalculating it from the irq number etc.
+> On 1/20/26 11:36, Markus Armbruster wrote:
+>> Cc: QOM/qdev maintainers
+>> C=C3=A9dric Le Goater <clg@kaod.org> writes:
+>>=20
+>>> Hello,
+>>>
+>>> On 1/19/26 15:25, Markus Armbruster wrote:
+>>>> C=C3=A9dric Le Goater <clg@kaod.org> writes:
+>>>>
+>>>>> On 1/15/26 20:47, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>>>> Hi,
+>>>>>> Cc'ing Markus.
+>>>>>> On 12/1/26 09:30, Kane Chen via qemu development wrote:
+>>>>>>> From: Kane-Chen-AS <kane_chen@aspeedtech.com>
+>>>>>>>
+>>>>>>> Currently, the Aspeed I2C controller uses a static naming convention
+>>>>>>> for its buses (e.g., "aspeed.i2c.bus.0"). This approach leads to
+>>>>>>> object name conflicts in machine models that incorporate multiple I=
+2C
+>>>>>>> controllers, such as an Aspeed SoC paired with an external IO expan=
+der
+>>>>>>> or a co-processor like the AST1700.
+>>>>>>>
+>>>>>> Is this a side-effect of Problem 4: 'The /machine/unattached/ orphan=
+age'
+>>>>>> described here?
+>>>>>> https://lore.kernel.org/qemu-devel/87o7d1i7ky.fsf@pond.sub.org/
+>>=20
+>> No, but ...
+>>=20
+>>>>>> This problem isn't specific to I2C nor Aspeed.
+>>=20
+>> ... yes, indeed.  Details below.
+>>=20
+>>>>> See the discussion here :
+>>>>>
+>>>>>     https://lore.kernel.org/qemu-devel/006fa26f-6b84-4e82-b6e1-7d1353=
+579441@kaod.org/
+>>>>>
+>>>>> The Aspeed SoC has 3*16 I2C buses attached on 3 different I2C
+>>>>> controllers plus the I2C/I3C buses. We need to find a way to
+>>>>> distinguish these groups at the QEMU machine level to be able
+>>>>> to add devices on the right bus when using the command line.
+>>>>>
+>>>>> Suggestions welcome !
+>>>>
+>>>> Please show me how to start a QEMU with the 48 I2C mentioned above,
+>>>> complete with output of "info qtree".
+>>>
+>>> Clone
+>>>
+>>>    https://github.com/legoater/qemu/commits/aspeed-11.0
+>>>
+>>> Download
+>>>
+>>>    https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.08/a=
+st2700-default-obmc.tar.gz
+>>>
+>>> And run :
+>>>
+>>>    qemu-system-aarch64 -M ast2700a1-evb -m 8G -smp 4 -net nic,macaddr=
+=3D,netdev=3Dnet0 -netdev user,id=3Dnet0,hostfwd=3D::2207-:22 -drive file=
+=3Dpath/to/ast2700-default/image-bmc,format=3Draw,if=3Dmtd -nographic -seri=
+al mon:stdio -snapshot
+>>>
+>>> Today, to attach an I2C device on one of the Aspeed SoC I2C buses :
+>>>
+>>>    -device tmp105,bus=3Daspeed.i2c.bus.1,address=3D0x4d,id=3Dtmp-test
+>>>
+>>> The Aspeed SoC I2C bus names follow the "aspeed.i2c.bus.X" format.
+>>> This is the model typename. The 2 new IO expander models attached
+>>> to the Aspeed SoC have an extra 16 I2C buses each. These buses use
+>>> an "ioexpX.Y" name, as proposed in the aspeed-next branch.
+>>>
+>>> Attaching a device to one of the IO expanders I2C buses would be :
+>>>
+>>>    -device tmp105,bus=3Dioexp0.1,address=3D0x4d,id=3Dtmp-test
+>>>
+>>> See the qtree below.
+>>=20
+>> Thank you!
+>
+> Thank you for taking the time of analyzing the code and history.
+>
+>> Machine ast2700a1-evb has QOM objects
+>>
+>>     /machine/soc/i2c/ (aspeed.i2c-ast2700)
+>>       /bus[N] (aspeed.i2c.bus)    for N in 0..15
+>>         /aspeed.i2c.bus.N (i2c-bus)
+>>
+>> in both master and aspeed-11.0.
+>
+> Yes, that doesn't change because I would prefer not to break the current
+> user interface. The "i2c.X" bus name would have been a better choice.
+> I didn't anticipated that 10y ago when I proposed this model.
 
-I agree with Alex about using a bool for the event_register
-struct field.
+We make mistakes, we learn :)
 
-Otherwise I think this looks good!
+>> Object aspeed.i2c-ast2700 is a sysbus device that contains 16
+>> aspeed.i2c.bus objects as children bus[N] for N in 0..15.  Each object
+>> has a property "bus-id" with value N.
+>>
+>> Object aspeed.i2c.bus is a sysbus device that contains an i2c-bus object
+>> as child aspeed.i2c.bus.N.
+>>
+>> Aside: why parent TYPE_SYS_BUS_DEVICE, and not TYPE_DEVICE?  It doesn't
+>> actually plug into a sysbus...
+>
+> The AspeedI2CBus model has a couple of MRs and an IRQ. I guess that's why.
 
-thanks
--- PMM
+Sysbus was a questionable idea from the start.
+
+Qdev was built around the design assumption "each device plugs into a
+bus provided by a device".  This isn't not how real hardware works, but
+simplifications can be useful.  However, this one broke down right away:
+most onboard devices and many other devices don't plug into a
+recognizable bus.  To make the assumption work, Paul Brook invented the
+catch all "system bus".  Various infrastructure was then tied to the
+system bus over time, because it needed to be tied to something, system
+bus is something, therefore it needed to be tied to the system bus.
+
+The design assumption is long gone.  We still create system bus devices
+just to be able to use infrastructure.  Blerch.
+
+End of digression.
+
+>> Object i2c-bus is a qbus.
+>>
+>> In master, object aspeed.i2c.bus computes the child name by appending .N
+>> to its own type name TYPE_ASPEED_I2C_BUS.
+>>
+>> In aspeed-11.0, it takes it from its property "bus-name".  The property
+>> is set by its QOM parent aspeed.i2c-ast2700, and computed by appending
+>> .N to the value of its property "bus-label".  It defaults the property
+>> to TYPE_ASPEED_I2C_BUS.
+>>
+>> Since nothing sets this property in this case, we get the same child
+>> name.
+>>
+>> aspeed-11.0 additionally has QOM objects
+>>
+>>     /machine/soc/ioexp[M] (aspeed.ast1700)    for M in 0..1
+>>         /ioexp-i2c[0] (aspeed.i2c-ast2700)
+>>           /bus[N] (aspeed.i2c.bus)    for N in 0..15
+>>             /ioexpM.N (i2c-bus)
+>>
+>> Object aspeed.ast1700 is a sysbus device that contains an
+>> aspeed.i2c-ast2700 as child "ioexp-i2c[0]".  It has a property
+>> "board-idx" with value M.
+>>
+>> Aside: we only ever create one aspeed.i2c-ast2700 child.  Why [0]?
+>
+> Right. We can drop [*] in aspeed_ast1700_instance_init() - PATCH 15.
+>
+>> Aside^2: I tried to strangle the "[*]" feature in the crib, but failed.
+>> Has been a minor thorn in my side ever since.
+>>
+>> aspeed.ast1700 set its child's (aspeed.i2c-ast2700) property "bus-label"
+>> to "ioexpM".  This makes the child set the grandchild's (aspeed.i2c.bus)
+>> property "bus-name" to "ioexpM.N", which makes the grandchild name the
+>> great-grandchild (i2c-bus) "ioexpM.N".
+>>
+>> This naming business is complicated, and I had a hard time ferreting it
+>> out.  As far as I can tell, it's all in service of -device bus=3D...
+>
+> yes.
+>
+> That's why I regret not letting QEMU taking care of the naming with :
+>
+>    s->bus =3D i2c_init_bus(dev, NULL);
+>
+> This would break the user interface though. This is still an option.
+
+Since the devices providing these i2c buses have no qdev ID, these buses
+would then be named i2c.N, where N counts up from 0.  I think.  See "Bus
+names are defined as follows" below.
+
+Good enough?
+
+>> Let's examine how that works.
+>>
+>> We want to be able to plug i2c devices into any of these 48 i2c buses
+>> with -device / device_add.  To do that, we need to select a bus with the
+>> "bus" argument.
+>>
+>> In a world saner than the one we live in, the value of "bus" would be a
+>> QOM path or qdev ID, where qdev ID is shorthand for the QOM path
+>> /machine/peripheral/ID.
+
+Nonsense.
+
+"QOM path or qdev ID" is how the @id argument of device_del and
+device_sync_config work.  A qdev ID resolves to a qdev.  Here, we need
+to resolve to a qbus.
+
+Instead, "QOM path or qbus ID".  Except the concept "qbus ID" does not
+exist.  All we have is qbus names, which aren't unique (we screwed that
+up).
+
+>> For instance, the first i2c bus could then be selected with absolute QOM
+>> path "/machine/soc/i2c/bus[0]" or partial QOM paths "soc/i2c/bus[0]" or
+>> "i2c/bus[0]".  Partial QOM paths are a convenience feature that is
+>> virtually unknown (and possibly ill-advised): you can omit leading path
+>> components as long as there's no ambiguity.
+>>
+>> However, in the world we live in, the value of bus is not a QOM path,
+>> it's a path in the qtree.  Why?  qdev and -device / device_add predate
+>> QOM.
+>>
+>> If the path starts with "/", it's anchored at the main system bus.
+>>
+>> Else, it's anchored at a bus whose name is the first path component.  If
+>> there's more than one such bus, we pick the first one we find.  This is
+>> a misfeature.
+>>
+>> Remaining path components, if any, pick a path in the qtree from that
+>> anchor towards leaves.  Note that the child of a qbus is always a qdev,
+>> and the child of a qdev always a qbus.
+>>
+>> This must ultimately resolve to a qbus of the appropriate type.
+>>
+>> Picking a qdev child of a qbus works like this:
+>>
+>> * If a child with a (user-specified) qdev ID equal to the path component
+>>   exists, pick it.  Since qdev IDs are unique, there can only be one.
+>>
+>> * Else, if children whose QOM type name equals the path component
+>>   exists, pick the first one.
+>>
+>> * Else, if children whose qdev alias equals the path component exists,
+>>   pick the first one.
+>>
+>> Picking the first one is again a misfeature.
+>>
+>> Picking a qbus child is simpler: we pick the first child whose bus name
+>> equals the path component.
+>>
+>> Bus names are defined as follows:
+>>
+>> * Whatever creates the bus may set its name.
+>>
+>> * Else, if the qbus's parent qdev has an ID, the bus name is ID.N, where
+>>   N counts up from 0 within that qdev.
+>>
+>> * Else, the bus name is TYPE.N, where TYPE is the parent qdev's QOM type
+>>   name, and N counts up from 0 within that bus class.
+
+The qbus's QOM type name, of course.
+
+>> The only case where this is actually works is picking the N-th bus child
+>> provided by a qdev with an ID: use bus=3DID.N (a partial tree path of ju=
+st
+>> one component).  Anything else is unfit for purpose, except in special
+>> cases, e.g. when the machine can have just one device of a certain type.
+>>
+>> This mess is harmless for user-created devices: just specify the ID.
+>> It's awful for onboard devices, which cannot have an ID.
+>>
+>> This is a qdev design flaw.  It's not specific to I2C or Aspeed, as
+>> Philippe suspected.
+>>
+>> To illustrate it further, let's have a look at the qtree of machine
+>> ast2700a1-evb.  Output of "info qtree" in master:
+>>
+>>     bus: main-system-bus
+>>       type System
+>>       [...]
+>>       dev: aspeed.i2c.bus, id ""    for N in 0..15
+>>         [...]
+>>         bus: aspeed.i2c.bus.N
+>>           type i2c-bus
+>>           [...]
+>>=20=20=20=20=20=20=20
+>> In aspeed-11.0, we additionally have
+>>
+>>       dev: aspeed.i2c.bus, id ""    for M in 0..1, N in 0..15
+>>         [...]
+>>         bus: ioexpM.N
+>>           type i2c-bus
+>>           [...]
+>>
+>> The i2c-buses all have unique names: aspeed.i2c-bus.N and ioexpM.N.  We
+>> can point to any of them with a partial qtree path of just one
+>> component: bus=3DNAME where NAME is one of these unique names works, and
+>> there is no ambiguity.
+>>
+>> The buses have unique names only because device code takes pains to make
+>> them configurable by parent devices, and the parent devices cooperate to
+>> configure them so the resulting bus names are unique.
+>>
+>> This is a lot of complexity to work around this qdev design flaw for
+>> just one special instance.
+>>
+>> Can we instead remedy the design flaw once and for all?
+>>
+>> Here't the obvious stupid idea: give -device / device_add the means to
+>> pick a bus by QOM path.
+>>
+>> Thoughts?
+>
+> Could we support both methods ? I mean looking up the bus by the
+> qtree name and by the QOM path ?
+
+We can't just change "bus".  Management applications and human users
+rely on it.
+
+Except we might be able to break aspects that aren't actually used in
+anger.  Is anyone using '/' in qtree paths in anger?  I sure hope nobody
+does, because that way is madness.  But it's hard to be reasonably sure.
+
+If we can break '/' in the value of "bus", we could overload "bus": make
+it a QOM path or a qbus ID, similar to how device_del's @id is a QOM
+path or a qdev ID.  We'd have to define "qbus ID".
+
+Instead, we could perhaps add an argument "parent" to specify the QOM
+parent object, mutually exclusive with "bus".  For devices that plug
+into a certain kind of bus, the parent object must be an instance of
+that bus.
+
+> Thanks,
+>
+> C.
+
+You're welcome!
+
 

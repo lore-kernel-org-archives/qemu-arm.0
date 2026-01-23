@@ -4,80 +4,152 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93835D6CFD7
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Jan 2026 12:35:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BC6FD74ED3
+	for <qemu-arm@archiver.kernel.org>; Fri, 23 Jan 2026 14:27:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vjGNN-0004C6-AD; Fri, 23 Jan 2026 07:34:57 -0500
+	id 1vjI8D-0005DS-7E; Fri, 23 Jan 2026 09:27:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ashish.a6@samsung.com>)
- id 1vjGMj-000440-3i
- for qemu-arm@nongnu.org; Fri, 23 Jan 2026 07:34:26 -0500
-Received: from mailout3.samsung.com ([203.254.224.33])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vjI7L-0004xe-St
+ for qemu-arm@nongnu.org; Fri, 23 Jan 2026 09:26:34 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ashish.a6@samsung.com>)
- id 1vjGMe-0000y4-CV
- for qemu-arm@nongnu.org; Fri, 23 Jan 2026 07:34:15 -0500
-Received: from epcas5p1.samsung.com (unknown [182.195.41.39])
- by mailout3.samsung.com (KnoxPortal) with ESMTP id
- 20260123123401epoutp03ec1dc6e8268b275e7d4f0d46a5ecdf9d~NXDvteN8B1030110301epoutp03H
- for <qemu-arm@nongnu.org>; Fri, 23 Jan 2026 12:34:01 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout3.samsung.com
- 20260123123401epoutp03ec1dc6e8268b275e7d4f0d46a5ecdf9d~NXDvteN8B1030110301epoutp03H
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1769171641;
- bh=NV/c+++0Y5HoTXbtx6ZE/X3FoyhoT4mrud5skyghaTU=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=Oa1dHAFn7woe3trnZjr9jPOMnDsxHZmXpwl4fkQPJWMgCS+h1T0mkmmx2GEyrTTkc
- 3Q92p7Bcx496SRrboVA3VmHhcjuHi6iKQFYf/+iqDrowiF6Q0n3PqMWn+Bx5/60KC4
- 3ATtDWGofNoGhUivTjsk6WXMPqfKtRdc2Waiuxn4=
-Received: from epsnrtp04.localdomain (unknown [182.195.42.156]) by
- epcas5p2.samsung.com (KnoxPortal) with ESMTPS id
- 20260123123400epcas5p23eb831bb5e0e940d25e09526038c4681~NXDvdxioz2482124821epcas5p2D;
- Fri, 23 Jan 2026 12:34:00 +0000 (GMT)
-Received: from epcas5p3.samsung.com (unknown [182.195.38.91]) by
- epsnrtp04.localdomain (Postfix) with ESMTP id 4dyHRW62jLz6B9m5; Fri, 23 Jan
- 2026 12:33:59 +0000 (GMT)
-Received: from epsmtip1.samsung.com (unknown [182.195.34.30]) by
- epcas5p1.samsung.com (KnoxPortal) with ESMTPA id
- 20260123123359epcas5p157278863fa71ee0fa261a925eac274eb~NXDt2XHBM2972229722epcas5p1n;
- Fri, 23 Jan 2026 12:33:59 +0000 (GMT)
-Received: from test-System-Product-Name (unknown [107.99.41.85]) by
- epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
- 20260123123357epsmtip1c8b4fdb3ae4bb58917c395a2442ca0a5~NXDsxgCDE2183521835epsmtip1i;
- Fri, 23 Jan 2026 12:33:57 +0000 (GMT)
-Date: Fri, 23 Jan 2026 18:01:11 +0530
-From: Ashish Anand <ashish.a6@samsung.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, saurabh@samsung.com,
- vishwa.mg@samsung.com, y.kaushal@samsung.com, ashish.anand202@gmail.com
-Subject: Re: target/arm: Implement WFE, SEV and SEVONPEND for Cortex-M
-Message-ID: <z346m63rsuvrwlpa4nnujnlap7y3t3e2pmgpezeglaalf27spb@4pevbudmsxst>
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vjI7H-0005Zu-81
+ for qemu-arm@nongnu.org; Fri, 23 Jan 2026 09:26:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1769178385;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=WXZMIzdKQ+iy4z2UMliFk5YffFd1hnsFlNk4138V7xE=;
+ b=jSrb+S6dus5oNmS7BEQngEg1684CrBsPZ6G0+fEcDsCtRVXswzApMnvGDVt2FckIyzQPb2
+ n4MRy8jXaH07Islksxyliayf5VOJ8BiIBYVaQMz1s21XU4Yol5K3glSyeUlE7onfaQ0ZRp
+ Y24db+l3h7GEDIhuxmYo/lPFgc27TWc=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-63-5_ByNlUUOt-ceTFK7aWmdw-1; Fri, 23 Jan 2026 09:26:22 -0500
+X-MC-Unique: 5_ByNlUUOt-ceTFK7aWmdw-1
+X-Mimecast-MFC-AGG-ID: 5_ByNlUUOt-ceTFK7aWmdw_1769178381
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-4359849d324so1625808f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 23 Jan 2026 06:26:21 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1769178381; x=1769783181;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=WXZMIzdKQ+iy4z2UMliFk5YffFd1hnsFlNk4138V7xE=;
+ b=tKfxeQmv6KdwPxLpBb0AxvWdNzzsgDPJ2bPQ5wH0haQD0S92tZxy/OYJ5J5qZ3WVAg
+ SfzTkKhYvkzcQywOZSHUKJERBtT1NY/SqEZ3uJuPhxl7s2GgBjyvCDaJNueoyKBU2Czy
+ EvqPtdUWBUOc7uE+/WkCtsadrNJ9WsM78yQWcFtKHH7mwEoCfGpiExmEN/J8MRiY1vMI
+ crnliwtfPJRtQWF6NpjFSZmDq07MuOfWg2cbO5U4GrNMC3w8pxSO782kx3P2+Hmo7/r8
+ B1Sh+gUXEuq+Yx0y6f5JLvFxQJte+PudCVNHsxkS+FL9XKhHpRFxxhqWFpSEsTEsLJ9B
+ d7fQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWTK/rTnd4myawGb2mCxTU5SaeozJ+/DKUab2OHz2Z7ammZ2urOlwC0ET/9QZa69BYdphzwzzGiIw==@nongnu.org
+X-Gm-Message-State: AOJu0YyJtPjacTDAjWjwsE44MlKq9xhMBYQw3WxOemdzKuwnq6l40lHr
+ /lJbj+XWCGqv34fAZlOT9p7jrwqNHRMx2PMLtkTjiv6Qxx5AdbrrAkAeM25j0l8fJaTQ3a84vXw
+ a3WBaaoKON0pAIFvidk8eieSmHSQU+ELmMbtu04Lvl+odGXV9r81i4w==
+X-Gm-Gg: AZuq6aJ+3kAe6Rm9mRSdL13D/l28YL5jr9vfv0SUn9QwAvIEkYjfvy4UlULATKh103k
+ X/bPXqKuuV/CldNXTSblBtIF/5nrGhBoUksDuzYwJe7CwhZYmo4bj2QxA1TPy90ym5rt8a0qDQw
+ Q9RrdocOhKETNSCx59jjz4z/qSfjNwYMGbvFYe39n6O+JzgCLXGf/aZt+LQHFZztBxWuzy51V6j
+ AwQ7XDkD8kNyuFWLHq2qUCVr0XbdIfREKUvuSMjjOTW8F5cdgNtIX4iywLMaqrH0ZWlJ7kMdYre
+ n/UpocKrJn/fAJBRLEXrntlKsGDMhp2UM4UsfEYTlfmvx9a7rahWH0gxynl210jW6QOdLGRMSnR
+ GVLF0Yte/zYvINb5S4NynI1AkZjj3ElZWZYJ64ur7pRINp7eq
+X-Received: by 2002:a05:6000:2383:b0:435:b020:30ab with SMTP id
+ ffacd0b85a97d-435b1593f32mr5950934f8f.15.1769178380836; 
+ Fri, 23 Jan 2026 06:26:20 -0800 (PST)
+X-Received: by 2002:a05:6000:2383:b0:435:b020:30ab with SMTP id
+ ffacd0b85a97d-435b1593f32mr5950873f8f.15.1769178380257; 
+ Fri, 23 Jan 2026 06:26:20 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
+ ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-435b1b6e2besm7277481f8f.0.2026.01.23.06.26.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 23 Jan 2026 06:26:19 -0800 (PST)
+Message-ID: <58df52dc-66a1-4df9-9e39-c441dfc2a3e6@redhat.com>
+Date: Fri, 23 Jan 2026 15:26:18 +0100
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_-DBkPbb_47vqeOhtPrdHq5dOkbtBmQgVRj8aBP1kyhQ@mail.gmail.com>
-X-CMS-MailID: 20260123123359epcas5p157278863fa71ee0fa261a925eac274eb
-X-Msg-Generator: CA
-Content-Type: multipart/mixed;
- boundary="----dZkOkAIazzHoUX-2rQXwJ8woeHD-_lbejx.E5KOGiu3cq0eS=_11ef4e_"
-CMS-TYPE: 105P
-cpgsPolicy: CPGSC10-542,Y
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20260121132716epcas5p1cab4021fbcd469b95d13ef4b4adc757f
-References: <CGME20260121132716epcas5p1cab4021fbcd469b95d13ef4b4adc757f@epcas5p1.samsung.com>
- <20260121132421.2220928-1-ashish.a6@samsung.com>
- <CAFEAcA_-DBkPbb_47vqeOhtPrdHq5dOkbtBmQgVRj8aBP1kyhQ@mail.gmail.com>
-Received-SPF: pass client-ip=203.254.224.33;
- envelope-from=ashish.a6@samsung.com; helo=mailout3.samsung.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/3] linux-headers: Update to Linux v6.19-rc1
+To: Jason Gunthorpe <jgg@nvidia.com>, Peter Maydell <peter.maydell@linaro.org>
+Cc: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, eric.auger@redhat.com, alex@shazbot.org,
+ cohuck@redhat.com, mst@redhat.com, nicolinc@nvidia.com, nathanc@nvidia.com,
+ mochs@nvidia.com, jonathan.cameron@huawei.com, zhenzhong.duan@intel.com,
+ vivek.kasireddy@intel.com, kjaju@nvidia.com, Jason Wang <jasowang@redhat.com>
+References: <20260121114111.34045-1-skolothumtho@nvidia.com>
+ <20260121114111.34045-2-skolothumtho@nvidia.com>
+ <53a51440-c7a6-49f9-bf2f-b71c8e9f32ed@redhat.com>
+ <CAFEAcA9+kp7K4cGeMx2PTGp1V3SkKoqyHEOZhFD-QQ2Y4WZHPQ@mail.gmail.com>
+ <20260121171248.GH1134360@nvidia.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20260121171248.GH1134360@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: XfaHL49N1y-e5YJ6zs7NYafKAIXaLBiPpCsUTegzg9k_1769178381
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.079,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,62 +165,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-------dZkOkAIazzHoUX-2rQXwJ8woeHD-_lbejx.E5KOGiu3cq0eS=_11ef4e_
-Content-Type: text/plain; charset="utf-8"; format="flowed"
-Content-Disposition: inline
+On 1/21/26 18:12, Jason Gunthorpe wrote:
+> On Wed, Jan 21, 2026 at 02:21:17PM +0000, Peter Maydell wrote:
+>> But it looks to me like this is a bug in the Linux headers:
+>> they seem to have changed in a non-backwards compatible way,
+>> and possibly even in a way that makes it not possible for
+>> userspace code to use ifdefs to handle "maybe the header
+>> is the old version or the new version".
+> 
+> Technically Linux doesn't provide an API guarentee, just an ABI
+> guarentee.
+> 
+> Ie we don't guarentee all old userspace compiles with the new headers,
+> we just guarentee that once compiled it keeps working..
+> 
+> You need to use something like configure and compile trial tests to
+> figure things out.
+> 
+> IMHO this happens rarely enough that what is proposed here as a single
+> patch is the best option.
 
->
->You already have the VecInfo pointer at all the callsites,
->so I think it would be better to pass it to this function
->rather than recalculating it from the irq number etc.
->
->I agree with Alex about using a bool for the event_register
->struct field.
->
->Otherwise I think this looks good!
->
->thanks
->-- PMM
->
-
-Hi Peter,
-
-Thanks for the review and feedback!
-
-Quick clarification on the nvic_update_pending_state() refactoring:
-
-I've changed the signature from -
-     nvic_update_pending_state(s, irq, secure, value)
-to -
-     nvic_update_pending_state(s, vec, irq, scr_bank, value)
-
-This removes the internal vec/scr_bank calculation.  
-Callsites now calculate both vec (already present) and scr_bank before the call.
-Example(at callsite) -
-
-     if (banked && secure) {
-         vec = &s->sec_vectors[irq];
-         scr_bank = M_REG_S;
-     } else {
-         vec = &s->vectors[irq];
-         scr_bank = M_REG_NS;
-     }
-     
-     nvic_update_pending_state(s, vec, irq, scr_bank, 1);
-
-In some places like nvic_writel() case 0xd24, where we're in a known 
-attrs.secure context with specific exceptions, I hardcode the scr_bank 
-value (M_REG_S or M_REG_NS) directly.
-
-Is this the approach you had in mind?
+If no more objections, I will send a PR with these changes early
+next week then.
 
 Thanks,
-Ashish
 
+C.
 
-------dZkOkAIazzHoUX-2rQXwJ8woeHD-_lbejx.E5KOGiu3cq0eS=_11ef4e_
-Content-Type: text/plain; charset="utf-8"
-
-
-------dZkOkAIazzHoUX-2rQXwJ8woeHD-_lbejx.E5KOGiu3cq0eS=_11ef4e_--
 

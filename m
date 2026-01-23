@@ -4,125 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59779D7788E
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Jan 2026 17:13:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86B98D77897
+	for <qemu-arm@archiver.kernel.org>; Fri, 23 Jan 2026 17:28:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vjKiD-0006cu-17; Fri, 23 Jan 2026 12:12:45 -0500
+	id 1vjKx8-0000DL-OF; Fri, 23 Jan 2026 12:28:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vjKiB-0006ae-Aq
- for qemu-arm@nongnu.org; Fri, 23 Jan 2026 12:12:43 -0500
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vjKi8-0004Nb-LV
- for qemu-arm@nongnu.org; Fri, 23 Jan 2026 12:12:43 -0500
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-64938fce805so2377348d50.1
- for <qemu-arm@nongnu.org>; Fri, 23 Jan 2026 09:12:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1769188358; cv=none;
- d=google.com; s=arc-20240605;
- b=PxQNisal5O0lcoJw6nR0GCyrrf2KXp5sJJormsvU3luA4kHjGwOp9IXEdSmhG1ZvL4
- NYAcPteYgfzNPCCbmvJhQ932KaHFs9rw2STQSGqPxg/Yx4YTuwUsxyvrtbgCuaDdljKB
- TPHcm96yWjF5Z6e4BwX9mDKEueYN4t0S9SsgdM4L292J7+w3bhfnyXG7eyVK1ZzjLowc
- UQNrZY4SYycyVeuYNTb30UkwhRHXkR1HJ/peiOxIYdR3OddNGx7kxP3TwjQpinddBL0s
- 8QfilzHX2PoDFY/5ZjXPgmkwE+43N6VYvb6wzV5EWRTaBa7Ix+tUKvUi1RyICxfECfFE
- e3SA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=8Fa4sjNTNYLGAlPOTx72tSfXAvWVjL6wvcuD+e+0VuY=;
- fh=Kfc/6+upTPKFMdDE8zugeUlGL3b+eH1+RNfIypxe0os=;
- b=O+VZhnXWRQ3NOx4YlDHgXvHt/bDBTscdTjt+CasKYRaY7s3v9Rj5wBLykvvJFKa6Yq
- vASAylfy5QHcGeKFyaZUvkkRmu5d8zbXcJyDwWgOZujpy6IEQPZL0WfdDKFPcvIo+YH7
- X+RBmrOtMTph5eRFURNU0eMAFhqldQ6DL9TT3jzIyyOz1LfUVOnccvUaAsEBSh5lhr7O
- WjSi7n4xP+LRUFNPLCUdcPEuCVgJtoILfJMKVARMVgSrvrYgaiiADoL0V4QrcEbPCFcD
- fsqa1LF3uvU/PpXFQEyHCtnrtupXEeykoSg9uyFjus30HJaB+GnBsfFIR+2C5MYVV0T8
- fQeQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769188358; x=1769793158; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=8Fa4sjNTNYLGAlPOTx72tSfXAvWVjL6wvcuD+e+0VuY=;
- b=t28+jH0yD0wqGBVDbEuaU5e0adXgJjYUzEq3wey9760LmiRY5LEn5By9Swx+yWaXdh
- 7SJeQpb9IYMXL9G7HltyW/sqky3OIVodZudNJ29nQem50v2uv+p0dEC21op3zMQzCgZ2
- +3Fk6/GOyJpmzU690dvZfPF826CNEli+X/IntFE/k1nTZx0fP+6MDtvFpu6v1yS814+d
- ZOOb4OTkGmUIoyKllOou16wX44ag9naLaVUMmL9MoUrKcCx+oSqauA/0vG1lrdBO8Xyb
- e9PxKkI0zQUOrcgB7TznBS1/o4rTW61/IowwrnsfKr1z0uw9do7DMMAP/hdAaVDPDdTk
- o45A==
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vjKx6-0000CI-BX
+ for qemu-arm@nongnu.org; Fri, 23 Jan 2026 12:28:08 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vjKx4-0007qV-IL
+ for qemu-arm@nongnu.org; Fri, 23 Jan 2026 12:28:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1769189285;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=lDN/eGC9r+QfWyzU3wF2348KbKILb8kCKmxzDjl4iDI=;
+ b=K4eRA/fCmmhAtbZEygSKDrNj5uwfrpSJkooTlEaj6q/js5j7sghxcKD93hgU5EocvnNDW2
+ r0kCwaDkdLDyEFvuPGnkAWYEqHuVQriIQPKszsox0aNIfxlFjAQOqTIHVoMFSksxqyspkj
+ x0NIWVWM1rERWJzsuCID4vpncITgRGE=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-608-BjZfy31RNriPOhBnxuZRFw-1; Fri, 23 Jan 2026 12:28:04 -0500
+X-MC-Unique: BjZfy31RNriPOhBnxuZRFw-1
+X-Mimecast-MFC-AGG-ID: BjZfy31RNriPOhBnxuZRFw_1769189283
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-430f5dcd4cdso351229f8f.2
+ for <qemu-arm@nongnu.org>; Fri, 23 Jan 2026 09:28:03 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769188358; x=1769793158;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=8Fa4sjNTNYLGAlPOTx72tSfXAvWVjL6wvcuD+e+0VuY=;
- b=W689VXzUEsW+oZxKAaY5Fjrv7I/9WXHFyKqWEG/fixDbtaEwOqK49rtvpjFtGQmXeR
- /5VEw423NuTqHskIsKi0pm5+Zk8F533BlEhroD7IuIbn/B18dc0Cz6G88aPoNz4tNPew
- c2Vce+hryXUHezeMzrrQLWJ3QK/FgbxBJuhRJdEothxZ07ByGCqQKZOb+5msPSYrqcc1
- XC2pPMMpLr0nbofRcsMIqmXEFhbnppRlB+1nAYJEpPM3nOktGn+caN5aAuQNAMcISc6S
- rk3g1sIQXjPjtFmxV3j445+36hDLAXQ0PZ7FO4SfXdg0ftHvnVIn/ZpOA21t3g5XQrNh
- eFZg==
+ d=1e100.net; s=20230601; t=1769189283; x=1769794083;
+ h=mime-version:references:message-id:in-reply-to:subject:cc:to:from
+ :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=lDN/eGC9r+QfWyzU3wF2348KbKILb8kCKmxzDjl4iDI=;
+ b=tLR/v+Y1HicoK0OJP+Cvrz2dx/MkgLSJ3SssGePxCShe2PD/5cU76hzBvXZBf2JcRL
+ LN/RTwMPV449MF1C4fwAjIpXOpw6dZU7TDNCXulqpxDanN1uYY+wOMDZzx9F928Nx+6I
+ 8zQsBzw0dGv5ZqNuzpOxMW42ScAaw5xVvLSsJ3mGlUJHcCK3sRVjDGOeHZcaZwY1b1y7
+ 1mIsnT8N0XAQLbDTPmAuSPTFKui+ojnDaEk/sXDewJH93OtWtSdNPyns3Ykl89YQUOzT
+ xndO2P3HCMeOVTifEvB2cQ7KYxQlAzi1OAPi4rbVOMEMQdgBMij7aK7ps6D3OReQltBZ
+ KFcA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX81iIOmHkF614j6CphZXcLcOTuGumQhDC4M72wv3/br/xjYGT4VIDQuc6+ATc5WFXlpDpvjGgzig==@nongnu.org
-X-Gm-Message-State: AOJu0YwPKpY9a3SDYJSxwisl/RFHPHDN0oNPA1re6RrbbcWZ4UTy2eAX
- ss4HrEjH7CmvZOYwwwK3NjJoBoHKtLfCrPwXaV9bDjTQdQk9sIiMOd/+0dVBmOpXeEr6Rp4PBJU
- OF41EDwFfqoXBvSDZ7cDLasWeev5X7bLU7qt53CFhbA==
-X-Gm-Gg: AZuq6aJpHwvqWrOGbWJqDE6FqXn5AgPSEWR+Erayguh03dHOOYC76wNDfTCZ7W2uQIZ
- WQmPlqZc3nnew3Cg1FScc7Qxfn/lxfaEO8JL6ejBCTbZifap9YgdRtnxwYDmUjQkg/80O5YxBs1
- VEUt0dNcOr3MUL4gwCn5v4MUxfbFPxSKR8nxUT8UJnd4OqFJFav2QdO/rwJtVAzI++Rlu9d8mPq
- 2i+t3+set8of1kRoAd3CD3OvwE27TPJgRUx2L7C3UUSuGGFHmIr2O2C72udJZDZEIaujQ==
-X-Received: by 2002:a05:690c:f90:b0:793:db81:f1dd with SMTP id
- 00721157ae682-794398bb7f6mr30309487b3.4.1769188357323; Fri, 23 Jan 2026
- 09:12:37 -0800 (PST)
+ AJvYcCVEXY+MoRNgkSd1yPqJElxHz1M+pFQoKI7Qfx1oYvMt4nqda7K3rAUBJMg9FONwjCB6eknguCK7fw==@nongnu.org
+X-Gm-Message-State: AOJu0YwTVpmpsx2U4qHnUizGa0VKwVo0AVPZLkjYJYdLqFhgcLT7/jWG
+ 6LsTB/IhZq0/Nn+GOeoP0xQL7YeK6uqtxOnxUut35yN9zcQu4rKTg06ICRrESYxIrsp6MOVzsN6
+ gkITJmoaZhlxco0HTO2btMd+jcaUeUwLATAt4SzID1XfGQLk1RdjMmA==
+X-Gm-Gg: AZuq6aLAn3YmhTmuM5kVhJfbMkefIfF0+8gtSX5T9xbzTYieMue/30QYdj6wTUyOMVq
+ V30LnZioHFIZMOa24i587+Tov0HcLmfCZYcTovZu2IAjIsBLBKPuEAGKyHoOH8CmF9c9QTqOfos
+ eHd/vmI2vm+ex0kgLrSHpjA2ucnOtyTQvWqEjwkBqFX3PXEL2inQ9DFqXnY2ODnaEJhqNuUzPD1
+ QaxwyuUQG2lGKEusfkpKlzgHl1+YjcPfdZgauTbur8bY5DktJG0WMEQv71rTyV6XDw+RwTjLkq/
+ GdkhR+3a/bybhsRUluosi9q3HanzleEfr9G5y9RndmslzTh7X4WlVDkBfsTvRPXAbWoFFq7/SCs
+ 5j9sdEMk506FUI2bqez5/eXVG1SC177l2jm5QEY7meE0X0xTVwdchaK8J3Rs=
+X-Received: by 2002:a05:6000:178a:b0:432:c0e6:cfc0 with SMTP id
+ ffacd0b85a97d-435b16270a9mr6428172f8f.57.1769189282684; 
+ Fri, 23 Jan 2026 09:28:02 -0800 (PST)
+X-Received: by 2002:a05:6000:178a:b0:432:c0e6:cfc0 with SMTP id
+ ffacd0b85a97d-435b16270a9mr6428132f8f.57.1769189282247; 
+ Fri, 23 Jan 2026 09:28:02 -0800 (PST)
+Received: from rh (p200300f6af31d00062ddfb9151537832.dip0.t-ipconnect.de.
+ [2003:f6:af31:d000:62dd:fb91:5153:7832])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-435b1c02c91sm8208594f8f.9.2026.01.23.09.28.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 23 Jan 2026 09:28:01 -0800 (PST)
+Date: Fri, 23 Jan 2026 18:28:00 +0100 (CET)
+From: Sebastian Ott <sebott@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ peter.maydell@linaro.org, cohuck@redhat.com, maz@kernel.org, 
+ oliver.upton@linux.dev, gshan@redhat.com, ddutile@redhat.com, 
+ peterx@redhat.com, philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH v5 10/11] hw/arm/virt: Introduce framework to aggregate
+ hidden-regs and safe-missing-regs
+In-Reply-To: <20260121074834.1900677-11-eric.auger@redhat.com>
+Message-ID: <1d622049-4b20-a12e-61d2-847c3a83869f@redhat.com>
+References: <20260121074834.1900677-1-eric.auger@redhat.com>
+ <20260121074834.1900677-11-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20260121175248.87649-1-skolothumtho@nvidia.com>
- <4d1a883b-5465-45af-8dcc-eb905f552c29@redhat.com>
- <20260123114149.000065c5@huawei.com>
- <CAFEAcA8RFqO-U5ayU2u=dNhjHCj=1mJiAv26QihfqNfqQVq1Lg@mail.gmail.com>
- <CH3PR12MB75480D0CDE889070E1F4C448AB94A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <CAFEAcA_8Zd1_C+94wj2c+pJk3ebFT5_Zgt1Ww0qxzFqW=F98xA@mail.gmail.com>
- <CH3PR12MB75482DA817149816D5CD485EAB94A@CH3PR12MB7548.namprd12.prod.outlook.com>
- <CAFEAcA_w=+RHygwsSQVvE6XU44d6+hgKy=bqdD08aBM5_xyn=Q@mail.gmail.com>
- <CH3PR12MB75481DCD5A4A890617429C55AB94A@CH3PR12MB7548.namprd12.prod.outlook.com>
-In-Reply-To: <CH3PR12MB75481DCD5A4A890617429C55AB94A@CH3PR12MB7548.namprd12.prod.outlook.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Jan 2026 17:12:25 +0000
-X-Gm-Features: AZwV_QiXS-nKtKyX6L5SSG3GrmR-B1057OwswGmoT5KWlW6HgSTNLHq9rokg4po
-Message-ID: <CAFEAcA-jxKnmD=8A8b5Rur0F1+_5w+JHY2yjkZQvD4wbhMwvkw@mail.gmail.com>
-Subject: Re: [PATCH v8 00/37] hw/arm/virt: Add support for user-creatable
- accelerated SMMUv3
-To: Shameer Kolothum <skolothumtho@nvidia.com>
-Cc: Jonathan Cameron <jonathan.cameron@huawei.com>,
- Eric Auger <eric.auger@redhat.com>, 
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Jason Gunthorpe <jgg@nvidia.com>, 
- Nicolin Chen <nicolinc@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>, 
- "berrange@redhat.com" <berrange@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
- "alex@shazbot.org" <alex@shazbot.org>, Nathan Chen <nathanc@nvidia.com>,
- Matt Ochs <mochs@nvidia.com>, "smostafa@google.com" <smostafa@google.com>,
- "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>, 
- "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>, 
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>, 
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- "yi.l.liu@intel.com" <yi.l.liu@intel.com>, 
- Krishnakant Jaju <kjaju@nvidia.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: q3n5bQbfleqlxXulhpFH8TXEkk9Q708cT1Ge2cl1d3o_1769189283
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; format=flowed; charset=US-ASCII
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.079,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,57 +114,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 23 Jan 2026 at 16:59, Shameer Kolothum <skolothumtho@nvidia.com> wrote:
+On Wed, 21 Jan 2026, Eric Auger wrote:
+> Currently if a virt_machine_<n>_options() sets a TYPE_ARM_CPU
+> x-mig-hidden-regs or x-mig-safe-missing-regs array property, another
+> one cannot overwrite it or extend it. We end up with a core dump:
 >
+> qemu-system-aarch64: can't apply global arm-cpu.x-mig-safe-missing-regs=0x603000000013c103, 0x603000000013c512, 0x603000000013c513: array size property x-mig-safe-missing-regs may not be set more than once
+> Aborted (core dumped)
 >
+> In practice we would like an easy way to register regs that belong
+> to either of those categories and allow aggregation of those.
 >
-> > -----Original Message-----
-> > From: Peter Maydell <peter.maydell@linaro.org>
-> > Sent: 23 January 2026 15:48
-> > To: Shameer Kolothum <skolothumtho@nvidia.com>
-> > Cc: Jonathan Cameron <jonathan.cameron@huawei.com>; Eric Auger
-> > <eric.auger@redhat.com>; qemu-arm@nongnu.org; qemu-
-> > devel@nongnu.org; Richard Henderson <richard.henderson@linaro.org>;
-> > Jason Gunthorpe <jgg@nvidia.com>; Nicolin Chen <nicolinc@nvidia.com>;
-> > ddutile@redhat.com; berrange@redhat.com; clg@redhat.com;
-> > alex@shazbot.org; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
-> > <mochs@nvidia.com>; smostafa@google.com; wangzhou1@hisilicon.com;
-> > jiangkunkun@huawei.com; zhangfei.gao@linaro.org;
-> > zhenzhong.duan@intel.com; yi.l.liu@intel.com; Krishnakant Jaju
-> > <kjaju@nvidia.com>
-> > Subject: Re: [PATCH v8 00/37] hw/arm/virt: Add support for user-creatable
-> > accelerated SMMUv3
-> >
-> > On Fri, 23 Jan 2026 at 15:33, Shameer Kolothum
-> > <skolothumtho@nvidia.com> wrote:
-> > > > stderr:
-> > > > acpi-test: Warning! IORT binary file mismatch. Actual
-> > > > [aml:/tmp/aml-7QQVJ3], Expected
-> > > > [aml:tests/data/acpi/aarch64/virt/IORT.its_off].
-> > >
-> > > Any way to retrieve these files?
-> >
-> > They aren't in the "job artifacts", but you can probably do
-> > a patch to tweak the CI job to add them, push to your own
-> > gitlab fork of QEMU to have it run the CI, and then look at
-> > the results.
+> We introduce arm_virt_compat_register_safe_missing_reg() and
+> arm_virt_compat_register_hidden_reg() which populate GLists of
+> int64_t. After all virt_machine_<n>_options have been called and
+> have registered their regs, the GList are converted into the
+> associated array property value and the GlobalProperties are set.
 >
-> I forked your QEMU GitLab repo and pushed my series here:
->
-> https://gitlab.com/shamiali2008/qemu/-/commits/target-arm.next-smmuv3-accel
->
-> However, I am not seeing any CI jobs running on my fork. In the settings it
-> shows no assigned runners under Settings CI/CD/Runners, so it looks like
-> CI is not enabled.
+[...]
+> +static char *get_prop_value_from_reg_qlist(QList *l)
+> +{
+> +    size_t size = qlist_size(l);
+> +    GString *s = g_string_new("");
+> +    QListEntry *item;
+> +    int i = 0;
+> +    QNum *qi;
+> +
+> +    if (!size) {
+> +        return NULL;
 
-You don't need to fork my repo, you can fork the upstream
-QEMU one. Things aren't set up to run CI by default because
-it would use up your gitlab CI quota. The docs on how to
-do this are here:
-https://www.qemu.org/docs/master/devel/testing/ci.html
--- you want to push it with the QEMU_CI=1 or =2 settings
-to get it to run the CI. The docs suggest a git alias
-that you can use to make this simpler.
+Do we need to free s here (or allocate later) or is there some RAII magic
+involed?
 
--- PMM
+> +    }
+> +    QLIST_FOREACH_ENTRY(l, item) {
+> +        qi = qobject_to(QNum, qlist_entry_obj(item));
+> +        int64_t regidx;
+> +
+> +        qnum_get_try_int(qi, &regidx);
+> +        if (i++ > 0) {
+> +            g_string_append(s, ", ");
+> +        }
+> +        g_string_append_printf(s, "%" G_GINT64_FORMAT, regidx);
+> +    }
+> +    return g_string_free(s, false);
+> +}
+
+Reviewed-by: Sebastian Ott <sebott@redhat.com>
+
 

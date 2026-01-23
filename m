@@ -4,152 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BC6FD74ED3
-	for <qemu-arm@archiver.kernel.org>; Fri, 23 Jan 2026 14:27:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AF23D74EDC
+	for <qemu-arm@archiver.kernel.org>; Fri, 23 Jan 2026 15:11:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vjI8D-0005DS-7E; Fri, 23 Jan 2026 09:27:25 -0500
+	id 1vjIjt-0005yU-Uk; Fri, 23 Jan 2026 10:06:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vjI7L-0004xe-St
- for qemu-arm@nongnu.org; Fri, 23 Jan 2026 09:26:34 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vjI7H-0005Zu-81
- for qemu-arm@nongnu.org; Fri, 23 Jan 2026 09:26:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1769178385;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=WXZMIzdKQ+iy4z2UMliFk5YffFd1hnsFlNk4138V7xE=;
- b=jSrb+S6dus5oNmS7BEQngEg1684CrBsPZ6G0+fEcDsCtRVXswzApMnvGDVt2FckIyzQPb2
- n4MRy8jXaH07Islksxyliayf5VOJ8BiIBYVaQMz1s21XU4Yol5K3glSyeUlE7onfaQ0ZRp
- Y24db+l3h7GEDIhuxmYo/lPFgc27TWc=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-63-5_ByNlUUOt-ceTFK7aWmdw-1; Fri, 23 Jan 2026 09:26:22 -0500
-X-MC-Unique: 5_ByNlUUOt-ceTFK7aWmdw-1
-X-Mimecast-MFC-AGG-ID: 5_ByNlUUOt-ceTFK7aWmdw_1769178381
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-4359849d324so1625808f8f.1
- for <qemu-arm@nongnu.org>; Fri, 23 Jan 2026 06:26:21 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769178381; x=1769783181;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vjIjm-0005uW-5R
+ for qemu-arm@nongnu.org; Fri, 23 Jan 2026 10:06:15 -0500
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vjIjk-0001eg-Ck
+ for qemu-arm@nongnu.org; Fri, 23 Jan 2026 10:06:13 -0500
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-790884840baso22445827b3.0
+ for <qemu-arm@nongnu.org>; Fri, 23 Jan 2026 07:06:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1769180769; cv=none;
+ d=google.com; s=arc-20240605;
+ b=PXcFM2ug1MHOdGVT4FGjQcPtAsZIaI2qM/XBVP5I1ZCGulMPMc5m+nNIj/sxblzVPq
+ xkdy/+TUBS26xo4r22dmMVomAQwh58JfdzLeZdOEvrm5ryrV5js3Y/x5wMMHj5J7nZ6c
+ zOdkoFVy+5wy4twFsmW5/l8MftMFbJNYJwhiWR0qaLvh5u1knjjciLYm1/i9AaOL8Cno
+ ibKjTKvR3LVb6CPl6Verq94Iu2JChfaK9EYr4edXvsRjVVMPM4w2p3MFPuswKkZnpQNx
+ viNXgNkwTg9djwLnuBgIcQtQH36RTkJXPDVSfalmfPaZe+Tgj9ihKKhzXcQz7OY57rHl
+ akDw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=bb55XTSNzdky9WU0oKM2F3ZA/eluT7mQAYoxH8GswsE=;
+ fh=LU/SFCmazlT/s2+55CVd2/4Ccby9291qKStxvGY9so4=;
+ b=A8LNIGQaiS8Qkv3ByQlGT4nzweInvE2qWYWlRHgZjqO6gdZkbZon8pdH7IjuYAqPZH
+ mKmOLllxRBeB9iEQTQtCFbDfDnh3hWME+gAiejOtRMKK8f/yS+6tkZnlx26juZfPJxUe
+ D6lY2rwAROaqeUEvxrYFAri3oAaZYkoyIoCxf5XVzFwNS/hlXUxYMaTuiAEPpvnpeNlG
+ pzZQeGaxu+46FUvgFkumKZ8zpVBqvVDawQsw6im5zHjo4rdl5y+VkWFqBAxBi+V4BKqK
+ ObneMFmoxrX7oeqfgluc3kzgwDaC03/+nmsqyQqEF9YRNNNuL6geI1hZvXGjS9idYGwD
+ QPPg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1769180769; x=1769785569; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WXZMIzdKQ+iy4z2UMliFk5YffFd1hnsFlNk4138V7xE=;
- b=tKfxeQmv6KdwPxLpBb0AxvWdNzzsgDPJ2bPQ5wH0haQD0S92tZxy/OYJ5J5qZ3WVAg
- SfzTkKhYvkzcQywOZSHUKJERBtT1NY/SqEZ3uJuPhxl7s2GgBjyvCDaJNueoyKBU2Czy
- EvqPtdUWBUOc7uE+/WkCtsadrNJ9WsM78yQWcFtKHH7mwEoCfGpiExmEN/J8MRiY1vMI
- crnliwtfPJRtQWF6NpjFSZmDq07MuOfWg2cbO5U4GrNMC3w8pxSO782kx3P2+Hmo7/r8
- B1Sh+gUXEuq+Yx0y6f5JLvFxQJte+PudCVNHsxkS+FL9XKhHpRFxxhqWFpSEsTEsLJ9B
- d7fQ==
+ bh=bb55XTSNzdky9WU0oKM2F3ZA/eluT7mQAYoxH8GswsE=;
+ b=jnl51XheqoVjfdvmr7vCicw5oEtotVVrqqh+bYDgwRS2aqslfdase1C1XOwZJw6mDi
+ kxfUwOu5VYp5hccdt0/n0CGRUGdFJKA8/Xadu3BUX+zRAnkf0lzA+oJzDN5xG1OH7Ecx
+ teSMd33dmOlRI4IBwbw37Y9J5yMLajGBYUQmwX7s+LEP1I+b3p4ho6AZWL9G5kag56TA
+ 9Mj/o7VF47sLvT/PSj6CBqA80SVUNSJHAuXaOnI2te/QUi+hvVU9JBakUp3ZfxB1Xkb2
+ RwKnqXsRIUrhANbditBeqOriyRwDiTOWBpslcLQ6etNP96HPmdwuoAG2EaCFeYqdBYOR
+ uqJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1769180769; x=1769785569;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=bb55XTSNzdky9WU0oKM2F3ZA/eluT7mQAYoxH8GswsE=;
+ b=I1C9qafYQSt894Ix2CeHrkZ/s6IFCuZmr0wQVWux3E2BEZbuz3UYjhRObmrvHnWOhq
+ 4Vxc7XiYedwplCMo0XsyTbJDwvjHLSUvSGclF+0jC8jWr7sC1mCkJuPbMzGgp/uiM5DX
+ ZkPyyd7Hi2HpwVT3bjmRpNSDdM7ks/3ySLbsNBCCgjI1/EsdfEuIbfY7jbgM07RbLuRf
+ Afmr9D84Hpi0b6X7qo+vj0GMV0oZnMQonvx6djfeZej+2dFIo8o3rVU5VEhOXPnGb6lD
+ 3nMbclMRwecaf1UNBHpaC5TbDBdXkzG2pjN0oNz787GaHqaZD40gM7wtsjmIkLMr9Pl9
+ bJ9w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWTK/rTnd4myawGb2mCxTU5SaeozJ+/DKUab2OHz2Z7ammZ2urOlwC0ET/9QZa69BYdphzwzzGiIw==@nongnu.org
-X-Gm-Message-State: AOJu0YyJtPjacTDAjWjwsE44MlKq9xhMBYQw3WxOemdzKuwnq6l40lHr
- /lJbj+XWCGqv34fAZlOT9p7jrwqNHRMx2PMLtkTjiv6Qxx5AdbrrAkAeM25j0l8fJaTQ3a84vXw
- a3WBaaoKON0pAIFvidk8eieSmHSQU+ELmMbtu04Lvl+odGXV9r81i4w==
-X-Gm-Gg: AZuq6aJ+3kAe6Rm9mRSdL13D/l28YL5jr9vfv0SUn9QwAvIEkYjfvy4UlULATKh103k
- X/bPXqKuuV/CldNXTSblBtIF/5nrGhBoUksDuzYwJe7CwhZYmo4bj2QxA1TPy90ym5rt8a0qDQw
- Q9RrdocOhKETNSCx59jjz4z/qSfjNwYMGbvFYe39n6O+JzgCLXGf/aZt+LQHFZztBxWuzy51V6j
- AwQ7XDkD8kNyuFWLHq2qUCVr0XbdIfREKUvuSMjjOTW8F5cdgNtIX4iywLMaqrH0ZWlJ7kMdYre
- n/UpocKrJn/fAJBRLEXrntlKsGDMhp2UM4UsfEYTlfmvx9a7rahWH0gxynl210jW6QOdLGRMSnR
- GVLF0Yte/zYvINb5S4NynI1AkZjj3ElZWZYJ64ur7pRINp7eq
-X-Received: by 2002:a05:6000:2383:b0:435:b020:30ab with SMTP id
- ffacd0b85a97d-435b1593f32mr5950934f8f.15.1769178380836; 
- Fri, 23 Jan 2026 06:26:20 -0800 (PST)
-X-Received: by 2002:a05:6000:2383:b0:435:b020:30ab with SMTP id
- ffacd0b85a97d-435b1593f32mr5950873f8f.15.1769178380257; 
- Fri, 23 Jan 2026 06:26:20 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:280:24f0:576b:abc6:6396:ed4a?
- ([2a01:e0a:280:24f0:576b:abc6:6396:ed4a])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-435b1b6e2besm7277481f8f.0.2026.01.23.06.26.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Jan 2026 06:26:19 -0800 (PST)
-Message-ID: <58df52dc-66a1-4df9-9e39-c441dfc2a3e6@redhat.com>
-Date: Fri, 23 Jan 2026 15:26:18 +0100
+ AJvYcCUoKfI30NFP6qiU0Vy0yZ3gkwBwMBwcY95+L4lqOOUm1LBSzv42cBu64kOo2ECS5n5UJSapMVxCiA==@nongnu.org
+X-Gm-Message-State: AOJu0YzbgSn6z4CQPwQLDJBKPzrkgLLptSYIjzRskSPN3MP0LjV1O2vN
+ zMjF5AM2jHor8+s47q1waKnwFqhc7ygN+t0vAjKruzNtr/G3u+okY4S31ux+63rqv4GmEMAntmU
+ o268Opg9ZVQTKs1smaerhnGSxcjdRAbJh1hwxID5h2w==
+X-Gm-Gg: AZuq6aIe0fDs1uXCHsNR36m9gQKAn4MsvZjGqdImueKbT0b+TzHPiXqaUEkJbscgdAE
+ 3eCqUO+JY6hEE/BYin5Z0xYucz+FarDkF6qsBKduE4LGF12RnzxwNXBF0Nmp8djidw7wayMeScN
+ b2dLNysYOttz3O+Qlg9XOHaOIazHKfoJq0QzN3SnnoZ+h0KMldO3y6h98dpA/EbafWM8iaREoor
+ 8oXG5mRU7Y75OteJ64dA2XsOxt3Z1zoXJL4wfQMVy2ziQ2z+H8gF4TG5BJexgoN3Fg6lZKtJBji
+ QnC/
+X-Received: by 2002:a05:690c:6809:b0:793:e580:94b3 with SMTP id
+ 00721157ae682-794399dd408mr25931717b3.35.1769180768896; Fri, 23 Jan 2026
+ 07:06:08 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/3] linux-headers: Update to Linux v6.19-rc1
-To: Jason Gunthorpe <jgg@nvidia.com>, Peter Maydell <peter.maydell@linaro.org>
-Cc: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, eric.auger@redhat.com, alex@shazbot.org,
- cohuck@redhat.com, mst@redhat.com, nicolinc@nvidia.com, nathanc@nvidia.com,
- mochs@nvidia.com, jonathan.cameron@huawei.com, zhenzhong.duan@intel.com,
- vivek.kasireddy@intel.com, kjaju@nvidia.com, Jason Wang <jasowang@redhat.com>
-References: <20260121114111.34045-1-skolothumtho@nvidia.com>
- <20260121114111.34045-2-skolothumtho@nvidia.com>
- <53a51440-c7a6-49f9-bf2f-b71c8e9f32ed@redhat.com>
- <CAFEAcA9+kp7K4cGeMx2PTGp1V3SkKoqyHEOZhFD-QQ2Y4WZHPQ@mail.gmail.com>
- <20260121171248.GH1134360@nvidia.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260121171248.GH1134360@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: XfaHL49N1y-e5YJ6zs7NYafKAIXaLBiPpCsUTegzg9k_1769178381
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+References: <20260121175248.87649-1-skolothumtho@nvidia.com>
+ <4d1a883b-5465-45af-8dcc-eb905f552c29@redhat.com>
+ <20260123114149.000065c5@huawei.com>
+ <CAFEAcA8RFqO-U5ayU2u=dNhjHCj=1mJiAv26QihfqNfqQVq1Lg@mail.gmail.com>
+ <CH3PR12MB75480D0CDE889070E1F4C448AB94A@CH3PR12MB7548.namprd12.prod.outlook.com>
+In-Reply-To: <CH3PR12MB75480D0CDE889070E1F4C448AB94A@CH3PR12MB7548.namprd12.prod.outlook.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 23 Jan 2026 15:05:57 +0000
+X-Gm-Features: AZwV_QiPZ169cidWqIBtgbAlvqpV1TtQydj0YFfBWcRB62srPYs-F8RQUe6U4Rs
+Message-ID: <CAFEAcA_8Zd1_C+94wj2c+pJk3ebFT5_Zgt1Ww0qxzFqW=F98xA@mail.gmail.com>
+Subject: Re: [PATCH v8 00/37] hw/arm/virt: Add support for user-creatable
+ accelerated SMMUv3
+To: Shameer Kolothum <skolothumtho@nvidia.com>
+Cc: Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Eric Auger <eric.auger@redhat.com>, 
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Jason Gunthorpe <jgg@nvidia.com>, 
+ Nicolin Chen <nicolinc@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>, 
+ "berrange@redhat.com" <berrange@redhat.com>, "clg@redhat.com" <clg@redhat.com>,
+ "alex@shazbot.org" <alex@shazbot.org>, Nathan Chen <nathanc@nvidia.com>,
+ Matt Ochs <mochs@nvidia.com>, "smostafa@google.com" <smostafa@google.com>,
+ "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>, 
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>, 
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>, 
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>, 
+ Krishnakant Jaju <kjaju@nvidia.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.079,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -165,31 +137,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/21/26 18:12, Jason Gunthorpe wrote:
-> On Wed, Jan 21, 2026 at 02:21:17PM +0000, Peter Maydell wrote:
->> But it looks to me like this is a bug in the Linux headers:
->> they seem to have changed in a non-backwards compatible way,
->> and possibly even in a way that makes it not possible for
->> userspace code to use ifdefs to handle "maybe the header
->> is the old version or the new version".
-> 
-> Technically Linux doesn't provide an API guarentee, just an ABI
-> guarentee.
-> 
-> Ie we don't guarentee all old userspace compiles with the new headers,
-> we just guarentee that once compiled it keeps working..
-> 
-> You need to use something like configure and compile trial tests to
-> figure things out.
-> 
-> IMHO this happens rarely enough that what is proposed here as a single
-> patch is the best option.
+On Fri, 23 Jan 2026 at 12:04, Shameer Kolothum <skolothumtho@nvidia.com> wr=
+ote:
+> > From: Peter Maydell <peter.maydell@linaro.org>
+> > I can fix that up when I queue it into target-arm.next.
+> >
+> > Thanks to everybody who helped with code review on this series:
+> > not having to do that myself has been a big help for my personal worklo=
+ad :-)
+>
+> Thanks for sorting it while queuing.
 
-If no more objections, I will send a PR with these changes early
-next week then.
+Unfortunately I had to drop this from target-arm.next,
+because it caused one of the gitlab CI jobs to fail:
+https://gitlab.com/pm215/qemu/-/jobs/12839040278
+(Not an intermittent -- the job failed the same way
+on retry, and passes with my target-arm queue without
+this series in it.)
 
-Thanks,
+I'm not sure exactly what's going on here, because
+the bios-tables-test test passes on my local machine.
+Could you investigate, please?
 
-C.
+1/457 qemu:qtest+qtest-x86_64 / qtest-x86_64/bios-tables-test OK
+83.58s 55 subtests passed
+=E2=96=B6 2/457 /aarch64/acpi/virt/its_off -
+ERROR:../tests/qtest/bios-tables-test.c:554:test_acpi_asl: assertion
+failed: (all_tables_match) FAIL
+=E2=96=B6 2/457 ERROR
+2/457 qemu:qtest+qtest-aarch64 / qtest-aarch64/bios-tables-test ERROR
+25.86s killed by signal 6 SIGABRT
+>>> MSAN_OPTIONS=3Dhalt_on_error=3D1:abort_on_error=3D1:print_summary=3D1:p=
+rint_stacktrace=3D1 PYTHON=3D/builds/pm215/qemu/build/pyvenv/bin/python3.11=
+ UBSAN_OPTIONS=3Dhalt_on_error=3D1:abort_on_error=3D1:print_summary=3D1:pri=
+nt_stacktrace=3D1 QTEST_QEMU_IMG=3D./qemu-img QTEST_QEMU_STORAGE_DAEMON_BIN=
+ARY=3D./storage-daemon/qemu-storage-daemon ASAN_OPTIONS=3Dhalt_on_error=3D1=
+:abort_on_error=3D1:print_summary=3D1 RUST_BACKTRACE=3D1 MESON_TEST_ITERATI=
+ON=3D1 G_TEST_DBUS_DAEMON=3D/builds/pm215/qemu/tests/dbus-vmstate-daemon.sh=
+ MALLOC_PERTURB_=3D162 QTEST_QEMU_BINARY=3D./qemu-system-aarch64 /builds/pm=
+215/qemu/build/tests/qtest/bios-tables-test --tap -k
+=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
+=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
+=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95 =E2=9C=80 =E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
+=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=
+=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=
+=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=95=E2=80=
+=95
+stderr:
+acpi-test: Warning! IORT binary file mismatch. Actual
+[aml:/tmp/aml-7QQVJ3], Expected
+[aml:tests/data/acpi/aarch64/virt/IORT.its_off].
+See source file tests/qtest/bios-tables-test.c for instructions on how
+to update expected files.
+to see ASL diff between mismatched files install IASL, rebuild QEMU
+from scratch and re-run tests with V=3D1 environment variable set**
+ERROR:../tests/qtest/bios-tables-test.c:554:test_acpi_asl: assertion
+failed: (all_tables_match)
+(test program exited with status code -6)
 
+
+thanks
+-- PMM
 

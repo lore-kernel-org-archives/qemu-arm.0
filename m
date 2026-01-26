@@ -4,176 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 587E3C88E7F
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 09:24:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03F46CF65C7
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 09:51:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkIpm-0006Ap-Bl; Mon, 26 Jan 2026 04:24:35 -0500
+	id 1vkJAy-0003T9-LS; Mon, 26 Jan 2026 04:46:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vkIph-000634-Fo; Mon, 26 Jan 2026 04:24:29 -0500
-Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vkJAj-0003PR-Qh
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 04:46:17 -0500
+Received: from p-east3-cluster5-host2-snip4-4.eps.apple.com ([57.103.86.145]
+ helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vkIpf-000675-0z; Mon, 26 Jan 2026 04:24:29 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=AJobapo68GL+LEi3vJiTFqLKITfWCTyaxV8t+NKT5wmLzZnq/8aGqBSeSNU6Hpx5kKt7ENiXHFRDCsaERwqhRbUu96budEo4mXoK7yrjKIa+ne2mkztTGTz8ZqZfU2Pk+3nr3wm12HbwyzsooJht2/Y2Y2hgjtO3z3hds6SNdpg6lU/KT9jvlckcJ17VTt8EG+sdyMcWI3Kg48sFwy7wI+fnDavJw4wMBOpa3PSp2t6ciu1KxMl5YN79KTWRWt/K4vkC1qgNVPn8K0cB/QE3LAqcq9R7Qy1DYMFZsZHRt9oEjw9sJqWvYW4VxC3zA0XrJNmCjk3lzcxJUg3aTW+UMA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/sMoM8+B/aEEp5KNR+VZMu8e/dEEeOlLq3cNo4HCRTQ=;
- b=zOW6HZ8rniFxjgi93URapteIVbzj+D94mWZ1SRrQ6jV4fnO4VoMbxEgjYRkVf8KNAstSaVr3zx02tf1jZAWs2Qy2adNrjfB6MrWboNYvxMJf1VW/UFEkI9aCdQ6l+SA9iLdMlMrIalQ6ODO7gqmmMw6k4T8Dpv5Tg/QdH10eFVGscJqeI+vTkePHgUesI25mHZQEozcQZ855ORjxhUWrcj1e8TnfWX4cGgWZmopbSvdV1tosq+BQVbKhh16pHV1GPxw0G7gidimvhyPIXYTjKsQmQP0wH8Eu5MA9n1WMWFyqMkMvx8zzzRGY80/L7SC/IHKVcgGr28kf9JlI5DKOfQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/sMoM8+B/aEEp5KNR+VZMu8e/dEEeOlLq3cNo4HCRTQ=;
- b=eswPY9I73DeRSibSlwryrysgZG3jo6e9xuKsMn61IkAd9jkM2t3gd/0dZ3V4pDSNOu1/I5v8znVRmevpQ1/Iot2+hLlUq0thMHYG3XpYjrQBgN125AKZJdeEian4tWybtFwA1ojtRTqg4gSEuehOTLkxu75WC+AolPA2Up5BDCrqXYp78lXqt2VeEaVam6qtjQDk/m4MDYLgjztj7SwOqnqjT02Xek4zFZqMKd7h0msOA4D3NO+Hm9OqaTyLY6lmA3T1xNPgGUoJm2heas+P8CNpzaZ5v6Yv0WwhcMRdsLtmupxDCi9KfdHYaPegEvMfyBwCS1kxjIVgWR4qDa8YmQ==
-Received: from SI6PR06MB7631.apcprd06.prod.outlook.com (2603:1096:4:239::11)
- by TYZPR06MB5806.apcprd06.prod.outlook.com (2603:1096:400:269::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.11; Mon, 26 Jan
- 2026 09:24:18 +0000
-Received: from SI6PR06MB7631.apcprd06.prod.outlook.com
- ([fe80::afe5:a3f1:b435:e43c]) by SI6PR06MB7631.apcprd06.prod.outlook.com
- ([fe80::afe5:a3f1:b435:e43c%4]) with mapi id 15.20.9542.010; Mon, 26 Jan 2026
- 09:24:18 +0000
-From: Kane Chen <kane_chen@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>
-Subject: RE: [PATCH v5 03/22] hw/misc: Add basic Aspeed PWM model
-Thread-Topic: [PATCH v5 03/22] hw/misc: Add basic Aspeed PWM model
-Thread-Index: AQHcicxNoHlfMIGUBUupvVqX/LHtlrVkL+mAgAADQdA=
-Date: Mon, 26 Jan 2026 09:24:18 +0000
-Message-ID: <SI6PR06MB76314CF8F22CA3D393B306D3F793A@SI6PR06MB7631.apcprd06.prod.outlook.com>
-References: <20260120051859.1920565-1-kane_chen@aspeedtech.com>
- <20260120051859.1920565-4-kane_chen@aspeedtech.com>
- <00403858-d7c8-4d90-9c95-90395691a790@kaod.org>
-In-Reply-To: <00403858-d7c8-4d90-9c95-90395691a790@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI6PR06MB7631:EE_|TYZPR06MB5806:EE_
-x-ms-office365-filtering-correlation-id: 9d12b646-7a4e-428c-50dc-08de5cbcae70
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|376014|366016|1800799024|38070700021;
-x-microsoft-antispam-message-info: =?utf-8?B?Q2cvQm02NDJxOGtHeldDYmxybW96V2srUm9VWmsrU3VXQWt0cE5VTUtCbVhi?=
- =?utf-8?B?RXlNVzg5aUF6ZEZkV0Jiam0xdFpub2pyMUgydXV0OUV4b2NWb2lMeGk4cHh4?=
- =?utf-8?B?THE3cGtKb3RxZWVsZVk5MnVUaTc2ZUdnbm1STDBOdTJVaHVITjcwc1RYbG5R?=
- =?utf-8?B?dnI2K1NRZFdTb2NqeU1PUlErcXE1Tm5qRkxuOHczdWV0RWs2Ym1CUEhPckdB?=
- =?utf-8?B?WkdGSmxrQUdGRDA3KzJyUW43aEhJWERyMDlZajhpLzhueHk0WXVlQjA2L3JI?=
- =?utf-8?B?SU1Ea0VkV0Z6VkQ2ZHZkRUxDL1FieHg4N3FNUDVQc1MxMk5ZZmJhOWFmczFk?=
- =?utf-8?B?SVlVVFQ5V3RTdjJEUjBHRDd1NGNWZXVqbG1CWnJTUUUwM2g5MFJOemQ4cTFv?=
- =?utf-8?B?NDhkYWw1eEZCM0V3Z0xXVFlyUjV4eklPd1YzMll6UFVUbmJ1TlE1VVFkc3NO?=
- =?utf-8?B?NzlvdlVpSjRabTc1Rm1HQk1VVy9tS2NwSE9qRTNWa3hVY2hzVStOWnR4YmEz?=
- =?utf-8?B?OTA4TjhBTUcrMlQ1WGpYVDF6ZTFqOVhXR0tpQWZxQncwcy9SWFI4MDJWaGhY?=
- =?utf-8?B?V3NmSHlzWnVpaS9KemdNSlpsRGZVRU5mUkZBZWptZEMyOVk1aVIwY2x6eGVi?=
- =?utf-8?B?ZjJKYkQ4MDM4eEpKTEEvR2JzOXJiYzZYVUZiRjh0U09OSG5WSHVHdW51bEEr?=
- =?utf-8?B?VzFYMVR5eU9jd0ljeGFoZmh4VjdCSUlJRDNkSWQ4V3AwNit5Z0Qya3k0QUhj?=
- =?utf-8?B?VmYwelZyN2l0c1NFanZqSE5jR1pLSXdwTG1jU3E4TUx3MTA5bE1EQUZ4b1Jw?=
- =?utf-8?B?dmJycTNpQmdOUXdXU01YUXdvOUlvTTM3OTlBaUtVM3diM3lDUkhIRWQydnE1?=
- =?utf-8?B?Qk5kbFdrbHA2RVo5Rk5OMUNTNC91b3RKRHJZQmp3R2RKVFZYVmU5bG9EVFkw?=
- =?utf-8?B?UGRjM1hFV0gxNXhHeUVRcnozRk5lRTJGamc1L3M0dWZMOEUyaUxpYitZNEhy?=
- =?utf-8?B?YkVacm5XTzJwRGgveG4xczdNMEdpYVhIbGM5NVo5WlczMmVqcndzSGVNR3V1?=
- =?utf-8?B?QmtkcmplcnBjNzlOb0l4VGlZaFpubU5hbDhOV2VqOE5DRG8rOHo3NzJDaVhn?=
- =?utf-8?B?QVZFVnR0V1JmeDVBd1A3VVJaRlJzYU5sNmlsa1ZMWGtlVisvQWxzRkcvamM1?=
- =?utf-8?B?dWhCdldzT3hMVW5nV08yajFTM01tOGIyMy9SM2lhbm81QVFZVWtCSFEyVnVy?=
- =?utf-8?B?UEY3YXR3RkJoWUxocjFTenMrd2Z0WW43RWt1L0RrMTFyWTBXUE9uMytiTXB6?=
- =?utf-8?B?cnEwTUxnNnZzUENOWVBwZlU1NEd5WktOaUpKMElFQkVkMUxrdVdHMUJSOGtq?=
- =?utf-8?B?OGN2NjN6cVdRWXVPVmd5eWtHZ1ZWSE9XVW1Ka3o5QTUwTFBYcGQzN1g5QXpM?=
- =?utf-8?B?L0QyeG40Q09LN1dGZU9RUy96VDEwR3A1MHRERU9iT2w4M2pySUcwUzlxdzRG?=
- =?utf-8?B?VFJqMlNWOW9WYmZVNis5cXFkd01Jd09wbXF4M2hXa0tDZWpLeS9KS0FOb244?=
- =?utf-8?B?S3JZRXVKTXVybE5waXhSellkdTVQazFRQU5xdTM5SW94ZERqSmVhdkNpR2dW?=
- =?utf-8?B?WlFBRWFKUnZiZ1FpUVhVWXB5UEprNDJMY3grRVBoOWE1aDZLYmI2SkYzTHhU?=
- =?utf-8?B?czBSdG5tdWFRYUNrK1BrL0RPVnRGc3ZzUUhUMHl5Rk14cVNwWXZJVVRTQnJW?=
- =?utf-8?B?ckxobnFmNWdGaHpJR28waXJYWEsyZll5TzBKWEVvbStwSkdKRklKeWJJWjM4?=
- =?utf-8?B?WlpoWE9GTzJYbHAvZ055WUZYMXkxbnV6S1ZoZVcyYi96R0hUUS9Db0oxNlB6?=
- =?utf-8?B?UkRyOHgrVEdFNDQxSWJ2a3BkYUkrRisrZ2tENHpSOExiYWJwaC9hSlJPTkdF?=
- =?utf-8?B?bGMzOGZUaTVJV0RpSDZNT3FvY2pseGRUOWtLVXhoc3F4QnJNSGZ6WTdPN292?=
- =?utf-8?B?MVR5OTBVZTBuU0VSMVE0YkduUnEvbCsvc1J0T2xMaUpXSmc3NmJvZG9aZEEy?=
- =?utf-8?B?ZmJQTW91cURxNWZtM0J5a1RCMW4wb040bFhBeFFmODNGalVtYVg0aEtIS1kv?=
- =?utf-8?B?K3NSa0pWdHp4R0NvaGZZSWFqbXQzSWlKTzVzVXhpSW1vd2xBU2dITGorR1VC?=
- =?utf-8?Q?3tJ88z7OZOXDABeo0ElL0s8=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SI6PR06MB7631.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE; SFS:(13230040)(376014)(366016)(1800799024)(38070700021); DIR:OUT;
- SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UVBUWWZpWEplODZKWEFraXpPOW1HdDdtOW0zY1d2eGtrVXVnYmppRyt3RkVC?=
- =?utf-8?B?R2JzOEdQWFZTcE9hRDRacCthT0hIZEZnV0dPdFFjVEJkVmRvcG1oQU5peEJP?=
- =?utf-8?B?VGIrNUtGN05GU2tTclRmVHNhOEdpZU1oQzZxcVFIdmR5a1pmVnF3Um0ydlY0?=
- =?utf-8?B?RnVDQXJJWW5lRVFVd3ZwQnZPcXpaSzVZVjcybU53aERob05GdWJteGRYdDQ3?=
- =?utf-8?B?RnU4dDhmdFcyZzhBYndzS2tBQ05kRlhyUWozalpDSnBIanBIN2xqNFg1OHMr?=
- =?utf-8?B?eUhIOTZCNXBuTTlJMGdQeW5tMlpwWUZ0Z3B1WFlsaVVKZkZPM2Q4cWVTYnNW?=
- =?utf-8?B?ZWtwakZFdmsweTVUVWRtcmhEN0Q1SHVHNU1GV09lYjVqRnMzZ1NWR1ZHK3J4?=
- =?utf-8?B?SjZQYzhWNVdJTnd4MTIrdXE2cEJ1bk9FazBJMjdZNmV4NVQvNlFaZzNIMGgw?=
- =?utf-8?B?KzB4Qm50bGVOaUc4TFJ0V3NJNHJGK25weGlrT3VsR0RHRHF0anpOZGhOSTZT?=
- =?utf-8?B?RFpzNktEdFBIMEFEeXczb3VuNk1FSzZjWE5wZFgwMUZKbmZrZlY4LzFtTDg3?=
- =?utf-8?B?K2F3L1FXaUdEWWZ4bElnZjdnbkpoUnlpTmdqQTBXV0w3QkJKQzNLQWVIaWtL?=
- =?utf-8?B?Zm11Ri9aUlBLUUFSbTFDVDE0NnJ3QzlMdksrMGpPbVRWSSs5a05TZWZPeGJq?=
- =?utf-8?B?N0dJKzdGcjh2bzRiaDN0RzhTWWdaYlRGV1c3NlRHVk93QWxmTkQzcG80ZGht?=
- =?utf-8?B?L2JwNWZ4VmFpWHFPREhoU2MzdXVsaWxmL2F0S2d3RjM3Rk5QMEV6VHIxcXpT?=
- =?utf-8?B?UEpYQWwzSTIxWVI5Mm9ZQzYxVldJZWtJREFTY2p6bzVKdHdHdnZUNEVwR2tq?=
- =?utf-8?B?aEphNjd2amJieXdienJEVnNjZWhXVzNSa0hkY1RDd0owMlpCRTZvT0twb3NC?=
- =?utf-8?B?WDZjazlNVmg5V1RkUVlVbGdFV2s3Y2sybEQ5T2NGbURaUDg5NnVCREVmYm5O?=
- =?utf-8?B?ZHJxeUEzTmwvSlJDdUZuUHRwM3k4dXdFdSs5NGE4QlpJMkpucnNMWmxKd0FG?=
- =?utf-8?B?b0x3MmJKdGpOb0dTZVJpN2xRSVVuOXB0YzgrTzJXNjArY2JGclJ5N3Nzb3Vp?=
- =?utf-8?B?OHJ2SGYyaWU3OTB2QnhpZmU4ZUxEVWhNeExhakVlSzNlYm5LQzhaaWdXU2pY?=
- =?utf-8?B?ZG9XQXBEcmttTEJDRDVIcUJ3aExmMC96NVV4akdQeEhQWVJqSkpvWlJVejQr?=
- =?utf-8?B?RVdDVzVrTE5rYjlKZGtabDExOVZoOFo4bVV0cXo4OTNRaUZxY29Pd2JBejRn?=
- =?utf-8?B?L2srNlgxdytpSmcxVUh6VWMrcFI2dG1GOWQzelViaFlQUlF0UVVIdktPN0pC?=
- =?utf-8?B?eHFhUUZ3M0NtclFkNCtJWnpHejNPT1pjejA1MDY0STQvcmVCa1MxZHo0Q2k1?=
- =?utf-8?B?R2RtMFRYS3gyTk52WS9XYUJqUnFjaWw0VVpoejBQRVBvVjhFOGZSbWQ1a0Zl?=
- =?utf-8?B?UXlxSG1IbGhqb2ZObDdvaE9JWDhhL2tldzAxTU5TRGh0M0tlZ3JMaHZFVWw5?=
- =?utf-8?B?RTB4Qnc3RU5lUlNmRTZkTGovOExZMTZhckdnZzNXam1IU0hMY1lmRkRqL0FH?=
- =?utf-8?B?a2lheDFyUk5rVUZ3K0QwQllsc3NyYVlrSHhWYnJBSHpjUzlvUHFYWlBTYVNt?=
- =?utf-8?B?Q3BTUTROVC8wUDdoNldZdGEzOVZyYWpNT0NNSTA3WU53L3RzUWpCVjk2NFJn?=
- =?utf-8?B?SU4yOGc2M0UzbGlUSDZYa2N3TnZ5Y0RDT0xNWWxpZzdjTzFzOEJld2dETXlo?=
- =?utf-8?B?Qk5kdUhFMjdrUldXREgwblQ0WHp2T1g4Sng2R1ZiaFpaZWw4VDZvSEkyT29X?=
- =?utf-8?B?OWR4enBRTDlQN2IxQ0pxdkhpVlVDek14YkVHaDhIMnZNa0psMTBaSm5PcE82?=
- =?utf-8?B?WDlGbjlpTUQrRmdOMllTOGNNR1N6RCttWkVtYjNnMVlpeFZJb1hSdzV5Z2hi?=
- =?utf-8?B?TldUcmlseXpXMkIvRTR2Z0c5ZThWRElJUFFUd2tESm8xNGp6c3N0ZytZZUds?=
- =?utf-8?B?Q3N0SnRyWE5ITmltejZkRzRGNXpjUStFVWNPeUdzMTQrTEtiOXFDZitremdI?=
- =?utf-8?B?UFJaUy9GSllLN1E5dU1qOEdtb0V1SVBpbzhaeGpFSFVVV1VheExyTGVkMFlJ?=
- =?utf-8?B?d2doYmcxTjYwY1c3R0ljY0M0NlFRNnVDakJOMjBuTFQ2Zzd4U2E0V3JiSTkz?=
- =?utf-8?B?a1FyWUY1cjk2S0lBWWlucllYQjd3bm9vNUg2SnY2NU9RcndXNk8vNEpRZzl0?=
- =?utf-8?B?Z0U2ZG5nSnprTUFDVDFlaW9uL3B5OFg4SFpMVERXRTlLV1hJR3JwZz09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI6PR06MB7631.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9d12b646-7a4e-428c-50dc-08de5cbcae70
-X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Jan 2026 09:24:18.2768 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: NVwfkTO/EQnIDBWNW/1NK3hLJckFqMxNUtQZySPxoiUZzUJBNmt++Zm5CNtAWgTGBkxNWv0urXDiwXfxAdqnaBqVMNGH1IHfPaoNZtv42/Q=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB5806
-Received-SPF: pass client-ip=2a01:111:f403:c405::7;
- envelope-from=kane_chen@aspeedtech.com;
- helo=TYDPR03CU002.outbound.protection.outlook.com
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vkJAf-0001lq-RS
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 04:46:12 -0500
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-20-percent-1 (Postfix) with ESMTPS id
+ 31D5E1800134; Mon, 26 Jan 2026 09:46:03 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1769420765; x=1772012765;
+ bh=Q7WGvePqidhXGlRwWRnNT7cu6t1Px8nBBTCJSpGEoEw=;
+ h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
+ b=CCc/81WC4IzO+JmUn+m5vedMsGKZuzpUNuEyE60wJFDh6fC2A/hASx4nkXuc2BozOdN5sQIZPVXY2q/JoxmIMx5N22aOHpqfgglU5O6RfmLx+PMqawdzK5tbNh3EFEVtMoWgWqIy+svxaGfPXBd3zNpD7aJ3o0sAC00MFylQVHm3jyYSWEXW6OBS/2O4RmqymbfPBoqfLcMRduNk9A3uR3X6mutlIvkkyU0pOT3FInA/GOXTI0bVE+qjGJUvHQt6JPzfze9srf6vk30RbLbtAAes3Mgg7yLCaKuZJo8yCejD/M1fnY3pBXD1JrQSfaHA6/vb2lzZtHZlpLr08nSlcg==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-20-percent-1 (Postfix) with ESMTPSA id
+ B7D571800105; Mon, 26 Jan 2026 09:46:02 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+Message-Id: <A4C5EAC8-5527-48B7-9344-816469344AC3@unpredictable.fr>
+Content-Type: multipart/alternative;
+ boundary="Apple-Mail=_C83BD6A3-7D02-4461-8350-AE51F34EDF75"
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
+Subject: Re: [PATCH v2 2/2] hvf/arm: expose FEAT_SME2 to guest if available
+Date: Mon, 26 Jan 2026 10:45:50 +0100
+In-Reply-To: <CAAjaMXZLG2aBtStRhyvmdENj1Z+Mx05BmDgyYUoYrc_ZnHwyVQ@mail.gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>,
+ qemu-arm@nongnu.org
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+References: <20260115-sme2-hvf-v2-0-2eca481bd7ee@linaro.org>
+ <20260115-sme2-hvf-v2-2-2eca481bd7ee@linaro.org>
+ <2c3bb870-0321-4799-b7ca-65b2772ddf2c@linaro.org>
+ <CAAjaMXabRsOX0OVXN202ev3A1sKqMmbDoeY6n7Z-EhmZWmL9Cg@mail.gmail.com>
+ <CAFEAcA9oZ=rhUbw8WK5nUPAvs0TEPCJB8t8ReeViv=0b=_x-sQ@mail.gmail.com>
+ <CAAjaMXZLG2aBtStRhyvmdENj1Z+Mx05BmDgyYUoYrc_ZnHwyVQ@mail.gmail.com>
+X-Mailer: Apple Mail (2.3864.300.41.1.7)
+X-Proofpoint-ORIG-GUID: LF-dlok7qrzx-GcU_zBEILq505wS12Kl
+X-Authority-Info-Out: v=2.4 cv=dvfWylg4 c=1 sm=1 tr=0 ts=697737dc
+ cx=c_apl:c_apl_out:c_pps a=bsP7O+dXZ5uKcj+dsLqiMw==:117
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=NEAV23lmAAAA:8 a=CCpqsmhAAAAA:8 a=KKAkSRfTAAAA:8 a=8D93sAZUnP8VoIqYYvkA:9
+ a=QEXdDO2ut3YA:10 a=uZpOMUMpUyOTZhun9u8A:9 a=xN7k2SGs4CtfF72F:21
+ a=_W_S_7VecoQA:10 a=ul9cdbp4aOFLsgKbc677:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: LF-dlok7qrzx-GcU_zBEILq505wS12Kl
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTI2MDA4MyBTYWx0ZWRfX7sNpjmIADZG+
+ h4PGICSwqWUlm5eLzFFRQPpr+75mEa4zbN/Z3dO9ap8UgGJrMic7RTrI01i/7+AHzKB3hu4GUra
+ ZIeoTJOyjFz92MRx39VOjucEZSJ6E+jBGLBYtUb/QP1tnjRpoLof9Yv90QylGRoEl/4OdXDTZYJ
+ LS1Otus2/j9Nk8y/dWn4Rkqj06clW+cg7Sjvt8k7eDCa0oUx3S2MXU+Tp0lqvb0zyMTiieThHDD
+ Mgw8OW9h+8RD3NcqrbdZWne1ZSvSD8uQsEi1gWuZ8ytdKArGCAlSLUeWMA741UBQzxvsH5b8xln
+ T6TvAMyMLtXC71GmaIZ
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.20,FMLib:17.12.100.49
+ definitions=2026-01-26_02,2026-01-22_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ adultscore=0 mlxlogscore=999 mlxscore=0 clxscore=1030 phishscore=0
+ spamscore=0 suspectscore=0 malwarescore=0 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2601260083
+X-JNJ: AAAAAAABTYIBN+dtSMX5KVu/y5+rvcrocVpup7tnyJ2Acm9e3OjHY3egMgRTrEWX9MKsejeqkBMMWQ2aKjh4DWKV2LjiSL2zWAUc7vS0eCtr6bGkHB85FUsUXZBoW1ZLwov7jfiesvuJV5hE8PgDk6IhkczI30zFygSu2DmenxkON6Brm7Pj5ak6izRxon/PlpbCRIA1qkFmfwp9jJj9bsojVn0p1GgBDKbxsldC/ZLrEwbo38wKw1EkUJjTvJolKvaRa/oarz5P9OZzoxqPmgE+cIN77Tkm0r9Xe7aPiytgaySwy9hf/oMOKRjFv+iHfPuHhhk4laWzDVA1/FqCNGGTxUy7Oa8NMIJcLsHeVrD+zkxH1DLHcLvDI8fKM0rJhwKtA+T7777ItCGC+VMFvlz2X8hNUToRZ/y9QY6OdYfXPbjBIV5RNu2gHDYCyxer4ULMF6ziwLkS36yP/Yg7mLCkGcYjpZajpxPzoIlzAMEohTEa/i0Hgcv10rLUdGIP/ohuLib3NtJRpd5UEkQxzOzv8+BUN8UgLEnucET/yU46O0yMsgD56Q13A+2loxL31CjHxdQH4zr4DDNmABbdu/bkzTRM9AIMH4pHWzwxpEUB1+aPo8yiK/etoJfvZXdGcw6kO9hDBPGgoGRswRdoiO6m64i4ByC1J69vDaUZXixVN15imhCc3lXGA1z0K9TpsQTcCv9PDlK9azPiwb21Ndmm
+Received-SPF: pass client-ip=57.103.86.145;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -190,39 +102,228 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBDw6lkcmljIExlIEdvYXRlciA8
-Y2xnQGthb2Qub3JnPg0KPiBTZW50OiBNb25kYXksIEphbnVhcnkgMjYsIDIwMjYgNDo1NyBQTQ0K
-PiBUbzogS2FuZSBDaGVuIDxrYW5lX2NoZW5AYXNwZWVkdGVjaC5jb20+OyBQZXRlciBNYXlkZWxs
-DQo+IDxwZXRlci5tYXlkZWxsQGxpbmFyby5vcmc+OyBTdGV2ZW4gTGVlIDxzdGV2ZW5fbGVlQGFz
-cGVlZHRlY2guY29tPjsgVHJveQ0KPiBMZWUgPGxlZXRyb3lAZ21haWwuY29tPjsgSmFtaW4gTGlu
-IDxqYW1pbl9saW5AYXNwZWVkdGVjaC5jb20+OyBBbmRyZXcNCj4gSmVmZmVyeSA8YW5kcmV3QGNv
-ZGVjb25zdHJ1Y3QuY29tLmF1PjsgSm9lbCBTdGFubGV5IDxqb2VsQGptcy5pZC5hdT47DQo+IG9w
-ZW4gbGlzdDpBU1BFRUQgQk1DcyA8cWVtdS1hcm1Abm9uZ251Lm9yZz47IG9wZW4gbGlzdDpBbGwg
-cGF0Y2hlcyBDQw0KPiBoZXJlIDxxZW11LWRldmVsQG5vbmdudS5vcmc+DQo+IENjOiBUcm95IExl
-ZSA8dHJveV9sZWVAYXNwZWVkdGVjaC5jb20+DQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjUgMDMv
-MjJdIGh3L21pc2M6IEFkZCBiYXNpYyBBc3BlZWQgUFdNIG1vZGVsDQo+IA0KPiBPbiAxLzIwLzI2
-IDA2OjE4LCBLYW5lIENoZW4gdmlhIHdyb3RlOg0KPiA+IEZyb206IEPDqWRyaWMgTGUgR29hdGVy
-IDxjbGdAa2FvZC5vcmc+DQo+ID4NCj4gPiBBZGQgYW4gaW5pdGlhbCBQV00gbW9kZWwgZm9yIEFz
-cGVlZCBTb0NzLCBpbmNsdWRpbmcgZGV2aWNlIHN0YXRlLA0KPiA+IHJlZ2lzdGVyIGRlZmluaXRp
-b25zLCBhbmQgYmFzaWMgaW5pdGlhbGl6YXRpb24gYXMgYSBzeXNidXMgZGV2aWNlLg0KPiA+DQo+
-ID4gU2lnbmVkLW9mZi1ieTogQ8OpZHJpYyBMZSBHb2F0ZXIgPGNsZ0BrYW9kLm9yZz4NCj4gPiBT
-aWduZWQtb2ZmLWJ5OiBLYW5lLUNoZW4tQVMgPGthbmVfY2hlbkBhc3BlZWR0ZWNoLmNvbT4NCj4g
-PiAtLS0NCj4gPiAgIGluY2x1ZGUvaHcvYXJtL2FzcGVlZF9zb2MuaCAgfCAgIDMgKy0NCj4gPiAg
-IGluY2x1ZGUvaHcvbWlzYy9hc3BlZWRfcHdtLmggfCAgMzEgKysrKysrKysrDQo+ID4gICBody9t
-aXNjL2FzcGVlZF9wd20uYyAgICAgICAgIHwgMTIxDQo+ICsrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrDQo+ID4gICBody9taXNjL21lc29uLmJ1aWxkICAgICAgICAgIHwgICAxICsN
-Cj4gPiAgIGh3L21pc2MvdHJhY2UtZXZlbnRzICAgICAgICAgfCAgIDQgKysNCj4gPiAgIDUgZmls
-ZXMgY2hhbmdlZCwgMTU5IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkNCj4gPiAgIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBpbmNsdWRlL2h3L21pc2MvYXNwZWVkX3B3bS5oDQo+ID4gICBjcmVhdGUg
-bW9kZSAxMDA2NDQgaHcvbWlzYy9hc3BlZWRfcHdtLmMNCj4gS2FuZSwNCj4gDQo+IFdoZW4geW91
-IHJlc2VuZCwgY291bGQgeW91IHBsZWFzZSBmaXggOg0KPiANCj4gICAgRVJST1I6IE5ldyBmaWxl
-ICdpbmNsdWRlL2h3L21pc2MvYXNwZWVkX3B3bS5oJyByZXF1aXJlcw0KPiAnU1BEWC1MaWNlbnNl
-LUlkZW50aWZpZXInDQo+ICAgIEVSUk9SOiBOZXcgZmlsZSAnaHcvbWlzYy9hc3BlZWRfcHdtLmMn
-IHJlcXVpcmVzDQo+ICdTUERYLUxpY2Vuc2UtSWRlbnRpZmllcicNCj4gDQo+IA0KPiBFUlJPUnMg
-ZGV0ZWN0ZWQgYnkgLi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIHNob3VsZCBiZSBmaXhlZCBiZWZv
-cmUgc2VuZGluZy4NCj4gV0FSTklORyBhcmUgT0suDQo+IA0KPiBUaGFua3MsDQo+IA0KPiBDLg0K
-DQpIaSBDw6lkcmljLA0KDQpUaGFua3MgZm9yIHRoZSBjYXRjaC4gSSBtaXNzZWQgdGhlIFNQRFgg
-ZXJyb3JzIGJlY2F1c2UgSSB3YXMgcnVubmluZyBjaGVja3BhdGNoLnBsIC1mDQpvbiB0aGUgc291
-cmNlIGZpbGVzIGluc3RlYWQgb2YgdGhlIGdlbmVyYXRlZCBwYXRjaGVzLiBJIHdpbGwgZml4IHRo
-ZXNlIGVycm9ycyBpbiB0aGUgbmV4dA0KdmVyc2lvbi4NCg0KQmVzdCBSZWdhcmRzLA0KS2FuZQ0K
+
+--Apple-Mail=_C83BD6A3-7D02-4461-8350-AE51F34EDF75
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=utf-8
+
+
+
+> On 26. Jan 2026, at 09:34, Manos Pitsidianakis =
+<manos.pitsidianakis@linaro.org> wrote:
+>=20
+> On Thu, Jan 22, 2026 at 6:52=E2=80=AFPM Peter Maydell =
+<peter.maydell@linaro.org> wrote:
+>>=20
+>> On Tue, 20 Jan 2026 at 10:02, Manos Pitsidianakis
+>> <manos.pitsidianakis@linaro.org> wrote:
+>>>=20
+>>> On Tue, Jan 20, 2026 at 11:50=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
+>>> <philmd@linaro.org> wrote:
+>>>>=20
+>>>> On 15/1/26 12:20, Manos Pitsidianakis wrote:
+>>>>> Starting from M4 cores and MacOS 15.2 SDK, HVF can virtualise =
+FEAT_SME2.
+>>>>>=20
+>>>>> Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+>>>>> Signed-off-by: Manos Pitsidianakis =
+<manos.pitsidianakis@linaro.org>
+>>>>> ---
+>>>>>  target/arm/cpu.c     |  4 +++-
+>>>>>  target/arm/cpu64.c   | 13 ++++++++++++-
+>>>>>  target/arm/hvf/hvf.c | 25 +++++++++++++------------
+>>>>>  3 files changed, 28 insertions(+), 14 deletions(-)
+>>>>>=20
+>>>>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+>>>>> index =
+caf7980b1fc5244c5c2f130e79ba869456c20c88..7f4ebfdf61217db6075495119c1b642b=
+c2abf295 100644
+>>>>> --- a/target/arm/cpu.c
+>>>>> +++ b/target/arm/cpu.c
+>>>>> @@ -1577,7 +1577,9 @@ void arm_cpu_finalize_features(ARMCPU *cpu, =
+Error **errp)
+>>>>>           * assumes it, so if the user asked for sve=3Doff then =
+turn off SME also.
+>>>>>           * (KVM doesn't currently support SME at all.)
+>>>>>           */
+>>>>> -        if (cpu_isar_feature(aa64_sme, cpu) && =
+!cpu_isar_feature(aa64_sve, cpu)) {
+>>>>> +        if (!hvf_enabled()
+>>>>=20
+>>>> In my experience "if(!accel)" is bug prone, maybe change to =
+explicit "if
+>>>> (tcg_enabled() || kvm_enabled()"?
+>>>=20
+>>> Shouldn't we list all accelerators instead of just tcg/kvm then?
+>>=20
+>> This "turn off SME if no SVE" check is principally trying to
+>> avoid users hitting a bug / missing feature in TCG where
+>> it will assert on startup when the guest tries to write to
+>> SMCR_EL1 (see the backtrace in f7767ca3017's commit message),
+>> because we accidentally coded in assumptions that any guest
+>> with SME also has SVE. We turned it off for all accelerators
+>> because (a) at the time there weren't any others which had
+>> SME support and (b) we didn't do the investigation to figure
+>> out if any of those bogus assumptions were in code that's
+>> not TCG-specific. (In our defence, it was just prior to
+>> a QEMU release :-))
+>>=20
+>> To the extent that those accidental assumptions are in code
+>> that you can hit with HVF, we need to fix them before we
+>> can enable SME-no-SVE in HVF. To the extent that they're TCG
+>> specific, the only accelerator we really need to turn
+>> this off for is TCG. As the comment notes, right now
+>> KVM doesn't support SME so it's impossible to get here
+>> with SME in the feature registers.
+>>=20
+>> If the core code is OK for hvf to enable SME-no-SVE,
+>> then it should also be OK for any other accelerator
+>> except TCG.
+>>=20
+>> I don't think hvf can get to the smcr_write() function
+>> which is the specific failure we saw with TCG, but
+>> I think that it ought to be possible to end up calling
+>> sve_vqm1_for_el() if you use the gdbstub with hvf
+>> accel, get the guest into streaming SME mode (PSTATE.SM
+>> set), and then read the "svg" register that gdb uses to
+>> expose the vector granule.
+>>=20
+>> If giving the SME registers a good workout with the
+>> gdbstub interface all seems to work fine, then I think
+>> we can adjust this condition to be "if tcg_enabled && ...".
+>=20
+> gdb had a disastrous workout, because it turns out it also assumes SME
+> must have SVE:
+>=20
+>=20
+>  (gdb) target remote localhost:1234
+>  Remote debugging using localhost:1234
+>  ../../gdb/aarch64-tdep.c:3068: internal-error:
+> aarch64_pseudo_register_type: bad register number 160
+>  A problem internal to GDB has been detected,
+>  further debugging may prove unreliable.
+>  Fatal signal: Abort trap: 6
+>=20
+Hello,
+
+Meanwhile the LLVM side looks un-merged: =
+https://github.com/llvm/llvm-project/pull/165413
+Maybe having a way to mask SME via =E2=80=9C-cpu host,sme=3Doff=E2=80=9D =
+and documenting it would be enough?
+> "register number 160" corresponds to pseudoregister regnum
+> AARCH64_SVE_V0_REGNUM. Looking at gdb/aarch64-tdep.c, it seems they
+> are only supported by checking against `tdep->has_sve ()` [0]
+>=20
+> Peter: So what do we do on the QEMU side? Merge it and wait till
+> upstream gdb fixes it to check for bugs?
+>=20
+> [0]: =
+https://sourceware.org/git/?p=3Dbinutils-gdb.git;a=3Dblob;f=3Dgdb/aarch64-=
+tdep.c;h=3Df1bdce453db27dffeb42f10fcd44a408f706afb2;hb=3DHEAD#l3116
+>=20
+>=20
+>=20
+> --=20
+> Manos Pitsidianakis
+> Emulation and Virtualization Engineer at Linaro Ltd
+>=20
+
+
+--Apple-Mail=_C83BD6A3-7D02-4461-8350-AE51F34EDF75
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=utf-8
+
+<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
+content=3D"text/html; charset=3Dutf-8"></head><body =
+style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
+line-break: after-white-space;"><br =
+id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
+type=3D"cite"><div>On 26. Jan 2026, at 09:34, Manos Pitsidianakis =
+&lt;manos.pitsidianakis@linaro.org&gt; wrote:</div><br =
+class=3D"Apple-interchange-newline"><div><div>On Thu, Jan 22, 2026 at =
+6:52=E2=80=AFPM Peter Maydell &lt;peter.maydell@linaro.org&gt; =
+wrote:<br><blockquote type=3D"cite"><br>On Tue, 20 Jan 2026 at 10:02, =
+Manos Pitsidianakis<br>&lt;manos.pitsidianakis@linaro.org&gt; =
+wrote:<br><blockquote type=3D"cite"><br>On Tue, Jan 20, 2026 at =
+11:50=E2=80=AFAM Philippe Mathieu-Daud=C3=A9<br>&lt;philmd@linaro.org&gt; =
+wrote:<br><blockquote type=3D"cite"><br>On 15/1/26 12:20, Manos =
+Pitsidianakis wrote:<br><blockquote type=3D"cite">Starting from M4 cores =
+and MacOS 15.2 SDK, HVF can virtualise FEAT_SME2.<br><br>Reviewed-by: =
+Mohamed Mediouni &lt;mohamed@unpredictable.fr&gt;<br>Signed-off-by: =
+Manos Pitsidianakis &lt;manos.pitsidianakis@linaro.org&gt;<br>---<br> =
+&nbsp;target/arm/cpu.c &nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;4 +++-<br> =
+&nbsp;target/arm/cpu64.c &nbsp;&nbsp;| 13 ++++++++++++-<br> =
+&nbsp;target/arm/hvf/hvf.c | 25 +++++++++++++------------<br> &nbsp;3 =
+files changed, 28 insertions(+), 14 deletions(-)<br><br>diff --git =
+a/target/arm/cpu.c b/target/arm/cpu.c<br>index =
+caf7980b1fc5244c5c2f130e79ba869456c20c88..7f4ebfdf61217db6075495119c1b642b=
+c2abf295 100644<br>--- a/target/arm/cpu.c<br>+++ =
+b/target/arm/cpu.c<br>@@ -1577,7 +1577,9 @@ void =
+arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)<br> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* assumes =
+it, so if the user asked for sve=3Doff then turn off SME also.<br> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* (KVM =
+doesn't currently support SME at all.)<br> =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br>- =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (cpu_isar_feature(aa64_sme, =
+cpu) &amp;&amp; !cpu_isar_feature(aa64_sve, cpu)) {<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if =
+(!hvf_enabled()<br></blockquote><br>In my experience "if(!accel)" is bug =
+prone, maybe change to explicit "if<br>(tcg_enabled() || =
+kvm_enabled()"?<br></blockquote><br>Shouldn't we list all accelerators =
+instead of just tcg/kvm then?<br></blockquote><br>This "turn off SME if =
+no SVE" check is principally trying to<br>avoid users hitting a bug / =
+missing feature in TCG where<br>it will assert on startup when the guest =
+tries to write to<br>SMCR_EL1 (see the backtrace in f7767ca3017's commit =
+message),<br>because we accidentally coded in assumptions that any =
+guest<br>with SME also has SVE. We turned it off for all =
+accelerators<br>because (a) at the time there weren't any others which =
+had<br>SME support and (b) we didn't do the investigation to =
+figure<br>out if any of those bogus assumptions were in code =
+that's<br>not TCG-specific. (In our defence, it was just prior to<br>a =
+QEMU release :-))<br><br>To the extent that those accidental assumptions =
+are in code<br>that you can hit with HVF, we need to fix them before =
+we<br>can enable SME-no-SVE in HVF. To the extent that they're =
+TCG<br>specific, the only accelerator we really need to turn<br>this off =
+for is TCG. As the comment notes, right now<br>KVM doesn't support SME =
+so it's impossible to get here<br>with SME in the feature =
+registers.<br><br>If the core code is OK for hvf to enable =
+SME-no-SVE,<br>then it should also be OK for any other =
+accelerator<br>except TCG.<br><br>I don't think hvf can get to the =
+smcr_write() function<br>which is the specific failure we saw with TCG, =
+but<br>I think that it ought to be possible to end up =
+calling<br>sve_vqm1_for_el() if you use the gdbstub with hvf<br>accel, =
+get the guest into streaming SME mode (PSTATE.SM<br>set), and then read =
+the "svg" register that gdb uses to<br>expose the vector =
+granule.<br><br>If giving the SME registers a good workout with =
+the<br>gdbstub interface all seems to work fine, then I think<br>we can =
+adjust this condition to be "if tcg_enabled &amp;&amp; =
+...".<br></blockquote><br>gdb had a disastrous workout, because it turns =
+out it also assumes SME<br>must have SVE:<br><br><br> &nbsp;(gdb) target =
+remote localhost:1234<br> &nbsp;Remote debugging using =
+localhost:1234<br> &nbsp;../../gdb/aarch64-tdep.c:3068: =
+internal-error:<br>aarch64_pseudo_register_type: bad register number =
+160<br> &nbsp;A problem internal to GDB has been detected,<br> =
+&nbsp;further debugging may prove unreliable.<br> &nbsp;Fatal signal: =
+Abort trap: =
+6<br><br></div></div></blockquote>Hello,</div><div><br></div><div>Meanwhil=
+e the LLVM side looks un-merged:&nbsp;<a =
+href=3D"https://github.com/llvm/llvm-project/pull/165413">https://github.c=
+om/llvm/llvm-project/pull/165413</a></div><div>Maybe having a way to =
+mask SME via =E2=80=9C-cpu host,sme=3Doff=E2=80=9D and documenting it =
+would be enough?</div><div><blockquote type=3D"cite"><div><div>"register =
+number 160" corresponds to pseudoregister =
+regnum<br>AARCH64_SVE_V0_REGNUM. Looking at gdb/aarch64-tdep.c, it seems =
+they<br>are only supported by checking against `tdep-&gt;has_sve ()` =
+[0]<br><br>Peter: So what do we do on the QEMU side? Merge it and wait =
+till<br>upstream gdb fixes it to check for bugs?<br><br>[0]: =
+https://sourceware.org/git/?p=3Dbinutils-gdb.git;a=3Dblob;f=3Dgdb/aarch64-=
+tdep.c;h=3Df1bdce453db27dffeb42f10fcd44a408f706afb2;hb=3DHEAD#l3116<br><br=
+><br><br>-- <br>Manos Pitsidianakis<br>Emulation and Virtualization =
+Engineer at Linaro =
+Ltd<br><br></div></div></blockquote></div><br></body></html>=
+
+--Apple-Mail=_C83BD6A3-7D02-4461-8350-AE51F34EDF75--
 

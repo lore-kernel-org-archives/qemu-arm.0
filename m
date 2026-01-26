@@ -4,89 +4,155 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03F46CF65C7
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 09:51:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78A77CF65D6
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 10:45:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkJAy-0003T9-LS; Mon, 26 Jan 2026 04:46:31 -0500
+	id 1vkK5V-0006xi-37; Mon, 26 Jan 2026 05:44:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vkJAj-0003PR-Qh
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 04:46:17 -0500
-Received: from p-east3-cluster5-host2-snip4-4.eps.apple.com ([57.103.86.145]
- helo=outbound.qs.icloud.com)
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vkK5S-0006wE-Io; Mon, 26 Jan 2026 05:44:51 -0500
+Received: from mail-westus3azlp170110003.outbound.protection.outlook.com
+ ([2a01:111:f403:c107::3] helo=PH0PR06CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vkJAf-0001lq-RS
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 04:46:12 -0500
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-20-percent-1 (Postfix) with ESMTPS id
- 31D5E1800134; Mon, 26 Jan 2026 09:46:03 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1769420765; x=1772012765;
- bh=Q7WGvePqidhXGlRwWRnNT7cu6t1Px8nBBTCJSpGEoEw=;
- h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
- b=CCc/81WC4IzO+JmUn+m5vedMsGKZuzpUNuEyE60wJFDh6fC2A/hASx4nkXuc2BozOdN5sQIZPVXY2q/JoxmIMx5N22aOHpqfgglU5O6RfmLx+PMqawdzK5tbNh3EFEVtMoWgWqIy+svxaGfPXBd3zNpD7aJ3o0sAC00MFylQVHm3jyYSWEXW6OBS/2O4RmqymbfPBoqfLcMRduNk9A3uR3X6mutlIvkkyU0pOT3FInA/GOXTI0bVE+qjGJUvHQt6JPzfze9srf6vk30RbLbtAAes3Mgg7yLCaKuZJo8yCejD/M1fnY3pBXD1JrQSfaHA6/vb2lzZtHZlpLr08nSlcg==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-20-percent-1 (Postfix) with ESMTPSA id
- B7D571800105; Mon, 26 Jan 2026 09:46:02 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-Message-Id: <A4C5EAC8-5527-48B7-9344-816469344AC3@unpredictable.fr>
-Content-Type: multipart/alternative;
- boundary="Apple-Mail=_C83BD6A3-7D02-4461-8350-AE51F34EDF75"
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
-Subject: Re: [PATCH v2 2/2] hvf/arm: expose FEAT_SME2 to guest if available
-Date: Mon, 26 Jan 2026 10:45:50 +0100
-In-Reply-To: <CAAjaMXZLG2aBtStRhyvmdENj1Z+Mx05BmDgyYUoYrc_ZnHwyVQ@mail.gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>,
- qemu-arm@nongnu.org
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-References: <20260115-sme2-hvf-v2-0-2eca481bd7ee@linaro.org>
- <20260115-sme2-hvf-v2-2-2eca481bd7ee@linaro.org>
- <2c3bb870-0321-4799-b7ca-65b2772ddf2c@linaro.org>
- <CAAjaMXabRsOX0OVXN202ev3A1sKqMmbDoeY6n7Z-EhmZWmL9Cg@mail.gmail.com>
- <CAFEAcA9oZ=rhUbw8WK5nUPAvs0TEPCJB8t8ReeViv=0b=_x-sQ@mail.gmail.com>
- <CAAjaMXZLG2aBtStRhyvmdENj1Z+Mx05BmDgyYUoYrc_ZnHwyVQ@mail.gmail.com>
-X-Mailer: Apple Mail (2.3864.300.41.1.7)
-X-Proofpoint-ORIG-GUID: LF-dlok7qrzx-GcU_zBEILq505wS12Kl
-X-Authority-Info-Out: v=2.4 cv=dvfWylg4 c=1 sm=1 tr=0 ts=697737dc
- cx=c_apl:c_apl_out:c_pps a=bsP7O+dXZ5uKcj+dsLqiMw==:117
- a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=NEAV23lmAAAA:8 a=CCpqsmhAAAAA:8 a=KKAkSRfTAAAA:8 a=8D93sAZUnP8VoIqYYvkA:9
- a=QEXdDO2ut3YA:10 a=uZpOMUMpUyOTZhun9u8A:9 a=xN7k2SGs4CtfF72F:21
- a=_W_S_7VecoQA:10 a=ul9cdbp4aOFLsgKbc677:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: LF-dlok7qrzx-GcU_zBEILq505wS12Kl
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTI2MDA4MyBTYWx0ZWRfX7sNpjmIADZG+
- h4PGICSwqWUlm5eLzFFRQPpr+75mEa4zbN/Z3dO9ap8UgGJrMic7RTrI01i/7+AHzKB3hu4GUra
- ZIeoTJOyjFz92MRx39VOjucEZSJ6E+jBGLBYtUb/QP1tnjRpoLof9Yv90QylGRoEl/4OdXDTZYJ
- LS1Otus2/j9Nk8y/dWn4Rkqj06clW+cg7Sjvt8k7eDCa0oUx3S2MXU+Tp0lqvb0zyMTiieThHDD
- Mgw8OW9h+8RD3NcqrbdZWne1ZSvSD8uQsEi1gWuZ8ytdKArGCAlSLUeWMA741UBQzxvsH5b8xln
- T6TvAMyMLtXC71GmaIZ
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.20,FMLib:17.12.100.49
- definitions=2026-01-26_02,2026-01-22_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- adultscore=0 mlxlogscore=999 mlxscore=0 clxscore=1030 phishscore=0
- spamscore=0 suspectscore=0 malwarescore=0 classifier=spam authscore=0
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
- definitions=main-2601260083
-X-JNJ: AAAAAAABTYIBN+dtSMX5KVu/y5+rvcrocVpup7tnyJ2Acm9e3OjHY3egMgRTrEWX9MKsejeqkBMMWQ2aKjh4DWKV2LjiSL2zWAUc7vS0eCtr6bGkHB85FUsUXZBoW1ZLwov7jfiesvuJV5hE8PgDk6IhkczI30zFygSu2DmenxkON6Brm7Pj5ak6izRxon/PlpbCRIA1qkFmfwp9jJj9bsojVn0p1GgBDKbxsldC/ZLrEwbo38wKw1EkUJjTvJolKvaRa/oarz5P9OZzoxqPmgE+cIN77Tkm0r9Xe7aPiytgaySwy9hf/oMOKRjFv+iHfPuHhhk4laWzDVA1/FqCNGGTxUy7Oa8NMIJcLsHeVrD+zkxH1DLHcLvDI8fKM0rJhwKtA+T7777ItCGC+VMFvlz2X8hNUToRZ/y9QY6OdYfXPbjBIV5RNu2gHDYCyxer4ULMF6ziwLkS36yP/Yg7mLCkGcYjpZajpxPzoIlzAMEohTEa/i0Hgcv10rLUdGIP/ohuLib3NtJRpd5UEkQxzOzv8+BUN8UgLEnucET/yU46O0yMsgD56Q13A+2loxL31CjHxdQH4zr4DDNmABbdu/bkzTRM9AIMH4pHWzwxpEUB1+aPo8yiK/etoJfvZXdGcw6kO9hDBPGgoGRswRdoiO6m64i4ByC1J69vDaUZXixVN15imhCc3lXGA1z0K9TpsQTcCv9PDlK9azPiwb21Ndmm
-Received-SPF: pass client-ip=57.103.86.145;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1vkK5Q-0005If-7x; Mon, 26 Jan 2026 05:44:50 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=R5BBgFjHbUWVAgBRX1GOTqK11RQ9uTpyUIhabgAUNADjRmZnIswSkvd/xmKMSs67A4APrzIGgwG7d7KoN6AKz1rt3ck7AuVR4urrvUExmsfHSdQybHyc2T2Xn0puQnndzwyLU3oTxtotkV+LCnoc6a7AKZ7KTmUv8VsRHnO+UVrMhlgp51dA2B6NvFzkpYnqGu90NpR+TWIfU99ykn4bxfMKDhkycHH9vpzTeycanvDVfTuP4zri84kn3QyWLndpBehh3fGzHS3r6PPZzj/hiCYsBSMu8iYcQt6LjgZyib+PV9dOfyrAAdiG1kBi/z1Pt4WRWh8gMLWf5jVjXzIMww==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=O/0akEZ49m88dRnT+CV7VJ+LLk0q346D2AoTgIccDwI=;
+ b=RNwm+frugg6JFx4QeSQOCU4Qkb7E7RXVFey9gTofbIcGS43Pz7uFzN3DBIF/EC4my5zw99ueO3xaV7HnA7gyGFYWd6Wq+OckbnLqh+YmwgmIUT4rCvTBse2972ZByUNLAc8TBtTqwXBTYLKtYUWeG/gp+5WhcLJqgfBgtmfA6TgTQgFeVvM89RG0ThhcZ3sNAptBuAyFqpC8HgYdNWR91lOz7XnOnRzlFxhpKUxklRrWUiEOmPSesgMonQCJbvmPOUPVuG3WraAuU8ayI4WvqbZPzbFgsyvaGVRvrmToVxukk+I9tPuqpRhwd1NQZIzNEhxa4AJa1iHnvadCyMBV9w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=O/0akEZ49m88dRnT+CV7VJ+LLk0q346D2AoTgIccDwI=;
+ b=YcUhG4T2loRGCZrLqZC0SAGOY6Vne4kX8sWjdn23pvsfuPyMi8RODcazpqkDS6mULq/8t7zf8vfhOxHmHkU0JhL5Veg/eupUCEazMGZqMMNx+y7yItD5zpXXu+NypO/IlpZy31OXTAEtNV9qDlh2fJ3PIRXe9yweLW5LxPf8j6KjY/CsH43Bo9isGeSIiePoSS21qRtffvs1yIc/CQQFF/ySUoJQRE1ROXwiZh1dA5nVuYl9eRBE+nA7/6YEUZAdCJBoxpj9aktLbkGLTdfSACKiEvIFfKmE3wQi5DYq2wSj9B4mAjSyf/q/PCyAgEuZowRypI9Iqoe101xQk+brqQ==
+Received: from BL0PR01CA0002.prod.exchangelabs.com (2603:10b6:208:71::15) by
+ CH1PR12MB9575.namprd12.prod.outlook.com (2603:10b6:610:2ad::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.11; Mon, 26 Jan
+ 2026 10:44:40 +0000
+Received: from BL6PEPF00022573.namprd02.prod.outlook.com
+ (2603:10b6:208:71:cafe::2e) by BL0PR01CA0002.outlook.office365.com
+ (2603:10b6:208:71::15) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.16 via Frontend Transport; Mon,
+ 26 Jan 2026 10:40:05 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ BL6PEPF00022573.mail.protection.outlook.com (10.167.249.41) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9564.3 via Frontend Transport; Mon, 26 Jan 2026 10:44:40 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 26 Jan
+ 2026 02:44:23 -0800
+Received: from NV-2Y5XW94.nvidia.com (10.126.231.35) by rnnvmail201.nvidia.com
+ (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 26 Jan
+ 2026 02:44:19 -0800
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
+ <nicolinc@nvidia.com>, <ddutile@redhat.com>, <berrange@redhat.com>,
+ <clg@redhat.com>, <alex@shazbot.org>, <nathanc@nvidia.com>,
+ <mochs@nvidia.com>, <smostafa@google.com>, <wangzhou1@hisilicon.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>, <yi.l.liu@intel.com>,
+ <kjaju@nvidia.com>, <skolothumtho@nvidia.com>
+Subject: [PATCH v9 00/37] hw/arm/virt: Add support for user-creatable
+ accelerated SMMUv3
+Date: Mon, 26 Jan 2026 10:42:57 +0000
+Message-ID: <20260126104342.253965-1-skolothumtho@nvidia.com>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.126.231.35]
+X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
+ rnnvmail201.nvidia.com (10.129.68.8)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL6PEPF00022573:EE_|CH1PR12MB9575:EE_
+X-MS-Office365-Filtering-Correlation-Id: 37dbde0c-677d-44f2-ea64-08de5cc7e8b7
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|36860700013|376014|7416014|82310400026|1800799024|13003099007; 
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?eXl2Wkp6YkYxUUUya3ZpN3BiVzNZT2xvSVJ5cVd1b2ZzcHpFL0hCcVlCMWdw?=
+ =?utf-8?B?Y2FQMER1K2FwR3R4OUpMS3liTThPOFRXWHlNV05BYkIwQUx5UEFuSno0QXlV?=
+ =?utf-8?B?aTF4ZklrSDdsYTg3ZEhqcUpvWFRpZkVrZXZhMCttZHBHM1QweUgrczQ3ZXRx?=
+ =?utf-8?B?ZW1IbEpMRkx1RFJ1OEtpWG12VUpxdEpuc3BJeXU1Q0V2cm5hejhBM1hhWUh2?=
+ =?utf-8?B?blRDOFlONFdTVWY1Ni94Yzl4VHdjeVozbWZjRzFkUU9uMHQyYnZZcWNlVHlF?=
+ =?utf-8?B?OFJTR3llNllaenFjV2lpUlQ3QXVZOGQ4TS9XQVFUTmhzWkpZd0Vvd0JiS1F2?=
+ =?utf-8?B?Z1FFbXVBVDd3TVdKNDZLZm45MTI3dkFRUk9KRzIwaGNvcmJkd0dGOXArN2Na?=
+ =?utf-8?B?NmQ3Rjh2RStsNVdiR0laNzVTN1BtNDlFOWkwZnZ5cldMSjNpcS9wN2MwVFhQ?=
+ =?utf-8?B?VzZjUjFIWituV0U3dnFTcDk0b1FuWWxydkJHTlQxejhjZVoyUFkyNjVEUFd1?=
+ =?utf-8?B?SlhVUkhDVVQ4MFFYQlg1SGMxb2lsZ2YyaFNGRmpZQmtKTTNsTi9JRlhzSUdX?=
+ =?utf-8?B?dDVGcTQvUGp4K3NIU24xZWJjd0VycTdQSGdlUUQ5M0FaNDF2SHE5SmZtb2Np?=
+ =?utf-8?B?ZFVCZGRKK1JVWTRXajdiWmlzYzFDaHVqWThVT2R0ZjN3R2NwRUVxNlVKdDJ2?=
+ =?utf-8?B?NXN6RjVQUmc2YkRkdlg2cjZXdFg1TXNFN3FIRysyL2FFeHRsMTUyMm5Ea3J0?=
+ =?utf-8?B?aS94R05FZkYvYklBZEp6amN0U3BwdU5zekd5QVY1Qm1vbjVGenZaLzVnZHQz?=
+ =?utf-8?B?aUQ4YU1KVWczTFNSaVFIbHBhRm1IUDFrQzAvMjRVUDFNSVdZWkZxTFpIb25Q?=
+ =?utf-8?B?OTZhNnUzaEVRSjJaSERWT2hEaXFMMmtEbGI5aURDTmJBR1VYTVNGU3ZDenFt?=
+ =?utf-8?B?SlhaUlFGK0t6c2krZ1ZDRUxvZWtucXZ0Slg1NmZTeWJyREhGUTFOc3d5YkJO?=
+ =?utf-8?B?QlV6S0FUSnBXN1BDQ0NidkFwRnh4Mm5lK1ZtYWpDZDhWUVUza3hwRDJMaU9I?=
+ =?utf-8?B?ODdPMGhPdDAzUDBkU244TkxqbTF6QmJlSUx3UlhrTTh0VkpVYlV3TFdRT1Ew?=
+ =?utf-8?B?YitoV3dvNXVsZTdyUTdSTitBanhtcHlaZklpVm9kZ0NKWCt5SVZDOFJRYmhv?=
+ =?utf-8?B?QmQ2Q0NhUWpSRGk0K0ZQQldSN1RDOFJxM0pvNkpyakNzMS9yaVpBckRqbUo2?=
+ =?utf-8?B?dkRpMkdZOHM4T0tOSmwycWxTcHFNVG02d1kxMXZoYXEvSHNtdVI1Rk9IZk5O?=
+ =?utf-8?B?ZWVNL0lxeU1QWi81N2FEcm5oMHpEV1ZHMk9hNXY0dE9POWI4dVhIK1pQd0s1?=
+ =?utf-8?B?dmpwZ3k4R2JjK3lsdnJ2cFViWjlXencyU003eUlrcW4rMDNJb1pVS3U2NHdt?=
+ =?utf-8?B?SHR5SHV6dkR4KzRCcnBpaHhBVExjbUd2WTkxOC9LV1lPUnRTMWRVV29KSTJl?=
+ =?utf-8?B?enN1aXVLd2U4NHhoanlhRS9PNVNCb0pMMTdvY0RSYmdtMU1KalgyRThocEJj?=
+ =?utf-8?B?c083T0xraWM3Ui83cjNoUkh4TTdPK1o2amg4L3NKYUN6b0lzaGZZVnl4YXdK?=
+ =?utf-8?B?dUFEVGhGMjhOdWRnL1JSU2VjU1NRSTNKKzRIZEI1Zi9JRTU4M1NIemhKK0hw?=
+ =?utf-8?B?YUF0NWFEQmphTXpUcE5QSVowMk90TFFPanRFUHlPbXBsWEI1T200bG8vZGNW?=
+ =?utf-8?B?dUlENFNsZmM3TkhRcHBVb3BJK0FBK1FNdjRUejF2eERVN0pUSzZldEY2Vy9n?=
+ =?utf-8?B?OGRpYjRSQ3I0d1UzS21KUDgzaE92UXVwZVRkUG95RTFUVlVoSkY0MnBUa3lF?=
+ =?utf-8?B?Qm1XblBTK2hiSUZrODNwYWZWSUl1Zk54K0pzRnBqMlVmS1AzOWdLbWdGREI0?=
+ =?utf-8?B?MXFqV2VzeUpFUXA4RDRETG0wdjZ1dnRWVGZSVUFRNkNrRU52VXBKTW56WDU3?=
+ =?utf-8?B?Z004NHFpMlkwUE03TWxJVUJKZG40cDZxRUozZG5QRHp5YmFNUUp3WnExSk5r?=
+ =?utf-8?B?MkhBbmQ2RlR4LzFlTkNOeWRteEx3STZnQllyWGtLWlBEc3p5UnlZemZpbTBn?=
+ =?utf-8?B?dTRHNzFYQ3VqM2JZcTZ1YmNEMVpxaXVoaUlhNEtUcEVYa0JIMnZHMEpFZFJG?=
+ =?utf-8?B?cjZqd2Q0NHYrNWFDdDgxd2R2MnBpRDQ4dEdwdVZLRHFHWFhycFprcU5pdEFX?=
+ =?utf-8?B?SmRUMHo1S1hJWXg2RVUzWnFmd2l3PT0=?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(36860700013)(376014)(7416014)(82310400026)(1800799024)(13003099007);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Jan 2026 10:44:40.3915 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 37dbde0c-677d-44f2-ea64-08de5cc7e8b7
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF00022573.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH1PR12MB9575
+Received-SPF: permerror client-ip=2a01:111:f403:c107::3;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=PH0PR06CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,228 +168,190 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi,
 
---Apple-Mail=_C83BD6A3-7D02-4461-8350-AE51F34EDF75
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=utf-8
+Changes from v8:
+ https://lore.kernel.org/qemu-devel/20260121175248.87649-1-skolothumtho@nvidia.com/
+ - Collected R-b tags. Thanks!.
+ - Initialise the AcpiIortSMMUv3Dev struct(patch #25) to fix the reported
+   CI test failure[0]. Please find the latest CI run results here[1].
 
+Patch organization:
 
+1–28: Enable accelerated SMMUv3 with features aligned to the default QEMU
+SMMUv3 implementation, including IORT RMR-based MSI support.
 
-> On 26. Jan 2026, at 09:34, Manos Pitsidianakis =
-<manos.pitsidianakis@linaro.org> wrote:
->=20
-> On Thu, Jan 22, 2026 at 6:52=E2=80=AFPM Peter Maydell =
-<peter.maydell@linaro.org> wrote:
->>=20
->> On Tue, 20 Jan 2026 at 10:02, Manos Pitsidianakis
->> <manos.pitsidianakis@linaro.org> wrote:
->>>=20
->>> On Tue, Jan 20, 2026 at 11:50=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
->>> <philmd@linaro.org> wrote:
->>>>=20
->>>> On 15/1/26 12:20, Manos Pitsidianakis wrote:
->>>>> Starting from M4 cores and MacOS 15.2 SDK, HVF can virtualise =
-FEAT_SME2.
->>>>>=20
->>>>> Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->>>>> Signed-off-by: Manos Pitsidianakis =
-<manos.pitsidianakis@linaro.org>
->>>>> ---
->>>>>  target/arm/cpu.c     |  4 +++-
->>>>>  target/arm/cpu64.c   | 13 ++++++++++++-
->>>>>  target/arm/hvf/hvf.c | 25 +++++++++++++------------
->>>>>  3 files changed, 28 insertions(+), 14 deletions(-)
->>>>>=20
->>>>> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->>>>> index =
-caf7980b1fc5244c5c2f130e79ba869456c20c88..7f4ebfdf61217db6075495119c1b642b=
-c2abf295 100644
->>>>> --- a/target/arm/cpu.c
->>>>> +++ b/target/arm/cpu.c
->>>>> @@ -1577,7 +1577,9 @@ void arm_cpu_finalize_features(ARMCPU *cpu, =
-Error **errp)
->>>>>           * assumes it, so if the user asked for sve=3Doff then =
-turn off SME also.
->>>>>           * (KVM doesn't currently support SME at all.)
->>>>>           */
->>>>> -        if (cpu_isar_feature(aa64_sme, cpu) && =
-!cpu_isar_feature(aa64_sve, cpu)) {
->>>>> +        if (!hvf_enabled()
->>>>=20
->>>> In my experience "if(!accel)" is bug prone, maybe change to =
-explicit "if
->>>> (tcg_enabled() || kvm_enabled()"?
->>>=20
->>> Shouldn't we list all accelerators instead of just tcg/kvm then?
->>=20
->> This "turn off SME if no SVE" check is principally trying to
->> avoid users hitting a bug / missing feature in TCG where
->> it will assert on startup when the guest tries to write to
->> SMCR_EL1 (see the backtrace in f7767ca3017's commit message),
->> because we accidentally coded in assumptions that any guest
->> with SME also has SVE. We turned it off for all accelerators
->> because (a) at the time there weren't any others which had
->> SME support and (b) we didn't do the investigation to figure
->> out if any of those bogus assumptions were in code that's
->> not TCG-specific. (In our defence, it was just prior to
->> a QEMU release :-))
->>=20
->> To the extent that those accidental assumptions are in code
->> that you can hit with HVF, we need to fix them before we
->> can enable SME-no-SVE in HVF. To the extent that they're TCG
->> specific, the only accelerator we really need to turn
->> this off for is TCG. As the comment notes, right now
->> KVM doesn't support SME so it's impossible to get here
->> with SME in the feature registers.
->>=20
->> If the core code is OK for hvf to enable SME-no-SVE,
->> then it should also be OK for any other accelerator
->> except TCG.
->>=20
->> I don't think hvf can get to the smcr_write() function
->> which is the specific failure we saw with TCG, but
->> I think that it ought to be possible to end up calling
->> sve_vqm1_for_el() if you use the gdbstub with hvf
->> accel, get the guest into streaming SME mode (PSTATE.SM
->> set), and then read the "svg" register that gdb uses to
->> expose the vector granule.
->>=20
->> If giving the SME registers a good workout with the
->> gdbstub interface all seems to work fine, then I think
->> we can adjust this condition to be "if tcg_enabled && ...".
->=20
-> gdb had a disastrous workout, because it turns out it also assumes SME
-> must have SVE:
->=20
->=20
->  (gdb) target remote localhost:1234
->  Remote debugging using localhost:1234
->  ../../gdb/aarch64-tdep.c:3068: internal-error:
-> aarch64_pseudo_register_type: bad register number 160
->  A problem internal to GDB has been detected,
->  further debugging may prove unreliable.
->  Fatal signal: Abort trap: 6
->=20
-Hello,
+29–31: Add user-configurable options for RIL, ATS, and OAS features.
 
-Meanwhile the LLVM side looks un-merged: =
-https://github.com/llvm/llvm-project/pull/165413
-Maybe having a way to mask SME via =E2=80=9C-cpu host,sme=3Doff=E2=80=9D =
-and documenting it would be enough?
-> "register number 160" corresponds to pseudoregister regnum
-> AARCH64_SVE_V0_REGNUM. Looking at gdb/aarch64-tdep.c, it seems they
-> are only supported by checking against `tdep->has_sve ()` [0]
->=20
-> Peter: So what do we do on the QEMU side? Merge it and wait till
-> upstream gdb fixes it to check for bugs?
->=20
-> [0]: =
-https://sourceware.org/git/?p=3Dbinutils-gdb.git;a=3Dblob;f=3Dgdb/aarch64-=
-tdep.c;h=3Df1bdce453db27dffeb42f10fcd44a408f706afb2;hb=3DHEAD#l3116
->=20
->=20
->=20
-> --=20
-> Manos Pitsidianakis
-> Emulation and Virtualization Engineer at Linaro Ltd
->=20
+32–37: Add PASID support, including required VFIO changes.
 
+A complete branch can be found here,
+https://github.com/shamiali2008/qemu-master/tree/master-smmuv3-accel-v9-dmabuf-v4
 
---Apple-Mail=_C83BD6A3-7D02-4461-8350-AE51F34EDF75
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=utf-8
+Please take a look and let me know your feedback.
 
-<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
-content=3D"text/html; charset=3Dutf-8"></head><body =
-style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
-line-break: after-white-space;"><br =
-id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
-type=3D"cite"><div>On 26. Jan 2026, at 09:34, Manos Pitsidianakis =
-&lt;manos.pitsidianakis@linaro.org&gt; wrote:</div><br =
-class=3D"Apple-interchange-newline"><div><div>On Thu, Jan 22, 2026 at =
-6:52=E2=80=AFPM Peter Maydell &lt;peter.maydell@linaro.org&gt; =
-wrote:<br><blockquote type=3D"cite"><br>On Tue, 20 Jan 2026 at 10:02, =
-Manos Pitsidianakis<br>&lt;manos.pitsidianakis@linaro.org&gt; =
-wrote:<br><blockquote type=3D"cite"><br>On Tue, Jan 20, 2026 at =
-11:50=E2=80=AFAM Philippe Mathieu-Daud=C3=A9<br>&lt;philmd@linaro.org&gt; =
-wrote:<br><blockquote type=3D"cite"><br>On 15/1/26 12:20, Manos =
-Pitsidianakis wrote:<br><blockquote type=3D"cite">Starting from M4 cores =
-and MacOS 15.2 SDK, HVF can virtualise FEAT_SME2.<br><br>Reviewed-by: =
-Mohamed Mediouni &lt;mohamed@unpredictable.fr&gt;<br>Signed-off-by: =
-Manos Pitsidianakis &lt;manos.pitsidianakis@linaro.org&gt;<br>---<br> =
-&nbsp;target/arm/cpu.c &nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;4 +++-<br> =
-&nbsp;target/arm/cpu64.c &nbsp;&nbsp;| 13 ++++++++++++-<br> =
-&nbsp;target/arm/hvf/hvf.c | 25 +++++++++++++------------<br> &nbsp;3 =
-files changed, 28 insertions(+), 14 deletions(-)<br><br>diff --git =
-a/target/arm/cpu.c b/target/arm/cpu.c<br>index =
-caf7980b1fc5244c5c2f130e79ba869456c20c88..7f4ebfdf61217db6075495119c1b642b=
-c2abf295 100644<br>--- a/target/arm/cpu.c<br>+++ =
-b/target/arm/cpu.c<br>@@ -1577,7 +1577,9 @@ void =
-arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)<br> =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* assumes =
-it, so if the user asked for sve=3Doff then turn off SME also.<br> =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* (KVM =
-doesn't currently support SME at all.)<br> =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/<br>- =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (cpu_isar_feature(aa64_sme, =
-cpu) &amp;&amp; !cpu_isar_feature(aa64_sve, cpu)) {<br>+ =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if =
-(!hvf_enabled()<br></blockquote><br>In my experience "if(!accel)" is bug =
-prone, maybe change to explicit "if<br>(tcg_enabled() || =
-kvm_enabled()"?<br></blockquote><br>Shouldn't we list all accelerators =
-instead of just tcg/kvm then?<br></blockquote><br>This "turn off SME if =
-no SVE" check is principally trying to<br>avoid users hitting a bug / =
-missing feature in TCG where<br>it will assert on startup when the guest =
-tries to write to<br>SMCR_EL1 (see the backtrace in f7767ca3017's commit =
-message),<br>because we accidentally coded in assumptions that any =
-guest<br>with SME also has SVE. We turned it off for all =
-accelerators<br>because (a) at the time there weren't any others which =
-had<br>SME support and (b) we didn't do the investigation to =
-figure<br>out if any of those bogus assumptions were in code =
-that's<br>not TCG-specific. (In our defence, it was just prior to<br>a =
-QEMU release :-))<br><br>To the extent that those accidental assumptions =
-are in code<br>that you can hit with HVF, we need to fix them before =
-we<br>can enable SME-no-SVE in HVF. To the extent that they're =
-TCG<br>specific, the only accelerator we really need to turn<br>this off =
-for is TCG. As the comment notes, right now<br>KVM doesn't support SME =
-so it's impossible to get here<br>with SME in the feature =
-registers.<br><br>If the core code is OK for hvf to enable =
-SME-no-SVE,<br>then it should also be OK for any other =
-accelerator<br>except TCG.<br><br>I don't think hvf can get to the =
-smcr_write() function<br>which is the specific failure we saw with TCG, =
-but<br>I think that it ought to be possible to end up =
-calling<br>sve_vqm1_for_el() if you use the gdbstub with hvf<br>accel, =
-get the guest into streaming SME mode (PSTATE.SM<br>set), and then read =
-the "svg" register that gdb uses to<br>expose the vector =
-granule.<br><br>If giving the SME registers a good workout with =
-the<br>gdbstub interface all seems to work fine, then I think<br>we can =
-adjust this condition to be "if tcg_enabled &amp;&amp; =
-...".<br></blockquote><br>gdb had a disastrous workout, because it turns =
-out it also assumes SME<br>must have SVE:<br><br><br> &nbsp;(gdb) target =
-remote localhost:1234<br> &nbsp;Remote debugging using =
-localhost:1234<br> &nbsp;../../gdb/aarch64-tdep.c:3068: =
-internal-error:<br>aarch64_pseudo_register_type: bad register number =
-160<br> &nbsp;A problem internal to GDB has been detected,<br> =
-&nbsp;further debugging may prove unreliable.<br> &nbsp;Fatal signal: =
-Abort trap: =
-6<br><br></div></div></blockquote>Hello,</div><div><br></div><div>Meanwhil=
-e the LLVM side looks un-merged:&nbsp;<a =
-href=3D"https://github.com/llvm/llvm-project/pull/165413">https://github.c=
-om/llvm/llvm-project/pull/165413</a></div><div>Maybe having a way to =
-mask SME via =E2=80=9C-cpu host,sme=3Doff=E2=80=9D and documenting it =
-would be enough?</div><div><blockquote type=3D"cite"><div><div>"register =
-number 160" corresponds to pseudoregister =
-regnum<br>AARCH64_SVE_V0_REGNUM. Looking at gdb/aarch64-tdep.c, it seems =
-they<br>are only supported by checking against `tdep-&gt;has_sve ()` =
-[0]<br><br>Peter: So what do we do on the QEMU side? Merge it and wait =
-till<br>upstream gdb fixes it to check for bugs?<br><br>[0]: =
-https://sourceware.org/git/?p=3Dbinutils-gdb.git;a=3Dblob;f=3Dgdb/aarch64-=
-tdep.c;h=3Df1bdce453db27dffeb42f10fcd44a408f706afb2;hb=3DHEAD#l3116<br><br=
-><br><br>-- <br>Manos Pitsidianakis<br>Emulation and Virtualization =
-Engineer at Linaro =
-Ltd<br><br></div></div></blockquote></div><br></body></html>=
+Thanks,
+Shameer
+[0] https://lore.kernel.org/qemu-devel/CAFEAcA_8Zd1_C+94wj2c+pJk3ebFT5_Zgt1Ww0qxzFqW=F98xA@mail.gmail.com/
+[1] https://gitlab.com/shamiali2008/qemu/-/pipelines/2286045925
 
---Apple-Mail=_C83BD6A3-7D02-4461-8350-AE51F34EDF75--
+Testing:
+ Basic sanity testing was performed on an NVIDIA Grace platform with GPU
+ device assignment. A CUDA test application was used to validate the SVA
+ use case. Additional testing and feedback are welcome.
+
+Eg: Qemu Cmd line:
+
+qemu-system-aarch64 -machine virt,gic-version=3,highmem-mmio-size=2T \
+-cpu host -smp cpus=4 -m size=16G,slots=2,maxmem=66G -nographic \
+-bios QEMU_EFI.fd -object iommufd,id=iommufd0 -enable-kvm \
+-object memory-backend-ram,size=8G,id=m0 \
+-object memory-backend-ram,size=8G,id=m1 \
+-numa node,memdev=m0,cpus=0-3,nodeid=0 -numa node,memdev=m1,nodeid=1 \
+-numa node,nodeid=2 -numa node,nodeid=3 -numa node,nodeid=4 -numa node,nodeid=5 \
+-numa node,nodeid=6 -numa node,nodeid=7 -numa node,nodeid=8 -numa node,nodeid=9 \
+-device pxb-pcie,id=pcie.1,bus_nr=1,bus=pcie.0 \
+-device arm-smmuv3,primary-bus=pcie.1,id=smmuv3.0,accel=on,ats=on,ril=off,ssidsize=20,oas=48 \
+-device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1,pref64-reserve=512G,id=dev0 \
+-device vfio-pci,host=0019:06:00.0,rombar=0,id=dev0,iommufd=iommufd0,bus=pcie.port1,x-vpasid-cap-offset=0xff8 \
+-object acpi-generic-initiator,id=gi0,pci-dev=dev0,node=2 \
+...
+-object acpi-generic-initiator,id=gi7,pci-dev=dev0,node=9 \
+-device pxb-pcie,id=pcie.2,bus_nr=8,bus=pcie.0 \
+-device arm-smmuv3,primary-bus=pcie.2,id=smmuv3.1,accel=on,ats=on,ril=off,ssidsize=20,oas=48 \
+-device pcie-root-port,id=pcie.port2,bus=pcie.2,chassis=2,pref64-reserve=512G \
+-device vfio-pci,host=0018:06:00.0,rombar=0,id=dev1,iommufd=iommufd0,bus=pcie.port2,x-vpasid-cap-offset=0xff8 \
+-device virtio-blk-device,drive=fs \
+-drive file=image.qcow2,index=0,media=disk,format=qcow2,if=none,id=fs \
+-net none \
+-nographic
+
+Details from RFCv3 Cover letter:
+-------------------------------
+https://lore.kernel.org/qemu-devel/20250714155941.22176-1-shameerali.kolothum.thodi@huawei.com/
+
+This patch series introduces initial support for a user-creatable,
+accelerated SMMUv3 device (-device arm-smmuv3,accel=on) in QEMU.
+
+This is based on the user-creatable SMMUv3 device series [0].
+
+Why this is needed:
+
+On ARM, to enable vfio-pci pass-through devices in a VM, the host SMMUv3
+must be set up in nested translation mode (Stage 1 + Stage 2), with
+Stage 1 (S1) controlled by the guest and Stage 2 (S2) managed by the host.
+
+This series introduces an optional accel property for the SMMUv3 device,
+indicating that the guest will try to leverage host SMMUv3 features for
+acceleration. By default, enabling accel configures the host SMMUv3 in
+nested mode to support vfio-pci pass-through.
+
+This new accelerated, user-creatable SMMUv3 device lets you:
+
+ -Set up a VM with multiple SMMUv3s, each tied to a different physical SMMUv3
+  on the host. Typically, you’d have multiple PCIe PXB root complexes in the
+  VM (one per virtual NUMA node), and each of them can have its own SMMUv3.
+  This setup mirrors the host's layout, where each NUMA node has its own
+  SMMUv3, and helps build VMs that are more aligned with the host's NUMA
+  topology.
+
+ -The host–guest SMMUv3 association results in reduced invalidation broadcasts
+  and lookups for devices behind different physical SMMUv3s.
+
+ -Simplifies handling of host SMMUv3s with differing feature sets.
+
+ -Lays the groundwork for additional capabilities like vCMDQ support.
+-------------------------------
+
+Eric Auger (2):
+  hw/pci-host/gpex: Allow to generate preserve boot config DSM #5
+  hw/arm/virt-acpi-build: Add IORT RMR regions to handle MSI nested
+    binding
+
+Nicolin Chen (4):
+  backends/iommufd: Introduce iommufd_backend_alloc_viommu
+  backends/iommufd: Introduce iommufd_backend_alloc_vdev
+  hw/arm/smmuv3-accel: Add set/unset_iommu_device callback
+  hw/arm/smmuv3-accel: Add nested vSTE install/uninstall support
+
+Shameer Kolothum (31):
+  hw/arm/smmu-common: Factor out common helper functions and export
+  hw/arm/smmu-common: Make iommu ops part of SMMUState
+  hw/arm/smmuv3-accel: Introduce smmuv3 accel device
+  hw/arm/smmuv3-accel: Initialize shared system address space
+  hw/pci/pci: Move pci_init_bus_master() after adding device to bus
+  hw/pci/pci: Add optional supports_address_space() callback
+  hw/pci-bridge/pci_expander_bridge: Move TYPE_PXB_PCIE_DEV to header
+  hw/arm/smmuv3-accel: Restrict accelerated SMMUv3 to vfio-pci endpoints
+    with iommufd
+  hw/arm/smmuv3: Implement get_viommu_cap() callback
+  hw/arm/smmuv3: propagate smmuv3_cmdq_consume() errors to caller
+  hw/arm/smmuv3-accel: Install SMMUv3 GBPA based hwpt
+  hw/pci/pci: Introduce a callback to retrieve the MSI doorbell GPA
+    directly
+  hw/arm/smmuv3-accel: Implement get_msi_direct_gpa callback
+  hw/arm/virt: Set msi-gpa property
+  hw/arm/smmuv3-accel: Add support to issue invalidation cmd to host
+  hw/arm/smmuv3: Initialize ID registers early during realize()
+  hw/arm/smmuv3-accel: Get host SMMUv3 hw info and validate
+  hw/arm/virt: Set PCI preserve_config for accel SMMUv3
+  tests/qtest/bios-tables-test: Prepare for IORT revison upgrade
+  tests/qtest/bios-tables-test: Update IORT blobs after revision upgrade
+  hw/arm/smmuv3: Block migration when accel is enabled
+  hw/arm/smmuv3: Add accel property for SMMUv3 device
+  hw/arm/smmuv3-accel: Add a property to specify RIL support
+  hw/arm/smmuv3-accel: Add support for ATS
+  hw/arm/smmuv3-accel: Add property to specify OAS bits
+  backends/iommufd: Retrieve PASID width from
+    iommufd_backend_get_device_info()
+  backends/iommufd: Add get_pasid_info() callback
+  hw/pci: Add helper to insert PCIe extended capability at a fixed
+    offset
+  hw/pci: Factor out common PASID capability initialization
+  hw/vfio/pci: Synthesize PASID capability for vfio-pci devices
+  hw/arm/smmuv3-accel: Make SubstreamID support configurable
+
+ backends/iommufd.c                            |  76 +-
+ backends/trace-events                         |   2 +
+ hw/arm/Kconfig                                |   5 +
+ hw/arm/meson.build                            |   3 +-
+ hw/arm/smmu-common.c                          |  51 +-
+ hw/arm/smmuv3-accel.c                         | 768 ++++++++++++++++++
+ hw/arm/smmuv3-accel.h                         |  88 ++
+ hw/arm/smmuv3-internal.h                      |   1 +
+ hw/arm/smmuv3.c                               | 227 +++++-
+ hw/arm/trace-events                           |   6 +
+ hw/arm/virt-acpi-build.c                      | 131 ++-
+ hw/arm/virt.c                                 |  39 +-
+ hw/pci-bridge/pci_expander_bridge.c           |   1 -
+ hw/pci-host/gpex-acpi.c                       |  29 +-
+ hw/pci/pci.c                                  |  43 +-
+ hw/pci/pcie.c                                 |  88 +-
+ hw/vfio/iommufd.c                             |   6 +-
+ hw/vfio/pci.c                                 |  75 ++
+ hw/vfio/pci.h                                 |   1 +
+ hw/vfio/trace-events                          |   1 +
+ include/hw/arm/smmu-common.h                  |   7 +
+ include/hw/arm/smmuv3-common.h                |  27 +-
+ include/hw/arm/smmuv3.h                       |  10 +
+ include/hw/arm/virt.h                         |   1 +
+ include/hw/core/iommu.h                       |   1 +
+ include/hw/pci-host/gpex.h                    |   1 +
+ include/hw/pci/pci.h                          |  36 +
+ include/hw/pci/pci_bridge.h                   |   1 +
+ include/hw/pci/pcie.h                         |   4 +
+ include/system/host_iommu_device.h            |  20 +
+ include/system/iommufd.h                      |  29 +-
+ target/arm/kvm.c                              |  18 +-
+ tests/data/acpi/aarch64/virt/IORT             | Bin 128 -> 128 bytes
+ tests/data/acpi/aarch64/virt/IORT.its_off     | Bin 172 -> 172 bytes
+ tests/data/acpi/aarch64/virt/IORT.smmuv3-dev  | Bin 364 -> 364 bytes
+ .../data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 276 -> 276 bytes
+ 36 files changed, 1694 insertions(+), 102 deletions(-)
+ create mode 100644 hw/arm/smmuv3-accel.c
+ create mode 100644 hw/arm/smmuv3-accel.h
+
+-- 
+2.43.0
+
 

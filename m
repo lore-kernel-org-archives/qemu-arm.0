@@ -4,66 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 082B4E63C85
-	for <qemu-arm@archiver.kernel.org>; Sun, 25 Jan 2026 07:32:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3AA0C88E57
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 07:13:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vjubH-0005YF-9F; Sun, 25 Jan 2026 02:31:59 -0500
+	id 1vkGmS-0005mz-TU; Mon, 26 Jan 2026 02:13:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vjuam-0005Sv-S3; Sun, 25 Jan 2026 02:31:28 -0500
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vjuaj-0001P0-HX; Sun, 25 Jan 2026 02:31:28 -0500
-Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 60P7UJSV095233
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Sun, 25 Jan 2026 16:31:17 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=ETrxvUBb90UyOUZ6fmRCwlaHHAs1kRBDCwLaLAZpmpY=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=Message-ID:Date:Subject:To:From;
- s=rs20250326; t=1769326277; v=1;
- b=F/OjnEbwbPyL4kz34Sz5kNxAvzk1KSY5B5sMj6b+9eFp/s5RI08U0lqFqEmyUiG1
- Z1iHdCL/Bohu5Cy26DKzK1L7Vld5xFcFCevynwpLd6N0io6GTEes6Xt3trKJIcx/
- WeHoubv8yJW97I7E5mwKWjJJWtWL9jzzXFtRLKIxXEmfwxDX0uTTQU5/r7PhwZHj
- eCA+OBVwBzTnGCrMwmHhE69K1JqYlHjW32TsGOqnmJDhJKwsYk7WuNVw5qH40JSb
- 2qguY3vm1GOZRbsaraOJQy6GDjzv5d8BYtmJuKjxz5L0p27LlWyKoIx4efUMHPbX
- WybZ06nuFXo71dPhk4VVkw==
-Message-ID: <52384324-11dc-4ee6-a059-c1dd245753d0@rsg.ci.i.u-tokyo.ac.jp>
-Date: Sun, 25 Jan 2026 16:30:19 +0900
+ (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
+ id 1vkGeM-0002kv-RK
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:05:05 -0500
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
+ id 1vkGeL-00046g-3X
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:04:38 -0500
+Received: by mail-pf1-x432.google.com with SMTP id
+ d2e1a72fcca58-8220bd582ddso2075333b3a.2
+ for <qemu-arm@nongnu.org>; Sun, 25 Jan 2026 23:04:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1769411075; x=1770015875; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=V2iLebfIJhQmyKZPxD/7vvE0TY7hMO11zANvgz7Zbqg=;
+ b=JmemzOPjEZKlW/JDaC+SjnSpSwwma4vfo0PrAuStAPCAO6trB2l8Gh3NzZuvqnp7MK
+ aBCtEHSLQaUSUQ4lCYn52pnv9GWRKrKKOJL2I1uZYgUAGpIzaONppek7ukUn7jvWEz+4
+ ao5O1jZYxlRDD7Vw78qRmmlkmbW4qF8blwpPZlhogI+gGJswfKFqYsn/H3JvLKPFD8E6
+ mO44JKWSpEpDIYTSG7d0IPZQhKtsUxWx/IKuftr/VuID/cjOVK72hCKoJ5WDinn1LcNt
+ bZrS/KqIKmNXrjTKniJ42m0kgHsZM6xwwd7Kzaq0rUDn6QnLb9LDx8Awij5J4NuMSRRk
+ gPgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1769411075; x=1770015875;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=V2iLebfIJhQmyKZPxD/7vvE0TY7hMO11zANvgz7Zbqg=;
+ b=tvgTYAULKmcUPYhohwMGMhdsa8Qakgkvvxcnkcrze7E8OQAOE93Pdl3dsIbV4V6OBa
+ SylpQkIz9TWunZF09pOAv0Mel2cgEfD9j3jRkV2udeZ5LxJLrl29NLjm4ngaRb6xZNmj
+ ivmdaCUIkayP2+zu9uTeiv5ySK3TCrsYyTcmK9RWs5eJcHFom3uezrSmnZ5avqtdqKOP
+ 0vJlaYOBuKxlnI/vInXpxvD0RpdYDSG6wxQF3pjYSeqEvzA0nQ2WfgGDupZn/ivI6KGE
+ KbjxK+JzPFuon5MTMJw5vg2qWPQBrKCNrPF6u3OQ+xdxL7RZRatY9+hS3trzjFdHxslM
+ CBcQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWk+l0FBqeMv9Jr7hBr3MeeTuSylmFOo8uKv7YPjmdU74LMB6jVmFx0gpLUYI55Ai04lrx1XjEDAA==@nongnu.org
+X-Gm-Message-State: AOJu0YyKkuVFrTP3KT+WyXAHfxteVp+Lak6CdPW/+3QkPdxvxCJeygdh
+ Lmok0yh9gOD0IyL3pdheEYP0XE66oy9avVr/KP/lSEHPc1vMGI9do5kl
+X-Gm-Gg: AZuq6aIvt5574xpukjp4obhdD9fV2MWyxenNWkkOsu0ni97u7zpulkBPfpX0q7MDV29
+ Z+h8QyoBNhQ1PwFQw4QEYPFvz+/iO6RjbYolJrtcB7OJ+e6tDByw9WtZ8VfK1O7XOQDoSpv/J5/
+ NU7RBhHaSaHrBIAe2vDQtsQX4WBn6aj+LZ/Pw/rmQ9jMhXdMMxVbrCD7d8MdCt35Sta6ic/qVRg
+ 2R+DwHiealL6CZfnJR5HQq0KJSoguw9Nrtj5NifcFLUcQc8yjL7LkDjE49lWOliHbIeCbl2AWPG
+ jJTQ7cPWypmdLx/VmlnoSRgcY5r6bF0Wy8qDQ/jcMxSWNpO7WJBSoKKxQR8492JUHbG+7jEMemB
+ pIcwN581Jiuy5JoY6HJvMfZAHD6vrbAQKGWGwxWzOpubG/2s0XUOqFv6qrjr10jwtnx3/2yGxba
+ 0S3CmKabPaH/nCyC+YMP+1Unz66JBcVBgG3Vowib/TiA==
+X-Received: by 2002:a05:6a00:1813:b0:81f:3cd5:2069 with SMTP id
+ d2e1a72fcca58-8234119f8edmr3207365b3a.4.1769411074579; 
+ Sun, 25 Jan 2026 23:04:34 -0800 (PST)
+Received: from brahms.. (fp93c00990.tkyc601.ap.nuro.jp. [147.192.9.144])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-823187716ebsm8661487b3a.66.2026.01.25.23.04.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 25 Jan 2026 23:04:34 -0800 (PST)
+From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ WANG Xuerui <git@xen0n.name>, Aurelien Jarno <aurelien@aurel32.net>,
+ Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Stefan Weil <sw@weilnetz.de>,
+ Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-arm@nongnu.org,
+ qemu-riscv@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 06/33] tcg/wasm64: Add add/sub/mul instructions
+Date: Mon, 26 Jan 2026 07:03:19 +0000
+Message-ID: <96df2d2b5ca095dfbc280ee73bf8f82f5ae4c770.1769407033.git.ktokunaga.mail@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <cover.1769407033.git.ktokunaga.mail@gmail.com>
+References: <cover.1769407033.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/3] hw/arm/virt: Remove the lower bound of HighMem IO
- Regions
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Eric Auger <eric.auger@redhat.com>,
- Andrew Jones <ajones@ventanamicro.com>, "Michael S. Tsirkin"
- <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20260125-virt-v4-0-00d726b27224@rsg.ci.i.u-tokyo.ac.jp>
- <11A957F3-794E-40DD-8E39-4DB8589B1657@unpredictable.fr>
-Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <11A957F3-794E-40DD-8E39-4DB8589B1657@unpredictable.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- TVD_SUBJ_WIPE_DEBT=1.004 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=ktokunaga.mail@gmail.com; helo=mail-pf1-x432.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,69 +113,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2026/01/25 16:23, Mohamed Mediouni wrote:
-> 
-> 
->> On 25. Jan 2026, at 06:46, Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
->>
->> Remove the lower bound of the Highmem IO Regions' addresses for the
->> latest machine version to increase the chance to fit the regions in the
->> PA space.
->>
->> The lower bound was especially problematic when using virt-install on
->> Apple M2. virt-install 5.0.0 adds multiple pcie-root-port devices that
->> require sufficient space in the ECAM region. However, the Highmem ECAM
->> region did not fit in the limited PA space on the hardware, and the ECAM
->> region size was limited to 16 MiB. If virt-install had added more than
->> 16 devices to the root bridge, the region overflowed, which prevented
->> edk2-stable202505 from scanning PCI devices, including the boot disk,
->> causing boot failures.
->>
->> Ideally, a virtual machine with more than 16 devices added to the root
->> bridge should just work so that users and management layers do not have
->> to care whether they use constrained hardware.
->>
->> The base address of the Highmem IO Regions was fixed when commit
->> f90747c4e8fb ("hw/arm/virt: GICv3 DT node with one or two redistributor
->> regions") added the first Highmem IO Region. Later, commit 957e32cffa57
->> ("hw/arm/virt: Dynamic memory map depending on RAM requirements")
->> allowed moving the Highmem IO Regions to higher addresses to accommodate
->> RAM more than 255 GiB, but the lower bound remained to keep the legacy
->> memory map.
->>
->> Remove the lower bound for the latest machine version to accommodate
->> more devices with the root bridge. Keeping the lower bound for the old
->> machine versions ensures the compatibility is still maintained.
->>
->> The hardcoded memory map in tests/qtest/libqos/generic-pcihost.c is also
->> updated.
->>
->> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
->> ---
->> Changes in v4:
->> - Rebased.
->> - Edited the patch message to avoid confusing git am.
->> - Link to v3: https://lore.kernel.org/qemu-devel/20251027-virt-v3-0-fa2a2f37e32d@rsg.ci.i.u-tokyo.ac.jp
->>
->> Changes in v3:
->> - Fixed test failures reported by Peter Maydell.
->> - Link to v2: https://lore.kernel.org/qemu-devel/20250901-virt-v2-1-ac2379402c80@rsg.ci.i.u-tokyo.ac.jp
->>
->> Changes in v2:
->> - Rebased.
->> - Link to v1: https://lore.kernel.org/qemu-devel/20250728-virt-v1-1-0ab9682262c8@rsg.ci.i.u-tokyo.ac.jp
->>
->> ---
->> Akihiko Odaki (3):
->>       test/acpi: aarch64/virt: Allow DSDT and MCFG changes
->>       hw/arm/virt: Remove the lower bound of HighMem IO Regions
->>       test/acpi: aarch64/virt: Update golden masters for DSDT and MCFG
-> Hi,
-> 
-> Would it be a good idea to have a new test configuration that keeps the old memory map? To make sure that older machine versions don’t regress
+The add, sub and mul operations are implemented using the corresponding
+instructions in Wasm. TCI instructions are also generated in the same way as
+the original TCI backend.
 
-It is a nice suggestion. I will add one with the next version.
+Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
+---
+ tcg/wasm64.c                | 12 ++++++++++++
+ tcg/wasm64/tcg-target.c.inc | 39 +++++++++++++++++++++++++++++++++++++
+ 2 files changed, 51 insertions(+)
 
-Regards,
-Akihiko Odaki
+diff --git a/tcg/wasm64.c b/tcg/wasm64.c
+index 9f3b1344d6..ba8a89d920 100644
+--- a/tcg/wasm64.c
++++ b/tcg/wasm64.c
+@@ -59,6 +59,18 @@ static uintptr_t tcg_qemu_tb_exec_tci(CPUArchState *env, const void *v_tb_ptr)
+             tci_args_rrr(insn, &r0, &r1, &r2);
+             regs[r0] = regs[r1] ^ regs[r2];
+             break;
++        case INDEX_op_add:
++            tci_args_rrr(insn, &r0, &r1, &r2);
++            regs[r0] = regs[r1] + regs[r2];
++            break;
++        case INDEX_op_sub:
++            tci_args_rrr(insn, &r0, &r1, &r2);
++            regs[r0] = regs[r1] - regs[r2];
++            break;
++        case INDEX_op_mul:
++            tci_args_rrr(insn, &r0, &r1, &r2);
++            regs[r0] = regs[r1] * regs[r2];
++            break;
+         default:
+             g_assert_not_reached();
+         }
+diff --git a/tcg/wasm64/tcg-target.c.inc b/tcg/wasm64/tcg-target.c.inc
+index a1757b4db7..d5cf324e7b 100644
+--- a/tcg/wasm64/tcg-target.c.inc
++++ b/tcg/wasm64/tcg-target.c.inc
+@@ -140,6 +140,9 @@ typedef enum {
+     OPC_GLOBAL_GET = 0x23,
+     OPC_GLOBAL_SET = 0x24,
+ 
++    OPC_I64_ADD = 0x7c,
++    OPC_I64_SUB = 0x7d,
++    OPC_I64_MUL = 0x7e,
+     OPC_I64_AND = 0x83,
+     OPC_I64_OR = 0x84,
+     OPC_I64_XOR = 0x85,
+@@ -265,6 +268,42 @@ static const TCGOutOpBinary outop_xor = {
+     .out_rrr = tgen_xor,
+ };
+ 
++static void tgen_add(TCGContext *s, TCGType type,
++                     TCGReg a0, TCGReg a1, TCGReg a2)
++{
++    tcg_out_op_rrr(s, INDEX_op_add, a0, a1, a2);
++    tcg_wasm_out_o1_i2(s, OPC_I64_ADD, a0, a1, a2);
++}
++
++static const TCGOutOpBinary outop_add = {
++    .base.static_constraint = C_O1_I2(r, r, r),
++    .out_rrr = tgen_add,
++};
++
++static void tgen_sub(TCGContext *s, TCGType type,
++                     TCGReg a0, TCGReg a1, TCGReg a2)
++{
++    tcg_out_op_rrr(s, INDEX_op_sub, a0, a1, a2);
++    tcg_wasm_out_o1_i2(s, OPC_I64_SUB, a0, a1, a2);
++}
++
++static const TCGOutOpSubtract outop_sub = {
++    .base.static_constraint = C_O1_I2(r, r, r),
++    .out_rrr = tgen_sub,
++};
++
++static void tgen_mul(TCGContext *s, TCGType type,
++                     TCGReg a0, TCGReg a1, TCGReg a2)
++{
++    tcg_out_op_rrr(s, INDEX_op_mul, a0, a1, a2);
++    tcg_wasm_out_o1_i2(s, OPC_I64_MUL, a0, a1, a2);
++}
++
++static const TCGOutOpBinary outop_mul = {
++    .base.static_constraint = C_O1_I2(r, r, r),
++    .out_rrr = tgen_mul,
++};
++
+ static void tcg_out_tb_start(TCGContext *s)
+ {
+     init_sub_buf();
+-- 
+2.43.0
+
 

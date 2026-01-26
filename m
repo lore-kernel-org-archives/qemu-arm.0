@@ -4,83 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3905D19502
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 17:48:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8B3FD19502
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 17:48:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkQd9-0001em-07; Mon, 26 Jan 2026 12:44:03 -0500
+	id 1vkQcx-0001Tl-Op; Mon, 26 Jan 2026 12:43:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkQco-0001PK-Be
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:42 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ id 1vkQce-0001JP-OI
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:34 -0500
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkQcm-00006r-38
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:42 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-42fbc305552so4153125f8f.0
- for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 09:43:38 -0800 (PST)
+ id 1vkQcc-0008Tz-AD
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:32 -0500
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-42fbc544b09so3364283f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 09:43:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1769449417; x=1770054217; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1769449407; x=1770054207; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=FreAIoZdmegYhzwifdB+iPbHtIb82yqlS0xsc8B2PIw=;
- b=foKSfojT1TRgm7F6iUry8FmDpxc0R+MPFRm/GaRG7oPCKQA5Ia+cDq0DE7f2xvH0+6
- 2v4h+hNeuQfe4ndF9xZbYKLNo6nOxLpUGqAutxsNxlgwa+za2p4nqKD4gKn7IfpJ5WGW
- jI6FfgeUGXxzfkdHpWVblOuOGnBVLohmGRvjrk2nQ4USPgdCEgGUzdH1A+TV+ggdUqgC
- N1thGmfMYyKSlZGGh8vz61CXBHijuWglCIkeOYI8WFJzACfpWlewPMoTw5d0lbbDbI4C
- XF5U6Qlq/rBg4G222IJ7FuorbD/EIJDSjwYVNrsDbV9VzqOp38AEDbYOAXhXothLpq4/
- tYxA==
+ bh=sXP99FUoDu1z98GAyOTe9kejbBFJAL0eQ2bvmghE1tE=;
+ b=OCL2yfnpl32GOrvPijfGuzw5AC4OO+wvInHhRvPYGxaQh7iZMyf4SsracRrNGO8xK2
+ gWzRR/fRufhTO8UkzwXe1n0WTMC5A05slFw+Y8Yi8yMvwenCDLpCu3FZr6oATKcbor0G
+ HVSZmPLc4klNa5HjmIdWucz77mmJmYkDq381eFHNqPNYBmXWICCHzJMxNs0ecdAP6N4X
+ CvBy9hA4Acj1r1CvkkL9pHLhdJyC6jV/QIyXXKM/7elGI/mGkMEBGxS0TJbsDOGtvJ8W
+ KZyzfsYNjdhslxORbPczRYZ77P0090IOMcAhfCjqK+/t28ekd1FkuRagOh+A4vnXaEK9
+ oG+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769449417; x=1770054217;
+ d=1e100.net; s=20230601; t=1769449407; x=1770054207;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=FreAIoZdmegYhzwifdB+iPbHtIb82yqlS0xsc8B2PIw=;
- b=DTBYCxfRpE/1a8m/nr9TVutDk46/SlSWUL2EVswd+byLtnc5FDwBVvTPyxS+uI4gYw
- a1gRJ1U2WoxUJtp6aX1sbSFcaK3bnpSdG5cKQjzfvmHWYp8YXtbAje68eFQLshTQfvNh
- yg+k7ygquARnrvkVDXHa1+9BkfH5Ndl4zFJke7vBu+B163+d4YYBP3QrbBQWnQinn5tP
- BtUFCSY1i4s5PLrXspUC8KQPU8Py4iwz7bC0sUHsSbmU6RFrdKfdlQhmGZRaqblstNJz
- WgXGsVu8NQjfHc6TTXM1uJT/brVmJhQXKq0Xa6YIVuXqS7VkW/ZItcEmU7yfZfqCxvMz
- stKQ==
-X-Gm-Message-State: AOJu0Yzm0NkhoaC6nJ9adovRz4ViswSmpnpmB7kZVBJghMsmiTnqg3gl
- 2msJ5Xf7IW45AxMaCWjPLgNP2+orK2viO8PwTNcLv3TK3Okhn2qc075F
-X-Gm-Gg: AZuq6aLNjS//nGKMquQ2wDi4r9yB/DBYkxt2znUxHpHs+pOXKE8VekI5Ktm12P91ARx
- EW+KNraQjI59qVTubJffl+CrSt4Ikd0MHug3ncOPFvuc9rUYGWlKC412vHAR7pODf6wg5h1XVHt
- ZVOafxBgcPe+ags+CFPZ57pDh/JFtX8ukHcE/vAzkfZ5pfLdb9tfaCJI4jMi3gC5OaUXt3QLsqf
- omsaN3Fw6bdeKcTGcVZbl+xUnl+xLef9jux5IbWwQBy354ILPn5J1AiFGhABfa2HifYVaKtQU6E
- egmhN9mezua40llhdYjuVxVrCp3PjCgjgNoJoCM2eV/OWlWlqrQWFQo9Dy61s59yOqdjMYr88t4
- g+QlquT64WXIky/Ditv0+1EBOjEKM3yR+TmUsxwVysr6iuQZwGIwa2CSwGbvUoFWOGuwcC1+QvQ
- t5b4dFGgWbaNW7JjNJybYZqYDVavC8DvkoBq5vAubCp6iXRDml5ZNdhw==
-X-Received: by 2002:a05:6000:4210:b0:435:729a:eb6f with SMTP id
- ffacd0b85a97d-435ca14774emr8946238f8f.19.1769449416887; 
- Mon, 26 Jan 2026 09:43:36 -0800 (PST)
+ bh=sXP99FUoDu1z98GAyOTe9kejbBFJAL0eQ2bvmghE1tE=;
+ b=npjQj5wyOlz7FOfJ8LucQOSmUFisQ5pIm5CS3+Q1hWiGhSh5lW+PUT4bLKkT6qSN6Z
+ NcKJ3afrogBZKBgFWvIxbEPSf9Pqw8oYk8Qi2RJDdBM/7jZHLGrBpgtkPO4K3SnUePAZ
+ bCwHTwib8xIZddkbGbgdWpX/531Qbc3586+Kn06ru96StemQQRiGKACDtXYnke9wTY7o
+ PO/t/HxUVsU1J8p/UUIbzahUhLS5SNK3vEMWnNHTt+jSf/1fx4FjyIM1ELeAF3agMO/D
+ q63Cp6sBMK3t9H6mo6lvqeR1jHLhEP9VgSsZGyQZOIG9yi87sufHxJOtD6E3sXXfDaL/
+ pHVQ==
+X-Gm-Message-State: AOJu0YwosbXdr1s4oq3UG/BlTA6T6LZhrLFo8cAn160UTN9yU5DHQ4BL
+ 9tzIKw60mNKg2ATs1JhFbtne9bCf6ZiBNAH/rG0gRZIe5ZTNSLSBfcpoHPs8Z6Vh
+X-Gm-Gg: AZuq6aLzry0kvM3DzCig2BOercIJ/U6pptA2upjmkm7b4EKBh+VoeysTa2bj1oWHCV0
+ Srchpyw5IL3h4QHpdbd4r+7OZ0n9MDP0F0q72bRchTARjpFEzTtuUZo37to45lekQI68ZpKmfZs
+ w5HPYSe1d13zaUwBH8NxT7Zr5xHC/3zwA8YiFKXyzhTZ6tEwTzRUEYwzgHoE26o1UIuMzzVBKgd
+ XJEMXxkuBkT9NjVm6DPN0y3bVan65cwsVoTrzF44HIxJpBPy3hMOI2UJLeUvzzCmmdw4FUyXlw/
+ WOb3673si7gJHukWSaWaPcrQ1oRfCZfQzPns7EZUdtVrszjW3v/5dx5XhfLjqDGh2fv18nuGQdR
+ 0AVXbm5iNuHnR8JVgprNYeZ3pr6K7lzhqkDHOfl0fUATrsGdK06VdjyTtdIcTyGtfaZUONK6MdC
+ NlSVeY4YXvvfemCU9H8bt2S6DutsgtODf945v/nIEL5HrwYs83G3tQfX5n703Vnpyj
+X-Received: by 2002:a5d:5849:0:b0:435:9950:edc with SMTP id
+ ffacd0b85a97d-435ca051d61mr7956562f8f.2.1769449407308; 
+ Mon, 26 Jan 2026 09:43:27 -0800 (PST)
 Received: from thinkpad-t470s.. (93-143-71-105.adsl.net.t-com.hr.
  [93.143.71.105]) by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-435b1e71730sm34199603f8f.26.2026.01.26.09.43.36
+ ffacd0b85a97d-435b1e71730sm34199603f8f.26.2026.01.26.09.43.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Jan 2026 09:43:36 -0800 (PST)
+ Mon, 26 Jan 2026 09:43:26 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
  volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Ruslan_Ruslichenko@epam.com
-Subject: [PATCH 13/27] hw/core/fdt_generic_util: implement fdt_get_irq/_info
- API
-Date: Mon, 26 Jan 2026 18:42:59 +0100
-Message-ID: <20260126174313.1418150-14-ruslichenko.r@gmail.com>
+Subject: [PATCH 03/27] util/log: add log entry for fdt generic utils
+Date: Mon, 26 Jan 2026 18:42:49 +0100
+Message-ID: <20260126174313.1418150-4-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
 References: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x429.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,325 +104,40 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Both interfaces may be used by devices to get IRQ information
-based device tree entry.
-Both methods will identify interrupt parent for a device and
-retrieve irq entry.
+Introduce dedicated log mask for hardware device
+tree processing, to selectively enable diagnostic
+for FDT-based machine creation.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/fdt_generic_util.c         | 261 +++++++++++++++++++++++++++++
- include/hw/core/fdt_generic_util.h |  18 ++
- 2 files changed, 279 insertions(+)
+ include/qemu/log.h | 1 +
+ util/log.c         | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
-index b22c612e0f..d57d9387a1 100644
---- a/hw/core/fdt_generic_util.c
-+++ b/hw/core/fdt_generic_util.c
-@@ -71,6 +71,11 @@ static int fdt_generic_num_cpus;
+diff --git a/include/qemu/log.h b/include/qemu/log.h
+index 7effba4da4..984879fbd3 100644
+--- a/include/qemu/log.h
++++ b/include/qemu/log.h
+@@ -38,6 +38,7 @@ bool qemu_log_separate(void);
+ #define CPU_LOG_TB_VPU     (1u << 21)
+ #define LOG_TB_OP_PLUGIN   (1u << 22)
+ #define LOG_INVALID_MEM    (1u << 23)
++#define LOG_FDT            (1u << 24)
  
- static int simple_bus_fdt_init(char *bus_node_path, FDTMachineInfo *fdti);
+ /* Lock/unlock output. */
  
-+static void fdt_get_irq_info_from_intc(FDTMachineInfo *fdti, qemu_irq *ret,
-+                                       char *intc_node_path,
-+                                       uint32_t *cells, uint32_t num_cells,
-+                                       uint32_t max, Error **errp);
-+
- FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq)
- {
-     char node_path[DT_PATH_LENGTH];
-@@ -239,6 +244,262 @@ static int simple_bus_fdt_init(char *node_path, FDTMachineInfo *fdti)
-     return 0;
- }
+diff --git a/util/log.c b/util/log.c
+index c44d66b5ce..c8310ddc58 100644
+--- a/util/log.c
++++ b/util/log.c
+@@ -523,6 +523,7 @@ const QEMULogItem qemu_log_items[] = {
+       "include VPU registers in the 'cpu' logging" },
+     { LOG_INVALID_MEM, "invalid_mem",
+       "log invalid memory accesses" },
++    { LOG_FDT, "fdt", "log Device Tree info." },
+     { 0, NULL, NULL },
+ };
  
-+static void fdt_get_irq_info_from_intc(FDTMachineInfo *fdti, qemu_irq *ret,
-+                                       char *intc_node_path,
-+                                       uint32_t *cells, uint32_t num_cells,
-+                                       uint32_t max, Error **errp)
-+{
-+    FDTGenericIntcClass *intc_fdt_class;
-+    DeviceState *intc;
-+
-+    while (!fdt_init_has_opaque(fdti, intc_node_path)) {
-+        fdt_init_yield(fdti);
-+    }
-+    intc = DEVICE(fdt_init_get_opaque(fdti, intc_node_path));
-+
-+    if (!intc) {
-+        goto fail;
-+    }
-+
-+    while (!intc->realized) {
-+        fdt_init_yield(fdti);
-+    }
-+
-+    intc_fdt_class = FDT_GENERIC_INTC_GET_CLASS(intc);
-+    if (!intc_fdt_class) {
-+        goto fail;
-+    }
-+
-+    intc_fdt_class->get_irq(FDT_GENERIC_INTC(intc), ret, cells, num_cells,
-+                            max, errp);
-+
-+    return;
-+fail:
-+    error_setg(errp, "%s", __func__);
-+}
-+
-+static uint32_t imap_cache[32 * 1024];
-+static bool imap_cached;
-+
-+qemu_irq *fdt_get_irq_info(FDTMachineInfo *fdti, char *node_path, int irq_idx,
-+                          char *info, bool *map_mode) {
-+    void *fdt = fdti->fdt;
-+    uint32_t intc_phandle, intc_cells, cells[32];
-+    char intc_node_path[DT_PATH_LENGTH];
-+    qemu_irq *ret = NULL;
-+    int i;
-+    Error *errp = NULL;
-+
-+    intc_phandle = qemu_fdt_getprop_cell(fdt, node_path, "interrupt-parent",
-+                                         0, true, &errp);
-+    if (errp) {
-+        errp = NULL;
-+        intc_cells = qemu_fdt_getprop_cell(fdt, node_path,
-+                                           "#interrupt-cells", 0, true, &errp);
-+        *map_mode = true;
-+    } else {
-+        if (qemu_devtree_get_node_by_phandle(fdt, intc_node_path,
-+                                             intc_phandle)) {
-+            goto fail;
-+        }
-+
-+        /* Check if the device is using interrupt-maps */
-+        qemu_fdt_getprop_cell(fdt, node_path, "interrupt-map-mask", 0,
-+                              false, &errp);
-+        if (!errp) {
-+            errp = NULL;
-+            intc_cells = qemu_fdt_getprop_cell(fdt, node_path,
-+                                               "#interrupt-cells", 0,
-+                                               true, &errp);
-+            *map_mode = true;
-+        } else {
-+            errp = NULL;
-+            intc_cells = qemu_fdt_getprop_cell(fdt, intc_node_path,
-+                                               "#interrupt-cells", 0,
-+                                               true, &errp);
-+            *map_mode = false;
-+        }
-+    }
-+
-+    if (errp) {
-+        goto fail;
-+    }
-+
-+    DB_PRINT_NP(2, "%s intc_phandle: %d\n", node_path, intc_phandle);
-+
-+    for (i = 0; i < intc_cells; ++i) {
-+        cells[i] = qemu_fdt_getprop_cell(fdt, node_path, "interrupts",
-+                                        intc_cells * irq_idx + i, false, &errp);
-+        if (errp) {
-+            goto fail;
-+        }
-+    }
-+
-+    if (*map_mode) {
-+        int k;
-+        ret = g_new0(qemu_irq, 1);
-+        int num_matches = 0;
-+        int len;
-+        g_autofree uint32_t *imap_mask = g_new(uint32_t, intc_cells);
-+        const uint32_t *prop;
-+        uint32_t *imap;
-+        bool use_parent = false;
-+
-+        for (k = 0; k < intc_cells; ++k) {
-+            imap_mask[k] = qemu_fdt_getprop_cell(fdt, node_path,
-+                                                 "interrupt-map-mask", k + 2,
-+                                                 true, &errp);
-+            if (errp) {
-+                goto fail;
-+            }
-+        }
-+
-+        /* Check if the device has an interrupt-map property */
-+        prop = qemu_fdt_getprop(fdt, node_path, "interrupt-map", &len,
-+                                  use_parent, &errp);
-+        imap = g_memdup2(prop, len);
-+        if (!imap || errp) {
-+            /*
-+             * If the device doesn't have an interrupt-map, try again with
-+             * inheritance. This will return the parents interrupt-map
-+             */
-+            use_parent = true;
-+            errp = NULL;
-+
-+            prop = qemu_fdt_getprop(fdt, node_path, "interrupt-map",
-+                                      &len, use_parent, &errp);
-+            if (!imap_cached) {
-+                memcpy(imap_cache, prop, len);
-+                imap_cached = true;
-+            }
-+            imap = imap_cache;
-+
-+            if (errp) {
-+                goto fail;
-+            }
-+        }
-+
-+        len /= sizeof(uint32_t);
-+
-+        i = 0;
-+        assert(imap);
-+        while (i < len) {
-+            if (!use_parent) {
-+                /*
-+                 * Only re-sync the interrupt-map when the device has it's
-+                 * own map, to save time.
-+                 */
-+                prop = qemu_fdt_getprop(fdt, node_path, "interrupt-map", &len,
-+                                          use_parent, &errp);
-+                if (imap != imap_cache) {
-+                    g_free(imap);
-+                }
-+                imap = g_memdup2(prop, len);
-+                if (errp) {
-+                    goto fail;
-+                }
-+
-+                len /= sizeof(uint32_t);
-+            }
-+
-+            bool match = true;
-+            uint32_t new_intc_cells, new_cells[32];
-+            i++; i++; /* FIXME: do address cells properly */
-+            for (k = 0; k < intc_cells; ++k) {
-+                uint32_t  map_val = be32_to_cpu(imap[i++]);
-+                if ((cells[k] ^ map_val) & imap_mask[k]) {
-+                    match = false;
-+                }
-+            }
-+            /*
-+             * when caching, we hackishly store the number of cells for
-+             * the parent in the MSB. +1, so zero MSB means non cachd
-+             * and the full lookup is needed.
-+             */
-+            intc_phandle = be32_to_cpu(imap[i++]);
-+            if (intc_phandle & (0xffu << 24)) {
-+                new_intc_cells = (intc_phandle >> 24) - 1;
-+            } else {
-+                if (qemu_devtree_get_node_by_phandle(fdt, intc_node_path,
-+                                                     intc_phandle)) {
-+                    goto fail;
-+                }
-+                new_intc_cells = qemu_fdt_getprop_cell(fdt, intc_node_path,
-+                                                       "#interrupt-cells", 0,
-+                                                       false, &errp);
-+                imap[i - 1] = cpu_to_be32(intc_phandle |
-+                                            (new_intc_cells + 1) << 24);
-+                if (errp) {
-+                    goto fail;
-+                }
-+            }
-+            for (k = 0; k < new_intc_cells; ++k) {
-+                new_cells[k] = be32_to_cpu(imap[i++]);
-+            }
-+            if (match) {
-+                num_matches++;
-+                ret = g_renew(qemu_irq, ret, num_matches + 1);
-+                if (intc_phandle & (0xffu << 24)) {
-+                    if (qemu_devtree_get_node_by_phandle(fdt, intc_node_path,
-+                                                         intc_phandle &
-+                                                         ((1 << 24) - 1))) {
-+                        goto fail;
-+                    }
-+                }
-+
-+                DB_PRINT_NP(2, "Getting IRQ information: %s -> 0x%x (%s)\n",
-+                            node_path, intc_phandle, intc_node_path);
-+
-+                memset(&ret[num_matches], 0, sizeof(*ret));
-+                fdt_get_irq_info_from_intc(fdti, &ret[num_matches - 1],
-+                                           intc_node_path, new_cells,
-+                                           new_intc_cells, 1, NULL);
-+                if (info) {
-+                    sprintf(info, "%s", intc_node_path);
-+                    info += strlen(info) + 1;
-+                }
-+            }
-+        }
-+
-+        if (imap != imap_cache) {
-+            g_free(imap);
-+        }
-+        return ret;
-+    }
-+
-+    DB_PRINT_NP(2, "Getting IRQ information: %s -> %s\n",
-+                node_path, intc_node_path);
-+
-+    ret = g_new0(qemu_irq, fdt_generic_num_cpus + 2);
-+    fdt_get_irq_info_from_intc(fdti, ret, intc_node_path, cells, intc_cells,
-+                               fdt_generic_num_cpus, &errp);
-+
-+    if (errp) {
-+        goto fail;
-+    }
-+
-+    /* FIXME: Phase out this info bussiness */
-+    if (info) {
-+        sprintf(info, "%s", intc_node_path);
-+    }
-+
-+    return ret;
-+
-+fail:
-+    if (errp) {
-+        sprintf(info, "%s", error_get_pretty(errp));
-+    } else {
-+        sprintf(info, "(none)");
-+    }
-+    return NULL;
-+}
-+
-+qemu_irq *fdt_get_irq(FDTMachineInfo *fdti, char *node_path, int irq_idx,
-+                      bool *map_mode)
-+{
-+    return fdt_get_irq_info(fdti, node_path, irq_idx, NULL, map_mode);
-+}
-+
- /* FIXME: figure out a real solution to this */
- 
- #define DIGIT(a) ((a) >= '0' && (a) <= '9')
-diff --git a/include/hw/core/fdt_generic_util.h b/include/hw/core/fdt_generic_util.h
-index c5aaa58dd6..dfc9fa3632 100644
---- a/include/hw/core/fdt_generic_util.h
-+++ b/include/hw/core/fdt_generic_util.h
-@@ -16,6 +16,24 @@
- 
- FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq);
- 
-+/*
-+ * get an irq for a device. The interrupt parent of a device is idenitified
-+ * and the specified irq (by the interrupts device-tree property) is retrieved
-+ */
-+
-+qemu_irq *fdt_get_irq(FDTMachineInfo *fdti, char *node_path, int irq_idx,
-+                      bool *map_mode);
-+
-+/*
-+ * same as above, but poulates err with non-zero if something goes wrong, and
-+ * populates info with a human readable string giving some basic information
-+ * about the interrupt connection found (or not found). Both arguments are
-+ * optional (i.e. can be NULL)
-+ */
-+
-+qemu_irq *fdt_get_irq_info(FDTMachineInfo *fdti, char *node_path, int irq_idx,
-+                           char *info, bool *map_mode);
-+
- #define TYPE_FDT_GENERIC_INTC "fdt-generic-intc"
- 
- #define FDT_GENERIC_INTC_CLASS(klass) \
 -- 
 2.43.0
 

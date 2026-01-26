@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9151D19502
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 17:47:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9904FD1950F
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 17:48:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkQd0-0001Vt-FY; Mon, 26 Jan 2026 12:43:54 -0500
+	id 1vkQdA-0001gZ-SP; Mon, 26 Jan 2026 12:44:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkQcm-0001Nc-H1
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:40 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ id 1vkQcv-0001Sp-MG
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:50 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkQci-00005J-Rs
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:38 -0500
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-432d256c2e6so4601990f8f.3
- for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 09:43:36 -0800 (PST)
+ id 1vkQct-0000Ar-UO
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:49 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-47ee76e8656so70306275e9.0
+ for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 09:43:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1769449415; x=1770054215; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1769449426; x=1770054226; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2IyBLhmWsQkr927zc3BlL2YflzrPqIWsR6t7Odl+vUc=;
- b=KJkh4Vr2LNfVgjwvwPcwtdwT2cetO/YFV7kg9EWVE2lJz4hldjoqHA1QoWvUcnIeeO
- a7UCRpTkGpoI3yd3R0vJO815253q+6P6752tJpkKBmIyRIKNXKgVLhf5ARazVCyGButv
- 3Sc+F8rwgsFJvMc/6MPjDr/319MGkO3dyBgx0qqQ152wZe0Ux4or1eLlUV46q4NKdljF
- yTSJOOmZMzoza1z/Tm66+kwkFYeyquPAcIBTTK/ZjGikQkptRZGYLjktzKabYz5OFtNY
- 7b+zmqQAmlyH3j2lDOWHmgQPHDsp4q8CKQ7kCQxBWym4WPx91D3XFV+2nLMC0Lxp7/H2
- AdTA==
+ bh=0HThoZ4BzoXW1z+LSYKEUiv5+qqmWVhCSi3lu7EloCo=;
+ b=ciG/geELFPSVC+YhrtsHNCbdcFw4XKBqBd1hGHw67vYpo7RbbubdB+GdOU0FKTP0RL
+ 8c0bnApAq+65K9iv+pVW6PY3xvikk5RJQeGl/T8tqxkygzQrSgufFgfxrg8qiOw9k9tK
+ G5wqUK1TSy5v1kM673oeEPq5fvewCL7YlnB1VZGxLhp6Fi1+ro1Xio0sMEilYoeTFe2g
+ egV0Kt5cvMyGSGjTTl01yYUjuzRT0HTskAyeNNgXKSF9ogVGT353DcGLiNmMYpT69qlK
+ jbCt9dAR/O5ljNR+i1QayEPzXvF+5QpLdkBc4d2bSDBASbY/9d0gMkgvftUvIJQmkG0x
+ UhDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769449415; x=1770054215;
+ d=1e100.net; s=20230601; t=1769449426; x=1770054226;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=2IyBLhmWsQkr927zc3BlL2YflzrPqIWsR6t7Odl+vUc=;
- b=kUkCLlX6JbGzIMIXzsCTzCUikrQIKt3nHo5j7JtR8jpsdRARiqA+JFOZKJqcQOah41
- LNeVTqa+H/7euOkgzf/HzEYlcR6NJ+hznMdpe77p9NXYD0PCYQ7ZUhOKiESoOW51HYh0
- NCJ76DrdpnfQGWzoHmJSd1xZYuEDWUa3Yifz3lU8H8R+FDy5tEth1IsF3C5llpqUAljH
- d7gTUklrXBWLMYAK5aI8UOxts3jYZv6tThBw1Kt6MyQyh6R2M8A/f34NO4nTlsgBdNx2
- jDTNT0jHnatmJhQuwg4LRBeFIcCbdEwGlxO65HYTrUl+kmurrzu8VKAx1UlXVZNB5St5
- dfpg==
-X-Gm-Message-State: AOJu0YzRN7dZmvbAEq329QzROIce2vNhsQexC7Um46jbhTp5Yn65JvY0
- b4evODKSj3YCrAnGzPdyCFEE4e1aV6cxhxSKa8RtEzISD2RmCDUu/rn3
-X-Gm-Gg: AZuq6aK7ydqUYBqp0juBNLyWpwRlY9U0MuY4l/p5d33lpGk9TmIFz5HKM45YKSqJ+lQ
- iRuQZjgLsQTrfPxgYbp6AuWmSyzKFKxB+3Pkp/hLcbkAmLfI8gyKusCXevpBy23CFON3QzffI6O
- 2e7cOYh7ZeVHhNurBKtdGynpi+PXraKUxtoZkvPfUIHbFboSs26/eWTx6Af3QRTNxZpmtc1TNqc
- s/fFR3EVvrb6mvecg/bhbmTGy65coFuPeTI/uDv4VAqRZ6S3kMiLyL/m8z4IgMDRxG6uG7AG4Ko
- qDRHRiQMpxTQvpfwniqrtKKtDoomZe/Pp+UrWb1OvJuYU3yypqJaoaJmk13D0kuMGVcomH4Sw8Q
- I2HaX8GocN2dsfu4U/zKbz6DVEgdclSdHcvpSwcsp6TRc7h5cs5EFT4ENssVG73PedqFvffpxmk
- FomEgmAlzwX7YtdJgG7L29gxpfuapBPQ5dD8NW48aD2k93G5Sy3kSa8g==
-X-Received: by 2002:a05:6000:420e:b0:435:a2f8:1533 with SMTP id
- ffacd0b85a97d-435ca39918cmr8121216f8f.52.1769449415066; 
- Mon, 26 Jan 2026 09:43:35 -0800 (PST)
+ bh=0HThoZ4BzoXW1z+LSYKEUiv5+qqmWVhCSi3lu7EloCo=;
+ b=qVNdiJKgkudS9Q/S91XiTvJ2D1V0r5ehbkYJZxuTlMASkWr1lD+A9u+EO2WMaCjWY9
+ 38bijJGZaqaA5O4nRPX4++SB4A6QmX5gu2o680Hdd8LZpV2S033jb+pBqjHrhL9HfypX
+ Qc3qTKgJl3ympsuQ5XB8lOG53UgW5qZzZVL5z+/iHnGiOgoEzIeEh4Ly0ttEKQ88Da28
+ SATU6e2cOxDMxeOfA/S+mt0kt2sx8wMqMjaq846Rl4r8KnPKXw1tAp4NDCtDMM7d7LiU
+ dEw5jMzVP3ma12vFgDrcJjayUBmGmpjczAhsB/TLTB9N6IP5h7EB9IEIldzuIcEPGzbi
+ mZjA==
+X-Gm-Message-State: AOJu0Yy/fhlwUtoyXrGZuXJInQU01QRJeMi0nYbmE2iqGQqhtSzn/Dra
+ tlwUesdBVT3fWaNLb5m2rKQ8Mi2HSjMtalq6T50SmzENAAJv2r7tA9Iz
+X-Gm-Gg: AZuq6aLNcHpCcCu5ieh/bgoKdGeSYdMFsW0zH/R3jUSR8420cRhckjX9f5lOo6RyBOb
+ r3rXkUs3Zl9Lei1ya+Vc3JPKIkj0IdRtepydhN1nYewyCjRyF5hJwZbVzGzbG6RjSBRbOv0FyC5
+ ZWlyX+cj+YSqu8Q6vP/vDgorPrQ29/S96NpPjzfOdOptbKA/FhTH0zK0pV5QrZulLCREZLBB98T
+ 6C2TCWHD8OnB1BqwwparmUwEKevKoLWcJrvqSk7kSSNeR7OgVb5McjSsL9XeGQHen5rjTjQn2WX
+ AUIMnDvOrKhC+0clt+8QRJYnH8PEEvJvZoc3K57glLlH29XF5jAGYa5zl5ybps847MuT+AJDeC+
+ aRhESKd1pFhTIOX5CaTV67Sp17Jw6qUvKIsVSSqARVY209FoheSXg6TxVO1/r2WrmxksKHpsg4+
+ gP23efFY9YqReWhZwjPEfZ/BjSN3C/Mji24xs7H7P7wYUZDtZjgsTEpA==
+X-Received: by 2002:a05:600c:3b93:b0:477:af8d:203a with SMTP id
+ 5b1f17b1804b1-4805d064549mr82656675e9.27.1769449426465; 
+ Mon, 26 Jan 2026 09:43:46 -0800 (PST)
 Received: from thinkpad-t470s.. (93-143-71-105.adsl.net.t-com.hr.
  [93.143.71.105]) by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-435b1e71730sm34199603f8f.26.2026.01.26.09.43.34
+ ffacd0b85a97d-435b1e71730sm34199603f8f.26.2026.01.26.09.43.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Jan 2026 09:43:34 -0800 (PST)
+ Mon, 26 Jan 2026 09:43:46 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
  volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Ruslan_Ruslichenko@epam.com
-Subject: [PATCH 11/27] hw/core/fdt_generic_util: add TYPE_FDT_GENERIC_MMAP
-Date: Mon, 26 Jan 2026 18:42:57 +0100
-Message-ID: <20260126174313.1418150-12-ruslichenko.r@gmail.com>
+Subject: [PATCH 22/27] target/arm/cpu: add fdt support for armv8-timer
+Date: Mon, 26 Jan 2026 18:43:08 +0100
+Message-ID: <20260126174313.1418150-23-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
 References: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,88 +104,144 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Add new FDT_GENERIC_MMAP class and interface to allow
-devices to register own handlers for mapping memory
-regions in device tree's 'reg' property.
+Implement FDT compatibility, so that timer can initilize
+and wire irqs based on device tree information.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/fdt_generic_util.c         | 11 ++++++++
- include/hw/core/fdt_generic_util.h | 44 ++++++++++++++++++++++++++++++
- 2 files changed, 55 insertions(+)
+ target/arm/cpu.c | 115 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 115 insertions(+)
 
-diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
-index 2c3f4d6b09..c0e974e53a 100644
---- a/hw/core/fdt_generic_util.c
-+++ b/hw/core/fdt_generic_util.c
-@@ -766,3 +766,14 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
-     return 0;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 6e1cbf3d61..96696ed4f1 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -53,6 +53,8 @@
+ #include "target/arm/gtimer.h"
+ 
+ #include "trace.h"
++#include "hw/core/fdt_generic_util.h"
++
+ 
+ static void arm_cpu_set_pc(CPUState *cs, vaddr value)
+ {
+@@ -2446,3 +2448,116 @@ static void arm_cpu_register_types(void)
  }
  
-+static const TypeInfo fdt_generic_mmap_info = {
-+    .name          = TYPE_FDT_GENERIC_MMAP,
-+    .parent        = TYPE_INTERFACE,
-+    .class_size = sizeof(FDTGenericMMapClass),
-+};
+ type_init(arm_cpu_register_types)
 +
-+static void fdt_generic_register_types(void)
++#ifndef CONFIG_USER_ONLY
++
++static Object *fdt_armv8_timer_get_intc(FDTMachineInfo *fdti, char *node_path)
 +{
-+    type_register_static(&fdt_generic_mmap_info);
++    char intc_node_path[DT_PATH_LENGTH];
++    uint32_t intc_phandle;
++    Error *errp = NULL;
++    DeviceState *intc;
++
++    intc_phandle = qemu_fdt_getprop_cell(fdti->fdt, node_path,
++                                         "interrupt-parent",
++                                         0, true, &errp);
++
++    /* There must be an interrupt-parent */
++    if (errp ||
++        qemu_devtree_get_node_by_phandle(fdti->fdt,
++                                         intc_node_path, intc_phandle)) {
++        g_assert_not_reached();
++    }
++
++    while (!fdt_init_has_opaque(fdti, intc_node_path)) {
++        fdt_init_yield(fdti);
++    }
++
++    intc = DEVICE(fdt_init_get_opaque(fdti, intc_node_path));
++
++    while (!intc->realized) {
++        fdt_init_yield(fdti);
++    }
++
++    return OBJECT(intc);
 +}
-+type_init(fdt_generic_register_types)
-diff --git a/include/hw/core/fdt_generic_util.h b/include/hw/core/fdt_generic_util.h
-index e18c4f9c8b..38086ec1e4 100644
---- a/include/hw/core/fdt_generic_util.h
-+++ b/include/hw/core/fdt_generic_util.h
-@@ -16,4 +16,48 @@
- 
- FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq);
- 
-+#define TYPE_FDT_GENERIC_MMAP "fdt-generic-mmap"
 +
-+#define FDT_GENERIC_MMAP_CLASS(klass) \
-+     OBJECT_CLASS_CHECK(FDTGenericMMapClass, (klass), TYPE_FDT_GENERIC_MMAP)
-+#define FDT_GENERIC_MMAP_GET_CLASS(obj) \
-+    OBJECT_GET_CLASS(FDTGenericMMapClass, (obj), TYPE_FDT_GENERIC_MMAP)
-+#define FDT_GENERIC_MMAP(obj) \
-+     INTERFACE_CHECK(FDTGenericMMap, (obj), TYPE_FDT_GENERIC_MMAP)
++static int armv8_timer_fdt_init(char *node_path, FDTMachineInfo *fdti,
++                                void *priv)
++{
++    Object *intc = fdt_armv8_timer_get_intc(fdti, node_path);
++    CPUState *cpu;
++    bool map_mode = false;
++    qemu_irq *sec_irqs = NULL;
++    qemu_irq *ns_irqs;
++    qemu_irq *v_irqs;
++    qemu_irq *h_irqs;
++    uint32_t first_cpu_idx;
++    uint32_t num_cpu;
++    bool has_sec_ext;
++    Error *err = NULL;
 +
-+typedef struct FDTGenericMMap {
-+    /*< private >*/
-+    Object parent_obj;
-+} FDTGenericMMap;
++    first_cpu_idx = object_property_get_uint(intc, "first-cpu-idx", &err);
++    if (!err) {
++        num_cpu = object_property_get_uint(intc, "num-cpu", &err);
++        assert(!err);
++        has_sec_ext = object_property_get_bool(intc, "has-security-extensions",
++                                               &err);
++        assert(!err);
++    } else {
++        /*
++         * Connect all CPUs with the ARM_FEATURE_GENERIC_TIMER set for
++         * backwards compatibility when the 'first-cpu-idx' property does not
++         * exist.
++         */
++        num_cpu = 0;
++        has_sec_ext = true;
++    }
 +
-+/*
-+ * The number of "things" in the tuple. Not to be confused with the cell length
-+ * of the tuple (which is variable based on content
-+ */
++    if (has_sec_ext) {
++        sec_irqs = fdt_get_irq(fdti, node_path, 0, &map_mode);
++        ns_irqs = fdt_get_irq(fdti, node_path, 1, &map_mode);
++        v_irqs = fdt_get_irq(fdti, node_path, 2, &map_mode);
++        h_irqs = fdt_get_irq(fdti, node_path, 3, &map_mode);
++    } else {
++        ns_irqs = fdt_get_irq(fdti, node_path, 0, &map_mode);
++        v_irqs = fdt_get_irq(fdti, node_path, 1, &map_mode);
++        h_irqs = fdt_get_irq(fdti, node_path, 2, &map_mode);
++    }
 +
-+#define FDT_GENERIC_REG_TUPLE_LENGTH 4
++    assert(!map_mode); /* not supported for PPI */
 +
-+typedef struct FDTGenericRegPropInfo {
-+    int n;
-+    union {
-+        struct {
-+            uint64_t *a;
-+            uint64_t *s;
-+            uint64_t *b;
-+            uint64_t *p;
-+        };
-+        uint64_t *x[FDT_GENERIC_REG_TUPLE_LENGTH];
-+    };
-+    Object **parents;
-+} FDTGenericRegPropInfo;
++    for (cpu = first_cpu; cpu; cpu = CPU_NEXT(cpu)) {
++        ARMCPU *acpu = ARM_CPU(cpu);
++        bool is_gic_cpu;
 +
-+typedef struct FDTGenericMMapClass {
-+    /*< private >*/
-+    InterfaceClass parent_class;
++        if (!arm_feature(&acpu->env, ARM_FEATURE_GENERIC_TIMER)) {
++            continue;
++        }
 +
-+    /*< public >*/
-+    bool (*parse_reg)(FDTGenericMMap *obj, FDTGenericRegPropInfo info,
-+                      Error **errp);
-+} FDTGenericMMapClass;
++        is_gic_cpu = cpu->cpu_index >= first_cpu_idx &&
++                     cpu->cpu_index < (first_cpu_idx + num_cpu);
 +
- #endif /* FDT_GENERIC_UTIL_H */
++        if (!num_cpu || is_gic_cpu) {
++
++            assert(*ns_irqs);
++            assert(*v_irqs);
++            assert(*h_irqs);
++            qdev_connect_gpio_out(DEVICE(acpu), 0, *ns_irqs++);
++            qdev_connect_gpio_out(DEVICE(acpu), 1, *v_irqs++);
++            qdev_connect_gpio_out(DEVICE(acpu), 2, *h_irqs++);
++
++            if (has_sec_ext) {
++                assert(*sec_irqs);
++                qdev_connect_gpio_out(DEVICE(acpu), 3, *sec_irqs++);
++            }
++        }
++    }
++
++    return 0;
++}
++
++fdt_register_compatibility(armv8_timer_fdt_init,
++                           "compatible:arm,armv8-timer");
++
++#endif
 -- 
 2.43.0
 

@@ -4,82 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15F97D19512
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 17:50:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81A46D19502
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 17:50:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkQd7-0001cx-Ev; Mon, 26 Jan 2026 12:44:01 -0500
+	id 1vkQdB-0001gu-4S; Mon, 26 Jan 2026 12:44:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkQcm-0001NO-F5
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:40 -0500
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ id 1vkQcw-0001TO-Jf
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:51 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkQcj-00006I-HI
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:39 -0500
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-43596062728so3569196f8f.1
- for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 09:43:37 -0800 (PST)
+ id 1vkQcv-0000Cc-3b
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:50 -0500
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-42fbc305914so4121934f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 09:43:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1769449416; x=1770054216; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1769449428; x=1770054228; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Nfmi5icMy+Gsd3bejmpv5t5fn/UEcE2B0XY0gkqF90U=;
- b=c0+MhU8I7E7YKLHx9yRvqvtPLL6NtTN4V+/Lh0xaWLN6ydeCO+sGUyKegkhVAcgmlT
- SEmbekddJFYHTQy0tjsXJQW7udmXIR5PF9f72JhMvoLa8OVeGWeo0cbWt+TEqZ35JYwN
- HHUk5sFE+evsjeFjhzoq/dVmUYRCMb7rSPeIbG60yjsf2SIfh1B/bm4SFjVMK1etascP
- hMb6KCEn4xKhA5fbK2rHBqQ11YIaL+VORZTwtDKIbXCraOamw0PtpMgZWjvkgQWvta1n
- uDhmmD9JbXzMPQq0Am8jJKaZf7HTl553b5V2HK71vjutXEjXB8wpnQRQ7SE6qczYE6WF
- 7XYQ==
+ bh=4XtZvlcq7y9dCibk7QnCziTNJJ4JB6d6R3IFkPvUGo4=;
+ b=ff/MRB/o51EzrEIU57dxbZapif6uOF1wjGyjlOSBSo11sKxFBgJXGQUb89dAvJ2X66
+ qnHpbj9z4QKgJhGZeju+OSmQ8kvPv8qQop6qwr8Fg6znljXC2GMs9ml1hWHpsnxOXhy5
+ P72rAyg68N0zzeSSgUBS8utESpYalYqyrI22ywYyd7wGguO1Dnq2htZ+1YuUs6OOWLzQ
+ Jj58aaHeKtrewyaCLdkJumG8kV4cW1+PmrAVKz1Snzm6Xx0hPuKnpzP0E9Fav4b2e40X
+ O8lJy+3DKcy+52v95tpjPlV3exYd7SiK7VnY1BrFYuF8TWA7gBgkpAJfxrxuZl3gF7nG
+ t6Fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769449416; x=1770054216;
+ d=1e100.net; s=20230601; t=1769449428; x=1770054228;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Nfmi5icMy+Gsd3bejmpv5t5fn/UEcE2B0XY0gkqF90U=;
- b=KYRd+wfcDRJrN4cXlYfbKt0OBSWFWmiBd4eO58cLyE74yoMa+d42bSnv31QKK6sYp+
- QhzElCvxFVvh0evlGWqO9vZ3xQLTRy/59Di1um364H1ynnrgXIrDf8YdJThOeYgC5OJh
- 8KL2ckWfpzchMmpUSiqEZTQLsgg5AOujB7CqSnmxag42wfEpKTz0+B4zmfZEmm1kQuQq
- 8FYUnrKFsGanRXFTPjfNnQz+PVP4ThuQIt5zLuEaqA9i+Sn7Xdjr83mPcRzxoDF8+Mg5
- nW8WXA++yyP+sjPb0j6nuuxkyL9MRxtjMNdmJW2Up/D6rUmO12+ZGCPmikMpMB/glmxU
- aYVw==
-X-Gm-Message-State: AOJu0YzlcZ8JBHjsW7aggsPy48FKNraLvuUNXDMqoMCnxbH4FBzj6b4Y
- uqqr3TfEaU+/8zYUkaz/X+UFMYYWZiLBDHyGbpA8bhtctxVNx1ohjg7L
-X-Gm-Gg: AZuq6aJCqRPTUEe9zjZeRXwoXgGEKQ/U/h1MxFNjSZxWg0TTZQvlJH+AV3MY0tP5EQG
- KU4U8m9RZDjel4B6J/tKEXCWJItXDLw6ZvZirnl7GqbtaxRwccaZE7MqGTofhp/ujpvtgmBmjt4
- JR0tFcuR3sGQYW9+NUJLxJOnisheEBCPQdn9IBKEM2/bX2symIPi7HXn03+qr86ynOg2Hr0Zpon
- 16CP07lqkteMo+pucfWwSmWAK2Nx0zbZB6X+5oOhwYr0kqqmh8ICVRGGP6uUtS6WMyw9z0i739i
- CDCVcYER6GXJ5+vbXJZDQT4Aj5cWmgAR6Gfpl0jUh/iiSk9/VKxjnq6yCuvIN51w4oPH0Vr1xws
- s1h5P3xCPYoPk47Oz6SvCzYOeDQ2oAxkVDHgpbhxqKQVB9NUNLkgBpbnN64ec45UEkrwc7Fjrjz
- JQOc7RM0LVW9n9r9nZUP7MS4RNd4sywqLkLbAlaQsip5YynmuZJmhAwA==
-X-Received: by 2002:a05:6000:2c01:b0:430:fd0e:a502 with SMTP id
- ffacd0b85a97d-435c9d1bc8fmr8133326f8f.22.1769449415988; 
- Mon, 26 Jan 2026 09:43:35 -0800 (PST)
+ bh=4XtZvlcq7y9dCibk7QnCziTNJJ4JB6d6R3IFkPvUGo4=;
+ b=oOJWauBfUTE//yi22ammWfkSYapAieo/7q+oIVjo5AYN80HWKZJgUw4Ki+xBvFksdD
+ kkBvrx3x8B8DjmWxiuU/aNtQCSMcHvJa79e+Nhci1dxK8t+3rypmnu6s09vfcsx+I6O6
+ ZntyBV3w2ZcSjGIrrUedhQSDKPn+q/etxaTv2Kl9C9zLPcu3xcWZ3LNTeNTwnI6qEn6g
+ gmpS0c4EhrJqpYWINx9ScD3WNQS5O5ZQ5WV6PpH/veKI7m2Ygfzi3OPGJrbCqotQMfoR
+ 8H5I6B1VWVXU6c41cyjWtPrfMKj1DY3xj89OgHF2Sq19q0zPExDvjcH6tgzNq1pN17kE
+ 9wqQ==
+X-Gm-Message-State: AOJu0YwJxQegWSsIGUdELnJN7OT7s18GaRumw57xEbOFsQEcSZLh9tMo
+ Hqputv9X0qOGYXnhnK9LGEJlW61DnBUX6B7g4IDTjWnIKeybD9icQvwX
+X-Gm-Gg: AZuq6aL4N8ZN+4FfiUklFHJU5ppz2u2IQtU3UpiGZwSEr4zsyzNAaE5tYLM5wRGBqXA
+ w5Vux6pTo2k96Vum/N5P7qMqi1D9ahMAuSuUXQp5HOicqaVz2XlglesQ2NYvdX9EjBMpH1QxCvv
+ dfZKYZCcXUikf6U0T61nLpEyO+2207s/K4gKFgdw5KYl4/m6QfDNAFAxjPEbcWhx8HxT/5AmZfU
+ N3d2TP/mYPEcmA9C5H7OarvtaTELTv2td6qptjNp3s6l8xgWaHmlQpgxL1oR+3oMDNBWgQ9Edeq
+ 3hFEW7UJb1xEH9hV2pCT/q4BAFcspYSPwpY5M16WAJS4Ako34zL/8bzhmHwwwM3DW1R1RUd8zXf
+ 0B4DD23ItUV3d8hj5/moAT3Cd4qjgCq08MQeSUkZoPfjrFGCeqOBnEbYq8TL8VS7sugeE/C7ET4
+ CNyAxOxGzBHf6xmzmJk/ZTm/+nUglJO0zkI5B2nIpE3MsIhT777jJuiA==
+X-Received: by 2002:a05:6000:420e:b0:435:9ee1:f91a with SMTP id
+ ffacd0b85a97d-435ca3a43c4mr9883719f8f.53.1769449427416; 
+ Mon, 26 Jan 2026 09:43:47 -0800 (PST)
 Received: from thinkpad-t470s.. (93-143-71-105.adsl.net.t-com.hr.
  [93.143.71.105]) by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-435b1e71730sm34199603f8f.26.2026.01.26.09.43.35
+ ffacd0b85a97d-435b1e71730sm34199603f8f.26.2026.01.26.09.43.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Jan 2026 09:43:35 -0800 (PST)
+ Mon, 26 Jan 2026 09:43:47 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
  volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Ruslan_Ruslichenko@epam.com
-Subject: [PATCH 12/27] hw/core/fdt_generic_util: add TYPE_FDT_GENERIC_INTC
-Date: Mon, 26 Jan 2026 18:42:58 +0100
-Message-ID: <20260126174313.1418150-13-ruslichenko.r@gmail.com>
+ Ruslan_Ruslichenko@epam.com, Eduardo Habkost <eduardo@habkost.net>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH 23/27] qom/object: export object_resolve_link()
+Date: Mon, 26 Jan 2026 18:43:09 +0100
+Message-ID: <20260126174313.1418150-24-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
 References: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,115 +105,54 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Add TYPE_FDT_GENERIC_INTC class and interface to allow
-interrupt controllers to register callback which can
-be used to get IRQ's from this controller.
+Export `object_resovle_link()` for use by other
+subsystems.
 
-Optionally, interrupt controllers may also provide
-auto_parent() callabck which can be used to attach
-it to corresponding CPU's or other interrupt parent.
+This allow callers to resolve object path and verify
+type contrains of a link property.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/fdt_generic_util.c         |  7 ++++
- include/hw/core/fdt_generic_util.h | 59 ++++++++++++++++++++++++++++++
- 2 files changed, 66 insertions(+)
+ include/qom/object.h | 12 ++++++++++++
+ qom/object.c         |  2 +-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
 
-diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
-index c0e974e53a..b22c612e0f 100644
---- a/hw/core/fdt_generic_util.c
-+++ b/hw/core/fdt_generic_util.c
-@@ -766,6 +766,12 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
-     return 0;
- }
+diff --git a/include/qom/object.h b/include/qom/object.h
+index 26df6137b9..1573d41d4f 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -2034,6 +2034,18 @@ int object_child_foreach_recursive(Object *obj,
+  */
+ Object *object_property_add_new_container(Object *obj, const char *name);
  
-+static const TypeInfo fdt_generic_intc_info = {
-+    .name          = TYPE_FDT_GENERIC_INTC,
-+    .parent        = TYPE_INTERFACE,
-+    .class_size = sizeof(FDTGenericIntcClass),
-+};
++/*
++ * object_resolve_link:
++ *
++ * Lookup an object and ensure its type matches the link property type.  This
++ * is similar to object_resolve_path() except type verification against the
++ * link property is performed.
++ *
++ * Returns: The matched object or NULL on path lookup failures.
++ */
++Object *object_resolve_link(Object *obj, const char *name,
++    const char *path, Error **errp);
 +
- static const TypeInfo fdt_generic_mmap_info = {
-     .name          = TYPE_FDT_GENERIC_MMAP,
-     .parent        = TYPE_INTERFACE,
-@@ -774,6 +780,7 @@ static const TypeInfo fdt_generic_mmap_info = {
- 
- static void fdt_generic_register_types(void)
+ /**
+  * object_property_help:
+  * @name: the name of the property
+diff --git a/qom/object.c b/qom/object.c
+index ff8ede8a32..7e16765cb4 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -1904,7 +1904,7 @@ static void object_get_link_property(Object *obj, Visitor *v,
+  *
+  * Returns: The matched object or NULL on path lookup failures.
+  */
+-static Object *object_resolve_link(Object *obj, const char *name,
++Object *object_resolve_link(Object *obj, const char *name,
+                                    const char *path, Error **errp)
  {
-+    type_register_static(&fdt_generic_intc_info);
-     type_register_static(&fdt_generic_mmap_info);
- }
- type_init(fdt_generic_register_types)
-diff --git a/include/hw/core/fdt_generic_util.h b/include/hw/core/fdt_generic_util.h
-index 38086ec1e4..c5aaa58dd6 100644
---- a/include/hw/core/fdt_generic_util.h
-+++ b/include/hw/core/fdt_generic_util.h
-@@ -16,6 +16,65 @@
- 
- FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq);
- 
-+#define TYPE_FDT_GENERIC_INTC "fdt-generic-intc"
-+
-+#define FDT_GENERIC_INTC_CLASS(klass) \
-+     OBJECT_CLASS_CHECK(FDTGenericIntcClass, (klass), TYPE_FDT_GENERIC_INTC)
-+#define FDT_GENERIC_INTC_GET_CLASS(obj) \
-+    OBJECT_GET_CLASS(FDTGenericIntcClass, (obj), TYPE_FDT_GENERIC_INTC)
-+#define FDT_GENERIC_INTC(obj) \
-+     INTERFACE_CHECK(FDTGenericIntc, (obj), TYPE_FDT_GENERIC_INTC)
-+
-+typedef struct FDTGenericIntc {
-+    /*< private >*/
-+    Object parent_obj;
-+} FDTGenericIntc;
-+
-+typedef struct FDTGenericIntcClass {
-+    /*< private >*/
-+    InterfaceClass parent_class;
-+
-+    /*< public >*/
-+    /**
-+     * get irq - Based on the FDT generic interrupt binding for this device
-+     * grab the irq(s) for the given interrupt cells description. In some device
-+     * tree bindings (E.G. ARM GIC with its PPI) a single interrupt cell-tuple
-+     * can describe more than one connection. So populates an array with all
-+     * relevant IRQs.
-+     *
-+     * @obj - interrupt controller to get irqs input for ("interrupt-parent")
-+     * @irqs - array to populate with irqs (must be >= @max length
-+     * @cells - interrupt cells values. Must be >= ncells length
-+     * @ncells - number of cells in @cells
-+     * @max - maximum number of irqs to return
-+     * @errp - Error condition
-+     *
-+     * @returns the number of interrupts populated in irqs. Undefined on error
-+     * (use errp for error checking). If it is valid for the interrupt
-+     * controller binding to specify no (or a disabled) connections it may
-+     * return 0 as a non-error.
-+     */
-+
-+    int (*get_irq)(FDTGenericIntc *obj, qemu_irq *irqs, uint32_t *cells,
-+                   int ncells, int max, Error **errp);
-+
-+    /**
-+     * auto_parent. An interrupt controller often infers its own interrupt
-+     * parent (usually a CPU or CPU cluster. This function allows an interrupt
-+     * controller to implement its own auto-connections. Is called if an
-+     * interrupt controller itself (detected via "interrupt-controller") has no
-+     * "interrupt-parent" node.
-+     *
-+     * @obj - Interrupt controller top attempt autoconnection
-+     * @errp - Error condition
-+     *
-+     * FIXME: More arguments need to be added for partial descriptions
-+     */
-+
-+    void (*auto_parent)(FDTGenericIntc *obj, Error **errp);
-+
-+} FDTGenericIntcClass;
-+
- #define TYPE_FDT_GENERIC_MMAP "fdt-generic-mmap"
- 
- #define FDT_GENERIC_MMAP_CLASS(klass) \
+     const char *type;
 -- 
 2.43.0
 

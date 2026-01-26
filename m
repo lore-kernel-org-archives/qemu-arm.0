@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4D55C88E5B
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 07:25:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0A4CC88E58
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 07:26:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkGuO-0006kD-Ju; Mon, 26 Jan 2026 02:21:14 -0500
+	id 1vkGtD-00057Y-HA; Mon, 26 Jan 2026 02:19:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1vkGg6-0003AE-SZ
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:06:34 -0500
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+ id 1vkGfl-000344-Ig
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:06:17 -0500
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1vkGfu-0004QY-9W
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:06:21 -0500
-Received: by mail-pf1-x42e.google.com with SMTP id
- d2e1a72fcca58-8220bd582ddso2076024b3a.2
- for <qemu-arm@nongnu.org>; Sun, 25 Jan 2026 23:05:51 -0800 (PST)
+ id 1vkGfa-00048g-16
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:06:02 -0500
+Received: by mail-pj1-x1033.google.com with SMTP id
+ 98e67ed59e1d1-34c363eb612so2202983a91.0
+ for <qemu-arm@nongnu.org>; Sun, 25 Jan 2026 23:04:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1769411151; x=1770015951; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1769411092; x=1770015892; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1DUM9H9Xhv4bjjQ4nTppfOZBFCe9No2iFqGRcQo1YjY=;
- b=Unb4FAEU2VbgXMPeRIkvK1LTeOWAeulY1yAlWJQTydet6I4vzyuZbnBDrQlq9POA2o
- 6CbsHTAtjOPoygnZZFPAqQbz8wUM/UFb7BFE5NgOISCB1Rsaly1FsFbC3pnkol2rzCnK
- v3usP239gJQxiveiYjG3jfYGCFFvMH2oJ5tG7NLy3MCUm3I6Lq8vqQdBXGH5xLHVJZVk
- /QQT44iF9mtCIIJtI5xSUes5hN5+nFpVaxZqoV28BKjkHyLzpvxYiu5bzaV13Sql5Zvq
- uxq3J2MpSa+wv/OwhEeNus0+eqD5+ZzSDGjwBkxW/TdcgMbqss/3jJIxUjiG741EyLEs
- Iy/g==
+ bh=eKGZrzBEZomEKs9twQKesDOc8wmIyiWzTpm7XRfkzkI=;
+ b=hUL0/QkRdtoMkM4N5lwtq68ZLzkrcAv9mobP3ptsoQ+vfQlMRav5SihI4Gb20zVGVj
+ brDMnbeRFnSiYfdFLB48DWqh30lID6D02TeYOGwZR2cXnBvb8nysvRJSshXlq8Y9IR/d
+ Ux764yTTCs3qCI/LJu7mvsxo4IfZW4awJ9VQpHF0kXm5Q+aFVc1VV5xhMqz6yrvJBfEK
+ XISMCThuSiUXN06Fsl9elcqbk+BVox0kIk+KdKzQ6H6FinOhkbWdbQqOZM1EQ/tof5HB
+ z1/ZUFVTe5aegIPgzNjdxLUjmo2rCCSL4lNmWegLd214kDEVipXtbz6bBlC1hE+s/Xz7
+ wbzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769411151; x=1770015951;
+ d=1e100.net; s=20230601; t=1769411092; x=1770015892;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=1DUM9H9Xhv4bjjQ4nTppfOZBFCe9No2iFqGRcQo1YjY=;
- b=R1KbbpU0BejKNaLZR6ZO2yq7Njwnust5cIrO+x7JvV9WUbnnE3r1kMJb2PFbIzWkBP
- CtN+qcLIh3/FmhqRnXrZkKPSyM6ghs4qYDAFrZPTO1oMZZIiYnqM72ZAb85hgWE6dZYH
- /wMlfORKw/frEMJByweOn8DEGARQeRNxzkI8IuGOVrIstXKtopc9sO7Hl37uTmdOOw89
- J4IcaYBX9Jqn8/OI1pK1HIMMPpNvO19tJIdGsWpmcqqTetV0YCyOV70z++JjLptp5RYD
- S/hK/VdW08Lv3wCVTLG+wHnjDph8tI5UEpPnrzSAl3pY657xzzIb0a3Vj8dl2kc5ps+R
- 8nuQ==
+ bh=eKGZrzBEZomEKs9twQKesDOc8wmIyiWzTpm7XRfkzkI=;
+ b=ZxK4DGUbz8UFTxHnk1Eqvc09KLtG3kzoRa4c4VMsIHa+SVIE4dje7iowMjJDB5tfN3
+ 5zcw82x0XrGOEGTYeouKIqvaXKtZpIWaC1jd6Y2HEQZyk7B8InA0VFsRfe1+aJWpd+BO
+ LqL/EYlxiVMVlhNXrcypjhKCFXAH7abd9RZGDyhjZPK3HqIDdWSmKwdCYIXHRQ5rO+CC
+ BsHp0nIO64LUPGLTepcgFpHD6zmzELHoMpohPcWXUXKzRoO4tpakvWL+qp1HJ6jQrdEQ
+ cmd3z5aWX/t9PeNHkVbupnbdBh9byz7quVSUlmYbhD9DhsWZiTTaKoFZ8CeezQqS0rcn
+ BYiA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUC3HEUcsiSoSiN5/nzX80mqAF4qsIMDhLWSzRaTAaCKbpC/121K467AeaFAw1iqmCdKT2Fs4wKRQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwzgHR72j825jBwGkGCL0oLoII9psCN4Ocrs/AcXkCFkl/qYy2Z
- pHahZ6GK+5Ecwtug66tZwYH+bDoGjeDB8JOo16q+eBEtk8BHOxCuQN31
-X-Gm-Gg: AZuq6aLhfBqjoIU501tTxkgrgaHd8RApy4d6FqEurULtNiDT8nDUbWGZbfyDWHaPFNJ
- y1QH4Q/iGpeab/gXAYLI4c4dlKuJOXuQo3vX4loRqd9/uPAnRxKIuY+9U7V3zsSvp0zZCpAn7s5
- OmSwseVNQYN4mU5THwj71/iuhzD+Q2SI8u/NHb87M7Hn3uwjorvLzyFGmF8zUF/goAo/RtglgnP
- 0g+YKe3h46sTN5Gqt1tFK3QhPMCwiRMBuTPHEPonkorWmWvMQxVTYBvaLDcthlWnSN4sze0Myep
- pYhqwnr4Nob7vYceyLjxeXrUvVtKZ8rqcjc9ld6cYc0hpEPYm1jj5mWp0lzL/XKznFSIILC8K/M
- Gw+EaCmAEyfSyvYLgTH9t71mUlRyCPIdbW++g6eFZGnO4Fir7Kh6Vz9PEqOYqRZzYkt/w4kMuyn
- WrjlCOG0o63Jjr80QowUxgjo0tvOOqLTwNfncaGI2kwQ==
-X-Received: by 2002:a05:6a00:b904:b0:823:148c:d785 with SMTP id
- d2e1a72fcca58-823411dd242mr2978008b3a.27.1769411150705; 
- Sun, 25 Jan 2026 23:05:50 -0800 (PST)
+ AJvYcCWJYaALKYLbrMzQRSH4Y7ynh6T4AfonwyCR8gwzKagitQgcaj/vdXYV/6ciaWOwFuQnjCqUN6JeIA==@nongnu.org
+X-Gm-Message-State: AOJu0YztJszvEKMHwfsM2CsEOhrOmpR7Ubgd9mtYXfxKVk5C9fjfLAks
+ My/l7GQburcaDs6WZsQGHgVu9jx5n0Zl1ZQpZSB2QwKxZE0YcYTtY/g3
+X-Gm-Gg: AZuq6aJ7KqHkSu+ZWtq3BCGqivcRTyWqYOXPk7FZJ3YC6MNLANUgMCfGC/H5zN+MpaP
+ JoIOUd6Kw29/n6+pIYqIuTvpGAQ0uuKAvDK7RIJZZqFAE1aRduE11tcUkTJaCTi9ScjaU2hF2qO
+ 6uYzwdI9ERfMnw/nee6C/p44dhEEe9yQa86Awg/10RvxCe6Yn6Jk5mMQdHqwVDV3SzEAgKmxYcJ
+ mu9wgUO9iaWns6lcJqKSfIDx0gWFb0z6NAgcxOsr47QMmvOx8gJXrLdnwyZQQ3npxl6HcgZL/TB
+ c7Yzmh/HPgTtZcTV/zA5kcnWh4Kyxw4SFA9NidXabfoJefrYEbn9rnePcz1rbBNHZAYR6yDAXGU
+ wgSJHozgGUDQA+8+Eq28YCTWbsFmsENZgJ16y/T3ra/o3DwD1DNpc54O9m4MkQ+ba+1ZCvad4z9
+ RooPXs7MU8DJozVncBbY5H6GG3iMrUEd3WmrOyfk5iuQ==
+X-Received: by 2002:a17:90b:1b10:b0:34c:75d1:6f90 with SMTP id
+ 98e67ed59e1d1-353c41789c1mr3781364a91.17.1769411092379; 
+ Sun, 25 Jan 2026 23:04:52 -0800 (PST)
 Received: from brahms.. (fp93c00990.tkyc601.ap.nuro.jp. [147.192.9.144])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-823187716ebsm8661487b3a.66.2026.01.25.23.05.46
+ d2e1a72fcca58-823187716ebsm8661487b3a.66.2026.01.25.23.04.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 25 Jan 2026 23:05:50 -0800 (PST)
+ Sun, 25 Jan 2026 23:04:51 -0800 (PST)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -81,16 +81,16 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-arm@nongnu.org,
  qemu-riscv@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 23/33] tcg/wasm64: Write wasm binary to TB
-Date: Mon, 26 Jan 2026 07:03:36 +0000
-Message-ID: <6f6e5a4d136f0e736b732f30481446d360271978.1769407033.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH v4 10/33] tcg/wasm64: Add load and store instructions
+Date: Mon, 26 Jan 2026 07:03:23 +0000
+Message-ID: <6573ef95bf4d2bd6d454b5cb3fe80026b19350b2.1769407033.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1769407033.git.ktokunaga.mail@gmail.com>
 References: <cover.1769407033.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=ktokunaga.mail@gmail.com; helo=mail-pf1-x42e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=ktokunaga.mail@gmail.com; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,581 +113,620 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit updates tcg_out_tb_start and tcg_out_tb_end to emit Wasm
-binaries into the TB code buffer. The generated Wasm binary defines a
-function of type wasm_tb_func which takes a WasmContext, executes the TB,
-and returns a result. In the Wasm backend, each TB starts with a
-WasmTBHeader which contains pointers to the following data:
+Since Wasm load and store instructions don't support negative offsets,
+address calculations are performed separately before the memory access.
 
-- TCI code
-- Wasm code
-- Array of helper function pointers imported into the Wasm instance
+When Emscripten's -sMEMORY64=2 is enabled, the address size must be
+32bits. So this commit updates the build tools to propagate this flag to the
+C code via the WASM64_MEMORY64_2 macro. In this case, the emitted code casts
+pointers to 32bit before memory oprations.
 
-tcg_out_tb_start writes the WasmTBHeader to the code buffer. tcg_out_tb_end
-generates the full Wasm executable binary by creating the Wasm module header
-following the spec[1][2][3] and copying the Wasm code body from sub_buf to
-the TB. This Wasm binary is placed after the TCI code which was emitted
-earlier.
+Additionally, the declaration of "--wasm64-32bit-address-limit" flag has
+been moved from the configure script to meson.build. So the flag name is
+updated to "--enable-wasm64-32bit-address-limit" to follow Meson's naming
+conventions.
 
-Additionally, an array of imported function pointers is appended to the
-TB. They are used during Wasm module instantiation. Function are imported to
-Wasm with names like "helper.0", "helper.1", etc., where the number
-corresponds to the array index.
-
-Each function's type signature must also be encoded in the Wasm module
-header. To support this, every emission of "call", "qemu_ld" and "qemu_st"
-operations also records the target function's type information in a buffer
-which will be copied to the code buffer during tcg_out_tb_end.
-
-Memory is shared between QEMU and the TBs and is imported to the Wasm module
-with the name "env.memory".
-
-[1] https://webassembly.github.io/spec/core/binary/modules.html
-[2] https://github.com/WebAssembly/threads/blob/b2567bff61ee6fbe731934f0ed17a5d48dc9ab01/proposals/threads/Overview.md
-[3] https://github.com/WebAssembly/memory64/blob/9003cd5e24e53b84cd9027ea3dd7ae57159a6db1/proposals/memory64/Overview.md
+TCI instructions are also generated in the same way as the original TCI
+backend.
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- tcg/wasm64.h                |  26 +++
- tcg/wasm64/tcg-target.c.inc | 406 ++++++++++++++++++++++++++++++++++++
- 2 files changed, 432 insertions(+)
+ .gitlab-ci.d/buildtest.yml      |   2 +-
+ configure                       |   8 +-
+ meson.build                     |   4 +
+ meson_options.txt               |   3 +
+ scripts/meson-buildoptions.sh   |   5 +
+ tcg/wasm64.c                    |  87 ++++++++++
+ tcg/wasm64/tcg-target-mo.h      |  20 +++
+ tcg/wasm64/tcg-target-opc.h.inc |   2 +
+ tcg/wasm64/tcg-target.c.inc     | 286 ++++++++++++++++++++++++++++++++
+ 9 files changed, 411 insertions(+), 6 deletions(-)
+ create mode 100644 tcg/wasm64/tcg-target-mo.h
 
-diff --git a/tcg/wasm64.h b/tcg/wasm64.h
-index f2b67c1099..b5d9ce75da 100644
---- a/tcg/wasm64.h
-+++ b/tcg/wasm64.h
-@@ -32,4 +32,30 @@ struct WasmContext {
-     uint64_t *stack;
- };
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index e9b5b05e6e..f9a2d4de74 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -801,4 +801,4 @@ build-wasm64-32bit:
+     - job: wasm64-emsdk-cross-container
+   variables:
+     IMAGE: emsdk-wasm64-cross
+-    CONFIGURE_ARGS: --static --cpu=wasm64 --wasm64-32bit-address-limit --disable-tools --enable-debug --enable-tcg-interpreter
++    CONFIGURE_ARGS: --static --cpu=wasm64 --enable-wasm64-32bit-address-limit --disable-tools --enable-debug --enable-tcg-interpreter
+diff --git a/configure b/configure
+index e69b3e474e..e3e8e8387e 100755
+--- a/configure
++++ b/configure
+@@ -243,7 +243,9 @@ for opt do
+   ;;
+   --without-default-features) default_feature="no"
+   ;;
+-  --wasm64-32bit-address-limit) wasm64_memory64="2"
++  --enable-wasm64-32bit-address-limit) wasm64_memory64="2"
++  ;;
++  --disable-wasm64-32bit-address-limit) wasm64_memory64="1"
+   ;;
+   esac
+ done
+@@ -760,8 +762,6 @@ for opt do
+   ;;
+   --disable-rust) rust=disabled
+   ;;
+-  --wasm64-32bit-address-limit)
+-  ;;
+   # everything else has the same name in configure and meson
+   --*) meson_option_parse "$opt" "$optarg"
+   ;;
+@@ -887,8 +887,6 @@ Advanced options (experts only):
+   --disable-containers     don't use containers for cross-building
+   --container-engine=TYPE  which container engine to use [$container_engine]
+   --gdb=GDB-path           gdb to use for gdbstub tests [$gdb_bin]
+-  --wasm64-32bit-address-limit Restrict wasm64 address space to 32-bit (default
+-                               is to use the whole 64-bit range).
+ EOF
+   meson_options_help
+ cat << EOF
+diff --git a/meson.build b/meson.build
+index 3108f01e88..7a81ff58be 100644
+--- a/meson.build
++++ b/meson.build
+@@ -371,6 +371,10 @@ elif host_os == 'windows'
+   if compiler.get_id() == 'clang' and compiler.get_linker_id() != 'ld.lld'
+     error('On windows, you need to use lld with clang - use msys2 clang64/clangarm64 env')
+   endif
++elif host_os == 'emscripten'
++  if cpu == 'wasm64' and get_option('wasm64_32bit_address_limit')
++    qemu_common_flags += '-DWASM64_MEMORY64_2'
++  endif
+ endif
  
-+/* Instantiated Wasm function of a TB */
-+typedef uintptr_t (*wasm_tb_func)(struct WasmContext *);
+ # Choose instruction set (currently x86-only)
+diff --git a/meson_options.txt b/meson_options.txt
+index 2836156257..8b36159a45 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -390,3 +390,6 @@ option('rust', type: 'feature', value: 'disabled',
+        description: 'Rust support')
+ option('strict_rust_lints', type: 'boolean', value: false,
+        description: 'Enable stricter set of Rust warnings')
++
++option('wasm64_32bit_address_limit', type: 'boolean', value: false,
++       description: 'Restrict wasm64 address space to 32-bit (default is to use the whole 64-bit range).')
+diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
+index 3d0d132344..04311765be 100644
+--- a/scripts/meson-buildoptions.sh
++++ b/scripts/meson-buildoptions.sh
+@@ -56,6 +56,9 @@ meson_options_help() {
+   printf "%s\n" '                           dtrace/ftrace/log/nop/simple/syslog/ust)'
+   printf "%s\n" '  --enable-tsan            enable thread sanitizer'
+   printf "%s\n" '  --enable-ubsan           enable undefined behaviour sanitizer'
++  printf "%s\n" '  --enable-wasm64-32bit-address-limit'
++  printf "%s\n" '                           Restrict wasm64 address space to 32-bit (default'
++  printf "%s\n" '                           is to use the whole 64-bit range).'
+   printf "%s\n" '  --firmwarepath=VALUES    search PATH for firmware files [share/qemu-'
+   printf "%s\n" '                           firmware]'
+   printf "%s\n" '  --gdb=VALUE              Path to GDB'
+@@ -576,6 +579,8 @@ _meson_option_parse() {
+     --disable-vte) printf "%s" -Dvte=disabled ;;
+     --enable-vvfat) printf "%s" -Dvvfat=enabled ;;
+     --disable-vvfat) printf "%s" -Dvvfat=disabled ;;
++    --enable-wasm64-32bit-address-limit) printf "%s" -Dwasm64_32bit_address_limit=true ;;
++    --disable-wasm64-32bit-address-limit) printf "%s" -Dwasm64_32bit_address_limit=false ;;
+     --enable-werror) printf "%s" -Dwerror=true ;;
+     --disable-werror) printf "%s" -Dwerror=false ;;
+     --enable-whpx) printf "%s" -Dwhpx=enabled ;;
+diff --git a/tcg/wasm64.c b/tcg/wasm64.c
+index 183dad10a2..fa7413fc1d 100644
+--- a/tcg/wasm64.c
++++ b/tcg/wasm64.c
+@@ -20,6 +20,14 @@
+ 
+ #include "qemu/osdep.h"
+ #include "tcg/tcg.h"
++#include "tcg/tcg-ldst.h"
++
++static void tci_args_rl(uint32_t insn, const void *tb_ptr,
++                        TCGReg *r0, void **l1)
++{
++    *r0 = extract32(insn, 8, 4);
++    *l1 = sextract32(insn, 12, 20) + (void *)tb_ptr;
++}
+ 
+ static void tci_args_rr(uint32_t insn, TCGReg *r0, TCGReg *r1)
+ {
+@@ -27,6 +35,12 @@ static void tci_args_rr(uint32_t insn, TCGReg *r0, TCGReg *r1)
+     *r1 = extract32(insn, 12, 4);
+ }
+ 
++static void tci_args_ri(uint32_t insn, TCGReg *r0, tcg_target_ulong *i1)
++{
++    *r0 = extract32(insn, 8, 4);
++    *i1 = sextract32(insn, 12, 20);
++}
++
+ static void tci_args_rrr(uint32_t insn, TCGReg *r0, TCGReg *r1, TCGReg *r2)
+ {
+     *r0 = extract32(insn, 8, 4);
+@@ -34,6 +48,13 @@ static void tci_args_rrr(uint32_t insn, TCGReg *r0, TCGReg *r1, TCGReg *r2)
+     *r2 = extract32(insn, 16, 4);
+ }
+ 
++static void tci_args_rrs(uint32_t insn, TCGReg *r0, TCGReg *r1, int32_t *i2)
++{
++    *r0 = extract32(insn, 8, 4);
++    *r1 = extract32(insn, 12, 4);
++    *i2 = sextract32(insn, 16, 16);
++}
++
+ static void tci_args_rrbb(uint32_t insn, TCGReg *r0, TCGReg *r1,
+                           uint8_t *i2, uint8_t *i3)
+ {
+@@ -161,9 +182,12 @@ static uintptr_t tcg_qemu_tb_exec_tci(CPUArchState *env, const void *v_tb_ptr)
+         uint32_t insn;
+         TCGOpcode opc;
+         TCGReg r0, r1, r2, r3, r4;
++        tcg_target_ulong t1;
+         uint8_t pos, len;
+         TCGCond condition;
+         uint32_t tmp32;
++        int32_t ofs;
++        void *ptr;
+ 
+         insn = *tb_ptr++;
+         opc = extract32(insn, 0, 8);
+@@ -236,6 +260,69 @@ static uintptr_t tcg_qemu_tb_exec_tci(CPUArchState *env, const void *v_tb_ptr)
+             tmp32 = tci_compare32(regs[r1], regs[r2], condition);
+             regs[r0] = regs[tmp32 ? r3 : r4];
+             break;
++        case INDEX_op_tci_movi:
++            tci_args_ri(insn, &r0, &t1);
++            regs[r0] = t1;
++            break;
++        case INDEX_op_tci_movl:
++            tci_args_rl(insn, tb_ptr, &r0, &ptr);
++            regs[r0] = *(tcg_target_ulong *)ptr;
++            break;
++        case INDEX_op_ld:
++            tci_args_rrs(insn, &r0, &r1, &ofs);
++            ptr = (void *)(regs[r1] + ofs);
++            regs[r0] = *(tcg_target_ulong *)ptr;
++            break;
++        case INDEX_op_ld8u:
++            tci_args_rrs(insn, &r0, &r1, &ofs);
++            ptr = (void *)(regs[r1] + ofs);
++            regs[r0] = *(uint8_t *)ptr;
++            break;
++        case INDEX_op_ld8s:
++            tci_args_rrs(insn, &r0, &r1, &ofs);
++            ptr = (void *)(regs[r1] + ofs);
++            regs[r0] = *(int8_t *)ptr;
++            break;
++        case INDEX_op_ld16u:
++            tci_args_rrs(insn, &r0, &r1, &ofs);
++            ptr = (void *)(regs[r1] + ofs);
++            regs[r0] = *(uint16_t *)ptr;
++            break;
++        case INDEX_op_ld16s:
++            tci_args_rrs(insn, &r0, &r1, &ofs);
++            ptr = (void *)(regs[r1] + ofs);
++            regs[r0] = *(int16_t *)ptr;
++            break;
++        case INDEX_op_st:
++            tci_args_rrs(insn, &r0, &r1, &ofs);
++            ptr = (void *)(regs[r1] + ofs);
++            *(tcg_target_ulong *)ptr = regs[r0];
++            break;
++        case INDEX_op_st8:
++            tci_args_rrs(insn, &r0, &r1, &ofs);
++            ptr = (void *)(regs[r1] + ofs);
++            *(uint8_t *)ptr = regs[r0];
++            break;
++        case INDEX_op_st16:
++            tci_args_rrs(insn, &r0, &r1, &ofs);
++            ptr = (void *)(regs[r1] + ofs);
++            *(uint16_t *)ptr = regs[r0];
++            break;
++        case INDEX_op_ld32u:
++            tci_args_rrs(insn, &r0, &r1, &ofs);
++            ptr = (void *)(regs[r1] + ofs);
++            regs[r0] = *(uint32_t *)ptr;
++            break;
++        case INDEX_op_ld32s:
++            tci_args_rrs(insn, &r0, &r1, &ofs);
++            ptr = (void *)(regs[r1] + ofs);
++            regs[r0] = *(int32_t *)ptr;
++            break;
++        case INDEX_op_st32:
++            tci_args_rrs(insn, &r0, &r1, &ofs);
++            ptr = (void *)(regs[r1] + ofs);
++            *(uint32_t *)ptr = regs[r0];
++            break;
+         default:
+             g_assert_not_reached();
+         }
+diff --git a/tcg/wasm64/tcg-target-mo.h b/tcg/wasm64/tcg-target-mo.h
+new file mode 100644
+index 0000000000..3ccc56e899
+--- /dev/null
++++ b/tcg/wasm64/tcg-target-mo.h
+@@ -0,0 +1,20 @@
++/* SPDX-License-Identifier: MIT */
++/*
++ * Define target-specific memory model
++ *
++ * Based on tci/tcg-target-mo.h
++ *
++ * Copyright (c) 2009, 2011 Stefan Weil
++ */
++
++#ifndef TCG_TARGET_MO_H
++#define TCG_TARGET_MO_H
 +
 +/*
-+ * A TB of the Wasm backend starts from a header which contains pointers for
-+ * each data stored in the following region in the TB.
++ * We could notice __x86_64__ or __s390x__ and reduce the barriers depending
++ * on the host.  But if you want performance, you use the normal backend.
++ * We prefer consistency across hosts on this.
 + */
-+struct WasmTBHeader {
-+    /*
-+     * Pointer to the region containing TCI instructions.
-+     */
-+    void *tci_ptr;
++#define TCG_TARGET_DEFAULT_MO  0
 +
-+    /*
-+     * Pointer to the region containing Wasm instructions.
-+     */
-+    void *wasm_ptr;
-+    int wasm_size;
-+
-+    /*
-+     * Pointer to the array containing imported function pointers.
-+     */
-+    void *import_ptr;
-+    int import_size;
-+};
-+
- #endif
++#endif
+diff --git a/tcg/wasm64/tcg-target-opc.h.inc b/tcg/wasm64/tcg-target-opc.h.inc
+index 57274d4569..122b45749a 100644
+--- a/tcg/wasm64/tcg-target-opc.h.inc
++++ b/tcg/wasm64/tcg-target-opc.h.inc
+@@ -4,5 +4,7 @@
+  *
+  * These opcodes for use between the tci generator and interpreter.
+  */
++DEF(tci_movi, 1, 0, 1, TCG_OPF_NOT_PRESENT)
++DEF(tci_movl, 1, 0, 1, TCG_OPF_NOT_PRESENT)
+ DEF(tci_setcond32, 1, 2, 1, TCG_OPF_NOT_PRESENT)
+ DEF(tci_movcond32, 1, 2, 1, TCG_OPF_NOT_PRESENT)
 diff --git a/tcg/wasm64/tcg-target.c.inc b/tcg/wasm64/tcg-target.c.inc
-index f5d4cb4139..9854f5538c 100644
+index dd75deecd3..6b6d6402f4 100644
 --- a/tcg/wasm64/tcg-target.c.inc
 +++ b/tcg/wasm64/tcg-target.c.inc
-@@ -154,6 +154,8 @@ static const uint8_t tcg_target_reg_index[TCG_TARGET_NB_REGS] = {
- /* Function index */
- #define HELPER_IDX_START 0 /* The first index of helper functions */
+@@ -143,6 +143,18 @@ typedef enum {
+     OPC_GLOBAL_GET = 0x23,
+     OPC_GLOBAL_SET = 0x24,
  
-+#define PTR_TYPE 0x7e
++    OPC_I64_LOAD = 0x29,
++    OPC_I64_LOAD8_S = 0x30,
++    OPC_I64_LOAD8_U = 0x31,
++    OPC_I64_LOAD16_S = 0x32,
++    OPC_I64_LOAD16_U = 0x33,
++    OPC_I64_LOAD32_S = 0x34,
++    OPC_I64_LOAD32_U = 0x35,
++    OPC_I64_STORE = 0x37,
++    OPC_I64_STORE8 = 0x3c,
++    OPC_I64_STORE16 = 0x3d,
++    OPC_I64_STORE32 = 0x3e,
 +
- typedef enum {
-     OPC_UNREACHABLE = 0x00,
-     OPC_LOOP = 0x03,
-@@ -312,6 +314,19 @@ static int linked_buf_len(LinkedBuf *p)
-     return total;
+     OPC_I32_CONST = 0x41,
+     OPC_I64_CONST = 0x42,
+ 
+@@ -168,6 +180,7 @@ typedef enum {
+     OPC_I64_GE_S = 0x59,
+     OPC_I64_GE_U = 0x5a,
+ 
++    OPC_I32_ADD = 0x6a,
+     OPC_I32_SHR_S = 0x75,
+     OPC_I32_SHR_U = 0x76,
+ 
+@@ -421,6 +434,84 @@ static void tcg_wasm_out_sextract(TCGContext *s, TCGReg dest, TCGReg arg1,
+     tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(dest));
  }
  
-+static int linked_buf_write(LinkedBuf *p, void *dst)
++/*
++ * The size of the offset field of Wasm's load/store instruction differs
++ * depending on the "-sMEMORY64" flag value: 64bit when "-sMEMORY64=1"
++ * and 32bit when "-sMEMORY64=2".
++ */
++#if defined(WASM64_MEMORY64_2)
++typedef uint32_t wasm_ldst_offset_t;
++#else
++typedef uint64_t wasm_ldst_offset_t;
++#endif
++static void tcg_wasm_out_op_ldst(
++    TCGContext *s, WasmInsn instr, uint32_t a, wasm_ldst_offset_t o)
 +{
-+    int total = 0;
-+    LinkedBufEntry *e;
-+
-+    QSIMPLEQ_FOREACH(e, p, entry) {
-+        memcpy(dst, e->data, e->size);
-+        dst += e->size;
-+        total += e->size;
-+    }
-+    return total;
++    tcg_wasm_out_op(s, instr);
++    tcg_wasm_out_leb128(s, a);
++    tcg_wasm_out_leb128(s, (wasm_ldst_offset_t)o);
 +}
 +
- /*
-  * wasm code is generataed in the dynamically allocated buffer which
-  * are managed as a linked list.
-@@ -928,6 +943,99 @@ static void gen_call(TCGContext *s,
-     }
++/*
++ * tcg_wasm_out_norm_ptr emits instructions to adjust the 64bit pointer value
++ * at the top of the stack to satisfy Wasm's memory addressing requirements.
++ */
++static intptr_t tcg_wasm_out_norm_ptr(TCGContext *s, intptr_t offset)
++{
++#if defined(WASM64_MEMORY64_2)
++    /*
++     * If Emscripten's "-sMEMORY64=2" is enabled,
++     * the address size is limited to 32bit.
++     */
++    tcg_wasm_out_op(s, OPC_I32_WRAP_I64);
++#endif
++    /*
++     * Wasm's load/store instructions don't support negative value in
++     * the offset field. So this function calculates the target address
++     * using the base and the offset and makes the offset field 0.
++     */
++    if (offset < 0) {
++#if defined(WASM64_MEMORY64_2)
++        tcg_wasm_out_op_const(s, OPC_I32_CONST, offset);
++        tcg_wasm_out_op(s, OPC_I32_ADD);
++#else
++        tcg_wasm_out_op_const(s, OPC_I64_CONST, offset);
++        tcg_wasm_out_op(s, OPC_I64_ADD);
++#endif
++        offset = 0;
++    }
++    return offset;
++}
++
++static void tcg_wasm_out_ld(
++    TCGContext *s, WasmInsn opc, TCGReg val, TCGReg base, intptr_t offset)
++{
++    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(base));
++    offset = tcg_wasm_out_norm_ptr(s, offset);
++    tcg_wasm_out_op_ldst(s, opc, 0, offset);
++    tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(val));
++}
++
++static void tcg_wasm_out_st(
++    TCGContext *s, WasmInsn opc, TCGReg val, TCGReg base, intptr_t offset)
++{
++    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(base));
++    offset = tcg_wasm_out_norm_ptr(s, offset);
++    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(val));
++    tcg_wasm_out_op_ldst(s, opc, 0, offset);
++}
++
++static void tcg_out_op_ri(TCGContext *s, TCGOpcode op, TCGReg r0, int32_t i1)
++{
++    tcg_insn_unit_tci insn = 0;
++
++    tcg_debug_assert(i1 == sextract32(i1, 0, 20));
++    insn = deposit32(insn, 0, 8, op);
++    insn = deposit32(insn, 8, 4, r0);
++    insn = deposit32(insn, 12, 20, i1);
++    tcg_out32(s, insn);
++}
++
+ static void tcg_out_op_rr(TCGContext *s, TCGOpcode op, TCGReg r0, TCGReg r1)
+ {
+     tcg_insn_unit_tci insn = 0;
+@@ -443,6 +534,19 @@ static void tcg_out_op_rrr(TCGContext *s, TCGOpcode op,
+     tcg_out32(s, insn);
  }
  
-+static __thread LinkedBuf types_buf;
-+
-+static void init_types_buf(void)
++static void tcg_out_op_rrs(TCGContext *s, TCGOpcode op,
++                           TCGReg r0, TCGReg r1, intptr_t i2)
 +{
-+    QSIMPLEQ_INIT(&types_buf);
++    tcg_insn_unit_tci insn = 0;
++
++    tcg_debug_assert(i2 == sextract32(i2, 0, 16));
++    insn = deposit32(insn, 0, 8, op);
++    insn = deposit32(insn, 8, 4, r0);
++    insn = deposit32(insn, 12, 4, r1);
++    insn = deposit32(insn, 16, 16, i2);
++    tcg_out32(s, insn);
 +}
 +
-+static void types_buf_out8(uint8_t v)
+ static void tcg_out_op_rrbb(TCGContext *s, TCGOpcode op, TCGReg r0,
+                             TCGReg r1, uint8_t b2, uint8_t b3)
+ {
+@@ -669,6 +773,188 @@ static const TCGOutOpMovcond outop_movcond = {
+     .out = tgen_movcond,
+ };
+ 
++static void tcg_tci_out_movi(TCGContext *s, TCGType type,
++                             TCGReg ret, tcg_target_long arg)
 +{
-+    linked_buf_out8(&types_buf, v);
-+}
-+
-+static void gen_func_type_call(TCGContext *s, const TCGHelperInfo *info)
-+{
-+    unsigned typemask = info->typemask;
-+    int rettype = typemask & 7;
-+    uint32_t vec_size = 0;
-+
-+    if (rettype == dh_typecode_i128) {
-+        vec_size++;
-+    }
-+    for (int m = typemask >> 3; m; m >>= 3) {
-+        if ((m & 7) != dh_typecode_void) {
-+            vec_size++;
-+        }
-+    }
-+
-+    types_buf_out8(0x60);
-+    linked_buf_out_leb128(&types_buf, vec_size);
-+
-+    if (rettype == dh_typecode_i128) {
-+        types_buf_out8(PTR_TYPE);
-+    }
-+
-+    for (int m = typemask >> 3; m; m >>= 3) {
-+        switch (m & 7) {
-+        case dh_typecode_void:
-+            break;
-+        case dh_typecode_i32:
-+        case dh_typecode_s32:
-+            types_buf_out8(0x7f);
-+            break;
-+        case dh_typecode_i64:
-+        case dh_typecode_s64:
-+            types_buf_out8(0x7e);
-+            break;
-+        case dh_typecode_i128:
-+            types_buf_out8(PTR_TYPE);
-+            break;
-+        case dh_typecode_ptr:
-+            types_buf_out8(PTR_TYPE);
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+    }
-+
-+    switch (rettype) {
-+    case dh_typecode_void:
-+    case dh_typecode_i128:
-+        types_buf_out8(0x0);
-+        break;
-+    case dh_typecode_i32:
-+    case dh_typecode_s32:
-+        types_buf_out8(0x1);
-+        types_buf_out8(0x7f);
-+        break;
-+    case dh_typecode_i64:
-+    case dh_typecode_s64:
-+        types_buf_out8(0x1);
-+        types_buf_out8(0x7e);
-+        break;
-+    case dh_typecode_ptr:
-+        types_buf_out8(0x1);
-+        types_buf_out8(PTR_TYPE);
++    switch (type) {
++    case TCG_TYPE_I32:
++        arg = (int32_t)arg;
++        /* fall through */
++    case TCG_TYPE_I64:
 +        break;
 +    default:
 +        g_assert_not_reached();
 +    }
-+}
 +
-+static __thread LinkedBuf imports_buf;
++    if (arg == sextract32(arg, 0, 20)) {
++        tcg_out_op_ri(s, INDEX_op_tci_movi, ret, arg);
++    } else {
++        tcg_insn_unit_tci insn = 0;
 +
-+static void init_imports_buf(void)
-+{
-+    QSIMPLEQ_INIT(&imports_buf);
-+}
-+
-+static void imports_buf_out8(uint8_t v)
-+{
-+    linked_buf_out8(&imports_buf, v);
-+}
-+
- typedef struct HelperInfo {
-     intptr_t idx_on_qemu;
-     QSIMPLEQ_ENTRY(HelperInfo) entry;
-@@ -944,15 +1052,56 @@ static void init_helpers(void)
- 
- static uint32_t register_helper(TCGContext *s, intptr_t helper_idx_on_qemu)
- {
-+    uint32_t typeidx = helper_idx + 1;
-+    char buf[11]; /* enough for decimal int max + NULL*/
-+    int n = snprintf(buf, sizeof(buf), "%d", helper_idx - HELPER_IDX_START);
-+
-     tcg_debug_assert(helper_idx_on_qemu >= 0);
- 
-     HelperInfo *e = tcg_malloc(sizeof(HelperInfo));
-     e->idx_on_qemu = helper_idx_on_qemu;
-     QSIMPLEQ_INSERT_TAIL(&helpers, e, entry);
- 
-+    tcg_debug_assert(n < sizeof(buf));
-+    imports_buf_out8(6); /* helper */
-+    imports_buf_out8(0x68);
-+    imports_buf_out8(0x65);
-+    imports_buf_out8(0x6c);
-+    imports_buf_out8(0x70);
-+    imports_buf_out8(0x65);
-+    imports_buf_out8(0x72);
-+    linked_buf_out_leb128(&imports_buf, (uint32_t)n);
-+    for (int i = 0; i < n; i++) {
-+        imports_buf_out8(buf[i]);
++        new_pool_label(s, arg, 20, s->code_ptr, 0);
++        insn = deposit32(insn, 0, 8, INDEX_op_tci_movl);
++        insn = deposit32(insn, 8, 4, ret);
++        tcg_out32(s, insn);
 +    }
-+    imports_buf_out8(0); /* type(0) */
-+    linked_buf_out_leb128(&imports_buf, typeidx);
++}
 +
-     return helper_idx++;
- }
- 
-+static int helpers_len(void)
++static void stack_bounds_check(TCGReg base, intptr_t offset)
 +{
-+    int n = 0;
-+    HelperInfo *e;
-+
-+    QSIMPLEQ_FOREACH(e, &helpers, entry) {
-+        n++;
++    if (base == TCG_REG_CALL_STACK) {
++        tcg_debug_assert(offset >= 0);
++        tcg_debug_assert(offset < (TCG_STATIC_CALL_ARGS_SIZE +
++                                   TCG_STATIC_FRAME_SIZE));
 +    }
-+    return n;
 +}
 +
-+static int helpers_write_to_array(intptr_t *dst)
++static void tcg_out_ldst(TCGContext *s, TCGOpcode op, TCGReg val,
++                         TCGReg base, intptr_t offset)
 +{
-+    intptr_t *start = dst;
-+    HelperInfo *e;
-+
-+    QSIMPLEQ_FOREACH(e, &helpers, entry) {
-+        *dst++ = e->idx_on_qemu;
++    stack_bounds_check(base, offset);
++    if (offset != sextract32(offset, 0, 16)) {
++        tcg_tci_out_movi(s, TCG_TYPE_PTR, TCG_REG_TMP, offset);
++        tcg_out_op_rrr(s, INDEX_op_add, TCG_REG_TMP, TCG_REG_TMP, base);
++        base = TCG_REG_TMP;
++        offset = 0;
 +    }
-+    return (intptr_t)dst - (intptr_t)start;
++    tcg_out_op_rrs(s, op, val, base, offset);
 +}
 +
- static int64_t get_helper_idx(TCGContext *s, intptr_t helper_idx_on_qemu)
- {
-     uint32_t idx = HELPER_IDX_START;
-@@ -974,6 +1123,7 @@ static void tcg_wasm_out_call(TCGContext *s, intptr_t func,
-     int64_t func_idx = get_helper_idx(s, func);
-     if (func_idx < 0) {
-         func_idx = register_helper(s, func);
-+        gen_func_type_call(s, info);
-     }
- 
-     ofs = tcg_wasm_out_get_ctx(s, CTX_OFFSET(tci_tb_ptr));
-@@ -985,6 +1135,39 @@ static void tcg_wasm_out_call(TCGContext *s, intptr_t func,
-     gen_call(s, info, func_idx);
- }
- 
-+static void gen_func_type_qemu_ld(TCGContext *s, uint32_t oi)
++static void tcg_out_ld(TCGContext *s, TCGType type, TCGReg val, TCGReg base,
++                       intptr_t offset)
 +{
-+    types_buf_out8(0x60);
-+    types_buf_out8(0x4);
-+    types_buf_out8(PTR_TYPE);
-+    types_buf_out8(0x7e);
-+    types_buf_out8(0x7f);
-+    types_buf_out8(PTR_TYPE);
-+    types_buf_out8(0x1);
-+    types_buf_out8(0x7e);
-+}
++    TCGOpcode op = INDEX_op_ld;
++    WasmInsn wasm_opc = OPC_I64_LOAD;
 +
-+static void gen_func_type_qemu_st(TCGContext *s, uint32_t oi)
-+{
-+    MemOp mop = get_memop(oi);
-+
-+    types_buf_out8(0x60);
-+    types_buf_out8(0x5);
-+    types_buf_out8(PTR_TYPE);
-+    types_buf_out8(0x7e);
-+    switch (mop & MO_SSIZE) {
-+    case MO_UQ:
-+        types_buf_out8(0x7e);
-+        break;
-+    default:
-+        types_buf_out8(0x7f);
-+        break;
++    if (type == TCG_TYPE_I32) {
++        op = INDEX_op_ld32u;
++        wasm_opc = OPC_I64_LOAD32_U;
 +    }
-+    types_buf_out8(0x7f);
-+    types_buf_out8(PTR_TYPE);
-+    types_buf_out8(0x0);
++    tcg_out_ldst(s, op, val, base, offset);
++    tcg_wasm_out_ld(s, wasm_opc, val, base, offset);
 +}
 +
- static void *qemu_ld_helper_ptr(uint32_t oi)
- {
-     MemOp mop = get_memop(oi);
-@@ -1018,6 +1201,7 @@ static void tcg_wasm_out_qemu_ld(TCGContext *s, TCGReg data_reg,
-     func_idx = get_helper_idx(s, helper_idx);
-     if (func_idx < 0) {
-         func_idx = register_helper(s, helper_idx);
-+        gen_func_type_qemu_ld(s, oi);
-     }
- 
-     /* call the target helper */
-@@ -1058,6 +1242,7 @@ static void tcg_wasm_out_qemu_st(TCGContext *s, TCGReg data_reg,
-     func_idx = get_helper_idx(s, helper_idx);
-     if (func_idx < 0) {
-         func_idx = register_helper(s, helper_idx);
-+        gen_func_type_qemu_st(s, oi);
-     }
- 
-     /* call the target helper */
-@@ -2079,14 +2264,164 @@ static void tcg_out_set_carry(TCGContext *s)
-     g_assert_not_reached();
- }
- 
-+static const uint8_t mod_1[] = {
-+    0x0, 0x61, 0x73, 0x6d, /* magic */
-+    0x01, 0x0, 0x0, 0x0,   /* version */
++static void tgen_ld8u(TCGContext *s, TCGType type, TCGReg dest,
++                      TCGReg base, ptrdiff_t offset)
++{
++    tcg_out_ldst(s, INDEX_op_ld8u, dest, base, offset);
++    tcg_wasm_out_ld(s, OPC_I64_LOAD8_U, dest, base, offset);
++}
 +
-+    0x01,                         /* type section */
-+    0x80, 0x80, 0x80, 0x80, 0x00, /* placehodler for size */
-+    0x80, 0x80, 0x80, 0x80, 0x00, /* placehodler for num of types vec */
-+    0x60,                         /* 0: Type of "start" function */
-+    0x01, PTR_TYPE,               /* arg: ctx pointer */
-+    0x01, PTR_TYPE,               /* return: res */
++static const TCGOutOpLoad outop_ld8u = {
++    .base.static_constraint = C_O1_I1(r, r),
++    .out = tgen_ld8u,
 +};
 +
-+#define MOD_1_PH_TYPE_SECTION_SIZE_OFF 9
-+#define MOD_1_PH_TYPE_VEC_NUM_OFF 14
-+
-+static const uint8_t mod_2[] = {
-+    0x02,                                     /* import section */
-+    0x80, 0x80, 0x80, 0x80, 0x00,             /* placehodler for size */
-+    0x80, 0x80, 0x80, 0x80, 0x00,             /* placehodler for imports num */
-+    0x03, 0x65, 0x6e, 0x76,                   /* module: "env" */
-+    0x06, 0x6d, 0x65, 0x6d, 0x6f, 0x72, 0x79, /* name: "memory" */
-+#if defined(WASM64_MEMORY64_2)
-+    /* 32bit memory is used for Emscripten's "-sMEMORY64=2" configuration. */
-+    0x02, 0x03,                               /* shared mem */
-+    0x00, 0x80, 0x80, 0x04,                   /* min: 0, max: 65536 pages */
-+#else
-+    /*
-+     * 64bit memory is used for Emscripten's "-sMEMORY64=1" configuration.
-+     * Note: the maximum 64bit memory size of the engine implementations is
-+     * limited to 262144 pages(16GiB)
-+     * https://webassembly.github.io/memory64/js-api/#limits
-+     */
-+    0x02, 0x07,                               /* shared mem(64bit) */
-+    0x00, 0x80, 0x80, 0x10,                   /* min: 0, max: 262144 pages */
-+#endif
-+};
-+
-+#define MOD_2_PH_IMPORT_SECTION_SIZE_OFF 1
-+#define MOD_2_PH_IMPORT_VEC_NUM_OFF 6
-+
-+static const uint8_t mod_3[] = {
-+    0x03,       /* function section */
-+    2, 1, 0x00, /* function type 0 */
-+
-+    0x06,                         /* global section */
-+    86,                           /* section size */
-+    17,                           /* num of global vars */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+    0x7e, 0x01, 0x42, 0x00, 0x0b, /* 0-cleared 64bit var */
-+
-+    0x07,                               /* export section */
-+    13,                                 /* size of section */
-+    1,                                  /* num of funcs */
-+    0x05, 0x73, 0x74, 0x61, 0x72, 0x74, /* "start" function */
-+    0x00, 0x80, 0x80, 0x80, 0x80, 0x00, /* placeholder for func index*/
-+
-+    0x0a,                         /* code section */
-+    0x80, 0x80, 0x80, 0x80, 0x00, /* placeholder for section size*/
-+    1,                            /* num of codes */
-+    0x80, 0x80, 0x80, 0x80, 0x00, /* placeholder for code size */
-+    0x0,                          /* local variables (none) */
-+};
-+
-+#define MOD_3_PH_EXPORT_START_FUNC_IDX 102
-+#define MOD_3_PH_CODE_SECTION_SIZE_OFF 108
-+#define MOD_3_PH_CODE_SIZE_OFF 114
-+#define MOD_3_VARIABLES_SIZE 5
-+#define MOD_3_CODE_SECTION_SIZE_ADD 11
-+
-+static void fill_uint32_leb128(uint8_t *b, uint32_t v)
++static void tgen_ld8s(TCGContext *s, TCGType type, TCGReg dest,
++                      TCGReg base, ptrdiff_t offset)
 +{
-+    do {
-+        *b |= v & 0x7f;
-+        v >>= 7;
-+        b++;
-+    } while (v != 0);
++    tcg_out_ldst(s, INDEX_op_ld8s, dest, base, offset);
++    tcg_wasm_out_ld(s, OPC_I64_LOAD8_S, dest, base, offset);
 +}
 +
-+typedef struct FillValueU32 {
-+    int64_t offset;
-+    uint32_t value;
-+} FillValueU32;
++static const TCGOutOpLoad outop_ld8s = {
++    .base.static_constraint = C_O1_I1(r, r),
++    .out = tgen_ld8s,
++};
 +
-+static int write_mod(TCGContext *s, const uint8_t mod[], int len,
-+                     FillValueU32 values[], int values_len)
++static void tgen_ld16u(TCGContext *s, TCGType type, TCGReg dest,
++                       TCGReg base, ptrdiff_t offset)
 +{
-+    void *base = s->code_ptr;
-+
-+    if (unlikely(((void *)s->code_ptr + len)
-+                 > s->code_gen_highwater)) {
-+        return -1;
-+    }
-+
-+    memcpy(s->code_ptr, mod, len);
-+    s->code_ptr += len;
-+
-+    for (int i = 0; i < values_len; i++) {
-+        fill_uint32_leb128(base + values[i].offset, values[i].value);
-+    }
-+
-+    return 0;
++    tcg_out_ldst(s, INDEX_op_ld16u, dest, base, offset);
++    tcg_wasm_out_ld(s, OPC_I64_LOAD16_U, dest, base, offset);
 +}
 +
-+static int write_mod_code(TCGContext *s)
++static const TCGOutOpLoad outop_ld16u = {
++    .base.static_constraint = C_O1_I1(r, r),
++    .out = tgen_ld16u,
++};
++
++static void tgen_ld16s(TCGContext *s, TCGType type, TCGReg dest,
++                       TCGReg base, ptrdiff_t offset)
 +{
-+    void *base = s->code_ptr;
-+    int code_size = sub_buf_len();
-+    BlockPlaceholder *e;
++    tcg_out_ldst(s, INDEX_op_ld16s, dest, base, offset);
++    tcg_wasm_out_ld(s, OPC_I64_LOAD16_S, dest, base, offset);
++}
 +
-+    if (unlikely(((void *)s->code_ptr + code_size) > s->code_gen_highwater)) {
-+        return -1;
++static const TCGOutOpLoad outop_ld16s = {
++    .base.static_constraint = C_O1_I1(r, r),
++    .out = tgen_ld16s,
++};
++
++static void tgen_ld32u(TCGContext *s, TCGType type, TCGReg dest,
++                       TCGReg base, ptrdiff_t offset)
++{
++    tcg_out_ldst(s, INDEX_op_ld32u, dest, base, offset);
++    tcg_wasm_out_ld(s, OPC_I64_LOAD32_U, dest, base, offset);
++}
++
++static const TCGOutOpLoad outop_ld32u = {
++    .base.static_constraint = C_O1_I1(r, r),
++    .out = tgen_ld32u,
++};
++
++static void tgen_ld32s(TCGContext *s, TCGType type, TCGReg dest,
++                       TCGReg base, ptrdiff_t offset)
++{
++    tcg_out_ldst(s, INDEX_op_ld32s, dest, base, offset);
++    tcg_wasm_out_ld(s, OPC_I64_LOAD32_S, dest, base, offset);
++}
++
++static const TCGOutOpLoad outop_ld32s = {
++    .base.static_constraint = C_O1_I1(r, r),
++    .out = tgen_ld32s,
++};
++
++static void tgen_st8(TCGContext *s, TCGType type, TCGReg data,
++                     TCGReg base, ptrdiff_t offset)
++{
++    tcg_out_ldst(s, INDEX_op_st8, data, base, offset);
++    tcg_wasm_out_st(s, OPC_I64_STORE8, data, base, offset);
++}
++
++static const TCGOutOpStore outop_st8 = {
++    .base.static_constraint = C_O0_I2(r, r),
++    .out_r = tgen_st8,
++};
++
++static void tgen_st16(TCGContext *s, TCGType type, TCGReg data,
++                      TCGReg base, ptrdiff_t offset)
++{
++    tcg_out_ldst(s, INDEX_op_st16, data, base, offset);
++    tcg_wasm_out_st(s, OPC_I64_STORE16, data, base, offset);
++}
++
++static const TCGOutOpStore outop_st16 = {
++    .base.static_constraint = C_O0_I2(r, r),
++    .out_r = tgen_st16,
++};
++
++static void tcg_out_st(TCGContext *s, TCGType type, TCGReg val, TCGReg base,
++                       intptr_t offset)
++{
++    TCGOpcode op = INDEX_op_st;
++    WasmInsn wasm_opc = OPC_I64_STORE;
++
++    if (type == TCG_TYPE_I32) {
++        op = INDEX_op_st32;
++        wasm_opc = OPC_I64_STORE32;
 +    }
-+    linked_buf_write(&sub_buf, s->code_ptr);
-+    s->code_ptr += code_size;
++    tcg_out_ldst(s, op, val, base, offset);
++    tcg_wasm_out_st(s, wasm_opc, val, base, offset);
++}
 +
-+    QSIMPLEQ_FOREACH(e, &block_placeholder, entry) {
-+        uint8_t *ph = e->pos + base;
-+        int blk = get_block_of_label(e->label);
-+        tcg_debug_assert(blk >= 0);
-+        fill_uint32_leb128(ph, blk);
-+    }
++static const TCGOutOpStore outop_st = {
++    .base.static_constraint = C_O0_I2(r, r),
++    .out_r = tcg_out_st,
++};
 +
-+    return 0;
++static inline bool tcg_out_sti(TCGContext *s, TCGType type, TCGArg val,
++                               TCGReg base, intptr_t ofs)
++{
++    return false;
 +}
 +
  static void tcg_out_tb_start(TCGContext *s)
  {
-     intptr_t ofs;
-+    struct WasmTBHeader *h;
- 
      init_sub_buf();
-     init_blocks();
-     init_label_info();
-     init_helpers();
-+    init_types_buf();
-+    init_imports_buf();
-+
-+    /* TB starts from a header */
-+    h = (struct WasmTBHeader *)(s->code_ptr);
-+    s->code_ptr += sizeof(struct WasmTBHeader);
-+
-+    /* Followed by TCI code */
-+    h->tci_ptr = s->code_ptr;
- 
-     /* Initialize fundamental registers */
-     tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(TCG_AREG0));
-@@ -2113,10 +2448,81 @@ static void tcg_out_tb_start(TCGContext *s)
- 
- static int tcg_out_tb_end(TCGContext *s)
- {
-+    int res;
-+    struct WasmTBHeader *h = (struct WasmTBHeader *)(s->code_buf);
-+
-     tcg_wasm_out_op(s, OPC_END); /* end if */
-     tcg_wasm_out_op(s, OPC_END); /* end loop */
-     tcg_wasm_out_op(s, OPC_UNREACHABLE);
-     tcg_wasm_out_op(s, OPC_END); /* end func */
- 
-+    /* write wasm blob */
-+    h->wasm_ptr = s->code_ptr;
-+
-+    res = write_mod(s, mod_1, sizeof(mod_1), (FillValueU32[]) {
-+            {
-+                MOD_1_PH_TYPE_SECTION_SIZE_OFF,
-+                linked_buf_len(&types_buf) +
-+                sizeof(mod_1) - MOD_1_PH_TYPE_VEC_NUM_OFF
-+            },
-+            {
-+                MOD_1_PH_TYPE_VEC_NUM_OFF,
-+                HELPER_IDX_START + helpers_len() + 1/* start */
-+            },
-+    }, 2);
-+    if (res < 0) {
-+        return res;
-+    }
-+    s->code_ptr += linked_buf_write(&types_buf, s->code_ptr);
-+
-+    res = write_mod(s, mod_2, sizeof(mod_2), (FillValueU32[]) {
-+            {
-+                MOD_2_PH_IMPORT_SECTION_SIZE_OFF,
-+                linked_buf_len(&imports_buf) +
-+                sizeof(mod_2) - MOD_2_PH_IMPORT_VEC_NUM_OFF
-+            },
-+            {
-+                MOD_2_PH_IMPORT_VEC_NUM_OFF,
-+                HELPER_IDX_START + helpers_len() + 1/* memory */
-+            },
-+    }, 2);
-+    if (res < 0) {
-+        return res;
-+    }
-+    s->code_ptr += linked_buf_write(&imports_buf, s->code_ptr);
-+
-+    res = write_mod(s, mod_3, sizeof(mod_3), (FillValueU32[]) {
-+            {
-+                MOD_3_PH_EXPORT_START_FUNC_IDX,
-+                HELPER_IDX_START + helpers_len()
-+            },
-+            {
-+                MOD_3_PH_CODE_SECTION_SIZE_OFF,
-+                sub_buf_len() + MOD_3_CODE_SECTION_SIZE_ADD
-+            },
-+            {
-+                MOD_3_PH_CODE_SIZE_OFF,
-+                sub_buf_len() + MOD_3_VARIABLES_SIZE
-+            },
-+    }, 3);
-+    if (res < 0) {
-+        return res;
-+    }
-+
-+    res = write_mod_code(s);
-+    if (res < 0) {
-+        return res;
-+    }
-+    h->wasm_size = (intptr_t)s->code_ptr - (intptr_t)h->wasm_ptr;
-+
-+    /* record imported helper functions */
-+    if (unlikely(((void *)s->code_ptr + helpers_len() * 4)
-+                 > s->code_gen_highwater)) {
-+        return -1;
-+    }
-+    h->import_ptr = s->code_ptr;
-+    s->code_ptr += helpers_write_to_array((intptr_t *)s->code_ptr);
-+    h->import_size = (intptr_t)s->code_ptr - (intptr_t)h->import_ptr;
-+
-     return 0;
- }
 -- 
 2.43.0
 

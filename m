@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB8CBD19502
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 17:44:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87CB7D19510
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 17:44:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkQd2-0001Xp-7M; Mon, 26 Jan 2026 12:43:56 -0500
+	id 1vkQd3-0001YO-MZ; Mon, 26 Jan 2026 12:43:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkQcj-0001Lp-Ov
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:40 -0500
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ id 1vkQch-0001K1-RJ
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:36 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkQch-0008WA-I0
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:37 -0500
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-4327555464cso3259103f8f.1
- for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 09:43:34 -0800 (PST)
+ id 1vkQcf-0008V5-6h
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:35 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-4805ef35864so11524255e9.0
+ for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 09:43:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1769449413; x=1770054213; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1769449411; x=1770054211; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=9aM6zWLKlmtgCmD6m3GCHJyyGI3WEHXBduIqZsS8oug=;
- b=c+0n3tco8qdT95arUobksKieFrqoh74Q8VZBGLeDG3+QcFLUAA1WV4hVz7Xk+KD+Mo
- wCpBkcJiMflrPpqFIWAMMoglKwaPr/du2L7NE1VzKWqhFD5MgvKy3Si7KkJT14Xxrsr6
- 0GLnIRiHPIOtr2PPgoCC9ZfDCm1MZa2WNiLHVHfmSx3ZtwqfvWDJLM9WfHGBOdeP/dsY
- 9ZD54wu0i+5iETvgrPXiSz9cnYh8GwFR2P+4yVSq03n7ZS7ZytuBJG87FY8sEwegKPv7
- AlY/2dyi6aErGFFYigkmPjUiGlc1EgDDffobJ3N4Ml/goHcIm+X8u1A/NwyO+gQynEM8
- UqFQ==
+ bh=+JVcXy0dwK/92fGA+np6cVxIVwdiBdpVuuBvIqmsfVg=;
+ b=LGwrmPOP57ZB4GCtoSDiDT5dfLyiLDq8rHNofyKZCZ1yxWCbP2XKOYfHPs5hzXmB9c
+ tidxZ1F+EQn1FU4p/teVW95USRpxZN9h9NPKErP81UdXqX/vyQ1wV8PoKgisNXkStBH0
+ Tzm35+MaU6I9cccN8VO3XL5YQliII4FeaiEVR4cGCCGV+67CR75FfAbUVLK9f3QLm/ws
+ DC+Vu+tXzEqA2ItZ57YYh7YAtj0NyYfVY/1pJSZu88l5aGmwkjzRh+/7xnqKKtrwZ6XI
+ g0XzWG8DcHbtL2J6EstYnTq2vrdWU0p3bkWEqBq/IfA7neOTQyU1OvB81ZaD2kBoMWZf
+ 9DUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769449413; x=1770054213;
+ d=1e100.net; s=20230601; t=1769449411; x=1770054211;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=9aM6zWLKlmtgCmD6m3GCHJyyGI3WEHXBduIqZsS8oug=;
- b=tNjF2dlRsgXyDo35PtzXUNv95OX4+OXjsDniVyJKGkRB8eJlbdrZolXuOcf1ed2oPH
- 0w20ol/MmR/i++TzL0/yz/GvO6ljhvdxYgtK5S/Dn434Wghsnf2r0ZEUk0JYM15x5Cq6
- peSs2epZZYbgLAGn/Mn7+qmOpwAEObd8S2eIa9DrRmL6brnAQmI24x2+9yWDffh+sdzz
- pavDVe4v8IFi+4Tfl0cTfIwoW8BjX3aJ06/RBL9JS+fZV+g82LofRO5gCowM3uobYd6J
- 2m++tUjtt5VKKnaqMK+uXm8foWkpH7ZQR4hufSpYqz8Oqpvp5QrNIquwYKtPtb1WJhWw
- iGzQ==
-X-Gm-Message-State: AOJu0YxZNWkk/1qYJbD9fKtq5q5x4QyH3MlDewTknspG4D/OUmGEM/eF
- 5Xze1zZBMYlGIo7BZn4jauDGBUG9clTQGKkBkBf0A5udqlO2YHHH9EmdWX9ti5dm
-X-Gm-Gg: AZuq6aJzKqOKRgF4wyZkWSDn0IWtcQ2D8ON/XTbQ3sz1982+DVD84hlVBXoj9C5ikeP
- 70fg4H7y2TYoRjkz2w4HV9xBSM+6O4pXXm1IFpdh2LN0we14ueUl01vNsPFLu4p37+V1t6E62cR
- a0adqVUbwwcPKC4UwPcHli8UfiHH+c6ZCtINAf7iEtGHKEYxNOdm6ZfZ53WhMmFexLFEcZMel01
- q18k+n9S68VBj7HY10jL9fbUioRfAh84BRHhm5zfIHuKFEFBLoByVwu+LDD5cmHWFjRcUZA7bkL
- +OAWhuiS0XOKrjRZRtjcDY/3I8UXckSGlT9Bu/4GmZyHekV7MFo/RmN7EwYZ8Kt8OTJYgcktvjb
- kQiz+O0U0mQPn2wSk8zKvTx1sB+0cX1OCGoMRGJo3D+HBNlaBvgnjikFizXNnE3nN8Htg6/1pYN
- kVosjmu5f4Kfc5LFhH9xYkPsH83lNKq8LV8CUFrGn8x4T3FQykcnFVMm6LxBr8cRyw
-X-Received: by 2002:a05:6000:1849:b0:435:8fe2:e690 with SMTP id
- ffacd0b85a97d-435ca3a8ffdmr9751383f8f.58.1769449413091; 
- Mon, 26 Jan 2026 09:43:33 -0800 (PST)
+ bh=+JVcXy0dwK/92fGA+np6cVxIVwdiBdpVuuBvIqmsfVg=;
+ b=Lg8P8eU/H/b0MCmooLU8lPn88JeihovAyAnpfv0IFRwJhsk/SIC0QbRUSPiGsOan4z
+ jcx+cM6HAMo6k3oCwMzwpBGy0cdvk9ThLEiylyBgKzDCnqTWQPuTL/ivVgbGY18FXcde
+ beUPIWfZUeYh54mLKN1l0TqQjI0I/+rNWPXNy2xbj7o1j1k4JSTMQgQzWvnCGaoij9e7
+ 7EEi40/7etUT03XDhI/tR3I9l+4DA6uafCi80k2KkrgnjarDhuk9rUeOGvBOOX9yBRg4
+ fomwRvHi8s7co7MtRqD3huOCnA0QtcJOSbTKFkphqVoTf2I5Jv1VK5qQUMFiSqFg+qG7
+ Wa6A==
+X-Gm-Message-State: AOJu0YwvObXrgnm72Fxj9E6CUTM7cjTW15mXXC4XC81CIyuYBGnpFBnS
+ d0IXBM1uOvt5oHLjzfWwr3Qp+vvKcDOrn6S+dh7s9Z3VzkFdGBKEngOO
+X-Gm-Gg: AZuq6aIQ0mGhUgtUx8CA3MsIQwnOwR+qWI1I5KENMPY3QbD3B0LHDk0wY178cSaMRAG
+ 9GNfd89qB+lQfhzBNulp6JYpY/oBrsomSJKMwMwG64cv6oExUUEOu55HyF90ziRbYhWzy42uuYB
+ RJlz0+1ag97ngVJx/KSLaVa6CaATBEfngnU0nEoVxsQanAZldfcc5+R8990zZ3dtdf0QJxAR7HX
+ pXM1b/RR5hQRr/t7VKKKpgw3G56izNZ42p+n7j+GVaPBHDi3axBmgyFZX9w4g5up1kfyxw5Jbf7
+ 1uE35uosetc8IKtQo8Z/WWpEwGT/BwS/6xCbYNp+qnz8txg6v0eRac8awMoXNMsZ0ulumOhHEKF
+ 0Zah/sKZR2fzgkoZ0UwNTZJ7QJ1Em1GzF9KDiofwTarL1iWVoFSFexuFQ0LI5xC1tQaGxbctWDJ
+ T2okUZbnVn4SKlw5N6N1YpinUdtLBuAljeQWCYmfhfUOsSDL+3Es1F1Q==
+X-Received: by 2002:a05:600c:a00f:b0:480:2521:4d92 with SMTP id
+ 5b1f17b1804b1-4805cf6365bmr83782395e9.24.1769449411109; 
+ Mon, 26 Jan 2026 09:43:31 -0800 (PST)
 Received: from thinkpad-t470s.. (93-143-71-105.adsl.net.t-com.hr.
  [93.143.71.105]) by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-435b1e71730sm34199603f8f.26.2026.01.26.09.43.32
+ ffacd0b85a97d-435b1e71730sm34199603f8f.26.2026.01.26.09.43.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Jan 2026 09:43:32 -0800 (PST)
+ Mon, 26 Jan 2026 09:43:30 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
  volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Ruslan_Ruslichenko@epam.com
-Subject: [PATCH 09/27] hw/core/fdt_generic_util: initilize qdev properties
- from fdt
-Date: Mon, 26 Jan 2026 18:42:55 +0100
-Message-ID: <20260126174313.1418150-10-ruslichenko.r@gmail.com>
+Subject: [PATCH 07/27] hw/core/fdt_generic_util: implement main fdt parse
+ routine
+Date: Mon, 26 Jan 2026 18:42:53 +0100
+Message-ID: <20260126174313.1418150-8-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
 References: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,339 +105,302 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-The patch adds possibility to read and parse device tree
-node properties and set them to newly created object.
+Implement main fdt_generic_create_machine() routine.
+
+As of now do the following:
+
+- parse each node and subnode in device tree
+- check node has correct compatible or device types
+- call fdt_init_qdev() which will eventually create
+  device object.
+
+The MIT license of fdt_generic_util.c preserved as in original
+file from https://github.com/Xilinx/qemu.git repo.
+
+The license for fdt_generic_util.h derived from matching
+fdt_generic_util.c file.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/fdt_generic_util.c | 282 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 282 insertions(+)
+ hw/core/fdt_generic_util.c         | 242 +++++++++++++++++++++++++++++
+ include/hw/core/fdt_generic_util.h |  19 +++
+ 2 files changed, 261 insertions(+)
+ create mode 100644 hw/core/fdt_generic_util.c
+ create mode 100644 include/hw/core/fdt_generic_util.h
 
 diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
-index 74310e9eb3..c1d6ed9105 100644
---- a/hw/core/fdt_generic_util.c
+new file mode 100644
+index 0000000000..4338dc956b
+--- /dev/null
 +++ b/hw/core/fdt_generic_util.c
-@@ -40,6 +40,7 @@
- #include "qemu/config-file.h"
- #include "hw/core/boards.h"
- #include "qemu/option.h"
-+#include "hw/core/qdev-properties.h"
- #include "hw/cpu/cluster.h"
- 
- #ifndef FDT_GENERIC_UTIL_ERR_DEBUG
-@@ -59,6 +60,8 @@
-     } \
- } while (0)
- 
-+#define PROP_ARRAY_LEN_PREFIX "len-"
+@@ -0,0 +1,242 @@
++// SPDX-License-Identifier: MIT
++/*
++ * Utility functions for fdt generic framework
++ *
++ * Copyright (c) 2009 Edgar E. Iglesias.
++ * Copyright (c) 2009 Michal Simek.
++ * Copyright (c) 2011 PetaLogix Qld Pty Ltd.
++ * Copyright (c) 2011 Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
 +
- /* FIXME: wrap direct calls into libfdt */
- 
- #include <libfdt.h>
-@@ -339,6 +342,25 @@ static Object *fdt_create_from_compat(const char *compat, char **dev_type)
-     return ret;
- }
- 
-+/*FIXME: roll into device tree functionality */
++#include "qemu/osdep.h"
++#include "hw/core/fdt_generic_util.h"
++#include "system/memory.h"
++#include "system/address-spaces.h"
++#include "hw/core/sysbus.h"
++#include "qapi/error.h"
++#include "qemu/error-report.h"
++#include "system/system.h"
++#include "system/reset.h"
++#include "qemu/cutils.h"
++#include "qemu/log.h"
++#include "qemu/config-file.h"
++#include "hw/core/boards.h"
++#include "qemu/option.h"
 +
-+static inline uint64_t get_int_be(const void *p, int len)
++#ifndef FDT_GENERIC_UTIL_ERR_DEBUG
++#define FDT_GENERIC_UTIL_ERR_DEBUG 3
++#endif
++#define DB_PRINT(lvl, ...) do { \
++    if (FDT_GENERIC_UTIL_ERR_DEBUG > (lvl)) { \
++        qemu_log_mask(LOG_FDT, ": %s: ", __func__); \
++        qemu_log_mask(LOG_FDT, ## __VA_ARGS__); \
++    } \
++} while (0)
++
++#define DB_PRINT_NP(lvl, ...) do { \
++    if (FDT_GENERIC_UTIL_ERR_DEBUG > (lvl)) { \
++        qemu_log_mask(LOG_FDT, "%s", node_path); \
++        DB_PRINT((lvl), ## __VA_ARGS__); \
++    } \
++} while (0)
++
++/* FIXME: wrap direct calls into libfdt */
++
++#include <libfdt.h>
++#include <stdlib.h>
++
++static int fdt_generic_num_cpus;
++
++static int simple_bus_fdt_init(char *bus_node_path, FDTMachineInfo *fdti);
++
++FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq)
 +{
-+    switch (len) {
-+    case 1:
-+        return *((uint8_t *)p);
-+    case 2:
-+        return be16_to_cpu(*((uint16_t *)p));
-+    case 4:
-+        return be32_to_cpu(*((uint32_t *)p));
-+    case 8:
-+        return be32_to_cpu(*((uint64_t *)p));
-+    default:
-+        fprintf(stderr, "unsupported integer length\n");
-+        abort();
-+    }
-+}
++    char node_path[DT_PATH_LENGTH];
++    FDTMachineInfo *fdti = fdt_init_new_fdti(fdt);
 +
- /*
-  * Error handler for device creation failure.
-  *
-@@ -368,10 +390,248 @@ static void fdt_dev_error(FDTMachineInfo *fdti, char *node_path, char *compat)
-     }
- }
- 
-+static void fdt_init_qdev_link_prop(Object *obj, ObjectProperty *p,
-+                                    FDTMachineInfo *fdti,
-+                                    const char *node_path,
-+                                    const QEMUDevtreeProp *prop)
-+{
-+    int len = prop->len;
-+    void *val = prop->value;
-+    const char *propname = prop->name;
++    fdti->irq_base = cpu_irq;
 +
-+    Object *linked_dev, *proxy;
-+    char target_node_path[DT_PATH_LENGTH];
-+    g_autofree char *propname_target = g_strconcat(propname, "-target", NULL);
-+    Error *errp = NULL;
-+
-+    if (qemu_devtree_get_node_by_phandle(fdti->fdt, target_node_path,
-+                                         get_int_be(val, len))) {
-+        abort();
-+    }
-+
-+    while (!fdt_init_has_opaque(fdti, target_node_path)) {
-+        fdt_init_yield(fdti);
-+    }
-+    linked_dev = fdt_init_get_opaque(fdti, target_node_path);
-+
-+    proxy = linked_dev ? object_property_get_link(linked_dev,
-+                                                  propname_target,
-+                                                  &errp) : NULL;
-+    if (!errp && proxy) {
-+        DB_PRINT_NP(0, "detected proxy object for %s connection\n", propname);
-+        linked_dev = proxy;
-+    }
-+
-+    if (!linked_dev) {
-+        return;
-+    }
-+
-+    errp = NULL;
-+    object_property_set_link(obj, propname, linked_dev, &errp);
-+    if (errp) {
-+        /* Unable to set the property, maybe it is a memory alias? */
-+        MemoryRegion *alias_mr;
-+        int offset = len / 2;
-+        int region = 0;
-+
-+        if (len > 4) {
-+            region = get_int_be(val + offset, len - offset);
++    /* parse the device tree */
++    if (!qemu_devtree_get_root_node(fdt, node_path)) {
++        memory_region_transaction_begin();
++        fdt_init_set_opaque(fdti, node_path, NULL);
++        simple_bus_fdt_init(node_path, fdti);
++        while (qemu_co_enter_next(fdti->cq, NULL)) {
++            ;
 +        }
-+
-+        alias_mr = sysbus_mmio_get_region(SYS_BUS_DEVICE(linked_dev), region);
-+
-+        object_property_set_link(obj, propname, OBJECT(alias_mr), &error_abort);
-+
++        memory_region_transaction_commit();
++    } else {
++        fprintf(stderr, "FDT: ERROR: cannot get root node from device tree %s\n"
++            , node_path);
 +    }
 +
-+    DB_PRINT_NP(0, "set link %s\n", propname);
++    /* FIXME: Populate these from DTS and create CPU clusters.  */
++    current_machine->smp.cores = fdt_generic_num_cpus;
++    current_machine->smp.cpus = fdt_generic_num_cpus;
++    current_machine->smp.max_cpus = fdt_generic_num_cpus;
++
++    DB_PRINT(0, "FDT: Device tree scan complete\n");
++    return fdti;
 +}
 +
-+static void fdt_init_qdev_scalar_prop(Object *obj, ObjectProperty *p,
-+                                      FDTMachineInfo *fdti,
-+                                      const char *node_path,
-+                                      const QEMUDevtreeProp *prop)
++struct FDTInitNodeArgs {
++    char *node_path;
++    char *parent_path;
++    FDTMachineInfo *fdti;
++};
++
++static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat);
++
++static int check_compat(const char *prefix, const char *compat,
++                        char *node_path, FDTMachineInfo *fdti)
 +{
-+    const char *propname = trim_vendor(prop->name);
-+    void *val = prop->value;
-+    int len = prop->len;
-+
-+    /* FIXME: handle generically using accessors and stuff */
-+    if (!strncmp(p->type, "link", 4)) {
-+        fdt_init_qdev_link_prop(obj, p, fdti, node_path, prop);
-+        return;
-+    }
-+
-+    if (!strcmp(p->type, "uint8") || !strcmp(p->type, "uint16") ||
-+        !strcmp(p->type, "uint32") || !strcmp(p->type, "uint64") ||
-+        !strcmp(p->type, "int8") || !strcmp(p->type, "int16") ||
-+        !strcmp(p->type, "int32") || !strcmp(p->type, "int64")) {
-+        object_property_set_int(obj, propname,
-+                                get_int_be(val, len), &error_abort);
-+        DB_PRINT_NP(0, "set property %s to 0x%llx\n", propname,
-+                    (unsigned long long)get_int_be(val, len));
-+        return;
-+    }
-+
-+    if (!strcmp(p->type, "boolean") || !strcmp(p->type, "bool")) {
-+        object_property_set_bool(obj, propname,
-+                                 !!get_int_be(val, len), &error_abort);
-+        DB_PRINT_NP(0, "set property %s to %s\n", propname,
-+                    get_int_be(val, len) ? "true" : "false");
-+        return;
-+    }
-+
-+    if (!strcmp(p->type, "string") || !strcmp(p->type, "str")) {
-+        object_property_set_str(obj, propname,
-+                                (const char *)val, &error_abort);
-+        DB_PRINT_NP(0, "set property %s to %s\n", propname, (const char *)val);
-+        return;
-+    }
-+
-+    DB_PRINT_NP(0, "WARNING: property is of unknown type\n");
++    char *compat_prefixed = g_strconcat(prefix, compat, NULL);
++    const int done = !fdt_init_compat(node_path, fdti, compat_prefixed);
++    g_free(compat_prefixed);
++    return done;
 +}
 +
-+static size_t fdt_array_elem_len(FDTMachineInfo *fdti,
-+                                 const char *node_path,
-+                                 const char *propname)
++static void fdt_init_node(void *args)
 +{
-+    g_autofree char *elem_cells_propname = NULL;
-+    Error *err = NULL;
-+    uint32_t elem_cells;
++    struct FDTInitNodeArgs *a = args;
++    char *node_path = a->node_path;
++    FDTMachineInfo *fdti = a->fdti;
++    g_free(a);
++
++    simple_bus_fdt_init(node_path, fdti);
++
++    const char *prop;
++    char *all_compats = NULL, *node_name;
++    char *device_type = NULL;
++    int prop_len;
++
++    DB_PRINT_NP(1, "enter\n");
++
++    /* try instance binding first */
++    node_name = qemu_devtree_get_node_name(fdti->fdt, node_path);
++    DB_PRINT_NP(1, "node with name: %s\n", node_name ? node_name : "(none)");
++    if (!node_name) {
++        printf("FDT: ERROR: nameless node: %s\n", node_path);
++    }
++    if (!fdt_init_inst_bind(node_path, fdti, node_name)) {
++        DB_PRINT_NP(0, "instance bind successful\n");
++        goto exit;
++    }
++
++    /* fallback to compatibility binding */
++    prop = qemu_fdt_getprop(fdti->fdt, node_path, "compatible",
++                            &prop_len, false, NULL);
++    all_compats = g_memdup2(prop, prop_len);
++    if (all_compats) {
++        char *compat = all_compats;
++        char * const end = &all_compats[prop_len - 1]; /* points to nul */
++
++        while (compat < end) {
++            if (check_compat("compatible:", compat, node_path, fdti)) {
++                goto exit;
++            }
++
++            if (!fdt_init_qdev(node_path, fdti, compat)) {
++                check_compat("postinit:", compat, node_path, fdti);
++                goto exit;
++            }
++
++            /* Scan forward to the end of the current compat. */
++            while (compat < end && *compat) {
++                ++compat;
++            }
++
++            /* Replace nul with space for the debug printf below. */
++            if (compat < end) {
++                *compat++ = ' ';
++            }
++        };
++    } else {
++        DB_PRINT_NP(0, "no compatibility found\n");
++    }
 +
 +    /*
-+     * Default element size to 1 uint32_t cell, unless it is explicitly
-+     * given in the same FDT node (not inherited).
++     * Try to create the device using device_type property
++     * Not every device tree node has compatible  property, so
++     * try with device_type.
 +     */
-+    elem_cells_propname = g_strconcat("#", propname, "-cells", NULL);
-+    elem_cells = qemu_fdt_getprop_cell(fdti->fdt, node_path,
-+                                       elem_cells_propname, 0, false, &err);
++    prop = qemu_fdt_getprop(fdti->fdt, node_path,
++                            "device_type", &prop_len, false, NULL);
++    device_type = g_memdup2(prop, prop_len);
++    if (device_type) {
++        if (check_compat("device_type:", device_type, node_path, fdti)) {
++            goto exit;
++        }
 +
-+    return (err ? 1 : elem_cells) * 4;
++        if (!fdt_init_qdev(node_path, fdti, device_type)) {
++            goto exit;
++        }
++    }
++
++    if (all_compats) {
++        DB_PRINT_NP(0, "FDT: Unsupported peripheral invalidated - "
++                    "compatibilities %s\n", all_compats);
++        qemu_fdt_setprop_string(fdti->fdt, node_path, "compatible",
++                                "invalidated");
++    }
++exit:
++
++    DB_PRINT_NP(1, "exit\n");
++
++    if (!fdt_init_has_opaque(fdti, node_path)) {
++        fdt_init_set_opaque(fdti, node_path, NULL);
++    }
++    g_free(node_path);
++    g_free(all_compats);
++    g_free(device_type);
++    return;
 +}
 +
-+static ObjectProperty *fdt_array_elem_prop(Object *obj,
-+                                           const char *propname, int k)
++static int simple_bus_fdt_init(char *node_path, FDTMachineInfo *fdti)
 +{
-+    g_autofree char *elem_name = g_strdup_printf("%s[%d]", propname, k);
++    int i;
++    int num_children = qemu_devtree_get_num_children(fdti->fdt, node_path,
++                                                        1);
++    char **children;
 +
-+    return object_property_find(obj, elem_name);
++    if (num_children == 0) {
++        return 0;
++    }
++    children = qemu_devtree_get_children(fdti->fdt, node_path, 1);
++
++    DB_PRINT_NP(num_children ? 0 : 1, "num child devices: %d\n", num_children);
++
++    for (i = 0; i < num_children; i++) {
++        struct FDTInitNodeArgs *init_args = g_malloc0(sizeof(*init_args));
++        init_args->node_path = children[i];
++        init_args->fdti = fdti;
++        qemu_coroutine_enter(qemu_coroutine_create(fdt_init_node, init_args));
++    }
++
++    g_free(children);
++    return 0;
 +}
 +
-+static char *fdt_array_elem_type(ObjectProperty *e)
++static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
 +{
-+    size_t n = strlen(e->type);
-+
-+    if (strncmp(e->type, "link", 4)) {
-+        return NULL;
-+    }
-+    if (n > 6) {
-+        return g_strndup(&e->type[5], (n - 6));
-+    }
-+
-+    return g_strdup(TYPE_OBJECT);
++    return 0;
 +}
 +
-+static ObjectProperty *fdt_array_link_elem_prop(Object *obj, ObjectProperty *e,
-+                                                const char *elem_link_type)
-+{
-+    /*
-+     * Starting QEMU 8.2.0, the array-scheme has changed to be a single
-+     * property of list.  See:
-+     *   https://mail.gnu.org/archive/html/qemu-devel/2023-09/msg01832.html
-+     *
-+     * Thus, fdt_init_qdev_array_prop() below will have to be changed
-+     * substantially.
-+     *
-+     * So for now, use a temporary hack to work around DEFINE_PROP_ARRAY() not
-+     * creating the proper elements of type "link" (see set_prop_arraylen()).
-+     */
-+    g_autofree char *elem_name = g_strdup(e->name);
-+    void *elem_ptr = object_field_prop_ptr(obj, e->opaque);
+diff --git a/include/hw/core/fdt_generic_util.h b/include/hw/core/fdt_generic_util.h
+new file mode 100644
+index 0000000000..e18c4f9c8b
+--- /dev/null
++++ b/include/hw/core/fdt_generic_util.h
+@@ -0,0 +1,19 @@
++// SPDX-License-Identifier: MIT
 +
-+    object_property_del(obj, elem_name);
-+    e = object_property_add_link(obj, elem_name,
-+                                 elem_link_type, elem_ptr,
-+                                 qdev_prop_allow_set_link_before_realize,
-+                                 OBJ_PROP_LINK_STRONG);
++#ifndef FDT_GENERIC_UTIL_H
++#define FDT_GENERIC_UTIL_H
 +
-+    return e;
-+}
++#include "qemu/help-texts.h"
++#include "fdt_generic.h"
++#include "system/memory.h"
++#include "qom/object.h"
 +
-+static void fdt_init_qdev_array_prop(Object *obj,
-+                                     FDTMachineInfo *fdti,
-+                                     const char *node_path,
-+                                     QEMUDevtreeProp *prop)
-+{
-+    const char *propname = trim_vendor(prop->name);
-+    int nr = prop->len;
-+    Error *local_err = NULL;
-+    char *len_name;
-+    uint32_t elem_len;
-+    g_autofree char *elem_link_type = NULL;
-+    ObjectProperty *e;
++/*
++ * create a fdt_generic machine. the top level cpu irqs are required for
++ * systems instantiating interrupt devices. The client is responsible for
++ * destroying the returned FDTMachineInfo (using fdt_init_destroy_fdti)
++ */
 +
-+    if (!prop->value || !nr) {
-+        return;
-+    }
++FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq);
 +
-+    elem_len = fdt_array_elem_len(fdti, node_path, propname);
-+    if (nr % elem_len) {
-+        return;
-+    }
-+
-+    nr /= elem_len;
-+
-+    /*
-+     * Fail gracefully on setting the 'len-' property, due to:
-+     * 1. The property does not exist, or
-+     * 2. The property is not integer type, or
-+     * 3. The property has been set, e.g., by the '-global' cmd option
-+     */
-+    len_name = g_strconcat(PROP_ARRAY_LEN_PREFIX, propname, NULL);
-+    object_property_set_int(obj, len_name, nr, &local_err);
-+    g_free(len_name);
-+
-+    if (local_err) {
-+        error_free(local_err);
-+        return;
-+    }
-+
-+    e = fdt_array_elem_prop(obj, propname, 0);
-+    if (!e) {
-+        return;
-+    }
-+
-+    elem_link_type = fdt_array_elem_type(e);
-+
-+    while (nr--) {
-+        QEMUDevtreeProp q;
-+
-+        e = fdt_array_elem_prop(obj, propname, nr);
-+        if (!e) {
-+            continue;
-+        }
-+
-+        q = (QEMUDevtreeProp){.name = e->name,
-+                              .value = prop->value + nr * elem_len,
-+                              .len = elem_len,
-+                             };
-+
-+        if (elem_link_type) {
-+            e = fdt_array_link_elem_prop(obj, e, elem_link_type);
-+            q.name = e->name;
-+            fdt_init_qdev_link_prop(obj, e, fdti, node_path, &q);
-+        } else {
-+            fdt_init_qdev_scalar_prop(obj, e, fdti, node_path, &q);
-+        }
-+    }
-+}
-+
- static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
- {
-     Object *dev, *parent;
-     char *dev_type = NULL;
-+    QEMUDevtreeProp *prop, *props;
-     char parent_node_path[DT_PATH_LENGTH];
- 
-     if (!compat) {
-@@ -459,6 +719,28 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
-     }
-     fdt_init_set_opaque(fdti, node_path, dev);
- 
-+    props = qemu_devtree_get_props(fdti->fdt, node_path);
-+    for (prop = props; prop->name; prop++) {
-+        const char *propname = trim_vendor(prop->name);
-+        ObjectProperty *p = NULL;
-+
-+        p = object_property_find(OBJECT(dev), propname);
-+        if (p) {
-+            DB_PRINT_NP(1, "matched property: %s of type %s, len %d\n",
-+                                            propname, p->type, prop->len);
-+        }
-+        if (!p) {
-+            fdt_init_qdev_array_prop(dev, fdti, node_path, prop);
-+            continue;
-+        }
-+
-+        if (!strcmp(propname, "type")) {
-+            continue;
-+        }
-+
-+        fdt_init_qdev_scalar_prop(OBJECT(dev), p, fdti, node_path, prop);
-+    }
-+
-     g_free(dev_type);
- 
-     return 0;
++#endif /* FDT_GENERIC_UTIL_H */
 -- 
 2.43.0
 

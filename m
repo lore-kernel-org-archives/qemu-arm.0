@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 213DCC88E5A
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 07:32:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57762C88E58
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 07:33:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkH27-0006Ad-EX; Mon, 26 Jan 2026 02:29:11 -0500
+	id 1vkGt7-0004tx-ED; Mon, 26 Jan 2026 02:19:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1vkGgQ-0003QW-Oi
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:06:59 -0500
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ id 1vkGfT-0002yA-9Y
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:05:58 -0500
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1vkGgL-0004lc-2n
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:06:44 -0500
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-81f4c0e2b42so2062919b3a.1
- for <qemu-arm@nongnu.org>; Sun, 25 Jan 2026 23:06:31 -0800 (PST)
+ id 1vkGez-000493-3q
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:05:22 -0500
+Received: by mail-pf1-x430.google.com with SMTP id
+ d2e1a72fcca58-81df6a302b1so3741732b3a.2
+ for <qemu-arm@nongnu.org>; Sun, 25 Jan 2026 23:05:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1769411191; x=1770015991; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1769411101; x=1770015901; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Oj8vRqVMDeN0JON25L/5cGpcqDkG3XOVfGvUsHWl4zU=;
- b=CaxY4BqOdyyH2UYsMdjAIDJ8U/9VZ7tAIvtbOSIBM1uNDCgHZxig9AHy1jwtf7jUwc
- HbBz7MQDFe9+bYMxd2pZ69wmPU9vCTJUx1uRO6Xkv3L7F5qAUfvHFto7vWIyEqz8/Cal
- KAcagYEaC0jcyxQDRac3o7yIVMCL2G7AoFQoXj8eN54Ii1N5DCA17gQx00VFqVK16BTw
- rM8gqQu7GNcCWuVfGsX71Tre4K9K0OveehxkMh7XTyf3JigVA7ZLrk7TN2jWEqaG/6pW
- /1zYknLhBessgi2+7xovFI+bXPeQVOTTQm22ZKRva4TPYtHfghW4TDVPh8XiPPF0BT7Q
- LCeA==
+ bh=4YcIv62PuJ+rNK7vCkPRmKZd5P+oXUEOIgAG8NgaOBE=;
+ b=AOAx87vQwxG3F65N5aYEwbKLJe5Jjkjrf+TzaLhUXDIjdQvj0dTb9O2kcqBjZ2Tt7N
+ LPmWNXQn677XHOYjfPrY/FZtaZrkjJ3v89yiIfr54v86hxtrloYoltOowfLWdn+fh4ZB
+ p/NY8vz+b39tyRg8MYUQeZObgunCYm646dC1a3B85Cl6mNzyTqqnyuwQ8ltvkyBonKV2
+ 9ZnUOva65QOSOGcNRavOjXzshmRdbuDSVxmqTzHoN/VuVQiZoYSWxYmkEtYUd31qC3Az
+ zhcrawGlTp2yjaBk6R3zNWx+JvEJmhqSYq7Gd1t8D0rkfeDzrCKV68Tm+vHNQmKtAhwM
+ 86KQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769411191; x=1770015991;
+ d=1e100.net; s=20230601; t=1769411101; x=1770015901;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Oj8vRqVMDeN0JON25L/5cGpcqDkG3XOVfGvUsHWl4zU=;
- b=MktNrKztLDl/9JnfalDLFm/6uiV1ZChZwG6rRq8dp5H73zQd4g1F3ct8hYZj7CpsXR
- Cucv65b2azIKIQ1IcqDtQ1X6aRhRf7AROUmLpUpwcrPz/jA52wjb0RxG6vnPGL/KppDE
- dy8BwJmVZ+lJynZ8KY9auNdwGVA6LCNYbXYSGnTwGOfmwXZNQhnHa5dIAr4QJE0I9kOD
- 6Gp+Zwk1UqqIrA+v6TLWu94RIJHkNAgEeXNaqUPPMkZHY6CTL3ELb6MwQTs8U/hPlKI+
- vUy9acnygFOh9XSyHpUWeh72gyzjHcbP8fy7nxLrKRCP1jthbdwJYZ0PU+OncEv7Bx2Y
- aWDw==
+ bh=4YcIv62PuJ+rNK7vCkPRmKZd5P+oXUEOIgAG8NgaOBE=;
+ b=Glu8QYxQGCAL2cwTzfI5jEOm4GhAFifrRG5iu6X3rBtET5TYFLMN17iUXLspY++TCO
+ EiaRkTcE5rXl+UG5MQxEJOtmy13aT9En5gaUJtYwXhzMq4FPHcYDBmaWcbsMQkILXM/A
+ +eFGsyQvLbKJiVS2LxR2bMTBsEbgFXDzQqfYTF1aNZAHDDB5iymMmfycg+XQ8i6i+CSp
+ cEwzcF5ve/ef8RwxDbDDSKeq0QKjIOExVcQKnvTN+ZYx9sDzoLJzwGyTx6TE2OFsvUFh
+ ucOKeIKJm/T+P0ZpSca4FOczour4Tq9xRcJfjpMmF/2i+ngloryi8MnTjGMXMz/cNG5x
+ UH/A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWwkUpsSgFCB3KVbAZaKJIuQF7va1htnwrFpUz2iQROren/5qxBvyylJq1H4dkbzeacoUoeJZGuiQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxFyiEvEwqdHVwW7hbv+aHrBaXp8RdGo0RBWX90SXMDeu9l7nx7
- 9I4+TPPveSKUOzAcnZXxoVXmfe+Q7UBFmo8Oe62WhRoXLhjdpOYcf6pq
-X-Gm-Gg: AZuq6aJxvJYtLHJbhL5LtJb7xueIjAu122kUHi0cqaxLed8Vj7B7SEuosVLNJGdxKBB
- V3YpcmahpR/VECWrFyhUsvYaPUoUMeVo2ntrKe+x65/afGB9/jnmcmVD5DmrIeef9FJgSGE4xyq
- Z/wkhg7j10d60dXlGG7Of8Ic37ijXp2/HBCxcSxDJ9hi4PiL2YwPSgPUhnRH2DBiP/tbKotL2RI
- DOX642TNSqz2ZThFHCWIZ82XMQTevBlntopaxmcOj9Vh2swtfbr/tuTZaVJZKP9wHVJAZyAtR0R
- z2fe8qI2Hj88bqZhEwuMUxWyWTwm5tEP85H1KAjJCGKJDNWAfF5zdYy2UF8D1FcnWp7wNCa1WKu
- K2+prnIWyXId3B4R7DSZnL34s3VS/Qt2l4U0IgdnhguCIpBiVEyKQm19Vdtvjub5MDK/63K/kPq
- 6AW3noExCliPbbaTi1BTi/Hk/m07A+BFAhkoPgs4tq2A==
-X-Received: by 2002:a05:6a00:2e27:b0:81c:717b:9d29 with SMTP id
- d2e1a72fcca58-823412bc9dbmr3045269b3a.51.1769411191033; 
- Sun, 25 Jan 2026 23:06:31 -0800 (PST)
+ AJvYcCVjT3PZ8HwkI8ZZVKd3CqLizdcgzTPsIn6hxJI3adBpvm2hhEInz+W1hNxrlXZGnDbigfDYE/KVWQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzJUo3NW2yekEVJDFDYWpw1ixPooOHwzMeQJmYn/z01UobHGjyv
+ NGP+QcWgekUjgWM1U5IPlHO0IQ5dZcyCszcZ5IyE5iud2pHh2HWGqYrU
+X-Gm-Gg: AZuq6aLIzoL7hIkj/nsF6pgNNHgS7GnpvjyNne6oz2uhefEm45VSAtR1kX6m0bmX9G7
+ TFLQwWFfuDKMxfhyfso05m4HLlCRHt020J/7AMtWmCmKRhM7Ek3B6aU7yfV0PBPRkZxcff6tfuq
+ UWFGqscnHgk4pct0qpXSvE79Nx1dp6PymWGfXYk0Fb5YDhIF29fUZJ8r6epPdJJK3gVenjN+IWF
+ 1m56X2m4jazbAGXokPC8QoPYVKC/CeVMXTbjzNlYZFAPhQj5gEZ9z67qZjxaN0pGzNBH2UZOyh4
+ HwGvNYSxVdorCIWMtfJeZzrKGO6NldlfPcfD2zLAUN2lczwdTB5PZkKUesFYNgbGP26LS67ZcFV
+ JxeYshNtn8FdllLSxVqk/wXhT3CDCUkXqPbl5DC7wq3emGwW0ko7ZM2Ji6Gj2y4JQJsJ9oLvcGC
+ ZGlktDipa3az/UOaikg3hmYVo/tM7iu7fKz7Q4CtyxnQ==
+X-Received: by 2002:a05:6a21:6010:b0:350:7238:7e2b with SMTP id
+ adf61e73a8af0-38e9f0f5ae1mr3253988637.16.1769411101165; 
+ Sun, 25 Jan 2026 23:05:01 -0800 (PST)
 Received: from brahms.. (fp93c00990.tkyc601.ap.nuro.jp. [147.192.9.144])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-823187716ebsm8661487b3a.66.2026.01.25.23.06.26
+ d2e1a72fcca58-823187716ebsm8661487b3a.66.2026.01.25.23.04.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 25 Jan 2026 23:06:30 -0800 (PST)
+ Sun, 25 Jan 2026 23:05:00 -0800 (PST)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -81,17 +81,16 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-arm@nongnu.org,
  qemu-riscv@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 32/33] scripts: Add a script to run the wasm-compiled QEMU
- on node.js
-Date: Mon, 26 Jan 2026 07:03:45 +0000
-Message-ID: <2af460d17a47ec69d691dfb876f834e4685f9d6d.1769407033.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH v4 12/33] tcg/wasm64: Add ext instructions
+Date: Mon, 26 Jan 2026 07:03:25 +0000
+Message-ID: <8e5d0a2fc176b1f0a11e92bef8c3d6e80ce76268.1769407033.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1769407033.git.ktokunaga.mail@gmail.com>
 References: <cover.1769407033.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=ktokunaga.mail@gmail.com; helo=mail-pf1-x433.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
+ envelope-from=ktokunaga.mail@gmail.com; helo=mail-pf1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,94 +113,125 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-run-emscripten.mjs is a Node.js script to quickly test the Wasm-compiled
-QEMU. This runs directly from the terminal using the node command so the
-HTTP server or the browser isn't needed.
-
-Node.js 24 or newer is needed to run wasm64 binaries. Also note that QEMU's
-"quit" monitor command doesn't work as of now because of the Emscripten's
-atexit issue [1]. Send SIGINT or SIGTERM to the node process to exit QEMU.
-
-[1] https://github.com/emscripten-core/emscripten/issues/26040
+The ext operations are implemented using the corresponding instructions in
+Wasm. TCI instructions are also generated in the same way as the original
+TCI backend.
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- scripts/run-emscripten.mjs | 66 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 66 insertions(+)
- create mode 100644 scripts/run-emscripten.mjs
+ tcg/wasm64/tcg-target-has.h |  1 +
+ tcg/wasm64/tcg-target.c.inc | 79 +++++++++++++++++++++++++++++++++++++
+ 2 files changed, 80 insertions(+)
 
-diff --git a/scripts/run-emscripten.mjs b/scripts/run-emscripten.mjs
-new file mode 100644
-index 0000000000..330e31cfe3
---- /dev/null
-+++ b/scripts/run-emscripten.mjs
-@@ -0,0 +1,66 @@
-+#!/usr/bin/env node
-+
-+import path from 'node:path';
-+import { parseArgs } from "node:util";
-+
-+function help() {
-+  console.log(`Usage: run-emscripten.mjs [--preload FILE] [script.js] -- [arguments]
-+
-+Options:
-+  --preload FILE: Load the package created by Emscripten's file_packager.py`);
+diff --git a/tcg/wasm64/tcg-target-has.h b/tcg/wasm64/tcg-target-has.h
+index cfb85388de..a29ceb2ea5 100644
+--- a/tcg/wasm64/tcg-target-has.h
++++ b/tcg/wasm64/tcg-target-has.h
+@@ -3,6 +3,7 @@
+ #define TCG_TARGET_HAS_H
+ 
+ #define TCG_TARGET_HAS_tst 0
++#define TCG_TARGET_HAS_extr_i64_i32 0
+ 
+ #define TCG_TARGET_extract_valid(type, ofs, len) 0
+ #define TCG_TARGET_sextract_valid(type, ofs, len) \
+diff --git a/tcg/wasm64/tcg-target.c.inc b/tcg/wasm64/tcg-target.c.inc
+index f308cc68f2..4131595fce 100644
+--- a/tcg/wasm64/tcg-target.c.inc
++++ b/tcg/wasm64/tcg-target.c.inc
+@@ -434,6 +434,22 @@ static void tcg_wasm_out_sextract(TCGContext *s, TCGReg dest, TCGReg arg1,
+     tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(dest));
+ }
+ 
++static void tcg_wasm_out_extract(TCGContext *s, TCGReg dest, TCGReg arg1,
++                                 int pos, int len)
++{
++    int64_t mask = ~0ULL >> (64 - len);
++    tcg_wasm_out_op_idx(s, OPC_GLOBAL_GET, REG_IDX(arg1));
++    if (pos > 0) {
++        tcg_wasm_out_op_const(s, OPC_I64_CONST, pos);
++        tcg_wasm_out_op(s, OPC_I64_SHR_U);
++    }
++    if ((pos + len) < 64) {
++        tcg_wasm_out_op_const(s, OPC_I64_CONST, mask);
++        tcg_wasm_out_op(s, OPC_I64_AND);
++    }
++    tcg_wasm_out_op_idx(s, OPC_GLOBAL_SET, REG_IDX(dest));
 +}
 +
-+const { values, positionals } = parseArgs({
-+  allowPositionals: true,
-+  options: {
-+    'preload': { type: 'string' },
-+    'help': { type: 'boolean' },
-+  },
-+})
-+if (values.help) {
-+  help();
-+  process.exit(0);
-+}
-+const preload = values.preload;
-+const moduleFile = positionals[0];
-+const moduleArgs = positionals.slice(1);
-+if ((!moduleFile) || (!moduleFile.match(/.*\.m?js$/))) {
-+  console.error("module JS file must be specified as the first argument");
-+  help();
-+  process.exit(1);
+ /*
+  * The size of the offset field of Wasm's load/store instruction differs
+  * depending on the "-sMEMORY64" flag value: 64bit when "-sMEMORY64=1"
+@@ -991,6 +1007,69 @@ static inline bool tcg_out_sti(TCGContext *s, TCGType type, TCGArg val,
+     return false;
+ }
+ 
++static void tcg_out_ext8s(TCGContext *s, TCGType type, TCGReg rd, TCGReg rs)
++{
++    tcg_out_sextract(s, type, rd, rs, 0, 8);
++    tcg_wasm_out_sextract(s, rd, rs, 0, 8);
 +}
 +
-+const targetModule = await import(path.resolve(moduleFile));
-+let preloadModule;
-+if (preload) preloadModule = await import(path.resolve(preload));
++static void tcg_out_ext8u(TCGContext *s, TCGReg rd, TCGReg rs)
++{
++    tcg_out_op_rrbb(s, INDEX_op_extract, rd, rs, 0, 8);
++    tcg_wasm_out_extract(s, rd, rs, 0, 8);
++}
 +
-+var Module = {
-+  preRun: [],
-+  arguments: moduleArgs,
-+  mainScriptUrlOrBlob: path.resolve(moduleFile),
++static void tcg_out_ext16s(TCGContext *s, TCGType type, TCGReg rd, TCGReg rs)
++{
++    tcg_out_sextract(s, type, rd, rs, 0, 16);
++    tcg_wasm_out_sextract(s, rd, rs, 0, 16);
++}
++
++static void tcg_out_ext16u(TCGContext *s, TCGReg rd, TCGReg rs)
++{
++    tcg_out_op_rrbb(s, INDEX_op_extract, rd, rs, 0, 16);
++    tcg_wasm_out_extract(s, rd, rs, 0, 16);
++}
++
++static void tcg_out_ext32s(TCGContext *s, TCGReg rd, TCGReg rs)
++{
++    tcg_out_sextract(s, TCG_TYPE_I64, rd, rs, 0, 32);
++    tcg_wasm_out_sextract(s, rd, rs, 0, 32);
++}
++
++static void tcg_out_ext32u(TCGContext *s, TCGReg rd, TCGReg rs)
++{
++    tcg_out_op_rrbb(s, INDEX_op_extract, rd, rs, 0, 32);
++    tcg_wasm_out_extract(s, rd, rs, 0, 32);
++}
++
++static void tcg_out_exts_i32_i64(TCGContext *s, TCGReg rd, TCGReg rs)
++{
++    tcg_out_ext32s(s, rd, rs);
++}
++
++static void tcg_out_extu_i32_i64(TCGContext *s, TCGReg rd, TCGReg rs)
++{
++    tcg_out_ext32u(s, rd, rs);
++}
++
++static void tcg_out_extrl_i64_i32(TCGContext *s, TCGReg rd, TCGReg rs)
++{
++    tcg_out_op_rr(s, INDEX_op_mov, rd, rs);
++    tcg_wasm_out_extract(s, rd, rs, 0, 32);
++}
++
++static void tgen_extrh_i64_i32(TCGContext *s, TCGType t, TCGReg a0, TCGReg a1)
++{
++    tcg_out_op_rrbb(s, INDEX_op_extract, a0, a1, 32, 32);
++    tcg_wasm_out_extract(s, a0, a1, 32, 32);
++}
++
++static const TCGOutOpUnary outop_extrh_i64_i32 = {
++    .base.static_constraint = C_O1_I1(r, r),
++    .out_rr = tgen_extrh_i64_i32,
 +};
-+Module["preRun"].push((Module) => {
-+  const decoder = new TextDecoder('utf-8');
-+  Module.TTY.default_tty_ops.put_char = (tty, val) => {
-+    process.stdout.write(decoder.decode(new Uint8Array([val])));
-+  }
-+  Module.TTY.default_tty1_ops.put_char = (tty, val) => {
-+    process.stderr.write(decoder.decode(new Uint8Array([val])));
-+  }
-+});
-+if (preloadModule) preloadModule.default(Module);
 +
-+if (process.stdin.isTTY) {
-+  process.stdin.setRawMode(true);
-+}
-+function restoreTTY() {
-+  if (process.stdin.isTTY) {
-+    process.stdin.setRawMode(false);
-+  }
-+  process.exit(0);
-+}
-+process.on('exit', restoreTTY);
-+process.on('SIGINT', restoreTTY);
-+process.on('SIGTERM', restoreTTY);
-+
-+await targetModule.default(Module);
+ static void tcg_out_tb_start(TCGContext *s)
+ {
+     init_sub_buf();
 -- 
 2.43.0
 

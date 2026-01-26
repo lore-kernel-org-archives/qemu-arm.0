@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3AA0C88E57
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 07:13:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55F5EC88E5A
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 07:13:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkGmS-0005mz-TU; Mon, 26 Jan 2026 02:13:01 -0500
+	id 1vkGmX-0005xV-UD; Mon, 26 Jan 2026 02:13:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1vkGeM-0002kv-RK
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:05:05 -0500
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+ id 1vkGeD-0002js-Io
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:05:04 -0500
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1vkGeL-00046g-3X
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:04:38 -0500
-Received: by mail-pf1-x432.google.com with SMTP id
- d2e1a72fcca58-8220bd582ddso2075333b3a.2
- for <qemu-arm@nongnu.org>; Sun, 25 Jan 2026 23:04:35 -0800 (PST)
+ id 1vkGe6-00043z-PT
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:04:26 -0500
+Received: by mail-pf1-x433.google.com with SMTP id
+ d2e1a72fcca58-81dab89f286so2054250b3a.2
+ for <qemu-arm@nongnu.org>; Sun, 25 Jan 2026 23:04:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1769411075; x=1770015875; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1769411052; x=1770015852; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=V2iLebfIJhQmyKZPxD/7vvE0TY7hMO11zANvgz7Zbqg=;
- b=JmemzOPjEZKlW/JDaC+SjnSpSwwma4vfo0PrAuStAPCAO6trB2l8Gh3NzZuvqnp7MK
- aBCtEHSLQaUSUQ4lCYn52pnv9GWRKrKKOJL2I1uZYgUAGpIzaONppek7ukUn7jvWEz+4
- ao5O1jZYxlRDD7Vw78qRmmlkmbW4qF8blwpPZlhogI+gGJswfKFqYsn/H3JvLKPFD8E6
- mO44JKWSpEpDIYTSG7d0IPZQhKtsUxWx/IKuftr/VuID/cjOVK72hCKoJ5WDinn1LcNt
- bZrS/KqIKmNXrjTKniJ42m0kgHsZM6xwwd7Kzaq0rUDn6QnLb9LDx8Awij5J4NuMSRRk
- gPgg==
+ bh=T2xUEoYpnLX+y7kFhG9JXWkUeGWlapfsje21sWW5Bcs=;
+ b=bRzN3zRfCqYHxLRYzZXXwDivnHVZquUwbJqLtqyDhJtZidE2+6byVatS6BX0X8nVHp
+ 6RMLjAXw14g/CqM05/iUABa3xfYwkHxhIlPFYGC/hB5y85hpB1NEkU9OCbG0hzEjIlKZ
+ OacGPsMVi24SX8U3c99FWYeFubyr2XGNqHHPWnPL4Jlh1j9Y6QKmwtSSXahXbx/w1cI6
+ WGYDl1vAQHJLPhau6i8okQxpKpEqAyjjxS14T9l++UV+ii+lrPy2mZR+nw4QpsC5aK7l
+ u44ZC0DxiAW49pZ+25IV4Z9rVLMfzoeliNxDWQEFiAK/RCUqprh9CX0YzjxhPm9M4Q+P
+ 9adg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769411075; x=1770015875;
+ d=1e100.net; s=20230601; t=1769411052; x=1770015852;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=V2iLebfIJhQmyKZPxD/7vvE0TY7hMO11zANvgz7Zbqg=;
- b=tvgTYAULKmcUPYhohwMGMhdsa8Qakgkvvxcnkcrze7E8OQAOE93Pdl3dsIbV4V6OBa
- SylpQkIz9TWunZF09pOAv0Mel2cgEfD9j3jRkV2udeZ5LxJLrl29NLjm4ngaRb6xZNmj
- ivmdaCUIkayP2+zu9uTeiv5ySK3TCrsYyTcmK9RWs5eJcHFom3uezrSmnZ5avqtdqKOP
- 0vJlaYOBuKxlnI/vInXpxvD0RpdYDSG6wxQF3pjYSeqEvzA0nQ2WfgGDupZn/ivI6KGE
- KbjxK+JzPFuon5MTMJw5vg2qWPQBrKCNrPF6u3OQ+xdxL7RZRatY9+hS3trzjFdHxslM
- CBcQ==
+ bh=T2xUEoYpnLX+y7kFhG9JXWkUeGWlapfsje21sWW5Bcs=;
+ b=FVsgebPVh6xPt4GLA1xg6ejTThjHqT9tKbt2jt/ex+OabLf9g7mhI4cvlNZJSnbDce
+ 8xpeoA5e25pejAwCt7lh1Ci5NuDIvQjkFyrI67KOGHjB+2cuL/+nkHGQbfupZFU7w5BZ
+ iqrWGyI03XZrf+SwoxJp8n6e5YH5ZT6S04Ox9TJGsnlg3v0ShiNsE7lma2KnnyNpkPJc
+ 6yyw8pIJewH4AMfCThbj42sCz9QWKWrfFkvvxDy94kOvUJBD1VD+a7UBHffBJfRRO2ZX
+ ATe5m0ZCizyB2DUZnuNyoPWBcG3YcP4fAhL3YisO249YP6vieE37RnmWn33VLQX7F1GY
+ ceXg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWk+l0FBqeMv9Jr7hBr3MeeTuSylmFOo8uKv7YPjmdU74LMB6jVmFx0gpLUYI55Ai04lrx1XjEDAA==@nongnu.org
-X-Gm-Message-State: AOJu0YyKkuVFrTP3KT+WyXAHfxteVp+Lak6CdPW/+3QkPdxvxCJeygdh
- Lmok0yh9gOD0IyL3pdheEYP0XE66oy9avVr/KP/lSEHPc1vMGI9do5kl
-X-Gm-Gg: AZuq6aIvt5574xpukjp4obhdD9fV2MWyxenNWkkOsu0ni97u7zpulkBPfpX0q7MDV29
- Z+h8QyoBNhQ1PwFQw4QEYPFvz+/iO6RjbYolJrtcB7OJ+e6tDByw9WtZ8VfK1O7XOQDoSpv/J5/
- NU7RBhHaSaHrBIAe2vDQtsQX4WBn6aj+LZ/Pw/rmQ9jMhXdMMxVbrCD7d8MdCt35Sta6ic/qVRg
- 2R+DwHiealL6CZfnJR5HQq0KJSoguw9Nrtj5NifcFLUcQc8yjL7LkDjE49lWOliHbIeCbl2AWPG
- jJTQ7cPWypmdLx/VmlnoSRgcY5r6bF0Wy8qDQ/jcMxSWNpO7WJBSoKKxQR8492JUHbG+7jEMemB
- pIcwN581Jiuy5JoY6HJvMfZAHD6vrbAQKGWGwxWzOpubG/2s0XUOqFv6qrjr10jwtnx3/2yGxba
- 0S3CmKabPaH/nCyC+YMP+1Unz66JBcVBgG3Vowib/TiA==
-X-Received: by 2002:a05:6a00:1813:b0:81f:3cd5:2069 with SMTP id
- d2e1a72fcca58-8234119f8edmr3207365b3a.4.1769411074579; 
- Sun, 25 Jan 2026 23:04:34 -0800 (PST)
+ AJvYcCVZ73qKyErDl9CH/8Le6ubWxFtZHe6Du5237Kx+ZHVpSC8kP2PG7ajg0+vEnA+2ESHzbkBPOEs9GA==@nongnu.org
+X-Gm-Message-State: AOJu0YywJp/KxoIsvKfrASq2Zy0OXb0CZLDboG4sKHneSRwhn1etOpNP
+ CBUwHRDSuzLIwLgeo7knWX6e3icuH/PARoFpH1ZJ3QFmbgZRPN9CyGWY
+X-Gm-Gg: AZuq6aLJpCS0M28BZE/nToFkQHrXDnK9BgL2IRyhGywxNhhlu0yjA21A2hiIyrjXtLi
+ Q2C3as5KLzc0ZIHr+GwQgbxCWPEAAPchdU9XOSvMW3JEpCU2+pmMb+WhkXaM2BWfSOR/5/1apUh
+ 1w7KFJ2J4O0M4jXEcWA9fpsZrqdbOZu2rIgnMZX0MwiZTv1iYbHbZq+TWgWDezjP9KIh9y5ymyr
+ uFZOha++Kp83i3aQerVRc6rmyux6C8WM3VxJATq9Q6BD3dj6O2QDXjCVj7I7PVn/mZgofmwCKUH
+ BHbaX7gyv/Lxpcxou9lkKBABP2tAjQdBabdXi3ec92qQT6/ZmD6MFed0iTRVqzLag+t7rjGOimj
+ A05Uq7GjBqWLa1LoHJRiOyCWqv/B1YJzA+bQSstjuE7YoLORPNQNc7wJdt9OH85GtnK/48ighGo
+ 4A1wlIrQe/YFCJUM36YQdyrvxRG+gu9T9FP09w5qiGGw==
+X-Received: by 2002:a05:6a00:12e2:b0:81e:8e66:38d8 with SMTP id
+ d2e1a72fcca58-823411dbc89mr3190318b3a.10.1769411052479; 
+ Sun, 25 Jan 2026 23:04:12 -0800 (PST)
 Received: from brahms.. (fp93c00990.tkyc601.ap.nuro.jp. [147.192.9.144])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-823187716ebsm8661487b3a.66.2026.01.25.23.04.30
+ d2e1a72fcca58-823187716ebsm8661487b3a.66.2026.01.25.23.04.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 25 Jan 2026 23:04:34 -0800 (PST)
+ Sun, 25 Jan 2026 23:04:12 -0800 (PST)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -81,23 +81,23 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-arm@nongnu.org,
  qemu-riscv@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 06/33] tcg/wasm64: Add add/sub/mul instructions
-Date: Mon, 26 Jan 2026 07:03:19 +0000
-Message-ID: <96df2d2b5ca095dfbc280ee73bf8f82f5ae4c770.1769407033.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH v4 01/33] tcg/wasm64: Add tcg-target.h
+Date: Mon, 26 Jan 2026 07:03:14 +0000
+Message-ID: <1061c734ff63e09ea0544ebecf09abfd6fc25b11.1769407033.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1769407033.git.ktokunaga.mail@gmail.com>
 References: <cover.1769407033.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=ktokunaga.mail@gmail.com; helo=mail-pf1-x432.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=ktokunaga.mail@gmail.com; helo=mail-pf1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,96 +113,103 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The add, sub and mul operations are implemented using the corresponding
-instructions in Wasm. TCI instructions are also generated in the same way as
-the original TCI backend.
+Since WebAssembly instructions vary in size and can include single-byte
+instructions, TCG_TARGET_INSN_UNIT_SIZE is set to 1.
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- tcg/wasm64.c                | 12 ++++++++++++
- tcg/wasm64/tcg-target.c.inc | 39 +++++++++++++++++++++++++++++++++++++
- 2 files changed, 51 insertions(+)
+ MAINTAINERS             |  5 ++++
+ tcg/wasm64/tcg-target.h | 61 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 66 insertions(+)
+ create mode 100644 tcg/wasm64/tcg-target.h
 
-diff --git a/tcg/wasm64.c b/tcg/wasm64.c
-index 9f3b1344d6..ba8a89d920 100644
---- a/tcg/wasm64.c
-+++ b/tcg/wasm64.c
-@@ -59,6 +59,18 @@ static uintptr_t tcg_qemu_tb_exec_tci(CPUArchState *env, const void *v_tb_ptr)
-             tci_args_rrr(insn, &r0, &r1, &r2);
-             regs[r0] = regs[r1] ^ regs[r2];
-             break;
-+        case INDEX_op_add:
-+            tci_args_rrr(insn, &r0, &r1, &r2);
-+            regs[r0] = regs[r1] + regs[r2];
-+            break;
-+        case INDEX_op_sub:
-+            tci_args_rrr(insn, &r0, &r1, &r2);
-+            regs[r0] = regs[r1] - regs[r2];
-+            break;
-+        case INDEX_op_mul:
-+            tci_args_rrr(insn, &r0, &r1, &r2);
-+            regs[r0] = regs[r1] * regs[r2];
-+            break;
-         default:
-             g_assert_not_reached();
-         }
-diff --git a/tcg/wasm64/tcg-target.c.inc b/tcg/wasm64/tcg-target.c.inc
-index a1757b4db7..d5cf324e7b 100644
---- a/tcg/wasm64/tcg-target.c.inc
-+++ b/tcg/wasm64/tcg-target.c.inc
-@@ -140,6 +140,9 @@ typedef enum {
-     OPC_GLOBAL_GET = 0x23,
-     OPC_GLOBAL_SET = 0x24,
+V4:
+- Removed tcg-target-reg-bits.h as the 32bit support has been removed and
+  TCG_TARGET_REG_BITS is no longer needed.
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index c1e586c58f..470b15eeb7 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -4107,6 +4107,11 @@ F: tcg/tci/
+ F: tcg/tci.c
+ F: disas/tci.c
  
-+    OPC_I64_ADD = 0x7c,
-+    OPC_I64_SUB = 0x7d,
-+    OPC_I64_MUL = 0x7e,
-     OPC_I64_AND = 0x83,
-     OPC_I64_OR = 0x84,
-     OPC_I64_XOR = 0x85,
-@@ -265,6 +268,42 @@ static const TCGOutOpBinary outop_xor = {
-     .out_rrr = tgen_xor,
- };
- 
-+static void tgen_add(TCGContext *s, TCGType type,
-+                     TCGReg a0, TCGReg a1, TCGReg a2)
-+{
-+    tcg_out_op_rrr(s, INDEX_op_add, a0, a1, a2);
-+    tcg_wasm_out_o1_i2(s, OPC_I64_ADD, a0, a1, a2);
-+}
++WebAssembly TCG target
++M: Kohei Tokunaga <ktokunaga.mail@gmail.com>
++S: Maintained
++F: tcg/wasm64/
 +
-+static const TCGOutOpBinary outop_add = {
-+    .base.static_constraint = C_O1_I2(r, r, r),
-+    .out_rrr = tgen_add,
-+};
+ Block drivers
+ -------------
+ VMDK
+diff --git a/tcg/wasm64/tcg-target.h b/tcg/wasm64/tcg-target.h
+new file mode 100644
+index 0000000000..f00761d19f
+--- /dev/null
++++ b/tcg/wasm64/tcg-target.h
+@@ -0,0 +1,61 @@
++/* SPDX-License-Identifier: MIT */
++/*
++ * Tiny Code Generator for QEMU
++ *
++ * Based on tci/tcg-target.h
++ *
++ * Copyright (c) 2009, 2011 Stefan Weil
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
 +
-+static void tgen_sub(TCGContext *s, TCGType type,
-+                     TCGReg a0, TCGReg a1, TCGReg a2)
-+{
-+    tcg_out_op_rrr(s, INDEX_op_sub, a0, a1, a2);
-+    tcg_wasm_out_o1_i2(s, OPC_I64_SUB, a0, a1, a2);
-+}
++#ifndef TCG_TARGET_H
++#define TCG_TARGET_H
 +
-+static const TCGOutOpSubtract outop_sub = {
-+    .base.static_constraint = C_O1_I2(r, r, r),
-+    .out_rrr = tgen_sub,
-+};
++#define TCG_TARGET_INSN_UNIT_SIZE 1
++#define MAX_CODE_GEN_BUFFER_SIZE  ((size_t)-1)
 +
-+static void tgen_mul(TCGContext *s, TCGType type,
-+                     TCGReg a0, TCGReg a1, TCGReg a2)
-+{
-+    tcg_out_op_rrr(s, INDEX_op_mul, a0, a1, a2);
-+    tcg_wasm_out_o1_i2(s, OPC_I64_MUL, a0, a1, a2);
-+}
++/* Number of registers available. */
++#define TCG_TARGET_NB_REGS 16
 +
-+static const TCGOutOpBinary outop_mul = {
-+    .base.static_constraint = C_O1_I2(r, r, r),
-+    .out_rrr = tgen_mul,
-+};
++/* List of registers which are used by TCG. */
++typedef enum {
++    TCG_REG_R0 = 0,
++    TCG_REG_R1,
++    TCG_REG_R2,
++    TCG_REG_R3,
++    TCG_REG_R4,
++    TCG_REG_R5,
++    TCG_REG_R6,
++    TCG_REG_R7,
++    TCG_REG_R8,
++    TCG_REG_R9,
++    TCG_REG_R10,
++    TCG_REG_R11,
++    TCG_REG_R12,
++    TCG_REG_R13,
++    TCG_REG_R14,
++    TCG_REG_R15,
 +
- static void tcg_out_tb_start(TCGContext *s)
- {
-     init_sub_buf();
++    TCG_REG_TMP = TCG_REG_R13,
++    TCG_AREG0 = TCG_REG_R14,
++    TCG_REG_CALL_STACK = TCG_REG_R15,
++} TCGReg;
++
++#endif /* TCG_TARGET_H */
 -- 
 2.43.0
 

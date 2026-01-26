@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E993C88E5A
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 07:35:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E709C88E5A
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 07:36:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkH36-000794-5b; Mon, 26 Jan 2026 02:30:14 -0500
+	id 1vkGtA-000513-CJ; Mon, 26 Jan 2026 02:19:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1vkGgV-0003Rm-VB
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:07:03 -0500
-Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
+ id 1vkGfn-00034G-2y
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:06:17 -0500
+Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ktokunaga.mail@gmail.com>)
- id 1vkGgT-0004l9-8u
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:06:51 -0500
-Received: by mail-pf1-x430.google.com with SMTP id
- d2e1a72fcca58-81e821c3d4eso3969558b3a.3
- for <qemu-arm@nongnu.org>; Sun, 25 Jan 2026 23:06:27 -0800 (PST)
+ id 1vkGfg-0004PS-JH
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 02:06:06 -0500
+Received: by mail-pl1-x633.google.com with SMTP id
+ d9443c01a7336-2a09d981507so27941495ad.1
+ for <qemu-arm@nongnu.org>; Sun, 25 Jan 2026 23:05:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1769411186; x=1770015986; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1769411137; x=1770015937; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=j2wRRRhpw2QeH+ly9lZWVccsQ4eVHSDC2ik4WsoAFuw=;
- b=ErZYfxC+xvpgb8miCD776VPjcUhq9wvF+r/dPKbzpa0bHrb0IZkGwU+PJJEe18wHAw
- IVbifgS1lV1vXKbnqlHxftwy1S022y7344z1xkTjMow0iKTK+m0KpPqo3IORs0r7AUju
- PifBz6BY3GbSlMqlB4ZFuxBo2rks8hdMPLGgyV9PtMHqRz9zyq50iw18rFGKADsNl6Ak
- o6IZVb+Vv5V9nSzC3Xnn7L5nZJB6HehhGWop5E1dy+/7XvBSMJgbdIOkMls31BQjnpvl
- Io2og1YfELSda6T33vjRl1HRQ62I3vsOxmzhcj3NRnj7C1Hh2FVfGL66zu/ZwR5uIH89
- 9Dpw==
+ bh=5xCSzQWwTJF2/7eDxsKs1AgITtRoia5ffM8pnhI5abA=;
+ b=naxPWNJPr54nlrTeMkWFOYXTayh/QLY2ozsf8XjLJkShgieXzm2At46tUHzZE6vgVL
+ W8XI7qhkY4ONSGidMeu44OqSh76/eY9k0d0qLQOPtm5oJ20ZEW6ZurLzKwyoaB27PA0H
+ 1dvNTzjyWBEJAHL7FFmS8iE/PRHpzTqqpzFYc8rkwDJ/WSGalTQIVrM3tqikyd4SlDpV
+ 3UdFbJ8f7w1aw64/wuDZWrLsSzZONkk/mBH1kIRh3RUnhztWZeolPJFOKSLzGcHSMVqq
+ 3lE+BqjFNQ4QD46TMVmCY1g8a+T4Hh7Vb9aigJST5p+mD5nGh/ZbodbYrgeMx4HY5kwZ
+ 8hNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769411186; x=1770015986;
+ d=1e100.net; s=20230601; t=1769411137; x=1770015937;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=j2wRRRhpw2QeH+ly9lZWVccsQ4eVHSDC2ik4WsoAFuw=;
- b=ZZaavGS1grDGBYkbsJhRGN706wVxCZlIrvnCOPVoX87vLcf8qkzYBuE6aAEX2Rf402
- 0+XKrBzC2nHWW4RKYsxnaJW8cy/g/8LsqhtyVSoR7hS+a5wLvA2TNUVqHL7CrYH2lokP
- qsAk9X8VlirQ4tashNhBB3BaWfGU8V83izIvWl4MtAUWxoJcCdzENrBXIa6rzKA/xLhK
- uVVYYIsM2IevAPyDtrfLfOZb+mzMQRogCoH/2enppQRA0VBkl3V3/ETmqXKKvEy9Yh2T
- JMo1CiJQJYGtgve92KPjNUtGY2yJpKcXK3oGakh0t/k5K+1ipmbNTrTKr20WHujBCGLX
- 5/vA==
+ bh=5xCSzQWwTJF2/7eDxsKs1AgITtRoia5ffM8pnhI5abA=;
+ b=o0Jkxpauy0mJMudRXQavnOxqSrxSVXHNr/r9nuW9ey+m0+vPYmMEJ49VODBnsMaliW
+ 6Kqt9PvaBvxA9/Nrwr8KRXGCz351HWK+kA1c+hrx98ZgdzafmxnasS1Sk6lD0sZnY3cH
+ xJWbRNOd9saSo+TlcVAmz331hNs781tutZx7n6T+zpPqnrg9UYKysk95zJfKUx06CROj
+ /odgldhrOxwcRYvmpfZKT77KH8ZmBtI5gcpMTgFwidXCluFx4F16QQujb/Xqqd7z7SFi
+ WQdFUHHkNlKfDlfmtsM1NTqI3syAxLykJLQLRJzmnsW6/lZj8gb7hrCuVR2Gt5rJVvyD
+ d5KA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVFS0o1YsXr/+0WaFRxNStChFkRLXA+I+2vT3B09JBsaBsX7hI0mfdLzNrjs3SAyETRt+aF1o+tqg==@nongnu.org
-X-Gm-Message-State: AOJu0YxLCHnAIK4CcqpSVL6l/pqnJfbJMs3vscjDkk8mREDkG3ma77ek
- ThLethxztfvUfsJ3xKntkrlHlS5VSE4ut2TGFN2QWoHk/tKeb77uXIdv
-X-Gm-Gg: AZuq6aKkaqgF0BgEZdm6qZ2w9G5PnnDbxDJ4duiKtNopbg3StU1bb3ReBz1sRs8Lffb
- g8jJ7eGhUAlr/zfqjbLhinxv8Z4+VA159yuN5qRo0LXNJfIeHokeIlyA4HUVj3gCZwXF5XBBGbv
- QFMY4Aa17s08G6/1hK2u2cMklfCPm5ScLt8HbQc4Bh+s+wQT56vyde0nrB+gWhUVdF8gXMk7oi5
- zYMe2ccZgut2b34ZonlSO4n4FpVvUfvk2i2lQemUEXYuziU1yWoTlvHFdpyJPVDRX9p2lVZja5j
- ALFS6Sz6gTesHYAiIa7AdWPw782r+9DLkH+EQY3F6WQ8jNeupnGGVZdZQC/FgnKOWXAvREgbGAH
- QAc1Ap+w0zVcIjH1gC29yDWFlBFFHRMZcMR05EgLaz4Edp8nOcsUzHGnLNVwM/vMrrVB59fGXnO
- 5W6PEn5so9aogJMZKFtIp4Rl5FapSx0GnC9HyJL5WZTQ==
-X-Received: by 2002:a05:6a00:3a05:b0:81e:c5a:8c25 with SMTP id
- d2e1a72fcca58-8234129e435mr3211981b3a.44.1769411186608; 
- Sun, 25 Jan 2026 23:06:26 -0800 (PST)
+ AJvYcCWuQBjZ4vD317f3yUrU/XacDbnJsQB4uL6tR8samdh2u2UoCwpOhv+wd7FyEemDKCpb2QsdVzjZvw==@nongnu.org
+X-Gm-Message-State: AOJu0YxpHuFLB1oa2qAFn8C0rnFUyjnp7C9nFka3s1gOB6aCbm5jXzDj
+ 5HniecrZFRorTsUP6ogFjKJQ5N7jYiAsSv/ytt373H0fC8guHo1g59GK
+X-Gm-Gg: AZuq6aIacaKSq/uOObE+yZTNblDA0K+fr/6ESmcpEgGzyz2kAM/wrhn+WyzGKrQk2bj
+ b8Fl9ow4287Vgw6Xy3bzi/01kHDeQTTjHESOk9vVniW24CsV6Z4UfwXi4JytOIGEn1oAKHBUjgS
+ gfcBlk+H3VNuvzhDp0UUfYelJdUYosJXSS9f3dBTGZm+FiC0pPLxp9M2oNPL1HzM6cCAQnQiqrh
+ U3qqcvRCrHzjIrCOJH86b//mQ+z8uY315gT/iRoCq8yJJf0FZv0I2txxv9u2YDHhaRigcsMBFlL
+ U0m1NG8uGDm6gGsvlMIGMMFMEMdtRAGVdxQV0XbNlTBIZQfzudMM8RE9M8o56XRWqTQZ8JTq5zF
+ x1wfZ+SRf0r/Zdk0yJbmL0tAEYL8nMd5N0s63tPeAiP0/Pr4CL3tYotVmZZDmfc7w4WM+SwZ7VT
+ ghxoFfISQ2tNthhhAiYWsns+6wvCf2H444UZ0vkAqTZw==
+X-Received: by 2002:a17:902:f54b:b0:2a0:906b:db3e with SMTP id
+ d9443c01a7336-2a8455b76e9mr29605695ad.27.1769411137276; 
+ Sun, 25 Jan 2026 23:05:37 -0800 (PST)
 Received: from brahms.. (fp93c00990.tkyc601.ap.nuro.jp. [147.192.9.144])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-823187716ebsm8661487b3a.66.2026.01.25.23.06.22
+ d2e1a72fcca58-823187716ebsm8661487b3a.66.2026.01.25.23.05.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 25 Jan 2026 23:06:26 -0800 (PST)
+ Sun, 25 Jan 2026 23:05:36 -0800 (PST)
 From: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -81,23 +81,23 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-arm@nongnu.org,
  qemu-riscv@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 31/33] .gitlab-ci.d: build wasm backend in CI
-Date: Mon, 26 Jan 2026 07:03:44 +0000
-Message-ID: <e3c1a6d8112ae8aca34d8a55a0a077026f6dde12.1769407033.git.ktokunaga.mail@gmail.com>
+Subject: [PATCH v4 20/33] tcg/wasm64: Add mb instruction
+Date: Mon, 26 Jan 2026 07:03:33 +0000
+Message-ID: <27f082f262e67da490da8c00f35df78d13e62767.1769407033.git.ktokunaga.mail@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1769407033.git.ktokunaga.mail@gmail.com>
 References: <cover.1769407033.git.ktokunaga.mail@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
- envelope-from=ktokunaga.mail@gmail.com; helo=mail-pf1-x430.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
+ envelope-from=ktokunaga.mail@gmail.com; helo=mail-pl1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,32 +113,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This commit adds the build tests for the wasm backend.
+This commit generates the mb operation. In Wasm, it uses the atomic.fence
+instruction as the fence operator [1]. TCI instruction is also generated in
+the same way as the original TCI backend using smp_mb().
+
+[1] https://webassembly.github.io/threads/core/syntax/instructions.html#atomic-memory-instructions
 
 Signed-off-by: Kohei Tokunaga <ktokunaga.mail@gmail.com>
 ---
- .gitlab-ci.d/buildtest.yml | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tcg/wasm64.c                |  3 +++
+ tcg/wasm64/tcg-target.c.inc | 19 +++++++++++++++++++
+ 2 files changed, 22 insertions(+)
 
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index f9a2d4de74..f7843e6e5a 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -792,7 +792,7 @@ build-wasm64-64bit:
-     - job: wasm64-emsdk-cross-container
-   variables:
-     IMAGE: emsdk-wasm64-cross
--    CONFIGURE_ARGS: --static --cpu=wasm64 --disable-tools --enable-debug --enable-tcg-interpreter
-+    CONFIGURE_ARGS: --static --cpu=wasm64 --disable-tools --enable-debug
+diff --git a/tcg/wasm64.c b/tcg/wasm64.c
+index bb2651c4dc..895ae062ee 100644
+--- a/tcg/wasm64.c
++++ b/tcg/wasm64.c
+@@ -573,6 +573,9 @@ static uintptr_t tcg_qemu_tb_exec_tci(CPUArchState *env, const void *v_tb_ptr)
+             taddr = regs[r1];
+             oi = regs[r2];
+             tci_qemu_st(env, taddr, regs[r0], oi, tb_ptr);
++        case INDEX_op_mb:
++            /* Ensure ordering for all kinds */
++            smp_mb();
+             break;
+         default:
+             g_assert_not_reached();
+diff --git a/tcg/wasm64/tcg-target.c.inc b/tcg/wasm64/tcg-target.c.inc
+index 0f51310700..d187dca970 100644
+--- a/tcg/wasm64/tcg-target.c.inc
++++ b/tcg/wasm64/tcg-target.c.inc
+@@ -1116,6 +1116,11 @@ static void tcg_out_op_r(TCGContext *s, TCGOpcode op, TCGReg r0)
+     tcg_out32(s, insn);
+ }
  
- build-wasm64-32bit:
-   extends: .wasm_build_job_template
-@@ -801,4 +801,4 @@ build-wasm64-32bit:
-     - job: wasm64-emsdk-cross-container
-   variables:
-     IMAGE: emsdk-wasm64-cross
--    CONFIGURE_ARGS: --static --cpu=wasm64 --enable-wasm64-32bit-address-limit --disable-tools --enable-debug --enable-tcg-interpreter
-+    CONFIGURE_ARGS: --static --cpu=wasm64 --enable-wasm64-32bit-address-limit --disable-tools --enable-debug
++static void tcg_out_op_v(TCGContext *s, TCGOpcode op)
++{
++    tcg_out32(s, (uint8_t)op);
++}
++
+ static void tcg_out_op_ri(TCGContext *s, TCGOpcode op, TCGReg r0, int32_t i1)
+ {
+     tcg_insn_unit_tci insn = 0;
+@@ -1941,6 +1946,20 @@ static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
+     g_assert_not_reached();
+ }
+ 
++static void tcg_out_mb(TCGContext *s, unsigned a0)
++{
++    tcg_out_op_v(s, INDEX_op_mb);
++
++    /*
++     * Wasm's threading proposal provides atomic.fence instruction as the fence
++     * operator.
++     * https://webassembly.github.io/threads/core/syntax/instructions.html#atomic-memory-instructions
++     */
++    tcg_wasm_out8(s, 0xfe);
++    tcg_wasm_out8(s, 0x03);
++    tcg_wasm_out8(s, 0x00);
++}
++
+ static void tcg_out_tb_start(TCGContext *s)
+ {
+     init_sub_buf();
 -- 
 2.43.0
 

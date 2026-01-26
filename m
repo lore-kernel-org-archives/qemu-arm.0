@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D582D19503
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 16:56:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E018D19502
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 16:56:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkPsX-0000hc-NX; Mon, 26 Jan 2026 11:55:53 -0500
+	id 1vkPrw-0008UH-PO; Mon, 26 Jan 2026 11:55:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vkPsW-0000fH-UM
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 11:55:52 -0500
+ id 1vkPru-0008Sq-5R
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 11:55:14 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vkPsV-0007Sn-Df
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 11:55:52 -0500
+ id 1vkPrq-0007NT-4o
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 11:55:12 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1769446550;
+ s=mimecast20190719; t=1769446509;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=1bBuNl2PG8WYMyGmaswgduPGATq1Nmd9Go56JN83xTw=;
- b=Vyt30Do69cATWS+QWZI6vFixSeL2tsqf3kHCYa7PUDTYU8OMatGeqqWmtXKCcJg0aQ84fa
- UDrAwi+1bq6ZRNavTOlG9rkWw/MPWeR0yip7nDkCqEddqW5FZSvAb9Bwk/CX4HXn1jx8fS
- eenw3MrGFSjtNJNROTEMNfCd+lXT4cU=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=qXAAJgi5Pp5IxQlHOgCbVUi5+LNR/ufJNvpmy8ZUovs=;
+ b=Li/cOYUzUsWL5Gk1krQ8RnTereMriUdlj6P+Na0CFgtrSsOJpEcYhcMi2XHxDBvlVVpULk
+ RjhpCwpc+fgAm53ayt7VzFYWlA5uj0W8lk1AZRPCN7znn6iIYTA+0KCXOLZo9fKpALfp2a
+ zWe0tvbGeNHwa6VtcM5xnX2KUrM/t20=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-684-WgU64vZoMECmE8ttHUgCOQ-1; Mon,
- 26 Jan 2026 11:55:47 -0500
-X-MC-Unique: WgU64vZoMECmE8ttHUgCOQ-1
-X-Mimecast-MFC-AGG-ID: WgU64vZoMECmE8ttHUgCOQ_1769446546
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-410-0PQpPW12MjOxwDa2jH7A9w-1; Mon,
+ 26 Jan 2026 11:54:59 -0500
+X-MC-Unique: 0PQpPW12MjOxwDa2jH7A9w-1
+X-Mimecast-MFC-AGG-ID: 0PQpPW12MjOxwDa2jH7A9w_1769446498
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 53CEA1944B07; Mon, 26 Jan 2026 16:55:46 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2729518005B0; Mon, 26 Jan 2026 16:54:58 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.45.224.18])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B4B5118001D5; Mon, 26 Jan 2026 16:55:41 +0000 (UTC)
+ id B14D218001D5; Mon, 26 Jan 2026 16:54:53 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, cohuck@redhat.com,
  maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com,
  gshan@redhat.com, ddutile@redhat.com, peterx@redhat.com, philmd@linaro.org,
  pbonzini@redhat.com
-Subject: [PATCH v6 11/11] hw/arm/virt: [DO NOT UPSTREAM] Enforce compatibility
- with older kernels
-Date: Mon, 26 Jan 2026 17:53:10 +0100
-Message-ID: <20260126165445.3033335-12-eric.auger@redhat.com>
+Subject: [PATCH v6 01/11] hw/arm/virt: Rename arm_virt_compat into
+ arm_virt_compat_defaults
+Date: Mon, 26 Jan 2026 17:53:00 +0100
+Message-ID: <20260126165445.3033335-2-eric.auger@redhat.com>
 In-Reply-To: <20260126165445.3033335-1-eric.auger@redhat.com>
 References: <20260126165445.3033335-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -71,7 +71,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,52 +87,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is an example on how to use the new CPU options. This catters to
-distributions who want machines to be migratable (forward and backward)
-accross different host kernel versions in case KVM registers exposed
-to qemu vary accross kernels. This patch is not meant to be upstreamed
-as it is really kernel dependent. The goal is to illustrate how this
-would be used.
+Renaming arm_virt_compat into arm_virt_compat_defaults
+makes more obvious that those compats apply to all machine
+types by default, if not overriden for specific ones. This also
+matches the terminology used for pc-q35.
 
-In this example, For 10_1 machines types and older we apply the following
-host kernel related compats:
-
-1) Make sure the KVM_REG_ARM_VENDOR_HYP_BMAP_2 exposed from v6.15 onwards
-   is ignored/hidden.
-2) Make sure TCR_EL1, PIRE0_EL1, PIR_EL1 are always seen by qemu
-   although not exposed by KVM. They were unconditionnally exposed before
-   v6.13 while from v6.13 they are only exposed if supported by the guest.
-
-This will allow 10_1 machines types and older machines to migrate
-forward and backward from old downstream kernels that do not feature
-those changes to newer kernels (>= v6.15).
-
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Sebastian Ott <sebott@redhat.com>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 ---
- hw/arm/virt.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ hw/arm/virt.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index a01dfb7fb79..f20a8453cbd 100644
+index 4badc1a7348..baa4e31aac1 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -3626,9 +3626,16 @@ DEFINE_VIRT_MACHINE(10, 2)
+@@ -94,20 +94,21 @@
+ #include "hw/cxl/cxl_host.h"
+ #include "qemu/guest-random.h"
  
- static void virt_machine_10_1_options(MachineClass *mc)
+-static GlobalProperty arm_virt_compat[] = {
++static GlobalProperty arm_virt_compat_defaults[] = {
+     { TYPE_VIRTIO_IOMMU_PCI, "aw-bits", "48" },
+ };
+-static const size_t arm_virt_compat_len = G_N_ELEMENTS(arm_virt_compat);
++static const size_t arm_virt_compat_defaults_len =
++    G_N_ELEMENTS(arm_virt_compat_defaults);
+ 
+ /*
+  * This cannot be called from the virt_machine_class_init() because
+  * TYPE_VIRT_MACHINE is abstract and mc->compat_props g_ptr_array_new()
+  * only is called on virt non abstract class init.
+  */
+-static void arm_virt_compat_set(MachineClass *mc)
++static void arm_virt_compat_default_set(MachineClass *mc)
  {
-+    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-+
-     virt_machine_10_2_options(mc);
-     mc->smbios_memory_device_size = 2047 * TiB;
-     compat_props_add(mc->compat_props, hw_compat_10_1, hw_compat_10_1_len);
-+    /* KVM_REG_ARM_VENDOR_HYP_BMAP_2 */
-+    arm_virt_compat_register_hidden_reg(vmc, 0x6030000000160003);
-+    arm_virt_compat_register_safe_missing_reg(vmc, 0x603000000013c103 /* TCR_EL1 */);
-+    arm_virt_compat_register_safe_missing_reg(vmc, 0x603000000013c512 /* PIRE0_EL1 */);
-+    arm_virt_compat_register_safe_missing_reg(vmc, 0x603000000013c513 /* PIR_EL1 */);
+-    compat_props_add(mc->compat_props, arm_virt_compat,
+-                     arm_virt_compat_len);
++    compat_props_add(mc->compat_props, arm_virt_compat_defaults,
++                     arm_virt_compat_defaults_len);
  }
- DEFINE_VIRT_MACHINE(10, 1)
  
+ #define DEFINE_VIRT_MACHINE_IMPL(latest, ...) \
+@@ -116,7 +117,7 @@ static void arm_virt_compat_set(MachineClass *mc)
+         const void *data) \
+     { \
+         MachineClass *mc = MACHINE_CLASS(oc); \
+-        arm_virt_compat_set(mc); \
++        arm_virt_compat_default_set(mc); \
+         MACHINE_VER_SYM(options, virt, __VA_ARGS__)(mc); \
+         mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " ARM Virtual Machine"; \
+         MACHINE_VER_DEPRECATION(__VA_ARGS__); \
 -- 
 2.52.0
 

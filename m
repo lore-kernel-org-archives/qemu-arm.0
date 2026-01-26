@@ -4,94 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF9E3D19510
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 18:38:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EF7FD19502
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 18:45:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkRT7-0003mf-AE; Mon, 26 Jan 2026 13:37:45 -0500
+	id 1vkRaM-0006ra-Vy; Mon, 26 Jan 2026 13:45:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vkRT2-0003i6-Hx
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 13:37:42 -0500
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vkRaG-0006jw-8h
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 13:45:08 -0500
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vkRSy-0002Sr-Qr
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 13:37:38 -0500
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-42fbc544b09so3396961f8f.1
- for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 10:37:35 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vkRaE-0003rm-H4
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 13:45:07 -0500
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-7947072d0f6so5366987b3.1
+ for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 10:45:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1769453105; cv=none;
+ d=google.com; s=arc-20240605;
+ b=bhRlY21/CcRG2ilWM1PlfL2ytYgKwE8ICkhpx3R2FlsVs1XQFeFJ6MVns38tIdB8tC
+ bieC3sRKu/WLIqlN+cPZ036LcA9cHmz+3Or2zMH2SDVz+Xkn0tATc93/CWjTbrfub+wW
+ 6HeWehCatRMV/XGnSAplUAxoXFlzoBWGb8O3wOQWa+AhBZLWfIDuqjYqx7RM97oShVOH
+ RjvB6ut6MsDd9MMQMl2kFg3af+x7skhFntKlAe2zNKI0S77XorbrMvUTQY3kshEfAfqZ
+ 7JR3HnzEpitzx+PRFg0sDaKeBJa7eiWBwF7/t2NzqI90mTPLghgO3xi7h2+j+vbYdnXn
+ nqHg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=dx8DOA5ERXO6I9VP5BJw659kgsNsvOpRIe4S1zXDoWo=;
+ fh=i0Br/oy1jURvd1sjCGW2OA9ThCo58GEi+jDHd9jRW/Y=;
+ b=k20msUorYzZyJ5SrYKUPqG3YTI40pzej/HZDep1KSi+XPmMhkK1qDIUoH0VlCrkXyi
+ nRobXDe+7uVS70DTJTVhY8T8dG2IvJzfFmFXGPOtm4I5tpBlYeGuMbYSeUR/OVD+nqZI
+ TGuHmrriiXIHpIByIOnHtNgYMdJxmq2BHKEeHsapBILz2xqzJ3xo3rkuf/NOu1q4Uc4a
+ dLNQXrSE216P0bzRFvk5/pur+UtigcTH+Ao1BE/pvV050D2uhs2qH+eCApyfBCgXEQUk
+ ciKT8PmMQdEQIlf0GaSk/7Ynv3DWMYUYzHgEEAqH/SAdqD9OvlHyFLDci1gJ4Cvoe9Wq
+ Xsyg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769452654; x=1770057454; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ipjvv4ealaSFnwt7TF94L1J5CHp40keYTo5K3NkfoNA=;
- b=WjZr88w7RyedHHyJd+oXD3nx6zqMCq3cYXSHjnn/5dg2YBfIKxkl9pW/3y5HI3oEYB
- bd/jcnt6TJE3M8qRxU8Z1k/7l/CzFBe8WK1N/r2RCPxdApkUX5k3YehkfhoQDQc/6RD+
- f+MYK+OqtbBYUSz/aKwSsOi/rE3rBkWbKqWgURi79anZ1oOcUiu3wUAaijxYWFLJ5En9
- q6/Q5o3u7Eh5TTZLvIU6vhY3xm40YyEs8V8NrQGZS8vfs+KptrGHXtx3Otj66vp4PjoC
- vbngfhyz8G7+JLCP9RWLaMsi8raFgE4rc46oMTvQLewZxyEFcYtwLNYQ4QiniTADNn75
- zhiw==
+ d=linaro.org; s=google; t=1769453105; x=1770057905; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=dx8DOA5ERXO6I9VP5BJw659kgsNsvOpRIe4S1zXDoWo=;
+ b=AKt9K80xsckd8mbaA29yKTk4tDPv6PowH45bK3kzh7pkPAZERtdrv+d0/FFV/U6nRZ
+ McAoOEwj+vH9bUouihEAOqdDJQ7ufKmRkrQI2YIkeMnp2ETA/3gtn+kVeZFfkH+SOpIq
+ XOYwIDHC1qOzpmIAvBjMln1L5z7/cbdZOZVfZ4XLUsofgqYjOEqORHzhhSzaiOz1Yjpx
+ Ad99n64VRxAYOVW1kFlV5UTG97xh0sHiRmYKc9vgi2boMEiXXEwDml5cIsZBrfsapaBt
+ u/T5YOU8m+dq4M00hDnXTWT+dD/oC7VROmQ6BkGyDOE15zq/76ZvX29YgyBkWS3pgEoy
+ mu6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769452654; x=1770057454;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ipjvv4ealaSFnwt7TF94L1J5CHp40keYTo5K3NkfoNA=;
- b=tuC4EdUj37G5bKT9oHrI35QRHN/l5ixvsLwKJDbeuWxXVQOivrXl66tHhOuLxDyy4O
- VH9SoFCDRV59N2rRrbdI21f8FlR8pK0JU6gxVmMI8ym+83mCQz7a98c/dx2QOv6XoffM
- wFX406rGLr9yIre1lr+E4hNT18QwG1zKCH34PvFOxovJnsH6NNtw2YURfOzoDu9vAuYq
- ubtM4VbF29Q+TIwqtwxhGPdiW+fZNec6tLGQ5xYnixZrVAsSR0cmlvwaPrXKFzlWf10H
- m4i8Se7Rt50UVQO2SBE0awkrAJdkSZ12CoQR0FIiqTJqfHejRJF4cS5G7ZoHM2hELCf0
- 2oqA==
+ d=1e100.net; s=20230601; t=1769453105; x=1770057905;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=dx8DOA5ERXO6I9VP5BJw659kgsNsvOpRIe4S1zXDoWo=;
+ b=KcfqcS+UbXrBlWW7vzXLeE3q/s+1qEz7ff+faFgMksz3+gpEqXnWc5Zlcoz3gbWaOo
+ RZ7YEfn41VT+yEg1SOmqIesYSeWO3Nl4DrXNmElCHNREzjVPOUTMpOQbBwu/XAa+eHtd
+ tlRlTaFFypvI5mALRFgKiaLFwqRT7B+aRDxDeX78ZMSChtthGfjWipTgKOn228H9mEZR
+ x8v68xE4zB3iGX/a+2dJhR9jjNzqRNJJvOD275hn7ll3+nvDqrV5PxkjQUeaZopOMK3T
+ u943msh+cQxA6MCS3Tk3geavONKRPZ0NnxZzLNU8wDOGLsVlnZZlzM+Mmo35AbO57XeE
+ i6lQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVkfmgqBnNXMLHbsENf/mQg/3BLVvffRan1M1sKw8XhjKnaCFUrX4OQKsMH7JlWxUVh2d3sW9+EkA==@nongnu.org
-X-Gm-Message-State: AOJu0Yym0UT+Zw6aOw7RGHDB8JfqCZvOI0oBVxwDz5J74ZUN/CtX9knn
- RMH6eJc/OnYy2p3XFe4hDMFV6toL7qm4veTfmY2rUGUdcNMo1Kkgyx6fbXPw01V5RtA=
-X-Gm-Gg: AZuq6aKA4jkgJftTGiSswgdhlp91UQWxjtCJgFVGv6uSNI+2IUDcqR9wFlp6sorukZ7
- VC+jd5qdv80zBjlN7qId9jfA3xlNDe+HJlUdNJAdejfUlnKwrZNDVD2cjDaTs7TY7VES7Rwz4uG
- Ei8AFkrCAlQAldcKH3c+gBXOBBcv6RSuEZpqTG0F+2C3cyvGSp8tLOzsuRKPOgHI2OFFlyUcpj0
- uwh1z2/E4vjAPYC4shVamKB3sjAEvKm3bagx8rbyIKaVL7efdYrgKRfwBxXR5XFXMmCKB7T4SVr
- 5FlgnLTQuAIfmGWhje4+/I/+ZvxBYJ5cfaXs4p70faWjM2zs+ufpjaNdz/ITVZiO4RLZ6A4Yra+
- dPAydcIxtPaiSKZlA3k/EcwDIqia5Bg8r9WuzRqQZ0ZkwnyU3hS+hIGKMEFRFbUR/4SeLI50V8j
- 3R/Gxa24EDzelLQa9Zzw5kKOLfYBuGmkCzG6PLiWYO7NJWfqlphc32sQ==
-X-Received: by 2002:a05:6000:184a:b0:430:ff0c:3615 with SMTP id
- ffacd0b85a97d-435ca13d0e3mr10597940f8f.53.1769452654386; 
- Mon, 26 Jan 2026 10:37:34 -0800 (PST)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-435b1f745dbsm33173927f8f.34.2026.01.26.10.37.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 26 Jan 2026 10:37:33 -0800 (PST)
-Message-ID: <6d6ddb69-692a-46aa-bbd1-825249df2e05@linaro.org>
-Date: Mon, 26 Jan 2026 19:37:32 +0100
+ AJvYcCXOZt3IaUaeY2bzhtrJmx8SDfJIUzrQwQR95m4D4U0z6wzgr2I1Kqdu94xz/GVgfbehWg8UAX6z7A==@nongnu.org
+X-Gm-Message-State: AOJu0YzSKwYNgm4qcUJOjRzertWepEs83vB8miVa/LxDd0d0JsnrS0BM
+ XRzqd/2OAEXicJJ1OsjCEMN3uE7jGS3m1OZM5E/xHBjTaP0VOpI788OzrPvDEqWTLvuK7q79Gjx
+ yp2KiJTWNozKA8H4++Tunyo0S2+GdFaeN3yoS5E8m5Q==
+X-Gm-Gg: AZuq6aJ4hPcW99nuTgnhpDn+iPQlNDj8lk+eCtabQMaDtL5l/VscDlXQcedi/+mNdOu
+ 2TAvuUY5YDGmYSSCqkbcde0CvJmp6FqzXLmZ5W4/j3slz/7bbCrYq1pdignS2ufHncJgIWk6TGV
+ YPtF8mvnrKaOkP1i5sSrDR8gzeNrBtc0PIC9265JPpZ83FRXOBIpRacNkliyW+nxMBqLp4dmojo
+ 135TcpiwnY0s2D0q1ITA3Mvr2JPOh5ziF4HwhI0C2QSlQ0FmShgg+Q1sD8YeJy1JZrWSg==
+X-Received: by 2002:a05:690c:e04f:b0:78c:6a2b:c6aa with SMTP id
+ 00721157ae682-7945a9cf7ddmr37881357b3.58.1769453105232; Mon, 26 Jan 2026
+ 10:45:05 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/adc: Fix out-of-bounds write in Aspeed ADC model
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Elhrj Saad <saadelhrj@gmail.com>
 References: <20260126141820.719492-1-clg@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20260126141820.719492-1-clg@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+ <CAFEAcA8xQmUa7DyR7+Nw255e_DW=uzZ-gQT5G6cd-uuWgQBaUg@mail.gmail.com>
+ <e8a6032d-cf06-46e5-a7d5-c2e9b8d248ef@redhat.com>
+ <CAEEWBQPci_=gDhJS8m7erJeYu7C4-eioD0ks=_WReFQiOVDNiw@mail.gmail.com>
+In-Reply-To: <CAEEWBQPci_=gDhJS8m7erJeYu7C4-eioD0ks=_WReFQiOVDNiw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 26 Jan 2026 18:44:52 +0000
+X-Gm-Features: AZwV_QjoFp7D_MD2apweAR6D1b3Ck-4VL7EoNOpKkUR3QmTn1xijnS34oYHcsJY
+Message-ID: <CAFEAcA_7y9uAznaY+PAA9LpMOG3NSiNKFoQXdfvZKyrsms+C8Q@mail.gmail.com>
+Subject: Re: [PATCH] hw/adc: Fix out-of-bounds write in Aspeed ADC model
+To: Elhrj Saad <saadelhrj@gmail.com>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>, 
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ Michael Tokarev <mjt@tls.msk.ru>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,22 +121,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 26/1/26 15:18, Cédric Le Goater wrote:
-> The 'regs' array has ASPEED_ADC_NR_REGS (52) elements, while the
-> memory region covers offsets 0x00-0xFC. The aspeed_adc_engine_write()
-> function has an out-of-bounds write vulnerability when accessing
-> unimplemented registers.
-> 
-> Fix this by using 'return' instead of 'break' in the default case,
-> which prevents execution from reaching the s->regs[reg] assignment for
-> unimplemented registers.
-> 
-> Reported-by: Elhrj Saad <saadelhrj@gmail.com>
-> Fixes: 5857974d5d11 ("hw/adc: Add basic Aspeed ADC model")
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
-> ---
->   hw/adc/aspeed_adc.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+On Mon, 26 Jan 2026 at 18:22, Elhrj Saad <saadelhrj@gmail.com> wrote:
+> Is there any possibility of making an exception and assigning
+> a CVE for the issue ?? (It's my first ever found vulnerability :)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Hi; this is not a security vulnerability according to QEMU's
+security policy, which you can find here:
+https://www.qemu.org/docs/master/system/security.html
+
+The board that uses this device is not one usable under
+the "virtualization" use case, and so we do not consider
+that bugs in it are security issues. So it's not a
+"vulnerability", just a normal bug, and we would not
+issue a CVE for it.
+
+thanks
+-- PMM
 

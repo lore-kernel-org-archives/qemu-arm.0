@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65C6CCF65E5
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 12:02:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66DA3CF65E5
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 12:02:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkLIG-0003Gi-DY; Mon, 26 Jan 2026 07:02:10 -0500
+	id 1vkLId-0004MI-QU; Mon, 26 Jan 2026 07:02:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yi.l.liu@intel.com>)
- id 1vkLHb-0002Zf-B8; Mon, 26 Jan 2026 07:01:27 -0500
-Received: from mgamail.intel.com ([192.198.163.11])
+ id 1vkLIA-0003DK-Nv; Mon, 26 Jan 2026 07:02:08 -0500
+Received: from mgamail.intel.com ([192.198.163.7])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <yi.l.liu@intel.com>)
- id 1vkLHZ-0003mQ-89; Mon, 26 Jan 2026 07:01:27 -0500
+ id 1vkLI6-0003pu-2Y; Mon, 26 Jan 2026 07:02:00 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1769428885; x=1800964885;
+ t=1769428918; x=1800964918;
  h=message-id:date:subject:to:cc:references:from:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=QXE5dot+STZhBATp7huZn09s++1JLVuf0d34O4R06q8=;
- b=YbUzw4/X7qFfufBlues4IJA4GtNfyTTWThCWLme9t8flQ2L6RcYpsf40
- GkbNq/tc+bzSmFluLaTefpS03Qs24easRTsLFiaQLS1HMHGvzKGqjHP4L
- DHixbMoFNP8UHJ29uP3p4Jnbf45L0aKsWqQ+QJpLGykjFr8qzQLmPaO3G
- 05s7jaHEmucp5qB/5mskOJKrA3GuPhGk6WeZxBGj21h0vagcbBxYqqK+y
- IlFHT/6o9w4GN1T9uHpMlg/1tHFKjucj5/RgbceJBXpahKMo5h6wHcU3+
- f4rpiuG+vMrRAzERLyh7ipBk0nIkbPeIkLgBtAAnY/6v+/0o4AmNh8Hf7 g==;
-X-CSE-ConnectionGUID: zqxlA8h+RiGkZa/SfWQeEg==
-X-CSE-MsgGUID: l7GOlgXsSVKUzeMCVfsCXQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11682"; a="81237969"
-X-IronPort-AV: E=Sophos;i="6.21,255,1763452800"; d="scan'208";a="81237969"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jan 2026 04:01:23 -0800
-X-CSE-ConnectionGUID: ckKfBmjIREOa9tOepgCeqQ==
-X-CSE-MsgGUID: 9/SpsQYfToeu/+1EnnhUtw==
+ bh=pY+bouT9+14iU3ymZ3zw4vClI+SAncCjRatyAhoBk5g=;
+ b=gEI4QABa9/0nDATlqdJw1piPbmzv0Oz1qAtHXhA/TobROL+qvW9+5pms
+ QGw6wxeNTrwdw6093E5zD+eeHL4dlh9QRHNyh9rsikmfnQ86osPXTJCYK
+ OCsmIDmOsuHC7LaRsjFOXhjr898eMVPIviG15Nn28jmYxmfuRk4sf3EZ1
+ fmXrYAg2q51PLzxNwCHgdhRhmzeZxZv7iv1rTHS1xKcfxJ2z6pAt9loVk
+ RQsr/zno90dufSqgt1Fz2pPTssq0erj+Ly/uu3HxmfY0GT4FzkZ4lom27
+ vvyqoqmTpKO0QKf1cr3GzEYw3jd4olG20NvzggByKkwXYTVRu8O4RBSq/ g==;
+X-CSE-ConnectionGUID: 7MrAahb3Tka3Y9eEnJRUwQ==
+X-CSE-MsgGUID: kYZ0k8nQQwWTwD5tgqf5tA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11682"; a="96066822"
+X-IronPort-AV: E=Sophos;i="6.21,255,1763452800"; d="scan'208";a="96066822"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jan 2026 04:01:55 -0800
+X-CSE-ConnectionGUID: 8QvMjUIlQ1G+Q8fl5Fvcpw==
+X-CSE-MsgGUID: k5fj/77IRsOglFs/ARFhRw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,255,1763452800"; d="scan'208";a="212649081"
-Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
- by orviesa005.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jan 2026 04:01:23 -0800
-Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="6.21,255,1763452800"; d="scan'208";a="212525630"
+Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
+ by fmviesa004.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jan 2026 04:01:54 -0800
+Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.35; Mon, 26 Jan 2026 04:01:22 -0800
+ 15.2.2562.35; Mon, 26 Jan 2026 04:01:53 -0800
 Received: from ORSEDG903.ED.cps.intel.com (10.7.248.13) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.35 via Frontend Transport; Mon, 26 Jan 2026 04:01:22 -0800
+ 15.2.2562.35 via Frontend Transport; Mon, 26 Jan 2026 04:01:53 -0800
 Received: from CY3PR05CU001.outbound.protection.outlook.com (40.93.201.8) by
  edgegateway.intel.com (134.134.137.113) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.35; Mon, 26 Jan 2026 04:00:53 -0800
+ 15.2.2562.35; Mon, 26 Jan 2026 04:01:22 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=av+VQMn62HwJJmO6LQbYGWwwhaDuVPRiq/wusKb76dXZ04GP+rFypKmyUaS0swYXvcJPEGGMGRCTx8az1oF9cUNkkq5IlM7i/unBRBHL9+ELfNJrmag2VbsDR6YgYQseRwcUvh8LWVXgqxPMEjJqE6PdQNQQ/fG6vLf8Usk8930dW8CwaAXT7wI8wjqfrTGbOrJGObxLct2dvTZKYHQgY5iI2idq5SB/n1EHAAMcIp+K2QiWK+/mIY7T49WIaUFRhMmT/S+NIWaz3r+EQ/qfaP68nIjAwAvInY/u7VMpyKxdsZilIXxZXGC7s+DX72d90hTVGrozEJ8TtYu/aBSN4A==
+ b=BgPSjKpe47jguQOrt7ChzLewpv47ivDb314lAd6+1dpPD38i1P1JNUSc+EUnOZFDIUOHeMHnVVMll/rrlbAywrfXmRK8ecCYNLmMQv528L36cUFUvvP4Wwz+3SGBbRZTIoTMcl19FKSD164vD4u3qIZR1hMad0fA3k4ZnNfwExy8S//XMRZ/6FIqzXHAQb2GPnBEcRO4sImtMN4AkO2tELoZPtYlSglNUbg0d1VvNk7TQoLhZ6MKbe3xlxBLZDDCkkWKVGE3CkMlmbyE9J+UnqvbBRAAisomNYkqvFEX04UVwkLssgrzfctmuyUvACaAt76RQ3Mg+V7jom4dkeKC0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=cjlUiYxUjAPL1AwPS2lQhOXWnscxN5IChdV77kePgwU=;
- b=x74wfvAeqgSw0Dy2jX8BQIPAyP9g0VBNFy6CReB7SIrkpFrs860X15Gt/KY8nA4zXS2dROdrn3WToNICeBUHDu9fJwHzdtMFK+caufl/25DeUb7SPi3TcwsZh9C+TrujoMirSdLNsqiVnZwCPn1VDZABDY9kMqvvvrJXKEmIIr2ntySvffmZt5DFq+Gnpp53aZkJBc6V+49N6OnlIfGjOHRxYUhrR9Pad9joZxEtE0jKqVj8Bm/NvyMBptJYaRsH/5JM8CfLuaGnXF/y2fQ3aAKVe/1reBJwlzZkhCvnElTE2oCZyz8OaiROTT7xuDJ60mgUaq9gScMLoNTf/cA/TQ==
+ bh=mAs1wW/LeBwM/WaNIXua4Y1qXi8mEcxTGGzADTq+Bc8=;
+ b=h4ps/GsRZwkSI7JkdAeXPZXYYewfyT0oiMTM79ziRZW6jNG78JFt1K+Pv0l3lT7tK+f+GgrDsQLVurVZOqoVLYlwdTLHv1ZbgR0xr7smsvbhgT5uKGrIEYkGtgba3FdPFWwYAi7S6PuFgoE/TSSR6VgzGspZjZNnt/P/on8CbEybtQUWQJtnXxMZ9BNMtRa9nyC26dPIE4OCuftEPqwymGUIWotMkdymtYasp5xG7cyAl48GTHAdOCrF8j/VCOyO+tEBMQBWhTH8+1QZANFJGDz1q/UPsmtJoWYWc2PIDmJMKzddsLBiKG+x0xPjSguVwqhCl4X5nF8lrYUgXQslyw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
@@ -72,16 +72,17 @@ Received: from SA1PR11MB8492.namprd11.prod.outlook.com (2603:10b6:806:3a3::7)
  by DM3PPF6A4412A55.namprd11.prod.outlook.com (2603:10b6:f:fc00::f2a)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.16; Mon, 26 Jan
- 2026 12:00:50 +0000
+ 2026 12:00:58 +0000
 Received: from SA1PR11MB8492.namprd11.prod.outlook.com
  ([fe80::cedf:12a3:5d80:af1c]) by SA1PR11MB8492.namprd11.prod.outlook.com
  ([fe80::cedf:12a3:5d80:af1c%7]) with mapi id 15.20.9542.010; Mon, 26 Jan 2026
- 12:00:50 +0000
-Message-ID: <a66aef84-ce92-4193-89bf-33651875452a@intel.com>
-Date: Mon, 26 Jan 2026 20:07:35 +0800
+ 12:00:58 +0000
+Message-ID: <9a217f24-c44d-46da-b3e6-d954c49c23cf@intel.com>
+Date: Mon, 26 Jan 2026 20:06:42 +0800
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 34/37] hw/pci: Add helper to insert PCIe extended
- capability at a fixed offset
+Subject: Re: [PATCH v9 32/37] backends/iommufd: Retrieve PASID width from
+ iommufd_backend_get_device_info()
+Content-Language: en-US
 To: Shameer Kolothum <skolothumtho@nvidia.com>, <qemu-arm@nongnu.org>,
  <qemu-devel@nongnu.org>
 CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
@@ -89,117 +90,115 @@ CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
  <clg@redhat.com>, <alex@shazbot.org>, <nathanc@nvidia.com>,
  <mochs@nvidia.com>, <smostafa@google.com>, <wangzhou1@hisilicon.com>,
  <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
- <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>, <kjaju@nvidia.com>,
- "Michael S . Tsirkin" <mst@redhat.com>
+ <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>, <kjaju@nvidia.com>
 References: <20260126104342.253965-1-skolothumtho@nvidia.com>
- <20260126104342.253965-35-skolothumtho@nvidia.com>
-Content-Language: en-US
+ <20260126104342.253965-33-skolothumtho@nvidia.com>
 From: Yi Liu <yi.l.liu@intel.com>
-In-Reply-To: <20260126104342.253965-35-skolothumtho@nvidia.com>
+In-Reply-To: <20260126104342.253965-33-skolothumtho@nvidia.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-ClientProxiedBy: TP0P295CA0044.TWNP295.PROD.OUTLOOK.COM (2603:1096:910:4::6)
  To SA1PR11MB8492.namprd11.prod.outlook.com
  (2603:10b6:806:3a3::7)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: SA1PR11MB8492:EE_|DM3PPF6A4412A55:EE_
-X-MS-Office365-Filtering-Correlation-Id: a7e397de-8300-49f3-ed4e-08de5cd28c74
+X-MS-Office365-Filtering-Correlation-Id: 15625a05-8d01-44c6-29ec-08de5cd29115
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
  ARA:13230040|42112799006|1800799024|7416014|376014|366016|7053199007; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?aWtsdVN5VjlQK0JNbGE5L2wxVW1NWGdIa0E0bXFIbEdrNlJ2K1kwSGdwclI5?=
- =?utf-8?B?MFdCeHo3UzFiN1NsUmFJK2V2NFgydVlzNFBjanJaZlcyUkRzbUtmVGZWMVhp?=
- =?utf-8?B?VFVyalhTY3greVBrMkdlK0w3MkVSQlVIbVhjTlFNbGtSVlMxTytONzhoaFpr?=
- =?utf-8?B?K2xINWRUellud2o1b1BLSFg1RDJxTVIwQzQwazVVZ0ZtOVU1L3Z1cTlrK2Rn?=
- =?utf-8?B?RG1ycU5PSjNTLzF4TENrRCt4N2p1UXEzWDRZanhHbVFoVmpubFh0akROTnJL?=
- =?utf-8?B?dnhGNUM0UHNreW1QL281UGp5ZXVyQjgxcHRIU0x5YUVtZ2hRQ3Q4YnFkV0N5?=
- =?utf-8?B?U1BEUDdDbFhzMTJhakN3clNsU210NmZlVVBQTE1jUVpSZUxwUHV3VE1OM2dG?=
- =?utf-8?B?TDVtNEFYd2d3dlVyK09lK0ZkUC85d2tsektOQmNSOWlYSVpXakxxbnB2WGJZ?=
- =?utf-8?B?QkxZRHdWWHFiWmIzRTZEd1BXbkFUbExDWlBCSWFCMGE1K1hJd3BGeTdBOWNJ?=
- =?utf-8?B?TEdVTktaNGc0MkNvRzAvU3pIMHo5bUlWbFZHRDZaS05HMkNWa1JEWUFmMlQr?=
- =?utf-8?B?R0VlYWMxaVRTK0FidS9IZmZpUDlHbzZ1RjluWWFPM2FobUttblkyQnhpOFBh?=
- =?utf-8?B?VmpxSXhqa1dIQmRTSTZUd2N6L1VrNzdBbXBqQ2VvYS8zS0lnLzVycks5WTd1?=
- =?utf-8?B?N2FFcGhScG5ML0Vha1BMOUMya3JPM0hZVUlIS3Q1U0VhcmRQTTZrTGN6UkNm?=
- =?utf-8?B?OFEvNHBtUVQ3R1IwcWRzR2t5RXQ4M28yc0EvWndnQ1o1N1ZLS1hnMWM0VFhv?=
- =?utf-8?B?dlpuNW10MTZUbmlFTHo3UlF4aGk4RFFuNDVBeStJVkRpMG1GZVYzTklKNGVs?=
- =?utf-8?B?aGU1TG5Ha3g1ekZtQjJncWVRdk9vL0ZmN1JiL1VrVy9mS0libVh3UCtWQXRY?=
- =?utf-8?B?QVhUSER2U2Vnbm1oTXNMMnE1cVl5NmtFN3Q1M2d5amhUN1EwRitjbm1yOU1z?=
- =?utf-8?B?cUNQOExXcWNDQk1oVUJvYTFMamppRVhJdHRqRXZ3M2kwK0ZHTHV1ajdDWVRK?=
- =?utf-8?B?dXczYnd1VkJQNEdwWjRRdjBTM3RoUk9walBhNzZkSmdqU2h6Ujk0ZldTNFdt?=
- =?utf-8?B?bVA2b1diU3hwL2hqdlE5MFFhVUdUWE12NElqQzU5ekZJSkpIZzR4MGlvb09X?=
- =?utf-8?B?L0FudGlJNGlPVVEydk8xQXdYMys1V3A0SkU3WmI1TkFScG1iam1FN2RxQ1VI?=
- =?utf-8?B?NVdPNnVXOEowcnFBNEVxN29uSnRtUDBWTHFiQWxPRWV4dHFmbkhKVHkxM2FT?=
- =?utf-8?B?azBSVmFPWUFsZ0MybWhQRzR0WWNsc09IY2lmSnVOV0E4dXJxNXdoL2R0VGVu?=
- =?utf-8?B?ME01RVJINjVUbDZiOUx4RGxsL2hwMG54RVNoWEwrV1JiM3huU2YyVkk4MnBs?=
- =?utf-8?B?MVlZakNJWDVUcTUxVXNSQnVBWEpwVCsvclFYR1V2UzI2Wms4bElvdkIrVFlJ?=
- =?utf-8?B?T1NwYkpkV29GOHpYNWpKRTBqNEkveUdQejV3MXZlTVdkWDdodXdsa00yQ2l0?=
- =?utf-8?B?NU1vVGFlQnV1bERMM0tFVGlRTHBBWWpFeW0vZDNDdm5wbTVBY3FYUlh5TjZX?=
- =?utf-8?B?cWVjbmR6M1FUR3BPY3VaT2VNeGUyTS9SUDhrS2pCQ2lVQmhMb1hDZGpRcUF2?=
- =?utf-8?B?YURHcS9FQmIyMzBuY2xNSTBqV1RKRXBadGdxcTRJcEYyTW5VbDlRaGxlYzVX?=
- =?utf-8?B?UStrZXd5WVVBWlllU1I5cGprNit2cGtPZytjaGZsTFF0VmhZU1ZvZTdCTUZZ?=
- =?utf-8?B?aDl1Q3JyQ1RTRFJLUmhmSTVTMkEvTnNFWGtZM0Y4c05hY1NDbWVZckI4bG9T?=
- =?utf-8?B?NlREclRnT0pmUEtYaTF1aTN2OFZkOWRNcVQ1TmgvejRDb0ExcmRlTVVCZVB4?=
- =?utf-8?B?R3Jha1NrTjlFbmZSRVVRL21ySTliUmVaSzRkSnNsSStSbDE2TVN4S3hkbUNN?=
- =?utf-8?B?SUxuYUIzK0l4SFJsaXc3cFhvVmdJRDZZaFhSWGFLVzBTclhOS3kzejVtMjds?=
- =?utf-8?B?WFcrTE1ZYzYyckdScjNqbFFuTXZsMjdDeXFteGFOUmpyQk1GVnBkT1NTZHFD?=
- =?utf-8?Q?H7yk=3D?=
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?eHE1M3M2cEZRcmV1ODRKZEV3bjRUQ0tDZVVYTUhKRVdVRnpPQVNLTUovdlBp?=
+ =?utf-8?B?WWs3RGcxcnFVRTBVbmJqdlhlTFhFUFdOTC9yd2FLeWR4aFFIcXRSc3dtNU1k?=
+ =?utf-8?B?eXZNeDBRUEh4VE9XYkZNOTVWQnlHS2NjNUkyekJPamIwL1FWSDFET0dvbCta?=
+ =?utf-8?B?dXI3NHhGVjArM1VqN3g2cUlCcGN5WEdCZXNJc0hZQklObGN0N2k5RjRDS2po?=
+ =?utf-8?B?MDl2bU1uaU1naGtrT1JwTnVCVTVDZXFMQUIwWmtxckZFZkhIMlgxVG1NMGk4?=
+ =?utf-8?B?V0FzaVNIbytYKzJHZlhXd1NmWklEMWxTajVjNG9WbjBJSko2Zm95OXppRm9x?=
+ =?utf-8?B?R0hGVjFhOWxqRFNYL3R5VUt1c2xPUktjcXZENlk0bnE0YXc4Mi9kOVE4WmJs?=
+ =?utf-8?B?bC9JaEJleS9TNklNTjdQT3hxWHkrRUFFN21zUS9LNEhrMWlUTU1QNjZqbTl1?=
+ =?utf-8?B?Q2JGQmxKVFljb1BHVEZIYnVXQkZhc003a1E0NGk2OTJybWd0dzBEVHVDV1Ra?=
+ =?utf-8?B?KytIMnplejdwbXU4SDB1alhmcGplMHUvclJoOUNRa2lGYmswWWhyaFY4U0ho?=
+ =?utf-8?B?RGU0UEZHSklhR3ZUc29kWG5ZTHRuNEU3RTFxTnRHRncvK0o2eWZWdkNQK1ZN?=
+ =?utf-8?B?Vm9NT1RDdVRac3lTM2JaY1l4NFN1L0xobGwyZ1JmZ2RoN3BQamhxVmZjeGNV?=
+ =?utf-8?B?Y1ZJTWRLSVI5OXMwUG83Y0tjZHNaVkZRaDlHcWFNaHgvSVFpWUtqU1I4QUZl?=
+ =?utf-8?B?KzA2NVdhWTN1eWhHNzQzL2FHTXNyeGxFaFZEb3ZoWjVyMHNTRVh1bHhYdGwv?=
+ =?utf-8?B?cXVRY0o0YzJQNkFwRGI2Uno0YkNiWHF3SDlkMDIyMHRJdEtQVFQyL2d6QjEr?=
+ =?utf-8?B?dVZ3Rzl6M2FaZmlBaDUwaHNjVU5BTmRLYXVmVjNpanh4QkFMUWVuNTI0Ujkv?=
+ =?utf-8?B?VEtpN0hXd3lXaU1iWEtKaFkyd3RzTE5haHB2QXNqbEdVQ2dlRDBqdXN2UE1T?=
+ =?utf-8?B?bllmRHhHdlRrRWVoa3doY21hb2Iwc2ZZSHBSYjg0S1pzSCtJcGI1S1czUG5P?=
+ =?utf-8?B?ZENITDRiYkt0WEJ2d2lpaEpDZjZSRnJqdTJKRFJpcTZOWnJIaWFqQ0dGanlh?=
+ =?utf-8?B?cmZPaWRtbFlpMHNzQkpMQXF1V3NOb2JSWlhSR1I4eUZIczdPTFpTYjBMK2Iw?=
+ =?utf-8?B?bkxqb0gxTGMwVVQwdGlCV1g2bG9PSjNEbFpTNFQ5QkdseWx6ZE1Vc1QwcHNL?=
+ =?utf-8?B?MXlaUFpZOUtRVjVybDluYUpFY1h4aUhhTkM0aFJrbDFuSmc3N1JFeGhvTFVI?=
+ =?utf-8?B?eWRnTjg1UXY1alQ4NHlEeDJkZkdUa1NOMzNyVWozTTM1cVdPeXRxZ29TdEp0?=
+ =?utf-8?B?NjBPM0FkMEtpQXBYTHV4MkEvSzM3ZkN1QkdLSDVMV3oxbEV5dlV1aElnUjlK?=
+ =?utf-8?B?RnBCbVM5Tk0rbTB3ZmZQN1p1Y0VOT3JjbXdvSFNqRWliRmNCb1VKWmJ3ZkVK?=
+ =?utf-8?B?ZFZNL0hSVTRIT3hKM1pHRC9aaW9qUjRwN2lHbmEzb0RvUFdUblZRSjhvSEFG?=
+ =?utf-8?B?VHJERkdCb1pGYi8yeGpiRXVBVHEvQ2JvQU1SeEh3VmdjckpMbTJhZ0VCUm9q?=
+ =?utf-8?B?K1NnOFNvMFdSU0EzZ0RpN2I5V05jcjJMcTk2clpnT2RLK0paelczT2lYYzVm?=
+ =?utf-8?B?KzV0TnE4SkprVHpRRm82TXlESTFOazQxYWRhbnFWOUljZ3RzTzViTGZ2Vmcw?=
+ =?utf-8?B?ZjYvL25JRjZxN0E2RllTcFBveU1tdGcxSjZvQ0dhSy9PclBrQnM0RUtPcklY?=
+ =?utf-8?B?M0dCM2Y5a001QlU0Y2JmTE8vSmNPK2lKTStmeWc2N09IRWQvb1J2NDBJemRo?=
+ =?utf-8?B?LzZ1VkdYMlk2M08xamY4ckQ1VFhyT085M015K0hFWGViWWN5c1g2K0dVQm42?=
+ =?utf-8?B?ZlJmS1BFQXZOLytpdExsdThWb3dvd2NlblhUSWwrck1uWkVhRlVuM2EvVEIw?=
+ =?utf-8?B?V3oxSHFFZ29ZcDR2NEpKZ2tBc1dFZjZYRnE2WnREVFdLdjZXcTE1L1d3Tll3?=
+ =?utf-8?B?cG9PUGlHekw0R3J5SUtUZDk5a2kwL3VvcDF6eUhWNnVqL3JIQkdpUitrNm1P?=
+ =?utf-8?Q?ZUgc=3D?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SA1PR11MB8492.namprd11.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(42112799006)(1800799024)(7416014)(376014)(366016)(7053199007);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WFE1dzBKWDV0RGQ5clRMSmtGMktlWjJWV3BBbmNtWm9qanQvVnFxL0dwdmNC?=
- =?utf-8?B?bURVZ3BKZlU5MVBnWHo4STBQbVZXOE5mS2g2NjFQQm42R3RQTXI2Y0xLY3Ax?=
- =?utf-8?B?eUNpTlBMNXpzSnd4V3FwRTNWazZQTFRvT0d2MW9nWGYveGh5NnNGd1ErYXhU?=
- =?utf-8?B?bDUvMW01K3RwQldNWUNuWHg2N3BhRUNWOTlyTXBWUEs0d2NLdUN4ZWN6U2Vh?=
- =?utf-8?B?RitWSk5zRmlFRlprTGgrT0MramVMZ3k3VXRPNVBHSDFvaTRWcnVJN0QzQm1X?=
- =?utf-8?B?OExjREhFVTlpZ3FXSDhySDZjT1dqdVB1VlNyUGdCZUhnOURnVW9iOUZrTk55?=
- =?utf-8?B?eXA0Z3l5bS9Va3QyZ1BUUEpTWmUwODZsVW9ZMEdRR290TTZ6RlNoYm5EcTYw?=
- =?utf-8?B?MVc4SCtOY3lRNFJRQUJ4SFN2Q3gzYzZiR01vbE5oamo2TE1zZm9vckp5ZFND?=
- =?utf-8?B?dmhBb2M2RkFWNXVHbVNReDZCZzhveGI4VUZrSHlKVUpKSThPaGJZdGZuMnJq?=
- =?utf-8?B?WjJjajdzSHMrR0w2NnlTN1RIS0ttRTRPazZCZUNwYkRqWG9wNDEyVy9YdW5a?=
- =?utf-8?B?K0ZyQjFDaDlzTDE5VTZqeDU4VTBrLzRFQ0J2ZTZKSGQxZXdERXhIR2VLVUNY?=
- =?utf-8?B?aE4zd3ZucDdaL0hOdUxuQmVYM3M0V21aZng5N1oxSTNvRVVlT3Z5UE5QaTJl?=
- =?utf-8?B?QU9XVVFJNVhscEtlZ094VjlJa0hjT0xnSktPdUI0QUg0UDNYKzFqc1R1WStv?=
- =?utf-8?B?TnAzVlVGVk5PSmN5WXJqVWNzZFR3ak0vQXhYd1NQODAweFVpSUFXNC96MlBG?=
- =?utf-8?B?L2tkVVZUbVVldmdkMGZZdFVXRitDR0l1MTI3a3JzSnZYSG41SlhZNFozaDkv?=
- =?utf-8?B?NHpSM2V1QktBQ3lmMlVGWU4rK3U2MzJRZHFJK01tZVZEZWJjcFVMWGFUamtK?=
- =?utf-8?B?OXNIUDdwbitpdVlRL04xRHphYmFoemdFNWdSQ0JVcXpVT1lhSVJUbnh3aFlj?=
- =?utf-8?B?eGpDYnRDTFNNT25ocFJIMXdSVVIxZlhVUE9MUzAwQ0ZSZ3lRaHpYa09QUXY0?=
- =?utf-8?B?QkFQZEhaWkVSL2tmYjBpZHkvRlRGSzhva0Nxd0RocHQ2RzA1K3VUREtOYlhy?=
- =?utf-8?B?VlJTdWRBTVkxbU5wOWhLWmJIcEpTWkk0bkc5ckp1Wk9WQTBmWUlKSVNXeGlu?=
- =?utf-8?B?TFl3ZWJobkIydG9iMzdaT2xEQTUrek4xNVJER2J2cUNUSzhkOFA2VE0zUjBy?=
- =?utf-8?B?aDVUelVlZGpIWE1aSis3V05qUm5IUEg5U0c3dDhYZFNqVXd6SHpCSEUrTnVr?=
- =?utf-8?B?SUh6OEgzUW51WHJlWVVncGhGMWExcTVvSC8rTHhDQzFNRVBQaFFmTW5DMis5?=
- =?utf-8?B?S3JsREJKWkJGNXM3YndFaVMzOEt3SDc5TmFZY3BwbHpaRDZQUVRMQ3REYTRt?=
- =?utf-8?B?YjFBcjd3eFAweEhtS0xDOGk0RE1iTVRENFdqTTRxT25ZMGJ2V1dMd2c1SFF1?=
- =?utf-8?B?YUF6ZG1MaW9xdkwvMi83WDNITXVZczF6MzN2Tm04MmR0VFdrMUJVSlFXeHZv?=
- =?utf-8?B?cmFSaXRJd1hBZTI0eXpyZU5wSmhCdm8xSXg5ZkJoSDlnWDVySW9RWjdIRFVI?=
- =?utf-8?B?bTZsQm9mVlp2WjdiQ1VZV3JOYWNtS2w3YUx4MUJnbFEwZjVEKzdBWDA3YWcr?=
- =?utf-8?B?MHdrYklLZE1BcUdrWXZGMjA2VDM4bDUzTXJOV2J2T3hnVEZZSStJVlRhS0ZW?=
- =?utf-8?B?YWpFbE1KR2JYQTdKKytvUjQvTElKMFdZM21BVFBkRXlFZTgvYlA5WDRISTZP?=
- =?utf-8?B?c1VraUhlSXFzZDIyRTdGUytHYTB2cGhqVXBNTHh1YlprZExGYWVvdmpSVWhX?=
- =?utf-8?B?Qngxd0U4MDltWHBrRys2VjBaWnZoR3pzbTZuT3k1cXAwei9SWU9QUE10VERo?=
- =?utf-8?B?VGdDVFFhT3ZVRmYrTUwzSFpsZG5iOWN5TGJXc1JjaXpKbDlVQWowZlNtVHNB?=
- =?utf-8?B?YkxWY20wVW5Fd0Jvam91Wk8zTGVnaXNaVmpYTFUyYllyZFpjdjdVc3JlYnRC?=
- =?utf-8?B?SCtvNGJOL2RYeGhWTEg4UytTRHlCR2NWUnVUTmxPZlo2NFhIVjNiV3JOcmMz?=
- =?utf-8?B?SjYwQ0l3cGtEa2lCcjZBL1NDOTluN1pMaUlZYVZSb3dPTTJvdUtzaXplT1NI?=
- =?utf-8?B?S29xRkpyU0FoZFZndWlEbFN2dDFMdHRIQlhZdVo5MkxiTmp4dmZoOWsvVEdv?=
- =?utf-8?B?dDdPOW1HZHVSYmY4K1ZNR3FRalMzQjdqRy9SNTZZT1A5eTdxYnB1SExHV3NR?=
- =?utf-8?B?MHZ0U2ZHV1AxTENWWkpHakthU0tKS3JVZEFQak9EV3VFK1Fya2lnZz09?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: a7e397de-8300-49f3-ed4e-08de5cd28c74
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZFRJdnV6d2NyQlM4amJheHBMNHFEaVpGb1M5elN0NFllU3JqQUpPV1V1b0pC?=
+ =?utf-8?B?UXlQdFlwTWdPY1hwaXJRQjBEZkt3cGludEhrU0w2a1I2d01qMVJuWC9FdVRu?=
+ =?utf-8?B?Q2VvSGZkZEJ5UTBNZWZwSjV0Z1dSNk5BN1Byd2xzeklxSHpNVDhITStmQUd0?=
+ =?utf-8?B?L2dPOE1HMFNRMi94bHZSeUU2YkRxOVRHei95VzQxTHh4NHNXTE81VWFsMEdy?=
+ =?utf-8?B?Uit3OFZRK2Vpc0hCbUlpT3pkN2VvUWtwK25WL1RMM2RGNzQ1MDFHOUtaMDdm?=
+ =?utf-8?B?THRTWlk3ajRmUFRoS3A5cTZrNkdDMnBqYjZpUzVLVGtuMkpRWW9GMmVkeGVq?=
+ =?utf-8?B?ZExHdUJJb1RjNmY2OExkQlRpL3p6bHNJZU04WG9ubFBQeFplNkpaUDZvcnkw?=
+ =?utf-8?B?amsrUGFDYXVjdUt6SmE3alpWbWFTNCtYRUQvWWpzR1pJYTk1SEp2aDdhU2V4?=
+ =?utf-8?B?eGRmQWdNZ3VkNjRoVDNkWWQ4ZDNnaVhXc3U2TzcyZS9COEJoUkVDT01Jak9s?=
+ =?utf-8?B?THJJYzRBNk1PRndQQnAyT1MrWVI1bURsMUxtMDQ0QkV6YndLSUI3U3hMYW1E?=
+ =?utf-8?B?Q3F3TWRtS2t4MDFOWXlUQ2s2WDJGc0lNSVlOUnpJa1RrOTBzTm95dkdUc1dx?=
+ =?utf-8?B?NHZnbko5THRZVWcyUnJZOVNWb3I0SDVNWXZDa2FZd25ZTERLakQvaHFTZThP?=
+ =?utf-8?B?RndsUzJTT2hRWGN6Y29OL1Jsck9BODdjdm5HSE9GSXNFNjNrdmdrWkRlV0l4?=
+ =?utf-8?B?WnVjOHJXODE1SFA2VHEwY3djUmhFQ0Q5VHcvcTRkdkw0YTJQRStOUkNNYUJT?=
+ =?utf-8?B?TEFsSjVkSldpeFBJUmllZGIrUUNTaWtuSDd6S09xeFVFa3NNUFdZRmM3alY3?=
+ =?utf-8?B?N2Z4Tmc2S0RGSmdMUVRsZ2xFY29mY1N6dElyNVV4U2pQU2pzb0ZpUzJEUFIr?=
+ =?utf-8?B?NEh2bGVZU2RvUTdqbVAxcHdTVUEzby84Z0NvZ3hjMGhiQnU3ZFJXMnJuUWtN?=
+ =?utf-8?B?ak9Cd1hnWmRtMDdnejg4V2xtR0hENEJtaWk3dzVhdXFla1NlRVIzYjZhWG9L?=
+ =?utf-8?B?NTdvYlJqUVRBdHl1ajZKU3JEc0Y3WWNYemJLc1hCbTkxTkl2czlpVWpmRWZm?=
+ =?utf-8?B?V1ByMnhrZDE4YnIrRW81akRrYkdEZGxKTEtVWUZFMXZmbEhQcFpVdjgzOHUz?=
+ =?utf-8?B?aWVrYUtQaHlFUmlsY2JyQXluKy9NRzJJNGh4U1h3SC9yMTBnMytJMWJ0ODhK?=
+ =?utf-8?B?aU9zVlUybzNWUlRZU3hUTk1CV0trRk52ZGsyTFlvQjRubFhYbWNKbXBVMktO?=
+ =?utf-8?B?VlJKUHVjQXRiSU84VTlzdXZvNEF4cmwzeVFCenVuVWNJM2tOVk9KTXFLc2t0?=
+ =?utf-8?B?NzZFWXZIeXlLZ1E0c0ZNbGJFNUhzeWxSMjJ1RkU4UGFpd3AvdTF3am1BWU9V?=
+ =?utf-8?B?TW1HanVCM2VNSnorZjZtTytzL05McFNMVGhVWHlIMnlFMlRwZHdySko1WkQ5?=
+ =?utf-8?B?ekNyblArejVKM3VydWVoSUZJS0lLZjc2Y2tNV0h5TDNTNXE3bGFoUG50MDRz?=
+ =?utf-8?B?Mjl0WGovY21TQUJ4NCszeTdBSFhmRnFwUGlYTjV0eWVMcVgrVXIzT3FRbHFI?=
+ =?utf-8?B?R0NLUjZ5YjFJb0orRjAvTWdtOFBTOTdkK2p5NmNBOEYrdUl4QkUvZC9qbkpD?=
+ =?utf-8?B?V0lidU8ycXdvRTg2b2syNGE0RDg0aGludGNrdHhhWnl4YUtJcm5mYnYxNy9n?=
+ =?utf-8?B?anQyQms0ZS9QNDlZS0xpUUlNMUIwWTEwSzVLZVBFLzBlQzNUM0g1ak5IM0pW?=
+ =?utf-8?B?azYzNkkzNUVDK0ZQUTQzS1hIME8vTk9pbU9tRHlUbFJUYWtyY1E5Vitkd1lr?=
+ =?utf-8?B?aFFVWjF4dzRmbk5jb3dMVVd5Nmc5QVo5L294STUvdVhUeXNVV3hvcmdidWZG?=
+ =?utf-8?B?VlRIbUZUbGVFLzl5MTZBUldsamNSOXJtQk1LTGFSak05Q2E5OHpQaEF2OXZO?=
+ =?utf-8?B?UWtNSGFBdmhzNjVtY21lRWFYc3V5d1hSUnlkcGlkc083L3l1S2k1dU0raHA1?=
+ =?utf-8?B?TkE3OXc2M3lIaURQeVpJYUkySkxrTXFrME4zSFE4SDRYMEN2Q21ENGdhN2RZ?=
+ =?utf-8?B?b1NqYXh5ZG1vOWMyWFF6T0VqcTJSTHFpbVNWTXRPVWVKdGkwM2dFelkzd1Y1?=
+ =?utf-8?B?dDZ5RHhmTWRjNEhaM3NLYVFvVEVEa3FvOFVjaXkyRkduK0xDTloraExwNXY0?=
+ =?utf-8?B?WDlVdEYrYzhPb1p6c3UwSFR3TlJrU1lEdlFIdU0xeXR5S0NCU21YaXZNQVhO?=
+ =?utf-8?B?RGhFWVlMMk9TalpiZDJTem5RdUE4d2Q5TmE0Vy9EeitsRS9KRHg2dz09?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 15625a05-8d01-44c6-29ec-08de5cd29115
 X-MS-Exchange-CrossTenant-AuthSource: SA1PR11MB8492.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Jan 2026 12:00:50.5185 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Jan 2026 12:00:58.3344 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: u0oM69Mjgvu3hOxJi08hT+T0pIwPMKLK0LUM25EszOnDkj8dttc5f1wFK1ob+3MW1z4kajMHb6URq2XZCSy/cg==
+X-MS-Exchange-CrossTenant-UserPrincipalName: 0DfzUTWzzdsfuMjjiShZV2rr73kLmNdYKF6nyNEENT4kMmLVGPeemmYDsF5DHFdhBLloITZHCg/ou6bDasa9hw==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM3PPF6A4412A55
 X-OriginatorOrg: intel.com
-Received-SPF: pass client-ip=192.198.163.11; envelope-from=yi.l.liu@intel.com;
+Received-SPF: pass client-ip=192.198.163.7; envelope-from=yi.l.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -43
 X-Spam_score: -4.4
@@ -225,136 +224,133 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 2026/1/26 18:43, Shameer Kolothum wrote:
-> Add pcie_insert_capability(), a helper to insert a PCIe extended
-> capability into an existing extended capability list at a caller
-> specified offset.
+> Retrieve PASID width from iommufd_backend_get_device_info() and store it
+> in HostIOMMUDeviceCaps for later use.
 > 
-> Unlike pcie_add_capability(), which always appends a capability to the
-> end of the list, this helper preserves the existing list ordering while
-> allowing insertion at an arbitrary offset.
-> 
-> The helper only validates that the insertion does not overwrite an
-> existing PCIe extended capability header, since corrupting a header
-> would break the extended capability linked list. Validation of overlaps
-> with other configuration space registers or capability-specific
-> register blocks is left to the caller.
-> 
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Tested-by: Eric Auger <eric.auger@redhat.com>
-> Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
 > Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
+> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+> Reviewed-by: Cédric Le Goater <clg@redhat.com>
+> Tested-by: Eric Auger <eric.auger@redhat.com>
 > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 > ---
->   hw/pci/pcie.c         | 69 +++++++++++++++++++++++++++++++++++++++++++
->   include/hw/pci/pcie.h |  2 ++
->   2 files changed, 71 insertions(+)
-> 
-> diff --git a/hw/pci/pcie.c b/hw/pci/pcie.c
-> index b302de6419..aa9024e532 100644
-> --- a/hw/pci/pcie.c
-> +++ b/hw/pci/pcie.c
-> @@ -1050,6 +1050,75 @@ static void pcie_ext_cap_set_next(PCIDevice *dev, uint16_t pos, uint16_t next)
->       pci_set_long(dev->config + pos, header);
->   }
->   
-> +/*
-> + * Insert a PCIe extended capability at a given offset.
-> + *
-> + * This helper only validates that the insertion does not overwrite an
-> + * existing PCIe extended capability header, as corrupting a header would
-> + * break the extended capability linked list.
-> + *
-> + * The caller must ensure that (offset, size) does not overlap with other
-> + * registers or capability-specific register blocks. Overlaps with
-> + * capability-specific registers are not checked and are considered a
-> + * user-controlled override.
-> + *
-> + * Note: Best effort helper. The PCIe spec does not require extended
-> + * capabilities to be ordered, but most devices use a forward-linked list.
-> + * Devices that do not consistently use a forward-linked list may cause
-> + * insertion to fail.
-> + */
-> +bool pcie_insert_capability(PCIDevice *dev, uint16_t cap_id, uint8_t cap_ver,
-> +                            uint16_t offset, uint16_t size)
-> +{
-> +    uint16_t pos = PCI_CONFIG_SPACE_SIZE, prev = 0;
-> +    uint32_t header;
-> +
-> +    assert(pci_is_express(dev));
-> +
-> +    if (!QEMU_IS_ALIGNED(offset, PCI_EXT_CAP_ALIGN) ||
-> +        size < 8 ||
-> +        offset < PCI_CONFIG_SPACE_SIZE ||
-> +        offset >= PCIE_CONFIG_SPACE_SIZE ||
-> +        offset + size > PCIE_CONFIG_SPACE_SIZE) {
-> +        return false;
-> +    }
-> +
-> +    header = pci_get_long(dev->config + pos);
-> +    if (!header) {
-> +        /* No extended capability present, insertion must be at the ECAP head */
-> +        if (offset != pos) {
-> +            return false;
-> +        }
-> +        pci_set_long(dev->config + pos, PCI_EXT_CAP(cap_id, cap_ver, 0));
-> +        goto out;
-> +    }
-> +
-> +    while (header && pos && offset >= pos) {
-> +        uint16_t next = PCI_EXT_CAP_NEXT(header);
-> +
-> +        /* Reject insertion inside an existing ECAP header (4 bytes) */
-> +        if (offset < pos + PCI_EXT_CAP_ALIGN) {
-> +            return false;
-> +        }
-
-TBH. I was expecting to see a table that is similar with 
-pci_ext_cap_length[][1], and a helper to walk the ext cap list
-to figure out the spared pos. But it might be over-enginering as
-we rely more on user to give an offset that is for sure no conflict
-with existing ecaps nor hidden registers. Could you also add a comment
-in the code to note it?
-
-[1] 
-https://github.com/torvalds/linux/blob/63804fed149a6750ffd28610c5c1c98cce6bd377/drivers/vfio/pci/vfio_pci_config.c#L71
-
-With the above nit, LGTM.
+>   backends/iommufd.c                 | 6 +++++-
+>   hw/arm/smmuv3-accel.c              | 3 ++-
+>   hw/vfio/iommufd.c                  | 6 ++++--
+>   include/system/host_iommu_device.h | 3 +++
+>   include/system/iommufd.h           | 3 ++-
+>   5 files changed, 16 insertions(+), 5 deletions(-)
 
 Reviewed-by: Yi Liu <yi.l.liu@intel.com>
 
-> +        prev = pos;
-> +        pos = next;
-> +        header = pos ? pci_get_long(dev->config + pos) : 0;
-> +    }
-> +
-> +    pci_set_long(dev->config + offset, PCI_EXT_CAP(cap_id, cap_ver, pos));
-> +    if (prev) {
-> +        pcie_ext_cap_set_next(dev, prev, offset);
-> +    }
-> +
-> +out:
-> +    /* Make capability read-only by default */
-> +    memset(dev->wmask + offset, 0, size);
-> +    memset(dev->w1cmask + offset, 0, size);
-> +    /* Check capability by default */
-> +    memset(dev->cmask + offset, 0xFF, size);
-> +    return true;
-> +}
->   /*
->    * Caller must supply valid (offset, size) such that the range wouldn't
->    * overlap with other capability or other registers.
-> diff --git a/include/hw/pci/pcie.h b/include/hw/pci/pcie.h
-> index c880ae1e04..d68bfa6257 100644
-> --- a/include/hw/pci/pcie.h
-> +++ b/include/hw/pci/pcie.h
-> @@ -133,6 +133,8 @@ uint16_t pcie_find_capability(PCIDevice *dev, uint16_t cap_id);
->   void pcie_add_capability(PCIDevice *dev,
->                            uint16_t cap_id, uint8_t cap_ver,
->                            uint16_t offset, uint16_t size);
-> +bool pcie_insert_capability(PCIDevice *dev, uint16_t cap_id, uint8_t cap_ver,
-> +                            uint16_t offset, uint16_t size);
->   void pcie_sync_bridge_lnk(PCIDevice *dev);
+> diff --git a/backends/iommufd.c b/backends/iommufd.c
+> index e3a3c1480e..9b63d74083 100644
+> --- a/backends/iommufd.c
+> +++ b/backends/iommufd.c
+> @@ -389,7 +389,8 @@ bool iommufd_backend_get_dirty_bitmap(IOMMUFDBackend *be,
 >   
->   void pcie_acs_init(PCIDevice *dev, uint16_t offset);
+>   bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
+>                                        uint32_t *type, void *data, uint32_t len,
+> -                                     uint64_t *caps, Error **errp)
+> +                                     uint64_t *caps, uint8_t *max_pasid_log2,
+> +                                     Error **errp)
+>   {
+>       struct iommu_hw_info info = {
+>           .size = sizeof(info),
+> @@ -408,6 +409,9 @@ bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
+>       g_assert(caps);
+>       *caps = info.out_capabilities;
+>   
+> +    if (max_pasid_log2) {
+> +        *max_pasid_log2 = info.out_max_pasid_log2;
+> +    }
+>       return true;
+>   }
+>   
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index ea420afeb7..342944da23 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -121,7 +121,8 @@ smmuv3_accel_hw_compatible(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+>       uint64_t caps;
+>   
+>       if (!iommufd_backend_get_device_info(idev->iommufd, idev->devid, &data_type,
+> -                                         &info, sizeof(info), &caps, errp)) {
+> +                                         &info, sizeof(info), &caps, NULL,
+> +                                         errp)) {
+>           return false;
+>       }
+>   
+> diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
+> index 2947e1b80f..131612eb83 100644
+> --- a/hw/vfio/iommufd.c
+> +++ b/hw/vfio/iommufd.c
+> @@ -398,7 +398,7 @@ static bool iommufd_cdev_autodomains_get(VFIODevice *vbasedev,
+>        */
+>       if (!iommufd_backend_get_device_info(vbasedev->iommufd, vbasedev->devid,
+>                                            &type, &caps, sizeof(caps), &hw_caps,
+> -                                         errp)) {
+> +                                         NULL, errp)) {
+>           return false;
+>       }
+>   
+> @@ -939,19 +939,21 @@ static bool hiod_iommufd_vfio_realize(HostIOMMUDevice *hiod, void *opaque,
+>       HostIOMMUDeviceCaps *caps = &hiod->caps;
+>       VendorCaps *vendor_caps = &caps->vendor_caps;
+>       enum iommu_hw_info_type type;
+> +    uint8_t max_pasid_log2;
+>       uint64_t hw_caps;
+>   
+>       hiod->agent = opaque;
+>   
+>       if (!iommufd_backend_get_device_info(vdev->iommufd, vdev->devid, &type,
+>                                            vendor_caps, sizeof(*vendor_caps),
+> -                                         &hw_caps, errp)) {
+> +                                         &hw_caps, &max_pasid_log2, errp)) {
+>           return false;
+>       }
+>   
+>       hiod->name = g_strdup(vdev->name);
+>       caps->type = type;
+>       caps->hw_caps = hw_caps;
+> +    caps->max_pasid_log2 = max_pasid_log2;
+>   
+>       idev = HOST_IOMMU_DEVICE_IOMMUFD(hiod);
+>       idev->iommufd = vdev->iommufd;
+> diff --git a/include/system/host_iommu_device.h b/include/system/host_iommu_device.h
+> index ab849a4a82..bfb2b60478 100644
+> --- a/include/system/host_iommu_device.h
+> +++ b/include/system/host_iommu_device.h
+> @@ -30,6 +30,8 @@ typedef union VendorCaps {
+>    * @hw_caps: host platform IOMMU capabilities (e.g. on IOMMUFD this represents
+>    *           the @out_capabilities value returned from IOMMU_GET_HW_INFO ioctl)
+>    *
+> + * @max_pasid_log2: width of PASIDs supported by host IOMMU device
+> + *
+>    * @vendor_caps: host platform IOMMU vendor specific capabilities (e.g. on
+>    *               IOMMUFD this represents a user-space buffer filled by kernel
+>    *               with host IOMMU @type specific hardware information data)
+> @@ -37,6 +39,7 @@ typedef union VendorCaps {
+>   typedef struct HostIOMMUDeviceCaps {
+>       uint32_t type;
+>       uint64_t hw_caps;
+> +    uint8_t max_pasid_log2;
+>       VendorCaps vendor_caps;
+>   } HostIOMMUDeviceCaps;
+>   #endif
+> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+> index 567dfb7b1d..80d72469a9 100644
+> --- a/include/system/iommufd.h
+> +++ b/include/system/iommufd.h
+> @@ -71,7 +71,8 @@ int iommufd_backend_unmap_dma(IOMMUFDBackend *be, uint32_t ioas_id,
+>                                 hwaddr iova, uint64_t size);
+>   bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
+>                                        uint32_t *type, void *data, uint32_t len,
+> -                                     uint64_t *caps, Error **errp);
+> +                                     uint64_t *caps, uint8_t *max_pasid_log2,
+> +                                     Error **errp);
+>   bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
+>                                   uint32_t pt_id, uint32_t flags,
+>                                   uint32_t data_type, uint32_t data_len,
 

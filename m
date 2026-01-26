@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ABA7D1950F
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 17:49:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C666ED1950F
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 17:50:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkQd8-0001eQ-Jw; Mon, 26 Jan 2026 12:44:02 -0500
+	id 1vkQd8-0001e7-BU; Mon, 26 Jan 2026 12:44:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkQcq-0001QF-Sm
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:45 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ id 1vkQci-0001Lh-NF
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:39 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkQco-00008O-7Q
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:44 -0500
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-4359a316d89so3553899f8f.0
- for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 09:43:41 -0800 (PST)
+ id 1vkQcg-0008Vm-9F
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:36 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4801d98cf39so35237565e9.1
+ for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 09:43:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1769449421; x=1770054221; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1769449412; x=1770054212; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wFBy+jh5YBiZ6vn3keOL2UaLzu0U6mepC8EFxBaBwtg=;
- b=F9VjDdDtdq2HvE9ucXsvSBNV9dGoIF8X3sJQQ2mu4sLWWGEhtmR4iAOwv3IRd/gw/Y
- xzQyTUvrxaPK+NpnB295k3KN5+7zgRivD3xupMtqOrQtAd6i2TnG6KIsJV6yKQXAU24P
- fIHWCChCPmd0Q9VYO8AAgYiZVDaiayxczhVFzzygm9DZZC5IGpgVHLvWjH2rwAZj7HxV
- PbH2ccJFkcuPSbc39Nq7dLBn1aevG950A5WPxG7JSzconcLMcjN+JkswEB1dEkMDJwP4
- h+17iZncfA2ftMHdcnOv5BSI0Ipm1uzzLvV9dSl3uw5HpsVOYWciuVp07S66V+tUVAaG
- saQg==
+ bh=BlJN0+7cHw6gzdkYqCEdBJkW8sO5/Cp3u22Anlum/aE=;
+ b=Q0DTvAeUbjYRbljlEhRA4E+YWADBpxiA72//BNwDQv1Hjh+87pEtwO02UGTkfV7YA9
+ xz2Ps/awO13k3jyF5a2Wwfmp4xGuKx53CAQ1IYzpAT7OJ6ThsIttK0pVJ31c3fhFuTxI
+ d3decElPRAcC29OQJNgXhlgVtLcLN1bcCBKvhb7HoRyaho/Q4TNMZ8m8mWJJQ+tMhrX4
+ jaNJ96cETZ8UQCOXv+92wXtvf6XlX3klI1IG1lxlfXfqKuhGs+qPP/rlsduNjNzaiRpv
+ wbN3nqmQkaVjyL0UhVr6VcrDHy0lwZJ5nNiSJm8NxWoGOFuQkpjJQ3PHbkIA3xTa4C3w
+ xNvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769449421; x=1770054221;
+ d=1e100.net; s=20230601; t=1769449412; x=1770054212;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=wFBy+jh5YBiZ6vn3keOL2UaLzu0U6mepC8EFxBaBwtg=;
- b=GEm9k9uR6mT8yEzKr/8ioah9rtmSqPC4JG94J2q3g9nJ9ljfs4AROGGNCYtyxXGmkC
- s+FUulkb7JB+oANkK5PKN5bdNpx/jMpL5R1g2Pvc4NeSymQXX22eZ16VrfV/1pK2zmmg
- JaoxLoHwHNZZYQGj02pYXPcORM7Ni02RnzPdfD3siNIi/DIjy+MZarrH9sWbz9Z+3VG2
- ZYHbm74M5IcI/qbLBqREkiMg277bCX3kcn6AHOb4VcfNd/EUSP3Wjb+HXNYN6+WOCzPn
- FOqV5aJH+pcV27EPVT5M5A1wJbaKwP7Oh7U+vALtP6H93khJgZqq9JleuOjmGKmtI2pw
- oATQ==
-X-Gm-Message-State: AOJu0YwG/s6vkQyty5tgdJutKVkWYq2pYgVXRFJm6kxEyMWEyNOEK0IV
- oULYybB+lq+Bn/V+x5kveobx592TmJnY7UT+ze7LVUu1PEAVvI6+jNHQ
-X-Gm-Gg: AZuq6aKpf8CRzFrSgj0lCOjV9lzVCT0PQ+bGs8R1PEE+XiyD2RSh5BRwmtxZSRJiU0h
- x0xF1U0AgoOTKCvqrdofgkaPQ2OA/9c8/2vugw2LCbxYP0TNEDynsrXzrFVSbfuadjuFF/fZS+P
- x3mw7gGRshM46tNV70eAA9mWzsmY/VT+ACBopZokAHfsUc414gMZ71FEy3z6GY8U0QFX7W807vp
- 801ABYTG729ECaZ19cTgrXqtdlb7fGOpmvYj7WkDi2BuWRA53vFsSRIr4Knb86e3PuXGd5aZhSR
- 9vlSDGzYHIboXuYHPric9UkQWwMuWsyTMPL1ThAUHdw9X5M3ob0KbwEmtHNBdYyygGhzO2X0vxU
- ezoqaExNjU/7LxwVjXcstDc6V/qMKFbzhvvPcBrNvYbyjauOUdlNBVQoG6wTYUY2s0bHyAxf2Ic
- GJAGaZOgOPzY1BD8MOzoa1OonHMeOPaFqGN5XsE2t3z9sCGcuoy1AzbA==
-X-Received: by 2002:a05:6000:2905:b0:435:a48a:123f with SMTP id
- ffacd0b85a97d-435ca13646bmr8352236f8f.42.1769449420697; 
- Mon, 26 Jan 2026 09:43:40 -0800 (PST)
+ bh=BlJN0+7cHw6gzdkYqCEdBJkW8sO5/Cp3u22Anlum/aE=;
+ b=muROSzt0Q9Zk2Ieas+u3IRVi+Nrzlx/xngns7cM9WUKjnuSEPNZncr+aa5ibpzLcGM
+ BbDgkMU0nw2VefoTZJASAr98NHCeoUJDWJWrpsZnwMS9JBpl/oUzmknNAjpUCG86ENXQ
+ LxyeokOsoEf+ZKovyCY2/Iac+1SkTMwXcfw7qfJHF2aMBoh87cGt6WvLRXdUIUIVjogk
+ d4M/FIyRZR+MExCD7K1drrbbdCDeDLiystbb61aFUGYJGOa5yYbXTpB3VaLCdoZ0blwq
+ eUVRYSU5fexMCIZKVFpA7rYtdMOE3ii0uctlnvDHlE1Ej23yPBbSULjBdw55FBxeQ9+L
+ SMdw==
+X-Gm-Message-State: AOJu0YwVtzd2Mk0JaL4QwEkpt8MxMhF29hDRxeRIBWqa31PLzvBw97FH
+ g8i/ftj1qx6n7sZTYa5fqAObuePiyy5YJ3q3fnO/CegihC3nujvwdD1/
+X-Gm-Gg: AZuq6aIXGhwxLbSxfqjFERExfxM4slHegaNGRR2RS+arsiHOinbfLYlB0DNZ/Tmz1Dy
+ u2dxzhoT9vXMgGjzJtoYQXTvcWis88eEZGBIfWIJ48og7Yrdy3kWiWfGn0ZLCbheld2Gjc1g/Qd
+ /zyaKDryNCsFuoleQtnFmItITM919IlmiUUjmdX+XJHUuZIdmtBviguq05B+/RGTtHpJ1Umyqn+
+ 1u+CCu+agVPdDJxxHW3hjhM8fwCVgezNWlEUTbRzGq3yCAhhmFpC/WdpRao1Bos7ksMslU4QVzG
+ 1l289dWEifHnGfiU2MXHBU+0E0bX0EuHVUXX0MaJX/zI+puJOT7PUKbNfBXcoQ7FOknOd+XYazx
+ w2nVPXhdfoW2FfqJX6aCN/ws2/tqBxzXmMgt9u/k5otAjBE2S1AFVdOIrmwcHkgDXAoiMJTsbrQ
+ I9EqPfUivrfZPJsvxqGzRhOhiwQnVfbMbUd97pjvmrsZY5GIZel1tL7g==
+X-Received: by 2002:a05:600c:4f09:b0:480:4a5a:bd53 with SMTP id
+ 5b1f17b1804b1-4805cf5f8famr77269185e9.21.1769449411982; 
+ Mon, 26 Jan 2026 09:43:31 -0800 (PST)
 Received: from thinkpad-t470s.. (93-143-71-105.adsl.net.t-com.hr.
  [93.143.71.105]) by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-435b1e71730sm34199603f8f.26.2026.01.26.09.43.39
+ ffacd0b85a97d-435b1e71730sm34199603f8f.26.2026.01.26.09.43.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Jan 2026 09:43:40 -0800 (PST)
+ Mon, 26 Jan 2026 09:43:31 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
  volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Ruslan_Ruslichenko@epam.com
-Subject: [PATCH 17/27] hw/core: add fdt_generic to the build
-Date: Mon, 26 Jan 2026 18:43:03 +0100
-Message-ID: <20260126174313.1418150-18-ruslichenko.r@gmail.com>
+Subject: [PATCH 08/27] hw/core/fdt_generic_util: implement fdt_init_qdev
+Date: Mon, 26 Jan 2026 18:42:54 +0100
+Message-ID: <20260126174313.1418150-9-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
 References: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,27 +104,264 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Add `fdt_generic.c` and `fdt_generic_util.c` to build
-by default.
+Implement main routine to create device object from
+compat.
+
+The following steps implemented:
+
+- parse node compatible and device types
+- try to create object from compat
+- set correct parent based on device tree.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/meson.build | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/core/fdt_generic_util.c | 224 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 224 insertions(+)
 
-diff --git a/hw/core/meson.build b/hw/core/meson.build
-index b5a545a0ed..6d6434b570 100644
---- a/hw/core/meson.build
-+++ b/hw/core/meson.build
-@@ -28,6 +28,8 @@ system_ss.add(when: 'CONFIG_EIF', if_true: [files('eif.c'), zlib, libcbor, gnutl
+diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
+index 4338dc956b..74310e9eb3 100644
+--- a/hw/core/fdt_generic_util.c
++++ b/hw/core/fdt_generic_util.c
+@@ -40,6 +40,7 @@
+ #include "qemu/config-file.h"
+ #include "hw/core/boards.h"
+ #include "qemu/option.h"
++#include "hw/cpu/cluster.h"
  
- system_ss.add(files(
-   'cpu-system.c',
-+  'fdt_generic.c',
-+  'fdt_generic_util.c',
-   'fw-path-provider.c',
-   'gpio.c',
-   'hotplug.c',
+ #ifndef FDT_GENERIC_UTIL_ERR_DEBUG
+ #define FDT_GENERIC_UTIL_ERR_DEBUG 3
+@@ -235,8 +236,231 @@ static int simple_bus_fdt_init(char *node_path, FDTMachineInfo *fdti)
+     return 0;
+ }
+ 
++/* FIXME: figure out a real solution to this */
++
++#define DIGIT(a) ((a) >= '0' && (a) <= '9')
++#define LOWER_CASE(a) ((a) >= 'a' && (a) <= 'z')
++
++static void trim_version(char *x)
++{
++    long result;
++
++    for (;;) {
++        x = strchr(x, '-');
++        if (!x) {
++            return;
++        }
++        if (DIGIT(x[1])) {
++            /* Try to trim Xilinx version suffix */
++            const char *p;
++
++            qemu_strtol(x + 1, &p, 0, &result);
++
++            if (*p == '.') {
++                *x = 0;
++                return;
++            } else if (*p == 0) {
++                return;
++            }
++        } else if (x[1] == 'r' && x[3] == 'p') {
++            /* Try to trim ARM version suffix */
++            if (DIGIT(x[2]) && DIGIT(x[4])) {
++                *x = 0;
++                return;
++            }
++        }
++        x++;
++    }
++}
++
++static void substitute_char(char *s, char a, char b)
++{
++    for (;;) {
++        s = strchr(s, a);
++        if (!s) {
++            return;
++        }
++        *s = b;
++        s++;
++    }
++}
++
++static inline const char *trim_vendor(const char *s)
++{
++    /* FIXME: be more intelligent */
++    const char *ret = memchr(s, ',', strlen(s));
++    return ret ? ret + 1 : s;
++}
++
++static Object *fdt_create_from_compat(const char *compat, char **dev_type)
++{
++    Object *ret = NULL;
++    char *c = g_strdup(compat);
++
++    /* Try to create the object */
++    ret = object_new(c);
++
++    if (!ret) {
++        /* Trim the version off the end and try again */
++        trim_version(c);
++        ret = object_new(c);
++
++        if (!ret) {
++            /* Replace commas with full stops */
++            substitute_char(c, ',', '.');
++            ret = object_new(c);
++        }
++    }
++
++    if (!ret) {
++        /*
++         * Restart with the orginal string and now replace commas with full
++         * stops and try again. This means that versions are still included.
++         */
++        g_free(c);
++        c = g_strdup(compat);
++        substitute_char(c, ',', '.');
++        ret = object_new(c);
++    }
++
++    if (dev_type) {
++        *dev_type = c;
++    } else {
++        g_free(c);
++    }
++
++    if (!ret) {
++        const char *no_vendor = trim_vendor(compat);
++
++        if (no_vendor != compat) {
++            return fdt_create_from_compat(no_vendor, dev_type);
++        }
++    }
++    return ret;
++}
++
++/*
++ * Error handler for device creation failure.
++ *
++ * We look for qemu-fdt-abort-on-error properties up the tree.
++ * If we find one, we abort with the provided error message.
++ */
++static void fdt_dev_error(FDTMachineInfo *fdti, char *node_path, char *compat)
++{
++    const char *abort_on_error;
++    const char *warn_on_error;
++
++    warn_on_error = qemu_fdt_getprop(fdti->fdt, node_path,
++                                   "qemu-fdt-warn-on-error", 0,
++                                   true, NULL);
++    abort_on_error = qemu_fdt_getprop(fdti->fdt, node_path,
++                                   "qemu-fdt-abort-on-error", 0,
++                                   true, NULL);
++    if (warn_on_error) {
++        if (strncmp("device_type", compat, strlen("device_type"))) {
++            warn_report("%s: %s", compat, warn_on_error);
++        }
++    }
++
++    if (abort_on_error) {
++        error_report("Failed to create %s", compat);
++        error_setg(&error_fatal, "%s", abort_on_error);
++    }
++}
++
+ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
+ {
++    Object *dev, *parent;
++    char *dev_type = NULL;
++    char parent_node_path[DT_PATH_LENGTH];
++
++    if (!compat) {
++        return 1;
++    }
++    dev = fdt_create_from_compat(compat, &dev_type);
++    if (!dev) {
++        DB_PRINT_NP(1, "no match found for %s\n", compat);
++        fdt_dev_error(fdti, node_path, compat);
++        return 1;
++    }
++    DB_PRINT_NP(1, "matched compat %s\n", compat);
++
++    /* Do this super early so fdt_generic_num_cpus is correct ASAP */
++    if (object_dynamic_cast(dev, TYPE_CPU)) {
++        fdt_generic_num_cpus++;
++        DB_PRINT_NP(0, "is a CPU - total so far %d\n", fdt_generic_num_cpus);
++    }
++
++    if (qemu_devtree_getparent(fdti->fdt, parent_node_path, node_path)) {
++        abort();
++    }
++    while (!fdt_init_has_opaque(fdti, parent_node_path) &&
++           !object_dynamic_cast(dev, TYPE_CPU)) {
++        fdt_init_yield(fdti);
++    }
++
++    parent = fdt_init_get_opaque(fdti, parent_node_path);
++
++    if (object_dynamic_cast(dev, TYPE_CPU)) {
++        parent = fdt_init_get_cpu_cluster(fdti, parent, compat);
++    }
++
++    if (dev->parent) {
++        DB_PRINT_NP(0, "Node already parented - skipping node\n");
++    } else if (parent) {
++        DB_PRINT_NP(1, "parenting node\n");
++        object_property_add_child(OBJECT(parent),
++                              qemu_devtree_get_node_name(fdti->fdt, node_path),
++                              OBJECT(dev));
++        if (object_dynamic_cast(dev, TYPE_DEVICE)) {
++            Object *parent_bus = parent;
++            unsigned int depth = 0;
++
++            DB_PRINT_NP(1, "bus parenting node\n");
++            /* Look for an FDT ancestor that is a Bus.  */
++            while (parent_bus && !object_dynamic_cast(parent_bus, TYPE_BUS)) {
++                /*
++                 * Assert against insanely deep hierarchies which are an
++                 * indication of loops.
++                 */
++                assert(depth < 4096);
++
++                parent_bus = parent_bus->parent;
++                depth++;
++            }
++
++            if (!parent_bus
++                && object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
++                /*
++                 * Didn't find any bus. Use the default sysbus one.
++                 * This allows ad-hoc busses belonging to sysbus devices to be
++                 * visible to -device bus=x.
++                 */
++                parent_bus = OBJECT(sysbus_get_default());
++            }
++
++            if (parent_bus) {
++                qdev_set_parent_bus(DEVICE(dev), BUS(parent_bus),
++                                    &error_abort);
++            }
++        }
++    } else {
++        DB_PRINT_NP(1, "orphaning node\n");
++        if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE)) {
++            qdev_set_parent_bus(DEVICE(dev), BUS(sysbus_get_default()),
++                                &error_abort);
++        }
++
++        /* FIXME: Make this go away (centrally) */
++        object_property_add_child(
++                              object_get_root(),
++                              qemu_devtree_get_node_name(fdti->fdt, node_path),
++                              OBJECT(dev));
++    }
++    fdt_init_set_opaque(fdti, node_path, dev);
++
++    g_free(dev_type);
++
+     return 0;
+ }
+ 
 -- 
 2.43.0
 

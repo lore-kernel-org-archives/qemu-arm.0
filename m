@@ -4,83 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CB4BD1950F
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 17:49:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EA8BD19502
+	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 17:49:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkQcz-0001Ul-1L; Mon, 26 Jan 2026 12:43:54 -0500
+	id 1vkQcy-0001UE-BK; Mon, 26 Jan 2026 12:43:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkQce-0001J2-C5
+ id 1vkQcf-0001Jf-F7
  for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:34 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkQcZ-0008Td-PQ
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:31 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-47d6a1f08bbso22210365e9.2
- for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 09:43:26 -0800 (PST)
+ id 1vkQcc-0008UC-D7
+ for qemu-arm@nongnu.org; Mon, 26 Jan 2026 12:43:32 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-47ee3da7447so37882255e9.0
+ for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 09:43:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1769449405; x=1770054205; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1769449408; x=1770054208; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=DLzeXSL2t2tbTXzCZtblMBZrbAJVOypOntKEo8XJDH4=;
- b=jmRlJmKMp+42ey7w8C3UleibYyOnxZmlb7VO2sX7lvLPBQPciMOzk2Ksuft/GeSAgU
- /AALgom5Jo9aFjEy+id3Sp7Sc3HHUD9tu3rs5VlF7RD9uPjlLSzN2UfL7+0orQuniLFp
- 6n2NhnjYXrsza8QiJYnWubyJ93DcoVaLqqMTMzbbPhaYz0zbSmLDHuK5rxeCqLuqOLJo
- vlFEGzSPFVBXztdGRHAHTEBOeYqkZndyoRqloU/Y77RZoDDTLXMCflTMKNMAAZ3Dnyev
- +c9oHighWjuCy1UB7I4xIsQNSr2ATd2XUjoej+EwpJYtlxTwq5g6Blq6pBldfYL3OjmH
- tX4w==
+ bh=MEJ+cQW0XDvgt8fKdFK82Ac1+oKK3ySwvUaxyxGmSvw=;
+ b=Cwl5DC09tNLdo2NzTslCeubd4bfJzL0utdd0OfGSmUkc2jo0JCsrsOyKrB6k/zeyFd
+ WcfleRhMlt2MBJvgTY3cytEnSc2SSYVC5RcgFUkE3T8TKpvdzryPG5/ceug/zT8crWEg
+ 1rXbWRwzqEZEzqCV4smcsWXfs1yFa+vmEnbr2n+Bj6sIsTdwT4FxzIWHCnV3sBH8LyZX
+ lXNqEc82bEezfO4FSxGQ4XyzqbIHY0kLut3FJlOLKJarSvJvTqjRqjBH8p9ZKHG7Ww9d
+ EKBdCAtjALiOPj1lEVQsVV/c5MSRcjowUjWHvEUufWukHlsZUfNIjk9snB35zLMTtMB3
+ vjlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769449405; x=1770054205;
+ d=1e100.net; s=20230601; t=1769449408; x=1770054208;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=DLzeXSL2t2tbTXzCZtblMBZrbAJVOypOntKEo8XJDH4=;
- b=tMxo8Frz5+3L8Nplk6LaZyqXUHD+xxGnr7H08Korz1i8uS609c3zQ34p3+FvOvf6Y6
- Q05vYP1FQTGij46Pt8cEcmxmH6vgbYyOdfO1IAZz/COLzTiKj+Ka9EMd+9Lc2K/GCyUQ
- Z71iJYKcZqwYpPMjmbKLElzmyrGIGZzMBWhQDF7iXUnX98bt94O6+sAQkMn0dftC3HEk
- MlmqwPvrXcF4r5s26CXjp9h/LeRVXHNRvtqusC9PcUyvgilwiUJ2iC86VCnwl2MdwS1U
- um8NjZj7bY2pq/KKd/yV5yDUGSThtv/Nf/fh5xGutziItuibeB8ZS85uvaO1jn5WGDpo
- 1s2w==
-X-Gm-Message-State: AOJu0YwhPIa2L4Vb5dBSnVXELnW06WHiyZYpmtiqKt6HnyOdNWm6X2qJ
- O3Kyar8yNUUZjZVa6UudUoetvupEFjLsisg89JVG9GGThwDGK6L8qSAF
-X-Gm-Gg: AZuq6aJLeefy5O6hDpV1l02EmZL3qkj8plqC87lDMxPk8RDLvFr9/z9rvv2IgFJEAyJ
- IRqIQM1TGlom1VZsmXqd7SaJloybTjyHo95fCJrZg+YcqSGdV4tlue+ePLn4o8ojHF4RKrwABuW
- 5QRI084eEOZx1Udb1aQnGi+4LwTT+GzQ3txUAgWR/4yCULabYk84/dCXcmz491dTw87ck4N1yYr
- XrGCLKTezMVauRga52eLLxzLOg2e2lo/NTEwIF9ECXeC+tYco4a5eBHSTEOXF8DaSdbr5KDvbrK
- DvNfrnjsZUiwAynCBkuNbzy8VLycWTP3o5SK2mg+CvxH4zKHNFXUrrcnCV68U14sxGooEBfkTZj
- IyMwLs+6xTXbgvtrE4CBFNK2qZhGAnWk6qwQDcfy7zBWDNb977dgtygSuJJNQOxzuN5SdVjMRLF
- nPdFLBR4N8wYn4JSqHDb0jgwJBSOMKvFgX63VEUCJckyWDvE/MwR18iA==
-X-Received: by 2002:a05:600c:3b9d:b0:47e:de23:dd6f with SMTP id
- 5b1f17b1804b1-4805ce42a6dmr88712645e9.12.1769449404881; 
- Mon, 26 Jan 2026 09:43:24 -0800 (PST)
+ bh=MEJ+cQW0XDvgt8fKdFK82Ac1+oKK3ySwvUaxyxGmSvw=;
+ b=MjAKgdfBzG7exWdxtwrp28nc9vD+2NZncJeESqT0Xy1WmRNz6z6gdnNCm17c4/ofkC
+ J4L5115VtHpnopBo2RxWPpwydWjAhalqPRbJwyzWl00Jmjh0NeQb0RxkGH3wEF4mwB+p
+ gT4e6d95nYs3bf7JVv5/BPqtR1QBDbRARhdbmeD2CFLaqjw+Yb5W65ZO2skjOrZFRZ42
+ Zh3NAWPg9/0WgxhNf9m73hq9QXFTq6oRxFtqhzy5s5ciFwKz7EoTyPpU074Ddl9n8k8g
+ eQirySFmolKFRffjiPMe3CEecXZZR1fxSklnIcgZBTqE6ssTFO0cTcFRg775/6CJBMqS
+ k19Q==
+X-Gm-Message-State: AOJu0YyDZCEi07EymMyhvLhKOy3YkpH6RQOmW9BRBZfLdGhemk/3j1My
+ zyRH7Ed/vDvMGL63TL+YDcGdXLMFIjWbSdxy9OHiytVsqGWQxkz9jZ/a
+X-Gm-Gg: AZuq6aLxWZXKUK0KQqI+o5KZB4gY//9sD+826M8H8CfmIHrNA4Sk9Te/pVMK2XpCdmW
+ kRuaxPAC14nNREMrbw9tR2GJesi4wQJAHVBZKtnQ8K06AFMD2llSA/V6Qo1HYu5MnX/Gd9jdjKN
+ GJ0begjtrbURfhwtLYr0e+JcLlJRRn2eNL0jwCpw1G+Kc623VMgwnpRMzDmBhHH4CaREyhWohgE
+ mwwgM/SAXoDc1Ssch18Mt5HtXJbGoj9fOxlvRbP5+1+LRxtkAUaPbpFr07LyMNAaPtRZsggF4AI
+ M+5glnjrHK3UzmnkfZVG/bAkxhEIp1xdmWSbHWcABm5XCO5RV/8tFJVThcRWSXQhbKEVVfGC2Hl
+ k/zWcJEk28XW+iafII98iu//MiLch+IXdxB7ZZRPKptvLqQrFqGSH7drE9x4yyi4yReSeXmPyqU
+ gWPTd9oGWWpYWWF/vfCFeud4Wkly+Jcu9J3ViBSk/H7T4U68xqfTzctA==
+X-Received: by 2002:a05:600c:444c:b0:46e:35a0:3587 with SMTP id
+ 5b1f17b1804b1-4805cf6762bmr88468335e9.27.1769449408239; 
+ Mon, 26 Jan 2026 09:43:28 -0800 (PST)
 Received: from thinkpad-t470s.. (93-143-71-105.adsl.net.t-com.hr.
  [93.143.71.105]) by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-435b1e71730sm34199603f8f.26.2026.01.26.09.43.23
+ ffacd0b85a97d-435b1e71730sm34199603f8f.26.2026.01.26.09.43.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Jan 2026 09:43:24 -0800 (PST)
+ Mon, 26 Jan 2026 09:43:27 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
  volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Ruslan_Ruslichenko@epam.com, Alistair Francis <alistair@alistair23.me>,
- David Gibson <david@gibson.dropbear.id.au>
-Subject: [PATCH 01/27] system/device_tree: update qemu_fdt_getprop/_cell
-Date: Mon, 26 Jan 2026 18:42:47 +0100
-Message-ID: <20260126174313.1418150-2-ruslichenko.r@gmail.com>
+ Ruslan_Ruslichenko@epam.com
+Subject: [PATCH 04/27] hw/core: introduce generic FDT device model registry
+Date: Mon, 26 Jan 2026 18:42:50 +0100
+Message-ID: <20260126174313.1418150-5-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
 References: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,229 +104,256 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Update 'qemu_fdt_getprop' and 'qemu_fdt_getprop_cell'
-to support property inheritence from parent node,
-in case 'inherit' argument is set.
+Introduce infrastructure to instantiate device models
+directly from the device tree.
 
-Update 'qemu_fdt_getprop_cell' to allow accessing
-specific cells within multi-cell property array.
+This includes the registry of known device models with
+associated init functions and key API methods to
+operate it.
 
-Introduced 'qemu_devtreedd_getparent' as it is needed
-by both internal and external users.
+The MIT license of fdt_generic.c preserved as in original
+file from https://github.com/Xilinx/qemu.git repo.
 
-This will be used by hardware device tree parsing logic.
+The license for fdt_generic.h derived from matching
+fdt_generic.c file.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/arm/boot.c                |  8 ++++----
- hw/arm/raspi4b.c             |  8 ++++----
- hw/arm/vexpress.c            |  4 ++--
- hw/arm/xlnx-zcu102.c         |  3 ++-
- include/system/device_tree.h | 32 +++++++++++++++++++-------------
- system/device_tree.c         | 33 ++++++++++++++++++++++++---------
- 6 files changed, 55 insertions(+), 33 deletions(-)
+ hw/core/fdt_generic.c         | 139 ++++++++++++++++++++++++++++++++++
+ include/hw/core/fdt_generic.h |  78 +++++++++++++++++++
+ 2 files changed, 217 insertions(+)
+ create mode 100644 hw/core/fdt_generic.c
+ create mode 100644 include/hw/core/fdt_generic.h
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index c97d4c4e11..829b8ba12f 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -509,10 +509,10 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
-         return 0;
-     }
- 
--    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
--                                   NULL, &error_fatal);
--    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
--                                   NULL, &error_fatal);
-+    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells", 0,
-+                                   false, &error_fatal);
-+    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells", 0,
-+                                   false, &error_fatal);
-     if (acells == 0 || scells == 0) {
-         fprintf(stderr, "dtb file invalid (#address-cells or #size-cells 0)\n");
-         goto fail;
-diff --git a/hw/arm/raspi4b.c b/hw/arm/raspi4b.c
-index 3eeb8f447e..66eba5d667 100644
---- a/hw/arm/raspi4b.c
-+++ b/hw/arm/raspi4b.c
-@@ -42,10 +42,10 @@ static void raspi_add_memory_node(void *fdt, hwaddr mem_base, hwaddr mem_len)
-     uint32_t acells, scells;
-     char *nodename = g_strdup_printf("/memory@%" PRIx64, mem_base);
- 
--    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
--                                   NULL, &error_fatal);
--    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
--                                   NULL, &error_fatal);
-+    acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells", 0,
-+                                   false, &error_fatal);
-+    scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells", 0,
-+                                   false, &error_fatal);
-     /* validated by arm_load_dtb */
-     g_assert(acells && scells);
- 
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index cc6ae7d4c4..823e316f91 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -486,9 +486,9 @@ static void vexpress_modify_dtb(const struct arm_boot_info *info, void *fdt)
-     const VEDBoardInfo *daughterboard = (const VEDBoardInfo *)info;
- 
-     acells = qemu_fdt_getprop_cell(fdt, "/", "#address-cells",
--                                   NULL, &error_fatal);
-+                                   0, false, &error_fatal);
-     scells = qemu_fdt_getprop_cell(fdt, "/", "#size-cells",
--                                   NULL, &error_fatal);
-+                                   0, false, &error_fatal);
-     intc = find_int_controller(fdt);
-     if (!intc) {
-         /* Not fatal, we just won't provide virtio. This will
-diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-index 3ba2736bab..8f67c8be48 100644
---- a/hw/arm/xlnx-zcu102.c
-+++ b/hw/arm/xlnx-zcu102.c
-@@ -88,7 +88,8 @@ static void zcu102_modify_dtb(const struct arm_boot_info *binfo, void *fdt)
-                                        &error_fatal);
- 
-         for (i = 0; node_path && node_path[i]; i++) {
--            r = qemu_fdt_getprop(fdt, node_path[i], "method", &prop_len, NULL);
-+            r = qemu_fdt_getprop(fdt, node_path[i], "method", &prop_len,
-+                                 false, NULL);
-             method_is_hvc = r && !strcmp("hvc", r);
- 
-             /* Allow HVC based firmware if EL2 is enabled.  */
-diff --git a/include/system/device_tree.h b/include/system/device_tree.h
-index 49d8482ed4..f34b8b7ef9 100644
---- a/include/system/device_tree.h
-+++ b/include/system/device_tree.h
-@@ -96,27 +96,28 @@ int qemu_fdt_setprop_phandle(void *fdt, const char *node_path,
-  * @node_path: node path
-  * @property: name of the property to find
-  * @lenp: fdt error if any or length of the property on success
-+ * @inherit: if not found in node, look for property in parent
-  * @errp: handle to an error object
-  *
-  * returns a pointer to the property on success and NULL on failure
-  */
- const void *qemu_fdt_getprop(void *fdt, const char *node_path,
-                              const char *property, int *lenp,
--                             Error **errp);
-+                             bool inherit, Error **errp);
- /**
-- * qemu_fdt_getprop_cell: retrieve the value of a given 4 byte property
-- * @fdt: pointer to the device tree blob
-- * @node_path: node path
-- * @property: name of the property to find
-- * @lenp: fdt error if any or -EINVAL if the property size is different from
-- *        4 bytes, or 4 (expected length of the property) upon success.
-- * @errp: handle to an error object
-- *
-- * returns the property value on success
-- */
-+* qemu_fdt_getprop_cell: retrieve the value of a given 4 byte property
-+* @fdt: pointer to the device tree blob
-+* @node_path: node path
-+* @property: name of the property to find
-+* @ofset: the index of 32bit cell to retrive
-+* @inherit: if not found in node, look for property in parent
-+* @errp: handle to an error object
-+*
-+* returns the property value on success
-+*/
- uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
--                               const char *property, int *lenp,
--                               Error **errp);
-+                               const char *property, int offset,
-+                               bool inherit, Error **errp);
- uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
- uint32_t qemu_fdt_alloc_phandle(void *fdt);
- int qemu_fdt_nop_node(void *fdt, const char *node_path);
-@@ -193,6 +194,11 @@ int qemu_fdt_setprop_sized_cells_from_array(void *fdt,
-     })
- 
- 
-+int qemu_devtree_getparent(void *fdt, char *node_path,
-+                           const char *current);
+diff --git a/hw/core/fdt_generic.c b/hw/core/fdt_generic.c
+new file mode 100644
+index 0000000000..d3ab8f9132
+--- /dev/null
++++ b/hw/core/fdt_generic.c
+@@ -0,0 +1,139 @@
++// SPDX-License-Identifier: MIT
++/*
++ * Tables of FDT device models and their init functions. Keyed by compatibility
++ * strings, device instance names.
++ *
++ * Copyright (c) 2010 PetaLogix Qld Pty Ltd.
++ * Copyright (c) 2010 Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
 +
-+#define DT_PATH_LENGTH 1024
++#include "qemu/osdep.h"
++#include "hw/core/fdt_generic.h"
++#include "hw/core/qdev-properties.h"
++#include "qemu/log.h"
 +
- /**
-  * qemu_fdt_randomize_seeds:
-  * @fdt: device tree blob
-diff --git a/system/device_tree.c b/system/device_tree.c
-index 1ea1962984..41bde0ba5a 100644
---- a/system/device_tree.c
-+++ b/system/device_tree.c
-@@ -429,7 +429,8 @@ int qemu_fdt_setprop_string_array(void *fdt, const char *node_path,
- }
- 
- const void *qemu_fdt_getprop(void *fdt, const char *node_path,
--                             const char *property, int *lenp, Error **errp)
-+                             const char *property, int *lenp,
-+                             bool inherit, Error **errp)
- {
-     int len;
-     const void *r;
-@@ -439,31 +440,35 @@ const void *qemu_fdt_getprop(void *fdt, const char *node_path,
-     }
-     r = fdt_getprop(fdt, findnode_nofail(fdt, node_path), property, lenp);
-     if (!r) {
-+        char parent[DT_PATH_LENGTH];
-+        if (inherit && !qemu_devtree_getparent(fdt, parent, node_path)) {
-+            return qemu_fdt_getprop(fdt, parent, property, lenp, true, errp);
-+        }
-         error_setg(errp, "%s: Couldn't get %s/%s: %s", __func__,
-                   node_path, property, fdt_strerror(*lenp));
-+        return NULL;
-     }
-     return r;
- }
- 
- uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
--                               const char *property, int *lenp, Error **errp)
-+                               const char *property, int offset,
-+                               bool inherit, Error **errp)
- {
-     int len;
-     const uint32_t *p;
- 
--    if (!lenp) {
--        lenp = &len;
--    }
--    p = qemu_fdt_getprop(fdt, node_path, property, lenp, errp);
-+    p = qemu_fdt_getprop(fdt, node_path, property, &len,
-+                                         inherit, errp);
-     if (!p) {
-         return 0;
--    } else if (*lenp != 4) {
-+    }
-+    if (len < (offset + 1) * 4) {
-         error_setg(errp, "%s: %s/%s not 4 bytes long (not a cell?)",
-                    __func__, node_path, property);
--        *lenp = -EINVAL;
-         return 0;
-     }
--    return be32_to_cpu(*p);
-+    return be32_to_cpu(p[offset]);
- }
- 
- uint32_t qemu_fdt_get_phandle(void *fdt, const char *path)
-@@ -633,6 +638,16 @@ out:
-     return ret;
- }
- 
-+int qemu_devtree_getparent(void *fdt, char *node_path, const char *current)
++#ifndef FDT_GENERIC_ERR_DEBUG
++#define FDT_GENERIC_ERR_DEBUG 0
++#endif
++#define DB_PRINT(lvl, ...) do { \
++    if (FDT_GENERIC_ERR_DEBUG > (lvl)) { \
++        qemu_log_mask(LOG_FDT, ": %s: ", __func__); \
++        qemu_log_mask(LOG_FDT, ## __VA_ARGS__); \
++    } \
++} while (0)
++
++#define FDT_GENERIC_MAX_PATTERN_LEN 1024
++
++typedef struct TableListNode {
++    struct TableListNode *next;
++    char key[FDT_GENERIC_MAX_PATTERN_LEN];
++    FDTInitFn fdt_init;
++    void *opaque;
++} TableListNode;
++
++/* add a node to the table specified by *head_p */
++
++static void add_to_table(
++        FDTInitFn fdt_init,
++        const char *key,
++        void *opaque,
++        TableListNode **head_p)
 +{
-+    int offset = fdt_path_offset(fdt, current);
-+    int parent_offset = fdt_supernode_atdepth_offset(fdt, offset,
-+        fdt_node_depth(fdt, offset) - 1, NULL);
-+
-+    return parent_offset >= 0 ?
-+        fdt_get_path(fdt, parent_offset, node_path, DT_PATH_LENGTH) : 1;
++    TableListNode *nn = malloc(sizeof(*nn));
++    nn->next = *head_p;
++    strcpy(nn->key, key);
++    nn->fdt_init = fdt_init;
++    nn->opaque = opaque;
++    *head_p = nn;
 +}
 +
- void qmp_dumpdtb(const char *filename, Error **errp)
- {
-     ERRP_GUARD();
++/* FIXME: add return codes that differentiate between not found and error */
++
++/*
++ * search a table for a key string and call the fdt init function if found.
++ * Returns 0 if a match is found, 1 otherwise
++ */
++
++static int fdt_init_search_table(
++        char *node_path,
++        FDTMachineInfo *fdti,
++        const char *key, /* string to match */
++        TableListNode **head) /* head of the list to search */
++{
++    TableListNode *iter;
++
++    for (iter = *head; iter != NULL; iter = iter->next) {
++        if (!strcmp(key, iter->key)) {
++            if (iter->fdt_init) {
++                return iter->fdt_init(node_path, fdti, iter->opaque);
++            }
++            return 0;
++        }
++    }
++
++    return 1;
++}
++
++TableListNode *compat_list_head;
++
++void add_to_compat_table(FDTInitFn fdt_init, const char *compat, void *opaque)
++{
++    add_to_table(fdt_init, compat, opaque, &compat_list_head);
++}
++
++int fdt_init_compat(char *node_path, FDTMachineInfo *fdti, const char *compat)
++{
++    return fdt_init_search_table(node_path, fdti, compat, &compat_list_head);
++}
++
++TableListNode *inst_bind_list_head;
++
++void add_to_inst_bind_table(FDTInitFn fdt_init, const char *name, void *opaque)
++{
++    add_to_table(fdt_init, name, opaque, &inst_bind_list_head);
++}
++
++int fdt_init_inst_bind(char *node_path, FDTMachineInfo *fdti,
++        const char *name)
++{
++    return fdt_init_search_table(node_path, fdti, name, &inst_bind_list_head);
++}
++
++static void dump_table(TableListNode *head)
++{
++    TableListNode *iter;
++
++    for (iter = head; iter != NULL; iter = iter->next) {
++        printf("key : %s, opaque data %p\n", head->key, head->opaque);
++    }
++}
++
++void dump_compat_table(void)
++{
++    printf("FDT COMPATIBILITY TABLE:\n");
++    dump_table(compat_list_head);
++}
++
++void dump_inst_bind_table(void)
++{
++    printf("FDT INSTANCE BINDING TABLE:\n");
++    dump_table(inst_bind_list_head);
++}
+diff --git a/include/hw/core/fdt_generic.h b/include/hw/core/fdt_generic.h
+new file mode 100644
+index 0000000000..614a234868
+--- /dev/null
++++ b/include/hw/core/fdt_generic.h
+@@ -0,0 +1,78 @@
++// SPDX-License-Identifier: MIT
++/*
++ * Tables of FDT device models and their init functions. Keyed by compatibility
++ * strings, device instance names.
++ */
++
++#ifndef FDT_GENERIC_H
++#define FDT_GENERIC_H
++
++#include "qemu/help-texts.h"
++#include "system/device_tree.h"
++
++typedef struct FDTMachineInfo FDTMachineInfo;
++
++typedef int (*FDTInitFn)(char *, FDTMachineInfo *, void *);
++
++/* associate a FDTInitFn with a FDT compatibility */
++
++void add_to_compat_table(FDTInitFn, const char *, void *);
++
++/*
++ * try and find a device model for a particular compatibility. If found,
++ * the FDTInitFn associated with the compat will be called and 0 will
++ * be returned. Returns non-zero on not found or error
++ */
++
++int fdt_init_compat(char *, FDTMachineInfo *, const char *);
++
++/* same as above, but associates with a FDT node name (rather than compat) */
++
++void add_to_inst_bind_table(FDTInitFn, const char *, void *);
++int fdt_init_inst_bind(char *, FDTMachineInfo *, const char *);
++
++void dump_compat_table(void);
++void dump_inst_bind_table(void);
++
++/*
++ * Called from FDTInitFn's to inform the framework that a dependency is
++ * unresolved and the calling context needs to wait for another device to
++ * instantiate first. The calling thread will suspend until a change in state
++ * in the argument fdt machine is detected.
++ */
++
++void fdt_init_yield(FDTMachineInfo *);
++
++/* set, check and get per device opaques. Keyed by fdt node_paths */
++
++void fdt_init_set_opaque(FDTMachineInfo *fdti, char *node_path, void *opaque);
++int fdt_init_has_opaque(FDTMachineInfo *fdti, char *node_path);
++void *fdt_init_get_opaque(FDTMachineInfo *fdti, char *node_path);
++
++/* statically register a FDTInitFn as being associate with a compatibility */
++
++#define fdt_register_compatibility_opaque(function, compat, n, opaque) \
++static void __attribute__((constructor)) \
++function ## n ## _register_imp(void) { \
++    add_to_compat_table(function, compat, opaque); \
++}
++
++#define fdt_register_compatibility_n(function, compat, n) \
++fdt_register_compatibility_opaque(function, compat, n, NULL)
++
++#define fdt_register_compatibility(function, compat) \
++fdt_register_compatibility_n(function, compat, 0)
++
++#define fdt_register_instance_opaque(function, inst, n, opaque) \
++static void __attribute__((constructor)) \
++function ## n ## _register_imp(void) { \
++    add_to_inst_bind_table(function, inst, opaque); \
++}
++
++#define fdt_register_instance_n(function, inst, n) \
++fdt_register_instance_opaque(function, inst, n, NULL)
++
++#define fdt_register_instance(function, inst) \
++fdt_register_instance_n(function, inst, 0)
++
++#endif /* FDT_GENERIC_H */
 -- 
 2.43.0
 

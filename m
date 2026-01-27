@@ -4,110 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB2C7D1951B
-	for <qemu-arm@archiver.kernel.org>; Mon, 26 Jan 2026 21:14:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF6C7D1953D
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 00:05:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkTuR-0007rM-Ai; Mon, 26 Jan 2026 16:14:07 -0500
+	id 1vkWZs-0007Rz-DH; Mon, 26 Jan 2026 19:05:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <saadelhrj@gmail.com>)
- id 1vkREU-0005Qh-Og
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 13:22:38 -0500
-Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <saadelhrj@gmail.com>)
- id 1vkRES-0008A8-Tv
- for qemu-arm@nongnu.org; Mon, 26 Jan 2026 13:22:38 -0500
-Received: by mail-ot1-x334.google.com with SMTP id
- 46e09a7af769-7d148db5fdcso1637938a34.3
- for <qemu-arm@nongnu.org>; Mon, 26 Jan 2026 10:22:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1769451755; cv=none;
- d=google.com; s=arc-20240605;
- b=TlMp/Mmnr6lcf/WWP8T7jl9Fqs5V0RumMXxg+ZpSsIN98/IQnwqz7q7E8SfUnRdi02
- /cNuQmBKpE+0+FM2OGtOfISvdXb39n4hCTJd8xBlktlOW1bGLKVMy4CLtwHnurWR+sZx
- S0L0X/WzU8g2bcoAuRWFKw8GpzQ6rWpH/+UlnHRKxmA2Fjto5IT9bKGuAVbRXJNbGCK8
- 3qO/YNG/FBKchW8UBBVnjttVWc0++W4IibKq+pKzjN/jkzfCEaBwn21c8SEx7zGOljHr
- en3ZAHFU4dlj4I0TuPCQqy/M72AiQlNIQkXpRQ9MDcTzAYLrXxqbpEKX+Hd8pWTb4RL8
- hufg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=fswWPBsFWO3y9n1YM1dD4iY9Ks7jeVptAMymTmFkGvA=;
- fh=yYbd8+1gQc7CyNNKcRT5llUJ0QtGzAdARXOYAswdxQ8=;
- b=d2XkAYqkrygDAApfmm3FHHMcZoe+Xps/twPCTvYd8LEztr1qIE34+x33NYCijOg/ZU
- qa0P45CaKSbq/ZHG9lCT0CyVYkVjIIRXcMNm6ZwfQsHSQuVxmorpaE2HneNOjs3BpasD
- 9b4iy1r7d2iZWXYp4aqW+A7OayUoPowNDiNDHoPtI7xbOx6qmF+FBA7MbrlTJmvHqi9Z
- 00ACChg8YD1B/BlDiWHGdcErBlqz3dWza93TaxZ7JTgoSocltN+ua6u6RnlmixSuRf2Y
- h3rUd5pA+iOAATj3QZeZD2acTccaULfHDXAQGn99FOO3lAQzQWmwlQB/nbPvir6hQjA4
- ZZFw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1769451755; x=1770056555; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=fswWPBsFWO3y9n1YM1dD4iY9Ks7jeVptAMymTmFkGvA=;
- b=AENrjtn9oRWuMvvrV3Vuk+p3wakHv3w56tQ0mldZXB2aCZMT+xo60JYl+cFOhhCbsD
- dBjaDRPCXPCTdxITtzfKleu0TSW20CfGvPVl933hufrLuIgdHNFkpPHPIGBpG50HMJrh
- uLhQsypRtrvy4J5IdvR5pVs9gkovtbJa57vFLuGLCwUs3mJ6rX2GDG3qg7Wl/saUqU/x
- D602Scv1GYI5LaUwdd1DxW2WkMhSLEVW0gHxMlejIEE2pjn36HGGuMwURC3DuZhgIHBS
- tSCFRqr4kVAEJzGwd+NTNDG3/PnqHQFJyJxVz0Y5s6BrLmzl+to1Z8sE11972qD7FRVE
- etqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769451755; x=1770056555;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fswWPBsFWO3y9n1YM1dD4iY9Ks7jeVptAMymTmFkGvA=;
- b=epVCHYRlbKdT5gtUF67trfKd5MUDE/pMzBwNgB5+NFElcvYIFePqf/Hxg9Iy/zwSKW
- eSZR+9VEihA7IsQikGSSLLMBhpzbQI8rWtndfHAlPq/O52PuqdHCROpA7H9Kk+Fbq7kd
- 84dxCPbUXw712waNsmSAyFV5BTN/bdMnMqzecQwCWUIB7dQQntWHjCRhlqk5ZvbLdAbm
- L3akMBZINjOLLix1k3Y+uuTZwvT5A3Y+JePT9087Lq+cQ8NTMDN9M2S0KTuVxikLVvnV
- joT1St1wtTaUjOMUBN+7mqwpYBXVjpbNLbQpG9uXW1mHBRTLSvbJ6SNRYvXCq7EW3q/V
- 9r4A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXnqaEFOEzRdpbyd0o6j8MrM2AL47FhF7jX3RPTPIVT4Sj7H5aZlf4e4IiC7KYqG5f2iVNDwsH+PA==@nongnu.org
-X-Gm-Message-State: AOJu0YymQOcfSwi2TOVj2vyXDvd6tccFLuz/sSpwmZDq3Onc41AGREb+
- wDpyBGHgxWXQwUS7vXXfbo/uhsvcHhcDUNOTQvVzCSxKQZCK77uisSvPP93TdGYIkqUVuU41VFx
- BucKBtVaVw4rYPOaC+kGBzLBZiG7LtvA=
-X-Gm-Gg: AZuq6aKQbwwO9ddb9WHd83vT3fPTA4NCYhsrhSWAN4DiH0GEHurQQo3YALf7BSU3fMh
- dDG/Oo+/SqeP2ZSPLNC6Q6n13BEKKJbSqdAuSwKzmVM3XokIK+aaVu9F2mM3XW8AobOb/tuC9yG
- hKmNLwXpfGfP1k4mSJ6f/ftElzgVSwhaRmNZOyg8u5F+mKOhfEcin4c+OZZPcMWrTkHd6NWPShu
- LFnTRdSuI+JdoKvagfp42oU6fi0Gh+KayxhsDuvWIAS7cVwSEWOoSKT+AIKFZsR/ulWIfZb
-X-Received: by 2002:a05:6830:270c:b0:7ca:c723:6f42 with SMTP id
- 46e09a7af769-7d17021d855mr2179910a34.10.1769451755010; Mon, 26 Jan 2026
- 10:22:35 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1vkWZq-0007Q0-7O; Mon, 26 Jan 2026 19:05:02 -0500
+Received: from mail-southcentralusazlp170130001.outbound.protection.outlook.com
+ ([2a01:111:f403:c10c::1] helo=SA9PR02CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1vkWZo-00064w-BI; Mon, 26 Jan 2026 19:05:01 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=EtB/Q1ojzm7nUf4n73I8m1GdPJOBLMeBd2Soo5hUWvV5xDrZqlAwRAfznOFmqKeAV6qLkIMoSsRASeJsjvmVroGnsve4CeUCpOAkzMj2MJ9+e8iWrypJblvdwqSDdZHPfE0IqZLyIYEEpPlnotNpojkC4UNwcHlbYBNqqhSoRckNjtsZkF30ntAtVMd+RWwcLB5Wtlwp4RvhpxtFFrPFWqr5yiL0d4iZ+x1dJez37pnoz0msKE3xSQ7G1FxPWe5A08roYqOLDPPbhvxOkD5HV3umg4Rh9RQ9aSRL9MjvQWQuE+ye/UtlXsLa3AAx2IibdcUcso0tqDwV6YZQ2YPTqA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=G/8NfJjB7xwvT7erKaP0DMJLg6C/Z8QWHeVNKIdwxhQ=;
+ b=rKVHBNQ1ui2jN+uEWg228dMI7UCWFK82/9lkMds8/1D+4UqZentSLfAMvdw8tYhAvPJX2wN/rXx7Ny6g73LzeD8hSrapFxrx0dLYRDP/XEmk9fg+yqKHlVBQk483G+X/muVLkp/J0X1u1OaFAwaMgHABvbaLj+KSjpqPqwuLUyc/vpZaVlxjKCD6ue+A26bNDWxn9zdwY4KDYDM0eP+OkVYgDmD+cS6dZgCpCbJ1/s7q3Yr5Pb6SB0omxkBUR5jHKEJB24DtBAclUG92qeFxchBpw6csQmQWoGDEqMgAHqcSdKBLLtXxTpMf7ORu6oZB1owBcTRHk3anDHpL22d4vw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=G/8NfJjB7xwvT7erKaP0DMJLg6C/Z8QWHeVNKIdwxhQ=;
+ b=YCXDcMjeNH4JmzLB7YMQtPOmmEN+UUl3DOo1eexs+iMJhiYG43s3rKEdGC+LcDPUoU2t9Glt900doWBSjPt4J1TmubmrQfd/FLyfg/K4O01jQ4z5V5R9a0EFOY8FeynzZccOSemAuqJEtm5P5ALi//TqgY0NfxOk8I05XagrlwWWQCyM959lgGz5hz0xHlwrWqbqcKeemjn/vWAjLrOAaAyqEy07ALyvttWWR8HxTBJ1GVW4vakdSR3cttI+RivqodqQNHewtmBmtFIKinP2bvOLMWCZ/M3dUvZxD2pXakEMfExNNBmAuWzEgYYLKm6IgEPH48rCU/IX402W4ckVqQ==
+Received: from SJ0PR03CA0278.namprd03.prod.outlook.com (2603:10b6:a03:39e::13)
+ by MW5PR12MB5624.namprd12.prod.outlook.com (2603:10b6:303:19d::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.15; Tue, 27 Jan
+ 2026 00:04:53 +0000
+Received: from SJ5PEPF000001F3.namprd05.prod.outlook.com
+ (2603:10b6:a03:39e:cafe::12) by SJ0PR03CA0278.outlook.office365.com
+ (2603:10b6:a03:39e::13) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9542.16 via Frontend Transport; Tue,
+ 27 Jan 2026 00:04:49 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ SJ5PEPF000001F3.mail.protection.outlook.com (10.167.242.71) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9564.3 via Frontend Transport; Tue, 27 Jan 2026 00:04:53 +0000
+Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 26 Jan
+ 2026 16:04:34 -0800
+Received: from rnnvmail203.nvidia.com (10.129.68.9) by rnnvmail205.nvidia.com
+ (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Mon, 26 Jan
+ 2026 16:04:34 -0800
+Received: from Asurada-Nvidia (10.127.8.14) by mail.nvidia.com (10.129.68.9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20 via Frontend
+ Transport; Mon, 26 Jan 2026 16:04:33 -0800
+Date: Mon, 26 Jan 2026 16:04:31 -0800
+To: Eric Auger <eric.auger@redhat.com>
+CC: Shameer Kolothum <skolothumtho@nvidia.com>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>, <peter.maydell@linaro.org>, <nathanc@nvidia.com>,
+ <mochs@nvidia.com>, <jgg@nvidia.com>, <jonathan.cameron@huawei.com>,
+ <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>, <kjaju@nvidia.com>
+Subject: Re: [RFC PATCH 06/16] hw/arm/tegra241-cmdqv: Map VINTF Page0 into
+ guest
+Message-ID: <aXgBD/N+aOVNlcGb@Asurada-Nvidia>
+References: <20251210133737.78257-1-skolothumtho@nvidia.com>
+ <20251210133737.78257-7-skolothumtho@nvidia.com>
+ <58f0ca59-b08c-44cd-b469-f152271c14f6@redhat.com>
 MIME-Version: 1.0
-References: <20260126141820.719492-1-clg@redhat.com>
- <CAFEAcA8xQmUa7DyR7+Nw255e_DW=uzZ-gQT5G6cd-uuWgQBaUg@mail.gmail.com>
- <e8a6032d-cf06-46e5-a7d5-c2e9b8d248ef@redhat.com>
-In-Reply-To: <e8a6032d-cf06-46e5-a7d5-c2e9b8d248ef@redhat.com>
-From: Elhrj Saad <saadelhrj@gmail.com>
-Date: Mon, 26 Jan 2026 19:22:23 +0100
-X-Gm-Features: AZwV_QhI0Afqqax5fCh11L7zMDvn9tUSDcLBowLyYFTZkpaqhcQ8gA5Ws_4w0qM
-Message-ID: <CAEEWBQPci_=gDhJS8m7erJeYu7C4-eioD0ks=_WReFQiOVDNiw@mail.gmail.com>
-Subject: Re: [PATCH] hw/adc: Fix out-of-bounds write in Aspeed ADC model
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Joel Stanley <joel@jms.id.au>, Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: multipart/alternative; boundary="0000000000004dfcc106494e971c"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::334;
- envelope-from=saadelhrj@gmail.com; helo=mail-ot1-x334.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <58f0ca59-b08c-44cd-b469-f152271c14f6@redhat.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ5PEPF000001F3:EE_|MW5PR12MB5624:EE_
+X-MS-Office365-Filtering-Correlation-Id: 54f052a2-cec8-43fa-ecdb-08de5d37b2b9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|1800799024|82310400026|36860700013; 
+X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?M+XULDAkgWk8fl0r8ndFNy2wzluEI7213Cs/RSSKZ0gEudxH7Yd/ZP7n21?=
+ =?iso-8859-1?Q?zx8OH9qihYu8XeDqM3bD7mgf2rubItN2Ule8z2FSiX/kqai3QyavaLk3xD?=
+ =?iso-8859-1?Q?edik4FzyZB+ZmbIbGPnNbOsEopIDvY2JGEmtCF65sF3tP1G3py/0grjZOu?=
+ =?iso-8859-1?Q?MBojRnyZUYzskL+5aAkCWow7fQRh0RBWg+gCZFrJD0HGYSjY5iGE/++9n9?=
+ =?iso-8859-1?Q?3bbGDVLZESC+0YcA6qWZRYsxJ/6zKt65TqLtZRKL5QXC00iSejXdBhymGW?=
+ =?iso-8859-1?Q?gw9/5mvaLoap9ybDxf7WWgthKmZRfVXogKtNVopGYk0cwCnsuaMzsl2KLr?=
+ =?iso-8859-1?Q?G0G8gCgu83yfC7d+rGUDFfL3Z2Qol8VtNkouZUK3JTO4pujtu9oUaFpZyW?=
+ =?iso-8859-1?Q?RKM+rdVf67NWHCdzquXOvQu6oeRerMA56V1Qp4tsrirnMvjXBCxAvtgEPQ?=
+ =?iso-8859-1?Q?+AKd9EtSgEPSSvaJxqBA2lcNHZlBGX4UxxkdX9p/gX/Jg7z3bmoCxNLzJv?=
+ =?iso-8859-1?Q?/M+t4HTq+LiQMqLHy03FIO56LHSMPhr2g56a/Y2CY/NgokSIveEzkrv6Q+?=
+ =?iso-8859-1?Q?lEwW8m9DcSeKzS6IfXjK0evtYPxs6hPvk7k0fMARpMsE/W+MwshDlF5TQQ?=
+ =?iso-8859-1?Q?UMMGWS8yQo+iafhdP+j/VRtLi0rclUOx94pyRK0IbEZAY1PYhK5F4FwXTE?=
+ =?iso-8859-1?Q?NXKrBrmsw5AhvZKBHiyRoaZinBRHQlTLWzCMWxabtpbV413w7wBPUOxkOF?=
+ =?iso-8859-1?Q?Hd/2tAcXzOIKIpmoIW8MdP0JDhx2Zd/S7cNxSFFjL46UJrPPrFjPR/+DKS?=
+ =?iso-8859-1?Q?F82CXmQ7vLJi72si6DBQXTfp65GS+P3LT8+yvfv+iurW9e7uU60+2BWHU8?=
+ =?iso-8859-1?Q?pJqJ2TLc4RbBPmVRFoAY+ewqQZ+ounjbhPCEc3hsoIlN4LQbnNfLCgkhf0?=
+ =?iso-8859-1?Q?Idfeqfprj5wR5DCClwy3FEvJ08k5sB6IX2CM/EN564VcleYRCTUtg37KYC?=
+ =?iso-8859-1?Q?S7UUuiQeoUMUPK7/wcGp990M8gZ2L6d5izZOzoij06KqZKeIGecpmgIiqe?=
+ =?iso-8859-1?Q?GiGgvtmyFbTQmx+ZVZ97Jbo6DZL/xCypIZsoP/PBSNxE527ysvpD9nZr0J?=
+ =?iso-8859-1?Q?qr9bgRfyYOZpmEqEtMuXGcYvKKTb+czBs/FuLJr4kWOI+djX7eDXuapH6L?=
+ =?iso-8859-1?Q?Inwp7tigIB8zrxOUHUPOJrriQrlUaBgb3ozVzzKqd8h/mpNJNo1yV4KU5F?=
+ =?iso-8859-1?Q?kierVBZw2rBGOWXs8H9NP2plI1x39GeE/rdzIhEHHThUok2lF5LYMYeQZc?=
+ =?iso-8859-1?Q?ipXruIJgxhfn/UoE1N7HSvf33PNQt9h34/k+keuBc15M5epL3txFYAd3yY?=
+ =?iso-8859-1?Q?qprNTqe7mUQXuFGsHhPyi4pb24W9Ws++HzuVWiavp4t0aobTMMoBmwS/0p?=
+ =?iso-8859-1?Q?5X6aObCytImiVKXdebAj8t2C/27uYh2CoRtKnXRK1QihXKApvvHOVpw5Eg?=
+ =?iso-8859-1?Q?l2X6dpzx34qXumr5t7Graz7GZG1+DZLPu2nzJthQia09qNzDSLLf+RI3aa?=
+ =?iso-8859-1?Q?0LDD7t3sD1lIJSb52O6Ey33wDNhprSEi8uiSvdkYZAmk+8dzSL5Bp5NjNP?=
+ =?iso-8859-1?Q?zgPGheeUj4GeULk4DQUbJMPGtXIakqa2+OspxvFPgWc9DTi/wAWTSzrVx1?=
+ =?iso-8859-1?Q?83qY2R6WuviazsiHfqHpihMSQRQZeFD1/yJZ4ahz9+Nn5zGdN0hBYyhBrx?=
+ =?iso-8859-1?Q?GrSg=3D=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(82310400026)(36860700013); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jan 2026 00:04:53.4890 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 54f052a2-cec8-43fa-ecdb-08de5d37b2b9
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: SJ5PEPF000001F3.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW5PR12MB5624
+Received-SPF: permerror client-ip=2a01:111:f403:c10c::1;
+ envelope-from=nicolinc@nvidia.com;
+ helo=SA9PR02CU001.outbound.protection.outlook.com
+X-Spam_score_int: -2
+X-Spam_score: -0.3
+X-Spam_bar: /
+X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, FORGED_SPF_HELO=1, KHOP_HELO_FCRDNS=0.399,
+ SPF_HELO_PASS=-0.001, SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 26 Jan 2026 16:14:06 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,117 +159,95 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Nicolin Chen <nicolinc@nvidia.com>
+From:  Nicolin Chen via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---0000000000004dfcc106494e971c
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Mon, Jan 26, 2026 at 02:48:55PM +0100, Eric Auger wrote:
 
-Hello, gentlemen,
+> > +    name = g_strdup_printf("%s vcmdq", memory_region_name(&cmdqv->mmio_cmdqv));
+> > +    memory_region_init_ram_device_ptr(&cmdqv->mmio_vcmdq_page,
+> > +                                      memory_region_owner(&cmdqv->mmio_cmdqv),
+> > +                                      name, 0x10000, cmdqv->vcmdq_page0);
+> > +    memory_region_add_subregion_overlap(&cmdqv->mmio_cmdqv, 0x10000,
+> > +                                        &cmdqv->mmio_vcmdq_page, 1);
+> > +    g_free(name);
+> > +
+> > +    name = g_strdup_printf("%s vintf", memory_region_name(&cmdqv->mmio_cmdqv));
+> > +    memory_region_init_ram_device_ptr(&cmdqv->mmio_vintf_page,
+> > +                                      memory_region_owner(&cmdqv->mmio_cmdqv),
+> > +                                      name, 0x10000, cmdqv->vcmdq_page0);
 
-Is there any possibility of making an exception and assigning a CVE for the
-issue ?? (It's my first ever found vulnerability :)
+> I don't get why we need/have 2 RAM devices pointing to the same @ptr
+> = cmdqv->vcmdq_page0. Is 0x10000 ~ VCMDQ_REG_PAGE_SIZE?
 
-Thank you in advance.
+The first one is for "vcmdq" and the second one is for "vintf".
+Explaining below...
 
+> The names of the MRs are quite confusing: If my understanding is correct
+> we have;
+> 
+> cmdqv->mmio_cmdqv (0x50000 sized) which as the container for the 2 subregions.
+> Then within that one we have 2 subregions, one at offset 0x10000 (mmio_vcmdq_page
+> ), one at offset 0x30000 (cmdqv->mmio_vintf_page).
 
-On Mon, Jan 26, 2026 at 4:12=E2=80=AFPM C=C3=A9dric Le Goater <clg@redhat.c=
-om> wrote:
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/iommu/arm/arm-smmu-v3/tegra241-cmdqv.c?h=v6.19-rc7#n19
+It's defined in the kernel driver (yea, we should clarify in the
+QEMU code as well).
 
-> On 1/26/26 15:30, Peter Maydell wrote:
-> > On Mon, 26 Jan 2026 at 14:18, C=C3=A9dric Le Goater <clg@redhat.com> wr=
-ote:
-> >>
-> >> The 'regs' array has ASPEED_ADC_NR_REGS (52) elements, while the
-> >> memory region covers offsets 0x00-0xFC. The aspeed_adc_engine_write()
-> >> function has an out-of-bounds write vulnerability when accessing
-> >> unimplemented registers.
-> >>
-> >> Fix this by using 'return' instead of 'break' in the default case,
-> >> which prevents execution from reaching the s->regs[reg] assignment for
-> >> unimplemented registers.
-> >>
-> >> Reported-by: Elhrj Saad <saadelhrj@gmail.com>
-> >> Fixes: 5857974d5d11 ("hw/adc: Add basic Aspeed ADC model")
-> >> Signed-off-by: C=C3=A9dric Le Goater <clg@redhat.com>
-> >
-> > Seems like a good candidate for Cc: qemu-stable@nongnu.org ?
-> Yes.
->
-> Cc: qemu-stable@nongnu.org
->
-> Thanks,
->
-> C.
->
->
+So, the MMIO regions look like this:
+ 1st 64 KB page -- Global CMDQV registers
+ 2nd 64 KB page -- Global VCMDQ registers Page0 (mmap)
+ 3rd 64 KB page -- Global VCMDQ registers Page1 (trap)
+ 4th 64 KB page -- VINTF0 Logical VCMDQ registers Page0 (mmap)
+ 5th 64 KB page -- VINTF0 Logical VCMDQ registers Page1 (trap)
 
---=20
-*Saad ELHARAJ*
-Cybersecurity Specialist
-=F0=9F=93=9E +212 6 80 51 11 85
-=E2=9C=89=EF=B8=8F saadelhrj@gmail.com
-=F0=9F=94=97 LinkedIn <https://www.linkedin.com/in/saad-elharaj-1891371a0/>
+In real hardware, there will be 6th 64KB and beyond, for VINTF1
+and others. But, we're omitting here in QEMU as only VINTF0 will
+be supported -- kernel only exposes one VINTF per VM as well.
+(Yes, we should clarify this too.)
 
---0000000000004dfcc106494e971c
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+> I have difficulties to link that with the commit message
+> 
+> "Tegra241 CMDQV assigns each VINTF a 128KB MMIO region split into two
+> 64 KB pages:
+>  - Page0: guest accessible control/status registers for all VCMDQs
+>  - Page1:configuration registers  ../.."
+> Those 2 pages, are they part of  mmio_vcmdq_page?
 
-<div dir=3D"ltr"><div>Hello, gentlemen,</div><div><br></div><div><div dir=
-=3D"auto">Is there any possibility of making an exception and assigning a C=
-VE for the issue ?? (It&#39;s my first ever found vulnerability :)</div><di=
-v dir=3D"auto"><br></div><div dir=3D"auto">Thank you in=C2=A0advance.</div>=
-<br></div></div><br><div class=3D"gmail_quote gmail_quote_container"><div d=
-ir=3D"ltr" class=3D"gmail_attr">On Mon, Jan 26, 2026 at 4:12=E2=80=AFPM C=
-=C3=A9dric Le Goater &lt;<a href=3D"mailto:clg@redhat.com">clg@redhat.com</=
-a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0p=
-x 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On=
- 1/26/26 15:30, Peter Maydell wrote:<br>
-&gt; On Mon, 26 Jan 2026 at 14:18, C=C3=A9dric Le Goater &lt;<a href=3D"mai=
-lto:clg@redhat.com" target=3D"_blank">clg@redhat.com</a>&gt; wrote:<br>
-&gt;&gt;<br>
-&gt;&gt; The &#39;regs&#39; array has ASPEED_ADC_NR_REGS (52) elements, whi=
-le the<br>
-&gt;&gt; memory region covers offsets 0x00-0xFC. The aspeed_adc_engine_writ=
-e()<br>
-&gt;&gt; function has an out-of-bounds write vulnerability when accessing<b=
-r>
-&gt;&gt; unimplemented registers.<br>
-&gt;&gt;<br>
-&gt;&gt; Fix this by using &#39;return&#39; instead of &#39;break&#39; in t=
-he default case,<br>
-&gt;&gt; which prevents execution from reaching the s-&gt;regs[reg] assignm=
-ent for<br>
-&gt;&gt; unimplemented registers.<br>
-&gt;&gt;<br>
-&gt;&gt; Reported-by: Elhrj Saad &lt;<a href=3D"mailto:saadelhrj@gmail.com"=
- target=3D"_blank">saadelhrj@gmail.com</a>&gt;<br>
-&gt;&gt; Fixes: 5857974d5d11 (&quot;hw/adc: Add basic Aspeed ADC model&quot=
-;)<br>
-&gt;&gt; Signed-off-by: C=C3=A9dric Le Goater &lt;<a href=3D"mailto:clg@red=
-hat.com" target=3D"_blank">clg@redhat.com</a>&gt;<br>
-&gt; <br>
-&gt; Seems like a good candidate for Cc: <a href=3D"mailto:qemu-stable@nong=
-nu.org" target=3D"_blank">qemu-stable@nongnu.org</a> ?<br>
-Yes.<br>
-<br>
-Cc: <a href=3D"mailto:qemu-stable@nongnu.org" target=3D"_blank">qemu-stable=
-@nongnu.org</a><br>
-<br>
-Thanks,<br>
-<br>
-C.<br>
-<br>
-</blockquote></div><div><br clear=3D"all"></div><br><span class=3D"gmail_si=
-gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
-iv dir=3D"ltr"><strong>Saad ELHARAJ</strong><br>
-Cybersecurity Specialist<br>
-=F0=9F=93=9E +212 6 80 51 11 85<br>
-=E2=9C=89=EF=B8=8F <a href=3D"mailto:saadelhrj@gmail.com" target=3D"_blank"=
->saadelhrj@gmail.com</a><br>
-=F0=9F=94=97 <a rel=3D"noopener" href=3D"https://www.linkedin.com/in/saad-e=
-lharaj-1891371a0/" target=3D"_blank">LinkedIn</a> <br></div></div>
+Not exactly. Both the global VCMDQ region and VINTF region have
+their own pages (at 0x10000 and 0x30000).
 
---0000000000004dfcc106494e971c--
+Here, it duplicates the mapping to 0x10000 (Global VCMDQ page0)
+and 0x30000 (VINTF0 page0) for simplification, because we only
+support VINTF0 in this case.
+
+There is a little catch in this implementation. The real physical
+mapping between a global VCMDQ and a logical VCMDQ happens when
+QEMU calls HW_QUEUE ioctl. So, the mmap'd page0 doesn't have any
+real VCMDQ backing up the emulated VCMDQ. So, perhaps QEMU should
+trap the page0 and delay the memory_region_init_ram_device_ptr()
+until the HW_QUEUE ioctl is done?
+
+There might be also a corner case: when the kernel exposes two
+physical VCMDQs, but the guest OS only uses one, i.e. QEMU only
+allocates one HW_QUEUE for VCMDQ0 but doesn't allocate VCMDQ1.
+In such a case, the VTINF0 page0 should be able to control the
+logical VCMDQ0 only, while the global page0 should control both.
+
+We are getting away this corner case with any guest OS running
+Linux kernel because it only accesses VTINF pages. But likely we
+should do something about it..
+
+> Then you talk about 0x30000 :VINTF register I guess this is the second cmdqv->mmio_vintf_page
+> 
+> Well I am confused at this stage of the reading.
+> 
+> Also without any spec, this is difficult to understand. Is there any public doc?
+
+It seems that Red Hat can get the doc under NDA..
+
+Thanks
+Nicolin
 

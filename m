@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88AE4CA6CB8
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 09:30:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45C1BC88E41
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 09:30:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkfOY-0003nV-GF; Tue, 27 Jan 2026 04:30:01 -0500
+	id 1vkfOw-00042k-7d; Tue, 27 Jan 2026 04:30:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vkfOW-0003l2-Mf; Tue, 27 Jan 2026 04:29:56 -0500
+ id 1vkfOa-0003oP-Vo; Tue, 27 Jan 2026 04:30:02 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vkfOV-0004dA-3i; Tue, 27 Jan 2026 04:29:56 -0500
+ id 1vkfOX-0004dA-Di; Tue, 27 Jan 2026 04:29:58 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 27 Jan
@@ -32,16 +32,16 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v2 01/11] hw/arm/ast27x0: Move DRAM and SDMC initialization
- earlier to support memory aliasing
-Date: Tue, 27 Jan 2026 17:29:30 +0800
-Message-ID: <20260127092943.3731635-2-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 02/11] hw/arm/ast27x0: Start SSP in powered-off state to
+ match hardware behavior
+Date: Tue, 27 Jan 2026 17:29:31 +0800
+Message-ID: <20260127092943.3731635-3-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260127092943.3731635-1-jamin_lin@aspeedtech.com>
 References: <20260127092943.3731635-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 Received-SPF: pass client-ip=211.20.114.72;
  envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
@@ -67,88 +67,40 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-To support DRAM aliasing for coprocessors (SSP/TSP), this commit moves the
-initialization of the SDMC (SDRAM controller) and DRAM models earlier in
-the device realization order.
+In the previous design, both the PSP and SSP were started together during
+SoC initialization. However, on real hardware, the SSP begins in a powered-off
+state. The typical boot sequence involves the PSP powering up first, loading
+the SSP firmware binary into shared memory via DRAM remap, and then releasing
+the SSP reset and enabling it through SCU control registers.
 
-In the upcoming changes, the PSP will expose a portion of its DRAM as shared
-memory by creating a memory region alias at a specific offset. This alias is
-mapped into the coprocessor's SDRAM address space, allowing both PSP and the
-coprocessor (SSP/TSP) to access the same physical memory through their respective
-views — PSP via its DRAM, and the coprocessor via its SDRAM.
-
-The remapping is configured through SCU registers and enables shared memory
-communication between PSP and the coprocessors.
-
-Therefore, the DRAM and SDMC devices must be realized before:
-  - the SCU, which configures the alias offset and size
-  - the coprocessors, which access the alias through their SDRAM window
-
-No functional change.
+To more accurately model this behavior in QEMU, this commit sets the
+"start-powered-off" property for the SSP's ARMv7M core. This change ensures
+the SSP remains off until explicitly enabled via the SCU, simulating the
+real-world flow where the PSP controls SSP boot through SCU interaction.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/arm/aspeed_ast27x0.c | 40 ++++++++++++++++++++--------------------
- 1 file changed, 20 insertions(+), 20 deletions(-)
+ hw/arm/aspeed_ast27x0-ssp.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index d17f446661..74a004adca 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -702,6 +702,26 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-                            qdev_get_gpio_in(DEVICE(&a->intc[0].orgates[0]), i));
-     }
- 
+diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c
+index cee937b37e..cba59ae11a 100644
+--- a/hw/arm/aspeed_ast27x0-ssp.c
++++ b/hw/arm/aspeed_ast27x0-ssp.c
+@@ -165,6 +165,13 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
+     qdev_connect_clock_in(armv7m, "cpuclk", s->sysclk);
+     object_property_set_link(OBJECT(&a->armv7m), "memory",
+                              OBJECT(s->memory), &error_abort);
 +    /*
-+     * SDMC - SDRAM Memory Controller
-+     * The SDMC controller is unlocked at SPL stage.
-+     * At present, only supports to emulate booting
-+     * start from u-boot stage. Set SDMC controller
-+     * unlocked by default. It is a temporarily solution.
++     * The SSP starts in a powered-down state and can be powered up
++     * by setting the SSP Control Register through the SCU
++     * (System Control Unit)
 +     */
-+    object_property_set_bool(OBJECT(&s->sdmc), "unlocked", true,
-+                                 &error_abort);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdmc), errp)) {
-+        return;
-+    }
-+    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->sdmc), 0,
-+                    sc->memmap[ASPEED_DEV_SDMC]);
-+
-+    /* RAM */
-+    if (!aspeed_soc_ast2700_dram_init(dev, errp)) {
-+        return;
-+    }
-+
-     /* SRAM */
-     name = g_strdup_printf("aspeed.sram.%d", CPU(&a->cpu[0])->cpu_index);
-     if (!memory_region_init_ram(&s->sram, OBJECT(s), name, sc->sram_size,
-@@ -792,26 +812,6 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-                                                       ASPEED_DEV_EHCI1 + i));
-     }
++    object_property_set_bool(OBJECT(&a->armv7m), "start-powered-off", true,
++                             &error_abort);
+     sysbus_realize(SYS_BUS_DEVICE(&a->armv7m), &error_abort);
  
--    /*
--     * SDMC - SDRAM Memory Controller
--     * The SDMC controller is unlocked at SPL stage.
--     * At present, only supports to emulate booting
--     * start from u-boot stage. Set SDMC controller
--     * unlocked by default. It is a temporarily solution.
--     */
--    object_property_set_bool(OBJECT(&s->sdmc), "unlocked", true,
--                                 &error_abort);
--    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sdmc), errp)) {
--        return;
--    }
--    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->sdmc), 0,
--                    sc->memmap[ASPEED_DEV_SDMC]);
--
--    /* RAM */
--    if (!aspeed_soc_ast2700_dram_init(dev, errp)) {
--        return;
--    }
--
-     /* Net */
-     for (i = 0; i < sc->macs_num; i++) {
-         object_property_set_bool(OBJECT(&s->ftgmac100[i]), "aspeed", true,
+     /* SDRAM */
 -- 
 2.43.0
 

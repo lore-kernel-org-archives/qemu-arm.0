@@ -4,107 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13F83D2FECE
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 18:19:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A22C8D2FED4
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 18:30:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkne0-0006yh-AO; Tue, 27 Jan 2026 13:18:28 -0500
+	id 1vknpA-0004KS-3F; Tue, 27 Jan 2026 13:30:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkndy-0006y3-Ok
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:18:26 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vkndx-0000st-2O
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:18:26 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-6581327d6baso9253529a12.3
- for <qemu-arm@nongnu.org>; Tue, 27 Jan 2026 10:18:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1769537903; cv=none;
- d=google.com; s=arc-20240605;
- b=RUvIK51kstSOnczTTgrHsgVV2uTDk0AkFgIQAfYo1UVTNs6Ju6ZNC8kqYHWDiK8+SH
- EhujpNUU7KuKk44hui0ycaLsrF89dAJpb109SsUFDvC+TVptarkmdxmPGwSLH1Uw98+i
- U1wTfnxmaAg0WTS0q8fi2DMouHQyhg655X4N8XJRpjf1p9e4Vg2p2fvpkwsSwjc1z+qA
- ygndyHvBndCCVZlsBRxAe3gjFNlrg00SjysLRd5O68039R76vW8gp/++yoenAa8UGQeE
- fBCu4yw1LxkP+IznURyPJGu0XoBekK+XsHnok6Z2R0KiM2TZLpLrFfg7V4eTE4GQpVx9
- y0Zg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=Y4TAlzdd7rvwsch6CulBm7lpt7hAKOxigoaihNeKqsI=;
- fh=7ecycb6E/v0YW6Oazw70ToTxH5tmkqndyeWggaMlZ4w=;
- b=cJtdqh1KxRCv6toPJdWVp9bazk0MGXTHDJceG0CLIrOncy1tDvYcctf6b+zfK5oB1e
- 8manzedzyrVTDOqbASVfoBjsvr9ohSUuqbFmbfjUnxACk5P3X7zFo4TMH1tZCPuZ/9DQ
- AMpecX8Z/ysx6lqr4KGMOO5OZaZEN1KE7AJ3wPkAz9CYQfB8qlU0tbOZVO7msuTck9/N
- Zu255/VlHywZMplEQGcQ8VnEFCwtotMNHtlfjdZc3nGa6lJ5NuMZwpDSQopuySI4iwUI
- Bi1j8TgkvXK3hw3Q0/Z4JwQvRM1l54mt+7gS0FH6JELicdeL8wyDN8NAGPuJw6m8YUL/
- bQeQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1769537903; x=1770142703; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Y4TAlzdd7rvwsch6CulBm7lpt7hAKOxigoaihNeKqsI=;
- b=E+EHQBcyciUHxS37TXV4zz/YGzuwB0NbLhcw1LcDtmSPGgxYFPsHOpbBpXO/iAruK1
- D2ekKicQJcq69GcIE8SreEvF3EH0QcTbLgcGPYkbu4F7qxPKZdqDAcbL/LejhOQEt92I
- iRl/FLJGshAa6iZ3TkJLYQprnnWVKGp+eY0Phop/Btj6CxXL4MvITi3MJX8NddMop1hk
- IRVXcuaz6O8ycb9LQ9AmNvK+y4zxhlO1PIP9tOGXb3hnrw6q5SNj92wopFrGFsvwEwjf
- Dp6mBThHBgNdFDLzkysjzXg+RFZGTonVFgIPD1ZKuc862h7IHbKoZZQXAJ3Rm+GdHFmd
- JtEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769537903; x=1770142703;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=Y4TAlzdd7rvwsch6CulBm7lpt7hAKOxigoaihNeKqsI=;
- b=USFxFbJ5BFQwYTFyxAvmZUZuU1UjEQEearK/uItV59iaFYCXfilbfleSNbYPUFzQfl
- X03dh+I0Bakoo7QzFlyZLH5ISpC5kSAzQtcJhCc/+9gpj2FRlcdYskxqDAPJNmg3R5oH
- wgPDJ+uRaC77hOr2lYYw5FEtBAzljOwlXQ8XJM1XfOa8PwV7ccwEJCOrsE59AgZ2odWf
- c2I/8Ktqz94r78QM60MC4+iaZ1/rT+JHt9/gWRYXCzBqVr0AmToXs3KPj4iYNK5GcKgT
- wf571dBd7gtObUM39JO6ObnbitLUW7Wd0cKScGXSi1QTr7XAEajI+y/WUrlhEeoOFDKP
- BWog==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWqkubzY06ku23oHuvL8j23Qni1hnT75TKzWNspLkg/7iuDhJzOnXjrKT5xUrDLX6qI+CSuuOid3Q==@nongnu.org
-X-Gm-Message-State: AOJu0YziUvCPxA6eOfqW149jzRrehOci0A25lK+yJWOBFUkyQ0QCbxRe
- 2T7LdFCx9M9J9Hirw5j0eehYxVBJo9lDFyu8E+cXtXXmnoF9AxEqadb0hgl5WuStZ7d39cniL3h
- KA6AdfqrmeVBrWOS+ujbRqZuA2it2oh8=
-X-Gm-Gg: AZuq6aKUFYD1+hU4gVRTZRASLT1fJiDZqtbefRtwYwnuT00W8dOTHSgfNicNzxwoPD2
- kFt1OgrF2OKv1RWEnCFIHXR5AU3ymrkrnCbJgLdxuD8tGLDrhEXM1AvGFPY9ypcT5/gwIuEPx81
- G04bK4TqQlgwI0P5fwcj/qVJvjcebx15i3V9Wdiezd97zL+UvDYOOovQ8vQz8FmDykw3vZQNS5V
- QF4ElRKhM5xhpBMG7p4a7mOsYHDLUqDtmG3T0mv+UERhv5cQ7XtVDZ3E87kSru4s6lzfvgj
-X-Received: by 2002:a17:906:c116:b0:b88:73ea:a1d5 with SMTP id
- a640c23a62f3a-b8dab45dfcamr202671166b.51.1769537902937; Tue, 27 Jan 2026
- 10:18:22 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vknnn-0001ec-K0
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:28:39 -0500
+Received: from p-west2-cluster5-host6-snip4-3.eps.apple.com ([57.103.71.56]
+ helo=outbound.mr.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vknnl-0003QJ-8s
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:28:34 -0500
+Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-11 (Postfix) with ESMTPS id
+ 3AED1180024A; Tue, 27 Jan 2026 18:28:27 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1769538509; x=1772130509;
+ bh=ChIhwcPMGVA7/ZQSbYVEEiNk2wqKK9/9DHnWEjCY41s=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=DSNjKsMnBHvRt4TlcfkZW58ZnZjFPOHoVQYEh5BhBTEeVP8XBj0e8ye81o9alynAVNmLwWD1hmBh/vcnK/A1tHpGljF3kCGY96Gjw1FGoDTVlmPSmtKdIBUAPTfFssiwVGBdlEmypAzzIjsGWwyzbBJVrqHxxmOLYh6Hyzj2DQAkel+239b63NHjP/ckZxYH17aYywidEEjx3lYsXUXDqgbHGcm9lsOKHXaplCgP3pwkVbVTTFYDzcRaDnO56CBYKPKk60sxO7ZhXdiZadoyfsAPK4t7LOVh6MtjD4hP9goDtkyj8kMS3MTgFLlP3830WwwCaJ0OCi/I5McUEFvKHQ==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.57.152.38])
+ by p00-icloudmta-asmtp-us-west-2a-100-percent-11 (Postfix) with ESMTPSA id
+ 8052218000A8; Tue, 27 Jan 2026 18:28:22 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org,
+	mohamed@unpredictable.fr
+Cc: Zhao Liu <zhao1.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
+ Ani Sinha <anisinha@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Cameron Esfahani <dirty@apple.com>,
+ Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Phil Dennis-Jordan <phil@philjordan.eu>
+Subject: [PATCH v18 03/22] qtest: hw/arm: virt: skip ACPI test for IORT with
+ GICv2
+Date: Tue, 27 Jan 2026 19:27:43 +0100
+Message-ID: <20260127182805.73212-4-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260127182805.73212-1-mohamed@unpredictable.fr>
+References: <20260127182805.73212-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-References: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
- <CAFEAcA9NEjaUBX19sdw9TRCKcKn8CQfvoVNZ+VaXOcNZ8kf24g@mail.gmail.com>
-In-Reply-To: <CAFEAcA9NEjaUBX19sdw9TRCKcKn8CQfvoVNZ+VaXOcNZ8kf24g@mail.gmail.com>
-From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
-Date: Tue, 27 Jan 2026 19:18:10 +0100
-X-Gm-Features: AZwV_QhgsPS3k1UViGYc904zjHHQN9WcH2oc_E4-HDEBnl8NLgfggLHy5DbiCMI
-Message-ID: <CAN-aV1EjYwSRfV87YQdtfqU5CH8Bsssr3EvStPWL2_VFOs4N4w@mail.gmail.com>
-Subject: Re: [PATCH 00/27] hw/arm: Add generic FDT-based machine and
- infrastructure
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, artem_mygaiev@epam.com, 
- volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com, 
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>, Ruslan_Ruslichenko@epam.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ed1-x52c.google.com
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTI3MDE1MCBTYWx0ZWRfX/nKayxB+y3zt
+ M46RntRu2wo9mG/G+VOqMJmBYNXRtlzMjSjBm5fGLL9d9PIAVDgetR/kMzGbTzWRGUYrkepQPWR
+ 3WnskrbEvfcJxHCwjJjQmASVpDL1CfI6Xleuy0dj9+wGnhONvrWWIiAlKHCo7SEEGWi9W3/82oP
+ sHYxYWMMJHGUhSajHCK77UyQVS69T3RyIiN82YbQ1s6z7VlVpT8lV+P0kDEs5U3EzFHOxpg6XMH
+ dmAkduonngn+fyS61RqZz2z54MjU/lrhLU/h+WCLRu+22mlQ+YzyX4OjRjfzi8IxjyQcHfS24Sx
+ jlj9nEzpvAntkcEzwFxVYgMSgzmg7tOTiIPWTQjT//My3YgYrku7WqoMguZpWA=
+X-Proofpoint-ORIG-GUID: 6vtEGzJoN7ZtNxf1ug6e4bJMNCN5nxmK
+X-Authority-Info-Out: v=2.4 cv=a+I9NESF c=1 sm=1 tr=0 ts=697903cc
+ cx=c_apl:c_apl_out:c_pps a=9OgfyREA4BUYbbCgc0Y0oA==:117
+ a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=3bhNkNL8zgIfWImNCT0A:9
+X-Proofpoint-GUID: 6vtEGzJoN7ZtNxf1ug6e4bJMNCN5nxmK
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-01-27_04,2026-01-27_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ lowpriorityscore=0 mlxscore=0 mlxlogscore=999
+ clxscore=1030 bulkscore=0
+ spamscore=0 adultscore=0 malwarescore=0 phishscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2601270150
+X-JNJ: AAAAAAABewu9/wLAAh8kuZTOGG7ecHFvbOH/1oStMCERbL3Qu9RfstlUXDemWwgPs0otiV93J3wBTqb9cJvz5yX8ObQq0kLX/ZQw7cLJaVfuT45ubw4lATmutkW6BAAu1PPnTdA9wls9W632u9zKXHw+DDVBulS76FxTIWhpDqXZL7EY+0r2Y01ShWKGOvE15AwCWRJ70B1Ar2FH8pxNJ2lYnHCP+mtEKR4gN5HKZQ0lXaY45traAmMN9Za01aDXDuV/p9kCSN26g2RaGbITSTtUeiFZ/iuP8LsUSN87tUDAAXcJBqFk4adG4R3qgNmPuJOuIYTAIGsZn0+pvc4uEvZaO/+hUQhnAw42G4vMA2SpyuOJkKWC6th+TFS4ozeezDAGEUBZipEFyeBe9zkvbBY2KfumIXNJZ5NsDLSZCn1iFUoOh592JrVmOvj51JLamQ0QvgXV5pULgENJRRt2FNw/99tPeROYU5JMx2HOfunHRhG7TPgzt5OZSz0wlV7+Dy6BgNC60RBfTEY/DlAqxZ9THUbL3n7R5ZB6F4A2ZI6gn237VRC1WA8S79kln5hOb8F6Jge/RP1qhbSXuxm6RRbwz/Of+9wAK4IFUiTe0yZnfjBk1mV0Dgdykq8hs/C9f8HNJp6nWDu4FYcIEDYMxlyb66WP4GM/CLETL/sf+rPxnP297PvP4VsZyryLNDjVUoEGFNyfibA5iufkjR0o1nVBJYcgMdwPpc3j51yesckkUGvtGH+VR+0RHOZCeQLVDnuYjrhjwZsNcgKjQz4jeGdNtYMmLGPUkuf+Y2aybBTJw78MKhDV1fJob7Va2ds1amhy080NZZMeUf1Hiic/c7wLccH0ZZf7dTYs+yhKtubjEyGj8akU8Lieac0dtLO8cDt2iR37yDEKRQoMx9yoEAQxxoPp7wHPSXu0Ra5XZH3mjTKGUKGoJOJ2KlyPiOhcUoS3YUUC
+Received-SPF: pass client-ip=57.103.71.56;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,65 +108,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jan 27, 2026 at 11:03=E2=80=AFAM Peter Maydell <peter.maydell@linar=
-o.org> wrote:
->
-> On Mon, 26 Jan 2026 at 17:43, Ruslan Ruslichenko
-> <ruslichenko.r@gmail.com> wrote:
-> >
-> > From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
-> >
-> > This patch series introduces new ARM machine model, arm-generic-fdt, an=
-d the underlying infrastructure required to instantiate a QEMU machine from=
- a Device Tree.
->
-> I'm afraid this has been a feature that has been suggested from
-> time to time, but which I don't think is workable in general.
->
-> Device tree files are designed to provide enough information to
-> the guest kernel to allow it to find non-probeable hardware. They
-> are not designed to provide enough information to QEMU to allow
-> it to create and wire up all the hardware present on the system.
->
-> There are specific niches where it can be made to work -- I think
-> Xilinx have or had a setup where they were generating an FPGA
-> model and a device tree and a guest kernel all from the same
-> single data source, so they could put everything necessary into
-> the dtb, for example -- but I don't think it works in the
-> general case. As one simple example, the DTB doesn't generally
-> have any information about how the Secure world works in an Arm
-> system, because Linux doesn't care about the Secure world. It
-> also doesn't usually have information that the guest OS can
-> probe for itself at runtime.
->
-> There has been periodic discussion of more flexible user-driven
-> board creation, but that has generally been with the idea of using
-> the QMP monitor to orchestrate creation and connection of device
-> models.
->
-I agree that a guest Device Tree is insufficient for describing a
-complete QEMU machine model.
-However, we separate the guest configuration from the machine
-definition. The -hw-dtb option allows the user to provide a
-QEMU-specific system description.
-Those hw-dtb would not be passed to Linux Guest VM.
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ tests/qtest/bios-tables-test-allowed-diff.h | 3 +++
+ 1 file changed, 3 insertions(+)
 
-The fact that this workflow has been successfully used in production
-by AMD/Xilinx demonstrates that FDT is a feasible format.
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..7acaf464dd 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,4 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/aarch64/virt/IORT",
++"tests/data/acpi/aarch64/virt/IORT.smmuv3-dev",
++"tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy",
+-- 
+2.50.1 (Apple Git-155)
 
-In contrast, QMP usage may end up even more complex and less
-maintainable for the task of full system modeling.
-To my understanding, this would need to generate too long configs,
-which may eventually require some intermediate format by itself.
-
-I am proposing to use FDT as a serialization format to describe a
-machine configuration. Theoretically we can use other formats, like
-XML, but in my opinion FDT perfectly matches the requirements.
-
-BR,
-Ruslan Ruslichenko
-
-
-> thanks
-> -- PMM
 

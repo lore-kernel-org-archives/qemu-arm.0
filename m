@@ -4,74 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71F2AD2595F
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 08:15:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CACDCA6C92
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 08:45:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkeEO-00066E-U3; Tue, 27 Jan 2026 03:15:25 -0500
+	id 1vkehS-00063N-Mj; Tue, 27 Jan 2026 03:45:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vkeEN-00065g-Rd; Tue, 27 Jan 2026 03:15:23 -0500
-Received: from mgamail.intel.com ([198.175.65.21])
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1vkehQ-00061S-5Y
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 03:45:24 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1vkeEL-0006Ph-Ao; Tue, 27 Jan 2026 03:15:23 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1769501721; x=1801037721;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=s9p19Gep8pJ9I3Pc8+moCbbXkXu8Op5D08Qgdj0PsKc=;
- b=Sfd0u4YNfhYGgRINsgzxgHm+6RWV+2dHiNivxn44anNHbiiXXZjzUX7F
- MxSPFP9Dn3hb2n9fZ9nd6O7vqDcy8s6Kbh4lJhImqyxLSbo7tO/Jhrl5N
- J+x+5Fo3jTG/geafNqlFBPoZN62e6uom5TyAGyP23fgljUxlpuSL7+nm8
- Rix6DHC3sedzGHUOcI6KvRBSdSK2U4N7bA3+7cwuwulazkvtc9vxidNgN
- JG+CZQ+bPdPTPicamSHLvxJhy1YfsmA9CivYptOX4C9vzladmaIU7kqMc
- EzFKzoV8FITOwC1JsDFL+MjdkWQOd54ISXqk5yBBuQX12O/voXhdtVYz9 g==;
-X-CSE-ConnectionGUID: Rvgc0/gaSRCgZYd3TvuOVg==
-X-CSE-MsgGUID: K/eXZvbPQouX9MVhO8mykw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11683"; a="70593384"
-X-IronPort-AV: E=Sophos;i="6.21,256,1763452800"; d="scan'208";a="70593384"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Jan 2026 00:15:16 -0800
-X-CSE-ConnectionGUID: +3W+5fAaQeOgy+508u6iSg==
-X-CSE-MsgGUID: lOTUmowPRuqT8PHes5LUjw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,256,1763452800"; d="scan'208";a="239180328"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by fmviesa001.fm.intel.com with ESMTP; 27 Jan 2026 00:15:13 -0800
-Date: Tue, 27 Jan 2026 16:40:48 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
- takahiro.nakata.wr@renesas.com,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Ruslan_Ruslichenko@epam.com, Paolo Bonzini <pbonzini@redhat.com>,
- Yanan Wang <wangyanan55@huawei.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Subject: Re: [PATCH 18/27] hw/core/machine: add '-hw-dtb' option for machine
-Message-ID: <aXh6EHwejpTVoYXY@intel.com>
-References: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
- <20260126174313.1418150-19-ruslichenko.r@gmail.com>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1vkehJ-00038B-Bu
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 03:45:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1769503507;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=8nZVq5C60OyjBjIgX/8zGTHHq0obTGLsoT+49US/5aA=;
+ b=RAf/rSgIlITYL0KeWnUUcCLz6GOcnSPnTR+8ZYo0ruOOZQ7NcfjYpH3QgITnRscXBIhQEC
+ 2lM3CoV38TCSfjv3Z4EYl/ELz51UFOkNCK8GpOTr/w00/x4raE50lf+/gQx+ZJT9kGPRlt
+ aFiv/gcZOVD5mYX19nWT4WYsA4WEygY=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-180-hD5EHANROQ-qoBP_gNrMJg-1; Tue,
+ 27 Jan 2026 03:45:02 -0500
+X-MC-Unique: hD5EHANROQ-qoBP_gNrMJg-1
+X-Mimecast-MFC-AGG-ID: hD5EHANROQ-qoBP_gNrMJg_1769503501
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C5EEC18911AA; Tue, 27 Jan 2026 08:44:53 +0000 (UTC)
+Received: from redhat.com (unknown [10.45.225.228])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 024F0180009E; Tue, 27 Jan 2026 08:44:47 +0000 (UTC)
+Date: Tue, 27 Jan 2026 08:44:43 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Elhrj Saad <saadelhrj@gmail.com>
+Cc: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Steven Lee <steven_lee@aspeedtech.com>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Michael Tokarev <mjt@tls.msk.ru>
+Subject: Re: [PATCH] hw/adc: Fix out-of-bounds write in Aspeed ADC model
+Message-ID: <aXh6-6JGFDxuA4gZ@redhat.com>
+References: <20260126141820.719492-1-clg@redhat.com>
+ <CAFEAcA8xQmUa7DyR7+Nw255e_DW=uzZ-gQT5G6cd-uuWgQBaUg@mail.gmail.com>
+ <e8a6032d-cf06-46e5-a7d5-c2e9b8d248ef@redhat.com>
+ <CAEEWBQPci_=gDhJS8m7erJeYu7C4-eioD0ks=_WReFQiOVDNiw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260126174313.1418150-19-ruslichenko.r@gmail.com>
-Received-SPF: pass client-ip=198.175.65.21; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+In-Reply-To: <CAEEWBQPci_=gDhJS8m7erJeYu7C4-eioD0ks=_WReFQiOVDNiw@mail.gmail.com>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,32 +89,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
->  static char *machine_get_dumpdtb(Object *obj, Error **errp)
->  {
->      MachineState *ms = MACHINE(obj);
-> @@ -1287,6 +1301,11 @@ static void machine_initfn(Object *obj)
->      ms->ram_size = mc->default_ram_size;
->      ms->maxram_size = mc->default_ram_size;
->  
-> +    object_property_add_str(obj, "hw-dtb",
-> +                            machine_get_hw_dtb, machine_set_hw_dtb);
+On Mon, Jan 26, 2026 at 07:22:23PM +0100, Elhrj Saad wrote:
+> Hello, gentlemen,
+> 
+> Is there any possibility of making an exception and assigning a CVE for the
+> issue ?? (It's my first ever found vulnerability :)
 
-What about object_class_property_add_str()? It seems this property
-doesn't depend on any other state, so I think it could be at class
-level, just like "dtb" did.
+Thank you for your contribution to improving the quality of QEMU. In many
+projects this would indeed qualify for assignment of a CVE, but as Peter
+mentions, this falls outside the scope of QEMU's security policy.
 
-> +    object_property_set_description(obj, "hw-dtb",
-> +                    "A device tree used to describe the hardware to QEMU.");
+Assigning CVEs has quite a ripple effect on those consuming QEMU, due
+to it triggering many security response processes. As such we do not
+wish to issue CVEs for things that the project considers to merely be
+hardening bug fixes in an area of code that is not designed to be
+providing a security boundary.
 
-maybe "A device tree binary used to describe the hardware to QEMU"?
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
-and none of the other machine property descriptions have 'periods'.
-
-> +
->      if (mc->nvdimm_supported) {
->          ms->nvdimms_state = g_new0(NVDIMMState, 1);
->          object_property_add_bool(obj, "nvdimm",
 

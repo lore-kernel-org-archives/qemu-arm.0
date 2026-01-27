@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCB48D13C1B
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 09:31:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2131AC88E41
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 09:32:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkfPf-0005OS-AH; Tue, 27 Jan 2026 04:31:08 -0500
+	id 1vkfPS-0004Ll-H7; Tue, 27 Jan 2026 04:30:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vkfPY-0004v7-Vx; Tue, 27 Jan 2026 04:31:03 -0500
+ id 1vkfP0-000431-NY; Tue, 27 Jan 2026 04:30:39 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vkfPX-0005A1-40; Tue, 27 Jan 2026 04:31:00 -0500
+ id 1vkfOy-00050e-De; Tue, 27 Jan 2026 04:30:25 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 27 Jan
- 2026 17:29:47 +0800
+ 2026 17:29:45 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 27 Jan 2026 17:29:47 +0800
+ Transport; Tue, 27 Jan 2026 17:29:45 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -32,10 +32,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v2 11/11] docs: Add support vbootrom and update Manual boot
- for ast2700fc
-Date: Tue, 27 Jan 2026 17:29:40 +0800
-Message-ID: <20260127092943.3731635-12-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 05/11] hw/arm/ast27x0: Add DRAM alias for TSP SDRAM remap
+Date: Tue, 27 Jan 2026 17:29:34 +0800
+Message-ID: <20260127092943.3731635-6-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260127092943.3731635-1-jamin_lin@aspeedtech.com>
 References: <20260127092943.3731635-1-jamin_lin@aspeedtech.com>
@@ -67,82 +66,122 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+This commit adds a MemoryRegion alias to support PSP access to
+TSP SDRAM through shared memory remapping, as defined by the default SCU
+configuration.
+
+The TSP coprocessor exposes one DRAM alias:
+  - remap maps PSP DRAM at 0x42e000000 (32MB) to TSP SDRAM offset 0x0
+
+This region corresponds to the default SCU register value, which controls
+the mapping between PSP and coprocessor memory windows.
+
+Set TSP CPUID 5. SCU VMState version remains at 3, as it was already bumped in a
+previous commit.
+
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- docs/system/arm/aspeed.rst | 37 +++++++++++++++++++++++++++++++++----
- 1 file changed, 33 insertions(+), 4 deletions(-)
+ include/hw/misc/aspeed_scu.h |  1 +
+ hw/arm/aspeed_ast27x0-fc.c   |  2 ++
+ hw/arm/aspeed_ast27x0-tsp.c  |  3 +++
+ hw/arm/aspeed_ast27x0.c      |  2 ++
+ hw/misc/aspeed_scu.c         | 17 ++++++++++++++++-
+ 5 files changed, 24 insertions(+), 1 deletion(-)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 97e14b7d33..e8d8a85ec4 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -391,6 +391,14 @@ Booting the ast2700fc machine
- AST2700 features four Cortex-A35 primary processors and two Cortex-M4 coprocessors.
- **ast2700-evb** machine focuses on emulating the four Cortex-A35 primary processors,
- **ast2700fc** machine extends **ast2700-evb** by adding support for the two Cortex-M4 coprocessors.
-+There are two methods to boot the ast2700fc machine.
-+
-+Manual boot using ``-device loader``:
-+
-+In this approach, users manually load firmware and assign entry points via QEMU loader devices.
-+By default, the PSP begins execution at address ``0x430000000``, the load address of the bl31
-+firmware. The SSP and TSP start in the powered-off state and must be explicitly enabled by the
-+PSP through writes to SCU registers.
+diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+index 6f7f7d2766..1e18dcd4a5 100644
+--- a/include/hw/misc/aspeed_scu.h
++++ b/include/hw/misc/aspeed_scu.h
+@@ -43,6 +43,7 @@ struct AspeedSCUState {
+     MemoryRegion dram_remap_alias[3];
+     MemoryRegion *dram;
+     int ssp_cpuid;
++    int tsp_cpuid;
+ };
  
- Steps to boot the AST2700fc machine:
+ #define AST2400_A0_SILICON_REV   0x02000303U
+diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
+index b788e6ca2a..e03f6870e7 100644
+--- a/hw/arm/aspeed_ast27x0-fc.c
++++ b/hw/arm/aspeed_ast27x0-fc.c
+@@ -103,6 +103,8 @@ static bool ast2700fc_ca35_init(MachineState *machine, Error **errp)
+                             sc->uarts_num, serial_hd(2));
+     object_property_set_int(OBJECT(&s->ca35), "ssp-cpuid", 4,
+                             &error_abort);
++    object_property_set_int(OBJECT(&s->ca35), "tsp-cpuid", 5,
++                            &error_abort);
+     if (!qdev_realize(DEVICE(&s->ca35), NULL, errp)) {
+         return false;
+     }
+diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c
+index 46691080d1..5d2977b45c 100644
+--- a/hw/arm/aspeed_ast27x0-tsp.c
++++ b/hw/arm/aspeed_ast27x0-tsp.c
+@@ -198,6 +198,9 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
+     memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SCU],
+                                 &s->scu_alias);
  
-@@ -401,8 +409,8 @@ Steps to boot the AST2700fc machine:
-  * bl31.bin
-  * optee/tee-raw.bin
-  * image-bmc
-- * zephyr-aspeed-ssp.elf (for SSP firmware, CPU 5)
-- * zephyr-aspeed-tsp.elf (for TSP firmware, CPU 6)
-+ * zephyr-aspeed-ssp.bin (for SSP firmware, CPU 5)
-+ * zephyr-aspeed-tsp.bin (for TSP firmware, CPU 6)
++    /* SDRAM remap alias used by PSP to access TSP SDRAM */
++    memory_region_add_subregion(&s->sdram, 0, &s->scu->dram_remap_alias[2]);
++
+     /* INTC */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&a->intc[0]), errp)) {
+         return;
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index ae8b22fc1c..6e4b456b8c 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -391,6 +391,8 @@ static void aspeed_soc_ast2700_init(Object *obj)
+                               "hw-prot-key");
+     object_property_add_alias(obj, "ssp-cpuid", OBJECT(&s->scu),
+                               "ssp-cpuid");
++    object_property_add_alias(obj, "tsp-cpuid", OBJECT(&s->scu),
++                              "tsp-cpuid");
  
- 2. Execute the following command to start ``ast2700fc`` machine:
+     object_initialize_child(obj, "scuio", &s->scuio, TYPE_ASPEED_2700_SCUIO);
+     qdev_prop_set_uint32(DEVICE(&s->scuio), "silicon-rev",
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index f8d0d3a3fc..3027ac0687 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -604,7 +604,7 @@ static void aspeed_scu_realize(DeviceState *dev, Error **errp)
  
-@@ -416,17 +424,38 @@ Steps to boot the AST2700fc machine:
-        -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
-        -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
-        -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
-+       -device loader,addr=0x42C000000,file=${IMGDIR}/zephyr-aspeed-ssp.bin,force-raw=on \
-+       -device loader,addr=0x42E000000,file=${IMGDIR}/zephyr-aspeed-tsp.bin,force-raw=on \
-        -device loader,cpu-num=0,addr=0x430000000 \
-        -device loader,cpu-num=1,addr=0x430000000 \
-        -device loader,cpu-num=2,addr=0x430000000 \
-        -device loader,cpu-num=3,addr=0x430000000 \
-        -drive file=${IMGDIR}/image-bmc,if=mtd,format=raw \
--       -device loader,file=${IMGDIR}/zephyr-aspeed-ssp.elf,cpu-num=4 \
--       -device loader,file=${IMGDIR}/zephyr-aspeed-tsp.elf,cpu-num=5 \
-        -serial pty -serial pty -serial pty \
-        -snapshot \
-        -S -nographic
+     sysbus_init_mmio(sbd, &s->iomem);
  
-+Boot using a virtual boot ROM (-bios):
+-    if (s->ssp_cpuid > 0) {
++    if (s->ssp_cpuid > 0 || s->tsp_cpuid > 0) {
+         if (!s->dram) {
+             error_setg(errp, TYPE_ASPEED_SCU ": 'dram' link not set");
+             return;
+@@ -629,6 +629,7 @@ static const Property aspeed_scu_properties[] = {
+     DEFINE_PROP_UINT32("hw-strap2", AspeedSCUState, hw_strap2, 0),
+     DEFINE_PROP_UINT32("hw-prot-key", AspeedSCUState, hw_prot_key, 0),
+     DEFINE_PROP_INT32("ssp-cpuid", AspeedSCUState, ssp_cpuid, -1),
++    DEFINE_PROP_INT32("tsp-cpuid", AspeedSCUState, tsp_cpuid, -1),
+     DEFINE_PROP_LINK("dram", AspeedSCUState, dram, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
+ };
+@@ -903,6 +904,20 @@ static void aspeed_2700_scu_dram_remap_alias_init(AspeedSCUState *s)
+                                  "ssp.dram.remap2", s->dram,
+                                  0x2c000000, 32 * MiB);
+     }
 +
-+In this method, the virtual boot ROM (vbootrom) handles the full initialization sequence.
-+It starts the PSP, which then enables the SSP and TSP by programming the appropriate SCU
-+registers, following the hardware behavior.
-+
-+Execute the following command to start ``ast2700fc`` machine:
-+
-+.. code-block:: bash
-+
-+  IMGDIR=ast2700-default
-+
-+  $ qemu-system-aarch64 -M ast2700fc \
-+      -bios ast27x0_bootrom.bin \
-+      -drive file=${IMGDIR}/image-bmc,if=mtd,format=raw \
-+      -serial pty -serial pty -serial pty \
-+      -snapshot \
-+      -S -nographic
-+
-+Serial Console Redirection:
-+
- After launching QEMU, serial devices will be automatically redirected.
- Example output:
++    if (s->tsp_cpuid > 0) {
++        /*
++         * The TSP coprocessor uses one memory alias (remap) to access a shared
++         * region in the PSP DRAM:
++         *
++         * - remap maps PSP DRAM at 0x42e000000 (size: 32MB) to TSP SDRAM
++         *   offset 0x0
++         *
++         */
++        memory_region_init_alias(&s->dram_remap_alias[2], OBJECT(s),
++                                 "tsp.dram.remap", s->dram,
++                                 0x2e000000, 32 * MiB);
++    }
+ }
  
+ static uint64_t aspeed_ast2700_scu_read(void *opaque, hwaddr offset,
 -- 
 2.43.0
 

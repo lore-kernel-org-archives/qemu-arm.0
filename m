@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF44CD25929
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 03:24:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01D9CD25926
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 03:25:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkZga-0004Jm-VC; Mon, 26 Jan 2026 22:24:13 -0500
+	id 1vkZgc-0004KY-KR; Mon, 26 Jan 2026 22:24:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vkZgZ-0004Is-NN; Mon, 26 Jan 2026 22:24:11 -0500
+ id 1vkZgb-0004KF-Tq; Mon, 26 Jan 2026 22:24:13 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vkZgY-0003Z2-8D; Mon, 26 Jan 2026 22:24:11 -0500
+ id 1vkZga-0003Z2-HJ; Mon, 26 Jan 2026 22:24:13 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 27 Jan
@@ -32,10 +32,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 5/7] tests/functional/arm/test_aspeed_ast2600_sdk: Update
- test ASPEED SDK v11.00
-Date: Tue, 27 Jan 2026 11:23:41 +0800
-Message-ID: <20260127032348.2238527-6-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 6/7] tests/functional/arm/test_aspeed_ast1060: Update test
+ aspeed-zephyr-project v03.04
+Date: Tue, 27 Jan 2026 11:23:42 +0800
+Message-ID: <20260127032348.2238527-7-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260127032348.2238527-1-jamin_lin@aspeedtech.com>
 References: <20260127032348.2238527-1-jamin_lin@aspeedtech.com>
@@ -67,65 +67,49 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Drop root device and set root bus number to 0.
-
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- .../functional/arm/test_aspeed_ast2600_sdk.py | 22 ++++++++-----------
- 1 file changed, 9 insertions(+), 13 deletions(-)
+ tests/functional/arm/test_aspeed_ast1060.py | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/tests/functional/arm/test_aspeed_ast2600_sdk.py b/tests/functional/arm/test_aspeed_ast2600_sdk.py
-index e3d4ed09e2..6236aeb11c 100755
---- a/tests/functional/arm/test_aspeed_ast2600_sdk.py
-+++ b/tests/functional/arm/test_aspeed_ast2600_sdk.py
-@@ -14,22 +14,18 @@
+diff --git a/tests/functional/arm/test_aspeed_ast1060.py b/tests/functional/arm/test_aspeed_ast1060.py
+index 034efa5342..eccb4252d8 100644
+--- a/tests/functional/arm/test_aspeed_ast1060.py
++++ b/tests/functional/arm/test_aspeed_ast1060.py
+@@ -11,18 +11,18 @@
  
- class AST2600Machine(AspeedTest):
  
--    ASSET_SDK_V908_AST2600 = Asset(
--        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.08/ast2600-default-obmc.tar.gz',
--        'a0414f14ad696550efe083c2156dbeda855c08cc9ae7f40fe1b41bf292295f82')
-+    ASSET_SDK_V1100_AST2600 = Asset(
-+        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2600-default-obmc.tar.gz',
-+        '64d8926a7d01b649168be96c986603b5690f06391286c438a3a772c8c7039e93')
+ class AST1060Machine(AspeedTest):
+-    ASSET_ASPEED_AST1060_PROT_3_02 = Asset(
++    ASSET_ASPEED_AST1060_PROT_3_04 = Asset(
+         ('https://github.com/AspeedTech-BMC'
+-         '/aspeed-zephyr-project/releases/download/v03.02'
+-         '/ast1060_prot_v03.02.tgz'),
+-         'dd5f1adc935316ddd1906506a02e15567bd7290657b52320f1a225564cc175bd')
++         '/aspeed-zephyr-project/releases/download/v03.04'
++         '/ast1060_prot_v03.04.tgz'),
++         'c0319df55f5b7a547efefc5a6ba374b881223d5fe1a776bfdd36f97fd1f31d50')
  
-     def do_ast2600_pcie_test(self):
-         exec_command_and_wait_for_pattern(self,
--            'lspci -s 80:00.0',
--            '80:00.0 Host bridge: '
--            'ASPEED Technology, Inc. Device 2600')
--        exec_command_and_wait_for_pattern(self,
--            'lspci -s 80:08.0',
--            '80:08.0 PCI bridge: '
-+            'lspci -s 00:08.0',
-+            '00:08.0 PCI bridge: '
-             'ASPEED Technology, Inc. AST1150 PCI-to-PCI Bridge')
-         exec_command_and_wait_for_pattern(self,
--            'lspci -s 81:00.0',
--            '81:00.0 Ethernet controller: '
-+            'lspci -s 01:00.0',
-+            '01:00.0 Ethernet controller: '
-             'Intel Corporation 82574L Gigabit Network Connection')
-         exec_command_and_wait_for_pattern(self,
-             'ip addr show dev eth4',
-@@ -39,7 +35,7 @@ def test_arm_ast2600_evb_sdk(self):
-         self.set_machine('ast2600-evb')
-         self.require_netdev('user')
+-    def test_arm_ast1060_prot_3_02(self):
++    def test_arm_ast1060_prot_3_04(self):
+         self.set_machine('ast1060-evb')
  
--        self.archive_extract(self.ASSET_SDK_V908_AST2600)
-+        self.archive_extract(self.ASSET_SDK_V1100_AST2600)
- 
-         self.vm.add_args('-device',
-             'tmp105,bus=aspeed.i2c.bus.5,address=0x4d,id=tmp-test')
-@@ -77,7 +73,7 @@ def test_arm_ast2600_evb_sdk(self):
-     def test_arm_ast2600_otp_blockdev_device(self):
-         self.vm.set_machine("ast2600-evb")
- 
--        image_path = self.archive_extract(self.ASSET_SDK_V908_AST2600)
-+        image_path = self.archive_extract(self.ASSET_SDK_V1100_AST2600)
-         otp_img = self.generate_otpmem_image()
+         kernel_name = "ast1060_prot/zephyr.bin"
+         kernel_file = self.archive_extract(
+-            self.ASSET_ASPEED_AST1060_PROT_3_02, member=kernel_name)
++            self.ASSET_ASPEED_AST1060_PROT_3_04, member=kernel_name)
  
          self.vm.set_console()
+         self.vm.add_args('-kernel', kernel_file, '-nographic')
+@@ -35,7 +35,7 @@ def test_arm_ast1060_otp_blockdev_device(self):
+         self.vm.set_machine("ast1060-evb")
+ 
+         kernel_name = "ast1060_prot/zephyr.bin"
+-        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_02,
++        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_04,
+                                            member=kernel_name)
+         otp_img = self.generate_otpmem_image()
+ 
 -- 
 2.43.0
 

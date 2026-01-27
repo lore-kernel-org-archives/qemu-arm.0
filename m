@@ -4,95 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 820A3D2FED9
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 20:52:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD0D8D2FEDF
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 21:19:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkq2M-0001HK-TP; Tue, 27 Jan 2026 15:51:47 -0500
+	id 1vkqSY-0002l0-1P; Tue, 27 Jan 2026 16:18:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vkq2L-0001GV-AF
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 15:51:45 -0500
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vkqSK-0002gX-Pn
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 16:18:36 -0500
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vkq2J-0002BA-3g
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 15:51:44 -0500
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-78fdb90b670so55842617b3.2
- for <qemu-arm@nongnu.org>; Tue, 27 Jan 2026 12:51:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1769547101; cv=none;
- d=google.com; s=arc-20240605;
- b=LwroQv0x9ENefT6+V60F6wfMTuqqRZwbjmSgWa6QXzLw5rF8D1jcNo5KTFabslqcPV
- ENKEZ4w1zzFFj29fQnn0zZODnybQvrxpweHJSbIEi7XOav2DtEs65ks4uc2OUfyjyp67
- Q0AiQd9PDCJyGBhgvoaAfyAAFz3IZi2jRXjohG57ZUgw02FwiTjhDSnFozE9KjfYHBag
- j/NKzy4wg9sgIErzO9j9W1hWfdjw3Bordsb5HVe/9sNhSD07bsodPpe4gaGkaDyCoU6q
- xiiJYGvLwgl0MXPRnF+f/3bp8D7fUNq12mjrUaQl/7LMNoBKoGfkcLWv7y9N5bKB/inH
- QjwQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=j650I8U36tmy5ppnM3eeepIzkkg2D22/3Dxbno5Zfao=;
- fh=C8R2SAyE3X8kf+GYHqFJpiFCwtMPhFBmuT/qx6gyqsE=;
- b=kl0YFoqYzOU04O+0zlE3AMRw0gEefyOegxN0nHXwxBD9DtjUCoNUcZYHVMAdM1IvlR
- QcVFuqMWaxQ7wiliRhEHwEuelSlWmz1XGHL95i7UD/hZ2lJlqPwTYA7NlBOiQv2EuFWO
- aq0aWrjqoItiVG1qqJOzTVt8AooF34L892HySMt63V7Zp+mr0e9qYpUFB23fW8WFesk8
- G6BkEN4eSeZKu4lCT9pXAPvKA8oQAp8KSeDyecFutQCHE55bH7qMV2w0gibrjrID0rZm
- Mlf2a1/pic3EuJfbBqCqeIWgo8y4Hlhll7akiURMMaJwlQsidPoCxBs9BP+SUwWHDE3D
- GJZA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vkqSH-00022v-Qu
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 16:18:35 -0500
+Received: by mail-pj1-x102e.google.com with SMTP id
+ 98e67ed59e1d1-34f2a0c4574so5007733a91.1
+ for <qemu-arm@nongnu.org>; Tue, 27 Jan 2026 13:18:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769547101; x=1770151901; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=j650I8U36tmy5ppnM3eeepIzkkg2D22/3Dxbno5Zfao=;
- b=Qt54+C8NhRqb1P3aaAWWR+JNN+qJVOlEI2Yxh7gd59uGtWOS336v/rrcD7/yhh1JzV
- X0WSumMsLaoyO9733CctOpC/Vf0/olWZTikDqweCJzT3SEcSHH0r5V9b/WfTBh7G0HSm
- O6+/Dr7VEeXrRjcXasjf0xMM7ZDtuy3FyNbdc8/KtMB3pgxUihgltHLrvnLtSYLffgpz
- xmXlqw6QrYUiEe3rdtoLle7qsxCpfMwbPOSmqNkl2hpcFF8856m3Vj20/D8qnRa5wmD6
- DSlz9fy0N/oJct3hQUJijOiy/b1ujUQYccwxTXoQ8ZT99m14xxzfGyDqaPjjre5M65bk
- Ca/Q==
+ d=linaro.org; s=google; t=1769548710; x=1770153510; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=GjlaZFr4xdFpGWFEyEiPzXcXtlPknWQHPkErncN7Alw=;
+ b=S3ZTa0O1stbef42GViFrmz1PEZ7AbvKKgsWOnrc3bdkLN9ko9emqKSfg4EU5zADwL0
+ 6KX8OUb5q8KDjuyBGCYWppqVA5Wf5pB+bAUteU4SIGO/ikiaJH2M1QdYo60bbDWjNU0a
+ ns2McWWki0dv9Jmrsr079Gr0IM5dRyIpfXio9TQu4yR5LK2BSSLOVWZuLz0P5DR4i3zk
+ iw2+Pa0iG3qTNKk7QQ2LeOS+EAxFXfVz1Of3ILMEf6MHJy4EYwT2DrkbnUBzHoIVKjj3
+ rkilll5YMRdcnpUNYsGwdoa4Lunvt5NDwn2tgtMbtBYwp3IiCDJL69MemHmhQ6+jTbrG
+ /Grg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769547101; x=1770151901;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=j650I8U36tmy5ppnM3eeepIzkkg2D22/3Dxbno5Zfao=;
- b=Pdzu0r6P8UTg9Er0Lnn1Kc5qYkSJJTrtVv4Jy/aHpI81M2T2lPxw/WRICjB9nipqOY
- /mNiq9qzrwecWF9GFQHiv4A3bUsOTjq+xAb0ru0B3di6f3aTFjDnJYbh/KHY/D0VwAJa
- Un9xUQUDPMD5csJcEpsLn1NPb56EfeJnQQXeLR6nUNLU5gclDxW4WO+qLh6r0BJC/X+D
- Ba0smDCf5Mb8NMBEgbWonsBZymFNfe9mQVQyx+jVJ0mpSOiDpVr22VV/EtlsenghLGqk
- C7+GpwD2R65qmupI3Kvr5IWaMV+/CfbURhl5bcv98csWlBhdeYcQMC6iny59hW3TCbnt
- rZAQ==
-X-Gm-Message-State: AOJu0YynbHyKQ/bZ9D/Ryx985e+EetXulwx9l6d8NsQO0L+G2Ulh2/CY
- /AzBFH4fZJhTBFUN379hQReYg1MxXwfUYSciqF2RXWof5xj5RQmDwCEukMw4ET8rZk2QuZd2A8O
- WrtbURcBeUYFT2od24gGeCjbdGF0TozVYVcqFUCFIRjlBCAH/LNsaaY8=
-X-Gm-Gg: AZuq6aKN3vA5Jo2URxa0b5+EcVhRkHQda2ZGg3Elji/NjbRbwe6us6SuM/1A8RevcLi
- KZVRzkLYenworTUn+r9PJz6RA4krBNBYLN0wqctgpGO57j8lW/qoSSH8qHBOTVp32vaFpxV9YXe
- IK/4N5hEIT+VgkbflgS/VVid3OcrvYtb56ohLkrFfUywtrvlAVYTekIlzlSHxdeZCG7s0jUd0zt
- r7wpv89Xl66ea70Qw+mQU8/jNz4boX3CH1idQ4BlTSnUUqsUQmYjmJDWYdfHrcz7xmoRw==
-X-Received: by 2002:a05:690c:e584:b0:794:184a:bc68 with SMTP id
- 00721157ae682-7947ab562e7mr16195487b3.23.1769547100872; Tue, 27 Jan 2026
- 12:51:40 -0800 (PST)
+ d=1e100.net; s=20230601; t=1769548710; x=1770153510;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=GjlaZFr4xdFpGWFEyEiPzXcXtlPknWQHPkErncN7Alw=;
+ b=mjEqLjohoDG6jWBwhJsbGjZxSEr8e/F8+VAI2UD9YBU0oYpBFxiATictW8fYYdGw9N
+ IPye2YhKk+gVlpTf/A6WSeLnlVVbJMaTloVRy1h8aMsR3anw8z/7Yx9PHExuUWz/WRzF
+ u3xE9kb175QwJbvfQXGxWC3X5pBeYk5pgpoGve0oS3ydXLgOX1Z4JP5HuqpJ1Ba4WfMZ
+ uxnSxGFs4Ul0QrlhqkS2A/bRgwf2bYLafVzr5m9trPEGrMJ4ZLcFOxLN0QWLhqq3OOOa
+ GBzgdhcVfZarPKvQc2UYtkd0xxXtCMoLgjU/knnzZalzAsnz4RBVAbsTOQrwLlFDpmlU
+ AYAg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVPoi+FAJULZ5/mNfsIKUzYrXrl0Zrhtc2yPUUfDtTruIwGNXqE34PZFb8xmxbJ5P4O4/ATEuzjWA==@nongnu.org
+X-Gm-Message-State: AOJu0Yyp/zbUI9xxigUFVZRjR5tvTKhgRGmYKxTlvJkBTmxOYlZ/CgvU
+ 29qh98Ikw0iBZr/wObjUHfGTELowaLrBalX1PeQ22xd5qFApJvLxF2xU+QLLkEZoi68=
+X-Gm-Gg: AZuq6aLgyFj/HfKWuvKXiu91VuXWEScGULsM2b3oasTft8ezJa6jr92rVXdJOpFQyV4
+ sO9CsYSBfNM5Pkap4P0sufDCd569ps5JFwmCLM8jEsCkEttzc9j/E9CoSE54F+SdOosIFURCIT1
+ PnaBnSfgpplLkcc3HuB6w6B7G8/XWCnKDwv/yy4gWKBTd5ARv89xwgQ9tzr1fNJ9uSQEih0WyVh
+ m9eAIACAualWxLG2TYsGzhumw/z7HjPXCzY1pxP2IBx+sOI1cXld9VCTqFl8pzkq98OvadHP1CC
+ d2dgaH20EytU2ujehOtiTrywNlFxgt4vrMB/klqWq/OUfqiU3pFfhxj2byCFEAt9sjPVjGX5N8L
+ +mYibQFO4EkW3tPYxG/ff8MfwPAC2PQoA4L1MB3hWls5kDFm+gnGvZ/21dWl8euKyMkCNjeJsqn
+ zVqDB9KmAcEdn8BrLL6XEjq961KVMgHJkrECapiTrrWN+/lHDbTHtcRo5H
+X-Received: by 2002:a17:90b:5485:b0:34c:a35d:de19 with SMTP id
+ 98e67ed59e1d1-353fedb1534mr2767858a91.33.1769548709644; 
+ Tue, 27 Jan 2026 13:18:29 -0800 (PST)
+Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3540f2cb419sm338415a91.1.2026.01.27.13.18.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 27 Jan 2026 13:18:29 -0800 (PST)
+Message-ID: <b137fa07-7079-4200-b08b-9de18fa50dc8@linaro.org>
+Date: Tue, 27 Jan 2026 13:18:28 -0800
 MIME-Version: 1.0
-References: <20260127154813.591744-1-peter.maydell@linaro.org>
- <20260127154813.591744-2-peter.maydell@linaro.org>
-In-Reply-To: <20260127154813.591744-2-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Jan 2026 20:51:29 +0000
-X-Gm-Features: AZwV_QhtdwLkO2ezduCKgEdrwZIPTFkpMIvWyDiwCdmtiryQCR7yh8XUqORLeKQ
-Message-ID: <CAFEAcA8kK=br3h+49ruFhpx3aO29ErB8jsEabNJU--vmKj4j6A@mail.gmail.com>
-Subject: Re: [RFC PATCH 1/3] target/arm: Make smcr_write() handle
- SME-without-SVE
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>, 
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 32/33] scripts: Add a script to run the wasm-compiled
+ QEMU on node.js
+Content-Language: en-US
+To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ WANG Xuerui <git@xen0n.name>, Aurelien Jarno <aurelien@aurel32.net>,
+ Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Stefan Weil <sw@weilnetz.de>,
+ qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>
+References: <cover.1769407033.git.ktokunaga.mail@gmail.com>
+ <2af460d17a47ec69d691dfb876f834e4685f9d6d.1769407033.git.ktokunaga.mail@gmail.com>
+ <6dce5ad6-e88b-433c-8eef-98dbe72acbbd@linaro.org>
+ <CAEDrbUZhz8hLQJ=Cvpj9MAy0f+bLqOk8wonHHLMaYEKEQAAFYA@mail.gmail.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
+ 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
+ ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
+In-Reply-To: <CAEDrbUZhz8hLQJ=Cvpj9MAy0f+bLqOk8wonHHLMaYEKEQAAFYA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,76 +153,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 27 Jan 2026 at 15:48, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> Currently smcr_write() implicitly assumes that SME implies SVE,
-> because it will call sve_vqm1_sve_for_el() when SMCR.SM is 0, and
-> sve_vqm1_sve_for_el() will assert in that situation.
->
-> This is the only place where we call that function without
-> it being guarded by a check on whether SVE is implemented.
-> Adjust smcr_write() so that it also avoids asking for the
-> SVE vector length when SVE is not implemented.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> I did think about making sve_vqm1_sve_for_el() return some
-> value rather than asserting, but (a) what would be the right
-> value? and (b) this was the only place that needed fixing.
-> ---
->  target/arm/helper.c | 19 +++++++++++++------
->  1 file changed, 13 insertions(+), 6 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index dce648b482..a3dd84a2d6 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -4936,12 +4936,12 @@ static void smcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
->                         uint64_t value)
->  {
->      int cur_el = arm_current_el(env);
-> -    int old_len = sve_vqm1_for_el(env, cur_el);
-> +    ARMCPU *cpu = env_archcpu(env);
-> +    int old_len = cpu_isar_feature(aa64_sve, cpu) ? sve_vqm1_for_el(env, cur_el) : 0;
->      uint64_t valid_mask = R_SMCR_LEN_MASK | R_SMCR_FA64_MASK;
-> -    int new_len;
->
->      QEMU_BUILD_BUG_ON(ARM_MAX_VQ > R_SMCR_LEN_MASK + 1);
-> -    if (cpu_isar_feature(aa64_sme2, env_archcpu(env))) {
-> +    if (cpu_isar_feature(aa64_sme2, cpu)) {
->          valid_mask |= R_SMCR_EZT0_MASK;
->      }
->      value &= valid_mask;
-> @@ -4953,10 +4953,17 @@ static void smcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
->       * current values for simplicity.  But for QEMU internals, we must still
->       * apply the narrower SVL to the Zregs and Pregs -- see the comment
->       * above aarch64_sve_narrow_vq.
-> +     *
-> +     * If the CPU has only SME and not SVE, then turning streaming mode
-> +     * on and off can't ever change the SVL; we must avoid calling
-> +     * sve_vqm1_for_el() to ask for the SVE vector length when SM is 0
-> +     * because it will assert.
->       */
-> -    new_len = sve_vqm1_for_el(env, cur_el);
-> -    if (new_len < old_len) {
-> -        aarch64_sve_narrow_vq(env, new_len + 1);
-> +    if (cpu_isar_feature(aa64_sve, cpu)) {
-> +        int new_len = sve_vqm1_for_el(env, cur_el);
-> +        if (new_len < old_len) {
-> +            aarch64_sve_narrow_vq(env, new_len + 1);
-> +        }
->      }
+On 1/26/26 6:36 PM, Kohei Tokunaga wrote:
+> Hi Pierrick,
+> 
+>  > I followed the instructions but could not get this running:
+>  >
+>  > $ /usr/share/emscripten/tools/file_packager.py qemu-system-aarch64.data
+>  > --preload pack/ > load.js
+>  > $ ~/node-v24.13.0-linux-x64/bin/node ./scripts/run-emscripten.mjs
+>  > --preload ./load.js ./qemu-system-aarch64.js -- -nographic -m 512M -L 
+> pack
+>  > file:///home/user/.work/qemu/scripts/run-emscripten.mjs:51
+>  > if (preloadModule) preloadModule.default(Module);
+>  >                                          ^
+>  > TypeError: preloadModule.default is not a function
+>  >      at file:///home/user/.work/qemu/scripts/run-emscripten.mjs:51:41
+>  > Node.js v24.13.0
+> 
+> Thank you for trying the script.
+> 
+> That script requires the --export-es6 flag to file_packager.py. This flag
+> was introduced in Emscripten 4.0.13 so please update the Emscripten tools if
+> it is not available. If you're using emsdk, it provides the way to intall
+> newer tools, such as "emsdk update" and "emsdk install 4.0.23" [1].
+> 
+> [1] https://emscripten.org/docs/tools_reference/emsdk.html#how-to-guides 
+> <https://emscripten.org/docs/tools_reference/emsdk.html#how-to-guides>
+> 
+> Regards,
+> Kohei Tokunaga
+> 
 
-This isn't right -- I forgot that SMCR also has the SME vector
-length, so old_len / new_len can be different here and we need
-to call narrow_vq for that case.
-
-Also aarch64_sve_narrow_vq() does this:
-
-    assert(vq <= env_archcpu(env)->sve_max_vq);
-
-and I think that should be asserting that the new vq is <=
-MAX(sve_max_vq, sme_max_vq).
-
--- PMM
+Thanks, this was missing indeed.
 

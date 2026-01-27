@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC782D2FED7
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 18:48:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2D7CD2FEDE
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 18:48:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vko50-00012s-Tu; Tue, 27 Jan 2026 13:46:22 -0500
+	id 1vko50-00012p-Rj; Tue, 27 Jan 2026 13:46:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vko4f-0000Td-DA
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:46:02 -0500
-Received: from p-east2-cluster6-host1-snip4-3.eps.apple.com ([57.103.76.174]
+ id 1vko4g-0000UC-EF
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:46:04 -0500
+Received: from p-east2-cluster6-host12-snip4-1.eps.apple.com ([57.103.76.242]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vko4X-0007dD-77
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:45:56 -0500
+ id 1vko4X-0007da-8N
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:46:01 -0500
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-9 (Postfix) with ESMTPS id
- E390E180066A; Tue, 27 Jan 2026 18:45:37 +0000 (UTC)
+ 552A71800662; Tue, 27 Jan 2026 18:45:41 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1769539542; x=1772131542;
- bh=bTIsRao3N9RI3/RDN6YvSt0GamrXJ2tFOWzM4Mi+H8s=;
+ s=sig1; t=1769539544; x=1772131544;
+ bh=P41uTtz3LduPGS25KkekeKbSnm6eE4vUspp/Ai5+3DY=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=LvnkMQt4j9TRtQUqBplPrECFzvKkhs9gjJADD+BcPfz12z3j89taKclMxi36xIPMp8FKCI9tBUHe/vxG41m+Dlwezyp18jhVi7rwL5Rd/VQtdyWzD9mCXk9fr2NECwdWjXBbZROYvPJTuGmxXmAErISKxW/pkSzkLjXTbA4XQLXX9vwZIIU5ttHhNuNvEpqzmGQmSYIzcfptoJH+14eMSxT+dC5jWHbMlQ4uAcxpFAmDPBgdOWEkltRaYSQRNhbf7W04KJTRRbRcQkvqq4zlKKOMN2AkuZaYlo4DVfh9sEyZjQM0fQY8hymNUhb5kkrzwUCmx7iz0CHG7x/d7BsyYg==
+ b=LlkjvKF6KQ2gkOvJbq5ZwgT7nTPmZ/UJaRZ1EBpAee4vAt0RoQVlNlxDLmlrPxjoE7c/H0Ssc+l8FKbOg1hvcmyq8jpmcDlasQSlOXJNdr7fLnIiCCtV1l/zcFRhcDSjNxQwFi0yOB8IfShnhMrGXcj2UsJ1PjD1Kh2k2qDGUwr7lO5chnlnu3vrXCD2jyUpucJ2tMpvXlyOXhfswcmEe7XlROG3BKKka9pvmE2v2R2biuDSoyBp0Yiu6NIlNhR9TK/gZkBwjmre2O/NMurO9/4pdrhWyOgqGGGEioYljR5RAh8y2hg7QxRy0pkGOLYK/0L2ufhUYSi+Z9fBf19+Sg==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-9 (Postfix) with ESMTPSA id
- A9E10180012D; Tue, 27 Jan 2026 18:45:35 +0000 (UTC)
+ 07C0C18012C1; Tue, 27 Jan 2026 18:45:38 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
@@ -41,43 +41,45 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
  Phil Dennis-Jordan <phil@philjordan.eu>,
  Cameron Esfahani <dirty@apple.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v9 06/12] hvf: only call hvf_sync_vtimer() when running
- without the platform vGIC
-Date: Tue, 27 Jan 2026 19:45:17 +0100
-Message-ID: <20260127184523.5357-7-mohamed@unpredictable.fr>
+Subject: [PATCH v9 08/12] hvf: arm: allow exposing minimal PMU when running
+ with nested virt on
+Date: Tue, 27 Jan 2026 19:45:19 +0100
+Message-ID: <20260127184523.5357-9-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260127184523.5357-1-mohamed@unpredictable.fr>
 References: <20260127184523.5357-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: UyzNVOiijmdfsq49cgyhYgTMe4Eyi-7k
-X-Proofpoint-GUID: UyzNVOiijmdfsq49cgyhYgTMe4Eyi-7k
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTI3MDE1MyBTYWx0ZWRfX6wHLVDoWKEjr
- OXdzMKDZg0bYKxtUkBLas3rbAlvgK2FiwBi+3qnbDed0D6ImdbZ77dZGvvK/AVUNLTnQCzbg8Re
- JFVTQhqCsOpZeLcd7NOgVcR2FP6Zqd/v301TucVU3cuPfOiH38LxrWXPzmW1pm3w7qDzrWEi4Rh
- oGOKPYPdUeUnauPg/UJTeEwWyP99dWkYJ3WE2AMi7+rjzjGw1VWDubGfavL/1WVFvQS6P/APDXE
- tN4ivLnms9B+oBFY/DCK8FzNy89A/DVUf/gEygAFJUoHM2ZooQtObBPANmpoZ8LFPxMfNQ1Tyit
- soXiwuUaZnwELjslvyleEXtWbggLNe5X4fDGZM+T7IUKrWwlLJbl75q5IS6ByY=
-X-Authority-Info-Out: v=2.4 cv=ZYoQ98VA c=1 sm=1 tr=0 ts=697907d4
+X-Proofpoint-GUID: Jp6dSiMzh7a-M8bPkFDmE2p5iiY_e5kw
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTI3MDE1MyBTYWx0ZWRfX0qQDemtyMzqK
+ 2Rfjv3hsseSPHTAuF5xmaZA73zTujdMh1NsaaHpTZV3DFKlkkh8eIFK645dqLgw5BMCTn3wlijU
+ o6aBxT+j2E5VCCDnG0BIPI3BSN3OXENXrIyH0Vvc0B7S/yYVZpIUadGxgoxKo/QLJqJUnpf68Zl
+ r8imh7nLgXo4UaI8Q8K8QuO8HdI0fTT/jjAn34jgP/4i9sQXxHsRo2PDzS0m3Ek5Rg5MRCyfqWv
+ cuTCIhog5/UyFfQjvaM8a6PgCNsmsAGAtSK/aXxZ8+y0vbWV1m2W/trI2riOdQXqbVdDvU0hvOA
+ RajGlAXa+jBSb1RnXlHxFqmg4hNsYP9KhKDINg2vViG57qt26VAXYEKiPGmyJA=
+X-Authority-Info-Out: v=2.4 cv=R4kO2NRX c=1 sm=1 tr=0 ts=697907d6
  cx=c_apl:c_apl_out:c_pps a=YrL12D//S6tul8v/L+6tKg==:117
  a=YrL12D//S6tul8v/L+6tKg==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=PzQS8Z__MZ2uSZov3vkA:9
+ a=pMrQYBbJY-ED6Z46rXwA:9 a=NqO74GWdXPXpGKcKHaDJD/ajO6k=:19
+X-Proofpoint-ORIG-GUID: Jp6dSiMzh7a-M8bPkFDmE2p5iiY_e5kw
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-01-27_04,2026-01-27_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- malwarescore=0 lowpriorityscore=0 mlxscore=0 suspectscore=0 clxscore=1030
- bulkscore=0 mlxlogscore=892 adultscore=0 phishscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=678
+ suspectscore=0 mlxscore=0 bulkscore=0 adultscore=0
+ clxscore=1030
+ malwarescore=0 spamscore=0 phishscore=0 lowpriorityscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2601270153
-X-JNJ: AAAAAAABdYwbd4l//7jUjjIljZ48CqjpN5v2KIxfV/4vF9JU75jL7sEFmqcI8Wqi91YEi3+w5G0gAkA2h6Yn/GRZoRhx3r+eFAV1QabqJ0SlyIuU5IZfV717605HiYp6/d78ZV1KdvwzZegUrBfmC4qC1ncut8IyCq6n1K7Grw7XoNqVRnZkzyho0AnmSwCbjfCGrxok313AkFvgzzRH6V0fEnhlmOCVeSAiTyH4FAGSzQ8XS/pNJAWRmH4mcOB3/bq11bT1XZjC3j3HfKIWi+/Yt2FBjYrclePga+s9zGbwF2urbhC99d9OxX5I8+n4QLq12XExHh8HXRvdBhjyVfGBnBa3Bb5vfoVImz50snNIsQcEgeM96RxAVzJ/zpQoPqQLw5/Ixzue2aBBR1AXlazlIlOdQZVR/VQcRyLtUd87zKW6ryZPEZzKWDov7K6NgWycU1oLw4/Ss0j4hZxhE30NJrHyc1H5+Ld0ydYMgA28fckgJRLCboxCl25dNVOc9QCuqNT1XKEHDKiHcfhIfQ8B3seLej315+gWXlUWDICAZ9jEg9Z0KXs4TCqFxBClVV0uPYekMGRarVjMMGGxIjP4/luW79iHmYFf7WaWKic1MhJAVy4rfQErb9Jbx10j9ipo8O8XM/e26mZLbghP9Ma82m/jqkb1XIsU4DQlAP7log76nqQ3jkwQmgD9PQdnZT4dHb/ih6DJlQ1Sr5VL69NrVSUR8YO1
-Received-SPF: pass client-ip=57.103.76.174;
+X-JNJ: AAAAAAABnlGCVJqckcaISO3p7Au+SAgS3yu19YIsIJlJ5VvYfa+ExnW3cas5dx5DqIvTfIM635IP9X1dhAUt/iDoSuofODZ2rqnNQsQ+6gVNHicKIsZsaUwVnACIQm7B+iqNUHsR/nB6c8gpICZfImizSz0Oy8Ssy5eFbChXU869UWx6p0XxH2XSbsD6Eg/GFdWR2f7XoKlE/ZIhRctVX0UeYpd6BpWPglYMUqhVUxEYWEdnxO8d5ynFZv+sF+8SCzNRJsMdGjXzFE9+9XWF3NdmYl90pP3ObaKb5neiPfHGbZCIzPYTZ41f1PYlTyNbych+A7jSdwZY6wHnDqE5FStF3LzzfO/6B0DBB1SOhs39fb6NarIS1SDqqEEUX6vXJsROX8+kjdirhA9jxaztkujm8QgGb6dwspbqv/XYj6z4v6dP2G/oxCNv5G37pG2d8/vLGSKPJl1WFOlCG+pAn2qJlAkUkK3wKMnGnRAz9jsOapg8DSMqpGCgHsrvSIL/ird4yUZ/TSgzRRP1uBTUFSS67qXP2U35sRJ01pYCkYKhRQ86sg6uhZUPe17ts+9Y6M3TU8gqKnohz6vKA0011h0ZkhzAJgnuCJg2aHk5o5jbtT58IxiFrKE1Nn5tGZmvth0GrSicARh+yq2mdbpGy45EpICdpOBPrIdFuS1HjD0c2pDVTrgJLLvTAdhOwdrV1M2HJblQolJ+7t2FmTrjbr6oexcXvWxB
+Received-SPF: pass client-ip=57.103.76.242;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -95,29 +97,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When running with the Apple vGIC, the EL1 vtimer is handled by the platform.
+When running with nested virt on, a minimum PMU is exposed by Hypervisor.framework
+if a valid PMUVer register value is set. That PMU isn't exposed otherwise.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-Reviewed-by: Mads Ynddal <mads@ynddal.dk>
 ---
- target/arm/hvf/hvf.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ target/arm/hvf/hvf.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index e239f47e15..9dcdff685b 100644
+index 9cf979d402..7701d250fa 100644
 --- a/target/arm/hvf/hvf.c
 +++ b/target/arm/hvf/hvf.c
-@@ -2052,7 +2052,9 @@ static int hvf_handle_vmexit(CPUState *cpu, hv_vcpu_exit_t *exit)
+@@ -808,6 +808,10 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     SET_IDREG(&host_isar, ID_AA64PFR1,
+               GET_IDREG(&host_isar, ID_AA64PFR1) & ~R_ID_AA64PFR1_SME_MASK);
  
-     switch (exit->reason) {
-     case HV_EXIT_REASON_EXCEPTION:
--        hvf_sync_vtimer(cpu);
-+        if (!hvf_irqchip_in_kernel()) {
-+            hvf_sync_vtimer(cpu);
-+        }
-         ret = hvf_handle_exception(cpu, &exit->exception);
-         break;
-     case HV_EXIT_REASON_VTIMER_ACTIVATED:
++    if (hvf_nested_virt_enabled()) {
++        FIELD_DP64_IDREG(&host_isar, ID_AA64DFR0, PMUVER, 0x1);
++    }
++
+     ahcf->isar = host_isar;
+ 
+     /*
 -- 
 2.50.1 (Apple Git-155)
 

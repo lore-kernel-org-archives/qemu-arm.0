@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BAE2D25926
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 03:25:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04622D25926
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 03:25:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkZgf-0004Lm-Uv; Mon, 26 Jan 2026 22:24:18 -0500
+	id 1vkZgS-0004EE-7N; Mon, 26 Jan 2026 22:24:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vkZge-0004LY-2Y; Mon, 26 Jan 2026 22:24:16 -0500
+ id 1vkZgQ-0004Dd-Gr; Mon, 26 Jan 2026 22:24:02 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vkZgc-0003Z2-NA; Mon, 26 Jan 2026 22:24:15 -0500
+ id 1vkZgP-0003Z2-0L; Mon, 26 Jan 2026 22:24:02 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 27 Jan
- 2026 11:23:50 +0800
+ 2026 11:23:49 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 27 Jan 2026 11:23:50 +0800
+ Transport; Tue, 27 Jan 2026 11:23:49 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -32,10 +32,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 7/7] tests/functional/arm/test_aspeed_ast1030: Update test
- ASPEED Zephyr SDK v03.05
-Date: Tue, 27 Jan 2026 11:23:43 +0800
-Message-ID: <20260127032348.2238527-8-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 1/7] tests/functional/arm/test_aspeed_ast2500: Update test
+ ASPEED SDK v10.00
+Date: Tue, 27 Jan 2026 11:23:37 +0800
+Message-ID: <20260127032348.2238527-2-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260127032348.2238527-1-jamin_lin@aspeedtech.com>
 References: <20260127032348.2238527-1-jamin_lin@aspeedtech.com>
@@ -69,45 +69,32 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- tests/functional/arm/test_aspeed_ast1030.py | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ tests/functional/arm/test_aspeed_ast2500.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/functional/arm/test_aspeed_ast1030.py b/tests/functional/arm/test_aspeed_ast1030.py
-index d1822edd8f..0defa7c38e 100755
---- a/tests/functional/arm/test_aspeed_ast1030.py
-+++ b/tests/functional/arm/test_aspeed_ast1030.py
-@@ -12,17 +12,17 @@
+diff --git a/tests/functional/arm/test_aspeed_ast2500.py b/tests/functional/arm/test_aspeed_ast2500.py
+index 5efd104c2b..d8baed6fdb 100755
+--- a/tests/functional/arm/test_aspeed_ast2500.py
++++ b/tests/functional/arm/test_aspeed_ast2500.py
+@@ -37,14 +37,14 @@ def test_arm_ast2500_evb_buildroot(self):
  
- class AST1030Machine(AspeedTest):
+         self.do_test_arm_aspeed_buildroot_poweroff()
  
--    ASSET_ZEPHYR_3_03 = Asset(
-+    ASSET_ZEPHYR_3_05 = Asset(
-         ('https://github.com/AspeedTech-BMC'
--         '/zephyr/releases/download/v00.03.03/ast1030-evb-demo.zip'),
--         '27cd73cdee6374bceb4ee58b3ace87989fa3f0684f4e612510804b588b24d4e0')
-+         '/zephyr/releases/download/v00.03.05/ast1030-evb-demo.zip'),
-+         '057528d343490b1fbb5a721e91084b4f04fec60dc114bd65e724554f9c217f4b')
+-    ASSET_SDK_V908_AST2500 = Asset(
+-        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.08/ast2500-default-obmc.tar.gz',
+-        'c0a2ba169efd19be5eb77c50ec2a6afd9d826e196a0be3432f969fc72d4b7c0e')
++    ASSET_SDK_V1000_AST2500 = Asset(
++        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v10.00/ast2500-default-obmc.tar.gz',
++        '7d71a3f71d5f4d9f3451f59a73bf9baf8fd9f6a24107eb504a3216151a8b2b5b')
  
--    def test_arm_ast1030_zephyros_3_03(self):
-+    def test_arm_ast1030_zephyros_3_05(self):
-         self.set_machine('ast1030-evb')
+     def test_arm_ast2500_evb_sdk(self):
+         self.set_machine('ast2500-evb')
  
-         kernel_name = "ast1030-evb-demo/zephyr.elf"
-         kernel_file = self.archive_extract(
--            self.ASSET_ZEPHYR_3_03, member=kernel_name)
-+            self.ASSET_ZEPHYR_3_05, member=kernel_name)
+-        self.archive_extract(self.ASSET_SDK_V908_AST2500)
++        self.archive_extract(self.ASSET_SDK_V1000_AST2500)
  
-         self.vm.set_console()
-         self.vm.add_args('-kernel', kernel_file, '-nographic')
-@@ -72,7 +72,7 @@ def test_arm_ast1030_otp_blockdev_device(self):
-         self.vm.set_machine("ast1030-evb")
- 
-         kernel_name = "ast1030-evb-demo/zephyr.elf"
--        kernel_file = self.archive_extract(self.ASSET_ZEPHYR_3_03,
-+        kernel_file = self.archive_extract(self.ASSET_ZEPHYR_3_05,
-                                            member=kernel_name)
-         otp_img = self.generate_otpmem_image()
- 
+         self.do_test_arm_aspeed_sdk_start(
+             self.scratch_file("ast2500-default", "image-bmc"))
 -- 
 2.43.0
 

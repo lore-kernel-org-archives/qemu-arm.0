@@ -4,91 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97CB5D2F010
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 12:57:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6BF7D2F011
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 13:23:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkidb-0001CJ-Dw; Tue, 27 Jan 2026 07:57:44 -0500
+	id 1vkj2o-0000uU-Sx; Tue, 27 Jan 2026 08:23:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vkidX-0001Bu-Iv
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 07:57:40 -0500
-Received: from ci-2005e-snip4-4.eps.apple.com ([57.103.89.175]
- helo=outbound.ci.icloud.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vkj2k-0000s3-U8
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 08:23:42 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vkidV-0000fI-9A
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 07:57:39 -0500
-Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-central-1k-10-percent-1 (Postfix) with ESMTPS id
- A5C7118000B9; Tue, 27 Jan 2026 12:57:32 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1769518655; x=1772110655;
- bh=UdJy6eFiFW7clNA6Eu8M0U1Sng1k71ZcFgAk9v0nwV8=;
- h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
- b=RAsL7kr+AceQTJ15pZj4xpwMnevzEDLlXMH5Vk6Z4fpZfz7AR+dRfeKA8g51s0FIfLd9ms12e7SlCH6N6qp+sjRXAE6TOVm8KrIqO+bGRRoQ89SvfzW/ZZe0sEqsUsax0VylaUFJS5dUktdRdizY+cpsoS8E4fxRCVbJVitKztw6uE7ft3QdcJu7HqrmVLSSzYR8jWS4kX9tZTdxXxgx6kViOVT/kosPu+WiJ4ZfPNBaHGBis/geKyCxGatfLFBzrXDeBACcjmNhy/1mTovvES8a2xJATT9HOuV2xbf9L2dYL5BaPzU+F7RvMac7cAliob06ipfzvEnw0rD6b8zl3g==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.156.36])
- by p00-icloudmta-asmtp-us-central-1k-10-percent-1 (Postfix) with ESMTPSA id
- 39D9B1800286; Tue, 27 Jan 2026 12:57:29 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-Message-Id: <F1B352FC-900B-4FE2-A663-FB1236957D4D@unpredictable.fr>
-Content-Type: multipart/alternative;
- boundary="Apple-Mail=_96FBDC98-6FC2-421E-A3DF-318A31C94ECC"
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
-Subject: Re: [PATCH v17 11/21] whpx: interrupt controller support
-Date: Tue, 27 Jan 2026 13:57:17 +0100
-In-Reply-To: <CAFEAcA9P=3izrg-D9gEZ7spj8gJtan-GQzz_mes7P0OhLzekXA@mail.gmail.com>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
- Igor Mammedov <imammedo@redhat.com>, Cameron Esfahani <dirty@apple.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, Roman Bolshakov <rbolshakov@ddn.com>,
- Ani Sinha <anisinha@redhat.com>, Pedro Barbuda <pbarbuda@microsoft.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20260121134114.9781-1-mohamed@unpredictable.fr>
- <20260121134114.9781-12-mohamed@unpredictable.fr>
- <CAFEAcA9P=3izrg-D9gEZ7spj8gJtan-GQzz_mes7P0OhLzekXA@mail.gmail.com>
-X-Mailer: Apple Mail (2.3864.300.41.1.7)
-X-Proofpoint-ORIG-GUID: SBT0sevVmmXdI8G1G_tFeVeRUhtPLyBt
-X-Proofpoint-GUID: SBT0sevVmmXdI8G1G_tFeVeRUhtPLyBt
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTI3MDEwNiBTYWx0ZWRfX8fgMOBCOVlkO
- aLwusnWayfWUvVQq0KsEbR4lGiW63gjSb09bjBgKnPu4DxzpxNyvLgub3YT3caGt433jxYdFh5/
- Kiv10lmtEIBFWU5a0k2n0x8QXnZFoBz3Ht1eoiLVzckBMt08YAHRBjTDE8UsUH4jQc08Xo6sj1F
- QVRE0ubunnFsycH3kBEORzr/D6K0qaZV5TlyuDzU65wypAqF678wTStppOMDJgcjXxLPRJy85pL
- X2JWgwzsGsafp+QTQXnC+K+fGms+Kyfvs41riqYR8vW11WpWa75eoQXszebC3+gw94Yb0RGXwuY
- KInviNVqq3BOApts3gJKjr7Lp40I6yXBHEMJpbboSCTtv+NNFdb2sbN8k2UkDs=
-X-Authority-Info-Out: v=2.4 cv=B8C0EetM c=1 sm=1 tr=0 ts=6978b63e
- cx=c_apl:c_apl_out:c_pps a=2G65uMN5HjSv0sBfM2Yj2w==:117
- a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=KKAkSRfTAAAA:8 a=3TsX8AtCq35XnXIbGjsA:9 a=QEXdDO2ut3YA:10
- a=VYeHTJg4IFKPxf76SQYA:9 a=4-1Kas2KukgXZ1X7:21 a=_W_S_7VecoQA:10
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-01-27_02,2026-01-27_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- adultscore=0 mlxlogscore=999 malwarescore=0 suspectscore=0 clxscore=1030
- mlxscore=0 spamscore=0 lowpriorityscore=0 bulkscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2601270106
-X-JNJ: AAAAAAABVzlEPrwVkvEihgjYLiT6OJaj5ZGSOo7xYGxP7ZlwYmFh1YVsprZ4onT9pR34e5i8/GK01eHPBLhlVXU7FTDme527NyB3i8M672KR/ec4aHS5ZhDxEF4x3T0R61aMWLi/11T566qBMd7Gk08jiUv5pjUl6Hxn1AhkJ9ZQoVwqQyD9SSxpz0RsULTVGKy47XeRQjPZY6sIwXxYbdTWVrfYpwIdLydD5o0EfAGF8jliq5BUSi+FY0vvspaWE2G5hpkaGOD2d+ZqfSkk2AJQ4UOdakO22O9u7A9NsoCtd8/qTjTwF1cnI0putaRT7Ukt51G3xt6jflY3IHJQIfveFnsOfFXPr9q2cow37nEYwFPuxZBVAC+rJrnVW110r+MSBtX7ntKTYfI+VddCiBod9e+Tks0GOwbXtMigGt388JrklSA5H4HHhkNRezTHhVPBORNJDGVxOSCLJ26raFYufESvdOGB4kyZ8BLz1hgWdKQkXOpSMWZqphTFn33ZlpCysUEksIxCquIUC9y6uYkIb36MctAnW7vqr1SGt12pc+vj5e+jVU8Fi4DplLPj/sASOvtNoC3LomoqFlssJioEjowy2iM/kh+MMtjVSviMA0l3ZHowuiLFIvO/e8WJc9vyQgMc+n1E4qnLM+tkdBOlU38IefjpZnaAOxc1sx9NURw/tz1yiCr501Z3QtbW0yXf+ITCZ8kZdp/uU/oTdXzq3J4n6Vdov9YAosY9U5+wvF4cYfRzL+bcoo6Ks2Yyo8+3KC5mvWBCt21hYfAr9UfIjuSSq/6kV6BWaXMbo9GY0SnYAAjg/DLK+0cxnY4f8Wx8ZvQ7QlBJBCDaNPtgrgZEU4unb3iJzOgPneH8OnQb+O22Ta4fqUGJlhRw/ceutT+58KzRBBQFJGsqCGdiC89rQQhOzwivoXU=
-Received-SPF: pass client-ip=57.103.89.175;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vkj2i-0005w3-FY
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 08:23:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1769520219;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=inL7IgFEA5miArJVDHdrdgZLnWIEE2zg4a0hQzkzyfg=;
+ b=NWnwHkUZzfpWvvPy/a0yBKLzSYvbrhJ0/W0Me14FBpOj6me2nrxugfNijtz+7IRHNwexLT
+ BRFBJ4a+1DOA3Iqorf7GBthoOzExofWAIGvOm4lrc66Ghrf46TNe8Qt8axY71Cdz3/q33M
+ VoFY/l7jjQytt+1sQZ5N0yLeOJ/tmNY=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-159-uPzwdwN4Mk-iCSSbKx_y5A-1; Tue, 27 Jan 2026 08:23:37 -0500
+X-MC-Unique: uPzwdwN4Mk-iCSSbKx_y5A-1
+X-Mimecast-MFC-AGG-ID: uPzwdwN4Mk-iCSSbKx_y5A_1769520216
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-47d62cc05daso52570435e9.3
+ for <qemu-arm@nongnu.org>; Tue, 27 Jan 2026 05:23:36 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1769520216; x=1770125016;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=inL7IgFEA5miArJVDHdrdgZLnWIEE2zg4a0hQzkzyfg=;
+ b=sY4p86pWMSXpqAuqHL8JSEqeODeQwjwJT8fNCCC4R7QEbKbot1T2VmllMF6zQJVyeX
+ Dk/w1E0wQAaxpyRZfxC6pv+Z7229mA2Ln1dlGB5dm5caromi3ui1ezMauW/4ZNKXXvCf
+ 9FAn/Ztc7CwDWzI+URo3eOlBwMmzlSjoIiS9PincvH9FkCgr9L8qrnREQRmskrNiCv2j
+ jAziDU2iHiDaSYdr5Mgd+gvgrXVVS9eQ/MjGyP4ero3WbjqbSIxrMN9/boQfJfj/8nSs
+ JClDDnoPq9XkZBVxglOPbcU4KVfSjOKGwA43lSSP9ymgPWh3DFNm1XtX3jolJtq19vuy
+ cvVA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWFdpugeghqsCGQ6AhYH5ilZ5asyLhxWFgXgmJyfMJx5yq191Ea/iswIuLwhUe+Z4bfYWPGo6dpRA==@nongnu.org
+X-Gm-Message-State: AOJu0YwTgsFFoa01RseTn/hEizdQjEM95UFnprp+TKFn+Apm/XRyi6/u
+ mptkE5r/z6e6QnSGqOcVhel5tfH7kdgJXbvy8TZkKJRrXoIM+4fyDM/fOkHbMi8MXiOnPfgMI+L
+ 3hx4hkYw2VpO2xWIOay7uIGnFqqNszDC1yOUSY2c57U1WWbs3fSTdLQ==
+X-Gm-Gg: AZuq6aIDRanCMsCLYrz7REBxHWjTxEK8HxY3+Mlb0/729HQp31IqgqN5C83GtP+fP/J
+ hZu36BdeFAGwDYZOC+39eMgFgpdPB+go+LxyAyfBY/1LQSkku9bGYovdY1zIiyN0rzXEGYOKwHq
+ jQjZAuatf6il4CIQ+k1Z0XwKU0h1RgSQfzgY/JJ0IpozPyhzWgxuQ81STzcefDu9DjrWHfiApcp
+ nu9KJroNvfGiHD4cbgBzD8FRaQy21O1JuPJOEy+D5nfETG/30KP3aZMjJYOfgzM0tbOXasxwOHN
+ 14lxAK6gpKJUqxZXp5SR+vR4p+9BX7QIVepTJpMtVSbEB+zZhyBGV1B+aELgdSz2wUTxYS37gTm
+ unovMdralHma/CQ1BOOCPJJLMQt06oYVMZajLrEWHMT4yLBnxtxOkVdZTzA==
+X-Received: by 2002:a05:600c:e40b:b0:479:3a86:dc1c with SMTP id
+ 5b1f17b1804b1-4806a5bef0fmr16471945e9.36.1769520215693; 
+ Tue, 27 Jan 2026 05:23:35 -0800 (PST)
+X-Received: by 2002:a05:600c:e40b:b0:479:3a86:dc1c with SMTP id
+ 5b1f17b1804b1-4806a5bef0fmr16471565e9.36.1769520215199; 
+ Tue, 27 Jan 2026 05:23:35 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48066c428basm63499945e9.12.2026.01.27.05.23.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 27 Jan 2026 05:23:34 -0800 (PST)
+Message-ID: <26e22c1c-09bc-4e6e-9859-bc8092b8ca7a@redhat.com>
+Date: Tue, 27 Jan 2026 14:23:33 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 06/16] hw/arm/tegra241-cmdqv: Map VINTF Page0 into
+ guest
+To: Nicolin Chen <nicolinc@nvidia.com>
+Cc: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, peter.maydell@linaro.org, nathanc@nvidia.com,
+ mochs@nvidia.com, jgg@nvidia.com, jonathan.cameron@huawei.com,
+ zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, kjaju@nvidia.com
+References: <20251210133737.78257-1-skolothumtho@nvidia.com>
+ <20251210133737.78257-7-skolothumtho@nvidia.com>
+ <58f0ca59-b08c-44cd-b469-f152271c14f6@redhat.com>
+ <aXgBD/N+aOVNlcGb@Asurada-Nvidia>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <aXgBD/N+aOVNlcGb@Asurada-Nvidia>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 7O1eXBNHElX62ir2P9LHH4bGxvDFj3C850uazJIvoGc_1769520216
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -103,191 +121,108 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Nicolin,
 
---Apple-Mail=_96FBDC98-6FC2-421E-A3DF-318A31C94ECC
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=utf-8
+On 1/27/26 1:04 AM, Nicolin Chen wrote:
+> On Mon, Jan 26, 2026 at 02:48:55PM +0100, Eric Auger wrote:
+>
+>>> +    name = g_strdup_printf("%s vcmdq", memory_region_name(&cmdqv->mmio_cmdqv));
+>>> +    memory_region_init_ram_device_ptr(&cmdqv->mmio_vcmdq_page,
+>>> +                                      memory_region_owner(&cmdqv->mmio_cmdqv),
+>>> +                                      name, 0x10000, cmdqv->vcmdq_page0);
+>>> +    memory_region_add_subregion_overlap(&cmdqv->mmio_cmdqv, 0x10000,
+>>> +                                        &cmdqv->mmio_vcmdq_page, 1);
+>>> +    g_free(name);
+>>> +
+>>> +    name = g_strdup_printf("%s vintf", memory_region_name(&cmdqv->mmio_cmdqv));
+>>> +    memory_region_init_ram_device_ptr(&cmdqv->mmio_vintf_page,
+>>> +                                      memory_region_owner(&cmdqv->mmio_cmdqv),
+>>> +                                      name, 0x10000, cmdqv->vcmdq_page0);
+>> I don't get why we need/have 2 RAM devices pointing to the same @ptr
+>> = cmdqv->vcmdq_page0. Is 0x10000 ~ VCMDQ_REG_PAGE_SIZE?
+> The first one is for "vcmdq" and the second one is for "vintf".
+> Explaining below...
+>
+>> The names of the MRs are quite confusing: If my understanding is correct
+>> we have;
+>>
+>> cmdqv->mmio_cmdqv (0x50000 sized) which as the container for the 2 subregions.
+>> Then within that one we have 2 subregions, one at offset 0x10000 (mmio_vcmdq_page
+>> ), one at offset 0x30000 (cmdqv->mmio_vintf_page).
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/iommu/arm/arm-smmu-v3/tegra241-cmdqv.c?h=v6.19-rc7#n19
+> It's defined in the kernel driver (yea, we should clarify in the
+> QEMU code as well).
+>
+> So, the MMIO regions look like this:
+>  1st 64 KB page -- Global CMDQV registers
+>  2nd 64 KB page -- Global VCMDQ registers Page0 (mmap)
+>  3rd 64 KB page -- Global VCMDQ registers Page1 (trap)
+>  4th 64 KB page -- VINTF0 Logical VCMDQ registers Page0 (mmap)
+>  5th 64 KB page -- VINTF0 Logical VCMDQ registers Page1 (trap)
 
+This kind of layout representation is really helpful
+>
+> In real hardware, there will be 6th 64KB and beyond, for VINTF1
+> and others. But, we're omitting here in QEMU as only VINTF0 will
+> be supported -- kernel only exposes one VINTF per VM as well.
+> (Yes, we should clarify this too.)
+OK
+>
+>> I have difficulties to link that with the commit message
+>>
+>> "Tegra241 CMDQV assigns each VINTF a 128KB MMIO region split into two
+>> 64 KB pages:
+>>  - Page0: guest accessible control/status registers for all VCMDQs
+>>  - Page1:configuration registers  ../.."
+>> Those 2 pages, are they part of  mmio_vcmdq_page?
+> Not exactly. Both the global VCMDQ region and VINTF region have
+> their own pages (at 0x10000 and 0x30000).
+>
+> Here, it duplicates the mapping to 0x10000 (Global VCMDQ page0)
+> and 0x30000 (VINTF0 page0) for simplification, because we only
+> support VINTF0 in this case.
+so Global VCMDQ registers Page0 and VINTF0 Logical VCMDQ registers Page0
+are basically the same?
 
+I would recommend to use cmdqv->mmio_vcmdq_page0 and
+cmdqv->mmio_vintf_page0 to avoid any misunderstanding
+>
+> There is a little catch in this implementation. The real physical
+> mapping between a global VCMDQ and a logical VCMDQ happens when
+> QEMU calls HW_QUEUE ioctl. So, the mmap'd page0 doesn't have any
+> real VCMDQ backing up the emulated VCMDQ. So, perhaps QEMU should
+> trap the page0 and delay the memory_region_init_ram_device_ptr()
+> until the HW_QUEUE ioctl is done?
+might be safer indeed.
+>
+> There might be also a corner case: when the kernel exposes two
+> physical VCMDQs, but the guest OS only uses one, i.e. QEMU only
+> allocates one HW_QUEUE for VCMDQ0 but doesn't allocate VCMDQ1.
+> In such a case, the VTINF0 page0 should be able to control the
+> logical VCMDQ0 only, while the global page0 should control both.
 
-> On 27. Jan 2026, at 12:08, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->=20
-> On Wed, 21 Jan 2026 at 13:41, Mohamed Mediouni =
-<mohamed@unpredictable.fr> wrote:
->>=20
->> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->> ---
->> MAINTAINERS                        |   1 +
->> hw/arm/virt.c                      |  10 ++
->> hw/intc/arm_gicv3_common.c         |   3 +
->> hw/intc/arm_gicv3_whpx.c           | 238 =
-+++++++++++++++++++++++++++++
->> hw/intc/meson.build                |   1 +
->> include/hw/intc/arm_gicv3_common.h |   3 +
->> 6 files changed, 256 insertions(+)
->> create mode 100644 hw/intc/arm_gicv3_whpx.c
->=20
->> +static void whpx_gicv3_icc_reset(CPUARMState *env, const =
-ARMCPRegInfo *ri)
->> +{
->> +    GICv3State *s;
->> +    GICv3CPUState *c;
->> +
->> +    c =3D env->gicv3state;
->> +    s =3D c->gic;
->> +
->> +    c->icc_pmr_el1 =3D 0;
->> +    /*
->> +     * Architecturally the reset value of the ICC_BPR registers
->> +     * is UNKNOWN. We set them all to 0 here; when the kernel
->> +     * uses these values to program the ICH_VMCR_EL2 fields that
->> +     * determine the guest-visible ICC_BPR register values, the
->> +     * hardware's "writing a value less than the minimum sets
->> +     * the field to the minimum value" behaviour will result in
->> +     * them effectively resetting to the correct minimum value
->> +     * for the host GIC.
->> +     */
->> +    c->icc_bpr[GICV3_G0] =3D 0;
->> +    c->icc_bpr[GICV3_G1] =3D 0;
->> +    c->icc_bpr[GICV3_G1NS] =3D 0;
->> +
->> +    c->icc_sre_el1 =3D 0x7;
->> +    memset(c->icc_apr, 0, sizeof(c->icc_apr));
->> +    memset(c->icc_igrpen, 0, sizeof(c->icc_igrpen));
->> +
->> +    if (s->migration_blocker) {
->> +        return;
->> +    }
->=20
-> Looking a bit more closely at this, this is odd. Why the early
-> return? This looks like it was copied from the KVM GICv3
-> from prior to commit 59ad421d6. But in the KVM code before
-Hello,
+you lost me. Need to look at the kernel or spec ;-)
+>
+> We are getting away this corner case with any guest OS running
+> Linux kernel because it only accesses VTINF pages. But likely we
+> should do something about it..
+>
+>> Then you talk about 0x30000 :VINTF register I guess this is the second cmdqv->mmio_vintf_page
+>>
+>> Well I am confused at this stage of the reading.
+>>
+>> Also without any spec, this is difficult to understand. Is there any public doc?
+> It seems that Red Hat can get the doc under NDA..
+OK thanks
 
-Indeed it was, will remove this from the HVF nested virt series too=E2=80=A6=
+Eric
+>
+> Thanks
+> Nicolin
+>
 
-And update to use s->migration_blocker for "whpx: arm64: gicv3: add =
-migration blocker=E2=80=9D
-(which I=E2=80=99ll squash into =E2=80=9Cwhpx: interrupt controller =
-support=E2=80=9D)
-
-Thank you,
-> that commit, the reason for the early return is to avoid
-> the "read the ICC_CTLR value from KVM" call that won't work
-> (the migration blocker is for the "no KVM API to read/write
-> GIC registers" case). And in the KVM code after that commit,
-> we restructured the reset to not read the register in the
-> reset function, so we don't need to test s->migration_blocker
-> at all then.
->=20
-> Probably you want to follow the pattern the newer KVM code
-> uses, but either way, this early return doesn't make much
-> sense for this whpx code as it stands, especially as the
-> whpx code isn't currently setting s->migration_blocker...
->=20
->> +
->> +    c->icc_ctlr_el1[GICV3_S] =3D c->icc_ctlr_el1[GICV3_NS];
->> +}
->=20
-> thanks
-> -- PMM
->=20
-
-
---Apple-Mail=_96FBDC98-6FC2-421E-A3DF-318A31C94ECC
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=utf-8
-
-<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
-content=3D"text/html; charset=3Dutf-8"></head><body =
-style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
-line-break: after-white-space;"><br =
-id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
-type=3D"cite"><div>On 27. Jan 2026, at 12:08, Peter Maydell =
-&lt;peter.maydell@linaro.org&gt; wrote:</div><br =
-class=3D"Apple-interchange-newline"><div><div>On Wed, 21 Jan 2026 at =
-13:41, Mohamed Mediouni &lt;mohamed@unpredictable.fr&gt; =
-wrote:<br><blockquote type=3D"cite"><br>Signed-off-by: Mohamed Mediouni =
-&lt;mohamed@unpredictable.fr&gt;<br>---<br> MAINTAINERS =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
-&nbsp;&nbsp;1 +<br> hw/arm/virt.c =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;10 ++<br> =
-hw/intc/arm_gicv3_common.c =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;3 +<br> =
-hw/intc/arm_gicv3_whpx.c =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 238 =
-+++++++++++++++++++++++++++++<br> hw/intc/meson.build =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
-bsp;&nbsp;&nbsp;| &nbsp;&nbsp;1 +<br> include/hw/intc/arm_gicv3_common.h =
-| &nbsp;&nbsp;3 +<br> 6 files changed, 256 insertions(+)<br> create mode =
-100644 hw/intc/arm_gicv3_whpx.c<br></blockquote><br><blockquote =
-type=3D"cite">+static void whpx_gicv3_icc_reset(CPUARMState *env, const =
-ARMCPRegInfo *ri)<br>+{<br>+ &nbsp;&nbsp;&nbsp;GICv3State *s;<br>+ =
-&nbsp;&nbsp;&nbsp;GICv3CPUState *c;<br>+<br>+ &nbsp;&nbsp;&nbsp;c =3D =
-env-&gt;gicv3state;<br>+ &nbsp;&nbsp;&nbsp;s =3D c-&gt;gic;<br>+<br>+ =
-&nbsp;&nbsp;&nbsp;c-&gt;icc_pmr_el1 =3D 0;<br>+ =
-&nbsp;&nbsp;&nbsp;/*<br>+ &nbsp;&nbsp;&nbsp;&nbsp;* Architecturally the =
-reset value of the ICC_BPR registers<br>+ &nbsp;&nbsp;&nbsp;&nbsp;* is =
-UNKNOWN. We set them all to 0 here; when the kernel<br>+ =
-&nbsp;&nbsp;&nbsp;&nbsp;* uses these values to program the ICH_VMCR_EL2 =
-fields that<br>+ &nbsp;&nbsp;&nbsp;&nbsp;* determine the guest-visible =
-ICC_BPR register values, the<br>+ &nbsp;&nbsp;&nbsp;&nbsp;* hardware's =
-"writing a value less than the minimum sets<br>+ =
-&nbsp;&nbsp;&nbsp;&nbsp;* the field to the minimum value" behaviour will =
-result in<br>+ &nbsp;&nbsp;&nbsp;&nbsp;* them effectively resetting to =
-the correct minimum value<br>+ &nbsp;&nbsp;&nbsp;&nbsp;* for the host =
-GIC.<br>+ &nbsp;&nbsp;&nbsp;&nbsp;*/<br>+ =
-&nbsp;&nbsp;&nbsp;c-&gt;icc_bpr[GICV3_G0] =3D 0;<br>+ =
-&nbsp;&nbsp;&nbsp;c-&gt;icc_bpr[GICV3_G1] =3D 0;<br>+ =
-&nbsp;&nbsp;&nbsp;c-&gt;icc_bpr[GICV3_G1NS] =3D 0;<br>+<br>+ =
-&nbsp;&nbsp;&nbsp;c-&gt;icc_sre_el1 =3D 0x7;<br>+ =
-&nbsp;&nbsp;&nbsp;memset(c-&gt;icc_apr, 0, sizeof(c-&gt;icc_apr));<br>+ =
-&nbsp;&nbsp;&nbsp;memset(c-&gt;icc_igrpen, 0, =
-sizeof(c-&gt;icc_igrpen));<br>+<br>+ &nbsp;&nbsp;&nbsp;if =
-(s-&gt;migration_blocker) {<br>+ =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return;<br>+ =
-&nbsp;&nbsp;&nbsp;}<br></blockquote><br>Looking a bit more closely at =
-this, this is odd. Why the early<br>return? This looks like it was =
-copied from the KVM GICv3<br>from prior to commit 59ad421d6. But in the =
-KVM code =
-before<br></div></div></blockquote>Hello,</div><div><br></div><div>Indeed =
-it was, will remove this from the HVF nested virt series =
-too=E2=80=A6</div><div>And update to use s-&gt;migration_blocker for =
-"<span style=3D"color: rgba(0, 0, 0, 0.85); font-family: &quot;Helvetica =
-Neue&quot;;">whpx: arm64: gicv3: add migration blocker</span><font =
-face=3D"Helvetica Neue"><span style=3D"caret-color: rgba(0, 0, 0, 0.85); =
-color: rgba(0, 0, 0, 0.85);">=E2=80=9D</span></font></div><div><font =
-face=3D"Helvetica Neue"><span style=3D"caret-color: rgba(0, 0, 0, 0.85); =
-color: rgba(0, 0, 0, 0.85);">(which I=E2=80=99ll squash into =E2=80=9Cwhpx=
-: interrupt controller support=E2=80=9D)</span></font></div><div><font =
-face=3D"Helvetica Neue"><span style=3D"caret-color: rgba(0, 0, 0, 0.85); =
-color: rgba(0, 0, 0, 0.85);"><br></span></font></div><div><font =
-face=3D"Helvetica Neue"><span style=3D"caret-color: rgba(0, 0, 0, 0.85); =
-color: rgba(0, 0, 0, 0.85);">Thank =
-you,</span></font></div><div><blockquote type=3D"cite"><div><div>that =
-commit, the reason for the early return is to avoid<br>the "read the =
-ICC_CTLR value from KVM" call that won't work<br>(the migration blocker =
-is for the "no KVM API to read/write<br>GIC registers" case). And in the =
-KVM code after that commit,<br>we restructured the reset to not read the =
-register in the<br>reset function, so we don't need to test =
-s-&gt;migration_blocker<br>at all =
-then.</div></div></blockquote><blockquote =
-type=3D"cite"><div><div><br>Probably you want to follow the pattern the =
-newer KVM code<br>uses, but either way, this early return doesn't make =
-much<br>sense for this whpx code as it stands, especially as the<br>whpx =
-code isn't currently setting =
-s-&gt;migration_blocker...<br><br><blockquote type=3D"cite">+<br>+ =
-&nbsp;&nbsp;&nbsp;c-&gt;icc_ctlr_el1[GICV3_S] =3D =
-c-&gt;icc_ctlr_el1[GICV3_NS];<br>+}<br></blockquote><br>thanks<br>-- =
-PMM<br><br></div></div></blockquote></div><br></body></html>=
-
---Apple-Mail=_96FBDC98-6FC2-421E-A3DF-318A31C94ECC--
 

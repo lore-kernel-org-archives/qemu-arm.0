@@ -4,138 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD0D8D2FEDF
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 21:19:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D39FD2FEE3
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 21:23:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkqSY-0002l0-1P; Tue, 27 Jan 2026 16:18:50 -0500
+	id 1vkqWk-00051Y-Al; Tue, 27 Jan 2026 16:23:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vkqSK-0002gX-Pn
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 16:18:36 -0500
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1vkqWh-0004x6-KY
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 16:23:08 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vkqSH-00022v-Qu
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 16:18:35 -0500
-Received: by mail-pj1-x102e.google.com with SMTP id
- 98e67ed59e1d1-34f2a0c4574so5007733a91.1
- for <qemu-arm@nongnu.org>; Tue, 27 Jan 2026 13:18:30 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1vkqWf-0003BZ-5o
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 16:23:07 -0500
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-b8838339fc6so52427566b.0
+ for <qemu-arm@nongnu.org>; Tue, 27 Jan 2026 13:23:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1769548983; cv=none;
+ d=google.com; s=arc-20240605;
+ b=dE/n/k81/XZNsIseeIqINj5RuIRogLvtlTfIv0PW4JyIU7yk9VP1acaPt0jX/bn7FR
+ SnaQL8oHwMEiPgYg487/OvddTvJXTfi3GQOADZy9+3vJPs8fDlAJ8j3zXgIyPHxWg4gP
+ qoN+1GbYMGOw5OYQlAHqfWhbHs4V14kwCtB2Jv6CciW8VdgemLPgGGguBY2fK/XOh1YL
+ G536U879IoPJgZhClktBeG5GrEd4G7REPn9+fVrP8S21n5FU+ikxP2ahqNLjRHp/w9N5
+ v/a5Lbn4vnRr9ggFvOGq3xCj9jbmR89aJPjQwiT89SF7wqbZZQdtNXyJ0wslxEkcPV1I
+ I17A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=iXSQxroQRznR6VSz2PHJ5Hz2cFToY0WnX+1ahe4dCBk=;
+ fh=6OdJjce1BTKWN6wt3VLXFFkhaKCoX1L9VqIRuDUvJvs=;
+ b=cidT8kIGNJN/O8sDZOgpgAOEIy/xA0fKNoZ5/282nFL0TYATLRV2R/zHxEdeIReAZe
+ 7u/Gn1anna+dxbB17ITAdG8yO+3Pwu5ijkQhzcsFwJHAxvzblqjKT0dX+YwgpIid292w
+ Jl0s4JuMcOxEGMBOd4MF+DOo1UFlkr5XFx5s4cVZOEc/BMZmvgDBrSIQ1YP2OsohShb9
+ nqrUNdJCTWXYY10Pi5wxSPSqx9JSEoSvW2FBXDkncbwN3CvMvKL5IywTJbI2HghezMS7
+ VOT6G8VOig2OO2hx5CVcTem0Rwdm19juMJ8BSnsVkUj/qwQIECZo4iEeH/CUhB/89ion
+ GxFg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769548710; x=1770153510; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=GjlaZFr4xdFpGWFEyEiPzXcXtlPknWQHPkErncN7Alw=;
- b=S3ZTa0O1stbef42GViFrmz1PEZ7AbvKKgsWOnrc3bdkLN9ko9emqKSfg4EU5zADwL0
- 6KX8OUb5q8KDjuyBGCYWppqVA5Wf5pB+bAUteU4SIGO/ikiaJH2M1QdYo60bbDWjNU0a
- ns2McWWki0dv9Jmrsr079Gr0IM5dRyIpfXio9TQu4yR5LK2BSSLOVWZuLz0P5DR4i3zk
- iw2+Pa0iG3qTNKk7QQ2LeOS+EAxFXfVz1Of3ILMEf6MHJy4EYwT2DrkbnUBzHoIVKjj3
- rkilll5YMRdcnpUNYsGwdoa4Lunvt5NDwn2tgtMbtBYwp3IiCDJL69MemHmhQ6+jTbrG
- /Grg==
+ d=gmail.com; s=20230601; t=1769548983; x=1770153783; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=iXSQxroQRznR6VSz2PHJ5Hz2cFToY0WnX+1ahe4dCBk=;
+ b=UGIsKFYaOI1/U68c0IAHWp2nvQoC5S+0znw8DHeFw8mGqqTiPALoAbkrO8ZaMxl4xU
+ TAL5Xmvg6D1nL1q8Y9lK1q9vCXRE/pOCw01YQMNgEbHndunGZ+R++soQOJU0cOzDKWjY
+ klqI683syzh+gGI6rdrYb9A9WEHXtLCGx9EQJ6lPTFYPnzDTKjs1OEpWEvx0vlj2kXe7
+ P9iDXVGWdiLc9rteUX/LifG547tzW6YrGX/b3lPz+JXsAYwLekQUz7tzrCvbGZSVo3oi
+ FjnujFWOd8Y8s63QMIC3sD47/edEX2aYEozI4yYpHQZyRfAkgLarM2k/XQmvB7FdR15D
+ /EZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769548710; x=1770153510;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=GjlaZFr4xdFpGWFEyEiPzXcXtlPknWQHPkErncN7Alw=;
- b=mjEqLjohoDG6jWBwhJsbGjZxSEr8e/F8+VAI2UD9YBU0oYpBFxiATictW8fYYdGw9N
- IPye2YhKk+gVlpTf/A6WSeLnlVVbJMaTloVRy1h8aMsR3anw8z/7Yx9PHExuUWz/WRzF
- u3xE9kb175QwJbvfQXGxWC3X5pBeYk5pgpoGve0oS3ydXLgOX1Z4JP5HuqpJ1Ba4WfMZ
- uxnSxGFs4Ul0QrlhqkS2A/bRgwf2bYLafVzr5m9trPEGrMJ4ZLcFOxLN0QWLhqq3OOOa
- GBzgdhcVfZarPKvQc2UYtkd0xxXtCMoLgjU/knnzZalzAsnz4RBVAbsTOQrwLlFDpmlU
- AYAg==
+ d=1e100.net; s=20230601; t=1769548983; x=1770153783;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=iXSQxroQRznR6VSz2PHJ5Hz2cFToY0WnX+1ahe4dCBk=;
+ b=QgzFQc/EhdsWtEUxmYqwBMAyT+VI6b7G4dkDdt5NbqYBtrwQi199ha/JtosZMw8L3i
+ 4xCJcvfYj3k634TjvZRqFP4LMEl67Y7+73h5qHjRRF1NsdwtfAem+Ths5O9WpbIOwoU4
+ Zam6xcUMOaNuN0prIF6hus0eej78Ckt+lZ5aFguNneOzNCubxhYWYW2EcvyLT9fu72E1
+ 6fCqyxz5FEWzEkMRE/XFi8qpqdgQ7NL0AOkWj1JW/UWvgc3ylTk/syUqgrzPmL+/pv0x
+ 8Ok/HAlFwH9AYKoDm9Me9huQd8fKuaUnLbGPmi+cOZerQbjEs7zC2rFPhFaZllzHWWN6
+ /iNg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVPoi+FAJULZ5/mNfsIKUzYrXrl0Zrhtc2yPUUfDtTruIwGNXqE34PZFb8xmxbJ5P4O4/ATEuzjWA==@nongnu.org
-X-Gm-Message-State: AOJu0Yyp/zbUI9xxigUFVZRjR5tvTKhgRGmYKxTlvJkBTmxOYlZ/CgvU
- 29qh98Ikw0iBZr/wObjUHfGTELowaLrBalX1PeQ22xd5qFApJvLxF2xU+QLLkEZoi68=
-X-Gm-Gg: AZuq6aLgyFj/HfKWuvKXiu91VuXWEScGULsM2b3oasTft8ezJa6jr92rVXdJOpFQyV4
- sO9CsYSBfNM5Pkap4P0sufDCd569ps5JFwmCLM8jEsCkEttzc9j/E9CoSE54F+SdOosIFURCIT1
- PnaBnSfgpplLkcc3HuB6w6B7G8/XWCnKDwv/yy4gWKBTd5ARv89xwgQ9tzr1fNJ9uSQEih0WyVh
- m9eAIACAualWxLG2TYsGzhumw/z7HjPXCzY1pxP2IBx+sOI1cXld9VCTqFl8pzkq98OvadHP1CC
- d2dgaH20EytU2ujehOtiTrywNlFxgt4vrMB/klqWq/OUfqiU3pFfhxj2byCFEAt9sjPVjGX5N8L
- +mYibQFO4EkW3tPYxG/ff8MfwPAC2PQoA4L1MB3hWls5kDFm+gnGvZ/21dWl8euKyMkCNjeJsqn
- zVqDB9KmAcEdn8BrLL6XEjq961KVMgHJkrECapiTrrWN+/lHDbTHtcRo5H
-X-Received: by 2002:a17:90b:5485:b0:34c:a35d:de19 with SMTP id
- 98e67ed59e1d1-353fedb1534mr2767858a91.33.1769548709644; 
- Tue, 27 Jan 2026 13:18:29 -0800 (PST)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3540f2cb419sm338415a91.1.2026.01.27.13.18.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 27 Jan 2026 13:18:29 -0800 (PST)
-Message-ID: <b137fa07-7079-4200-b08b-9de18fa50dc8@linaro.org>
-Date: Tue, 27 Jan 2026 13:18:28 -0800
+ AJvYcCXXV7G8QSl4xCCv3CPKznVZ1+snYrWkj26/q/Bdczon7uvTW8PzhgJsMYmDdH7Z8eSmcNwoO+vJyA==@nongnu.org
+X-Gm-Message-State: AOJu0YzmWtr+xHdCSePaOIq63CWxzMYnOVKPiLvLwwZ9nb1bj5GE7RQl
+ eC52LCZ2jVsC85pYXXYQvS9Hn4qa/DtaEvTc+omc5CO7olcahIRTqyDVIytssp4uRdsy95GJ3/z
+ fHdXDRakz6TH9T787Ss4/JG9h0iKkWOU=
+X-Gm-Gg: AZuq6aJl1C9qMOJS0nMVWvcNadBuuF+07VvlSqzf6s/OiD7qhTB5pedXy7elvjTrTIY
+ TLz++nzFqDmtX53hz6HBrPbzZKd0icr8k5FZZicseQqX+ZkWPax7o1wllXljgelzWCeTC2CPNkz
+ reiKIjT2bp1uiM9DAm5jAGghTbGkx32moqynyKYmucrSgyXXd3dkpDYotfcVC84EXcUwGBN4qmJ
+ dJBnFN8VfguJC7ZPTVoyCWYShGPrko/pmvozdjEIwZYKQdUsxvgaMncPxKCTM4CVcaN0N8x7CkN
+ ll4q+18=
+X-Received: by 2002:a17:907:3ea7:b0:b87:e76:67a5 with SMTP id
+ a640c23a62f3a-b8dacca9517mr219854666b.24.1769548982406; Tue, 27 Jan 2026
+ 13:23:02 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 32/33] scripts: Add a script to run the wasm-compiled
- QEMU on node.js
-Content-Language: en-US
-To: Kohei Tokunaga <ktokunaga.mail@gmail.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- WANG Xuerui <git@xen0n.name>, Aurelien Jarno <aurelien@aurel32.net>,
- Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <arikalo@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Stefan Weil <sw@weilnetz.de>,
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>
-References: <cover.1769407033.git.ktokunaga.mail@gmail.com>
- <2af460d17a47ec69d691dfb876f834e4685f9d6d.1769407033.git.ktokunaga.mail@gmail.com>
- <6dce5ad6-e88b-433c-8eef-98dbe72acbbd@linaro.org>
- <CAEDrbUZhz8hLQJ=Cvpj9MAy0f+bLqOk8wonHHLMaYEKEQAAFYA@mail.gmail.com>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
- xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
- eOiRCUY9l7IbtPYPHN5YVx+7W3vo6v89I7mL940oYAW8loPZRSMbyCiUeSoiN4gWPXetoNBg
- CJmXbVYQgL5e6rsXoMlwFWuGrBY3Ig8YhEqpuYDkRXj2idO11CiDBT/b8A2aGixnpWV/s+AD
- gUyEVjHU6Z8UervvuNKlRUNE0rUfc502Sa8Azdyda8a7MAyrbA/OI0UnSL1m+pXXCxOxCvtU
- qOlipoCOycBjpLlzjj1xxRci+ssiZeOhxdejILf5LO1gXf6pP+ROdW4ySp9L3dAWnNDcnj6U
- 2voYk7/RpRUTpecvkxnwiOoiIQ7BatjkssFy+0sZOYNbOmoqU/Gq+LeFqFYKDV8gNmAoxBvk
- L6EtXUNfTBjiMHyjA/HMMq27Ja3/Y73xlFpTVp7byQoTwF4p1uZOOXjFzqIyW25GvEekDRF8
- IpYd6/BomxHzvMZ2sQ/VXaMAEQEAAc0uUGllcnJpY2sgQm91dmllciA8cGllcnJpY2suYm91
- dmllckBsaW5hcm8ub3JnPsLBDgQTAQoAOBYhBGa5lOyhT38uWroIH3+QVA0KHNAPBQJivXYM
- AhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEH+QVA0KHNAPX58L/1DYzrEO4TU9ZhJE
- tKcw/+mCZrzHxPNlQtENJ5NULAJWVaJ/8kRQ3Et5hQYhYDKK+3I+0Tl/tYuUeKNV74dFE7mv
- PmikCXBGN5hv5povhinZ9T14S2xkMgym2T3DbkeaYFSmu8Z89jm/AQVt3ZDRjV6vrVfvVW0L
- F6wPJSOLIvKjOc8/+NXrKLrV/YTEi2R1ovIPXcK7NP6tvzAEgh76kW34AHtroC7GFQKu/aAn
- HnL7XrvNvByjpa636jIM9ij43LpLXjIQk3bwHeoHebkmgzFef+lZafzD+oSNNLoYkuWfoL2l
- CR1mifjh7eybmVx7hfhj3GCmRu9o1x59nct06E3ri8/eY52l/XaWGGuKz1bbCd3xa6NxuzDM
- UZU+b0PxHyg9tvASaVWKZ5SsQ5Lf9Gw6WKEhnyTR8Msnh8kMkE7+QWNDmjr0xqB+k/xMlVLE
- uI9Pmq/RApQkW0Q96lTa1Z/UKPm69BMVnUvHv6u3n0tRCDOHTUKHXp/9h5CH3xawms7AzQRi
- vXYMAQwAwXUyTS/Vgq3M9F+9r6XGwbak6D7sJB3ZSG/ZQe5ByCnH9ZSIFqjMnxr4GZUzgBAj
- FWMSVlseSninYe7MoH15T4QXi0gMmKsU40ckXLG/EW/mXRlLd8NOTZj8lULPwg/lQNAnc7GN
- I4uZoaXmYSc4eI7+gUWTqAHmESHYFjilweyuxcvXhIKez7EXnwaakHMAOzNHIdcGGs8NFh44
- oPh93uIr65EUDNxf0fDjnvu92ujf0rUKGxXJx9BrcYJzr7FliQvprlHaRKjahuwLYfZK6Ma6
- TCU40GsDxbGjR5w/UeOgjpb4SVU99Nol/W9C2aZ7e//2f9APVuzY8USAGWnu3eBJcJB+o9ck
- y2bSJ5gmGT96r88RtH/E1460QxF0GGWZcDzZ6SEKkvGSCYueUMzAAqJz9JSirc76E/JoHXYI
- /FWKgFcC4HRQpZ5ThvyAoj9nTIPI4DwqoaFOdulyYAxcbNmcGAFAsl0jJYJ5Mcm2qfQwNiiW
- YnqdwQzVfhwaAcPVABEBAAHCwPYEGAEKACAWIQRmuZTsoU9/Llq6CB9/kFQNChzQDwUCYr12
- DAIbDAAKCRB/kFQNChzQD/XaC/9MnvmPi8keFJggOg28v+r42P7UQtQ9D3LJMgj3OTzBN2as
- v20Ju09/rj+gx3u7XofHBUj6BsOLVCWjIX52hcEEg+Bzo3uPZ3apYtIgqfjrn/fPB0bCVIbi
- 0hAw6W7Ygt+T1Wuak/EV0KS/If309W4b/DiI+fkQpZhCiLUK7DrA97xA1OT1bJJYkC3y4seo
- 0VHOnZTpnOyZ+8Ejs6gcMiEboFHEEt9P+3mrlVJL/cHpGRtg0ZKJ4QC8UmCE3arzv7KCAc+2
- dRDWiCoRovqXGE2PdAW8788qH5DEXnwfzDhnCQ9Eot0Eyi41d4PWI8TWZFi9KzGXJO82O9gW
- 5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
- X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
- ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <CAEDrbUZhz8hLQJ=Cvpj9MAy0f+bLqOk8wonHHLMaYEKEQAAFYA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102e.google.com
+References: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
+ <20260126174313.1418150-3-ruslichenko.r@gmail.com> <aXggp66YwLpvM0_4@zatzit>
+In-Reply-To: <aXggp66YwLpvM0_4@zatzit>
+From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+Date: Tue, 27 Jan 2026 22:22:50 +0100
+X-Gm-Features: AZwV_QjIZxLOcbRSx3jpoYKSeDsGZCuSMt-_EAIN3rYsv-v1AWv4UJrk3JjhzYk
+Message-ID: <CAN-aV1GOxSoPVJ9rmLEKthEpRJrpt0UB3yzAzUs_9UHgFw3ckA@mail.gmail.com>
+Subject: Re: [PATCH 02/27] system/device_tree: add few parsing and traversal
+ helpers
+To: David Gibson <david@gibson.dropbear.id.au>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org, 
+ artem_mygaiev@epam.com, volodymyr_babchuk@epam.com, 
+ takahiro.nakata.wr@renesas.com, 
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>, Ruslan_Ruslichenko@epam.com, 
+ Alistair Francis <alistair.francis@wdc.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -153,36 +123,403 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 1/26/26 6:36 PM, Kohei Tokunaga wrote:
-> Hi Pierrick,
-> 
->  > I followed the instructions but could not get this running:
->  >
->  > $ /usr/share/emscripten/tools/file_packager.py qemu-system-aarch64.data
->  > --preload pack/ > load.js
->  > $ ~/node-v24.13.0-linux-x64/bin/node ./scripts/run-emscripten.mjs
->  > --preload ./load.js ./qemu-system-aarch64.js -- -nographic -m 512M -L 
-> pack
->  > file:///home/user/.work/qemu/scripts/run-emscripten.mjs:51
->  > if (preloadModule) preloadModule.default(Module);
->  >                                          ^
->  > TypeError: preloadModule.default is not a function
->  >      at file:///home/user/.work/qemu/scripts/run-emscripten.mjs:51:41
->  > Node.js v24.13.0
-> 
-> Thank you for trying the script.
-> 
-> That script requires the --export-es6 flag to file_packager.py. This flag
-> was introduced in Emscripten 4.0.13 so please update the Emscripten tools if
-> it is not available. If you're using emsdk, it provides the way to intall
-> newer tools, such as "emsdk update" and "emsdk install 4.0.23" [1].
-> 
-> [1] https://emscripten.org/docs/tools_reference/emsdk.html#how-to-guides 
-> <https://emscripten.org/docs/tools_reference/emsdk.html#how-to-guides>
-> 
-> Regards,
-> Kohei Tokunaga
-> 
+On Tue, Jan 27, 2026 at 3:19=E2=80=AFAM David Gibson
+<david@gibson.dropbear.id.au> wrote:
+>
+> On Mon, Jan 26, 2026 at 06:42:48PM +0100, Ruslan Ruslichenko wrote:
+> > From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+> >
+> > The patch adds few utility functions for parsing FDT nodes.
+> > The helpers are required for upcoming Hardware device tree
+> > feature.
+> >
+> > Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+> > ---
+> >  include/system/device_tree.h |  30 ++++++
+> >  system/device_tree.c         | 203 +++++++++++++++++++++++++++++++++++
+> >  2 files changed, 233 insertions(+)
+> >
+> > diff --git a/include/system/device_tree.h b/include/system/device_tree.=
+h
+> > index f34b8b7ef9..458dbb74b4 100644
+> > --- a/include/system/device_tree.h
+> > +++ b/include/system/device_tree.h
+> > @@ -90,6 +90,13 @@ int qemu_fdt_setprop_string_array(void *fdt, const c=
+har *node_path,
+> >  int qemu_fdt_setprop_phandle(void *fdt, const char *node_path,
+> >                               const char *property,
+> >                               const char *target_node_path);
+> > +
+> > +uint64_t qemu_fdt_getprop_sized_cell(void *fdt, const char *node_path,
+> > +                                     const char *property, int offset,
+> > +                                     int size, Error **errp);
+> > +const char *qemu_fdt_getprop_string(void *fdt, const char*node_path,
+> > +                                    const char *property, int cell,
+> > +                                    bool inherit, Error **errp);
+> >  /**
+> >   * qemu_fdt_getprop: retrieve the value of a given property
+> >   * @fdt: pointer to the device tree blob
+> > @@ -193,9 +200,32 @@ int qemu_fdt_setprop_sized_cells_from_array(void *=
+fdt,
+> >                                                  qdt_tmp);             =
+    \
+> >      })
+> >
+> > +typedef struct QEMUDevtreeProp {
+> > +    char *name;
+> > +    int len;
+> > +    void *value;
+> > +} QEMUDevtreeProp;
+> > +
+> > +/* node queries */
+> > +
+> > +char *qemu_devtree_get_node_name(void *fdt, const char *node_path);
+> > +int qemu_devtree_get_num_children(void *fdt, const char *node_path, in=
+t depth);
+> > +char **qemu_devtree_get_children(void *fdt, const char *node_path, int=
+ depth);
+> > +int qemu_devtree_num_props(void *fdt, const char *node_path);
+> > +QEMUDevtreeProp *qemu_devtree_get_props(void *fdt, const char *node_pa=
+th);
+> >
+> > +/* node getters */
+> > +
+> > +int qemu_devtree_get_node_by_name(void *fdt, char *node_path,
+> > +                                  const char *cmpname);
+> > +int qemu_devtree_get_node_by_phandle(void *fdt, char *node_path, int p=
+handle);
+> >  int qemu_devtree_getparent(void *fdt, char *node_path,
+> >                             const char *current);
+> > +int qemu_devtree_get_root_node(void *fdt, char *node_path);
+> > +
+> > +/* misc */
+> > +
+> > +int devtree_get_num_nodes(void *fdt);
+> >
+> >  #define DT_PATH_LENGTH 1024
+> >
+> > diff --git a/system/device_tree.c b/system/device_tree.c
+> > index 41bde0ba5a..7091a4928e 100644
+> > --- a/system/device_tree.c
+> > +++ b/system/device_tree.c
+> > @@ -451,6 +451,50 @@ const void *qemu_fdt_getprop(void *fdt, const char=
+ *node_path,
+> >      return r;
+> >  }
+> >
+> > +const char *qemu_fdt_getprop_string(void *fdt, const char*node_path,
+> > +                                    const char *property, int cell,
+> > +                                    bool inherit, Error **errp)
+> > +{
+> > +    int len;
+> > +    const void *prop;
+> > +    Error *err =3D NULL;
+> > +
+> > +    if (!errp) {
+> > +        errp =3D &err;
+> > +    }
+> > +
+> > +    prop =3D qemu_fdt_getprop(fdt, node_path, property, &len, inherit,=
+ errp);
+> > +    if (*errp) {
+> > +        return NULL;
+> > +    }
+> > +    while (cell) {
+>
+> In DT context, "cell" refers specifically to a 32-bit integer value.
+> It's not the right word for which string in a stringlist you retrieve.
+>
+> Also, most of this is re-implementing fdt_stringlist_get() from libfdt.
+>
+> > +        void *term =3D memchr(prop, '\0', len);
+> > +        size_t diff;
+> > +
+> > +        if (!term) {
+> > +            error_setg(errp, "%s: Couldn't get %s/%s: %s", __func__,
+> > +                      node_path, property, fdt_strerror(len));
+> > +            return NULL;
+> > +        }
+> > +        diff =3D term - prop + 1;
+> > +        len -=3D diff;
+> > +        assert(len >=3D 0);
+> > +        prop +=3D diff;
+> > +        cell--;
+> > +    }
+> > +
+> > +    if (!len) {
+> > +        return NULL;
+> > +    }
+> > +
+> > +    if (!*(char *)prop) {
+> > +        error_setg(errp, "%s: Couldn't get %s/%s: %s", __func__,
+> > +                  node_path, property, fdt_strerror(len));
+> > +        return NULL;
+> > +    }
+> > +    return prop;
+> > +}
+> > +
+> >  uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
+> >                                 const char *property, int offset,
+> >                                 bool inherit, Error **errp)
+> > @@ -471,6 +515,22 @@ uint32_t qemu_fdt_getprop_cell(void *fdt, const ch=
+ar *node_path,
+> >      return be32_to_cpu(p[offset]);
+> >  }
+> >
+> > +uint64_t qemu_fdt_getprop_sized_cell(void *fdt, const char *node_path,
+> > +                                     const char *property, int offset,
+> > +                                     int size, Error **errp)
+> > +{
+>
+> Again, "cell" is 32-bits in DT context, you need a different word.
+>
+> > +    uint64_t ret =3D 0;
+>
+> Since ret is a u64, 'size' must be either 1 or 2.  So you might as
+> well just have a get_u64() helper (getprop_cell already does u32).
+>
+> > +    for (; size; size--) {
+> > +        ret <<=3D 32;
+> > +        ret |=3D qemu_fdt_getprop_cell(fdt, node_path, property, offse=
+t++, false,
+> > +                                     errp);
+> > +        if (errp && *errp) {
+> > +            return 0;
+> > +        }
+> > +    }
+> > +    return ret;
+> > +}
+> > +
+> >  uint32_t qemu_fdt_get_phandle(void *fdt, const char *path)
+> >  {
+> >      uint32_t r;
+> > @@ -638,6 +698,117 @@ out:
+> >      return ret;
+> >  }
+> >
+> > +char *qemu_devtree_get_node_name(void *fdt, const char *node_path)
+> > +{
+> > +    const char *ret =3D fdt_get_name(fdt, fdt_path_offset(fdt, node_pa=
+th), NULL);
+>
+> This does a full scan of the fdt, which may be unexpected.
+>
+> > +    return ret ? strdup(ret) : NULL;
+> > +}
+> > +
+> > +int qemu_devtree_num_props(void *fdt, const char *node_path)
+> > +{
+> > +    int offset =3D fdt_path_offset(fdt, node_path);
+> > +    int ret =3D 0;
+> > +
+> > +    for (offset =3D fdt_first_property_offset(fdt, offset);
+> > +            offset !=3D -FDT_ERR_NOTFOUND;
+> > +            offset =3D fdt_next_property_offset(fdt, offset)) {
+> > +        ret++;
+> > +    }
+> > +    return ret;
+> > +}
+> > +
+> > +QEMUDevtreeProp *qemu_devtree_get_props(void *fdt, const char *node_pa=
+th)
+> > +{
+> > +    QEMUDevtreeProp *ret =3D g_new0(QEMUDevtreeProp,
+> > +                                    qemu_devtree_num_props(fdt, node_p=
+ath) + 1);
+> > +    int offset =3D fdt_path_offset(fdt, node_path);
+> > +    int i =3D 0;
+> > +
+> > +    for (offset =3D fdt_first_property_offset(fdt, offset);
+> > +            offset !=3D -FDT_ERR_NOTFOUND;
+> > +            offset =3D fdt_next_property_offset(fdt, offset)) {
+> > +        const char *propname;
+> > +        const void *val =3D fdt_getprop_by_offset(fdt, offset, &propna=
+me,
+> > +                                                    &ret[i].len);
+> > +
+> > +        ret[i].name =3D g_strdup(propname);
+> > +        ret[i].value =3D g_memdup2(val, ret[i].len);
+> > +        i++;
+> > +    }
+> > +    return ret;
+>
+> How does the caller free the structure?  Using g_free() will leak all
+> the copied names and values.
+>
+> > +}
+> > +
+> > +static void qemu_devtree_children_info(void *fdt, const char *node_pat=
+h,
+> > +        int depth, int *num, char **returned_paths) {
+> > +    int offset =3D fdt_path_offset(fdt, node_path);
+> > +    int root_depth =3D fdt_node_depth(fdt, offset);
+>
+> "root" implies the root of the whole tree, not of the node where you
+> started.  Also, two full scans of the tree above.
+>
+> > +    int cur_depth =3D root_depth;
+> > +
+> > +    if (num) {
+> > +        *num =3D 0;
+> > +    }
+> > +    for (;;) {
+> > +        offset =3D fdt_next_node(fdt, offset, &cur_depth);
+> > +        if (cur_depth <=3D root_depth) {
+> > +            break;
+> > +        }
+> > +        if (cur_depth <=3D root_depth + depth || depth =3D=3D 0) {
+> > +            if (returned_paths) {
+> > +                returned_paths[*num] =3D g_malloc0(DT_PATH_LENGTH);
+>
+> No test to avoid overrunning the length of the returned_paths[] array
+> here.
+>
+> > +                fdt_get_path(fdt, offset, returned_paths[*num], DT_PAT=
+H_LENGTH);
+>
+> Another full tree scan for every entry here.
+>
+> > +            }
+> > +            if (num) {
+> > +                (*num)++;
+> > +            }
+> > +        }
+> > +    }
+> > +}
+> > +
+> > +char **qemu_devtree_get_children(void *fdt, const char *node_path, int=
+ depth)
+> > +{
+> > +    int num_children =3D qemu_devtree_get_num_children(fdt, node_path,=
+ depth);
+> > +    char **ret =3D g_malloc0(sizeof(*ret) * num_children);
+> > +
+> > +    qemu_devtree_children_info(fdt, node_path, depth, &num_children, r=
+et);
+> > +    return ret;
+> > +}
+> > +
+> > +int qemu_devtree_get_num_children(void *fdt, const char *node_path, in=
+t depth)
+> > +{
+> > +    int ret;
+> > +
+> > +    qemu_devtree_children_info(fdt, node_path, depth, &ret, NULL);
+> > +    return ret;
+> > +}
+> > +
+> > +int qemu_devtree_get_node_by_name(void *fdt, char *node_path,
+> > +        const char *cmpname) {
+>
+> The semantics of this make no sense to me.  It finds the first node
+> with the name after the given node, whether it's a child, sibling or
+> unrelated node.   I'm guessing you want something based on
+> fdt_subnode_offset() instead.
+>
+> > +    int offset =3D 0;
+> > +    char *name =3D NULL;
+> > +
+> > +    do {
+> > +        char *at;
+> > +
+> > +        offset =3D fdt_next_node(fdt, offset, NULL);
+>
+> No test for error here, before using 'offset'.
+>
+> > +        name =3D (void *)fdt_get_name(fdt, offset, NULL);
+> > +        if (!name) {
+> > +            continue;
+>
+> The only errors from fdt_get_name() indicate either a corrupted DT, or
+> bad parameters.  continuing at this point will not do anything useful.
+>
+> > +        }
+> > +        at =3D memchr(name, '@', strlen(name));
+> > +        if (!strncmp(name, cmpname, at ? at - name : strlen(name))) {
+> > +            break;
+> > +        }
+> > +    } while (offset > 0);
+> > +    return offset > 0 ?
+> > +        fdt_get_path(fdt, offset, node_path, DT_PATH_LENGTH) : 1;
+> > +}
+> > +
+> > +int qemu_devtree_get_node_by_phandle(void *fdt, char *node_path, int p=
+handle)
+> > +{
+> > +    return fdt_get_path(fdt, fdt_node_offset_by_phandle(fdt, phandle),
+> > +                            node_path, DT_PATH_LENGTH);
+>
+> Two full tree scans.
+>
+> > +}
+> > +
+> >  int qemu_devtree_getparent(void *fdt, char *node_path, const char *cur=
+rent)
+> >  {
+> >      int offset =3D fdt_path_offset(fdt, current);
+> > @@ -648,6 +819,38 @@ int qemu_devtree_getparent(void *fdt, char *node_p=
+ath, const char *current)
+> >          fdt_get_path(fdt, parent_offset, node_path, DT_PATH_LENGTH) : =
+1;
+> >  }
+> >
+> > +int qemu_devtree_get_root_node(void *fdt, char *node_path)
+> > +{
+> > +    return fdt_get_path(fdt, 0, node_path, DT_PATH_LENGTH);
+>
+> The root node's path is "/" by definition, you don't need this
+> function.
+>
+> > +}
+> > +
+> > +static void devtree_scan(void *fdt, int *num_nodes)
+>
+> "scan" is vague.  The name should reflect what this actually does.
+>
+> > +{
+> > +    int depth =3D 0, offset =3D 0;
+> > +
+> > +    if (num_nodes) {
+> > +        *num_nodes =3D 0;
+> > +    }
+> > +    for (;;) {
+> > +        offset =3D fdt_next_node(fdt, offset, &depth);
+> > +        if (num_nodes) {
+> > +            (*num_nodes)++;
+> > +        }
+> > +        if (offset <=3D 0 || depth <=3D 0) {
+> > +            break;
+> > +        }
+> > +    }
+> > +}
+> > +
+> > +int devtree_get_num_nodes(void *fdt)
+> > +{
+> > +    int ret;
+> > +
+> > +    devtree_scan(fdt, &ret);
+> > +    return ret;
+> > +}
+> > +
+> > +
+> >  void qmp_dumpdtb(const char *filename, Error **errp)
+> >  {
+> >      ERRP_GUARD();
+> > --
+> > 2.43.0
+> >
+>
 
-Thanks, this was missing indeed.
+Hi David!
+Thank you for the detailed review for this and previous patches.
+I will follow up your comments in the v2 patch series.
+
+
+
+> --
+> David Gibson (he or they)       | I'll have my music baroque, and my code
+> david AT gibson.dropbear.id.au  | minimalist, thank you, not the other wa=
+y
+>                                 | around.
+> http://www.ozlabs.org/~dgibson
 

@@ -4,95 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCE61D2FED8
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 18:36:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84C1AD2FED9
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 18:37:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vknrI-0000cV-29; Tue, 27 Jan 2026 13:32:12 -0500
+	id 1vkntH-0004ZU-8q; Tue, 27 Jan 2026 13:34:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vknoT-00023j-Tk
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:29:28 -0500
-Received: from p-west2-cluster1-host12-snip4-8.eps.apple.com ([57.103.68.41]
- helo=outbound.mr.icloud.com)
+ id 1vknqn-00083c-Cg
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:31:50 -0500
+Received: from p-west3-cluster2-host5-snip4-10.eps.apple.com ([57.103.74.53]
+ helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vknoN-0003Z7-Oo
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:29:14 -0500
-Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-11 (Postfix) with ESMTPS id
- 32DAF1800976; Tue, 27 Jan 2026 18:29:09 +0000 (UTC)
+ id 1vknqj-0004Jk-13
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:31:39 -0500
+Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-3a-100-percent-4 (Postfix) with ESMTPS id
+ 85ADE1800CE3; Tue, 27 Jan 2026 18:31:29 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1769538550; x=1772130550;
- bh=JwG09taZNQZEUrnety/DLmIDMJ9+cgWSAONaI1A1Ms0=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=apMJ4OgBp0pPlToolbld4otBiTSjPqaQPpSr4q9uO/sOryz4CLbTGDyMJQ+AD1b6TTv1sofVaPPeyJmL7L60cLX1m3autNSAunUL99L0hT3K06mVKsIvhHo7Rb/wwbObnLAuS0mZMTVUR0myWeFOngekOFs4Y+Q6Hys4D3DcY69wm30SMdrCDyXGMjBFo5naUHYdJ/b2QxFT/F6M+bAn6bZdNd+QXTbo4a3AAQ6vYWh/tZUaYN6+oNCOLnllCXjeCubNqVKmeNfYwhPOHkMR2Qy3qSbl7pZ6WnY48BZxxPBkQqrWfzSEimJCrX5B1zWWXb/UkOAsGojtjXqMDwPxLA==
+ s=sig1; t=1769538692; x=1772130692;
+ bh=sqyPOFWqsQ9KJywIJYuJ0LA9jE4orTdr3yqvYdonyjA=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=UrX7EymZqixpcHtu+oNoxP18u+1i402C9ycDRzDyoIyhIVoEindcQLEY5J4oC1XOs6ug4UA7XllgFfi0+I5n6qRsA7k/C0faih1XMGIyy6BF/PtByuu/LTymNA+MeOvicVP2AohaMIKCA51AX+3MKV7gNJtIRGr9ag4TblTbDjL8mO1GCC4zCMwqil8vQklVmWn8VlFFE6WjavjZLPz3I2jHtp5oM7DnhW6HXQDRoFxfISCulXUShQjvFB5OCAB65ojgdtnS8fX9ITm3BnhmKWG72NMvjlI5HMEayDWVOHXJv6hLsI7tAaEkGirSPmfeGI+nUlwDKw+fFW2o9bh1DQ==
 mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.57.152.38])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-11 (Postfix) with ESMTPSA id
- A3FA818001F3; Tue, 27 Jan 2026 18:29:04 +0000 (UTC)
+Received: from smtpclient.apple (unknown [17.57.154.37])
+ by p00-icloudmta-asmtp-us-west-3a-100-percent-4 (Postfix) with ESMTPSA id
+ 6F09518000F0; Tue, 27 Jan 2026 18:31:25 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
+Subject: Re: [PATCH v17 03/21] hw: arm: virt: rework MSI-X configuration
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org,
-	mohamed@unpredictable.fr
-Cc: Zhao Liu <zhao1.liu@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
- Ani Sinha <anisinha@redhat.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+In-Reply-To: <20260127102534-mutt-send-email-mst@kernel.org>
+Date: Tue, 27 Jan 2026 19:31:12 +0100
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Richard Henderson <richard.henderson@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
  Igor Mammedov <imammedo@redhat.com>, Cameron Esfahani <dirty@apple.com>,
- Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v18 12/22] hw, target,
- accel: whpx: change apic_in_platform to kernel_irqchip
-Date: Tue, 27 Jan 2026 19:27:52 +0100
-Message-ID: <20260127182805.73212-13-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260127182805.73212-1-mohamed@unpredictable.fr>
-References: <20260127182805.73212-1-mohamed@unpredictable.fr>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: XNegB6ph5to70T-XubxwHGfp8FyvWp3-
-X-Authority-Info-Out: v=2.4 cv=R64O2NRX c=1 sm=1 tr=0 ts=697903f6
- cx=c_apl:c_apl_out:c_pps a=9OgfyREA4BUYbbCgc0Y0oA==:117
- a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=KKAkSRfTAAAA:8 a=ogbMO5OAvhA2mBZm2BUA:9 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTI3MDE1MCBTYWx0ZWRfXxswbTRWTY9ip
- P2GBP6jHamvQIc2QZOZ0qITqnIFC5hnOpHLbiReWCV2HqxqVPrjVTOZL3EyoKwcaXnT7yD0dwi2
- /fOvvdsPbzX5CuDCy0ORnm28Kwkg6cgo9+VeJEsHpIgTs89lbbl6xeH9K+SGjz/soP3NJKkARoR
- RNLaD72RO6bAdxguRHhKA9u5As5VoTil7JqYSAaVo68MDtfBVyrBfIq2YpVSQhmzAqTq7rz5C4F
- GesQA7yhvZ9ofjRjUX/WLb1y7GczKy7k+BhUJaWZ/D4SjukGgUjCaaVAY+JMuEl9tPOyNerNd5z
- vR0HtRsqC3mpO+7JiWI
-X-Proofpoint-ORIG-GUID: XNegB6ph5to70T-XubxwHGfp8FyvWp3-
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Roman Bolshakov <rbolshakov@ddn.com>,
+ Ani Sinha <anisinha@redhat.com>, Pedro Barbuda <pbarbuda@microsoft.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <54440B7F-B42B-4A3A-AD6A-4FE9916428E8@unpredictable.fr>
+References: <20260121134114.9781-1-mohamed@unpredictable.fr>
+ <20260121134114.9781-4-mohamed@unpredictable.fr>
+ <CAFEAcA-GL9UG5MN5tKDzLwQ04cBGa99cSau4=2BLTs0+GGSdJw@mail.gmail.com>
+ <51E78FA9-2C66-4E8E-947F-F009A8AEEDFD@unpredictable.fr>
+ <CAFEAcA_7o-dNFUgMo=UdYD_cf=dwbMCy6b+_2SRSxVbDmmAUmw@mail.gmail.com>
+ <9ECB5E0B-3BD3-47D3-9E6B-204A354CEA84@unpredictable.fr>
+ <CAFEAcA_g3VfRectVpUG-OnLh_AtsqpLt7YYrYXDSfiesS5EuKw@mail.gmail.com>
+ <20260127102534-mutt-send-email-mst@kernel.org>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+X-Mailer: Apple Mail (2.3864.300.41.1.7)
+X-Proofpoint-GUID: 6FNgzovoOVBkwO1yoqxY_YLWS_HxW6qs
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTI3MDE1MSBTYWx0ZWRfX8U56HIT3B+SV
+ J9p/eSApcBSDMrr1voYAtdUjdeP7sTn7opK1D9g9ELcsXFkabJOQMCyG+xJL2dGIXKS5VU4SkVX
+ wwVTWSKEPe+9NHWo0wcOB5Eajw70Hj1/kgWnaEUXQTZ6RaOwet1CRJJs4Qwg6TKLtX5hrNIDask
+ YuqKPq73SDMDKgwe9cPdvixtNTekRsRpVxxScl4v513P2qyPNcdI0u/efDzatOO4m1wr2FzLQPv
+ 9HegQ8fVH2cPjwAYyr0FP8XNXYbhA+1hbhi8F0GvzavRjSNjGbdrNiNzl0GjUb4eG6PXPbhmbNO
+ SxCQoQDrgBb5OmCveyU
+X-Proofpoint-ORIG-GUID: 6FNgzovoOVBkwO1yoqxY_YLWS_HxW6qs
+X-Authority-Info-Out: v=2.4 cv=MtFfKmae c=1 sm=1 tr=0 ts=69790483
+ cx=c_apl:c_apl_out:c_pps a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
+ a=vUbySO9Y5rIA:10 a=VkNPw1HP01LnGYTKEx00:22 a=20KFwNOVAAAA:8 a=KKAkSRfTAAAA:8
+ a=wKKgmu9azzEBwTzVMMoA:9 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-01-27_04,2026-01-27_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- mlxscore=0 adultscore=0 clxscore=1030
- malwarescore=0 bulkscore=0 phishscore=0
- suspectscore=0 spamscore=0 classifier=spam authscore=0 adjust=0 reason=mlx
- scancount=1 engine=8.22.0-2510240001 definitions=main-2601270150
-X-JNJ: AAAAAAABeFiqFHAo0eutcbHHPixflzQTIi482ZoSk7LlaJB/F5E9BFw0GkxlziYpwzaG4B3Zn8Sn08bT+9doWAPBKiCpTKX17BTyw4+/ttQx76zMNcZdivvm4pZfNlm37qmXuBSdi4LZ0jnenN8kdgpt/mRRvtw2Nj7HBuN/Clr9WWuRCq2e3u7Tpd4zGey+Z3JBwCy8XSWIGPnV6HUDD9MaboOQYkbzrqmC5pk/ualbAcSpzRzfVfhtQx1YnGXR05btLx6jJHWaY1u9MGrTKCCMfyqY+Gmu+eHghN+oiIfYEyQbUHflroRoXz01tlUr0C50Qf2CbRXh5a9+87fD4OTye7zhLhtpw6kFP6Vo57b8W0hYg7fSKumzxKR6FcltfarTTzRGy7T9ciSG9Zk+VmEV2QDZMJ5WP4oOqPsnUMcvyjV1g3+YrSFO9EXB+D30rMztis8XyDzrMstoH81BMfK+8+CEqa71xpaC0m9lpou8nP9O9jV0W1rGO9NafylBFqK215GBhwnkZyw0WIpBQtg/Xp0q4iXCJXLpx0Mtpq/0CmhKMdZQ7L1ZnGkat4Q7k+/uk5DdQfagRzqTibh7H6HHe8Ctw1Ih+WIuhfQIdWusvW083LenFigsjJMdHY0CWrEZqEOz7r3+/0y1u7AI0zC8qUGbuiOPuY45VFLADFLvk+Wf5i8wF59ramWXoFjIUXaP/rPUIk+AXLS5sbS8aqQiGtqDAfJ7BYVCxeOjydGrohOXdU/J48AJ3FtY9GUj7DDcFbYfUep84E5emVTqh9UNOt1xxHi1KgQf8nGoN74cS6O89nLvr1qRDfxaNNq1cguTv08HSWCkCXIwtnfJp94K5T/XcCCY7VSRa/mMJanBb6aIOIBALegV8pJkx4wqP6z0FlWiP8ovTK+C2GgqysL0Lv+isrgtNwAFlatmzjzfxgX6yWCOfKne1XL/
-Received-SPF: pass client-ip=57.103.68.41;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
+ phishscore=0 malwarescore=0 clxscore=1030 bulkscore=0 spamscore=0
+ adultscore=0 mlxlogscore=999 suspectscore=0 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2601270151
+X-JNJ: AAAAAAABhT9b3fB8IC0qypCPK64O3LC8B/5T+ttsLS9B71+/pmAmCFGgyoaYBNfDCC1DliBzHySO3zLMCJULY3kVPxiMMJZzBYENAJ8YbZtP+jSZydKE4aYw54hVzUL4aA6GQ2P3iRX9HbMzN0oFjG3cJfOK+jAoqYInPD3CPkG9C66krfljSjy1cSFl7SwzNQK6yXQo/0wmJPD8uPk/BQq6P7DJ3ohBswS25TXp+Gbo1xtSTV7yR6qeR5SBka+m9iFjdc2Hsus0mQqnT8Mwo1mmZWF+srv89oIrgTdZScrt84sqlYaB92mc3m2qfazFjmqjZ+zSb7ZpW0F8xDroIt3T7lx9VdrJGFeZUnzGGg+OueqmK1+XMSdA7AdhY8R3pqGPbCZhTzQCzW0PSFoMHjJyy/eBVhI+QJfoLJsnYZWh8JO9lWc10tYwU0i6wH2xVYnsWa/BNU9vW3IhzoT4svoj4P4xQ0Bdv8RCKMCk5Fdv7Vfo4k1NJABZOxKtbvg6WwWSwlE4rzUoFpXGPLwZU6aNu7Q8alAOhQdmW2TY1lyX/OVSGzmG8XmljDY9uAgz6gY1RtaQsqsyM7dRHM2jmKr3AZ/MUgYywFAfeys/7+xucLkUqfKqa5qQXii0zldmAA8wueVH4Ah6p+Nll6lqN6AgMsaPVWsvnWDujlJ7fHt8x8EOfzl+0luUhnNyyzhqnq3wXyAoodgpS9fyadPluCeyMcDs3UK6UjmGdM41LuBUw9hB7rNOsX0j6NletngVDDBrvcPfnWDEwI3ECyBJb/dT2IRrE7bM0a5/oobzDEN5Uuv55zP6hxOSnlkkBUhFuwFnJslas9BKxOSS4bp4rZYwB6jwY5vc6CywXVkEPT5ubMqLNcONXMfh92RWj6RfvDR2
+Received-SPF: pass client-ip=57.103.74.53;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,209 +111,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Change terminology to match the KVM one, as APIC is x86-specific.
 
-And move out whpx_irqchip_in_kernel() to make it usable from common
-code even when not compiling with WHPX support.
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
----
- accel/stubs/whpx-stub.c        |  1 +
- accel/whpx/whpx-accel-ops.c    |  2 +-
- accel/whpx/whpx-common.c       | 10 +---------
- hw/i386/x86-cpu.c              |  4 ++--
- include/system/whpx-internal.h |  1 -
- include/system/whpx.h          |  5 +++--
- target/i386/cpu-apic.c         |  2 +-
- target/i386/whpx/whpx-all.c    | 14 +++++++-------
- 8 files changed, 16 insertions(+), 23 deletions(-)
+> On 27. Jan 2026, at 16:34, Michael S. Tsirkin <mst@redhat.com> wrote:
+>=20
+> On Tue, Jan 27, 2026 at 02:10:08PM +0000, Peter Maydell wrote:
+>> On Tue, 27 Jan 2026 at 13:40, Mohamed Mediouni =
+<mohamed@unpredictable.fr> wrote:
+>>>=20
+>>>=20
+>>>=20
+>>>> On 27. Jan 2026, at 13:54, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>>>>=20
+>>>> On Tue, 27 Jan 2026 at 12:46, Mohamed Mediouni =
+<mohamed@unpredictable.fr> wrote:
+>>>>>> On 27. Jan 2026, at 11:54, Peter Maydell =
+<peter.maydell@linaro.org> wrote:
+>>>>>>=20
+>>>>>> On Wed, 21 Jan 2026 at 13:41, Mohamed Mediouni =
+<mohamed@unpredictable.fr> wrote:
+>>>>>>> +/*
+>>>>>>> + * In the prior Qemu ACPI table handling, GICv2 configurations
+>>>>>>> + * had vms->its=3D1... That's broken.
+>>>>>>> + *
+>>>>>>> + * Match that assumption to match the existing ACPI tables that
+>>>>>>> + * have been shipping for quite a while.
+>>>>>>> + */
+>>>>>>> +static int is_gicv2_acpi_workaround_needed(VirtMachineState =
+*vms) {
+>>>>>>> +    return vms->gic_version =3D=3D 2;
+>>>>>>> +}
+>>>>>>=20
+>>>>>> We don't need to keep identical bug-for-bug ACPI tables like =
+that.
+>>>>>> If we were incorrectly reporting an ITS in a GICv2-only ACPI =
+table,
+>>>>>> that was a bug and we can fix it. (This might need adjusting of =
+the
+>>>>>> golden reference ACPI data in some of the bios-tables-tests if we
+>>>>>> were testing that, so it ought to go in its own patch.)
+>>>>>>=20
+>>>>> Hello,
+>>>>>=20
+>>>>> I=E2=80=99m a bit concerned about breaking hibernation in this =
+case=E2=80=A6
+>>>>>=20
+>>>>> My intent was keeping this behavior for now and then add a machine =
+model version dependent toggle in a follow-up patch.
+>>>>=20
+>>>> I'm not an ACPI table expert but my understanding is that it's
+>>>> OK to change the ACPI table contents without having to make
+>>>> those changes machine-version dependent. See e.g. commit =
+d6afe18b7242,
+>>>> which changed the ACPI tables for the its=3Doff case and did not
+>>>> make those changes machine-version specific.
+>>=20
+>>> That commit didn=E2=80=99t affect the default/regular config so it =
+wouldn't have been too problematic in practice.
+>>>=20
+>>> Have had countless issues with how brittle hibernation is* - and =
+more or less subtle ACPI table changes
+>>> tend to break it.
+>>=20
+>> I don't want to add back-compat handling for this to the virt
+>> board unless one of our ACPI table experts says that yes we
+>> do need to keep the ACPI table contents identical for older
+>> versioned machine types.
+>>=20
+>> thanks
+>> -- PMM
+>=20
+>=20
+> Generally what we have handles VM migration, not hybernation.  The =
+issue
+> with hybernation is guests might cache some data to speed up init. If
+> you want to go overboard you would have to never change anything at =
+all
+> in the firmware.  Whether they do it in any specific instance is hard =
+to
+> predict 100% but our approach generally is to try with a couple of
+> popular guests, and not to worry too much ahead of time otherwise.  =
+For
+> several reasons: one is most changes are harmless, another one there's
+> no special race here, if there's an issue you can trigger it
+> predictably, yet another one is hybernation is a rarely used feature.
+>=20
+> For the specific change, I'd guess just test and if fine - fix it =
+without a compat.
+>=20
+Hi,
 
-diff --git a/accel/stubs/whpx-stub.c b/accel/stubs/whpx-stub.c
-index c564c89fd0..4529dc4f78 100644
---- a/accel/stubs/whpx-stub.c
-+++ b/accel/stubs/whpx-stub.c
-@@ -10,3 +10,4 @@
- #include "system/whpx.h"
- 
- bool whpx_allowed;
-+bool whpx_irqchip_in_kernel;
-diff --git a/accel/whpx/whpx-accel-ops.c b/accel/whpx/whpx-accel-ops.c
-index c84a25c273..50fadea0fd 100644
---- a/accel/whpx/whpx-accel-ops.c
-+++ b/accel/whpx/whpx-accel-ops.c
-@@ -78,7 +78,7 @@ static void whpx_kick_vcpu_thread(CPUState *cpu)
- 
- static bool whpx_vcpu_thread_is_idle(CPUState *cpu)
- {
--    return !whpx_apic_in_platform();
-+    return !whpx_irqchip_in_kernel();
- }
- 
- static void whpx_accel_ops_class_init(ObjectClass *oc, const void *data)
-diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
-index c0610815d9..05f9e520b7 100644
---- a/accel/whpx/whpx-common.c
-+++ b/accel/whpx/whpx-common.c
-@@ -35,6 +35,7 @@
- #include <winhvplatformdefs.h>
- 
- bool whpx_allowed;
-+bool whpx_irqchip_in_kernel;
- static bool whp_dispatch_initialized;
- static HMODULE hWinHvPlatform;
- #ifdef HOST_X86_64
-@@ -488,15 +489,6 @@ static const TypeInfo whpx_cpu_accel_type = {
-     .abstract = true,
- };
- 
--/*
-- * Partition support
-- */
--
--bool whpx_apic_in_platform(void)
--{
--    return whpx_global.apic_in_platform;
--}
--
- static void whpx_accel_class_init(ObjectClass *oc, const void *data)
- {
-     AccelClass *ac = ACCEL_CLASS(oc);
-diff --git a/hw/i386/x86-cpu.c b/hw/i386/x86-cpu.c
-index 276f2b0cdf..95e08e3c2a 100644
---- a/hw/i386/x86-cpu.c
-+++ b/hw/i386/x86-cpu.c
-@@ -45,7 +45,7 @@ static void pic_irq_request(void *opaque, int irq, int level)
- 
-     trace_x86_pic_interrupt(irq, level);
-     if (cpu_is_apic_enabled(cpu->apic_state) && !kvm_irqchip_in_kernel() &&
--        !whpx_apic_in_platform()) {
-+        !whpx_irqchip_in_kernel()) {
-         CPU_FOREACH(cs) {
-             cpu = X86_CPU(cs);
-             if (apic_accept_pic_intr(cpu->apic_state)) {
-@@ -71,7 +71,7 @@ int cpu_get_pic_interrupt(CPUX86State *env)
-     X86CPU *cpu = env_archcpu(env);
-     int intno;
- 
--    if (!kvm_irqchip_in_kernel() && !whpx_apic_in_platform()) {
-+    if (!kvm_irqchip_in_kernel() && !whpx_irqchip_in_kernel()) {
-         intno = apic_get_interrupt(cpu->apic_state);
-         if (intno >= 0) {
-             return intno;
-diff --git a/include/system/whpx-internal.h b/include/system/whpx-internal.h
-index 609d0e1c08..8ded54a39b 100644
---- a/include/system/whpx-internal.h
-+++ b/include/system/whpx-internal.h
-@@ -45,7 +45,6 @@ struct whpx_state {
- 
-     bool kernel_irqchip_allowed;
-     bool kernel_irqchip_required;
--    bool apic_in_platform;
- };
- 
- extern struct whpx_state whpx_global;
-diff --git a/include/system/whpx.h b/include/system/whpx.h
-index 00f6a3e523..4217a27e91 100644
---- a/include/system/whpx.h
-+++ b/include/system/whpx.h
-@@ -25,11 +25,12 @@
- 
- #ifdef CONFIG_WHPX_IS_POSSIBLE
- extern bool whpx_allowed;
-+extern bool whpx_irqchip_in_kernel;
- #define whpx_enabled() (whpx_allowed)
--bool whpx_apic_in_platform(void);
-+#define whpx_irqchip_in_kernel() (whpx_irqchip_in_kernel)
- #else /* !CONFIG_WHPX_IS_POSSIBLE */
- #define whpx_enabled() 0
--#define whpx_apic_in_platform() (0)
-+#define whpx_irqchip_in_kernel() (0)
- #endif /* !CONFIG_WHPX_IS_POSSIBLE */
- 
- #endif /* QEMU_WHPX_H */
-diff --git a/target/i386/cpu-apic.c b/target/i386/cpu-apic.c
-index eeee62b52a..50a2b8ae86 100644
---- a/target/i386/cpu-apic.c
-+++ b/target/i386/cpu-apic.c
-@@ -32,7 +32,7 @@ APICCommonClass *apic_get_class(Error **errp)
-         apic_type = "kvm-apic";
-     } else if (xen_enabled()) {
-         apic_type = "xen-apic";
--    } else if (whpx_apic_in_platform()) {
-+    } else if (whpx_irqchip_in_kernel()) {
-         apic_type = "whpx-apic";
-     }
- 
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index 052cda42bf..8210250dc3 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -607,7 +607,7 @@ void whpx_get_registers(CPUState *cpu)
-                      hr);
-     }
- 
--    if (whpx_apic_in_platform()) {
-+    if (whpx_irqchip_in_kernel()) {
-         /*
-          * Fetch the TPR value from the emulated APIC. It may get overwritten
-          * below with the value from CR8 returned by
-@@ -749,7 +749,7 @@ void whpx_get_registers(CPUState *cpu)
- 
-     assert(idx == RTL_NUMBER_OF(whpx_register_names));
- 
--    if (whpx_apic_in_platform()) {
-+    if (whpx_irqchip_in_kernel()) {
-         whpx_apic_get(x86_cpu->apic_state);
-     }
- 
-@@ -1379,7 +1379,7 @@ static void whpx_vcpu_pre_run(CPUState *cpu)
-     }
- 
-     /* Get pending hard interruption or replay one that was overwritten */
--    if (!whpx_apic_in_platform()) {
-+    if (!whpx_irqchip_in_kernel()) {
-         if (!vcpu->interruption_pending &&
-             vcpu->interruptable && (env->eflags & IF_MASK)) {
-             assert(!new_int.InterruptionPending);
-@@ -1553,7 +1553,7 @@ int whpx_vcpu_run(CPUState *cpu)
- 
-     if (exclusive_step_mode == WHPX_STEP_NONE) {
-         whpx_vcpu_process_async_events(cpu);
--        if (cpu->halted && !whpx_apic_in_platform()) {
-+        if (cpu->halted && !whpx_irqchip_in_kernel()) {
-             cpu->exception_index = EXCP_HLT;
-             qatomic_set(&cpu->exit_request, false);
-             return 0;
-@@ -1642,7 +1642,7 @@ int whpx_vcpu_run(CPUState *cpu)
-             break;
- 
-         case WHvRunVpExitReasonX64ApicEoi:
--            assert(whpx_apic_in_platform());
-+            assert(whpx_irqchip_in_kernel());
-             ioapic_eoi_broadcast(vcpu->exit_ctx.ApicEoi.InterruptVector);
-             break;
- 
-@@ -2187,7 +2187,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-                 goto error;
-             }
-         } else {
--            whpx->apic_in_platform = true;
-+            whpx_irqchip_in_kernel = true;
-         }
-     }
- 
-@@ -2196,7 +2196,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-     prop.ExtendedVmExits.X64MsrExit = 1;
-     prop.ExtendedVmExits.X64CpuidExit = 1;
-     prop.ExtendedVmExits.ExceptionExit = 1;
--    if (whpx_apic_in_platform()) {
-+    if (whpx_irqchip_in_kernel()) {
-         prop.ExtendedVmExits.X64ApicInitSipiExitTrap = 1;
-     }
- 
--- 
-2.50.1 (Apple Git-155)
+It turns out that even the Ubuntu stock kernel of all things has =
+hibernation disabled on arm64.
+Had to install the linux-aws variant to test it and that testing =
+didn=E2=80=99t go too well without even making
+any Qemu changes between suspend and resume.
+
+So considering it as unimportant=E2=80=A6
+
+(And just sent a new rev with putting the new behaviour, had to tackle a =
+bug on the way)
+
+Thank you,
+-Mohamed
+> --=20
+> MST
+>=20
+>=20
 
 

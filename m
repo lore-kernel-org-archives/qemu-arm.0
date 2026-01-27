@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01D9CD25926
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 03:25:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 480FED25929
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 03:25:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkZgc-0004KY-KR; Mon, 26 Jan 2026 22:24:14 -0500
+	id 1vkZgU-0004G1-DS; Mon, 26 Jan 2026 22:24:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vkZgb-0004KF-Tq; Mon, 26 Jan 2026 22:24:13 -0500
+ id 1vkZgS-0004FV-Sz; Mon, 26 Jan 2026 22:24:04 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vkZga-0003Z2-HJ; Mon, 26 Jan 2026 22:24:13 -0500
+ id 1vkZgR-0003Z2-Ar; Mon, 26 Jan 2026 22:24:04 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 27 Jan
- 2026 11:23:50 +0800
+ 2026 11:23:49 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 27 Jan 2026 11:23:50 +0800
+ Transport; Tue, 27 Jan 2026 11:23:49 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -32,10 +32,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v1 6/7] tests/functional/arm/test_aspeed_ast1060: Update test
- aspeed-zephyr-project v03.04
-Date: Tue, 27 Jan 2026 11:23:42 +0800
-Message-ID: <20260127032348.2238527-7-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 2/7] hw/pci-host/aspeed_pcie: Drop AST2600 PCIe root device
+Date: Tue, 27 Jan 2026 11:23:38 +0800
+Message-ID: <20260127032348.2238527-3-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260127032348.2238527-1-jamin_lin@aspeedtech.com>
 References: <20260127032348.2238527-1-jamin_lin@aspeedtech.com>
@@ -67,49 +66,163 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+AST2600 PCIe previously exposed a root bus at 0x80 with both a
+root device at 80:00.0 and a root port at 80:08.0.
+
+Recent ASPEED SDK PCIe driver updates decided to remove the root
+device and keep only a single root port. This behavior has already
+been accepted by the upstream Linux kernel.
+
+Update the QEMU PCIe model accordingly by dropping the root device
+implementation and related properties. AST2600 now matches the
+AST2700 PCIe topology and no longer supports the legacy RC_L
+layout.
+
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- tests/functional/arm/test_aspeed_ast1060.py | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ include/hw/pci-host/aspeed_pcie.h |  9 -----
+ hw/pci-host/aspeed_pcie.c         | 57 -------------------------------
+ 2 files changed, 66 deletions(-)
 
-diff --git a/tests/functional/arm/test_aspeed_ast1060.py b/tests/functional/arm/test_aspeed_ast1060.py
-index 034efa5342..eccb4252d8 100644
---- a/tests/functional/arm/test_aspeed_ast1060.py
-+++ b/tests/functional/arm/test_aspeed_ast1060.py
-@@ -11,18 +11,18 @@
+diff --git a/include/hw/pci-host/aspeed_pcie.h b/include/hw/pci-host/aspeed_pcie.h
+index e660119a45..fde5816ea3 100644
+--- a/include/hw/pci-host/aspeed_pcie.h
++++ b/include/hw/pci-host/aspeed_pcie.h
+@@ -50,13 +50,6 @@ typedef struct AspeedPCIERootPortState {
+     PCIESlot parent_obj;
+ } AspeedPCIERootPortState;
  
+-#define TYPE_ASPEED_PCIE_ROOT_DEVICE "aspeed.pcie-root-device"
+-OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERootDeviceState, ASPEED_PCIE_ROOT_DEVICE);
+-
+-struct AspeedPCIERootDeviceState {
+-    PCIBridge parent_obj;
+-};
+-
+ #define TYPE_ASPEED_PCIE_RC "aspeed.pcie-rc"
+ OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERcState, ASPEED_PCIE_RC);
  
- class AST1060Machine(AspeedTest):
--    ASSET_ASPEED_AST1060_PROT_3_02 = Asset(
-+    ASSET_ASPEED_AST1060_PROT_3_04 = Asset(
-         ('https://github.com/AspeedTech-BMC'
--         '/aspeed-zephyr-project/releases/download/v03.02'
--         '/ast1060_prot_v03.02.tgz'),
--         'dd5f1adc935316ddd1906506a02e15567bd7290657b52320f1a225564cc175bd')
-+         '/aspeed-zephyr-project/releases/download/v03.04'
-+         '/ast1060_prot_v03.04.tgz'),
-+         'c0319df55f5b7a547efefc5a6ba374b881223d5fe1a776bfdd36f97fd1f31d50')
+@@ -78,10 +71,8 @@ struct AspeedPCIERcState {
+     uint32_t rp_addr;
+     uint32_t bus_nr;
+     char name[16];
+-    bool has_rd;
+     qemu_irq irq;
  
--    def test_arm_ast1060_prot_3_02(self):
-+    def test_arm_ast1060_prot_3_04(self):
-         self.set_machine('ast1060-evb')
+-    AspeedPCIERootDeviceState root_device;
+     AspeedPCIERootPortState root_port;
+ };
  
-         kernel_name = "ast1060_prot/zephyr.bin"
-         kernel_file = self.archive_extract(
--            self.ASSET_ASPEED_AST1060_PROT_3_02, member=kernel_name)
-+            self.ASSET_ASPEED_AST1060_PROT_3_04, member=kernel_name)
+diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
+index 83a1c7075c..4fdda95939 100644
+--- a/hw/pci-host/aspeed_pcie.c
++++ b/hw/pci-host/aspeed_pcie.c
+@@ -26,44 +26,6 @@
+ #include "hw/pci/msi.h"
+ #include "trace.h"
  
-         self.vm.set_console()
-         self.vm.add_args('-kernel', kernel_file, '-nographic')
-@@ -35,7 +35,7 @@ def test_arm_ast1060_otp_blockdev_device(self):
-         self.vm.set_machine("ast1060-evb")
+-/*
+- * PCIe Root Device
+- * This device exists only on AST2600.
+- */
+-
+-static void aspeed_pcie_root_device_class_init(ObjectClass *klass,
+-                                               const void *data)
+-{
+-    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+-    dc->desc = "ASPEED PCIe Root Device";
+-    k->vendor_id = PCI_VENDOR_ID_ASPEED;
+-    k->device_id = 0x2600;
+-    k->class_id = PCI_CLASS_BRIDGE_HOST;
+-    k->subsystem_vendor_id = k->vendor_id;
+-    k->subsystem_id = k->device_id;
+-    k->revision = 0;
+-
+-    /*
+-     * PCI-facing part of the host bridge,
+-     * not usable without the host-facing part
+-     */
+-    dc->user_creatable = false;
+-}
+-
+-static const TypeInfo aspeed_pcie_root_device_info = {
+-    .name = TYPE_ASPEED_PCIE_ROOT_DEVICE,
+-    .parent = TYPE_PCI_DEVICE,
+-    .instance_size = sizeof(AspeedPCIERootDeviceState),
+-    .class_init = aspeed_pcie_root_device_class_init,
+-    .interfaces = (const InterfaceInfo[]) {
+-        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+-        { },
+-    },
+-};
+-
+ /*
+  * PCIe Root Port
+  */
+@@ -291,18 +253,6 @@ static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
+                                 &rc->dram_alias);
+     pci_setup_iommu(pci->bus, &aspeed_pcie_rc_iommu_ops, rc);
  
-         kernel_name = "ast1060_prot/zephyr.bin"
--        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_02,
-+        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_04,
-                                            member=kernel_name)
-         otp_img = self.generate_otpmem_image()
+-    /* setup root device */
+-    if (rc->has_rd) {
+-        object_initialize_child(OBJECT(rc), "root_device", &rc->root_device,
+-                                TYPE_ASPEED_PCIE_ROOT_DEVICE);
+-        qdev_prop_set_int32(DEVICE(&rc->root_device), "addr",
+-                            PCI_DEVFN(0, 0));
+-        qdev_prop_set_bit(DEVICE(&rc->root_device), "multifunction", false);
+-        if (!qdev_realize(DEVICE(&rc->root_device), BUS(pci->bus), errp)) {
+-            return;
+-        }
+-    }
+-
+     /* setup root port */
+     qdev_prop_set_int32(DEVICE(&rc->root_port), "addr", rc->rp_addr);
+     qdev_prop_set_uint16(DEVICE(&rc->root_port), "chassis", cfg->id);
+@@ -334,7 +284,6 @@ static void aspeed_pcie_rc_instance_init(Object *obj)
  
+ static const Property aspeed_pcie_rc_props[] = {
+     DEFINE_PROP_UINT32("bus-nr", AspeedPCIERcState, bus_nr, 0),
+-    DEFINE_PROP_BOOL("has-rd", AspeedPCIERcState, has_rd, 0),
+     DEFINE_PROP_UINT32("rp-addr", AspeedPCIERcState, rp_addr, 0),
+     DEFINE_PROP_UINT32("msi-addr", AspeedPCIERcState, msi_addr, 0),
+     DEFINE_PROP_UINT64("dram-base", AspeedPCIERcState, dram_base, 0),
+@@ -704,9 +653,6 @@ static void aspeed_pcie_cfg_realize(DeviceState *dev, Error **errp)
+     object_property_set_int(OBJECT(&s->rc), "bus-nr",
+                             apc->rc_bus_nr,
+                             &error_abort);
+-    object_property_set_bool(OBJECT(&s->rc), "has-rd",
+-                            apc->rc_has_rd,
+-                            &error_abort);
+     object_property_set_int(OBJECT(&s->rc), "rp-addr",
+                             apc->rc_rp_addr,
+                             &error_abort);
+@@ -746,7 +692,6 @@ static void aspeed_pcie_cfg_class_init(ObjectClass *klass, const void *data)
+     apc->nr_regs = 0x100 >> 2;
+     apc->rc_msi_addr = 0x1e77005C;
+     apc->rc_bus_nr = 0x80;
+-    apc->rc_has_rd = true;
+     apc->rc_rp_addr = PCI_DEVFN(8, 0);
+ }
+ 
+@@ -867,7 +812,6 @@ static void aspeed_2700_pcie_cfg_class_init(ObjectClass *klass,
+     apc->nr_regs = 0x100 >> 2;
+     apc->rc_msi_addr = 0x000000F0;
+     apc->rc_bus_nr = 0;
+-    apc->rc_has_rd = false;
+     apc->rc_rp_addr = PCI_DEVFN(0, 0);
+ }
+ 
+@@ -1041,7 +985,6 @@ static const TypeInfo aspeed_2700_pcie_phy_info = {
+ static void aspeed_pcie_register_types(void)
+ {
+     type_register_static(&aspeed_pcie_rc_info);
+-    type_register_static(&aspeed_pcie_root_device_info);
+     type_register_static(&aspeed_pcie_root_port_info);
+     type_register_static(&aspeed_pcie_cfg_info);
+     type_register_static(&aspeed_2700_pcie_cfg_info);
 -- 
 2.43.0
 

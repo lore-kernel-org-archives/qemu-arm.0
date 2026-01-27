@@ -4,78 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A8E6D2FEC0
-	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 17:20:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13F83D2FECE
+	for <qemu-arm@archiver.kernel.org>; Tue, 27 Jan 2026 18:19:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vkmjN-0003sX-J7; Tue, 27 Jan 2026 12:20:00 -0500
+	id 1vkne0-0006yh-AO; Tue, 27 Jan 2026 13:18:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vkmiz-0003oM-2f
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 12:19:38 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vkmiw-0006Ub-Cn
- for qemu-arm@nongnu.org; Tue, 27 Jan 2026 12:19:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1769534369;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=j4FcsCOzt9Go6iDGSGzfYJgnVOU/yOn7qx1h1JsfNZw=;
- b=Y5yUwemKCcEu9CI/v1SVCFUUHTGgzX0a/ZGEQuAxvXGhG/bzXX8a+7Q2ixK+EzeK9Dpzkw
- WBCzqlG9cASVyvr6q9z/U+prqueToz0OfjRE9p27gh5VuwnHjD9+bgkwMh6HO07V9vlHyG
- u8oM0saZZwVE61acwrL1HujjA2+L07A=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-639-Q9x-8gf7NLqdeqsiJH7MsQ-1; Tue,
- 27 Jan 2026 12:19:25 -0500
-X-MC-Unique: Q9x-8gf7NLqdeqsiJH7MsQ-1
-X-Mimecast-MFC-AGG-ID: Q9x-8gf7NLqdeqsiJH7MsQ_1769534364
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1F38B19775A3; Tue, 27 Jan 2026 17:19:24 +0000 (UTC)
-Received: from localhost (pixel-6a.str.redhat.com [10.33.192.205])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B473D195419A; Tue, 27 Jan 2026 17:19:22 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- eric.auger@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, gshan@redhat.com, ddutile@redhat.com,
- peterx@redhat.com, philmd@linaro.org, pbonzini@redhat.com
-Subject: Re: [PATCH v6 08/11] hw/arm/virt: Declare AArch32 DBGDTRTX as safe
- to ignore in incoming stream
-In-Reply-To: <20260126165445.3033335-9-eric.auger@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Avril Crosse O'Flaherty"
-References: <20260126165445.3033335-1-eric.auger@redhat.com>
- <20260126165445.3033335-9-eric.auger@redhat.com>
-User-Agent: Notmuch/0.39 (https://notmuchmail.org)
-Date: Tue, 27 Jan 2026 18:19:20 +0100
-Message-ID: <87wm13rn1j.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1vkndy-0006y3-Ok
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:18:26 -0500
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1vkndx-0000st-2O
+ for qemu-arm@nongnu.org; Tue, 27 Jan 2026 13:18:26 -0500
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-6581327d6baso9253529a12.3
+ for <qemu-arm@nongnu.org>; Tue, 27 Jan 2026 10:18:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1769537903; cv=none;
+ d=google.com; s=arc-20240605;
+ b=RUvIK51kstSOnczTTgrHsgVV2uTDk0AkFgIQAfYo1UVTNs6Ju6ZNC8kqYHWDiK8+SH
+ EhujpNUU7KuKk44hui0ycaLsrF89dAJpb109SsUFDvC+TVptarkmdxmPGwSLH1Uw98+i
+ U1wTfnxmaAg0WTS0q8fi2DMouHQyhg655X4N8XJRpjf1p9e4Vg2p2fvpkwsSwjc1z+qA
+ ygndyHvBndCCVZlsBRxAe3gjFNlrg00SjysLRd5O68039R76vW8gp/++yoenAa8UGQeE
+ fBCu4yw1LxkP+IznURyPJGu0XoBekK+XsHnok6Z2R0KiM2TZLpLrFfg7V4eTE4GQpVx9
+ y0Zg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=Y4TAlzdd7rvwsch6CulBm7lpt7hAKOxigoaihNeKqsI=;
+ fh=7ecycb6E/v0YW6Oazw70ToTxH5tmkqndyeWggaMlZ4w=;
+ b=cJtdqh1KxRCv6toPJdWVp9bazk0MGXTHDJceG0CLIrOncy1tDvYcctf6b+zfK5oB1e
+ 8manzedzyrVTDOqbASVfoBjsvr9ohSUuqbFmbfjUnxACk5P3X7zFo4TMH1tZCPuZ/9DQ
+ AMpecX8Z/ysx6lqr4KGMOO5OZaZEN1KE7AJ3wPkAz9CYQfB8qlU0tbOZVO7msuTck9/N
+ Zu255/VlHywZMplEQGcQ8VnEFCwtotMNHtlfjdZc3nGa6lJ5NuMZwpDSQopuySI4iwUI
+ Bi1j8TgkvXK3hw3Q0/Z4JwQvRM1l54mt+7gS0FH6JELicdeL8wyDN8NAGPuJw6m8YUL/
+ bQeQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1769537903; x=1770142703; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Y4TAlzdd7rvwsch6CulBm7lpt7hAKOxigoaihNeKqsI=;
+ b=E+EHQBcyciUHxS37TXV4zz/YGzuwB0NbLhcw1LcDtmSPGgxYFPsHOpbBpXO/iAruK1
+ D2ekKicQJcq69GcIE8SreEvF3EH0QcTbLgcGPYkbu4F7qxPKZdqDAcbL/LejhOQEt92I
+ iRl/FLJGshAa6iZ3TkJLYQprnnWVKGp+eY0Phop/Btj6CxXL4MvITi3MJX8NddMop1hk
+ IRVXcuaz6O8ycb9LQ9AmNvK+y4zxhlO1PIP9tOGXb3hnrw6q5SNj92wopFrGFsvwEwjf
+ Dp6mBThHBgNdFDLzkysjzXg+RFZGTonVFgIPD1ZKuc862h7IHbKoZZQXAJ3Rm+GdHFmd
+ JtEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1769537903; x=1770142703;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=Y4TAlzdd7rvwsch6CulBm7lpt7hAKOxigoaihNeKqsI=;
+ b=USFxFbJ5BFQwYTFyxAvmZUZuU1UjEQEearK/uItV59iaFYCXfilbfleSNbYPUFzQfl
+ X03dh+I0Bakoo7QzFlyZLH5ISpC5kSAzQtcJhCc/+9gpj2FRlcdYskxqDAPJNmg3R5oH
+ wgPDJ+uRaC77hOr2lYYw5FEtBAzljOwlXQ8XJM1XfOa8PwV7ccwEJCOrsE59AgZ2odWf
+ c2I/8Ktqz94r78QM60MC4+iaZ1/rT+JHt9/gWRYXCzBqVr0AmToXs3KPj4iYNK5GcKgT
+ wf571dBd7gtObUM39JO6ObnbitLUW7Wd0cKScGXSi1QTr7XAEajI+y/WUrlhEeoOFDKP
+ BWog==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWqkubzY06ku23oHuvL8j23Qni1hnT75TKzWNspLkg/7iuDhJzOnXjrKT5xUrDLX6qI+CSuuOid3Q==@nongnu.org
+X-Gm-Message-State: AOJu0YziUvCPxA6eOfqW149jzRrehOci0A25lK+yJWOBFUkyQ0QCbxRe
+ 2T7LdFCx9M9J9Hirw5j0eehYxVBJo9lDFyu8E+cXtXXmnoF9AxEqadb0hgl5WuStZ7d39cniL3h
+ KA6AdfqrmeVBrWOS+ujbRqZuA2it2oh8=
+X-Gm-Gg: AZuq6aKUFYD1+hU4gVRTZRASLT1fJiDZqtbefRtwYwnuT00W8dOTHSgfNicNzxwoPD2
+ kFt1OgrF2OKv1RWEnCFIHXR5AU3ymrkrnCbJgLdxuD8tGLDrhEXM1AvGFPY9ypcT5/gwIuEPx81
+ G04bK4TqQlgwI0P5fwcj/qVJvjcebx15i3V9Wdiezd97zL+UvDYOOovQ8vQz8FmDykw3vZQNS5V
+ QF4ElRKhM5xhpBMG7p4a7mOsYHDLUqDtmG3T0mv+UERhv5cQ7XtVDZ3E87kSru4s6lzfvgj
+X-Received: by 2002:a17:906:c116:b0:b88:73ea:a1d5 with SMTP id
+ a640c23a62f3a-b8dab45dfcamr202671166b.51.1769537902937; Tue, 27 Jan 2026
+ 10:18:22 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
+ <CAFEAcA9NEjaUBX19sdw9TRCKcKn8CQfvoVNZ+VaXOcNZ8kf24g@mail.gmail.com>
+In-Reply-To: <CAFEAcA9NEjaUBX19sdw9TRCKcKn8CQfvoVNZ+VaXOcNZ8kf24g@mail.gmail.com>
+From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+Date: Tue, 27 Jan 2026 19:18:10 +0100
+X-Gm-Features: AZwV_QhgsPS3k1UViGYc904zjHHQN9WcH2oc_E4-HDEBnl8NLgfggLHy5DbiCMI
+Message-ID: <CAN-aV1EjYwSRfV87YQdtfqU5CH8Bsssr3EvStPWL2_VFOs4N4w@mail.gmail.com>
+Subject: Re: [PATCH 00/27] hw/arm: Add generic FDT-based machine and
+ infrastructure
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, artem_mygaiev@epam.com, 
+ volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com, 
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>, Ruslan_Ruslichenko@epam.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,64 +120,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Jan 26 2026, Eric Auger <eric.auger@redhat.com> wrote:
-
-> With the new infrastructure in place it is now feasible to teach
-> qemu that it is safe to ignore a sysreg in the incoming migration
-> stream. So with the plan to revert commit 4f2b82f60431 ("target/arm:
-> Reinstate bogus AArch32 DBGDTRTX register for migration compat") from
-> qemu 11.0 onwards, let's add a compat in 10.2 machine options stating
-> that this reg is safe to ignore. from 11.0 onwards we will not need
-> that register anymore.
+On Tue, Jan 27, 2026 at 11:03=E2=80=AFAM Peter Maydell <peter.maydell@linar=
+o.org> wrote:
 >
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> On Mon, 26 Jan 2026 at 17:43, Ruslan Ruslichenko
+> <ruslichenko.r@gmail.com> wrote:
+> >
+> > From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+> >
+> > This patch series introduces new ARM machine model, arm-generic-fdt, an=
+d the underlying infrastructure required to instantiate a QEMU machine from=
+ a Device Tree.
 >
-> ---
+> I'm afraid this has been a feature that has been suggested from
+> time to time, but which I don't think is workable in general.
 >
-> v4 -> v5:
-> - rebased on top of latest machine types (Connie)
+> Device tree files are designed to provide enough information to
+> the guest kernel to allow it to find non-probeable hardware. They
+> are not designed to provide enough information to QEMU to allow
+> it to create and wire up all the hardware present on the system.
 >
-> v3 -> v4:
-> - add a comment related to DBGDTRTX (Connie)
-> ---
->  hw/arm/virt.c | 10 ++++++++++
->  1 file changed, 10 insertions(+)
+> There are specific niches where it can be made to work -- I think
+> Xilinx have or had a setup where they were generating an FPGA
+> model and a device tree and a guest kernel all from the same
+> single data source, so they could put everything necessary into
+> the dtb, for example -- but I don't think it works in the
+> general case. As one simple example, the DTB doesn't generally
+> have any information about how the Secure world works in an Arm
+> system, because Linux doesn't care about the Secure world. It
+> also doesn't usually have information that the guest OS can
+> probe for itself at runtime.
 >
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index baa4e31aac1..03d5af18f26 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -100,6 +100,15 @@ static GlobalProperty arm_virt_compat_defaults[] = {
->  static const size_t arm_virt_compat_defaults_len =
->      G_N_ELEMENTS(arm_virt_compat_defaults);
->  
-> +/* Register erronously exposed on 10.2 and earlier */
-> +#define DBGDTRTX 0x40200000200e0298
-> +
-> +static GlobalProperty arm_virt_compat_10_2[] = {
-> +    { TYPE_ARM_CPU, "x-mig-safe-missing-regs", stringify(DBGDTRTX)},
-> +};
-> +static const size_t arm_virt_compat_10_2_len =
-> +    G_N_ELEMENTS(arm_virt_compat_10_2);
-> +
+> There has been periodic discussion of more flexible user-driven
+> board creation, but that has generally been with the idea of using
+> the QMP monitor to orchestrate creation and connection of device
+> models.
+>
+I agree that a guest Device Tree is insufficient for describing a
+complete QEMU machine model.
+However, we separate the guest configuration from the machine
+definition. The -hw-dtb option allows the user to provide a
+QEMU-specific system description.
+Those hw-dtb would not be passed to Linux Guest VM.
 
-Not objecting, but we had a discussion recently regarding where compat
-values for arm cpus should live:
-https://lore.kernel.org/qemu-devel/20260120122108.131708-1-thuth@redhat.com/ ff.
+The fact that this workflow has been successfully used in production
+by AMD/Xilinx demonstrates that FDT is a feasible format.
 
-Could this become relevant for future other versioned machine types? I'd
-assume that they just would skip the bogus reg from the start, though.
+In contrast, QMP usage may end up even more complex and less
+maintainable for the task of full system modeling.
+To my understanding, this would need to generate too long configs,
+which may eventually require some intermediate format by itself.
 
->  /*
->   * This cannot be called from the virt_machine_class_init() because
->   * TYPE_VIRT_MACHINE is abstract and mc->compat_props g_ptr_array_new()
-> @@ -3552,6 +3561,7 @@ static void virt_machine_10_2_options(MachineClass *mc)
->  {
->      virt_machine_11_0_options(mc);
->      compat_props_add(mc->compat_props, hw_compat_10_2, hw_compat_10_2_len);
-> +    compat_props_add(mc->compat_props, arm_virt_compat_10_2, arm_virt_compat_10_2_len);
->  }
->  DEFINE_VIRT_MACHINE(10, 2)
->  
+I am proposing to use FDT as a serialization format to describe a
+machine configuration. Theoretically we can use other formats, like
+XML, but in my opinion FDT perfectly matches the requirements.
 
+BR,
+Ruslan Ruslichenko
+
+
+> thanks
+> -- PMM
 

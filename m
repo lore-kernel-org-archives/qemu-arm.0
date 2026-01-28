@@ -4,86 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B60DD46C08
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Jan 2026 22:25:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61177D46C15
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Jan 2026 22:44:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vlDy4-0004nG-3i; Wed, 28 Jan 2026 17:24:56 -0500
+	id 1vlEGn-00018y-6t; Wed, 28 Jan 2026 17:44:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vlDy2-0004mC-FA
- for qemu-arm@nongnu.org; Wed, 28 Jan 2026 17:24:54 -0500
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+ id 1vlEGj-00017K-N6
+ for qemu-arm@nongnu.org; Wed, 28 Jan 2026 17:44:13 -0500
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vlDy0-0001NK-SD
- for qemu-arm@nongnu.org; Wed, 28 Jan 2026 17:24:54 -0500
-Received: by mail-pf1-x432.google.com with SMTP id
- d2e1a72fcca58-81c72659e6bso289069b3a.0
- for <qemu-arm@nongnu.org>; Wed, 28 Jan 2026 14:24:52 -0800 (PST)
+ id 1vlEGh-0006Eu-Kh
+ for qemu-arm@nongnu.org; Wed, 28 Jan 2026 17:44:13 -0500
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-82318b640beso193927b3a.0
+ for <qemu-arm@nongnu.org>; Wed, 28 Jan 2026 14:44:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769639091; x=1770243891; darn=nongnu.org;
+ d=linaro.org; s=google; t=1769640249; x=1770245049; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=yS1nB5F9IrLRljJ2V/Vs5IpjpQX6AMHAKgWofzpFU0s=;
- b=idREaSgVWQBB9qUOQE3k3r2SOfTtuLGqNLBjwfduss9F/1vsWhKnlRI9qIR7sJwi0c
- 9lbV7bJZjFXvj6zq/s/K7GGqzhselXc06mk0mBm8ToTrWVUnkkXMYKYpP5/08205qLnQ
- KUOkFS/aQ8OkHKEjxPtLcD5l20KzixhuggIiC51s+6yFKNRwT883OFW6Ynvi6SrhnIK0
- bQZ5LSjacf/H+lgzNFBlJxCSQ74tHj8849EjyGFT4kLXWA/NccMWpNrqQKGnsVAV09YG
- WD20HCz7FMgeFM9sy5V5BDvFyTLCMIEVV6x0uXnHzG0sa2i0OjRQ6kpUxVoCxsC8yahn
- JXMQ==
+ bh=AB/L4h1xtV5dKvWWKpZ41E8Nq5MMtDjyPYA9PnFQ/Xw=;
+ b=LxYhMGhqr4yKwNnvgnqtaOwQrlXzZmIkCjfilV9yy2DXddGZtuCKbuIIS2M6LmMR0e
+ cWkfKOqJr7qKt5PRYB9A+Qwu0emrcU2N1gW4AQDLIyc9HIbLAVPL0dnL2PbgwDrbWem4
+ ECSoUjuQFtAvLI7eMYXI3ycU3Nb0qooQFDaM4c/9+xAapIZEX882Jz/IuHffD10MmAvM
+ M9o4MoW05Mp2S+wWZhjznClKOiQZn6eelMENKHNOTjy/pYp081LprO/HfNBupSGu4SZf
+ QohP0uD2c4uKRg9vjLlKCZKQDOO2PgcOdngvIBQRHA4Evc4ME0sI9Dk35JO+RjJba+Ph
+ PspQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769639091; x=1770243891;
+ d=1e100.net; s=20230601; t=1769640249; x=1770245049;
  h=content-transfer-encoding:in-reply-to:content-language:from
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=yS1nB5F9IrLRljJ2V/Vs5IpjpQX6AMHAKgWofzpFU0s=;
- b=uCyUSnR7iwqA25l+zBN9ijFneCaWdqs/+DjCC8SYJKivQrfyWHdP/UuJzvXuANFfmH
- 9pdxVDwWfdLQqZjtBVoDDQ8G7o6uWK9PV8rZZ4OPbZtZMyLvK/W7DveScUQBvMM0MEH/
- aFJ9UfLYt+IqGqmv5dH5LaFs2VcpaOMXVqbwY094/tMPOp8Jg26YYaDu019x/ZcPzkVO
- O6Sor3n5HLZF6mQoiWK/XnfWuDA/NQKsDL145z/LuNFtH3fUY15AQGAUitrKMDRWwKHX
- Xs1CcevnLwAolDqiu81hOGsWRHzRiCogd0k/OI7a+IIrpoCcZNUG4t4twhuwpZfxjqk/
- 1AVA==
+ bh=AB/L4h1xtV5dKvWWKpZ41E8Nq5MMtDjyPYA9PnFQ/Xw=;
+ b=mI9olHgAtXBx5JPZWg72+JcO9flE1HY2XIbYVqA2WDEkDuWBSZqRtB5i9ITKVNzhKl
+ klZiYcLGe54u75swUnYBReYxGP1+CdlOET+KIn1gMO8IrC+2b047EELMqOBlLh5O0Axw
+ UsLabYPmzI6UdDVihtD1Vsh7CDtcrLDE9JC0timCqDRsPF8w7fyveTA4udyevNate9Pu
+ 5rW642tGAPcleBRtGGe43h59TTTPdRqsLfwx6o+TNNvQ0Y+imu6/nYfDjLEQxCTvdyfz
+ SHWrB2POBrariL225bgkt1OSvK1yMqJVfWbsLsAeVzHil6wS4R/u1UFZk9Rlpi5IU8BR
+ DyYg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWKOw/F6bThjUI1IYkLgT9FZqejZg+xKPE8aOUoSwcJv2llS4hyS/OfXO1zVcExX1NOFGrxzdTLwg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx8FRH19tepuSnQe5fmK1jJ3mpujnKL6EirA5aJOEepa7pIeMJR
- tvI8OMisWrgxiVPqKJYAveTCfQn/S3nEc+dCa3EZOyHGCrQCLDVy3vl4v+yFNSTJVaM=
-X-Gm-Gg: AZuq6aLCtU8Ew0s1BEJ4cWFWbctyN858L9fObqAurgMkZfrCoXax81gsOcho7FAcrhH
- NIZJS7Mgf/vMXc/p5xT/Z/DFPc5UDtBX0TCOh4c8whepm1MusfuyiyYQX+yNtO/Fvtgp6qCz5D9
- QzxilBpc1DDc2lBRgGMtNc0vcKeP3aSv1Ve2IkFnVr5ibqIymzSdzZ4hH+fPP3x4+eATtaKeb+n
- E8adQ+ZzRTuHkSVBPzTKJ4GWpPESAE9xh9tJpeYX+LjuMCgpBIqdMTyOM+WOTwqZWXK3JzltARZ
- E+jjzRYWkBnK+skMqCp/i3+L6kayLjVQowRgjM4bybP8hDixLvWPP5HH9+sAAjhfM/RErihWCdU
- /MmnG7RNfRoZT+n/42WSDx3GvKxHv4ePaqULNy5GzmM4Ir29Iu4qyTNCxkMbnBIlshQ6Vudhwnc
- qKFNItMi/x3wsdSCFSejiz39o4ZNg+2A==
-X-Received: by 2002:a05:6a00:240a:b0:823:142b:5ea2 with SMTP id
- d2e1a72fcca58-823691923fdmr5936540b3a.19.1769639091184; 
- Wed, 28 Jan 2026 14:24:51 -0800 (PST)
+ AJvYcCU34QsK3UfIh4L/XqRtmZBtYXIxpFPWPU+e7vcPWI4s9nXqJ3Crp7XnXJIhRrQr0L193CZozqKghg==@nongnu.org
+X-Gm-Message-State: AOJu0Yz7ANmaRFsWX7MLoKAhv6p42n8yP7fIVV1nJZxcMneASkKtgFHr
+ MrSTePEdeGxQhS2MlaNHIv34qKVztaj2WFh1VMnEfCjbUHX/Ixd93FNvOETX2Jkx0+sXAGJdSey
+ T0j3tSzs=
+X-Gm-Gg: AZuq6aL7+jTg0jb8Fr0Wy81h723de7Jvl2tWxzoYHvzkJvSyM+7Ij0GxXKt1wGWESvj
+ /jZDcsLc21ik6hRJX9dNycdk9TdYqvh4d3dSM7/HhRX44mKW8oXtXSY9YnvFKmCdrHUFuneO1In
+ 73iq77eoMJjcsg+uhx/lBcJDz4O0mIMFMzw99kW7A9d33iM2pASYX864lzanRz/2yd34laY18+5
+ CqlKz+DDJ5cw9oyi12UjocEoXPz9RRDyXm4zw9H6/utSr2JRTEHyWLYmpfl3fvXcA2J5YmdaQha
+ nB8z8BV5qH0ocH2bUN8zquRNmIg9e+fblKGE+uVxkMsxpsDVJbHymOLIBYlE+jwzkYy8x4KEqo6
+ ClxlCVe5oLU2DFZLpLccfVf9iFrXLY+qwShtcHdlmyIX2Zlt0GSkgihQbZFAXi4Kt61tLJ9jIUg
+ GK6KnNrHbjIZIUrx6q/boCvN+rgaizJA==
+X-Received: by 2002:a05:6a00:179f:b0:81c:8d47:33ff with SMTP id
+ d2e1a72fcca58-823692af9e8mr6765772b3a.47.1769640249030; 
+ Wed, 28 Jan 2026 14:44:09 -0800 (PST)
 Received: from [192.168.10.140] ([180.233.125.201])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-82379bfd7a2sm3516547b3a.39.2026.01.28.14.24.49
+ d2e1a72fcca58-82379b4e7b7sm3461124b3a.21.2026.01.28.14.44.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Jan 2026 14:24:50 -0800 (PST)
-Message-ID: <d3f15b25-3a59-41df-b3c0-3c62073def11@linaro.org>
-Date: Thu, 29 Jan 2026 09:24:45 +1100
+ Wed, 28 Jan 2026 14:44:08 -0800 (PST)
+Message-ID: <912aab4f-869a-4ca5-b0ab-65966499bbe9@linaro.org>
+Date: Thu, 29 Jan 2026 09:44:03 +1100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 2/3] target/arm: Handle SME-without-SVE on change of EL
+Subject: Re: [RFC PATCH 3/3] target/arm: Permit configurations with SME but
+ not SVE
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 References: <20260127154813.591744-1-peter.maydell@linaro.org>
- <20260127154813.591744-3-peter.maydell@linaro.org>
+ <20260127154813.591744-4-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260127154813.591744-3-peter.maydell@linaro.org>
+In-Reply-To: <20260127154813.591744-4-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
@@ -107,34 +109,65 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 1/28/26 02:48, Peter Maydell wrote:
-> aarch64_sve_change_el() currently assumes that SME implies
-> SVE, and will return without doing anything if SVE is not
-> implemented, skipping a possible requirement to change
-> the vector register state because the SME vector length
-> has changed. Update it to handle SME also.
+> In commit f7767ca30179 ("target/arm: Disable SME if SVE is disabled")
+> we added code that forces SME to be disabled if SVE is disabled.
+> This was something we did in the run-up to a release to avoid an
+> assertion failure in smcr_write() if the user disabled SVE on the
+> 'max' CPU without disabling SME also.
+> 
+> Now that we have corrected the code so that it doesn't assert
+> in an SME-without-SVE setup, we can let users select it.
+> 
+> This effectively reverts f7767ca30179.
+> 
+> Note that this now means that command lines like
+> "-cpu max,sve=off" which used to turn off SME and SVE will
+> now give you a CPU with SME but not SVE. This is permitted
+> by our loose "max can always give you extra stuff" rules,
+> but may be unexpected to users.
+> 
+> In particular, gdb crashes when told about a CPU with only
+> SME via the gdbstub register XML with this error:
+> 
+>   (gdb) target remote :1234
+>   Remote debugging using :1234
+>   /build/gdb-1WjiBe/gdb-15.0.50.20240403/gdb/aarch64-tdep.c:3066: internal-error: aarch64_pseudo_register_type: bad register number 160
+>   A problem internal to GDB has been detected,
+>   further debugging may prove unreliable.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   target/arm/helper.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>   target/arm/cpu.c | 10 ----------
+>   1 file changed, 10 deletions(-)
 > 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index a3dd84a2d6..bf3aca18b1 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -10128,8 +10128,8 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
->       int old_len, new_len;
->       bool old_a64, new_a64, sm;
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 6e1cbf3d61..1cb30076ad 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1571,16 +1571,6 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
+>               return;
+>           }
 >   
-> -    /* Nothing to do if no SVE.  */
-> -    if (!cpu_isar_feature(aa64_sve, cpu)) {
-> +    /* Nothing to do if no SVE or SME.  */
-> +    if (!cpu_isar_feature(aa64_sve, cpu) && !cpu_isar_feature(aa64_sme, cpu)) {
->           return;
->       }
->   
+> -        /*
+> -         * FEAT_SME is not architecturally dependent on FEAT_SVE (unless
+> -         * FEAT_SME_FA64 is present). However our implementation currently
+> -         * assumes it, so if the user asked for sve=off then turn off SME also.
+> -         * (KVM doesn't currently support SME at all.)
+> -         */
+> -        if (cpu_isar_feature(aa64_sme, cpu) && !cpu_isar_feature(aa64_sve, cpu)) {
+> -            object_property_set_bool(OBJECT(cpu), "sme", false, &error_abort);
+> -        }
+> -
+>           arm_cpu_sme_finalize(cpu, &local_err);
+>           if (local_err != NULL) {
+>               error_propagate(errp, local_err);
 
+We do need to squash FA64 if sve=off, probably in arm_cpu_sme_finalize, perhaps as a 
+previous patch.
+
+Anyway, as far as this goes,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
 
 r~
 

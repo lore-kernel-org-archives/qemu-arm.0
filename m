@@ -4,90 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90BDBD3F083
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Jan 2026 17:24:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF564D46BE5
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Jan 2026 17:48:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vl9HS-0003pu-Cu; Wed, 28 Jan 2026 12:24:38 -0500
+	id 1vl9ed-0001C8-M7; Wed, 28 Jan 2026 12:48:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vl9HL-0003ho-2X
- for qemu-arm@nongnu.org; Wed, 28 Jan 2026 12:24:35 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ id 1vl9eY-00019m-MV
+ for qemu-arm@nongnu.org; Wed, 28 Jan 2026 12:48:31 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vl9HJ-0003Cz-B5
- for qemu-arm@nongnu.org; Wed, 28 Jan 2026 12:24:30 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-47ee2715254so425065e9.3
- for <qemu-arm@nongnu.org>; Wed, 28 Jan 2026 09:24:28 -0800 (PST)
+ id 1vl9eX-0001iQ-19
+ for qemu-arm@nongnu.org; Wed, 28 Jan 2026 12:48:30 -0500
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-4359a302794so106933f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 28 Jan 2026 09:48:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769621067; x=1770225867; darn=nongnu.org;
+ d=linaro.org; s=google; t=1769622507; x=1770227307; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=slQ3hYd8ClQ18h9hf0kfWYDGQN5aXxFsgImjHRZGuWA=;
- b=N4YrG+X86m69mwnX48w4K6S0zW6V4q8k+2fg4vMuUmlwYh2l3SYb9prC2cMleCh9lN
- hpN95l0rBVx1Q3xPD+c3aV0RreCMbKJn7Ky5ystFnhfuWD0KQfyPVTbHUnRtxD8CiRcp
- RGmM1M7u7bwr0gWuU4rlkRqAKc7FZgRa0fvz44W8nUJa8mn5ZsfwA3weqWLNcITPkTxj
- 8ZQBqMRF2M3pKXpxWejY9jI+E0oOSRvJtocowwtHtgcvue8QefqyfOy9bWTY9PIHF6SZ
- bk9yNaifhzpTPBUIar25zSfr5OqEmjO6TJqT6vy7L4g3sV00rpmAyGnfR97TtG+vtAum
- d2HA==
+ bh=bj5ufOGr/9lEHh2xwuGdrDse0fcL/BvnanZmIrsO+rg=;
+ b=Dy0km1IDq0O81ntQ3cLsE3wN648ht+iySK6Qj6sH6sXASYIlP277SxKAlbNfW0bDC2
+ TU7e1PcTgyVPS4Br2DOUkJVA67SOd0tZ73IEs//IuwEhGGnvaSRZw04pA6XrusxFqYJK
+ i4JuiJmkUr9LWV3pJYK3vJT+LDtANqKQq1tunPwDc90Jsd/mLGbtc2pD42wzKMAWhXuj
+ FUSA+rxx4s6bhR/6lkCQYrfNvC8PFwTUnyqFbVDt5R4Rvxt+3/FZOXhH3DLapmW2Uzuh
+ Epan2PweyZPgynCfv9/KkwkwYC6qzNwQOxBj/2xFyaurv4yAPZJqlubGP4tKh5XWXYcX
+ dkbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769621067; x=1770225867;
+ d=1e100.net; s=20230601; t=1769622507; x=1770227307;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=slQ3hYd8ClQ18h9hf0kfWYDGQN5aXxFsgImjHRZGuWA=;
- b=snvRna/6COAXh9SDooy3+COM44Us1Gjy1U7GgcW6oxphyUjseJ0qldZPFEAotrkGvV
- VAfapLF2CmY6SYX6ESd45Zb/V398TcXBjmKfsJQrqhhEvN5s/++0Tz0QDlxIl/QQXGGS
- eWXF3CFXO4w8qgjQ/S/Pk4KDQYT3Uw8SneIcyym1m/ixTT8KYVNMkS6eaXkloDXUz5Ae
- ppG7H/+B/hHsj4ZSImcxh2muF2oLpCob8s3YqcWWUzT6AuWevdVmlhr9ACTpD03ZFAeH
- +mMk8OyvEnNeFFzBHnEwV+zXOoQ6gBTGPwzaiSbfg+XJHsv+ye2EPCJBxHgSWMze2RAD
- +p1Q==
+ bh=bj5ufOGr/9lEHh2xwuGdrDse0fcL/BvnanZmIrsO+rg=;
+ b=JEWlWtAUPlrmIW/eWbVtZ2TT5FxHFwo8EMNv6Ol7hamlAyfXOE2HC33HUqkpWvOIcO
+ AKVShXm8g0x9b6hCVfqogeBP+it2tngjo08SpYJesGHR+NsUNQDYetr9Gtxe4Qryebs1
+ a7EwgqauUUbkOE8UXmqNpvcBjcqq+rCuVhwLHke5+CGWJDhaQXdyznzMVbvgxVd+X21y
+ 1UDNe3JY/p5K8HCXkm+Gtm6pKDr4UVvCxK0kUwhnYCUv2XHvh1kThAUZ+uPqSfPOw1dv
+ wrTa56l8aJ9cEIfv27Z/cKQiygzR+ng/BIkGbA3udUxtjD9y2Tnl5hyIrzHeQ9XyRthA
+ PCfQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUY3J5jzJ1+qESV1iz/hqmTt+2/18I7Lhz+3gskcExwKvnRTi6dG1nxTLtbvewG2TNgp66/2t0k4Q==@nongnu.org
-X-Gm-Message-State: AOJu0YyXkw1W6kg8ul3qiCV9/2qt6iS0xZXbQJ4s/r9Z6Qfi3vI7zoTx
- tIYkoyw65a5EyijGmd//YrsmKM3C1tyhV4m6u0d2SuOEM9xrccSBBoOU+JfhjLa+hQc=
-X-Gm-Gg: AZuq6aKI3ZpyeNnILseOrl3kacpsnDmoP6pEQYiuoKlaUCO74bvcZPnKKf2QJPbyF5o
- ImOxoAZbeNW+Vk3jJ6rtdiVKdI6O8qURauodo1SFmdb9lJ8NLsm5uabzcEyhqqo5OEzvgQQ7faD
- BpzilYZQCK4VIv3wLmHJ/uiDmtf5evuk7XBgkZF8VgESerPMqyxF3XWc1iHwVE7dS/OMD+p6XFI
- EThE21HbSSuMZ1+s6YlwK8MuI+nvDwU4uDi3CsMposCN/DoALNosSg758u2Qnvw5HyuCPbwI9mg
- IA+lyjxmFxRLVJL/pGOxWhKcCcS/j6aqShngN0iSN3ridpAR7LeenZ3Z1TBP7DfMNt0ywC2OzHO
- LBRJyigOVSybqtN5BRtkDI52Gnbxihvy+NCJoKbYkkYZSMizr8jwzKMWPIw70ukN+qv4OXCd+VA
- 57OQp6bPcCskE+BUuyaZ4WLQ==
-X-Received: by 2002:a05:600c:a102:b0:480:6fbc:695f with SMTP id
- 5b1f17b1804b1-4806fbc6c9cmr25264535e9.32.1769621067257; 
- Wed, 28 Jan 2026 09:24:27 -0800 (PST)
+ AJvYcCUpta+/Tf0/o92lWyjWzWFMeLDi9IAJH/3tdFO/VUMngc+aDl9WJNlKq2Pip4pGR6CeETnOKIy16A==@nongnu.org
+X-Gm-Message-State: AOJu0YxEdLLaiMLvjPyXiLZdVkHPltJoD9HRHr/xuBuhAbk8FxaRlrXm
+ Cy5gWSj0Hw2HoV51kzdPyoBo5rIVmTFRM8Xk/owS3EAiAjqV/uQVcYfUInLeTvp6+uLMPhbNVAz
+ e6IvUmB4=
+X-Gm-Gg: AZuq6aLoH3TvS0JuhC4DHieJ417VpvKzu0/d6UwHoaJYp4yscRFzefmtFUO3tXu/kpj
+ Uhmp0gnX1LXoU3PlPc7RJoSfG+YsBcghUIh/GfaKtVeLtwoVrBeKPaSWKVgQrghfpJQuOQhJ2ym
+ 6MjLNLe4T4kBviWyvpk4psmHgfOyElIVG+mraG+zCGh33g4OB9JY4H7DxYhrWc3uTV6u/r19liP
+ qfEGyGF6p7RGIlFCNbmRdrSFoH+Gl1/8Y2hgWtPcjmit5IwHBDXNFDy9yGRbAj6a7kvIc6V8pni
+ 6Z+0Gk6J2a6rByhgNlI+wv2I310xj9d039goqSPvfptDdYu3480oNtK9rzR3rrv3mcLh5h5za+4
+ VI5YM/JegtYTbGkKKJoV7uho0HYsYMwKKz7iYaUg/9g8dUeuejsShirnErNkeQUzgGGsBYIO3NK
+ dgRskm1U3qWcJtNl9ipdGJww==
+X-Received: by 2002:a05:6000:2081:b0:432:dfa8:e1b6 with SMTP id
+ ffacd0b85a97d-435dd0b6a75mr9548688f8f.39.1769622506629; 
+ Wed, 28 Jan 2026 09:48:26 -0800 (PST)
 Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4806d255fc9sm113015e9.0.2026.01.28.09.24.26
+ ffacd0b85a97d-435e131cfd4sm8218361f8f.25.2026.01.28.09.48.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Jan 2026 09:24:26 -0800 (PST)
+ Wed, 28 Jan 2026 09:48:25 -0800 (PST)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id BCED65F895;
- Wed, 28 Jan 2026 17:24:25 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id E3D155F895;
+ Wed, 28 Jan 2026 17:48:24 +0000 (GMT)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org,  Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
- qemu-arm@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,  Thomas
- Huth <thuth@redhat.com>,  Radoslaw Biernacki <rad@semihalf.com>
-Subject: Re: [PATCH 2/2] tests/functional: migrate sbsa_ref test images
-In-Reply-To: <CAFEAcA_sT6pGhXPpgaEqkJOVuAj3e1KMz_AP6-MZ6YP41YvoRQ@mail.gmail.com>
- (Peter Maydell's message of "Wed, 28 Jan 2026 16:25:00 +0000")
-References: <20260128105839.3487840-1-alex.bennee@linaro.org>
- <20260128105839.3487840-3-alex.bennee@linaro.org>
- <CAFEAcA_sT6pGhXPpgaEqkJOVuAj3e1KMz_AP6-MZ6YP41YvoRQ@mail.gmail.com>
+To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,  qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org,  artem_mygaiev@epam.com,
+ volodymyr_babchuk@epam.com,  takahiro.nakata.wr@renesas.com,  "Edgar E .
+ Iglesias" <edgar.iglesias@gmail.com>,  Ruslan_Ruslichenko@epam.com
+Subject: Re: [PATCH 00/27] hw/arm: Add generic FDT-based machine and
+ infrastructure
+In-Reply-To: <CAN-aV1EjYwSRfV87YQdtfqU5CH8Bsssr3EvStPWL2_VFOs4N4w@mail.gmail.com>
+ (Ruslan Ruslichenko's message of "Tue, 27 Jan 2026 19:18:10 +0100")
+References: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
+ <CAFEAcA9NEjaUBX19sdw9TRCKcKn8CQfvoVNZ+VaXOcNZ8kf24g@mail.gmail.com>
+ <CAN-aV1EjYwSRfV87YQdtfqU5CH8Bsssr3EvStPWL2_VFOs4N4w@mail.gmail.com>
 User-Agent: mu4e 1.14.0-pre1; emacs 30.1
-Date: Wed, 28 Jan 2026 17:24:25 +0000
-Message-ID: <87v7glabw6.fsf@draig.linaro.org>
+Date: Wed, 28 Jan 2026 17:48:24 +0000
+Message-ID: <87ecn9aas7.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,62 +112,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Ruslan Ruslichenko <ruslichenko.r@gmail.com> writes:
 
-> On Wed, 28 Jan 2026 at 10:58, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
-rote:
+> On Tue, Jan 27, 2026 at 11:03=E2=80=AFAM Peter Maydell <peter.maydell@lin=
+aro.org> wrote:
 >>
->> As the builds in codelinaro.org are going away migrate the binaries to
->> share.linaro.org. As the hotlinks don't encode the filename we need to
->> explicitly tell uncompress how to handle the files.
+>> On Mon, 26 Jan 2026 at 17:43, Ruslan Ruslichenko
+>> <ruslichenko.r@gmail.com> wrote:
+>> >
+>> > From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+>> >
+>> > This patch series introduces new ARM machine model, arm-generic-fdt, a=
+nd the underlying infrastructure required to instantiate a QEMU machine fro=
+m a Device Tree.
 >>
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> I'm afraid this has been a feature that has been suggested from
+>> time to time, but which I don't think is workable in general.
+>>
+>> Device tree files are designed to provide enough information to
+>> the guest kernel to allow it to find non-probeable hardware. They
+>> are not designed to provide enough information to QEMU to allow
+>> it to create and wire up all the hardware present on the system.
+>>
+>> There are specific niches where it can be made to work -- I think
+>> Xilinx have or had a setup where they were generating an FPGA
+>> model and a device tree and a guest kernel all from the same
+>> single data source, so they could put everything necessary into
+>> the dtb, for example -- but I don't think it works in the
+>> general case. As one simple example, the DTB doesn't generally
+>> have any information about how the Secure world works in an Arm
+>> system, because Linux doesn't care about the Secure world. It
+>> also doesn't usually have information that the guest OS can
+>> probe for itself at runtime.
+>>
+>> There has been periodic discussion of more flexible user-driven
+>> board creation, but that has generally been with the idea of using
+>> the QMP monitor to orchestrate creation and connection of device
+>> models.
+>>
+> I agree that a guest Device Tree is insufficient for describing a
+> complete QEMU machine model.
+> However, we separate the guest configuration from the machine
+> definition. The -hw-dtb option allows the user to provide a
+> QEMU-specific system description.
+> Those hw-dtb would not be passed to Linux Guest VM.
 >
->> @@ -54,15 +54,11 @@ class Aarch64SbsarefMachine(QemuSystemTest):
->>
->>      timeout =3D 180
->>
->> -    ASSET_FLASH0 =3D Asset(
->> -        ('https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-=
-ref/'
->> -         '20241122-189881/edk2/SBSA_FLASH0.fd.xz'),
->> -        '76eb89d42eebe324e4395329f47447cda9ac920aabcf99aca85424609c3384=
-a5')
->> +    ASSET_FLASH0 =3D Asset('https://share.linaro.org/downloadFile?id=3D=
-kyoMLGC9zXa4oA7',
->> +                         '76eb89d42eebe324e4395329f47447cda9ac920aabcf9=
-9aca85424609c3384a5')
->>
->> -    ASSET_FLASH1 =3D Asset(
->> -        ('https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-=
-ref/'
->> -         '20241122-189881/edk2/SBSA_FLASH1.fd.xz'),
->> -        'f850f243bd8dbd49c51e061e0f79f1697546938f454aeb59ab7d93e5f0d412=
-fc')
->> +    ASSET_FLASH1 =3D Asset('https://share.linaro.org/downloadFile?id=3D=
-Dj1HRXnDnKtU6Nj',
->> +                         'f850f243bd8dbd49c51e061e0f79f1697546938f454ae=
-b59ab7d93e5f0d412fc')
+> The fact that this workflow has been successfully used in production
+> by AMD/Xilinx demonstrates that FDT is a feasible format.
+
+Where are the extensions to the FDT used for hw-dtb documented? How does
+it deal with PCI devices and the Secure world?
+
+> In contrast, QMP usage may end up even more complex and less
+> maintainable for the task of full system modeling.
+> To my understanding, this would need to generate too long configs,
+> which may eventually require some intermediate format by itself.
 >
-> Is there really no way to have a human readable filename here? I know what
-> edk2/SBSA_FLASH1.fd.xz is; I have no idea what
-> f850f243bd8dbd49c51e061e0f79f1697546938f454aeb59ab7d93e5f0d412fc is
-> going to be.
+> I am proposing to use FDT as a serialization format to describe a
+> machine configuration. Theoretically we can use other formats, like
+> XML, but in my opinion FDT perfectly matches the requirements.
 
-It doesn't seem so - the underlying server is:
+The QMP interface is self-documenting and introspectable and used for
+the management of QEMU including things like hotplug. It is also QOM
+aware so a natural fit for dealing with the underlying QOM machinery.
 
-  https://github.com/Forceu/Gokapi
+Previous discussions have entertained the idea of making the parsing of
+hw-dtb an external script which would then translate into QMP commands
+to build up the machine.
 
 >
-> If we can't have useful filenames, can we have comments saying what
-> the filenames
-> would be if we could have them?
-
-Yes I can add that.
-
+> BR,
+> Ruslan Ruslichenko
 >
-> thanks
-> -- PMM
+>
+>> thanks
+>> -- PMM
 
 --=20
 Alex Benn=C3=A9e

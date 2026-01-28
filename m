@@ -4,59 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12B75D46C06
-	for <qemu-arm@archiver.kernel.org>; Wed, 28 Jan 2026 21:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B60DD46C08
+	for <qemu-arm@archiver.kernel.org>; Wed, 28 Jan 2026 22:25:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vlDIE-0007KJ-7f; Wed, 28 Jan 2026 16:41:42 -0500
+	id 1vlDy4-0004nG-3i; Wed, 28 Jan 2026 17:24:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1vlDID-0007Js-LZ; Wed, 28 Jan 2026 16:41:41 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1vlDIA-0002j3-TG; Wed, 28 Jan 2026 16:41:41 -0500
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id E4073596A38;
- Wed, 28 Jan 2026 22:41:32 +0100 (CET)
-X-Virus-Scanned: amavis at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
- id a9rIj2aupGtP; Wed, 28 Jan 2026 22:41:30 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id BB7B9596A29; Wed, 28 Jan 2026 22:41:30 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id B976C596A13;
- Wed, 28 Jan 2026 22:41:30 +0100 (CET)
-Date: Wed, 28 Jan 2026 22:41:30 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>
-cc: Ruslan Ruslichenko <ruslichenko.r@gmail.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com, 
- takahiro.nakata.wr@renesas.com, 
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>, 
- Ruslan_Ruslichenko@epam.com
-Subject: Re: [PATCH 00/27] hw/arm: Add generic FDT-based machine and
- infrastructure
-In-Reply-To: <87ecn9aas7.fsf@draig.linaro.org>
-Message-ID: <c2224358-ed7e-1bb9-5eaa-7ae1bafdb37a@eik.bme.hu>
-References: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
- <CAFEAcA9NEjaUBX19sdw9TRCKcKn8CQfvoVNZ+VaXOcNZ8kf24g@mail.gmail.com>
- <CAN-aV1EjYwSRfV87YQdtfqU5CH8Bsssr3EvStPWL2_VFOs4N4w@mail.gmail.com>
- <87ecn9aas7.fsf@draig.linaro.org>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1vlDy2-0004mC-FA
+ for qemu-arm@nongnu.org; Wed, 28 Jan 2026 17:24:54 -0500
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1vlDy0-0001NK-SD
+ for qemu-arm@nongnu.org; Wed, 28 Jan 2026 17:24:54 -0500
+Received: by mail-pf1-x432.google.com with SMTP id
+ d2e1a72fcca58-81c72659e6bso289069b3a.0
+ for <qemu-arm@nongnu.org>; Wed, 28 Jan 2026 14:24:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1769639091; x=1770243891; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=yS1nB5F9IrLRljJ2V/Vs5IpjpQX6AMHAKgWofzpFU0s=;
+ b=idREaSgVWQBB9qUOQE3k3r2SOfTtuLGqNLBjwfduss9F/1vsWhKnlRI9qIR7sJwi0c
+ 9lbV7bJZjFXvj6zq/s/K7GGqzhselXc06mk0mBm8ToTrWVUnkkXMYKYpP5/08205qLnQ
+ KUOkFS/aQ8OkHKEjxPtLcD5l20KzixhuggIiC51s+6yFKNRwT883OFW6Ynvi6SrhnIK0
+ bQZ5LSjacf/H+lgzNFBlJxCSQ74tHj8849EjyGFT4kLXWA/NccMWpNrqQKGnsVAV09YG
+ WD20HCz7FMgeFM9sy5V5BDvFyTLCMIEVV6x0uXnHzG0sa2i0OjRQ6kpUxVoCxsC8yahn
+ JXMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1769639091; x=1770243891;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=yS1nB5F9IrLRljJ2V/Vs5IpjpQX6AMHAKgWofzpFU0s=;
+ b=uCyUSnR7iwqA25l+zBN9ijFneCaWdqs/+DjCC8SYJKivQrfyWHdP/UuJzvXuANFfmH
+ 9pdxVDwWfdLQqZjtBVoDDQ8G7o6uWK9PV8rZZ4OPbZtZMyLvK/W7DveScUQBvMM0MEH/
+ aFJ9UfLYt+IqGqmv5dH5LaFs2VcpaOMXVqbwY094/tMPOp8Jg26YYaDu019x/ZcPzkVO
+ O6Sor3n5HLZF6mQoiWK/XnfWuDA/NQKsDL145z/LuNFtH3fUY15AQGAUitrKMDRWwKHX
+ Xs1CcevnLwAolDqiu81hOGsWRHzRiCogd0k/OI7a+IIrpoCcZNUG4t4twhuwpZfxjqk/
+ 1AVA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWKOw/F6bThjUI1IYkLgT9FZqejZg+xKPE8aOUoSwcJv2llS4hyS/OfXO1zVcExX1NOFGrxzdTLwg==@nongnu.org
+X-Gm-Message-State: AOJu0Yx8FRH19tepuSnQe5fmK1jJ3mpujnKL6EirA5aJOEepa7pIeMJR
+ tvI8OMisWrgxiVPqKJYAveTCfQn/S3nEc+dCa3EZOyHGCrQCLDVy3vl4v+yFNSTJVaM=
+X-Gm-Gg: AZuq6aLCtU8Ew0s1BEJ4cWFWbctyN858L9fObqAurgMkZfrCoXax81gsOcho7FAcrhH
+ NIZJS7Mgf/vMXc/p5xT/Z/DFPc5UDtBX0TCOh4c8whepm1MusfuyiyYQX+yNtO/Fvtgp6qCz5D9
+ QzxilBpc1DDc2lBRgGMtNc0vcKeP3aSv1Ve2IkFnVr5ibqIymzSdzZ4hH+fPP3x4+eATtaKeb+n
+ E8adQ+ZzRTuHkSVBPzTKJ4GWpPESAE9xh9tJpeYX+LjuMCgpBIqdMTyOM+WOTwqZWXK3JzltARZ
+ E+jjzRYWkBnK+skMqCp/i3+L6kayLjVQowRgjM4bybP8hDixLvWPP5HH9+sAAjhfM/RErihWCdU
+ /MmnG7RNfRoZT+n/42WSDx3GvKxHv4ePaqULNy5GzmM4Ir29Iu4qyTNCxkMbnBIlshQ6Vudhwnc
+ qKFNItMi/x3wsdSCFSejiz39o4ZNg+2A==
+X-Received: by 2002:a05:6a00:240a:b0:823:142b:5ea2 with SMTP id
+ d2e1a72fcca58-823691923fdmr5936540b3a.19.1769639091184; 
+ Wed, 28 Jan 2026 14:24:51 -0800 (PST)
+Received: from [192.168.10.140] ([180.233.125.201])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-82379bfd7a2sm3516547b3a.39.2026.01.28.14.24.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 28 Jan 2026 14:24:50 -0800 (PST)
+Message-ID: <d3f15b25-3a59-41df-b3c0-3c62073def11@linaro.org>
+Date: Thu, 29 Jan 2026 09:24:45 +1100
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-1703265738-1769636490=:8425"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 2/3] target/arm: Handle SME-without-SVE on change of EL
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+References: <20260127154813.591744-1-peter.maydell@linaro.org>
+ <20260127154813.591744-3-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260127154813.591744-3-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -72,96 +106,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On 1/28/26 02:48, Peter Maydell wrote:
+> aarch64_sve_change_el() currently assumes that SME implies
+> SVE, and will return without doing anything if SVE is not
+> implemented, skipping a possible requirement to change
+> the vector register state because the SME vector length
+> has changed. Update it to handle SME also.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   target/arm/helper.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index a3dd84a2d6..bf3aca18b1 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -10128,8 +10128,8 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
+>       int old_len, new_len;
+>       bool old_a64, new_a64, sm;
+>   
+> -    /* Nothing to do if no SVE.  */
+> -    if (!cpu_isar_feature(aa64_sve, cpu)) {
+> +    /* Nothing to do if no SVE or SME.  */
+> +    if (!cpu_isar_feature(aa64_sve, cpu) && !cpu_isar_feature(aa64_sme, cpu)) {
+>           return;
+>       }
+>   
 
---3866299591-1703265738-1769636490=:8425
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-On Wed, 28 Jan 2026, Alex Bennée wrote:
-> Ruslan Ruslichenko <ruslichenko.r@gmail.com> writes:
->> On Tue, Jan 27, 2026 at 11:03 AM Peter Maydell <peter.maydell@linaro.org> wrote:
->>> On Mon, 26 Jan 2026 at 17:43, Ruslan Ruslichenko
->>> <ruslichenko.r@gmail.com> wrote:
->>>>
->>>> From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
->>>>
->>>> This patch series introduces new ARM machine model, arm-generic-fdt, and the underlying infrastructure required to instantiate a QEMU machine from a Device Tree.
->>>
->>> I'm afraid this has been a feature that has been suggested from
->>> time to time, but which I don't think is workable in general.
->>>
->>> Device tree files are designed to provide enough information to
->>> the guest kernel to allow it to find non-probeable hardware. They
->>> are not designed to provide enough information to QEMU to allow
->>> it to create and wire up all the hardware present on the system.
->>>
->>> There are specific niches where it can be made to work -- I think
->>> Xilinx have or had a setup where they were generating an FPGA
->>> model and a device tree and a guest kernel all from the same
->>> single data source, so they could put everything necessary into
->>> the dtb, for example -- but I don't think it works in the
->>> general case. As one simple example, the DTB doesn't generally
->>> have any information about how the Secure world works in an Arm
->>> system, because Linux doesn't care about the Secure world. It
->>> also doesn't usually have information that the guest OS can
->>> probe for itself at runtime.
->>>
->>> There has been periodic discussion of more flexible user-driven
->>> board creation, but that has generally been with the idea of using
->>> the QMP monitor to orchestrate creation and connection of device
->>> models.
->>>
->> I agree that a guest Device Tree is insufficient for describing a
->> complete QEMU machine model.
->> However, we separate the guest configuration from the machine
->> definition. The -hw-dtb option allows the user to provide a
->> QEMU-specific system description.
->> Those hw-dtb would not be passed to Linux Guest VM.
->>
->> The fact that this workflow has been successfully used in production
->> by AMD/Xilinx demonstrates that FDT is a feasible format.
->
-> Where are the extensions to the FDT used for hw-dtb documented? How does
-> it deal with PCI devices and the Secure world?
-
-PCI devices don't need to be included in a machine description as they are 
-not part of the machine only the PCI host is. PCI devices are plugged into 
-the host with -device as with boards defined in C. For PCI devices that 
-are instantiated by default on some machines including a node below the 
-PCI host should likely work. I know nothing about secure world, that may 
-need some extensions but fdt is basically describing objects and their 
-properties so if it's one or a hierarchy of QOM objects that needs to be 
-instantiated with defined properties it should be possible to describe it 
-in fdt.
-
->> In contrast, QMP usage may end up even more complex and less
->> maintainable for the task of full system modeling.
->> To my understanding, this would need to generate too long configs,
->> which may eventually require some intermediate format by itself.
->>
->> I am proposing to use FDT as a serialization format to describe a
->> machine configuration. Theoretically we can use other formats, like
->> XML, but in my opinion FDT perfectly matches the requirements.
->
-> The QMP interface is self-documenting and introspectable and used for
-> the management of QEMU including things like hotplug. It is also QOM
-> aware so a natural fit for dealing with the underlying QOM machinery.
-
-QOM seems to be more about operating a machine rather than defining it for 
-which fdt is an already established common way.
-
-> Previous discussions have entertained the idea of making the parsing of
-> hw-dtb an external script which would then translate into QMP commands
-> to build up the machine.
-
-That would be possible but it seems that directly parsing fdt in QEMU 
-could be done with very few code and with some additional support from 
-devices the latter of which is probably also needed when trying to 
-interactively define a machine from command line, monitor or QMP.
-
-Regards,
-BALATON Zoltan
---3866299591-1703265738-1769636490=:8425--
+r~
 

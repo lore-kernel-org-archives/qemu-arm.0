@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A0A9D6B087
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 16:26:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F021D358D6
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 16:52:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vlUqM-0000tT-Lv; Thu, 29 Jan 2026 11:26:06 -0500
+	id 1vlVFL-0006p5-Rf; Thu, 29 Jan 2026 11:51:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vlUqL-0000rG-A1
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 11:26:05 -0500
-Received: from p-west2-cluster6-host12-snip4-2.eps.apple.com ([57.103.70.115]
- helo=outbound.mr.icloud.com)
+ id 1vlVFK-0006ob-CN
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 11:51:54 -0500
+Received: from p-west1-cluster1-host10-snip4-10.eps.apple.com ([57.103.64.103]
+ helo=outbound.pv.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vlUqI-0001Yn-6v
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 11:26:04 -0500
-Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-11 (Postfix) with ESMTPS id
- AC2F21802865; Thu, 29 Jan 2026 16:25:56 +0000 (UTC)
+ id 1vlVFI-0007fU-Dr
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 11:51:54 -0500
+Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-1a-60-percent-3 (Postfix) with ESMTPS id
+ 05E96180048D; Thu, 29 Jan 2026 16:51:45 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1769703958; x=1772295958;
- bh=u7JR/QEHfBc0afNOBZpHjuOgKsOQYt/dW6wfv1v0bBU=;
+ s=sig1; t=1769705510; x=1772297510;
+ bh=ejSWa1sXG4fWH66vJ41KRLnie3I3EyyhZRjof9W6CgQ=;
  h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=O9R0TUpkyVPEpO11VvqGmhHk5SwINbJmGqGvipHPldJ+wloAffnLmu8kpseLWZAurswLyWdgWPYrA1TPP7Gvj/Q46gdLuPlkjHUecEGU4RnRdxKExliYv6XSdTEz+VvohAJ8aQIYyrahIplMhwlWbvvdQb/Nt57QKumJZm0TCrgTcASH4sy1wSBUMMcTfBMqhVSTWMd2XKjK6X4l48Mok1swNFZVmMhtoDnQX2t6Z5vZqs/AEKV/Iw9ZOusY+a+8bgSa044EJ4oUVI+hhvzi72CzBTlU5WyezXxCsDsfh9NHxVmfuIjateUZaiY01sQ8xk5PiJZU5JKZWurFHLkiLg==
+ b=I6si2mNZ3roPWQcBdHYJiF9lo6cwspOhnM21zcwteUpytcERP4goaWbebSvGxEIsKXRAXBIJp9QUklJSrCwsWVoW9cafemuGkNoBrKPh1SKzD7/+UJzuU/siLesxJjBwsBvg2+2YS7drNDe6j/YF00uY4yyUXBRavvHtDHcU/N4c5xc4u7eeaJqQaVJZLOtE9UopzhL9PD8eN2y2DdfeC1mur5l4hSnRDskp5rm+8hR8ZJBgx+G+MO6WZ7inP+MpAvg+dIMTAdQQV8Jhfqhtdd2hMiowTvSoHahVaP9tzfXYv6X5a5d/Rn2TfquowdrI5PqcHatb1mkKAnlxoTVmiw==
 mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.152.38])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-11 (Postfix) with ESMTPSA id
- 2616C1800104; Thu, 29 Jan 2026 16:25:51 +0000 (UTC)
+Received: from smtpclient.apple (unknown [17.56.9.36])
+ by p00-icloudmta-asmtp-us-west-1a-60-percent-3 (Postfix) with ESMTPSA id
+ 453D11800990; Thu, 29 Jan 2026 16:51:41 +0000 (UTC)
 Content-Type: text/plain;
-	charset=utf-8
+	charset=us-ascii
 Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
-Subject: Re: [PATCH v18 20/22] target/arm: whpx: instantiate GIC early
+Subject: Re: [PATCH v18 13/22] whpx: interrupt controller support
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <CAFEAcA9TwmftmcnxbWMoeAfuV6LD9pPv1hVXiAOr56UKUD+z+A@mail.gmail.com>
-Date: Thu, 29 Jan 2026 17:25:40 +0100
+In-Reply-To: <CAFEAcA_+o2BRGPjk=++2pkZpN62yPKRhy4sx+7kSvXcee5ofqg@mail.gmail.com>
+Date: Thu, 29 Jan 2026 17:51:29 +0100
 Cc: qemu-devel@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
@@ -56,44 +56,45 @@ Cc: qemu-devel@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
  Shannon Zhao <shannon.zhaosl@gmail.com>,
  Igor Mammedov <imammedo@redhat.com>, Cameron Esfahani <dirty@apple.com>,
  Alexander Graf <agraf@csgraf.de>, Eduardo Habkost <eduardo@habkost.net>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
+ Phil Dennis-Jordan <phil@philjordan.eu>
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <87D4EF8E-4F4C-42B2-947F-FCF474C4B4BD@unpredictable.fr>
+Message-Id: <D302D4EE-8E69-4FED-BD31-E3A0D82C62EE@unpredictable.fr>
 References: <20260127182805.73212-1-mohamed@unpredictable.fr>
- <20260127182805.73212-21-mohamed@unpredictable.fr>
- <CAFEAcA9TwmftmcnxbWMoeAfuV6LD9pPv1hVXiAOr56UKUD+z+A@mail.gmail.com>
+ <20260127182805.73212-14-mohamed@unpredictable.fr>
+ <CAFEAcA_+o2BRGPjk=++2pkZpN62yPKRhy4sx+7kSvXcee5ofqg@mail.gmail.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 X-Mailer: Apple Mail (2.3864.300.41.1.7)
-X-Authority-Info-Out: v=2.4 cv=GJkF0+NK c=1 sm=1 tr=0 ts=697b8a16
- cx=c_apl:c_apl_out:c_pps a=9OgfyREA4BUYbbCgc0Y0oA==:117
- a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=IkcTkHD0fZMA:10 a=vUbySO9Y5rIA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=nuPN9-Hf8ev9G2Z7EDEA:9
- a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTI5MDExNSBTYWx0ZWRfX606TjfPenkpm
- /0d5Y/7U08J3pX2Mwl+nr8xpveCJNTacPQUrGoVpd8dftHR26UZgSoaLkWwJVkqKB+0BVPgnmtd
- 94E6S1NB/BRCpKq7V2MCKBixYmZLviPq7MpBOqw2b+IAWUPFme07Qbtg0uzPuQo02/hGM1B/h8Z
- gAbBVs2iC6Kt+6QNXBrBI+Ps30B8ICcwL8y47cQYl1IVNXdit0hLbjnPfk1df1ZlAycDdHS/rSf
- v/DT5Sksv6T3pDyu2ODdJH7lT3ijdkgRjpiQvDjaQyd9u6AQsWYZLBD5dAf4NsL8v5lK0iu5IOQ
- u+kQlJIFbAKSiIwOfaYxWXPb2smBu4/fphaj+eys4Gel1K8kueATlRNeRkJsto=
-X-Proofpoint-GUID: 0lzokR_w8rWbuivC2niLBbjucmGFeQqU
-X-Proofpoint-ORIG-GUID: 0lzokR_w8rWbuivC2niLBbjucmGFeQqU
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTI5MDExOCBTYWx0ZWRfX5YA9Mt8L6Gai
+ CaoxImYe5JvB6r4biIInEopKMisKEZy7cx9H4r5i2ySFIT96LC6NBZ4Hy0yHVDqullu8CGzOuKq
+ iG5ZV6dS/dhhtOM/fXadVds0loXzg0UQJgVaVA7OX0kvI0mKDi9mE7RpLtTnvXBMmA0lQSUjm21
+ F04Lo80k4KZEjRU95TkK/tntyjvm4CepB11WI3Rma8k72s+zE1rSsXmbl/+YDM5z7BQsAmp0ceP
+ l7izQ1fXYy4mUHQtoXv0DeKIkipUBl6tB2e/e91XD6lqzLrpkM+TYo/wt2my+/jobZADXwcqQFe
+ TwBi+YWXaMjIF8KkwUldSdE5h6VUpCz6LzlbP/Q6NxSvto8Q32Ok1hDjO1Kt+s=
+X-Authority-Info-Out: v=2.4 cv=FqYIPmrq c=1 sm=1 tr=0 ts=697b9024
+ cx=c_apl:c_apl_out:c_pps a=azHRBMxVc17uSn+fyuI/eg==:117
+ a=azHRBMxVc17uSn+fyuI/eg==:17 a=kj9zAlcOel0A:10 a=vUbySO9Y5rIA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=QDk9sNPcX2z11vPKvYsA:9
+ a=CjuIK1q_8ugA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: 6ElEsR5sPjbb6vtrBhw5dOtaISkL2oD6
+X-Proofpoint-ORIG-GUID: 6ElEsR5sPjbb6vtrBhw5dOtaISkL2oD6
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-01-29_02,2026-01-28_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- adultscore=0 phishscore=0 suspectscore=0 malwarescore=0 mlxlogscore=841
- bulkscore=0 mlxscore=0 clxscore=1030 lowpriorityscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2601290115
-X-JNJ: AAAAAAAB5ydCaMsz0wwLZdQI515UjmpKLlSEOqAdvrOpVivlGpB7INi4V32WZLpOUVxU4SSulFFMm9I9Gtb8+OW/66whKMlO0OiW2HFXM3OXBbtaYfWd7WF1tWH27rW0nzbfbsUVirW0b1B6FS2PzxPyZCh/hAYX2MwroNtBeQeYVlxyiZjtACdDrq7EJniNb/OTfDBW8NpmQKQdVnTn5/QVt3TwpTygguckp1mGysdei2DLadGfWubc3FynkRNdpQ/YOSXUSwDuZrqmUfTh6/bQm17Z8lieDluWAcD0gUBRcOzVkGCXOQ8eioNahQmXIaNbilNdTht2YoEzMJoYI1BD7bkxKpCb1TEQ0A1iNmuEbL8dTYhq4dJPXD/shkjF+076ul2xB5d116GtK0Rj058sUgSqgdBSWCkF/1OJimOF+C094qtpg9aWd6IxqJ5BvhMMm0XhS40rWy7PYVqjrEdQnGF8ILWSQLCx+bdi0gPksONfc3yUOsZcC/Vtyt8h9vpe2iphVZtlrA6mFLBkkCuQOjlErzM2zEiKK7bRYvFtjqN/LWfYkr07PhjD2+ZKNTvpcVSxz1OQONjqXayAz8M+buDP5HoRyC03Km0OBBjYM2tGABlR7hHMz1h0aDdAjq/ILEcA6XHiuPWhl0WoNk6QpaE+1k6sIgRKvqfO529CwlqSTGLkriU/pJ68hlisfvLFleYBaZyeiX5ZkOIIm6HpLEeikTIDPlS6DLQYLAfQKsHsJcKEDpvGjCpbLJANBkWb1ZHgKDvqXw+rcFAxeQ1Xf7hGlEYT02nQxGsD2teOdHihZ8wWIdU+xQNc5XW/1ag7rbqJxmxqXZjy3axu3+3NLQj2rLPw4R+SgSfuViHvYuUJOA+fyOhch5eSZuDTQyZ24g6tZSgZLVc8sA/x9Bm16j0=
-Received-SPF: pass client-ip=57.103.70.115;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ definitions=2026-01-29_02,2026-01-29_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ bulkscore=0 suspectscore=0 lowpriorityscore=0
+ phishscore=0 mlxlogscore=922
+ clxscore=1030 spamscore=0 mlxscore=0 adultscore=0 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2601290118
+X-JNJ: AAAAAAABYJ0pt5Sb1cxEp+zv1/he5LW4g01JwrJjOWM7cUjAX3zIXGKBhbPy4RV6hXb4lWVPyUU9KutpjWoERZmW9o3K9pLiZJxQuArrt1FTl/ZwsbJQDSUjVqdimH5Ka4llxeH8ftSTR5uQd+ymR5EMxUYJpNwb4xVZP07aMcIuVFYO/rumh3DF3LTLAoqiGPsK+vv/EGvogMzjMWNXUDrnm6oJpXmVZiDNHnrXy/8hjIsntjGo4y+1iJOFBFpQ5hAO9s047YwTV+TyU1qmnNj/zEnm2dmR/bWgb3SUVnI8dXRuf2notGvHotVr7OVGSEY8Fs9y8Rdvbnq7Vs563COUnl0crdnC0ylMp7RBJ667qovSsG91DgSeZ/Q9XhDbPYJghjP0vcukYLwkXfQ/YNqF+fGwcxrYZbefGyszg9bB4vhwdEJ0T288nP7TH8U4vaOnFM+FwuQ9w0aepHeEgRp2K5zex6QtDxBiFP/PvGF7TWF1nUO5nahacI63mcFJ/TTH4+mibRT2ZGYk+D9kxwmQnzTkzfAI3oNDzZg6YjvhzXdijypswqi0SSqS9mU522XceWtOnn2fHpn6C3m1mrPckrUDUpw6/J6tnfxI+ZBW44A9ZG7jTflCMkDfzXtavGCi5+l1TZTkrVBqlIcpBxRcn/RtPkcEwZqOeHSj9YkbESScz9QraVuOk795In2w9mzVrDHJYKSpDIZrmDfhJkZMPnHpSBdV93BeAw2GhAt5YRYaQH42YF6grdtj7XFE4TaDqkFZU/EatxVC23+YkKfKGNF7FiKPK+FBMBCj5TyAcwbSsm7Kh7Blq8EuI84JDOSzDK0QQwHXtpYxjRoY+qTeAJmpUT+jVeJgxG5kkfmGBeuVHt3+rzkMCphINpDRFXzbBISKyf1avx20YOuUa3JUVw==
+Received-SPF: pass client-ip=57.103.64.103;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -113,20 +114,42 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-> On 29. Jan 2026, at 16:31, Peter Maydell <peter.maydell@linaro.org> =
+> On 29. Jan 2026, at 16:28, Peter Maydell <peter.maydell@linaro.org> =
 wrote:
 >=20
-> So what happens if the user asked for a GICv2 ?
+> On Tue, 27 Jan 2026 at 18:29, Mohamed Mediouni =
+<mohamed@unpredictable.fr> wrote:
+>>=20
+>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 >=20
-Hi,
+>=20
+>=20
+>> @@ -2143,6 +2146,9 @@ static void =
+finalize_msi_controller(VirtMachineState *vms)
+>>         }
+>>     }
+>>     if (vms->msi_controller =3D=3D VIRT_MSI_CTRL_AUTO) {
+>> +        if (whpx_enabled() && whpx_irqchip_in_kernel()) {
+>> +            vms->msi_controller =3D VIRT_MSI_CTRL_GICV2M;
+>> +        }
+>=20
+> This looks like it ought to be an "else if" or some other
+> construct so we don't fall through into the logic below --
+> if we've decided we definitely want a GICV2M we can stop
+> making decisions about how to set vms->msi_controller.
+Would just doing a return; be a right way to deal with this, or =
+converting to case?
 
-If the user asked for a GICv2 then they=E2=80=99re going to get an error =
-in
-finalize_gic_version_do (in hw/arm/virt.c), with it being enforced =
-there.
+Thank you,
+-Mohamed
+>>         if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
+>>             vms->msi_controller =3D VIRT_MSI_CTRL_GICV2M;
+>>         }
+>=20
+> Otherwise
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>=20
+> thanks
+> -- PMM
 
-> Can we have a comment to explain the ordering requirement
-> mentioned in the commit message that is forcing this to be
-> here rather than in the GIC code ?
-Will add in the next revision.=
 

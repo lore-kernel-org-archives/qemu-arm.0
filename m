@@ -4,94 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A91BD6101F
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 14:37:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD525D6101A
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 14:50:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vlT8V-0005n2-KH; Thu, 29 Jan 2026 09:36:45 -0500
+	id 1vlTLY-0005ay-L5; Thu, 29 Jan 2026 09:50:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vlT8T-0005m4-DR
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 09:36:41 -0500
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vlTLW-00053x-29
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 09:50:10 -0500
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vlT8Q-0003BX-Ir
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 09:36:41 -0500
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-42fb4eeb482so816445f8f.0
- for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 06:36:38 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vlTLU-0006sY-HE
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 09:50:09 -0500
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-78fdb90b670so9828387b3.2
+ for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 06:50:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1769698207; cv=none;
+ d=google.com; s=arc-20240605;
+ b=JqPFUoR1etg6oTb6U3KKcLYPUE8loBTSSt7vo7nsRmIg4ttwvoIPySnxF2qboBD9Cm
+ 52gww27Xf7F4fgu6Dtdrqo2ARwFNdZnWgzVkxfU0hKYp/nZrlSy8HFuITOHWgSHz6+AV
+ lqo9JaLK6gsOsR54ADqOVrNJ5UA17o4+w9NEzhMNXv59joZtnkI7kFyVldMEhG+ZGJ0Z
+ GcoMp3rMgkyxRSeJ74cpvQQafXTANB9z1V0oz76rTHM85QeeDkCaf18hmyOTAtkdB9a4
+ 1O35F6GZfLw+1ROAnXUUvmKDTMcf/W2G0Kr17h2a4WWiHzfMeveXDf6gEwoKnCXeq54b
+ lDhQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=G102y0G+FgpeT9KmYnieigLXgmRkgBeE42iRMbIJv4E=;
+ fh=hyubAE5DeRHh800cuV6DXB+pMPAuAmhN4XAVUsS1ZJA=;
+ b=OVxjom/+g5uzVpQD7V+xkjZqOAH4jMnLnIaAG2QnLyAQuuEwlaOukOU7dunURegcmQ
+ d+esekSSOCX0QEBOtRGWbnwjWKGTCk96epNddQEZilxZyzucQkgH0w7CmrMgEDkX8teg
+ JjAr6iI9g1YN26mPexOyuhiwuLnyHEPM8jIfpfvJG4At/3QTKxqn57lqbMT/wSbivGbt
+ YqF00FsE9fxFWMF9cLfGx8Ha3XNnrLFbIR4bGPnvYRNGSCgihdf4hz98rTrFpTrhbMKX
+ 1mrGTo9ENv0+XTv4NRDCYeUPu4O7nifNq2CSMFqO1pW0rwwLBBUNb/r2dLd16jQsk1iX
+ OsTA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769697397; x=1770302197; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=wop6f6pSSz8jJXFqKfMSRxnNFbZ9pyIwseDHag2jDsI=;
- b=LvyR4MNV/r8uU8e7c31zZR+Wy3TEVKId1g9M1fu5Mx2iBGSuggGICJkB0aUvq/fTbI
- Bb1we8053tYw9r1Knbs8XZVjYjG94UxA9oXa1Ue3pQ1OrR86cG+5/+pJ7OdaYC3Bbg7m
- btiNwS7QDrln0isxgoDOX7wfbwCyPtVokqDHv5/cbgFTNJcdDlEZqRplSv6m0GdMvAwG
- yWBl27qK+ZB9VO9HayLmxpCIbCpmezg1OA0UyKhMFXqrHHF1f3ucEZIG7MqS8KbS4w2/
- CeAGow+RjDj2QVgecDUBXB/dDTmSP8s8Al8gi7WT13RhUTHDaP+oINtR7GBBq41IKK8d
- jGpg==
+ d=linaro.org; s=google; t=1769698207; x=1770303007; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=G102y0G+FgpeT9KmYnieigLXgmRkgBeE42iRMbIJv4E=;
+ b=i4R2T7LaNkuojVBnl+LJLnV0zuD1r5n4omxLCex6GEHWChk3z5FlNnWJqtAydOde3G
+ qC/OrOqCOIO4EkvjxJNjZiDhr+yynNP+UIIA7NQpNNl9HGfV9ADLttDNZ/LyN3ZZCYx+
+ coEsGVDvnS2gh2SVk0l16ybmna/SQz23IMUyIUXltSlXSkTBNCXeVqJsp8iQHcStbtZe
+ vkhdaRu3obTPbGxvRjci966EowehcMn6pSha+oYep1r4XvRp9fpiPyVe0N1om/TJzIa+
+ MDx/wiZb7lSHf2A7BUqrDT75toWWD23/slyGskPnWCu+3opG4XAmBQzYCWRkvxgr632r
+ 2XgQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769697397; x=1770302197;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=wop6f6pSSz8jJXFqKfMSRxnNFbZ9pyIwseDHag2jDsI=;
- b=GV9hV+NOGT4Qo1SBCmHQtWaKeRq5jr8fyRLgQHLtO7pxIc/7M1BQW9HagcbCXwsTbi
- hDjuOUnAlPCrnNFvScnXHI2bNT/bf5uN+wJa5iqe4pYQrfuMMFl//sE/LNq2bbY9wMHC
- TW4NIpspWAiEdcZBrsB6GghtLlswwcMQFOPwVDYQlbSVzTusFl+zqqYYnmUQL2cZPt25
- URjbZXiP+BcoEQ5YqY8tpuOeD/SXxksaAQoHQDmB5hrf2MYHOmfRKHCLj5h2AsmdHUdi
- cKmaPEMXbGGiD09bdscdDOHaGHUvO2o9cDRMkwvy2WodV/JKqs0WmpOyaM1hmoQ+rukW
- 4ouQ==
-X-Gm-Message-State: AOJu0Yw205IdRoHIq5mDuYKqwvrtYPA/TiFJL0yR7L/fObzJ7CyrDtmc
- SG/OSKXn2s0SYsjUDoR7NerLrU+4/hB4zFGOGkn9acyx8GlpnH7hA7hATe+xzyV7yKc=
-X-Gm-Gg: AZuq6aIITXdxC8UjXr/HgGJFiNd7JQ+0gQYUaATX/FIaNMVQMJa6eagr9S72/D5hEN9
- zi3L8hupJLcTwsf7TL4ATbSe0XOI0+nm35HnfszSYe6ma+oekJwv5RTkjEOZvEaDAEswT5jEQFx
- jZ4Xy79DXis5yY2BdsHSG1K1eIljMj6oMS20mvr5kS9WbkYF+Kts+GVb7BIzq/aDr78Ee4loq4p
- qDFO6K9KsO5tnAvDdpPtQHwqGmAw5jg+kADn6otoAPrXjrsgHX3ZWT3Ta0gQP8BqnN13miQjK9L
- LRCsbhNyD3UI95h0rPt0EIacS4KbIBdPqJBLRBtk5QiJHsgJjjevmn9n89OD4XikA/lzwx4GW+C
- LUdJLN9ek0U6Nf49lPJcVqltgs7VTATUBhrNzENLfFul8oBau2Qj9caW7eA/Uq/9/GZGYtK5Vky
- H/27jxKXhAwf4=
-X-Received: by 2002:a05:6000:2310:b0:435:9770:9ecb with SMTP id
- ffacd0b85a97d-435dd1cd9d7mr13423264f8f.56.1769697396688; 
- Thu, 29 Jan 2026 06:36:36 -0800 (PST)
-Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-435e131ce93sm14535267f8f.24.2026.01.29.06.36.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jan 2026 06:36:35 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 0A4965F878;
- Thu, 29 Jan 2026 14:36:35 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  Richard Henderson
- <richard.henderson@linaro.org>,  Manos Pitsidianakis
- <manos.pitsidianakis@linaro.org>
-Subject: Re: [PATCH v2 2/6] target/arm: Report correct vector width in
- gdbstub when SME present
-In-Reply-To: <20260129113455.1283266-3-peter.maydell@linaro.org> (Peter
- Maydell's message of "Thu, 29 Jan 2026 11:34:51 +0000")
-References: <20260129113455.1283266-1-peter.maydell@linaro.org>
- <20260129113455.1283266-3-peter.maydell@linaro.org>
-User-Agent: mu4e 1.14.0-pre1; emacs 30.1
-Date: Thu, 29 Jan 2026 14:36:34 +0000
-Message-ID: <87o6mc8ozx.fsf@draig.linaro.org>
+ d=1e100.net; s=20230601; t=1769698207; x=1770303007;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=G102y0G+FgpeT9KmYnieigLXgmRkgBeE42iRMbIJv4E=;
+ b=tOPzr90Tnn6M/EjSOMb/QnxD9qAu27M+2DODHvpIP8wInFt/bgRmYnv8pO97gtXlO1
+ OFgbb75qvscVBPG+ZeF6sWpRVNlhwBRhkq9kjOxQAOAEkyvk0IYVnQyWywaObU1p3cK/
+ U5GZLiliSr68FjNIC4Qp6h4a5eH+MyOxmCNqKF6pzJlxBtxg6DpasaPOM7rZP9BVEuKS
+ 0USPMxsc8wMSCamdzHq95MubHt/xvNUKygXmhiTQPVcLzBzzwuUBOoray1Ztjog0z2IJ
+ zRbiKXwuq3cxrByXgOlvg0fYw3JaVnGwcPt/f9TNR1k9+kmyjNBI5zmzv6743rtY3s3Z
+ 5Pmw==
+X-Gm-Message-State: AOJu0YwDKc+birK6Cv8o5j/yMZka5IGvio7YVH5IKkmnmEm+HEAgAlB9
+ 0xKdnYgEcHM/DYwmEzx4Pr1x72wpWszAt4tcUlT4mSNfrdmy33bd8N9piP9TeCtAFTT308JKCtP
+ lyBEzdJqZT+z6WzhNfgl2UYAJ8kGDwcGox79wNe/CDQ==
+X-Gm-Gg: AZuq6aJxJuDpVofYzUjO76td9wxSIHqUjb/pZQGSRr4phhHRNn0yBRt7wTItz/szBfb
+ E4KE6/5F5XJZ3Mk1JqySd+Eh1z4yv0wfbQUb8cuTFRyibHqm3sPtytxHvDekd3Slb+QoQsaqGII
+ vO9c380wmPBQjwKBNT6a4t4JsXIrVonP0QbMo3pcBfU+NhyMBZiQLmN7lbFZVX/RDhEIRjeGX3X
+ SMIbrBjDSb5CjviTXKkAsfNOHTrvpULFTOywO4eJt6UNq3WIZU7MO5teJMK1WHRO6vRZg==
+X-Received: by 2002:a05:690c:e3c2:b0:794:3392:5d64 with SMTP id
+ 00721157ae682-7947ac18bdfmr80511487b3.44.1769698206639; Thu, 29 Jan 2026
+ 06:50:06 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x429.google.com
+References: <20260105154119.59853-1-cohuck@redhat.com>
+ <87tsw4sycv.fsf@redhat.com>
+In-Reply-To: <87tsw4sycv.fsf@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 29 Jan 2026 14:49:55 +0000
+X-Gm-Features: AZwV_Qi7pH38OgAtongL_NVnLFm9xKs1dgjxGD34LPqz96eNK2scExh4GhFw5Wo
+Message-ID: <CAFEAcA-rFx10-iaNmsbsW-HoWKLPJx0QQVgD36_aS5jfX6hGrg@mail.gmail.com>
+Subject: Re: [PATCH v3 0/2] arm: move DCZID_EL0 to idregs array
+To: Cornelia Huck <cohuck@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Eric Auger <eric.auger@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,36 +115,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+On Thu, 29 Jan 2026 at 06:54, Cornelia Huck <cohuck@redhat.com> wrote:
+>
+> On Mon, Jan 05 2026, Cornelia Huck <cohuck@redhat.com> wrote:
+>
+> > This is part of the ongoing effort to move all id registers to the idregs
+> > array (so that we can work with an autogenerated list of registers.)
+> >
+> > Changes v2->v3:
+> > - separate patch for adding the helpers
+> > - put some rationale into the patch description
+> >
+> > Cornelia Huck (2):
+> >   arm: add {get,set}_dczid_bs helpers
+> >   arm: add DCZID_EL0 to idregs array
 
-> Our gdbstub implementation of the org.gnu.gdb.aarch64.sve feature
-> doesn't account for SME correctly.  We always report the Zn vector
-> registers with a width based on the maximum SVE vector register size,
-> even though SME's maximum size could be larger.
->
-> This is particularly bad in the case of a CPU with SME but not SVE,
-> because there the SVE vector width will be zero.  If we report the Zn
-> registers in the XML as having a zero width then gdb falls over with
-> an internal error:
->
->  (gdb) target remote :1234
->  Remote debugging using :1234
->  /build/gdb-1WjiBe/gdb-15.0.50.20240403/gdb/aarch64-tdep.c:3066: internal=
--error: aarch64_pseudo_register_type: bad register number 160
->  A problem internal to GDB has been detected,
->  further debugging may prove unreliable.
->
-> Report the Zn registers with their correct size.  This matches how we
-> already handle the 'vg' pseudoregister in org.gnu.gdb.aarch64.sve: we
-> call sve_vqm1_for_el(), which returns the vector size accounting for
-> SME, not the pure SVE vector size.
->
-> Cc: qemu-stable@nongnu.org
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Applied to target-arm.next, thanks.
+
+-- PMM
 

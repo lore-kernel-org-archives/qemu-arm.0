@@ -4,102 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD525D6101A
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 14:50:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65FCBD61020
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 14:57:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vlTLY-0005ay-L5; Thu, 29 Jan 2026 09:50:12 -0500
+	id 1vlTRx-0005Sh-3C; Thu, 29 Jan 2026 09:56:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vlTLW-00053x-29
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 09:50:10 -0500
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vlTRw-0005SN-Eg
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 09:56:48 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vlTLU-0006sY-HE
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 09:50:09 -0500
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-78fdb90b670so9828387b3.2
- for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 06:50:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1769698207; cv=none;
- d=google.com; s=arc-20240605;
- b=JqPFUoR1etg6oTb6U3KKcLYPUE8loBTSSt7vo7nsRmIg4ttwvoIPySnxF2qboBD9Cm
- 52gww27Xf7F4fgu6Dtdrqo2ARwFNdZnWgzVkxfU0hKYp/nZrlSy8HFuITOHWgSHz6+AV
- lqo9JaLK6gsOsR54ADqOVrNJ5UA17o4+w9NEzhMNXv59joZtnkI7kFyVldMEhG+ZGJ0Z
- GcoMp3rMgkyxRSeJ74cpvQQafXTANB9z1V0oz76rTHM85QeeDkCaf18hmyOTAtkdB9a4
- 1O35F6GZfLw+1ROAnXUUvmKDTMcf/W2G0Kr17h2a4WWiHzfMeveXDf6gEwoKnCXeq54b
- lDhQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=G102y0G+FgpeT9KmYnieigLXgmRkgBeE42iRMbIJv4E=;
- fh=hyubAE5DeRHh800cuV6DXB+pMPAuAmhN4XAVUsS1ZJA=;
- b=OVxjom/+g5uzVpQD7V+xkjZqOAH4jMnLnIaAG2QnLyAQuuEwlaOukOU7dunURegcmQ
- d+esekSSOCX0QEBOtRGWbnwjWKGTCk96epNddQEZilxZyzucQkgH0w7CmrMgEDkX8teg
- JjAr6iI9g1YN26mPexOyuhiwuLnyHEPM8jIfpfvJG4At/3QTKxqn57lqbMT/wSbivGbt
- YqF00FsE9fxFWMF9cLfGx8Ha3XNnrLFbIR4bGPnvYRNGSCgihdf4hz98rTrFpTrhbMKX
- 1mrGTo9ENv0+XTv4NRDCYeUPu4O7nifNq2CSMFqO1pW0rwwLBBUNb/r2dLd16jQsk1iX
- OsTA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vlTRu-0007vO-V0
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 09:56:48 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-4805ef35864so8788045e9.0
+ for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 06:56:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769698207; x=1770303007; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=G102y0G+FgpeT9KmYnieigLXgmRkgBeE42iRMbIJv4E=;
- b=i4R2T7LaNkuojVBnl+LJLnV0zuD1r5n4omxLCex6GEHWChk3z5FlNnWJqtAydOde3G
- qC/OrOqCOIO4EkvjxJNjZiDhr+yynNP+UIIA7NQpNNl9HGfV9ADLttDNZ/LyN3ZZCYx+
- coEsGVDvnS2gh2SVk0l16ybmna/SQz23IMUyIUXltSlXSkTBNCXeVqJsp8iQHcStbtZe
- vkhdaRu3obTPbGxvRjci966EowehcMn6pSha+oYep1r4XvRp9fpiPyVe0N1om/TJzIa+
- MDx/wiZb7lSHf2A7BUqrDT75toWWD23/slyGskPnWCu+3opG4XAmBQzYCWRkvxgr632r
- 2XgQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769698207; x=1770303007;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1769698605; x=1770303405; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=G102y0G+FgpeT9KmYnieigLXgmRkgBeE42iRMbIJv4E=;
- b=tOPzr90Tnn6M/EjSOMb/QnxD9qAu27M+2DODHvpIP8wInFt/bgRmYnv8pO97gtXlO1
- OFgbb75qvscVBPG+ZeF6sWpRVNlhwBRhkq9kjOxQAOAEkyvk0IYVnQyWywaObU1p3cK/
- U5GZLiliSr68FjNIC4Qp6h4a5eH+MyOxmCNqKF6pzJlxBtxg6DpasaPOM7rZP9BVEuKS
- 0USPMxsc8wMSCamdzHq95MubHt/xvNUKygXmhiTQPVcLzBzzwuUBOoray1Ztjog0z2IJ
- zRbiKXwuq3cxrByXgOlvg0fYw3JaVnGwcPt/f9TNR1k9+kmyjNBI5zmzv6743rtY3s3Z
- 5Pmw==
-X-Gm-Message-State: AOJu0YwDKc+birK6Cv8o5j/yMZka5IGvio7YVH5IKkmnmEm+HEAgAlB9
- 0xKdnYgEcHM/DYwmEzx4Pr1x72wpWszAt4tcUlT4mSNfrdmy33bd8N9piP9TeCtAFTT308JKCtP
- lyBEzdJqZT+z6WzhNfgl2UYAJ8kGDwcGox79wNe/CDQ==
-X-Gm-Gg: AZuq6aJxJuDpVofYzUjO76td9wxSIHqUjb/pZQGSRr4phhHRNn0yBRt7wTItz/szBfb
- E4KE6/5F5XJZ3Mk1JqySd+Eh1z4yv0wfbQUb8cuTFRyibHqm3sPtytxHvDekd3Slb+QoQsaqGII
- vO9c380wmPBQjwKBNT6a4t4JsXIrVonP0QbMo3pcBfU+NhyMBZiQLmN7lbFZVX/RDhEIRjeGX3X
- SMIbrBjDSb5CjviTXKkAsfNOHTrvpULFTOywO4eJt6UNq3WIZU7MO5teJMK1WHRO6vRZg==
-X-Received: by 2002:a05:690c:e3c2:b0:794:3392:5d64 with SMTP id
- 00721157ae682-7947ac18bdfmr80511487b3.44.1769698206639; Thu, 29 Jan 2026
- 06:50:06 -0800 (PST)
+ bh=bAlYZVO6F4imjhnmZ6cfstfROiq3dOuBQnCrWAgyRm4=;
+ b=US8kJXsEQWEMjGE8mh97HXdCfSUrp1Kz8sCiuvPx5AxGzNmQdaasRqIKEEbUrYGHmY
+ VUOxopjfG0uF3f9h9GrV5LtSbwjAJrnNVBwENSF/FfNU3Sw+wmbvGUMAhoroPTpHOlyb
+ Li4s2z6zhFbd4Cub1TVV5rZCh4k8l8uuYZNrNyKLevswJ3XDLQRbx2sYnbzUcYlMVyUV
+ 7UT5CZP06oJuVXLAHcmTgZWumlE0wF2u+i1KoAHjAYCRM4dbHRQzNaZIq983KeqNYDES
+ o8m/m4HVQqKWmEF0t98z3yVXY5VSJgJrXP+skHiduKrKrfQxYIfW+DZvvVCAgY+M7k9b
+ muyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1769698605; x=1770303405;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=bAlYZVO6F4imjhnmZ6cfstfROiq3dOuBQnCrWAgyRm4=;
+ b=Uk7Y+rzKjxSZ63sa3tQBO2+Ri/24ScDJSJmZkcTzT53rV3uTcDaHaAIb7sKEUBfbwv
+ xP4YLcZW6gYEoQNCIkBA/H1t8EvRHorOc/5/Xli8kuTcA+SpL1ynVHN0Wb4Jbdp8rMPI
+ nlbGvHFx6RVpFvubIiKQ4UECVGj8NNKW4mkJbgmRQ/3yw1iZvFyCMIX/ECby3V/KDNFO
+ DG6lI4Q7t3m4NpsAotcny/li2B18T5S3ab9akp+mW/q4DcCQU7pDX/nNxKgAL2HJNSno
+ vRIWeAex4du5RK7xQRZ9mCBLaRk+RzCFCIQJhYDVM0FsnnonFLl0yrjDpb9QKpqIEnl5
+ tIcw==
+X-Gm-Message-State: AOJu0YxGaUeOS++KcaoxYcONTa1uXuUyo/kJ7KPgvOb9IaRQl5YyMGAz
+ i7YcUnv/MI1ob7625HMlNFiKMoNvf62WKhypDdpUz5FyXBamct+EHbZ1qiWlElZoPUQ=
+X-Gm-Gg: AZuq6aJw7ZmJQ9GR+SBLjAz/RsPQg5x4TuQL+irce3UAuaX3i4BBzUe9p9tt6kNM5kk
+ /2Ev2W7zQNnN7YLimCE7UUmoBC8hQNArthvz+I6jBG//RuENgLbhls/qhVG3Ih6KPLGHUmQtx83
+ 2GHLnOhIXHATq2GGDz2riKhXBA9QtgAZYW45Y/cQi0+T64KmI2AMOvE4WNHsZAWg3XtaURTae3m
+ Ua5nNI/S6YcAtJNCNd2/MLZ3um55OjcElZ0Qk2Ac4pxTokH6Zl64iJfnW4Op9iPnPmwUk5/E6ip
+ nXXo4XuS6T0jLPHxAfW3Tf498UYT0LMs9GmzT8Q0JvWbImnaVL3JxCQ6+zNOV6YgYATyLqMvqGg
+ U1ZQjWZYHgp7HAXpjM9m6ol/7uuOavsKhUoZnaP0StdLacK4XKqt1Ixo9qhhStbIilEoslX/ojx
+ 3jI0Kq8xMiWaE=
+X-Received: by 2002:a05:600c:1994:b0:47e:e2b0:15b8 with SMTP id
+ 5b1f17b1804b1-48069bfa73bmr116819135e9.4.1769698604803; 
+ Thu, 29 Jan 2026 06:56:44 -0800 (PST)
+Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-481a5d30f09sm5951065e9.1.2026.01.29.06.56.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 29 Jan 2026 06:56:43 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id DFBD65F878;
+ Thu, 29 Jan 2026 14:56:42 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  Richard Henderson
+ <richard.henderson@linaro.org>,  Manos Pitsidianakis
+ <manos.pitsidianakis@linaro.org>
+Subject: Re: [PATCH v2 3/6] target/arm: Handle SME-only CPUs in
+ sve_vqm1_for_el_sm()
+In-Reply-To: <20260129113455.1283266-4-peter.maydell@linaro.org> (Peter
+ Maydell's message of "Thu, 29 Jan 2026 11:34:52 +0000")
+References: <20260129113455.1283266-1-peter.maydell@linaro.org>
+ <20260129113455.1283266-4-peter.maydell@linaro.org>
+User-Agent: mu4e 1.14.0-pre1; emacs 30.1
+Date: Thu, 29 Jan 2026 14:56:42 +0000
+Message-ID: <87ikck8o2d.fsf@draig.linaro.org>
 MIME-Version: 1.0
-References: <20260105154119.59853-1-cohuck@redhat.com>
- <87tsw4sycv.fsf@redhat.com>
-In-Reply-To: <87tsw4sycv.fsf@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 Jan 2026 14:49:55 +0000
-X-Gm-Features: AZwV_Qi7pH38OgAtongL_NVnLFm9xKs1dgjxGD34LPqz96eNK2scExh4GhFw5Wo
-Message-ID: <CAFEAcA-rFx10-iaNmsbsW-HoWKLPJx0QQVgD36_aS5jfX6hGrg@mail.gmail.com>
-Subject: Re: [PATCH v3 0/2] arm: move DCZID_EL0 to idregs array
-To: Cornelia Huck <cohuck@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Eric Auger <eric.auger@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,24 +107,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 29 Jan 2026 at 06:54, Cornelia Huck <cohuck@redhat.com> wrote:
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> In sve_vqm1_for_el_sm(), we implicitly assume that the CPU has SVE:
+> if called with sm =3D=3D false for non-streaming mode, we try to return a
+> vector length from svq_vq.  This hits the "assert(sm)" at the bettom
+> of the function in an SME-only CPU where sve_vq.map is zero.
 >
-> On Mon, Jan 05 2026, Cornelia Huck <cohuck@redhat.com> wrote:
+> Add code to handle the "SME-only CPU not in streaming mode" case: we
+> report an effective VL of 128 bits, which is what the architecture
+> rule R_KXKNK says should be used when SVE instructions are disabled
+> or trapped but floating point instructions are enabled.
 >
-> > This is part of the ongoing effort to move all id registers to the idregs
-> > array (so that we can work with an autogenerated list of registers.)
-> >
-> > Changes v2->v3:
-> > - separate patch for adding the helpers
-> > - put some rationale into the patch description
-> >
-> > Cornelia Huck (2):
-> >   arm: add {get,set}_dczid_bs helpers
-> >   arm: add DCZID_EL0 to idregs array
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-
-Applied to target-arm.next, thanks.
-
--- PMM
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

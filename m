@@ -4,89 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21BBBD61017
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 13:42:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12B65D61013
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 13:43:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vlSCo-0005we-PB; Thu, 29 Jan 2026 08:37:06 -0500
+	id 1vlSHX-0008QS-O9; Thu, 29 Jan 2026 08:41:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vlSCm-0005uO-Ry
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 08:37:04 -0500
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+ id 1vlSHE-0008Ll-Tl
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 08:41:43 -0500
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vlSCk-0003Mz-6W
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 08:37:04 -0500
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-79273a294edso9426287b3.3
- for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 05:37:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1769693821; cv=none;
+ id 1vlSHC-0005b9-Jf
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 08:41:40 -0500
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-7942fca0da6so7579667b3.3
+ for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 05:41:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1769694097; cv=none;
  d=google.com; s=arc-20240605;
- b=H0hZbQ3BTuQnL60EKiAjxoFoVroJ2dblZZWTnL2BA7s9CUCX/kwXUP6198DqXyEN22
- OJ2bO+a3l23mQXqef58hM9Di7UCb7FlzAeVBDBUw11X225Ti9ZtZZAOmikZRS0hIIL5H
- ZvLrbs26mO61HW15GV/9LqsIw7pa2F/sr0HmYfDrpzLBLmYKNbnPPcEg4ZiIlB29SMqJ
- YtQHommyZV6JhpOfDinaYg1LxofpipqmKhPTEnkxtQptVv0o2Bl+cGjTDA1XP0aVjKOI
- 7jFgyYYJlZ4IT9sEwUYLYRklr8GghrO38TGCTv+oQDPUMjospfkx0LbNw+cMNJbJmxLl
- 9osQ==
+ b=ZKrFGGwlcoApqCURRG1yQUKnJPUPGGG+neiz1WqTWvIw8GjNbcz4ogL340bJ0E/TRW
+ H80F1skpitBvYG6a8a9INU1ViGtYMGBzoIbgmi7p9CRF2UTtVzaV+M3+weF+8fFUkG3H
+ 9JRE70JAXqa+JkR1AlRCEqzJ022/tu3RA9qrW1xZbzGsvaztaT1JkMUf31+I0t9pTPXE
+ t6gxaAjwTYJ8fFZcr7JD1YO7NIhggnnb/LS36glOPR5jR0/EPhdrPUgL/TfMFoHtPGx6
+ biAPTczRIEMsgz3muLTz5+Yq4kntsnOYlDKiEqhOfcmqV5b2jUimmmc86pR+fq8t74zN
+ BmiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=sN/IfYN/Xe9ADwXGup/nslEHImNz4BeTCieJNPMoAXo=;
- fh=yzmXej9edFm/b1dNy009GV52zNju1BbWudjqaLUCe5s=;
- b=XKiU2hxdptmcHplJN4mBzp+ZTkuDHv1gUUlHG5CLiybV6kdbrHIw6RwGtnxUJnrVw1
- bluRRWeY86K8/okuZh0eb4uspgsOAuiDD9d6O9pnHlQFolmun1VrAhwuOR5eM3xySYuW
- ujbD5S3Hr+Yz6pYpVDTIvrJOly94IZBsp8ZDh0exWpApr5NejN6GqrtXY4EFhwxTjvSz
- czkxX7EBuyJc6YYuxTRydUAW2C3ZMK2IXLh5hxFgOn0sqyPguNvRFxmotoaeit3g33SI
- da4HCyMAUNlvGHShOJBcyBOtw6x7WdpNDkLL7YGjz3aWiFF3MI0pTkam3cTz4/k5yRkN
- SI7Q==; darn=nongnu.org
+ bh=cwyLYqO384PsM59QyIlQBNjYFKFwiiWXYOM1AFGJlzE=;
+ fh=j4gRX9p8oTEi/+LBsdtlp/hvMAbp96Mn73PJ8zPWq3o=;
+ b=XuRKjnl7wfD08+JrDUslx5CdKINte4nbFtF36qURVQ0JP39+8KDhabD38OLC1jwdpk
+ D8CSXlyBKhbaB/hqNKA2kE+DyCZasA4fM8WS43HU99tNCj/f6cUkNvSMTl7RpYc41Xwy
+ ijprqwIRKZD/EFnZzhq66OnKqy3bgfvPNBl459XMkvf3WoBqLaZq4aDg3c2AQ4p703pA
+ PZJspXQW2T/+FBIHoUqsXNaRyGb80QQI1yzc1UJw5bfFujbl2HUKvl+jlXAkhrXfr/Oe
+ yDCB4C9EDriIsJyDwuzXazGm/Vf7ouZYzlOHDIis0YTP8rDIwamAd64JdPYg5NXMV/ma
+ CRHQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769693821; x=1770298621; darn=nongnu.org;
+ d=linaro.org; s=google; t=1769694097; x=1770298897; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=sN/IfYN/Xe9ADwXGup/nslEHImNz4BeTCieJNPMoAXo=;
- b=BHdU4g+ALqjWSP/GzPWjl6LfkHKXR/BUCEn/P7QohPmpgQ9raUx7YQDDIJSyJbRDx2
- uUbZYMk2eUqNfHQA43Lw0n6D4QJANd9jBbMM6X25sDc2hmO6yda1brzQ/V6DJoeD0t3G
- caU/K2pgOeLZVTiEk9l1H49V88okpT0KVib9Z1k5gRE1uYxoNIRleOlWIO3PnmVL56WP
- WNKJVn6hlj7JZflO69ieqXgs1vohHQg3P1NFXMwHtpreih8kwfuAj6yJCJu0sbjJMphh
- WjV1fyeZvugpzfLJlvY6qTuNN1PGvG5kFGqEqp8PVNP/EJG7Zwy/0epv9I4Sh5m6VaE9
- K4Jw==
+ bh=cwyLYqO384PsM59QyIlQBNjYFKFwiiWXYOM1AFGJlzE=;
+ b=pYSqQAyrL/RyEXWSh9GQvFk/V6ThoN5vUr34YYf7J37uLqOVsCODGfU99/LaQsGdXw
+ pHj0BfENB+5svwqwg24Mz3GUETDWdTMGnxGCx7FDA8T+d6yFW3n0NUZRmOtcNhwqUAWy
+ 1QhhKLRsDF7y3IBwQrId7YXGIkCFi4jXvmvFuHWX5HFUxHF9VJnRd8O0V48IilM0bvcc
+ Wf/45MPflG5ltW8CRk269Y2VW3/Fu7KqEYenu2N9NaJPlW07QPoQ/E0gwAa6YeL1jzTb
+ 5hxWuWlY5y++MEZfrkJwfCiFoLI947bccAhsw4W6vfhl4stHYve0Hf5BvIOG5H3Of0lu
+ WLEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769693821; x=1770298621;
+ d=1e100.net; s=20230601; t=1769694097; x=1770298897;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=sN/IfYN/Xe9ADwXGup/nslEHImNz4BeTCieJNPMoAXo=;
- b=DZhZo/LdQomdj6dFO1I9lCaBRe9hiaM/cH97V1Ji8s6Qs/t9MzR4hzkH2AS2gBiipH
- FrAkYJTvFG7WAht18QLaJxYYzlAb3zVJd/OI/lJbM09979BYYO480eKLsMJyNj3P/x6k
- L66JFj6rcRMrMbFqd2HOsDeSod5u/huIgSIpCU5ym+qgvkjXXeavYAn2gDokJPCLoh+J
- NtfFvVAhrCPBUxk5ChZ95pt6/YNru4l5ckYN1iZrqkvCy/twJ9GlHm2u2J78/KiiwoPd
- WJOt9AYYOCqzL1v3nJk03wNQ2+Svmd7noq8a9+VyRdNgqANyy03pMIHUYkJ8US1B/lFz
- dC4g==
+ bh=cwyLYqO384PsM59QyIlQBNjYFKFwiiWXYOM1AFGJlzE=;
+ b=Kf9m0YjTIE4/QEIdvoZfix4BLBYm9M0OhGDUSc3qYR5n9i4ivnxI03B84SSP7Vej39
+ BAzcghj8IxBSC7wWDqauuMKJ8wmgnJVrFM4Le8kodVFxoZF29zMh07honCc+IZDiH/CS
+ FF5uMR2jVWV4OHiPtYRImoBqysjacgaRih5dFOa1skQ8UpUhqY5RmzJQ7LuDg0glv35/
+ /X1mxDCIH0edgo7zKudBWZnhJhCBzq03gDsGHp3GPS2FECPicsjWwNR/jQm0Ai/lQsCv
+ Zoh/5yVkHx/oOHQzvpaNyVCB1DO2ymIzOgKkmOonfg8kP1EMmU8s4lazZtbTGqTGWT3b
+ Zz3g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXTwdLOVu2m205rcs/pP32nPbhmw+FdgRPzflnYN6Xev1kqyW9a6lXakYH6+1vqG0MAoV2Sqx6Bfw==@nongnu.org
-X-Gm-Message-State: AOJu0YyRX0yW80PTZK2owrz/fH05hXKHI6djVc9RyoEOPwsZk/dzTlq2
- +YA/kfLB2Ddq0ppFKv9TUwngp6mAjYhJ3sVGMzZOKvpo3lT/ezjnPFRZEIfjboUPqaLxmoMduV7
- ghnw31ORc7eIOp2l0YpJd78sTsvYMHVD1G6T1Luv+Zw==
-X-Gm-Gg: AZuq6aJps37WG1yUwlu8PFTMeksIKx5xrrOzkoFWbcwtOHP673JA568nLZ75YqO5xXI
- v1kK9rzhVRBHCcOivP/0+YLwgxhFPdUCesIVSnXNtuBjypamgvX3qIB/wf6IdWH5reaxRwg4hMH
- fDQjH7QcH9ZUC2zNWe0wYwWe0oJLs8SF2K/n6kKXkmHY+MdKLIETiqEKsM9Z3YkQb/yvMhS3n+x
- MjUCoN30YIJeIzcATPtkDLDztX+6EHieNYnyAPX8qa7dlF6qTkaWj7x5Db/qjeKAyXDBQ==
-X-Received: by 2002:a05:690c:14:b0:794:8d58:cac8 with SMTP id
- 00721157ae682-7948d58ce74mr39171537b3.4.1769693820790; Thu, 29 Jan 2026
- 05:37:00 -0800 (PST)
+ AJvYcCXENLSfbRtjJ1RxU/1meMAjWSpYO/kqEbzsQxnG9NdIe+Z2lIZp26J1DyGA03HZ4pj/ki7ZnVxuiA==@nongnu.org
+X-Gm-Message-State: AOJu0YylPGpamfZJ5Y1lNSuRK66OsxhOxK1WY0LOlxQ8vVMcqImcFK1F
+ MUtQSIWeYDgZr4Po0SZEN3ILQ51/SH2RDqrfbXKh2BypG64LNRDmrrx1EgUwzqEyLaCegjK/teZ
+ VAGcnoH15VpoUqcVVomPy/eoX00deZqoykLDyvA8g6A==
+X-Gm-Gg: AZuq6aLt6jtVIlJnyaEfcSafTM5JTyMdmXfpG7d38uFjAz5fsJjRxo9HO5zP2TWYHrl
+ 2sN3d/gcwcum3U091s3+TmxRDGl2Sc8676CgLReVThkvJPoH11jnRsJ1l1gnanCRoz6XeFYezzG
+ j54jgwiGbgfpJ7n0+VrMGHKFeETZUaaBt5ncBSTpH5dAufvcetEdxUmwc+GXLSPH5srwpgxYEFO
+ AhnnrnH/IRVZzIchTGNN8H2095egqlJzDOCdItu4Zfs/nQWWfMScDkmtPTvs041I/XHfrS6z27p
+ cKh1
+X-Received: by 2002:a05:690c:2904:b0:794:9317:bad2 with SMTP id
+ 00721157ae682-7949317c25dmr13631087b3.56.1769694097379; Thu, 29 Jan 2026
+ 05:41:37 -0800 (PST)
 MIME-Version: 1.0
 References: <20260127182805.73212-1-mohamed@unpredictable.fr>
  <20260127182805.73212-6-mohamed@unpredictable.fr>
-In-Reply-To: <20260127182805.73212-6-mohamed@unpredictable.fr>
+ <CAFEAcA9qtLv1wOKkEmtNO5UsGTAM0x7YD+y8Fsu8hCQRAD_o5A@mail.gmail.com>
+In-Reply-To: <CAFEAcA9qtLv1wOKkEmtNO5UsGTAM0x7YD+y8Fsu8hCQRAD_o5A@mail.gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 Jan 2026 13:36:49 +0000
-X-Gm-Features: AZwV_QhJjQyc2L3PIYwRjF-3BhFl3zXOwzagj7lW2l4jmo7kyVF_gHIOKjteGYU
-Message-ID: <CAFEAcA9qtLv1wOKkEmtNO5UsGTAM0x7YD+y8Fsu8hCQRAD_o5A@mail.gmail.com>
+Date: Thu, 29 Jan 2026 13:41:24 +0000
+X-Gm-Features: AZwV_QjiaSc4bQvvEHjcRpY3vBoosppBqZv5nrEesKh4Q49SBnntHhtw_EfBkXE
+Message-ID: <CAFEAcA-3akyfdwprPe8Fr_P-BOUAauxJqAETEj_+NN-XeBD3BQ@mail.gmail.com>
 Subject: Re: [PATCH v18 05/22] tests: data: update AArch64 ACPI tables
 To: Mohamed Mediouni <mohamed@unpredictable.fr>
 Cc: qemu-devel@nongnu.org, Zhao Liu <zhao1.liu@intel.com>, 
@@ -106,8 +108,8 @@ Cc: qemu-devel@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
  Eduardo Habkost <eduardo@habkost.net>, 
  Phil Dennis-Jordan <phil@philjordan.eu>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,30 +132,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 27 Jan 2026 at 18:28, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+On Thu, 29 Jan 2026 at 13:36, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> After the previous commit introducing GICv3 + GICv2m configurations,
-> update the AArch64 ACPI tables for the GICv2 case.
+> On Tue, 27 Jan 2026 at 18:28, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+> >
+> > After the previous commit introducing GICv3 + GICv2m configurations,
+> > update the AArch64 ACPI tables for the GICv2 case.
+> >
+> > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> > ---
+> >  tests/data/acpi/aarch64/virt/IORT               | Bin 128 -> 84 bytes
+> >  tests/data/acpi/aarch64/virt/IORT.smmuv3-dev    | Bin 364 -> 260 bytes
+> >  tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 276 -> 192 bytes
+> >  tests/qtest/bios-tables-test-allowed-diff.h     |   3 ---
+> >  4 files changed, 3 deletions(-)
 >
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->  tests/data/acpi/aarch64/virt/IORT               | Bin 128 -> 84 bytes
->  tests/data/acpi/aarch64/virt/IORT.smmuv3-dev    | Bin 364 -> 260 bytes
->  tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 276 -> 192 bytes
->  tests/qtest/bios-tables-test-allowed-diff.h     |   3 ---
->  4 files changed, 3 deletions(-)
+> The process documented in tests/qtest/bios-tables-test.c says
+> that this commit is supposed to have the diff of the disassembled
+> table data in the commit message, so that human reviewers can
+> confirm that the changes are as expected. (If you git log
+> tests/data/acpi you can see how this looks.)
+>
+> Can you provide the ASL diff, please? (If this is going to be the
+> only fix needed to this version of the series, which I hope it
+> will be, then I can update the commit message as I apply the
+> series, so you don't need to respin, just reply with the updated
+> commit message with the diff in it.)
 
-The process documented in tests/qtest/bios-tables-test.c says
-that this commit is supposed to have the diff of the disassembled
-table data in the commit message, so that human reviewers can
-confirm that the changes are as expected. (If you git log
-tests/data/acpi you can see how this looks.)
-
-Can you provide the ASL diff, please? (If this is going to be the
-only fix needed to this version of the series, which I hope it
-will be, then I can update the commit message as I apply the
-series, so you don't need to respin, just reply with the updated
-commit message with the diff in it.)
+...ah, it looks like unfortunately this is going to conflict
+with the smmuv3 acceleration series I already have queued,
+because that series also updates these ACPI blobs. So I think
+the best thing is if I get that out in a target-arm pullreq
+and then you can rebase on top of that.
 
 thanks
 -- PMM

@@ -4,94 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E84CBD358F5
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 10:25:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 814D1D358F5
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 10:26:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vlPBo-00085d-AA; Thu, 29 Jan 2026 05:23:52 -0500
+	id 1vlPC5-00087W-Dr; Thu, 29 Jan 2026 05:24:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vlPBj-00085D-Gk
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 05:23:47 -0500
+ id 1vlPC1-000879-FA
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 05:24:05 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vlPBh-00089j-01
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 05:23:46 -0500
+ id 1vlPBz-0008KW-9L
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 05:24:04 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1769682223;
+ s=mimecast20190719; t=1769682242;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:mime-version:mime-version:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=+dF31BLc+5Iefh/sHZTLdaspkqxg82XqhZZVy4Vnvic=;
- b=el3t1hEExcRAB8XxlK8vyKZdHxWsVhRccdOkn3cN/3TT+MsxNB8fdifKAD7YZMMyOYzLdj
- Djnf6oEAkKckHVSD29nh8DvPI5dqFXDNCYX747IgQbpOxksh89kvgM3OkP2v1MHCGT/9Uu
- +QM5YcLNkztYWl/xQuF4ojaTrvKWbsk=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=o6BCgQ9RaennusT58hZUOY/v+T+ILD2ha1SdxShoZ4g=;
+ b=IgHPImAGiKCpWDxsXPJ1HkUf8qYPwRi+UQjXCxilobbDUoxCLWWg0qTIcArhEBP/SZmMtk
+ MD0cpGdJzvcRadPfdDvA4ny2al1pLCBEfCjIqujk+4dIxoABId37eyOHG4QXPGITU2jbsB
+ 9CLYQW+smmICstTVoaoA3v9vD8Mi+iw=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-374-NRypGABvMSOtw-ECPRJRpw-1; Thu, 29 Jan 2026 05:23:42 -0500
-X-MC-Unique: NRypGABvMSOtw-ECPRJRpw-1
-X-Mimecast-MFC-AGG-ID: NRypGABvMSOtw-ECPRJRpw_1769682221
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-4803b4e3b9eso6091175e9.3
- for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 02:23:42 -0800 (PST)
+ us-mta-144-z4dr40vLMsmp73s1ym-8Mg-1; Thu, 29 Jan 2026 05:24:01 -0500
+X-MC-Unique: z4dr40vLMsmp73s1ym-8Mg-1
+X-Mimecast-MFC-AGG-ID: z4dr40vLMsmp73s1ym-8Mg_1769682240
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-42fb1c2c403so609610f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 02:24:01 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769682221; x=1770287021;
- h=content-transfer-encoding:in-reply-to:from:references:to
+ d=1e100.net; s=20230601; t=1769682240; x=1770287040;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+dF31BLc+5Iefh/sHZTLdaspkqxg82XqhZZVy4Vnvic=;
- b=oQ4YYqCL9ys0lP5E6aS+likvgr6CmPwgwsjC8NAKCyZG9332VtEXi9YRs3FReu4tX0
- LOkxjNLXpFIRj4iATDwU09Ze7yVIIYfWjMP1DZ/UqrdFNJMVEAGhRJcKqxQJm9YGdJs4
- emmEbDlN7FXeb+P1yvV122lMAKIs4/qqHmEKe7BNwKcI7uAWtZdDMi0F30qmhzgrNLrT
- mNqym8tXkbQBr5cd3xvipos5uInH6QzKSCMcFydQpgVZqluC0JPTcClBeLkc8GSjvTnf
- 9/V5EpR16oJ8NnP2sFKoJqEZav7J+4V8qURgWCVfjLEmWjfldeuztuubSkDIVb45UsKf
- 4iWw==
+ bh=o6BCgQ9RaennusT58hZUOY/v+T+ILD2ha1SdxShoZ4g=;
+ b=fSl5WkjsURDIxUZlM0Thy/PJLYZjYu1iRyqasxqIVee/IRkg1B1OzsyHZeGSa0Ysc2
+ /2wdjDF7//fF7PHxjvK+5SsZ6o1pMBC6q2CE55KcyE//HX7LKRnx180UiZNCvkzMKbtC
+ Cl1Sz8V+f0kiMaVyckDbIjXOGYWs5e/OOzXcvnaHkg+++F/8ZISN21FCONbuCI26zMlO
+ H6cmvvT69yH+saf4Kh1m6XTSb4qXpigkIZ64NUjguC4s0pCaYAh0uZgTP/C30+bXtK5S
+ OJZcRp1ru5Ih5aI4V9GslPV8toNlf1iTNskNkaSdq13b/sVq0jId1a07R0oSmttIfeWS
+ tb0g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUYodS1Kid37fdIwVy9UCifb3FiZ0dCTcuilmCXX/WSw8UjUXiaXLB/pUElRXq2l1EYAutE4s9+Sg==@nongnu.org
-X-Gm-Message-State: AOJu0YyrZwfb8ySVvVlqPs87kCxGOptMhSL+ZO8iaRNW2MF4bZQV2WJC
- DewN/PUOvcDDB1GRZfeSk4D9+m+dJ4gjrckvS/8dcThWypkBtmb7Ps184mhO8dFmWlndCOosPLl
- vxaf0IpShCURSET5eBqfxcLe53uGKb1CHVB3/EJZ2i4cKHC86xox1dQ==
-X-Gm-Gg: AZuq6aJUuNWactUZ4kIvxNDYh2/NTO/Zcqmo6qxN8i0wNECRtBJaVvsl7m81gksRm6g
- 3ejwbwQnyr+TrJ3jD/grmNLNraAreoRZZobZlIjRNHjQoLpvq8Xc5QhgP187Y3T7qk1eSm45pPu
- P+Xa11GpA2YQWllaZ1IA6bNQ19xmX1Vg+4kKb1H3TX+J4wnknblWT9Gy1PXP8DNyo853uFaNdUM
- NgI+WO+0zA1hCgtQl7mJOQKq6cNu3TMm69LgJOhUwZvxdhO3hMCt0qbfMad7ZNI9cXfnrBA+uEc
- C08q/ROM9j6OzbUFaDp6XUgMIBOk+1JQf72ntFYh1hBeRjuC6+kKfjarUe6RhNz02SLktAYufpm
- pAHcSsFHaGCeHtxl9mRENoBpf9Pk0M18ETgmmhz0KEN3cA9hLjRzPk5irng==
-X-Received: by 2002:a05:600c:350b:b0:47e:e78a:c834 with SMTP id
- 5b1f17b1804b1-48069cb9257mr91774575e9.34.1769682220895; 
- Thu, 29 Jan 2026 02:23:40 -0800 (PST)
-X-Received: by 2002:a05:600c:350b:b0:47e:e78a:c834 with SMTP id
- 5b1f17b1804b1-48069cb9257mr91774325e9.34.1769682220463; 
- Thu, 29 Jan 2026 02:23:40 -0800 (PST)
+ AJvYcCWl/XVim32Ani9DBqcWiJe0CnDX1A7uIAU3Oc74Pp3Z+Bv8tY6WA22+u9TwFWreyOglajFaxwdeuw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx1qGSYy9BOfzsFVaKnBDMJfLcAEFbT/1d5Iok3G9DRE7IjWlST
+ 7Dv4j48U2ltO4ARy5TmSUqAituBsAd2GxcrShYp4aJnjRJIrUmcwo16/E46cKtHK566Bz0XjlLg
+ 3Odox4NQ1WG4BgFVzo6Gk+BFtGwEyAYWj5g6Yd+kjoNMGDdwonZFEXA==
+X-Gm-Gg: AZuq6aJxMWBJTlyk+rUKOeuJoog7DY2XscjQp7UafDeT5QYgAHKN0gq5dOMr3g/SHnT
+ frNxymXEt9dg6XmCIiBmOsZ7UzJrQD9P7WXFSWXDi+34jdKfDJDyDakKGNt3+ZzL04pm/QDSEID
+ Wbs5djeOJ0/0SdC61f62sVsUGoaV9NYTsT1aa6xoipissxF4XQs33g6Vea4f3A/tTkb3q8eUWuh
+ 0/TT9/kAX27P5hxSxN/239f5aNt9N6rzkYrWfS7eH82O7EL3tNbcrdSW+K3PFzMIAGi5JT/h71u
+ fDoHk4Nj/rGNTw4O2RQb7gbCJm5GGmH+qPcaYSXuJXtzWbgyvw2bqdkQ/lvzIzlTe7xTMJtCg75
+ 9QIF37l/G3iyDPGqX31ipXHbHHoTnJXKdPIy80ZfmCxmP3cdExhghFN4HEw==
+X-Received: by 2002:a05:6000:401e:b0:42f:b3b9:874d with SMTP id
+ ffacd0b85a97d-435dd0b0443mr10955754f8f.37.1769682239926; 
+ Thu, 29 Jan 2026 02:23:59 -0800 (PST)
+X-Received: by 2002:a05:6000:401e:b0:42f:b3b9:874d with SMTP id
+ ffacd0b85a97d-435dd0b0443mr10955721f8f.37.1769682239439; 
+ Thu, 29 Jan 2026 02:23:59 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-481a5e1d0f7sm174215e9.18.2026.01.29.02.23.39
+ ffacd0b85a97d-435e10e490esm13152766f8f.9.2026.01.29.02.23.58
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 29 Jan 2026 02:23:39 -0800 (PST)
-Message-ID: <08a06bac-f497-418a-a681-cb39f731f89b@redhat.com>
-Date: Thu, 29 Jan 2026 11:23:38 +0100
+ Thu, 29 Jan 2026 02:23:58 -0800 (PST)
+Message-ID: <e81c78de-f175-42b2-a19a-e1a9df6f3752@redhat.com>
+Date: Thu, 29 Jan 2026 11:23:57 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 08/11] hw/arm/virt: Declare AArch32 DBGDTRTX as safe to
- ignore in incoming stream
-To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com, gshan@redhat.com,
- ddutile@redhat.com, peterx@redhat.com, philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH v6 00/11] Mitigation of "failed to load
+ cpu:cpreg_vmstate_array_len" migration failures
+To: Sebastian Ott <sebott@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, Cornelia Huck <cohuck@redhat.com>, maz@kernel.org,
+ oliver.upton@linux.dev, gshan@redhat.com, ddutile@redhat.com,
+ peterx@redhat.com, philmd@linaro.org, pbonzini@redhat.com
 References: <20260126165445.3033335-1-eric.auger@redhat.com>
- <20260126165445.3033335-9-eric.auger@redhat.com> <87wm13rn1j.fsf@redhat.com>
+ <02feaa00-2188-8265-4a65-63fe40270093@redhat.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <87wm13rn1j.fsf@redhat.com>
+In-Reply-To: <02feaa00-2188-8265-4a65-63fe40270093@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Bge8QOvm4j3KwDSmbBS1a_hYqVRm736opB3ezv54uGw_1769682221
+X-Mimecast-MFC-PROC-ID: DKL5rIlo0QAIFduqDAGsxfdpME8GzFF3r0CAGr16JJk_1769682240
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -122,73 +123,62 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Connie,
 
-On 1/27/26 6:19 PM, Cornelia Huck wrote:
-> On Mon, Jan 26 2026, Eric Auger <eric.auger@redhat.com> wrote:
+
+On 1/27/26 5:52 PM, Sebastian Ott wrote:
+> On Mon, 26 Jan 2026, Eric Auger wrote:
 >
->> With the new infrastructure in place it is now feasible to teach
->> qemu that it is safe to ignore a sysreg in the incoming migration
->> stream. So with the plan to revert commit 4f2b82f60431 ("target/arm:
->> Reinstate bogus AArch32 DBGDTRTX register for migration compat") from
->> qemu 11.0 onwards, let's add a compat in 10.2 machine options stating
->> that this reg is safe to ignore. from 11.0 onwards we will not need
->> that register anymore.
+>> When migrating ARM guests accross same machines with different host
+>> kernels we are likely to encounter failures such as:
 >>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> "failed to load cpu:cpreg_vmstate_array_len"
 >>
->> ---
+>> This is due to the fact KVM exposes a different number of registers
+>> to qemu on source and destination. When trying to migrate a bigger
+>> register set to a smaller one, qemu cannot save the CPU state.
 >>
->> v4 -> v5:
->> - rebased on top of latest machine types (Connie)
+>> For example, recently we faced such kind of situations with:
+>> - unconditionnal exposure of KVM_REG_ARM_VENDOR_HYP_BMAP_2 FW pseudo
+>>  register from v6.16 onwards. Causes backward migration failure.
+>> - removal of unconditionnal exposure of TCR2_EL1, PIRE0_EL1, PIR_EL1
+>>  from v6.13 onwards. Causes forward migration failure.
 >>
->> v3 -> v4:
->> - add a comment related to DBGDTRTX (Connie)
->> ---
->>  hw/arm/virt.c | 10 ++++++++++
->>  1 file changed, 10 insertions(+)
+>> This situation is really problematic for distributions which want to
+>> guarantee forward and backward migration of a given machine type
+>> between different releases.
 >>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index baa4e31aac1..03d5af18f26 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -100,6 +100,15 @@ static GlobalProperty arm_virt_compat_defaults[] = {
->>  static const size_t arm_virt_compat_defaults_len =
->>      G_N_ELEMENTS(arm_virt_compat_defaults);
->>  
->> +/* Register erronously exposed on 10.2 and earlier */
->> +#define DBGDTRTX 0x40200000200e0298
->> +
->> +static GlobalProperty arm_virt_compat_10_2[] = {
->> +    { TYPE_ARM_CPU, "x-mig-safe-missing-regs", stringify(DBGDTRTX)},
->> +};
->> +static const size_t arm_virt_compat_10_2_len =
->> +    G_N_ELEMENTS(arm_virt_compat_10_2);
->> +
-> Not objecting, but we had a discussion recently regarding where compat
-> values for arm cpus should live:
-> https://lore.kernel.org/qemu-devel/20260120122108.131708-1-thuth@redhat.com/ ff.
+>> While the series mainly targets KVM acceleration, this problem
+>> also exists with TCG. For instance some registers may be exposed
+>> while they shouldn't. Then it is tricky to fix that situation
+>> without breaking forward migration. An example was provided by
+>> Peter: 4f2b82f60 ("target/arm: Reinstate bogus AArch32 DBGDTRTX
+>> register for migration compat).
+>>
+>> This series introduces 2 CPU array properties that list
+>> - the CPU registers to hide from the exposes sysregs (aims
+>>  at removing registers from the destination)
+>> - The CPU registers that may not exist but which can be found
+>>  in the incoming migration stream (aims at ignoring extra
+>>  registers in the incoming state)
+>>
+>> An example is given to illustrate how those props
+>> could be used to apply compats for machine types supposed to "see" the
+>> same register set accross various host kernels.
+>>
+>> Mitigation of DBGDTRTX issue would be achieved by setting
+>> x-mig-safe-missing-regs=0x40200000200e0298 which matches
+>> AArch32 DBGDTRTX register index.
+>>
+>> The first patch improves the tracing so that we can quickly detect
+>> which registers do not match between the incoming stream and the
+>> exposed sysregs
+>>
 >
-> Could this become relevant for future other versioned machine types? I'd
-> assume that they just would skip the bogus reg from the start, though.
-Thanks for the pointer. Effectively this could have initially lived
-in hw/core/machine.c but the problem specific to this array prop is that
-in any case this is not something you can aggregate and this requires
-infra defined in 10/11 where you register safe missing regs and hidden
-regs throgh a specific helper. Currently only one machine requires this
-so I would be inclined to leave it in virt arm machine code. So this
-patch is something trasncient and replaced in 10/11. Thanks Eric
->
->>  /*
->>   * This cannot be called from the virt_machine_class_init() because
->>   * TYPE_VIRT_MACHINE is abstract and mc->compat_props g_ptr_array_new()
->> @@ -3552,6 +3561,7 @@ static void virt_machine_10_2_options(MachineClass *mc)
->>  {
->>      virt_machine_11_0_options(mc);
->>      compat_props_add(mc->compat_props, hw_compat_10_2, hw_compat_10_2_len);
->> +    compat_props_add(mc->compat_props, arm_virt_compat_10_2, arm_virt_compat_10_2_len);
->>  }
->>  DEFINE_VIRT_MACHINE(10, 2)
->>  
+> I gave these a spin - works as advertised, no issues found.
+> Tested-by: Sebastian Ott <sebott@redhat.com> 
+
+Thanks!
+
+Eric
 
 

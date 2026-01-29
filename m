@@ -4,97 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F021D358D6
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 16:52:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50003D73E80
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 19:20:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vlVFL-0006p5-Rf; Thu, 29 Jan 2026 11:51:56 -0500
+	id 1vlXZ4-0004GG-QY; Thu, 29 Jan 2026 14:20:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vlVFK-0006ob-CN
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 11:51:54 -0500
-Received: from p-west1-cluster1-host10-snip4-10.eps.apple.com ([57.103.64.103]
- helo=outbound.pv.icloud.com)
+ id 1vlXZ2-00047S-SQ
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 14:20:24 -0500
+Received: from ci-2005i-snip4-4.eps.apple.com ([57.103.89.215]
+ helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vlVFI-0007fU-Dr
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 11:51:54 -0500
-Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-1a-60-percent-3 (Postfix) with ESMTPS id
- 05E96180048D; Thu, 29 Jan 2026 16:51:45 +0000 (UTC)
+ id 1vlXZ1-0005lJ-89
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 14:20:24 -0500
+Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-central-1k-100-percent-2 (Postfix) with ESMTPS id
+ BADA318005FD; Thu, 29 Jan 2026 19:20:18 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1769705510; x=1772297510;
- bh=ejSWa1sXG4fWH66vJ41KRLnie3I3EyyhZRjof9W6CgQ=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=I6si2mNZ3roPWQcBdHYJiF9lo6cwspOhnM21zcwteUpytcERP4goaWbebSvGxEIsKXRAXBIJp9QUklJSrCwsWVoW9cafemuGkNoBrKPh1SKzD7/+UJzuU/siLesxJjBwsBvg2+2YS7drNDe6j/YF00uY4yyUXBRavvHtDHcU/N4c5xc4u7eeaJqQaVJZLOtE9UopzhL9PD8eN2y2DdfeC1mur5l4hSnRDskp5rm+8hR8ZJBgx+G+MO6WZ7inP+MpAvg+dIMTAdQQV8Jhfqhtdd2hMiowTvSoHahVaP9tzfXYv6X5a5d/Rn2TfquowdrI5PqcHatb1mkKAnlxoTVmiw==
+ s=sig1; t=1769714421; x=1772306421;
+ bh=JM+IS+u2FhSUs+ag940jtQKtrbvFK486Oy66aTDOb2E=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
+ b=gGYRdVFU1sTlV5314iJYgg2VxOjEhB4zjTqQkpJctXG1aiZ0Uj+EWngQxmGoECaznyb0OQpOAg7cU4Mfb52uXY7bj8I4QKj5HlCb0h/JHLUoKIoKETulWoT/fw3RjI3VcyhBKDnpaN3b9IAWYrSpCPVFFh0o/nSXAObsZtYWfKY29IduS4eDw5oQiHLLodTmgcEJQ3/pGU7aNfDdNAVZEOxmj89j7UjQnjBqw0d7uz6NaIBnfkeG2Bm39P/JZXSUUHZ11W/jAck451ifTYk/ZF7lmG6vi2xaHElCn7WviVLFBVF3+5/AgD64b99FbUymQti+wljZMYE36E1UxIrZiA==
 mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.56.9.36])
- by p00-icloudmta-asmtp-us-west-1a-60-percent-3 (Postfix) with ESMTPSA id
- 453D11800990; Thu, 29 Jan 2026 16:51:41 +0000 (UTC)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
-Subject: Re: [PATCH v18 13/22] whpx: interrupt controller support
+Received: from localhost.localdomain (unknown [17.57.156.36])
+ by p00-icloudmta-asmtp-us-central-1k-100-percent-2 (Postfix) with ESMTPSA id
+ 24AD618018A2; Thu, 29 Jan 2026 19:20:15 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <CAFEAcA_+o2BRGPjk=++2pkZpN62yPKRhy4sx+7kSvXcee5ofqg@mail.gmail.com>
-Date: Thu, 29 Jan 2026 17:51:29 +0100
-Cc: qemu-devel@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
- Ani Sinha <anisinha@redhat.com>,
- =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>,
+To: qemu-devel@nongnu.org,
+	mohamed@unpredictable.fr
+Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Igor Mammedov <imammedo@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Cameron Esfahani <dirty@apple.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-arm@nongnu.org, Alexander Graf <agraf@csgraf.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Cameron Esfahani <dirty@apple.com>,
- Alexander Graf <agraf@csgraf.de>, Eduardo Habkost <eduardo@habkost.net>,
- Phil Dennis-Jordan <phil@philjordan.eu>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <D302D4EE-8E69-4FED-BD31-E3A0D82C62EE@unpredictable.fr>
-References: <20260127182805.73212-1-mohamed@unpredictable.fr>
- <20260127182805.73212-14-mohamed@unpredictable.fr>
- <CAFEAcA_+o2BRGPjk=++2pkZpN62yPKRhy4sx+7kSvXcee5ofqg@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.3864.300.41.1.7)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTI5MDExOCBTYWx0ZWRfX5YA9Mt8L6Gai
- CaoxImYe5JvB6r4biIInEopKMisKEZy7cx9H4r5i2ySFIT96LC6NBZ4Hy0yHVDqullu8CGzOuKq
- iG5ZV6dS/dhhtOM/fXadVds0loXzg0UQJgVaVA7OX0kvI0mKDi9mE7RpLtTnvXBMmA0lQSUjm21
- F04Lo80k4KZEjRU95TkK/tntyjvm4CepB11WI3Rma8k72s+zE1rSsXmbl/+YDM5z7BQsAmp0ceP
- l7izQ1fXYy4mUHQtoXv0DeKIkipUBl6tB2e/e91XD6lqzLrpkM+TYo/wt2my+/jobZADXwcqQFe
- TwBi+YWXaMjIF8KkwUldSdE5h6VUpCz6LzlbP/Q6NxSvto8Q32Ok1hDjO1Kt+s=
-X-Authority-Info-Out: v=2.4 cv=FqYIPmrq c=1 sm=1 tr=0 ts=697b9024
- cx=c_apl:c_apl_out:c_pps a=azHRBMxVc17uSn+fyuI/eg==:117
- a=azHRBMxVc17uSn+fyuI/eg==:17 a=kj9zAlcOel0A:10 a=vUbySO9Y5rIA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=QDk9sNPcX2z11vPKvYsA:9
- a=CjuIK1q_8ugA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: 6ElEsR5sPjbb6vtrBhw5dOtaISkL2oD6
-X-Proofpoint-ORIG-GUID: 6ElEsR5sPjbb6vtrBhw5dOtaISkL2oD6
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Sebastian Ott <sebott@redhat.com>
+Subject: [PATCH v19 01/22] target/arm/kvm: add constants for new PSCI versions
+Date: Thu, 29 Jan 2026 20:19:46 +0100
+Message-ID: <20260129192009.14707-2-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260129192009.14707-1-mohamed@unpredictable.fr>
+References: <20260129192009.14707-1-mohamed@unpredictable.fr>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: y916QoC3qz94CYWxavWdkV2y4W6syvgH
+X-Authority-Info-Out: v=2.4 cv=MIttWcZl c=1 sm=1 tr=0 ts=697bb2f4
+ cx=c_apl:c_apl_out:c_pps a=2G65uMN5HjSv0sBfM2Yj2w==:117
+ a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=IkcTkHD0fZMA:10 a=vUbySO9Y5rIA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=20KFwNOVAAAA:8 a=KKAkSRfTAAAA:8
+ a=JzSzn-WSbtI0XTK35wMA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: y916QoC3qz94CYWxavWdkV2y4W6syvgH
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTI5MDEzOCBTYWx0ZWRfX2vNdm+4sZNib
+ eYdtqjaEO63bLAA+D/gpKz7Af6TX0rXXweC94nEFPp14wiQK9N3mZRUK3Zjfz1x9owLVV7J8GDQ
+ OFhn7T3Pcljd/bItYe9wJHZSYWCdV6Uc4V/RqWtaDWYc2bwM5V5RoYD0Eq8WbJAxwObLIxMizdh
+ CUTv8m2JeF4qtPrqeIIB/lLbqGqnO20SFUtwcZeZn4Uh5EWv0Sm3prZXp0uj07bZiR2qM76SKhX
+ viaT94+DguIWu1zfsSb70U7t6e/c6hTcCoHICqgr4UFLz1go0bfwWJM25z5+Qa+hlcVz2yREOw2
+ s2M6UJgnDmOU/AFWcAqhm2obxN5nIJ0Ujl4cCdwzYY+Q5EA+AREYYNvtT8dd4s=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-01-29_02,2026-01-29_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- bulkscore=0 suspectscore=0 lowpriorityscore=0
- phishscore=0 mlxlogscore=922
- clxscore=1030 spamscore=0 mlxscore=0 adultscore=0 classifier=spam authscore=0
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2601290118
-X-JNJ: AAAAAAABYJ0pt5Sb1cxEp+zv1/he5LW4g01JwrJjOWM7cUjAX3zIXGKBhbPy4RV6hXb4lWVPyUU9KutpjWoERZmW9o3K9pLiZJxQuArrt1FTl/ZwsbJQDSUjVqdimH5Ka4llxeH8ftSTR5uQd+ymR5EMxUYJpNwb4xVZP07aMcIuVFYO/rumh3DF3LTLAoqiGPsK+vv/EGvogMzjMWNXUDrnm6oJpXmVZiDNHnrXy/8hjIsntjGo4y+1iJOFBFpQ5hAO9s047YwTV+TyU1qmnNj/zEnm2dmR/bWgb3SUVnI8dXRuf2notGvHotVr7OVGSEY8Fs9y8Rdvbnq7Vs563COUnl0crdnC0ylMp7RBJ667qovSsG91DgSeZ/Q9XhDbPYJghjP0vcukYLwkXfQ/YNqF+fGwcxrYZbefGyszg9bB4vhwdEJ0T288nP7TH8U4vaOnFM+FwuQ9w0aepHeEgRp2K5zex6QtDxBiFP/PvGF7TWF1nUO5nahacI63mcFJ/TTH4+mibRT2ZGYk+D9kxwmQnzTkzfAI3oNDzZg6YjvhzXdijypswqi0SSqS9mU522XceWtOnn2fHpn6C3m1mrPckrUDUpw6/J6tnfxI+ZBW44A9ZG7jTflCMkDfzXtavGCi5+l1TZTkrVBqlIcpBxRcn/RtPkcEwZqOeHSj9YkbESScz9QraVuOk795In2w9mzVrDHJYKSpDIZrmDfhJkZMPnHpSBdV93BeAw2GhAt5YRYaQH42YF6grdtj7XFE4TaDqkFZU/EatxVC23+YkKfKGNF7FiKPK+FBMBCj5TyAcwbSsm7Kh7Blq8EuI84JDOSzDK0QQwHXtpYxjRoY+qTeAJmpUT+jVeJgxG5kkfmGBeuVHt3+rzkMCphINpDRFXzbBISKyf1avx20YOuUa3JUVw==
-Received-SPF: pass client-ip=57.103.64.103;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
+ mlxlogscore=999 lowpriorityscore=0 bulkscore=0 suspectscore=0 spamscore=0
+ malwarescore=0 adultscore=0 mlxscore=0 phishscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2601290138
+X-JNJ: AAAAAAABa3FxPPZModNjD/Xvi0W8EcR6wNgG6cek5cIV3q8Oyl4S/P2CALT2UcRJvWCuN/7nR7px6g3ngVVO/bbBO/DmhcqkWJ4A9T+QjCa8OakTr8tU7TXJ42QOq+7XKRJ/n2R5Brad8pT2aBK7CYUYX9hGx90boFP4yM0YUpH84BOLRFqNnpX6jme99VECKT0sKObbCT4s2KVYSeWs3YrNTm7I3eU93pUBE8huG+Eagy3ogaCxCltEWfVO20BC9ds3sLMGUdIRXDer1TaXdzLIAAprH1Foi0kV/IBJ0hFy6flAkiGs09Z/EjvvAz0TNaX9Z6MNUOf4xr03wj/6OoYwCxBrsfosc6yVPodA4D3z2ft69o6+IyTw1tnNkd4iWgLROFMUn5uVf7pdgPjHImb0QnY+76YFt0LDpHF4cR2D4a1TRLOQ7QcavzFUZCa6WcAkeqtKEhoV17Bi4G7rKaXI+TGj0i44lwXnHfw85a1hL85RkA0nqvBOQ1jFeC6iYSpW53j8M3+nUylzXYaki6im5sB/J76ua5lhvyXCStSjEqQ91IT8mMm4R6NEmV2KZDAscUNRQY4AWYhY4eigmPz69NO9t52pBtemrnuLPUGjZI3nmZXoKTvR4WRziLwuExDXlDrjF2xp89OwzRiCDRBySh6MlQL+UwN68zdJjC+pSvW4ndXZATWFQ/2XdvlAuotcecWWHlOGHKx3WZNIi3MdetO0N5d7BKZJTW42VHTIboq8Q0Hh32Pf2JoQGrMQ5ui74Gz0YGfYcfieLhGftZK407sRxqUzZMpAknz2Z3laEJ1xCsQ1CKrUbXZOlMwbgolKpXg5sJLGsq4tA1tSNqgV57GnG4VWwL/9t9Uso/2hXA==
+Received-SPF: pass client-ip=57.103.89.215;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -112,44 +107,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+From: Sebastian Ott <sebott@redhat.com>
 
+Add constants for PSCI version 1_2 and 1_3.
 
-> On 29. Jan 2026, at 16:28, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->=20
-> On Tue, 27 Jan 2026 at 18:29, Mohamed Mediouni =
-<mohamed@unpredictable.fr> wrote:
->>=20
->> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
->=20
->=20
->=20
->> @@ -2143,6 +2146,9 @@ static void =
-finalize_msi_controller(VirtMachineState *vms)
->>         }
->>     }
->>     if (vms->msi_controller =3D=3D VIRT_MSI_CTRL_AUTO) {
->> +        if (whpx_enabled() && whpx_irqchip_in_kernel()) {
->> +            vms->msi_controller =3D VIRT_MSI_CTRL_GICV2M;
->> +        }
->=20
-> This looks like it ought to be an "else if" or some other
-> construct so we don't fall through into the logic below --
-> if we've decided we definitely want a GICV2M we can stop
-> making decisions about how to set vms->msi_controller.
-Would just doing a return; be a right way to deal with this, or =
-converting to case?
+Signed-off-by: Sebastian Ott <sebott@redhat.com>
 
-Thank you,
--Mohamed
->>         if (vms->gic_version =3D=3D VIRT_GIC_VERSION_2) {
->>             vms->msi_controller =3D VIRT_MSI_CTRL_GICV2M;
->>         }
->=20
-> Otherwise
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->=20
-> thanks
-> -- PMM
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/arm/kvm-consts.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
+index 54ae5da7ce..9fba3e886d 100644
+--- a/target/arm/kvm-consts.h
++++ b/target/arm/kvm-consts.h
+@@ -97,6 +97,8 @@ MISMATCH_CHECK(QEMU_PSCI_1_0_FN_PSCI_FEATURES, PSCI_1_0_FN_PSCI_FEATURES);
+ #define QEMU_PSCI_VERSION_0_2                     0x00002
+ #define QEMU_PSCI_VERSION_1_0                     0x10000
+ #define QEMU_PSCI_VERSION_1_1                     0x10001
++#define QEMU_PSCI_VERSION_1_2                     0x10002
++#define QEMU_PSCI_VERSION_1_3                     0x10003
+ 
+ MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
+ /* We don't bother to check every possible version value */
+-- 
+2.50.1 (Apple Git-155)
 
 

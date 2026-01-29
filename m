@@ -4,69 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB2B4D358CC
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 07:27:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AD16D358F1
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 10:18:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vlMPl-0002uT-5a; Thu, 29 Jan 2026 02:26:05 -0500
+	id 1vlP5W-0004EZ-AP; Thu, 29 Jan 2026 05:17:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vlMPi-0002pL-D8; Thu, 29 Jan 2026 02:26:02 -0500
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vlP5R-0004Bt-G7
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 05:17:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1vlMPf-0008T2-G1; Thu, 29 Jan 2026 02:26:02 -0500
-Received: from h205.csg.ci.i.u-tokyo.ac.jp (h205.csg.ci.i.u-tokyo.ac.jp
- [133.11.54.205]) (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 60T7Pbfu030033
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Thu, 29 Jan 2026 16:25:51 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=jBZU9uWUPrysDKrH4i0+OUSPNfG9xtHZvuPJHMAXvek=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Subject:Date:Message-Id:To;
- s=rs20250326; t=1769671551; v=1;
- b=H+skpcpzxz1U85rrC0HcUccocdtMPZVqxFEzwg0FELHXfCg3qH0hkCT1RzROUmE8
- 1lHtUUQAszEqH2uMa4h+gsuhAf5uZb5f/LC9zC9pYI6ObMoO2TEI2r/EquOVxbOo
- jgIwloEvPOz2uxK0I4RyeFoW57uwzbrw+QSlUOrc7ZrD4vGVM4qzZwtZqoy8y6ZN
- zbhcJZZ142FA1nWzhoaqNG9rq90FUcWTUszBiEofEOANHNBbV8u9pPOUj5QF99Rz
- B2kDx67Ry6957ya700GkYCivzH37j0sN2qrTU5wx+NBhgP7IiFPqcox7F6/mnkri
- aZLcuc+qHufJrdtFQa/FxA==
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Subject: [PATCH v5 0/4] hw/arm/virt: Remove the lower bound of HighMem IO
- Regions
-Date: Thu, 29 Jan 2026 16:25:35 +0900
-Message-Id: <20260129-virt-v5-0-421c0abaaf26@rsg.ci.i.u-tokyo.ac.jp>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vlP5P-0005tA-Pj
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 05:17:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1769681833;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sYEmg3LvTBmPuKe0W3PpoOqpLHQf8aCkTDSuccqSycQ=;
+ b=JF/JDzHs2PYjsVgOK19LdTzcAxvehKor3G9fAVYi+v9qzI0vAU2Ej0mUomrcu9n4wDrwM/
+ p2xf0n4WwplFoIevUHJlLFZThc4HB1he1XrMYfrwD46N2v4KKPnC7FrAiwdm0UAgFfT22j
+ y3uRJCFPNHILOkR/+xN6pRAtwwJiy74=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-329-mF7r5fkTMdK_LiDKuSmFLQ-1; Thu, 29 Jan 2026 05:17:12 -0500
+X-MC-Unique: mF7r5fkTMdK_LiDKuSmFLQ-1
+X-Mimecast-MFC-AGG-ID: mF7r5fkTMdK_LiDKuSmFLQ_1769681831
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-4325b81081aso1492628f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 02:17:11 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1769681831; x=1770286631;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=sYEmg3LvTBmPuKe0W3PpoOqpLHQf8aCkTDSuccqSycQ=;
+ b=HtCj+W+PXAoXOak6BoKQflgcgHgbureUYPw/Ft/hcF57HjgQTYyT2X/eAUpMtFb7tc
+ btdwt9ffVDLUiSJpzawzFs4N4lFDCHiIUfMeR0tQUfG4eUBCtQDjvsmzfblqzgqn6fYM
+ kJcPxJbv2Hd/CjXmeHhhU9tzFI4MJY5n/n1EV20ijzRr5qsjVbr/KibQkKRjgN2r0DBz
+ fDJpV063JMAQJUI8tGPlKggatjd04pSHZkAx8LR0lPt8FThYt9iLlMKutCt5gK6xjHKY
+ WfiMtipqecMXy1cjrAAQ5yfG6cF7mk8LCel+VHQXWxlk0UlfmXI/G0dW9wcQ7p2HupYR
+ vtvg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXzy/HQxAQSsaijKrg+fxV9dpB1NN9WyJm7DnxixeCRiH1ewCPFgSFx2uw7/M5gimf4PhKdDDQHYw==@nongnu.org
+X-Gm-Message-State: AOJu0YwEMyjNRprm8yn5z2U5ViVw+wMx8eFfPzDYOtoIpPWxFreClF7a
+ vngGjJPPuFSf59pBD1UMb/TAoXZI1HvpTjFwICxYxDib3PtK7Z2y8bOBhnXkzgOJSmwrQROiemI
+ axKJFSC8qLCYXcopgYN4JxkVugWcscCwpYThxh8JH/h9BQfZMm4A0zQ==
+X-Gm-Gg: AZuq6aJaA/LVKLQvOd1MykXezl1TnUZ4K5H+udjV8LNvE3jf9K+CISQz8Z5v+bCpyjR
+ 4UxFW7IJhyxkX9SBwQlclDzmQ2EQHH0f+IWdCrIIM+J2rC0iWJEkKKnfrEuDckuJxJhrSkMpW07
+ JGKpFTGOIgpX1HY3ZOeIS8bVF8Gta0xFRRT6rL56NlgtQ05AaK2Tj7pc4A0gtdF1fmHXDnx6CLp
+ nlukj9zeKm/NbaRdtjd2MNfKQ0WPAb1hWElOsGbbsTgCtJYv+TJ09qeYl9NDNFpKfid2gjMsF5b
+ WHRgkwzS+C49lNtfHTr4eDPbmQvLr64Z86RAFSGwOCHvo0dXOgYe4gDigl3HQwz2YZ+nHjHhBem
+ uxVptyXVdUjknQb91cRQZjmgVmj+vCj33vVNzGUca/TLFRnfgurCU7aFO4g==
+X-Received: by 2002:a05:6000:3110:b0:430:fd0f:2910 with SMTP id
+ ffacd0b85a97d-435dd0841e0mr13416186f8f.26.1769681830693; 
+ Thu, 29 Jan 2026 02:17:10 -0800 (PST)
+X-Received: by 2002:a05:6000:3110:b0:430:fd0f:2910 with SMTP id
+ ffacd0b85a97d-435dd0841e0mr13416144f8f.26.1769681830266; 
+ Thu, 29 Jan 2026 02:17:10 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-435e10edf62sm14532300f8f.13.2026.01.29.02.17.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 29 Jan 2026 02:17:09 -0800 (PST)
+Message-ID: <ee57ec0e-e1e5-4bb7-99b4-f61b68147b64@redhat.com>
+Date: Thu, 29 Jan 2026 11:17:07 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAG8Le2kC/33OQU7DMBCF4atUXuNoPHbspCvugVhMJnZrUJvWT
- iOqKnfHpAHEgi7/0ejTu4nsU/RZbDc3kfwUcxyOJeqnjeA9HXdexr60QMAaHDZyimmUjdY9BbK
- sVCfK6yn5ED8W5uX13smfL0Ub70fRUfaSh8MhjttND5q1rxF9B7a1PQduGTlYo41WnijUigmC+
- LL2MY9Dui4LJ7Vgf8dMSioJ1LW2QbTIzXPKu4pjFauLHIf361ARV2+nRZvwV2hBrQIWgRi1aw0
- UAB4K+kdQgG4VtAQZCAmDdl5j/1Aw34IFhfUqmCIA9A5thw7R/CvM8/wJLwE9AbcBAAA=
-X-Change-ID: 20250728-virt-833dafa6c11b
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Eric Auger <eric.auger@redhat.com>, Andrew Jones <ajones@ventanamicro.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-X-Mailer: b4 0.15-dev-179e8
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -6
-X-Spam_score: -0.7
-X-Spam_bar: /
-X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- TVD_SUBJ_WIPE_DEBT=1.004 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 03/11] target/arm/cpu: Allow registers to be hidden
+To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com, gshan@redhat.com,
+ ddutile@redhat.com, peterx@redhat.com, philmd@linaro.org, pbonzini@redhat.com
+References: <20260126165445.3033335-1-eric.auger@redhat.com>
+ <20260126165445.3033335-4-eric.auger@redhat.com> <87zf5zrnh4.fsf@redhat.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <87zf5zrnh4.fsf@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: M0pst39jfM9Db3RevIFqBegi4Y8p_TtEN6zyQHLNA08_1769681831
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,93 +117,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Remove the lower bound of the Highmem IO Regions' addresses for the
-latest machine version to increase the chance to fit the regions in the
-PA space.
 
-The lower bound was especially problematic when using virt-install on
-Apple M2. virt-install 5.0.0 adds multiple pcie-root-port devices that
-require sufficient space in the ECAM region. However, the Highmem ECAM
-region did not fit in the limited PA space on the hardware, and the ECAM
-region size was limited to 16 MiB. If virt-install had added more than
-16 devices to the root bridge, the region overflowed, which prevented
-edk2-stable202505 from scanning PCI devices, including the boot disk,
-causing boot failures.
 
-Ideally, a virtual machine with more than 16 devices added to the root
-bridge should just work so that users and management layers do not have
-to care whether they use constrained hardware.
+On 1/27/26 6:09 PM, Cornelia Huck wrote:
+> On Mon, Jan 26 2026, Eric Auger <eric.auger@redhat.com> wrote:
+>
+>> More recent kernels sometimes expose new registers in an
+>> unconditionnal manner. This situation breaks backward migration
+>> as qemu notices there are more registers in the input stream
+>> than supported on the destination host. This leads to a
+>> "failed to load cpu:cpreg_vmstate_array_len" error.
+>>
+>> A good example is the introduction of KVM_REG_ARM_VENDOR_HYP_BMAP_2
+>> pseudo FW register in v6.16 by commit C0000e58c74e (“KVM: arm64:
+>> Introduce KVM_REG_ARM_VENDOR_HYP_BMAP_2”). Trying to do backward
+>> migration from a host kernel that features the commit to a destination
+>> host that doesn't, fail with above error.
+>>
+>> Currently QEMU is not using that feature so ignoring this latter
+>> is not a problem. An easy way to fix the migration issue is to teach
+>> qemu we don't care about that register and we can simply ignore it
+>> when syncing its state during migration.
+>>
+>> This patch introduces an array of such hidden registers. Soon it will
+>> be settable through an array property.
+>>
+>> If hidden, the register is moved out of the array of cpreg which is
+>> built in kvm_arm_init_cpreg_list(). That way their state won't be
+>> synced.
+>>
+>> To extend that functionality to TCG, do the same in add_cpreg_to_list()
+>> and count_cpreg().
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Reviewed-by: Sebastian Ott <sebott@redhat.com>
+>>
+>> ---
+>> v2 -> v3:
+>> - use kvm_regidx
+>>
+>> v1 -> v2:
+>> - Move the property in a separate patch
+>> - improve the commit msg
+>> - change the trace point to just print info in
+>>   kvm_arm_init_cpreg_list()
+>> - improve comment in cpu.h (Connie)
+>>
+>> target/arm/helper: Skip hidden registers
+>>
+>> In case a cpreg is hidden, skip it when initialing the cpreg
+>> list.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+> This looks a bit weird, probably due to patch folding... but I'm happy
+> to have my R-b apply to the whole patch :)
 
-The base address of the Highmem IO Regions was fixed when commit
-f90747c4e8fb ("hw/arm/virt: GICv3 DT node with one or two redistributor
-regions") added the first Highmem IO Region. Later, commit 957e32cffa57
-("hw/arm/virt: Dynamic memory map depending on RAM requirements")
-allowed moving the Highmem IO Regions to higher addresses to accommodate
-RAM more than 255 GiB, but the lower bound remained to keep the legacy
-memory map.
+Oh yes I missed that. Nevertheless it is below the --- so I guess it is
+not that much an issue
 
-Remove the lower bound for the latest machine version to accommodate
-more devices with the root bridge. Keeping the lower bound for the old
-machine versions ensures the compatibility is still maintained.
-
-The hardcoded memory map in tests/qtest/libqos/generic-pcihost.c is also
-updated.
-
-Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
----
-Changes in v5:
-- Changed to preserve memory layout for 10.2.
-- Added patch "test/acpi: aarch64/virt: Test version 10.2".
-- Link to v4: https://lore.kernel.org/qemu-devel/20260125-virt-v4-0-00d726b27224@rsg.ci.i.u-tokyo.ac.jp
-
-Changes in v4:
-- Rebased.
-- Edited the patch message to avoid confusing git am.
-- Link to v3: https://lore.kernel.org/qemu-devel/20251027-virt-v3-0-fa2a2f37e32d@rsg.ci.i.u-tokyo.ac.jp
-
-Changes in v3:
-- Fixed test failures reported by Peter Maydell.
-- Link to v2: https://lore.kernel.org/qemu-devel/20250901-virt-v2-1-ac2379402c80@rsg.ci.i.u-tokyo.ac.jp
-
-Changes in v2:
-- Rebased.
-- Link to v1: https://lore.kernel.org/qemu-devel/20250728-virt-v1-1-0ab9682262c8@rsg.ci.i.u-tokyo.ac.jp
-
----
-Akihiko Odaki (4):
-      test/acpi: aarch64/virt: Test version 10.2
-      test/acpi: aarch64/virt: Allow DSDT and MCFG changes
-      hw/arm/virt: Remove the lower bound of HighMem IO Regions
-      test/acpi: aarch64/virt: Update golden masters for DSDT and MCFG
-
- include/hw/arm/virt.h                            |   1 +
- hw/arm/virt.c                                    |  16 +++++++++++----
- tests/qtest/bios-tables-test.c                   |  24 +++++++++++++++++++++++
- tests/qtest/libqos/generic-pcihost.c             |   2 +-
- tests/data/acpi/aarch64/virt/DSDT                | Bin 5337 -> 5333 bytes
- tests/data/acpi/aarch64/virt/DSDT.10.2           | Bin 0 -> 5337 bytes
- tests/data/acpi/aarch64/virt/DSDT.acpihmatvirt   | Bin 5423 -> 5419 bytes
- tests/data/acpi/aarch64/virt/DSDT.acpipcihp      | Bin 6246 -> 6242 bytes
- tests/data/acpi/aarch64/virt/DSDT.hpoffacpiindex | Bin 5391 -> 5387 bytes
- tests/data/acpi/aarch64/virt/DSDT.memhp          | Bin 6698 -> 6698 bytes
- tests/data/acpi/aarch64/virt/DSDT.pxb            | Bin 7812 -> 7808 bytes
- tests/data/acpi/aarch64/virt/DSDT.smmuv3-dev     | Bin 10274 -> 10270 bytes
- tests/data/acpi/aarch64/virt/DSDT.smmuv3-legacy  | Bin 10274 -> 10270 bytes
- tests/data/acpi/aarch64/virt/DSDT.topology       | Bin 5539 -> 5535 bytes
- tests/data/acpi/aarch64/virt/DSDT.viot           | Bin 5354 -> 5350 bytes
- tests/data/acpi/aarch64/virt/MCFG                | Bin 60 -> 60 bytes
- tests/data/acpi/aarch64/virt/MCFG.10.2           | Bin 0 -> 60 bytes
- tests/data/acpi/aarch64/virt/MCFG.memhp          | Bin 0 -> 60 bytes
- 18 files changed, 38 insertions(+), 5 deletions(-)
----
-base-commit: d03c3e522eb0696dcfc9c2cf643431eaaf51ca0f
-change-id: 20250728-virt-833dafa6c11b
-
-Best regards,
---  
-Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Eric
+>
+>> ---
+>>  target/arm/cpu.h        | 20 ++++++++++++++++++++
+>>  target/arm/helper.c     | 12 +++++++++++-
+>>  target/arm/kvm.c        | 12 +++++++++++-
+>>  target/arm/trace-events |  2 ++
+>>  4 files changed, 44 insertions(+), 2 deletions(-)
 
 

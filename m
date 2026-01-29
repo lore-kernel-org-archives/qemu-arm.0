@@ -4,112 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12B65D61013
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 13:43:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44716D61015
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 13:50:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vlSHX-0008QS-O9; Thu, 29 Jan 2026 08:41:59 -0500
+	id 1vlSPB-0007Jn-5O; Thu, 29 Jan 2026 08:49:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vlSHE-0008Ll-Tl
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 08:41:43 -0500
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vlSOF-0006bo-Fv
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 08:48:57 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vlSHC-0005b9-Jf
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 08:41:40 -0500
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-7942fca0da6so7579667b3.3
- for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 05:41:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1769694097; cv=none;
- d=google.com; s=arc-20240605;
- b=ZKrFGGwlcoApqCURRG1yQUKnJPUPGGG+neiz1WqTWvIw8GjNbcz4ogL340bJ0E/TRW
- H80F1skpitBvYG6a8a9INU1ViGtYMGBzoIbgmi7p9CRF2UTtVzaV+M3+weF+8fFUkG3H
- 9JRE70JAXqa+JkR1AlRCEqzJ022/tu3RA9qrW1xZbzGsvaztaT1JkMUf31+I0t9pTPXE
- t6gxaAjwTYJ8fFZcr7JD1YO7NIhggnnb/LS36glOPR5jR0/EPhdrPUgL/TfMFoHtPGx6
- biAPTczRIEMsgz3muLTz5+Yq4kntsnOYlDKiEqhOfcmqV5b2jUimmmc86pR+fq8t74zN
- BmiQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=cwyLYqO384PsM59QyIlQBNjYFKFwiiWXYOM1AFGJlzE=;
- fh=j4gRX9p8oTEi/+LBsdtlp/hvMAbp96Mn73PJ8zPWq3o=;
- b=XuRKjnl7wfD08+JrDUslx5CdKINte4nbFtF36qURVQ0JP39+8KDhabD38OLC1jwdpk
- D8CSXlyBKhbaB/hqNKA2kE+DyCZasA4fM8WS43HU99tNCj/f6cUkNvSMTl7RpYc41Xwy
- ijprqwIRKZD/EFnZzhq66OnKqy3bgfvPNBl459XMkvf3WoBqLaZq4aDg3c2AQ4p703pA
- PZJspXQW2T/+FBIHoUqsXNaRyGb80QQI1yzc1UJw5bfFujbl2HUKvl+jlXAkhrXfr/Oe
- yDCB4C9EDriIsJyDwuzXazGm/Vf7ouZYzlOHDIis0YTP8rDIwamAd64JdPYg5NXMV/ma
- CRHQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vlSOD-0008Uh-04
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 08:48:54 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-480142406b3so7539345e9.1
+ for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 05:48:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769694097; x=1770298897; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=cwyLYqO384PsM59QyIlQBNjYFKFwiiWXYOM1AFGJlzE=;
- b=pYSqQAyrL/RyEXWSh9GQvFk/V6ThoN5vUr34YYf7J37uLqOVsCODGfU99/LaQsGdXw
- pHj0BfENB+5svwqwg24Mz3GUETDWdTMGnxGCx7FDA8T+d6yFW3n0NUZRmOtcNhwqUAWy
- 1QhhKLRsDF7y3IBwQrId7YXGIkCFi4jXvmvFuHWX5HFUxHF9VJnRd8O0V48IilM0bvcc
- Wf/45MPflG5ltW8CRk269Y2VW3/Fu7KqEYenu2N9NaJPlW07QPoQ/E0gwAa6YeL1jzTb
- 5hxWuWlY5y++MEZfrkJwfCiFoLI947bccAhsw4W6vfhl4stHYve0Hf5BvIOG5H3Of0lu
- WLEQ==
+ d=linaro.org; s=google; t=1769694531; x=1770299331; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=i39vnueW0R6mJX0qhth54AsfO2wnFdadpiJr87YviR4=;
+ b=tnHVOhfwYTDELr8xtXM/tF077RZmD7GOTkgCHz2VdQ4j+8/LlTvEx9FTR7xDbYYKiB
+ j7rpzmL0WZOunE4p4bPGRQ0jBQ0OTUSipI9S4ORd2WaLeQf8CvfKtRCIVwNK0YoA6jLj
+ slKeelhlYZfrSeJTEOaPsZcI6Ssa2qvvR6N47brqzYChZ0bIaynKjxHk2VX2oDbRAXms
+ 326eDlSJ1fnq8UL6W3uKRt6CRazrCcL6phoK07W0/afczn7ZKgHL53q2g+9z6pkuG7oV
+ GCPHbpLufeiP8OkH2+/cUDAgo2yirB02QdFdUOB8j9bzTUDytcflKc4vczq3yP/rPft4
+ busA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769694097; x=1770298897;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1769694531; x=1770299331;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=cwyLYqO384PsM59QyIlQBNjYFKFwiiWXYOM1AFGJlzE=;
- b=Kf9m0YjTIE4/QEIdvoZfix4BLBYm9M0OhGDUSc3qYR5n9i4ivnxI03B84SSP7Vej39
- BAzcghj8IxBSC7wWDqauuMKJ8wmgnJVrFM4Le8kodVFxoZF29zMh07honCc+IZDiH/CS
- FF5uMR2jVWV4OHiPtYRImoBqysjacgaRih5dFOa1skQ8UpUhqY5RmzJQ7LuDg0glv35/
- /X1mxDCIH0edgo7zKudBWZnhJhCBzq03gDsGHp3GPS2FECPicsjWwNR/jQm0Ai/lQsCv
- Zoh/5yVkHx/oOHQzvpaNyVCB1DO2ymIzOgKkmOonfg8kP1EMmU8s4lazZtbTGqTGWT3b
- Zz3g==
+ bh=i39vnueW0R6mJX0qhth54AsfO2wnFdadpiJr87YviR4=;
+ b=phF2J32A6xZrmyhOv0yDaZQ4Tw9hlFi8HUXb1GLqFM/6f6leFknRbEyD0OU3UNIQQl
+ 1UnW/ds8CDbaBUU7g6ponf5nFKL6xVy7yiJXawtRsYxqccYLyb5bZAgnPz0SLFE6aJJD
+ 9CxYKs+TAMrzHIPmIaUgCve5ApnNn3LnyvFucheudKmvBo0KCdPfIQ//RrZXK1pt7fXT
+ sci+c4uVwvzdvKEWpex5GoQjXzWkgccoaKHiioyD+iqcj8lvJYlO9bzDlexJGXE9FXMW
+ kvjRl9L1mTr31U2j/4BkfDA7OkIJaG6oyQXkAJ2JOfUg10YVN+LqM+1jTqg24O0v+mUY
+ HRUQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXENLSfbRtjJ1RxU/1meMAjWSpYO/kqEbzsQxnG9NdIe+Z2lIZp26J1DyGA03HZ4pj/ki7ZnVxuiA==@nongnu.org
-X-Gm-Message-State: AOJu0YylPGpamfZJ5Y1lNSuRK66OsxhOxK1WY0LOlxQ8vVMcqImcFK1F
- MUtQSIWeYDgZr4Po0SZEN3ILQ51/SH2RDqrfbXKh2BypG64LNRDmrrx1EgUwzqEyLaCegjK/teZ
- VAGcnoH15VpoUqcVVomPy/eoX00deZqoykLDyvA8g6A==
-X-Gm-Gg: AZuq6aLt6jtVIlJnyaEfcSafTM5JTyMdmXfpG7d38uFjAz5fsJjRxo9HO5zP2TWYHrl
- 2sN3d/gcwcum3U091s3+TmxRDGl2Sc8676CgLReVThkvJPoH11jnRsJ1l1gnanCRoz6XeFYezzG
- j54jgwiGbgfpJ7n0+VrMGHKFeETZUaaBt5ncBSTpH5dAufvcetEdxUmwc+GXLSPH5srwpgxYEFO
- AhnnrnH/IRVZzIchTGNN8H2095egqlJzDOCdItu4Zfs/nQWWfMScDkmtPTvs041I/XHfrS6z27p
- cKh1
-X-Received: by 2002:a05:690c:2904:b0:794:9317:bad2 with SMTP id
- 00721157ae682-7949317c25dmr13631087b3.56.1769694097379; Thu, 29 Jan 2026
- 05:41:37 -0800 (PST)
+ AJvYcCUAyuPvBclsyJtvV870tNolIU/Wo9KCpUa1eqEHQEU1/IODqUUK57LVYyKcRO/PqFSkAiThzh1Sww==@nongnu.org
+X-Gm-Message-State: AOJu0YzzExtmKHMGYZkFYdd3VDA5KNEmqhXoRThNYIgLCqBaAX2O1Isy
+ esaD46U8mq3boGPI0QvbBHXOkVtD1+/UCJ2L8z9Pg+70j42k9SDuHyvZbKKgIvGrIjc=
+X-Gm-Gg: AZuq6aJ+8XnVQ/eiEe5ulD+jNfTTxQN3wqLtxQbOMM79vrT71Y6Mq2ofnaDsTJgmpC7
+ tzwYk2v8Zoe4Z9KKm0Deeg+1KKyLEp4H16z0t6Cw49b6kdcQaXeuzqIcVRMdA53M4ElKIuPZEnT
+ Av27N1ZpDUQEXIi0D2+fWvAYasJDwY0EuYnywViHvHvFGeCdMhgBwl3+TObMU++NN4BTKDpQGkP
+ DYxzp6cohyKUhMNYZpTCl1kwSLiGgfaKH1IxhOUp31N0Z643XGu8FOJhTshVFzOlk/Ke2vXMmVG
+ IFSOjFdcaiOmqtxOOR4pLUB5dla3davQsqf+srS2dMEDmLRcX9mlyyxwMirn89TT81z6gyiiV0D
+ eVGqaXIC/9fs97UM+RlO7M7fe/q+WU2SWCcK0lSW7DlfDoA0v7OO4GtJvlw0UY0sfiIgyaLJA+5
+ y4QsGbTdNcmNyXsuVuhKjsECPBPzwHVOIQCBihf2pZanNgsWepk2Jdu/LlOru1
+X-Received: by 2002:a05:600c:1994:b0:47e:e2b0:15b8 with SMTP id
+ 5b1f17b1804b1-48069bfa73bmr114142145e9.4.1769694531006; 
+ Thu, 29 Jan 2026 05:48:51 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-481a5e1b21fsm4400745e9.17.2026.01.29.05.48.49
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 29 Jan 2026 05:48:50 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, devel@lists.libvirt.org,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 0/2] target/arm: Deprecate '-cpu any'
+Date: Thu, 29 Jan 2026 14:48:47 +0100
+Message-ID: <20260129134849.36557-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-References: <20260127182805.73212-1-mohamed@unpredictable.fr>
- <20260127182805.73212-6-mohamed@unpredictable.fr>
- <CAFEAcA9qtLv1wOKkEmtNO5UsGTAM0x7YD+y8Fsu8hCQRAD_o5A@mail.gmail.com>
-In-Reply-To: <CAFEAcA9qtLv1wOKkEmtNO5UsGTAM0x7YD+y8Fsu8hCQRAD_o5A@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 Jan 2026 13:41:24 +0000
-X-Gm-Features: AZwV_QjiaSc4bQvvEHjcRpY3vBoosppBqZv5nrEesKh4Q49SBnntHhtw_EfBkXE
-Message-ID: <CAFEAcA-3akyfdwprPe8Fr_P-BOUAauxJqAETEj_+NN-XeBD3BQ@mail.gmail.com>
-Subject: Re: [PATCH v18 05/22] tests: data: update AArch64 ACPI tables
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, Zhao Liu <zhao1.liu@intel.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Roman Bolshakov <rbolshakov@ddn.com>,
- qemu-arm@nongnu.org, Ani Sinha <anisinha@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Yanan Wang <wangyanan55@huawei.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Shannon Zhao <shannon.zhaosl@gmail.com>, Igor Mammedov <imammedo@redhat.com>, 
- Cameron Esfahani <dirty@apple.com>, Alexander Graf <agraf@csgraf.de>,
- Eduardo Habkost <eduardo@habkost.net>, 
- Phil Dennis-Jordan <phil@philjordan.eu>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,39 +99,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 29 Jan 2026 at 13:36, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Tue, 27 Jan 2026 at 18:28, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
-> >
-> > After the previous commit introducing GICv3 + GICv2m configurations,
-> > update the AArch64 ACPI tables for the GICv2 case.
-> >
-> > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> > ---
-> >  tests/data/acpi/aarch64/virt/IORT               | Bin 128 -> 84 bytes
-> >  tests/data/acpi/aarch64/virt/IORT.smmuv3-dev    | Bin 364 -> 260 bytes
-> >  tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 276 -> 192 bytes
-> >  tests/qtest/bios-tables-test-allowed-diff.h     |   3 ---
-> >  4 files changed, 3 deletions(-)
->
-> The process documented in tests/qtest/bios-tables-test.c says
-> that this commit is supposed to have the diff of the disassembled
-> table data in the commit message, so that human reviewers can
-> confirm that the changes are as expected. (If you git log
-> tests/data/acpi you can see how this looks.)
->
-> Can you provide the ASL diff, please? (If this is going to be the
-> only fix needed to this version of the series, which I hope it
-> will be, then I can update the commit message as I apply the
-> series, so you don't need to respin, just reply with the updated
-> commit message with the diff in it.)
+Arm '-cpu any' is aliased to '-cpu max' since more than
+5 years. Deprecate the former in preparation of removal.
 
-...ah, it looks like unfortunately this is going to conflict
-with the smmuv3 acceleration series I already have queued,
-because that series also updates these ACPI blobs. So I think
-the best thing is if I get that out in a target-arm pullreq
-and then you can rebase on top of that.
+Philippe Mathieu-Daudé (2):
+  target/arm: Remove dead code
+  target/arm: Deprecate '-cpu any' (remplaced by '-cpu max')
 
-thanks
--- PMM
+ docs/about/deprecated.rst | 8 ++++++++
+ target/arm/cpu.c          | 1 +
+ target/arm/tcg/cpu32.c    | 3 ---
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+-- 
+2.52.0
+
 

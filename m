@@ -4,93 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26515D6B080
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 16:00:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BE06D6B088
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 16:14:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vlUQg-0003kU-TA; Thu, 29 Jan 2026 10:59:34 -0500
+	id 1vlUcI-0008IH-Vf; Thu, 29 Jan 2026 11:11:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vlUQf-0003Xs-Ei
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 10:59:33 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1vlUcH-00086S-Uf
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 11:11:33 -0500
+Received: from mail-dl1-x1236.google.com ([2607:f8b0:4864:20::1236])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vlUQd-00049P-Nr
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 10:59:33 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-4806b43beb6so8946485e9.3
- for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 07:59:31 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1vlUcF-0007e3-NF
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 11:11:33 -0500
+Received: by mail-dl1-x1236.google.com with SMTP id
+ a92af1059eb24-124877d78a6so1445069c88.1
+ for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 08:11:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1769703089; cv=none;
+ d=google.com; s=arc-20240605;
+ b=H6jL8Kz5IqK9uUPmiqG6eyPakIx2DKFiVo5d8ePbkZWk5yFd5mf+IqsVb8Q79/64eC
+ mFDiWIQ/WMQ5OsMZX6reSyJLkXh/3GiBXiodTf6ssDO/0yOITe8k9rJeSUXvw31qumpJ
+ wvwcVOvuq8ifaKjlGpfRVgiKO49PY3K6mn05Hem4Tb1qZkvw9lEfXFixFXbfXB3MdPh4
+ Zctw50/xPetZ8Pzzm/7/dQnwT8VmmEm9GiIsrvILEMiUk34zKv8Dy8f5P+V3Ha81jduk
+ EgsbYFAOgwUkXGh8TOInwTAEvSKdiJj9bk12XO7lMYQ2YNnpG/RbGdFVX8wj1b3LgAcd
+ MIuA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=xi6t+aW4Hag+eyczycHOvScRaHbt6BUPslNeKXuOCMs=;
+ fh=EJW3j3dcDZoClPeagO5AVTRagWe5QKKYbpiBVGb6B0o=;
+ b=cfMDDSjsKi2Ipc2XumBcmqupZK5GZ1LXlXkAJ+2Oot4kxTW41XX0ISAmdWwOFniUXX
+ DhWz4Tz4E1aaDlqjJjWuibtbeKYFHleXp1Kh+smH/lOla1PNxoJbd0bjNQ1lj+GqA0br
+ 3iWHYUu/qHrzpyrh62rKCE/pNPcnA/5Sbnt0dhDpY8EKIUbjrv9K3t4J25dBdeqB4wyi
+ iYRPhhXjBVgWgr2XqEOG91zBGFJ44iw0ZYn7QeLv90VNwOiC55foygQW7FITb+YQ2033
+ XwqQugN5D2GJHnNiRIlGGyE3fsHTlLGra/5PsIF8FgX8yCaLWXgKtnBQWlAhDx31KrRF
+ 8tuQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769702370; x=1770307170; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=mJbR14Lk9ZZiIj+HmuNfoON+QnPkLGuyK6YiBSBe9LU=;
- b=oGxrzb1DeQXGi6KD6AOn0ZlWEyS/0/D/6Z73HQioawTSGYvdYVmXlt7OctyAiFKot+
- xTmvb98jkw0k8WbFgMeoYMCxYQ6Q4XU2dEgdrLyeYQBVHjEDNgeBe9HPvyh/M67G01Qp
- MR8lWTOBKD27mqC96+3x+ffN6cFIzzZ3bR8ydR4LsEPgwc1qKthfu36Sdp8aFvSHdon8
- xI4igxK8YDkfIRAFE+iQwqpT06hHxA4/zCtRku+F+SkmKrYhea+aO0JIc4usdhDr0JEa
- KpDjPo8yABN7vhDLpMHCfVf14vL7jRXovReRxgdC7buxwoPiTD8U2PuaeDYTEWupN0cx
- Tdug==
+ d=gmail.com; s=20230601; t=1769703089; x=1770307889; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=xi6t+aW4Hag+eyczycHOvScRaHbt6BUPslNeKXuOCMs=;
+ b=c6vC/BxCwmbU/PVHZYu8BkS5o8waijTTBOC2KOlwl8g2hFKt4cZlWlRgyFLtv3guQv
+ ThLSk/1Ek4WKLIVPWODo6IAnTxwGumA4PAgHSHbjBKSFIGaF+3SwwHNj8kz6MwQeRYxF
+ 61cP4m4U+o0xDFIc8K41WaGBzANZj9Zmk1FM4YhDPX/+LeHqLO2tVx6VSd7sHnHE/ipr
+ zdyMAF2U23tOnMup/lMiFtEkUx3CzT9L8JShvt6YMopC8yP7VS+k17D+1JKbZ2qf7Uw3
+ HQNEpvIM5j/99RhkAM5xQoi/+ogz0mXTvQ9tzFri+Xc/GyzlUPFChue1Lu6v+Xg4rs5Z
+ dlzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769702370; x=1770307170;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mJbR14Lk9ZZiIj+HmuNfoON+QnPkLGuyK6YiBSBe9LU=;
- b=ELHIqxfeUkICzFuJumKznS3jStu5t9qijMXniI8FSJV7f+xMB4fUKJmqQnJXZPafnM
- 0QOREDR79hakHWhnUfqNGgCyKfc98w5LP73D4qTBr5M0ahYImFiSDZIojnQd2KOWwDkn
- +MgLmZL772/FyeSSUQqdw22fFSOkO5GK5ql1cUfkZUUYfF3QKaw3TAvirWBwc7NNgp/t
- L2egVsFTgIoMYlLpwNFTi3IOwpy6Ki51KEBSavyK2XGuAm2Dzr0HYS+hkbzYTM7VdnQW
- 4wd1uDEZ/UEnpHELSRyVYCN+T57YBGBLK4b5C9VhWgRcfzl+eg5zwTwEkRY48L4U/Ti1
- a0bQ==
-X-Gm-Message-State: AOJu0YxJcm2JFnChJVUVSLQKcyOHxtEwnChRei94knO/qZMyRJlOiwc2
- Xe77xthB5jNz1ugz0QdHQy/2RHalDGOMV92xKPn9CN30sSKS+zusCKJwmMowewtYTss=
-X-Gm-Gg: AZuq6aL0H/B//SvLz6IIfwF/Wg5yZ5DCXpOuLzJV6jpVRRmh8SAO6ATJscoR0i3P4Hq
- mdVKVLihtFC1/RvEa4gIqnrJW5UhEp2AnZpoUFttXlfgdmons3DtFOsD+ktySoDEDM9YgfYlD1R
- A2B5scGcMc6zG0Xn5XJPRoPRlVzQcNg50wEGafepoAYkffKiI3/RasLcl2DI9V8pzPYbsnlfDgM
- cbzrgAdK91hRsih9g34MXxRaKwNcsVyfq9Jp/EVJGFcZHw5NyytiQSuuz3tvENW87Qeyg5bYRME
- k0PM/PU195UnAnXwiPE30VyakH0jawAz6TGrC2ljp3vNempI+0Vey7gGJeyL6KY83S4zI9ffkFU
- 6j8KlBMqKqFKAmTxS8Ck8yBkxgc0020WEiEpms6t+HoEuLmHmpJ8gXP8G7fMDCzD7ni7niXJf2I
- ERjkWbrZhFxu8=
-X-Received: by 2002:a5d:5f54:0:b0:432:dd71:8f2c with SMTP id
- ffacd0b85a97d-435f3a6aba7mr134364f8f.10.1769702369738; 
- Thu, 29 Jan 2026 07:59:29 -0800 (PST)
-Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-435e131cf16sm16376335f8f.22.2026.01.29.07.59.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jan 2026 07:59:28 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 06FF85F878;
- Thu, 29 Jan 2026 15:59:28 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org,  qemu-devel@nongnu.org,  Richard Henderson
- <richard.henderson@linaro.org>,  Manos Pitsidianakis
- <manos.pitsidianakis@linaro.org>
-Subject: Re: [PATCH v2 6/6] target/arm: Permit configurations with SME but
- not SVE
-In-Reply-To: <20260129113455.1283266-7-peter.maydell@linaro.org> (Peter
- Maydell's message of "Thu, 29 Jan 2026 11:34:55 +0000")
-References: <20260129113455.1283266-1-peter.maydell@linaro.org>
- <20260129113455.1283266-7-peter.maydell@linaro.org>
-User-Agent: mu4e 1.14.0-pre1; emacs 30.1
-Date: Thu, 29 Jan 2026 15:59:27 +0000
-Message-ID: <877bt08l5s.fsf@draig.linaro.org>
+ d=1e100.net; s=20230601; t=1769703089; x=1770307889;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=xi6t+aW4Hag+eyczycHOvScRaHbt6BUPslNeKXuOCMs=;
+ b=bQdQ3xe4W00Fh7diqs1XUS5R5V1w4gtALlKcwoNf3yOwSX6QCTlAza4lhvYPglLYFf
+ rGaKbF1KcW4s0M+225dOdIKVb98K4FU3jsWGpiTCS/RfBw8lPWzU/uLdohZm7nU1TNP3
+ dg90PilcGUsGHz1+NYxrBOPB3J8JOYHUE2mwPkWl+lb4kwG2/jkfxFnwhYU4K0yOxEfz
+ po/vJLsnpyZQJBTmsYwhSjmKM+dWcz53ajK3p/5h/cgsg1Dpnr2k6DQtgyAXVvliDmYs
+ cf9F6Rh6MgsouVr37OVqgJDO8JAnEJCZLctzURd49uc7lc0g6rFuIPOxDOVTDFxKEo3P
+ CPvQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVFCMpMFvHRHWmsaWVZwNqarFFKjGIniLEQV+cillzsSUDNBeQoL+hx0B5wQQUN4/AiNyHDoGeSsg==@nongnu.org
+X-Gm-Message-State: AOJu0YwQ+KGdGHjjiviE2Amsk08mULVLv13Y2talT+doV0qBmgUs2XPx
+ BFc2qywk6fTNjNOIBoW7qf0QPzYLb3SJZ7+G7l88iMRAIHkX2/mo1SUY9Pxv4RSMQnNi7tRvbpw
+ AsGl5m/qiCjpSsQwWrqhfxEW6TDhYFEE=
+X-Gm-Gg: AZuq6aJgDHOGupXe+rU6mlScTAuEJ0X09fiFZMgiyQDvggNpZslg6qe+YpX8wXL5qHo
+ rvbYJZv8xG9O4O+mrzAFxGGWp+vC0jVtCnDs5vi8DzGcwhJvy39mMCqyymRbjoCcIG3H7iVWdHX
+ 5sxdIF42k5KHORTeXKALjgT+/NKbILPIlcNXIE6RnadPfNjjK0eZRYCNclGW85UyRKGJrQgjwTJ
+ AzabBlF56vnypoZL2vMSO4MJyNSLGGVDJgnjmNDfvFRH/CcvtqNERSq29aMi0u2gSpuuAI9Ng==
+X-Received: by 2002:a05:7022:a98:b0:122:8d:3680 with SMTP id
+ a92af1059eb24-124a00d5c0dmr4827088c88.40.1769703089409; Thu, 29 Jan 2026
+ 08:11:29 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32a.google.com
+References: <20260126174313.1418150-1-ruslichenko.r@gmail.com>
+ <CAFEAcA9NEjaUBX19sdw9TRCKcKn8CQfvoVNZ+VaXOcNZ8kf24g@mail.gmail.com>
+ <CAN-aV1EjYwSRfV87YQdtfqU5CH8Bsssr3EvStPWL2_VFOs4N4w@mail.gmail.com>
+ <87ecn9aas7.fsf@draig.linaro.org>
+In-Reply-To: <87ecn9aas7.fsf@draig.linaro.org>
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Date: Thu, 29 Jan 2026 17:11:16 +0100
+X-Gm-Features: AZwV_QjKbz0UQNo9ba8Swu37xasHiajLSk_86kIHMNaAJiCPkvYAYWWqRAcgzdo
+Message-ID: <CAJy5ezogj36BfEV6m4d4YT3gwXPuMzXddJsO73sJouTtVo9Zgg@mail.gmail.com>
+Subject: Re: [PATCH 00/27] hw/arm: Add generic FDT-based machine and
+ infrastructure
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Ruslan Ruslichenko <ruslichenko.r@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, artem_mygaiev@epam.com, 
+ volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com, 
+ Ruslan_Ruslichenko@epam.com
+Content-Type: multipart/alternative; boundary="0000000000000091460649891cee"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1236;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-dl1-x1236.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -107,62 +122,244 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+--0000000000000091460649891cee
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> In commit f7767ca30179 ("target/arm: Disable SME if SVE is disabled")
-> we added code that forces SME to be disabled if SVE is disabled.
-> This was something we did in the run-up to a release to avoid an
-> assertion failure in smcr_write() if the user disabled SVE on the
-> 'max' CPU without disabling SME also.
+On Wed, Jan 28, 2026 at 11:48=E2=80=AFAM Alex Benn=C3=A9e <alex.bennee@lina=
+ro.org> wrote:
+
+> Ruslan Ruslichenko <ruslichenko.r@gmail.com> writes:
 >
-> Now that we have corrected the code so that it doesn't assert
-> in an SME-without-SVE setup, we can let users select it.
+> > On Tue, Jan 27, 2026 at 11:03=E2=80=AFAM Peter Maydell <peter.maydell@l=
+inaro.org>
+> wrote:
+> >>
+> >> On Mon, 26 Jan 2026 at 17:43, Ruslan Ruslichenko
+> >> <ruslichenko.r@gmail.com> wrote:
+> >> >
+> >> > From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+> >> >
+> >> > This patch series introduces new ARM machine model, arm-generic-fdt,
+> and the underlying infrastructure required to instantiate a QEMU machine
+> from a Device Tree.
+> >>
+> >> I'm afraid this has been a feature that has been suggested from
+> >> time to time, but which I don't think is workable in general.
+> >>
+> >> Device tree files are designed to provide enough information to
+> >> the guest kernel to allow it to find non-probeable hardware. They
+> >> are not designed to provide enough information to QEMU to allow
+> >> it to create and wire up all the hardware present on the system.
+> >>
+> >> There are specific niches where it can be made to work -- I think
+> >> Xilinx have or had a setup where they were generating an FPGA
+> >> model and a device tree and a guest kernel all from the same
+> >> single data source, so they could put everything necessary into
+> >> the dtb, for example -- but I don't think it works in the
+> >> general case. As one simple example, the DTB doesn't generally
+> >> have any information about how the Secure world works in an Arm
+> >> system, because Linux doesn't care about the Secure world. It
+> >> also doesn't usually have information that the guest OS can
+> >> probe for itself at runtime.
+> >>
+> >> There has been periodic discussion of more flexible user-driven
+> >> board creation, but that has generally been with the idea of using
+> >> the QMP monitor to orchestrate creation and connection of device
+> >> models.
+> >>
+> > I agree that a guest Device Tree is insufficient for describing a
+> > complete QEMU machine model.
+> > However, we separate the guest configuration from the machine
+> > definition. The -hw-dtb option allows the user to provide a
+> > QEMU-specific system description.
+> > Those hw-dtb would not be passed to Linux Guest VM.
+> >
+> > The fact that this workflow has been successfully used in production
+> > by AMD/Xilinx demonstrates that FDT is a feasible format.
 >
-> This effectively reverts f7767ca30179.
+> Where are the extensions to the FDT used for hw-dtb documented? How does
+> it deal with PCI devices and the Secure world?
 >
-> Note that this now means that command lines like "-cpu max,sve=3Doff"
-> which used to turn off SME and SVE will now give you a CPU with SME
-> but not SVE.  This is permitted by our loose "max can always give you
-> extra stuff" rules, but may be unexpected to users.  Mention this in
-> the CPU property documentation.
 >
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  docs/system/arm/cpu-features.rst | 10 ++++++++--
->  target/arm/cpu.c                 | 10 ----------
->  2 files changed, 8 insertions(+), 12 deletions(-)
->
-> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-featu=
-res.rst
-> index 37d5dfd15b..9d0c5731cc 100644
-> --- a/docs/system/arm/cpu-features.rst
-> +++ b/docs/system/arm/cpu-features.rst
-> @@ -318,12 +318,18 @@ SVE CPU Property Parsing Semantics
->       provided an error will be generated.  To avoid this error, one must
->       enable at least one vector length prior to enabling SVE.
->=20=20
-> +  10) Disabling SVE does not automatically disable SME. If you want to
-> +      disable both you must use ``sve=3Doff,sme=3Doff``. In particular,
-> +      for the ``max`` CPU, ``sve=3Doff`` alone will give you a CPU with
-> +      SME only (and which therefore still has the SVE vector registers).
-> +      Most users will want to disable both at once.
-> +
->  SVE CPU Property Examples
->  -------------------------
->=20=20
-> -  1) Disable SVE::
-> +  1) Disable SVE and SME::
->=20=20
-> -     $ qemu-system-aarch64 -M virt -cpu max,sve=3Doff
-> +     $ qemu-system-aarch64 -M virt -cpu max,sve=3Doff,sme=3Doff
->=20=20
->    2) Implicitly enable all vector lengths for the ``max`` CPU type::
+
+Hi,
+
+When we first started using this, we tried using the kernel bindings but as
+people have already noted on this thread those are not a good fit. So we
+changed the approach to something more like a 1:1 mapping between FDT and
+QOM. FDT compatible properties match on QOM device names, properties are
+set more or less 1:1 with some exceptions.
+
+Interconnects and TZ are modelled by instantiating memory regions, mapping
+the selected set of "target" devices and connecting bus masters (CPUs or
+DMA) "memory" links.
+In addition to that, memory transaction attributes can be used for devices
+that differentiate things on a per transaction basis.
+This is all the same as you would do in C code with QOM/Qdev.
+
+PCI is modelled the same way as with QOM/qdev.
+
+Cheers,
+Edgar
 
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> > In contrast, QMP usage may end up even more complex and less
+> > maintainable for the task of full system modeling.
+> > To my understanding, this would need to generate too long configs,
+> > which may eventually require some intermediate format by itself.
+> >
+> > I am proposing to use FDT as a serialization format to describe a
+> > machine configuration. Theoretically we can use other formats, like
+> > XML, but in my opinion FDT perfectly matches the requirements.
+>
+> The QMP interface is self-documenting and introspectable and used for
+> the management of QEMU including things like hotplug. It is also QOM
+> aware so a natural fit for dealing with the underlying QOM machinery.
+>
+> Previous discussions have entertained the idea of making the parsing of
+> hw-dtb an external script which would then translate into QMP commands
+> to build up the machine.
+>
+> >
+> > BR,
+> > Ruslan Ruslichenko
+> >
+> >
+> >> thanks
+> >> -- PMM
+>
+> --
+> Alex Benn=C3=A9e
+> Virtualisation Tech Lead @ Linaro
+>
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+--0000000000000091460649891cee
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
+mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jan 28,=
+ 2026 at 11:48=E2=80=AFAM Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.benne=
+e@linaro.org">alex.bennee@linaro.org</a>&gt; wrote:<br></div><blockquote cl=
+ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
+ rgb(204,204,204);padding-left:1ex">Ruslan Ruslichenko &lt;<a href=3D"mailt=
+o:ruslichenko.r@gmail.com" target=3D"_blank">ruslichenko.r@gmail.com</a>&gt=
+; writes:<br>
+<br>
+&gt; On Tue, Jan 27, 2026 at 11:03=E2=80=AFAM Peter Maydell &lt;<a href=3D"=
+mailto:peter.maydell@linaro.org" target=3D"_blank">peter.maydell@linaro.org=
+</a>&gt; wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; On Mon, 26 Jan 2026 at 17:43, Ruslan Ruslichenko<br>
+&gt;&gt; &lt;<a href=3D"mailto:ruslichenko.r@gmail.com" target=3D"_blank">r=
+uslichenko.r@gmail.com</a>&gt; wrote:<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; From: Ruslan Ruslichenko &lt;<a href=3D"mailto:Ruslan_Ruslich=
+enko@epam.com" target=3D"_blank">Ruslan_Ruslichenko@epam.com</a>&gt;<br>
+&gt;&gt; &gt;<br>
+&gt;&gt; &gt; This patch series introduces new ARM machine model, arm-gener=
+ic-fdt, and the underlying infrastructure required to instantiate a QEMU ma=
+chine from a Device Tree.<br>
+&gt;&gt;<br>
+&gt;&gt; I&#39;m afraid this has been a feature that has been suggested fro=
+m<br>
+&gt;&gt; time to time, but which I don&#39;t think is workable in general.<=
+br>
+&gt;&gt;<br>
+&gt;&gt; Device tree files are designed to provide enough information to<br=
+>
+&gt;&gt; the guest kernel to allow it to find non-probeable hardware. They<=
+br>
+&gt;&gt; are not designed to provide enough information to QEMU to allow<br=
+>
+&gt;&gt; it to create and wire up all the hardware present on the system.<b=
+r>
+&gt;&gt;<br>
+&gt;&gt; There are specific niches where it can be made to work -- I think<=
+br>
+&gt;&gt; Xilinx have or had a setup where they were generating an FPGA<br>
+&gt;&gt; model and a device tree and a guest kernel all from the same<br>
+&gt;&gt; single data source, so they could put everything necessary into<br=
+>
+&gt;&gt; the dtb, for example -- but I don&#39;t think it works in the<br>
+&gt;&gt; general case. As one simple example, the DTB doesn&#39;t generally=
+<br>
+&gt;&gt; have any information about how the Secure world works in an Arm<br=
+>
+&gt;&gt; system, because Linux doesn&#39;t care about the Secure world. It<=
+br>
+&gt;&gt; also doesn&#39;t usually have information that the guest OS can<br=
+>
+&gt;&gt; probe for itself at runtime.<br>
+&gt;&gt;<br>
+&gt;&gt; There has been periodic discussion of more flexible user-driven<br=
+>
+&gt;&gt; board creation, but that has generally been with the idea of using=
+<br>
+&gt;&gt; the QMP monitor to orchestrate creation and connection of device<b=
+r>
+&gt;&gt; models.<br>
+&gt;&gt;<br>
+&gt; I agree that a guest Device Tree is insufficient for describing a<br>
+&gt; complete QEMU machine model.<br>
+&gt; However, we separate the guest configuration from the machine<br>
+&gt; definition. The -hw-dtb option allows the user to provide a<br>
+&gt; QEMU-specific system description.<br>
+&gt; Those hw-dtb would not be passed to Linux Guest VM.<br>
+&gt;<br>
+&gt; The fact that this workflow has been successfully used in production<b=
+r>
+&gt; by AMD/Xilinx demonstrates that FDT is a feasible format.<br>
+<br>
+Where are the extensions to the FDT used for hw-dtb documented? How does<br=
+>
+it deal with PCI devices and the Secure world?<br>
+<br></blockquote><div><br></div><div><br></div><div>Hi,</div><div><br></div=
+><div>When we first started using this, we tried using the kernel bindings =
+but as people have already noted on this thread those are not a good fit. S=
+o we changed the approach to something more like a 1:1 mapping between FDT =
+and QOM. FDT compatible properties match on QOM device names, properties ar=
+e set more or less 1:1 with some exceptions.</div><div><br></div><div>Inter=
+connects and TZ are modelled by instantiating memory regions, mapping the s=
+elected set of &quot;target&quot; devices and connecting bus masters (CPUs =
+or DMA) &quot;memory&quot; links.</div><div>In addition to that, memory tra=
+nsaction attributes can be used for devices that differentiate things on a =
+per transaction basis.</div><div>This is all the same as you would do in C =
+code with QOM/Qdev.</div><div><br></div><div>PCI is modelled the same way a=
+s with QOM/qdev.</div><div><br></div><div>Cheers,</div><div>Edgar</div><div=
+>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+&gt; In contrast, QMP usage may end up even more complex and less<br>
+&gt; maintainable for the task of full system modeling.<br>
+&gt; To my understanding, this would need to generate too long configs,<br>
+&gt; which may eventually require some intermediate format by itself.<br>
+&gt;<br>
+&gt; I am proposing to use FDT as a serialization format to describe a<br>
+&gt; machine configuration. Theoretically we can use other formats, like<br=
+>
+&gt; XML, but in my opinion FDT perfectly matches the requirements.<br>
+<br>
+The QMP interface is self-documenting and introspectable and used for<br>
+the management of QEMU including things like hotplug. It is also QOM<br>
+aware so a natural fit for dealing with the underlying QOM machinery.<br>
+<br>
+Previous discussions have entertained the idea of making the parsing of<br>
+hw-dtb an external script which would then translate into QMP commands<br>
+to build up the machine.<br>
+<br>
+&gt;<br>
+&gt; BR,<br>
+&gt; Ruslan Ruslichenko<br>
+&gt;<br>
+&gt;<br>
+&gt;&gt; thanks<br>
+&gt;&gt; -- PMM<br>
+<br>
+-- <br>
+Alex Benn=C3=A9e<br>
+Virtualisation Tech Lead @ Linaro<br>
+</blockquote></div></div>
+
+--0000000000000091460649891cee--
 

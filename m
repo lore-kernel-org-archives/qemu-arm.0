@@ -4,89 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3C14D6100B
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 11:36:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B71DFD6100A
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 11:36:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vlQJA-0002RW-OU; Thu, 29 Jan 2026 06:35:33 -0500
+	id 1vlQJF-0002Ty-EN; Thu, 29 Jan 2026 06:35:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vlQIn-0002Cf-Sc
+ id 1vlQIn-0002Cb-O5
  for qemu-arm@nongnu.org; Thu, 29 Jan 2026 06:35:12 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vlQIj-0007su-LG
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 06:35:09 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-48069a48629so9137815e9.0
- for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 03:35:03 -0800 (PST)
+ id 1vlQIf-0007ku-Ha
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 06:35:08 -0500
+Received: by mail-wm1-x344.google.com with SMTP id
+ 5b1f17b1804b1-47ee0291921so7719165e9.3
+ for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 03:34:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769686503; x=1770291303; darn=nongnu.org;
+ d=linaro.org; s=google; t=1769686498; x=1770291298; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mEeefLwyevAwvJbV1EeJJSkxsmhi2vz8LE44h+RFunE=;
- b=twBwvllTCvqT8H6u+7bRq2mU936RWtG0FfBInH106yHsgl8PXz0uZ5ZrNo6RW+neqP
- YIeTii+Joevj5nxT/+DeojAIwQx4tc08vj1/BCLvQru8VdcNvAkMvKmZLsVilK1M9hHw
- idpGoWBVaNR+wH67kXPVmD5E/bYhKzAGuqG4U4TfSDoGowpJK+i2ceOV2RwHXSi2LZyh
- rUo9Fl9nOASUOE5NwZBZXWdB8U4GHTsPw84MW8HAu4CqKLu2/7OgOhTlK2V0Hh7yfCum
- D2zVpw+eHOU8xvix4UQPBYPVmVCxlhypZ9Wr1c+oEO6oT20CkxZkYadMUz2F1igTFcK/
- ncag==
+ bh=8WqMWGMMgAwpDdsjGebmVf+TWll8M5Sqgy4tjAwHbyk=;
+ b=yqs5LXo0uCtlngDu9IpMBsf8Rq1FbLwPv9cFJUXD4zWrZ9aNitNcxP/2L3NAo2On06
+ xOEy39nHO4hAhB0ug+0ES5QO5WY5CEM6QdEMoL4vBnEGWZu1+ADKSxRoQsrICu+DemVW
+ 4kfBJDe4vLkmbl85Np46gpv1NEMmjsYN01ac97p57p2ElXxlvfBqy2U8zyoRwwFH370O
+ jaJc7F27V1w5yP8Dmbvyu+1GdxX7Q4f7X/lRJ4kCgHxo/QTWv8sNu8bp/SCg6MrMx/bc
+ K6vxT69OXgnYbJs+OsQSnAoA+9uTCQqxu6E7M3mqeMk4WH9foXyyVlrXgWX+iHrTfLM+
+ V+Sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769686503; x=1770291303;
+ d=1e100.net; s=20230601; t=1769686498; x=1770291298;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=mEeefLwyevAwvJbV1EeJJSkxsmhi2vz8LE44h+RFunE=;
- b=U9KnyttB/8kJLjeM0OcSzmz0eFWMdJyXldCUJbFmJ3C3sEAseSPHlgFhkVR2VCU9Kb
- 2OhZUEhun3UXQI1a4vwRWaB6Dugdfv8Cz/dVmPeJ6Lw1DMFcFlTFxXodUQnsCJXStSLN
- 1FZ9ti04zBwRN57NLT1T7YRhm+ouIxG1N1pJlBQwp82xy7QWe76dJOHRovNdoLW2a817
- 4WBFJMRNDH7bQeWH3XqnsLZWkZbiDsOexAivAslI3cL75muJ7UxW5/u4MOPwXBpy5oZO
- wFLWltfHyA3ZHmUw+2dmU2GkYmFjHBB1/J94rJflFUMvsJSXXdPBc5fNTgXIzi61bOEV
- G58w==
-X-Gm-Message-State: AOJu0YycLH1SYJ3XtSP8sVxnR0fXoV3w0jy3EKC8hwva5e5c0EuqfpkH
- oYj0kXiVPRKRxLHkYIr9crAeModzCaKMMbum8brQhAB2RFP4BDhTgov+VBJExgqBG0WLDBJn3zn
- dPkd9hPg=
-X-Gm-Gg: AZuq6aJNqF1DVe3mvtLKbPxVehqbzMOe1sZopJm4qOH7SY5UidEEBT+tUDVOwlmk/e1
- VM9w0Foq656wgp3S9Ovt0084m19arBfrnlXxxoDSsZBIXqjzzVcco1daN3BmDf7aHISk5iaeCHs
- aEDL4+y6rTg42sna4kN+R3T+D9r3t0cbaEUdqAZadYir1MLfTWJhJC3nNy+YCH6uuoLKvP8EkA9
- qfED4UaKASG0gEu8KerO+/mc74gyLUxHfz3ZI6/Z0mNDR162QR5vcbVW8aykR+9rFieg7nvy9hI
- uW6gsTaZ+gw+BRQXtlOQssFhyHCog0Biuu+oHe0gHv2tWSSwUoqsNDg5eEG+HVUNmRyDR/zDKqL
- 9teCVXg4eZx5hx6YA4Ea1nz+e50/76erwKYqXV2GYPypwMcMCYt3eix6MNrmPD4t2Q1CIHuEpOq
- oXNI5nNIeMovrKWsZmxBMlK07pU+HhVA==
-X-Received: by 2002:a05:600c:3e85:b0:477:a54a:acba with SMTP id
- 5b1f17b1804b1-48069c557a6mr125563085e9.17.1769686502857; 
- Thu, 29 Jan 2026 03:35:02 -0800 (PST)
+ bh=8WqMWGMMgAwpDdsjGebmVf+TWll8M5Sqgy4tjAwHbyk=;
+ b=aVAyNGU34e/hzjwsYsKmzJOo8l+ycOjB62HT5ReJFopgDayIQLfwN/19q45nUEuteW
+ WzKT20DjRyxaMfvl7qBW5oIn+jEGUMjJU2EK5G8Mt7WaJSz/MmHP6SIZkZ0manVM/qb2
+ DOvPOpCNZs9sylTORMTEglXa9v1rGmGvhYMWLDcmpVWG+hfiL6dSP7Jq0JMIEB4srqaU
+ SSE8H9fHn6PVUqjhGKg3ib7cjoOlSNDPpBQSDOQv9u5Vj4X/k7AcArSxG2Gaa1mSZrcU
+ na53ot0sz9Ga4kOXOVOwwiHYQ7JY9zAnxhHMUwQhme1U0wdpT/p5zFS2BdefmzjvL7AI
+ 9Frw==
+X-Gm-Message-State: AOJu0Yx5HHYPVvk/EcTvsbIBq7PGhaKXXPJT6Why+5A1x/cV/zzIxISs
+ FHeEADTUVwmLpIkoS+G0VuncTYFz71/vBhaYrkh/9jvnhWTfXYIK2mAiyj/ZTOlf7YNktYH8r4I
+ iMu7qKUzZ6w==
+X-Gm-Gg: AZuq6aIahh2TZd7+BHiqlC9wRgGEGcZx9ew8AYF6aA4CFa7jN0T+vznz9vxC1dtk+fJ
+ rWFnzG5FN1rSabm/ImUYjvcNxxUIs1KPhEErfmN13M+ZprGLvgNuRk++rCoXenN0TLd6ghSz9A+
+ w/LC/0f+y9bF9EeGVnZR4AvkBV8fvt1EN5Z51ay2Lm3sRt5K1fGgJqM6RNWwEXtNcd9vU/ZUFlA
+ mFD9oQAi9A6QdDC+mzOlVeXFsZsw2mCSdOWzVSVUni954WCmP2Rcq1jz5hTwofd7xIzY8r8Zdrw
+ QozAG4hHQ/ZD6S+RYg7SD6ES5+4SfyhWDQitVtN0YG/vJSa23D4INXxb068h/XT53L5Er34xfb4
+ 80nRJ2HMxEiRQcun0URcxAMl6zl+JccFtzuZXduahGWKz3zRFINSs9wT9+fZk9ibbDRhAf6a5Ew
+ q5ztmJFdn8DX5ZJ94HGbFCOGFB90QIYQ==
+X-Received: by 2002:a05:600c:1c1c:b0:477:54f9:6ac2 with SMTP id
+ 5b1f17b1804b1-48069b9d651mr130760635e9.0.1769686498369; 
+ Thu, 29 Jan 2026 03:34:58 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48066c42895sm196311075e9.14.2026.01.29.03.35.01
+ 5b1f17b1804b1-48066c42895sm196311075e9.14.2026.01.29.03.34.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jan 2026 03:35:01 -0800 (PST)
+ Thu, 29 Jan 2026 03:34:57 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
  Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: [PATCH v2 4/6] target/arm: Handle SME-without-SVE on change of EL
-Date: Thu, 29 Jan 2026 11:34:53 +0000
-Message-ID: <20260129113455.1283266-5-peter.maydell@linaro.org>
+Subject: [PATCH v2 1/6] target/arm: Account for SME in aarch64_sve_narrow_vq()
+ assertion
+Date: Thu, 29 Jan 2026 11:34:50 +0000
+Message-ID: <20260129113455.1283266-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260129113455.1283266-1-peter.maydell@linaro.org>
 References: <20260129113455.1283266-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x344.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,33 +103,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-aarch64_sve_change_el() currently assumes that SME implies
-SVE, and will return without doing anything if SVE is not
-implemented, skipping a possible requirement to change
-the vector register state because the SME vector length
-has changed. Update it to handle SME also.
+In aarch64_sve_narrow_vq() we assert that the new VQ is within
+the maximum supported range for the CPU. We forgot to update
+this to account for SME, which might have a different maximum.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Update the assert to permit any VQ which is valid for either
+SVE or SME.
+
+Cc: qemu-stable@nongnu.org
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+CC stable on this one, because it might also be a problem for
+a CPU with both SME and SVE but where the SVE max VL is less
+than the SME max VL.
+---
+ target/arm/helper.c    | 2 +-
+ target/arm/internals.h | 9 +++++++++
+ 2 files changed, 10 insertions(+), 1 deletion(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 732c3a9eba..655ce73ee1 100644
+index dce648b482..7ceab0b503 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -10127,8 +10127,8 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
-     int old_len, new_len;
-     bool old_a64, new_a64, sm;
+@@ -10076,7 +10076,7 @@ void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq)
+     uint64_t pmask;
  
--    /* Nothing to do if no SVE.  */
--    if (!cpu_isar_feature(aa64_sve, cpu)) {
-+    /* Nothing to do if no SVE or SME.  */
-+    if (!cpu_isar_feature(aa64_sve, cpu) && !cpu_isar_feature(aa64_sme, cpu)) {
-         return;
-     }
+     assert(vq >= 1 && vq <= ARM_MAX_VQ);
+-    assert(vq <= env_archcpu(env)->sve_max_vq);
++    assert(vq <= arm_max_vq(env_archcpu(env)));
  
+     /* Zap the high bits of the zregs.  */
+     for (i = 0; i < 32; i++) {
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index f7b641342a..8ec2750847 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1808,6 +1808,15 @@ static inline uint64_t arm_mdcr_el2_eff(CPUARMState *env)
+     ((1 << (1 - 1)) | (1 << (2 - 1)) |                  \
+      (1 << (4 - 1)) | (1 << (8 - 1)) | (1 << (16 - 1)))
+ 
++/*
++ * Return the maximum SVE/SME VQ for this CPU. This defines
++ * the maximum possible size of the Zn vector registers.
++ */
++static inline int arm_max_vq(ARMCPU *cpu)
++{
++    return MAX(cpu->sve_max_vq, cpu->sme_max_vq);
++}
++
+ /*
+  * Return true if it is possible to take a fine-grained-trap to EL2.
+  */
 -- 
 2.43.0
 

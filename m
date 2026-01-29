@@ -4,86 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B764D6100B
-	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 11:37:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36DDCD6100D
+	for <qemu-arm@archiver.kernel.org>; Thu, 29 Jan 2026 11:42:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vlQJ7-0002Nv-Ai; Thu, 29 Jan 2026 06:35:29 -0500
+	id 1vlQP7-0000Gt-LM; Thu, 29 Jan 2026 06:41:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vlQIj-0002CC-Qr
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 06:35:07 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ id 1vlQP5-0000Fa-Uc
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 06:41:40 -0500
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vlQIf-0007ko-HO
- for qemu-arm@nongnu.org; Thu, 29 Jan 2026 06:35:04 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4806dffc64cso6549055e9.1
- for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 03:34:58 -0800 (PST)
+ id 1vlQP3-0001LL-O0
+ for qemu-arm@nongnu.org; Thu, 29 Jan 2026 06:41:39 -0500
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-79273a294edso8284837b3.3
+ for <qemu-arm@nongnu.org>; Thu, 29 Jan 2026 03:41:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1769686896; cv=none;
+ d=google.com; s=arc-20240605;
+ b=dkmXq9Wsn16JLWiM6r0TR4pnawDBehAkZOP3GlGyYg94vXj7hrUHaLladHyJjlBDQD
+ /F/PTHhJKo4snzs4Ir7YKp2G4ijy3OiWxFz48in9Khf7A5hxbn9o5RwXiCe6GbiGNXXf
+ L+PeuM8XmjhxUvO3tSKiBueUK4KAKtn8nom3BMWXp9nw/U7vECo5O1eM4KctPAS+/4Ia
+ mNzyaHAGOAeGjYTS0SZJaFanufgIGyloTRP90maTXof56SSQ6SDXMtT4zFgY8LKPJwuy
+ AopPM7evah5bYcD2a1VTsP9x1R4yIWApEzAF3X9838Ux1bcX6X/NQaoTMiDjTLdD9yyp
+ VD+g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=uimdnHTjxESHe6U4Yu5NNwY/Dveasqe0UAi1Rs6N2HE=;
+ fh=no0SYXYZGXVCWapVLGd/mY2S6KmDryJ/4hhBbjGr4sQ=;
+ b=RQsaHtD4N5HPT+r+0Ec2oXub4ARleLnquZHXVukxtNEPgauquDyoYCCafNR3HVahL5
+ v0f52RwydCwpVjoNNxlDLeqSCfNJBiqVttslnxFjqF4VNjV3jvr8pC0rzgBHW9IKVzqH
+ y+Si9uo0LYZ/DDOkU9p0ZZuNdZseeOQw2zxL+UMFEF4CwZo+qEj50yNZ6xpdreku8fcN
+ Sg5eILhFt+FhWfbfQExiv5uhjXndVuFlW9Fmt9Z+CTGqeyl/+rMLFw2HbgzoTaoxXZTe
+ rkCMrLvV/eqVUG5SVrMgdX9EeStEJ4EWvjqjz6/gqF5nqNG5ksN0Xz/5aoAmLWOuA81B
+ lzPQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769686497; x=1770291297; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=jC9qLuc2CCbEtH481L2TMiLEHw029Qtt0ng0mG6BJ2o=;
- b=r4S6GX22YLF6KxJAKIRiilr9/pYSA4S6WsfPyxaSThdACHYqjOGOxcFKDQoSnbjrP5
- 5ikzmIPUlvM9xN5fJWxOtYh5mdEI6CPseGv7nlcXp2mvl2QrFsaQlMcvlhATihC+IBl4
- 0MqrKIHr8mbo7BHYANpTar3SIg361pzwV1+yyNbagY7br2Usz6NdslIQeWED4T5eO41u
- 3ISXxRdjatZr9FfOaIi98RVYuFcFMpLlSqqs5ovNb6E58uYEFy+aA+gPnYL2z1Gc1nuS
- oj4MTL8g5/Dak45fsHos30Jsmhl7OWW6Mv37qrloMTIDn7qaHrOZhUHV4kPzKe4rR0eM
- r9yg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769686497; x=1770291297;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1769686896; x=1770291696; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=jC9qLuc2CCbEtH481L2TMiLEHw029Qtt0ng0mG6BJ2o=;
- b=rMA6T6iqXdSQnZHgBYuvcxySU9FLVbL6Nm5jG8G5EougkWkGgPMkDKvN3JhcHRj3Z8
- KinU8s6oOe/93K+TUKx7sD9z4KrAqzJ2QhUZx4dsdOiWMd4VXap7yFs0pcTfwpXRoqB0
- 3c2vvX+6VE7544+oPrV08+gzi+PeOqhjfrrAO6WDL2mlWRoVDhgOjL+zwSqnJgXbsdBX
- Q1mf/WWcssHmhNDLGQGwG716eYI/o90NbwJkh9OStrIQscjM8MkPlfKi+ON62E8dAG5p
- eXvbB2f94q1mg/NETV+jjRS3B8YsYYvmfYrZTt5sLkBgcOY9oYoAAFKIL9TTjGjhUHO0
- rJ/w==
-X-Gm-Message-State: AOJu0Yw4Tr3f5AFJna6n0YB+OOYTLjK8vYpYZks9xQUGWWS9kS6FzoyA
- NwWrHUUE+7iKRTOMA3x5VpgQ9wAgNLiPzH3IIdaHQzawnUwbf64FCq/Hosmh6/EWkFq2jfl+cfr
- MGClcdFc=
-X-Gm-Gg: AZuq6aKd4U0ehLHKCLTpYAjyQAuCasqECEbYYRL5WYrFigeNbne8Djl6KZVW9a3hodY
- b/mh5Dm3wMz7t7Efi1e+ALzoAdydZaafDdTFqiBjlgToJM67f/pZQLWKJ8VaQW7mjLoaPBNCG6P
- 5Pa8CQStxqiZB+AzHRAtZND6O/vM7ecBomrFlpnEMBS3EWgzh8Ja0g5TWkiLg52ZS2C/bD//SR7
- qB1FehU+7FUwNJrudTFmeXTR/UP56hKEurH1h3V18UvHyMW5Wt+8/zNsMJob5D4GFmAVb5DVfXZ
- H6CPp216at1W0i2SoIkjPyrcQGyboprx3Q7g2thlq8hQALpsHol7mTYbTC9GmG+Pp3OV0M+8p/M
- nMfbiliX/Msm406D8ydEFHdZYBDrwW/xi/XhBZEvnwhNVvmCOMUbR/sEze9VjsvFz1Gpw54iuy2
- QQxkGZrdgT21qmJyeYh1wsMYKMoDfORtsZODtEJ2ud
-X-Received: by 2002:a05:600c:4746:b0:47e:e9c9:23bc with SMTP id
- 5b1f17b1804b1-48069c5547amr112824575e9.30.1769686497361; 
- Thu, 29 Jan 2026 03:34:57 -0800 (PST)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48066c42895sm196311075e9.14.2026.01.29.03.34.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Jan 2026 03:34:56 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Subject: [PATCH v2 0/6] target/arm: Allow SME-only TCG CPUs
-Date: Thu, 29 Jan 2026 11:34:49 +0000
-Message-ID: <20260129113455.1283266-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ bh=uimdnHTjxESHe6U4Yu5NNwY/Dveasqe0UAi1Rs6N2HE=;
+ b=Z/iKj9ro2YDE+YCeZ4dP4x6WdhFiwNa8pYH1DO7rLlDoEc/uv9ygpBd7yGZHGf2nk8
+ 3GtLWOOQsvlMkUxt3V1IErqQeeneYQF4ozYC88c4EU2rq3wPiYhz2JMjG4kAUjx1NCvN
+ Rn4dxcw+/9+CTsnelfYyw1VUkqbv2cmZRGS6X2MyypByR5DqDAvIyToXH0S87q2Afu6d
+ AB84FH6YujlkV4muS9mHtVJVEi1HVuEetgE891iVxejlaeS3lRrcEbaFSmM8sefnzfKw
+ sSJjrFvYhSka3qmqAoS+pevBc/FKIoMJGivSUyVe95vZ3/bzCQsoNFDU4GeCoUCkVCo4
+ easg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1769686896; x=1770291696;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=uimdnHTjxESHe6U4Yu5NNwY/Dveasqe0UAi1Rs6N2HE=;
+ b=HzDyUgez0OfV2Or2KzXWuMEcVc9wm2cTQBGi2DBHMyRUg1ZAPF89Vq7CTpTDyy2yzS
+ CoTUIu2j3p0aY9uMWqmAUqOIB3JaSrdBr/dxyQlFmQrVheWd8QS2CqR63xSyQfAZpfg+
+ PFbOaao8nEfCNXDvzfwifJCjVCK0kewPQI8k7bP8W7WAADcZE5UKx8tQxYgXIbIVNF2G
+ T/H3GriE4wvVaRT8lTOFHVBiWMEhsjWn6e6QRKti+LdFd3qLt5kk+eHn3mhwUk/yuRKL
+ t4NekolKBX5ITp5rDjd/InikgOPrTmqPz/Frchqxb6KrwcADlap1pgwJpOridVxZWgZ7
+ z4FQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUR8eIVp+E759V6HiiZVpuYnOGoIQMrTdpzwrayMLIgAscOW7Cg5WoixI+oTeBuCmTParvoIGBUug==@nongnu.org
+X-Gm-Message-State: AOJu0Yy6+gAlYLL1DrKDLCKVzQHZSQRdR7LH/QCpHzi6kSta7PHsWOD1
+ XYQu0RV7ZPWFyYU7flGBIYhUDpLORdhVM8nh3Di1WxBfWx7DegijBmsiwhseicGmC8Q36Ke8Kds
+ dcc+kZt/+jElzxXyRmnRZWPYbNXp/D9eGu5NiTm8vFg==
+X-Gm-Gg: AZuq6aJFDOn/Zq12z8vygUhrjbd0/D8VLw1t48iXd2/NGNVnJyFda1qoVp7hLFrP+TS
+ Eo2ahQHE22oPRSELlmhG/6rrxs2pGR+pALN6vjunErkFaoY4wOCyVj6nFQmmINpTvQ7MmriKSNy
+ QB5/65gK7Gzk79au/PkjAA41I8IPtqNgBPr8QAtybbvAm9Dap59n67SMfLh8jeFsKQkrqk9nCup
+ l+agQmz70Ia4QZFf4HMCJbEXjSPzQJkIZWzRMTGZ5YqX6mHQ0VR5I+BwKjDVctZF3+nGg==
+X-Received: by 2002:a05:690c:102:b0:787:cad1:bdb2 with SMTP id
+ 00721157ae682-7947ac93bf2mr71809997b3.69.1769686896233; Thu, 29 Jan 2026
+ 03:41:36 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20260115-sme2-hvf-v2-0-2eca481bd7ee@linaro.org>
+ <20260115-sme2-hvf-v2-2-2eca481bd7ee@linaro.org>
+ <2c3bb870-0321-4799-b7ca-65b2772ddf2c@linaro.org>
+ <CAAjaMXabRsOX0OVXN202ev3A1sKqMmbDoeY6n7Z-EhmZWmL9Cg@mail.gmail.com>
+ <CAFEAcA9oZ=rhUbw8WK5nUPAvs0TEPCJB8t8ReeViv=0b=_x-sQ@mail.gmail.com>
+ <CAAjaMXZLG2aBtStRhyvmdENj1Z+Mx05BmDgyYUoYrc_ZnHwyVQ@mail.gmail.com>
+In-Reply-To: <CAAjaMXZLG2aBtStRhyvmdENj1Z+Mx05BmDgyYUoYrc_ZnHwyVQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 29 Jan 2026 11:41:24 +0000
+X-Gm-Features: AZwV_QhiZwgWeiH3_RacpRrXFgRjLYr49rU20GVeVljiCA_drdbnCkdlxNs3Q1o
+Message-ID: <CAFEAcA-odFctT+aJb3xXDa_76=WGPRV6eMNdNTnYHqWV=x7VNw@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] hvf/arm: expose FEAT_SME2 to guest if available
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ Alexander Graf <agraf@csgraf.de>, Mads Ynddal <mads@ynddal.dk>,
+ qemu-arm@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+X-Spam_score_int: -4
+X-Spam_score: -0.5
+X-Spam_bar: /
+X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_SBL=1.623 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,45 +124,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-These patches add support to TCG for a CPU with SME but not SVE.  We
-originally prevented users from doing that in the run-up to a
-release, in commit f7767ca30179 ("target/arm: Disable SME if SVE is
-disabled") by forcing SME to off if SVE wasn't implemented.  This was
-a simple way to avoid users hitting an assertion failure.
+On Mon, 26 Jan 2026 at 08:34, Manos Pitsidianakis
+<manos.pitsidianakis@linaro.org> wrote:
+>
+> On Thu, Jan 22, 2026 at 6:52=E2=80=AFPM Peter Maydell <peter.maydell@lina=
+ro.org> wrote:
+> > If giving the SME registers a good workout with the
+> > gdbstub interface all seems to work fine, then I think
+> > we can adjust this condition to be "if tcg_enabled && ...".
+>
+> gdb had a disastrous workout, because it turns out it also assumes SME
+> must have SVE:
+>
+>
+>   (gdb) target remote localhost:1234
+>   Remote debugging using localhost:1234
+>   ../../gdb/aarch64-tdep.c:3068: internal-error:
+> aarch64_pseudo_register_type: bad register number 160
+>   A problem internal to GDB has been detected,
+>   further debugging may prove unreliable.
+>   Fatal signal: Abort trap: 6
 
-Changes since v1:
- * reorder patches to put the ones that affect SME+SVE
-   CPUs and are worth backporting to stable first
- * change approach to fixing the smcr_write() assertion
- * fix a non-SME-aware assert in aarch64_sve_narrow_vq()
- * correct a bug in how we report the vector registers in
-   the gdbstub: this fixes the problem where gdb hit an
-   internal error when we emulate SME-only CPU
- * squash FEAT_SME_FA64 on SME-only CPUs
+I think that if we rebase this series on top of the patchset I
+just sent out:
+https://patchew.org/QEMU/20260129113455.1283266-1-peter.maydell@linaro.org/
+that should avoid this GDB internal error (which happened because
+we were reporting the Z registers as zero width, so GDB got
+confused about whether they existed or not).
 
-This has still not really had a great deal of testing, but
-I think it's now good enough to remove the RFC tag.
+The GDB and LLDB changes to handle SME-only CPUs seem to mostly
+be related to the ptrace API, because of choices made in the Linux
+kernel API about how to handle SME-only, so I'm optimistic we don't
+need to wait for anything to land on the debugger side.
 
 thanks
 -- PMM
-
-Peter Maydell (6):
-  target/arm: Account for SME in aarch64_sve_narrow_vq() assertion
-  target/arm: Report correct vector width in gdbstub when SME present
-  target/arm: Handle SME-only CPUs in sve_vqm1_for_el_sm()
-  target/arm: Handle SME-without-SVE on change of EL
-  target/arm: Squash FEAT_SME_FA64 if FEAT_SVE is not present
-  target/arm: Permit configurations with SME but not SVE
-
- docs/system/arm/cpu-features.rst | 10 ++++++++--
- target/arm/cpu.c                 | 10 ----------
- target/arm/cpu64.c               |  5 +++++
- target/arm/gdbstub64.c           | 12 ++++++------
- target/arm/helper.c              | 14 ++++++++++----
- target/arm/internals.h           |  9 +++++++++
- 6 files changed, 38 insertions(+), 22 deletions(-)
-
--- 
-2.43.0
-
 

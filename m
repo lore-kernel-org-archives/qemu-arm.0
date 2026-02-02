@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 786CBE7316D
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Feb 2026 13:35:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EE28E7316F
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Feb 2026 13:35:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vmu4I-0007Bd-KD; Mon, 02 Feb 2026 08:34:18 -0500
+	id 1vmu46-0006na-Ez; Mon, 02 Feb 2026 08:34:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vmu4F-00075o-Il
- for qemu-arm@nongnu.org; Mon, 02 Feb 2026 08:34:15 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ id 1vmu44-0006mH-Qw
+ for qemu-arm@nongnu.org; Mon, 02 Feb 2026 08:34:04 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vmu4B-0002hb-JA
- for qemu-arm@nongnu.org; Mon, 02 Feb 2026 08:34:15 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-4806f9e61f9so22650755e9.1
- for <qemu-arm@nongnu.org>; Mon, 02 Feb 2026 05:34:11 -0800 (PST)
+ id 1vmu43-0002ci-6Z
+ for qemu-arm@nongnu.org; Mon, 02 Feb 2026 08:34:04 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-4801d7c72a5so35342985e9.0
+ for <qemu-arm@nongnu.org>; Mon, 02 Feb 2026 05:34:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1770039250; x=1770644050; darn=nongnu.org;
+ d=linaro.org; s=google; t=1770039242; x=1770644042; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wb6+lM6pydrnwcLmZGcqj6kVPeiLe8pR1QP6em9mlF8=;
- b=AOpyN+Zjk9hvyRhDUJnmafdGsxWmvSsAdEdQCoXr1Fwgza6Oo0Xpbw7R/is1khmfUO
- UGb5pF5YAa8ewYEUymZeS6ySkmD+UBfZAEhXGiDu2BciheqOtKK0DlrOkCnZMmaAjcxz
- YCttxf1nw6ssg+9TsCgzB3GuLSM9caTxacTiasDJLgd0/LT7WPakV4H6A191rRF92gVa
- BRnshXaaWXIKtA2kXsKDogLNhgV9sgtZSBPUn04zxkOn2fn65Dr2QWebfQVS8bl1y1F4
- ywyyrhIr9JXQe3N9MtFxHFyVlqRuHroxVzvSGRS4Z6rPeuLCDdXazDddHX5PZymys/my
- feGA==
+ bh=am4mHMPcOaDWpeUBgMJCWJAj5MoT8YrEI2sYfgIQm8s=;
+ b=bpaqVTv7GezAUC0vv0PSljSo8uEdC8tWC5Q9AoLOQih2XFJo0EBwhRz12b/2CZ3HXe
+ 86LjQpeTsOXxbRFuLzT2EOHqgponM5CMwYI2jy8LcLMdZOkTu4jGlQ7lCwnwugsIKuNf
+ ikXx/x013GOIXFUnyAzKLvDg+W8z3nlEw9etDTk0cBQgJjVdgD9eKvAM0v6pV4ygA3S3
+ EsDDWs7oCRlwYCWkoCj6Dlw62xZjt53J57fd9Yx5eRP5RJmFUW6chM7QaWP4nN4Lhuvh
+ YhjK37M5xV131k92P20J9flvwwQPAP8YLOJmqaw8x/1R8jgtQW3Y8W6YHYA469fdVovL
+ GLww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770039250; x=1770644050;
+ d=1e100.net; s=20230601; t=1770039242; x=1770644042;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=wb6+lM6pydrnwcLmZGcqj6kVPeiLe8pR1QP6em9mlF8=;
- b=D8aUy8scnZDs2uRl9b4aJHygPy/ylSfewBei5TdA3SLjWJulnyLcK6wfvJC6ueuZw9
- QV84og1ouSDMwbiSMXVjamywdM64zPqX6I4oUXhMPbt0Eh6PtCyndJmJn1jvzrcpn6bc
- kBsT+ousjWqojOJqS2SF9TN40NArswubuvlReZA6st25kJv3FL/OLuztCebJkJXWveys
- D7xx6XgWLFirVpkjA3Yd1RYy5N/QJwDNzaBSUzVOERyRU6Ws7SI689HehHCmIqB5mkcf
- vsSTmPbHe1cKisqb3moAQVojopn1eF2I4GfqIYbGufqCc52U4EvyoEvMFsD3A9DS7GAA
- q69g==
-X-Gm-Message-State: AOJu0Yzl59n1vN/x/KJOp25Gei0ByEA/20m/mvCnecXb2fmggTXs5T2L
- xxJa6IGXeAO+WfvqQDz+hOPaO/zJPyLpXZaWImLOy0FCetSDqJ3vs/WlxpeuBbfuW43OCgLB+xm
- UuxVH
-X-Gm-Gg: AZuq6aIl2wf0Mugr3yWtsn/v/Pp16DDEqJt4VwcpJFuiVkz3zeGzXREvE1QNTTX9UR6
- ill2g4EEqpJ9htoZizjZ8yWzEVCX/9N5mop5SYbJQlpuTKQT3sVPZ2XR4SkGrrZ1Lh0rS1ssFf9
- QGqOo/Upo53W58PQioR98c+x81WFPHYIFPRrIUOnbHTk2ZWQAsKH8MEcfFJRXUtksCkzUuX26rV
- H2gwqNXiSbB8wUa7CLbFWhProKWN+DGL2v2GMC67M0NpLrym46yR7oLYaM3cVYrIFnYkR4WBTGG
- B35j8C/O8J77n03nvztA/OFnpkCGbdg8wNRX87CAx5ZI8Qfse4IRgSStJkF/jGJMPlJ8EyybUzA
- 0sVz6IBEtOPqDshmylxeLIYhzTYVh95PKc0UWUDWGWwp23d5/PSOMfhzfQ+K3V6CG1vQoaBceLP
- UCqviBLsQOtaPIPg7BgGOOIaea5yD/aA==
-X-Received: by 2002:a05:600c:19cc:b0:480:690e:f14a with SMTP id
- 5b1f17b1804b1-482db4563b7mr156150385e9.14.1770039249839; 
- Mon, 02 Feb 2026 05:34:09 -0800 (PST)
+ bh=am4mHMPcOaDWpeUBgMJCWJAj5MoT8YrEI2sYfgIQm8s=;
+ b=w4OrZGGmJ84npYAUPxzvvGBWu2ggOjZqPaXYZV21omxMGk9KIPtNpUz3JGra4F0dlr
+ yk7L5oLnK37OQAManSCSHXtEspgGk2WXfvHAeyW1lLvnNte/Yslex8HQ8a8b+v8PEDa4
+ 6gWv4m7wUpVt2L7NS4JzmfJzEXHzKjdKHRkuwSET975iW3kM/tntvY8dUDX9/eXVy6SU
+ ayLk85AwREfz8plh5fCYasyBvcKMPzXBVARNMyuLWMYCbcEXwSaCKGDmhqwhMFsQ2VtY
+ REpjk2+3dDLshhtWC6E1/nuF6QalhLnur2vozuWW/q2ZKJlZLM3qhnuOmrzZ5iA9rV7B
+ FSWw==
+X-Gm-Message-State: AOJu0YzG6hJJWi1qQnRFMPrnZYJKEqgdCpBndi8UAE6ud8js2P3PvkSW
+ z3EauZteI9puyD+/vOp+JQNVytBhD+UE+cj18LcNMZmRBWA/xzAcpLJU4Nlz1J9IelHFKes4SGJ
+ tdvYC
+X-Gm-Gg: AZuq6aIwGfADB3Cacoo3ugXDlU2qjLETp/7+st3LZFcfLUuHkMmcg+40ON6s2z/9wzO
+ ASaRy39TtXYU6lhghlO3LsoD3oyQQgNHTfvYWLxOYXDnypMae1FlcxXg7dkY7sx1mJGuxY39GmD
+ /ITmo9omeqy273NMM8K4JZyiHp3A5bscb54tXrrCkL7is60F+K07tRU1WZ0525iEfO5k9EJ9HnQ
+ L48BTBjQ3U2bRMSqyJI5fpZup6lA6PzonfqOo77LQlODrncMLTjd50RwJzdN9YOHrJz3o7YoLow
+ ODt+iHnzPC5oeX+iYnrdKfqhn5m66bBzTVzWfQngfa+NjtoQ77R/vCfVgEzGBEGjfjfYYdYBpwc
+ h10h1/C7c3A0YT+Zjh59VeBl2/vJAnUiR0XJiitE0hP5fM3dR465hRR/UUE1D/HmBgURb8IV5si
+ QtUtz98t2ZiWY8xhZz4vr/q7OTvhk5LQ==
+X-Received: by 2002:a05:600c:1e0d:b0:471:1765:839c with SMTP id
+ 5b1f17b1804b1-482db4d8565mr149415205e9.20.1770039241639; 
+ Mon, 02 Feb 2026 05:34:01 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48066c42895sm478054495e9.14.2026.02.02.05.34.08
+ 5b1f17b1804b1-48066c42895sm478054495e9.14.2026.02.02.05.34.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Feb 2026 05:34:09 -0800 (PST)
+ Mon, 02 Feb 2026 05:34:00 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
  Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 12/15] target/arm/tcg: Correct SVE/SME BF16 checks
-Date: Mon,  2 Feb 2026 13:33:50 +0000
-Message-ID: <20260202133353.2231685-13-peter.maydell@linaro.org>
+Subject: [PATCH v3 05/15] target/arm: Don't let 'sme=on' downgrade SME
+Date: Mon,  2 Feb 2026 13:33:43 +0000
+Message-ID: <20260202133353.2231685-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260202133353.2231685-1-peter.maydell@linaro.org>
 References: <20260202133353.2231685-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,103 +103,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-As with I8MM, the BF16 field of ID_AA64ZFR0_EL1 is set when the
-CPU implements FEAT_BF16 and either FEAT_SVE or FEAT_SME, so
-we need to have separate checks for "(SVE || SME) && BF16"
-and "SVE && BF16". Follow the same pattern as with I8MM:
+In our handling of the boolean 'sme' CPU property, we write this 0/1
+value directly to ID_AA64PFR1_EL1.SME.  This worked when the only
+valid values in that field were 0 (for no SME) and 1 (for SME1).
+However, with the addition of SME2 the SME field can now also read 2.
+This means that "-cpu max,sme=on" will result in an inconsistent set
+of ID registers, where ID_AA64PFR1_EL1.SME claims SME1 but
+ID_AA64SMFR0_EL1.SMEver claims SME2p1.  This isn't a valid thing to
+report, and confuses Linux into reporting SME2 to userspace but not
+actually enabling userspace access for it.
 
- * aa64_sve_sme_bf16 means (SVE || SME) && BF16
- * aa64_sve_bf16 means (SVE && BF16)
+Fix this bug by having arm_cpu_sme_finalize() fix up the
+ID_AA64PFR1_EL1.SME field to match ID_AA64SMFR0.SMEver.  This means
+the "sme" property's semantics are "off" for "no SME" and "on" for
+"enable at whatever the default SME version this CPU provides is".
 
-BFMMLA is the only SVE BF16 insn that isn't in SME.
+Update the documentation to clarify what 'sve=on' and 'sme=on' do.
+(We don't have the equivalent bug for 'sve=on' because
+ID_AA64PFR0_EL1.SVE only has 0 and 1 as valid values, but the
+semantics of the property are the same.)
 
+Cc: qemu-stable@nongnu.org
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu-features.h      |  7 ++++++-
- target/arm/tcg/translate-sve.c | 16 ++++++++--------
- 2 files changed, 14 insertions(+), 9 deletions(-)
+ docs/system/arm/cpu-features.rst | 10 ++++++++++
+ target/arm/cpu64.c               | 15 +++++++++++++++
+ 2 files changed, 25 insertions(+)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 8b8de5db04..1bcf28ab08 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1434,7 +1434,7 @@ static inline bool isar_feature_aa64_sve2_bitperm(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64ZFR0, BITPERM) != 0;
- }
+diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+index 37d5dfd15b..024119449c 100644
+--- a/docs/system/arm/cpu-features.rst
++++ b/docs/system/arm/cpu-features.rst
+@@ -318,6 +318,11 @@ SVE CPU Property Parsing Semantics
+      provided an error will be generated.  To avoid this error, one must
+      enable at least one vector length prior to enabling SVE.
  
--static inline bool isar_feature_aa64_sve_bf16(const ARMISARegisters *id)
-+static inline bool isar_feature_aa64_sme_sve_bf16(const ARMISARegisters *id)
- {
-     return FIELD_EX64_IDREG(id, ID_AA64ZFR0, BFLOAT16) != 0;
- }
-@@ -1548,6 +1548,11 @@ static inline bool isar_feature_aa64_sve_i8mm(const ARMISARegisters *id)
-     return isar_feature_aa64_sve(id) && isar_feature_aa64_sme_sve_i8mm(id);
- }
- 
-+static inline bool isar_feature_aa64_sve_bf16(const ARMISARegisters *id)
-+{
-+    return isar_feature_aa64_sve(id) && isar_feature_aa64_sme_sve_bf16(id);
-+}
++  10) Enabling SVE (with ``sve=on`` or by default) enables all the SVE
++      sub-features that the CPU supports (for example, it may also
++      enable SVE2). There are not generally any lower-level controls
++      for disabling specific SVE sub-features.
 +
- /*
-  * Feature tests for "does this exist in either 32-bit or 64-bit?"
-  */
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index 53d35f6de9..956ddee123 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -4430,7 +4430,7 @@ TRANS_FEAT(FCVT_sh, aa64_sme_or_sve, gen_gvec_fpst_arg_zpz,
- TRANS_FEAT(FCVT_hs, aa64_sme_or_sve, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve_fcvt_hs, a, 0, FPST_A64_F16)
+ SVE CPU Property Examples
+ -------------------------
  
--TRANS_FEAT(BFCVT, aa64_sve_bf16, gen_gvec_fpst_arg_zpz,
-+TRANS_FEAT(BFCVT, aa64_sme_sve_bf16, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve_bfcvt, a, 0,
-            s->fpcr_ah ? FPST_AH : FPST_A64)
+@@ -430,6 +435,11 @@ and all vector lengths must be powers of 2.  The maximum vector
+ length supported by qemu is 2048 bits.  Otherwise, there are no
+ additional constraints on the set of vector lengths supported by SME.
  
-@@ -7818,7 +7818,7 @@ TRANS_FEAT(FCVTNT_sh, aa64_sme_or_sve2, gen_gvec_fpst_arg_zpz,
- TRANS_FEAT(FCVTNT_ds, aa64_sme_or_sve2, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve2_fcvtnt_ds, a, 0, FPST_A64)
++As with SVE, ``sme=on`` enables all the SME sub-features the CPU
++supports (for example, it may also enable SME2), and there are
++no lower-level controls for fine-grained disabling of specific
++SME sub-features.
++
+ SME User-mode Default Vector Length Property
+ --------------------------------------------
  
--TRANS_FEAT(BFCVTNT, aa64_sve_bf16, gen_gvec_fpst_arg_zpz,
-+TRANS_FEAT(BFCVTNT, aa64_sme_sve_bf16, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve_bfcvtnt, a, 0,
-            s->fpcr_ah ? FPST_AH : FPST_A64)
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 4dfc03973e..26873a39b4 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -363,6 +363,16 @@ void arm_cpu_sme_finalize(ARMCPU *cpu, Error **errp)
  
-@@ -7875,9 +7875,9 @@ TRANS_FEAT(FDOT_zzzz, aa64_sme2_or_sve2p1, gen_gvec_env_arg_zzzz,
- TRANS_FEAT(FDOT_zzxz, aa64_sme2_or_sve2p1, gen_gvec_env_arg_zzxz,
-            gen_helper_sme2_fdot_idx_h, a)
- 
--TRANS_FEAT(BFDOT_zzzz, aa64_sve_bf16, gen_gvec_env_arg_zzzz,
-+TRANS_FEAT(BFDOT_zzzz, aa64_sme_sve_bf16, gen_gvec_env_arg_zzzz,
-            gen_helper_gvec_bfdot, a, 0)
--TRANS_FEAT(BFDOT_zzxz, aa64_sve_bf16, gen_gvec_env_arg_zzxz,
-+TRANS_FEAT(BFDOT_zzxz, aa64_sme_sve_bf16, gen_gvec_env_arg_zzxz,
-            gen_helper_gvec_bfdot_idx, a)
- 
- TRANS_FEAT_NONSTREAMING(BFMMLA, aa64_sve_bf16, gen_gvec_env_arg_zzzz,
-@@ -7890,8 +7890,8 @@ static bool do_BFMLAL_zzzw(DisasContext *s, arg_rrrr_esz *a, bool sel)
-                               s->fpcr_ah ? FPST_AH : FPST_A64);
+     cpu->sme_vq.map = vq_map;
+     cpu->sme_max_vq = 32 - clz32(vq_map);
++
++    /*
++     * The "sme" property setter writes a bool value into ID_AA64PFR1_EL1.SME
++     * (and at this point we know it's not 0). Correct that value to report
++     * the same SME version as ID_AA64SMFR0_EL1.SMEver.
++     */
++    if (FIELD_EX64_IDREG(&cpu->isar, ID_AA64SMFR0, SMEVER) != 0) {
++        /* SME2 or better */
++        FIELD_DP64_IDREG(&cpu->isar, ID_AA64PFR1, SME, 2);
++    }
  }
  
--TRANS_FEAT(BFMLALB_zzzw, aa64_sve_bf16, do_BFMLAL_zzzw, a, false)
--TRANS_FEAT(BFMLALT_zzzw, aa64_sve_bf16, do_BFMLAL_zzzw, a, true)
-+TRANS_FEAT(BFMLALB_zzzw, aa64_sme_sve_bf16, do_BFMLAL_zzzw, a, false)
-+TRANS_FEAT(BFMLALT_zzzw, aa64_sme_sve_bf16, do_BFMLAL_zzzw, a, true)
- 
- static bool do_BFMLAL_zzxw(DisasContext *s, arg_rrxr_esz *a, bool sel)
+ static bool cpu_arm_get_sme(Object *obj, Error **errp)
+@@ -375,6 +385,11 @@ static void cpu_arm_set_sme(Object *obj, bool value, Error **errp)
  {
-@@ -7901,8 +7901,8 @@ static bool do_BFMLAL_zzxw(DisasContext *s, arg_rrxr_esz *a, bool sel)
-                               s->fpcr_ah ? FPST_AH : FPST_A64);
+     ARMCPU *cpu = ARM_CPU(obj);
+ 
++    /*
++     * For now, write 0 for "off" and 1 for "on" into the PFR1 field.
++     * We will correct this value to report the right SME
++     * level (SME vs SME2) in arm_cpu_sme_finalize() later.
++     */
+     FIELD_DP64_IDREG(&cpu->isar, ID_AA64PFR1, SME, value);
  }
  
--TRANS_FEAT(BFMLALB_zzxw, aa64_sve_bf16, do_BFMLAL_zzxw, a, false)
--TRANS_FEAT(BFMLALT_zzxw, aa64_sve_bf16, do_BFMLAL_zzxw, a, true)
-+TRANS_FEAT(BFMLALB_zzxw, aa64_sme_sve_bf16, do_BFMLAL_zzxw, a, false)
-+TRANS_FEAT(BFMLALT_zzxw, aa64_sme_sve_bf16, do_BFMLAL_zzxw, a, true)
- 
- static bool do_BFMLSL_zzzw(DisasContext *s, arg_rrrr_esz *a, bool sel)
- {
 -- 
 2.43.0
 

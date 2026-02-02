@@ -4,112 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39B71E7DEEE
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Feb 2026 14:40:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FF39E7DEEE
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Feb 2026 15:00:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vmv5v-0001As-2Q; Mon, 02 Feb 2026 09:40:03 -0500
+	id 1vmvPk-0001dv-5w; Mon, 02 Feb 2026 10:00:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vmv5t-0001A0-JR
- for qemu-arm@nongnu.org; Mon, 02 Feb 2026 09:40:01 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vmvPX-0001W7-8c
+ for qemu-arm@nongnu.org; Mon, 02 Feb 2026 10:00:25 -0500
+Received: from 10.mo548.mail-out.ovh.net ([46.105.77.235])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vmv5r-0000mM-Mr
- for qemu-arm@nongnu.org; Mon, 02 Feb 2026 09:40:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770043198;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=I4OzIbWlsp5cpVNBuTmU9XHo7cdIckoBDTs7zm5um6M=;
- b=TB3g/Z9koXFD7RQXH2cBfOl2SRQFFCLmOKikFhuL7NCZDrFcFRmqG7o9k6xbHKuhKdlNkE
- C4i9klQ+B+GqgzpNc1hcXfyN5zsOQSZ5Lb0UJeW+LfdRZvocZtXYQZmoNop6yhdNy97yqq
- MfylLWWnN+gFNwG39+zjUCcZLxh80vk=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-217-Jbu_wK8kO9amJf8sB3wM0Q-1; Mon, 02 Feb 2026 09:39:57 -0500
-X-MC-Unique: Jbu_wK8kO9amJf8sB3wM0Q-1
-X-Mimecast-MFC-AGG-ID: Jbu_wK8kO9amJf8sB3wM0Q_1770043196
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-435db9425ebso4584735f8f.1
- for <qemu-arm@nongnu.org>; Mon, 02 Feb 2026 06:39:56 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770043196; x=1770647996;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=I4OzIbWlsp5cpVNBuTmU9XHo7cdIckoBDTs7zm5um6M=;
- b=eYITbWOqosY0uvhRI3LiFX3oukrhdkxS+Z8RXzrrroxgkkQYuXTP2RSkPG5D1tnIM/
- 264cn/SAlHqZml6fdLaIKHIxm+Vdmal+RkBh54A0M3KwvpEXgTijtKmCG2Vs0wr4zz50
- OppjM79Czvt0aDD+J6XoCbO90gGhpCnBMH+lj8pmIiB7mvxLFmzvejiROXBonCWVRe13
- FrVA484q2xjasJ9RW1nbu3rhk/zYCFxsjIR3HmpqiYXzug4NLFhznuPDz4eF79Q0RXXX
- 7rgyytfblE94KmZKroq8QmMiXLDmFqv1gNbVRqxEahRW/As0OCQU5s68/3QQ5YfxZ/TD
- EmmQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXqvxn5BlsTHQ6x95NH0JGDfRZRHXDnU8Tt9HudYeV+steBsLZUpwP+gdtw9F7o6k2cV3l0oDcklQ==@nongnu.org
-X-Gm-Message-State: AOJu0YznuTZAEyBBy8on/PiKaY6LIrEFyjOttKWE7qVeN2QhRp4qMRcD
- PXHMv2tDUtOJapAWMnDqvy9jH6swQwA2dt8/KgB+wNJhlvk3jvozAyf/O5HiqL+ETFiJrGds8Uf
- KO4IHpqS6HyATB9XylLIpvMY8tgsYCXUUjoR7B+z5p53gh7VdI5Kvdg==
-X-Gm-Gg: AZuq6aJM7MzhUHeV+sQcz7os6eSKhUsIW7ph9CaI47UmKlj0Ddbbtt0zjtG043wIHqd
- xD9TqKGxEh6Xw/6/yn1m3+M8UOfQcxDJR4MM8zzytReHoZqv9BkJgi9e2QPb0SnWlxqIE2yVQIC
- IFR8DANMgi90KmDxujjr3XcQBoS6pJbqhpp15NyH6tzrr4xO+5iKjTiFpOSm9HUbOsXorieBRB4
- 9RDk/rWKf+x5sVr8TT256vKiWU3pNQcDofqWrLCWqCLywU4FqeBdrZXovn2YYHjM/O2AZHjKHmR
- sqhDw9ItRBv9XUIoWLxvdGfzmn6MLChHKCuy82FhAkNCjUsRHp8PiFhr8X8sAHWFGeZYFkmYnek
- KdxjM1V9dkCGJwoZgM3vyV852lFCL13hYajkhrtAbcixpGuMd4bbulb7TOw==
-X-Received: by 2002:a5d:584a:0:b0:435:a464:f467 with SMTP id
- ffacd0b85a97d-435f3abc7d7mr17933694f8f.50.1770043195615; 
- Mon, 02 Feb 2026 06:39:55 -0800 (PST)
-X-Received: by 2002:a5d:584a:0:b0:435:a464:f467 with SMTP id
- ffacd0b85a97d-435f3abc7d7mr17933636f8f.50.1770043195118; 
- Mon, 02 Feb 2026 06:39:55 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-435e10e46cesm44330705f8f.7.2026.02.02.06.39.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Feb 2026 06:39:54 -0800 (PST)
-Message-ID: <d9192ae6-a94f-479a-b19f-734cc52a6be0@redhat.com>
-Date: Mon, 2 Feb 2026 15:39:51 +0100
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vmvPR-0005Oc-Sf
+ for qemu-arm@nongnu.org; Mon, 02 Feb 2026 10:00:17 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.37.48])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4f4VCW1zm1z5w0B;
+ Mon,  2 Feb 2026 15:00:07 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG14EX2.mxp5.local (172.16.2.142)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Mon, 2 Feb
+ 2026 16:00:06 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G002ca9446ef-9cdb-4896-840e-6e3c57365ff4,
+ 7652E71065C1D671F0F2B67E69D7E7AF66B0F117) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <00839884-7871-4207-904c-c9ea9228048f@kaod.org>
+Date: Mon, 2 Feb 2026 16:00:05 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 31/37] hw/arm/smmuv3-accel: Add property to specify OAS
- bits
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, berrange@redhat.com, clg@redhat.com, alex@shazbot.org,
- nathanc@nvidia.com, mochs@nvidia.com, smostafa@google.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
- zhenzhong.duan@intel.com, yi.l.liu@intel.com, kjaju@nvidia.com
-References: <20260126104342.253965-1-skolothumtho@nvidia.com>
- <20260126104342.253965-32-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260126104342.253965-32-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: CxAhxhLgMiyX-roammzstrcAWbe5hIq2XIJ_AJI1IdE_1770043196
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Subject: Re: [PATCH v3 2/4] hw/arm/smmuv3-accel: Allocate vEVENTQ for
+ accelerated SMMUv3 devices
+To: Shameer Kolothum <skolothumtho@nvidia.com>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
+ <nicolinc@nvidia.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <jgg@nvidia.com>, <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
+ <zhenzhong.duan@intel.com>, <kjaju@nvidia.com>
+References: <20260127103328.255382-1-skolothumtho@nvidia.com>
+ <20260127103328.255382-3-skolothumtho@nvidia.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260127103328.255382-3-skolothumtho@nvidia.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG14EX2.mxp5.local
+ (172.16.2.142)
+X-Ovh-Tracer-GUID: 8d8882ca-bfef-40e2-9611-bb5692fd92b4
+X-Ovh-Tracer-Id: 13544294405273914299
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: 0
+X-VR-SPAMCAUSE: dmFkZTFKeb05/BNSARljWaBbkyfdbkrStNtMzXVtBML/niXrIUZsSs2mCvzFaGFfFqWBuATgU5OVV+d6Wlhf23RYSq+5PB4tCW4fovvOtgjnr9TLXB99CeJ8O2ztnwWFaP0tozpQJAZgRfjEVBOAzgxfxdPkizEmZg66M6wat6F/sTGAJJ9yImjeKY/qMCbJ6utkTwUVKd6qd1uZ1Fj2TznsjkhumxfBHBChfkpzWL6ZEvQHQ1RzEIVtCm9+U5ioewm3KzKhpRuKgGVt/2c7en/gQowZGgizoJ+cgbfDpojlgRsamh4rG5ZqYbOADdUweRIW25tb3tQ9pgU8bm78wCutt2WWAw/BTLkgcSaXXmuN+y9lThQPs81kkYI+XJMA3/WsLWDRv/C43oeOIpQNticSfrc72GyJg6U/clwx46Px01sseeWvP2f2wTaK6S/DUJ814FmpwIHyOy/3jSC+xcB234D8o5o/oAX7wT1nMRTbDN0zGXdLPZP9Q5rNFA9QPye17Md1Y+Do03BkRMTAKP8iXQfM83r9QQg+O0EBJy4k5u1q48WrCQ07nlN6nsktmse8m0WqbFDGwgxX9F2ufv5PW4wheUKZXx1xSV+D/SlvGJmqa0eVQm22IUWaA63iUIZlVAS1tckVNvJn66eoH3HsLy6LsjTjCdCu5jM2b6j3b+OFlg
+DKIM-Signature: a=rsa-sha256; bh=Eo1mdLmPrWQYvaWlD3wa7SpJNdJeXjJ/+GU6rg+557o=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1770044408; v=1;
+ b=U92V4url5SSFfxx/L8UtsMWQH/7kO1eqFgwJA1gUQYGU8iPLhOcN1tF6uxr8Hh/BHOYT6L8y
+ fQuygPIEhXmCKdjnvyxPyr7tjqkXttMiuAcNoC1xvgE5/bcefejE/cVxKVasUO75+yZo5bEUUHV
+ XQAUL4SXtGg4kvBlQvvONobZBV04mnJ0Rf4axEhs8KGU3kJB9d9OapNeSAawjP7QXgo/k1E4o3I
+ TF3hflEfRhNuBxaapTWN9EdzBONwgiVvPFvNf1O7M645aKx/KjRwj4SLubXADsyL5s2lrQ4sw0v
+ NOEOgcxgxv1oa+3m4xZgEa+5A5gM9CbRkMKQjaeZD77FA==
+Received-SPF: pass client-ip=46.105.77.235; envelope-from=clg@kaod.org;
+ helo=10.mo548.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,205 +128,197 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer, Nicolin,
-On 1/26/26 11:43 AM, Shameer Kolothum wrote:
-> QEMU SMMUv3 currently sets the output address size (OAS) to 44 bits.
-> With accelerator mode enabled, a device may use SVA, where CPU page tables
-> are shared with the SMMU, requiring an OAS at least as large as the
-> CPU’s output address size. A user option is added to configure this.
->
-> However, the OAS value advertised by the virtual SMMU must remain
-> compatible with the capabilities of the host SMMUv3. In accelerated
-> mode, the host SMMU performs stage-2 translation and must be able to
-> consume the intermediate physical addresses (IPA) produced by stage-1.
->
-> The OAS exposed by the virtual SMMU defines the maximum IPA width that
-> stage-1 translations may generate. For AArch64 implementations, the
-> maximum usable IPA size on the host SMMU is determined by its own OAS.
-> Check that the configured OAS does not exceed what the host SMMU
-> can safely support.
-
-After discussion with Kubevirt guys, the management of current RIL,
-ssidsize, ats and oas options look touchy because it is tricky for them
-to introspect the host values.
-
-In cold plug case at least it looks feasible to use IOMMU_GET_HW_INFO()
-to retrieve host info:
-
-RIL is in IDR3
-ssidsize in IDR1
-OAS in IDR5
-ATS may be more touchy but maybe this can be introspected too?
-
-I would advocate to turn those options into _AUTO options to give a
-chance to the user to ask for host derived values.
-
-Currently in include/hw/qdev-properties.h we have
-DEFINE_PROP_ON_OFF_AUTO for a bool and
-DEFINE_PROP_ON_OFF_AUTO_BIT64 for a 64b
-
-RIL can match bool.
-Others may need a new DEFINE_PROP_ON_OFF_AUTO_* one.
-
-Note such kind of auto property was introduced for virtio-iommu
-(DEFINE_PROP_GRANULE_MODE)
-
-What do you think? Most probably this has been dicussed in the past but
-I do not necessarily remember the outputs.
-
-Thanks
-
-Eric
-
-
-
->
-> Tested-by: Zhangfei Gao <zhangfei.gao@linaro.org>
-> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
-> Tested-by: Eric Auger <eric.auger@redhat.com>
+On 1/27/26 11:33, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> 
+> When the guest enables the Event Queue and a vIOMMU is present, allocate a
+> vEVENTQ object so that host-side events related to the vIOMMU can be
+> received and propagated back to the guest.
+> 
+> For cold-plugged devices using SMMUv3 acceleration, the vIOMMU is created
+> before the guest boots. In this case, the vEVENTQ is allocated when the
+> guest writes to SMMU_CR0 and sets EVENTQEN = 1.
+> 
+> If no cold-plugged device exists at boot (i.e. no vIOMMU initially), the
+> vEVENTQ is allocated when a vIOMMU is created, i.e. during the first
+> device hot-plug.
+> 
+> Event read and propagation will be added in a later patch.
+> 
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
 > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 > ---
->  hw/arm/smmuv3-accel.c          | 22 ++++++++++++++++++++++
->  hw/arm/smmuv3.c                | 16 +++++++++++++++-
->  include/hw/arm/smmuv3-common.h |  5 ++++-
->  include/hw/arm/smmuv3.h        |  1 +
->  4 files changed, 42 insertions(+), 2 deletions(-)
->
+>   hw/arm/smmuv3-accel.c | 65 +++++++++++++++++++++++++++++++++++++++++--
+>   hw/arm/smmuv3-accel.h |  6 ++++
+>   hw/arm/smmuv3.c       |  4 +++
+>   3 files changed, 73 insertions(+), 2 deletions(-)
+> 
 > diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index a97abc1f79..ea420afeb7 100644
+> index f5cd4df336..e8028d4be5 100644
 > --- a/hw/arm/smmuv3-accel.c
 > +++ b/hw/arm/smmuv3-accel.c
-> @@ -27,6 +27,14 @@
->  static MemoryRegion root, sysmem;
->  static AddressSpace *shared_as_sysmem;
->  
-> +static int smmuv3_oas_bits(uint32_t oas)
+> @@ -390,6 +390,58 @@ bool smmuv3_accel_issue_inv_cmd(SMMUv3State *bs, void *cmd, SMMUDevice *sdev,
+>                      sizeof(Cmd), &entry_num, cmd, errp);
+>   }
+>   
+> +static void smmuv3_accel_free_veventq(SMMUv3AccelState *accel)
 > +{
-> +    static const int map[] = { 32, 36, 40, 42, 44, 48, 52, 56 };
+> +    IOMMUFDVeventq *veventq = accel->veventq;
 > +
-> +    g_assert(oas < ARRAY_SIZE(map));
-> +    return map[oas];
+> +    if (!veventq) {
+> +        return;
+> +    }
+> +    iommufd_backend_free_id(accel->viommu->iommufd, veventq->veventq_id);
+> +    g_free(veventq);
+> +    accel->veventq = NULL;
 > +}
 > +
->  static bool
->  smmuv3_accel_check_hw_compatible(SMMUv3State *s,
->                                   struct iommu_hw_info_arm_smmuv3 *info,
-> @@ -74,6 +82,15 @@ smmuv3_accel_check_hw_compatible(SMMUv3State *s,
->          error_setg(errp, "Host SMMUv3 doesn't support Range Invalidation");
->          return false;
->      }
-> +    /* Check OAS value opted is compatible with Host SMMUv3 IPA */
-> +    if (FIELD_EX32(info->idr[5], IDR5, OAS) <
-> +                FIELD_EX32(s->idr[5], IDR5, OAS)) {
-> +        error_setg(errp, "Host SMMUv3 supports only %d-bit IPA, but the vSMMU "
-> +                   "OAS implies %d-bit IPA",
-> +                   smmuv3_oas_bits(FIELD_EX32(info->idr[5], IDR5, OAS)),
-> +                   smmuv3_oas_bits(FIELD_EX32(s->idr[5], IDR5, OAS)));
+> +bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp)
+> +{
+> +    SMMUv3AccelState *accel = s->s_accel;
+> +    IOMMUFDVeventq *veventq;
+> +    uint32_t veventq_id;
+> +    uint32_t veventq_fd;
+> +
+> +    if (!accel->viommu) {
+> +        return true;
+> +    }
+> +
+> +    if (accel->veventq) {
+> +        return true;
+> +    }
+> +
+> +    /*
+> +     * Per Arm SMMUv3 specification (IHI0070 G.b, 6.3.26), the Event Queue
+> +     * is enabled only after its base and size registers are programmed.
+> +     * EVENTQEN is checked before allocating the vEVENTQ.
+> +     */
+> +    if (!smmuv3_eventq_enabled(s)) {
+> +        return true;
+> +    }
+> +
+> +    if (!iommufd_backend_alloc_veventq(accel->viommu->iommufd,
+> +                                       accel->viommu->viommu_id,
+> +                                       IOMMU_VEVENTQ_TYPE_ARM_SMMUV3,
+> +                                       1 << s->eventq.log2size, &veventq_id,
+> +                                       &veventq_fd, errp)) {
 > +        return false;
 > +    }
->  
->      /* QEMU SMMUv3 supports GRAN4K/GRAN16K/GRAN64K translation granules */
->      if (FIELD_EX32(info->idr[5], IDR5, GRAN4K) !=
-> @@ -657,6 +674,11 @@ void smmuv3_accel_idr_override(SMMUv3State *s)
->  
->      /* QEMU SMMUv3 has no ATS. Advertise ATS if opt-in by property */
->      s->idr[0] = FIELD_DP32(s->idr[0], IDR0, ATS, s->ats);
 > +
-> +    /* Advertise 48-bit OAS in IDR5 when requested (default is 44 bits). */
-> +    if (s->oas == SMMU_OAS_48BIT) {
-> +        s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS_48);
+> +    veventq = g_new(IOMMUFDVeventq, 1);
+> +    veventq->veventq_id = veventq_id;
+> +    veventq->veventq_fd = veventq_fd;
+> +    veventq->viommu = accel->viommu;
+> +    accel->veventq = veventq;
+> +    return true;
+> +}
+> +
+>   static bool
+>   smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+>                             Error **errp)
+> @@ -415,6 +467,7 @@ smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+>       viommu->viommu_id = viommu_id;
+>       viommu->s2_hwpt_id = s2_hwpt_id;
+>       viommu->iommufd = idev->iommufd;
+> +    accel->viommu = viommu;
+>   
+>       /*
+>        * Pre-allocate HWPTs for S1 bypass and abort cases. These will be attached
+> @@ -434,14 +487,20 @@ smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+>           goto free_abort_hwpt;
+>       }
+>   
+> +    /* Allocate a vEVENTQ if guest has enabled event queue */
+> +    if (!smmuv3_accel_alloc_veventq(s, errp)) {
+> +        goto free_bypass_hwpt;
 > +    }
->  }
->  
->  /* Based on SMUUv3 GPBA.ABORT configuration, attach a corresponding HWPT */
+> +
+>       /* Attach a HWPT based on SMMUv3 GBPA.ABORT value */
+>       hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
+>       if (!host_iommu_device_iommufd_attach_hwpt(idev, hwpt_id, errp)) {
+> -        goto free_bypass_hwpt;
+> +        goto free_veventq;
+>       }
+> -    accel->viommu = viommu;
+>       return true;
+>   
+> +free_veventq:
+> +    smmuv3_accel_free_veventq(accel);
+>   free_bypass_hwpt:
+>       iommufd_backend_free_id(idev->iommufd, accel->bypass_hwpt_id);
+>   free_abort_hwpt:
+> @@ -449,6 +508,7 @@ free_abort_hwpt:
+>   free_viommu:
+>       iommufd_backend_free_id(idev->iommufd, viommu->viommu_id);
+>       g_free(viommu);
+> +    accel->viommu = NULL;
+>       return false;
+>   }
+>   
+> @@ -549,6 +609,7 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
+>       trace_smmuv3_accel_unset_iommu_device(devfn, idev->devid);
+>   
+>       if (QLIST_EMPTY(&accel->device_list)) {
+> +        smmuv3_accel_free_veventq(accel);
+>           iommufd_backend_free_id(accel->viommu->iommufd, accel->bypass_hwpt_id);
+>           iommufd_backend_free_id(accel->viommu->iommufd, accel->abort_hwpt_id);
+>           iommufd_backend_free_id(accel->viommu->iommufd,
+> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
+> index a8a64802ec..92048bb674 100644
+> --- a/hw/arm/smmuv3-accel.h
+> +++ b/hw/arm/smmuv3-accel.h
+> @@ -22,6 +22,7 @@
+>    */
+>   typedef struct SMMUv3AccelState {
+>       IOMMUFDViommu *viommu;
+> +    IOMMUFDVeventq *veventq;
+>       uint32_t bypass_hwpt_id;
+>       uint32_t abort_hwpt_id;
+>       QLIST_HEAD(, SMMUv3AccelDevice) device_list;
+> @@ -50,6 +51,7 @@ bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp);
+>   bool smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
+>                                   Error **errp);
+>   void smmuv3_accel_idr_override(SMMUv3State *s);
+> +bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp);
+>   void smmuv3_accel_reset(SMMUv3State *s);
+>   #else
+>   static inline void smmuv3_accel_init(SMMUv3State *s)
+> @@ -80,6 +82,10 @@ smmuv3_accel_issue_inv_cmd(SMMUv3State *s, void *cmd, SMMUDevice *sdev,
+>   static inline void smmuv3_accel_idr_override(SMMUv3State *s)
+>   {
+>   }
+> +bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp)
+
+This should be a static line:
+
+   static inline bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp)
+
+C.
+
+> +{
+> +    return true;
+> +}
+>   static inline void smmuv3_accel_reset(SMMUv3State *s)
+>   {
+>   }
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index ca086ba00a..cb02184d2d 100644
+> index c08d58c579..210ac038fe 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -299,7 +299,8 @@ static void smmuv3_init_id_regs(SMMUv3State *s)
->      s->idr[3] = FIELD_DP32(s->idr[3], IDR3, RIL, 1);
->      s->idr[3] = FIELD_DP32(s->idr[3], IDR3, BBML, 2);
->  
-> -    s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS); /* 44 bits */
-> +    /* OAS: 44 bits */
-> +    s->idr[5] = FIELD_DP32(s->idr[5], IDR5, OAS, SMMU_IDR5_OAS_44);
->      /* 4K, 16K and 64K granule support */
->      s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, 1);
->      s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN16K, 1);
-> @@ -1949,6 +1950,10 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
->              error_setg(errp, "ats can only be enabled if accel=on");
->              return false;
->          }
-> +        if (s->oas != SMMU_OAS_44BIT) {
-> +            error_setg(errp, "OAS must be 44 bits when accel=off");
-> +            return false;
+> @@ -1605,6 +1605,10 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+>           s->cr0ack = data & ~SMMU_CR0_RESERVED;
+>           /* in case the command queue has been enabled */
+>           smmuv3_cmdq_consume(s, &local_err);
+> +        /* Allocate vEVENTQ if EventQ is enabled and a vIOMMU is available */
+> +        if (local_err == NULL) {
+> +            smmuv3_accel_alloc_veventq(s, &local_err);
 > +        }
->          return true;
->      }
->  
-> @@ -1959,6 +1964,11 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
->          return false;
->      }
->  
-> +    if (s->oas != SMMU_OAS_44BIT && s->oas != SMMU_OAS_48BIT) {
-> +        error_setg(errp, "OAS can only be set to 44 or 48 bits");
-> +        return false;
-> +    }
-> +
->      return true;
->  }
->  
-> @@ -2085,6 +2095,7 @@ static const Property smmuv3_properties[] = {
->      /* RIL can be turned off for accel cases */
->      DEFINE_PROP_BOOL("ril", SMMUv3State, ril, true),
->      DEFINE_PROP_BOOL("ats", SMMUv3State, ats, false),
-> +    DEFINE_PROP_UINT8("oas", SMMUv3State, oas, 44),
->  };
->  
->  static void smmuv3_instance_init(Object *obj)
-> @@ -2115,6 +2126,9 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
->      object_class_property_set_description(klass, "ats",
->          "Enable/disable ATS support (for accel=on). Please ensure host "
->          "platform has ATS support before enabling this");
-> +    object_class_property_set_description(klass, "oas",
-> +        "Specify Output Address Size (for accel=on). Supported values "
-> +        "are 44 or 48 bits. Defaults to 44 bits");
->  }
->  
->  static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
-> diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
-> index 415b7ccde5..abe3565357 100644
-> --- a/include/hw/arm/smmuv3-common.h
-> +++ b/include/hw/arm/smmuv3-common.h
-> @@ -342,7 +342,10 @@ REG32(IDR5,                0x14)
->       FIELD(IDR5, VAX,        10, 2);
->       FIELD(IDR5, STALL_MAX,  16, 16);
->  
-> -#define SMMU_IDR5_OAS 4
-> +#define SMMU_OAS_44BIT 44
-> +#define SMMU_OAS_48BIT 48
-> +#define SMMU_IDR5_OAS_44 4
-> +#define SMMU_IDR5_OAS_48 5
->  
->  REG32(IIDR,                0x18)
->  REG32(AIDR,                0x1c)
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index 242d6429ed..d488a39cd0 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -71,6 +71,7 @@ struct SMMUv3State {
->      Error *migration_blocker;
->      bool ril;
->      bool ats;
-> +    uint8_t oas;
->  };
->  
->  typedef enum {
+>           break;
+>       case A_CR1:
+>           s->cr[1] = data;
 
 

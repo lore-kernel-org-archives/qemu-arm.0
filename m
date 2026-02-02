@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AFA2E7316D
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Feb 2026 13:36:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C35EE73170
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Feb 2026 13:36:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vmu41-0006jz-El; Mon, 02 Feb 2026 08:34:01 -0500
+	id 1vmu4K-0007GO-Pw; Mon, 02 Feb 2026 08:34:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vmu3z-0006iq-UG
- for qemu-arm@nongnu.org; Mon, 02 Feb 2026 08:33:59 -0500
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343])
+ id 1vmu4G-000770-U9
+ for qemu-arm@nongnu.org; Mon, 02 Feb 2026 08:34:17 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vmu3x-0002Z7-Qu
- for qemu-arm@nongnu.org; Mon, 02 Feb 2026 08:33:59 -0500
-Received: by mail-wm1-x343.google.com with SMTP id
- 5b1f17b1804b1-481188b7760so29087025e9.0
- for <qemu-arm@nongnu.org>; Mon, 02 Feb 2026 05:33:57 -0800 (PST)
+ id 1vmu4E-0002iF-HA
+ for qemu-arm@nongnu.org; Mon, 02 Feb 2026 08:34:16 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-48039fdc8aeso26570965e9.3
+ for <qemu-arm@nongnu.org>; Mon, 02 Feb 2026 05:34:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1770039236; x=1770644036; darn=nongnu.org;
+ d=linaro.org; s=google; t=1770039253; x=1770644053; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=yDml/3LbO2JMFRFM4BlBDbVveOOqyhxoiv/BC5ZJtJI=;
- b=VvQ8spOkgdkAWL1+wkthNpGG+T40UkCnLlLLooqC9eYk9Se7KQs4YlpJZshnrDIoQW
- 8EWG49TnDb9JZo7xU6RTpMN5FZQ0M3Vtwbd0e7HFB+deuzTmFnXQi1DdMj8aMMFKiLOG
- NYyQOs8SUqZAL6H4s8+AsdDkXVlkzfGZhSUX+OL9STZz3A2E4lVSGDA4PzSz4FsWMzu4
- Jn7j+9chMljljyF/XHaLZH3qlw9vUskHd5LjbyekcGOXuX6ixnBjZilQ198EyxmuTw/V
- Cd/xhV1fyGaUVJPsrAI8YaWgBwfW5hgrxVsdJu/yXZRX5nY/mGY58x3dBmnk50PakQmv
- 1lTA==
+ bh=gLvC5MaXe0awrq4wxvHbYeODF5FYi1/mHsfwhmhjVlU=;
+ b=iQMXfeKFUedlJJ2IPctuMtN3wCwTVzkzG5Fz+ugFGPyuhihsxMkxogutw3+dtPGDyv
+ TXI1FHnbAzT5c0L36Ddc10XZHB2ctUYnkQT0eXbC3U94nKNEzu00wBllo/WmIjPE0INI
+ uAG/9WN5b7dx4DivYAuSeX7dibUX0eQr1E8GpCQUFCKgGgNA/QgwujlzhSMAz0rPok3g
+ /jBYLpOjcI9WzNWfQh6InIGpWDJBMS5xhYBbXzYdhrihX3lj3RLaNc2tzlTzaBTZQf9a
+ ocartZmSZZyWB1PHcQvBZXXROGM0p50+lEN9BBr3DOfvNkVyIWD8+a/LYW6YUWoaSJdc
+ vaMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770039236; x=1770644036;
+ d=1e100.net; s=20230601; t=1770039253; x=1770644053;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=yDml/3LbO2JMFRFM4BlBDbVveOOqyhxoiv/BC5ZJtJI=;
- b=JnSUDhVdZGSlJWeUFuwRSx3YdTg6vcTGmM4k/pt3oHf1XMh7NQrq8owT8aDaJscmjQ
- RdhUCzGYGPn8YLCiUB66My4b8Dayzp3vqlVO31VAumrJR+C5OvhrfRUnRdiW1d6G86YM
- zRn7eAsMLMqMxFEvhNO9esDNTD3lWTppOLhX5TdvnSqvWrXeIyhLwEPY6YGDQPndJndo
- oP0SoZkid0S5Ehpi3PP3O815u5q0XNyxj4NUXtYeWXxhfhUGgPHoogAaY4BLaEvJrr40
- eLZsQ003knEjWERpY60f0ykHXqfBbrhiUdsj6L6aeHOeZM8OUrYbTjhVnhI25syZlbDm
- u32g==
-X-Gm-Message-State: AOJu0YyfVUCk+RoXEti0lIIsKVSDwH0GOWqG63PMAMjxq3wyXsF/iklH
- m5icxbKM64kJmoD1ptzWGuM/PuCziilEr6WpA72Hsql0bt26+guVU95nGEbQ3SHKxngxmXfgDlH
- Tb0wZi2g=
-X-Gm-Gg: AZuq6aIZa/rwmG2jwLJhqgRmNhjq4kJCtzjf4V274I8Iza9qLWKb7CgUAiWIKUIAZiZ
- I0jZCAAU9wHODwnjD4qeIhKmTLJSNWe96gHDuoANwojo717jskx7mc+4flTd89UQuki8zEGkBgT
- uHjwS6RQiztcsphV7MN1O9QwGbp/ti+J09BLDl5BXb+woe5QNBeTx6EiuhqKTDtnTU1bpU8nnVh
- /1kWFf6EafZKF1YAzhTu5b+tIqbKPB/I+4rZE28Xwk0Q2H4bQBCsEcV8mp9zuRfT7u3K0KfuQoI
- t6TM3GriZTSQ1UETRRm0QDC6ryBi768Xc2x3XLQJ7LXYu2SMp+kfBJxVLxEqcrDkrsMi7Hn3xRk
- ADJZLRNeX2el2HwzMThHZXOexSEcyA8W7kw2kTHwJ1tmeqI/TzWwTVZJxX5LPjtX7O+po9BnWRp
- dnGN0zornhEh08Bq9DVjeW7Hrp0BpCN3kOZMPNLj7K
-X-Received: by 2002:a05:600c:b99:b0:480:1e40:3d2 with SMTP id
- 5b1f17b1804b1-482db49a4a6mr164780935e9.29.1770039236266; 
- Mon, 02 Feb 2026 05:33:56 -0800 (PST)
+ bh=gLvC5MaXe0awrq4wxvHbYeODF5FYi1/mHsfwhmhjVlU=;
+ b=dkZ/qx94bNXJmWOwcBfzJ5XM6VqMmXrDrfX3Eq69FfdfF5yXX1eEH0IzWOGzcduXMx
+ 0T/Ihf9xmkc7kQyEK0XwSyuXRhrBjqLnSsExngKHgtK3S0DD+AKhOLxn/GIVySi6XS+F
+ 9Ec63NQgn0QhsTBNVc277f2ACdJmO75UNA3VEyTdxgzHjDmHXVNPCoHlhjpyeVXZIg9Y
+ aLhbgzULPFzVm6EI+rDRzDb3bSYarZp8EcWgcy7Oqn2q6lzEMDsG63CeK39lsUitalmi
+ p38pvhuq8HcObsHFowEfBupjOz6iyvpTDkfXcQj87tL1h3yr4u7Qzft2aOJI5kShH5if
+ dZWg==
+X-Gm-Message-State: AOJu0YxvhSWqi8Ede7VevXHF9xi9pIvcQJPBjI+pZkc1hymDWUg8YoXG
+ N1p8MKIyzZAvCvZhvILLDKq2nYsym57HIracy3UhOonIdYYmJxw9pQ3L/BBre0FPIMi2xpL9FEC
+ 1Ug9Y
+X-Gm-Gg: AZuq6aKPk29nNch1PYPmZEK1ecwuWbEj7HzPArGMyLcRBstNBs4VSqtFn3Imi0t8KgF
+ CFBXjfFDZJmnPNQ+5jpMjaLgAg50Sp7wGNJsi3Tf/a3lV1QzMcxK/EufnM/ZJgKQHWUiMqkfk2y
+ ciNFVhn8t1PxT1tdHKAkbe/kEckembxlOKkbx+V0VT8PSM0pKv+dHMZRAHAmAYURpqp2axXqfiM
+ UWz4WlYwjLqU6nhMQdaftSVSV3zM+rO7lzjh/iEb9uK4rJCrUVehDJuSpV2c0Inn99sk4caktOu
+ sr8NihWb5QuhzBQYhOMbBQTPGSv1mcxitzg+JbROsmDAOCAge6TRCrhdPTEJ44jhuUnb8Rf4EUu
+ NQr6IxNX4VSiU9hQAqZ2qSfqi5CMc++Fyl2wgNy4L5KMsz/E8zE2YGZRM2kmdbVKezX8q+kmP/J
+ s7UmPKGVhfai7/7BM5lRqqsjotyXUEVA==
+X-Received: by 2002:a05:600c:a00a:b0:480:69b6:dfed with SMTP id
+ 5b1f17b1804b1-482db47d0d1mr159151945e9.24.1770039253035; 
+ Mon, 02 Feb 2026 05:34:13 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48066c42895sm478054495e9.14.2026.02.02.05.33.55
+ 5b1f17b1804b1-48066c42895sm478054495e9.14.2026.02.02.05.34.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Feb 2026 05:33:55 -0800 (PST)
+ Mon, 02 Feb 2026 05:34:12 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
  Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 01/15] target/arm: Account for SME in
- aarch64_sve_narrow_vq() assertion
-Date: Mon,  2 Feb 2026 13:33:39 +0000
-Message-ID: <20260202133353.2231685-2-peter.maydell@linaro.org>
+Subject: [PATCH v3 15/15] target/arm: Permit configurations with SME but not
+ SVE
+Date: Mon,  2 Feb 2026 13:33:53 +0000
+Message-ID: <20260202133353.2231685-16-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260202133353.2231685-1-peter.maydell@linaro.org>
 References: <20260202133353.2231685-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,60 +105,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In aarch64_sve_narrow_vq() we assert that the new VQ is within
-the maximum supported range for the CPU. We forgot to update
-this to account for SME, which might have a different maximum.
+In commit f7767ca30179 ("target/arm: Disable SME if SVE is disabled")
+we added code that forces SME to be disabled if SVE is disabled.
+This was something we did in the run-up to a release to avoid an
+assertion failure in smcr_write() if the user disabled SVE on the
+'max' CPU without disabling SME also.
 
-Update the assert to permit any VQ which is valid for either
-SVE or SME.
+Now that we have corrected the code so that it doesn't assert
+in an SME-without-SVE setup, we can let users select it.
 
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+This effectively reverts f7767ca30179.
+
+Note that this now means that command lines like "-cpu max,sve=off"
+which used to turn off SME and SVE will now give you a CPU with SME
+but not SVE.  This is permitted by our loose "max can always give you
+extra stuff" rules, but may be unexpected to users.  Mention this in
+the CPU property documentation.
+
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-CC stable on this one, because it might also be a problem for
-a CPU with both SME and SVE but where the SVE max VL is less
-than the SME max VL.
----
- target/arm/helper.c    | 2 +-
- target/arm/internals.h | 9 +++++++++
- 2 files changed, 10 insertions(+), 1 deletion(-)
+ docs/system/arm/cpu-features.rst | 10 ++++++++--
+ target/arm/cpu.c                 | 10 ----------
+ 2 files changed, 8 insertions(+), 12 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index e86ceb130c..e7aa5ec2f2 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -10079,7 +10079,7 @@ void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq)
-     uint64_t pmask;
+diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+index 024119449c..3db1f19401 100644
+--- a/docs/system/arm/cpu-features.rst
++++ b/docs/system/arm/cpu-features.rst
+@@ -323,12 +323,18 @@ SVE CPU Property Parsing Semantics
+       enable SVE2). There are not generally any lower-level controls
+       for disabling specific SVE sub-features.
  
-     assert(vq >= 1 && vq <= ARM_MAX_VQ);
--    assert(vq <= env_archcpu(env)->sve_max_vq);
-+    assert(vq <= arm_max_vq(env_archcpu(env)));
- 
-     /* Zap the high bits of the zregs.  */
-     for (i = 0; i < 32; i++) {
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index f7b641342a..8ec2750847 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1808,6 +1808,15 @@ static inline uint64_t arm_mdcr_el2_eff(CPUARMState *env)
-     ((1 << (1 - 1)) | (1 << (2 - 1)) |                  \
-      (1 << (4 - 1)) | (1 << (8 - 1)) | (1 << (16 - 1)))
- 
-+/*
-+ * Return the maximum SVE/SME VQ for this CPU. This defines
-+ * the maximum possible size of the Zn vector registers.
-+ */
-+static inline int arm_max_vq(ARMCPU *cpu)
-+{
-+    return MAX(cpu->sve_max_vq, cpu->sme_max_vq);
-+}
++  11) Disabling SVE does not automatically disable SME. If you want to
++      disable both you must use ``sve=off,sme=off``. In particular,
++      for the ``max`` CPU, ``sve=off`` alone will give you a CPU with
++      SME only (and which therefore still has the SVE vector registers).
++      Most users will want to disable both at once.
 +
- /*
-  * Return true if it is possible to take a fine-grained-trap to EL2.
-  */
+ SVE CPU Property Examples
+ -------------------------
+ 
+-  1) Disable SVE::
++  1) Disable SVE and SME::
+ 
+-     $ qemu-system-aarch64 -M virt -cpu max,sve=off
++     $ qemu-system-aarch64 -M virt -cpu max,sve=off,sme=off
+ 
+   2) Implicitly enable all vector lengths for the ``max`` CPU type::
+ 
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 586202071d..32cd076f6e 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1571,16 +1571,6 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
+             return;
+         }
+ 
+-        /*
+-         * FEAT_SME is not architecturally dependent on FEAT_SVE (unless
+-         * FEAT_SME_FA64 is present). However our implementation currently
+-         * assumes it, so if the user asked for sve=off then turn off SME also.
+-         * (KVM doesn't currently support SME at all.)
+-         */
+-        if (cpu_isar_feature(aa64_sme, cpu) && !cpu_isar_feature(aa64_sve, cpu)) {
+-            object_property_set_bool(OBJECT(cpu), "sme", false, &error_abort);
+-        }
+-
+         arm_cpu_sme_finalize(cpu, &local_err);
+         if (local_err != NULL) {
+             error_propagate(errp, local_err);
 -- 
 2.43.0
 

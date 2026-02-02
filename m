@@ -4,109 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F3B2E7314A
-	for <qemu-arm@archiver.kernel.org>; Mon,  2 Feb 2026 09:04:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DF36E7314E
+	for <qemu-arm@archiver.kernel.org>; Mon,  2 Feb 2026 09:34:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vmprU-0005KX-W4; Mon, 02 Feb 2026 04:04:49 -0500
+	id 1vmqJq-00038W-CO; Mon, 02 Feb 2026 04:34:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vmprS-0005KH-U3
- for qemu-arm@nongnu.org; Mon, 02 Feb 2026 04:04:46 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vmqJh-00037k-8D
+ for qemu-arm@nongnu.org; Mon, 02 Feb 2026 04:33:58 -0500
+Received: from 8.mo552.mail-out.ovh.net ([46.105.37.156])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vmprQ-0008OM-OF
- for qemu-arm@nongnu.org; Mon, 02 Feb 2026 04:04:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770023083;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=IMMn6BNiifcPZLRMZ9JlUn0akaryK3EOB5AFPwwG3IQ=;
- b=jGm6zZBc5ClwpS1hxv9ztVpWOx+hcWGyCq4dBAzlLJvVjERqNpEzW2WQlK2G/EGlV4xb0e
- 8tmZYBM7nCBR0B2ujcM8GgSRH6jKWIpp9CCN4HGoS3IjnPHs+ERXPLiTl9VeGooRPMEWeD
- 5IibfuCJdSkq2YPBmnAkBSaNcjRwUUQ=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-138-K-iaRbSHN7CUVjE2jesc8A-1; Mon, 02 Feb 2026 04:04:40 -0500
-X-MC-Unique: K-iaRbSHN7CUVjE2jesc8A-1
-X-Mimecast-MFC-AGG-ID: K-iaRbSHN7CUVjE2jesc8A_1770023079
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-47d4029340aso73908685e9.3
- for <qemu-arm@nongnu.org>; Mon, 02 Feb 2026 01:04:40 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770023079; x=1770627879;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=IMMn6BNiifcPZLRMZ9JlUn0akaryK3EOB5AFPwwG3IQ=;
- b=fbhdjc2l3yuHAlrd+r8eLXUP3LdGANZa84VzRQfBr3+vx/vWdizACofV5Dt2vbHvyl
- ePObeyukcmtPQBxoASYtZ5/Bko5vjBzax7j1SGUvlnlJoB5w/0l44z65dDWJ44yDRvi4
- U33DrwXbtiHT0mX68C6rk/pdyT7uqlYILEDtWp4AS/RJMLtN+NgfOMPIuN9wAv7qAWAh
- uIrVeM0BfOkLDoF1UOZ6eFPKZQk7kCtQhsq8ZaigOnm1nffEIEtH/aUl9fzEH7cLvWNc
- Te5jo9TQtGax0Tgz/cocvzCus5e5TjADZLLJ/gG6/U/E3p5d7vv9Xjqz6AFRO0w6TKVC
- 00+g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX8wV7L0SPcJ8SFMITjlLisa6GVZuO9H61sB+05PlWKAIt05YpvnibGvLk3D4/22uhsXYz9OFc6og==@nongnu.org
-X-Gm-Message-State: AOJu0YwprC5H7yqwEVG8HbevpyQFaGB3rlyjRF7fjJNMk1/G0oXkkaI9
- Ap6UB15aBHAzA+woLsXRjiJCTJgHumRqeDIRf5pRy+wW0wRfIp4V9dywOX7KYLaecXcccsnHltA
- Gwyv/H7z0ys/onGMU9eUAC7cBS/tj2u3tJUR/mpbnPKPMWKxM/hDRfg==
-X-Gm-Gg: AZuq6aJmSLDGUHh+QLQWOPEwPimnoa4/5OzZ67uHqusUEqXfzPAPTaIVmiGFMt0kjNG
- SWTBx4ACq6qH2aYCmN+/cc9MWKKdVuZZobqvoGWQh0f5Nyr1oEbXf++WY65U57LiTGIrc5sm4LD
- bh+RigSuhbtNnRBKVcS3ThX74TQsXS6aPDAX50Sj8v1d2K3KNStmjLfRa+Sl2vsKbgimaB09x1c
- 6bObwo1SIn1Dlo+wVQcfC/OLVE1kNi4pkrKze90SSSiTprf1wVdNH+sUudxvJFMWp4hl/izm5Rl
- M6IFNh2xHNaC6Yb8+zxQCCEyCvdq32MOg91YLTm28sdZp1GOB3CaUk7sr8i0GnBWD/mwpMRD+X4
- O3BVaWdbQ5x6Xd8lV3sfyclOm6XRm7YS2hxQ5uJJR5TN/OYjIQJHcOacAjA==
-X-Received: by 2002:a05:600c:6214:b0:480:1c53:208b with SMTP id
- 5b1f17b1804b1-482db49da0bmr130309345e9.36.1770023078807; 
- Mon, 02 Feb 2026 01:04:38 -0800 (PST)
-X-Received: by 2002:a05:600c:6214:b0:480:1c53:208b with SMTP id
- 5b1f17b1804b1-482db49da0bmr130308785e9.36.1770023078322; 
- Mon, 02 Feb 2026 01:04:38 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48066c428basm471067955e9.12.2026.02.02.01.04.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Feb 2026 01:04:37 -0800 (PST)
-Message-ID: <209ad0a7-8348-4892-b10b-c6e3ae04af6c@redhat.com>
-Date: Mon, 2 Feb 2026 10:04:35 +0100
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vmqJc-00058k-8x
+ for qemu-arm@nongnu.org; Mon, 02 Feb 2026 04:33:55 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.249.221])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4f4Lys0dDxz5w0g;
+ Mon,  2 Feb 2026 09:33:40 +0000 (UTC)
+Received: from kaod.org (37.59.142.108) by DAG14EX2.mxp5.local (172.16.2.142)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Mon, 2 Feb
+ 2026 10:33:39 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-108S002e411b113-99f8-4e02-b23f-a7c63331eea1,
+ 7652E71065C1D671F0F2B67E69D7E7AF66B0F117) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <05782501-e775-4065-820e-1b599674f478@kaod.org>
+Date: Mon, 2 Feb 2026 10:33:38 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/4] backends/iommufd: Introduce
- iommufd_backend_alloc_veventq
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, nicolinc@nvidia.com, nathanc@nvidia.com,
- mochs@nvidia.com, jgg@nvidia.com, jonathan.cameron@huawei.com,
- zhangfei.gao@linaro.org, zhenzhong.duan@intel.com, kjaju@nvidia.com
-References: <20260127103328.255382-1-skolothumtho@nvidia.com>
- <20260127103328.255382-2-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260127103328.255382-2-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: mWegDBfRAXo6QXNiw551JZ0XTMl7FXsCcn_x5eyRsEU_1770023079
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
+Subject: Re: [PATCH v1 04/11] hw/arm/ast27x0: Add DRAM alias for SSP SDRAM
+ remap
+To: Kane Chen <kane_chen@aspeedtech.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Peter Maydell <peter.maydell@linaro.org>, Steven
+ Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>
+References: <20260120092939.2708302-1-jamin_lin@aspeedtech.com>
+ <20260120092939.2708302-5-jamin_lin@aspeedtech.com>
+ <588fa41c-a5ff-455d-b64d-b36b986ee781@kaod.org>
+ <TYPPR06MB8206FD6566DFDE3BA513FBFDFC90A@TYPPR06MB8206.apcprd06.prod.outlook.com>
+ <TYPPR06MB8206F928E28C7FE78BA9E3BEFC90A@TYPPR06MB8206.apcprd06.prod.outlook.com>
+ <TYPPR06MB8206F3CB33A135C5AC246E2CFC90A@TYPPR06MB8206.apcprd06.prod.outlook.com>
+ <SI6PR06MB763182A3E4BC0C6ADC0555CEF79AA@SI6PR06MB7631.apcprd06.prod.outlook.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <SI6PR06MB763182A3E4BC0C6ADC0555CEF79AA@SI6PR06MB7631.apcprd06.prod.outlook.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Originating-IP: [37.59.142.108]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG14EX2.mxp5.local
+ (172.16.2.142)
+X-Ovh-Tracer-GUID: e741c650-5e4b-4989-976b-682355548902
+X-Ovh-Tracer-Id: 8031044035570535346
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEUHK2ANl+hkAhWueQTPxzBnSNlCcjb2zRuLwuifwkib8Ayz8YEwAr9P8X3MqcJ3g3H7N56aaCWVS3GQn5EOn7Dca5sUCqLkKays9KgV77B7Skn7bltn7+y1dlkxXu6RKz4L4WOZpnXQk0n5j/0oJbBFGC9bXl08cGCDSvNu4g89SLXsrKLZNI7fGQfiDDwaNcmfLHA9o5BRfCbIEs8nyjY7D0yrNFCTyuOBoiBXGzN2tWPMIFsDTT2jmogHobBiYEdU3FV4VuOSjzl57uyv2DZ24gptTXrVWd4lJqwNLB4sqSCguPSGSlbbctrutpFwpAxKihlOIboxiKXq1FX04JakmmDP+/of/y2nCcWsxZusjlWd7fCc6q/0nZCxm7mDTZLOgQUwn9JSZhPSeBz+qeb4i7okp3GlJ35zQCaQAYnSuIiFNdzNeF3tuJPObaMRYINN32RVHcxN6YEAiaEM/jNXUKFho4uYohJ1hL9ViKIk41zsrYNTTolfPNMrOoX55zjXTx6KbgoSJVQ9jREGB1UKJV7gkKWUUiTnt6WCovxMrZpPYZ6TWXtoDJt5v5HotBWeQxKuO8E2hzkD3ZeF/5wLGS+jWX0clw/RBh1MkVHtQLFBVIvTXQD3FdWNg1+8P32UrT95VO9udaAk6aXT9VTAGvY55JYksf+hg4F+fKPjA
+DKIM-Signature: a=rsa-sha256; bh=pP5sIEX4R1ePejeDoZN2AZv7BeMQ3qEgQ5NsZNEh91w=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1770024822; v=1;
+ b=dvxVcT8BSZ7PhptstrZ/7lEtchevGGbtCDnrZu/zgkvSYiMpTVeluiXm1WiuDvWdb3LBnDEu
+ A77qqyQsmyXAop37mqqwuy9Ig+cVMwTBk/0qVPE2hkJzEJ5gr+GE7D5AOEhEQsAJeR3OZjAmx5J
+ IHJswz6PY1BwMKtVGd5qD7YEf00d4pzLz7JodlB4glQzHUUbPbdyK3poqrWBtXOz6jWFF0PmeNS
+ 8lcGtiyg2LsNcbePz/cR0sngOvUqBP5zr2bRe1jGRrdIvrOV3y7QnZF33y3PdpfY5Ng5gC5RTAb
+ ZeCF4QD0ze9fiawI+R4RNhyaBYFDpukY53QnTHTaSOQTw==
+Received-SPF: pass client-ip=46.105.37.156; envelope-from=clg@kaod.org;
+ helo=8.mo552.mail-out.ovh.net
+X-Spam_score_int: -4
+X-Spam_score: -0.5
+X-Spam_bar: /
+X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_SBL=1.623 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,111 +134,21 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
+Hi,
 
-On 1/27/26 11:33 AM, Shameer Kolothum wrote:
-> From: Nicolin Chen <nicolinc@nvidia.com>
->
-> Add a new helper for IOMMU_VEVENTQ_ALLOC ioctl to allocate a virtual event
-> queue (vEVENTQ) for a vIOMMU object.
->
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Working with our IT team, we've transitioned to a Microsoft mail
+> server to ensure DKIM is correctly included. Could you please confirm
+> if you've received the below patch series?
+> 
+> https://patchew.org/QEMU/SE3PR06MB8199F4B0069F9326034585D6FC9AA@SE3PR06MB8199.apcprd06.prod.outlook.com/
 
+I did. Although, the series is not threaded. Probably due to the way
+it was sent.
 
-Eric
-> ---
->  backends/iommufd.c       | 31 +++++++++++++++++++++++++++++++
->  backends/trace-events    |  1 +
->  include/system/iommufd.h | 12 ++++++++++++
->  3 files changed, 44 insertions(+)
->
-> diff --git a/backends/iommufd.c b/backends/iommufd.c
-> index 13822df82f..acfab907c0 100644
-> --- a/backends/iommufd.c
-> +++ b/backends/iommufd.c
-> @@ -504,6 +504,37 @@ bool iommufd_backend_alloc_vdev(IOMMUFDBackend *be, uint32_t dev_id,
->      return true;
->  }
->  
-> +bool iommufd_backend_alloc_veventq(IOMMUFDBackend *be, uint32_t viommu_id,
-> +                                   uint32_t type, uint32_t depth,
-> +                                   uint32_t *out_veventq_id,
-> +                                   uint32_t *out_veventq_fd, Error **errp)
-> +{
-> +    int ret;
-> +    struct iommu_veventq_alloc alloc_veventq = {
-> +        .size = sizeof(alloc_veventq),
-> +        .flags = 0,
-> +        .type = type,
-> +        .veventq_depth = depth,
-> +        .viommu_id = viommu_id,
-> +    };
-> +
-> +    ret = ioctl(be->fd, IOMMU_VEVENTQ_ALLOC, &alloc_veventq);
-> +
-> +    trace_iommufd_viommu_alloc_eventq(be->fd, viommu_id, type,
-> +                                      alloc_veventq.out_veventq_id,
-> +                                      alloc_veventq.out_veventq_fd, ret);
-> +    if (ret) {
-> +        error_setg_errno(errp, errno, "IOMMU_VEVENTQ_ALLOC failed");
-> +        return false;
-> +    }
-> +
-> +    g_assert(out_veventq_id);
-> +    g_assert(out_veventq_fd);
-> +    *out_veventq_id = alloc_veventq.out_veventq_id;
-> +    *out_veventq_fd = alloc_veventq.out_veventq_fd;
-> +    return true;
-> +}
-> +
->  bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
->                                             uint32_t hwpt_id, Error **errp)
->  {
-> diff --git a/backends/trace-events b/backends/trace-events
-> index 14a7ecf5aa..5cb7d4d62d 100644
-> --- a/backends/trace-events
-> +++ b/backends/trace-events
-> @@ -23,3 +23,4 @@ iommufd_backend_get_dirty_bitmap(int iommufd, uint32_t hwpt_id, uint64_t iova, u
->  iommufd_backend_invalidate_cache(int iommufd, uint32_t id, uint32_t data_type, uint32_t entry_len, uint32_t entry_num, uint32_t done_num, uint64_t data_ptr, int ret) " iommufd=%d id=%u data_type=%u entry_len=%u entry_num=%u done_num=%u data_ptr=0x%"PRIx64" (%d)"
->  iommufd_backend_alloc_viommu(int iommufd, uint32_t dev_id, uint32_t type, uint32_t hwpt_id, uint32_t viommu_id, int ret) " iommufd=%d type=%u dev_id=%u hwpt_id=%u viommu_id=%u (%d)"
->  iommufd_backend_alloc_vdev(int iommufd, uint32_t dev_id, uint32_t viommu_id, uint64_t virt_id, uint32_t vdev_id, int ret) " iommufd=%d dev_id=%u viommu_id=%u virt_id=0x%"PRIx64" vdev_id=%u (%d)"
-> +iommufd_viommu_alloc_eventq(int iommufd, uint32_t viommu_id, uint32_t type, uint32_t veventq_id, uint32_t veventq_fd, int ret) " iommufd=%d viommu_id=%u type=%u veventq_id=%u veventq_fd=%u (%d)"
-> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
-> index 80d72469a9..e4ca16da70 100644
-> --- a/include/system/iommufd.h
-> +++ b/include/system/iommufd.h
-> @@ -56,6 +56,13 @@ typedef struct IOMMUFDVdev {
->      uint32_t virt_id;  /* virtual device ID */
->  } IOMMUFDVdev;
->  
-> +/* Virtual event queue interface for a vIOMMU */
-> +typedef struct IOMMUFDVeventq {
-> +    IOMMUFDViommu *viommu;
-> +    uint32_t veventq_id;
-> +    uint32_t veventq_fd;
-> +} IOMMUFDVeventq;
-> +
->  bool iommufd_backend_connect(IOMMUFDBackend *be, Error **errp);
->  void iommufd_backend_disconnect(IOMMUFDBackend *be);
->  
-> @@ -86,6 +93,11 @@ bool iommufd_backend_alloc_vdev(IOMMUFDBackend *be, uint32_t dev_id,
->                                  uint32_t viommu_id, uint64_t virt_id,
->                                  uint32_t *out_vdev_id, Error **errp);
->  
-> +bool iommufd_backend_alloc_veventq(IOMMUFDBackend *be, uint32_t viommu_id,
-> +                                   uint32_t type, uint32_t depth,
-> +                                   uint32_t *out_veventq_id,
-> +                                   uint32_t *out_veventq_fd, Error **errp);
-> +
->  bool iommufd_backend_set_dirty_tracking(IOMMUFDBackend *be, uint32_t hwpt_id,
->                                          bool start, Error **errp);
->  bool iommufd_backend_get_dirty_bitmap(IOMMUFDBackend *be, uint32_t hwpt_id,
+Thanks,
 
+C.
 

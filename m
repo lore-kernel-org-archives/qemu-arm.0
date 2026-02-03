@@ -4,20 +4,20 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17EFDE7C71D
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 02:10:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1638E7C712
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 02:10:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vn5r3-0002Zf-Ur; Mon, 02 Feb 2026 21:09:25 -0500
+	id 1vn5r5-0002aJ-QT; Mon, 02 Feb 2026 21:09:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vn5r2-0002ZE-M2; Mon, 02 Feb 2026 21:09:24 -0500
+ id 1vn5r4-0002a3-Nj; Mon, 02 Feb 2026 21:09:26 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vn5r1-0006uM-5i; Mon, 02 Feb 2026 21:09:24 -0500
+ id 1vn5r3-0006uM-En; Mon, 02 Feb 2026 21:09:26 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 3 Feb
@@ -33,10 +33,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v2 7/8] tests/functional/aarch64/test_aspeed_ast2700fc: Update
- test ASPEED SDK v11.00 for A1
-Date: Tue, 3 Feb 2026 10:08:52 +0800
-Message-ID: <20260203020855.1642884-8-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 8/8] docs/system/arm/aspeed: Load raw U-Boot image in
+ AST2700 boot example
+Date: Tue, 3 Feb 2026 10:08:53 +0800
+Message-ID: <20260203020855.1642884-9-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260203020855.1642884-1-jamin_lin@aspeedtech.com>
 References: <20260203020855.1642884-1-jamin_lin@aspeedtech.com>
@@ -68,92 +68,45 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Recent SDK versions no longer provide a U-Boot FIT image, and U-Boot is
+now built as a single raw binary. Update the documentation to load the
+raw u-boot.bin image directly.
+
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- .../aarch64/test_aspeed_ast2700fc.py          | 36 +++++++------------
- 1 file changed, 13 insertions(+), 23 deletions(-)
+ docs/system/arm/aspeed.rst | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/tests/functional/aarch64/test_aspeed_ast2700fc.py b/tests/functional/aarch64/test_aspeed_ast2700fc.py
-index a1d8046f58..47e56dcfc5 100755
---- a/tests/functional/aarch64/test_aspeed_ast2700fc.py
-+++ b/tests/functional/aarch64/test_aspeed_ast2700fc.py
-@@ -61,9 +61,9 @@ def load_ast2700fc_coprocessor(self, name):
-             self.vm.add_args('-device',
-                              f'loader,file={file},cpu-num={cpu_num}')
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 97e14b7d33..d0054a7dbb 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -350,11 +350,9 @@ corresponds to the BL31 image load address.
+ .. code-block:: bash
  
--    ASSET_SDK_V908_AST2700 = Asset(
--            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.08/ast2700-default-obmc.tar.gz',
--            'eac3dc409b7ea3cd4b03d4792d3cebd469792ad893cb51e1d15f0fc20bd1e2cd')
-+    ASSET_SDK_V1100_AST2700 = Asset(
-+            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2700-a1-obmc.tar.gz',
-+            'd5ceed511cd0dfefbb102fff2d731159e0472948a28066dc0d90bcd54be76525')
+   IMGDIR=ast2700-default
+-  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
  
-     def do_ast2700_i2c_test(self):
-         exec_command_and_wait_for_pattern(self,
-@@ -113,19 +113,10 @@ def do_ast2700fc_tsp_test(self):
+   $ qemu-system-aarch64 -M ast2700-evb \
+-       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
+-       -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
++       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot.bin \
+        -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
+        -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
+        -device loader,cpu-num=0,addr=0x430000000 \
+@@ -409,11 +407,9 @@ Steps to boot the AST2700fc machine:
+ .. code-block:: bash
  
-     def start_ast2700fc_test(self, name):
-         ca35_core = 4
--        uboot_size = os.path.getsize(self.scratch_file(name,
--                                                       'u-boot-nodtb.bin'))
--        uboot_dtb_load_addr = hex(0x400000000 + uboot_size)
--
-         load_images_list = [
-             {
-                 'addr': '0x400000000',
--                'file': self.scratch_file(name,
--                                          'u-boot-nodtb.bin')
--            },
--            {
--                'addr': str(uboot_dtb_load_addr),
--                'file': self.scratch_file(name, 'u-boot.dtb')
-+                'file': self.scratch_file(name, 'u-boot.bin')
-             },
-             {
-                 'addr': '0x430000000',
-@@ -133,8 +124,7 @@ def start_ast2700fc_test(self, name):
-             },
-             {
-                 'addr': '0x430080000',
--                'file': self.scratch_file(name, 'optee',
--                                          'tee-raw.bin')
-+                'file': self.scratch_file(name, 'optee', 'tee-raw.bin')
-             }
-         ]
+   IMGDIR=ast2700-default
+-  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
  
-@@ -158,24 +148,24 @@ def start_ast2700fc_test_vbootrom(self, name):
-         self.do_test_aarch64_aspeed_sdk_start(
-                 self.scratch_file(name, 'image-bmc'))
- 
--    def test_aarch64_ast2700fc_sdk_v09_08(self):
-+    def test_aarch64_ast2700fc_sdk_v11_00(self):
-         self.set_machine('ast2700fc')
-         self.require_netdev('user')
- 
--        self.archive_extract(self.ASSET_SDK_V908_AST2700)
--        self.start_ast2700fc_test('ast2700-default')
--        self.verify_openbmc_boot_and_login('ast2700-default')
-+        self.archive_extract(self.ASSET_SDK_V1100_AST2700)
-+        self.start_ast2700fc_test('ast2700-a1')
-+        self.verify_openbmc_boot_and_login('ast2700-a1')
-         self.do_ast2700_i2c_test()
-         self.do_ast2700_pcie_test()
-         self.do_ast2700fc_ssp_test()
-         self.do_ast2700fc_tsp_test()
- 
--    def test_aarch64_ast2700fc_sdk_vbootrom_v09_08(self):
-+    def test_aarch64_ast2700fc_sdk_vbootrom_v11_00(self):
-         self.set_machine('ast2700fc')
- 
--        self.archive_extract(self.ASSET_SDK_V908_AST2700)
--        self.start_ast2700fc_test_vbootrom('ast2700-default')
--        self.verify_openbmc_boot_and_login('ast2700-default')
-+        self.archive_extract(self.ASSET_SDK_V1100_AST2700)
-+        self.start_ast2700fc_test_vbootrom('ast2700-a1')
-+        self.verify_openbmc_boot_and_login('ast2700-a1')
-         self.do_ast2700fc_ssp_test()
-         self.do_ast2700fc_tsp_test()
- 
+   $ qemu-system-aarch64 -M ast2700fc \
+-       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
+-       -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
++       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot.bin \
+        -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
+        -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
+        -device loader,cpu-num=0,addr=0x430000000 \
 -- 
 2.43.0
 

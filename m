@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72BF6E7FDCF
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 11:53:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A42CBE7FDCF
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 11:53:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnEx2-0007vD-Nk; Tue, 03 Feb 2026 06:52:12 -0500
+	id 1vnExf-0008Tv-3e; Tue, 03 Feb 2026 06:52:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vnEx0-0007tq-H2
- for qemu-arm@nongnu.org; Tue, 03 Feb 2026 06:52:11 -0500
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ id 1vnEx8-00081t-1G
+ for qemu-arm@nongnu.org; Tue, 03 Feb 2026 06:52:20 -0500
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vnEwv-00057v-VP
- for qemu-arm@nongnu.org; Tue, 03 Feb 2026 06:52:09 -0500
-Received: by mail-ej1-x636.google.com with SMTP id
- a640c23a62f3a-b8710c9cddbso697879166b.2
- for <qemu-arm@nongnu.org>; Tue, 03 Feb 2026 03:52:05 -0800 (PST)
+ id 1vnEx3-0005C0-KM
+ for qemu-arm@nongnu.org; Tue, 03 Feb 2026 06:52:17 -0500
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-6581af9c94aso10190489a12.1
+ for <qemu-arm@nongnu.org>; Tue, 03 Feb 2026 03:52:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1770119524; x=1770724324; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=mcHIevmey8ZqNfQ6gP0WEtZgKQi8/gD+jh4jh1+99to=;
- b=TAu9WaAn42Zbci1SNFGz5J/+Iskvhokd7J4kIdbSaPDfPcyCTvb5AnFXl1DazxY4aX
- TOXJY/lXI0khS1Oi/9/kcKqLyf2/zoDdAd/chG5rIhhXgLoh78jzvKg5+PYLToylMEFd
- ng6J8YsV/YFbsvDaJVMd4BgslxBwRPOEpYgxuBEdp5YGqMpiU474e4VLDDonweztxNrX
- THfmfZNKOhvI3+wFMqpG7ICf2vemyARfG09wNYNOAf95Y3gdUVKcZkorPKVcfcB2YnaW
- WGj7A8vojZK+aNYzPtMlppJTg/jyjfnoKhNY28rY0p97Zj7Pk0caMSDbhoOadg42sxrq
- yXcA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770119524; x=1770724324;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1770119532; x=1770724332; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mcHIevmey8ZqNfQ6gP0WEtZgKQi8/gD+jh4jh1+99to=;
- b=BxgALHq2Y9FP83ia3U0NkpuF4L09IB/xHCoW8oGlD6EDNpjd0r+AlymE8xXVF05bXR
- y+rUOHoOtd9ihQGWTOW20vhLAcAKF2OKQbniAI+9UbUWeU2rOZzM+b+jaycu1jLVyg5k
- iKHNaZ3hvWgdRLfEtc76Ike4wv8A5snaqQevyw0XcsRrztY7n9RX47t+C+/sfODwXzmo
- f4DM1cFhV46AW9sIFVeJCCm7+8srqPWYpTDkfRnL2NUn0l/hmDChlQYC/PR9mtuSHkCA
- sSrivMZDnUvvRGV0a5mIREjxa2KuL7s5H7PZvJfBBbohu9ro1LNlmyaCwmR+Zh+I4BDc
- qEVg==
+ bh=tIRBj03rO3D6/ePpgDjzJBDK2sDnW8f3X2SZv5WEDqc=;
+ b=YeW91Pb76dHjCiaYbNFvdcAU9wEKRZWa1VsLBlBg36aDYPz38psySanO21TgWbPR2b
+ SmDOu8NcSFYfIW2EwnYTE4KwqiejZiNSfzZYyI9I/Y6xCYsFyvbD26cw1P0JMn6mNw9n
+ LZXJD7cbAEcGYn1LPPF+8eHd5emOsKW+f7sJO0szKNtpBIq2V0yKqF58p8c6j3oLrmJp
+ jKT/DhwdV6scG2bToThjHhOljMABZctGj5QsG6Iem3PB/co1ftUrjn4IoykDtF/Uxv8E
+ SX+kkN4m87MamJjeZqEdxMMMsyK4J+BkjrFPGfn3sLoqVAaO88CRNTpZD9K8QhS6jPNC
+ qMpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1770119532; x=1770724332;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=tIRBj03rO3D6/ePpgDjzJBDK2sDnW8f3X2SZv5WEDqc=;
+ b=fQSGt3NP1ApWBbYnjfEnzKlndAVyFd87s4rOVoOH9944yj4NELowJ/GTRWwN+nl/lE
+ ezHH83Hk9H/be3XIB7yFczFV5gPD7biR8oacCFLg0T1xxaknsES0M+eghkDb9aR3cT9h
+ CYBUTR9AIkM5mvT23RRO9rRPk1wv8iecsCvr4kNu2yqvvg/8VgN3WVvRv0h+dkXrucRd
+ LT4ePExR9JyyQrzjP4SFa7hD+avgLHBgvjJ7t/7hu59Ju/x9S0weeBFlnC40WAnsdNWg
+ +lpaFRbjbqCNmH3bKGnwDH+y7fV6inCE/+ZU6il8GG6Ql3WdCNBCiU3vZ4Y7qGKFINqL
+ RkfQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXph3F0ltxxUA2ZbdjRZSQceISfW9MzCfHP5ICl7wjKuwkhf4OIjVZkPkAxyKPyImeIi1e4O+5d2Q==@nongnu.org
-X-Gm-Message-State: AOJu0YwdkJl0RdSeBW5dknrNnfw6d/DXGv9HWE5/2jBpCBkAydc5MdCy
- dVSMeFBzMVHRz1H5i9yCJmIbUttVb1EGaUok6XEXuCm3qysvFvZQbJ1ILQqLkxZo7ls=
-X-Gm-Gg: AZuq6aLzq8mNR0SqYp/Nyo08rdUuOh4wygZh7Vl/c3NuXawMTLMbCyvD1XSp5NeWyxy
- ZHrMq331ZymWEGipdLd6ZDtQieibr226oQXjetnOEfAOdU9UQKj7xs2MhdCVtCGHbeGDYC/cNCU
- 7/b7EKnw+gBQP2L9V2kP9tIv29bTFZgCfOLLdxdUNWMipmRoVS7pEFgY/gaS/I4k81wHTA/uUwq
- lRDUZ/xM15nvmVe26X5sk+PB/juxbXjFXG4tqkrT/J6C5anqRm2jqp4MiSVzdMK6GS6Tokp2jxz
- skxLk6I++XPXdUBsxmx6Hbat8zrncps4mu2daA8D7hu9TGv2aaTlSsonZQ5Dq3ieK+OA7apTauf
- CbHFXHS9vtwqmvNMn043td3LUWcgS3WDTkkjH+GKD9FL/E2OtNpM+DxJid7qtbQamlPTFUNnRi/
- T8ho+L5AgoeIg=
-X-Received: by 2002:a17:907:97c6:b0:b88:5385:59d7 with SMTP id
- a640c23a62f3a-b8dff5e9051mr939869466b.4.1770119524428; 
- Tue, 03 Feb 2026 03:52:04 -0800 (PST)
+ AJvYcCWcooWu50QR8DBN/JXkQiiIVqSkWxlRxMOV3pHKLnS/V6klzIHuOf+hkYDOMbF+Iaw9YmxXsvlOCg==@nongnu.org
+X-Gm-Message-State: AOJu0YzYuNxLwfKLzPzatdMhYJrr9BQfNo6tleYRKbQzdV4b11+5g7IZ
+ KkjQmYLpycR1Q+cu+XWeQKAca2YadQzGAFzfgJs7xKi4t6sigKPDw0wPnDu6/wa0WrM=
+X-Gm-Gg: AZuq6aI3VTET2nZbz0mrZUuJ978okiHGXz8LqInOq/hkCACn97581xHJNdMJAMq3hYv
+ WOs7G749RcPSbBkE1nltsuHj6OF/BXyD7YUb7mGevhEpTCElT1Jklk3YM/2nhrg27qoReMRrsTT
+ q/IL5B8Di83kMSvg5x5LzGLCtyofWUDj7hsYIwIX7ooLmdCx3nYyfN7VsaTR4AEfMvd6EHtYVzR
+ FU92zQUrBAbxZU96ul3wzgUpGy1gkZEfLuDVFflD0mVcgIBd4zwONCYetHgb0SWpHQuxZkxrpCW
+ bNZzObxXoHTcQXdRshIK+hWzOOxlpZDzrxaERsY0WV7UOdJat9E1yUfFP0hu0heEsMIdqMMPNzs
+ QWW1WgHkGgxa1MvlfUwqAJKWCnHU/Cq58UgRX3VwjLpMRGl7tt/v60xtT9FXR+CJ0/aVUmyvkjs
+ DGv3cana2kSbU=
+X-Received: by 2002:a17:907:7f88:b0:b72:70ad:b8f0 with SMTP id
+ a640c23a62f3a-b8dff6531eemr919591466b.36.1770119531829; 
+ Tue, 03 Feb 2026 03:52:11 -0800 (PST)
 Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b8de289bdf4sm887869766b.44.2026.02.03.03.52.02
+ a640c23a62f3a-b8dbefc667asm1038953166b.22.2026.02.03.03.52.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Feb 2026 03:52:02 -0800 (PST)
+ Tue, 03 Feb 2026 03:52:07 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 0D82A5F841;
- Tue, 03 Feb 2026 11:52:02 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 214FB6051B;
+ Tue, 03 Feb 2026 11:52:03 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: John Snow <jsnow@redhat.com>,
@@ -87,15 +88,17 @@ Cc: John Snow <jsnow@redhat.com>,
  David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH 00/11] gdbstub/next - bug fixes and cleanups (pre-PR)
-Date: Tue,  3 Feb 2026 11:51:50 +0000
-Message-ID: <20260203115201.2387721-1-alex.bennee@linaro.org>
+Subject: [PATCH 11/11] gdbstub/user: rename and use bool for running_state
+Date: Tue,  3 Feb 2026 11:52:01 +0000
+Message-ID: <20260203115201.2387721-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260203115201.2387721-1-alex.bennee@linaro.org>
+References: <20260203115201.2387721-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x636.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,50 +121,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Flushing my queue for gdbstub/next and I'll roll a PR by the end of
-the week to get the bug fixes in. The other re-factoring patches are
-towards a longer term goal of supporting more stop packet reply types
-but aren't critical to merge save reducing the delta. I won't include
-them in the PR unless reviewed:
+This is just a clean-up to document what we using the running variable
+for in user-mode.
 
-  gdbstub/user: rename and use bool for running_state
-  include/gdbstub: fix typo
-  gdbstub: pass GString to gdb_build_stop_packet
-  gdbstub/user: localise variables for reading gdb socket
-  gdbstub: extract stop reply message construction
-  gdbstub: remove the need for goto cleanup
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ gdbstub/user.c | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
 
-Alex.
-
-Alex Bennée (8):
-  meson-buildoptions: Remove duplicated entry of --gdb in the help text
-  Makefile: add python script dependency for meson-buildoptions.sh
-  gdbstub: remove the need for goto cleanup
-  gdbstub: extract stop reply message construction
-  gdbstub/user: localise variables for reading gdb socket
-  gdbstub: pass GString to gdb_build_stop_packet
-  include/gdbstub: fix typo
-  gdbstub/user: rename and use bool for running_state
-
-Yodel Eldar (3):
-  include/gdbstub/syscalls: Add EIO and ENOSYS GDB File-I/O errno values
-  gdbstub: Export host_to_gdb_errno File-I/O helper function
-  gdbstub/user-target: Convert host errno to GDB File-I/O errno
-
- Makefile                      |  2 +-
- gdbstub/internals.h           | 10 ++++++++
- include/gdbstub/commands.h    |  2 +-
- include/gdbstub/syscalls.h    | 11 +++++++++
- gdbstub/gdbstub.c             | 45 +++++++++++++++--------------------
- gdbstub/syscalls.c            | 36 ++++++++++++++++++++++++++++
- gdbstub/system.c              | 11 +++++++++
- gdbstub/user-target.c         | 13 ++++++----
- gdbstub/user.c                | 40 ++++++++++++++++++++-----------
- target/m68k/m68k-semi.c       | 29 ----------------------
- scripts/meson-buildoptions.py |  9 ++++++-
- scripts/meson-buildoptions.sh |  1 -
- 12 files changed, 132 insertions(+), 77 deletions(-)
-
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index a16f37616b1..97eb13e796a 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -87,7 +87,11 @@ enum GDBForkMessage {
+ typedef struct {
+     int fd;
+     char *socket_path;
+-    int running_state;
++    /*
++     * running state of the guest, when we process a packet that restarts
++     * the guest we set this to true.
++     */
++    bool running;
+     /*
+      * Store syscalls mask without memory allocation in order to avoid
+      * implementing synchronization.
+@@ -241,8 +245,8 @@ int gdb_handlesig(CPUState *cpu, int sig, const char *reason, void *siginfo,
+ 
+     sig = 0;
+     gdbserver_state.state = RS_IDLE;
+-    gdbserver_user_state.running_state = 0;
+-    while (gdbserver_user_state.running_state == 0) {
++    gdbserver_user_state.running = false;
++    while (!gdbserver_user_state.running) {
+         char buf[256];
+         int n = read(gdbserver_user_state.fd, buf, 256);
+         if (n > 0) {
+@@ -611,11 +615,11 @@ void gdbserver_fork_end(CPUState *cpu, pid_t pid)
+ 
+     gdbserver_state.state = RS_IDLE;
+     gdbserver_state.allow_stop_reply = false;
+-    gdbserver_user_state.running_state = 0;
++    gdbserver_user_state.running = false;
+     for (;;) {
+         switch (gdbserver_user_state.fork_state) {
+         case GDB_FORK_ENABLED:
+-            if (gdbserver_user_state.running_state) {
++            if (gdbserver_user_state.running) {
+                 close(fd);
+                 return;
+             }
+@@ -728,7 +732,7 @@ void gdb_handle_query_attached(GArray *params, void *user_ctx)
+ 
+ void gdb_continue(void)
+ {
+-    gdbserver_user_state.running_state = 1;
++    gdbserver_user_state.running = true;
+     trace_gdbstub_op_continue();
+ }
+ 
+@@ -750,7 +754,7 @@ int gdb_continue_partial(char *newstates)
+             cpu_single_step(cpu, gdbserver_state.sstep_flags);
+         }
+     }
+-    gdbserver_user_state.running_state = 1;
++    gdbserver_user_state.running = true;
+     return res;
+ }
+ 
 -- 
 2.47.3
 

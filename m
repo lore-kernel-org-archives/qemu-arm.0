@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 968A8E8783D
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 14:55:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC662E8783F
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 14:55:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnHnz-0003ho-Jz; Tue, 03 Feb 2026 09:55:03 -0500
+	id 1vnHnx-0003fv-5v; Tue, 03 Feb 2026 09:55:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fustini@kernel.org>)
- id 1vnARz-000217-2d; Tue, 03 Feb 2026 02:03:51 -0500
-Received: from tor.source.kernel.org ([172.105.4.254])
+ id 1vnARx-00020y-Vx; Tue, 03 Feb 2026 02:03:51 -0500
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fustini@kernel.org>)
- id 1vnARw-0003G9-Kc; Tue, 03 Feb 2026 02:03:50 -0500
+ id 1vnARv-0003E1-Hb; Tue, 03 Feb 2026 02:03:48 -0500
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by tor.source.kernel.org (Postfix) with ESMTP id EF02160147;
- Tue,  3 Feb 2026 07:03:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60006C2BC86;
- Tue,  3 Feb 2026 07:03:38 +0000 (UTC)
+ by tor.source.kernel.org (Postfix) with ESMTP id B902160129;
+ Tue,  3 Feb 2026 07:03:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28131C19425;
+ Tue,  3 Feb 2026 07:03:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1770102218;
- bh=i8kqSXew10HQoZsEqPOWNA6a2DuzT5eQ35FVRfqpxRA=;
+ s=k20201202; t=1770102217;
+ bh=KJJuiCEAdc4sb40f+3lpJ6ySCUeXhsuEemgr1CBy3E8=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=jZBKi8SYFtHS02tLdaaVs6CbzZBqxtz9VIioHVVYFT+9jSOV5gmP8iHDsp3yWOsyh
- 91skd+PqVzGPISH30m1HiZ74IT5dnyVOaj2oR8eihh2HJzF3HBbnDQb19fT95SXh+8
- 1D5qvzmB3EIdALCpK/S6/aE+ggJThFSDdcn4t3dtze/k4yuMrQVwBpiKogH2ECsrkY
- HhWx0GdqM5bJR7ZzcUUeK/2fRxCiC4lIrXz5BqAJEiEsXIey1cuK0vn5uTjCkzo7Um
- 9DN2oRhLfOa76a39ff93cesGwUaLoJZbxYmaV/5FRsvjF4uAjnkraVxL02vhaIaQso
- sJSpPA/vmPTtA==
+ b=vHcHly2O81GZo5fyhsuQ0BxDHZNMq9vCgRrM3up/I9Et/eYNgY0i1LnPOvXIGhOtQ
+ q3Dym6YjVqR6qtFoY4IO2LggrBeKcsXp4QWGEA84QnM5+Tv1LW0u9LH0IuOuFyYFa3
+ on3V4HaQuyrSlmszCwsWs8VRnuaxizqMkFknGJYdVvp+gw7dbChhBsOtgF/05YTUVg
+ tFB4j+Qzh3uo8qknxg/Zibo33P45epGgsOTI73k2g9gGgEqk6GElkDFSAmnC2mpz7/
+ HqCCF5KZBx3/Se9k/eAXwO2KmtwNtCcRDvXnlt6mCcE7TSvZd1AhogbT4ptQCA7IAa
+ /pRwntKNKgR1w==
 From: Drew Fustini <fustini@kernel.org>
-Date: Mon, 02 Feb 2026 23:01:23 -0800
-Subject: [PATCH RFC 7/7] hw/riscv: virt-acpi-build: Build PPTT table before
- RQSC table
+Date: Mon, 02 Feb 2026 23:01:20 -0800
+Subject: [PATCH RFC 4/7] hw/riscv: virt-acpi-build: Adjust RQSC cache
+ properties
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260202-riscv-rqsc-v1-7-dcf448a3ed73@kernel.org>
+Message-Id: <20260202-riscv-rqsc-v1-4-dcf448a3ed73@kernel.org>
 References: <20260202-riscv-rqsc-v1-0-dcf448a3ed73@kernel.org>
 In-Reply-To: <20260202-riscv-rqsc-v1-0-dcf448a3ed73@kernel.org>
 To: qemu-devel@nongnu.org
@@ -64,22 +64,21 @@ Cc: qemu-riscv@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
  Sia Jee Heng <jeeheng.sia@starfivetech.com>, qemu-arm@nongnu.org, 
  Drew Fustini <fustini@kernel.org>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1025; i=fustini@kernel.org;
- h=from:subject:message-id; bh=i8kqSXew10HQoZsEqPOWNA6a2DuzT5eQ35FVRfqpxRA=;
- b=owGbwMvMwCV2+43O4ZsaG3kYT6slMWQ2zj2WftTi/tTFT1JV7bZkx9el1qd6XJcVCwp2fHLE7
- JdGx96DHaUsDGJcDLJiiiybPuRdWOIV+nXB/BfbYOawMoEMYeDiFICJbD7JyPBAfKXdgvYbbJ8i
- +f6/2c2wedbPu8d8K751b37VdOnYr523GRneONfXewlaiq7kXyPnLPwt7dqjnasjmhLtZPcr3ug
- 03M0BAA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2270; i=fustini@kernel.org;
+ h=from:subject:message-id; bh=KJJuiCEAdc4sb40f+3lpJ6ySCUeXhsuEemgr1CBy3E8=;
+ b=owGbwMvMwCV2+43O4ZsaG3kYT6slMWQ2zj12+oLQAevUShn+ghv/GF5G7jgrrzVJfnsRs6z9F
+ p6Hj2xlO0pZGMS4GGTFFFk2fci7sMQr9OuC+S+2wcxhZQIZwsDFKQAT6cxm+F9vmafo13ty3oSb
+ ocIlMoUntx74yPGw6lB1b0JBLc8iTk6GPzzzLv5YuJCv3LM3c7lez7EloqlJ2546h34QreOzVJv
+ Gzg4A
 X-Developer-Key: i=fustini@kernel.org; a=openpgp;
  fpr=1B6F948213EA489734F3997035D5CD577C1E6010
-Received-SPF: pass client-ip=172.105.4.254; envelope-from=fustini@kernel.org;
- helo=tor.source.kernel.org
+Received-SPF: pass client-ip=2600:3c04:e001:324:0:1991:8:25;
+ envelope-from=fustini@kernel.org; helo=tor.source.kernel.org
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Tue, 03 Feb 2026 09:55:00 -0500
@@ -97,35 +96,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-RQSC table will reference cache IDs in PPTT so PPTT must be built
-first.
+In pptt_setup(), set the cache properties to match the example CBQRI
+controller configuration.
+
+  Base addr
+  0x4820000  Cluster 0 L2 cache controller
+  0x4821000  Cluster 1 L2 cache controller
+  0X482b000  Shared LLC cache controller
 
 Signed-off-by: Drew Fustini <fustini@kernel.org>
 ---
- hw/riscv/virt-acpi-build.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/riscv/virt-acpi-build.c | 27 ++++++++++++++++++++-------
+ 1 file changed, 20 insertions(+), 7 deletions(-)
 
 diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-index da3c355427af..ce2283d79f67 100644
+index 5703b0827682..da3c355427af 100644
 --- a/hw/riscv/virt-acpi-build.c
 +++ b/hw/riscv/virt-acpi-build.c
-@@ -1068,13 +1068,13 @@ static void virt_acpi_build(RISCVVirtState *s, AcpiBuildTables *tables)
-         spcr_setup(tables_blob, tables->linker, s);
-     }
+@@ -985,6 +985,7 @@ static void pptt_setup(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+             .associativity = 4,
+             .sets = 256,
+             .attributes = 0x02,
++            .id = 0x1D,
+         },
+         .l1i_cache = &(CPUCacheInfo) {
+             .type = INSTRUCTION_CACHE,
+@@ -993,22 +994,34 @@ static void pptt_setup(GArray *table_data, BIOSLinker *linker, MachineState *ms,
+             .associativity = 4,
+             .sets = 256,
+             .attributes = 0x04,
++            .id = 0x1E,
+         },
+-        .l2_cache = &(CPUCacheInfo) {
++        .l2_cluster1_cache = &(CPUCacheInfo) {
+             .type = UNIFIED_CACHE,
+-            .size = 2048 * KiB,
++            .size = 750 * KiB,
+             .line_size = 64,
+-            .associativity = 8,
+-            .sets = 4096,
++            .associativity = 12,
++            .sets = 1000,
++            .attributes = 0x0a,
++            .id = 0x4821000,
++        },
++        .l2_cluster2_cache = &(CPUCacheInfo) {
++            .type = UNIFIED_CACHE,
++            .size = 750 * KiB,
++            .line_size = 64,
++            .associativity = 12,
++            .sets = 1000,
+             .attributes = 0x0a,
++            .id = 0x4820000,
+         },
+         .l3_cache = &(CPUCacheInfo) {
+             .type = UNIFIED_CACHE,
+-            .size = 4096 * KiB,
++            .size = 3 * MiB,
+             .line_size = 64,
+-            .associativity = 8,
+-            .sets = 8192,
++            .associativity = 16,
++            .sets = 4096,
+             .attributes = 0x0a,
++            .id = 0x482b000,
+         },
+     };
  
--    acpi_add_table(table_offsets, tables_blob);
--    build_rqsc(tables_blob, tables->linker, s);
--
-     acpi_add_table(table_offsets, tables_blob);
-     pptt_setup(tables_blob, tables->linker, ms,
-                s->oem_id, s->oem_table_id);
- 
-+    acpi_add_table(table_offsets, tables_blob);
-+    build_rqsc(tables_blob, tables->linker, s);
-+
-     acpi_add_table(table_offsets, tables_blob);
-     {
-         AcpiMcfgInfo mcfg = {
 
 -- 
 2.43.0

@@ -4,24 +4,24 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4860EE7C714
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 02:10:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08583E7DEE2
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 02:11:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vn5qq-0002Ub-Oa; Mon, 02 Feb 2026 21:09:12 -0500
+	id 1vn5qu-0002Vi-8L; Mon, 02 Feb 2026 21:09:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vn5qo-0002TP-Sn; Mon, 02 Feb 2026 21:09:10 -0500
+ id 1vn5qt-0002VS-3u; Mon, 02 Feb 2026 21:09:15 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vn5qn-0006uM-F7; Mon, 02 Feb 2026 21:09:10 -0500
+ id 1vn5qr-0006uM-Pr; Mon, 02 Feb 2026 21:09:14 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 3 Feb
- 2026 10:08:56 +0800
+ 2026 10:08:57 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
  Transport; Tue, 3 Feb 2026 10:08:56 +0800
@@ -34,9 +34,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
  <clg@redhat.com>
-Subject: [PATCH v2 1/8] hw/arm/aspeed_ast27x0: Fix EHCI3/4 IRQ routing to GIC
-Date: Tue, 3 Feb 2026 10:08:46 +0800
-Message-ID: <20260203020855.1642884-2-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 3/8] hw/arm/aspeed_ast27x0: Sort SSP and TSP IRQ maps
+Date: Tue, 3 Feb 2026 10:08:48 +0800
+Message-ID: <20260203020855.1642884-4-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260203020855.1642884-1-jamin_lin@aspeedtech.com>
 References: <20260203020855.1642884-1-jamin_lin@aspeedtech.com>
@@ -68,36 +68,72 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-EHCI3 and EHCI4 were missing entries in aspeed_soc_ast2700a1_irqmap,
-so their source IRQs were never routed through the INTC OR-gates.
+Sort the SSP and TSP IRQ map tables to improve readability and make the
+definitions easier to maintain.
 
-As a result, EHCI3/4 interrupts were not propagated to the GIC,
-causing incorrect interrupt behavior for these controllers.
-
-Add EHCI3 and EHCI4 to the IRQ map and route them to the same INTC
-group as other shared peripherals, ensuring their interrupts are
-properly connected to the GIC.
+No functional change.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Fixes: ba27ba302a264117c8b8427f944ced1bed17c438 ("hw/arm: ast27x0: Wire up EHCI controllers")
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast27x0.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/arm/aspeed_ast27x0-ssp.c | 4 ++--
+ hw/arm/aspeed_ast27x0-tsp.c | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index d17f446661..e16183c3b3 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -149,6 +149,8 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
-     [ASPEED_DEV_ETH1]      = 196,
-     [ASPEED_DEV_ETH2]      = 196,
-     [ASPEED_DEV_ETH3]      = 196,
-+    [ASPEED_DEV_EHCI3]     = 196,
-+    [ASPEED_DEV_EHCI4]     = 196,
-     [ASPEED_DEV_PECI]      = 197,
-     [ASPEED_DEV_SDHCI]     = 197,
+diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c
+index e4bcf0fa2a..9b12ba6743 100644
+--- a/hw/arm/aspeed_ast27x0-ssp.c
++++ b/hw/arm/aspeed_ast27x0-ssp.c
+@@ -44,12 +44,13 @@ static const hwaddr aspeed_soc_ast27x0ssp_memmap[] = {
  };
+ 
+ static const int aspeed_soc_ast27x0ssp_irqmap[] = {
++    [ASPEED_DEV_UART4]     = 8,
+     [ASPEED_DEV_SCU]       = 12,
++    [ASPEED_DEV_TIMER1]    = 16,
+     [ASPEED_DEV_UART0]     = 164,
+     [ASPEED_DEV_UART1]     = 164,
+     [ASPEED_DEV_UART2]     = 164,
+     [ASPEED_DEV_UART3]     = 164,
+-    [ASPEED_DEV_UART4]     = 8,
+     [ASPEED_DEV_UART5]     = 164,
+     [ASPEED_DEV_UART6]     = 164,
+     [ASPEED_DEV_UART7]     = 164,
+@@ -58,7 +59,6 @@ static const int aspeed_soc_ast27x0ssp_irqmap[] = {
+     [ASPEED_DEV_UART10]    = 164,
+     [ASPEED_DEV_UART11]    = 164,
+     [ASPEED_DEV_UART12]    = 164,
+-    [ASPEED_DEV_TIMER1]    = 16,
+ };
+ 
+ /* SSPINT 164 */
+diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c
+index 68683a15d8..e39d1dc171 100644
+--- a/hw/arm/aspeed_ast27x0-tsp.c
++++ b/hw/arm/aspeed_ast27x0-tsp.c
+@@ -44,12 +44,13 @@ static const hwaddr aspeed_soc_ast27x0tsp_memmap[] = {
+ };
+ 
+ static const int aspeed_soc_ast27x0tsp_irqmap[] = {
++    [ASPEED_DEV_UART4]     = 8,
+     [ASPEED_DEV_SCU]       = 12,
++    [ASPEED_DEV_TIMER1]    = 16,
+     [ASPEED_DEV_UART0]     = 164,
+     [ASPEED_DEV_UART1]     = 164,
+     [ASPEED_DEV_UART2]     = 164,
+     [ASPEED_DEV_UART3]     = 164,
+-    [ASPEED_DEV_UART4]     = 8,
+     [ASPEED_DEV_UART5]     = 164,
+     [ASPEED_DEV_UART6]     = 164,
+     [ASPEED_DEV_UART7]     = 164,
+@@ -58,7 +59,6 @@ static const int aspeed_soc_ast27x0tsp_irqmap[] = {
+     [ASPEED_DEV_UART10]    = 164,
+     [ASPEED_DEV_UART11]    = 164,
+     [ASPEED_DEV_UART12]    = 164,
+-    [ASPEED_DEV_TIMER1]    = 16,
+ };
+ 
+ /* TSPINT 164 */
 -- 
 2.43.0
 

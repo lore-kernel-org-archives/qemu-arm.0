@@ -4,99 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EB2AE87850
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 17:32:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03EE3E8B36B
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 22:07:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnKGX-0003Yr-R5; Tue, 03 Feb 2026 12:32:43 -0500
+	id 1vnOXm-0003eq-TB; Tue, 03 Feb 2026 17:06:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vnKGC-0003U2-3D
- for qemu-arm@nongnu.org; Tue, 03 Feb 2026 12:32:21 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vnKG6-0007T4-2s
- for qemu-arm@nongnu.org; Tue, 03 Feb 2026 12:32:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770139929;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=nV1QEexHhULTt9lndN8UjP2uphSwtHjKv3xbuHKA1OU=;
- b=R94BWuFYNy60bURXlU28sgmniv3Lpy2dz2RfO8AFr5LtJ3GMq8NN+L3Ym+AgEqtTq6wOb6
- UVS1lLiMtNSWP1+R2px4EXOZmpfVycL0tRWJIx4ly/xcsk7iatRE2kGuG2iOnQXj53qNhB
- 6p5UuM0AwMOdI3vvUklN8JUb5rO7P7o=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-647-3P4extfFP8-po83UjBuW6Q-1; Tue, 03 Feb 2026 12:32:07 -0500
-X-MC-Unique: 3P4extfFP8-po83UjBuW6Q-1
-X-Mimecast-MFC-AGG-ID: 3P4extfFP8-po83UjBuW6Q_1770139927
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-4830e7c6131so2541505e9.2
- for <qemu-arm@nongnu.org>; Tue, 03 Feb 2026 09:32:07 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <yodel.eldar@gmail.com>)
+ id 1vnOXl-0003eJ-Lm
+ for qemu-arm@nongnu.org; Tue, 03 Feb 2026 17:06:45 -0500
+Received: from mail-yw1-x1141.google.com ([2607:f8b0:4864:20::1141])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <yodel.eldar@gmail.com>)
+ id 1vnOXj-0008Cz-56
+ for qemu-arm@nongnu.org; Tue, 03 Feb 2026 17:06:45 -0500
+Received: by mail-yw1-x1141.google.com with SMTP id
+ 00721157ae682-79456d5ebf9so62020587b3.2
+ for <qemu-arm@nongnu.org>; Tue, 03 Feb 2026 14:06:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1770156402; cv=none;
+ d=google.com; s=arc-20240605;
+ b=ECa4+5sMsmahKdpVU1bKJHl6pziPKiXrZZsjMR4EZNKZr+MRrfuVmBIJA0OHaEDZIl
+ n64uGGwWOqp/2GElTE6FR04wtAxtwx2dGsgJERpo00ynV5NS5B7O6MVtPZGkQd3r+Upw
+ 74EMgnuLY7K+kYvxnK0+xnbuHNJoBnf6m3TZh3I7meecFEsebjxzswi2QKXOWLSqnG2N
+ XStfm/461BSzo9ZSseSulJ6C2je1SX5ZWoHAnbdJ7a09WGKgC8GpowghyRo825V3LcqA
+ OlK5Rp1DgYYa8P8+II9gyyS9Vp/bxBi/MDfXtCHvYkdovvfaCvqarPY0sWZBSXDwZGa0
+ iXMg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=09qv1dQ3mV4EjW1PnTKZU4Ka0kSqROpxX43mwtQSHDA=;
+ fh=2GGQOQTriJWPkVrPH/o2Jss0yLMKRpzml2YZvQ6jF3E=;
+ b=IZqvHQI3lvLNu7+2rAL0SprycceLG91dKu0J3sIp/yZhYKneamp7+uVuf+4i4YQuei
+ bMadR2CAkIdIca5kWN1RMe74Vf7Vxw6VXI3oyl2W1Oc2T6GSK7Bi4ZaUPWsO1C2lE9Jo
+ DPvIJMnbDpGrLLngcdTUja5c+U1o+U/60BDYIVaBalfPXcAiuNPtaRyLgb6DqHOa8qDX
+ qhR4FOJ4KDusc1fuXDamIpuyvmp2hYC+Lhm6U4E9QT5442Qa9KyoB4P6gvXrtAj++zXh
+ oTRZnwqExQsUomJkQ1rG4/GeoF1qklw7mMArSz5cNnUG5u9HWDpXdzqUNQtppnJmU/U1
+ 2GQw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1770156402; x=1770761202; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=09qv1dQ3mV4EjW1PnTKZU4Ka0kSqROpxX43mwtQSHDA=;
+ b=GQ3KPHSgxuQglhaR6bSXnKQMuwAnWABIEY1jkkyOJDFVZQ01mSl1wt8+GdeTqnhOCg
+ zQyOn+mNIzmDuY01BP2w1w8zjj+kfztZPpQiRCFjOSNT9PfhHxKwhNWvOGQb6zEgoNGf
+ qb/mN4GCRapes/PtI3YLkmc8Te95eKa3W14HNIfqxP2o+jrTB/tA0XQZ/3kIqG1oZF9u
+ 76y+bgawtucMksDPMn0O6ASHxnVop1vHEiimMdyescYT1jAOmGK0liyk36eqzWNaSsBf
+ kI2y7ba7+uZqzHWmnpRKl00yQVutmZdVWr23/aABM9JvVFStqLI136k20SX/1Luhtd5r
+ 9Zxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770139926; x=1770744726;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=nV1QEexHhULTt9lndN8UjP2uphSwtHjKv3xbuHKA1OU=;
- b=BqZrejHiUMmlOktabUig8cowccdWSOgtXc6E78YzBY3fc0Kmc1YERlKCinHNGoOsK+
- OGU0Wqnk4Cc2tBIGxp8Xe3ye9fvkqmBb4Lc94rLYlFYZ+78YKfGOszvg1OrQbFsxjLHi
- fevnT8q+FsCPsGWPksZu/K6XHXBwsM2L2ll3KonQdZjcSulfLnJnWpLQxzVrGZPH8Wio
- I4sCLK6eLRBC79HpwnUNLvbNGVJor+wNj1U8DbJ5+QwGpCPAMExqOgk4N/ZSUEp/jRpL
- 4/NhZzhB31x2XjqoMZL1rVvJgDG60Uy9slyDqcBhZb6bU3fTX2mEYfscF+S2UNKz09el
- R/Kg==
-X-Gm-Message-State: AOJu0Yyjg+AKwX8G+nWDm5IL8VqvGWa5XW6JOEZ5DFR/O/iHfqnrYOV1
- EsC9onpkRfiHwPgWSbj06gqOwz4hH+W0F4rcyTUAdQwpbnQqTWH0Z6/Q89RSO56duC7VDyUz6TU
- lt6khigT4+G+QB0v6uNGUalduzEKkDjuHXYE5AQg6/EKtPkMN/OW+RQ==
-X-Gm-Gg: AZuq6aI1zqab1lJ+8D/plDIHwC+wx+lHHwrXOBI7GxpxpS9bAC1To/mnzGCzcsrPB2I
- sjC3A9DWom09Xw29bJV6HM3Od0vMke2N/W3cjpcwdY94iHDCFmZiSQi0YLGWpcGjkVSe04bpQgq
- ztIIR47yjZxCj5B6et7TaMZdOxRs7G/+HRrGF6WovbyzCcQemSWVQwv1vbQwthAOqKXd8PAFj5v
- 1cpHDp662fu1FzuTNWnvi2kD/bYx+/mEmeA931fGeB3m/m47jBeCMFTgQmBxA1SYED8YKiJrqaB
- JfvX+ipkGPYyZG7q+e/9AAN7vhITFyQ6dWSl+XatKcgsUSxC9u+MFDFNtmqSmvba9BW2zjQair9
- zUJvEgIQGe5RUUUzX6Cw8JvEE77QYsl455Q==
-X-Received: by 2002:a05:600c:3e0d:b0:46e:59bd:f7d3 with SMTP id
- 5b1f17b1804b1-4830e96fb0cmr5089335e9.20.1770139926323; 
- Tue, 03 Feb 2026 09:32:06 -0800 (PST)
-X-Received: by 2002:a05:600c:3e0d:b0:46e:59bd:f7d3 with SMTP id
- 5b1f17b1804b1-4830e96fb0cmr5088945e9.20.1770139925795; 
- Tue, 03 Feb 2026 09:32:05 -0800 (PST)
-Received: from redhat.com (IGLD-80-230-34-155.inter.net.il. [80.230.34.155])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4830515381esm80484405e9.11.2026.02.03.09.32.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Feb 2026 09:32:05 -0800 (PST)
-Date: Tue, 3 Feb 2026 12:32:02 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Shameer Kolothum <skolothumtho@nvidia.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
- alex@shazbot.org, clg@redhat.com, cohuck@redhat.com,
- nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com,
- jgg@nvidia.com, kjaju@nvidia.com, Jason Wang <jasowang@redhat.com>
-Subject: Re: [PATCH v2 2/4] hw/net/virtio-net: Adapt hash handling to updated
- UAPI
-Message-ID: <20260203123143-mutt-send-email-mst@kernel.org>
-References: <20260113113754.1189-1-skolothumtho@nvidia.com>
- <20260113113754.1189-3-skolothumtho@nvidia.com>
+ d=1e100.net; s=20230601; t=1770156402; x=1770761202;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=09qv1dQ3mV4EjW1PnTKZU4Ka0kSqROpxX43mwtQSHDA=;
+ b=npYuEwAREYqn4L2V7cro06Qn+S2GlHpafYeZYs53twfCC8zR/uwmKMkeQFghAFzXDw
+ cLpzx5cI6ppb1BxCdvVkCICs947ofoIAfTEpSFlYpUmVnCyzUEk/6blPAUnbz7GlvtD9
+ dXEPeubqzcqopPjCUoGbxnhQJ2MwttHC7tOkFy/SevmvaUfIwU25WcEz/U0eg03rTOKr
+ 7B6kJCOSffwDoDVmffwOqiLjfVdB/1aSXjdNSRUNRH1ESoh1llgf0yWa+Yqy0Uqvp+qr
+ GB7Ig6G5tzgHiE94aQAU/3J9MhKw3uxIF2vhFxJZMqg+hxFVljGbwFMLKhp/rSRXbjeS
+ xJSw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVCtxxn6PQckt+jbYSiBdFHHK8ChVWnj5AlLvlHHvA/zNyF1Wds/T89/T/aHaxRo3Aye8g4MAK73Q==@nongnu.org
+X-Gm-Message-State: AOJu0Yx+Vh6ANyT3/1Tlx1zCi6OxucgVebR1S5Gp2KHONnASPv/wZV/e
+ 0dFgOrgGwAMVABgDZ0J7tYmhiNxoNAWwJkG0Q5ZCcA47GdFPO3uq9RxLm9ki48tDg+rzyiUOb2W
+ nHl4QumRdmXUq49ub7eKPv6nbHmTArtQ=
+X-Gm-Gg: AZuq6aJzSxOVPtJAIvPOtc/JWlITGCPC/F7rCLt4EjfQI2r+RXrfvtqXlPr2t3v/KsS
+ uXKyJ5SZgUrwKWKMG04M1FMF1up7gklZBIyzWqTgy9F4H0SgTWzifv29+yTZ6QshNz7/YKVBQQc
+ nSllsz8weFAtQ05BxZMA2fzcKRxfYY55f52WDvPQIIC8LAu+9Oc2B2uAMU13K5EBEzSTLALgN8z
+ QVAmpaF3oEuCd8ibDvJOLuUxmVMgL6GcxTvyiwWy9TN4uavHZw2Dn9qkS2RWLjCqXLxOz8=
+X-Received: by 2002:a05:690c:c50d:b0:794:c373:7230 with SMTP id
+ 00721157ae682-794fe6925c6mr9978927b3.23.1770156401662; Tue, 03 Feb 2026
+ 14:06:41 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20260113113754.1189-3-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 0Y3yBrp-CoxHV238LMcG56gn1IdZ_xES3suY1gYH5VM_1770139927
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20260203115201.2387721-1-alex.bennee@linaro.org>
+ <20260203115201.2387721-4-alex.bennee@linaro.org>
+In-Reply-To: <20260203115201.2387721-4-alex.bennee@linaro.org>
+From: Yodel Eldar <yodel.eldar@gmail.com>
+Date: Tue, 3 Feb 2026 16:06:31 -0600
+X-Gm-Features: AZwV_QigCPUmuFKMGMAk28tEGsoVdPmrj_v9SrwktMypBQ9wWmj8AwU3tn6yVSo
+Message-ID: <CAHhgW4W4YZjWytqFpbEmhfh6cuZJdtCgqi945q5g42SWZDvEUg@mail.gmail.com>
+Subject: Re: [PATCH 03/11] gdbstub: remove the need for goto cleanup
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, John Snow <jsnow@redhat.com>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-arm@nongnu.org, 
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ David Gibson <david@gibson.dropbear.id.au>, Nicholas Piggin <npiggin@gmail.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-ppc@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-s390x@nongnu.org, 
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Akihiko Odaki <akihiko.odaki@daynix.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>, 
+ David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1141;
+ envelope-from=yodel.eldar@gmail.com; helo=mail-yw1-x1141.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,64 +132,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Jan 13, 2026 at 11:37:52AM +0000, Shameer Kolothum wrote:
-> The virtio_net_hdr_v1_hash layout changed in the Linux UAPI, replacing
-> the 32-bit hash_value field with two 16-bit fields, hash_value_lo and
-> hash_value_hi.
-> 
-> Update hash handling to populate the new fields correctly and adjust
-> offset and size calculations accordingly.
-> 
-> Cc: Michael S. Tsirkin <mst@redhat.com>
-> Cc: Jason Wang <jasowang@redhat.com>
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+Hi, Alex
 
+On Tue, Feb 3, 2026 at 5:51=E2=80=AFAM Alex Benn=C3=A9e <alex.bennee@linaro=
+.org> wrote:
+>
+> We already set a default error reply which we can only overwrite if we
+> successfully follow the chain of checks. Initialise the variables as
+> NULL and use that to gate the construction of the filled out
+> stop/reply packet.
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-Has to be squashed in patch 1 or bisect will be broken.
+Thanks for the patch: glad to see a goto gone.
 
 > ---
->  hw/net/virtio-net.c | 11 +++++++----
->  1 file changed, 7 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-> index 317f1ad23b..512a7c02c9 100644
-> --- a/hw/net/virtio-net.c
-> +++ b/hw/net/virtio-net.c
-> @@ -1879,7 +1879,8 @@ static int virtio_net_process_rss(NetClientState *nc, const uint8_t *buf,
->                                               n->rss_data.runtime_hash_types);
->      if (net_hash_type > NetPktRssIpV6UdpEx) {
->          if (n->rss_data.populate_hash) {
-> -            hdr->hash_value = VIRTIO_NET_HASH_REPORT_NONE;
-> +            hdr->hash_value_lo = VIRTIO_NET_HASH_REPORT_NONE;
-> +            hdr->hash_value_hi = VIRTIO_NET_HASH_REPORT_NONE;
->              hdr->hash_report = 0;
->          }
->          return n->rss_data.redirect ? n->rss_data.default_queue : -1;
-> @@ -1888,7 +1889,8 @@ static int virtio_net_process_rss(NetClientState *nc, const uint8_t *buf,
->      hash = net_rx_pkt_calc_rss_hash(pkt, net_hash_type, n->rss_data.key);
->  
->      if (n->rss_data.populate_hash) {
-> -        hdr->hash_value = hash;
-> +        hdr->hash_value_lo = cpu_to_le16(hash & 0xffff);
-> +        hdr->hash_value_hi = cpu_to_le16((hash >> 16) & 0xffff);
->          hdr->hash_report = reports[net_hash_type];
+>  gdbstub/gdbstub.c | 30 +++++++++++++-----------------
+>  1 file changed, 13 insertions(+), 17 deletions(-)
+>
+> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+> index 1f8cd118924..d4db7ba30cc 100644
+> --- a/gdbstub/gdbstub.c
+> +++ b/gdbstub/gdbstub.c
+> @@ -1413,36 +1413,32 @@ static void handle_v_cont(GArray *params, void *u=
+ser_ctx)
+>
+>  static void handle_v_attach(GArray *params, void *user_ctx)
+>  {
+> -    GDBProcess *process;
+> -    CPUState *cpu;
+> +    GDBProcess *process =3D NULL;
+> +    CPUState *cpu =3D NULL;
+>
+> +    /* Default error reply */
+>      g_string_assign(gdbserver_state.str_buf, "E22");
+> -    if (!params->len) {
+> -        goto cleanup;
+> -    }
+> -
+> -    process =3D gdb_get_process(gdb_get_cmd_param(params, 0)->val_ul);
+> -    if (!process) {
+> -        goto cleanup;
+> +    if (params->len) {
+> +        process =3D gdb_get_process(gdb_get_cmd_param(params, 0)->val_ul=
+);
 >      }
->  
-> @@ -1990,10 +1992,11 @@ static ssize_t virtio_net_receive_rcu(NetClientState *nc, const uint8_t *buf,
->  
->              receive_header(n, sg, elem->in_num, buf, size);
->              if (n->rss_data.populate_hash) {
-> -                offset = offsetof(typeof(extra_hdr), hash_value);
-> +                offset = offsetof(typeof(extra_hdr), hash_value_lo);
->                  iov_from_buf(sg, elem->in_num, offset,
->                               (char *)&extra_hdr + offset,
-> -                             sizeof(extra_hdr.hash_value) +
-> +                             sizeof(extra_hdr.hash_value_lo) +
-> +                             sizeof(extra_hdr.hash_value_hi) +
->                               sizeof(extra_hdr.hash_report));
->              }
->              offset = n->host_hdr_len;
-> -- 
-> 2.43.0
+>
+> -    cpu =3D gdb_get_first_cpu_in_process(process);
+> -    if (!cpu) {
+> -        goto cleanup;
+> +    if (process) {
+> +        cpu =3D gdb_get_first_cpu_in_process(process);
+>      }
+>
+> -    process->attached =3D true;
+> -    gdbserver_state.g_cpu =3D cpu;
+> -    gdbserver_state.c_cpu =3D cpu;
+> +    if (cpu) {
+> +        process->attached =3D true;
+> +        gdbserver_state.g_cpu =3D cpu;
+> +        gdbserver_state.c_cpu =3D cpu;
+>
+>      if (gdbserver_state.allow_stop_reply) {
+>          g_string_printf(gdbserver_state.str_buf, "T%02xthread:", GDB_SIG=
+NAL_TRAP);
+>          gdb_append_thread_id(cpu, gdbserver_state.str_buf);
+>          g_string_append_c(gdbserver_state.str_buf, ';');
+>          gdbserver_state.allow_stop_reply =3D false;
+> -cleanup:
+> -        gdb_put_strbuf();
+>      }
+> +
+> +    gdb_put_strbuf();
+>  }
+>
 
+The `cpu` gated block doesn't have a closing brace here thereby breaking
+build, but it does in the next patch. Maybe a `git add -p` gone awry?
+
+Also, would it make sense to move the `cpu` and the to-be nested block
+below it into the `process` gated block to avoid the `cpu` check
+whenever `process` is NULL?
+
+Yodel
+
+>  static void handle_v_kill(GArray *params, void *user_ctx)
+> --
+> 2.47.3
+>
+>
 

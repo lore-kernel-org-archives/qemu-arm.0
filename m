@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 858FDE7C712
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 11:52:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52170E7FDD6
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 11:52:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnEx4-0007xb-0v; Tue, 03 Feb 2026 06:52:14 -0500
+	id 1vnEx5-0007yv-At; Tue, 03 Feb 2026 06:52:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vnEx0-0007tp-HV
- for qemu-arm@nongnu.org; Tue, 03 Feb 2026 06:52:11 -0500
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ id 1vnEx3-0007wm-Cl
+ for qemu-arm@nongnu.org; Tue, 03 Feb 2026 06:52:13 -0500
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vnEwv-00057m-OO
- for qemu-arm@nongnu.org; Tue, 03 Feb 2026 06:52:09 -0500
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-64d1ef53cf3so6975008a12.0
- for <qemu-arm@nongnu.org>; Tue, 03 Feb 2026 03:52:05 -0800 (PST)
+ id 1vnEx0-00059x-9W
+ for qemu-arm@nongnu.org; Tue, 03 Feb 2026 06:52:13 -0500
+Received: by mail-ej1-x644.google.com with SMTP id
+ a640c23a62f3a-b886fc047d5so1038081266b.3
+ for <qemu-arm@nongnu.org>; Tue, 03 Feb 2026 03:52:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1770119524; x=1770724324; darn=nongnu.org;
+ d=linaro.org; s=google; t=1770119529; x=1770724329; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Ruv1Ejeh4EyN1qePTlvxJYVwjWJP4ANv3Gjqm9WaH/s=;
- b=ZOWOVQG8O3R3Beyhbr0DfLC+y19xlLLLVcwPaq1axmuijbpfZkKCYBv9K5m6gJmkzQ
- pwYEiYDzyLML9UDfqoHSyOUDkpzTBnH9io+bClImN6JGdeVqY0RRtBFtvAa9zF2rnktS
- PWf+DxqNxB9GN1oMW5KBuNvIn0P0o5o1KsQD07r0STN2AG8IS7HFdOm/I72/QFiAiGbv
- 0HWCSQUxV6Amr+tf/WOwIUM/WC/ZCS335oCWaAlse+p9rKRh0/Qjq/yStsRjRhmM2AP5
- 7nR3OIKo1E+tkTKwrx13hvly32FUhNg9Zi6wrRfX3Yh8PEP5+Zs8Od82w1+fsme6Fmr6
- DXOg==
+ bh=3rnOG7bwrBNwvdTMzR0X6nqTtCuNrtf+RkzdzcDauu4=;
+ b=u7X0/Zcjt6hImDuEKVy6/J9RRSjC5NQwmuHhPFDoH8l4HyOES4nXQORVU1Ab2nMXnB
+ SW6B9mlKbHYsbTVtSny0YZxcKKRFvjg7I4Lxzb/kRd63isG8x+quJw9+UhTjnrko5W3m
+ SIiMzOCNUmph+ljG8dKtGxmd2ugj4iO65gexr4NPaHF+o73mETnBz04yhUn7FmAHqIXO
+ CIqYZvj25YVnUciX0gxbU0/yb0yVtxtYYHFN8ij/yAMnJg2y0rGnGZxWMNa58PPqD6ry
+ WuluYTKdOVi/6/dpfDq/7o9pxVpdXxHDNTRgUF7dV8ip1Btik9pZsPBtoUH7IREySg5/
+ KJZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770119524; x=1770724324;
+ d=1e100.net; s=20230601; t=1770119529; x=1770724329;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Ruv1Ejeh4EyN1qePTlvxJYVwjWJP4ANv3Gjqm9WaH/s=;
- b=kKKrshKZa4dMvcTnECPAdirbnmszQIt4rkAh3ih0+8Kh34l2aL/25qgijuZP96hxn+
- dtHmEvqM7cpr0hbxMBXnstMNkzETmmPq/xLaNR6nnIz+4UtmFAh9tivDZnSAWAHNWq7L
- 4WZ1FbH7cLiQa87lK4IuugSDiqypv46zemKHfR9p3hnHt1NScLxq7sf2PGYNY8gJnKU6
- ZVQhxVxPUF+20N3aYwF7pEzUhdDhcO9lh/ZQZcf1iF4OIEBtYe1+Xew0jBjTdrbJecAk
- v88x+jg/cIGSq75ID9CcxNIItEuaz7zJUGEMhWDGnGGUb3zIOHZAo7OcQkC0a/x1mzZ0
- 1nXg==
+ bh=3rnOG7bwrBNwvdTMzR0X6nqTtCuNrtf+RkzdzcDauu4=;
+ b=wCVi8F8Ps5FoMQCLJ6Va4JIGg2vrwSV4MYBYI1h4kjp3Lvo0Oxs6zDlKVFeDbqkAKE
+ SdP06BxiKp8CJLvmx9zdk0Fff7r7AmbejIOLc7cv0R6evZIa1JdFc/MkeIt3VbTE+iTC
+ tykWynRVm9DM7Xu/ZtXN5J5WD/LhPYVMEF1T+Vn0Yrp6+qzY8WmFpOiHhrQD1IfMuKaQ
+ Spke1r/DD2V4HrIGfDYcXaBhInWFHbjznZB8K9+YbeWdW1wAlbnmB0dJ1klkhjz2BnuA
+ vcpiYA6TkLoTGCf9GaVp+4YfnJXqmk7nRUPAEsj4zxRHAcSgHU4INBmMhiwmOqhmqWFR
+ ctXQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW8LWnMOKMrDs3pAsiEZtCW05m4ZwIu5v0O+yOmmGGMhoFs2jyB3nyXdbVJtBoDyPhCWwktOuLUDw==@nongnu.org
-X-Gm-Message-State: AOJu0YyOLazqThW0uZ+rtcUTb2gWRQ8bEH/ELaF2NpIweyczq43SV2Bc
- rvy5jdpu3KLUIpG+1h1+zOtCtZIXIg44leNOqvM0/zbT7pFR+76lSQlQy8Eh+PDzQAo=
-X-Gm-Gg: AZuq6aIe3PSjxPsAxYR6txuhmF65Jef/s2w2Nfp3tCbZtNpTTNQfkSzofxAf3SrsdL6
- r82Y7zM44Jd5MNfVAVUYA9ExtmeqqljoeMLgMdailU+euCF9NJ51uMFZssVFqm+8BqIFtz6a4zW
- mcCiylwMu6IU5M4bdPRFAPzNCOphdpA0HwFx3/Hk0iW4Hzu9ZccWq2l6QNEZLCNXHml62HZVKOK
- TfUA/u9fj+TQPYrdX6ieP0wsKKDRYDTQ2HIBNup41RWTkFwfC/z5k4S8vV8dDhYTqEDb/aa+mdP
- t+yEZMHja65m0+CXvolwsjCKKwQrp401U1jLaL3zf531VfTYmAY+mE9eUUlRYAI//SkQ4ibJJb5
- l1rhwqyICg0RK6G04c8CrZsCL0/HHkLIux2+FloTD86f8uNqdXGfIvj78sZlkQ2jTu4p7yaXYNq
- i95mZOi9OQADg=
-X-Received: by 2002:a17:907:3f17:b0:b8a:f3c0:c14 with SMTP id
- a640c23a62f3a-b8dff721f68mr889105166b.38.1770119523924; 
- Tue, 03 Feb 2026 03:52:03 -0800 (PST)
+ AJvYcCWCobt1Os7HJGgmyUn4ehu9ey+ImIqAraK2F/hlI7Dwas9x74XzyvZ+HACCrBM7Tzj6wUtIBsFvfw==@nongnu.org
+X-Gm-Message-State: AOJu0Ywj/yh7ZdpgBRgwd8qV2deevY/Z+bB4UIj42nEXH1HtmNVndY7W
+ 6Hl517XOnYBzrDl05ML5YE8Hcotjre6O+/wSR8EVBFvreChtn0sCz6W0qP0RDXEjAlw=
+X-Gm-Gg: AZuq6aKzgGtHN3KevfZibtmpdl4jJNceRV32R73wERqzjSUQxLoVQFSknm7jybKKDqG
+ t6Xw0vXONedNSl7W12BPG7K+n7QtQ1PD3PMzyTYnddWwuQsRW9JcSnBCMRHDBO8kDpqGAdYtfuW
+ hnM9pKE2dsogT07Ur9hXibcmP97Z5/qmfr1aSGj26IKLmqLwmOtxfcjKgIrY5zR6XwkNhgHOkbL
+ 5LtRszmapU0tnS/kkAaWL0BUuc7ilGJauO/oS7V3/HAPCZj1dzvMDf/o+8/8TU4s8T5iQIdES4k
+ nh1lFUtf7YiusTgLEmlvSeTUpl+ZaTmFPUNkPMRStKICic37Yae+Vl0iqN5E627KevDIgJDTK8q
+ 6L8AHeO71r5/XgsAsNhiyAwbWedB1zn9Ylwy5PDH1RkQAcTyyl+uOjPJ9bUibuNIWzhE5CRlB5z
+ KQOL4SjDwHu7hIjzW2KYNw+A==
+X-Received: by 2002:a17:907:1b03:b0:b87:35fc:ae6e with SMTP id
+ a640c23a62f3a-b8dff69d99bmr912611866b.46.1770119528628; 
+ Tue, 03 Feb 2026 03:52:08 -0800 (PST)
 Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b8dbf2ecc73sm1039332166b.62.2026.02.03.03.52.02
+ a640c23a62f3a-b8dbeffedd3sm998692766b.29.2026.02.03.03.52.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Feb 2026 03:52:03 -0800 (PST)
+ Tue, 03 Feb 2026 03:52:07 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 26F4B5F844;
+ by draig.lan (Postfix) with ESMTP id 9CB2B60231;
  Tue, 03 Feb 2026 11:52:02 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -87,27 +87,25 @@ Cc: John Snow <jsnow@redhat.com>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
  David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>,
- Gustavo Romero <gustavo.romero@linaro.org>
-Subject: [PATCH 01/11] meson-buildoptions: Remove duplicated entry of --gdb in
- the help text
-Date: Tue,  3 Feb 2026 11:51:51 +0000
-Message-ID: <20260203115201.2387721-2-alex.bennee@linaro.org>
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH 06/11] gdbstub: pass GString to gdb_build_stop_packet
+Date: Tue,  3 Feb 2026 11:51:56 +0000
+Message-ID: <20260203115201.2387721-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260203115201.2387721-1-alex.bennee@linaro.org>
 References: <20260203115201.2387721-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x644.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,66 +121,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Since --gdb has recently been added to meson_options.txt, the help
-text shows up twice in the output of "./configure --help":
+The other functions we are going to clean-up work variously with there
+own dynamically allocated GStrings or with the common shared buffer.
 
- $ ./configure --help | grep gdb
-   --gdb=GDB-path           gdb to use for gdbstub tests [/usr/bin/gdb]
-   --gdb=VALUE              Path to GDB
-
-As the probed value is of interest we want to keep the configure text
-so make meson-buildoptions able to handle deferring to configure.
-
-Fixes: b46b3818cf8 ("tests/functional: Provide GDB to the functional tests")
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Acked-by: Paolo Bonzini <pbonzini@redhat.com>
-Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
 ---
- scripts/meson-buildoptions.py | 9 ++++++++-
- scripts/meson-buildoptions.sh | 1 -
- 2 files changed, 8 insertions(+), 2 deletions(-)
+ gdbstub/internals.h | 5 ++++-
+ gdbstub/gdbstub.c   | 4 ++--
+ gdbstub/system.c    | 4 ++--
+ gdbstub/user.c      | 8 ++++----
+ 4 files changed, 12 insertions(+), 9 deletions(-)
 
-diff --git a/scripts/meson-buildoptions.py b/scripts/meson-buildoptions.py
-index e636d258e8a..9e3a75c8b11 100644
---- a/scripts/meson-buildoptions.py
-+++ b/scripts/meson-buildoptions.py
-@@ -53,6 +53,11 @@
-     "werror",
- }
+diff --git a/gdbstub/internals.h b/gdbstub/internals.h
+index 3134a6e8eb2..9b25bf58b8e 100644
+--- a/gdbstub/internals.h
++++ b/gdbstub/internals.h
+@@ -239,9 +239,12 @@ int gdb_target_memory_rw_debug(CPUState *cs, hwaddr addr,
  
-+# Options that configure prints help for, so we can skip
-+CONFIGURE_HELP = {
-+    "gdb",
-+}
-+
- # Builtin options that should be definable via configure.  Some of the others
- # we really do not want (e.g. c_args is defined via the native file, not
- # via -D, because it's a mix of CFLAGS and --extra-cflags); for specific
-@@ -189,7 +194,9 @@ def print_help(options):
-         key = cli_help_key(opt)
-         # The first section includes options that have an arguments,
-         # and booleans (i.e., only one of enable/disable makes sense)
--        if require_arg(opt):
-+        if opt["name"] in CONFIGURE_HELP:
-+            pass
-+        elif require_arg(opt):
-             metavar = cli_metavar(opt)
-             left = f"--{key}={metavar}"
-             help_line(left, opt, 27, True)
-diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
-index 3d0d1323446..e8edc5252a3 100644
---- a/scripts/meson-buildoptions.sh
-+++ b/scripts/meson-buildoptions.sh
-@@ -58,7 +58,6 @@ meson_options_help() {
-   printf "%s\n" '  --enable-ubsan           enable undefined behaviour sanitizer'
-   printf "%s\n" '  --firmwarepath=VALUES    search PATH for firmware files [share/qemu-'
-   printf "%s\n" '                           firmware]'
--  printf "%s\n" '  --gdb=VALUE              Path to GDB'
-   printf "%s\n" '  --iasl=VALUE             Path to ACPI disassembler'
-   printf "%s\n" '  --includedir=VALUE       Header file directory [include]'
-   printf "%s\n" '  --interp-prefix=VALUE    where to find shared libraries etc., use %M for'
+ /**
+  * gdb_build_stop_packet() - craft the stop packet
++ * @buf: GString buffer for building the packet
+  * @cs: CPUState
++ *
++ * Craft the Stop/Reply packet when we halt.
+  */
+ 
+-void gdb_build_stop_packet(CPUState *cs);
++void gdb_build_stop_packet(GString *buf, CPUState *cs);
+ 
+ #endif /* GDBSTUB_INTERNALS_H */
+diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+index c82fb5ad324..b45eb7c7b2b 100644
+--- a/gdbstub/gdbstub.c
++++ b/gdbstub/gdbstub.c
+@@ -1432,7 +1432,7 @@ static void handle_v_attach(GArray *params, void *user_ctx)
+         gdbserver_state.c_cpu = cpu;
+ 
+         if (gdbserver_state.allow_stop_reply) {
+-            gdb_build_stop_packet(cpu);
++            gdb_build_stop_packet(gdbserver_state.str_buf, cpu);
+             gdbserver_state.allow_stop_reply = false;
+         }
+     }
+@@ -2036,7 +2036,7 @@ static void handle_gen_set(GArray *params, void *user_ctx)
+ static void handle_target_halt(GArray *params, void *user_ctx)
+ {
+     if (gdbserver_state.allow_stop_reply) {
+-        gdb_build_stop_packet(gdbserver_state.c_cpu);
++        gdb_build_stop_packet(gdbserver_state.str_buf, gdbserver_state.c_cpu);
+         gdbserver_state.allow_stop_reply = false;
+         gdb_put_strbuf();
+     }
+diff --git a/gdbstub/system.c b/gdbstub/system.c
+index 6963c930b01..8ec8b7ea336 100644
+--- a/gdbstub/system.c
++++ b/gdbstub/system.c
+@@ -668,8 +668,8 @@ void gdb_breakpoint_remove_all(CPUState *cs)
+  *   T05core:{id};
+  */
+ 
+-void gdb_build_stop_packet(CPUState *cs)
++void gdb_build_stop_packet(GString *buf, CPUState *cs)
+ {
+-    g_string_printf(gdbserver_state.str_buf,
++    g_string_printf(buf,
+                     "T%02xcore:%02x;", GDB_SIGNAL_TRAP, gdb_get_cpu_index(cs));
+ }
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index c7a3ef947ed..a16f37616b1 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -976,9 +976,9 @@ void gdb_handle_query_xfer_siginfo(GArray *params, void *user_ctx)
+  *   T05thread:{id};
+  */
+ 
+-void gdb_build_stop_packet(CPUState *cs)
++void gdb_build_stop_packet(GString *buf, CPUState *cs)
+ {
+-    g_string_printf(gdbserver_state.str_buf, "T%02xthread:", GDB_SIGNAL_TRAP);
+-    gdb_append_thread_id(cs, gdbserver_state.str_buf);
+-    g_string_append_c(gdbserver_state.str_buf, ';');
++    g_string_printf(buf, "T%02xthread:", GDB_SIGNAL_TRAP);
++    gdb_append_thread_id(cs, buf);
++    g_string_append_c(buf, ';');
+ }
 -- 
 2.47.3
 

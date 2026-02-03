@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 931F0E83063
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 015B8E8305F
 	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 08:55:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnC9f-0004l0-7a; Tue, 03 Feb 2026 03:53:03 -0500
+	id 1vnCB8-0006hz-5A; Tue, 03 Feb 2026 03:54:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vnC9c-0004gh-U9; Tue, 03 Feb 2026 03:53:01 -0500
+ id 1vnCAi-0005Rf-3u; Tue, 03 Feb 2026 03:54:11 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vnC9b-0002qU-IX; Tue, 03 Feb 2026 03:53:00 -0500
+ id 1vnCAf-0003Po-F1; Tue, 03 Feb 2026 03:54:07 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 3 Feb
- 2026 16:52:32 +0800
+ 2026 16:52:38 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 3 Feb 2026 16:52:32 +0800
+ Transport; Tue, 3 Feb 2026 16:52:38 +0800
 To: <komlodi@google.com>, <nabihestefan@google.com>, Paolo Bonzini
  <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Steven Lee
@@ -36,10 +36,10 @@ To: <komlodi@google.com>, <nabihestefan@google.com>, Paolo Bonzini
  patches CC here" <qemu-devel@nongnu.org>, "open list:ARM TCG CPUs"
  <qemu-arm@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <kane_chen@aspeedtech.com>, Patrick Venture <venture@google.com>
-Subject: [PATCH v2 07/20] hw/i3c/aspeed_i3c: Add register RO field masks
-Date: Tue, 3 Feb 2026 16:52:07 +0800
-Message-ID: <20260203085229.1543287-8-jamin_lin@aspeedtech.com>
+ <kane_chen@aspeedtech.com>
+Subject: [PATCH v2 18/20] hw/arm/aspeed: Build with I3C_DEVICES
+Date: Tue, 3 Feb 2026 16:52:18 +0800
+Message-ID: <20260203085229.1543287-19-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260203085229.1543287-1-jamin_lin@aspeedtech.com>
 References: <20260203085229.1543287-1-jamin_lin@aspeedtech.com>
@@ -73,50 +73,26 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Joe Komlodi <komlodi@google.com>
 
-Adds read-only register masks for the Aspeed I3C controller registers.
+Allows us to attach the mock I3C target
 
 Signed-off-by: Joe Komlodi <komlodi@google.com>
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-
-Reviewed-by: Patrick Venture <venture@google.com>
+Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/i3c/aspeed_i3c.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ hw/arm/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/i3c/aspeed_i3c.c b/hw/i3c/aspeed_i3c.c
-index f0352aaca0..bb41493c55 100644
---- a/hw/i3c/aspeed_i3c.c
-+++ b/hw/i3c/aspeed_i3c.c
-@@ -74,6 +74,21 @@ REG32(I3C6_REG1, 0x64)
-     FIELD(I3C6_REG1, SA_EN,         15, 1)
-     FIELD(I3C6_REG1, INST_ID,       16, 4)
- 
-+static const uint32_t ast2600_i3c_controller_ro[ASPEED_I3C_NR_REGS] = {
-+    [R_I3C1_REG0]                   = 0xcc000000,
-+    [R_I3C1_REG1]                   = 0xfff00000,
-+    [R_I3C2_REG0]                   = 0xcc000000,
-+    [R_I3C2_REG1]                   = 0xfff00000,
-+    [R_I3C3_REG0]                   = 0xcc000000,
-+    [R_I3C3_REG1]                   = 0xfff00000,
-+    [R_I3C4_REG0]                   = 0xcc000000,
-+    [R_I3C4_REG1]                   = 0xfff00000,
-+    [R_I3C5_REG0]                   = 0xcc000000,
-+    [R_I3C5_REG1]                   = 0xfff00000,
-+    [R_I3C6_REG0]                   = 0xcc000000,
-+    [R_I3C6_REG1]                   = 0xfff00000,
-+};
-+
- static uint64_t aspeed_i3c_read(void *opaque, hwaddr addr, unsigned int size)
- {
-     AspeedI3CState *s = ASPEED_I3C(opaque);
-@@ -97,6 +112,7 @@ static void aspeed_i3c_write(void *opaque,
- 
-     addr >>= 2;
- 
-+    data &= ~ast2600_i3c_controller_ro[addr];
-     /* I3C controller register */
-     switch (addr) {
-     case R_I3C1_REG1:
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index ffdb293919..fefb2b9b33 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -547,6 +547,7 @@ config ASPEED_SOC
+     select I2C
+     select I3C
+     select DW_I3C
++    select I3C_DEVICES
+     select DPS310
+     select PCA9552
+     select PCA9554
 -- 
 2.43.0
 

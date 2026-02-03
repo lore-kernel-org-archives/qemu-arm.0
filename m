@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D253E7C712
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 11:54:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79F08E7FDD6
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 11:54:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnExO-0008ED-HV; Tue, 03 Feb 2026 06:52:34 -0500
+	id 1vnExQ-0008F9-3x; Tue, 03 Feb 2026 06:52:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vnEx4-0007yi-Uf
- for qemu-arm@nongnu.org; Tue, 03 Feb 2026 06:52:15 -0500
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543])
+ id 1vnEx2-0007v9-PK
+ for qemu-arm@nongnu.org; Tue, 03 Feb 2026 06:52:12 -0500
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vnEx2-0005AF-9Y
- for qemu-arm@nongnu.org; Tue, 03 Feb 2026 06:52:14 -0500
-Received: by mail-ed1-x543.google.com with SMTP id
- 4fb4d7f45d1cf-65832e566edso7539359a12.2
- for <qemu-arm@nongnu.org>; Tue, 03 Feb 2026 03:52:10 -0800 (PST)
+ id 1vnEx0-00059P-6m
+ for qemu-arm@nongnu.org; Tue, 03 Feb 2026 06:52:12 -0500
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-653780e9eb3so7516165a12.1
+ for <qemu-arm@nongnu.org>; Tue, 03 Feb 2026 03:52:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1770119529; x=1770724329; darn=nongnu.org;
+ d=linaro.org; s=google; t=1770119528; x=1770724328; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Joeyp3Wt8eRfhFTETp2dv+O0vYWQ3id566kC7NlCTjk=;
- b=Tw+1LvwBa6J9UZYBsXwnKlUb5tcuukmDIkDMbS0YgEj1T0FYUv7XIhvVwaxwD7Oqu8
- zrQp0xPIGlrWqG6uuTYfzoe6Dd7E1hMSvP4ltCRR7vsa8B4gyjrLQ2cB0qtfcqjBueeP
- 2T/QJQY3yAV3b2xk1VaTuXaChFeyPNAic1Ii4kdlcvFOjjBuS+MQcEW9Q6yv2Idohzw9
- EvWgCSyUCQg53I74TCmedh3A3M/M7V1POvMxz72naHbK23acs+OzxsuU3mq7n98cevHj
- I5EPilShMAHdouzESUiB1lzF2ek3SEqF/rXFZGKI/J/auPywAb9ogop53FejeGcJXyuw
- qbYQ==
+ bh=XSrliXOCATefwQIn64R/qg8IArPF/GMhbm/SYSQ7GEc=;
+ b=tzrpDTIh4P5p9GJ5JX4dHf0q5vkIxo3w354uoJ9adIX/lh7vrDVxtP1Q6+hLcdaCpC
+ 0IzVV8H1aNgUuBYAhydm97zeMqTzVwddrNQIKeT9RpsIOEPxOYW+lFuJJGSg+FqDHqdW
+ n9VBIpQ0IHYV9T3K4Lk+NZ7pxi63j0z9KbFT+Xr1lUvRvxm08YACPszMNwAf/VL25C/S
+ dUhgXWp0jfEMIkaa3zUelnJHmOK+Qz8bHbVx1Fno6Q8pgtX+drd/oIowrs0DbxcUJnTb
+ sob6HsQ4NpjgYz0YgFjEF3mi6wICz0W3LI3YKKY8PV3Q3l6T3BzfCPkyKiEkZTmto1/b
+ vJLA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770119529; x=1770724329;
+ d=1e100.net; s=20230601; t=1770119528; x=1770724328;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Joeyp3Wt8eRfhFTETp2dv+O0vYWQ3id566kC7NlCTjk=;
- b=PLAjxPoAGQiNdO85P0dmKYTe0uidiiOtNWtCY4VDC8l+CJBjSdZfSc5/QBjkYKcWjJ
- B9qzP18OA/4n3CkEhGuzTpIOxHbxUQkIlv6NG1mOW8UEszJW/23YZLi4kjN0Sw268e9L
- ni03Qfr1EInOUdprGT6hRpN52p2Vzkd4sVRfZnaYrURYesxDCRUBQVGeO0zjwTZfo0Q1
- DVV9LG0mokzQ6qerufg5YJId9fQpkHS5nZcL13OsKLlZoQxX2uC+s9NwfCFKZafnbvO1
- 3wNSJF3FqnOAj/QVGE7+4ChvYhAaEy5lX3JkgsdFWeX55VBDkkysyAuN/TTCycF/JqdG
- 0rJw==
+ bh=XSrliXOCATefwQIn64R/qg8IArPF/GMhbm/SYSQ7GEc=;
+ b=hsnkqHbPxlgnr+sJkezf6PfeCqHQ0UID5nDwDq+SCbX+Nm78KG17AeHBO9shapS09L
+ jqM3p4s3unkNRhFZHmpYs23MNTcj1AMc+cYRRcieckvtWy5W82dSYiMOIvClkFCT6M7f
+ zdbZ2q8P2z4vR7z7qis7yGBGZFTz0GBhZrE5bTi9U7yiEdmFTIq9EL8Bb6p3qZcdAKa6
+ pzR2RXUZT2bf7W0pwaPz1myJXouKCJFZ6Z99+ED5j4DDHx7EpyrfHU3ST6FnfGJcYglT
+ BwCQKhjB0QWxcWUmRslsrI+UJjHyQ8H1joeZZPEeJ1Q6/dFKnC35fGBOKGmNscRTzg38
+ f59A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUEufhJjcCbf/OMSk/58MltBKFVXu1riMVBWWahZSqYgGS/EobwJjUIHOVT2Gz6hWb8FapMYRcSWQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxZe6j65gC//N531GF43eKaF0GtE0AM8u2N+wUaAfWb6jIxOOQT
- x7ZPzCPmkFz1U7GXbqM/pmipNr/xVonBZXYcpt5jU1vp8ZfsfNU7XGhvQyZ/yw3ENbk=
-X-Gm-Gg: AZuq6aIwVUixluY3M3tVtC4f06sHChXwKKUi5gqGUxNRGm2dk+4THvhiRRzRKX0FGAq
- iDWLChS0Lt6/76ju3Mxxd9TdoSRkzjHixDD3tCXApPMHhNWEILoYTHpQuNxHYU14NfM9L0V1z7f
- CfpkSY19cUs+QiYEj/6Bis3W1+oEOVrtt5oXWY/cusGDbEw5J3/EFLDcj/Vayxx+gvt71IiUBUp
- JrHBv182w9FaGSYoedrN+BVSK5GU29fD4yN1/phcKeXZt7BvMJeqkxky2QDbTYr+xDl8TCrCXiP
- gw2JEG8VtodAUjk5poOZEB0pw8wXqAdLlggmS+wuNbg6NSd1MWyMW+Qn0XrGYpXOgehEy17Id81
- +l+OloX2HkANWvtFjH4lawUk2fmpQ4RWZdmiQQu+KQll3HzwQSffZFk2ZJGSYL2gfI4rmrz7edg
- D3+zLCTrkAya4=
-X-Received: by 2002:a17:906:7308:b0:b8a:f225:ede1 with SMTP id
- a640c23a62f3a-b8dff72c615mr978091366b.41.1770119529252; 
- Tue, 03 Feb 2026 03:52:09 -0800 (PST)
+ AJvYcCU8GTM1pbHJS93vxd4C6Pp1v0AmoR6kfDV2dsKKn7y84pWv49mfk/S9ZXDeg0Ip6Du8qBsQM/TXgQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yxlw7kQwjcFLJikGHTB40X3cSlSJmSCaAccBFqiS/vgkZ9QC6de
+ ylKCEXjhHYbFN/zM+hmlG/b8P8OGJi9JLXMamV3kA9edD2duT1FolUaX2tGdWyVbcl4=
+X-Gm-Gg: AZuq6aIws0w5KG0YYlcO1zYrBPtfghK8Szo2/gvIAwsybXOEG6c/Fx3qLL19j/20Cl9
+ qsDf1g/QJGJej4IucnloiRwlUsy+UtmEXMRINnJF7YLVloWkJXsCs8FjLaPiJ2LJtDHfnaANawr
+ U1QbbMxuMvTdwlhh76YFnHtz5ZA3oTuXJyFleYxlxdzjGlYlccWTnSy2iOWR5s3VvP5dG95YHID
+ NPBpWvAV0GS2rTpsSGM9TEmTrm4/tIDZqf76z4FRRzCJzzH2EKXn7YmMzIpNJyvct+WrKBGh/iN
+ dEw6GPFPh56T9EAgMCq7F6TajRgmo4PUSwwZ6egg5DPLkZu9JuMqg7FIr9l6vtfBgDAO8wNSaA5
+ PCYohjHUiOlvOcrde+mAeEkpWuat058CO0bPmyHv8bvyYncIL+4dzrZXrjAa35SQuxxPaKtpEGo
+ HZIsoMWNQxIEkAZLu35AmV7Q==
+X-Received: by 2002:a17:907:70c:b0:b8a:fa35:989f with SMTP id
+ a640c23a62f3a-b8dff696c1amr916446166b.38.1770119527895; 
+ Tue, 03 Feb 2026 03:52:07 -0800 (PST)
 Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b8dbf1baa42sm1032887166b.46.2026.02.03.03.52.04
+ a640c23a62f3a-b8dbf184e5dsm1040894866b.43.2026.02.03.03.52.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Tue, 03 Feb 2026 03:52:07 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id D17B0602F5;
+ by draig.lan (Postfix) with ESMTP id 8407060072;
  Tue, 03 Feb 2026 11:52:02 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -87,19 +87,18 @@ Cc: John Snow <jsnow@redhat.com>,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
  David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Yodel Eldar <yodel.eldar@yodel.dev>
-Subject: [PATCH 08/11] gdbstub: Export host_to_gdb_errno File-I/O helper
- function
-Date: Tue,  3 Feb 2026 11:51:58 +0000
-Message-ID: <20260203115201.2387721-9-alex.bennee@linaro.org>
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH 05/11] gdbstub/user: localise variables for reading gdb socket
+Date: Tue,  3 Feb 2026 11:51:55 +0000
+Message-ID: <20260203115201.2387721-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260203115201.2387721-1-alex.bennee@linaro.org>
 References: <20260203115201.2387721-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::543;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x543.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,132 +121,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Yodel Eldar <yodel.eldar@yodel.dev>
+Keep things tidy by moving the declarations to the block where they
+are used.
 
-Move host_to_gdb_errno from target/m68k/m68k-semi.c to
-gdbstub/syscalls.c. Declare it in include/gdbstub/syscalls.h.
-
-Add both newly added GDB File-I/O supported errno values, EIO and
-ENOSYS, to the mapping.
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Yodel Eldar <yodel.eldar@yodel.dev>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-ID: <20260116014612.226183-3-yodel.eldar@yodel.dev>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- include/gdbstub/syscalls.h |  9 +++++++++
- gdbstub/syscalls.c         | 36 ++++++++++++++++++++++++++++++++++++
- target/m68k/m68k-semi.c    | 29 -----------------------------
- 3 files changed, 45 insertions(+), 29 deletions(-)
+ gdbstub/user.c | 10 +++-------
+ 1 file changed, 3 insertions(+), 7 deletions(-)
 
-diff --git a/include/gdbstub/syscalls.h b/include/gdbstub/syscalls.h
-index 6200416f77a..a09559128b1 100644
---- a/include/gdbstub/syscalls.h
-+++ b/include/gdbstub/syscalls.h
-@@ -102,6 +102,15 @@ void gdb_do_syscall(gdb_syscall_complete_cb cb, const char *fmt, ...);
-  */
- int use_gdb_syscalls(void);
- 
-+/**
-+ * host_to_gdb_errno: convert host errno to GDB errno value
-+ * @err: errno from host
-+ *
-+ * Given an error number from the host, this helper function returns
-+ * its GDB File-I/O specified representation.
-+ */
-+int host_to_gdb_errno(int err);
-+
- /**
-  * gdb_exit: exit gdb session, reporting inferior status
-  * @code: exit code reported
-diff --git a/gdbstub/syscalls.c b/gdbstub/syscalls.c
-index d8bb90cc1c7..15050984a04 100644
---- a/gdbstub/syscalls.c
-+++ b/gdbstub/syscalls.c
-@@ -145,6 +145,42 @@ void gdb_do_syscall(gdb_syscall_complete_cb cb, const char *fmt, ...)
-     gdb_syscall_handling(gdbserver_syscall_state.syscall_buf);
- }
- 
-+/*
-+ * Map host error numbers to their GDB protocol counterparts.
-+ * For the list of GDB File-I/O supported error numbers, please consult:
-+ * https://sourceware.org/gdb/current/onlinedocs/gdb.html/Errno-Values.html
-+ */
-+int host_to_gdb_errno(int err)
-+{
-+#define E(X)  case E##X: return GDB_E##X
-+    switch (err) {
-+    E(PERM);
-+    E(NOENT);
-+    E(INTR);
-+    E(IO);
-+    E(BADF);
-+    E(ACCES);
-+    E(FAULT);
-+    E(BUSY);
-+    E(EXIST);
-+    E(NODEV);
-+    E(NOTDIR);
-+    E(ISDIR);
-+    E(INVAL);
-+    E(NFILE);
-+    E(MFILE);
-+    E(FBIG);
-+    E(NOSPC);
-+    E(SPIPE);
-+    E(ROFS);
-+    E(NOSYS);
-+    E(NAMETOOLONG);
-+    default:
-+        return GDB_EUNKNOWN;
-+    }
-+#undef E
-+}
-+
- /*
-  * GDB Command Handlers
-  */
-diff --git a/target/m68k/m68k-semi.c b/target/m68k/m68k-semi.c
-index 578a08dfee8..bdc798a28cb 100644
---- a/target/m68k/m68k-semi.c
-+++ b/target/m68k/m68k-semi.c
-@@ -46,35 +46,6 @@
- #define HOSTED_ISATTY 12
- #define HOSTED_SYSTEM 13
- 
--static int host_to_gdb_errno(int err)
--{
--#define E(X)  case E##X: return GDB_E##X
--    switch (err) {
--    E(PERM);
--    E(NOENT);
--    E(INTR);
--    E(BADF);
--    E(ACCES);
--    E(FAULT);
--    E(BUSY);
--    E(EXIST);
--    E(NODEV);
--    E(NOTDIR);
--    E(ISDIR);
--    E(INVAL);
--    E(NFILE);
--    E(MFILE);
--    E(FBIG);
--    E(NOSPC);
--    E(SPIPE);
--    E(ROFS);
--    E(NAMETOOLONG);
--    default:
--        return GDB_EUNKNOWN;
--    }
--#undef E
--}
--
- static void m68k_semi_u32_cb(CPUState *cs, uint64_t ret, int err)
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index cc71cda3e33..c7a3ef947ed 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -198,9 +198,6 @@ void gdb_qemu_exit(int code)
+ int gdb_handlesig(CPUState *cpu, int sig, const char *reason, void *siginfo,
+                   int siginfo_len)
  {
-     CPUM68KState *env = cpu_env(cs);
+-    char buf[256];
+-    int n;
+-
+     if (!gdbserver_state.init || gdbserver_user_state.fd < 0) {
+         return sig;
+     }
+@@ -246,11 +243,10 @@ int gdb_handlesig(CPUState *cpu, int sig, const char *reason, void *siginfo,
+     gdbserver_state.state = RS_IDLE;
+     gdbserver_user_state.running_state = 0;
+     while (gdbserver_user_state.running_state == 0) {
+-        n = read(gdbserver_user_state.fd, buf, 256);
++        char buf[256];
++        int n = read(gdbserver_user_state.fd, buf, 256);
+         if (n > 0) {
+-            int i;
+-
+-            for (i = 0; i < n; i++) {
++            for (int i = 0; i < n; i++) {
+                 gdb_read_byte(buf[i]);
+             }
+         } else {
 -- 
 2.47.3
 

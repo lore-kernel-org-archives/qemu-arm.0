@@ -4,27 +4,27 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1638E7C712
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 02:10:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EC69E7C712
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 02:10:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vn5r5-0002aJ-QT; Mon, 02 Feb 2026 21:09:27 -0500
+	id 1vn5qw-0002XG-Vw; Mon, 02 Feb 2026 21:09:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vn5r4-0002a3-Nj; Mon, 02 Feb 2026 21:09:26 -0500
+ id 1vn5qv-0002WG-Iu; Mon, 02 Feb 2026 21:09:17 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1vn5r3-0006uM-En; Mon, 02 Feb 2026 21:09:26 -0500
+ id 1vn5qu-0006uM-11; Mon, 02 Feb 2026 21:09:17 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1748.10; Tue, 3 Feb
- 2026 10:08:58 +0800
+ 2026 10:08:57 +0800
 Received: from mail.aspeedtech.com (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1748.10 via Frontend
- Transport; Tue, 3 Feb 2026 10:08:58 +0800
+ Transport; Tue, 3 Feb 2026 10:08:57 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -33,10 +33,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <kane_chen@aspeedtech.com>
-Subject: [PATCH v2 8/8] docs/system/arm/aspeed: Load raw U-Boot image in
- AST2700 boot example
-Date: Tue, 3 Feb 2026 10:08:53 +0800
-Message-ID: <20260203020855.1642884-9-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 4/8] hw/i2c/aspeed_i2c: Fix DMA moving data into incorrect
+ address
+Date: Tue, 3 Feb 2026 10:08:49 +0800
+Message-ID: <20260203020855.1642884-5-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260203020855.1642884-1-jamin_lin@aspeedtech.com>
 References: <20260203020855.1642884-1-jamin_lin@aspeedtech.com>
@@ -68,45 +68,198 @@ From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Recent SDK versions no longer provide a U-Boot FIT image, and U-Boot is
-now built as a single raw binary. Update the documentation to load the
-raw u-boot.bin image directly.
+In the previous design, the I2C model updated dma_dram_offset only when
+firmware programmed the RX/TX DMA buffer address registers. The firmware
+used to rewrite these registers before issuing each DMA command.
+
+The firmware driver behavior has changed to program the DMA address
+registers only once during I2C initialization. As a result, the I2C model
+no longer refreshes dma_dram_offset, causing DMA to move data into an
+incorrect DRAM address.
+
+Fix this by introducing helper functions to update dma_dram_offset from
+the DMA address registers, and invoke them right before handling TX/RX
+DMA operations. This guarantees DMA always uses the correct buffer
+address even if the registers are programmed only once.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Fixes: c400c38854017eeccda63115814eba4c3ef2b51f ("hw/i2c/aspeed: Introduce a new dma_dram_offset attribute in AspeedI2Cbus")
 ---
- docs/system/arm/aspeed.rst | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+ hw/i2c/aspeed_i2c.c | 87 +++++++++++++++++++++++++++++++--------------
+ 1 file changed, 61 insertions(+), 26 deletions(-)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 97e14b7d33..d0054a7dbb 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -350,11 +350,9 @@ corresponds to the BL31 image load address.
- .. code-block:: bash
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 1ee73a8f5e..fb3d6a5600 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -116,8 +116,6 @@ static uint64_t aspeed_i2c_bus_old_read(AspeedI2CBus *bus, hwaddr offset,
+             value = -1;
+             break;
+         }
+-
+-        value = extract64(bus->dma_dram_offset, 0, 32);
+         break;
+     case A_I2CD_DMA_LEN:
+         if (!aic->has_dma) {
+@@ -221,6 +219,64 @@ static uint8_t aspeed_i2c_get_state(AspeedI2CBus *bus)
+     return SHARED_ARRAY_FIELD_EX32(bus->regs, R_I2CD_CMD, TX_STATE);
+ }
  
-   IMGDIR=ast2700-default
--  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
++/*
++ * The AST2700 support the maximum DRAM size is 8 GB.
++ * The DRAM offset range is from 0x0_0000_0000 to
++ * 0x1_FFFF_FFFF and it is enough to use bits [33:0]
++ * saving the dram offset.
++ * Therefore, save the high part physical address bit[1:0]
++ * of Tx/Rx buffer address as dma_dram_offset bit[33:32].
++ */
++static void aspeed_i2c_set_tx_dma_dram_offset(AspeedI2CBus *bus)
++{
++    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
++    uint32_t value;
++
++    assert(aic->has_dma);
++
++    if (aspeed_i2c_is_new_mode(bus->controller)) {
++        value = bus->regs[R_I2CM_DMA_TX_ADDR];
++        bus->dma_dram_offset =
++            deposit64(bus->dma_dram_offset, 0, 32,
++                      FIELD_EX32(value, I2CM_DMA_TX_ADDR, ADDR));
++        if (!aic->has_dma64) {
++            value = bus->regs[R_I2CM_DMA_TX_ADDR_HI];
++            bus->dma_dram_offset =
++                deposit64(bus->dma_dram_offset, 32, 32,
++                          extract32(value, 0, 2));
++        }
++    } else {
++        value = bus->regs[R_I2CD_DMA_ADDR];
++        bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 0, 32,
++                                         value & 0x3ffffffc);
++    }
++}
++
++static void aspeed_i2c_set_rx_dma_dram_offset(AspeedI2CBus *bus)
++{
++    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
++    uint32_t value;
++
++    assert(aic->has_dma);
++
++    if (aspeed_i2c_is_new_mode(bus->controller)) {
++        value = bus->regs[R_I2CM_DMA_RX_ADDR];
++        bus->dma_dram_offset =
++            deposit64(bus->dma_dram_offset, 0, 32,
++                      FIELD_EX32(value, I2CM_DMA_RX_ADDR, ADDR));
++        if (!aic->has_dma64) {
++            value = bus->regs[R_I2CM_DMA_RX_ADDR_HI];
++            bus->dma_dram_offset =
++                deposit64(bus->dma_dram_offset, 32, 32,
++                          extract32(value, 0, 2));
++        }
++    } else {
++        value = bus->regs[R_I2CD_DMA_ADDR];
++        bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 0, 32,
++                                         value & 0x3ffffffc);
++    }
++}
++
+ static int aspeed_i2c_dma_read(AspeedI2CBus *bus, uint8_t *data)
+ {
+     MemTxResult result;
+@@ -270,6 +326,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus)
+         if (aspeed_i2c_is_new_mode(bus->controller)) {
+             ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN_STS, TX_LEN, 0);
+         }
++        aspeed_i2c_set_tx_dma_dram_offset(bus);
+         while (bus->regs[reg_dma_len]) {
+             uint8_t data;
+             ret = aspeed_i2c_dma_read(bus, &data);
+@@ -335,6 +392,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+             ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN_STS, RX_LEN, 0);
+         }
  
-   $ qemu-system-aarch64 -M ast2700-evb \
--       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
--       -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
-+       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot.bin \
-        -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
-        -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
-        -device loader,cpu-num=0,addr=0x430000000 \
-@@ -409,11 +407,9 @@ Steps to boot the AST2700fc machine:
- .. code-block:: bash
++        aspeed_i2c_set_rx_dma_dram_offset(bus);
+         while (bus->regs[reg_dma_len]) {
+             MemTxResult result;
  
-   IMGDIR=ast2700-default
--  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
+@@ -401,6 +459,7 @@ static uint8_t aspeed_i2c_get_addr(AspeedI2CBus *bus)
+     } else if (SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, TX_DMA_EN)) {
+         uint8_t data;
  
-   $ qemu-system-aarch64 -M ast2700fc \
--       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
--       -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
-+       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot.bin \
-        -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
-        -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/optee/tee-raw.bin \
-        -device loader,cpu-num=0,addr=0x430000000 \
++        aspeed_i2c_set_tx_dma_dram_offset(bus);
+         aspeed_i2c_dma_read(bus, &data);
+         return data;
+     } else {
+@@ -657,16 +716,10 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+     case A_I2CM_DMA_TX_ADDR:
+         bus->regs[R_I2CM_DMA_TX_ADDR] = FIELD_EX32(value, I2CM_DMA_TX_ADDR,
+                                                    ADDR);
+-        bus->dma_dram_offset =
+-            deposit64(bus->dma_dram_offset, 0, 32,
+-                      FIELD_EX32(value, I2CM_DMA_TX_ADDR, ADDR));
+         break;
+     case A_I2CM_DMA_RX_ADDR:
+         bus->regs[R_I2CM_DMA_RX_ADDR] = FIELD_EX32(value, I2CM_DMA_RX_ADDR,
+                                                    ADDR);
+-        bus->dma_dram_offset =
+-            deposit64(bus->dma_dram_offset, 0, 32,
+-                      FIELD_EX32(value, I2CM_DMA_RX_ADDR, ADDR));
+         break;
+     case A_I2CM_DMA_LEN:
+         w1t = FIELD_EX32(value, I2CM_DMA_LEN, RX_BUF_LEN_W1T) ||
+@@ -748,15 +801,6 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+         qemu_log_mask(LOG_UNIMP, "%s: Slave mode DMA TX is not implemented\n",
+                       __func__);
+         break;
+-
+-    /*
+-     * The AST2700 support the maximum DRAM size is 8 GB.
+-     * The DRAM offset range is from 0x0_0000_0000 to
+-     * 0x1_FFFF_FFFF and it is enough to use bits [33:0]
+-     * saving the dram offset.
+-     * Therefore, save the high part physical address bit[1:0]
+-     * of Tx/Rx buffer address as dma_dram_offset bit[33:32].
+-     */
+     case A_I2CM_DMA_TX_ADDR_HI:
+         if (!aic->has_dma64) {
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA 64 bits support\n",
+@@ -766,8 +810,6 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+         bus->regs[R_I2CM_DMA_TX_ADDR_HI] = FIELD_EX32(value,
+                                                       I2CM_DMA_TX_ADDR_HI,
+                                                       ADDR_HI);
+-        bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 32, 32,
+-                                         extract32(value, 0, 2));
+         break;
+     case A_I2CM_DMA_RX_ADDR_HI:
+         if (!aic->has_dma64) {
+@@ -778,8 +820,6 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+         bus->regs[R_I2CM_DMA_RX_ADDR_HI] = FIELD_EX32(value,
+                                                       I2CM_DMA_RX_ADDR_HI,
+                                                       ADDR_HI);
+-        bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 32, 32,
+-                                         extract32(value, 0, 2));
+         break;
+     case A_I2CS_DMA_TX_ADDR_HI:
+         qemu_log_mask(LOG_UNIMP,
+@@ -795,8 +835,6 @@ static void aspeed_i2c_bus_new_write(AspeedI2CBus *bus, hwaddr offset,
+         bus->regs[R_I2CS_DMA_RX_ADDR_HI] = FIELD_EX32(value,
+                                                       I2CS_DMA_RX_ADDR_HI,
+                                                       ADDR_HI);
+-        bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 32, 32,
+-                                         extract32(value, 0, 2));
+         break;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\n",
+@@ -887,9 +925,6 @@ static void aspeed_i2c_bus_old_write(AspeedI2CBus *bus, hwaddr offset,
+             qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  __func__);
+             break;
+         }
+-
+-        bus->dma_dram_offset = deposit64(bus->dma_dram_offset, 0, 32,
+-                                         value & 0x3ffffffc);
+         break;
+ 
+     case A_I2CD_DMA_LEN:
 -- 
 2.43.0
 

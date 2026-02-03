@@ -4,103 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A120BE87848
-	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 16:27:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EB2AE87850
+	for <qemu-arm@archiver.kernel.org>; Tue,  3 Feb 2026 17:32:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnJFf-0000nG-14; Tue, 03 Feb 2026 11:27:43 -0500
+	id 1vnKGX-0003Yr-R5; Tue, 03 Feb 2026 12:32:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vnJFa-0000bS-DS
- for qemu-arm@nongnu.org; Tue, 03 Feb 2026 11:27:40 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vnKGC-0003U2-3D
+ for qemu-arm@nongnu.org; Tue, 03 Feb 2026 12:32:21 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vnJFN-0003Aa-Tk
- for qemu-arm@nongnu.org; Tue, 03 Feb 2026 11:27:37 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vnKG6-0007T4-2s
+ for qemu-arm@nongnu.org; Tue, 03 Feb 2026 12:32:18 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770136038;
+ s=mimecast20190719; t=1770139929;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=02EQFrh+B2y546oa54/YtDjTf0VTVuxTGdnclVcFeeU=;
- b=dthMKwqk+y/BM3pgjA/W04KTyYdx9hDqkwKisa+aayxJu/8uuHDFUI73+eLa8lC+4aEP7+
- Xzx/Y2jF20NZlWMhwfMRXAyblBJU7u4mqTlR3VsuvuIbfaFMGwCDF3RPN4f8qGmuwcZdim
- 4I0IePt5L+uAW6eYajJtdP3jBMLKm1c=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=nV1QEexHhULTt9lndN8UjP2uphSwtHjKv3xbuHKA1OU=;
+ b=R94BWuFYNy60bURXlU28sgmniv3Lpy2dz2RfO8AFr5LtJ3GMq8NN+L3Ym+AgEqtTq6wOb6
+ UVS1lLiMtNSWP1+R2px4EXOZmpfVycL0tRWJIx4ly/xcsk7iatRE2kGuG2iOnQXj53qNhB
+ 6p5UuM0AwMOdI3vvUklN8JUb5rO7P7o=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-30-POxudZ6HMrO7ySLavPra3A-1; Tue, 03 Feb 2026 11:27:12 -0500
-X-MC-Unique: POxudZ6HMrO7ySLavPra3A-1
-X-Mimecast-MFC-AGG-ID: POxudZ6HMrO7ySLavPra3A_1770136031
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-42fdbba545fso841212f8f.0
- for <qemu-arm@nongnu.org>; Tue, 03 Feb 2026 08:27:12 -0800 (PST)
+ us-mta-647-3P4extfFP8-po83UjBuW6Q-1; Tue, 03 Feb 2026 12:32:07 -0500
+X-MC-Unique: 3P4extfFP8-po83UjBuW6Q-1
+X-Mimecast-MFC-AGG-ID: 3P4extfFP8-po83UjBuW6Q_1770139927
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-4830e7c6131so2541505e9.2
+ for <qemu-arm@nongnu.org>; Tue, 03 Feb 2026 09:32:07 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770136031; x=1770740831;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=02EQFrh+B2y546oa54/YtDjTf0VTVuxTGdnclVcFeeU=;
- b=uy1nVR54sdUmnC33FeuMNZ7a5fV/ymD6+/5L7CtXTtmdU1XwGA9pDQiaCqSrt8LHr7
- jncv6i1PmVJ9/AnUXLjeiwqscJGWvI7vT5QIIvo3fp/9rBRMv81IJJFvEYXYLZzO3zoL
- lXg3p4OKxmd0pi+So4tz87DgyyrEymXC2v1byP6XQ7j2l0+3NJh5th2hmVkW3lSL/WiK
- E/xSw9u139bfh33kuy4ON49ZI440uPyUVTAjsYkn4w8OLZy7X9VnGIH8ooKeRerqVnDI
- PKk23vwmqr9AYepmD6oGnImfUSSGgOL5wYVNmjtiWu4PEaVunVCNNlIwCpc2W4/g7nCn
- ITCA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVmrLuFfr3WjdGeChzAoQvQNpLLHKWEp2zXrRhtyPbWCldkK9/zBW228qQs/q+rE0V0q3RcNNAvwA==@nongnu.org
-X-Gm-Message-State: AOJu0Yw8pK1RCWnW7wjGc9Xbj1TtiXBiOVB2UrrZHo38YwLqIlynVtqx
- rNQrKdQ6Vd0gUKsiT/cYUfmBf0EXD0Xx0ht2m41ask/706LTtOXrNAi3XyFN5a42a3RZocXELWu
- 8tEvxJ1qrbLsCvFwW8UYLAkx15DqtCKHVWJ1FZwog6LDdHc8HLIZXIA==
-X-Gm-Gg: AZuq6aL9egRsnNnYp5m2MM0WP62B0kdNiGKbPBe0QnZDIiRA2Vd4RbWa0Vn0EO1U6Fr
- 7a4biZUbMRvzVSVcekj9U8sqnRBMZXcLhQiJFiiwFAIFkDEIExkIeVM+Twt/yfrglUmoHaaL6qN
- Ra2VHNvbmoKjU3RQcBCju7I+QmBFz0xaPiLUpofYHVboMMKEb4OHIgNBbVenthAuWBuqVFjV1q0
- mPDPCt6YeFxR2B9QvA2aXU233JH49l5tYe5pZQ0p9TtiHr+Seo/guPf+BkNKayyYnqnju0fycIy
- hZ5JH0hqCh194wAWyNoYjS7TTIozriGGUzTJZWOgZy5dV5jfwqFPkrzxlE5iSGn5frnUQbnfuiu
- iUn92zgtU/zDGYN9kPKqeZ2fbcpcDrVMIFQ==
-X-Received: by 2002:a05:6000:40e0:b0:435:932e:f924 with SMTP id
- ffacd0b85a97d-43617c1d4b7mr2786f8f.2.1770136030807; 
- Tue, 03 Feb 2026 08:27:10 -0800 (PST)
-X-Received: by 2002:a05:6000:40e0:b0:435:932e:f924 with SMTP id
- ffacd0b85a97d-43617c1d4b7mr2731f8f.2.1770136030271; 
- Tue, 03 Feb 2026 08:27:10 -0800 (PST)
+ d=1e100.net; s=20230601; t=1770139926; x=1770744726;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=nV1QEexHhULTt9lndN8UjP2uphSwtHjKv3xbuHKA1OU=;
+ b=BqZrejHiUMmlOktabUig8cowccdWSOgtXc6E78YzBY3fc0Kmc1YERlKCinHNGoOsK+
+ OGU0Wqnk4Cc2tBIGxp8Xe3ye9fvkqmBb4Lc94rLYlFYZ+78YKfGOszvg1OrQbFsxjLHi
+ fevnT8q+FsCPsGWPksZu/K6XHXBwsM2L2ll3KonQdZjcSulfLnJnWpLQxzVrGZPH8Wio
+ I4sCLK6eLRBC79HpwnUNLvbNGVJor+wNj1U8DbJ5+QwGpCPAMExqOgk4N/ZSUEp/jRpL
+ 4/NhZzhB31x2XjqoMZL1rVvJgDG60Uy9slyDqcBhZb6bU3fTX2mEYfscF+S2UNKz09el
+ R/Kg==
+X-Gm-Message-State: AOJu0Yyjg+AKwX8G+nWDm5IL8VqvGWa5XW6JOEZ5DFR/O/iHfqnrYOV1
+ EsC9onpkRfiHwPgWSbj06gqOwz4hH+W0F4rcyTUAdQwpbnQqTWH0Z6/Q89RSO56duC7VDyUz6TU
+ lt6khigT4+G+QB0v6uNGUalduzEKkDjuHXYE5AQg6/EKtPkMN/OW+RQ==
+X-Gm-Gg: AZuq6aI1zqab1lJ+8D/plDIHwC+wx+lHHwrXOBI7GxpxpS9bAC1To/mnzGCzcsrPB2I
+ sjC3A9DWom09Xw29bJV6HM3Od0vMke2N/W3cjpcwdY94iHDCFmZiSQi0YLGWpcGjkVSe04bpQgq
+ ztIIR47yjZxCj5B6et7TaMZdOxRs7G/+HRrGF6WovbyzCcQemSWVQwv1vbQwthAOqKXd8PAFj5v
+ 1cpHDp662fu1FzuTNWnvi2kD/bYx+/mEmeA931fGeB3m/m47jBeCMFTgQmBxA1SYED8YKiJrqaB
+ JfvX+ipkGPYyZG7q+e/9AAN7vhITFyQ6dWSl+XatKcgsUSxC9u+MFDFNtmqSmvba9BW2zjQair9
+ zUJvEgIQGe5RUUUzX6Cw8JvEE77QYsl455Q==
+X-Received: by 2002:a05:600c:3e0d:b0:46e:59bd:f7d3 with SMTP id
+ 5b1f17b1804b1-4830e96fb0cmr5089335e9.20.1770139926323; 
+ Tue, 03 Feb 2026 09:32:06 -0800 (PST)
+X-Received: by 2002:a05:600c:3e0d:b0:46e:59bd:f7d3 with SMTP id
+ 5b1f17b1804b1-4830e96fb0cmr5088945e9.20.1770139925795; 
+ Tue, 03 Feb 2026 09:32:05 -0800 (PST)
 Received: from redhat.com (IGLD-80-230-34-155.inter.net.il. [80.230.34.155])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-435e1353f8bsm49497120f8f.39.2026.02.03.08.27.08
+ 5b1f17b1804b1-4830515381esm80484405e9.11.2026.02.03.09.32.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Feb 2026 08:27:09 -0800 (PST)
-Date: Tue, 3 Feb 2026 11:27:06 -0500
+ Tue, 03 Feb 2026 09:32:05 -0800 (PST)
+Date: Tue, 3 Feb 2026 12:32:02 -0500
 From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Li Chen <me@linux.beauty>, Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, Ani Sinha <anisinha@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- Song Gao <gaosong@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Sunil V L <sunilvl@ventanamicro.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-devel <qemu-devel@nongnu.org>, qemu-riscv <qemu-riscv@nongnu.org>
-Subject: Re: [PATCH v6] acpi/virt: suppress UART device & SPCR when guest has
- no serial hardware
-Message-ID: <20260203112450-mutt-send-email-mst@kernel.org>
-References: <20251211102025.873506-1-me@linux.beauty>
- <20251211080811-mutt-send-email-mst@kernel.org>
- <19b104a617e.133b3feb891309.6986511857690603518@linux.beauty>
- <20251218161253.7f13038f@imammedo>
+To: Shameer Kolothum <skolothumtho@nvidia.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
+ alex@shazbot.org, clg@redhat.com, cohuck@redhat.com,
+ nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com,
+ jgg@nvidia.com, kjaju@nvidia.com, Jason Wang <jasowang@redhat.com>
+Subject: Re: [PATCH v2 2/4] hw/net/virtio-net: Adapt hash handling to updated
+ UAPI
+Message-ID: <20260203123143-mutt-send-email-mst@kernel.org>
+References: <20260113113754.1189-1-skolothumtho@nvidia.com>
+ <20260113113754.1189-3-skolothumtho@nvidia.com>
 MIME-Version: 1.0
-In-Reply-To: <20251218161253.7f13038f@imammedo>
+In-Reply-To: <20260113113754.1189-3-skolothumtho@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ToJBuzpKZIp_byWQa6KKaMWXSHJonGKgAay-jsdCgtg_1770136031
+X-Mimecast-MFC-PROC-ID: 0Y3yBrp-CoxHV238LMcG56gn1IdZ_xES3suY1gYH5VM_1770139927
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -125,84 +112,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Dec 18, 2025 at 04:12:53PM +0100, Igor Mammedov wrote:
-> On Fri, 12 Dec 2025 10:01:08 +0800
-> Li Chen <me@linux.beauty> wrote:
+On Tue, Jan 13, 2026 at 11:37:52AM +0000, Shameer Kolothum wrote:
+> The virtio_net_hdr_v1_hash layout changed in the Linux UAPI, replacing
+> the 32-bit hash_value field with two 16-bit fields, hash_value_lo and
+> hash_value_hi.
 > 
-> > Hi Michael,
-> > 
-> >  ---- On Thu, 11 Dec 2025 21:10:18 +0800  Michael S. Tsirkin <mst@redhat.com> wrote --- 
-> >  > On Thu, Dec 11, 2025 at 06:20:25PM +0800, Li Chen wrote:  
-> >  > > From: Li Chen <chenl311@chinatelecom.cn>
-> >  > > 
-> >  > > virt machines always instantiate a PL011/16550 UART at slot 0 and describe
-> >  > > it in ACPI (DSDT and optional SPCR table). When the command line disables
-> >  > > the serial backend (e.g. "-serial none"), the guest still sees the UART as
-> >  > > a preferred console even though it is not usable.
-> >  > > 
-> >  > > Teach the virt ACPI code to omit the UART device and SPCR when there is no
-> >  > > serial backend attached. This matches the hardware that the guest can
-> >  > > actually use and avoids confusing firmware or OS code that relies on SPCR.
-> >  > > 
-> >  > > The bios-tables-test qtests rely on an ACPI UART node and SPCR entry for
-> >  > > UEFI-based virt machines. To keep those tests working we create a UART
-> >  > > with a "null" chardev backend instead. This preserves the ACPI tables
-> >  > > while discarding the firmware's serial output so it does not corrupt the
-> >  > > TAP stdout stream.
-> >  > > 
-> >  > > Suggested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> >  > > Signed-off-by: Li Chen <chenl311@chinatelecom.cn>
-> >  > > Reviewed-by: Sunil V L <sunilvl@ventanamicro.com>  
-> >  > 
-> >  > This bothers me:
-> >  > won't this mean number of serial devices changes silently?  So for
-> >  > example, if you install a guest, see that 1st serial device is broken,
-> >  > configure it with 2nd one as a work around, now with your change there
-> >  > is no second one so guest will be broken?
-> >  > 
-> >  > 
-> >  > I seems safer to have compat machinery around and avoid
-> >  > changing this for old machine types.  
-> >  
-> > Thanks for pointing this out, you’re right that changing the number of serial 
-> > devices that the guest sees is risky for existing machine types.
-> > 
-> > For v7 I’m planning to take a more conservative approach and only gate SPCR
-> > on the presence of a backend for the primary UART, while  keeping the ACPI
-> > UART devices in DSDT unchanged. 
-> > Concretely:
-> > - virt ACPI DSDT will continue to unconditionally describe the UART(s) as before,
-> >    so the guest-visible UART topology doesn’t change for existing virt-* machines.
-> > - We only call spcr_setup() when there is a backend attached to UART0 (e.g. serial_hd(0) != NULL),
-> >   so SPCR doesn’t point at a completely unusable console when the user passes -serial none.
-> > 
-> > In particular, for a command line like -serial none -serial pty, this means SPCR would not be present
-> > (rather than silently switching it to UART1/pty). My reasoning is that, for existing virt machines,
-> > SPCR is meant to describe “the board’s primary console (UART0)”, not “the first UART that happens
-> > to have a host backend”, and changing that interpretation feels like it would need compat machinery
-> > and a new machine type.
-> > 
-> > The qtests already force -serial null for the UEFI-based virt tests, so they will still exercise the SPCR path.
-> > 
-> > Would this behaviour be acceptable for you, or would you prefer that I go further and also add a compat
-> > flag/new machine type where SPCR can follow “the first UART with a backend” while old virt-* machines
-> > keep the current UART/SPCR semantics?
+> Update hash handling to populate the new fields correctly and adjust
+> offset and size calculations accordingly.
 > 
-> 
-> all described above looks complicated.
-> In ACPI tables we usually try to avoid compat settings, and do them only if we have to.
-> 
-> So question is how guest enumerates serial ports when
->    '-nodefaults' is used _and_ there is a second serial port configured (is it even possible?)
-> check it with and without you patch please, to see what difference the patch makes.
-> 
-> > 
-> > Regards,
-> > Li​
-> > 
+> Cc: Michael S. Tsirkin <mst@redhat.com>
+> Cc: Jason Wang <jasowang@redhat.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 
-Looks like this got stuck.  I think what Igor and me are saying is, do
-not rush to do compat, just test what happens and document. If guests
-survive fine, then it's fine.
+
+Has to be squashed in patch 1 or bisect will be broken.
+
+> ---
+>  hw/net/virtio-net.c | 11 +++++++----
+>  1 file changed, 7 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+> index 317f1ad23b..512a7c02c9 100644
+> --- a/hw/net/virtio-net.c
+> +++ b/hw/net/virtio-net.c
+> @@ -1879,7 +1879,8 @@ static int virtio_net_process_rss(NetClientState *nc, const uint8_t *buf,
+>                                               n->rss_data.runtime_hash_types);
+>      if (net_hash_type > NetPktRssIpV6UdpEx) {
+>          if (n->rss_data.populate_hash) {
+> -            hdr->hash_value = VIRTIO_NET_HASH_REPORT_NONE;
+> +            hdr->hash_value_lo = VIRTIO_NET_HASH_REPORT_NONE;
+> +            hdr->hash_value_hi = VIRTIO_NET_HASH_REPORT_NONE;
+>              hdr->hash_report = 0;
+>          }
+>          return n->rss_data.redirect ? n->rss_data.default_queue : -1;
+> @@ -1888,7 +1889,8 @@ static int virtio_net_process_rss(NetClientState *nc, const uint8_t *buf,
+>      hash = net_rx_pkt_calc_rss_hash(pkt, net_hash_type, n->rss_data.key);
+>  
+>      if (n->rss_data.populate_hash) {
+> -        hdr->hash_value = hash;
+> +        hdr->hash_value_lo = cpu_to_le16(hash & 0xffff);
+> +        hdr->hash_value_hi = cpu_to_le16((hash >> 16) & 0xffff);
+>          hdr->hash_report = reports[net_hash_type];
+>      }
+>  
+> @@ -1990,10 +1992,11 @@ static ssize_t virtio_net_receive_rcu(NetClientState *nc, const uint8_t *buf,
+>  
+>              receive_header(n, sg, elem->in_num, buf, size);
+>              if (n->rss_data.populate_hash) {
+> -                offset = offsetof(typeof(extra_hdr), hash_value);
+> +                offset = offsetof(typeof(extra_hdr), hash_value_lo);
+>                  iov_from_buf(sg, elem->in_num, offset,
+>                               (char *)&extra_hdr + offset,
+> -                             sizeof(extra_hdr.hash_value) +
+> +                             sizeof(extra_hdr.hash_value_lo) +
+> +                             sizeof(extra_hdr.hash_value_hi) +
+>                               sizeof(extra_hdr.hash_report));
+>              }
+>              offset = n->host_hdr_len;
+> -- 
+> 2.43.0
 
 

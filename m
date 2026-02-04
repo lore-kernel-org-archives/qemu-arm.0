@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FAF7E95375
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:32:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 834C1E95377
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:32:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnaAw-0000Nt-Bd; Wed, 04 Feb 2026 05:31:58 -0500
+	id 1vnaBS-0000g1-I2; Wed, 04 Feb 2026 05:32:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaAt-0000MF-8p
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:31:55 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaB1-0000RY-NB
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:03 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaAr-0003wr-Ph
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:31:55 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaB0-0003yN-8W
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:03 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770201113;
+ s=mimecast20190719; t=1770201121;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=g1CWCaFYBXWIAYKEo/MBW7FQkHz1y46KIc9qEqIwLXs=;
- b=B03TahPrONDdHj5I4JIbV57hZ+8+uxy3DTihN4ujJxZ227va9CljPlsQkTlgPVW/3MEOiE
- +eDqZHliQb/vJXEC8D9K1f8Jbu161yMUq9wnUXpP1vqcBs57x1xsoaNXAt7wyP5CS5AlrS
- jZPeo70r3BW/d0WnfMQURGKwwtpA5no=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=o6kkGdiMInY4jNEsOYYm3r+vDmyuak5bnYi3QmZSEto=;
+ b=IQJy6OIyEqAdtz/VTFaKNWJKeC8VUXEbe4bOXBtNzx5NSe+mtqV1OMrTyl+/okBjWImfeP
+ 1fZCNgWdr86g9m7VyLKsaGdMV35oPMLvGN5EhDGHtvpyAw7yoYTrV93JbdMzwYCAptAoMj
+ bSfJlMpskJBZJxMeDYWf9kYFpxQ5ZvA=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-266-90FowRsiOjyOfYMDsZhDDA-1; Wed,
- 04 Feb 2026 05:31:49 -0500
-X-MC-Unique: 90FowRsiOjyOfYMDsZhDDA-1
-X-Mimecast-MFC-AGG-ID: 90FowRsiOjyOfYMDsZhDDA_1770201109
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-28-Y1hTJvcWO7es8VYE1EjBKw-1; Wed,
+ 04 Feb 2026 05:31:57 -0500
+X-MC-Unique: Y1hTJvcWO7es8VYE1EjBKw-1
+X-Mimecast-MFC-AGG-ID: Y1hTJvcWO7es8VYE1EjBKw_1770201117
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F15E4195609D; Wed,  4 Feb 2026 10:31:48 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B71451954B14; Wed,  4 Feb 2026 10:31:55 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 75D4518003F6; Wed,  4 Feb 2026 10:31:47 +0000 (UTC)
+ id 4142C180066A; Wed,  4 Feb 2026 10:31:54 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Patrick Williams <patrick@stwcx.xyz>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 04/45] MAINTAINERS: Update ASPEED entry
-Date: Wed,  4 Feb 2026 11:30:55 +0100
-Message-ID: <20260204103136.1795455-5-clg@redhat.com>
+Subject: [PULL 07/45] hw/arm/aspeed: catalina: use pca9535
+Date: Wed,  4 Feb 2026 11:30:58 +0100
+Message-ID: <20260204103136.1795455-8-clg@redhat.com>
 In-Reply-To: <20260204103136.1795455-1-clg@redhat.com>
 References: <20260204103136.1795455-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: V6M6AuWdn1a5fpiN7hfX-K4EG-huMcssybyzlPQorYE_1770201109
+X-Mimecast-MFC-PROC-ID: k1o8SCewA9WrQgSd1-vd1vwX3AS30D9RAH81A7zy3XU_1770201117
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -70,7 +70,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,34 +86,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Patrick Williams <patrick@stwcx.xyz>
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+A few entries in the catalina model were using the PCA9552 chip
+because it was "close enough" in function.  Since there is a PCA9535
+model now, switch to use it.
+
+Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260116082431.3689035-2-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260121-pca9535-v1-2-164640e622ff@stwcx.xyz
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- MAINTAINERS | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/arm/aspeed_ast2600_catalina.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 9b7ed4fccb1d..4c35249a1826 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1249,11 +1249,13 @@ F: hw/net/ftgmac100.c
- F: include/hw/net/ftgmac100.h
- F: docs/system/arm/aspeed.rst
- F: docs/system/arm/fby35.rst
-+F: docs/specs/aspeed*
- F: tests/functional/*/*aspeed*
- F: tests/*/*aspeed*
- F: tests/*/*ast2700*
- F: hw/arm/fby35.c
- F: pc-bios/ast27x0_bootrom.bin
-+F: roms/vbootrom
- 
- NRF51
- M: Joel Stanley <joel@jms.id.au>
+diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
+index 4edb30bb16b8..65495a524ea5 100644
+--- a/hw/arm/aspeed_ast2600_catalina.c
++++ b/hw/arm/aspeed_ast2600_catalina.c
+@@ -480,7 +480,7 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+     /* i2c0mux1ch1 */
+     /* io_expander7 - pca9535@20 */
+     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
+-                            TYPE_PCA9552, 0x20);
++                            TYPE_PCA9535, 0x20);
+     /* eeprom@50 */
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB,
+                           gb200io_eeprom, gb200io_eeprom_len);
+@@ -497,7 +497,7 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+     /* i2c0mux4ch1 */
+     /* io_expander8 - pca9535@21 */
+     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
+-                            TYPE_PCA9552, 0x21);
++                            TYPE_PCA9535, 0x21);
+     /* eeprom@50 */
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB,
+                           gb200io_eeprom, gb200io_eeprom_len);
 -- 
 2.52.0
 

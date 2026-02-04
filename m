@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D044E95374
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:37:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C83E0E95374
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:37:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnaBX-0000pn-JM; Wed, 04 Feb 2026 05:32:35 -0500
+	id 1vnaBn-0001qy-Tq; Wed, 04 Feb 2026 05:32:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBO-0000dM-L4
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:28 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBd-0001LG-8r
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:41 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBM-00042Y-D8
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:25 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBa-00045q-IK
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:40 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770201143;
+ s=mimecast20190719; t=1770201157;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Qmyp4iT0pCOzkBsWA4evBMPFT15MiEOiU8XJuxzxPl0=;
- b=P/vObjjJBWvCtXfRt/Lpve0h4uP4ru8Ay2BrLd3lxSUcB+UHKhn2lQusEfTY7dyMKXS/8z
- S2tY0N8KJJSFngNPS8QmeqbPiA22vGBpkneoYhSa0X6bPLFkgVxBqvaA9VkmIRIR/jFJYF
- 2/gc5e1bqv23D+w5xqt+n8GCWwum/sg=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=h8xXLjWIcSwTmFSPSfPwua3qcUc1vaUITMCGP+3yTPI=;
+ b=KcSuwIdZLqL+jAivwlgWx0INI+I0lhPVcUVEShUdv4vujbQ2DIGtzKduHxY3fq+YPhjFSq
+ 8y8wauP74Q+8vT9MEFwckvX4VPUWAo+Z3e3zuY++FhKUhRDgHF2I6z7pH/k+pwzMjPpJjC
+ GFonqcrHkO8HcxRHcQNcdHZLnJ/3KMU=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-314-Ezs0JVvmPzazwBcQVu843A-1; Wed,
- 04 Feb 2026 05:32:19 -0500
-X-MC-Unique: Ezs0JVvmPzazwBcQVu843A-1
-X-Mimecast-MFC-AGG-ID: Ezs0JVvmPzazwBcQVu843A_1770201138
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-217-maCaRkqIO-qd4hp9H_aKAA-1; Wed,
+ 04 Feb 2026 05:32:34 -0500
+X-MC-Unique: maCaRkqIO-qd4hp9H_aKAA-1
+X-Mimecast-MFC-AGG-ID: maCaRkqIO-qd4hp9H_aKAA_1770201153
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D0B6C18005AD; Wed,  4 Feb 2026 10:32:18 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 134A419560B2; Wed,  4 Feb 2026 10:32:33 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5F5F518003F6; Wed,  4 Feb 2026 10:32:17 +0000 (UTC)
+ id 436E818003F6; Wed,  4 Feb 2026 10:32:31 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 18/45] hw/arm/aspeed_ast27x0: Sort SSP and TSP IRQ maps
-Date: Wed,  4 Feb 2026 11:31:09 +0100
-Message-ID: <20260204103136.1795455-19-clg@redhat.com>
+Cc: Kane Chen <kane_chen@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Nabih Estefan <nabihestefan@google.com>
+Subject: [PULL 25/45] hw/arm/aspeed: Attach LTPI controller to AST27X0 platform
+Date: Wed,  4 Feb 2026 11:31:16 +0100
+Message-ID: <20260204103136.1795455-26-clg@redhat.com>
 In-Reply-To: <20260204103136.1795455-1-clg@redhat.com>
 References: <20260204103136.1795455-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: qb3RQxKr3o2EqRs_S-ERmnb79p50hU95nkVaOsfUveo_1770201138
+X-Mimecast-MFC-PROC-ID: C3MrtHQqrtKS2sKrGIqX2A9JeWRgCdHSqEIgXFTxHoM_1770201153
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -70,7 +71,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,76 +87,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Kane Chen <kane_chen@aspeedtech.com>
 
-Sort the SSP and TSP IRQ map tables to improve readability and make the
-definitions easier to maintain.
+Connect the LTPI controller device (representing the AST1700 I/O
+expander) to the AST27X0 SoC model. This patch sets up the memory
+mapping and device registration according to the AST2700 SoC design,
+where the LTPI controller is exposed at fixed MMIO regions.
 
-No functional change.
+This change only handles device instantiation and integration,
+without implementing the controller's internal logic.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260203020855.1642884-4-jamin_lin@aspeedtech.com
+Reviewed-by: Nabih Estefan <nabihestefan@google.com>
+Tested-by: Nabih Estefan <nabihestefan@google.com>
+Link: https://lore.kernel.org/qemu-devel/20260204082113.3955407-3-kane_chen@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast27x0-ssp.c | 4 ++--
- hw/arm/aspeed_ast27x0-tsp.c | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ include/hw/arm/aspeed_soc.h |  5 +++++
+ hw/arm/aspeed_ast27x0.c     | 21 +++++++++++++++++++++
+ 2 files changed, 26 insertions(+)
 
-diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c
-index e4bcf0fa2ae9..9b12ba67430f 100644
---- a/hw/arm/aspeed_ast27x0-ssp.c
-+++ b/hw/arm/aspeed_ast27x0-ssp.c
-@@ -44,12 +44,13 @@ static const hwaddr aspeed_soc_ast27x0ssp_memmap[] = {
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 18ff961a3850..bca10c387b08 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -43,6 +43,7 @@
+ #include "hw/fsi/aspeed_apb2opb.h"
+ #include "hw/char/serial-mm.h"
+ #include "hw/intc/arm_gicv3.h"
++#include "hw/misc/aspeed_ltpi.h"
+ 
+ #define VBOOTROM_FILE_NAME  "ast27x0_bootrom.bin"
+ 
+@@ -55,6 +56,7 @@
+ #define ASPEED_UARTS_NUM 13
+ #define ASPEED_JTAG_NUM  2
+ #define ASPEED_PCIE_NUM  3
++#define ASPEED_IOEXP_NUM 2
+ 
+ struct AspeedSoCState {
+     DeviceState parent;
+@@ -112,6 +114,7 @@ struct AspeedSoCState {
+     UnimplementedDeviceState ltpi;
+     UnimplementedDeviceState jtag[ASPEED_JTAG_NUM];
+     AspeedAPB2OPBState fsi[2];
++    AspeedLTPIState ltpi_ctrl[ASPEED_IOEXP_NUM];
  };
  
- static const int aspeed_soc_ast27x0ssp_irqmap[] = {
-+    [ASPEED_DEV_UART4]     = 8,
-     [ASPEED_DEV_SCU]       = 12,
-+    [ASPEED_DEV_TIMER1]    = 16,
-     [ASPEED_DEV_UART0]     = 164,
-     [ASPEED_DEV_UART1]     = 164,
-     [ASPEED_DEV_UART2]     = 164,
-     [ASPEED_DEV_UART3]     = 164,
--    [ASPEED_DEV_UART4]     = 8,
-     [ASPEED_DEV_UART5]     = 164,
-     [ASPEED_DEV_UART6]     = 164,
-     [ASPEED_DEV_UART7]     = 164,
-@@ -58,7 +59,6 @@ static const int aspeed_soc_ast27x0ssp_irqmap[] = {
-     [ASPEED_DEV_UART10]    = 164,
-     [ASPEED_DEV_UART11]    = 164,
-     [ASPEED_DEV_UART12]    = 164,
--    [ASPEED_DEV_TIMER1]    = 16,
+ #define TYPE_ASPEED_SOC "aspeed-soc"
+@@ -279,6 +282,8 @@ enum {
+     ASPEED_GIC_REDIST,
+     ASPEED_DEV_IPC0,
+     ASPEED_DEV_IPC1,
++    ASPEED_DEV_LTPI_CTRL1,
++    ASPEED_DEV_LTPI_CTRL2,
  };
  
- /* SSPINT 164 */
-diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c
-index 68683a15d8b6..e39d1dc17125 100644
---- a/hw/arm/aspeed_ast27x0-tsp.c
-+++ b/hw/arm/aspeed_ast27x0-tsp.c
-@@ -44,12 +44,13 @@ static const hwaddr aspeed_soc_ast27x0tsp_memmap[] = {
- };
+ const char *aspeed_soc_cpu_type(const char * const *valid_cpu_types);
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index e16183c3b329..bbcb6e012709 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -88,6 +88,8 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_UART10]    =  0x14C33900,
+     [ASPEED_DEV_UART11]    =  0x14C33A00,
+     [ASPEED_DEV_UART12]    =  0x14C33B00,
++    [ASPEED_DEV_LTPI_CTRL1] =  0x14C34000,
++    [ASPEED_DEV_LTPI_CTRL2] =  0x14C35000,
+     [ASPEED_DEV_WDT]       =  0x14C37000,
+     [ASPEED_DEV_LTPI]      =  0x30000000,
+     [ASPEED_DEV_PCIE_MMIO0] = 0x60000000,
+@@ -491,6 +493,11 @@ static void aspeed_soc_ast2700_init(Object *obj)
+         object_property_set_int(OBJECT(&s->pcie[i]), "id", i, &error_abort);
+     }
  
- static const int aspeed_soc_ast27x0tsp_irqmap[] = {
-+    [ASPEED_DEV_UART4]     = 8,
-     [ASPEED_DEV_SCU]       = 12,
-+    [ASPEED_DEV_TIMER1]    = 16,
-     [ASPEED_DEV_UART0]     = 164,
-     [ASPEED_DEV_UART1]     = 164,
-     [ASPEED_DEV_UART2]     = 164,
-     [ASPEED_DEV_UART3]     = 164,
--    [ASPEED_DEV_UART4]     = 8,
-     [ASPEED_DEV_UART5]     = 164,
-     [ASPEED_DEV_UART6]     = 164,
-     [ASPEED_DEV_UART7]     = 164,
-@@ -58,7 +59,6 @@ static const int aspeed_soc_ast27x0tsp_irqmap[] = {
-     [ASPEED_DEV_UART10]    = 164,
-     [ASPEED_DEV_UART11]    = 164,
-     [ASPEED_DEV_UART12]    = 164,
--    [ASPEED_DEV_TIMER1]    = 16,
- };
++    for (i = 0; i < ASPEED_IOEXP_NUM; i++) {
++        object_initialize_child(obj, "ltpi-ctrl[*]",
++                                &s->ltpi_ctrl[i], TYPE_ASPEED_LTPI);
++    }
++
+     object_initialize_child(obj, "dpmcu", &s->dpmcu,
+                             TYPE_UNIMPLEMENTED_DEVICE);
+     object_initialize_child(obj, "ltpi", &s->ltpi,
+@@ -974,6 +981,20 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+         return;
+     }
  
- /* TSPINT 164 */
++    /* LTPI controller */
++    for (i = 0; i < ASPEED_IOEXP_NUM; i++) {
++        AspeedLTPIState *ltpi_ctrl;
++        hwaddr ltpi_base;
++
++        ltpi_ctrl = ASPEED_LTPI(&s->ltpi_ctrl[i]);
++        ltpi_base = sc->memmap[ASPEED_DEV_LTPI_CTRL1 + i];
++
++        if (!sysbus_realize(SYS_BUS_DEVICE(ltpi_ctrl), errp)) {
++            return;
++        }
++        aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(ltpi_ctrl), 0, ltpi_base);
++    }
++
+     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->dpmcu),
+                                   "aspeed.dpmcu",
+                                   sc->memmap[ASPEED_DEV_DPMCU],
 -- 
 2.52.0
 

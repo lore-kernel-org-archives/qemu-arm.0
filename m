@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 834C1E95377
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14DABE95374
 	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:32:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnaBS-0000g1-I2; Wed, 04 Feb 2026 05:32:30 -0500
+	id 1vnaBW-0000nS-Ky; Wed, 04 Feb 2026 05:32:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaB1-0000RY-NB
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:03 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaB7-0000U0-MP
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:09 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaB0-0003yN-8W
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:03 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaB5-0003zW-Pw
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:09 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770201121;
+ s=mimecast20190719; t=1770201126;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=o6kkGdiMInY4jNEsOYYm3r+vDmyuak5bnYi3QmZSEto=;
- b=IQJy6OIyEqAdtz/VTFaKNWJKeC8VUXEbe4bOXBtNzx5NSe+mtqV1OMrTyl+/okBjWImfeP
- 1fZCNgWdr86g9m7VyLKsaGdMV35oPMLvGN5EhDGHtvpyAw7yoYTrV93JbdMzwYCAptAoMj
- bSfJlMpskJBZJxMeDYWf9kYFpxQ5ZvA=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=2pxvTcQsOrMAvMcG0AWNrtfMa1MPkCDpkyj2qay+hYw=;
+ b=bobjjy8IfkZ0bQf7s7FpFgrHnI3xyqUtGozjiSxGxTU9cWAdqczpRICa8XoW6rI7Pt1DgP
+ CcygXduMJ/IA/LGJnY3zS2NpelQFg4OmDnxa5i0k7UZHSD/n5ch3e2rE95SAtTAX35w74Q
+ DtWXITRr0vZPZwrI1Un6VgRdSFMfyOg=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-28-Y1hTJvcWO7es8VYE1EjBKw-1; Wed,
- 04 Feb 2026 05:31:57 -0500
-X-MC-Unique: Y1hTJvcWO7es8VYE1EjBKw-1
-X-Mimecast-MFC-AGG-ID: Y1hTJvcWO7es8VYE1EjBKw_1770201117
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-508-PyapBYJ9NHOjmEBa8TaMIg-1; Wed,
+ 04 Feb 2026 05:32:03 -0500
+X-MC-Unique: PyapBYJ9NHOjmEBa8TaMIg-1
+X-Mimecast-MFC-AGG-ID: PyapBYJ9NHOjmEBa8TaMIg_1770201122
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B71451954B14; Wed,  4 Feb 2026 10:31:55 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A9AD81956064; Wed,  4 Feb 2026 10:32:02 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4142C180066A; Wed,  4 Feb 2026 10:31:54 +0000 (UTC)
+ id D4F4E180066D; Wed,  4 Feb 2026 10:32:00 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Patrick Williams <patrick@stwcx.xyz>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 07/45] hw/arm/aspeed: catalina: use pca9535
-Date: Wed,  4 Feb 2026 11:30:58 +0100
-Message-ID: <20260204103136.1795455-8-clg@redhat.com>
+Subject: [PULL 10/45] hw/pci-host/aspeed_pcie: Drop AST2600 PCIe root device
+Date: Wed,  4 Feb 2026 11:31:01 +0100
+Message-ID: <20260204103136.1795455-11-clg@redhat.com>
 In-Reply-To: <20260204103136.1795455-1-clg@redhat.com>
 References: <20260204103136.1795455-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: k1o8SCewA9WrQgSd1-vd1vwX3AS30D9RAH81A7zy3XU_1770201117
+X-Mimecast-MFC-PROC-ID: XOm0QFUJOJwNorSwqW-OvxT6Jr-8_dNooNPblymRs_k_1770201122
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -70,7 +70,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,42 +86,168 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Patrick Williams <patrick@stwcx.xyz>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-A few entries in the catalina model were using the PCA9552 chip
-because it was "close enough" in function.  Since there is a PCA9535
-model now, switch to use it.
+AST2600 PCIe previously exposed a root bus at 0x80 with both a
+root device at 80:00.0 and a root port at 80:08.0.
 
-Signed-off-by: Patrick Williams <patrick@stwcx.xyz>
+Recent ASPEED SDK PCIe driver updates decided to remove the root
+device and keep only a single root port. This behavior has already
+been accepted by the upstream Linux kernel.
+
+Update the QEMU PCIe model accordingly by dropping the root device
+implementation and related properties. AST2600 now matches the
+AST2700 PCIe topology and no longer supports the legacy RC_L
+layout.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260121-pca9535-v1-2-164640e622ff@stwcx.xyz
+Link: https://lore.kernel.org/qemu-devel/20260127032348.2238527-3-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast2600_catalina.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ include/hw/pci-host/aspeed_pcie.h |  9 -----
+ hw/pci-host/aspeed_pcie.c         | 57 -------------------------------
+ 2 files changed, 66 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
-index 4edb30bb16b8..65495a524ea5 100644
---- a/hw/arm/aspeed_ast2600_catalina.c
-+++ b/hw/arm/aspeed_ast2600_catalina.c
-@@ -480,7 +480,7 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
-     /* i2c0mux1ch1 */
-     /* io_expander7 - pca9535@20 */
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
--                            TYPE_PCA9552, 0x20);
-+                            TYPE_PCA9535, 0x20);
-     /* eeprom@50 */
-     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB,
-                           gb200io_eeprom, gb200io_eeprom_len);
-@@ -497,7 +497,7 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
-     /* i2c0mux4ch1 */
-     /* io_expander8 - pca9535@21 */
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1),
--                            TYPE_PCA9552, 0x21);
-+                            TYPE_PCA9535, 0x21);
-     /* eeprom@50 */
-     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 1), 0x50, 8 * KiB,
-                           gb200io_eeprom, gb200io_eeprom_len);
+diff --git a/include/hw/pci-host/aspeed_pcie.h b/include/hw/pci-host/aspeed_pcie.h
+index e660119a455e..fde5816ea30c 100644
+--- a/include/hw/pci-host/aspeed_pcie.h
++++ b/include/hw/pci-host/aspeed_pcie.h
+@@ -50,13 +50,6 @@ typedef struct AspeedPCIERootPortState {
+     PCIESlot parent_obj;
+ } AspeedPCIERootPortState;
+ 
+-#define TYPE_ASPEED_PCIE_ROOT_DEVICE "aspeed.pcie-root-device"
+-OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERootDeviceState, ASPEED_PCIE_ROOT_DEVICE);
+-
+-struct AspeedPCIERootDeviceState {
+-    PCIBridge parent_obj;
+-};
+-
+ #define TYPE_ASPEED_PCIE_RC "aspeed.pcie-rc"
+ OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERcState, ASPEED_PCIE_RC);
+ 
+@@ -78,10 +71,8 @@ struct AspeedPCIERcState {
+     uint32_t rp_addr;
+     uint32_t bus_nr;
+     char name[16];
+-    bool has_rd;
+     qemu_irq irq;
+ 
+-    AspeedPCIERootDeviceState root_device;
+     AspeedPCIERootPortState root_port;
+ };
+ 
+diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
+index 83a1c7075c39..4fdda959396f 100644
+--- a/hw/pci-host/aspeed_pcie.c
++++ b/hw/pci-host/aspeed_pcie.c
+@@ -26,44 +26,6 @@
+ #include "hw/pci/msi.h"
+ #include "trace.h"
+ 
+-/*
+- * PCIe Root Device
+- * This device exists only on AST2600.
+- */
+-
+-static void aspeed_pcie_root_device_class_init(ObjectClass *klass,
+-                                               const void *data)
+-{
+-    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+-    dc->desc = "ASPEED PCIe Root Device";
+-    k->vendor_id = PCI_VENDOR_ID_ASPEED;
+-    k->device_id = 0x2600;
+-    k->class_id = PCI_CLASS_BRIDGE_HOST;
+-    k->subsystem_vendor_id = k->vendor_id;
+-    k->subsystem_id = k->device_id;
+-    k->revision = 0;
+-
+-    /*
+-     * PCI-facing part of the host bridge,
+-     * not usable without the host-facing part
+-     */
+-    dc->user_creatable = false;
+-}
+-
+-static const TypeInfo aspeed_pcie_root_device_info = {
+-    .name = TYPE_ASPEED_PCIE_ROOT_DEVICE,
+-    .parent = TYPE_PCI_DEVICE,
+-    .instance_size = sizeof(AspeedPCIERootDeviceState),
+-    .class_init = aspeed_pcie_root_device_class_init,
+-    .interfaces = (const InterfaceInfo[]) {
+-        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+-        { },
+-    },
+-};
+-
+ /*
+  * PCIe Root Port
+  */
+@@ -291,18 +253,6 @@ static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
+                                 &rc->dram_alias);
+     pci_setup_iommu(pci->bus, &aspeed_pcie_rc_iommu_ops, rc);
+ 
+-    /* setup root device */
+-    if (rc->has_rd) {
+-        object_initialize_child(OBJECT(rc), "root_device", &rc->root_device,
+-                                TYPE_ASPEED_PCIE_ROOT_DEVICE);
+-        qdev_prop_set_int32(DEVICE(&rc->root_device), "addr",
+-                            PCI_DEVFN(0, 0));
+-        qdev_prop_set_bit(DEVICE(&rc->root_device), "multifunction", false);
+-        if (!qdev_realize(DEVICE(&rc->root_device), BUS(pci->bus), errp)) {
+-            return;
+-        }
+-    }
+-
+     /* setup root port */
+     qdev_prop_set_int32(DEVICE(&rc->root_port), "addr", rc->rp_addr);
+     qdev_prop_set_uint16(DEVICE(&rc->root_port), "chassis", cfg->id);
+@@ -334,7 +284,6 @@ static void aspeed_pcie_rc_instance_init(Object *obj)
+ 
+ static const Property aspeed_pcie_rc_props[] = {
+     DEFINE_PROP_UINT32("bus-nr", AspeedPCIERcState, bus_nr, 0),
+-    DEFINE_PROP_BOOL("has-rd", AspeedPCIERcState, has_rd, 0),
+     DEFINE_PROP_UINT32("rp-addr", AspeedPCIERcState, rp_addr, 0),
+     DEFINE_PROP_UINT32("msi-addr", AspeedPCIERcState, msi_addr, 0),
+     DEFINE_PROP_UINT64("dram-base", AspeedPCIERcState, dram_base, 0),
+@@ -704,9 +653,6 @@ static void aspeed_pcie_cfg_realize(DeviceState *dev, Error **errp)
+     object_property_set_int(OBJECT(&s->rc), "bus-nr",
+                             apc->rc_bus_nr,
+                             &error_abort);
+-    object_property_set_bool(OBJECT(&s->rc), "has-rd",
+-                            apc->rc_has_rd,
+-                            &error_abort);
+     object_property_set_int(OBJECT(&s->rc), "rp-addr",
+                             apc->rc_rp_addr,
+                             &error_abort);
+@@ -746,7 +692,6 @@ static void aspeed_pcie_cfg_class_init(ObjectClass *klass, const void *data)
+     apc->nr_regs = 0x100 >> 2;
+     apc->rc_msi_addr = 0x1e77005C;
+     apc->rc_bus_nr = 0x80;
+-    apc->rc_has_rd = true;
+     apc->rc_rp_addr = PCI_DEVFN(8, 0);
+ }
+ 
+@@ -867,7 +812,6 @@ static void aspeed_2700_pcie_cfg_class_init(ObjectClass *klass,
+     apc->nr_regs = 0x100 >> 2;
+     apc->rc_msi_addr = 0x000000F0;
+     apc->rc_bus_nr = 0;
+-    apc->rc_has_rd = false;
+     apc->rc_rp_addr = PCI_DEVFN(0, 0);
+ }
+ 
+@@ -1041,7 +985,6 @@ static const TypeInfo aspeed_2700_pcie_phy_info = {
+ static void aspeed_pcie_register_types(void)
+ {
+     type_register_static(&aspeed_pcie_rc_info);
+-    type_register_static(&aspeed_pcie_root_device_info);
+     type_register_static(&aspeed_pcie_root_port_info);
+     type_register_static(&aspeed_pcie_cfg_info);
+     type_register_static(&aspeed_2700_pcie_cfg_info);
 -- 
 2.52.0
 

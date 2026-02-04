@@ -4,111 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00FD5EA7944
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 19:03:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9716EA7942
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 19:07:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vni9w-0006hS-II; Wed, 04 Feb 2026 14:03:28 -0500
+	id 1vniAY-00008c-A7; Wed, 04 Feb 2026 14:04:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vni9t-0006VI-Ue
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 14:03:25 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vniAV-0008D7-NG
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 14:04:04 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vni9r-0007kb-SD
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 14:03:25 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vniAT-0007zg-V2
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 14:04:03 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770231801;
+ s=mimecast20190719; t=1770231841;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=o7oJwB+/MR7DB60Rv9oamUAujf6sHA9qp5RSISJ/HXw=;
- b=N4MhTRDzGMxytRl0+BmjvvmBPoSCNKUZsG4EGnfi89XvUa+UqsFGC2RdgPmdiFz6gbiSjj
- ud0DMcVzKxwtVYSP32VMSkG2FDgIxDLNzBdSwZT2GqspYk6F0Pv7LQda7Sml8mqLikHPBD
- rmEZERpqHxynRs6NepkyNfz1Ipp6OwQ=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=k970/8IAuTxyxYQnCxpGZam99VQS84f+0lcT7yhaPYA=;
+ b=fnEdQ35h+nX88SIllTZRhDNO+IvB0uT5cGhouedfSAGvLqVudxRA2oiqglIhM3PXn246mt
+ 4F5K70hr7IBTCzsDplzXqR/d/I3NJpTjs+4TcJX7TiDMaX+3cdF+70W37NieRVqbLirOgu
+ ePYFXaIyz70/mie5l7i2gkie9J3AaJ0=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-230-gchl2JHuOT68cqGvz5rrog-1; Wed, 04 Feb 2026 14:03:20 -0500
-X-MC-Unique: gchl2JHuOT68cqGvz5rrog-1
-X-Mimecast-MFC-AGG-ID: gchl2JHuOT68cqGvz5rrog_1770231798
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-435af2d3144so98397f8f.3
- for <qemu-arm@nongnu.org>; Wed, 04 Feb 2026 11:03:18 -0800 (PST)
+ us-mta-435-swUHTiI0NSWa58LavwAhGA-1; Wed, 04 Feb 2026 14:03:59 -0500
+X-MC-Unique: swUHTiI0NSWa58LavwAhGA-1
+X-Mimecast-MFC-AGG-ID: swUHTiI0NSWa58LavwAhGA_1770231838
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-4804157a3c9so1272775e9.1
+ for <qemu-arm@nongnu.org>; Wed, 04 Feb 2026 11:03:58 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770231798; x=1770836598;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=o7oJwB+/MR7DB60Rv9oamUAujf6sHA9qp5RSISJ/HXw=;
- b=uTxishNAR7vOBLVYmoVLanm47lXDQqTRNiLOIE6vgJEm0gDLu5Qhgi7gfkggXiP8nH
- f5bmOu3yQrRfToLzxTxAI64bc1mAt21rGwAr3DLQcanJjtBgCCIsCl8/BrDoEuVapid5
- QDzakEs217XMR9Y3ZBYqW7S/sz09BCLvB6m0aeGr7aCnxjvI1tgZmJo9gwas+F3NW4bM
- LY5afKeyb8VKNKj39L0YhyWEs1JVCVi/iLoE/oS8micGqWawr89Jpfkfd19xxHvt5RQu
- ImVjwfW8ASml6gRzY6w8hGfRI6UBQDTU6c7X+cHyjphWe4J35eIVrawBkg6GF3l+TSod
- wVPw==
+ d=1e100.net; s=20230601; t=1770231838; x=1770836638;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=k970/8IAuTxyxYQnCxpGZam99VQS84f+0lcT7yhaPYA=;
+ b=rkH5LDbilHnDKi0TB7JKBQow9YNhMc4XAkmQ6d5VEzsUggitv422+2vWEd5SH4v619
+ IGXkfsW4zNtwTMDiZV+fvwkjJF9y01rFgfm1gj8gVIOmayu0BwYl7dNpu1/ephZrqT2J
+ IF2aL4d5Dbk/lXvxfLIDelYeIeYxm+q5AlWUzPjOXeeN4+2fU0Qhm/sbHd8OxhyyJk8I
+ snzUARGqhRUqp8X9z9sBwrDWfueH6TXTv4SKgZKtCYZtKIU4S8q7EtrpFQ1G0XtdZ3Ru
+ DAihJMVMXtUFDirz/gNJ+F8yH/90IeuJCRRcS9yoSW8k1PMzJIEJV39rWNiDlXkGeB5g
+ 9MDw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWIMTGLXEmMJ5KoT+mWvfPLn2KqrKSru8X9X4jRVyj4IEBzS7CILssPNMMXyipGD4t6xmU56l3WUw==@nongnu.org
-X-Gm-Message-State: AOJu0YwZbyCyfv9n0FA8tA+rTdnuuzICXeYIpZ3H807y5HNMZWunka4p
- tmSP9l0Qwj6w2vKzctMvk2PyUrje6/fiZ+gR00yGVZpGdXlzQ+dfDB0NSiDOq4m+f2lVpqMcTv6
- DRVbcSqk8kr8U4LBNqG627TQXXq7KRrhYBdGQ/NLi1aJTYSPu9wBbFw==
-X-Gm-Gg: AZuq6aKG+AOwm8Y5BTkgbjYG1WTFsXZt6G8abGJc6Nsfqs3NUyP0Q8ahC6gnDlQOtDJ
- 9CMJ9/7bvfDUX7ai2Jpk4/RY4PPksTZi59pgvPGSSeIDpOdq2I7kUj8Sxe/hWEEdOJP4YUAqkAk
- 7vKXNIbvIl57FbynpgD3hxuMcuvM1h5Ku3M/+tHjP0yFR5ed2Wnx6ZquemXRBKKpy/BeYOksoPX
- DGSyCiWEshz5vx8VwpPHN0HhJXG4+0XWTZrrW4Y42k4fPwTD69se7498ArSaPV+I6a6SqFoEqis
- pJPa8+/IyqyGv565ACdPAbWWHbsWXINWoVjZD+xqsMowLQu3UlnLXTKSKNec8sfNPvrSwAH9ScB
- CvHWAJZjsaV6bL2UFSrT+5IJV8Q+caayt6w==
-X-Received: by 2002:a05:6000:2c08:b0:432:dfa8:e1b6 with SMTP id
- ffacd0b85a97d-43618053ae7mr5702178f8f.39.1770231797631; 
- Wed, 04 Feb 2026 11:03:17 -0800 (PST)
-X-Received: by 2002:a05:6000:2c08:b0:432:dfa8:e1b6 with SMTP id
- ffacd0b85a97d-43618053ae7mr5702086f8f.39.1770231796962; 
- Wed, 04 Feb 2026 11:03:16 -0800 (PST)
+ AJvYcCXnYv20KSsyHkc/D4qVKGymk/zI4iK8NqPOFRPcn8g2dt6Zg4TpQKotJVUfuy1W9jW0Wz5sz050Xw==@nongnu.org
+X-Gm-Message-State: AOJu0YwyTb6sPmQzgpvMcmOFGAjT8NVIfVcwV6hEWx0n7xTe+JT2l57v
+ kbIub6pdcgtt7QBWJgV3QueW65lQHYWNktCf8W8btMB53zYDGpSyvifWqOFXfKwK0skIBlknW6i
+ Rf+JmqIFuBnF1impQOblP/uSeeLgW+abEaTdF0EUb/9gtPG8ncv9CGw==
+X-Gm-Gg: AZuq6aLCaNCnADzuaataHRwNbDhWi4d0SziHz1pWRzQpvVqfPYPgZRekbaua2WGSwCW
+ NDWk8LiD/I4z/93FtGJYocLsfYmR7rzlY/7pHiMuvdEcDShSEVsV9sMXjiY/icI5XcMElRQSYBi
+ h2L8KmekdewwJHJN9ti3dFmx/31wg78Pf7HQ5Q2JfRnUAuIcqGlll3Dq1eTxhOOL0a85watpYv5
+ 7jiP08eovisPxns8hWBEZ56MDzwePml+C6YDV6PSix+d1DRCVkXot7qM9LAAwAx76Hmu0JcXl1e
+ kZUa/FSU8Ei+CVR4mvCGdTXTAqWJb658u+NdwHUNuh1YXuo9s0B31Oc+nMSycYdJ6vY9g6Oiz2Y
+ 1q6fkTdTH+a4Y5baWwwvO29NBYWwlHVgndQ==
+X-Received: by 2002:a05:600c:1f16:b0:46e:4b79:551 with SMTP id
+ 5b1f17b1804b1-4830e9897dcmr64074005e9.31.1770231837696; 
+ Wed, 04 Feb 2026 11:03:57 -0800 (PST)
+X-Received: by 2002:a05:600c:1f16:b0:46e:4b79:551 with SMTP id
+ 5b1f17b1804b1-4830e9897dcmr64073585e9.31.1770231837220; 
+ Wed, 04 Feb 2026 11:03:57 -0800 (PST)
 Received: from redhat.com (IGLD-80-230-34-155.inter.net.il. [80.230.34.155])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43617e25e8csm7558641f8f.1.2026.02.04.11.03.14
+ ffacd0b85a97d-43618057f9esm7058054f8f.28.2026.02.04.11.03.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Feb 2026 11:03:16 -0800 (PST)
-Date: Wed, 4 Feb 2026 14:03:13 -0500
+ Wed, 04 Feb 2026 11:03:56 -0800 (PST)
+Date: Wed, 4 Feb 2026 14:03:55 -0500
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Andrey Smirnov <andrew.smirnov@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Aurelien Jarno <aurelien@aurel32.net>, Nicholas Piggin <npiggin@gmail.com>,
- Aditya Gupta <adityag@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>,
- Bernhard Beschow <shentey@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>,
- Jagannathan Raman <jag.raman@oracle.com>,
- Paul Burton <paulburton@kernel.org>,
- Aleksandar Rikalo <arikalo@gmail.com>, qemu-ppc@nongnu.org,
- qemu-arm@nongnu.org
-Subject: [PULL 11/51] hw/pci-host: Set DEVICE_CATEGORY_BRIDGE once in parent
- class_init()
-Message-ID: <f6258e47396663e06468f971433044521311c233.1770231744.git.mst@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Gavin Shan <gshan@redhat.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Markus Armbruster <armbru@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Ani Sinha <anisinha@redhat.com>,
+ Dongjiu Geng <gengdongjiu1@gmail.com>, qemu-arm@nongnu.org
+Subject: [PULL 29/51] acpi/ghes: Bail early on error from
+ get_ghes_source_offsets()
+Message-ID: <43eca99483f62e6d8610dbeee1e00ab94edb8962.1770231744.git.mst@redhat.com>
 References: <cover.1770231744.git.mst@redhat.com>
 MIME-Version: 1.0
 In-Reply-To: <cover.1770231744.git.mst@redhat.com>
 X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
 X-Mutt-Fcc: =sent
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: -pQEKdcf9sH74M_FlwGt4EjY3zda0RAWlYrxh5N05qw_1770231798
+X-Mimecast-MFC-PROC-ID: 6GuMgv0QxfVoUXMkC8zO8Yb7J9irCiEfRqHkKE0kXRw_1770231838
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -117,7 +101,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,278 +117,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Gavin Shan <gshan@redhat.com>
 
-No need to set DEVICE_CATEGORY_BRIDGE for each device
-implementing TYPE_PCI_HOST_BRIDGE: set it once in the
-parent.
+In ghes_record_cper_errors(), get_ghes_source_offsets() can return
+a error initialized by error_setg(). Without bailing on this error,
+it can call into the second error_setg() due to the unexpected value
+returned from the read acknowledgement register. The second error_setg()
+can trigger assert(*errp == NULL) in its callee error_setv(), which
+isn't expected.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Bail early in ghes_record_cper_errors() when error is received from
+get_ghes_source_offsets() to avoid the unexpected behavior.
+
+Signed-off-by: Gavin Shan <gshan@redhat.com>
+Reviewed-by: Jonathan Cameron <jonathan.cameron@huawei.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Message-ID: <20251027112306.57634-1-philmd@linaro.org>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20251027112306.57634-1-philmd@linaro.org>
+Message-Id: <20251201141803.2386129-5-gshan@redhat.com>
 ---
- hw/pci-host/articia.c     | 1 -
- hw/pci-host/aspeed_pcie.c | 1 -
- hw/pci-host/designware.c  | 3 ---
- hw/pci-host/gpex.c        | 2 --
- hw/pci-host/grackle.c     | 1 -
- hw/pci-host/gt64120.c     | 1 -
- hw/pci-host/mv64361.c     | 1 -
- hw/pci-host/pnv_phb.c     | 1 -
- hw/pci-host/ppce500.c     | 1 -
- hw/pci-host/q35.c         | 1 -
- hw/pci-host/raven.c       | 1 -
- hw/pci-host/remote.c      | 1 -
- hw/pci-host/sabre.c       | 1 -
- hw/pci-host/uninorth.c    | 4 ----
- hw/pci-host/xilinx-pcie.c | 2 --
- hw/pci/pci_host.c         | 1 +
- 16 files changed, 1 insertion(+), 22 deletions(-)
+ hw/acpi/ghes.c | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/hw/pci-host/articia.c b/hw/pci-host/articia.c
-index 1881e03d58..04623dfd84 100644
---- a/hw/pci-host/articia.c
-+++ b/hw/pci-host/articia.c
-@@ -200,7 +200,6 @@ static void articia_class_init(ObjectClass *klass, const void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->realize = articia_realize;
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index 4e6903a8d3..d51d4bd466 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -444,7 +444,7 @@ static void get_hw_error_offsets(uint64_t ghes_addr,
+     *read_ack_register_addr = ghes_addr + sizeof(uint64_t);
  }
  
- /* TYPE_ARTICIA_PCI_HOST */
-diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
-index 83a1c7075c..8eeba1f9f3 100644
---- a/hw/pci-host/aspeed_pcie.c
-+++ b/hw/pci-host/aspeed_pcie.c
-@@ -350,7 +350,6 @@ static void aspeed_pcie_rc_class_init(ObjectClass *klass, const void *data)
-     dc->desc = "ASPEED PCIe RC";
-     dc->realize = aspeed_pcie_rc_realize;
-     dc->fw_name = "pci";
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+-static void get_ghes_source_offsets(uint16_t source_id,
++static bool get_ghes_source_offsets(uint16_t source_id,
+                                     uint64_t hest_addr,
+                                     uint64_t *cper_addr,
+                                     uint64_t *read_ack_start_addr,
+@@ -475,7 +475,7 @@ static void get_ghes_source_offsets(uint16_t source_id,
+         /* For now, we only know the size of GHESv2 table */
+         if (type != ACPI_GHES_SOURCE_GENERIC_ERROR_V2) {
+             error_setg(errp, "HEST: type %d not supported.", type);
+-            return;
++            return false;
+         }
  
-     hc->root_bus_path = aspeed_pcie_rc_root_bus_path;
-     device_class_set_props(dc, aspeed_pcie_rc_props);
-diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-index 019e025382..00c9449c4d 100644
---- a/hw/pci-host/designware.c
-+++ b/hw/pci-host/designware.c
-@@ -593,8 +593,6 @@ static void designware_pcie_root_class_init(ObjectClass *klass,
-     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
-     DeviceClass *dc = DEVICE_CLASS(klass);
+         /* Compare CPER source ID at the GHESv2 structure */
+@@ -489,7 +489,7 @@ static void get_ghes_source_offsets(uint16_t source_id,
+     }
+     if (i == num_sources) {
+         error_setg(errp, "HEST: Source %d not found.", source_id);
+-        return;
++        return false;
+     }
  
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
--
-     k->vendor_id = PCI_VENDOR_ID_SYNOPSYS;
-     k->device_id = 0xABCD;
-     k->revision = 0;
-@@ -736,7 +734,6 @@ static void designware_pcie_host_class_init(ObjectClass *klass,
- 
-     hc->root_bus_path = designware_pcie_host_root_bus_path;
-     dc->realize = designware_pcie_host_realize;
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->fw_name = "pci";
-     dc->vmsd = &vmstate_designware_pcie_host;
- }
-diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
-index b5074c05c0..e66784ce51 100644
---- a/hw/pci-host/gpex.c
-+++ b/hw/pci-host/gpex.c
-@@ -200,7 +200,6 @@ static void gpex_host_class_init(ObjectClass *klass, const void *data)
-     hc->root_bus_path = gpex_host_root_bus_path;
-     dc->realize = gpex_host_realize;
-     dc->unrealize = gpex_host_unrealize;
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->fw_name = "pci";
-     device_class_set_props(dc, gpex_host_properties);
- }
-@@ -242,7 +241,6 @@ static void gpex_root_class_init(ObjectClass *klass, const void *data)
-     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->desc = "QEMU generic PCIe host bridge";
-     dc->vmsd = &vmstate_gpex_root;
-     k->vendor_id = PCI_VENDOR_ID_REDHAT;
-diff --git a/hw/pci-host/grackle.c b/hw/pci-host/grackle.c
-index 9a58f0e9b5..b0db7870b0 100644
---- a/hw/pci-host/grackle.c
-+++ b/hw/pci-host/grackle.c
-@@ -140,7 +140,6 @@ static void grackle_class_init(ObjectClass *klass, const void *data)
- 
-     dc->realize = grackle_realize;
-     device_class_set_props(dc, grackle_properties);
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->fw_name = "pci";
-     sbc->explicit_ofw_unit_address = grackle_ofw_unit_address;
- }
-diff --git a/hw/pci-host/gt64120.c b/hw/pci-host/gt64120.c
-index d361c457ed..566f928304 100644
---- a/hw/pci-host/gt64120.c
-+++ b/hw/pci-host/gt64120.c
-@@ -1298,7 +1298,6 @@ static void gt64120_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     device_class_set_props(dc, gt64120_properties);
-     dc->realize = gt64120_realize;
-     device_class_set_legacy_reset(dc, gt64120_reset);
-diff --git a/hw/pci-host/mv64361.c b/hw/pci-host/mv64361.c
-index ef1c77563e..495a82befd 100644
---- a/hw/pci-host/mv64361.c
-+++ b/hw/pci-host/mv64361.c
-@@ -108,7 +108,6 @@ static void mv64361_pcihost_class_init(ObjectClass *klass, const void *data)
- 
-     dc->realize = mv64361_pcihost_realize;
-     device_class_set_props(dc, mv64361_pcihost_props);
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     /* Navigate through table address pointers */
+@@ -509,6 +509,8 @@ static void get_ghes_source_offsets(uint16_t source_id,
+     cpu_physical_memory_read(hest_read_ack_addr, read_ack_start_addr,
+                              sizeof(*read_ack_start_addr));
+     *read_ack_start_addr = le64_to_cpu(*read_ack_start_addr);
++
++    return true;
  }
  
- static const TypeInfo mv64361_pcihost_info = {
-diff --git a/hw/pci-host/pnv_phb.c b/hw/pci-host/pnv_phb.c
-index 85fcc3b686..0b556d1bf5 100644
---- a/hw/pci-host/pnv_phb.c
-+++ b/hw/pci-host/pnv_phb.c
-@@ -202,7 +202,6 @@ static void pnv_phb_class_init(ObjectClass *klass, const void *data)
-     hc->root_bus_path = pnv_phb_root_bus_path;
-     dc->realize = pnv_phb_realize;
-     device_class_set_props(dc, pnv_phb_properties);
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->user_creatable = true;
- }
+ NotifierList acpi_generic_error_notifiers =
+@@ -527,9 +529,10 @@ void ghes_record_cper_errors(AcpiGhesState *ags, const void *cper, size_t len,
+     if (!ags->use_hest_addr) {
+         get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
+                              &cper_addr, &read_ack_register_addr);
+-    } else {
+-        get_ghes_source_offsets(source_id, le64_to_cpu(ags->hest_addr_le),
+-                                &cper_addr, &read_ack_register_addr, errp);
++    } else if (!get_ghes_source_offsets(source_id,
++                    le64_to_cpu(ags->hest_addr_le),
++                    &cper_addr, &read_ack_register_addr, errp)) {
++            return;
+     }
  
-diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
-index 76623f78c4..67180ba5f0 100644
---- a/hw/pci-host/ppce500.c
-+++ b/hw/pci-host/ppce500.c
-@@ -516,7 +516,6 @@ static void e500_pcihost_class_init(ObjectClass *klass, const void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->realize = e500_pcihost_realize;
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     device_class_set_props(dc, pcihost_properties);
-     dc->vmsd = &vmstate_ppce500_pci;
- }
-diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-index bf56229051..b353d3e1e6 100644
---- a/hw/pci-host/q35.c
-+++ b/hw/pci-host/q35.c
-@@ -194,7 +194,6 @@ static void q35_host_class_init(ObjectClass *klass, const void *data)
-     device_class_set_props(dc, q35_host_props);
-     /* Reason: needs to be wired up by pc_q35_init */
-     dc->user_creatable = false;
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->fw_name = "pci";
- }
- 
-diff --git a/hw/pci-host/raven.c b/hw/pci-host/raven.c
-index c50061996c..b3c2678667 100644
---- a/hw/pci-host/raven.c
-+++ b/hw/pci-host/raven.c
-@@ -296,7 +296,6 @@ static void raven_pcihost_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->realize = raven_pcihost_realizefn;
-     dc->fw_name = "pci";
- }
-diff --git a/hw/pci-host/remote.c b/hw/pci-host/remote.c
-index feaaa9adaa..9ea95fac6e 100644
---- a/hw/pci-host/remote.c
-+++ b/hw/pci-host/remote.c
-@@ -55,7 +55,6 @@ static void remote_pcihost_class_init(ObjectClass *klass, const void *data)
-     dc->realize = remote_pcihost_realize;
- 
-     dc->user_creatable = false;
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->fw_name = "pci";
- }
- 
-diff --git a/hw/pci-host/sabre.c b/hw/pci-host/sabre.c
-index b3f57dca7d..cd2328ad53 100644
---- a/hw/pci-host/sabre.c
-+++ b/hw/pci-host/sabre.c
-@@ -505,7 +505,6 @@ static void sabre_class_init(ObjectClass *klass, const void *data)
-     dc->realize = sabre_realize;
-     device_class_set_legacy_reset(dc, sabre_reset);
-     device_class_set_props(dc, sabre_properties);
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->fw_name = "pci";
-     sbc->explicit_ofw_unit_address = sabre_ofw_unit_address;
- }
-diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
-index d39546b6f4..10972de694 100644
---- a/hw/pci-host/uninorth.c
-+++ b/hw/pci-host/uninorth.c
-@@ -435,7 +435,6 @@ static void pci_unin_main_class_init(ObjectClass *klass, const void *data)
- 
-     dc->realize = pci_unin_main_realize;
-     device_class_set_props(dc, pci_unin_main_pci_host_props);
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->fw_name = "pci";
-     sbc->explicit_ofw_unit_address = pci_unin_main_ofw_unit_address;
- }
-@@ -453,7 +452,6 @@ static void pci_u3_agp_class_init(ObjectClass *klass, const void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->realize = pci_u3_agp_realize;
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
- }
- 
- static const TypeInfo pci_u3_agp_info = {
-@@ -469,7 +467,6 @@ static void pci_unin_agp_class_init(ObjectClass *klass, const void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->realize = pci_unin_agp_realize;
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
- }
- 
- static const TypeInfo pci_unin_agp_info = {
-@@ -485,7 +482,6 @@ static void pci_unin_internal_class_init(ObjectClass *klass, const void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->realize = pci_unin_internal_realize;
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
- }
- 
- static const TypeInfo pci_unin_internal_info = {
-diff --git a/hw/pci-host/xilinx-pcie.c b/hw/pci-host/xilinx-pcie.c
-index 86c20377d1..40f625b61d 100644
---- a/hw/pci-host/xilinx-pcie.c
-+++ b/hw/pci-host/xilinx-pcie.c
-@@ -172,7 +172,6 @@ static void xilinx_pcie_host_class_init(ObjectClass *klass, const void *data)
- 
-     hc->root_bus_path = xilinx_pcie_host_root_bus_path;
-     dc->realize = xilinx_pcie_host_realize;
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->fw_name = "pci";
-     device_class_set_props(dc, xilinx_pcie_host_props);
- }
-@@ -291,7 +290,6 @@ static void xilinx_pcie_root_class_init(ObjectClass *klass, const void *data)
-     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->desc = "Xilinx AXI-PCIe Host Bridge";
-     k->vendor_id = PCI_VENDOR_ID_XILINX;
-     k->device_id = 0x7021;
-diff --git a/hw/pci/pci_host.c b/hw/pci/pci_host.c
-index 05f1475dc7..91e3885c7f 100644
---- a/hw/pci/pci_host.c
-+++ b/hw/pci/pci_host.c
-@@ -245,6 +245,7 @@ static void pci_host_class_init(ObjectClass *klass, const void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     device_class_set_props(dc, pci_host_properties_common);
-     dc->vmsd = &vmstate_pcihost;
-+    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
- }
- 
- static const TypeInfo pci_host_type_info = {
+     cpu_physical_memory_read(read_ack_register_addr,
 -- 
 MST
 

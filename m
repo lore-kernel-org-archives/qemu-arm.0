@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D34D4EA7942
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 19:10:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8066AEA7944
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 19:11:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vniAX-0008RJ-5b; Wed, 04 Feb 2026 14:04:05 -0500
+	id 1vniAX-0008SQ-AK; Wed, 04 Feb 2026 14:04:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vniAO-0007fE-Cf
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 14:03:56 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vniAS-0007n3-Py
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 14:04:00 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vniAM-0007vo-T7
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 14:03:56 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vniAQ-0007xQ-Du
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 14:03:59 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770231833;
+ s=mimecast20190719; t=1770231837;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=ArWa7ZxMRfjmS5u5tmE8e+KIpDRrIw2EFlofFVZVFnE=;
- b=UvqW/pPoRN67U7NRKPhWaEDD7yE/T/bFEH6PXYM+qae+x/JcW3V6O/QqvNhCVb4hGkffO+
- gWei+wDT0JO2VWXuk7dpPK6cjpyjf4O1dOGJyyhZXudJdghrLYeeNUb6x1kbvSLQ5+Z8Oa
- /N3WHxM1KY/Biuv3sHQvP+cGbPo36I8=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=pDLl0CipBDb5NTwlLQHww8+blGdI/WR9oxHWsPKmF9s=;
+ b=BoIfOLGvopwLL/pyojEiSx3aKPVJIa9/GgsO1fOi7D/92BEhZiqNovwy8enH9qJI/4OBgR
+ qKV+lYYsCq1aFZN/QlJBrP5dPWr9iyJuzV4PJAgLOQzVX0aXzY66UY8vpYzbGmJNt6wyXo
+ sGTXcGQRqBjlgPwa0JUxRKT9taYd8B8=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-52-yQIM3HrsObm3rt6q-mG4aw-1; Wed, 04 Feb 2026 14:03:52 -0500
-X-MC-Unique: yQIM3HrsObm3rt6q-mG4aw-1
-X-Mimecast-MFC-AGG-ID: yQIM3HrsObm3rt6q-mG4aw_1770231831
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-4358f90fe8dso118425f8f.0
- for <qemu-arm@nongnu.org>; Wed, 04 Feb 2026 11:03:52 -0800 (PST)
+ us-mta-158-QiieXfrDM_mWVzAG9zmiGQ-1; Wed, 04 Feb 2026 14:03:56 -0500
+X-MC-Unique: QiieXfrDM_mWVzAG9zmiGQ-1
+X-Mimecast-MFC-AGG-ID: QiieXfrDM_mWVzAG9zmiGQ_1770231835
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-48057c39931so1465925e9.0
+ for <qemu-arm@nongnu.org>; Wed, 04 Feb 2026 11:03:56 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770231831; x=1770836631;
+ d=1e100.net; s=20230601; t=1770231835; x=1770836635;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ArWa7ZxMRfjmS5u5tmE8e+KIpDRrIw2EFlofFVZVFnE=;
- b=lj4tlyC1n7aE1UZsrR5Je1QY5qve6uYBNk4UXfIEMQg2UivE7tHMosSvzAJfHCirqo
- xG+mIG0jraRDrPktd1Aaec8bkTfsIEcDrOQ4V2dBgxpeg4Wwr6W8RTmhLpwBWDVhP8WP
- gZScuqEHsT8Rtjp5FeTkzOMlFLyABQ+GLrMapgicuIm2u675U7M8sTDOTb5u5bgPvdes
- Z8cME+Isaj3MyB2pPtk/5MsmSDRRNFFurNsOyPfXAa1LFX3N98AnYiIzsCwZX4LGFeH5
- /rBkJ62KHXMqP8lAdkYOPjjPOZVR4wmgksNTS2sfOt0a5BPz1TZBm9sEbXfq9VF1Ny1h
- lCSQ==
+ bh=pDLl0CipBDb5NTwlLQHww8+blGdI/WR9oxHWsPKmF9s=;
+ b=tzUY8TrRckCatTJa4SA9oXX99xf527Pb4JErrQ45525tLCxil3LxNIVLcY7Sjv/9Nk
+ IV/SGN2lH9pSEqkv0hV3oQGZ73R6GRjPFaaL3YAi4OEnvVaYtx6IW010JZ4Quc7QjTNi
+ Xgr810T5yXnd5rXEQjhKXto8JFgvQX8Kg3ndBUMxKeGW769/8lb3xSkbhLOp7+RokGjT
+ Uw71Z+UDocyGzi1H1iFmcgOv4oy/oxD3FNHa2/ZE4AgE3hXzadpQfzvE7jqpf8pV5Whm
+ OE1oLNXNciXcqOhvLUSYbXV/oBTnXYFjZ9r3DgDw9aSmtasaBTe7UomDPKUU8YaZYrhB
+ Vrgg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWacOQ7LYbReZIaF0Ye41ptYnP7demShrunRou/6sJ/za2OHhWgNjapskdCdkUHcx926dfmJTNm+A==@nongnu.org
-X-Gm-Message-State: AOJu0YxkKksvk1RCGbXKBV+2fFiteFdxIla2rIBhnxUM6Xc3irPu4xeB
- chS6O6HdoiMAzOtYnsSzwUcqF3mn0jjTx9AtOXSIU4YIXeArpasCAPNUiyE5ktqibCT0EOG6VA2
- nDe39YTDM2nj5uYWshKBj7RiEwkeh0zEwLymqkpJnN8HX0P0X422M8A==
-X-Gm-Gg: AZuq6aKLjSU96dzfklwb1mUpcbbftMxX4fjMx2WtWb3k7GecUGBaC+x3eGxIZJvSIgq
- 5ZTBsBQwv04hj2r3frH2LYw4d9mkdzIU1JGM3sh1j4WAVHXiGKif9TR2HlSkpPSVhk6j4G9+dIw
- 66xVCddiLo+It/VXLde422vn11ofoBGgVDObmOn5RY/eXOYGiSBeJkPz4x82hp2hDv+dwy+Raqe
- TrKxMKHi6fw0JDEESPHRKYafX8iedFAGFbWO2xd+n2dVm2eFAWGt8sVskmIk1fjSilwCnNdQlkL
- QUGUJ9L0g6YxKf0h4BBfMzmGLM/FSv0+rdtPLl0DZUYMW5bFf+yYcx1uPeh6NZD7rm1vLx8dN8t
- CUuly1iecdhwJfjrt/rsfxvPf7Vf5fdfmrg==
-X-Received: by 2002:a05:6000:616:b0:435:92c6:d556 with SMTP id
- ffacd0b85a97d-436213dfc30mr529195f8f.16.1770231830798; 
- Wed, 04 Feb 2026 11:03:50 -0800 (PST)
-X-Received: by 2002:a05:6000:616:b0:435:92c6:d556 with SMTP id
- ffacd0b85a97d-436213dfc30mr529137f8f.16.1770231830333; 
- Wed, 04 Feb 2026 11:03:50 -0800 (PST)
+ AJvYcCUHhUey80NRBBrvjP/lqztZSMHfD7vJuG1hc69iHHmRL66olJoqbjeuLVVmO6fsfqjQGYdVfj5HEQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwQ3fyJYL8tCoc5Zt47J+Xu1MVAm+fUZReaGMvXzWba2N+jWOrl
+ d8cE0iWaUIxH9HAHKb4BPxK2RfdMfl9VZ7c8o9FczQX4O1fCRNqSb7sG7PUT+cJs32GnRp8V/O+
+ 3qBTLxeJXgefiTSGN1A9vS2UnFt6sHwSJFwbILaT2Qd/zmjtAYePlRQ==
+X-Gm-Gg: AZuq6aLXXhoGTNa6W+o35fhstc+PxFq6lja2LpIOIJp3CwSz3qQo8vGrqjyhcrNFRyh
+ H+ntk5jgNJ4uYYutGaihtLR6fYVwyqyKNgHMSxuXnaA0H3pdH/bk7zJyRDgzJzCNRZIHDlqMmm+
+ X4mkNcbpxeRG6m2nlBo8WcjD2UXzaDxfwugEKN6xOvurg+fS/yM3fqNVwFPSqZodqbgQUx1v2PY
+ xnqRhNFQng1vSpqQQA2eOlnZShSq1ohyvZHyHLTJJeqkRYf5cwZ8bPtnYDOg4dSXbObuOqv3HnJ
+ arOQT8zdhhP3qHKRQQhedgLFucmoPIzeg3rvutbBJWhdcdtGWuk24vjAF7+x82OebTKYoGAFH9U
+ M1qWNZ7ZeAs3NgI1ieSotukZvyaGKkQNa4A==
+X-Received: by 2002:a05:600c:6087:b0:483:a21:7744 with SMTP id
+ 5b1f17b1804b1-4830e977f1cmr52879785e9.26.1770231835313; 
+ Wed, 04 Feb 2026 11:03:55 -0800 (PST)
+X-Received: by 2002:a05:600c:6087:b0:483:a21:7744 with SMTP id
+ 5b1f17b1804b1-4830e977f1cmr52879395e9.26.1770231834923; 
+ Wed, 04 Feb 2026 11:03:54 -0800 (PST)
 Received: from redhat.com (IGLD-80-230-34-155.inter.net.il. [80.230.34.155])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4361805faddsm8351974f8f.33.2026.02.04.11.03.48
+ ffacd0b85a97d-4361805fec6sm7965375f8f.32.2026.02.04.11.03.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Feb 2026 11:03:49 -0800 (PST)
-Date: Wed, 4 Feb 2026 14:03:48 -0500
+ Wed, 04 Feb 2026 11:03:54 -0800 (PST)
+Date: Wed, 4 Feb 2026 14:03:52 -0500
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Gavin Shan <gshan@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Dongjiu Geng <gengdongjiu1@gmail.com>,
- Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org
-Subject: [PULL 26/51] acpi/ghes: Automate data block cleanup in
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ kvm@vger.kernel.org
+Subject: [PULL 28/51] target/arm/kvm: Exit on error from
  acpi_ghes_memory_errors()
-Message-ID: <41c79ba3ab0dc84f9601f0d48f47e0502334fa2f.1770231744.git.mst@redhat.com>
+Message-ID: <afabd70d34547ea812cf2094917cef83dae85843.1770231744.git.mst@redhat.com>
 References: <cover.1770231744.git.mst@redhat.com>
 MIME-Version: 1.0
 In-Reply-To: <cover.1770231744.git.mst@redhat.com>
 X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
 X-Mutt-Fcc: =sent
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: trxandRJID6OA1pMgOME6G9Xmpv13kzg34wLaVSHB0I_1770231831
+X-Mimecast-MFC-PROC-ID: NUhsNL5qXgEVMzd8DNkCq2D2Coc4YHhLwW4bPC78yzk_1770231835
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
@@ -118,45 +118,38 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Gavin Shan <gshan@redhat.com>
 
-Use g_auto_ptr() to automate data block cleanup in the function so
-that it won't be a burden to us.
+A core dump is no sense as there isn't programming bugs related to
+errors from acpi_ghes_memory_errors().
 
+Exit instead of abort when the function returns errors, and the
+excessive error message is also dropped.
+
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
 Suggested-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Gavin Shan <gshan@redhat.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-Message-Id: <20251201141803.2386129-2-gshan@redhat.com>
+Message-Id: <20251201141803.2386129-4-gshan@redhat.com>
 ---
- hw/acpi/ghes.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+ target/arm/kvm.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index 5445dc11bd..4e6903a8d3 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -566,9 +566,7 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
-                   0xED, 0x7C, 0x83, 0xB1);
-     Error *err = NULL;
-     int data_length;
--    GArray *block;
--
--    block = g_array_new(false, true /* clear */, 1);
-+    g_autoptr(GArray) block = g_array_new(false, true /* clear */, 1);
- 
-     data_length = ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH;
-     /*
-@@ -586,8 +584,6 @@ int acpi_ghes_memory_errors(AcpiGhesState *ags, uint16_t source_id,
-     /* Report the error */
-     ghes_record_cper_errors(ags, block->data, block->len, source_id, &err);
- 
--    g_array_free(block, true);
--
-     if (err) {
-         error_report_err(err);
-         return -1;
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 0828e8b87b..b83f1d5e4f 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -2477,8 +2477,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+                                              paddr)) {
+                     kvm_inject_arm_sea(c);
+                 } else {
+-                    error_report("failed to record the error");
+-                    abort();
++                    exit(1);
+                 }
+             }
+             return;
 -- 
 MST
 

@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14DABE95374
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:32:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85772E95374
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:33:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnaBW-0000nS-Ky; Wed, 04 Feb 2026 05:32:34 -0500
+	id 1vnaBc-0001Hn-Ot; Wed, 04 Feb 2026 05:32:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaB7-0000U0-MP
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:09 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBR-0000fL-UJ
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:30 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaB5-0003zW-Pw
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:09 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBP-00043Y-Pn
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:29 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770201126;
+ s=mimecast20190719; t=1770201146;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2pxvTcQsOrMAvMcG0AWNrtfMa1MPkCDpkyj2qay+hYw=;
- b=bobjjy8IfkZ0bQf7s7FpFgrHnI3xyqUtGozjiSxGxTU9cWAdqczpRICa8XoW6rI7Pt1DgP
- CcygXduMJ/IA/LGJnY3zS2NpelQFg4OmDnxa5i0k7UZHSD/n5ch3e2rE95SAtTAX35w74Q
- DtWXITRr0vZPZwrI1Un6VgRdSFMfyOg=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=vbeGJUD/FPOPHW2asDqxfTZ8BJkrGhDFAcGbiy6EOg8=;
+ b=h4/VDcQl0jLrm82hfkkijb0HyPXLnZ5wggo+0V6nk5lygIw9rHf8NNDtFSngG0fz86wEcS
+ xn3DrwvNBQ8d1Bpp4etnLBP39EPKSR2STqS/oJMDJAb/qNw0Wu9Ae6dY+l8tU0FvYLztWR
+ JHIluueycGPALiA31xpdyk7TumEcTK0=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-508-PyapBYJ9NHOjmEBa8TaMIg-1; Wed,
- 04 Feb 2026 05:32:03 -0500
-X-MC-Unique: PyapBYJ9NHOjmEBa8TaMIg-1
-X-Mimecast-MFC-AGG-ID: PyapBYJ9NHOjmEBa8TaMIg_1770201122
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-597-SPYolAm_M7ueRQagmTmNCA-1; Wed,
+ 04 Feb 2026 05:32:25 -0500
+X-MC-Unique: SPYolAm_M7ueRQagmTmNCA-1
+X-Mimecast-MFC-AGG-ID: SPYolAm_M7ueRQagmTmNCA_1770201144
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A9AD81956064; Wed,  4 Feb 2026 10:32:02 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A02B7195605A; Wed,  4 Feb 2026 10:32:24 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D4F4E180066D; Wed,  4 Feb 2026 10:32:00 +0000 (UTC)
+ id 2E68018004BB; Wed,  4 Feb 2026 10:32:22 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 10/45] hw/pci-host/aspeed_pcie: Drop AST2600 PCIe root device
-Date: Wed,  4 Feb 2026 11:31:01 +0100
-Message-ID: <20260204103136.1795455-11-clg@redhat.com>
+Subject: [PULL 21/45] tests/functional/aarch64/test_aspeed_ast2700: Update
+ test ASPEED SDK v11.00 for A1
+Date: Wed,  4 Feb 2026 11:31:12 +0100
+Message-ID: <20260204103136.1795455-22-clg@redhat.com>
 In-Reply-To: <20260204103136.1795455-1-clg@redhat.com>
 References: <20260204103136.1795455-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: XOm0QFUJOJwNorSwqW-OvxT6Jr-8_dNooNPblymRs_k_1770201122
+X-Mimecast-MFC-PROC-ID: I-z05Aanbh5htbUtRWeV2exj6p8Gp1RsgfqmFF8ms-8_1770201144
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -88,166 +89,129 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-AST2600 PCIe previously exposed a root bus at 0x80 with both a
-root device at 80:00.0 and a root port at 80:08.0.
-
-Recent ASPEED SDK PCIe driver updates decided to remove the root
-device and keep only a single root port. This behavior has already
-been accepted by the upstream Linux kernel.
-
-Update the QEMU PCIe model accordingly by dropping the root device
-implementation and related properties. AST2600 now matches the
-AST2700 PCIe topology and no longer supports the legacy RC_L
-layout.
-
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260127032348.2238527-3-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260203020855.1642884-7-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/pci-host/aspeed_pcie.h |  9 -----
- hw/pci-host/aspeed_pcie.c         | 57 -------------------------------
- 2 files changed, 66 deletions(-)
+ .../functional/aarch64/test_aspeed_ast2700.py | 60 +++++++++----------
+ 1 file changed, 29 insertions(+), 31 deletions(-)
 
-diff --git a/include/hw/pci-host/aspeed_pcie.h b/include/hw/pci-host/aspeed_pcie.h
-index e660119a455e..fde5816ea30c 100644
---- a/include/hw/pci-host/aspeed_pcie.h
-+++ b/include/hw/pci-host/aspeed_pcie.h
-@@ -50,13 +50,6 @@ typedef struct AspeedPCIERootPortState {
-     PCIESlot parent_obj;
- } AspeedPCIERootPortState;
+diff --git a/tests/functional/aarch64/test_aspeed_ast2700.py b/tests/functional/aarch64/test_aspeed_ast2700.py
+index 1f1b5749f4a0..828ea1ca53df 100755
+--- a/tests/functional/aarch64/test_aspeed_ast2700.py
++++ b/tests/functional/aarch64/test_aspeed_ast2700.py
+@@ -26,15 +26,23 @@ def do_test_aarch64_aspeed_sdk_start(self, image):
+         self.vm.launch()
  
--#define TYPE_ASPEED_PCIE_ROOT_DEVICE "aspeed.pcie-root-device"
--OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERootDeviceState, ASPEED_PCIE_ROOT_DEVICE);
+     def verify_vbootrom_firmware_flow(self):
+-        wait_for_console_pattern(self, 'Found valid FIT image')
+-        wait_for_console_pattern(self, '[uboot] loading')
+-        wait_for_console_pattern(self, 'done')
+-        wait_for_console_pattern(self, '[fdt] loading')
+-        wait_for_console_pattern(self, 'done')
+-        wait_for_console_pattern(self, '[tee] loading')
+-        wait_for_console_pattern(self, 'done')
+-        wait_for_console_pattern(self, '[atf] loading')
+-        wait_for_console_pattern(self, 'done')
++        wait_for_console_pattern(self, 'Found valid caliptra flash image')
++        wait_for_console_pattern(self, 'Check flash image checksum')
++        wait_for_console_pattern(self, 'pass')
++        wait_for_console_pattern(self, 'Read abb header')
++        wait_for_console_pattern(self, 'pass')
++        wait_for_console_pattern(self, 'Read soc manifest')
++        wait_for_console_pattern(self, 'pass')
++        wait_for_console_pattern(self, 'Load atf image')
++        wait_for_console_pattern(self, 'pass')
++        wait_for_console_pattern(self, 'Load optee image')
++        wait_for_console_pattern(self, 'pass')
++        wait_for_console_pattern(self, 'Load uboot image')
++        wait_for_console_pattern(self, 'pass')
++        wait_for_console_pattern(self, 'Load ssp image')
++        wait_for_console_pattern(self, 'pass')
++        wait_for_console_pattern(self, 'Load tsp image')
++        wait_for_console_pattern(self, 'pass')
+         wait_for_console_pattern(self, 'Jumping to BL31 (Trusted Firmware-A)')
+ 
+     def enable_ast2700_pcie2(self):
+@@ -63,9 +71,9 @@ def verify_openbmc_boot_and_login(self, name):
+         exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+         exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
+ 
+-    ASSET_SDK_V908_AST2700A1 = Asset(
+-            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.08/ast2700-default-obmc.tar.gz',
+-            'eac3dc409b7ea3cd4b03d4792d3cebd469792ad893cb51e1d15f0fc20bd1e2cd')
++    ASSET_SDK_V1100_AST2700A1 = Asset(
++            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2700-a1-obmc.tar.gz',
++            'd5ceed511cd0dfefbb102fff2d731159e0472948a28066dc0d90bcd54be76525')
+ 
+     def do_ast2700_i2c_test(self):
+         exec_command_and_wait_for_pattern(self,
+@@ -93,19 +101,10 @@ def do_ast2700_pcie_test(self):
+ 
+     def start_ast2700_test(self, name):
+         num_cpu = 4
+-        uboot_size = os.path.getsize(self.scratch_file(name,
+-                                                       'u-boot-nodtb.bin'))
+-        uboot_dtb_load_addr = hex(0x400000000 + uboot_size)
 -
--struct AspeedPCIERootDeviceState {
--    PCIBridge parent_obj;
--};
--
- #define TYPE_ASPEED_PCIE_RC "aspeed.pcie-rc"
- OBJECT_DECLARE_SIMPLE_TYPE(AspeedPCIERcState, ASPEED_PCIE_RC);
+         load_images_list = [
+             {
+                 'addr': '0x400000000',
+-                'file': self.scratch_file(name,
+-                                          'u-boot-nodtb.bin')
+-            },
+-            {
+-                'addr': str(uboot_dtb_load_addr),
+-                'file': self.scratch_file(name, 'u-boot.dtb')
++                'file': self.scratch_file(name, 'u-boot.bin')
+             },
+             {
+                 'addr': '0x430000000',
+@@ -113,8 +112,7 @@ def start_ast2700_test(self, name):
+             },
+             {
+                 'addr': '0x430080000',
+-                'file': self.scratch_file(name, 'optee',
+-                                          'tee-raw.bin')
++                'file': self.scratch_file(name, 'optee', 'tee-raw.bin')
+             }
+         ]
  
-@@ -78,10 +71,8 @@ struct AspeedPCIERcState {
-     uint32_t rp_addr;
-     uint32_t bus_nr;
-     char name[16];
--    bool has_rd;
-     qemu_irq irq;
+@@ -137,26 +135,26 @@ def start_ast2700_test_vbootrom(self, name):
+         self.do_test_aarch64_aspeed_sdk_start(
+                 self.scratch_file(name, 'image-bmc'))
  
--    AspeedPCIERootDeviceState root_device;
-     AspeedPCIERootPortState root_port;
- };
+-    def test_aarch64_ast2700a1_evb_sdk_v09_08(self):
++    def test_aarch64_ast2700a1_evb_sdk_v11_00(self):
+         self.set_machine('ast2700a1-evb')
+         self.require_netdev('user')
  
-diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
-index 83a1c7075c39..4fdda959396f 100644
---- a/hw/pci-host/aspeed_pcie.c
-+++ b/hw/pci-host/aspeed_pcie.c
-@@ -26,44 +26,6 @@
- #include "hw/pci/msi.h"
- #include "trace.h"
+-        self.archive_extract(self.ASSET_SDK_V908_AST2700A1)
++        self.archive_extract(self.ASSET_SDK_V1100_AST2700A1)
+         self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
+         self.vm.add_args('-netdev', 'user,id=net1')
+-        self.start_ast2700_test('ast2700-default')
+-        self.verify_openbmc_boot_and_login('ast2700-default')
++        self.start_ast2700_test('ast2700-a1')
++        self.verify_openbmc_boot_and_login('ast2700-a1')
+         self.do_ast2700_i2c_test()
+         self.do_ast2700_pcie_test()
  
--/*
-- * PCIe Root Device
-- * This device exists only on AST2600.
-- */
--
--static void aspeed_pcie_root_device_class_init(ObjectClass *klass,
--                                               const void *data)
--{
--    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
--    DeviceClass *dc = DEVICE_CLASS(klass);
--
--    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
--    dc->desc = "ASPEED PCIe Root Device";
--    k->vendor_id = PCI_VENDOR_ID_ASPEED;
--    k->device_id = 0x2600;
--    k->class_id = PCI_CLASS_BRIDGE_HOST;
--    k->subsystem_vendor_id = k->vendor_id;
--    k->subsystem_id = k->device_id;
--    k->revision = 0;
--
--    /*
--     * PCI-facing part of the host bridge,
--     * not usable without the host-facing part
--     */
--    dc->user_creatable = false;
--}
--
--static const TypeInfo aspeed_pcie_root_device_info = {
--    .name = TYPE_ASPEED_PCIE_ROOT_DEVICE,
--    .parent = TYPE_PCI_DEVICE,
--    .instance_size = sizeof(AspeedPCIERootDeviceState),
--    .class_init = aspeed_pcie_root_device_class_init,
--    .interfaces = (const InterfaceInfo[]) {
--        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
--        { },
--    },
--};
--
- /*
-  * PCIe Root Port
-  */
-@@ -291,18 +253,6 @@ static void aspeed_pcie_rc_realize(DeviceState *dev, Error **errp)
-                                 &rc->dram_alias);
-     pci_setup_iommu(pci->bus, &aspeed_pcie_rc_iommu_ops, rc);
+-    def test_aarch64_ast2700a1_evb_sdk_vbootrom_v09_08(self):
++    def test_aarch64_ast2700a1_evb_sdk_vbootrom_v11_00(self):
+         self.set_machine('ast2700a1-evb')
+         self.require_netdev('user')
  
--    /* setup root device */
--    if (rc->has_rd) {
--        object_initialize_child(OBJECT(rc), "root_device", &rc->root_device,
--                                TYPE_ASPEED_PCIE_ROOT_DEVICE);
--        qdev_prop_set_int32(DEVICE(&rc->root_device), "addr",
--                            PCI_DEVFN(0, 0));
--        qdev_prop_set_bit(DEVICE(&rc->root_device), "multifunction", false);
--        if (!qdev_realize(DEVICE(&rc->root_device), BUS(pci->bus), errp)) {
--            return;
--        }
--    }
--
-     /* setup root port */
-     qdev_prop_set_int32(DEVICE(&rc->root_port), "addr", rc->rp_addr);
-     qdev_prop_set_uint16(DEVICE(&rc->root_port), "chassis", cfg->id);
-@@ -334,7 +284,6 @@ static void aspeed_pcie_rc_instance_init(Object *obj)
+-        self.archive_extract(self.ASSET_SDK_V908_AST2700A1)
++        self.archive_extract(self.ASSET_SDK_V1100_AST2700A1)
+         self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
+         self.vm.add_args('-netdev', 'user,id=net1')
+-        self.start_ast2700_test_vbootrom('ast2700-default')
++        self.start_ast2700_test_vbootrom('ast2700-a1')
+         self.verify_vbootrom_firmware_flow()
+         self.verify_openbmc_boot_start()
  
- static const Property aspeed_pcie_rc_props[] = {
-     DEFINE_PROP_UINT32("bus-nr", AspeedPCIERcState, bus_nr, 0),
--    DEFINE_PROP_BOOL("has-rd", AspeedPCIERcState, has_rd, 0),
-     DEFINE_PROP_UINT32("rp-addr", AspeedPCIERcState, rp_addr, 0),
-     DEFINE_PROP_UINT32("msi-addr", AspeedPCIERcState, msi_addr, 0),
-     DEFINE_PROP_UINT64("dram-base", AspeedPCIERcState, dram_base, 0),
-@@ -704,9 +653,6 @@ static void aspeed_pcie_cfg_realize(DeviceState *dev, Error **errp)
-     object_property_set_int(OBJECT(&s->rc), "bus-nr",
-                             apc->rc_bus_nr,
-                             &error_abort);
--    object_property_set_bool(OBJECT(&s->rc), "has-rd",
--                            apc->rc_has_rd,
--                            &error_abort);
-     object_property_set_int(OBJECT(&s->rc), "rp-addr",
-                             apc->rc_rp_addr,
-                             &error_abort);
-@@ -746,7 +692,6 @@ static void aspeed_pcie_cfg_class_init(ObjectClass *klass, const void *data)
-     apc->nr_regs = 0x100 >> 2;
-     apc->rc_msi_addr = 0x1e77005C;
-     apc->rc_bus_nr = 0x80;
--    apc->rc_has_rd = true;
-     apc->rc_rp_addr = PCI_DEVFN(8, 0);
- }
- 
-@@ -867,7 +812,6 @@ static void aspeed_2700_pcie_cfg_class_init(ObjectClass *klass,
-     apc->nr_regs = 0x100 >> 2;
-     apc->rc_msi_addr = 0x000000F0;
-     apc->rc_bus_nr = 0;
--    apc->rc_has_rd = false;
-     apc->rc_rp_addr = PCI_DEVFN(0, 0);
- }
- 
-@@ -1041,7 +985,6 @@ static const TypeInfo aspeed_2700_pcie_phy_info = {
- static void aspeed_pcie_register_types(void)
- {
-     type_register_static(&aspeed_pcie_rc_info);
--    type_register_static(&aspeed_pcie_root_device_info);
-     type_register_static(&aspeed_pcie_root_port_info);
-     type_register_static(&aspeed_pcie_cfg_info);
-     type_register_static(&aspeed_2700_pcie_cfg_info);
 -- 
 2.52.0
 

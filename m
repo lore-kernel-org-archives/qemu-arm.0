@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87B69E95374
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:35:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0B43E95375
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:35:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnaBX-0000oK-Fo; Wed, 04 Feb 2026 05:32:35 -0500
+	id 1vnaBu-000287-QC; Wed, 04 Feb 2026 05:32:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBJ-0000bO-1W
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:23 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBl-0001km-DW
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:50 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBG-00041Z-6X
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:19 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBi-00047z-UQ
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770201137;
+ s=mimecast20190719; t=1770201166;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=MmDTHq9GqQg3NC8nEsDrj9ODo/57KLqu2rbOXLXX4eE=;
- b=h5mSsKZ7GcymRsfZmjHB0gQzstK0THyRwVnTbvYBb6J8w9VX9ooHLZiTR3hzSF7HM1h2z8
- 9ski/p36vkjlPT+5yhU8aVtckW8gktGzsLRa+VazUmaYvsP6gp8ChGYWYaggNwlCl1XAx9
- MA83qoQfAbb4VQ1+sF1gYkLV3QwAlhE=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=Z6yRu03I1DUYDKWOh3MdB/nob0tCghHS4PP2N7JelkQ=;
+ b=FRDMNsPcT8WJ9PQaoDECqiMI4Ar9ZipSMi6FKWG0G99GKwjodjP1yaW1vz7J8KfQpq7+TI
+ LHpZ6OOFMDAgbtu3E2PGijWCHLgfUQB2eP9T6M00BpPdxtQMqc5BZIObgb8l4sYQJ/A1xa
+ QMFmILfwsjxtj3QRmQBTmVEvXBjGr5I=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-269-_EzSBn6BPDuUj7YpV18LAw-1; Wed,
- 04 Feb 2026 05:32:16 -0500
-X-MC-Unique: _EzSBn6BPDuUj7YpV18LAw-1
-X-Mimecast-MFC-AGG-ID: _EzSBn6BPDuUj7YpV18LAw_1770201135
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-45-i0WMt3LjNi-1FMaDlcDYcw-1; Wed,
+ 04 Feb 2026 05:32:44 -0500
+X-MC-Unique: i0WMt3LjNi-1FMaDlcDYcw-1
+X-Mimecast-MFC-AGG-ID: i0WMt3LjNi-1FMaDlcDYcw_1770201163
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F364D195605F; Wed,  4 Feb 2026 10:32:14 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C11751800465; Wed,  4 Feb 2026 10:32:43 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6A52F1800666; Wed,  4 Feb 2026 10:32:13 +0000 (UTC)
+ id 13935180066A; Wed,  4 Feb 2026 10:32:41 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 16/45] hw/arm/aspeed_ast27x0: Fix EHCI3/4 IRQ routing to GIC
-Date: Wed,  4 Feb 2026 11:31:07 +0100
-Message-ID: <20260204103136.1795455-17-clg@redhat.com>
+Cc: Kane Chen <kane_chen@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Nabih Estefan <nabihestefan@google.com>
+Subject: [PULL 30/45] hw/arm/aspeed: Attach LTPI controller to AST1700 model
+Date: Wed,  4 Feb 2026 11:31:21 +0100
+Message-ID: <20260204103136.1795455-31-clg@redhat.com>
 In-Reply-To: <20260204103136.1795455-1-clg@redhat.com>
 References: <20260204103136.1795455-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: eHZSEOp5XKmUcNmoWho9Gjsd-6kV28wHyRLqfvSKIuc_1770201135
+X-Mimecast-MFC-PROC-ID: FRvigFgiQsw0B_1TWyojqTksmC0eZH0b0Stu8zgo-Fk_1770201163
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -86,40 +87,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Kane Chen <kane_chen@aspeedtech.com>
 
-EHCI3 and EHCI4 were missing entries in aspeed_soc_ast2700a1_irqmap,
-so their source IRQs were never routed through the INTC OR-gates.
+Connect the LTPI controller to the AST1700 model by mapping its MMIO
+region.
 
-As a result, EHCI3/4 interrupts were not propagated to the GIC,
-causing incorrect interrupt behavior for these controllers.
-
-Add EHCI3 and EHCI4 to the IRQ map and route them to the same INTC
-group as other shared peripherals, ensuring their interrupts are
-properly connected to the GIC.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Fixes: ba27ba302a264117c8b8427f944ced1bed17c438 ("hw/arm: ast27x0: Wire up EHCI controllers")
+Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260203020855.1642884-2-jamin_lin@aspeedtech.com
+Reviewed-by: Nabih Estefan <nabihestefan@google.com>
+Tested-by: Nabih Estefan <nabihestefan@google.com>
+Link: https://lore.kernel.org/qemu-devel/20260204082113.3955407-8-kane_chen@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast27x0.c | 2 ++
- 1 file changed, 2 insertions(+)
+ include/hw/arm/aspeed_ast1700.h |  3 +++
+ hw/arm/aspeed_ast1700.c         | 28 ++++++++++++++++++++++++++++
+ 2 files changed, 31 insertions(+)
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index d17f44666112..e16183c3b329 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -149,6 +149,8 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
-     [ASPEED_DEV_ETH1]      = 196,
-     [ASPEED_DEV_ETH2]      = 196,
-     [ASPEED_DEV_ETH3]      = 196,
-+    [ASPEED_DEV_EHCI3]     = 196,
-+    [ASPEED_DEV_EHCI4]     = 196,
-     [ASPEED_DEV_PECI]      = 197,
-     [ASPEED_DEV_SDHCI]     = 197,
+diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_ast1700.h
+index 378dcb437a78..addea3ab1ff9 100644
+--- a/include/hw/arm/aspeed_ast1700.h
++++ b/include/hw/arm/aspeed_ast1700.h
+@@ -9,6 +9,7 @@
+ #define ASPEED_AST1700_H
+ 
+ #include "hw/core/sysbus.h"
++#include "hw/misc/aspeed_ltpi.h"
+ 
+ #define TYPE_ASPEED_AST1700 "aspeed.ast1700"
+ 
+@@ -18,6 +19,8 @@ struct AspeedAST1700SoCState {
+     SysBusDevice parent_obj;
+ 
+     MemoryRegion iomem;
++
++    AspeedLTPIState ltpi;
  };
+ 
+ #endif /* ASPEED_AST1700_H */
+diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c
+index dd38b819b864..e4c8565d3f11 100644
+--- a/hw/arm/aspeed_ast1700.c
++++ b/hw/arm/aspeed_ast1700.c
+@@ -13,6 +13,14 @@
+ 
+ #define AST2700_SOC_LTPI_SIZE        0x01000000
+ 
++enum {
++    ASPEED_AST1700_DEV_LTPI_CTRL,
++};
++
++static const hwaddr aspeed_ast1700_io_memmap[] = {
++    [ASPEED_AST1700_DEV_LTPI_CTRL] =  0x00C34000,
++};
++
+ static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
+ {
+     AspeedAST1700SoCState *s = ASPEED_AST1700(dev);
+@@ -22,6 +30,25 @@ static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
+     memory_region_init(&s->iomem, OBJECT(s), TYPE_ASPEED_AST1700,
+                        AST2700_SOC_LTPI_SIZE);
+     sysbus_init_mmio(sbd, &s->iomem);
++
++    /* LTPI controller */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ltpi), errp)) {
++        return;
++    }
++    memory_region_add_subregion(&s->iomem,
++                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_LTPI_CTRL],
++                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ltpi), 0));
++}
++
++static void aspeed_ast1700_instance_init(Object *obj)
++{
++    AspeedAST1700SoCState *s = ASPEED_AST1700(obj);
++
++    /* LTPI controller */
++    object_initialize_child(obj, "ltpi-ctrl",
++                            &s->ltpi, TYPE_ASPEED_LTPI);
++
++    return;
+ }
+ 
+ static void aspeed_ast1700_class_init(ObjectClass *klass, const void *data)
+@@ -36,6 +63,7 @@ static const TypeInfo aspeed_ast1700_info = {
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(AspeedAST1700SoCState),
+     .class_init    = aspeed_ast1700_class_init,
++    .instance_init = aspeed_ast1700_instance_init,
+ };
+ 
+ static void aspeed_ast1700_register_types(void)
 -- 
 2.52.0
 

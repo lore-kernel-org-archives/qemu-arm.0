@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EE8CE95375
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:37:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C37EDE95378
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:37:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnaBu-00026A-D1; Wed, 04 Feb 2026 05:32:58 -0500
+	id 1vnaBa-00014Y-4G; Wed, 04 Feb 2026 05:32:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBl-0001kK-0Q
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:50 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBF-0000Wu-EY
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:20 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBi-00047l-Lc
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:48 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBD-00041G-Pi
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770201165;
+ s=mimecast20190719; t=1770201135;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=h1nByeQJG390FPZelYiFPIApZxR6CBGG4X3l2yt9zDY=;
- b=JhmPrRPjUkBqQOZbL5Ql/7au75CNyNmueDJ/nLccxABwIbP4tuFz6F503H7ykX+W8ZpTL+
- i8R7pdAxoNSXe2CH2c5ERP7bjULbh5fBU98fajvHH4S63GVrmKmJARzO97YHtDgvmSDedH
- vPWOepD6VNASQg6it1XAhMGk7lBRt6o=
+ bh=+tJJ4Gdav/bQecXsilsxeWeIbf+cYAYSrCPgNukvVfY=;
+ b=H1InMaaEf5ljoSvR1nzYtYyT6BK2Bp72ktn0zVf/Z1dB4HQrLAaAOCWJbhknEz4Oknysap
+ rSIHxv6GaX0fS8F3qHy4Jqt4atQ1F6Npnnnp4Mnuo0SLh2VcFCObtwtYBc/QkRHI3dakS2
+ KzLQZyqyXukQhKl0F8ZxHkIhgg9gXfc=
 Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-672-XmdmiKKvOPCP_xhDicUu0Q-1; Wed,
- 04 Feb 2026 05:32:31 -0500
-X-MC-Unique: XmdmiKKvOPCP_xhDicUu0Q-1
-X-Mimecast-MFC-AGG-ID: XmdmiKKvOPCP_xhDicUu0Q_1770201150
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-128-tY4WTL1kMoiSZcGs40OAXQ-1; Wed,
+ 04 Feb 2026 05:32:11 -0500
+X-MC-Unique: tY4WTL1kMoiSZcGs40OAXQ-1
+X-Mimecast-MFC-AGG-ID: tY4WTL1kMoiSZcGs40OAXQ_1770201131
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C716419560A5; Wed,  4 Feb 2026 10:32:30 +0000 (UTC)
+ id E63F21956053; Wed,  4 Feb 2026 10:32:10 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id EF60418003F6; Wed,  4 Feb 2026 10:32:28 +0000 (UTC)
+ id 74DBE18004AD; Wed,  4 Feb 2026 10:32:09 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Kane Chen <kane_chen@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Nabih Estefan <nabihestefan@google.com>
-Subject: [PULL 24/45] hw/misc: Add LTPI controller
-Date: Wed,  4 Feb 2026 11:31:15 +0100
-Message-ID: <20260204103136.1795455-25-clg@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 14/45] tests/functional/arm/test_aspeed_ast1060: Update test
+ aspeed-zephyr-project v03.04
+Date: Wed,  4 Feb 2026 11:31:05 +0100
+Message-ID: <20260204103136.1795455-15-clg@redhat.com>
 In-Reply-To: <20260204103136.1795455-1-clg@redhat.com>
 References: <20260204103136.1795455-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: oHdrIht84uKv7PxXRIBPMJi4CoK_UTRCSAObTUrQ1vU_1770201150
+X-Mimecast-MFC-PROC-ID: EmzrEwFeK2-rW0woTSdY0N1X9-QEqnSwlFcr7D6mSSI_1770201131
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -87,289 +87,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Kane Chen <kane_chen@aspeedtech.com>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-LTPI (LVDS Tunneling Protocol & Interface) is defined in the OCP DC-SCM
-2.0 specification:
-https://www.opencompute.org/documents/ocp-dc-scm-2-0-ltpi-ver-1-0-pdf
-
-LTPI is a protocol and physical interface for tunneling various low-speed
-signals between the HPM and SCM. As shown in Figure 2, the AST27x0 (left)
-integrates two LTPI controllers, allowing it to connect to up to two
-extended boards.
-
-This commit introduces a simple device model for the ASPEED LTPI
-controller in QEMU.
-
-The model includes basic MMIO read/write operations and sets default
-register values during reset to emulate a link-up state.
-
-Implements register space with read/write callbacks.
-
-Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Reviewed-by: Nabih Estefan <nabihestefan@google.com>
-Tested-by: Nabih Estefan <nabihestefan@google.com>
-Link: https://lore.kernel.org/qemu-devel/20260204082113.3955407-2-kane_chen@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260127032348.2238527-7-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/misc/aspeed_ltpi.h |  33 ++++++
- hw/misc/aspeed_ltpi.c         | 193 ++++++++++++++++++++++++++++++++++
- hw/misc/meson.build           |   1 +
- 3 files changed, 227 insertions(+)
- create mode 100644 include/hw/misc/aspeed_ltpi.h
- create mode 100644 hw/misc/aspeed_ltpi.c
+ tests/functional/arm/test_aspeed_ast1060.py | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/include/hw/misc/aspeed_ltpi.h b/include/hw/misc/aspeed_ltpi.h
-new file mode 100644
-index 000000000000..3330a49b0564
---- /dev/null
-+++ b/include/hw/misc/aspeed_ltpi.h
-@@ -0,0 +1,33 @@
-+/*
-+ * ASPEED LTPI Controller
-+ *
-+ * Copyright (C) 2025 ASPEED Technology Inc.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#ifndef ASPEED_LTPI_H
-+#define ASPEED_LTPI_H
-+
-+#include "hw/core/sysbus.h"
-+
-+#define TYPE_ASPEED_LTPI "aspeed.ltpi-ctrl"
-+OBJECT_DECLARE_SIMPLE_TYPE(AspeedLTPIState, ASPEED_LTPI)
-+
-+#define ASPEED_LTPI_TOTAL_SIZE  0x900
-+#define ASPEED_LTPI_CTRL_SIZE   0x200
-+#define ASPEED_LTPI_PHY_SIZE    0x100
-+#define ASPEED_LTPI_TOP_SIZE    0x100
-+
-+struct AspeedLTPIState {
-+    SysBusDevice parent;
-+    MemoryRegion mmio;
-+    MemoryRegion mmio_ctrl;
-+    MemoryRegion mmio_phy;
-+    MemoryRegion mmio_top;
-+
-+    uint32_t ctrl_regs[ASPEED_LTPI_CTRL_SIZE >> 2];
-+    uint32_t phy_regs[ASPEED_LTPI_PHY_SIZE >> 2];
-+    uint32_t top_regs[ASPEED_LTPI_TOP_SIZE >> 2];
-+};
-+
-+#endif /* ASPEED_LTPI_H */
-diff --git a/hw/misc/aspeed_ltpi.c b/hw/misc/aspeed_ltpi.c
-new file mode 100644
-index 000000000000..131cea9c6b8b
---- /dev/null
-+++ b/hw/misc/aspeed_ltpi.c
-@@ -0,0 +1,193 @@
-+/*
-+ * ASPEED LTPI Controller
-+ *
-+ * Copyright (C) 2025 ASPEED Technology Inc.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "migration/vmstate.h"
-+#include "hw/misc/aspeed_ltpi.h"
-+
-+#define ASPEED_LTPI_CTRL_BASE   0x000
-+#define ASPEED_LTPI_PHY_BASE    0x200
-+#define ASPEED_LTPI_TOP_BASE    0x800
-+
-+#define LTPI_CTRL_LINK_MNG 0x42
-+#define LTPI_PHY_MODE 0x0
-+
-+static uint64_t aspeed_ltpi_top_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    AspeedLTPIState *s = opaque;
-+    uint32_t idx = offset >> 2;
-+
-+    return s->top_regs[idx];
-+}
-+
-+static void aspeed_ltpi_top_write(void *opaque, hwaddr offset,
-+                              uint64_t val, unsigned size)
-+{
-+    AspeedLTPIState *s = opaque;
-+    uint32_t idx = offset >> 2;
-+
-+    switch (offset) {
-+    default:
-+        s->top_regs[idx] = (uint32_t)val;
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps aspeed_ltpi_top_ops = {
-+    .read = aspeed_ltpi_top_read,
-+    .write = aspeed_ltpi_top_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static uint64_t aspeed_ltpi_phy_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    AspeedLTPIState *s = opaque;
-+    uint32_t idx = offset >> 2;
-+
-+    return s->phy_regs[idx];
-+}
-+
-+static void aspeed_ltpi_phy_write(void *opaque, hwaddr offset,
-+                              uint64_t val, unsigned size)
-+{
-+    AspeedLTPIState *s = opaque;
-+    uint32_t idx = offset >> 2;
-+
-+    switch (offset) {
-+    default:
-+        s->phy_regs[idx] = (uint32_t)val;
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps aspeed_ltpi_phy_ops = {
-+    .read = aspeed_ltpi_phy_read,
-+    .write = aspeed_ltpi_phy_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static uint64_t aspeed_ltpi_ctrl_read(void *opaque,
-+                                      hwaddr offset, unsigned size)
-+{
-+    AspeedLTPIState *s = opaque;
-+    uint32_t idx = offset >> 2;
-+
-+    return s->ctrl_regs[idx];
-+}
-+
-+static void aspeed_ltpi_ctrl_write(void *opaque, hwaddr offset,
-+                              uint64_t val, unsigned size)
-+{
-+    AspeedLTPIState *s = opaque;
-+    uint32_t idx = offset >> 2;
-+
-+    switch (offset) {
-+    default:
-+        s->ctrl_regs[idx] = (uint32_t)val;
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps aspeed_ltpi_ctrl_ops = {
-+    .read = aspeed_ltpi_ctrl_read,
-+    .write = aspeed_ltpi_ctrl_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void aspeed_ltpi_reset(DeviceState *dev)
-+{
-+    AspeedLTPIState *s = ASPEED_LTPI(dev);
-+
-+    memset(s->ctrl_regs, 0, sizeof(s->ctrl_regs));
-+    memset(s->phy_regs, 0, sizeof(s->phy_regs));
-+    memset(s->top_regs, 0, sizeof(s->top_regs));
-+    /* set default values */
-+    s->ctrl_regs[LTPI_CTRL_LINK_MNG] = 0x11900007;
-+    s->phy_regs[LTPI_PHY_MODE] = 0x2;
-+}
-+
-+
-+static const VMStateDescription vmstate_aspeed_ltpi = {
-+    .name = TYPE_ASPEED_LTPI,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(ctrl_regs, AspeedLTPIState,
-+                             ASPEED_LTPI_CTRL_SIZE >> 2),
-+        VMSTATE_UINT32_ARRAY(phy_regs, AspeedLTPIState,
-+                             ASPEED_LTPI_PHY_SIZE >> 2),
-+        VMSTATE_UINT32_ARRAY(top_regs, AspeedLTPIState,
-+                             ASPEED_LTPI_TOP_SIZE >> 2),
-+
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void aspeed_ltpi_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedLTPIState *s = ASPEED_LTPI(dev);
-+
-+    memory_region_init(&s->mmio, OBJECT(s), TYPE_ASPEED_LTPI,
-+                       ASPEED_LTPI_TOTAL_SIZE);
-+
-+    memory_region_init_io(&s->mmio_ctrl, OBJECT(s),
-+                          &aspeed_ltpi_ctrl_ops, s,
-+                          "aspeed-ltpi-ctrl", ASPEED_LTPI_CTRL_SIZE);
-+
-+    memory_region_init_io(&s->mmio_phy, OBJECT(s),
-+                          &aspeed_ltpi_phy_ops, s,
-+                          "aspeed-ltpi-phy", ASPEED_LTPI_PHY_SIZE);
-+
-+    memory_region_init_io(&s->mmio_top, OBJECT(s),
-+                          &aspeed_ltpi_top_ops, s,
-+                          "aspeed-ltpi-top", ASPEED_LTPI_TOP_SIZE);
-+
-+    memory_region_add_subregion(&s->mmio,
-+                                ASPEED_LTPI_CTRL_BASE, &s->mmio_ctrl);
-+    memory_region_add_subregion(&s->mmio,
-+                                ASPEED_LTPI_PHY_BASE, &s->mmio_phy);
-+    memory_region_add_subregion(&s->mmio,
-+                                ASPEED_LTPI_TOP_BASE, &s->mmio_top);
-+
-+    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->mmio);
-+}
-+
-+static void aspeed_ltpi_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    dc->realize = aspeed_ltpi_realize;
-+    dc->vmsd = &vmstate_aspeed_ltpi;
-+    device_class_set_legacy_reset(dc, aspeed_ltpi_reset);
-+}
-+
-+static const TypeInfo aspeed_ltpi_info = {
-+    .name          = TYPE_ASPEED_LTPI,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(AspeedLTPIState),
-+    .class_init    = aspeed_ltpi_class_init,
-+};
-+
-+static void aspeed_ltpi_register_types(void)
-+{
-+    type_register_static(&aspeed_ltpi_info);
-+}
-+
-+type_init(aspeed_ltpi_register_types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index c444e030ecda..f7f1b0da75c5 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -137,6 +137,7 @@ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_hace.c',
-   'aspeed_i3c.c',
-   'aspeed_lpc.c',
-+  'aspeed_ltpi.c',
-   'aspeed_scu.c',
-   'aspeed_sbc.c',
-   'aspeed_sdmc.c',
+diff --git a/tests/functional/arm/test_aspeed_ast1060.py b/tests/functional/arm/test_aspeed_ast1060.py
+index 034efa534262..eccb4252d86a 100644
+--- a/tests/functional/arm/test_aspeed_ast1060.py
++++ b/tests/functional/arm/test_aspeed_ast1060.py
+@@ -11,18 +11,18 @@
+ 
+ 
+ class AST1060Machine(AspeedTest):
+-    ASSET_ASPEED_AST1060_PROT_3_02 = Asset(
++    ASSET_ASPEED_AST1060_PROT_3_04 = Asset(
+         ('https://github.com/AspeedTech-BMC'
+-         '/aspeed-zephyr-project/releases/download/v03.02'
+-         '/ast1060_prot_v03.02.tgz'),
+-         'dd5f1adc935316ddd1906506a02e15567bd7290657b52320f1a225564cc175bd')
++         '/aspeed-zephyr-project/releases/download/v03.04'
++         '/ast1060_prot_v03.04.tgz'),
++         'c0319df55f5b7a547efefc5a6ba374b881223d5fe1a776bfdd36f97fd1f31d50')
+ 
+-    def test_arm_ast1060_prot_3_02(self):
++    def test_arm_ast1060_prot_3_04(self):
+         self.set_machine('ast1060-evb')
+ 
+         kernel_name = "ast1060_prot/zephyr.bin"
+         kernel_file = self.archive_extract(
+-            self.ASSET_ASPEED_AST1060_PROT_3_02, member=kernel_name)
++            self.ASSET_ASPEED_AST1060_PROT_3_04, member=kernel_name)
+ 
+         self.vm.set_console()
+         self.vm.add_args('-kernel', kernel_file, '-nographic')
+@@ -35,7 +35,7 @@ def test_arm_ast1060_otp_blockdev_device(self):
+         self.vm.set_machine("ast1060-evb")
+ 
+         kernel_name = "ast1060_prot/zephyr.bin"
+-        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_02,
++        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_04,
+                                            member=kernel_name)
+         otp_img = self.generate_otpmem_image()
+ 
 -- 
 2.52.0
 

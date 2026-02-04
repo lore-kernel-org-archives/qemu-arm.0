@@ -4,147 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDC4EEA7943
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 19:03:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00FD5EA7944
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 19:03:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vni8N-0004XD-Q7; Wed, 04 Feb 2026 14:01:51 -0500
+	id 1vni9w-0006hS-II; Wed, 04 Feb 2026 14:03:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vni8E-0004TS-75; Wed, 04 Feb 2026 14:01:42 -0500
-Received: from mail-westus3azlp170120001.outbound.protection.outlook.com
- ([2a01:111:f403:c107::1] helo=PH8PR06CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vni9t-0006VI-Ue
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 14:03:25 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vni83-0007TG-E0; Wed, 04 Feb 2026 14:01:37 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=YCIY6zUQ66Holnme6sa8ZE+u1Qoe5mvVbEC8T5NdGwn4x1RjRT5msFvdu+aY0osVYeKCwBY2kgDgTaS9g8fcZF3Kl7Sf5YDuTcsE/ZDwhg6UyKDquyQzfqBt2kjFcdyYt2ZQKzDbBsWV/+N76IyP9C6RoxC4WxaEm+55D/qv3yNi+ZmAOmcQYlvQyOzOFUgSev2nD06hmKHi1ADPq8NZUKO3PzPqSwa2XZZ8GfVDK+li7tFviEO4U23hHcTFs94wAg2kgV/2f7XEJOYuW4tcu5YGhvTVb8zEI3Y0pN9KTwFJjAUCj5bvh8IUcdHV3qFM+txWlOhWrx+c/Olsbr5Ung==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zZ44aXmBt53mz0Slgk1ui4ihtmzEBO/YNiuncm3EwTQ=;
- b=X5DvCr+5TlEuyR5Ubwy2rcHhWvDbykzsI+Wyo+7fu/G778MkDTAldDTb04K+G7MXG8LXHO/pHlZ+GDsj2ukWiMl/R42FM+5wys2BLXR4T9WKKQbimnS2HjNzYiq0l6SRbLdmq5ZbQxX2cyN2xkWhaLVl40m0to5EiKdfhkhS0xUKSABKOg4mMVC6HkTib+UVwR0ekQ9oLq9uNxtOJwHgXJ82u7Wl6f8ntvZoPn1fRnXVsUyPds1Nzm6cUhzgtEVqtxL9JurDkVQwkOjQg2XGzg32Ha5u+vIzjNkhMS16YPNdT0eQZm8SR1YGSIf7bhxzlTYVYyDTzwaz0FGtK/8gAg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zZ44aXmBt53mz0Slgk1ui4ihtmzEBO/YNiuncm3EwTQ=;
- b=iEL21jknkIEONUr7PVYaAexkA0gPK9QDN8Fa97NZXwBVOs4o/WWGaYqEJhtMEW+VDzlHmDfXPscFjEMx+xRTSClWROzKKV8/5V3t5UQ6sTui/4egjDcZ4EeW2f2BPEb7r9hJWogzObrW9Lz4TRJc7paVgwDwUsWEkAOYu0RkBf2b8KjDMC5FIs/UhVrv13rA7L2kVnfXWAtxsbNnNJSdlzxoZD1DRQpnAtj4HyW7ci78zsD0eE61pcuiJXfT92iJLwChyqDGxGTMLUHhiXZGcbtcaSl4D1lppwGkjCr8h+CmI4Fc3Uviv35eIVR6NOG5cqyrJdjRi6GqywjtPAmR1g==
-Received: from MN2PR18CA0011.namprd18.prod.outlook.com (2603:10b6:208:23c::16)
- by LV8PR12MB9082.namprd12.prod.outlook.com (2603:10b6:408:180::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9587.13; Wed, 4 Feb
- 2026 19:01:23 +0000
-Received: from BN2PEPF00004FBA.namprd04.prod.outlook.com
- (2603:10b6:208:23c:cafe::6d) by MN2PR18CA0011.outlook.office365.com
- (2603:10b6:208:23c::16) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9587.13 via Frontend Transport; Wed,
- 4 Feb 2026 19:01:18 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- BN2PEPF00004FBA.mail.protection.outlook.com (10.167.243.180) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9587.10 via Frontend Transport; Wed, 4 Feb 2026 19:01:23 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Wed, 4 Feb
- 2026 11:00:57 -0800
-Received: from NV-2Y5XW94.nvidia.com (10.126.231.35) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.20; Wed, 4 Feb
- 2026 11:00:54 -0800
-From: Shameer Kolothum <skolothumtho@nvidia.com>
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
- <nicolinc@nvidia.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
- <jgg@nvidia.com>, <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>,
- <zhenzhong.duan@intel.com>, <kjaju@nvidia.com>, <skolothumtho@nvidia.com>
-Subject: [PATCH v4 4/5] hw/arm/smmuv3: Introduce a helper function for event
- propagation
-Date: Wed, 4 Feb 2026 19:00:07 +0000
-Message-ID: <20260204190008.20070-5-skolothumtho@nvidia.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260204190008.20070-1-skolothumtho@nvidia.com>
-References: <20260204190008.20070-1-skolothumtho@nvidia.com>
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vni9r-0007kb-SD
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 14:03:25 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1770231801;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=o7oJwB+/MR7DB60Rv9oamUAujf6sHA9qp5RSISJ/HXw=;
+ b=N4MhTRDzGMxytRl0+BmjvvmBPoSCNKUZsG4EGnfi89XvUa+UqsFGC2RdgPmdiFz6gbiSjj
+ ud0DMcVzKxwtVYSP32VMSkG2FDgIxDLNzBdSwZT2GqspYk6F0Pv7LQda7Sml8mqLikHPBD
+ rmEZERpqHxynRs6NepkyNfz1Ipp6OwQ=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-230-gchl2JHuOT68cqGvz5rrog-1; Wed, 04 Feb 2026 14:03:20 -0500
+X-MC-Unique: gchl2JHuOT68cqGvz5rrog-1
+X-Mimecast-MFC-AGG-ID: gchl2JHuOT68cqGvz5rrog_1770231798
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-435af2d3144so98397f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 04 Feb 2026 11:03:18 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1770231798; x=1770836598;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=o7oJwB+/MR7DB60Rv9oamUAujf6sHA9qp5RSISJ/HXw=;
+ b=uTxishNAR7vOBLVYmoVLanm47lXDQqTRNiLOIE6vgJEm0gDLu5Qhgi7gfkggXiP8nH
+ f5bmOu3yQrRfToLzxTxAI64bc1mAt21rGwAr3DLQcanJjtBgCCIsCl8/BrDoEuVapid5
+ QDzakEs217XMR9Y3ZBYqW7S/sz09BCLvB6m0aeGr7aCnxjvI1tgZmJo9gwas+F3NW4bM
+ LY5afKeyb8VKNKj39L0YhyWEs1JVCVi/iLoE/oS8micGqWawr89Jpfkfd19xxHvt5RQu
+ ImVjwfW8ASml6gRzY6w8hGfRI6UBQDTU6c7X+cHyjphWe4J35eIVrawBkg6GF3l+TSod
+ wVPw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWIMTGLXEmMJ5KoT+mWvfPLn2KqrKSru8X9X4jRVyj4IEBzS7CILssPNMMXyipGD4t6xmU56l3WUw==@nongnu.org
+X-Gm-Message-State: AOJu0YwZbyCyfv9n0FA8tA+rTdnuuzICXeYIpZ3H807y5HNMZWunka4p
+ tmSP9l0Qwj6w2vKzctMvk2PyUrje6/fiZ+gR00yGVZpGdXlzQ+dfDB0NSiDOq4m+f2lVpqMcTv6
+ DRVbcSqk8kr8U4LBNqG627TQXXq7KRrhYBdGQ/NLi1aJTYSPu9wBbFw==
+X-Gm-Gg: AZuq6aKG+AOwm8Y5BTkgbjYG1WTFsXZt6G8abGJc6Nsfqs3NUyP0Q8ahC6gnDlQOtDJ
+ 9CMJ9/7bvfDUX7ai2Jpk4/RY4PPksTZi59pgvPGSSeIDpOdq2I7kUj8Sxe/hWEEdOJP4YUAqkAk
+ 7vKXNIbvIl57FbynpgD3hxuMcuvM1h5Ku3M/+tHjP0yFR5ed2Wnx6ZquemXRBKKpy/BeYOksoPX
+ DGSyCiWEshz5vx8VwpPHN0HhJXG4+0XWTZrrW4Y42k4fPwTD69se7498ArSaPV+I6a6SqFoEqis
+ pJPa8+/IyqyGv565ACdPAbWWHbsWXINWoVjZD+xqsMowLQu3UlnLXTKSKNec8sfNPvrSwAH9ScB
+ CvHWAJZjsaV6bL2UFSrT+5IJV8Q+caayt6w==
+X-Received: by 2002:a05:6000:2c08:b0:432:dfa8:e1b6 with SMTP id
+ ffacd0b85a97d-43618053ae7mr5702178f8f.39.1770231797631; 
+ Wed, 04 Feb 2026 11:03:17 -0800 (PST)
+X-Received: by 2002:a05:6000:2c08:b0:432:dfa8:e1b6 with SMTP id
+ ffacd0b85a97d-43618053ae7mr5702086f8f.39.1770231796962; 
+ Wed, 04 Feb 2026 11:03:16 -0800 (PST)
+Received: from redhat.com (IGLD-80-230-34-155.inter.net.il. [80.230.34.155])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43617e25e8csm7558641f8f.1.2026.02.04.11.03.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Feb 2026 11:03:16 -0800 (PST)
+Date: Wed, 4 Feb 2026 14:03:13 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Aurelien Jarno <aurelien@aurel32.net>, Nicholas Piggin <npiggin@gmail.com>,
+ Aditya Gupta <adityag@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>,
+ Bernhard Beschow <shentey@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ Paul Burton <paulburton@kernel.org>,
+ Aleksandar Rikalo <arikalo@gmail.com>, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org
+Subject: [PULL 11/51] hw/pci-host: Set DEVICE_CATEGORY_BRIDGE once in parent
+ class_init()
+Message-ID: <f6258e47396663e06468f971433044521311c233.1770231744.git.mst@redhat.com>
+References: <cover.1770231744.git.mst@redhat.com>
 MIME-Version: 1.0
+In-Reply-To: <cover.1770231744.git.mst@redhat.com>
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: -pQEKdcf9sH74M_FlwGt4EjY3zda0RAWlYrxh5N05qw_1770231798
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.126.231.35]
-X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
- rnnvmail201.nvidia.com (10.129.68.8)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN2PEPF00004FBA:EE_|LV8PR12MB9082:EE_
-X-MS-Office365-Filtering-Correlation-Id: fdf22a2e-7d41-4d8b-d757-08de641fca70
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|36860700013|1800799024|376014; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?lt4zZUxM2lvgSNQfS98bpg6LJlji+KQRli2v3JeHU3CAvzWNd5pNGhb1n4pm?=
- =?us-ascii?Q?5HNaz8ztQX2MRwmoklvHtUWcZYuvKZ80MiG15t4edVeuAtrcg5L605J0Dlfx?=
- =?us-ascii?Q?MFPqT1C7fa3SQhzkCOO8eVz3YQb2d301zv2SnSQcob5quLrDqaBjilqzj1ib?=
- =?us-ascii?Q?APxkR5SGF2oGsbf//pZJV0jqL3X4iUwFhQ2wGv6ueNVrRC048LoQd4TlOHLD?=
- =?us-ascii?Q?aaqY5BriC0IEAeYzKM9PX3h8pOkAw5vSfmflWapqPICuoSgR1C/ev75vvBaa?=
- =?us-ascii?Q?ZCuADLYamVPmNxp5qlPOPG5Qew/kfwJ68HOc9U5VfZtMc6u9HCdIQzp+9lLr?=
- =?us-ascii?Q?u+Ry/UC8AUfnuUUvTfAEN3pZkExyoF6lqCkVw5oKiiSl4Uic4AxcGBv3oaad?=
- =?us-ascii?Q?YzEklYnfb+OXNUwSb+ZDDfsro/CVSg4Yob4D1+hVaWz3mVGuoJiz4+5jmMQ1?=
- =?us-ascii?Q?pMf7BcsT1+sJtClJeHg0TvrV5hrMYK+aSXiFOT7F1WE//8rNSCMwOw7MxxoA?=
- =?us-ascii?Q?Du+8B2uvW9X0pXf0DAs0//sEqMveCQtDQ0cWd9xuq0AHKaDREV00576a9/v7?=
- =?us-ascii?Q?SuzXnyNb0sHxOKa7sAdS30V/ztr7MMhSudWmRNTNU82ZJlI+daeaziEDt0SM?=
- =?us-ascii?Q?oGQCx2tDsoBnpuw/Yc6jt9K7T8Tto/YNpg2lZT4caoZFJv+Ws1nXztarnEle?=
- =?us-ascii?Q?53VGDEn0eFbo9YUl1pJBmW/xqex6ym0ozdF/oj65FA6qRs5SCfhjRMRZHZ0A?=
- =?us-ascii?Q?w8znjdpzaVa88l+h3Mpnt/Yxaj3mTbhRjZjEFctzgZhsqTwyhLbLZ9u0J7mw?=
- =?us-ascii?Q?dfXigZyxdYJuY4D6oLjBlYPn+EWXeAKbcl4nFCPpeHnh3G856p4rs5VdNvou?=
- =?us-ascii?Q?4i/GTvLdEO1065QDMnWSZ+j1dayLbWJ7rw7pV5BFmafVSu0f1xclMfxTOkI7?=
- =?us-ascii?Q?JytTENYjqlG32wnLDjqdVCNHzjLTMC7hFuNSE4xgDreKKOas1iKtEFV0HlOK?=
- =?us-ascii?Q?rwx5p2LMAa/Zquj4b794Gi2b5JVFrdqr+pMU4+kgXu5JVVE6xoz2SkHirIxU?=
- =?us-ascii?Q?2q7ZmcNF0SS9XnBRT1/6XNwPLbmBcIDQ/V32Fji2OEJoKzbtQgceORZl9CFv?=
- =?us-ascii?Q?lT7H/ILyh2vs7CGJ1EastqjW3Wc04oFrwPZqlkars0hLqpoBCGKn8uApZhL/?=
- =?us-ascii?Q?s/DwrH/zxshWKZzJYu+FV5cu0o4XFDO2HDmPpSPpRRep3XKSsI1AxfSchIt8?=
- =?us-ascii?Q?4bNcAbQeLmVMgoq84ZYQTPQhgGxCjKIAlZ5CVZVZmWQYgcJtV/T/sLBjqXuV?=
- =?us-ascii?Q?MqHjlTs7dSZHA0U7BpWNr+DmnMhXRk88lcWrc+lACnPyoNUzvlGjYxzhTOE5?=
- =?us-ascii?Q?hgM81U1/9s92XZYfxuHBQI1ezJVSLYsGaYAadjD8s9i1WBYxVDQHuElU06wi?=
- =?us-ascii?Q?Q73PKlSeFPV6X+6WX4AYt+Ncq5s94EF4mzDNol6WBMxYWatXDuJxsIhgWaI1?=
- =?us-ascii?Q?R8UhxxiCQxceEBWeUgQwEaFXqJvt31Ud3oW0DlDd3N7UULgtoxtazjnoIA/p?=
- =?us-ascii?Q?CN4ueHGozNMOLwYdAPnMHGID+uy6Cv+/DaSRqIXrkm/rCADrV/c4Wr5DoerE?=
- =?us-ascii?Q?HJzWiTuVUzEHVAJMVSqs2rXWgV6zFcW0nd+P9IYF25Frqac5t5r1AGTtMqzE?=
- =?us-ascii?Q?t9xzeg=3D=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(82310400026)(36860700013)(1800799024)(376014); DIR:OUT;
- SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 82g6oD82Nb38zQYEWdlkbuohw1j6OlKffMNNDEuLi5WCYN+Cv5UGUzDmk7q82nPjl/CKCgoPBCsMHl0nn2cXOjprMp9plbio04wkG4NT2//IjNDyRkFGKaDWdQ2vs1ikZvdHiZzP660DylD3T/0ZoxEwk+d43pqJrY3OJZ07jCR4aMo/wmJRqHpn2GmLqUDXZeT5JFzqq56Htu9WWeft193g8tOPEzPmgyYCQunGURO9xu9ZWotbtBjPMbfgvmTXa2Arbuv29VoCzF4hvQX6qVyOJz2SjHZOKPfoVaqFKLnU2qjDK4HXqjj4mdZze7/LTy370X/lFaCfeojQSOVKw7aJXqNJRKv/qSUKrELDK0G7rhqsa4EQyx/eGZ+WxOHW2Lf69OKIWbsS7hi7lhiP777gQLL//o3MH99LQhutFSLOlRT2hynltPCLaUGmdaIH
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Feb 2026 19:01:23.4534 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: fdf22a2e-7d41-4d8b-d757-08de641fca70
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN2PEPF00004FBA.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR12MB9082
-Received-SPF: permerror client-ip=2a01:111:f403:c107::1;
- envelope-from=skolothumtho@nvidia.com;
- helo=PH8PR06CU001.outbound.protection.outlook.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -160,97 +133,279 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Factor out the code that propagates event records to the guest into a
-helper function. The accelerated SMMUv3 path can use this to propagate
-host events in a subsequent patch.
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Since this helper may be called from outside the SMMUv3 core, take the
-mutex before accessing the Event Queue.
+No need to set DEVICE_CATEGORY_BRIDGE for each device
+implementing TYPE_PCI_HOST_BRIDGE: set it once in the
+parent.
 
-No functional change intended.
-
-Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Tested-by: Nicolin Chen <nicolinc@nvidia.com>
-Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Message-ID: <20251027112306.57634-1-philmd@linaro.org>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+Message-Id: <20251027112306.57634-1-philmd@linaro.org>
 ---
- hw/arm/smmuv3-internal.h |  4 ++++
- hw/arm/smmuv3.c          | 21 +++++++++++++++------
- hw/arm/trace-events      |  2 +-
- 3 files changed, 20 insertions(+), 7 deletions(-)
+ hw/pci-host/articia.c     | 1 -
+ hw/pci-host/aspeed_pcie.c | 1 -
+ hw/pci-host/designware.c  | 3 ---
+ hw/pci-host/gpex.c        | 2 --
+ hw/pci-host/grackle.c     | 1 -
+ hw/pci-host/gt64120.c     | 1 -
+ hw/pci-host/mv64361.c     | 1 -
+ hw/pci-host/pnv_phb.c     | 1 -
+ hw/pci-host/ppce500.c     | 1 -
+ hw/pci-host/q35.c         | 1 -
+ hw/pci-host/raven.c       | 1 -
+ hw/pci-host/remote.c      | 1 -
+ hw/pci-host/sabre.c       | 1 -
+ hw/pci-host/uninorth.c    | 4 ----
+ hw/pci-host/xilinx-pcie.c | 2 --
+ hw/pci/pci_host.c         | 1 +
+ 16 files changed, 1 insertion(+), 22 deletions(-)
 
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index a6464425ec..b666109ad9 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -352,7 +352,11 @@ typedef struct SMMUEventInfo {
-             (x)->word[6] = (uint32_t)(addr & 0xffffffff); \
-     } while (0)
+diff --git a/hw/pci-host/articia.c b/hw/pci-host/articia.c
+index 1881e03d58..04623dfd84 100644
+--- a/hw/pci-host/articia.c
++++ b/hw/pci-host/articia.c
+@@ -200,7 +200,6 @@ static void articia_class_init(ObjectClass *klass, const void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
  
-+#define EVT_GET_TYPE(x)  extract32((x)->word[0], 0, 8)
-+#define EVT_GET_SID(x)   ((x)->word[1])
-+
- void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);
-+void smmuv3_propagate_event(SMMUv3State *s, Evt *evt);
- int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste, SMMUEventInfo *event);
- 
- static inline int oas2bits(int oas_field)
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 210ac038fe..148af80efd 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -168,10 +168,23 @@ static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
-     return MEMTX_OK;
+     dc->realize = articia_realize;
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
  }
  
-+void smmuv3_propagate_event(SMMUv3State *s, Evt *evt)
-+{
-+    MemTxResult r;
-+
-+    trace_smmuv3_propagate_event(smmu_event_string(EVT_GET_TYPE(evt)),
-+                                 EVT_GET_SID(evt));
-+    qemu_mutex_lock(&s->mutex);
-+    r = smmuv3_write_eventq(s, evt);
-+    if (r != MEMTX_OK) {
-+        smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_EVENTQ_ABT_ERR_MASK);
-+    }
-+    qemu_mutex_unlock(&s->mutex);
-+}
-+
- void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
+ /* TYPE_ARTICIA_PCI_HOST */
+diff --git a/hw/pci-host/aspeed_pcie.c b/hw/pci-host/aspeed_pcie.c
+index 83a1c7075c..8eeba1f9f3 100644
+--- a/hw/pci-host/aspeed_pcie.c
++++ b/hw/pci-host/aspeed_pcie.c
+@@ -350,7 +350,6 @@ static void aspeed_pcie_rc_class_init(ObjectClass *klass, const void *data)
+     dc->desc = "ASPEED PCIe RC";
+     dc->realize = aspeed_pcie_rc_realize;
+     dc->fw_name = "pci";
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+ 
+     hc->root_bus_path = aspeed_pcie_rc_root_bus_path;
+     device_class_set_props(dc, aspeed_pcie_rc_props);
+diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
+index 019e025382..00c9449c4d 100644
+--- a/hw/pci-host/designware.c
++++ b/hw/pci-host/designware.c
+@@ -593,8 +593,6 @@ static void designware_pcie_root_class_init(ObjectClass *klass,
+     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+-
+     k->vendor_id = PCI_VENDOR_ID_SYNOPSYS;
+     k->device_id = 0xABCD;
+     k->revision = 0;
+@@ -736,7 +734,6 @@ static void designware_pcie_host_class_init(ObjectClass *klass,
+ 
+     hc->root_bus_path = designware_pcie_host_root_bus_path;
+     dc->realize = designware_pcie_host_realize;
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->fw_name = "pci";
+     dc->vmsd = &vmstate_designware_pcie_host;
+ }
+diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+index b5074c05c0..e66784ce51 100644
+--- a/hw/pci-host/gpex.c
++++ b/hw/pci-host/gpex.c
+@@ -200,7 +200,6 @@ static void gpex_host_class_init(ObjectClass *klass, const void *data)
+     hc->root_bus_path = gpex_host_root_bus_path;
+     dc->realize = gpex_host_realize;
+     dc->unrealize = gpex_host_unrealize;
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->fw_name = "pci";
+     device_class_set_props(dc, gpex_host_properties);
+ }
+@@ -242,7 +241,6 @@ static void gpex_root_class_init(ObjectClass *klass, const void *data)
+     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->desc = "QEMU generic PCIe host bridge";
+     dc->vmsd = &vmstate_gpex_root;
+     k->vendor_id = PCI_VENDOR_ID_REDHAT;
+diff --git a/hw/pci-host/grackle.c b/hw/pci-host/grackle.c
+index 9a58f0e9b5..b0db7870b0 100644
+--- a/hw/pci-host/grackle.c
++++ b/hw/pci-host/grackle.c
+@@ -140,7 +140,6 @@ static void grackle_class_init(ObjectClass *klass, const void *data)
+ 
+     dc->realize = grackle_realize;
+     device_class_set_props(dc, grackle_properties);
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->fw_name = "pci";
+     sbc->explicit_ofw_unit_address = grackle_ofw_unit_address;
+ }
+diff --git a/hw/pci-host/gt64120.c b/hw/pci-host/gt64120.c
+index d361c457ed..566f928304 100644
+--- a/hw/pci-host/gt64120.c
++++ b/hw/pci-host/gt64120.c
+@@ -1298,7 +1298,6 @@ static void gt64120_class_init(ObjectClass *klass, const void *data)
  {
-     Evt evt = {};
--    MemTxResult r;
+     DeviceClass *dc = DEVICE_CLASS(klass);
  
-     if (!smmuv3_eventq_enabled(s)) {
-         return;
-@@ -251,11 +264,7 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
-         g_assert_not_reached();
-     }
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     device_class_set_props(dc, gt64120_properties);
+     dc->realize = gt64120_realize;
+     device_class_set_legacy_reset(dc, gt64120_reset);
+diff --git a/hw/pci-host/mv64361.c b/hw/pci-host/mv64361.c
+index ef1c77563e..495a82befd 100644
+--- a/hw/pci-host/mv64361.c
++++ b/hw/pci-host/mv64361.c
+@@ -108,7 +108,6 @@ static void mv64361_pcihost_class_init(ObjectClass *klass, const void *data)
  
--    trace_smmuv3_record_event(smmu_event_string(info->type), info->sid);
--    r = smmuv3_write_eventq(s, &evt);
--    if (r != MEMTX_OK) {
--        smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_EVENTQ_ABT_ERR_MASK);
--    }
-+    smmuv3_propagate_event(s, &evt);
-     info->recorded = true;
+     dc->realize = mv64361_pcihost_realize;
+     device_class_set_props(dc, mv64361_pcihost_props);
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
  }
  
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 8135c0c734..3457536fb0 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -40,7 +40,7 @@ smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
- smmuv3_cmdq_consume_out(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod:%d, cons:%d, prod_wrap:%d, cons_wrap:%d "
- smmuv3_cmdq_consume_error(const char *cmd_name, uint8_t cmd_error) "Error on %s command execution: %d"
- smmuv3_write_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
--smmuv3_record_event(const char *type, uint32_t sid) "%s sid=0x%x"
-+smmuv3_propagate_event(const char *type, uint32_t sid) "%s sid=0x%x"
- smmuv3_find_ste(uint16_t sid, uint32_t features, uint16_t sid_split) "sid=0x%x features:0x%x, sid_split:0x%x"
- smmuv3_find_ste_2lvl(uint64_t strtab_base, uint64_t l1ptr, int l1_ste_offset, uint64_t l2ptr, int l2_ste_offset, int max_l2_ste) "strtab_base:0x%"PRIx64" l1ptr:0x%"PRIx64" l1_off:0x%x, l2ptr:0x%"PRIx64" l2_off:0x%x max_l2_ste:%d"
- smmuv3_get_ste(uint64_t addr) "STE addr: 0x%"PRIx64
+ static const TypeInfo mv64361_pcihost_info = {
+diff --git a/hw/pci-host/pnv_phb.c b/hw/pci-host/pnv_phb.c
+index 85fcc3b686..0b556d1bf5 100644
+--- a/hw/pci-host/pnv_phb.c
++++ b/hw/pci-host/pnv_phb.c
+@@ -202,7 +202,6 @@ static void pnv_phb_class_init(ObjectClass *klass, const void *data)
+     hc->root_bus_path = pnv_phb_root_bus_path;
+     dc->realize = pnv_phb_realize;
+     device_class_set_props(dc, pnv_phb_properties);
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->user_creatable = true;
+ }
+ 
+diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
+index 76623f78c4..67180ba5f0 100644
+--- a/hw/pci-host/ppce500.c
++++ b/hw/pci-host/ppce500.c
+@@ -516,7 +516,6 @@ static void e500_pcihost_class_init(ObjectClass *klass, const void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+     dc->realize = e500_pcihost_realize;
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     device_class_set_props(dc, pcihost_properties);
+     dc->vmsd = &vmstate_ppce500_pci;
+ }
+diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+index bf56229051..b353d3e1e6 100644
+--- a/hw/pci-host/q35.c
++++ b/hw/pci-host/q35.c
+@@ -194,7 +194,6 @@ static void q35_host_class_init(ObjectClass *klass, const void *data)
+     device_class_set_props(dc, q35_host_props);
+     /* Reason: needs to be wired up by pc_q35_init */
+     dc->user_creatable = false;
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->fw_name = "pci";
+ }
+ 
+diff --git a/hw/pci-host/raven.c b/hw/pci-host/raven.c
+index c50061996c..b3c2678667 100644
+--- a/hw/pci-host/raven.c
++++ b/hw/pci-host/raven.c
+@@ -296,7 +296,6 @@ static void raven_pcihost_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->realize = raven_pcihost_realizefn;
+     dc->fw_name = "pci";
+ }
+diff --git a/hw/pci-host/remote.c b/hw/pci-host/remote.c
+index feaaa9adaa..9ea95fac6e 100644
+--- a/hw/pci-host/remote.c
++++ b/hw/pci-host/remote.c
+@@ -55,7 +55,6 @@ static void remote_pcihost_class_init(ObjectClass *klass, const void *data)
+     dc->realize = remote_pcihost_realize;
+ 
+     dc->user_creatable = false;
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->fw_name = "pci";
+ }
+ 
+diff --git a/hw/pci-host/sabre.c b/hw/pci-host/sabre.c
+index b3f57dca7d..cd2328ad53 100644
+--- a/hw/pci-host/sabre.c
++++ b/hw/pci-host/sabre.c
+@@ -505,7 +505,6 @@ static void sabre_class_init(ObjectClass *klass, const void *data)
+     dc->realize = sabre_realize;
+     device_class_set_legacy_reset(dc, sabre_reset);
+     device_class_set_props(dc, sabre_properties);
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->fw_name = "pci";
+     sbc->explicit_ofw_unit_address = sabre_ofw_unit_address;
+ }
+diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
+index d39546b6f4..10972de694 100644
+--- a/hw/pci-host/uninorth.c
++++ b/hw/pci-host/uninorth.c
+@@ -435,7 +435,6 @@ static void pci_unin_main_class_init(ObjectClass *klass, const void *data)
+ 
+     dc->realize = pci_unin_main_realize;
+     device_class_set_props(dc, pci_unin_main_pci_host_props);
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->fw_name = "pci";
+     sbc->explicit_ofw_unit_address = pci_unin_main_ofw_unit_address;
+ }
+@@ -453,7 +452,6 @@ static void pci_u3_agp_class_init(ObjectClass *klass, const void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+     dc->realize = pci_u3_agp_realize;
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+ }
+ 
+ static const TypeInfo pci_u3_agp_info = {
+@@ -469,7 +467,6 @@ static void pci_unin_agp_class_init(ObjectClass *klass, const void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+     dc->realize = pci_unin_agp_realize;
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+ }
+ 
+ static const TypeInfo pci_unin_agp_info = {
+@@ -485,7 +482,6 @@ static void pci_unin_internal_class_init(ObjectClass *klass, const void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+     dc->realize = pci_unin_internal_realize;
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+ }
+ 
+ static const TypeInfo pci_unin_internal_info = {
+diff --git a/hw/pci-host/xilinx-pcie.c b/hw/pci-host/xilinx-pcie.c
+index 86c20377d1..40f625b61d 100644
+--- a/hw/pci-host/xilinx-pcie.c
++++ b/hw/pci-host/xilinx-pcie.c
+@@ -172,7 +172,6 @@ static void xilinx_pcie_host_class_init(ObjectClass *klass, const void *data)
+ 
+     hc->root_bus_path = xilinx_pcie_host_root_bus_path;
+     dc->realize = xilinx_pcie_host_realize;
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->fw_name = "pci";
+     device_class_set_props(dc, xilinx_pcie_host_props);
+ }
+@@ -291,7 +290,6 @@ static void xilinx_pcie_root_class_init(ObjectClass *klass, const void *data)
+     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+-    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->desc = "Xilinx AXI-PCIe Host Bridge";
+     k->vendor_id = PCI_VENDOR_ID_XILINX;
+     k->device_id = 0x7021;
+diff --git a/hw/pci/pci_host.c b/hw/pci/pci_host.c
+index 05f1475dc7..91e3885c7f 100644
+--- a/hw/pci/pci_host.c
++++ b/hw/pci/pci_host.c
+@@ -245,6 +245,7 @@ static void pci_host_class_init(ObjectClass *klass, const void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     device_class_set_props(dc, pci_host_properties_common);
+     dc->vmsd = &vmstate_pcihost;
++    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+ }
+ 
+ static const TypeInfo pci_host_type_info = {
 -- 
-2.43.0
+MST
 
 

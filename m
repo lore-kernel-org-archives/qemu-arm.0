@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88B04E95377
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:34:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25C14E95374
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:34:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnaCM-0002yc-Id; Wed, 04 Feb 2026 05:33:27 -0500
+	id 1vnaCO-00031n-A1; Wed, 04 Feb 2026 05:33:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaC2-0002MX-6Y
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:33:06 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBx-0002FX-Nv
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:33:01 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBz-0004C5-Uh
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:33:05 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBv-0004BI-On
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:33:01 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770201183;
+ s=mimecast20190719; t=1770201179;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=s6+IOP/ZYsZUujXSs6pRXKxziTQlt+0qFcMqUzWJnyI=;
- b=jP05BBUTxZimOWdkzEz9Y6FRjYcg4p6PL+ExrfvCgz75wHf3Z1YiHacH+1eDvrc/zXK5qQ
- 7QclnR23DBGkMV5Av0QmctOKWPZ/uDTo4XGx03249W9jTKd0JJCcUzzTlZPQZJdwYqvLn7
- X32CNkm31OTIdE1+BqnKbmhIW6LwJcg=
+ bh=wXOexuxGpnBN0gmCdkkT3Sk5Nl/k822TWJfteQ52foQ=;
+ b=Pdyxxwb1SLSVz1c4O6m4vTE4tVmIput45c3yR9Dmicqo58kHrSzr4YkwzxJTovgjdBktnc
+ I9QqGN2YB5VcGpiSb1niXqtXge37bV5vnYI1vK2rmPPJz6r6S6+lA7G3kZnRmC6OOqsEz0
+ DPrZgpfgidtw8OWrsbp5Uoe+AvPczRo=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-650-lUK8ctKPMw23blPtiWhnAA-1; Wed,
- 04 Feb 2026 05:33:02 -0500
-X-MC-Unique: lUK8ctKPMw23blPtiWhnAA-1
-X-Mimecast-MFC-AGG-ID: lUK8ctKPMw23blPtiWhnAA_1770201181
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-501-0rQGgFkWO-eXqzyQiiKJ_w-1; Wed,
+ 04 Feb 2026 05:32:57 -0500
+X-MC-Unique: 0rQGgFkWO-eXqzyQiiKJ_w-1
+X-Mimecast-MFC-AGG-ID: 0rQGgFkWO-eXqzyQiiKJ_w_1770201176
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F0DAE1800259; Wed,  4 Feb 2026 10:33:00 +0000 (UTC)
+ id BB51D1800259; Wed,  4 Feb 2026 10:32:56 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2A6A918004AD; Wed,  4 Feb 2026 10:32:58 +0000 (UTC)
+ id 0E85218003F6; Wed,  4 Feb 2026 10:32:54 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Kane Chen <kane_chen@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Nabih Estefan <nabihestefan@google.com>
-Subject: [PULL 38/45] hw/arm/aspeed: Attach WDT device to AST1700 model
-Date: Wed,  4 Feb 2026 11:31:29 +0100
-Message-ID: <20260204103136.1795455-39-clg@redhat.com>
+Subject: [PULL 36/45] hw/arm/aspeed: Attach GPIO device to AST1700 model
+Date: Wed,  4 Feb 2026 11:31:27 +0100
+Message-ID: <20260204103136.1795455-37-clg@redhat.com>
 In-Reply-To: <20260204103136.1795455-1-clg@redhat.com>
 References: <20260204103136.1795455-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: BwOMMvVi3C_TvqDpU3N8ZekxyvJQ4s-Y_446YDZrUv4_1770201181
+X-Mimecast-MFC-PROC-ID: J7KH3viWATG_TqkuyS1kuynz85rhYchBIdMEcGAXAew_1770201176
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -89,99 +89,102 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Kane Chen <kane_chen@aspeedtech.com>
 
-Connect the WDT device to AST1700 model.
+Connect the GPIO controller to the AST1700 model by mapping its MMIO
+region and wiring its interrupt line.
 
 Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Reviewed-by: Nabih Estefan <nabihestefan@google.com>
 Tested-by: Nabih Estefan <nabihestefan@google.com>
-Link: https://lore.kernel.org/qemu-devel/20260204082113.3955407-16-kane_chen@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260204082113.3955407-14-kane_chen@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed_ast1700.h |  4 ++++
- hw/arm/aspeed_ast1700.c         | 24 ++++++++++++++++++++++++
- 2 files changed, 28 insertions(+)
+ include/hw/arm/aspeed_ast1700.h |  2 ++
+ hw/arm/aspeed_ast1700.c         | 14 ++++++++++++++
+ hw/arm/aspeed_ast27x0.c         |  4 ++++
+ 3 files changed, 20 insertions(+)
 
 diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_ast1700.h
-index 1005ce63645f..ee0c47d173e0 100644
+index 65f1497a2ddc..63cfcb4c245a 100644
 --- a/include/hw/arm/aspeed_ast1700.h
 +++ b/include/hw/arm/aspeed_ast1700.h
-@@ -15,8 +15,11 @@
- #include "hw/i2c/aspeed_i2c.h"
+@@ -11,6 +11,7 @@
+ #include "hw/core/sysbus.h"
+ #include "hw/misc/aspeed_scu.h"
+ #include "hw/adc/aspeed_adc.h"
++#include "hw/gpio/aspeed_gpio.h"
  #include "hw/misc/aspeed_ltpi.h"
  #include "hw/ssi/aspeed_smc.h"
-+#include "hw/watchdog/wdt_aspeed.h"
  #include "hw/char/serial-mm.h"
- 
-+#define AST1700_WDT_NUM              9
-+
- #define TYPE_ASPEED_AST1700 "aspeed.ast1700"
- 
- OBJECT_DECLARE_SIMPLE_TYPE(AspeedAST1700SoCState, ASPEED_AST1700)
-@@ -37,6 +40,7 @@ struct AspeedAST1700SoCState {
+@@ -33,6 +34,7 @@ struct AspeedAST1700SoCState {
+     AspeedSMCState spi;
+     AspeedADCState adc;
      AspeedSCUState scu;
-     AspeedGPIOState gpio;
-     AspeedI2CState i2c;
-+    AspeedWDTState wdt[AST1700_WDT_NUM];
++    AspeedGPIOState gpio;
  };
  
  #endif /* ASPEED_AST1700_H */
 diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c
-index e264b2200bc3..59954eca99aa 100644
+index 49a242f3dec6..7efce450f60f 100644
 --- a/hw/arm/aspeed_ast1700.c
 +++ b/hw/arm/aspeed_ast1700.c
-@@ -25,6 +25,7 @@ enum {
-     ASPEED_AST1700_DEV_I2C,
+@@ -21,6 +21,7 @@ enum {
+     ASPEED_AST1700_DEV_SRAM,
+     ASPEED_AST1700_DEV_ADC,
+     ASPEED_AST1700_DEV_SCU,
++    ASPEED_AST1700_DEV_GPIO,
      ASPEED_AST1700_DEV_UART12,
      ASPEED_AST1700_DEV_LTPI_CTRL,
-+    ASPEED_AST1700_DEV_WDT,
      ASPEED_AST1700_DEV_SPI0_MEM,
- };
- 
-@@ -37,6 +38,7 @@ static const hwaddr aspeed_ast1700_io_memmap[] = {
-     [ASPEED_AST1700_DEV_I2C]       =  0x00C0F000,
+@@ -31,6 +32,7 @@ static const hwaddr aspeed_ast1700_io_memmap[] = {
+     [ASPEED_AST1700_DEV_SRAM]      =  0x00BC0000,
+     [ASPEED_AST1700_DEV_ADC]       =  0x00C00000,
+     [ASPEED_AST1700_DEV_SCU]       =  0x00C02000,
++    [ASPEED_AST1700_DEV_GPIO]      =  0x00C0B000,
      [ASPEED_AST1700_DEV_UART12]    =  0x00C33B00,
      [ASPEED_AST1700_DEV_LTPI_CTRL] =  0x00C34000,
-+    [ASPEED_AST1700_DEV_WDT]       =  0x00C37000,
      [ASPEED_AST1700_DEV_SPI0_MEM]  =  0x04000000,
- };
+@@ -103,6 +105,14 @@ static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
+                         aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_SCU],
+                         sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->scu), 0));
  
-@@ -135,6 +137,22 @@ static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
-     memory_region_add_subregion(&s->iomem,
-                         aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_LTPI_CTRL],
-                         sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ltpi), 0));
-+    /* WDT */
-+    for (int i = 0; i < AST1700_WDT_NUM; i++) {
-+        AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
-+        hwaddr wdt_offset = aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_WDT] +
-+                            i * awc->iosize;
-+
-+        object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&s->scu),
-+                                 errp);
-+        if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
-+            return;
-+        }
-+        memory_region_add_subregion(&s->iomem,
-+                        wdt_offset,
-+                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->wdt[i]), 0));
++    /* GPIO */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
++        return;
 +    }
++    memory_region_add_subregion(&s->iomem,
++                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_GPIO],
++                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->gpio), 0));
 +
- }
+     /* LTPI controller */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->ltpi), errp)) {
+         return;
+@@ -132,6 +142,10 @@ static void aspeed_ast1700_instance_init(Object *obj)
+     object_initialize_child(obj, "ioexp-scu", &s->scu,
+                             TYPE_ASPEED_2700_SCU);
  
- static void aspeed_ast1700_instance_init(Object *obj)
-@@ -169,6 +187,12 @@ static void aspeed_ast1700_instance_init(Object *obj)
++    /* GPIO */
++    object_initialize_child(obj, "ioexp-gpio", &s->gpio,
++                            "aspeed.gpio-ast2700");
++
+     /* LTPI controller */
      object_initialize_child(obj, "ltpi-ctrl",
                              &s->ltpi, TYPE_ASPEED_LTPI);
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index cda841e1031d..cd4028fcd4c7 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -1053,6 +1053,10 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->ioexp[i].adc), 0,
+                            aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_ADC));
  
-+    /* WDT */
-+    for (int i = 0; i < AST1700_WDT_NUM; i++) {
-+        object_initialize_child(obj, "ioexp-wdt[*]",
-+                                &s->wdt[i], "aspeed.wdt-ast2700");
-+    }
++        /* GPIO */
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ioexp[i].gpio), 0,
++                           aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_GPIO));
 +
-     return;
- }
+     }
  
+     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->dpmcu),
 -- 
 2.52.0
 

@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39921E95375
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:38:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97AB6E95374
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:38:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnaCn-0003tx-9p; Wed, 04 Feb 2026 05:33:53 -0500
+	id 1vnaCR-000381-1e; Wed, 04 Feb 2026 05:33:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaC4-0002XH-1d
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:33:08 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaCA-0002iO-MG
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:33:15 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaC2-0004CX-Cd
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:33:07 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaC8-0004EA-F6
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:33:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770201185;
+ s=mimecast20190719; t=1770201191;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=v3170o4i4IkBxFxx85GDgUrbJtB3DYQpaySLDh+Jn8I=;
- b=M0LXIUOf1EMoGOtqM5AbGQLL99ICFKV24EeR5v7dWFoVlrPau+ll/F4H09KnGJrPbecDhp
- G3jtZekyt9sZB7D0sLjg5ien7NRhrFQ0a5rlmwF53k71zqis2L/g4CNy4dGH8Fy1Q7T/m8
- 8GG/nzUhMyB+NN9K4RkprDznN7b6wpU=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=0eFcpqgjedIMkoHQ51JuwO3iS8I5PR9YBXqb5Ny/aGI=;
+ b=cd2H5Bxz+or6pafbX+2UC91Q0Zh7MQsQRvnIOjyY8sbs5hWJYFAS/1Cqv04ZlvAmrR2KnP
+ ucmSs2Gy1GPiXzbMAbyW6e84O6iPNATDbK/LxfBn0WPYXnmF3+ojXsBWYJpC/7eQeskgb8
+ pMA5GgaAz2ley/WubFy0znbDFyPmAmk=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-508-mniRdrnSNzywv8U6lHUTfw-1; Wed,
- 04 Feb 2026 05:33:04 -0500
-X-MC-Unique: mniRdrnSNzywv8U6lHUTfw-1
-X-Mimecast-MFC-AGG-ID: mniRdrnSNzywv8U6lHUTfw_1770201183
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-226-a0XDDQ4NNqu5hnwAB9v-Iw-1; Wed,
+ 04 Feb 2026 05:33:08 -0500
+X-MC-Unique: a0XDDQ4NNqu5hnwAB9v-Iw-1
+X-Mimecast-MFC-AGG-ID: a0XDDQ4NNqu5hnwAB9v-Iw_1770201187
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0FB13195608E; Wed,  4 Feb 2026 10:33:03 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 92CA51800473; Wed,  4 Feb 2026 10:33:07 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5787A18003F6; Wed,  4 Feb 2026 10:33:01 +0000 (UTC)
+ id C2D3D18003F6; Wed,  4 Feb 2026 10:33:05 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Kane Chen <kane_chen@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Nabih Estefan <nabihestefan@google.com>
-Subject: [PULL 39/45] hw/arm/aspeed: Attach PWM device to AST1700 model
-Date: Wed,  4 Feb 2026 11:31:30 +0100
-Message-ID: <20260204103136.1795455-40-clg@redhat.com>
+Subject: [PULL 41/45] hw/arm/aspeed: Model AST1700 I3C block as unimplemented
+ device
+Date: Wed,  4 Feb 2026 11:31:32 +0100
+Message-ID: <20260204103136.1795455-42-clg@redhat.com>
 In-Reply-To: <20260204103136.1795455-1-clg@redhat.com>
 References: <20260204103136.1795455-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: MV7Wmmjd1NgDWaMt6bEeO2kF5m3o2Y6Uos7fa_rfvlU_1770201183
+X-Mimecast-MFC-PROC-ID: ZzT3qsfrUPMT6p06gPBZyfh5V6BLgCu62LxeQNBWqIA_1770201187
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -89,84 +90,170 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Kane Chen <kane_chen@aspeedtech.com>
 
-Connect the PWM device to AST1700 model.
+AST1700 exposes more I3C buses than the current dummy I3C model
+provides. When Linux probes the I3C devices on AST1700 this mismatch
+can trigger a kernel panic. Model the I3C block as an unimplemented
+device to make the missing functionality explicit and avoid unexpected
+side effects.
+
+This wires up the I3C interrupt lines for the IO expanders and adds the
+corresponding device entries for the AST1700 model.
+
+No functional I3C emulation is provided yet; this only prevents crashes and
+documents the missing piece.
 
 Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Reviewed-by: Nabih Estefan <nabihestefan@google.com>
 Tested-by: Nabih Estefan <nabihestefan@google.com>
-Link: https://lore.kernel.org/qemu-devel/20260204082113.3955407-17-kane_chen@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260204082113.3955407-19-kane_chen@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed_ast1700.h |  2 ++
- hw/arm/aspeed_ast1700.c         | 13 +++++++++++++
- 2 files changed, 15 insertions(+)
+ include/hw/arm/aspeed_ast1700.h |  3 +++
+ include/hw/arm/aspeed_soc.h     |  2 ++
+ hw/arm/aspeed_ast1700.c         | 15 +++++++++++++++
+ hw/arm/aspeed_ast27x0.c         | 18 ++++++++++++++++--
+ 4 files changed, 36 insertions(+), 2 deletions(-)
 
 diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_ast1700.h
-index ee0c47d173e0..8db513a38c2b 100644
+index b5cb0a901086..f7bd4e8650ba 100644
 --- a/include/hw/arm/aspeed_ast1700.h
 +++ b/include/hw/arm/aspeed_ast1700.h
-@@ -14,6 +14,7 @@
- #include "hw/gpio/aspeed_gpio.h"
- #include "hw/i2c/aspeed_i2c.h"
- #include "hw/misc/aspeed_ltpi.h"
-+#include "hw/misc/aspeed_pwm.h"
+@@ -19,6 +19,7 @@
  #include "hw/ssi/aspeed_smc.h"
  #include "hw/watchdog/wdt_aspeed.h"
  #include "hw/char/serial-mm.h"
-@@ -40,6 +41,7 @@ struct AspeedAST1700SoCState {
-     AspeedSCUState scu;
-     AspeedGPIOState gpio;
++#include "hw/misc/unimp.h"
+ 
+ #define AST1700_SGPIO_NUM            2
+ #define AST1700_WDT_NUM              9
+@@ -46,6 +47,8 @@ struct AspeedAST1700SoCState {
      AspeedI2CState i2c;
-+    AspeedPWMState pwm;
+     AspeedPWMState pwm;
      AspeedWDTState wdt[AST1700_WDT_NUM];
++
++    UnimplementedDeviceState i3c;
  };
  
+ #endif /* ASPEED_AST1700_H */
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 4ea252104137..b185b0418678 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -294,6 +294,8 @@ enum {
+     ASPEED_DEV_IOEXP1_I2C,
+     ASPEED_DEV_IOEXP0_INTCIO,
+     ASPEED_DEV_IOEXP1_INTCIO,
++    ASPEED_DEV_IOEXP0_I3C,
++    ASPEED_DEV_IOEXP1_I3C,
+ };
+ 
+ const char *aspeed_soc_cpu_type(const char * const *valid_cpu_types);
 diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c
-index 59954eca99aa..c0b288a0fc6e 100644
+index 174186964eb6..e90302c11bcd 100644
 --- a/hw/arm/aspeed_ast1700.c
 +++ b/hw/arm/aspeed_ast1700.c
-@@ -18,6 +18,7 @@
+@@ -15,6 +15,7 @@
+ 
+ #define AST2700_SOC_LTPI_SIZE        0x01000000
+ #define AST1700_SOC_SRAM_SIZE        0x00040000
++#define AST1700_SOC_I3C_SIZE         0x00010000
  
  enum {
      ASPEED_AST1700_DEV_SPI0,
-+    ASPEED_AST1700_DEV_PWM,
-     ASPEED_AST1700_DEV_SRAM,
-     ASPEED_AST1700_DEV_ADC,
-     ASPEED_AST1700_DEV_SCU,
-@@ -31,6 +32,7 @@ enum {
+@@ -26,6 +27,7 @@ enum {
+     ASPEED_AST1700_DEV_SGPIOM0,
+     ASPEED_AST1700_DEV_SGPIOM1,
+     ASPEED_AST1700_DEV_I2C,
++    ASPEED_AST1700_DEV_I3C,
+     ASPEED_AST1700_DEV_UART12,
+     ASPEED_AST1700_DEV_LTPI_CTRL,
+     ASPEED_AST1700_DEV_WDT,
+@@ -42,6 +44,7 @@ static const hwaddr aspeed_ast1700_io_memmap[] = {
+     [ASPEED_AST1700_DEV_SGPIOM0]   =  0x00C0C000,
+     [ASPEED_AST1700_DEV_SGPIOM1]   =  0x00C0D000,
+     [ASPEED_AST1700_DEV_I2C]       =  0x00C0F000,
++    [ASPEED_AST1700_DEV_I3C]       =  0x00C20000,
+     [ASPEED_AST1700_DEV_UART12]    =  0x00C33B00,
+     [ASPEED_AST1700_DEV_LTPI_CTRL] =  0x00C34000,
+     [ASPEED_AST1700_DEV_WDT]       =  0x00C37000,
+@@ -178,6 +181,14 @@ static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
+                         sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->wdt[i]), 0));
+     }
  
- static const hwaddr aspeed_ast1700_io_memmap[] = {
-     [ASPEED_AST1700_DEV_SPI0]      =  0x00030000,
-+    [ASPEED_AST1700_DEV_PWM]       =  0x000C0000,
-     [ASPEED_AST1700_DEV_SRAM]      =  0x00BC0000,
-     [ASPEED_AST1700_DEV_ADC]       =  0x00C00000,
-     [ASPEED_AST1700_DEV_SCU]       =  0x00C02000,
-@@ -130,6 +132,14 @@ static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
-                         aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_I2C],
-                         sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->i2c), 0));
++    /* I3C */
++    qdev_prop_set_string(DEVICE(&s->i3c), "name", "ioexp-i3c");
++    qdev_prop_set_uint64(DEVICE(&s->i3c), "size", AST1700_SOC_I3C_SIZE);
++    sysbus_realize(SYS_BUS_DEVICE(&s->i3c), errp);
++    memory_region_add_subregion_overlap(&s->iomem,
++                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_I3C],
++                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->i3c), 0),
++                        -1000);
+ }
  
-+    /* PWM */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->pwm), errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(&s->iomem,
-+                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_PWM],
-+                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->pwm), 0));
+ static void aspeed_ast1700_instance_init(Object *obj)
+@@ -227,6 +238,10 @@ static void aspeed_ast1700_instance_init(Object *obj)
+                                 &s->wdt[i], "aspeed.wdt-ast2700");
+     }
+ 
++    /* I3C */
++    object_initialize_child(obj, "ioexp-i3c", &s->i3c,
++                            TYPE_UNIMPLEMENTED_DEVICE);
 +
-     /* LTPI controller */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->ltpi), errp)) {
-         return;
-@@ -183,6 +193,9 @@ static void aspeed_ast1700_instance_init(Object *obj)
-     object_initialize_child(obj, "ioexp-i2c", &s->i2c,
-                             "aspeed.i2c-ast2700");
+     return;
+ }
  
-+    /* PWM */
-+    object_initialize_child(obj, "pwm", &s->pwm, TYPE_ASPEED_PWM);
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 8242258df442..d3b305fa7a1a 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -158,7 +158,9 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
+     [ASPEED_DEV_PECI]      = 197,
+     [ASPEED_DEV_SDHCI]     = 197,
+     [ASPEED_DEV_IOEXP0_I2C] = 198,
++    [ASPEED_DEV_IOEXP0_I3C] = 199,
+     [ASPEED_DEV_IOEXP1_I2C] = 200,
++    [ASPEED_DEV_IOEXP1_I3C] = 201,
+ };
+ 
+ /* GICINT 192 */
+@@ -221,12 +223,24 @@ static const int ast2700_gic198_intcmap[] = {
+     [ASPEED_DEV_IOEXP0_I2C]       = 0, /* 0 - 15 */
+ };
+ 
++/* Primary AST1700 Interrupts */
++/* A1: GINTC 199 */
++static const int ast2700_gic199_intcmap[] = {
++    [ASPEED_DEV_IOEXP0_I3C]       = 0, /* 0 - 15 */
++};
 +
-     /* LTPI controller */
-     object_initialize_child(obj, "ltpi-ctrl",
-                             &s->ltpi, TYPE_ASPEED_LTPI);
+ /* Secondary AST1700 Interrupts */
+ /* A1: GINTC 200 */
+ static const int ast2700_gic200_intcmap[] = {
+     [ASPEED_DEV_IOEXP1_I2C]       = 0, /* 0 - 15 */
+ };
+ 
++/* Secondary AST1700 Interrupts */
++/* A1: GINTC 201 */
++static const int ast2700_gic201_intcmap[] = {
++    [ASPEED_DEV_IOEXP1_I3C]       = 0, /* 0 - 15 */
++};
++
+ /* GICINT 192 ~ 201 */
+ struct gic_intc_irq_info {
+     int irq;
+@@ -243,9 +257,9 @@ static const struct gic_intc_irq_info ast2700_gic_intcmap[] = {
+     {196, 1, 4, ast2700_gic196_intcmap},
+     {197, 1, 5, ast2700_gic197_intcmap},
+     {198, 2, 0, ast2700_gic198_intcmap},
+-    {199, 1, 7, NULL},
++    {199, 2, 1, ast2700_gic199_intcmap},
+     {200, 3, 0, ast2700_gic200_intcmap},
+-    {201, 1, 9, NULL},
++    {201, 3, 1, ast2700_gic201_intcmap},
+ };
+ 
+ static qemu_irq aspeed_soc_ast2700_get_irq(AspeedSoCState *s, int dev)
 -- 
 2.52.0
 

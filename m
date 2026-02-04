@@ -4,61 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98D16E95374
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:32:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87C52E95375
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:32:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnaAq-0000Ki-R5; Wed, 04 Feb 2026 05:31:52 -0500
+	id 1vnaAn-0000Il-5d; Wed, 04 Feb 2026 05:31:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaAp-0000Jw-7b
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:31:51 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaAl-0000IQ-00
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:31:47 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaAn-0003vf-Q6
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:31:50 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaAj-0003uW-0Q
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:31:46 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770201109;
+ s=mimecast20190719; t=1770201103;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=93/8CmowdpxRszw5AU0EO8rYkNgSes0F9Lw0nNh6/e8=;
- b=R7/Opr1C4lis79vNmYaqnsB9XWXNCp/0ZXRyISmWRWVB1HdJBTV+g/kxnz9ReqGNCWtCyC
- Ua6eiGgGcF1urx1K2753ddzhlHm1kmWjOOpyTDALDSheFnwqIE+fbBSSj+FgC2yrLRkbUY
- ZP7HNaJWz/MWz4LtmS1PpzpScrp3NdU=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ content-transfer-encoding:content-transfer-encoding;
+ bh=edOKIh/xily7c9Zpea/8inUmbspyHggjGeENNzqE4RM=;
+ b=iP+8XWZvF1RAgzNU/BXm7rwtjwFEld0umhSwcZKA7VeP+EEqx7z0x5xMuPAfYHIFSRId52
+ osgeaKcgZ59UVRyW5KJzCqRsqfU6r+jexTxVsCN4lXCOM6mHK4U0gdyKD8YkTWW0VyEZiU
+ ydUOu/8nbLa3HXav2mxr87EbQpe8Ry0=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-88-rGGV7Y7PMAa1RpM-2if9DA-1; Wed,
- 04 Feb 2026 05:31:46 -0500
-X-MC-Unique: rGGV7Y7PMAa1RpM-2if9DA-1
-X-Mimecast-MFC-AGG-ID: rGGV7Y7PMAa1RpM-2if9DA_1770201105
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-532-yjj4f4MgMTiUxxo81jELyA-1; Wed,
+ 04 Feb 2026 05:31:41 -0500
+X-MC-Unique: yjj4f4MgMTiUxxo81jELyA-1
+X-Mimecast-MFC-AGG-ID: yjj4f4MgMTiUxxo81jELyA_1770201100
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CE6C01800259; Wed,  4 Feb 2026 10:31:44 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8EBCE1956061; Wed,  4 Feb 2026 10:31:40 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5D92418004AD; Wed,  4 Feb 2026 10:31:43 +0000 (UTC)
+ id 285AC18003F6; Wed,  4 Feb 2026 10:31:38 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>
-Subject: [PULL 02/45] tests/functional/arm/aspeed: Update buildroot images to
- 2025.11
-Date: Wed,  4 Feb 2026 11:30:53 +0100
-Message-ID: <20260204103136.1795455-3-clg@redhat.com>
-In-Reply-To: <20260204103136.1795455-1-clg@redhat.com>
-References: <20260204103136.1795455-1-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 00/45] aspeed queue
+Date: Wed,  4 Feb 2026 11:30:51 +0100
+Message-ID: <20260204103136.1795455-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 8uaLw2FzauufU_AkmYBOozpsCTpDVAoW8T3DIXPrqYM_1770201105
+X-Mimecast-MFC-PROC-ID: QNhTg5x3-t2U5JWH3paVKehmrtnM7Ny3xh4gLUbU4F4_1770201100
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -71,7 +66,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,73 +82,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The main changes compared to upstream 2025.11 buildroot are
+The following changes since commit 28a6ca268c2cd3718b5bf24c2d97e3d1e95fc604:
 
-  - Linux v6.18
-  - latest OpenBMC U-Boot
-  - extra packages (ssh, etc.)
+  Merge tag 'single-binary-20260203' of https://github.com/philmd/qemu into staging (2026-02-04 01:57:26 +1000)
 
-See
+are available in the Git repository at:
 
-  https://github.com/legoater/buildroot/commits/aspeed-2025.11
+  https://github.com/legoater/qemu/ tags/pull-aspeed-20260204
 
-Acked-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Link: https://lore.kernel.org/qemu-devel/20260105160358.771511-1-clg@redhat.com
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
----
- tests/functional/arm/test_aspeed_ast2500.py           | 8 ++++----
- tests/functional/arm/test_aspeed_ast2600_buildroot.py | 8 ++++----
- 2 files changed, 8 insertions(+), 8 deletions(-)
+for you to fetch changes up to e56e45d5bdc808ed52f943d1a785e4d885b6f18f:
 
-diff --git a/tests/functional/arm/test_aspeed_ast2500.py b/tests/functional/arm/test_aspeed_ast2500.py
-index 5efd104c2b95..ac33c62a9f85 100755
---- a/tests/functional/arm/test_aspeed_ast2500.py
-+++ b/tests/functional/arm/test_aspeed_ast2500.py
-@@ -10,15 +10,15 @@
- 
- class AST2500Machine(AspeedTest):
- 
--    ASSET_BR2_202411_AST2500_FLASH = Asset(
-+    ASSET_BR2_202511_AST2500_FLASH = Asset(
-         ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
--         'images/ast2500-evb/buildroot-2024.11/flash.img'),
--        '641e6906c18c0f19a2aeb48099d66d4771929c361001d554d0d45c667413e13a')
-+         'images/ast2500-evb/buildroot-2025.11/flash.img'),
-+        '31e5a8e280b982fb0e7c07eb71c94851002f99ac604dfe620e71a5d47cc87e78')
- 
-     def test_arm_ast2500_evb_buildroot(self):
-         self.set_machine('ast2500-evb')
- 
--        image_path = self.ASSET_BR2_202411_AST2500_FLASH.fetch()
-+        image_path = self.ASSET_BR2_202511_AST2500_FLASH.fetch()
- 
-         self.vm.add_args('-device',
-                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test')
-diff --git a/tests/functional/arm/test_aspeed_ast2600_buildroot.py b/tests/functional/arm/test_aspeed_ast2600_buildroot.py
-index 575a5f64143f..3d130b9fd189 100755
---- a/tests/functional/arm/test_aspeed_ast2600_buildroot.py
-+++ b/tests/functional/arm/test_aspeed_ast2600_buildroot.py
-@@ -16,15 +16,15 @@
- 
- class AST2600Machine(AspeedTest):
- 
--    ASSET_BR2_202411_AST2600_FLASH = Asset(
-+    ASSET_BR2_202511_AST2600_FLASH = Asset(
-         ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
--         'images/ast2600-evb/buildroot-2024.11/flash.img'),
--        '4bb2f3dfdea31199b51d66b42f686dc5374c144a7346fdc650194a5578b73609')
-+         'images/ast2600-evb/buildroot-2025.11/flash.img'),
-+        'c64a0755501393d570ca318e326e1e9f8372edc5a6452cdccc3649bc9fd2c138')
- 
-     def test_arm_ast2600_evb_buildroot(self):
-         self.set_machine('ast2600-evb')
- 
--        image_path = self.ASSET_BR2_202411_AST2600_FLASH.fetch()
-+        image_path = self.ASSET_BR2_202511_AST2600_FLASH.fetch()
- 
-         self.vm.add_args('-device',
-                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test')
--- 
-2.52.0
+  tests/functional/aarch64: Add I2C test for AST1700 IO expanders (2026-02-04 10:10:57 +0100)
+
+----------------------------------------------------------------
+aspeed queue:
+
+* Added support for the new AST1700 IO expander, including several
+  device models (LTPI, PWM, I2C, GPIO, etc.).
+* Updated the AST2700 SoC with LTPI support, EHCI IRQ fixes, and other
+  improvements.
+* Updated test images and test cases for various Aspeed platforms.
+* Fixed issues in the Aspeed I2C and ADC models.
+* Added support for pca9535 GPIO expander.
+* Updated documentation for Aspeed boards.
+
+----------------------------------------------------------------
+Cédric Le Goater (3):
+      Merge tag 'pull-vbootrom-20260116-v3' into aspeed-next
+      tests/functional/arm/aspeed: Update buildroot images to 2025.11
+      hw/adc: Fix out-of-bounds write in Aspeed ADC model
+
+Jamin Lin (17):
+      pc-bios: Update vbootrom image to commit 1c8e9510b22c
+      MAINTAINERS: Update ASPEED entry
+      tests/functional/arm/test_aspeed_ast2500: Update test ASPEED SDK v10.00
+      hw/pci-host/aspeed_pcie: Drop AST2600 PCIe root device
+      hw/pci-host/aspeed_pcie: Drop AST2600 RC_H root-bus remap and bus-nr property
+      hw/arm/aspeed_ast2600: Expand RC_H PCIe MMIO window to 0x60000000 - 0x80000000
+      tests/functional/arm/test_aspeed_ast2600_sdk: Update test ASPEED SDK v11.00
+      tests/functional/arm/test_aspeed_ast1060: Update test aspeed-zephyr-project v03.04
+      tests/functional/arm/test_aspeed_ast1030: Update test ASPEED Zephyr SDK v03.05
+      hw/arm/aspeed_ast27x0: Fix EHCI3/4 IRQ routing to GIC
+      hw/arm/aspeed_ast27x0: Sort SSP and TSP memmap tables by address
+      hw/arm/aspeed_ast27x0: Sort SSP and TSP IRQ maps
+      hw/i2c/aspeed_i2c: Fix DMA moving data into incorrect address
+      tests/functional/aarch64/test_aspeed_ast2700: Enable PCIe2 DTS status for AST2700 tests
+      tests/functional/aarch64/test_aspeed_ast2700: Update test ASPEED SDK v11.00 for A1
+      tests/functional/aarch64/test_aspeed_ast2700fc: Update test ASPEED SDK v11.00 for A1
+      docs/system/arm/aspeed: Load raw U-Boot image in AST2700 boot example
+
+Kane Chen (22):
+      hw/misc: Add LTPI controller
+      hw/arm/aspeed: Attach LTPI controller to AST27X0 platform
+      hw/misc: Add basic Aspeed PWM model
+      hw/arm/aspeed: Add AST1700 LTPI expander device model
+      hw/arm/aspeed: Integrate AST1700 device into AST27X0
+      hw/arm/aspeed: Integrate interrupt controller for AST1700
+      hw/arm/aspeed: Attach LTPI controller to AST1700 model
+      hw/arm/aspeed: Attach UART device to AST1700 model
+      hw/arm/aspeed: Attach SRAM device to AST1700 model
+      hw/arm/aspeed: Attach SPI device to AST1700 model
+      hw/arm/aspeed: Attach ADC device to AST1700 model
+      hw/arm/aspeed: Attach SCU device to AST1700 model
+      hw/arm/aspeed: Attach GPIO device to AST1700 model
+      hw/arm/aspeed: attach I2C device to AST1700 model
+      hw/arm/aspeed: Attach WDT device to AST1700 model
+      hw/arm/aspeed: Attach PWM device to AST1700 model
+      hw/arm/aspeed: Attach SGPIOM device to AST1700 model
+      hw/arm/aspeed: Model AST1700 I3C block as unimplemented device
+      hw/arm/aspeed: Enable AST1700 IO expander support
+      tests/functional/aarch64: Parameterize I2C bus ID in AST2700 test
+      tests/functional/aarch64: Parameterize PCIe2 initialization in AST2700
+      tests/functional/aarch64: Add I2C test for AST1700 IO expanders
+
+Kane-Chen-AS (1):
+      hw/i2c/aspeed: Introduce 'bus-label' to customize bus naming
+
+Nabih Estefan (1):
+      hw/i2c/aspeed_i2c.c: Add a check for dma_read
+
+Patrick Williams (2):
+      hw/gpio/pca9552: add pca9535 support
+      hw/arm/aspeed: catalina: use pca9535
+
+ MAINTAINERS                                        |   2 +
+ docs/system/arm/aspeed.rst                         |   8 +-
+ include/hw/arm/aspeed_ast1700.h                    |  54 ++++
+ include/hw/arm/aspeed_soc.h                        |  25 +-
+ include/hw/gpio/pca9552.h                          |   1 +
+ include/hw/gpio/pca9552_regs.h                     |  10 +
+ include/hw/i2c/aspeed_i2c.h                        |   2 +
+ include/hw/intc/aspeed_intc.h                      |   2 +
+ include/hw/misc/aspeed_ltpi.h                      |  33 +++
+ include/hw/misc/aspeed_pwm.h                       |  30 +++
+ include/hw/pci-host/aspeed_pcie.h                  |  11 -
+ hw/adc/aspeed_adc.c                                |   3 +-
+ hw/arm/aspeed_ast1700.c                            | 276 +++++++++++++++++++++
+ hw/arm/aspeed_ast2600.c                            |   8 +-
+ hw/arm/aspeed_ast2600_catalina.c                   |   4 +-
+ hw/arm/aspeed_ast27x0-ssp.c                        |  14 +-
+ hw/arm/aspeed_ast27x0-tsp.c                        |  14 +-
+ hw/arm/aspeed_ast27x0.c                            | 169 ++++++++++++-
+ hw/gpio/pca9552.c                                  | 176 +++++++++----
+ hw/i2c/aspeed_i2c.c                                | 120 ++++++---
+ hw/intc/aspeed_intc.c                              |  60 +++++
+ hw/misc/aspeed_ltpi.c                              | 193 ++++++++++++++
+ hw/misc/aspeed_pwm.c                               | 120 +++++++++
+ hw/pci-host/aspeed_pcie.c                          |  76 +-----
+ hw/arm/meson.build                                 |   1 +
+ hw/misc/meson.build                                |   2 +
+ hw/misc/trace-events                               |   4 +
+ pc-bios/ast27x0_bootrom.bin                        | Bin 16408 -> 28564 bytes
+ pc-bios/npcm7xx_bootrom.bin                        | Bin 672 -> 736 bytes
+ pc-bios/npcm8xx_bootrom.bin                        | Bin 672 -> 672 bytes
+ roms/vbootrom                                      |   2 +-
+ tests/functional/aarch64/test_aspeed_ast2700.py    | 137 ++++++----
+ tests/functional/aarch64/test_aspeed_ast2700fc.py  |  54 ++--
+ tests/functional/arm/test_aspeed_ast1030.py        |  12 +-
+ tests/functional/arm/test_aspeed_ast1060.py        |  14 +-
+ tests/functional/arm/test_aspeed_ast2500.py        |  16 +-
+ .../arm/test_aspeed_ast2600_buildroot.py           |   8 +-
+ tests/functional/arm/test_aspeed_ast2600_sdk.py    |  22 +-
+ 38 files changed, 1352 insertions(+), 331 deletions(-)
+ create mode 100644 include/hw/arm/aspeed_ast1700.h
+ create mode 100644 include/hw/misc/aspeed_ltpi.h
+ create mode 100644 include/hw/misc/aspeed_pwm.h
+ create mode 100644 hw/arm/aspeed_ast1700.c
+ create mode 100644 hw/misc/aspeed_ltpi.c
+ create mode 100644 hw/misc/aspeed_pwm.c
 
 

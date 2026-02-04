@@ -4,62 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA6EAE83046
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C09BE83041
 	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 06:41:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnWZF-0004bE-Ua; Wed, 04 Feb 2026 01:40:49 -0500
+	id 1vnWZS-0004jr-MG; Wed, 04 Feb 2026 01:41:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vnWZE-0004aB-1z; Wed, 04 Feb 2026 01:40:48 -0500
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+ id 1vnWZR-0004jB-IY; Wed, 04 Feb 2026 01:41:01 -0500
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
- id 1vnWZC-0004IG-26; Wed, 04 Feb 2026 01:40:47 -0500
+ id 1vnWZP-0004KA-Mx; Wed, 04 Feb 2026 01:41:01 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=x+n7TIbAt0p/GcOmwHeWPXhDSLD2BnTe93hloyQyCOZhQW+CZPdE34B7Vh83cykkv8VbCeMdWbhKTUQe5EM54ukXpheMnjb2BpZkarC55+8HIMSlWbB+P862pvTeo3uIBKdgJk/DNADePVo5zaFVOzxP7WamIyOlCKOqmtqLuV6GMy08Ra+H2sXqB1IZxUWQxwK/HxIWE1TUCRx+PX9AxUDkwtMJCIkdw9f91MtYdJZOfzptq3WiRcQv38RVwQ9r5DPCDF/a/fatNIBy/mwZeTOo0yw4mAFqEGG58aG3OXwrX4rfk25P1tP3ioL5JzlcxHbV0MLMxKpL/X5ned7bkA==
+ b=dHlfxoqzgtPtkcPJ0BhkoalkcEAp14CD5/PP8UnUmGK8LhE5Hy7tppnuhKh8FBP+CplS3tCe8TWYUybVkAqSLVQ7QzavbtJeDwQVEjkNf9OSd7/I8i8d9MRkUzrG4Ss+kf8CpANdZzm3AD3xecfa+DwouM0Vx7pkvsY63muuRrOmF7SikKp9d0u6povJdpCjMfsFDt579Yh4aoX9cjpgmaK2nKKKcT2pgFLXyeYShE0I0ouyGG6A+hhs8SkpqLiZAYe8Z6E38emu+J2Lh0ZAFswwYEyXY1+I3UomUum7+je3PkmHSit7AGSx2Q4+twyVtBEbpcsEucHJwgfqcHWCMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Hl8L9FbnsUts0l2barfn0YN4jwBA6pHKzVqllDNVS6M=;
- b=cuL4KkLQ/VRYlcy/rI+NmSmlnt2xFkoxexwoqxKsyCLIv03eEyvvy+Zp1K04q0k62oON118DEsY0mkl0sviHlrS5QOwizWxo6is4wv+hUA//jTdOBsnXKPPhNyuifY+nU6/psCQAjxmn6JhRtLW+1hacPmscGZ+yAc6TWsbUmHA7COJ3bpELqDpes3eOWfw7MpgG0NQ+L1v9r/FF0eG475l/ZxfLmmhYuRlyMs5+6j3bJe0/xagoK8waRaLDiM6rdLdlKeP6FCiRTuOdPD4DIVClc5bYm/n6ibLkuf9pFxDdLxtpFZsbTfpxRYX31Vj2Zy3LjHm5WBIMjftI40/W2w==
+ bh=Ps8oZPjTYQ2Nk4xegqe7IJ8sm+7B3EvcYQLSrPHUwx0=;
+ b=nS3bZu1wJ8mKvk8kcK2i4acdxuDMla/LeL/V5kfhm1L7MsxZc6s5DlMRjL9vHsFcLIDZ6r/4Lw9tsoqrcmJSfb24/WZ5EwHOLjVCTK4l1nGV/nBXWZA+JH6LuxN4p8PDnBESnWeUE7v55kGsgCjkyDRW3PKAc1UUDlpx4j5ccDQqrzJRwiSMBIa83EGkL1pFuObyfzttwBI5zwllL+10EAzHx7GG2QfAlOb0ze4jRTTOpYvO6Y7EDjZzBfhqI0KvTSfHO8+hJliI9C5Bpcu+6YhcYTsS7NMYyersT40hdBiTdOisH9TrvOu9B2y6PrLRYKIGxV/iKvf5lKci/IADaQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Hl8L9FbnsUts0l2barfn0YN4jwBA6pHKzVqllDNVS6M=;
- b=deNkAbq0kdzYbjx+efP/J37FA2JW+X95GpOw8dzswjRi8uAQg5jgqpgmDDk/vRO91nP/qi+XMSoqvrPwVYxa1dKj1yG8hKVbrzwCcT/HIpUJiuXZppDVeNMR09tlpGh8s+ph8cDuwQEGBdTNeT6s3BQLDPmUL2qiIckEG9QiJThw67Y5vtpsNea3MgynoaULp1FTHJO1HhrYVLvTZ9CwX07I5HUfoz0NGyBNPSzJQiz8oSAZ5021BowFWCqQWPMs7RxngHBfdRFiYHawjZpT48AXvngbXDJjNEaKzOif0R+x6QLM8NfsRVcOcZweZ2crdLVkOWlEDRkG+G2Wc8Gfqg==
+ bh=Ps8oZPjTYQ2Nk4xegqe7IJ8sm+7B3EvcYQLSrPHUwx0=;
+ b=Hnv9P5q1AIqaGhZ3IOR6aAp50p8jPBB0+FDJk+8x7WlVWwT/Dn8EdY4dKBebk5mF9x1lgFp12a+pteZCYrfxdJaGaKqOeNtTVrhB57DlvgtkC+Ce0i6XeEgCHkvYvMM0FuyC7XuhcV3Rk4aRmPfNBUFRPFoVb7dMjLoQprtotoAxKn0duvftYHNQckKlJQvb0kFyxOKbJpcIDx8t1KDQCNlH4LE6IkgsQUB4gK0cavFWD23NeO9iWVPd7QAK55YZNxgvZcVJn2ePESQI/SCSQg47Eip2qMhrlqvB/mCXL825rHOFALD6e5TBX7JHTsfKJzS+catYRkIdt8mJxmbgng==
 Received: from SI6PR06MB7631.apcprd06.prod.outlook.com (2603:1096:4:239::11)
  by PUZPR06MB5901.apcprd06.prod.outlook.com (2603:1096:301:110::15) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9564.8; Wed, 4 Feb
- 2026 06:40:27 +0000
+ 2026 06:40:45 +0000
 Received: from SI6PR06MB7631.apcprd06.prod.outlook.com
  ([fe80::afe5:a3f1:b435:e43c]) by SI6PR06MB7631.apcprd06.prod.outlook.com
  ([fe80::afe5:a3f1:b435:e43c%4]) with mapi id 15.20.9587.010; Wed, 4 Feb 2026
- 06:40:27 +0000
+ 06:40:45 +0000
 From: Kane Chen <kane_chen@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
+To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
  <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
  list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@redhat.com>, Nabih Estefan
- <nabihestefan@google.com>
-Subject: [PATCH v6 07/22] hw/arm/aspeed: Attach LTPI controller to AST1700
- model
-Thread-Topic: [PATCH v6 07/22] hw/arm/aspeed: Attach LTPI controller to
- AST1700 model
-Thread-Index: AQHclaElB+TUJvbnjkOkg7rE/l9XlA==
-Date: Wed, 4 Feb 2026 06:40:27 +0000
-Message-ID: <20260204064016.3515639-8-kane_chen@aspeedtech.com>
+CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
+Subject: [PATCH v6 20/22] tests/functional/aarch64: Parameterize I2C bus ID in
+ AST2700 test
+Thread-Topic: [PATCH v6 20/22] tests/functional/aarch64: Parameterize I2C bus
+ ID in AST2700 test
+Thread-Index: AQHclaEwBnTJGPOjmUmbed6AxykLaQ==
+Date: Wed, 4 Feb 2026 06:40:44 +0000
+Message-ID: <20260204064016.3515639-21-kane_chen@aspeedtech.com>
 References: <20260204064016.3515639-1-kane_chen@aspeedtech.com>
 In-Reply-To: <20260204064016.3515639-1-kane_chen@aspeedtech.com>
 Accept-Language: zh-TW, en-US
@@ -70,111 +68,94 @@ authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: SI6PR06MB7631:EE_|PUZPR06MB5901:EE_
-x-ms-office365-filtering-correlation-id: 1eb0e307-f514-44db-338d-08de63b84867
+x-ms-office365-filtering-correlation-id: e562c5e9-fd5c-4b08-3658-08de63b852f3
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0; ARA:13230040|366016|1800799024|376014|38070700021;
-x-microsoft-antispam-message-info: =?utf-8?B?QjlNRmhacUNlY3VPaGxsWEdOL3k5UlZXakZrVlZZcnVvc1Q1blJsODlqa3pn?=
- =?utf-8?B?Y3BhS1hKaHFCeWN1ZmdTZ25BWmI5UEhldThRclB3VjJQVTFPYzZZb2RjTzhG?=
- =?utf-8?B?OWxWMTJucVhzRTRCdWRXQmsyZ05RYWdvaTY0NU45TlFVeWUwMjYyWmZMRThK?=
- =?utf-8?B?VTh2OW9HSGpXMTdMdFV1YjFpVW5YdHBnVEFHL2lVNHFHWmczTjV0cHZ2Qll5?=
- =?utf-8?B?eE9sd0FuLzludjdsVDUvUFc3c2tZTmxFbFF5OFE3RnFlY0Y5cnJuOUo5cVE3?=
- =?utf-8?B?VGk2bS9mWWkyMWNOMFVaNmlhQ09vTHVoUW5oNm5kWXEwSmk1VWg5ZHlVcEs3?=
- =?utf-8?B?bkpmVW54YkRCYzBXMlgxbzU3UjZxWTBPRmhEUVVaTlQzdnRCMTNvaUNsOXcx?=
- =?utf-8?B?RWpObnV0a1MxUlFjSjNFWi9VWTdzbTA4bEdPRnNwcVlIUnVxaGFzQnFHSWl3?=
- =?utf-8?B?Z3EvNUppZVFHVlpucUJwNG4yOVp6Z0F5eUlyRjlDUVB6eFp5SGRKUnZmeFN1?=
- =?utf-8?B?a3pWRmhHYkJkcnY5dm1wZjNPVU5zL3NEbDFhaGpZclhNQVZYY3M3RnlSd1RW?=
- =?utf-8?B?Q2ZpUDdIMGtobzJWVUhTNEkwUE1iSElwd1VBaDFRWE9ZaVIrcG9YL0NQaWNV?=
- =?utf-8?B?dWszZjJ4RW5TSmNXT3hIOHZiUko4ZTJlbndDRUpQY0s4SXQ3S1lGcEFGaDlC?=
- =?utf-8?B?S2lmanVFZUtNenVpSHhWUUt4SVUrZ2lPSWFTRmZjSFVMKzJReDJlcDlLSXZF?=
- =?utf-8?B?RklSQzhGeWt6OWgwWW43aU5hOFVldUJYa2JXby9JQUxxTFh2cVVDOGFwQjdk?=
- =?utf-8?B?VVVEcmtRanlQYms3TmRWM2dNZTYwenZhZHNRTE9pRjVBQS9MbjVLRllBWnA3?=
- =?utf-8?B?Tld1OXBLL0dLaERRYWVGSXhQRWF3SXZSSmtuaGdUU0U3YUFiY2FkMThocDNH?=
- =?utf-8?B?MW5NYXVHeU1XeHRxWDR5VEtIY2RmK0c4MDIvcWFlRTBSVE13SGI4ZWsrT3JK?=
- =?utf-8?B?MHNFYm55RC9DL0JsekkvaGZiL251V09BVE1aeGYrQjBhQWxOQmtzRjBSeXly?=
- =?utf-8?B?OEQ4WGFYcFJPOFI1YU1CeTRUcUpKWm1zc2pKNmxBYjJYUUlkdlN6NnNoN0JF?=
- =?utf-8?B?WGgzQkZPa3VDQ2Rsc0xZcUVZMko3S2pnbUFhcGkzc3VodWVXQ3ZmR1ZlNzVj?=
- =?utf-8?B?NkE3U05iakMwU1dNWEhMb2Y1SXdnNHJuZ0Q3MWVJbnQrMjRPZkFuTDhWakF5?=
- =?utf-8?B?SGRZQ3QzSy9yYm5rK2FWdlBFaTN5VzRkdXdwUWJ2R2EybjM3VHZjZTN5TkQ3?=
- =?utf-8?B?anpwQVBPa09HS1pNNmJYbHhXTm5jR0JCcGdzTk9vcjhDVHJ2cCtOOWI2aWFS?=
- =?utf-8?B?L2lscTBEdWFpMDRCTjNESHBCS3FoUWJYeHFSdmtsN1d6eWlCZ0VjckFUcXRy?=
- =?utf-8?B?a1VGQitzd0xOMDFQUVR3aEFPQ2VSZlVsL2pvcVVNZnhaQnVwRUhmTXZDdFBz?=
- =?utf-8?B?L3F4S280bUhXWjNuaUZrVFZaNjFtcTRsZ2RSWHc4WWZRak1kRUcvRE5NZ3du?=
- =?utf-8?B?V2dJTSt5WHFKUjgyMk9aaTFsZllReWo1TFFkUEYwS2RiL1NsNWRjUVdERHY3?=
- =?utf-8?B?THoveEVpUHZYcVBWTUtMempRREpmSWJUM2xRbmJEYkFyc2hwVGlTQUkvcDQr?=
- =?utf-8?B?aUZZRWs2aWFCaEpqU2w1NklxbE8zSzNMUmFqS1NDbGdQVEJ1QlYycGU2aWta?=
- =?utf-8?B?MkpMR2I2aGp5dWpKR1Q4YkJPNXk2bnpDWHBRSTZ1MytuQXhhanNSclgwNGZw?=
- =?utf-8?B?YU9xRTlVaU45eUpITzhtSkFYQVh0L0Z2TEVRWCtJczU3UzFTMHlSZGlla2la?=
- =?utf-8?B?SDRLYU5oMkRSQ3FsYUN4djBOZExIMnZiYlgzOWFTTGZqZk81ZTI2ODl5bmRk?=
- =?utf-8?B?YlBoeis2MnJhODJJdUU4S3duL2REdS9EdlNxbHlWbTZXaCttSU9MUnZaOEdN?=
- =?utf-8?B?RlRlN2NkbmVrVEFwdzMzUXRvNm5DQU1ubkljaGdYK0cwa1N5M1FMZUwwZC8z?=
- =?utf-8?B?UXFVL1VjRGF4T25mOXBINXBKNVRwOGRxTStPM2hERnpucEVQYUVRZHVacVl3?=
- =?utf-8?B?eEg5a1hMcExVMzJiWE5YL0xSWW55cHAzd296RUpJaUFTL0JSaTAwOEhQbHo5?=
- =?utf-8?Q?IdgozYfU2UhBGnyLlcqa1eg=3D?=
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?UavKuzjpGC6OSx01WeQ3SrymoY0V11nfy6owxfuSkOcsoiaju5CixM+t1n?=
+ =?iso-8859-1?Q?Ny5Xc9yaCUmk4m1rTqbbItMXs3Nh0A6HzORSFkaaEeikdxu67GTmGPfXbH?=
+ =?iso-8859-1?Q?PBDO853582raVbGspKQVvFhCl+ugVWRwFutb7FkwRftATQMM+LOjXY4U/q?=
+ =?iso-8859-1?Q?i9IadPMkKg3qp8VzPmRa8wYABFACNm3POoWMoMBMo0smlP2t4JNUfqVHOc?=
+ =?iso-8859-1?Q?FkFY5YaF+TfosBjvZvZJyKzzZxjxJ/o3/2yzTVVehv4DpDYi+UA2WxqKVn?=
+ =?iso-8859-1?Q?JZKBKpmNtaDblosSZkSKamL5e6K5pgNeYv36fi1VUU9iqUochcPe9ZsCC2?=
+ =?iso-8859-1?Q?8EcKkU8d5MValz2hgrmOcX1fsrI4xv9Ga3I2Sm5wLdcoYfAUljKtieIo73?=
+ =?iso-8859-1?Q?GaGiIH1E7LZuLYhKhgqhvrwKBY1VtEn4x3qmWe0CIPTYju1gQYa7x84Z7L?=
+ =?iso-8859-1?Q?bor6aU6HYfzJ64j4o4sCZ4ncNHEgTWTBg7MUp5wxHCbDA4Vvf+stHZBQSr?=
+ =?iso-8859-1?Q?O2vKHuzaF/v1QuM13xff+FJlqpSDvIZfeixFCdJsfgx5aGDpRxbF/ek8RJ?=
+ =?iso-8859-1?Q?nM6RKoK3byhs5XhteJRw+3RaU8J9F3nG8C39TwqiTEtbXzhxo9xcCEOvCK?=
+ =?iso-8859-1?Q?1uJ2Xv6am6FD/7zvJ5LhewjBTnY2LldFbl6QLyJnZLj+jU0JXhXo4cBn+n?=
+ =?iso-8859-1?Q?e5KSRrCtvrDxU6PjYyDW96WUprwm2Lv0wDjXwry6ACZmDUDI0UfPcpLLtb?=
+ =?iso-8859-1?Q?PMmMwu1Bn0In6cPIyd5yPvrTFEzUG7b8/NnYL4tKfrpHa0Q8vKTb0uygHj?=
+ =?iso-8859-1?Q?/KAoMlQzR/rFp2PUHkSYEhSeUbx1icR2jx3efPQIWiimvlUVrLNpdDxSqe?=
+ =?iso-8859-1?Q?6HHoxsBqmwYLpAu/wIzFQ1Qo/sEzuK2HUPXJYmTxQGLvKwnkVOl3d/MClg?=
+ =?iso-8859-1?Q?eCgDSCYc5QloTyJVJrAHF6CEhrxF9LPpuROyxpYTh1Worqn9q+CeSytbwO?=
+ =?iso-8859-1?Q?H9tKA4GMVDnHSJnL1A3G/X3+hHPSNvoEkTaO+gVJKo7lgXzINkRUa7Q1ml?=
+ =?iso-8859-1?Q?Z+NkHzJ/bZh70fqvARqLyF3CSGoQWUziCJfcsNCNUwYvlqy0yoQ4ybBZu0?=
+ =?iso-8859-1?Q?c4p5IbLrp8e2Rv+CODaS5v5z7adl3/n/Y2QhY/BbbvvJMBSNH4IGGAkEdx?=
+ =?iso-8859-1?Q?tatGSHHQSqNgLinR68yAcXrx3+Yaaoy32ComZRVBxP9TILWDnTRp/nYE2S?=
+ =?iso-8859-1?Q?6NkqbOdVAckwU0iXgblAfTvcv4nFf7euyNozeKNyLmU34rCOls4eNU4h1p?=
+ =?iso-8859-1?Q?WEvZ7Bz8bpwR6ljAAuw4KP5BeB9ntquQN89LyIyU24YpHZLsDGg0m/3gNa?=
+ =?iso-8859-1?Q?hkAWGrbaMtdXUhY8IGpTEXcoZEp8ZAhceTSvfVFUUJshUlQdXNpUdwP69r?=
+ =?iso-8859-1?Q?Hj/vFI+9C7Uz12OCh9LBu46cXNLQwe+rMKsBCUGSomWnjSy1h/gC7GV6Eq?=
+ =?iso-8859-1?Q?lWeItkLhO7bU+4mQppbLvO4IOk9qfn+oua6NctwMGjz9dQU6U8DFqbmqNX?=
+ =?iso-8859-1?Q?m14cbpcAKI9MwRC055nBpW+p3dApAMGcsTbNMLTe0AHG0blphT1GF+99wP?=
+ =?iso-8859-1?Q?67AnBfAhM2+lpM2e9fGESgj7aAplDynHD0?=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SI6PR06MB7631.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(366016)(1800799024)(376014)(38070700021); DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RTFLUEtXYXcvVk12QXJEcDZBL1UzblkxZ1FyS0lEcVBjeXpuN29mQnU3K0dn?=
- =?utf-8?B?Nk8rOElQS29hRmM5Y1JBSG5hd3JIWHdYNzZaSC9ESHFRemxEUDJTWm94eERo?=
- =?utf-8?B?YkFud3JNTFJTaHNiQ21GcHY2R2k4YkNrSC9LU3lWVFdMQ3VRek9MNFdTQWlF?=
- =?utf-8?B?ZXdzbUpvVjlaOFA4amFkUTdSYlRoNWVxSXhpSkFxWXdlZ2ZocytXK1dtZStV?=
- =?utf-8?B?V0x4dURjMTllUGlqZWhUd0VZc3dyYmVTdVpJYzYxMnc5bGRoa3NxcFVPRHp2?=
- =?utf-8?B?WUw0RlpPNG9jVW5SNHBwQ1RKMEN1bUtoWU5JU0JJQWtJOUJFb3FwYWJKaEdo?=
- =?utf-8?B?QlRNMFFER3RIclhyZ0FXZG9Kb2x5b3V2RTkvSTZqaENkK2xYcloyQmVHUjJx?=
- =?utf-8?B?Y0F3SWhvcThwVnpuMTd1bFFQQVNUc3l2OWZIVEYwQVNhc213NTlreko2b0c3?=
- =?utf-8?B?cnl2K2NVMWJCVjB1NkFkbEpHL21BTnhsRzlUa0lYNFYvemNGZXVNOW9BdEd6?=
- =?utf-8?B?Y013RkhqdFhlWEQxV1FhWFh0QlhnUm5vQTNFazFvVFNpZnZTalJyVms5SGx2?=
- =?utf-8?B?a0hQZjdpek04YURKYStjcTZVR1VUd0p2QVlBaWFTTWlsY3hiMlFkRzVCQ2JL?=
- =?utf-8?B?RnA0Z2wxVm9PTDJpSHRYTlkwTVVNTGNBQlVQVWFUQWtLeTlXZHBaRnVWUHR6?=
- =?utf-8?B?WWNsaEZRWmdkNGtpcWpKRXRlb0RXcS81RFVrLzQzYktlM2dLcEU2cHZNSDdZ?=
- =?utf-8?B?NHJOdzQ3NnFFNVl0TlJvb3NRbkIvdXlFWlo4WXBPenZsQjhkKysyUU16M1dJ?=
- =?utf-8?B?MEZOZG00Z0ZsMUVYWUp6bTF3eWpYNExUd1lSKy9rQmdDZkhvVE00aDVhcWM2?=
- =?utf-8?B?Zm93bXF6aWs4T1pQeVhMSUNhTUF5NU82dm9CZUYzU01mY2RhUGdIZGpGVnJW?=
- =?utf-8?B?WjI1ZHEwUHlFSFdUcWZVc3ZKamZsMnFJY3VMQWFCaVI3Rk9PQjhkTFd3VDIr?=
- =?utf-8?B?TnRCN2VzdlcwSVZka0czMlB0enlwNHQ4QjgxL0RwTkhQZEE4ODhQOFZzcEMy?=
- =?utf-8?B?OHA0Si9hR0dUSncvSmxuNTQrd0pBdHFjYnh0d2M5SkpvQTFBc0hSWHp0RUJi?=
- =?utf-8?B?V2diNU5Ybm1wRkRuR2l4QzBxNys4dzR4NWIwSlErWmxwa0dvR0VWWW8xVWhI?=
- =?utf-8?B?WWJzU2RaOGZ2S3A2eXczTWZZWlZlNW5YK2JjRkNVbk4renhRQUJqODJDeFJu?=
- =?utf-8?B?V3B1Y2pWV1doUC9LKzlQVHFRY1JwNW9SWm96NEh2NjZtTXZ2VGt1eEJhL2ZX?=
- =?utf-8?B?azhPMi85SGprYWM3NUZ5YUVuamVqcjFjbmY0djhPQWJaWVhoZjJ3WHVEU0xh?=
- =?utf-8?B?cjkvSzBpVVdzMWh0MXoxdnZxZGhmck5kVGdBN0cvNGpjUXQyb093WldEOUVz?=
- =?utf-8?B?cVAxd2x0SjNiM0pOZ0pSSWFjVXZqYWozdWlRQVA3OHRrVFQ4dWtmQ3JXcjV0?=
- =?utf-8?B?czN0Q0MxK25HZ2NROE1KdWFFcVF6QlMzWFpnTGZZUjVoYU5aWTVQRDJTMkUw?=
- =?utf-8?B?M0hzdUVmaEpCZEczRkZUR3FqSDdzUGJFZysvV3hleDEwTUlqU1JkUm9rclYv?=
- =?utf-8?B?SEZHWGtoZE1xZnJLUWlBaWlacFZYWjZkek55azUrcmk4VlNBOVZLbE52MDho?=
- =?utf-8?B?dDg5d1I0RkR2a3UzaXRnTkI2SzVvU3BtV3B3N2MxMTVicnVSLzhyRG5TZjF4?=
- =?utf-8?B?cHFPL0dVTE1yMkllMkhpY3RYaUpaVy9sZW9wRGVQODEyNnBQNUViNjhmSGU3?=
- =?utf-8?B?blBQd2pvcndwTHhGOFBucUl2anRCaWNtS1pvNGVGMUlSaStsS0xpamNNT1Vs?=
- =?utf-8?B?Y3VibFMwbWM3WmI3ZCtvckVnZzkvbFBEb1RNVHRQVXdsckwvYk1sMWZEOVBk?=
- =?utf-8?B?dnNGcDMrcWg1SjdIanF1M1RDa1N6TlVjdkZ5cWlkSlFBL01aa203M05pVjdi?=
- =?utf-8?B?dkY5UTFqcHdoZXM5Z1NiRHArTmhrUTFLVzlwdUhiNE1Jb3dVSjVNWWwwZVJZ?=
- =?utf-8?B?SmtxcEpOUklWQ0lIVTB4RW5tMElrSUJML21ZVndwSlM5RU1OOG1McS9qeXMx?=
- =?utf-8?B?S0NCRU9aUVduZklUeFV1UWdvSDg2S2M1QUtLNE9nVmVxbXY2SWh5M3BLWUw5?=
- =?utf-8?B?ckQxSWRQYkdPdzRxT09NVjJNT3JMMnFKM1VhL3NoNDNwZGkwRTI3NXh5ME1H?=
- =?utf-8?B?RlNMZGVrN09mYllndWc4eUFyaTlhU0dzMkFYU0dWZS9GaWI5YkY1VHoxK284?=
- =?utf-8?B?VTl3SFlFMk40MUFVQ1Y0dk5uSnl3L0pTZG5pTmlDSkg0SGtLRmJIZz09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?xuZnqVyriAhXT+QXBbAUzNW21wfcZDP7aBxgpeGBrddpEYUQ/MkeGsBnRK?=
+ =?iso-8859-1?Q?FK9SPAhP5WDXQM+XnP+KRLie5hTxMbNFTplv4UZZxtwkhisuEcI85B3ddh?=
+ =?iso-8859-1?Q?6jHcEyWnSR7xq1gDQ1fh0PxCWfgrzFcVnCVtVskEJnN/hlUXD7NEtaUDMD?=
+ =?iso-8859-1?Q?c585c7OwskET6N1kBf+0ZW2EEvbvuk60gqKqH2y/vo3E5b+wo4PNkHNz9b?=
+ =?iso-8859-1?Q?ak585QQJU7BDkewSWiBZQ4AR+Py9RTRgl70cK4PwYvJhLqUD/RvrvCFJ9x?=
+ =?iso-8859-1?Q?eb/0wheIpThU6xfxbAYkWGiIl32JHLutxxHT0J2B0OYoGzNZ3A3SA20SVb?=
+ =?iso-8859-1?Q?a0AheeLhNctN270yvdr1ttzQytwWTy3kR5Zh9CMc8PlhS9W0DoI3IDgytI?=
+ =?iso-8859-1?Q?sdkDegC900PP/MlYuv7HFLrlsKMzgWImubJ71P+vAZZTPX/F/imvBBf5/S?=
+ =?iso-8859-1?Q?vRR6gMI1wzlgc/dI5+lDC+XSfJFjBWxmU8ZTUtIK9TIay9W4g2TJobnlvM?=
+ =?iso-8859-1?Q?7U2ftwJF7IbRKeR6syDdcfz4phGtuGHHUPO3r3jFn416nR5qUpe1WBjZNJ?=
+ =?iso-8859-1?Q?cTT+tv3shYh+CK/lJmm8LMsg7cHIUCyTWYMgntstIDV61HBECOROD3m9Hw?=
+ =?iso-8859-1?Q?v+3cZ9krJpNU6r8EoPcWcWyV8SXMVvLRUvKiVDYkP847L2tAmX6/GG/Dv5?=
+ =?iso-8859-1?Q?LdTDxsrZcwbiIyjQNxJCBqNj4is2Yc93QmhJ9rmyhc6kdQYtQYPJHmIhqZ?=
+ =?iso-8859-1?Q?pl+2nBtELG2n7iGeJvxJy6YmSUSD4KIGMDy9yZ6JZbyMxtZVxWnPW+zQOc?=
+ =?iso-8859-1?Q?ZbIC8ksioj6alkTDv0Iu6BZuQn71/9foe/l1+DRenOT/FdGMacJmCLXaUS?=
+ =?iso-8859-1?Q?afeWr1ExkdbnNYOVzegybbnfqcxQP5YtwuVwYqBb4S/BlFCVlG16K4B4lg?=
+ =?iso-8859-1?Q?OLMcdW+AjwfW8BG9GejZ2XuutsgkwflJPgbw1f5rCY4f1daiO4E7YHyqbr?=
+ =?iso-8859-1?Q?p4nThmuB/jfaXVb8uKVtMvrOZoj43pgPyFv3FRZ+G5P7zd2Zr7lme43tp/?=
+ =?iso-8859-1?Q?ay6BLFvaAPXEId1t0cCVzgNQv80goj9v0DBY4bmZVjnlXNL66WVLCECa3F?=
+ =?iso-8859-1?Q?nKNLRbB3XUMOxJK58cVivjT52EK8QOYFgIBrrK+5/dWaydY2d6prDesxlP?=
+ =?iso-8859-1?Q?MP6yqaIJ8fENYjwCNTHrBu0X6kRDcBHVl25s0OsiDqBa5sh9PH7idjk+Vh?=
+ =?iso-8859-1?Q?yZDCbfe0mR8Ky/i/AMC9mp7ST73Sxx9Ldr4NoyTCLTEX2Svkf1DfAUO/No?=
+ =?iso-8859-1?Q?XyTCdazYPUzY+XooFGb8+BFs0LH6+IyVhOjhAAJnT/ozkoBTfW4dLcQ5Jg?=
+ =?iso-8859-1?Q?XdPDgunzdHFxnUxCFRPTv2woG1i71pFXV/GgF4tcx8w0tI4G90akbAdEVH?=
+ =?iso-8859-1?Q?mhoYBCcYu+x2+s1rkzlgXXk8goKz8YYR5EFVzvg7QYXIREIaHu3MfAND9W?=
+ =?iso-8859-1?Q?lOrJjDIAV9PgvYugkZ6TukNqiL5u831rDTzXrtv1ZTDQ1axALV5YCRior4?=
+ =?iso-8859-1?Q?1SDQ5JGB517VdvOhFBnIHL8MBmMPfO5+GgyC+UZkQlhyl/DIVMXTbwvOmL?=
+ =?iso-8859-1?Q?BlIJBL9FgKwqRcWDTwwhnK9js6uwXe/moO3RgOe4y8nzKzqiXft703xCui?=
+ =?iso-8859-1?Q?t4/aEOAyF6DwY76G4ZTgprKv9o611h9jEt304lpWecbEpBCSgpQ4dIm+Sg?=
+ =?iso-8859-1?Q?5laUfVXQm75PQ6fvgwcGET9HoP+BJ3+ufPSvvTuimwJLHovO9rXC/vtE6Z?=
+ =?iso-8859-1?Q?ek+ox9qRow=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: SI6PR06MB7631.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1eb0e307-f514-44db-338d-08de63b84867
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Feb 2026 06:40:27.2930 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e562c5e9-fd5c-4b08-3658-08de63b852f3
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Feb 2026 06:40:44.9126 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: PLgkhCcEgs9mSooREsCLGG4SNxKypJkWPfkg2wbEfIFOQf9gUJX8ExFMeOKMQPIL0Ep7zFw3cbzbgj3kU/UgR425XSo6bFUnKe8ysu9ZJ1E=
+X-MS-Exchange-CrossTenant-userprincipalname: EGpxNwlR5tSWsC8IhIlDtDkg9igYl88ZGEeM0O+Loey6frA3vE6m6djhysJ+RWEGzoQYlymxEsPZsfIwENL5LoUHeAvZiykuMA6keUVqa28=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR06MB5901
-Received-SPF: pass client-ip=2a01:111:f403:c405::5;
+Received-SPF: pass client-ip=2a01:111:f403:c405::7;
  envelope-from=kane_chen@aspeedtech.com;
- helo=TYPPR03CU001.outbound.protection.outlook.com
+ helo=TYDPR03CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -191,52 +172,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Q29ubmVjdCB0aGUgTFRQSSBjb250cm9sbGVyIHRvIHRoZSBBU1QxNzAwIG1vZGVsIGJ5IG1hcHBp
-bmcgaXRzIE1NSU8KcmVnaW9uLgoKU2lnbmVkLW9mZi1ieTogS2FuZS1DaGVuLUFTIDxrYW5lX2No
-ZW5AYXNwZWVkdGVjaC5jb20+ClJldmlld2VkLWJ5OiBD77+9ZHJpYyBMZSBHb2F0ZXIgPGNsZ0By
-ZWRoYXQuY29tPgpSZXZpZXdlZC1ieTogTmFiaWggRXN0ZWZhbiA8bmFiaWhlc3RlZmFuQGdvb2ds
-ZS5jb20+ClRlc3RlZC1ieTogTmFiaWggRXN0ZWZhbiA8bmFiaWhlc3RlZmFuQGdvb2dsZS5jb20+
-Ci0tLQogaW5jbHVkZS9ody9hcm0vYXNwZWVkX2FzdDE3MDAuaCB8ICAzICsrKwogaHcvYXJtL2Fz
-cGVlZF9hc3QxNzAwLmMgICAgICAgICB8IDI4ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysK
-IDIgZmlsZXMgY2hhbmdlZCwgMzEgaW5zZXJ0aW9ucygrKQoKZGlmZiAtLWdpdCBhL2luY2x1ZGUv
-aHcvYXJtL2FzcGVlZF9hc3QxNzAwLmggYi9pbmNsdWRlL2h3L2FybS9hc3BlZWRfYXN0MTcwMC5o
-CmluZGV4IDM3OGRjYjQzN2EuLmFkZGVhM2FiMWYgMTAwNjQ0Ci0tLSBhL2luY2x1ZGUvaHcvYXJt
-L2FzcGVlZF9hc3QxNzAwLmgKKysrIGIvaW5jbHVkZS9ody9hcm0vYXNwZWVkX2FzdDE3MDAuaApA
-QCAtOSw2ICs5LDcgQEAKICNkZWZpbmUgQVNQRUVEX0FTVDE3MDBfSAogCiAjaW5jbHVkZSAiaHcv
-Y29yZS9zeXNidXMuaCIKKyNpbmNsdWRlICJody9taXNjL2FzcGVlZF9sdHBpLmgiCiAKICNkZWZp
-bmUgVFlQRV9BU1BFRURfQVNUMTcwMCAiYXNwZWVkLmFzdDE3MDAiCiAKQEAgLTE4LDYgKzE5LDgg
-QEAgc3RydWN0IEFzcGVlZEFTVDE3MDBTb0NTdGF0ZSB7CiAgICAgU3lzQnVzRGV2aWNlIHBhcmVu
-dF9vYmo7CiAKICAgICBNZW1vcnlSZWdpb24gaW9tZW07CisKKyAgICBBc3BlZWRMVFBJU3RhdGUg
-bHRwaTsKIH07CiAKICNlbmRpZiAvKiBBU1BFRURfQVNUMTcwMF9IICovCmRpZmYgLS1naXQgYS9o
-dy9hcm0vYXNwZWVkX2FzdDE3MDAuYyBiL2h3L2FybS9hc3BlZWRfYXN0MTcwMC5jCmluZGV4IGRk
-MzhiODE5YjguLmU0Yzg1NjVkM2YgMTAwNjQ0Ci0tLSBhL2h3L2FybS9hc3BlZWRfYXN0MTcwMC5j
-CisrKyBiL2h3L2FybS9hc3BlZWRfYXN0MTcwMC5jCkBAIC0xMyw2ICsxMywxNCBAQAogCiAjZGVm
-aW5lIEFTVDI3MDBfU09DX0xUUElfU0laRSAgICAgICAgMHgwMTAwMDAwMAogCitlbnVtIHsKKyAg
-ICBBU1BFRURfQVNUMTcwMF9ERVZfTFRQSV9DVFJMLAorfTsKKworc3RhdGljIGNvbnN0IGh3YWRk
-ciBhc3BlZWRfYXN0MTcwMF9pb19tZW1tYXBbXSA9IHsKKyAgICBbQVNQRUVEX0FTVDE3MDBfREVW
-X0xUUElfQ1RSTF0gPSAgMHgwMEMzNDAwMCwKK307CisKIHN0YXRpYyB2b2lkIGFzcGVlZF9hc3Qx
-NzAwX3JlYWxpemUoRGV2aWNlU3RhdGUgKmRldiwgRXJyb3IgKiplcnJwKQogewogICAgIEFzcGVl
-ZEFTVDE3MDBTb0NTdGF0ZSAqcyA9IEFTUEVFRF9BU1QxNzAwKGRldik7CkBAIC0yMiw2ICszMCwy
-NSBAQCBzdGF0aWMgdm9pZCBhc3BlZWRfYXN0MTcwMF9yZWFsaXplKERldmljZVN0YXRlICpkZXYs
-IEVycm9yICoqZXJycCkKICAgICBtZW1vcnlfcmVnaW9uX2luaXQoJnMtPmlvbWVtLCBPQkpFQ1Qo
-cyksIFRZUEVfQVNQRUVEX0FTVDE3MDAsCiAgICAgICAgICAgICAgICAgICAgICAgIEFTVDI3MDBf
-U09DX0xUUElfU0laRSk7CiAgICAgc3lzYnVzX2luaXRfbW1pbyhzYmQsICZzLT5pb21lbSk7CisK
-KyAgICAvKiBMVFBJIGNvbnRyb2xsZXIgKi8KKyAgICBpZiAoIXN5c2J1c19yZWFsaXplKFNZU19C
-VVNfREVWSUNFKCZzLT5sdHBpKSwgZXJycCkpIHsKKyAgICAgICAgcmV0dXJuOworICAgIH0KKyAg
-ICBtZW1vcnlfcmVnaW9uX2FkZF9zdWJyZWdpb24oJnMtPmlvbWVtLAorICAgICAgICAgICAgICAg
-ICAgICAgICAgYXNwZWVkX2FzdDE3MDBfaW9fbWVtbWFwW0FTUEVFRF9BU1QxNzAwX0RFVl9MVFBJ
-X0NUUkxdLAorICAgICAgICAgICAgICAgICAgICAgICAgc3lzYnVzX21taW9fZ2V0X3JlZ2lvbihT
-WVNfQlVTX0RFVklDRSgmcy0+bHRwaSksIDApKTsKK30KKworc3RhdGljIHZvaWQgYXNwZWVkX2Fz
-dDE3MDBfaW5zdGFuY2VfaW5pdChPYmplY3QgKm9iaikKK3sKKyAgICBBc3BlZWRBU1QxNzAwU29D
-U3RhdGUgKnMgPSBBU1BFRURfQVNUMTcwMChvYmopOworCisgICAgLyogTFRQSSBjb250cm9sbGVy
-ICovCisgICAgb2JqZWN0X2luaXRpYWxpemVfY2hpbGQob2JqLCAibHRwaS1jdHJsIiwKKyAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAmcy0+bHRwaSwgVFlQRV9BU1BFRURfTFRQSSk7CisKKyAg
-ICByZXR1cm47CiB9CiAKIHN0YXRpYyB2b2lkIGFzcGVlZF9hc3QxNzAwX2NsYXNzX2luaXQoT2Jq
-ZWN0Q2xhc3MgKmtsYXNzLCBjb25zdCB2b2lkICpkYXRhKQpAQCAtMzYsNiArNjMsNyBAQCBzdGF0
-aWMgY29uc3QgVHlwZUluZm8gYXNwZWVkX2FzdDE3MDBfaW5mbyA9IHsKICAgICAucGFyZW50ICAg
-ICAgICA9IFRZUEVfU1lTX0JVU19ERVZJQ0UsCiAgICAgLmluc3RhbmNlX3NpemUgPSBzaXplb2Yo
-QXNwZWVkQVNUMTcwMFNvQ1N0YXRlKSwKICAgICAuY2xhc3NfaW5pdCAgICA9IGFzcGVlZF9hc3Qx
-NzAwX2NsYXNzX2luaXQsCisgICAgLmluc3RhbmNlX2luaXQgPSBhc3BlZWRfYXN0MTcwMF9pbnN0
-YW5jZV9pbml0LAogfTsKIAogc3RhdGljIHZvaWQgYXNwZWVkX2FzdDE3MDBfcmVnaXN0ZXJfdHlw
-ZXModm9pZCkKLS0gCjIuNDMuMAo=
+The current Aspeed AST2700 functional test case strictly uses I2C bus=0A=
+1 for its sensor tests. This hard-coded approach prevents the test=0A=
+logic from being reused for other machine types or configurations=0A=
+where I2C bus 1 might be disabled or where a different bus needs to=0A=
+be verified (e.g., I2C expanders).=0A=
+=0A=
+This refactoring allows the same I2C verification logic to be shared=0A=
+across different test scenarios by simply passing the target bus=0A=
+number.=0A=
+=0A=
+Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>=0A=
+---=0A=
+ .../functional/aarch64/test_aspeed_ast2700.py | 39 +++++++++++--------=0A=
+ 1 file changed, 23 insertions(+), 16 deletions(-)=0A=
+=0A=
+diff --git a/tests/functional/aarch64/test_aspeed_ast2700.py b/tests/functi=
+onal/aarch64/test_aspeed_ast2700.py=0A=
+index 828ea1ca53..d7eeab9c23 100755=0A=
+--- a/tests/functional/aarch64/test_aspeed_ast2700.py=0A=
++++ b/tests/functional/aarch64/test_aspeed_ast2700.py=0A=
+@@ -15,11 +15,17 @@=0A=
+ =0A=
+ class AST2x00MachineSDK(QemuSystemTest):=0A=
+ =0A=
+-    def do_test_aarch64_aspeed_sdk_start(self, image):=0A=
++    def do_test_aarch64_aspeed_sdk_start(self, image, bus_id):=0A=
++        bus_str =3D str(bus_id)=0A=
+         self.require_netdev('user')=0A=
+         self.vm.set_console()=0A=
+-        self.vm.add_args('-device',=0A=
+-                         'tmp105,bus=3Daspeed.i2c.bus.1,address=3D0x4d,id=
+=3Dtmp-test')=0A=
++        self.vm.add_args(=0A=
++            '-device',=0A=
++            f'tmp105,'=0A=
++            f'bus=3Daspeed.i2c.bus.{bus_str},'=0A=
++            f'address=3D0x4d,'=0A=
++            f'id=3Dtmp-test-{bus_str}'=0A=
++        )=0A=
+         self.vm.add_args('-drive', 'file=3D' + image + ',if=3Dmtd,format=
+=3Draw',=0A=
+                          '-net', 'nic', '-net', 'user', '-snapshot')=0A=
+ =0A=
+@@ -75,16 +81,17 @@ def verify_openbmc_boot_and_login(self, name):=0A=
+             'https://github.com/AspeedTech-BMC/openbmc/releases/download/v=
+11.00/ast2700-a1-obmc.tar.gz',=0A=
+             'd5ceed511cd0dfefbb102fff2d731159e0472948a28066dc0d90bcd54be76=
+525')=0A=
+ =0A=
+-    def do_ast2700_i2c_test(self):=0A=
++    def do_ast2700_i2c_test(self, bus_id):=0A=
++        bus_str =3D str(bus_id)=0A=
+         exec_command_and_wait_for_pattern(self,=0A=
+-            'echo lm75 0x4d > /sys/class/i2c-dev/i2c-1/device/new_device '=
+,=0A=
+-            'i2c i2c-1: new_device: Instantiated device lm75 at 0x4d')=0A=
++            f'echo lm75 0x4d > /sys/class/i2c-dev/i2c-{bus_str}/device/new=
+_device ',=0A=
++            f'i2c i2c-{bus_str}: new_device: Instantiated device lm75 at 0=
+x4d')=0A=
+         exec_command_and_wait_for_pattern(self,=0A=
+-            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '0=
+')=0A=
+-        self.vm.cmd('qom-set', path=3D'/machine/peripheral/tmp-test',=0A=
++            f'cat /sys/bus/i2c/devices/{bus_str}-004d/hwmon/hwmon*/temp1_i=
+nput', '0')=0A=
++        self.vm.cmd('qom-set', path=3Df'/machine/peripheral/tmp-test-{bus_=
+str}',=0A=
+                     property=3D'temperature', value=3D18000)=0A=
+         exec_command_and_wait_for_pattern(self,=0A=
+-            'cat /sys/bus/i2c/devices/1-004d/hwmon/hwmon*/temp1_input', '1=
+8000')=0A=
++            f'cat /sys/bus/i2c/devices/{bus_str}-004d/hwmon/hwmon*/temp1_i=
+nput', '18000')=0A=
+ =0A=
+     def do_ast2700_pcie_test(self):=0A=
+         exec_command_and_wait_for_pattern(self,=0A=
+@@ -99,7 +106,7 @@ def do_ast2700_pcie_test(self):=0A=
+             'ip addr show dev eth2',=0A=
+             'inet 10.0.2.15/24')=0A=
+ =0A=
+-    def start_ast2700_test(self, name):=0A=
++    def start_ast2700_test(self, name, bus_id):=0A=
+         num_cpu =3D 4=0A=
+         load_images_list =3D [=0A=
+             {=0A=
+@@ -128,12 +135,12 @@ def start_ast2700_test(self, name):=0A=
+ =0A=
+         self.vm.add_args('-smp', str(num_cpu))=0A=
+         self.do_test_aarch64_aspeed_sdk_start(=0A=
+-            self.scratch_file(name, 'image-bmc'))=0A=
++            self.scratch_file(name, 'image-bmc'), bus_id)=0A=
+ =0A=
+-    def start_ast2700_test_vbootrom(self, name):=0A=
++    def start_ast2700_test_vbootrom(self, name, bus_id):=0A=
+         self.vm.add_args('-bios', 'ast27x0_bootrom.bin')=0A=
+         self.do_test_aarch64_aspeed_sdk_start(=0A=
+-                self.scratch_file(name, 'image-bmc'))=0A=
++                self.scratch_file(name, 'image-bmc'), bus_id)=0A=
+ =0A=
+     def test_aarch64_ast2700a1_evb_sdk_v11_00(self):=0A=
+         self.set_machine('ast2700a1-evb')=0A=
+@@ -142,9 +149,9 @@ def test_aarch64_ast2700a1_evb_sdk_v11_00(self):=0A=
+         self.archive_extract(self.ASSET_SDK_V1100_AST2700A1)=0A=
+         self.vm.add_args('-device', 'e1000e,netdev=3Dnet1,bus=3Dpcie.2')=
+=0A=
+         self.vm.add_args('-netdev', 'user,id=3Dnet1')=0A=
+-        self.start_ast2700_test('ast2700-a1')=0A=
++        self.start_ast2700_test('ast2700-a1', 1)=0A=
+         self.verify_openbmc_boot_and_login('ast2700-a1')=0A=
+-        self.do_ast2700_i2c_test()=0A=
++        self.do_ast2700_i2c_test(1)=0A=
+         self.do_ast2700_pcie_test()=0A=
+ =0A=
+     def test_aarch64_ast2700a1_evb_sdk_vbootrom_v11_00(self):=0A=
+@@ -154,7 +161,7 @@ def test_aarch64_ast2700a1_evb_sdk_vbootrom_v11_00(self=
+):=0A=
+         self.archive_extract(self.ASSET_SDK_V1100_AST2700A1)=0A=
+         self.vm.add_args('-device', 'e1000e,netdev=3Dnet1,bus=3Dpcie.2')=
+=0A=
+         self.vm.add_args('-netdev', 'user,id=3Dnet1')=0A=
+-        self.start_ast2700_test_vbootrom('ast2700-a1')=0A=
++        self.start_ast2700_test_vbootrom('ast2700-a1', 1)=0A=
+         self.verify_vbootrom_firmware_flow()=0A=
+         self.verify_openbmc_boot_start()=0A=
+ =0A=
+-- =0A=
+2.43.0=0A=
 

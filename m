@@ -4,120 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3991E83EF9
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 08:59:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98D16E95374
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:32:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnYiy-0003gq-46; Wed, 04 Feb 2026 03:59:00 -0500
+	id 1vnaAq-0000Ki-R5; Wed, 04 Feb 2026 05:31:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vnYiw-0003fq-Bb
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 03:58:58 -0500
-Received: from 10.mo548.mail-out.ovh.net ([46.105.77.235])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaAp-0000Jw-7b
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:31:51 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vnYiu-0005ww-3m
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 03:58:58 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.43.119])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4f5Z5p49cTz5w2L;
- Wed,  4 Feb 2026 08:58:54 +0000 (UTC)
-Received: from kaod.org (37.59.142.110) by DAG14EX2.mxp5.local (172.16.2.142)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Wed, 4 Feb
- 2026 09:58:53 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-110S004caa71605-d924-4b8f-a7be-2b5b7aedc842,
- E481ED796CD1A7AD002472F698DA8951F44CEEA4) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <e7c8d3fe-f3d3-4fda-9c62-d74c6b75934f@kaod.org>
-Date: Wed, 4 Feb 2026 09:58:52 +0100
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaAn-0003vf-Q6
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:31:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1770201109;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=93/8CmowdpxRszw5AU0EO8rYkNgSes0F9Lw0nNh6/e8=;
+ b=R7/Opr1C4lis79vNmYaqnsB9XWXNCp/0ZXRyISmWRWVB1HdJBTV+g/kxnz9ReqGNCWtCyC
+ Ua6eiGgGcF1urx1K2753ddzhlHm1kmWjOOpyTDALDSheFnwqIE+fbBSSj+FgC2yrLRkbUY
+ ZP7HNaJWz/MWz4LtmS1PpzpScrp3NdU=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-88-rGGV7Y7PMAa1RpM-2if9DA-1; Wed,
+ 04 Feb 2026 05:31:46 -0500
+X-MC-Unique: rGGV7Y7PMAa1RpM-2if9DA-1
+X-Mimecast-MFC-AGG-ID: rGGV7Y7PMAa1RpM-2if9DA_1770201105
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CE6C01800259; Wed,  4 Feb 2026 10:31:44 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.45.224.44])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 5D92418004AD; Wed,  4 Feb 2026 10:31:43 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>
+Subject: [PULL 02/45] tests/functional/arm/aspeed: Update buildroot images to
+ 2025.11
+Date: Wed,  4 Feb 2026 11:30:53 +0100
+Message-ID: <20260204103136.1795455-3-clg@redhat.com>
+In-Reply-To: <20260204103136.1795455-1-clg@redhat.com>
+References: <20260204103136.1795455-1-clg@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 22/22] tests/functional/aarch64: Add I2C test for
- AST1700 IO expanders
-To: Kane Chen <kane_chen@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, "kaneluno1@gmail.com"
- <kaneluno1@gmail.com>
-References: <20260204082113.3955407-1-kane_chen@aspeedtech.com>
- <20260204082113.3955407-23-kane_chen@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260204082113.3955407-23-kane_chen@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: 8uaLw2FzauufU_AkmYBOozpsCTpDVAoW8T3DIXPrqYM_1770201105
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.110]
-X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG14EX2.mxp5.local
- (172.16.2.142)
-X-Ovh-Tracer-GUID: 16143d6f-118f-4899-b20a-38a8c22d9c13
-X-Ovh-Tracer-Id: 742530989719718901
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFr5Gbb+DWXK0mbGKznepz2iZ5JjvnON+uQK4PfaIrgtahIicVtcKBLLilo7mXON1qpsORenuVFw9kSNNECvlMWJCnttj6xciaQ8N/JvndlaXvVMDLyPDGxqzCyjPOjBM288nSQAdcMLdP4jiNwTTNJs4sEMJvyZ+6RKMwFT/1EtotEgA3oHLTlBM6zAgGNEqfw8tLh/atVbP3izNQBDsP55501iDaidKjOUr74caLybt8V6WQXFUMxliif1hmhpJW/+s+N1AdVDVsvoClBUDtPBEdJN6t/+oWlUUitECxK8NWL+5JQAR+s3v10fXqPBUmmMVRnjytage3Qt3JEAp7CXuZooMvGR07QbksbMWDg/+0X4cEVBX9z8qsIcrTw6ky5vdaK0YEAqzD4M+7cgVJMCUXR9ssTO+jVuYA5b1U8rknwL4oHlLXBZ1YVRrKzoDWVNx8j3gG89dH1H0tAwSeC9AI760+pOPp4isTz8d+N3iCHOVgQZF8CagRBDusLtCikjpKEncoiq1ZFRS50UIODLDsgGaRHyPenQ5wJC75P+pIDD/gwX3PnbKtm20YtgN94z20KVQ8jUOARwOjGPtg8lI5cbqLyxEbHxYCgpXlHk4EegNC60p3fKr12fkFiGakRwRMUHEq0RXG4PHFdyiF/DG6cy5RVWWA11tE1+A9ukA
-DKIM-Signature: a=rsa-sha256; bh=eCuxLO9e5XqSSImuHQN2Vpzq8HZ91j4Zs+8d4vvfqus=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1770195534; v=1;
- b=j4Y0KJa3N9kr1toI2dAtIeBIRHJANwOiE7M9rUisNw98MY2W/3+Sbup3atFC5LvGorNJtlA+
- v3ksTwoWoSVrxFJGeZlUj/O2yY1vQTrrty1fEIsi/wcwHBwCzkN4NrY9pU5EPtW9KE704IbkqDH
- fFz5atm98AdHZXeWYys4MBJpIdeOErh6R7gA75e5Wv/wj2GIWRvM92F3d4QXBfGoaEZsHYKq/8A
- HqpveMLKbjkp0uVdBO/0qgEFPRi/aCZeoOMCONR9Om/YL6zgAe729Rn9wkjDWDJF8qO0nHuw12Y
- zAAjUTxtlNB1dr6YIlonplTnsbvI52fsF9Suc42eKopVQ==
-Received-SPF: pass client-ip=46.105.77.235; envelope-from=clg@kaod.org;
- helo=10.mo548.mail-out.ovh.net
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,61 +87,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/4/26 09:21, Kane Chen wrote:
-> Extend the AST2700 test suite to verify I2C connectivity on AST1700
-> IO expanders using the DCSCM image. This validates the new bus-label
-> naming scheme by testing communication on both primary and
-> expander-attached I2C buses.
-> 
-> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+The main changes compared to upstream 2025.11 buildroot are
 
+  - Linux v6.18
+  - latest OpenBMC U-Boot
+  - extra packages (ssh, etc.)
 
+See
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+  https://github.com/legoater/buildroot/commits/aspeed-2025.11
 
-Thanks,
+Acked-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Link: https://lore.kernel.org/qemu-devel/20260105160358.771511-1-clg@redhat.com
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ tests/functional/arm/test_aspeed_ast2500.py           | 8 ++++----
+ tests/functional/arm/test_aspeed_ast2600_buildroot.py | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-C.
-
-
-
-> ---
->   tests/functional/aarch64/test_aspeed_ast2700.py | 17 +++++++++++++++++
->   1 file changed, 17 insertions(+)
-> 
-> diff --git a/tests/functional/aarch64/test_aspeed_ast2700.py b/tests/functional/aarch64/test_aspeed_ast2700.py
-> index cb1aafeb99..61373ffe5b 100755
-> --- a/tests/functional/aarch64/test_aspeed_ast2700.py
-> +++ b/tests/functional/aarch64/test_aspeed_ast2700.py
-> @@ -82,6 +82,10 @@ def verify_openbmc_boot_and_login(self, name, enable_pcie=True):
->               'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2700-a1-obmc.tar.gz',
->               'd5ceed511cd0dfefbb102fff2d731159e0472948a28066dc0d90bcd54be76525')
->   
-> +    ASSET_SDK_V1100_AST2700A1_DCSCM = Asset(
-> +            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2700-a1-dcscm-obmc.tar.gz',
-> +            '4f8778be176ece1b57d33c4aee13bb989be114c3e4703150eaeb6f996bd5587f')
-> +
->       def do_ast2700_i2c_test(self, bus_id):
->           bus_str = str(bus_id)
->           exec_command_and_wait_for_pattern(self,
-> @@ -166,5 +170,18 @@ def test_aarch64_ast2700a1_evb_sdk_vbootrom_v11_00(self):
->           self.verify_vbootrom_firmware_flow()
->           self.verify_openbmc_boot_start()
->   
-> +    def test_aarch64_ast2700a1_evb_ioexp_v11_00(self):
-> +        self.set_machine('ast2700a1-evb')
-> +        self.require_netdev('user')
-> +
-> +        self.archive_extract(self.ASSET_SDK_V1100_AST2700A1_DCSCM)
-> +        self.vm.set_machine('ast2700a1-evb,fmc-model=w25q512jv')
-> +        self.vm.add_args('-device',
-> +                         'tmp105,bus=ioexp0.0,address=0x4d,id=tmp-test-16')
-> +        self.start_ast2700_test('ast2700-a1-dcscm', 8)
-> +        self.verify_openbmc_boot_and_login('ast2700-a1-dcscm', False)
-> +        self.do_ast2700_i2c_test(8)
-> +        self.do_ast2700_i2c_test(16)
-> +
->   if __name__ == '__main__':
->       QemuSystemTest.main()
+diff --git a/tests/functional/arm/test_aspeed_ast2500.py b/tests/functional/arm/test_aspeed_ast2500.py
+index 5efd104c2b95..ac33c62a9f85 100755
+--- a/tests/functional/arm/test_aspeed_ast2500.py
++++ b/tests/functional/arm/test_aspeed_ast2500.py
+@@ -10,15 +10,15 @@
+ 
+ class AST2500Machine(AspeedTest):
+ 
+-    ASSET_BR2_202411_AST2500_FLASH = Asset(
++    ASSET_BR2_202511_AST2500_FLASH = Asset(
+         ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-         'images/ast2500-evb/buildroot-2024.11/flash.img'),
+-        '641e6906c18c0f19a2aeb48099d66d4771929c361001d554d0d45c667413e13a')
++         'images/ast2500-evb/buildroot-2025.11/flash.img'),
++        '31e5a8e280b982fb0e7c07eb71c94851002f99ac604dfe620e71a5d47cc87e78')
+ 
+     def test_arm_ast2500_evb_buildroot(self):
+         self.set_machine('ast2500-evb')
+ 
+-        image_path = self.ASSET_BR2_202411_AST2500_FLASH.fetch()
++        image_path = self.ASSET_BR2_202511_AST2500_FLASH.fetch()
+ 
+         self.vm.add_args('-device',
+                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test')
+diff --git a/tests/functional/arm/test_aspeed_ast2600_buildroot.py b/tests/functional/arm/test_aspeed_ast2600_buildroot.py
+index 575a5f64143f..3d130b9fd189 100755
+--- a/tests/functional/arm/test_aspeed_ast2600_buildroot.py
++++ b/tests/functional/arm/test_aspeed_ast2600_buildroot.py
+@@ -16,15 +16,15 @@
+ 
+ class AST2600Machine(AspeedTest):
+ 
+-    ASSET_BR2_202411_AST2600_FLASH = Asset(
++    ASSET_BR2_202511_AST2600_FLASH = Asset(
+         ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-         'images/ast2600-evb/buildroot-2024.11/flash.img'),
+-        '4bb2f3dfdea31199b51d66b42f686dc5374c144a7346fdc650194a5578b73609')
++         'images/ast2600-evb/buildroot-2025.11/flash.img'),
++        'c64a0755501393d570ca318e326e1e9f8372edc5a6452cdccc3649bc9fd2c138')
+ 
+     def test_arm_ast2600_evb_buildroot(self):
+         self.set_machine('ast2600-evb')
+ 
+-        image_path = self.ASSET_BR2_202411_AST2600_FLASH.fetch()
++        image_path = self.ASSET_BR2_202511_AST2600_FLASH.fetch()
+ 
+         self.vm.add_args('-device',
+                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test')
+-- 
+2.52.0
 
 

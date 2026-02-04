@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE011E95374
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:34:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88B04E95377
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:34:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnaBv-00029k-6j; Wed, 04 Feb 2026 05:32:59 -0500
+	id 1vnaCM-0002yc-Id; Wed, 04 Feb 2026 05:33:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBn-0001qS-BP
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:51 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaC2-0002MX-6Y
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:33:06 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBl-00048u-PG
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:51 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBz-0004C5-Uh
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:33:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770201169;
+ s=mimecast20190719; t=1770201183;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=O7LbpKKJnFc6Yx5KDY/zCDsJtdLAHmcK6IzCMG61NPg=;
- b=WwAoIDSbzdfTbbFP7J1e1FzSe/Afx0nJ0+/LUV79ZijFt4FasuoCKCtysGJLkoWUBMajzT
- ezDVrSBtPKrB01QMD2G7hsMxPyyEuK62Chz/hPNdpQNMUhe2pY8vO4vgu7b/vx2jAv5deE
- neRUL/VWUKEaAp/8mnwBRb54YoB2oFY=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=s6+IOP/ZYsZUujXSs6pRXKxziTQlt+0qFcMqUzWJnyI=;
+ b=jP05BBUTxZimOWdkzEz9Y6FRjYcg4p6PL+ExrfvCgz75wHf3Z1YiHacH+1eDvrc/zXK5qQ
+ 7QclnR23DBGkMV5Av0QmctOKWPZ/uDTo4XGx03249W9jTKd0JJCcUzzTlZPQZJdwYqvLn7
+ X32CNkm31OTIdE1+BqnKbmhIW6LwJcg=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-562-wMK64BwdPc28bVbr8pWcDg-1; Wed,
- 04 Feb 2026 05:32:47 -0500
-X-MC-Unique: wMK64BwdPc28bVbr8pWcDg-1
-X-Mimecast-MFC-AGG-ID: wMK64BwdPc28bVbr8pWcDg_1770201166
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-650-lUK8ctKPMw23blPtiWhnAA-1; Wed,
+ 04 Feb 2026 05:33:02 -0500
+X-MC-Unique: lUK8ctKPMw23blPtiWhnAA-1
+X-Mimecast-MFC-AGG-ID: lUK8ctKPMw23blPtiWhnAA_1770201181
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EB58319560B8; Wed,  4 Feb 2026 10:32:45 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id F0DAE1800259; Wed,  4 Feb 2026 10:33:00 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3EEFC18004AD; Wed,  4 Feb 2026 10:32:44 +0000 (UTC)
+ id 2A6A918004AD; Wed,  4 Feb 2026 10:32:58 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Kane Chen <kane_chen@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Nabih Estefan <nabihestefan@google.com>
-Subject: [PULL 31/45] hw/arm/aspeed: Attach UART device to AST1700 model
-Date: Wed,  4 Feb 2026 11:31:22 +0100
-Message-ID: <20260204103136.1795455-32-clg@redhat.com>
+Subject: [PULL 38/45] hw/arm/aspeed: Attach WDT device to AST1700 model
+Date: Wed,  4 Feb 2026 11:31:29 +0100
+Message-ID: <20260204103136.1795455-39-clg@redhat.com>
 In-Reply-To: <20260204103136.1795455-1-clg@redhat.com>
 References: <20260204103136.1795455-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: wg_icbVmpsSjUOF3Wv_teQQ44OZ-Nj1W0tRTQNnaK_A_1770201166
+X-Mimecast-MFC-PROC-ID: BwOMMvVi3C_TvqDpU3N8ZekxyvJQ4s-Y_446YDZrUv4_1770201181
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -71,7 +71,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,92 +89,99 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Kane Chen <kane_chen@aspeedtech.com>
 
-Connect the UART controller to the AST1700 model by mapping its MMIO
-region.
+Connect the WDT device to AST1700 model.
 
 Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Reviewed-by: Nabih Estefan <nabihestefan@google.com>
 Tested-by: Nabih Estefan <nabihestefan@google.com>
-Link: https://lore.kernel.org/qemu-devel/20260204082113.3955407-9-kane_chen@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260204082113.3955407-16-kane_chen@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed_ast1700.h |  2 ++
- hw/arm/aspeed_ast1700.c         | 18 ++++++++++++++++++
- 2 files changed, 20 insertions(+)
+ include/hw/arm/aspeed_ast1700.h |  4 ++++
+ hw/arm/aspeed_ast1700.c         | 24 ++++++++++++++++++++++++
+ 2 files changed, 28 insertions(+)
 
 diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_ast1700.h
-index addea3ab1ff9..b15b13aedd3f 100644
+index 1005ce63645f..ee0c47d173e0 100644
 --- a/include/hw/arm/aspeed_ast1700.h
 +++ b/include/hw/arm/aspeed_ast1700.h
-@@ -10,6 +10,7 @@
- 
- #include "hw/core/sysbus.h"
+@@ -15,8 +15,11 @@
+ #include "hw/i2c/aspeed_i2c.h"
  #include "hw/misc/aspeed_ltpi.h"
-+#include "hw/char/serial-mm.h"
+ #include "hw/ssi/aspeed_smc.h"
++#include "hw/watchdog/wdt_aspeed.h"
+ #include "hw/char/serial-mm.h"
  
++#define AST1700_WDT_NUM              9
++
  #define TYPE_ASPEED_AST1700 "aspeed.ast1700"
  
-@@ -21,6 +22,7 @@ struct AspeedAST1700SoCState {
-     MemoryRegion iomem;
- 
-     AspeedLTPIState ltpi;
-+    SerialMM uart;
+ OBJECT_DECLARE_SIMPLE_TYPE(AspeedAST1700SoCState, ASPEED_AST1700)
+@@ -37,6 +40,7 @@ struct AspeedAST1700SoCState {
+     AspeedSCUState scu;
+     AspeedGPIOState gpio;
+     AspeedI2CState i2c;
++    AspeedWDTState wdt[AST1700_WDT_NUM];
  };
  
  #endif /* ASPEED_AST1700_H */
 diff --git a/hw/arm/aspeed_ast1700.c b/hw/arm/aspeed_ast1700.c
-index e4c8565d3f11..f610f259326c 100644
+index e264b2200bc3..59954eca99aa 100644
 --- a/hw/arm/aspeed_ast1700.c
 +++ b/hw/arm/aspeed_ast1700.c
-@@ -9,15 +9,18 @@
- #include "qemu/osdep.h"
- #include "hw/core/boards.h"
- #include "qom/object.h"
-+#include "hw/core/qdev-properties.h"
- #include "hw/arm/aspeed_ast1700.h"
- 
- #define AST2700_SOC_LTPI_SIZE        0x01000000
- 
- enum {
-+    ASPEED_AST1700_DEV_UART12,
+@@ -25,6 +25,7 @@ enum {
+     ASPEED_AST1700_DEV_I2C,
+     ASPEED_AST1700_DEV_UART12,
      ASPEED_AST1700_DEV_LTPI_CTRL,
++    ASPEED_AST1700_DEV_WDT,
+     ASPEED_AST1700_DEV_SPI0_MEM,
  };
  
- static const hwaddr aspeed_ast1700_io_memmap[] = {
-+    [ASPEED_AST1700_DEV_UART12]    =  0x00C33B00,
+@@ -37,6 +38,7 @@ static const hwaddr aspeed_ast1700_io_memmap[] = {
+     [ASPEED_AST1700_DEV_I2C]       =  0x00C0F000,
+     [ASPEED_AST1700_DEV_UART12]    =  0x00C33B00,
      [ASPEED_AST1700_DEV_LTPI_CTRL] =  0x00C34000,
++    [ASPEED_AST1700_DEV_WDT]       =  0x00C37000,
+     [ASPEED_AST1700_DEV_SPI0_MEM]  =  0x04000000,
  };
  
-@@ -31,6 +34,17 @@ static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
-                        AST2700_SOC_LTPI_SIZE);
-     sysbus_init_mmio(sbd, &s->iomem);
- 
-+    /* UART */
-+    qdev_prop_set_uint8(DEVICE(&s->uart), "regshift", 2);
-+    qdev_prop_set_uint32(DEVICE(&s->uart), "baudbase", 38400);
-+    qdev_prop_set_uint8(DEVICE(&s->uart), "endianness", DEVICE_LITTLE_ENDIAN);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->uart), errp)) {
-+        return;
+@@ -135,6 +137,22 @@ static void aspeed_ast1700_realize(DeviceState *dev, Error **errp)
+     memory_region_add_subregion(&s->iomem,
+                         aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_LTPI_CTRL],
+                         sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ltpi), 0));
++    /* WDT */
++    for (int i = 0; i < AST1700_WDT_NUM; i++) {
++        AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
++        hwaddr wdt_offset = aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_WDT] +
++                            i * awc->iosize;
++
++        object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&s->scu),
++                                 errp);
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
++            return;
++        }
++        memory_region_add_subregion(&s->iomem,
++                        wdt_offset,
++                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->wdt[i]), 0));
 +    }
-+    memory_region_add_subregion(&s->iomem,
-+                        aspeed_ast1700_io_memmap[ASPEED_AST1700_DEV_UART12],
-+                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart), 0));
 +
-     /* LTPI controller */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->ltpi), errp)) {
-         return;
-@@ -44,6 +58,10 @@ static void aspeed_ast1700_instance_init(Object *obj)
- {
-     AspeedAST1700SoCState *s = ASPEED_AST1700(obj);
+ }
  
-+    /* UART */
-+    object_initialize_child(obj, "uart", &s->uart,
-+                            TYPE_SERIAL_MM);
-+
-     /* LTPI controller */
+ static void aspeed_ast1700_instance_init(Object *obj)
+@@ -169,6 +187,12 @@ static void aspeed_ast1700_instance_init(Object *obj)
      object_initialize_child(obj, "ltpi-ctrl",
                              &s->ltpi, TYPE_ASPEED_LTPI);
+ 
++    /* WDT */
++    for (int i = 0; i < AST1700_WDT_NUM; i++) {
++        object_initialize_child(obj, "ioexp-wdt[*]",
++                                &s->wdt[i], "aspeed.wdt-ast2700");
++    }
++
+     return;
+ }
+ 
 -- 
 2.52.0
 

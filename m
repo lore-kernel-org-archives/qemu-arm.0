@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A062E95377
-	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:35:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45966E95375
+	for <qemu-arm@archiver.kernel.org>; Wed,  4 Feb 2026 10:35:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vnaBX-0000nf-3B; Wed, 04 Feb 2026 05:32:35 -0500
+	id 1vnaBW-0000na-Qa; Wed, 04 Feb 2026 05:32:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBJ-0000bP-1U
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:23 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBC-0000WZ-PD
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:19 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBG-00041d-UU
- for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:20 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vnaBB-00040T-1K
+ for qemu-arm@nongnu.org; Wed, 04 Feb 2026 05:32:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770201138;
+ s=mimecast20190719; t=1770201132;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jspOalxDiHJBD00cvxzPJ6LHxGM6dr6+SEae2qJ57r4=;
- b=QoREvIBT2CaKGBcBnhTosX6uJWQo83PAxfyzPwKCPPnnEKrGEUJaE4wiTag6A79yMKWcZY
- 6ibrAkjANmG71PE2bECPU18IhjGPVUSVICMTKzXsTPvkr6ruVbu947ZqTgAvlTLxeu0ss4
- h359oO2ti9exv2GfPu1T+/TfAsrmpkE=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=GCxFtvJ6jJfs1ugWZU+Jvw6fkVqrd1ysoKs7Po4iVjo=;
+ b=h26MtWFpsRvNpJmijsQQ1tXTiThK/W467rShDkY0PMbfw+xSrpCorYANJTt8zue0DMO9+X
+ Or7qB5fVc/hW/gwzxdZKWvm21zz6GMpvxtYObuQFwQJUeJRUIoI5dJdP5B4S51o9duMD/t
+ LCXJcXuyMzOr6g5haErEIwuj+8KJH/M=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-49-mKbz-2BhNLueCVRPPtJQ9g-1; Wed,
- 04 Feb 2026 05:32:13 -0500
-X-MC-Unique: mKbz-2BhNLueCVRPPtJQ9g-1
-X-Mimecast-MFC-AGG-ID: mKbz-2BhNLueCVRPPtJQ9g_1770201133
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-135-4q0BWkldMUmzcSeAegY3AQ-1; Wed,
+ 04 Feb 2026 05:32:10 -0500
+X-MC-Unique: 4q0BWkldMUmzcSeAegY3AQ-1
+X-Mimecast-MFC-AGG-ID: 4q0BWkldMUmzcSeAegY3AQ_1770201129
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id ECF241800473; Wed,  4 Feb 2026 10:32:12 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 041F318003F5; Wed,  4 Feb 2026 10:32:09 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 634F518003F6; Wed,  4 Feb 2026 10:32:11 +0000 (UTC)
+ id 0342718004AD; Wed,  4 Feb 2026 10:32:06 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 15/45] tests/functional/arm/test_aspeed_ast1030: Update test
- ASPEED Zephyr SDK v03.05
-Date: Wed,  4 Feb 2026 11:31:06 +0100
-Message-ID: <20260204103136.1795455-16-clg@redhat.com>
+Subject: [PULL 13/45] tests/functional/arm/test_aspeed_ast2600_sdk: Update
+ test ASPEED SDK v11.00
+Date: Wed,  4 Feb 2026 11:31:04 +0100
+Message-ID: <20260204103136.1795455-14-clg@redhat.com>
 In-Reply-To: <20260204103136.1795455-1-clg@redhat.com>
 References: <20260204103136.1795455-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 0hfziAwGn0PZSbD5j6dVX_oup81Xxa4zxF2IRQuVrK8_1770201133
+X-Mimecast-MFC-PROC-ID: PwZh2CcaAvRAwmfDsqakaR4i1_rk_V90SCQnrGKQv5w_1770201129
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -89,50 +89,68 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
+Drop root device and set root bus number to 0.
+
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260127032348.2238527-8-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260127032348.2238527-6-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/functional/arm/test_aspeed_ast1030.py | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ .../functional/arm/test_aspeed_ast2600_sdk.py | 22 ++++++++-----------
+ 1 file changed, 9 insertions(+), 13 deletions(-)
 
-diff --git a/tests/functional/arm/test_aspeed_ast1030.py b/tests/functional/arm/test_aspeed_ast1030.py
-index d1822edd8f10..0defa7c38e25 100755
---- a/tests/functional/arm/test_aspeed_ast1030.py
-+++ b/tests/functional/arm/test_aspeed_ast1030.py
-@@ -12,17 +12,17 @@
+diff --git a/tests/functional/arm/test_aspeed_ast2600_sdk.py b/tests/functional/arm/test_aspeed_ast2600_sdk.py
+index e3d4ed09e2ee..6236aeb11cd2 100755
+--- a/tests/functional/arm/test_aspeed_ast2600_sdk.py
++++ b/tests/functional/arm/test_aspeed_ast2600_sdk.py
+@@ -14,22 +14,18 @@
  
- class AST1030Machine(AspeedTest):
+ class AST2600Machine(AspeedTest):
  
--    ASSET_ZEPHYR_3_03 = Asset(
-+    ASSET_ZEPHYR_3_05 = Asset(
-         ('https://github.com/AspeedTech-BMC'
--         '/zephyr/releases/download/v00.03.03/ast1030-evb-demo.zip'),
--         '27cd73cdee6374bceb4ee58b3ace87989fa3f0684f4e612510804b588b24d4e0')
-+         '/zephyr/releases/download/v00.03.05/ast1030-evb-demo.zip'),
-+         '057528d343490b1fbb5a721e91084b4f04fec60dc114bd65e724554f9c217f4b')
+-    ASSET_SDK_V908_AST2600 = Asset(
+-        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.08/ast2600-default-obmc.tar.gz',
+-        'a0414f14ad696550efe083c2156dbeda855c08cc9ae7f40fe1b41bf292295f82')
++    ASSET_SDK_V1100_AST2600 = Asset(
++        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2600-default-obmc.tar.gz',
++        '64d8926a7d01b649168be96c986603b5690f06391286c438a3a772c8c7039e93')
  
--    def test_arm_ast1030_zephyros_3_03(self):
-+    def test_arm_ast1030_zephyros_3_05(self):
-         self.set_machine('ast1030-evb')
+     def do_ast2600_pcie_test(self):
+         exec_command_and_wait_for_pattern(self,
+-            'lspci -s 80:00.0',
+-            '80:00.0 Host bridge: '
+-            'ASPEED Technology, Inc. Device 2600')
+-        exec_command_and_wait_for_pattern(self,
+-            'lspci -s 80:08.0',
+-            '80:08.0 PCI bridge: '
++            'lspci -s 00:08.0',
++            '00:08.0 PCI bridge: '
+             'ASPEED Technology, Inc. AST1150 PCI-to-PCI Bridge')
+         exec_command_and_wait_for_pattern(self,
+-            'lspci -s 81:00.0',
+-            '81:00.0 Ethernet controller: '
++            'lspci -s 01:00.0',
++            '01:00.0 Ethernet controller: '
+             'Intel Corporation 82574L Gigabit Network Connection')
+         exec_command_and_wait_for_pattern(self,
+             'ip addr show dev eth4',
+@@ -39,7 +35,7 @@ def test_arm_ast2600_evb_sdk(self):
+         self.set_machine('ast2600-evb')
+         self.require_netdev('user')
  
-         kernel_name = "ast1030-evb-demo/zephyr.elf"
-         kernel_file = self.archive_extract(
--            self.ASSET_ZEPHYR_3_03, member=kernel_name)
-+            self.ASSET_ZEPHYR_3_05, member=kernel_name)
+-        self.archive_extract(self.ASSET_SDK_V908_AST2600)
++        self.archive_extract(self.ASSET_SDK_V1100_AST2600)
  
-         self.vm.set_console()
-         self.vm.add_args('-kernel', kernel_file, '-nographic')
-@@ -72,7 +72,7 @@ def test_arm_ast1030_otp_blockdev_device(self):
-         self.vm.set_machine("ast1030-evb")
+         self.vm.add_args('-device',
+             'tmp105,bus=aspeed.i2c.bus.5,address=0x4d,id=tmp-test')
+@@ -77,7 +73,7 @@ def test_arm_ast2600_evb_sdk(self):
+     def test_arm_ast2600_otp_blockdev_device(self):
+         self.vm.set_machine("ast2600-evb")
  
-         kernel_name = "ast1030-evb-demo/zephyr.elf"
--        kernel_file = self.archive_extract(self.ASSET_ZEPHYR_3_03,
-+        kernel_file = self.archive_extract(self.ASSET_ZEPHYR_3_05,
-                                            member=kernel_name)
+-        image_path = self.archive_extract(self.ASSET_SDK_V908_AST2600)
++        image_path = self.archive_extract(self.ASSET_SDK_V1100_AST2600)
          otp_img = self.generate_otpmem_image()
  
+         self.vm.set_console()
 -- 
 2.52.0
 

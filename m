@@ -4,112 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 905D7ECD994
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 17:41:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48FFEECD996
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 18:51:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo3Lo-0007LT-Kt; Thu, 05 Feb 2026 12:41:08 -0500
+	id 1vo4Rp-0007DJ-Qn; Thu, 05 Feb 2026 13:51:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vo3Ln-0007Kj-8Y
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 12:41:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vo3Ll-0003yB-JF
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 12:41:07 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770313263;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=vGypKcpukOs7Bc/BtAYDdkywm8x5uQj6dqQs8EyKp4Y=;
- b=e65Q7hzOwIZnqxraN5HHwiU2B+1g1KIyuH5R43WXr6jxr9U+OgFzLp4ZoBrWTF7JlurCOK
- Ep9wqkhdzJnegnKU8/99dwsyGSb7PIHGZ0Ib8BQxQcRoCxnWOt9LYUajlb1NZ7DAVEj8z5
- tQW1KOeEufRcCED/BkBwluzkObNvzUk=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-176-tPT_DWRPMES_g3Z237XWvg-1; Thu, 05 Feb 2026 12:41:00 -0500
-X-MC-Unique: tPT_DWRPMES_g3Z237XWvg-1
-X-Mimecast-MFC-AGG-ID: tPT_DWRPMES_g3Z237XWvg_1770313259
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-4325aa61c6bso995256f8f.0
- for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 09:41:00 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vo4Rn-0007CV-4V
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 13:51:23 -0500
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vo4Ri-0008Q7-RQ
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 13:51:22 -0500
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-794e0e933ccso14155807b3.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 10:51:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1770317477; cv=none;
+ d=google.com; s=arc-20240605;
+ b=cY5yJE2zVEFnsXJpdLgzvLPYFVoOMMPgqvEbp+EI2IYHqxIVJGw4J4hQ+hb3s4zh1w
+ P9fLcikUCZjgFx5mM4fbQTO8a19f0sEbJgBbz+g1/03AHal9irBNhJQ12bSgwRBuujwY
+ qbOvZU7RjdCAk09hdbgUuizNyA9fMxm1MuvVhunn7UTpodhLYVCaKpIf4TMcxdUD04BR
+ WMtYY6iWzM4vQFcMhy5iQ73HazuBUobP6ifMPrwXYfRgFBy7U5M3d74UgizSFmrpgtW+
+ UjYLmZBDzjOQCVnho38j9xRKgyRCQetdEI0pASLpKSvowJD1ufoA+IQW0WX4OioMc/hK
+ ofow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=iaplVcg+C3ZIVbHnVYp/FtHc/2vtoaqZXFq0RfFunq0=;
+ fh=2AKsolJAq+7Vf/EKGZqdjx5f/MwB33RPYOt2xg7cs80=;
+ b=YgfSVx9/8BvSfFSpVWnT/8CGwk5R2dqDko8ECHVevKAMHkl7dIJyF70NwMXDocpxOM
+ DSpj+x1+uQRQBir1+e0TniAOSrmgrK0GSCKh2MNJx22GX1mp3B3ZTU/7IDTev1ziA04F
+ jVI0vieNj0I2bSvINNzP2N0LziLo35VN0kGJ3yBUyHgQaPLnCdlOSaLEFvERRNftsBFf
+ U98IfIQrK2Paj+Pphdz5BHeskdHX6chcbxGZySuxjv1dhkdXS+8iii+C5d1ZsOGvcGAU
+ nTBi7pZQmROXRPaCQabkG73NMI5lRwGcxbWf3MovsvHLAhfF29AiLgUJhbPnnSQKGsUL
+ XYpw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1770317477; x=1770922277; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=iaplVcg+C3ZIVbHnVYp/FtHc/2vtoaqZXFq0RfFunq0=;
+ b=Zfeve+mkT8yR8xDKlAR7gU5L6kSqmj9Q/lH8GJWZH8wDftX5zGuzf36+VeVxwk1MaK
+ 2ph2qYC4HA/oUy9bZYmHn1m8RlqBecWIblQj12lMH0bqt0CsQkGG6ZN5dFrhGKsA+fQ1
+ 2X+hcjJfyK0topT+dJg89XBqURdPAkJi3NPvN/sYsGYF8j0sftr2UFPKHJ8ui/7iWXn7
+ vOR63aGGwgqHF84xIxdCUacXOtX4Ys4S54w61yR2XtAszq5A3xMpi6p2M8PDpazBU5/d
+ Z/7i0/KTKgPS0AOvwMHoi/UNEWFLIe8yyONAH7eRnRHfKnnj0YU+VsthFzpq8HKb9e3k
+ 8Eyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770313259; x=1770918059;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=vGypKcpukOs7Bc/BtAYDdkywm8x5uQj6dqQs8EyKp4Y=;
- b=d90Iy4HnC+kFFJkid0mkGlI5CQpQ6rjOLdYI7BV+nwoQOUYL8Id+RpfjG6jk2KBV7u
- HW5TZIGt08nYQuC7VCoHL1I2mDlIa89hDjhfNJPA0aiyEt2JLtuueuxheLObrimBm5EJ
- 4P3mNOkspUKc6G6DpgcsjG5QWUZDGTInL8Mz10xcd3ePmUU99enVHvjnj+bLAPrg0dx9
- Ov+wymeGvVvhabV+AfkzUD8zVXhNeDkEu5qoIvYoGpEYJxLRxVNBwoX3Z2L6Z0btO0f6
- LqTKfSFb6YVpa2yKYQBC0Bs5cVMBTQVC4FYH8RWrO74NfOicCqfbyLWf5zKZUn4td/Cq
- EJzg==
+ d=1e100.net; s=20230601; t=1770317477; x=1770922277;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=iaplVcg+C3ZIVbHnVYp/FtHc/2vtoaqZXFq0RfFunq0=;
+ b=C06WznXNm3E76ORmP1h+GB6pNkogcOpzDDfle0gtTIXsQDG0+8TbY6MkZy/WK/1YK6
+ coRNvflqJs18LmYBv547t9j4oQSQ/g8rVCIbJS6cnTxBxZ4BcYUYmg5wXvwMr58+1Se/
+ U7Wfpi6ka9O81XxPQkQDHk9+ViX8vwLdVuzt1sZZrx5a8lbV7gSINezCWisdyRTqe5EL
+ eUOK2CgWES9i9g4AT+0cGcDzonW2F3XscUIMWFGsje15M5sbP6vNbmsFPUEnth7b65y6
+ oBilFwrkrPWZz6fVs2qKujmpOGRBnP0e8Lv2Gryl8tgigd8ZEfLLD4/H6/AWeAOmIChf
+ JyzQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUeFTPeGevuOuK/PBjsmebNl9mjp5xhqURQ8NZJ3o3IFLQtARHVyqHairAp+JM2ARj+7Pyw5N8vrg==@nongnu.org
-X-Gm-Message-State: AOJu0YzKorpEpIdpXHEmYNkQD0Fh7Aw5p2BEORmfK6FfkxFFoGYT/Osd
- dnDCW13fSP0sU9pUoIaoc88tKCUEyfQclHcw6EUzPMLVUm9/Dq6QFRR59BPSkrGKIDXVA+WOguy
- piLaSpIbQ37XfxVzWzFwsECR6nEsJPSgfXAhcrHNr3PV5wv5+nGHMzg==
-X-Gm-Gg: AZuq6aL9VuoxSgoBy9PwimPaX+cidP7YwHZ5c9ZaHccJI8wjG7vM1xUW0zF4qX+w6uj
- f2MNkFQxby1nROsHdwcw1JUtv369RGYEsixWc+euq7emJYyI/ctp2TZyyyPWeudXb69xMAEP9/A
- ETMipshpawUce0Xo6kNQhPiuNiOJ9xuAWW5SO+sOb1+NuHbEatTTBujEAsOrenli7RaGUKTItzy
- cVvBkdplGFrSIv0t55qr19Arb0CobTXuqXOvUtZRkYuDSiUhKeMuDylojJhdnU4Lf5VyTZF7r85
- 425gFg9+HNBLaZoistuvF59GIrhxAWm/8RjLGn65/Es6wnFf126hcXpVSJOuf7ZCPeknPOYt2tN
- FLa6n7MShq2gppZdwNGe/RWWQ0BFuwi78Iw==
-X-Received: by 2002:a05:6000:4301:b0:435:b7b9:afe5 with SMTP id
- ffacd0b85a97d-4362934a08emr63227f8f.1.1770313259017; 
- Thu, 05 Feb 2026 09:40:59 -0800 (PST)
-X-Received: by 2002:a05:6000:4301:b0:435:b7b9:afe5 with SMTP id
- ffacd0b85a97d-4362934a08emr63178f8f.1.1770313258422; 
- Thu, 05 Feb 2026 09:40:58 -0800 (PST)
-Received: from redhat.com (IGLD-80-230-34-155.inter.net.il. [80.230.34.155])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43617e25683sm14885376f8f.6.2026.02.05.09.40.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Feb 2026 09:40:57 -0800 (PST)
-Date: Thu, 5 Feb 2026 12:40:54 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Li Chen <me@linux.beauty>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- Song Gao <gaosong@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Sunil V L <sunilvl@ventanamicro.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-devel <qemu-devel@nongnu.org>, qemu-riscv <qemu-riscv@nongnu.org>
-Subject: Re: [PATCH v6] acpi/virt: suppress UART device & SPCR when guest has
- no serial hardware
-Message-ID: <20260205124004-mutt-send-email-mst@kernel.org>
+ AJvYcCV+46+qBO5h3yBFYNC8yX2bs+TOrJnPBeWki/kY+xLNlVSA+EWoBOB1kzlmwNDVz9vjL6LbNJnOTw==@nongnu.org
+X-Gm-Message-State: AOJu0YxjQCkpSKI45eLKs5AopE1cvprmcUAbOSifEcLAttdww/ABjwNC
+ dy97UN92gQSNDKPQg4IJGft8oT/bwymDltzzUbktqahfJqzojRDeL8PZUgiF3/jVGDfW7lv3Xqx
+ xhQU83TH6P4VBgBiUBFWqQ/YFdiu8LH2xJeboGC5XVA==
+X-Gm-Gg: AZuq6aLn9S0gJdMwbBhwv75rSSSjyfTBrUOJ35NdMaWX+IQI1ZhM8s/SShTau0vFsec
+ +AUFLUOhbUecTHVGtMWdm8bLBzKAFf3S22VN06C+qYibwIV6uXM7fIfenru678C4UcXVmRkqjM1
+ WtPcCHg5I1TvHdKidNDfKMS6yyYStqfjKB6SAyr7y0cmPOtsuyr+j/1g69iCjEkhKKHRcaHRQi0
+ +d7WmWaWyPvHLUWdgHikGCR7r0zReP3z1bGNV74aVxoPxAu2F8XvKEALLKD9OPsUa8eoonincYB
+ CVdDqMaIh9gkvsnRcUk96T1Nz2BO9taArKbQiUpcCBvxzP2qTuNF2gM=
+X-Received: by 2002:a05:690c:a96:b0:795:616:4367 with SMTP id
+ 00721157ae682-7952aa74934mr1782537b3.4.1770317477416; Thu, 05 Feb 2026
+ 10:51:17 -0800 (PST)
+MIME-Version: 1.0
 References: <20251211102025.873506-1-me@linux.beauty>
  <CAFEAcA8FcW22-TnyBKHmFUUsR=xk2u-74uPz6KisJTeG=YWxmQ@mail.gmail.com>
  <20260205051236-mutt-send-email-mst@kernel.org>
  <CAFEAcA-2QKtniTsLFA2ayjQ28dmQ=35r_zhkL6UBpiEOr=xGVg@mail.gmail.com>
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-2QKtniTsLFA2ayjQ28dmQ=35r_zhkL6UBpiEOr=xGVg@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: MkxrKzfvz4czDX5lRwePY7UdZWh4KofaOvO1azzlt6M_1770313259
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+ <20260205124004-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20260205124004-mutt-send-email-mst@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 Feb 2026 18:51:05 +0000
+X-Gm-Features: AZwV_QhQKL5fV6kOZjgQ6PwWGHq3Hjx3t9EpHp2HxMUy3n5ENyeEI0CYDvHg3-8
+Message-ID: <CAFEAcA_P4-Uqy_agp0VZt4+5ukL2tWYK2G394W=zkwJxKF+6Yw@mail.gmail.com>
+Subject: Re: [PATCH v6] acpi/virt: suppress UART device & SPCR when guest has
+ no serial hardware
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Li Chen <me@linux.beauty>, Shannon Zhao <shannon.zhaosl@gmail.com>, 
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>, 
+ Song Gao <gaosong@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Sunil V L <sunilvl@ventanamicro.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
+ Alistair Francis <alistair.francis@wdc.com>, Weiwei Li <liwei1518@gmail.com>, 
+ qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>, 
+ qemu-riscv <qemu-riscv@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,73 +130,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Feb 05, 2026 at 05:15:17PM +0000, Peter Maydell wrote:
-> On Thu, 5 Feb 2026 at 10:13, Michael S. Tsirkin <mst@redhat.com> wrote:
+On Thu, 5 Feb 2026 at 17:41, Michael S. Tsirkin <mst@redhat.com> wrote:
+>
+> On Thu, Feb 05, 2026 at 05:15:17PM +0000, Peter Maydell wrote:
+> > On Thu, 5 Feb 2026 at 10:13, Michael S. Tsirkin <mst@redhat.com> wrote:
+> > > presumably, things would be different with -nodefaults?
 > >
-> > On Thu, Feb 05, 2026 at 10:08:32AM +0000, Peter Maydell wrote:
-> > > On Thu, 11 Dec 2025 at 10:21, Li Chen <me@linux.beauty> wrote:
-> > > >
-> > > > From: Li Chen <chenl311@chinatelecom.cn>
-> > > >
-> > > > virt machines always instantiate a PL011/16550 UART at slot 0 and describe
-> > > > it in ACPI (DSDT and optional SPCR table). When the command line disables
-> > > > the serial backend (e.g. "-serial none"), the guest still sees the UART as
-> > > > a preferred console even though it is not usable.
-> > > >
-> > > > Teach the virt ACPI code to omit the UART device and SPCR when there is no
-> > > > serial backend attached. This matches the hardware that the guest can
-> > > > actually use and avoids confusing firmware or OS code that relies on SPCR.
-> > > >
-> > > > The bios-tables-test qtests rely on an ACPI UART node and SPCR entry for
-> > > > UEFI-based virt machines. To keep those tests working we create a UART
-> > > > with a "null" chardev backend instead. This preserves the ACPI tables
-> > > > while discarding the firmware's serial output so it does not corrupt the
-> > > > TAP stdout stream.
-> > > >
-> > > > Suggested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> > > > Signed-off-by: Li Chen <chenl311@chinatelecom.cn>
-> > > > Reviewed-by: Sunil V L <sunilvl@ventanamicro.com>
-> > >
-> > > Sorry, I must have missed this patch previously. I'm not sure that
-> > > this is a good idea, because it means:
-> > >  * the dtb version of virt and the ACPI handling diverge
-> > >  * we tangle up "what chardev do you want to connect serial output to"
-> > >    and "what UARTs does the guest see"
-> > >
-> > > If the user explicitly sends the first serial port output
-> > > to nowhere with "-serial none -serial stdio" they presumably
-> > > had a reason for that and won't be happy to find that we've
-> > > adjusted the ACPI tables to redirect that output to the
-> > > second serial port they were planning to use for something else.
-> 
-> > presumably, things would be different with -nodefaults?
-> 
-> -nodefaults doesn't generally do much on Arm boards, because
-> we don't have a lot of "pluggable thing that's plugged in by
-> default" that we would turn off -- that's more of an x86 thing.
-> 
-> On the virt board the UART situation is a bit complicated,
-> for command-line backwards compatibility reasons:
-> 
->  * the first UART always exists
->  * if you're emulating the security extensions, the second
->    UART always exists (and is the secure-world UART)
->  * otherwise, the second UART exists only if the user
->    configured a second serial backend (i.e. provided
->    "-serial foo -serial bar" or similar)
-> 
-> If I were designing it again from scratch without the
-> back-compat baggage, it would probably have three always-exists
-> UARTs, one for secure-world and two for normal-world.
-> 
-> thanks
-> -- PMM
+> > -nodefaults doesn't generally do much on Arm boards, because
+> > we don't have a lot of "pluggable thing that's plugged in by
+> > default" that we would turn off -- that's more of an x86 thing.
+> >
+> > On the virt board the UART situation is a bit complicated,
+> > for command-line backwards compatibility reasons:
+> >
+> >  * the first UART always exists
+> >  * if you're emulating the security extensions, the second
+> >    UART always exists (and is the secure-world UART)
+> >  * otherwise, the second UART exists only if the user
+> >    configured a second serial backend (i.e. provided
+> >    "-serial foo -serial bar" or similar)
+> >
+> > If I were designing it again from scratch without the
+> > back-compat baggage, it would probably have three always-exists
+> > UARTs, one for secure-world and two for normal-world.
 
-that is why we have machine versioning?
-I would say -nodefaults really should not have a serial port
-unless defined, no?
+> that is why we have machine versioning?
 
--- 
-MST
+The problem is real world guest code that just breaks if
+it gets a second serial port unexpectedly. Specifically, UEFI
+would behave unhelpfully. Since fixed, but there are/were still
+plenty of old UEFI binaries out there. Otherwise I'd have
+just added the new UART and made it a versioned machine thing.
 
+> I would say -nodefaults really should not have a serial port
+> unless defined, no?
+
+QEMU's arm boards have never behaved that way, and nor have
+most of the other architectures' machine types. For PC
+-nodefaults makes sense as it disables a lot of the optional
+pluggable devices that the machines create by default. For the
+Arm boards these devices are not like e.g. a floppy disk
+or a PCI VGA card that you could unplug, and that you can
+on the QEMU command line manually re-create, they're like a
+UART that's baked into the SoC and there usually isn't
+a way to create them on the command line.
+
+-- PMM
 

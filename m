@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A67A6ECD99E
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:01:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9857EECD999
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:01:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo5Vk-00075g-DS; Thu, 05 Feb 2026 14:59:32 -0500
+	id 1vo5VA-0006Z8-J9; Thu, 05 Feb 2026 14:58:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5Ve-0006zF-V3
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:28 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1vo5V8-0006YG-OG
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:58:54 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5Vc-0003Bc-JE
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:26 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-47ee76e8656so20252905e9.0
- for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:59:24 -0800 (PST)
+ id 1vo5V7-00032m-5b
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:58:54 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-4362197d174so828510f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:58:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1770321563; x=1770926363; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1770321531; x=1770926331; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ODPdQ6CGlB8sV1EdByujVoiH2o+cygpKFap6nFlHY6I=;
- b=Q1OK6GAWjgpO4TFab8dGa1a5elPXISG4JgM2QQF1tK5lZBhbsnpzoeRwDr8HeTdNYG
- Fv7mG3uf5vYbDr84sW1lU8PldU2MExNqbgD4w1q4I+e2Kkc1wTaDfVblF5dUX5MRb+YK
- c8pzUOkP5Pq+RuEq/weMZeWwgv/0tygfQjnClwhcNxsvSx6zZSpnonZ9Gw7heKgkexEM
- uSAsfUkq4mpHAdhZmafAsG+wc3yBRtL5T8P5Rqn1fUEZNTaZfSh4bwQgddBsHB9vdpLa
- l40MVLpBrnUUYs15h+UPz0vQvoPNGg/ltKgzziyi9EGS9JBOb+vEJc0b+THu3ed/amE0
- v9Xg==
+ bh=vCYp6e1o8/fOhB4Yb7faE7VFCfaYZvUcACOBcpqqyGA=;
+ b=VS3Gvh9ELpLrVeJbVZoHxSIAgx5G9Z6DhvEVqd2YREFM+RHkEU/bpxV3Mhz3WLDRn9
+ eGbm1/sRpWTrbmOLOrAt/4p7SgqhjibyLn1eP4kyQK1G1C44tzrtTlkd/I2ArErYcxU5
+ 4+diH9/+vxYk0onxg+W7wlPbDtoA7rMBwHzjT18QLq4ujYdz4RCkyEoqUv4iE24H+eAl
+ pgrBi1Ash7SuEPzOSnSW0yHcwK0kE5SgdIsFWoZG9sMv9/WKs2vAA18LLmC5+qvlZzBz
+ tNGxIq89bWOSHL4hENeXOgNcse12L787qPMAxoxfegBaF2qq6jajjoL689rQKqzHyQzL
+ sggg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770321563; x=1770926363;
+ d=1e100.net; s=20230601; t=1770321531; x=1770926331;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ODPdQ6CGlB8sV1EdByujVoiH2o+cygpKFap6nFlHY6I=;
- b=A3GX5E/6cYshyg3B7Hfr1Ivr9UI0BGA1DVFAB7ZU3YKV220vesh8qSzR+3vMxERUrx
- MiwnQfQ2peZZXCFcw68D+8xUmtXft33Mzjpbm10jK9o5iYLTsnprZbRaW9mECmbKxkpO
- 8APFH8u2/RXKozU4vYwGgPQD+hWlDYiz0sfQrACk5yM9lIsUBYad/DRGldMSz8qZxOAZ
- VQlB+fI3IxXg/HeiwhllKWbHivbQxlYdtqfJgDc0NwLCY/993Iok2HoWvdQlTPOLWqIV
- ghFUhfDbiQX+zTPgJwXWHvk1h7dAhmEoOymxGdJ//o8nM0OyM2tKA4nyBA82alROKq4I
- db8A==
-X-Gm-Message-State: AOJu0YxmrSkkV25UhfuXmYuenQZ73Ynab9ooTrpZAzo/oWV431h9nU1m
- /snjF9rdwxoYTW6s7Nmo4nxfTfUqQiRR+QN+BpnLaVOAG3e+28f4QUHx
-X-Gm-Gg: AZuq6aJAVRjHpIZ3FWSwNeZKPMemKJ+QuHJxC4nmj/secRnqB95KjydBr+yGRG129MD
- aUHWmAIQKiecRCn4Q5UlHIx5a7v4Zyfz6MEaYPa5OqE5+LsJOseTCFP+ayj2JvXlQxkcSFaYqi8
- lFEMbgiRqcyB4XOzhrOSBxwTFlA4ozMxEX/FR+FEKT/WQXoGmqfKvFl0ZE1tIVsgxAejLn5rwbP
- +P5RE0RvM26H5a0fVsYQtj7oKmRYc1wE8VTjrCCxugrWgjyGlqjsIeg1Z6tD3KFKINchgZlsc74
- r2cMRFcfjLqpOL85fjDUVT2xIrMQ90fiaVRcaqPW6GpHJbDLvsJn/90hx6KMynt6GjTGiyW7LNY
- NBxXEl/ED9c8ea8GsbdlwE9B35fGk2zv5c3OsN+uKgxlZbla6dohy9SMR+m67xxo1S4WaCxAt6b
- gvD/uJVuqyjJLqymb1hzQ=
-X-Received: by 2002:a05:6000:1844:b0:432:7d2a:2be4 with SMTP id
- ffacd0b85a97d-4362938023amr621859f8f.60.1770321562947; 
- Thu, 05 Feb 2026 11:59:22 -0800 (PST)
+ bh=vCYp6e1o8/fOhB4Yb7faE7VFCfaYZvUcACOBcpqqyGA=;
+ b=uls8ub1V8j9aCcidnJbUO+31x7ItOj+iM57LTSww2dlcecpIMpm5rrbyM00HJjmnrY
+ mxC/kR0GNEE4F/zu1L1I5FeVxJ1Ck889kuPeZo5EaxVsRtALbQBRwW5h9xyrqg5FVLAt
+ muJ2Pto77lq/QXDeOSklMxR+MeUtDgwJIu7nw2K7vxbpLkLYklQ8dwB76fbRs5IkztZm
+ XMZlU6RL595xG6VHfJUxLcfemdLO6psMU8J3Frt7J7dyexOXZ/f9HxG6CroGVNTVMChU
+ GJT+UzOW6UsXJBiLW5Vq+wE5tDkc5MCGhP4oZ32lW2tjJEjHEyI2nOXREimT+CO07d6Z
+ Ozhg==
+X-Gm-Message-State: AOJu0YzAirWQ0TNI4ZEi6F3GncnfZsGYDeHAznklqCzySxwfyT1LzA6d
+ xFUlrYLmNKU304bK7N57syN5daN/2J3UzTSmwHAMY4MJSr4q2mRTrngr
+X-Gm-Gg: AZuq6aKuvLmzVLs2yvaX124C1vs0YBPR81ggoPxl7ZBIo/ejpPJi5ak+hQGlBqON3o1
+ i8KneI1wvr0ovZ70PxL8SfjMzA4WnIaQMcmu4pzuNCe1HCBs6BHIZ6SJFWwqcb+/9skny98eCDm
+ Rc0Fk1sSDW2owVubknDfty4Yq7lpDmZsZgOUMpBvpzVodqf8SphBgejoiTLk4O7Dl4wtdQwYbew
+ gnaH02UsTycNG97LpfFxKsqceHLONlgQ2w4tBTAdH+L26pKrr+5xWroKcS/Aq7pMfMBofcHvybe
+ IbJRfUKA6Nu1MIaDHarKJs20DdxGg6BSR69DnR/Gt+1vl2svuKb1vPH6DrNBk0dV1UUCowYM4dc
+ VyoaGy4/VjG2q3/5Z3zBKT51AR7PnfHgspzzkdC9H4dqG8jMImurhu8s1j9W+bvAxytK2wyUMsv
+ qnwgGW41fiE20S3OOzzfY=
+X-Received: by 2002:a05:6000:2303:b0:435:9612:2d24 with SMTP id
+ ffacd0b85a97d-4362937e1d7mr618106f8f.53.1770321531276; 
+ Thu, 05 Feb 2026 11:58:51 -0800 (PST)
 Received: from thinkpad-t470s.. ([93.140.16.93])
  by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.59.21
+ ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.58.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Feb 2026 11:59:22 -0800 (PST)
+ Thu, 05 Feb 2026 11:58:50 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
  volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  francisco.iglesias@amd.com, Ruslan_Ruslichenko@epam.com,
+ Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH 26/29] hw/core: Add Remote Port connection support to
- fdt-generic
-Date: Thu,  5 Feb 2026 20:58:21 +0100
-Message-ID: <20260205195824.2610192-27-ruslichenko.r@gmail.com>
+Subject: [PATCH 06/29] system/vl: Introduce -machine-path command line option
+Date: Thu,  5 Feb 2026 20:58:01 +0100
+Message-ID: <20260205195824.2610192-7-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 References: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,186 +106,79 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Extend the fdt-generic utility to automatically configure Remote Port
-devices defined in the Device Tree.
+This patch adds a new command line option `-machine-path` to specify
+a directory path for shared machine resources.
 
-This patch enables the system to:
-- Identify Remote Port devices and their configuration parameters directly
-  from the Device Tree description.
-- Automatically establish connections between these devices and the
-  central Remote Port adaptor.
-- Register legacy reset handlers for devices instantiated via FDT,
-  as required by specific Remote Port devices to ensure they reset
-  properly.
-
-This allows users to define complex co-simulation environments purely
-through Device Tree data, removing the need for hardcoded initialization.
+This path is intended to serve as a base directory for devices or
+subsystems that need to automatically create coordination files,
+such as Unix domain sockets, particularly in multi-process simulation
+environments.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/fdt_generic_util.c | 120 +++++++++++++++++++++++++++++++++----
- 1 file changed, 107 insertions(+), 13 deletions(-)
+ include/system/system.h |  2 ++
+ qemu-options.hx         | 10 ++++++++++
+ system/vl.c             |  4 ++++
+ 3 files changed, 16 insertions(+)
 
-diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
-index d183a44433..180038baf6 100644
---- a/hw/core/fdt_generic_util.c
-+++ b/hw/core/fdt_generic_util.c
-@@ -61,6 +61,9 @@
-     } \
- } while (0)
+diff --git a/include/system/system.h b/include/system/system.h
+index 03a2d0e900..0cd012004d 100644
+--- a/include/system/system.h
++++ b/include/system/system.h
+@@ -57,6 +57,8 @@ bool is_mlock_on_fault(MlockState);
  
-+#include "hw/core/remote-port-memory-slave.h"
-+#include "hw/core/remote-port.h"
-+
- #define PROP_ARRAY_LEN_PREFIX "len-"
+ extern MlockState mlock_state;
  
- /* FIXME: wrap direct calls into libfdt */
-@@ -1097,6 +1100,20 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
-     }
-     fdt_init_set_opaque(fdti, node_path, dev);
++extern const char *machine_path;
++
+ #define MAX_OPTION_ROMS 16
+ typedef struct QEMUOptionRom {
+     const char *name;
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 6dd3e04e38..b7dd2a64f0 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -765,6 +765,16 @@ SRST
+     Preallocate memory when using -mem-path.
+ ERST
  
-+    /*
-+     * Set the default sync-quantum based on the global one. Node properties
-+     * in the dtb can later override this value.
-+     */
-+    if (global_sync_quantum) {
-+        ObjectProperty *p;
++DEF("machine-path", HAS_ARG, QEMU_OPTION_machine_path,
++    "-machine-path DIR A directory in which to create machine nodes\n",
++    QEMU_ARCH_ALL)
++SRST
++``-machine-path path``
++    Selects the machine path.
++    Multi-arch machine nodes will be created in <path>.
++    This option also sets -mem-shared-path to the given path.
++ERST
 +
-+        p = object_property_find(OBJECT(dev), "sync-quantum");
-+        if (p) {
-+            object_property_set_int(OBJECT(dev), "sync-quantum",
-+                                    global_sync_quantum, &errp);
-+        }
-+    }
-+
-     props = qemu_devtree_get_props(fdti->fdt, node_path);
-     for (prop = props; prop->name; prop++) {
-         const char *propname = trim_vendor(prop->name);
-@@ -1142,25 +1159,99 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
-         fdt_init_qdev_scalar_prop(OBJECT(dev), p, fdti, node_path, prop);
-     }
- 
-+    if (object_dynamic_cast(dev, TYPE_REMOTE_PORT_DEVICE)) {
-+        for (i = 0; ; ++i) {
-+            char adaptor_node_path[DT_PATH_LENGTH];
-+            uint32_t adaptor_phandle, chan;
-+            DeviceState *adaptor;
-+            char *name;
-+
-+            adaptor_phandle = qemu_fdt_getprop_cell(fdti->fdt, node_path,
-+                                                    "remote-ports",
-+                                                    2 * i, false, &errp);
-+            if (errp) {
-+                fprintf(stderr, "cant get phandle from \"remote-ports\" "
-+                            "property\n");
+ DEF("k", HAS_ARG, QEMU_OPTION_k,
+     "-k language     use keyboard layout (for example 'fr' for French)\n",
+     QEMU_ARCH_ALL)
+diff --git a/system/vl.c b/system/vl.c
+index c890da586c..4750b1cf69 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -182,6 +182,7 @@ static QemuPluginList plugin_list = QTAILQ_HEAD_INITIALIZER(plugin_list);
+ static BlockdevOptionsQueue bdo_queue = QSIMPLEQ_HEAD_INITIALIZER(bdo_queue);
+ static bool nographic = false;
+ static int mem_prealloc; /* force preallocation of physical target memory */
++const char *machine_path;
+ static const char *vga_model = NULL;
+ static DisplayOptions dpy;
+ static int num_serial_hds;
+@@ -3128,6 +3129,9 @@ void qemu_init(int argc, char **argv)
+             case QEMU_OPTION_mem_prealloc:
+                 mem_prealloc = 1;
+                 break;
++            case QEMU_OPTION_machine_path:
++                machine_path = optarg;
 +                break;
-+            }
-+            if (qemu_devtree_get_node_by_phandle(fdti->fdt, adaptor_node_path,
-+                                                 adaptor_phandle)) {
-+                fprintf(stderr, "cant get node from phandle\n");
-+                break;
-+            }
-+            while (!fdt_init_has_opaque(fdti, adaptor_node_path)) {
-+                fdt_init_yield(fdti);
-+            }
-+            adaptor = DEVICE(fdt_init_get_opaque(fdti, adaptor_node_path));
-+            name = g_strdup_printf("rp-adaptor%" PRId32, i);
-+            object_property_set_link(OBJECT(dev), name, OBJECT(adaptor), &errp);
-+            fprintf(stderr, "connecting RP to adaptor %s channel %d",
-+                        object_get_canonical_path(OBJECT(adaptor)), i);
-+            g_free(name);
-+            if (errp) {
-+                fprintf(stderr, "cant set adaptor link for device property\n");
-+                break;
-+            }
-+
-+            chan = qemu_fdt_getprop_cell(fdti->fdt, node_path, "remote-ports",
-+                                         2 * i + 1, false, &errp);
-+            if (errp) {
-+                fprintf(stderr, "cant get channel from \"remote-ports\" "
-+                            "property\n");
-+                break;
-+            }
-+
-+            name = g_strdup_printf("rp-chan%" PRId32, i);
-+            object_property_set_int(OBJECT(dev), name, chan, &errp);
-+            /*
-+             * Not critical - device has right to not care about channel
-+             * numbers if its a pure slave (only responses).
-+             */
-+            if (errp) {
-+                fprintf(stderr, "cant set %s property %s\n", name,
-+                        error_get_pretty(errp));
-+                errp = NULL;
-+            }
-+            g_free(name);
-+
-+            name = g_strdup_printf("remote-port-dev%d", chan);
-+            object_property_set_link(OBJECT(adaptor), name, OBJECT(dev), &errp);
-+            g_free(name);
-+            if (errp) {
-+                fprintf(stderr, "cant set device link for adaptor\n");
-+                break;
-+            }
-+        }
-+        errp = NULL;
-+    }
-+
-     if (object_dynamic_cast(dev, TYPE_DEVICE)) {
-+        DeviceClass *dc = DEVICE_GET_CLASS(dev);
-         const char *short_name = qemu_devtree_get_node_name(fdti->fdt,
-                                                             node_path);
- 
--        /* Connect chardev if we can */
--        if (serial_hd(fdt_serial_ports)) {
--            Chardev *value = (Chardev *) serial_hd(fdt_serial_ports);
--            char *chardev;
--
--            /* Check if the device already has a chardev.  */
--            chardev = object_property_get_str(dev, "chardev", &errp);
--            if (!errp && !strcmp(chardev, "")) {
--                object_property_set_str(dev, "chardev", value->label, &errp);
--                if (!errp) {
--                    /* It worked, the device is a charecter device */
--                    fdt_serial_ports++;
-+        /*
-+         * We don't want to connect remote port chardev's to the user facing
-+         * serial devices.
-+         */
-+        if (!object_dynamic_cast(dev, TYPE_REMOTE_PORT)) {
-+            /* Connect chardev if we can */
-+            if (serial_hd(fdt_serial_ports)) {
-+                Chardev *value = (Chardev *) serial_hd(fdt_serial_ports);
-+                char *chardev;
-+
-+                /* Check if the device already has a chardev.  */
-+                chardev = object_property_get_str(dev, "chardev", &errp);
-+                if (!errp && !strcmp(chardev, "")) {
-+                    object_property_set_str(dev, "chardev", value->label,
-+                                            &errp);
-+                    if (!errp) {
-+                        /* It worked, the device is a charecter device */
-+                        fdt_serial_ports++;
-+                    }
-                 }
-+                errp = NULL;
-             }
--            errp = NULL;
-         }
- 
-         /* Regular TYPE_DEVICE houskeeping */
-@@ -1176,6 +1267,9 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
-         } else {
-             object_property_set_bool(OBJECT(dev), "realized", true,
-                                      &error_fatal);
-+            if (dc->legacy_reset) {
-+                qemu_register_reset((void (*)(void *))dc->legacy_reset, dev);
-+            }
-         }
-     }
- 
+             case QEMU_OPTION_d:
+                 log_mask = optarg;
+                 break;
 -- 
 2.43.0
 

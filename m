@@ -4,79 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCA46ECD999
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:32:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59ADDECD999
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:34:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo61b-0002co-F7; Thu, 05 Feb 2026 15:32:28 -0500
+	id 1vo62n-0003PX-Gg; Thu, 05 Feb 2026 15:33:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vo61Y-0002cT-P0
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 15:32:25 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vo61W-0001PN-Lt
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 15:32:24 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770323541;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=ZpVVUAkPC018T868g3KU1t6VILN6TWL7aSsGg1mQl8Y=;
- b=EsACmw+B7JLoD0WKA7okE6HQ1dmzECNQLRshQGx3GY1riIMhTyYCxwMZbwoHdt8mS3PAnb
- WdEWIO7THf5DBGRR49/jKbf/KTF8qesdPfXnmFfFob+YE5s3pEHFQfadq7Sdh+A3WIpo+6
- 0Fs3BVjVfEqdOzBTb2HOIBfa1moIW5E=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-322-BKZIvN-OM0SyDq4oF278kA-1; Thu,
- 05 Feb 2026 15:32:10 -0500
-X-MC-Unique: BKZIvN-OM0SyDq4oF278kA-1
-X-Mimecast-MFC-AGG-ID: BKZIvN-OM0SyDq4oF278kA_1770323529
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DB21C1956070; Thu,  5 Feb 2026 20:32:08 +0000 (UTC)
-Received: from redhat.com (unknown [10.44.32.12])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D8BDF300DDA6; Thu,  5 Feb 2026 20:32:04 +0000 (UTC)
-Date: Thu, 5 Feb 2026 20:32:00 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
- takahiro.nakata.wr@renesas.com,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- francisco.iglesias@amd.com, Ruslan_Ruslichenko@epam.com,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: Re: [PATCH 10/29] hw/core: Implement Remote Port packet dispatch logic
-Message-ID: <aYT-QEM0NBFWNEDI@redhat.com>
-References: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
- <20260205195824.2610192-11-ruslichenko.r@gmail.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vo62j-0003Ok-Gx
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 15:33:38 -0500
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vo62i-0001SI-19
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 15:33:37 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-4359a302794so1037182f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 12:33:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1770323614; x=1770928414; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=pTQcVJ1lzo9vi3zXuxiMVxkT2/kMhpBgeSQmrUucCFc=;
+ b=a4w2XfjZGMsCCajMbbLP2hVUyQFRkhDxZrmiysm6e7/ZuiSVuJWACdslwx6uIbiUMe
+ esvu0zwDhW4H9Jk2IqsDk7AQYFVopcPrg5W5rGk5thMG6JFA3DFXKTef7eSH/bzxiUev
+ b6W67EOjtlJEOopdlXkGhOCOY4VnRHkZoPbHK0O4/2l5KJpEKr8IG711vdn1KQnasM9n
+ LgMr6d5nWrl1wNyY8eWbMQznDHTJmURTaQuspYU38CvKo3poESU2lf2lsg3jt5E/EBL7
+ Rmz0J+iDxDVIMmtJuKPiZJwgdd2mXyC0n2nig5A1Drp9sG00v355d4ZB7gJgN6hDJAFq
+ ts1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1770323614; x=1770928414;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=pTQcVJ1lzo9vi3zXuxiMVxkT2/kMhpBgeSQmrUucCFc=;
+ b=EuVxs2/m7CZ/X4jbGCP9Jw/yI/y8/pDz1kqJDGC4rfWRYzR6lezDYzAGUWgj3/9WLB
+ tiHemyzmmG9qUgEXSTKyaV0xEsu3jyuUSAvBikk0qq7iY6XJG7I9vU/la7J0Xg/yQh7k
+ PRM9SqJOYTLFXWuO+zJsSNXITZVMEeNIofYDLIvvRyvJbciCo+eI62AN1YqbBDw22a0p
+ w95OKRgwIN3NjerccFMSwkpMHxKixvHRtTuig8JMaXgUAs98mGBe4674LrACaofkXipw
+ MIWzttTYOWe72g0WEG8I7e0gl7j0GhoNZCkbcMiPGjk5/hMFdfv/h4YYSgryi6tkY2l0
+ ptSw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV7bEeaovJ6X7c/sXPsYZMqd0DeU0KTp1TeU+E3osWoFmlIuqDvg24hFIj+JWJsoZEScaOBjxfreg==@nongnu.org
+X-Gm-Message-State: AOJu0YxdjxMiSNRb60LT59zZYx14GTM9cutADw9Xg88gsHdsNwWBD7dj
+ 1DLyErhY0OADuwc924b9kThK1HWcT2TV/atEYdQGdzD001+1i39dtto2Uzu6MqQL46s=
+X-Gm-Gg: AZuq6aLUV+2uhZjTKlXD634fvmlXw1pbt3GHslGWdHOMsiTzT9ntkO0R+sCqHa4KOVd
+ GtQjT6OGHJJne+vBuYoKaW/kDYkGVlhwJSZ0IkHAkmZJag8jWzUs/aOtKT4xeXEw3GcbFaaKgvZ
+ 2hlKe6DY/A6zaVvIVWRTFVcB4dPmfa24ewRvfn/KJa4pkD1BH1BtTsLxi14uWpqG9K8tqBvNtk4
+ Ri/VW2N65L1w5YJDA0Wuv7QHNqeE6DyIsqkB/UL5YeNEACMeqfx0nqLNcNlF/wSpN45LExfumpo
+ EaSSBRUZ9kq6eHr+733g7dhLXXAluSrng0XiGJLRvtUQWKi17SZhUMxg+UIUdq0YJ1t0kJ7NLJx
+ 6CrMVv6XTA9tZa1NdGA2P0uoyc9uBR/NMVbzR81Gxlt1GUy5p56kNB1/fmBNjYC4L8oNQHrJEyV
+ Da7JIRmTKlmi+y36P/XMeBjZ+aNwFkppNc/0uu2iBwFwb1IRzt5BQ+UAya0QXiv40A
+X-Received: by 2002:a05:6000:24c6:b0:430:f985:a7b2 with SMTP id
+ ffacd0b85a97d-4362938a74bmr789373f8f.51.1770323614336; 
+ Thu, 05 Feb 2026 12:33:34 -0800 (PST)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43629730992sm624922f8f.21.2026.02.05.12.33.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 Feb 2026 12:33:33 -0800 (PST)
+Message-ID: <5f4f186a-9dd7-4175-b12a-628ea64f4038@linaro.org>
+Date: Thu, 5 Feb 2026 21:33:32 +0100
 MIME-Version: 1.0
-In-Reply-To: <20260205195824.2610192-11-ruslichenko.r@gmail.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: eOIgiDqbiivIIo8H21ltUnYzNVB4WG4BexTbT5Qdjlc_1770323529
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v22 07/22] qtest: hw/arm: virt: add new test case for
+ GICv3 + GICv2m
+Content-Language: en-US
+To: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-devel@nongnu.org
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alexander Graf <agraf@csgraf.de>, Yanan Wang <wangyanan55@huawei.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>, Ani Sinha <anisinha@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-arm@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
+ Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>
+References: <20260205152432.78208-1-mohamed@unpredictable.fr>
+ <20260205152432.78208-8-mohamed@unpredictable.fr>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260205152432.78208-8-mohamed@unpredictable.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,201 +116,14 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Feb 05, 2026 at 08:58:05PM +0100, Ruslan Ruslichenko wrote:
-> From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
-> 
-> Implement the mechanism to transfer packets from the dedicated
-> protocol thread to the main QEMU execution loop for processing.
-> 
-> The patch adds the following features:
-> - signaling logic using internal pipe to wake up the main loop
-> - the rp_process handler, which retrieves packets from queue and
-> dispatches them to the target Remote Port device.
-> 
-> This enables QEMU device models to handle remote events.
-> 
-> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
-> Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
-> Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+On 5/2/26 16:24, Mohamed Mediouni wrote:
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 > ---
->  hw/core/remote-port.c         | 148 +++++++++++++++++++++++++++++++++-
->  include/hw/core/remote-port.h |   5 ++
->  2 files changed, 152 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/core/remote-port.c b/hw/core/remote-port.c
-> index 91b0682884..e44d9249c3 100644
-> --- a/hw/core/remote-port.c
-> +++ b/hw/core/remote-port.c
-> @@ -52,6 +52,8 @@
->  #define REMOTE_PORT_CLASS(klass)    \
->       OBJECT_CLASS_CHECK(RemotePortClass, (klass), TYPE_REMOTE_PORT)
->  
-> +static void rp_event_read(void *opaque);
-> +
->  static void rp_pkt_dump(const char *prefix, const char *buf, size_t len)
->  {
->      qemu_hexdump(stdout, prefix, buf, len);
-> @@ -96,6 +98,12 @@ ssize_t rp_write(RemotePort *s, const void *buf, size_t count)
->      return r;
->  }
->  
-> +static unsigned int rp_has_work(RemotePort *s)
-> +{
-> +    unsigned int work = s->rx_queue.wpos - s->rx_queue.rpos;
-> +    return work;
-> +}
-> +
->  static void rp_cmd_hello(RemotePort *s, struct rp_pkt *pkt)
->  {
->      s->peer.version = pkt->hello.version;
-> @@ -187,6 +195,135 @@ static Chardev *rp_autocreate_chardev(RemotePort *s, char *name)
->      return chr;
->  }
->  
-> +void rp_process(RemotePort *s)
-> +{
-> +    while (true) {
-> +        struct rp_pkt *pkt;
-> +        unsigned int rpos;
-> +        bool actioned = false;
-> +        RemotePortDevice *dev;
-> +        RemotePortDeviceClass *rpdc;
-> +
-> +        qemu_mutex_lock(&s->rsp_mutex);
-> +        if (!rp_has_work(s)) {
-> +            qemu_mutex_unlock(&s->rsp_mutex);
-> +            break;
-> +        }
-> +        rpos = s->rx_queue.rpos;
-> +
-> +        pkt = s->rx_queue.pkt[rpos].pkt;
-> +        D(qemu_log("%s: io-thread rpos=%d wpos=%d cmd=%d dev=%d\n",
-> +                 s->prefix, s->rx_queue.rpos, s->rx_queue.wpos,
-> +                 pkt->hdr.cmd, pkt->hdr.dev));
+>   tests/qtest/bios-tables-test.c | 21 +++++++++++++++++++++
+>   1 file changed, 21 insertions(+)
 
-Same point as last patch, that emitted structured data in
-tracepoints is preferrable to merely logging. Consider this
-to apply to any other qemu_log call, so I won't repeat it
-every time.
-
-> +
-> +        /*
-> +         * To handle recursiveness, we need to advance the index
-> +         * index before processing the packet.
-> +         */
-> +        s->rx_queue.rpos++;
-> +        s->rx_queue.rpos %= ARRAY_SIZE(s->rx_queue.pkt);
-> +        qemu_mutex_unlock(&s->rsp_mutex);
-> +
-> +        dev = s->devs[pkt->hdr.dev];
-> +        if (dev) {
-> +            rpdc = REMOTE_PORT_DEVICE_GET_CLASS(dev);
-> +            if (rpdc->ops[pkt->hdr.cmd]) {
-> +                rpdc->ops[pkt->hdr.cmd](dev, pkt);
-> +                actioned = true;
-> +            }
-> +        }
-> +
-> +        switch (pkt->hdr.cmd) {
-> +        /* TBD */
-> +        default:
-> +            assert(actioned);
-> +        }
-> +
-> +        s->rx_queue.inuse[rpos] = false;
-> +        qemu_sem_post(&s->rx_queue.sem);
-> +    }
-> +}
-> +
-> +static void rp_event_read(void *opaque)
-> +{
-> +    RemotePort *s = REMOTE_PORT(opaque);
-> +    unsigned char buf[32];
-> +    ssize_t r;
-> +
-> +    /* We don't care about the data. Just read it out to clear the event.  */
-> +    do {
-> +#ifdef _WIN32
-> +        r = qemu_recv_wrap(s->event.pipe.read, buf, sizeof buf, 0);
-> +#else
-> +        r = read(s->event.pipe.read, buf, sizeof buf);
-> +#endif
-> +        if (r == 0) {
-> +            return;
-> +        }
-> +    } while (r == sizeof buf || (r < 0 && errno == EINTR));
-> +
-> +    rp_process(s);
-> +}
-> +
-> +static void rp_event_notify(RemotePort *s)
-> +{
-> +    unsigned char d = 0;
-> +    ssize_t r;
-> +
-> +#ifdef _WIN32
-> +    /* Mingw is sensitive about doing write's to socket descriptors.  */
-> +    r = qemu_send_wrap(s->event.pipe.write, &d, sizeof d, 0);
-> +#else
-> +    r = qemu_write_full(s->event.pipe.write, &d, sizeof d);
-> +#endif
-> +    if (r == 0) {
-> +        hw_error("%s: pipe closed\n", s->prefix);
-> +    }
-> +}
-> +
-> +/* Handover a pkt to CPU or IO-thread context.  */
-> +static void rp_pt_handover_pkt(RemotePort *s, RemotePortDynPkt *dpkt)
-> +{
-> +    bool full;
-> +
-> +    /*
-> +     * Take the rsp lock around the wpos update, otherwise
-> +     * rp_wait_resp will race with us.
-> +     */
-> +    qemu_mutex_lock(&s->rsp_mutex);
-> +    s->rx_queue.wpos++;
-> +    s->rx_queue.wpos %= ARRAY_SIZE(s->rx_queue.pkt);
-> +    /*
-> +     * Ensure rx_queue index update is visible to consumer
-> +     * before signaling event, to prevent lost wakeup
-> +     */
-> +    smp_mb();
-> +    rp_event_notify(s);
-> +    qemu_cond_signal(&s->progress_cond);
-> +    qemu_mutex_unlock(&s->rsp_mutex);
-> +
-> +    do {
-> +        full = s->rx_queue.inuse[s->rx_queue.wpos];
-> +        if (full) {
-> +            qemu_log("%s: FULL rx queue %d\n", __func__, s->rx_queue.wpos);
-> +        if (qemu_sem_timedwait(&s->rx_queue.sem, 2 * 1000) != 0) {
-> +#ifndef _WIN32
-> +                int sval;
-> +
-> +#ifndef CONFIG_SEM_TIMEDWAIT
-> +                sval = s->rx_queue.sem.count;
-> +#else
-> +                sem_getvalue(&s->rx_queue.sem.sem, &sval);
-> +#endif
-> +                qemu_log("semwait: %d rpos=%u wpos=%u\n", sval,
-> +                         s->rx_queue.rpos, s->rx_queue.wpos);
-> +#endif
-> +                qemu_log("Deadlock?\n");
-> +        }
-> +        }
-> +    } while (full);
-> +}
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

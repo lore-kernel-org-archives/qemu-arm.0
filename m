@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D060AECD999
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:00:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A67A6ECD99E
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:01:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo5VS-0006oD-AA; Thu, 05 Feb 2026 14:59:14 -0500
+	id 1vo5Vk-00075g-DS; Thu, 05 Feb 2026 14:59:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5VQ-0006lK-Im
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:12 -0500
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1vo5Ve-0006zF-V3
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:28 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5VL-00037S-VA
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:12 -0500
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-47f5c2283b6so11822525e9.1
- for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:59:07 -0800 (PST)
+ id 1vo5Vc-0003Bc-JE
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:26 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-47ee76e8656so20252905e9.0
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:59:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1770321546; x=1770926346; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1770321563; x=1770926363; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WJgihbxir9TVndoVLKFcaPLnULrfVxu1EQyax/iuZuY=;
- b=dxP0q/aN7suTqBcdTW+rHZUGQKT9hWcUakT4BrWXNBAp/LIfEqDnE7YHL3JcJ+niqa
- IwG5vqWeL/VmfeRzf61C+T+F87kD0ERSKy8MuX7WiZjiq1Sin8f/Lb2viiYwxAmSAiPV
- ccgCWYQjOobuC8rZg/v/DrqO8G3kNNmuBuKu7Zre6LSLgXbwB32E00Tl4gay77INsdpf
- GnfWNBf2oPNsn2m1yQEu4MXiZN8l1QjOkO0V9GIDLPNwovTN+ArpSx2mV6AxdI7BMWrE
- qdHSrsDRS9EnGIYb0XzYnwVj+GLU7xnD5HecCbb7vfvNRGezL/EfhKphkAfOmvGXAzWO
- 6BvQ==
+ bh=ODPdQ6CGlB8sV1EdByujVoiH2o+cygpKFap6nFlHY6I=;
+ b=Q1OK6GAWjgpO4TFab8dGa1a5elPXISG4JgM2QQF1tK5lZBhbsnpzoeRwDr8HeTdNYG
+ Fv7mG3uf5vYbDr84sW1lU8PldU2MExNqbgD4w1q4I+e2Kkc1wTaDfVblF5dUX5MRb+YK
+ c8pzUOkP5Pq+RuEq/weMZeWwgv/0tygfQjnClwhcNxsvSx6zZSpnonZ9Gw7heKgkexEM
+ uSAsfUkq4mpHAdhZmafAsG+wc3yBRtL5T8P5Rqn1fUEZNTaZfSh4bwQgddBsHB9vdpLa
+ l40MVLpBrnUUYs15h+UPz0vQvoPNGg/ltKgzziyi9EGS9JBOb+vEJc0b+THu3ed/amE0
+ v9Xg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770321546; x=1770926346;
+ d=1e100.net; s=20230601; t=1770321563; x=1770926363;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=WJgihbxir9TVndoVLKFcaPLnULrfVxu1EQyax/iuZuY=;
- b=nFYl+o8SKScKMs4wTlWQ+G4OSGzVbMgyPyGjkoqfrSLGnmUqBfPN2gWJoWoZB35M2c
- nK4OB/TpatVM4AXRaY0PKxKFndzgcvM1ynHAYLkmH3Z9TGbxRewd7Sl2nbhSjnZTFUOK
- NtrwG56SXNGA+bz6+VczmOsajUDUnnQjmYawLpdCQdSKfUCXrKojlSE2rl6XCpgeTowM
- /uO0btEk7cCUASETAHH1mubbXwHTDzg56NGTjdpYjZaX//2e2jJHGyXAdVo5DiraSp96
- pr2eqXboOolmKFkklvbyE/wUVK0vZPmTxeByxR7vS9Za7VbTP/soZmmkhnfONP3TZ1Iu
- Fcew==
-X-Gm-Message-State: AOJu0YwPC0WViKOBXsbJTiweTVX/6JplP/jF3FqDKve8lM7sUsSSa8CB
- nuZ35DSoUBcW7zb3rPB0KnAeZpDi4NK3dgifd4WtzJBQmpYOjiLGJUM+
-X-Gm-Gg: AZuq6aJG2CIwo5pvsrK9W9+wYqLUWPifyE7osuvkCgEimO2QJEOeEuROEzZpsx5uAuG
- F3T5A6srMThiQLJPjIlWeJ1YiSoTLF0GLBwwxxCyAPSLvPAx/Gvz6MYlDYFuwrHwX2EIio8bD4Q
- 7v7wXF3maxev6q5iDGWmqd9IzrQMh65F7yFozmFR1ECbd3OAygV4gaoUtxJbCdwzl+XjxjwHECI
- MOFulxyDqujOHQsraKTXzFGGp8tA6+cNS/JvkR8vFHiqms43fR2gSPeHvI5MCY66Yp09v/oE1jG
- O27eJlsWAWAR9TyihsveFZ6s5nK7RRQJZO1yGLRWWNOI/6Kz6gKbEZ25bAs2As9gDCFDV0o2ows
- VrfCbLVM/9/DT7UB2nEQtJP8etNTeE4lKzNyguiA9CffFxh3W7dj5GBKyYEQXqEB5Bk6vXqQiJ2
- v8ig21eOQALiNzavap6BiEIs1YpvJmDg==
-X-Received: by 2002:a05:600c:6285:b0:47e:e87b:af8 with SMTP id
- 5b1f17b1804b1-48320231170mr7487375e9.21.1770321546222; 
- Thu, 05 Feb 2026 11:59:06 -0800 (PST)
+ bh=ODPdQ6CGlB8sV1EdByujVoiH2o+cygpKFap6nFlHY6I=;
+ b=A3GX5E/6cYshyg3B7Hfr1Ivr9UI0BGA1DVFAB7ZU3YKV220vesh8qSzR+3vMxERUrx
+ MiwnQfQ2peZZXCFcw68D+8xUmtXft33Mzjpbm10jK9o5iYLTsnprZbRaW9mECmbKxkpO
+ 8APFH8u2/RXKozU4vYwGgPQD+hWlDYiz0sfQrACk5yM9lIsUBYad/DRGldMSz8qZxOAZ
+ VQlB+fI3IxXg/HeiwhllKWbHivbQxlYdtqfJgDc0NwLCY/993Iok2HoWvdQlTPOLWqIV
+ ghFUhfDbiQX+zTPgJwXWHvk1h7dAhmEoOymxGdJ//o8nM0OyM2tKA4nyBA82alROKq4I
+ db8A==
+X-Gm-Message-State: AOJu0YxmrSkkV25UhfuXmYuenQZ73Ynab9ooTrpZAzo/oWV431h9nU1m
+ /snjF9rdwxoYTW6s7Nmo4nxfTfUqQiRR+QN+BpnLaVOAG3e+28f4QUHx
+X-Gm-Gg: AZuq6aJAVRjHpIZ3FWSwNeZKPMemKJ+QuHJxC4nmj/secRnqB95KjydBr+yGRG129MD
+ aUHWmAIQKiecRCn4Q5UlHIx5a7v4Zyfz6MEaYPa5OqE5+LsJOseTCFP+ayj2JvXlQxkcSFaYqi8
+ lFEMbgiRqcyB4XOzhrOSBxwTFlA4ozMxEX/FR+FEKT/WQXoGmqfKvFl0ZE1tIVsgxAejLn5rwbP
+ +P5RE0RvM26H5a0fVsYQtj7oKmRYc1wE8VTjrCCxugrWgjyGlqjsIeg1Z6tD3KFKINchgZlsc74
+ r2cMRFcfjLqpOL85fjDUVT2xIrMQ90fiaVRcaqPW6GpHJbDLvsJn/90hx6KMynt6GjTGiyW7LNY
+ NBxXEl/ED9c8ea8GsbdlwE9B35fGk2zv5c3OsN+uKgxlZbla6dohy9SMR+m67xxo1S4WaCxAt6b
+ gvD/uJVuqyjJLqymb1hzQ=
+X-Received: by 2002:a05:6000:1844:b0:432:7d2a:2be4 with SMTP id
+ ffacd0b85a97d-4362938023amr621859f8f.60.1770321562947; 
+ Thu, 05 Feb 2026 11:59:22 -0800 (PST)
 Received: from thinkpad-t470s.. ([93.140.16.93])
  by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.59.04
+ ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.59.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Feb 2026 11:59:05 -0800 (PST)
+ Thu, 05 Feb 2026 11:59:22 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
@@ -71,17 +71,17 @@ Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  francisco.iglesias@amd.com, Ruslan_Ruslichenko@epam.com,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH 15/29] hw/core: Implement Remote Port Memory Master bus
- transactions
-Date: Thu,  5 Feb 2026 20:58:10 +0100
-Message-ID: <20260205195824.2610192-16-ruslichenko.r@gmail.com>
+Subject: [PATCH 26/29] hw/core: Add Remote Port connection support to
+ fdt-generic
+Date: Thu,  5 Feb 2026 20:58:21 +0100
+Message-ID: <20260205195824.2610192-27-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 References: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,256 +106,186 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Implement the core access handlers for the Remote Port Memory
-Master device, which enables QEMU to initiate memory-mapped
-transaction to remote peers.
+Extend the fdt-generic utility to automatically configure Remote Port
+devices defined in the Device Tree.
 
-The patch adds support for:
-- Translation of QEMU MemoryTransactions into Remote Port
-read/write packets
-- Support for propagating of transaction attributes
-(Secure, MasterID)
-- Synchronous response waiting with optional timeout
-- Add trace events for monitoring TX/RX bus transactions
+This patch enables the system to:
+- Identify Remote Port devices and their configuration parameters directly
+  from the Device Tree description.
+- Automatically establish connections between these devices and the
+  central Remote Port adaptor.
+- Register legacy reset handlers for devices instantiated via FDT,
+  as required by specific Remote Port devices to ensure they reset
+  properly.
+
+This allows users to define complex co-simulation environments purely
+through Device Tree data, removing the need for hardcoded initialization.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/remote-port-memory-master.c | 167 +++++++++++++++++++++++++++-
- hw/core/remote-port.c               |   5 +
- hw/core/trace-events                |   4 +
- include/hw/core/remote-port.h       |  11 ++
- 4 files changed, 185 insertions(+), 2 deletions(-)
+ hw/core/fdt_generic_util.c | 120 +++++++++++++++++++++++++++++++++----
+ 1 file changed, 107 insertions(+), 13 deletions(-)
 
-diff --git a/hw/core/remote-port-memory-master.c b/hw/core/remote-port-memory-master.c
-index d714f66ddf..4a6c43423d 100644
---- a/hw/core/remote-port-memory-master.c
-+++ b/hw/core/remote-port-memory-master.c
-@@ -41,10 +41,173 @@
+diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
+index d183a44433..180038baf6 100644
+--- a/hw/core/fdt_generic_util.c
++++ b/hw/core/fdt_generic_util.c
+@@ -61,6 +61,9 @@
+     } \
+ } while (0)
  
- #define RP_MAX_ACCESS_SIZE 4096
++#include "hw/core/remote-port-memory-slave.h"
++#include "hw/core/remote-port.h"
++
+ #define PROP_ARRAY_LEN_PREFIX "len-"
  
-+static int rp_mm_get_timeout(MemoryTransaction *tr)
-+{
-+    RemotePortMap *map = tr->opaque;
-+    RemotePortMemoryMaster *s;
-+
-+    if (!map || !map->parent ||
-+        !object_dynamic_cast(OBJECT(map->parent),
-+                             TYPE_REMOTE_PORT_MEMORY_MASTER)) {
-+        return 0;
-+    }
-+    s = REMOTE_PORT_MEMORY_MASTER(map->parent);
-+    return s->rp_timeout;
-+}
-+
-+MemTxResult rp_mm_access_with_def_attr(RemotePort *rp, uint32_t rp_dev,
-+                                       struct rp_peer_state *peer,
-+                                       MemoryTransaction *tr,
-+                                       bool relative, uint64_t offset,
-+                                       uint32_t def_attr)
-+{
-+    uint64_t addr = tr->addr;
-+    RemotePortRespSlot *rsp_slot;
-+    RemotePortDynPkt *rsp;
-+    struct  {
-+        struct rp_pkt_busaccess_ext_base pkt;
-+        uint8_t reserved[RP_MAX_ACCESS_SIZE];
-+    } pay;
-+    uint8_t *data = rp_busaccess_tx_dataptr(peer, &pay.pkt);
-+    struct rp_encode_busaccess_in in = {0};
-+    int i;
-+    int len;
-+    int rp_timeout = rp_mm_get_timeout(tr);
-+    MemTxResult ret;
-+
-+    if (rp_timeout) {
-+        return MEMTX_ERROR;
-+    }
-+    DB_PRINT_L(0, "addr: %" HWADDR_PRIx " data: %" PRIx64 "\n",
-+               addr, tr->data.u64);
-+
-+    if (tr->rw) {
-+        /* Data up to 8 bytes is passed as values.  */
-+        if (tr->size <= 8) {
-+            for (i = 0; i < tr->size; i++) {
-+                data[i] = tr->data.u64 >> (i * 8);
-+            }
-+        } else {
-+            memcpy(data, tr->data.p8, tr->size);
-+        }
-+    }
-+
-+    addr += relative ? 0 : offset;
-+
-+    in.cmd = tr->rw ? RP_CMD_write : RP_CMD_read;
-+    in.id = rp_new_id(rp);
-+    in.dev = rp_dev;
-+    in.clk = rp_normalized_vmclk(rp);
-+    in.master_id = tr->attr.requester_id;
-+    in.addr = addr;
-+    in.attr = def_attr;
-+    in.attr |= tr->attr.secure ? RP_BUS_ATTR_SECURE : 0;
-+    in.size = tr->size;
-+    in.stream_width = tr->size;
-+    len = rp_encode_busaccess(peer, &pay.pkt, &in);
-+    len += tr->rw ? tr->size : 0;
-+
-+    trace_remote_port_memory_master_tx_busaccess(rp_cmd_to_string(in.cmd),
-+        in.id, in.flags, in.dev, in.addr, in.size, in.attr);
-+
-+    rp_rsp_mutex_lock(rp);
-+    rp_write(rp, (void *) &pay, len);
-+
-+    if (!rp_timeout) {
-+        rsp_slot = rp_dev_wait_resp(rp, in.dev, in.id);
-+    } else {
-+        rsp_slot = rp_dev_timed_wait_resp(rp, in.dev, in.id, rp_timeout);
-+        if (rsp_slot->valid == false) {
-+            /*
-+             * Timeout error
-+             */
-+            rp_rsp_mutex_unlock(rp);
-+            return MEMTX_ERROR;
-+        }
-+    }
-+    rsp = &rsp_slot->rsp;
-+
-+    /* We dont support out of order answers yet.  */
-+    assert(rsp->pkt->hdr.id == in.id);
-+
-+    switch (rp_get_busaccess_response(rsp->pkt)) {
-+    case RP_RESP_OK:
-+        ret = MEMTX_OK;
-+        break;
-+    case RP_RESP_ADDR_ERROR:
-+        ret = MEMTX_DECODE_ERROR;
-+        break;
-+    default:
-+        ret = MEMTX_ERROR;
-+        break;
-+    }
-+
-+    if (ret == MEMTX_OK && !tr->rw) {
-+        data = rp_busaccess_rx_dataptr(peer, &rsp->pkt->busaccess_ext_base);
-+        /* Data up to 8 bytes is return as values.  */
-+        if (tr->size <= 8) {
-+            for (i = 0; i < tr->size; i++) {
-+                tr->data.u64 |= ((uint64_t) data[i]) << (i * 8);
-+            }
-+        } else {
-+            memcpy(tr->data.p8, data, tr->size);
-+        }
-+    }
-+
-+    trace_remote_port_memory_master_rx_busaccess(
-+        rp_cmd_to_string(rsp->pkt->hdr.cmd), rsp->pkt->hdr.id,
-+        rsp->pkt->hdr.flags, rsp->pkt->hdr.dev, rsp->pkt->busaccess.addr,
-+        rsp->pkt->busaccess.len, rsp->pkt->busaccess.attributes);
-+
-+    if (rp_timeout) {
-+        for (i = 0; i < ARRAY_SIZE(rp->dev_state[rp_dev].rsp_queue); i++) {
-+            if (rp->dev_state[rp_dev].rsp_queue[i].used &&
-+                rp->dev_state[rp_dev].rsp_queue[i].valid) {
-+                rp_resp_slot_done(rp, &rp->dev_state[rp_dev].rsp_queue[i]);
-+            }
-+        }
-+    } else {
-+        rp_resp_slot_done(rp, rsp_slot);
-+    }
-+    rp_rsp_mutex_unlock(rp);
-+
+ /* FIXME: wrap direct calls into libfdt */
+@@ -1097,6 +1100,20 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
+     }
+     fdt_init_set_opaque(fdti, node_path, dev);
+ 
 +    /*
-+     * For strongly ordered or transactions that don't allow Early Acking,
-+     * we need to drain the pending RP processing queue here. This is
-+     * because RP handles responses in parallel with normal requests so
-+     * they may get reordered. This becomes visible for example with reads
-+     * to read-to-clear registers that clear interrupts. Even though the
-+     * lowering of the interrupt-wires arrives to us before the read-resp,
-+     * we may handle the response before the wire update, resulting in
-+     * spurious interrupts.
-+     *
-+     * This has some room for optimization but for now we use the big hammer
-+     * and drain the entire qeueue.
++     * Set the default sync-quantum based on the global one. Node properties
++     * in the dtb can later override this value.
 +     */
-+    rp_process(rp);
++    if (global_sync_quantum) {
++        ObjectProperty *p;
 +
-+    /* Reads are sync-points, roll the sync timer.  */
-+    rp_restart_sync_timer(rp);
-+    DB_PRINT_L(1, "\n");
-+    return ret;
-+}
++        p = object_property_find(OBJECT(dev), "sync-quantum");
++        if (p) {
++            object_property_set_int(OBJECT(dev), "sync-quantum",
++                                    global_sync_quantum, &errp);
++        }
++    }
 +
-+MemTxResult rp_mm_access(RemotePort *rp, uint32_t rp_dev,
-+                         struct rp_peer_state *peer,
-+                         MemoryTransaction *tr,
-+                         bool relative, uint64_t offset)
-+{
-+    return rp_mm_access_with_def_attr(rp, rp_dev, peer, tr, relative, offset,
-+                                      0);
-+}
-+
- static MemTxResult rp_access(MemoryTransaction *tr)
- {
--    /* TBD */
--    return MEMTX_OK;
-+    RemotePortMap *map = tr->opaque;
-+    RemotePortMemoryMaster *s = map->parent;
-+
-+    return rp_mm_access(s->rp, s->rp_dev, s->peer, tr, s->relative,
-+                        map->offset);
- }
+     props = qemu_devtree_get_props(fdti->fdt, node_path);
+     for (prop = props; prop->name; prop++) {
+         const char *propname = trim_vendor(prop->name);
+@@ -1142,25 +1159,99 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
+         fdt_init_qdev_scalar_prop(OBJECT(dev), p, fdti, node_path, prop);
+     }
  
- static const MemoryRegionOps rp_ops_template = {
-diff --git a/hw/core/remote-port.c b/hw/core/remote-port.c
-index c783a12153..41ac1b46dc 100644
---- a/hw/core/remote-port.c
-+++ b/hw/core/remote-port.c
-@@ -62,6 +62,11 @@ static void rp_pkt_dump(const char *prefix, const char *buf, size_t len)
-     qemu_hexdump(stdout, prefix, buf, len);
- }
- 
-+uint32_t rp_new_id(RemotePort *s)
-+{
-+    return qatomic_fetch_inc(&s->current_id);
-+}
++    if (object_dynamic_cast(dev, TYPE_REMOTE_PORT_DEVICE)) {
++        for (i = 0; ; ++i) {
++            char adaptor_node_path[DT_PATH_LENGTH];
++            uint32_t adaptor_phandle, chan;
++            DeviceState *adaptor;
++            char *name;
 +
- void rp_rsp_mutex_lock(RemotePort *s)
- {
-     qemu_mutex_lock(&s->rsp_mutex);
-diff --git a/hw/core/trace-events b/hw/core/trace-events
-index 2cf085ac66..6332002d65 100644
---- a/hw/core/trace-events
-+++ b/hw/core/trace-events
-@@ -32,3 +32,7 @@ clock_set_mul_div(const char *clk, uint32_t oldmul, uint32_t mul, uint32_t olddi
- 
- # cpu-common.c
- cpu_reset(int cpu_index) "%d"
++            adaptor_phandle = qemu_fdt_getprop_cell(fdti->fdt, node_path,
++                                                    "remote-ports",
++                                                    2 * i, false, &errp);
++            if (errp) {
++                fprintf(stderr, "cant get phandle from \"remote-ports\" "
++                            "property\n");
++                break;
++            }
++            if (qemu_devtree_get_node_by_phandle(fdti->fdt, adaptor_node_path,
++                                                 adaptor_phandle)) {
++                fprintf(stderr, "cant get node from phandle\n");
++                break;
++            }
++            while (!fdt_init_has_opaque(fdti, adaptor_node_path)) {
++                fdt_init_yield(fdti);
++            }
++            adaptor = DEVICE(fdt_init_get_opaque(fdti, adaptor_node_path));
++            name = g_strdup_printf("rp-adaptor%" PRId32, i);
++            object_property_set_link(OBJECT(dev), name, OBJECT(adaptor), &errp);
++            fprintf(stderr, "connecting RP to adaptor %s channel %d",
++                        object_get_canonical_path(OBJECT(adaptor)), i);
++            g_free(name);
++            if (errp) {
++                fprintf(stderr, "cant set adaptor link for device property\n");
++                break;
++            }
 +
-+# remote-port-memory-master.c
-+remote_port_memory_master_tx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len, uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
-+remote_port_memory_master_rx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len, uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
-diff --git a/include/hw/core/remote-port.h b/include/hw/core/remote-port.h
-index e5dfaf7c3b..172c4b6204 100644
---- a/include/hw/core/remote-port.h
-+++ b/include/hw/core/remote-port.h
-@@ -153,4 +153,15 @@ ssize_t rp_write(RemotePort *s, const void *buf, size_t count);
- 
- struct rp_peer_state *rp_get_peer(RemotePort *s);
- 
-+uint32_t rp_new_id(RemotePort *s);
++            chan = qemu_fdt_getprop_cell(fdti->fdt, node_path, "remote-ports",
++                                         2 * i + 1, false, &errp);
++            if (errp) {
++                fprintf(stderr, "cant get channel from \"remote-ports\" "
++                            "property\n");
++                break;
++            }
 +
-+static inline void rp_resp_slot_done(RemotePort *s,
-+                                     RemotePortRespSlot *rsp_slot)
-+{
-+    rp_dpkt_invalidate(&rsp_slot->rsp);
-+    rsp_slot->id = ~0;
-+    rsp_slot->used = false;
-+    rsp_slot->valid = false;
-+}
++            name = g_strdup_printf("rp-chan%" PRId32, i);
++            object_property_set_int(OBJECT(dev), name, chan, &errp);
++            /*
++             * Not critical - device has right to not care about channel
++             * numbers if its a pure slave (only responses).
++             */
++            if (errp) {
++                fprintf(stderr, "cant set %s property %s\n", name,
++                        error_get_pretty(errp));
++                errp = NULL;
++            }
++            g_free(name);
 +
- #endif
++            name = g_strdup_printf("remote-port-dev%d", chan);
++            object_property_set_link(OBJECT(adaptor), name, OBJECT(dev), &errp);
++            g_free(name);
++            if (errp) {
++                fprintf(stderr, "cant set device link for adaptor\n");
++                break;
++            }
++        }
++        errp = NULL;
++    }
++
+     if (object_dynamic_cast(dev, TYPE_DEVICE)) {
++        DeviceClass *dc = DEVICE_GET_CLASS(dev);
+         const char *short_name = qemu_devtree_get_node_name(fdti->fdt,
+                                                             node_path);
+ 
+-        /* Connect chardev if we can */
+-        if (serial_hd(fdt_serial_ports)) {
+-            Chardev *value = (Chardev *) serial_hd(fdt_serial_ports);
+-            char *chardev;
+-
+-            /* Check if the device already has a chardev.  */
+-            chardev = object_property_get_str(dev, "chardev", &errp);
+-            if (!errp && !strcmp(chardev, "")) {
+-                object_property_set_str(dev, "chardev", value->label, &errp);
+-                if (!errp) {
+-                    /* It worked, the device is a charecter device */
+-                    fdt_serial_ports++;
++        /*
++         * We don't want to connect remote port chardev's to the user facing
++         * serial devices.
++         */
++        if (!object_dynamic_cast(dev, TYPE_REMOTE_PORT)) {
++            /* Connect chardev if we can */
++            if (serial_hd(fdt_serial_ports)) {
++                Chardev *value = (Chardev *) serial_hd(fdt_serial_ports);
++                char *chardev;
++
++                /* Check if the device already has a chardev.  */
++                chardev = object_property_get_str(dev, "chardev", &errp);
++                if (!errp && !strcmp(chardev, "")) {
++                    object_property_set_str(dev, "chardev", value->label,
++                                            &errp);
++                    if (!errp) {
++                        /* It worked, the device is a charecter device */
++                        fdt_serial_ports++;
++                    }
+                 }
++                errp = NULL;
+             }
+-            errp = NULL;
+         }
+ 
+         /* Regular TYPE_DEVICE houskeeping */
+@@ -1176,6 +1267,9 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
+         } else {
+             object_property_set_bool(OBJECT(dev), "realized", true,
+                                      &error_fatal);
++            if (dc->legacy_reset) {
++                qemu_register_reset((void (*)(void *))dc->legacy_reset, dev);
++            }
+         }
+     }
+ 
 -- 
 2.43.0
 

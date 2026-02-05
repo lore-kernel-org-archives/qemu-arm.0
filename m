@@ -4,117 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48FFEECD996
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 18:51:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56A8DECD997
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 19:59:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo4Rp-0007DJ-Qn; Thu, 05 Feb 2026 13:51:26 -0500
+	id 1vo5VF-0006cH-3Z; Thu, 05 Feb 2026 14:59:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vo4Rn-0007CV-4V
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 13:51:23 -0500
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1vo5VD-0006bX-Iv
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:58:59 -0500
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vo4Ri-0008Q7-RQ
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 13:51:22 -0500
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-794e0e933ccso14155807b3.1
- for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 10:51:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1770317477; cv=none;
- d=google.com; s=arc-20240605;
- b=cY5yJE2zVEFnsXJpdLgzvLPYFVoOMMPgqvEbp+EI2IYHqxIVJGw4J4hQ+hb3s4zh1w
- P9fLcikUCZjgFx5mM4fbQTO8a19f0sEbJgBbz+g1/03AHal9irBNhJQ12bSgwRBuujwY
- qbOvZU7RjdCAk09hdbgUuizNyA9fMxm1MuvVhunn7UTpodhLYVCaKpIf4TMcxdUD04BR
- WMtYY6iWzM4vQFcMhy5iQ73HazuBUobP6ifMPrwXYfRgFBy7U5M3d74UgizSFmrpgtW+
- UjYLmZBDzjOQCVnho38j9xRKgyRCQetdEI0pASLpKSvowJD1ufoA+IQW0WX4OioMc/hK
- ofow==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=iaplVcg+C3ZIVbHnVYp/FtHc/2vtoaqZXFq0RfFunq0=;
- fh=2AKsolJAq+7Vf/EKGZqdjx5f/MwB33RPYOt2xg7cs80=;
- b=YgfSVx9/8BvSfFSpVWnT/8CGwk5R2dqDko8ECHVevKAMHkl7dIJyF70NwMXDocpxOM
- DSpj+x1+uQRQBir1+e0TniAOSrmgrK0GSCKh2MNJx22GX1mp3B3ZTU/7IDTev1ziA04F
- jVI0vieNj0I2bSvINNzP2N0LziLo35VN0kGJ3yBUyHgQaPLnCdlOSaLEFvERRNftsBFf
- U98IfIQrK2Paj+Pphdz5BHeskdHX6chcbxGZySuxjv1dhkdXS+8iii+C5d1ZsOGvcGAU
- nTBi7pZQmROXRPaCQabkG73NMI5lRwGcxbWf3MovsvHLAhfF29AiLgUJhbPnnSQKGsUL
- XYpw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
+ id 1vo5VB-00035B-Lt
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:58:59 -0500
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-43591b55727so1185660f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:58:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1770317477; x=1770922277; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=iaplVcg+C3ZIVbHnVYp/FtHc/2vtoaqZXFq0RfFunq0=;
- b=Zfeve+mkT8yR8xDKlAR7gU5L6kSqmj9Q/lH8GJWZH8wDftX5zGuzf36+VeVxwk1MaK
- 2ph2qYC4HA/oUy9bZYmHn1m8RlqBecWIblQj12lMH0bqt0CsQkGG6ZN5dFrhGKsA+fQ1
- 2X+hcjJfyK0topT+dJg89XBqURdPAkJi3NPvN/sYsGYF8j0sftr2UFPKHJ8ui/7iWXn7
- vOR63aGGwgqHF84xIxdCUacXOtX4Ys4S54w61yR2XtAszq5A3xMpi6p2M8PDpazBU5/d
- Z/7i0/KTKgPS0AOvwMHoi/UNEWFLIe8yyONAH7eRnRHfKnnj0YU+VsthFzpq8HKb9e3k
- 8Eyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770317477; x=1770922277;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20230601; t=1770321536; x=1770926336; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=iaplVcg+C3ZIVbHnVYp/FtHc/2vtoaqZXFq0RfFunq0=;
- b=C06WznXNm3E76ORmP1h+GB6pNkogcOpzDDfle0gtTIXsQDG0+8TbY6MkZy/WK/1YK6
- coRNvflqJs18LmYBv547t9j4oQSQ/g8rVCIbJS6cnTxBxZ4BcYUYmg5wXvwMr58+1Se/
- U7Wfpi6ka9O81XxPQkQDHk9+ViX8vwLdVuzt1sZZrx5a8lbV7gSINezCWisdyRTqe5EL
- eUOK2CgWES9i9g4AT+0cGcDzonW2F3XscUIMWFGsje15M5sbP6vNbmsFPUEnth7b65y6
- oBilFwrkrPWZz6fVs2qKujmpOGRBnP0e8Lv2Gryl8tgigd8ZEfLLD4/H6/AWeAOmIChf
- JyzQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV+46+qBO5h3yBFYNC8yX2bs+TOrJnPBeWki/kY+xLNlVSA+EWoBOB1kzlmwNDVz9vjL6LbNJnOTw==@nongnu.org
-X-Gm-Message-State: AOJu0YxjQCkpSKI45eLKs5AopE1cvprmcUAbOSifEcLAttdww/ABjwNC
- dy97UN92gQSNDKPQg4IJGft8oT/bwymDltzzUbktqahfJqzojRDeL8PZUgiF3/jVGDfW7lv3Xqx
- xhQU83TH6P4VBgBiUBFWqQ/YFdiu8LH2xJeboGC5XVA==
-X-Gm-Gg: AZuq6aLn9S0gJdMwbBhwv75rSSSjyfTBrUOJ35NdMaWX+IQI1ZhM8s/SShTau0vFsec
- +AUFLUOhbUecTHVGtMWdm8bLBzKAFf3S22VN06C+qYibwIV6uXM7fIfenru678C4UcXVmRkqjM1
- WtPcCHg5I1TvHdKidNDfKMS6yyYStqfjKB6SAyr7y0cmPOtsuyr+j/1g69iCjEkhKKHRcaHRQi0
- +d7WmWaWyPvHLUWdgHikGCR7r0zReP3z1bGNV74aVxoPxAu2F8XvKEALLKD9OPsUa8eoonincYB
- CVdDqMaIh9gkvsnRcUk96T1Nz2BO9taArKbQiUpcCBvxzP2qTuNF2gM=
-X-Received: by 2002:a05:690c:a96:b0:795:616:4367 with SMTP id
- 00721157ae682-7952aa74934mr1782537b3.4.1770317477416; Thu, 05 Feb 2026
- 10:51:17 -0800 (PST)
+ bh=CSJ8tOiInHZajPxuGqsMt9qE3I/cEaWxjUiyrEukxUo=;
+ b=AzQeLg+8sHNwBGtQ4jN3JbxSwQgjVExpl1bqZpax1j1NBem7BJ/KnuaFqRs/mmUV13
+ XQI2/e5BwWreY+8E9lUS8hLeN5RUcqR0uoC2ivKsOUcB++oLrLCQ5/tC4P6g9hwiECcl
+ DHGcSFkUYpQqVUjnF6P2zmEzovrSFRCggO4fTQKyiCih616GHzQe4qzVpA710bDkemOa
+ gTAz3XGUvLmGB6PNVMyiOs1/FiDi4YgNJ/hJgNJVoC7/6M/hy31/ucsnaMWSya+gNcat
+ F5d47GSMagucVUPBvW8lq86imkX4b3SLQfcQ14ZYGcPuZYL1/O1wLv0NR4xEBMt6G5Ab
+ z4Gw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1770321536; x=1770926336;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=CSJ8tOiInHZajPxuGqsMt9qE3I/cEaWxjUiyrEukxUo=;
+ b=ZorelySq2lE176onzAGuCzx+6SzOdia6S0BQxZ0TPtMR9IEI65nL8iegywT4RWfl+z
+ t/7c2dPfAKqKp66NZeyV4jlI5WEceHLJmSJ1dZGJJ+ACzwaallBISWRnPjj7gxA833xR
+ 1c53xCH3e1qqPx29Ek5rX5cS+u+qYZfE+SqohQHmDVILS9XPtk6RnbbTVrUWBEv+xLh6
+ bdPQkoztMxa0+1DKSsHLbM77EnnZbE49jgQDgZJfMf6ix8BrPGotC0upBYgj+KjZDcUt
+ +66Adzxv7Jo0OT530lGUvn0Qb68WM561W54QNw2TpDDeXcNNtfRiRCkvyivIl807VDHc
+ wKHg==
+X-Gm-Message-State: AOJu0Yyj1nP1nA7/7Q0cOnOQkQCfRBszwpVjlOMk/bll6fWSdYdm4a80
+ SeCWf5WoonzOTXPdKrRWTrwo7J1cRb3artVHwx7+JCUHMI57YPwEGVJP
+X-Gm-Gg: AZuq6aJxaWh/gTry46lWGvo0ABmCy4FdNCl9iEJN6Y4TJaHzuR7JEcvDe907Mj2PIuw
+ bQC2vFS0aE/SXhbGCskw1cdGFhU1AqBTljxoYgxNFHwLjxeYygjutzdFpY0Cx3YVA5wCE8PvT63
+ D04qXNvnHcVVxRJVEtDPxH/O2cbb68sjyqSHlt20ChHhEd6/+Ai2ZxjO5eKFwdCl0dIwlyYmqd2
+ A084qBffgHE5sPly4d7d0MTk9qBGbqOzd2rsYBNuBOQhtvKkXTI2B3He8dK6/af1qKR6XT83PlZ
+ P08dMArXUqFdp1leZSNMG8E30GbbkP1BAlwQVjkthqwNYKkv7tzj72bwKX2l1+AoIsnHvAk1qIx
+ z7iGZWXh1UQpdiWWgMmgU1COCs7q2cJp89zr092+0FFEcaQl1d0+qrcuL896o5HIcPIfenJapko
+ 7Svo3qL4k5P7DqvAQ0xXs=
+X-Received: by 2002:a05:6000:250a:b0:435:b089:4f46 with SMTP id
+ ffacd0b85a97d-4362938c2f5mr675837f8f.50.1770321536056; 
+ Thu, 05 Feb 2026 11:58:56 -0800 (PST)
+Received: from thinkpad-t470s.. ([93.140.16.93])
+ by smtp.googlemail.com with ESMTPSA id
+ ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.58.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Feb 2026 11:58:55 -0800 (PST)
+From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
+ volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ francisco.iglesias@amd.com, Ruslan_Ruslichenko@epam.com,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>
+Subject: [PATCH 09/29] hw/core: Add Remote Port protocol thread and handshake
+Date: Thu,  5 Feb 2026 20:58:04 +0100
+Message-ID: <20260205195824.2610192-10-ruslichenko.r@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
+References: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
-References: <20251211102025.873506-1-me@linux.beauty>
- <CAFEAcA8FcW22-TnyBKHmFUUsR=xk2u-74uPz6KisJTeG=YWxmQ@mail.gmail.com>
- <20260205051236-mutt-send-email-mst@kernel.org>
- <CAFEAcA-2QKtniTsLFA2ayjQ28dmQ=35r_zhkL6UBpiEOr=xGVg@mail.gmail.com>
- <20260205124004-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20260205124004-mutt-send-email-mst@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 Feb 2026 18:51:05 +0000
-X-Gm-Features: AZwV_QhQKL5fV6kOZjgQ6PwWGHq3Hjx3t9EpHp2HxMUy3n5ENyeEI0CYDvHg3-8
-Message-ID: <CAFEAcA_P4-Uqy_agp0VZt4+5ukL2tWYK2G394W=zkwJxKF+6Yw@mail.gmail.com>
-Subject: Re: [PATCH v6] acpi/virt: suppress UART device & SPCR when guest has
- no serial hardware
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Li Chen <me@linux.beauty>, Shannon Zhao <shannon.zhaosl@gmail.com>, 
- Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>, 
- Song Gao <gaosong@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
- Sunil V L <sunilvl@ventanamicro.com>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, Weiwei Li <liwei1518@gmail.com>, 
- qemu-arm <qemu-arm@nongnu.org>, qemu-devel <qemu-devel@nongnu.org>, 
- qemu-riscv <qemu-riscv@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,50 +103,301 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 5 Feb 2026 at 17:41, Michael S. Tsirkin <mst@redhat.com> wrote:
->
-> On Thu, Feb 05, 2026 at 05:15:17PM +0000, Peter Maydell wrote:
-> > On Thu, 5 Feb 2026 at 10:13, Michael S. Tsirkin <mst@redhat.com> wrote:
-> > > presumably, things would be different with -nodefaults?
-> >
-> > -nodefaults doesn't generally do much on Arm boards, because
-> > we don't have a lot of "pluggable thing that's plugged in by
-> > default" that we would turn off -- that's more of an x86 thing.
-> >
-> > On the virt board the UART situation is a bit complicated,
-> > for command-line backwards compatibility reasons:
-> >
-> >  * the first UART always exists
-> >  * if you're emulating the security extensions, the second
-> >    UART always exists (and is the secure-world UART)
-> >  * otherwise, the second UART exists only if the user
-> >    configured a second serial backend (i.e. provided
-> >    "-serial foo -serial bar" or similar)
-> >
-> > If I were designing it again from scratch without the
-> > back-compat baggage, it would probably have three always-exists
-> > UARTs, one for secure-world and two for normal-world.
+From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-> that is why we have machine versioning?
+Introduce main execution loop for the Remote Port protocol.
+Creates a dedicated thread to manage the communication lifecycle.
+This includes logic to read packets and manage RX queue.
 
-The problem is real world guest code that just breaks if
-it gets a second serial port unexpectedly. Specifically, UEFI
-would behave unhelpfully. Since fixed, but there are/were still
-plenty of old UEFI binaries out there. Otherwise I'd have
-just added the new UART and made it a versioned machine thing.
+Patch also implements handshake logic to verify protocol
+versions and negotiate capabilities with remote peer.
 
-> I would say -nodefaults really should not have a serial port
-> unless defined, no?
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
+Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+---
+ hw/core/remote-port.c         | 190 ++++++++++++++++++++++++++++++++++
+ include/hw/core/remote-port.h |  22 ++++
+ 2 files changed, 212 insertions(+)
 
-QEMU's arm boards have never behaved that way, and nor have
-most of the other architectures' machine types. For PC
--nodefaults makes sense as it disables a lot of the optional
-pluggable devices that the machines create by default. For the
-Arm boards these devices are not like e.g. a floppy disk
-or a PCI VGA card that you could unplug, and that you can
-on the QEMU command line manually re-create, they're like a
-UART that's baked into the SoC and there usually isn't
-a way to create them on the command line.
+diff --git a/hw/core/remote-port.c b/hw/core/remote-port.c
+index 5154c1bc2a..91b0682884 100644
+--- a/hw/core/remote-port.c
++++ b/hw/core/remote-port.c
+@@ -52,6 +52,88 @@
+ #define REMOTE_PORT_CLASS(klass)    \
+      OBJECT_CLASS_CHECK(RemotePortClass, (klass), TYPE_REMOTE_PORT)
+ 
++static void rp_pkt_dump(const char *prefix, const char *buf, size_t len)
++{
++    qemu_hexdump(stdout, prefix, buf, len);
++}
++
++static void rp_fatal_error(RemotePort *s, const char *reason)
++{
++    error_report("%s: %s", s->prefix, reason);
++    exit(EXIT_FAILURE);
++}
++
++static ssize_t rp_recv(RemotePort *s, void *buf, size_t count)
++{
++    ssize_t r;
++
++    r = qemu_chr_fe_read_all(&s->chr, buf, count);
++    if (r <= 0) {
++        return r;
++    }
++    if (r != count) {
++        error_report("%s: Bad read, expected %zd but got %zd",
++                     s->prefix, count, r);
++        rp_fatal_error(s, "Bad read");
++    }
++
++    return r;
++}
++
++ssize_t rp_write(RemotePort *s, const void *buf, size_t count)
++{
++    ssize_t r;
++
++    qemu_mutex_lock(&s->write_mutex);
++    r = qemu_chr_fe_write_all(&s->chr, buf, count);
++    qemu_mutex_unlock(&s->write_mutex);
++    assert(r == count);
++    if (r <= 0) {
++        error_report("%s: Disconnected r=%zd buf=%p count=%zd",
++                     s->prefix, r, buf, count);
++        rp_fatal_error(s, "Bad write");
++    }
++    return r;
++}
++
++static void rp_cmd_hello(RemotePort *s, struct rp_pkt *pkt)
++{
++    s->peer.version = pkt->hello.version;
++    if (pkt->hello.version.major != RP_VERSION_MAJOR) {
++        error_report("remote-port version missmatch remote=%d.%d local=%d.%d",
++                      pkt->hello.version.major, pkt->hello.version.minor,
++                      RP_VERSION_MAJOR, RP_VERSION_MINOR);
++        rp_fatal_error(s, "Bad version");
++    }
++
++    if (pkt->hello.caps.len) {
++        void *caps = (char *) pkt + pkt->hello.caps.offset;
++
++        rp_process_caps(&s->peer, caps, pkt->hello.caps.len);
++    }
++}
++
++static void rp_say_hello(RemotePort *s)
++{
++    struct rp_pkt_hello pkt;
++    uint32_t caps[] = {
++        CAP_BUSACCESS_EXT_BASE,
++        CAP_BUSACCESS_EXT_BYTE_EN,
++        CAP_WIRE_POSTED_UPDATES,
++        CAP_ATS,
++    };
++    size_t len;
++
++    len = rp_encode_hello_caps(s->current_id++, 0, &pkt, RP_VERSION_MAJOR,
++                               RP_VERSION_MINOR,
++                               caps, caps, sizeof caps / sizeof caps[0]);
++    rp_write(s, (void *) &pkt, len);
++
++    if (sizeof caps) {
++        rp_write(s, caps, sizeof caps);
++    }
++}
++
+ static char *rp_sanitize_prefix(RemotePort *s)
+ {
+     char *sanitized_name;
+@@ -105,6 +187,108 @@ static Chardev *rp_autocreate_chardev(RemotePort *s, char *name)
+     return chr;
+ }
+ 
++static bool rp_pt_process_pkt(RemotePort *s, RemotePortDynPkt *dpkt)
++{
++    struct rp_pkt *pkt = dpkt->pkt;
++
++    D(qemu_log("%s: cmd=%x id=%d dev=%d\n", __func__, pkt->hdr.cmd,
++             pkt->hdr.id, pkt->hdr.dev));
++
++    if (pkt->hdr.dev >= ARRAY_SIZE(s->devs)) {
++        /* FIXME: Respond with an error.  */
++        return true;
++    }
++
++    switch (pkt->hdr.cmd) {
++    case RP_CMD_hello:
++        rp_cmd_hello(s, pkt);
++        break;
++    case RP_CMD_read:
++    case RP_CMD_write:
++    case RP_CMD_interrupt:
++    case RP_CMD_ats_req:
++    case RP_CMD_ats_inv:
++        /* TBD */;
++        break;
++    default:
++        g_assert_not_reached();
++        break;
++    }
++    return false;
++}
++
++static int rp_read_pkt(RemotePort *s, RemotePortDynPkt *dpkt)
++{
++    struct rp_pkt *pkt = dpkt->pkt;
++    int used;
++    int r;
++
++    r = rp_recv(s, pkt, sizeof pkt->hdr);
++    if (r <= 0) {
++        return r;
++    }
++    used = rp_decode_hdr((void *) &pkt->hdr);
++    assert(used == sizeof pkt->hdr);
++
++    if (pkt->hdr.len) {
++        rp_dpkt_alloc(dpkt, sizeof pkt->hdr + pkt->hdr.len);
++        /* pkt may move due to realloc.  */
++        pkt = dpkt->pkt;
++        r = rp_recv(s, &pkt->hdr + 1, pkt->hdr.len);
++        if (r <= 0) {
++            return r;
++        }
++        rp_decode_payload(pkt);
++    }
++
++    return used + r;
++}
++
++static void *rp_protocol_thread(void *arg)
++{
++    RemotePort *s = REMOTE_PORT(arg);
++    unsigned int i;
++    int r;
++
++    /* Make sure we have a decent bufsize to start with.  */
++    rp_dpkt_alloc(&s->rsp, sizeof s->rsp.pkt->busaccess + 1024);
++    for (i = 0; i < ARRAY_SIZE(s->rx_queue.pkt); i++) {
++        rp_dpkt_alloc(&s->rx_queue.pkt[i],
++                      sizeof s->rx_queue.pkt[i].pkt->busaccess + 1024);
++        s->rx_queue.inuse[i] = false;
++    }
++
++    rp_say_hello(s);
++
++    while (1) {
++        RemotePortDynPkt *dpkt;
++        unsigned int wpos = s->rx_queue.wpos;
++        bool handled;
++
++        dpkt = &s->rx_queue.pkt[wpos];
++        s->rx_queue.inuse[wpos] = true;
++
++        r = rp_read_pkt(s, dpkt);
++        if (r <= 0) {
++            /* Disconnected.  */
++            break;
++        }
++        if (0) {
++            rp_pkt_dump("rport-pkt", (void *) dpkt->pkt,
++                        sizeof dpkt->pkt->hdr + dpkt->pkt->hdr.len);
++        }
++        handled = rp_pt_process_pkt(s, dpkt);
++        if (handled) {
++            s->rx_queue.inuse[wpos] = false;
++        }
++    }
++
++    if (!s->finalizing) {
++        rp_fatal_error(s, "Disconnected");
++    }
++    return NULL;
++}
++
+ static void rp_reset(DeviceState *dev)
+ {
+     RemotePort *s = REMOTE_PORT(dev);
+@@ -113,6 +297,9 @@ static void rp_reset(DeviceState *dev)
+         return;
+     }
+ 
++    qemu_thread_create(&s->thread, "remote-port", rp_protocol_thread, s,
++                       QEMU_THREAD_JOINABLE);
++
+     s->reset_done = true;
+ }
+ 
+@@ -124,6 +311,8 @@ static void rp_realize(DeviceState *dev, Error **errp)
+ 
+     s->prefix = object_get_canonical_path(OBJECT(dev));
+ 
++    qemu_mutex_init(&s->write_mutex);
++
+     if (!qemu_chr_fe_get_driver(&s->chr)) {
+         char *name;
+         Chardev *chr = NULL;
+@@ -249,6 +438,7 @@ static void rp_unrealize(DeviceState *dev)
+ 
+     info_report("%s: Wait for remote-port to disconnect", s->prefix);
+     qemu_chr_fe_disconnect(&s->chr);
++    qemu_thread_join(&s->thread);
+ 
+     close(s->event.pipe.read);
+     close(s->event.pipe.write);
+diff --git a/include/hw/core/remote-port.h b/include/hw/core/remote-port.h
+index 0f40018cdb..b88e523894 100644
+--- a/include/hw/core/remote-port.h
++++ b/include/hw/core/remote-port.h
+@@ -56,6 +56,7 @@ typedef struct RemotePortDeviceClass {
+ struct RemotePort {
+     DeviceState parent;
+ 
++    QemuThread thread;
+     union {
+        int pipes[2];
+        struct {
+@@ -66,9 +67,28 @@ struct RemotePort {
+     Chardev *chrdev;
+     CharFrontend chr;
+     bool finalizing;
++    /* To serialize writes to fd.  */
++    QemuMutex write_mutex;
+ 
+     char *chardesc;
+     char *chrdev_id;
++    struct rp_peer_state peer;
++
++#define RX_QUEUE_SIZE 1024
++    struct {
++        /* This array must be sized minimum 2 and always a power of 2.  */
++        RemotePortDynPkt pkt[RX_QUEUE_SIZE];
++        bool inuse[RX_QUEUE_SIZE];
++        QemuSemaphore sem;
++        unsigned int wpos;
++        unsigned int rpos;
++    } rx_queue;
++
++    /*
++     * rsp holds responses for the remote side.
++     * Used by the slave.
++     */
++    RemotePortDynPkt rsp;
+ 
+     const char *prefix;
+     const char *remote_prefix;
+@@ -80,4 +100,6 @@ struct RemotePort {
+     RemotePortDevice *devs[REMOTE_PORT_MAX_DEVS];
+ };
+ 
++ssize_t rp_write(RemotePort *s, const void *buf, size_t count);
++
+ #endif
+-- 
+2.43.0
 
--- PMM
 

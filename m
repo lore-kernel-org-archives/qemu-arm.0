@@ -4,79 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAF31ECD989
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 16:51:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1406ECD98C
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 17:07:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo2ZL-0003NI-SB; Thu, 05 Feb 2026 11:51:03 -0500
+	id 1vo2oY-00089Y-Ru; Thu, 05 Feb 2026 12:06:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vo2ZH-0003Ma-OL
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 11:51:00 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vo2ZF-0000Z4-Kg
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 11:50:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770310255;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=VuB/vmGYoNd/vJlbcXr5UhXD3CurBfw5E1o7fNVepBw=;
- b=L+LsYlNtaMNtarOocQqBXYcmhlbW4JUVdMgK5IP+BmkeKHcuU01htEry2xDAfUcTeHW16E
- P+Szyjtt3IYnXDVlGWH70Aio7rUo3I9HcUbHRSUsAaneNmElapGnB5age3To9JLIl8iG7/
- SQvRE1lwrTcPWSjBLIa1l8mgE2V8+PE=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-633-qGRCuUFLMl-LSHZx3haQJA-1; Thu,
- 05 Feb 2026 11:50:52 -0500
-X-MC-Unique: qGRCuUFLMl-LSHZx3haQJA-1
-X-Mimecast-MFC-AGG-ID: qGRCuUFLMl-LSHZx3haQJA_1770310251
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 880A41956059; Thu,  5 Feb 2026 16:50:50 +0000 (UTC)
-Received: from localhost (unknown [10.44.34.26])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 193ED19373D8; Thu,  5 Feb 2026 16:50:48 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Eric Auger
- <eric.auger@redhat.com>, Sebastian Ott <sebott@redhat.com>, Jonathan
- Cameron <jonathan.cameron@huawei.com>, Alireza Sanaee
- <alireza.sanaee@huawei.com>
-Subject: Re: [PATCH v2 0/3] arm: demuxed ID registers (CCSIDR_EL1)
-In-Reply-To: <CAFEAcA9SvgjUvwLb8VjOzyDNy_g0E30wpUKSN=ENfm3HXx_-SA@mail.gmail.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Avril Crosse O'Flaherty"
-References: <20260204133229.297061-1-cohuck@redhat.com>
- <CAFEAcA9SvgjUvwLb8VjOzyDNy_g0E30wpUKSN=ENfm3HXx_-SA@mail.gmail.com>
-User-Agent: Notmuch/0.39 (https://notmuchmail.org)
-Date: Thu, 05 Feb 2026 17:50:46 +0100
-Message-ID: <87qzqzrv6h.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vo2oX-00089B-2P
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 12:06:45 -0500
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vo2oV-0005BE-1O
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 12:06:44 -0500
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-79503150783so13035367b3.3
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 09:06:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1770311199; cv=none;
+ d=google.com; s=arc-20240605;
+ b=VqzomUggBJtoOgTVGIxVHtrqDTRHUFzchs7wVkkQji+WgMsolVuABpZmVBzgdfQeAy
+ 1DMZiGGTmuVn7VUukY8n7izHhcL2efIPlR+BgHeZLv1aVYtJQHs9s6OfNCPhb7tr/SG1
+ hhpNimPsBVWlth/G8firvTQfVO57zkYsbk7UJrpRl8QNRjOYrbVezxz9eD+LAhcP6go7
+ ENeHcuZumXDpyKOHAclMjfpbWIReEUS88X4dORtMNnXw2Zua48ihk0jGZ5LKrRns1miH
+ etzPg3kBR7eKL8gJaz7UHsXyKpJSKURqkp2w71bpDwHxtfqMf+fWiwNXINXxbZvMDVHJ
+ hACw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=KAEg4662UYW/bELI+4Ost1zMrJiH6kCl9x2ESCMbx90=;
+ fh=r5odI+vS/2W1tplPyhNEBJqN9jjHV7mWBSEroUyyBLg=;
+ b=EtoJCmOkIFNMmvJ5ziBLjA0TVeSD/2bqbFiOT9xkZKmVMEooDYbh0Vo9mlbhN0vvBO
+ rxktJdhh7qb0qAlWV4DqyqQpwXkMWYcdU3slm8Esqrq0iuEVYxr0OXlHe4WbPaQ/bBJ9
+ zQ1gt1T4ne2yY8t6h6S1dyf5UVx0aUv0TGnXu3fbk6e1VUKU3RsLT/FlHD/txzbNH3ll
+ RIvg0g5EMMD0igXt8UHVrqpXSsZNrpbGWp12YqKDP+Gjzc2fEckxWpC09tjneakM3HOU
+ 6F9pr7peZDt95HjyyNtCoj8ePX+KEmnA+xJcs17Pu9Zm2LdkRL/QSqSGAhlJ0a5gQeGE
+ wKsA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1770311199; x=1770915999; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=KAEg4662UYW/bELI+4Ost1zMrJiH6kCl9x2ESCMbx90=;
+ b=escZuaEf55nNbgIHd+XlbTaUf/QE/HSSyZUVRZa7s6UjDI/10KbM0s/ZrLpZJZYEjR
+ kFwX0qiskpc1XFPZgCc+NcjgUz9xqUoQ+HgMKlOu3BjSAKvQV+/74jZVnHlxnfJHhVcp
+ 3uU7kDG+EedBp02oPQXDB+NoHzSxBnayil7dzm5hbgr8Pck+oVlUFrTZEMhY+DTlDPgb
+ U29Fk4ShRcAKvAnbUlmNnRn54chDbBukpLEU9RIvUPd9ARugod3EDEdl91PtWs9Q1a4a
+ WRjCHYixTqhrEQ8HE9yVNU27PGchFNCYWLYqSrZAn3E1m5FiByfU+dCfX6MVuOKS74P1
+ grZA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1770311199; x=1770915999;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=KAEg4662UYW/bELI+4Ost1zMrJiH6kCl9x2ESCMbx90=;
+ b=lurXhfsC0pfABZp4oAD8ydle/ZllBUz5HX8mdhlMCM1sgUroUlly7Ftk1QuOulLcjK
+ +L5LSxvGuHT7jdoMH47Ba5DRvG68xHvsvdQSOe++pKQqhRpVFrwKQbxv7DpKVprCVX5P
+ W1MsUk8VzysVaK2lvAUOdq248jO1vRUu8lU51KajMOQlDakC6+Rk2ni3+10+Fx3Nhmkt
+ cLpA7xKpn6suBdcYuDfz4fnKUxH/lr9Og2Rn5mlfMDZfkS8F34pQIk6AdCjutzSmy5O9
+ albBsL1PapuNqZqrSKgEGxuyNEYs+IG1W8Veu9o9JkDGFHwZcO3JA+a2w80nTnfTHlwa
+ +ONw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUnRBTKlk0l80aXs+Fdz6sT4pdAKSSm8mbt6pKBaQPO87z+xLDPGgK4obqT018cwymcNJOr6SAPkw==@nongnu.org
+X-Gm-Message-State: AOJu0YzElX9jBENBRcsFP/bg0flz1f82XWMHPMck4kt+A+85r2+w7/oU
+ vBqxpOfxrgxTZF9BVIZgCamO40BxfQF90Ycs+3XjecpLRUgrEpXk/LTCDUYkEKKUZXfA+E2GJIK
+ qMHqmUsqKIMMxBArNRB6RancYkfuMxMdErG+2xTcUVg==
+X-Gm-Gg: AZuq6aKsWNhGgvaW/6AG0OKC4EtJUGbOMZ90YExW0zqqYtYZJfiyd5pC7NmYpPop+DO
+ OAmKiHdNgP9LzSMEsnZT5l6JuJT74CUa0eFqLz54xxYCBB7C0kTRaRulMUYDjLwVIvk1KAFIO+Y
+ 57bI7Hxhpnm8pmKXHiQKhWfs+cZKLf8nqr7j/npQuCEQVahOW7tVyYnXe9+Eav/YJw8kTo8tcqj
+ V0qdCELfDFBi8yJW5ZyFSzvy/82VsyXHkBh5jS79vbplZYWwnHzmT+mWf4L7Ug6Y/p7dwMGXxtY
+ afpe
+X-Received: by 2002:a05:690c:3805:b0:794:f200:bbf7 with SMTP id
+ 00721157ae682-794fe698421mr66288007b3.27.1770311198795; Thu, 05 Feb 2026
+ 09:06:38 -0800 (PST)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: 1ZuYXFFGLQt5A7hcKLPjIn8K2CGzxMlzPT9rmIGITpQ_1770310251
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20260205152432.78208-1-mohamed@unpredictable.fr>
+In-Reply-To: <20260205152432.78208-1-mohamed@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 Feb 2026 17:06:26 +0000
+X-Gm-Features: AZwV_Qjr___9hV00IaP5rm_f0cEHd_y6FOBBu7-8oT8uePD32MdD3x0--hi3zxY
+Message-ID: <CAFEAcA-zEZP0hF3gf3Aa4ec7AqAuX14JYwFdzinv+Mdz=OTRfA@mail.gmail.com>
+Subject: Re: [PATCH v22 00/22] WHPX support for Arm
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Alexander Graf <agraf@csgraf.de>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Yanan Wang <wangyanan55@huawei.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Phil Dennis-Jordan <phil@philjordan.eu>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Cameron Esfahani <dirty@apple.com>, 
+ Roman Bolshakov <rbolshakov@ddn.com>, Pedro Barbuda <pbarbuda@microsoft.com>, 
+ Ani Sinha <anisinha@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ qemu-arm@nongnu.org, Zhao Liu <zhao1.liu@intel.com>, 
+ Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,52 +131,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Feb 05 2026, Peter Maydell <peter.maydell@linaro.org> wrote:
-
-> On Wed, 4 Feb 2026 at 13:32, Cornelia Huck <cohuck@redhat.com> wrote:
->> RFC because there are still some open questions:
+On Thu, 5 Feb 2026 at 15:24, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
 >
->> - There's a slight disagreement between the current code (providing 16
->>   entries for CCSIDR_EL1) and the KVM code (providing (7 cache levels) *
->>   (data/unified, instruction) = 14 entries.) With FEAT_MTE2, we might be
->>   needing 7 more entries.
+> Link to branch: https://github.com/mediouni-m/qemu whpx (tag for this submission: whpx-v21)
 >
-> This is because architecturally the CCSELR_EL1 register is:
->  bit 4 : TnD (tag-not-data)
->  bits [3:1] : level
->  bit 0 : InD (instruction-not-data)
+> Patches without a review: patches 3, 5, 6, 7
 >
-> but the 'level' field has 0b111 as Reserved, and KVM doesn't
-> (currently) handle the FEAT_MTE2 TnD bit, so from KVM's point
-> of view only 0..13 are valid values here.
+> Missing features:
+> - VM save-restore: interrupt controller state notably
+> - SVE register sync: I didn't have the time to test this on pre-release hardware with SVE2 support yet.
+> So SVE2 is currently masked for VMs when running this.
 >
-> The architecture says that if you set CSSELR_EL1 to an invalid
-> setting then reading CCSIDR_EL1 can be:
->  * a NOP
->  * UNDEF
->  * return an UNKNOWN value
+> Known bugs:
+> - U-Boot still doesn't work (hangs when trying to parse firmware) but EDK2 does.
 >
-> For TCG we opted to permit any indexes 0..15, so that we treat
-> the architecturally invalid 0b1110 and 0b1111 the same way as
-> we treat "you picked a level this particular CPU doesn't implement"
-> (and return a 0 from our cpu->cssidr[] array). Otherwise we would
-> have had to add an extra check for "and level isn't invalid".
-
-That makes sense.
-
+> Note:
 >
-> TCG also doesn't do anything with the FEAT_MTE2 TnD bit: looks
-> like we missed that functionality when we added MTE2 emulation.
-> Setting TnD and InD at once isn't a valid combination, so we
-> could either extend our cpu->ccsidr[] array to 32 words (and
-> live with 8 of the extras being unused), or else add a new
-> 8-word array for the MTE tag-cache ID values.
+> "target/arm/kvm: add constants for new PSCI versions" taken from the mailing list.
+>
+> "accel/system: Introduce hwaccel_enabled() helper" taken from the mailing list, added here
+> as part of this series to make it compilable as a whole.
+>
+> And another note:
+>
+> Seems that unlike HVF there isn't direct correspondence between WHv registers and the actual register layout,
+> so didn't do changes there to a sysreg.inc.
+>
+> Updates for v22:
+> - Oops, add updated IORT now that the SMMU patches are merged
+> The revision field in the IORT changed compared to the revision of the SMMU patches the artefact was built on.
+> Ran a make test again in a clean tree to make sure...
 
-Whatever we do, it would be easiest if KVM and TCG followed a similar
-approach, so we don't end up having to special case the code.
+Thanks; I've applied v22 to target-arm.next. (I took the patches from your
+git repo this time as you mentioned on IRC that patches 21 and 22 didn't
+make it to the list due to an email infra issue.)
 
-As KVM also supports setting (virtual) CCSIDR_EL1 values, I think just
-extending the array would be easiest, so that QEMU can just keep
-everything in one place.
+> in side note: try to make certain that qemu-system-aarch64 is built as part of make test on macOS instead of
+> the unsigned variant only as that might have been why I didn't observe this
 
+That reminds me that I think somebody mentioned to me that for some
+reason only the unsigned binaries were getting built for them.
+Shouldn't we be building the signed binaries always, so that
+execution in-tree works? (I had a quick glance at the meson.build
+runes but they looked like they ought to be doing that, and I didn't
+have inclination to investigate further.)
+
+-- PMM
 

@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C031AE9129A
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 15:25:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE3D4E83F1F
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 15:25:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo1E4-0003lR-UM; Thu, 05 Feb 2026 10:25:00 -0500
+	id 1vo1E8-0003pz-Vv; Thu, 05 Feb 2026 10:25:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo1E3-0003ka-7Q
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:24:59 -0500
-Received: from p-west2-cluster1-host9-snip4-3.eps.apple.com ([57.103.68.106]
+ id 1vo1E7-0003lZ-1c
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:25:03 -0500
+Received: from p-west2-cluster4-host5-snip4-7.eps.apple.com ([57.103.69.158]
  helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo1E1-0001UR-OA
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:24:58 -0500
+ id 1vo1E5-0001Vx-HB
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:25:02 -0500
 Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-2a-60-percent-8 (Postfix) with ESMTPS id
- DC7EA180063A; Thu,  5 Feb 2026 15:24:52 +0000 (UTC)
+ 84FBB180019D; Thu,  5 Feb 2026 15:24:57 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1770305096; x=1772897096;
- bh=rqevPYI5PNmYfO37aWp6zQDTk/Z3PG7nW7DuJwvRyUM=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=g0u2ajzyMoWO0b+hfaiU2gzIDP+0mGbuFzCV/K8siE/sEbs1x8fFrsZKBE539d4IfbO+rhVmHhJgViaggD5ReAM2z8c+cxfmGXLlVUUz38zMP3YWQrIfqUTJ2yHbolG5p9k6LI02dtCDhxNHJpOfNzmcy0GzX77Yen1DD8VUGmr2sUzCSNP5Th8cs4AUD0S7yKA5pEsMnFXDpMfoTiVrwJEtDvlKxRrGyofkKS6hJ+i3B8oFoWicGElQ3XAwNchr/NzE6qScukKQuUxH6wMYX3xKTjYPS1fUKEZz0uN/Q63v+toZt7YFsVq8Jlmu9z+INbAlyasGXIMlyY90Py5D7Q==
+ s=sig1; t=1770305100; x=1772897100;
+ bh=ChIhwcPMGVA7/ZQSbYVEEiNk2wqKK9/9DHnWEjCY41s=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=TxC0etEBsh0XcIkffkdDGladTe1Kwt+75RV/J5LHHNNU5l0m7RftAfWqnuLt1CL5C3V1dd79wbDynED6zrz9pdL6A7qp+WbFA9a3Z4IO8JGr1nyvqmPXwvNWufH36MCCSi1Mzr7uRA1ZFqAcSZ8bDTA5tD7/AMgNqF+qYvCPU3EsznNsEfwrSRIFFoYCIA5nJYInerK76Iu/JNXxWyZmaR1mFC4Lbdu2dz4z7T5QzjvkVbp4uT1dtyHS9GULzOtvzuf+xmmEsVATl2to++8b3eafhZt6djFNEw1RvQyiOyGP4++xs4U/OknBBpBp1lhCA6GjvLexJBV1D8mCCCTIvQ==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.152.38])
  by p00-icloudmta-asmtp-us-west-2a-60-percent-8 (Postfix) with ESMTPSA id
- 1AB481800632; Thu,  5 Feb 2026 15:24:47 +0000 (UTC)
+ 951A8180077C; Thu,  5 Feb 2026 15:24:52 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org,
 	mohamed@unpredictable.fr
@@ -54,38 +54,38 @@ Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  qemu-arm@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
  Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
  Shannon Zhao <shannon.zhaosl@gmail.com>
-Subject: [PATCH v22 02/22] accel/system: Introduce hwaccel_enabled() helper
-Date: Thu,  5 Feb 2026 16:24:05 +0100
-Message-ID: <20260205152432.78208-3-mohamed@unpredictable.fr>
+Subject: [PATCH v22 03/22] qtest: hw/arm: virt: skip ACPI test for IORT with
+ GICv2
+Date: Thu,  5 Feb 2026 16:24:06 +0100
+Message-ID: <20260205152432.78208-4-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260205152432.78208-1-mohamed@unpredictable.fr>
 References: <20260205152432.78208-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: AlSDeaEzfbrrQKioJo_uPVAoTIeLtWtS
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA1MDExNiBTYWx0ZWRfX+UVDWcljjcW/
- ECrnNwNWLa4wMDQ7okfIXQzujQztdYYdFTb8G+7jlz5ZvFDxfmcS3hwsbGt1upMPQDwqsUdwgqM
- qIy4CT76fjMDxDXtmd7gtyYI3CddezjWFbSccu8r1E2R+mnvD2wva06m2AMnKSTF5AhrfPmVjh5
- y3RKnd5+1hQzWmkfen2APAszfWZPaYqv9C+l+G/Y5Tro4jHBGUjeZwk5wQVnmej3XSVeaaLdhMe
- NwegcAG54jpAnr4cF3yXT0KpQ2FB20sljmPFIIFQ0NIefA1lK1U3qalQZl1/de3fLezZn8wc582
- gsA2aHsqM5y/H2xK1OE7LTUO1ulJEKFWJVQcbMouxnY+XXofVFIVRbYWqvAmmM=
-X-Authority-Info-Out: v=2.4 cv=AqDjHe9P c=1 sm=1 tr=0 ts=6984b648
+X-Proofpoint-GUID: 6gyjSpQDP4GO0z8BK9xdITZ1YtEB_1zA
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA1MDExNiBTYWx0ZWRfX5jEVzeykaXPl
+ gQmh8CXWxmTFvFjDo1oX4ClYLxS9fluRmDiGKaXGd2E7vURyzlHHgIww8xpIXZV7wcxa8+ZalNU
+ 9q61jWmcmjIPyG/9yBe+DKc3Y4X2Z5d/bRZW+D2GwH7VNM9Efmm2gMYs6v2Q5YiVhzpt9BGBk6N
+ 1nDcT1uvFPP1ZZQzg31hoULPOfj3lJPswIk5f206NR8ZYKnxqz5k2nlrpOZrCY+BB4+iaqRt9TY
+ xmMQIWe/akaySyJn8IBLSfqWWNPEXV9ECr3dV7FIdNYBGM6s2CzYbty73tR3cHDA/Q0/VRWx877
+ DUAIWsaJB3QhjOTwLpWo/FALF/GmeDGm7xjBE3aFRWrzYcD+fFR+2f35sVHYf4=
+X-Proofpoint-ORIG-GUID: 6gyjSpQDP4GO0z8BK9xdITZ1YtEB_1zA
+X-Authority-Info-Out: v=2.4 cv=dPCrWeZb c=1 sm=1 tr=0 ts=6984b64b
  cx=c_apl:c_apl_out:c_pps a=9OgfyREA4BUYbbCgc0Y0oA==:117
- a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=zYwLhoXY7WJC0OmO1EgA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: AlSDeaEzfbrrQKioJo_uPVAoTIeLtWtS
+ a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=3bhNkNL8zgIfWImNCT0A:9
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-05_03,2026-02-05_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- mlxlogscore=999 spamscore=0 phishscore=0 mlxscore=0 adultscore=0
- lowpriorityscore=0 clxscore=1030 malwarescore=0 suspectscore=0
- classifier=spam authscore=0 adjust=0 reason=mlx scancount=1
- engine=8.22.0-2601150000 definitions=main-2602050116
-X-JNJ: AAAAAAABvSn2z5TjovZc2IXwNJloUR59FVqgqMpZCqGuaXPvs+9q+ze00o+HyWvrgiGOjX0kceeJU8LCV/pgO8dIoL1lZA6Hs+g8rUUQvisP4BaqEf318iarYV32wJFlRWaKkjn42JUESy9kHhQn498tW12DTfzUsVQ9SQ1my/eCPAUiSwTa4YiHjibrVQEFt/IhObbSYfzurBzSq8ss73rUOJJfehvhLJnmeII2XSRz/11s2MDl6wsSdU8S6w+bVTe2bMEatVteL8ygtGcDZ3kRpKKB9SQrDMIxiDCqmUM6VmzI9IKoTP9YyheOQFjM7vl//wpAQqY/R8bVVmIZHRq8WVnVzzeMIkyFz3vvlmT9kGlTr364J5f0HhmiuHG90wFlCeKEZOpAWis07sWq0gDjRTNoM6G1kYcZrM0t3J03N59d9v+MHtHvffdOcXbILgFd3gXTlP3IluugJ1h9C1EKo2XMrSzbE3Pt8gpDa0HCLhXKd6PbpH1DMCbf3qwQ9RYMO2+AG7XjeUhasirjwN7d1WA+PRBT93LBuMeavw4rj09SoUIXaGNyVRs8ePE51PG0RMg15amv1aSen53cGj05YxptFFs7GJj6C6BfKdqKO8A07bu1pSgciNnBatuef4+Ox4xWXXpwByZgXMahWI+ZpH5cPHINtWYpZPyS3Bj1WLlN9w4LFFUnEYJi89XE19cJoE7gj/4wqX26CDVPX+RgIYo+/xFWQVAd9xvKTl+xU/AKRnuPGXLEdH52FmzeVvCSspgCyMFK0foOvDUaAgV52bbGGEOZQLrtru8lJgWbXbcbkEOMqfBTzICa0MLBofndt/beJZFsHoS+nS0vJsifm/0V2NwdhDhtsQHOOrZiB6028gBHxLq4XJMNXcTbdIJwmmRco+SdP35sWIjGPJqXOKainVGnd4AwRiAuDUdBWXLqjzqfDMtPLFUjlJGrfdUEP5LiJ2j7bY8bLmYr
-Received-SPF: pass client-ip=57.103.68.106;
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
+ malwarescore=0 adultscore=0 phishscore=0 spamscore=0 mlxlogscore=999
+ suspectscore=0 bulkscore=0 lowpriorityscore=0 mlxscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2602050116
+X-JNJ: AAAAAAABLzdRRejxecrTrKBW8MgfNRrwlFGK9l1fvIeS/WCDmaV2JTjsqLn9uFe9p/sKbazhicSrVzL8dV737RZPDGmisdYJ4GZxeMfrjNrIlM2ig8JT5uzf/21ehiX4eL/q3zkYB2D9nbGwS/FYBzm1C1UAa9CNdUkNC0lqcjRhIr39NVjkMFEKuLHqFZqIX/44VcYY7Czi3LmMhxw8M8ms1c1/QgXW8PNj6ZE+it9Svztjz+IdHdMrh2mRXiMRq0HEqE8/9T/kHLAnt65hkV2w7Eu8w2qSb8QfotjZTYYojrCIY1KRfmqWvpF1JLxQkTGxVWRGHNpE7xTEBp+vECq/40wU9YRr6NTxZw0gevzeKZ5b2oungmSL0wWe1DPYZUm+haYmTFI7y6ET+/Ld6G+hG4nD97yxiMF92fpkpFqVPdL8AURQ62vOVNAoj4D0frI4TBUs2bghwpfHl7BrizLlFBRNs/foAHetKdJZ4hR2RObZyYZbd2tjm5F10T9rDl+4KfsyMYjVLG+OdWS7SWnbGrYsSW1kCXX96Z4n1kKHunMazA7JtilBAHLVU12nwPoHztg+KG64gifkduKte2n5G+paDzGYgPQwL1FiiXM4hjKIdeXNTTBbpVoLKn6+N89Jmih4HAqIQkgyChOoici7b1ph7f0hIuHBPQ7xRzYBs8a0KsxackmQuYQsX4u+f+rY5RlaIeDZQrx2Z1FG10+ZYT6W2hA/iABDSRFcC3PQOydR8ja24g5ROakZoErHEKiDZL4s+NqSZV0KFRwm0MZx6PGiHUnmyJ7lm8dWWGsp61Fo0OEL8mDIiTAPBpVxC1VTgnLkfMkCVTfokYR4D5jn39dRbqi9DNOwnKHbl2j3AYEhhHUZirXv5RN084jrn2YackSmKyu9Uh7oa5nUAQNXG6xM1nmbMJ1x+A1KtWQAaoIL4S4fzrbCBXe+mjiERIWjO2bscG0FLScAfSfIenZJ/w3MiJ5
+ eDNI=
+Received-SPF: pass client-ip=57.103.69.158;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -109,41 +109,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-hwaccel_enabled() return whether any hardware accelerator
-is enabled.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- include/system/hw_accel.h | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ tests/qtest/bios-tables-test-allowed-diff.h | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/include/system/hw_accel.h b/include/system/hw_accel.h
-index 55497edc29..628a50e066 100644
---- a/include/system/hw_accel.h
-+++ b/include/system/hw_accel.h
-@@ -40,4 +40,17 @@ void cpu_synchronize_pre_loadvm(CPUState *cpu);
- void cpu_synchronize_post_reset(CPUState *cpu);
- void cpu_synchronize_post_init(CPUState *cpu);
- 
-+/**
-+ * hwaccel_enabled:
-+ *
-+ * Returns: %true if a hardware accelerator is enabled, %false otherwise.
-+ */
-+static inline bool hwaccel_enabled(void)
-+{
-+    return hvf_enabled()
-+        || kvm_enabled()
-+        || nvmm_enabled()
-+        || whpx_enabled();
-+}
-+
- #endif /* QEMU_HW_ACCEL_H */
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..7acaf464dd 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,4 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/aarch64/virt/IORT",
++"tests/data/acpi/aarch64/virt/IORT.smmuv3-dev",
++"tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy",
 -- 
 2.50.1 (Apple Git-155)
 

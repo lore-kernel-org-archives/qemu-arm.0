@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EEF3E9129E
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 15:25:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A228E9129A
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 15:26:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo1Ee-000435-3n; Thu, 05 Feb 2026 10:25:37 -0500
+	id 1vo1FB-0005OX-H7; Thu, 05 Feb 2026 10:26:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo1EX-0003zO-AQ
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:25:29 -0500
-Received: from p-west2-cluster2-host5-snip4-10.eps.apple.com ([57.103.68.233]
+ id 1vo1FA-0005IO-0g
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:26:08 -0500
+Received: from p-west2-cluster1-host7-snip4-8.eps.apple.com ([57.103.68.91]
  helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo1EU-0001s3-Uf
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:25:29 -0500
+ id 1vo1F8-00026i-6R
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:26:07 -0500
 Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-2a-60-percent-8 (Postfix) with ESMTPS id
- 38B3918001DB; Thu,  5 Feb 2026 15:25:24 +0000 (UTC)
+ 688181800771; Thu,  5 Feb 2026 15:25:57 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1770305125; x=1772897125;
- bh=C1DYbSEFYo2ZgjBenQ83qKhjOaZ2uyIVgfAe3esAA4k=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=aUFLCaC0KTZhNFBHzL6dwAD9lu1fJ+x9tqiXCdyArQ3LW6ZwK9FUWWxSNS3Pd3HgsGLCHkFmIEXBaTjFrDh/4AyHS7uV8gxNNW5qoie6TZlIzseEYK5Zo7x/i6i8w75TH9QQw+6l5B06N5FJPDmk4m/fgOlizwTjajkcI3YIih9thTEAxt5bJMnwSmAW51PVd5UByuAK7GBjcqhQ6bbFokQDLCnjXO5jKc/I3x1heOVCUvlQgTaaQXsqg9wBeWQ5JIHL4CXq/xq80yhH1cJ70bvIuzIH2SQxpOYQcXq3E2zC/DYrUFpWM7clZukY/3bJrvTOviWIjkgCbedLDELjxA==
+ s=sig1; t=1770305164; x=1772897164;
+ bh=s1GW0hnfqvPJUBalVotB8aEtoQcY7bM3WJxM9j7OEF4=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=CXDGluzRThUEXatZHjGUDvCqGmU/qsegOY+Piwdygfx6qUmfmsdl9EouHfRuVP1YJIf/xx1eF3R8lUrJgBXOXWJ7n8MIRvsEhT9kl6eMgm3KMbm0Y+rNCRtHCgW5o0/dOK5khJnTgH8Rl12AqBoyaUqnsK0FEeA67Rx6JCa1xBh3HFlFdqdlEEJYBk7McFYpES9ymHx85fnXqqKajL3Aws3E++I7MS/C9bHSdQfCM0GD4XGGIfPJHs9W6TXlDx8VTRE94zFk9ahmk3Hnuky3RXtqqnsU1WlMbFAwW3Cn5pH+3HuPQUT1uqIoiL6vbZDKzVQir3uF3ukonhMFDMICfw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.152.38])
  by p00-icloudmta-asmtp-us-west-2a-60-percent-8 (Postfix) with ESMTPSA id
- A99C41800752; Thu,  5 Feb 2026 15:25:19 +0000 (UTC)
+ E93D718003C8; Thu,  5 Feb 2026 15:25:51 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org,
 	mohamed@unpredictable.fr
@@ -54,47 +54,44 @@ Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  qemu-arm@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
  Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
  Shannon Zhao <shannon.zhaosl@gmail.com>
-Subject: [PATCH v22 09/22] whpx: Move around files before introducing AArch64
- support
-Date: Thu,  5 Feb 2026 16:24:12 +0100
-Message-ID: <20260205152432.78208-10-mohamed@unpredictable.fr>
+Subject: [PATCH v22 16/22] target/arm: cpu: mark WHPX as supporting PSCI 1.3
+Date: Thu,  5 Feb 2026 16:24:19 +0100
+Message-ID: <20260205152432.78208-17-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260205152432.78208-1-mohamed@unpredictable.fr>
 References: <20260205152432.78208-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=dParWeZb c=1 sm=1 tr=0 ts=6984b665
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA1MDExNyBTYWx0ZWRfX3ccB2OoW2RqD
+ WfZ+sBE0NDv2pNdL8o6H8NMefFU4AgAsnD2H3NeHGelbCi2RigqCn+PFrvBh0eV6kOl4yeQ5Wv4
+ pfwuYS1MAjrBCkF+U56mLfJA/tryhHyOuDM7RPm2vtyLeYSCOnJ2oKCywlLhbS/fhCe13lhRIxY
+ O6gorBK212ttRzsgORdc2B4FLDsIAmSwdFj+6SqW0YgwonHZp/TMoEf/4xfQl1ajU/lt77+blh5
+ BVjkoNM41p/vXdIfmqBFjKYUxHSiSfKygCJaL7UpBdT5BFWKc4DU7PoQ4yYRAy4mXn8EdY+hPqi
+ DIEE/MnGJ2h7PeO/DA6yLVa9BwDU3NpzkxiD5NLUSqbx+WTfjIk2IUIZg2nIV0=
+X-Proofpoint-GUID: Fjb-6dGmUSKw5YXyRm2qfjTITuOBcAdj
+X-Authority-Info-Out: v=2.4 cv=HfwZjyE8 c=1 sm=1 tr=0 ts=6984b68b
  cx=c_apl:c_apl_out:c_pps a=9OgfyREA4BUYbbCgc0Y0oA==:117
- a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10
- a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=yMhMjlubAAAA:8
- a=5-iGLm-LtT_B5TT3xKgA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: 1O1S8LfPW6v0BeG8aruOmWhf1GJSKQ7s
-X-Proofpoint-GUID: 1O1S8LfPW6v0BeG8aruOmWhf1GJSKQ7s
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA1MDExNiBTYWx0ZWRfX/BXPcM+llExL
- loriHI2lEoc7ChcAWKwBzuArSL96pney/qkJPZaSjS42Mcjwq6sec26Sx4nOmZLWIV4pOgwp4aj
- 3ZshqGmmcy9dnrHzj4cH5GeE2jewC7Gj94TtNTjbUGbGGm7LM5fmNlLK73Ce1Q5LhfEeRqMl70r
- gk21ECEtG1fJCidWv+lXqHZ3lWx5v9gd/ofVubiRWDB4wjWqAOvky1RjqdGG25s1GZINSrBoDIm
- lcPqXCfPT9ickIPD9V81cCCtojWC7q+seZORKQeeh9eJyY4RcIyaXsN3nWOR71iB/XQxPwMUoMl
- 6qlYhEtUjFEqnc9R8YDUGOs5zKxizo3IGQdaobiw2SMvGjAXzgqlU3RD338ibs=
+ a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=KKAkSRfTAAAA:8 a=emIkxkYSJqCgyAM8kcYA:9 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: Fjb-6dGmUSKw5YXyRm2qfjTITuOBcAdj
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-05_03,2026-02-05_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- suspectscore=0 adultscore=0 lowpriorityscore=0 clxscore=1030 bulkscore=0
- malwarescore=0 mlxscore=0 mlxlogscore=999 phishscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ malwarescore=0 phishscore=0 bulkscore=0 mlxscore=0
+ mlxlogscore=999
+ lowpriorityscore=0 clxscore=1030 adultscore=0 spamscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2602050116
-X-JNJ: AAAAAAAB7rd3zsgV8LCBPv5AUgo9RSBZ2WVqKwaV/y/GVZM17OJct9HRUQjGSx9E8pUMHZMql/G6Mb9DXBhFJyzcDIquHwWLagf7fL5uisqH5CXnAufJRUOukNCr2lULqQVMfnB6A0ckBlVfbGbSqIfJ9B4fzsKSOS6VdHm1v6TkXAga0wSCdxelTIprpnp7UA3pFe8+kGQk0HFtOk2wxWF7n2woR1yPmGWGN9TvRmmLcN1U+BkxEvD+lN62JF0K1F8ogZKt7pOvj6q7vNyCBlk6Zr5ggtpDxhDgV9IhOfA4Na7jHQm7dUeiU2yz9UZDJIO/TdsaHVPYpsCaJ+1XJ9geUjYI0nu5zqdy2TnjmFMxf8tg/D8r0TB5gksB+NnNHQfuefTc04I/dIu4eQ5QmBLozH8aoO6s99Ym+hQiCFjFkp+fUiCNqJoi0+LnTUSaXhH9g2J6tcCEelcRmDpEy1cDQWfslbGjxKXgVinNh9pEmbktfoy6ve0c8yFQ8WFT/10w568YOkWPsZ5q5WFsV7NdoMjZArXd5scuEN1Lwml3eJhuKUYaH+je1EnREtTzIMFtvGWi3xRZzSOEt6+DAXVFR40P/sr7UozC5Ax1N8QTQjzgmoc3SK/xHvNbnNWwt27yBm0K9oGBHekEIPpq0+jg20Dc1pBwMrkVT0vOkMW0VHrhx9jPgfBxngaODpEJ85jKqK4cchlFbV/D+Uqs6xTksth7rXJUGNWILoozcaI+u9YkkLxmnOwquTalyntnSChKugsAoGw2Voc2Fv5FJbDUOmGvEvwTIRgFAnJGbjTg1IjQz0tLKUCA2UFuC8XPWiaAvVKTBjCffg1SlTCZ2QjGH6jASOh2dya3GkBvMz10vIXKWgJc5A1/api+XzUuEx9qLFmyYB9QWnSTfGiVQeaRaMp2tqqRZ7v9X4p+l4RO74WD5+8H85tYwDPPDdMj0zwHqXFZ6fA/e7y1i+Q=
-Received-SPF: pass client-ip=57.103.68.233;
+ definitions=main-2602050117
+X-JNJ: AAAAAAAB3OwwnI0YhWmvpnmiohhTgZ4bHIsbY/TCCD8hebkd+p9Tl3rgzfpCQ5u1J7Qf2XQ0SrOVScMA2LP7fenzRQKZ9TbmWyyEKuXWZACUee+1150fUuXR/kEKU1Q5X2eSMbzx+4m/k9GEKrSqMveMBomCxuIODnbIeFtJdwEPCDVAAPKZjz/JsHL3z5svE2CKSe0bDnB03MbNoMliJfMG/Vid3Mx5fZVkl8T9PnKz1GvAbximOF8E2QNzLzz4Id+G9mFGyOJ1n3hMXLGakaYpxry9vvqSySB0INTpTJ463NSUpiQRMk3NdYyJf2zrFNBOtpRg+sPXFof7C2dN26HKaQldDGD/vSjODqhttYpC6Gh+kRJUqcRb4mLFey3SGxaw1LSq/B6kw9TfAaRB4EPxpxDNHj674AogaqILc42v6V5S8Zh+DCR3OIuh8gqCRhljceKKCK7UQoetwUbYx4zTsDE0wUQiIxLyJSdzoOYuiELxEOxkd1QC8Vk29Ws+UpMEu+LFTvLAqbf+XRkwWFS1JjZtw/bPBb1KQUy4o1tOKuNBBQLGbBenKdvdIJ72zoDQ7tSoTETNBb4+pF5yk/A5sCQ43YgVUswu1GzRzJOinBp7tBtvN/0Riga4ecmqB7nZQrehNaQkPCIpdGS/PAjQS9pPGxbRB/NjTfoPLLp5Ifi5MOqKpfWVAArfEd1qQGgcgyVaDTSnEgPwcbTiDiIsGcLEh0twUPBKx4z9Ftxskax5oCZtJRrULmPY++7Pi3ABNApfQZotLt4/UgxurPBrGRym7/18KbYVprOjpp7q8cQNoFqqlYVdggbk08uiymIEBu5kXiZuXpzeq7v4OfuiYspTRASUbJxBW8OGVO4pDDQ+K6h0/A68o6NC/9R5pYa07cmMd6SJEh2V66yQXJizrCbGno3NOj5FMqqqE9zKDiXjmQeY/PmHxdgfnX0DUAq1gE5rSiArfSsOTYHUKJIRNpFjbgN
+ f
+Received-SPF: pass client-ip=57.103.68.91;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -112,167 +109,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Switch to a design where we can share whpx code between x86 and AArch64 when it makes sense to do so.
+Hyper-V supports PSCI 1.3, and that implementation is exposed through
+WHPX.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 ---
- MAINTAINERS                                           | 2 ++
- accel/meson.build                                     | 1 +
- accel/whpx/meson.build                                | 6 ++++++
- {target/i386 => accel}/whpx/whpx-accel-ops.c          | 4 ++--
- {target/i386/whpx => include/system}/whpx-accel-ops.h | 4 ++--
- {target/i386/whpx => include/system}/whpx-internal.h  | 6 ++++--
- target/i386/whpx/meson.build                          | 1 -
- target/i386/whpx/whpx-all.c                           | 4 ++--
- target/i386/whpx/whpx-apic.c                          | 2 +-
- 9 files changed, 20 insertions(+), 10 deletions(-)
- create mode 100644 accel/whpx/meson.build
- rename {target/i386 => accel}/whpx/whpx-accel-ops.c (97%)
- rename {target/i386/whpx => include/system}/whpx-accel-ops.h (92%)
- rename {target/i386/whpx => include/system}/whpx-internal.h (97%)
+ target/arm/cpu.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4c35249a18..69a7a3567d 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -564,9 +564,11 @@ WHPX CPUs
- M: Pedro Barbuda <pbarbuda@microsoft.com>
- M: Mohamed Mediouni <mohamed@unpredictable.fr>
- S: Supported
-+F: accel/whpx/
- F: target/i386/whpx/
- F: accel/stubs/whpx-stub.c
- F: include/system/whpx.h
-+F: include/system/whpx-accel-ops.h
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index c535b292d9..077f1f9a74 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -23,6 +23,7 @@
+ #include "qemu/timer.h"
+ #include "qemu/log.h"
+ #include "exec/page-vary.h"
++#include "system/whpx.h"
+ #include "target/arm/idau.h"
+ #include "qemu/module.h"
+ #include "qapi/error.h"
+@@ -1143,6 +1144,8 @@ static void arm_cpu_initfn(Object *obj)
+     if (tcg_enabled() || hvf_enabled()) {
+         /* TCG and HVF implement PSCI 1.1 */
+         cpu->psci_version = QEMU_PSCI_VERSION_1_1;
++    } else if (whpx_enabled()) {
++        cpu->psci_version = QEMU_PSCI_VERSION_1_3;
+     }
+ }
  
- MSHV
- M: Magnus Kulke <magnus.kulke@linux.microsoft.com>
-diff --git a/accel/meson.build b/accel/meson.build
-index 983dfd0bd5..289b7420ff 100644
---- a/accel/meson.build
-+++ b/accel/meson.build
-@@ -6,6 +6,7 @@ user_ss.add(files('accel-user.c'))
- subdir('tcg')
- if have_system
-   subdir('hvf')
-+  subdir('whpx')
-   subdir('qtest')
-   subdir('kvm')
-   subdir('xen')
-diff --git a/accel/whpx/meson.build b/accel/whpx/meson.build
-new file mode 100644
-index 0000000000..7b3d6f1c1c
---- /dev/null
-+++ b/accel/whpx/meson.build
-@@ -0,0 +1,6 @@
-+whpx_ss = ss.source_set()
-+whpx_ss.add(files(
-+  'whpx-accel-ops.c',
-+))
-+
-+specific_ss.add_all(when: 'CONFIG_WHPX', if_true: whpx_ss)
-diff --git a/target/i386/whpx/whpx-accel-ops.c b/accel/whpx/whpx-accel-ops.c
-similarity index 97%
-rename from target/i386/whpx/whpx-accel-ops.c
-rename to accel/whpx/whpx-accel-ops.c
-index f75886128d..c84a25c273 100644
---- a/target/i386/whpx/whpx-accel-ops.c
-+++ b/accel/whpx/whpx-accel-ops.c
-@@ -16,8 +16,8 @@
- #include "qemu/guest-random.h"
- 
- #include "system/whpx.h"
--#include "whpx-internal.h"
--#include "whpx-accel-ops.h"
-+#include "system/whpx-internal.h"
-+#include "system/whpx-accel-ops.h"
- 
- static void *whpx_cpu_thread_fn(void *arg)
- {
-diff --git a/target/i386/whpx/whpx-accel-ops.h b/include/system/whpx-accel-ops.h
-similarity index 92%
-rename from target/i386/whpx/whpx-accel-ops.h
-rename to include/system/whpx-accel-ops.h
-index 54cfc25a14..ed9d4c49f4 100644
---- a/target/i386/whpx/whpx-accel-ops.h
-+++ b/include/system/whpx-accel-ops.h
-@@ -7,8 +7,8 @@
-  * See the COPYING file in the top-level directory.
-  */
- 
--#ifndef TARGET_I386_WHPX_ACCEL_OPS_H
--#define TARGET_I386_WHPX_ACCEL_OPS_H
-+#ifndef SYSTEM_WHPX_ACCEL_OPS_H
-+#define SYSTEM_WHPX_ACCEL_OPS_H
- 
- #include "system/cpus.h"
- 
-diff --git a/target/i386/whpx/whpx-internal.h b/include/system/whpx-internal.h
-similarity index 97%
-rename from target/i386/whpx/whpx-internal.h
-rename to include/system/whpx-internal.h
-index 2dcad1f565..041fa958b4 100644
---- a/target/i386/whpx/whpx-internal.h
-+++ b/include/system/whpx-internal.h
-@@ -1,11 +1,13 @@
--#ifndef TARGET_I386_WHPX_INTERNAL_H
--#define TARGET_I386_WHPX_INTERNAL_H
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+#ifndef SYSTEM_WHPX_INTERNAL_H
-+#define SYSTEM_WHPX_INTERNAL_H
- 
- #include <windows.h>
- #include <winhvplatform.h>
- #include <winhvemulation.h>
- 
- #include "hw/i386/apic.h"
-+#include "exec/vaddr.h"
- 
- typedef enum WhpxBreakpointState {
-     WHPX_BP_CLEARED = 0,
-diff --git a/target/i386/whpx/meson.build b/target/i386/whpx/meson.build
-index 9c54aaad39..c3aaaff9fd 100644
---- a/target/i386/whpx/meson.build
-+++ b/target/i386/whpx/meson.build
-@@ -1,5 +1,4 @@
- i386_system_ss.add(when: 'CONFIG_WHPX', if_true: files(
-   'whpx-all.c',
-   'whpx-apic.c',
--  'whpx-accel-ops.c',
- ))
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index db184e1b0d..cef31fc1a8 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -31,8 +31,8 @@
- #include "accel/accel-cpu-target.h"
- #include <winerror.h>
- 
--#include "whpx-internal.h"
--#include "whpx-accel-ops.h"
-+#include "system/whpx-internal.h"
-+#include "system/whpx-accel-ops.h"
- 
- #include <winhvplatform.h>
- #include <winhvemulation.h>
-diff --git a/target/i386/whpx/whpx-apic.c b/target/i386/whpx/whpx-apic.c
-index afcb25843b..b934fdcbe1 100644
---- a/target/i386/whpx/whpx-apic.c
-+++ b/target/i386/whpx/whpx-apic.c
-@@ -18,7 +18,7 @@
- #include "hw/pci/msi.h"
- #include "system/hw_accel.h"
- #include "system/whpx.h"
--#include "whpx-internal.h"
-+#include "system/whpx-internal.h"
- 
- struct whpx_lapic_state {
-     struct {
 -- 
 2.50.1 (Apple Git-155)
 

@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2523CECD9A3
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:39:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ABD1ECD9A5
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:41:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo689-0004l0-63; Thu, 05 Feb 2026 15:39:13 -0500
+	id 1vo6AF-0005qx-MZ; Thu, 05 Feb 2026 15:41:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vo687-0004kg-Qg
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 15:39:11 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vo6AE-0005ow-OG
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 15:41:22 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vo685-0001ub-Ph
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 15:39:11 -0500
+ id 1vo6AB-0002Fr-Ti
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 15:41:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770323949;
+ s=mimecast20190719; t=1770324078;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=1O6a5pMeyc4uv9FYsRWDY7HXuUaNJxUyTl+H8YOdFhc=;
- b=GzoAhRc9iE2Z++Wjgv/a9BVxNdHyxJiq6j+DSR6Tv5tkT8mJMZgyVOjrCccL3t/Ttpot99
- s7otd1wwn3gEIL4cfBA3AZmMGlRxydVEBSuPsHF+Q3BjbIfzUn5mWv5w+R800raq9ka6qH
- 18bG6UlvfyiFVIWxf+/0itRh5V/qq2I=
+ bh=PVtfVexxdlmo6K6+2WybMfSVFCDQt0lkrZ/XAneZnDs=;
+ b=CdIsziho469pnzwpAbLxRXVfpeaSYBc3uTh/XiKTngeFCB12GkET8UkR1otbvnlWN6oovI
+ upC3tbG2P3UyMqminMizxTve467Rh+mJ/XFFVWteMRg5AlMCoEYKJhk3IqEKk/hHAIxF7e
+ aM+/JzROadF5ZmLQCRDxVGvXs6eraSc=
 Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-246-QjExaxjGNIuuzrW_BLku6A-1; Thu,
- 05 Feb 2026 15:39:07 -0500
-X-MC-Unique: QjExaxjGNIuuzrW_BLku6A-1
-X-Mimecast-MFC-AGG-ID: QjExaxjGNIuuzrW_BLku6A_1770323945
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-661-SH6ZuUtwMje7qOrqi1xGkg-1; Thu,
+ 05 Feb 2026 15:41:15 -0500
+X-MC-Unique: SH6ZuUtwMje7qOrqi1xGkg-1
+X-Mimecast-MFC-AGG-ID: SH6ZuUtwMje7qOrqi1xGkg_1770324067
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6CFC81955DC1; Thu,  5 Feb 2026 20:39:05 +0000 (UTC)
+ id 1D4231955DC1; Thu,  5 Feb 2026 20:41:07 +0000 (UTC)
 Received: from redhat.com (unknown [10.44.32.12])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DE6DA300DDA1; Thu,  5 Feb 2026 20:39:00 +0000 (UTC)
-Date: Thu, 5 Feb 2026 20:38:56 +0000
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 27AB518003F5; Thu,  5 Feb 2026 20:41:02 +0000 (UTC)
+Date: Thu, 5 Feb 2026 20:40:59 +0000
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
@@ -54,20 +54,21 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  francisco.iglesias@amd.com, Ruslan_Ruslichenko@epam.com,
+ Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: Re: [PATCH 01/29] hw/core: Add Remote Port protocol packet definition
-Message-ID: <aYT_4NYQDbCyfS1c@redhat.com>
+Subject: Re: [PATCH 23/29] system: Introduce -sync-quantum command line option
+Message-ID: <aYUAWw9Rfuu7KWjA@redhat.com>
 References: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
- <20260205195824.2610192-2-ruslichenko.r@gmail.com>
+ <20260205195824.2610192-24-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20260205195824.2610192-2-ruslichenko.r@gmail.com>
+In-Reply-To: <20260205195824.2610192-24-ruslichenko.r@gmail.com>
 User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: Sez34G6j2V4ODTdMuh_YRYw8uFgwGf180L6E0C-RVsk_1770323945
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: ATJWBXqQ-iAEUb6-IcgFoGUinibCVxx9xrpIDAsgVt4_1770324067
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -93,119 +94,101 @@ Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Feb 05, 2026 at 08:57:56PM +0100, Ruslan Ruslichenko wrote:
+On Thu, Feb 05, 2026 at 08:58:18PM +0100, Ruslan Ruslichenko wrote:
 > From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 > 
-> Introduce packet definition for Remote Port protocol.
+> Add a new global option '-sync-quantum' to specify the maximum time
+> interval, in nanoseconds, between synchronizations with remote peers.
+
+Again, we don't really want to introduced new top level command
+line options, so try to find an existing place that's suitable
+to fit this in, perhaps a prop -machine.
+
 > 
-> Remote Port is a socket based inter-simulation protocol
-> designed to connect QEMU to external simulator (such as
-> SystemC models, RTL simulators, etc) for hardware co-
-> simulation.
+> In co-simulation environments (such as QEMU coupled with a SystemC
+> simulator), time must be synchronized periodically to ensure functional
+> accuracy. The 'sync-quantum' defines the maximum amount of time QEMU
+> can simulate ahead of its remote peers before a mandatory synchronization
+> event (sync packet) occurs.
 > 
-> The protocol supports bidirectional communication for:
-> - Connection setup, version negotiation (Hello/Cfg packets)
-> - Memory and MMIO transactions (Read/Write packets)
-> - Interrupts and GPIO signaling (Interrupt packets)
-> - Time synchronization (Sync packets)
-> 
-> The patch introduces header file with packet definition
-> used by protocol.
+> This value is stored in the global 'global_sync_quantum' variable and
+> serves as a default hint for device models and Remote Port instances
+> to manage their simulation time.
 > 
 > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 > Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
 > Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 > ---
->  include/hw/core/remote-port-proto.h | 305 ++++++++++++++++++++++++++++
->  1 file changed, 305 insertions(+)
->  create mode 100644 include/hw/core/remote-port-proto.h
+>  include/system/system.h |  2 ++
+>  qemu-options.hx         | 11 +++++++++++
+>  system/vl.c             |  8 ++++++++
+>  3 files changed, 21 insertions(+)
 > 
-> diff --git a/include/hw/core/remote-port-proto.h b/include/hw/core/remote-port-proto.h
-> new file mode 100644
-> index 0000000000..cbe1498df0
-> --- /dev/null
-> +++ b/include/hw/core/remote-port-proto.h
-> @@ -0,0 +1,305 @@
-> +// SPDX-License-Identifier: MIT
-
-Preferrably stick this inside the comment block below instead of
-mixing C and C++ style comments.
-
-> +/*
-> + * QEMU remote port protocol parts.
-> + *
-> + * Copyright (c) 2013 Xilinx Inc
-> + * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> + * of this software and associated documentation files (the "Software"), to deal
-> + * in the Software without restriction, including without limitation the rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be included in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> + * THE SOFTWARE.
-
-Including this is OK, since IIUC in this case you're carrying on
-with someone else's code, and so aren't permitted to remove their
-license comment.
-
-If there are any files later in the series that you wrote yourself
-from scratch though, they can omit any license comments, only the
-SPDX is need.
-
-
-> + */
-> +#ifndef REMOTE_PORT_PROTO_H__
-> +#define REMOTE_PORT_PROTO_H__
+> diff --git a/include/system/system.h b/include/system/system.h
+> index 0cd012004d..f187544147 100644
+> --- a/include/system/system.h
+> +++ b/include/system/system.h
+> @@ -59,6 +59,8 @@ extern MlockState mlock_state;
+>  
+>  extern const char *machine_path;
+>  
+> +extern uint64_t global_sync_quantum;
 > +
-> +/*
-> + * Remote-Port (RP) is an inter-simulator protocol. It assumes a reliable
-> + * point to point communcation with the remote simulation environment.
-> + *
-> + * Setup
-> + * In the SETUP phase a mandatory HELLO packet is exchanged with optional
-> + * CFG packets following. HELLO packets are useful to ensure that both
-> + * sides are speaking the same protocol and using compatible versions.
-> + *
-> + * CFG packets are used to negotiate configuration options. At the moment
-> + * these remain unimplemented.
-> + *
-> + * Once the session is up, communication can start through various other
-> + * commands. The list can be found further down this document.
-> + * Commands are carried over RP packets. Every RP packet contains a header
-> + * with length, flags and an ID to track potential responses.
-> + * The header is followed by a packet specific payload. You'll find the
-> + * details of the various commands packet layouts here. Some commands can
-> + * carry data/blobs in their payload.
-> + */
+>  #define MAX_OPTION_ROMS 16
+>  typedef struct QEMUOptionRom {
+>      const char *name;
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index b7dd2a64f0..8ef0c57507 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -765,6 +765,17 @@ SRST
+>      Preallocate memory when using -mem-path.
+>  ERST
+>  
+> +DEF("sync-quantum", HAS_ARG, QEMU_OPTION_sync_quantum,
+> +    "-sync-quantum Max time between synchroniation, nanoseconds.\n",
+> +    QEMU_ARCH_ALL)
+> +SRST
+> +``-sync-quantum val``
+> +    Maximum time between synchronization <val>.
+> +    This value is used to drive periodic synchronization with remote port peers.
+> +    It is also used to set device models sync-quantum properties controlling
+> +    the maximum amount of ahead of time simulation that is prefered (only a hint).
+> +ERST
 > +
-> +
-> +#define RP_VERSION_MAJOR 4
-> +#define RP_VERSION_MINOR 3
-> +
-> +#if defined(_WIN32) && defined(__MINGW32__)
-> +/* mingw GCC has a bug with packed attributes.  */
-> +#define PACKED __attribute__ ((gcc_struct, packed))
-> +#else
-> +#define PACKED __attribute__ ((packed))
-> +#endif
-
-Is this comment & conditional #define still relevant today ?
-
-For the rest of QEMU we just use  QEMU_PACKED whose definition matches
-the #else clause. Ideally change the patch to use QEMU_PACKED, if not,
-mention in the commit message why it can't be used.
-
+>  DEF("machine-path", HAS_ARG, QEMU_OPTION_machine_path,
+>      "-machine-path DIR A directory in which to create machine nodes\n",
+>      QEMU_ARCH_ALL)
+> diff --git a/system/vl.c b/system/vl.c
+> index 4750b1cf69..467646c3ff 100644
+> --- a/system/vl.c
+> +++ b/system/vl.c
+> @@ -182,6 +182,7 @@ static QemuPluginList plugin_list = QTAILQ_HEAD_INITIALIZER(plugin_list);
+>  static BlockdevOptionsQueue bdo_queue = QSIMPLEQ_HEAD_INITIALIZER(bdo_queue);
+>  static bool nographic = false;
+>  static int mem_prealloc; /* force preallocation of physical target memory */
+> +uint64_t global_sync_quantum;
+>  const char *machine_path;
+>  static const char *vga_model = NULL;
+>  static DisplayOptions dpy;
+> @@ -3129,6 +3130,13 @@ void qemu_init(int argc, char **argv)
+>              case QEMU_OPTION_mem_prealloc:
+>                  mem_prealloc = 1;
+>                  break;
+> +            case QEMU_OPTION_sync_quantum:
+> +                if (qemu_strtou64(optarg, &optarg, 10,
+> +                                  &global_sync_quantum)) {
+> +                    error_report("failed to parse sync_quantum");
+> +                    exit(1);
+> +                }
+> +                break;
+>              case QEMU_OPTION_machine_path:
+>                  machine_path = optarg;
+>                  break;
+> -- 
+> 2.43.0
+> 
+> 
 
 With regards,
 Daniel

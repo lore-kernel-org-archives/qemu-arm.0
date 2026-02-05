@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3959CECD99F
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:02:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77F2BECD99E
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:02:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo5Vd-0006vW-Gp; Thu, 05 Feb 2026 14:59:25 -0500
+	id 1vo5Vl-00078Z-FN; Thu, 05 Feb 2026 14:59:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5VZ-0006sS-8G
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:21 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ id 1vo5Vd-0006vY-JJ
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:25 -0500
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5VW-00039P-QV
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:20 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-4806bf39419so14615855e9.1
- for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:59:16 -0800 (PST)
+ id 1vo5VZ-0003Ah-Fv
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:25 -0500
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-435f177a8f7so1401317f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:59:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1770321555; x=1770926355; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1770321560; x=1770926360; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=uFKD2gCbF2L2yObzjuIkLcm5lMIH03Mpqiwzu3nD9ZU=;
- b=FlvYscnu7klN4jf9BVzu8sOHXQHQ4cht6Tb9J0M/HVpl7MTN7pcwtmHeG1K53yRLvj
- jTvQ0vXIW/hwi0hKcnX8HFCEJdWmkmgAjn5LJJwYmLfr4pAL0ojXhC1yHbswEiL0Qf6N
- HJ5fZfKqKSKhZ8OULwBDIPwnjbtnpnLzWVp21MyaiZ0Mh7qqIbmlOV36yLThCgpcV2YJ
- CuNkfJ56qRzV3Zjg8KPsvaVKXwIuDxugErzP1k9zK/Xp3uuNNIhRayNYqt/mMjys29Nq
- GrBP3sE7fLQDUV9liUd/MuZRJ2mrKE2eP6t744rlfEpH0pYJDhbDPR/Ow92dXO7bO1F0
- ZaeA==
+ bh=M0CayTsyi6p8w45gl32kyiBwM+aaroeJuLz0N2LnaBc=;
+ b=KGj6hoH2tMjOkoSB8NtCX2TxeFPxm33xYdlfKWCb4GpSY4pZHMp/zq1sBiZLlfuk06
+ BH3fvw1tVqIY5Gtez8bkiYvkeLV8aZ5U/Sn2qpAV2L83XIWbLR6j1GnlKs5kOz5X2Shh
+ yC+qGxz/99YXEE0WIWjczvX1p6ZBcGfp3lr3W0S6LwmrFamPSAXV8klmMzfBSigETD/J
+ yFR99znNsb0ynNrRom+mWAVkx9cjJ//G34tIP3lwI8+kwLr8OXb8dCtSjBe7+/dqqrIF
+ ihZOxS7D0S2n7ppLfJcClXfvetphDbELKZz0Ecw7p2BW5L2KQqXQb4lRvmAfswWMnRW1
+ 4Ivw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770321555; x=1770926355;
+ d=1e100.net; s=20230601; t=1770321560; x=1770926360;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=uFKD2gCbF2L2yObzjuIkLcm5lMIH03Mpqiwzu3nD9ZU=;
- b=gDzJjHWXlEqj3814CfWtNGAmT/JD5k/O3Wel4a5QTb4TCKk/UGJ+i1R0tiDdcogPvk
- FjCtZ2HcATh3r+dSsKtCogghX21nWxI/fYPKp4uZD3f4YhcFKkfNKsMJl23y8eYfj3ZV
- t73kEJ25bSLUCc1iq0SaXuH6C4KB1C07j1OOnx+vlcUTX9XLTRZ+w2TPhMGqNaj+YGi3
- F1vpk8W7Qze9KvLfhG/AKViELevHBuON4vOdW+xMQbLr8UZHl6vA3sE5XRWf09M8rGwx
- 4NYWUheVE42wEry0pNqVYEG6t4vkzyrzChLJxrS1jDF6uIBLuU7sRoo+hb+JOmsWw/8J
- NjWg==
-X-Gm-Message-State: AOJu0Yz6+iyWgeDbitLs2+WBS4T5htNHT3zZ7J/3MtGQCOJuDOEDMBSD
- lK1sTwLn5BBIOPsyeep72hOHw3E47rnqWtt1/tmMH20gSRQs4rk2pB/+UDxrgV89tPs=
-X-Gm-Gg: AZuq6aLlvFsztOm2DYFHuE6pk/abeM3Fs0u+f5rDHHkBknI81x4cx4JHKvWNQ5ptoNz
- 5kjOWouWV7zB7lpajLi1thOVXeFO+2M4JG8Td0MluyGg3e1nlcajsjaV5zDxi9Yr1qIgFb+c2gF
- mM2QVoc04VivfsbPBKMB5+Vs+qv4oEOUgoU3+1rLIAAZiL4CSQO2RyqIESqNotlq4uOpyhtQWnV
- 2tKaVZ6cwx0O82C2mOFQ2vh+GjdbS8a7UM7NnMghAiTbrn+vHC9+Y2vBbftPuDBTMNmk8xF1M/8
- oDLchK3xh+g2okvOU5RHgKfPPjte3pNeXKbgscUUQcSD6YGAbwqmOeMYBGkN2pZ22UBhqSEPmMQ
- v7wlxH5fV1hTnF+2wBxa+3+yVexaPi0ooDrnUrbw+x4wKlsgZW4r7wWFnyweF4vT1lGrRQEQIpy
- 8TqEVjrCHEBrcXGVIUkEM=
-X-Received: by 2002:a05:6000:200e:b0:435:932e:f924 with SMTP id
- ffacd0b85a97d-43629034d76mr777534f8f.2.1770321555303; 
- Thu, 05 Feb 2026 11:59:15 -0800 (PST)
+ bh=M0CayTsyi6p8w45gl32kyiBwM+aaroeJuLz0N2LnaBc=;
+ b=JL8Z5ua4e/3OUOnU26rUOOboe2PyfelG2hSteqUDHNRTPrnQO9vHyYkXKj65sqGL4L
+ oB3QA5dkI0lK0OFeRLCuYLnsDi54ZcpaSljyckZQX6sAVSZWRkpZ+jQz+BP6rBS/KJuo
+ 3LOPDdi1tKdT7LL2eaA11sq+WZYIq9XE6W8fJ+PJci5doxkSDagaISZexDl6wTA4ptTu
+ rQKbKCGigkIt0pGaq7wl04z/VfyB+ICWqtXNs7d0rtTvjY/Jgcasmj/J6amA7TBVimMk
+ jmP6dcBiIA5yAy8nz3mOja31N3o2jWbGCQMzJylSQaPPn5jT8tqU9hxCkYY0ZzkCA7Vp
+ oj0Q==
+X-Gm-Message-State: AOJu0YyKhHkZ50BMZfbYc9SzPZwvi3lA+RqGtoM6Ap3Jc9mrK8n/8Gxm
+ K85FTfOO5DEZc/Yf3rj2sS/FzhwcpUmA9U4SJjdyytTUq8xRL+omAnsA
+X-Gm-Gg: AZuq6aKpvxC7fvdg9+vaeC5V1geSD5vLO7EZlPg403+cEj4dARRioRGJqfoZ9OgZh9g
+ icX9CsAxJ6lspfqlV8K1fEXyiuO52mP/0THi0by7i3dmY2KRfwueK5WMO08AJnLp1+H9sxyVtIv
+ fEG3bUOWGLzUnezvmtIfqcxrrIaDrdhliVoNwDCrhHnNGfjE4ZvAiIv2QoplXYuxmPSvn7RQ+sP
+ 1i/39c+9lXWyANq/SpTlNpE9nRLzvsG90pRFS0oOjV0aA0qyvLdxa3SLLcVhd1sax63273HmVg/
+ PhWXe0z2ohDea9jgCfFF1bOHUxkzwYgUhZ0s95+LNUCPgUad++oYlfxpvEtFKXQo/Hcj/paQQt1
+ mwqCjDSqDkqteTe2lPJ5mBO62Fkrt0vmqnBA/c+RvDxoF4uYKXI8BBGyQgOqODS+EnGTazOPmLo
+ fpnqNEHgPMM3QKTwd0e4rsLFKwy4WiDQ==
+X-Received: by 2002:a05:6000:310b:b0:436:1973:3b05 with SMTP id
+ ffacd0b85a97d-4362933bdf4mr568935f8f.2.1770321559945; 
+ Thu, 05 Feb 2026 11:59:19 -0800 (PST)
 Received: from thinkpad-t470s.. ([93.140.16.93])
  by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.59.13
+ ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.59.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Feb 2026 11:59:14 -0800 (PST)
+ Thu, 05 Feb 2026 11:59:19 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
@@ -71,23 +71,23 @@ Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  francisco.iglesias@amd.com, Ruslan_Ruslichenko@epam.com,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH 21/29] hw/core: Add Remote Port Stream device
-Date: Thu,  5 Feb 2026 20:58:16 +0100
-Message-ID: <20260205195824.2610192-22-ruslichenko.r@gmail.com>
+Subject: [PATCH 24/29] hw/core: Add FDT support to Remote Port GPIO
+Date: Thu,  5 Feb 2026 20:58:19 +0100
+Message-ID: <20260205195824.2610192-25-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 References: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,280 +105,82 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Introduce the 'remote-port-stream' device to bridge QEMU StreamSink
-interfaces with the Remote Port protocol.
+Implement the FDTGenericIntc interface for the Remote
+Port GPIO device.
 
-The patch implements the logic to translate local stream push
-operations into Remote Port bus-access packets and vice-versa.
-This enables bi-directional data streaming between QEMU and
-external simulators.
+This enables the device to be recognized as an interrupt
+controller when instantiated via the fdt-generic framework.
+It allows other devices defined in the Device Tree to connect
+their interrupt lines to this GPIO controller using standard
+FDT properties (e.g., 'interrupts' and 'interrupt-parent').
+
+The implementation maps the interrupt specifier from the
+Device Tree cells to the corresponding internal GPIO input
+line based on the configured cell offset.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/remote-port-stream.c | 239 +++++++++++++++++++++++++++++++++++
- hw/core/trace-events         |   4 +
- 2 files changed, 243 insertions(+)
- create mode 100644 hw/core/remote-port-stream.c
+ hw/core/remote-port-gpio.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-diff --git a/hw/core/remote-port-stream.c b/hw/core/remote-port-stream.c
-new file mode 100644
-index 0000000000..6baaf68f08
---- /dev/null
-+++ b/hw/core/remote-port-stream.c
-@@ -0,0 +1,239 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Copyright (c) 2013 Xilinx Inc
-+ * Copyright (c) 2013 Peter Crosthwaite <peter.crosthwaite@xilinx.com>
-+ * Copyright (c) 2013 Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
+diff --git a/hw/core/remote-port-gpio.c b/hw/core/remote-port-gpio.c
+index b9bdbcc5a5..c17a65f63a 100644
+--- a/hw/core/remote-port-gpio.c
++++ b/hw/core/remote-port-gpio.c
+@@ -19,6 +19,8 @@
+ #include "hw/core/irq.h"
+ #include "trace.h"
+ 
++#include "hw/core/fdt_generic_util.h"
 +
-+#include "qemu/osdep.h"
-+#include "hw/core/sysbus.h"
-+#include "qemu/log.h"
+ #include "hw/core/remote-port.h"
+ #include "hw/core/remote-port-proto.h"
+ #include "hw/core/remote-port-gpio.h"
+@@ -153,14 +155,34 @@ static Property rp_properties[] = {
+     DEFINE_PROP_BOOL("posted-updates", RemotePortGPIO, posted_updates, true),
+ };
+ 
++static int rp_fdt_get_irq(FDTGenericIntc *obj, qemu_irq *irqs,
++                          uint32_t *cells, int ncells, int max,
++                          Error **errp)
++{
++    RemotePortGPIO *s = REMOTE_PORT_GPIO(obj);
 +
-+#include "qemu/bitops.h"
-+#include "qapi/qmp/qerror.h"
-+#include "hw/core/stream.h"
-+#include "qapi/error.h"
-+#include "migration/vmstate.h"
-+#include "hw/core/qdev-properties.h"
-+#include "hw/core/remote-port.h"
-+#include "trace.h"
++    if (cells[s->cell_offset_irq_num] >= s->num_gpios) {
++        error_setg(errp, "RP-GPIO was setup for %u interrupts: index %"
++                   PRIu32 " requested", s->num_gpios,
++                   cells[s->cell_offset_irq_num]);
++        return 0;
++    }
 +
-+#ifndef REMOTE_PORT_STREAM_ERR_DEBUG
-+#define REMOTE_PORT_STREAM_ERR_DEBUG 0
-+#endif
-+
-+#define TYPE_REMOTE_PORT_STREAM "remote-port-stream"
-+
-+#define REMOTE_PORT_STREAM(obj) \
-+     OBJECT_CHECK(RemotePortStream, (obj), TYPE_REMOTE_PORT_STREAM)
-+
-+typedef struct RemotePortStream RemotePortStream;
-+
-+struct RemotePortStream {
-+    DeviceState parent_obj;
-+
-+    RemotePort *rp;
-+    uint32_t rp_dev;
-+    uint16_t stream_width;
-+
-+    StreamSink *tx_dev;
-+
-+    StreamCanPushNotifyFn notify;
-+    void *notify_opaque;
-+
-+    uint8_t *buf;
-+    struct rp_pkt pkt;
-+
-+    bool rsp_pending;
-+    uint32_t current_id;
++    (*irqs) = qdev_get_gpio_in(DEVICE(obj), cells[s->cell_offset_irq_num]);
++    return 1;
 +};
 +
-+static void rp_stream_notify(void *opaque)
-+{
-+    RemotePortStream *s = REMOTE_PORT_STREAM(opaque);
+ static void rp_gpio_class_init(ObjectClass *oc, const void *data)
+ {
+     RemotePortDeviceClass *rpdc = REMOTE_PORT_DEVICE_CLASS(oc);
+     DeviceClass *dc = DEVICE_CLASS(oc);
++    FDTGenericIntcClass *fgic = FDT_GENERIC_INTC_CLASS(oc);
 +
-+    /* FIXME: This is completely bogus.  */
-+    if (s->buf && stream_can_push(s->tx_dev, rp_stream_notify, s)) {
-+        RemotePortDynPkt rsp;
-+        struct rp_encode_busaccess_in in = {0};
-+        size_t pktlen = sizeof(struct rp_pkt_busaccess_ext_base);
-+        size_t enclen;
-+        int64_t delay = 0; /* FIXME - Implement */
-+
-+        size_t ret = stream_push(s->tx_dev, s->buf, 4, 0);
-+        assert(ret == 4);
-+        s->buf = NULL;
-+
-+        memset(&rsp, 0, sizeof(rsp));
-+        rp_dpkt_alloc(&rsp, pktlen);
-+        rp_encode_busaccess_in_rsp_init(&in, &s->pkt);
-+        in.clk = s->pkt.busaccess.timestamp + delay;
-+        enclen = rp_encode_busaccess(rp_get_peer(s->rp),
-+                                     &rsp.pkt->busaccess_ext_base,
-+                                     &in);
-+        assert(enclen <= pktlen);
-+        trace_remote_port_stream_tx_busaccess(rp_cmd_to_string(in.cmd),
-+            in.id, in.flags, in.dev, in.addr, in.size, in.attr);
-+
-+        rp_write(s->rp, (void *)rsp.pkt, pktlen);
-+    }
-+}
-+
-+static void rp_stream_write(RemotePortDevice *obj, struct rp_pkt *pkt)
-+{
-+    RemotePortStream *s = REMOTE_PORT_STREAM(obj);
-+
-+    trace_remote_port_stream_rx_busaccess(rp_cmd_to_string(pkt->hdr.cmd),
-+        pkt->hdr.id, pkt->hdr.flags, pkt->hdr.dev, pkt->busaccess.addr,
-+        pkt->busaccess.len, pkt->busaccess.attributes);
-+
-+    assert(pkt->busaccess.width == 0);
-+    assert(pkt->busaccess.stream_width == pkt->busaccess.len);
-+    assert(pkt->busaccess.addr == 0);
-+
-+    if (pkt->hdr.flags & RP_PKT_FLAGS_response) {
-+        /* FXIME - probably need to do syncs and stuff */
-+        assert(s->rsp_pending);
-+        s->rsp_pending = false;
-+        if (s->notify) {
-+            StreamCanPushNotifyFn notify = s->notify;
-+            s->notify = NULL;
-+            notify(s->notify_opaque);
-+        }
-+    } else {
-+        assert(!s->buf);
-+        s->buf = g_memdup2(pkt + 1, 4);
-+        s->pkt = *pkt;
-+        rp_stream_notify(s);
-+    }
-+}
-+
-+static bool rp_stream_stream_can_push(StreamSink *obj,
-+                                            StreamCanPushNotifyFn notify,
-+                                            void *notify_opaque)
-+{
-+    RemotePortStream *s = REMOTE_PORT_STREAM(obj);
-+
-+    if (s->rsp_pending) {
-+        s->notify = notify;
-+        s->notify_opaque = notify_opaque;
-+        return false;
-+    }
-+    return true;
-+}
-+
-+static size_t rp_stream_stream_push(StreamSink *obj, uint8_t *buf,
-+                                    size_t len, bool eop)
-+{
-+    RemotePortStream *s = REMOTE_PORT_STREAM(obj);
-+    RemotePortDynPkt rsp;
-+    struct rp_pkt_busaccess_ext_base pkt;
-+    struct rp_encode_busaccess_in in = {0};
-+    uint64_t rp_attr = eop ? RP_BUS_ATTR_EOP : 0;
-+    int64_t clk;
-+    int enclen;
-+
-+    clk = rp_normalized_vmclk(s->rp);
-+
-+    in.cmd = RP_CMD_write;
-+    in.id = rp_new_id(s->rp);
-+    in.dev = s->rp_dev;
-+    in.clk = clk;
-+    in.attr = rp_attr;
-+    in.size = len;
-+    in.stream_width = s->stream_width;
-+    enclen = rp_encode_busaccess(rp_get_peer(s->rp), &pkt, &in);
-+
-+    trace_remote_port_stream_tx_busaccess(rp_cmd_to_string(in.cmd),
-+        in.id, in.flags, in.dev, in.addr, in.size, in.attr);
-+
-+    rp_rsp_mutex_lock(s->rp);
-+    rp_write(s->rp, (void *) &pkt, enclen);
-+    rp_write(s->rp, buf, len);
-+    rsp = rp_wait_resp(s->rp);
-+    assert(rsp.pkt->hdr.id == be32_to_cpu(pkt.hdr.id));
-+
-+    trace_remote_port_stream_rx_busaccess(
-+        rp_cmd_to_string(rsp.pkt->hdr.cmd), rsp.pkt->hdr.id,
-+        rsp.pkt->hdr.flags, rsp.pkt->hdr.dev, rsp.pkt->busaccess.addr,
-+        rsp.pkt->busaccess.len, rsp.pkt->busaccess.attributes);
-+
-+    rp_dpkt_invalidate(&rsp);
-+    rp_rsp_mutex_unlock(s->rp);
-+    rp_restart_sync_timer(s->rp);
-+    return len;
-+}
-+
-+static void rp_prop_allow_set_link(const Object *obj, const char *name,
-+                                   Object *val, Error **errp)
-+{
-+}
-+
-+static void rp_stream_init(Object *obj)
-+{
-+    RemotePortStream *s = REMOTE_PORT_STREAM(obj);
-+
-+    object_property_add_link(obj, "axistream-connected", TYPE_STREAM_SINK,
-+                             (Object **)&s->tx_dev,
-+                             qdev_prop_allow_set_link_before_realize,
-+                             OBJ_PROP_LINK_STRONG);
-+    object_property_add_link(obj, "rp-adaptor0", "remote-port",
-+                             (Object **)&s->rp,
-+                             rp_prop_allow_set_link,
-+                             OBJ_PROP_LINK_STRONG);
-+}
-+
-+static Property rp_properties[] = {
-+    DEFINE_PROP_UINT32("rp-chan0", RemotePortStream, rp_dev, 0),
-+    DEFINE_PROP_UINT16("stream-width", RemotePortStream, stream_width, 4),
-+};
-+
-+static void rp_stream_class_init(ObjectClass *oc, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+    StreamSinkClass *ssc = STREAM_SINK_CLASS(oc);
-+    RemotePortDeviceClass *rpdc = REMOTE_PORT_DEVICE_CLASS(oc);
-+
-+    ssc->push = rp_stream_stream_push;
-+    ssc->can_push = rp_stream_stream_can_push;
-+    device_class_set_props_n(dc, rp_properties, ARRAY_SIZE(rp_properties));
-+    rpdc->ops[RP_CMD_write] = rp_stream_write;
-+}
-+
-+static const TypeInfo rp_stream_info = {
-+    .name          = TYPE_REMOTE_PORT_STREAM,
-+    .parent        = TYPE_DEVICE,
-+    .instance_size = sizeof(RemotePortStream),
-+    .class_init    = rp_stream_class_init,
-+    .instance_init = rp_stream_init,
-+    .interfaces = (InterfaceInfo[]) {
-+        { TYPE_STREAM_SINK },
-+        { TYPE_REMOTE_PORT_DEVICE },
-+        { },
-+    }
-+};
-+
-+static void rp_stream_register_types(void)
-+{
-+    type_register_static(&rp_stream_info);
-+}
-+
-+type_init(rp_stream_register_types)
-diff --git a/hw/core/trace-events b/hw/core/trace-events
-index fb3125b0eb..5b4e5029fe 100644
---- a/hw/core/trace-events
-+++ b/hw/core/trace-events
-@@ -44,3 +44,7 @@ remote_port_memory_slave_rx_busaccess(const char *cmd, uint32_t id, uint32_t fla
- # remote-port-memory-gpio.c
- remote_port_gpio_tx_interrupt(uint32_t id, uint32_t flags, uint32_t dev, uint64_t vector, uint32_t irq, uint32_t val) "id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", vector=0x%"PRIx64", irq=0x%"PRIx32", level=0x%"PRIx32
- remote_port_gpio_rx_interrupt(uint32_t id, uint32_t flags, uint32_t dev, uint64_t vector, uint32_t irq, uint32_t val) "id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", vector=0x%"PRIx64", irq=0x%"PRIx32", level=0x%"PRIx32
-+
-+# remote-port-stream.c
-+remote_port_stream_tx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len,  uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
-+remote_port_stream_rx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len,  uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
+     rpdc->ops[RP_CMD_interrupt] = rp_gpio_interrupt;
+     dc->legacy_reset = rp_gpio_reset;
+     dc->realize = rp_gpio_realize;
+     device_class_set_props_n(dc, rp_properties, ARRAY_SIZE(rp_properties));
++    fgic->get_irq = rp_fdt_get_irq;
+ }
+ 
+ static const TypeInfo rp_info = {
+@@ -171,6 +193,7 @@ static const TypeInfo rp_info = {
+     .class_init    = rp_gpio_class_init,
+     .interfaces    = (InterfaceInfo[]) {
+         { TYPE_REMOTE_PORT_DEVICE },
++        { TYPE_FDT_GENERIC_INTC },
+         { },
+     },
+ };
 -- 
 2.43.0
 

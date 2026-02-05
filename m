@@ -4,95 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28AE7E9129E
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 14:32:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E98BFE9129A
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 15:12:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo0K0-0001Ye-Pv; Thu, 05 Feb 2026 09:27:04 -0500
+	id 1vo11u-0001tO-Sj; Thu, 05 Feb 2026 10:12:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo0Jo-0001C3-GH
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:26:52 -0500
-Received: from qs-2004l-snip4-11.eps.apple.com ([57.103.84.123]
- helo=outbound.qs.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo0Jm-00084O-75
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:26:52 -0500
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-2 (Postfix) with ESMTPS id
- 881BA1800D95; Thu,  5 Feb 2026 14:26:46 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1770301609; x=1772893609;
- bh=dXlBjrYQLV1qCj1RHDhCy7H3jFtP7Evi4SFhHqHKNZU=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=XkIVNnNz82CWM+qYWwiz3YEsCx/4rOy2n1VHBJQXZgdoDroDh8V3LY4vCG5uDrFeXemRvfmCOb6A43GSpc7dUsoV0OBk90r4YOIHzTrwMgHV2eUfhT6RX+fwNMLaZqoODnZg9ps5A8CHuhyDgytT5R3TKw+Va5NZgPZb9gp3JFtYzyAdDJfK+LOCnXjZNQIgY82s1RcDwQulm6eDycDR00A9y1FYSBUGZSfwQYM5ewk9yDRH2AIZByxc2IKSVvAkQteY80l2p2ip7CRQkqgnN6PPTMOEuUV2deYBdjQWlP4h3VrPVjof76SIVoSdvwk98yrOni3xaiIj0uEDlEMHMA==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-2 (Postfix) with ESMTPSA id
- 45FE5180014F; Thu,  5 Feb 2026 14:26:43 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org,
-	mohamed@unpredictable.fr
-Cc: Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Cameron Esfahani <dirty@apple.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>,
- Yanan Wang <wangyanan55@huawei.com>, Ani Sinha <anisinha@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Roman Bolshakov <rbolshakov@ddn.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v21 20/22] target/arm: whpx: instantiate GIC early
-Date: Thu,  5 Feb 2026 15:25:38 +0100
-Message-ID: <20260205142543.64818-21-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260205142543.64818-1-mohamed@unpredictable.fr>
-References: <20260205142543.64818-1-mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vo11t-0001sn-2Q
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:12:25 -0500
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vo11q-0008Jl-1g
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:12:23 -0500
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-79518cc2bb4so7830887b3.0
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 07:12:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1770304340; cv=none;
+ d=google.com; s=arc-20240605;
+ b=Ck7FNyoEqpP6oIIQ3VwJ/KX212dLVAQPHfhjGSElbM23gBMMouZFAJtO6rezHPgdwt
+ hEjhRNY23mxb8xSqJqwcnV/8CBWC7CFJ8kSXrhsX80vf6tvzGX3CE8Sn0+7nVan9P7bz
+ eONVsYM9srZN8mWjhqoXRMaRUgRCByjH5aOVyUr73jVrQpv/YaFx+VnnV/aiqQ0vKEfx
+ YlCwSNN8ZDBLaHlr0ocMttg6a93EqKSKOjsKhe4ZrrucvZ0lxbStqvqulf6mUGuMssFP
+ g0JMKwntCinzWG0WFvAmQVXmwMpKAji437Aau/JtemljVC0+jeukV+iNq6rWwyAiBMdL
+ ZbCw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=cI5NC2Kni0Acuyjg8ldXu0EkyNdRKFpDNc/CvQJcYCs=;
+ fh=0RpKF94qJZ8/9pQRIGB1MwZDtF1l9zZL/gtrgFkA2NI=;
+ b=YJmG4cwrxt6+zvJAYZuC3hAQMyRgwmfa1fO2x703WGgXJGyO0YqNSiQbDD0lAJYDOx
+ MmETWjisw+aSDHFzDdV1q+SPYDVL2DKlWagQK9UBrHl6NG3749FCjasxbBa20rf79GeY
+ 9E0tOxRQggw90gMj/wyKEQDBvfCu5AP96H0ZAfJikeO52hJMoiW9sOK/OJqqMMgYM/zm
+ veV9uWK4U3M8uwRpA2IZeQ7Cc+XQzyRMdgevYImMHfDAYVEbj9cVO7g5xzMja4E1k29z
+ Vgx5TVT4ciNawZcsK8IroVR3QcdKsq8b3TQlmohlWKfBfP0aWXWHyw64AavS9FKp8oWz
+ YWPQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1770304340; x=1770909140; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=cI5NC2Kni0Acuyjg8ldXu0EkyNdRKFpDNc/CvQJcYCs=;
+ b=XqRMGjB+crwZdbNWj44my0EqYRaUj4lqbwf8ewiiaXSocz4x3o/KngkmrZ8Fubpohn
+ zhn28jS7pRFuc+0xaeGAW5/otl511svy5V/MNsTcCy/wwdTkVNV45Zbe/itqK2zAS9fe
+ qzXcdmf3jFkQ8u5Y/0AN7fa2ccGLOrh1cCXKotTgzMQ9Ebc+HZrcLTCpYKqPlwJTQO5d
+ UXl2uF1V1Mf3nx2hkKqOSsauaI3cY6Ojyv13/aOFcZLXXrnYuT8kngF3CVhlmumKofps
+ R/wJRcjvzTNAhcV44FpIg4+0MwvffNx6pXPnbb50SVgtY0rHVYZFm6mJY5I5G/4c/94b
+ ZYCg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1770304340; x=1770909140;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=cI5NC2Kni0Acuyjg8ldXu0EkyNdRKFpDNc/CvQJcYCs=;
+ b=krLRNGxztOXHd4SF8fwJdxvXwwL9M7yb6LYUHKhSEFCI/tCzVAC6Azg3HZqaItjLBL
+ NevWERdp4qJLJNqy7dmFwjj6RivsHTk6q3EQnmX5m0ien9zmvitGr5XKANkbRrvrY1Ae
+ 8daxtFxhhzdR7rc6a5H7XoYVirzh0k6sjdUndfiGV5uPgMZc++1qlYRyg9K6xvEepsPv
+ UY936ZwEkZlwmlq9kNBEPoO49vyv9vEtgFm6dYXljEcjiF3NXHQ2soTZwJaLEGpkBnEM
+ LAXcHz2KdP2zhKWOqaCf/U4TAfwwqsnIjQIvLlo1yYc8ydfXoqNfzGjJgMJLtH/fpygZ
+ 3Tcw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUHMLZ+6Lsp11yL0heppbXdTjS3m5UW8gN/89HVzRu+nvxciHWwH7L77+vfAzykiYX6x1OgH07vew==@nongnu.org
+X-Gm-Message-State: AOJu0YxU1CZj85SjZ3fnVtOIV57zQlFl2idGSGwF+ZDR/SQJambzHKB1
+ FI4FDXi2o4AuoB7Y0bagwoqeJ8YKQNtsIOfS7npAhaDKcL7gcjQ2ad7rsGei4N77Fn/20QxRm1r
+ dqP0dZ0Q3iPb6UyK8WYa7lk0O8wHz8BDdF1eEB/FmIA==
+X-Gm-Gg: AZuq6aIE47EQenEijFH+ZjuQOX7gCk175z6DcBxXxBCHouvOW8oA+Jeo9CiltbJes8y
+ Tcfo68p2wkf/0ybaOHWNq0B4hb6vSBCbSi1HOJAeu0R3UNmG0DmrI5V5klBi7cPqinjOsD9qutR
+ Gpo8cqVNdmtriGzoe8rvQEd+7c3mGo7r8Ezy42B/t8RaTo8a/GM/KI+ZlnCJhiVaT0yxN19zriX
+ lNpcPmR27rUl7kkOJLnUD/tB01pWRDgw0VNFSqiCAlU4nV9H3gbT6GUKyaLTG1jBlyI6A==
+X-Received: by 2002:a81:ff0b:0:b0:794:bb73:8a21 with SMTP id
+ 00721157ae682-794fe827fefmr52744707b3.44.1770304340331; Thu, 05 Feb 2026
+ 07:12:20 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: 1KP28ueGUCRvnZaT4BNeKohuSDxEUWHQ
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA1MDEwOSBTYWx0ZWRfX2+Bp5Jmem0Uk
- Y+1Zr4XaD9gJwe9a3ipdHPGPi5oKWctV7Pim0PZ243QgvExdnq4B0sbWckiEsvNY1BXvw4XqU/A
- lNWxLWAaMex9SUWh5I/7letT6OQ11KpXAx0lwCOmMidynd+cIKTWpG/2BNLzNcxLr1Nu6NEHqN5
- nqJogb2X3KZd+fVMfL9r+K0XXapNoze5+EM5w4OtfMun+OViP1p/BluvOPHZ5wZsMmMoZB2BVNc
- Au9CDO8deSpbJVUsRW/kKIq9O/TmsDpBS1jkLC/pWj1T29j4Lkljhd4ws9G7a/bjLR906rRObhP
- QYjdDl1ROVJXvlnthYjn+OJC3FXwgF9M9WWaPqWm/vFcug9HFU9ttHwgeT6wG0=
-X-Authority-Info-Out: v=2.4 cv=WtAm8Nfv c=1 sm=1 tr=0 ts=6984a8a8
- cx=c_apl:c_apl_out:c_pps a=bsP7O+dXZ5uKcj+dsLqiMw==:117
- a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=KKAkSRfTAAAA:8 a=EYz79TNVRTG0waESW9UA:9 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: 1KP28ueGUCRvnZaT4BNeKohuSDxEUWHQ
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-02-05_03,2026-02-05_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- bulkscore=0 phishscore=0 mlxscore=0 adultscore=0
- lowpriorityscore=0
- malwarescore=0 mlxlogscore=994 clxscore=1030 spamscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2602050109
-X-JNJ: AAAAAAABn2pqz4ROYjwf2N6P3LvJPTSYadLkCDM4Hbdw7hcK4dQB0hdFANDM8MVAc8Nt0GaVLEBrDpuZYP4DplIUGiEmB89rOE3pIYNv36gauICHvVm/fflxYR6R4UI66RcnWroqWY/gToCgkoJBZKscwg5gE5U5cCxfzNopdMO8OV2GvtJI2prtFDgZyBcxwFZfRQYUGZtFsP0EifmRCgtRWsbhBax3Lh5B3NBrE1DGpUr+kNDAw2hSSwPUuqOmPCzbMwxW4N+Uq1Od9CO5n6ERkAjbJVgddzVcgv79B0bFq8Y79Ts18gLV5okfVWBdgs5L2p62+Aoqg5Amf3vEZLVgHDcod8gTBdqTUgd2/8OFnnIP44CCL8999eikdrCLMh3LH+HBvd5CRhumHu2Tp6YH/R24hftErs3x+NTSQshAvx94rjRB+kzkF8Bp5Y3EpX6v8Z1HdDtkmJ885d3qL6tq/yYiPuRvaLQcg3gF+7/J6wx7bEOpGGgvWEcmBxoYdU2qQV6fQ5TLpco9ME9rH3QG9hSYbW4xWstmmG2JHmAuwSnkl0tOY6AahjqGmQYwfYJHzrRHnoDoMalPTT2OgM8aGhJvdcXuoWs1koZEe3IG5/pJbmXkWXwWuLLRyNNc5RheK1WdsaVlCtNy8r/piG9lh6FKKPXq3Qi4HyKzML59yGCJePXhkqPSnv5wJuI4U0oKXvHKiNYA3gWB6PyCBF69/4gqoY0Gy0RLngz5B+iYya754OgbgggUKDRuGBLoANf7Xc5jUVMMTm1FToGacavPXu6IBOwvyBZu7H2PqJcD2VTZ4lO6S2kDrPNrgyQT3gxpJYBnpJYj7jgc3ezxzEgclEfMirKNz55nWsC4ycddxVy3+Tu7SU2I8gxqpAamGAit1ekwm4sqJTuQx6OeOaOURES7/3SLbI29fwZd9xOp2NiakJiA81y6B6Hplw==
-Received-SPF: pass client-ip=57.103.84.123;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+References: <20260205142543.64818-1-mohamed@unpredictable.fr>
+In-Reply-To: <20260205142543.64818-1-mohamed@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 Feb 2026 15:12:09 +0000
+X-Gm-Features: AZwV_QhwFyo4wHrNORTLssMnbNCUomQiKMUWT5MqIB1AmVdnA0_X464o8jydLXE
+Message-ID: <CAFEAcA9pBwSJ6PFM0qOJWau7H0sDY5Rk5NKg8OgTxr+fgOvFsw@mail.gmail.com>
+Subject: Re: [PATCH v21 00/22] WHPX support for Arm
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, Zhao Liu <zhao1.liu@intel.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ Cameron Esfahani <dirty@apple.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Phil Dennis-Jordan <phil@philjordan.eu>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>, 
+ Yanan Wang <wangyanan55@huawei.com>, Ani Sinha <anisinha@redhat.com>, 
+ Igor Mammedov <imammedo@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, Roman Bolshakov <rbolshakov@ddn.com>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,62 +129,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-While figuring out a better spot for it, put it in whpx_accel_init.
+On Thu, 5 Feb 2026 at 14:25, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+>
+> Link to branch: https://github.com/mediouni-m/qemu whpx (tag for this submission: whpx-v21)
+>
+> Patches without a review: patches 3, 5, 6, 7
 
-Needs to be done before WHvSetupPartition.
+Thanks for the respin; this one applies, but fails "make check"
+on the aarch64/acpi/virt/msi_gicv2m subtest of the bios-tables-test:
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+lanath:noble:qemu$ (cd build/arm-clang &&
+QTEST_QEMU_BINARY=./qemu-system-aarch64 V=1
+./tests/qtest/bios-tables-test --verbose -p
+/aarch64/acpi/virt/msi_gicv2m)
+TAP version 13
+# random seed: R02Sd03fb0e0b32d3a49a936bee40a272caa
+# starting QEMU: exec ./qemu-system-aarch64 -qtest
+unix:/tmp/qtest-2950429.sock -qtest-log /dev/null -chardev
+socket,path=/tmp/qtest-2950429.qmp,id=char0 -mon
+chardev=char0,mode=control -display none -audio none -run-with
+exit-with-parent=on -machine none -accel qtest
+# starting QEMU: exec ./qemu-system-aarch64 -qtest
+unix:/tmp/qtest-2950429.sock -qtest-log /dev/null -chardev
+socket,path=/tmp/qtest-2950429.qmp,id=char0 -mon
+chardev=char0,mode=control -display none -audio none -run-with
+exit-with-parent=on -machine none -accel qtest
+# Start of aarch64 tests
+# Start of acpi tests
+# Start of virt tests
+acpi-test: Warning! IORT binary file mismatch. Actual
+[aml:/tmp/aml-VKZEK3], Expected
+[aml:tests/data/acpi/aarch64/virt/IORT.msi_gicv2m].
+See source file tests/qtest/bios-tables-test.c for instructions on how
+to update expected files.
+acpi-test: Warning! IORT mismatch. Actual [asl:/tmp/asl-RLZEK3.dsl,
+aml:/tmp/aml-VKZEK3], Expected [asl:/tmp/asl-F40EK3.dsl,
+aml:tests/data/acpi/aarch64/virt/IORT.msi_gicv2m].
+--- /tmp/asl-F40EK3.dsl 2026-02-05 15:10:08.823721717 +0000
++++ /tmp/asl-RLZEK3.dsl 2026-02-05 15:10:08.821977596 +0000
+@@ -1,32 +1,32 @@
+ /*
+  * Intel ACPI Component Architecture
+  * AML/ASL+ Disassembler version 20230628 (64-bit version)
+  * Copyright (c) 2000 - 2023 Intel Corporation
+  *
+- * Disassembly of tests/data/acpi/aarch64/virt/IORT.msi_gicv2m, Thu
+Feb  5 15:10:08 2026
++ * Disassembly of /tmp/aml-VKZEK3, Thu Feb  5 15:10:08 2026
+  *
+  * ACPI Data Table [IORT]
+  *
+  * Format: [HexOffset DecimalOffset ByteLength]  FieldName :
+FieldValue (in hex)
+  */
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
----
- target/arm/whpx/whpx-all.c | 32 ++++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+ [000h 0000 004h]                   Signature : "IORT"    [IO Remapping Table]
+ [004h 0004 004h]                Table Length : 000000AC
+-[008h 0008 001h]                    Revision : 03
+-[009h 0009 001h]                    Checksum : 97
++[008h 0008 001h]                    Revision : 05
++[009h 0009 001h]                    Checksum : 95
+ [00Ah 0010 006h]                      Oem ID : "BOCHS "
+ [010h 0016 008h]                Oem Table ID : "BXPC    "
+ [018h 0024 004h]                Oem Revision : 00000001
+ [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
+ [020h 0032 004h]       Asl Compiler Revision : 00000001
 
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index c88c67a9e2..44ef42307b 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -939,6 +939,38 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
- 
-     memset(&prop, 0, sizeof(prop));
- 
-+    /*
-+     * The only currently supported configuration for the interrupt
-+     * controller is kernel-irqchip=on,gic-version=3, with the `virt`
-+     * machine.
-+     *
-+     * Initialising the vGIC here because it needs to be done prior to
-+     * WHvSetupPartition.
-+     */
-+
-+    WHV_ARM64_IC_PARAMETERS ic_params = {
-+        .EmulationMode = WHvArm64IcEmulationModeGicV3,
-+        .GicV3Parameters = {
-+            .GicdBaseAddress = 0x08000000,
-+            .GitsTranslaterBaseAddress = 0x08080000,
-+            .GicLpiIntIdBits = 0,
-+            .GicPpiPerformanceMonitorsInterrupt = VIRTUAL_PMU_IRQ,
-+            .GicPpiOverflowInterruptFromCntv = ARCH_TIMER_VIRT_IRQ
-+        }
-+    };
-+    prop.Arm64IcParameters = ic_params;
-+
-+    hr = whp_dispatch.WHvSetPartitionProperty(
-+            whpx->partition,
-+            WHvPartitionPropertyCodeArm64IcParameters,
-+            &prop,
-+            sizeof(prop));
-+    if (FAILED(hr)) {
-+        error_report("WHPX: Failed to enable GICv3 interrupt controller, hr=%08lx", hr);
-+        ret = -EINVAL;
-+        goto error;
-+    }
-+
-     hr = whp_dispatch.WHvSetupPartition(whpx->partition);
-     if (FAILED(hr)) {
-         error_report("WHPX: Failed to setup partition, hr=%08lx", hr);
--- 
-2.50.1 (Apple Git-155)
+ [024h 0036 004h]                  Node Count : 00000002
+ [028h 0040 004h]                 Node Offset : 00000030
+ [02Ch 0044 004h]                    Reserved : 00000000
 
+ [030h 0048 001h]                        Type : 04
+ [031h 0049 002h]                      Length : 0044
+ [033h 0051 001h]                    Revision : 04
+ [034h 0052 004h]                  Identifier : 00000000
+ [038h 0056 004h]               Mapping Count : 00000000
+ [03Ch 0060 004h]              Mapping Offset : 00000000
+@@ -67,27 +67,27 @@
+                             Device Attribute : 1
+ [08Ch 0140 004h]               ATS Attribute : 00000000
+ [090h 0144 004h]          PCI Segment Number : 00000000
+ [094h 0148 001h]           Memory Size Limit : 40
+ [095h 0149 002h]          PASID Capabilities : 0000
+ [097h 0151 001h]                    Reserved : 00
+
+ [098h 0152 004h]                  Input base : 00000000
+ [09Ch 0156 004h]                    ID Count : 000000FF
+ [0A0h 0160 004h]                 Output Base : 00000000
+ [0A4h 0164 004h]            Output Reference : 00000030
+ [0A8h 0168 004h]       Flags (decoded below) : 00000000
+                               Single Mapping : 0
+
+-    0000: 49 4F 52 54 AC 00 00 00 03 97 42 4F 43 48 53 20  // IORT......BOCHS
++    0000: 49 4F 52 54 AC 00 00 00 05 95 42 4F 43 48 53 20  // IORT......BOCHS
+     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
+     0020: 01 00 00 00 02 00 00 00 30 00 00 00 00 00 00 00  // ........0.......
+     0030: 04 44 00 04 00 00 00 00 00 00 00 00 00 00 00 00  // .D..............
+     0040: 00 00 05 09 00 00 00 00 01 00 00 00 00 00 00 00  // ................
+     0050: 00 00 00 00 00 00 00 00 00 00 00 00 6A 00 00 00  // ............j...
+     0060: 6B 00 00 00 6D 00 00 00 6C 00 00 00 00 00 00 00  // k...m...l.......
+     0070: 00 00 00 00 02 38 00 03 01 00 00 00 01 00 00 00  // .....8..........
+     0080: 24 00 00 00 01 00 00 00 00 00 00 03 00 00 00 00  // $...............
+     0090: 00 00 00 00 40 00 00 00 00 00 00 00 FF 00 00 00  // ....@...........
+     00A0: 00 00 00 00 30 00 00 00 00 00 00 00              // ....0.......
+**
+ERROR:../../tests/qtest/bios-tables-test.c:555:test_acpi_asl:
+assertion failed: (all_tables_match)
+not ok /aarch64/acpi/virt/msi_gicv2m -
+ERROR:../../tests/qtest/bios-tables-test.c:555:test_acpi_asl:
+assertion failed: (all_tables_match)
+Bail out!
+Aborted (core dumped)
+
+
+thanks
+-- PMM
 

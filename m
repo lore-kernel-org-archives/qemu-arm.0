@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D24F7ECD99C
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:02:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3959CECD99F
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:02:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo5Vl-00078I-4K; Thu, 05 Feb 2026 14:59:33 -0500
+	id 1vo5Vd-0006vW-Gp; Thu, 05 Feb 2026 14:59:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5Vi-00071z-Bg
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:30 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ id 1vo5VZ-0006sS-8G
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:21 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5Vg-0003Cw-0N
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:29 -0500
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-435903c4040so993769f8f.3
- for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:59:27 -0800 (PST)
+ id 1vo5VW-00039P-QV
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:20 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4806bf39419so14615855e9.1
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:59:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1770321566; x=1770926366; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1770321555; x=1770926355; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=EYgtnXWNUJT6Dac5zqSSe5+G0V1Qkagn78Y+hx3iUhk=;
- b=nTCDWJlVMWpterN9WMR7KcWlh1EqNO+cb0HedIymucwJy1AQ39CdYB21JV3Boc5KP+
- oZa2eNuRJkeUeatfI43dfhwaukriITa58vYLmwu2ISg0SUY06bQs8Lb3Pc2xlhIQ/Sah
- RaP25peff9s7HjqrfuOkPEMMWWVhWTWcrKRAUepGtmBFDwfQann5xNDwDQFG7HARMYwc
- m0FLjqWvkbXcL4wi6Di9TN0vNo33MUhoBhFn6rdsU9uSAUIL3VUib/GiUQsPEyb+GFHB
- 2Ul8DIUIJCVAeQWpdnFWYbApTgk6zGmNUznv2M8psnBJotWJWM/kAm6kUzGUoWYMJ13F
- v7pQ==
+ bh=uFKD2gCbF2L2yObzjuIkLcm5lMIH03Mpqiwzu3nD9ZU=;
+ b=FlvYscnu7klN4jf9BVzu8sOHXQHQ4cht6Tb9J0M/HVpl7MTN7pcwtmHeG1K53yRLvj
+ jTvQ0vXIW/hwi0hKcnX8HFCEJdWmkmgAjn5LJJwYmLfr4pAL0ojXhC1yHbswEiL0Qf6N
+ HJ5fZfKqKSKhZ8OULwBDIPwnjbtnpnLzWVp21MyaiZ0Mh7qqIbmlOV36yLThCgpcV2YJ
+ CuNkfJ56qRzV3Zjg8KPsvaVKXwIuDxugErzP1k9zK/Xp3uuNNIhRayNYqt/mMjys29Nq
+ GrBP3sE7fLQDUV9liUd/MuZRJ2mrKE2eP6t744rlfEpH0pYJDhbDPR/Ow92dXO7bO1F0
+ ZaeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770321566; x=1770926366;
+ d=1e100.net; s=20230601; t=1770321555; x=1770926355;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=EYgtnXWNUJT6Dac5zqSSe5+G0V1Qkagn78Y+hx3iUhk=;
- b=EOvUa9MGOGWbM411/zabdVMxHwarPqw1ytpVMNoe2FcXefIfEuaxGceLZ/upwt/saV
- zm3xR2/mki5MHs5pFMOfp30NgCvRYC6dWhhjDGipzTAcCUiydfvcIl4pCmh4RpkxO78G
- h3qPZ257/efKjog1wd2/2tnsQSCYmy02dSw3gF5aqQfA4Snh0yxJL9zatQFYJOakfT6V
- plID/0szDYPDWZecr/K4cwXWmjr0uORJsqdQBIgT8MvKueruRAVd93QAzp8BITKc+lmD
- GXO/miMySfr+CBkAaCeG5ccSo5is3XVE9gNv0K9mSAHnJciKKbzuXQ1WJqBmfAcmHSYr
- aMew==
-X-Gm-Message-State: AOJu0YzK1slT+l6vtIzPiegxfFltSoAFJzhfmXiUcN7zv5KynrOalOfu
- MvF8afq8ogr707CwXKPhqKr1T7RyrAKGIipHdG9U9oPrO4K7mzghcyvY
-X-Gm-Gg: AZuq6aJvjGUs7kZff9ovgVQmX6bdIvqDTmaYZppE1Wd882xXsbiRBxar8t/ExozPLsw
- n4Gj4KokPQ9orJkBAWmiVZYW6aEuylt0iTE+7VYVE0iKV3BKEF8CGEbEfgfvlWUTTDpfQ5S6NZM
- lTapQdq8YlmJ8G1oUIzX0FOHqATswPe/HdZVlGsb7kxbA+h31pCiSvnnkYUJJFafPr3QW/DJzpN
- Jz1Bg88eEUzjfMd/Hd1WMZ2pM9zljrBXHTYMILYxz3fXFNoP14D6vY8i2tYg0LZ0SgrHSrwfwfx
- rWNJQlTnpISOCQd/B9yGkt/7TuJlYyFHwdcXvYTlW6p0xEPyhCPUlONfoFzemx08Zlts0F6i3n0
- f+TfhIVC+GTh7mB678UjY2+2PtJSzBh+Kpf7dApl++WOAsKOo+5mgIHrlVKkhXillHXV8SbooTf
- 6NMlGkuurmajjsO0Jzsz4=
-X-Received: by 2002:a05:6000:2681:b0:42f:8816:a509 with SMTP id
- ffacd0b85a97d-4362938f3f4mr725064f8f.62.1770321566414; 
- Thu, 05 Feb 2026 11:59:26 -0800 (PST)
+ bh=uFKD2gCbF2L2yObzjuIkLcm5lMIH03Mpqiwzu3nD9ZU=;
+ b=gDzJjHWXlEqj3814CfWtNGAmT/JD5k/O3Wel4a5QTb4TCKk/UGJ+i1R0tiDdcogPvk
+ FjCtZ2HcATh3r+dSsKtCogghX21nWxI/fYPKp4uZD3f4YhcFKkfNKsMJl23y8eYfj3ZV
+ t73kEJ25bSLUCc1iq0SaXuH6C4KB1C07j1OOnx+vlcUTX9XLTRZ+w2TPhMGqNaj+YGi3
+ F1vpk8W7Qze9KvLfhG/AKViELevHBuON4vOdW+xMQbLr8UZHl6vA3sE5XRWf09M8rGwx
+ 4NYWUheVE42wEry0pNqVYEG6t4vkzyrzChLJxrS1jDF6uIBLuU7sRoo+hb+JOmsWw/8J
+ NjWg==
+X-Gm-Message-State: AOJu0Yz6+iyWgeDbitLs2+WBS4T5htNHT3zZ7J/3MtGQCOJuDOEDMBSD
+ lK1sTwLn5BBIOPsyeep72hOHw3E47rnqWtt1/tmMH20gSRQs4rk2pB/+UDxrgV89tPs=
+X-Gm-Gg: AZuq6aLlvFsztOm2DYFHuE6pk/abeM3Fs0u+f5rDHHkBknI81x4cx4JHKvWNQ5ptoNz
+ 5kjOWouWV7zB7lpajLi1thOVXeFO+2M4JG8Td0MluyGg3e1nlcajsjaV5zDxi9Yr1qIgFb+c2gF
+ mM2QVoc04VivfsbPBKMB5+Vs+qv4oEOUgoU3+1rLIAAZiL4CSQO2RyqIESqNotlq4uOpyhtQWnV
+ 2tKaVZ6cwx0O82C2mOFQ2vh+GjdbS8a7UM7NnMghAiTbrn+vHC9+Y2vBbftPuDBTMNmk8xF1M/8
+ oDLchK3xh+g2okvOU5RHgKfPPjte3pNeXKbgscUUQcSD6YGAbwqmOeMYBGkN2pZ22UBhqSEPmMQ
+ v7wlxH5fV1hTnF+2wBxa+3+yVexaPi0ooDrnUrbw+x4wKlsgZW4r7wWFnyweF4vT1lGrRQEQIpy
+ 8TqEVjrCHEBrcXGVIUkEM=
+X-Received: by 2002:a05:6000:200e:b0:435:932e:f924 with SMTP id
+ ffacd0b85a97d-43629034d76mr777534f8f.2.1770321555303; 
+ Thu, 05 Feb 2026 11:59:15 -0800 (PST)
 Received: from thinkpad-t470s.. ([93.140.16.93])
  by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.59.24
+ ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.59.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Feb 2026 11:59:25 -0800 (PST)
+ Thu, 05 Feb 2026 11:59:14 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
  volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  francisco.iglesias@amd.com, Ruslan_Ruslichenko@epam.com,
- Mirsad Ostrakovic <mirsad_ostrakovic@epam.com>,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH 28/29] hw/core: Add Remote Port attachment helpers
-Date: Thu,  5 Feb 2026 20:58:23 +0100
-Message-ID: <20260205195824.2610192-29-ruslichenko.r@gmail.com>
+Subject: [PATCH 21/29] hw/core: Add Remote Port Stream device
+Date: Thu,  5 Feb 2026 20:58:16 +0100
+Message-ID: <20260205195824.2610192-22-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 References: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,264 +103,282 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Mirsad Ostrakovic <mirsad_ostrakovic@epam.com>
+From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Introduce helper functions to dynamically attach and detach Remote Port
-devices to an adaptor.
+Introduce the 'remote-port-stream' device to bridge QEMU StreamSink
+interfaces with the Remote Port protocol.
 
-This patch adds the logic to:
-- Connect devices to an adaptor via QOM links ('rp_device_attach').
-- Parse command-line options ('rp_device_add') to automatically wire up
-  devices using 'rp-adaptor' and 'rp-chan' properties.
+The patch implements the logic to translate local stream push
+operations into Remote Port bus-access packets and vice-versa.
+This enables bi-directional data streaming between QEMU and
+external simulators.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
-Signed-off-by: Mirsad Ostrakovic <mirsad_ostrakovic@epam.com>
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/meson.build           |   1 +
- hw/core/remote-port-qdev.c    | 181 ++++++++++++++++++++++++++++++++++
- include/hw/core/remote-port.h |  27 +++++
- 3 files changed, 209 insertions(+)
- create mode 100644 hw/core/remote-port-qdev.c
+ hw/core/remote-port-stream.c | 239 +++++++++++++++++++++++++++++++++++
+ hw/core/trace-events         |   4 +
+ 2 files changed, 243 insertions(+)
+ create mode 100644 hw/core/remote-port-stream.c
 
-diff --git a/hw/core/meson.build b/hw/core/meson.build
-index 7013638fcf..4638106e92 100644
---- a/hw/core/meson.build
-+++ b/hw/core/meson.build
-@@ -35,6 +35,7 @@ system_ss.add(when: 'CONFIG_REMOTE_PORT', if_true: files(
-   'remote-port-gpio.c',
-   'remote-port-stream.c',
-   'remote-port-ats.c',
-+  'remote-port-qdev.c'
- ))
- 
- system_ss.add(files(
-diff --git a/hw/core/remote-port-qdev.c b/hw/core/remote-port-qdev.c
+diff --git a/hw/core/remote-port-stream.c b/hw/core/remote-port-stream.c
 new file mode 100644
-index 0000000000..35c9a6790d
+index 0000000000..6baaf68f08
 --- /dev/null
-+++ b/hw/core/remote-port-qdev.c
-@@ -0,0 +1,181 @@
++++ b/hw/core/remote-port-stream.c
+@@ -0,0 +1,239 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*
-+ * QEMU remote attach
-+ *
 + * Copyright (c) 2013 Xilinx Inc
-+ * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
++ * Copyright (c) 2013 Peter Crosthwaite <peter.crosthwaite@xilinx.com>
++ * Copyright (c) 2013 Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 + *
-+ * This code is licensed under the GNU GPL.
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
 + */
 +
 +#include "qemu/osdep.h"
 +#include "hw/core/sysbus.h"
-+#include "monitor/monitor.h"
-+#include "monitor/qdev.h"
-+#include "system/arch_init.h"
++#include "qemu/log.h"
++
++#include "qemu/bitops.h"
++#include "qapi/qmp/qerror.h"
++#include "hw/core/stream.h"
 +#include "qapi/error.h"
-+#include "qemu/config-file.h"
-+#include "qemu/error-report.h"
-+#include "qemu/help_option.h"
-+#include "qemu/cutils.h"
-+#include "qemu/option.h"
-+
++#include "migration/vmstate.h"
++#include "hw/core/qdev-properties.h"
 +#include "hw/core/remote-port.h"
++#include "trace.h"
 +
-+/* RP helper function to attach a device to an adaptor.  */
-+void rp_device_attach(Object *adaptor, Object *dev,
-+                      int rp_nr, int dev_nr,
-+                      Error **errp)
++#ifndef REMOTE_PORT_STREAM_ERR_DEBUG
++#define REMOTE_PORT_STREAM_ERR_DEBUG 0
++#endif
++
++#define TYPE_REMOTE_PORT_STREAM "remote-port-stream"
++
++#define REMOTE_PORT_STREAM(obj) \
++     OBJECT_CHECK(RemotePortStream, (obj), TYPE_REMOTE_PORT_STREAM)
++
++typedef struct RemotePortStream RemotePortStream;
++
++struct RemotePortStream {
++    DeviceState parent_obj;
++
++    RemotePort *rp;
++    uint32_t rp_dev;
++    uint16_t stream_width;
++
++    StreamSink *tx_dev;
++
++    StreamCanPushNotifyFn notify;
++    void *notify_opaque;
++
++    uint8_t *buf;
++    struct rp_pkt pkt;
++
++    bool rsp_pending;
++    uint32_t current_id;
++};
++
++static void rp_stream_notify(void *opaque)
 +{
-+    Error *err = NULL;
-+    uint32_t nr_devs;
-+    char *name;
-+    int i;
++    RemotePortStream *s = REMOTE_PORT_STREAM(opaque);
 +
-+    assert(adaptor);
-+    assert(dev);
++    /* FIXME: This is completely bogus.  */
++    if (s->buf && stream_can_push(s->tx_dev, rp_stream_notify, s)) {
++        RemotePortDynPkt rsp;
++        struct rp_encode_busaccess_in in = {0};
++        size_t pktlen = sizeof(struct rp_pkt_busaccess_ext_base);
++        size_t enclen;
++        int64_t delay = 0; /* FIXME - Implement */
 +
-+    /* Verify that the adaptor is of Remote Port type.  */
-+    if (!object_dynamic_cast(adaptor, TYPE_REMOTE_PORT)) {
-+        error_setg(errp, "%s is not a Remote-Port adaptor!",
-+                   object_get_canonical_path(adaptor));
-+        return;
-+    }
++        size_t ret = stream_push(s->tx_dev, s->buf, 4, 0);
++        assert(ret == 4);
++        s->buf = NULL;
 +
-+    name = g_strdup_printf("rp-adaptor%d", rp_nr);
-+    object_property_set_link(dev, name, adaptor, &err);
-+    g_free(name);
-+    if (err != NULL) {
-+        error_propagate(errp, err);
-+        return;
-+    }
++        memset(&rsp, 0, sizeof(rsp));
++        rp_dpkt_alloc(&rsp, pktlen);
++        rp_encode_busaccess_in_rsp_init(&in, &s->pkt);
++        in.clk = s->pkt.busaccess.timestamp + delay;
++        enclen = rp_encode_busaccess(rp_get_peer(s->rp),
++                                     &rsp.pkt->busaccess_ext_base,
++                                     &in);
++        assert(enclen <= pktlen);
++        trace_remote_port_stream_tx_busaccess(rp_cmd_to_string(in.cmd),
++            in.id, in.flags, in.dev, in.addr, in.size, in.attr);
 +
-+    name = g_strdup_printf("rp-chan%d", rp_nr);
-+    object_property_set_int(dev, name, dev_nr, &err);
-+    g_free(name);
-+    if (err != NULL
-+        && !object_dynamic_cast(dev, TYPE_REMOTE_PORT_DEVICE)) {
-+        /*
-+         * RP devices that only receive requests may not need to
-+         * know their channel/dev number. If not, treat this as
-+         * an error.
-+         */
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    err = NULL;
-+
-+    nr_devs = object_property_get_int(dev, "nr-devs", &err);
-+    if (err) {
-+        nr_devs = 1;
-+        err = NULL;
-+    }
-+
-+    /* Multi-channel devs use consecutive numbering.  */
-+    for (i = 0; i < nr_devs; i++) {
-+        name = g_strdup_printf("remote-port-dev%d", dev_nr + i);
-+        object_property_set_link(adaptor, name, dev, &err);
-+        g_free(name);
-+        if (err != NULL) {
-+            error_propagate(errp, err);
-+            return;
-+        }
++        rp_write(s->rp, (void *)rsp.pkt, pktlen);
 +    }
 +}
 +
-+/* RP helper function to detach a device to an adaptor.  */
-+void rp_device_detach(Object *adaptor, Object *dev,
-+                      int rp_nr, int dev_nr,
-+                      Error **errp)
++static void rp_stream_write(RemotePortDevice *obj, struct rp_pkt *pkt)
 +{
-+    Error *err = NULL;
-+    uint32_t nr_devs;
-+    char *name;
-+    int i;
++    RemotePortStream *s = REMOTE_PORT_STREAM(obj);
 +
-+    assert(adaptor);
-+    assert(dev);
++    trace_remote_port_stream_rx_busaccess(rp_cmd_to_string(pkt->hdr.cmd),
++        pkt->hdr.id, pkt->hdr.flags, pkt->hdr.dev, pkt->busaccess.addr,
++        pkt->busaccess.len, pkt->busaccess.attributes);
 +
-+    name = g_strdup_printf("rp-adaptor%d", rp_nr);
-+    object_property_set_link(dev, name, NULL, NULL);
-+    g_free(name);
++    assert(pkt->busaccess.width == 0);
++    assert(pkt->busaccess.stream_width == pkt->busaccess.len);
++    assert(pkt->busaccess.addr == 0);
 +
-+    nr_devs = object_property_get_int(dev, "nr-devs", &err);
-+    if (err) {
-+        nr_devs = 1;
-+        err = NULL;
-+    }
-+
-+    for (i = 0; i < nr_devs; i++) {
-+        name = g_strdup_printf("remote-port-dev%d", dev_nr + i);
-+        object_property_set_link(adaptor, name, NULL, &err);
-+        g_free(name);
-+        if (err != NULL) {
-+            error_propagate(errp, err);
-+            return;
++    if (pkt->hdr.flags & RP_PKT_FLAGS_response) {
++        /* FXIME - probably need to do syncs and stuff */
++        assert(s->rsp_pending);
++        s->rsp_pending = false;
++        if (s->notify) {
++            StreamCanPushNotifyFn notify = s->notify;
++            s->notify = NULL;
++            notify(s->notify_opaque);
 +        }
++    } else {
++        assert(!s->buf);
++        s->buf = g_memdup2(pkt + 1, 4);
++        s->pkt = *pkt;
++        rp_stream_notify(s);
 +    }
 +}
 +
-+/* Scan for remote-port links to be setup.  */
-+bool rp_device_add(const QDict *opts, DeviceState *dev, Error **errp)
++static bool rp_stream_stream_can_push(StreamSink *obj,
++                                            StreamCanPushNotifyFn notify,
++                                            void *notify_opaque)
 +{
-+    Error *err = NULL;
-+    Object *adaptor;
-+    bool ambiguous;
-+    const char *path;
-+    char *name;
-+    int i;
++    RemotePortStream *s = REMOTE_PORT_STREAM(obj);
 +
-+    /*
-+     * Find the adaptor this remote-port device is connected to.
-+     * At the moment, we only support one adaptor per device.
-+     */
-+    name = g_strdup_printf("rp-adaptor%d", 0);
-+    path = qdict_get_try_str(opts, name);
-+    g_free(name);
-+    if (!path) {
-+        /* This is not a remote-port device. Treat as success.  */
-+        return true;
-+    }
-+    adaptor = object_resolve_path(path, &ambiguous);
-+    if (!adaptor) {
-+        error_setg(errp, "Did not find rp adaptor %s!", path);
++    if (s->rsp_pending) {
++        s->notify = notify;
++        s->notify_opaque = notify_opaque;
 +        return false;
-+    }
-+
-+    /*
-+     * Loop through the channels this device provides and attach
-+     * them to the adaptor.
-+     */
-+    for (i = 0; i < INT_MAX; i++) {
-+        unsigned long dev_nr;
-+        const char *dev_nr_str;
-+
-+        name = g_strdup_printf("rp-chan%d", i);
-+        dev_nr_str = qdict_get_try_str(opts, name);
-+        g_free(name);
-+
-+        if (!dev_nr_str) {
-+            if (i == 0) {
-+                /* At least one channel must be provided.  */
-+                error_setg(errp, "Did not find rp-chan%d!", i);
-+                return false;
-+            }
-+            return true;
-+        }
-+
-+        if (qemu_strtoul(dev_nr_str, NULL, 0, &dev_nr)) {
-+            error_setg(errp, "Invalid rp-chan%d!", i);
-+            return false;
-+        }
-+
-+        /* Now, attach the device to the adaptor.  */
-+        rp_device_attach(adaptor, OBJECT(dev), 0, dev_nr, &err);
-+        if (err != NULL) {
-+            error_propagate(errp, err);
-+            return false;
-+        }
 +    }
 +    return true;
 +}
-diff --git a/include/hw/core/remote-port.h b/include/hw/core/remote-port.h
-index 172c4b6204..252230961b 100644
---- a/include/hw/core/remote-port.h
-+++ b/include/hw/core/remote-port.h
-@@ -134,6 +134,33 @@ struct RemotePort {
-     RemotePortDevice *devs[REMOTE_PORT_MAX_DEVS];
- };
- 
-+/**
-+ * rp_device_attach:
-+ * @adaptor: The adaptor onto which to attach the device
-+ * @dev: The device to be attached to the adaptor
-+ * @rp_nr: The remote-port adaptor nr. A device may attach to multiple
-+ *         adaptors.
-+ * @dev_nr: The device/channel number to bind the device to.
-+ * @errp: returns an error if this function fails
-+ *
-+ * Attaches a device onto an adaptor and binds it to a device number.
-+ */
-+void rp_device_attach(Object *adaptor, Object *dev,
-+                      int rp_nr, int dev_nr,
-+                      Error **errp);
-+void rp_device_detach(Object *adaptor, Object *dev,
-+                      int rp_nr, int dev_nr,
-+                      Error **errp);
-+/**
-+ * rp_device_add
-+ * @opts:  qdev opts created by the qdev subsystem
-+ * @dev: The device to be connected
-+ * @errp: Returns an error if the function fails
-+ *
-+ * Function used in qdev-monitor.c to connect remote port devices.
-+ * Returns teue on success and false on failure.
-+ */
-+bool rp_device_add(const QDict *opts, DeviceState *dev, Error **errp);
- 
- void rp_rsp_mutex_lock(RemotePort *s);
- void rp_rsp_mutex_unlock(RemotePort *s);
++
++static size_t rp_stream_stream_push(StreamSink *obj, uint8_t *buf,
++                                    size_t len, bool eop)
++{
++    RemotePortStream *s = REMOTE_PORT_STREAM(obj);
++    RemotePortDynPkt rsp;
++    struct rp_pkt_busaccess_ext_base pkt;
++    struct rp_encode_busaccess_in in = {0};
++    uint64_t rp_attr = eop ? RP_BUS_ATTR_EOP : 0;
++    int64_t clk;
++    int enclen;
++
++    clk = rp_normalized_vmclk(s->rp);
++
++    in.cmd = RP_CMD_write;
++    in.id = rp_new_id(s->rp);
++    in.dev = s->rp_dev;
++    in.clk = clk;
++    in.attr = rp_attr;
++    in.size = len;
++    in.stream_width = s->stream_width;
++    enclen = rp_encode_busaccess(rp_get_peer(s->rp), &pkt, &in);
++
++    trace_remote_port_stream_tx_busaccess(rp_cmd_to_string(in.cmd),
++        in.id, in.flags, in.dev, in.addr, in.size, in.attr);
++
++    rp_rsp_mutex_lock(s->rp);
++    rp_write(s->rp, (void *) &pkt, enclen);
++    rp_write(s->rp, buf, len);
++    rsp = rp_wait_resp(s->rp);
++    assert(rsp.pkt->hdr.id == be32_to_cpu(pkt.hdr.id));
++
++    trace_remote_port_stream_rx_busaccess(
++        rp_cmd_to_string(rsp.pkt->hdr.cmd), rsp.pkt->hdr.id,
++        rsp.pkt->hdr.flags, rsp.pkt->hdr.dev, rsp.pkt->busaccess.addr,
++        rsp.pkt->busaccess.len, rsp.pkt->busaccess.attributes);
++
++    rp_dpkt_invalidate(&rsp);
++    rp_rsp_mutex_unlock(s->rp);
++    rp_restart_sync_timer(s->rp);
++    return len;
++}
++
++static void rp_prop_allow_set_link(const Object *obj, const char *name,
++                                   Object *val, Error **errp)
++{
++}
++
++static void rp_stream_init(Object *obj)
++{
++    RemotePortStream *s = REMOTE_PORT_STREAM(obj);
++
++    object_property_add_link(obj, "axistream-connected", TYPE_STREAM_SINK,
++                             (Object **)&s->tx_dev,
++                             qdev_prop_allow_set_link_before_realize,
++                             OBJ_PROP_LINK_STRONG);
++    object_property_add_link(obj, "rp-adaptor0", "remote-port",
++                             (Object **)&s->rp,
++                             rp_prop_allow_set_link,
++                             OBJ_PROP_LINK_STRONG);
++}
++
++static Property rp_properties[] = {
++    DEFINE_PROP_UINT32("rp-chan0", RemotePortStream, rp_dev, 0),
++    DEFINE_PROP_UINT16("stream-width", RemotePortStream, stream_width, 4),
++};
++
++static void rp_stream_class_init(ObjectClass *oc, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    StreamSinkClass *ssc = STREAM_SINK_CLASS(oc);
++    RemotePortDeviceClass *rpdc = REMOTE_PORT_DEVICE_CLASS(oc);
++
++    ssc->push = rp_stream_stream_push;
++    ssc->can_push = rp_stream_stream_can_push;
++    device_class_set_props_n(dc, rp_properties, ARRAY_SIZE(rp_properties));
++    rpdc->ops[RP_CMD_write] = rp_stream_write;
++}
++
++static const TypeInfo rp_stream_info = {
++    .name          = TYPE_REMOTE_PORT_STREAM,
++    .parent        = TYPE_DEVICE,
++    .instance_size = sizeof(RemotePortStream),
++    .class_init    = rp_stream_class_init,
++    .instance_init = rp_stream_init,
++    .interfaces = (InterfaceInfo[]) {
++        { TYPE_STREAM_SINK },
++        { TYPE_REMOTE_PORT_DEVICE },
++        { },
++    }
++};
++
++static void rp_stream_register_types(void)
++{
++    type_register_static(&rp_stream_info);
++}
++
++type_init(rp_stream_register_types)
+diff --git a/hw/core/trace-events b/hw/core/trace-events
+index fb3125b0eb..5b4e5029fe 100644
+--- a/hw/core/trace-events
++++ b/hw/core/trace-events
+@@ -44,3 +44,7 @@ remote_port_memory_slave_rx_busaccess(const char *cmd, uint32_t id, uint32_t fla
+ # remote-port-memory-gpio.c
+ remote_port_gpio_tx_interrupt(uint32_t id, uint32_t flags, uint32_t dev, uint64_t vector, uint32_t irq, uint32_t val) "id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", vector=0x%"PRIx64", irq=0x%"PRIx32", level=0x%"PRIx32
+ remote_port_gpio_rx_interrupt(uint32_t id, uint32_t flags, uint32_t dev, uint64_t vector, uint32_t irq, uint32_t val) "id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", vector=0x%"PRIx64", irq=0x%"PRIx32", level=0x%"PRIx32
++
++# remote-port-stream.c
++remote_port_stream_tx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len,  uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
++remote_port_stream_rx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len,  uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
 -- 
 2.43.0
 

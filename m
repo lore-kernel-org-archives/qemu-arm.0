@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EEF0ECD999
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:00:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 262BDECD99C
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:00:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo5Vi-00072Z-QP; Thu, 05 Feb 2026 14:59:30 -0500
+	id 1vo5Vn-00079s-FH; Thu, 05 Feb 2026 14:59:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5Vd-0006vz-Rz
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:25 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1vo5Vk-000743-6d
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:32 -0500
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5Vb-0003BA-3Q
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:25 -0500
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-432d2c7dd52so1428915f8f.2
- for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:59:22 -0800 (PST)
+ id 1vo5Vh-0003DF-G6
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:31 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-4359108fd24so915248f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:59:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1770321562; x=1770926362; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1770321568; x=1770926368; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=MbMkUUvH+NcjHWVg6Bu6jsxDREeMbXx3rIs90lyP6Y4=;
- b=PNLfoQMdXD8q2jiwlOX+6m7mXRMFiSHHzBUng+b6fBsFPptoFpE/a4AYJQGh1A8h5A
- DUAz7bgLY1ftpsdtoWgMNRzezl4cZUgGY8/ZqQDbwwZ9oXweApNd5ttC2k2X8I6WSXsC
- EKTGpS3KmUtYlC2LnUojezgj37A89DiKN6PcB1dUPVwVGOMCDE8Mt7YgnGB8CnFSdB5i
- enceppkZdNYUo53cMV+8bQueNgEVMtQvZ7f1/aDtjIh6qkef4L8/WAXTfsGe1Tg2VB2y
- B9Y09ksDcgRgHK6BeRgMHb1OxT2OriEGNgmTDFbS4Jrsyai3zTpWaDXPBw6NWvyPbE0V
- RxZw==
+ bh=X7UzQPgmBiRY/upCcfubCk3rZyvcBcdMj1LuFEKqEEs=;
+ b=aACq35yd7CVghLv0MoCHCn9c41VCypCzExQQso5a2Yr1nSTVD2uyEUfTLitJ1XnK0Y
+ U8KYKMzHjiyMADw03E/CUYnIPoTYqDnKLSm1w4iTQiNw3z/cfkYu1QkHGVzGddnwa5XR
+ EDHlT51bLI8cHpEGz6XVbcIA5OXAq4aNg+a8e7LImX4ZGg7bmnxnLGZVen/OxmH8zDt8
+ 8770MeySgFWJols8SgLwgv0TD+Ybcx1S0bY5ba9PBcmoImRtTRtD6oABBPUp/13f1ess
+ OegmIalT6g78KhG9yE2hN5x9jg8TZcBUvm9uFmg4GUNxvg6eBf6K0yAfSq481x3mBynI
+ vDrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770321562; x=1770926362;
+ d=1e100.net; s=20230601; t=1770321568; x=1770926368;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=MbMkUUvH+NcjHWVg6Bu6jsxDREeMbXx3rIs90lyP6Y4=;
- b=BoUWoqxtQNzzmWAX6UQ5fIwsJ9HkJRf0aJTN/htstK/wdImxD05+eC1dG0+W5F4/Go
- DApJTmUvJUpSrOzu34QTYrRJ7GPI9cS494/aviJcaKTqHF6kqHzR0dnqqE1Fsxtz19V7
- ahiLYe/wf0wRN0gGjOznzYina0RvE+DZeHWUGe+nRlOYvKeEbS+aY1PfBF4zp453A0Gr
- BRcpiLsGEPilFBubAQ0MIc6chcXghfgbv3OVSUtfWsYDsxYCDP2YAI/bbJ/0Ti7lFDH+
- KGrN+wKceef6pe14HHMGzn5qkLIb9lQ+c88H/iLOoUwGslUjj4JVfTdasCkFBaD1Ohcs
- K0VA==
-X-Gm-Message-State: AOJu0Yyz8N2LB86yw/FzkyunhdRNWEM0mlIuaiDZgfUD4F7lRLfxA0dJ
- NyXfkqQD88Od+6XJ8T2eiElkXvhJ0/kHJSfBuMfnVqU13Bk9wQNvLjQ9
-X-Gm-Gg: AZuq6aL71vBNkjyvfpI+Qrk4tzaW4rNfG1/UrvDPm57lr2+a+9b6N4MXg2EgUlEJyFI
- 54OXWs3PahzdXchX+lYsdJyuzmWgRzW2Z+YvY9YIE6Q4Lir2JsVDCKCaIv5jEvAq2nVXisxs+Xu
- PJ7mLsHiwQv04uHZv7FqUxeiG5ygk9sJZopXgSgN+LEswRsL+Mv8uHX6Atnanc5cpxyc1mECktr
- GWnrbATwmkC11x5bJ1Kga8WZX8Ou73RsqUSgEO2nksIkAsJmdem5G6gFvA+n1ljwGz7ER2vM8f+
- zFigfPzJ+qzrE2WXKq0mIJbmgzVn6a9kvlmCGn4FYqyixvbih8MmbyMc/j4rQZ8iUGWXM79DO0j
- YjujO9vQLSBJgZ9HGaeF2Cb3HF41QO1+bn4jAqXCVUv6QKeij7pCJFQKsj2sl/la8VYmY4kV/+l
- +NvWKL4Uq5Gn1tqjmaEmQ=
-X-Received: by 2002:a05:6000:2c05:b0:435:95c9:6891 with SMTP id
- ffacd0b85a97d-4362938aee7mr762694f8f.42.1770321561485; 
- Thu, 05 Feb 2026 11:59:21 -0800 (PST)
+ bh=X7UzQPgmBiRY/upCcfubCk3rZyvcBcdMj1LuFEKqEEs=;
+ b=CpnawIiHigWkveSlQ/jDuxpGfpb0KAjb3qqiTWefEmthn50W0DCoJ422iCPx5SCQlH
+ bFn1M7bXwHI9CPmogr9hHWhUqs2qo/poM1Rqmgo8ctOPuUs7m/mgMKVZSaM116yKdacz
+ g2cKLLysc8x59oXAkkgjgq+B4kmbOkxfA4tI8szv0oo81BbxYy0XJPWPvH/QZg9t9cG6
+ DKJd0aEC8GTdzE2YkxNSXiKPlyi3VE6DXNI9RA3OY1nmg2fUPmMJuXMlGSHhBEO3y2nC
+ CS/LZ/mpp6Yi4y0iA1eq4jWRok8fpZAJ0Is0OD/OERU25cEdHs95VoRGfnO9atCkFp9/
+ FKHA==
+X-Gm-Message-State: AOJu0YyxBSw08+GjZyTqF7fsQpEggwAu0TL7tKY6HPaQrfN8Kcjdq5cz
+ BIIn3Vtm6GhNL1Wa3lifP4abmdm+4YBRCzAtNP4witaT4j4mYXbl8OoO
+X-Gm-Gg: AZuq6aJSpM3zD6k9s2PjuDGiFZ4tAxbVUpiVpoILDqYdM2zE4sa3PuGrNBk1tyjNgiM
+ /oHFg8d31BnyiCogoCD1fPY61FeaXV+CgxjZh5hReogs0IeSxn9nsxuIKv/MySduUUdJ1tfFKiJ
+ J76vPjWI9ckMFr8cpWVqKiCg/+SEdMlwbdnFNyqB8x5aVccxn9Stq5TLqtQ6q77nOmHPUZJPgLo
+ R9iE4Pv7QSOUR+aDgGsKdmA7TdDobL1Tqd+ZkzfZrORu8G4YxtxTBiOY5gK3bwJQ+imJyxANapB
+ 2O4UI0POSXdouaRXbrDJfyRdz4s3oVt/lZ4+ZjTljjYuwEqZbKiHLwMlSJgRWQ+QUPhPXHUpMG6
+ B0wWh0j6nDXWyyEWyT0YlSfO5RinZL8cFRo26OHYvBPJbbRhCIKN4LYpaflB4IKs6qJsKqWibVO
+ w3Q3zcjtXKblVrTelaEao=
+X-Received: by 2002:a5d:5f54:0:b0:435:9ce0:f93c with SMTP id
+ ffacd0b85a97d-4362969509amr574711f8f.62.1770321567939; 
+ Thu, 05 Feb 2026 11:59:27 -0800 (PST)
 Received: from thinkpad-t470s.. ([93.140.16.93])
  by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.59.20
+ ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.59.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Feb 2026 11:59:20 -0800 (PST)
+ Thu, 05 Feb 2026 11:59:27 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
  volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  francisco.iglesias@amd.com, Ruslan_Ruslichenko@epam.com,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH 25/29] hw/core: Add FDT support to Remote Port memory master
-Date: Thu,  5 Feb 2026 20:58:20 +0100
-Message-ID: <20260205195824.2610192-26-ruslichenko.r@gmail.com>
+ Mirsad Ostrakovic <mirsad_ostrakovic@epam.com>
+Subject: [PATCH 29/29] hw/core: Add ATS support to Remote Port memory slave
+Date: Thu,  5 Feb 2026 20:58:24 +0100
+Message-ID: <20260205195824.2610192-30-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 References: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x432.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,91 +103,324 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+From: Mirsad Ostrakovic <mirsad_ostrakovic@epam.com>
 
-Implement the FDTGenericMMap interface for the Remote Port
-Memory Master.
+Integrate Address Translation Services (ATS) into the Remote Port Memory Slave
+to support IOMMU translation for remote transactions.
 
-This enables the device to dynamically parse memory ranges
-defined in the Device Tree ('reg' property) and register
-them as system bus MMIO regions.
+This patch implements:
+- Support for creation of RP ATS as RP Memory Slave subdevice
+- Dynamic configuration of the ATS device, linking it to the
+  same IOMMU context (iommu-id, stream-id) as the parent memory slave.
+- Update for FDT generic utility to parse 'remote-port-ats'
+  properties and propagate the configuration to the device.
 
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
-Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
+This allows external masters to request address translations via the Remote
+Port protocol, which are then serviced by the QEMU IOMMU infrastructure.
+
+Signed-off-by: Mirsad Ostrakovic <mirsad_ostrakovic@epam.com>
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/remote-port-memory-master.c | 34 +++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+ hw/core/fdt_generic_util.c                 | 10 +++
+ hw/core/remote-port-ats.c                  | 97 +++++++++++++++++++++-
+ hw/core/remote-port-memory-slave.c         | 36 +++++++-
+ include/hw/core/remote-port-ats.h          |  3 +
+ include/hw/core/remote-port-memory-slave.h |  4 +-
+ 5 files changed, 145 insertions(+), 5 deletions(-)
 
-diff --git a/hw/core/remote-port-memory-master.c b/hw/core/remote-port-memory-master.c
-index 4a6c43423d..854b35e99f 100644
---- a/hw/core/remote-port-memory-master.c
-+++ b/hw/core/remote-port-memory-master.c
-@@ -22,6 +22,8 @@
- #include "hw/core/remote-port.h"
- #include "hw/core/remote-port-memory-master.h"
- 
-+#include "hw/core/fdt_generic_util.h"
+diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
+index 180038baf6..817e7209e1 100644
+--- a/hw/core/fdt_generic_util.c
++++ b/hw/core/fdt_generic_util.c
+@@ -1221,6 +1221,16 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
+                 fprintf(stderr, "cant set device link for adaptor\n");
+                 break;
+             }
 +
- #ifndef REMOTE_PORT_ERR_DEBUG
- #define REMOTE_PORT_DEBUG_LEVEL 0
- #else
-@@ -277,6 +279,35 @@ static void rp_memory_master_init(Object *obj)
-                              OBJ_PROP_LINK_STRONG);
++            if (object_dynamic_cast(dev, TYPE_REMOTE_PORT_MEMORY_SLAVE)) {
++                uint32_t rp_ats_id;
++                rp_ats_id = qemu_fdt_getprop_cell(fdti->fdt, node_path,
++                                                  "remote-port-ats", 0,
++                                                  false, &errp);
++
++                object_property_set_int(OBJECT(dev), "rp-ats-id",
++                                        rp_ats_id, &errp);
++            }
+         }
+         errp = NULL;
+     }
+diff --git a/hw/core/remote-port-ats.c b/hw/core/remote-port-ats.c
+index 1f6c8d7410..27cf8c6c7b 100644
+--- a/hw/core/remote-port-ats.c
++++ b/hw/core/remote-port-ats.c
+@@ -33,10 +33,29 @@
+ #include "migration/vmstate.h"
+ #include "hw/core/qdev-properties.h"
+ #include "trace.h"
++#include "qemu/cutils.h"
+ 
+ #include "hw/core/remote-port-proto.h"
+ #include "hw/core/remote-port-ats.h"
+ 
++#define RP_TRACE_LVL_NONE   (0u)
++#define RR_TRACE_LVL_ERROR  (1u)
++#define RP_TRACE_LVL_WARN   (2u)
++#define RP_TRACE_LVL_INFO   (3u)
++
++#define RP_TRACE_LEVEL (RP_TRACE_LVL_INFO)
++
++#ifndef RP_TRACE_LEVEL
++#define RP_TRACE_LEVEL (RP_TRACE_LVL_NONE)
++#endif
++
++#define RP_TRACE(level, ...) do { \
++    if (RP_TRACE_LEVEL >= level) { \
++        fprintf(stderr,  "[TRACE] %s(): ", __func__); \
++        fprintf(stderr, ## __VA_ARGS__); \
++    } \
++} while (0)
++
+ typedef struct ATSIOMMUNotifier {
+     IOMMUNotifier n;
+     MemoryRegion *mr;
+@@ -190,6 +209,17 @@ static void rp_ats_cache_insert(RemotePortATS *s,
+     iotlb->addr_mask = mask;
+     iotlb->target_as = target_as;
+     g_array_append_val(s->cache, iotlb);
++
++    char *target_as_name = strdup(iotlb->target_as->name);
++    RP_TRACE(RP_TRACE_LVL_INFO, "IOMMUTLBEntry entry added to cache\r\n");
++    RP_TRACE(RP_TRACE_LVL_INFO, "iova: 0x%" PRIx64 " translated_addr: 0x%" \
++       PRIx64 " addr_mask: 0x%" PRIx64 " target_as: %s perm: 0x%" PRIx32 "\r\n",
++        iotlb->iova,
++        iotlb->translated_addr,
++        iotlb->addr_mask,
++        target_as_name,
++        iotlb->perm);
++    free(target_as_name);
  }
  
-+static bool rp_parse_reg(FDTGenericMMap *obj, FDTGenericRegPropInfo reg,
-+                         Error **errp)
+ static void rp_ats_iommu_unmap_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
+@@ -215,11 +245,20 @@ static bool ats_translate_address(RemotePortATS *s, struct rp_pkt *pkt,
+     mr = ats_do_translate(&s->as, pkt->ats.addr, phys_addr, phys_len,
+                           &target_as, &prot, attrs);
+     if (!mr) {
++        RP_TRACE(RP_TRACE_LVL_INFO, "Remote Port ATS translation failed\r\n");
+         return false;
+     }
+ 
++    RP_TRACE(RP_TRACE_LVL_INFO,
++        "Remote Port ATS translation succeeded - aka. ats_do_translate()\r\n");
++    RP_TRACE(RP_TRACE_LVL_INFO,
++        "phys_addr: 0x%" PRIx64 " phys_len: 0x%" PRIx64 "\r\n",
++        *phys_addr, *phys_len);
++
+     iommu_mr = memory_region_get_iommu(mr);
+     if (iommu_mr) {
++        RP_TRACE(RP_TRACE_LVL_INFO,
++        "Memory region obtained from ats_do_translate() is associated with IOMMU\r\n");
+         int iommu_idx = memory_region_iommu_attrs_to_index(iommu_mr, attrs);
+         ATSIOMMUNotifier *notifier;
+         int i;
+@@ -284,11 +323,23 @@ static void rp_ats_req(RemotePortDevice *dev, struct rp_pkt *pkt)
+ 
+     assert(!(pkt->hdr.flags & RP_PKT_FLAGS_response));
+ 
++    RP_TRACE(RP_TRACE_LVL_INFO, "Remote Port ATS request is received\r\n")
++    RP_TRACE(RP_TRACE_LVL_INFO, "cmd 0x%" PRIx32 " len: 0x%" PRIx32 " id: 0x%" \
++        PRIx32 " flags: 0x%" PRIx32 " dev: 0x%" PRIx32 "\r\n",
++        pkt->hdr.cmd, pkt->hdr.len, pkt->hdr.id, pkt->hdr.flags, pkt->hdr.dev);
++    RP_TRACE(RP_TRACE_LVL_INFO, "timestamp 0x%" PRIx64 " attributes: 0x%" PRIx64
++        " addr: 0x%" PRIx64 " len: 0x%" PRIx64 " result: 0x%" PRIx32 "\r\n",
++        pkt->ats.timestamp, pkt->ats.attributes, pkt->ats.addr, pkt->ats.len,
++        pkt->ats.result);
++
+     rp_dpkt_alloc(&s->rsp, pktlen);
+ 
+     result = ats_translate_address(s, pkt, &phys_addr, &phys_len) ?
+         RP_ATS_RESULT_ok : RP_ATS_RESULT_error;
+ 
++    RP_TRACE(RP_TRACE_LVL_INFO, "Remote Port ATS translation is %s\r\n",
++            ((result == RP_ATS_RESULT_ok) ? "successful" : "unsuccessful"));
++
+     /*
+      * delay here could be set to the annotated cost of doing issuing
+      * these accesses. QEMU doesn't support this kind of annotations
+@@ -307,18 +358,60 @@ static void rp_ats_req(RemotePortDevice *dev, struct rp_pkt *pkt)
+                              pkt->hdr.flags | RP_PKT_FLAGS_response);
+     assert(enclen == pktlen);
+ 
++    RP_TRACE(RP_TRACE_LVL_INFO, "Remote Port ATS response is generated\r\n")
++    RP_TRACE(RP_TRACE_LVL_INFO, "cmd 0x%" PRIx32 " len: 0x%" PRIx32 " id: 0x%" \
++        PRIx32 " flags: 0x%" PRIx32 " dev: 0x%" PRIx32 "\r\n",
++        be32toh(s->rsp.pkt->hdr.cmd),
++        be32toh(s->rsp.pkt->hdr.len),
++        be32toh(s->rsp.pkt->hdr.id),
++        be32toh(s->rsp.pkt->hdr.flags),
++        be32toh(s->rsp.pkt->hdr.dev));
++    RP_TRACE(RP_TRACE_LVL_INFO, "timestamp 0x%" PRIx64 " attributes: 0x%" \
++    PRIx64 " addr: 0x%" PRIx64 " len: 0x%" PRIx64 " result: 0x%" PRIx32 "\r\n",
++        be64toh(s->rsp.pkt->ats.timestamp),
++        be64toh(s->rsp.pkt->ats.attributes),
++        be64toh(s->rsp.pkt->ats.addr),
++        be64toh(s->rsp.pkt->ats.len),
++        be32toh(s->rsp.pkt->ats.result));
++
+     rp_write(s->rp, (void *)s->rsp.pkt, enclen);
+ }
+ 
++static AddressSpace *bus_iommu_address_space(BusState *iommu_bus,
++                                             uint32_t iommu_id, uint16_t devid)
 +{
-+    RemotePortMemoryMaster *s = REMOTE_PORT_MEMORY_MASTER(obj);
-+    FDTGenericMMapClass *parent_fmc =
-+        FDT_GENERIC_MMAP_CLASS(REMOTE_PORT_MEMORY_MASTER_PARENT_CLASS);
-+    int i;
-+
-+    /* Initialize rp_ops from template.  */
-+    s->rp_ops = g_malloc(sizeof *s->rp_ops);
-+    memcpy(s->rp_ops, &rp_ops_template, sizeof *s->rp_ops);
-+    s->rp_ops->valid.max_access_size = s->max_access_size;
-+    s->rp_ops->impl.max_access_size = s->max_access_size;
-+
-+    s->mmaps = g_new0(typeof(*s->mmaps), reg.n);
-+    for (i = 0; i < reg.n; ++i) {
-+        char *name = g_strdup_printf("rp-%d", i);
-+
-+        s->mmaps[i].offset = reg.a[i];
-+        memory_region_init_io(&s->mmaps[i].iomem, OBJECT(obj), s->rp_ops,
-+                              &s->mmaps[i], name, reg.s[i]);
-+        sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmaps[i].iomem);
-+        s->mmaps[i].parent = s;
-+        g_free(name);
++    if (iommu_bus && iommu_bus->iommu[iommu_id].iommu_ops) {
++        return iommu_bus->iommu[iommu_id].iommu_ops->get_address_space(
++            iommu_bus, iommu_bus->iommu[iommu_id].iommu_opaque, devid);
 +    }
-+
-+    return parent_fmc ? parent_fmc->parse_reg(obj, reg, errp) : false;
++    return &address_space_memory;
 +}
 +
- static Property rp_properties[] = {
-     DEFINE_PROP_UINT32("map-num", RemotePortMemoryMaster, map_num, 0),
-     DEFINE_PROP_UINT64("map-offset", RemotePortMemoryMaster, map_offset, 0),
-@@ -289,9 +320,11 @@ static Property rp_properties[] = {
- 
- static void rp_memory_master_class_init(ObjectClass *oc, const void *data)
++static void rp_ats_init_done(Notifier *notifier, void *data)
++{
++    RemotePortATS *s = container_of(notifier, RemotePortATS, machine_done);
++    AddressSpace *as;
++
++    if (s->rp_stream_id) {
++        as = bus_iommu_address_space(sysbus_get_default(),
++                                     s->iommu_id, s->rp_stream_id);
++        address_space_init(&s->as, as->root, "dma");
++    } else {
++        address_space_init(&s->as, s->mr ? s->mr : get_system_memory(), "dma");
++    }
++}
++
+ static void rp_ats_realize(DeviceState *dev, Error **errp)
  {
-+    FDTGenericMMapClass *fmc = FDT_GENERIC_MMAP_CLASS(oc);
-     DeviceClass *dc = DEVICE_CLASS(oc);
-     device_class_set_props_n(dc, rp_properties, ARRAY_SIZE(rp_properties));
-     dc->realize = rp_memory_master_realize;
-+    fmc->parse_reg = rp_parse_reg;
+     RemotePortATS *s = REMOTE_PORT_ATS(dev);
+ 
+     s->peer = rp_get_peer(s->rp);
+-    address_space_init(&s->as, s->mr ? s->mr : get_system_memory(), "ats-as");
+ 
+     s->iommu_notifiers = g_array_new(false, true, sizeof(ATSIOMMUNotifier *));
+     s->cache = g_array_new(false, true, sizeof(IOMMUTLBEntry *));
++
++    s->machine_done.notify = rp_ats_init_done;
++    qemu_add_machine_init_done_notifier(&s->machine_done);
  }
  
- static const TypeInfo rp_info = {
-@@ -301,6 +334,7 @@ static const TypeInfo rp_info = {
-     .instance_init = rp_memory_master_init,
-     .class_init    = rp_memory_master_class_init,
-     .interfaces    = (InterfaceInfo[]) {
-+        { TYPE_FDT_GENERIC_MMAP },
-         { TYPE_REMOTE_PORT_DEVICE },
-         { },
-     },
+ static void rp_prop_allow_set_link(const Object *obj, const char *name,
+@@ -363,7 +456,9 @@ static void rp_ats_unrealize(DeviceState *dev)
+ }
+ 
+ static Property rp_properties[] = {
++    DEFINE_PROP_UINT32("iommu-id", RemotePortATS, iommu_id, 0),
+     DEFINE_PROP_UINT32("rp-chan0", RemotePortATS, rp_dev, 0),
++    DEFINE_PROP_UINT32("rp-stream-id", RemotePortATS, rp_stream_id, 0),
+ };
+ 
+ static void rp_ats_class_init(ObjectClass *oc, const void *data)
+diff --git a/hw/core/remote-port-memory-slave.c b/hw/core/remote-port-memory-slave.c
+index 0419e75bfa..2694f3edae 100644
+--- a/hw/core/remote-port-memory-slave.c
++++ b/hw/core/remote-port-memory-slave.c
+@@ -192,13 +192,38 @@ static AddressSpace *bus_iommu_address_space(BusState *iommu_bus,
+     return &address_space_memory;
+ }
+ 
++static void rp_memory_slave_create_ats(RemotePortMemorySlave *s)
++{
++    Object *tmp_obj;
++
++    /* Create RP ATS dev. */
++    tmp_obj = object_new(TYPE_REMOTE_PORT_ATS);
++    s->rp_ats = REMOTE_PORT_ATS(tmp_obj);
++    object_property_add_child(OBJECT(s), "rp-ats", tmp_obj);
++    object_unref(tmp_obj);
++
++     /* Setup the RP ATS dev. */
++    rp_device_attach(OBJECT(s->rp), OBJECT(s->rp_ats), 0,
++                     s->rp_ats_id, &error_abort);
++    object_property_set_int(OBJECT(s->rp_ats), "iommu-id",
++                            s->iommu_id, &error_abort);
++    object_property_set_int(OBJECT(s->rp_ats), "rp-stream-id",
++                            s->rp_stream_id, &error_abort);
++    object_property_set_bool(OBJECT(s->rp_ats), "realized",
++                             true, &error_abort);
++
++    /* Setup the RP Slave dev. */
++    object_property_set_link(OBJECT(s), "rp-ats-cache",
++                             OBJECT(s->rp_ats), &error_abort);
++}
++
+ static void rp_memory_slave_init_done(Notifier *notifier, void *data)
+ {
+     RemotePortMemorySlave *s = container_of(notifier, RemotePortMemorySlave,
+                                             machine_done);
+     AddressSpace *as;
+ 
+-    if (s->channel_id) {
++    if (s->rp_stream_id) {
+         as = bus_iommu_address_space(sysbus_get_default(), s->iommu_id,
+                                      s->rp_stream_id);
+         address_space_init(&s->as, as->root, "dma");
+@@ -212,6 +237,11 @@ static void rp_memory_slave_realize(DeviceState *dev, Error **errp)
+     RemotePortMemorySlave *s = REMOTE_PORT_MEMORY_SLAVE(dev);
+ 
+     s->peer = rp_get_peer(s->rp);
++
++    if (s->rp_ats_id > 0) {
++        rp_memory_slave_create_ats(s);
++    }
++
+     s->machine_done.notify = rp_memory_slave_init_done;
+     qemu_add_machine_init_done_notifier(&s->machine_done);
+ }
+@@ -260,8 +290,8 @@ static void rp_memory_slave_unrealize(DeviceState *dev)
+ 
+ static Property rp_properties[] = {
+     DEFINE_PROP_UINT32("iommu-id", RemotePortMemorySlave, iommu_id, 0),
+-    DEFINE_PROP_UINT32("rp-chan0", RemotePortMemorySlave, channel_id, 0),
+-    DEFINE_PROP_END_OF_LIST()
++    DEFINE_PROP_UINT32("rp-chan0", RemotePortMemorySlave, rp_stream_id, 0),
++    DEFINE_PROP_UINT32("rp-ats-id", RemotePortMemorySlave, rp_ats_id, 0),
+ };
+ 
+ static void rp_memory_slave_class_init(ObjectClass *oc, const void *data)
+diff --git a/include/hw/core/remote-port-ats.h b/include/hw/core/remote-port-ats.h
+index 8bdae1bce9..9e1a2cf419 100644
+--- a/include/hw/core/remote-port-ats.h
++++ b/include/hw/core/remote-port-ats.h
+@@ -45,6 +45,9 @@ typedef struct {
+     GArray *iommu_notifiers;
+     uint32_t rp_dev;
+     GArray *cache; /* Translation cache */
++    Notifier machine_done;
++    uint32_t rp_stream_id;
++    uint32_t iommu_id;
+ } RemotePortATS;
+ 
+ #define TYPE_REMOTE_PORT_ATS_CACHE "remote-port-ats-cache"
+diff --git a/include/hw/core/remote-port-memory-slave.h b/include/hw/core/remote-port-memory-slave.h
+index 3161073a3f..56959ee124 100644
+--- a/include/hw/core/remote-port-memory-slave.h
++++ b/include/hw/core/remote-port-memory-slave.h
+@@ -23,7 +23,6 @@ typedef struct RemotePortMemorySlave {
+     /* private */
+     SysBusDevice parent;
+     /* public */
+-    uint32_t channel_id;
+     struct RemotePort *rp;
+     struct rp_peer_state *peer;
+     MemoryRegion *mr;
+@@ -32,6 +31,9 @@ typedef struct RemotePortMemorySlave {
+     RemotePortDynPkt rsp;
+     RemotePortATSCache *ats_cache;
+     Notifier machine_done;
++    uint32_t rp_stream_id;
++    RemotePortATS *rp_ats;
++    uint32_t rp_ats_id;
+     uint32_t iommu_id;
+ } RemotePortMemorySlave;
+ #endif
 -- 
 2.43.0
 

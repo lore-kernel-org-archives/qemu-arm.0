@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81A86E8B39F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00EF9E9128F
 	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 14:26:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo0Iw-0000kz-1j; Thu, 05 Feb 2026 09:25:58 -0500
+	id 1vo0JF-0000wN-3A; Thu, 05 Feb 2026 09:26:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo0Iu-0000ki-Vv
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:25:57 -0500
-Received: from qs-2002i-snip4-8.eps.apple.com ([57.103.87.219]
+ id 1vo0JC-0000vB-Ca
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:26:14 -0500
+Received: from qs-2003j-snip4-5.eps.apple.com ([57.103.86.98]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo0Is-0007mw-GK
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:25:56 -0500
+ id 1vo0J9-0007uM-01
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:26:13 -0500
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-2 (Postfix) with ESMTPS id
- D937C1800D8D; Thu,  5 Feb 2026 14:25:48 +0000 (UTC)
+ 45674180010A; Thu,  5 Feb 2026 14:26:05 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1770301552; x=1772893552;
- bh=aNW2530XDo++mvDc2bovAeWz05teaNUt8GoOQjDWdkM=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=W5TeJLD8dijLnlEwbOpDGyTTCfAAdzXuxzNUzz+q1Yd/eeTqFVdVGkYEivlgp5l+YUm1UJMD/iNAyx3tDvwcH2M9XV4jiXXP2I10eoekMKrSs/XX7swLVlNQRqkz6KWJ1+KTefnSLGdpeCqixC+1SRusNbP1SqR2ChV0sUyCbvYPJ5c6JtIVneZajKv9L4qqd8TNQMIxVrX8mC50TipskP8IOrEC9Q4Myk8KhroWi9mBKeQk4F/VTchT51zzbwIO1po0uWrn3HH6oEAs+rRkMggpTsN0+BjT1tsjg/cuvmoCAV8dUL8mseDOFnSvFgvhAHt9H96Ic96JkxFelVAgig==
+ s=sig1; t=1770301570; x=1772893570;
+ bh=FjtQ8XSoceu/POn4mLePgEXcXNSnO3IPji7VW8Vfg1M=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=SdqB3FjG5b40BlQQFyl5YYy0TCbpWm9iu1b55GMC1eSroeEMJcuRDQnfvN0Bgz9UuSWbxYv5aSOYl88cQWl/5Huw5K59+mK+uWQRY1D3Lf0BdlyrVzm1VfdR5mJL6Vhceo7wy3ZGQH3MFoaKY9O48K8KthHVrCCsXIsdED7Be8QutNh8TrwofDFqq7kBX+d8mMI18K1YTKCw968ph3W1PQIhYAkRTScla1ljv5S0csrwti0O8wTApPKpwEB+tAdXuFVJVsFqFPkvFE31PjAVGABWSn/plj9cWHFZfLGvl2a+IUkPiA/iq3up9JIu6gcSF6euEsn1Dq+q+v0uNXR7Tw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-2 (Postfix) with ESMTPSA id
- 5DDC31800273; Thu,  5 Feb 2026 14:25:45 +0000 (UTC)
+ F0DA4180027C; Thu,  5 Feb 2026 14:25:59 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org,
 	mohamed@unpredictable.fr
@@ -54,46 +54,45 @@ Cc: Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>,
  Roman Bolshakov <rbolshakov@ddn.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v21 00/22] WHPX support for Arm
-Date: Thu,  5 Feb 2026 15:25:18 +0100
-Message-ID: <20260205142543.64818-1-mohamed@unpredictable.fr>
+Subject: [PATCH v21 05/22] tests: data: update AArch64 ACPI tables
+Date: Thu,  5 Feb 2026 15:25:23 +0100
+Message-ID: <20260205142543.64818-6-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260205142543.64818-1-mohamed@unpredictable.fr>
+References: <20260205142543.64818-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA1MDEwOCBTYWx0ZWRfX6T7GZtbY1D1w
- K4lC1YmRMU1PKzvu7fQvgrEizZ6O4G01TqSYMlyZbGbMlMqhKpLMMVudySdti7dZa6okuXktRsd
- 082RwJ0fhLCcqI7aYP9wQ3d8JRmfuhMp9i9tgm1zRIlsdfdT4vv5fFaSdXmWdOwSfpuKzayRxKh
- AMEVA/9tzfUKwmqMonwbOSIEhmB9+WHFId2MTYZS4I3S41sUAmwUpqcYa9gG5vhAWuKnapjPcOG
- xX5uUwGSBNCVsxWkikgLRujXgsmcrLQIn5MVtB18P9Fqdf3NAeOcbyEruk1Hac8c95khE6ET3x5
- rqvwNUAIHgkBxkN+LFMdVV1H60DTPFOYhJg+5/8LGnwn2yqmeAWNCgYFJl4w24=
-X-Authority-Info-Out: v=2.4 cv=a9A9NESF c=1 sm=1 tr=0 ts=6984a86e
+X-Authority-Info-Out: v=2.4 cv=QLNlhwLL c=1 sm=1 tr=0 ts=6984a880
  cx=c_apl:c_apl_out:c_pps a=bsP7O+dXZ5uKcj+dsLqiMw==:117
- a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10
- a=VkNPw1HP01LnGYTKEx00:22 a=NEAV23lmAAAA:8 a=GaQpPoNlAAAA:8 a=KKAkSRfTAAAA:8
- a=mDV3o1hIAAAA:8 a=3sHXeTOdJn_U_PFnuNgA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=xF5q_uoM5gZT5J3czcBi:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: nPSLHYG4e6exdvX4k2jALrmnoAITN8Vw
-X-Proofpoint-ORIG-GUID: nPSLHYG4e6exdvX4k2jALrmnoAITN8Vw
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=kIK1FOY676eA-lZfg3QA:9 a=cvk_HSt5zwsbDY-e:21
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA1MDEwOCBTYWx0ZWRfX/M9+l1tbfS5W
+ G/Fh7Mf8sgjYCz2uayhf4lbjJWFs0bApy7ouE5QYaUnNp3Wl9Dyrz+4PgD5BTrjo4WLRwwVZgpH
+ yUzhHHVpRkTUMcmqgSK0cBkFMcZKtViP0rbTI+w3rcwM3qLwFh5maUgy7Ywufpk7623aLn/XoGo
+ r5Bi71I9Frj21Jne+twcRdpGiY+HX+eDYGt3XrIASCCbKOfi7TjRwgCv6+TFXY70YRHM6o3iQp8
+ b8a3rYMWcUDAFFk/zDjr7weqLuRJsJFJ72XVtkHHsmwSl1yFvV5cfL351s/zHSq/bXhOPz54Cbu
+ yTeqVwhDbX6oVl2E9mvgtgEAZbkmR8sQTEbVOcp12c9V4AXiscGQBzlADgObXI=
+X-Proofpoint-GUID: f0TROGaGKPOlfYtPr3GHgLL2Pw7TC3Ne
+X-Proofpoint-ORIG-GUID: f0TROGaGKPOlfYtPr3GHgLL2Pw7TC3Ne
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-05_03,2026-02-05_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- mlxlogscore=999 spamscore=0 suspectscore=0 adultscore=0 malwarescore=0
- bulkscore=0 mlxscore=0 clxscore=1030 lowpriorityscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ phishscore=0 adultscore=0 mlxscore=0 spamscore=0
+ bulkscore=0 clxscore=1030
+ malwarescore=0 lowpriorityscore=0 suspectscore=0 classifier=spam authscore=0
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2602050108
-X-JNJ: AAAAAAABnfYLq7FfSuDiiRQniOXLGn95bbQ9JSKitZk/y8Lp0zBrwHi2d3skSKa67oHCbLJbchuF2jcWdtV61AlucXi8Ue9xtuPPIUFNpI6jrKJoAlz8CraznHL7HhT1Mmo5ef8DViDLiWbeNZ0q5NFTXgZscylQVXuIEwB460c/OFl5axstCDywcXhY2DMrpeX+np2oKHXvBfrCnoG0qCFh6nd2XQpkzUYvB4QzYaevjVS+qJTVJ/Aga4Ik02aY6OSVKNVCL61WrCOQOihfTIH4NXCCbVPPcrnE3dmi0WVZ7v4SXp4kycWHHbE6YRd9+TX2vJ9NUyRctxBR2t1pRxGUDSOcs9lNWaQ1Y47eUfWaZ64pIITdcxn8Ph1KAARyk5GUVAgZY39Vvs5BCP0o6MuSvF8kvI0mNNEJhE9ESkgxtj1BjD3CaPrvjM66YF4SqjYRnK/MRaWpPOeRDJRDFOWCTcfRPAYKnLQRUvOC8HFgXxlmpXHkAds2x8uguVOv3LAKMdWPtW/fU7GPHgE70PC2DNQ8sCEzPYrlblwTxNFpLpOoM3JTeHsy+bUspqw/7LmhIpCSNcBpNUKh8TO+TGtldNWc64jHB7iPcmjW2GaIy25K1BFmX5OuA0ua8IV5Su3BksGLd090pD02kDtOeUkMZa4Yt/jQ4KyXLVNTWzi6BzDKchObAbzOIeWbDKdrEOLxzMr8k4MzaCZY2McvBPGAhwyiPyAfpjuJblK/lXbfjTWqep0iX3HcqforE27Kjdf1ABj5VbMDU9fD/gUm52AwYwNNiexDc1YFJZ7TGkkucY6qRD8bzyJ6+3OnKu3VgCneado3cepWol9kE0S0KRm3X7BmeFmd9AsNKLh1jcq8wVFyvgIt6kQfyiZ4HxfvUUY+k7iTtzalEUhg/JXsSqwwhOJqUVFh2X8SDi4pWNbqAlirdD16Pp++YGM=
-Received-SPF: pass client-ip=57.103.87.219;
+X-JNJ: AAAAAAABppGMm0s31tsO9pxvKH28YHSru4yu3DiYsjZxRgEufYfkUsqbwEgXTC0Gw5YWsNuwGlcVnVgFMFBDD4RZwWKLfw4RIxpHqZWzO8z9bYuz12taGqJb+hPxA1SDTlac0q5O8zxVZFNeXtz6/xNCDfOpYcjb+V9ZStwJUmIx0jr1FkU4umLzEhZJWnppsXZq/Vn2eKZWYyPOlgEER1//yT/0q80SMCr9oRimXkaZvOfEmlpKfB5jZPjkKOEY18uNZi8Xeam6xVUjJRlJzDAzrE3e+hL6UQckizW0r6TKa0DSCBYXGVX17tUyhtudb7nPSVkXEE2RhbScHaHWKKDfshd/RKfhLsGHafHpmmmi7EB/2L6RA9iZHwiljKAk6MFFjpo/eSFLS7XheN45bD9KDH86bIEvNBA1HQ1Wu86WtyIYf5fSaqgjEbqxii1NAR8jEhHy3RLlFMT3m8wZTf9jCOxiOTMqv0Ne92ni2tCW8rYsd1a+m5NN9omrQb3a8Qtl30bG0jVByW7Xn78zpYbIETarnDZLQ82pxbDNhY+vKjeuTy6+TjbIYWeTsvqls9/73+UlcVtN8arLrPra14vGrFxkfx5o7oJnxrco3a6oovZK5XmIhfCz+VsLPphQEZLl07YOaKZuaw5HMZQbfNrWznq6H4JMySOJTyHHZMZvXwJVdduH0N1iCy7eCOhQNu1uhn4Q/qwPb5j7ziaAvJJgFpE24uIR/e6aVoW58a+pzwKgNMDVMU6gZ8oe5lbNy5kDxU4U2SuIO5nJkGmPKV34/L50VhzfdgtAClpdgfcp2xCQe1/jBWyH4b7ivmQqN+MfmHILRauRe30VAAb1lodKDGQgzIQwEfp2JpNN6W8+p/K+qyD50MkRv5lS5WwJLNPZw9EBSXd9fPJ9BVYSo4yltdQGjLlmwYfNLu4uolg6ZfAj4UZXpMzRF8q2BdTKn3n6aa3IgLUe4A==
+Received-SPF: pass client-ip=57.103.86.98;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -4
-X-Spam_score: -0.5
-X-Spam_bar: /
-X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- URIBL_SBL=1.623 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,235 +108,591 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Link to branch: https://github.com/mediouni-m/qemu whpx (tag for this submission: whpx-v21)
+After the previous commit introducing GICv3 + GICv2m configurations,
+update the AArch64 ACPI tables for the GICv2 case.
 
-Patches without a review: patches 3, 5, 6, 7
+Changes to the ACPI tables:
 
-Missing features:
-- VM save-restore: interrupt controller state notably
-- SVE register sync: I didn't have the time to test this on pre-release hardware with SVE2 support yet.
-So SVE2 is currently masked for VMs when running this.
+tests/data/acpi/aarch64/virt/IORT.dsl:
 
-Known bugs:
-- U-Boot still doesn't work (hangs when trying to parse firmware) but EDK2 does.
+@@ -11,68 +11,49 @@
+  */
 
-Note:
+ [000h 0000 004h]                   Signature : "IORT"    [IO Remapping Table]
+-[004h 0004 004h]                Table Length : 00000080
++[004h 0004 004h]                Table Length : 00000054
+ [008h 0008 001h]                    Revision : 05
+-[009h 0009 001h]                    Checksum : B1
++[009h 0009 001h]                    Checksum : 3C
+ [00Ah 0010 006h]                      Oem ID : "BOCHS "
+ [010h 0016 008h]                Oem Table ID : "BXPC    "
+ [018h 0024 004h]                Oem Revision : 00000001
+ [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
+ [020h 0032 004h]       Asl Compiler Revision : 00000001
 
-"target/arm/kvm: add constants for new PSCI versions" taken from the mailing list.
+-[024h 0036 004h]                  Node Count : 00000002
++[024h 0036 004h]                  Node Count : 00000001
+ [028h 0040 004h]                 Node Offset : 00000030
+ [02Ch 0044 004h]                    Reserved : 00000000
 
-"accel/system: Introduce hwaccel_enabled() helper" taken from the mailing list, added here
-as part of this series to make it compilable as a whole.
+-[030h 0048 001h]                        Type : 00
+-[031h 0049 002h]                      Length : 0018
+-[033h 0051 001h]                    Revision : 01
++[030h 0048 001h]                        Type : 02
++[031h 0049 002h]                      Length : 0024
++[033h 0051 001h]                    Revision : 03
+ [034h 0052 004h]                  Identifier : 00000000
+ [038h 0056 004h]               Mapping Count : 00000000
+-[03Ch 0060 004h]              Mapping Offset : 00000000
++[03Ch 0060 004h]              Mapping Offset : 00000024
 
-And another note:
+-[040h 0064 004h]                    ItsCount : 00000001
+-[044h 0068 004h]                 Identifiers : 00000000
+-
+-[048h 0072 001h]                        Type : 02
+-[049h 0073 002h]                      Length : 0038
+-[04Bh 0075 001h]                    Revision : 03
+-[04Ch 0076 004h]                  Identifier : 00000001
+-[050h 0080 004h]               Mapping Count : 00000001
+-[054h 0084 004h]              Mapping Offset : 00000024
+-
+-[058h 0088 008h]           Memory Properties : [IORT Memory Access Properties]
+-[058h 0088 004h]             Cache Coherency : 00000001
+-[05Ch 0092 001h]       Hints (decoded below) : 00
++[040h 0064 008h]           Memory Properties : [IORT Memory Access Properties]
++[040h 0064 004h]             Cache Coherency : 00000001
++[044h 0068 001h]       Hints (decoded below) : 00
+                                    Transient : 0
+                               Write Allocate : 0
+                                Read Allocate : 0
+                                     Override : 0
+-[05Dh 0093 002h]                    Reserved : 0000
+-[05Fh 0095 001h] Memory Flags (decoded below) : 03
++[045h 0069 002h]                    Reserved : 0000
++[047h 0071 001h] Memory Flags (decoded below) : 03
+                                    Coherency : 1
+                             Device Attribute : 1
+                Ensured Coherency of Accesses : 0
+-[060h 0096 004h]               ATS Attribute : 00000000
+-[064h 0100 004h]          PCI Segment Number : 00000000
+-[068h 0104 001h]           Memory Size Limit : 40
+-[069h 0105 002h]          PASID Capabilities : 0000
+-[06Bh 0107 001h]                    Reserved : 00
++[048h 0072 004h]               ATS Attribute : 00000000
++[04Ch 0076 004h]          PCI Segment Number : 00000000
++[050h 0080 001h]           Memory Size Limit : 40
++[051h 0081 002h]          PASID Capabilities : 0000
++[053h 0083 001h]                    Reserved : 00
 
-Seems that unlike HVF there isn't direct correspondence between WHv registers and the actual register layout,
-so didn't do changes there to a sysreg.inc.
+-[06Ch 0108 004h]                  Input base : 00000000
+-[070h 0112 004h]                    ID Count : 0000FFFF
+-[074h 0116 004h]                 Output Base : 00000000
+-[078h 0120 004h]            Output Reference : 00000030
+-[07Ch 0124 004h]       Flags (decoded below) : 00000000
+-                              Single Mapping : 0
++Raw Table Data: Length 84 (0x54)
 
-Updates for v21:
-- Change commit messsage a bit for the ACPI table updates so that it doesn't get parsed as a diff
-- Split "qtest: hw/arm: virt: add new test case for GICv3 + GICv2m" into two commits
+-Raw Table Data: Length 128 (0x80)
+-
+-    0000: 49 4F 52 54 80 00 00 00 05 B1 42 4F 43 48 53 20  // IORT......BOCHS
++    0000: 49 4F 52 54 54 00 00 00 05 3C 42 4F 43 48 53 20  // IORTT....<BOCHS
+     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
+-    0020: 01 00 00 00 02 00 00 00 30 00 00 00 00 00 00 00  // ........0.......
+-    0030: 00 18 00 01 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+-    0040: 01 00 00 00 00 00 00 00 02 38 00 03 01 00 00 00  // .........8......
+-    0050: 01 00 00 00 24 00 00 00 01 00 00 00 00 00 00 03  // ....$...........
+-    0060: 00 00 00 00 00 00 00 00 40 00 00 00 00 00 00 00  // ........@.......
+-    0070: FF FF 00 00 00 00 00 00 30 00 00 00 00 00 00 00  // ........0.......
++    0020: 01 00 00 00 01 00 00 00 30 00 00 00 00 00 00 00  // ........0.......
++    0030: 02 24 00 03 00 00 00 00 00 00 00 00 24 00 00 00  // .$..........$...
++    0040: 01 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00  // ................
++    0050: 40 00 00 00                                      // @...
 
-Updates for v20:
-- Rebase on current origin/staging
+tests/data/acpi/aarch64/virt/IORT.smmuv3-dev.dsl:
 
-Updates for v19:
-- Address review comments
-- Documentation update
-- Base on top of the current target-arm queue (https://patchew.org/QEMU/20260129160917.1415092-1-peter.maydell@linaro.org/)
+@@ -11,164 +11,120 @@
+  */
 
-Updates for v18:
-- MSI-X config patch: remove workaround to keep existing ACPI tables, as even Ubuntu has hibernation support
-off in their stock kernel...
-- Fold patch "whpx: arm64: gicv3: add migration blocker" into "whpx: interrupt controller support"
-- address review for "whpx: interrupt controller support"
+ [000h 0000 004h]                   Signature : "IORT"    [IO Remapping Table]
+-[004h 0004 004h]                Table Length : 0000016C
++[004h 0004 004h]                Table Length : 00000104
+ [008h 0008 001h]                    Revision : 05
+-[009h 0009 001h]                    Checksum : C8
++[009h 0009 001h]                    Checksum : 49
+ [00Ah 0010 006h]                      Oem ID : "BOCHS "
+ [010h 0016 008h]                Oem Table ID : "BXPC    "
+ [018h 0024 004h]                Oem Revision : 00000001
+ [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
+ [020h 0032 004h]       Asl Compiler Revision : 00000001
 
-Updates for v17:
-- Reworking the MSI-X configuration patches
-- Accordingly, its= retains the same behavior as before, so add a test case for GICv3 + GICv2m.
-- Squashing "whpx: arm64: check for physical address width after WHPX availability"
-with "whpx: arm64: clamp down IPA size"
-- Not worthwhile to have a separate GICv3 + GICv2m patch, squash it into the "rework MSI-X
-configuration" patch
-- Address review comment on "whpx: arm64: gicv3: add migration blocker"
+-[024h 0036 004h]                  Node Count : 00000004
++[024h 0036 004h]                  Node Count : 00000003
+ [028h 0040 004h]                 Node Offset : 00000030
+ [02Ch 0044 004h]                    Reserved : 00000000
 
-Updates since v16:
-- Address some last review comments
-- Rebase with the latest origin/staging
+-[030h 0048 001h]                        Type : 00
+-[031h 0049 002h]                      Length : 0018
+-[033h 0051 001h]                    Revision : 01
++[030h 0048 001h]                        Type : 04
++[031h 0049 002h]                      Length : 0044
++[033h 0051 001h]                    Revision : 04
+ [034h 0052 004h]                  Identifier : 00000000
+ [038h 0056 004h]               Mapping Count : 00000000
+ [03Ch 0060 004h]              Mapping Offset : 00000000
 
-Updates since v15:
-- Some last tiny changes addressed.
+-[040h 0064 004h]                    ItsCount : 00000001
+-[044h 0068 004h]                 Identifiers : 00000000
+-
+-[048h 0072 001h]                        Type : 04
+-[049h 0073 002h]                      Length : 0058
+-[04Bh 0075 001h]                    Revision : 04
+-[04Ch 0076 004h]                  Identifier : 00000001
+-[050h 0080 004h]               Mapping Count : 00000001
+-[054h 0084 004h]              Mapping Offset : 00000044
+-
+-[058h 0088 008h]                Base Address : 000000000C000000
+-[060h 0096 004h]       Flags (decoded below) : 00000001
++[040h 0064 008h]                Base Address : 000000000C000000
++[048h 0072 004h]       Flags (decoded below) : 00000001
+                              COHACC Override : 1
+                                HTTU Override : 0
+                       Proximity Domain Valid : 0
+                               DeviceID Valid : 0
+-[064h 0100 004h]                    Reserved : 00000000
+-[068h 0104 008h]               VATOS Address : 0000000000000000
+-[070h 0112 004h]                       Model : 00000000
+-[074h 0116 004h]                  Event GSIV : 00000090
+-[078h 0120 004h]                    PRI GSIV : 00000091
+-[07Ch 0124 004h]                   GERR GSIV : 00000093
+-[080h 0128 004h]                   Sync GSIV : 00000092
+-[084h 0132 004h]            Proximity Domain : 00000000
+-[088h 0136 004h]     Device ID Mapping Index : 00000000
++[04Ch 0076 004h]                    Reserved : 00000000
++[050h 0080 008h]               VATOS Address : 0000000000000000
++[058h 0088 004h]                       Model : 00000000
++[05Ch 0092 004h]                  Event GSIV : 00000090
++[060h 0096 004h]                    PRI GSIV : 00000091
++[064h 0100 004h]                   GERR GSIV : 00000093
++[068h 0104 004h]                   Sync GSIV : 00000092
++[06Ch 0108 004h]            Proximity Domain : 00000000
++[070h 0112 004h]     Device ID Mapping Index : 00000000
 
-Updates since v14:
-- Working around https://gcc.gnu.org/bugzilla/show_bug.cgi?id=87950
+-[08Ch 0140 004h]                  Input base : 00000000
+-[090h 0144 004h]                    ID Count : 0000FFFF
+-[094h 0148 004h]                 Output Base : 00000000
+-[098h 0152 004h]            Output Reference : 00000030
+-[09Ch 0156 004h]       Flags (decoded below) : 00000000
+-                              Single Mapping : 0
++[074h 0116 001h]                        Type : 04
++[075h 0117 002h]                      Length : 0044
++[077h 0119 001h]                    Revision : 04
++[078h 0120 004h]                  Identifier : 00000001
++[07Ch 0124 004h]               Mapping Count : 00000000
++[080h 0128 004h]              Mapping Offset : 00000000
 
-It turns out that we can't avoid default: in case with an enum on GCC without warnings,
-although Clang allows that behavior.
+-[0A0h 0160 001h]                        Type : 04
+-[0A1h 0161 002h]                      Length : 0058
+-[0A3h 0163 001h]                    Revision : 04
+-[0A4h 0164 004h]                  Identifier : 00000002
+-[0A8h 0168 004h]               Mapping Count : 00000001
+-[0ACh 0172 004h]              Mapping Offset : 00000044
+-
+-[0B0h 0176 008h]                Base Address : 000000000C020000
+-[0B8h 0184 004h]       Flags (decoded below) : 00000001
++[084h 0132 008h]                Base Address : 000000000C020000
++[08Ch 0140 004h]       Flags (decoded below) : 00000001
+                              COHACC Override : 1
+                                HTTU Override : 0
+                       Proximity Domain Valid : 0
+                               DeviceID Valid : 0
+-[0BCh 0188 004h]                    Reserved : 00000000
+-[0C0h 0192 008h]               VATOS Address : 0000000000000000
+-[0C8h 0200 004h]                       Model : 00000000
+-[0CCh 0204 004h]                  Event GSIV : 00000094
+-[0D0h 0208 004h]                    PRI GSIV : 00000095
+-[0D4h 0212 004h]                   GERR GSIV : 00000097
+-[0D8h 0216 004h]                   Sync GSIV : 00000096
+-[0DCh 0220 004h]            Proximity Domain : 00000000
+-[0E0h 0224 004h]     Device ID Mapping Index : 00000000
++[090h 0144 004h]                    Reserved : 00000000
++[094h 0148 008h]               VATOS Address : 0000000000000000
++[09Ch 0156 004h]                       Model : 00000000
++[0A0h 0160 004h]                  Event GSIV : 00000094
++[0A4h 0164 004h]                    PRI GSIV : 00000095
++[0A8h 0168 004h]                   GERR GSIV : 00000097
++[0ACh 0172 004h]                   Sync GSIV : 00000096
++[0B0h 0176 004h]            Proximity Domain : 00000000
++[0B4h 0180 004h]     Device ID Mapping Index : 00000000
 
-Updates since v13:
-- Addressing review comments from Akihiko Odaki
-- Squash GICv2 ACPI workaround patch and have it documented as a separate function
-- Rebase with current origin/staging
+-[0E4h 0228 004h]                  Input base : 00000000
+-[0E8h 0232 004h]                    ID Count : 0000FFFF
+-[0ECh 0236 004h]                 Output Base : 00000000
+-[0F0h 0240 004h]            Output Reference : 00000030
+-[0F4h 0244 004h]       Flags (decoded below) : 00000000
+-                              Single Mapping : 0
++[0B8h 0184 001h]                        Type : 02
++[0B9h 0185 002h]                      Length : 004C
++[0BBh 0187 001h]                    Revision : 03
++[0BCh 0188 004h]                  Identifier : 00000002
++[0C0h 0192 004h]               Mapping Count : 00000002
++[0C4h 0196 004h]              Mapping Offset : 00000024
 
-Updates since v12:
-- Address review comments and make sure that checkpatch shows no errors, make test also ran
-- Tested the Windows x86_64 build too in addition to Windows arm64 and macOS arm64
-- Hopefully the last revision, should be ready to merge.
+-[0F8h 0248 001h]                        Type : 02
+-[0F9h 0249 002h]                      Length : 0074
+-[0FBh 0251 001h]                    Revision : 03
+-[0FCh 0252 004h]                  Identifier : 00000003
+-[100h 0256 004h]               Mapping Count : 00000004
+-[104h 0260 004h]              Mapping Offset : 00000024
+-
+-[108h 0264 008h]           Memory Properties : [IORT Memory Access Properties]
+-[108h 0264 004h]             Cache Coherency : 00000001
+-[10Ch 0268 001h]       Hints (decoded below) : 00
++[0C8h 0200 008h]           Memory Properties : [IORT Memory Access Properties]
++[0C8h 0200 004h]             Cache Coherency : 00000001
++[0CCh 0204 001h]       Hints (decoded below) : 00
+                                    Transient : 0
+                               Write Allocate : 0
+                                Read Allocate : 0
+                                     Override : 0
+-[10Dh 0269 002h]                    Reserved : 0000
+-[10Fh 0271 001h] Memory Flags (decoded below) : 03
++[0CDh 0205 002h]                    Reserved : 0000
++[0CFh 0207 001h] Memory Flags (decoded below) : 03
+                                    Coherency : 1
+                             Device Attribute : 1
+                Ensured Coherency of Accesses : 0
+-[110h 0272 004h]               ATS Attribute : 00000000
+-[114h 0276 004h]          PCI Segment Number : 00000000
+-[118h 0280 001h]           Memory Size Limit : 40
+-[119h 0281 002h]          PASID Capabilities : 0000
+-[11Bh 0283 001h]                    Reserved : 00
++[0D0h 0208 004h]               ATS Attribute : 00000000
++[0D4h 0212 004h]          PCI Segment Number : 00000000
++[0D8h 0216 001h]           Memory Size Limit : 40
++[0D9h 0217 002h]          PASID Capabilities : 0000
++[0DBh 0219 001h]                    Reserved : 00
 
-Updates since v11:
-- Address review comments
-- Rebase up to latest staging
-- Switch to assuming Qemu 11.0 as the newest machine model
+-[11Ch 0284 004h]                  Input base : 00000000
+-[120h 0288 004h]                    ID Count : 000001FF
+-[124h 0292 004h]                 Output Base : 00000000
+-[128h 0296 004h]            Output Reference : 00000048
+-[12Ch 0300 004h]       Flags (decoded below) : 00000000
++[0DCh 0220 004h]                  Input base : 00000000
++[0E0h 0224 004h]                    ID Count : 000001FF
++[0E4h 0228 004h]                 Output Base : 00000000
++[0E8h 0232 004h]            Output Reference : 00000030
++[0ECh 0236 004h]       Flags (decoded below) : 00000000
+                               Single Mapping : 0
 
-Updates since v10:
-- Bring forward to latest Qemu
-- Fix a typo in the GICv3+GICv2m PR
+-[130h 0304 004h]                  Input base : 00001000
+-[134h 0308 004h]                    ID Count : 000000FF
+-[138h 0312 004h]                 Output Base : 00001000
+-[13Ch 0316 004h]            Output Reference : 000000A0
+-[140h 0320 004h]       Flags (decoded below) : 00000000
++[0F0h 0240 004h]                  Input base : 00001000
++[0F4h 0244 004h]                    ID Count : 000000FF
++[0F8h 0248 004h]                 Output Base : 00001000
++[0FCh 0252 004h]            Output Reference : 00000074
++[100h 0256 004h]       Flags (decoded below) : 00000000
+                               Single Mapping : 0
 
-Updates since v9:
-- Adding partition reset on the reboot side of things...
+-[144h 0324 004h]                  Input base : 00000200
+-[148h 0328 004h]                    ID Count : 00000DFF
+-[14Ch 0332 004h]                 Output Base : 00000200
+-[150h 0336 004h]            Output Reference : 00000030
+-[154h 0340 004h]       Flags (decoded below) : 00000000
+-                              Single Mapping : 0
++Raw Table Data: Length 260 (0x104)
 
-Updates since v8:
-- v9 and v8 were not submitted properly because of my MTA not behaving, sorry for that.
-- v10 introduces a new argument, -M msi=, to handle MSI-X configuration more granularly.
-- That surfaced what I think is a bug (?), with vms->its=1 on GICv2 configurations... or I did understand everything wrong.
-- Oopsie due to email provider ratelimiting.
+-[158h 0344 004h]                  Input base : 00001100
+-[15Ch 0348 004h]                    ID Count : 0000EEFF
+-[160h 0352 004h]                 Output Base : 00001100
+-[164h 0356 004h]            Output Reference : 00000030
+-[168h 0360 004h]       Flags (decoded below) : 00000000
+-                              Single Mapping : 0
+-
+-Raw Table Data: Length 364 (0x16C)
+-
+-    0000: 49 4F 52 54 6C 01 00 00 05 C8 42 4F 43 48 53 20  // IORTl.....BOCHS
++    0000: 49 4F 52 54 04 01 00 00 05 49 42 4F 43 48 53 20  // IORT.....IBOCHS
+     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
+-    0020: 01 00 00 00 04 00 00 00 30 00 00 00 00 00 00 00  // ........0.......
+-    0030: 00 18 00 01 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+-    0040: 01 00 00 00 00 00 00 00 04 58 00 04 01 00 00 00  // .........X......
+-    0050: 01 00 00 00 44 00 00 00 00 00 00 0C 00 00 00 00  // ....D...........
+-    0060: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+-    0070: 00 00 00 00 90 00 00 00 91 00 00 00 93 00 00 00  // ................
+-    0080: 92 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+-    0090: FF FF 00 00 00 00 00 00 30 00 00 00 00 00 00 00  // ........0.......
+-    00A0: 04 58 00 04 02 00 00 00 01 00 00 00 44 00 00 00  // .X..........D...
+-    00B0: 00 00 02 0C 00 00 00 00 01 00 00 00 00 00 00 00  // ................
+-    00C0: 00 00 00 00 00 00 00 00 00 00 00 00 94 00 00 00  // ................
+-    00D0: 95 00 00 00 97 00 00 00 96 00 00 00 00 00 00 00  // ................
+-    00E0: 00 00 00 00 00 00 00 00 FF FF 00 00 00 00 00 00  // ................
+-    00F0: 30 00 00 00 00 00 00 00 02 74 00 03 03 00 00 00  // 0........t......
+-    0100: 04 00 00 00 24 00 00 00 01 00 00 00 00 00 00 03  // ....$...........
+-    0110: 00 00 00 00 00 00 00 00 40 00 00 00 00 00 00 00  // ........@.......
+-    0120: FF 01 00 00 00 00 00 00 48 00 00 00 00 00 00 00  // ........H.......
+-    0130: 00 10 00 00 FF 00 00 00 00 10 00 00 A0 00 00 00  // ................
+-    0140: 00 00 00 00 00 02 00 00 FF 0D 00 00 00 02 00 00  // ................
+-    0150: 30 00 00 00 00 00 00 00 00 11 00 00 FF EE 00 00  // 0...............
+-    0160: 00 11 00 00 30 00 00 00 00 00 00 00              // ....0.......
++    0020: 01 00 00 00 03 00 00 00 30 00 00 00 00 00 00 00  // ........0.......
++    0030: 04 44 00 04 00 00 00 00 00 00 00 00 00 00 00 00  // .D..............
++    0040: 00 00 00 0C 00 00 00 00 01 00 00 00 00 00 00 00  // ................
++    0050: 00 00 00 00 00 00 00 00 00 00 00 00 90 00 00 00  // ................
++    0060: 91 00 00 00 93 00 00 00 92 00 00 00 00 00 00 00  // ................
++    0070: 00 00 00 00 04 44 00 04 01 00 00 00 00 00 00 00  // .....D..........
++    0080: 00 00 00 00 00 00 02 0C 00 00 00 00 01 00 00 00  // ................
++    0090: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
++    00A0: 94 00 00 00 95 00 00 00 97 00 00 00 96 00 00 00  // ................
++    00B0: 00 00 00 00 00 00 00 00 02 4C 00 03 02 00 00 00  // .........L......
++    00C0: 02 00 00 00 24 00 00 00 01 00 00 00 00 00 00 03  // ....$...........
++    00D0: 00 00 00 00 00 00 00 00 40 00 00 00 00 00 00 00  // ........@.......
++    00E0: FF 01 00 00 00 00 00 00 30 00 00 00 00 00 00 00  // ........0.......
++    00F0: 00 10 00 00 FF 00 00 00 00 10 00 00 74 00 00 00  // ............t...
++    0100: 00 00 00 00                                      // ....
 
-Updates since v7:
-- Oops, fixing bug in "hw/arm: virt: cleanly fail on attempt to use the platform vGIC together with ITS".
-Other commits are unchanged.
+tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy.dsl:
 
-Updates since v6:
-- Rebasing
-- Fixing a bug in the GICv3+GICv2m case for ACPI table generation
-- getting rid of the slots infrastructure for memory management
-- Place the docs commit right after the "cleanly fail on attempt to run GICv3+GICv2m on an unsupported config" one
-as that's what switches ITS to a tristate.
-- Fixing a build issue when getting rid of the arch-specific arm64 hvf-stub.
+@@ -11,129 +11,92 @@
+  */
 
-Updates since v5:
-- Rebasing
-- Address review comments
-- Rework ITS enablement to a tristate
-- On x86: move away from deprecated APIs to get/set APIC state
+ [000h 0000 004h]                   Signature : "IORT"    [IO Remapping Table]
+-[004h 0004 004h]                Table Length : 00000114
++[004h 0004 004h]                Table Length : 000000C0
+ [008h 0008 001h]                    Revision : 05
+-[009h 0009 001h]                    Checksum : 4A
++[009h 0009 001h]                    Checksum : 1C
+ [00Ah 0010 006h]                      Oem ID : "BOCHS "
+ [010h 0016 008h]                Oem Table ID : "BXPC    "
+ [018h 0024 004h]                Oem Revision : 00000001
+ [01Ch 0028 004h]             Asl Compiler ID : "BXPC"
+ [020h 0032 004h]       Asl Compiler Revision : 00000001
 
-Updates since v4:
-- Taking into account review comments
-- Add migration blocker in the vGICv3 code due to missing interrupt controller save/restore
-- Debug register sync
+-[024h 0036 004h]                  Node Count : 00000003
++[024h 0036 004h]                  Node Count : 00000002
+ [028h 0040 004h]                 Node Offset : 00000030
+ [02Ch 0044 004h]                    Reserved : 00000000
 
-Updates since v3:
-- Disabling SVE on WHPX
-- Taking into account review comments incl:
+-[030h 0048 001h]                        Type : 00
+-[031h 0049 002h]                      Length : 0018
+-[033h 0051 001h]                    Revision : 01
++[030h 0048 001h]                        Type : 04
++[031h 0049 002h]                      Length : 0044
++[033h 0051 001h]                    Revision : 04
+ [034h 0052 004h]                  Identifier : 00000000
+ [038h 0056 004h]               Mapping Count : 00000000
+ [03Ch 0060 004h]              Mapping Offset : 00000000
 
-- fixing x86 support
-- reduce the amount of __x86_64__ checks in common code to the minimum (winhvemulation)
-which can be reduced even further down the road.
-- generalize get_physical_address_range into something common between hvf and whpx
+-[040h 0064 004h]                    ItsCount : 00000001
+-[044h 0068 004h]                 Identifiers : 00000000
+-
+-[048h 0072 001h]                        Type : 04
+-[049h 0073 002h]                      Length : 0058
+-[04Bh 0075 001h]                    Revision : 04
+-[04Ch 0076 004h]                  Identifier : 00000001
+-[050h 0080 004h]               Mapping Count : 00000001
+-[054h 0084 004h]              Mapping Offset : 00000044
+-
+-[058h 0088 008h]                Base Address : 0000000009050000
+-[060h 0096 004h]       Flags (decoded below) : 00000001
++[040h 0064 008h]                Base Address : 0000000009050000
++[048h 0072 004h]       Flags (decoded below) : 00000001
+                              COHACC Override : 1
+                                HTTU Override : 0
+                       Proximity Domain Valid : 0
+                               DeviceID Valid : 0
+-[064h 0100 004h]                    Reserved : 00000000
+-[068h 0104 008h]               VATOS Address : 0000000000000000
+-[070h 0112 004h]                       Model : 00000000
+-[074h 0116 004h]                  Event GSIV : 0000006A
+-[078h 0120 004h]                    PRI GSIV : 0000006B
+-[07Ch 0124 004h]                   GERR GSIV : 0000006D
+-[080h 0128 004h]                   Sync GSIV : 0000006C
+-[084h 0132 004h]            Proximity Domain : 00000000
+-[088h 0136 004h]     Device ID Mapping Index : 00000000
++[04Ch 0076 004h]                    Reserved : 00000000
++[050h 0080 008h]               VATOS Address : 0000000000000000
++[058h 0088 004h]                       Model : 00000000
++[05Ch 0092 004h]                  Event GSIV : 0000006A
++[060h 0096 004h]                    PRI GSIV : 0000006B
++[064h 0100 004h]                   GERR GSIV : 0000006D
++[068h 0104 004h]                   Sync GSIV : 0000006C
++[06Ch 0108 004h]            Proximity Domain : 00000000
++[070h 0112 004h]     Device ID Mapping Index : 00000000
 
-Updates since v2:
-- Fixed up a rebase screwup for whpx-internal.h
-- Fixed ID_AA64ISAR1_EL1 and ID_AA64ISAR2_EL1 feature probe for -cpu host
-- Switched to ID_AA64PFR1_EL1/ID_AA64DFR0_EL1 instead of their non-AA64 variant
+-[08Ch 0140 004h]                  Input base : 00000000
+-[090h 0144 004h]                    ID Count : 0000FFFF
+-[094h 0148 004h]                 Output Base : 00000000
+-[098h 0152 004h]            Output Reference : 00000030
+-[09Ch 0156 004h]       Flags (decoded below) : 00000000
+-                              Single Mapping : 0
++[074h 0116 001h]                        Type : 02
++[075h 0117 002h]                      Length : 004C
++[077h 0119 001h]                    Revision : 03
++[078h 0120 004h]                  Identifier : 00000001
++[07Ch 0124 004h]               Mapping Count : 00000002
++[080h 0128 004h]              Mapping Offset : 00000024
 
-Updates since v1:
-- Shutdowns and reboots
-- MPIDR_EL1 register sync
-- Fixing GICD_TYPER_LPIS value
-- IPA size clamping
-- -cpu host now implemented
+-[0A0h 0160 001h]                        Type : 02
+-[0A1h 0161 002h]                      Length : 0074
+-[0A3h 0163 001h]                    Revision : 03
+-[0A4h 0164 004h]                  Identifier : 00000002
+-[0A8h 0168 004h]               Mapping Count : 00000004
+-[0ACh 0172 004h]              Mapping Offset : 00000024
+-
+-[0B0h 0176 008h]           Memory Properties : [IORT Memory Access Properties]
+-[0B0h 0176 004h]             Cache Coherency : 00000001
+-[0B4h 0180 001h]       Hints (decoded below) : 00
++[084h 0132 008h]           Memory Properties : [IORT Memory Access Properties]
++[084h 0132 004h]             Cache Coherency : 00000001
++[088h 0136 001h]       Hints (decoded below) : 00
+                                    Transient : 0
+                               Write Allocate : 0
+                                Read Allocate : 0
+                                     Override : 0
+-[0B5h 0181 002h]                    Reserved : 0000
+-[0B7h 0183 001h] Memory Flags (decoded below) : 03
++[089h 0137 002h]                    Reserved : 0000
++[08Bh 0139 001h] Memory Flags (decoded below) : 03
+                                    Coherency : 1
+                             Device Attribute : 1
+                Ensured Coherency of Accesses : 0
+-[0B8h 0184 004h]               ATS Attribute : 00000000
+-[0BCh 0188 004h]          PCI Segment Number : 00000000
+-[0C0h 0192 001h]           Memory Size Limit : 40
+-[0C1h 0193 002h]          PASID Capabilities : 0000
+-[0C3h 0195 001h]                    Reserved : 00
++[08Ch 0140 004h]               ATS Attribute : 00000000
++[090h 0144 004h]          PCI Segment Number : 00000000
++[094h 0148 001h]           Memory Size Limit : 40
++[095h 0149 002h]          PASID Capabilities : 0000
++[097h 0151 001h]                    Reserved : 00
 
-Mohamed Mediouni (20):
-  qtest: hw/arm: virt: skip ACPI test for IORT with GICv2
-  hw: arm: virt: rework MSI-X configuration
-  tests: data: update AArch64 ACPI tables
-  qtest: hw/arm: virt: add ACPI tables for new GICv3 + GICv2m test case
-  qtest: hw/arm: virt: add new test case for GICv3 + GICv2m
-  docs: arm: update virt machine model description
-  whpx: Move around files before introducing AArch64 support
-  whpx: reshuffle common code
-  whpx: ifdef out winhvemulation on non-x86_64
-  whpx: common: add WHPX_INTERCEPT_DEBUG_TRAPS define
-  hw, target, accel: whpx: change apic_in_platform to kernel_irqchip
-  whpx: add arm64 support
-  whpx: change memory management logic
-  target/arm: cpu: mark WHPX as supporting PSCI 1.3
-  whpx: arm64: clamp down IPA size
-  hw/arm, accel/hvf, whpx: unify get_physical_address_range between WHPX
-    and HVF
-  whpx: arm64: implement -cpu host
-  target/arm: whpx: instantiate GIC early
-  whpx: enable arm64 builds
-  whpx: arm64: add partition-wide reset on the reboot path
+-[0C4h 0196 004h]                  Input base : 00000000
+-[0C8h 0200 004h]                    ID Count : 000001FF
+-[0CCh 0204 004h]                 Output Base : 00000000
+-[0D0h 0208 004h]            Output Reference : 00000048
+-[0D4h 0212 004h]       Flags (decoded below) : 00000000
++[098h 0152 004h]                  Input base : 00000000
++[09Ch 0156 004h]                    ID Count : 000001FF
++[0A0h 0160 004h]                 Output Base : 00000000
++[0A4h 0164 004h]            Output Reference : 00000030
++[0A8h 0168 004h]       Flags (decoded below) : 00000000
+                               Single Mapping : 0
 
-Philippe Mathieu-Daudé (1):
-  accel/system: Introduce hwaccel_enabled() helper
+-[0D8h 0216 004h]                  Input base : 00001000
+-[0DCh 0220 004h]                    ID Count : 000000FF
+-[0E0h 0224 004h]                 Output Base : 00001000
+-[0E4h 0228 004h]            Output Reference : 00000048
+-[0E8h 0232 004h]       Flags (decoded below) : 00000000
++[0ACh 0172 004h]                  Input base : 00001000
++[0B0h 0176 004h]                    ID Count : 000000FF
++[0B4h 0180 004h]                 Output Base : 00001000
++[0B8h 0184 004h]            Output Reference : 00000030
++[0BCh 0188 004h]       Flags (decoded below) : 00000000
+                               Single Mapping : 0
 
-Sebastian Ott (1):
-  target/arm/kvm: add constants for new PSCI versions
+-[0ECh 0236 004h]                  Input base : 00000200
+-[0F0h 0240 004h]                    ID Count : 00000DFF
+-[0F4h 0244 004h]                 Output Base : 00000200
+-[0F8h 0248 004h]            Output Reference : 00000030
+-[0FCh 0252 004h]       Flags (decoded below) : 00000000
+-                              Single Mapping : 0
++Raw Table Data: Length 192 (0xC0)
 
- MAINTAINERS                                   |   6 +
- accel/hvf/hvf-all.c                           |   7 +-
- accel/meson.build                             |   1 +
- accel/stubs/whpx-stub.c                       |   1 +
- accel/whpx/meson.build                        |   7 +
- {target/i386 => accel}/whpx/whpx-accel-ops.c  |   6 +-
- accel/whpx/whpx-common.c                      | 536 ++++++++++
- docs/system/arm/virt.rst                      |  24 +-
- hw/arm/virt-acpi-build.c                      |  20 +-
- hw/arm/virt.c                                 | 141 ++-
- hw/i386/x86-cpu.c                             |   4 +-
- hw/intc/arm_gicv3_common.c                    |   3 +
- hw/intc/arm_gicv3_whpx.c                      | 237 +++++
- hw/intc/meson.build                           |   1 +
- include/hw/arm/virt.h                         |   5 +-
- include/hw/core/boards.h                      |   3 +-
- include/hw/intc/arm_gicv3_common.h            |   3 +
- include/system/hvf_int.h                      |   4 +
- include/system/hw_accel.h                     |  13 +
- .../whpx => include/system}/whpx-accel-ops.h  |   4 +-
- include/system/whpx-all.h                     |  20 +
- include/system/whpx-common.h                  |  26 +
- .../whpx => include/system}/whpx-internal.h   |  16 +-
- include/system/whpx.h                         |   5 +-
- meson.build                                   |  20 +-
- target/arm/cpu.c                              |   3 +
- target/arm/cpu64.c                            |  17 +-
- target/arm/hvf-stub.c                         |  20 -
- target/arm/hvf/hvf.c                          |   6 +-
- target/arm/hvf_arm.h                          |   3 -
- target/arm/kvm-consts.h                       |   2 +
- target/arm/meson.build                        |   2 +-
- target/arm/whpx/meson.build                   |   5 +
- target/arm/whpx/whpx-all.c                    | 994 ++++++++++++++++++
- target/arm/whpx/whpx-stub.c                   |  15 +
- target/arm/whpx_arm.h                         |  17 +
- target/i386/cpu-apic.c                        |   2 +-
- target/i386/hvf/hvf.c                         |  11 +
- target/i386/whpx/meson.build                  |   1 -
- target/i386/whpx/whpx-all.c                   | 569 +---------
- target/i386/whpx/whpx-apic.c                  |   2 +-
- tests/data/acpi/aarch64/virt/APIC.msi_gicv2m  | Bin 0 -> 188 bytes
- tests/data/acpi/aarch64/virt/IORT             | Bin 128 -> 84 bytes
- tests/data/acpi/aarch64/virt/IORT.msi_gicv2m  | Bin 0 -> 172 bytes
- tests/data/acpi/aarch64/virt/IORT.smmuv3-dev  | Bin 364 -> 260 bytes
- .../data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 276 -> 192 bytes
- tests/qtest/bios-tables-test.c                |  21 +
- 47 files changed, 2166 insertions(+), 637 deletions(-)
- create mode 100644 accel/whpx/meson.build
- rename {target/i386 => accel}/whpx/whpx-accel-ops.c (96%)
- create mode 100644 accel/whpx/whpx-common.c
- create mode 100644 hw/intc/arm_gicv3_whpx.c
- rename {target/i386/whpx => include/system}/whpx-accel-ops.h (92%)
- create mode 100644 include/system/whpx-all.h
- create mode 100644 include/system/whpx-common.h
- rename {target/i386/whpx => include/system}/whpx-internal.h (95%)
- delete mode 100644 target/arm/hvf-stub.c
- create mode 100644 target/arm/whpx/meson.build
- create mode 100644 target/arm/whpx/whpx-all.c
- create mode 100644 target/arm/whpx/whpx-stub.c
- create mode 100644 target/arm/whpx_arm.h
- create mode 100644 tests/data/acpi/aarch64/virt/APIC.msi_gicv2m
- create mode 100644 tests/data/acpi/aarch64/virt/IORT.msi_gicv2m
+-[100h 0256 004h]                  Input base : 00001100
+-[104h 0260 004h]                    ID Count : 0000EEFF
+-[108h 0264 004h]                 Output Base : 00001100
+-[10Ch 0268 004h]            Output Reference : 00000030
+-[110h 0272 004h]       Flags (decoded below) : 00000000
+-                              Single Mapping : 0
+-
+-Raw Table Data: Length 276 (0x114)
+-
+-    0000: 49 4F 52 54 14 01 00 00 05 4A 42 4F 43 48 53 20  // IORT.....JBOCHS
++    0000: 49 4F 52 54 C0 00 00 00 05 1C 42 4F 43 48 53 20  // IORT......BOCHS
+     0010: 42 58 50 43 20 20 20 20 01 00 00 00 42 58 50 43  // BXPC    ....BXPC
+-    0020: 01 00 00 00 03 00 00 00 30 00 00 00 00 00 00 00  // ........0.......
+-    0030: 00 18 00 01 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+-    0040: 01 00 00 00 00 00 00 00 04 58 00 04 01 00 00 00  // .........X......
+-    0050: 01 00 00 00 44 00 00 00 00 00 05 09 00 00 00 00  // ....D...........
+-    0060: 01 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // ................
+-    0070: 00 00 00 00 6A 00 00 00 6B 00 00 00 6D 00 00 00  // ....j...k...m...
+-    0080: 6C 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  // l...............
+-    0090: FF FF 00 00 00 00 00 00 30 00 00 00 00 00 00 00  // ........0.......
+-    00A0: 02 74 00 03 02 00 00 00 04 00 00 00 24 00 00 00  // .t..........$...
+-    00B0: 01 00 00 00 00 00 00 03 00 00 00 00 00 00 00 00  // ................
+-    00C0: 40 00 00 00 00 00 00 00 FF 01 00 00 00 00 00 00  // @...............
+-    00D0: 48 00 00 00 00 00 00 00 00 10 00 00 FF 00 00 00  // H...............
+-    00E0: 00 10 00 00 48 00 00 00 00 00 00 00 00 02 00 00  // ....H...........
+-    00F0: FF 0D 00 00 00 02 00 00 30 00 00 00 00 00 00 00  // ........0.......
+-    0100: 00 11 00 00 FF EE 00 00 00 11 00 00 30 00 00 00  // ............0...
+-    0110: 00 00 00 00                                      // ....
++    0020: 01 00 00 00 02 00 00 00 30 00 00 00 00 00 00 00  // ........0.......
++    0030: 04 44 00 04 00 00 00 00 00 00 00 00 00 00 00 00  // .D..............
++    0040: 00 00 05 09 00 00 00 00 01 00 00 00 00 00 00 00  // ................
++    0050: 00 00 00 00 00 00 00 00 00 00 00 00 6A 00 00 00  // ............j...
++    0060: 6B 00 00 00 6D 00 00 00 6C 00 00 00 00 00 00 00  // k...m...l.......
++    0070: 00 00 00 00 02 4C 00 03 01 00 00 00 02 00 00 00  // .....L..........
++    0080: 24 00 00 00 01 00 00 00 00 00 00 03 00 00 00 00  // $...............
++    0090: 00 00 00 00 40 00 00 00 00 00 00 00 FF 01 00 00  // ....@...........
++    00A0: 00 00 00 00 30 00 00 00 00 00 00 00 00 10 00 00  // ....0...........
++    00B0: FF 00 00 00 00 10 00 00 30 00 00 00 00 00 00 00  // ........0.......
 
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ tests/data/acpi/aarch64/virt/IORT               | Bin 128 -> 84 bytes
+ tests/data/acpi/aarch64/virt/IORT.smmuv3-dev    | Bin 364 -> 260 bytes
+ tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy | Bin 276 -> 192 bytes
+ tests/qtest/bios-tables-test-allowed-diff.h     |   3 ---
+ 4 files changed, 3 deletions(-)
+
+diff --git a/tests/data/acpi/aarch64/virt/IORT b/tests/data/acpi/aarch64/virt/IORT
+index a234aae4c2d04668d34313836d32ca20e19c0880..389f7a8d7d6fa47a3e2b61169604e580afe0e07b 100644
+GIT binary patch
+delta 42
+ocmZo*4B_(h4+;rkU|?XinaCw2$_Qi`05J$KsW32u850Ag0fA}+)Bpeg
+
+literal 128
+zcmebD4+?2uU|?X~=;ZJ05v<@85#X!<1dKp25F11@0kHuPgMkDCNC*yK93~3}W)K^M
+VRiHGGVg_O`aDdYP|3ers^8jQ#3IPBB
+
+diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev b/tests/data/acpi/aarch64/virt/IORT.smmuv3-dev
+index 43a15fe2bf6cc650ffcbceff86919ea892928c0e..60cfed1361976ef26b280c11ba2e233f1cfd9383 100644
+GIT binary patch
+delta 107
+zcmaFE)WXE&=^qrr!pOkD>N$~1N|Kp@fx!TXL4d`Dfd#?>k`qJCc|ig|l@Ks-tvM%?
+f4+Aq3kjpfgkx^X+rjJ2@f#E+$5s)r{C}scviuDRY
+
+literal 364
+zcmZ{fJr2S!3`R{GHjrRr?7#sy0%{q`R0Iq?1S1FGpOxcq8m<tYlei!xEPeUx=g4uE
+z&3e1*iS(akQ`MWIY*$r5fJAe3hh`|mL=<&lg=@uWu3E(IK+XCQ#q)q2(HWg0>Q3)t
+zYVYaX4D^|s{hfQ^-WA=^4SmP&+-xs-&ISG36s0{Cg_tMzsZpm|Mj~NF{9%j*{g48;
+Ly=4r0!Ej@55yu$;
+
+diff --git a/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy b/tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy
+index 5779d0e225a62b9cd70bebbacb7fd1e519c9e3c4..e2de4049f044bdfe5b3e656b94282ddf17832d9f 100644
+GIT binary patch
+delta 74
+zcmbQjbbyh|(?2NW00RR9tIR|$DM=<E%K(T$fW?J@1;PT76GP28nS2<S8G&r3i7V9^
+M4JKX`=71>$0E=4*h5!Hn
+
+literal 276
+zcmX|*F%E-33<NiD6e*BEqDV=R2jmF|QUDE6l7crRq2t|r;j%V1EA6d4KKX8#p6}`e
+zWMeyZ{i|;0M^{rskXkaOZ?x(HL5I8vGlJCOyH2ySgwGY(@nL@Hh5i}yh;gs{y<|n2
+l5C!^5+dlb{s<DhV=&eTq=ql#HxG3hl!1Vnn$u=^kvp;ma5&-}J
+
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index 7acaf464dd..dfb8523c8b 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,4 +1 @@
+ /* List of comma-separated changed AML files to ignore */
+-"tests/data/acpi/aarch64/virt/IORT",
+-"tests/data/acpi/aarch64/virt/IORT.smmuv3-dev",
+-"tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy",
 -- 
 2.50.1 (Apple Git-155)
 

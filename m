@@ -4,91 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38ED5ECD99C
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:03:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42560ECD99F
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:18:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo5Vp-0007Dx-7c; Thu, 05 Feb 2026 14:59:37 -0500
+	id 1vo5nI-0005d5-6A; Thu, 05 Feb 2026 15:17:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5Vf-0006zY-UZ
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:28 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5Ve-0003CD-1g
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:27 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-483100e97d8so8451845e9.2
- for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:59:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1770321565; x=1770926365; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=sbSmGmcLyJAYSLJVq9qt6emaKelHhhG3medBeM4cN70=;
- b=BXVyWMNashwOht3f4ANa1ekKUGLvenijrutAMBuH5gaUi+qIXXuooa+Auq/1gNLrq6
- dpWMRkSqKM5VmcdPCeX4AqtWgqS+WAPAuZavLmxnRLDQim2ShgZ23YPBA97Ktd38KbqV
- 2wHWUSjn0h6+nAobsldINTESVBp/i70tDxHnkck5AwtJOweqyQVsVa50ZADrHMK4uU6O
- mIEkKRb35YzokXFqTPBmJw8Muf6UKLvDpQikbAsvwVSCQ9iWqh3hDb3B4KZKt8zYO28L
- etNBFNE5VjJ0UxUwy6kLwf873MD4ihEDqduMipYTE+kdtshmTuJfsU8QZABg2iQ3mTHG
- 6rUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770321565; x=1770926365;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=sbSmGmcLyJAYSLJVq9qt6emaKelHhhG3medBeM4cN70=;
- b=T3Uze8jHMGxAEVk1K90UxDanYfGC1elsEG0NGfljmWzGI8SK0MUoSB/XJnOc5jmUlo
- +i2BWD4ru6d0U22jFAtNrFMwMsXpNMMpPtbpg953+Oa8yYFa7HDBa3TSLZbCX2KCSoGw
- ronU8dvKw/p+VPhp25+t6C6ABbA1NTisoAigkPV1zXrgYV/lSEaxfrJXgKXTcw8hSrek
- 7M0hoHiwq7TXO2FqnGVYtu6+vWnsTSPhiUYc49xt5eAYpbJsqcT0ua9nQ6MGY3Fv3qSj
- H3AiGBFWE5fBZpVh0Su4yUMlDJ4V9VR5dQjvtp9tD1h/VaRTVo53XXDJ+m9qC7SH3eJ4
- 3iQQ==
-X-Gm-Message-State: AOJu0Yw2baBVt6GAXl8ZzeXbfsk68Kek+1VKj9GE6cdv1bBIfEJ8J2jQ
- 3fGNucncqfd+4K5zVlMX8IHjdVVB3C81s5cgSC70BRLPBhm0Xxh5YSaF
-X-Gm-Gg: AZuq6aIL1EDzsp4I9q2x9hGv0JvakjF/Ihire4Psk9LGI4+lnndMTMXEyAlH9mnBBKH
- QvoBTdjTnEmbJhypzJjTm/Cz/M/LwGvrec+Wg/4jIbdLqFoStaGg6XcpuZ01gQjejJkc+WPPZS4
- OkIIrOnb5voVfmjbRQHsBRQOcUrKyng16ra5dzIchOVzKpdaqMc+rIT9DrPRBWMeBb9BSdEhvBT
- Bm4oGWzmKrV0KAvCazWvAfgkgXOJcoYEs1C8/1q29wqcpqK3fRf+yPxHkyNOKc2BYi6K0k9vPON
- bC2C7V8lw/pp01umSM9YvSb1EfuNMRu+ozWMfL4sExfDpMVgDd+q1iSnbow7Rg4IErK0zyRJXyo
- fW8QDeXp42+81tbRs5sAS60dTMWS1YWBXunpNheQGgw6EEp9WmGF/mKncIcpvhlxxNLYTOCTps9
- q4nQeqydqVsCr+B9HwMHI=
-X-Received: by 2002:a05:6000:2681:b0:42f:8816:a509 with SMTP id
- ffacd0b85a97d-4362938f3f4mr724935f8f.62.1770321564434; 
- Thu, 05 Feb 2026 11:59:24 -0800 (PST)
-Received: from thinkpad-t470s.. ([93.140.16.93])
- by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.59.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Feb 2026 11:59:23 -0800 (PST)
-From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
- volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com,
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1vo5nG-0005co-SI
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 15:17:38 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1vo5nE-0006dy-On
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 15:17:38 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1770322655;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=koFvp7KekaLxedjMTVIS/k+usVOAycOi6RO3s5XveNA=;
+ b=G5XhmD8Kh9ZdThVO1XdeFGWPGb/0PoGqFJJwT2sceskF7V6zIj+vdug3TGmZxid/jtxyEO
+ PcLiHPUh6erefH17vvcXZqed+0q94v8Z1idgyBDI0RNgbMUf6KwTCVeZ8LCZ2CBdRBG5Ds
+ MBlXsgoKYBfUecum7f1mx1LQFTbbS9U=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-340-91dzQTZ7PN6NBVdEPuAOng-1; Thu,
+ 05 Feb 2026 15:17:31 -0500
+X-MC-Unique: 91dzQTZ7PN6NBVdEPuAOng-1
+X-Mimecast-MFC-AGG-ID: 91dzQTZ7PN6NBVdEPuAOng_1770322649
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 505C51955DC1; Thu,  5 Feb 2026 20:17:29 +0000 (UTC)
+Received: from redhat.com (unknown [10.44.32.12])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0F15919373D8; Thu,  5 Feb 2026 20:17:24 +0000 (UTC)
+Date: Thu, 5 Feb 2026 20:17:21 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
+ takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  francisco.iglesias@amd.com, Ruslan_Ruslichenko@epam.com,
- Mirsad Ostrakovic <mirsad_ostrakovic@epam.com>
-Subject: [PATCH 27/29] hw/core: Support IOMMU translation for Remote Port
- memory slave
-Date: Thu,  5 Feb 2026 20:58:22 +0100
-Message-ID: <20260205195824.2610192-28-ruslichenko.r@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>
+Subject: Re: [PATCH 06/29] system/vl: Introduce -machine-path command line
+ option
+Message-ID: <aYT6xbPUa4O5mnVT@redhat.com>
 References: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
+ <20260205195824.2610192-7-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x329.google.com
+In-Reply-To: <20260205195824.2610192-7-ruslichenko.r@gmail.com>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: o9erZIAh1zRMd343MJzMQuJc3hKIbM2aHR9YShObobo_1770322649
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,113 +91,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Mirsad Ostrakovic <mirsad_ostrakovic@epam.com>
+On Thu, Feb 05, 2026 at 08:58:01PM +0100, Ruslan Ruslichenko wrote:
+> From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+> 
+> This patch adds a new command line option `-machine-path` to specify
+> a directory path for shared machine resources.
 
-Update the Remote Port memory slave to support transactions targeting
-an AddressSpace managed by an IOMMU.
+We have a fairly general principal that we don't want to introduce
+new top level command line arguments to QEMU anymore.
 
-This patch:
-- Adds 'iommu-id' and 'rp-chan0' properties to configure the connection.
-- Implements logic to retrieve the specific AddressSpace for a
-  given stream ID from the default system bus IOMMU registry.
+Could this perhaps be modelled as a machine  type property, settable
+via -machine instead ?
 
-This enables external simulators (connected via Remote Port) to
-perform DMA operations that are correctly translated by the
-guest's IOMMU/SMMU logic.
+> 
+> This path is intended to serve as a base directory for devices or
+> subsystems that need to automatically create coordination files,
+> such as Unix domain sockets, particularly in multi-process simulation
+> environments.
+> 
+> Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+> Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
+> Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+> ---
+>  include/system/system.h |  2 ++
+>  qemu-options.hx         | 10 ++++++++++
+>  system/vl.c             |  4 ++++
+>  3 files changed, 16 insertions(+)
+> 
+> diff --git a/include/system/system.h b/include/system/system.h
+> index 03a2d0e900..0cd012004d 100644
+> --- a/include/system/system.h
+> +++ b/include/system/system.h
+> @@ -57,6 +57,8 @@ bool is_mlock_on_fault(MlockState);
+>  
+>  extern MlockState mlock_state;
+>  
+> +extern const char *machine_path;
+> +
+>  #define MAX_OPTION_ROMS 16
+>  typedef struct QEMUOptionRom {
+>      const char *name;
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index 6dd3e04e38..b7dd2a64f0 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -765,6 +765,16 @@ SRST
+>      Preallocate memory when using -mem-path.
+>  ERST
+>  
+> +DEF("machine-path", HAS_ARG, QEMU_OPTION_machine_path,
+> +    "-machine-path DIR A directory in which to create machine nodes\n",
+> +    QEMU_ARCH_ALL)
+> +SRST
+> +``-machine-path path``
+> +    Selects the machine path.
+> +    Multi-arch machine nodes will be created in <path>.
+> +    This option also sets -mem-shared-path to the given path.
+> +ERST
+> +
+>  DEF("k", HAS_ARG, QEMU_OPTION_k,
+>      "-k language     use keyboard layout (for example 'fr' for French)\n",
+>      QEMU_ARCH_ALL)
+> diff --git a/system/vl.c b/system/vl.c
+> index c890da586c..4750b1cf69 100644
+> --- a/system/vl.c
+> +++ b/system/vl.c
+> @@ -182,6 +182,7 @@ static QemuPluginList plugin_list = QTAILQ_HEAD_INITIALIZER(plugin_list);
+>  static BlockdevOptionsQueue bdo_queue = QSIMPLEQ_HEAD_INITIALIZER(bdo_queue);
+>  static bool nographic = false;
+>  static int mem_prealloc; /* force preallocation of physical target memory */
+> +const char *machine_path;
+>  static const char *vga_model = NULL;
+>  static DisplayOptions dpy;
+>  static int num_serial_hds;
+> @@ -3128,6 +3129,9 @@ void qemu_init(int argc, char **argv)
+>              case QEMU_OPTION_mem_prealloc:
+>                  mem_prealloc = 1;
+>                  break;
+> +            case QEMU_OPTION_machine_path:
+> +                machine_path = optarg;
+> +                break;
+>              case QEMU_OPTION_d:
+>                  log_mask = optarg;
+>                  break;
+> -- 
+> 2.43.0
+> 
+> 
 
-Signed-off-by: Mirsad Ostrakovic <mirsad_ostrakovic@epam.com>
-Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
----
- hw/core/remote-port-memory-slave.c         | 35 +++++++++++++++++++++-
- include/hw/core/remote-port-memory-slave.h |  3 ++
- 2 files changed, 37 insertions(+), 1 deletion(-)
-
-diff --git a/hw/core/remote-port-memory-slave.c b/hw/core/remote-port-memory-slave.c
-index bb23325469..0419e75bfa 100644
---- a/hw/core/remote-port-memory-slave.c
-+++ b/hw/core/remote-port-memory-slave.c
-@@ -182,12 +182,38 @@ static void rp_cmd_rw(RemotePortMemorySlave *s, struct rp_pkt *pkt,
-     rp_write(s->rp, (void *)s->rsp.pkt, enclen);
- }
- 
-+static AddressSpace *bus_iommu_address_space(BusState *iommu_bus,
-+                                             uint32_t iommu_id, uint16_t devid)
-+{
-+    if (iommu_bus && iommu_bus->iommu[iommu_id].iommu_ops) {
-+        return iommu_bus->iommu[iommu_id].iommu_ops->get_address_space(
-+            iommu_bus, iommu_bus->iommu[iommu_id].iommu_opaque, devid);
-+    }
-+    return &address_space_memory;
-+}
-+
-+static void rp_memory_slave_init_done(Notifier *notifier, void *data)
-+{
-+    RemotePortMemorySlave *s = container_of(notifier, RemotePortMemorySlave,
-+                                            machine_done);
-+    AddressSpace *as;
-+
-+    if (s->channel_id) {
-+        as = bus_iommu_address_space(sysbus_get_default(), s->iommu_id,
-+                                     s->rp_stream_id);
-+        address_space_init(&s->as, as->root, "dma");
-+    } else {
-+        address_space_init(&s->as, s->mr ? s->mr : get_system_memory(), "dma");
-+    }
-+}
-+
- static void rp_memory_slave_realize(DeviceState *dev, Error **errp)
- {
-     RemotePortMemorySlave *s = REMOTE_PORT_MEMORY_SLAVE(dev);
- 
-     s->peer = rp_get_peer(s->rp);
--    address_space_init(&s->as, s->mr ? s->mr : get_system_memory(), "dma");
-+    s->machine_done.notify = rp_memory_slave_init_done;
-+    qemu_add_machine_init_done_notifier(&s->machine_done);
- }
- 
- static void rp_memory_slave_write(RemotePortDevice *s, struct rp_pkt *pkt)
-@@ -232,10 +258,17 @@ static void rp_memory_slave_unrealize(DeviceState *dev)
-     address_space_destroy(&s->as);
- }
- 
-+static Property rp_properties[] = {
-+    DEFINE_PROP_UINT32("iommu-id", RemotePortMemorySlave, iommu_id, 0),
-+    DEFINE_PROP_UINT32("rp-chan0", RemotePortMemorySlave, channel_id, 0),
-+    DEFINE_PROP_END_OF_LIST()
-+};
-+
- static void rp_memory_slave_class_init(ObjectClass *oc, const void *data)
- {
-     RemotePortDeviceClass *rpdc = REMOTE_PORT_DEVICE_CLASS(oc);
-     DeviceClass *dc = DEVICE_CLASS(oc);
-+    device_class_set_props_n(dc, rp_properties, ARRAY_SIZE(rp_properties));
- 
-     rpdc->ops[RP_CMD_write] = rp_memory_slave_write;
-     rpdc->ops[RP_CMD_read] = rp_memory_slave_read;
-diff --git a/include/hw/core/remote-port-memory-slave.h b/include/hw/core/remote-port-memory-slave.h
-index d88e806ed6..3161073a3f 100644
---- a/include/hw/core/remote-port-memory-slave.h
-+++ b/include/hw/core/remote-port-memory-slave.h
-@@ -23,6 +23,7 @@ typedef struct RemotePortMemorySlave {
-     /* private */
-     SysBusDevice parent;
-     /* public */
-+    uint32_t channel_id;
-     struct RemotePort *rp;
-     struct rp_peer_state *peer;
-     MemoryRegion *mr;
-@@ -30,5 +31,7 @@ typedef struct RemotePortMemorySlave {
-     MemTxAttrs attr;
-     RemotePortDynPkt rsp;
-     RemotePortATSCache *ats_cache;
-+    Notifier machine_done;
-+    uint32_t iommu_id;
- } RemotePortMemorySlave;
- #endif
+With regards,
+Daniel
 -- 
-2.43.0
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 

@@ -4,86 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E85C0ECD99C
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:01:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B94F1ECD99C
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:02:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo5VM-0006jO-6l; Thu, 05 Feb 2026 14:59:08 -0500
+	id 1vo5V5-0006W5-1m; Thu, 05 Feb 2026 14:58:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5VK-0006ig-FB
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:06 -0500
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ id 1vo5V2-0006Uc-An
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:58:48 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5VI-00036n-PA
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:06 -0500
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-42fbbc3df8fso1081117f8f.2
- for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:59:04 -0800 (PST)
+ id 1vo5V0-00031B-Ib
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:58:48 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-43629377370so122458f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:58:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1770321543; x=1770926343; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1770321525; x=1770926325; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5qvuMaHRp0wLKOuMUSBaArgy1/39Q2HJlclOT444aA8=;
- b=jpHbZtTem+jq5SEi4byKQZXOv/h6irGjWKppFzxaB3papJIh241zBCFPuaJ7BKcIQ/
- mxjgtDudIy/I56i+/hFZn0NhMTGPcX8VVO8V7vhLH+Jekw1RUdy6jMQbr/m8HBo+ATkO
- DaprmqrpjgF6ZMNFXQiDgR7FHBQqURmrr+XtvIFZMowdzeoPickVKk3jBy0OhA0yXnfY
- MltOi/oAnltcEO+kSuDqd9ZSy5w5FDPpS8bc3NJfpFcbZWmSehRgSrqoRfdbO7LiVcSP
- iBxrN4ejOgn2DCMpXsrRgLXe2m0KRAmTznc8wANjF3hjWwV1hXBFGQlmGeNdQ8xjVhR/
- 7ICQ==
+ bh=BL6hmjytF8QyzFqPZLkSXIPl8zzLGZ1QoCPt5JE4jcA=;
+ b=ZwJ2DNRhtQhXxdb80GzZC8fIJ0SDRPRLs16MxcAvJJ2691WREWrZlHpDnWKe5LsOFy
+ uPkpx9YmHQxIOTbGCjxaJfbHBZlKlrvsHz3OstIV+ef6MTQZXuwBS/ea/lacXSrtumIm
+ 3RJ4O4R6TBvEuqBGQNpc4536vryETcsFKZ8XElthn9EkscEN+oCHxnOph/nwOZr4Rcvs
+ hIJ0qX6mWcwtX9bM4yjdquWwsy0L3Yx9V/Kj884QRd5YsF/05P2B14VJtHKFaU86uFZy
+ G3xjD8IC9AdYgpItn4wCnTtKixmlApVxsrkTxrNGEPUMrrobNoSAu1TGkkouq/j5Vx0U
+ iX7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770321543; x=1770926343;
+ d=1e100.net; s=20230601; t=1770321525; x=1770926325;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=5qvuMaHRp0wLKOuMUSBaArgy1/39Q2HJlclOT444aA8=;
- b=M8uq4+jejELt7A6JDS3I7e2Z/DMhzX910pAtcZ/GbSpUCrSvkY+v8Fyykh44vuzwHH
- ogQhsJKawo23PDTX904JM1lg1wEnDrIgGfYCYhcesK7Og9ZbB6KGuPJXan5BEBFvTbx8
- Ak+K29b0/D2G5NSbOjVxqLjVTLDzjyb2dH8mwjHtc/5kYNe83Q5FZFht0OnsyUGJZ5K3
- 4dyjtQBPggPd5y0GigtXR77xi6ZfSodEg/haH41mmV6o75qTOdOF5JPLaOb+46UtkyKt
- IjeZeFJd3nWThgUJcXj/Juyn5P/6JV8r+WIDEf2GDw3OBCRaItWdGfpWqHd1kjBkv4QT
- YnYQ==
-X-Gm-Message-State: AOJu0YzRbD6Ky33yWdyDiGYqc5AqPVLyJ+m/3tGqtmDQQCKlYCJ/HRxY
- WQvbBDoGjQ0P9FRT77KvjNGi8wNKyyhF5+UpNu4vVSftC4s3iZ578TJ2nSXRWaAdkV8=
-X-Gm-Gg: AZuq6aKqcdyvvYARkHSFZoZ83SPgGZNLhntYKs2InAHo6QDFTsyPl6luK0ZqKY4bYW3
- 99TjzIFGV5kuEtWzTxRCnBb4OLlFMBl/DObm1NDNDryWwZUTp9HCfd6yflFU0vVp1VFSEHr0oBU
- ZICKGtWdgtCpwhergl4evMWdFK/2pJhQQTlQV7Bnrz71zfUkFRostUx9Ka1zVHnBqbpE97biHjm
- nR6Aav4QqVl3roqSeXr6P09piXUfHds/rD/avkMFXaSup+wPgSxnAQWi3IOzTDU+lPaswj7UnKE
- Ni9jBJIa0ParX0vNUS+z2/vgj+7smR4n72u6huQwOBnkGfAlBnQ/oy4bgBARzkVuYK+EtNhwJKn
- +qxBs2Hw07IZGrOwMES6ZbQDfgk3DDnAm12dYp0U4e74NwVVWJl+CFSyNzDZpHasoT5BFr2QmUW
- WqCeOceqH4hOFaibJOh1r4KtvvvV5jow==
-X-Received: by 2002:a05:6000:2889:b0:436:1a24:df81 with SMTP id
- ffacd0b85a97d-4362904b702mr635949f8f.2.1770321543005; 
- Thu, 05 Feb 2026 11:59:03 -0800 (PST)
+ bh=BL6hmjytF8QyzFqPZLkSXIPl8zzLGZ1QoCPt5JE4jcA=;
+ b=B2HaC1cd88wuGmStZaU6AS9fEs8YivQtiSjxGTja5mlBNPPpX6PltukP/d+LRRHwAL
+ exa9TWyhF5cv1cQVKK4jBgSpHF2bLunxFDOidW++5gfU5j90z/mVsQkZ3a+GVN+xRm5o
+ NtkdBO5VDcfwcUsfK2xfH8CAJEykwJu6sOofZpG/q0KmtC6qanpEIrcfPrvYk7GtkvqO
+ 2FWvAjLaESoRCrJ1Ss/iRSZSVtGhd9P6ei9sSFdNqPun400GQKqiKsfJjeOa1dvjrRkS
+ +Ysy5gwz6rlc6eKIOMNU7n2P41YXDZ5B3rSck9IsPV4OFevA4Ugh7kJMLrzfAZskNEZ+
+ pnKA==
+X-Gm-Message-State: AOJu0YxL6gLpgfYNUBMppT04njkTg4CFHgKfTOUu8hcxJd+SlRgpu00T
+ TZKUSYx6DXSaFtUcd08tJKH3gkKB2SXeFuEtP0yGWs0TKrDDRcmK5WCT
+X-Gm-Gg: AZuq6aIfNRmVWk6FsnctVRV8OntEnTpfNxW6OpfGuo0lAQvVL5N7k/sHhE1wVM8395Z
+ 8794/a+Yh7Uy27G7V7sn0plGONWm0/m196gayvAbqjU40lSESsiG0GjlN3dQ7KiRSIYlbPz0cVg
+ tVC6Izzbo2FNl4NHKKYgk4s95JBs0CbR15whP+zQ0Lrso3hS+5+C95z+QLteuzVYvP6FWZxNwNN
+ LwNmvtnHPpJ9RHbgIWxJrnOaFz8CAaz0JHquJKiMdnS9o9OmLBPVhasWhIm4I9RyVPbZkWB/enw
+ fYY3rCcNNNFzGMQsf11mHsZaEZZ/oLinfyTrFiwsHizEgCq15maaIiOIc5P2D2TUIB2hx08Iv3A
+ qXuQQEtMRkgBFFGN3IsFPX8liZ8geD5NnGbMe6tr838Y9U99PCHlTtRuCHYFpeHjfxzSRCJ0XtL
+ dT8VG0yzuRhJcSR5Ep5Fs=
+X-Received: by 2002:a05:6000:250f:b0:435:bbda:3f4e with SMTP id
+ ffacd0b85a97d-4362938b19bmr694535f8f.31.1770321524708; 
+ Thu, 05 Feb 2026 11:58:44 -0800 (PST)
 Received: from thinkpad-t470s.. ([93.140.16.93])
  by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.59.00
+ ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.58.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Feb 2026 11:59:01 -0800 (PST)
+ Thu, 05 Feb 2026 11:58:44 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
  volodymyr_babchuk@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  francisco.iglesias@amd.com, Ruslan_Ruslichenko@epam.com,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH 13/29] system/memory: Introduce unified MemoryTransaction and
- .access callback
-Date: Thu,  5 Feb 2026 20:58:08 +0100
-Message-ID: <20260205195824.2610192-14-ruslichenko.r@gmail.com>
+Subject: [PATCH 02/29] hw/core: Add Remote Port header helpers
+Date: Thu,  5 Feb 2026 20:57:57 +0100
+Message-ID: <20260205195824.2610192-3-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 References: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x429.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,164 +105,124 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Introduce a unified 'MemoryTransaction' structure to encapsulate all
-parameters of a memory access, including address, data, size, and
-attributes.
-
-The logic in memory_region_dispatch_read/write is updated to prioritize
-the new 'access' callback when available.
-
-This change simplifies the integration of transaction-based subsystems,
-such as the Remote Port, by providing a standard container for memory
-access metadata.
+Introduce core packet handling logic for Remote Port
+protocol. This includes helpers for encoding and decoding
+packet headers and payload.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- include/system/memory.h | 23 ++++++++++++++
- system/memory.c         | 66 +++++++++++++++++++++++++++++++++++++++--
- 2 files changed, 87 insertions(+), 2 deletions(-)
+ hw/core/remote-port-proto.c         | 82 +++++++++++++++++++++++++++++
+ include/hw/core/remote-port-proto.h |  8 +++
+ 2 files changed, 90 insertions(+)
+ create mode 100644 hw/core/remote-port-proto.c
 
-diff --git a/include/system/memory.h b/include/system/memory.h
-index 0562af3136..e1fb82608d 100644
---- a/include/system/memory.h
-+++ b/include/system/memory.h
-@@ -84,6 +84,28 @@ extern unsigned int global_dirty_tracking;
- 
- typedef struct MemoryRegionOps MemoryRegionOps;
- 
-+typedef struct MemoryTransaction {
-+    union {
-+        /*
-+         * Data is passed by values up to 64bit sizes. Beyond
-+         * that, a pointer is passed in p8.
-+         *
-+         * Note that p8 has no alignment restrictions.
-+         */
-+        uint8_t *p8;
-+        uint64_t u64;
-+        uint32_t u32;
-+        uint16_t u16;
-+        uint8_t  u8;
-+    } data;
-+    bool rw;
-+    hwaddr addr;
-+    unsigned int size;
-+    MemTxAttrs attr;
-+    void *opaque;
-+} MemoryTransaction;
+diff --git a/hw/core/remote-port-proto.c b/hw/core/remote-port-proto.c
+new file mode 100644
+index 0000000000..1653fe7b78
+--- /dev/null
++++ b/hw/core/remote-port-proto.c
+@@ -0,0 +1,82 @@
++// SPDX-License-Identifier: MIT
++/*
++ * Remote-port protocol
++ *
++ * Copyright (c) 2013 Xilinx Inc
++ * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
 +
++#include "qemu/osdep.h"
++#include "qemu/bswap.h"
++#include "hw/core/remote-port-proto.h"
 +
- struct ReservedRegion {
-     Range range;
-     unsigned type;
-@@ -298,6 +320,7 @@ static inline void iommu_notifier_init(IOMMUNotifier *n, IOMMUNotify fn,
-  * Memory region callbacks
-  */
- struct MemoryRegionOps {
-+    MemTxResult (*access)(MemoryTransaction *tr);
-     /* Read from the memory region. @addr is relative to @mr; @size is
-      * in bytes. */
-     uint64_t (*read)(void *opaque,
-diff --git a/system/memory.c b/system/memory.c
-index 0b1462f028..4f62796cd3 100644
---- a/system/memory.c
-+++ b/system/memory.c
-@@ -431,6 +431,31 @@ static int get_cpu_index(void)
-     return -1;
- }
- 
-+static MemTxResult memory_region_read_accessor_attr(MemoryRegion *mr,
-+                                                    hwaddr addr,
-+                                                    uint64_t *value,
-+                                                    unsigned size,
-+                                                    signed shift,
-+                                                    uint64_t mask,
-+                                                    MemTxAttrs attrs)
++static const char *rp_cmd_names[RP_CMD_max + 1] = {
++    [RP_CMD_nop] = "nop",
++    [RP_CMD_hello] = "hello",
++    [RP_CMD_cfg] = "cfg",
++    [RP_CMD_read] = "read",
++    [RP_CMD_write] = "write",
++    [RP_CMD_interrupt] = "interrupt",
++    [RP_CMD_sync] = "sync",
++    [RP_CMD_ats_req] = "ats_request",
++    [RP_CMD_ats_inv] = "ats_invalidation",
++};
++
++const char *rp_cmd_to_string(enum rp_cmd cmd)
 +{
-+    MemoryTransaction tr = { { 0 } };
-+    MemTxResult ret;
-+
-+    if (mr->flush_coalesced_mmio) {
-+        qemu_flush_coalesced_mmio_buffer();
-+    }
-+
-+    tr.opaque = mr->opaque;
-+    tr.addr = addr;
-+    tr.size = size;
-+    tr.attr = attrs;
-+    ret = mr->ops->access(&tr);
-+    *value |= (tr.data.u64 & mask) << shift;
-+
-+    return ret;
++    assert(cmd <= RP_CMD_max);
++    return rp_cmd_names[cmd];
 +}
 +
- static MemTxResult  memory_region_read_accessor(MemoryRegion *mr,
-                                                 hwaddr addr,
-                                                 uint64_t *value,
-@@ -476,6 +501,31 @@ static MemTxResult memory_region_read_with_attrs_accessor(MemoryRegion *mr,
-     return r;
- }
- 
-+static MemTxResult memory_region_write_accessor_attr(MemoryRegion *mr,
-+                                                     hwaddr addr,
-+                                                     uint64_t *value,
-+                                                     unsigned size,
-+                                                     signed shift,
-+                                                     uint64_t mask,
-+                                                     MemTxAttrs attrs)
++int rp_decode_hdr(struct rp_pkt *pkt)
 +{
-+    MemoryTransaction tr = { { 0 } };
++    int used = 0;
 +
-+    if (mr->flush_coalesced_mmio) {
-+        qemu_flush_coalesced_mmio_buffer();
-+    }
-+
-+    tr.opaque = mr->opaque;
-+    tr.rw = true;
-+    tr.addr = addr;
-+    tr.size = size;
-+    tr.attr = attrs;
-+    tr.data.u64 = (*value >> shift) & mask;
-+    trace_memory_region_ops_write(get_cpu_index(), mr, tr.addr, tr.data.u64,
-+                                  tr.size, memory_region_name(mr));
-+    return mr->ops->access(&tr);
++    pkt->hdr.cmd = be32_to_cpu(pkt->hdr.cmd);
++    pkt->hdr.len = be32_to_cpu(pkt->hdr.len);
++    pkt->hdr.id = be32_to_cpu(pkt->hdr.id);
++    pkt->hdr.flags = be32_to_cpu(pkt->hdr.flags);
++    pkt->hdr.dev = be32_to_cpu(pkt->hdr.dev);
++    used += sizeof pkt->hdr;
++    return used;
 +}
 +
- static MemTxResult memory_region_write_accessor(MemoryRegion *mr,
-                                                 hwaddr addr,
-                                                 uint64_t *value,
-@@ -1603,7 +1653,13 @@ static MemTxResult memory_region_dispatch_read1(MemoryRegion *mr,
- {
-     *pval = 0;
++int rp_decode_payload(struct rp_pkt *pkt)
++{
++    int used = 0;
++
++    switch (pkt->hdr.cmd) {
++    /* TBD */
++    default:
++        break;
++    }
++    return used;
++}
++
++void rp_encode_hdr(struct rp_pkt_hdr *hdr, uint32_t cmd, uint32_t id,
++                   uint32_t dev, uint32_t len, uint32_t flags)
++{
++    hdr->cmd = cpu_to_be32(cmd);
++    hdr->len = cpu_to_be32(len);
++    hdr->id = cpu_to_be32(id);
++    hdr->dev = cpu_to_be32(dev);
++    hdr->flags = cpu_to_be32(flags);
++}
+diff --git a/include/hw/core/remote-port-proto.h b/include/hw/core/remote-port-proto.h
+index cbe1498df0..1d8e1b25da 100644
+--- a/include/hw/core/remote-port-proto.h
++++ b/include/hw/core/remote-port-proto.h
+@@ -302,4 +302,12 @@ struct rp_pkt {
+     };
+ };
  
--    if (mr->ops->read) {
-+    if (mr->ops->access) {
-+        return access_with_adjusted_size(addr, pval, size,
-+                                         mr->ops->impl.min_access_size,
-+                                         mr->ops->impl.max_access_size,
-+                                         memory_region_read_accessor_attr,
-+                                         mr, attrs);
-+    } else if (mr->ops->read) {
-         return access_with_adjusted_size(addr, pval, size,
-                                          mr->ops->impl.min_access_size,
-                                          mr->ops->impl.max_access_size,
-@@ -1698,7 +1754,13 @@ MemTxResult memory_region_dispatch_write(MemoryRegion *mr,
-         return MEMTX_OK;
-     }
- 
--    if (mr->ops->write) {
-+    if (mr->ops->access) {
-+        return access_with_adjusted_size(addr, &data, size,
-+                                         mr->ops->impl.min_access_size,
-+                                         mr->ops->impl.max_access_size,
-+                                         memory_region_write_accessor_attr,
-+                                         mr, attrs);
-+    } else if (mr->ops->write) {
-         return access_with_adjusted_size(addr, &data, size,
-                                          mr->ops->impl.min_access_size,
-                                          mr->ops->impl.max_access_size,
++const char *rp_cmd_to_string(enum rp_cmd cmd);
++int rp_decode_hdr(struct rp_pkt *pkt);
++int rp_decode_payload(struct rp_pkt *pkt);
++
++void rp_encode_hdr(struct rp_pkt_hdr *hdr,
++                   uint32_t cmd, uint32_t id, uint32_t dev, uint32_t len,
++                   uint32_t flags);
++
+ #endif
 -- 
 2.43.0
 

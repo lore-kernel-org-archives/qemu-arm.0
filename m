@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 275F5E91297
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 14:31:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4DC6E91297
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 14:31:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo0K0-0001Y1-IG; Thu, 05 Feb 2026 09:27:04 -0500
+	id 1vo0J8-0000pN-Dl; Thu, 05 Feb 2026 09:26:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo0Jl-0001AQ-Gd
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:26:50 -0500
-Received: from qs-2004i-snip4-6.eps.apple.com ([57.103.84.89]
+ id 1vo0J7-0000od-OK
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:26:09 -0500
+Received: from qs-2002k-snip4-4.eps.apple.com ([57.103.87.235]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo0Jj-00083X-Iw
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:26:49 -0500
+ id 1vo0J4-0007r9-Kk
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:26:09 -0500
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-2 (Postfix) with ESMTPS id
- 983FD180027B; Thu,  5 Feb 2026 14:26:43 +0000 (UTC)
+ E514A1800276; Thu,  5 Feb 2026 14:26:01 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1770301606; x=1772893606;
- bh=CD7WXAJUs520lYihpYaluR3foYw2WDZXLPihgzEb9wc=;
+ s=sig1; t=1770301565; x=1772893565;
+ bh=XyBHHRZUjZrB24DOEIVWdZ5GavQ/FkCfYqY7wYjlLmk=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=CHdmJ0lZMdnN9Oc7mBYggp9ZFUodjKcDagevcLd0d67wGJcW8K82+SwnzIWTqI8lh78EmfH/FyOVGKMW7X+Gobl0g/0ObQZ82TGQgn/9C+UJRigGaNWyOUzBdPWsfYZ33lEhMmvR3F4SbObnD4rXtLDhBl2xceljVF3GggjzrHyKPHPveZ1rkIGLObKDICdhEatIlh10qP0huBS3auc4e5NZvypDkKNm11WBgU+32T7zGJv1U+m8TirmeCPay/YAfXCSXm/N8Jwj0PsHUjEzNBLiOUcy2yYMEuoQs8ZVNq3sCiBnjaVbcuc4AFmK5o/neQpRrj5SB/M82mGpgchSSw==
+ b=bTapqeXfuNAh+kjBH0z6uUznvZv5gm+tInA76AgsKJiMKXG1QFMRNb6D/LK7Sp2hU3veW6S/CuAAsY2djx3qipM94e1Nr+YyLyrk57HFElpUzaVua+ppKdKGFJCKTXV1ZwLBp1+Xq6YE7tIGjaPvftVT6ZeWwySzfOLZAgJRrdXrbpYP9F7RRakwfYaAxkOEMA2tXfbJTMxmYRkdeezfPvWCt6HOM3Xj/2e0ErNpVd2944Jm2va85t9O/Knx+0pPEtXQpNo4eOayz4tnAyDFBeZqDmqY+2exvnXzx/48Alf9VRdxA8dYHd5iy4wzryUUy+oZLIxZ4jHVdYGRqaU6tw==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-2 (Postfix) with ESMTPSA id
- 5FDC11800D80; Thu,  5 Feb 2026 14:26:40 +0000 (UTC)
+ 1A4AB1800D9C; Thu,  5 Feb 2026 14:25:57 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org,
 	mohamed@unpredictable.fr
@@ -54,45 +54,45 @@ Cc: Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>,
  Roman Bolshakov <rbolshakov@ddn.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v21 19/22] whpx: arm64: implement -cpu host
-Date: Thu,  5 Feb 2026 15:25:37 +0100
-Message-ID: <20260205142543.64818-20-mohamed@unpredictable.fr>
+Subject: [PATCH v21 04/22] hw: arm: virt: rework MSI-X configuration
+Date: Thu,  5 Feb 2026 15:25:22 +0100
+Message-ID: <20260205142543.64818-5-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260205142543.64818-1-mohamed@unpredictable.fr>
 References: <20260205142543.64818-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=WZMBqkhX c=1 sm=1 tr=0 ts=6984a8a5
+X-Proofpoint-ORIG-GUID: BjXVaoaUtxxZKSOSrqns56H76W7idzpq
+X-Authority-Info-Out: v=2.4 cv=MZthep/f c=1 sm=1 tr=0 ts=6984a87c
  cx=c_apl:c_apl_out:c_pps a=bsP7O+dXZ5uKcj+dsLqiMw==:117
  a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=L6Cw-x9jAAAA:20 a=KKAkSRfTAAAA:8 a=hGuVB2XOhXFvD5HHq_UA:9
- a=cvBusfyB2V15izCimMoJ:22 a=bA3UWDv6hWIuX7UZL3qL:22
-X-Proofpoint-ORIG-GUID: KavsYq3HQTQ7uxsPy37QHvw6vfekIXQy
-X-Proofpoint-GUID: KavsYq3HQTQ7uxsPy37QHvw6vfekIXQy
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA1MDEwOCBTYWx0ZWRfX92lobvA2u2tj
- pGHIdD2e8pbWLMkU06MBN5gSYW+sPvTtteld+iCesmbJC95zWNFg3xpw8YhXdFdtnnmA7p59v1T
- Cd4knHXzWrxIgJZq71g2hCFq8uIGJeWiXwG2TfegpMatHPdrnaTUjaRgt0S5BTgG4HzwbP08ph6
- Zr+suswopBCwTVG4lGUkMwK9Psw4zXzQZDKXoqvrpWoTLAGZE7FTct/PcTCb1mzWy8xteKX0PbN
- n7OKBDwczrvsSPoN6+GYv/nBkU1GOzvSf7yGo5ERzBp/Cg0yPG1FvVC24I0tiIibzWyXQbgAULd
- MXcj1ruskOqFRwV4KGvT/iSGNdrcRUqbrQQIYYElqPWtrUAthsJPgFL+ALp6f8=
+ a=KKAkSRfTAAAA:8 a=XHbtxiRcFRs46boockMA:9 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA1MDEwOCBTYWx0ZWRfX6iZqVaRZmVW5
+ 4PTLGm+NEOWpp+g8mEW5Qo+DlH7dkMKmWg5lYzs0kSQptts6uqkp4vWYYRs+nLghHcaNaG8/aAZ
+ pyQTRiOkeFSXK2OuUvRn2fmuEEGo1fDszeNIPerKJml2o+r0hRFdVv4vrdNJicBoyBs7EAByZRF
+ ILYeiN7VrrZUi9fpgE+MzKwlttHCQcOT/yZQBGzcnnQhPYEWoBIRQvDcG505yxOuYCOsl/PkHQq
+ 82EIAa4lj47ub1LQN55NYoAmFLZBLtjRq8uwRmociP+YG/u4unvaFHtHsg9wwp9CzFtpZCm0gCN
+ CHDDm5x4Jw2c9drDtRmW0WdQfOBY+xG+6pejmKuBBBxpVoyI6fO9f9x/ddY7NM=
+X-Proofpoint-GUID: BjXVaoaUtxxZKSOSrqns56H76W7idzpq
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-05_03,2026-02-05_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- malwarescore=0 clxscore=1030 phishscore=0 mlxscore=0 bulkscore=0 spamscore=0
- lowpriorityscore=0 mlxlogscore=999 suspectscore=0 classifier=spam authscore=0
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ mlxscore=0 suspectscore=0 mlxlogscore=999 clxscore=1030 bulkscore=0
+ lowpriorityscore=0 spamscore=0 malwarescore=0 phishscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2602050108
-X-JNJ: AAAAAAABnMm6CgCZsKvwk732CQANZjwnT6KVXPCBeFV2jco9ptCwJ5hteyfGSN47eElOoqC/o2FvqBb+MzL98M7G0K5TzAl2Rymij78trhDshlSiD8yUOGD6vipq796cpt2zqlpzYu3nS23W0roNX5TqRmzKsiG7X6eJFW8TV2nGNYygcFkwly77hy/gGWLiVc4/ERkHH8qnOU/u56MzuRupV/Jxsgipur8F/Ja8TWXI8qv/7h3aLNjJGZCG8if5NvhBL4pWN7W5oqaSbwkS6GDlxr8Ga411p0P4SqSEp9WhNUMWHk2bvACd/7I4ngP6xmL9YzlH+gmwdi/WgsUvGfQZC1CxVeBW+SxoATgSy3a/tC/Ke5wcjOHr5DvY/Dgw8LnbpgcKwXqzDuCG7lNxo6owh8M+SjVei+nN2DLesV9ZnL8m3ifIjw9iAYlKlgJmuy9GOuWxm05xxBbLJ7OKvYHnkV5aRRg1CBbizpCEi8qnBRdvDD3tgh3Nx7/wsKdw7cylxcRIH6DAr81YaVwn+hm2t4xh+Hh2/lU9NHraEPzjJ76CC9PrBUGPwEz89UdS2pix283Ic5SD3w9MHiIlHEJrhqzUrB3lfGSHcZuLDR+1by34KNOUv6UD/c8Hrb0ack1KiAZlftys0mx6KyV869+VGFccdNiJ6LfpALPNrvmRejY+4xk2aLKRF2aiGAcdh0ZLYfhuuEk2/V1jqPoGRBLAzbPANYspkYO9jj9ozLEVO1mliHKvbmc4okRUuJgMpwfvxAWFbbKwgoUAke2Rs2HsSlRQJh5iQE8LZPgXXhV+FdvEazydTMxFAZoZ1/EZOCLffSOeJHF0/VNctdv08wlpJVf/uzHgeAgbczKjiLu8O6MAo/LU5xle8gU+6XLh9BaYxxZsXrUaQJ0URS6VSvHwLZ9PKtqarh7TOx9ycS6krzyP2+0226l29qkA8N5Uawhc
-Received-SPF: pass client-ip=57.103.84.89;
+X-JNJ: AAAAAAABS9ZhbR8uFuYsWCb634Foi+dQz6LkCrqz9kuiGm3agl9hvqgXe9aNYyHIJoqPtdBZwWvtSNSiHWlQGZUQJAsyTTV9ZjCClkZ6wWQjR9nugpHPOcrQUYsf9NsPP8SJ+U5Z6+rnWvrxHy63MCGk6YFUf72Q13sYB3QFtoK5Mwmpm9gP9cm4m+SbNlajTmcc+lzv62U0ZOOK4f8Orhp/vNleJPJP/AVMmvfVteV6hsuLxaxlOeAzRMrPl49DuLEuj1GHRTPWS+QNOTDOQP6MYu3D5vVM0w1FHnA3cTiPEEyrJbwmnxGJOIIiQZJiZnaT1Vi5hvp2W72UuekRtxlFbPAMxIBfjkdLvCmdVtt0NkgBLGGrKQRBH65jTMd2P/dtOKuCzE8NAhTWeVyboJa35m/B5FafL59ioIxTLbX+5JM3d3OI6WStoRxqChaLsOiOU9rkwKXAM2wQ8EfRRb0d+EDAKC9av1j8VJgOX8FHE5dRvfGI4d6qWw4aZcYAbVFDqKB9VWUpt9QRhPloSMfAxwauw27rUgbZ0+Yz+wiyYl4yygrgJEJ1bIESczcR2YRUEimNhJdTKxBxrZl1EkiEK4cpGEYZRLRRAQkNfmQf7aCi+CgZ7nU+XHOGfmCpRAEMOOYCRwfuZ6NANdfbs9bUqmJQ+7iAuFdqC1cm40zNjNObNqUgpqgLRB3AOBAscQOUmriyIbLfURCOY08HRExpIXJqi1hSu+EgibbPVBExLUIU69o8tz5Ea7p7raqAURFmWMSrWdDGe6n6dn++Be+77rTS4mONPToGht0gXODqubShqrsedBZGqjeHtZTZCp/AOl0v8XvdDES6cxYDGcWM/WEf426lp1RrCzRs5FNlHz0O52LGsF0OJ8QCnK7d+8QbQELVazxTYWx51AIOv2eV4Vd0VfRdPzghJEWPMjCJ5ZVS3kEeKBFad+i7
+Received-SPF: pass client-ip=57.103.87.235;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,221 +108,312 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Logic to fetch MIDR_EL1 for cpu 0 adapted from:
-https://github.com/FEX-Emu/FEX/blob/e6de17e72ef03aa88ba14fa0ec13163061608c74/Source/Windows/Common/CPUFeatures.cpp#L62
+Introduce a -M msi= argument to be able to control MSI-X support independently
+from ITS, as part of supporting GICv3 + GICv2m platforms.
+
+Remove vms->its as it's no longer needed after that change.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu64.c         |  17 +++---
- target/arm/whpx/whpx-all.c | 104 +++++++++++++++++++++++++++++++++++++
- target/arm/whpx_arm.h      |   1 +
- 3 files changed, 116 insertions(+), 6 deletions(-)
+ hw/arm/virt-acpi-build.c |  20 ++++---
+ hw/arm/virt.c            | 119 ++++++++++++++++++++++++++++++++++++---
+ include/hw/arm/virt.h    |   5 +-
+ 3 files changed, 128 insertions(+), 16 deletions(-)
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 4dfc03973e..5d7c6b7fbb 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -26,10 +26,13 @@
- #include "qemu/units.h"
- #include "system/kvm.h"
- #include "system/hvf.h"
-+#include "system/whpx.h"
-+#include "system/hw_accel.h"
- #include "system/qtest.h"
- #include "system/tcg.h"
- #include "kvm_arm.h"
- #include "hvf_arm.h"
-+#include "whpx_arm.h"
- #include "qapi/visitor.h"
- #include "hw/core/qdev-properties.h"
- #include "internals.h"
-@@ -521,7 +524,7 @@ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
-     isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, APA3, 0);
-     isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, GPA3, 0);
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index c145678185..544004615d 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -569,7 +569,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         nb_nodes = num_smmus + 1; /* RC and SMMUv3 */
+         rc_mapping_count = rc_smmu_idmaps_len;
  
--    if (kvm_enabled() || hvf_enabled()) {
-+    if (hwaccel_enabled()) {
-         /*
-          * Exit early if PAuth is enabled and fall through to disable it.
-          * The algorithm selection properties are not present.
-@@ -598,10 +601,10 @@ void aarch64_add_pauth_properties(Object *obj)
+-        if (vms->its) {
++        if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
+             /*
+              * Knowing the ID ranges from the RC to the SMMU, it's possible to
+              * determine the ID ranges from RC that go directly to ITS.
+@@ -590,7 +590,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+             }
+         }
+     } else {
+-        if (vms->its) {
++        if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
+             nb_nodes = 2; /* RC and ITS */
+             rc_mapping_count = 1; /* Direct map to ITS */
+         } else {
+@@ -605,7 +605,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     build_append_int_noprefix(table_data, IORT_NODE_OFFSET, 4);
+     build_append_int_noprefix(table_data, 0, 4); /* Reserved */
  
-     /* Default to PAUTH on, with the architected algorithm on TCG. */
-     qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_property);
--    if (kvm_enabled() || hvf_enabled()) {
-+    if (hwaccel_enabled()) {
-         /*
-          * Mirror PAuth support from the probed sysregs back into the
--         * property for KVM or hvf. Is it just a bit backward? Yes it is!
-+         * property for HW accel. Is it just a bit backward? Yes it is!
-          * Note that prop_pauth is true whether the host CPU supports the
-          * architected QARMA5 algorithm or the IMPDEF one. We don't
-          * provide the separate pauth-impdef property for KVM or hvf,
-@@ -769,6 +772,8 @@ static void aarch64_host_initfn(Object *obj)
+-    if (vms->its) {
++    if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
+         /* Table 12 ITS Group Format */
+         build_append_int_noprefix(table_data, 0 /* ITS Group */, 1); /* Type */
+         node_size =  20 /* fixed header size */ + 4 /* 1 GIC ITS Identifier */;
+@@ -624,7 +624,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         int smmu_mapping_count, offset_to_id_array;
+         int irq = sdev->irq;
+ 
+-        if (vms->its) {
++        if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
+             smmu_mapping_count = 1; /* ITS Group node */
+             offset_to_id_array = SMMU_V3_ENTRY_SIZE; /* Just after the header */
+         } else {
+@@ -717,7 +717,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+             }
+         }
+ 
+-        if (vms->its) {
++        if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
+             /*
+              * Map bypassed (don't go through the SMMU) RIDs (input) to
+              * ITS Group node directly: RC -> ITS.
+@@ -735,7 +735,9 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+          * SMMU: RC -> ITS.
+          * Output IORT node is the ITS Group node (the first node).
+          */
+-        build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET, 0);
++        if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
++            build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET, 0);
++        }
      }
- #elif defined(CONFIG_HVF)
-     hvf_arm_set_cpu_features_from_host(cpu);
-+#elif defined(CONFIG_WHPX)
-+    whpx_arm_set_cpu_features_from_host(cpu);
- #else
-     g_assert_not_reached();
- #endif
-@@ -779,8 +784,8 @@ static void aarch64_host_initfn(Object *obj)
  
- static void aarch64_max_initfn(Object *obj)
- {
--    if (kvm_enabled() || hvf_enabled()) {
--        /* With KVM or HVF, '-cpu max' is identical to '-cpu host' */
-+    if (hwaccel_enabled()) {
-+        /* When hardware acceleration enabled, '-cpu max' is identical to '-cpu host' */
-         aarch64_host_initfn(obj);
-         return;
-     }
-@@ -799,7 +804,7 @@ static const ARMCPUInfo aarch64_cpus[] = {
-     { .name = "cortex-a57",         .initfn = aarch64_a57_initfn },
-     { .name = "cortex-a53",         .initfn = aarch64_a53_initfn },
-     { .name = "max",                .initfn = aarch64_max_initfn },
--#if defined(CONFIG_KVM) || defined(CONFIG_HVF)
-+#if defined(CONFIG_KVM) || defined(CONFIG_HVF) || defined(CONFIG_WHPX)
-     { .name = "host",               .initfn = aarch64_host_initfn },
- #endif
- };
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index 6067918b27..c88c67a9e2 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -41,6 +41,17 @@
+     build_iort_rmr_nodes(table_data, smmuv3_devs, &id);
+@@ -1053,7 +1055,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                                           memmap[VIRT_HIGH_GIC_REDIST2].size);
+         }
  
- #include <winhvplatform.h>
- #include <winhvplatformdefs.h>
-+#include <winreg.h>
-+
-+typedef struct ARMHostCPUFeatures {
-+    ARMISARegisters isar;
-+    uint64_t features;
-+    uint64_t midr;
-+    uint32_t reset_sctlr;
-+    const char *dtb_compatible;
-+} ARMHostCPUFeatures;
-+
-+static ARMHostCPUFeatures arm_host_cpu_features;
- 
- typedef struct WHPXRegMatch {
-    WHV_REGISTER_NAME reg;
-@@ -668,6 +679,99 @@ static void clamp_id_aa64mmfr0_parange_to_ipa_size(ARMISARegisters *isar)
-     SET_IDREG(isar, ID_AA64MMFR0, id_aa64mmfr0);
- }
- 
-+static uint64_t whpx_read_midr(void)
-+{
-+    HKEY key;
-+    uint64_t midr_el1;
-+    DWORD size = sizeof(midr_el1);
-+    const char *path = "Hardware\\Description\\System\\CentralProcessor\\0\\";
-+    assert(!RegOpenKeyExA(HKEY_LOCAL_MACHINE, path, 0, KEY_READ, &key));
-+    assert(!RegGetValueA(key, NULL, "CP 4000", RRF_RT_REG_QWORD, NULL, &midr_el1, &size));
-+    RegCloseKey(key);
-+    return midr_el1;
-+}
-+
-+static bool whpx_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-+{
-+    const struct isar_regs {
-+        WHV_REGISTER_NAME reg;
-+        uint64_t *val;
-+    } regs[] = {
-+        { WHvArm64RegisterIdAa64Pfr0El1, &ahcf->isar.idregs[ID_AA64PFR0_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Pfr1El1, &ahcf->isar.idregs[ID_AA64PFR1_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Dfr0El1, &ahcf->isar.idregs[ID_AA64DFR0_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Dfr1El1 , &ahcf->isar.idregs[ID_AA64DFR1_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Isar0El1, &ahcf->isar.idregs[ID_AA64ISAR0_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Isar1El1, &ahcf->isar.idregs[ID_AA64ISAR1_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Isar2El1, &ahcf->isar.idregs[ID_AA64ISAR2_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Mmfr0El1, &ahcf->isar.idregs[ID_AA64MMFR0_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Mmfr1El1, &ahcf->isar.idregs[ID_AA64MMFR1_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Mmfr2El1, &ahcf->isar.idregs[ID_AA64MMFR2_EL1_IDX] },
-+        { WHvArm64RegisterIdAa64Mmfr3El1, &ahcf->isar.idregs[ID_AA64MMFR2_EL1_IDX] }
-+    };
-+
-+    int i;
-+    WHV_REGISTER_VALUE val;
-+
-+    ahcf->dtb_compatible = "arm,armv8";
-+    ahcf->features = (1ULL << ARM_FEATURE_V8) |
-+                     (1ULL << ARM_FEATURE_NEON) |
-+                     (1ULL << ARM_FEATURE_AARCH64) |
-+                     (1ULL << ARM_FEATURE_PMU) |
-+                     (1ULL << ARM_FEATURE_GENERIC_TIMER);
-+
-+    for (i = 0; i < ARRAY_SIZE(regs); i++) {
-+        clean_whv_register_value(&val);
-+        whpx_get_global_reg(regs[i].reg, &val);
-+        *regs[i].val = val.Reg64;
+-        if (vms->its) {
++        if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
+             /*
+              * ACPI spec, Revision 6.0 Errata A
+              * (original 6.0 definition has invalid Length)
+@@ -1067,7 +1069,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+             build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
+             build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
+         }
+-    } else {
 +    }
 +
-+    /*
-+     * MIDR_EL1 is not a global register on WHPX
-+     * As such, read the CPU0 from the registry to get a consistent value.
-+     * Otherwise, on heterogenous systems, you'll get variance between CPUs.
-+     */
-+    ahcf->midr = whpx_read_midr();
-+
-+    clamp_id_aa64mmfr0_parange_to_ipa_size(&ahcf->isar);
-+
-+    /*
-+     * Disable SVE, which is not supported by QEMU whpx yet.
-+     * Work needed for SVE support:
-+     * - SVE state save/restore
-+     * - any potentially needed VL management
-+     * Also disable SME at the same time. (not currently supported by Hyper-V)
-+     */
-+    SET_IDREG(&ahcf->isar, ID_AA64PFR0,
-+              GET_IDREG(&ahcf->isar, ID_AA64PFR0) & ~R_ID_AA64PFR0_SVE_MASK);
-+
-+    SET_IDREG(&ahcf->isar, ID_AA64PFR1,
-+              GET_IDREG(&ahcf->isar, ID_AA64PFR1) & ~R_ID_AA64PFR1_SME_MASK);
-+
-+    return true;
-+}
-+
-+void whpx_arm_set_cpu_features_from_host(ARMCPU *cpu)
++    if (vms->msi_controller == VIRT_MSI_CTRL_GICV2M) {
+         const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
+ 
+         /* 5.2.12.16 GIC MSI Frame Structure */
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 390845c503..aa5e992712 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -737,7 +737,6 @@ static void create_its(VirtMachineState *vms)
+ {
+     DeviceState *dev;
+ 
+-    assert(vms->its);
+     if (!kvm_irqchip_in_kernel() && !vms->tcg_its) {
+         /*
+          * Do nothing if ITS is neither supported by the host nor emulated by
+@@ -957,9 +956,9 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+ 
+     fdt_add_gic_node(vms);
+ 
+-    if (vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) {
++    if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
+         create_its(vms);
+-    } else if (vms->gic_version == VIRT_GIC_VERSION_2) {
++    } else if (vms->msi_controller == VIRT_MSI_CTRL_GICV2M) {
+         create_v2m(vms);
+     }
+ }
+@@ -2137,6 +2136,44 @@ static void finalize_gic_version(VirtMachineState *vms)
+                                                gics_supported, max_cpus);
+ }
+ 
++static void finalize_msi_controller(VirtMachineState *vms)
 +{
-+    if (!arm_host_cpu_features.dtb_compatible) {
-+        if (!whpx_enabled() ||
-+            !whpx_arm_get_host_cpu_features(&arm_host_cpu_features)) {
-+            /*
-+             * We can't report this error yet, so flag that we need to
-+             * in arm_cpu_realizefn().
-+             */
-+            cpu->host_cpu_probe_failed = true;
-+            return;
++    /*
++     * VIRT_MSI_LEGACY_OPT_ITS_OFF is an option to replicate
++     * behavior of its=off when running with a GICv2, where a
++     * GICv2m is still present. Otherwise, it behaves the same
++     * as msi=off.
++     */
++    if (vms->msi_controller == VIRT_MSI_LEGACY_OPT_ITS_OFF) {
++        if (vms->gic_version == 2) {
++            vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
++        } else {
++            vms->msi_controller = VIRT_MSI_CTRL_NONE;
++        }
++    }
++    if (vms->msi_controller == VIRT_MSI_CTRL_AUTO) {
++        if (vms->gic_version == VIRT_GIC_VERSION_2) {
++            vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
++        } else {
++            vms->msi_controller = VIRT_MSI_CTRL_ITS;
 +        }
 +    }
 +
-+    cpu->dtb_compatible = arm_host_cpu_features.dtb_compatible;
-+    cpu->isar = arm_host_cpu_features.isar;
-+    cpu->env.features = arm_host_cpu_features.features;
-+    cpu->midr = arm_host_cpu_features.midr;
-+    cpu->reset_sctlr = arm_host_cpu_features.reset_sctlr;
++    if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
++        if (vms->gic_version == VIRT_GIC_VERSION_2) {
++            /*
++             * The legacy its= option in earlier releases allowed specifying
++             * this configuration and treated it as GICv3 + GICv2m.
++             * Diagnose it as an error even for that case.
++             */
++            error_report("GICv2 + ITS is an invalid configuration.");
++            exit(1);
++        }
++    }
++
++    assert(vms->msi_controller != VIRT_MSI_CTRL_AUTO);
 +}
 +
- int whpx_init_vcpu(CPUState *cpu)
+ /*
+  * virt_post_cpus_gic_realized() must be called after the CPUs and
+  * the GIC have both been realized.
+@@ -2256,6 +2293,7 @@ static void machvirt_init(MachineState *machine)
+      * KVM is not available yet
+      */
+     finalize_gic_version(vms);
++    finalize_msi_controller(vms);
+ 
+     if (vms->secure) {
+         /*
+@@ -2705,18 +2743,76 @@ static void virt_set_highmem_mmio_size(Object *obj, Visitor *v,
+     extended_memmap[VIRT_HIGH_PCIE_MMIO].size = size;
+ }
+ 
++static char *virt_get_msi(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++    const char *val;
++
++    switch (vms->msi_controller) {
++    case VIRT_MSI_CTRL_NONE:
++    case VIRT_MSI_LEGACY_OPT_ITS_OFF:
++        val = "off";
++        break;
++    case VIRT_MSI_CTRL_ITS:
++        val = "its";
++        break;
++    case VIRT_MSI_CTRL_GICV2M:
++        val = "gicv2m";
++        break;
++    case VIRT_MSI_CTRL_AUTO:
++        val = "auto";
++        break;
++    default:
++        g_assert_not_reached();
++    }
++    return g_strdup(val);
++}
++
++static void virt_set_msi(Object *obj, const char *value, Error **errp)
++{
++    ERRP_GUARD();
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    if (!strcmp(value, "auto")) {
++        vms->msi_controller = VIRT_MSI_CTRL_AUTO; /* Will be overriden later */
++    } else if (!strcmp(value, "its")) {
++        vms->msi_controller = VIRT_MSI_CTRL_ITS;
++    } else if (!strcmp(value, "gicv2m")) {
++        vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
++    } else if (!strcmp(value, "off")) {
++        vms->msi_controller = VIRT_MSI_CTRL_NONE;
++    } else {
++        error_setg(errp, "Invalid msi value");
++        error_append_hint(errp, "Valid values are auto, gicv2m, its, off\n");
++    }
++}
++
+ static bool virt_get_its(Object *obj, Error **errp)
  {
-     HRESULT hr;
-diff --git a/target/arm/whpx_arm.h b/target/arm/whpx_arm.h
-index de7406b66f..df65fd753c 100644
---- a/target/arm/whpx_arm.h
-+++ b/target/arm/whpx_arm.h
-@@ -12,5 +12,6 @@
- #include "target/arm/cpu-qom.h"
+     VirtMachineState *vms = VIRT_MACHINE(obj);
  
- uint32_t whpx_arm_get_ipa_bit_size(void);
-+void whpx_arm_set_cpu_features_from_host(ARMCPU *cpu);
+-    return vms->its;
++    switch (vms->msi_controller) {
++    case VIRT_MSI_CTRL_AUTO:
++    case VIRT_MSI_CTRL_ITS:
++        return true;
++    case VIRT_MSI_CTRL_NONE:
++    case VIRT_MSI_CTRL_GICV2M:
++    case VIRT_MSI_LEGACY_OPT_ITS_OFF:
++        return false;
++    default:
++        g_assert_not_reached();
++    }
+ }
  
- #endif
+ static void virt_set_its(Object *obj, bool value, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+ 
+-    vms->its = value;
++    if (value) {
++        vms->msi_controller = VIRT_MSI_CTRL_ITS;
++    } else {
++        vms->msi_controller = VIRT_MSI_LEGACY_OPT_ITS_OFF;
++    }
+ }
+ 
+ static bool virt_get_dtb_randomness(Object *obj, Error **errp)
+@@ -3043,6 +3139,9 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+             db_start = base_memmap[VIRT_GIC_V2M].base;
+             db_end = db_start + base_memmap[VIRT_GIC_V2M].size - 1;
+             break;
++        case VIRT_MSI_CTRL_AUTO:
++        case VIRT_MSI_LEGACY_OPT_ITS_OFF:
++            g_assert_not_reached();
+         }
+         resv_prop_str = g_strdup_printf("0x%"PRIx64":0x%"PRIx64":%u",
+                                         db_start, db_end,
+@@ -3463,6 +3562,12 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+                                           "Set on/off to enable/disable "
+                                           "ITS instantiation");
+ 
++    object_class_property_add_str(oc, "msi", virt_get_msi,
++                                  virt_set_msi);
++    object_class_property_set_description(oc, "msi",
++                                          "Set MSI settings. "
++                                          "Valid values are auto, gicv2m, its and off");
++
+     object_class_property_add_bool(oc, "dtb-randomness",
+                                    virt_get_dtb_randomness,
+                                    virt_set_dtb_randomness);
+@@ -3518,8 +3623,8 @@ static void virt_instance_init(Object *obj)
+     vms->highmem_mmio = true;
+     vms->highmem_redists = true;
+ 
+-    /* Default allows ITS instantiation */
+-    vms->its = true;
++    /* Default allows ITS instantiation if available */
++    vms->msi_controller = VIRT_MSI_CTRL_AUTO;
+     /* Allow ITS emulation if the machine version supports it */
+     vms->tcg_its = !vmc->no_tcg_its;
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 3b382bdf49..8069422769 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -101,6 +101,10 @@ typedef enum VirtIOMMUType {
+ 
+ typedef enum VirtMSIControllerType {
+     VIRT_MSI_CTRL_NONE,
++    /* This value is overriden at runtime.*/
++    VIRT_MSI_CTRL_AUTO,
++    /* Legacy option: its=off provides a GICv2m when using GICv2 */
++    VIRT_MSI_LEGACY_OPT_ITS_OFF,
+     VIRT_MSI_CTRL_GICV2M,
+     VIRT_MSI_CTRL_ITS,
+ } VirtMSIControllerType;
+@@ -146,7 +150,6 @@ struct VirtMachineState {
+     bool highmem_ecam;
+     bool highmem_mmio;
+     bool highmem_redists;
+-    bool its;
+     bool tcg_its;
+     bool virt;
+     bool ras;
 -- 
 2.50.1 (Apple Git-155)
 

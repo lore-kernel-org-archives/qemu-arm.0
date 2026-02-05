@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16AE2ECD999
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 212D4ECD99E
 	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 20:01:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo5VD-0006bQ-7c; Thu, 05 Feb 2026 14:58:59 -0500
+	id 1vo5VN-0006kD-Dw; Thu, 05 Feb 2026 14:59:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5VB-0006aX-Ty
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:58:58 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ id 1vo5VM-0006jN-7P
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:08 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vo5VA-00034m-1I
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:58:57 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-4806d23e9f1so15443435e9.2
- for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:58:55 -0800 (PST)
+ id 1vo5VK-000378-8b
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 14:59:07 -0500
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-4362ab556f5so16670f8f.3
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 11:59:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1770321534; x=1770926334; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1770321545; x=1770926345; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KJHws2bGwjwBm9rF5KtccgfLM9W22L+zuBOlFcWoRxA=;
- b=GnLcaF/lEwM/Z/assz+xWQzBGfEq3ZyBAxgrr9lOrdmLP62niD6f/e9PZeI+cBdtwm
- wLYNBQ5KtREOAPVZghg14ERpDmK+Lv8Y0KFzzXc+E6u4C7aksnZNoIwFlLtWOukeN5XC
- DaeCSJ9DWo3yW/UIVlweGSh7veiiHAIHCjTwDgyr/JQ7PyIXgNBgBgUg0RC8vHN+vxFo
- 2ne4dRQ2iPJCq7cxAB7DhmM5Y6GcKrhMcseft5QlD9pa5A+2p4v1qirQfv28Ygs72g1y
- ell4ut/wS4/YkRLtomQN+/SQ5RREfFjxfAFMPUN0F7Ax3IefIcin5oYmVQ6v+SxEX+1k
- VhOA==
+ bh=okCHnQwuhdSjTOfJI68bWJdfyGo5v7fjnvg4A5+IdxA=;
+ b=F8ixgkHd76PM/ZsJQ1C0SXLp5+SGbKtrR4BaY49Qp3ir3H7psfnE6e70rGt49LCF/i
+ 3X2OMMo/uh0hz26tgfNDkIfKasmVH3AqozkIpNiF5jJ0a9joC9+6Eu2MOWkqu+EZh/97
+ NbJX3rTkQ+xMzbumSqCp8wYkzhf89SfhXOXLGiRDxrfPEoh5Wk+eYKqe2dN1u0hyY7LA
+ Y7/e+5q/R799D3NR7iS6VJ1JzefjJcbeCQc/G6Kmw1dOD/nG70Bvwcl1AXeHzJSIhJyj
+ LpWBZiLsheNOPrQIxQL0ansUWJ3vsEyJIyNroRSKoE2H7gi3oT8lCafKgW5niNz6+LSM
+ Hgqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770321534; x=1770926334;
+ d=1e100.net; s=20230601; t=1770321545; x=1770926345;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=KJHws2bGwjwBm9rF5KtccgfLM9W22L+zuBOlFcWoRxA=;
- b=Js9yjljlBg2LDLLmGUFoaclmPRFAVtz4DHHvGJBHg8KNp1eLE8HxxtWbxiuEbMVG3S
- fWcoyREj0h51zfjmEWYjpRed+9S3z5K0z29dG6V/UuizmgsKrpQBAYCSMSM/ttfc9Wl1
- zgKNI/2ccSvwivKRzz8BpYXHztrTzt3YIBqADf4v65nC8AeVDAEnyvdvzXihPKGxl2YA
- 3ngis8vN9AtIZ9uSoy342nVNw/wDxQ69FxPY82+F8HjeznNN9/Qcl9EQ7qjZG80ksAO7
- dItze1wXDDHHbqT64QpBOusvmTKdZ7S+uKCsiaZaWLZJVrE49B7nZ1mXWX5oOCX5GY8v
- VhTw==
-X-Gm-Message-State: AOJu0Yz8rcj6K76JQHhsGxcfjU4+cNiy0dEr8FTvO868AnsAI0625jCH
- uvUKwcSpRXaZJmractggoX0Rgx8SGdyzf5548M6mEgGRJT+SaC86PbDd
-X-Gm-Gg: AZuq6aLw74v8lNGCMHLSIBYyfGk2VEv0OAj/1P2M46Zge2GduuUSPnqV+WL4IhwEyMH
- J0FDEqImUyG6Vx8FTpnQ8As3+8XMDGtJDei0soHlXFsFrKJNTycMmv6YXvc3IRmE9851EZI8i6q
- seiQsirIy4pSA16a+4Bh/oHl+1Cwkip2M7VGlN9ekjDrTyqr92ooKTK4yFa83j0WbP8SWUYXqgv
- IhOEo512LDGa+Yvz/G3Seuj6xL1Qg9YiniqY1vAYhH9Vr6XXuuZlj37pC3la2aclOo7/pY9A+e8
- Srnpgp9Y/X5f7JkNeEzWrR94NKn/nHA12+n92auxsNtmPzSNrkXBqA2rYuy/J9uzREeGxI5RzKp
- rOfdZvFRewVsPOSK/j+UB11QcWNXINjb+BS+aUVRVyrbKaOIdg8tMPmwMUGevuQjZ8DEJp2LZnv
- oFUpneLOAABroSu9e1ZXk=
-X-Received: by 2002:a05:600c:45cb:b0:477:8985:4036 with SMTP id
- 5b1f17b1804b1-483201dd216mr8628225e9.1.1770321534470; 
- Thu, 05 Feb 2026 11:58:54 -0800 (PST)
+ bh=okCHnQwuhdSjTOfJI68bWJdfyGo5v7fjnvg4A5+IdxA=;
+ b=iEWGMBHwYeaudxSmESQ0mrvoHV3kddKdy5uwF3ctGO3NO050pBCpRAbdH/7zF6Iap/
+ 9rl8n9/6KjNx5Gl2m19mDkPBJRO6iCT5XmyQWcvLHNTR10JbkKET1wUeSGCdguG/hTJj
+ GKeKSnRMWdrE7hiAsIYe4dEG1zqHmfbvYLRtAZaWi9NMh1gpEORhkrhfQq3UIRDkwAkx
+ aeLX+ibVqB6/Pf6GVbRj85xL+aDcPNryajdJ9UG5DWJEpmomO6gX/J+lnU9TVSqbeydF
+ cTI8tJVuClhN7lJ3G6buu316HerU75hLkDpnJiD/MQDAAyW1PXZhxL370jYQDDfHM0HK
+ XnNQ==
+X-Gm-Message-State: AOJu0Ywzgc1zvesl5GTjVl2MzPWSgw6u5yvSx9EJZ/Wxg69PC1fvtogC
+ HTj07AvVCuQ8VEBBci6iDLLiP2E6fU7Fw5F3GY/UxyCPRjSpR41dahZ3
+X-Gm-Gg: AZuq6aKgAU2dNzrzyJo8SzdErNdFegLahwrAOYLMONDLPofHrfvyjMRk7OSQ8O+N5+A
+ W7mZzorLQfFqvPqVjLNaa0/KBQ7ng6Z6hF3Atja2X1HjUcBEkylahfQhUJBz+bIlR2vgcSaanBQ
+ WVcJyYXbIH/WAph1KZw/rsBinNlOVxmMoOec/8nXV1o+B4a+q13zF/3/6R2eN3g+XStIhL3Fj9f
+ JQ+949emPkDrld7vGZXl/Ghbq31JD09dqDWyuZLIy7MVqOv4M1VFSlGy3W/yKHJnx+H6kWKd/XU
+ hXgfV3bikYv1g28/IvP7eIjrydxRLbF51GLSdMMA96M+ATDqqxTX5bvfKz+7N/tSlAMYcrIhetY
+ fkp5jWenbDLiyx8RKvkeLdKrKyG1kq2S0SgjK+LdlDkNEP5kbXgzgDHgVfLtH9hgEdMW7v9WCnl
+ YH/S30niW61FkpY3j2Vlk=
+X-Received: by 2002:a05:6000:2c13:b0:435:a0f5:c271 with SMTP id
+ ffacd0b85a97d-4362967ded6mr532453f8f.31.1770321544577; 
+ Thu, 05 Feb 2026 11:59:04 -0800 (PST)
 Received: from thinkpad-t470s.. ([93.140.16.93])
  by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.58.52
+ ffacd0b85a97d-436297450b4sm514079f8f.34.2026.02.05.11.59.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Feb 2026 11:58:53 -0800 (PST)
+ Thu, 05 Feb 2026 11:59:03 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
@@ -71,16 +71,16 @@ Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, artem_mygaiev@epam.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  francisco.iglesias@amd.com, Ruslan_Ruslichenko@epam.com,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH 08/29] hw/core: Setup Remote Port I/O channels
-Date: Thu,  5 Feb 2026 20:58:03 +0100
-Message-ID: <20260205195824.2610192-9-ruslichenko.r@gmail.com>
+Subject: [PATCH 14/29] hw/core: Add Remote Port Memory Master object skeleton
+Date: Thu,  5 Feb 2026 20:58:09 +0100
+Message-ID: <20260205195824.2610192-15-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 References: <20260205195824.2610192-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,277 +105,277 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Add initialization of communication channels with
-remote peer.
+Introduce 'remote-port-memory-master' device skeleton.
 
-This includes character device backend, which can be
-configured based on QOM properties or automatic socket
-creation based on the machine path. The patch also
-initializes the signaling event pipes.
+This device exposes a MemoryRegion within QEMU that represents
+resources located in the external simulator. When implemented
+fully, read/write accesses to the region will be encapsulated
+into Remote Port packets and transmitted to the peer.
+
+This enables QEMU to map remote peripherals or memory into
+its own address space.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/remote-port.c         | 187 ++++++++++++++++++++++++++++++++++
- include/hw/core/remote-port.h |  16 +++
- 2 files changed, 203 insertions(+)
+ hw/core/remote-port-memory-master.c         | 151 ++++++++++++++++++++
+ hw/core/remote-port.c                       |   5 +
+ include/hw/core/remote-port-memory-master.h |  59 ++++++++
+ include/hw/core/remote-port.h               |   2 +
+ 4 files changed, 217 insertions(+)
+ create mode 100644 hw/core/remote-port-memory-master.c
+ create mode 100644 include/hw/core/remote-port-memory-master.h
 
-diff --git a/hw/core/remote-port.c b/hw/core/remote-port.c
-index c909a825f3..5154c1bc2a 100644
---- a/hw/core/remote-port.c
-+++ b/hw/core/remote-port.c
-@@ -52,6 +52,58 @@
- #define REMOTE_PORT_CLASS(klass)    \
-      OBJECT_CLASS_CHECK(RemotePortClass, (klass), TYPE_REMOTE_PORT)
- 
-+static char *rp_sanitize_prefix(RemotePort *s)
-+{
-+    char *sanitized_name;
-+    char *c;
+diff --git a/hw/core/remote-port-memory-master.c b/hw/core/remote-port-memory-master.c
+new file mode 100644
+index 0000000000..d714f66ddf
+--- /dev/null
++++ b/hw/core/remote-port-memory-master.c
+@@ -0,0 +1,151 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/*
++ * QEMU remote port memory master.
++ *
++ * Copyright (c) 2014 Xilinx Inc
++ * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
++ *
++ * This code is licensed under the GNU GPL.
++ */
 +
-+    sanitized_name = g_strdup(s->prefix);
-+    for (c = sanitized_name; *c != '\0'; c++) {
-+        if (*c == '/') {
-+            *c = '_';
-+        }
-+    }
-+    return sanitized_name;
-+}
++#include "qemu/osdep.h"
++#include "system/system.h"
++#include "qemu/log.h"
++#include "qapi/qmp/qerror.h"
++#include "qapi/error.h"
++#include "hw/core/sysbus.h"
++#include "migration/vmstate.h"
++#include "hw/core/qdev-properties.h"
++#include "trace.h"
 +
-+static char *rp_autocreate_chardesc(RemotePort *s, bool server)
-+{
-+    char *prefix;
-+    char *chardesc;
-+    int r;
++#include "hw/core/remote-port-proto.h"
++#include "hw/core/remote-port.h"
++#include "hw/core/remote-port-memory-master.h"
 +
-+    prefix = rp_sanitize_prefix(s);
-+    r = asprintf(&chardesc, "unix:%s/qemu-rport-%s%s",
-+                 machine_path, prefix, server ? ",wait,server" : "");
-+    assert(r > 0);
-+    free(prefix);
-+    return chardesc;
-+}
-+
-+static Chardev *rp_autocreate_chardev(RemotePort *s, char *name)
-+{
-+    Chardev *chr = NULL;
-+    char *chardesc;
-+    char *s_path;
-+    int r;
-+
-+    r = asprintf(&s_path, "%s/qemu-rport-%s", machine_path,
-+                 rp_sanitize_prefix(s));
-+    assert(r > 0);
-+    if (g_file_test(s_path, G_FILE_TEST_EXISTS)) {
-+        chardesc = rp_autocreate_chardesc(s, false);
-+        chr = qemu_chr_new_noreplay(name, chardesc, false, NULL);
-+        free(chardesc);
-+    }
-+    free(s_path);
-+
-+    if (!chr) {
-+        chardesc = rp_autocreate_chardesc(s, true);
-+        chr = qemu_chr_new_noreplay(name, chardesc, false, NULL);
-+        free(chardesc);
-+    }
-+    return chr;
-+}
- 
- static void rp_reset(DeviceState *dev)
- {
-@@ -66,6 +118,127 @@ static void rp_reset(DeviceState *dev)
- 
- static void rp_realize(DeviceState *dev, Error **errp)
- {
-+    RemotePort *s = REMOTE_PORT(dev);
-+    int r;
-+    Error *err = NULL;
-+
-+    s->prefix = object_get_canonical_path(OBJECT(dev));
-+
-+    if (!qemu_chr_fe_get_driver(&s->chr)) {
-+        char *name;
-+        Chardev *chr = NULL;
-+        static int nr;
-+
-+        r = asprintf(&name, "rport%d", nr);
-+        nr++;
-+        assert(r > 0);
-+
-+        if (s->chrdev_id) {
-+            chr = qemu_chr_find(s->chrdev_id);
-+        }
-+
-+        if (chr) {
-+            /* Found the chardev via commandline */
-+        } else if (s->chardesc) {
-+            chr = qemu_chr_new(name, s->chardesc, NULL);
-+        } else {
-+            if (!machine_path) {
-+                error_report("%s: Missing chardesc prop."
-+                             " Forgot -machine-path?",
-+                             s->prefix);
-+                exit(EXIT_FAILURE);
-+            }
-+            chr = rp_autocreate_chardev(s, name);
-+        }
-+
-+        free(name);
-+        if (!chr) {
-+            error_report("%s: Unable to create remort-port channel %s",
-+                         s->prefix, s->chardesc);
-+            exit(EXIT_FAILURE);
-+        }
-+
-+        qdev_prop_set_chr(dev, "chardev", chr);
-+        s->chrdev = chr;
-+    }
-+
-+#ifdef _WIN32
-+    /*
-+     * Create a socket connection between two sockets. We auto-bind
-+     * and read out the port selected by the kernel.
-+     */
-+    {
-+        char *name;
-+        SocketAddress *sock;
-+        int port;
-+        int listen_sk;
-+
-+        sock = socket_parse("127.0.0.1:0", &error_abort);
-+        listen_sk = socket_listen(sock, 1, &error_abort);
-+
-+        if (s->event.pipe.read < 0) {
-+            perror("socket read");
-+            exit(EXIT_FAILURE);
-+        }
-+
-+        {
-+            struct sockaddr_in saddr;
-+            socklen_t slen = sizeof saddr;
-+            int r;
-+
-+            r = getsockname(listen_sk, (struct sockaddr *) &saddr, &slen);
-+            if (r < 0) {
-+                perror("getsockname");
-+                exit(EXIT_FAILURE);
-+            }
-+            port = htons(saddr.sin_port);
-+        }
-+
-+        name = g_strdup_printf("127.0.0.1:%d", port);
-+        s->event.pipe.write = inet_connect(name, &error_abort);
-+        g_free(name);
-+        if (s->event.pipe.write < 0) {
-+            perror("socket write");
-+            exit(EXIT_FAILURE);
-+        }
-+
-+        for (;;) {
-+            struct sockaddr_in saddr;
-+            socklen_t slen = sizeof saddr;
-+            int fd;
-+
-+            slen = sizeof(saddr);
-+            fd = qemu_accept(listen_sk, (struct sockaddr *)&saddr, &slen);
-+            if (fd < 0 && errno != EINTR) {
-+                close(listen_sk);
-+                return;
-+            } else if (fd >= 0) {
-+                close(listen_sk);
-+                s->event.pipe.read = fd;
-+                break;
-+            }
-+        }
-+
-+        if (!qemu_set_blocking(s->event.pipe.read, false, &err)) {
-+            error_report("%s: Unable to set non-block for internal pipes",
-+                        s->prefix);
-+            exit(EXIT_FAILURE);
-+        }
-+    }
++#ifndef REMOTE_PORT_ERR_DEBUG
++#define REMOTE_PORT_DEBUG_LEVEL 0
 +#else
-+    if (!g_unix_open_pipe(s->event.pipes, FD_CLOEXEC, NULL)) {
-+        error_report("%s: Unable to create remort-port internal pipes",
-+                    s->prefix);
-+        exit(EXIT_FAILURE);
-+    }
-+
-+    if (!qemu_set_blocking(s->event.pipe.read, false, &err)) {
-+        error_report("%s: Unable to set non-block for internal pipes",
-+                    s->prefix);
-+        exit(EXIT_FAILURE);
-+    }
-+
++#define REMOTE_PORT_DEBUG_LEVEL 1
 +#endif
- }
- 
- static void rp_unrealize(DeviceState *dev)
-@@ -73,6 +246,13 @@ static void rp_unrealize(DeviceState *dev)
-     RemotePort *s = REMOTE_PORT(dev);
- 
-     s->finalizing = true;
 +
-+    info_report("%s: Wait for remote-port to disconnect", s->prefix);
-+    qemu_chr_fe_disconnect(&s->chr);
++#define DB_PRINT_L(level, ...) do { \
++    if (REMOTE_PORT_DEBUG_LEVEL > level) { \
++        fprintf(stderr,  ": %s: ", __func__); \
++        fprintf(stderr, ## __VA_ARGS__); \
++    } \
++} while (0)
 +
-+    close(s->event.pipe.read);
-+    close(s->event.pipe.write);
-+    object_unparent(OBJECT(s->chrdev));
- }
- 
- static const VMStateDescription vmstate_rp = {
-@@ -84,6 +264,12 @@ static const VMStateDescription vmstate_rp = {
-     }
- };
- 
-+static Property rp_properties[] = {
-+    DEFINE_PROP_CHR("chardev", RemotePort, chr),
-+    DEFINE_PROP_STRING("chardesc", RemotePort, chardesc),
-+    DEFINE_PROP_STRING("chrdev-id", RemotePort, chrdev_id),
++#define REMOTE_PORT_MEMORY_MASTER_PARENT_CLASS \
++    object_class_get_parent( \
++            object_class_by_name(TYPE_REMOTE_PORT_MEMORY_MASTER))
++
++#define RP_MAX_ACCESS_SIZE 4096
++
++static MemTxResult rp_access(MemoryTransaction *tr)
++{
++    /* TBD */
++    return MEMTX_OK;
++}
++
++static const MemoryRegionOps rp_ops_template = {
++    .access = rp_access,
++    .valid.max_access_size = RP_MAX_ACCESS_SIZE,
++    .valid.unaligned = true,
++    .impl.max_access_size = RP_MAX_ACCESS_SIZE,
++    .impl.unaligned = false,
++    .endianness = DEVICE_LITTLE_ENDIAN,
 +};
 +
- static void rp_prop_allow_set_link(const Object *obj, const char *name,
-                                    Object *val, Error **errp)
- {
-@@ -112,6 +298,7 @@ static void rp_class_init(ObjectClass *klass, const void *data)
-     dc->realize = rp_realize;
-     dc->unrealize = rp_unrealize;
-     dc->vmsd = &vmstate_rp;
++static void rp_memory_master_realize(DeviceState *dev, Error **errp)
++{
++    RemotePortMemoryMaster *s = REMOTE_PORT_MEMORY_MASTER(dev);
++    int i;
++
++    /* Sanity check max access size.  */
++    if (s->max_access_size > RP_MAX_ACCESS_SIZE) {
++        error_setg(errp, "%s: max-access-size %d too large! MAX is %d",
++                   TYPE_REMOTE_PORT_MEMORY_MASTER, s->max_access_size,
++                   RP_MAX_ACCESS_SIZE);
++        return;
++    }
++
++    if (s->max_access_size < 4) {
++        error_setg(errp, "%s: max-access-size %d too small! MIN is 4",
++                   TYPE_REMOTE_PORT_MEMORY_MASTER, s->max_access_size);
++        return;
++    }
++
++    assert(s->rp);
++    s->peer = rp_get_peer(s->rp);
++
++    /* Create a single static region if configuration says so.  */
++    if (s->map_num) {
++        /* Initialize rp_ops from template.  */
++        s->rp_ops = g_malloc(sizeof *s->rp_ops);
++        memcpy(s->rp_ops, &rp_ops_template, sizeof *s->rp_ops);
++        s->rp_ops->valid.max_access_size = s->max_access_size;
++        s->rp_ops->impl.max_access_size = s->max_access_size;
++
++        s->mmaps = g_new0(typeof(*s->mmaps), s->map_num);
++        for (i = 0; i < s->map_num; ++i) {
++            char *name = g_strdup_printf("rp-%d", i);
++
++            s->mmaps[i].offset = s->map_offset;
++            memory_region_init_io(&s->mmaps[i].iomem, OBJECT(dev), s->rp_ops,
++                                  &s->mmaps[i], name, s->map_size);
++            sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mmaps[i].iomem);
++            s->mmaps[i].parent = s;
++            g_free(name);
++        }
++    }
++}
++
++static void rp_prop_allow_set_link(const Object *obj, const char *name,
++                                   Object *val, Error **errp)
++{
++}
++
++static void rp_memory_master_init(Object *obj)
++{
++    RemotePortMemoryMaster *rpms = REMOTE_PORT_MEMORY_MASTER(obj);
++    object_property_add_link(obj, "rp-adaptor0", "remote-port",
++                             (Object **)&rpms->rp,
++                             rp_prop_allow_set_link,
++                             OBJ_PROP_LINK_STRONG);
++}
++
++static Property rp_properties[] = {
++    DEFINE_PROP_UINT32("map-num", RemotePortMemoryMaster, map_num, 0),
++    DEFINE_PROP_UINT64("map-offset", RemotePortMemoryMaster, map_offset, 0),
++    DEFINE_PROP_UINT64("map-size", RemotePortMemoryMaster, map_size, 0),
++    DEFINE_PROP_UINT32("rp-chan0", RemotePortMemoryMaster, rp_dev, 0),
++    DEFINE_PROP_BOOL("relative", RemotePortMemoryMaster, relative, false),
++    DEFINE_PROP_UINT32("max-access-size", RemotePortMemoryMaster,
++                       max_access_size, RP_MAX_ACCESS_SIZE),
++};
++
++static void rp_memory_master_class_init(ObjectClass *oc, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
 +    device_class_set_props_n(dc, rp_properties, ARRAY_SIZE(rp_properties));
++    dc->realize = rp_memory_master_realize;
++}
++
++static const TypeInfo rp_info = {
++    .name          = TYPE_REMOTE_PORT_MEMORY_MASTER,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(RemotePortMemoryMaster),
++    .instance_init = rp_memory_master_init,
++    .class_init    = rp_memory_master_class_init,
++    .interfaces    = (InterfaceInfo[]) {
++        { TYPE_REMOTE_PORT_DEVICE },
++        { },
++    },
++};
++
++static void rp_register_types(void)
++{
++    type_register_static(&rp_info);
++}
++
++type_init(rp_register_types)
+diff --git a/hw/core/remote-port.c b/hw/core/remote-port.c
+index 6a1933a5a6..c783a12153 100644
+--- a/hw/core/remote-port.c
++++ b/hw/core/remote-port.c
+@@ -938,6 +938,11 @@ static void rp_init(Object *obj)
+     }
  }
  
- static const TypeInfo rp_info = {
++struct rp_peer_state *rp_get_peer(RemotePort *s)
++{
++    return &s->peer;
++}
++
+ static void rp_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+diff --git a/include/hw/core/remote-port-memory-master.h b/include/hw/core/remote-port-memory-master.h
+new file mode 100644
+index 0000000000..70f7c38c35
+--- /dev/null
++++ b/include/hw/core/remote-port-memory-master.h
+@@ -0,0 +1,59 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++/*
++ * QEMU remote port memory master. Read and write transactions
++ * recieved from QEMU are transmitted over remote-port.
++ *
++ * Copyright (c) 2020 Xilinx Inc
++ * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
++ *
++ * This code is licensed under the GNU GPL.
++ */
++#ifndef REMOTE_PORT_MEMORY_MASTER_H
++#define REMOTE_PORT_MEMORY_MASTER_H
++
++#include "hw/core/remote-port.h"
++
++#define TYPE_REMOTE_PORT_MEMORY_MASTER "remote-port-memory-master"
++#define REMOTE_PORT_MEMORY_MASTER(obj) \
++        OBJECT_CHECK(RemotePortMemoryMaster, (obj), \
++                     TYPE_REMOTE_PORT_MEMORY_MASTER)
++
++typedef struct RemotePortMemoryMaster RemotePortMemoryMaster;
++
++typedef struct RemotePortMap {
++    void *parent;
++    MemoryRegion iomem;
++    uint32_t rp_dev;
++    uint64_t offset;
++} RemotePortMap;
++
++struct RemotePortMemoryMaster {
++    /* private */
++    SysBusDevice parent;
++
++    MemoryRegionOps *rp_ops;
++    RemotePortMap *mmaps;
++
++    /* public */
++    uint32_t map_num;
++    uint64_t map_offset;
++    uint64_t map_size;
++    uint32_t rp_dev;
++    bool relative;
++    uint32_t max_access_size;
++    struct RemotePort *rp;
++    struct rp_peer_state *peer;
++    int rp_timeout;
++};
++
++MemTxResult rp_mm_access(RemotePort *rp, uint32_t rp_dev,
++                         struct rp_peer_state *peer,
++                         MemoryTransaction *tr,
++                         bool relative, uint64_t offset);
++
++MemTxResult rp_mm_access_with_def_attr(RemotePort *rp, uint32_t rp_dev,
++                                       struct rp_peer_state *peer,
++                                       MemoryTransaction *tr,
++                                       bool relative, uint64_t offset,
++                                       uint32_t def_attr);
++#endif
 diff --git a/include/hw/core/remote-port.h b/include/hw/core/remote-port.h
-index db71071c8e..0f40018cdb 100644
+index 1d8b64925a..e5dfaf7c3b 100644
 --- a/include/hw/core/remote-port.h
 +++ b/include/hw/core/remote-port.h
-@@ -56,8 +56,24 @@ typedef struct RemotePortDeviceClass {
- struct RemotePort {
-     DeviceState parent;
+@@ -151,4 +151,6 @@ void rp_process(RemotePort *s);
  
-+    union {
-+       int pipes[2];
-+       struct {
-+           int read;
-+           int write;
-+       } pipe;
-+    } event;
-+    Chardev *chrdev;
-+    CharFrontend chr;
-     bool finalizing;
+ ssize_t rp_write(RemotePort *s, const void *buf, size_t count);
  
-+    char *chardesc;
-+    char *chrdev_id;
++struct rp_peer_state *rp_get_peer(RemotePort *s);
 +
-+    const char *prefix;
-+    const char *remote_prefix;
-+
-+    uint32_t current_id;
-     bool reset_done;
- 
- #define REMOTE_PORT_MAX_DEVS 1024
+ #endif
 -- 
 2.43.0
 

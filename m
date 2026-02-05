@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67312ECD981
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 15:27:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B4CFECD980
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 15:28:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo1EE-0003tP-5C; Thu, 05 Feb 2026 10:25:10 -0500
+	id 1vo1FP-0006F9-D7; Thu, 05 Feb 2026 10:26:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo1EC-0003sR-6n
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:25:08 -0500
-Received: from p-west2-cluster4-host4-snip4-1.eps.apple.com ([57.103.69.242]
+ id 1vo1FN-00066T-6c
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:26:21 -0500
+Received: from p-west2-cluster1-host7-snip4-10.eps.apple.com ([57.103.68.93]
  helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo1EA-0001iX-0l
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:25:07 -0500
+ id 1vo1FL-0002C5-J7
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 10:26:20 -0500
 Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-2a-60-percent-8 (Postfix) with ESMTPS id
- E7CBD18001FA; Thu,  5 Feb 2026 15:25:01 +0000 (UTC)
+ 9D2A0180009C; Thu,  5 Feb 2026 15:26:15 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1770305105; x=1772897105;
- bh=XyBHHRZUjZrB24DOEIVWdZ5GavQ/FkCfYqY7wYjlLmk=;
+ s=sig1; t=1770305178; x=1772897178;
+ bh=dXlBjrYQLV1qCj1RHDhCy7H3jFtP7Evi4SFhHqHKNZU=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=HzQ+4RJaclWhMjRbdfrWwB8WCarGF5jJyx/C2amuE/kVfQMiRUNGJTHt/FV2k2m+2F/2EYS25Kg258iKKG8fo5UKsw7XbEl26z4n9W0W7E08hCMsJufefAELgne04MZffs0H0SQCVvTVjm8zwkrmddvnvB1nqX+nnpbDcdd2ycjhBsa4rI9ISEDABjNxOufwMsazdAEMMPNQg70qSKVcWcGiAzd1BmYTlyAGco7FMxQur64oy80Qzd9hP0mIdcMZyjSYbUVwWkn3uBOAtzUbd5roItTmF/7tJHCw5hNT6nJz4XasliCkEKzcKPv0t2ab8SBIgg9TzTOdc8y34BNkaw==
+ b=ENBADnzkoNDl5OBZPdbWIqtUwiBkYSgkgO70PHhezgR8d/cQ8bHIYWmWjGbP4WVYNEcuYOD6e09fH6tHI66lRHkRe1kdQLrThbx93c+NNs9rkZK641i6Kn416D5GVO/YkMEhcOe8SUU0K3mD+olHECSOYSs+jTtoDBzFVe5ByKvDwoKMSui7/dhLNTg5+ArQnVDx9mqrPQc2oOJGSSdbyq1MClyA+GfUPYYA+rWP2Y09JDV5IR3xNKH5aV3Bcva0P07KX23nL/lqfRy5q284gFIUDPItY88TnjyRos07janXMfRtZJvEWcuYySUcDewr739o+kCIdiHaUV56PdkpnA==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.152.38])
  by p00-icloudmta-asmtp-us-west-2a-60-percent-8 (Postfix) with ESMTPSA id
- 1F77A180018C; Thu,  5 Feb 2026 15:24:56 +0000 (UTC)
+ CC9471800601; Thu,  5 Feb 2026 15:26:10 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org,
 	mohamed@unpredictable.fr
@@ -54,42 +54,43 @@ Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  qemu-arm@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
  Igor Mammedov <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
  Shannon Zhao <shannon.zhaosl@gmail.com>
-Subject: [PATCH v22 04/22] hw: arm: virt: rework MSI-X configuration
-Date: Thu,  5 Feb 2026 16:24:07 +0100
-Message-ID: <20260205152432.78208-5-mohamed@unpredictable.fr>
+Subject: [PATCH v22 20/22] target/arm: whpx: instantiate GIC early
+Date: Thu,  5 Feb 2026 16:24:23 +0100
+Message-ID: <20260205152432.78208-21-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260205152432.78208-1-mohamed@unpredictable.fr>
 References: <20260205152432.78208-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Authority-Info-Out: v=2.4 cv=OMgqHCaB c=1 sm=1 tr=0 ts=6984b650
+X-Authority-Info-Out: v=2.4 cv=bopBxUai c=1 sm=1 tr=0 ts=6984b69a
  cx=c_apl:c_apl_out:c_pps a=9OgfyREA4BUYbbCgc0Y0oA==:117
  a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=KKAkSRfTAAAA:8 a=XHbtxiRcFRs46boockMA:9 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA1MDExNiBTYWx0ZWRfXzbeGiTKfq80g
- y8A0d76VQFZFCLBMTy7s7X8Csy8Lg3G1h3N0aAM5bRyWXgAGk5L7TM56mmpm/HgFcZL5eYWr/ST
- rSyc2rMLhgz/3hLxQdpb+Q0KKrdQuXaHDpu7P55LX8s8RC69t7kG0mbbytKagFz0qszJBf/M7kJ
- HzkTLmNMx30a2Op6+Z2e2/2ZzBuHsbOJbkoDpsbuQ6eVhyZthGGCFjIFCUmpo7bWgoxDOFQFCXu
- ObrwkSCQJJ/66d2DkTCRGPD13ru75hun1FuZebewwPamQ9lzxa/54083gMkftGqoz8T5aMjZCLn
- E3lCnpUc5HyeecA/lHDZLmsiIzGrQCsatPZdzP1EpUe9CBC6uA0RMVV5+F1ijw=
-X-Proofpoint-GUID: bycMThuW5V9QsEzojCUq9CueoOcOoqSh
-X-Proofpoint-ORIG-GUID: bycMThuW5V9QsEzojCUq9CueoOcOoqSh
+ a=KKAkSRfTAAAA:8 a=EYz79TNVRTG0waESW9UA:9 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA1MDExNyBTYWx0ZWRfXxGVmfT+fCapt
+ 6kHNW5EPw5GhhlhhAc36BRHUimvb0ASpdEW0z1T1vuBCDk1uzNH4BOBte9lQP/X+xa185pgsUm0
+ FXXfvXXd4yUVEcdJo9pyQwdUYW7RqcC/wAKPsXBjS8Xlr/o6mDOPIBWoWXzQUfh/9RTu2E1CHBC
+ de2pihe+Uuyxl80D3qdK6cMFmp3LdTYuLRHRFKsKfNrcAlCClh9GgPOIX3VZrvbCe8ebKbkf6kk
+ mtdzjwiUx97AtFIsjL+WZqR1jWiESa8f52ApkucMiVwjtSojd3qWOpC2IFBGUq4Lj5N8CzOHrqB
+ SM+jRyatb4naBQCvcGrKjUL2aNHFxGDTkxIx8tdYvjLi73uEpDqO7Fvq5x5smQ=
+X-Proofpoint-GUID: ZeEMTcdl4gyh1Zjy2ajy4efgwof7T6ug
+X-Proofpoint-ORIG-GUID: ZeEMTcdl4gyh1Zjy2ajy4efgwof7T6ug
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-05_03,2026-02-05_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- suspectscore=0 lowpriorityscore=0 adultscore=0 mlxlogscore=999 spamscore=0
- phishscore=0 clxscore=1030 mlxscore=0 malwarescore=0 classifier=spam
+ suspectscore=0 clxscore=1030 lowpriorityscore=0 mlxlogscore=994 adultscore=0
+ phishscore=0 malwarescore=0 mlxscore=0 spamscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2602050116
-X-JNJ: AAAAAAAB+Sgiwaqrs0w33i5ZffHFX1mRjKcBB08gb6nQdw3vTAaPwQ5/MqmmzpirGgegvEL/tvYTe38bH33PrD3j0faaJNlYnahkIEOOODQekeSA7U5v8QVKV5WfslFfkAa+/saol7lkw+LJKHtGrQRskpoHPZlZ3XFsmaYV/2DQ4TJpZcLmmgYI13Wu92M27eT6gKv6aNwVpDn+MNiOySNg6Vp6Rmjq6qseAznYqLVqb5NEI5kIeAElEdWyLarfgPhc1EIhipzuAJBrcyZMJzBcp7Ycp/yX1yGjuV9EOkhIaulzAhVkc20lFM6s/eoRpNO5pmmJrKKXq4IY3FVJudJKS6yPrT0DXqKaurDF/oFVCr84qN8tBPD3kk2oJ3idox9NA8t9BWVMN0W5aSiPmu00d9O8cvcQ9Ff0gykuzPuo98aI7REeUPLOFnYJD+BY+8IeUJQFjBjFDxwLzLKEE723pz11a1bit4X1yTkBKzKW/djTrwujCFiseljP8wFv4pmknE1miiQtZNqBaCVwZ96HtEa5FGJaosphV1Hir4pHkywApyAyU3LnoPNe6+Uxe1yhMk0M4RnLOjoy80nRKf4WfQ4lkceTt6NDgyVuGUk9ubUaDlYJwTXO8IWxfAmy4+0tE/JUdTmrlCl4w/UJ77JP8QLMfE0Y54nKFwtEKkHOkW1huGpezk4qLk2ebQxL5FuQ0vxpGgpS/9VZOTa124sl3ybP+5nudMEKocSf4kc9EIpU0dNOrjbJMC5/ncain8tteyc+sW1OsMcXT6D9QcVvwRBh85mj6mWuQ6KlbUEdPXtSrwp19ILjCnbZY5PeaZl7ZJsocuutpExqBnR8xikGSwJcUw7gXJS4+6hXDPSFvVzycuo1kupX0wFrRRWmf0GYcbCzulETDAD5ClQt684fQLbZOYxSGU+6nm8yxoDADat03x+/Ge5xyaRYsHiW
-Received-SPF: pass client-ip=57.103.69.242;
+ definitions=main-2602050117
+X-JNJ: AAAAAAABAh8VMZMQ93+hupIk3nnqhKBuFJuvBpfeowqn9hzHvBpRdoR80AG3mzl6QaPOReC5m7b4UMoyyeBZ2Fi3DOCKQmuaBTJwI03FV92LuoW5B8Cf/x3uRz1sXCmkYNLEDXtO0ptrLFQmw3CwMVeMOKLyrs1Tx4S7/s+OBK0nSUmQ27eW8Bserf8Kgt1xMF/W7hdSk0kypB4IO2D4lP/+Xl7toK7/oqOzvguE57/VxD0HpxgKl5/US3cr1QH6dp69+abqWYPTuYVeASAKPTibym/TfzJQUlFqodVt9kghy8aK9/3jvQ5y3X2Q+uvuM4Y5JaSjlwS/f5mNI9lMqNgyQrbXGfg0Auwaq6TKfL2Wcwj0eHpbDbtYDJ/mVuCcTY35bjLvLTP3RUHEaw2WbusAoWSZ1pQNy/8dDv1cWvcFRal+igdzAX/mWEDh2fFRlJTgwFELKgLWAK2NEZgZuque2SrV8BO84+ZOoWC/vXYHTtAPAfhOYzUTyvIDewa0m8YXCHSPnYqKScAupkNeJYCI/qeENOodqlNUar9Gx8vNnBeGG/jMgMhtJUTNIEx54WcMgfAR17CU1DUavSxtc5rtC2O07+0ICY4sG2N6Vyn7F2eC8eN53YZ1zWjskus3ELUowGWmYQpp/06Ll3aaxoJ9Msjo/Xbai1eNr56NpIXLCdCwaMQOEtdB0/+uVi6+KIcjTC5YVwFnTj/Jh7tmL6ug34xh7Kz4mbdxEa3R+AgycXalvHDxCFfdeZuguZL+MmOSw/ZZX/9u7rVvb4G5jkI1NxraPdrPRm1Q15q8t4JpUiQWMya+0cgifhIMl/5psNWBaRQQLvM4ClRD/jllEptTUozhliAHL1KqfXo2Bx09t+p1L4Q7RPTnetRYjgnlWegvFGgp7aOK9YzNycyZbBv/sFZeJZ2YGpEbs+dSxNr4921SmPCwys/puUwrqLo=
+Received-SPF: pass client-ip=57.103.68.93;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -107,312 +108,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce a -M msi= argument to be able to control MSI-X support independently
-from ITS, as part of supporting GICv3 + GICv2m platforms.
+While figuring out a better spot for it, put it in whpx_accel_init.
 
-Remove vms->its as it's no longer needed after that change.
+Needs to be done before WHvSetupPartition.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/virt-acpi-build.c |  20 ++++---
- hw/arm/virt.c            | 119 ++++++++++++++++++++++++++++++++++++---
- include/hw/arm/virt.h    |   5 +-
- 3 files changed, 128 insertions(+), 16 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index c145678185..544004615d 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -569,7 +569,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         nb_nodes = num_smmus + 1; /* RC and SMMUv3 */
-         rc_mapping_count = rc_smmu_idmaps_len;
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+---
+ target/arm/whpx/whpx-all.c | 32 ++++++++++++++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
+index c88c67a9e2..44ef42307b 100644
+--- a/target/arm/whpx/whpx-all.c
++++ b/target/arm/whpx/whpx-all.c
+@@ -939,6 +939,38 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
  
--        if (vms->its) {
-+        if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
-             /*
-              * Knowing the ID ranges from the RC to the SMMU, it's possible to
-              * determine the ID ranges from RC that go directly to ITS.
-@@ -590,7 +590,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-             }
-         }
-     } else {
--        if (vms->its) {
-+        if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
-             nb_nodes = 2; /* RC and ITS */
-             rc_mapping_count = 1; /* Direct map to ITS */
-         } else {
-@@ -605,7 +605,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     build_append_int_noprefix(table_data, IORT_NODE_OFFSET, 4);
-     build_append_int_noprefix(table_data, 0, 4); /* Reserved */
+     memset(&prop, 0, sizeof(prop));
  
--    if (vms->its) {
-+    if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
-         /* Table 12 ITS Group Format */
-         build_append_int_noprefix(table_data, 0 /* ITS Group */, 1); /* Type */
-         node_size =  20 /* fixed header size */ + 4 /* 1 GIC ITS Identifier */;
-@@ -624,7 +624,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         int smmu_mapping_count, offset_to_id_array;
-         int irq = sdev->irq;
- 
--        if (vms->its) {
-+        if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
-             smmu_mapping_count = 1; /* ITS Group node */
-             offset_to_id_array = SMMU_V3_ENTRY_SIZE; /* Just after the header */
-         } else {
-@@ -717,7 +717,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-             }
-         }
- 
--        if (vms->its) {
-+        if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
-             /*
-              * Map bypassed (don't go through the SMMU) RIDs (input) to
-              * ITS Group node directly: RC -> ITS.
-@@ -735,7 +735,9 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-          * SMMU: RC -> ITS.
-          * Output IORT node is the ITS Group node (the first node).
-          */
--        build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET, 0);
-+        if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
-+            build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET, 0);
-+        }
-     }
- 
-     build_iort_rmr_nodes(table_data, smmuv3_devs, &id);
-@@ -1053,7 +1055,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-                                           memmap[VIRT_HIGH_GIC_REDIST2].size);
-         }
- 
--        if (vms->its) {
-+        if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
-             /*
-              * ACPI spec, Revision 6.0 Errata A
-              * (original 6.0 definition has invalid Length)
-@@ -1067,7 +1069,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-             build_append_int_noprefix(table_data, memmap[VIRT_GIC_ITS].base, 8);
-             build_append_int_noprefix(table_data, 0, 4);    /* Reserved */
-         }
--    } else {
-+    }
-+
-+    if (vms->msi_controller == VIRT_MSI_CTRL_GICV2M) {
-         const uint16_t spi_base = vms->irqmap[VIRT_GIC_V2M] + ARM_SPI_BASE;
- 
-         /* 5.2.12.16 GIC MSI Frame Structure */
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 390845c503..aa5e992712 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -737,7 +737,6 @@ static void create_its(VirtMachineState *vms)
- {
-     DeviceState *dev;
- 
--    assert(vms->its);
-     if (!kvm_irqchip_in_kernel() && !vms->tcg_its) {
-         /*
-          * Do nothing if ITS is neither supported by the host nor emulated by
-@@ -957,9 +956,9 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
- 
-     fdt_add_gic_node(vms);
- 
--    if (vms->gic_version != VIRT_GIC_VERSION_2 && vms->its) {
-+    if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
-         create_its(vms);
--    } else if (vms->gic_version == VIRT_GIC_VERSION_2) {
-+    } else if (vms->msi_controller == VIRT_MSI_CTRL_GICV2M) {
-         create_v2m(vms);
-     }
- }
-@@ -2137,6 +2136,44 @@ static void finalize_gic_version(VirtMachineState *vms)
-                                                gics_supported, max_cpus);
- }
- 
-+static void finalize_msi_controller(VirtMachineState *vms)
-+{
 +    /*
-+     * VIRT_MSI_LEGACY_OPT_ITS_OFF is an option to replicate
-+     * behavior of its=off when running with a GICv2, where a
-+     * GICv2m is still present. Otherwise, it behaves the same
-+     * as msi=off.
++     * The only currently supported configuration for the interrupt
++     * controller is kernel-irqchip=on,gic-version=3, with the `virt`
++     * machine.
++     *
++     * Initialising the vGIC here because it needs to be done prior to
++     * WHvSetupPartition.
 +     */
-+    if (vms->msi_controller == VIRT_MSI_LEGACY_OPT_ITS_OFF) {
-+        if (vms->gic_version == 2) {
-+            vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
-+        } else {
-+            vms->msi_controller = VIRT_MSI_CTRL_NONE;
++
++    WHV_ARM64_IC_PARAMETERS ic_params = {
++        .EmulationMode = WHvArm64IcEmulationModeGicV3,
++        .GicV3Parameters = {
++            .GicdBaseAddress = 0x08000000,
++            .GitsTranslaterBaseAddress = 0x08080000,
++            .GicLpiIntIdBits = 0,
++            .GicPpiPerformanceMonitorsInterrupt = VIRTUAL_PMU_IRQ,
++            .GicPpiOverflowInterruptFromCntv = ARCH_TIMER_VIRT_IRQ
 +        }
-+    }
-+    if (vms->msi_controller == VIRT_MSI_CTRL_AUTO) {
-+        if (vms->gic_version == VIRT_GIC_VERSION_2) {
-+            vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
-+        } else {
-+            vms->msi_controller = VIRT_MSI_CTRL_ITS;
-+        }
-+    }
++    };
++    prop.Arm64IcParameters = ic_params;
 +
-+    if (vms->msi_controller == VIRT_MSI_CTRL_ITS) {
-+        if (vms->gic_version == VIRT_GIC_VERSION_2) {
-+            /*
-+             * The legacy its= option in earlier releases allowed specifying
-+             * this configuration and treated it as GICv3 + GICv2m.
-+             * Diagnose it as an error even for that case.
-+             */
-+            error_report("GICv2 + ITS is an invalid configuration.");
-+            exit(1);
-+        }
++    hr = whp_dispatch.WHvSetPartitionProperty(
++            whpx->partition,
++            WHvPartitionPropertyCodeArm64IcParameters,
++            &prop,
++            sizeof(prop));
++    if (FAILED(hr)) {
++        error_report("WHPX: Failed to enable GICv3 interrupt controller, hr=%08lx", hr);
++        ret = -EINVAL;
++        goto error;
 +    }
 +
-+    assert(vms->msi_controller != VIRT_MSI_CTRL_AUTO);
-+}
-+
- /*
-  * virt_post_cpus_gic_realized() must be called after the CPUs and
-  * the GIC have both been realized.
-@@ -2256,6 +2293,7 @@ static void machvirt_init(MachineState *machine)
-      * KVM is not available yet
-      */
-     finalize_gic_version(vms);
-+    finalize_msi_controller(vms);
- 
-     if (vms->secure) {
-         /*
-@@ -2705,18 +2743,76 @@ static void virt_set_highmem_mmio_size(Object *obj, Visitor *v,
-     extended_memmap[VIRT_HIGH_PCIE_MMIO].size = size;
- }
- 
-+static char *virt_get_msi(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+    const char *val;
-+
-+    switch (vms->msi_controller) {
-+    case VIRT_MSI_CTRL_NONE:
-+    case VIRT_MSI_LEGACY_OPT_ITS_OFF:
-+        val = "off";
-+        break;
-+    case VIRT_MSI_CTRL_ITS:
-+        val = "its";
-+        break;
-+    case VIRT_MSI_CTRL_GICV2M:
-+        val = "gicv2m";
-+        break;
-+    case VIRT_MSI_CTRL_AUTO:
-+        val = "auto";
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+    return g_strdup(val);
-+}
-+
-+static void virt_set_msi(Object *obj, const char *value, Error **errp)
-+{
-+    ERRP_GUARD();
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    if (!strcmp(value, "auto")) {
-+        vms->msi_controller = VIRT_MSI_CTRL_AUTO; /* Will be overriden later */
-+    } else if (!strcmp(value, "its")) {
-+        vms->msi_controller = VIRT_MSI_CTRL_ITS;
-+    } else if (!strcmp(value, "gicv2m")) {
-+        vms->msi_controller = VIRT_MSI_CTRL_GICV2M;
-+    } else if (!strcmp(value, "off")) {
-+        vms->msi_controller = VIRT_MSI_CTRL_NONE;
-+    } else {
-+        error_setg(errp, "Invalid msi value");
-+        error_append_hint(errp, "Valid values are auto, gicv2m, its, off\n");
-+    }
-+}
-+
- static bool virt_get_its(Object *obj, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
- 
--    return vms->its;
-+    switch (vms->msi_controller) {
-+    case VIRT_MSI_CTRL_AUTO:
-+    case VIRT_MSI_CTRL_ITS:
-+        return true;
-+    case VIRT_MSI_CTRL_NONE:
-+    case VIRT_MSI_CTRL_GICV2M:
-+    case VIRT_MSI_LEGACY_OPT_ITS_OFF:
-+        return false;
-+    default:
-+        g_assert_not_reached();
-+    }
- }
- 
- static void virt_set_its(Object *obj, bool value, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
- 
--    vms->its = value;
-+    if (value) {
-+        vms->msi_controller = VIRT_MSI_CTRL_ITS;
-+    } else {
-+        vms->msi_controller = VIRT_MSI_LEGACY_OPT_ITS_OFF;
-+    }
- }
- 
- static bool virt_get_dtb_randomness(Object *obj, Error **errp)
-@@ -3043,6 +3139,9 @@ static void virt_machine_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-             db_start = base_memmap[VIRT_GIC_V2M].base;
-             db_end = db_start + base_memmap[VIRT_GIC_V2M].size - 1;
-             break;
-+        case VIRT_MSI_CTRL_AUTO:
-+        case VIRT_MSI_LEGACY_OPT_ITS_OFF:
-+            g_assert_not_reached();
-         }
-         resv_prop_str = g_strdup_printf("0x%"PRIx64":0x%"PRIx64":%u",
-                                         db_start, db_end,
-@@ -3463,6 +3562,12 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
-                                           "Set on/off to enable/disable "
-                                           "ITS instantiation");
- 
-+    object_class_property_add_str(oc, "msi", virt_get_msi,
-+                                  virt_set_msi);
-+    object_class_property_set_description(oc, "msi",
-+                                          "Set MSI settings. "
-+                                          "Valid values are auto, gicv2m, its and off");
-+
-     object_class_property_add_bool(oc, "dtb-randomness",
-                                    virt_get_dtb_randomness,
-                                    virt_set_dtb_randomness);
-@@ -3518,8 +3623,8 @@ static void virt_instance_init(Object *obj)
-     vms->highmem_mmio = true;
-     vms->highmem_redists = true;
- 
--    /* Default allows ITS instantiation */
--    vms->its = true;
-+    /* Default allows ITS instantiation if available */
-+    vms->msi_controller = VIRT_MSI_CTRL_AUTO;
-     /* Allow ITS emulation if the machine version supports it */
-     vms->tcg_its = !vmc->no_tcg_its;
- 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 3b382bdf49..8069422769 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -101,6 +101,10 @@ typedef enum VirtIOMMUType {
- 
- typedef enum VirtMSIControllerType {
-     VIRT_MSI_CTRL_NONE,
-+    /* This value is overriden at runtime.*/
-+    VIRT_MSI_CTRL_AUTO,
-+    /* Legacy option: its=off provides a GICv2m when using GICv2 */
-+    VIRT_MSI_LEGACY_OPT_ITS_OFF,
-     VIRT_MSI_CTRL_GICV2M,
-     VIRT_MSI_CTRL_ITS,
- } VirtMSIControllerType;
-@@ -146,7 +150,6 @@ struct VirtMachineState {
-     bool highmem_ecam;
-     bool highmem_mmio;
-     bool highmem_redists;
--    bool its;
-     bool tcg_its;
-     bool virt;
-     bool ras;
+     hr = whp_dispatch.WHvSetupPartition(whpx->partition);
+     if (FAILED(hr)) {
+         error_report("WHPX: Failed to setup partition, hr=%08lx", hr);
 -- 
 2.50.1 (Apple Git-155)
 

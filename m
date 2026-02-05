@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11B75E8B39F
-	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 14:26:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A577E91265
+	for <qemu-arm@archiver.kernel.org>; Thu,  5 Feb 2026 14:26:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vo0JL-0000zU-Kw; Thu, 05 Feb 2026 09:26:23 -0500
+	id 1vo0J5-0000nq-K4; Thu, 05 Feb 2026 09:26:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo0JH-0000xK-71
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:26:19 -0500
-Received: from qs-2003g-snip4-11.eps.apple.com ([57.103.86.73]
+ id 1vo0J4-0000n0-EA
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:26:06 -0500
+Received: from qs-2002i-snip4-4.eps.apple.com ([57.103.87.215]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vo0JF-0007wA-OH
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:26:18 -0500
+ id 1vo0J3-0007qp-3I
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 09:26:06 -0500
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-2 (Postfix) with ESMTPS id
- E56C61800D89; Thu,  5 Feb 2026 14:26:11 +0000 (UTC)
+ E494A1800DA1; Thu,  5 Feb 2026 14:25:58 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1770301577; x=1772893577;
- bh=tbfFbAve7fkxKDMXq+Hqdeacl/+zBPkkhOdplq2Wm74=;
+ s=sig1; t=1770301564; x=1772893564;
+ bh=ChIhwcPMGVA7/ZQSbYVEEiNk2wqKK9/9DHnWEjCY41s=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=edqphzl3PuooG6CodeDU2uosQie6UZnWj7+3eYnBzPkMtNnBP5Dngq7F7MFp7aG5RpVK0mUQVVW4OiX9ta0giKVdbAh3DqYa1Nweh+HV8hpLMvXpxuaoKDR+4Y6joN6nsWZ8nvy8tQnL8MFj7CzFD3LlhO/OW8yLo37sEV2UTUkk9tyRnVzb0WZ99Cz24NDN1bLVm0FoFbNWw3xdH6mVOWKc/USQDusfZBBHzdwb4ERBwjbxndRRy2sFlRPFcHe5XrCEi64iZt7K/WhdDMkQhkFJ2oPLm3huU5W8nxy1D4BHGvxJXfak+2nCm2sVPHiGj8AkKrUg890qlj4W7UDN5w==
+ b=JzTs0q1U2kud0n3gI1QAFerUJhrv7pbgsNPVUnGqUNvgP6FwWy+N6KEbCEp3jrrBnqkaczgrVijLSdJjVmMwf6sr9m1fXKkLytYObp8Spo2i8WXn7ZgyG3FqW8MRmiM83Mh1r7ZEy35+bs9lI2a6O1euiNKOYnpkPtKueQjk8T29HN10uJgd4jNvPRxnlhqTKpcvvURBW0lp9Z1GdS5LxebTB9OYVpXUMSHUQ7F4GE+lrm5C42ggxcRnpQHX6Pz9ccZFjv20UAPu9nnkaCsR/K8b4OwJyKBdm4Uyd+JfZBD2nRn3XFvC5+jAxwDPH8gJGYxAxhW6dH3hpP8BecshOQ==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-2 (Postfix) with ESMTPSA id
- B878F1800D93; Thu,  5 Feb 2026 14:26:05 +0000 (UTC)
+ 3B1E71800128; Thu,  5 Feb 2026 14:25:54 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org,
 	mohamed@unpredictable.fr
@@ -54,46 +54,46 @@ Cc: Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>,
  Roman Bolshakov <rbolshakov@ddn.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v21 07/22] qtest: hw/arm: virt: add new test case for GICv3 +
- GICv2m
-Date: Thu,  5 Feb 2026 15:25:25 +0100
-Message-ID: <20260205142543.64818-8-mohamed@unpredictable.fr>
+Subject: [PATCH v21 03/22] qtest: hw/arm: virt: skip ACPI test for IORT with
+ GICv2
+Date: Thu,  5 Feb 2026 15:25:21 +0100
+Message-ID: <20260205142543.64818-4-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260205142543.64818-1-mohamed@unpredictable.fr>
 References: <20260205142543.64818-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: F6Je4a14iunhNQ1-T1ccg_Skg5teeUTV
-X-Proofpoint-ORIG-GUID: F6Je4a14iunhNQ1-T1ccg_Skg5teeUTV
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA1MDEwOCBTYWx0ZWRfX74FmD+o6D1BS
- dg/9U+RdIadDUTLfe/4vt8ohPLaymA9FxcrhORsIXzdkYHbVnpWx5Lk4xUMkmsCvyCbJl4vUqfg
- gOi2c0tGBPR4LsUN5NXCI9zMzbiruFPc9xGRWak1N/ikvJu5CcmcXP6IiqRD+jtRIDSlKJrkLJQ
- mxUbSUDyNLsTkVVhrdRfkL2ab4xJon3wRGWXi0zbn/E0GtDK1YFxYII3uLKXEZ/UGRvEIEdWELA
- 5ApgFrBLb8vR3tKJQRqGCBLC4xNJrUv4wgKct9SwyLwGEV0FpLja5PYlmoSIIt7u7evRQbECI8E
- a/PEhnHW7rxMXmFFkcV76ceua09WvD+cufGnzrVp/Dcntu10N+rSZn95LrDTYI=
-X-Authority-Info-Out: v=2.4 cv=S8nUAYsP c=1 sm=1 tr=0 ts=6984a887
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjA1MDEwOCBTYWx0ZWRfXxHPp7X0I8oTP
+ +xbwXNRm2jmFPemcUn3Hubj/AI6jGGxJDoMOfLjia3hiUTDtdZ5dpvXQfa3e199M0puLes8Rzms
+ BxCGOSIuQeks18Vw6CSD8RcZVei113Y+y9EDcOsCJMjljuoiuyODXg2EhM0nyGDJpEikAygKMS9
+ +j/VTJbfj3E9x8lGUwb4Ete4IrcZBOl0Wrg7QEhQZlE2y54CW/2oCKNrg26ymyB/tNeK/mqr3I9
+ ka+SBXMHX+GbGlLVkZRsplKQDr+4Q5M0umH9gNnWgJdlYNl2A3kgeT9Mx0IU+b8a+ain9UzSxzj
+ Qtn47hE1L/7EtnmyRr1y+9KC9FUtmphw23tAoy+sBv8ULnddYNByjCDVhDyFd4=
+X-Authority-Info-Out: v=2.4 cv=V/1wEOni c=1 sm=1 tr=0 ts=6984a87a
  cx=c_apl:c_apl_out:c_pps a=bsP7O+dXZ5uKcj+dsLqiMw==:117
  a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=WSkgWlIY1_Pf25iQiQAA:9
+ a=3bhNkNL8zgIfWImNCT0A:9
+X-Proofpoint-ORIG-GUID: bb1rVl0rrycccUCMz4oFVg0LfBdGDMzT
+X-Proofpoint-GUID: bb1rVl0rrycccUCMz4oFVg0LfBdGDMzT
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-05_03,2026-02-05_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- mlxlogscore=999 lowpriorityscore=0 mlxscore=0 phishscore=0 spamscore=0
- suspectscore=0 bulkscore=0 clxscore=1030 malwarescore=0 classifier=spam
+ mlxlogscore=999 suspectscore=0 malwarescore=0 mlxscore=0 phishscore=0
+ lowpriorityscore=0 spamscore=0 bulkscore=0 clxscore=1030 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2602050108
-X-JNJ: AAAAAAABNjTNxx4CiGUYYBiC+IlJF5Sil5YV91s3HcPNBz0vUzdSVyYVjYt2KND0fjhk1WANdBQxpgdqTJkr3F6VfPTXZx6GuePP20TCfgiS3srO4XQOhYIJLFkBITaoxMKdPlZtPFkzkh4ezZXLZPjU20YBrIwpsHU1mDw72GpUPerujCNRnwH+TOeX1En/DSdTDgPHlQqydGG9abvPR3QVvd1e+0AX5MOwtHcRxtFNv0oVQ8rh/1oT7p3qDH+Z3rzvdxl0TlNjKGZ1xaeVnkUm+DXSkH3JyDakSkscF7Xc+zqY4vMwDXXo2nWLPWR+b/RwIsrdZK37pl1/vOl75RPKFape0wxIXrxyFFTsRvnHzFssfwiJSWtWUwwqmZxl1uqMkEhixIvZke3+0B9c+Dm7PE100lEKbovtYF+3j0MrAnMirmp44nDDHhbOYpOAvZ7JwPz2BNcWqacDScQfXe1hR0dcFzBZubSa3GDbVeumQB2fxEgmy67SDhggVEoHoGLRQS28YxBmhh+QUCBmNOiNriMxbN/uIjpXq3hVqVsGKBuhjnsBNaMAwxjorQwimrHhLAJrRXTh8vGGZ0vj2W+Cu7dtveey6YwsVtUfiVSaMzRCERz8+CXGIJJsvSC3EjhJ5HT2tsBFCGUWjhBC+nmZIOz2L6nACo5iYEdc07/2+SQgwD4hw1d6R/UsToDMb5+cNf/cKbiMEj9PxEMOKiG1bDezgIEkPdcB6+r8OD15vvKPDMugel2cSWieEtEFW/Rq33mLOu22/J2h8r5RVvxlm4ZWgL+ta/eZ8Muov3cj4koKxJb6W7O7xJ/QVBFCFw38w9a5fUjqCWaIht2csU0DmIJVd1pn64fdYdZEWiqZdJUkTh0bS+NrePlRXpa5DFIf9ZS/DtvV7LTEcHn0y6cdFf5pB1AltI3O8y1Kwj1EJzn6exxIORLzZfZds+VmNJhr+c80r4xy
-Received-SPF: pass client-ip=57.103.86.73;
+X-JNJ: AAAAAAABcQbziiXBNRenHHc53stuyxZFv1onlJRYZB53NDIrDlJsyWQQ3Xkw+RnYSMMAPNYWwoqpKszkI7Q4Gk7Nvjb9s+Qnk98kM7L8n4hMMDJFN3No9Wsa6K6UNuPxiGVG7W9Cf9APctRqV2FrkLmGD6r5bFBe6QaRMoGRbK+nxaBX8iCIQBtTF6JvpJxHJUSgpeJpf3Dk++1EEOAe5Xi5gRREQlJeqX4NWWsewP7rahwWnFEnY09zt/iMBlTguLXgosZYaYNatgh7V1K6Dieah1Z9dPpTpVHjjlhiWexdHz/J09ON1icdbGILwX3Ucs6KyEJ+Dv79TVBE3XFlP/ZMxwljFjA4aR1Z9szv4/WtQu+Okr3uCC/bTnAlOQJkp+mdgclQfh4AzaVQ8UkzNO0G7FhlMOZA7u+33vwyXWi3+9lwS1yx0LWtf0PAAPWbG4FMqN+LslqBf+P0PbOMF9dbPpw/aWNuesCPerL2bBcyS2HVO6JfL19log5zIQH20KemdVYWDoPdw+cfsix9Ue3jb4sxGbWxI3noN97qFhaoM/jBICGWDGYtD5UHz45ai3JP3VEp6nOIS29YHBn/NuBeujrqG3kCFvOsMZ7xskkTIP36PYD3rcE6guvCqHeToS7O3g4eJl69b6ocaM7CAGlvyEIe/W1oarhluC2Md07oU69WfUN7lolfg9V5OAUKdNwh231KZmw9nGgSmWQ01VrlZbkFCbve4Qz3EMKG9JoyMeFbLSVirLx6XO2LAU0dlWW67r4b9+IzYAFYBmS6ytml5yfwZOCDtZwLsLSZjyERtb7f3n+xhr3SbDar2MZHArFJF0cNNbtUUImXwdXTCRVUtpIGpuIiXMh/8OxvwPo+v9wc/ZxwYYyETS5eT1hBGhU3R3E7GcYLFJyeuVwr3tjxZYXnnxu7lWbYuRinTDvtKrRWS4yU4D1pJqjnE6Uv2oDXt42G3WqFNu4GLdRh0ENgR5adCFz
+ g4A==
+Received-SPF: pass client-ip=57.103.87.215;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,48 +111,18 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- tests/qtest/bios-tables-test.c | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ tests/qtest/bios-tables-test-allowed-diff.h | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index e489d94331..a5a5b8807b 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -2252,6 +2252,25 @@ static void test_acpi_aarch64_virt_tcg_its_off(void)
-     free_test_data(&data);
- }
- 
-+static void test_acpi_aarch64_virt_tcg_msi_gicv2m(void)
-+{
-+    test_data data = {
-+        .machine = "virt",
-+        .arch = "aarch64",
-+        .variant = ".msi_gicv2m",
-+        .tcg_only = true,
-+        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-+        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-+        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
-+        .ram_start = 0x40000000ULL,
-+        .scan_len = 128ULL * 1024 * 1024,
-+    };
-+
-+    test_acpi_one("-cpu cortex-a57 "
-+                  "-M gic-version=3,iommu=smmuv3,msi=gicv2m", &data);
-+    free_test_data(&data);
-+}
-+
- static void test_acpi_q35_viot(void)
- {
-     test_data data = {
-@@ -2834,6 +2853,8 @@ int main(int argc, char *argv[])
-                            test_acpi_aarch64_virt_tcg_topology);
-             qtest_add_func("acpi/virt/its_off",
-                            test_acpi_aarch64_virt_tcg_its_off);
-+            qtest_add_func("acpi/virt/msi_gicv2m",
-+                           test_acpi_aarch64_virt_tcg_msi_gicv2m);
-             qtest_add_func("acpi/virt/numamem",
-                            test_acpi_aarch64_virt_tcg_numamem);
-             qtest_add_func("acpi/virt/memhp", test_acpi_aarch64_virt_tcg_memhp);
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..7acaf464dd 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,4 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/aarch64/virt/IORT",
++"tests/data/acpi/aarch64/virt/IORT.smmuv3-dev",
++"tests/data/acpi/aarch64/virt/IORT.smmuv3-legacy",
 -- 
 2.50.1 (Apple Git-155)
 

@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87EA9ECD9BF
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 04:23:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71619E9129D
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 04:24:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1voDMB-0004NS-K0; Thu, 05 Feb 2026 23:22:11 -0500
+	id 1voDM7-0004Ju-Cq; Thu, 05 Feb 2026 23:22:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1voDM9-0004LZ-VS
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 23:22:09 -0500
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+ id 1voDM5-0004In-Em
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 23:22:05 -0500
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1voDM6-0003Sg-OG
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 23:22:09 -0500
-Received: by mail-pj1-x102b.google.com with SMTP id
- 98e67ed59e1d1-354b20c1112so344091a91.3
- for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 20:22:06 -0800 (PST)
+ id 1voDM2-0003Pu-HB
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 23:22:05 -0500
+Received: by mail-pj1-x1035.google.com with SMTP id
+ 98e67ed59e1d1-3530e7b3dc2so1390093a91.3
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 20:22:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1770351725; x=1770956525; darn=nongnu.org;
+ d=linaro.org; s=google; t=1770351721; x=1770956521; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=H5cXOVfc0cfcELp2wbWGKaUPyMU0neuGXQOK5SCrE88=;
- b=InEQfkioflr2GLN65dhPQw/RRgMxa40wq2RO7Yf8xkxYgpt56ewyPCiLG0YQBEWKgS
- NMc0AkYjsnVhVPk+5Xd453jtS1epf8aRzGRBVj0YPJlyZbcq1M5I5vWG7Q+KcGVz3RxK
- QAQsimI7isCDg+kilv3TjzQcSCyUeuUhQBAEv0OhyV7dT99WMDVv1l02J21kgKj/j/0N
- Z7OHiEIc98VvVyCRfvRI47WmRYdZjF/elJfnBojGliFJ6pf/OyIikiyt4tlTNZTYgH9J
- I7I/P9Dl222JEcGu7ht1mHnlNrZEcC/7UJsSQ/r0zRti0rTNmWLP7GrnH9Xp7hK70bJd
- l9Ug==
+ bh=msDy34BXNBauha6BX6yiPrC2FkV4a2ByUqGrOK5VCFU=;
+ b=r3EJKRlOfCw78gptDtHTZjogy4jUyP8Xn4K9HL1R4RQ2QGfkP+hLSlfSSL9QsGI2zH
+ 4hKRQX0LmtjOke669hJ5QjwLIWpKrnlTq/N31it76eFS1mSOK7VZsS6Xa5soMpqKT9EP
+ VfC9hsLum2qgkZJUaTEWpynA7y/54Kto5+MVfeOo2BOTD+FZvoHAtKVeHnFS1T+RtJS8
+ WWuIHl1Ie96/8WP6r9wZF1xi0aVPXFu3J83sbAscY++k9WUsIzuAMVb6H6Gyj/U2iXQQ
+ Sp0QaynGsjBD+3m1jaF/qr1m8Lw54iRI15zGX12ji2ngY9tdl+hJmqK5KyLRbqyNB8Gx
+ daAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770351725; x=1770956525;
+ d=1e100.net; s=20230601; t=1770351721; x=1770956521;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=H5cXOVfc0cfcELp2wbWGKaUPyMU0neuGXQOK5SCrE88=;
- b=DEOeXwr6mVBxG1QJhlojidZYHoI51nK2MUBCDKmy5v/YnLGq7Icw6KWc6TXHMkjo2Q
- n4FvzGPmUuju6aQ8rdCf8h99zqYkhzMJmmQglQlVZsmFzo2NZ/hhx2uTlvZa6op/upXS
- ArZuuw76lzFsllQo70enxjyq4p7o23P4JzQFttnRfnsOjMp3SDm7eWPtJLyj9Qtfcdyh
- TNZjYntQMFSkFY8N4b22HmEan9/W7UFaKd7dsIv2yw1esSBC4QMfJPXe6xcBP3hWEmyH
- kg1Ee4uiuElAXRaDqx57slD2RVdus0aLW4DSC1fParrITlFoNtcootT40JODtNpKwM13
- +d9w==
+ bh=msDy34BXNBauha6BX6yiPrC2FkV4a2ByUqGrOK5VCFU=;
+ b=pn6wYjmFkHhWCthjdLLnZz9IV6VQDzBYpgg9L9TeUn6GQ8jnTPv/YqCLbfpyCwicS3
+ 7ZhqWWeyYPaVVNGgcz230sFbB/e29AvE8RW7C2DCXKbpI8kstpKpBtnVZxUTzK77Kvul
+ Y3kcZJSGkGzD2FB5me5pWk2KLhx7NscApcWZOeCX2njKLXJK9XF0DTKGc+1SUKd+4isS
+ PMKlch1AePocJ4L6HbPpXCV4DnAewRiyullE4DQsr90+c/CJBpQspYYeb1KeA++bymg5
+ qDNxA6sM6tDa9znqXy5b0ul4NfdBucu1+yEe4+4bjwCuVCrEkKj/Z+4pwyJLhbE5vCsV
+ efHQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXUZtk6HnS0WUSeJrkezzdv33bQoHjqS2EzacjbEQfCgukEpWfuzPd/rB+F9nxJKk4xAh6wI6ZsFw==@nongnu.org
-X-Gm-Message-State: AOJu0Ywb/GWbo8imyd3uBobshQN11gbjL2p1+RBhdKXov9M6eGTZxrgW
- MNBAOgWrIU+IP6o1c99rXHtwjVB5CagJ9y3zhD9QOO+HGHcGsSK52+usDGqVN3UJqqg=
-X-Gm-Gg: AZuq6aLK2ZtENRAOkS0KUGfE8oJpI4tutHc9T0irFmRh3gMwemVZUP2Ku7GILNB1d92
- 5pf+IpvaehswXR3dQNwRQoAZwWfzKGnLLVQiIjwxq2O569oMsOQxY0kFQGV0ZO9QmfMLOReWayR
- NDUks2zNil87KCuMEABGsYsrWKeZI6jaSwrghjZP5MenRjpHOou0FTzbryoBm/sycyhj1XOInEk
- wdH292RgR53cncnUn2o6db3Nw7duFklwn8b7YXjbGnceqHGgq4Yg1dwlMW3Cg3isRRmOSr46ySB
- BGUo2Qg9w1ECe4PHYChduHzGiZ0cGmJmxewumU00VWPYjCzEcR2VjjJPbpBOYfwF0DK79RSMNkb
- kbxaBWNZBxYyCcYlGzKnnm+E7KDtGts2hRDAnLscNX6BpK+p/gJwgjVUEjdkerrcHnkW2kCELhe
- CIMNSKERPBVP2ZKIe4K7JYDBObWRonG00y4B1To/2gZtBPOR6ydgNcNa/BKJSNxsGw
-X-Received: by 2002:a17:90b:35c5:b0:34c:f92a:ad05 with SMTP id
- 98e67ed59e1d1-354b3bc38ebmr1131436a91.11.1770351725298; 
- Thu, 05 Feb 2026 20:22:05 -0800 (PST)
+ AJvYcCWRi18cipCyiK5Lr/0KN0ulTJqbFiUOOelbJmTdGjwAPcYl9jC1ZVKLJsCzWd8mKLLU97Lre20eaw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy6EpWLvDma3WF4UCTSeIDbt2d7oU7TltMQLeiaporkfyLXoR47
+ BLi8w44+zR6rK+2i/n9zcWtofDCA5LA4P4Ot9zczU0WAizK0vYykPow/noZ1d9iB4ig=
+X-Gm-Gg: AZuq6aKsCU8f3E74PbiFF339e1lWkxYRACz6RrswnaVwK0eawMs8XBO+FwJpEV2SIqi
+ a1taYt/++JtJKMsEIW8uPhb2xC9AU+qPMhgu5pBGVSDmw2jyhiOEqBJoSN86scDAGEAWiVOS9Ns
+ PyW8LFRP93SaRTD4+XoVxl7FV+7RoEAb0vh+2Ct1IfiGKIvpXl/P1hsODxptsE+4L0bCvU0/vsr
+ KCYL6sSBI1+uhXQUFpBq91wY/PPJEkcM0pp0GcODCLIxsC5/r1UlY/vXeYkeF89M8qddZaw/hCH
+ f/XNSRr0tKxcybJTRnvWDgueKlKo/N66Ku911EOhtym72OQM/RiP6UUnYS8GpKBeJOPqykqEOHL
+ eEUAf1dTizbSPNnFzOeRCGYRXiOw0zY6rSf1tHpxtnoAHgIusidnDj0ihRJwaeutEN4zgOyUJpN
+ Jff6XoD6X6tU9PWIyYMUFb4A3g9HyQoYGFIbvHVNdrK7WzTOxVoRgi0+sgD+1AO+IX
+X-Received: by 2002:a17:90b:1650:b0:339:ec9c:b275 with SMTP id
+ 98e67ed59e1d1-354b3c41871mr1384005a91.6.1770351721024; 
+ Thu, 05 Feb 2026 20:22:01 -0800 (PST)
 Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-8244168fdf5sm926914b3a.17.2026.02.05.20.22.04
+ d2e1a72fcca58-8244168fdf5sm926914b3a.17.2026.02.05.20.22.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Feb 2026 20:22:04 -0800 (PST)
+ Thu, 05 Feb 2026 20:22:00 -0800 (PST)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: anjo@rev.ng, Richard Henderson <richard.henderson@linaro.org>,
@@ -75,24 +75,25 @@ Cc: anjo@rev.ng, Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
  qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 06/12] target/arm/tcg: duplicate tcg/arith_helper.c and
- tcg/crypto_helper.c between user/system
-Date: Thu,  5 Feb 2026 20:21:44 -0800
-Message-ID: <20260206042150.912578-7-pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 01/12] target/arm/arm-qmp-cmds.c: make compilation unit
+ common
+Date: Thu,  5 Feb 2026 20:21:39 -0800
+Message-ID: <20260206042150.912578-2-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260206042150.912578-1-pierrick.bouvier@linaro.org>
 References: <20260206042150.912578-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x1035.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,71 +109,137 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In next commit, we'll apply same helper pattern for base helpers
-remaining.
+Move gic_cap_kvm_probe to target/arm/kvm.c to remove #ifdef CONFIG_KVM.
 
-Our new helper pattern always include helper-*-common.h, which ends up
-including include/tcg/tcg.h, which contains one occurrence of
-CONFIG_USER_ONLY.
-Thus, common files not being duplicated between system and target
-relying on helpers will fail to compile. Existing occurrences are:
-- target/arm/tcg/arith_helper.c
-- target/arm/tcg/crypto_helper.c
-
-There is a single occurrence of CONFIG_USER_ONLY, for defining variable
-tcg_use_softmmu. The fix seemed simple, always define it.
-However, it prevents some dead code elimination which ends up triggering:
-include/qemu/osdep.h:283:35: error: call to 'qemu_build_not_reached_always' declared with attribute error: code path is reachable
-  283 | #define qemu_build_not_reached()  qemu_build_not_reached_always()
-      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-tcg/x86_64/tcg-target.c.inc:1907:45: note: in expansion of macro 'qemu_build_not_reached'
- 1907 | # define x86_guest_base (*(HostAddress *)({ qemu_build_not_reached(); NULL; }))
-      |                                             ^~~~~~~~~~~~~~~~~~~~~~
-tcg/x86_64/tcg-target.c.inc:1934:14: note: in expansion of macro 'x86_guest_base'
- 1934 |         *h = x86_guest_base;
-      |              ^~~~~~~~~~~~~~
-
-So, roll your eyes, then rollback code, and simply duplicate the two
-files concerned. We could also do a "special include trick" to prevent
-pulling helper-*-common.h but it would be sad since the whole point of
-the series up to here is to have something coherent using the exact same
-pattern.
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/tcg/meson.build | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ target/arm/kvm_arm.h      |  3 +++
+ target/arm/arm-qmp-cmds.c | 27 +++------------------------
+ target/arm/kvm-stub.c     |  5 +++++
+ target/arm/kvm.c          | 21 +++++++++++++++++++++
+ target/arm/meson.build    |  2 +-
+ 5 files changed, 33 insertions(+), 25 deletions(-)
 
-diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-index 1b115656c46..41cf9bad4f1 100644
---- a/target/arm/tcg/meson.build
-+++ b/target/arm/tcg/meson.build
-@@ -58,20 +58,20 @@ arm_user_ss.add(when: 'TARGET_AARCH64', if_false: files('cpu-v7m.c'))
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 6a9b6374a6d..cc0b374254e 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -11,6 +11,7 @@
+ #ifndef QEMU_KVM_ARM_H
+ #define QEMU_KVM_ARM_H
  
- arm_common_ss.add(zlib)
++#include "qapi/qapi-types-misc-arm.h"
+ #include "system/kvm.h"
+ #include "target/arm/cpu-qom.h"
  
--arm_common_ss.add(files(
--  'arith_helper.c',
--  'crypto_helper.c',
--))
+@@ -263,4 +264,6 @@ void kvm_arm_enable_mte(Object *cpuobj, Error **errp);
+ 
+ void arm_cpu_kvm_set_irq(void *arm_cpu, int irq, int level);
+ 
++void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3);
++
+ #endif
+diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+index 45df15de782..83ec95c290f 100644
+--- a/target/arm/arm-qmp-cmds.c
++++ b/target/arm/arm-qmp-cmds.c
+@@ -43,29 +43,6 @@ static GICCapability *gic_cap_new(int version)
+     return cap;
+ }
+ 
+-static inline void gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
+-{
+-#ifdef CONFIG_KVM
+-    int fdarray[3];
 -
- arm_common_system_ss.add(files(
-+  'arith_helper.c',
-+  'crypto_helper.c',
-   'cpregs-at.c',
-   'hflags.c',
-   'neon_helper.c',
-   'tlb_helper.c',
-   'tlb-insns.c',
-   'vfp_helper.c',
-+  'crypto_helper.c',
+-    if (!kvm_arm_create_scratch_host_vcpu(fdarray, NULL)) {
+-        return;
+-    }
+-
+-    /* Test KVM GICv2 */
+-    if (kvm_device_supported(fdarray[1], KVM_DEV_TYPE_ARM_VGIC_V2)) {
+-        v2->kernel = true;
+-    }
+-
+-    /* Test KVM GICv3 */
+-    if (kvm_device_supported(fdarray[1], KVM_DEV_TYPE_ARM_VGIC_V3)) {
+-        v3->kernel = true;
+-    }
+-
+-    kvm_arm_destroy_scratch_host_vcpu(fdarray);
+-#endif
+-}
+-
+ GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
+ {
+     GICCapabilityList *head = NULL;
+@@ -74,7 +51,9 @@ GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
+     v2->emulated = true;
+     v3->emulated = true;
+ 
+-    gic_cap_kvm_probe(v2, v3);
++    if (kvm_enabled()) {
++        arm_gic_cap_kvm_probe(v2, v3);
++    }
+ 
+     QAPI_LIST_PREPEND(head, v2);
+     QAPI_LIST_PREPEND(head, v3);
+diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+index c93462c5b9b..ea67deea520 100644
+--- a/target/arm/kvm-stub.c
++++ b/target/arm/kvm-stub.c
+@@ -124,3 +124,8 @@ bool kvm_arm_cpu_post_load(ARMCPU *cpu)
+ {
+     g_assert_not_reached();
+ }
++
++void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
++{
++    g_assert_not_reached();
++}
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 3e35570f15f..ded582e0da0 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -2580,3 +2580,24 @@ void arm_cpu_kvm_set_irq(void *arm_cpu, int irq, int level)
+     }
+     kvm_arm_set_irq(cs->cpu_index, KVM_ARM_IRQ_TYPE_CPU, irq_id, !!level);
+ }
++
++void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
++{
++    int fdarray[3];
++
++    if (!kvm_arm_create_scratch_host_vcpu(fdarray, NULL)) {
++        return;
++    }
++
++    /* Test KVM GICv2 */
++    if (kvm_device_supported(fdarray[1], KVM_DEV_TYPE_ARM_VGIC_V2)) {
++        v2->kernel = true;
++    }
++
++    /* Test KVM GICv3 */
++    if (kvm_device_supported(fdarray[1], KVM_DEV_TYPE_ARM_VGIC_V3)) {
++        v3->kernel = true;
++    }
++
++    kvm_arm_destroy_scratch_host_vcpu(fdarray);
++}
+diff --git a/target/arm/meson.build b/target/arm/meson.build
+index 462c71148d2..1a1bcde2601 100644
+--- a/target/arm/meson.build
++++ b/target/arm/meson.build
+@@ -16,7 +16,7 @@ arm_common_ss.add(files(
+   'mmuidx.c',
  ))
- arm_user_ss.add(files(
-+  'arith_helper.c',
-+  'crypto_helper.c',
-   'hflags.c',
-   'neon_helper.c',
-   'tlb_helper.c',
+ 
+-arm_system_ss.add(files(
++arm_common_system_ss.add(files(
+   'arm-qmp-cmds.c',
+ ))
+ arm_system_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c', 'kvm.c'))
 -- 
 2.47.3
 

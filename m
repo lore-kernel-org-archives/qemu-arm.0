@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DECE5ECD9BC
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 03:22:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BF23ECD9BC
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 03:22:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1voCOh-0001uP-1d; Thu, 05 Feb 2026 22:20:43 -0500
+	id 1voCOg-0001tm-Kb; Thu, 05 Feb 2026 22:20:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1voCO3-0000UZ-8Y; Thu, 05 Feb 2026 22:20:04 -0500
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ id 1voCO5-0000Ut-6D; Thu, 05 Feb 2026 22:20:09 -0500
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1voCO1-0008F6-H4; Thu, 05 Feb 2026 22:20:02 -0500
+ id 1voCO1-0008VR-TY; Thu, 05 Feb 2026 22:20:04 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Q4TGM1sJADWdeJ5DSH5mm7VcKJgV/LkMKEt7q5FU9NPRgxnB1VhWIfPfih9v02iRFnquETicZpLHm0e6PnzM/FhzcTU+AMZHA3rw/GYibcj+vBZJ1N2DtuVUH0eiveRwD2234Os9B7VXSbAH1VagfHfxN3b10IYcGxfJbJ2/Ui+u+awjYHNg5pETcGfY6EGqm5oIY7DbfKm1spB+G/ZCfiO4DU6QElBlBl1nRAm9VjeOQDAU7h6Lgtj9Z/hfTdprkn1LfZSalssqFduRqFvacjD1fTv3CaU15I0M5rr3+s853XDuAZDVlGIDgK/NnPIwhdHkcLlGiFTTT5H2s/xTxg==
+ b=EWugcbRIWfG4XjWQPFsuUZCl4TEq/gSfA+2eUqS5WtdD30G8Ddn/frIiKutgBif3MBeYPo3vUIjCdBtUceRuahNVKDsI5WN1bA1I4pfyTe06SFfoZDFgbX0Jkwj7kWGVEMa3AmJn6Y2OPjgMGSro+boml2b1L/BgTfaQBWC7aMCGz3leGpTcTXzn5zX9DqlQokzpYYAUBucT1SLOe0l6ucsayN15AJGUOjIrVfV9G5O3L92zUWRsPEL5auJuFKUhTfvZjejbasqTaTcMhN0PhXdZu7cKp4AKTBtk2+SYGIh4FmJjnLKVbf5igDwWbEahMfC5XRwKJPplAfYVrbXKmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5Z4H0ivFH0w77BDEXl5j1inCSDLr0zdIdVbkCCdeZhc=;
- b=kC/e9NImusTEjGHkdf1F60vpdSmLUtiIAtWNZgWh8RaRaFFIqfigMvxPeVLd0yUuQmjH+Yl3g4G47F1T6NUWcq+CnS0PuqRthPfu+lAbQeqCzVSQur57Ev57D1Hsp/lK2+e3TFIE4PUwUk87J4SM7dMBosur6F5yoODOhal6e3jO5ZveGTDrNBTB3ELOxZrmjabangQoCYjPfDm/H0kaYLp0QZWlrE1zAy97KKNzh4JBlJLx6eAqXnjeVJI2tjnpszT/z/+IccAfskt7cQjn/68YeEJoPgNFM6RRjR85sE+KxZGbm1r7Bxys5PYA0s3OGhLOMFh/+NV73t7yCNcNcQ==
+ bh=9LHe08sXo0xDLYJlKJBsDA7nPDg7IVxNtEj1DPMBLg0=;
+ b=Q4ifmHkB5Cn6HfPiv1KAWzuHYfS1rvybiQ7Shw2HmhHCMQ8Z+d+PNk3kNiWFakZQBvVBhY3gUlJQMaHPKX0+86tZmU/4eyJrIba3WVdcGfdYGSl/NbSuJtqnXoiY8CNUVYtkK7Xxn0Izo5JpxCnWvXNCoOCv7myZ8teivLIoKHFGD57ZTpnLtJNJUmEQeaHgeh+Z2nN5I/H9HpGeDD1yZmaKTVXc+uoorSJkZbzmcvbFQeVMbQRbAlAK2W+r2FPv+SwpMYB0HLp7e1RILU2IhMdVCGVZG9of6v7ZSp3QIwZXK+bNCKw1UPzUlMwEgQzQb011QAEzwQsD//oOqFioyg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5Z4H0ivFH0w77BDEXl5j1inCSDLr0zdIdVbkCCdeZhc=;
- b=XT6g1CZC7uzibi06SbDhDOYUyieIHEYs1wKlM6hk1x97zBLLs/K9Z+/WLVPJZs9hFHpwUrQ97bovnoKJSNQofcO02FHYogQe/9jkGF/8q6Z8LkGo9ylC5N9gQDm5LEc80ZsVSiWULTCzvgrBnrQyJIFiuI2Gl19lamm7QGj64sfoKJpjbHzQuJBeI94B1l6J7uWpdn9ajOHi4RRClzXsOFUnuD/uBODHgIhlV70P+VUyPOV2xkc3AkVaSb9x/HsiJqNhraYQ9iA9GKpatpQory2TPRM07TOYE49daYQG5INyr5rzKqmjWW0hIueXT1md2/aepSmgNvEmmkGds7Bh4A==
+ bh=9LHe08sXo0xDLYJlKJBsDA7nPDg7IVxNtEj1DPMBLg0=;
+ b=DxocWNvTlO7a83t1lXTVvmMZ+fx9wgF9nDaIyCyGTsYKtNK7+uVTeLSaqDHw4e90LUfKbSLp037wcJwBAd9sMxOxNU4bJD/xrJnH9e0folzX+SS0C5xYSy3VhOfoC8saGwk1jqIZDVg2FDE7c2ia7uC46RNK98S74Ft70BZ1A6zY60Db0OpKvdBB/pQyluyDfc8TxpuFBxsyvQ52eMobk/Fb/LXv5yFzZVaFjxOt/c2ctnlwAGWrsY2AT+N6FjVF6V78y7+ZtHTU+34vQc/tGgZbRInlYMCVVzBD7p2P52g83+sSfOqZZ7gyCk06DeyimiLpPHW491IDhQbNvfrtkg==
 Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
- by SEZPR06MB5762.apcprd06.prod.outlook.com (2603:1096:101:ac::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9587.15; Fri, 6 Feb
- 2026 03:19:42 +0000
+ by TY2PPF4DD1DCAD3.apcprd06.prod.outlook.com (2603:1096:408::78d)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9564.7; Fri, 6 Feb
+ 2026 03:19:52 +0000
 Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
  ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
  ([fe80::e659:1ead:77cb:f6d3%3]) with mapi id 15.20.9587.013; Fri, 6 Feb 2026
- 03:19:42 +0000
+ 03:19:52 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
  <peter.maydell@linaro.org>, =?iso-8859-1?Q?C=E9dric_Le_Goater?=
@@ -55,12 +55,13 @@ To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
  "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
 CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
  Kane Chen <kane_chen@aspeedtech.com>, Joe Komlodi <komlodi@google.com>,
- Patrick Venture <venture@google.com>, Titus Rwantare <titusr@google.com>
-Subject: [PATCH v3 10/20] hw/i3c/dw-i3c: Use 32 bits on MMIO writes
-Thread-Topic: [PATCH v3 10/20] hw/i3c/dw-i3c: Use 32 bits on MMIO writes
-Thread-Index: AQHclxdvfOSBl9b+SUy1x2GJUayTPA==
-Date: Fri, 6 Feb 2026 03:19:42 +0000
-Message-ID: <20260206031926.3227848-11-jamin_lin@aspeedtech.com>
+ Patrick Venture <venture@google.com>, Stephen Longfield
+ <slongfield@google.com>
+Subject: [PATCH v3 15/20] hw/i3c/dw-i3c: Add controller resets
+Thread-Topic: [PATCH v3 15/20] hw/i3c/dw-i3c: Add controller resets
+Thread-Index: AQHclxdzas1/eK2dlkmN7pQITbBLSg==
+Date: Fri, 6 Feb 2026 03:19:49 +0000
+Message-ID: <20260206031926.3227848-16-jamin_lin@aspeedtech.com>
 References: <20260206031926.3227848-1-jamin_lin@aspeedtech.com>
 In-Reply-To: <20260206031926.3227848-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
@@ -70,93 +71,93 @@ X-MS-TNEF-Correlator:
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|SEZPR06MB5762:EE_
-x-ms-office365-filtering-correlation-id: cf8954fb-ca30-4825-fd4d-08de652e91c3
+x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|TY2PPF4DD1DCAD3:EE_
+x-ms-office365-filtering-correlation-id: fff3e3be-7d17-4ff5-4925-08de652e981f
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|376014|7416014|921020|38070700021; 
-x-microsoft-antispam-message-info: =?iso-8859-1?Q?F87wKhudSjDwM28AlSPXqIHXDmrQZ8Y3/swLIE3Q72m3d60g0e4IKghZWr?=
- =?iso-8859-1?Q?mabRRvi1MAi9/wG/RSNCV/CiHVz6OmhFKfnVHaYkoh4z/D2bQIpMCK8PKQ?=
- =?iso-8859-1?Q?lfODqgAfjUmnyx1SZgGFo31Lqt9s55B+PnEiZinJ1g2Hu/Zek1QQyT4/+i?=
- =?iso-8859-1?Q?avKXmAK30A3/IQxOVCr9qdBAlLXofDi/2XO8GaIFk6RExn+Vzzh32l84ph?=
- =?iso-8859-1?Q?5htrSISDipe3sBQ69387pWvN9wtrR0Y0M8a8u6kWc0OzswMJN+N/GYvEOz?=
- =?iso-8859-1?Q?9vy428YJywjtnH6L1ugzABjxyKBS41WqHOSsSBUaLD2HKRmN9UzEF8YXi7?=
- =?iso-8859-1?Q?wbLKVPRUIYifBqwrtWUzg+LYhFx7fGC2ARIRaM1F1CIX/20JxucZzRCcVk?=
- =?iso-8859-1?Q?EDRMgj84ijC67Z2R6ny+NPOY/y8t0/aaEyei/aq640IfYKVha0YWBDJdwz?=
- =?iso-8859-1?Q?lROQSji0tHtzRqknq8grG8s2Q1PA9bdt18vM0hkXDAHCN8rZkKGJ+7qsUI?=
- =?iso-8859-1?Q?HQREdBB2ITHEGDQ0GpSv/P+1IKTezTNpwZXoGYYQwsF4kIk9bsQnvHu5pY?=
- =?iso-8859-1?Q?KhBbnkU9wJNHLc2GuSMRiQT/KLe2lAMNkRMR+bTAkbD/t89SDt+obKtAaI?=
- =?iso-8859-1?Q?IKu6sv+lQKiLIXCLLQjYmx5rX9eNeAzQ6dJIt8i3Qt0kVx0bSIZr1I8kU5?=
- =?iso-8859-1?Q?eNF54E7gCMnXU6/Y/4Jqq6kHLk6PnijjuTtTBzVaNdf2XDwTlbaoJppGsX?=
- =?iso-8859-1?Q?8N/Aehz5/RgN7z72OaIBU6/ur3JE200GEXu7sQ5pwzJfbTJDGB6uieNvQl?=
- =?iso-8859-1?Q?3HnWxvVwe7/QeubAPoQK0yVfg1OFF7cLDPi8Ev/ZktjA0L/SWw0B0ONI2u?=
- =?iso-8859-1?Q?L0HlKId6xw+F0AbrlrH3iL3Gj+tiK1XfPZOJ0bWwEBcykeO8H1O4kYsf/r?=
- =?iso-8859-1?Q?F38GZHQOLOrgRGrxZGQAcSc2e8b7zNCFbVJNDgfSSbvWq5jyZPNbn9pevp?=
- =?iso-8859-1?Q?JS24MFxb6u6Pqb/l8xrdc4dcJUGoJnyQ6K3tChWeKqRvxnj/oz3Y5f3xiX?=
- =?iso-8859-1?Q?ZaIEncJreLNo+bHcGmjCXxsOZjSq+dBVXtDXBu6/frjxKZY3F6JanfUxb3?=
- =?iso-8859-1?Q?c1k81HwbtNxo+S48LtVCSjr4aczvwPFu1ftLwnwXtCNMU4YuPFCJYpQgdM?=
- =?iso-8859-1?Q?+nBCfjtDFs6EDctbxZiGP5oHcROzOwIuyvQNTwsbg3V5njdOWmEvmJCPxM?=
- =?iso-8859-1?Q?A/UZRPXtZ7PJ7HpWwYK8U2Y1O0B2lDmeGpRO2iutf+Q5EBR/AB78JL6g6f?=
- =?iso-8859-1?Q?t37huGRc/iiyLNP12ea5qzhsn4GIKT4GwHlKq67EO3mYi8BWQARuLzE2Kt?=
- =?iso-8859-1?Q?DXcghkYcBM/P5tzp8hRK0ZgPkPe+AA6Snm2x3RQzBa8JBCES0lg9zBZ8d5?=
- =?iso-8859-1?Q?WIa68qi1HuSvbBiB05z09sdeqzaSBFHn1fxR1WYWd/d4wY0ut8Yk7kbQwn?=
- =?iso-8859-1?Q?x1xIyQCelCHGLeP8rjkihfiSDAO2qmXMWpEEZhmevKsfonj2UZMBDy3c+m?=
- =?iso-8859-1?Q?WrG2PxRvCqE+W8e4tp/1DWKENj9VKBmz4oGQBzlYBi0SLk8FqYj/eK4cyg?=
- =?iso-8859-1?Q?mC65M2uDZ6cNf9NZJP1vlUfgOJu6ZGwDzLnBbnAOcCaPUPlXu1iCMbfNBl?=
- =?iso-8859-1?Q?aiC0tZS8zqm/aarNwtfB0QNPQcLfzZRAPZhCZRNp?=
+ ARA:13230040|366016|1800799024|7416014|376014|38070700021|921020; 
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?HeirtXBWLNFJF0Ze8uuW3S6KzhpohU97Y8q6a05biL17bf6629KvRtpXs6?=
+ =?iso-8859-1?Q?SunREe4792VCjTmZxw/CxL4IwdEmu1H4Bp1fTHIuAvpcV9pgj4Riaja5Id?=
+ =?iso-8859-1?Q?98JqVNdceSY9XkjIdZ2VCRoR9i8lGhA50VKHzt2jtFHp4FVBY+1XM61OT5?=
+ =?iso-8859-1?Q?ZK5wRvByWQUFbGJIurrRlu0+GuSCAkejdmtYf8bP+2qvdsRlSbrbdYk5pt?=
+ =?iso-8859-1?Q?nWOC389GGNo8uB3e1YE91RWX2MnLAxBaQGTd59C7DWs/hLWKhnKgysUVKU?=
+ =?iso-8859-1?Q?z9ZT2vudirkc/kefqp1rv4xnXbh85UJVPGK+fhXZy7TeryLVxvu0AHzYZK?=
+ =?iso-8859-1?Q?Doj4gtwFVvDocymYagYLNOAnRBOZImMKoTAj/zgOu8C3lMKdjO3wotWMei?=
+ =?iso-8859-1?Q?cdEN9FNygd3SutCSuHDovAC8RLgK5VXn54jKcwDwrYpxa2hTaKm0S31/H+?=
+ =?iso-8859-1?Q?I537EMqhqgIlpKClnB4jnMKZqzCYHpA97UuIu4Z7M4g18nHVDmWuxXse4e?=
+ =?iso-8859-1?Q?48tWHvPMtExqGkPhB6NjPLfNSfixWPxIrYFS4uKjJ3wcvq6sKYpVdOl/eJ?=
+ =?iso-8859-1?Q?srGNBegNDjJ+rhRWlsibsV89RSIF54xdAjSvos5rR+xDMBoSO5nSuy2wO6?=
+ =?iso-8859-1?Q?e61HMEa+h5X/LnP07xAkkoxzEcQLHOgDUtpS+6k9PFuXhj7t3PUHYdY/bX?=
+ =?iso-8859-1?Q?QxO8qhjcHo7nmn3L+XbC3mg7hQwm5cH32q61VlNPdvnuYDRRcpqRllOhZb?=
+ =?iso-8859-1?Q?+NbSeSQSFfyMIVpGYEzBMSkFx1uCGKEcoSA0gGi74xZo6iUOvVR30Zb9CN?=
+ =?iso-8859-1?Q?I6LV3zqpN3E1AdqNwldyqiEJ2tdvUHBbxZxN8VcDj2yGpe1MVMEp+RRftQ?=
+ =?iso-8859-1?Q?AQxon9jUGSwxM5S0giLQoqNfI0mG0Zl7WdXqB9DSTgSHBHinFRxErENacj?=
+ =?iso-8859-1?Q?fv94FRX304BxldiNHyx/1szC1i6y9MP89CkzeoCO42tCCslFFCDQmLfVoJ?=
+ =?iso-8859-1?Q?XDy9zD54ZW+OmkrBmRkgRKe0wxYkHcNuCvserQfvXMVDX+2/4dRguSKzHY?=
+ =?iso-8859-1?Q?4c3ob2S1bJTCqbSVW2ekLyz1I3jMfo+HNvfPx+ir9TitDFvxP86zbVZRGv?=
+ =?iso-8859-1?Q?/PZVXzsB5fqRFPwmZ0Af2S5plYF05fa8eZBDMYJKzOXdVQ2zCndBCnW3/l?=
+ =?iso-8859-1?Q?Lua35uL2sfVqzPaydOCPm+G/z+Gju8wwskPWqloqw2Yqf0p38V1ofdBkCW?=
+ =?iso-8859-1?Q?3lO43Z7MzZZ5uvO/5Y8PaupyDOcEbR+TaBj+fKjZrO6wxiR/DcNaigUz2/?=
+ =?iso-8859-1?Q?gYiTFpAJztC5XiDdRno+n6BPZ/BGDQ1QHuKX5cSq4NU28GzzAhAcWPSaMu?=
+ =?iso-8859-1?Q?qMad0/0ZRPicXVh/Vcb5xVB2B6xgx1nFlVsnfX01LqMEEPm3rRULZWDT+K?=
+ =?iso-8859-1?Q?7POdM307YS0t/tfKZ1XGI/vekHqTubwwW7Y3GlZnT+tnVfNp9JSmAqbWrJ?=
+ =?iso-8859-1?Q?lidn37lFAeNZGqVrI6vleFRWgbXG/PNLRIxjKUdVjWIKZcsUYwU0U8f0c3?=
+ =?iso-8859-1?Q?giP4g07ObZ2Ncjw6zyJbr/e1PQynLHQ5FwUrFdj23OrD4OhAXj9j4X46L7?=
+ =?iso-8859-1?Q?60a2Z52t3bqfRI2gNr7Y3os+ugpmkQsbbEN4C+SLsfGxMhugQD+Zou0ibW?=
+ =?iso-8859-1?Q?CLKOr2LvKtja74ZIAPYhUK8yAH7aFdO7ttmTK1v1?=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(376014)(7416014)(921020)(38070700021);
+ SFS:(13230040)(366016)(1800799024)(7416014)(376014)(38070700021)(921020);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?ZLBjEf1K9HEJUGTWdrtBFxV6JCAYaoPnuAcvGpTJJg8anXVWTbQqK36TOa?=
- =?iso-8859-1?Q?yU1ZnrEB9VzEHwcAFqhoQiMH0Q00ahVCLlck0hqKJDe1I4rFZCZOTHk09F?=
- =?iso-8859-1?Q?p5jgmgi7flwEezmnMBQBjkcjudihQH+cizO4AckVwkZpKpr+9om/SPAvyT?=
- =?iso-8859-1?Q?M+MfugcD1HCLePzbdSgHeCkOofx9qNw00/LKsQorfug/nHyFPwGJJ/Uv8V?=
- =?iso-8859-1?Q?YH3Td2ICp90KzendRkkPHa7gUk8us61y/qWm5HfCVpPSAGe6WP7FhSTzXE?=
- =?iso-8859-1?Q?MVm6e73MuB/02a+XfX/86erLF/0vBp66s9YliUpluubHHJITxmzlOIN+hh?=
- =?iso-8859-1?Q?CTrPuV+pJxbhac8GTD+rfyuT8Elq3ZH33pGtsAAtJ8mdx8ek8Yb8sYplNi?=
- =?iso-8859-1?Q?fpGYHzBrL5ZV8ytc+GuW/Fp5RQGq11/igXjfhJCLvEPHezjc+YFDjgHME8?=
- =?iso-8859-1?Q?AvpA+ssjrT9/n/djl+ejdIqUJc5UlXvriusC2inOwMm4tNgBJCrtO1kOLz?=
- =?iso-8859-1?Q?J6hnaetiEPInJWrZXbGT1MLm9KoT5igfLz9Sd+3Tp3GT5/O1MEQAgCl1BM?=
- =?iso-8859-1?Q?32ZRFSrtMj+7t5e8xf2F7ijnZp0FlswCfJQFdG1AkQbr5L9v/bXEXMBlOM?=
- =?iso-8859-1?Q?L+FexeC3GXjzRjdd8vUgHU++zzLgSB/DGjfLNDYD+X4jTcZML7NvnKv7LA?=
- =?iso-8859-1?Q?fnJvKfzgKSjIMnOhPR6wBTfX5ll5+IwbguWUbL2EUVK3tJKmgyU1dI+bu8?=
- =?iso-8859-1?Q?3EcOTxHDvyPR/FzGGODR/B8bN2Y1GVH5qU8npOp3TN4r9UBAAanh2S5zmN?=
- =?iso-8859-1?Q?i28lmLAk9SwVKCaNCwJCktqIE/osDWPwmpnnyK7nSl5AbCqJEXimYX3rtu?=
- =?iso-8859-1?Q?qtr+CW3M8mcviP7FpyG63imMlsQkRLEaJ8EI9WixZK1lDf3vhk8Mf/pP0v?=
- =?iso-8859-1?Q?+8oxGEQ2DhJt9rMhXWD0ed23XEMLj2hm29EgyWQjRRSHWgL4TSsSSYhMH0?=
- =?iso-8859-1?Q?oLfaobSQ73DsA2Mn6/sbRBLlbbk5XzmdqMhvpZBLVeslMnY5+iWXtV+2KI?=
- =?iso-8859-1?Q?pHRU7A9XEMB/ElW0eYNWwbBn4WzjzDhDV3HrPW6TXDinm+JdIU242U5VM+?=
- =?iso-8859-1?Q?49IYi1+7zIl5YQQAnkC0lXnn5XXsQtc0TYFnVRDvwGhKBRn+CM0INUrwKB?=
- =?iso-8859-1?Q?mHfpe6/rLr8JBitAuxdzd8vuNnhIxJN743cfAc4viog/DLuBE/iDN9Fszh?=
- =?iso-8859-1?Q?v7CZUZnBzds5BFbdaOSpJodGWxOUFBx5n1yg21ItYnkYGjVIL088Vrq8oP?=
- =?iso-8859-1?Q?BXsVfyUq+kGQ7IURlm7LY9T3QQ6Z5AuL4jU+O4t8M9hkMD6bDQJBVAWLrO?=
- =?iso-8859-1?Q?GUzp0WWtR+V5GXeLC9YVnOhCIZKc8IUdHKRmS/KbVcr7WEgXFvBU5/OoJR?=
- =?iso-8859-1?Q?Orx4wuX5NJAfjmxnipdfxp1XU2LcN4Sz0ICUN/Dly06dR3qVkDQRu3w1ML?=
- =?iso-8859-1?Q?EsTcbZ+V2lvA9GUKu3e9N8cDyms0Xyoik/j8mpudMjrESTh8POinZdgvrP?=
- =?iso-8859-1?Q?LQljNGhl/zc27Lc/wHqdrQ2LWo62Xf3FyH/lm24MPL3PcAx8JFjcFX+z84?=
- =?iso-8859-1?Q?eGedIPVRgSgrefgzsopycSlHuIu0km6HiE8Mh0GcX/Qe86pj2laOx22FIr?=
- =?iso-8859-1?Q?XdFHVDcvofbGZJsx5tbi7+8uyVA4Ix+KqsSMdy2+XueIoMV4uoVUoOa+i8?=
- =?iso-8859-1?Q?mUpy6buN8XjrlXEF08pgRCcXtpu6bU0cCREVaZB7koP2XCRjF0Kkdh4+iq?=
- =?iso-8859-1?Q?wWhU6I8uDA=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?utixSc5kY8P4mL90OR5KttY3oJjks8E+j9HjNyEcm3t2IuF9cfzH/ZJpgi?=
+ =?iso-8859-1?Q?rtMQZjyG87P+6bLcLhM/S6t4ecYZIZgQdkq+xFuXDpe6vfegZCcrk+HalX?=
+ =?iso-8859-1?Q?LTQ+9HiOjtN+GUihBf8VxxV53RxMiQxQDgSqxiPb3wFReGp9fYNX42K0BH?=
+ =?iso-8859-1?Q?vZCIEMsVfzOWOFCRjBRg3xs8C5YFl08uppiSaCbkAEIbt3X+QNh4SuLUHM?=
+ =?iso-8859-1?Q?O6kqVzXxLuQyO2v1z1oKF0kKSlHtgfUj4njomRq5RqakonpZL4NRxN4CnK?=
+ =?iso-8859-1?Q?kno6Zm+/siNWpuhHdqCuADU7qwzQUHGK0w/Qy8dhud+djHAnGqlH5AMYVa?=
+ =?iso-8859-1?Q?3Qib6ZQSUldVLBxssckUqpBsZtGJ8/dlb4YrsEvmj2cdCwUIRrZ/qrw7lc?=
+ =?iso-8859-1?Q?mcnmgZaV8j2UEPSsldX7IzCof5R6k14XCySBjAR5vgPeFMggTae6QW+YUT?=
+ =?iso-8859-1?Q?puJGZvzl0RHbGVZWun6NbIaNJjwQJ2zYlZVtbVQZmmh/RA2UmCDSWakZZ1?=
+ =?iso-8859-1?Q?Aupe7UZPt3XSeEobwKkyvqsEDCBa6MQVFEBvH1ucDdy0extkV4Z2exsv2F?=
+ =?iso-8859-1?Q?qQiXkeUHfT0ugVE+JLURt779FcU0m6Sb/6WQcYMlYRJ2L5d0NK+iD1apL9?=
+ =?iso-8859-1?Q?GYuxVqc76rzpmx4NtGSc+KKIN0eGSZHTAO6oMwqOo7zm4xB5WI6MgvVzXi?=
+ =?iso-8859-1?Q?QbV0g4XInUcZ9C1rtCRMoqpplUSKI+D0OFH3iOWUiLyiOXug+AzL5trfTZ?=
+ =?iso-8859-1?Q?CNaVqW9GKfhAQ7aVfKb4PKhhR629x8ZZY4Pk/e46z2sjC/6cdpAjNLhjz4?=
+ =?iso-8859-1?Q?mZEQUMVzilzUBavb6MyomWSfS4WpAxigiesGIcTVJAK5tAulmaXpVo5c0O?=
+ =?iso-8859-1?Q?0/DtKZPg4UMqtpjcWMVOV9992tNR+CLQ+p7Oyv6NqjaWUSqOA86xVE2CGf?=
+ =?iso-8859-1?Q?oV1q/DxVDL1fYlWaGzxviScjL0Jnlz18ajY1fNYo8OcR9frQVQ8oa1LIWc?=
+ =?iso-8859-1?Q?fjD1TlSbrgIB27JmlqXARHPlk5KFk2jUG2+P6VPKjOa2i6M9MC1aSYNiha?=
+ =?iso-8859-1?Q?1t+tPIBbsIV9x+zucZMPuo/J5qMamYGrh6vzc9Wlbd++kIyVrni0WTuDRt?=
+ =?iso-8859-1?Q?FjYpaARmAOI0LjJLA5H2SdDX1kk8P46wvUHw34EesLW7Nx0JH64m5k0Idb?=
+ =?iso-8859-1?Q?infh91pCZpzawfOO2AopievgUdv+sKFivp6oIhXQwOE4offLiKDrp+199L?=
+ =?iso-8859-1?Q?cVuOG9WQ2jqLiXT0rN8uuHu9KB+TEUEbh82IhmIDkTRmzu6bZd2YUOHC9e?=
+ =?iso-8859-1?Q?8YrtYk+D+5Bg7duwGoIBLJodUMVArCTJx0dubfAp14VhXgOYlNpF8sBfSF?=
+ =?iso-8859-1?Q?3w8UTQ4mAaTWmw1rbKTY7U9Xu9QIMB48guzuS+R6rTZ9LIC3pL3UJSmtOA?=
+ =?iso-8859-1?Q?lICPzI4Zhm+quGWMbMsybTMRnDdiBA8JsfiVYpiTIZ4mnd6ULOXkjf0XX0?=
+ =?iso-8859-1?Q?xzLQ/sQcV0fjFRhDIaaTnawbR2kpHAvtMnVuqKDSAP2Vav6DB+5U1trBSZ?=
+ =?iso-8859-1?Q?OrbjOloOCKHg3nJ64bKXNyZoJKA8iL9aEDI2zHMYEusphqU9RJg8WQ4ugE?=
+ =?iso-8859-1?Q?4LT/Uj/oC+iululLb+p1zNwuw9w6R+ny8BF70mIzHP2cnXwBx2RiAMqiwo?=
+ =?iso-8859-1?Q?JGZowTMghe3/bTDzQL+zNHNwyPnzgmHfE06r/r9+FBwQI1xknYCdOjLJga?=
+ =?iso-8859-1?Q?GZqRXxU256Yn8nj1KAjK7b9BAxnM9s3ykr+RNSHfvE94zF/++Ls2EUnmKx?=
+ =?iso-8859-1?Q?TWcJ9MAmMA=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cf8954fb-ca30-4825-fd4d-08de652e91c3
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Feb 2026 03:19:42.1225 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: fff3e3be-7d17-4ff5-4925-08de652e981f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Feb 2026 03:19:49.3493 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: mhKbcZM9fiJ14GOAeY4DoKq9IhYNPRZtnghFhc9iEU4Ouyms43EYat1KXMXeIvVdwsYUnfj1VGDPivaEdeis34RH3bYCaSz8qj9N2+rTypU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB5762
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
+X-MS-Exchange-CrossTenant-userprincipalname: WLV2aGtfDzjzDUZ6/buBMMwCoYmfVoNisqkOlZj9+UZHn/YxVCAF+D442L8tCFnwq0hkPXwJLv8s+1FtqLMEWvV8Y80/ZZnPCqkHl+bAX6Q=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY2PPF4DD1DCAD3
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
  envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+ helo=TYPPR03CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -178,46 +179,181 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The registers are only 32 bits wide, so we should cast the 64-bit value=0A=
-passed in to only be 32 bits wide.=0A=
+Adds behavior to the device reset register.=0A=
 =0A=
 Signed-off-by: Joe Komlodi <komlodi@google.com>=0A=
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
 Reviewed-by: Patrick Venture <venture@google.com>=0A=
-Reviewed-by: Titus Rwantare <titusr@google.com>=0A=
+Reviewed-by: Stephen Longfield <slongfield@google.com>=0A=
 Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
 ---=0A=
- hw/i3c/dw-i3c.c | 5 +++--=0A=
- 1 file changed, 3 insertions(+), 2 deletions(-)=0A=
+ hw/i3c/dw-i3c.c     | 117 ++++++++++++++++++++++++++++++++++++++++++++=0A=
+ hw/i3c/trace-events |   1 +=0A=
+ 2 files changed, 118 insertions(+)=0A=
 =0A=
 diff --git a/hw/i3c/dw-i3c.c b/hw/i3c/dw-i3c.c=0A=
-index e20244de2c..9dc71aa3d8 100644=0A=
+index 7a1f79e10d..87ad344e5d 100644=0A=
 --- a/hw/i3c/dw-i3c.c=0A=
 +++ b/hw/i3c/dw-i3c.c=0A=
-@@ -363,10 +363,11 @@ static void dw_i3c_write(void *opaque, hwaddr offset,=
- uint64_t value,=0A=
- {=0A=
-     DWI3C *s =3D DW_I3C(opaque);=0A=
-     uint32_t addr =3D offset >> 2;=0A=
-+    uint32_t val32 =3D (uint32_t)value;=0A=
- =0A=
-     trace_dw_i3c_write(s->id, offset, value);=0A=
- =0A=
--    value &=3D ~dw_i3c_ro[addr];=0A=
-+    val32 &=3D ~dw_i3c_ro[addr];=0A=
-     switch (addr) {=0A=
-     case R_HW_CAPABILITY:=0A=
-     case R_RESPONSE_QUEUE_PORT:=0A=
-@@ -392,7 +393,7 @@ static void dw_i3c_write(void *opaque, hwaddr offset, u=
-int64_t value,=0A=
-     case R_RESET_CTRL:=0A=
-         break;=0A=
-     default:=0A=
--        s->regs[addr] =3D value;=0A=
-+        s->regs[addr] =3D val32;=0A=
-         break;=0A=
-     }=0A=
+@@ -860,6 +860,122 @@ static void dw_i3c_intr_force_w(DWI3C *s, uint32_t va=
+l)=0A=
+     dw_i3c_update_irq(s);=0A=
  }=0A=
+ =0A=
++static void dw_i3c_cmd_queue_reset(DWI3C *s)=0A=
++{=0A=
++    fifo32_reset(&s->cmd_queue);=0A=
++=0A=
++    ARRAY_FIELD_DP32(s->regs, QUEUE_STATUS_LEVEL, CMD_QUEUE_EMPTY_LOC,=0A=
++                     fifo32_num_free(&s->cmd_queue));=0A=
++    uint8_t empty_threshold =3D ARRAY_FIELD_EX32(s->regs, QUEUE_THLD_CTRL,=
+=0A=
++                                               CMD_BUF_EMPTY_THLD);=0A=
++    if (fifo32_num_free(&s->cmd_queue) >=3D empty_threshold) {=0A=
++        ARRAY_FIELD_DP32(s->regs, INTR_STATUS, CMD_QUEUE_RDY, 1);=0A=
++        dw_i3c_update_irq(s);=0A=
++    };=0A=
++}=0A=
++=0A=
++static void dw_i3c_resp_queue_reset(DWI3C *s)=0A=
++{=0A=
++    fifo32_reset(&s->resp_queue);=0A=
++=0A=
++    ARRAY_FIELD_DP32(s->regs, QUEUE_STATUS_LEVEL, RESP_BUF_BLR,=0A=
++                     fifo32_num_used(&s->resp_queue));=0A=
++    /*=0A=
++     * This interrupt will always be cleared because the threshold is a mi=
+nimum=0A=
++     * of 1 and the queue size is 0.=0A=
++     */=0A=
++    ARRAY_FIELD_DP32(s->regs, INTR_STATUS, RESP_RDY, 0);=0A=
++    dw_i3c_update_irq(s);=0A=
++}=0A=
++=0A=
++static void dw_i3c_ibi_queue_reset(DWI3C *s)=0A=
++{=0A=
++    fifo32_reset(&s->ibi_queue);=0A=
++=0A=
++    ARRAY_FIELD_DP32(s->regs, QUEUE_STATUS_LEVEL, IBI_BUF_BLR,=0A=
++                     fifo32_num_used(&s->resp_queue));=0A=
++    /*=0A=
++     * This interrupt will always be cleared because the threshold is a mi=
+nimum=0A=
++     * of 1 and the queue size is 0.=0A=
++     */=0A=
++    ARRAY_FIELD_DP32(s->regs, INTR_STATUS, IBI_THLD, 0);=0A=
++    dw_i3c_update_irq(s);=0A=
++}=0A=
++=0A=
++static void dw_i3c_tx_queue_reset(DWI3C *s)=0A=
++{=0A=
++    fifo32_reset(&s->tx_queue);=0A=
++=0A=
++    ARRAY_FIELD_DP32(s->regs, DATA_BUFFER_STATUS_LEVEL, TX_BUF_EMPTY_LOC,=
+=0A=
++                     fifo32_num_free(&s->tx_queue));=0A=
++    /* TX buf is empty, so this interrupt will always be set. */=0A=
++    ARRAY_FIELD_DP32(s->regs, INTR_STATUS, TX_THLD, 1);=0A=
++    dw_i3c_update_irq(s);=0A=
++}=0A=
++=0A=
++static void dw_i3c_rx_queue_reset(DWI3C *s)=0A=
++{=0A=
++    fifo32_reset(&s->rx_queue);=0A=
++=0A=
++    ARRAY_FIELD_DP32(s->regs, DATA_BUFFER_STATUS_LEVEL, RX_BUF_BLR,=0A=
++                     fifo32_num_used(&s->resp_queue));=0A=
++    /*=0A=
++     * This interrupt will always be cleared because the threshold is a mi=
+nimum=0A=
++     * of 1 and the queue size is 0.=0A=
++     */=0A=
++    ARRAY_FIELD_DP32(s->regs, INTR_STATUS, RX_THLD, 0);=0A=
++    dw_i3c_update_irq(s);=0A=
++}=0A=
++=0A=
++static void dw_i3c_reset(DeviceState *dev)=0A=
++{=0A=
++    DWI3C *s =3D DW_I3C(dev);=0A=
++    trace_dw_i3c_reset(s->cfg.id);=0A=
++=0A=
++    memcpy(s->regs, dw_i3c_resets, sizeof(s->regs));=0A=
++    /*=0A=
++     * The user config for these may differ from our resets array, set the=
+m=0A=
++     * manually.=0A=
++     */=0A=
++    ARRAY_FIELD_DP32(s->regs, DEVICE_ADDR_TABLE_POINTER, ADDR,=0A=
++                     s->cfg.dev_addr_table_pointer);=0A=
++    ARRAY_FIELD_DP32(s->regs, DEVICE_ADDR_TABLE_POINTER, DEPTH,=0A=
++                     s->cfg.dev_addr_table_depth);=0A=
++    ARRAY_FIELD_DP32(s->regs, DEV_CHAR_TABLE_POINTER,=0A=
++                     P_DEV_CHAR_TABLE_START_ADDR,=0A=
++                     s->cfg.dev_char_table_pointer);=0A=
++    ARRAY_FIELD_DP32(s->regs, DEV_CHAR_TABLE_POINTER, DEV_CHAR_TABLE_DEPTH=
+,=0A=
++                     s->cfg.dev_char_table_depth);=0A=
++=0A=
++    dw_i3c_cmd_queue_reset(s);=0A=
++    dw_i3c_resp_queue_reset(s);=0A=
++    dw_i3c_ibi_queue_reset(s);=0A=
++    dw_i3c_tx_queue_reset(s);=0A=
++    dw_i3c_rx_queue_reset(s);=0A=
++}=0A=
++=0A=
++static void dw_i3c_reset_ctrl_w(DWI3C *s, uint32_t val)=0A=
++{=0A=
++    if (FIELD_EX32(val, RESET_CTRL, CORE_RESET)) {=0A=
++        dw_i3c_reset(DEVICE(s));=0A=
++    }=0A=
++    if (FIELD_EX32(val, RESET_CTRL, CMD_QUEUE_RESET)) {=0A=
++        dw_i3c_cmd_queue_reset(s);=0A=
++    }=0A=
++    if (FIELD_EX32(val, RESET_CTRL, RESP_QUEUE_RESET)) {=0A=
++        dw_i3c_resp_queue_reset(s);=0A=
++    }=0A=
++    if (FIELD_EX32(val, RESET_CTRL, TX_BUF_RESET)) {=0A=
++        dw_i3c_tx_queue_reset(s);=0A=
++    }=0A=
++    if (FIELD_EX32(val, RESET_CTRL, RX_BUF_RESET)) {=0A=
++        dw_i3c_rx_queue_reset(s);=0A=
++    }=0A=
++    if (FIELD_EX32(val, RESET_CTRL, IBI_QUEUE_RESET)) {=0A=
++        dw_i3c_ibi_queue_reset(s);=0A=
++    }=0A=
++}=0A=
++=0A=
+ static uint32_t dw_i3c_pop_rx(DWI3C *s)=0A=
+ {=0A=
+     if (fifo32_is_empty(&s->rx_queue)) {=0A=
+@@ -1617,6 +1733,7 @@ static void dw_i3c_write(void *opaque, hwaddr offset,=
+ uint64_t value,=0A=
+         dw_i3c_cmd_queue_port_w(s, val32);=0A=
+         break;=0A=
+     case R_RESET_CTRL:=0A=
++        dw_i3c_reset_ctrl_w(s, val32);=0A=
+         break;=0A=
+     case R_INTR_STATUS:=0A=
+         dw_i3c_intr_status_w(s, val32);=0A=
+diff --git a/hw/i3c/trace-events b/hw/i3c/trace-events=0A=
+index a262fcce39..39f33d9a50 100644=0A=
+--- a/hw/i3c/trace-events=0A=
++++ b/hw/i3c/trace-events=0A=
+@@ -11,6 +11,7 @@ dw_i3c_send(uint32_t deviceid, uint32_t num_bytes) "I3C D=
+ev[%u] send %" PRId32 "=0A=
+ dw_i3c_recv_data(uint32_t deviceid, uint32_t num_bytes) "I3C Dev[%u] recv =
+%" PRId32 " bytes from bus"=0A=
+ dw_i3c_ibi_recv(uint32_t deviceid, uint8_t ibi_byte) "I3C Dev[%u] recv IBI=
+ byte 0x%" PRIx8=0A=
+ dw_i3c_ibi_handle(uint32_t deviceid, uint8_t addr, bool rnw) "I3C Dev[%u] =
+handle IBI from address 0x%" PRIx8 " RnW=3D%d"=0A=
++dw_i3c_reset(uint32_t deviceid) "I3C Dev[%u] reset"=0A=
+ dw_i3c_pop_rx(uint32_t deviceid, uint32_t data) "I3C Dev[%u] pop 0x%" PRIx=
+32 " from RX FIFO"=0A=
+ dw_i3c_resp_queue_push(uint32_t deviceid, uint32_t data) "I3C Dev[%u] push=
+ 0x%" PRIx32 " to response queue"=0A=
+ dw_i3c_push_tx(uint32_t deviceid, uint32_t data) "I3C Dev[%u] push 0x%" PR=
+Ix32 " to TX FIFO"=0A=
 -- =0A=
 2.43.0=0A=
 

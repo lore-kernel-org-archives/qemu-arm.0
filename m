@@ -4,80 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E07D9EB28F8
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 09:08:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85F85EB28F8
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 09:29:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1voHp7-0003vt-8Q; Fri, 06 Feb 2026 04:08:21 -0500
+	id 1voI9b-0000Gv-JW; Fri, 06 Feb 2026 04:29:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ashish.a6@samsung.com>)
- id 1voHp6-0003vg-AF
- for qemu-arm@nongnu.org; Fri, 06 Feb 2026 04:08:20 -0500
-Received: from mailout1.samsung.com ([203.254.224.24])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1voI9Z-0000GN-Q6
+ for qemu-arm@nongnu.org; Fri, 06 Feb 2026 04:29:29 -0500
+Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ashish.a6@samsung.com>)
- id 1voHp2-0000jY-AH
- for qemu-arm@nongnu.org; Fri, 06 Feb 2026 04:08:20 -0500
-Received: from epcas5p4.samsung.com (unknown [182.195.41.42])
- by mailout1.samsung.com (KnoxPortal) with ESMTP id
- 20260206085929epoutp014ca55bba18186cde3310379eaf0d7d57~RnKbkz9Ih2556225562epoutp010
- for <qemu-arm@nongnu.org>; Fri,  6 Feb 2026 08:59:29 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.samsung.com
- 20260206085929epoutp014ca55bba18186cde3310379eaf0d7d57~RnKbkz9Ih2556225562epoutp010
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
- s=mail20170921; t=1770368369;
- bh=Jvke9zvbXTaw39uxiM8gXNHTpN/AIT4ncR1HxWy+5Hw=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=pXsCED+M9mRrMifCPJDi6RVibdwn1rPCfgM0yAB11eBQyp+b5bMQ/TqUafBE4+J2E
- p/ZgAXJ0NZhi2oPmyUX1AaqbO6m35gTz3451653OLMJS3IAE74d55jiBH6Pzdvi2/Y
- jKne9VQ/Sap1d33+9xUHRMXNHCAtHvOQ+ZELJwoc=
-Received: from epsnrtp03.localdomain (unknown [182.195.42.155]) by
- epcas5p3.samsung.com (KnoxPortal) with ESMTPS id
- 20260206085928epcas5p3984bf2dd4e5e8dcdbce9cc73ea0545fc~RnKa1BatH0225102251epcas5p3j;
- Fri,  6 Feb 2026 08:59:28 +0000 (GMT)
-Received: from epcas5p4.samsung.com (unknown [182.195.38.89]) by
- epsnrtp03.localdomain (Postfix) with ESMTP id 4f6p1W2MTTz3hhT3; Fri,  6 Feb
- 2026 08:59:27 +0000 (GMT)
-Received: from epsmtip2.samsung.com (unknown [182.195.34.31]) by
- epcas5p4.samsung.com (KnoxPortal) with ESMTPA id
- 20260206085926epcas5p4684137d97bcd6516b6cfa5c093b77f53~RnKZgm9ZR0748407484epcas5p4A;
- Fri,  6 Feb 2026 08:59:26 +0000 (GMT)
-Received: from test-System-Product-Name (unknown [107.99.41.85]) by
- epsmtip2.samsung.com (KnoxPortal) with ESMTPA id
- 20260206085924epsmtip2bc5fd377bb91d7e3ddd2edee2e12f202~RnKXUWYoF1122411224epsmtip2i;
- Fri,  6 Feb 2026 08:59:24 +0000 (GMT)
-Date: Fri, 6 Feb 2026 14:26:27 +0530
-From: Ashish Anand <ashish.a6@samsung.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, saurabh@samsung.com,
- vishwa.mg@samsung.com, y.kaushal@samsung.com, ashish.anand202@gmail.com
-Subject: Re: target/arm: Implement WFE, SEV and SEVONPEND for Cortex-M
-Message-ID: <ulnpgqaqirqgt567jgrp4uhpnffd247kn4mnny46ikchxeu3ov@efvk4xxx6lwf>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1voI9W-0004YI-Hw
+ for qemu-arm@nongnu.org; Fri, 06 Feb 2026 04:29:29 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.43.168])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4f6ph1044Wz5vwy;
+ Fri,  6 Feb 2026 09:29:20 +0000 (UTC)
+Received: from kaod.org (37.59.142.101) by DAG14EX2.mxp5.local (172.16.2.142)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Fri, 6 Feb
+ 2026 10:29:19 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-101G0045eba34ac-4198-414f-99c3-c99af7eb4131,
+ C2DCEC2B1261BCA5104DC73024CD17A0EB88A4A8) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <e1022ef7-08f9-4a20-b7da-ce101ee1bfa7@kaod.org>
+Date: Fri, 6 Feb 2026 10:29:18 +0100
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-kV4JmjwmbByYAf5ws7No0HP372cjRWsnH6mbZwvouRw@mail.gmail.com>
-X-CMS-MailID: 20260206085926epcas5p4684137d97bcd6516b6cfa5c093b77f53
-X-Msg-Generator: CA
-Content-Type: multipart/mixed;
- boundary="----S5vMiqbC9D9faF8YPw-GIekSHdZgzpYrwqcOSnq._zgadq5.=_468a_"
-CMS-TYPE: 105P
-cpgsPolicy: CPGSC10-542,Y
-X-CFilter-Loop: Reflected
-X-CMS-RootMailID: 20260203130603epcas5p4dfde087764b1131e855c39ac9ceb0326
-References: <CGME20260203130603epcas5p4dfde087764b1131e855c39ac9ceb0326@epcas5p4.samsung.com>
- <20260203130257.3263336-1-ashish.a6@samsung.com>
- <CAFEAcA-kV4JmjwmbByYAf5ws7No0HP372cjRWsnH6mbZwvouRw@mail.gmail.com>
-Received-SPF: pass client-ip=203.254.224.24;
- envelope-from=ashish.a6@samsung.com; helo=mailout1.samsung.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 00/20] i3c: aspeed: Add I3C support
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, "open list:All
+ patches CC here" <qemu-devel@nongnu.org>, "open list:ARM TCG CPUs"
+ <qemu-arm@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
+References: <20260206031926.3227848-1-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260206031926.3227848-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.101]
+X-ClientProxiedBy: DAG4EX1.mxp5.local (172.16.2.31) To DAG14EX2.mxp5.local
+ (172.16.2.142)
+X-Ovh-Tracer-GUID: bca6e3fd-b112-4e7e-a174-6138926e1094
+X-Ovh-Tracer-Id: 13001892125497330494
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTE1r8WYB1+gKv9tfviHut1q4Urc9POaG3G8MTuN4yx+skdntHFQidlWdrSrhXjVGVG5QpAbNHLUHy9fhderUIrIR+gDu3Jai9S8CVdmqSYobyk96y5KSaIZlRkADn5txvLdCrTOjbbpSfI9JDf0E3PPaxZJIAsGWl3IX/Clk+i3VByDXCskj3Maf8FnKVvmLNogMyJ1rw3z4AsUSWwll5C3enQk2l0emcAkyYX/4RlLIl96zbvSMqtfdyMQe5m0/XRbKsYRppFWPOD+0OvyuQQGZ0fn5PJinIfTWwBpnGgNP6cbPJLV/MSFnKDZu1DIMxlIc8gdIwh6DctHZC3OJZ6MVcHt/8d/1Hq2bTblyDmp4UtdvImV07DIsAXEdpkTokEn2I2dWT9+lK9P4lZM8rn3niPgrNgcy/7W6N5rliexNkL0U/sh7S2tuLwXn+YxCFprunPdzvsz+ZLvAwOOmlEvTtJAYLWmR+fXAMCPfe6x1GyRn/1rEfoZtzJ+VAs5FaYgyXQRpF3Xvq7d1Bu+BLCjyr4rFvaKKsNDruxEUjIvtcykUA0G0Ep45A9Qudk6omfTyATfmSdRC58Wm9fxelXGOHuT/xVYgKHl2gqekRhACcxfqngVoiJ6SNsdnV5R8Na7i0jW3PtXrBF5y+qbSRVHoBmdke6NSZsxLJy987t/WA
+DKIM-Signature: a=rsa-sha256; bh=+/7N9Or5uUcBsKCIsxuT1oiN2TxWxCb5EKg7W09wHos=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1770370162; v=1;
+ b=ZKzu37gZLywwVZum+TQ+hYw4rc+jkjGB9+0cAnLFIH/tMdOA3QfKBwF1gjRtXUwB7bvq74+d
+ eESM+kqXAJtIpX7/wjgLfIxCdaoS53EoNjCHM5ZiNZEIm9Qj8HNLJSqfOHlRe0uf0ABcB1/i9vH
+ rTokcLXkbO38a5vwFkMvkvJYi6x97YM8rbH06mFtzgtxEUMgF6qxUH2ja8q1psS2ejr8qC4foHS
+ UfC5CSbLukgBJ3LbVoXY/K2cWP8m0KMrgXB0Tu1inicwnr77Erq/X1PMcevj8nnjavqCxF4+zw+
+ zWNQ6y3/t1ev/CW8l+kjfVJ9rRhb0tFm/FXSExHb1i2tA==
+Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
+ helo=6.mo552.mail-out.ovh.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,50 +133,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-------S5vMiqbC9D9faF8YPw-GIekSHdZgzpYrwqcOSnq._zgadq5.=_468a_
-Content-Type: text/plain; charset="utf-8"; format="flowed"
-Content-Disposition: inline
+On 2/6/26 04:19, Jamin Lin wrote:
+> v1:
+>    The initial patch series was based on work by Joe Komlodi <komlodi@google.com>.
+> 
+>    This series adds I3C bus support to QEMU and adds more functionality to the
+>    Aspeed I3C controller.
+> 
+>    This implementation is a basic implementation that introduces IBIs
+>    (including hot-join), CCCs, and SDR data transfer. As-is, it doesn't support
+>    multi-controller buses or HDR transfers.
+> 
+>    First we add the I3C bus and controller model. With that added we extend
+>    the functionality of the Aspeed I3C controller so it can do transfers
+>    and handle IBIs.
+> 
+>    Next, we add a mock I3C target. It's intended to be a very simple target
+>    just to verify that I3C is working on the guest. Internally, we've used it
+>    on Linux to verify that i3C devices can be probed and can send/receive data
+>    and IBIs.
+>    This target is sort of like an EEPROM, and it can also send IBIs upon
+>    reception of a user-defined magic number.
+> 
+>    Lastly we add  hotplugging support. The hotplugging doesn't do anything too
+>    complicated, it just adds the device attempting to hotplug to the bus. It
+>    is the device's responsibility to hot-join and go through the DAA process
+>    to participate on the bus.
+> 
+> v2:
+>    Jamin Lin <jamin_lin@aspeedtech.com> has taken ownership of the I3C patch
+>    series for upstream submission.
+> 
+>    Changes in this version include:
+> 
+>    1. Added I3C functional tests.
+>    2. Updated patch 4 to refine register field definitions.
+>    3. Updated patch 7 to correct read-only register field masks.
+> 
+> v3:
+>    1. Add Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>    2. Fix a typo
+>    3. Fix ASPEED mail server issue
 
->
->I looked a bit more closely at the SEVONPEND language in the Arm ARM,
->and it says
->
-># When SCR.SEVONPEND bit associated with a security state is one, interrupts
-># transitioning from the inactive to the pending state that target that
-># security state are wakeup events.
->
->So the thing that determines whether we are looking at the S or the NS
->SCR.SEVONPEND is "does this interrupt target S or NS security state?".
->We have a function for that:
-> exc_targets_secure(s, irq)
->
->So we can determine which SCR to look at in this nvic_update_pending_state()
->function and we don't need the callers to pass in scr_bank to us.
->
->exc_targets_secure() requires it to be called only for a non-banked
->exception, but we can call it only inside the irq >= NVIC_FIRST_IRQ
->condition, as all interrupts are non-banked.
->
->This should simplify the changes you're making at the callsites.
->
->thanks
->-- PMM
->
+Looks good. I received the series correctly and b4 can fetch the patches.
 
-Hi Peter,
+Thanks for the time you all spent on these email issues ,
 
-Thanks for the detailed review! You're absolutely right - determining 
-scr_bank inside nvic_update_pending_state() using exc_targets_secure() 
-is cleaner and removes the burden from all the callsites. I'll update 
-this for v4.
-
-Thanks,
-Ashish
-
-
-------S5vMiqbC9D9faF8YPw-GIekSHdZgzpYrwqcOSnq._zgadq5.=_468a_
-Content-Type: text/plain; charset="utf-8"
-
-
-------S5vMiqbC9D9faF8YPw-GIekSHdZgzpYrwqcOSnq._zgadq5.=_468a_--
+C.
 

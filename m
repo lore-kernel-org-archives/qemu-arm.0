@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A998ECD98B
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 10:01:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40A4FEE2082
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 10:12:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1voIe4-00036C-2L; Fri, 06 Feb 2026 05:01:00 -0500
+	id 1voIoZ-00064Q-3S; Fri, 06 Feb 2026 05:11:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1voIdp-00034k-8R; Fri, 06 Feb 2026 05:00:57 -0500
-Received: from smtpout3.mo529.mail-out.ovh.net ([46.105.54.81])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1voIoY-00063c-AP
+ for qemu-arm@nongnu.org; Fri, 06 Feb 2026 05:11:50 -0500
+Received: from 8.mo548.mail-out.ovh.net ([46.105.45.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1voIdn-0002xP-C9; Fri, 06 Feb 2026 05:00:44 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.254.134])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4f6qN84ZRYz5vpt;
- Fri,  6 Feb 2026 10:00:40 +0000 (UTC)
-Received: from kaod.org (37.59.142.96) by DAG14EX2.mxp5.local (172.16.2.142)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1voIoV-0004hJ-FV
+ for qemu-arm@nongnu.org; Fri, 06 Feb 2026 05:11:50 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.43.14])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4f6qcw0lrtz5w9n;
+ Fri,  6 Feb 2026 10:11:44 +0000 (UTC)
+Received: from kaod.org (37.59.142.113) by DAG14EX2.mxp5.local (172.16.2.142)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Fri, 6 Feb
- 2026 11:00:39 +0100
+ 2026 11:11:43 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R00126dd36ac-6ef6-4b06-b56b-e2efc8f2e21d,
+ (GARM-113S00792e33514-f3f5-4495-af40-08cdb21997a3,
  C2DCEC2B1261BCA5104DC73024CD17A0EB88A4A8) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <92e0156b-1dde-4d7c-ad34-4c994736a2df@kaod.org>
-Date: Fri, 6 Feb 2026 11:00:38 +0100
+Message-ID: <83d409cf-868c-4a2d-b1c9-5741d3e36adc@kaod.org>
+Date: Fri, 6 Feb 2026 11:11:41 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 10/10] tests/functional/aarch64/test_aspeed_ast2700fc:
- Use AST2700 A2 SDK image for FC tests
+Subject: Re: [PATCH v1 08/10] tests/functional/aarch64/test_aspeed_ast2700:
+ Add AST2700 A2 EVB functional tests
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
@@ -43,9 +43,10 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- "nabihestefan@google.com" <nabihestefan@google.com>
+ "nabihestefan@google.com" <nabihestefan@google.com>, Thomas Huth
+ <thuth@redhat.com>
 References: <20260206053340.3716041-1-jamin_lin@aspeedtech.com>
- <20260206053340.3716041-12-jamin_lin@aspeedtech.com>
+ <20260206053340.3716041-10-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -90,27 +91,27 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260206053340.3716041-12-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260206053340.3716041-10-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.96]
-X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG14EX2.mxp5.local
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.113]
+X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG14EX2.mxp5.local
  (172.16.2.142)
-X-Ovh-Tracer-GUID: 85cd1b30-8f0b-4b57-ae14-53ff54694635
-X-Ovh-Tracer-Id: 13531065084120697662
+X-Ovh-Tracer-GUID: 72e46bae-b22c-40fe-8812-6f6a3cabb895
+X-Ovh-Tracer-Id: 13717682991313816449
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGvj/+BBDe2JZbT0turgfPw/Ss2XeWMF38tgWZ1E7moszbdwpzxgvhqc2Z6P9IN7tAc1XWRTMMXqHAtreWQyWxv1jYCz2twTy729wkYMkC9TJj8sq0reWgRQIzUgpSdRoOK1bFf97i21dVnHsYAmwi45N1+9nNJcAB8PwizpC3wJygDigwNgFLRSpkzbFwXbGXLZQEsQaTDbNg08hLjrvabO7J5gEBEu1IEsHqd31Anhb1Ea9p6ENlVfVyD6US0PvJHSUVHPaSw/n2ARvmQsBmBvFuGUabfnq4BNbKVdbvQKfrErwLX1RuA5Hs5YAkH09CcrdAkNKWkrCcuRNnA540yDlS1dndtvdle4wlCP+GmZq0EXGyu/51mnZyawvjOI9wlkIt2jcbf5kUq3qEWUlTK8XYAt12LwJ9B5VgDsOwdpFdyCaYcDs46VbLR+O43jgyDC0MpPNnQlkjGoEKR9SGHWtLQsDd2Oy+wt4rVfcmmX4lUKI/7g5dSHijRjo7KQVuTJsp4B0RMDZS0jpTEwFtQXzI7YY8b3KL+Le1+GPW1btw0E2XjwN6SF1xeXVwgfKq1oy3B0oNnHK2txoAUJDqT/UZTHKVM9mLUNL0xYxB0Ohx8ZUxL4AkOft4vyrqo6bMP+qu51qYOedXuK3JVRfhbdvR7HnaZalTlFbjbCXqjUQ
-DKIM-Signature: a=rsa-sha256; bh=DXiAl/MdfirKJ37U/4XhC3QSJqkcaXnqV7X3DbZcKNk=; 
+X-VR-SPAMCAUSE: dmFkZTF1mFPgXm+NtGYLZB9gVLv25LR/l74hJ0sDMLHwIvotgoODHY6KO5ew+iTubItFLHl5iYR9Lyv82GKr5ZJ6Rohrhom18Tuvgfe8RJTs/XnOoqA8rgK88HG3kPuOtnLDu1O3dJt1FTd2eFdU6fsfqC+VHW3l0rsFCygzxa/7qNTB0f1nHz8mvaHzOSop9DO9W45B+7XD3VDL8lUBBGMt4qz2Ap4ocZpAJzfmiL2JT3kv36FUy1q1m36QA7CdudaeBM1+1/OzPzcr4O20/jSFrHDXCpxNL6lou2z/BxRaFbTC4XaTAC7Q2OSWi1HB7QpkTgoHnsq3bX3bj39kKb2n0isweGPt9A4gmY2NYI29ECUVU7zOyePnppbXfCnQZE5675OELM9VHVFL5LlvyDY8hC7lMiAGEhVFIXsm9vR36JrZaB2vhv7FjXJP2jn87PY5kjE5jOtM7omFj6zBNStdxl5I3qGl729edUPRBmKBwNHszGjQ8wF7heq6GqGS7ArIY8nD2cRbTFeZo1S38bM4WhSX+Zl/B7nf/i4dDqBu/onj/FPYj8YtZ9hl7YQUnosaIh2fsKgxh+THda8ZUs84/2+Y2RqFqvg4Yr6qkIiHTdHK/sV/VXRYdaEmw2ruRoL7lJAVj7dDmAqywA7csHCKQR9X8A1iqVhFc5G4gUz2a2xM2A
+DKIM-Signature: a=rsa-sha256; bh=NHMGinZmgzaFJ0uGvON0ID6jTUHoLYa+nT4I0qY38AI=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1770372040; v=1;
- b=U8ZpJFOuSK7HGRFmzeflZn2konQtHuvZ999Czjp0jCP22rjJ93R74/BMBtDqM6x5FVQQ7oQJ
- xYofHNf3kl3+78j1ZK9ktVZ7V1OV2F6p+ve5qJv+sqVSLU5pl2yrhcb5xEjoThrnmWaFCyCSrN0
- GYn3NKF6Qpup/atSZgqnQP+p1owxBQjmiqUOHuV7eKeEK9T8Srd83pFoxTAcJHVRn/7cjUzR/px
- mvfHXDc0ImFJEyANxbhUfCwVkVkJLQf4oDXF9I7SU5kcdXedisnRtX3KfQjmhK5gTXghw7TI0ET
- 8D3VJePIpItqro9S6wV5TnPfCgQL6UpR6wFgDuyb5qaiA==
-Received-SPF: pass client-ip=46.105.54.81; envelope-from=clg@kaod.org;
- helo=smtpout3.mo529.mail-out.ovh.net
+ t=1770372704; v=1;
+ b=RxbIx7YGfEvxayvlY/z+9wXZ5ulVQ13ZPXMha9YQh1BuK04/hXWLat0ZYm3459veJm7uVV2G
+ N14PnWXx3+woxeEALV3EwxvqCIXgWvbesGYK54Kaef0SKZza8EDyPT/7oVF8x5X11QDyTn//1NV
+ 5jY1qwT+gT/9WlvS5r1A8Qn0/nRQfEmgup9Cg9W0c4/WCN7zw+xc6bUvQf3lcQH7HcKtLK1aClr
+ R994zHeuItuN1mNtPoxsHxzp5if0Xqs/Aj4lc9+H1n8vr+YAYOkASZpEztjnQdqDqlUA/LkeMlk
+ elcnQyV+yjfxypIEw51cyG3K8tbIIwSyNq2USzlIKIU7w==
+Received-SPF: pass client-ip=46.105.45.231; envelope-from=clg@kaod.org;
+ helo=8.mo548.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,7 +119,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,76 +135,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/6/26 06:33, Jamin Lin wrote:
-> Update AST2700 FC functional tests to use the AST2700 A2 SDK v11.00 image.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   .../functional/aarch64/test_aspeed_ast2700fc.py  | 16 ++++++++--------
->   1 file changed, 8 insertions(+), 8 deletions(-)
-> 
-> diff --git a/tests/functional/aarch64/test_aspeed_ast2700fc.py b/tests/functional/aarch64/test_aspeed_ast2700fc.py
-> index 47e56dcfc5..51ee8bc787 100755
-> --- a/tests/functional/aarch64/test_aspeed_ast2700fc.py
-> +++ b/tests/functional/aarch64/test_aspeed_ast2700fc.py
-> @@ -62,8 +62,8 @@ def load_ast2700fc_coprocessor(self, name):
->                                f'loader,file={file},cpu-num={cpu_num}')
->   
->       ASSET_SDK_V1100_AST2700 = Asset(
-> -            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2700-a1-obmc.tar.gz',
-> -            'd5ceed511cd0dfefbb102fff2d731159e0472948a28066dc0d90bcd54be76525')
-> +            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2700-default-obmc.tar.gz',
-> +            'e2b8f043fe8063dd3b6ded93422e38bd41914dc9c3202199507652df024de4dc')
->   
->       def do_ast2700_i2c_test(self):
->           exec_command_and_wait_for_pattern(self,
-> @@ -98,7 +98,7 @@ def do_ast2700fc_ssp_test(self):
->           exec_command_and_wait_for_pattern(self, 'version',
->                                             'Zephyr version 3.7.1')
->           exec_command_and_wait_for_pattern(self, 'md 72c02000 1',
-> -                                          '[72c02000] 06010103')
-> +                                          '[72c02000] 06020103')
->   
->       def do_ast2700fc_tsp_test(self):
->           self.vm.shutdown()
-> @@ -109,7 +109,7 @@ def do_ast2700fc_tsp_test(self):
->           exec_command_and_wait_for_pattern(self, 'version',
->                                             'Zephyr version 3.7.1')
->           exec_command_and_wait_for_pattern(self, 'md 72c02000 1',
-> -                                          '[72c02000] 06010103')
-> +                                          '[72c02000] 06020103')
->   
->       def start_ast2700fc_test(self, name):
->           ca35_core = 4
-> @@ -153,8 +153,8 @@ def test_aarch64_ast2700fc_sdk_v11_00(self):
->           self.require_netdev('user')
->   
->           self.archive_extract(self.ASSET_SDK_V1100_AST2700)
-> -        self.start_ast2700fc_test('ast2700-a1')
-> -        self.verify_openbmc_boot_and_login('ast2700-a1')
-> +        self.start_ast2700fc_test('ast2700-default')
-> +        self.verify_openbmc_boot_and_login('ast2700-default')
->           self.do_ast2700_i2c_test()
->           self.do_ast2700_pcie_test()
->           self.do_ast2700fc_ssp_test()
-> @@ -164,8 +164,8 @@ def test_aarch64_ast2700fc_sdk_vbootrom_v11_00(self):
->           self.set_machine('ast2700fc')
->   
->           self.archive_extract(self.ASSET_SDK_V1100_AST2700)
-> -        self.start_ast2700fc_test_vbootrom('ast2700-a1')
-> -        self.verify_openbmc_boot_and_login('ast2700-a1')
-> +        self.start_ast2700fc_test_vbootrom('ast2700-default')
-> +        self.verify_openbmc_boot_and_login('ast2700-default')
->           self.do_ast2700fc_ssp_test()
->           self.do_ast2700fc_tsp_test()
->   
++ Thomas
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+On 2/6/26 06:33, Jamin Lin wrote:
+> Add functional coverage for the AST2700 A2 EVB machine by introducing
+> test cases that boot and validate an OpenBMC SDK v11.00 image on
+> "ast2700a2-evb".
+
+I wonder if we need to test both machines. The test is already quite long.
+
+On my test system :
+
+   qemu:func-aarch64-aspeed_ast2700             OK              119.68s   3 subtests passed
+
+With both machines :
+
+   qemu:func-aarch64-aspeed_ast2700             OK              219.79s   6 subtests passed
 
 Thanks,
 
 C.
 
 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   .../functional/aarch64/test_aspeed_ast2700.py | 44 +++++++++++++++++++
+>   1 file changed, 44 insertions(+)
+> 
+> diff --git a/tests/functional/aarch64/test_aspeed_ast2700.py b/tests/functional/aarch64/test_aspeed_ast2700.py
+> index 61373ffe5b..68e930ab72 100755
+> --- a/tests/functional/aarch64/test_aspeed_ast2700.py
+> +++ b/tests/functional/aarch64/test_aspeed_ast2700.py
+> @@ -86,6 +86,14 @@ def verify_openbmc_boot_and_login(self, name, enable_pcie=True):
+>               'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2700-a1-dcscm-obmc.tar.gz',
+>               '4f8778be176ece1b57d33c4aee13bb989be114c3e4703150eaeb6f996bd5587f')
+>   
+> +    ASSET_SDK_V1100_AST2700A2 = Asset(
+> +            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2700-default-obmc.tar.gz',
+> +            'e2b8f043fe8063dd3b6ded93422e38bd41914dc9c3202199507652df024de4dc')
+> +
+> +    ASSET_SDK_V1100_AST2700A2_DCSCM = Asset(
+> +            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2700-dcscm-obmc.tar.gz',
+> +            '0e93f7976139da71fab9df7952a58bdd80650e23e7abf5853b0eb6695deb02d0')
+> +
+>       def do_ast2700_i2c_test(self, bus_id):
+>           bus_str = str(bus_id)
+>           exec_command_and_wait_for_pattern(self,
+> @@ -159,6 +167,18 @@ def test_aarch64_ast2700a1_evb_sdk_v11_00(self):
+>           self.do_ast2700_i2c_test(1)
+>           self.do_ast2700_pcie_test()
+>   
+> +    def test_aarch64_ast2700a2_evb_sdk_v11_00(self):
+> +        self.set_machine('ast2700a2-evb')
+> +        self.require_netdev('user')
+> +
+> +        self.archive_extract(self.ASSET_SDK_V1100_AST2700A2)
+> +        self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
+> +        self.vm.add_args('-netdev', 'user,id=net1')
+> +        self.start_ast2700_test('ast2700-default', 1)
+> +        self.verify_openbmc_boot_and_login('ast2700-default')
+> +        self.do_ast2700_i2c_test(1)
+> +        self.do_ast2700_pcie_test()
+> +
+>       def test_aarch64_ast2700a1_evb_sdk_vbootrom_v11_00(self):
+>           self.set_machine('ast2700a1-evb')
+>           self.require_netdev('user')
+> @@ -170,6 +190,17 @@ def test_aarch64_ast2700a1_evb_sdk_vbootrom_v11_00(self):
+>           self.verify_vbootrom_firmware_flow()
+>           self.verify_openbmc_boot_start()
+>   
+> +    def test_aarch64_ast2700a2_evb_sdk_vbootrom_v11_00(self):
+> +        self.set_machine('ast2700a2-evb')
+> +        self.require_netdev('user')
+> +
+> +        self.archive_extract(self.ASSET_SDK_V1100_AST2700A2)
+> +        self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
+> +        self.vm.add_args('-netdev', 'user,id=net1')
+> +        self.start_ast2700_test_vbootrom('ast2700-default', 1)
+> +        self.verify_vbootrom_firmware_flow()
+> +        self.verify_openbmc_boot_start()
+> +
+>       def test_aarch64_ast2700a1_evb_ioexp_v11_00(self):
+>           self.set_machine('ast2700a1-evb')
+>           self.require_netdev('user')
+> @@ -183,5 +214,18 @@ def test_aarch64_ast2700a1_evb_ioexp_v11_00(self):
+>           self.do_ast2700_i2c_test(8)
+>           self.do_ast2700_i2c_test(16)
+>   
+> +    def test_aarch64_ast2700a2_evb_ioexp_v11_00(self):
+> +        self.set_machine('ast2700a2-evb')
+> +        self.require_netdev('user')
+> +
+> +        self.archive_extract(self.ASSET_SDK_V1100_AST2700A2_DCSCM)
+> +        self.vm.set_machine('ast2700a2-evb,fmc-model=w25q512jv')
+> +        self.vm.add_args('-device',
+> +                         'tmp105,bus=ioexp0.0,address=0x4d,id=tmp-test-16')
+> +        self.start_ast2700_test('ast2700-dcscm', 8)
+> +        self.verify_openbmc_boot_and_login('ast2700-dcscm', False)
+> +        self.do_ast2700_i2c_test(8)
+> +        self.do_ast2700_i2c_test(16)
+> +
+>   if __name__ == '__main__':
+>       QemuSystemTest.main()
 
 

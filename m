@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6FD3ECD9BF
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 04:23:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50144E9D3F3
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 04:23:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1voDME-0004QG-PJ; Thu, 05 Feb 2026 23:22:14 -0500
+	id 1voDMB-0004NZ-Qt; Thu, 05 Feb 2026 23:22:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1voDMC-0004OQ-Qf
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 23:22:12 -0500
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+ id 1voDM9-0004LP-Pk
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 23:22:09 -0500
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1voDMB-0003VH-E3
- for qemu-arm@nongnu.org; Thu, 05 Feb 2026 23:22:12 -0500
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-82318702afbso228610b3a.1
- for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 20:22:10 -0800 (PST)
+ id 1voDM6-0003Rs-BS
+ for qemu-arm@nongnu.org; Thu, 05 Feb 2026 23:22:09 -0500
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-82310b74496so854844b3a.3
+ for <qemu-arm@nongnu.org>; Thu, 05 Feb 2026 20:22:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1770351730; x=1770956530; darn=nongnu.org;
+ d=linaro.org; s=google; t=1770351724; x=1770956524; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=P+C4usfFJxntIkaYUwqttNHLWY0mMsZx1f8GtcALX8k=;
- b=Xgf/4GKWQrLp7uCoQYRUzCqyhSP4HADbAM6oRmrtDC5QtlPw0ni1xUEOiLS00DDBJm
- EwhsiCjtoNjLvZQW8MFPNowjtCdV3jcsWmUD6agEEGcUQrs1gwnF95TE2cXEZ14ylk/5
- /H0m2sYb4411muOr+AWsXOAZhcabVbhk1ufVrotR0PYJzA8GVvtTTquibUSDwbmHeQGh
- WplUD10pGLBctLhAhQQz7WMax5CzgzqYtpdrIuH7eIMzBBNX3xMX3QLy5mPC48CVXmLT
- xH8RrHMT0CAe3Lx+WUit8GC1kMP7aPTjIZVF1YHxDlOJ1kQMweHBq9Rvw30kN90DGOIc
- X5zA==
+ bh=NNi8czf1/CFVr3JdN24WUseqYsA6Bdj1+/T6IG97cXc=;
+ b=QlZUyOcDmcOP0kIGqSmm6GCfnbo1o20QMnSI6ztuNm3fJbtFBhTTjVXPx0OB9jbIML
+ YFgghe2kXiwxsPUDYA5aO9zoOE50v9VXVxNH1uHS8XIg9VFsclTUL3KtNbM9KNa+Lzed
+ Ttd3vgyc4CT/0QbCxHP+DviAiZLFoxW0UAMVckbA28ZhJwGZs1X6QdLzkBL12462q2ew
+ 9HkiBw1D7BKqVIflFn9duREyI3enLVskLxFh1UCgioIit/6ndFx8DsmSG+9NPgwpXPyE
+ ncRmeK2IdDrMufwZhbU9KdLnNrx8JSNxZ2JHu5eH6qxglMnfKeiJ3l3I8r6QbKfWPndo
+ o5oA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770351730; x=1770956530;
+ d=1e100.net; s=20230601; t=1770351724; x=1770956524;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=P+C4usfFJxntIkaYUwqttNHLWY0mMsZx1f8GtcALX8k=;
- b=a7o7DLnBW/KwjwrTwSHI836XUQw1XwwPlPhQ6tEjO02ZD440V+EbO3HLflYB9CIrjo
- M/9DQTz4vEC9uzKH1viB9eoHtCB+uSQa6byshHJ1N46xQ/xBoT8GgCVy2flXNVZMm6xe
- gI43J/WJ+LdFj1W8eKNCLWTMiqcDMOITU1+sF5QFEe789rgeHpgLLxpjFIhUGQxLHEtt
- ivLGGKmEY3qKPcZRYI1ttB/BHGDEVhKERnL7KhM9G+QsOAk+YoFrmizHGpmW/uaByvTa
- dQAo8DXXJAhVpQp63S5CYneS9uBDHFonz6KBi2V9ba0RFXAfx3/xpjAyG//WMkcXVppV
- RJMw==
+ bh=NNi8czf1/CFVr3JdN24WUseqYsA6Bdj1+/T6IG97cXc=;
+ b=cVf+Jpzr/gNDbDJWIc0h/BkUIzlIiFhRscTY8mADOeeiA4WazgDoYlxuMZEzmsVLNZ
+ 0V9LCJ1Yx6yKxv7qJryD5IlObWt/PgiXGCMucoePLPDLq+/E12EvMXULjA5HJVUyvVNR
+ 2EpYCspzdNf6AsJKpz9wtCMt3MahYEt7AIlAqrVKRFeUg6IG1RBtZWsFYuvRXI17jpyj
+ aVX7pi0fZwZzCeiWRxcIAVtYJebsRtePskX6jl4jR1EdPuiIE9M3T26hfrGoiJlzlICD
+ GVcQk5z+c1R7gRVf7VP3sBvv/oerrHC8WXhiTqAvVBK6JT9R2MMGHRPRR43VXDhn8F5X
+ UURQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUg8CP5wpOeIwnbDhhGIja1kYZg4mVqE1n28AmSNp791c7WNtdia1Tqjm4EwvNFCYbiMCzZCKt+qg==@nongnu.org
-X-Gm-Message-State: AOJu0Ywx/7CJ0xEabemTuV4DaVQSGapSVxB+zQi4Ye+czrsICbWnD6UE
- s1sdsUXyiqNLCI35dloCmjZuwZ2wrzJOQu/j3JumX7gaICHD8j97R2XSk3q/Pukj7bs=
-X-Gm-Gg: AZuq6aLu90h53YS+NsAUCAMcnQfrVi6UsAfUdwZTP66fOam+wLvfqa7pymXKLeU0HwQ
- /RPbWIWFze23vYRybNTDl2TrKLWFY8OBoVeeh61V/dcfKQg+1GGJuuY9WmtZgYsMdFtEdzim/s3
- S9feUpuTi5BTPK8IwO38c4pTVfq3rttEzgPxEvyIC4XKgGXBClb9+PO2vORcI2PR5UrA8dF1CFc
- LnPoTxxrVOguxlXcPmQzyKzdxufRjFaQF+HgX0ZkGT329j3OJGMFIhFb60UCb8SscRqn+/oT32Q
- Jxpiwk20uJXrDKNrLB8sUT+BiHWsDc/cZ50mrzKPPGZUMBaCPnAx64WpAZH/+qKwYxprJ2Od/IY
- Ys9ZZBEq9Ymwfc3lJazdX3eAjisB6ghWDLUO78CrbeqQKx3iQrCpPhzKeDj1XbIWiFv8UAuSj2b
- R/VuSvahAT1yWiJz9gha6xsjhCNKhxGrenjFlQ5gzk1Im+alvalCnI54kKRD+Xe8Xh
-X-Received: by 2002:a05:6a00:17a7:b0:81f:4963:4967 with SMTP id
- d2e1a72fcca58-82441773190mr1309967b3a.57.1770351729674; 
- Thu, 05 Feb 2026 20:22:09 -0800 (PST)
+ AJvYcCVn2PIlBLE3IXMEJbfOGctmHb2lDoTpD9tOTodeqdVO3sYjIOjmiRUfHvMBmanRhJPy7j+EUmcpUg==@nongnu.org
+X-Gm-Message-State: AOJu0YwilC3ioTlLnggxXw0ncpDx2al8r2dMMkeoYva8hRQb95G0si2+
+ hT04yMZQWWNzn5jW0iAWWMLGtRoX2gSg5RzlVd3Wb1KSukSGi6qs0dM/T6+BkIo72So=
+X-Gm-Gg: AZuq6aIV6M5udb7jkPFHF7EHALwvHmIeD3voDzACSxX601rWEQo8owk8YJJY/0stzmm
+ pMHlYSu/sMrI8B17r5OYc5IVB19Cf954MyROq7oSxW1wbnBzynsyisNjAWwoE6YQMaJeKqEwYMM
+ fF4BK/5t5TkH17qmO4kvN5H+pdIoriGN0EQ24pFUL5zPy7z+hJ9RDS/+KsUq52IkWVgMm1L2/u2
+ SCbMQSXbNTKE/yzOuIXI9Z7OptkSI13ceBh7jnQkzS6jSgnClFRNj+szlZ8xQgPkc7twQxaVSDL
+ PkJJ5v2KtK9kUIwUOP6S2T4fIDCqDMANzjPHOQMdF5wi5Y7uWO6IXqEeJLX9EKX1xvTecNQ4yfV
+ 0LRa/0UeC3bynDAsdCqcbwUdlwQUCTePE5VezGghg7FHyKllSio7vIuRszmiDJSszPcIXJxmZrv
+ 8pVNkbc2YLO6klZ+aunkK+YUl7DrEQIxTlwmDCQY0LuQz2qITIVGyYwAdCjmuWr2wsisRVEi+S5
+ 34=
+X-Received: by 2002:a05:6a00:1790:b0:81f:49cc:ea11 with SMTP id
+ d2e1a72fcca58-824417b8d66mr1225060b3a.65.1770351724414; 
+ Thu, 05 Feb 2026 20:22:04 -0800 (PST)
 Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-8244168fdf5sm926914b3a.17.2026.02.05.20.22.09
+ d2e1a72fcca58-8244168fdf5sm926914b3a.17.2026.02.05.20.22.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Feb 2026 20:22:09 -0800 (PST)
+ Thu, 05 Feb 2026 20:22:04 -0800 (PST)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: anjo@rev.ng, Richard Henderson <richard.henderson@linaro.org>,
@@ -75,17 +76,16 @@ Cc: anjo@rev.ng, Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
  qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 11/12] target/arm/tcg/translate.h: replace target_ulong
- with vaddr
-Date: Thu,  5 Feb 2026 20:21:49 -0800
-Message-ID: <20260206042150.912578-12-pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 05/12] target/arm: extract helper-sme.h from helper.h
+Date: Thu,  5 Feb 2026 20:21:43 -0800
+Message-ID: <20260206042150.912578-6-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260206042150.912578-1-pierrick.bouvier@linaro.org>
 References: <20260206042150.912578-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x431.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,45 +108,125 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/tcg/translate.h | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ target/arm/helper-sme.h                            | 14 ++++++++++++++
+ target/arm/helper.h                                |  4 ----
+ target/arm/tcg/{helper-sme.h => helper-sme-defs.h} |  0
+ target/arm/tcg/sme_helper.c                        |  3 +++
+ target/arm/tcg/translate-a64.c                     |  1 +
+ target/arm/tcg/translate-sme.c                     |  1 +
+ target/arm/tcg/translate-sve.c                     |  1 +
+ target/arm/tcg/vec_helper.c                        |  1 +
+ 8 files changed, 21 insertions(+), 4 deletions(-)
+ create mode 100644 target/arm/helper-sme.h
+ rename target/arm/tcg/{helper-sme.h => helper-sme-defs.h} (100%)
 
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index 027769271c9..2c8358dd7fa 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -18,7 +18,7 @@
-  */
- typedef struct DisasLabel {
-     TCGLabel *label;
--    target_ulong pc_save;
-+    vaddr pc_save;
- } DisasLabel;
+diff --git a/target/arm/helper-sme.h b/target/arm/helper-sme.h
+new file mode 100644
+index 00000000000..27c85fdeef1
+--- /dev/null
++++ b/target/arm/helper-sme.h
+@@ -0,0 +1,14 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++
++#ifndef HELPER_SME_H
++#define HELPER_SME_H
++
++#include "exec/helper-proto-common.h"
++#include "exec/helper-gen-common.h"
++
++#define HELPER_H "tcg/helper-sme-defs.h"
++#include "exec/helper-proto.h.inc"
++#include "exec/helper-gen.h.inc"
++#undef HELPER_H
++
++#endif /* HELPER_SME_H */
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 2f724643d39..b1e83196b3b 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -1,7 +1,3 @@
+ /* SPDX-License-Identifier: GPL-2.0-or-later */
  
- /*
-@@ -42,7 +42,7 @@ typedef struct DisasContext {
-     DisasDelayException *delay_excp_list;
+ #include "tcg/helper.h"
+-
+-#ifdef TARGET_AARCH64
+-#include "tcg/helper-sme.h"
+-#endif
+diff --git a/target/arm/tcg/helper-sme.h b/target/arm/tcg/helper-sme-defs.h
+similarity index 100%
+rename from target/arm/tcg/helper-sme.h
+rename to target/arm/tcg/helper-sme-defs.h
+diff --git a/target/arm/tcg/sme_helper.c b/target/arm/tcg/sme_helper.c
+index 075360d8b8a..7729732369f 100644
+--- a/target/arm/tcg/sme_helper.c
++++ b/target/arm/tcg/sme_helper.c
+@@ -22,6 +22,7 @@
+ #include "internals.h"
+ #include "tcg/tcg-gvec-desc.h"
+ #include "exec/helper-proto.h"
++#include "helper-sme.h"
+ #include "accel/tcg/cpu-ldst.h"
+ #include "accel/tcg/helper-retaddr.h"
+ #include "qemu/int128.h"
+@@ -29,6 +30,8 @@
+ #include "vec_internal.h"
+ #include "sve_ldst_internal.h"
  
-     /* The address of the current instruction being translated. */
--    target_ulong pc_curr;
-+    vaddr pc_curr;
-     /*
-      * For CF_PCREL, the full value of cpu_pc is not known
-      * (although the page offset is known).  For convenience, the
-@@ -56,8 +56,8 @@ typedef struct DisasContext {
-      * pc_save contains -1 to indicate that relative updates are no
-      * longer possible.
-      */
--    target_ulong pc_save;
--    target_ulong page_start;
-+    vaddr pc_save;
-+    vaddr page_start;
-     uint32_t insn;
-     /* Nonzero if this instruction has been conditionally skipped.  */
-     int condjmp;
++#define HELPER_H "tcg/helper-sme-defs.h"
++#include "exec/helper-info.c.inc"
+ 
+ static bool vectors_overlap(ARMVectorReg *x, unsigned nx,
+                             ARMVectorReg *y, unsigned ny)
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 31fb2ea9cc3..5d261a5e32b 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -19,6 +19,7 @@
+ #include "qemu/osdep.h"
+ #include "exec/target_page.h"
+ #include "helper-a64.h"
++#include "helper-sme.h"
+ #include "helper-sve.h"
+ #include "translate.h"
+ #include "translate-a64.h"
+diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
+index 463ece97ab8..7d25ac5a51f 100644
+--- a/target/arm/tcg/translate-sme.c
++++ b/target/arm/tcg/translate-sme.c
+@@ -19,6 +19,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "cpu.h"
++#include "helper-sme.h"
+ #include "helper-sve.h"
+ #include "translate.h"
+ #include "translate-a64.h"
+diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+index c68a44aff8c..db25636fa3b 100644
+--- a/target/arm/tcg/translate-sve.c
++++ b/target/arm/tcg/translate-sve.c
+@@ -19,6 +19,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "cpu.h"
++#include "helper-sme.h"
+ #include "helper-sve.h"
+ #include "translate.h"
+ #include "translate-a64.h"
+diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
+index bc64c8ff374..a070ac90579 100644
+--- a/target/arm/tcg/vec_helper.c
++++ b/target/arm/tcg/vec_helper.c
+@@ -21,6 +21,7 @@
+ #include "cpu.h"
+ #include "exec/helper-proto.h"
+ #include "helper-a64.h"
++#include "helper-sme.h"
+ #include "helper-sve.h"
+ #include "tcg/tcg-gvec-desc.h"
+ #include "fpu/softfloat.h"
 -- 
 2.47.3
 

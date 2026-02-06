@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40A4FEE2082
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 10:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D32DCEE2080
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 10:29:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1voIoZ-00064Q-3S; Fri, 06 Feb 2026 05:11:51 -0500
+	id 1voJ5c-00042H-BN; Fri, 06 Feb 2026 05:29:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1voIoY-00063c-AP
- for qemu-arm@nongnu.org; Fri, 06 Feb 2026 05:11:50 -0500
-Received: from 8.mo548.mail-out.ovh.net ([46.105.45.231])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1voJ5b-000422-Ki
+ for qemu-arm@nongnu.org; Fri, 06 Feb 2026 05:29:27 -0500
+Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1voIoV-0004hJ-FV
- for qemu-arm@nongnu.org; Fri, 06 Feb 2026 05:11:50 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.43.14])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4f6qcw0lrtz5w9n;
- Fri,  6 Feb 2026 10:11:44 +0000 (UTC)
-Received: from kaod.org (37.59.142.113) by DAG14EX2.mxp5.local (172.16.2.142)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1voJ5Y-0007be-9m
+ for qemu-arm@nongnu.org; Fri, 06 Feb 2026 05:29:27 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.254.9])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4f6r1F1L3vz5wpH;
+ Fri,  6 Feb 2026 10:29:21 +0000 (UTC)
+Received: from kaod.org (37.59.142.112) by DAG14EX2.mxp5.local (172.16.2.142)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Fri, 6 Feb
- 2026 11:11:43 +0100
+ 2026 11:29:19 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-113S00792e33514-f3f5-4495-af40-08cdb21997a3,
+ (GARM-112S006a5fe1826-7530-4bbf-8fa0-9327f7c99526,
  C2DCEC2B1261BCA5104DC73024CD17A0EB88A4A8) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <83d409cf-868c-4a2d-b1c9-5741d3e36adc@kaod.org>
-Date: Fri, 6 Feb 2026 11:11:41 +0100
+Message-ID: <8aff2a03-65d8-4d9f-8ed5-413e6233bcc5@kaod.org>
+Date: Fri, 6 Feb 2026 11:29:18 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 08/10] tests/functional/aarch64/test_aspeed_ast2700:
- Add AST2700 A2 EVB functional tests
+Subject: Re: [PATCH v1 01/10] hw/i2c/aspeed_i2c: Fix Out-of-Bounds access by
+ using dynamic register array
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
@@ -43,10 +43,9 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- "nabihestefan@google.com" <nabihestefan@google.com>, Thomas Huth
- <thuth@redhat.com>
+ "nabihestefan@google.com" <nabihestefan@google.com>
 References: <20260206053340.3716041-1-jamin_lin@aspeedtech.com>
- <20260206053340.3716041-10-jamin_lin@aspeedtech.com>
+ <20260206053340.3716041-2-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -91,35 +90,35 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260206053340.3716041-10-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260206053340.3716041-2-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.113]
-X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG14EX2.mxp5.local
+X-Originating-IP: [37.59.142.112]
+X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG14EX2.mxp5.local
  (172.16.2.142)
-X-Ovh-Tracer-GUID: 72e46bae-b22c-40fe-8812-6f6a3cabb895
-X-Ovh-Tracer-Id: 13717682991313816449
+X-Ovh-Tracer-GUID: 63527242-9e91-4125-941f-679eee3e9061
+X-Ovh-Tracer-Id: 14015202044187085630
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTF1mFPgXm+NtGYLZB9gVLv25LR/l74hJ0sDMLHwIvotgoODHY6KO5ew+iTubItFLHl5iYR9Lyv82GKr5ZJ6Rohrhom18Tuvgfe8RJTs/XnOoqA8rgK88HG3kPuOtnLDu1O3dJt1FTd2eFdU6fsfqC+VHW3l0rsFCygzxa/7qNTB0f1nHz8mvaHzOSop9DO9W45B+7XD3VDL8lUBBGMt4qz2Ap4ocZpAJzfmiL2JT3kv36FUy1q1m36QA7CdudaeBM1+1/OzPzcr4O20/jSFrHDXCpxNL6lou2z/BxRaFbTC4XaTAC7Q2OSWi1HB7QpkTgoHnsq3bX3bj39kKb2n0isweGPt9A4gmY2NYI29ECUVU7zOyePnppbXfCnQZE5675OELM9VHVFL5LlvyDY8hC7lMiAGEhVFIXsm9vR36JrZaB2vhv7FjXJP2jn87PY5kjE5jOtM7omFj6zBNStdxl5I3qGl729edUPRBmKBwNHszGjQ8wF7heq6GqGS7ArIY8nD2cRbTFeZo1S38bM4WhSX+Zl/B7nf/i4dDqBu/onj/FPYj8YtZ9hl7YQUnosaIh2fsKgxh+THda8ZUs84/2+Y2RqFqvg4Yr6qkIiHTdHK/sV/VXRYdaEmw2ruRoL7lJAVj7dDmAqywA7csHCKQR9X8A1iqVhFc5G4gUz2a2xM2A
-DKIM-Signature: a=rsa-sha256; bh=NHMGinZmgzaFJ0uGvON0ID6jTUHoLYa+nT4I0qY38AI=; 
+X-VR-SPAMCAUSE: dmFkZTGyImf7dM1+SHjh4s4AbMXh16EYOdM3nLrVvLpNS10O+8YY+/Ag55l/4nlB86RY2JrgIXicPBPk5gTs9Ihrd7b9PHnK2puJLwnoBJTl+f2AcHsuCMbYG4ueoQYCaDdIx8eR7dbJ9pBo5fNcmhqz3md1O8rXOFCqAgR4ol8cyPtsX+qGxvzM3mUlMGDZBTq6fAlxHZJ5kRBmTAbIT9jjuc14o6PeYR1tQ+vUcxJhxRqOrpjaq7dmto0fkyaY/ZHK+h/U0odCJ0v11wvA74v1EWfP5tZFlfXJvwxBshBi+EAI2jSPPrL7E9tCfc1cBbDbAm/hL49sExxsEelXs51VaN01DbEaiV6dmFJKp4B0ZcEVToz+dBduQ4v+eanbURBexBYbaGJ4rBgsPMNGAeWT76mXQ/FGijKVzPI8Ae/WUmFRH0FsL7W74+R++hgMfbInAfCqKQSUB39PWH4nkoTISACCVUS42ViSr4NUAMCwRw9UABpL7jY0rHgXtdR4s+qSKSMig8sbzGnNEOgkwTWfIU7ZtLxqrY6acaoigMgCke9z6K3Uljpkj71ZZUSyswXrpAw2ONANammfTTd6qFkVBUvX9FZ3xsFbnQz82SmGuAJUB9Bx4Q2mcxe1RlcN2RwbWnwQqL6szVvudF/LJA96ASIaeapM/xYW84yT+oiq8MTJWA
+DKIM-Signature: a=rsa-sha256; bh=IcYiACwyHvZR80uNSWMGSjsvZdhm/X1alqUzVP1Y37w=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1770372704; v=1;
- b=RxbIx7YGfEvxayvlY/z+9wXZ5ulVQ13ZPXMha9YQh1BuK04/hXWLat0ZYm3459veJm7uVV2G
- N14PnWXx3+woxeEALV3EwxvqCIXgWvbesGYK54Kaef0SKZza8EDyPT/7oVF8x5X11QDyTn//1NV
- 5jY1qwT+gT/9WlvS5r1A8Qn0/nRQfEmgup9Cg9W0c4/WCN7zw+xc6bUvQf3lcQH7HcKtLK1aClr
- R994zHeuItuN1mNtPoxsHxzp5if0Xqs/Aj4lc9+H1n8vr+YAYOkASZpEztjnQdqDqlUA/LkeMlk
- elcnQyV+yjfxypIEw51cyG3K8tbIIwSyNq2USzlIKIU7w==
-Received-SPF: pass client-ip=46.105.45.231; envelope-from=clg@kaod.org;
- helo=8.mo548.mail-out.ovh.net
+ t=1770373761; v=1;
+ b=hXqrMGXsrPTBVAeM4sPfy9G1hvFch4v6wMgaU3dUTOjeamN8WH7AGCLPwqlbrgNdZCetDHXz
+ ZpFZB2jJjPOWShhrSO60yb6i8fHzjn5GtKxC6h99R51RBB7LsBLGMJUhdRscnqTHt48mgGtwuQ6
+ oXe/4pnxP6a9cihda3na3T+iEcKq43cRvcNa3GLw9qo1xz8C4IGWJ2A1fMv4/B9A/jaa4t9wZTj
+ 2AvnlKnXp1kfTCulZOLXx+pg9i1AN3Nkr4ax2/yMP42tgqAFAh2DXogT3ERmDfhRo50Mn/05G/t
+ D8reomkiSoeC1p7SmeYBY4BPA1JIo8JE4CPvHC/QNL/oQ==
+Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
+ helo=smtpout4.mo529.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,107 +134,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-+ Thomas
-
 On 2/6/26 06:33, Jamin Lin wrote:
-> Add functional coverage for the AST2700 A2 EVB machine by introducing
-> test cases that boot and validate an OpenBMC SDK v11.00 image on
-> "ast2700a2-evb".
-
-I wonder if we need to test both machines. The test is already quite long.
-
-On my test system :
-
-   qemu:func-aarch64-aspeed_ast2700             OK              119.68s   3 subtests passed
-
-With both machines :
-
-   qemu:func-aarch64-aspeed_ast2700             OK              219.79s   6 subtests passed
-
-Thanks,
-
-C.
-
-
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   .../functional/aarch64/test_aspeed_ast2700.py | 44 +++++++++++++++++++
->   1 file changed, 44 insertions(+)
+> The ASPEED I2C controller emulation used a fixed-size register array
+> (28 dwords) for all SoC variants, while multiple ASPEED SoCs
+> (AST2600, AST1030, AST2700) expose a larger MMIO register window
+> (e.g. reg_size = 0x80).
 > 
-> diff --git a/tests/functional/aarch64/test_aspeed_ast2700.py b/tests/functional/aarch64/test_aspeed_ast2700.py
-> index 61373ffe5b..68e930ab72 100755
-> --- a/tests/functional/aarch64/test_aspeed_ast2700.py
-> +++ b/tests/functional/aarch64/test_aspeed_ast2700.py
-> @@ -86,6 +86,14 @@ def verify_openbmc_boot_and_login(self, name, enable_pcie=True):
->               'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2700-a1-dcscm-obmc.tar.gz',
->               '4f8778be176ece1b57d33c4aee13bb989be114c3e4703150eaeb6f996bd5587f')
+> This mismatch allows MMIO accesses beyond the allocated register
+> array, leading to out-of-bounds reads in the I2C controller model.
+> 
+> Fix this by converting the register storage to a dynamically allocated
+> array sized according to the controller class reg_size. The register
+> array is now allocated during bus realize and free on unrealize,
+> ensuring safe access across different ASPEED SoC implementations.
+> 
+> This change eliminates I2C register out-of-bounds access caused by
+> SoC-specific register size differences.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3290
+
+Please keep this patch separate from the A2 series.
+
+> ---
+>   include/hw/i2c/aspeed_i2c.h |  4 +---
+>   hw/i2c/aspeed_i2c.c         | 18 ++++++++++++++----
+>   2 files changed, 15 insertions(+), 7 deletions(-)
+> 
+> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+> index 68bd138026..205f0a58d2 100644
+> --- a/include/hw/i2c/aspeed_i2c.h
+> +++ b/include/hw/i2c/aspeed_i2c.h
+> @@ -36,8 +36,6 @@ OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
+>   #define ASPEED_I2C_NR_BUSSES 16
+>   #define ASPEED_I2C_SHARE_POOL_SIZE 0x800
+>   #define ASPEED_I2C_BUS_POOL_SIZE 0x20
+> -#define ASPEED_I2C_OLD_NUM_REG 11
+> -#define ASPEED_I2C_NEW_NUM_REG 28
 >   
-> +    ASSET_SDK_V1100_AST2700A2 = Asset(
-> +            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2700-default-obmc.tar.gz',
-> +            'e2b8f043fe8063dd3b6ded93422e38bd41914dc9c3202199507652df024de4dc')
-> +
-> +    ASSET_SDK_V1100_AST2700A2_DCSCM = Asset(
-> +            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2700-dcscm-obmc.tar.gz',
-> +            '0e93f7976139da71fab9df7952a58bdd80650e23e7abf5853b0eb6695deb02d0')
-> +
->       def do_ast2700_i2c_test(self, bus_id):
->           bus_str = str(bus_id)
->           exec_command_and_wait_for_pattern(self,
-> @@ -159,6 +167,18 @@ def test_aarch64_ast2700a1_evb_sdk_v11_00(self):
->           self.do_ast2700_i2c_test(1)
->           self.do_ast2700_pcie_test()
+>   #define A_I2CD_M_STOP_CMD       BIT(5)
+>   #define A_I2CD_M_RX_CMD         BIT(3)
+> @@ -256,7 +254,7 @@ struct AspeedI2CBus {
+>       uint8_t id;
+>       qemu_irq irq;
 >   
-> +    def test_aarch64_ast2700a2_evb_sdk_v11_00(self):
-> +        self.set_machine('ast2700a2-evb')
-> +        self.require_netdev('user')
-> +
-> +        self.archive_extract(self.ASSET_SDK_V1100_AST2700A2)
-> +        self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
-> +        self.vm.add_args('-netdev', 'user,id=net1')
-> +        self.start_ast2700_test('ast2700-default', 1)
-> +        self.verify_openbmc_boot_and_login('ast2700-default')
-> +        self.do_ast2700_i2c_test(1)
-> +        self.do_ast2700_pcie_test()
-> +
->       def test_aarch64_ast2700a1_evb_sdk_vbootrom_v11_00(self):
->           self.set_machine('ast2700a1-evb')
->           self.require_netdev('user')
-> @@ -170,6 +190,17 @@ def test_aarch64_ast2700a1_evb_sdk_vbootrom_v11_00(self):
->           self.verify_vbootrom_firmware_flow()
->           self.verify_openbmc_boot_start()
+> -    uint32_t regs[ASPEED_I2C_NEW_NUM_REG];
+> +    uint32_t *regs;
+>       uint8_t pool[ASPEED_I2C_BUS_POOL_SIZE];
+>       uint64_t dma_dram_offset;
+>   };
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index fb3d6a5600..cf3a003978 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -1091,10 +1091,9 @@ static const MemoryRegionOps aspeed_i2c_bus_pool_ops = {
 >   
-> +    def test_aarch64_ast2700a2_evb_sdk_vbootrom_v11_00(self):
-> +        self.set_machine('ast2700a2-evb')
-> +        self.require_netdev('user')
-> +
-> +        self.archive_extract(self.ASSET_SDK_V1100_AST2700A2)
-> +        self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
-> +        self.vm.add_args('-netdev', 'user,id=net1')
-> +        self.start_ast2700_test_vbootrom('ast2700-default', 1)
-> +        self.verify_vbootrom_firmware_flow()
-> +        self.verify_openbmc_boot_start()
-> +
->       def test_aarch64_ast2700a1_evb_ioexp_v11_00(self):
->           self.set_machine('ast2700a1-evb')
->           self.require_netdev('user')
-> @@ -183,5 +214,18 @@ def test_aarch64_ast2700a1_evb_ioexp_v11_00(self):
->           self.do_ast2700_i2c_test(8)
->           self.do_ast2700_i2c_test(16)
+>   static const VMStateDescription aspeed_i2c_bus_vmstate = {
+>       .name = TYPE_ASPEED_I2C,
+> -    .version_id = 6,
+> -    .minimum_version_id = 6,
+> +    .version_id = 7,
+> +    .minimum_version_id = 7,
+>       .fields = (const VMStateField[]) {
+> -        VMSTATE_UINT32_ARRAY(regs, AspeedI2CBus, ASPEED_I2C_NEW_NUM_REG),
+
+hmm, why not use VMSTATE_VARRAY_UINT32 ?
+
+>           VMSTATE_UINT8_ARRAY(pool, AspeedI2CBus, ASPEED_I2C_BUS_POOL_SIZE),
+>           VMSTATE_UINT64(dma_dram_offset, AspeedI2CBus),
+>           VMSTATE_END_OF_LIST()
+> @@ -1465,8 +1464,9 @@ static const TypeInfo aspeed_i2c_bus_slave_info = {
+>   static void aspeed_i2c_bus_reset(DeviceState *dev)
+>   {
+>       AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
+> +    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s->controller);
 >   
-> +    def test_aarch64_ast2700a2_evb_ioexp_v11_00(self):
-> +        self.set_machine('ast2700a2-evb')
-> +        self.require_netdev('user')
+> -    memset(s->regs, 0, sizeof(s->regs));
+> +    memset(s->regs, 0, aic->reg_size);
+>       i2c_end_transfer(s->bus);
+>   }
+>   
+> @@ -1492,6 +1492,7 @@ static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
+>       s->slave = i2c_slave_create_simple(s->bus, TYPE_ASPEED_I2C_BUS_SLAVE,
+>                                          0xff);
+>   
+> +    s->regs = g_new(uint32_t, aic->reg_size >> 2);
+
+g_new0 ? even if the memset in reset will set regs[] contents to 0.
+
+>       memory_region_init_io(&s->mr, OBJECT(s), &aspeed_i2c_bus_ops,
+>                             s, s->name, aic->reg_size);
+>       sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr);
+> @@ -1501,6 +1502,14 @@ static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
+>       sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr_pool);
+>   }
+>   
+> +static void aspeed_i2c_bus_unrealize(DeviceState *dev)
+> +{
+> +    AspeedI2CBus *s = ASPEED_I2C_BUS(dev);
 > +
-> +        self.archive_extract(self.ASSET_SDK_V1100_AST2700A2_DCSCM)
-> +        self.vm.set_machine('ast2700a2-evb,fmc-model=w25q512jv')
-> +        self.vm.add_args('-device',
-> +                         'tmp105,bus=ioexp0.0,address=0x4d,id=tmp-test-16')
-> +        self.start_ast2700_test('ast2700-dcscm', 8)
-> +        self.verify_openbmc_boot_and_login('ast2700-dcscm', False)
-> +        self.do_ast2700_i2c_test(8)
-> +        self.do_ast2700_i2c_test(16)
+> +    g_free(s->regs);
+> +    s->regs = NULL;
+> +}
 > +
->   if __name__ == '__main__':
->       QemuSystemTest.main()
+>   static const Property aspeed_i2c_bus_properties[] = {
+>       DEFINE_PROP_UINT8("bus-id", AspeedI2CBus, id, 0),
+>       DEFINE_PROP_LINK("controller", AspeedI2CBus, controller, TYPE_ASPEED_I2C,
+> @@ -1514,6 +1523,7 @@ static void aspeed_i2c_bus_class_init(ObjectClass *klass, const void *data)
+>   
+>       dc->desc = "Aspeed I2C Bus";
+>       dc->realize = aspeed_i2c_bus_realize;
+> +    dc->unrealize = aspeed_i2c_bus_unrealize;
+>       device_class_set_legacy_reset(dc, aspeed_i2c_bus_reset);
+>       device_class_set_props(dc, aspeed_i2c_bus_properties);
+>   }
 
 

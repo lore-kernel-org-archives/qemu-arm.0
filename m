@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09907EB28FE
-	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 09:41:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57EBCECD98B
+	for <qemu-arm@archiver.kernel.org>; Fri,  6 Feb 2026 10:00:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1voILJ-0007x6-FG; Fri, 06 Feb 2026 04:41:37 -0500
+	id 1voIdf-00033q-6d; Fri, 06 Feb 2026 05:00:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1voILI-0007wh-Eh
- for qemu-arm@nongnu.org; Fri, 06 Feb 2026 04:41:36 -0500
-Received: from smtpout2.mo529.mail-out.ovh.net ([79.137.123.220])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1voIdR-00032v-0b; Fri, 06 Feb 2026 05:00:25 -0500
+Received: from 4.mo548.mail-out.ovh.net ([188.165.42.229])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1voILG-000638-Ic
- for qemu-arm@nongnu.org; Fri, 06 Feb 2026 04:41:36 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.37.24])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4f6py35yNmz5wpH;
- Fri,  6 Feb 2026 09:41:31 +0000 (UTC)
-Received: from kaod.org (37.59.142.111) by DAG14EX2.mxp5.local (172.16.2.142)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1voIdN-0002OJ-Aa; Fri, 06 Feb 2026 05:00:20 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.109.254.86])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4f6qMd0WcNz5w9b;
+ Fri,  6 Feb 2026 10:00:13 +0000 (UTC)
+Received: from kaod.org (37.59.142.109) by DAG14EX2.mxp5.local (172.16.2.142)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Fri, 6 Feb
- 2026 10:41:30 +0100
+ 2026 11:00:11 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-111S005450d0d3d-2b14-486a-8737-938aa377b092,
+ (GARM-109S0039f8ed769-07d6-4c00-b776-e1af5f808fd3,
  C2DCEC2B1261BCA5104DC73024CD17A0EB88A4A8) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <13bb2d85-bc24-4c3c-bdf0-8e4449b75387@kaod.org>
-Date: Fri, 6 Feb 2026 10:41:29 +0100
+Message-ID: <4be69752-9494-4af2-a9a9-3af59f2a577c@kaod.org>
+Date: Fri, 6 Feb 2026 11:00:10 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 07/10] tests/qtest/ast2700-hace-test: Use ast2700-evb
- alias for AST2700 HACE tests
+Subject: Re: [PATCH v1 09/10] hw/arm/aspeed_ast27x0-fc: Switch AST2700 FC
+ machine to A2 SoC
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
@@ -45,7 +45,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
 CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
  "nabihestefan@google.com" <nabihestefan@google.com>
 References: <20260206053340.3716041-1-jamin_lin@aspeedtech.com>
- <20260206053340.3716041-9-jamin_lin@aspeedtech.com>
+ <20260206053340.3716041-11-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -90,35 +90,35 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260206053340.3716041-9-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260206053340.3716041-11-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.111]
-X-ClientProxiedBy: DAG7EX1.mxp5.local (172.16.2.61) To DAG14EX2.mxp5.local
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.109]
+X-ClientProxiedBy: DAG6EX1.mxp5.local (172.16.2.51) To DAG14EX2.mxp5.local
  (172.16.2.142)
-X-Ovh-Tracer-GUID: 335b16e7-bc8c-45bd-a1d9-df6ac95a852e
-X-Ovh-Tracer-Id: 13207650334710729534
+X-Ovh-Tracer-GUID: beb0b5b7-7732-40a9-a50c-d191c5b3d361
+X-Ovh-Tracer-Id: 13523183783090686782
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTE6gtelrx0GIsC3uKa7s9VmXCbJ8stKVdgewvKzCOnf/jtQNl4ZWKye4+oUcrs1mWwaBKq03v3I47LyffYjplFYGBFxS7b1qDRbAdX8wkYnmmZCW6DDsh+3kTOIgrm5EMOl6gc8jq7EGLgTavDxjxbRVz+95YMc1VETxUiSZp7dimkzpR0gGlbAe94yZHiZ9ekEiT/n/grgrC8iOqmhSWrDXmF09/WNk9xzlHoo/XeP34nUcSRYktFXYYcjfBsF1Wtvv7MrM771cfSH9t3Fdqhne61QcjZAlIVeXAMipcIxuh2QmVy7fqG+3o2IM0B3o9XgkYNbr5pWZ3peA61GcCoWUfODN2ifF1ZlCRL17VvcXpqX5vC1WI/gt/rx/P+bIgXy/kO8/UEXL9heEtKB+Ya9c8n0IHQPaK57rf+V1UtbVJVVMc2pvQ4xquchIglF/I6K4EajgNrAQ0xrGZFJU+ftJyiNBdUTnkfniOVbeZZTeXvWg76qxzWNWGANcP31K/c3yxzne/pTlAb3OT5UPPhTFegUj3CwgDdCXbbYDuuhSNYIKICnQN7dQMWU3VjC4mB/EsccPUzUfGw63bBf2lEnbBOXRTcdLwUvobJ7psmtJ+eZdR5m4ixcUv6q0tygd5wPTqY/A3vcRjMSDTGvBq97h3vwSpIYXDykOXm1lr1tIA
-DKIM-Signature: a=rsa-sha256; bh=nk92qKw1U+A8j4auddOkqpG9SMOn7avSxYZGdbSuNqA=; 
+X-VR-SPAMCAUSE: dmFkZTEP0vc4DAghd+/e3G94zk+bLOyxWJuybdSvmXYy6+Im3SefZbywyIu2WB/aEceGZ/gn3K1a8lGp6FPM194nasAhh86QMpOuyC6ye6rGIVtjb1vJbrhiJDlgOM0NSOLTfoPYEsFgS6CxmA8RTDZ++0Bw0lrBd0q0qXt+7Gd5VXg74493v3X8fspkFz9kz3uJAqNjZUKlolB4ZEoBSnTzTeMPJRN8JutXIXGqGglmYfFUIS2OQ+8Me2WioGLdCss6fKluzMgVCMoLy91o2QQ8LBRg1HBU4AvVxO8ZMUdxMNJxr9/S9o51w5r1oJVw75XUf/BLxE0IxqUtUOn+YxS/WYJyWjwH4oAy2UAdjQ8CbA8/VbU2zIsi5LoVT5Ys8PRCJFmkMiz+AApPxwN5hEUUNuaVphbu/EgW+0zqVSm/YF4ByVRqMKmtzxIVwHe9Xs2NacuFDpiZ6hpEniCtZxcamP9pRDXzQKouISTKqexltqjE2LXPRQImuXKWD6OciLNQ7rAoYIMPEVS4PHt0eloX+YTo47LtBNcG05AM5qHISy95dmOBQlGOnRKeIDHwlazoeKxwx7YRF9tGW/DgqXwt/mGlMoK+b+zVHYl1HNoe4EisovsKUxkHc8uCf5C+BR76Mu/Lbgui18PjyILXyErFEqJVGREQPp3EgvKBkkW3jxqJnA
+DKIM-Signature: a=rsa-sha256; bh=amm/i8rI2NZygmaA0uxa0km7UtQf3PORJYhljkzQRqY=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1770370892; v=1;
- b=okTDnfKSOM5iPGEW8ygMTfjqVXgYQELohvbw3i5g+0M7/BuC1C1aWwUhURP1D1Yt8qM2DKBd
- 0olEEEYNxB6uS2onbkAfQt9U2Mh/DUaNlaVL73DiY1A2OvIdO9ssUM6lYq+6WWBtGpsIf7ktHC4
- wmZOxv9Sz0pxJRMhfickU0y/2VGQmnDV6o+zp1YMze21mnqeNrcT44LqF7haFT4FuHWFDWTzT7k
- uek1aQt1douzxFIhh+a8vn9A8fndxxGaBfkKGN5qzreFCZO2zYSI0XjpgNNGV2ZqVVzTVtTsLJ2
- IBArRp34Cp7wdqWdHKRsjt2jzgHJ4UC18CEz7hxMLiPrQ==
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout2.mo529.mail-out.ovh.net
+ t=1770372013; v=1;
+ b=e5uU+Y5G7H6JmeqRwKO4zlROeVKaSAQjWFzruCYpnyOkCELWYCN6Yg5JXKRP7VyI7ha4sVUz
+ XVaBw0oQtUjzcCJ+TE9CBhH0wFg8P4h2Y0anIbdA6T4ClqNHnqB154FB2JUDfyjp0v8sefhtlJG
+ F+/O9X90nwA3uYA4w7GAdJsu5lpPii+9dboxXL2Oit32uEtI/MAYEJBOBISXKQaRh/BlIr8iwSX
+ unsLDgO0zbkheUNIYm1n8rSO7TkBoh3IC5xwdu9AgyvaqlnZcuaFC7VEgPp07dL+H0qAouOvArn
+ pIWL/Cvp4ttw+U9twkfwhzrAm3cODb0cN785FIFsSUVcA==
+Received-SPF: pass client-ip=188.165.42.229; envelope-from=clg@kaod.org;
+ helo=4.mo548.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,102 +135,84 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 2/6/26 06:33, Jamin Lin wrote:
-> Update AST2700 HACE qtests to use the "ast2700-evb" machine alias
-> instead of a specific silicon revision.
+> Update the AST2700 FC machine to use the AST2700 A2 SoC model instead of
+> the A1-specific variant.
 > 
-> The AST2700 A1 and A2 revisions are compatible for the HACE model, so
-> the tests do not depend on a particular EVB revision. Using the
-> "ast2700-evb" alias ensures the tests always run the latest
-> supported AST2700 silicon revision.
+> This change removes A1-specific naming and definitions from the FC
+> machine and aligns it with the newer AST2700 A2 silicon.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   hw/arm/aspeed_ast27x0-fc.c | 15 +++++++--------
+>   1 file changed, 7 insertions(+), 8 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
+> index 0502a137f3..5eb6680da9 100644
+> --- a/hw/arm/aspeed_ast27x0-fc.c
+> +++ b/hw/arm/aspeed_ast27x0-fc.c
+> @@ -24,8 +24,8 @@
+>   #include "hw/arm/aspeed_coprocessor.h"
+>   #include "hw/arm/machines-qom.h"
+>   
+> -#define TYPE_AST2700A1FC MACHINE_TYPE_NAME("ast2700fc")
+> -OBJECT_DECLARE_SIMPLE_TYPE(Ast2700FCState, AST2700A1FC);
+> +#define TYPE_AST2700FC MACHINE_TYPE_NAME("ast2700fc")
+> +OBJECT_DECLARE_SIMPLE_TYPE(Ast2700FCState, AST2700FC);
+>   
+>   static struct arm_boot_info ast2700fc_board_info = {
+>       .board_id = -1, /* device-tree-only board */
+> @@ -48,8 +48,7 @@ struct Ast2700FCState {
+>       Aspeed27x0CoprocessorState tsp;
+>   };
+>   
+> -#define AST2700FC_BMC_RAM_SIZE (1 * GiB)
+> -#define AST2700FC_CM4_DRAM_SIZE (32 * MiB)
+> +#define AST2700FC_BMC_RAM_SIZE (2 * GiB)
 
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+This is an unrelated change.
 
 Thanks,
 
 C.
 
-
-> ---
->   tests/qtest/ast2700-hace-test.c | 22 +++++++++++-----------
->   1 file changed, 11 insertions(+), 11 deletions(-)
-> 
-> diff --git a/tests/qtest/ast2700-hace-test.c b/tests/qtest/ast2700-hace-test.c
-> index a400e2962b..508a34dd6c 100644
-> --- a/tests/qtest/ast2700-hace-test.c
-> +++ b/tests/qtest/ast2700-hace-test.c
-> @@ -23,57 +23,57 @@ static const struct AspeedMasks as2700_masks = {
->   /* ast2700 */
->   static void test_md5_ast2700(void)
->   {
-> -    aspeed_test_md5("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-> +    aspeed_test_md5("-machine ast2700-evb", 0x12070000, 0x400000000);
->   }
+>   #define AST2700FC_HW_STRAP1 0x000000C0
+>   #define AST2700FC_HW_STRAP2 0x00000003
+> @@ -58,7 +57,7 @@ struct Ast2700FCState {
 >   
->   static void test_sha256_ast2700(void)
+>   static bool ast2700fc_ca35_init(MachineState *machine, Error **errp)
 >   {
-> -    aspeed_test_sha256("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-> +    aspeed_test_sha256("-machine ast2700-evb", 0x12070000, 0x400000000);
->   }
+> -    Ast2700FCState *s = AST2700A1FC(machine);
+> +    Ast2700FCState *s = AST2700FC(machine);
+>       AspeedSoCState *soc;
+>       AspeedSoCClass *sc;
+>       const char *bios_name = NULL;
+> @@ -66,7 +65,7 @@ static bool ast2700fc_ca35_init(MachineState *machine, Error **errp)
+>       DeviceState *dev = NULL;
+>       uint64_t rom_size;
 >   
->   static void test_sha256_sg_ast2700(void)
+> -    object_initialize_child(OBJECT(s), "ca35", &s->ca35, "ast2700-a1");
+> +    object_initialize_child(OBJECT(s), "ca35", &s->ca35, "ast2700-a2");
+>       soc = ASPEED_SOC(&s->ca35);
+>       sc = ASPEED_SOC_GET_CLASS(soc);
+>   
+> @@ -135,7 +134,7 @@ static bool ast2700fc_ca35_init(MachineState *machine, Error **errp)
+>   
+>   static bool ast2700fc_ssp_init(MachineState *machine, Error **errp)
 >   {
-> -    aspeed_test_sha256_sg("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-> +    aspeed_test_sha256_sg("-machine ast2700-evb", 0x12070000, 0x400000000);
->   }
+> -    Ast2700FCState *s = AST2700A1FC(machine);
+> +    Ast2700FCState *s = AST2700FC(machine);
+>       AspeedSoCState *psp = ASPEED_SOC(&s->ca35);
 >   
->   static void test_sha384_ast2700(void)
+>       s->ssp_sysclk = clock_new(OBJECT(s), "SSP_SYSCLK");
+> @@ -167,7 +166,7 @@ static bool ast2700fc_ssp_init(MachineState *machine, Error **errp)
+>   
+>   static bool ast2700fc_tsp_init(MachineState *machine, Error **errp)
 >   {
-> -    aspeed_test_sha384("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-> +    aspeed_test_sha384("-machine ast2700-evb", 0x12070000, 0x400000000);
->   }
+> -    Ast2700FCState *s = AST2700A1FC(machine);
+> +    Ast2700FCState *s = AST2700FC(machine);
+>       AspeedSoCState *psp = ASPEED_SOC(&s->ca35);
 >   
->   static void test_sha384_sg_ast2700(void)
->   {
-> -    aspeed_test_sha384_sg("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-> +    aspeed_test_sha384_sg("-machine ast2700-evb", 0x12070000, 0x400000000);
->   }
->   
->   static void test_sha512_ast2700(void)
->   {
-> -    aspeed_test_sha512("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-> +    aspeed_test_sha512("-machine ast2700-evb", 0x12070000, 0x400000000);
->   }
->   
->   static void test_sha512_sg_ast2700(void)
->   {
-> -    aspeed_test_sha512_sg("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-> +    aspeed_test_sha512_sg("-machine ast2700-evb", 0x12070000, 0x400000000);
->   }
->   
->   static void test_sha256_accum_ast2700(void)
->   {
-> -    aspeed_test_sha256_accum("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-> +    aspeed_test_sha256_accum("-machine ast2700-evb", 0x12070000, 0x400000000);
->   }
->   
->   static void test_sha384_accum_ast2700(void)
->   {
-> -    aspeed_test_sha384_accum("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-> +    aspeed_test_sha384_accum("-machine ast2700-evb", 0x12070000, 0x400000000);
->   }
->   
->   static void test_sha512_accum_ast2700(void)
->   {
-> -    aspeed_test_sha512_accum("-machine ast2700a1-evb", 0x12070000, 0x400000000);
-> +    aspeed_test_sha512_accum("-machine ast2700-evb", 0x12070000, 0x400000000);
->   }
->   
->   static void test_addresses_ast2700(void)
->   {
-> -    aspeed_test_addresses("-machine ast2700a1-evb", 0x12070000, &as2700_masks);
-> +    aspeed_test_addresses("-machine ast2700-evb", 0x12070000, &as2700_masks);
->   }
->   
->   int main(int argc, char **argv)
-
-
+>       s->tsp_sysclk = clock_new(OBJECT(s), "TSP_SYSCLK");
 
 

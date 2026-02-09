@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2C9DEF070F
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Feb 2026 07:04:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ED17EF0718
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Feb 2026 07:04:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vpLJq-0007M8-KM; Mon, 09 Feb 2026 02:04:27 -0500
+	id 1vpLKD-0007QZ-IY; Mon, 09 Feb 2026 02:04:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vpLJo-0007LT-5M
- for qemu-arm@nongnu.org; Mon, 09 Feb 2026 02:04:24 -0500
-Received: from 8.mo552.mail-out.ovh.net ([46.105.37.156])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vpLKB-0007PW-DI
+ for qemu-arm@nongnu.org; Mon, 09 Feb 2026 02:04:47 -0500
+Received: from 3.mo552.mail-out.ovh.net ([178.33.254.192])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vpLCf-0005bg-3L
- for qemu-arm@nongnu.org; Mon, 09 Feb 2026 02:04:17 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.231.167])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4f8b7d2RxKz5vwc;
- Mon,  9 Feb 2026 06:55:56 +0000 (UTC)
-Received: from kaod.org (37.59.142.108) by DAG14EX2.mxp5.local (172.16.2.142)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vpLK9-00068J-6d
+ for qemu-arm@nongnu.org; Mon, 09 Feb 2026 02:04:47 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.58.72])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4f8bKh5GPwz5vxB;
+ Mon,  9 Feb 2026 07:04:40 +0000 (UTC)
+Received: from kaod.org (37.59.142.114) by DAG14EX2.mxp5.local (172.16.2.142)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Mon, 9 Feb
- 2026 07:55:51 +0100
+ 2026 08:04:39 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-108S0021233b300-29db-4d02-8d07-5bdd04c13e93,
+ (GARM-114S008b9ba8ef7-8c7b-4d92-9e4f-e0e82dcb4f82,
  ECF38C093296ADD45142D325C9F6EF635D78D8A6) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <febaa27a-3fc9-400e-9e13-f7044fe980e9@kaod.org>
-Date: Mon, 9 Feb 2026 07:55:50 +0100
+Message-ID: <c2a1b965-2329-4e5d-b0f0-7542ff5df1fc@kaod.org>
+Date: Mon, 9 Feb 2026 08:04:38 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 09/10] hw/arm/aspeed_ast27x0-fc: Switch AST2700 FC
- machine to A2 SoC
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- "nabihestefan@google.com" <nabihestefan@google.com>
-References: <20260206053340.3716041-1-jamin_lin@aspeedtech.com>
- <20260206053340.3716041-11-jamin_lin@aspeedtech.com>
- <4be69752-9494-4af2-a9a9-3af59f2a577c@kaod.org>
- <TYPPR06MB8206C31A5D92AD88CBD53950FC65A@TYPPR06MB8206.apcprd06.prod.outlook.com>
+Subject: Re: [PATCH v3 00/20] i3c: aspeed: Add I3C support
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, "open list:All
+ patches CC here" <qemu-devel@nongnu.org>, "open list:ARM TCG CPUs"
+ <qemu-arm@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
+References: <20260206031926.3227848-1-jamin_lin@aspeedtech.com>
+ <53224b36-db6a-4790-8abc-d6aa79b95358@kaod.org>
+ <TYPPR06MB8206F2D0EAF733D287BB87D7FC65A@TYPPR06MB8206.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -92,27 +91,27 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <TYPPR06MB8206C31A5D92AD88CBD53950FC65A@TYPPR06MB8206.apcprd06.prod.outlook.com>
+In-Reply-To: <TYPPR06MB8206F2D0EAF733D287BB87D7FC65A@TYPPR06MB8206.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.108]
-X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG14EX2.mxp5.local
+X-Originating-IP: [37.59.142.114]
+X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG14EX2.mxp5.local
  (172.16.2.142)
-X-Ovh-Tracer-GUID: 4cd84d2d-78bd-4dab-a9df-d8807a33cbea
-X-Ovh-Tracer-Id: 9581408207897987902
+X-Ovh-Tracer-GUID: f0790815-5d41-4689-afc6-b4ce2921f568
+X-Ovh-Tracer-Id: 9730026995602262846
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEVG6KGSE+H6t7vwJGJRVKI8J6BNUc6tYahGtKEb9hKggjq9NEJVpGjIYDdyy1slpsR7K3/RMOl5aMfA2RGMbXfA9O0SCJdUglcFyg9cduickE7HyPMbx1MdCMd3SguasEoTGDWbv5/N4JprVnQZfhuL9N9l2xT4tpmpqAYrCnxDo9vkzhbj3WhSiQ5TPaMHhj8mi56+hck3ZFfj9sNgARmj4/kLPODtMs8JJ4Os7PZWQ7uhO4OXY0edFbwCuYeV2ZFhXBZhImQrIpEtQGz4cdL04liWc9G2cCKKCd00kO8kMINuGKMwhTJpgWBELbjG5y6b0YHMlr3wxWqtMTPVqrvh076mWj9+mO89BVtF5GWbajpXJzdDGuoVKUrxT0lzvGYBhv7Rkt4AG6JhyEjmOPVErwDBsXWU3fpRiEn/ma3m4fPp8+VD7sjIo+nCnjFoSGJ3AR9oWg7QjStyhHW1q5O3U3QM8iiUIjSD36hWWM5TE39+PXSXX414oLwO9KastYL32Gdkp3CoqgeQJCHPaYOFY0oRZSfh0LjW4gLuw86dCmihmtoUj3NX14AGejM+ov7Bp2XbOZ+/7zDp0i5JUaxuSdqSq3XBwmn5kIdabvE2JmBEqraTX7IR08pUBb45MmPzVqImQFJbbh+MKklhOY7A/kVhjkZH58fe7ER54/Sxw
-DKIM-Signature: a=rsa-sha256; bh=Gfh1z4tYMbg5DcpsukYoeIStVTLxQRIUJNWrCseHYf8=; 
+X-VR-SPAMCAUSE: dmFkZTEO+pPWCQJqLgvonL+hWNfzmJvrn9hlqzWksLT4R6nacWNai2M4fKmVUOqM6dcO+3qDug2SQs2r8v5B2qj6o3HzYw78v0BIaVK0aQSZIFACeuq0CzjAxPEHIzZHRQ4n7xBRfJ7VSdot3KXWrhzOBxOVuT434UJhyYv/ofgFVwwQCW6lTJgPlrbEkQ5MnpdS4afmZb6cLhauTh62dzQ1Da276dfcXuxXRCI2lo/ELtGfY7EqXyucJP9px5RibyA1UYYB7mqWzGmZsnyDiWKKjquEMDSOW5XCjFtuc7kxqW4dNdQY6a8iugb0s4S93swCGOVD6VvMIAR68q23aufAE6p4YHvctzDv1w3XAGvV2B742Vmw5Bs3EbpxIcCehxDUJnDLlJr2gOSESw2gegOwR2rTSra3ASxboY5lUxuorkpuWC2Gyt8g1AytJgyYoCMkKqlfUWpQYOAFpAoAZgA4eJrd6KnMRNAa01C2s9dQn9vxO8xqzytXFnF8Q0nDZJiBz2QpuLSpIIb/12EwS/v0dnGCYZYRUYm90Zw6u42ZM//Fc6Ovo88F2M2psNfBgLVQ7p/GShYFObJOet1P/eci8kY8OnJFbYiWHibAbdHx7oz0mu9mpQAQCPxgBpD0mN+rxPcvhwqNDtCo1C5YNCiYrZdSjE5ue5BH9FjAsxTCrIEJ1w
+DKIM-Signature: a=rsa-sha256; bh=mdI5nbyV9jIdyPEl6xmUfVmy4mDn9Z2cesIeUhUmVzk=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1770620158; v=1;
- b=nH9sC9MryHPGpH1g9Oc4/TOsLE9MHxqMC5YZyjilZ5mRS5ahmMQivsUTs2pGXy2jkgUE8pZH
- ViAbTreJZkcZfwmTzGtMcOzGT19HXdAMQdPP3moEK0yhnlTe2w0+dS+aUnACcjnJWV1Fm7B/7GL
- Xt3uv+mhxCD3WbCQRhXfV92nZSp2Li6h6ZMs/u8O1XqX/uepFiv5aehESmNsrbZs/cm8KkB2PSt
- vr4ch6dVWpMHR+742ppyDoy91ICRo7XyOVvYBoZ6yS50n7MxEix7KEx6qsgRfVhm0pnRX3mkTmO
- GHmEF2CLa0vVEl1eWWb10zuVvlT6e/3VdcMyqfsNPEHxg==
-Received-SPF: pass client-ip=46.105.37.156; envelope-from=clg@kaod.org;
- helo=8.mo552.mail-out.ovh.net
+ t=1770620680; v=1;
+ b=lDzFQw3Kw+EozO9usGyBSmfjFUtlfmLdiegehWYzJkV/KBoPK3iQoSrfOzGXZZ3e6M5Q+HI9
+ r7ODaApC6ChQRNUKMKY9OzZXRK2E314GQ7yAduLFS1KQbR4MLm5JOGMMbR7zEs9MBXWi6Qc3f7d
+ 64LDj3yZUpxxaL6yLFh28o1Wg4GO5ReMTpZ6uodW/0dVOYwIgsN2Brj8wYwIWWAejrCbr/ROZ3f
+ 4cthbZ/UqB1UYte74fRlWthGi/vZrGBr+npbT+ROYnHLB+YA2kheNL96CmiLfVxLGNC65rRvTnM
+ Yb2Z7Y2HFzwNJnRjCLedxiWshK1heVrcUsCIJC1s56jfg==
+Received-SPF: pass client-ip=178.33.254.192; envelope-from=clg@kaod.org;
+ helo=3.mo552.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -136,114 +135,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/9/26 03:31, Jamin Lin wrote:
-> Hi Cédric
+On 2/9/26 04:17, Jamin Lin wrote:
+> Hi Cédric,
 > 
->> Subject: Re: [PATCH v1 09/10] hw/arm/aspeed_ast27x0-fc: Switch AST2700 FC
->> machine to A2 SoC
+>> Subject: Re: [PATCH v3 00/20] i3c: aspeed: Add I3C support
 >>
->> On 2/6/26 06:33, Jamin Lin wrote:
->>> Update the AST2700 FC machine to use the AST2700 A2 SoC model instead
->>> of the A1-specific variant.
+>> On 2/6/26 04:19, Jamin Lin wrote:
+>>> v1:
+>>>     The initial patch series was based on work by Joe Komlodi
+>> <komlodi@google.com>.
 >>>
->>> This change removes A1-specific naming and definitions from the FC
->>> machine and aligns it with the newer AST2700 A2 silicon.
+>>>     This series adds I3C bus support to QEMU and adds more functionality to
+>> the
+>>>     Aspeed I3C controller.
 >>>
->>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
->>> ---
->>>    hw/arm/aspeed_ast27x0-fc.c | 15 +++++++--------
->>>    1 file changed, 7 insertions(+), 8 deletions(-)
+>>>     This implementation is a basic implementation that introduces IBIs
+>>>     (including hot-join), CCCs, and SDR data transfer. As-is, it doesn't support
+>>>     multi-controller buses or HDR transfers.
 >>>
->>> diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
->>> index 0502a137f3..5eb6680da9 100644
->>> --- a/hw/arm/aspeed_ast27x0-fc.c
->>> +++ b/hw/arm/aspeed_ast27x0-fc.c
->>> @@ -24,8 +24,8 @@
->>>    #include "hw/arm/aspeed_coprocessor.h"
->>>    #include "hw/arm/machines-qom.h"
+>>>     First we add the I3C bus and controller model. With that added we
+>> extend
+>>>     the functionality of the Aspeed I3C controller so it can do transfers
+>>>     and handle IBIs.
 >>>
->>> -#define TYPE_AST2700A1FC MACHINE_TYPE_NAME("ast2700fc")
->>> -OBJECT_DECLARE_SIMPLE_TYPE(Ast2700FCState, AST2700A1FC);
->>> +#define TYPE_AST2700FC MACHINE_TYPE_NAME("ast2700fc")
->>> +OBJECT_DECLARE_SIMPLE_TYPE(Ast2700FCState, AST2700FC);
+>>>     Next, we add a mock I3C target. It's intended to be a very simple target
+>>>     just to verify that I3C is working on the guest. Internally, we've used it
+>>>     on Linux to verify that i3C devices can be probed and can send/receive
+>> data
+>>>     and IBIs.
+>>>     This target is sort of like an EEPROM, and it can also send IBIs upon
+>>>     reception of a user-defined magic number.
 >>>
->>>    static struct arm_boot_info ast2700fc_board_info = {
->>>        .board_id = -1, /* device-tree-only board */ @@ -48,8 +48,7 @@
->>> struct Ast2700FCState {
->>>        Aspeed27x0CoprocessorState tsp;
->>>    };
+>>>     Lastly we add  hotplugging support. The hotplugging doesn't do
+>> anything too
+>>>     complicated, it just adds the device attempting to hotplug to the bus. It
+>>>     is the device's responsibility to hot-join and go through the DAA process
+>>>     to participate on the bus.
 >>>
->>> -#define AST2700FC_BMC_RAM_SIZE (1 * GiB) -#define
->>> AST2700FC_CM4_DRAM_SIZE (32 * MiB)
->>> +#define AST2700FC_BMC_RAM_SIZE (2 * GiB)
+>>> v2:
+>>>     Jamin Lin <jamin_lin@aspeedtech.com> has taken ownership of the I3C
+>> patch
+>>>     series for upstream submission.
+>>>
+>>>     Changes in this version include:
+>>>
+>>>     1. Added I3C functional tests.
+>>>     2. Updated patch 4 to refine register field definitions.
+>>>     3. Updated patch 7 to correct read-only register field masks.
+>>>
+>>> v3:
+>>>     1. Add Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 >>
-> The ast2700a2-evb machine is largely identical to ast2700a1-evb.
-> The only difference is the default DRAM size, which is increased
-> to 2 GB. So, I updated the DRAM size to 2GiB.
-> Should I separate the patch to update the DRAM size?
+>> Sob is still missing.
+> 
+> Thanks for pointing this out.
+> I checked patches 1 - 20 of this patch series, and they all include:
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> https://patchwork.kernel.org/project/qemu-devel/list/?series=1051408
+> 
+> Do you mean that the Signed-off-by is missing from the cover letter?
+> Could you please let me know where the Signed-off-by should be added?
 
-That would be nice.
+I was confused with the previous series ... Sorry for the noise.
 
-
-I let you decide if a Fixes tag is needed.
+If you resend, please add your Sob at the end.
 
 Thanks,
 
 C.
-
-
-> 
-> Thanks,
-> Jamin
->>
->> This is an unrelated change.
->>
->> Thanks,
->>
->> C.
->>
->>>    #define AST2700FC_HW_STRAP1 0x000000C0
->>>    #define AST2700FC_HW_STRAP2 0x00000003 @@ -58,7 +57,7 @@ struct
->>> Ast2700FCState {
->>>
->>>    static bool ast2700fc_ca35_init(MachineState *machine, Error **errp)
->>>    {
->>> -    Ast2700FCState *s = AST2700A1FC(machine);
->>> +    Ast2700FCState *s = AST2700FC(machine);
->>>        AspeedSoCState *soc;
->>>        AspeedSoCClass *sc;
->>>        const char *bios_name = NULL;
->>> @@ -66,7 +65,7 @@ static bool ast2700fc_ca35_init(MachineState
->> *machine, Error **errp)
->>>        DeviceState *dev = NULL;
->>>        uint64_t rom_size;
->>>
->>> -    object_initialize_child(OBJECT(s), "ca35", &s->ca35, "ast2700-a1");
->>> +    object_initialize_child(OBJECT(s), "ca35", &s->ca35,
->>> + "ast2700-a2");
->>>        soc = ASPEED_SOC(&s->ca35);
->>>        sc = ASPEED_SOC_GET_CLASS(soc);
->>>
->>> @@ -135,7 +134,7 @@ static bool ast2700fc_ca35_init(MachineState
->>> *machine, Error **errp)
->>>
->>>    static bool ast2700fc_ssp_init(MachineState *machine, Error **errp)
->>>    {
->>> -    Ast2700FCState *s = AST2700A1FC(machine);
->>> +    Ast2700FCState *s = AST2700FC(machine);
->>>        AspeedSoCState *psp = ASPEED_SOC(&s->ca35);
->>>
->>>        s->ssp_sysclk = clock_new(OBJECT(s), "SSP_SYSCLK"); @@ -167,7
->>> +166,7 @@ static bool ast2700fc_ssp_init(MachineState *machine, Error
->>> **errp)
->>>
->>>    static bool ast2700fc_tsp_init(MachineState *machine, Error **errp)
->>>    {
->>> -    Ast2700FCState *s = AST2700A1FC(machine);
->>> +    Ast2700FCState *s = AST2700FC(machine);
->>>        AspeedSoCState *psp = ASPEED_SOC(&s->ca35);
->>>
->>>        s->tsp_sysclk = clock_new(OBJECT(s), "TSP_SYSCLK");
-> 
 
 

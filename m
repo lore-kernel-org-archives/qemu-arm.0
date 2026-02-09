@@ -4,74 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1C34E81BB2
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Feb 2026 12:51:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B1DCE81BC4
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Feb 2026 13:43:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vpQjj-0001Nh-W3; Mon, 09 Feb 2026 07:51:32 -0500
+	id 1vpRXS-0006t3-J2; Mon, 09 Feb 2026 08:42:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vpQji-0001Mj-Hk
- for qemu-arm@nongnu.org; Mon, 09 Feb 2026 07:51:30 -0500
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vpRXN-0006sL-8q
+ for qemu-arm@nongnu.org; Mon, 09 Feb 2026 08:42:50 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1vpQjf-0005vO-RD
- for qemu-arm@nongnu.org; Mon, 09 Feb 2026 07:51:30 -0500
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vpRXK-0000PQ-Aq
+ for qemu-arm@nongnu.org; Mon, 09 Feb 2026 08:42:47 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770641486;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1770644564;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=iGaf82DiZaNTwA9yXzBBSS72wBvCC2p5rMVVRUNUAjc=;
- b=JMwmuQh5ScDkezEUE9i97Ja6K9Se1+dyOw3hOdN5Cd9PHf9bTK+buqiVeJKvtSmLeZMTMq
- 55sKGdmeAUyVwptRRDBFyk3209uk3I6SMjXVehPLsYo19STeRwELolWpP4N2m73vqIf2Bi
- qU8wGjKlp/icA8+dkRrCHlmD9bFZJz8=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-683-b5WHihTlO4Kec2PlTFr3fQ-1; Mon,
- 09 Feb 2026 07:51:24 -0500
-X-MC-Unique: b5WHihTlO4Kec2PlTFr3fQ-1
-X-Mimecast-MFC-AGG-ID: b5WHihTlO4Kec2PlTFr3fQ_1770641483
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 319111956089; Mon,  9 Feb 2026 12:51:23 +0000 (UTC)
-Received: from localhost (dhcp-192-192.str.redhat.com [10.33.192.192])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6FCE11955F2D; Mon,  9 Feb 2026 12:51:21 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Eric Auger
- <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com,
- gshan@redhat.com, ddutile@redhat.com, peterx@redhat.com,
- philmd@linaro.org, pbonzini@redhat.com
+ bh=FFV+4zM/+75D5D0pn17t2xOXo9mQBa2p4jqWIyIv230=;
+ b=Hnn0KlZaHFLB6fGzUCprRqWYF/uIgB6+t9CplSIcYFw11al5DC6mYYz8/Koxm2BVLZqN5e
+ GrtJHFKtS5X6NKKeSlXV2LgQlXyylmHXPX4EBzPHbXAPiYYVHiGtAByBsIrbQvhYtIMiQK
+ Ecu8JM/MyTn3+abq7/Aj3DXpVGTtq8Y=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-435-wA66X75YPJGjMKMe7IrwNQ-1; Mon, 09 Feb 2026 08:42:43 -0500
+X-MC-Unique: wA66X75YPJGjMKMe7IrwNQ-1
+X-Mimecast-MFC-AGG-ID: wA66X75YPJGjMKMe7IrwNQ_1770644563
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4832c4621c2so21103965e9.3
+ for <qemu-arm@nongnu.org>; Mon, 09 Feb 2026 05:42:43 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1770644563; x=1771249363;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=FFV+4zM/+75D5D0pn17t2xOXo9mQBa2p4jqWIyIv230=;
+ b=TjNTOgbn0FEyNTmtiWLNFiBrA8tvmWHmcSrcMdbo7VW9toW9AB23PkNOBcMXk031jR
+ WqiBfoXyyKxZB8rHJaZRYMoY75isltWioQgKt/ocD9so47ctyuF21tb1sZ6zTXm0Sq8j
+ pUIt0FPLNJxV8b4hp93aUYl5ZBmbl5xZvIEbz9tIxRvQj3Asc18BmrRiim+3roDwg7+C
+ Cek+PvmW7idMFPX0Hc8yw82a6kZaKy6idEZgbIk2a/kqkIlRkbW85iBk99Rx4Sgvhbi7
+ NS/1oHvzUQquFF/cbY0nWSnoUQEOLi6xhzbrQ9N5f4LknmQ95X3ezFArBvvVprugi9Gv
+ oYcg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVyoFEGeILj8rDrFTryHx38AKjNgKKXk7qxw09FDHBvyMwOG/1mtfNCo7mQC6HA1lt0MJBPlqBgBA==@nongnu.org
+X-Gm-Message-State: AOJu0YyDEbEy7cmyB+d8BvO8dKC+eR7q7MvFbGk/zRoDP773c+w9vDgG
+ yoI1FUhrcnpSTcIAQjFcREQxo6KAKab8brq9xaY2JBHUJAY00ee5ZmpoNL16PN9HDnKTZ/cEbht
+ aFSGO0QWDaeWFlZxbwjdMMmCxaR0gUkdOaq4zHa49jvZuf6UpNs+hQQ==
+X-Gm-Gg: AZuq6aL5AUDiRUmyl1xypZwmmqLfP/n1GDh7m6+OKg5ae8eOkpK6iDofCZc8nlqoNZ6
+ BxNeKvZiLn727/mg1PxWZ6UPgzJxiWzK6/tLiJeAeOLxMWO+DeKHYxx/KCU1VjJur5QT9w2o6df
+ 5it1XiZM8ZA1ym6znU13njHfrZIivreftXoHW1qpIZ3BpFAtMyzJhZ+GDh/HklAX2qjprCj6XY+
+ aaw7HlECQr3WtSoL1O749NoNPiJ60C5odx62nS9PG5eajh9gvLc1yL8jUvuR9oWpP03gO/McCJN
+ sr1/lAeIehyA867FuwdPEMR9hwl5FPkw9VXQ6oV5boj5XdvUrn8lgWo15/iwLph8Bhj+skta4sw
+ 7+bRPkPhmxcSb/w0Hl1UCSK8Wvi2tWOaXO+UGDXU5DUxEsv2UXlzUTr91Jg==
+X-Received: by 2002:a05:600c:c11c:b0:483:2c98:4368 with SMTP id
+ 5b1f17b1804b1-4832c98458bmr91956015e9.18.1770644562529; 
+ Mon, 09 Feb 2026 05:42:42 -0800 (PST)
+X-Received: by 2002:a05:600c:c11c:b0:483:2c98:4368 with SMTP id
+ 5b1f17b1804b1-4832c98458bmr91955765e9.18.1770644562062; 
+ Mon, 09 Feb 2026 05:42:42 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48317d7a924sm491063325e9.10.2026.02.09.05.42.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 Feb 2026 05:42:41 -0800 (PST)
+Message-ID: <f05da8d8-2134-4551-81bc-7c77b2769d5a@redhat.com>
+Date: Mon, 9 Feb 2026 14:42:39 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v6 02/11] target/arm/machine: Improve traces on register
  mismatch during migration
-In-Reply-To: <CAFEAcA8dVLEa9gJ6y=hP94ZZtcNQemRawpfyWo1kLusBdy25kw@mail.gmail.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Avril Crosse O'Flaherty"
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ cohuck@redhat.com, maz@kernel.org, oliver.upton@linux.dev,
+ sebott@redhat.com, gshan@redhat.com, ddutile@redhat.com, peterx@redhat.com,
+ philmd@linaro.org, pbonzini@redhat.com
 References: <20260126165445.3033335-1-eric.auger@redhat.com>
  <20260126165445.3033335-3-eric.auger@redhat.com>
  <CAFEAcA8dVLEa9gJ6y=hP94ZZtcNQemRawpfyWo1kLusBdy25kw@mail.gmail.com>
-User-Agent: Notmuch/0.39 (https://notmuchmail.org)
-Date: Mon, 09 Feb 2026 13:51:19 +0100
-Message-ID: <87ldh2rsfs.fsf@redhat.com>
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: _AB4MR3pP6r9MXi-epCnshHBcFgW8BUdJQ8KvKwFftk_1770641483
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CAFEAcA8dVLEa9gJ6y=hP94ZZtcNQemRawpfyWo1kLusBdy25kw@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: _rgp3eMzqPRYOu0pw_zNvmTbMm8HNHjp4qzcwhgcSkY_1770644563
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -92,13 +120,14 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Feb 06 2026, Peter Maydell <peter.maydell@linaro.org> wrote:
+Hi Peter,
 
+On 2/6/26 3:31 PM, Peter Maydell wrote:
 > On Mon, 26 Jan 2026 at 16:55, Eric Auger <eric.auger@redhat.com> wrote:
->>
 >> Currently when the number of KVM registers exposed by the source is
 >> larger than the one exposed on the destination, the migration fails
 >> with: "failed to load cpu:cpreg_vmstate_array_len"
@@ -111,7 +140,6 @@ On Fri, Feb 06 2026, Peter Maydell <peter.maydell@linaro.org> wrote:
 >> are causing the trouble. The migration outcome is unchanged:
 >> - unexpected registers still will fail the migration
 >> - missing ones are printed but will not fail the migration, as done today.
->
 > Improving the diagnostics here is a great idea.
 >
 >> The input stream can contain MAX_CPREG_VMSTATE_ANOMALIES(10) extra
@@ -135,14 +163,62 @@ On Fri, Feb 06 2026, Peter Maydell <peter.maydell@linaro.org> wrote:
 >> With TCG there is no user friendly formatting of the faulting
 >> register indexes as with KVM. However the 2 added trace points
 >> help to identify the culprit indexes.
->
 > Could we move kvm_print_register_name() out of kvm.c and into
 > somewhere that the TCG code can use it? (I did think when I
 > was reviewing the patch that added that that we might want it
 > for TCG too eventually.)
+>
+>> @@ -990,7 +991,13 @@ static int cpu_pre_load(void *opaque)
+>>  {
+>>      ARMCPU *cpu = opaque;
+>>      CPUARMState *env = &cpu->env;
+>> +    int arraylen = cpu->cpreg_vmstate_array_len + MAX_CPREG_VMSTATE_ANOMALIES;
+>>
+>> +    cpu->cpreg_vmstate_indexes = g_renew(uint64_t, cpu->cpreg_vmstate_indexes,
+>> +                                         arraylen);
+>> +    cpu->cpreg_vmstate_values = g_renew(uint64_t, cpu->cpreg_vmstate_values,
+>> +                                        arraylen);
+>> +    cpu->cpreg_vmstate_array_len = arraylen;
+> It seems a bit odd to extend these on cpu_pre_load, especially
+> since it means we'll do so on every cpu_pre_load call, which I
+> think can happen if you try an inbound migration, it fails, and
+> then you retry it.
+yes in that case g_renew would be called several times with
+cpu->cpreg_vmstate_array_len increased each time I guess. However with
+the current way cpreg_vmstate_indexes/values arrays were statically
+allocated I did not have other solution than using pre_load() I think.
 
-I'm wondering which parts could/should be generalized -- the sysreg
-encodings match with the CP_REG_ encodings, but I don't think much else?
-Might be worth trying to split those regs off?
+>
+> I think it ought to be possible to both avoid this reallocation
+> and the problem noted in the commit message where more than 10
+> extra registers results in an unhelpful message, if we can
+> convert the vmstate fields from VMSTATE_VARRAY_INT32 to
+> VMSTATE_VARRAY_INT32_ALLOC. (That latter doesn't exist yet but
+> will be the INT32 equivalent of VMSTATE_VARRAY_UINT32_ALLOC.)
+
+VMSTATE_VARRAY_INT32_ALLOC sounds a great idea indeed. I was not aware of its existence. I will try this out.
+
+>
+> If I have read the code correctly, these should work by
+> having the inbound migration code allocate the buffer for the
+> array data instead of expecting it to be pre-allocated -- that
+> means our post_load function can look at all the data it got
+> without imposing a length limitation.
+>
+> I think (but we should check :-)) that the data in the migration
+> stream is the same in both cases, so this will not be a compat break.
+
+OK I will test this.
+
+Thank you for the review!
+
+Eric
+>
+> (Some existing code will need adjustment to avoid a memory leak,
+> e.g. g_free any existing array in pre_load.)
+>
+> thanks
+> -- PMM
+>
 
 

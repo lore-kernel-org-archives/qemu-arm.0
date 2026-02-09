@@ -4,100 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7429EF071A
-	for <qemu-arm@archiver.kernel.org>; Mon,  9 Feb 2026 07:09:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC582EE20BD
+	for <qemu-arm@archiver.kernel.org>; Mon,  9 Feb 2026 08:22:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vpLO3-0000lK-IN; Mon, 09 Feb 2026 02:08:47 -0500
+	id 1vpMXF-0008R3-EW; Mon, 09 Feb 2026 03:22:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vpLO1-0000kp-T2
- for qemu-arm@nongnu.org; Mon, 09 Feb 2026 02:08:46 -0500
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vpLO0-0007Dm-9p
- for qemu-arm@nongnu.org; Mon, 09 Feb 2026 02:08:45 -0500
-Received: by mail-pf1-x434.google.com with SMTP id
- d2e1a72fcca58-8217f2ad01eso3453832b3a.2
- for <qemu-arm@nongnu.org>; Sun, 08 Feb 2026 23:08:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1770620923; x=1771225723; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=wncuITwrtEChkffVzXmna42OBWtwxX9kHQYFhcI0LHY=;
- b=EMNi583syL7XunjJxkQ/RzsIJViZ4VdOarRIaYBYJR6/6MeSzUl2m4TXk8ct0BngGo
- tv2W18r93EHmBPBsRyPj8Fx/E/g9DjNgjzjxHpquSH5JbC0am42Rq61Yl+gKiD28YS6i
- oF2R6Uv8T2tDixSCrPMo0Dbbr6IG81Qq1bzZuHvHGaHCCfvFeJ54SEkvybA5WJ2PrU7u
- 94bmS0ubquXZDUEnk8HQZRKQu6G206j849jEny09HjXYR6R+nDsfAHsyJ7sp+yNbBHGi
- 18CtnpJdz7jJsguMu3W/VjUy+Hghwv5LWZSGVxm53t+J4CdEmlS7x+EKZRBo5ST2LbLC
- f9aA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770620923; x=1771225723;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=wncuITwrtEChkffVzXmna42OBWtwxX9kHQYFhcI0LHY=;
- b=w14zdT0LmW0hPAtstFUbePpo7OHJTTnlz7P1b3jtvLQGq/fc5m2xI7og9dtFz77q8S
- dDNMPo+MO8lGyHmFnknH5lRXFf6kl2nPtx1IQKGwx4D1tgAxOsTxJg4RysOJ6AcQsJ5J
- J10GURfUH6P18t3OiaH9JFNJEbR32mBYi4HGitRRATg/VOizc794kAgNxOypoVzHR9Z4
- VLRkDzNDbXmlASRdh96sBjlmm7VB4CLZhOT3F67arOxmP/EPL3n/qPZxdhV08zWh5uYE
- B+PSGUFDVQ1FLkGleD7SPpp/ov69U09GFZ4ieuQkzDraA1rVuxULZImKebPw0jzko7NI
- W5Xg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX7LoOf/P6wuKtwGTqcNlT2qKObBqWSlHNxweFZ061RnTMx1M9DXiAVmXlEgdVjiMx5DfqWL0LCUw==@nongnu.org
-X-Gm-Message-State: AOJu0Yw+XIx+GIR//XOivMstt2bLoTMTqkyCh06WZJBhMGX3YvFIhLEl
- 02l90A0jmwVkIC2Rb9Jml/Pocc3Eq9VNeO5jXbdrG3sYEbFzlVHjMQtvBW3A06WlmE0=
-X-Gm-Gg: AZuq6aJY3OhvQnp1bcKaY6ULs/c/eCGOcC7OFUU6zZd0f3u4fTuoYpUzI4nEUMrtWaO
- BVDeuHy+GECy+vftsYm3TFq2O2Me398uCIQOiSz/YdZS7/CA1EgH0KWWIF3qEWggoRElHcPliYn
- 0G61Pye00G9wqkuGhz8ibYbi2K5KiHKYUtUpGwRF6aKVouDhJ2yLsSWTtP+5QUC6gy8junoUQdX
- qOkh4qYWraVkYMlIliPs3rtQD0W7PDzlWBS0ElLDjlqZp71EXYbJda5w8j3awXKgzwRQ9UiEMCW
- QsROPJixarM96UYAi7d50RQf5qDX1oJcXOzel9qomhjUsU1ugifGzOKwkIG91xtF3YfjT3NmFoH
- wQWxFk+XsAWW/QXgh1rJSBUa/Cca4t7AEqDRY34bOORYWmnJ7y/y9q3ExM02cFpGLXXYDVQuSEE
- wvKK2KwI4U+1e4u/oIUFYvxNRkCfjdyLrgvr8YE5WKwBGv5w0YlBpmGFriOV0FnOYt0dFTAl65g
- A==
-X-Received: by 2002:a05:6a00:1253:b0:81f:997e:59a0 with SMTP id
- d2e1a72fcca58-8244176e218mr9717502b3a.64.1770620922529; 
- Sun, 08 Feb 2026 23:08:42 -0800 (PST)
-Received: from ?IPV6:2001:8003:e109:dd00:7b35:2dcc:ff07:8193?
- ([2001:8003:e109:dd00:7b35:2dcc:ff07:8193])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-82441695f50sm8737954b3a.22.2026.02.08.23.08.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 08 Feb 2026 23:08:42 -0800 (PST)
-Message-ID: <a6320ab4-7ece-4618-8d73-549df7a34886@linaro.org>
-Date: Mon, 9 Feb 2026 17:08:34 +1000
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vpMXD-0008QH-6j
+ for qemu-arm@nongnu.org; Mon, 09 Feb 2026 03:22:19 -0500
+Received: from 4.mo548.mail-out.ovh.net ([188.165.42.229])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vpMXA-0003lD-JQ
+ for qemu-arm@nongnu.org; Mon, 09 Feb 2026 03:22:18 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.58.107])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4f8d376wqdz5vqF;
+ Mon,  9 Feb 2026 08:22:11 +0000 (UTC)
+Received: from kaod.org (37.59.142.112) by DAG14EX2.mxp5.local (172.16.2.142)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Mon, 9 Feb
+ 2026 09:22:10 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-112S006d19b72f1-7758-4ec6-a934-66cbd8db4ac4,
+ ECF38C093296ADD45142D325C9F6EF635D78D8A6) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <31a22691-3b03-4ea4-bec3-79ec8aadaa99@kaod.org>
+Date: Mon, 9 Feb 2026 09:22:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 06/12] target/arm/tcg: duplicate tcg/arith_helper.c and
- tcg/crypto_helper.c between user/system
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: anjo@rev.ng, Jim MacArthur <jim.macarthur@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, kvm@vger.kernel.org, qemu-arm@nongnu.org
-References: <20260206042150.912578-1-pierrick.bouvier@linaro.org>
- <20260206042150.912578-7-pierrick.bouvier@linaro.org>
- <6c5eb308-56e6-487a-ad7b-8f0da70ab7cd@linaro.org>
- <e291f290-a188-4106-8648-48d4c464dfed@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <e291f290-a188-4106-8648-48d4c464dfed@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
+Subject: Re: [PATCH v1] hw/i2c/aspeed_i2c: Fix Out-of-Bounds access by using
+ dynamic register array
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
+References: <20260209014540.823794-1-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260209014540.823794-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [37.59.142.112]
+X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG14EX2.mxp5.local
+ (172.16.2.142)
+X-Ovh-Tracer-GUID: 63e7395b-90ad-4d56-9c7f-7da3e445a25a
+X-Ovh-Tracer-Id: 11039167112547568562
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEd0bbYYrihEJuSVf7R0Pt11OYf5fdPWLHG91JszuJiajrGtpFOJAs9Qm/SXkxXTALzVQuwXHUZ6EIQl3tCDyzgYGgQ+P2P/UNm0+ygirDYNCc8PiF8xBnQM3cf8Ed1Wm3OmniOGlic5Ndln7GK22K/NcZl02VFL9PHMX1idwVPqEKbhLrFWJF1032adNRPQKmrneWAbI080W/YYr74lsCck2yRAKrfFrpypKVsJmivIdbiB9PHILKg7jvjKt3af7PXgvtynE0gZweKv+fj/D6rFxw2u5ov0HRBHJNzWYfUEhqF8Qbv0kOUe5A7iUV/E3597qwD4VGGS7vLw4EaIAQMjFmMOd+jJACqawo/tThKpNNtX4IB+SYDx+odTbnQmmYrUMNETE1JFrSibHzOA/zhGUEE7Jumni6NOKp+bdriNe9NGRLWUPZtuI/IryshPaAvPtUqrn8t+ZBi3q7WYjSUBaLWXj3WTu4C+ZQATMRZFRbLwsKe+Iib4P1vc1sRhToOUuz/dQgzpi1ylzd0nrT+7FbhrWDyr5aNblgQRSaB+6D4dPv5YkSZQeefIFZlBWLWjlcRy8i+F7h2qUbi93qLa/AR5Hv2hai+Ka2LPbjpw0l6HJICHnE0uMqU1QFaRN5Wg40VzVC7+whLYQxfIevZKEOMLzbkZMEYviuGWuBeiQ
+DKIM-Signature: a=rsa-sha256; bh=sU/xQ94hE0S0yMyIo2qS/ohMaTcrQRhUCvW4u+KGx78=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1770625333; v=1;
+ b=WRcvYDcjdIyJtFfL1GoJF6eFKMbyfbFkt5Fvy0GXA0kSfSx+0t+iEkNAm2y8J3eFy3kc+irq
+ 8G2WLJcbHvyD0eXwTlCEmFXnxH6NZETeFOk1WM5biOri1aM02Jofej1mFSfasyap3yk1ZzvR5zB
+ Zv9GwpyqTnt3BrJnJ/Ab0o8rIqQUpbThpdDWNVtOl5P3kIYhqtmJDKWHq4pwzH3FXA9f39o8urD
+ jS47Kcz+0Wnu0VLi4Cm5ggVLIir+BAWb1+f4Q4wmSRJXEJ7edZdCrEveJG2BQBryPl/V3nKJ0Tj
+ sD2KbfMGzbxVhFjZcKONV4aAs39LYI02CP9AQ96E1Sw6g==
+Received-SPF: pass client-ip=188.165.42.229; envelope-from=clg@kaod.org;
+ helo=4.mo548.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -114,51 +130,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/9/26 15:52, Pierrick Bouvier wrote:
-> On 2/8/26 9:00 PM, Richard Henderson wrote:
->> On 2/6/26 14:21, Pierrick Bouvier wrote:
->>> In next commit, we'll apply same helper pattern for base helpers
->>> remaining.
->>>
->>> Our new helper pattern always include helper-*-common.h, which ends up
->>> including include/tcg/tcg.h, which contains one occurrence of
->>> CONFIG_USER_ONLY.
->>> Thus, common files not being duplicated between system and target
->>> relying on helpers will fail to compile. Existing occurrences are:
->>> - target/arm/tcg/arith_helper.c
->>> - target/arm/tcg/crypto_helper.c
->>>
->>> There is a single occurrence of CONFIG_USER_ONLY, for defining variable
->>> tcg_use_softmmu. The fix seemed simple, always define it.
->>> However, it prevents some dead code elimination which ends up triggering:
->>> include/qemu/osdep.h:283:35: error: call to 'qemu_build_not_reached_always' declared 
->>> with attribute error: code path is reachable
->>>     283 | #define qemu_build_not_reached()  qemu_build_not_reached_always()
->>>         |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->>> tcg/x86_64/tcg-target.c.inc:1907:45: note: in expansion of macro 'qemu_build_not_reached'
->>>    1907 | # define x86_guest_base (*(HostAddress *)({ qemu_build_not_reached(); NULL; }))
->>>         |                                             ^~~~~~~~~~~~~~~~~~~~~~
->>> tcg/x86_64/tcg-target.c.inc:1934:14: note: in expansion of macro 'x86_guest_base'
->>>    1934 |         *h = x86_guest_base;
->>>         |              ^~~~~~~~~~~~~~
->>>
->>> So, roll your eyes, then rollback code, and simply duplicate the two
->>> files concerned. We could also do a "special include trick" to prevent
->>> pulling helper-*-common.h but it would be sad since the whole point of
->>> the series up to here is to have something coherent using the exact same
->>> pattern.
->>
->> tcg_use_softmmu is a stub, waiting for softmmu to be enabled for user-only.
->> Which is a long way away.
->>
->> It's also not used outside of tcg/, which means we should move it to tcg/tcg-internal.h.
->>
+On 2/9/26 02:45, Jamin Lin wrote:
+> The ASPEED I2C controller emulation used a fixed-size register array
+> (28 dwords) for all SoC variants, while multiple ASPEED SoCs
+> (AST2600, AST1030, AST2700) expose a larger MMIO register window
+> (e.g. reg_size = 0x80).
 > 
-> Thanks, I didn't think about moving it somewhere else.
-> This does the trick indeed.
+> This mismatch allows MMIO accesses beyond the allocated register
+> array, leading to out-of-bounds reads in the I2C controller model.
+> 
+> Fix this by converting the register storage to a dynamically allocated
+> array sized according to the controller class reg_size. The register
+> array is now allocated during bus realize and free on unrealize,
+> ensuring safe access across different ASPEED SoC implementations.
+> 
+> This change eliminates I2C register out-of-bounds access caused by
+> SoC-specific register size differences.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3290
+> ---
+>   include/hw/i2c/aspeed_i2c.h |  4 +---
+>   hw/i2c/aspeed_i2c.c         | 18 ++++++++++++++----
+>   2 files changed, 15 insertions(+), 7 deletions(-)
+> 
+> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+> index 68bd138026..205f0a58d2 100644
+> --- a/include/hw/i2c/aspeed_i2c.h
+> +++ b/include/hw/i2c/aspeed_i2c.h
+> @@ -36,8 +36,6 @@ OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
+>   #define ASPEED_I2C_NR_BUSSES 16
+>   #define ASPEED_I2C_SHARE_POOL_SIZE 0x800
+>   #define ASPEED_I2C_BUS_POOL_SIZE 0x20
+> -#define ASPEED_I2C_OLD_NUM_REG 11
+> -#define ASPEED_I2C_NEW_NUM_REG 28
 
-You can also make it always a #define.  The variable for user-only is never set to true.
 
+The ASPEED_I2C_NEW_NUM_REG value correctly covers the supported range
+of registers of both 'old' and 'new' implementations.
 
-r~
+Instead of dynamically allocating the regs array, which introduces
+vmstate complexity, I would fix the way the array is accessed.
+
+In aspeed_i2c_bus_old_read(), change :
+    uint64_t value = bus->regs[offset / sizeof(*bus->regs)];
+to
+    uint64_t value = -1;
+
+and adjust how 'value' is assigned else where.
+
+Same for aspeed_i2c_bus_new_read().
+
+If you want to keep the dynamic allocation, the vmstate needs a fix.
+May be introduce a 'regs_nr' attribute for that and check how other
+models save/load dynamic arrays.
+
+Thanks,
+
+C.
+
 

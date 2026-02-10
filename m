@@ -4,85 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2C09EA3F38
-	for <qemu-arm@archiver.kernel.org>; Tue, 10 Feb 2026 10:17:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A66B4EA3F3C
+	for <qemu-arm@archiver.kernel.org>; Tue, 10 Feb 2026 10:44:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vpknw-0001BP-2R; Tue, 10 Feb 2026 05:17:12 -0500
+	id 1vplEY-0007UX-WF; Tue, 10 Feb 2026 05:44:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vpkns-0001AP-G7
- for qemu-arm@nongnu.org; Tue, 10 Feb 2026 05:17:09 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vpknp-0002JI-Qi
- for qemu-arm@nongnu.org; Tue, 10 Feb 2026 05:17:08 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-4834826e5a0so7410825e9.2
- for <qemu-arm@nongnu.org>; Tue, 10 Feb 2026 02:17:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1770718624; x=1771323424; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=IwbOHvrrzpGMbGAUKbGftHqrOlOGZFCWb0ibIgC3XdQ=;
- b=Q1a7qSzHehl0f53aDZy0M6XlbNEPp39IPzHTj1EfQxiGi6PIN8mBfUvRIL8ysEEvyP
- 80xLr/JuruJYv/GNv8l/KcI28VQ6gGLNZcEWDW7yFw8VEV92r/LpIrNsebf/G94zQzBF
- j9YcUY5zCyaA/SQDpY5vgP4trOtDaQE68cbBB1wjG0DXcUjImH0lrwEBR97WQflegDya
- JmYSzahD9TxFdQIFQK5nrP7tn7GEjqHKAmSt/Vcp2lmlSdnBSCGLKnICqKVVk2aGQkjw
- Rkp0WKfj+FrpXgTIMRN2jwELQCFOf3i2wf30M8JH1llRERIBjQ4oRJnyLy0AfzJp+TrJ
- 8Qcg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770718624; x=1771323424;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=IwbOHvrrzpGMbGAUKbGftHqrOlOGZFCWb0ibIgC3XdQ=;
- b=CpiTQNTfSM4bGwKmWxXnI5T0TCW8lKnGSB0c//9yayWn49m6rUJYJNPW95n1VhSBip
- Td9ty7s/xK6XPp0Y0L9eBjiOmvy4Ij822FT8PisqvP7ly1M5jujCKU5KnURXri6ZoYpQ
- HC5Y37zYQzrfjj+a1WzwgKCMoy16qc6D1YcvUwF9PyPM2iiqr8M462hXH11TJ92I6YXz
- +eCUVwoVg/QyVxyM7geFgRezw+KtKN2O4qUJ1zoHb3kHcewkMbvTUqC6WneuGb3sxnxE
- hpn7lhSxreSDt2Y/cao5VWdbPz+A18BKsrYFW/qY/Pb285FkcTavLxpg4V8mYwAEpuC0
- Ibwg==
-X-Gm-Message-State: AOJu0YxcHCi5V2xOfaybs7rUrTiwd3atnLbjgvE1mxF1rMPu3e8MZdKh
- fw5wimvZuwttBAmYy7MR3zyELnyeJwlQlXj//UGdOW8NCIcS59k842XgQUrqPm2SGhA98cBzd1Q
- K4B3O
-X-Gm-Gg: AZuq6aK2VV2DrmOtapOqLNtUQy50oEYklokChXEuUr4fOSGVjEK7laXwJzZ82BSyDOa
- tc8Qh2QEA+rp0yR7Es/rd8luh7ikVAjW76jx3JZ396/x8eaA6iBfieQcR2qNtxGtcd8f43BKaFr
- 3CZEkqvH+xuimRHW8e7D60q2tUd0R/8v2EoqQl408rmhVwZPZWUN2ILs0heYenmXPyuA9yavZvt
- NggDumSSoIZqyVCdSWu2kQrzWrO2JI4U++Kn9fDBCgf7U7Rus1f0yakx1zTSIA9h4XoIOIVJNpp
- gJ39PaQfZtp1agO9c4EZm612dIHMpjF7qbgriBfYK4ljtE64zjyRS6cUzLCt0ePAv6Ovx9XZ4iO
- ge+08gNVVF5S2nAaPjyCyg2zu4JGvOVI6IGapvdXKQrKeHC3zg0U8BxIP6539FdkkUXCi0LgHpy
- a33rmTdmX//sIsnc6TepRBVi4wmx1onqpRX5eLCqnM8VJVsKHNnwhrlviWCyQSsSb451kUgjm10
- 8zq0ip0wFSipobgb5ql8KNSdmtaogaCe9CjKFEXgA==
-X-Received: by 2002:a05:600c:c05a:b0:483:456a:514b with SMTP id
- 5b1f17b1804b1-483456a51dbmr58762355e9.12.1770718623878; 
- Tue, 10 Feb 2026 02:17:03 -0800 (PST)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48320410b78sm176406295e9.2.2026.02.10.02.17.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Feb 2026 02:17:03 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] hw/char/pl011: Only log "data written to disabled UART" once
-Date: Tue, 10 Feb 2026 10:17:02 +0000
-Message-ID: <20260210101702.3980804-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
+ id 1vplEX-0007UJ-V2; Tue, 10 Feb 2026 05:44:41 -0500
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kane_chen@aspeedtech.com>)
+ id 1vplEW-0007z6-HP; Tue, 10 Feb 2026 05:44:41 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=H33/SM1hLHgui1mnQkUtoAAt7I11AyjLnvpH43xd/muyEXMAj7gz8A/eGutnm7LYuv6mIRltrZDQQjFsIxCqtUC51cEQ4g1waGHyKMvFFE6JYv2bGUaybm84GaglstPF3yLIS2rtqycvOrc9XlXiuJnJgWE/M14UHOF0C5rDw2ae5ds038IR6URHJ9lghvPy/Z3SjzLBC07v/5F/yxGMj8rIuIigVjMMR3w2ao2z/ebAULrmyOgNVamSL8UIYy6t36f+3e0YmsIJRFH32Mul1fp3D7y/G3eH0R1hZvRvsAEMYXKGwpJKtAJgavylwotxILS3LDAOjGZcmqksBERX/g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nyacWF3sA0uP8RRbQC97ZMq3zWDlEs+ClBsGe2DnedA=;
+ b=wy3zn7vtBRDJAKzCAjZ4xBqVL23sMWG7BZI32JzP82VAAmiMUHgjgbB4We/rC5mAz64qHpMERhH3nWq27y8GUbA7lgUl3lWwKiNmVz5eUtZ+0KQ9g/WkyAvYQBVA9Hxeo+GYD8uczyWVHPSd3jZWkQN5ZycBlZi24EhqBiVHMiElf28NdNaI6i3jgHW36hfxWyJ/0ZQendD99QdAzQxy4R8ojNOX6cKG/lfekEsPs037f9xzpzVVj6+2+EiqGE9voaKM/K0oazYy48aWQHawH6/qnXxOgHsyCsEPX5plxHmJdDhsD3MV54B8FvMF0R5w9zTtjjPkKsjJbH/S7drgjA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nyacWF3sA0uP8RRbQC97ZMq3zWDlEs+ClBsGe2DnedA=;
+ b=dovvqtzzIH6qx3n5S5JcjQ4buYnwKzq2EhoQPvB0rYJtlovVRndaepPgKj9C5yVlJrSIvFnJJQIVQbjB8vVXjD+V+14FxJNz8rYPSiwLPMS0aqtHUvmDUakDBWqXrra8mF0QSCOmeYKdsH/VqsGfZb2zCjj64RKlP/mQI6eYZC/779SwAmof2cQQbqx9ONZD+gxPFhATnhTYYQvXFfYfVBk50MjRx2r94VTxJBJgYTzHdreOMViRS/O4fQFno9ozgzLj/yysvRmBBL/zQRgQ8hh3FRswiyXFdxs5iC+fX6VjAY4m/AS6ZK4uopLhjSeBJzPS+GfzqN7/ePTK55y+ow==
+Received: from SEZPR06MB7619.apcprd06.prod.outlook.com (2603:1096:101:249::5)
+ by TYPPR06MB8077.apcprd06.prod.outlook.com (2603:1096:405:31b::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9587.19; Tue, 10 Feb
+ 2026 10:44:34 +0000
+Received: from SEZPR06MB7619.apcprd06.prod.outlook.com
+ ([fe80::c8d3:efda:b73:f6a6]) by SEZPR06MB7619.apcprd06.prod.outlook.com
+ ([fe80::c8d3:efda:b73:f6a6%5]) with mapi id 15.20.9587.017; Tue, 10 Feb 2026
+ 10:44:34 +0000
+From: Kane Chen <kane_chen@aspeedtech.com>
+To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, "kaeluno1@gmail.com"
+ <kaeluno1@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>
+Subject: [PATCH v2 1/1] tests/functional/arm/aspeed_ast2600: Enhance OTP test
+ with functional validation
+Thread-Topic: [PATCH v2 1/1] tests/functional/arm/aspeed_ast2600: Enhance OTP
+ test with functional validation
+Thread-Index: AQHcmno+PDcPaf0Z80SQUT2EpjOSXA==
+Date: Tue, 10 Feb 2026 10:44:34 +0000
+Message-ID: <20260210104428.424420-2-kane_chen@aspeedtech.com>
+References: <20260210104428.424420-1-kane_chen@aspeedtech.com>
+In-Reply-To: <20260210104428.424420-1-kane_chen@aspeedtech.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR06MB7619:EE_|TYPPR06MB8077:EE_
+x-ms-office365-filtering-correlation-id: 09b505a0-3bbd-4134-ddb9-08de68916119
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|376014|366016|7142099003|38070700021; 
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?eC+s1acns8ikhPB4kOjs3kUN6EomxgkBjS3mjxW6Moqq2NfipgWTxRO/9K?=
+ =?iso-8859-1?Q?IvqxwmwFKFqMQjJOsBvtLQvCoK/38nwcXsZdSrAOfG6LuLzIPr4KkwwbHz?=
+ =?iso-8859-1?Q?vswjzexq5xjShYas2cTZlJnSo9mYSXdLXRmjHXcxCvBDbP6uJfBRpIpv5L?=
+ =?iso-8859-1?Q?A2SQ8FaoQ1hCA7dBoU8nYbLp40GcUTd1R5Qt1g7vdkOBguD0ONx5YauIAb?=
+ =?iso-8859-1?Q?OiK3/fjuHOS8SZagqVaKmgHb9BdRCksYTtoMsBMKWG8Gpq6mxURlriTWUX?=
+ =?iso-8859-1?Q?TAg//HlCWt4c8RNLJegurd1Muj+vOJwKkfQBFeERSx1Mad/s/vXL6MBORs?=
+ =?iso-8859-1?Q?We2teTH2NT7G79PtSz+ZWUUCoDr1k9F4zhxAUoNxI6DlYk87H2fUL0U4Nv?=
+ =?iso-8859-1?Q?nKbAwYiljT6CgJvEkoPk+h2ApW+Z0CcJSVc4xAQjcLDKdcBewmQ199dgsG?=
+ =?iso-8859-1?Q?RyROdxvWRe18e8a0SukFBLhWBwDHRrSs9xRA/GjGD30xWnkqm+LgCvkYqS?=
+ =?iso-8859-1?Q?HndTLq/g40VWw6VZP4GbOd2Fu/1SN1xqVA5AbjbSqHRYHMQPvLvZ3f9RA5?=
+ =?iso-8859-1?Q?qxUpZ0LuoZTMj9lc5Y/GjCpby3wjfsWAs1elHAdzVPRkx2HXeqtNB3TFUj?=
+ =?iso-8859-1?Q?w9MUg693pCMpCrm5KRzAF5rtmgP8M1qZgAGtcM0trzQCPB0UC38+v37kch?=
+ =?iso-8859-1?Q?XrBkVicqwKuafymsDOQ9dsLttjVYUfY8dnJAl3/hDRMTtoCvFek+zUy2vu?=
+ =?iso-8859-1?Q?I9hZe0OUzyz7FKMiOKnUVi9JCcHE2QrfpkUhwol6cry5iAoqiptOqt8/lq?=
+ =?iso-8859-1?Q?B8MiDePT/W1dj+F+/TpN/l6NHL6/zzHiuL8RP3FZHCqrVxRgvCuUmcSRDI?=
+ =?iso-8859-1?Q?WuDET7lpd6xfV53Yl/BULWIFOGZceebcfVuBIg8GU8HdhScamhknwVeCjc?=
+ =?iso-8859-1?Q?NPvCOR1Z1Dn5VlyHCaqRWS0qTjaZiujsdCWvdC121iBlvvg6ooMDMpLyRK?=
+ =?iso-8859-1?Q?0Z9GQWBGlb8gz2Xk4pJ6VTXzJUHhBrzkA2Ag/9kjyfW1Yk7yqncVTDeELR?=
+ =?iso-8859-1?Q?ASlyzs/C4rpeRjvpnrgSaswHYczUnz54o1YUZ9lmQ8V7mqoTTN8WSfimz2?=
+ =?iso-8859-1?Q?+6fFy7/HYzGKjk8HT1t+FOd43CEFe3RsC/ALdBMrBBJOY7GtsNvRCxuttA?=
+ =?iso-8859-1?Q?eQDixYQzCAtSQTaBNgm/uZHUYjsuYJesaptwrfiKAV2aRGf71CuCC8SvoN?=
+ =?iso-8859-1?Q?osK0s11nfoYkt5piCHK/G7AHsPozVblR8poDe4s6eWW+SuxhNcfHMEf/J8?=
+ =?iso-8859-1?Q?L0TqbITHAlqfJTwHb1VZjOu4mdB+X16kwmX7Gr7lwjN6JD8VB5s28Q8+RJ?=
+ =?iso-8859-1?Q?1ZIg+IgUbbZo4spNq2dAipieiZO77J7eB3JyauK4zG7/SC/BtvPJ3DHO8h?=
+ =?iso-8859-1?Q?cOiOIChQFjoWmkv/rVVw5hty8+3H0phqHAH/sqqbMA3DB86KJi2iW3w/kU?=
+ =?iso-8859-1?Q?tuXEqs136P9tooWcB5+3BfFxPxyckonAMvxJV1NXJSeVrsOcF2yy+k/FEO?=
+ =?iso-8859-1?Q?wY0/aqtgmpgbDwR31xrFpCElXjICtiHIZ6SREIjCg2fDXJ2vOW58KaZs7r?=
+ =?iso-8859-1?Q?mE4QQPVEXNEjYjpj+hsaTYF4zIlNr7Ln33wONMQkr1KFXBYrzL8kDoh5n0?=
+ =?iso-8859-1?Q?MXC4BMuE6PTqZNpde9M=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SEZPR06MB7619.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(366016)(7142099003)(38070700021); DIR:OUT;
+ SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?uiH/uIUvpGBTU1MeSGX5qidLbToTxgcJ1Da13rHldACoEVknUWYRy8dyOH?=
+ =?iso-8859-1?Q?SDPQPcxMGLa06S3EZhlIIP1WXaijA+y9gEXoXO0KjPQsdXn1yxD9K0UOWf?=
+ =?iso-8859-1?Q?7lqv2HR1O1bCN8W3Op496qsVdMV3BRsimoDB8AHevDUi33vOvLKek3pL2N?=
+ =?iso-8859-1?Q?gCY/kTjNAJBFJdGqLi0PGI+M0FLfDSNyQSdzsgwhc0+FpfYz0XDiU/w7tZ?=
+ =?iso-8859-1?Q?NNyD9wv4xfIPH0IdkBxIAvh8DoM9FalxjHR5Cq2DuGplaCL05wrmgCfU6A?=
+ =?iso-8859-1?Q?eBjEx2S7Yx7RfzT0wUTwTclHmWhBqqO5/RqhQGWRPcCceJoq767pQXtAes?=
+ =?iso-8859-1?Q?JbI+tpeQUklPte4jp+x+l4cKZK71u7tM+ghUuo61XugWnK6ArIuaMkuspw?=
+ =?iso-8859-1?Q?z/nA4AyQEv4o1cYha5TfoitMS0ru2ylkyQv4/vuIEM+qJvy6ddeGBX0cAb?=
+ =?iso-8859-1?Q?C75gay/8plO1MFnA8RHqP9S3c/mnw5+fh85BWSgSTc0TGtM5eoLjc4oHlu?=
+ =?iso-8859-1?Q?RAZiZIuxigoUnMjMCa9ti7I4YIwkUgcrTSZKfdaFZsKsIYSM3UBIKM385N?=
+ =?iso-8859-1?Q?xVSRgEVrK7XuTIt7svF0ORykdfL4RaUFldPHhF80oOp5WeMLau2LeJ/45p?=
+ =?iso-8859-1?Q?vMgvY+vE3sj5zxeLAl0sm8oeyv/nYe07to1prBc3pczt/sbhKczEI7VN2Z?=
+ =?iso-8859-1?Q?99vD8j5VCGW692Fl+2OmqbIKRdZSDuRDzSnzUPyYZWk6xZDHH/zg3Yce0p?=
+ =?iso-8859-1?Q?bot7OKwkFZkuJeC5Y0aywW91w/53OOWk7jbwfVE8ERDR7gy8N8bFx5uNOi?=
+ =?iso-8859-1?Q?frWQX/ebMmhRc9CEs66Mc4dODkH40x4A7qz+RZlqUmArafeZcgBvTLQKrq?=
+ =?iso-8859-1?Q?AlJr20Sb2u6GtousHxHD8r9tYRghtBmk+/C9C/mUI34r2hZQXtXGtITOOg?=
+ =?iso-8859-1?Q?aIvqkvLUEXKp91Imv0oe74aFp0Eeh0m/xoASG+mBazxPxGs06gisyIWIrL?=
+ =?iso-8859-1?Q?4kAK36/9m96ZJDi4BaNNC6tChqmTqPd2BlXwcGft9W4GKqR75OVs5MV1Xs?=
+ =?iso-8859-1?Q?abUgSAgeknS6WCx11sF6lkefTS2xsPV4shxdrLyd04RD1Ai4bq4IedL72l?=
+ =?iso-8859-1?Q?ndVi+og1CSmrQFWrRUvmNKw6lqi2deQvrqUXxeRaT1kbF0DuefNzSsUl0X?=
+ =?iso-8859-1?Q?SAkMyhFNABp73T+0XEPB78PHn+erIazQCRotikGLeV/3SkWC26QPWBNK0o?=
+ =?iso-8859-1?Q?5eCC3zgkH0Gvx/YkeyH14UEzurHxP18B7/jM1XTQP1CTG725HmLmHXSqyl?=
+ =?iso-8859-1?Q?IWqsy1X6PAhzLbFDhsL2fvnmej3f1oLCRaywH81ZGHt7WetZR+2aOXUxhe?=
+ =?iso-8859-1?Q?/sMBLjBF3D7Sfsec3MSa/Xn1gLV7+Nd4/Yw8tM8qLW2P2ayzyubkgJKibh?=
+ =?iso-8859-1?Q?80G++KLGprOVJfgsZT0J9QkEP6cXNtz+7uhXNGtAwzbbfe7zdA6CEkKBZW?=
+ =?iso-8859-1?Q?1r+0k3hYeM6DjlehLtDRsM4vPf8xGRTZ4j4WtYnlxewQNvB5FA/046Pxwc?=
+ =?iso-8859-1?Q?vLH8zVxKrJ4XeQA8i9JbqXEIcMUSfkRNIbRmmJbfDSW8MEgI+ZYDiD3oF4?=
+ =?iso-8859-1?Q?oU+QC1dEGGtve/JoqjnChPmTvoqPt1Bqw9YBUw33xQbEGQZi/iFaueNG3I?=
+ =?iso-8859-1?Q?cX55P2GIx+VFMGKZeRY5OHV1QyAV6VfnZvl0DVN50GMKU/Kd6Elkra2pf0?=
+ =?iso-8859-1?Q?hW/8VmoYkqR9f/nd/579rqa1TQ5FVWLE53PMQ90tzagYi8cvaqKdtYWVXc?=
+ =?iso-8859-1?Q?EDHP/YbhAA=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7619.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 09b505a0-3bbd-4134-ddb9-08de68916119
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Feb 2026 10:44:34.1451 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: VTr/zwH1lvPpk81g9v+4I1jghghikDBTT6lOVxlel/p9tF2PLZZ8XwPctcjIbAbiGxzcq5zRXDrObxb/18EQbZe2fm6aSRudCyvTNeLlAfY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYPPR06MB8077
+Received-SPF: pass client-ip=2a01:111:f403:c405::7;
+ envelope-from=kane_chen@aspeedtech.com;
+ helo=TYDPR03CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,93 +176,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We log a GUEST_ERROR message "PL011 data written to disabled UART" if
-the guest writes data to the TX FIFO when it has not set the enable
-bit in the UART.  The idea is to note that the guest has done
-something dubious but let it work anyway.  However, since we print
-this message for every output character, it floods the logs when
-running a guest that does this.
-
-Keep a note of whether we've printed the log message or not, so we
-only output it once.  If the guest actively disables the UART, we
-re-arm the log message.
-
-Notably, the Linux kernel does not bother to enable the UART if it is
-used for earlycon, relying on the firmware having already done that.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-The log messages here were getting in my way trying to debug something
-else, but I didn't want to just delete them completely.
-
- hw/char/pl011.c         | 24 ++++++++++++++++++++++--
- include/hw/char/pl011.h |  1 +
- 2 files changed, 23 insertions(+), 2 deletions(-)
-
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index b2ca68e3e8..cb12c3e224 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -227,10 +227,25 @@ static void pl011_loopback_tx(PL011State *s, uint32_t value)
- static void pl011_write_txdata(PL011State *s, uint8_t data)
- {
-     if (!(s->cr & CR_UARTEN)) {
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "PL011 data written to disabled UART\n");
-+        /*
-+         * Only log this message once, not every time the guest outputs:
-+         * otherwise we would flood the logs with this message, making
-+         * harder to debug guests. (Some very popular guests like Linux
-+         * don't actively enable the UART.)
-+         */
-+        if (!s->logged_disabled_uart) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "PL011 data written to disabled UART\n");
-+            s->logged_disabled_uart = true;
-+        }
-     }
-     if (!(s->cr & CR_TXE)) {
-+        /*
-+         * We don't bother with the only-log-once machinery for this check
-+         * because TXE is enabled by default from PL011 reset, so there
-+         * isn't likely to be existing in-the-wild guest code that trips
-+         * over this one.
-+         */
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "PL011 data written to disabled TX UART\n");
-     }
-@@ -457,6 +472,10 @@ static void pl011_write(void *opaque, hwaddr offset,
-         break;
-     case 12: /* UARTCR */
-         /* ??? Need to implement the enable bit.  */
-+        if ((s->cr ^ value) & CR_UARTEN) {
-+            /* Re-arm the log warning when the guest toggles UARTEN */
-+            s->logged_disabled_uart = false;
-+        }
-         s->cr = value;
-         pl011_loopback_mdmctrl(s);
-         break;
-@@ -665,6 +684,7 @@ static void pl011_reset(DeviceState *dev)
-     s->ifl = 0x12;
-     s->cr = 0x300;
-     s->flags = 0;
-+    s->logged_disabled_uart = false;
-     pl011_reset_rx_fifo(s);
-     pl011_reset_tx_fifo(s);
- }
-diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
-index ff735b5234..5695787650 100644
---- a/include/hw/char/pl011.h
-+++ b/include/hw/char/pl011.h
-@@ -51,6 +51,7 @@ struct PL011State {
-     qemu_irq irq[6];
-     Clock *clk;
-     bool migrate_clk;
-+    bool logged_disabled_uart;
-     const unsigned char *id;
-     /*
-      * Since some users embed this struct directly, we must
--- 
-2.43.0
-
+Improve the OTP test script by adding functional verification of OTP=0A=
+strap registers. The test now validates that OTP modifications made=0A=
+in U-Boot persist through the Linux boot process and survive a=0A=
+subsequent reboot.=0A=
+=0A=
+Key changes:=0A=
+- Added interactive console commands for U-Boot and Linux.=0A=
+- Implemented verification for OTP register 0x30 across reboots.=0A=
+=0A=
+Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>=0A=
+---=0A=
+ .../arm/test_aspeed_ast2600_sdk_otp.py        | 35 ++++++++++++++++---=0A=
+ 1 file changed, 31 insertions(+), 4 deletions(-)=0A=
+=0A=
+diff --git a/tests/functional/arm/test_aspeed_ast2600_sdk_otp.py b/tests/fu=
+nctional/arm/test_aspeed_ast2600_sdk_otp.py=0A=
+index 4066532d5d..90f283ea09 100644=0A=
+--- a/tests/functional/arm/test_aspeed_ast2600_sdk_otp.py=0A=
++++ b/tests/functional/arm/test_aspeed_ast2600_sdk_otp.py=0A=
+@@ -6,7 +6,8 @@=0A=
+ =0A=
+ from qemu_test import Asset=0A=
+ from aspeed import AspeedTest=0A=
+-=0A=
++from qemu_test import wait_for_console_pattern, exec_command=0A=
++from qemu_test import exec_command_and_wait_for_pattern=0A=
+ =0A=
+ class AST2600Machine(AspeedTest):=0A=
+ =0A=
+@@ -25,9 +26,35 @@ def test_arm_ast2600_otp_blockdev_device(self):=0A=
+             "-blockdev", f"driver=3Dfile,filename=3D{otp_img},node-name=3D=
+otp",=0A=
+             "-global", "aspeed-otp.drive=3Dotp",=0A=
+         )=0A=
+-        self.do_test_arm_aspeed_sdk_start(=0A=
+-            self.scratch_file("ast2600-default", "image-bmc"))=0A=
+-        self.wait_for_console_pattern("ast2600-default login:")=0A=
++        self.require_netdev('user')=0A=
++        self.vm.add_args('-drive', 'file=3D' +=0A=
++                self.scratch_file("ast2600-default", "image-bmc") +=0A=
++                ',if=3Dmtd,format=3Draw',=0A=
++                '-net', 'nic', '-net', 'user', '-snapshot')=0A=
++        self.vm.launch()=0A=
++=0A=
++        # Set OTP value via uboot command=0A=
++        wait_for_console_pattern(self, 'Hit any key to stop autoboot:')=0A=
++        exec_command_and_wait_for_pattern(self, '\012', 'ast#')=0A=
++        exec_command_and_wait_for_pattern(self,=0A=
++            'otp pb strap  o 0x30 1', 'ast#')=0A=
++        # Validate OTP value in uboot stage=0A=
++        exec_command_and_wait_for_pattern(self,=0A=
++            'otp read strap 0x30', '0x30      1')=0A=
++        exec_command_and_wait_for_pattern(self, 'boot',=0A=
++            "ast2600-default login:")=0A=
++        exec_command_and_wait_for_pattern(self, 'root', 'Password:')=0A=
++        exec_command_and_wait_for_pattern(self, '0penBmc',=0A=
++            'root@ast2600-default:~#')=0A=
++        # Validate OTP value in BMC stage=0A=
++        exec_command_and_wait_for_pattern(self,=0A=
++            'otp read strap 0x30', '0x30      1')=0A=
++        exec_command_and_wait_for_pattern(self,=0A=
++            'reboot', 'Hit any key to stop autoboot')=0A=
++        exec_command_and_wait_for_pattern(self, '\012', 'ast#')=0A=
++        # Validate OTP value in uboot stage=0A=
++        exec_command_and_wait_for_pattern(self,=0A=
++            'otp read strap 0x30', '0x30      1')=0A=
+ =0A=
+ =0A=
+ if __name__ =3D=3D '__main__':=0A=
+-- =0A=
+2.51.0=0A=
 

@@ -4,116 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 727D8EB2704
-	for <qemu-arm@archiver.kernel.org>; Tue, 10 Feb 2026 19:25:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0335EB2700
+	for <qemu-arm@archiver.kernel.org>; Tue, 10 Feb 2026 20:15:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vptMo-0000jx-8e; Tue, 10 Feb 2026 14:25:47 -0500
+	id 1vpu9I-0007l9-US; Tue, 10 Feb 2026 15:15:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vptMf-0000jA-8S
- for qemu-arm@nongnu.org; Tue, 10 Feb 2026 14:25:37 -0500
-Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vpu9G-0007VR-9N
+ for qemu-arm@nongnu.org; Tue, 10 Feb 2026 15:15:50 -0500
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nabihestefan@google.com>)
- id 1vptMd-0003Xu-Fz
- for qemu-arm@nongnu.org; Tue, 10 Feb 2026 14:25:36 -0500
-Received: by mail-qt1-x82a.google.com with SMTP id
- d75a77b69052e-505d3baf1a7so48381cf.1
- for <qemu-arm@nongnu.org>; Tue, 10 Feb 2026 11:25:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1770751533; cv=none;
- d=google.com; s=arc-20240605;
- b=AS/B2vx8lZ3lKFCJuakpr9V+X+xs/E5IAzSQHgyXYnMzUxzkqzkaL7fI37U2SDOHVu
- RmWbyGdJTFlH2LpjnBbG5xpok7Ti8jNinfnbOuLgopiP+p6hb+Kx2nHIuA+hkz3K3HD6
- u5KHqFmbyLW6dd4eKcxfOOoNd329jclGcoBV7kVHaIALIeIyqSaLh5vqyUWPePAfNXoS
- Nvj11zYVzmrKPEs+4sC2XE8fzMld57Futy6O/yr8fjPF3vn7SfOejhQ4ezuaeKk/Svxo
- QaVJuQIv+pX7rk12UcSRNGS4ZTOlJGWTTLo98Atlgzb2btVBjNx/eCoo7+E8mYQzNqvU
- sGpg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=IYXaxxlBgc8Kqkh4DZ+jrMOV88/UOIu8btwWCvjGJBs=;
- fh=H2MVxiJUG9y4yNnM+wNizZdzwoWfciN5bD+p14zDwKM=;
- b=GNj73Keq1FygAUzkbDsM5gvwkav6vN7stxhBIloHyWMoSoS9C+u/I6IWwtOyC016Sr
- cq9N6uug3HGlEFpNrtyT3rSSc0mjuraLbRqWEA3/8099yp/d7iWpNkQ97pufo/BqXlVU
- gwq9SD08MyEIu7yPz2Mi2+c+2fpC7msx/fdqpgbjgCcoCKmCRHVQ0oKF1kZNwdaK6bFW
- ZurbDPYAR7sJZbosj4zKhO7Rp3fOMAVc2N8oxyeW+FVGoF0ydv9ziDeM8eLfK6xVt+zo
- SuGmlq6RmtgBlCMzbimifJftslxCcRJUXiDtMZpaoG/MbJAx1wEbnzyHNms6y8VoJpQg
- JlVg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1vpu9D-000892-Rh
+ for qemu-arm@nongnu.org; Tue, 10 Feb 2026 15:15:49 -0500
+Received: by mail-pg1-x52b.google.com with SMTP id
+ 41be03b00d2f7-c6de0527ce1so690210a12.2
+ for <qemu-arm@nongnu.org>; Tue, 10 Feb 2026 12:15:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1770751533; x=1771356333; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1770754546; x=1771359346; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=IYXaxxlBgc8Kqkh4DZ+jrMOV88/UOIu8btwWCvjGJBs=;
- b=t28JaZymDK/yIzfrCNQhM0QeRbwOcDsSwhbwSz+LVh5keZY3GojcqvvEHKndwbAdC4
- gRbsoGulWm0uQ1heUJ+2xLXqkKpTOvxHNonau8BucMPKq0inhQonvXtWoJu02DyZU5u0
- v6cRqOTjtrI0JiSb2yG23hyhd+yWuz6B6GgTAINmRSvRdG12DN3xypMsW46K5pJjfmZi
- vEr3HUsX/nRHDgdN0e4VEhk/dWVAAqt1qpAVDDTNgHgD9B7oE8M2yEp+aDTXpqAcdKIX
- oLxH9FuNpEUb/Ae8Ig0iSyyRUgggSda0wwtHfuugfk4ARxlhdZZXA6g73o+f34HLOhLy
- OpUg==
+ bh=h2plFct/EpqGzjEx7nOv5ScJhI5BtmBrKmQ1/sromkc=;
+ b=Zqqnp3f61y7sry2qU6lK3UMOJqG0/9QW55Tj90+7gQRiHHpCgTuhj/UwIQPlL8LJ9h
+ VY6ecKt4SXSoQMF9M+Vw2zFmoSmiikddRt6HlCMjoR6pLfchTBqQcYmWIP5LPmzmbAEz
+ Bq+PZ09X3QCQ/imIPOxUpx3fq+GO1U0YLnIv16VgqW7PO6yB7aaIHffFxKRp5hwIYlv8
+ pFXeZKh6P7M6escGlENQAhKm3U+nz5xOa6SpCmoPHuQVB/Vwt24Bf4b2n/v+GHKxUQ0P
+ S6QLlnORZlibY3wJhWD3nN3LbH7g+eiuPGUdlsIDWwpfYwYndO3zFyB5seUvVzMNQEB3
+ nvsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770751533; x=1771356333;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20230601; t=1770754546; x=1771359346;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=IYXaxxlBgc8Kqkh4DZ+jrMOV88/UOIu8btwWCvjGJBs=;
- b=h6Pkl1WJX5DPM8NpvM5p9rjcCYoIDnoRmzj0XUgP4pzDg1wwHQckzJ7Sfg4nsDcyFA
- HkCCCpBHz+jzyNuYcVOi0e1YT3s/H8aPkv9R18j/OyHbWmp7ZzYgXNKtCYHeZLK+jz/o
- n6VguTTMD/oJaet63o3no3L9i8oDIUAnRBS2iV/DRRX7Rtyv4Ztr2A9g+aCEtU3V64hW
- /WBKanofSXnsbElHOCMTcY5FJUBX/0/GF878RQ9k1COHpYso6cM5r907NurYI5fZgTyS
- VyDQ7cbH2uykaROLuO9/eGqtzPj1Wqy/9HnxeyQG+CQXNLji5BIOcxGA9QgzXTM4GuPs
- HX2w==
+ bh=h2plFct/EpqGzjEx7nOv5ScJhI5BtmBrKmQ1/sromkc=;
+ b=qOA0RDbHAIDcmYbNj17JRhcEUCkD+uRTay+SlzGYewsyXNEUnarBc05iwYFKUWgijp
+ WGGT0ZZQJbK1abYX0k+MUWmrgNtV6sx3l8CkNovqaOqY88yd7V8oINd/MPwevBSzZ2hV
+ bURz3F95CRhDXqNovdUJykUjv0YUFPGrgGUgBJQ94JmF5c129IxvA2ZVDORBZXW6WRSm
+ 8XZzWTV2MyXr4v+F6oLFUmkyfaSNoFiWtc4zTcDtCoJU3APx4ShbqHLJ/LN8jq2phef1
+ FhQH8LFS0wjyR5VimIGmXi1x10Em2LQpviK16FyD3+DipG7G8Xg/NukJw9I9hMriyn6n
+ V84Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV2aj1e6SgfgwkS8VSXXOCBy0meJpty0i0DfzWPoCpjXoZhTrPoIXOX50yzXa+/JBY4SiE+d0F5eA==@nongnu.org
-X-Gm-Message-State: AOJu0YylliDEZwD3++wsh9pMKht1jO4MO5hMEqpXtLlrNofyjkzPilr/
- 5jrgPzMysjBjiVY479VlYQCD+mcPPtzwV8g7fUqXDZ7xdcFXKcgE1Jv8kEgfgDOKB2juET8lrBH
- bQbvcjRSrYgsjSI7ETZZNAV6uL8euUsUQfAk5RWb4
-X-Gm-Gg: AZuq6aLpDMrYyaG5nJJkrR1JpvwNrNw6M+AesmJA06BVXXjUIoSOfmIOwE+c0c3sSAq
- xxsNJmUniwiGHyfv58Kwhijvj5IunsRBErh2my8HeQEJuBOYLzmmwoGFtnobkRdYKFxX2b0YSvR
- zTw7K69blT5EVQ8Fb94W9x0xiNOpM3GUJEABCsn79n3fTdq7iW+uG61j9c3lTPdOr4fJHPgj92m
- YSfL9Fpa/V62dxjdVjJ6wxWrgfBBjaYpd1qfDbCEVxBKi/kmaTSkRQccYJjsttDwAaVdtb7WImA
- u6pM7DBSQO0jMbfKfQukT8egCec7+ONRyOyBWlle2vTLPRu6yUra/oBZBtWM2BYEButLlgYazOw
- xvq3yjSIwsQSB+2qz8l3VYMTfqVkkuR0nDm+9
-X-Received: by 2002:a05:622a:181e:b0:4f1:9c3f:2845 with SMTP id
- d75a77b69052e-50681698b91mr1199401cf.9.1770751532817; Tue, 10 Feb 2026
- 11:25:32 -0800 (PST)
-MIME-Version: 1.0
-References: <20260210051008.355149-1-jamin_lin@aspeedtech.com>
- <20260210051008.355149-4-jamin_lin@aspeedtech.com>
- <209dc94c-080b-49fa-afd0-d89d43b318e6@kaod.org>
-In-Reply-To: <209dc94c-080b-49fa-afd0-d89d43b318e6@kaod.org>
-From: Nabih Estefan <nabihestefan@google.com>
-Date: Tue, 10 Feb 2026 11:25:21 -0800
-X-Gm-Features: AZwV_QiXX0lIrUovR96uGyKhGgKuHxyY0dsqY6eriDCvxKbghRyk07xLJ9lR-Ng
-Message-ID: <CA+QoejU4FBKwUEK2FCVmdLydjBcCKvtGdLq=1GxBHXOEAGYSVQ@mail.gmail.com>
-Subject: Re: [PATCH v2 03/11] hw/arm/aspeed_ast27x0: Add AST2700 A2 SoC support
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
+ AJvYcCX03n5HU/YsEbLYmtGAsaCle5sTOC+WOBJ8LUAVbO01DG89curGQTYVFVZl6g5pwyUe8AHsTpGfVg==@nongnu.org
+X-Gm-Message-State: AOJu0YwpIS3ufrJ0U7s4iJhaWglb6CAwyNjX4rGmgbp0aocI9Sq8phJH
+ An2vRJlHtTc1N3LSzYb4ZiPmUdCqe9dJFivtI/W1Hny69Hppd5EGZOh2IIRLShEuVFU=
+X-Gm-Gg: AZuq6aKoOKbRnuM2CjG9N9wo/1qNCYg5v6Q+AetWyrEKLveKq6mh5DHCYnEX1HGhD3u
+ bivPYUhvbpVjXU0Wi8JzZGAW3u37MDvaxwfeUDgGuc86K3cqRwhOMsicPRAJYa3eIUYlTKGG37s
+ q2ANpctGPlD4d8VFzedA5gWNIymX5aL54w5CD0mfHLNsKHeULWsgUwpy8qqzyCT5RTdLepvFMMJ
+ eoE6JVTOsmID5Njsx9qfs17Kp4GwcrpvIgiaNQFjchmbk9gW+tVn7BuM/pyOe7yqGMpOhuk7D8U
+ EPSDfV2/nASQu61Hw3NExaQwc/wIZVaAOBZI+mEDnwpLJ7ErHHFnDaAR4GoJ4g+kRiuqtck7s2W
+ 93saHLn1dk5qh17oouu4bATdSTiMHS+nfgjIQ3dk2/qPqKHjD90Fgr1nhy+uQ5yOp/gCJwZNKzO
+ EouSP6nMJRHDUKOfa33NhGWp6hB73pAwfq7N4sTb5/ZJ16Tp38NCsZvIeBWYEaNvMahy3BY2LHg
+ Kbp
+X-Received: by 2002:a17:902:db07:b0:2a5:8c1c:7451 with SMTP id
+ d9443c01a7336-2a9519f5b02mr181073635ad.58.1770754546416; 
+ Tue, 10 Feb 2026 12:15:46 -0800 (PST)
+Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2ab0b392cb5sm38523225ad.70.2026.02.10.12.15.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Feb 2026 12:15:46 -0800 (PST)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: anjo@rev.ng, Jim MacArthur <jim.macarthur@linaro.org>, kvm@vger.kernel.org,
  Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82a;
- envelope-from=nabihestefan@google.com; helo=mail-qt1-x82a.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v3 01/12] target/arm: extract helper-mve.h from helper.h
+Date: Tue, 10 Feb 2026 12:15:29 -0800
+Message-ID: <20260210201540.1405424-2-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260210201540.1405424-1-pierrick.bouvier@linaro.org>
+References: <20260210201540.1405424-1-pierrick.bouvier@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,97 +108,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Feb 9, 2026 at 11:14=E2=80=AFPM C=C3=A9dric Le Goater <clg@kaod.org=
-> wrote:
->
-> On 2/10/26 06:10, Jamin Lin wrote:
-> > AST2700 A2 is functionally identical to AST2700 A1.
-> > There are no changes to the IRQ layout, memory map, or peripheral
-> > configuration. The only difference is the silicon revision.
-> >
-> > This commit introduces a dedicated AST2700 A2 SoC type by reusing
-> > the existing AST2700 A1 implementation and setting the A2 silicon
-> > revision accordingly.
-> >
-> > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> > ---
-> >   hw/arm/aspeed_ast27x0.c | 36 ++++++++++++++++++++++++++++++++++++
-> >   1 file changed, 36 insertions(+)
-> >
-> > diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> > index 61790ea1cc..87dcb82e1b 100644
-> > --- a/hw/arm/aspeed_ast27x0.c
-> > +++ b/hw/arm/aspeed_ast27x0.c
-> > @@ -1166,6 +1166,36 @@ static void aspeed_soc_ast2700a1_class_init(Obje=
-ctClass *oc, const void *data)
-> >       sc->memmap       =3D aspeed_soc_ast2700_memmap;
-> >   }
-> >
-> > +static void aspeed_soc_ast2700a2_class_init(ObjectClass *oc, const voi=
-d *data)
-> > +{
-> > +    static const char * const valid_cpu_types[] =3D {
-> > +        ARM_CPU_TYPE_NAME("cortex-a35"),
-> > +        NULL
-> > +    };
-> > +    DeviceClass *dc =3D DEVICE_CLASS(oc);
-> > +    AspeedSoCClass *sc =3D ASPEED_SOC_CLASS(oc);
-> > +
-> > +    /* Reason: The Aspeed SoC can only be instantiated from a board */
-> > +    dc->user_creatable =3D false;
-> > +    dc->realize      =3D aspeed_soc_ast2700_realize;
-> > +
-> > +    sc->valid_cpu_types =3D valid_cpu_types;
-> > +    sc->silicon_rev  =3D AST2700_A2_SILICON_REV;
-> > +    sc->sram_size    =3D 0x20000;
-> > +    sc->pcie_num     =3D 3;
-> > +    sc->spis_num     =3D 3;
-> > +    sc->sgpio_num    =3D 2;
-> > +    sc->ehcis_num    =3D 4;
-> > +    sc->wdts_num     =3D 8;
-> > +    sc->macs_num     =3D 3;
-> > +    sc->uarts_num    =3D 13;
-> > +    sc->num_cpus     =3D 4;
-> > +    sc->ioexp_num    =3D 2;
-> > +    sc->uarts_base   =3D ASPEED_DEV_UART0;
-> > +    sc->irqmap       =3D aspeed_soc_ast2700a1_irqmap;
-> > +    sc->memmap       =3D aspeed_soc_ast2700_memmap;
-> > +}
-> > +
-> >   static const TypeInfo aspeed_soc_ast27x0_types[] =3D {
-> >       {
-> >           .name           =3D TYPE_ASPEED27X0_SOC,
-> > @@ -1179,6 +1209,12 @@ static const TypeInfo aspeed_soc_ast27x0_types[]=
- =3D {
-> >           .instance_init  =3D aspeed_soc_ast2700_init,
-> >           .class_init     =3D aspeed_soc_ast2700a1_class_init,
-> >       },
-> > +    {
-> > +        .name           =3D "ast2700-a2",
-> > +        .parent         =3D TYPE_ASPEED27X0_SOC,
-> > +        .instance_init  =3D aspeed_soc_ast2700_init,
-> > +        .class_init     =3D aspeed_soc_ast2700a2_class_init,
-> > +    },
-> >   };
-> >
-> >   DEFINE_TYPES(aspeed_soc_ast27x0_types)
->
-> Reviewed-by: C=C3=A9dric Le Goater <clg@redhat.com>
->
-> Thanks,
->
-> C.
->
->
-Technically applies to the whole patchset, but specifically pointing
-our internal machines to use this SoC so sending it to the relevant
-patch.
-Machines boot and work as intended once the SoC is updated, thank you Jamin=
-!
+A few points to mention:
+- We mix helper prototypes and gen_helper definitions in a single header
+for convenience and to avoid headers boilerplate.
+- We rename existing tcg/helper-mve.h to helper-mve-defs.h to avoid
+conflict when including helper-mve.h.
+- We move mve helper_info definitions to tcg/mve_helper.c
 
-Reviewed-by: Nabih Estefan <nabihestefan@google.com>
-Tested-by: Nabih Estefan <nabihestefan@google.com>
+We'll repeat the same for other helpers.
+This allow to get rid of TARGET_AARCH64 in target/arm/helper.h.
 
-Thanks,
-Nabih
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ target/arm/helper-mve.h                            | 14 ++++++++++++++
+ target/arm/helper.h                                |  2 --
+ target/arm/tcg/{helper-mve.h => helper-mve-defs.h} |  0
+ target/arm/tcg/mve_helper.c                        |  4 ++++
+ target/arm/tcg/translate-mve.c                     |  1 +
+ target/arm/tcg/translate.c                         |  1 +
+ 6 files changed, 20 insertions(+), 2 deletions(-)
+ create mode 100644 target/arm/helper-mve.h
+ rename target/arm/tcg/{helper-mve.h => helper-mve-defs.h} (100%)
+
+diff --git a/target/arm/helper-mve.h b/target/arm/helper-mve.h
+new file mode 100644
+index 00000000000..32ef3f64661
+--- /dev/null
++++ b/target/arm/helper-mve.h
+@@ -0,0 +1,14 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++
++#ifndef HELPER_MVE_H
++#define HELPER_MVE_H
++
++#include "exec/helper-proto-common.h"
++#include "exec/helper-gen-common.h"
++
++#define HELPER_H "tcg/helper-mve-defs.h"
++#include "exec/helper-proto.h.inc"
++#include "exec/helper-gen.h.inc"
++#undef HELPER_H
++
++#endif /* HELPER_MVE_H */
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index f340a49a28a..44c7f3ed751 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -7,5 +7,3 @@
+ #include "tcg/helper-sve.h"
+ #include "tcg/helper-sme.h"
+ #endif
+-
+-#include "tcg/helper-mve.h"
+diff --git a/target/arm/tcg/helper-mve.h b/target/arm/tcg/helper-mve-defs.h
+similarity index 100%
+rename from target/arm/tcg/helper-mve.h
+rename to target/arm/tcg/helper-mve-defs.h
+diff --git a/target/arm/tcg/mve_helper.c b/target/arm/tcg/mve_helper.c
+index 63ddcf3fecf..f33642df1f9 100644
+--- a/target/arm/tcg/mve_helper.c
++++ b/target/arm/tcg/mve_helper.c
+@@ -19,6 +19,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "cpu.h"
++#include "helper-mve.h"
+ #include "internals.h"
+ #include "vec_internal.h"
+ #include "exec/helper-proto.h"
+@@ -27,6 +28,9 @@
+ #include "fpu/softfloat.h"
+ #include "crypto/clmul.h"
+ 
++#define HELPER_H "tcg/helper-mve-defs.h"
++#include "exec/helper-info.c.inc"
++
+ static uint16_t mve_eci_mask(CPUARMState *env)
+ {
+     /*
+diff --git a/target/arm/tcg/translate-mve.c b/target/arm/tcg/translate-mve.c
+index b1a8d6a65c0..4ca88f4d3a3 100644
+--- a/target/arm/tcg/translate-mve.c
++++ b/target/arm/tcg/translate-mve.c
+@@ -18,6 +18,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "helper-mve.h"
+ #include "translate.h"
+ #include "translate-a32.h"
+ 
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 63735d97898..febb7f1532a 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -28,6 +28,7 @@
+ #include "cpregs.h"
+ #include "exec/helper-proto.h"
+ #include "exec/target_page.h"
++#include "helper-mve.h"
+ 
+ #define HELPER_H "helper.h"
+ #include "exec/helper-info.c.inc"
+-- 
+2.47.3
+
 

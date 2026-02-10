@@ -4,167 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44B3BEA3F2B
-	for <qemu-arm@archiver.kernel.org>; Tue, 10 Feb 2026 08:56:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D532EEA3F28
+	for <qemu-arm@archiver.kernel.org>; Tue, 10 Feb 2026 09:11:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vpjXL-0006SC-LN; Tue, 10 Feb 2026 03:55:59 -0500
+	id 1vpjlf-0001B1-EV; Tue, 10 Feb 2026 04:10:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vpjXK-0006Rw-Ax; Tue, 10 Feb 2026 03:55:58 -0500
-Received: from mail-northcentralusazlp170100001.outbound.protection.outlook.com
- ([2a01:111:f403:c105::1] helo=CH1PR05CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1vpjlZ-00017O-5T; Tue, 10 Feb 2026 04:10:41 -0500
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1vpjXI-0003PJ-SQ; Tue, 10 Feb 2026 03:55:58 -0500
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1vpjlO-0004ip-8o; Tue, 10 Feb 2026 04:10:32 -0500
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=bfmJDM54UwTCn/k9+VwMtXhudUNLgBdMsY5BUf6Akki1GZGoibYovlxIpzlbbFnq7IAa1vutB9dlrB8BUPptOf1GgMm1MAdkun1SuCt8JXeR1DAKe2vsf36wB7BKDuvZuWVTBCVnq0TGDbASrI7AqL00r98WW5jjzn1sJWGv1sj7K6XrKkdbEUHCVpdanOfpZ3YsXlfEXxVbwbGwI9qNJj/JZlQquhOtJIzgcSAn1QEybTLcf9mwiaqJoqJu2NDDCD4+ZaJ8c4tRE7UjszwCIdmsiIeDikBnR1h2WPLWTVR3NBQ0VNiT9sexzUG1Bq2MAmcFZO9UaamRGfLHYR+3sQ==
+ b=fDJWUK9Y/L+mT/Rl9SGtQzKw3AhtTrn5ReFbJBEjtj5ri9PxroexzNnMF1LvVRmScnLID+S6iKelFcbJi9KbLynWtYezxXbEn+AO1w8/vIowJhfSAmk8uKz3wcMmIE1hcf89VOPVMdA7ybN5y9VmhxcabvDsXwGhJqZSWq7f3u3NctIpggBQd3RCMOK82APUy51Ykq12I99VTbGPZZTFQ8DNIPES00vmaLuVmLmB6B1+3BeM7m1sDiNB63s8IE73Cjmy/ePss0iisZ9mw+zBimU+J2TDTKcYuC3RA0dMv5hg+UuFXWwj8WwXEt14aWPYvpXktoWM7OVV4IvIJt7B2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6OaNsllnjbld86uxd3gwnGKbD/qvEydOK1ogfxpMWUA=;
- b=f9DCFdsnMyIE2b7RKFGYCfklEn5ydbHBaFhUsMOqqQdPWKKbwzr/58mnaG/31Im+Zqiw70XWJecPNnNK9y+o+W9Jdk0PaNbduKMXvlXor9RYtaH+IExv4XIAGIOSJYjoFy6RUM+cBu+NykgL0b1C+Prv/CxWjlSka5dia2+Q7kObqzz1FyJDyjJ2xT4lyd5Co2G+KCs0kxaosiIPRaZlsJKWfY5WffTYd+4F166WyWEUnl2S+UBK7Np5b1qqEGxqzkqmqnv548dYxUQSB4MOUSwaLkl9d9QjwEqwiaTwCurnOvC2pP3ChKP4+M6AtB4DejVghWzokk4IzGlnrkusEA==
+ bh=JEpfO0DLa1savDwcVNWyahHfyq1KX1vbr+n0ISgfBnE=;
+ b=Fn802bxKFTNLa3jsSCQ9txgjsG77lm94NLg2guGy0eA8UC9Diz4xae1UPYIgBgUZ97Vh3roNho9B5P5q9vI2gl/v/4OVv/o5Db5eBjxOLPbhAZEH9e+qBysGpufEzjunp/gux0dFOFSowakh8VB1imra7m7kz78O+a1jMMzvZKpfpFPbxXebCl3mXPfpCRil9QZmjw8EX0wGMqne6+gSqKG2EarE3Xog1Kr1KK0rs6MLrhpbKon2rvjJpgjaeUKidiofc0t8VVpXw2u0Y31fpXikOqDzYImi7grbv07ccBlbs9fi3quE+G+5BKaM0iEG37aytB3caDgqfnSr7NiSag==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6OaNsllnjbld86uxd3gwnGKbD/qvEydOK1ogfxpMWUA=;
- b=F6+npShG78kFZm1p0Tr8WJ7Mhos07Ao4+V9djbQKPyyS43lnhz0mrQ/ALq71rYU66wHIVT28sEMgzV620fyH1KEtIqbuZmMcTMgdgcKrVH9ePRcb7sFktvXlC6eVOtzPUnjMQmqnE05aDs3+X1NMpy2a1tpSHL456/p/xvsCm63Fku4NBO9QcPvIsZR2JUuGtlGK8mwqYh8jLFb3BygV1SUPn3nfS8VzRYUQYPWovbms1TZyjr/k8bR9yDsr2ZF8n7Pcs0WzlnQG6MxshpXI0TtOU26u7nitH+kdgHafSgERfXmkVou7ccthchn49L2JF9Y86ThXj9mY+nwNvdw7/g==
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com (2603:10b6:610:144::12)
- by LV8PR12MB9644.namprd12.prod.outlook.com (2603:10b6:408:296::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9587.18; Tue, 10 Feb
- 2026 08:55:49 +0000
-Received: from CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de]) by CH3PR12MB7548.namprd12.prod.outlook.com
- ([fe80::b710:d6a1:ab16:76de%5]) with mapi id 15.20.9587.017; Tue, 10 Feb 2026
- 08:55:49 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "clg@redhat.com"
- <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>, Nathan Chen
- <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>, Jiandi An
- <jan@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>, Krishnakant Jaju
- <kjaju@nvidia.com>
-Subject: RE: [PATCH v2 14/24] hw/arm/tegra241-cmdqv: Allocate HW VCMDQs on
- base register programming
-Thread-Topic: [PATCH v2 14/24] hw/arm/tegra241-cmdqv: Allocate HW VCMDQs on
- base register programming
-Thread-Index: AQHcl3fs3/ZlM0gpn0SUSMVuCDbH2rV7DaqAgACZbJA=
-Date: Tue, 10 Feb 2026 08:55:49 +0000
-Message-ID: <CH3PR12MB754813DCAF0E35701BAF04AEAB62A@CH3PR12MB7548.namprd12.prod.outlook.com>
-References: <20260206144823.80655-1-skolothumtho@nvidia.com>
- <20260206144823.80655-15-skolothumtho@nvidia.com>
- <aYpx0baxoZWExE5/@Asurada-Nvidia>
-In-Reply-To: <aYpx0baxoZWExE5/@Asurada-Nvidia>
-Accept-Language: en-US, en-GB
+ bh=JEpfO0DLa1savDwcVNWyahHfyq1KX1vbr+n0ISgfBnE=;
+ b=nN5cUBfe+04Bq/6t9fUlNCc6dOIxvKGQ+hQR5/JnzS/JyXxTR14RvzHqeEKDi7eLwH6DIOiGV/hQNoj7d5UG/4R5Z9REtMa52FvRR53Oj0Nfr93d4ecmhiSgY3AmJ8tOd1wlUTZyGRsc2guxuH208PNV/4EfS5s4IIqqjUpH0f+8xD+wMjZWR0pRfWi5135A3Ca5Bmd89/L6dM0xiQV3U61YQzl9YS8dGZqLVOPQOzMsYhGvp00lV3zTgFHpVojRaDpD4A7uUm62uoXgRd4O2vCUa0zN2DpK7hAcclsvRSbUjF1O5YvtiqsRCjSlO2q7rt7PWfYq1lhe8ZabyO8Dmg==
+Received: from TYPPR06MB8206.apcprd06.prod.outlook.com (2603:1096:405:383::19)
+ by SG2PR06MB5264.apcprd06.prod.outlook.com (2603:1096:4:1dc::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9587.19; Tue, 10 Feb
+ 2026 09:10:22 +0000
+Received: from TYPPR06MB8206.apcprd06.prod.outlook.com
+ ([fe80::e659:1ead:77cb:f6d3]) by TYPPR06MB8206.apcprd06.prod.outlook.com
+ ([fe80::e659:1ead:77cb:f6d3%3]) with mapi id 15.20.9587.017; Tue, 10 Feb 2026
+ 09:10:19 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?iso-8859-1?Q?C=E9dric_Le_Goater?=
+ <clg@kaod.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, =?iso-8859-1?Q?Marc-Andr=E9_Lureau?=
+ <marcandre.lureau@redhat.com>, =?iso-8859-1?Q?Daniel_P=2E_Berrang=E9?=
+ <berrange@redhat.com>, =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?=
+ <philmd@linaro.org>, "open list:All patches CC here" <qemu-devel@nongnu.org>, 
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
+ Kane Chen <kane_chen@aspeedtech.com>, "nabihestefan@google.com"
+ <nabihestefan@google.com>
+Subject: [PATCH v5 00/21] i3c: aspeed: Add I3C support
+Thread-Topic: [PATCH v5 00/21] i3c: aspeed: Add I3C support
+Thread-Index: AQHcmm0UcQRs4EPMvkyppE8BhlWZ8w==
+Date: Tue, 10 Feb 2026 09:10:19 +0000
+Message-ID: <20260210091018.1553489-1-jamin_lin@aspeedtech.com>
+Accept-Language: zh-TW, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CH3PR12MB7548:EE_|LV8PR12MB9644:EE_
-x-ms-office365-filtering-correlation-id: f9871c14-24f7-45f7-80a3-08de68822fdc
+x-ms-traffictypediagnostic: TYPPR06MB8206:EE_|SG2PR06MB5264:EE_
+x-ms-office365-filtering-correlation-id: f087ddab-ed06-41f9-db9a-08de688436b8
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|366016|1800799024|376014|7053199007|38070700021; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?krozGr8P17PdVtqbnx9Jy2joWDR2Rpn4GOqjqzwAOybr/XLuWZQSql+or1FY?=
- =?us-ascii?Q?REQ9XlYiy3g4O79PlgpIoyp1y5QmFx/gVQymeyvrCYqizYulwwIvTVvR3kwH?=
- =?us-ascii?Q?bwMz9jk1qWTBbnkfi51G2kLxcBvwSYYuTv9mPqsicxPWRv8nBjIMBbTkvrGF?=
- =?us-ascii?Q?ojCAxQUODlymeCBVv3Gqj5q/XF5l0ratKRMf2D7Qi1tFOPA74SnzYrhyP/n/?=
- =?us-ascii?Q?Dzo9UstDbbCATP0hH6ud0DfmIkVTBlv9H4XM7P2kP7KtxApEwJTPpNVZsQxo?=
- =?us-ascii?Q?WvW2iX1iqro8uR6WUlylUU29fM5H4l5IRtT9FOs0KrVo+sSmU2nxkmMAIhLT?=
- =?us-ascii?Q?BPl/LMtFgfNki13zpi4ltUrTfzBXXtLcIJp7xUi+ij9OrAJbzQuraKKgxwMb?=
- =?us-ascii?Q?v3dmOj4GG1gqPI/OJZqJ9ShycArbNPEsX6ThZi24J9x34AfFlENuP2Mr2qdq?=
- =?us-ascii?Q?JC+KcS0288nZUx0P3pLCXLeHX87aM7Syx1FuD5gsCb6yEoaQqy06wyiD2BaV?=
- =?us-ascii?Q?DD+nXfcqv7PdqRydC3jePAyNyhsJXuHJzdWsfWd3LCfMGAN653r/wx4kEwbm?=
- =?us-ascii?Q?1DrO/BnMYTUC1iFzHdA7hvE+JS3SoYfrCQy6Z1DvhUevUAb+kQWPVdC4+xHT?=
- =?us-ascii?Q?FPg5SCda5IqviWwPZqgJ1iHwdobYvvBtN9jwlN6n5b0V+P0qKdx61+FhvzF8?=
- =?us-ascii?Q?BpHWNQtsj70swBgpDnho5D08d/dPM0/hS/GKDK3SbUX+IBMHpYiv/zPFTcCz?=
- =?us-ascii?Q?TeHWq+oBfDIlgIiDSwF3+E8odqqKqcYGvHMpOwZ8ubqQVLL/U3k/Tu0QIYM7?=
- =?us-ascii?Q?SuzZAJFJKwevFjyRHN7qxyeXV9XmJyXCsDZaFGRPB6TC2w/Pz1vuNnaOQ215?=
- =?us-ascii?Q?iwx8t7ZV4DjdrglteHJefkwQsMvgmnO1H8/25Z7x4LDEZt3vnL1SXQsHnkSK?=
- =?us-ascii?Q?ZlVMgJU6ZD3JZcv8OViZ6adTBnuUS7m81cxVOLK873Si7ZT/pgNmM3JmXadQ?=
- =?us-ascii?Q?0rjHhwok80Ra9xlXia4YXadPDOz0sAadonz65vCIazyGb66uK3kMWQh0GYuk?=
- =?us-ascii?Q?qq2mgjwF/NIYS+Ajlv+vFl/VQyUC1l70ge/1R5dis6w5BQq+91zf2gnXdoe2?=
- =?us-ascii?Q?72Sw6uCLVU6/XQejVQQ0nFhRM2Siknmh9A1UwboEGs+IQwFNqJaRO9LCBq1H?=
- =?us-ascii?Q?MmGuGd7atVcxryN5cIKH67oDglQx+sfIax14cEZc6Dl5FYP5pt1KEaFsHfZa?=
- =?us-ascii?Q?l13A59UB3tK71wv3MWUUx/pUGxH9rMLBMcGd4fn1FlZmeXyGRVAuMV07gJKC?=
- =?us-ascii?Q?Bmk/WTImFIm8D8ctJrzK7X8tix14uIhK5B/hS48IW4rbGuPWlnSXJYYhGCsJ?=
- =?us-ascii?Q?RBAEVRI4T9ZB8qNmIlmVdKYem2p0zrA6P+ikpiaV3nT6CCHRP7UrcCZYYoxN?=
- =?us-ascii?Q?3ALs8QjrhCwfGY0kDgJWlg12Kd0wYhRC6ALdTViVv0AAJUZWwobJBKDl1X8R?=
- =?us-ascii?Q?sqD8CnCd+1i/9UVnGf8DDCfXF8hF+1jfZHOd0j3yVYJjqCgQOF165HLEpd0D?=
- =?us-ascii?Q?cNMFmZAhcE/vUPD/9DGLrmvscbDKIuT9faDR0Q6OMeP3eyFONam2x4Io/61U?=
- =?us-ascii?Q?ylbK1xWMzIbNSiA4L1dLbTM=3D?=
+ ARA:13230040|366016|1800799024|7416014|376014|38070700021|921020; 
+x-microsoft-antispam-message-info: =?iso-8859-1?Q?ig6IkK+jGTTgpbOs+v26dq10IJlKZ/pdJMGjoFlnam9Q34bollP331z7nq?=
+ =?iso-8859-1?Q?RKxJ934su/gh+/w/dTtKyb4Mi0BAbkd5Gbl0jUDeib2aVXYWU+TWXcU9Tx?=
+ =?iso-8859-1?Q?MCezwaJGwx6YcLvIhIFOg2WkMuvq+uepELozDEsXt6fDLlD+Cnws5dR6Xn?=
+ =?iso-8859-1?Q?PQYPoXS8fFIwBxFQ/4sRT/eoRqFOgNqcOUm49eo8iZ7eL4PEYf/Fw6Zjxq?=
+ =?iso-8859-1?Q?Hs5cpRJNUCFNi2OmsLm5yEXhSHFLXatxEcd199pYAyLHzmt6eHUGt6+YdA?=
+ =?iso-8859-1?Q?7bGynZhLV4h/8ZgOmrBoGu52p+bkF7qb2/7Snd/OF5uq35KSRWi37519Mb?=
+ =?iso-8859-1?Q?cAvz6VPviKflKGwFeXXUCYxl3mmHVmdDrb8f4ZN9LNloH0KqwkIXAmi5wA?=
+ =?iso-8859-1?Q?sno4+aX8HWDcjxeiAS9owqcAnxS+r7MgHcGCrzHfdhCwbFTCuFVhP1zGQU?=
+ =?iso-8859-1?Q?fgwIoZGkFRCjMmvTwziaN5nx6idufM6n99J1/v46WmKP2IE4gCAExgZf97?=
+ =?iso-8859-1?Q?Wdvv4z9rvr3Iv1KZAPPVX4EO5UmgpbigPm/PM4fvE2g+9VpuLVbT/gB7Ao?=
+ =?iso-8859-1?Q?gnoIGpy4YBZ2AEvM7f5ehA9w7TvZn90t5DpRgY8QwhhREgvDOfom/aQy4Y?=
+ =?iso-8859-1?Q?ceIoQgJ8+38tCHkf8suluEs15pau1VLkA+iJd7touPbLvG18bg4pEiVPnO?=
+ =?iso-8859-1?Q?XX042bWNcyLwavHa/cgfypBwaawKgay9bgXoAFxjPkWN/bWDzZvoS4ls1c?=
+ =?iso-8859-1?Q?soADybBi7AI3n+lGb4u5oZmiVLb1FduTM7ZSX0U0Ss0zVqakW4N2Efiqkb?=
+ =?iso-8859-1?Q?LVLtQpm4qog5lkdfff7+D36+4yWkjq02WbR29xGIM32xKndHzeFq9PtFdO?=
+ =?iso-8859-1?Q?srCOs3joAikGHJui8gXJ/g9ed23fLbQAsEYgeQkBikFKTCFudsbwljazHk?=
+ =?iso-8859-1?Q?pqZ0thSiEtlIDbvVhapdKg/aV79+UIC8kIy6JRsClPo9egFceOtaXo0HBB?=
+ =?iso-8859-1?Q?Xs48Lr/xusFfP+BIHiknA7LuVa3YB/p+tV/vQJywmtQJaY1B7G7bi6D7Xp?=
+ =?iso-8859-1?Q?lZC2qMlZ8geRAaE81vInYfJ4CiJgyEueK0f/rELKffWRgH2U4mu2SE2kkF?=
+ =?iso-8859-1?Q?8hCpZQJb34wp1fTshU5MGz34YP/22EC1cjJdi4M04Wd7yMMwg82Qy3Ly7e?=
+ =?iso-8859-1?Q?WTKZbEIuShcnmPOsa/rfTHmDjNMBdYwRZ/YL3pjHtnBcdd7m/3aK+SiKlt?=
+ =?iso-8859-1?Q?6SkyMpi28rVgGd4OrLHxLTr+6XwTrj+k0Cs5JkIEKi9K+ucLVsOxBOqrWX?=
+ =?iso-8859-1?Q?nwAgAWiv1EvFgSru1PMpAo6v/oY6Pb1h0CvqlWK7fDa2nh9Q4c6IThLSWZ?=
+ =?iso-8859-1?Q?Hgr+BXRgOMlTrfzPli+BirJuL2NYLZaN5DeFKlTDssfi4I3Lo8xtDlC0w/?=
+ =?iso-8859-1?Q?awsCag5+N+gqNQQ0c9tYqQavFut6fewHXe4si7gUWd6/NKhmHhPxZjSRiJ?=
+ =?iso-8859-1?Q?GMxRmVMFioH4xf/5qU8dCRzzxQ+2ZZnjEecaaOwVHihE1pW4vI2Y3HSfBf?=
+ =?iso-8859-1?Q?c+44bfgQh3aHSyRe+7cHq8g4hODTD594cNGmn9VjqdRu51XytbVPxHad6S?=
+ =?iso-8859-1?Q?pdnOmDtO5F/riAN8wMX2Ir6F1P6iXEwX+GsfpKQcwPtSr/s9Vw03Lg0fKx?=
+ =?iso-8859-1?Q?+w3QjzTHvweqF3sYgTxmDJTjJrGosr72svBGjTbF?=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB7548.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(376014)(7053199007)(38070700021); DIR:OUT;
- SFP:1101; 
+ IPV:NLI; SFV:NSPM; H:TYPPR06MB8206.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(7416014)(376014)(38070700021)(921020);
+ DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?uXj9wvW7DtIukq+NWRrw4P3E4qRqc5Aijx+Js5etX0m3RtjvD54vP1CvvTPR?=
- =?us-ascii?Q?v4IDv5uJ3h8ccUyr87IOJoZUUti+Ec7adbwpz/x7jjC7j3fU6bOJqF7/n3B2?=
- =?us-ascii?Q?xT3cuX4ZtBE2SCaRjRHobwJBNhBFDBHrCa9E6jBNZbIg8ktWsl/5vUcK5Uz+?=
- =?us-ascii?Q?THwyxfAUxwujVn7ONeVsvhz9utn52MhPwasDdoU2f+YkVtESygRdKCtU4ITW?=
- =?us-ascii?Q?BQ+3S/ajj27ZehPPfYC/ydRVEdlQMXkRbQaQehXQLdhpG4w8lFq1sK/QOpOw?=
- =?us-ascii?Q?iCTCsJuH2JUWEIs7BJKwAIUW1tNtcMx3qx1E/YKGCXQ8tWs3h4R5ZrvjycRw?=
- =?us-ascii?Q?yue0ZeouIcLCmd7KTU6GesAFhwAL+ma+PEO4EYdsXeDdTgGB9HF3Tp6Sl/At?=
- =?us-ascii?Q?5X0Wn7lAQngh+DCG1XyWpq9Aw0mNBim/7pk8NO5uXKrxB6yqAWEdvwLF6FDz?=
- =?us-ascii?Q?uh8iyUQSGg5kjJ6WkdYPfysJJpnFARdPmga2FJfPIfawJee90IHweH52wUoi?=
- =?us-ascii?Q?LiVbx5UJ7dYF5nzbWkoia8AzI7aeJ4we7JroxnLbn1R6WceTqyiQHBKxnBM/?=
- =?us-ascii?Q?wmrmknPMHq2HIpwG9oblkiO+p9giThv58mm0Frz4prODDoSQZ5nO7lPB8trJ?=
- =?us-ascii?Q?CCJXxo17xbBrZNbPS83W7hVC2I9/WJGiCT5V4vNyF5NCwG49HJstEShN3tpZ?=
- =?us-ascii?Q?H5Fk2KD3enUKsb1FVeycldelZx5KDfvRJi1MPkJpMVi52xQvZBFutthrHvVk?=
- =?us-ascii?Q?1BkrUbAMkCKVf6CkY8gxiSsY+mXcnL9fJ99c8T+G510azpbeW30H73AehzFi?=
- =?us-ascii?Q?kpKu7tUiDWqg2eJKmsThv9GQ4ztRkguWkm/5b3SPvCp2wujHKuZ9woaOoC9m?=
- =?us-ascii?Q?lIheXDVaJjLBpw9579a1JyAfMs6wFwMsqQZ64hdIWN9lXBaiOPWDfgZMH1JM?=
- =?us-ascii?Q?695G1B93qNtqQDAgrycAc8HJEKvrqF7erFfF3uJjDwdDrtDF07E0aUUFBzwV?=
- =?us-ascii?Q?Yojjvxqz516BY0ni9edf8eHGrr9LbRzuyhZOZPHw4qaSr+wpuftLr/Uv52M1?=
- =?us-ascii?Q?/oxqmY1Z7aqyX0zEjEUL0SzRZge5bxgYRbgl49JFmw2J9FxrTud22OQj0fdT?=
- =?us-ascii?Q?Hg5iujXWRr5Nv2hdzxZJfh6OrLfqlR7WoGsndl3oNKOasDiSbIvDIsEPT7ZC?=
- =?us-ascii?Q?IuHEjrSO5z7dpzu7MTk78d/uDYP9UN2y26o3MQerHc9DPie5keYSwO3oDBtx?=
- =?us-ascii?Q?mIBgaGBM1P6rLQihw8+CzmLpddqieEou+Q52yyuZpDSdgSwh45+pOQvA4pWT?=
- =?us-ascii?Q?rKtwN1UyNNsaUY6+udc0Q4ZG3bt5fRtDNeDRCXg4KERmI5XtcS5FBy6iUh55?=
- =?us-ascii?Q?VdcKqe7kkeRx3huvFtoQKpQBX0v6lxNoN2Ra0OBvilaiSijCUkCdM05ukNXq?=
- =?us-ascii?Q?bLIXKK8bOwqn0XK6J6RcOjZ750X/rnNko7SkETSPmScES2DhRIHqGMVOXmkr?=
- =?us-ascii?Q?7MA7lbJTrtVFxPHMmXEyxiUxDwsmLJhyo6inwMf/oen1g9Qu0B3FOvh2BJcH?=
- =?us-ascii?Q?IWDZAaf+ZMWZNvoWzbSZgzQDJNXDmNIUnRD8ta8rYkIxLH8RGQ5PozJVvqMi?=
- =?us-ascii?Q?ADDCFCQ64OPCBle0SWIMDLl6P53WXzSRh9o+Oft1Asz478e7BTJ8RwkH9p58?=
- =?us-ascii?Q?Qu/4LQSY9vHxtR4aUX4uvwDBK+mz2NsHLc1WMoD6Sf/eH89+A7UYjMeXgCS7?=
- =?us-ascii?Q?XYPsjdJ0tQ=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?0KhFlIXrENLixYWs+YwiCadJOikpZyBWZY8gFTnJpievZn+gByBgnXHcZU?=
+ =?iso-8859-1?Q?jy/wWtw9JKk4MgXpXG6XX95NmLYTiikA7n/sxnfnuUladUXYf/sSEb7tdQ?=
+ =?iso-8859-1?Q?I1a2BdgQWb+jA03Kk7SpCzxckOvRyfUZg/x4o+quuAGuQazWA8YXK2Ihr8?=
+ =?iso-8859-1?Q?oyhy3/QkL4qUhrcUKcE0ETjILIC0BpPc/UFgDcPLgjRxHFf7Hx/4WLLiLt?=
+ =?iso-8859-1?Q?vzp0zZ4LxxOjmU/73SajMh9hs9h/f/rJRO1bKIJRYlExzIfFYSK2CEhMjz?=
+ =?iso-8859-1?Q?r+NbHFeyp3NcV2ky34LlU583fAu3CmnSyWz1YwrcREPHSvy+NuCwchdVhs?=
+ =?iso-8859-1?Q?iEIN+FlgtF2b3EV5ikvOG+YoH0h1dX2asEZ82zbVsp05DHFHU6QzQ5HhLU?=
+ =?iso-8859-1?Q?agiSkk3XyvgN2+4p4CJq7cBJPEDTLXcVakiEjd+F6jPkSzHXQa38eSofv4?=
+ =?iso-8859-1?Q?C/R9F70dPM4VehgMiV3+nBc6SiWo3QmXqbtgjRIUnA183/A7+hnHxGm5Yj?=
+ =?iso-8859-1?Q?DTZTe280YZc4xvpAphPi+tRyQkVp9OQADs9/Y/j0hJkpY8Qov4j/GQaEgL?=
+ =?iso-8859-1?Q?n1ZmNMv2JGk8Dj6rV3lRyYnJ8hjRK4kUNwFluffsggo7XMuSPUUYzWuA4l?=
+ =?iso-8859-1?Q?C64Jb9lsKqB+M8KEAlzqTZdOEaNQ0k2+EIvc1071UCsGvmu7E5zTYdMzzH?=
+ =?iso-8859-1?Q?l52hdDw3pVs//d0eMpJf9cA8MT4lKr/QijaHR76JW8vsCKMyYF3CGl7/WC?=
+ =?iso-8859-1?Q?qz5hZkiYbSS/2hO2YFdkI1LHyWNhYHZJnPz0tZPF/GTo1p91d4Jmc9zDTs?=
+ =?iso-8859-1?Q?d/6cHTvMI3hG2zKbplVOZxOvFDtrsBW7qjkYJgq6pPx8BoD93mcUR1h8cz?=
+ =?iso-8859-1?Q?GGNYSUwgMzY/GRTmc57214NbqFIS7X+BtKhujBXnMN6mUNd/emLdHf7pkB?=
+ =?iso-8859-1?Q?uk+60YZw2YIYXLR56jubm5HsQ2n9/n/tN641hOwuUP1wjyecgskKUaODQK?=
+ =?iso-8859-1?Q?jD6k9XJN1EW09R83fWTF5A+8wcRhmOmi/h8E4QSC7m5KxOBS83ix1B2/Ll?=
+ =?iso-8859-1?Q?J/DfcfisW3zBnYAHw3Cj3BSlDEO/mq/M6+wI/fNKC8S4wr5NHOyapaPRhK?=
+ =?iso-8859-1?Q?HMRmZL37D9jpU8SEBSZMcNWeSmZNA93hj5n+GFw7orsc94Dp8Sdwm5aGmX?=
+ =?iso-8859-1?Q?pz8esJrsnczu0W/HF1v8XSCuCtUq9vul1wG/keI3zoS8/Nis6kPuqk7Ddy?=
+ =?iso-8859-1?Q?3++fsKB1BMy5WNrvLRX2eN70pI7Vuy4QkYZsbn94H5ZUAkJltPyf8GgMUI?=
+ =?iso-8859-1?Q?/a7qausJC1uftz9wzhkmi5B4q9qF67QUfflPQA52/75A0mUJuScbYxkJZP?=
+ =?iso-8859-1?Q?srZVpmLN4fZdgKgAW43I1Lt5wSKt+jzX4TaNyeBtqpXdD8CDBYHw0Nlmn+?=
+ =?iso-8859-1?Q?9all0uXxCmBplCDkeuM+jUhrR71Gm3wnd8h2YYoQICWk1gD1ADMSQK2058?=
+ =?iso-8859-1?Q?fIsV4baPwCl/e5i42kMenyboEq/1rrwqt+Je3Flzge2tge481fvJudNQ8I?=
+ =?iso-8859-1?Q?w1uJ2s/s00cvaO1M3Nbz5H/I5vUKdR1svpFPt6zZPs39Emy0snru7vl3Qb?=
+ =?iso-8859-1?Q?ctEIOz7kyufeyTwJ80OoaD6/ANHFbW7QVI80IIJ+t7+PVcE2/hX0+yO2PM?=
+ =?iso-8859-1?Q?8MBt6KMgt/Gx1SEMpoIr7EKK0AzOhmzB+63ZGQlb4kzET5/oxUkZTya603?=
+ =?iso-8859-1?Q?/4JLqodNRg4lXJ+Ww+UPPHaYWfdzzdDCCWtCD8ppqqZUf3sZFcv0DKWxB/?=
+ =?iso-8859-1?Q?LhQqJm9xFQ=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
+X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB7548.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f9871c14-24f7-45f7-80a3-08de68822fdc
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Feb 2026 08:55:49.0423 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: TYPPR06MB8206.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f087ddab-ed06-41f9-db9a-08de688436b8
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Feb 2026 09:10:19.5872 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: PT4P4pGCEbcRg5WNl4ATK94V6JQjVjugrJ3aHK67S/Opvin7HQUB841HNljaRJSFRL5qIJ1qdDzImF5I0zDVTQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR12MB9644
-Received-SPF: permerror client-ip=2a01:111:f403:c105::1;
- envelope-from=skolothumtho@nvidia.com;
- helo=CH1PR05CU001.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+X-MS-Exchange-CrossTenant-userprincipalname: 5wVX1XNUeQ2YZy3noecJpt+SyXfVU1Bc8vmG/aI2Eglnxkl3FGbKMkHP9pQfHtOV7rNaAN8EeILJsKWCxpVcrnkBCvBCvuXaHZ80BDEeQV0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR06MB5264
+Received-SPF: pass client-ip=2a01:111:f403:c405::7;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYDPR03CU002.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -180,60 +176,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-> -----Original Message-----
-> From: Nicolin Chen <nicolinc@nvidia.com>
-> Sent: 09 February 2026 23:46
-> To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
-> eric.auger@redhat.com; peter.maydell@linaro.org; clg@redhat.com;
-> alex@shazbot.org; Nathan Chen <nathanc@nvidia.com>; Matt Ochs
-> <mochs@nvidia.com>; Jiandi An <jan@nvidia.com>; Jason Gunthorpe
-> <jgg@nvidia.com>; jonathan.cameron@huawei.com;
-> zhangfei.gao@linaro.org; zhenzhong.duan@intel.com; Krishnakant Jaju
-> <kjaju@nvidia.com>
-> Subject: Re: [PATCH v2 14/24] hw/arm/tegra241-cmdqv: Allocate HW
-> VCMDQs on base register programming
->=20
-> On Fri, Feb 06, 2026 at 02:48:13PM +0000, Shameer Kolothum wrote:
-> > From: Nicolin Chen <nicolinc@nvidia.com>
-> >
-> > Add support for allocating IOMMUFD hardware queues when VCMDQ base
-> > registers are programmed by the guest.
-> >
-> > When a VCMDQ BASE register is written with a valid RAM-backed address,
-> > allocate a corresponding IOMMUFD hardware queue for the CMDQV device.
->=20
-> Let's mention that this is because QEMU doesn't trap VCMDQ_EN bit,
-> which is a part of VCMDQ_CONFIG register accessed via the mmap'd
-> page0.
->=20
-> > +static bool tegra241_cmdqv_setup_vcmdq(Tegra241CMDQV *cmdqv, int
-> index,
-> > +                                       Error **errp)
-> > +{
-> > +    SMMUv3AccelState *accel =3D cmdqv->s_accel;
-> > +    uint64_t base_mask =3D (uint64_t)R_VCMDQ0_BASE_L_ADDR_MASK |
-> > +                         (uint64_t)R_VCMDQ0_BASE_H_ADDR_MASK << 32;
-> > +    uint64_t addr =3D cmdqv->vcmdq_base[index] & base_mask;
-> > +    uint64_t log2 =3D cmdqv->vcmdq_base[index] &
-> R_VCMDQ0_BASE_L_LOG2SIZE_MASK;
-> > +    uint64_t size =3D 1ULL << (log2 + 4);
-> > +    IOMMUFDHWqueue *vcmdq =3D cmdqv->vcmdq[index];
-> > +    IOMMUFDViommu *viommu =3D accel->viommu;
-> > +    IOMMUFDHWqueue *hw_queue;
-> > +    uint32_t hw_queue_id;
-> > +
-> > +    /* Ignore any invalid address. This may come as part of reset etc =
-*/
-> > +    if (!address_space_is_ram(&address_space_memory, addr)) {
-> > +        return true;
->=20
-> We should probably check addr and size - 1 + addr?
-
-Right. Will add.
-
-Thanks,
-Shameer
+v1:=0A=
+  The initial patch series was based on work by Joe Komlodi <komlodi@google=
+.com>.=0A=
+=0A=
+  This series adds I3C bus support to QEMU and adds more functionality to t=
+he=0A=
+  Aspeed I3C controller.=0A=
+=0A=
+  This implementation is a basic implementation that introduces IBIs=0A=
+  (including hot-join), CCCs, and SDR data transfer. As-is, it doesn't supp=
+ort=0A=
+  multi-controller buses or HDR transfers.=0A=
+=0A=
+  First we add the I3C bus and controller model. With that added we extend=
+=0A=
+  the functionality of the Aspeed I3C controller so it can do transfers=0A=
+  and handle IBIs.=0A=
+=0A=
+  Next, we add a mock I3C target. It's intended to be a very simple target=
+=0A=
+  just to verify that I3C is working on the guest. Internally, we've used i=
+t=0A=
+  on Linux to verify that i3C devices can be probed and can send/receive da=
+ta=0A=
+  and IBIs.=0A=
+  This target is sort of like an EEPROM, and it can also send IBIs upon=0A=
+  reception of a user-defined magic number.=0A=
+=0A=
+  Lastly we add  hotplugging support. The hotplugging doesn't do anything t=
+oo=0A=
+  complicated, it just adds the device attempting to hotplug to the bus. It=
+=0A=
+  is the device's responsibility to hot-join and go through the DAA process=
+=0A=
+  to participate on the bus.=0A=
+=0A=
+v2:=0A=
+  Jamin Lin <jamin_lin@aspeedtech.com> has taken ownership of the I3C patch=
+=0A=
+  series for upstream submission.=0A=
+=0A=
+  Changes in this version include:=0A=
+=0A=
+  1. Added I3C functional tests.=0A=
+  2. Updated patch 4 to refine register field definitions.=0A=
+  3. Updated patch 7 to correct read-only register field masks.=0A=
+=0A=
+v3:=0A=
+  1. Add Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+  2. Fix a typo=0A=
+  3. Fix ASPEED mail server issue=0A=
+=0A=
+v4:=0A=
+  1. Add Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com> at the end of =
+each patch.=0A=
+=0A=
+v5:=0A=
+  1. Address review feedback by updating the I3C bus and device to use the=
+=0A=
+   DEFINE_TYPES() macro instead of an explicit type registration function.=
+=0A=
+  2. Rename variables to `parent_obj` for the parent object and `parent_cla=
+ss`=0A=
+   for the parent class to comply with QEMU QOM coding style guidelines.=0A=
+=0A=
+Jamin Lin (2):=0A=
+  hw/i3c/aspeed_i3c: Switch to DEFINE_TYPES() and align parent_obj=0A=
+    naming=0A=
+  tests/functional/arm/test_aspeed_ast2600_sdk: Add i3c functional test=0A=
+=0A=
+Joe Komlodi (19):=0A=
+  hw/misc/aspeed_i3c: Move to i3c directory=0A=
+  hw/i3c: Add bus support=0A=
+  hw/i3c: Split DesignWare I3C out of Aspeed I3C=0A=
+  hw/i3c/dw-i3c: Add more register fields=0A=
+  hw/i3c/aspeed_i3c: Add more register fields=0A=
+  hw/i3c/dw-i3c: Add more reset values=0A=
+  hw/i3c/aspeed_i3c: Add register RO field masks=0A=
+  hw/i3c/dw-i3c: Add register RO field masks=0A=
+  hw/i3c/dw-i3c: Treat more registers as read-as-zero=0A=
+  hw/i3c/dw-i3c: Use 32 bits on MMIO writes=0A=
+  hw/i3c/dw-i3c: Add IRQ MMIO behavior=0A=
+  hw/i3c/dw-i3c: Add data TX and RX=0A=
+  hw/i3c/dw-i3c: Add IBI handling=0A=
+  hw/i3c/dw-i3c: Add ctrl MMIO handling=0A=
+  hw/i3c/dw-i3c: Add controller resets=0A=
+  hw/i3c/aspeed: Add I3C bus get function=0A=
+  hw/i3c: Add Mock target=0A=
+  hw/arm/aspeed: Build with I3C_DEVICES=0A=
+  hw/i3c: Add hotplug support=0A=
+=0A=
+ meson.build                                   |    1 +=0A=
+ hw/i3c/trace.h                                |    2 +=0A=
+ include/hw/arm/aspeed_soc.h                   |    2 +-=0A=
+ include/hw/{misc =3D> i3c}/aspeed_i3c.h         |   31 +-=0A=
+ include/hw/i3c/dw-i3c.h                       |  199 ++=0A=
+ include/hw/i3c/i3c.h                          |  277 +++=0A=
+ include/hw/i3c/mock-i3c-target.h              |   52 +=0A=
+ hw/i3c/aspeed_i3c.c                           |  258 +++=0A=
+ hw/i3c/core.c                                 |  664 ++++++=0A=
+ hw/i3c/dw-i3c.c                               | 1862 +++++++++++++++++=0A=
+ hw/i3c/mock-i3c-target.c                      |  298 +++=0A=
+ hw/misc/aspeed_i3c.c                          |  383 ----=0A=
+ hw/Kconfig                                    |    1 +=0A=
+ hw/arm/Kconfig                                |    3 +=0A=
+ hw/i3c/Kconfig                                |   15 +=0A=
+ hw/i3c/meson.build                            |    6 +=0A=
+ hw/i3c/trace-events                           |   48 +=0A=
+ hw/meson.build                                |    1 +=0A=
+ hw/misc/meson.build                           |    1 -=0A=
+ hw/misc/trace-events                          |    6 -=0A=
+ .../functional/arm/test_aspeed_ast2600_sdk.py |   12 +=0A=
+ 21 files changed, 3710 insertions(+), 412 deletions(-)=0A=
+ create mode 100644 hw/i3c/trace.h=0A=
+ rename include/hw/{misc =3D> i3c}/aspeed_i3c.h (53%)=0A=
+ create mode 100644 include/hw/i3c/dw-i3c.h=0A=
+ create mode 100644 include/hw/i3c/i3c.h=0A=
+ create mode 100644 include/hw/i3c/mock-i3c-target.h=0A=
+ create mode 100644 hw/i3c/aspeed_i3c.c=0A=
+ create mode 100644 hw/i3c/core.c=0A=
+ create mode 100644 hw/i3c/dw-i3c.c=0A=
+ create mode 100644 hw/i3c/mock-i3c-target.c=0A=
+ delete mode 100644 hw/misc/aspeed_i3c.c=0A=
+ create mode 100644 hw/i3c/Kconfig=0A=
+ create mode 100644 hw/i3c/meson.build=0A=
+ create mode 100644 hw/i3c/trace-events=0A=
+=0A=
+-- =0A=
+2.43.0=0A=
 

@@ -4,45 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 731A7EA8128
-	for <qemu-arm@archiver.kernel.org>; Tue, 10 Feb 2026 14:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5712CEA8126
+	for <qemu-arm@archiver.kernel.org>; Tue, 10 Feb 2026 15:11:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vppB6-0007CG-ML; Tue, 10 Feb 2026 09:57:24 -0500
+	id 1vppOr-000679-1p; Tue, 10 Feb 2026 10:11:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vppB4-00075P-E4
- for qemu-arm@nongnu.org; Tue, 10 Feb 2026 09:57:22 -0500
-Received: from smtpout4.mo529.mail-out.ovh.net ([217.182.185.173])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vppOp-00065k-KZ
+ for qemu-arm@nongnu.org; Tue, 10 Feb 2026 10:11:35 -0500
+Received: from 9.mo552.mail-out.ovh.net ([87.98.180.222])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vppAy-0004gS-TY
- for qemu-arm@nongnu.org; Tue, 10 Feb 2026 09:57:21 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.109.249.68])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 4f9PmS0HQtz5w9T;
- Tue, 10 Feb 2026 14:57:12 +0000 (UTC)
-Received: from kaod.org (37.59.142.102) by DAG14EX2.mxp5.local (172.16.2.142)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vppOm-0006kg-RW
+ for qemu-arm@nongnu.org; Tue, 10 Feb 2026 10:11:35 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.58.79])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4f9Q4y2QNCz5vyF;
+ Tue, 10 Feb 2026 15:11:30 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG14EX2.mxp5.local (172.16.2.142)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Tue, 10 Feb
- 2026 15:57:11 +0100
+ 2026 16:11:29 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-102R004d70a592a-8e8d-4dca-9dfb-f4d26cca8ab0,
+ (GARM-97G002311fe2d7-81ff-4e28-89d3-d7434845944e,
  013E132ABECAD38B5622F7607EFF7317793E1520) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <10afb416-c681-4049-98e4-8d6d796f6ddd@kaod.org>
-Date: Tue, 10 Feb 2026 15:57:10 +0100
+Message-ID: <16a2d728-f2f0-4fef-b528-0b03bc216212@kaod.org>
+Date: Tue, 10 Feb 2026 16:11:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] hw/i2c/aspeed_i2c: Fix out-of-bounds read in I2C
- MMIO handlers
+Subject: Re: [PATCH v2 05/11] hw/arm/aspeed_ast27x0_evb: Move ast2700-evb
+ alias to AST2700 A2 EVB
 To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
-References: <20260210024331.3984696-1-jamin_lin@aspeedtech.com>
- <20260210024331.3984696-2-jamin_lin@aspeedtech.com>
+ Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>, Laurent Vivier
+ <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
+ BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ "nabihestefan@google.com" <nabihestefan@google.com>
+References: <20260210051008.355149-1-jamin_lin@aspeedtech.com>
+ <20260210051008.355149-6-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -87,35 +90,35 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260210024331.3984696-2-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260210051008.355149-6-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.102]
-X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG14EX2.mxp5.local
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG6EX2.mxp5.local (172.16.2.52) To DAG14EX2.mxp5.local
  (172.16.2.142)
-X-Ovh-Tracer-GUID: 9eab6640-243e-405a-a0ce-0902ccfa44e9
-X-Ovh-Tracer-Id: 5136073900443798450
+X-Ovh-Tracer-GUID: f13abd97-19ce-45a0-91cf-9a66aeb33121
+X-Ovh-Tracer-Id: 5377860909008194366
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTE2zbw9FOQ/Ui7D025MkYEGF6Y1AfegVl+MQNXvCwgOhNCiMp8G9Dn7QGMxn9uy2i5cuFDG+NsR+4pKv7Jo3Z6Qn65Dh4PnSxxMoQSXgacIO1kKniEuYGI+jxFLXFMmBqgu3pAA3D3Cbh+zBEiaVN7Ta6X0KtzkYrTl9k5RAA2Y8bywqtGfPDRsW3CWLszPGV1dvvAtFJ8DdbKjGueLhUvPxkbBhj2tGKT7zRDBMffDhGW4lPF11M8FdXt63yKS9ib3dUNbL5MnJvXcyrJp7f9p2VKIk8BmdoSK2yKstE0woiAG/BYhphaHHmZfbA4IQ+4XHflUN/fq8oIaugViidCJYt7Bvf3kXn1SxWjnmibn7y4m/YK/sj/8OsiMDQp3BPSsmVUf8w8hQHVQv2WCtLO2GNFepuGlMIJ9VxdqF72ty8J+aP6sZLXgU4wUZ5r5+Ey106DHPhYp8hwEADnxCNheDqkucJ5GN8egtmb2hSU0QqZB7ltjKqrLFOKGiXh29oBrIi3zThNHsA/+7rQwH7bHkC+dJVU5vMvb1Wm/NO0IkhTGRPByihZPNFI4ER0imHL6RiDetT3+VM8+WsgoHASJZ1CN+xpB04rCZiWoCqjSLcNhiN+eJjlClhYi0kM69ANcPle0hdsCPKnmimbnwD39jOQoLNMDufbGF3hB8V6m1g
-DKIM-Signature: a=rsa-sha256; bh=f2mdjkVxWy3VPpPuYYXzI4ptS2A6qdM0skuGa/E7oXM=; 
+X-VR-SPAMCAUSE: dmFkZTGdV/5CwB9MaG/Te45JwJYK1avXywt3iwNd3FtYhlRzUMvD3HBHrFdzzpNBOxZKiGWLFsBDoqtK8A2+W/lpshkmjJUYjjihS5anMF0MyqrmZBijGLyqzv/OEOas8NbglOha4M7rDEHFw8GVnGG4SSzjcJAmOVn3izuz4XJLTjvkoO8n3NNYmJdmGbitDvRTHAYJXWy0YcaCtRQl+68KqD9Rnp1YJvn+UWqI1o9b5Xqh7WlBafv4zUcPGAc+/lv4J79KQ47/TrnaXRQZ60Lk7ccSRvnvo94/0HgtiVaIaZRtBpP3MXNDrm38BJ6/e4Wcxu5rxiCEin/gi1wlfdK0l8WOhjoeUkwygX0hCf6uPB+248pQR/KZSso8C4k8AFPC5ocLTP6LmqYXOtw/97FA8Vc16GnyN1yLtGAUl8xi2BPtTfjGSkLHVxNSy3eccv+T9/bJ17QwXVZbc+GxHubP9H+yG0VcvFimn2Jx2TqUSVB1hr82MuhSp3CmBLIWnzgkSewEm5jT7wtXuiolVoCoFM/We8c5ryUxxfIVdNqsdzTd2cV9kMxNeSiMyqTDoFPtcYAVVri+wPs81Wx2j71bjvwZHBHlwD4YWljlDVGqJUNXy0v9pXn+3E1wu3fhPJmya6585CXn9NE+7XXBgnjcRvdF2KthyNlAykx1fCdLTbRUcQ
+DKIM-Signature: a=rsa-sha256; bh=8VYJ1FMWjCWh1xmSQVI6Q8pQLcVCcLlUhyQgqav4tx4=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1770735433; v=1;
- b=QKGhlYxe9Apg8YBWQuF+E1UFrmf197iu6rPgPqmdAsNcYcD4NAeqbCJy4V6F2mSDQ5IpXRYl
- N/JRVrVMQI+BF/FXn81es8qkLqmBZWnxqcqKRKsa4bfd3g8LNNv+9Q/cBfSO9BTG99LHwPJV8tV
- 0bWF8iqp6+Fe7LU+XAjvO7PGLTNIYBGn2P1j0c1fgt0OmtoBsFNnmLrv1DfNLwafgu8Bm0dqw2S
- bMi5V+Z9WDVOshCHrgqWwktVZQWBp9CsXgPmUYyBRcdzO3IMFIdt8XTff2iY/8qioXyOUpAOGP0
- Mv2wDAibEeb244/Uo+Q+aPQQuBv4kNtAxSXRAD3iR0PyQ==
-Received-SPF: pass client-ip=217.182.185.173; envelope-from=clg@kaod.org;
- helo=smtpout4.mo529.mail-out.ovh.net
+ t=1770736290; v=1;
+ b=sb7Euz1kb0JwFaeEJ0s/lRjD43iR02YK717L+mswcfsGE0zXzSj5dNYMaNk3V4rsq48Fogk4
+ 8E/60NpT1vShGlEMOZ2WKKk2LWYfrE0012yiClTAb+uAEWq6d0D9eh+ZUKb1LEmPq9MSe47lFdA
+ A9Xc02ceMuBr0uVkhDrX2YbZ73AhBUPQcHL6wG2iF+cz0MAr82zeojEYcF09fNB3PXI2asTQ1rb
+ 7KUA9QYgZU2eDcd9jSerF2dO7Zf/Oc7eRRQnq8E+7NgbEJemFlKPkNU+lzHFBAS9XCZ4y3eKu/G
+ oqevJ8Sc4na2B5iO6DyoQSL8seLE7Opi8ymXFYXIAR1dA==
+Received-SPF: pass client-ip=87.98.180.222; envelope-from=clg@kaod.org;
+ helo=9.mo552.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,136 +134,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/10/26 03:43, Jamin Lin wrote:
-> The ASPEED I2C controller exposes a per-bus MMIO window of 0x80 bytes on
-> AST2600/AST1030/AST2700, but the backing regs[] array was sized for only
-> 28 dwords (0x70 bytes). This allows guest reads in the range [0x70..0x7f]
-> to index past the end of regs[].
+On 2/10/26 06:10, Jamin Lin wrote:
+> Make AST2700 A2 EVB the default ast2700-evb machine.
 > 
-> Fix this by:
-> - Sizing ASPEED_I2C_NEW_NUM_REG to match the 0x80-byte window
->    (0x80 >> 2 = 32 dwords).
-> - Avoiding an unconditional pre-read from regs[] in the legacy/new read
->    handlers. Initialize the return value to -1 and only read regs[] for
->    offsets that are explicitly handled/valid, leaving invalid offsets to
->    return -1 with a guest error log.
+> The "ast2700-evb" machine alias is moved from the AST2700 A1 EVB
+> to the AST2700 A2 EVB, making A2 the default evaluation board
+> for AST2700.
+> 
+> This ensures that users selecting "ast2700-evb" will run on the
+> latest AST2700 silicon revision. The AST2700 A1 EVB machine
+> remains available explicitly as "ast2700a1-evb".
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3290
+> ---
+>   hw/arm/aspeed_ast27x0_evb.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/aspeed_ast27x0_evb.c b/hw/arm/aspeed_ast27x0_evb.c
+> index 32d944848e..0ff1bebeb0 100644
+> --- a/hw/arm/aspeed_ast27x0_evb.c
+> +++ b/hw/arm/aspeed_ast27x0_evb.c
+> @@ -34,7 +34,6 @@ static void aspeed_machine_ast2700a1_evb_class_init(ObjectClass *oc,
+>       MachineClass *mc = MACHINE_CLASS(oc);
+>       AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+>   
+> -    mc->alias = "ast2700-evb";
+>       mc->desc = "Aspeed AST2700 A1 EVB (Cortex-A35)";
+>       amc->soc_name  = "ast2700-a1";
+>       amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
+> @@ -56,6 +55,7 @@ static void aspeed_machine_ast2700a2_evb_class_init(ObjectClass *oc,
+>       MachineClass *mc = MACHINE_CLASS(oc);
+>       AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+>   
+> +    mc->alias = "ast2700-evb";
+>       mc->desc = "Aspeed AST2700 A2 EVB (Cortex-A35)";
+>       amc->soc_name  = "ast2700-a2";
+>       amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
+
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
-
-
-> ---
->   include/hw/i2c/aspeed_i2c.h |  3 +--
->   hw/i2c/aspeed_i2c.c         | 22 ++++++++++------------
->   2 files changed, 11 insertions(+), 14 deletions(-)
-> 
-> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-> index 68bd138026..1ba0112cef 100644
-> --- a/include/hw/i2c/aspeed_i2c.h
-> +++ b/include/hw/i2c/aspeed_i2c.h
-> @@ -36,8 +36,7 @@ OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
->   #define ASPEED_I2C_NR_BUSSES 16
->   #define ASPEED_I2C_SHARE_POOL_SIZE 0x800
->   #define ASPEED_I2C_BUS_POOL_SIZE 0x20
-> -#define ASPEED_I2C_OLD_NUM_REG 11
-> -#define ASPEED_I2C_NEW_NUM_REG 28
-> +#define ASPEED_I2C_NEW_NUM_REG (0x80 >> 2)
->   
->   #define A_I2CD_M_STOP_CMD       BIT(5)
->   #define A_I2CD_M_RX_CMD         BIT(3)
-> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-> index fb3d6a5600..741c7a7297 100644
-> --- a/hw/i2c/aspeed_i2c.c
-> +++ b/hw/i2c/aspeed_i2c.c
-> @@ -94,7 +94,7 @@ static uint64_t aspeed_i2c_bus_old_read(AspeedI2CBus *bus, hwaddr offset,
->                                           unsigned size)
->   {
->       AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
-> -    uint64_t value = bus->regs[offset / sizeof(*bus->regs)];
-> +    uint64_t value = -1;
->   
->       switch (offset) {
->       case A_I2CD_FUN_CTRL:
-> @@ -105,7 +105,7 @@ static uint64_t aspeed_i2c_bus_old_read(AspeedI2CBus *bus, hwaddr offset,
->       case A_I2CD_DEV_ADDR:
->       case A_I2CD_POOL_CTRL:
->       case A_I2CD_BYTE_BUF:
-> -        /* Value is already set, don't do anything. */
-> +        value = bus->regs[offset / sizeof(*bus->regs)];
->           break;
->       case A_I2CD_CMD:
->           value = SHARED_FIELD_DP32(value, BUS_BUSY_STS, i2c_bus_busy(bus->bus));
-> @@ -113,21 +113,20 @@ static uint64_t aspeed_i2c_bus_old_read(AspeedI2CBus *bus, hwaddr offset,
->       case A_I2CD_DMA_ADDR:
->           if (!aic->has_dma) {
->               qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  __func__);
-> -            value = -1;
->               break;
->           }
-> +        value = bus->regs[offset / sizeof(*bus->regs)];
->           break;
->       case A_I2CD_DMA_LEN:
->           if (!aic->has_dma) {
->               qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  __func__);
-> -            value = -1;
-> +            break;
->           }
-> +        value = bus->regs[offset / sizeof(*bus->regs)];
->           break;
-> -
->       default:
->           qemu_log_mask(LOG_GUEST_ERROR,
->                         "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, offset);
-> -        value = -1;
->           break;
->       }
->   
-> @@ -139,7 +138,7 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
->                                           unsigned size)
->   {
->       AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
-> -    uint64_t value = bus->regs[offset / sizeof(*bus->regs)];
-> +    uint64_t value = -1;
->   
->       switch (offset) {
->       case A_I2CC_FUN_CTRL:
-> @@ -159,13 +158,12 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
->       case A_I2CS_CMD:
->       case A_I2CS_INTR_CTRL:
->       case A_I2CS_DMA_LEN_STS:
-> -        /* Value is already set, don't do anything. */
-> +    case A_I2CS_INTR_STS:
-> +        value = bus->regs[offset / sizeof(*bus->regs)];
->           break;
->       case A_I2CC_DMA_ADDR:
->           value = extract64(bus->dma_dram_offset, 0, 32);
->           break;
-> -    case A_I2CS_INTR_STS:
-> -        break;
->       case A_I2CM_CMD:
->           value = SHARED_FIELD_DP32(value, BUS_BUSY_STS, i2c_bus_busy(bus->bus));
->           break;
-> @@ -176,13 +174,13 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
->           if (!aic->has_dma64) {
->               qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA 64 bits support\n",
->               __func__);
-> -            value = -1;
-> +            break;
->           }
-> +        value = bus->regs[offset / sizeof(*bus->regs)];
->           break;
->       default:
->           qemu_log_mask(LOG_GUEST_ERROR,
->                         "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__, offset);
-> -        value = -1;
->           break;
->       }
->   
-
 

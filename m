@@ -4,44 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18DB5E9E2FA
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 12:11:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 481C4E9E2FB
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 12:11:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vq93U-00084e-Qu; Wed, 11 Feb 2026 07:10:53 -0500
+	id 1vq93f-00089F-BJ; Wed, 11 Feb 2026 07:11:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vq93S-00084H-6M
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 07:10:50 -0500
-Received: from 6.mo552.mail-out.ovh.net ([188.165.49.222])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vq93a-00085c-F0
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 07:10:59 -0500
+Received: from 5.mo548.mail-out.ovh.net ([188.165.49.213])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vq93Q-0004zP-On
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 07:10:49 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.58.107])
- by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4f9y1z3K68z5vs1;
- Wed, 11 Feb 2026 12:10:47 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vq93W-00050K-HR
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 07:10:56 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.37.64])
+ by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4f9y242lh2z5wBl;
+ Wed, 11 Feb 2026 12:10:52 +0000 (UTC)
 Received: from kaod.org (37.59.142.108) by DAG14EX2.mxp5.local (172.16.2.142)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Wed, 11 Feb
- 2026 13:10:46 +0100
+ 2026 13:10:51 +0100
 Authentication-Results: garm.ovh; auth=pass
- (GARM-108S0023108cb63-1615-487f-a788-d615686b5bd7,
+ (GARM-108S0021442f4bf-f3f6-48c0-a7b1-0f21a396f836,
  3A8D629C33260B61B1BB8F65C34560168E726884) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <ca028364-d77c-475c-a696-171b1772fdd2@kaod.org>
-Date: Wed, 11 Feb 2026 13:10:45 +0100
+Message-ID: <a1f77c37-7354-4d4f-aab8-12d86bb3d6f3@kaod.org>
+Date: Wed, 11 Feb 2026 13:10:51 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/2] hw/i2c/aspeed_i2c: Fix out-of-bounds read in I2C
- MMIO
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>
-References: <20260210024331.3984696-1-jamin_lin@aspeedtech.com>
+Subject: Re: [PATCH 0/2] tests/functional: Aspeed ARM tests enhancements
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>
+References: <20260209065044.239378-1-clg@redhat.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -86,27 +85,27 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260210024331.3984696-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260209065044.239378-1-clg@redhat.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.108]
 X-ClientProxiedBy: DAG12EX1.mxp5.local (172.16.2.121) To DAG14EX2.mxp5.local
  (172.16.2.142)
-X-Ovh-Tracer-GUID: 3b7c7795-9182-47f2-b5ba-7b2542de53f6
-X-Ovh-Tracer-Id: 8198521649797761970
+X-Ovh-Tracer-GUID: d62d7f8a-9480-4c24-807a-e355710f131c
+X-Ovh-Tracer-Id: 8199929022980524978
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGdB92Mb0accc8UO9RH2FFDSeWDkAQF4LWmF9NyVs7KefN3qwPnHSCCL8gdU/TdVPOhexh0tewWvGbhBKlQYajhsQ1yLl07ZKqkG0WDQycMuUhQWowuSHuFtTSEZvTrjjkNkY2VU9krU5ebx3O5zkCOb+OKJQKjrrwtmGCFEePAbldCgDoMvsAY2sDioJtnwuodXvSocZvmL96S1d9TEd/5QlguU6W2689TTfw0+uocVDBeEfgXAwxMTUT3hpOEx8q1VJy4ojGCVcDWueMREPepY81eyZzs6SFGwAfidm3tPZXhDvYdv9tUL2yPLGvbORJ27TP/Swlh1+T/U10OtjjyrFIrNnCXwyNZMLTPTjL+32Ts7qoJk/VeAfZ3AqgtMG94e3u88w120YvV3tkqJVUlytCf8tlSPq3Pa9VgUJpKP4eGc6z0V6wsl5SH5COmZ6si7WUo//bMEq4Xvoajydpi0iegGKgmlwwnm2nTt1AbQB/BWgdL//4DrG3hVRqx6S1p8rAlEkbdv6VC3NnULYfDI+o+VFOa2QZ/FtUAtj3DPoM2K4R0l9hyP06OoywNMvkXnthOVFE5IRtGzbWFsiEpSpMtGYRoR2NvNOIPcWrfqwYwYJjmAFAdJnctx9+Z0YK8BnlhrxEIwkw9Y1KAB1tZS4oRMH7Pna5rjIQS4X+U+w
-DKIM-Signature: a=rsa-sha256; bh=0bk9SqkH17rgcukN5tyim68cojDa02Ahq7SvqblrGqI=; 
+X-VR-SPAMCAUSE: dmFkZTGa03sFxNnRVPHOaSb64dJiVx+Dcxb8r5G5dXUk0FuWGZSHkIx6zgAE18iwTVvTrHtSE3b+AQscFX8UqTAdtybwb5fl7eXiLq2BuB9cE9pd7+JL0I6vJTfgX6PynQ69Mry5fvF77DA29XPoHyo/IkqrY309Zv6M+h2eU9mvWaL/WWYRQy4YBn2yZvp6uIVslENdzy+pXm21LnhvuN4z8w5dylFJXA1YAN5+FwjskhUf1TfesIV8+jDDASR8qcOzK/+xHyrzM4f6M5cfqUH0ujd3JZOKQWEZj31/FK4+Jv3PM66XDdbukif4An5UfQVxh1iBUVGszOGqmw1Ayy3s/cGsFuvGFolv2A+hO4kv5r89LwP+rJ0DZUJeJ7GG/3Q7fRrnoNtxPpJ5fR2u0Q7vng3RIIvlOUHl7eqJi/RYJJElavL6kmac3VIs46EKGkKNMtFwaNF1LoLtAdSVbUoIppx+bDP8Wl6xiauP1ECUxquCHdALyX6jB8ClHmS6rOfYnnDtGQX62KlLxmAD8TkUYwUZeNDgHjIx8CWi9azyJhP46H/UdEa8nso/Hwhg1zCsr4ljBytnjwb93V6LB5uGSnKsJs8V97zLtrXhhCPw4uaTq1otwAzWH/k6zo/yD809D7IkfPV4576t+pnH/4yLgR8PjRCUt575ARzl3E1dVE33/A
+DKIM-Signature: a=rsa-sha256; bh=Vc47+M+ANr9tsr+ZWUdVXN25EshldaNbtzaFF6iEmzI=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1770811847; v=1;
- b=HdNBKWYIImDz+t9bjSo+v2YuvVEZR6M9UJfn/JMpJV0BRE98eiJjdBer4/V0q/z/vLDIegUm
- A1RHQGXARYa2S2Tau3extkJIePVggAxScHo9ZBGK8EqURAis3/l/TrSSKpChCEjDH72hEp1VUxT
- N5uHOyab78ctX0j1l7VLfb4ks3f+jbRwzWQq5uIVmhHJgellvbQPghxVVOM1SsNJQAz80bzq4M9
- jDe1TBPxDSr2gHS/uODPVB9Md09d1LqTm2tQ9LnEVjAL4Wf2OoisrpbIJ8PeSCw9gjTGhsUnuP+
- jlaDFax40asVfFlmpj/E2+gZd/Wg7Bi2rlfzou2cD5xPg==
-Received-SPF: pass client-ip=188.165.49.222; envelope-from=clg@kaod.org;
- helo=6.mo552.mail-out.ovh.net
+ t=1770811852; v=1;
+ b=W59VSyDZhppVHaTgPHhuhcB1M1JuZ7xIe7Z2l/fk+tnnp1EjNiVAXH9+daRcJ5E/KYIWFC0n
+ byO1Tkenlf7j70Mh1CoMyEoadhZ0EtHoLveiAwIq6rSYFga6Tls2o7IRo8DPqJ2US1V6pvdsr4A
+ veb8LLjGpNI3CWYhok5u5dlx+PG8eFgs68OlP86t6Ylt4nisJppb8R67LsOpXwB89Fxw5ZdQ/a+
+ 8+FjABVFAMnloJlCLMEEYoanNfNbSYGwgpXixAkiaFhzVzYpYIccwINlZ8Fci4Xr9WkF0rKJAke
+ zlUWWqSWKSbijnLxUngowRuDSb0aEWuMFmczImNEjJTyg==
+Received-SPF: pass client-ip=188.165.49.213; envelope-from=clg@kaod.org;
+ helo=5.mo548.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,21 +129,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/10/26 03:43, Jamin Lin wrote:
-> v1:
->   1. Fix Out-of-Bounds access by using dynamic register array
+On 2/9/26 07:50, Cédric Le Goater wrote:
+> Hi,
 > 
-> v2:
->   1. Fix Out-of-Bounds access by increasing static array size
->   2. Increase I2C device register size to 0xA0 for AST2700 A1
+> This allows the functional test suite to run tests in parallel more
+> effectively and adds a new set of tests using the older Linux 5.15
+> kernel.
 > 
-> Jamin Lin (2):
->    hw/i2c/aspeed_i2c: Fix out-of-bounds read in I2C MMIO handlers
->    hw/i2c/aspeed_i2c: Increase I2C device register size to 0xA0
+> Thanks,
 > 
->   include/hw/i2c/aspeed_i2c.h |  3 +-
->   hw/i2c/aspeed_i2c.c         | 58 ++++++++++++++++++-------------------
->   2 files changed, 29 insertions(+), 32 deletions(-)
+> C.
+> 
+> Cédric Le Goater (2):
+>    tests/functional: Split Aspeed ARM tests into separate files
+>    tests/functional: Add SDK tests with Linux 5.15
+> 
+>   tests/functional/arm/meson.build              | 18 ++++--
+>   tests/functional/arm/test_aspeed_ast1060.py   |  0
+>   ...00.py => test_aspeed_ast2500_buildroot.py} | 14 -----
+>   .../functional/arm/test_aspeed_ast2500_sdk.py | 29 +++++++++
+>   .../arm/test_aspeed_ast2500_sdk_515.py        | 29 +++++++++
+>   .../arm/test_aspeed_ast2600_buildroot.py      | 41 +------------
+>   .../arm/test_aspeed_ast2600_buildroot_tpm.py  | 60 +++++++++++++++++++
+>   .../functional/arm/test_aspeed_ast2600_sdk.py | 15 -----
+>   .../arm/test_aspeed_ast2600_sdk_515.py        | 29 +++++++++
+>   .../arm/test_aspeed_ast2600_sdk_otp.py        | 34 +++++++++++
+>   10 files changed, 196 insertions(+), 73 deletions(-)
+>   mode change 100644 => 100755 tests/functional/arm/test_aspeed_ast1060.py
+>   rename tests/functional/arm/{test_aspeed_ast2500.py => test_aspeed_ast2500_buildroot.py} (74%)
+>   create mode 100755 tests/functional/arm/test_aspeed_ast2500_sdk.py
+>   create mode 100755 tests/functional/arm/test_aspeed_ast2500_sdk_515.py
+>   create mode 100755 tests/functional/arm/test_aspeed_ast2600_buildroot_tpm.py
+>   create mode 100755 tests/functional/arm/test_aspeed_ast2600_sdk_515.py
+>   create mode 100755 tests/functional/arm/test_aspeed_ast2600_sdk_otp.py
 > 
 
 Applied to aspeed-next.

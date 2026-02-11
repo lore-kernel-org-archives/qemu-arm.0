@@ -4,119 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C316E9E2F9
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 12:11:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2428E9E301
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 12:51:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vq93Y-00085T-RS; Wed, 11 Feb 2026 07:10:58 -0500
+	id 1vq9g0-0001yV-8h; Wed, 11 Feb 2026 07:50:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1vq93S-00084P-K4; Wed, 11 Feb 2026 07:10:50 -0500
-Received: from 2.mo548.mail-out.ovh.net ([178.33.255.19])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vq9fp-0001td-Gl
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 07:50:35 -0500
+Received: from p-west1-cluster2-host7-snip4-8.eps.apple.com ([57.103.64.199]
+ helo=outbound.pv.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1vq93Q-0004zF-LR; Wed, 11 Feb 2026 07:10:50 -0500
-Received: from mxplan5.mail.ovh.net (unknown [10.110.54.52])
- by mo548.mail-out.ovh.net (Postfix) with ESMTPS id 4f9y1w0ksFz5vRx;
- Wed, 11 Feb 2026 12:10:43 +0000 (UTC)
-Received: from kaod.org (37.59.142.107) by DAG14EX2.mxp5.local (172.16.2.142)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Wed, 11 Feb
- 2026 13:10:36 +0100
-Authentication-Results: garm.ovh; auth=pass
- (GARM-107S001f46e54fc-1314-4bb6-8ec7-c8bc1a171f58,
- 3A8D629C33260B61B1BB8F65C34560168E726884) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <02375eec-2e5a-479e-b560-9c5c425f6cc7@kaod.org>
-Date: Wed, 11 Feb 2026 13:10:35 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 00/11] Support ASPEED AST2700 A2
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- "nabihestefan@google.com" <nabihestefan@google.com>
-References: <20260211021527.119674-1-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260211021527.119674-1-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [37.59.142.107]
-X-ClientProxiedBy: DAG17EX2.mxp5.local (172.16.2.172) To DAG14EX2.mxp5.local
- (172.16.2.142)
-X-Ovh-Tracer-GUID: 1af37ce2-cced-4f11-ba5d-61331aa02989
-X-Ovh-Tracer-Id: 8195706898719607614
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTF8F+qvljyKFdBDkuuwUjpm6BhuwLR4m4CZL2yAxYAiWZQaheV7UFmIcepTYEWd5LkacadcRQ8HiVAQpZJpmDfOjCuI1Ogj+C38WoqROpVpM0kXdG1pwbOJntYmJkyMJVonPp8fhp/oKMFJuQ6ymobc/jPys3j24RV5l0VDCTKv5sidThxuSxlsqLqdrWibD+yaXhcC4HlmhpbWvA6l0fOqLuaeeINgYBFoirFCh9ryyvIFimbHLNjkSr8TRpT276hYotJcb3g3jxux7Op8eSmiQpkn39v3kwL5G78h2FjV0elWQZSxmyc0AAkZG0gwiO8rLl8NrcjrFqX1VylhSj/BebjBsN23AQPlO3hmfsG9H5QWCTu2wJ/rg3z+i+u3nA1asZqj6gX0bSJlbcrgzqAUUmng+Puw0M9phu2iuRaZYYfntdJuI3084heDLsWh7oMo1wDtIVmkZ8dSzKmLE024C3Csmf1Mm55XnOMi9BaPIsK4mAbNuLa9eOaFSuBxPYjPR1IK5ioIEzk6D5aNydnSQjPUmf6vPNZm32IzPvj50QESNPu+NO63TtpbjByllTuG0NdOIsiIBXD3oDuzI7Xeovsh7lQNKae2KordP+muXYJbMiP3ULKWhVaVn9z19S79tXp0UbuN1acz6QU5tupHRAZYyCPTzPSLl6RxMSVQow
-DKIM-Signature: a=rsa-sha256; bh=pE/Mls6yO791yybTrP7CTnC030lwjwZT8XT6zNH5R28=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1770811845; v=1;
- b=E2hXAOKI78MOVZoj3Ggl6OlM/vBEH4NJZ7VC0Mm0fcN7N+iyY8XbzRUiwIojU3eoEZIhULHb
- dCiJMQ8PR6+gduPwxrTGPwJmNCi+T+52D7tc2+EhE8wXyaeS8+orO0EA5yRfucksM2gmrdDl+Rc
- zZIemzwg0nLr2T62cSXcJ17GJP5zoPt0cLUs5CBpMTYE/8vqtJ4pRCNa3Qdsi00sNnJwZEbt6B9
- 3TFNcL0YFjqWkw8K5kQOfX+YbpoiJJmftLszkG6Q37LpgykMBiB7PSiSFkqnsmNSoCVn6bl2n8l
- AEhA5XceYDsFbXQMgRJOox0WucfxHt2ecCZcNjW5/BObA==
-Received-SPF: pass client-ip=178.33.255.19; envelope-from=clg@kaod.org;
- helo=2.mo548.mail-out.ovh.net
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vq9fn-0004hy-6S
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 07:50:29 -0500
+Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-1a-100-percent-1 (Postfix) with ESMTPS id
+ D15481800117; Wed, 11 Feb 2026 12:50:21 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1770814225; x=1773406225;
+ bh=PkO7QhcIz3BSWEWR/aAKYBlasweO+kXbyg6UbvNuN8Y=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=BM6c7TLYzE+H/D5a0Pczn1IvWUh/p6XJ9GqN/4s+71E9UHcGuF0ExIwuxX8p3PpnnuOItJ66RK9FFfNOazG3H9aYHQE+0buFH4RSORKsX8h/uTlTdZ5a6j07v1t6LoSxx9NdEvK1GsxhrMQ22O5TAerl23zaKcYRQzBiSHdwQHMMfkuYkRgCNTvgNiTfJboGdsFHrxWuZ2Q7/4ytNbz8+MSmCNy46rBdgch/X/ylJqXdr8nLWTzQ50fKibcejX3RPmINUH9wKFskCvVnuoUy606uxAHozI+HofrtZjkKX8QXwHSfihrtwKdw0lMqPyNYM4cBtS5rH6hYjXVi/GE5CQ==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.56.9.36])
+ by p00-icloudmta-asmtp-us-west-1a-100-percent-1 (Postfix) with ESMTPSA id
+ 6840A1800111; Wed, 11 Feb 2026 12:50:19 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
+Subject: Re: [PATCH] hw/arm/virt: Add virtio-transports property
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <20260211122759.125094-1-mbawa@redhat.com>
+Date: Wed, 11 Feb 2026 13:50:07 +0100
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ alex.bennee@linaro.org, philmd@linaro.org, cohuck@redhat.com,
+ eric.auger@redhat.com, sebott@redhat.com
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <BE3C6640-85CB-437D-A038-81762FA5AD33@unpredictable.fr>
+References: <20260211122759.125094-1-mbawa@redhat.com>
+To: Mohammadfaiz Bawa <mbawa@redhat.com>
+X-Mailer: Apple Mail (2.3864.300.41.1.7)
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjExMDA5OSBTYWx0ZWRfX8ZxBsoM2GLVL
+ hUcAZ4WN0XJHoQtk27/llfmEChjhEWPakITWDf+mNow29U/UDY52D1yqe4nQ/PmxzsJz3DJn/De
+ I+5V2T5gfk1R03B6S5i7AE1Gqvupoq5LeunB4M0R7qzyJH7sIFqzlkeP6GGfokingO6Nt67OMX6
+ UJ4sPHTCKa0CtV0GoAfRNd1dtrOA3Q6ecE1d961OVaV3FS3GLxAC7xCzsdeHdgwmX8herUbFLAe
+ NprYNTHVdCXAK1KGHYnY3c/+YX+o0wD/OyVODKUtHltcqzhHieYzAhZ0wuezvJ5ytcPcd3JE6Lo
+ OngT8BqZQrxISG51mgCc49PlCAG4fVj3HkB8b0ePCXpiM3cXqTEiMaRzRCIKfA=
+X-Authority-Info-Out: v=2.4 cv=R9kO2NRX c=1 sm=1 tr=0 ts=698c7b0e
+ cx=c_apl:c_apl_out:c_pps a=azHRBMxVc17uSn+fyuI/eg==:117
+ a=azHRBMxVc17uSn+fyuI/eg==:17 a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22
+ a=NEAV23lmAAAA:8 a=20KFwNOVAAAA:8 a=LAw_7nYPxDqIoJCGddAA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: NfBUDsXmwqxCgRDzWERw3bgcUiV0mj_U
+X-Proofpoint-ORIG-GUID: NfBUDsXmwqxCgRDzWERw3bgcUiV0mj_U
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-02-11_01,2026-02-11_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ mlxlogscore=999 clxscore=1030 spamscore=0
+ phishscore=0 suspectscore=0
+ bulkscore=0 lowpriorityscore=0 mlxscore=0 adultscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2602110099
+X-JNJ: AAAAAAABDudivjybb55MU2wK97mwMKWxkVTd7UvZnNysnhiEzKAJi+4ZdhsZH0ngP8/SnkPsHc5vIyo0ZeOFHUAny0cxQARYSxN86UwLAIZ6uqbakHz7VrvCJ262SqsMCk1swEZv4oKgvMQm4L7vfUmy6ZE/Wme1lNk58ijQDUClmcY6TMrgW6WvP6501oL953vZqZWXIVAehKnOSbcmJISlrEDr15zETfj8q+NRIyguqeZfl7ASTQ9iCkYaWbFdh0bdXJNckL3GCkIUwyQBi8AKKYKjM0xPLfjfic6cQFwgHTN/ts41gTILN9qy8gtscGjipCppE/fHKBBm5gDMuAy6/n6GPqG2/TRLPtvVbbHRIHOaA+CB4IfQWec/Z8RuUYyFOFuqqz6nJiT3KZ7/ApR/0I13pPFkQm5w0E8Q8DIWesW06yQLicxKsRF0T+akbz/mNBiu1LCZmbPix7T3s+Kgs9I3ZkrTAaol6WxSpugLRk1PUefUPDc9CtojfEaxqAIyLfTZ+1O+MYLaWBSEprjnO3fiSN0C3QWHsSyhquYk3+eqLaokAq7xZkOwW+D+9FuJzzLHSeZoRF8BmrH8dE8ByakjnNaKf7YpxJyWw/ZFndKxDo6fVzcP9YZGxffvRi8A3+51PZf2AThARt7FDYnKN12/Ao0+cOtSAniUZPlK6/F5MWFcC0pxnnYx/HrCYBjOYEZXE5Z+
+Received-SPF: pass client-ip=57.103.64.199;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,65 +95,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/11/26 03:15, Jamin Lin wrote:
-> v1
->    1. Add AST2700 A2 SoC support
->    2. Add AST2700 A2 EVB machine
->    3. Alias ast2700-evb to ast2700a2-evb
->    4. Switch AST2700 FC machine to use the A2 SoC
->    5. Update functional tests for both AST2700 A1 and A2
->    6. Fix I2C Fix Out-of-Bounds access issue
-> 
-> v2
->    1. AST2700 A2 is functionally identical to AST2700 A1.
->       There are no changes to the IRQ layout, memory map, or peripheral
->       configuration; the only difference is the silicon revision.
->    2. The ast2700a2-evb machine is largely identical to ast2700a1-evb.
->       The only difference is the default DRAM size, which is increased to 2 GB.
->    3. The I2C out-of-bounds fix has been separated into a new patch series.
->    4. The increase of the I2C device register size to 0xA0 has been separated
->       into a new patch series.
-> 
-> v3:
->    1. Rename to test_aspeed_ast2700a2.py for AST2700 A2 testing
-> 
-> Jamin Lin (11):
->    hw/misc/aspeed_scu: Remove unused SoC silicon revision definitions
->    hw/misc/aspeed_scu: Add AST2700 A2 silicon revisions
->    hw/arm/aspeed_ast27x0: Add AST2700 A2 SoC support
->    hw/arm/aspeed_ast27x0_evb: Add AST2700 A2 EVB machine
->    hw/arm/aspeed_ast27x0_evb: Move ast2700-evb alias to AST2700 A2 EVB
->    tests/qtest/ast2700-hace-test: Use ast2700-evb alias for AST2700 HACE
->      tests
->    tests/functional/aarch64/test_aspeed_ast2700: Rename AST2700 A1 test
->      to reduce test runtime
->    tests/functional/aarch64/test_aspeed_ast2700a2: Add AST2700 A2 EVB
->      functional tests
->    hw/arm/aspeed_ast27x0-fc: Switch AST2700 FC machine to A2 SoC
->    hw/arm/aspeed_ast27x0-fc: Increase BMC DRAM size to 2GB for AST2700 A2
->    tests/functional/aarch64/test_aspeed_ast2700fc: Use AST2700 A2 SDK
->      image for FC tests
-> 
->   include/hw/misc/aspeed_scu.h                  |  11 +-
->   hw/arm/aspeed_ast27x0-fc.c                    |  15 +-
->   hw/arm/aspeed_ast27x0.c                       |  36 ++++
->   hw/arm/aspeed_ast27x0_evb.c                   |  29 ++-
->   hw/misc/aspeed_scu.c                          |  11 +-
->   tests/qtest/ast2700-hace-test.c               |  22 +-
->   tests/functional/aarch64/meson.build          |   6 +-
->   ...ed_ast2700.py => test_aspeed_ast2700a1.py} |   0
->   .../aarch64/test_aspeed_ast2700a2.py          | 190 ++++++++++++++++++
->   .../aarch64/test_aspeed_ast2700fc.py          |  16 +-
->   10 files changed, 286 insertions(+), 50 deletions(-)
->   rename tests/functional/aarch64/{test_aspeed_ast2700.py => test_aspeed_ast2700a1.py} (100%)
->   create mode 100644 tests/functional/aarch64/test_aspeed_ast2700a2.py
-> 
-
-Applied to aspeed-next.
-
-Thanks,
-
-C.
 
 
+> On 11. Feb 2026, at 13:27, Mohammadfaiz Bawa <mbawa@redhat.com> wrote:
+>=20
+> Windows ARM64 guests detect virtio-mmio devices declared in ACPI
+> tables even when no backend is attached. This causes "Unknown
+> devices" (ACPI\LNRO0005) to appear in Device Manager.
+>=20
+> Until Windows fixes that by supporting, adding a new machine
+> property 'virtio-transports' to control the number of
+> virtio-mmio transports instantiated. The default remains
+> NUM_VIRTIO_TRANSPORTS (32) for backward compatibility.
+> Setting it to 0 allows users to disable virtio-mmio entirely.
+>=20
+> Usage: -machine virt,virtio-transports=3D0
+
+Hello,
+
+With keeping in mind that this was documented in this (closed=E2=80=A6) =
+issue
+https://github.com/virtio-win/kvm-guest-drivers-windows/issues/595
+
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+
+>=20
+> Signed-off-by: Mohammadfaiz Bawa <mbawa@redhat.com>
+> ---
+> hw/arm/virt-acpi-build.c |  2 +-
+> hw/arm/virt.c            | 43 ++++++++++++++++++++++++++++++++++++++--
+> include/hw/arm/virt.h    |  1 +
+> 3 files changed, 43 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index c145678185..27c007fd62 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -1150,7 +1150,7 @@ build_dsdt(GArray *table_data, BIOSLinker =
+*linker, VirtMachineState *vms)
+>     fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
+>     virtio_acpi_dsdt_add(scope, memmap[VIRT_MMIO].base, =
+memmap[VIRT_MMIO].size,
+>                          (irqmap[VIRT_MMIO] + ARM_SPI_BASE),
+> -                         0, NUM_VIRTIO_TRANSPORTS);
+> +                         0, vms->virtio_transports);
+>     acpi_dsdt_add_pci(scope, memmap, irqmap[VIRT_PCIE] + ARM_SPI_BASE, =
+vms);
+>     if (vms->acpi_dev) {
+>         build_ged_aml(scope, "\\_SB."GED_DEVICE,
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 390845c503..0a659ba540 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1206,7 +1206,7 @@ static void create_virtio_devices(const =
+VirtMachineState *vms)
+>      * between kernel versions). For reliable and stable =
+identification
+>      * of disks users must use UUIDs or similar mechanisms.
+>      */
+> -    for (i =3D 0; i < NUM_VIRTIO_TRANSPORTS; i++) {
+> +    for (i =3D 0; i < vms->virtio_transports; i++) {
+>         int irq =3D vms->irqmap[VIRT_MMIO] + i;
+>         hwaddr base =3D vms->memmap[VIRT_MMIO].base + i * size;
+>=20
+> @@ -1221,7 +1221,7 @@ static void create_virtio_devices(const =
+VirtMachineState *vms)
+>      * loop influences virtio device to virtio transport assignment, =
+whereas
+>      * this loop controls how virtio transports are laid out in the =
+dtb.
+>      */
+> -    for (i =3D NUM_VIRTIO_TRANSPORTS - 1; i >=3D 0; i--) {
+> +    for (i =3D vms->virtio_transports - 1; i >=3D 0; i--) {
+>         char *nodename;
+>         int irq =3D vms->irqmap[VIRT_MMIO] + i;
+>         hwaddr base =3D vms->memmap[VIRT_MMIO].base + i * size;
+> @@ -2705,6 +2705,36 @@ static void virt_set_highmem_mmio_size(Object =
+*obj, Visitor *v,
+>     extended_memmap[VIRT_HIGH_PCIE_MMIO].size =3D size;
+> }
+>=20
+> +static void virt_get_virtio_transports(Object *obj, Visitor *v,
+> +                                       const char *name, void =
+*opaque,
+> +                                       Error **errp)
+> +{
+> +    VirtMachineState *vms =3D VIRT_MACHINE(obj);
+> +    uint8_t transports =3D vms->virtio_transports;
+> +
+> +    visit_type_uint8(v, name, &transports, errp);
+> +}
+> +
+> +static void virt_set_virtio_transports(Object *obj, Visitor *v,
+> +                                       const char *name, void =
+*opaque,
+> +                                       Error **errp)
+> +{
+> +    VirtMachineState *vms =3D VIRT_MACHINE(obj);
+> +    uint8_t transports;
+> +
+> +    if (!visit_type_uint8(v, name, &transports, errp)) {
+> +        return;
+> +    }
+> +
+> +    if (transports > NUM_VIRTIO_TRANSPORTS) {
+> +        error_setg(errp, "virtio-transports must not exceed %d",
+> +                   NUM_VIRTIO_TRANSPORTS);
+Any particular reason to (keep) capping the maximum to 16?
+
+=46rom a cursory look, base_memmap seems to have room for plenty more.=
 

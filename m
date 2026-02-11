@@ -4,82 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2428E9E301
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 12:51:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FECEE9E305
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 13:26:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vq9g0-0001yV-8h; Wed, 11 Feb 2026 07:50:40 -0500
+	id 1vqAED-0007yt-N7; Wed, 11 Feb 2026 08:26:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vq9fp-0001td-Gl
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 07:50:35 -0500
-Received: from p-west1-cluster2-host7-snip4-8.eps.apple.com ([57.103.64.199]
- helo=outbound.pv.icloud.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vqAEC-0007yc-3g
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 08:26:00 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vq9fn-0004hy-6S
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 07:50:29 -0500
-Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-1a-100-percent-1 (Postfix) with ESMTPS id
- D15481800117; Wed, 11 Feb 2026 12:50:21 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1770814225; x=1773406225;
- bh=PkO7QhcIz3BSWEWR/aAKYBlasweO+kXbyg6UbvNuN8Y=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=BM6c7TLYzE+H/D5a0Pczn1IvWUh/p6XJ9GqN/4s+71E9UHcGuF0ExIwuxX8p3PpnnuOItJ66RK9FFfNOazG3H9aYHQE+0buFH4RSORKsX8h/uTlTdZ5a6j07v1t6LoSxx9NdEvK1GsxhrMQ22O5TAerl23zaKcYRQzBiSHdwQHMMfkuYkRgCNTvgNiTfJboGdsFHrxWuZ2Q7/4ytNbz8+MSmCNy46rBdgch/X/ylJqXdr8nLWTzQ50fKibcejX3RPmINUH9wKFskCvVnuoUy606uxAHozI+HofrtZjkKX8QXwHSfihrtwKdw0lMqPyNYM4cBtS5rH6hYjXVi/GE5CQ==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.56.9.36])
- by p00-icloudmta-asmtp-us-west-1a-100-percent-1 (Postfix) with ESMTPSA id
- 6840A1800111; Wed, 11 Feb 2026 12:50:19 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
-Subject: Re: [PATCH] hw/arm/virt: Add virtio-transports property
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <20260211122759.125094-1-mbawa@redhat.com>
-Date: Wed, 11 Feb 2026 13:50:07 +0100
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- alex.bennee@linaro.org, philmd@linaro.org, cohuck@redhat.com,
- eric.auger@redhat.com, sebott@redhat.com
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <BE3C6640-85CB-437D-A038-81762FA5AD33@unpredictable.fr>
-References: <20260211122759.125094-1-mbawa@redhat.com>
-To: Mohammadfaiz Bawa <mbawa@redhat.com>
-X-Mailer: Apple Mail (2.3864.300.41.1.7)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjExMDA5OSBTYWx0ZWRfX8ZxBsoM2GLVL
- hUcAZ4WN0XJHoQtk27/llfmEChjhEWPakITWDf+mNow29U/UDY52D1yqe4nQ/PmxzsJz3DJn/De
- I+5V2T5gfk1R03B6S5i7AE1Gqvupoq5LeunB4M0R7qzyJH7sIFqzlkeP6GGfokingO6Nt67OMX6
- UJ4sPHTCKa0CtV0GoAfRNd1dtrOA3Q6ecE1d961OVaV3FS3GLxAC7xCzsdeHdgwmX8herUbFLAe
- NprYNTHVdCXAK1KGHYnY3c/+YX+o0wD/OyVODKUtHltcqzhHieYzAhZ0wuezvJ5ytcPcd3JE6Lo
- OngT8BqZQrxISG51mgCc49PlCAG4fVj3HkB8b0ePCXpiM3cXqTEiMaRzRCIKfA=
-X-Authority-Info-Out: v=2.4 cv=R9kO2NRX c=1 sm=1 tr=0 ts=698c7b0e
- cx=c_apl:c_apl_out:c_pps a=azHRBMxVc17uSn+fyuI/eg==:117
- a=azHRBMxVc17uSn+fyuI/eg==:17 a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10
- a=VkNPw1HP01LnGYTKEx00:22 a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22
- a=NEAV23lmAAAA:8 a=20KFwNOVAAAA:8 a=LAw_7nYPxDqIoJCGddAA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-GUID: NfBUDsXmwqxCgRDzWERw3bgcUiV0mj_U
-X-Proofpoint-ORIG-GUID: NfBUDsXmwqxCgRDzWERw3bgcUiV0mj_U
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-02-11_01,2026-02-11_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- mlxlogscore=999 clxscore=1030 spamscore=0
- phishscore=0 suspectscore=0
- bulkscore=0 lowpriorityscore=0 mlxscore=0 adultscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2602110099
-X-JNJ: AAAAAAABDudivjybb55MU2wK97mwMKWxkVTd7UvZnNysnhiEzKAJi+4ZdhsZH0ngP8/SnkPsHc5vIyo0ZeOFHUAny0cxQARYSxN86UwLAIZ6uqbakHz7VrvCJ262SqsMCk1swEZv4oKgvMQm4L7vfUmy6ZE/Wme1lNk58ijQDUClmcY6TMrgW6WvP6501oL953vZqZWXIVAehKnOSbcmJISlrEDr15zETfj8q+NRIyguqeZfl7ASTQ9iCkYaWbFdh0bdXJNckL3GCkIUwyQBi8AKKYKjM0xPLfjfic6cQFwgHTN/ts41gTILN9qy8gtscGjipCppE/fHKBBm5gDMuAy6/n6GPqG2/TRLPtvVbbHRIHOaA+CB4IfQWec/Z8RuUYyFOFuqqz6nJiT3KZ7/ApR/0I13pPFkQm5w0E8Q8DIWesW06yQLicxKsRF0T+akbz/mNBiu1LCZmbPix7T3s+Kgs9I3ZkrTAaol6WxSpugLRk1PUefUPDc9CtojfEaxqAIyLfTZ+1O+MYLaWBSEprjnO3fiSN0C3QWHsSyhquYk3+eqLaokAq7xZkOwW+D+9FuJzzLHSeZoRF8BmrH8dE8ByakjnNaKf7YpxJyWw/ZFndKxDo6fVzcP9YZGxffvRi8A3+51PZf2AThARt7FDYnKN12/Ao0+cOtSAniUZPlK6/F5MWFcC0pxnnYx/HrCYBjOYEZXE5Z+
-Received-SPF: pass client-ip=57.103.64.199;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vqAEA-0005J4-GF
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 08:25:59 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1770816357;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=sX8n9FbwOElmItrRaB3ziXunmuIvqTMIBDaa2YCUup0=;
+ b=gDclue0Cwzjjt5o0rp91yFOvc1W6LY4Gd66E94aBzPlb/4S++EdJc53o2gU8Z5fxVutVBF
+ i4Isc/EIF1xm6hDbH1+6r/UBnAlqHiqgd722X0NDM4NC2rWWQh31ZoQcY+wWh3owfGmvzL
+ R8nQFYUdiQ7m1okiYgH6kcysx5Lq93I=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-625-9jV6_YZMMbOolM4lZqUKcA-1; Wed, 11 Feb 2026 08:25:55 -0500
+X-MC-Unique: 9jV6_YZMMbOolM4lZqUKcA-1
+X-Mimecast-MFC-AGG-ID: 9jV6_YZMMbOolM4lZqUKcA_1770816355
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4806cfffca6so78214055e9.2
+ for <qemu-arm@nongnu.org>; Wed, 11 Feb 2026 05:25:55 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1770816355; x=1771421155;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=sX8n9FbwOElmItrRaB3ziXunmuIvqTMIBDaa2YCUup0=;
+ b=k3THnnWyr8VdZLovL7riSjzSBspWh/Df3fydW59Y2vGZUXnCGnFWONQfUdVoE/dXJV
+ mSjyaIXJ2EUcSWHt+UEnDuSXSP8qRvo/IEW4By0IlLeA9TKranFHCzoK+bu3a+uBsGdk
+ T8dBdbvebsiyEZfrYeXofuzAk5wck4qSRuG0jmQ1uxYj0R7U9M/jQo21oAynx5raFXEQ
+ Y6eC12DkNMds5P85aaG/FPegS//aNT2Bn+4s3vCdIaKAYCqa8PflCuSq2O6fVkN3+N55
+ gyqm2pf7B9/GOOTvk9CB9XfBUbzX/vNOrnKyRCS3nqUrQtTO/UieUaU1lqamOO5Pir03
+ QmTA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUOTaKEoUJ2Gt+lbHqtEyTck4LT7Er1wzSYak69uvC9vdlbqXE4C6xIeEoWJ2YwjuQ8s4442erGFQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyFGX2I6ld7PIQeRL1SOBpOutofcyaThicctKtUiwykr2y5KuGz
+ rD4YLWlyT27t4SsM698SgFOjq0MiIdgrcXiy1xXSi/8Ahog5hjB96JJDeRBFzHA/jGvrwp7+OOH
+ PLXnRZ1yF81DAvIWpDznm1ssa+CfJ/HpFiDKawIykSs3dmzx4T54FaQ==
+X-Gm-Gg: AZuq6aJhW7OVGv3Mpmjs36rOPOuRGs1f/mNkb8FiReEkrAu69xlmZVNqMsBSHmCLEDZ
+ o6ahvY1y863Qq37wuLFWkVMzPOKt6RQdTrc2rQx2aAyUcVSBpdGJ13DEnt2jHwo6HTq99435tHg
+ jDhJONYbJc0Ht3Ga/IZi+dBfzuhChYGsTsKzgAk+7FT9xKfmb8YI/WQHCXFQL+kSwlqufNKrSZu
+ 6Y7Z7nvoM9KduRy9KmxEx9r7E7QFNBJz02oei7QaD1mU2pLQ6FV2rZGDkqdWE9I/VMs5WCZhBUU
+ iCx2LFdq1KclfwuzK7up2hXOka1tu5YIcipwGVRrRD4dslIL9HPJxzoVNpV5ZY0fx0RBarENxm9
+ rwW49AmEa2yF5UXS1g4cTZIV50+hOMmdEUnPUSNwBo8XfibKm8USoY/b33zqtsgQOgZEPwQ==
+X-Received: by 2002:a05:600c:3b1e:b0:480:3b4e:41b8 with SMTP id
+ 5b1f17b1804b1-48350833443mr78651425e9.33.1770816354609; 
+ Wed, 11 Feb 2026 05:25:54 -0800 (PST)
+X-Received: by 2002:a05:600c:3b1e:b0:480:3b4e:41b8 with SMTP id
+ 5b1f17b1804b1-48350833443mr78651045e9.33.1770816354199; 
+ Wed, 11 Feb 2026 05:25:54 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4835a5c7c4csm69175545e9.0.2026.02.11.05.25.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 11 Feb 2026 05:25:53 -0800 (PST)
+Message-ID: <6d57ca20-1ca8-4ce3-a634-37d70545469e@redhat.com>
+Date: Wed, 11 Feb 2026 14:25:51 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 2/5] hw/arm/smmuv3-accel: Add viommu free helper
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, nicolinc@nvidia.com, nathanc@nvidia.com,
+ mochs@nvidia.com, jan@nvidia.com, jgg@nvidia.com,
+ jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
+ zhenzhong.duan@intel.com, kjaju@nvidia.com
+References: <20260211083415.133534-1-skolothumtho@nvidia.com>
+ <20260211083415.133534-3-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260211083415.133534-3-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: MFGYktz1N77LGWxK_MGT4V4wwFM17wQxs6uczR_5p5k_1770816355
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,116 +119,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Shameer,
 
+On 2/11/26 9:34 AM, Shameer Kolothum wrote:
+> Move viommu teardown into a helper function and use it from the
+> last device removal path. No functional change.
+>
+> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-> On 11. Feb 2026, at 13:27, Mohammadfaiz Bawa <mbawa@redhat.com> wrote:
->=20
-> Windows ARM64 guests detect virtio-mmio devices declared in ACPI
-> tables even when no backend is attached. This causes "Unknown
-> devices" (ACPI\LNRO0005) to appear in Device Manager.
->=20
-> Until Windows fixes that by supporting, adding a new machine
-> property 'virtio-transports' to control the number of
-> virtio-mmio transports instantiated. The default remains
-> NUM_VIRTIO_TRANSPORTS (32) for backward compatibility.
-> Setting it to 0 allows users to disable virtio-mmio entirely.
->=20
-> Usage: -machine virt,virtio-transports=3D0
-
-Hello,
-
-With keeping in mind that this was documented in this (closed=E2=80=A6) =
-issue
-https://github.com/virtio-win/kvm-guest-drivers-windows/issues/595
-
-Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-
->=20
-> Signed-off-by: Mohammadfaiz Bawa <mbawa@redhat.com>
+Eric
 > ---
-> hw/arm/virt-acpi-build.c |  2 +-
-> hw/arm/virt.c            | 43 ++++++++++++++++++++++++++++++++++++++--
-> include/hw/arm/virt.h    |  1 +
-> 3 files changed, 43 insertions(+), 3 deletions(-)
->=20
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index c145678185..27c007fd62 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -1150,7 +1150,7 @@ build_dsdt(GArray *table_data, BIOSLinker =
-*linker, VirtMachineState *vms)
->     fw_cfg_acpi_dsdt_add(scope, &memmap[VIRT_FW_CFG]);
->     virtio_acpi_dsdt_add(scope, memmap[VIRT_MMIO].base, =
-memmap[VIRT_MMIO].size,
->                          (irqmap[VIRT_MMIO] + ARM_SPI_BASE),
-> -                         0, NUM_VIRTIO_TRANSPORTS);
-> +                         0, vms->virtio_transports);
->     acpi_dsdt_add_pci(scope, memmap, irqmap[VIRT_PCIE] + ARM_SPI_BASE, =
-vms);
->     if (vms->acpi_dev) {
->         build_ged_aml(scope, "\\_SB."GED_DEVICE,
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 390845c503..0a659ba540 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1206,7 +1206,7 @@ static void create_virtio_devices(const =
-VirtMachineState *vms)
->      * between kernel versions). For reliable and stable =
-identification
->      * of disks users must use UUIDs or similar mechanisms.
->      */
-> -    for (i =3D 0; i < NUM_VIRTIO_TRANSPORTS; i++) {
-> +    for (i =3D 0; i < vms->virtio_transports; i++) {
->         int irq =3D vms->irqmap[VIRT_MMIO] + i;
->         hwaddr base =3D vms->memmap[VIRT_MMIO].base + i * size;
->=20
-> @@ -1221,7 +1221,7 @@ static void create_virtio_devices(const =
-VirtMachineState *vms)
->      * loop influences virtio device to virtio transport assignment, =
-whereas
->      * this loop controls how virtio transports are laid out in the =
-dtb.
->      */
-> -    for (i =3D NUM_VIRTIO_TRANSPORTS - 1; i >=3D 0; i--) {
-> +    for (i =3D vms->virtio_transports - 1; i >=3D 0; i--) {
->         char *nodename;
->         int irq =3D vms->irqmap[VIRT_MMIO] + i;
->         hwaddr base =3D vms->memmap[VIRT_MMIO].base + i * size;
-> @@ -2705,6 +2705,36 @@ static void virt_set_highmem_mmio_size(Object =
-*obj, Visitor *v,
->     extended_memmap[VIRT_HIGH_PCIE_MMIO].size =3D size;
-> }
->=20
-> +static void virt_get_virtio_transports(Object *obj, Visitor *v,
-> +                                       const char *name, void =
-*opaque,
-> +                                       Error **errp)
+>  hw/arm/smmuv3-accel.c | 21 +++++++++++++++------
+>  1 file changed, 15 insertions(+), 6 deletions(-)
+>
+> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+> index f5cd4df336..c19c526fca 100644
+> --- a/hw/arm/smmuv3-accel.c
+> +++ b/hw/arm/smmuv3-accel.c
+> @@ -390,6 +390,20 @@ bool smmuv3_accel_issue_inv_cmd(SMMUv3State *bs, void *cmd, SMMUDevice *sdev,
+>                     sizeof(Cmd), &entry_num, cmd, errp);
+>  }
+>  
+> +static void smmuv3_accel_free_viommu(SMMUv3AccelState *accel)
 > +{
-> +    VirtMachineState *vms =3D VIRT_MACHINE(obj);
-> +    uint8_t transports =3D vms->virtio_transports;
+> +    IOMMUFDViommu *viommu = accel->viommu;
 > +
-> +    visit_type_uint8(v, name, &transports, errp);
-> +}
-> +
-> +static void virt_set_virtio_transports(Object *obj, Visitor *v,
-> +                                       const char *name, void =
-*opaque,
-> +                                       Error **errp)
-> +{
-> +    VirtMachineState *vms =3D VIRT_MACHINE(obj);
-> +    uint8_t transports;
-> +
-> +    if (!visit_type_uint8(v, name, &transports, errp)) {
+> +    if (!viommu) {
 > +        return;
 > +    }
+> +    iommufd_backend_free_id(viommu->iommufd, accel->bypass_hwpt_id);
+> +    iommufd_backend_free_id(viommu->iommufd, accel->abort_hwpt_id);
+> +    iommufd_backend_free_id(viommu->iommufd, accel->viommu->viommu_id);
+> +    g_free(viommu);
+> +    accel->viommu = NULL;
+> +}
 > +
-> +    if (transports > NUM_VIRTIO_TRANSPORTS) {
-> +        error_setg(errp, "virtio-transports must not exceed %d",
-> +                   NUM_VIRTIO_TRANSPORTS);
-Any particular reason to (keep) capping the maximum to 16?
+>  static bool
+>  smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+>                            Error **errp)
+> @@ -549,12 +563,7 @@ static void smmuv3_accel_unset_iommu_device(PCIBus *bus, void *opaque,
+>      trace_smmuv3_accel_unset_iommu_device(devfn, idev->devid);
+>  
+>      if (QLIST_EMPTY(&accel->device_list)) {
+> -        iommufd_backend_free_id(accel->viommu->iommufd, accel->bypass_hwpt_id);
+> -        iommufd_backend_free_id(accel->viommu->iommufd, accel->abort_hwpt_id);
+> -        iommufd_backend_free_id(accel->viommu->iommufd,
+> -                                accel->viommu->viommu_id);
+> -        g_free(accel->viommu);
+> -        accel->viommu = NULL;
+> +        smmuv3_accel_free_viommu(accel);
+>      }
+>  }
+>  
 
-=46rom a cursory look, base_memmap seems to have room for plenty more.=
 

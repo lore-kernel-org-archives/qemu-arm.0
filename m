@@ -4,108 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 278C9E9E311
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 15:08:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68397EB271F
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 15:31:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vqBpM-0005xq-3p; Wed, 11 Feb 2026 10:08:28 -0500
+	id 1vqCBH-0007KR-WC; Wed, 11 Feb 2026 10:31:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vqBpL-0005xZ-1B
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 10:08:27 -0500
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vqBpJ-0002P9-DG
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 10:08:26 -0500
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-794719afcd4so70358897b3.1
- for <qemu-arm@nongnu.org>; Wed, 11 Feb 2026 07:08:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1770822504; cv=none;
- d=google.com; s=arc-20240605;
- b=NwTnkdbctGGXarPQOLRy71mGzvk4LWBBp+wLH2Q040gNd4ZGi7SToGQpF8+B7bigbV
- Mo5nw7iJXlGDQAGLdyfc2RJuCSKNBRIMA+o6ufIDsVVB1opyTWuEFPKYG71qYzmGpLea
- 0vF42Xv9kdwWAS4RD3UtBdq3c7y0yBDJl0RwZqqpKqYYdU+U9DGiQLbSEGpkEGd3926T
- omm9frOMx1R6MD2gvQsBDQtXSiKMxyYeIDaffihAue85PXwNrUE6LmfUQFMT1Yk9UO+X
- TDxWEiS5MLpdKlRszwb2sHDYc80RnUdGdDNL75b4ANR1ZvcHleE64r7pJtMQC7J2jvxp
- my5Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=tAXeJuNXG/11xoILElsy8mgQo4sn6X2VMcX2eWXK9ds=;
- fh=Pl8J1WKZKaM5T/0n7+upNfmA3op+vMN1Pua8zpOOHCc=;
- b=I4rn8rxVjx9xdpO4mYg71FltF02pP4VRY9cPUJIFpAPJYKwU6CZWqyCoX7Tc5xncrq
- TvN8xBowjQGYkvg+UreiKoIuJJf7lpJJQKKlJ91BUS4FfOf3+2r36Ebshxn4IPD6qaJW
- i1Kw2ulyt5mBqPDUlz5f3EE/krEusCuIuNI5AaQ+NAEiqy0v0khSYWlXaPURavb3khvA
- UVRcOSmljfWmOtDA6EqqUtSgxhtyjseciYyhtnsZrHLZ1qpecByprb/l2BTvrG5sEXBG
- tYH9IBnIcp3uPKNxZ3m4VxCJSWYRP9hmAn+m7S738GmiXfxtGbxEPYZf4Xcph8yxuSX6
- bjig==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1770822504; x=1771427304; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=tAXeJuNXG/11xoILElsy8mgQo4sn6X2VMcX2eWXK9ds=;
- b=xQKijsx5dorTye5uFKvXCWAa1Tyh7eNNOI/QKUZFs2c+pk/yHTggYCvyOX9uy/f5FM
- GVpnhLUEvRKnKuxf0D9a5qNP8CC0lbkhi8yGuSPyQn6erPLBXIYPBUzxcuSJ4WPWDNei
- CrMXnbjGX6qO8uJ07vHlwbS2L/Ez8EhlQN6c8kNmBxefHg5MBMaowY1ohgGe4SeLoNhZ
- ANwuewN8EhXtAYVUJD3BM3hwZl55+L25s15onz7uE2BwsbEzD9YgPKqHwcMu2CDSvDxg
- +Bv8L9xQSzzVktaVzku3yYbHekt/wtACulwmYF15yZtWNn68foggoOp2X5seliDMlhaX
- Aw8Q==
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vqCBD-0007Jn-Be
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 10:31:04 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1vqCBB-0008Ak-UY
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 10:31:03 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1770823861;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4uMBqfdZsQbe7YIFKz45QFjnUCRjbkXzgrDvDI+qPJ8=;
+ b=ML4BygmdBp7iX8wOsQ3F6MHrutvG2CphHLe2TjV8hPJSLbGe7WfPx/A7mCaxndDREzpXyS
+ QlSvB7a8kYq22wXXttK5583xlCc8O7nAnttxVwu/80KzOcpvg3QEtAuO8sGqVoD8JpXsM5
+ n47FEw4UwUCSiPxaUR0nvIkLJdL3/PE=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-319-pnxQUMe9MKu0taJRQ3AO8Q-1; Wed, 11 Feb 2026 10:31:00 -0500
+X-MC-Unique: pnxQUMe9MKu0taJRQ3AO8Q-1
+X-Mimecast-MFC-AGG-ID: pnxQUMe9MKu0taJRQ3AO8Q_1770823859
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4806b12ad3fso68901495e9.0
+ for <qemu-arm@nongnu.org>; Wed, 11 Feb 2026 07:30:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770822504; x=1771427304;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ d=1e100.net; s=20230601; t=1770823859; x=1771428659;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=tAXeJuNXG/11xoILElsy8mgQo4sn6X2VMcX2eWXK9ds=;
- b=Dkda70W787gcA3y29IzKw2UpRZiocHtK6+TAdZ+cGXkWMx8CcTDpgrZL6WIGdxVVUh
- tTjU4Q1AqRkC/5oe8lCJyh/4bvm0zosRIYIZ1L/tPy470nM4Zrh8l12JF63Aj4mt2e9e
- klcvOnfXOIDBL2kxoPYsAoRXqlNxyqYWf/Z6Otc89Ae7QzH8pnY/zIIc4wk6rdtWU79X
- VBdNky9fLZB7BpKPCJycy1zzksEEGv4vLUB3EV1lptyVdiRnVtTb7/IipdEtXdT+MktE
- mrsu41QpDHJUUEh4LLujTbGffLDiXHBk2mEA5QfasO/JOfHvqdxgnl+FTK0m8cAD4ODy
- k7uQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXl63hmU2Gtqmsyy/395TSk5+nxcy+vGgPatGGcAiOgVotcjA6xnRlrCG4xYqmO0l0Wirdp+3VqhA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz+6EN5TeSjGekGFxKHVdGxZVxtAqdKviUMVFcWi/zVnQj5W1EL
- aH9x/meRa/V5VhAlpyyj/ezpTcdSOd8PmbjxPB54JIbG5ZUr23YM7F1sgdtWkPPoXtGfvP1O+Ly
- 9rQXV5MAwhqtSL8EzhgaNDXLK6yQiMwtB3ShT9Yxlww==
-X-Gm-Gg: AZuq6aLfqrnTp4tP4eXarYatcIMxQ0dX7rn1beiKoHflkSMfdfWextTkO6u5O1rgLVo
- M1YpVpXvXYbrb8JDrpK3AzxF2K8Y/2ITDOAkBh9XwqK+S9XlprhEKzBL56cBAf4oNcugo955uib
- PKR/YHeA2xRdH6UnZvMeR7eCSeRfbD8V+TEHphWn/dfSvRBhnppTtAG29BLdTDLUxnPt6/veEVj
- RmrSOXcUzq8AtG52B6bX5HB3t7qdYgfkLLsFseQBvFhu0Ny4TkipF/S0cPhHnBBr1SmJScg/ofk
- 0wLsn+2bC6fbC2gLENCPWx4PZlbL76/6APmytSlz/mCFVzWJhNkdb3p0RMTUgbt7eqE=
-X-Received: by 2002:a05:690c:81:b0:796:3079:ae1 with SMTP id
- 00721157ae682-7965f047e7dmr50246597b3.50.1770822503777; Wed, 11 Feb 2026
- 07:08:23 -0800 (PST)
+ bh=4uMBqfdZsQbe7YIFKz45QFjnUCRjbkXzgrDvDI+qPJ8=;
+ b=LwVj601w1yCzQF7WCW8aM9c3yJgVfFGDMDzAeX0DxbGkMvXktk4WLMPSwaOLS2SYUS
+ aSKJaqlgKPs8FF2UX6MlC6+dcXBNtbEMIL4pJ5BFocWyUfFumU/vkNuIoC7YiyLItcGR
+ L1JN3/WsmfFO7/s8SQswHKu185ZTKo/6HsAOM9wbFRB3OvTH1zdrilLFzzsAmrl1bZCE
+ /LUNkRah0uDiyaeEFk9KWQGM5Nd9bxHzhuOrRMdpAFAryKNw6bIwPxAZ5F8+mgtNtFRV
+ IB5RjNxiAUpQITJ7CNTYskwttpLmW6xAk/etsYr6WpGzOknIyjHjemUeh802nxFQc0oY
+ NCeg==
+X-Gm-Message-State: AOJu0YxfQdQQHgUQxKeQW/1UqhBysgbuYfsNCsKypCaTt/eJ9LUGS4BL
+ EfbTslL5RdPrnZqv617mtuuWjUBrZqVGYa7lyOwOvAwsQuKAr9ZCwED5r+0Sf7VWBJpfjxb91WE
+ HxBgNZyKRg3H42c+cTCDLjnmipnUxYq+Mdes2qHLoweTFIWWlcOg79Q==
+X-Gm-Gg: AZuq6aLI3ry99+D1+sF2H9F44FnXEdHDuVoimJLMzN+1ieZrtUdLpmXUeOws6/LlqQl
+ TzNx+gU+8QNU9e3IHygZXDhSmXJehJmNZ2W3yCt5V9WVq7B+/8Ed0IZOumHer3ZPaRzoIhMKkRs
+ owDuMXIYDdx4UM1HK60cgJA/VFJi6PSvvWizEeRGWGjq3WXkNwaQBAervWJxhbs0IeEZCs6j92L
+ qtGZbRAw+k2deayqYNXDMrhwoqJ4ChJLyDeIR2W7FXXoClcEsP4zixPgYTXEGFSx327S33yo4AH
+ DObnjh+mrpWZRHUYMV4J22kZB7bJ3rm/FT7PNTQtyNAxE1wu+Kmjfc1gPefsOZrT79c5+vhIjG3
+ 3UcQfhJXngFGhx0fnxjE3WpVeNYPBpZUjDQ0q3Ox+kPByKCAYezEQdwv3UAIX4CIKIDaQIh9hFE
+ Yv62yh7ss+
+X-Received: by 2002:a05:600c:46cb:b0:483:ea6:8767 with SMTP id
+ 5b1f17b1804b1-4835e2cd408mr35512145e9.36.1770823858859; 
+ Wed, 11 Feb 2026 07:30:58 -0800 (PST)
+X-Received: by 2002:a05:600c:46cb:b0:483:ea6:8767 with SMTP id
+ 5b1f17b1804b1-4835e2cd408mr35511455e9.36.1770823858114; 
+ Wed, 11 Feb 2026 07:30:58 -0800 (PST)
+Received: from rh.fritz.box
+ (p200300f6af2d8700b4c2d356c3fafe63.dip0.t-ipconnect.de.
+ [2003:f6:af2d:8700:b4c2:d356:c3fa:fe63])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43783d34657sm6448511f8f.6.2026.02.11.07.30.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 11 Feb 2026 07:30:57 -0800 (PST)
+From: Sebastian Ott <sebott@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvm@vger.kernel.org,
+ kvmarm@lists.linux.dev, Sebastian Ott <sebott@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v5 1/2] target/arm/kvm: add constants for new PSCI versions
+Date: Wed, 11 Feb 2026 16:30:31 +0100
+Message-ID: <20260211153032.19327-2-sebott@redhat.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260211153032.19327-1-sebott@redhat.com>
+References: <20260211153032.19327-1-sebott@redhat.com>
 MIME-Version: 1.0
-References: <20260211122759.125094-1-mbawa@redhat.com>
- <BE3C6640-85CB-437D-A038-81762FA5AD33@unpredictable.fr>
-In-Reply-To: <BE3C6640-85CB-437D-A038-81762FA5AD33@unpredictable.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 11 Feb 2026 15:08:12 +0000
-X-Gm-Features: AZwV_Qh6dt1x2qdmkCqGtAVWpZdbnYac3r-RYhT486zdThNz_e-q9H-ltOpXhxU
-Message-ID: <CAFEAcA8qtxXP0Uawc+UdSYmpuC8wmpSVkjnYQ_jDQe6zTuNWpA@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/virt: Add virtio-transports property
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: Mohammadfaiz Bawa <mbawa@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, 
- alex.bennee@linaro.org, philmd@linaro.org, cohuck@redhat.com, 
- eric.auger@redhat.com, sebott@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: GU29oVKTIWGH8MT-_HHGv2M6uMo3Dx4RinQ5IrxLywk_1770823859
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,60 +117,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 11 Feb 2026 at 12:50, Mohamed Mediouni <mohamed@unpredictable.fr> w=
-rote:
->
->
->
-> > On 11. Feb 2026, at 13:27, Mohammadfaiz Bawa <mbawa@redhat.com> wrote:
-> >
-> > Windows ARM64 guests detect virtio-mmio devices declared in ACPI
-> > tables even when no backend is attached. This causes "Unknown
-> > devices" (ACPI\LNRO0005) to appear in Device Manager.
+Add constants for PSCI version 1_2 and 1_3.
 
-Is that a problem? There's a device there, and Windows doesn't
-support it, so it reports that there's a device there that
-it doesn't support, which seems reasonable enough.
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Sebastian Ott <sebott@redhat.com>
+---
+ target/arm/kvm-consts.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-> >
-> > Until Windows fixes that by supporting, adding a new machine
-> > property 'virtio-transports' to control the number of
-> > virtio-mmio transports instantiated. The default remains
-> > NUM_VIRTIO_TRANSPORTS (32) for backward compatibility.
-> > Setting it to 0 allows users to disable virtio-mmio entirely.
-> >
-> > Usage: -machine virt,virtio-transports=3D0
->
-> Hello,
->
-> With keeping in mind that this was documented in this (closed=E2=80=A6) i=
-ssue
-> https://github.com/virtio-win/kvm-guest-drivers-windows/issues/595
->
-> Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
+index 54ae5da7ce..9fba3e886d 100644
+--- a/target/arm/kvm-consts.h
++++ b/target/arm/kvm-consts.h
+@@ -97,6 +97,8 @@ MISMATCH_CHECK(QEMU_PSCI_1_0_FN_PSCI_FEATURES, PSCI_1_0_FN_PSCI_FEATURES);
+ #define QEMU_PSCI_VERSION_0_2                     0x00002
+ #define QEMU_PSCI_VERSION_1_0                     0x10000
+ #define QEMU_PSCI_VERSION_1_1                     0x10001
++#define QEMU_PSCI_VERSION_1_2                     0x10002
++#define QEMU_PSCI_VERSION_1_3                     0x10003
+ 
+ MISMATCH_CHECK(QEMU_PSCI_0_2_RET_TOS_MIGRATION_NOT_REQUIRED, PSCI_0_2_TOS_MP);
+ /* We don't bother to check every possible version value */
+-- 
+2.52.0
 
-> > +    if (transports > NUM_VIRTIO_TRANSPORTS) {
-> > +        error_setg(errp, "virtio-transports must not exceed %d",
-> > +                   NUM_VIRTIO_TRANSPORTS);
-> Any particular reason to (keep) capping the maximum to 16?
->
-> From a cursory look, base_memmap seems to have room for plenty more.
-
-My first question to anybody wanting more than 32 here would be
-"why are you not using virtio-pci" ? The whole virtio-mmio infra
-in the virt board is only here because at the time we had no PCI
-support.
-
-The advantage of this series to me is that it means we have
-a way for users to say "I'm not using this functionality,
-just turn it off completely" which lets them reduce the
-security surface a little.
-
-The other thing worth checking is whether we're correctly
-following the ACPI spec in exposing virtio-transports with
-nothing plugged into them, or if we're supposed to be
-suppressing them.
-
-thanks
--- PMM
 

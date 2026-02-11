@@ -4,88 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26D6DEB596A
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 05:56:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16BA1EB596B
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 06:32:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vq3Cq-0000f6-FD; Wed, 11 Feb 2026 00:56:08 -0500
+	id 1vq3lQ-00018g-Ad; Wed, 11 Feb 2026 01:31:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vq3Cp-0000eO-LL
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 00:56:07 -0500
-Received: from p-west3-cluster3-host2-snip4-6.eps.apple.com ([57.103.72.167]
- helo=outbound.ms.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vq3Co-0003LE-4T
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 00:56:07 -0500
-Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-3a-60-percent-9 (Postfix) with ESMTPS id
- 711361800097; Wed, 11 Feb 2026 05:56:02 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1770789365; x=1773381365;
- bh=56sXoYOxPX/sVf+px2q6TZUX1B0IWIQipNS6jK0DejM=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=bBTDApaeTl1DB0a/R8dZFUv9g7jsnDNVtsBBL/ceYimhIZoOKRbqhB+GsW1qNeFiF008Ak+IJP7X3jsjyjXYLEsIMS3MOgYkYMLGqdevflexG5TCrG0C6oUIbTTQ4tnw7xF1Ewb8tNflD0bQzs7WswZV8z/xn8WWDvYLqsXoTWQZtVerimL0QdTSxj1QGxuO+aSrpdvMM9Y+iN0JRZM9cWZJlaoCk3qLpQbfcPmL59NHp2JDVfAu6imgmJaQB1ZjaAve/PZ0G5FToXMUWzF5YXw6yBAz0Q1qzjZClBqXUatYSBCygQHLK5yadPzYjVFtotUlefuLgqJ58hT0ARuM/g==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.57.154.37])
- by p00-icloudmta-asmtp-us-west-3a-60-percent-9 (Postfix) with ESMTPSA id
- 4F058180009A; Wed, 11 Feb 2026 05:55:59 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.300.41.1.7\))
-Subject: Re: [PATCH 0/7] whpx: x86 updates (2026-02)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <20260211055356.44664-1-mohamed@unpredictable.fr>
-Date: Wed, 11 Feb 2026 06:55:47 +0100
-Cc: Phil Dennis-Jordan <phil@philjordan.eu>, Wei Liu <wei.liu@kernel.org>,
- Roman Bolshakov <rbolshakov@ddn.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Cameron Esfahani <dirty@apple.com>, Zhao Liu <zhao1.liu@intel.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
- Magnus Kulke <magnus.kulke@linux.microsoft.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <59BE8AAB-AAF6-41C7-9784-E3103A2FBB97@unpredictable.fr>
-References: <20260211055356.44664-1-mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-X-Mailer: Apple Mail (2.3864.300.41.1.7)
-X-Proofpoint-GUID: wrxHirdb08Y5kVTKkWv58C7XunnsUUqi
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjExMDA0NiBTYWx0ZWRfX2F+AqThWVfzz
- bTIylpgbNFfHgH33n8UpYmHJs/GGaQ3sLYWDiiwDEs10iqRg1NZQ1TenS9LzGFTzAJ/UCXXGvmz
- 2gSiXvaOgb1zOvVplsVIN8VRLBOcn7ETZlAeJ7EJkzvWe9AEL97jtMH+b9Kpf7MnHWTT8CDANUU
- 9EzysCiPUNDwnNuq7hh1WgXH6lR785zWSPETai9R5+jh6Nt7ePei2gzSGAmeE0LWbyKjXDFzHTC
- wX1RJ7n+MVnOyfbNMILOKLOo950eFMSf4WegS2VCNOuUlXyteXEuHMZ39Kzfk+YW4wwBnOe4pPw
- qz7NVNY5Zox75R8SBhGOdcO1RoEbp1KCbLGhpAoF3v8Zb1+SUCKOz5YP9l/Eck=
-X-Authority-Info-Out: v=2.4 cv=Q7ffIo2a c=1 sm=1 tr=0 ts=698c19f3
- cx=c_apl:c_apl_out:c_pps a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
- a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22 a=Mpw57Om8IfrbqaoTuvik:22
- a=GgsMoib0sEa3-_RKJdDe:22 a=haW0fTxJ24_bn6PRMP0A:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-ORIG-GUID: wrxHirdb08Y5kVTKkWv58C7XunnsUUqi
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-02-10_03,2026-02-10_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=834
- adultscore=0 malwarescore=0 bulkscore=0 mlxscore=0
- clxscore=1030
- suspectscore=0 phishscore=0 spamscore=0 lowpriorityscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2602110046
-X-JNJ: AAAAAAAB28uoKib700k3C2zToUrsphoCDpuF7aE52+PWvVfZA+XPgs55jEKUlc435bSdCO8TFgivrG0Aw2iu0/oYSn+K57fETZ9kbCO3En3/N2SLoyMKPx2K5KdaS/FdgyO6vMBdTr4V3jRHanhSn+oMEmA8wCW4aW7gJ2MYlzcq1J0RgjLWOC4RrWpUBCnUBq5x11tjm5sIacHZIgYrdHbH6pJtt+WZkQLMvejFSQE/Xe7ePxAhWxZBxnmUQC0oxDs8oetWWKMFjXMOi9xxW+IYIIfhpw7NZUsbfz2LsfZg6O9qTGyeahuQPiXTOCrG7kwanflda7N9rZ5sOKbUiCKCSoCVOS4alPHm5RI5TSRS5azrO+Ef1+9gZms821yy/c8iaaol3eXqaXr4vbgWIjqlgU+HbtA4uyOScZ4f4gTcD4fstfVT83yMxyBokJ3EYMAcwy0sDUO1bUIAkYUGm4KvRUoLvpJcwM9MibltC0C43x/spTnqwQVJoruLEMNUKW1kRNQbkGpeASjeUHA0bqs9XAgBFuo8dtbeZW7xgUODXT7zNO1wLNYj8D4Q+FUpgUlS/goVrUDV/iC4QV9fG0GPYsu6oUrAB43jTWHDUZcG2Ot2ELWtgkCDHU8o9+0wJuaGZi4+IZ9vB0b27xsuhjczwgN8wuMGx2H440NuxLOjcP0bYe0tzhM6N4YRfwtuHOKJnddWswmP2QRsxUpOJR2ge2oQwZv1i4a+Kwe3MR0cma9TREJUQJqa4Z5aopWFVSgw+ICGuiUZJA8fIc5M7RPrVLbPv32RDnhy3ik=
-Received-SPF: pass client-ip=57.103.72.167;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1vq3lM-00017s-As
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 01:31:50 -0500
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1vq3lK-00048f-E2
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 01:31:48 -0500
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-8231061d234so1198231b3a.1
+ for <qemu-arm@nongnu.org>; Tue, 10 Feb 2026 22:31:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1770791505; x=1771396305; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=5VI3P8I4QXrt/D58wc4S2XlvSfUm8+jvHYdThYnzY4E=;
+ b=UcwYGoVkLwfC+iHbpzk0l0QcLrfYa72eFf10kpdtrG46u/kAsgrYq79zoVKsmYL2Ff
+ ptsLzqFncZOcVwsqehCdKm8KTQNg/PKtCzRS9742m2yFjpeNhJorSWi7opCKfGKffRSP
+ 0Bgq8qAvHnfHzrjZUZHDVGbKx1vNHVfOjnnZ5US6LiQ684aFzCKQm2W0mAQkVBsFFdto
+ jFy1OChe2dueSJL7vXR5+CRAqS95AWl0l04urjBSQGYfdSHF7nh9P2gTWqBa/CXMElJJ
+ APmurbux4xVVGgBDPvYv2sVbda7+rnDPH0kH5ditDlvMn6es1kjuqx0n8TDtxqprluS1
+ sqow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1770791505; x=1771396305;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=5VI3P8I4QXrt/D58wc4S2XlvSfUm8+jvHYdThYnzY4E=;
+ b=qRnUODQFjsvqxn/7XhgJbksig0Cqj/iHgMoU0R/wRjiI3uS8lQSSGPogijG84w9eDF
+ lYcwC51jfijUajILJA8pAEN+x1p27cNfj8KN01Ed8eM8q2LDJn+AZ2ScQEGh9NhvdZvQ
+ 3Mrf7J/smkj71z97a7w7iq2YxPhuu0nLhuLMMn9SqLFlfcEXnRl6TH+uLj0DzhGBMCWF
+ tb3YQrRPt+mhYdiBohIXlC0nCwOzk7Bpx72vR01CgyEUdSgB+Y+AxFGm2qGqwkh8ORpE
+ xU0/TI0bwQh9XrfoJoNgEtLhkKp2jp3lyqqoQedc8RqQ6wPRxRtOCgtYjY6WlkI0FHFY
+ 4G5Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWLyhXXk8bIz378WeLCboWAnsIkRIuJ5295KatguGmbnwG1T3jQ5xWhKcsiTQELwta9Vd7UXogI6A==@nongnu.org
+X-Gm-Message-State: AOJu0YywvkpS9ADDCQEqUW3ks500r02DUzpVBds+euY57ExDdxcH5YYN
+ FrhLoSTr8KrddgPOVce7gj2CYawA6kesD5KG5R2W9S2XQP0MdDy9WnraPw4PxEIdsfE=
+X-Gm-Gg: AZuq6aLG2FUvwFaEZ4sucfP9vlT+UXSiQWpa09RFabTbZP57CMSvNGyAVFpNI18cwA7
+ dbqyqXydmFQuvZ2hzHE9LTWLS1SRlJxrr4t/T4y5WGUlyhWVKJvEdq53yfI33YlNub9BtQCdRqQ
+ DxB8kmin28fPYc05i4JmvpfQEK5fmk0DOTAkUPgpr7zFAvQ5DI6JoIjIualEMs4hcRPcAwk0cvU
+ O5znPs9PwABmiDL0v1enLXkDtZe8clKpQFssYSMBPNVEwNG//FjxFiLQX0P1sNzISecUHWf0W/6
+ jV07T2PWYNALMe3q5Qs7kUZgLT4MSJGTZ6xnueD3E2lari5MYCTjzPRkvia09fIUbnwVzMfv6Bh
+ T3ukuKMet13OVaG+wGAN6kHNUYn+PLBwL48UBwVn+okmne56AhjS+qD+oKJqG8w6eyFsvQpH5Nj
+ 4VTEVRHfq7vj51P2psnNBATXG7n3OahLFZSD1TQi1ajNrra6ajjaF3pcC2TH3e2rJasbg2Bcu3j
+ mJJNtpcmwJydtZQiwAIoHbV
+X-Received: by 2002:a05:6a00:22cc:b0:81f:43fe:988c with SMTP id
+ d2e1a72fcca58-824416107b2mr15625182b3a.6.1770791504764; 
+ Tue, 10 Feb 2026 22:31:44 -0800 (PST)
+Received: from ?IPV6:2001:8003:e109:dd00:f8f8:2c3b:9605:55a0?
+ ([2001:8003:e109:dd00:f8f8:2c3b:9605:55a0])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-8249e366a76sm984264b3a.10.2026.02.10.22.31.40
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 10 Feb 2026 22:31:44 -0800 (PST)
+Message-ID: <8addf5df-614c-4309-8ae4-c3bb59f7e0ef@linaro.org>
+Date: Wed, 11 Feb 2026 16:31:37 +1000
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 12/12] include/tcg/tcg-op.h: eradicate
+ TARGET_INSN_START_EXTRA_WORDS
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: anjo@rev.ng, Jim MacArthur <jim.macarthur@linaro.org>,
+ kvm@vger.kernel.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+References: <20260210201540.1405424-1-pierrick.bouvier@linaro.org>
+ <20260210201540.1405424-13-pierrick.bouvier@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260210201540.1405424-13-pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,47 +112,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Oops, forgot to note:
+On 2/11/26 06:15, Pierrick Bouvier wrote:
+> This commit removes TARGET_INSN_START_EXTRA_WORDS and force all arch to
+> call the same version of tcg_gen_insn_start, with additional 0 arguments
+> if needed. Since all arch have a single call site (in translate.c), this
+> is as good documentation as having a single define.
+> 
+> The notable exception is target/arm, which has two different translate
+> files for 32/64 bits. Since it's the only one, we accept to have two
+> call sites for this.
+> 
+> As well, we update parameter type to use uint64_t instead of
+> target_ulong, so it can be called from common code.
+> 
+> Signed-off-by: Pierrick Bouvier<pierrick.bouvier@linaro.org>
+> ---
 
-This is to apply on top of target-arm.next (which includes the arm64 =
-WHPX support).
-It won=E2=80=99t apply on top of current master.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-> On 11. Feb 2026, at 06:53, Mohamed Mediouni <mohamed@unpredictable.fr> =
-wrote:
->=20
-> x86_64 WHPX updates:
->=20
-> - fixing debug support, which was broken since around: "gdbstub: move =
-guest debug support check to ops"
-> a48e7d9e52f8fe8b47f4c74f3e99d9d677b87fe5
-> - switch over from winhvemulation to common x86 VM exit emulation code
-> - remove some log lines
->=20
-> Mohamed Mediouni (7):
->  whpx: re-enable guest debug support on x86
->  whpx: preparatory changes before switching over from winhvemulation
->  whpx: refactor whpx_destroy_vcpu to arch-specific function
->  whpx: move whpx_get_reg/whpx_set_reg to generic code
->  whpx: x86: switch over from winhvemulation to target/i386/emulate
->  whpx: remove remaining winhvemulation support code
->  whpx: x86: remove messages
->=20
-> accel/whpx/whpx-accel-ops.c     |   8 +
-> accel/whpx/whpx-common.c        |  62 ++++---
-> include/system/whpx-all.h       |   5 +
-> include/system/whpx-common.h    |   6 +-
-> include/system/whpx-internal.h  |  16 --
-> meson.build                     |   3 +-
-> target/arm/whpx/whpx-all.c      |  33 +---
-> target/i386/cpu.h               |   2 +-
-> target/i386/emulate/meson.build |   1 +
-> target/i386/mshv/meson.build    |   4 +
-> target/i386/whpx/whpx-all.c     | 308 ++++++++++++++++++++------------
-> 11 files changed, 252 insertions(+), 196 deletions(-)
->=20
-> --=20
-> 2.50.1 (Apple Git-155)
->=20
-
+r~
 

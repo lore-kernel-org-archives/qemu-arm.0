@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC763EB5961
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 05:55:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95984EB5967
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 05:56:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vq3B1-0005Tu-Cq; Wed, 11 Feb 2026 00:54:15 -0500
+	id 1vq3B6-0005W5-7e; Wed, 11 Feb 2026 00:54:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vq3B0-0005TX-6A
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 00:54:14 -0500
-Received: from p-west3-cluster1-host7-snip4-10.eps.apple.com ([57.103.73.201]
+ id 1vq3B4-0005VW-Ar
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 00:54:18 -0500
+Received: from p-west3-cluster1-host9-snip4-10.eps.apple.com ([57.103.73.221]
  helo=outbound.ms.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vq3Au-0002oE-NP
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 00:54:12 -0500
+ id 1vq3Az-0002pp-Vw
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 00:54:17 -0500
 Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-3a-100-percent-7 (Postfix) with ESMTPS id
- 64F8A1800197; Wed, 11 Feb 2026 05:54:02 +0000 (UTC)
+ 3DED918000A7; Wed, 11 Feb 2026 05:54:11 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1770789244; x=1773381244;
- bh=JLRXXVJEPid2HoEP3BypIju25kk84tSwYYCsOaTG8P8=;
- h=From:To:Subject:Date:Message-ID:Content-Type:MIME-Version:x-icloud-hme;
- b=BjceXS96W4vPAALgRyRQSWQldYMHE2IyHgVHfWY42tZ6dwKII0FrLS7ikRMC/N1J/jjsJfeSPJwpWMCG4ePfwqCdeG5G4MxtC2JuCodDon7MmetmC03LE4u9Ttmhz4ybWMrs8CU44kCvSvpEjW4RgWDOfJQ/PcLWrk9V2BgpQ6NmB/9zn+7OJsj7n2d1YScq5+GpOkXwhGumU3WkhtF6tFJYHhaAT7jZ+04LHXFz5PS6vzX22egsSJe2DCN4FES0XuIHOjACx5xvvTe0KpKUeO9Y/0RVjvqGAXc/GU4UyRrFol40mkmJ54P/xweW31Lom2qDodUFOnoFlUvjTAC0lw==
+ s=sig1; t=1770789253; x=1773381253;
+ bh=SzPbZCaUO3NDYpRGPHTDqVjE5jH4BjEtis7wSjOSTkA=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=AGXIzEUHsyN+agiXpMN6GpCqxHJoDuyo2Z2VuLqy6EtNFOeiJlF/Ga49qbfoxmmuKi6T5t9EtTiLetX8eyvj7MolZ3muu4wcyaOH9eFQdNrSq7MFFFa38ardexuvyccKY74rRrEBnyaOKZQ+oPEFdEbvSudxBi2ipLIzRKlFGWl5d7lh32N+7KLu1mFsPxx+qUwx/CJdN0KlQuUKyJC4Lmx3J9p+17ezRA9vtUAEx8kib2HKUVokUWtXCKw0SN9QXa/k2aj/aZjwh7a1JS/PLtF26trOOPksw1VIDxvPjUZ8ECFFC/juo5VJlqNeSEa8YhRTz2jSukOXX8F5v4mLeg==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.154.37])
  by p00-icloudmta-asmtp-us-west-3a-100-percent-7 (Postfix) with ESMTPSA id
- 1FE621800188; Wed, 11 Feb 2026 05:53:58 +0000 (UTC)
+ 2405A18000BC; Wed, 11 Feb 2026 05:54:07 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>, Wei Liu <wei.liu@kernel.org>,
@@ -46,43 +46,44 @@ Cc: Phil Dennis-Jordan <phil@philjordan.eu>, Wei Liu <wei.liu@kernel.org>,
  Magnus Kulke <magnus.kulke@linux.microsoft.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 0/7] whpx: x86 updates (2026-02)
-Date: Wed, 11 Feb 2026 06:53:45 +0100
-Message-ID: <20260211055356.44664-1-mohamed@unpredictable.fr>
+Subject: [PATCH 3/7] whpx: refactor whpx_destroy_vcpu to arch-specific function
+Date: Wed, 11 Feb 2026 06:53:48 +0100
+Message-ID: <20260211055356.44664-4-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20260211055356.44664-1-mohamed@unpredictable.fr>
+References: <20260211055356.44664-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjExMDA0NiBTYWx0ZWRfX+qvFXGgfLN1r
- 7u9QGQKahTFZ3oVQWBEoU9YYf0V0/CkTtXMH3RTSIwfuvKLrI66nQEdhfupVYzg3BzPDBcU84U9
- hhzpj7W6rBd5n714n7VzkNW/o8GHqbcAKangpYAYDRjidgjBkAVenso0hv6NyNWeCHe3LeqY1GI
- Z/QtDGe5S8C2W+WYsOoZH2GzOi7b2kPbyokPaIKFI4ONh1YVueUjucu5bGFvoKZezl15CP//txl
- WfttIfN+lE8S1gsN/q/F3FUeqlIu9Cj1uHUCM4RYoU9+sFJz/cSOL8y5ADsI5Dsr75TV2ANvSHi
- 8PAQFbr9NgA0foiiNVWpBLxckyRPt8gyf+5hMYoauflTCD3lN6BFMK6KwuMmlk=
-X-Proofpoint-ORIG-GUID: w2IzzS5AG3LkVSfgIgHkxseT1Ffs_-lC
-X-Authority-Info-Out: v=2.4 cv=Lc8xKzfi c=1 sm=1 tr=0 ts=698c197b
- cx=c_apl:c_apl_out:c_pps a=qkKslKyYc0ctBTeLUVfTFg==:117 a=IkcTkHD0fZMA:10
- a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22 a=Mpw57Om8IfrbqaoTuvik:22
- a=GgsMoib0sEa3-_RKJdDe:22 a=9g9VZJ4V8hbEpv_ugbMA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-GUID: w2IzzS5AG3LkVSfgIgHkxseT1Ffs_-lC
+X-Proofpoint-GUID: SXQ-93R9Brj3969dJPjsaGDZdI09jgDr
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjExMDA0NiBTYWx0ZWRfXz6c6hgIphOnX
+ DdaWvQJ77Po9609hSzjn5kV06EBZTwqQIgSG6CtPSXO6OZ41ybXAamCY41Ln0ucgujNNW89Vu6e
+ FQ0qT9b2DZ6i//uoM3ik/GRUCM0Kqg6kL/sDQEyUbxp0pDXnQclKiRudpBKBi163dJtnsPJRlol
+ 15b3XaUSqa/OGoghUqUfJOguxAFZtonW6IoFIcPsp9EhoZOWjciylJ1cPgmCBb9pYzMTG7BjBj4
+ aB0nlXkQOJ+kWFTM55xc9ff2NF/iljRKqauWuEcgA8aoxMww1ThwcYk+Hst+6XaLOIAafjKOFNw
+ NwnMhmX+GsvcJFC9C9dNC/qusP5KphKna2EiqOit/gmfRKECA7D7XDcbOlisPY=
+X-Authority-Info-Out: v=2.4 cv=Q7ffIo2a c=1 sm=1 tr=0 ts=698c1984
+ cx=c_apl:c_apl_out:c_pps a=qkKslKyYc0ctBTeLUVfTFg==:117 a=HzLeVaNsDn8A:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22
+ a=MnziPJL1nimGiMRD7rAA:9
+X-Proofpoint-ORIG-GUID: SXQ-93R9Brj3969dJPjsaGDZdI09jgDr
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-10_03,2026-02-10_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=777
- malwarescore=0 adultscore=0 lowpriorityscore=0
- clxscore=1030 mlxscore=0
- spamscore=0 phishscore=0 suspectscore=0 bulkscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
+ adultscore=0 malwarescore=0 bulkscore=0 mlxscore=0
+ clxscore=1030
+ suspectscore=0 phishscore=0 spamscore=0 lowpriorityscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2602110046
-X-JNJ: AAAAAAABEf+E27RHvgL3BbPku104gBJcowV2pgMMk6iL8FJTScgpi69bP9dmsIk/bsKEfPIBoxoLJ6I/zAd0UwL2k7YlKg3Kh0LKXcXrsAKeyxXnIFRF6+v12EXqZX88t1yK8mB5u7hSbkp0cJVQQgdovXPc/rG6chCQ2QrvSpDdYgyB9i96dh8Ff/CgrsgsLuLvJfbgEhYOr+3D1vU5fT41K5LG0RAL5MrzXfybHtLHhPh88ZuIFXFCzqn/JCwYu+p988qmjlx8euC7oC5q7ubZFRNA3ydYdbkOP7HArqbufm9mX+EgCjXbkC9ZCqelPVeqYfHfIVbWl7dfkCHWUXzj/6YfG6I6g1aCMGX6WitYKscauDuFOdlFQk/A0cnxhyxNDM2+OohkZ0+sCzqUKocyJurzHc+u6SDrpKpWWFLll2z7n70Mh67kbY2rkrmDyzErOUx2NgfcTwrbKnkrW8xuHAP/qhrlDmw88wLyRteHt9NcZy7BJZB/g9xolkr+hERHOUkQI9v01yHokkQsLqkx3MfUcvi2wIQxyv+9UudFcXYw2Z6wBNnu913eW1Ag1lDdw83JUerVcmLH9S6Bb4gf9iV6U+zNa+RPUEPGQ2HZDvOMgW/CQhRFD8OLoiLNTjziNZsu1PA9otl0DAPHdG50g7USSOdcWyNSV0D6pXJyeKt6vyhcPki1UyqwlP4n/F61q9brvfKlyLgnNZwQYxGvX1Ns0ntUK3Nv2MXgGpjxv5vSMEh+LN2+w4usKvgMcSenQSsAVxFp+uDBMBV79RJdsKzh3ncsaLmBHkQIj+hgIqiZ/iVc
-Received-SPF: pass client-ip=57.103.73.201;
+X-JNJ: AAAAAAABPPTIl41WYVFr5IFZDkytF57zw6Y+JlV9p1CsxNPAWom+OsTGrOXcE5kkmK15QwZVqzXzqgnF7eML5VtKDE0XwBTEUbsGijnfF40epESx7L4CIZgkl/S7diG2JEx98J9Awj4pWSJnCvq0M8U0CJAkXbnfptsvzJ2nVycBSaFtm3XZ+vMcDCHUV2CMrSiTPQ81hB4E6Cr7bomNz17v5TyDA6LlnLRKqsUNVvPU5G5r7JG/XF9OK+QvWckLai0Bl6pKFsLmO58LXX96HgRfyklfuqlT2T3upcrEmjb11KlKAuEGo2NKzxl8tnEjKye222MQhAl63xu6MVgeeB9UJfvrE/5bvMUFFBFjQCLovS9NKWPWLSWWJDE/AaRhG3ievgy331TbN1/sjzcPZp5FjPtvALhvG8PLjGrfZwFsANqN6wbUN28vHbcfPjoKNdndY8d+HdvvmnXSc9yf9S39xVoIu9WLl1+s9LHquVBp3KKTLT85LV+3oX7kjrWeDa++Z+f+8mJpOYid+PIxFZt1ScgfYa8gFZFqsL7fItBEuLjCDR2Zx016SYMe5GDXF95DGaMBXsVuhdx2vrzw8HCYHwmBeYz19aLCJAE5iAgx2p0Tg3hIg66d9ch66JmODgJ2R2tqbmNlV5q5esJ8EUfLfnWyUzARz9a8k0KCXHi1GXLBFiS0HX10eADOXrKNAuCgSt9QaPfUTXB0KHMW6lVWG4tdKyg3PaYSLDSs4s+igxckcx6YGvESywjZJudCezCHJ1LkE+Kw6EIAa+wvLuAU1g==
+Received-SPF: pass client-ip=57.103.73.221;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -100,35 +101,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-x86_64 WHPX updates:
+Avoid a TARGET_X86_64 define by moving platform-specific code
+away from generic WHPX support.
 
-- fixing debug support, which was broken since around: "gdbstub: move guest debug support check to ops"
-a48e7d9e52f8fe8b47f4c74f3e99d9d677b87fe5
-- switch over from winhvemulation to common x86 VM exit emulation code
-- remove some log lines
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ accel/whpx/whpx-common.c    | 5 +----
+ include/system/whpx-all.h   | 1 +
+ target/arm/whpx/whpx-all.c  | 5 +++++
+ target/i386/whpx/whpx-all.c | 6 ++++++
+ 4 files changed, 13 insertions(+), 4 deletions(-)
 
-Mohamed Mediouni (7):
-  whpx: re-enable guest debug support on x86
-  whpx: preparatory changes before switching over from winhvemulation
-  whpx: refactor whpx_destroy_vcpu to arch-specific function
-  whpx: move whpx_get_reg/whpx_set_reg to generic code
-  whpx: x86: switch over from winhvemulation to target/i386/emulate
-  whpx: remove remaining winhvemulation support code
-  whpx: x86: remove messages
-
- accel/whpx/whpx-accel-ops.c     |   8 +
- accel/whpx/whpx-common.c        |  62 ++++---
- include/system/whpx-all.h       |   5 +
- include/system/whpx-common.h    |   6 +-
- include/system/whpx-internal.h  |  16 --
- meson.build                     |   3 +-
- target/arm/whpx/whpx-all.c      |  33 +---
- target/i386/cpu.h               |   2 +-
- target/i386/emulate/meson.build |   1 +
- target/i386/mshv/meson.build    |   4 +
- target/i386/whpx/whpx-all.c     | 308 ++++++++++++++++++++------------
- 11 files changed, 252 insertions(+), 196 deletions(-)
-
+diff --git a/accel/whpx/whpx-common.c b/accel/whpx/whpx-common.c
+index f018a8f5c7..c57a0d3f0f 100644
+--- a/accel/whpx/whpx-common.c
++++ b/accel/whpx/whpx-common.c
+@@ -236,10 +236,7 @@ void whpx_destroy_vcpu(CPUState *cpu)
+     struct whpx_state *whpx = &whpx_global;
+ 
+     whp_dispatch.WHvDeleteVirtualProcessor(whpx->partition, cpu->cpu_index);
+-#ifdef HOST_X86_64
+-    AccelCPUState *vcpu = cpu->accel;
+-    whp_dispatch.WHvEmulatorDestroyEmulator(vcpu->emulator);
+-#endif
++    whpx_arch_destroy_vcpu(cpu);
+     g_free(cpu->accel);
+ }
+ 
+diff --git a/include/system/whpx-all.h b/include/system/whpx-all.h
+index 3db074c38c..b831c463b0 100644
+--- a/include/system/whpx-all.h
++++ b/include/system/whpx-all.h
+@@ -17,6 +17,7 @@ void whpx_translate_cpu_breakpoints(
+     struct whpx_breakpoints *breakpoints,
+     CPUState *cpu,
+     int cpu_breakpoint_count);
++void whpx_arch_destroy_vcpu(CPUState *cpu);
+ 
+ /* called by whpx-accel-ops */
+ bool whpx_arch_supports_guest_debug(void);
+diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
+index 8d0ca794af..d52580a082 100644
+--- a/target/arm/whpx/whpx-all.c
++++ b/target/arm/whpx/whpx-all.c
+@@ -309,6 +309,11 @@ bool whpx_arch_supports_guest_debug(void)
+     return false;
+ }
+ 
++void whpx_arch_destroy_vcpu(CPUState *cpu)
++{
++    /* currently empty on Arm */
++}
++
+ static void whpx_get_reg(CPUState *cpu, WHV_REGISTER_NAME reg, WHV_REGISTER_VALUE* val)
+ {
+     struct whpx_state *whpx = &whpx_global;
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index e1f0fa5e77..cdcaebbe16 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -1277,6 +1277,12 @@ bool whpx_arch_supports_guest_debug(void)
+     return true;
+ }
+ 
++void whpx_arch_destroy_vcpu(CPUState *cpu)
++{
++    AccelCPUState *vcpu = cpu->accel;
++    whp_dispatch.WHvEmulatorDestroyEmulator(vcpu->emulator);
++}
++
+ /* Returns the address of the next instruction that is about to be executed. */
+ static vaddr whpx_vcpu_get_pc(CPUState *cpu, bool exit_context_valid)
+ {
 -- 
 2.50.1 (Apple Git-155)
 

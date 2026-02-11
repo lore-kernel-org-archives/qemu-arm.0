@@ -4,109 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D33E8EB5976
-	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 07:50:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD7B1EB597C
+	for <qemu-arm@archiver.kernel.org>; Wed, 11 Feb 2026 08:33:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vq4yh-0001Ac-Aw; Wed, 11 Feb 2026 02:49:39 -0500
+	id 1vq5eg-0004q7-Ai; Wed, 11 Feb 2026 03:33:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1vq4yf-0001AH-1e
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 02:49:37 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vq5ef-0004ph-7H
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 03:33:01 -0500
+Received: from 1.mo552.mail-out.ovh.net ([178.32.96.117])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1vq4yd-0001j7-6t
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 02:49:36 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770796173;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=GuQ0NvYrelwHNZ4wAnzmDtTLpI7wZFQuifKBPWGu0oPmSXt182J3H0scLE9hwxd9ISRilN
- sOKgOhI/NFWLodiHJOA18lg1mayek4YpEcTX3RHrkvXKXWXyb47Pc0snkgGaTv2PSpkfDC
- nRerpOUHP5992hbWG4/eKJhvM3RfQVw=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-498-QRKeHGuHPa6UedBzA_0cgg-1; Wed, 11 Feb 2026 02:49:32 -0500
-X-MC-Unique: QRKeHGuHPa6UedBzA_0cgg-1
-X-Mimecast-MFC-AGG-ID: QRKeHGuHPa6UedBzA_0cgg_1770796171
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-483101623e9so14266105e9.3
- for <qemu-arm@nongnu.org>; Tue, 10 Feb 2026 23:49:31 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770796171; x=1771400971;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=PncBdVyY6IJBWWuo6G8nMC/DRnwSrfjR6CNVoFAqQc+hJQBDTnpPlfA4j8TreuM1Qx
- 26xgMMA/xJnK+WrFyd/lINY3teXm79/QpnbBDD8tNgX19Yf1llm8nVZY/zJocyosTRHE
- ShJdVgc9th5Mq57H+Ei5Io/H645YpeDV1+nBBx3Fj1H7i4tRX6dH9n7QW/BPNAdf5GqK
- KwmdumtEBpyqvjXa6B7FA1LWFWekR55Gg/vvUTfBZXSX+Ir8Fs9C7PyqpPNNG0G+Rt05
- y0mjLOgmcSsgA1zryesMhvLBXHyq7Crv5+6Sc/5I9xzhHJUUwg2JGRelhXQ1PV6YT7KU
- QBNA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX+0GBqBW6FjdNM1p9yvzOseJf6ShnHsLDgVHEBTENcrTup+gns+U8yzWJmUBM8GcQeEEEQEk3ePA==@nongnu.org
-X-Gm-Message-State: AOJu0YwnKkgPVBvinl/zp+xjivfqxGMQE1kY1fLEelQRMaeYr8h1pRiR
- hBCIWtw7ImsaA3+ZbCNg6NUKv7EqmQQoFwyeN+ey5kYU070HA2v+rmfhUs0Shm4QWo336NrfaMM
- GZvCFTxTREzMmcArzFdlSxkkb/joH/HKhwviLT8s+ZyPs4xEmYJXOxg==
-X-Gm-Gg: AZuq6aK33YcNVmjN0QbxD3djBEBXxZZGbQVE438u4cT3OooUlx6CMOv0PrprO6Tphbq
- ru96I7FyE3NVIkAddE4pGEin9f00S5O2yrdVh1BL0l3oknCx0l+/9UlkGJNpw2yEoG5G2Oq65J3
- aq+hC5Paqci29UHMAZ3BQD4/wI12lQ4hdHlYMDYLD12agx+gXig3RLiDJwH6QH9EstR+XeWesWf
- SZiPl1SmPWvSYfMA3iBM58Q3PrmjT89B9oWnYSk33X3eCvi3XaMQfHkaIyWoHqIQxW8p54XWnBl
- 3KUpvVhpa3cIdTIPHKZkWuzWDAtHmy8UNJwZ80j3ovwIpaMSycAwuRfR05/0bP4Ou8ck+jvlPKS
- pI0gXlp9s1LDehdQabyRP+AZSzUAL1RaugtdvvYEC/Z6ZM4gXb80xZnqKJJpXdXg9pzSwFzOdAG
- oAhkNiXPXNzA6nhusF7mm4svhdIw==
-X-Received: by 2002:a05:600d:6447:20b0:47e:e2ec:995b with SMTP id
- 5b1f17b1804b1-4832020dfadmr174072185e9.9.1770796170712; 
- Tue, 10 Feb 2026 23:49:30 -0800 (PST)
-X-Received: by 2002:a05:600d:6447:20b0:47e:e2ec:995b with SMTP id
- 5b1f17b1804b1-4832020dfadmr174072025e9.9.1770796170350; 
- Tue, 10 Feb 2026 23:49:30 -0800 (PST)
-Received: from [192.168.10.48] ([151.61.26.160])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4835dd20519sm40750005e9.15.2026.02.10.23.49.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Feb 2026 23:49:29 -0800 (PST)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
- Wei Liu <wei.liu@kernel.org>, Roman Bolshakov <rbolshakov@ddn.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Cameron Esfahani <dirty@apple.com>, Zhao Liu <zhao1.liu@intel.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Magnus Kulke <magnus.kulke@linux.microsoft.com>
-Subject: Re: [PATCH 0/7] whpx: x86 updates (2026-02)
-Date: Wed, 11 Feb 2026 08:49:26 +0100
-Message-ID: <20260211074926.1411965-1-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260211055356.44664-1-mohamed@unpredictable.fr>
-References: 
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1vq5ec-0002Nj-AO
+ for qemu-arm@nongnu.org; Wed, 11 Feb 2026 03:33:00 -0500
+Received: from mxplan5.mail.ovh.net (unknown [10.110.37.73])
+ by mo552.mail-out.ovh.net (Postfix) with ESMTPS id 4f9sBR0NWZz5vyk;
+ Wed, 11 Feb 2026 08:32:47 +0000 (UTC)
+Received: from kaod.org (37.59.142.97) by DAG14EX2.mxp5.local (172.16.2.142)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.35; Wed, 11 Feb
+ 2026 09:32:45 +0100
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G002c13e72d4-da62-4325-b3ac-350552b3dc81,
+ 3A8D629C33260B61B1BB8F65C34560168E726884) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <d56d900f-d9cd-4c6f-ac44-a0cb0e6e6b13@kaod.org>
+Date: Wed, 11 Feb 2026 09:32:42 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: -Odxopp3cfRfUg4HdQG6KmogJc3ZxtclNsZ_n_sKDbU_1770796171
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] tests/functional: Aspeed ARM tests enhancements
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Thomas Huth <thuth@redhat.com>, Kane Chen
+ <kane_chen@aspeedtech.com>
+References: <20260209065044.239378-1-clg@redhat.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260209065044.239378-1-clg@redhat.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG13EX1.mxp5.local (172.16.2.131) To DAG14EX2.mxp5.local
+ (172.16.2.142)
+X-Ovh-Tracer-GUID: 5c4e0a10-4a7f-451d-a12b-02a9337393fc
+X-Ovh-Tracer-Id: 4516547480309697525
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGJePbD+Qym0b6GLqPhKzngwoS1MoycbGisGGOTca1+f7Jk5Rj+arP6O9Xy1TFjwbcXqlb2tPdKD7Sx7i21YsssAQ0B5mXetYAvBap1/VQPfUMTX17NyuTauxO5EkH3zMVYlU33EDWw0Cf2PnZCVbxpAwVA+i5I3DDu5hMj3K4W9f7SX8RMNBX4shG2sxls0UCFu4Nocs8398CO44fqLBh0QAxO+ESJhYNJkll/7vrfmYq9ykmZAzwSW0v1eIJu7PKjrN1UtF8NizAIniht2X/vrfopmDlBnn68a2wP2ILTRI5Tl/EK0DIs3Wk6GaRcYn5ey4fvkHuo7f9rF96W6AHzRPjbOaEZ+BZv70wUhbUuQfDtHQVj94jhdcCnl0VAP47VgRl4lo0r7Mj0mALFv1i0qWTNA31jsLhQlZkb/R0gIZ/r7FyujqYuw9azPd0i+1D3RnYv4Awf4cXQjLdsgD1eX3uRTkK8OMv98wGLmJxqk9fGJT9F5OkcAnjFaE3aZA6P7Irq2voOClhko2SnZBzkXX8mEZI5HmLHQhB48a4tIJOi/zwp9O3q5l7AupevTEjnITWpE4ATNKNQ2SFQg7YouHxThC/cgzo8WLs8SY8KEuVQbXxerb3bBD7j1gPnptkl6/T5apuHceKR/AdmlE12LDcPYIuBWnu/KkESz7E7YQ
+DKIM-Signature: a=rsa-sha256; bh=6afOnp9fxSd3vFuIrUaQhuyik0iz5fd31XJcKz0KmSs=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1770798768; v=1;
+ b=mZ+2QpGyx0wMKVlttECDNONyd9bNmQxSPeIDrn1cInYi9Ggwr2acFNiBF7eJis3ZuDL194By
+ ufwplMWXJiGYz41KkKOBexIFzDIySQcwSqb2KQxY0WqdWSYm8PEv9P4LGCsda49dndiDAxceCS5
+ 3i0KjIttwGfCiS/KrFSHIF9K9CCR1tqzYllrf0SH9Ol65xbalJaNtg3wfbeEZrtOuidndCjDxR5
+ MqU7REVFiPVDZSb5WDcC+09bxgqUfkHw/XlubqBgrRHgYoL2a7IFpIekW39tlgcGOCC+YOgxbxL
+ ec2k3vQQbdkygSBRiEhb5wO4enN8r6YzK2gMCoS6EndEw==
+Received-SPF: pass client-ip=178.32.96.117; envelope-from=clg@kaod.org;
+ helo=1.mo552.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,8 +130,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Queued, thanks.
+Jamin, Kane,
 
-Paolo
+Could you please review this series ?
+
+Thanks,
+
+C.
+
+
+
+On 2/9/26 07:50, Cédric Le Goater wrote:
+> Hi,
+> 
+> This allows the functional test suite to run tests in parallel more
+> effectively and adds a new set of tests using the older Linux 5.15
+> kernel.
+> 
+> Thanks,
+> 
+> C.
+> 
+> Cédric Le Goater (2):
+>    tests/functional: Split Aspeed ARM tests into separate files
+>    tests/functional: Add SDK tests with Linux 5.15
+> 
+>   tests/functional/arm/meson.build              | 18 ++++--
+>   tests/functional/arm/test_aspeed_ast1060.py   |  0
+>   ...00.py => test_aspeed_ast2500_buildroot.py} | 14 -----
+>   .../functional/arm/test_aspeed_ast2500_sdk.py | 29 +++++++++
+>   .../arm/test_aspeed_ast2500_sdk_515.py        | 29 +++++++++
+>   .../arm/test_aspeed_ast2600_buildroot.py      | 41 +------------
+>   .../arm/test_aspeed_ast2600_buildroot_tpm.py  | 60 +++++++++++++++++++
+>   .../functional/arm/test_aspeed_ast2600_sdk.py | 15 -----
+>   .../arm/test_aspeed_ast2600_sdk_515.py        | 29 +++++++++
+>   .../arm/test_aspeed_ast2600_sdk_otp.py        | 34 +++++++++++
+>   10 files changed, 196 insertions(+), 73 deletions(-)
+>   mode change 100644 => 100755 tests/functional/arm/test_aspeed_ast1060.py
+>   rename tests/functional/arm/{test_aspeed_ast2500.py => test_aspeed_ast2500_buildroot.py} (74%)
+>   create mode 100755 tests/functional/arm/test_aspeed_ast2500_sdk.py
+>   create mode 100755 tests/functional/arm/test_aspeed_ast2500_sdk_515.py
+>   create mode 100755 tests/functional/arm/test_aspeed_ast2600_buildroot_tpm.py
+>   create mode 100755 tests/functional/arm/test_aspeed_ast2600_sdk_515.py
+>   create mode 100755 tests/functional/arm/test_aspeed_ast2600_sdk_otp.py
+> 
 
 

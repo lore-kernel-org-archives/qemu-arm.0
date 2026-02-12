@@ -4,95 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE66CEDF02D
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Feb 2026 04:09:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2993EDF04B
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Feb 2026 06:35:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vqO0a-0001lL-81; Wed, 11 Feb 2026 23:08:52 -0500
+	id 1vqQHh-0003g7-2d; Thu, 12 Feb 2026 01:34:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1vqO0V-0001ki-HO
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 23:08:49 -0500
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vqQHV-0003fT-Cl
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 01:34:30 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1vqO0S-0007Z6-5o
- for qemu-arm@nongnu.org; Wed, 11 Feb 2026 23:08:46 -0500
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vqQHR-000733-RZ
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 01:34:27 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770869322;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1770878064;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=w/ZzJlsjguryhKKM4mp+inyBSpPIALEBuDRcop1xgSc=;
- b=bhscUCUf4CZsjChKOIMP76CmWhWCRYy7Zbs0egpFcQAr6/XIiB5ARupKU6U5pxXl6daVyx
- T9L1O2z9Ii1kllIow6NSlgXMVagh3zDq1Ycb0Do4rALFtChSmlljRTjlQlRdjjw83zjHXA
- NyQ4OKL1HY62v8odlX80/Dpj+zd/Hbo=
-Received: from mail-oo1-f71.google.com (mail-oo1-f71.google.com
- [209.85.161.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=niydyansRn4CVMonTmoHm0Bhb8Q7Fv00ACBhWPYs0lU=;
+ b=bHJmKE7F8gotA+3QXhO9KphVq9z/yBHJZ94iNAvM0PkV5JHwk2EfSrNrsNbxE5KoVx74Uy
+ MMvMwZzA3CsYgQjkk/eaO/Kx3S1juj/wJQ+yX8K9FLUmTLXogPl824HiwDtc2dQzSJNStE
+ r439KWyT5SoYtJtVIyzmsFWV3VJMMa8=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-564-u-uOpWK-N7WOw0-S24Pe4g-1; Wed, 11 Feb 2026 23:08:40 -0500
-X-MC-Unique: u-uOpWK-N7WOw0-S24Pe4g-1
-X-Mimecast-MFC-AGG-ID: u-uOpWK-N7WOw0-S24Pe4g_1770869320
-Received: by mail-oo1-f71.google.com with SMTP id
- 006d021491bc7-662b9af3988so24513441eaf.1
- for <qemu-arm@nongnu.org>; Wed, 11 Feb 2026 20:08:40 -0800 (PST)
+ us-mta-584-J5CJKPuuOm6GyGLMo0Sjmg-1; Thu, 12 Feb 2026 01:34:23 -0500
+X-MC-Unique: J5CJKPuuOm6GyGLMo0Sjmg-1
+X-Mimecast-MFC-AGG-ID: J5CJKPuuOm6GyGLMo0Sjmg_1770878062
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-48079ae1001so60287375e9.0
+ for <qemu-arm@nongnu.org>; Wed, 11 Feb 2026 22:34:23 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770869320; x=1771474120;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1770878062; x=1771482862;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=w/ZzJlsjguryhKKM4mp+inyBSpPIALEBuDRcop1xgSc=;
- b=YmtDpgGhY530G4bCTacTwXfV2yyFYD2k7E9VYsk/6K/fYmemL31AiWpcr+TRLJUqbh
- W16FCsxFYGAs+aAz24Ig2kkvN35++QJ6CQsZL94IFi66JQtuVJz4ZSm4O0h9GawvXKpZ
- sXuHVr1vyB2kXogmTKEp4k91wACVh6sxrhY+FO8ZUwkPRe6dNdORxWj4wO62tjM48jYL
- voqmprgdj+mfbKNTwpuvmhUITb72suHB3/p5Q2K6WcEukcs0e62/QlXvhBGO9mRXeuEm
- Kd8JH2yWW7Qmx3sOEY6uQd6ZlehgkMbMmywbuRTw0dYeWjzJ9iZ3Ytg0wSkb4N3r3Tup
- SPrw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWUG01wuH0yDNo0TgkjCusSWtH7V+kGBqcrpHUV7jAMwTaZbaaX/5e0wA5ZLYAB1Hwl2nnNr0t72w==@nongnu.org
-X-Gm-Message-State: AOJu0YxEdA2nNb+1PDmpbEUQSyx6HOHlpvQVmRWsvxBISbJvfQlIOyUV
- GBq74Q5rB0IxIrTIMW/R6lEpZIFzXj6DGpsVsTJ1b3XRwfSITXbe2KJFDExuztVlXyExfN4ngom
- DJJYXh7QS0bnWhZCQZCNouLWoBlZ8xvHnVH1x3FkepRNbfGA0peN+3uSpo3PXuZeZpR3CvnIgv3
- GVaqmlcwmlgo645C06H3S/Tbdvl6zg
-X-Gm-Gg: AZuq6aLT49epRNyLXlVRo+JSetlZg8PoS4+PrnWkeZUGyuES2tFEAgpcaki6Jdnhapa
- SmVwmQ1cEGNz0OV8WSwR5LSvS71GW/EVyNbAubZkPyB1eBBIsE5PCjCgeZyc3NIEYnGFROQecRe
- di1ef/njlNxz5ZZQJvbwktkbjuiAhPEPH+Jbh+u8jbQBJCDqAMOBZ9GY4fzO/eCvgFangbd54Vf
- Ms4j8jEpIM9T2mtpLcYX0lvrMU3FIz2K23T
-X-Received: by 2002:a05:6820:1519:b0:663:8c6:9783 with SMTP id
- 006d021491bc7-6759bc9cf91mr808090eaf.69.1770869320003; 
- Wed, 11 Feb 2026 20:08:40 -0800 (PST)
-X-Received: by 2002:a05:6820:1519:b0:663:8c6:9783 with SMTP id
- 006d021491bc7-6759bc9cf91mr808080eaf.69.1770869319590; Wed, 11 Feb 2026
- 20:08:39 -0800 (PST)
+ bh=niydyansRn4CVMonTmoHm0Bhb8Q7Fv00ACBhWPYs0lU=;
+ b=i74E+Xg9jQmnhhsT1L0q8cdMP/D36ESVR8EQwQfdYT1Gz+WV8Ya9FwcTztVJEIF5kM
+ EVlV3ilikTZn4d3xEWBmqKSGTcb1hloc/AHxXaVna9zZTbqBzWhjkL3dJfk8wBsY7C3n
+ AG96OpILHhzLyUEPfEk+aJRkGX6N4dM4ebu07GZazOxyMusP0t12nz35As8XAuIUEHNF
+ /SrfwlXFP/qcaR1/LIBhTkOWsQzKFO6jUkC6GX/0MXdP7bvYDxy4yFxDiCErV3axJ3A/
+ flXA1BqGC4cWt1kFi+INIXdQD71lm786Z07XRe6ymnDaXR9GJkquheNwH/sVKh+Uhrkk
+ pKTg==
+X-Gm-Message-State: AOJu0YzPG3qTErnmT0o/0QkMxzHR1dCDZV2tz/gRFxn0D3w2VwL+YSpQ
+ P+1oOwQZTYnjFplaUvuqvr9wqPr8mXeasuDWqiML3XDXAvPNZeIuPrzO0H6tqQTBGulFtVl0RSw
+ AYoDSOw7xN+lJXZ6Nj9TtMcC1fASwMCkqz82HMbMCfTHlZM7Q9uexIw==
+X-Gm-Gg: AZuq6aL+FaYhCSwJdPRlTSbjfQQQL/T2vtjH645kkAJaAfKjjGoRZOGqpkKSRI+Wfuh
+ 7syqMevQ2keKZFqIW92C3k2VenpBB73AMEUD9258pj57E0FKrdunq0PmnBwM2WV0sAMpu+QFPI8
+ 3RtlKLOKjfxs+Ko4BGKcouMzIcywco6Nvpv5d/sKDwRQtDV7ZcpJxqeGmn4gIHcODuZKCi7rNEy
+ /98k61QFEbNzx0brZbXoVh08cOCqsKh66x2xo6F1WwmroR6G/e3UcC6+hQK0ld3zxDdCfQ10sQ8
+ fjk+KEyrTBCl4lYBDWvaIU4+rG4HCiy7S4KtujNcLFsiKlCGXaH74hDe/2n0c/Ht1uIozyagCu2
+ OOgmNKVKzW5eOjp3ycYCjHex3PwN9j/KYUVVc/WxPornED1GyUSCPdsPj8QafnYgkV1N30w==
+X-Received: by 2002:a05:600c:638f:b0:477:7af8:c8ad with SMTP id
+ 5b1f17b1804b1-48365716db6mr21908685e9.31.1770878062098; 
+ Wed, 11 Feb 2026 22:34:22 -0800 (PST)
+X-Received: by 2002:a05:600c:638f:b0:477:7af8:c8ad with SMTP id
+ 5b1f17b1804b1-48365716db6mr21908295e9.31.1770878061627; 
+ Wed, 11 Feb 2026 22:34:21 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43783e59c19sm9242366f8f.34.2026.02.11.22.34.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 11 Feb 2026 22:34:21 -0800 (PST)
+Message-ID: <f053853e-577f-418b-9bee-e9aa8ca0ebb4@redhat.com>
+Date: Thu, 12 Feb 2026 07:34:19 +0100
 MIME-Version: 1.0
-References: <20260211122759.125094-1-mbawa@redhat.com>
- <BE3C6640-85CB-437D-A038-81762FA5AD33@unpredictable.fr>
- <CAFEAcA8qtxXP0Uawc+UdSYmpuC8wmpSVkjnYQ_jDQe6zTuNWpA@mail.gmail.com>
- <D5033059-0647-441A-BB8E-91CB6E9DBD3B@unpredictable.fr>
-In-Reply-To: <D5033059-0647-441A-BB8E-91CB6E9DBD3B@unpredictable.fr>
-From: Mohammadfaiz Bawa <mbawa@redhat.com>
-Date: Thu, 12 Feb 2026 09:38:23 +0530
-X-Gm-Features: AZwV_QjaUHdMQ9V5YeRas4mzhvLXM4x3yTLVKwjubsVlUF2a7gbh_e5tajeyjCc
-Message-ID: <CAJg9Kkyphr--n+Ooo9a+Hr0Yb8EG3G-yPes5T5VXvf62qe2MwQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/virt: Add virtio-transports property
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, 
- alex.bennee@linaro.org, philmd@linaro.org, cohuck@redhat.com, 
- eric.auger@redhat.com, sebott@redhat.com, 
- Yan Vugenfirer <yvugenfi@redhat.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 3/5] hw/arm/smmuv3-accel: Allocate vEVENTQ for
+ accelerated SMMUv3 devices
+To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ Nicolin Chen <nicolinc@nvidia.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Nathan Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
+ Jiandi An <jan@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
+ Krishnakant Jaju <kjaju@nvidia.com>
+References: <20260211083415.133534-1-skolothumtho@nvidia.com>
+ <20260211083415.133534-4-skolothumtho@nvidia.com>
+ <aYzFeMh1szhJlJJk@Asurada-Nvidia>
+ <e66e82d6-0953-49f0-9d84-bf2776e8f3ce@redhat.com>
+ <aYzJhEFg/zxtrJ8z@Asurada-Nvidia>
+ <CH3PR12MB754855AE35A087B900B0C311AB63A@CH3PR12MB7548.namprd12.prod.outlook.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CH3PR12MB754855AE35A087B900B0C311AB63A@CH3PR12MB7548.namprd12.prod.outlook.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 5wMdh0ig6K4U2UwoWHCrccyuYpAjqmnb4WtgQS2Wbiw_1770869320
+X-Mimecast-MFC-PROC-ID: Vhd9L3lK2lZrbRjCubpOewLrvcKIdnxOn47PNkNdfTg_1770878062
 X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000bd0993064a98a4db"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mbawa@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -107,178 +127,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000bd0993064a98a4db
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-+ Yan
 
 
-On Thu, Feb 12, 2026 at 4:45=E2=80=AFAM Mohamed Mediouni <mohamed@unpredict=
-able.fr>
-wrote:
+On 2/11/26 7:43 PM, Shameer Kolothum Thodi wrote:
 >
+>> -----Original Message-----
+>> From: Nicolin Chen <nicolinc@nvidia.com>
+>> Sent: 11 February 2026 18:25
+>> To: Eric Auger <eric.auger@redhat.com>
+>> Cc: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
+>> arm@nongnu.org; qemu-devel@nongnu.org; peter.maydell@linaro.org;
+>> Nathan Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
+>> Jiandi An <jan@nvidia.com>; Jason Gunthorpe <jgg@nvidia.com>;
+>> jonathan.cameron@huawei.com; zhangfei.gao@linaro.org;
+>> zhenzhong.duan@intel.com; Krishnakant Jaju <kjaju@nvidia.com>
+>> Subject: Re: [PATCH v5 3/5] hw/arm/smmuv3-accel: Allocate vEVENTQ for
+>> accelerated SMMUv3 devices
+>>
+>> On Wed, Feb 11, 2026 at 07:14:40PM +0100, Eric Auger wrote:
+>>> On 2/11/26 7:07 PM, Nicolin Chen wrote:
+>>>> On Wed, Feb 11, 2026 at 08:34:13AM +0000, Shameer Kolothum wrote:
+>>>>> For cold-plugged devices using SMMUv3 acceleration, the vIOMMU is
+>>>>> created before the guest boots. In this case, the vEVENTQ is
+>>>>> allocated when the guest writes to SMMU_CR0 and sets EVENTQEN = 1.
+>>>> [...]
+>>>>> @@ -1605,6 +1605,10 @@ static MemTxResult
+>> smmu_writel(SMMUv3State *s, hwaddr offset,
+>>>>>          s->cr0ack = data & ~SMMU_CR0_RESERVED;
+>>>>>          /* in case the command queue has been enabled */
+>>>>>          smmuv3_cmdq_consume(s, &local_err);
+>>>>> +        /* Allocate vEVENTQ if EventQ is enabled and a vIOMMU is
+>>>>> + available */
+>>>> Nit: though it is just following smmuv3_cmdq_consume(), it'd be
+>>>> likely clearer to verify the EVENTQEN in the callers.
+>>>>
+>>>>> +        if (local_err == NULL) {
+>>>> Does eventq need to rely on !local_err from cmdq?
+>>> if local_err is NULL we can safely use it, no? Or maybe I miss your
+>>> point. maybe test !local_err directly?
+>> Point is: if local_err isn't NULL, why can't we allocate vEVENTQ?
+> Technically nothing prevents that I guess.
 >
+> The only thing is we have to call error_report_err() if local_err != NULL
+> and then set local_err == NULL before calling  alloc_veventq().
+
+Besides the implementation details about Error handle usage I think we
+shall first answer the question about the relevance to allocate the
+veventq in case the smmuv3_cmdq_consume() fails.
+
+Thanks
+
+Eric
 >
-> > On 11. Feb 2026, at 16:08, Peter Maydell <peter.maydell@linaro.org>
-wrote:
-> >
-> > On Wed, 11 Feb 2026 at 12:50, Mohamed Mediouni <mohamed@unpredictable.f=
-r>
-wrote:
-> >>
-> >>
-> >>
-> >>> On 11. Feb 2026, at 13:27, Mohammadfaiz Bawa <mbawa@redhat.com> wrote=
-:
-> >>>
-> >>> Windows ARM64 guests detect virtio-mmio devices declared in ACPI
-> >>> tables even when no backend is attached. This causes "Unknown
-> >>> devices" (ACPI\LNRO0005) to appear in Device Manager.
-> >
-> > Is that a problem? There's a device there, and Windows doesn't
-> > support it, so it reports that there's a device there that
-> > it doesn't support, which seems reasonable enough.
-> >
+> Thanks,
+> Shameer
 >
-> Hello,
->
-> For customers, some security software gets quite unhappy if it sees
-> that there are devices with no drivers installed.
-
-Agreed. The main issue is production environments where unknown devices
-can cause problems with security compliance and Microsoft certification.
-
-> For development it indeed doesn=E2=80=99t matter.
-> >>>
-> >>> Until Windows fixes that by supporting, adding a new machine
-> >>> property 'virtio-transports' to control the number of
-> >>> virtio-mmio transports instantiated. The default remains
-> >>> NUM_VIRTIO_TRANSPORTS (32) for backward compatibility.
-> >>> Setting it to 0 allows users to disable virtio-mmio entirely.
-> >>>
-> >>> Usage: -machine virt,virtio-transports=3D0
-> >>
-> >> Hello,
-> >>
-> >> With keeping in mind that this was documented in this (closed=E2=80=A6=
-) issue
-> >> https://github.com/virtio-win/kvm-guest-drivers-windows/issues/595
-> >>
-> >> Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> >
-> >>> +    if (transports > NUM_VIRTIO_TRANSPORTS) {
-> >>> +        error_setg(errp, "virtio-transports must not exceed %d",
-> >>> +                   NUM_VIRTIO_TRANSPORTS);
-> >> Any particular reason to (keep) capping the maximum to 16?
-> >>
-> >> From a cursory look, base_memmap seems to have room for plenty more.
-> >
-> > My first question to anybody wanting more than 32 here would be
-> > "why are you not using virtio-pci" ? The whole virtio-mmio infra
-> > in the virt board is only here because at the time we had no PCI
-> > support.
-> >
-> Could it make sense to have it disabled by default for new machine model
-versions then?
-
-I think that makes sense. This patch adds the property with the current
-default i.e. 32. A follow-up patch could set the default to 0 for the
-latest machine version.
-
-> Thank you,
-> -Mohamed
-> > The advantage of this series to me is that it means we have
-> > a way for users to say "I'm not using this functionality,
-> > just turn it off completely" which lets them reduce the
-> > security surface a little.
-> >
-> > The other thing worth checking is whether we're correctly
-> > following the ACPI spec in exposing virtio-transports with
-> > nothing plugged into them, or if we're supposed to be
-> > suppressing them.
-
-While researching this issue, I did check x86 microvm, it only adds
-devices to ACPI when a backend is detected (checks QTAILQ_EMPTY before
-calling virtio_acpi_dsdt_add). ARM virt currently adds all 32 regardless.
-So we could also follow similar dynamic suppression but the property
-approach
-gives users explicit control over the number of transports.
-
-> > thanks
-> > -- PMM
-
---000000000000bd0993064a98a4db
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">+ Yan<br><br><br>On Thu, Feb 12, 2026 at 4:45=E2=80=AFAM M=
-ohamed Mediouni &lt;<a href=3D"mailto:mohamed@unpredictable.fr">mohamed@unp=
-redictable.fr</a>&gt; wrote:<br>&gt;<br>&gt;<br>&gt;<br>&gt; &gt; On 11. Fe=
-b 2026, at 16:08, Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.=
-org">peter.maydell@linaro.org</a>&gt; wrote:<br>&gt; &gt;<br>&gt; &gt; On W=
-ed, 11 Feb 2026 at 12:50, Mohamed Mediouni &lt;<a href=3D"mailto:mohamed@un=
-predictable.fr">mohamed@unpredictable.fr</a>&gt; wrote:<br>&gt; &gt;&gt;<br=
->&gt; &gt;&gt;<br>&gt; &gt;&gt;<br>&gt; &gt;&gt;&gt; On 11. Feb 2026, at 13=
-:27, Mohammadfaiz Bawa &lt;<a href=3D"mailto:mbawa@redhat.com">mbawa@redhat=
-.com</a>&gt; wrote:<br>&gt; &gt;&gt;&gt;<br>&gt; &gt;&gt;&gt; Windows ARM64=
- guests detect virtio-mmio devices declared in ACPI<br>&gt; &gt;&gt;&gt; ta=
-bles even when no backend is attached. This causes &quot;Unknown<br>&gt; &g=
-t;&gt;&gt; devices&quot; (ACPI\LNRO0005) to appear in Device Manager.<br>&g=
-t; &gt;<br>&gt; &gt; Is that a problem? There&#39;s a device there, and Win=
-dows doesn&#39;t<br>&gt; &gt; support it, so it reports that there&#39;s a =
-device there that<br>&gt; &gt; it doesn&#39;t support, which seems reasonab=
-le enough.<br>&gt; &gt;<br>&gt;<br>&gt; Hello,<br>&gt;<br>&gt; For customer=
-s, some security software gets quite unhappy if it sees<br>&gt; that there =
-are devices with no drivers installed.<br><br>Agreed. The main issue is pro=
-duction environments where unknown devices<br>can cause problems with secur=
-ity compliance and Microsoft certification.<br><br>&gt; For development it =
-indeed doesn=E2=80=99t matter.<br>&gt; &gt;&gt;&gt;<br>&gt; &gt;&gt;&gt; Un=
-til Windows fixes that by supporting, adding a new machine<br>&gt; &gt;&gt;=
-&gt; property &#39;virtio-transports&#39; to control the number of<br>&gt; =
-&gt;&gt;&gt; virtio-mmio transports instantiated. The default remains<br>&g=
-t; &gt;&gt;&gt; NUM_VIRTIO_TRANSPORTS (32) for backward compatibility.<br>&=
-gt; &gt;&gt;&gt; Setting it to 0 allows users to disable virtio-mmio entire=
-ly.<br>&gt; &gt;&gt;&gt;<br>&gt; &gt;&gt;&gt; Usage: -machine virt,virtio-t=
-ransports=3D0<br>&gt; &gt;&gt;<br>&gt; &gt;&gt; Hello,<br>&gt; &gt;&gt;<br>=
-&gt; &gt;&gt; With keeping in mind that this was documented in this (closed=
-=E2=80=A6) issue<br>&gt; &gt;&gt; <a href=3D"https://github.com/virtio-win/=
-kvm-guest-drivers-windows/issues/595">https://github.com/virtio-win/kvm-gue=
-st-drivers-windows/issues/595</a><br>&gt; &gt;&gt;<br>&gt; &gt;&gt; Reviewe=
-d-by: Mohamed Mediouni &lt;<a href=3D"mailto:mohamed@unpredictable.fr">moha=
-med@unpredictable.fr</a>&gt;<br>&gt; &gt;<br>&gt; &gt;&gt;&gt; + =C2=A0 =C2=
-=A0if (transports &gt; NUM_VIRTIO_TRANSPORTS) {<br>&gt; &gt;&gt;&gt; + =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0error_setg(errp, &quot;virtio-transports must not e=
-xceed %d&quot;,<br>&gt; &gt;&gt;&gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 NUM_VIRTIO_TRANSPORTS);<br>&gt; &gt;&gt; Any pa=
-rticular reason to (keep) capping the maximum to 16?<br>&gt; &gt;&gt;<br>&g=
-t; &gt;&gt; From a cursory look, base_memmap seems to have room for plenty =
-more.<br>&gt; &gt;<br>&gt; &gt; My first question to anybody wanting more t=
-han 32 here would be<br>&gt; &gt; &quot;why are you not using virtio-pci&qu=
-ot; ? The whole virtio-mmio infra<br>&gt; &gt; in the virt board is only he=
-re because at the time we had no PCI<br>&gt; &gt; support.<br>&gt; &gt;<br>=
-&gt; Could it make sense to have it disabled by default for new machine mod=
-el versions then?<br><br>I think that makes sense. This patch adds the prop=
-erty with the current<br>default i.e. 32. A follow-up patch could set the d=
-efault to 0 for the latest machine version.<br><br>&gt; Thank you,<br>&gt; =
--Mohamed<br>&gt; &gt; The advantage of this series to me is that it means w=
-e have<br>&gt; &gt; a way for users to say &quot;I&#39;m not using this fun=
-ctionality,<br>&gt; &gt; just turn it off completely&quot; which lets them =
-reduce the<br>&gt; &gt; security surface a little.<br>&gt; &gt;<br>&gt; &gt=
-; The other thing worth checking is whether we&#39;re correctly<br>&gt; &gt=
-; following the ACPI spec in exposing virtio-transports with<br>&gt; &gt; n=
-othing plugged into them, or if we&#39;re supposed to be<br>&gt; &gt; suppr=
-essing them.<br><br>While researching this issue, I did check x86 microvm, =
-it only adds<br>devices to ACPI when a backend is detected (checks QTAILQ_E=
-MPTY before<br>calling virtio_acpi_dsdt_add). ARM virt currently adds all 3=
-2 regardless.<br>So we could also follow similar dynamic suppression but th=
-e property approach=C2=A0<div>gives users explicit control over the number =
-of transports.</div><div><br>&gt; &gt; thanks<br>&gt; &gt; -- PMM<br></div>=
-</div>
-
---000000000000bd0993064a98a4db--
 
 

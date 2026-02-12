@@ -4,153 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 812EDEE3684
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Feb 2026 13:26:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA8E1EE368D
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Feb 2026 14:28:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vqWiD-0006qc-PK; Thu, 12 Feb 2026 08:26:30 -0500
+	id 1vqXfS-0001hw-DI; Thu, 12 Feb 2026 09:27:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
- id 1vqUE1-0000iV-Am; Thu, 12 Feb 2026 05:47:09 -0500
-Received: from mail-westcentralusazlp170100005.outbound.protection.outlook.com
- ([2a01:111:f403:c112::5] helo=CY7PR03CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vqXfQ-0001hV-L9
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 09:27:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
- id 1vqUDw-0000pX-0j; Thu, 12 Feb 2026 05:47:09 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Aivken2Y9Y5K/cX8CmmlTm99+K1BZCKgAAkelslu041JV3M4qYMGGS1h2w8V0ahb8iN/4lDLQvEcNV3Laj0+TeMCu0AUwM1kNCkEdiBzqZ/l7D/IHd2ZuwEzQCm0UpRoTBfYNEBx98WQUHdzDU1lOIa75rCT2YUj4fnZkRJOrHh4ECJmvJuJ5n7xB1O/hRG/5bWFxof1UBBtguI9OdSkD/6L7pv5wh2xgtKWkjUDV1bTVzDp5B5OSKadptFtcOeJG0I2029nD/MNl57inf22s6Fm1aGojlUM6qaul6FKBSSsn9N7ZaP6j4vkJ3h2dWp/yh7kX0KLAFA2kJeNQ32kGA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=28qb4oJTlecXhIC2DUF+bvwjDnZCqiF6SjJUV9t8OSg=;
- b=alcW2145QOwEWUe3jFKBaX8aZi5io8xdB3tG4oOqWiiZJ9PtYUpeb8D8iFcDLl4k0vh6O3SvhOsn3/Z9w1jxv1pAnQluA9QZqNGGuaVCmWSYI1EU1sFjTfFzNb/R9NXSwLM8uyFwvMZk3nU2cV/qSwnuXE+2kWGQ4g7ylk2IzgE9aUVyVeBFH0jlw83Va3WBnmLGZ7y8/nmsuxBxInTyO9ZNmK8eKm4ugzrPx6JYI3RJc1jThphw3o/oHStrNxaIw95FgMHMChQ9kEdIK/pShpNOGiKWI/p2SvN/bQK/XHgXMyLFmD6Sn+CAKVd8AhMrg1WPuJGpuSvi5zt8+HFGxQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=axiado.com; dmarc=pass action=none header.from=axiado.com;
- dkim=pass header.d=axiado.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axiado.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=28qb4oJTlecXhIC2DUF+bvwjDnZCqiF6SjJUV9t8OSg=;
- b=V02fhAUepe5+CPoxVUzlOPvsdBwxjkCPZR7liowxh6ArrBa2J0pjueTUF6tuU0uvhGiozyEqrYzQJ1csw0HhGeeyCJWKkOCqJ39C4emmp4eC01HE2uSUrFNdfARPawq9aZu1y+tNKvjlYefkcfZbC1vGQ7mnJCVvIImcCBp9X7nwZ2r6aGmSp/Z8AVC3A+U6fGPprs2KiY9L3K1zKEoOkV6pWhwRKf0OFFF2HZldZOtdizR5YEMU+7yut7vtiCbptSZO+pm1ebHo6MkEofXgnIV9qvDnUzgsglVIft9t73D+l/3zN9gdUX3XBN/fgZhaxbc+EqKystm+1RHGZtx2mg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=axiado.com;
-Received: from SJ0PR18MB4479.namprd18.prod.outlook.com (2603:10b6:a03:37f::19)
- by SJ0PR18MB3932.namprd18.prod.outlook.com (2603:10b6:a03:2eb::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9611.13; Thu, 12 Feb
- 2026 10:46:59 +0000
-Received: from SJ0PR18MB4479.namprd18.prod.outlook.com
- ([fe80::2bc8:6a5c:b10f:9e21]) by SJ0PR18MB4479.namprd18.prod.outlook.com
- ([fe80::2bc8:6a5c:b10f:9e21%3]) with mapi id 15.20.9611.008; Thu, 12 Feb 2026
- 10:46:58 +0000
-From: Kuan-Jui Chiu <kchiu@axiado.com>
-To: qemu-devel@nongnu.org
-Cc: Kuan-Jui Chiu <kchiu@axiado.com>, qemu-arm@nongnu.org, pbonzini@redhat.com,
- marcandre.lureau@redhat.com, peter.maydell@linaro.org,
- alistair@alistair23.me, edgar.iglesias@gmail.com
-Subject: [PATCH v1] hw/char/cadence_uart: Add BXRS register
-Date: Thu, 12 Feb 2026 02:44:32 -0800
-Message-Id: <20260212104432.4168886-1-kchiu@axiado.com>
-X-Mailer: git-send-email 2.34.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: PH8PR07CA0011.namprd07.prod.outlook.com
- (2603:10b6:510:2cd::19) To SJ0PR18MB4479.namprd18.prod.outlook.com
- (2603:10b6:a03:37f::19)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vqXfO-00020j-Mx
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 09:27:40 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1770906457;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=0oZt3CPgTlaglxzNcDmSSF0hYIldVkDAkiG1wJ2e+60=;
+ b=AVIoO2JY++FKJP9NcVdy2pcDXBcbZEBjv2/rrdCa4h3F0kMP5RAKK6jMVk9SkYSOTgVtjD
+ hXDUcSbiVCwPiNU2+KFTAV7x+Y54HF5LMdXgBmCdO8Qo6NcxjxuAfUmZ1FssLWCWwa5Q8S
+ pEZ4dcqB7JvZsCKvj4d6xQ96I69t6DM=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-252-4aLlq0uEMpqNcYXJtGEMaA-1; Thu, 12 Feb 2026 09:27:35 -0500
+X-MC-Unique: 4aLlq0uEMpqNcYXJtGEMaA-1
+X-Mimecast-MFC-AGG-ID: 4aLlq0uEMpqNcYXJtGEMaA_1770906455
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-4376761037bso1374692f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 12 Feb 2026 06:27:35 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1770906454; x=1771511254;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=0oZt3CPgTlaglxzNcDmSSF0hYIldVkDAkiG1wJ2e+60=;
+ b=sRMjzqiZoRggXUciK/+QLwRXsyBHeamLEu6aUm7Aa6bcUkPCNOlgvNsQ1DbLNG3cgC
+ J746aRVkxkNEN5Y1h6SdMbeTTat5W9Y005MVgv2I8XkELDBi+lmKKrKCGDvx+LJLuX70
+ 33XiQV6hvM1D4mvtsqK5GI2PF1lMvOey2xt3wb0PFEXM5fwkV6JtDU9nezLp+acmO589
+ ZM84uCWlA6kdFs8xo5cSPUypIylhtFOlO4ajA7hcqKuvSE1rkHKetvAJ4TbAU4jjsq05
+ vpLCXMpAwnrFU8YwE2Vp2rYXDxClHia80aQRNxhCOqTKpCvl0P7g9uyKGKxJ6/RtZctC
+ 5UFQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUZ5+WxP/QcygOnyQuMkJM0gcU36uvq6ITsAcNG4OcDh3E7RnJSodEgDRD6ZYVYXuwooccfwdrfNw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy2A9lvNwNSshwMBswoUvEs6aSP9+ctJH0sZwvyzvCjiYDRxdtt
+ 2R39BwBXoZ3cfnDM9hWBOYd8WFxowlszZEoahDXuK3V8rIV+rnpUkSuzSq1NE/RZ298yjUQEn0+
+ 4LMtay/WE9kqq+X0gSUcKE1YPSKIsH6YDcM9QHs/YJHN66IqOGX9DDQ==
+X-Gm-Gg: AZuq6aIhrQMqAfJHppUSAxtWzej/kSPDc68nwo9gdC7JqXhdojgszQKRCHYTHOz94g6
+ 3nYQzTQM+3BjyXA08Gvpl9o2B97KUqH3mskmnKrPsn2iF2OdPaLKu9e7m8ki9JJKP74i0RJDcHO
+ GKYeBHyr9XJx80Qdk7anCKJyAWHt7e7sdSnd1AbvJwxpn+w00WIDPNS1W64hTO0l84oYYlQvNJ8
+ gcqIhJEJnPM6GJ214Q1/lh/EFBRRzQUhv2J9mluSc5GVcyrU8ISlb6+ja3jL1S+41MDQ3ghtTL1
+ posvC6Tc5pbG4cuREYJruGFnX/zeD6SmSehryErveP46i8MspZcXrqySLaXhU8frJVE+L7bLDFU
+ yOLEMcAvkJhFpebBBykjjlFwGII4eSpjnERefA9NnXWmzvUBrMjaCGBXXM2h3JZ9R+xXoQQ==
+X-Received: by 2002:a05:600d:6405:10b0:481:a662:b3f3 with SMTP id
+ 5b1f17b1804b1-48366000be0mr28920105e9.7.1770906454505; 
+ Thu, 12 Feb 2026 06:27:34 -0800 (PST)
+X-Received: by 2002:a05:600d:6405:10b0:481:a662:b3f3 with SMTP id
+ 5b1f17b1804b1-48366000be0mr28919645e9.7.1770906454108; 
+ Thu, 12 Feb 2026 06:27:34 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4835dd20519sm207781085e9.15.2026.02.12.06.27.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 12 Feb 2026 06:27:33 -0800 (PST)
+Message-ID: <0cd3bc01-7213-4cc5-996f-e8a518ffd0a3@redhat.com>
+Date: Thu, 12 Feb 2026 15:27:31 +0100
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ0PR18MB4479:EE_|SJ0PR18MB3932:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0bb9cdc2-cd9a-486d-25bd-08de6a240c14
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|366016|376014|52116014|38350700014; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?oDF2VutTcTLTUL0IF1vgaEU/on+E6zh/dp7cRLZ7vAdKTjeQ0k3Rt6me3dBJ?=
- =?us-ascii?Q?qz67ULzwIXDa5TeBMgyMme9Yj/MmfXg+KYQvf/l3OGayCoMWVGy5U70dIbfk?=
- =?us-ascii?Q?2iQrcWuxlkOF+XvsJV9n29IWutXsYRN52nG6myBsQeG80716EF/Y9RoVIc+X?=
- =?us-ascii?Q?C6njaF1mA7merRiTWceB+TsRBc0SQfGr1pyfBdun2vN3DvEGqqz/5Nj89mQh?=
- =?us-ascii?Q?k3f6u2Xh9LKCljiQY790ggRq1K5w8Ks0vlDl6FY++42KyoNudUlThgAjY3x+?=
- =?us-ascii?Q?elDL+yIkxTs41h+8aJTTDldTmXmfjDbo4JN5KFtUa5zvplYMk60YF3xTE8Ue?=
- =?us-ascii?Q?xOeaL6dUeDKLPY7W0+Rh4sV7nk5I4U2WvG0MGHUA4KsZoSJFKRBzL18kmU/N?=
- =?us-ascii?Q?Zjw1FUyG4VRqcv1YpHXsJ0X5DE4dg7AtVv7MdlIcG1s2Y5LyWwpzquQ7P1Bo?=
- =?us-ascii?Q?I+g1pOvS/BYKiBf5wKnan7HH7et0aM4ZJJKNYoQ5GuUyv3UGa8/DAB1c34l1?=
- =?us-ascii?Q?qEQWIlCBHHrIU7aJFVb4XBgUqOhFfFbCrMpOUouMUFwz6utp3sVYQpkds019?=
- =?us-ascii?Q?p3d3pbOkhvgxljkBiZMGt19Wnr7iH3/preOIo7hyfX36IMwDCugP8qCCBijo?=
- =?us-ascii?Q?8CHHlOIHQ+4CnJor68kDdbZkwMWkrRNGKEPjK/vFxQvT2ItNFofFyutCt6+/?=
- =?us-ascii?Q?tuypRAoee6UviGCBFz7327Y3l3PkB0r+EPMNGMPBqOepfRibF4mg8SrutB6B?=
- =?us-ascii?Q?1unRNCiC10NSnc0iZB/+f9Wu/I5GsttZ+jrkX+ToTPTapSE0S25AmaGyyqKq?=
- =?us-ascii?Q?9ysriFL7rDiIRyJt4PcP/LRzl3UqB12hvCkJaQXAFipi7vwEsK0xdRZpSuQp?=
- =?us-ascii?Q?EdKsGOJxueq8Z+BSbdYCGG/NiIw3AyKd04bDFIex71M6nLHK4uWoi6N3iOkG?=
- =?us-ascii?Q?vHdnE46cig6SCNTUbCYlzOYDyox0olVQYbE5W/PNwRl1yXENG8GOJ9q2+PbF?=
- =?us-ascii?Q?MjRW3Hm+29gSarXzG7TI6/65Mhu9v2aXiJJlzz5PxV2xMRMD0hwYtXQrc9WL?=
- =?us-ascii?Q?sjvH2T8HGWafUpN+JGg4Kb93OBh5GKFbGNVwZx+Ht6rt5qq0/7/6Zujb/ZVZ?=
- =?us-ascii?Q?gsiIH/6Y+2LQO02/pex2uHUbpYGj0s8IM6+Iq50qTVFTGE8IY2Z5r/UK+0L8?=
- =?us-ascii?Q?sdcd0takeBQVE7J11DGSrVSb6i4V42TBc3Vm5xX+8gt3YvTYA9Sl5zMm1LVy?=
- =?us-ascii?Q?3s6UR8LHKoFVdLrO0r/tJcHZDDHKRjvdGftwzUKkzO28GCzdX7rtU3d3gffG?=
- =?us-ascii?Q?fgIzoA9ZO3rbQ66BjaS4iWKPJCSh7YDSsP+rpeWF7kf4dGaxr7XJq57nmani?=
- =?us-ascii?Q?g5D5gQIXfBBvar7K5dPPPMnWHcIo1GUkcldoIni4nQrJG0GstP972aQSCyjp?=
- =?us-ascii?Q?+XVsvDlJrk51fAUzI+WNTAgrh2ZGJJaQFl6HMFKmU5/E2BlVcTDQe1th2mt1?=
- =?us-ascii?Q?rBZa/jJtpm1LXnTWGmOdNKqfrh+Xb+STJqh4AJ98TV6KUwHAdRvv59ce+PGv?=
- =?us-ascii?Q?UnESwyVxYkIeZdsFlX33we1/4NKZ/uu58KfdsNxzlAAhFm/s7BBQRz37sF2H?=
- =?us-ascii?Q?rXP43G3vjk592Ae55lCxnZA=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR18MB4479.namprd18.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(376014)(52116014)(38350700014); DIR:OUT;
- SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?TxJxLwqAQbMI/Qfm7kTKZsbXPpAddnfIY/WzaLy4vUR8og2wb27cuHnFNCWW?=
- =?us-ascii?Q?wcHZuVpL1jJesVhxFWb8M1XFt8NpAkoCmJ+oufHFDEbgvHJiJSq+hZjyNSS3?=
- =?us-ascii?Q?br/pxo1106s4H24AEdlQ0Gx3BvYvc2RNDBbu61Vaoo8A8wBusrMqofZ+/Joe?=
- =?us-ascii?Q?FkZWIEY2TQi3Y5hAPnjnQDDp3sG30DrtvBEyEhjT1wiuvu1BvLgU3A7fMcJN?=
- =?us-ascii?Q?5EjY6zmMH5Rkz5Ptt9+wCmeUEqSl0fhJ8ZJLRk1v99X153o2PSuFT3MUEIa7?=
- =?us-ascii?Q?JV21x6FGORzgvVhyuwj1ZnpYTPcig+R+j6gVZvEnOJxxEN3q/osn3/yBTrKY?=
- =?us-ascii?Q?cBUenxkiilscTzfqTHhhVR+2N2RJchK+f8rDcIEdKR/IMKh3Js6rmtVqI5JT?=
- =?us-ascii?Q?6hNkCiYChKR0e+Xnvc2iaGC0ahr9H/uJxW4395W3FSvBDHG6av6eRKksP2+M?=
- =?us-ascii?Q?PByUNOJnBIXVkU5ADmJFFBIKjD/XA8formtRtAAIgiy9H2WB8wH8h4YpQ5Gw?=
- =?us-ascii?Q?JoeCuqzMAUZcxCuKkl5EQgFh29Zwxt3a8EWWCK+G0sLkxEhLiqnwD0W68j1q?=
- =?us-ascii?Q?ktnEqU66N37qHVfLepqQz9pMnzJKwEWX9bMiBW8iIVja6cSOH/ffgoZD+TWZ?=
- =?us-ascii?Q?kIaeTDQmKJ1TaQY+RhHTBzqQAbDq60FxHfeGtr1FdMnMr5+3pYBrnZQ35ov4?=
- =?us-ascii?Q?1k8QOmSy2wyEOZ2sVnH1chSfZ0c8tR7ti/6osNPqe5JkJ1SKDHc9ctS8WAZH?=
- =?us-ascii?Q?6pqI42Tm0INp8FweaMsfz1LL6qlGqRDP7nY6fer+jZvW2kWgcTtXTIoVL8cH?=
- =?us-ascii?Q?cEF8sg9WsAHJU9J5ZBJCZC036ZOnOa2SugvkQrfkY/iy7v9UC99Gk/LH4MMl?=
- =?us-ascii?Q?5q10OW80htv8vvua//XdWK61dbG3Y8YXy1Kygzs90u7emFqExwQRlDh3d7CD?=
- =?us-ascii?Q?53B0mOlWaA1s4zMv2mtXaWl5SfbMkhouS5KP+O8Ay+JYRMa64TF1z6/7nWU9?=
- =?us-ascii?Q?d8xXXHLJL9HGETkBV75c/XLsYh+UH/PhA1/9iqgfoKxiXMgY+MbrNBxkse6a?=
- =?us-ascii?Q?DBciBV9oXOlOgZp+rDXSrY5tw51c/z/AiUttcrJIw7pqMMHkK4Rcp9+FyLk+?=
- =?us-ascii?Q?N0m5rFGeBLqbHYwTEupS8YQmund+3w9gT1qByo3zEcGJm/sUJOPqFoGf3OlD?=
- =?us-ascii?Q?BliNWpKOWhYMDr/M63S/eCK9XU5KuiWOZtC783jxIcbpnTknw4Bx0ZZGkrD6?=
- =?us-ascii?Q?ZVAjTMH7tS2EBFdf5fa3G9Xd6V6y8EPd3TS1olfNLlzsuvn1iJPGvibUdKHB?=
- =?us-ascii?Q?E4+y5O3xhxYMt7kn4/cB3mVWWOYN6+dVikTArkQx6P8JKq3dwtUa6qoC5RYq?=
- =?us-ascii?Q?Me7o0y0SpAmTIkmmoUYF9Ku9jmRIBKVBCCJn+KTE3bnB2abqaTy7dQXuns/N?=
- =?us-ascii?Q?F+uYvJrB6G1pWJpjhZ3ilucBJjSQlr+jhjVUnXqeS+Or3Z2yRGhk+b5gObv5?=
- =?us-ascii?Q?9zy/5JVXRYZ0yzYTl8nNMKk7lTAqblDnz0R4WCEXfMBq5ILM9ortJ3kY8ccH?=
- =?us-ascii?Q?ctz0VkmmxNe2oYRCuA9nTGF/56bg1Yh9w0FKetyi6Mh82y2ONsGz6F9FUxFV?=
- =?us-ascii?Q?GsTqdIOp9n91jElPeclIG9TGAbEur37GvVVGS/1U5G2O7ISLrbqHsrsfUJBJ?=
- =?us-ascii?Q?/cYsLDVOOGktvNjnneg3ZfoAUb0Goj/2q5mqGjCWJs1Lp0bM?=
-X-OriginatorOrg: axiado.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0bb9cdc2-cd9a-486d-25bd-08de6a240c14
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR18MB4479.namprd18.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Feb 2026 10:46:58.9430 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: ff2db17c-4338-408e-9036-2dee8e3e17d7
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 1kPqE2Atyz5biFHnF5Ov9MkbIxzJomFih+gGshOGm5/O233kg9UQpDwgMPBvrxj9Z9GtL3VuE+TH5qrpBT9WVg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR18MB3932
-Received-SPF: pass client-ip=2a01:111:f403:c112::5;
- envelope-from=kchiu@axiado.com;
- helo=CY7PR03CU001.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 06/24] hw/arm/tegra241-cmdqv: Add Tegra241 CMDQV ops
+ backend stub
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
+ nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
+ jgg@nvidia.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
+ zhenzhong.duan@intel.com, kjaju@nvidia.com
+References: <20260206144823.80655-1-skolothumtho@nvidia.com>
+ <20260206144823.80655-7-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260206144823.80655-7-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: o5tgwQVcCMLel-bYejjwFDzadIWEgtIC8ya5-Hs9ttk_1770906455
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 12 Feb 2026 08:26:28 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -162,53 +120,162 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The new CADENCE UART driver in upstream kernel access BXRS register
-This patch adds BXRS (RX FIFO byte status register) or there would be
-kernel panic if user are using the new CADENCE UART driver
+Hi Shameer,
 
-Signed-off-by: Kuan-Jui Chiu <kchiu@axiado.com>
----
- hw/char/cadence_uart.c         | 2 ++
- include/hw/char/cadence_uart.h | 2 +-
- 2 files changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-index eff6a3c4d1..f57cad57a8 100644
---- a/hw/char/cadence_uart.c
-+++ b/hw/char/cadence_uart.c
-@@ -120,6 +120,7 @@
- #define R_PMIN     (0x3C/4)
- #define R_PWID     (0x40/4)
- #define R_TTRIG    (0x44/4)
-+#define R_RXBS     (0x48/4)
- 
- 
- static void uart_update_status(CadenceUARTState *s)
-@@ -523,6 +524,7 @@ static void cadence_uart_reset_init(Object *obj, ResetType type)
-     s->r[R_BRGR] = 0x0000028B;
-     s->r[R_BDIV] = 0x0000000F;
-     s->r[R_TTRIG] = 0x00000020;
-+    s->r[R_RXBS] = 0;
- }
- 
- static void cadence_uart_reset_hold(Object *obj, ResetType type)
-diff --git a/include/hw/char/cadence_uart.h b/include/hw/char/cadence_uart.h
-index 751a751248..0f97e19112 100644
---- a/include/hw/char/cadence_uart.h
-+++ b/include/hw/char/cadence_uart.h
-@@ -29,7 +29,7 @@
- #define CADENCE_UART_RX_FIFO_SIZE           16
- #define CADENCE_UART_TX_FIFO_SIZE           16
- 
--#define CADENCE_UART_R_MAX (0x48/4)
-+#define CADENCE_UART_R_MAX (0x4C/4)
- 
- #define TYPE_CADENCE_UART "cadence_uart"
- OBJECT_DECLARE_SIMPLE_TYPE(CadenceUARTState, CADENCE_UART)
--- 
-2.34.1
+On 2/6/26 3:48 PM, Shameer Kolothum wrote:
+> Introduce a Tegra241 CMDQV backend that plugs into the SMMUv3 accelerated
+> CMDQV ops interface.
+>
+> This patch wires up the Tegra241 CMDQV backend and provides a stub
+> implementation for CMDQV initialization, vIOMMU/vEVENTQ allocation
+> and reset handling.
+>
+> Functional CMDQV support is added in follow-up patches.
+>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  hw/arm/Kconfig          |  5 ++++
+>  hw/arm/meson.build      |  1 +
+>  hw/arm/tegra241-cmdqv.c | 60 +++++++++++++++++++++++++++++++++++++++++
+>  hw/arm/tegra241-cmdqv.h | 23 ++++++++++++++++
+>  4 files changed, 89 insertions(+)
+>  create mode 100644 hw/arm/tegra241-cmdqv.c
+>  create mode 100644 hw/arm/tegra241-cmdqv.h
+>
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index c66c452737..3305c6e76e 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -626,6 +626,10 @@ config FSL_IMX8MP_EVK
+>      depends on TCG
+>      select FSL_IMX8MP
+>  
+> +config TEGRA241_CMDQV
+> +    bool
+> +    depends on ARM_SMMUV3_ACCEL
+> +
+>  config ARM_SMMUV3_ACCEL
+>      bool
+>      depends on ARM_SMMUV3
+> @@ -633,6 +637,7 @@ config ARM_SMMUV3_ACCEL
+>  config ARM_SMMUV3
+>      bool
+>      select ARM_SMMUV3_ACCEL if IOMMUFD
+> +    imply TEGRA241_CMDQV
+>  
+>  config FSL_IMX6UL
+>      bool
+> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+> index c250487e64..4ec91db50a 100644
+> --- a/hw/arm/meson.build
+> +++ b/hw/arm/meson.build
+> @@ -86,6 +86,7 @@ arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP', if_true: files('fsl-imx8mp.c'))
+>  arm_common_ss.add(when: 'CONFIG_FSL_IMX8MP_EVK', if_true: files('imx8mp-evk.c'))
+>  arm_ss.add(when: 'CONFIG_ARM_SMMUV3', if_true: files('smmuv3.c'))
+>  arm_ss.add(when: 'CONFIG_ARM_SMMUV3_ACCEL', if_true: files('smmuv3-accel.c'))
+> +arm_ss.add(when: 'CONFIG_TEGRA241_CMDQV', if_true: files('tegra241-cmdqv.c'))
+>  arm_common_ss.add(when: 'CONFIG_FSL_IMX6UL', if_true: files('fsl-imx6ul.c', 'mcimx6ul-evk.c'))
+>  arm_common_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_soc.c'))
+>  arm_common_ss.add(when: 'CONFIG_XEN', if_true: files(
+> diff --git a/hw/arm/tegra241-cmdqv.c b/hw/arm/tegra241-cmdqv.c
+> new file mode 100644
+> index 0000000000..6f30ca035b
+> --- /dev/null
+> +++ b/hw/arm/tegra241-cmdqv.c
+> @@ -0,0 +1,60 @@
+> +/*
+> + * Copyright (C) 2025, NVIDIA CORPORATION
+> + * NVIDIA Tegra241 CMDQ-Virtualization extension for SMMUv3
+> + *
+> + * Written by Nicolin Chen, Shameer Kolothum
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +
+> +#include "hw/arm/smmuv3.h"
+> +#include "smmuv3-accel.h"
+> +#include "tegra241-cmdqv.h"
+> +
+> +static void tegra241_cmdqv_free_veventq(SMMUv3State *s)
+> +{
+> +}
+> +
+> +static bool tegra241_cmdqv_alloc_veventq(SMMUv3State *s, Error **errp)
+> +{
+> +    error_setg(errp, "NVIDIA Tegra241 CMDQV is unsupported");
+> +    return false;
+> +}
+> +
+> +static void tegra241_cmdqv_free_viommu(SMMUv3State *s)
+> +{
+> +}
+> +
+> +static bool
+> +tegra241_cmdqv_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *idev,
+> +                            uint32_t *out_viommu_id, Error **errp)
+> +{
+> +    error_setg(errp, "NVIDIA Tegra241 CMDQV is unsupported");
+> +    return false;
+> +}
+> +
+> +static void tegra241_cmdqv_reset(SMMUv3State *s)
+> +{
+> +}
+> +
+> +static bool tegra241_cmdqv_init(SMMUv3State *s, Error **errp)
+> +{
+> +    error_setg(errp, "NVIDIA Tegra241 CMDQV is unsupported");
+> +    return false;
+> +}
+> +
+> +static const SMMUv3AccelCmdqvOps tegra241_cmdqv_ops_impl = {
+> +    .init = tegra241_cmdqv_init,
+> +    .alloc_viommu = tegra241_cmdqv_alloc_viommu,
+> +    .free_viommu = tegra241_cmdqv_free_viommu,
+> +    .alloc_veventq = tegra241_cmdqv_alloc_veventq,
+> +    .free_veventq = tegra241_cmdqv_free_veventq,
+> +    .reset = tegra241_cmdqv_reset,
+> +};
+> +
+> +const SMMUv3AccelCmdqvOps *tegra241_cmdqv_ops(void)
+> +{
+> +    return &tegra241_cmdqv_ops_impl;
+> +}
+> diff --git a/hw/arm/tegra241-cmdqv.h b/hw/arm/tegra241-cmdqv.h
+> new file mode 100644
+> index 0000000000..81c9deb384
+> --- /dev/null
+> +++ b/hw/arm/tegra241-cmdqv.h
+> @@ -0,0 +1,23 @@
+> +/*
+> + * Copyright (C) 2025, NVIDIA CORPORATION
+> + * NVIDIA Tegra241 CMDQ-Virtualiisation extension for SMMUv3
+> + *
+> + * Written by Nicolin Chen, Shameer Kolothum
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef HW_TEGRA241_CMDQV_H
+nit: to match existing pattern this should be HW_ARM_TEGRA241_CMDQV_H
+> +#define HW_TEGRA241_CMDQV_H
+> +
+> +#include CONFIG_DEVICES
+> +
+> +#ifdef CONFIG_TEGRA241_CMDQV
+> +const SMMUv3AccelCmdqvOps *tegra241_cmdqv_ops(void);
+> +#else
+> +static inline const SMMUv3AccelCmdqvOps *tegra241_cmdqv_ops(void)
+> +{
+> +    return NULL;
+> +}
+> +#endif
+> +#endif /* HW_TEGRA241_CMDQV_H */
 
 

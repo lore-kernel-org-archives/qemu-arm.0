@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2993EDF04B
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Feb 2026 06:35:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A54AAEDF04B
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Feb 2026 06:39:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vqQHh-0003g7-2d; Thu, 12 Feb 2026 01:34:42 -0500
+	id 1vqQMA-0004kl-4s; Thu, 12 Feb 2026 01:39:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vqQHV-0003fT-Cl
- for qemu-arm@nongnu.org; Thu, 12 Feb 2026 01:34:30 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vqQM5-0004jg-NB
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 01:39:15 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vqQHR-000733-RZ
- for qemu-arm@nongnu.org; Thu, 12 Feb 2026 01:34:27 -0500
+ id 1vqQM3-00080n-MG
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 01:39:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770878064;
+ s=mimecast20190719; t=1770878349;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=niydyansRn4CVMonTmoHm0Bhb8Q7Fv00ACBhWPYs0lU=;
- b=bHJmKE7F8gotA+3QXhO9KphVq9z/yBHJZ94iNAvM0PkV5JHwk2EfSrNrsNbxE5KoVx74Uy
- MMvMwZzA3CsYgQjkk/eaO/Kx3S1juj/wJQ+yX8K9FLUmTLXogPl824HiwDtc2dQzSJNStE
- r439KWyT5SoYtJtVIyzmsFWV3VJMMa8=
+ bh=ySDl3nW9Li55DERBDgoMljj1NloJNEsBQnU+H+anTHg=;
+ b=Bs659RUc5DuMq+q/xYb/IPVPdf34L9E6HwTMkP6XfCz+xdQx1om5LCVOyR8FZ9A+RuutwC
+ Z2tod8OzSOj+w+HxsM6B8/dfOf/PC+lv9KPSf0lD6sMW/mCEdCK9WIRDpo9mBpNJFsdEK3
+ +vnQ7RClcyUQ3aK1nVokrovn+/rbh4A=
 Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
  [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-584-J5CJKPuuOm6GyGLMo0Sjmg-1; Thu, 12 Feb 2026 01:34:23 -0500
-X-MC-Unique: J5CJKPuuOm6GyGLMo0Sjmg-1
-X-Mimecast-MFC-AGG-ID: J5CJKPuuOm6GyGLMo0Sjmg_1770878062
+ us-mta-649-m-dbfkwzN52QK4vkUMkWeg-1; Thu, 12 Feb 2026 01:39:07 -0500
+X-MC-Unique: m-dbfkwzN52QK4vkUMkWeg-1
+X-Mimecast-MFC-AGG-ID: m-dbfkwzN52QK4vkUMkWeg_1770878346
 Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-48079ae1001so60287375e9.0
- for <qemu-arm@nongnu.org>; Wed, 11 Feb 2026 22:34:23 -0800 (PST)
+ 5b1f17b1804b1-4803e8b6007so24822345e9.0
+ for <qemu-arm@nongnu.org>; Wed, 11 Feb 2026 22:39:07 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770878062; x=1771482862;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
+ d=1e100.net; s=20230601; t=1770878346; x=1771483146;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=niydyansRn4CVMonTmoHm0Bhb8Q7Fv00ACBhWPYs0lU=;
- b=i74E+Xg9jQmnhhsT1L0q8cdMP/D36ESVR8EQwQfdYT1Gz+WV8Ya9FwcTztVJEIF5kM
- EVlV3ilikTZn4d3xEWBmqKSGTcb1hloc/AHxXaVna9zZTbqBzWhjkL3dJfk8wBsY7C3n
- AG96OpILHhzLyUEPfEk+aJRkGX6N4dM4ebu07GZazOxyMusP0t12nz35As8XAuIUEHNF
- /SrfwlXFP/qcaR1/LIBhTkOWsQzKFO6jUkC6GX/0MXdP7bvYDxy4yFxDiCErV3axJ3A/
- flXA1BqGC4cWt1kFi+INIXdQD71lm786Z07XRe6ymnDaXR9GJkquheNwH/sVKh+Uhrkk
- pKTg==
-X-Gm-Message-State: AOJu0YzPG3qTErnmT0o/0QkMxzHR1dCDZV2tz/gRFxn0D3w2VwL+YSpQ
- P+1oOwQZTYnjFplaUvuqvr9wqPr8mXeasuDWqiML3XDXAvPNZeIuPrzO0H6tqQTBGulFtVl0RSw
- AYoDSOw7xN+lJXZ6Nj9TtMcC1fASwMCkqz82HMbMCfTHlZM7Q9uexIw==
-X-Gm-Gg: AZuq6aL+FaYhCSwJdPRlTSbjfQQQL/T2vtjH645kkAJaAfKjjGoRZOGqpkKSRI+Wfuh
- 7syqMevQ2keKZFqIW92C3k2VenpBB73AMEUD9258pj57E0FKrdunq0PmnBwM2WV0sAMpu+QFPI8
- 3RtlKLOKjfxs+Ko4BGKcouMzIcywco6Nvpv5d/sKDwRQtDV7ZcpJxqeGmn4gIHcODuZKCi7rNEy
- /98k61QFEbNzx0brZbXoVh08cOCqsKh66x2xo6F1WwmroR6G/e3UcC6+hQK0ld3zxDdCfQ10sQ8
- fjk+KEyrTBCl4lYBDWvaIU4+rG4HCiy7S4KtujNcLFsiKlCGXaH74hDe/2n0c/Ht1uIozyagCu2
- OOgmNKVKzW5eOjp3ycYCjHex3PwN9j/KYUVVc/WxPornED1GyUSCPdsPj8QafnYgkV1N30w==
-X-Received: by 2002:a05:600c:638f:b0:477:7af8:c8ad with SMTP id
- 5b1f17b1804b1-48365716db6mr21908685e9.31.1770878062098; 
- Wed, 11 Feb 2026 22:34:22 -0800 (PST)
-X-Received: by 2002:a05:600c:638f:b0:477:7af8:c8ad with SMTP id
- 5b1f17b1804b1-48365716db6mr21908295e9.31.1770878061627; 
- Wed, 11 Feb 2026 22:34:21 -0800 (PST)
+ bh=ySDl3nW9Li55DERBDgoMljj1NloJNEsBQnU+H+anTHg=;
+ b=ciGR2a+fzOGUE3a8w/c1OS4+jZI+FdFtRA5ovlW5jOV7La2uWtpPI0pGArpDdJW6Fz
+ KqRazW+PW9IZJqg51Skw32GDyPy/Q+T5Qgb3w1yxUTNqZPHU5viuLhfUao6vLMTjlVDY
+ a5639DFu7KUpmwC2G8X+jsVu98qqwPTTnIhJX0ZTjbNBWS4ORhuhTtfOkQ2Tj5EnTTWo
+ XDkGGaQtvvMgR2wEbzetmad+FKmqJhbBNq6W9q2lT7vZa+eqkVuj5o/c1vktOFrueldS
+ EzrHJp/gAGx3ugSpGxD9IX5qukmSwS/0kS+OBKjklBdpWDTC/DCmIIkx4QnIkV8vrg+1
+ uWpA==
+X-Gm-Message-State: AOJu0Yw1FnsAuAMvuItwwIXbboE6/q7uLFo0iXxim+uZICWguGjmX4q3
+ H6xnQWY7EdDHSfqddv4sNCiAWbQ+D8FE4hjgdZXrFJK/VxQekHpqp4MiD2TbexgqrbsVtC9pzXO
+ HkknwmkSqc2eFpMQizjIAVQjHqTBGs4Gr3T5h67VGiO8tmIN1nV/DaA==
+X-Gm-Gg: AZuq6aJye4qYFWLHoNdskZCIStb2GHoogZZAcFuhF6aNw95b3qV01fPNVvJhLf2onmA
+ yEUPQccDaLeWv6pUGepqvRiN/QtmEqEbbcMP4aHGdlRoTxfIMjvAPr8uFWWeJRneZJncaiw65BU
+ 5XFSplhg1CnhdROuB1DsXHw4iNk5MU+dQBn5EUiHtH+juDBeAlNHBoBExyiJeCRgEOZlRB+PKBT
+ JM1R0u4HA/nAP8h00LVRHqaaMCu6SHMVEvQ5ZYf9y7M25JplZO8G9/uvZ+/k4RpFrtKs52n/Cvx
+ hw5BCTrHtmJUNJAqgSLYfcTt70vsaz/vUaLww7aZA4Os4XhOUV66UBZi8XTuAaxqQ9ITarGzmKL
+ ZubqHWKKwWrVGUIni+sr3ZyZ8uFIbX4VaR8V9tMBn+e1rHPDPGretEWbcTwLUBGts0efBgw==
+X-Received: by 2002:a05:600c:c174:b0:483:3380:ca11 with SMTP id
+ 5b1f17b1804b1-4836717eba9mr13080515e9.33.1770878346316; 
+ Wed, 11 Feb 2026 22:39:06 -0800 (PST)
+X-Received: by 2002:a05:600c:c174:b0:483:3380:ca11 with SMTP id
+ 5b1f17b1804b1-4836717eba9mr13080255e9.33.1770878345944; 
+ Wed, 11 Feb 2026 22:39:05 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-43783e59c19sm9242366f8f.34.2026.02.11.22.34.20
+ 5b1f17b1804b1-4835ba3024asm56922495e9.5.2026.02.11.22.39.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 11 Feb 2026 22:34:21 -0800 (PST)
-Message-ID: <f053853e-577f-418b-9bee-e9aa8ca0ebb4@redhat.com>
-Date: Thu, 12 Feb 2026 07:34:19 +0100
+ Wed, 11 Feb 2026 22:39:05 -0800 (PST)
+Message-ID: <39acf072-3227-442b-acfe-658829071917@redhat.com>
+Date: Thu, 12 Feb 2026 07:39:03 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v5 3/5] hw/arm/smmuv3-accel: Allocate vEVENTQ for
  accelerated SMMUv3 devices
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- Nicolin Chen <nicolinc@nvidia.com>
+To: Nicolin Chen <nicolinc@nvidia.com>,
+ Shameer Kolothum Thodi <skolothumtho@nvidia.com>
 Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
  "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
@@ -97,24 +97,25 @@ References: <20260211083415.133534-1-skolothumtho@nvidia.com>
  <e66e82d6-0953-49f0-9d84-bf2776e8f3ce@redhat.com>
  <aYzJhEFg/zxtrJ8z@Asurada-Nvidia>
  <CH3PR12MB754855AE35A087B900B0C311AB63A@CH3PR12MB7548.namprd12.prod.outlook.com>
+ <aYzTUDmTzIZZCwnW@Asurada-Nvidia>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <CH3PR12MB754855AE35A087B900B0C311AB63A@CH3PR12MB7548.namprd12.prod.outlook.com>
+In-Reply-To: <aYzTUDmTzIZZCwnW@Asurada-Nvidia>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Vhd9L3lK2lZrbRjCubpOewLrvcKIdnxOn47PNkNdfTg_1770878062
+X-Mimecast-MFC-PROC-ID: sqP5z9XpcZV39J0YQFH4feRZ-xFaTy3UTMgwxdu0Xp8_1770878346
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,60 +132,53 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Nicolin,
 
-
-On 2/11/26 7:43 PM, Shameer Kolothum Thodi wrote:
->
->> -----Original Message-----
->> From: Nicolin Chen <nicolinc@nvidia.com>
->> Sent: 11 February 2026 18:25
->> To: Eric Auger <eric.auger@redhat.com>
->> Cc: Shameer Kolothum Thodi <skolothumtho@nvidia.com>; qemu-
->> arm@nongnu.org; qemu-devel@nongnu.org; peter.maydell@linaro.org;
->> Nathan Chen <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>;
->> Jiandi An <jan@nvidia.com>; Jason Gunthorpe <jgg@nvidia.com>;
->> jonathan.cameron@huawei.com; zhangfei.gao@linaro.org;
->> zhenzhong.duan@intel.com; Krishnakant Jaju <kjaju@nvidia.com>
->> Subject: Re: [PATCH v5 3/5] hw/arm/smmuv3-accel: Allocate vEVENTQ for
->> accelerated SMMUv3 devices
+On 2/11/26 8:06 PM, Nicolin Chen wrote:
+> On Wed, Feb 11, 2026 at 10:43:04AM -0800, Shameer Kolothum Thodi wrote:
+>>> On Wed, Feb 11, 2026 at 07:14:40PM +0100, Eric Auger wrote:
+>>>> On 2/11/26 7:07 PM, Nicolin Chen wrote:
+>>>>> On Wed, Feb 11, 2026 at 08:34:13AM +0000, Shameer Kolothum wrote:
+>>>>>> +        if (local_err == NULL) {
+>>>>> Does eventq need to rely on !local_err from cmdq?
+>>>> if local_err is NULL we can safely use it, no? Or maybe I miss your
+>>>> point. maybe test !local_err directly?
+>>> Point is: if local_err isn't NULL, why can't we allocate vEVENTQ?
+>> Technically nothing prevents that I guess.
 >>
->> On Wed, Feb 11, 2026 at 07:14:40PM +0100, Eric Auger wrote:
->>> On 2/11/26 7:07 PM, Nicolin Chen wrote:
->>>> On Wed, Feb 11, 2026 at 08:34:13AM +0000, Shameer Kolothum wrote:
->>>>> For cold-plugged devices using SMMUv3 acceleration, the vIOMMU is
->>>>> created before the guest boots. In this case, the vEVENTQ is
->>>>> allocated when the guest writes to SMMU_CR0 and sets EVENTQEN = 1.
->>>> [...]
->>>>> @@ -1605,6 +1605,10 @@ static MemTxResult
->> smmu_writel(SMMUv3State *s, hwaddr offset,
->>>>>          s->cr0ack = data & ~SMMU_CR0_RESERVED;
->>>>>          /* in case the command queue has been enabled */
->>>>>          smmuv3_cmdq_consume(s, &local_err);
->>>>> +        /* Allocate vEVENTQ if EventQ is enabled and a vIOMMU is
->>>>> + available */
->>>> Nit: though it is just following smmuv3_cmdq_consume(), it'd be
->>>> likely clearer to verify the EVENTQEN in the callers.
->>>>
->>>>> +        if (local_err == NULL) {
->>>> Does eventq need to rely on !local_err from cmdq?
->>> if local_err is NULL we can safely use it, no? Or maybe I miss your
->>> point. maybe test !local_err directly?
->> Point is: if local_err isn't NULL, why can't we allocate vEVENTQ?
-> Technically nothing prevents that I guess.
+>> The only thing is we have to call error_report_err() if local_err != NULL
+>> and then set local_err == NULL before calling  alloc_veventq().
+> Or should we use:
 >
-> The only thing is we have to call error_report_err() if local_err != NULL
-> and then set local_err == NULL before calling  alloc_veventq().
+> include/qapi/error.h-402-/*
+> include/qapi/error.h-403- * Append a printf-style human-readable explanation to an existing error.
+> include/qapi/error.h-404- * If the error is later reported to a human user with
+> include/qapi/error.h-405- * error_report_err() or warn_report_err(), the hints will be shown,
+> include/qapi/error.h-406- * too.  If it's reported via QMP, the hints will be ignored.
+> include/qapi/error.h-407- * Intended use is adding helpful hints on the human user interface,
+> include/qapi/error.h-408- * e.g. a list of valid values.  It's not for clarifying a confusing
+> include/qapi/error.h-409- * error message.
+> include/qapi/error.h-410- * @errp may be NULL, but not &error_fatal or &error_abort.
+> include/qapi/error.h-411- * Trivially the case if you call it only after error_setg() or
+> include/qapi/error.h-412- * error_propagate().
+> include/qapi/error.h-413- * May be called multiple times.  The resulting hint should end with a
+> include/qapi/error.h-414- * newline.
+> include/qapi/error.h-415- */
+> include/qapi/error.h:416:void error_append_hint(Error *const *errp, const char *fmt, ...)
+> include/qapi/error.h-417-    G_GNUC_PRINTF(2, 3);
+>
+> ?
 
-Besides the implementation details about Error handle usage I think we
-shall first answer the question about the relevance to allocate the
-veventq in case the smmuv3_cmdq_consume() fails.
+Usually error_append_hint() is used to append a user friendly msg that
+helps the user to fix the problem.
+In qapi/error.h there is an example that relates to "Receive and
+accumulate multiple errors (first one wins):" by using error_propagate()
 
 Thanks
 
 Eric
 >
-> Thanks,
-> Shameer
+> Nicolin
 >
 
 

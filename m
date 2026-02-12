@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F9DEEEA857
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Feb 2026 21:40:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC587EEA855
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Feb 2026 21:40:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vqeQ9-0008Ad-2J; Thu, 12 Feb 2026 16:40:21 -0500
+	id 1vqeQD-0008Dj-70; Thu, 12 Feb 2026 16:40:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vqeQ7-00089z-VC
- for qemu-arm@nongnu.org; Thu, 12 Feb 2026 16:40:19 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vqeQA-0008CC-Su
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 16:40:22 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vqeQ5-00066z-Rj
- for qemu-arm@nongnu.org; Thu, 12 Feb 2026 16:40:19 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vqeQ8-00067n-F8
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 16:40:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770932417;
+ s=mimecast20190719; t=1770932419;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=FsxntieXxGCUkYSUMbIBq/yDMG4KsTlaZeEQq1+cBUo=;
- b=UGMUlhzah/nNI54FEuZsOy24gYYGNKpMvwm0phHTkn1fQIbv2+Yu3UoVEftPn+YzG0Okmk
- gUTPTdmNVpOxY+nF3ebnAcDexSQd8z9/g4rlOz5N0SNYqxzrYOWx2cW3aZiqx5ddhJI0gt
- HJRlcJG16VvCGMvG5VAzzHzIZxakLVU=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=kzNIMoMsZQLW9k2rl05Uvtl5Z3XBb7ZfckzwPkttOsg=;
+ b=L/Cy7JadaMQlBmeeVRcINJjOTcyAmqQnqkPonK3BSDs4t5M4+NnqkS04VESSI8vAFckDtH
+ AN+1YhQa/DzItOq5u/oRAIBGZz/Yti91Xj4TH7vpgB3+udHsBzJD9FyE00aHXjBY2Q/W8g
+ 1ceB+2kFtbsHmQ6v9iWamUjIIew6Xog=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-373-6maRRSpuOtqfZFTclINqtg-1; Thu,
- 12 Feb 2026 16:40:13 -0500
-X-MC-Unique: 6maRRSpuOtqfZFTclINqtg-1
-X-Mimecast-MFC-AGG-ID: 6maRRSpuOtqfZFTclINqtg_1770932412
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-401-E8WzIMWTNPmMExCZNc_XdA-1; Thu,
+ 12 Feb 2026 16:40:18 -0500
+X-MC-Unique: E8WzIMWTNPmMExCZNc_XdA-1
+X-Mimecast-MFC-AGG-ID: E8WzIMWTNPmMExCZNc_XdA_1770932417
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9C9E21955D88; Thu, 12 Feb 2026 21:40:12 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 11BD71800465; Thu, 12 Feb 2026 21:40:17 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.55])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1D4181800668; Thu, 12 Feb 2026 21:40:10 +0000 (UTC)
+ id 1A7C71800670; Thu, 12 Feb 2026 21:40:14 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 06/16] hw/misc/aspeed_scu: Remove unused SoC silicon revision
- definitions
-Date: Thu, 12 Feb 2026 22:39:45 +0100
-Message-ID: <20260212213955.2225662-7-clg@redhat.com>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Nabih Estefan <nabihestefan@google.com>
+Subject: [PULL 08/16] hw/arm/aspeed_ast27x0: Add AST2700 A2 SoC support
+Date: Thu, 12 Feb 2026 22:39:47 +0100
+Message-ID: <20260212213955.2225662-9-clg@redhat.com>
 In-Reply-To: <20260212213955.2225662-1-clg@redhat.com>
 References: <20260212213955.2225662-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: kka7PPpOqBaF9g2wpFxqMPmUj8cg2YjxOkUzx7LDxwg_1770932412
+X-Mimecast-MFC-PROC-ID: Uh_SLmNB_JYZniioocL0zAxuDlZ9XlK97QdMSfYM3js_1770932417
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -89,78 +89,78 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Several legacy Aspeed SoC silicon revision definitions are no longer
-used by any machine models or runtime logic.
+AST2700 A2 is functionally identical to AST2700 A1.
+There are no changes to the IRQ layout, memory map, or peripheral
+configuration. The only difference is the silicon revision.
 
-Remove unused silicon revision macros and corresponding entries from
-the silicon revision table to reduce dead code and improve
-maintainability.
-
-No functional change intended.
+This commit introduces a dedicated AST2700 A2 SoC type by reusing
+the existing AST2700 A1 implementation and setting the A2 silicon
+revision accordingly.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260211021527.119674-2-jamin_lin@aspeedtech.com
+Reviewed-by: Nabih Estefan <nabihestefan@google.com>
+Tested-by: Nabih Estefan <nabihestefan@google.com>
+Link: https://lore.kernel.org/qemu-devel/20260211021527.119674-4-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/misc/aspeed_scu.h | 10 ----------
- hw/misc/aspeed_scu.c         | 10 ----------
- 2 files changed, 20 deletions(-)
+ hw/arm/aspeed_ast27x0.c | 36 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
 
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index 9e28bd4d2e1a..313a79f2f76b 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -41,22 +41,12 @@ struct AspeedSCUState {
-     uint32_t hw_prot_key;
- };
- 
--#define AST2400_A0_SILICON_REV   0x02000303U
- #define AST2400_A1_SILICON_REV   0x02010303U
--#define AST2500_A0_SILICON_REV   0x04000303U
- #define AST2500_A1_SILICON_REV   0x04010303U
--#define AST2600_A0_SILICON_REV   0x05000303U
--#define AST2600_A1_SILICON_REV   0x05010303U
--#define AST2600_A2_SILICON_REV   0x05020303U
- #define AST2600_A3_SILICON_REV   0x05030303U
--#define AST1030_A0_SILICON_REV   0x80000000U
- #define AST1030_A1_SILICON_REV   0x80010000U
- #define AST1060_A2_SILICON_REV   0xA0030000U
--#define AST2700_A0_SILICON_REV   0x06000103U
--#define AST2720_A0_SILICON_REV   0x06000203U
--#define AST2750_A0_SILICON_REV   0x06000003U
- #define AST2700_A1_SILICON_REV   0x06010103U
--#define AST2750_A1_SILICON_REV   0x06010003U
- 
- #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) == 0x04)
- 
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 6829efa2dcd4..0edf9c1b1646 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -555,22 +555,12 @@ static void aspeed_scu_reset(DeviceState *dev)
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 61790ea1cc2b..87dcb82e1b01 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -1166,6 +1166,36 @@ static void aspeed_soc_ast2700a1_class_init(ObjectClass *oc, const void *data)
+     sc->memmap       = aspeed_soc_ast2700_memmap;
  }
  
- static uint32_t aspeed_silicon_revs[] = {
--    AST2400_A0_SILICON_REV,
-     AST2400_A1_SILICON_REV,
--    AST2500_A0_SILICON_REV,
-     AST2500_A1_SILICON_REV,
--    AST2600_A0_SILICON_REV,
--    AST2600_A1_SILICON_REV,
--    AST2600_A2_SILICON_REV,
-     AST2600_A3_SILICON_REV,
--    AST1030_A0_SILICON_REV,
-     AST1030_A1_SILICON_REV,
-     AST1060_A2_SILICON_REV,
--    AST2700_A0_SILICON_REV,
--    AST2720_A0_SILICON_REV,
--    AST2750_A0_SILICON_REV,
-     AST2700_A1_SILICON_REV,
--    AST2750_A1_SILICON_REV,
++static void aspeed_soc_ast2700a2_class_init(ObjectClass *oc, const void *data)
++{
++    static const char * const valid_cpu_types[] = {
++        ARM_CPU_TYPE_NAME("cortex-a35"),
++        NULL
++    };
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    AspeedSoCClass *sc = ASPEED_SOC_CLASS(oc);
++
++    /* Reason: The Aspeed SoC can only be instantiated from a board */
++    dc->user_creatable = false;
++    dc->realize      = aspeed_soc_ast2700_realize;
++
++    sc->valid_cpu_types = valid_cpu_types;
++    sc->silicon_rev  = AST2700_A2_SILICON_REV;
++    sc->sram_size    = 0x20000;
++    sc->pcie_num     = 3;
++    sc->spis_num     = 3;
++    sc->sgpio_num    = 2;
++    sc->ehcis_num    = 4;
++    sc->wdts_num     = 8;
++    sc->macs_num     = 3;
++    sc->uarts_num    = 13;
++    sc->num_cpus     = 4;
++    sc->ioexp_num    = 2;
++    sc->uarts_base   = ASPEED_DEV_UART0;
++    sc->irqmap       = aspeed_soc_ast2700a1_irqmap;
++    sc->memmap       = aspeed_soc_ast2700_memmap;
++}
++
+ static const TypeInfo aspeed_soc_ast27x0_types[] = {
+     {
+         .name           = TYPE_ASPEED27X0_SOC,
+@@ -1179,6 +1209,12 @@ static const TypeInfo aspeed_soc_ast27x0_types[] = {
+         .instance_init  = aspeed_soc_ast2700_init,
+         .class_init     = aspeed_soc_ast2700a1_class_init,
+     },
++    {
++        .name           = "ast2700-a2",
++        .parent         = TYPE_ASPEED27X0_SOC,
++        .instance_init  = aspeed_soc_ast2700_init,
++        .class_init     = aspeed_soc_ast2700a2_class_init,
++    },
  };
  
- bool is_supported_silicon_rev(uint32_t silicon_rev)
+ DEFINE_TYPES(aspeed_soc_ast27x0_types)
 -- 
 2.53.0
 

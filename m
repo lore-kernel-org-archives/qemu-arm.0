@@ -4,61 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E5EAEEA854
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Feb 2026 21:41:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AEF7EEA854
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Feb 2026 21:41:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vqeQ7-00089v-Ro; Thu, 12 Feb 2026 16:40:19 -0500
+	id 1vqePw-000850-4T; Thu, 12 Feb 2026 16:40:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vqeQ3-000883-M3
- for qemu-arm@nongnu.org; Thu, 12 Feb 2026 16:40:15 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vqePu-00083J-8n
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 16:40:06 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vqeQ1-00065H-LP
- for qemu-arm@nongnu.org; Thu, 12 Feb 2026 16:40:15 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1vqePr-0005s0-RF
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 16:40:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770932412;
+ s=mimecast20190719; t=1770932402;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2Mkkkhk2UiUGTwPLfktE4GWh3o9J6sQJBwTAwIgfVlk=;
- b=ZV/YcwXtpLD5wzOTZHlflAZNcUDVXNbv6nqCi/yTbZnO4T2Jy2kcVG+1Ro05zSUQixo1p6
- fXLAbYKhECVLiGi19QwlXtxfxD4kd/1dHKaS7zGJCXuIWNeVG4hhj+qAI8gCijrXIIryeW
- 1BFc3kRnT7Avm5xsVYriYH5qxT+vNAU=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ content-transfer-encoding:content-transfer-encoding;
+ bh=NjuOCJkRmcPBtUsbYSidFXeBIl2aE4XuKi+9rAlTYK8=;
+ b=A8GpdfcYfIvdHjO3cMTaVM07oIXqYA13EPGGELBd2uSnueWz4ug4tbNrcGJOfbVC7VjCET
+ 9McgcgYZRwIK3PZAgBulp4Oe/XUR7mCwIFipxu9e7C4iAqcAxLwj9icy3LOeyzDTjfhlwp
+ HeH1u1reYhyyh0VtOwQZEGmEDVw7txE=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-99-cwbQ-_4fPd2MK4kkKSTB7g-1; Thu,
- 12 Feb 2026 16:40:09 -0500
-X-MC-Unique: cwbQ-_4fPd2MK4kkKSTB7g-1
-X-Mimecast-MFC-AGG-ID: cwbQ-_4fPd2MK4kkKSTB7g_1770932408
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-613-tVDiIjPgObu8sPtuoJUOyQ-1; Thu,
+ 12 Feb 2026 16:40:00 -0500
+X-MC-Unique: tVDiIjPgObu8sPtuoJUOyQ-1
+X-Mimecast-MFC-AGG-ID: tVDiIjPgObu8sPtuoJUOyQ_1770932399
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 77778195606E; Thu, 12 Feb 2026 21:40:08 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 76FCE18004BB; Thu, 12 Feb 2026 21:39:59 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.45.224.55])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B60E4180035A; Thu, 12 Feb 2026 21:40:06 +0000 (UTC)
+ id 03C081800669; Thu, 12 Feb 2026 21:39:57 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 04/16] hw/i2c/aspeed_i2c: Increase I2C device register size to
- 0xA0
-Date: Thu, 12 Feb 2026 22:39:43 +0100
-Message-ID: <20260212213955.2225662-5-clg@redhat.com>
-In-Reply-To: <20260212213955.2225662-1-clg@redhat.com>
-References: <20260212213955.2225662-1-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 00/16] aspeed queue
+Date: Thu, 12 Feb 2026 22:39:39 +0100
+Message-ID: <20260212213955.2225662-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: nkpVUVcKe25SPl8XlJchSxLHgHV7348A57xD5x6iOus_1770932408
+X-Mimecast-MFC-PROC-ID: yLWfO1qGafnZf9IfIxLXODR6rxYZX7B6hCK4MAGfFaI_1770932399
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -71,7 +66,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,108 +82,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+The following changes since commit 039fae56bb79af1124619daae60e01c257fcb2ee:
 
-According to the AST2700 A1 datasheet, the register space for each I2C
-device instance has been expanded from 0x80 bytes to 0xA0 bytes.
+  Merge tag 'pull-request-2026-02-12v2' of https://gitlab.com/thuth/qemu into staging (2026-02-12 11:52:31 +0000)
 
-Update the AST2700 I2C controller configuration to reflect the new
-register layout by increasing the per-device register size to 0xA0
-and adjusting the register gap size accordingly.
+are available in the Git repository at:
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Fixes: 4f53de2f103d6dfb5ad0498995d91a9694f40dd2 ("hw/arm/aspeed_ast27x0: Remove ast2700-a0 SOC")
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260210024331.3984696-3-jamin_lin@aspeedtech.com
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
----
- include/hw/i2c/aspeed_i2c.h |  2 +-
- hw/i2c/aspeed_i2c.c         | 36 ++++++++++++++++++------------------
- 2 files changed, 19 insertions(+), 19 deletions(-)
+  https://github.com/legoater/qemu/ tags/pull-aspeed-20260212
 
-diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index 1ba0112cef6b..53a9dba71b07 100644
---- a/include/hw/i2c/aspeed_i2c.h
-+++ b/include/hw/i2c/aspeed_i2c.h
-@@ -36,7 +36,7 @@ OBJECT_DECLARE_TYPE(AspeedI2CState, AspeedI2CClass, ASPEED_I2C)
- #define ASPEED_I2C_NR_BUSSES 16
- #define ASPEED_I2C_SHARE_POOL_SIZE 0x800
- #define ASPEED_I2C_BUS_POOL_SIZE 0x20
--#define ASPEED_I2C_NEW_NUM_REG (0x80 >> 2)
-+#define ASPEED_I2C_NEW_NUM_REG (0xa0 >> 2)
- 
- #define A_I2CD_M_STOP_CMD       BIT(5)
- #define A_I2CD_M_RX_CMD         BIT(3)
-diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index 741c7a7297f5..122bfdd63dca 100644
---- a/hw/i2c/aspeed_i2c.c
-+++ b/hw/i2c/aspeed_i2c.c
-@@ -1205,37 +1205,37 @@ static void aspeed_i2c_instance_init(Object *obj)
-  *
-  * Address Definitions (AST2700)
-  *   0x000 ... 0x0FF: Global Register
-- *   0x100 ... 0x17F: Device 0
-+ *   0x100 ... 0x19F: Device 0
-  *   0x1A0 ... 0x1BF: Device 0 buffer
-- *   0x200 ... 0x27F: Device 1
-+ *   0x200 ... 0x29F: Device 1
-  *   0x2A0 ... 0x2BF: Device 1 buffer
-- *   0x300 ... 0x37F: Device 2
-+ *   0x300 ... 0x39F: Device 2
-  *   0x3A0 ... 0x3BF: Device 2 buffer
-- *   0x400 ... 0x47F: Device 3
-+ *   0x400 ... 0x49F: Device 3
-  *   0x4A0 ... 0x4BF: Device 3 buffer
-- *   0x500 ... 0x57F: Device 4
-+ *   0x500 ... 0x59F: Device 4
-  *   0x5A0 ... 0x5BF: Device 4 buffer
-- *   0x600 ... 0x67F: Device 5
-+ *   0x600 ... 0x69F: Device 5
-  *   0x6A0 ... 0x6BF: Device 5 buffer
-- *   0x700 ... 0x77F: Device 6
-+ *   0x700 ... 0x79F: Device 6
-  *   0x7A0 ... 0x7BF: Device 6 buffer
-- *   0x800 ... 0x87F: Device 7
-+ *   0x800 ... 0x89F: Device 7
-  *   0x8A0 ... 0x8BF: Device 7 buffer
-- *   0x900 ... 0x97F: Device 8
-+ *   0x900 ... 0x99F: Device 8
-  *   0x9A0 ... 0x9BF: Device 8 buffer
-- *   0xA00 ... 0xA7F: Device 9
-+ *   0xA00 ... 0xA9F: Device 9
-  *   0xAA0 ... 0xABF: Device 9 buffer
-- *   0xB00 ... 0xB7F: Device 10
-+ *   0xB00 ... 0xB9F: Device 10
-  *   0xBA0 ... 0xBBF: Device 10 buffer
-- *   0xC00 ... 0xC7F: Device 11
-+ *   0xC00 ... 0xC9F: Device 11
-  *   0xCA0 ... 0xCBF: Device 11 buffer
-- *   0xD00 ... 0xD7F: Device 12
-+ *   0xD00 ... 0xD9F: Device 12
-  *   0xDA0 ... 0xDBF: Device 12 buffer
-- *   0xE00 ... 0xE7F: Device 13
-+ *   0xE00 ... 0xE9F: Device 13
-  *   0xEA0 ... 0xEBF: Device 13 buffer
-- *   0xF00 ... 0xF7F: Device 14
-+ *   0xF00 ... 0xF9F: Device 14
-  *   0xFA0 ... 0xFBF: Device 14 buffer
-- *   0x1000 ... 0x107F: Device 15
-+ *   0x1000 ... 0x109F: Device 15
-  *   0x10A0 ... 0x10BF: Device 15 buffer
-  */
- static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
-@@ -1658,8 +1658,8 @@ static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
-     dc->desc = "ASPEED 2700 I2C Controller";
- 
-     aic->num_busses = 16;
--    aic->reg_size = 0x80;
--    aic->reg_gap_size = 0x80;
-+    aic->reg_size = 0xa0;
-+    aic->reg_gap_size = 0x60;
-     aic->gap = -1; /* no gap */
-     aic->bus_get_irq = aspeed_2600_i2c_bus_get_irq;
-     aic->pool_size = 0x20;
--- 
-2.53.0
+for you to fetch changes up to 1b662879513fa9823a887cac9cfc3d91b9d3f616:
+
+  tests/functional/aarch64/test_aspeed_ast2700fc: Use AST2700 A2 SDK image for FC tests (2026-02-12 16:06:55 +0100)
+
+----------------------------------------------------------------
+aspeed-next queue:
+
+* Adds support for the AST2700 A2 SoC, including a new machine and
+  a functional test
+* Enhances AST2600 OTP functional test
+* Restructures Aspeed ARM tests into separate files for better
+  parallelism.
+* Includes new SDK tests with Linux 5.15.
+* Fixes Aspeed I2C models
+
+----------------------------------------------------------------
+Cédric Le Goater (2):
+      tests/functional: Split Aspeed ARM tests into separate files
+      tests/functional: Add SDK tests with Linux 5.15
+
+Jamin Lin (13):
+      hw/i2c/aspeed_i2c: Fix out-of-bounds read in I2C MMIO handlers
+      hw/i2c/aspeed_i2c: Increase I2C device register size to 0xA0
+      hw/misc/aspeed_scu: Remove unused SoC silicon revision definitions
+      hw/misc/aspeed_scu: Add AST2700 A2 silicon revisions
+      hw/arm/aspeed_ast27x0: Add AST2700 A2 SoC support
+      hw/arm/aspeed_ast27x0_evb: Add AST2700 A2 EVB machine
+      hw/arm/aspeed_ast27x0_evb: Move ast2700-evb alias to AST2700 A2 EVB
+      tests/qtest/ast2700-hace-test: Use ast2700-evb alias for AST2700 HACE tests
+      tests/functional/aarch64/test_aspeed_ast2700: Rename AST2700 A1 test to reduce test runtime
+      tests/functional/aarch64/test_aspeed_ast2700a2: Add AST2700 A2 EVB functional tests
+      hw/arm/aspeed_ast27x0-fc: Switch AST2700 FC machine to A2 SoC
+      hw/arm/aspeed_ast27x0-fc: Increase BMC DRAM size to 2GB for AST2700 A2
+      tests/functional/aarch64/test_aspeed_ast2700fc: Use AST2700 A2 SDK image for FC tests
+
+Kane Chen (1):
+      tests/functional/arm/aspeed_ast2600: Enhance OTP test with functional validation
+
+ include/hw/i2c/aspeed_i2c.h                        |   3 +-
+ include/hw/misc/aspeed_scu.h                       |  11 +-
+ hw/arm/aspeed_ast27x0-fc.c                         |  15 +-
+ hw/arm/aspeed_ast27x0.c                            |  36 ++++
+ hw/arm/aspeed_ast27x0_evb.c                        |  29 +++-
+ hw/i2c/aspeed_i2c.c                                |  58 +++----
+ hw/misc/aspeed_scu.c                               |  11 +-
+ tests/qtest/ast2700-hace-test.c                    |  22 +--
+ tests/functional/aarch64/meson.build               |   6 +-
+ ..._aspeed_ast2700.py => test_aspeed_ast2700a1.py} |   0
+ tests/functional/aarch64/test_aspeed_ast2700a2.py  | 190 +++++++++++++++++++++
+ tests/functional/aarch64/test_aspeed_ast2700fc.py  |  16 +-
+ tests/functional/arm/meson.build                   |  18 +-
+ tests/functional/arm/test_aspeed_ast1060.py        |   0
+ ...ast2500.py => test_aspeed_ast2500_buildroot.py} |  14 --
+ tests/functional/arm/test_aspeed_ast2500_sdk.py    |  29 ++++
+ .../functional/arm/test_aspeed_ast2500_sdk_515.py  |  29 ++++
+ .../arm/test_aspeed_ast2600_buildroot.py           |  41 +----
+ .../arm/test_aspeed_ast2600_buildroot_tpm.py       |  60 +++++++
+ tests/functional/arm/test_aspeed_ast2600_sdk.py    |  15 --
+ .../functional/arm/test_aspeed_ast2600_sdk_515.py  |  29 ++++
+ .../functional/arm/test_aspeed_ast2600_sdk_otp.py  |  62 +++++++
+ 22 files changed, 539 insertions(+), 155 deletions(-)
+ rename tests/functional/aarch64/{test_aspeed_ast2700.py => test_aspeed_ast2700a1.py} (100%)
+ create mode 100755 tests/functional/aarch64/test_aspeed_ast2700a2.py
+ mode change 100644 => 100755 tests/functional/arm/test_aspeed_ast1060.py
+ rename tests/functional/arm/{test_aspeed_ast2500.py => test_aspeed_ast2500_buildroot.py} (74%)
+ create mode 100755 tests/functional/arm/test_aspeed_ast2500_sdk.py
+ create mode 100755 tests/functional/arm/test_aspeed_ast2500_sdk_515.py
+ create mode 100755 tests/functional/arm/test_aspeed_ast2600_buildroot_tpm.py
+ create mode 100755 tests/functional/arm/test_aspeed_ast2600_sdk_515.py
+ create mode 100755 tests/functional/arm/test_aspeed_ast2600_sdk_otp.py
 
 

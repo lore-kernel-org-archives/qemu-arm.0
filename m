@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59927EE3698
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Feb 2026 15:30:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACC8DEE3695
+	for <qemu-arm@archiver.kernel.org>; Thu, 12 Feb 2026 15:35:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vqYdP-0007kz-5C; Thu, 12 Feb 2026 10:29:39 -0500
+	id 1vqYip-0002jq-PO; Thu, 12 Feb 2026 10:35:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vqYdN-0007kS-U0
- for qemu-arm@nongnu.org; Thu, 12 Feb 2026 10:29:38 -0500
+ id 1vqYin-0002hg-Qf
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 10:35:13 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1vqYdM-0000vd-CY
- for qemu-arm@nongnu.org; Thu, 12 Feb 2026 10:29:37 -0500
+ id 1vqYil-0003Nv-IH
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 10:35:12 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770910174;
+ s=mimecast20190719; t=1770910510;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=7d0bws1k/lRL4L21yPFxA5JhKetr6tv4SA7mi55GBB0=;
- b=ZqwjHO/8lcZbkhs2C5rbld6A7xCJLvy8d85q/uolie/O/1ytIj2MA+A73qTc8V1D/I9NPg
- T8BtdOGtBQ6/SLDqYvsY6dUELUwxyllNb4NBpr95Dmuouonkg9e8dsxw72A0SDPf+6gHey
- Hlvw4mbEq73xl488LOMBF1eG0/NeKn4=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=KD0DUPsT/ogPTGMRO4qfDsgytWowuXfUh9PkIdHYmKw=;
+ b=B4MAVqATCzadEZzf5M7iygtqLT5XkjJwPjVeIsCIbGin7wSBLc0BhAr2KTEIwT0z4x0Qmz
+ 1pzpNJ1VYqvH8U2tywEvqqjZpPNlGN0GuyxH3AkMK/94jo831kujeWSgRTg4WMsmWEkH/K
+ /rm08uf0uS+7o4VD3pZ8Gm+4LI0uLFI=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-372-wyQod7FZO-map3yMaFUF7w-1; Thu, 12 Feb 2026 10:29:33 -0500
-X-MC-Unique: wyQod7FZO-map3yMaFUF7w-1
-X-Mimecast-MFC-AGG-ID: wyQod7FZO-map3yMaFUF7w_1770910172
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-4830e7c6131so55728205e9.2
- for <qemu-arm@nongnu.org>; Thu, 12 Feb 2026 07:29:32 -0800 (PST)
+ us-mta-652-9oYoRmhEPXKD6F0CbxY0YA-1; Thu, 12 Feb 2026 10:35:09 -0500
+X-MC-Unique: 9oYoRmhEPXKD6F0CbxY0YA-1
+X-Mimecast-MFC-AGG-ID: 9oYoRmhEPXKD6F0CbxY0YA_1770910508
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-4362f8b5a65so1550970f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 12 Feb 2026 07:35:09 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770910171; x=1771514971;
+ d=1e100.net; s=20230601; t=1770910508; x=1771515308;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7d0bws1k/lRL4L21yPFxA5JhKetr6tv4SA7mi55GBB0=;
- b=qSNO62b4iKSkxmK+kfA7EEbvDx7DqFmTQimkXnV4NKJ8GItfyeetBrU2wEtw7oWi3W
- +S3XRMSsszu5mEB6YHp12COeHwg2HHKhgAl6qP6GkuoHpulrI+kcqV3ZuRReW5yutNFz
- CujTCyzQfiP39zLaGwXWcVStINPmUyIfWHkIgLrqCVrpl5CKE6mGye9h4/BxCaqGfCYV
- JEk0gBOux6A2aqlPxNP3v6c9WsuJN09adMtyPSpa0d21dK3ge42ArECEq38WC0IaILvi
- Zjiii8VaiGog0WGDOi7Iffb/G2c0fBPCH4PS+akcckvRFI2DGeSt/5/mLXCLhKUDUF+v
- lrdA==
-X-Gm-Message-State: AOJu0YxfojqIhlS+T6ezk0lOiq8/pnM0Dx22gpxjEFerE793GiLt+eYF
- yxN3K+5+vbHsRcXn6zMmTi8kkBtgT7U2U+IiOV7YyIndmt3vde31dB+Db1ojCiIVso6YD0dXjth
- b++RAtQL2T39EVu+JHNHpHfGx4Jh8gMhnsUFmwgn5UIJArBUHsOlJdTsb9q8gWw==
-X-Gm-Gg: AZuq6aLX/Pk0vy1AIpTef363gknRyA13/uei1wN5mDvVqf4aK/l3q/X5eAojSOPBq4R
- zPcHOJced+vqEFeffr6MtYI5a/6qZ0m1+fWz86wMBcOPTfBeurmAlg3PPW84jJhKD0nt7oRkzIW
- wsB+kVQPpe/lF9DjvliU08gveW1hC0mYvmURUyjgk9i8WmOWMnjE2uMmJSkoWYc2E4YMn3mB26g
- ogXUf53WH9tDsKzxcnU+/LWVysZL4l6zyARkRvtGROm+gK+L7vM5Sl6erpH1MELSFuO8fgEqUBO
- t1nuqlOmBfnss7XBtghmC1J4wdek4zPxI8wCDAXGoEBJh7XpJtBY9EEqg4IJEXhMfj2iQkf5Y2i
- Y1qvO/tb0jefWcDrJOqEfp+FgP9XUlRS8R132zNBfWaSDffqpFCafJdVHWah3PihV5Q+hNQ==
-X-Received: by 2002:a05:600c:348d:b0:47d:3ead:7440 with SMTP id
- 5b1f17b1804b1-4836571680emr47009635e9.32.1770910171456; 
- Thu, 12 Feb 2026 07:29:31 -0800 (PST)
-X-Received: by 2002:a05:600c:348d:b0:47d:3ead:7440 with SMTP id
- 5b1f17b1804b1-4836571680emr47009145e9.32.1770910171008; 
- Thu, 12 Feb 2026 07:29:31 -0800 (PST)
+ bh=KD0DUPsT/ogPTGMRO4qfDsgytWowuXfUh9PkIdHYmKw=;
+ b=c9LAccVN6BGb/MzHPC1cXv3PoLisZumVeKQBDiqIw2CJPvhsazYFv4qj90uO66kkDh
+ xYaybo6mHodLfefGQ6XNkFJBX6T15IKiuQ75150Vyihf9D2lDWCsa/0ZZWuo00gpMIBQ
+ RRibN4GuyFlGWAgIfh0ETz1vEvEaNLZsPGyzH4eB4/AyKxTR0JUC5cXaKa6/B+osn+ha
+ wyCCmzFi6Xrkp5L6au87uaMLRwmEmgSHV5ngw3OkCoV3BQ5VX9925rNf/OZRzLle5qOv
+ CsEjceifqG+yYhVgtjM1gha/Xq87ousS82amdqiirPP1hy8RKsRRtvxHGLIZsG/17fN0
+ L5uw==
+X-Gm-Message-State: AOJu0YwzFt6/Ch7k60geAfpmevSqSOUtImOdkllA+DUrNqYgwHxA+KzB
+ nGEoWPPcAAJevY5jO2MzSvIrdXkDprWQPFWPXYHepdk9wXvqgrXKaiTxetNeKnLOTJuYpwaIPrp
+ IACNcRf9QBm6SymqsPK2g7bNh01qhcKmfIoAOMCYmKsrW3t+FnMLh/w==
+X-Gm-Gg: AZuq6aJic/e26kPbDMP0lDPTeqjdOjpKX3k6NZBEDPgPMdXYNO4BMrhwVCwZcggnk7k
+ 9igZdt2SnIy7H0dLR3dsjpdgNiqX6QjDSSZlB6Iwz4S1ixkW5rZD7TH30eL2RZHw5994UpDArOs
+ GYQgPw79IqblQsC19lpBnm1HdCQU+JSNtaO1xz4J4eyBZPxzy4AJU8upAY44xevHxJRPeiJ6FNR
+ geHFMTYOax9BsbkyPxyJDQL+TzVHNsEVDKqoFKwLBBJsWC0yiKIQEF1kGkwXhHktSJGmTdWmGqk
+ f2JmtzNyHak7P/KdshX8LvFOKxVSyqfjJS9Cy7jQeOiu/ESfssPXa0/jsjCaFOV2oE8S04TCuOw
+ BMA/mtyuy+8RaCC4A4A6XBncV/jM4YTBohKby4uZMPpdAQRT55iA6/xuhSMj8+jKgd33BzQ==
+X-Received: by 2002:a05:6000:1883:b0:437:7300:eb1c with SMTP id
+ ffacd0b85a97d-4378e73ac8fmr5191569f8f.26.1770910508226; 
+ Thu, 12 Feb 2026 07:35:08 -0800 (PST)
+X-Received: by 2002:a05:6000:1883:b0:437:7300:eb1c with SMTP id
+ ffacd0b85a97d-4378e73ac8fmr5191511f8f.26.1770910507780; 
+ Thu, 12 Feb 2026 07:35:07 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4378e122df9sm5741507f8f.15.2026.02.12.07.29.29
+ ffacd0b85a97d-43783e39c6asm12442140f8f.28.2026.02.12.07.35.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Feb 2026 07:29:30 -0800 (PST)
-Message-ID: <c9f728a3-1bd9-48c8-93e3-463fba94e130@redhat.com>
-Date: Thu, 12 Feb 2026 16:29:28 +0100
+ Thu, 12 Feb 2026 07:35:07 -0800 (PST)
+Message-ID: <ef13c99e-29b3-47cf-a090-811294e723e0@redhat.com>
+Date: Thu, 12 Feb 2026 16:35:05 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 05/24] hw/arm/smmuv3-accel: Introduce CMDQV ops
@@ -103,7 +103,7 @@ References: <20260206144823.80655-1-skolothumtho@nvidia.com>
 From: Eric Auger <eric.auger@redhat.com>
 In-Reply-To: <CH3PR12MB7548A87A5BC62C6D90501947AB60A@CH3PR12MB7548.namprd12.prod.outlook.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: cJVYKxLQx7o5aQDnrAVOz-Q_sAjobCwCq9HF_9-h-lk_1770910172
+X-Mimecast-MFC-PROC-ID: 6fUZglX3-PMcaP1NEPlrfkL9ci8SY8TMppynYKlbYPI_1770910508
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -176,12 +176,9 @@ On 2/12/26 4:05 PM, Shameer Kolothum Thodi wrote:
 > I think the later patches in the series make this clearer.
 > Please let me know if you still feel the ops necessary.
 
-Well I am concerned by the lack of scalability overall. Until now this
-was more or less generic. Now we may have several implementors coming
-with their own implementations of even a vendor will come with several
-generations: today it is tegra241_cmdq, tomorrow we will have
-tegraxxx_cmdq, arm_cmdq, ... How to get prepared for this mess? Will we
-have a property for each one?
+do we have any way to introspect from the kernel what cmdq type we have,
+so that we could have a cmdqv option with ON/OFF/AUTO value instead of
+duplication cmdq option for each vendor?
 
 Eric
 >

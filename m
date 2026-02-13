@@ -4,86 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B0A5EDF176
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Feb 2026 15:45:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 740EAEDF173
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Feb 2026 15:49:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vqvLU-0000mc-93; Fri, 13 Feb 2026 10:44:41 -0500
+	id 1vqvPn-0001q1-FH; Fri, 13 Feb 2026 10:49:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <phrdina@redhat.com>)
- id 1vqvLR-0000mA-U8
- for qemu-arm@nongnu.org; Fri, 13 Feb 2026 10:44:38 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <phrdina@redhat.com>)
- id 1vqvLN-0006Yl-Nn
- for qemu-arm@nongnu.org; Fri, 13 Feb 2026 10:44:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770997471;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=sDtU67X8wI5oiArjRWjTIJ9AGqL5uiXw5++B/vg06bw=;
- b=FcGi6TmAKSBVYsSkuS3LeGxMLjeIbEeHnnuwYWLlGc6TPQ8PwKN6cd3Kts0Qn0Gk/kGvt9
- DHQCY5ZrK3nlMBItlMCx8W48gsEMdW5LrslUDhZ/vQVQYe5bJ9spg/ZYy85O6e2wxx3ikR
- 9VBGSkowVMwacPSDtMCh9h9nfTIk71g=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-427-MKm97Ru-MNSbbhpErMNfqQ-1; Fri,
- 13 Feb 2026 10:44:27 -0500
-X-MC-Unique: MKm97Ru-MNSbbhpErMNfqQ-1
-X-Mimecast-MFC-AGG-ID: MKm97Ru-MNSbbhpErMNfqQ_1770997465
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 950FD1956066; Fri, 13 Feb 2026 15:44:24 +0000 (UTC)
-Received: from antique-laptop (unknown [10.44.22.34])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0C4D91955D85; Fri, 13 Feb 2026 15:44:18 +0000 (UTC)
-Date: Fri, 13 Feb 2026 16:44:15 +0100
-From: Pavel Hrdina <phrdina@redhat.com>
-To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "clg@redhat.com" <clg@redhat.com>, "alex@shazbot.org" <alex@shazbot.org>,
- Nicolin Chen <nicolinc@nvidia.com>,
- Nathan Chen <nathanc@nvidia.com>, Matt Ochs <mochs@nvidia.com>,
- Jiandi An <jan@nvidia.com>, Jason Gunthorpe <jgg@nvidia.com>,
- "jonathan.cameron@huawei.com" <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
- "zhenzhong.duan@intel.com" <zhenzhong.duan@intel.com>,
- Krishnakant Jaju <kjaju@nvidia.com>
-Subject: Re: [PATCH v2 24/24] hw/arm/smmuv3: Add tegra241-cmdqv property for
- SMMUv3 device
-Message-ID: <aY9GzzllxyiW-zs6@antique-laptop>
-References: <20260206144823.80655-1-skolothumtho@nvidia.com>
- <20260206144823.80655-25-skolothumtho@nvidia.com>
- <aY8RIXzUVqcTiCkd@antique-laptop>
- <IA0PR12MB7555AD8A591B65CE1F0081ADAB61A@IA0PR12MB7555.namprd12.prod.outlook.com>
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vqvPm-0001pk-6H
+ for qemu-arm@nongnu.org; Fri, 13 Feb 2026 10:49:06 -0500
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vqvPk-0007w5-3w
+ for qemu-arm@nongnu.org; Fri, 13 Feb 2026 10:49:05 -0500
+Received: by mail-ej1-x630.google.com with SMTP id
+ a640c23a62f3a-b7cf4a975d2so148293266b.2
+ for <qemu-arm@nongnu.org>; Fri, 13 Feb 2026 07:49:03 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1770997742; x=1771602542; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=FuwDPGR02Gwv2B4v4N7w3i40mJ2a9DDLTQnWtjoONOk=;
+ b=VHawES1+o1fCj5dbzW6lf2Nw/+SL7HB0/Z+XJoIV5XRiO0e0OOy7AL/bjQC9cTj9FK
+ 79U4MVot2RnL898RSxt9C2zXu9Q8RrS8eqqxc9Pqfvh9ZjoihqqnIFNT0J1Lnq7CJDDN
+ n+U7Tp4kUugxLd4+GYbZ87CfUHw5oWUfUIiOMhZ6w/go61atQ30aSNYyuJLYQnzEaCoj
+ 5XvnJgtilFD9YjAmCRXOcNKZFz6d43FDOkJadjc8faG0/+uBBRC1/BUxwYcuYIxjpHWr
+ RLeQJISAwszUPn0M5XyrYNVv5IKY3MRsVYNBT7kL4tDUcq22ry/OUSQZFrm5sxfoV0sA
+ U2Gw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1770997742; x=1771602542;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=FuwDPGR02Gwv2B4v4N7w3i40mJ2a9DDLTQnWtjoONOk=;
+ b=R7rQh5odz+1FWgAVkin97dr12/30XTlC6UmDhk7VnPzk+ZyOL7yDV1CUfBzNsUxU6w
+ rKVXxTmAj4bc+wrL5JH/C8mkWoLcyc6vBiDr9DrE6l3se0OwlhctXdXtm0ybOm8MtU64
+ 8DdAMDXxrXB8HdxnJuYjTLElPhnNefnNOn9vRcEt/JY8Oo6bwMN/+k0lWSffhpVEdXNT
+ A/dc8LILblvQ7R5orHph+55W7lNrErjXwHXe2dsXef3lw6mrcjF6bN409AmjA3/trlC6
+ V1U65FzmTS65qCcwGbU3Fl/BIy3q0vB91cr5S54q7J0IAGKcLtNqO3VYwnY6fMsaf7dr
+ hJvQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX8mQQt6pF5z8MBgQkI4RyjDTxTSOyjfwyaz7eP7YPMtgdA5NXIbo687fSALvRSBwgXrmzXh2ZzKA==@nongnu.org
+X-Gm-Message-State: AOJu0Ywd5Mif3o8aPAO6Axaq63PC/Zs7TP5CncJYrSnwj/FQQADcTVgM
+ 8GENEBtgGCdr2kcpEAwRbi5sVVf6EPpEwP4FNnb1TImy2r0f6Zx11HIgS9TEW/lamJQ=
+X-Gm-Gg: AZuq6aJv1py4BjTyBYqLJ+V0N+rDA7RSuqECmbegbONQIaQSowx25Fkohi73VeRnaKv
+ kwo3xIhfUh9dvTdcMCvbLXVpzALq2yZBJ+ZQoarPnEprcn4JfhRVLMW0Amk988zK3G0FEl3MT1Z
+ CYGstwRE38PtFab5t1j82weoXzC6n5rqeBV4ZP3BZwPCl2h4eVjtLU8Fd5C6Qw7nbmXh9XSXOcU
+ CXxB2HfccW8vMH21lGrdxHt5mxlicI30YMkJ+l6/8ehk8P2QcLinN486NN1mQPyhWlT1/71vkkV
+ YA2OoZPq7Mx4Kja9+w14iwSREdTE0zaoMHsx/Iitt7nQphg7iS6AYtjurFdNqgzjjsDRV1UqaUN
+ rDk+VDNGNgRbFlZYZ+fezaRuwJl3I+04AePK1VSFPLeSDycKrP6sb48rsTNEDEBgV5glj5xtNSJ
+ FPysuW+dfybV4lMyt//vm4Y6Q=
+X-Received: by 2002:a17:907:7247:b0:b80:751:ee62 with SMTP id
+ a640c23a62f3a-b8fb41d18bemr122943766b.14.1770997741941; 
+ Fri, 13 Feb 2026 07:49:01 -0800 (PST)
+Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b8f6ec35688sm267902966b.51.2026.02.13.07.49.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 13 Feb 2026 07:49:00 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 113025FC79;
+ Fri, 13 Feb 2026 15:49:00 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Brad Smith <brad@comstyle.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Warner Losh <imp@bsdimp.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Kyle Evans <kevans@freebsd.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH 2/6] tests/vm: bump OpenBSD to the current 7.8 release
+Date: Fri, 13 Feb 2026 15:48:55 +0000
+Message-ID: <20260213154859.1551283-3-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260213154859.1551283-1-alex.bennee@linaro.org>
+References: <20260213154859.1551283-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="rTL7UEISyZsy4M/9"
-Content-Disposition: inline
-In-Reply-To: <IA0PR12MB7555AD8A591B65CE1F0081ADAB61A@IA0PR12MB7555.namprd12.prod.outlook.com>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=phrdina@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,80 +109,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/vm/openbsd | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
---rTL7UEISyZsy4M/9
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Feb 13, 2026 at 01:39:50PM +0000, Shameer Kolothum Thodi wrote:
->=20
->=20
-> > -----Original Message-----
-> > From: Pavel Hrdina <phrdina@redhat.com>
-> > Sent: 13 February 2026 11:55
-> > To: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-> > Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
-> > eric.auger@redhat.com; peter.maydell@linaro.org; clg@redhat.com;
-> > alex@shazbot.org; Nicolin Chen <nicolinc@nvidia.com>; Nathan Chen
-> > <nathanc@nvidia.com>; Matt Ochs <mochs@nvidia.com>; Jiandi An
-> > <jan@nvidia.com>; Jason Gunthorpe <jgg@nvidia.com>;
-> > jonathan.cameron@huawei.com; zhangfei.gao@linaro.org;
-> > zhenzhong.duan@intel.com; Krishnakant Jaju <kjaju@nvidia.com>
-> > Subject: Re: [PATCH v2 24/24] hw/arm/smmuv3: Add tegra241-cmdqv
-> > property for SMMUv3 device
-> >=20
-> > On Fri, Feb 06, 2026 at 02:48:23PM +0000, Shameer Kolothum wrote:
-> > > Introduce a =E2=80=9Ctegra241-cmdqv=E2=80=9D property to enable Tegra=
-241 CMDQV
-> > > support. This is only enabled for accelerated SMMUv3 devices.
-> >=20
-> > Hi, do we expect that in the future there will be some other option
-> > named `{newplatform}-cmdqv`?
-> >=20
-> > I'm asking mainly from libvirt PoV where current RFC patch exports this
-> > option only as `cmdqv`.
->=20
-> Yes, with the current design each implementation would expose its own
-> xxx-cmdqv property.
->=20
-> However, please see the discussion:
-> https://lore.kernel.org/qemu-devel/CH3PR12MB75484A150D6DCD9D3C3C66F3AB60A=
-@CH3PR12MB7548.namprd12.prod.outlook.com/
->=20
-> I am looking into whether we can instead have a single cmdqv property
-> and probe the kernel to determine the specific implementation type.
-
-Thanks for the details, yeah that looks better.
-
-I was also thinking about using cmdqv=3Dtegra241 in addition to 'off' and
-'auto' if it would be possible for host to support multiple
-implementations at the same time. Libvirt would probably prefer setting
-specific implementation instead of using 'auto' to make sure that the VM
-will not change.
-
-Pavel
-
---rTL7UEISyZsy4M/9
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCgAdFiEEcbzs91ho/coWWY7aUi1kczAH4YwFAmmPRs8ACgkQUi1kczAH
-4YzUGA/6Ag628m2V8Lqp0Q+aUoXk/iLI9rMh8oorQbDI4GXw9J4jYOMNVs6xRfEN
-hVZIS4E/loP9NQO+Kl8eu8XyR9Y1GiWTqctb6ua8CQraG0FMDNM1Xsy7Z/f21Tdt
-dwXXMJcFXpTd5jCdZ/Jl0i4i/EnWGwVX5F9ZhHE+eEaWqpyquXf7y77oMx45ZnBY
-wXhmM3qiZ9MQAyxd3u67OC0CGiXHMYjGiB+foM01HjLuoGIZAtxQIPqufZvdNAYM
-sAzji3KmQv4hm+5pm6OvEj+6d/M3Yem+vz8iY3tkSdIhmjqxGyA2pqnvyS4av1Jv
-BomFThrujRKMRaJmpmJSUMzUZ/6/CDuIpAWXYNUJZ5SJWzn2DxX3uESP/hA6WB/2
-6aSZXQ9iIo9qll22axzakHJ+dgZrTPVsBW2QBpV2ZfFry/XL/EvIc+nW9ppvslI2
-RhOyN27itXzZaVZeeFTr43fJ2EdRhpu/1c57u5PN0esOx650NB4ySU7fEACmnPNP
-ak/gMNSblWb03h++rQw1tbKnXMYNzHBlDWOJeVw8SllWeDyyoKCDTH/hj4YrzdBI
-PtWmuuYTK4KKj9olvErBNse0HI/tfLEMsHQDQ93UnVyuvq6JLvGuP3EJcLz5K9Hv
-P6C2Zu6vyR48oGPMfTFNQ1OamKAd00vhzM4bKdgNxB1rL1H4QbQ=
-=ejf4
------END PGP SIGNATURE-----
-
---rTL7UEISyZsy4M/9--
+diff --git a/tests/vm/openbsd b/tests/vm/openbsd
+index 2ea86a01bad..88b31dd9b59 100755
+--- a/tests/vm/openbsd
++++ b/tests/vm/openbsd
+@@ -22,8 +22,8 @@ class OpenBSDVM(basevm.BaseVM):
+     name = "openbsd"
+     arch = "x86_64"
+ 
+-    link = "https://cdn.openbsd.org/pub/OpenBSD/7.7/amd64/install77.iso"
+-    csum = "da0106e39463f015524dca806f407c37a9bdd17e6dfffe533b06a2dd2edd8a27"
++    link = "https://cdn.openbsd.org/pub/OpenBSD/7.8/amd64/install78.iso"
++    csum = "a228d0a1ef558b4d9ec84c698f0d3ffd13cd38c64149487cba0f1ad873be07b2"
+     size = "20G"
+     pkgs = [
+         # tools
+-- 
+2.47.3
 
 

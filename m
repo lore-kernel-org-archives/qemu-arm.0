@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D88B7EF99C8
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Feb 2026 18:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ECECEF99C9
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Feb 2026 18:42:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vqy7C-00052P-LL; Fri, 13 Feb 2026 13:42:06 -0500
+	id 1vqy7X-0005Cf-S0; Fri, 13 Feb 2026 13:42:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vqy7B-00051g-I9
- for qemu-arm@nongnu.org; Fri, 13 Feb 2026 13:42:05 -0500
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+ id 1vqy7T-00056A-Qf
+ for qemu-arm@nongnu.org; Fri, 13 Feb 2026 13:42:23 -0500
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vqy7A-00038w-4E
- for qemu-arm@nongnu.org; Fri, 13 Feb 2026 13:42:05 -0500
-Received: by mail-pl1-x62b.google.com with SMTP id
- d9443c01a7336-2a79ded11a2so8482075ad.3
- for <qemu-arm@nongnu.org>; Fri, 13 Feb 2026 10:42:03 -0800 (PST)
+ id 1vqy7S-0003BF-3E
+ for qemu-arm@nongnu.org; Fri, 13 Feb 2026 13:42:23 -0500
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-2a7a9b8ed69so11665765ad.2
+ for <qemu-arm@nongnu.org>; Fri, 13 Feb 2026 10:42:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771008122; x=1771612922; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771008140; x=1771612940; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=e4zr91gKAiqEpioA8CmVpzflDEZzXrizHVZVzLXa9uM=;
- b=lSFWkLA2VYN91h0ehZx6+VPf/f/Xi5u9OC0mLdH8goswcFer4ia2BCzeniXWp5ZX/3
- HfJeEnhkK1jCa2qPyBu5SZ3dp01X2vfUjf1pZxcxVCQd9Ebh65DGBbF97OWo9pB6F8w1
- rBNW6Yt/g//BWBp16sW5+w8E+qvPwqpR4UhFhJDNsMPRjmnuVh0aMMSDkIh+xkPcUZqd
- vlBPVJ3BySJ4zK+ZTIeZl8QMOTzYjupCLDI+RMyhAUBsGv3N50hpOy8CFoaCLRhrxTvQ
- rCBZfG0Nm5vTVo2F9kBD6/LGJiWm4ZH+nvcyvm/Blgw3REQ+qhXVSmSNjNmtjxifVoBb
- nAyw==
+ bh=QDou7p/UCsMHaXttI6Izop/YkBxHPmQx/rvf5N2SkNA=;
+ b=TtfVm4u3DebRky2kgnpyvQL01ZovwbEekR4UQxdUALFhU9WlMSAHE3QJnux+WeqX2q
+ UKo9k2gkf2TxWAO38Sd/UhWV7Snvop4xKCAUKsC/kw1rNF7wMCpWxA1KjefO0G3N3GhY
+ MmzF/e7j+PT6ebTo8sKKR8ZzDMk8/jebvz3otV9zYMxK7QPVRQXY39hxhpqIDQeufLcp
+ uyVd5M/5EIF7ie4OxIfKwcI39UpigdNr3ZeRs26F0NvDaWaQiayJ7BwpODpZtaVUpFQE
+ s0rKXLNeOtcHOqKiqvNcz5NU7o7MEXau/fQ78LHu2LoXGU++dmk2osP14qG6dzmP4jYz
+ 8bbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771008122; x=1771612922;
+ d=1e100.net; s=20230601; t=1771008140; x=1771612940;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=e4zr91gKAiqEpioA8CmVpzflDEZzXrizHVZVzLXa9uM=;
- b=rlMwExHlSTBrkFBDTR9VuGvuCgp6Q3lxfdClBC6afhtLv+Lbjve26qb60Rp32qFPWR
- 7kvE07vZIMFfCKSKT3zWgJu+qPoYDs6wwUJOvB0wj23HS7lMEF8BAtoRJld8or1waL4D
- zibsPOrnveRIulzL24wJxOWClIDjnquTSqwnpcA/gRo78TrXvYq1I6y7e3PQBt2pBXzE
- DY+Iay7OuWOiw1gLE4ty8+DXoXfcG6uXWv82UcbIu4Rp2uR2QC0sytOSKKZf39jeMdK/
- WDZP4QzsPJ9hhKJOirLovWPQAq7AokWlM7M8bY4bUQMNsA49c1Or2dooYhdUr8eiRpaC
- lCqg==
+ bh=QDou7p/UCsMHaXttI6Izop/YkBxHPmQx/rvf5N2SkNA=;
+ b=nH+fgqZWZMA2GNZsSjwV6i4ZCEhS4Lg1vt8njFbhbU3EzexB0Q4ALTBcQsuAVC0ATw
+ UiwmZbH6/4bCE21vEALJxoJs8XAqSh0MMueXJaRoC1jizsMiixLlsaTXRUpvDPGOqFp4
+ ktGhxLeEpkLp2FRLidjrb84134jNQ5dYEy7BxjswaxNPpqLINJBZafPF5X+t4O5tG7km
+ aklFImYqLxy+wKIs2ZWOrAvWCyBlxHaNkkSfuY3PqlNAWcSNiUYrlHHqyFCT3K356H0r
+ /QPticsJjhVoNlOUHTIzc8pP2NiOlRy/mIFamMMnW0tij0B0IcAcZQ0OxciteK5+S32B
+ qN2Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXVcTgmEAUC6XnYfx+Pd1E3EMtWAOvto9GSRvgVx0fRY4N5jsEr8Qro2aT9iwS8MGnZk4OJAaC7bA==@nongnu.org
-X-Gm-Message-State: AOJu0Yyu5fq7mxucsAVEgg4ay7mcYY+lvKjiem0Wmkw6uXvtkiXDaQDZ
- vmp3FdNBBwXZhconrFI9QOQgiIJJ4GtILOw9PY8HTlXYEj2OgnGsbBr8TMij4UoXJXg=
-X-Gm-Gg: AZuq6aLGILj3Qam/fAI76hxD5rUD6BzIVbHTcDzKueGrRfY/ZQ9bo29uMFTOF85hldt
- NvmA2f5sY2AmiP/DwGVzD8XTVMTva/ePCf4lP2pKGthzn2tZ6HDJFcP0Z3m7TfywUo6SeyfDVZd
- it+YO6GfYXOrEtr22rEORO1fmkdwMpTGNN3CJa1g64Ef2nt/x2OmVpIHQUMMY9cHDGqBYhJMfHj
- HsngLoDIFRlEFVC2HWyWSwn227L4XtqR7zzo8d/tW/ukbS4PQsBIwA450KXuCDkdfKfx7knuL00
- byY2ZIfv7MiHggPnBZ5BfbQQB+Mz0ulm00ExmNYtqMt6G8eEC8LclA2vZQzxHOXLikc+OVazBCv
- AJxTwHS0mxWFICNfklrezBGSwWnb6z7BfQn/zkLk7zJmY4WeKAtIUguBVYxfc6FypGNRilyzeHM
- OXEudbAEWOOO30iYSQIWKMBccQ2zvSkpgYgT/M9JiFltrKoXzUKk3PvCMG3+2RcObTgDjC
-X-Received: by 2002:a17:902:f788:b0:2a5:8c1c:744f with SMTP id
- d9443c01a7336-2ab505a3194mr33273005ad.40.1771008122164; 
- Fri, 13 Feb 2026 10:42:02 -0800 (PST)
+ AJvYcCXTv558TGzrUt6LhWQmdIxuQjXBSYdsR6zGIlk3xCqsz2RB/aVQIIF96lmzmRvIC7gF77AWucQToQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy+GyB7+O50NmgN7PBUECUM16cobtKfUM+kprfUFMu/kmvFRpbV
+ sH+aJK6fsWLoQXZvUnRmsBsdU/BeTnZAjW7ZNuGifa3LjYmLPn3GCV9k1C2ZOEuXs00=
+X-Gm-Gg: AZuq6aIhsQay5uXelL8+/0NIwwe9m+UfT9WWnhb2xp+RSCvwGXCtHOMstXWD1h+9Bn/
+ HEZon3yHHbGLv4WdADD5MEC6LtIDPEhZX2fQNCxoIaPUwNxxyOWTF3vwDdIA4jL5PZUm92bErcF
+ Nj50UwDM39H7oWPbMJMvkIoE8sriYpvDHw6jwtmYB7IcF1PHTgRYy4v965ztC/uVB9JdeKQgsRw
+ TCZsmtUl1KrKFA3O1o5rmmw5x1ju1I7aeaXWz8n8tYAZa7K4tFkQ5kCfYQDVG+unD579+boV142
+ tBNUcSrQNnbhk76Takftp5JsrI3pikJJ9JqiQaZaQV18tAH/SjS8cA4yRuSdFAsA/vjMU4mfzjc
+ 08bEOw0/7IRewNIpBm4VVafTNulFYC/HCbkFvMResSyXcbPuSzJGOCgCwycBa4y0V8BoU4GGpl5
+ cq12H6XkeNlXgsZhKlxFq533f5qs+yOelGxybcMZGxqFOo8H0BXE2QU2byi+JyjkqKURr9
+X-Received: by 2002:a17:903:1aae:b0:2aa:f2f3:bcab with SMTP id
+ d9443c01a7336-2ab505c9dbamr28763585ad.47.1771008140198; 
+ Fri, 13 Feb 2026 10:42:20 -0800 (PST)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2ab2984c07bsm90760035ad.7.2026.02.13.10.42.01
+ d9443c01a7336-2ab2997bc2fsm95631645ad.76.2026.02.13.10.42.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 13 Feb 2026 10:42:01 -0800 (PST)
-Message-ID: <c5b23db4-dcb3-44b5-bd19-4718ee6a00a4@linaro.org>
-Date: Fri, 13 Feb 2026 10:42:01 -0800
+ Fri, 13 Feb 2026 10:42:19 -0800 (PST)
+Message-ID: <ff2e6fec-6a1a-4415-b1e9-fa6ee6babede@linaro.org>
+Date: Fri, 13 Feb 2026 10:42:19 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/6] tests/vm: bump OpenBSD to the current 7.8 release
+Subject: Re: [PATCH 3/6] tests/vm: remove unused import
 Content-Language: en-US
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
@@ -80,7 +80,7 @@ Cc: Brad Smith <brad@comstyle.com>, Warner Losh <imp@bsdimp.com>,
  Thomas Huth <thuth@redhat.com>, Kyle Evans <kevans@freebsd.org>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 References: <20260213154859.1551283-1-alex.bennee@linaro.org>
- <20260213154859.1551283-3-alex.bennee@linaro.org>
+ <20260213154859.1551283-4-alex.bennee@linaro.org>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
@@ -116,11 +116,11 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260213154859.1551283-3-alex.bennee@linaro.org>
+In-Reply-To: <20260213154859.1551283-4-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -146,8 +146,8 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 2/13/26 7:48 AM, Alex Bennée wrote:
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   tests/vm/openbsd | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>   tests/vm/openbsd | 1 -
+>   1 file changed, 1 deletion(-)
 > 
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>

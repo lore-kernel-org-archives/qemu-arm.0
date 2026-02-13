@@ -4,91 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FE33EF48C6
-	for <qemu-arm@archiver.kernel.org>; Fri, 13 Feb 2026 03:51:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32C45EDF14D
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Feb 2026 10:19:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vqkCr-0004VD-RE; Thu, 12 Feb 2026 22:51:01 -0500
+	id 1vqqGl-0004Vc-JX; Fri, 13 Feb 2026 05:19:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vqkCq-0004Up-43
- for qemu-arm@nongnu.org; Thu, 12 Feb 2026 22:51:00 -0500
-Received: from p-east2-cluster2-host11-snip4-10.eps.apple.com ([57.103.78.93]
- helo=outbound.st.icloud.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vqqGj-0004Ui-F0
+ for qemu-arm@nongnu.org; Fri, 13 Feb 2026 05:19:25 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vqkCn-0006NC-F4
- for qemu-arm@nongnu.org; Thu, 12 Feb 2026 22:50:59 -0500
-Received: from outbound.st.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-1a-60-percent-11 (Postfix) with ESMTPS id
- 2170E1800FA6; Fri, 13 Feb 2026 03:50:52 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1770954656; x=1773546656;
- bh=gkIHwLiicPJir/SN3RshaA+EdhlolV51yys+U0JCK6Q=;
- h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
- b=Dr79Dk+OgPP6nsT6AWgiF5dBrjNE4/66uHFP//r+nLxoQjkoh7Yis8K5z7/uGJer5BPJeEAFilKuaxHMyaKP1ocPfHTpwne1DN5sAEV9HadOd5408vTY4pLVkotHTYignduapz8tAsRttIlAV2bAlKPh7KIXyH6oUGpQive4rcyn110v5hL5sULoGkza7k9V18es8gOjYZFxPFQtkJmkJbEOhXvl89B9MF2rBiBTwL9rdtijr5V/sQeBzU7Uz1aVsmZJMJWQW6UzdApcHAsUfajnq+Qc66+Y/eCtC1vsU31it6Iu+I+s1TPhJsD4mUcyG39UPWmefMzkSythEorMJg==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.42.251.67])
- by p00-icloudmta-asmtp-us-east-1a-60-percent-11 (Postfix) with ESMTPSA id
- 846041800F9F; Fri, 13 Feb 2026 03:50:50 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-Message-Id: <1CECBF2E-B19C-41CB-9F6A-44AC45D969D2@unpredictable.fr>
-Content-Type: multipart/alternative;
- boundary="Apple-Mail=_755AE607-6B94-4988-AB9B-5209C4E3B2AA"
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
-Subject: Re: [PATCH 0/7] whpx: x86 updates (2026-02)
-Date: Fri, 13 Feb 2026 04:50:38 +0100
-In-Reply-To: <90285696-0769-4934-9861-886179CC74D6@gmail.com>
-Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
- Wei Liu <wei.liu@kernel.org>, Roman Bolshakov <rbolshakov@ddn.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Cameron Esfahani <dirty@apple.com>, Zhao Liu <zhao1.liu@intel.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
- Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-To: Bernhard Beschow <shentey@gmail.com>
-References: <20260211055356.44664-1-mohamed@unpredictable.fr>
- <90285696-0769-4934-9861-886179CC74D6@gmail.com>
-X-Mailer: Apple Mail (2.3864.400.21)
-X-Proofpoint-GUID: byszzThlqkprvpSMsYygrVkVigSktedX
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjEzMDAyNiBTYWx0ZWRfX9ld7cYcdYtWr
- xA1XBeAtGHBhU15lkRnLya21g0+Oky+cezXpYT6APwiwYktj6gJZpLhNgCRgzV7EzPFYOfgvVZD
- 0Fu25/Rg60nEaZZTNOBevUHTS0k8ZW0DwHyoG/UId709z6a3GjX5Lrg4NI/kNaoQpzl7yZhRWXi
- IZx+9IApOusWJCzio2tW44aCUBg9cbyesYfO7y1hFolMWMGIipdHDVrfqJJo9IYZqBp7b67iZmZ
- LkcqgJcvdkkl+CHhgUdNts5mcbnDJP4e+q+Ym+yk4upZsoKf2nfuuKkTxcnxjuQnLAxqC6oSNhJ
- vCKlEqXI2qdW6TrR7csv8e/qqyk79oWOTgJ59OiMTaQntqu3J9Hj/gXbET1diM=
-X-Proofpoint-ORIG-GUID: byszzThlqkprvpSMsYygrVkVigSktedX
-X-Authority-Info-Out: v=2.4 cv=d/T4CBjE c=1 sm=1 tr=0 ts=698e9f9e
- cx=c_apl:c_apl_out:c_pps a=YrL12D//S6tul8v/L+6tKg==:117
- a=YrL12D//S6tul8v/L+6tKg==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=pGLkceISAAAA:8
- a=7KrFPpZLaHbfpcboZ30A:9 a=CjuIK1q_8ugA:10 a=4K97RNY9uchIZwsLnTIA:9
- a=PIhe3K4j1ORAfCcv:21 a=_W_S_7VecoQA:10
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-02-12_05,2026-02-12_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- mlxscore=0 spamscore=0 lowpriorityscore=0
- clxscore=1030 mlxlogscore=924
- adultscore=0 bulkscore=0 malwarescore=0 phishscore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2602130026
-X-JNJ: AAAAAAABzISFhyNp0CGvEXBjcXNAcjHAC+o9VUJGE7iX+0kojXOk6w0EEsz9pf8s8Hap3THaR/ULrNRgnkawh3o0IUINQShHQNogTHUtUxyWw/IbRsXSa0lxVASApmnlDMt4zuY5+oJyavdj50pk7JA+03U3KsaugWKxPMJhNz8h9KPyP5oLT6+ae1pjY3qcp3FRbS4NxMqh3cVsk11Rx2c0pArp5+U/gmeHSE3TahHaw8wowwfnL9qf2RsHZSmhxjB8VLJ1H0iijhTnmJtF4mjbb44wXnfiyNPNzzKleJ9zcVEazOTGxakasQlV7a4KvltdAoKZCj010iaKY2YzUf/4QVdRukh4HVyfcuYKqqWBySuo7nCJuOPpLSAnrTKH0QLkwNHiVGlMznRlZnGPruqvKaY6m1cMDGhPY5Jw9uuoxzFsNTrYiUtiryI9pczM4MM8b547aJ1LuhkbEEHYLTCrRnKoNC7jrIMISpoUVmE56V54Tw0vG/xAVwyrzaUnXRXdZ0fYWUWxAw0SQRU6p/dieVkw3QlCtrLrXBS0jFKcXMXc1805rfvLfxUZlPv+LuOafPApe85lxTbqIomGxLpi4CRhP2gmqUFTAt+kbS3RtXKXCtspJNQumqetjVbXHB5KpYVZVnsnbO9drIdql7lYj4kA+Vh9U6+xDebUnN9occr7L7FE33qXldwAjAQ+mE3qPRkqRLMczW4jwaVCOOoUVEzkEjZtpC7lt/MGNw+ipljNRsIUNXOYicwBDVVzHwvw4Fj80QLz2TdI75Z9PVAau4yZJqp12ifcYMosr13sqrQD7mI9QHg4AZaqN59gDog9fZcJbvvi3A==
-Received-SPF: pass client-ip=57.103.78.93;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1vqqGh-0004T1-An
+ for qemu-arm@nongnu.org; Fri, 13 Feb 2026 05:19:25 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1770977961;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4sGkkhYe5e+/5k8OgsUcYJfgnNu70piCdcjSXzckr8U=;
+ b=HjSchy0zU1EGhlu72xQq5JcS2nc+y0Mn4+9S6l2/EJohmP2828LU8Ad/RP6dJWBEEVQsQI
+ +B0e2kaVgCl3bQvZVfmLPLte2+fnFTdb5EDOnKvBuC3X1U9Jv6esoO4hC1i33WEdVynF8x
+ TxAA58P1QnzLh/BKokA+sqg4HhRY35w=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-581-ccqyNvtCMaqvJO7lkHHncQ-1; Fri, 13 Feb 2026 05:19:20 -0500
+X-MC-Unique: ccqyNvtCMaqvJO7lkHHncQ-1
+X-Mimecast-MFC-AGG-ID: ccqyNvtCMaqvJO7lkHHncQ_1770977959
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-48069a43217so6858205e9.1
+ for <qemu-arm@nongnu.org>; Fri, 13 Feb 2026 02:19:20 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1770977959; x=1771582759;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=4sGkkhYe5e+/5k8OgsUcYJfgnNu70piCdcjSXzckr8U=;
+ b=mQ2/tDyQGe9NpydN2WhDEQgTf9Vfx9sfmh6cPVig4Ruk3dD0iSEn+tE4tEETevbTOb
+ bc+RS7lTBFDo/+AStdZEMXYJDZcq59v662lslNB9cCHcy8MRHR0+IWA6OgL/RWwi8jvC
+ Au2M2wwKNp8wCBceJhkwynlsljJo6b/fE8WdHWstGv+Tc1DGsFhA54v8VZTsTtg0KisD
+ BFn8HNDlhE2PiTnGM2+vMk78EkN04Br1X+woeIwHgSjDlvLuKCGxp4cmyshur8PD71ai
+ eSkK9+Wn3b48wvVnt6Yu/oJCgPDenSyutMoe3Bx2q8B2jrfTVkteKiw34KV4u5mr4DbC
+ Y5TQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXfJTIJ1B/LuD9vNbe49t899g392dy/py414zcxMHhhKcP206v+nmaS/WzX1hgLbvthhcRrXA4cWA==@nongnu.org
+X-Gm-Message-State: AOJu0YzNu9OXPAx/4j/TXlbchhrHAo+dRWb23wPKZf8BR+r/Uhd+NJUL
+ zS8SFYIXw0bGzdJqOVCg3KoHWUNS9vAD/B69mnyPBbl4LLmgG9LE/KVLtf9aJ4Uyj+V4Sw/rwK1
+ a9vPQK2BpR3QFj/c06Zm75vHZsalLLUXv1udVhbUfQ6IqyxLw0gCR8Q==
+X-Gm-Gg: AZuq6aLbK3fkEigUb5DMtVhjc0rCx13nWVNkGWS7UTXCTn8+zq3ApZPh/e7DQbjQJVb
+ ty/UFyZ3nCxEXQHFzKgJkeu0g6dre/Unz0atNdetWGlYzrzqi4qfiw1aBsrcha0bMJffV4CzQp+
+ VhWQ/RTsuKK+6pWd9tb/aIp1N9/ncu+92farhQXncbUVTHk5f+51uXdbvki8+VDlw1iWjBhnART
+ uGVjGtoGjXqj/vQF4gCcTZxTe+E61nkF7jRgHAv4kWMudv9ywTCoviuf+T1/Rt0Z4tHyy8bJ1Km
+ krVZJv5jan818zwOh3V5/BHH2RGCkbrzj4n2F35Tmyetf82mHKQJkrVLptU6K0A0s1xSJW47kmh
+ lwlWnY566pA0LuyZDADsFH6p3uJl1u4BoA5HSLJN53ZVUT05zVGRocRQnEt4zl8S0gc1Pzw==
+X-Received: by 2002:a05:600c:4e0b:b0:476:d494:41d2 with SMTP id
+ 5b1f17b1804b1-48373a5977fmr18272345e9.29.1770977959259; 
+ Fri, 13 Feb 2026 02:19:19 -0800 (PST)
+X-Received: by 2002:a05:600c:4e0b:b0:476:d494:41d2 with SMTP id
+ 5b1f17b1804b1-48373a5977fmr18271965e9.29.1770977958815; 
+ Fri, 13 Feb 2026 02:19:18 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-483746d7e82sm21501295e9.3.2026.02.13.02.19.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 13 Feb 2026 02:19:18 -0800 (PST)
+Message-ID: <cf34ad79-1914-428c-8999-8a4faf337a15@redhat.com>
+Date: Fri, 13 Feb 2026 11:19:16 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 04/24] backends/iommufd: Introduce
+ iommufd_backend_viommu_mmap
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, clg@redhat.com, alex@shazbot.org,
+ nicolinc@nvidia.com, nathanc@nvidia.com, mochs@nvidia.com, jan@nvidia.com,
+ jgg@nvidia.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org,
+ zhenzhong.duan@intel.com, kjaju@nvidia.com
+References: <20260206144823.80655-1-skolothumtho@nvidia.com>
+ <20260206144823.80655-5-skolothumtho@nvidia.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260206144823.80655-5-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: LnB1yzhkIPX2Wgt7eFYgtShM0Exn4IRtmsJI1VoqSgE_1770977959
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,83 +120,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
---Apple-Mail=_755AE607-6B94-4988-AB9B-5209C4E3B2AA
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=us-ascii
 
+On 2/6/26 3:48 PM, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
+>
+> Add a backend helper to mmap hardware MMIO regions exposed via iommufd for
+> a vIOMMU instance. This allows user space to access HW-accelerated MMIO
+> pages provided by the vIOMMU.
+>
+> The caller is responsible for unmapping the returned region.
+>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  backends/iommufd.c       | 22 ++++++++++++++++++++++
+>  backends/trace-events    |  1 +
+>  include/system/iommufd.h |  4 ++++
+>  3 files changed, 27 insertions(+)
+>
+> diff --git a/backends/iommufd.c b/backends/iommufd.c
+> index c6b79da0d4..9e30501d38 100644
+> --- a/backends/iommufd.c
+> +++ b/backends/iommufd.c
+> @@ -578,6 +578,28 @@ bool iommufd_backend_alloc_hw_queue(IOMMUFDBackend *be, uint32_t viommu_id,
+>      return true;
+>  }
+>  
+> +/*
+> + * Helper to mmap HW MMIO regions exposed via iommufd for a vIOMMU instance.
+> + * The caller is responsible for unmapping the mapped region.
+> + */
+> +bool iommufd_backend_viommu_mmap(IOMMUFDBackend *be, uint32_t viommu_id,
+> +                                 uint64_t size, off_t offset, void **out_ptr,
+> +                                 Error **errp)
+Looking at this again, there is nothing really related to iommufd. This
+could simply end up as a static helper in tegra241-cmdqv.c
 
+Eric
+> +{
+> +    g_assert(viommu_id);
+> +    g_assert(out_ptr);
+> +
+> +    *out_ptr = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, be->fd,
+> +                   offset);
+> +    trace_iommufd_backend_viommu_mmap(be->fd, viommu_id, size, offset);
+> +    if (*out_ptr == MAP_FAILED) {
+> +        error_setg_errno(errp, errno, "IOMMUFD vIOMMU mmap failed");
+> +        return false;
+> +    }
+> +
+> +    return true;
+> +}
+> +
+>  bool host_iommu_device_iommufd_attach_hwpt(HostIOMMUDeviceIOMMUFD *idev,
+>                                             uint32_t hwpt_id, Error **errp)
+>  {
+> diff --git a/backends/trace-events b/backends/trace-events
+> index 3e70338750..f824a8d197 100644
+> --- a/backends/trace-events
+> +++ b/backends/trace-events
+> @@ -25,6 +25,7 @@ iommufd_backend_alloc_viommu(int iommufd, uint32_t dev_id, uint32_t type, uint32
+>  iommufd_backend_alloc_vdev(int iommufd, uint32_t dev_id, uint32_t viommu_id, uint64_t virt_id, uint32_t vdev_id, int ret) " iommufd=%d dev_id=%u viommu_id=%u virt_id=0x%"PRIx64" vdev_id=%u (%d)"
+>  iommufd_viommu_alloc_eventq(int iommufd, uint32_t viommu_id, uint32_t type, uint32_t veventq_id, uint32_t veventq_fd, int ret) " iommufd=%d viommu_id=%u type=%u veventq_id=%u veventq_fd=%u (%d)"
+>  iommufd_backend_alloc_hw_queue(int iommufd, uint32_t viommu_id, uint32_t queue_type, uint32_t index, uint64_t addr, uint64_t size, uint32_t queue_id, int ret) " iommufd=%d viommu_id=%u queue_type=%u index=%u addr=0x%"PRIx64" size=0x%"PRIx64" queue_id=%u (%d)"
+> +iommufd_backend_viommu_mmap(int iommufd, uint32_t viommu_id, uint64_t size, uint64_t offset) " iommufd=%d viommu_id=%u size=0x%"PRIx64" offset=0x%"PRIx64
+>  
+>  # igvm-cfg.c
+>  igvm_reset_enter(int type) "type=%u"
+> diff --git a/include/system/iommufd.h b/include/system/iommufd.h
+> index f72ad545f8..87ddc39041 100644
+> --- a/include/system/iommufd.h
+> +++ b/include/system/iommufd.h
+> @@ -111,6 +111,10 @@ bool iommufd_backend_alloc_hw_queue(IOMMUFDBackend *be, uint32_t viommu_id,
+>                                      uint64_t length, uint32_t *out_hw_queue_id,
+>                                      Error **errp);
+>  
+> +bool iommufd_backend_viommu_mmap(IOMMUFDBackend *be, uint32_t viommu_id,
+> +                                 uint64_t size, off_t offset, void **out_ptr,
+> +                                 Error **errp);
+> +
+>  bool iommufd_backend_set_dirty_tracking(IOMMUFDBackend *be, uint32_t hwpt_id,
+>                                          bool start, Error **errp);
+>  bool iommufd_backend_get_dirty_bitmap(IOMMUFDBackend *be, uint32_t hwpt_id,
 
-> On 12. Feb 2026, at 23:52, Bernhard Beschow <shentey@gmail.com> wrote:
->=20
-> I really like this series because it replaces proprietary code with =
-already existing open-source one. So I gave it a spin. Unfortunately I =
-have to report that I noticed some problematic performance regressions =
-when booting x86_64 Linux with Grub: Before this series it takes ~20 =
-seconds until the first Linux output is visible, and with this series =
-applied it takes a bit more than 2 minutes, i.e. about 6 times as slow. =
-Also, when using a GUI, mouse button presses easily take a second until =
-reaction which is rather unusable. So I think this series needs more =
-work and I'm happy to help with testing.
-
-Hello,
-
-Should be a bit faster now :-) (just sent over the v2)
-
-Turns out that MMU lookups through the Hyper-V API were slower than I =
-anticipated,
-so moved the HVF x86 MMU translation bits over to common code and =
-switched to using
-those.
-
-Thank you,
--Mohamed=
-
---Apple-Mail=_755AE607-6B94-4988-AB9B-5209C4E3B2AA
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=us-ascii
-
-<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
-content=3D"text/html; charset=3Dus-ascii"></head><body =
-style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
-line-break: after-white-space;"><br =
-id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
-type=3D"cite"><div>On 12. Feb 2026, at 23:52, Bernhard Beschow =
-&lt;shentey@gmail.com&gt; wrote:</div><br =
-class=3D"Apple-interchange-newline"><div><span style=3D"caret-color: =
-rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
-normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
-normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
-none; white-space: normal; widows: 2; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">I really like this series because it =
-replaces proprietary code with already existing open-source one. So I =
-gave it a spin. Unfortunately I have to report that I noticed some =
-problematic performance regressions when booting x86_64 Linux with Grub: =
-Before this series it takes ~20 seconds until the first Linux output is =
-visible, and with this series applied it takes a bit more than 2 =
-minutes, i.e. about 6 times as slow. Also, when using a GUI, mouse =
-button presses easily take a second until reaction which is rather =
-unusable. So I think this series needs more work and I'm happy to help =
-with testing.</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration-line: none; text-decoration-thickness: auto; =
-text-decoration-style: =
-solid;"></div></blockquote></div><br><div>Hello,</div><div><br></div><div>=
-Should be a bit faster now :-) (just sent over the =
-v2)</div><div><br></div><div>Turns out that MMU lookups through the =
-Hyper-V API were slower than I anticipated,</div><div>so moved the HVF =
-x86 MMU translation bits over to common code and switched to =
-using</div><div>those.</div><div><br></div><div>Thank =
-you,</div><div>-Mohamed</div></body></html>=
-
---Apple-Mail=_755AE607-6B94-4988-AB9B-5209C4E3B2AA--
 

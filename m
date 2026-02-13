@@ -4,98 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E661EEA86B
-	for <qemu-arm@archiver.kernel.org>; Thu, 12 Feb 2026 22:52:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FE33EF48C6
+	for <qemu-arm@archiver.kernel.org>; Fri, 13 Feb 2026 03:51:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vqfY2-0003Zs-Qe; Thu, 12 Feb 2026 17:52:34 -0500
+	id 1vqkCr-0004VD-RE; Thu, 12 Feb 2026 22:51:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vqfY1-0003ZR-Ox
- for qemu-arm@nongnu.org; Thu, 12 Feb 2026 17:52:33 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vqfY0-0008EL-7V
- for qemu-arm@nongnu.org; Thu, 12 Feb 2026 17:52:33 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-4836f363ad2so4264545e9.1
- for <qemu-arm@nongnu.org>; Thu, 12 Feb 2026 14:52:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1770936750; x=1771541550; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=DbXcYxrj3BrGFXbpy+bSldzKZuSVVSUmgcL5W0fpdzw=;
- b=HI/HMAf/HxLBMpeKUiOp7dmmOrwTqcVRzDg353ZxcmlcEkZHbLYCLqpVG2jS+tsLeU
- +ooSzzeZatchP4CM3rDZQC8FUZAwFfX2hjxeHyfInH9SsX5Hk9JV0cIifBBMryLr/Asw
- f1qGhKO6t2UmOF0PDemM9gLwqubmuRZO196eY03Hc9Klb47imLDOiCvualpILL3NKk/c
- M7fwduGI1J6KK2bh7uxGHygT4BsLuhZUBtmdCr5egM5PB86v05h3i90qO9lMRwg6ABiR
- PIbCmWXwjXHr9OrK5JHKVx0WML0AqNyJ0Y6lziVSmLoNFloaBIBbcaEsglg/nUyDvTK/
- Fddg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770936750; x=1771541550;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=DbXcYxrj3BrGFXbpy+bSldzKZuSVVSUmgcL5W0fpdzw=;
- b=ClABorak/9rdpsi6ZTDqy+4WUBtXano10I0o8WZLhkRtX5BMCdBHK2Pgq0kWiZApfZ
- uiLY2udg0T1G6B03ZkFtBtCF47aeJ3h0nZKlLnhuVNROHpU4Q132u9enJvc8W6BFaHfj
- 3uUF2wZts1bafzoYq6ymNhvYnsN6pvwT4UsbzYqZhq4OzbsYQY9x3W4yPX20Y/LH9MvH
- B6J8L7AT0HTdAe7UbZ/um9dprSC07KOf+A6LctobYua70wKxQlKMuA+ZXcLOsizjuOU/
- r0VHDUURYlEAeWG7f1IwQqt9Lu2pSIxx6nEpvaRtEi4uGom5BmCZf7bhkgJUPnqplEqr
- R+BA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWwkGBzHXVeTSeLAF+Wv0yrqA2IVwsSYnBOr9KPoajUwvKRm5KJtjCTUrT3pEADBi+kjBBghyuTmg==@nongnu.org
-X-Gm-Message-State: AOJu0Yzl5+ydqeDm9Qfcc+BJEHwgtKdLp8EGyXM45RJbuhV4XHUcONgl
- Ur9/4CseKrUg8TZSsJciUf3nIgAbkJ8SKCaBHhu/awUMEUKY8vVLrAjV
-X-Gm-Gg: AZuq6aLqx4Ms3m3HfHr/IuqsOIlTDU0oTF5Q5dTd69WUbcw03V42f6uk4ghera22HnF
- v+Nmr9+KtYSWcmIxr4H/dyAm43bJLkff/cYjw5PsHNHpgHzEcFjl/JwKBkiJeO3Qnh7vCPSpsBP
- 4GksulVQtcDdp0r61LDjeclJLNFkIEgU6h+8UQ/tSLvdlg1+dfCE4wNKYmcf6dswUEXJ7e0cGLr
- 89vlgackNJCcr1HccdEeR+NVFCjeDj5UQBJyuNE8cBnm2kf3SXGjgQMuu+EgzwS3CS2XzK5qVWV
- I5e9EW91p4mrx860zCjzSFqSGDPQe/2+wlkr+hhIhlByjh3S8JOhD+dJckF5Vku/4rQilFaJZqS
- fjCRoIz4UAfvfAsz5jdj5nwKctO22zxRHDocLeK01OIfoTny2YtMkMpsOEoG2NAHke0iM8rVuzv
- CxBf1FCZl2Zh5Z7LceBnXOJ0xwka4WVqzEfctPy/HSBU8/Jmr06y57QA+yaKDNDp8Nhc099A8ju
- 2MRcr/tQA+fKYywp8SbrYSTJoDAcZGMQvof+evm36ndrEY=
-X-Received: by 2002:a05:600c:8219:b0:480:4b59:932e with SMTP id
- 5b1f17b1804b1-48370e235a0mr10827165e9.11.1770936749710; 
- Thu, 12 Feb 2026 14:52:29 -0800 (PST)
-Received: from ehlo.thunderbird.net
- (dynamic-2a02-3100-1982-5d00-f009-a6c9-39e7-d8fe.310.pool.telefonica.de.
- [2a02:3100:1982:5d00:f009:a6c9:39e7:d8fe])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4834d835f6bsm200561535e9.14.2026.02.12.14.52.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 12 Feb 2026 14:52:29 -0800 (PST)
-Date: Thu, 12 Feb 2026 22:52:26 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org, Mohamed Mediouni <mohamed@unpredictable.fr>
-CC: Phil Dennis-Jordan <phil@philjordan.eu>, Wei Liu <wei.liu@kernel.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Pedro Barbuda <pbarbuda@microsoft.com>, 
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vqkCq-0004Up-43
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 22:51:00 -0500
+Received: from p-east2-cluster2-host11-snip4-10.eps.apple.com ([57.103.78.93]
+ helo=outbound.st.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1vqkCn-0006NC-F4
+ for qemu-arm@nongnu.org; Thu, 12 Feb 2026 22:50:59 -0500
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-1a-60-percent-11 (Postfix) with ESMTPS id
+ 2170E1800FA6; Fri, 13 Feb 2026 03:50:52 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1770954656; x=1773546656;
+ bh=gkIHwLiicPJir/SN3RshaA+EdhlolV51yys+U0JCK6Q=;
+ h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
+ b=Dr79Dk+OgPP6nsT6AWgiF5dBrjNE4/66uHFP//r+nLxoQjkoh7Yis8K5z7/uGJer5BPJeEAFilKuaxHMyaKP1ocPfHTpwne1DN5sAEV9HadOd5408vTY4pLVkotHTYignduapz8tAsRttIlAV2bAlKPh7KIXyH6oUGpQive4rcyn110v5hL5sULoGkza7k9V18es8gOjYZFxPFQtkJmkJbEOhXvl89B9MF2rBiBTwL9rdtijr5V/sQeBzU7Uz1aVsmZJMJWQW6UzdApcHAsUfajnq+Qc66+Y/eCtC1vsU31it6Iu+I+s1TPhJsD4mUcyG39UPWmefMzkSythEorMJg==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.42.251.67])
+ by p00-icloudmta-asmtp-us-east-1a-60-percent-11 (Postfix) with ESMTPSA id
+ 846041800F9F; Fri, 13 Feb 2026 03:50:50 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+Message-Id: <1CECBF2E-B19C-41CB-9F6A-44AC45D969D2@unpredictable.fr>
+Content-Type: multipart/alternative;
+ boundary="Apple-Mail=_755AE607-6B94-4988-AB9B-5209C4E3B2AA"
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
+Subject: Re: [PATCH 0/7] whpx: x86 updates (2026-02)
+Date: Fri, 13 Feb 2026 04:50:38 +0100
+In-Reply-To: <90285696-0769-4934-9861-886179CC74D6@gmail.com>
+Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
+ Wei Liu <wei.liu@kernel.org>, Roman Bolshakov <rbolshakov@ddn.com>,
+ Pedro Barbuda <pbarbuda@microsoft.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  Cameron Esfahani <dirty@apple.com>, Zhao Liu <zhao1.liu@intel.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
- Magnus Kulke <magnus.kulke@linux.microsoft.com>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?utf-8?B?IkRhbmllbCBQLiBCZXJyYW5nw6ki?= <berrange@redhat.com>,
+ Magnus Kulke <magnuskulke@linux.microsoft.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH 0/7] whpx: x86 updates (2026-02)
-In-Reply-To: <20260211055356.44664-1-mohamed@unpredictable.fr>
+To: Bernhard Beschow <shentey@gmail.com>
 References: <20260211055356.44664-1-mohamed@unpredictable.fr>
-Message-ID: <90285696-0769-4934-9861-886179CC74D6@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <90285696-0769-4934-9861-886179CC74D6@gmail.com>
+X-Mailer: Apple Mail (2.3864.400.21)
+X-Proofpoint-GUID: byszzThlqkprvpSMsYygrVkVigSktedX
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjEzMDAyNiBTYWx0ZWRfX9ld7cYcdYtWr
+ xA1XBeAtGHBhU15lkRnLya21g0+Oky+cezXpYT6APwiwYktj6gJZpLhNgCRgzV7EzPFYOfgvVZD
+ 0Fu25/Rg60nEaZZTNOBevUHTS0k8ZW0DwHyoG/UId709z6a3GjX5Lrg4NI/kNaoQpzl7yZhRWXi
+ IZx+9IApOusWJCzio2tW44aCUBg9cbyesYfO7y1hFolMWMGIipdHDVrfqJJo9IYZqBp7b67iZmZ
+ LkcqgJcvdkkl+CHhgUdNts5mcbnDJP4e+q+Ym+yk4upZsoKf2nfuuKkTxcnxjuQnLAxqC6oSNhJ
+ vCKlEqXI2qdW6TrR7csv8e/qqyk79oWOTgJ59OiMTaQntqu3J9Hj/gXbET1diM=
+X-Proofpoint-ORIG-GUID: byszzThlqkprvpSMsYygrVkVigSktedX
+X-Authority-Info-Out: v=2.4 cv=d/T4CBjE c=1 sm=1 tr=0 ts=698e9f9e
+ cx=c_apl:c_apl_out:c_pps a=YrL12D//S6tul8v/L+6tKg==:117
+ a=YrL12D//S6tul8v/L+6tKg==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=pGLkceISAAAA:8
+ a=7KrFPpZLaHbfpcboZ30A:9 a=CjuIK1q_8ugA:10 a=4K97RNY9uchIZwsLnTIA:9
+ a=PIhe3K4j1ORAfCcv:21 a=_W_S_7VecoQA:10
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-02-12_05,2026-02-12_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ mlxscore=0 spamscore=0 lowpriorityscore=0
+ clxscore=1030 mlxlogscore=924
+ adultscore=0 bulkscore=0 malwarescore=0 phishscore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+ definitions=main-2602130026
+X-JNJ: AAAAAAABzISFhyNp0CGvEXBjcXNAcjHAC+o9VUJGE7iX+0kojXOk6w0EEsz9pf8s8Hap3THaR/ULrNRgnkawh3o0IUINQShHQNogTHUtUxyWw/IbRsXSa0lxVASApmnlDMt4zuY5+oJyavdj50pk7JA+03U3KsaugWKxPMJhNz8h9KPyP5oLT6+ae1pjY3qcp3FRbS4NxMqh3cVsk11Rx2c0pArp5+U/gmeHSE3TahHaw8wowwfnL9qf2RsHZSmhxjB8VLJ1H0iijhTnmJtF4mjbb44wXnfiyNPNzzKleJ9zcVEazOTGxakasQlV7a4KvltdAoKZCj010iaKY2YzUf/4QVdRukh4HVyfcuYKqqWBySuo7nCJuOPpLSAnrTKH0QLkwNHiVGlMznRlZnGPruqvKaY6m1cMDGhPY5Jw9uuoxzFsNTrYiUtiryI9pczM4MM8b547aJ1LuhkbEEHYLTCrRnKoNC7jrIMISpoUVmE56V54Tw0vG/xAVwyrzaUnXRXdZ0fYWUWxAw0SQRU6p/dieVkw3QlCtrLrXBS0jFKcXMXc1805rfvLfxUZlPv+LuOafPApe85lxTbqIomGxLpi4CRhP2gmqUFTAt+kbS3RtXKXCtspJNQumqetjVbXHB5KpYVZVnsnbO9drIdql7lYj4kA+Vh9U6+xDebUnN9occr7L7FE33qXldwAjAQ+mE3qPRkqRLMczW4jwaVCOOoUVEzkEjZtpC7lt/MGNw+ipljNRsIUNXOYicwBDVVzHwvw4Fj80QLz2TdI75Z9PVAau4yZJqp12ifcYMosr13sqrQD7mI9QHg4AZaqN59gDog9fZcJbvvi3A==
+Received-SPF: pass client-ip=57.103.78.93;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,53 +105,79 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
+--Apple-Mail=_755AE607-6B94-4988-AB9B-5209C4E3B2AA
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
 
-Am 11=2E Februar 2026 05:53:45 UTC schrieb Mohamed Mediouni <mohamed@unpre=
-dictable=2Efr>:
->x86_64 WHPX updates:
->
->- fixing debug support, which was broken since around: "gdbstub: move gue=
-st debug support check to ops"
->a48e7d9e52f8fe8b47f4c74f3e99d9d677b87fe5
->- switch over from winhvemulation to common x86 VM exit emulation code
->- remove some log lines
 
-Hi Mohamed,
 
-I really like this series because it replaces proprietary code with alread=
-y existing open-source one=2E So I gave it a spin=2E Unfortunately I have t=
-o report that I noticed some problematic performance regressions when booti=
-ng x86_64 Linux with Grub: Before this series it takes ~20 seconds until th=
-e first Linux output is visible, and with this series applied it takes a bi=
-t more than 2 minutes, i=2Ee=2E about 6 times as slow=2E Also, when using a=
- GUI, mouse button presses easily take a second until reaction which is rat=
-her unusable=2E So I think this series needs more work and I'm happy to hel=
-p with testing=2E
+> On 12. Feb 2026, at 23:52, Bernhard Beschow <shentey@gmail.com> wrote:
+>=20
+> I really like this series because it replaces proprietary code with =
+already existing open-source one. So I gave it a spin. Unfortunately I =
+have to report that I noticed some problematic performance regressions =
+when booting x86_64 Linux with Grub: Before this series it takes ~20 =
+seconds until the first Linux output is visible, and with this series =
+applied it takes a bit more than 2 minutes, i.e. about 6 times as slow. =
+Also, when using a GUI, mouse button presses easily take a second until =
+reaction which is rather unusable. So I think this series needs more =
+work and I'm happy to help with testing.
 
-Best regards,
-Bernhard
+Hello,
 
->
->Mohamed Mediouni (7):
->  whpx: re-enable guest debug support on x86
->  whpx: preparatory changes before switching over from winhvemulation
->  whpx: refactor whpx_destroy_vcpu to arch-specific function
->  whpx: move whpx_get_reg/whpx_set_reg to generic code
->  whpx: x86: switch over from winhvemulation to target/i386/emulate
->  whpx: remove remaining winhvemulation support code
->  whpx: x86: remove messages
->
-> accel/whpx/whpx-accel-ops=2Ec     |   8 +
-> accel/whpx/whpx-common=2Ec        |  62 ++++---
-> include/system/whpx-all=2Eh       |   5 +
-> include/system/whpx-common=2Eh    |   6 +-
-> include/system/whpx-internal=2Eh  |  16 --
-> meson=2Ebuild                     |   3 +-
-> target/arm/whpx/whpx-all=2Ec      |  33 +---
-> target/i386/cpu=2Eh               |   2 +-
-> target/i386/emulate/meson=2Ebuild |   1 +
-> target/i386/mshv/meson=2Ebuild    |   4 +
-> target/i386/whpx/whpx-all=2Ec     | 308 ++++++++++++++++++++------------
-> 11 files changed, 252 insertions(+), 196 deletions(-)
->
+Should be a bit faster now :-) (just sent over the v2)
+
+Turns out that MMU lookups through the Hyper-V API were slower than I =
+anticipated,
+so moved the HVF x86 MMU translation bits over to common code and =
+switched to using
+those.
+
+Thank you,
+-Mohamed=
+
+--Apple-Mail=_755AE607-6B94-4988-AB9B-5209C4E3B2AA
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=us-ascii
+
+<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
+content=3D"text/html; charset=3Dus-ascii"></head><body =
+style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
+line-break: after-white-space;"><br =
+id=3D"lineBreakAtBeginningOfMessage"><div><br><blockquote =
+type=3D"cite"><div>On 12. Feb 2026, at 23:52, Bernhard Beschow =
+&lt;shentey@gmail.com&gt; wrote:</div><br =
+class=3D"Apple-interchange-newline"><div><span style=3D"caret-color: =
+rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
+normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">I really like this series because it =
+replaces proprietary code with already existing open-source one. So I =
+gave it a spin. Unfortunately I have to report that I noticed some =
+problematic performance regressions when booting x86_64 Linux with Grub: =
+Before this series it takes ~20 seconds until the first Linux output is =
+visible, and with this series applied it takes a bit more than 2 =
+minutes, i.e. about 6 times as slow. Also, when using a GUI, mouse =
+button presses easily take a second until reaction which is rather =
+unusable. So I think this series needs more work and I'm happy to help =
+with testing.</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration-line: none; text-decoration-thickness: auto; =
+text-decoration-style: =
+solid;"></div></blockquote></div><br><div>Hello,</div><div><br></div><div>=
+Should be a bit faster now :-) (just sent over the =
+v2)</div><div><br></div><div>Turns out that MMU lookups through the =
+Hyper-V API were slower than I anticipated,</div><div>so moved the HVF =
+x86 MMU translation bits over to common code and switched to =
+using</div><div>those.</div><div><br></div><div>Thank =
+you,</div><div>-Mohamed</div></body></html>=
+
+--Apple-Mail=_755AE607-6B94-4988-AB9B-5209C4E3B2AA--
 

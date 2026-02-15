@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30FBCEF5871
-	for <qemu-arm@archiver.kernel.org>; Sun, 15 Feb 2026 11:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EA98EF5871
+	for <qemu-arm@archiver.kernel.org>; Sun, 15 Feb 2026 11:27:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vraGO-0005Fg-Eg; Sun, 15 Feb 2026 06:26:09 -0500
+	id 1vraGZ-0005Le-LR; Sun, 15 Feb 2026 06:26:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vraGJ-0005EV-S5
- for qemu-arm@nongnu.org; Sun, 15 Feb 2026 06:26:03 -0500
-Received: from p-west2-cluster1-host3-snip4-4.eps.apple.com ([57.103.68.67]
+ id 1vraGV-0005J3-JI
+ for qemu-arm@nongnu.org; Sun, 15 Feb 2026 06:26:15 -0500
+Received: from p-west2-cluster1-host9-snip4-5.eps.apple.com ([57.103.68.108]
  helo=outbound.mr.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vraGC-0007vp-8D
- for qemu-arm@nongnu.org; Sun, 15 Feb 2026 06:26:01 -0500
+ id 1vraGS-0007zz-WA
+ for qemu-arm@nongnu.org; Sun, 15 Feb 2026 06:26:15 -0500
 Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-2a-100-percent-0 (Postfix) with ESMTPS id
- C1DE5180018C; Sun, 15 Feb 2026 11:25:48 +0000 (UTC)
+ 31920180018C; Sun, 15 Feb 2026 11:26:09 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1771154750; x=1773746750;
- bh=lMGtbgGdc7f2D9dja8I8WjH6L0KvmZvLjdtJ68y7sSM=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=grZFuFHm/L6jWzaxiLckhubxFwVyN9Kqv8MZYZhH70heLblfHmftzLV7uW1nOdlBhh1xSMcFrze+HbAe8v1na8vvkD2NSxHIRgkGT9XcPgyiAgX20ulFYwx6vKzMzf66m1huVBHvwxueVB3PshY+6EYhDiKx8iUu5mTFpcAN/I+24TtCCAe8F5qSo0FSvZPvqM0kDkf2fx8QjEIa/PFMvnfJzsrUSdhBybk4nSwPzW6WwNAP0cs/5H6cfLh20kstF8bz+zhX4NFnnUTn7MlKwB7oH1/WU1Avm7TChyJqAENkSFKOmS4N2tPtqIhRJzMS8s09rX/BL2M0kw/vxrn9tA==
+ s=sig1; t=1771154770; x=1773746770;
+ bh=fXwYscBvvtHt1b3c45aaMrtykZ4/ZWPzlwZ5Y4HBqO4=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=PUhI02Xu2UnuMth3Pl1r0LhrD6zXnWNWsGz5RxZ4m9HXA/2FINZFOc0tqK8QOLFU4C/PtQsLMX4U0lTllyvEcOWKIF0ULal9HfJ0khRUjxe78+gVB0GCM4IBbhw0h+vicKhERGzqjJpd3SxbgG5TUHaz6b3YkbszeQM3R5OqQD9MeOO5B5fwJrT/ZThtEs8gETwuOU20ortdKQb+Bi2oTKRIh3TrhYLnhmieSaFPn2K4K1YN1cNZmnPbUIv9OHjMSwUIap1IW3IUl80tdjXnMY9ysUZNJ94xhmrxlxKXTa6Q6t/zHzpEWDQGbcNGYaeG3wvVlgRa7qzX5kl4Q2Np5g==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.152.38])
  by p00-icloudmta-asmtp-us-west-2a-100-percent-0 (Postfix) with ESMTPSA id
- 05DBF18001B2; Sun, 15 Feb 2026 11:25:45 +0000 (UTC)
+ A99951800145; Sun, 15 Feb 2026 11:26:06 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -40,47 +40,46 @@ Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
  Paolo Bonzini <pbonzini@redhat.com>, Cameron Esfahani <dirty@apple.com>,
  Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v10 00/14] HVF: Add support for platform vGIC and nested
- virtualisation
-Date: Sun, 15 Feb 2026 12:25:29 +0100
-Message-ID: <20260215112543.4817-1-mohamed@unpredictable.fr>
+Subject: [PATCH v10 09/14] hvf: arm: allow exposing minimal PMU when running
+ with nested virt on
+Date: Sun, 15 Feb 2026 12:25:38 +0100
+Message-ID: <20260215112543.4817-10-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
+In-Reply-To: <20260215112543.4817-1-mohamed@unpredictable.fr>
+References: <20260215112543.4817-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjE1MDA5MiBTYWx0ZWRfX79WI69dm+TWX
- d4lzYNuR6UXZEnTxa3zBToCA4/uv142BV52MNagI7mYAvhne8g9tQDsFWz3FAbNggDRC5iMtSDZ
- sUmtcFuLWRfURrfwMbag7BjSYwiJMHepkVQM1Pxn3nDASsOYnIdqm3u5XQN0shrrawPxfGlF5L+
- K2S0sqDjpDc65M6wDP4rTjgCRXCvQgMnTyjAxQRaW2yG4hQrtB4vb+qgdHDPwa1zHZs7TASGdjA
- XizzSMcremhfg98gU88rTd29W1J/L3haumBKteFcgMluuQINpGOw5j00OoNMV2f84OiroIq9iWy
- iJzmTf0E3+5lAKaMumQklWPXlKHoBYPsaiq4dRvTig/95v1WtqBdKANOqeMO58=
-X-Proofpoint-GUID: KzXMeYa_qZ6bf7K2EJ70bJhLT23M_qKm
-X-Proofpoint-ORIG-GUID: KzXMeYa_qZ6bf7K2EJ70bJhLT23M_qKm
-X-Authority-Info-Out: v=2.4 cv=EPILElZC c=1 sm=1 tr=0 ts=6991ad3d
+X-Proofpoint-GUID: HRsGl5R5cTCJ2cFH03flXbArNxYXOSme
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjE1MDA5MiBTYWx0ZWRfXzvvrL8/0/AX4
+ mh/knK7g1CEEMH6DGIW6Q5G4NapcEaHfJySJRt+Sb7VIwrejhyTpkJieZbTrNwEmUDFlJ4upPru
+ qFWZTGCr4Zfm5I372VWA7hx3KQZzMB+oo9aESA1PeVMSmq4D18HuTsvvhChmp8rgiKJvDBCDdk3
+ mEYo92J54d4phnBAeZfY2v5CToQBARgQI3s4yshc0OAWBXbwSp/3k46vFWE35h6a9eNydv5y1LY
+ GkkIQmLdIp4k/LrjhkgrdDg4noX2dnAZi4mve4e7kDnDiJ9GriWWBYtrTYXE2cg3QmVxBtLIRSr
+ 3AR+u9GZ/x4+6iHWeU6wTJIvzKfBDd9Z4AwCwo1tcT8Nh0jBS+KE5RVkH0iYbo=
+X-Proofpoint-ORIG-GUID: HRsGl5R5cTCJ2cFH03flXbArNxYXOSme
+X-Authority-Info-Out: v=2.4 cv=SPxPlevH c=1 sm=1 tr=0 ts=6991ad52
  cx=c_apl:c_apl_out:c_pps a=9OgfyREA4BUYbbCgc0Y0oA==:117
- a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10
- a=VkNPw1HP01LnGYTKEx00:22 a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22
- a=NEAV23lmAAAA:8 a=WuN9omT6I3Se9lZnsf4A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=9OgfyREA4BUYbbCgc0Y0oA==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=z0ix_qRbhGH81XwssrYA:9
+ a=NqO74GWdXPXpGKcKHaDJD/ajO6k=:19
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-15_04,2026-02-13_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- clxscore=1030 adultscore=0 malwarescore=0
- phishscore=0 spamscore=0
- lowpriorityscore=0 bulkscore=0 mlxscore=0 suspectscore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ suspectscore=0 bulkscore=0 malwarescore=0 mlxlogscore=638 spamscore=0
+ lowpriorityscore=0 adultscore=0 mlxscore=0 clxscore=1030 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2602150092
-X-JNJ: AAAAAAABPBzWhnS8+3bwBcBEpWwS0GWjjPsZwHY+BfUXl80A6gU9rjgSmVunLRPT9s4+JR81TzcuDRGFX4etI70tkpaVjCWDxUQXmmn6UXr68MKgyXUpUC/BOP6QWbvUSgaawbWIH3cEJA6CrNbqS4uQvOMWMQ94RUUIxoP9d7CMsEMqkDBZz+9HJ1AnummG+JshBRf+ZpDjFpmif+p+Yg7Mfky0cANjzSZOTGIl7LA1H4g8kzYzW2qdTuhbxrt0cDJg9b0SqA9QHa0exCRjwF8EyjwhY0vasv3J1Gz8O6Qmhx1Z/9FFvCH5lVVThKlUGHJSB9pDRZpBJkSmzALb3y1ld+ucxx7p6nScxSQ1tpxERx7biYREXtbBmgTq+VHtaFvUpq7uKGxpd8GM5cXRjT8OrPaDTLofaqdEAYSNMFjIM7ruQjrIFVEBT3bUCr9ueJBeI4tjuRrOZ3SW6ENtcwr3brPEOmO9Br9GfCYpstlOO4qV2wasn71CaASYrpjJ06LrcwSNCFgIFX4fIp1Ps7b2/gytN3RHii4KSTsS04zmpH4q4Tkc9zBQDqfA7znJExfY3Sl3Gff/VaIvkjjs0AVu9BwzxjCKAYluT7nf9lUKwT4/r45PEt1H4VBNIxxskFWr3AaUsuJY9T7ysLoX83aY6UZKCEsSygIA7jP8eg1JvDsP6rqgnB9GbxC9eBBJnkWR8J1jGIc0J/mo1ckFKqkkjcvgJfIPw2OaMnucqF59MGKKWvDGvmnshT6GpQch
-Received-SPF: pass client-ip=57.103.68.67;
+X-JNJ: AAAAAAABd81Xva63T/UaMXidulM1fAIhy/7xbspg1v5xStqTld5CKkZYWrmBglY1YF4w9+YsxMvLTtQ10A0aXluu4N7QyH4enA6/0V0RhrJKkNg8revw6meYscKr5AlR0EM8k9239LZTXZ8HSAfAVWHNBMAjTs7JWXkQEQk69tYtPIdT2E5bmYP5gOM1Zl19GMPsk6jECXrITbWrQbWwjnNAcV7cu4RwxMBTvyPGqE7QvA1M8peb3hrJiTT6Ve28+39HnUn0gwWdGKJIkGOMiiZslRR5xgB4+/WfEMaxD1r+KLc8+Cx/O4eIKkVl/CbKFOdTyKTs2iy7G2aEqumEbWSaiFJV5TQKCEgj5OGDjfGUN9N8AjxPHS2yNyHKy4+50eU5aKm3UmjjP7rmDUuPPSWydo0FQRvjCcZ/4W7EIIHiE5Q0FZAzPJ4iqtLBL4+dv0M3PMAg5sqrfFZFCGjR3peYddzqDkHpqUb+dLIidkdjGDNnkGhYNxcc4HphxSsONKzhMMVDhB2dpHKkcDdSg/58rR0o7mY231CP7FoX3G3bEZNUCdNi+ovPCodgpz/vVo55UGRFkZObG5Jq6smw3YElDBX2JGrnfG4QyvL/fSpfMlAQE47lG2zC+QuxFBzlvt9/DRg2qieAlJuXZoDMZASRQo9ISOKOa6p73phzAh+rgjLRDllEDQ54IjXnUDXQ/i0jgb58XQiUnvs/J9F9DW2A7nEQ
+Received-SPF: pass client-ip=57.103.68.108;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,117 +95,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Link to branch: https://github.com/mediouni-m/qemu hvf-irqchip-and-nested
-(tag for this submission: hvf-irqchip-and-nested-v10)
+When running with nested virt on, a minimum PMU is exposed by Hypervisor.framework
+if a valid PMUVer register value is set. That PMU isn't exposed otherwise.
 
-This series adds supports for nested virtualisation when using HVF on arm64 Macs.
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ target/arm/hvf/hvf.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-It has two parts:
-- Apple vGICv3 support and necessary infrastructure changes for it
-- Nested virtualisation support. Note that the nested virtualisation implementation
-shipping as of macOS 26.3 is nVHE only (but it _does_ use VNCR as shipped).
-
-It's rebased on top of the WHPX arm64 series.
-
-Known issues:
-- This series doesn't contain EL2 physical timer emulation, which is
-needed if not leveraging the Apple vGIC.
-
-- when nested virt is enabled, no UI response within EDK2
-and a permanent wait. Workaround: -boot menu=on,splash-time=0.
-
-Apple Feedback Assistant item: FB21649319
-
-When the VM is running at EL2 at the very moment the virtual timer fires:
-HV_EXIT_REASON_VTIMER_ACTIVATED doesn’t fire (when not using the provided vGIC)
-- using a GICv2 doesn’t require having transition notifiers which Hypervisor.framework doesn’t have…)
-
-and when using the provided vGIC, the interrupt never gets delivered back to the guest
-
-Linux as a guest OS is fine with this… but the reference ArmVirtQemu edk2 build always uses the virtual timer even when running EFI at EL2, so it gets broken unless this patch is applied to edk2:
-
-diff of ArmVirtPkg/ArmVirt.dsc.inc:
-
--  ArmGenericTimerCounterLib|ArmPkg/Library/ArmGenericTimerVirtCounterLib/ArmGenericTimerVirtCounterLib.inf
-+  ArmGenericTimerCounterLib|ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.inf^M
-
-Changelog:
-
-v1->v2:
-Oops. I did a mistake when preparing my patches.
-
-- Add hvf_arm_el2_enable(_) call to virt_set_virt
-- Fix nested virt support check to add HVF
-
-v2->v3:
-- LORC_EL1 patch was merged separately, remove from this series.
-- fix LPIs when kernel-irqchip disabled and using TCG
-- remove spurious if case in vGIC supported version detection (inapplicable now)
-- Add hvf_enabled() check in combination with hvf kernel-irqchip checks
-- cleanly fail on attempt to use the platform vGIC together with ITS
-
-v3->v4:
-- GIC state save improvements, including saving the opaque Apple-specific state
-- Saving HVF system register state when using the vGIC and/or EL2
-
-v5:
-- oops, fixed up save/restore to be functional
-- misc changes otherwise
-
-v6:
-- Addressing review comments
-
-v7:
-- Address review comments, adapt around Qemu changes and bugfixes.
-
-v8:
-- Rebase, and misc fixes
-
-v9:
-- Misc fixes from WHPX review comments
-- Split enablement commit for EL2 into its own separate commit
-
-v10:
-
-- A bit of changes across the board
-- move HVF irqchip save/restore into irqchip code
-- block nested virt support when kernel-irqchip=off with a GICv2 as
-we don't implement an emulated physical timer yet.
-
-Mohamed Mediouni (14):
-  Revert "target/arm/hvf: Sync CNTV_CTL_EL0 & CNTV_CVAL_EL0"
-  hw/intc: Add hvf vGIC interrupt controller support
-  hw/intc: arm_gicv3_hvf: save/restore Apple GIC state
-  accel, hw/arm, include/system/hvf: infrastructure changes for HVF vGIC
-  target/arm: hvf: instantiate GIC early
-  hw/arm, target/arm: nested virtualisation on HVF
-  hvf: only call hvf_sync_vtimer() when running without the platform
-    vGIC
-  hvf: gate ARM_FEATURE_PMU register emulation behind not being at EL2
-  hvf: arm: allow exposing minimal PMU when running with nested virt on
-  target/arm: hvf: add asserts for code paths not leveraged when using
-    the vGIC
-  hvf: sync registers used at EL2
-  target/arm: hvf: pass through CNTHCTL_EL2 and MDCCINT_EL1
-  hvf: enable nested virtualisation support
-  hvf: arm: warn instead of assert on a write_list_to_cpustate mismatch
-
- accel/hvf/hvf-all.c                |  51 ++
- accel/stubs/hvf-stub.c             |   2 +
- hw/arm/virt.c                      |  37 +-
- hw/intc/arm_gicv3_common.c         |   4 +
- hw/intc/arm_gicv3_hvf.c            | 818 +++++++++++++++++++++++++++++
- hw/intc/arm_gicv3_hvf_stub.c       |  25 +
- hw/intc/meson.build                |   2 +
- include/hw/intc/arm_gicv3_common.h |   4 +
- include/system/hvf.h               |   8 +
- system/vl.c                        |   2 +
- target/arm/hvf/hvf.c               | 154 ++++--
- target/arm/hvf/sysreg.c.inc        |  35 ++
- 12 files changed, 1103 insertions(+), 39 deletions(-)
- create mode 100644 hw/intc/arm_gicv3_hvf.c
- create mode 100644 hw/intc/arm_gicv3_hvf_stub.c
-
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index be1ff93e0e..0f45e22221 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -879,6 +879,10 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     SET_IDREG(&host_isar, ID_AA64PFR1,
+               GET_IDREG(&host_isar, ID_AA64PFR1) & ~R_ID_AA64PFR1_SME_MASK);
+ 
++    if (hvf_nested_virt_enabled()) {
++        FIELD_DP64_IDREG(&host_isar, ID_AA64DFR0, PMUVER, 0x1);
++    }
++
+     ahcf->isar = host_isar;
+ 
+     /*
 -- 
 2.50.1 (Apple Git-155)
 

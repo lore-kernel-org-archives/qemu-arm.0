@@ -4,103 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D1C0E81A3A
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 15:53:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B142FE81A3C
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 16:04:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vs0uE-00073Z-5l; Mon, 16 Feb 2026 10:53:02 -0500
+	id 1vs14q-00028a-RO; Mon, 16 Feb 2026 11:04:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vs0uC-000737-Pz
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 10:53:00 -0500
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+ id 1vs14l-00027W-FL
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 11:03:56 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vs0u9-0002YT-MV
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 10:53:00 -0500
-Received: by mail-yw1-x1135.google.com with SMTP id
- 00721157ae682-797d857e3f4so5877347b3.3
- for <qemu-arm@nongnu.org>; Mon, 16 Feb 2026 07:52:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1771257175; cv=none;
- d=google.com; s=arc-20240605;
- b=UlRRwFzCCib92352Rz+JE5i0Ul5FwmQfVorMg6h3WGRzawUTDPF/NPdLwWOt6tkxLY
- XIq+vrjnKDSA5ws8ppORu3A93hDPWl5yBLVG/qNxhNH3L0ZVf6maGgsfU/eqXUlr+FK1
- Gp/zOjqURHFFPLWA5wVS8Pkgc7/o/BRoKm+3rN/OUQCYu45qlzNx22/nCVakng+cFGjZ
- I/OWByfrhM3m4ksAiRaiOutYQV5XEm3tjC1Sp4NP2nlJ3Z8r+eGW1s3AZviw6Wecjhvs
- a4zWZ13Lc4alV+R4EyVRU98SBrz6cfuVrAcGOWMKExZfZegENGwHqhuI/jgyijM10YpJ
- OrRQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=dP7OJCe4IFWPzF0ucWa9rG4RGTcEJ98iWAzWk9PebNw=;
- fh=PykF4EyEgubqfAmOc4/WtooI/ur5Llx1JuvMjC9c6nc=;
- b=AXvZybHIKU0wdd8/+jKU334YYzohmO4/Iw4CwHk990GAe7+4Hqnu21LtoD82BVI2sV
- JnwSxXgwGmA6/QBSM7r1f5Qxjqlep0gJzoV/nxh0/LZTiJCD+/FEWWyJWAserM5JBCka
- R+UHjMEFlayKL6EaDUqk65BIH171M3NnzCy6jBEx554E+Y1wcxEr7LRSc4QQnLDdLfMv
- 5EfhuyHI93ilp53aneoXZeGjmnXRlMvcrRVMAarmiyLQOPXj2AqT9tZ80iPC/6ZuqzyD
- AvYCCMETdEA04Z7XHh9hQ4TS0Lnzh1Ab2fIb0JQKTD229p09Z00X3nxVQETwJKLJHeVv
- Q/XA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ id 1vs14j-0005n2-SM
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 11:03:55 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-48374014a77so27875215e9.3
+ for <qemu-arm@nongnu.org>; Mon, 16 Feb 2026 08:03:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771257175; x=1771861975; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=dP7OJCe4IFWPzF0ucWa9rG4RGTcEJ98iWAzWk9PebNw=;
- b=bWLFI05SO3r4bFhIvkP8h2prIy+BCbOGf9Aq7uWqYnKR2YiSfNMHkida9w3iEMykfr
- i5/g7wkTkxmWwKOXnoBtM45xi9pvl834Sq8goCXdQRk9fa2xuyYVA7voj6Ej1dBjZpp0
- ft10i1beZM2y2GufPjy7zM3hg0OwVwVMfv6UT4PuZ/E5IaYNfDrdozSqXqNuQcUHA76e
- Ed5nbvpILi1sKGRUZhVm24+nPJBBseqNfvRUBzuY/esba4E+wgKt1L0fPXEMlyp+3JH6
- nXheY/jrt4VEmxopapfqpg9Y1eM5vkux56PnlbLH7a623cfPdP9726qYFUoOIDuWJu2U
- btOg==
+ d=linaro.org; s=google; t=1771257831; x=1771862631; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=dJImaBRf1UQRC+k31lYt80mk2JUrwPwtKKmyLVRtziA=;
+ b=bzBU40EZZZz7YLGYGl2psVSkoDoyfgw8qG0t9eBSEkHu/H2QLzU6jA/K2hw03DgY5n
+ BT6CitBO2MrpALiDqWEhO78oYYCf72MYnaMsUMVeXtCsACJQqYx0Sn9jkeBmekA4cR3a
+ zoUnrulQ0eIRUpDC7bKrg5H28oSDQsDCA5xLnHHzffntXp5T7DtS7dUF/Q4vCN2Kssmn
+ Y/uD4awQ8/SI/VG/oWgcAWM1akw8GVLgZ6L9KSayRCpFFWrUmysohsziJxuN4XkLoLZU
+ Rv3kWRo4+auReR1Q8BJfY4aogSiiccGxpNPuKvBj8mAgB+dutM17qiYVeqTpSuCG4wjV
+ Jr2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771257175; x=1771861975;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1771257831; x=1771862631;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=dP7OJCe4IFWPzF0ucWa9rG4RGTcEJ98iWAzWk9PebNw=;
- b=lmVzq2gi9rwgP1sQvVNxrcoTDgyLvosjFjfR6KyStRA0GbR9BpvTL44rQK86uv+sEE
- sUXjYol7QkCPgv0hnmig1UVcl3UoowL2eoSomoJFyZr8a7gYBE/Lesi2oWr5KhgSRQh1
- GIuy15uJFug2bX0UUivqnKqeBdk63nm0NrbXipYQ8e3mML53/CKwm7ihGgtXxs3ObwPw
- wk3kiyXZnnDIGNNyUrrCbYuXYrgjGVgXkn/HqNTqOZUl8DjX2O6XEj2JJnD37kDxY4+d
- 6UGC/2dkXYsRpEOvzjro30ReMBxNy6IJKncjkGs2PFGrez5wRM7gQeBrpicXhEVXkkCQ
- B9Ng==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXTq+UUrcnMo1HgFBcUJpkOhd2SP/y/9k414oV2c7Ig1nQgxYV+XaAGIwR7a4Z8cYQkCEIdMuhFhQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz7q7dVID0YPHTM5VEaaTAsyB5ZFBY3B4rPWKx/qO/awgwDU/m6
- DKZYmbI4y/seqz0s45eApY1brgDdLK97BHlz5z0yLA0vKfIpyxmsNfMW6NB0M36DHMDreI/6NIk
- 5oD81keSca7iBHZEMMJtNqpXCrl3rJ4bTJwr6jitDJMv8HVwLtJk32hU=
-X-Gm-Gg: AZuq6aIlQEyD+r4cPw3CgvXlWgBt41ExP8jDoJwtH6rBhJMZmNKHjraJkluC/rAKKiI
- +sluJEq0JF/g335ubTz9m9j9bBhCJbQNSzKUnMPL6b7fmdHo5PBQmTQ/IwY6ilhsDYGXbNlbRsJ
- IPEUbWhHbQvuJ7/e+JSaGaknpHEwy6uIu1ONCnxjcAMX8CQqa+3aw8Kyk5f1m35ECoVUzC1N7Gb
- dmU0aF4J5Rti+iE3RTCNuE2xdheR35fF0Pv0IqCa0jAa/mXUJH9HbstNHnwl3yjy2dIoXdcp9MI
- fmnX1V8UKHdYc+HdN8EwsGPSZr3u+GgTlievWV7tKjTDtcevzAt2wZf5skCrjJB5F+9+sw+8qSf
- S3g==
-X-Received: by 2002:a05:690e:13c4:b0:64a:ee12:e7c3 with SMTP id
- 956f58d0204a3-64c21b27b78mr6172226d50.49.1771257175307; Mon, 16 Feb 2026
- 07:52:55 -0800 (PST)
-MIME-Version: 1.0
-References: <20260210201540.1405424-1-pierrick.bouvier@linaro.org>
- <93f8f250-7899-4528-b277-1ddd469c192c@linaro.org>
- <CAFEAcA9YUOxko51ziY3yAOaDfTCEAwqmXnifF=q_mkyotFHTcg@mail.gmail.com>
-In-Reply-To: <CAFEAcA9YUOxko51ziY3yAOaDfTCEAwqmXnifF=q_mkyotFHTcg@mail.gmail.com>
+ bh=dJImaBRf1UQRC+k31lYt80mk2JUrwPwtKKmyLVRtziA=;
+ b=HOplA5LTc12pkZNUQt6X0hUMa4a4poEXbmygGfr9MWJH4UvQx6yoy9Ok/RJ9OaW9Xe
+ Sh+6aPfVLHCJ0qcD2OY+tbNdRDwbBXmD2sGMpbDi0E5cprZl9VrLdLaPF8JXmzcPi2J/
+ srosUDAFGPliqm1QhtwJSnxNiSW36/Wnou1RyhD2JZ/Ysfwq5QK1byV0t/8vmbX3DFry
+ h7voXnhcAL2/8A97vYxdk31YM+lVD+7xgsAVURK/OgM65iddcIGmEk3xh5kUmokZ7wTa
+ jMmqz0o74FEEcaasxc+K1iaUbNKW0PCtwA1Ft5zc7mV7htVRyhynO8sunsqjjVqay1rp
+ FQaA==
+X-Gm-Message-State: AOJu0YyssLTxlmJiOfT0MZN8r9XzI713SfacEm29W4O7ShJZsoRDDBgD
+ YvwdgLVFoubGmcidDkW9rzYYSCmR3yd1eFlB7WQGedGFK01ctTLAXwIn+Jw3bWghLy0Z0kTT1EF
+ y8JZd
+X-Gm-Gg: AZuq6aK7Lj5uWu2j05Z6fTvQe+jCUM+MYCl2zuIP3hzBPgAioYFVUoWuw9XYv/bEETT
+ 5NKXm+mmENl2ovY48BuS/T6Jw/BDZW5T5EOsVLPrYNpLnZFhpkAlCfvLRP0BAydiNyfXkdtudKP
+ UN1jE6RYNb81PeDDwnDBhb5iVqLt8j0kets5SBGTlGpeWKuBgG3NpxhX2IGKHYSDaHeUliwQQvp
+ NHozktQT4oLuCIhIcG4Ae/R0TSKV8IOadiAvYYJxpRCYHGwunCkxQEOjdkoFPWju11gxF6UxgjA
+ bhUD/u7RFncil4sm+ULcfbAW1RxxLZxN8glIaDb+JNoTO5ll5c0EE6foLK46M2yar7nrcjmJsUB
+ KVbQ4gKS1sQfi9aknBTinmO6OgxZLibYLfQ+HBGfgskYpaUkGAJA6qkO2JLUZXPqD8N4XiFns0b
+ yLNpwx1iB6sq4PCrnXa3cAVTcDX9l35aF1b8f4u+mcsqCyz3VXXBunBgzdwOiNQAIaBjepyuTnQ
+ laJ5Dvn46ECbbgRGP0LnLF4mjrQ2rw=
+X-Received: by 2002:a05:600c:3e87:b0:480:32da:f338 with SMTP id
+ 5b1f17b1804b1-48373a0f961mr165584795e9.14.1771257831360; 
+ Mon, 16 Feb 2026 08:03:51 -0800 (PST)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4835d92267bsm661713185e9.0.2026.02.16.08.03.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Feb 2026 08:03:50 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 16 Feb 2026 15:52:44 +0000
-X-Gm-Features: AZwV_Qhn_PA25doQjTID65lEcz5xT-1XaHevKcqNoTL7fZxazaWzkWciCHn6keY
-Message-ID: <CAFEAcA8XCSjjb2opkf2A5WZwCa5THNswOOUO=fpj7kUJEc79qQ@mail.gmail.com>
-Subject: Re: [PATCH v3 00/12] target/arm: single-binary
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-devel@nongnu.org, anjo@rev.ng, 
- Jim MacArthur <jim.macarthur@linaro.org>, kvm@vger.kernel.org, 
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH 0/2] target/arm: Don't use HELPER_H in non-tcg files
+Date: Mon, 16 Feb 2026 16:03:47 +0000
+Message-ID: <20260216160349.3079657-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,88 +99,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 12 Feb 2026 at 10:59, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Tue, 10 Feb 2026 at 20:19, Pierrick Bouvier
-> <pierrick.bouvier@linaro.org> wrote:
-> >
-> > On 2/10/26 12:15 PM, Pierrick Bouvier wrote:
-> > > This series continues cleaning target/arm, especially tcg folder.
-> > >
-> > > For now, it contains some cleanups in headers, and it splits helpers per
-> > > category, thus removing several usage of TARGET_AARCH64.
-> > > First version was simply splitting 32 vs 64-bit helpers, and Richard asked
-> > > to split per sub category.
-> > >
-> > > v3
-> > > --
-> > >
-> > > - translate.h: missing vaddr replacement
-> > > - move tcg_use_softmmu to tcg/tcg-internal.h to avoid duplicating compilation
-> > >    units between system and user builds.
-> > > - eradicate TARGET_INSN_START_EXTRA_WORDS by calling tcg_gen_insn_start with
-> > >    additional 0 parameters if needed.
-> > >
-> > > v2
-> > > --
-> > >
-> > > - add missing kvm_enabled() in arm-qmp-cmds.c
-> > > - didn't extract arm_wfi for tcg/psci.c. If that's a hard requirement, I can do
-> > >    it in next version.
-> > > - restricted scope of series to helper headers, so we can validate things one
-> > >    step at a time. Series will keep on growing once all patches are reviewed.
-> > > - translate.h: use vaddr where appropriate, as asked by Richard.
->
-> > Patches 1-11 are reviewed and ready to be pulled.
->
-> Looks like patch 12 has also now been reviewed, so I've applied
-> the whole series to target-arm.next.
+This patchset gets rid of a couple of uses of HELPER_H to pull in the
+TCG helper function prototypes in files that aren't in
+target/arm/tcg:
 
-I meant to send this to the list, but accidentally sent it to
-Pierrick only:
+ - debug_helper.c has a lot of TCG only code that can
+   happily live in a new tcg/debug.c file instead, and only
+   the CONFIG_TCG code was using the helper prototypes
+ - helper.c was calling exactly one TCG helper function
+   directly, and can be made to call a different function
+   instead for the same effect
 
-I just ran this (plus some other patches) through gitlab CI, and
-it fails to build on the kvm-only and xen-only jobs:
+Pierrick: these might be helpful for you with getting the target/arm
+single-binary series to compile when TCG is disabled.  I think it
+might be best to avoid having a single helper.h that gives both the
+helper_foo and the gen_helper_foo prototypes, though: even if it
+doesn't cause compilation failures, only translate*.c need all the
+inline definitions of gen_helper_foo. If you take that approach
+then it would fix the compile errors without needing these patches.
 
-https://gitlab.com/pm215/qemu/-/jobs/13131658696
-
-In file included from /builds/pm215/qemu/include/exec/helper-gen.h.inc:9,
-                 from /builds/pm215/qemu/include/exec/helper-gen-common.h:11,
-                 from ../target/arm/helper.h:7,
-                 from ../target/arm/helper.c:13:
-/builds/pm215/qemu/include/tcg/tcg.h:35:10: fatal error: tcg-target.h:
-No such file or directory
-   35 | #include "tcg-target.h"
-      |          ^~~~~~~~~~~~~~
-
-
-https://gitlab.com/pm215/qemu/-/jobs/13131658593
-
-In file included from /builds/pm215/qemu/include/exec/helper-gen.h.inc:9,
-                 from /builds/pm215/qemu/include/exec/helper-gen-common.h:11,
-                 from ../target/arm/helper.h:7,
-                 from ../target/arm/debug_helper.c:11:
-/builds/pm215/qemu/include/tcg/tcg.h:35:10: fatal error: tcg-target.h:
-No such file or directory
-    35 | #include "tcg-target.h"
-       | ^~~~~~~~~~~~~~
-
-I think the problem looks like it's in "move exec/helper-* plumbery to
-helper.h", which has put the "emit the TCG gen_helper_foo inline
-functions" into target/arm/helper.h, when they were previously
-handled by target/arm/tcg/translate.h and so only in source files
-that are part of the TCG translate-time code. helper.h only needs the
-prototypes of the helper functions themselves.
-
-Some of the other new helper-foo.h files look like they would
-also have this problem, except they happen to only be included
-from tcg files. For instance target/arm/helper-mve.h is only
-included from files in target/arm/tcg (so it maybe could be
-in target/arm/tcg itself).
-
-I couldn't see an obvious easy fixup for this, so I'm afraid
-I've removed the series from target-arm.next.
+(I did wonder if we could move target/arm/helper.h into the
+tcg/ subdirectory, since it really is TCG-specific, but it looks
+like the machinery in include/exec/helper* assumes that the target
+has a helper.h in its top level directory.)
 
 thanks
 -- PMM
+
+Peter Maydell (2):
+  target/arm: Move TCG-specific code out of debug_helper.c
+  target/arm: Don't require helper prototypes in helper.c
+
+ target/arm/debug_helper.c                  | 769 ---------------------
+ target/arm/helper.c                        |   5 +-
+ target/arm/{debug_helper.c => tcg/debug.c} | 542 +--------------
+ target/arm/tcg/meson.build                 |   2 +
+ 4 files changed, 4 insertions(+), 1314 deletions(-)
+ copy target/arm/{debug_helper.c => tcg/debug.c} (53%)
+
+-- 
+2.43.0
+
 

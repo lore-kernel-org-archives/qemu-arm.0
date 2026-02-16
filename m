@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC941E7BD92
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:26:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5BBEE7BD92
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:26:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwfQ-0006x6-IM; Mon, 16 Feb 2026 06:21:28 -0500
+	id 1vrweI-0003Ak-K8; Mon, 16 Feb 2026 06:20:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwdK-0007xM-Qa
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:19 -0500
+ id 1vrwbR-0005er-OI
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:25 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwdI-0008TM-Uj
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:18 -0500
+ id 1vrwbM-0007oY-Hz
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240756;
+ s=mimecast20190719; t=1771240632;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=N7c59NEfg4hmqcbZ3MZ180N2UP3aJ4ktCpkln/Wb2qE=;
- b=JqOcgD0JtQkNLMFqZ40t0jkzI+1vxDCkRnqErCEwp/D8kdoa3bm+CVZnHWwdq0WJaMx0Sr
- hZGj+UlYaPAP5CvxPka8Q3saMEzAass3eT5BTIAix57fvOPX1mz31A0XNIJDnuNGQjoIFs
- kZsuLuiWb/KZxd/fxksFvzm9+3YSqpY=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=fFl76fF+LZJe4gLSTLwCv0jScavNDWDyMsNrvmMBYlo=;
+ b=Qd1iDpU8eSq9GlHP6eV2mg8FFct1VDVOjLDhi1l988CgV91rqJ9cEYzYzwQAs4EZD6HMXQ
+ 8/q4i1RG3HLjV/p57fNX0mLyUFnUizoQbiiBen8rBqjt0ZAH0yFIzK4Q7g6DkOQwnxsUw5
+ Y4XCU+Sv6vCAqV/Z/Zc7sS56AyJALBg=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-199-4BQWyRFXM5OZuEZ7gBJIeg-1; Mon,
- 16 Feb 2026 06:19:11 -0500
-X-MC-Unique: 4BQWyRFXM5OZuEZ7gBJIeg-1
-X-Mimecast-MFC-AGG-ID: 4BQWyRFXM5OZuEZ7gBJIeg_1771240749
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-361-xSmBGvwFON2yAcO6V4PJ5A-1; Mon,
+ 16 Feb 2026 06:17:08 -0500
+X-MC-Unique: xSmBGvwFON2yAcO6V4PJ5A-1
+X-Mimecast-MFC-AGG-ID: xSmBGvwFON2yAcO6V4PJ5A_1771240627
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9C51D18002C1; Mon, 16 Feb 2026 11:19:09 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E24CB1955DDF; Mon, 16 Feb 2026 11:17:06 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0BD8A1955F43; Mon, 16 Feb 2026 11:19:08 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 44C5E30001A5; Mon, 16 Feb 2026 11:17:06 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:16:04 +0100
-Subject: [PATCH 75/85] audio: rework DEBUG_POLL
+Date: Mon, 16 Feb 2026 12:15:21 +0100
+Subject: [PATCH 32/85] audio: make create_pdos() private
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-75-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-32-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,25 +71,25 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3820;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1126;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=VuHJE/OMoLF5FV66Xec/LvzCGIsN/NmdER0U65ZSEv0=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxSC3oidMw+TYQw+bed/aGyUDri9z1ES2mfP
- mNcR+kss6KJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UgAKCRDa6OEJdZac
- 5c4uD/sEd++T8QohRaQ95Za6IPQRCm1KE+xDf5nA1SOKwPzmuQDDiQrozdPuMv5Vcy1FSDc0oPq
- hMyYijL0C49wC06yiwaPAjtwios2ncI6XYim21cjvauUwO/wfvXwu0MB94+nmkjhMYrXkIJq+MI
- xs7veXvlVf+ThVbDHMxp9LjWFNxRnlYrbYzfKcgOLSYqNusDtMnHmJRdlm6C+A/Er/LPMCAl0Vr
- +GSVoh5Gz81ZwuZo0hyXkkF6l8BZIvU6ECtv8YpOIQLgrnxRX9sKNRzHG5sRhu+QcjEmUbNy7H/
- ppfOeH/VQd4wnJhY9VVvvsdOi8tFnW0tcmc0ONrzKxnO4nMaKbQB1QoD6JdlPe8TOTDncUdQonJ
- MxBn0lCJMKJ9CIBR0dj49JKuelJUP6gLrphdeiyq68CSuXhXcylMFXmwwwpv43NS2RbpKzPRgPf
- Ak/YJest1iyVRLsB1w2ixFHwRXqRWIrfz1h04eRahIvgr3feZJPKOhFMIcXUoEBMysWPkXT3vGY
- We+JscZXwHlOTYrJh9JOxhR+OmoHYO27+PI0xWwCIedoP3ZCe5SmKubNKk1XoxUpSV6Ag7v/QvJ
- vlAgGhrJnAB6N2j85w8oN3e+SbsyenoPP+47zACsMUTS6W6ZyiQAiWvgRSPBJcSkYuRFFvmXAYI
- XLrX7JpFBi9H96w==
+ bh=18BzEdvVM6Wo1L4EnoV0PhPLC4dtiCH9jACEhFQvbdg=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxPV8PiDGBHjO+tvxDUJ106QEznKRJTxxFt5
+ cEhFV1drwuJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TwAKCRDa6OEJdZac
+ 5Y2JD/9Tap+sJcU1pGCa9TcegcUnv4Q9P8rlu5iZ4L6xNHDK81NKAQfFc/KiKs+bCv48xwRmdNF
+ 3sWx41Ch1t0XS+7KPPKwvd3uBCJbU0XvgFSxvqdK3YURfa2HVR7Ov8NCZ02x3qLXQY8/CWEWNoE
+ iz7l8OSrujuFznuJULt3LX3BC4U4o7ON/fQPkXNJubNI+n9HaGYF8z/pM/hXrBX2+sjqGhoFCw+
+ sV2eek0jlBNI77QbSzFzfxVnSzc0ruShzX5KEZVqWk0noJMr2237XsNtXML7cAZwtjqAAekVXna
+ QcV3L3pftPBgoWNo0br9snRQBN8kbW43pkznjcET8pnL6kNHVXwq6zUNkB6IaTjZd9s65CSo5ij
+ GrMpRcbDCXGLZ/ci15TU6jaM2TOPwY81kxD93sgAihpEmyhyXc0G9b4gZ4WktpTvftfOUZV3SdC
+ LU4+zkTrJUIZsi01icjzCvrtiMfzU9owvc8TSGtgwIoXw2hdrcB763VpyXjIVKC6yK6yVNUH94H
+ c051BYdwK29/r0qiMEAFQOtRzXvBKQP9SvSZ1WszM0NUm6Qt1OW6Uv/UXbyuQGz393gA1gAOwzl
+ 3dnCZemZb9S0h8L8SfvfvknvwfqGSYlhM0rNIJlnXM+TDuu6LgHvMA7DwmFf79jEyE8u68rNCqw
+ EFbvjSTZnXYS8EA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: KBgXo_YfldZ3py43ZO49oZfbDoGgBOeKAHyIOytMYAE_1771240749
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: ROuBkDf929C0hyHo3q_zDoPYjDysYqx-6pcMfyB8OSE_1771240627
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -119,117 +119,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Use more correct GTimer, specific for each backend, with a trace event.
+Clean up.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/audio_int.h       |  1 +
- include/qemu/timer.h    |  1 +
- audio/audio-mixeng-be.c | 25 +++++++++----------------
- audio/trace-events      |  1 +
- 4 files changed, 12 insertions(+), 16 deletions(-)
+ audio/audio_int.h | 1 -
+ audio/audio.c     | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
 diff --git a/audio/audio_int.h b/audio/audio_int.h
-index dd5f2220d75..e0ed6af67ed 100644
+index 08d07b17557..e1f9fa333ba 100644
 --- a/audio/audio_int.h
 +++ b/audio/audio_int.h
-@@ -224,6 +224,7 @@ struct AudioMixengBackend {
-     Audiodev *dev;
+@@ -306,7 +306,6 @@ static inline size_t audio_ring_posb(size_t pos, size_t dist, size_t len)
+ #define ldebug(fmt, ...) (void)0
+ #endif
  
-     QEMUTimer *ts;
-+    GTimer *run_timer;
-     QLIST_HEAD (hw_in_listhead, HWVoiceIn) hw_head_in;
-     QLIST_HEAD (hw_out_listhead, HWVoiceOut) hw_head_out;
-     QLIST_HEAD (cap_listhead, CaptureVoiceOut) cap_head;
-diff --git a/include/qemu/timer.h b/include/qemu/timer.h
-index 7c18da16525..b931181f53d 100644
---- a/include/qemu/timer.h
-+++ b/include/qemu/timer.h
-@@ -6,6 +6,7 @@
- #include "qemu/host-utils.h"
+-void audio_create_pdos(Audiodev *dev);
+ AudiodevPerDirectionOptions *audio_get_pdo_in(Audiodev *dev);
+ AudiodevPerDirectionOptions *audio_get_pdo_out(Audiodev *dev);
  
- #define NANOSECONDS_PER_SECOND 1000000000LL
-+#define MICROSECONDS_PER_SECOND 1000000LL
- 
- /* timers */
- 
-diff --git a/audio/audio-mixeng-be.c b/audio/audio-mixeng-be.c
-index 84e4d136de3..2aeb05ba37e 100644
---- a/audio/audio-mixeng-be.c
-+++ b/audio/audio-mixeng-be.c
-@@ -24,13 +24,13 @@
- #include "system/replay.h"
- #include "system/runstate.h"
- #include "trace.h"
-+#include "trace/control.h"
- 
- #define AUDIO_CAP "audio"
- #include "audio_int.h"
- 
- /* #define DEBUG_OUT */
- /* #define DEBUG_CAPTURE */
--/* #define DEBUG_POLL */
- 
- #define SW_NAME(sw) (sw)->name ? (sw)->name : "unknown"
- 
-@@ -1269,22 +1269,12 @@ void audio_run(AudioMixengBackend *s, const char *msg)
-     audio_run_in(s);
-     audio_run_capture(s);
- 
--#ifdef DEBUG_POLL
--    {
--        static double prevtime;
--        double currtime;
--        struct timeval tv;
--
--        if (gettimeofday (&tv, NULL)) {
--            perror ("audio_run: gettimeofday");
--            return;
--        }
--
--        currtime = tv.tv_sec + tv.tv_usec * 1e-6;
--        dolog ("Elapsed since last %s: %f\n", msg, currtime - prevtime);
--        prevtime = currtime;
-+    if (trace_event_get_state(TRACE_AUDIO_RUN_POLL)) {
-+        /* Convert seconds to microseconds for trace event */
-+        int64_t elapsed_us = g_timer_elapsed(s->run_timer, NULL) * MICROSECONDS_PER_SECOND;
-+        trace_audio_run_poll(msg, elapsed_us);
-+        g_timer_start(s->run_timer);
+diff --git a/audio/audio.c b/audio/audio.c
+index d8a54548274..1fa63ee0421 100644
+--- a/audio/audio.c
++++ b/audio/audio.c
+@@ -1990,7 +1990,7 @@ void AUD_set_volume_in(SWVoiceIn *sw, Volume *vol)
      }
--#endif
  }
  
- void audio_generic_run_buffer_in(HWVoiceIn *hw)
-@@ -1545,6 +1535,7 @@ static void audio_mixeng_backend_init(Object *obj)
-     QLIST_INIT(&s->hw_head_in);
-     QLIST_INIT(&s->cap_head);
-     s->ts = timer_new_ns(QEMU_CLOCK_VIRTUAL, audio_timer, s);
-+    s->run_timer = g_timer_new();
- 
-     s->vmse = qemu_add_vm_change_state_handler(audio_vm_change_state_handler, s);
-     assert(s->vmse != NULL);
-@@ -1596,6 +1587,8 @@ static void audio_mixeng_backend_finalize(Object *obj)
-         s->ts = NULL;
-     }
- 
-+    g_clear_pointer(&s->run_timer, g_timer_destroy);
-+
-     if (s->vmse) {
-         qemu_del_vm_change_state_handler(s->vmse);
-         s->vmse = NULL;
-diff --git a/audio/trace-events b/audio/trace-events
-index 4749c54fc04..d66a712e871 100644
---- a/audio/trace-events
-+++ b/audio/trace-events
-@@ -61,6 +61,7 @@ audio_timer_delayed(int interval) "interval %d ms"
- 
- # audio-mixeng-be.c
- audio_get_avail(const char *name, size_t live, uint32_t frontend_frames) "%s: get_avail live %zu frontend frames %u"
-+audio_run_poll(const char *msg, int64_t elapsed_us) "Elapsed since last %s: %" PRId64 " us"
- 
- # audio_template.h
- audio_open_out(const char *name, int freq, int nchannels, int fmt) "open %s, freq %d, nchannels %d, fmt %d"
+-void audio_create_pdos(Audiodev *dev)
++static void audio_create_pdos(Audiodev *dev)
+ {
+     switch (dev->driver) {
+ #define CASE(DRIVER, driver, pdo_name)                              \
 
 -- 
 2.53.0

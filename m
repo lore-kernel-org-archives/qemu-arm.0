@@ -4,105 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72841E7BD8A
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:13:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2403E7BD8F
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:15:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwXj-00046O-HT; Mon, 16 Feb 2026 06:13:31 -0500
+	id 1vrwZt-0004iR-Ca; Mon, 16 Feb 2026 06:15:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vrwXg-000462-8e
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:13:30 -0500
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vrwXd-0006jN-Tm
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:13:28 -0500
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-64ad79dfb6eso2674081d50.0
- for <qemu-arm@nongnu.org>; Mon, 16 Feb 2026 03:13:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1771240405; cv=none;
- d=google.com; s=arc-20240605;
- b=HJog12OrmEn8l4zclKccjm3iYvXflCuQRMNRuz+IdSqZyCQ/oYQ8WVU1YOZYbchjr3
- krXSRXYbNCGx8vRGbY6z2RlV/EURj+Uo2c6gXlYHpZxLrb3JFC82k4myhdDcL8u8DkDr
- 2gAC32gBMGLv0FRcgOoVLn/3iqYCFDTuzsXAl3RxIsy1lqVa0JuLz2b4NtGG7QXFasgV
- bWePa2+SFTrYAIl1kZGie3yrLQMY69wVPS7eHeHdIoxi27cb4dhNhHbvhI38G+MwhwOs
- IYbEJb62MXXd2eoiDwo7DAZlnwjtyMAYonPp6/mJYxJq4BK2h1P6N5rp2JYwoxwtl6s/
- AMlQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=Bnj6PYX9XX64sJHAlUbiGDSZBG2TAqZE+5aCucDPgzg=;
- fh=p9Zvn8HxRR9qMYdkfS1Lgjmk+gnqtxDT7le7Kc7QnOI=;
- b=SUnKURIRulY72N8wbeTY+ut9a3KgV7vkhCjdymB7sRFFJkxTzNqAZYboYtPuezDji3
- FGcILKVoOSnbhQmelrvsiS0x+qmHjmjOqxLwS2txXRQdHojnWvM/dfVmYz6FLL/IbjPb
- HbZ98uZyL7r9sv1lBMg9bFTTkg6sZ4pLK2FLXp97k3v+PW1w2nAvEyP1992B3VEWovZH
- wjx9x5W+KdyAUH36b0bTKp0mOzszwSpWD90k0hk44SNm4Gc0R+irjEhYgh6ZpIMOOmzq
- NQdSoIEd7yesV2pJKuAyzcR6h2cEYP8LCd03ccVM5vDKfdb6BRdU6QM3IntFsZHTfJgb
- x05A==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771240405; x=1771845205; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Bnj6PYX9XX64sJHAlUbiGDSZBG2TAqZE+5aCucDPgzg=;
- b=dXiIZQLUoBVxbYAUkzuueHQbsn9hFtMCoM0pDjkjKXe4aC/1uHXngVIyOPlg2VlIz0
- Qhp2XnpzXxgU1S9SaQ4vnOrCeNsGTGGww3UH17i7AZowrLyZywP94h5cbhAQoKq/VTkY
- NRYfWdqPq+T0BKFMYt1FNmthB6o0TZb53ZQILFLAhOC0o4Apwi5Rdu7SoA+XelccNJE3
- 9TjOfavxM6RwEA1JVMOmzH9HXZdsRSQmDJ+h6qzV3jCBcKit4POryvkyAGVUVjIIdPcB
- aW9qMLqq3P6yz3V+NMiTFGrekV4F797/PCPW4Dv7CuRhwP55LBwLgaRSZFiqnAWSMCao
- 1pUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771240405; x=1771845205;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=Bnj6PYX9XX64sJHAlUbiGDSZBG2TAqZE+5aCucDPgzg=;
- b=vAAJJ5FCQIdYCBY2CtEwxQ8zfIaCUw/toGFI2080goNvwccu1AJLxGnS6tCWxbfJjY
- zqTSZj8ai1I9WjgK6a7rsIvWbbBToEsk/CLlbq0/XFttoDt+X9sgi4HHCrZof+YY0pSd
- pnQP8KP6Dw5S1TliYBKkpA1/GfJGBKDVvej1uDEIYyUbMP86NjMCFFpsAFxvH0kiLnfC
- ZSTnawmPjQ7KhHOUx0Le+Vt84g2BGmrdG+psVKDt+b2G/wkSp3jKjUVaS/rpqNjKbvuT
- TO3Coeawc7g3OkLEhfWwdnwfbfmvBQGy8nZqfwTe1Nb0369LQLU5ly3/uHsOe4SmUVPs
- FNeQ==
-X-Gm-Message-State: AOJu0YxxGdbTpSx9FQ1Q7otA6abApIIvRuAvK3AlKbhFYqQF+48YusUW
- D3ohrJ6bX+AXCd1n+0Xc5Uabd3ZzcyR+tOliN1YKE4WfNliT3PsvSWP2DVukffIQM/d6cA4RSw5
- BR+GNl26zEQuHaJGyvyuyihJY/5Tzply6DvJY1nCZhw==
-X-Gm-Gg: AZuq6aLS0BNV/1sY8Td31ODHkx70UyH6cEBj4j/T8sBSiuPxcC8PH33DgqAqCZ4i5qU
- /6WIYTvW+PRFq09J8WziTuw30/2q/jpLMPg67euiVNiqFIzjMJxeq3U7HjgbYtY+yU5Ey5CqMx3
- yCo2X5qdovYe1d1Bez1qG9ZIWEQHUPAcpnr0WlzpaOddlvtnN0dTXMyiGabw0sUouagIaMhpLSD
- 5EYz9l5ZYZFi9u/HMAlIDM531VhOOb7gq66f7plf1nv3NE8ebej/xHmLYy5mzzdX3SgxU+eHSFN
- iGe7p7jaq1Pv9YbgPntpozdzf33YDQ6qXpfEKPtrwQFU4y2UzFVmHju0THt6SS8ZuD8=
-X-Received: by 2002:a05:690e:408e:b0:645:54a9:11b6 with SMTP id
- 956f58d0204a3-64c19b196f1mr7675589d50.52.1771240404710; Mon, 16 Feb 2026
- 03:13:24 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1vrwZs-0004i9-GN
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:15:44 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1vrwZp-0007H0-8w
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:15:43 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1771240539;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=M1vYfoJPrFAmJeUN4HEj0QtM6SSeEBhKeVZad4gaM/Q=;
+ b=JqNv4VvadPoDeIBdtJZFN4AaZV9xf1CloPrvW6oWtSuOX1pELhkUpO/7bfYDSAtpXOQAQV
+ w70R2E/lXQFyqhWUF3Bg/4oKDR98VYuJSsXcv1chtnGuK6GctbqvTQsULUofkk/DvGdAqI
+ ieR26rf4AOqKhfpUH5oOss1/q1vpTEM=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-378-12se4Fe9M4ylnLUf4-whcQ-1; Mon,
+ 16 Feb 2026 06:15:37 -0500
+X-MC-Unique: 12se4Fe9M4ylnLUf4-whcQ-1
+X-Mimecast-MFC-AGG-ID: 12se4Fe9M4ylnLUf4-whcQ_1771240535
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0F8CF180025A; Mon, 16 Feb 2026 11:15:35 +0000 (UTC)
+Received: from localhost (unknown [10.45.242.26])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 43D851800464; Mon, 16 Feb 2026 11:15:32 +0000 (UTC)
+From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PATCH 00/85] audio: cleanups & add a manual test
+Date: Mon, 16 Feb 2026 12:14:49 +0100
+Message-Id: <20260216-audio-v1-0-e676662e4514@redhat.com>
 MIME-Version: 1.0
-References: <20260212213955.2225662-1-clg@redhat.com>
- <20260212213955.2225662-3-clg@redhat.com>
-In-Reply-To: <20260212213955.2225662-3-clg@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 16 Feb 2026 11:13:12 +0000
-X-Gm-Features: AZwV_Qi3cGskL0yyDjDTutpSoqbX2OXFxE3VeTo0RHl0QtnqdczfaLKUuGaj3u8
-Message-ID: <CAFEAcA_oJgTc2SyRr11QTeTkmCPgvKiwngAaDiDNw5nUcTFA2w@mail.gmail.com>
-Subject: Re: [PULL 02/16] tests/functional: Add SDK tests with Linux 5.15
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, "Daniel P. Berrange" <berrange@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
- Kane Chen <kane_chen@aspeedtech.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDI0Mz3cTSlMx8XQtLM1OjFCNzA8s0QyWg2oKi1LTMCrA50bG1tQCJWwA
+ wVwAAAA==
+X-Change-ID: 20260216-audio-89652d2709f1
+To: qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
+ John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>, 
+ Christian Schoenebeck <qemu_oss@crudebyte.com>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
+ Thomas Huth <huth@tuxfamily.org>, Alexandre Ratchov <alex@caoua.org>, 
+ =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>, 
+ Yodel Eldar <yodel.eldar@yodel.dev>, Thomas Huth <thuth@redhat.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=9182;
+ i=marcandre.lureau@redhat.com; h=from:subject:message-id;
+ bh=ipLKNbFpIgOE5TpXI30zO48gLrUWKd0xSMrSqlPA0o4=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxNs99ozLxWrUL5k5lykOW3mjXdci2TDYwUC
+ GZeOZPDGHmJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TQAKCRDa6OEJdZac
+ 5XPID/9Y9e7xbprgGAvdluatgPUeV3MvJjL3XO6WGDwZL5Wt3tmPCiZSYqQZS8Xqjt78Jp4UZtz
+ JBm5aVg2BlVSNE/Tu5FKxQ0Hi6VPtlUgeZdGwYyfJ6Ooyo4mpZFyWnhd5DIeJSOozHjMeO0xL3G
+ P22ATAgwUAI1c0wJ4JL4lK+fPGvEdf8w7h1T5T+TgauXeRUMaLoelgcRsz4nh0gIhHdWytcweCW
+ DG6zbjnWE3hzdp6eQ9y7WPrBjI71bZv8Jn2zHUWH5XuVBW6H6ZvSKI5PoBMs52AGGdqCVA/YkF9
+ Gnx2yQIBLm3hCie3IhERucJ7DoqaWkWVvf+6bJQZc7t1Il/S+LvL3LEDvY2W7HLI9cFIDfHDO8E
+ TbjGp7YKitiAlmVaCNSJ01J0oGfAogpNzOI8Zv1hFip2RnnAEaptQ/fPytXfOGKDOCloVJqowK5
+ qiOug/dX/6sZODvM747KgitBv946UkyJBrrck/IqSW0fFyZQbKrGtrIsImuwhSp6bwaT16V2X8m
+ WtbHFE60QrofZoPaDI8OEWUb3IoPKL5hYDg/kChyaSsB69ViaI1pjj96b47leexJAD+bd1diGjk
+ A6aj9nCwdvQuAEFl59FYncEXePAInal6+CWFWElkUgfxxAkbUzXuVYnwipQX+wKCiR77ptTSnnV
+ o4LkJE2xdhPLGJQ==
+X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
+ fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: lHjpHiuLvSWnHcq5FchqicD1aUj3ARltgDvY8yHB_MQ_1771240535
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,29 +121,182 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 12 Feb 2026 at 21:42, C=C3=A9dric Le Goater <clg@redhat.com> wrote:
->
-> Add functional tests for AST2500 and AST2600 machines using the
-> OpenBMC SDK v11.00 with Linux kernel 5.15. These tests complement the
-> existing SDK tests and verify that QEMU correctly boots older kernel
-> versions on these platforms.
+Hi
 
+This is the combination of the two earlier series:
+[PATCH 00/37] audio: cleanups & add a manual test
+[PATCH 00/43] audio: more cleanups (2/2 for 11.0)
 
-> +    ASSET_SDK_V1100_AST2600_515 =3D Asset(
-> +        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11=
-.00/ast2600-default-515-obmc.tar.gz',
-> +        'ece1a934095378929780f03e7d092e562f4b33b2841b80ad7c3d12a85744c0f=
-6')
+Patches missing r-b trailers:
+- scripts/modinfo: use argparse
+- scripts/modinfo: make --devices optional
+- scripts/modinfo: add --skip-missing-deps
+- util: add some extra stubs for qemu modules initialization
+- tests: start manual audio backend test
+- audio: use DEFINE_TYPES
+- audio: replace type_init() with DEFINE_TYPES
+- audio: keep a strong reference on the backend
+- replay: remove dependency on audio/
+- audio: fix leak of audio capture name
 
-This asset file is over a gigabyte in size, it takes forever to
-download, and our functional test asset download framework has
-no mechanism for giving any kind of progress indication for
-downloads (or even for telling you the URL it is downloading
-until after the download is complete).
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+---
+Marc-André Lureau (85):
+      audio: remove obsolete/obscure functions
+      adlib: remove dead code
+      audio/adlib: drop ts_helper HWVoice field
+      audio/dbus: make "dbus" the default backend when using -display dbus
+      qemu-options.hx: clarify default audio backend selection
+      qemu-options.hx: document -audiodev dbus
+      audio: replace vm_running with runstate_is_running()
+      audio: list backends as modules
+      build-sys: create a libaudio
+      scripts/modinfo: add type annotations
+      scripts/modinfo: remove trailing ;
+      scripts/modinfo: use in instead of find()
+      scripts/modinfo: use f-strings
+      scripts/modinfo: use argparse
+      scripts/modinfo: make --devices optional
+      scripts/modinfo: add --skip-missing-deps
+      util: add some extra stubs for qemu modules initialization
+      tests: start manual audio backend test
+      audio: constify audsettings argument
+      audio: introduce AudioMixengBackend
+      audio: use DEFINE_TYPES
+      audio: simplify audio_init()
+      audio: move object creation to audio_driver_init()
+      audio: add QOM module-objects for each backend
+      audio: remove set_dbus_server from audio_driver
+      audio: lookup "audio-" object types, and realize them
+      audio: drop audio driver registration
+      module: remove audio module support
+      audio: replace type_init() with DEFINE_TYPES
+      audio: keep a strong reference on the backend
+      audio: make list type declaration private
+      audio: make create_pdos() private
+      replay: remove dependency on audio/
+      audio: make all the backend-specific APIs take the be
+      audio: make AudioBackend truly abstract
+      audio: split AudioBackend
+      audio: AUD_ -> audio_be_
+      audio-be: add common pre-conditions
+      audio-be: add some state trace for debugging
+      audio: split AudioMixengBackend code in audio-mixeng-be.c
+      audio: make audio_driver init() & fini() optional
+      audio/dbus: convert to QOM lifecycle methods
+      audio/spice: convert to QOM lifecycle methods
+      audio/wav: convert to QOM lifecycle methods
+      audio/noaudio: convert to QOM lifecycle methods
+      audio/alsa: convert to QOM lifecycle methods
+      audio/oss: convert to QOM lifecycle methods
+      audio/pa: convert to QOM lifecycle methods
+      audio/sdl: convert to QOM lifecycle methods
+      audio/pw: convert to QOM lifecycle methods
+      audio/jack: convert to QOM lifecycle methods
+      audio/sndio: convert to QOM lifecycle methods
+      audio/coreaudio: convert to QOM lifecycle methods
+      audio/dsound: convert to QOM lifecycle methods
+      audio: remove audio_driver init/fini/next
+      audio: remove audio_driver
+      audio: move pcm_ops into AudioMixengBackendClass
+      audio: constify some add_capture() arguments
+      audio/alsa: replace custom logging with error_report and trace events
+      audio/coreaudio: replace custom logging with error_report
+      audio/dbus: remove unused AUDIO_CAP macro
+      audio/dsound: replace custom logging with error_report & trace
+      audio/jack: replace custom logging with report & trace
+      audio/noaudio: remove unused AUDIO_CAP macro
+      audio/oss: replace custom logging with report & trace
+      audio/pa: replace custom logging with report & trace
+      audio/pw: replace custom logging with error_report
+      audio/sdl: replace custom logging with error_report
+      audio/sndio: replace custom logging with error_report
+      audio/spice: remove unused AUDIO_CAP macro
+      audio/wav: replace custom logging with error_report
+      audio/mixeng: replace redundant pcm_info fields with AudioFormat
+      audio: replace int endianness with bool big_endian in audsettings
+      audio: replace ldebug with trace events
+      audio: rework DEBUG_POLL
+      audio: replace DEBUG_CAPTURE with traces
+      audio: replace DEBUG_OUT with traces
+      audio: replace DEBUG_AUDIO with trace
+      tests/audio: add an invalid settings test
+      audio: rework invalid audsettings error
+      audio: rework audio_bug()
+      audio: replace remaining dolog() and AUD_log
+      audio: remove AUD_log/ldebug
+      audio: remove AudioMixengBackendClass.name
+      audio: fix leak of audio capture name
 
-Can we have a size limit for test assets please, at least until
-the framework can support large assets a bit better ?
+ MAINTAINERS                                        |    1 +
+ meson.build                                        |   27 +-
+ audio/audio_int.h                                  |  168 +-
+ audio/audio_template.h                             |  212 +-
+ audio/dsound_template.h                            |   89 +-
+ include/qemu/audio-capture.h                       |   28 +-
+ include/qemu/audio.h                               |  183 +-
+ include/qemu/module.h                              |    3 +-
+ include/qemu/timer.h                               |    1 +
+ include/system/replay.h                            |   11 +-
+ replay/replay-internal.h                           |    2 +
+ audio/alsaaudio.c                                  |  273 ++-
+ audio/audio-be.c                                   |  274 +++
+ audio/audio-mixeng-be.c                            | 1770 +++++++++++++++
+ audio/audio.c                                      | 2246 ++------------------
+ audio/audio_win_int.c                              |   31 +-
+ audio/dbusaudio.c                                  |  168 +-
+ audio/dsoundaudio.c                                |  265 ++-
+ audio/jackaudio.c                                  |  127 +-
+ audio/mixeng.c                                     |    1 -
+ audio/noaudio.c                                    |   78 +-
+ audio/ossaudio.c                                   |  300 ++-
+ audio/paaudio.c                                    |  261 +--
+ audio/pwaudio.c                                    |  214 +-
+ audio/sdlaudio.c                                   |  176 +-
+ audio/sndioaudio.c                                 |  108 +-
+ audio/spiceaudio.c                                 |  113 +-
+ audio/wavaudio.c                                   |  101 +-
+ audio/wavcapture.c                                 |    9 +-
+ hw/audio/ac97.c                                    |   44 +-
+ hw/audio/adlib.c                                   |   33 +-
+ hw/audio/asc.c                                     |   22 +-
+ hw/audio/cs4231a.c                                 |   24 +-
+ hw/audio/es1370.c                                  |   28 +-
+ hw/audio/gus.c                                     |   13 +-
+ hw/audio/hda-codec.c                               |   36 +-
+ hw/audio/lm4549.c                                  |   26 +-
+ hw/audio/pcspk.c                                   |    8 +-
+ hw/audio/sb16.c                                    |   30 +-
+ hw/audio/via-ac97.c                                |   22 +-
+ hw/audio/virtio-snd.c                              |   38 +-
+ hw/audio/wm8750.c                                  |   47 +-
+ hw/display/xlnx_dp.c                               |   18 +-
+ hw/usb/dev-audio.c                                 |   20 +-
+ replay/replay-audio.c                              |   51 +-
+ replay/replay.c                                    |    2 +-
+ replay/stubs-system.c                              |    8 +-
+ system/vl.c                                        |    2 -
+ tests/audio/audio-stubs.c                          |   69 +
+ tests/audio/test-audio.c                           |  619 ++++++
+ ui/dbus.c                                          |   20 +-
+ ui/vnc.c                                           |    6 +-
+ util/module.c                                      |    3 +
+ audio/coreaudio.m                                  |  201 +-
+ audio/meson.build                                  |   12 +-
+ audio/trace-events                                 |   46 +
+ qemu-options.hx                                    |   35 +-
+ .../codeconverter/codeconverter/test_regexps.py    |    1 -
+ scripts/modinfo-generate.py                        |  146 +-
+ tests/audio/meson.build                            |   23 +
+ tests/meson.build                                  |    1 +
+ ui/meson.build                                     |    3 +
+ 62 files changed, 4983 insertions(+), 3914 deletions(-)
+---
+base-commit: ece408818d27f745ef1b05fb3cc99a1e7a5bf580
+change-id: 20260216-audio-89652d2709f1
 
-thanks
--- PMm
+Best regards,
+-- 
+Marc-André Lureau <marcandre.lureau@redhat.com>
+
 

@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D708E7BD8B
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 10:45:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42682E7BD8C
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 10:45:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrw4y-0002bN-QE; Mon, 16 Feb 2026 05:43:48 -0500
+	id 1vrw4y-0002VX-8h; Mon, 16 Feb 2026 05:43:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrw4S-0001x0-Jn
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 05:43:17 -0500
+ id 1vrw4W-0001yo-8N
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 05:43:20 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrw4R-00013K-4v
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 05:43:16 -0500
+ id 1vrw4U-00013p-T3
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 05:43:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771238594;
+ s=mimecast20190719; t=1771238598;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GBqAgB7LrCGMYNH0r4X9ORm6NR49Rz7X+bLJoA4G3bU=;
- b=YJnP8OnAoT64/vURNcCqdudFm2w00UPxuFMjYFBv295O07nlW0xmozsrNxPiTLSJLf1ohC
- c0Dbwpd2HJwcryR9fgcOPpJQUWD76Olio7RMF7HMGCJwDiXOLU/Xw+9PdN+TUMLeTUlF+b
- +qtLdznhZV2ffpwrDDrQsieG0ZQQTi0=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=DcRkDt70bkO+YZQKmaJcDHMEi8MiUA3/dOJCPeTuVkU=;
+ b=Dof1k3j/Mg83PVWiRNKoudxE3BCR7XJiS+p6PGb2t+mpo8aDskmY8ybEDLjAdGAsHq1R5W
+ WOSu1PRKPqFY/O5KmUEhd+3R1YF4VJqO3vG0x7EbMoopi4r09mfhCtx3ABJIjZkPdDi1Gs
+ 7Ig7FC7C3XXq9hdx/7VyXhKfMj7msM8=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-634-gTGoC5E4Mc-mfZgRvSoqEw-1; Mon,
- 16 Feb 2026 05:43:09 -0500
-X-MC-Unique: gTGoC5E4Mc-mfZgRvSoqEw-1
-X-Mimecast-MFC-AGG-ID: gTGoC5E4Mc-mfZgRvSoqEw_1771238587
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-512-PaJmFrz1PTmx3xkzHapILg-1; Mon,
+ 16 Feb 2026 05:43:14 -0500
+X-MC-Unique: PaJmFrz1PTmx3xkzHapILg-1
+X-Mimecast-MFC-AGG-ID: PaJmFrz1PTmx3xkzHapILg_1771238590
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4E3CA1955BC4; Mon, 16 Feb 2026 10:43:07 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 63C7A195FDD1; Mon, 16 Feb 2026 10:43:10 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 81FE31800666; Mon, 16 Feb 2026 10:43:05 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 33C6819560B2; Mon, 16 Feb 2026 10:43:08 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 11:42:22 +0100
-Subject: [PATCH 10/85] scripts/modinfo: add type annotations
+Date: Mon, 16 Feb 2026 11:42:23 +0100
+Subject: [PATCH 11/85] scripts/modinfo: remove trailing ;
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-10-edcb25699381@redhat.com>
+Message-Id: <20260216-audio-v1-11-edcb25699381@redhat.com>
 References: <20260216-audio-v1-0-edcb25699381@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-edcb25699381@redhat.com>
 To: qemu-devel@nongnu.org
@@ -70,27 +70,26 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- Yodel Eldar <yodel.eldar@yodel.dev>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2026;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=821;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=5Hl18YRrW30PKleJRGv7L/P5HPSsWojpXhI13YBVZFo=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvSTwlin873L8ysaRz/9YgYOMO+hNVnQ5PXGB
- Vp3GOAZ0u2JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL0kwAKCRDa6OEJdZac
- 5QTuD/4l92yligO4d0AcgObUitj42VI4W/47zn4QqUOJrHW9yw9mSOv2MnWXMy8SMqU3V5Yp0Df
- EnO2y36Fgd4T7Wcrw8YmKq+8PqQHN5Gkv/fx9e6kfle2bWCme+1NbUGBx8e+cEWlQt5nOSINFQf
- Hu0cVI7yftZlVhBSBb7cvdnmaFCDFmw3ityWhH28W4It/NHBMmDarFsQnErWtNBRVp9cs3/2DLz
- Ykb0ZrMrNRatbaarzMJ6nCO08agVLFqXSfXpzvzBmVh67bVW9LsSsEgiSUE1RMPa7at4aOV5DeK
- SHdOlD0vu1+zqlcaWCplXWc6i253jdGPNriV80uIDpq4O8eQWYx6RrhQlX/SvCWtT3DhRc86+aj
- obODEpTzrdDSObVF7kGfKvUP78GYuEXWhKdJpimzJqojSZoFxz9e2dHCBrMhGDUkhAbtnv9NjtU
- XakDsbDXvfC60y2M1Q2M5kE8H1sYcjEjBJUXX1wBgcrYWxMDPrRLeyjJNY7Pg5x0tjkUKHHcSgk
- nCMRrVMLS2rLI5yUHF9K+JB6o2UF5lzYZQqdH/a+keMAKEX1WIpjEHJXOT5+u18pXhySsAXC3nN
- 8RklayJlw3L3fBtEDRXWLeqW/71UHsApNFHxXcYs9jEWtwMMND91kJZMLB4Ur0JAYPXh8CfDyKr
- 8i7KfH2qL/ZrXtg==
+ bh=jO/uS3zWPerDiKB55gGBffN+gslwk9TYddoo2IYcEn0=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvSTweWoRMlzsmQ/42t0hrpRRZNAHds76Q8QX
+ iaCLGPU2aCJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL0kwAKCRDa6OEJdZac
+ 5chbD/41QeYe2NDJa4BTmJTmAHhAJbI2jkD1oHm02nxV/kSmK7QmxlrAw0Z8lbOZFKkFiPB53cE
+ hBc7N0KiL9gPfyxys/dFPdcvcWoTc7/HGeKgbpWVHyjlw0MUIDhuW1aJstE9gSGapq5c1GovTZN
+ 8+nrWzkmqlIGvCkC24ZYYhflmKOCHbxT5636nYuDcTEB0rPp4Z5dVjGrKf/SLCYnFia6kw2reCx
+ fLb2jcEJjLBuRCGQVIeCCwEDMvc74TnPCxhUW6uZyYSHguHVpV0RlH+eTKz/soMAYhQhP4d1/WK
+ OZdjkAxLLVOfZht7p4fr+d2Sou/+PSinoq33+2nIlGgeda4mf4Qt4KWHiamY97/1N4vV734Q3pL
+ Q8KKrBQTX5ieSaJxSja0m6RTt6SKZk4TTDTQgRPQLd7LJ3RS5jH1tw0+h4IL5Zud4lUs1Wufk83
+ q/32chEuwemPOaJXy7PU3EDe8Iu7zu7auZy35WzEGjrBwlw6ArLbIV3kjEPp4ulL30shpnRQfXX
+ UVC6t31AhOZpxZag4TogtzjWTSQ7j61+suNI11CkNr3yiOVrlV0qD2S1++x+LYY6FErJR+JEKQQ
+ NFYmo8/RkRw+F3nAMpBN5Ehll/lmu2iU+fyZOSi+s5oXP/rb+PpA5hNyr52v1g0h3PKvfpVI1Yq
+ YIu4CrfZLcgJv8A==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: VXSrDWshuz6wGYmOJ4l_WjEDqDZ_23ZYcFDMnJwVVSs_1771238587
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: 02PMm3JkShWvMtmv0GWXOHCaIf1OwVVxaTuYO1aF_2A_1771238590
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -104,7 +103,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,69 +119,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Type annotations allow easier code reading, refactoring, checking etc.
-
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Yodel Eldar <yodel.eldar@yodel.dev>
-Tested-by: Yodel Eldar <yodel.eldar@yodel.dev>
-Acked-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- scripts/modinfo-generate.py | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+ scripts/modinfo-generate.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/scripts/modinfo-generate.py b/scripts/modinfo-generate.py
-index aaf23544c46..5a8abcae5d3 100644
+index 5a8abcae5d3..83ffa4a7c52 100644
 --- a/scripts/modinfo-generate.py
 +++ b/scripts/modinfo-generate.py
-@@ -2,14 +2,16 @@
- 
- import os
- import sys
-+from typing import Optional
- 
--def print_array(name, values):
-+
-+def print_array(name: str, values: list[str]) -> None:
-     if len(values) == 0:
-         return
-     list = ", ".join(values)
-     print("    .%s = ((const char*[]){ %s, NULL })," % (name, list))
- 
--def parse_line(line):
-+def parse_line(line: str) -> tuple[str, str]:
-     kind = ""
-     data = ""
-     get_kind = False
-@@ -31,7 +33,7 @@ def parse_line(line):
-             continue
-     return (kind, data)
- 
--def generate(name, lines, enabled):
-+def generate(name: str, lines: list[str], enabled: set[str]) -> Optional[set[str]]:
-     arch = ""
-     objs = []
-     deps = []
-@@ -68,17 +70,17 @@ def generate(name, lines, enabled):
-     print("},{")
-     return {dep.strip('" ') for dep in deps}
- 
--def print_pre():
-+def print_pre() -> None:
-     print("/* generated by scripts/modinfo-generate.py */")
-     print("#include \"qemu/osdep.h\"")
-     print("#include \"qemu/module.h\"")
-     print("const QemuModinfo qemu_modinfo[] = {{")
- 
--def print_post():
-+def print_post() -> None:
-     print("    /* end of list */")
-     print("}};")
- 
--def main(args):
-+def main(args: list[str]) -> None:
-     if len(args) < 3 or args[0] != '--devices':
-         print('Expected: modinfo-generate.py --devices '
-               'config-device.mak [modinfo files]', file=sys.stderr)
+@@ -48,7 +48,7 @@ def generate(name: str, lines: list[str], enabled: set[str]) -> Optional[set[str
+             elif kind == 'opts':
+                 opts.append(data)
+             elif kind == 'arch':
+-                arch = data;
++                arch = data
+             elif kind == 'kconfig':
+                 # don't add a module which dependency is not enabled
+                 # in kconfig
 
 -- 
 2.53.0

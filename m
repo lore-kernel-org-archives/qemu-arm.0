@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB311E7BD8B
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 10:44:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0B9EE7BD8A
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 10:44:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrw4R-0001uu-Cu; Mon, 16 Feb 2026 05:43:15 -0500
+	id 1vrw4R-0001ug-As; Mon, 16 Feb 2026 05:43:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrw4H-0001s3-AV
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 05:43:06 -0500
+ id 1vrw42-0001pZ-3u
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 05:42:51 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrw4F-00011D-Ja
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 05:43:04 -0500
+ id 1vrw40-0000yH-KR
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 05:42:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771238582;
+ s=mimecast20190719; t=1771238567;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6VfogaPHf/Z+L9b7Y13bG+eABGPqx21qH8NhHT2gnNM=;
- b=H1nBywUVKyXt/mm/yrYKYOrRPYZseiBRq/pjaqpzrY+XCYxPNalreQAN1Rfgf7oVuS2tXS
- tM6PguCzIa4jWu81KyEYFq16/VQJXtgTccUpWy2S11obelO7GXwq0pChhiS4n/78cFZe/o
- bbCYMjZGuwDo/me04N5mUAArlwGYgIg=
+ bh=7MlFTFz5SURHIKJ7Chwid9xkKley/jFZjjT9ZD8VwRk=;
+ b=LBZ9teHEAXlOuzUuczqfwLbvlVmyDgnQT8bQzxbdSfLh1AcOPrpBzddPE/nVslj8PsNLtR
+ +UB9zTRU9kzxBBwbuxCcuQO41yUrv1sbp2r5kw/z6qKRgLW3n5l084C9WS4kWZwvBUHS3c
+ 4ZAkNeUJpIbNzO6TJ8f4CFomazzvBkw=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-465-JcXX1MW9PiuRwXY7ESaACQ-1; Mon,
- 16 Feb 2026 05:42:57 -0500
-X-MC-Unique: JcXX1MW9PiuRwXY7ESaACQ-1
-X-Mimecast-MFC-AGG-ID: JcXX1MW9PiuRwXY7ESaACQ_1771238575
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-617-3ioKs_pLPH2sd_WtKMobVg-1; Mon,
+ 16 Feb 2026 05:42:44 -0500
+X-MC-Unique: 3ioKs_pLPH2sd_WtKMobVg-1
+X-Mimecast-MFC-AGG-ID: 3ioKs_pLPH2sd_WtKMobVg_1771238562
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7BDE01800267; Mon, 16 Feb 2026 10:42:55 +0000 (UTC)
+ id 671661800464; Mon, 16 Feb 2026 10:42:42 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A0E1318003F5; Mon, 16 Feb 2026 10:42:54 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 9C5E81955F43; Mon, 16 Feb 2026 10:42:40 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 11:42:18 +0100
-Subject: [PATCH 06/85] qemu-options.hx: document -audiodev dbus
+Date: Mon, 16 Feb 2026 11:42:14 +0100
+Subject: [PATCH 02/85] adlib: remove dead code
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-6-edcb25699381@redhat.com>
+Message-Id: <20260216-audio-v1-2-edcb25699381@redhat.com>
 References: <20260216-audio-v1-0-edcb25699381@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-edcb25699381@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,25 +71,25 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1123;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=815;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=4z4LECFy6R6KVgt/u7UO4ATuY8GKjOnvDAw3YOWYVi0=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvSTzyK+Jo4vh00gT8P3c2jeIs/hUCPkV67OH
- 2wq9a6c6oOJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL0kwAKCRDa6OEJdZac
- 5dGeD/9n5xxW1EwEPInH4i7H6FhDsYp0dCyFcA6COLFjM7A2OW0umyByqfJRsDJ0TU5uyLNZrGS
- 2IseMdykd6nXd5OX1d95P7xcwSq4UCkj8a0YFApmUKNPb1tpLLzK4ZXzn4vqt5XZ4QX8o2DWZwM
- +SmZ7rkQ/c4DqsA8XiR8PAoJ20S7kajHAeKPsqxjj49Crje4afP9/BmopoW2wJhGVgV3A30pw/i
- cRV9lyow5n4exILvJSD4iVALqICobyxgcXS9KP9EWwNpytg9wevK1gX4bVcA6nVhyTr2i8epsxO
- SgN3RwuChrRy/qu+yfQwCDp5gECa+fkLTdHIikjlvKPwD8Jw2Hl4dJpWHcfRNERE/w77M0zoTbH
- gwv9biXcXzQrxb8jCgV90wsXaHFnLT3gtBFQTsRzo/rk/B370TZfEAqWKZDUK2+ymJZNbsomg1P
- IEYH2Su+AO0n2yJm0HsFBnTLi9ZfOXYPUJZpzWcaA2KLKxVW1l+Ieo3FeqDlGyVYB0GZ0b/CVdK
- 1jKPIo60cXHfqXvcwECtLfEgot/PzvtdK8gvAe1subdpGQtyQp6l3vhPW7iTOgHw05x64fOlQAQ
- NchLyiodbWxZ0jy9n4cnw+vwuCULVwmF0+EtaRJMTt0ztF46aJPhyD9y4Ewq2Gx3klt3aA4lQ4S
- xM067yPKxiqW3sw==
+ bh=NB1RxHPpsDtB0Hj+b8jAY+ZHvQgT3NFrR5FzA9w1Gw4=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvSTmvqS5BP0n/ThbU352THCO0YBhimZQ2/FR
+ qiC8170nvqJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL0kwAKCRDa6OEJdZac
+ 5VFNEACjRiMHzMCcroDnilJmRkk7S2qAF9NzY1kJWqTjrAkD8u1PCd5a+odF0mIZBD8eKIwnZ8m
+ 6qp8oaMDBWXqpd2Mvf19Up8u2L8ArGQq0o/GByFNILS7l3wBjbbhS2IUjH1592UfFiwCLOskb+c
+ WYnvXQjvkXrvaYun8pjCN4+WNgMG9AHskLJyMwSEYRjYGxPdMV1i7ebRgVI/LWTsxQ/XRICbfki
+ AD8OqJSKkc8wLJD/wH6c0aHLG7+JDgQmQhPSkalkrFz5xFGaQfRpRU+8nFHYmJVoVmWVmaWNlYk
+ 1HZaPs3e//O5jMZk0n/rHfYkCkrmlrJah8Wfe4fTozmz+Comia7V8iDx5usVGmUoKYHRa/20Ndh
+ M7YHXyISe9RtomE5d6/zOkDcf5MxpHXYSqwWNCvRxmwumXNHhp5+OxJK6man9biU0eoacfq2iNf
+ 4gtbzVt+Nr5p8lehviOE8VhAZHzQ9cUITvyTxGprxEFYyCK+aPLB017WDYoLrxdSxsEgvsVxdrO
+ efCtdjdN3mw8h+222m/GfcnmusuRAi9rERWSLFrwIrqjupQauyUZZQz4IhsLzFD/EiEGTrRZ6w1
+ Rh1pzK/GCw06u98Nlq1F7fvjeDDUhe0qy2WFmhhm1z8OTNvDFw/SzL3hyPiZxPk8PxNGLK+JKYU
+ 8l19f4XX2Q5pbwQ==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: v0yBrqfERrMOgoN2vPQAxQlWH6_oErh1RPdyHnw2QvM_1771238575
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: fN1Ikm3oDLKDMJuYK1FApJSQH9NfsJpWrMcde6ot8OE_1771238562
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -103,7 +103,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,37 +119,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Document the backend introduced in commit 739362d420 ("audio: add dbus
-audio backend").
+Previous commit drop the need for this field.
 
-Reported-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- qemu-options.hx | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ hw/audio/adlib.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 15a6f82043a..4043e8ca22b 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -991,6 +991,16 @@ SRST
-     ``in|out.buffer-count=count``
-         Sets the count of the buffers.
+diff --git a/hw/audio/adlib.c b/hw/audio/adlib.c
+index efab5107a4c..f79654627f5 100644
+--- a/hw/audio/adlib.c
++++ b/hw/audio/adlib.c
+@@ -66,7 +66,6 @@ struct AdlibState {
+     int64_t exp[2];
+ #endif
+     int16_t *mixbuf;
+-    uint64_t dexp[2];
+     SWVoiceOut *voice;
+     int left, pos, samples;
+     FM_OPL *opl;
+@@ -133,7 +132,6 @@ static void timer_handler (void *opaque, int c, double interval_Sec)
+     s->exp[n] = exp;
+ #endif
  
-+``-audiodev dbus,id=id[,prop[=value][,...]]``
-+    Creates a D-Bus backend. It must be associated with the display
-+    (as ``-display dbus,audiodev=id``). (Since 7.0)
-+
-+    D-Bus specific options are:
-+
-+    ``nsamples``
-+        Number of samples per read/write (default to 480, 10ms at 48kHz)
-+        (Since 10.0)
-+
- ``-audiodev dsound,id=id[,prop[=value][,...]]``
-     Creates a backend using Microsoft's DirectSound. This backend is
-     only available on Windows and only supports playback.
+-    s->dexp[n] = interval_Sec * 1000000.0;
+ }
+ 
+ static int write_audio (AdlibState *s, int samples)
 
 -- 
 2.53.0

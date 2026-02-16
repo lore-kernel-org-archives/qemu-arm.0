@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C722E7BD95
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 451F4E7BD98
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:21:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrweQ-0004N9-2V; Mon, 16 Feb 2026 06:20:26 -0500
+	id 1vrwe0-0001Qk-67; Mon, 16 Feb 2026 06:20:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwcm-00075c-HZ
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:46 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1vrwaS-00054J-IY
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:24 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwck-0008Hu-B2
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:44 -0500
+ id 1vrwaK-0007M5-M8
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240721;
+ s=mimecast20190719; t=1771240568;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3OeZeYhTauS7VhsUmiT8lNq2q4uk8o3wKup878n2xcg=;
- b=beahFPMwQM38f1SoyNOCT7c3yWYTatlShPsWEXVm37Wu0fzV0P0zkOOEVrB/Y7W+HNLZIU
- cS8099rHCEyRAqFwwEU0m9d8b0+sAWY8ax6pTRRgI/uAA6VmPknLBXYicxAz9WfCLYd/47
- h8PimbdXyrkKyZJpY7oECrHwLc5a5TY=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=58QRcSder0RaqQBxAedoRAnN13Ui3FUWfO2I/pFVn1M=;
+ b=hV95g5WKHVWcijr8UCHO7CME0AKDJnz+CZB4Uj/xvYauBiXdmrAUaw4VPV36h3e5Xd2DBG
+ mEKJzLUwlxd0CJEm9iy5Yb9hrDBLoBRutab1YhlJZdwUC72o7MkrxniZ4pYgzheX8rxwpN
+ EQgarafzQvbjqWIOaJP0b32tJcPtaBY=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-517-PmmclhK9MPSHztIgP2OG1w-1; Mon,
- 16 Feb 2026 06:18:38 -0500
-X-MC-Unique: PmmclhK9MPSHztIgP2OG1w-1
-X-Mimecast-MFC-AGG-ID: PmmclhK9MPSHztIgP2OG1w_1771240716
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-196-z6KJDR3nMCudWPFGktoPzA-1; Mon,
+ 16 Feb 2026 06:16:04 -0500
+X-MC-Unique: z6KJDR3nMCudWPFGktoPzA-1
+X-Mimecast-MFC-AGG-ID: z6KJDR3nMCudWPFGktoPzA_1771240562
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 623F21955D42; Mon, 16 Feb 2026 11:18:36 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7D5FA1800349; Mon, 16 Feb 2026 11:16:02 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5A7A130001A5; Mon, 16 Feb 2026 11:18:35 +0000 (UTC)
+ id D49B930001B9; Mon, 16 Feb 2026 11:16:01 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:15:52 +0100
-Subject: [PATCH 63/85] audio/jack: replace custom logging with report & trace
+Date: Mon, 16 Feb 2026 12:14:58 +0100
+Subject: [PATCH 09/85] build-sys: create a libaudio
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-63-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-9-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,29 +71,29 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4967;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1548;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=tnMUAuR9ZZnzXMT3/4hZtykb2+KAGrajZYT1JRkA5GQ=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxRdKQiHLFBtMKklXyT0ri2mogrf0CRJLN2W
- MtWyA9Y4MuJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UQAKCRDa6OEJdZac
- 5V2HD/43Ec0BC88USxdOBEGpbxPp/j+PvXsJBpkzTzKxTT01rEjMcaT33FYv/9NRx/W1U0V9UNI
- H0FIA4Z8fIUAjBUk7WV13p1wnQhRuVzYW+lB2iQpni6FpLTyU8p23DWC0+5fsfIBU0srgEDib5N
- CWSK0iGPTjbiFYoO2VkNAxt5qaElmU1iECoutYY+KNs36H1/78T5ZqNROW220BRGbBV+VF2aNmd
- tejOz6ssTlRuKl9L5kHFTtTETkCnEIcD6NzsiHCIllCsPQ4sU3Ov2oFlDBxi9j9AJR1h46wy/Sb
- VEsxddNnITSLiikrdeFYwWZSmB8sqbWrWSvzKjr2fNNhJrV3tYuU1wK77ASkxASJOHFhba9bXiN
- S8QA0Xqnc6rqYqE+93SVgiXHGV0FdtIwqU506kFadYnEOnlaKs6pr80kcDhxZS9Mk/ZIrhUrG8s
- hAyWl8a1shMsMBZpxeRAoCM5N22V220gxtN56KIOcGyHOMsU/oaxYO3tl6BEb+u8N5XQsga94L1
- bvZX4EzCjjRXR0pdG5B/cvqiWgFCJGwxbYn2YaE+m4XJCDWdpXWvJmK7NYNdP24j/NZGg6MsHEQ
- JDEKo9lniDw/gnnye9Trki/q94XhhNofhJ7z8UPGxi6+Ys6Jnt7SugrXguxxZGDNpU9g/Ede4p5
- M/sLAwbQG8oQtBg==
+ bh=Hk7/EXh9zm0G5EktVx4Fxa+ZyOM5/pIT6vTnyxaK2F8=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxO6qngCi7boRhVlrkB6kH1FyUurZHfm9x8j
+ KRTcrGJN1+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TgAKCRDa6OEJdZac
+ 5flQD/wNpuizM5bLhXysInhyfoF+cqOdpy9PueN8IwskFnP4s1GcSpYxqJfQ5nQQl+8UJtEgg33
+ jAERBlDyLAd8HJ9tqUKGDAIvdxBp72dhI6BIeEBHn/ZnDS2tzit79MnRpJaYmVxS67QpasHk+8v
+ ez3Rz82svmoIdqGrcqQAPAhL2robuu23n3jF2FKk/+3Gtm02N/ASPMl2OOIcKA7cwItAnhPR8tj
+ HWE9tOIxo1ytzTU8FbAWkYP0CIjKaXZgrxUsayYHRAYQgXdwgWbiAkwOxUNv7UWLrrTjs6jqqjZ
+ 2jg5pydR7zbB6z6yoFmsCxIQ7qwQKTZT2E9IbJYRJSgtp+r6W5p9IBeVJVK/Zj4y1KFZ8qdvx73
+ u4QmnVnSwLunkINZzVc/yIwLwgsmHNEudc84eLOI70b4wdZ3o8UJxVui+YQsNBfRlhk5D4G6jgp
+ +VlZsviVNtmLuj28zpUDNm/9LFbECuJv9BHoIFGw9ARWpqddvPiYtsXearaIzw9nrAvudNI+qMo
+ t21LQwfHDw5No63rMpJVDUbAO793acxRsKJO431kPWibHmmVNyK+/YxjcJyvxoALBOvBe4YLzDI
+ cSFxy+OY+xMp7DRFM9KNyL8CgVfqVCmy+ljf4DRW5QmndoWeTqiR3CzxgPrm8TUJ3j6VU1TlyTN
+ ciIkcsznw2BlPNw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: smfaxP-WoWwFQchAWSWgaQ_Ry4rdzykM9qcAoUCmrOw_1771240716
+X-Mimecast-MFC-PROC-ID: 10r78QWQSWkkYSqw_RWjHGUH-9t7SMaC3pyqGvzLr04_1771240562
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -101,9 +101,9 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,138 +119,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Replace the custom audio logging infrastructure with standard QEMU
-error reporting and tracing.
+This can help create tests, for example.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/jackaudio.c  | 29 +++++++++++++----------------
- audio/trace-events |  9 +++++++++
- 2 files changed, 22 insertions(+), 16 deletions(-)
+ meson.build       | 10 +++++++++-
+ audio/meson.build |  3 ++-
+ 2 files changed, 11 insertions(+), 2 deletions(-)
 
-diff --git a/audio/jackaudio.c b/audio/jackaudio.c
-index e415e94e6e6..a2f725a3232 100644
---- a/audio/jackaudio.c
-+++ b/audio/jackaudio.c
-@@ -26,11 +26,11 @@
- #include "qemu/module.h"
- #include "qemu/atomic.h"
- #include "qemu/main-loop.h"
-+#include "qemu/error-report.h"
- #include "qemu/audio.h"
- #include "qom/object.h"
--
--#define AUDIO_CAP "jack"
- #include "audio_int.h"
-+#include "trace.h"
+diff --git a/meson.build b/meson.build
+index 4af32c3e1f2..904605b844f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -4070,11 +4070,19 @@ libhwcore = static_library('hwcore', sources: hwcore_ss.sources() + genh,
+ hwcore = declare_dependency(objects: libhwcore.extract_all_objects(recursive: false))
+ common_ss.add(hwcore)
  
- #include <jack/jack.h>
- #include <jack/thread.h>
-@@ -343,7 +343,7 @@ static void qjack_client_recover(QJackClient *c)
- 
-         /* if enabled then attempt to recover */
-         if (c->enabled) {
--            dolog("attempting to reconnect to server\n");
-+            trace_jack_client_recover();
-             qjack_client_init(c);
-         }
-     }
-@@ -399,10 +399,10 @@ static void qjack_client_connect_ports(QJackClient *c)
-         }
- 
-         if (c->out) {
--            dolog("connect %s -> %s\n", p, ports[i]);
-+            trace_jack_connect(p, ports[i]);
-             jack_connect(c->client, p, ports[i]);
-         } else {
--            dolog("connect %s -> %s\n", ports[i], p);
-+            trace_jack_connect(ports[i], p);
-             jack_connect(c->client, ports[i], p);
-         }
-     }
-@@ -441,9 +441,9 @@ static int qjack_client_init(QJackClient *c)
-       c->opt->server_name);
- 
-     if (c->client == NULL) {
--        dolog("jack_client_open failed: status = 0x%2.0x\n", status);
-+        error_report("jack: jack_client_open failed: status = 0x%2.0x", status);
-         if (status & JackServerFailed) {
--            dolog("unable to connect to JACK server\n");
-+            error_report("jack: unable to connect to JACK server");
-         }
-         return -1;
-     }
-@@ -451,12 +451,11 @@ static int qjack_client_init(QJackClient *c)
-     c->freq = jack_get_sample_rate(c->client);
- 
-     if (status & JackServerStarted) {
--        dolog("JACK server started\n");
-+        trace_jack_server_started();
-     }
- 
-     if (status & JackNameNotUnique) {
--        dolog("JACK unique name assigned %s\n",
--          jack_get_client_name(c->client));
-+        trace_jack_unique_name(jack_get_client_name(c->client));
-     }
- 
-     /* Allocate working buffer for process callback */
-@@ -536,8 +535,7 @@ static int qjack_init_out(HWVoiceOut *hw, struct audsettings *as)
-     };
-     audio_pcm_init_info(&hw->info, &os);
- 
--    dolog("JACK output configured for %dHz (%d samples)\n",
--        jo->c.freq, jo->c.buffersize);
-+    trace_jack_out_init(jo->c.freq, jo->c.buffersize);
- 
-     return 0;
- }
-@@ -572,8 +570,7 @@ static int qjack_init_in(HWVoiceIn *hw, struct audsettings *as)
-     };
-     audio_pcm_init_info(&hw->info, &is);
- 
--    dolog("JACK input configured for %dHz (%d samples)\n",
--        ji->c.freq, ji->c.buffersize);
-+    trace_jack_in_init(ji->c.freq, ji->c.buffersize);
- 
-     return 0;
- }
-@@ -654,12 +651,12 @@ static int qjack_thread_creator(jack_native_thread_t *thread,
- 
- static void qjack_error(const char *msg)
- {
--    dolog("E: %s\n", msg);
-+    error_report("jack: %s", msg);
- }
- 
- static void qjack_info(const char *msg)
- {
--    dolog("I: %s\n", msg);
-+    trace_jack_info(msg);
- }
- 
- static void audio_jack_class_init(ObjectClass *klass, const void *data)
-diff --git a/audio/trace-events b/audio/trace-events
-index b2f29666700..79744456cec 100644
---- a/audio/trace-events
-+++ b/audio/trace-events
-@@ -28,6 +28,15 @@ dsound_clear_sample(void *p1, uint32_t blen1, uint32_t len1, void *p2, uint32_t
- dsound_wave_format(uint16_t wFormatTag, uint16_t nChannels, uint32_t nSamplesPerSec, uint32_t nAvgBytesPerSec, uint16_t nBlockAlign, uint16_t wBitsPerSample, uint16_t cbSize) "wFormatTag=%u, nChannels=%u, nSamplesPerSec=%u, nAvgBytesPerSec=%u, nBlockAlign=%u, wBitsPerSample=%u, cbSize=%u"
- dsound_buffer_bytes(uint32_t caps_bytes, uint32_t desc_bytes) "caps_bytes=%u, desc_bytes=%u"
- 
-+# jackaudio.c
-+jack_client_recover(void) "attempting to reconnect to server"
-+jack_connect(const char *src, const char *dst) "connect %s -> %s"
-+jack_server_started(void) "server started"
-+jack_unique_name(const char *name) "unique name assigned %s"
-+jack_out_init(uint32_t freq, int buffersize) "output configured for %uHz (%d samples)"
-+jack_in_init(uint32_t freq, int buffersize) "input configured for %uHz (%d samples)"
-+jack_info(const char *msg) "%s"
++audio_ss = audio_ss.apply({})
++libaudio = static_library('qemuaudio', audio_ss.sources() + genh,
++                          dependencies: [audio_ss.dependencies()],
++                          build_by_default: false)
 +
- # pwaudio.c
- pw_state_changed(int nodeid, const char *s) "node id: %d stream state: %s"
- pw_read(int32_t avail, uint32_t index, size_t len) "avail=%d index=%u len=%zu"
++audio = declare_dependency(objects: libaudio.extract_all_objects(recursive: false),
++                           dependencies: [audio_ss.dependencies(), qom])
++
+ ###########
+ # Targets #
+ ###########
+ 
+-system_ss.add(authz, blockdev, chardev, crypto, io, qmp)
++system_ss.add(authz, blockdev, chardev, crypto, io, qmp, audio)
+ common_ss.add(qom, qemuutil)
+ 
+ libuser = static_library('user',
+diff --git a/audio/meson.build b/audio/meson.build
+index 23fb66d571f..a5fec14fb3a 100644
+--- a/audio/meson.build
++++ b/audio/meson.build
+@@ -1,4 +1,5 @@
+-system_ss.add(files(
++audio_ss = ss.source_set()
++audio_ss.add(files(
+   'audio.c',
+   'mixeng.c',
+   'noaudio.c',
 
 -- 
 2.53.0

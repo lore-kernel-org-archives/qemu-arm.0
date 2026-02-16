@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47766E7BD92
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:17:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00C06E7BD8F
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:17:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwaE-0004pQ-Al; Mon, 16 Feb 2026 06:16:06 -0500
+	id 1vrwbC-0005VI-SX; Mon, 16 Feb 2026 06:17:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwaD-0004p4-8S
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1vrwaS-00054K-Iq
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:24 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwaB-0007LP-Md
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:04 -0500
+ id 1vrwaK-0007MN-MY
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:15 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240563;
+ s=mimecast20190719; t=1771240570;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=D9XkBQ/oXbUz12+FCnU0YeeeK3GbFA4EHm+vljyv3ok=;
- b=KOnnQkFIKz7uY1rOPc7hNbiuyRO8iLUB6J+Eyh3TtAPXuNgtOzYclwbDAaNpcy66l8lcbL
- Kk1d5NXXrdz8rlaGAdFvfpC8KJD8A8FNukgWUCMsH4URA7XioFtRcr8g8mdIMWPai2FOCS
- 2STmads8ewl31LCGNG5DhTJmQ2mN+9c=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=GBqAgB7LrCGMYNH0r4X9ORm6NR49Rz7X+bLJoA4G3bU=;
+ b=Tb88MYYbiu5sOG+aNp4g+te7fC8dKBVdLHumbseXX0D8oCAxJ/d6Rt/5zppRFzmnSTwEuj
+ Sk7lZE7wl1b0CA3GyBGU4SoW3T86lnrhYWm0CaC1PVaNHxgfGI+w/2Kj0bcODuWvtM5pEL
+ lCmZubbqiO9pCDztZM5Y3+jivoZ3XwM=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-527-RpNXw8lZM26MNj3Q9FJTrA-1; Mon,
- 16 Feb 2026 06:15:59 -0500
-X-MC-Unique: RpNXw8lZM26MNj3Q9FJTrA-1
-X-Mimecast-MFC-AGG-ID: RpNXw8lZM26MNj3Q9FJTrA_1771240557
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-592-FI5tjmhYPm2FTWcH6gP5Tw-1; Mon,
+ 16 Feb 2026 06:16:07 -0500
+X-MC-Unique: FI5tjmhYPm2FTWcH6gP5Tw-1
+X-Mimecast-MFC-AGG-ID: FI5tjmhYPm2FTWcH6gP5Tw_1771240565
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 47A771955D7A; Mon, 16 Feb 2026 11:15:57 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 44FBF1956054; Mon, 16 Feb 2026 11:16:05 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5094B30001B9; Mon, 16 Feb 2026 11:15:56 +0000 (UTC)
+ id 82D1630001A5; Mon, 16 Feb 2026 11:16:04 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:14:56 +0100
-Subject: [PATCH 07/85] audio: replace vm_running with runstate_is_running()
+Date: Mon, 16 Feb 2026 12:14:59 +0100
+Subject: [PATCH 10/85] scripts/modinfo: add type annotations
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-7-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-10-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -70,30 +70,31 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ Yodel Eldar <yodel.eldar@yodel.dev>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2337;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2026;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=n+3siSegRS3y0Lxy97FkNncK5ldFf6lqIw8dDZCokNw=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxOGDvONvX02CPcOt6tkRs08xUDFu7ySc7+o
- /ReRylaG5KJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TgAKCRDa6OEJdZac
- 5ZvSEACF2/YXNBDalAjxOarQ9NhDg6+Me+DQI1mfjYl7a+xqJ3DlQDt5g9pX0AyBIJSyZfwIige
- ih68uFC8nxwmzcVIhUECrfI7lGATri2iDpo6BSPcngqoJECDFbC68jvYBNEtLbD/4wA7DWKbiIN
- htHfkm9Ae6ZWwTjk3phiDFvOSWZ/B0xVXNDrjs9//whji+TiulX4gb1xT3KkmBJkk/XEexw7V98
- 650BGJPNEDdAXRvo4YmpBiSv5o4xaNJcdhNgT0UuvL4mSrZPhJEHUMkTmsp/l2RxGul+N2HILSP
- 1WwfErpdFtlXOIKxsYfIaSJ7aIWEc2coafvlahyxpIys3zcX4MDjo4fxR+fpzg0k3E4ev94LJgy
- DsyfBFXUgbeQL0XlJMxv6VuA+1VdXUtArf39F2PCwAujAOYweymWJEJpyYTQbtcXxBXijA25ohf
- JZbrLo99l0vERhLPbEoN4UbdFrQODP8kfK40S1fS0fvwpcG59gt1f/LGWG035fLDku6L4U3bw18
- 8F3JZbyvXR/Z6G5ExnN7SN+ciAQrbRHfAkH9w5hhrTJpqef8hXvfS13MTTBFMmHQoYpEK+30UHa
- HJGOd6PRfJo2Jr5bWcr6S4NRF0zxmIEX/zkzrz9/lxNsqjpE+6KhJZ8wFdEZ0iyyZpkbl4ia0tc
- bNe/xNhM9RlzMkw==
+ bh=5Hl18YRrW30PKleJRGv7L/P5HPSsWojpXhI13YBVZFo=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxOFBO2DEy9DCiSBBH6JrWUKzQ19rtPlAW3q
+ hh/vhJqxwaJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TgAKCRDa6OEJdZac
+ 5TZFD/9OCmMWgXkQimmIu/VBagVrLlsqgce+i7mwDLu0NTXbuxuz57WTKX5X+q83E6w5JPI2TCU
+ BEJxkB0YSE80BeeGVy0QqvZR++vRrzEIeiyhWbdJX88tZUPjjcOPbvU4tgzfZDJDJC4hjs+QIBE
+ puLgCdYBH9JtPh+DKiyuMdovU5z+/XC+DffkvP8QhK817O0TAoAB66QXqxTVBP0q7dchPtOr1Jw
+ k1H88MZ8jPKqDlHrAuRuv6hN1BEEKQKe+X/BzlNIJSdPcztUq2rhQeZshF9SPbhn+TIJlzh3vks
+ bWUhyEU+rGE9NSG8cCKKGrrcFn46bm1gn/9YplwHTiSOW4xukT8y1ZYKEBSuvS9edOZa7uJR0EM
+ Y2gthMqsMJes6VHq2AwpL8XGo+tAKQ/U6xKklOPEBIMbO+7Fd2Evp1tkTpYqmkXs30NEqXxMUFs
+ D72sB+rFYmDG1zC+GGi27dyseDLpBggyO56E1ngyTykQQSNDnHGg9jBY9S4ZqzPtwYrEKvd51O4
+ 6YefmW0KeiBnks3blymmVVz3yH3tO3ReMYdpWhi0tSG/kFstjYH3S3gTYlwPwDYBWAtGkDOhx1C
+ 2vDTiw6dTIPGkyAPcIE+mC2nwRVENdlKIgnHDTbQDdNPvyfL9Gm27iDykgq8WpFyiJSXjh8ZL82
+ 5ds0Z6g+Qq524Aw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: -T-qYgQP4nenoQXbs8Ha0Bc6eZrCnhsz1nc3pIt93n8_1771240557
+X-Mimecast-MFC-PROC-ID: Rqq9cdg6aeOjQatusY3Sb2jTokT22lzipux7b0HSvwE_1771240565
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -101,9 +102,9 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,66 +120,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-AudioBackend had a vm_running field which was set in
-audio_vm_change_state_handler().
-
-The state change handler "bool running" argument is true when
-vm_prepare_start() calls it, and the VM runstate is either SUSPENDED or
-RUNNING.
-
-Audio hw voices shouldn't be running when the VM is suspended, but only
-when running. Thus replacing the vm_running field with a call to
-runstate_is_running() is both simpler and more correct.
+Type annotations allow easier code reading, refactoring, checking etc.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+Reviewed-by: Yodel Eldar <yodel.eldar@yodel.dev>
+Tested-by: Yodel Eldar <yodel.eldar@yodel.dev>
+Acked-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/audio_int.h | 1 -
- audio/audio.c     | 5 ++---
- 2 files changed, 2 insertions(+), 4 deletions(-)
+ scripts/modinfo-generate.py | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/audio/audio_int.h b/audio/audio_int.h
-index 20b4c87b0b6..25de0e3f9cf 100644
---- a/audio/audio_int.h
-+++ b/audio/audio_int.h
-@@ -252,7 +252,6 @@ typedef struct AudioBackend {
-     QLIST_HEAD (cap_listhead, CaptureVoiceOut) cap_head;
-     int nb_hw_voices_out;
-     int nb_hw_voices_in;
--    int vm_running;
-     int64_t period_ticks;
+diff --git a/scripts/modinfo-generate.py b/scripts/modinfo-generate.py
+index aaf23544c46..5a8abcae5d3 100644
+--- a/scripts/modinfo-generate.py
++++ b/scripts/modinfo-generate.py
+@@ -2,14 +2,16 @@
  
-     bool timer_running;
-diff --git a/audio/audio.c b/audio/audio.c
-index 9563583cd1e..68698b13e15 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -933,7 +933,7 @@ void AUD_set_active_out(SWVoiceOut *sw, bool on)
-             hw->pending_disable = 0;
-             if (!hw->enabled) {
-                 hw->enabled = true;
--                if (s->vm_running) {
-+                if (runstate_is_running()) {
-                     if (hw->pcm_ops->enable_out) {
-                         hw->pcm_ops->enable_out(hw, true);
-                     }
-@@ -979,7 +979,7 @@ void AUD_set_active_in(SWVoiceIn *sw, bool on)
-         if (on) {
-             if (!hw->enabled) {
-                 hw->enabled = true;
--                if (s->vm_running) {
-+                if (runstate_is_running()) {
-                     if (hw->pcm_ops->enable_in) {
-                         hw->pcm_ops->enable_in(hw, true);
-                     }
-@@ -1598,7 +1598,6 @@ static void audio_vm_change_state_handler (void *opaque, bool running,
-     HWVoiceOut *hwo = NULL;
-     HWVoiceIn *hwi = NULL;
+ import os
+ import sys
++from typing import Optional
  
--    s->vm_running = running;
-     while ((hwo = audio_pcm_hw_find_any_enabled_out(s, hwo))) {
-         if (hwo->pcm_ops->enable_out) {
-             hwo->pcm_ops->enable_out(hwo, running);
+-def print_array(name, values):
++
++def print_array(name: str, values: list[str]) -> None:
+     if len(values) == 0:
+         return
+     list = ", ".join(values)
+     print("    .%s = ((const char*[]){ %s, NULL })," % (name, list))
+ 
+-def parse_line(line):
++def parse_line(line: str) -> tuple[str, str]:
+     kind = ""
+     data = ""
+     get_kind = False
+@@ -31,7 +33,7 @@ def parse_line(line):
+             continue
+     return (kind, data)
+ 
+-def generate(name, lines, enabled):
++def generate(name: str, lines: list[str], enabled: set[str]) -> Optional[set[str]]:
+     arch = ""
+     objs = []
+     deps = []
+@@ -68,17 +70,17 @@ def generate(name, lines, enabled):
+     print("},{")
+     return {dep.strip('" ') for dep in deps}
+ 
+-def print_pre():
++def print_pre() -> None:
+     print("/* generated by scripts/modinfo-generate.py */")
+     print("#include \"qemu/osdep.h\"")
+     print("#include \"qemu/module.h\"")
+     print("const QemuModinfo qemu_modinfo[] = {{")
+ 
+-def print_post():
++def print_post() -> None:
+     print("    /* end of list */")
+     print("}};")
+ 
+-def main(args):
++def main(args: list[str]) -> None:
+     if len(args) < 3 or args[0] != '--devices':
+         print('Expected: modinfo-generate.py --devices '
+               'config-device.mak [modinfo files]', file=sys.stderr)
 
 -- 
 2.53.0

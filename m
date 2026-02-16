@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD9FBE7BD95
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:21:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45315E7BD98
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:21:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwct-0007Ky-5F; Mon, 16 Feb 2026 06:18:54 -0500
+	id 1vrwfN-0006W6-H9; Mon, 16 Feb 2026 06:21:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwad-0005Ev-Qk
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:44 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vrwc8-0006RN-0R
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:07 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwab-0007Px-Iy
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:31 -0500
+ id 1vrwc5-0008AW-AA
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:03 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240589;
+ s=mimecast20190719; t=1771240680;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KCugop36CLelcrOMKIrKRT8HBbv47hNoq//wkZ62yVs=;
- b=RObDXb8o2s1Kwwwve+0p8hLDSIClanCzsuomIdW/n1UEwyHCBxLZ+mB0mK7oLF/10dPsJ2
- A+0oiynVZ3yv/sbXb6lsmRQW6FnFVKONj/+kmDgPRBYQJArN19rn+UN1WLLBDQhr41JJde
- Ran61zuOVKAD4SzYWUB/sThcBS8UIso=
+ bh=5Rp8fyVkH2hZh+mPHtPSd3g8yoblH6WdY9/V5EDNhAE=;
+ b=RPFaUCL4ZC8EDpnl4E12NxY7mozmeqTlNELb5TAtPW9B6dn+eCMNgJ87l9gGohxt+BJtd9
+ PpB9QMhcjp2oj6nqfq7P+AK+o59oPdCcVqUIzsJj6EsAxKbzKOQHiBvFZvASV8g6GaIobu
+ J6t/3abI18dLBeMPU3nlFlwFzYaZQik=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-112-mWSuph5cO9-5d6ohy55CpQ-1; Mon,
- 16 Feb 2026 06:16:25 -0500
-X-MC-Unique: mWSuph5cO9-5d6ohy55CpQ-1
-X-Mimecast-MFC-AGG-ID: mWSuph5cO9-5d6ohy55CpQ_1771240583
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-459-P-tWzq9TPfiVszLycTCsUA-1; Mon,
+ 16 Feb 2026 06:17:57 -0500
+X-MC-Unique: P-tWzq9TPfiVszLycTCsUA-1
+X-Mimecast-MFC-AGG-ID: P-tWzq9TPfiVszLycTCsUA_1771240675
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id AE85B1800365; Mon, 16 Feb 2026 11:16:23 +0000 (UTC)
+ id 5E8791800259; Mon, 16 Feb 2026 11:17:55 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1262A30001B9; Mon, 16 Feb 2026 11:16:22 +0000 (UTC)
+ id 9FDFB30001A5; Mon, 16 Feb 2026 11:17:54 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:15:05 +0100
-Subject: [PATCH 16/85] scripts/modinfo: add --skip-missing-deps
+Date: Mon, 16 Feb 2026 12:15:38 +0100
+Subject: [PATCH 49/85] audio/sdl: convert to QOM lifecycle methods
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-16-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-49-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,29 +71,29 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=5639;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4088;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=ygcT/EP4LKFFbInc5HK8ho4Iw+AmP0MuGXSJiZYYmoc=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxOHXNZrYPKLzyeQ8z6X6VU5BDpOUyVsw41/
- lYzr9uHeLKJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TgAKCRDa6OEJdZac
- 5fOoEACgLqwVa2Yp4SD81nT3uP6DNRwMv/bm+MDEtr03Tx3ZpY+cbGI9AqrnKs+PZXvncHYc/2X
- xNBAGp0uSQjaqqtYp5aG2QySNKk4rzm2woekbwTAyxZqqGd4uyVoA9hy7nhdbhqd0KlDojH5nEZ
- 3XlgBUTReQXcu2FS9gfwWuyl3KAMl2yBNvbMPjy5wpKDTe1qXdeKMEz1awemtRfR6ZL9xQlllSm
- HvpJVmhoxBrAmyCt/6ai4HAKMsev/TLAdahGsDnUgWssGt+ClYyUU2emrZjJIBPwVIKYOgG/yiH
- bvhaTZSK9eNORZ4SdBrxQEG4b0kna1P3qBUXb7B81fJl+5CsfgloftTDPC7+eLYPyIlWdHchKpt
- z1UyQMNMbzXorpK/UJWzVs5hFX+lKBrnWAX0Myi2L95391uDWc8/FMTE7/QNgYvInnZU3KkJjy+
- k6vRD+Uii4YLWW1dgD0nwxilI+B6+1/H2sC3GsDHHZWUYyb2vlQZg2ToxoprAn/+2zeeq9GcTnV
- lNi+UPlD4IXv+bKk/Qb7D5PpKiSOvphPjkez9Yd4VQl7BNJ8dTJOeIv/cxJHBaZKjXmw40rEvOn
- OH9eWKy2JU7tMetm4ZjB4L5S/FflfJblgGv0s9b5o/ttsF8nw39j6x4AuFoDFz31CUZviLJAzw+
- JHQyglWo+elR1bg==
+ bh=Bi9IEy+nlgFFCt8QlBx2RYdWyux3lXAtO/gg3ozTayY=;
+ b=owEBbAKT/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxQtE3m5hY51mQAQrSKdZIBcmYjmT5YyP8cp
+ vUMuz6qBp6JAjIEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UAAKCRDa6OEJdZac
+ 5ROQD/dzAu4kQRBZiOoqG5a4TEY5nm127pGZega2hSBFiRQ5Ep3ZEB96xPTxG+kJoi6VHCY/T9I
+ P0JxTrt2PellSi0S5ZPNSE6w+hy2YdSgVTsq1dRLcoNBT4wix6puI7qRp/8xs5ksDvYeGB+77NP
+ hJ49mk3KxmBClm1/nJzrdZoG1gff3cVoPMapiEo4CxA6BpNyiz0FXrU83O240Ww1Iu9yliK908P
+ W4z70Y+vG+c65ZlyXgEKJKqJZBmYZ4HN8K2c8yrBzxSe3Qh+1UBtz8usuKC9VwAthWT0iB/qtWI
+ tVNitn6TMUkr7+d7grRKcJCxiyfNmLmU7i81ctLXoAtKmqgoY5Js0ajXZxl75IHyP0PG4A4uesd
+ eLUECuz2FuOFkA4rii9YbVLUtB9QBCkw5AxtS1imhNm8/B0sFxUxCkAHAmZUEdoEMsl/uDQ/tgX
+ bZRn5UkR4QwjOiwME9j+IywHiLJKMWrN/Z5leTLj3tXHUYD4voY0hmlgsQjxqRN5AOJIxuR1ybg
+ cZVtsini+XZklQPGJW+Ei1SjOdsNBmlnK/nCyPDEw+N9lNgFlBPo4eUv1TROTnbTxe5GlTgp94q
+ e5cL85CnhCLssitegN/Bsl28ADaGJqfKGOkam+a6V6xHQHvcgfBC+IYN0yzteFim5DUe9GnewOB
+ TfaORBqIzmdtT
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: xJicL-c0K64Z1ZwiMSYZJmzcZfMIcVgUB6Qf6qXp84g_1771240583
+X-Mimecast-MFC-PROC-ID: fo1dVo5E-rDt4aC8q9_-9bM55TAqdBJU0ktlQFagHXs_1771240675
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -101,9 +101,9 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,155 +119,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add --skip-missing-deps flag that prints warnings for missing
-dependencies but continues without exiting with error code 1.
+Migrate the SDL audio backend from the legacy driver init/fini
+callbacks to proper QOM realize and finalize methods.
+
+The sdl_audio_init() function is replaced with audio_sdl_realize(),
+which initializes the SDL audio subsystem before delegating to the
+parent class realize method. The sdl_audio_fini() is replaced with
+audio_sdl_finalize() to properly clean up the SDL audio subsystem.
+
+Access to the Audiodev is now through hw->s->dev instead of the
+drv_opaque pointer.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Acked-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- scripts/modinfo-generate.py | 94 ++++++++++++++++++++++++++++++++++-----------
- 1 file changed, 71 insertions(+), 23 deletions(-)
+ audio/sdlaudio.c | 40 +++++++++++++++++++++++-----------------
+ 1 file changed, 23 insertions(+), 17 deletions(-)
 
-diff --git a/scripts/modinfo-generate.py b/scripts/modinfo-generate.py
-index e7d35242414..e231c129196 100644
---- a/scripts/modinfo-generate.py
-+++ b/scripts/modinfo-generate.py
-@@ -34,7 +34,8 @@ def parse_line(line: str) -> tuple[str, str]:
-             continue
-     return (kind, data)
+diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
+index a60b1629da0..0dfa3100828 100644
+--- a/audio/sdlaudio.c
++++ b/audio/sdlaudio.c
+@@ -44,19 +44,14 @@
+ #define TYPE_AUDIO_SDL "audio-sdl"
+ OBJECT_DECLARE_SIMPLE_TYPE(AudioSdl, AUDIO_SDL)
  
--def generate(name: str, lines: list[str], enabled: set[str]) -> Optional[set[str]]:
-+def parse_modinfo(name: str, lines: list[str], enabled: set[str]) -> Optional[dict]:
-+    """Parse a modinfo file and return module metadata, or None if disabled."""
-     arch = ""
-     objs = []
-     deps = []
-@@ -54,21 +55,39 @@ def generate(name: str, lines: list[str], enabled: set[str]) -> Optional[set[str
-                 # don't add a module which dependency is not enabled
-                 # in kconfig
-                 if data.strip() not in enabled:
--                    print(f"    /* module {data.strip()} isn't enabled in Kconfig. */")
--                    print("/* },{ */")
-                     return None
-             else:
-                 print("unknown:", kind)
-                 exit(1)
- 
--    print(f'    .name = "{name}",')
--    if arch != "":
--        print(f"    .arch = {arch},")
--    print_array("objs", objs)
--    print_array("deps", deps)
--    print_array("opts", opts)
-+    return {
-+        'name': name,
-+        'arch': arch,
-+        'objs': objs,
-+        'deps': deps,
-+        'opts': opts,
-+        'dep_names': {dep.strip('" ') for dep in deps}
-+    }
++static AudioBackendClass *audio_sdl_parent_class;
 +
-+def generate(modinfo: str, mod: Optional[dict],
-+             skip_reason: Optional[str]) -> None:
-+    """Generate C code for a module."""
-+    print(f"    /* {modinfo} */")
-+    if mod is None:
-+        if skip_reason == "missing_deps":
-+            print("    /* module has missing dependencies. */")
-+        else:
-+            print("    /* module isn't enabled in Kconfig. */")
-+        print("/* },{ */")
-+        return
-+
-+    print(f'    .name = "{mod["name"]}",')
-+    if mod['arch'] != "":
-+        print(f"    .arch = {mod['arch']},")
-+    print_array("objs", mod['objs'])
-+    print_array("deps", mod['deps'])
-+    print_array("opts", mod['opts'])
-     print("},{")
--    return {dep.strip('" ') for dep in deps}
+ struct AudioSdl {
+     AudioMixengBackend parent_obj;
+ };
  
- def print_pre() -> None:
-     print("/* generated by scripts/modinfo-generate.py */")
-@@ -86,6 +105,8 @@ def main() -> None:
-     )
-     parser.add_argument('--devices',
-                         help='path to config-device.mak')
-+    parser.add_argument('--skip-missing-deps', action='store_true',
-+                        help='warn if a dependency is missing and continue')
-     parser.add_argument('modinfo', nargs='+',
-                         help='modinfo files to process')
-     args = parser.parse_args()
-@@ -99,27 +120,54 @@ def main() -> None:
-                 if config[1].rstrip() == 'y':
-                     enabled.add(config[0][7:])  # remove CONFIG_
+ static struct audio_driver sdl_audio_driver;
  
--    deps = set()
--    modules = set()
--    print_pre()
-+    # all_modules: modinfo path -> (basename, parsed module or None, skip_reason)
-+    all_modules = {}
-     for modinfo in args.modinfo:
-         with open(modinfo) as f:
-             lines = f.readlines()
--        print(f"    /* {modinfo} */")
-         (basename, _) = os.path.splitext(modinfo)
--        moddeps = generate(basename, lines, enabled)
--        if moddeps is not None:
--            modules.add(basename)
--            deps.update(moddeps)
--    print_post()
-+        mod = parse_modinfo(basename, lines, enabled)
-+        skip_reason = "kconfig" if mod is None else None
-+        all_modules[modinfo] = (basename, mod, skip_reason)
-+
-+    # Collect all available module names
-+    available = {basename for basename, mod, _ in all_modules.values()
-+                 if mod is not None}
+-static void audio_sdl_class_init(ObjectClass *klass, const void *data)
+-{
+-    AudioMixengBackendClass *k = AUDIO_MIXENG_BACKEND_CLASS(klass);
+-
+-    k->driver = &sdl_audio_driver;
+-}
+-
+ typedef struct SDLVoiceOut {
+     HWVoiceOut hw;
+     int exit;
+@@ -356,7 +351,7 @@ static int sdl_init_out(HWVoiceOut *hw, struct audsettings *as,
+     SDLVoiceOut *sdl = (SDLVoiceOut *)hw;
+     SDL_AudioSpec req, obt;
+     int err;
+-    Audiodev *dev = drv_opaque;
++    Audiodev *dev = hw->s->dev;
+     AudiodevSdlPerDirectionOptions *spdo = dev->u.sdl.out;
+     struct audsettings obt_as;
  
--    error = False
--    for dep in deps.difference(modules):
-+    # Collect all dependencies
-+    all_deps = set()
-+    for basename, mod, _ in all_modules.values():
-+        if mod is not None:
-+            all_deps.update(mod['dep_names'])
-+
-+    # Check for missing dependencies
-+    missing = all_deps.difference(available)
-+    for dep in missing:
-         print(f"Dependency {dep} cannot be satisfied", file=sys.stderr)
--        error = True
+@@ -412,7 +407,7 @@ static int sdl_init_in(HWVoiceIn *hw, audsettings *as, void *drv_opaque)
+     SDLVoiceIn *sdl = (SDLVoiceIn *)hw;
+     SDL_AudioSpec req, obt;
+     int err;
+-    Audiodev *dev = drv_opaque;
++    Audiodev *dev = hw->s->dev;
+     AudiodevSdlPerDirectionOptions *spdo = dev->u.sdl.in;
+     struct audsettings obt_as;
  
--    if error:
-+    if missing and not args.skip_missing_deps:
-         exit(1)
+@@ -459,19 +454,20 @@ static void sdl_enable_in(HWVoiceIn *hw, bool enable)
+     SDL_PauseAudioDevice(sdl->devid, !enable);
+ }
  
-+    # When skipping missing deps, iteratively remove modules with
-+    # unsatisfiable dependencies
-+    if args.skip_missing_deps and missing:
-+        changed = True
-+        while changed:
-+            changed = False
-+            for modinfo, (basename, mod, skip_reason) in list(all_modules.items()):
-+                if mod is None:
-+                    continue
-+                if not mod['dep_names'].issubset(available):
-+                    available.discard(basename)
-+                    all_modules[modinfo] = (basename, None, "missing_deps")
-+                    changed = True
+-static void *sdl_audio_init(Audiodev *dev, Error **errp)
++static bool audio_sdl_realize(AudioBackend *abe, Audiodev *dev, Error **errp)
+ {
+-    if (SDL_InitSubSystem (SDL_INIT_AUDIO)) {
++    if (SDL_InitSubSystem(SDL_INIT_AUDIO)) {
+         error_setg(errp, "SDL failed to initialize audio subsystem");
+-        return NULL;
++        qapi_free_Audiodev(dev);
++        return false;
+     }
+ 
+-    return dev;
++    return audio_sdl_parent_class->realize(abe, dev, errp);
+ }
+ 
+-static void sdl_audio_fini (void *opaque)
++static void audio_sdl_finalize(Object *obj)
+ {
+-    SDL_QuitSubSystem (SDL_INIT_AUDIO);
++    SDL_QuitSubSystem(SDL_INIT_AUDIO);
+ }
+ 
+ static struct audio_pcm_ops sdl_pcm_ops = {
+@@ -499,8 +495,6 @@ static struct audio_pcm_ops sdl_pcm_ops = {
+ 
+ static struct audio_driver sdl_audio_driver = {
+     .name           = "sdl",
+-    .init           = sdl_audio_init,
+-    .fini           = sdl_audio_fini,
+     .pcm_ops        = &sdl_pcm_ops,
+     .max_voices_out = INT_MAX,
+     .max_voices_in  = INT_MAX,
+@@ -508,12 +502,24 @@ static struct audio_driver sdl_audio_driver = {
+     .voice_size_in  = sizeof(SDLVoiceIn),
+ };
+ 
++static void audio_sdl_class_init(ObjectClass *klass, const void *data)
++{
++    AudioBackendClass *b = AUDIO_BACKEND_CLASS(klass);
++    AudioMixengBackendClass *k = AUDIO_MIXENG_BACKEND_CLASS(klass);
 +
-+    # generate output
-+    print_pre()
-+    for modinfo in args.modinfo:
-+        (basename, mod, skip_reason) = all_modules[modinfo]
-+        generate(modinfo, mod, skip_reason)
-+    print_post()
++    audio_sdl_parent_class = AUDIO_BACKEND_CLASS(object_class_get_parent(klass));
 +
- if __name__ == "__main__":
-     main()
++    b->realize = audio_sdl_realize;
++    k->driver = &sdl_audio_driver;
++}
++
+ static const TypeInfo audio_types[] = {
+     {
+         .name = TYPE_AUDIO_SDL,
+         .parent = TYPE_AUDIO_MIXENG_BACKEND,
+         .instance_size = sizeof(AudioSdl),
+         .class_init = audio_sdl_class_init,
++        .instance_finalize = audio_sdl_finalize,
+     },
+ };
+ 
 
 -- 
 2.53.0

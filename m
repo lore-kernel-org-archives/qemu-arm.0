@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32921E7BD8B
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 10:45:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1C46E7BD8C
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 10:45:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrw4a-00020w-OU; Mon, 16 Feb 2026 05:43:26 -0500
+	id 1vrw4a-000211-PF; Mon, 16 Feb 2026 05:43:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrw4F-0001rv-ST
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 05:43:06 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1vrw4N-0001u4-NO
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 05:43:13 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrw4D-00010Y-M8
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 05:43:03 -0500
+ id 1vrw4K-000128-0P
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 05:43:09 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771238579;
+ s=mimecast20190719; t=1771238586;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VuljhDTSEvIRuZWMVHmH3upAs1bYNZiEpsxb8H2Doiw=;
- b=acxL9V6Jd2Dl/9D1gIwuM4q94C7oI4chUpphINmYUmINjgV0KHy1vSSOVMnrnsByHCO6Ay
- p/DPu+i4GMa2Z09XzoaB5TPxJFGy9S03HKbj+0y6tQ1ibMabNh9xVgWPCkbc13+syNFr5p
- egtRGqJwAC1SsKQZ6bykoXOHEEVRgQI=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=1Zx9tUgPYauS3ey3x8MRhHhI+AI2QGIcLzfbiUv0MoU=;
+ b=CXkeknYi0j2vNpYgc4Tzd89yfIZZphcjMZyDtBFAys6/1xrv81YlWttKmen1g5Di12jqg5
+ PEDr/XwDDm6IMoG6XtHT2DOygyO5d7qRvH0Djk5E1iPKcQ/BAOI0JwDajTReSywTMMVEeG
+ ZDrHExh8DaQyEpJVDmgSEf/FYeT8F34=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-395-DI8jQAtxNm2liszE9Jmi_Q-1; Mon,
- 16 Feb 2026 05:42:54 -0500
-X-MC-Unique: DI8jQAtxNm2liszE9Jmi_Q-1
-X-Mimecast-MFC-AGG-ID: DI8jQAtxNm2liszE9Jmi_Q_1771238572
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-522-hLxrww1dPpCDhixFsHlgnQ-1; Mon,
+ 16 Feb 2026 05:43:02 -0500
+X-MC-Unique: hLxrww1dPpCDhixFsHlgnQ-1
+X-Mimecast-MFC-AGG-ID: hLxrww1dPpCDhixFsHlgnQ_1771238580
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CE95118005AD; Mon, 16 Feb 2026 10:42:52 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A9E0D1955BD0; Mon, 16 Feb 2026 10:43:00 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D9D901800464; Mon, 16 Feb 2026 10:42:51 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id AB9F91955D85; Mon, 16 Feb 2026 10:42:59 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 11:42:17 +0100
-Subject: [PATCH 05/85] qemu-options.hx: clarify default audio backend selection
+Date: Mon, 16 Feb 2026 11:42:20 +0100
+Subject: [PATCH 08/85] audio: list backends as modules
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-5-edcb25699381@redhat.com>
+Message-Id: <20260216-audio-v1-8-edcb25699381@redhat.com>
 References: <20260216-audio-v1-0-edcb25699381@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-edcb25699381@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,29 +71,29 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2296;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1122;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=pQYsT12b6ItIPMgGRIh+ZR0w15tO/zqPK/vSleMzRTE=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvSTBOfJ/9SFd00hU+d4HgN6JlR7V3z1yuoXo
- Lac8f6pwwmJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL0kwAKCRDa6OEJdZac
- 5R+2D/0TLc+WTe4qBJYFVIDZIMkPAN1j2BU6sH0K53CF16dBBTyJUhiB4sqBlhzBWTvvhXN9pTj
- CVJ+CxN/vwy8ezQQD5+4cFJ6stUvBIdDxSxdwVxo0r96RXsJG7HcmxsEBSr4XgpW+CVQsf7vhrK
- 41lud5X25QWwG50DnDGBzvObQ09YKvLz1INnfX6BnZyqhCG4ZyNgpONuc+z4GwPcZQ5CNSdih+A
- RuvNUTNkw0IMDoGzBu/MgdfJZ2Z5wigLnEytoONcw+jEweKJ9c326oabVfX8pgwlq92ro/0nai4
- nW+St4zidsLLBio6H3WeAEgm6pBlPFo/T5If/g3ky/WKGY8rB1TVHAbh5uQL6Dn7zwgsJnll9AL
- UdNxD8aVfJbG2JWKYgvfA0XBhlwJcNLp0CVb2VyoZcEmOJoOlzJRxvBh1HzoWn7rOAGpwstl/HN
- x66P3ZyWTgSCxCZ4o00iAtPyg38cjaG5zFArD+Iy7ameiBb5Ehy3DJaat2k8jJLbIAUwGwOJoqg
- puGZys1oRcgoeECV3nGVlMoxnkLypLUm1DJbZkEnIf+Foj5C7ApyWKD6HSZYm1DLWXI35sgp+SF
- j7zP3KlXgCITrmjD/+PeF54ZrMNSJebVGShZr01cWErbxvqRKlGhN+MykbXOvAnGXK+yeJGPBdG
- hRmqyM9XQRM7S6w==
+ bh=8RNCjDZJyS99FQfKQHwCUPWQBTeZ+z6QEmMkBqjgbCg=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvST8Ua8TkQ/9OVYDkjiUn3SI6u3SfF+ww04l
+ a6IMH3q+oeJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL0kwAKCRDa6OEJdZac
+ 5fB3EACBIfhi7WcuEFSEabF03hPjxT9hzCFMXGnvtXoNles2IBMV6mCKXtD1famasrUGiK3+ioG
+ Olnhr4IlAgW/hxrGM9rT5M8thSurtE0lsMThp2Ub9cw+nrXI+L4ehyvTXpQxfvbCnUqVHh0XsJ9
+ 8aYLLuyGX/1FlbksJn2iNlA5Kbxlv27Ji3PG4DTrIdsByPdLEykmYSUWhb6QkD7BBOBynvKjR9L
+ RXkcRmzsb1By/D7Fy7gOTgQTErQC48xf9IBpztVYf4n5TSxEiz75M6557/3mu27ob6VhfuKcKdK
+ czpW/1oXFRj9eCCSfhTw8gaouFI3hiHT28WjCMgsHPSCeSPF2o1mHF7xBoDrxzt2EBsVzG/fJrm
+ 6+ziH2HWik8ImPmlWCuIXJbYOxyGt3pJxvliHJKkwV7IdCv8GlOpIxWDeiCbRIq6kIf89pykTCf
+ 0+sogYaqY7B7KCoCWYoq+K9AKlFfJlyHfzkANC3ptDrqG/+OfkX+PwxoTkdTdohxYxU7crCVEvb
+ QinKp6mDTYd66iW9HHN++oCmFVd8IgGo+cZwQaDWVzbhSqkdi3Yc2e604X7Gek9ZT5DobQWTsxs
+ b0Pbdmd0OG0wWVa1f7McB4mTihYvMXzv9PHD5CTnqL3PdG64CAd5OXInPVoOlQtVkgw3hD8YuYG
+ i/DfB3bOjs/0blw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 58PBxV4Vs43WD8lzVNJkUNYrWYgRSbwiiJP2fNpaIHY_1771238572
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: gMmW4l4JwdsUOsfyiDYE3Ll3WLcbcFNBTNXxSN6edcM_1771238580
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -101,9 +101,9 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,62 +119,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Windows doesn't support modules, atm, but we can treat it as a regular
+audio unit regardless.
+
+MacOs does support module, so this is fine.
+
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- qemu-options.hx | 25 ++++++++++++++++++-------
- 1 file changed, 18 insertions(+), 7 deletions(-)
+ audio/meson.build | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 33fcfe7ce66..15a6f82043a 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -896,11 +896,16 @@ DEF("audiodev", HAS_ARG, QEMU_OPTION_audiodev,
-     QEMU_ARCH_ALL)
- SRST
- ``-audiodev [driver=]driver,id=id[,prop[=value][,...]]``
--    Adds a new audio backend driver identified by id. There are global
--    and driver specific properties. Some values can be set differently
--    for input and output, they're marked with ``in|out.``. You can set
--    the input's property with ``in.prop`` and the output's property with
--    ``out.prop``. For example:
-+    Adds a new audio backend driver identified by id.
-+
-+    If no audio backend is specified, QEMU will attempt to select a
-+    default one. The ``-display`` option may influence which backend is
-+    selected.
-+
-+    There are global and driver specific properties. Some values can be
-+    set differently for input and output, they're marked with ``in|out.``.
-+    You can set the input's property with ``in.prop`` and the output's
-+    property with ``out.prop``. For example:
+diff --git a/audio/meson.build b/audio/meson.build
+index b2dca2c6409..23fb66d571f 100644
+--- a/audio/meson.build
++++ b/audio/meson.build
+@@ -8,12 +8,11 @@ system_ss.add(files(
+ # deprecated since v10.2, to be removed
+ system_ss.add(files('audio-hmp-cmds.c', 'wavcapture.c'))
  
-     ::
- 
-@@ -2198,8 +2203,11 @@ DEF("display", HAS_ARG, QEMU_OPTION_display,
-     , QEMU_ARCH_ALL)
- SRST
- ``-display type``
--    Select type of display to use. Use ``-display help`` to list the available
--    display types. Valid values for type are
-+    Select type of display to use. This may also influence the default
-+    audio backend selection.
-+
-+    Use ``-display help`` to list the available display types. Valid values
-+    for type are
- 
-     ``spice-app[,gl=on|off]``
-         Start QEMU as a Spice server and launch the default Spice client
-@@ -2209,6 +2217,9 @@ SRST
-     ``dbus``
-         Export the display over D-Bus interfaces. (Since 7.0)
- 
-+        If no audio backend is specified and the dbus display backend is
-+        specified, the dbus audio backend is used by default.
-+
-         The connection is registered with the "org.qemu" name (and queued when
-         already owned).
- 
+-system_ss.add(when: coreaudio, if_true: files('coreaudio.m'))
+-system_ss.add(when: dsound, if_true: files('dsoundaudio.c', 'audio_win_int.c'))
+-
+ audio_modules = {}
+ foreach m : [
+   ['alsa', alsa, files('alsaaudio.c')],
++  ['coreaudio', coreaudio, files('coreaudio.m')],
++  ['dsound', dsound, files('dsoundaudio.c', 'audio_win_int.c')],
+   ['oss', oss, files('ossaudio.c')],
+   ['pa', pulse, files('paaudio.c')],
+   ['sdl', sdl, files('sdlaudio.c')],
 
 -- 
 2.53.0

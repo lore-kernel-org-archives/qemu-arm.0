@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73320E7BD9B
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:23:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 533D4E7BD92
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:23:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwfP-0006iH-1R; Mon, 16 Feb 2026 06:21:27 -0500
+	id 1vrwfT-0007Ks-C3; Mon, 16 Feb 2026 06:21:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwcE-0006al-BK
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:13 -0500
+ id 1vrwd4-0007TA-QN
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:08 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwcC-0008C3-E0
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:09 -0500
+ id 1vrwd3-0008QJ-6O
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240686;
+ s=mimecast20190719; t=1771240740;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=aSw0+nWfREHkM9D3OEgLFV+S+9mgN4B1YEV84KexTb8=;
- b=c6aPQ4iYgQtvls94XXmWTqUryS2tTw/OKENZZ1wDHGnSd2mAw3C6xv1KvK/VWoithhck1M
- CXLFJ4Mq4clm5PeZfiz+dhUObGef3+m6OelFnyKSEoqK7mJcGxvxYUP8gZFZNOWtzD2rWM
- +BnggL0uHRRA9NEbwA5MeRlDmjwU59U=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=KAKt4CvCFG4mzYabTt4mTrA6Ft2BKrJ6zjij58RhywI=;
+ b=WbaZA+hZvZYNQCRebrRamKW6qmueZupDti499s0u3u1ja+6Xqoop8jbVcQocHZUsB/LwCS
+ PdVs7L71WAOjGJ21xs2S5rCpIlMzUauPqpdsq7aK+tabvOYmNJ8Gx7ZB2wjOAd0AXp1Wll
+ UZUcHXBRMnhv0Whgme7bGng/89KJb6s=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-187-Nf_NEw_UMeih7CYbTExd2Q-1; Mon,
- 16 Feb 2026 06:18:02 -0500
-X-MC-Unique: Nf_NEw_UMeih7CYbTExd2Q-1
-X-Mimecast-MFC-AGG-ID: Nf_NEw_UMeih7CYbTExd2Q_1771240680
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-711-AQUHFmnfNzyCJtRKh0ofKg-1; Mon,
+ 16 Feb 2026 06:18:57 -0500
+X-MC-Unique: AQUHFmnfNzyCJtRKh0ofKg-1
+X-Mimecast-MFC-AGG-ID: AQUHFmnfNzyCJtRKh0ofKg_1771240735
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6ED021800454; Mon, 16 Feb 2026 11:18:00 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 47DE51956060; Mon, 16 Feb 2026 11:18:55 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E54C518003F5; Mon, 16 Feb 2026 11:17:59 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 01CD51955F22; Mon, 16 Feb 2026 11:18:53 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:15:40 +0100
-Subject: [PATCH 51/85] audio/jack: convert to QOM lifecycle methods
+Date: Mon, 16 Feb 2026 12:15:59 +0100
+Subject: [PATCH 70/85] audio/spice: remove unused AUDIO_CAP macro
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-51-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-70-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -70,26 +70,27 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ Thomas Huth <thuth@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2688;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=598;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=t0ucslZSKbGcBRFeyrKr2G8Lh/S+UoRUSUp+0FAVQBY=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxQ5zrVbVSPL/xI25NQc7n5DQc/dYT/XBYH6
- jGtBjQPRGOJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UAAKCRDa6OEJdZac
- 5WzOEACqKsIXAM9F0PkZZn+jgTBQSEewvNiNgfEvoF6pvr4SPmK3rKBkBVcm2Qv1k9uGOjmOyiY
- 4Ql6Xq8Iw8lfcJa9VOz9O254OuuM4rqp9g6ydM+fQlTsv+p4pDMztk5vN+IbQlzgFIz7OKr2OBa
- nTgEpU/ymBj4ynkfbSPuze0f4O8jlPQ2FyPVO/var1rsHGiXl43Wolr0kuYx4DPLgjhobpg20Ug
- ReWFwfEdMEnJ1tmVvPGKYCv4dkLsFNkg5SJLfgmnOig2Gtkq2dgV4iK8bKAshHRK10R0BTmmx2X
- CXf8SgxL6lxpTQjTY5gsYOp1WOgImz9BqlqXqaCmwXY0gjefx1SWZX8e/p5Ys5yM7t6Ml5j1Jp2
- j2aFncipEjiEYzS7qmaneSezzThU7KP6Q0dOk29uYAp+TMV1gJML5j1Xk6OdUUDpluk8ODbJ1s+
- xBwM99P9PbDrjum5voco10gOCYfFLWbTazqO0u7JJsGoSL5uaiJEXQbu+zhQTH7jE7D9AtjQznJ
- nvqdfb3g4V0xAm4Cv2UMwTR8NeZM9fbPwswin8o6iiUagrK75YJzLjEj9iH5HluGZNLtmwDdNXS
- meGyOq9YLD0vTrxGPbmzc+Pa1U0ZprYpo9R5Vs0UW3AtDw7YQrgPHpbMW85mul0z9Y66T7x5GxL
- bQKS5h5MBYY87ow==
+ bh=MqZZlsSA5odZdvc1Tj/JSrGEReLFTmuCGtE0H89M0aU=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxRq4+gwTPcAd8pPhRDmKamOxBfo6hpEYoxU
+ th3CL7Fh7yJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UQAKCRDa6OEJdZac
+ 5ReJD/oDDMnZtfu+31bPvGH23DEWjsilPkIZqvDFleSu1VWYCqFLa2EesvLSR4rTt7xDDitfaU7
+ WV98YXuj+ZssBOXHXBKDtpFCSTSPMHwjFHqa1vmCeAxOPd/x5Ju0U2ZQddJxsdRWv2Lrjq5yL3X
+ n+o3ddftwnrnxp3VaIJcqlFVVe3bVvqckIlubggbsnfq/EBOQ6ibGk4KDx5zJmw7LtjVeiJfIoy
+ XPfOkx8kvvATM7KMBEfvf5inrxjx+txca2YQmnaNzHWXPmqL0wzj9pHELL2yKGpf6YGtg2H4WHc
+ b+3oK/EfKC11tQANh0JKngnTFCEV/COfXS0CXgdrgGRSF7mv8xO9PuqyqHzH9ahntyWTHMLZuur
+ Eitpb6fmcKCYGM06dMFHZDCe8ROCM6godaS/Fpnbf40EH9EQrZEcenDc2Ol2IHMWQSYIsttbc1y
+ JntkUsTcqTfkvYqb7HnndX0Dql6ErjCSlboMA6EWr/X41NbFhG4/WL0k6gGotsVCcx/l7RLu20q
+ gz2o7l+5aszzEKMa76YKUliQgUQyW3Fd0wkweJBgtxzsOCDFgy8Icl3LseE8nDAD2STK+hUOyG/
+ I7JHo0u1164yCzQx3XZMukynLckdTdM/qxqIlFtK3ifkTUwmBdhxqEb9zWU1xOlFkaEdTPP240+
+ 17eWOOQHjc147EQ==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: 1iet8-dTCW0hzELgjH-zH-_72m9hfpbtgvu2dwdHbck_1771240680
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: P0H1J369Avy8DRTOyimTKyyKQ9aVy-UXPCsoNnT0U8s_1771240735
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -103,7 +104,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,94 +120,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Remove the legacy driver init/fini callbacks from the JACK audio backend.
-
-Both qjack_init() and qjack_fini() were no-ops that performed no real
-initialization or cleanup work. Access to the Audiodev is now through
-hw->s->dev instead of the drv_opaque pointer.
+The AUDIO_CAP macro is no longer used.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/jackaudio.c | 30 +++++++++---------------------
- 1 file changed, 9 insertions(+), 21 deletions(-)
+ audio/spiceaudio.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/audio/jackaudio.c b/audio/jackaudio.c
-index 972b158f023..31e3da6a7fe 100644
---- a/audio/jackaudio.c
-+++ b/audio/jackaudio.c
-@@ -44,13 +44,6 @@ struct AudioJack {
+diff --git a/audio/spiceaudio.c b/audio/spiceaudio.c
+index 0d188e974df..81b897e13e0 100644
+--- a/audio/spiceaudio.c
++++ b/audio/spiceaudio.c
+@@ -26,7 +26,6 @@
+ #include "ui/qemu-spice.h"
+ #include "qom/object.h"
  
- static struct audio_driver jack_driver;
+-#define AUDIO_CAP "spice"
+ #include "qemu/audio.h"
+ #include "audio_int.h"
  
--static void audio_jack_class_init(ObjectClass *klass, const void *data)
--{
--    AudioMixengBackendClass *k = AUDIO_MIXENG_BACKEND_CLASS(klass);
--
--    k->driver = &jack_driver;
--}
--
- struct QJack;
- 
- typedef enum QJackState {
-@@ -518,7 +511,7 @@ static int qjack_init_out(HWVoiceOut *hw, struct audsettings *as,
-     void *drv_opaque)
- {
-     QJackOut *jo  = (QJackOut *)hw;
--    Audiodev *dev = (Audiodev *)drv_opaque;
-+    Audiodev *dev = hw->s->dev;
- 
-     jo->c.out       = true;
-     jo->c.enabled   = false;
-@@ -555,7 +548,7 @@ static int qjack_init_in(HWVoiceIn *hw, struct audsettings *as,
-     void *drv_opaque)
- {
-     QJackIn  *ji  = (QJackIn *)hw;
--    Audiodev *dev = (Audiodev *)drv_opaque;
-+    Audiodev *dev = hw->s->dev;
- 
-     ji->c.out       = false;
-     ji->c.enabled   = false;
-@@ -662,16 +655,6 @@ static int qjack_thread_creator(jack_native_thread_t *thread,
- }
- #endif
- 
--static void *qjack_init(Audiodev *dev, Error **errp)
--{
--    assert(dev->driver == AUDIODEV_DRIVER_JACK);
--    return dev;
--}
--
--static void qjack_fini(void *opaque)
--{
--}
--
- static struct audio_pcm_ops jack_pcm_ops = {
-     .init_out       = qjack_init_out,
-     .fini_out       = qjack_fini_out,
-@@ -689,8 +672,6 @@ static struct audio_pcm_ops jack_pcm_ops = {
- 
- static struct audio_driver jack_driver = {
-     .name           = "jack",
--    .init           = qjack_init,
--    .fini           = qjack_fini,
-     .pcm_ops        = &jack_pcm_ops,
-     .max_voices_out = INT_MAX,
-     .max_voices_in  = INT_MAX,
-@@ -708,6 +689,13 @@ static void qjack_info(const char *msg)
-     dolog("I: %s\n", msg);
- }
- 
-+static void audio_jack_class_init(ObjectClass *klass, const void *data)
-+{
-+    AudioMixengBackendClass *k = AUDIO_MIXENG_BACKEND_CLASS(klass);
-+
-+    k->driver = &jack_driver;
-+}
-+
- static const TypeInfo audio_types[] = {
-     {
-         .name = TYPE_AUDIO_JACK,
 
 -- 
 2.53.0

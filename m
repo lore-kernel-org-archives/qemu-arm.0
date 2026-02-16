@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 495B3E7BD9F
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:21:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD9FBE7BD95
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:21:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrweM-0003nR-5Y; Mon, 16 Feb 2026 06:20:22 -0500
+	id 1vrwct-0007Ky-5F; Mon, 16 Feb 2026 06:18:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwc2-0006L8-4w
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:01 -0500
+ id 1vrwad-0005Ev-Qk
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:44 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwbw-00088C-2c
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:53 -0500
+ id 1vrwab-0007Px-Iy
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:31 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240671;
+ s=mimecast20190719; t=1771240589;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Bp0mskgHmvB97enRMSdlOJ4I9kcDKm/gxqwRVuVQsRc=;
- b=BWZ1A7i2Uwpo7cN3pR66ujck5BL1ci2//YdkvkZZ4WkSMdPKjkGOq6Kir8V7xseLzgXcm3
- 3yG1h8hc1x0Ks7GyQ1fLNWRzBBE83CLNO5nctYvqXycus1A/onHmhMmqhUz302sE1VJf8C
- o99ou1T8kMlisiV3Yl6oZ0T/rJCkfnk=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=KCugop36CLelcrOMKIrKRT8HBbv47hNoq//wkZ62yVs=;
+ b=RObDXb8o2s1Kwwwve+0p8hLDSIClanCzsuomIdW/n1UEwyHCBxLZ+mB0mK7oLF/10dPsJ2
+ A+0oiynVZ3yv/sbXb6lsmRQW6FnFVKONj/+kmDgPRBYQJArN19rn+UN1WLLBDQhr41JJde
+ Ran61zuOVKAD4SzYWUB/sThcBS8UIso=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-484-riZ0SfBzOXiE2vcjXnM2hw-1; Mon,
- 16 Feb 2026 06:17:47 -0500
-X-MC-Unique: riZ0SfBzOXiE2vcjXnM2hw-1
-X-Mimecast-MFC-AGG-ID: riZ0SfBzOXiE2vcjXnM2hw_1771240665
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-112-mWSuph5cO9-5d6ohy55CpQ-1; Mon,
+ 16 Feb 2026 06:16:25 -0500
+X-MC-Unique: mWSuph5cO9-5d6ohy55CpQ-1
+X-Mimecast-MFC-AGG-ID: mWSuph5cO9-5d6ohy55CpQ_1771240583
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 01B081956050; Mon, 16 Feb 2026 11:17:45 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AE85B1800365; Mon, 16 Feb 2026 11:16:23 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E91A21800464; Mon, 16 Feb 2026 11:17:43 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 1262A30001B9; Mon, 16 Feb 2026 11:16:22 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:15:34 +0100
-Subject: [PATCH 45/85] audio/noaudio: convert to QOM lifecycle methods
+Date: Mon, 16 Feb 2026 12:15:05 +0100
+Subject: [PATCH 16/85] scripts/modinfo: add --skip-missing-deps
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-45-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-16-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,25 +71,25 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1239;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5639;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=KzRYkvsfVLo5yTsnTsx6InHmXoSpaT1Oo7AoHbV0etw=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxQtofhQE7cmv8UOdKZBPGI8grKTxrVekcEk
- tcZsqjH8FCJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UAAKCRDa6OEJdZac
- 5bKwD/9lHLtMG0zexrzysNPtsNdka0qi2Zx5/a4MhIpkPo47fi823P48paxO28JQE2TGylgb1Oe
- 8HpkwkAy5LKrYVnRXHxD2RdAMEr62mIXmWVrAqiU+n72fLzUkEDIkG6oNUOI12ulZuVeIjHkNMj
- 3e6IUsL08zyycOftHvT8kEYgKfkuKMcm06bZFfy/6C9ZmGumECA0BC4UNW8QHwlI3hIzR3eqgha
- ACYJRXBtNhZXG9QuoBht6SnEzCp8ckaGDrduNha4OUEF5z2HVJsUE6Tu1zlDgP57JGCV1z0UIfw
- wvUgWpSfuYP4WEVAms3002bodJdQsvfJOdjJoCc3rCnh945qmcJsBGknamHayfQ+skWGvIcAgV4
- XiGC+spWlU6qgb9hWCyfcUW/GmJfI85nb/tQpV54u/Zfrf70Ht/tswEtS1sH+SXCKtkJ60YIOhN
- SuS6EMsaGLCCqh7sYnA14844PZVQYw59W5l9pLDzT0Gf4RlpMzcVJEolhowrRfqU+uPrCQj1cvB
- j8koEdO3y5FNzKOYzTgg7U4tLS3IM6pP15IUM5swSrRHTDGW64yRBK2luvBYlhAaMOZghcchNDS
- C0ldSHf8Iod/47N09eQLfC3ip3ETicLayh24I8rH5WGTtmVtBLL5LeU8ycNjpVBxRQGe9Zansw/
- q9kC7bD73xs/tQQ==
+ bh=ygcT/EP4LKFFbInc5HK8ho4Iw+AmP0MuGXSJiZYYmoc=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxOHXNZrYPKLzyeQ8z6X6VU5BDpOUyVsw41/
+ lYzr9uHeLKJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TgAKCRDa6OEJdZac
+ 5fOoEACgLqwVa2Yp4SD81nT3uP6DNRwMv/bm+MDEtr03Tx3ZpY+cbGI9AqrnKs+PZXvncHYc/2X
+ xNBAGp0uSQjaqqtYp5aG2QySNKk4rzm2woekbwTAyxZqqGd4uyVoA9hy7nhdbhqd0KlDojH5nEZ
+ 3XlgBUTReQXcu2FS9gfwWuyl3KAMl2yBNvbMPjy5wpKDTe1qXdeKMEz1awemtRfR6ZL9xQlllSm
+ HvpJVmhoxBrAmyCt/6ai4HAKMsev/TLAdahGsDnUgWssGt+ClYyUU2emrZjJIBPwVIKYOgG/yiH
+ bvhaTZSK9eNORZ4SdBrxQEG4b0kna1P3qBUXb7B81fJl+5CsfgloftTDPC7+eLYPyIlWdHchKpt
+ z1UyQMNMbzXorpK/UJWzVs5hFX+lKBrnWAX0Myi2L95391uDWc8/FMTE7/QNgYvInnZU3KkJjy+
+ k6vRD+Uii4YLWW1dgD0nwxilI+B6+1/H2sC3GsDHHZWUYyb2vlQZg2ToxoprAn/+2zeeq9GcTnV
+ lNi+UPlD4IXv+bKk/Qb7D5PpKiSOvphPjkez9Yd4VQl7BNJ8dTJOeIv/cxJHBaZKjXmw40rEvOn
+ OH9eWKy2JU7tMetm4ZjB4L5S/FflfJblgGv0s9b5o/ttsF8nw39j6x4AuFoDFz31CUZviLJAzw+
+ JHQyglWo+elR1bg==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: lSdOUW8a1288XFn1LVqaxrQqsSkzbnRI_lFE_VjHfIE_1771240665
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: xJicL-c0K64Z1ZwiMSYZJmzcZfMIcVgUB6Qf6qXp84g_1771240583
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -103,7 +103,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,47 +119,155 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Remove the legacy driver init/fini callbacks from the null audio backend.
-
-Both no_audio_init() and no_audio_fini() were no-ops that performed
-no real initialization or cleanup work.
+Add --skip-missing-deps flag that prints warnings for missing
+dependencies but continues without exiting with error code 1.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+Acked-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/noaudio.c | 12 ------------
- 1 file changed, 12 deletions(-)
+ scripts/modinfo-generate.py | 94 ++++++++++++++++++++++++++++++++++-----------
+ 1 file changed, 71 insertions(+), 23 deletions(-)
 
-diff --git a/audio/noaudio.c b/audio/noaudio.c
-index 65679b8b13d..2bd110caac4 100644
---- a/audio/noaudio.c
-+++ b/audio/noaudio.c
-@@ -119,16 +119,6 @@ static void no_enable_in(HWVoiceIn *hw, bool enable)
-     }
- }
+diff --git a/scripts/modinfo-generate.py b/scripts/modinfo-generate.py
+index e7d35242414..e231c129196 100644
+--- a/scripts/modinfo-generate.py
++++ b/scripts/modinfo-generate.py
+@@ -34,7 +34,8 @@ def parse_line(line: str) -> tuple[str, str]:
+             continue
+     return (kind, data)
  
--static void *no_audio_init(Audiodev *dev, Error **errp)
--{
--    return &no_audio_init;
--}
--
--static void no_audio_fini (void *opaque)
--{
--    (void) opaque;
--}
--
- static struct audio_pcm_ops no_pcm_ops = {
-     .init_out = no_init_out,
-     .fini_out = no_fini_out,
-@@ -146,8 +136,6 @@ static struct audio_pcm_ops no_pcm_ops = {
+-def generate(name: str, lines: list[str], enabled: set[str]) -> Optional[set[str]]:
++def parse_modinfo(name: str, lines: list[str], enabled: set[str]) -> Optional[dict]:
++    """Parse a modinfo file and return module metadata, or None if disabled."""
+     arch = ""
+     objs = []
+     deps = []
+@@ -54,21 +55,39 @@ def generate(name: str, lines: list[str], enabled: set[str]) -> Optional[set[str
+                 # don't add a module which dependency is not enabled
+                 # in kconfig
+                 if data.strip() not in enabled:
+-                    print(f"    /* module {data.strip()} isn't enabled in Kconfig. */")
+-                    print("/* },{ */")
+                     return None
+             else:
+                 print("unknown:", kind)
+                 exit(1)
  
- static struct audio_driver no_audio_driver = {
-     .name           = "none",
--    .init           = no_audio_init,
--    .fini           = no_audio_fini,
-     .pcm_ops        = &no_pcm_ops,
-     .max_voices_out = INT_MAX,
-     .max_voices_in  = INT_MAX,
+-    print(f'    .name = "{name}",')
+-    if arch != "":
+-        print(f"    .arch = {arch},")
+-    print_array("objs", objs)
+-    print_array("deps", deps)
+-    print_array("opts", opts)
++    return {
++        'name': name,
++        'arch': arch,
++        'objs': objs,
++        'deps': deps,
++        'opts': opts,
++        'dep_names': {dep.strip('" ') for dep in deps}
++    }
++
++def generate(modinfo: str, mod: Optional[dict],
++             skip_reason: Optional[str]) -> None:
++    """Generate C code for a module."""
++    print(f"    /* {modinfo} */")
++    if mod is None:
++        if skip_reason == "missing_deps":
++            print("    /* module has missing dependencies. */")
++        else:
++            print("    /* module isn't enabled in Kconfig. */")
++        print("/* },{ */")
++        return
++
++    print(f'    .name = "{mod["name"]}",')
++    if mod['arch'] != "":
++        print(f"    .arch = {mod['arch']},")
++    print_array("objs", mod['objs'])
++    print_array("deps", mod['deps'])
++    print_array("opts", mod['opts'])
+     print("},{")
+-    return {dep.strip('" ') for dep in deps}
+ 
+ def print_pre() -> None:
+     print("/* generated by scripts/modinfo-generate.py */")
+@@ -86,6 +105,8 @@ def main() -> None:
+     )
+     parser.add_argument('--devices',
+                         help='path to config-device.mak')
++    parser.add_argument('--skip-missing-deps', action='store_true',
++                        help='warn if a dependency is missing and continue')
+     parser.add_argument('modinfo', nargs='+',
+                         help='modinfo files to process')
+     args = parser.parse_args()
+@@ -99,27 +120,54 @@ def main() -> None:
+                 if config[1].rstrip() == 'y':
+                     enabled.add(config[0][7:])  # remove CONFIG_
+ 
+-    deps = set()
+-    modules = set()
+-    print_pre()
++    # all_modules: modinfo path -> (basename, parsed module or None, skip_reason)
++    all_modules = {}
+     for modinfo in args.modinfo:
+         with open(modinfo) as f:
+             lines = f.readlines()
+-        print(f"    /* {modinfo} */")
+         (basename, _) = os.path.splitext(modinfo)
+-        moddeps = generate(basename, lines, enabled)
+-        if moddeps is not None:
+-            modules.add(basename)
+-            deps.update(moddeps)
+-    print_post()
++        mod = parse_modinfo(basename, lines, enabled)
++        skip_reason = "kconfig" if mod is None else None
++        all_modules[modinfo] = (basename, mod, skip_reason)
++
++    # Collect all available module names
++    available = {basename for basename, mod, _ in all_modules.values()
++                 if mod is not None}
+ 
+-    error = False
+-    for dep in deps.difference(modules):
++    # Collect all dependencies
++    all_deps = set()
++    for basename, mod, _ in all_modules.values():
++        if mod is not None:
++            all_deps.update(mod['dep_names'])
++
++    # Check for missing dependencies
++    missing = all_deps.difference(available)
++    for dep in missing:
+         print(f"Dependency {dep} cannot be satisfied", file=sys.stderr)
+-        error = True
+ 
+-    if error:
++    if missing and not args.skip_missing_deps:
+         exit(1)
+ 
++    # When skipping missing deps, iteratively remove modules with
++    # unsatisfiable dependencies
++    if args.skip_missing_deps and missing:
++        changed = True
++        while changed:
++            changed = False
++            for modinfo, (basename, mod, skip_reason) in list(all_modules.items()):
++                if mod is None:
++                    continue
++                if not mod['dep_names'].issubset(available):
++                    available.discard(basename)
++                    all_modules[modinfo] = (basename, None, "missing_deps")
++                    changed = True
++
++    # generate output
++    print_pre()
++    for modinfo in args.modinfo:
++        (basename, mod, skip_reason) = all_modules[modinfo]
++        generate(modinfo, mod, skip_reason)
++    print_post()
++
+ if __name__ == "__main__":
+     main()
 
 -- 
 2.53.0

@@ -4,55 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28A9BE7BD95
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:21:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26C2EE7BD98
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:21:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwfS-0007HD-VZ; Mon, 16 Feb 2026 06:21:31 -0500
+	id 1vrweO-000451-Bj; Mon, 16 Feb 2026 06:20:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwd2-0007Sl-Ml
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:06 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vrwbR-0005eq-Nu
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:25 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwcz-0008Pn-KD
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:00 -0500
+ id 1vrwbM-0007jS-HS
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240737;
+ s=mimecast20190719; t=1771240627;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zZPwP50pYxUr6MP+yYvCFJCeqAndqgUmshxGKnX4ZHc=;
- b=C+djLnQQNY+eaIPx0KV0v1gcQ28LYKPxl4iL1jWr3X3n1nNGaX5umNyhA9pAbZJEuwEU0N
- Hc/4RDB5FO6nA/JJQ5fNqWorFMp2pReCdNdZC52QBThdg/4QFFg/4GQmwnX6Oqu8eWYXtR
- 40wBYkNMfG6F2oqPIsTPjVqaPM9F34Y=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=DqjVCvkYq0CnOFlMb4lk6iKs2Q8rG2tOtpRbxTNBD88=;
+ b=URwOuUP23y3wuQTVphFC+p0HTL4Rj5pvBkQcZYb9TBcOsmBV80PlPMz5OA4hZsUTrNIbv7
+ w8KWNeZHqCtzKI0T/QT6X0e036RmnTu9NWK3VYXR3tY4X86uO94M7d1vsTrE2gkUNQ77Vu
+ DnMJkl+aVJ7k1tWE/JbsXJnAymqsyqA=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-228-8W2w716eMz2pe1Ymxx73KA-1; Mon,
- 16 Feb 2026 06:18:54 -0500
-X-MC-Unique: 8W2w716eMz2pe1Ymxx73KA-1
-X-Mimecast-MFC-AGG-ID: 8W2w716eMz2pe1Ymxx73KA_1771240732
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-203-m-MpTFXUMRe-ryKWk1KUUg-1; Mon,
+ 16 Feb 2026 06:17:03 -0500
+X-MC-Unique: m-MpTFXUMRe-ryKWk1KUUg-1
+X-Mimecast-MFC-AGG-ID: m-MpTFXUMRe-ryKWk1KUUg_1771240621
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DD35C1956089; Mon, 16 Feb 2026 11:18:51 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AC38A1955D80; Mon, 16 Feb 2026 11:17:01 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 546601800464; Mon, 16 Feb 2026 11:18:51 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 0E8AC30001B9; Mon, 16 Feb 2026 11:17:00 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:15:58 +0100
-Subject: [PATCH 69/85] audio/sndio: replace custom logging with
- error_report
+Date: Mon, 16 Feb 2026 12:15:19 +0100
+Subject: [PATCH 30/85] audio: keep a strong reference on the backend
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-69-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-30-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -70,32 +69,30 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Alistair Francis <alistair@alistair23.me>, 
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, 
- Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3292;
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2152;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=8yW9wJ3mIfAWUvsc6PEfigNiDWoTGEQkRlzr3mI/fbs=;
- b=kA0DAAoB2ujhCXWWnOUByyZiAGmS/FGj/RWAwCaalX3Sad3mihLN/7gHO9AimlvuTKXg6QHZW
- IkCMwQAAQoAHRYhBIepvZM/h8YG0nb2Ldro4Ql1lpzlBQJpkvxRAAoJENro4Ql1lpzlf+AP/0Hf
- 9dfWzN4T09rWtuvAlg1E/wN4VBXt0eI3AatGe5dpxfHfpDTW8Gf1zggK5Qx7mNMyI2KMJUJJwDM
- UTXQ5P7Y1Ic6ZXnEpfdCb/DIJl1Pf4YrGcItguC5V5aOoi6PpjZEwfDnotJRPyJkJDNYJEnYpdR
- zfkd7dVkVSrWfN3NU91ql4qSJgp/0p1qvHeUeLCtzdqux6NUiyT8QQqLfHnuRlf+hKXDP3qeLoS
- H/jylL1pNwpj86uuWs/d6zo2+SzI/X+ZV+tk7rzB1h5g7xiBYY//U7iKMsOf5JD/R/URdsKG74C
- kUavivCFGwenRs38C5IdjZA14Ux520EYvlipOUd3D77am1d5fmsZk7VWCfwMZF0b121LJ/ubwSw
- dovC0BR2Xzu1tigP7BYQQDg38dCLxtuhXICuOFeraMJrFRI0jRJiB/DJdgMEEI1D4lT8EiXu9Vo
- raL2REVIggU7YvUbB3aDVdFObTivxJhssArngKrEvUeKRPiBT2ZcJoAxgNyCJktyqir1hwkMECW
- QViUnBOFVaoQM+dhnK9XO9bIKTGS1NyXSbK9dNJsoolFyJxjLuRDat5U9DawIKfxrEfMuLsJV9A
- tEQq8fWxNIhZBtdRnSOPAiSxCgExnHzhM+ZtloJ6Ya8IELrwEcQrij7HcUyjD5CqQg9DXM41f3b
- U0XhE
+ bh=j2F0g3ta9yfDCkXiVp5Fmy/cGNEHqdhYISO5JqmAXcg=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxPIK7Ptx6NOV4c/yjxXVCio1QtyWaBS06Mx
+ 6Fnq6zEKoaJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TwAKCRDa6OEJdZac
+ 5fcNEACKgcbXrWgakQ8Z15q72T7ophiX9Uu7+hd2m/Xe96tMLXScVS/lDaVNIe9SKlvh8XMPArb
+ 2ugRGKYmA/Sq+IWgTcR1k+NOZiRluMTWTDtt2bTAqB+fB+1qP4mgb0agGWEJvR8MMh/KpY12Ja3
+ I0Wx+EJr1GKPZiJmZgkljA2/VQ7x3PMp5TNiiXmc/UAnuSxN1GFLafY82pLfF9Bcic2rr/s4kMN
+ cjuaVlfSYCY0JH8DGZkc1+nqyfDOe0UOi0QQmQlC/p42JiblOYWYEMKCuPBaTMpJhJqvRkMVsfA
+ D0FJAnNvoGT21iNZ2KUjg3+/LtUIC7RTjUdxNsGURXvGynBZpZRpvMp3lW0Zi2FxE1uLLDyTSf5
+ 8WDXUQKuunIWyfOewQoB3qbvaAis+I0sOPODzh80zHY8xrS+9hus+Oo3gaMrQiOETVOGVasT9Nk
+ D4UaqO7o7o7zQ1paL+LXTQPPhmHymdIIVpSCmpys2LjcU4bFVkeM/rXehKHw2sl6d7/GVKpQZf4
+ iZ5IM51clSsBwYP6100G4Rm7d0p7U85QOCE2jWrcCE3bXbsHhT44bYnTOEOHzVzAPN/OhbMoiBB
+ yP1SelUi7ra37Ox2AEg6VKO5hKJXN8H/s0qRX4VxLxyU0jl5x5cRjt/nO0gWupXNm2SLBev4EUL
+ Gt0LWtDg6B3gIgw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: S-pp8oy-8BdkRJQCnnffgkbgdxkYs_oap7Wp2T1NmV0_1771240732
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: 0jEInOd2ztjK9yAfyABkmFteUmjK-LeB7eVNbF7LmrA_1771240621
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -103,9 +100,9 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,101 +118,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Replace the custom audio logging infrastructure (dolog macro) with
-standard QEMU error reporting (error_report).
+Since we are going to convert audio_driver-based backends, we need to
+properly handle reference counting to allow for a different order of
+class finalization (for example, pulse class before base driver class).
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/sndioaudio.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ audio/audio_template.h | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/audio/sndioaudio.c b/audio/sndioaudio.c
-index 21f43836fd1..766eceeeefe 100644
---- a/audio/sndioaudio.c
-+++ b/audio/sndioaudio.c
-@@ -18,12 +18,12 @@
- #include <poll.h>
- #include <sndio.h>
- #include "qemu/main-loop.h"
-+#include "qemu/error-report.h"
- #include "qemu/audio.h"
--#include "trace.h"
- #include "qom/object.h"
+diff --git a/audio/audio_template.h b/audio/audio_template.h
+index a1f78d8748b..512abbfe22f 100644
+--- a/audio/audio_template.h
++++ b/audio/audio_template.h
+@@ -231,6 +231,7 @@ static void glue (audio_pcm_hw_gc_, TYPE) (HW **hwp)
+         glue(hw->pcm_ops->fini_, TYPE) (hw);
+         glue(s->nb_hw_voices_, TYPE) += 1;
+         glue(audio_pcm_hw_free_resources_ , TYPE) (hw);
++        object_unref(hw->s);
+         g_free(hw);
+         *hwp = NULL;
+     }
+@@ -287,7 +288,7 @@ static HW *glue(audio_pcm_hw_add_new_, TYPE)(AudioMixengBackend *s,
+      * is guaranteed to be != 0. See the audio_init_nb_voices_* functions.
+      */
+     hw = g_malloc0(glue(drv->voice_size_, TYPE));
+-    hw->s = s;
++    hw->s = AUDIO_MIXENG_BACKEND(object_ref(s));
+     hw->pcm_ops = drv->pcm_ops;
  
--#define AUDIO_CAP "sndio"
- #include "audio_int.h"
-+#include "trace.h"
- 
- #define TYPE_AUDIO_SNDIO "audio-sndio"
- OBJECT_DECLARE_SIMPLE_TYPE(AudioSndio, AUDIO_SNDIO)
-@@ -348,7 +348,7 @@ static int sndio_init(SndioVoice *self,
-     /* open the device in non-blocking mode */
-     self->hdl = sio_open(dev_name, mode, 1);
-     if (self->hdl == NULL) {
--        dolog("failed to open device\n");
-+        error_report("sndio: failed to open device");
-         return -1;
+     QLIST_INIT (&hw->sw_head);
+@@ -335,6 +336,7 @@ static HW *glue(audio_pcm_hw_add_new_, TYPE)(AudioMixengBackend *s,
+  err1:
+     glue (hw->pcm_ops->fini_, TYPE) (hw);
+  err0:
++    object_unref(hw->s);
+     g_free (hw);
+     return NULL;
+ }
+@@ -441,7 +443,7 @@ static SW *glue(audio_pcm_create_voice_pair_, TYPE)(
      }
  
-@@ -382,7 +382,7 @@ static int sndio_init(SndioVoice *self,
-         req.sig = 0;
-         break;
-     default:
--        dolog("unknown audio sample format\n");
-+        error_report("sndio: unknown audio sample format");
-         return -1;
-     }
+     sw = g_new0(SW, 1);
+-    sw->s = s;
++    sw->s = AUDIO_MIXENG_BACKEND(object_ref(s));
  
-@@ -401,12 +401,12 @@ static int sndio_init(SndioVoice *self,
-     req.appbufsz = req.rate * latency / 1000000;
- 
-     if (!sio_setpar(self->hdl, &req)) {
--        dolog("failed set audio params\n");
-+        error_report("sndio: failed to set audio params");
-         goto fail;
-     }
- 
-     if (!sio_getpar(self->hdl, &self->par)) {
--        dolog("failed get audio params\n");
-+        error_report("sndio: failed to get audio params");
-         goto fail;
-     }
- 
-@@ -419,7 +419,7 @@ static int sndio_init(SndioVoice *self,
-     if (self->par.bits != req.bits || self->par.bps != req.bits / 8 ||
-         self->par.sig != req.sig || (req.bits > 8 && self->par.le != req.le) ||
-         self->par.rate != as->freq || nch != as->nchannels) {
--        dolog("unsupported audio params\n");
-+        error_report("sndio: unsupported audio params");
-         goto fail;
-     }
- 
-@@ -431,7 +431,7 @@ static int sndio_init(SndioVoice *self,
- 
-     self->buf = g_malloc(self->buf_size);
-     if (self->buf == NULL) {
--        dolog("failed to allocate audio buffer\n");
-+        error_report("sndio: failed to allocate audio buffer");
-         goto fail;
-     }
- 
-@@ -439,13 +439,13 @@ static int sndio_init(SndioVoice *self,
- 
-     self->pfds = g_malloc_n(nfds, sizeof(struct pollfd));
-     if (self->pfds == NULL) {
--        dolog("failed to allocate pollfd structures\n");
-+        error_report("sndio: failed to allocate pollfd structures");
-         goto fail;
-     }
- 
-     self->pindexes = g_malloc_n(nfds, sizeof(struct pollindex));
-     if (self->pindexes == NULL) {
--        dolog("failed to allocate pollindex structures\n");
-+        error_report("sndio: failed to allocate pollindex structures");
-         goto fail;
-     }
+     hw = glue(audio_pcm_hw_add_, TYPE)(s, &hw_as);
+     if (!hw) {
+@@ -461,6 +463,7 @@ err2:
+     glue (audio_pcm_hw_del_sw_, TYPE) (sw);
+     glue (audio_pcm_hw_gc_, TYPE) (&hw);
+ err1:
++    object_unref(sw->s);
+     g_free(sw);
+     return NULL;
+ }
+@@ -470,6 +473,8 @@ static void glue (audio_close_, TYPE) (SW *sw)
+     glue (audio_pcm_sw_fini_, TYPE) (sw);
+     glue (audio_pcm_hw_del_sw_, TYPE) (sw);
+     glue (audio_pcm_hw_gc_, TYPE) (&sw->hw);
++
++    object_unref(sw->s);
+     g_free (sw);
+ }
  
 
 -- 

@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ED5DE81A40
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 16:18:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BA5EE81A40
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 16:30:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vs1IE-00057L-9A; Mon, 16 Feb 2026 11:17:50 -0500
+	id 1vs1UP-0004Xk-Pr; Mon, 16 Feb 2026 11:30:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vs1Hw-0004dy-Ru; Mon, 16 Feb 2026 11:17:44 -0500
+ id 1vs1UM-0004X1-3P; Mon, 16 Feb 2026 11:30:22 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1vs1Hl-0007E3-2J; Mon, 16 Feb 2026 11:17:26 -0500
-Received: from mail.maildlp.com (unknown [172.18.224.83])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fF7F72prqzHnGhT;
- Tue, 17 Feb 2026 00:16:27 +0800 (CST)
+ id 1vs1UJ-0004l2-Ev; Mon, 16 Feb 2026 11:30:21 -0500
+Received: from mail.maildlp.com (unknown [172.18.224.150])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fF7XX2nHqzHnGkN;
+ Tue, 17 Feb 2026 00:29:48 +0800 (CST)
 Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
- by mail.maildlp.com (Postfix) with ESMTPS id CFCB940086;
- Tue, 17 Feb 2026 00:16:51 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id D226B40539;
+ Tue, 17 Feb 2026 00:30:12 +0800 (CST)
 Received: from localhost (10.203.177.15) by dubpeml500005.china.huawei.com
  (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Mon, 16 Feb
- 2026 16:16:50 +0000
-Date: Mon, 16 Feb 2026 16:16:49 +0000
+ 2026 16:30:11 +0000
+Date: Mon, 16 Feb 2026 16:30:10 +0000
 To: Shameer Kolothum <skolothumtho@nvidia.com>
 CC: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <eric.auger@redhat.com>,
  <peter.maydell@linaro.org>, <nicolinc@nvidia.com>, <nathanc@nvidia.com>,
  <mochs@nvidia.com>, <jan@nvidia.com>, <jgg@nvidia.com>,
  <zhangfei.gao@linaro.org>, <zhenzhong.duan@intel.com>, <kjaju@nvidia.com>
-Subject: Re: [PATCH v6 3/5] hw/arm/smmuv3-accel: Allocate vEVENTQ for
- accelerated SMMUv3 devices
-Message-ID: <20260216161649.00005f3a@huawei.com>
-In-Reply-To: <20260213103942.142823-4-skolothumtho@nvidia.com>
+Subject: Re: [PATCH v6 4/5] hw/arm/smmuv3: Introduce a helper function for
+ event propagation
+Message-ID: <20260216163010.00007797@huawei.com>
+In-Reply-To: <20260213103942.142823-5-skolothumtho@nvidia.com>
 References: <20260213103942.142823-1-skolothumtho@nvidia.com>
- <20260213103942.142823-4-skolothumtho@nvidia.com>
+ <20260213103942.142823-5-skolothumtho@nvidia.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.203.177.15]
-X-ClientProxiedBy: lhrpeml100010.china.huawei.com (7.191.174.197) To
+X-ClientProxiedBy: lhrpeml500010.china.huawei.com (7.191.174.240) To
  dubpeml500005.china.huawei.com (7.214.145.207)
 Received-SPF: pass client-ip=185.176.79.56;
  envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
@@ -73,39 +73,77 @@ From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 13 Feb 2026 10:39:40 +0000
+On Fri, 13 Feb 2026 10:39:41 +0000
 Shameer Kolothum <skolothumtho@nvidia.com> wrote:
 
-> From: Nicolin Chen <nicolinc@nvidia.com>
+> Factor out the code that propagates event records to the guest into a
+> helper function. The accelerated SMMUv3 path can use this to propagate
+> host events in a subsequent patch.
 > 
-> When the guest enables the Event Queue and a vIOMMU is present, allocate a
-> vEVENTQ object so that host-side events related to the vIOMMU can be
-> received and propagated back to the guest.
-> 
-> For cold-plugged devices using SMMUv3 acceleration, the vIOMMU is created
-> before the guest boots. In this case, the vEVENTQ is allocated when the
-> guest writes to SMMU_CR0 and sets EVENTQEN = 1.
-> 
-> If no cold-plugged device exists at boot (i.e. no vIOMMU initially), the
-> vEVENTQ is allocated when a vIOMMU is created, i.e. during the first
-> device hot-plug.
-> 
-> Also, rename the local error variable and refactor smmu_writel() to use
-> a single error accumulator with error_propagate().
+> Since this helper may be called from outside the SMMUv3 core, take the
+> mutex before accessing the Event Queue.
 
-Why not split the rename out as a separate patch?  I don't hugely mind just
-feels like some noise in here could have been broken out before the real
-change and made it a tiny bit easier to review.
-
-I wouldn't bother unless you are respinning again for other reasons though!
-
-J
+Totally trivial but it might be worth stating that / why it is harmless
+(or indeed necessary?) to take the lock in existing paths. I was kind
+of expecting to see locked helper wrapping an unlocked version that was
+used to replace the original code.  So guess I'm missing something.
 
 > 
-> Event read and propagation will be added in a later patch.
+> No functional change intended.
 > 
-> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> Reviewed-by: Nicolin Chen <nicolinc@nvidia.com>
 > Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
 > Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> ---
+>  hw/arm/smmuv3-internal.h |  4 ++++
+>  hw/arm/smmuv3.c          | 21 +++++++++++++++------
+>  hw/arm/trace-events      |  2 +-
+>  3 files changed, 20 insertions(+), 7 deletions(-)
+> 
+> diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+> index a6464425ec..b666109ad9 100644
+> --- a/hw/arm/smmuv3-internal.h
+> +++ b/hw/arm/smmuv3-internal.h
+> @@ -352,7 +352,11 @@ typedef struct SMMUEventInfo {
+>              (x)->word[6] = (uint32_t)(addr & 0xffffffff); \
+>      } while (0)
+>  
+> +#define EVT_GET_TYPE(x)  extract32((x)->word[0], 0, 8)
+> +#define EVT_GET_SID(x)   ((x)->word[1])
+> +
+>  void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);
+> +void smmuv3_propagate_event(SMMUv3State *s, Evt *evt);
+>  int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste, SMMUEventInfo *event);
+>  
+>  static inline int oas2bits(int oas_field)
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index f804d3af25..bcb9176c51 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -168,10 +168,23 @@ static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
+>      return MEMTX_OK;
+>  }
+>  
+> +void smmuv3_propagate_event(SMMUv3State *s, Evt *evt)
+> +{
+> +    MemTxResult r;
+> +
+> +    trace_smmuv3_propagate_event(smmu_event_string(EVT_GET_TYPE(evt)),
+> +                                 EVT_GET_SID(evt));
+> +    qemu_mutex_lock(&s->mutex);
+
+Could use 
+    QEMU_LOCK_GUARD(&s->mutex);
+
+though gain is minor so feel free to not do so.
+
+> +    r = smmuv3_write_eventq(s, evt);
+> +    if (r != MEMTX_OK) {
+> +        smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_EVENTQ_ABT_ERR_MASK);
+> +    }
+> +    qemu_mutex_unlock(&s->mutex);
+> +}
+
+
 

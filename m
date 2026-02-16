@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D462BE7BD9E
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:28:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6420AE7BD92
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:28:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwfQ-0006rY-8Q; Mon, 16 Feb 2026 06:21:28 -0500
+	id 1vrwe9-00020G-Py; Mon, 16 Feb 2026 06:20:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwdJ-0007sn-QG
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:18 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1vrwbK-0005Z8-6b
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:24 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwdI-0008T8-6o
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:17 -0500
+ id 1vrwb6-0007cJ-Rd
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:04 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240755;
+ s=mimecast20190719; t=1771240620;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=jh01TnR1WKr53dWUDRQLe2CRWCIsdVlOiG3qS34GaeQ=;
- b=cCnCBP1whijZxu3Kav3zTzrWkixHpf2PxYQxH8RjaZMOEHQgHmWOpl1kC4hIM8xLgDjUrY
- Zs6JXPo30vkMEBSJIH6J3vrOHzohfFS7VpY6uBQMi4iYktGnreSeqdeNJLJI684jvU2I5n
- BVRX7QBhuz0eG9mnaL1x0BQzmuOauOQ=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=oCvtiKHuMNHGGGyZh38jZ7AWFLiBWPGcC09Xtri+dZc=;
+ b=CJbivC7x3ZVs0iyIBLJdgrdCtYRCsmbSaesx+EhAQL2AuxSETh/rAcb5q5Ba4dhfQcrWka
+ s0jQpKrtX1MNWZuoyUCxU5vJ/ddvyCum9UYvakJjgBPJNblOhbjgWkk9vD3UljzCUc0C3j
+ ePP3eMZnhCwPqx29p6bItozcg5LZo8U=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-383-t-1jchMZMYSArAE2aATl6g-1; Mon,
- 16 Feb 2026 06:19:09 -0500
-X-MC-Unique: t-1jchMZMYSArAE2aATl6g-1
-X-Mimecast-MFC-AGG-ID: t-1jchMZMYSArAE2aATl6g_1771240747
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-520-1xnOWLLlOmOPIbnDMqituA-1; Mon,
+ 16 Feb 2026 06:16:58 -0500
+X-MC-Unique: 1xnOWLLlOmOPIbnDMqituA-1
+X-Mimecast-MFC-AGG-ID: 1xnOWLLlOmOPIbnDMqituA_1771240616
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 07E8C1800342; Mon, 16 Feb 2026 11:19:07 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 404DD1956053; Mon, 16 Feb 2026 11:16:56 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D83CC18004AD; Mon, 16 Feb 2026 11:19:05 +0000 (UTC)
+ id 1D5241800464; Mon, 16 Feb 2026 11:16:54 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:16:03 +0100
-Subject: [PATCH 74/85] audio: replace ldebug with trace events
+Date: Mon, 16 Feb 2026 12:15:17 +0100
+Subject: [PATCH 28/85] module: remove audio module support
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-74-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-28-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,29 +71,29 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2585;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1350;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=LJcSuW2BtX9Mst8LxXKghg7ubBSgT/CUaX2Tj3sx1Wg=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxSPE7di7Rch31YMastXMAVy+GZfzsJE4IK6
- Fvi8O83bZqJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UgAKCRDa6OEJdZac
- 5T+GEACpbLJzGOjg525NzPv4kC8pvkMsd0iF3XyMVgKJam1cBlQj3If6dK7B8zrxLr6BFknjArQ
- ySqgc1cXCqWLFgXK4BMJcHo5CaL8u/DHoi1lJFSbZPa+NoBEPGUB8wyGBt9XHsYytZenl7wUXFh
- vM6h/Zf+lGgdEykhcOCMTMx27HyCWYOehMkaHxvBBxG0PbsVIr3z7BbJllfUWG75bPZijIBe8VK
- yikCQXRwIhP3WfGV3DgTl31aWi2WuZ3J86HhKeT+7pAIwP6vO3yvZ/zmr7VqH3qzJJOv+rRzWb2
- NqMtIlJ5Q+nhaelSKGv8fHPak1ZQfPvEGbUeMcNLA25auYn6u+eDKs5PxsFJhlcQ6ukmGUFuj+T
- emyrxm6uBHi9u313nbGOiOjH5NcCfJJu8tbkEjUHi3b0C6s8wED1MJFeO7pAP1aQl7Q0j2kFXv0
- 1pk8oozJhDROqsGgwEgnV6S1xEXoEBaA1OgjEjWW3CjoGg0ThJUX+Sv2SeEDMYBdrmfPjAVcxdu
- GpFi+SNC05FTnDNB7BafVusVJoozRXEcFi/k5wmYawxlmmh7bpOl0uG6u7yGQHShan845xSZrtt
- 1C8it1U+Jmz/hkiO6SFY45YeG6vVaXDP3W3sMmwQiAUHmyaubvCB1G1lE5WK1MnLbevRjvAriTt
- ksLlNbUW3axPwlQ==
+ bh=xo7WcFF7K5qpRxKZuwsYck3lIjO818VAyiQpuJT+ksg=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxPYH2LVSDfFtszpts1e0wJZTFXoNQ0TAXdp
+ myy7dZCIGeJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TwAKCRDa6OEJdZac
+ 5agPEACSNMLPLuFrMBRyR/zdSmNr/TBTd/1Jl8hYbgWfANPkOxiQPXmB37YPucBLD783m1lv20N
+ DL/3NHPix53uFQLMjHwryeBx0XgO7WldwB4ahMC8SZGSSZIKux4O85n9z79Wfsen42YYXkBbMhu
+ 4d8D3+e+JSQFLHEGQTyg14XXinI8439zrXjRljPMNGkh5oTpn76PoiimcFG8jEdq1lH15dBHcCk
+ cKBjdQpM8jHNe8WEgGfymOtRLDRYCe/7G6g60ZYi77dypboiwtalzovZoy2xgANPA9CXifx5J4r
+ BfGEON09lm4fzfaAL+iW7flLp7j1+cZQv9D3E+9elhPXJ3fh/G+FET99L44hw26utxLjfA9QjjS
+ wl8e+hASIXD8KDqGnJMERRN7ne/UqZi9ecdk6vNhb8NFwRx2KdEvc6BZPc1EkNXM4ocADW+P7dT
+ jSHaIsYq2KbYjDCAcR02YibaWq/+pvob8Ro/775np9fx9eJs10ep7hNevS6ReZPFNTQ5bJokpUm
+ ArkLfyQ4xI8mWePWJrt4A4JaN5mJPXe9sP8tU/c/K2p73omKwJJuYfJ9wtHfgRlYRCJ6b1QYpzY
+ pNdYtEaXmoXblGuWapn/LP9cS0U/0pPUJuFZrmUYQDRG9Os6ezuUHai7XoXi0t+HniqhbGYeQCD
+ NRqdyBHUBs/8vuw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: cNLMNqol7dSVbF-qGYNakD4cQra2qtuXGnHlrKvkTeY_1771240747
+X-Mimecast-MFC-PROC-ID: mQbf24OWxniMmmOyFjAb8Hg7cHMPt3Fu9qoYHGnT5ug_1771240616
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -101,9 +101,9 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,71 +119,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Replace the ldebug macro calls with proper trace events:
-- audio_get_avail: traces available samples in capture stream
-- audio_open_out/audio_open_in: traces stream open parameters
-
-This provides structured tracing that can be enabled at runtime
-without requiring debug builds.
+It relies on dynamic object loading support instead.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/audio_template.h  | 7 +++++--
- audio/audio-mixeng-be.c | 6 +-----
- audio/trace-events      | 7 +++++++
- 3 files changed, 13 insertions(+), 7 deletions(-)
+ include/qemu/module.h | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/audio/audio_template.h b/audio/audio_template.h
-index 3da91a4782c..c47a2f202f0 100644
---- a/audio/audio_template.h
-+++ b/audio/audio_template.h
-@@ -507,8 +507,11 @@ static SW *glue(audio_mixeng_backend_open_, TYPE) (
-     k = AUDIO_MIXENG_BACKEND_GET_CLASS(s);
-     pdo = glue(audio_get_pdo_, TYPE)(s->dev);
+diff --git a/include/qemu/module.h b/include/qemu/module.h
+index c37ce74b16f..9885ac9afb3 100644
+--- a/include/qemu/module.h
++++ b/include/qemu/module.h
+@@ -63,7 +63,6 @@ typedef enum {
+ #define migration_init(function) module_init(function, MODULE_INIT_MIGRATION)
+ #define block_module_load(lib, errp) module_load("block-", lib, errp)
+ #define ui_module_load(lib, errp) module_load("ui-", lib, errp)
+-#define audio_module_load(lib, errp) module_load("audio-", lib, errp)
  
--    ldebug ("open %s, freq %d, nchannels %d, fmt %d\n",
--            name, as->freq, as->nchannels, as->fmt);
-+#ifdef DAC
-+    trace_audio_open_out(name, as->freq, as->nchannels, as->fmt);
-+#else
-+    trace_audio_open_in(name, as->freq, as->nchannels, as->fmt);
-+#endif
- 
-     if (audio_bug(__func__, audio_validate_settings(as))) {
-         audio_print_settings (as);
-diff --git a/audio/audio-mixeng-be.c b/audio/audio-mixeng-be.c
-index d05202aabae..84e4d136de3 100644
---- a/audio/audio-mixeng-be.c
-+++ b/audio/audio-mixeng-be.c
-@@ -881,11 +881,7 @@ static size_t audio_get_avail(SWVoiceIn *sw)
-         return 0;
-     }
- 
--    ldebug (
--        "%s: get_avail live %zu frontend frames %u\n",
--        SW_NAME (sw),
--        live, st_rate_frames_out(sw->rate, live)
--        );
-+    trace_audio_get_avail(SW_NAME(sw), live, st_rate_frames_out(sw->rate, live));
- 
-     return live;
- }
-diff --git a/audio/trace-events b/audio/trace-events
-index f33be2dd8e3..4749c54fc04 100644
---- a/audio/trace-events
-+++ b/audio/trace-events
-@@ -58,3 +58,10 @@ audio_be_set_active_out(void *sw, bool on) "sw=%p, on=%d"
- audio_timer_start(int interval) "interval %d ms"
- audio_timer_stop(void) ""
- audio_timer_delayed(int interval) "interval %d ms"
-+
-+# audio-mixeng-be.c
-+audio_get_avail(const char *name, size_t live, uint32_t frontend_frames) "%s: get_avail live %zu frontend frames %u"
-+
-+# audio_template.h
-+audio_open_out(const char *name, int freq, int nchannels, int fmt) "open %s, freq %d, nchannels %d, fmt %d"
-+audio_open_in(const char *name, int freq, int nchannels, int fmt) "open %s, freq %d, nchannels %d, fmt %d"
+ void register_module_init(void (*fn)(void), module_init_type type);
+ void register_dso_module_init(void (*fn)(void), module_init_type type);
+@@ -78,7 +77,7 @@ void module_call_init(module_init_type type);
+  * - get_relocated_path(CONFIG_QEMU_MODDIR);
+  * - /var/run/qemu/${version_dir}
+  *
+- * prefix:         a subsystem prefix, or the empty string ("audio-", ..., "")
++ * prefix:         a subsystem prefix, or the empty string ("ui-", ..., "")
+  * name:           name of the module
+  * errp:           error to set in case the module is found, but load failed.
+  *
 
 -- 
 2.53.0

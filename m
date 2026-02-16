@@ -4,106 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E80ABE7BD92
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:25:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 526C1E7BD9E
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:26:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwfG-0005RD-7Q; Mon, 16 Feb 2026 06:21:18 -0500
+	id 1vrwfJ-0005zf-S5; Mon, 16 Feb 2026 06:21:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwbv-0006EE-Ut
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:52 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwbp-00086d-4j
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:51 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240664;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZAePRO9iX/CdNZl5mbtEzsh4UrYfxMJmJv42slqeaKE=;
- b=jKQBGvqsKUTAS47ZiwL6VOCvGTpsx9cbJ/7GNeWDdtTrd9s/rLx9V9CvnCBUKYEMFVkoZM
- 9K7c1i2D36QsQRdAsT+QfW/lbTUzZBq+oMvYVCVDHk8lqfBwH09HuJFqNhwRENVCRiZg1d
- RJe4S5O9ENrwvn2l2SZFeZKewUO4Jbg=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-213-jmIuXMb8MmCISZFgiasbOQ-1; Mon,
- 16 Feb 2026 06:17:41 -0500
-X-MC-Unique: jmIuXMb8MmCISZFgiasbOQ-1
-X-Mimecast-MFC-AGG-ID: jmIuXMb8MmCISZFgiasbOQ_1771240659
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 43D7119560AA; Mon, 16 Feb 2026 11:17:39 +0000 (UTC)
-Received: from localhost (unknown [10.45.242.26])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C96B119560A2; Mon, 16 Feb 2026 11:17:37 +0000 (UTC)
-From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:15:32 +0100
-Subject: [PATCH 43/85] audio/spice: convert to QOM lifecycle methods
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vrwc2-0006Kr-3d
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:01 -0500
+Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vrwbw-00087v-23
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:54 -0500
+Received: by mail-yx1-xb12a.google.com with SMTP id
+ 956f58d0204a3-64ad46a44easo2752105d50.0
+ for <qemu-arm@nongnu.org>; Mon, 16 Feb 2026 03:17:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1771240670; cv=none;
+ d=google.com; s=arc-20240605;
+ b=XgauVK7N8NXMntfX/2tpfcoAFHf7/zWjFCGgZR1GHKtKGr1PG67BJ5Np7ecN6dGCLf
+ zf09cg3P/AZdVy46Jh+T2QoGA0vSwfKsA3tCEnJ0dh5q2RdwF3UCIzGxuyL1GTMHgQeM
+ tL7fS8atd2h5qrLNtq/24dqG4CpsIjx3R2NGVBAZtKeVxfnFk424xtZVInyOziQzpxTZ
+ sx0hscueB/PmNJ4BpSV/VthpmnIgmqCsNp27UYd3pBlfFQ2zmTzI2JySdXbtEYOTy1on
+ U1rTXf8DnsXbMWVV+o9AECFHfXVkGxACm1q9v+bnUTdba4p/LmMMPba1u290OoXcPVxH
+ 1BGg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=bGLvJI9rF6W969QEd/biDM/jDWTv2iAygutAU+gJjk8=;
+ fh=p9Zvn8HxRR9qMYdkfS1Lgjmk+gnqtxDT7le7Kc7QnOI=;
+ b=OK3QyQFhCCUdymTOVelnyUwDPkMdwOPajwo9sGjPXx5u5FNnami1/BUuMmQTW8K19F
+ sWE5mcO617aswy1vXB4ThfrvM0wTNMwUTrlLLAX57aAo0Tp6X5Yhe+CcD6fEUr2c6vdn
+ HQrvBTrlGF6YCT1DwrlEUl8onN2K0QHz34RsNgbdjGqNaMBrsJRw8Co2F6/oS0n9PYKA
+ FW7IqdpskTxlY9fz5b02AUmXr70DEQzFNiA5AXwqHFrdfVdhO0queAGzzNfkdkhbHC9Q
+ BdJP4HufH8rhnf48cG5xgH1dEDYRbjl4hyXAn6NQlJVyUgnWer8iXvknAGC4PKmZ4hBK
+ ZObQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1771240670; x=1771845470; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=bGLvJI9rF6W969QEd/biDM/jDWTv2iAygutAU+gJjk8=;
+ b=czu8x2rrlw2on1YvtdebyAALw+frDjJVoWdh9iIJKZxMt5LC3Q3v+pLpzj9bb1Hw4l
+ e1H88F823kvcFyt+FT/cxSprZ/G4u0WsoegGylVYeaB9ysjaZUHnvc66OF+EK9MhjSxl
+ oGWr/bNkPFFtXpCnCPRTuTZ/CC7iKyc5TIaHLmq2UfRU0AD0MHRQNMnjfYnv6ONXjf3C
+ B/l8FJ83pUnoHmvoHlTR764uwECXlu5r4MyxN7I1Myf89ddVhRi+PnCACiLBpcM2DJ+m
+ jO3SP1vTo0x+MIQN9FsgSZL0l3XgcKZAgquhezfGAdF8BT5PBWeaRKPIdkH0BdDknesK
+ WrTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1771240670; x=1771845470;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=bGLvJI9rF6W969QEd/biDM/jDWTv2iAygutAU+gJjk8=;
+ b=lJy/TBlOsnmwrpRDa9CfIPGbiUsupBcPRjpPnfxY9gsYu/MeSdcIGTtG9mzia0m+YB
+ wEqBllYtA+//H0P/iJ8te5oU/7xPxZLptSAWb5FVb8Bty1dpbs9HKKcdYT/eHJFg6FGv
+ IZ2u0XYOnDIV3g6RZc5+KpGQSM/4cO8GWcjcBymlp/EmjXf4DY16oUvVFlivBDn4+djh
+ NOvVRjpH7ot7kch8FqDSoU5z8E7EbUn0LMfHomRRB8FjpwG7tEv4TvpG5B7SXJ044xkp
+ v86xCXU7dLe5cgQJL34xq3CRZr6nBFsUdq7JQC85FOGHCAWs07jmP0gmc27krUb74Wp5
+ 5hWw==
+X-Gm-Message-State: AOJu0YysVHm5vFsyBYQGinoG7nhHFED0iAltdBeutsJwpD1X81lBptgP
+ kkFoCwz0Eg4lrpQtciRUqd+xFfyZR6jvfkGBQP834IHZvzVCffUbiaacc1U0CEP/k+/lnT6xauc
+ QoPBcJikUghg8L2rWrQSIfceZU1yVEHlQo391MqIuU/h33T6y8ybe
+X-Gm-Gg: AZuq6aJo9Six6vtZA+zT1z/YgN8YHcDV8eGfRVAC2WZOlJuYL4W7ylPm8+9fk3KhYD5
+ q2kNH1b/4JfZsqoIIEQf6k7dsk70lU8gR3lYAtkI9OE2/+cPHIKfxssXAtjn37t5oCqYZ5TPr/q
+ vL4/QI0Fj6E9Lb7FPQF0Zfb/A/gqq/PjnzaNgDKCDDjoB4UX3URucG56SbWufgioRuc6BPS5m6d
+ QcGlOxmeNzR20y/btMav0z0dVRaWtNPotA8aZBi1l1Vh/Wwh/9QMOb0OEvGiHL2rjMCNBRCa3GA
+ m8yS52medXrHS6RWjWmsZZa6TRTPCVOSlTIN7gvIMPMJ7WvGchQSOAydEL3mRQSh4dk=
+X-Received: by 2002:a05:690e:1503:b0:649:d40c:7ee5 with SMTP id
+ 956f58d0204a3-64c14dcbd22mr7383649d50.79.1771240670004; Mon, 16 Feb 2026
+ 03:17:50 -0800 (PST)
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-43-e676662e4514@redhat.com>
-References: <20260216-audio-v1-0-e676662e4514@redhat.com>
-In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>, 
- Christian Schoenebeck <qemu_oss@crudebyte.com>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
- Thomas Huth <huth@tuxfamily.org>, Alexandre Ratchov <alex@caoua.org>, 
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
- Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, 
- Alistair Francis <alistair@alistair23.me>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2621;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=Rcs408lO9P4mK3uz8yvMkyVGqD72XWjzygJPEae432E=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxQAwF6m/TkCaYFng41JyP1I6mFplns1w39M
- VCyg9F1V7yJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UAAKCRDa6OEJdZac
- 5dXTD/4roKmuR4JVDbGSh1B2Tv7YYNc+wLiMg6Vo5Oum72fx4eaGMB/jDzjpWl1tcYyUeHZRydY
- yF5FSzdhdVz+gvs53HwXhwyKcbEt1jJPAim14RehF7e5Y2ZOp1VSQ1XS9VcdTUPvaw4BtmIMbUU
- LJCI2SLTzLYyt2/wgKhYmB3NmedVG3n1ljRyPSq7zF1gTjsct6X7d7jAW+qQd/sYDsgfK7ANrDG
- 7g/oaWYhLP6F7lscbZOrboROm1u4OQY0JaXruNETx6xb+DyJF4khxKvNL9z/rRkeI8v3eKqUXvr
- RkaTJM6WmWv4GSV0BVRHoo3IPz6hPBQ478s2nihRbNFAtf/7qhVHRV1jXk6SjlGbeRxEj6fmeVF
- 6iy2cdA48jsyGIFXYEaf/NDKr2nR7L6dSwvMCSv0dRNrcW+ux5BZjBdBvSxPPgMDJn6i5XW3UVw
- 3wMnVoB1guas3YAioQW4wb/pE7M0GzwktYauLXKk/I0UYvFJZ2yczpes1p3f3U0SOvvPLQ33/CY
- Z6xZo2JYiGEFGtkZiUPtpb2O++cSBT44eTn6Tu0mu8xMvuphALaC8lY8S67Q6sy3Q8j0aHB2QpC
- K/izWRigAhPbugB0kfMtLL1uKsxdK93BWkchDYQ0b3MAIuqKen/w8oaA9IftG/D3fXiIyv4t62x
- TczxZ1PJLLgvXzw==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: RClFBKrueidn2tGTKEEtwR6YA2HHgAl_ZRkDVjQsf6A_1771240659
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20260212213955.2225662-1-clg@redhat.com>
+ <20260212213955.2225662-3-clg@redhat.com>
+ <CAFEAcA_oJgTc2SyRr11QTeTkmCPgvKiwngAaDiDNw5nUcTFA2w@mail.gmail.com>
+In-Reply-To: <CAFEAcA_oJgTc2SyRr11QTeTkmCPgvKiwngAaDiDNw5nUcTFA2w@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 16 Feb 2026 11:17:38 +0000
+X-Gm-Features: AZwV_QjkAtd8o1L8R3U42l-5v26Hsucunwmnf6JzR1dCAhNkLGcCjZqRKGxtKYE
+Message-ID: <CAFEAcA_9Np04vouA-m99xB8yU-JhduwxxLj_dTG0QM=AnDbHoQ@mail.gmail.com>
+Subject: Re: [PULL 02/16] tests/functional: Add SDK tests with Linux 5.15
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Thomas Huth <thuth@redhat.com>, "Daniel P. Berrange" <berrange@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Kane Chen <kane_chen@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,91 +119,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Migrate the SPICE audio backend from the legacy driver init/fini
-callbacks to proper QOM realize method.
+On Mon, 16 Feb 2026 at 11:13, Peter Maydell <peter.maydell@linaro.org> wrot=
+e:
+>
+> On Thu, 12 Feb 2026 at 21:42, C=C3=A9dric Le Goater <clg@redhat.com> wrot=
+e:
+> >
+> > Add functional tests for AST2500 and AST2600 machines using the
+> > OpenBMC SDK v11.00 with Linux kernel 5.15. These tests complement the
+> > existing SDK tests and verify that QEMU correctly boots older kernel
+> > versions on these platforms.
+>
+>
+> > +    ASSET_SDK_V1100_AST2600_515 =3D Asset(
+> > +        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v=
+11.00/ast2600-default-515-obmc.tar.gz',
+> > +        'ece1a934095378929780f03e7d092e562f4b33b2841b80ad7c3d12a85744c=
+0f6')
+>
+> This asset file is over a gigabyte in size, it takes forever to
+> download, and our functional test asset download framework has
+> no mechanism for giving any kind of progress indication for
+> downloads (or even for telling you the URL it is downloading
+> until after the download is complete).
+>
+> Can we have a size limit for test assets please, at least until
+> the framework can support large assets a bit better ?
 
-The spice_audio_init() function is replaced with spice_audio_realize(),
-which validates that SPICE is enabled before delegating to the parent
-class realize method. The empty spice_audio_fini() is removed as no
-cleanup is needed.
+Followup: we have six test assets that are over 500MB in size,
+and they are all aspeed tests. Please can you have a look at
+slimming these down?
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
----
- audio/spiceaudio.c | 34 +++++++++++++++++-----------------
- 1 file changed, 17 insertions(+), 17 deletions(-)
-
-diff --git a/audio/spiceaudio.c b/audio/spiceaudio.c
-index ad7cb69673b..953dbf6c308 100644
---- a/audio/spiceaudio.c
-+++ b/audio/spiceaudio.c
-@@ -33,16 +33,33 @@
- #define TYPE_AUDIO_SPICE "audio-spice"
- OBJECT_DECLARE_SIMPLE_TYPE(AudioSpice, AUDIO_SPICE)
- 
-+static AudioBackendClass *audio_spice_parent_class;
-+
- struct AudioSpice {
-     AudioMixengBackend parent_obj;
- };
- 
- static struct audio_driver spice_audio_driver;
- 
-+static bool spice_audio_realize(AudioBackend *abe, Audiodev *dev, Error **errp)
-+{
-+    if (!using_spice) {
-+        error_setg(errp, "Cannot use spice audio without -spice");
-+        qapi_free_Audiodev(dev);
-+        return false;
-+    }
-+
-+    return audio_spice_parent_class->realize(abe, dev, errp);
-+}
-+
- static void audio_spice_class_init(ObjectClass *klass, const void *data)
- {
-+    AudioBackendClass *b = AUDIO_BACKEND_CLASS(klass);
-     AudioMixengBackendClass *k = AUDIO_MIXENG_BACKEND_CLASS(klass);
- 
-+    audio_spice_parent_class = AUDIO_BACKEND_CLASS(object_class_get_parent(klass));
-+
-+    b->realize = spice_audio_realize;
-     k->driver = &spice_audio_driver;
- }
- 
-@@ -89,21 +106,6 @@ static const SpiceRecordInterface record_sif = {
-     .base.minor_version = SPICE_INTERFACE_RECORD_MINOR,
- };
- 
--static void *spice_audio_init(Audiodev *dev, Error **errp)
--{
--    if (!using_spice) {
--        error_setg(errp, "Cannot use spice audio without -spice");
--        return NULL;
--    }
--
--    return &spice_audio_init;
--}
--
--static void spice_audio_fini (void *opaque)
--{
--    /* nothing */
--}
--
- /* playback */
- 
- static int line_out_init(HWVoiceOut *hw, struct audsettings *as,
-@@ -333,8 +335,6 @@ static struct audio_pcm_ops audio_callbacks = {
- 
- static struct audio_driver spice_audio_driver = {
-     .name           = "spice",
--    .init           = spice_audio_init,
--    .fini           = spice_audio_fini,
-     .pcm_ops        = &audio_callbacks,
-     .max_voices_out = 1,
-     .max_voices_in  = 1,
-
--- 
-2.53.0
-
+thanks
+-- PMM
 

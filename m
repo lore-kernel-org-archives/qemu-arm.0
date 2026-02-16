@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DE27E7BD98
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:25:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B91E7E7BD98
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:25:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrweF-0002nf-PF; Mon, 16 Feb 2026 06:20:15 -0500
+	id 1vrwfM-0006QV-E8; Mon, 16 Feb 2026 06:21:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwbK-0005Z4-6H
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:24 -0500
+ id 1vrwaw-0005Mm-SX
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:04 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwb6-0007aC-6w
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:03 -0500
+ id 1vrwau-0007Tr-2N
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240618;
+ s=mimecast20190719; t=1771240605;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3cfhdOzknAF9YO6j0QekhEL3lL807Fp77kyJj7wmWFs=;
- b=hCqxaoawqZ4qowlVN0CvDuS2bGeiz2VGKBSHkn7t1L8o02VArGXa9BqCbZTKJt7p3HAx3Y
- uCOQzSltZNRLnz/Wszhg2oe8+c+BHGQu9EeUiZPki/jYi7z2gadLNIl911aGLc7PiKlnIO
- E+WfD+PXpKo43myPCoFw6l3hT7zjo+A=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=LnSaRxBAGTqpOnRjgcU7fK6qN6/pVq5+xwI7hZXDScs=;
+ b=JTR2YoYEvx2sdcAgrQ/y0Obo+cSZUELEZH6P5kFfzAX1i1tLa8nQEOD5TJ/1qvxW1WustX
+ b8AT42aHKftg1sJnf2Q1W9NxgbhI5MxIl6P6UEGwjVU8wW5iFmEgBVsAJAMbuFEfttd3xI
+ LUTwzX/kW/PSoVUTema3VeVCDs27yU0=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-348-dgIVvDxQONKLDdsJPAnelA-1; Mon,
- 16 Feb 2026 06:16:55 -0500
-X-MC-Unique: dgIVvDxQONKLDdsJPAnelA-1
-X-Mimecast-MFC-AGG-ID: dgIVvDxQONKLDdsJPAnelA_1771240613
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-102-9K88Oy9KPICHbPifigC9Tg-1; Mon,
+ 16 Feb 2026 06:16:42 -0500
+X-MC-Unique: 9K88Oy9KPICHbPifigC9Tg-1
+X-Mimecast-MFC-AGG-ID: 9K88Oy9KPICHbPifigC9Tg_1771240600
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6AFFD180057E; Mon, 16 Feb 2026 11:16:53 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 45B5F1800465; Mon, 16 Feb 2026 11:16:40 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8890718003F5; Mon, 16 Feb 2026 11:16:52 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id E625630001B9; Mon, 16 Feb 2026 11:16:38 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:15:16 +0100
-Subject: [PATCH 27/85] audio: drop audio driver registration
+Date: Mon, 16 Feb 2026 12:15:11 +0100
+Subject: [PATCH 22/85] audio: simplify audio_init()
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-27-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-22-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,25 +71,25 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8757;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4073;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=azrrD2hSQuvPvUHhEWUcKcpNNPTuuiUl6Tzb3Fh3kL4=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxPrPWbFGVfXMLpQzg2rNHWeAk8rDnBWOLKJ
- MI7Pwx3sR+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TwAKCRDa6OEJdZac
- 5UzND/9jBaKwuuWl3L5VRzoK3j1iU17UCb6YvE4L4/UcsDkDtZ4/86Jw+3bAZIkLwXE0J3fJOob
- 0dPXDwTECFZWh4kEVTenIYuRqBXUHaKahAcBxX6YE8h0As8qiC/gFrebUptUP96T7TzplBhexvJ
- 3A4V1XymaIpzTzFCQudAgEO3wbjPK9FsvD+7k2svnkddvAm+pzHbF+JHKcCqIARZjTsxtYGna/M
- 3C+s2x79E5rSYRWNy4L01KfzzOeyoyxnts1LHvrYtgMZTtCpA/zo7DTnJKyAjdxAU+uqJODFUbe
- mI6Ykhd8b5mJqqn17RKf713KekVxXiXxWDpyoumaqK3QGDR3iVXZsld94lXFwjDBwHXIs6hxc6H
- 5jnOg9f/GbdVaCLuWQqnw7l/ZSyLoLt7zkY3HUeRBvGHlBYsQEA5A0kFoouB0FXCI8D0uneoIVG
- /HxerlCKAYbP4OU8yONP83PIQoKrRm6/raRgR62yBniJ7znOj1MEVKD5omK1YEChapSTybdLJ2l
- IhFANRG23ZIUIr3sCsRZMxz/3l1I1aIIRQkM12vt9UB/ANWzcBri7q6dmmqT5EvvNXWjWsPseKy
- ztnr0WY1Y+ooVmMG/BH87UobAPL5+6uLiQ7/1VQu5UUCYIYz4GjBHB4OfJffLLW8AST6zCSqNTo
- yyBypsdfZ0RTFxg==
+ bh=K/qLh28e2vPgm33e8WRKkMMDOHVC8mGtCBftRfM7Y78=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxPuWQjmx+oAltbb6CXK981lEPRn579VgwUM
+ BP+4Z5bxBSJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TwAKCRDa6OEJdZac
+ 5bgSD/9rUthyG3AFSNVI0xfNO8rT0yVrZymsmKqCeO4cVmf+zCoACx+uUNKiu6ePb2Kf9wo2KzU
+ YSOpuk5GWAPC2vrgCyyPMn6whCoJpO3/VLqk9T1J618ttpwZcAJZjMzu/yAqdjTaubIZaJGeype
+ 6J2dB5EWvCtzuRDRHrs//W1q6JVsH3F7Vq8qekTP7iTbn98OcAmwH4R/yAci1jdWf+R7hIFYR8Z
+ LjbmlvX02P0W+BJWYvm2+JeMgrD9rQvpWi+V6GehY3VbuYcHL6zMConcsIlF3fyL83D3d2F+1n7
+ ShCZBB801J+7nUY0m4YRG7x3WcJg5kFQ12FMb55MULX66cA14EjMzRirps8NB6n1HW1OzjqVtbK
+ zuw1HWCXafcGCTPhx2G1ICi//dp8LYOPJ9+p8VcfLRCEEd8FIViye9sCPpl3lLHFSn1op8pHFbR
+ hCtfPEAyEesbztFukJfq2r6StLrcqAYdCYyYibCw1+ov0+1qnFSAC8p8lE3tB66gMTb4LAr9iP6
+ Pp9XSxZhvJSNNrx+p6YIR8t5QXOCiwPF34QpgBK9hsS1dRqTqtnrO+S/g9ByGMqmx2LZ0KGkujr
+ oMEIJEfEfHxrrtiRXtvAaJIAX4nFuSa1wXtj8PaDsRTTUGkOr5HzhPyZSkInZaTFwV2oXqpJtBt
+ iNEE/F7LmaMSSKQ==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: OmxwelbPBCkglLatmaz0KXY2sMhfCGInrbd55COKrjw_1771240613
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: uKewtUJ9VY3D2_rIj25MepCwMRsWswmOdjN3fa-C0q4_1771240600
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -119,275 +119,127 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-module_object_class_by_name() handles loading the module providing the
-requested object.
+Factorize looking up the driver in audio_driver_init()
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/audio_int.h   |  2 --
- audio/alsaaudio.c   |  1 -
- audio/audio.c       | 43 +++++++++++++------------------------------
- audio/dbusaudio.c   |  1 -
- audio/dsoundaudio.c |  1 -
- audio/jackaudio.c   |  1 -
- audio/noaudio.c     |  1 -
- audio/ossaudio.c    |  1 -
- audio/paaudio.c     |  1 -
- audio/pwaudio.c     |  1 -
- audio/sdlaudio.c    |  1 -
- audio/sndioaudio.c  |  1 -
- audio/spiceaudio.c  |  1 -
- audio/wavaudio.c    |  1 -
- audio/coreaudio.m   |  1 -
- 15 files changed, 13 insertions(+), 45 deletions(-)
+ audio/audio.c | 66 ++++++++++++++++++++++++++---------------------------------
+ 1 file changed, 29 insertions(+), 37 deletions(-)
 
-diff --git a/audio/audio_int.h b/audio/audio_int.h
-index 0b97c8edee3..446ba1d52c6 100644
---- a/audio/audio_int.h
-+++ b/audio/audio_int.h
-@@ -259,8 +259,6 @@ extern const struct mixeng_volume nominal_volume;
- 
- extern const char *audio_prio_list[];
- 
--void audio_driver_register(audio_driver *drv);
--
- void audio_pcm_init_info (struct audio_pcm_info *info, const struct audsettings *as);
- void audio_pcm_info_clear_buf (struct audio_pcm_info *info, void *buf, int len);
- 
-diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
-index ecc22d7c8f9..7200777ad82 100644
---- a/audio/alsaaudio.c
-+++ b/audio/alsaaudio.c
-@@ -972,7 +972,6 @@ static const TypeInfo audio_alsa_info = {
- 
- static void register_audio_alsa(void)
- {
--    audio_driver_register(&alsa_audio_driver);
-     type_register_static(&audio_alsa_info);
- }
- type_init(register_audio_alsa);
 diff --git a/audio/audio.c b/audio/audio.c
-index 72949fe27f5..16edc57e5f0 100644
+index c4e4adec106..10e32bcbb1a 100644
 --- a/audio/audio.c
 +++ b/audio/audio.c
-@@ -68,40 +68,21 @@ const char *audio_prio_list[] = {
-     NULL
- };
- 
--static QLIST_HEAD(, audio_driver) audio_drivers;
- static AudiodevListHead audiodevs =
-     QSIMPLEQ_HEAD_INITIALIZER(audiodevs);
- static AudiodevListHead default_audiodevs =
-     QSIMPLEQ_HEAD_INITIALIZER(default_audiodevs);
- 
--
--void audio_driver_register(audio_driver *drv)
--{
--    QLIST_INSERT_HEAD(&audio_drivers, drv, next);
--}
--
--static audio_driver *audio_driver_lookup(const char *name)
-+static AudioBackendClass *audio_be_class_by_name(const char *name)
- {
--    struct audio_driver *d;
--    Error *local_err = NULL;
--    int rv;
-+    g_autofree char *tname = g_strconcat("audio-", name, NULL);
-+    ObjectClass *oc = module_object_class_by_name(tname);
- 
--    QLIST_FOREACH(d, &audio_drivers, next) {
--        if (strcmp(name, d->name) == 0) {
--            return d;
--        }
--    }
--    rv = audio_module_load(name, &local_err);
--    if (rv > 0) {
--        QLIST_FOREACH(d, &audio_drivers, next) {
--            if (strcmp(name, d->name) == 0) {
--                return d;
--            }
--        }
--    } else if (rv < 0) {
--        error_report_err(local_err);
-+    if (!oc || !object_class_dynamic_cast(oc, TYPE_AUDIO_BACKEND)) {
-+        return NULL;
-     }
--    return NULL;
-+
-+    return AUDIO_BACKEND_CLASS(oc);
+@@ -1562,11 +1562,18 @@ size_t audio_generic_read(HWVoiceIn *hw, void *buf, size_t size)
+     return total;
  }
  
- static AudioBackend *default_audio_be;
-@@ -1764,7 +1745,7 @@ static const VMStateDescription vmstate_audio = {
- void audio_create_default_audiodevs(void)
+-static bool audio_driver_do_init(AudioMixengBackend *s, struct audio_driver *drv,
+-                                 Audiodev *dev, Error **errp)
++static bool audio_driver_do_init(AudioMixengBackend *d, Error **errp)
  {
-     for (int i = 0; audio_prio_list[i]; i++) {
--        if (audio_driver_lookup(audio_prio_list[i])) {
-+        if (audio_be_class_by_name(audio_prio_list[i]) != NULL) {
-             QDict *dict = qdict_new();
-             Audiodev *dev = NULL;
-             Visitor *v;
-@@ -2129,9 +2110,11 @@ void audio_help(void)
-     printf("Available audio drivers:\n");
- 
-     for (i = 0; i < AUDIODEV_DRIVER__MAX; i++) {
--        audio_driver *driver = audio_driver_lookup(AudiodevDriver_str(i));
--        if (driver) {
--            printf("%s\n", driver->name);
-+        const char *name = AudiodevDriver_str(i);
-+        AudioBackendClass *be = audio_be_class_by_name(name);
+-    s->drv_opaque = drv->init(dev, errp);
+-    if (!s->drv_opaque) {
++    const char *drvname = AudiodevDriver_str(d->dev->driver);
++    struct audio_driver *drv = audio_driver_lookup(drvname);
 +
-+        if (be) {
-+            printf("%s\n", name);
++    if (!drv) {
++        error_setg(errp, "Unknown audio driver `%s'", drvname);
++        return false;
++    }
++
++    d->drv_opaque = drv->init(d->dev, errp);
++    if (!d->drv_opaque) {
+         return false;
+     }
+ 
+@@ -1579,14 +1586,14 @@ static bool audio_driver_do_init(AudioMixengBackend *s, struct audio_driver *drv
+         drv->pcm_ops->put_buffer_out = audio_generic_put_buffer_out;
+     }
+ 
+-    audio_init_nb_voices_out(s, drv, 1);
+-    audio_init_nb_voices_in(s, drv, 0);
+-    s->drv = drv;
++    audio_init_nb_voices_out(d, drv, 1);
++    audio_init_nb_voices_in(d, drv, 0);
++    d->drv = drv;
+ 
+-    if (dev->timer_period <= 0) {
+-        s->period_ticks = 1;
++    if (d->dev->timer_period <= 0) {
++        d->period_ticks = 1;
+     } else {
+-        s->period_ticks = dev->timer_period * (int64_t)SCALE_US;
++        d->period_ticks = d->dev->timer_period * (int64_t)SCALE_US;
+     }
+ 
+     return true;
+@@ -1786,24 +1793,12 @@ void audio_create_default_audiodevs(void)
+  */
+ static AudioBackend *audio_init(Audiodev *dev, Error **errp)
+ {
+-    int done = 0;
+-    const char *drvname;
+-    AudioMixengBackend *s;
+-    struct audio_driver *driver;
++    AudioMixengBackend *d;
+ 
+-    s = AUDIO_MIXENG_BACKEND(object_new(TYPE_AUDIO_MIXENG_BACKEND));
+-
+-    if (dev) {
+-        /* -audiodev option */
+-        s->dev = dev;
+-        drvname = AudiodevDriver_str(dev->driver);
+-        driver = audio_driver_lookup(drvname);
+-        if (driver) {
+-            done = audio_driver_do_init(s, driver, dev, errp);
+-        } else {
+-            error_setg(errp, "Unknown audio driver `%s'", drvname);
+-        }
+-        if (!done) {
++    d = AUDIO_MIXENG_BACKEND(object_new(TYPE_AUDIO_MIXENG_BACKEND));
++    d->dev = dev;
++    if (d->dev) {
++        if (!audio_driver_do_init(d, errp)) {
+             goto out;
+         }
+     } else {
+@@ -1814,27 +1809,24 @@ static AudioBackend *audio_init(Audiodev *dev, Error **errp)
+                 error_setg(errp, "no default audio driver available");
+                 goto out;
+             }
+-            s->dev = dev = e->dev;
++            d->dev = e->dev;
+             QSIMPLEQ_REMOVE_HEAD(&default_audiodevs, next);
+             g_free(e);
+-            drvname = AudiodevDriver_str(dev->driver);
+-            driver = audio_driver_lookup(drvname);
+-            if (audio_driver_do_init(s, driver, dev, NULL)) {
++            if (audio_driver_do_init(d, NULL)) {
+                 break;
+             }
+-            qapi_free_Audiodev(dev);
+-            s->dev = NULL;
          }
      }
- }
-diff --git a/audio/dbusaudio.c b/audio/dbusaudio.c
-index 5a5752b8f33..48c9078d80e 100644
---- a/audio/dbusaudio.c
-+++ b/audio/dbusaudio.c
-@@ -738,7 +738,6 @@ static const TypeInfo audio_dbus_info = {
  
- static void register_audio_dbus(void)
- {
--    audio_driver_register(&dbus_audio_driver);
-     type_register_static(&audio_dbus_info);
- }
- type_init(register_audio_dbus);
-diff --git a/audio/dsoundaudio.c b/audio/dsoundaudio.c
-index 91c83dec742..6d213899660 100644
---- a/audio/dsoundaudio.c
-+++ b/audio/dsoundaudio.c
-@@ -720,7 +720,6 @@ static const TypeInfo audio_dsound_info = {
+-    if (!object_property_try_add_child(get_audiodevs_root(), dev->id, OBJECT(s), errp)) {
++    if (!object_property_try_add_child(get_audiodevs_root(),
++                                       d->dev->id, OBJECT(d), errp)) {
+         goto out;
+     }
+-    object_unref(s);
+-    return AUDIO_BACKEND(s);
++    object_unref(d);
++    return AUDIO_BACKEND(d);
  
- static void register_audio_dsound(void)
- {
--    audio_driver_register(&dsound_audio_driver);
-     type_register_static(&audio_dsound_info);
- }
- type_init(register_audio_dsound);
-diff --git a/audio/jackaudio.c b/audio/jackaudio.c
-index 7ed2e91fcc8..bfce4cb0b4c 100644
---- a/audio/jackaudio.c
-+++ b/audio/jackaudio.c
-@@ -718,7 +718,6 @@ static const TypeInfo audio_jack_info = {
- static void register_audio_jack(void)
- {
-     qemu_mutex_init(&qjack_shutdown_lock);
--    audio_driver_register(&jack_driver);
-     type_register_static(&audio_jack_info);
- #if !defined(WIN32) && defined(CONFIG_PTHREAD_SETNAME_NP_W_TID)
-     jack_set_thread_creator(qjack_thread_creator);
-diff --git a/audio/noaudio.c b/audio/noaudio.c
-index b3305480013..8b5ebd71bf6 100644
---- a/audio/noaudio.c
-+++ b/audio/noaudio.c
-@@ -164,7 +164,6 @@ static const TypeInfo audio_none_info = {
- 
- static void register_audio_none(void)
- {
--    audio_driver_register(&no_audio_driver);
-     type_register_static(&audio_none_info);
- }
- type_init(register_audio_none);
-diff --git a/audio/ossaudio.c b/audio/ossaudio.c
-index 9697f4a0beb..b8e26b17ed7 100644
---- a/audio/ossaudio.c
-+++ b/audio/ossaudio.c
-@@ -798,7 +798,6 @@ static const TypeInfo audio_oss_info = {
- 
- static void register_audio_oss(void)
- {
--    audio_driver_register(&oss_audio_driver);
-     type_register_static(&audio_oss_info);
- }
- type_init(register_audio_oss);
-diff --git a/audio/paaudio.c b/audio/paaudio.c
-index 707a6d2fb23..adaeb2af807 100644
---- a/audio/paaudio.c
-+++ b/audio/paaudio.c
-@@ -957,7 +957,6 @@ static const TypeInfo audio_pa_info = {
- 
- static void register_audio_pa(void)
- {
--    audio_driver_register(&pa_audio_driver);
-     type_register_static(&audio_pa_info);
- }
- type_init(register_audio_pa);
-diff --git a/audio/pwaudio.c b/audio/pwaudio.c
-index 31f8899d1ed..facd166052c 100644
---- a/audio/pwaudio.c
-+++ b/audio/pwaudio.c
-@@ -874,7 +874,6 @@ static const TypeInfo audio_pw_info = {
- static void
- register_audio_pw(void)
- {
--    audio_driver_register(&pw_audio_driver);
-     type_register_static(&audio_pw_info);
+ out:
+-    object_unref(s);
++    object_unref(d);
+     return NULL;
  }
  
-diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
-index 5841e131cc0..c00f1366d17 100644
---- a/audio/sdlaudio.c
-+++ b/audio/sdlaudio.c
-@@ -517,7 +517,6 @@ static const TypeInfo audio_sdl_info = {
- 
- static void register_audio_sdl(void)
- {
--    audio_driver_register(&sdl_audio_driver);
-     type_register_static(&audio_sdl_info);
- }
- type_init(register_audio_sdl);
-diff --git a/audio/sndioaudio.c b/audio/sndioaudio.c
-index 7f388b498f6..c8310b1fa37 100644
---- a/audio/sndioaudio.c
-+++ b/audio/sndioaudio.c
-@@ -581,7 +581,6 @@ static const TypeInfo audio_sndio_info = {
- 
- static void register_audio_sndio(void)
- {
--    audio_driver_register(&sndio_audio_driver);
-     type_register_static(&audio_sndio_info);
- }
- 
-diff --git a/audio/spiceaudio.c b/audio/spiceaudio.c
-index d0bcc0836ad..d1bb318b6b7 100644
---- a/audio/spiceaudio.c
-+++ b/audio/spiceaudio.c
-@@ -351,7 +351,6 @@ static const TypeInfo audio_spice_info = {
- 
- static void register_audio_spice(void)
- {
--    audio_driver_register(&spice_audio_driver);
-     type_register_static(&audio_spice_info);
- }
- type_init(register_audio_spice);
-diff --git a/audio/wavaudio.c b/audio/wavaudio.c
-index 00cf110ecd7..12d4108ffad 100644
---- a/audio/wavaudio.c
-+++ b/audio/wavaudio.c
-@@ -240,7 +240,6 @@ static const TypeInfo audio_wav_info = {
- 
- static void register_audio_wav(void)
- {
--    audio_driver_register(&wav_audio_driver);
-     type_register_static(&audio_wav_info);
- }
- type_init(register_audio_wav);
-diff --git a/audio/coreaudio.m b/audio/coreaudio.m
-index 61333e9f2f9..5efd16df7c4 100644
---- a/audio/coreaudio.m
-+++ b/audio/coreaudio.m
-@@ -699,7 +699,6 @@ static void coreaudio_audio_fini (void *opaque)
- 
- static void register_audio_coreaudio(void)
- {
--    audio_driver_register(&coreaudio_audio_driver);
-     type_register_static(&audio_coreaudio_info);
- }
- type_init(register_audio_coreaudio);
 
 -- 
 2.53.0

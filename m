@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80166E7BD92
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:22:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68A8EE7BD95
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:22:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwfV-0007dO-Fm; Mon, 16 Feb 2026 06:21:33 -0500
+	id 1vrwff-0000Th-Q4; Mon, 16 Feb 2026 06:21:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwda-0000oY-Ar
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:34 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1vrwdh-0001EL-8O
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwdX-00004s-Uy
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:33 -0500
+ id 1vrwdf-00009s-0P
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:40 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240771;
+ s=mimecast20190719; t=1771240777;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=m0EmStvnfux6SRdwIes6737BLoqxJP2yVeKJO8MbGz4=;
- b=g3H8WynVsWWLVczZpLyt6xpZwRaLSLQO1P3OFMdysVWpxRVKx35MFAQMEuvzjFFI4trfSO
- Jc28bPXlsH6mdsXq4Atl2gFR/t/0PqycyELvRvnlxLTGoQrW/7CU8wxwS2TXZ/vz0Nqji6
- 2Q+kjBiH/6zorTVQxt4LKD5PLCMEE4Q=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=LUP+G2rwSZjjp818AEO2MqOgi20Zq+c3evxaj7rofVg=;
+ b=eL+WhRiMqBiEaR2GR3YxbOppvpdPo35kaGAMzjb460Z0g3DEY3QLlZODOX4HyB9UbvGxis
+ r7qXnE2I+Gq/v9Jp1DzRv4G5GgKfVekc5AwzHuJAyKq3EWvzutZnZ1Jcy6IC10x3YVabg+
+ /8rsP5uT8d94HuIvGnRP5tyLIHO3G+Y=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-157-qBn4hfwiOxy1PhneU5GLmw-1; Mon,
- 16 Feb 2026 06:19:26 -0500
-X-MC-Unique: qBn4hfwiOxy1PhneU5GLmw-1
-X-Mimecast-MFC-AGG-ID: qBn4hfwiOxy1PhneU5GLmw_1771240764
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-154-6rvFx-VzM8q23-UhVuhAUw-1; Mon,
+ 16 Feb 2026 06:19:34 -0500
+X-MC-Unique: 6rvFx-VzM8q23-UhVuhAUw-1
+X-Mimecast-MFC-AGG-ID: 6rvFx-VzM8q23-UhVuhAUw_1771240772
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 416311800352; Mon, 16 Feb 2026 11:19:24 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 809BC1800464; Mon, 16 Feb 2026 11:19:32 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 490CC30001A5; Mon, 16 Feb 2026 11:19:23 +0000 (UTC)
+ id D778B30001A5; Mon, 16 Feb 2026 11:19:31 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:16:09 +0100
-Subject: [PATCH 80/85] audio: rework invalid audsettings error
+Date: Mon, 16 Feb 2026 12:16:12 +0100
+Subject: [PATCH 83/85] audio: remove AUD_log/ldebug
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-80-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-83-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,29 +71,29 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3338;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3404;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=DOJovR/J2k1KAla05HmsB7pR9pRP9RvnTgMZQuarhDc=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxSnXO32iYEl8o8zZV2F9Oh/JWAlwWg37ikc
- r7xIdTzuR6JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UgAKCRDa6OEJdZac
- 5aVEEACh9XvMthEFPQywxqOzatqETNSiy+JPT0Xu3afRti/u4CYaGO1uPl/mL39QskvYmUU79pW
- UAbDvbOzfLl3X4ABUSXsI6Txh1W4V1GoeY7CZrEW7X/hG7MuF6wgaIZUwlMa6ycLtpwqrfszJo7
- sWW92UWAd+XbYASkT2nMVj7rRNcsk3MKoAJ1F5LveFmJ1Cj/kEjspvjS05sMOGVQJTja2LPt7dU
- vcxTrol5D/Hes2WClKpxZrm4MqHHGlrC1n+9JnFjaV7Y/+99/k50jnp1L1QuLf6KEKd+gABOJB6
- NW6o6mE83UskEDBuSfc5U2SOR0YLi+QKBGbPdC5lhfgULyEClCqD263BkVdvvwOvYPgbZ/Bd4kG
- S4dfBvZWaEVGKadD+CflRzdbxWi/oZC9b/QpsLeCXuTiCPoybRpki0BfZts55DchoScL0JAxYpJ
- hE7wcsudaVF6mi+AMbHtiuAFRrlA7/v6fE2FYOObiBjIaQT4DSPAfNwP6es4njGz6iDmM1VOLwH
- r6lDXyGNQ9D/W2a3zmDoJ5w6UDTfs4tWEa0+uSZ3kxRws9JeBxCWUk6mexV3AO+Jeor5HZcloOZ
- 8TiODYoCUOLdcBPlY+DM7h1tWmnZGnHdn1kVXtZnVUfotxpjLYPVT1BB3b5/x/kImG7yNHESnud
- ppkdaJCERvAbbnA==
+ bh=wYEC+0RY6JzYLHGKwBVCYQt+/nE3Fr4RFck/o8ke+9Q=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxSB39sG13RfjzVUOgEPjEPtzl6qSSehB8VC
+ Yyu8pBZpF6JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UgAKCRDa6OEJdZac
+ 5cbxD/4gZMNLnfHBdGVo9QnEl60b3/UEw8dEanVeoITFTFDpqf2ci8JC75kPIInmGCi2Dobtz+f
+ lsL5xSoxpyhZg+t0ojuc8T6UBcw5ZOzv57fwBCQDQvFaULlIzddwmRqR6CVOM+8HPrmlHS9nQIS
+ UDheF1iCBoxwlaihAId4pxM1GIgTSHV6X1hwOApo7MSDqg/xNp2MqZnRcScPYKPbesk9mB9lSvs
+ 70mUUX3WFbndWXCJocQv1NEox7jfJsGhKVa/lUt5/M17GWDuNTCB6kNNbBmmBH/ocL532gItmWg
+ LS5UJLDGrxkBuKRjZFQRDsKFG/ierneuNnN2mxDX49jfSJhucbXt4PCR9yVuzjiu1Pu0RYlzqtx
+ Dt9fMlajxTVa9BJEgnbNVj0sMw7q8+YtkvzY8x9epI/fQkS/8kDN5pHNGztauT5CccgA8AAuwHv
+ 55LDXAtsofD6CghlgmOazwg/NvvU8BRA+kHpLHkSKvq0dwW7CSgfeX3bakCpWER49EcTYA4z6QF
+ Fx2UUaRQLpKoWoCbJMLtbktdAFZwtqMgZFWh3TQNjgM7duLj5gDnFs/aJmtAHsLr7lqCZ8Jweyn
+ Hv4ewuPxOX4oe8OzzO58dKge1Ht/oKntsoYqGdfHttiWD4JYX0zGSAY/qas6pvPEdoqyq8Dev0l
+ MIlxQLE98zjuV8Q==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: kDGfLpVSuroZ3sDlDuYV6gDPuWHC9S_C00_VFjftoos_1771240764
+X-Mimecast-MFC-PROC-ID: BHAviLn1-GfYnxDqtE5Bo0eK5SwKUE9y-Rs0my5-2OM_1771240772
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -101,9 +101,9 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,100 +119,111 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently, when given invalid settings, QEMU will print to stderr:
-
-A bug was just triggered in audio_mixeng_backend_open_out
-Save all your work and restart without audio
-I am sorry
-Context:
-audio: frequency=44100 nchannels=0 fmt=S16 endianness=little
-
-Now it will use error_report() and simply report:
-audio: Invalid audio settings: frequency=44100 nchannels=0 fmt=s16 endian=little
+audio/ is now converted to use QEMU standard trace & error reporting.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/audio_template.h  |  5 +++--
- audio/audio-mixeng-be.c | 41 +++++++----------------------------------
- 2 files changed, 10 insertions(+), 36 deletions(-)
+ audio/audio_int.h       | 14 --------------
+ audio/audio_template.h  |  2 +-
+ audio/audio-mixeng-be.c | 19 -------------------
+ audio/mixeng.c          |  1 -
+ 4 files changed, 1 insertion(+), 35 deletions(-)
 
+diff --git a/audio/audio_int.h b/audio/audio_int.h
+index 20ec7883aab..3fc4b516878 100644
+--- a/audio/audio_int.h
++++ b/audio/audio_int.h
+@@ -33,12 +33,6 @@
+ #include "qemu/audio-capture.h"
+ #include "mixeng.h"
+ 
+-void G_GNUC_PRINTF(2, 0)
+-AUD_vlog(const char *cap, const char *fmt, va_list ap);
+-
+-void G_GNUC_PRINTF(2, 3)
+-AUD_log(const char *cap, const char *fmt, ...);
+-
+ struct audio_callback {
+     void *opaque;
+     audio_callback_fn fn;
+@@ -276,14 +270,6 @@ static inline size_t audio_ring_posb(size_t pos, size_t dist, size_t len)
+     return pos >= dist ? pos - dist : len - dist + pos;
+ }
+ 
+-#define dolog(fmt, ...) AUD_log(AUDIO_CAP, fmt, ## __VA_ARGS__)
+-
+-#ifdef DEBUG
+-#define ldebug(fmt, ...) AUD_log(AUDIO_CAP, fmt, ## __VA_ARGS__)
+-#else
+-#define ldebug(fmt, ...) (void)0
+-#endif
+-
+ AudiodevPerDirectionOptions *audio_get_pdo_in(Audiodev *dev);
+ AudiodevPerDirectionOptions *audio_get_pdo_out(Audiodev *dev);
+ 
 diff --git a/audio/audio_template.h b/audio/audio_template.h
-index e884c8e9b1a..5711f4a26e1 100644
+index 760aaf5f31f..85a128e2f47 100644
 --- a/audio/audio_template.h
 +++ b/audio/audio_template.h
-@@ -513,8 +513,9 @@ static SW *glue(audio_mixeng_backend_open_, TYPE) (
-     trace_audio_open_in(name, as->freq, as->nchannels, as->fmt);
- #endif
- 
--    if (audio_bug(__func__, audio_validate_settings(as))) {
--        audio_print_settings (as);
-+    if (audio_validate_settings(as)) {
-+        g_autofree char *str = audsettings_to_string(as);
-+        error_report("audio: Invalid audio settings: %s", str);
-         goto fail;
-     }
- 
+@@ -128,7 +128,7 @@ static int glue (audio_pcm_sw_alloc_resources_, TYPE) (SW *sw)
+         /* f_fe_min = ceil(1 [frames] * f_be [Hz] / size_be [frames]) */
+         f_fe_min = (f_be + HWBUF.size - 1) / HWBUF.size;
+         qemu_log_mask(LOG_UNIMP,
+-                      AUDIO_CAP ": The guest selected a " NAME " sample rate"
++                      "audio: The guest selected a " NAME " sample rate"
+                       " of %d Hz for %s. Only sample rates >= %" PRIu64 " Hz"
+                       " are supported.\n",
+                       sw->info.freq, sw->name, f_fe_min);
 diff --git a/audio/audio-mixeng-be.c b/audio/audio-mixeng-be.c
-index 7eabb1c2505..bb8c0b56f78 100644
+index 87e5a2fc3af..a6d5812fc65 100644
 --- a/audio/audio-mixeng-be.c
 +++ b/audio/audio-mixeng-be.c
-@@ -101,38 +101,11 @@ void AUD_log (const char *cap, const char *fmt, ...)
-     va_end (ap);
+@@ -26,7 +26,6 @@
+ #include "trace.h"
+ #include "trace/control.h"
+ 
+-#define AUDIO_CAP "audio"
+ #include "audio_int.h"
+ 
+ #define SW_NAME(sw) (sw)->name ? (sw)->name : "unknown"
+@@ -68,24 +67,6 @@ static int audio_format_to_index(AudioFormat af)
+     g_assert_not_reached();
  }
  
--static void audio_print_settings (const struct audsettings *as)
-+static char *audsettings_to_string(const struct audsettings *as)
- {
--    dolog ("frequency=%d nchannels=%d fmt=", as->freq, as->nchannels);
--
--    switch (as->fmt) {
--    case AUDIO_FORMAT_S8:
--        AUD_log (NULL, "S8");
--        break;
--    case AUDIO_FORMAT_U8:
--        AUD_log (NULL, "U8");
--        break;
--    case AUDIO_FORMAT_S16:
--        AUD_log (NULL, "S16");
--        break;
--    case AUDIO_FORMAT_U16:
--        AUD_log (NULL, "U16");
--        break;
--    case AUDIO_FORMAT_S32:
--        AUD_log (NULL, "S32");
--        break;
--    case AUDIO_FORMAT_U32:
--        AUD_log (NULL, "U32");
--        break;
--    case AUDIO_FORMAT_F32:
--        AUD_log (NULL, "F32");
--        break;
--    default:
--        AUD_log (NULL, "invalid(%d)", as->fmt);
--        break;
+-void AUD_vlog (const char *cap, const char *fmt, va_list ap)
+-{
+-    if (cap) {
+-        fprintf(stderr, "%s: ", cap);
 -    }
 -
--    AUD_log (NULL, " endianness=%s\n", as->big_endian ? "big" : "little");
-+    return g_strdup_printf("frequency=%d nchannels=%d fmt=%s endian=%s",
-+                           as->freq, as->nchannels, AudioFormat_str(as->fmt),
-+                           as->big_endian ? "big" : "little");
- }
+-    vfprintf(stderr, fmt, ap);
+-}
+-
+-void AUD_log (const char *cap, const char *fmt, ...)
+-{
+-    va_list ap;
+-
+-    va_start (ap, fmt);
+-    AUD_vlog (cap, fmt, ap);
+-    va_end (ap);
+-}
+-
+ static char *audsettings_to_string(const struct audsettings *as)
+ {
+     return g_strdup_printf("frequency=%d nchannels=%d fmt=%s endian=%s",
+diff --git a/audio/mixeng.c b/audio/mixeng.c
+index e63c76e021d..a209737a913 100644
+--- a/audio/mixeng.c
++++ b/audio/mixeng.c
+@@ -26,7 +26,6 @@
+ #include "qemu/bswap.h"
+ #include "qemu/audio.h"
  
- static int audio_validate_settings (const struct audsettings *as)
-@@ -1607,9 +1580,9 @@ static CaptureVoiceOut *audio_mixeng_backend_add_capture(
-         return NULL;
-     }
- 
--    if (audio_validate_settings (as)) {
--        dolog ("Invalid settings were passed when trying to add capture\n");
--        audio_print_settings (as);
-+    if (audio_validate_settings(as)) {
-+        g_autofree char *str = audsettings_to_string(as);
-+        error_report("audio: Invalid audio settings when trying to add capture: %s", str);
-         return NULL;
-     }
- 
+-#define AUDIO_CAP "mixeng"
+ #include "audio_int.h"
+ #ifdef FLOAT_MIXENG
+ #include "qemu/error-report.h"
 
 -- 
 2.53.0

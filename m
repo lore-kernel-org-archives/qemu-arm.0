@@ -4,67 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82AFBE81A25
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 14:36:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C730E81A31
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 14:59:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrzhp-0000wi-3X; Mon, 16 Feb 2026 09:36:09 -0500
+	id 1vs04K-0001RN-BQ; Mon, 16 Feb 2026 09:59:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1vrzhn-0000wN-Jq; Mon, 16 Feb 2026 09:36:07 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1vs04J-0001Qs-8R
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 09:59:23 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1vrzhi-0000p7-1c; Mon, 16 Feb 2026 09:36:07 -0500
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 001985969FF;
- Mon, 16 Feb 2026 15:35:55 +0100 (CET)
-X-Virus-Scanned: amavis at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
- id ml2rD5Ez90TX; Mon, 16 Feb 2026 15:35:53 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id C8D735969F1; Mon, 16 Feb 2026 15:35:53 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id C42525969FD;
- Mon, 16 Feb 2026 15:35:53 +0100 (CET)
-Date: Mon, 16 Feb 2026 15:35:53 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>
-cc: qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>, 
- =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
- John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>, 
- Christian Schoenebeck <qemu_oss@crudebyte.com>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, 
- Thomas Huth <huth@tuxfamily.org>, Alexandre Ratchov <alex@caoua.org>, 
- =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>, 
- Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, 
- Alistair Francis <alistair@alistair23.me>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Subject: Re: [PATCH 42/85] audio/dbus: convert to QOM lifecycle methods
-In-Reply-To: <CAMxuvawVZm60+KE5bOAphvYPSTZcKuEgYd_r1jt6J0oPvTSqdw@mail.gmail.com>
-Message-ID: <0a30b17a-e5ef-8e42-66b2-614fcdaf5c0c@eik.bme.hu>
-References: <20260216-audio-v1-0-e676662e4514@redhat.com>
- <20260216-audio-v1-42-e676662e4514@redhat.com>
- <ed0bd069-0660-b195-b639-b0ce7717ea36@eik.bme.hu>
- <CAMxuvawVZm60+KE5bOAphvYPSTZcKuEgYd_r1jt6J0oPvTSqdw@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1vs04H-0007CP-J3
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 09:59:23 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1771253960;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=EkCbvDet1WGIGsHaEpegvqENk6jWzwz0bWmqEZhgDEw=;
+ b=R31dyChI2ID/ns0c5qgkTnHkZEkM0ldxfDAYaoLwnWdgXJbf+Z7EqfjK+lYLKf1nY76+Rg
+ xRUMgPYl7s/FENUbNKB4BNjb4kPex0VX3WahDd2QCWxvhUtn2mzTbzYpkPNsd/JnRe2Sex
+ Zm85T8gKVyqU0xHtYF2haT1jDXNeP5A=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-629-aukwpUE1OLaKVMwHZH7nlw-1; Mon,
+ 16 Feb 2026 09:59:16 -0500
+X-MC-Unique: aukwpUE1OLaKVMwHZH7nlw-1
+X-Mimecast-MFC-AGG-ID: aukwpUE1OLaKVMwHZH7nlw_1771253956
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A6AAB195FDDB; Mon, 16 Feb 2026 14:59:15 +0000 (UTC)
+Received: from redhat.com (unknown [10.45.225.52])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0C3801800464; Mon, 16 Feb 2026 14:59:12 +0000 (UTC)
+Date: Mon, 16 Feb 2026 14:59:09 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Kane Chen <kane_chen@aspeedtech.com>
+Subject: Re: [PULL 02/16] tests/functional: Add SDK tests with Linux 5.15
+Message-ID: <aZMwvfw4O5xeH-Gm@redhat.com>
+References: <20260212213955.2225662-1-clg@redhat.com>
+ <20260212213955.2225662-3-clg@redhat.com>
+ <CAFEAcA_oJgTc2SyRr11QTeTkmCPgvKiwngAaDiDNw5nUcTFA2w@mail.gmail.com>
+ <CAFEAcA_9Np04vouA-m99xB8yU-JhduwxxLj_dTG0QM=AnDbHoQ@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-1276271257-1771252553=:34635"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <CAFEAcA_9Np04vouA-m99xB8yU-JhduwxxLj_dTG0QM=AnDbHoQ@mail.gmail.com>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: vKnwCg4LxXsQkAyUpCJslZyWLgavfcLxrxgn4aZga7Y_1771253956
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,186 +91,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On Mon, Feb 16, 2026 at 11:17:38AM +0000, Peter Maydell wrote:
+> On Mon, 16 Feb 2026 at 11:13, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >
+> > On Thu, 12 Feb 2026 at 21:42, Cédric Le Goater <clg@redhat.com> wrote:
+> > >
+> > > Add functional tests for AST2500 and AST2600 machines using the
+> > > OpenBMC SDK v11.00 with Linux kernel 5.15. These tests complement the
+> > > existing SDK tests and verify that QEMU correctly boots older kernel
+> > > versions on these platforms.
+> >
+> >
+> > > +    ASSET_SDK_V1100_AST2600_515 = Asset(
+> > > +        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.00/ast2600-default-515-obmc.tar.gz',
+> > > +        'ece1a934095378929780f03e7d092e562f4b33b2841b80ad7c3d12a85744c0f6')
+> >
+> > This asset file is over a gigabyte in size, it takes forever to
+> > download, and our functional test asset download framework has
+> > no mechanism for giving any kind of progress indication for
+> > downloads (or even for telling you the URL it is downloading
+> > until after the download is complete).
+> >
+> > Can we have a size limit for test assets please, at least until
+> > the framework can support large assets a bit better ?
+> 
+> Followup: we have six test assets that are over 500MB in size,
+> and they are all aspeed tests. Please can you have a look at
+> slimming these down?
 
---3866299591-1276271257-1771252553=:34635
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+I see 2 big assets from aspeed only
 
-On Mon, 16 Feb 2026, Marc-André Lureau wrote:
-> On Mon, Feb 16, 2026 at 1:15 PM BALATON Zoltan <balaton@eik.bme.hu> wrote:
->>
->> On Mon, 16 Feb 2026, Marc-André Lureau wrote:
->>> Migrate the D-Bus audio backend from the legacy driver init/fini
->>> callbacks to proper QOM realize and finalize methods.
->>>
->>> The DBusAudio struct fields are now embedded directly in the AudioDbus
->>> QOM object instead of being allocated separately as drv_opaque. This
->>> allows accessing the backend state through proper QOM type casting
->>> with AUDIO_DBUS() rather than casting drv_opaque pointers.
->>>
->>> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
->>> Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
->>> ---
->>> audio/dbusaudio.c | 76 ++++++++++++++++++++++++++++---------------------------
->>> 1 file changed, 39 insertions(+), 37 deletions(-)
->>>
->>> diff --git a/audio/dbusaudio.c b/audio/dbusaudio.c
->>> index 269db7877b6..fb059815de9 100644
->>> --- a/audio/dbusaudio.c
->>> +++ b/audio/dbusaudio.c
->>> @@ -48,21 +48,20 @@
->>> #define TYPE_AUDIO_DBUS "audio-dbus"
->>> OBJECT_DECLARE_SIMPLE_TYPE(AudioDbus, AUDIO_DBUS)
->>>
->>> +static AudioBackendClass *audio_dbus_parent_class;
->>> +
->>> struct AudioDbus {
->>>     AudioMixengBackend parent_obj;
->>> -};
->>> -
->>> -static struct audio_driver dbus_audio_driver;
->>>
->>> -typedef struct DBusAudio {
->>> -    Audiodev *dev;
->>>     GDBusObjectManagerServer *server;
->>>     bool p2p;
->>>     GDBusObjectSkeleton *audio;
->>>     QemuDBusDisplay1Audio *iface;
->>>     GHashTable *out_listeners;
->>>     GHashTable *in_listeners;
->>> -} DBusAudio;
->>> +};
->>> +
->>> +static struct audio_driver dbus_audio_driver;
->>>
->>> typedef struct DBusVoiceOut {
->>>     HWVoiceOut hw;
->>> @@ -105,7 +104,7 @@ static void *dbus_get_buffer_out(HWVoiceOut *hw, size_t *size)
->>>
->>> static size_t dbus_put_buffer_out(HWVoiceOut *hw, void *buf, size_t size)
->>> {
->>> -    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
->>> +    AudioDbus *da = AUDIO_DBUS(hw->s);
->>>     DBusVoiceOut *vo = container_of(hw, DBusVoiceOut, hw);
->>>     GHashTableIter iter;
->>>     QemuDBusDisplay1AudioOutListener *listener = NULL;
->>> @@ -162,9 +161,9 @@ dbus_init_out_listener(QemuDBusDisplay1AudioOutListener *listener,
->>> }
->>>
->>> static guint
->>> -dbus_audio_get_nsamples(DBusAudio *da)
->>> +dbus_audio_get_nsamples(AudioDbus *da)
->>> {
->>> -    AudiodevDBusOptions *opts = &da->dev->u.dbus;
->>> +    AudiodevDBusOptions *opts = &AUDIO_MIXENG_BACKEND(da)->dev->u.dbus;
->>>
->>>     if (opts->has_nsamples && opts->nsamples) {
->>>         return opts->nsamples;
->>> @@ -176,7 +175,7 @@ dbus_audio_get_nsamples(DBusAudio *da)
->>> static int
->>> dbus_init_out(HWVoiceOut *hw, struct audsettings *as, void *drv_opaque)
->>> {
->>> -    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
->>> +    AudioDbus *da = AUDIO_DBUS(hw->s);
->>>     DBusVoiceOut *vo = container_of(hw, DBusVoiceOut, hw);
->>>     GHashTableIter iter;
->>>     QemuDBusDisplay1AudioOutListener *listener = NULL;
->>> @@ -195,7 +194,7 @@ dbus_init_out(HWVoiceOut *hw, struct audsettings *as, void *drv_opaque)
->>> static void
->>> dbus_fini_out(HWVoiceOut *hw)
->>> {
->>> -    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
->>> +    AudioDbus *da = AUDIO_DBUS(hw->s);
->>>     DBusVoiceOut *vo = container_of(hw, DBusVoiceOut, hw);
->>>     GHashTableIter iter;
->>>     QemuDBusDisplay1AudioOutListener *listener = NULL;
->>> @@ -214,7 +213,7 @@ dbus_fini_out(HWVoiceOut *hw)
->>> static void
->>> dbus_enable_out(HWVoiceOut *hw, bool enable)
->>> {
->>> -    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
->>> +    AudioDbus *da = AUDIO_DBUS(hw->s);
->>>     DBusVoiceOut *vo = container_of(hw, DBusVoiceOut, hw);
->>>     GHashTableIter iter;
->>>     QemuDBusDisplay1AudioOutListener *listener = NULL;
->>> @@ -256,7 +255,7 @@ dbus_volume_out_listener(HWVoiceOut *hw,
->>> static void
->>> dbus_volume_out(HWVoiceOut *hw, Volume *vol)
->>> {
->>> -    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
->>> +    AudioDbus *da = AUDIO_DBUS(hw->s);
->>>     DBusVoiceOut *vo = container_of(hw, DBusVoiceOut, hw);
->>>     GHashTableIter iter;
->>>     QemuDBusDisplay1AudioOutListener *listener = NULL;
->>> @@ -290,7 +289,7 @@ dbus_init_in_listener(QemuDBusDisplay1AudioInListener *listener, HWVoiceIn *hw)
->>> static int
->>> dbus_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
->>> {
->>> -    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
->>> +    AudioDbus *da = AUDIO_DBUS(hw->s);
->>>     DBusVoiceIn *vo = container_of(hw, DBusVoiceIn, hw);
->>>     GHashTableIter iter;
->>>     QemuDBusDisplay1AudioInListener *listener = NULL;
->>> @@ -309,7 +308,7 @@ dbus_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
->>> static void
->>> dbus_fini_in(HWVoiceIn *hw)
->>> {
->>> -    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
->>> +    AudioDbus *da = AUDIO_DBUS(hw->s);
->>>     GHashTableIter iter;
->>>     QemuDBusDisplay1AudioInListener *listener = NULL;
->>>
->>> @@ -346,7 +345,7 @@ dbus_volume_in_listener(HWVoiceIn *hw,
->>> static void
->>> dbus_volume_in(HWVoiceIn *hw, Volume *vol)
->>> {
->>> -    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
->>> +    AudioDbus *da = AUDIO_DBUS(hw->s);
->>>     DBusVoiceIn *vo = container_of(hw, DBusVoiceIn, hw);
->>>     GHashTableIter iter;
->>>     QemuDBusDisplay1AudioInListener *listener = NULL;
->>> @@ -363,7 +362,7 @@ dbus_volume_in(HWVoiceIn *hw, Volume *vol)
->>> static size_t
->>> dbus_read(HWVoiceIn *hw, void *buf, size_t size)
->>> {
->>> -    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
->>> +    AudioDbus *da = AUDIO_DBUS(hw->s);
->>>     /* DBusVoiceIn *vo = container_of(hw, DBusVoiceIn, hw); */
->>>     GHashTableIter iter;
->>>     QemuDBusDisplay1AudioInListener *listener = NULL;
->>> @@ -398,7 +397,7 @@ dbus_read(HWVoiceIn *hw, void *buf, size_t size)
->>> static void
->>> dbus_enable_in(HWVoiceIn *hw, bool enable)
->>> {
->>> -    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
->>> +    AudioDbus *da = AUDIO_DBUS(hw->s);
->>
->> Are you sure we need a QOM cast in all these potentially frequently called
->> functions? The QOM cast is kind of expensive so only needed if it can get
->> other objects than the expected. If the object is already checked in
->> realize with a QOM cast it may not be needed to check it again every time
->> it's accessed.
->
-> I would not be concerned if the check is done every 20ms or even 5ms.
-> (and with --disable-qom-cast-debug it should also help).
->
-> If you want, I can look at providing some perf data, but I am afraid
-> it will be just noise difference.
+  64d8926a7d01b649168be96c986603b5690f06391286c438a3a772c8c7039e93
+  ece1a934095378929780f03e7d092e562f4b33b2841b80ad7c3d12a85744c0f6
 
-Since --disable-qom-cast-debug is not the default this does not help as 
-likely nobody will have it disabled. I don't use dbus and other audio 
-backends don't seem to have this so I don't care too much but this is like 
-using unnecessary QOM casts in iomem callbacks that take an already 
-checked parameter so a C cast should be OK here too (iomem callbacks have 
-void *opaque so those don't need an explicit cast). But dbus audio is your 
-area so whatever you prefer.
 
-Regards,
-BALATON Zoltan
---3866299591-1276271257-1771252553=:34635--
+what are the names of the other files in $HOME/.cache/qemu/download
+you have that are over 500 MB ?
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+
 

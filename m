@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF7DBE7BD9E
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:27:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65B4FE7BD9F
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:27:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwfJ-0005zi-Ss; Mon, 16 Feb 2026 06:21:21 -0500
+	id 1vrwfb-0008Up-Kv; Mon, 16 Feb 2026 06:21:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwcq-0007FL-N8
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:49 -0500
+ id 1vrwdT-0008Ui-HV
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:28 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwco-0008IG-29
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:48 -0500
+ id 1vrwdQ-0008Ut-Ip
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:27 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240724;
+ s=mimecast20190719; t=1771240763;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ESVl7hrPW6399tVk+EQUGmjKjUQ+e3r5I81ZjO955hM=;
- b=WxitHbsmSjMM2b+49J3z7E4jeHExDlNL9YtJJgZqO1QJFooysCcqjYh1XCarugsXkxUVIG
- tjIrYTwCkTJI80UeEYIBiv7ZUXzALFiF5+K4BhJZ1+4mYR5FCFOzoWDyqi8104FcKpR50q
- aAMhDYU7pAtiIbZ7NgHTXYLvO0zQ6lY=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=j/L1qp3ldn5ldXcfT6BhehGpgMBZTb6wUy0XgMwt8eQ=;
+ b=VgMVArvTB8xJTwvc7rh/ZGwk+mjQkxXXJEmHYZ0l4BESvvZF/EDwV3ydppf66QdA8EG3kI
+ 3VKdbOm3V2J0pW7pwb1PhBKbuneXtVDtXqgNHhzBAIikfS4mqsI9fPnK3CWs9RetprJd/H
+ ahMlnWaStCoqI5Pa5Q0oQ1PoEljuxSs=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-681-rlQ0flM9PCaOP741xb7FmQ-1; Mon,
- 16 Feb 2026 06:18:40 -0500
-X-MC-Unique: rlQ0flM9PCaOP741xb7FmQ-1
-X-Mimecast-MFC-AGG-ID: rlQ0flM9PCaOP741xb7FmQ_1771240719
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-689-ij9K_VF3OMeyv3ibV2-OZA-1; Mon,
+ 16 Feb 2026 06:19:20 -0500
+X-MC-Unique: ij9K_VF3OMeyv3ibV2-OZA-1
+X-Mimecast-MFC-AGG-ID: ij9K_VF3OMeyv3ibV2-OZA_1771240758
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EF0C71956094; Mon, 16 Feb 2026 11:18:38 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C7B711956050; Mon, 16 Feb 2026 11:19:18 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 533741955F43; Mon, 16 Feb 2026 11:18:38 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id A059519560A2; Mon, 16 Feb 2026 11:19:17 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:15:53 +0100
-Subject: [PATCH 64/85] audio/noaudio: remove unused AUDIO_CAP macro
+Date: Mon, 16 Feb 2026 12:16:07 +0100
+Subject: [PATCH 78/85] audio: replace DEBUG_AUDIO with trace
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-64-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-78-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,25 +71,25 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=508;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2400;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=JtGKRFxHxWAyAWIxjSqifHUPbgYk6YcOPZOxE1yLVOI=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxRVNsCBTWWg1tNNteGSBiz0njwgCY6FRIH3
- nMd4+9LO9CJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UQAKCRDa6OEJdZac
- 5QxZEACzT4G4yQQQQRGAk7dVAbUYTLYD8UPVGICeTbv6NcHVunbOtcVdjjeOTrktoBGCXXro3L/
- s7pjtgyI2h9+nxdLlYqSgg58ggPdq1Eb0kF974IiaO+pqd+tZwr2btWOcPZLl9fa8rSpJjP2y3H
- 5itX379LrSMcqd4J+OSzKwi76OYwzQaSYUnIJptdJKhp8WaWIVaeHcbTSGtFh/nK3y8glVAXj1+
- DRXaC62konBMk04aSuqcl7rOqykM0utLqBZNlwZdiCqfAvlKHln06SRKGgu3vIbSfZf3tX4MYah
- 5F8B8Z1il+3ssIEnVdW+uAXi4oOBDTG60LeATSdoO+7jQ1mPVf0qCUIac2rknTiKtMjf+I91jR4
- d8Nl+hwVKrnLyZV6LtP4C+Ou19Jf32P/SJfjpMZ1HCwGKsNSZKFqWOCbK/9TRl88c0U3YZtdLRT
- 0861nTq3twPkZaOsOlupjLpbnvmoB+pBq0BJFzUggW6jFNr90AjWQD+84XqhkBVWKvqOVRHCV9F
- mbbudDujqvRBkWg725+ANpP3AKbOnz29l1pC0vQ0+RTnWj0fpOzkC7CTfGxIasdXbSjaKSNhYbd
- qeUJE4YOT/A+fpMkB47QNgbu16fw+ieBBd7PkVZzS4lnV1+KXob6hcdNMZgsbdUHgwMqiaiaQR/
- cGGYVk6ZPANZvCw==
+ bh=xQHNvgrEZK26gRRFzeS01/f7AY6vbpJbR/MSqj2WBVI=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxSjsTCtVBufqbWe12dQHHQP4s2y6y0BeiKl
+ 6xSWk4QUzeJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UgAKCRDa6OEJdZac
+ 5UxLEACRC7wS8hTEs8W4MzLQqSnqwSWssu9QpJ6ji7QfaHvm3NCgQQ3Bzq0KH8ql/P1Iev0CNFi
+ MOt9Ma3s4FOsX3tHDzeTlqQICKX5EZIESDFeQ9/sJdkjoQ4rcqHGcsDZF+7vVKWlP4LM2A21Fel
+ JfVLs6lThdyoV8fJdsliaJptYgtQ+3t9y0MrYgFrp/YJviL8tM0Q2pnlglbVyo4HS3h4JpH8L3i
+ P7jE4vpsZq/tSL2ubW76BBxqlDVerx6CNQZVR99G/tG8L0Zs3cscckS3hgwQbOYqltchzhMQaW/
+ 2mI7X+YfoIYG4WnyZnwY4dIdvTn1SfyN7xWoMd8bNJASQODHa+R/+X79rdUpHCaPBI9DiAyMyHE
+ HfuNnNv5X90Y0oeTSCx2HFsP2xAqSiGKjiRwgwHUEBNYVkdlJAW+JhSEXOspYSxQ2C07PZbuQTz
+ P0w5OD5N6TyUxPGr2a4KAMF2TtOYIq6/97MvyirRuhysY8BVHr8U7UeDt2RFszuBLWc47uaLG0H
+ 6pK7EIWpIqZ8HiBqlwCsOxRmoSyIM9RvpVljHvE7RQexh1luM4Db1oI3pt/Kwn+6pj4w2DoGIho
+ I8v5aGf2zwGbIiV+zUqPeiKfarIYX3ZvScTDSkJyIAmQOMG8nkDK9/0TciQNdPeZgD7PGBDkLCO
+ 0FLSjghCKLeYq2Q==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: spkKE7sWFBX2yH13XHa3hRHmJvAQMOT6zil388cjmO4_1771240719
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: kQ460dE7d4Ze6L5fyBXr32kZEUTt9nDcC1EdmlwiKOg_1771240758
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -122,21 +122,61 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/noaudio.c | 1 -
- 1 file changed, 1 deletion(-)
+ audio/audio_template.h  | 10 +++++-----
+ audio/audio-mixeng-be.c |  9 ---------
+ audio/trace-events      |  1 +
+ 3 files changed, 6 insertions(+), 14 deletions(-)
 
-diff --git a/audio/noaudio.c b/audio/noaudio.c
-index e056813181a..70316c572ec 100644
---- a/audio/noaudio.c
-+++ b/audio/noaudio.c
-@@ -27,7 +27,6 @@
- #include "qemu/audio.h"
- #include "qom/object.h"
+diff --git a/audio/audio_template.h b/audio/audio_template.h
+index c47a2f202f0..e884c8e9b1a 100644
+--- a/audio/audio_template.h
++++ b/audio/audio_template.h
+@@ -556,11 +556,11 @@ static SW *glue(audio_mixeng_backend_open_, TYPE) (
+     sw->callback.fn = callback_fn;
+     sw->callback.opaque = callback_opaque;
  
--#define AUDIO_CAP "noaudio"
- #include "audio_int.h"
+-#ifdef DEBUG_AUDIO
+-    dolog ("%s\n", name);
+-    audio_pcm_print_info ("hw", &sw->hw->info);
+-    audio_pcm_print_info ("sw", &sw->info);
+-#endif
++    trace_audio_voice_pair(G_STRINGIFY(TYPE), name,
++                           AudioFormat_str(sw->hw->info.af),
++                           sw->hw->info.freq, sw->hw->info.nchannels,
++                           AudioFormat_str(sw->info.af),
++                           sw->info.freq, sw->info.nchannels);
  
- #define TYPE_AUDIO_NONE "audio-none"
+     return sw;
+ 
+diff --git a/audio/audio-mixeng-be.c b/audio/audio-mixeng-be.c
+index 3dd9d17dd25..7eabb1c2505 100644
+--- a/audio/audio-mixeng-be.c
++++ b/audio/audio-mixeng-be.c
+@@ -620,15 +620,6 @@ static size_t audio_pcm_sw_write(SWVoiceOut *sw, void *buf, size_t buf_len)
+     return total_in * sw->info.bytes_per_frame;
+ }
+ 
+-#ifdef DEBUG_AUDIO
+-static void audio_pcm_print_info (const char *cap, struct audio_pcm_info *info)
+-{
+-    dolog("%s: %s, freq %d, nchan %d\n",
+-          cap, AudioFormat_str(info->af), info->freq,
+-          info->nchannels);
+-}
+-#endif
+-
+ #define DAC
+ #include "audio_template.h"
+ #undef DAC
+diff --git a/audio/trace-events b/audio/trace-events
+index 7a73d6eb84f..ed04792d508 100644
+--- a/audio/trace-events
++++ b/audio/trace-events
+@@ -74,3 +74,4 @@ audio_out_played(size_t played) "played=%zu"
+ # audio_template.h
+ audio_open_out(const char *name, int freq, int nchannels, int fmt) "open %s, freq %d, nchannels %d, fmt %d"
+ audio_open_in(const char *name, int freq, int nchannels, int fmt) "open %s, freq %d, nchannels %d, fmt %d"
++audio_voice_pair(const char *type, const char *name, const char *hw_fmt, int hw_freq, int hw_nchannels, const char *sw_fmt, int sw_freq, int sw_nchannels) "%s: name=%s hw=%s/%d/%d sw=%s/%d/%d"
 
 -- 
 2.53.0

@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8628AE7BD98
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:25:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8B98E7BD98
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:25:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwfT-0007M5-Em; Mon, 16 Feb 2026 06:21:31 -0500
+	id 1vrwfY-00087j-SZ; Mon, 16 Feb 2026 06:21:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwcu-0007LA-67
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:56 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1vrwcP-0006kk-45
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:25 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwcr-0008ON-H6
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:51 -0500
+ id 1vrwcL-0008Dm-LP
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240728;
+ s=mimecast20190719; t=1771240696;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=XVi8lBbZ0x6d3H1xMhZZ9DSsdXtKNj+ngko1jxe7z6A=;
- b=QzA3BNd1PQwOqe8LicCQnAz+j4PquGT/BRLddV4LWYmqhzy3srDe/nZxf9MVTIn66zBcD3
- vFxaHh9SyyneLh1DnkDovBnYrwWrz7Q9SFHkSutGenO4M0QIV1IalS0NCt6lkIkKkugBWC
- sEyv/SjVZJXmkzUUmwy2l2dm/f6ncLA=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=b886deA9Pvd1EJ7wX/pK/rJb46L4AzeC6UVFBZkrEdc=;
+ b=Ak8NP4dgdfYJFiIfQ1CtkCmaHk1IdrGGxkfqFXxZFNnzj6w/2vZpO6dF30RBhpneaxdFRE
+ PJVHIr7Oo5pxUN41t66t4yonCGStZyMs++ZfGZk5zqtqdEpJGvBpjzrujQdGmUCJvSt9Ud
+ O8qSDngLOT8nRqRCVLRCECi50GFjjfM=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-684-zJtL5P6jP1Csz4OKR2yq9Q-1; Mon,
- 16 Feb 2026 06:18:45 -0500
-X-MC-Unique: zJtL5P6jP1Csz4OKR2yq9Q-1
-X-Mimecast-MFC-AGG-ID: zJtL5P6jP1Csz4OKR2yq9Q_1771240724
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-73-6ADIR1OIO3WEdeOi6R8n5A-1; Mon,
+ 16 Feb 2026 06:18:14 -0500
+X-MC-Unique: 6ADIR1OIO3WEdeOi6R8n5A-1
+X-Mimecast-MFC-AGG-ID: 6ADIR1OIO3WEdeOi6R8n5A_1771240692
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F396918005B7; Mon, 16 Feb 2026 11:18:43 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 961FF1955F15; Mon, 16 Feb 2026 11:18:12 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3E21530001B9; Mon, 16 Feb 2026 11:18:43 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 3186218004BB; Mon, 16 Feb 2026 11:18:10 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:15:55 +0100
-Subject: [PATCH 66/85] audio/pa: replace custom logging with report & trace
+Date: Mon, 16 Feb 2026 12:15:44 +0100
+Subject: [PATCH 55/85] audio: remove audio_driver init/fini/next
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-66-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-55-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,29 +71,29 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=12351;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=13684;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=JVY/WEAWBXacb1I5A+f54VMSEuURH3uia0ld/lulY3A=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxRy2drI2ApEGZky9utC6vxFX2Qq7hWFM0w1
- gQGbw0SCvSJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UQAKCRDa6OEJdZac
- 5UDQD/48AuiOLZKP52JlrfEGLAKncJplORzeyFMSjsEljNCsEY7pGmUB2Bcxuv/54n0wFjdJK0J
- eWKKFtEyMKMUJGdcMKAzrpL1mCayluCXO6n58vJxFMN+VWhR6yz33Gtn9gKdDQ6rdcuzdIrpsrW
- lTUkjSRw74/Jx3bIIRwzSzv/fm69unL482SUJp0xuK1ug51cy7rJV9SynQsYo1m1WmlzdqzgxYB
- zCwRAzYkSyuNVk7QJZf9RstGDJK3DO/Q0IfKUD727aFukJgvfqkhSVfgk+cRL37wrvt5DC9My1f
- K6dBQrs9KdtW3R8OFxOD8WrDk7LuiRVWen552brdjOkixBiRwQM3vccTirhm6LoLtW0qwoKHlHA
- SiN2QjGnUkfgbEXJgdJrPCIY+bzWeY6UYxsxpVd772gevm1SnDNrG/gqJfPqMNDKQUHv+UsipXm
- 09a/6iWWrY8aKmo/iq+mjuiwt4T7M8+PD7gscF9Cwr0lOh2ph09fxhmGABXn9+WjIL2iPSl2Deq
- Duh7hrc8lutuORf/wc3E306CEJcUxNJkyVBV8wMs03x34fTjH1aH257eAup//OJNh7mTjlFqIar
- ZxxJPLxs+VAP2VzZu2NedpZYmuP57JHHP4kG5Boxo+epjdfqJkKecMhTvOMM1vwbgfPdRtS5mze
- RYpJOv2Ynod6oNQ==
+ bh=hPnyFV3/nDK/Z8DsYQddyB9yVVLc1fypYo+VfCTLDXc=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxQe9sVZrsT+zOjUEMr/Kr2b6zsaHQuISnNM
+ 4pRvJbtGx+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UAAKCRDa6OEJdZac
+ 5cVIEACHuwa865kfZWYsezVudKlm4Q/dPWx8MUY6qT+b/kQto7PYUKQE2l84tiQkMO3iElWaJoc
+ CTuPWGvACSTEENgowE4cffIb1yiDRAF4DPWMe/GmQ9ZfrZ2JxUv5BaGHmECNNaCTmeIeHq3oUZS
+ a0Mz48O7lqR+OhlzXJO9XiozEy/uM0PlQVIB/nd08ZH0w7Frqp3brIxdXTElpzJVi9F+5S5T5OP
+ rlMxMl33DmVEOYurOCLDcQAZqvNZoKLt9CGmMu6bCoTGo23IRcyyfqI1BxVFuT0jUir2aLj2Dyo
+ iWc0elQb7YO4WBZfQLYiRNfSCiC7/qAEbaS8lwX5jGKB1LLrCpArbXhxh2hvDVsDD2o1cMm675s
+ JJ4p0n4w72HvH0cGCsse6WCyCMFe40d8JpU1++aNNOHeSDU1OV0Li1P/RBM7+uAFIzqJWgsSNph
+ G0iCYbKwqu+ZiddtSHKd4wF9o9uZwduP55qN0oEiKu3fLcq30+0NFGdySS2lWP/YtjTkBEbHRpU
+ XiceiN3t6MtZ5n6faBb4rEr6WhGQ3sJk0CxZ7WqTdpwHb0hP2X5/MI7AqINcf0whr6Ytx/ejFCw
+ W5KxxC7VRleGLMBCljv+/xYyEJzN4AMP6FmjdxWZbBAUrc5HAigZOGS32/QpbLIQ0r5XM91plgX
+ CYimES2iybGUxPA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: hsg6QSewJa3JZOTRDHxzAgLq9r03Lw-VFl_Spf47m2I_1771240724
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: Vy4kLfv7VukEAoMwVgyHu62cxwX7y_3dMZP9sTto0rg_1771240692
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -101,9 +101,9 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,324 +119,392 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Replace the custom audio logging infrastructure with standard QEMU
-error reporting and tracing.
+They are no longer used after conversion to QOM.
 
-qpa_conn_init() is called during audio_pa_realize() and already reports
-an error through Error *.
+Also removing the drv_opaque from a few of the pcm_ops methods.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/paaudio.c | 77 ++++++++++++++++++++++++++++-----------------------------
- 1 file changed, 38 insertions(+), 39 deletions(-)
+ audio/audio_int.h       |  8 ++------
+ audio/audio_template.h  |  2 +-
+ audio/dsound_template.h |  6 ++----
+ audio/alsaaudio.c       |  5 ++---
+ audio/audio-mixeng-be.c | 15 +--------------
+ audio/dbusaudio.c       |  4 ++--
+ audio/jackaudio.c       |  6 ++----
+ audio/noaudio.c         |  4 ++--
+ audio/ossaudio.c        |  5 ++---
+ audio/paaudio.c         |  5 ++---
+ audio/pwaudio.c         |  4 ++--
+ audio/sdlaudio.c        |  5 ++---
+ audio/sndioaudio.c      |  4 ++--
+ audio/spiceaudio.c      |  5 ++---
+ audio/wavaudio.c        |  3 +--
+ audio/coreaudio.m       |  3 +--
+ 16 files changed, 28 insertions(+), 56 deletions(-)
 
+diff --git a/audio/audio_int.h b/audio/audio_int.h
+index 6ecd75c4fbf..fb5a9dd871e 100644
+--- a/audio/audio_int.h
++++ b/audio/audio_int.h
+@@ -139,18 +139,15 @@ struct SWVoiceIn {
+ typedef struct audio_driver audio_driver;
+ struct audio_driver {
+     const char *name;
+-    void *(*init) (Audiodev *, Error **);
+-    void (*fini) (void *);
+     struct audio_pcm_ops *pcm_ops;
+     int max_voices_out;
+     int max_voices_in;
+     size_t voice_size_out;
+     size_t voice_size_in;
+-    QLIST_ENTRY(audio_driver) next;
+ };
+ 
+ struct audio_pcm_ops {
+-    int    (*init_out)(HWVoiceOut *hw, audsettings *as, void *drv_opaque);
++    int    (*init_out)(HWVoiceOut *hw, audsettings *as);
+     void   (*fini_out)(HWVoiceOut *hw);
+     size_t (*write)   (HWVoiceOut *hw, void *buf, size_t size);
+     void   (*run_buffer_out)(HWVoiceOut *hw);
+@@ -173,7 +170,7 @@ struct audio_pcm_ops {
+     void   (*enable_out)(HWVoiceOut *hw, bool enable);
+     void   (*volume_out)(HWVoiceOut *hw, Volume *vol);
+ 
+-    int    (*init_in) (HWVoiceIn *hw, audsettings *as, void *drv_opaque);
++    int    (*init_in) (HWVoiceIn *hw, audsettings *as);
+     void   (*fini_in) (HWVoiceIn *hw);
+     size_t (*read)    (HWVoiceIn *hw, void *buf, size_t size);
+     void   (*run_buffer_in)(HWVoiceIn *hw);
+@@ -240,7 +237,6 @@ struct AudioMixengBackend {
+ 
+     struct audio_driver *drv;
+     Audiodev *dev;
+-    void *drv_opaque;
+ 
+     QEMUTimer *ts;
+     QLIST_HEAD (hw_in_listhead, HWVoiceIn) hw_head_in;
+diff --git a/audio/audio_template.h b/audio/audio_template.h
+index 77a70d6e56a..6c2d2ad5dca 100644
+--- a/audio/audio_template.h
++++ b/audio/audio_template.h
+@@ -295,7 +295,7 @@ static HW *glue(audio_pcm_hw_add_new_, TYPE)(AudioMixengBackend *s,
+ #ifdef DAC
+     QLIST_INIT (&hw->cap_head);
+ #endif
+-    if (glue (hw->pcm_ops->init_, TYPE) (hw, as, s->drv_opaque)) {
++    if (glue (hw->pcm_ops->init_, TYPE) (hw, as)) {
+         goto err0;
+     }
+ 
+diff --git a/audio/dsound_template.h b/audio/dsound_template.h
+index 7979773eb86..022a7307c99 100644
+--- a/audio/dsound_template.h
++++ b/audio/dsound_template.h
+@@ -157,11 +157,9 @@ static void dsound_fini_out (HWVoiceOut *hw)
+ }
+ 
+ #ifdef DSBTYPE_IN
+-static int dsound_init_in(HWVoiceIn *hw, struct audsettings *as,
+-                          void *drv_opaque)
++static int dsound_init_in(HWVoiceIn *hw, struct audsettings *as)
+ #else
+-static int dsound_init_out(HWVoiceOut *hw, struct audsettings *as,
+-                           void *drv_opaque)
++static int dsound_init_out(HWVoiceOut *hw, struct audsettings *as)
+ #endif
+ {
+     int err;
+diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
+index c2788606b28..0c63d133496 100644
+--- a/audio/alsaaudio.c
++++ b/audio/alsaaudio.c
+@@ -692,8 +692,7 @@ static void alsa_fini_out (HWVoiceOut *hw)
+     alsa_anal_close (&alsa->handle, &alsa->pollhlp);
+ }
+ 
+-static int alsa_init_out(HWVoiceOut *hw, struct audsettings *as,
+-                         void *drv_opaque)
++static int alsa_init_out(HWVoiceOut *hw, struct audsettings *as)
+ {
+     ALSAVoiceOut *alsa = (ALSAVoiceOut *) hw;
+     struct alsa_params_req req;
+@@ -779,7 +778,7 @@ static void alsa_enable_out(HWVoiceOut *hw, bool enable)
+     }
+ }
+ 
+-static int alsa_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
++static int alsa_init_in(HWVoiceIn *hw, struct audsettings *as)
+ {
+     ALSAVoiceIn *alsa = (ALSAVoiceIn *) hw;
+     struct alsa_params_req req;
+diff --git a/audio/audio-mixeng-be.c b/audio/audio-mixeng-be.c
+index 45873646b3c..ee593310180 100644
+--- a/audio/audio-mixeng-be.c
++++ b/audio/audio-mixeng-be.c
+@@ -1521,13 +1521,6 @@ static bool audio_mixeng_backend_realize(AudioBackend *abe,
+     audio_driver *drv = AUDIO_MIXENG_BACKEND_GET_CLASS(be)->driver;
+ 
+     be->dev = dev;
+-    if (drv->init != NULL) {
+-        be->drv_opaque = drv->init(be->dev, errp);
+-        if (!be->drv_opaque) {
+-            return false;
+-        }
+-    }
+-
+     if (!drv->pcm_ops->get_buffer_in) {
+         drv->pcm_ops->get_buffer_in = audio_generic_get_buffer_in;
+         drv->pcm_ops->put_buffer_in = audio_generic_put_buffer_in;
+@@ -1665,13 +1658,7 @@ static void audio_mixeng_backend_finalize(Object *obj)
+         QLIST_REMOVE(hwi, entries);
+     }
+ 
+-    if (s->drv) {
+-        if (s->drv->fini) {
+-            s->drv->fini (s->drv_opaque);
+-        }
+-        s->drv = NULL;
+-    }
+-
++    s->drv = NULL;
+     if (s->dev) {
+         qapi_free_Audiodev(s->dev);
+         s->dev = NULL;
+diff --git a/audio/dbusaudio.c b/audio/dbusaudio.c
+index fb059815de9..9cc6e826b7e 100644
+--- a/audio/dbusaudio.c
++++ b/audio/dbusaudio.c
+@@ -173,7 +173,7 @@ dbus_audio_get_nsamples(AudioDbus *da)
+ }
+ 
+ static int
+-dbus_init_out(HWVoiceOut *hw, struct audsettings *as, void *drv_opaque)
++dbus_init_out(HWVoiceOut *hw, struct audsettings *as)
+ {
+     AudioDbus *da = AUDIO_DBUS(hw->s);
+     DBusVoiceOut *vo = container_of(hw, DBusVoiceOut, hw);
+@@ -287,7 +287,7 @@ dbus_init_in_listener(QemuDBusDisplay1AudioInListener *listener, HWVoiceIn *hw)
+ }
+ 
+ static int
+-dbus_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
++dbus_init_in(HWVoiceIn *hw, struct audsettings *as)
+ {
+     AudioDbus *da = AUDIO_DBUS(hw->s);
+     DBusVoiceIn *vo = container_of(hw, DBusVoiceIn, hw);
+diff --git a/audio/jackaudio.c b/audio/jackaudio.c
+index 31e3da6a7fe..d1bf80f8b68 100644
+--- a/audio/jackaudio.c
++++ b/audio/jackaudio.c
+@@ -507,8 +507,7 @@ static int qjack_client_init(QJackClient *c)
+     return 0;
+ }
+ 
+-static int qjack_init_out(HWVoiceOut *hw, struct audsettings *as,
+-    void *drv_opaque)
++static int qjack_init_out(HWVoiceOut *hw, struct audsettings *as)
+ {
+     QJackOut *jo  = (QJackOut *)hw;
+     Audiodev *dev = hw->s->dev;
+@@ -544,8 +543,7 @@ static int qjack_init_out(HWVoiceOut *hw, struct audsettings *as,
+     return 0;
+ }
+ 
+-static int qjack_init_in(HWVoiceIn *hw, struct audsettings *as,
+-    void *drv_opaque)
++static int qjack_init_in(HWVoiceIn *hw, struct audsettings *as)
+ {
+     QJackIn  *ji  = (QJackIn *)hw;
+     Audiodev *dev = hw->s->dev;
+diff --git a/audio/noaudio.c b/audio/noaudio.c
+index 2bd110caac4..6016f516d4a 100644
+--- a/audio/noaudio.c
++++ b/audio/noaudio.c
+@@ -62,7 +62,7 @@ static size_t no_write(HWVoiceOut *hw, void *buf, size_t len)
+     return audio_rate_get_bytes(&no->rate, &hw->info, len);
+ }
+ 
+-static int no_init_out(HWVoiceOut *hw, struct audsettings *as, void *drv_opaque)
++static int no_init_out(HWVoiceOut *hw, struct audsettings *as)
+ {
+     NoVoiceOut *no = (NoVoiceOut *) hw;
+ 
+@@ -86,7 +86,7 @@ static void no_enable_out(HWVoiceOut *hw, bool enable)
+     }
+ }
+ 
+-static int no_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
++static int no_init_in(HWVoiceIn *hw, struct audsettings *as)
+ {
+     NoVoiceIn *no = (NoVoiceIn *) hw;
+ 
+diff --git a/audio/ossaudio.c b/audio/ossaudio.c
+index fedd2bbd722..e6f8d6d41e5 100644
+--- a/audio/ossaudio.c
++++ b/audio/ossaudio.c
+@@ -493,8 +493,7 @@ static void oss_fini_out (HWVoiceOut *hw)
+     }
+ }
+ 
+-static int oss_init_out(HWVoiceOut *hw, struct audsettings *as,
+-                        void *drv_opaque)
++static int oss_init_out(HWVoiceOut *hw, struct audsettings *as)
+ {
+     OSSVoiceOut *oss = (OSSVoiceOut *) hw;
+     struct oss_params req, obt;
+@@ -625,7 +624,7 @@ static void oss_enable_out(HWVoiceOut *hw, bool enable)
+     }
+ }
+ 
+-static int oss_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
++static int oss_init_in(HWVoiceIn *hw, struct audsettings *as)
+ {
+     OSSVoiceIn *oss = (OSSVoiceIn *) hw;
+     struct oss_params req, obt;
 diff --git a/audio/paaudio.c b/audio/paaudio.c
-index b7826402e12..1501b26386a 100644
+index 97e6c0d1794..35818296282 100644
 --- a/audio/paaudio.c
 +++ b/audio/paaudio.c
-@@ -3,14 +3,13 @@
- #include "qemu/osdep.h"
- #include "qemu/module.h"
- #include "qemu/audio.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "qom/object.h"
-+#include "audio_int.h"
- 
- #include <pulse/pulseaudio.h>
- 
--#define AUDIO_CAP "pulseaudio"
--#include "audio_int.h"
--
- #define TYPE_AUDIO_PA "audio-pa"
- OBJECT_DECLARE_SIMPLE_TYPE(AudioPa, AUDIO_PA)
- 
-@@ -51,15 +50,16 @@ typedef struct {
- 
- static void qpa_conn_fini(PAConnection *c);
- 
--static void G_GNUC_PRINTF (2, 3) qpa_logerr (int err, const char *fmt, ...)
-+static void G_GNUC_PRINTF(2, 3) qpa_logerr(int err, const char *fmt, ...)
- {
-     va_list ap;
- 
--    va_start (ap, fmt);
--    AUD_vlog (AUDIO_CAP, fmt, ap);
--    va_end (ap);
-+    error_printf("pulseaudio: ");
-+    va_start(ap, fmt);
-+    error_vprintf(fmt, ap);
-+    va_end(ap);
- 
--    AUD_log (AUDIO_CAP, "Reason: %s\n", pa_strerror (err));
-+    error_printf(" Reason: %s\n", pa_strerror(err));
- }
- 
- #ifndef PA_CONTEXT_IS_GOOD
-@@ -113,12 +113,12 @@ static void *qpa_get_buffer_in(HWVoiceIn *hw, size_t *size)
-     pa_threaded_mainloop_lock(c->mainloop);
- 
-     CHECK_DEAD_GOTO(c, p->stream, unlock_and_fail,
--                    "pa_threaded_mainloop_lock failed\n");
-+                    "pa_threaded_mainloop_lock failed");
- 
-     if (!p->read_length) {
-         r = pa_stream_peek(p->stream, &p->read_data, &p->read_length);
-         CHECK_SUCCESS_GOTO(c, r == 0, unlock_and_fail,
--                           "pa_stream_peek failed\n");
-+                           "pa_stream_peek failed");
-     }
- 
-     *size = MIN(p->read_length, *size);
-@@ -141,7 +141,7 @@ static void qpa_put_buffer_in(HWVoiceIn *hw, void *buf, size_t size)
-     pa_threaded_mainloop_lock(c->mainloop);
- 
-     CHECK_DEAD_GOTO(c, p->stream, unlock,
--                    "pa_threaded_mainloop_lock failed\n");
-+                    "pa_threaded_mainloop_lock failed");
- 
-     assert(buf == p->read_data && size <= p->read_length);
- 
-@@ -150,7 +150,7 @@ static void qpa_put_buffer_in(HWVoiceIn *hw, void *buf, size_t size)
- 
-     if (size && !p->read_length) {
-         r = pa_stream_drop(p->stream);
--        CHECK_SUCCESS_GOTO(c, r == 0, unlock, "pa_stream_drop failed\n");
-+        CHECK_SUCCESS_GOTO(c, r == 0, unlock, "pa_stream_drop failed");
-     }
- 
- unlock:
-@@ -166,7 +166,7 @@ static size_t qpa_read(HWVoiceIn *hw, void *data, size_t length)
-     pa_threaded_mainloop_lock(c->mainloop);
- 
-     CHECK_DEAD_GOTO(c, p->stream, unlock_and_fail,
--                    "pa_threaded_mainloop_lock failed\n");
-+                    "pa_threaded_mainloop_lock failed");
-     if (pa_stream_get_state(p->stream) != PA_STREAM_READY) {
-         /* wait for stream to become ready */
-         goto unlock;
-@@ -179,7 +179,7 @@ static size_t qpa_read(HWVoiceIn *hw, void *data, size_t length)
-         if (!p->read_length) {
-             r = pa_stream_peek(p->stream, &p->read_data, &p->read_length);
-             CHECK_SUCCESS_GOTO(c, r == 0, unlock_and_fail,
--                               "pa_stream_peek failed\n");
-+                               "pa_stream_peek failed");
-             if (!p->read_length) {
-                 /* buffer is empty */
-                 break;
-@@ -196,7 +196,7 @@ static size_t qpa_read(HWVoiceIn *hw, void *data, size_t length)
-         if (!p->read_length) {
-             r = pa_stream_drop(p->stream);
-             CHECK_SUCCESS_GOTO(c, r == 0, unlock_and_fail,
--                               "pa_stream_drop failed\n");
-+                               "pa_stream_drop failed");
-         }
-     }
- 
-@@ -218,7 +218,7 @@ static size_t qpa_buffer_get_free(HWVoiceOut *hw)
-     pa_threaded_mainloop_lock(c->mainloop);
- 
-     CHECK_DEAD_GOTO(c, p->stream, unlock_and_fail,
--                    "pa_threaded_mainloop_lock failed\n");
-+                    "pa_threaded_mainloop_lock failed");
-     if (pa_stream_get_state(p->stream) != PA_STREAM_READY) {
-         /* wait for stream to become ready */
-         l = 0;
-@@ -227,7 +227,7 @@ static size_t qpa_buffer_get_free(HWVoiceOut *hw)
- 
-     l = pa_stream_writable_size(p->stream);
-     CHECK_SUCCESS_GOTO(c, l != (size_t) -1, unlock_and_fail,
--                       "pa_stream_writable_size failed\n");
-+                       "pa_stream_writable_size failed");
- 
- unlock:
-     pa_threaded_mainloop_unlock(c->mainloop);
-@@ -248,12 +248,12 @@ static void *qpa_get_buffer_out(HWVoiceOut *hw, size_t *size)
-     pa_threaded_mainloop_lock(c->mainloop);
- 
-     CHECK_DEAD_GOTO(c, p->stream, unlock_and_fail,
--                    "pa_threaded_mainloop_lock failed\n");
-+                    "pa_threaded_mainloop_lock failed");
- 
-     *size = -1;
-     r = pa_stream_begin_write(p->stream, &ret, size);
-     CHECK_SUCCESS_GOTO(c, r >= 0, unlock_and_fail,
--                       "pa_stream_begin_write failed\n");
-+                       "pa_stream_begin_write failed");
- 
-     pa_threaded_mainloop_unlock(c->mainloop);
-     return ret;
-@@ -273,10 +273,10 @@ static size_t qpa_put_buffer_out(HWVoiceOut *hw, void *data, size_t length)
-     pa_threaded_mainloop_lock(c->mainloop);
- 
-     CHECK_DEAD_GOTO(c, p->stream, unlock_and_fail,
--                    "pa_threaded_mainloop_lock failed\n");
-+                    "pa_threaded_mainloop_lock failed");
- 
-     r = pa_stream_write(p->stream, data, length, NULL, 0LL, PA_SEEK_RELATIVE);
--    CHECK_SUCCESS_GOTO(c, r >= 0, unlock_and_fail, "pa_stream_write failed\n");
-+    CHECK_SUCCESS_GOTO(c, r >= 0, unlock_and_fail, "pa_stream_write failed");
- 
-     pa_threaded_mainloop_unlock(c->mainloop);
-     return length;
-@@ -296,7 +296,7 @@ static size_t qpa_write(HWVoiceOut *hw, void *data, size_t length)
-     pa_threaded_mainloop_lock(c->mainloop);
- 
-     CHECK_DEAD_GOTO(c, p->stream, unlock_and_fail,
--                    "pa_threaded_mainloop_lock failed\n");
-+                    "pa_threaded_mainloop_lock failed");
-     if (pa_stream_get_state(p->stream) != PA_STREAM_READY) {
-         /* wait for stream to become ready */
-         l = 0;
-@@ -306,14 +306,14 @@ static size_t qpa_write(HWVoiceOut *hw, void *data, size_t length)
-     l = pa_stream_writable_size(p->stream);
- 
-     CHECK_SUCCESS_GOTO(c, l != (size_t) -1, unlock_and_fail,
--                       "pa_stream_writable_size failed\n");
-+                       "pa_stream_writable_size failed");
- 
-     if (l > length) {
-         l = length;
-     }
- 
-     r = pa_stream_write(p->stream, data, l, NULL, 0LL, PA_SEEK_RELATIVE);
--    CHECK_SUCCESS_GOTO(c, r >= 0, unlock_and_fail, "pa_stream_write failed\n");
-+    CHECK_SUCCESS_GOTO(c, r >= 0, unlock_and_fail, "pa_stream_write failed");
- 
- unlock:
-     pa_threaded_mainloop_unlock(c->mainloop);
-@@ -345,7 +345,7 @@ static pa_sample_format_t audfmt_to_pa(AudioFormat afmt, bool big_endian)
-         format = big_endian ? PA_SAMPLE_FLOAT32BE : PA_SAMPLE_FLOAT32LE;
-         break;
-     default:
--        dolog ("Internal logic error: Bad audio format %d\n", afmt);
-+        error_report("pulseaudio: Internal logic error: Bad audio format %d", afmt);
-         format = PA_SAMPLE_U8;
-         break;
-     }
-@@ -376,12 +376,12 @@ static AudioFormat pa_to_audfmt (pa_sample_format_t fmt, int *endianness)
-         *endianness = 0;
-         return AUDIO_FORMAT_F32;
-     default:
--        dolog ("Internal logic error: Bad pa_sample_format %d\n", fmt);
-+        error_report("pulseaudio: Internal logic error: Bad pa_sample_format %d", fmt);
-         return AUDIO_FORMAT_U8;
-     }
- }
- 
--static void context_state_cb (pa_context *c, void *userdata)
-+static void context_state_cb(pa_context *c, void *userdata)
- {
-     PAConnection *conn = userdata;
- 
-@@ -473,7 +473,7 @@ static pa_stream *qpa_simple_new (
-         break;
- 
-     default:
--        dolog("Internal error: unsupported channel count %d\n", ss->channels);
-+        error_report("pulseaudio: unsupported channel count %d", ss->channels);
-         goto fail;
-     }
- 
-@@ -553,7 +553,7 @@ static int qpa_init_out(HWVoiceOut *hw, struct audsettings *as)
-         &error
-         );
-     if (!pa->stream) {
--        qpa_logerr (error, "pa_simple_new for playback failed\n");
-+        qpa_logerr(error, "pa_simple_new for playback failed");
-         goto fail1;
-     }
- 
-@@ -604,7 +604,7 @@ static int qpa_init_in(HWVoiceIn *hw, struct audsettings *as)
-         &error
-         );
-     if (!pa->stream) {
--        qpa_logerr (error, "pa_simple_new for capture failed\n");
-+        qpa_logerr(error, "pa_simple_new for capture failed");
-         goto fail1;
-     }
- 
-@@ -633,7 +633,7 @@ static void qpa_simple_disconnect(PAConnection *c, pa_stream *stream)
- 
-     err = pa_stream_disconnect(stream);
-     if (err != 0) {
--        dolog("Failed to disconnect! err=%d\n", err);
-+        error_report("pulseaudio: Failed to disconnect! err=%d", err);
-     }
-     pa_stream_unref(stream);
- }
-@@ -664,7 +664,7 @@ static void qpa_fini_in (HWVoiceIn *hw)
-             int r = pa_stream_drop(pa->stream);
-             if (r) {
-                 qpa_logerr(pa_context_errno(c->context),
--                           "pa_stream_drop failed\n");
-+                           "pa_stream_drop failed");
-             }
-             pa->read_length = 0;
-         }
-@@ -698,7 +698,7 @@ static void qpa_volume_out(HWVoiceOut *hw, Volume *vol)
-                                           &v, NULL, NULL);
-     if (!op) {
-         qpa_logerr(pa_context_errno(c->context),
--                   "set_sink_input_volume() failed\n");
-+                   "set_sink_input_volume() failed");
-     } else {
-         pa_operation_unref(op);
-     }
-@@ -708,7 +708,7 @@ static void qpa_volume_out(HWVoiceOut *hw, Volume *vol)
-                                         vol->mute, NULL, NULL);
-     if (!op) {
-         qpa_logerr(pa_context_errno(c->context),
--                   "set_sink_input_mute() failed\n");
-+                   "set_sink_input_mute() failed");
-     } else {
-         pa_operation_unref(op);
-     }
-@@ -740,7 +740,7 @@ static void qpa_volume_in(HWVoiceIn *hw, Volume *vol)
-         &v, NULL, NULL);
-     if (!op) {
-         qpa_logerr(pa_context_errno(c->context),
--                   "set_source_output_volume() failed\n");
-+                   "set_source_output_volume() failed");
-     } else {
-         pa_operation_unref(op);
-     }
-@@ -750,7 +750,7 @@ static void qpa_volume_in(HWVoiceIn *hw, Volume *vol)
-         vol->mute, NULL, NULL);
-     if (!op) {
-         qpa_logerr(pa_context_errno(c->context),
--                   "set_source_output_mute() failed\n");
-+                   "set_source_output_mute() failed");
-     } else {
-         pa_operation_unref(op);
-     }
-@@ -788,7 +788,7 @@ static void *qpa_conn_init(const char *server)
- 
-     if (pa_context_connect(c->context, server, 0, NULL) < 0) {
-         qpa_logerr(pa_context_errno(c->context),
--                   "pa_context_connect() failed\n");
-+                   "pa_context_connect() failed");
-         goto fail;
-     }
- 
-@@ -809,7 +809,7 @@ static void *qpa_conn_init(const char *server)
- 
-         if (!PA_CONTEXT_IS_GOOD(state)) {
-             qpa_logerr(pa_context_errno(c->context),
--                       "Wrong context state\n");
-+                       "Wrong context state");
-             goto unlock_and_fail;
-         }
- 
-@@ -823,7 +823,6 @@ static void *qpa_conn_init(const char *server)
- unlock_and_fail:
-     pa_threaded_mainloop_unlock(c->mainloop);
- fail:
--    AUD_log (AUDIO_CAP, "Failed to initialize PA context");
-     qpa_conn_fini(c);
+@@ -518,8 +518,7 @@ fail:
      return NULL;
  }
+ 
+-static int qpa_init_out(HWVoiceOut *hw, struct audsettings *as,
+-                        void *drv_opaque)
++static int qpa_init_out(HWVoiceOut *hw, struct audsettings *as)
+ {
+     AudioMixengBackend *amb = hw->s;
+     AudioPa *apa = AUDIO_PA(amb);
+@@ -570,7 +569,7 @@ static int qpa_init_out(HWVoiceOut *hw, struct audsettings *as,
+     return -1;
+ }
+ 
+-static int qpa_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
++static int qpa_init_in(HWVoiceIn *hw, struct audsettings *as)
+ {
+     AudioMixengBackend *amb = hw->s;
+     AudioPa *apa = AUDIO_PA(amb);
+diff --git a/audio/pwaudio.c b/audio/pwaudio.c
+index ca61a1b4ef5..c668ef19a3e 100644
+--- a/audio/pwaudio.c
++++ b/audio/pwaudio.c
+@@ -524,7 +524,7 @@ qpw_set_position(uint32_t channels, uint32_t position[SPA_AUDIO_MAX_CHANNELS])
+ }
+ 
+ static int
+-qpw_init_out(HWVoiceOut *hw, struct audsettings *as, void *drv_opaque)
++qpw_init_out(HWVoiceOut *hw, struct audsettings *as)
+ {
+     AudioPw *c = AUDIO_PW(hw->s);
+     PWVoiceOut *pw = (PWVoiceOut *) hw;
+@@ -571,7 +571,7 @@ qpw_init_out(HWVoiceOut *hw, struct audsettings *as, void *drv_opaque)
+ }
+ 
+ static int
+-qpw_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
++qpw_init_in(HWVoiceIn *hw, struct audsettings *as)
+ {
+     AudioPw *c = AUDIO_PW(hw->s);
+     PWVoiceIn *pw = (PWVoiceIn *) hw;
+diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
+index 0dfa3100828..a1d453aa307 100644
+--- a/audio/sdlaudio.c
++++ b/audio/sdlaudio.c
+@@ -345,8 +345,7 @@ static void sdl_fini_out(HWVoiceOut *hw)
+     sdl_close_out(sdl);
+ }
+ 
+-static int sdl_init_out(HWVoiceOut *hw, struct audsettings *as,
+-                        void *drv_opaque)
++static int sdl_init_out(HWVoiceOut *hw, struct audsettings *as)
+ {
+     SDLVoiceOut *sdl = (SDLVoiceOut *)hw;
+     SDL_AudioSpec req, obt;
+@@ -402,7 +401,7 @@ static void sdl_fini_in(HWVoiceIn *hw)
+     sdl_close_in(sdl);
+ }
+ 
+-static int sdl_init_in(HWVoiceIn *hw, audsettings *as, void *drv_opaque)
++static int sdl_init_in(HWVoiceIn *hw, audsettings *as)
+ {
+     SDLVoiceIn *sdl = (SDLVoiceIn *)hw;
+     SDL_AudioSpec req, obt;
+diff --git a/audio/sndioaudio.c b/audio/sndioaudio.c
+index c15d8b6684a..77685e27cb1 100644
+--- a/audio/sndioaudio.c
++++ b/audio/sndioaudio.c
+@@ -495,7 +495,7 @@ static void sndio_enable_in(HWVoiceIn *hw, bool enable)
+     sndio_enable(self, enable);
+ }
+ 
+-static int sndio_init_out(HWVoiceOut *hw, struct audsettings *as, void *opaque)
++static int sndio_init_out(HWVoiceOut *hw, struct audsettings *as)
+ {
+     SndioVoice *self = (SndioVoice *) hw;
+ 
+@@ -508,7 +508,7 @@ static int sndio_init_out(HWVoiceOut *hw, struct audsettings *as, void *opaque)
+     return 0;
+ }
+ 
+-static int sndio_init_in(HWVoiceIn *hw, struct audsettings *as, void *opaque)
++static int sndio_init_in(HWVoiceIn *hw, struct audsettings *as)
+ {
+     SndioVoice *self = (SndioVoice *) hw;
+ 
+diff --git a/audio/spiceaudio.c b/audio/spiceaudio.c
+index 953dbf6c308..cc6c5d7e287 100644
+--- a/audio/spiceaudio.c
++++ b/audio/spiceaudio.c
+@@ -108,8 +108,7 @@ static const SpiceRecordInterface record_sif = {
+ 
+ /* playback */
+ 
+-static int line_out_init(HWVoiceOut *hw, struct audsettings *as,
+-                         void *drv_opaque)
++static int line_out_init(HWVoiceOut *hw, struct audsettings *as)
+ {
+     SpiceVoiceOut *out = container_of (hw, SpiceVoiceOut, hw);
+     struct audsettings settings;
+@@ -225,7 +224,7 @@ static void line_out_volume(HWVoiceOut *hw, Volume *vol)
+ 
+ /* record */
+ 
+-static int line_in_init(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
++static int line_in_init(HWVoiceIn *hw, struct audsettings *as)
+ {
+     SpiceVoiceIn *in = container_of (hw, SpiceVoiceIn, hw);
+     struct audsettings settings;
+diff --git a/audio/wavaudio.c b/audio/wavaudio.c
+index f1a414f208c..f9a0484488b 100644
+--- a/audio/wavaudio.c
++++ b/audio/wavaudio.c
+@@ -78,8 +78,7 @@ static void le_store (uint8_t *buf, uint32_t val, int len)
+     }
+ }
+ 
+-static int wav_init_out(HWVoiceOut *hw, struct audsettings *as,
+-                        void *drv_opaque)
++static int wav_init_out(HWVoiceOut *hw, struct audsettings *as)
+ {
+     WAVVoiceOut *wav = (WAVVoiceOut *) hw;
+     int bits16 = 0, stereo = 0;
+diff --git a/audio/coreaudio.m b/audio/coreaudio.m
+index 4a0904f0073..a3a0b83eb9d 100644
+--- a/audio/coreaudio.m
++++ b/audio/coreaudio.m
+@@ -573,8 +573,7 @@ static OSStatus handle_voice_change(
+     return 0;
+ }
+ 
+-static int coreaudio_init_out(HWVoiceOut *hw, struct audsettings *as,
+-                              void *drv_opaque)
++static int coreaudio_init_out(HWVoiceOut *hw, struct audsettings *as)
+ {
+     OSStatus status;
+     coreaudioVoiceOut *core = (coreaudioVoiceOut *) hw;
 
 -- 
 2.53.0

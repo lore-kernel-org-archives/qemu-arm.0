@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9372E7BD92
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:19:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDE37E7BD95
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:19:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwa4-0004lv-SD; Mon, 16 Feb 2026 06:15:56 -0500
+	id 1vrwcC-0006Wf-GL; Mon, 16 Feb 2026 06:18:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwa3-0004km-0y
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:15:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1vrwaW-00054t-K3
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:27 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwa1-0007JM-62
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:15:54 -0500
+ id 1vrwaS-0007NR-Ci
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240552;
+ s=mimecast20190719; t=1771240577;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=03yR22OPWyv4xOgsTRflUVZkTa9pLbZJpc7QOwE/YKQ=;
- b=TGoOJBTQFu7C3Tf5HBYi/M8siHV5k4SBHvv+N6mzwbfue1JVNCOy0DSuThYqEn+vZtf25V
- pEwvem1zNM/pOYu2WWNQ32IVxz0kxPsH6LEyF364V92kI/g/U68QlA0blUWPlY1xa+IH7f
- gAPyf+p8/pkwYYwqaIHE8tOJb85AtMg=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=0sXKT0Ld03CnuopYV5pr+w/M7OpGtHl5MthM69rARkU=;
+ b=I/XAuKkyYx5R8VHSZT3UiHlIA+5BQXa28m+Flo7YLfuyvDy2nfgXiBIdwvib7QwTiz6dx6
+ XtWtJX/PhX/dlCdnBIQjiaTA7geQ9Z86JYYSjrCqK8CqYHU/6GGA15iKcFHmNhiRWOe5He
+ mk1RYTS9Rk22X6ZJm9CF9Z1dwNqxdKw=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-575-S_3Rn-x3NoK6-w9xBzQ9TQ-1; Mon,
- 16 Feb 2026 06:15:47 -0500
-X-MC-Unique: S_3Rn-x3NoK6-w9xBzQ9TQ-1
-X-Mimecast-MFC-AGG-ID: S_3Rn-x3NoK6-w9xBzQ9TQ_1771240545
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-662-Ag8LUNY3MRi3FEsv_GoZjQ-1; Mon,
+ 16 Feb 2026 06:16:14 -0500
+X-MC-Unique: Ag8LUNY3MRi3FEsv_GoZjQ-1
+X-Mimecast-MFC-AGG-ID: Ag8LUNY3MRi3FEsv_GoZjQ_1771240572
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CE3911955D4D; Mon, 16 Feb 2026 11:15:45 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 85F45195605B; Mon, 16 Feb 2026 11:16:12 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8A63119560B2; Mon, 16 Feb 2026 11:15:44 +0000 (UTC)
+ id D1D1F19560A2; Mon, 16 Feb 2026 11:16:11 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:14:52 +0100
-Subject: [PATCH 03/85] audio/adlib: drop ts_helper HWVoice field
+Date: Mon, 16 Feb 2026 12:15:01 +0100
+Subject: [PATCH 12/85] scripts/modinfo: use in instead of find()
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-3-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-12-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,29 +71,29 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1480;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=797;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=/79pMsmTucvlzgY5FBqKNb003r8HB/EPhG2j1zf1dS8=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxOtpJ93glYebWbW0M9TwpEeqzqZE8wKES33
- RpgLlFp1SaJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TgAKCRDa6OEJdZac
- 5R1BEAC1bQIZC001c8va6eb/i5dK/TdhxHw+4klXKNMMuGSZ+JwVRaxYcY7R2CI478M/ELBtQkY
- 4/V5alEvtX2F2ho08cK0axbyCE9VkCq08MmXq2+UuHz8eHd2r27EX+JZ3m5ErrQtunIk1afEn82
- sKHC1peBr6Zq/FTNB+ud/MzVK7zm35OlZWeVzcnT5C3fOF1WPO1w/IrQgUppQUhgBqkeZi/aVtX
- NPx/fEL/1WMRR91QxWWTXhZXoWYbJ5f7zkNI5mouFp8VR6lxzOXd5v1XYqcNb7/osyRUMjfVkqN
- 74FaxTgii9tdNhEKUozF5fa8jXTmqhA4Gzw6K5rQ1+njUcGNkBC6kO2wqBHPUf6/EoGRozaLvCg
- f/3qksrInIQLbaMRlHJnz1Zt/1Si+6IkEmpzxG7mF92uQyaeGp5hrQ+W/w9s9ws3/bdyURTfP1X
- ba2QcsfkupaOjIF41sA0EXVftgZKcakw3OsJUedprcVxnx+2QvkoyfeHTR+g7lWDE3Hzgd8aI/Q
- Tx2HAZmVKIfOSmhcZ2C9hhzhKRI6y6EiXKDSn/gTQG+9wtIzwNiVCPkUJEXJmZSRc+8F4x+HbRS
- 3tDMRV15aAagKqjcM/gYsyJzxB6OiK841t7AZOOvvcww5ujOeoltNFXQrFxdMdIlAakRx7KZSSX
- g9lwi9ZRnAbskLg==
+ bh=BYuBcm8yqbptW3ccw20FEhHC025s0WWuO9BYWxMZccM=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxOW3fW0h8Qt2SJjOnGcrsWj4HJDx1rnrYGo
+ CMA4rZskXyJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TgAKCRDa6OEJdZac
+ 5YDSEACWwGiKgwI19n8KTNKWNjJ4hSu0kE/dNUnCsDfkJn+XQRJ1dWSkV8w8+ymtR+s15fYYl6b
+ j/XDxRIPTq+uJxar1XZL2L2pJR2tF1X5FYbm1SxbrzfNGXaVzm3nHRPtzP26KN5R9JB09Eqfk4Z
+ 5nXXy3Zt/KX9NTXlyNi3oZDPvrpl3/SZSuCq5Yj764GnPnu242dYBXhmErSzu6DmVz/cPT6DP4O
+ zAgSC65Y7AM8doHcrkBAQhoglAqEOMJNcIBbjGhfiA5YGvsDaCEQNjrxkhKNJ2LGIgoA4lWzRgV
+ 3HVH4Mjh345Ytqc+XfOBBd9UZ3UvnGWQ4LBgv1Ahhp+1AKPMMhRBoJthdeMGKCFGxCNqHpL6nAm
+ TzNsElkyWUjgOWEm+W6ezr0rcHro1vq+aNSZkoFzzFizcXlfycZJWUuKjGBBJASDnawq5C84WeL
+ BDmUs+oZlK0hcyjhlHiaNsoyKY+mLKhjhXAvpfsFhTYKl0taBUX3DBSsVPYroenfjHKiq9gaT0Y
+ iofUwdg/BQW3IlxO4PRg/tqgXVEYRaScre6OMO5fYUlRKwIorVdk6/QPZOFwLY6+yRfdPoFayzn
+ 8vTMi11TVf4TE7zAFUtmw2YiKCgaJtHRo1O8MHwoP4wZJWjnQWnvhXnLG9wYz7NUnyg8Gcjkgvs
+ 8G+lsOdxbu5Ox+A==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: eUsT2F_E7VTdSIs0aTOmNV-MCTUvq6I5pIt92_rN6Jc_1771240545
+X-Mimecast-MFC-PROC-ID: dclsKqTXObf3jHVvPfjHCj_bog63ExmPYHsDCEIuUQU_1771240572
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -101,9 +101,9 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,55 +119,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Previous commits made this dead code.
+Minor style improvement
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/audio_int.h | 2 --
- audio/audio.c     | 2 --
- 2 files changed, 4 deletions(-)
+ scripts/modinfo-generate.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/audio/audio_int.h b/audio/audio_int.h
-index b2b8002477c..20b4c87b0b6 100644
---- a/audio/audio_int.h
-+++ b/audio/audio_int.h
-@@ -77,7 +77,6 @@ typedef struct HWVoiceOut {
-     struct audio_pcm_info info;
- 
-     f_sample *clip;
--    uint64_t ts_helper;
- 
-     STSampleBuffer mix_buf;
-     void *buf_emul;
-@@ -99,7 +98,6 @@ typedef struct HWVoiceIn {
-     t_sample *conv;
- 
-     size_t total_samples_captured;
--    uint64_t ts_helper;
- 
-     STSampleBuffer conv_buf;
-     void *buf_emul;
-diff --git a/audio/audio.c b/audio/audio.c
-index b7a28f79d4f..a218570a4f4 100644
---- a/audio/audio.c
-+++ b/audio/audio.c
-@@ -1240,7 +1240,6 @@ static void audio_run_out(AudioBackend *s)
- #endif
- 
-         if (played) {
--            hw->ts_helper += played;
-             audio_capture_mix_and_clear (hw, prev_rpos, played);
-         }
- 
-@@ -1320,7 +1319,6 @@ static void audio_run_in(AudioBackend *s)
- 
-         min = audio_pcm_hw_find_min_in (hw);
-         hw->total_samples_captured += captured - min;
--        hw->ts_helper += captured;
- 
-         for (sw = hw->sw_head.lh_first; sw; sw = sw->entries.le_next) {
-             sw->total_hw_samples_acquired -= min;
+diff --git a/scripts/modinfo-generate.py b/scripts/modinfo-generate.py
+index 83ffa4a7c52..63093a0f820 100644
+--- a/scripts/modinfo-generate.py
++++ b/scripts/modinfo-generate.py
+@@ -39,7 +39,7 @@ def generate(name: str, lines: list[str], enabled: set[str]) -> Optional[set[str
+     deps = []
+     opts = []
+     for line in lines:
+-        if line.find("MODINFO_START") != -1:
++        if "MODINFO_START" in line:
+             (kind, data) = parse_line(line)
+             if kind == 'obj':
+                 objs.append(data)
 
 -- 
 2.53.0

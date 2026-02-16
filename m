@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F4A6E7BD98
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:21:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06C77E7BD95
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:22:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwe6-0001YP-Gy; Mon, 16 Feb 2026 06:20:06 -0500
+	id 1vrweD-0002bf-Kp; Mon, 16 Feb 2026 06:20:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwc4-0006Oj-JT
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:18:04 -0500
+ id 1vrwbu-0006B6-Qt
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:51 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwc1-00089M-Oi
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:59 -0500
+ id 1vrwbo-000862-8X
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:50 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240675;
+ s=mimecast20190719; t=1771240660;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=FEm66eRxFketQFIgeZBzb+TUChBafUGfeNq/IMh5ojk=;
- b=JrSvBeQmc6eU6zJa+kzPxRizcsgyKPL9P0kByv1wD9455qpiuTRyEgjb3i8hEMmEpbt4g+
- Z+uz5dzV7foteG1EsuEj+9IllMb/D7iPXTuc6CRUtjuINj4uAXyrUbcvpiHF0cAynIYhgY
- Qj6HPyZwvdxxUTwR+t2zdss97c3L3H0=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=y/Ta2/+6tanZPEqwKnrywl7NwwZ2ZYkZIXSRRkGPRnY=;
+ b=WKaPTxD4KYDVQPTLNzb5or67xHdE0/08ogRGW42TJmrKnbpeUm/FJF45NpopI9C/d0xFc8
+ /lLEZjJK+74EMNPBkLaeU//mJsmqAfUmyzfARymQPbWQRJHIBWnmavrk/5jZ0aNFG93HXe
+ LS/utzu+VrdBgL6jDGwwq0U0J7nEW4Q=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-499-xBxOfUlKOMW5imetpbPsyw-1; Mon,
- 16 Feb 2026 06:17:52 -0500
-X-MC-Unique: xBxOfUlKOMW5imetpbPsyw-1
-X-Mimecast-MFC-AGG-ID: xBxOfUlKOMW5imetpbPsyw_1771240670
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-657--Zf7ODvbOEaFv8EE6FYLmg-1; Mon,
+ 16 Feb 2026 06:17:37 -0500
+X-MC-Unique: -Zf7ODvbOEaFv8EE6FYLmg-1
+X-Mimecast-MFC-AGG-ID: -Zf7ODvbOEaFv8EE6FYLmg_1771240655
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3AB731800367; Mon, 16 Feb 2026 11:17:50 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 978651800349; Mon, 16 Feb 2026 11:17:35 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 44DED30001A5; Mon, 16 Feb 2026 11:17:49 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id E8F8418003F5; Mon, 16 Feb 2026 11:17:34 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:15:36 +0100
-Subject: [PATCH 47/85] audio/oss: convert to QOM lifecycle methods
+Date: Mon, 16 Feb 2026 12:15:31 +0100
+Subject: [PATCH 42/85] audio/dbus: convert to QOM lifecycle methods
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-47-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-42-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,25 +71,25 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4118;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=9679;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=WSaswajA4EH4bQvF1yrHLLnXVV/md1CQHXeFT1moIKg=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxQCWIyFxILKTEM9E5I8G/E+JA2cKon2GziR
- 0mw2ZgO4GSJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UAAKCRDa6OEJdZac
- 5ZVrD/0aE3LDDMhOs8tIc36loNx326609rrLev+SeQjQ0OvkE4fitDeY+ZFjvSOBJeldk0Ejgub
- I9HpvWfasNhPnn+bqhx85dWEYPgtBsGilDfAtXxUfqbr4+aowcYk9hBdgLGexX2MrxkYuSe3Rj7
- jfEMvY9j3+49VHu9Om6Xg78NmpRK973xo/J9DSqOrx4EYegsQ5uOqVJmkSErSMJy/CiS3sFYJNG
- CGz5h5dQbONyMNtEdt4ipcRvjeWbr2MS1UvzC9EE455qO/2iD8WtgXENaLaZuXFw/DVmvokB/vu
- d9RoFfLmd3zUbYmIqY+8JahHoLYZzJjFTKu63jlTmdzkq92QWLmJXm++yDDPGg1wAFc/lrlXYIf
- EYuOtGM4VG7JYV2z0lwyxsR0wvIvIHcZY4xarj8LDzCigFfR7VxA2WGWqHyMC0fSdv/kFgWaiIN
- 6PEUG9CBh2H7JT+IJBhr2TcSUWgk+gcjdW5LYOuQb1n+KjiJT/bW1Bwusc0zhMh2HMDqal2aIzZ
- kx6psFeNh4ykZjNyCDxircAghw8RfNq5QUbssv1zWtcyz2LoY0n+r7ubnnyqvADJc7bBOOHh3Ry
- jjgSM2MmyV4y7BWVhvZ1+CIY8VrGZLHFR+JbYoXAw7MC62i90qgTFnXPOzSwLBrCT9/aHmDqQxv
- M+pD4POPkumPXNw==
+ bh=hqY7zX5F8HT1vdCl7Kk/fQsqT6fF8aO3qTi7hU2HEPA=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxQtSxNoN5ioakHIqQW4BlvcgkOZbu5MP6RL
+ PVppGSbME2JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UAAKCRDa6OEJdZac
+ 5Yp/EACnRgHzf/C8cRqsOZZNXgQi+ZVkynICTHJsnTvY+dcEtvQjk/Ba+rK6MAR48iXhDN1DNbK
+ D4ucc+zTgBXkz1KR7dWEMB7NQBGYZRc8PAhN4bep9apdLcVEDg0H6OyKn3hiocsWPUw/2FtiO5J
+ zY/xFLY1rkCc/B6qxfsP/g5ao245/GjZMNn03wm0Dsc9L1E5oo1nlekAf/d6d7SW45ymBzylE9+
+ zNDx12TnU3xickXh0UrgFFhrjSRvw2xU2f3S52pngJunBHc7JWgAegEpI0KQpqx+V4srCIn1j5M
+ 09Y2wnwiHFoZOnSjDyXQjIcNZId4eWjJPlI1tZCjIibeiUtN6R7l1B7R7PF8/y902iMjg9ixCp/
+ wh3YPP9qUvpPIuZBtNp4wRfbFX6Ee4PqEDD/hOm3g7NYhL6QgkX0Y4TsdZGdD+SRCATS2w/WoV3
+ M+F+Otxy2An6Xip5HcwuKzE8WIVFoTZtMl1LidI7C42YnU5g47ljPBVpTN9+eOl0GpyDD0bFq3K
+ dM7JyarAL/nfteVBN/u9crIau9RfyjOhFuLULYlI2VK+m0NTvCtKYggI/d2e/LrQaKVA8LMm1my
+ BJxzrJICix5TG4PktxL7D3n2Nxggn+U0/MPAa4IjPb7lE25ymJNaF4y1fVvoV4ZBYVV2vmWEmkE
+ dZobMrcM9aFfMJg==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: KUjGoZrXkxRaiiS-8jSW__-veyPLOmF4O1ZPxvwDvKw_1771240670
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: CwbXTKWDT14D5NJQZs0_YPylNaJMgz22MLw_nRHjeEw_1771240655
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -103,7 +103,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,135 +119,268 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Migrate the OSS audio backend from the legacy driver init/fini
-callbacks to proper QOM realize method.
+Migrate the D-Bus audio backend from the legacy driver init/fini
+callbacks to proper QOM realize and finalize methods.
 
-The oss_audio_init() function is replaced with audio_oss_realize(),
-which performs the same device accessibility check before delegating
-to the parent class realize method. The empty oss_audio_fini() is
-removed.
-
-Access to the Audiodev is now through hw->s->dev instead of the
-drv_opaque pointer.
+The DBusAudio struct fields are now embedded directly in the AudioDbus
+QOM object instead of being allocated separately as drv_opaque. This
+allows accessing the backend state through proper QOM type casting
+with AUDIO_DBUS() rather than casting drv_opaque pointers.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/ossaudio.c | 41 +++++++++++++++++++++++------------------
- 1 file changed, 23 insertions(+), 18 deletions(-)
+ audio/dbusaudio.c | 76 ++++++++++++++++++++++++++++---------------------------
+ 1 file changed, 39 insertions(+), 37 deletions(-)
 
-diff --git a/audio/ossaudio.c b/audio/ossaudio.c
-index f64c564e345..fedd2bbd722 100644
---- a/audio/ossaudio.c
-+++ b/audio/ossaudio.c
-@@ -23,6 +23,7 @@
-  */
+diff --git a/audio/dbusaudio.c b/audio/dbusaudio.c
+index 269db7877b6..fb059815de9 100644
+--- a/audio/dbusaudio.c
++++ b/audio/dbusaudio.c
+@@ -48,21 +48,20 @@
+ #define TYPE_AUDIO_DBUS "audio-dbus"
+ OBJECT_DECLARE_SIMPLE_TYPE(AudioDbus, AUDIO_DBUS)
  
- #include "qemu/osdep.h"
-+#include "qapi-types-audio.h"
- #include <sys/ioctl.h>
- #include <sys/soundcard.h>
- #include "qemu/main-loop.h"
-@@ -39,19 +40,14 @@
- #define TYPE_AUDIO_OSS "audio-oss"
- OBJECT_DECLARE_SIMPLE_TYPE(AudioOss, AUDIO_OSS)
- 
-+static AudioBackendClass *audio_oss_parent_class;
++static AudioBackendClass *audio_dbus_parent_class;
 +
- struct AudioOss {
+ struct AudioDbus {
      AudioMixengBackend parent_obj;
- };
- 
- static struct audio_driver oss_audio_driver;
- 
--static void audio_oss_class_init(ObjectClass *klass, const void *data)
--{
--    AudioMixengBackendClass *k = AUDIO_MIXENG_BACKEND_CLASS(klass);
+-};
 -
--    k->driver = &oss_audio_driver;
--}
--
- #if defined OSS_GETVERSION && defined SNDCTL_DSP_POLICY
- #define USE_DSP_POLICY
- #endif
-@@ -505,7 +501,7 @@ static int oss_init_out(HWVoiceOut *hw, struct audsettings *as,
-     int err;
-     int fd;
-     struct audsettings obt_as;
--    Audiodev *dev = drv_opaque;
-+    Audiodev *dev = hw->s->dev;
-     AudiodevOssOptions *oopts = &dev->u.oss;
+-static struct audio_driver dbus_audio_driver;
  
-     oss->fd = -1;
-@@ -636,7 +632,7 @@ static int oss_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
-     int err;
-     int fd;
-     struct audsettings obt_as;
--    Audiodev *dev = drv_opaque;
-+    Audiodev *dev = hw->s->dev;
+-typedef struct DBusAudio {
+-    Audiodev *dev;
+     GDBusObjectManagerServer *server;
+     bool p2p;
+     GDBusObjectSkeleton *audio;
+     QemuDBusDisplay1Audio *iface;
+     GHashTable *out_listeners;
+     GHashTable *in_listeners;
+-} DBusAudio;
++};
++
++static struct audio_driver dbus_audio_driver;
  
-     oss->fd = -1;
+ typedef struct DBusVoiceOut {
+     HWVoiceOut hw;
+@@ -105,7 +104,7 @@ static void *dbus_get_buffer_out(HWVoiceOut *hw, size_t *size)
  
-@@ -737,7 +733,8 @@ static void oss_init_per_direction(AudiodevOssPerDirectionOptions *opdo)
-     }
- }
- 
--static void *oss_audio_init(Audiodev *dev, Error **errp)
-+static bool
-+audio_oss_realize(AudioBackend *abe, Audiodev *dev, Error **errp)
+ static size_t dbus_put_buffer_out(HWVoiceOut *hw, void *buf, size_t size)
  {
-     AudiodevOssOptions *oopts;
-     assert(dev->driver == AUDIODEV_DRIVER_OSS);
-@@ -748,17 +745,16 @@ static void *oss_audio_init(Audiodev *dev, Error **errp)
- 
-     if (access(oopts->in->dev ?: "/dev/dsp", R_OK | W_OK) < 0) {
-         error_setg_errno(errp, errno, "%s not accessible", oopts->in->dev ?: "/dev/dsp");
--        return NULL;
-+        qapi_free_Audiodev(dev);
-+        return false;
-     }
-     if (access(oopts->out->dev ?: "/dev/dsp", R_OK | W_OK) < 0) {
-         error_setg_errno(errp, errno, "%s not accessible", oopts->out->dev ?: "/dev/dsp");
--        return NULL;
-+        qapi_free_Audiodev(dev);
-+        return false;
-     }
--    return dev;
--}
- 
--static void oss_audio_fini (void *opaque)
--{
-+    return audio_oss_parent_class->realize(abe, dev, errp);
+-    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
++    AudioDbus *da = AUDIO_DBUS(hw->s);
+     DBusVoiceOut *vo = container_of(hw, DBusVoiceOut, hw);
+     GHashTableIter iter;
+     QemuDBusDisplay1AudioOutListener *listener = NULL;
+@@ -162,9 +161,9 @@ dbus_init_out_listener(QemuDBusDisplay1AudioOutListener *listener,
  }
  
- static struct audio_pcm_ops oss_pcm_ops = {
-@@ -780,8 +776,6 @@ static struct audio_pcm_ops oss_pcm_ops = {
+ static guint
+-dbus_audio_get_nsamples(DBusAudio *da)
++dbus_audio_get_nsamples(AudioDbus *da)
+ {
+-    AudiodevDBusOptions *opts = &da->dev->u.dbus;
++    AudiodevDBusOptions *opts = &AUDIO_MIXENG_BACKEND(da)->dev->u.dbus;
  
- static struct audio_driver oss_audio_driver = {
-     .name           = "oss",
--    .init           = oss_audio_init,
--    .fini           = oss_audio_fini,
-     .pcm_ops        = &oss_pcm_ops,
-     .max_voices_out = INT_MAX,
-     .max_voices_in  = INT_MAX,
-@@ -789,6 +783,17 @@ static struct audio_driver oss_audio_driver = {
-     .voice_size_in  = sizeof (OSSVoiceIn)
+     if (opts->has_nsamples && opts->nsamples) {
+         return opts->nsamples;
+@@ -176,7 +175,7 @@ dbus_audio_get_nsamples(DBusAudio *da)
+ static int
+ dbus_init_out(HWVoiceOut *hw, struct audsettings *as, void *drv_opaque)
+ {
+-    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
++    AudioDbus *da = AUDIO_DBUS(hw->s);
+     DBusVoiceOut *vo = container_of(hw, DBusVoiceOut, hw);
+     GHashTableIter iter;
+     QemuDBusDisplay1AudioOutListener *listener = NULL;
+@@ -195,7 +194,7 @@ dbus_init_out(HWVoiceOut *hw, struct audsettings *as, void *drv_opaque)
+ static void
+ dbus_fini_out(HWVoiceOut *hw)
+ {
+-    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
++    AudioDbus *da = AUDIO_DBUS(hw->s);
+     DBusVoiceOut *vo = container_of(hw, DBusVoiceOut, hw);
+     GHashTableIter iter;
+     QemuDBusDisplay1AudioOutListener *listener = NULL;
+@@ -214,7 +213,7 @@ dbus_fini_out(HWVoiceOut *hw)
+ static void
+ dbus_enable_out(HWVoiceOut *hw, bool enable)
+ {
+-    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
++    AudioDbus *da = AUDIO_DBUS(hw->s);
+     DBusVoiceOut *vo = container_of(hw, DBusVoiceOut, hw);
+     GHashTableIter iter;
+     QemuDBusDisplay1AudioOutListener *listener = NULL;
+@@ -256,7 +255,7 @@ dbus_volume_out_listener(HWVoiceOut *hw,
+ static void
+ dbus_volume_out(HWVoiceOut *hw, Volume *vol)
+ {
+-    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
++    AudioDbus *da = AUDIO_DBUS(hw->s);
+     DBusVoiceOut *vo = container_of(hw, DBusVoiceOut, hw);
+     GHashTableIter iter;
+     QemuDBusDisplay1AudioOutListener *listener = NULL;
+@@ -290,7 +289,7 @@ dbus_init_in_listener(QemuDBusDisplay1AudioInListener *listener, HWVoiceIn *hw)
+ static int
+ dbus_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
+ {
+-    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
++    AudioDbus *da = AUDIO_DBUS(hw->s);
+     DBusVoiceIn *vo = container_of(hw, DBusVoiceIn, hw);
+     GHashTableIter iter;
+     QemuDBusDisplay1AudioInListener *listener = NULL;
+@@ -309,7 +308,7 @@ dbus_init_in(HWVoiceIn *hw, struct audsettings *as, void *drv_opaque)
+ static void
+ dbus_fini_in(HWVoiceIn *hw)
+ {
+-    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
++    AudioDbus *da = AUDIO_DBUS(hw->s);
+     GHashTableIter iter;
+     QemuDBusDisplay1AudioInListener *listener = NULL;
+ 
+@@ -346,7 +345,7 @@ dbus_volume_in_listener(HWVoiceIn *hw,
+ static void
+ dbus_volume_in(HWVoiceIn *hw, Volume *vol)
+ {
+-    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
++    AudioDbus *da = AUDIO_DBUS(hw->s);
+     DBusVoiceIn *vo = container_of(hw, DBusVoiceIn, hw);
+     GHashTableIter iter;
+     QemuDBusDisplay1AudioInListener *listener = NULL;
+@@ -363,7 +362,7 @@ dbus_volume_in(HWVoiceIn *hw, Volume *vol)
+ static size_t
+ dbus_read(HWVoiceIn *hw, void *buf, size_t size)
+ {
+-    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
++    AudioDbus *da = AUDIO_DBUS(hw->s);
+     /* DBusVoiceIn *vo = container_of(hw, DBusVoiceIn, hw); */
+     GHashTableIter iter;
+     QemuDBusDisplay1AudioInListener *listener = NULL;
+@@ -398,7 +397,7 @@ dbus_read(HWVoiceIn *hw, void *buf, size_t size)
+ static void
+ dbus_enable_in(HWVoiceIn *hw, bool enable)
+ {
+-    DBusAudio *da = (DBusAudio *)hw->s->drv_opaque;
++    AudioDbus *da = AUDIO_DBUS(hw->s);
+     DBusVoiceIn *vo = container_of(hw, DBusVoiceIn, hw);
+     GHashTableIter iter;
+     QemuDBusDisplay1AudioInListener *listener = NULL;
+@@ -416,28 +415,31 @@ dbus_enable_in(HWVoiceIn *hw, bool enable)
+     }
+ }
+ 
+-static void *
+-dbus_audio_init(Audiodev *dev, Error **errp)
++static bool
++audio_dbus_realize(AudioBackend *abe, Audiodev *dev, Error **errp)
+ {
+-    DBusAudio *da;
++    AudioDbus *da = AUDIO_DBUS(abe);
+ 
+     if (!qemu_using_dbus_display(errp)) {
+-        return NULL;
++        qapi_free_Audiodev(dev);
++        return false;
++    }
++
++    if (!audio_dbus_parent_class->realize(abe, dev, errp)) {
++        return false;
+     }
+ 
+-    da = g_new0(DBusAudio, 1);
+-    da->dev = dev;
+     da->out_listeners = g_hash_table_new_full(g_str_hash, g_str_equal,
+-                                                g_free, g_object_unref);
++                                              g_free, g_object_unref);
+     da->in_listeners = g_hash_table_new_full(g_str_hash, g_str_equal,
+-                                               g_free, g_object_unref);
+-    return da;
++                                             g_free, g_object_unref);
++    return true;
+ }
+ 
+ static void
+-dbus_audio_fini(void *opaque)
++audio_dbus_finalize(Object *obj)
+ {
+-    DBusAudio *da = opaque;
++    AudioDbus *da = AUDIO_DBUS(obj);
+ 
+     if (da->server) {
+         g_dbus_object_manager_server_unexport(da->server,
+@@ -448,14 +450,13 @@ dbus_audio_fini(void *opaque)
+     g_clear_pointer(&da->in_listeners, g_hash_table_unref);
+     g_clear_pointer(&da->out_listeners, g_hash_table_unref);
+     g_clear_object(&da->server);
+-    g_free(da);
+ }
+ 
+ static void
+ listener_out_vanished_cb(GDBusConnection *connection,
+                          gboolean remote_peer_vanished,
+                          GError *error,
+-                         DBusAudio *da)
++                         AudioDbus *da)
+ {
+     char *name = g_object_get_data(G_OBJECT(connection), "name");
+ 
+@@ -466,7 +467,7 @@ static void
+ listener_in_vanished_cb(GDBusConnection *connection,
+                         gboolean remote_peer_vanished,
+                         GError *error,
+-                        DBusAudio *da)
++                        AudioDbus *da)
+ {
+     char *name = g_object_get_data(G_OBJECT(connection), "name");
+ 
+@@ -482,7 +483,7 @@ dbus_audio_register_listener(AudioMixengBackend *s,
+                              GVariant *arg_listener,
+                              bool out)
+ {
+-    DBusAudio *da = s->drv_opaque;
++    AudioDbus *da = AUDIO_DBUS(s);
+     const char *sender =
+         da->p2p ? "p2p" : g_dbus_method_invocation_get_sender(invocation);
+     g_autoptr(GDBusConnection) listener_conn = NULL;
+@@ -667,9 +668,8 @@ dbus_audio_set_server(AudioBackend *s,
+                       bool p2p,
+                       Error **errp)
+ {
+-    DBusAudio *da = AUDIO_MIXENG_BACKEND(s)->drv_opaque;
++    AudioDbus *da = AUDIO_DBUS(s);
+ 
+-    g_assert(da);
+     g_assert(!da->server);
+ 
+     da->server = g_object_ref(server);
+@@ -711,8 +711,6 @@ static struct audio_pcm_ops dbus_pcm_ops = {
+ 
+ static struct audio_driver dbus_audio_driver = {
+     .name            = "dbus",
+-    .init            = dbus_audio_init,
+-    .fini            = dbus_audio_fini,
+     .pcm_ops         = &dbus_pcm_ops,
+     .max_voices_out  = INT_MAX,
+     .max_voices_in   = INT_MAX,
+@@ -725,6 +723,9 @@ static void audio_dbus_class_init(ObjectClass *klass, const void *data)
+     AudioBackendClass *b = AUDIO_BACKEND_CLASS(klass);
+     AudioMixengBackendClass *k = AUDIO_MIXENG_BACKEND_CLASS(klass);
+ 
++    audio_dbus_parent_class = AUDIO_BACKEND_CLASS(object_class_get_parent(klass));
++
++    b->realize = audio_dbus_realize;
+     b->set_dbus_server = dbus_audio_set_server;
+     k->driver = &dbus_audio_driver;
+ }
+@@ -734,6 +735,7 @@ static const TypeInfo audio_types[] = {
+         .name = TYPE_AUDIO_DBUS,
+         .parent = TYPE_AUDIO_MIXENG_BACKEND,
+         .instance_size = sizeof(AudioDbus),
++        .instance_finalize = audio_dbus_finalize,
+         .class_init = audio_dbus_class_init,
+     },
  };
- 
-+static void audio_oss_class_init(ObjectClass *klass, const void *data)
-+{
-+    AudioBackendClass *b = AUDIO_BACKEND_CLASS(klass);
-+    AudioMixengBackendClass *k = AUDIO_MIXENG_BACKEND_CLASS(klass);
-+
-+    audio_oss_parent_class = AUDIO_BACKEND_CLASS(object_class_get_parent(klass));
-+
-+    b->realize = audio_oss_realize;
-+    k->driver = &oss_audio_driver;
-+}
-+
- static const TypeInfo audio_types[] = {
-     {
-         .name = TYPE_AUDIO_OSS,
 
 -- 
 2.53.0

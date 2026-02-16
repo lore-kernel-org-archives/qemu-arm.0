@@ -4,54 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68A8EE7BD95
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:22:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EA79E7BD95
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:22:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwff-0000Th-Q4; Mon, 16 Feb 2026 06:21:43 -0500
+	id 1vrwff-0000Rt-L1; Mon, 16 Feb 2026 06:21:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwdh-0001EL-8O
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:43 -0500
+ id 1vrwdB-0007Vm-CS
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:10 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwdf-00009s-0P
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:40 -0500
+ id 1vrwd9-0008RO-7W
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:19:09 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240777;
+ s=mimecast20190719; t=1771240746;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=LUP+G2rwSZjjp818AEO2MqOgi20Zq+c3evxaj7rofVg=;
- b=eL+WhRiMqBiEaR2GR3YxbOppvpdPo35kaGAMzjb460Z0g3DEY3QLlZODOX4HyB9UbvGxis
- r7qXnE2I+Gq/v9Jp1DzRv4G5GgKfVekc5AwzHuJAyKq3EWvzutZnZ1Jcy6IC10x3YVabg+
- /8rsP5uT8d94HuIvGnRP5tyLIHO3G+Y=
+ bh=69TpAbLc835uRq+7bqGvGaCCGAehwUooI9PZV8h2xkQ=;
+ b=O1MlrzIAAHsASqNtzy14RNseaSwOaicWvtaLgWTY3IspLCejUL0Ah58XY3LZXM7ODXgqeo
+ V2pZZrktPYjO9OGKPLvnM742wczSSVyKYJ93ebln54j8wVuBSPotqEzRrsDE5YertermZ3
+ qmP29WiWu1vDjoqyndnEqESZbBjTQoY=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-154-6rvFx-VzM8q23-UhVuhAUw-1; Mon,
- 16 Feb 2026 06:19:34 -0500
-X-MC-Unique: 6rvFx-VzM8q23-UhVuhAUw-1
-X-Mimecast-MFC-AGG-ID: 6rvFx-VzM8q23-UhVuhAUw_1771240772
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-12-iL9B9r0ONgGtNee3MF5IxA-1; Mon,
+ 16 Feb 2026 06:19:03 -0500
+X-MC-Unique: iL9B9r0ONgGtNee3MF5IxA-1
+X-Mimecast-MFC-AGG-ID: iL9B9r0ONgGtNee3MF5IxA_1771240741
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 809BC1800464; Mon, 16 Feb 2026 11:19:32 +0000 (UTC)
+ id 5860C1800613; Mon, 16 Feb 2026 11:19:01 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D778B30001A5; Mon, 16 Feb 2026 11:19:31 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id E746719560A2; Mon, 16 Feb 2026 11:18:59 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:16:12 +0100
-Subject: [PATCH 83/85] audio: remove AUD_log/ldebug
+Date: Mon, 16 Feb 2026 12:16:01 +0100
+Subject: [PATCH 72/85] audio/mixeng: replace redundant pcm_info fields with
+ AudioFormat
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-83-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-72-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,25 +72,25 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Mark Cave-Ayland <mark.caveayland@nutanix.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3404;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=14827;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=wYEC+0RY6JzYLHGKwBVCYQt+/nE3Fr4RFck/o8ke+9Q=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxSB39sG13RfjzVUOgEPjEPtzl6qSSehB8VC
- Yyu8pBZpF6JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UgAKCRDa6OEJdZac
- 5cbxD/4gZMNLnfHBdGVo9QnEl60b3/UEw8dEanVeoITFTFDpqf2ci8JC75kPIInmGCi2Dobtz+f
- lsL5xSoxpyhZg+t0ojuc8T6UBcw5ZOzv57fwBCQDQvFaULlIzddwmRqR6CVOM+8HPrmlHS9nQIS
- UDheF1iCBoxwlaihAId4pxM1GIgTSHV6X1hwOApo7MSDqg/xNp2MqZnRcScPYKPbesk9mB9lSvs
- 70mUUX3WFbndWXCJocQv1NEox7jfJsGhKVa/lUt5/M17GWDuNTCB6kNNbBmmBH/ocL532gItmWg
- LS5UJLDGrxkBuKRjZFQRDsKFG/ierneuNnN2mxDX49jfSJhucbXt4PCR9yVuzjiu1Pu0RYlzqtx
- Dt9fMlajxTVa9BJEgnbNVj0sMw7q8+YtkvzY8x9epI/fQkS/8kDN5pHNGztauT5CccgA8AAuwHv
- 55LDXAtsofD6CghlgmOazwg/NvvU8BRA+kHpLHkSKvq0dwW7CSgfeX3bakCpWER49EcTYA4z6QF
- Fx2UUaRQLpKoWoCbJMLtbktdAFZwtqMgZFWh3TQNjgM7duLj5gDnFs/aJmtAHsLr7lqCZ8Jweyn
- Hv4ewuPxOX4oe8OzzO58dKge1Ht/oKntsoYqGdfHttiWD4JYX0zGSAY/qas6pvPEdoqyq8Dev0l
- MIlxQLE98zjuV8Q==
+ bh=6RvKes4eeAZsnFIGHb2No0aVPDEgHxjZ5PZuEzoitnE=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxRIdt9pEaFKX1LeDM3omLSV9e2u5tzZsVB1
+ 4mVsA571qOJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8UQAKCRDa6OEJdZac
+ 5VDID/9xRrLsopHx1gJXXggw5OnMkQNTCEvUa0/IEMNo2ohrXBnZgn9lzWrwC8cjxaPVPrRYhPS
+ SQU43wTIXCfuq1Fvu+wMUwnDCTXfxkwvS+ooqniRlXDZBFCuv1E9957y1n7N18Zg3FIDm4YkCTf
+ +Lyj0yFrLfGCrv6UHv/0lelAxAITl4I2e2XmZYtP1AzEmk6JTNscx/xCaQGM+u7dDC/HTyCzshT
+ Hf5hunwj17bMeEUgqvmI3ZjYzRVrBUmZKHqolkqVpuOFcAjkgSAMbeUoTL68I6CZVr5xpKlZPy6
+ BafwwW3pWqpU/HmByGk7aHqC87owTbNfsaA1RozLSK/DTIMHlqi+wvRYPkmhK61SL6snm4l/zSg
+ 8n/EMkFW3sUUK07Zy3rr3APbgthDxgfLejvVfG33FSAPxjZWMKLtLnmgN/2XC4aHupMkwhH8kgN
+ qt+A6+Cpq+YIO9ZOsxFMArB1P80cxZWaJWYEzCNibegbzaDFupqNv6KzTAjW51bewZ/B0BSoGFS
+ cIwSJUlaGDIM+Y+WRi7w+laOldovlh0F0kfq3Ci3dccVyShCc8pdE2r07hmHPvQaHrGvtC1Ynbe
+ YQH2skUVP+yTOx7krxd7B9DKE67t+t2MNkRqcuPFbhcBpr94TksQ3w9nHxH4BMzhOYDpfeIY83g
+ ncV3/or0QAR6Mtw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: BHAviLn1-GfYnxDqtE5Bo0eK5SwKUE9y-Rs0my5-2OM_1771240772
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: tOHNVzv8oJkcOsf5UnQLGHeial5xEvC2FMKbY2OPzjE_1771240741
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -119,111 +120,494 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-audio/ is now converted to use QEMU standard trace & error reporting.
+The audio_pcm_info structure stored three fields (bits, is_signed,
+is_float) that were always derived from the AudioFormat enum. This
+redundancy meant the same information was represented twice, with no
+type-level guarantee that they stayed in sync.
+
+Replace these fields with a single AudioFormat field, and add helper
+functions to extract the derived properties when needed:
+- audio_format_bits()
+- audio_format_is_signed()
+- audio_format_is_float()
+
+This improves type safety by making AudioFormat the single source of
+truth, eliminating the possibility of inconsistent state between the
+format enum and its derived boolean/integer representations.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 ---
- audio/audio_int.h       | 14 --------------
- audio/audio_template.h  |  2 +-
- audio/audio-mixeng-be.c | 19 -------------------
- audio/mixeng.c          |  1 -
- 4 files changed, 1 insertion(+), 35 deletions(-)
+ audio/audio_int.h       |   4 +-
+ audio/audio_template.h  |  12 +--
+ include/qemu/audio.h    |  49 +++++++++++
+ audio/audio-mixeng-be.c | 218 ++++++++++++++----------------------------------
+ audio/dbusaudio.c       |  12 +--
+ audio/coreaudio.m       |   2 +-
+ 6 files changed, 126 insertions(+), 171 deletions(-)
 
 diff --git a/audio/audio_int.h b/audio/audio_int.h
-index 20ec7883aab..3fc4b516878 100644
+index 5334c4baad2..dd5f2220d75 100644
 --- a/audio/audio_int.h
 +++ b/audio/audio_int.h
-@@ -33,12 +33,6 @@
- #include "qemu/audio-capture.h"
- #include "mixeng.h"
+@@ -45,9 +45,7 @@ struct audio_callback {
+ };
  
--void G_GNUC_PRINTF(2, 0)
--AUD_vlog(const char *cap, const char *fmt, va_list ap);
--
--void G_GNUC_PRINTF(2, 3)
--AUD_log(const char *cap, const char *fmt, ...);
--
- struct audio_callback {
-     void *opaque;
-     audio_callback_fn fn;
-@@ -276,14 +270,6 @@ static inline size_t audio_ring_posb(size_t pos, size_t dist, size_t len)
-     return pos >= dist ? pos - dist : len - dist + pos;
- }
- 
--#define dolog(fmt, ...) AUD_log(AUDIO_CAP, fmt, ## __VA_ARGS__)
--
--#ifdef DEBUG
--#define ldebug(fmt, ...) AUD_log(AUDIO_CAP, fmt, ## __VA_ARGS__)
--#else
--#define ldebug(fmt, ...) (void)0
--#endif
--
- AudiodevPerDirectionOptions *audio_get_pdo_in(Audiodev *dev);
- AudiodevPerDirectionOptions *audio_get_pdo_out(Audiodev *dev);
- 
+ struct audio_pcm_info {
+-    int bits;
+-    bool is_signed;
+-    bool is_float;
++    AudioFormat af;
+     int freq;
+     int nchannels;
+     int bytes_per_frame;
 diff --git a/audio/audio_template.h b/audio/audio_template.h
-index 760aaf5f31f..85a128e2f47 100644
+index 08d60422589..3da91a4782c 100644
 --- a/audio/audio_template.h
 +++ b/audio/audio_template.h
-@@ -128,7 +128,7 @@ static int glue (audio_pcm_sw_alloc_resources_, TYPE) (SW *sw)
-         /* f_fe_min = ceil(1 [frames] * f_be [Hz] / size_be [frames]) */
-         f_fe_min = (f_be + HWBUF.size - 1) / HWBUF.size;
-         qemu_log_mask(LOG_UNIMP,
--                      AUDIO_CAP ": The guest selected a " NAME " sample rate"
-+                      "audio: The guest selected a " NAME " sample rate"
-                       " of %d Hz for %s. Only sample rates >= %" PRIu64 " Hz"
-                       " are supported.\n",
-                       sw->info.freq, sw->name, f_fe_min);
+@@ -173,7 +173,7 @@ static int glue (audio_pcm_sw_init_, TYPE) (
+     sw->empty = true;
+ #endif
+ 
+-    if (sw->info.is_float) {
++    if (audio_format_is_float(hw->info.af)) {
+ #ifdef DAC
+         sw->conv = mixeng_conv_float[sw->info.nchannels == 2]
+             [sw->info.swap_endianness];
+@@ -188,9 +188,9 @@ static int glue (audio_pcm_sw_init_, TYPE) (
+         sw->clip = mixeng_clip
+ #endif
+             [sw->info.nchannels == 2]
+-            [sw->info.is_signed]
++            [audio_format_is_signed(hw->info.af)]
+             [sw->info.swap_endianness]
+-            [audio_bits_to_index(sw->info.bits)];
++            [audio_format_to_index(hw->info.af)];
+     }
+ 
+     sw->name = g_strdup (name);
+@@ -300,7 +300,7 @@ static HW *glue(audio_pcm_hw_add_new_, TYPE)(AudioMixengBackend *s,
+         goto err1;
+     }
+ 
+-    if (hw->info.is_float) {
++    if (audio_format_is_float(hw->info.af)) {
+ #ifdef DAC
+         hw->clip = mixeng_clip_float[hw->info.nchannels == 2]
+             [hw->info.swap_endianness];
+@@ -315,9 +315,9 @@ static HW *glue(audio_pcm_hw_add_new_, TYPE)(AudioMixengBackend *s,
+         hw->conv = mixeng_conv
+ #endif
+             [hw->info.nchannels == 2]
+-            [hw->info.is_signed]
++            [audio_format_is_signed(hw->info.af)]
+             [hw->info.swap_endianness]
+-            [audio_bits_to_index(hw->info.bits)];
++            [audio_format_to_index(hw->info.af)];
+     }
+ 
+     glue(audio_pcm_hw_alloc_resources_, TYPE)(hw);
+diff --git a/include/qemu/audio.h b/include/qemu/audio.h
+index b6b6ee9b560..9e4566d60aa 100644
+--- a/include/qemu/audio.h
++++ b/include/qemu/audio.h
+@@ -185,6 +185,55 @@ bool audio_be_set_dbus_server(AudioBackend *be,
+ 
+ const char *audio_application_name(void);
+ 
++static inline int audio_format_bits(AudioFormat fmt)
++{
++    switch (fmt) {
++    case AUDIO_FORMAT_S8:
++    case AUDIO_FORMAT_U8:
++        return 8;
++
++    case AUDIO_FORMAT_S16:
++    case AUDIO_FORMAT_U16:
++        return 16;
++
++    case AUDIO_FORMAT_F32:
++    case AUDIO_FORMAT_S32:
++    case AUDIO_FORMAT_U32:
++        return 32;
++
++    case AUDIO_FORMAT__MAX:
++        break;
++    }
++
++    g_assert_not_reached();
++}
++
++static inline bool audio_format_is_float(AudioFormat fmt)
++{
++    return fmt == AUDIO_FORMAT_F32;
++}
++
++static inline bool audio_format_is_signed(AudioFormat fmt)
++{
++    switch (fmt) {
++    case AUDIO_FORMAT_S8:
++    case AUDIO_FORMAT_S16:
++    case AUDIO_FORMAT_S32:
++    case AUDIO_FORMAT_F32:
++        return true;
++
++    case AUDIO_FORMAT_U8:
++    case AUDIO_FORMAT_U16:
++    case AUDIO_FORMAT_U32:
++        return false;
++
++    case AUDIO_FORMAT__MAX:
++        break;
++    }
++
++    g_assert_not_reached();
++}
++
+ #define DEFINE_AUDIO_PROPERTIES(_s, _f)         \
+     DEFINE_PROP_AUDIODEV("audiodev", _s, _f)
+ 
 diff --git a/audio/audio-mixeng-be.c b/audio/audio-mixeng-be.c
-index 87e5a2fc3af..a6d5812fc65 100644
+index d02cfe3c509..931d5b206f2 100644
 --- a/audio/audio-mixeng-be.c
 +++ b/audio/audio-mixeng-be.c
-@@ -26,7 +26,6 @@
- #include "trace.h"
- #include "trace/control.h"
- 
--#define AUDIO_CAP "audio"
- #include "audio_int.h"
- 
- #define SW_NAME(sw) (sw)->name ? (sw)->name : "unknown"
-@@ -68,24 +67,6 @@ static int audio_format_to_index(AudioFormat af)
-     g_assert_not_reached();
+@@ -62,23 +62,28 @@ int audio_bug (const char *funcname, int cond)
+     return cond;
  }
  
--void AUD_vlog (const char *cap, const char *fmt, va_list ap)
--{
--    if (cap) {
--        fprintf(stderr, "%s: ", cap);
+-static inline int audio_bits_to_index (int bits)
++/*
++ * Convert audio format to mixeng_clip index. Used by audio_pcm_sw_init_ and
++ * audio_mixeng_backend_add_capture()
++ */
++static int audio_format_to_index(AudioFormat af)
+ {
+-    switch (bits) {
+-    case 8:
++    switch (af) {
++    case AUDIO_FORMAT_U8:
++    case AUDIO_FORMAT_S8:
+         return 0;
+-
+-    case 16:
++    case AUDIO_FORMAT_U16:
++    case AUDIO_FORMAT_S16:
+         return 1;
+-
+-    case 32:
++    case AUDIO_FORMAT_U32:
++    case AUDIO_FORMAT_S32:
+         return 2;
+-
+-    default:
+-        audio_bug ("bits_to_index", 1);
+-        AUD_log (NULL, "invalid bits %d\n", bits);
+-        return 0;
++    case AUDIO_FORMAT_F32:
++    case AUDIO_FORMAT__MAX:
++        break;
+     }
++
++    g_assert_not_reached();
+ }
+ 
+ void AUD_vlog (const char *cap, const char *fmt, va_list ap)
+@@ -172,141 +177,68 @@ static int audio_validate_settings (const struct audsettings *as)
+ 
+ static int audio_pcm_info_eq (struct audio_pcm_info *info, const struct audsettings *as)
+ {
+-    int bits = 8;
+-    bool is_signed = false, is_float = false;
+-
+-    switch (as->fmt) {
+-    case AUDIO_FORMAT_S8:
+-        is_signed = true;
+-        /* fall through */
+-    case AUDIO_FORMAT_U8:
+-        break;
+-
+-    case AUDIO_FORMAT_S16:
+-        is_signed = true;
+-        /* fall through */
+-    case AUDIO_FORMAT_U16:
+-        bits = 16;
+-        break;
+-
+-    case AUDIO_FORMAT_F32:
+-        is_float = true;
+-        /* fall through */
+-    case AUDIO_FORMAT_S32:
+-        is_signed = true;
+-        /* fall through */
+-    case AUDIO_FORMAT_U32:
+-        bits = 32;
+-        break;
+-
+-    default:
+-        abort();
+-    }
+-    return info->freq == as->freq
++    return info->af == as->fmt
++        && info->freq == as->freq
+         && info->nchannels == as->nchannels
+-        && info->is_signed == is_signed
+-        && info->is_float == is_float
+-        && info->bits == bits
+         && info->swap_endianness == (as->endianness != HOST_BIG_ENDIAN);
+ }
+ 
+ void audio_pcm_init_info (struct audio_pcm_info *info, const struct audsettings *as)
+ {
+-    int bits = 8, mul;
+-    bool is_signed = false, is_float = false;
+-
+-    switch (as->fmt) {
+-    case AUDIO_FORMAT_S8:
+-        is_signed = true;
+-        /* fall through */
+-    case AUDIO_FORMAT_U8:
+-        mul = 1;
+-        break;
+-
+-    case AUDIO_FORMAT_S16:
+-        is_signed = true;
+-        /* fall through */
+-    case AUDIO_FORMAT_U16:
+-        bits = 16;
+-        mul = 2;
+-        break;
+-
+-    case AUDIO_FORMAT_F32:
+-        is_float = true;
+-        /* fall through */
+-    case AUDIO_FORMAT_S32:
+-        is_signed = true;
+-        /* fall through */
+-    case AUDIO_FORMAT_U32:
+-        bits = 32;
+-        mul = 4;
+-        break;
+-
+-    default:
+-        abort();
 -    }
 -
--    vfprintf(stderr, fmt, ap);
--}
--
--void AUD_log (const char *cap, const char *fmt, ...)
--{
--    va_list ap;
--
--    va_start (ap, fmt);
--    AUD_vlog (cap, fmt, ap);
--    va_end (ap);
--}
--
- static char *audsettings_to_string(const struct audsettings *as)
- {
-     return g_strdup_printf("frequency=%d nchannels=%d fmt=%s endian=%s",
-diff --git a/audio/mixeng.c b/audio/mixeng.c
-index e63c76e021d..a209737a913 100644
---- a/audio/mixeng.c
-+++ b/audio/mixeng.c
-@@ -26,7 +26,6 @@
- #include "qemu/bswap.h"
- #include "qemu/audio.h"
++    info->af = as->fmt;
+     info->freq = as->freq;
+-    info->bits = bits;
+-    info->is_signed = is_signed;
+-    info->is_float = is_float;
+     info->nchannels = as->nchannels;
+-    info->bytes_per_frame = as->nchannels * mul;
++    info->bytes_per_frame = as->nchannels * audio_format_bits(as->fmt) / 8;
+     info->bytes_per_second = info->freq * info->bytes_per_frame;
+     info->swap_endianness = (as->endianness != HOST_BIG_ENDIAN);
+ }
  
--#define AUDIO_CAP "mixeng"
- #include "audio_int.h"
- #ifdef FLOAT_MIXENG
- #include "qemu/error-report.h"
+-void audio_pcm_info_clear_buf (struct audio_pcm_info *info, void *buf, int len)
++void audio_pcm_info_clear_buf(struct audio_pcm_info *info, void *buf, int len)
+ {
+     if (!len) {
+         return;
+     }
+ 
+-    if (info->is_signed || info->is_float) {
+-        memset(buf, 0x00, len * info->bytes_per_frame);
+-    } else {
+-        switch (info->bits) {
+-        case 8:
+-            memset(buf, 0x80, len * info->bytes_per_frame);
+-            break;
+-
+-        case 16:
+-            {
+-                int i;
+-                uint16_t *p = buf;
+-                short s = INT16_MAX;
+-
+-                if (info->swap_endianness) {
+-                    s = bswap16 (s);
+-                }
+-
+-                for (i = 0; i < len * info->nchannels; i++) {
+-                    p[i] = s;
+-                }
+-            }
+-            break;
++    switch (info->af) {
++    case AUDIO_FORMAT_U8:
++        memset(buf, 0x80, len * info->bytes_per_frame);
++        break;
++    case AUDIO_FORMAT_U16: {
++        int i;
++        uint16_t *p = buf;
++        short s = INT16_MAX;
+ 
+-        case 32:
+-            {
+-                int i;
+-                uint32_t *p = buf;
+-                int32_t s = INT32_MAX;
++        if (info->swap_endianness) {
++            s = bswap16(s);
++        }
+ 
+-                if (info->swap_endianness) {
+-                    s = bswap32 (s);
+-                }
++        for (i = 0; i < len * info->nchannels; i++) {
++            p[i] = s;
++        }
++        break;
++    }
++    case AUDIO_FORMAT_U32: {
++        int i;
++        uint32_t *p = buf;
++        int32_t s = INT32_MAX;
+ 
+-                for (i = 0; i < len * info->nchannels; i++) {
+-                    p[i] = s;
+-                }
+-            }
+-            break;
++        if (info->swap_endianness) {
++            s = bswap32(s);
++        }
+ 
+-        default:
+-            AUD_log (NULL, "audio_pcm_info_clear_buf: invalid bits %d\n",
+-                     info->bits);
+-            break;
++        for (i = 0; i < len * info->nchannels; i++) {
++            p[i] = s;
+         }
++        break;
++    }
++    case AUDIO_FORMAT_S8:
++    case AUDIO_FORMAT_S16:
++    case AUDIO_FORMAT_S32:
++    case AUDIO_FORMAT_F32:
++        memset(buf, 0x00, len * info->bytes_per_frame);
++        break;
++    case AUDIO_FORMAT__MAX:
++        g_assert_not_reached();
+     }
+ }
+ 
+@@ -719,8 +651,8 @@ static size_t audio_pcm_sw_write(SWVoiceOut *sw, void *buf, size_t buf_len)
+ #ifdef DEBUG_AUDIO
+ static void audio_pcm_print_info (const char *cap, struct audio_pcm_info *info)
+ {
+-    dolog("%s: bits %d, sign %d, float %d, freq %d, nchan %d\n",
+-          cap, info->bits, info->is_signed, info->is_float, info->freq,
++    dolog("%s: %s, freq %d, nchan %d\n",
++          cap, AudioFormat_str(info->af), info->freq,
+           info->nchannels);
+ }
+ #endif
+@@ -1759,15 +1691,15 @@ static CaptureVoiceOut *audio_mixeng_backend_add_capture(
+ 
+         cap->buf = g_malloc0_n(hw->mix_buf.size, hw->info.bytes_per_frame);
+ 
+-        if (hw->info.is_float) {
++        if (audio_format_is_float(hw->info.af)) {
+             hw->clip = mixeng_clip_float[hw->info.nchannels == 2]
+                 [hw->info.swap_endianness];
+         } else {
+             hw->clip = mixeng_clip
+                 [hw->info.nchannels == 2]
+-                [hw->info.is_signed]
++                [audio_format_is_signed(hw->info.af)]
+                 [hw->info.swap_endianness]
+-                [audio_bits_to_index(hw->info.bits)];
++                [audio_format_to_index(hw->info.af)];
+         }
+ 
+         QLIST_INSERT_HEAD (&s->cap_head, cap, entries);
+@@ -1869,29 +1801,6 @@ audsettings audiodev_to_audsettings(AudiodevPerDirectionOptions *pdo)
+     };
+ }
+ 
+-int audioformat_bytes_per_sample(AudioFormat fmt)
+-{
+-    switch (fmt) {
+-    case AUDIO_FORMAT_U8:
+-    case AUDIO_FORMAT_S8:
+-        return 1;
+-
+-    case AUDIO_FORMAT_U16:
+-    case AUDIO_FORMAT_S16:
+-        return 2;
+-
+-    case AUDIO_FORMAT_U32:
+-    case AUDIO_FORMAT_S32:
+-    case AUDIO_FORMAT_F32:
+-        return 4;
+-
+-    case AUDIO_FORMAT__MAX:
+-        ;
+-    }
+-    abort();
+-}
+-
+-
+ /* frames = freq * usec / 1e6 */
+ int audio_buffer_frames(AudiodevPerDirectionOptions *pdo,
+                         audsettings *as, int def_usecs)
+@@ -1914,8 +1823,7 @@ int audio_buffer_samples(AudiodevPerDirectionOptions *pdo,
+ int audio_buffer_bytes(AudiodevPerDirectionOptions *pdo,
+                        audsettings *as, int def_usecs)
+ {
+-    return audio_buffer_samples(pdo, as, def_usecs) *
+-        audioformat_bytes_per_sample(as->fmt);
++    return audio_buffer_samples(pdo, as, def_usecs) * audio_format_bits(as->fmt) / 8;
+ }
+ 
+ void audio_rate_start(RateCtl *rate)
+diff --git a/audio/dbusaudio.c b/audio/dbusaudio.c
+index 5f65c043c16..b212b3d6022 100644
+--- a/audio/dbusaudio.c
++++ b/audio/dbusaudio.c
+@@ -147,9 +147,9 @@ dbus_init_out_listener(QemuDBusDisplay1AudioOutListener *listener,
+     qemu_dbus_display1_audio_out_listener_call_init(
+         listener,
+         (uintptr_t)hw,
+-        hw->info.bits,
+-        hw->info.is_signed,
+-        hw->info.is_float,
++        audio_format_bits(hw->info.af),
++        audio_format_is_signed(hw->info.af),
++        audio_format_is_float(hw->info.af),
+         hw->info.freq,
+         hw->info.nchannels,
+         hw->info.bytes_per_frame,
+@@ -273,9 +273,9 @@ dbus_init_in_listener(QemuDBusDisplay1AudioInListener *listener, HWVoiceIn *hw)
+     qemu_dbus_display1_audio_in_listener_call_init(
+         listener,
+         (uintptr_t)hw,
+-        hw->info.bits,
+-        hw->info.is_signed,
+-        hw->info.is_float,
++        audio_format_bits(hw->info.af),
++        audio_format_is_signed(hw->info.af),
++        audio_format_is_float(hw->info.af),
+         hw->info.freq,
+         hw->info.nchannels,
+         hw->info.bytes_per_frame,
+diff --git a/audio/coreaudio.m b/audio/coreaudio.m
+index 0c0e8583c89..1f4b3d9d467 100644
+--- a/audio/coreaudio.m
++++ b/audio/coreaudio.m
+@@ -359,7 +359,7 @@ static OSStatus init_out_device(coreaudioVoiceOut *core)
+     AudioValueRange frameRange;
+ 
+     AudioStreamBasicDescription streamBasicDescription = {
+-        .mBitsPerChannel = core->hw.info.bits,
++        .mBitsPerChannel = audio_format_bits(core->hw.info.af),
+         .mBytesPerFrame = core->hw.info.bytes_per_frame,
+         .mBytesPerPacket = core->hw.info.bytes_per_frame,
+         .mChannelsPerFrame = core->hw.info.nchannels,
 
 -- 
 2.53.0

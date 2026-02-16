@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBB47E7BD94
-	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:19:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF846E7BD95
+	for <qemu-arm@archiver.kernel.org>; Mon, 16 Feb 2026 11:20:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vrwcq-0007EZ-JX; Mon, 16 Feb 2026 06:18:49 -0500
+	id 1vrwdP-0008Kg-S4; Mon, 16 Feb 2026 06:19:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwbO-0005cO-Re
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:25 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1vrwar-0005JR-PI
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:04 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vrwbJ-0007hj-V2
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:17:17 -0500
+ id 1vrwaj-0007SP-Qb
+ for qemu-arm@nongnu.org; Mon, 16 Feb 2026 06:16:41 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771240626;
+ s=mimecast20190719; t=1771240594;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=U0bHWW5dgK+/HJjVU+OAOt9u9O6Cx3FhrDkXc/laulI=;
- b=DzYqKN8HifFWQyWIhMpoplTKu28JUVVYQKQbTSqpDx3lK3Z8Hy3+LLujWHF2uopqZtmeYW
- qyzPm/8ObAvboVZnTm1Qmbssq08m46Y6JmdoyqcikyG/ZjOTO3Yc767FFRxwEpo8lAK3Hm
- wbp2FPRGSteHDmxuqT/EVWENk4mzD1o=
+ bh=U3xIBvN95qHXHsq0xoLiJzxgBouxPOGkc64oTCZAQok=;
+ b=d3p8cYqSWfU9hLFluTMOmAp6Z2o0PR5FZlFnKePiBBJqmwwNclP0kJD/9TTFK5rHkzb+CM
+ daeR2ljOn4tcnhpKBlfiE/uu65HRM7IyXAru64iG+bxGMYwEZvZlAhcB/AdI78SOD1rntK
+ q25hSob6fc2KgGK/gPKw3nDvWejefEY=
 Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-97-TVTG2A9MMSOzqy6JBVlDGQ-1; Mon,
- 16 Feb 2026 06:17:01 -0500
-X-MC-Unique: TVTG2A9MMSOzqy6JBVlDGQ-1
-X-Mimecast-MFC-AGG-ID: TVTG2A9MMSOzqy6JBVlDGQ_1771240619
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-198-MpXdyA5NMDqOWILfKIiQ1g-1; Mon,
+ 16 Feb 2026 06:16:30 -0500
+X-MC-Unique: MpXdyA5NMDqOWILfKIiQ1g-1
+X-Mimecast-MFC-AGG-ID: MpXdyA5NMDqOWILfKIiQ1g_1771240588
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 57EA119560B2; Mon, 16 Feb 2026 11:16:59 +0000 (UTC)
+ id 736FD19560B2; Mon, 16 Feb 2026 11:16:28 +0000 (UTC)
 Received: from localhost (unknown [10.45.242.26])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 13AB130001B9; Mon, 16 Feb 2026 11:16:57 +0000 (UTC)
+ id BDD2430001A5; Mon, 16 Feb 2026 11:16:27 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 16 Feb 2026 12:15:18 +0100
-Subject: [PATCH 29/85] audio: replace type_init() with DEFINE_TYPES
+Date: Mon, 16 Feb 2026 12:15:07 +0100
+Subject: [PATCH 18/85] tests: start manual audio backend test
 MIME-Version: 1.0
-Message-Id: <20260216-audio-v1-29-e676662e4514@redhat.com>
+Message-Id: <20260216-audio-v1-18-e676662e4514@redhat.com>
 References: <20260216-audio-v1-0-e676662e4514@redhat.com>
 In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 To: qemu-devel@nongnu.org
@@ -70,29 +70,29 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=12925;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=25709;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=/OclfmP5XewpxJNnSJDp4/Un0I4vQMcL2p0K7RiWt4g=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxPzq1tH1Qld4toiGW9FYMLYpn54fKwAT0rU
- t4x/7ROkeuJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TwAKCRDa6OEJdZac
- 5XZ5D/92BWDs6BYjDg87G45/PgA62LTJsOjfYla3IWwsajkwczYlhI7uPJ5UromLxFIX8caU8hY
- 0qcuok4XsErMv0/pP6E7mpiwpnwwdUPPIBZQjTtM6RKte3xpcVFbNqDZ81RE13vrC4sajh4r71+
- Pf7s0lvB5r59HOEW5qxQOlolKDyfHxofNWHdhYH08vwlAg/2fpRl8SCtgZqQ1urSEZgX1WjrQig
- ZytPyiyuc9NY1vgwMCZebFPcA8tCYRVW1LUaYeMswPG2i4VYwUOFhwjYbnKntDk8M4xBOCx1+5f
- w4wHmFYqFAxo0h0KwL9jB9aJpiOf0bQXw6OBZe7EO6y/pM5fwNS2oe1Vr0YVcQgS+aa0CPkVv5C
- w2Wkl2scangyq9W54eKBhu+y2FD96PYVUEBaFGUABj3pMhzADEOsRvzwTNBKgaHpbgC1xACt3FH
- EDpY1BstbEyMR/w97IzuzUdPPdtsd4oFLvkTe4sRVtXz1zxCml5qJbbff5fGbjZnIL5uWZZxn8i
- RmjH0upZzn9bWl+ud5hPXMyId3OJ+OyBIXaqZ8D1boiuVU3Jp2On0u/txT1Ad069DRr+3FOZfvs
- gEJxDqEJpzuLtDQC7dQGQ5VUTkf3Xd8BnLqg9z5E1M5Sx2Jai9jpO0OM/Dvj5lrEpi+q1TzTwqW
- FUG5mus6sXQUtGg==
+ bh=LFmgbskSCK71ElN/GubZyRqCsfdOjnPkUhXawuYD0Ak=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBpkvxO/b5zE2ibxPlbbkleqhPOT8gBlYZreZYp8
+ 4eJzVn2ClWJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaZL8TgAKCRDa6OEJdZac
+ 5WIOEAC6eB/U/i/AGMthWjhAy9jMHDTjTqYTAF6VdcvvLoJmVi83iQokrRifJUdZvq8ptj3B756
+ oJy3HUi4I7oWegEzXzoJojxX7U7/YMTa94O0o6TMKoOdCSWNpuhUUPZBbZk7I0/AtV/MkMraadf
+ 9EtOo1idJ8JaJ0W0z6kLHTQ+Mep4GzsjniY5gOoO9d0+CWR4BJkKapzuZdnf7lob6thbVfMqCaP
+ cUYFyQDgu0bvtxG+WddR0psAQDWHEmkYNQ8q7WjtOmXZv5CbTpR3ls5v5dXCXsTvX7dNuE91URv
+ FGWrWsnMSYlVDSAtgr8hluFOWunwVU15nQXXmnvvRuQCgn3ZNviZ7bEvX7yR/ULinx/oQf1NN4b
+ SvPHvx0ni6XldCjirm7wOPZyKU6gHSN6jltTBORtUOqOZEm/NRQzUozcy3iKm7Jy2OVMnlTkaW2
+ vLQ9YaGBuhDkc/32aIADjykfCz2/r1hSLleG9/qGyV7JFeT7Vofk2IHr/Qk8pxmx46ghXR+0OBQ
+ 2aFKEaTeJ8JgdvPejt4j7ci//IkiHOQnwp0o5+LmmvMN2cxjuVc89BaPf3lsCFVvMQNVTCHXpEc
+ HZwLaKrkp43/pMDMF8QbZQ3u64yKsI+r2Hy5OWcJg1AWTkG15XlUA5kHZL6q0L95BAY+aJZKUjb
+ 7GxFaTCySz3l9gQ==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: jwcOi2N5fZuBbIGnpqCr6sp8qkHNmCY7lE8WjDpwNKs_1771240619
+X-Mimecast-MFC-PROC-ID: -4W_ELBbYQ-nQUoa1TGrqNi-40OE8GcPgTiO4lHsvhQ_1771240588
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -100,9 +100,9 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ T_FILL_THIS_FORM_SHORT=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,421 +118,824 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Use the convenience macro to register types.
+Start a simple test program that will exercise the QEMU audio APIs.
 
-Note that jack backend was using the type registration to initialize
-some globals. Use a ctor function instead.
+It is meant to run manually for now, as it accesses the sound system and
+produces sound by default, and also runs for a few seconds. We may want
+to make it silent or use the "none" (noaudio) backend by default though,
+so it can run as part of the automated test suite.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- audio/alsaaudio.c   | 19 ++++++++-----------
- audio/dbusaudio.c   | 18 ++++++++----------
- audio/dsoundaudio.c | 18 ++++++++----------
- audio/jackaudio.c   | 18 ++++++++++--------
- audio/noaudio.c     | 18 ++++++++----------
- audio/ossaudio.c    | 18 ++++++++----------
- audio/paaudio.c     | 18 ++++++++----------
- audio/pwaudio.c     | 20 ++++++++------------
- audio/sdlaudio.c    | 18 ++++++++----------
- audio/sndioaudio.c  | 19 ++++++++-----------
- audio/spiceaudio.c  | 18 ++++++++----------
- audio/wavaudio.c    | 18 ++++++++----------
- audio/coreaudio.m   | 18 ++++++++----------
- 13 files changed, 106 insertions(+), 132 deletions(-)
+ MAINTAINERS               |   1 +
+ meson.build               |  17 +-
+ tests/audio/audio-stubs.c |  62 +++++
+ tests/audio/test-audio.c  | 599 ++++++++++++++++++++++++++++++++++++++++++++++
+ audio/meson.build         |   2 +-
+ tests/audio/meson.build   |  23 ++
+ tests/meson.build         |   1 +
+ ui/meson.build            |   3 +
+ 8 files changed, 702 insertions(+), 6 deletions(-)
 
-diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
-index 7200777ad82..ae1cec6a36e 100644
---- a/audio/alsaaudio.c
-+++ b/audio/alsaaudio.c
-@@ -962,17 +962,14 @@ static struct audio_driver alsa_audio_driver = {
-     .voice_size_in  = sizeof (ALSAVoiceIn)
- };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index d3aa6d6732d..f52ead996b4 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3034,6 +3034,7 @@ X: audio/sndioaudio.c
+ X: audio/spiceaudio.c
+ F: include/qemu/audio*.h
+ F: qapi/audio.json
++F: tests/audio/
  
--static const TypeInfo audio_alsa_info = {
--    .name = TYPE_AUDIO_ALSA,
--    .parent = TYPE_AUDIO_MIXENG_BACKEND,
--    .instance_size = sizeof(AudioALSA),
--    .class_init = audio_alsa_class_init,
-+static const TypeInfo audio_types[] = {
-+    {
-+        .name = TYPE_AUDIO_ALSA,
-+        .parent = TYPE_AUDIO_MIXENG_BACKEND,
-+        .instance_size = sizeof(AudioALSA),
-+        .class_init = audio_alsa_class_init,
-+    },
- };
+ ALSA Audio backend
+ M: Gerd Hoffmann <kraxel@redhat.com>
+diff --git a/meson.build b/meson.build
+index 904605b844f..659f4739b10 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3879,6 +3879,7 @@ target_modules += { 'accel' : { 'qtest': qtest_module_ss }}
+ modinfo_collect = find_program('scripts/modinfo-collect.py')
+ modinfo_generate = find_program('scripts/modinfo-generate.py')
+ modinfo_files = []
++audio_modinfo_files = []
  
--
--static void register_audio_alsa(void)
--{
--    type_register_static(&audio_alsa_info);
--}
--type_init(register_audio_alsa);
-+DEFINE_TYPES(audio_types)
- module_obj(TYPE_AUDIO_ALSA);
-diff --git a/audio/dbusaudio.c b/audio/dbusaudio.c
-index 48c9078d80e..269db7877b6 100644
---- a/audio/dbusaudio.c
-+++ b/audio/dbusaudio.c
-@@ -729,18 +729,16 @@ static void audio_dbus_class_init(ObjectClass *klass, const void *data)
-     k->driver = &dbus_audio_driver;
- }
- 
--static const TypeInfo audio_dbus_info = {
--    .name = TYPE_AUDIO_DBUS,
--    .parent = TYPE_AUDIO_MIXENG_BACKEND,
--    .instance_size = sizeof(AudioDbus),
--    .class_init = audio_dbus_class_init,
-+static const TypeInfo audio_types[] = {
-+    {
-+        .name = TYPE_AUDIO_DBUS,
-+        .parent = TYPE_AUDIO_MIXENG_BACKEND,
-+        .instance_size = sizeof(AudioDbus),
-+        .class_init = audio_dbus_class_init,
-+    },
- };
- 
--static void register_audio_dbus(void)
--{
--    type_register_static(&audio_dbus_info);
--}
--type_init(register_audio_dbus);
-+DEFINE_TYPES(audio_types)
- 
- module_dep("ui-dbus")
- module_obj(TYPE_AUDIO_DBUS)
-diff --git a/audio/dsoundaudio.c b/audio/dsoundaudio.c
-index 6d213899660..462d09e02af 100644
---- a/audio/dsoundaudio.c
-+++ b/audio/dsoundaudio.c
-@@ -711,16 +711,14 @@ static struct audio_driver dsound_audio_driver = {
-     .voice_size_in  = sizeof (DSoundVoiceIn)
- };
- 
--static const TypeInfo audio_dsound_info = {
--    .name = TYPE_AUDIO_DSOUND,
--    .parent = TYPE_AUDIO_MIXENG_BACKEND,
--    .instance_size = sizeof(AudioDsound),
--    .class_init = audio_dsound_class_init,
-+static const TypeInfo audio_types[] = {
-+    {
-+        .name = TYPE_AUDIO_DSOUND,
-+        .parent = TYPE_AUDIO_MIXENG_BACKEND,
-+        .instance_size = sizeof(AudioDsound),
-+        .class_init = audio_dsound_class_init,
-+    },
- };
- 
--static void register_audio_dsound(void)
--{
--    type_register_static(&audio_dsound_info);
--}
--type_init(register_audio_dsound);
-+DEFINE_TYPES(audio_types)
- module_obj(TYPE_AUDIO_DSOUND);
-diff --git a/audio/jackaudio.c b/audio/jackaudio.c
-index bfce4cb0b4c..972b158f023 100644
---- a/audio/jackaudio.c
-+++ b/audio/jackaudio.c
-@@ -708,22 +708,24 @@ static void qjack_info(const char *msg)
-     dolog("I: %s\n", msg);
- }
- 
--static const TypeInfo audio_jack_info = {
--    .name = TYPE_AUDIO_JACK,
--    .parent = TYPE_AUDIO_MIXENG_BACKEND,
--    .instance_size = sizeof(AudioJack),
--    .class_init = audio_jack_class_init,
-+static const TypeInfo audio_types[] = {
-+    {
-+        .name = TYPE_AUDIO_JACK,
-+        .parent = TYPE_AUDIO_MIXENG_BACKEND,
-+        .instance_size = sizeof(AudioJack),
-+        .class_init = audio_jack_class_init,
-+    },
- };
- 
--static void register_audio_jack(void)
-+static void __attribute__((__constructor__)) audio_jack_init(void)
- {
-     qemu_mutex_init(&qjack_shutdown_lock);
--    type_register_static(&audio_jack_info);
- #if !defined(WIN32) && defined(CONFIG_PTHREAD_SETNAME_NP_W_TID)
-     jack_set_thread_creator(qjack_thread_creator);
- #endif
-     jack_set_error_function(qjack_error);
-     jack_set_info_function(qjack_info);
- }
--type_init(register_audio_jack);
+ block_mods = []
+ system_mods = []
+@@ -3906,15 +3907,21 @@ foreach d, list : modules
+                     install: true,
+                     install_dir: qemu_moddir)
+       if module_ss.sources() != []
+-        modinfo_files += custom_target(d + '-' + m + '.modinfo',
+-                                       output: d + '-' + m + '.modinfo',
+-                                       input: sl.extract_all_objects(recursive: true),
+-                                       capture: true,
+-                                       command: [modinfo_collect, '@INPUT@'])
++        modinfo = custom_target(d + '-' + m + '.modinfo',
++                                output: d + '-' + m + '.modinfo',
++                                input: sl.extract_all_objects(recursive: true),
++                                capture: true,
++                                command: [modinfo_collect, '@INPUT@'])
++        modinfo_files += modinfo
++        if d == 'audio'
++          audio_modinfo_files += modinfo
++        endif
+       endif
+     else
+       if d == 'block'
+         block_ss.add_all(module_ss)
++      elif d == 'audio'
++        audio_ss.add_all(module_ss)
+       else
+         system_ss.add_all(module_ss)
+       endif
+diff --git a/tests/audio/audio-stubs.c b/tests/audio/audio-stubs.c
+new file mode 100644
+index 00000000000..dd7f635d460
+--- /dev/null
++++ b/tests/audio/audio-stubs.c
+@@ -0,0 +1,62 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
 +
-+DEFINE_TYPES(audio_types)
- module_obj(TYPE_AUDIO_JACK);
-diff --git a/audio/noaudio.c b/audio/noaudio.c
-index 8b5ebd71bf6..65679b8b13d 100644
---- a/audio/noaudio.c
-+++ b/audio/noaudio.c
-@@ -155,16 +155,14 @@ static struct audio_driver no_audio_driver = {
-     .voice_size_in  = sizeof (NoVoiceIn)
- };
- 
--static const TypeInfo audio_none_info = {
--    .name = TYPE_AUDIO_NONE,
--    .parent = TYPE_AUDIO_MIXENG_BACKEND,
--    .instance_size = sizeof(AudioNone),
--    .class_init = audio_none_class_init,
-+static const TypeInfo audio_types[] = {
-+    {
-+        .name = TYPE_AUDIO_NONE,
-+        .parent = TYPE_AUDIO_MIXENG_BACKEND,
-+        .instance_size = sizeof(AudioNone),
-+        .class_init = audio_none_class_init,
-+    },
- };
- 
--static void register_audio_none(void)
--{
--    type_register_static(&audio_none_info);
--}
--type_init(register_audio_none);
-+DEFINE_TYPES(audio_types)
- module_obj(TYPE_AUDIO_NONE);
-diff --git a/audio/ossaudio.c b/audio/ossaudio.c
-index b8e26b17ed7..f64c564e345 100644
---- a/audio/ossaudio.c
-+++ b/audio/ossaudio.c
-@@ -789,16 +789,14 @@ static struct audio_driver oss_audio_driver = {
-     .voice_size_in  = sizeof (OSSVoiceIn)
- };
- 
--static const TypeInfo audio_oss_info = {
--    .name = TYPE_AUDIO_OSS,
--    .parent = TYPE_AUDIO_MIXENG_BACKEND,
--    .instance_size = sizeof(AudioOss),
--    .class_init = audio_oss_class_init,
-+static const TypeInfo audio_types[] = {
-+    {
-+        .name = TYPE_AUDIO_OSS,
-+        .parent = TYPE_AUDIO_MIXENG_BACKEND,
-+        .instance_size = sizeof(AudioOss),
-+        .class_init = audio_oss_class_init,
-+    },
- };
- 
--static void register_audio_oss(void)
--{
--    type_register_static(&audio_oss_info);
--}
--type_init(register_audio_oss);
-+DEFINE_TYPES(audio_types)
- module_obj(TYPE_AUDIO_OSS);
-diff --git a/audio/paaudio.c b/audio/paaudio.c
-index adaeb2af807..331da4f2ed6 100644
---- a/audio/paaudio.c
-+++ b/audio/paaudio.c
-@@ -948,16 +948,14 @@ static struct audio_driver pa_audio_driver = {
-     .voice_size_in  = sizeof (PAVoiceIn),
- };
- 
--static const TypeInfo audio_pa_info = {
--    .name = TYPE_AUDIO_PA,
--    .parent = TYPE_AUDIO_MIXENG_BACKEND,
--    .instance_size = sizeof(AudioPa),
--    .class_init = audio_pa_class_init,
-+static const TypeInfo audio_types[] = {
-+    {
-+        .name = TYPE_AUDIO_PA,
-+        .parent = TYPE_AUDIO_MIXENG_BACKEND,
-+        .instance_size = sizeof(AudioPa),
-+        .class_init = audio_pa_class_init,
-+    },
- };
- 
--static void register_audio_pa(void)
--{
--    type_register_static(&audio_pa_info);
--}
--type_init(register_audio_pa);
-+DEFINE_TYPES(audio_types)
- module_obj(TYPE_AUDIO_PA);
-diff --git a/audio/pwaudio.c b/audio/pwaudio.c
-index facd166052c..3b524dfea5a 100644
---- a/audio/pwaudio.c
-+++ b/audio/pwaudio.c
-@@ -864,18 +864,14 @@ static struct audio_driver pw_audio_driver = {
-     .voice_size_in = sizeof(PWVoiceIn),
- };
- 
--static const TypeInfo audio_pw_info = {
--    .name = TYPE_AUDIO_PW,
--    .parent = TYPE_AUDIO_MIXENG_BACKEND,
--    .instance_size = sizeof(AudioPw),
--    .class_init = audio_pw_class_init,
-+static const TypeInfo audio_types[] = {
-+    {
-+        .name = TYPE_AUDIO_PW,
-+        .parent = TYPE_AUDIO_MIXENG_BACKEND,
-+        .instance_size = sizeof(AudioPw),
-+        .class_init = audio_pw_class_init,
-+    },
- };
- 
--static void
--register_audio_pw(void)
--{
--    type_register_static(&audio_pw_info);
--}
--
--type_init(register_audio_pw);
-+DEFINE_TYPES(audio_types)
- module_obj(TYPE_AUDIO_PW);
-diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
-index c00f1366d17..a60b1629da0 100644
---- a/audio/sdlaudio.c
-+++ b/audio/sdlaudio.c
-@@ -508,16 +508,14 @@ static struct audio_driver sdl_audio_driver = {
-     .voice_size_in  = sizeof(SDLVoiceIn),
- };
- 
--static const TypeInfo audio_sdl_info = {
--    .name = TYPE_AUDIO_SDL,
--    .parent = TYPE_AUDIO_MIXENG_BACKEND,
--    .instance_size = sizeof(AudioSdl),
--    .class_init = audio_sdl_class_init,
-+static const TypeInfo audio_types[] = {
-+    {
-+        .name = TYPE_AUDIO_SDL,
-+        .parent = TYPE_AUDIO_MIXENG_BACKEND,
-+        .instance_size = sizeof(AudioSdl),
-+        .class_init = audio_sdl_class_init,
-+    },
- };
- 
--static void register_audio_sdl(void)
--{
--    type_register_static(&audio_sdl_info);
--}
--type_init(register_audio_sdl);
-+DEFINE_TYPES(audio_types)
- module_obj(TYPE_AUDIO_SDL);
-diff --git a/audio/sndioaudio.c b/audio/sndioaudio.c
-index c8310b1fa37..2a9ae42992b 100644
---- a/audio/sndioaudio.c
-+++ b/audio/sndioaudio.c
-@@ -572,17 +572,14 @@ static struct audio_driver sndio_audio_driver = {
-     .voice_size_in  = sizeof(SndioVoice)
- };
- 
--static const TypeInfo audio_sndio_info = {
--    .name = TYPE_AUDIO_SNDIO,
--    .parent = TYPE_AUDIO_MIXENG_BACKEND,
--    .instance_size = sizeof(AudioSndio),
--    .class_init = audio_sndio_class_init,
-+static const TypeInfo audio_types[] = {
-+    {
-+        .name = TYPE_AUDIO_SNDIO,
-+        .parent = TYPE_AUDIO_MIXENG_BACKEND,
-+        .instance_size = sizeof(AudioSndio),
-+        .class_init = audio_sndio_class_init,
-+    },
- };
- 
--static void register_audio_sndio(void)
--{
--    type_register_static(&audio_sndio_info);
--}
--
--type_init(register_audio_sndio);
-+DEFINE_TYPES(audio_types)
- module_obj(TYPE_AUDIO_SNDIO);
-diff --git a/audio/spiceaudio.c b/audio/spiceaudio.c
-index d1bb318b6b7..ad7cb69673b 100644
---- a/audio/spiceaudio.c
-+++ b/audio/spiceaudio.c
-@@ -342,18 +342,16 @@ static struct audio_driver spice_audio_driver = {
-     .voice_size_in  = sizeof (SpiceVoiceIn),
- };
- 
--static const TypeInfo audio_spice_info = {
--    .name = TYPE_AUDIO_SPICE,
--    .parent = TYPE_AUDIO_MIXENG_BACKEND,
--    .instance_size = sizeof(AudioSpice),
--    .class_init = audio_spice_class_init,
-+static const TypeInfo audio_types[] = {
-+    {
-+        .name = TYPE_AUDIO_SPICE,
-+        .parent = TYPE_AUDIO_MIXENG_BACKEND,
-+        .instance_size = sizeof(AudioSpice),
-+        .class_init = audio_spice_class_init,
-+    },
- };
- 
--static void register_audio_spice(void)
--{
--    type_register_static(&audio_spice_info);
--}
--type_init(register_audio_spice);
-+DEFINE_TYPES(audio_types)
- module_obj(TYPE_AUDIO_SPICE);
- 
- module_dep("ui-spice-core");
-diff --git a/audio/wavaudio.c b/audio/wavaudio.c
-index 12d4108ffad..cd2ceffd42b 100644
---- a/audio/wavaudio.c
-+++ b/audio/wavaudio.c
-@@ -231,16 +231,14 @@ static struct audio_driver wav_audio_driver = {
-     .voice_size_in  = 0
- };
- 
--static const TypeInfo audio_wav_info = {
--    .name = TYPE_AUDIO_WAV,
--    .parent = TYPE_AUDIO_MIXENG_BACKEND,
--    .instance_size = sizeof(AudioWav),
--    .class_init = audio_wav_class_init,
-+static const TypeInfo audio_types[] = {
-+    {
-+        .name = TYPE_AUDIO_WAV,
-+        .parent = TYPE_AUDIO_MIXENG_BACKEND,
-+        .instance_size = sizeof(AudioWav),
-+        .class_init = audio_wav_class_init,
++/*
++ * Stubs for audio test - provides missing functions for standalone audio test
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/dbus.h"
++#include "ui/qemu-spice-module.h"
++#include "ui/dbus-module.h"
++#include "system/replay.h"
++#include "system/runstate.h"
++
++int using_spice;
++int using_dbus_display;
++
++struct QemuSpiceOps qemu_spice;
++
++GQuark dbus_display_error_quark(void)
++{
++    return g_quark_from_static_string("dbus-display-error-quark");
++}
++
++#ifdef WIN32
++/* from ui/dbus.h */
++bool
++dbus_win32_import_socket(GDBusMethodInvocation *invocation,
++                         GVariant *arg_listener, int *socket);
++
++bool
++dbus_win32_import_socket(GDBusMethodInvocation *invocation,
++                         GVariant *arg_listener, int *socket)
++{
++    return true;
++}
++#endif
++
++void replay_audio_in(size_t *recorded, st_sample *samples,
++                     size_t *wpos, size_t size)
++{
++}
++
++void replay_audio_out(size_t *played)
++{
++}
++
++static int dummy_vmse;
++
++VMChangeStateEntry *qemu_add_vm_change_state_handler(VMChangeStateHandler *cb,
++                                                     void *opaque)
++{
++    return (VMChangeStateEntry *)&dummy_vmse;
++}
++
++void qemu_del_vm_change_state_handler(VMChangeStateEntry *e)
++{
++}
++
++bool runstate_is_running(void)
++{
++    return true;
++}
+diff --git a/tests/audio/test-audio.c b/tests/audio/test-audio.c
+new file mode 100644
+index 00000000000..edb4971972c
+--- /dev/null
++++ b/tests/audio/test-audio.c
+@@ -0,0 +1,599 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++
++#include "qemu/osdep.h"
++#include "qemu/config-file.h"
++#include "qemu/cutils.h"
++#include "qemu/help_option.h"
++#include "qemu/module.h"
++#include "qemu/main-loop.h"
++#include "qemu/audio.h"
++#include "qemu/log.h"
++#include "qapi/error.h"
++#include "trace/control.h"
++#include "glib.h"
++
++#include "audio/audio_int.h"
++
++#include <math.h>
++#ifdef CONFIG_SDL
++/*
++ * SDL insists on wrapping the main() function with its own implementation on
++ * some platforms; it does so via a macro that renames our main function, so
++ * <SDL.h> must be #included here even with no SDL code called from this file.
++ */
++#include <SDL.h>
++#endif
++
++#define SAMPLE_RATE     44100
++#define CHANNELS        2
++#define DURATION_SECS   2
++#define FREQUENCY       440.0
++#define BUFFER_FRAMES   1024
++#define TIMEOUT_SECS    (DURATION_SECS + 1)
++
++/* Command-line options */
++static gchar *opt_audiodev;
++static gchar *opt_trace;
++
++static GOptionEntry test_options[] = {
++    { "audiodev", 'a', 0, G_OPTION_ARG_STRING, &opt_audiodev,
++      "Audio device spec (e.g., none or pa,out.buffer-length=50000)", "DEV" },
++    { "trace", 'T', 0, G_OPTION_ARG_STRING, &opt_trace,
++      "Trace options (e.g., 'pw_*')", "TRACE" },
++    { NULL }
++};
++
++#define TEST_AUDIODEV_ID "test"
++
++typedef struct TestSineState {
++    AudioBackend *be;
++    SWVoiceOut *voice;
++    int64_t total_frames;
++    int64_t frames_written;
++} TestSineState;
++
++/* Default audio settings for tests */
++static const struct audsettings default_test_settings = {
++    .freq = SAMPLE_RATE,
++    .nchannels = CHANNELS,
++    .fmt = AUDIO_FORMAT_S16,
++    .endianness = 0,
++};
++
++static void dummy_audio_callback(void *opaque, int avail)
++{
++}
++
++static AudioBackend *get_test_audio_backend(void)
++{
++    AudioBackend *be;
++    Error *err = NULL;
++
++    if (opt_audiodev) {
++        be = audio_be_by_name(TEST_AUDIODEV_ID, &err);
++    } else {
++        be = audio_get_default_audio_be(&err);
 +    }
- };
++
++    if (err) {
++        g_error("%s", error_get_pretty(err));
++        error_free(err);
++        exit(1);
++    }
++    g_assert_nonnull(be);
++    return be;
++}
++
++/*
++ * Helper functions for opening test voices with default settings.
++ * These reduce boilerplate in test functions.
++ */
++static SWVoiceOut *open_test_voice_out(AudioBackend *be, const char *name,
++                                       void *opaque, audio_callback_fn cb)
++{
++    struct audsettings as = default_test_settings;
++    SWVoiceOut *voice;
++
++    voice = AUD_open_out(be, NULL, name, opaque, cb, &as);
++    g_assert_nonnull(voice);
++    return voice;
++}
++
++static SWVoiceIn *open_test_voice_in(AudioBackend *be, const char *name,
++                                     void *opaque, audio_callback_fn cb)
++{
++    struct audsettings as = default_test_settings;
++
++    return AUD_open_in(be, NULL, name, opaque, cb, &as);
++}
++
++/*
++ * Generate 440Hz sine wave samples into buffer.
++ */
++static void generate_sine_samples(int16_t *buffer, int frames,
++                                  int64_t start_frame)
++{
++    for (int i = 0; i < frames; i++) {
++        double t = (double)(start_frame + i) / SAMPLE_RATE;
++        double sample = sin(2.0 * M_PI * FREQUENCY * t);
++        int16_t s = (int16_t)(sample * 32767.0);
++
++        buffer[i * 2] = s;       /* left channel */
++        buffer[i * 2 + 1] = s;   /* right channel */
++    }
++}
++
++static void test_sine_callback(void *opaque, int avail)
++{
++    TestSineState *s = opaque;
++    int16_t buffer[BUFFER_FRAMES * CHANNELS];
++    int frames_remaining;
++    int frames_to_write;
++    size_t bytes_written;
++
++    frames_remaining = s->total_frames - s->frames_written;
++    if (frames_remaining <= 0) {
++        return;
++    }
++
++    frames_to_write = avail / (sizeof(int16_t) * CHANNELS);
++    frames_to_write = MIN(frames_to_write, BUFFER_FRAMES);
++    frames_to_write = MIN(frames_to_write, frames_remaining);
++
++    generate_sine_samples(buffer, frames_to_write, s->frames_written);
++
++    bytes_written = AUD_write(s->voice, buffer,
++                              frames_to_write * sizeof(int16_t) * CHANNELS);
++    s->frames_written += bytes_written / (sizeof(int16_t) * CHANNELS);
++}
++
++
++static void test_audio_out_sine_wave(void)
++{
++    TestSineState state = {0};
++    int64_t start_time;
++    int64_t elapsed_ms;
++
++    state.be = get_test_audio_backend();
++    state.total_frames = SAMPLE_RATE * DURATION_SECS;
++    state.frames_written = 0;
++
++    g_test_message("Opening audio output...");
++    state.voice = open_test_voice_out(state.be, "test-sine",
++                                      &state, test_sine_callback);
++
++    g_test_message("Playing 440Hz sine wave for %d seconds...", DURATION_SECS);
++    AUD_set_active_out(state.voice, true);
++
++    /*
++     * Run the audio subsystem until all frames are written or timeout.
++     */
++    start_time = g_get_monotonic_time();
++    while (state.frames_written < state.total_frames) {
++        audio_run(state.be, "test");
++        main_loop_wait(true);
++
++        elapsed_ms = (g_get_monotonic_time() - start_time) / 1000;
++        if (elapsed_ms > TIMEOUT_SECS * 1000) {
++            g_test_message("Timeout waiting for audio to complete");
++            break;
++        }
++
++        g_usleep(G_USEC_PER_SEC / 100);  /* 10ms */
++    }
++
++    g_test_message("Wrote %" PRId64 " frames (%.2f seconds)",
++                   state.frames_written,
++                   (double)state.frames_written / SAMPLE_RATE);
++
++    g_assert_cmpint(state.frames_written, ==, state.total_frames);
++
++    AUD_set_active_out(state.voice, false);
++    AUD_close_out(state.be, state.voice);
++}
++
++static void test_audio_prio_list(void)
++{
++    g_autofree gchar *backends = NULL;
++    GString *str = g_string_new(NULL);
++    bool has_none = false;
++
++    for (int i = 0; audio_prio_list[i]; i++) {
++        if (i > 0) {
++            g_string_append_c(str, ' ');
++        }
++        g_string_append(str, audio_prio_list[i]);
++
++        if (g_strcmp0(audio_prio_list[i], "none") == 0) {
++            has_none = true;
++        }
++    }
++
++    backends = g_string_free(str, FALSE);
++    g_test_message("Available backends: %s", backends);
++
++    /* The 'none' backend should always be available */
++    g_assert_true(has_none);
++}
++
++static void test_audio_out_active_state(void)
++{
++    AudioBackend *be;
++    SWVoiceOut *voice;
++
++    be = get_test_audio_backend();
++    voice = open_test_voice_out(be, "test-active", NULL, dummy_audio_callback);
++
++    g_assert_false(AUD_is_active_out(voice));
++
++    AUD_set_active_out(voice, true);
++    g_assert_true(AUD_is_active_out(voice));
++
++    AUD_set_active_out(voice, false);
++    g_assert_false(AUD_is_active_out(voice));
++
++    AUD_close_out(be, voice);
++}
++
++static void test_audio_out_buffer_size(void)
++{
++    AudioBackend *be;
++    SWVoiceOut *voice;
++    int buffer_size;
++
++    be = get_test_audio_backend();
++    voice = open_test_voice_out(be, "test-buffer", NULL, dummy_audio_callback);
++
++    buffer_size = AUD_get_buffer_size_out(voice);
++    g_test_message("Buffer size: %d bytes", buffer_size);
++    g_assert_cmpint(buffer_size, >, 0);
++
++    AUD_close_out(be, voice);
++
++    g_assert_cmpint(AUD_get_buffer_size_out(NULL), ==, 0);
++}
++
++static void test_audio_out_volume(void)
++{
++    AudioBackend *be;
++    SWVoiceOut *voice;
++    Volume vol;
++
++    be = get_test_audio_backend();
++    voice = open_test_voice_out(be, "test-volume", NULL, dummy_audio_callback);
++
++    vol = (Volume){ .mute = false, .channels = 2, .vol = {255, 255} };
++    AUD_set_volume_out(voice, &vol);
++
++    vol = (Volume){ .mute = true, .channels = 2, .vol = {255, 255} };
++    AUD_set_volume_out(voice, &vol);
++
++    vol = (Volume){ .mute = false, .channels = 2, .vol = {128, 128} };
++    AUD_set_volume_out(voice, &vol);
++
++    AUD_close_out(be, voice);
++}
++
++static void test_audio_in_active_state(void)
++{
++    AudioBackend *be;
++    SWVoiceIn *voice;
++
++    be = get_test_audio_backend();
++    voice = open_test_voice_in(be, "test-in-active", NULL, dummy_audio_callback);
++    if (!voice) {
++        g_test_skip("The backend may not support input");
++        return;
++    }
++
++    g_assert_false(AUD_is_active_in(voice));
++
++    AUD_set_active_in(voice, true);
++    g_assert_true(AUD_is_active_in(voice));
++
++    AUD_set_active_in(voice, false);
++    g_assert_false(AUD_is_active_in(voice));
++
++    AUD_close_in(be, voice);
++}
++
++static void test_audio_in_volume(void)
++{
++    AudioBackend *be;
++    SWVoiceIn *voice;
++    Volume vol;
++
++    be = get_test_audio_backend();
++    voice = open_test_voice_in(be, "test-in-volume", NULL, dummy_audio_callback);
++    if (!voice) {
++        g_test_skip("The backend may not support input");
++        return;
++    }
++
++    vol = (Volume){ .mute = false, .channels = 2, .vol = {255, 255} };
++    AUD_set_volume_in(voice, &vol);
++
++    vol = (Volume){ .mute = true, .channels = 2, .vol = {255, 255} };
++    AUD_set_volume_in(voice, &vol);
++
++    AUD_close_in(be, voice);
++}
++
++
++/* Capture test state */
++#define CAPTURE_BUFFER_FRAMES (SAMPLE_RATE / 10)  /* 100ms of audio */
++#define CAPTURE_BUFFER_SIZE   (CAPTURE_BUFFER_FRAMES * CHANNELS * sizeof(int16_t))
++
++typedef struct TestCaptureState {
++    bool notify_called;
++    bool capture_called;
++    bool destroy_called;
++    audcnotification_e last_notify;
++    int16_t *captured_samples;
++    size_t captured_bytes;
++    size_t capture_buffer_size;
++} TestCaptureState;
++
++static void test_capture_notify(void *opaque, audcnotification_e cmd)
++{
++    TestCaptureState *s = opaque;
++    s->notify_called = true;
++    s->last_notify = cmd;
++}
++
++static void test_capture_capture(void *opaque, const void *buf, int size)
++{
++    TestCaptureState *s = opaque;
++    size_t bytes_to_copy;
++
++    s->capture_called = true;
++
++    if (!s->captured_samples || s->captured_bytes >= s->capture_buffer_size) {
++        return;
++    }
++
++    bytes_to_copy = MIN(size, s->capture_buffer_size - s->captured_bytes);
++    memcpy((uint8_t *)s->captured_samples + s->captured_bytes, buf, bytes_to_copy);
++    s->captured_bytes += bytes_to_copy;
++}
++
++static void test_capture_destroy(void *opaque)
++{
++    TestCaptureState *s = opaque;
++    s->destroy_called = true;
++}
++
++/*
++ * Compare captured audio with expected sine wave.
++ * Returns the number of matching samples (within tolerance).
++ */
++static int compare_sine_samples(const int16_t *captured, int frames,
++                                int64_t start_frame, int tolerance)
++{
++    int matching = 0;
++
++    for (int i = 0; i < frames; i++) {
++        double t = (double)(start_frame + i) / SAMPLE_RATE;
++        double sample = sin(2.0 * M_PI * FREQUENCY * t);
++        int16_t expected = (int16_t)(sample * 32767.0);
++
++        /* Check left channel */
++        if (abs(captured[i * 2] - expected) <= tolerance) {
++            matching++;
++        }
++        /* Check right channel */
++        if (abs(captured[i * 2 + 1] - expected) <= tolerance) {
++            matching++;
++        }
++    }
++
++    return matching;
++}
++
++static void test_audio_capture(void)
++{
++    AudioBackend *be;
++    CaptureVoiceOut *cap;
++    SWVoiceOut *voice;
++    TestCaptureState state = {0};
++    TestSineState sine_state = {0};
++    struct audsettings as = default_test_settings;
++    struct audio_capture_ops ops = {
++        .notify = test_capture_notify,
++        .capture = test_capture_capture,
++        .destroy = test_capture_destroy,
++    };
++    int64_t start_time;
++    int64_t elapsed_ms;
++    int captured_frames;
++    int matching_samples;
++    int total_samples;
++    double match_ratio;
++
++    be = get_test_audio_backend();
++
++    state.captured_samples = g_malloc0(CAPTURE_BUFFER_SIZE);
++    state.captured_bytes = 0;
++    state.capture_buffer_size = CAPTURE_BUFFER_SIZE;
++
++    cap = AUD_add_capture(be, &as, &ops, &state);
++    g_assert_nonnull(cap);
++
++    sine_state.be = be;
++    sine_state.total_frames = CAPTURE_BUFFER_FRAMES;
++    sine_state.frames_written = 0;
++
++    voice = open_test_voice_out(be, "test-capture-sine",
++                                &sine_state, test_sine_callback);
++    sine_state.voice = voice;
++
++    AUD_set_active_out(voice, true);
++
++    start_time = g_get_monotonic_time();
++    while (sine_state.frames_written < sine_state.total_frames ||
++           state.captured_bytes < CAPTURE_BUFFER_SIZE) {
++        audio_run(be, "test-capture");
++        main_loop_wait(true);
++
++        elapsed_ms = (g_get_monotonic_time() - start_time) / 1000;
++        if (elapsed_ms > 1000) {  /* 1 second timeout */
++            break;
++        }
++
++        g_usleep(G_USEC_PER_SEC / 1000);  /* 1ms */
++    }
++
++    g_test_message("Wrote %" PRId64 " frames, captured %zu bytes",
++                   sine_state.frames_written, state.captured_bytes);
++
++    g_assert_true(state.capture_called);
++    g_assert_cmpuint(state.captured_bytes, >, 0);
++
++    /* Compare captured data with expected sine wave */
++    captured_frames = state.captured_bytes / (CHANNELS * sizeof(int16_t));
++    if (captured_frames > 0) {
++        /*
++         * Allow some tolerance due to mixing/conversion.
++         * The tolerance accounts for potential rounding differences.
++         */
++        matching_samples = compare_sine_samples(state.captured_samples,
++                                                captured_frames, 0, 100);
++        total_samples = captured_frames * CHANNELS;
++        match_ratio = (double)matching_samples / total_samples;
++
++        g_test_message("Captured %d frames, %d/%d samples match (%.1f%%)",
++                       captured_frames, matching_samples, total_samples,
++                       match_ratio * 100.0);
++
++        /*
++         * Expect at least 90% of samples to match within tolerance.
++         * Some variation is expected due to mixing engine processing.
++         */
++        g_assert_cmpfloat(match_ratio, >=, 0.9);
++    }
++
++    AUD_set_active_out(voice, false);
++    AUD_close_out(be, voice);
++
++    AUD_del_capture(cap, &state);
++    g_assert_true(state.destroy_called);
++
++    g_free(state.captured_samples);
++}
++
++static void test_audio_null_handling(void)
++{
++    uint8_t buffer[64];
++
++    /* AUD_is_active_out/in(NULL) should return false */
++    g_assert_false(AUD_is_active_out(NULL));
++    g_assert_false(AUD_is_active_in(NULL));
++
++    /* AUD_get_buffer_size_out(NULL) should return 0 */
++    g_assert_cmpint(AUD_get_buffer_size_out(NULL), ==, 0);
++
++    /* AUD_write/read(NULL, ...) should return size (no-op) */
++    g_assert_cmpuint(AUD_write(NULL, buffer, sizeof(buffer)), ==,
++                     sizeof(buffer));
++    g_assert_cmpuint(AUD_read(NULL, buffer, sizeof(buffer)), ==,
++                     sizeof(buffer));
++
++    /* These should not crash */
++    AUD_set_active_out(NULL, true);
++    AUD_set_active_out(NULL, false);
++    AUD_set_active_in(NULL, true);
++    AUD_set_active_in(NULL, false);
++}
++
++static void test_audio_multiple_voices(void)
++{
++    AudioBackend *be;
++    SWVoiceOut *out1, *out2;
++    SWVoiceIn *in1;
++
++    be = get_test_audio_backend();
++    out1 = open_test_voice_out(be, "test-multi-out1", NULL, dummy_audio_callback);
++    out2 = open_test_voice_out(be, "test-multi-out2", NULL, dummy_audio_callback);
++    in1 = open_test_voice_in(be, "test-multi-in1", NULL, dummy_audio_callback);
++
++    AUD_set_active_out(out1, true);
++    AUD_set_active_out(out2, true);
++    AUD_set_active_in(in1, true);
++
++    g_assert_true(AUD_is_active_out(out1));
++    g_assert_true(AUD_is_active_out(out2));
++    if (in1) {
++        g_assert_true(AUD_is_active_in(in1));
++    }
++
++    AUD_set_active_out(out1, false);
++    AUD_set_active_out(out2, false);
++    AUD_set_active_in(in1, false);
++
++    AUD_close_in(be, in1);
++    AUD_close_out(be, out2);
++    AUD_close_out(be, out1);
++}
++
++int main(int argc, char **argv)
++{
++    GOptionContext *context;
++    g_autoptr(GError) error = NULL;
++    g_autofree gchar *dir = NULL;
++    int ret;
++
++    context = g_option_context_new("- QEMU audio test");
++    g_option_context_add_main_entries(context, test_options, NULL);
++
++    if (!g_option_context_parse(context, &argc, &argv, &error)) {
++        g_printerr("Option parsing failed: %s\n", error->message);
++        return 1;
++    }
++    g_option_context_free(context);
++
++    g_test_init(&argc, &argv, NULL);
++
++    module_call_init(MODULE_INIT_TRACE);
++    qemu_add_opts(&qemu_trace_opts);
++    if (opt_trace) {
++        trace_opt_parse(opt_trace);
++        qemu_set_log(LOG_TRACE, &error_fatal);
++    }
++    trace_init_backends();
++    trace_init_file();
++
++    dir = g_test_build_filename(G_TEST_BUILT, "..", "..", NULL);
++    g_setenv("QEMU_MODULE_DIR", dir, true);
++    qemu_init_exec_dir(argv[0]);
++    module_call_init(MODULE_INIT_QOM);
++    module_init_info(qemu_modinfo);
++
++    qemu_init_main_loop(&error_abort);
++    if (opt_audiodev) {
++        g_autofree gchar *spec = is_help_option(opt_audiodev) ?
++            opt_audiodev : g_strdup_printf("%s,id=%s", opt_audiodev, TEST_AUDIODEV_ID);
++        audio_parse_option(spec);
++    }
++    audio_create_default_audiodevs();
++    audio_init_audiodevs();
++
++    g_test_add_func("/audio/prio-list", test_audio_prio_list);
++
++    g_test_add_func("/audio/out/active-state", test_audio_out_active_state);
++    g_test_add_func("/audio/out/sine-wave", test_audio_out_sine_wave);
++    g_test_add_func("/audio/out/buffer-size", test_audio_out_buffer_size);
++    g_test_add_func("/audio/out/volume", test_audio_out_volume);
++    g_test_add_func("/audio/out/capture", test_audio_capture);
++
++    g_test_add_func("/audio/in/active-state", test_audio_in_active_state);
++    g_test_add_func("/audio/in/volume", test_audio_in_volume);
++
++    g_test_add_func("/audio/null-handling", test_audio_null_handling);
++    g_test_add_func("/audio/multiple-voices", test_audio_multiple_voices);
++
++    ret = g_test_run();
++
++    audio_cleanup();
++
++    return ret;
++}
+diff --git a/audio/meson.build b/audio/meson.build
+index a5fec14fb3a..55ee0bfc865 100644
+--- a/audio/meson.build
++++ b/audio/meson.build
+@@ -32,7 +32,7 @@ endforeach
+ if dbus_display
+     module_ss = ss.source_set()
+     module_ss.add(when: [gio, pixman],
+-                  if_true: [dbus_display1, files('dbusaudio.c')])
++                  if_true: [dbus_display1_h, files('dbusaudio.c')])
+     audio_modules += {'dbus': module_ss}
+ endif
  
--static void register_audio_wav(void)
--{
--    type_register_static(&audio_wav_info);
--}
--type_init(register_audio_wav);
-+DEFINE_TYPES(audio_types)
- module_obj(TYPE_AUDIO_WAV);
-diff --git a/audio/coreaudio.m b/audio/coreaudio.m
-index 5efd16df7c4..862cb9dd9b0 100644
---- a/audio/coreaudio.m
-+++ b/audio/coreaudio.m
-@@ -690,16 +690,14 @@ static void coreaudio_audio_fini (void *opaque)
-     .voice_size_in  = 0
- };
+diff --git a/tests/audio/meson.build b/tests/audio/meson.build
+new file mode 100644
+index 00000000000..84754bde221
+--- /dev/null
++++ b/tests/audio/meson.build
+@@ -0,0 +1,23 @@
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++if not have_system
++  subdir_done()
++endif
++
++modinfo_dep = not_found
++if enable_modules
++    modinfo_src = custom_target('modinfo.c',
++                                output: 'modinfo.c',
++                                input: audio_modinfo_files,
++                                command: [modinfo_generate, '--skip-missing-deps', '@INPUT@'],
++                                capture: true)
++
++    modinfo_lib = static_library('modinfo.c', modinfo_src)
++    modinfo_dep = declare_dependency(link_with: modinfo_lib)
++endif
++
++# manual audio test - not part of automated test suite
++# as it relies on audio system
++executable('test-audio',
++    sources: [files('test-audio.c', 'audio-stubs.c'), dbus_display1],
++    dependencies: [audio, qemuutil, modinfo_dep, gio, spice, sdl])
+diff --git a/tests/meson.build b/tests/meson.build
+index cbe79162411..cb766e49ca4 100644
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -83,6 +83,7 @@ if 'CONFIG_TCG' in config_all_accel
+   subdir('tcg/plugins')
+ endif
  
--static const TypeInfo audio_coreaudio_info = {
--    .name = TYPE_AUDIO_COREAUDIO,
--    .parent = TYPE_AUDIO_MIXENG_BACKEND,
--    .instance_size = sizeof(AudioCoreaudio),
--    .class_init = audio_coreaudio_class_init,
-+static const TypeInfo audio_types[] = {
-+    {
-+        .name = TYPE_AUDIO_COREAUDIO,
-+        .parent = TYPE_AUDIO_MIXENG_BACKEND,
-+        .instance_size = sizeof(AudioCoreaudio),
-+        .class_init = audio_coreaudio_class_init,
-+    },
- };
++subdir('audio')
+ subdir('unit')
+ subdir('qapi-schema')
+ subdir('qtest')
+diff --git a/ui/meson.build b/ui/meson.build
+index 6371422c460..69404bca71a 100644
+--- a/ui/meson.build
++++ b/ui/meson.build
+@@ -70,6 +70,7 @@ if opengl.found()
+   ui_modules += {'egl-headless' : egl_headless_ss}
+ endif
  
--static void register_audio_coreaudio(void)
--{
--    type_register_static(&audio_coreaudio_info);
--}
--type_init(register_audio_coreaudio);
-+DEFINE_TYPES(audio_types)
- module_obj(TYPE_AUDIO_COREAUDIO);
++dbus_display1 = files()
+ if dbus_display
+   dbus_ss = ss.source_set()
+   env = environment()
+@@ -88,6 +89,8 @@ if dbus_display
+                                           '--interface-prefix', 'org.qemu.',
+                                           '--c-namespace', 'QemuDBus',
+                                           '--generate-c-code', '@BASENAME@'])
++  dbus_display1_h = declare_dependency(dependencies: [gio],
++                                       sources: dbus_display1[0])
+   dbus_ss.add(when: gio,
+               if_true: [files(
+                 'dbus-chardev.c',
 
 -- 
 2.53.0

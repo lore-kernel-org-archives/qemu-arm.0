@@ -4,125 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71C9EE83848
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Feb 2026 02:46:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A482E68143
+	for <qemu-arm@archiver.kernel.org>; Tue, 17 Feb 2026 08:35:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vsB68-0007lP-1J; Mon, 16 Feb 2026 21:46:00 -0500
+	id 1vsGYf-0001RJ-ON; Tue, 17 Feb 2026 03:35:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vsB65-0007kZ-Kj
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 21:45:57 -0500
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vsB63-0004rm-VV
- for qemu-arm@nongnu.org; Mon, 16 Feb 2026 21:45:57 -0500
-Received: by mail-pj1-x102e.google.com with SMTP id
- 98e67ed59e1d1-354b79a9ad5so1458618a91.1
- for <qemu-arm@nongnu.org>; Mon, 16 Feb 2026 18:45:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771296354; x=1771901154; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=EqLUB8cOMzih/3XqWDNORqwTLvCyMLzydKDopUwUmiI=;
- b=Ovp4gzWQ+ITLDqiws/riIlvk1BAMhLQ6WhCNMJu28yGvt7mKAyQrps6ZAB8ZfwVuyq
- AoH3M3YtdLVL2Eo1QmbtiHDv3dsKJT+JMTTIBg/HyW/uemGu8rIWa8uDLVcqDiT4gzJB
- 1qD4SZxNcd11mNgOo62/jub81o1zLza1vHHbpo6z87PBhKJhY6RpmJ0y5Yg/oUFTMs4S
- 8duyrFmaRoG71p3XRLCSr6XVt6so4wp5dpE9bCNNbB02lfKFuRXlvams2md+POa3hxfm
- Jy/wXBZAhIMV2txFr7QLUD2bXxIhVxTSC/7xXTGq6OU3EMVl9YQbUBljTVCQZb5iMlZW
- b6mQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771296354; x=1771901154;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=EqLUB8cOMzih/3XqWDNORqwTLvCyMLzydKDopUwUmiI=;
- b=nLbbuQTyYPzofmpp0HVEkaj+p25ebJafaVYGm356xjK0ZIerXGVbxzuw+R4mV3uD3i
- yrA1+Y3qTGTyO1PIV9B9nIjAF0O4HL9GfBY7W9Xra15wUNDq1jkH4VqZ2luXRtlhzllE
- MzbZCKXGfaj768/4R76xoQAn1ZaxjDaX6eYf9UKBc6cBaL30wrI2Z9QrrQnMtEb/KLG+
- oRJn4oGCTxl3F0pjixLyrtzmAIdJbpXvlf9tZmkLAwIDwlxKdDateTLU+yPtduvbdcIE
- WFzS/pE34DQ1EiSPphNjg+Bx2eQDeGx30cXDYdql21dnqF6MXTBbADCFw6Cs5ppMn7V8
- 9Vng==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWVXq/mHRpC2NDnON36CI65JOBmVsdMCoWiHD39w5yFJEAkkvCEP8jClRl8hb+GCbkzfPJs9q4WWg==@nongnu.org
-X-Gm-Message-State: AOJu0Yz82bbSeJ7OBnBg6MkuebE+vjJQq/kd/dqKgxgGkCeoqJT6v75j
- Ny4le/HPSbFUjsy77NyDexbklKbsOd5iTEc+yAIUcWDkoWcis1eXhAqyUBSdoW12OXk=
-X-Gm-Gg: AZuq6aIEF7/ocprf5MUqLtUgvvhWfJeqyUhyoEIuhu7ZL28yIqlLZaSpPwHt0KdvkZH
- 5Vc4Y0/uXAmaaaRePf8aXrmQOTaDddY9CRPrDAeL4nqCP4pCHtv39DPpZogdiSdj/xk4+LpLsMP
- 3W7M3UzShrSu/P7pUEtci62AH8yZ8Mad/WFgAU/D0z+8jyaZaw425RzXzRT97Asvvq/U8dART9o
- eotRhQYECzUJtbo6VqQWkTn6Eg2HXSu1Yt3SQkydrfYHSdA3sxVfZSnU09mNiCNTb6UGX3iZmC9
- DcamqYYmV5mMWXzM4hot/DwTDHGF1/t2a+rtkTxcnJ3kl3xSpgto86JwHSpZARTdxBWrwgxtFcF
- se3jkAgv98w1MXZHmENWBCww7A1wWr16bmUsXRFr0MHr4YZmRoQoBp5upm3Lzj+s3G8/jhsgDbW
- j+oHtieto6an/EpykX4+8V8Kn8w6Qxddxcx9PbwyasatWrX3KP+/bu5B72OHMP141vLOI1
-X-Received: by 2002:a17:90b:288a:b0:34a:8c77:d37b with SMTP id
- 98e67ed59e1d1-35844a4ec0cmr10479338a91.16.1771296354058; 
- Mon, 16 Feb 2026 18:45:54 -0800 (PST)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-356a6ac65bfsm8785433a91.1.2026.02.16.18.45.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Feb 2026 18:45:53 -0800 (PST)
-Message-ID: <87d4ef3a-5648-494f-88a1-c8e63e54b5b5@linaro.org>
-Date: Mon, 16 Feb 2026 18:45:54 -0800
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1vsGYe-0001R6-Oy; Tue, 17 Feb 2026 03:35:48 -0500
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1vsGYb-0004ui-Eq; Tue, 17 Feb 2026 03:35:48 -0500
+Received: from [133.11.54.205] (h205.csg.ci.i.u-tokyo.ac.jp [133.11.54.205])
+ (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 61H8Y4o7076243
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Tue, 17 Feb 2026 17:35:08 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=k7zcUx7sKDLi9MNCL8sm6RJcYYsjyZ52XaZwaD6GT78=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=Message-ID:Date:Subject:To:From;
+ s=rs20250326; t=1771317309; v=1;
+ b=JmpZC2EdeB/w3myaErCgVsbS9iYpTcChJKKypP9B19ADy8oVf0EZNIFGw0NOZ257
+ H5G/NmE1HpbSgBhdjYJBaIqTRmlBNZzRCZslW7Pwfzj3M3bT3z/0Io3RtOSvQs9e
+ MurB+NTEFDcyjF8fKHbneGzGFMDirBMmWhkZuH0gqhu77avNZRX+Xiim0qqbcxV1
+ GiGgu8amuUYuSVnsPNBjOIRXH8Q2zY13KQkWDkq/+2BcLJKcTVVPks3rlOmOFav+
+ Wo96yyM8Y0tQ5f5bGndyDKMvAeULSL/9BfySyaJbw6xIwch1z+GdCLrAv8fQCcCA
+ 2h+Sf+RBcS1qQk/DiTrR6A==
+Message-ID: <1b4d7273-b4ca-4f39-b295-706cbf36b565@rsg.ci.i.u-tokyo.ac.jp>
+Date: Tue, 17 Feb 2026 17:34:04 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] target/arm: Don't use HELPER_H in non-tcg files
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+Subject: Re: [PATCH 00/85] audio: cleanups & add a manual test
+To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  qemu-devel@nongnu.org
-References: <20260216160349.3079657-1-peter.maydell@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
- 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
- ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260216160349.3079657-1-peter.maydell@linaro.org>
+Cc: Gerd Hoffmann <kraxel@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, 
+ Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+ John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>,
+ Thomas Huth <huth@tuxfamily.org>, Alexandre Ratchov <alex@caoua.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ Yodel Eldar <yodel.eldar@yodel.dev>, Thomas Huth <thuth@redhat.com>
+References: <20260216-audio-v1-0-e676662e4514@redhat.com>
+Content-Language: en-US
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <20260216-audio-v1-0-e676662e4514@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pj1-x102e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,53 +86,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/16/26 8:03 AM, Peter Maydell wrote:
-> This patchset gets rid of a couple of uses of HELPER_H to pull in the
-> TCG helper function prototypes in files that aren't in
-> target/arm/tcg:
+On 2026/02/16 20:14, Marc-André Lureau wrote:
+> Hi
 > 
->   - debug_helper.c has a lot of TCG only code that can
->     happily live in a new tcg/debug.c file instead, and only
->     the CONFIG_TCG code was using the helper prototypes
->   - helper.c was calling exactly one TCG helper function
->     directly, and can be made to call a different function
->     instead for the same effect
+> This is the combination of the two earlier series:
+> [PATCH 00/37] audio: cleanups & add a manual test
+> [PATCH 00/43] audio: more cleanups (2/2 for 11.0)
 > 
-> Pierrick: these might be helpful for you with getting the target/arm
-> single-binary series to compile when TCG is disabled.  I think it
-> might be best to avoid having a single helper.h that gives both the
-> helper_foo and the gen_helper_foo prototypes, though: even if it
-> doesn't cause compilation failures, only translate*.c need all the
-> inline definitions of gen_helper_foo. If you take that approach
-> then it would fix the compile errors without needing these patches.
->
+> Patches missing r-b trailers:
+> - scripts/modinfo: use argparse
+> - scripts/modinfo: make --devices optional
+> - scripts/modinfo: add --skip-missing-deps
+> - util: add some extra stubs for qemu modules initialization
+> - tests: start manual audio backend test
+> - audio: use DEFINE_TYPES
+> - audio: replace type_init() with DEFINE_TYPES
+> - audio: keep a strong reference on the backend
+> - replay: remove dependency on audio/
+> - audio: fix leak of audio capture name
+> 
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-As mentioned in original commit, having helper_foo and gen_helper_foo 
-was done for convenience. If we want to duplicate that in two different 
-sets of headers, feel free to add a comment on concerned thread, I'll be 
-happy to do it.
+This is a huge but nice cleanup:
 
-It's just include machinery, so it's not really important to be honest, 
-as long as everything compiles fine.
-
-> (I did wonder if we could move target/arm/helper.h into the
-> tcg/ subdirectory, since it really is TCG-specific, but it looks
-> like the machinery in include/exec/helper* assumes that the target
-> has a helper.h in its top level directory.)
-> 
-> thanks
-> -- PMM
-> 
-> Peter Maydell (2):
->    target/arm: Move TCG-specific code out of debug_helper.c
->    target/arm: Don't require helper prototypes in helper.c
-> 
->   target/arm/debug_helper.c                  | 769 ---------------------
->   target/arm/helper.c                        |   5 +-
->   target/arm/{debug_helper.c => tcg/debug.c} | 542 +--------------
->   target/arm/tcg/meson.build                 |   2 +
->   4 files changed, 4 insertions(+), 1314 deletions(-)
->   copy target/arm/{debug_helper.c => tcg/debug.c} (53%)
-> 
-
+Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
 

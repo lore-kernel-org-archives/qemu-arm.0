@@ -4,92 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4BC7E9A03B
-	for <qemu-arm@archiver.kernel.org>; Tue, 17 Feb 2026 21:44:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60861E9A03B
+	for <qemu-arm@archiver.kernel.org>; Wed, 18 Feb 2026 01:52:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vsSrW-0003pq-2t; Tue, 17 Feb 2026 16:44:06 -0500
+	id 1vsWjY-00077S-6O; Tue, 17 Feb 2026 20:52:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vsSrU-0003pM-MC
- for qemu-arm@nongnu.org; Tue, 17 Feb 2026 16:44:04 -0500
-Received: from mail-qt1-x834.google.com ([2607:f8b0:4864:20::834])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vsSrT-0007JW-Ak
- for qemu-arm@nongnu.org; Tue, 17 Feb 2026 16:44:04 -0500
-Received: by mail-qt1-x834.google.com with SMTP id
- d75a77b69052e-506984b6d83so42182651cf.3
- for <qemu-arm@nongnu.org>; Tue, 17 Feb 2026 13:44:02 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <prvs=502105d20=graf@amazon.de>)
+ id 1vsWjV-00076S-Vu; Tue, 17 Feb 2026 20:52:06 -0500
+Received: from pdx-out-015.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([50.112.246.219])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <prvs=502105d20=graf@amazon.de>)
+ id 1vsWjT-0004Oh-9P; Tue, 17 Feb 2026 20:52:05 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771364642; x=1771969442; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=wzu3ZL/yxVOmSBM8y0Saj5jVUPbZbGWfiz4ukvmT6wQ=;
- b=bGp/Q6Um0AzIWtjfnBUygXiJ3PzdXwo9bNy2IilVO4Y0XzL24vwm2W0KDgh7UTifoD
- 6TmmQdPwv7loR2zRY/0Av48DxEnHS5/M6JId+lX2HahP/WgWeu8skDkThQ9aZw4NlAtf
- xDQlXi5vVqeDsibqOpDVe9CPZfy+DF+1WjYqCcbHHnsDeY/tJ/yUr0qpfry5Eiu0oiA8
- GkUFCQwxG91/tEWc1fcMU/GIRr5YtVF+9q7aKvdY7GhqgS+Ju171wC5U+bFM7nRbUw9E
- ToKNUwn48mxAxF+DaQ2OytixmFbUH4Gm7gcr1MF4JosKr4xvyCpSoM95iwn4nL58FoXm
- AWaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771364642; x=1771969442;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=wzu3ZL/yxVOmSBM8y0Saj5jVUPbZbGWfiz4ukvmT6wQ=;
- b=TXE+n6w20xUR/LqziZvLZqzQXO9nKnMlhp06wEH0foITLZnO6A+K7mgHuA/e6oMHEq
- w6qjIwYVOxsko0agSJxbzwEc0jPddd5R+VcMLCPfdFFazDnjk8R5V4n6g3MNZpJt/6Y8
- ZYyTLimoaupORETsJOhQwkgF24qnPIdiQM8ItoXJYwvHUVHTC3bND6MFEUWI50BtgYJ1
- 34JO5wZmUM0RSolxwwfq/74lac4hPjWtMsTMOCLey+8CbHQMO/E1V3Ea1eWYEkp22wMQ
- It46X0GhcjU9FE0Co1lijEbGbf1lchpdN4ITxxR72JNb5vf31Q03Vu3U6nFXLEAjFeZ4
- /L7g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVJr7Tioi2Ek1bdfhVQSrSwZUo4eEP4TsuG4lsoHD/7UOBTtsCG+6cns5yQWcJGdz6tr0DsMKWrIA==@nongnu.org
-X-Gm-Message-State: AOJu0YyKIQHOVQIrIMpH/cQN5MC70euIzJCl0BWV525pNNuK0mrn0uSA
- 9C2gvzHPjGeCPS/fh+zqY0iLjSwgRLVe23GOHpsZmiLGagzvAhNOIvuw6hzfxcw3Zts=
-X-Gm-Gg: AZuq6aKc+x8QE+w0LJYsIzJaqiDB+3210ZgaiEeg16s8Fr7AhfFjpOPJ1h+M4UXxuMY
- d5TSU2rMottUsDrvlLLuIF4U2e1OfBQvAAHbACSt+8u0tAmHHOJ6kCUkTm6QFms8vmgTceh517K
- clR0QqENNrJtaNmgymVxu4biEC/dAcDFQaT7ti1Tb73IR+NmpjDHRgBxoibHh594xwFY/3OmsxS
- WlhQqulL190ya3nvIHtFGWgWI0MqIvunZzowTz7W4V8PQl/+B4kbAlNnfn54VqL/KPZPAGnpxb4
- 8qoJarKYWBbnjMCYajIso6QSvM9fcMoTVEODMrEZ/1Kl9eI3USNk3yr4z+GjbWtQXfkHF9gv2Dn
- 4zQ5hMnwLQ3kIRd2i6JK1oMOwvkqGJL8ryixGz+5ONx4WNBehulxmrrGb0PB0AERiAQe54ywtzw
- hRE1kh1quTD4Mvq8vcK0JGfvibHd2cBMcGogdJa2N3/eVYjZhBklzSE3L44ucyKmD1Pw==
-X-Received: by 2002:a05:622a:342:b0:506:9823:a61d with SMTP id
- d75a77b69052e-506a83a6484mr175254281cf.83.1771364641945; 
- Tue, 17 Feb 2026 13:44:01 -0800 (PST)
-Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-50684b94f33sm161790341cf.25.2026.02.17.13.44.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Feb 2026 13:44:01 -0800 (PST)
-Message-ID: <d679d49f-ebd3-42ba-be60-05f4edcda6ac@linaro.org>
-Date: Tue, 17 Feb 2026 22:43:58 +0100
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
+ t=1771379523; x=1802915523;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=Bxk16uEB7hM1KBZH7q7qAvCsv9atjs2SuGxLa0iEh4U=;
+ b=PtQYbxCIQEqcueiTDFbkZNO8A+E4gkLn184giFy11vN2oXKEChX5JGW+
+ cFUZnOOo9ZcxJhOV89iPirpzwFy9W+KKihcfizSH6DIxs1D8YkoSDYt/L
+ mfYybKs1SES59wHdMtfVm53jO0ag1xKSSyJmodbAnjPDXeCsG1rz0XSBc
+ nJgldDS8osy5II8G/SapIgdk8NiiLMrvbK9Lq8+WSO4XWJMJfXLeZ/Ajl
+ VxPuu5zNevYiqPjBjx8wNraba8tdWvINk0M6yNRJv/3QH6wNvWzaaH6A9
+ l4db39EPRoV10HuS77FtUl0g4+YxY+k1iob8nb85SslFj0Wsipw8ZI1cI A==;
+X-CSE-ConnectionGUID: CqneEwfkRZCS8+CEGvd3CQ==
+X-CSE-MsgGUID: xh6P1TAEQx6LqlYzY8ukEA==
+X-IronPort-AV: E=Sophos;i="6.21,297,1763424000"; d="scan'208";a="13085242"
+Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
+ by internal-pdx-out-015.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Feb 2026 01:51:56 +0000
+Received: from EX19MTAUWB001.ant.amazon.com [205.251.233.51:4137]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.27.218:2525]
+ with esmtp (Farcaster)
+ id 7e2b54c3-e305-428d-9986-7ac32ff77d39; Wed, 18 Feb 2026 01:51:55 +0000 (UTC)
+X-Farcaster-Flow-ID: 7e2b54c3-e305-428d-9986-7ac32ff77d39
+Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
+ EX19MTAUWB001.ant.amazon.com (10.250.64.248) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.35;
+ Wed, 18 Feb 2026 01:51:55 +0000
+Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
+ EX19D020UWC004.ant.amazon.com (10.13.138.149) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.35;
+ Wed, 18 Feb 2026 01:51:53 +0000
+From: Alexander Graf <graf@amazon.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Thomas
+ Huth" <thuth@redhat.com>, <alex.bennee@linaro.org>, <philmd@linaro.org>,
+ <berrange@redhat.com>, <marcandre.lureau@redhat.com>, Cornelia Huck
+ <cohuck@redhat.com>, <mst@redhat.com>, Dorjoy Chowdhury
+ <dorjoychy111@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Tyler Fanelli <tfanelli@redhat.com>,
+ <mknaust@amazon.com>, <nh-open-source@amazon.com>
+Subject: [PATCH 00/10] Native Nitro Enclaves support
+Date: Wed, 18 Feb 2026 01:51:40 +0000
+Message-ID: <20260218015151.4052-1-graf@amazon.com>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] whpx: fix FP register loop
-Content-Language: en-US
-To: Osama Abdelkader <osama.abdelkader@gmail.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20260217210805.104427-1-osama.abdelkader@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260217210805.104427-1-osama.abdelkader@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::834;
- envelope-from=philmd@linaro.org; helo=mail-qt1-x834.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Originating-IP: [172.19.99.218]
+X-ClientProxiedBy: EX19D046UWA001.ant.amazon.com (10.13.139.112) To
+ EX19D020UWC004.ant.amazon.com (10.13.138.149)
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=50.112.246.219;
+ envelope-from=prvs=502105d20=graf@amazon.de;
+ helo=pdx-out-015.esa.us-west-2.outbound.mail-perimeter.amazon.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.043,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
+ UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,14 +97,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 17/2/26 22:08, Osama Abdelkader wrote:
-> In whpx_get_registers and whpx_set_registers the loops over FP registers
-> were using whpx_reg_match[i].reg instead of whpx_fpreg_match[i].reg
-> 
-> Signed-off-by: Osama Abdelkader <osama.abdelkader@gmail.com>
-> ---
->   target/arm/whpx/whpx-all.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+We had emulated Nitro Enclaves support in QEMU since 2024, but to launch
+a native Nitro Enclave, you could only use the AWS nitro-cli tooling.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+To simplify tooling and allow users to leverage the most convenient swiss
+army knife of virtualization known to mankind (QEMU!), add native support
+to launch a Nitro Enclave from within QEMU.
+
+A Nitro Enclave is a Confidential Computing Virtual Machine spawned by
+the Nitro Hypervisor which has a very basic machine model, with
+virtio-vsock as the only real I/O between parent and enclave. This means
+the amount of interactions between QEMU and the VM are limited, but for
+debugging, experimentation and non-conventional use cases, it can be handy
+to spawn a Nitro Enclave directly in a more fully featured virtualization
+stack.
+
+Example invocation:
+
+  $ qemu-system-x86_64 -nographic -accel nitro,debug-mode=on -M nitro -kernel test.eif -smp 2
+  QEMU 10.2.50 monitor - type 'help' for more information
+  (qemu) [    0.000000] Linux version 4.14.256-209.484.amzn2.x86_64 (mockbuild@ip-10-0-50-84) (gcc version 7.3.1 20180712 (Red Hat 7.3.1-13) (GCC)) #1 SMP Tue Jan 11 21:47:36 UTC 2022
+  [    0.000000] Command line: reboot=k panic=30 pci=off nomodules console=ttyS0 i8042.noaux i8042.nomux i8042.nopnp i8042.dumbkbd random.trust_cpu=on virtio_mmio.device=4K@0xd0000000:5 virtio_mmio.device=4K@0xd0001000:6
+  [    0.000000] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
+  [    0.000000] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+  [    0.000000] x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'
+
+This patch set supports x86_64 as well as aarch64 Nitro Enclaves.
+Virtio-vsock communication with the Enclave is handled directly through the
+parent's virtio-vsock device.
+
+Alex
+
+Alexander Graf (10):
+  scripts/update-linux-headers: Add Nitro Enclaves header
+  linux-headers: Add nitro_enclaves.h
+  accel: Add Nitro Enclaves accelerator
+  hw/nitro/nitro-serial-vsock: Nitro Enclaves vsock console
+  hw/nitro: Introduce Nitro Enclave Heartbeat device
+  target/arm/cpu64: Allow -host for nitro
+  hw/nitro: Add nitro machine
+  hw/core/eif: Move definitions to header
+  hw/nitro: Enable direct kernel boot
+  docs: Add Nitro Enclaves documentation
+
+ MAINTAINERS                                   |  12 +
+ accel/Kconfig                                 |   3 +
+ accel/meson.build                             |   1 +
+ accel/nitro/meson.build                       |   3 +
+ accel/nitro/nitro-accel.c                     | 334 ++++++++++++++++
+ accel/nitro/trace-events                      |   6 +
+ accel/nitro/trace.h                           |   2 +
+ accel/stubs/meson.build                       |   1 +
+ accel/stubs/nitro-stub.c                      |  11 +
+ docs/system/confidential-guest-support.rst    |   1 +
+ docs/system/index.rst                         |   1 +
+ docs/system/nitro.rst                         | 114 ++++++
+ hw/Kconfig                                    |   1 +
+ hw/core/eif.c                                 |  38 --
+ hw/core/eif.h                                 |  41 ++
+ hw/meson.build                                |   1 +
+ hw/nitro/Kconfig                              |  14 +
+ hw/nitro/heartbeat.c                          | 118 ++++++
+ hw/nitro/machine.c                            | 297 +++++++++++++++
+ hw/nitro/meson.build                          |   3 +
+ hw/nitro/serial-vsock.c                       | 155 ++++++++
+ hw/nitro/trace-events                         |   8 +
+ hw/nitro/trace.h                              |   1 +
+ include/hw/nitro/heartbeat.h                  |  25 ++
+ include/hw/nitro/machine.h                    |  20 +
+ include/hw/nitro/serial-vsock.h               |  26 ++
+ .../standard-headers/linux/nitro_enclaves.h   | 359 ++++++++++++++++++
+ include/system/hw_accel.h                     |   1 +
+ include/system/nitro-accel.h                  |  25 ++
+ meson.build                                   |  12 +
+ meson_options.txt                             |   2 +
+ qemu-options.hx                               |   8 +-
+ scripts/meson-buildoptions.sh                 |   3 +
+ scripts/update-linux-headers.sh               |   1 +
+ target/arm/cpu64.c                            |   8 +
+ 35 files changed, 1614 insertions(+), 42 deletions(-)
+ create mode 100644 accel/nitro/meson.build
+ create mode 100644 accel/nitro/nitro-accel.c
+ create mode 100644 accel/nitro/trace-events
+ create mode 100644 accel/nitro/trace.h
+ create mode 100644 accel/stubs/nitro-stub.c
+ create mode 100644 docs/system/nitro.rst
+ create mode 100644 hw/nitro/Kconfig
+ create mode 100644 hw/nitro/heartbeat.c
+ create mode 100644 hw/nitro/machine.c
+ create mode 100644 hw/nitro/meson.build
+ create mode 100644 hw/nitro/serial-vsock.c
+ create mode 100644 hw/nitro/trace-events
+ create mode 100644 hw/nitro/trace.h
+ create mode 100644 include/hw/nitro/heartbeat.h
+ create mode 100644 include/hw/nitro/machine.h
+ create mode 100644 include/hw/nitro/serial-vsock.h
+ create mode 100644 include/standard-headers/linux/nitro_enclaves.h
+ create mode 100644 include/system/nitro-accel.h
+
+-- 
+2.47.1
+
+
+
+
+Amazon Web Services Development Center Germany GmbH
+Tamara-Danz-Str. 13
+10243 Berlin
+Geschaeftsfuehrung: Christof Hellmis, Andreas Stieger
+Eingetragen am Amtsgericht Charlottenburg unter HRB 257764 B
+Sitz: Berlin
+Ust-ID: DE 365 538 597
+
 

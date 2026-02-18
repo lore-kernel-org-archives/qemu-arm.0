@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A956E9A049
-	for <qemu-arm@archiver.kernel.org>; Wed, 18 Feb 2026 01:53:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CB34E9A049
+	for <qemu-arm@archiver.kernel.org>; Wed, 18 Feb 2026 01:54:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vsWk0-0007DY-2L; Tue, 17 Feb 2026 20:52:36 -0500
+	id 1vsWka-0008Ne-MH; Tue, 17 Feb 2026 20:53:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=502105d20=graf@amazon.de>)
- id 1vsWjy-0007Ch-4M; Tue, 17 Feb 2026 20:52:34 -0500
-Received: from pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.13.214.179])
+ id 1vsWkZ-0008IO-FV; Tue, 17 Feb 2026 20:53:11 -0500
+Received: from pdx-out-002.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([44.246.1.125])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <prvs=502105d20=graf@amazon.de>)
- id 1vsWjw-0005F9-8M; Tue, 17 Feb 2026 20:52:33 -0500
+ id 1vsWkX-0005Np-Mt; Tue, 17 Feb 2026 20:53:11 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1771379552; x=1802915552;
+ t=1771379589; x=1802915589;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=+ywOER5w8TwL0tvTjS30yhRwjSLriESD5O4Ff5/Ir0A=;
- b=KU5FscUrBkvD7G+zwwsWXsnQOQkVN9lcyNnj6O+7T+BGT+d20vwNQrpX
- kMlXHAPiQdyFD0nD20a9iwNyw4YW10K+jv7MykLtPNtD5NUKUpDMHssPO
- oSWxBTNtxdUui/b6TuF2t4dKffrEa/WmJmeHpvS3FLgsJm5YXi8CNJzsZ
- i4rXaaotE+cY5vrAHqsRWgT20SeDobvaIarDuAk8Ji0O3XfovW+svmHfr
- 268yS+8PsDT6CN4Tg6Rd9sG6XJfbf6zkYTH4H3agD6Bijb4niSJ33IIiE
- SLGbz00YS9MKwlw1Z1Xe9EbYFsSjYiBIhaKhoGnqoupyu/hn57jmu5rJt g==;
-X-CSE-ConnectionGUID: YH57NK7PQpGG/VxtznZkfg==
-X-CSE-MsgGUID: s/CFC8JTSqOlx1Id+lLljQ==
-X-IronPort-AV: E=Sophos;i="6.21,297,1763424000"; d="scan'208";a="13261398"
-Received: from ip-10-5-12-219.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.12.219])
- by internal-pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Feb 2026 01:52:30 +0000
-Received: from EX19MTAUWA002.ant.amazon.com [205.251.233.178:6876]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.11.41:2525]
+ bh=txAK976ulrDqiv5ZANEFUx5CISRFuFCg+v/SRZmWc98=;
+ b=UX5cU6Tgc0ErvN/ZR74BqRTw93QESkyTXENKm+ylLUiPRYototq1WGwD
+ 2JkAfua9uvXJzYhgh0s4rbxia8dewepQdrOb9tErpI2FcmS2nnYisuQcT
+ OH1YEMUUrFa9lhyj8iAsMf6kfqaJdvHti7Hfmo1GkHjECwHSKCVkJ7bWD
+ TEBefmc54fgQ4Pj1u746qd4BYn15kDyAiIfHSgiiXzR3hySyx4NkbIBqF
+ kg7zBTC72Is6BrIkZffwZmBloOlgTCGhLTr9zF3opDGXNYWjKyGjfzH7e
+ 6BvED03zFjED5B1DXGXQ0PJYcGsx8ltWm/wlWhk41SyLB1Y9DPYq9vVLo A==;
+X-CSE-ConnectionGUID: iYHG5GhqSDaRhs0neP8KRQ==
+X-CSE-MsgGUID: GZBGa8S1TPOtSK/S1+Rwjg==
+X-IronPort-AV: E=Sophos;i="6.21,297,1763424000"; d="scan'208";a="13259296"
+Received: from ip-10-5-0-115.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.0.115])
+ by internal-pdx-out-002.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Feb 2026 01:53:04 +0000
+Received: from EX19MTAUWA001.ant.amazon.com [205.251.233.182:20099]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.0.130:2525]
  with esmtp (Farcaster)
- id ca057405-e70c-4233-bf8a-611952cc798d; Wed, 18 Feb 2026 01:52:30 +0000 (UTC)
-X-Farcaster-Flow-ID: ca057405-e70c-4233-bf8a-611952cc798d
+ id 478f3760-1228-4186-a2be-98a433dc0f3a; Wed, 18 Feb 2026 01:53:04 +0000 (UTC)
+X-Farcaster-Flow-ID: 478f3760-1228-4186-a2be-98a433dc0f3a
 Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
- EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
+ EX19MTAUWA001.ant.amazon.com (10.250.64.204) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.35;
- Wed, 18 Feb 2026 01:52:30 +0000
+ Wed, 18 Feb 2026 01:52:59 +0000
 Received: from ip-10-253-83-51.amazon.com (172.19.99.218) by
  EX19D020UWC004.ant.amazon.com (10.13.138.149) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.35;
- Wed, 18 Feb 2026 01:52:27 +0000
+ Wed, 18 Feb 2026 01:52:56 +0000
 From: Alexander Graf <graf@amazon.com>
 To: <qemu-devel@nongnu.org>
 CC: <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Thomas
@@ -60,21 +60,21 @@ CC: <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Thomas
  <dorjoychy111@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Tyler Fanelli <tfanelli@redhat.com>,
  <mknaust@amazon.com>, <nh-open-source@amazon.com>
-Subject: [PATCH 05/10] hw/nitro: Introduce Nitro Enclave Heartbeat device
-Date: Wed, 18 Feb 2026 01:51:45 +0000
-Message-ID: <20260218015151.4052-6-graf@amazon.com>
+Subject: [PATCH 08/10] hw/core/eif: Move definitions to header
+Date: Wed, 18 Feb 2026 01:51:48 +0000
+Message-ID: <20260218015151.4052-9-graf@amazon.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260218015151.4052-1-graf@amazon.com>
 References: <20260218015151.4052-1-graf@amazon.com>
 MIME-Version: 1.0
 X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D043UWC001.ant.amazon.com (10.13.139.202) To
+X-ClientProxiedBy: EX19D032UWA001.ant.amazon.com (10.13.139.62) To
  EX19D020UWC004.ant.amazon.com (10.13.138.149)
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Received-SPF: pass client-ip=52.13.214.179;
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=44.246.1.125;
  envelope-from=prvs=502105d20=graf@amazon.de;
- helo=pdx-out-005.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ helo=pdx-out-002.esa.us-west-2.outbound.mail-perimeter.amazon.com
 X-Spam_score_int: -19
 X-Spam_score: -2.0
 X-Spam_bar: --
@@ -99,113 +99,126 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Tml0cm8gRW5jbGF2ZXMgZXhwZWN0IHRoZSBwYXJlbnQgaW5zdGFuY2UgdG8gaG9zdCBhIHZzb2Nr
-IGhlYXJ0YmVhdCBsaXN0ZW5lcgphdCBwb3J0IDkwMDAuIFRvIGhvc3QgYSBOaXRybyBFbmNsYXZl
-IHdpdGggdGhlIG5pdHJvIGFjY2VsIGluIFFFTVUsIGFkZApzdWNoIGEgaGVhcnRiZWF0IGxpc3Rl
-bmVyIGFzIGRldmljZSBtb2RlbCwgc28gdGhhdCB0aGUgbWFjaGluZSBjYW4KZWFzaWx5IGluc3Rh
-bnRpYXRlIGl0LgoKU2lnbmVkLW9mZi1ieTogQWxleGFuZGVyIEdyYWYgPGdyYWZAYW1hem9uLmNv
-bT4KLS0tCiBody9uaXRyby9LY29uZmlnICAgICAgICAgICAgIHwgICA0ICsrCiBody9uaXRyby9o
-ZWFydGJlYXQuYyAgICAgICAgIHwgMTE1ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrCiBody9uaXRyby9tZXNvbi5idWlsZCAgICAgICAgIHwgICAxICsKIGh3L25pdHJvL3RyYWNl
-LWV2ZW50cyAgICAgICAgfCAgIDQgKysKIGluY2x1ZGUvaHcvbml0cm8vaGVhcnRiZWF0LmggfCAg
-MjUgKysrKysrKysKIDUgZmlsZXMgY2hhbmdlZCwgMTQ5IGluc2VydGlvbnMoKykKIGNyZWF0ZSBt
-b2RlIDEwMDY0NCBody9uaXRyby9oZWFydGJlYXQuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGluY2x1
-ZGUvaHcvbml0cm8vaGVhcnRiZWF0LmgKCmRpZmYgLS1naXQgYS9ody9uaXRyby9LY29uZmlnIGIv
-aHcvbml0cm8vS2NvbmZpZwppbmRleCA4NmM4MTdjNzY2Li42ZmUwNTBkMzVkIDEwMDY0NAotLS0g
-YS9ody9uaXRyby9LY29uZmlnCisrKyBiL2h3L25pdHJvL0tjb25maWcKQEAgLTEsMyArMSw3IEBA
-CiBjb25maWcgTklUUk9fU0VSSUFMX1ZTT0NLCiAgICAgYm9vbAogICAgIGRlcGVuZHMgb24gTklU
-Uk8KKworY29uZmlnIE5JVFJPX0hFQVJUQkVBVAorICAgIGJvb2wKKyAgICBkZXBlbmRzIG9uIE5J
-VFJPCmRpZmYgLS1naXQgYS9ody9uaXRyby9oZWFydGJlYXQuYyBiL2h3L25pdHJvL2hlYXJ0YmVh
-dC5jCm5ldyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAwMDAuLjNkMmEzNzEwOTgKLS0t
-IC9kZXYvbnVsbAorKysgYi9ody9uaXRyby9oZWFydGJlYXQuYwpAQCAtMCwwICsxLDExNSBAQAor
-LyoKKyAqIE5pdHJvIEVuY2xhdmUgSGVhcnRiZWF0IGRldmljZQorICoKKyAqIENvcHlyaWdodCDC
-qSAyMDI2IEFtYXpvbi5jb20sIEluYy4gb3IgaXRzIGFmZmlsaWF0ZXMuIEFsbCBSaWdodHMgUmVz
-ZXJ2ZWQuCisgKgorICogQXV0aG9yczoKKyAqICAgQWxleGFuZGVyIEdyYWYgPGdyYWZAYW1hem9u
-LmNvbT4KKyAqCisgKiBUaGUgTml0cm8gRW5jbGF2ZSBpbml0IHByb2Nlc3Mgc2VuZHMgYSBoZWFy
-dGJlYXQgYnl0ZSAoMHhCNykgdG8KKyAqIENJRCAzIChwYXJlbnQpIHBvcnQgOTAwMCBvbiBib290
-IHRvIHNpZ25hbCBpdCByZWFjaGVkIGluaXRyYW1mcy4KKyAqIFRoZSBwYXJlbnQgbXVzdCBhY2Nl
-cHQgdGhlIGNvbm5lY3Rpb24sIHJlYWQgdGhlIGJ5dGUsIGFuZCBlY2hvIGl0CisgKiBiYWNrLiBJ
-ZiB0aGUgZW5jbGF2ZSBpbml0IGNhbm5vdCByZWFjaCB0aGUgbGlzdGVuZXIsIGl0IGV4aXRzLgor
-ICoKKyAqIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9yLWxhdGVyCisgKi8KKwor
-I2luY2x1ZGUgInFlbXUvb3NkZXAuaCIKKyNpbmNsdWRlICJxYXBpL2Vycm9yLmgiCisjaW5jbHVk
-ZSAiY2hhcmRldi9jaGFyLmgiCisjaW5jbHVkZSAiY2hhcmRldi9jaGFyLWZlLmgiCisjaW5jbHVk
-ZSAiaHcvbml0cm8vaGVhcnRiZWF0LmgiCisjaW5jbHVkZSAidHJhY2UuaCIKKworI2RlZmluZSBI
-RUFSVEJFQVRfUE9SVCAgICAgIDkwMDAKKyNkZWZpbmUgVk1BRERSX0NJRF9BTllfU1RSICAiNDI5
-NDk2NzI5NSIKKworc3RhdGljIGludCBuaXRyb19oZWFydGJlYXRfY2FuX3JlYWQodm9pZCAqb3Bh
-cXVlKQoreworICAgIE5pdHJvSGVhcnRiZWF0U3RhdGUgKnMgPSBvcGFxdWU7CisKKyAgICAvKiBP
-bmUtc2hvdCBwcm90b2NvbDogc3RvcCByZWFkaW5nIGFmdGVyIHRoZSBmaXJzdCBoZWFydGJlYXQg
-Ki8KKyAgICByZXR1cm4gcy0+ZG9uZSA/IDAgOiAxOworfQorCitzdGF0aWMgdm9pZCBuaXRyb19o
-ZWFydGJlYXRfcmVhZCh2b2lkICpvcGFxdWUsIGNvbnN0IHVpbnQ4X3QgKmJ1ZiwgaW50IHNpemUp
-Cit7CisgICAgTml0cm9IZWFydGJlYXRTdGF0ZSAqcyA9IG9wYXF1ZTsKKworICAgIGlmIChzLT5k
-b25lIHx8IHNpemUgPCAxKSB7CisgICAgICAgIHJldHVybjsKKyAgICB9CisKKyAgICAvKiBFY2hv
-IHRoZSBoZWFydGJlYXQgYnl0ZSBiYWNrIGFuZCBkaXNjb25uZWN0ICovCisgICAgcWVtdV9jaHJf
-ZmVfd3JpdGVfYWxsKCZzLT52c29jaywgYnVmLCAxKTsKKyAgICBzLT5kb25lID0gdHJ1ZTsKKyAg
-ICBxZW11X2Nocl9mZV9kZWluaXQoJnMtPnZzb2NrLCB0cnVlKTsKKworICAgIHRyYWNlX25pdHJv
-X2hlYXJ0YmVhdF9kb25lKCk7Cit9CisKK3N0YXRpYyB2b2lkIG5pdHJvX2hlYXJ0YmVhdF9ldmVu
-dCh2b2lkICpvcGFxdWUsIFFFTVVDaHJFdmVudCBldmVudCkKK3sKKyAgICB0cmFjZV9uaXRyb19o
-ZWFydGJlYXRfZXZlbnQoZXZlbnQpOworfQorCitzdGF0aWMgdm9pZCBuaXRyb19oZWFydGJlYXRf
-cmVhbGl6ZShEZXZpY2VTdGF0ZSAqZGV2LCBFcnJvciAqKmVycnApCit7CisgICAgTml0cm9IZWFy
-dGJlYXRTdGF0ZSAqcyA9IE5JVFJPX0hFQVJUQkVBVChkZXYpOworICAgIGdfYXV0b2ZyZWUgY2hh
-ciAqY2hhcmRldl9pZCA9IE5VTEw7CisgICAgQ2hhcmRldiAqY2hyOworICAgIENoYXJkZXZCYWNr
-ZW5kICpiYWNrZW5kOworICAgIENoYXJkZXZTb2NrZXQgKnNvY2s7CisKKyAgICBjaGFyZGV2X2lk
-ID0gZ19zdHJkdXBfcHJpbnRmKCJuaXRyby1oZWFydGJlYXQiKTsKKworICAgIGJhY2tlbmQgPSBn
-X25ldzAoQ2hhcmRldkJhY2tlbmQsIDEpOworICAgIGJhY2tlbmQtPnR5cGUgPSBDSEFSREVWX0JB
-Q0tFTkRfS0lORF9TT0NLRVQ7CisgICAgc29jayA9IGJhY2tlbmQtPnUuc29ja2V0LmRhdGEgPSBn
-X25ldzAoQ2hhcmRldlNvY2tldCwgMSk7CisgICAgc29jay0+YWRkciA9IGdfbmV3MChTb2NrZXRB
-ZGRyZXNzTGVnYWN5LCAxKTsKKyAgICBzb2NrLT5hZGRyLT50eXBlID0gU09DS0VUX0FERFJFU1Nf
-VFlQRV9WU09DSzsKKyAgICBzb2NrLT5hZGRyLT51LnZzb2NrLmRhdGEgPSBnX25ldzAoVnNvY2tT
-b2NrZXRBZGRyZXNzLCAxKTsKKyAgICBzb2NrLT5hZGRyLT51LnZzb2NrLmRhdGEtPmNpZCA9IGdf
-c3RyZHVwKFZNQUREUl9DSURfQU5ZX1NUUik7CisgICAgc29jay0+YWRkci0+dS52c29jay5kYXRh
-LT5wb3J0ID0gZ19zdHJkdXBfcHJpbnRmKCIldSIsIEhFQVJUQkVBVF9QT1JUKTsKKyAgICBzb2Nr
-LT5zZXJ2ZXIgPSB0cnVlOworICAgIHNvY2stPmhhc19zZXJ2ZXIgPSB0cnVlOworICAgIHNvY2st
-PndhaXQgPSBmYWxzZTsKKyAgICBzb2NrLT5oYXNfd2FpdCA9IHRydWU7CisKKyAgICBjaHIgPSBx
-ZW11X2NoYXJkZXZfbmV3KGNoYXJkZXZfaWQsIFRZUEVfQ0hBUkRFVl9TT0NLRVQsCisgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBiYWNrZW5kLCBOVUxMLCBlcnJwKTsKKyAgICBpZiAoIWNocikg
-eworICAgICAgICByZXR1cm47CisgICAgfQorCisgICAgaWYgKCFxZW11X2Nocl9mZV9pbml0KCZz
-LT52c29jaywgY2hyLCBlcnJwKSkgeworICAgICAgICByZXR1cm47CisgICAgfQorCisgICAgcWVt
-dV9jaHJfZmVfc2V0X2hhbmRsZXJzKCZzLT52c29jaywKKyAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgbml0cm9faGVhcnRiZWF0X2Nhbl9yZWFkLAorICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICBuaXRyb19oZWFydGJlYXRfcmVhZCwKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-bml0cm9faGVhcnRiZWF0X2V2ZW50LAorICAgICAgICAgICAgICAgICAgICAgICAgICAgICBOVUxM
-LCBzLCBOVUxMLCB0cnVlKTsKK30KKworc3RhdGljIHZvaWQgbml0cm9faGVhcnRiZWF0X2NsYXNz
-X2luaXQoT2JqZWN0Q2xhc3MgKm9jLCBjb25zdCB2b2lkICpkYXRhKQoreworICAgIERldmljZUNs
-YXNzICpkYyA9IERFVklDRV9DTEFTUyhvYyk7CisKKyAgICBkYy0+cmVhbGl6ZSA9IG5pdHJvX2hl
-YXJ0YmVhdF9yZWFsaXplOworfQorCitzdGF0aWMgY29uc3QgVHlwZUluZm8gbml0cm9faGVhcnRi
-ZWF0X2luZm8gPSB7CisgICAgLm5hbWUgPSBUWVBFX05JVFJPX0hFQVJUQkVBVCwKKyAgICAucGFy
-ZW50ID0gVFlQRV9TWVNfQlVTX0RFVklDRSwKKyAgICAuaW5zdGFuY2Vfc2l6ZSA9IHNpemVvZihO
-aXRyb0hlYXJ0YmVhdFN0YXRlKSwKKyAgICAuY2xhc3NfaW5pdCA9IG5pdHJvX2hlYXJ0YmVhdF9j
-bGFzc19pbml0LAorfTsKKworc3RhdGljIHZvaWQgbml0cm9faGVhcnRiZWF0X3JlZ2lzdGVyKHZv
-aWQpCit7CisgICAgdHlwZV9yZWdpc3Rlcl9zdGF0aWMoJm5pdHJvX2hlYXJ0YmVhdF9pbmZvKTsK
-K30KKwordHlwZV9pbml0KG5pdHJvX2hlYXJ0YmVhdF9yZWdpc3Rlcik7CmRpZmYgLS1naXQgYS9o
-dy9uaXRyby9tZXNvbi5idWlsZCBiL2h3L25pdHJvL21lc29uLmJ1aWxkCmluZGV4IGQ5NWVkOGRk
-NzkuLmI5MjFkYTJiOTcgMTAwNjQ0Ci0tLSBhL2h3L25pdHJvL21lc29uLmJ1aWxkCisrKyBiL2h3
-L25pdHJvL21lc29uLmJ1aWxkCkBAIC0xICsxLDIgQEAKIHN5c3RlbV9zcy5hZGQod2hlbjogJ0NP
-TkZJR19OSVRST19TRVJJQUxfVlNPQ0snLCBpZl90cnVlOiBmaWxlcygnc2VyaWFsLXZzb2NrLmMn
-KSkKK3N5c3RlbV9zcy5hZGQod2hlbjogJ0NPTkZJR19OSVRST19IRUFSVEJFQVQnLCBpZl90cnVl
-OiBmaWxlcygnaGVhcnRiZWF0LmMnKSkKZGlmZiAtLWdpdCBhL2h3L25pdHJvL3RyYWNlLWV2ZW50
-cyBiL2h3L25pdHJvL3RyYWNlLWV2ZW50cwppbmRleCAyMDYxN2EwMjRhLi4zMTFhYjc4ZTY5IDEw
-MDY0NAotLS0gYS9ody9uaXRyby90cmFjZS1ldmVudHMKKysrIGIvaHcvbml0cm8vdHJhY2UtZXZl
-bnRzCkBAIC0yLDMgKzIsNyBAQAogCiAjIHNlcmlhbC12c29jay5jCiBuaXRyb19zZXJpYWxfdnNv
-Y2tfZXZlbnQoaW50IGV2ZW50KSAiZXZlbnQgJWQiCisKKyMgaGVhcnRiZWF0LmMKK25pdHJvX2hl
-YXJ0YmVhdF9ldmVudChpbnQgZXZlbnQpICJldmVudCAlZCIKK25pdHJvX2hlYXJ0YmVhdF9kb25l
-KHZvaWQpICJlbmNsYXZlIGhlYXJ0YmVhdCByZWNlaXZlZCIKZGlmZiAtLWdpdCBhL2luY2x1ZGUv
-aHcvbml0cm8vaGVhcnRiZWF0LmggYi9pbmNsdWRlL2h3L25pdHJvL2hlYXJ0YmVhdC5oCm5ldyBm
-aWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAwMDAuLjNlZDRkNDBiYWMKLS0tIC9kZXYvbnVs
-bAorKysgYi9pbmNsdWRlL2h3L25pdHJvL2hlYXJ0YmVhdC5oCkBAIC0wLDAgKzEsMjUgQEAKKy8q
-CisgKiBOaXRybyBIZWFydGJlYXQgZGV2aWNlCisgKgorICogU1BEWC1MaWNlbnNlLUlkZW50aWZp
-ZXI6IEdQTC0yLjAtb3ItbGF0ZXIKKyAqLworCisjaWZuZGVmIEhXX01JU0NfTklUUk9fSEVBUlRC
-RUFUX0gKKyNkZWZpbmUgSFdfTUlTQ19OSVRST19IRUFSVEJFQVRfSAorCisjaW5jbHVkZSAiaHcv
-Y29yZS9xZGV2LmgiCisjaW5jbHVkZSAiaHcvY29yZS9zeXNidXMuaCIKKyNpbmNsdWRlICJjaGFy
-ZGV2L2NoYXItZmUuaCIKKyNpbmNsdWRlICJxb20vb2JqZWN0LmgiCisKKyNkZWZpbmUgVFlQRV9O
-SVRST19IRUFSVEJFQVQgIm5pdHJvLWhlYXJ0YmVhdCIKK09CSkVDVF9ERUNMQVJFX1NJTVBMRV9U
-WVBFKE5pdHJvSGVhcnRiZWF0U3RhdGUsIE5JVFJPX0hFQVJUQkVBVCkKKworc3RydWN0IE5pdHJv
-SGVhcnRiZWF0U3RhdGUgeworICAgIFN5c0J1c0RldmljZSBwYXJlbnRfb2JqOworCisgICAgQ2hh
-ckZyb250ZW5kIHZzb2NrOyAgICAgLyogdnNvY2sgc2VydmVyIGNoYXJkZXYgZm9yIGhlYXJ0YmVh
-dCAqLworICAgIGJvb2wgZG9uZTsKK307CisKKyNlbmRpZiAvKiBIV19NSVNDX05JVFJPX0hFQVJU
-QkVBVF9IICovCi0tIAoyLjQ3LjEKCgoKCkFtYXpvbiBXZWIgU2VydmljZXMgRGV2ZWxvcG1lbnQg
-Q2VudGVyIEdlcm1hbnkgR21iSApUYW1hcmEtRGFuei1TdHIuIDEzCjEwMjQzIEJlcmxpbgpHZXNj
-aGFlZnRzZnVlaHJ1bmc6IENocmlzdG9mIEhlbGxtaXMsIEFuZHJlYXMgU3RpZWdlcgpFaW5nZXRy
-YWdlbiBhbSBBbXRzZ2VyaWNodCBDaGFybG90dGVuYnVyZyB1bnRlciBIUkIgMjU3NzY0IEIKU2l0
-ejogQmVybGluClVzdC1JRDogREUgMzY1IDUzOCA1OTcK
+In follow-up patches we need some EIF file definitions that are
+currently in the eif.c file, but want to access them from a separate
+device. Move them into the header instead.
+
+Signed-off-by: Alexander Graf <graf@amazon.com>
+---
+ hw/core/eif.c | 38 --------------------------------------
+ hw/core/eif.h | 38 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 38 insertions(+), 38 deletions(-)
+
+diff --git a/hw/core/eif.c b/hw/core/eif.c
+index 513caec6b4..96f1d76578 100644
+--- a/hw/core/eif.c
++++ b/hw/core/eif.c
+@@ -18,44 +18,6 @@
+ 
+ #include "hw/core/eif.h"
+ 
+-#define MAX_SECTIONS 32
+-
+-/* members are ordered according to field order in .eif file */
+-typedef struct EifHeader {
+-    uint8_t  magic[4]; /* must be .eif in ascii i.e., [46, 101, 105, 102] */
+-    uint16_t version;
+-    uint16_t flags;
+-    uint64_t default_memory;
+-    uint64_t default_cpus;
+-    uint16_t reserved;
+-    uint16_t section_cnt;
+-    uint64_t section_offsets[MAX_SECTIONS];
+-    uint64_t section_sizes[MAX_SECTIONS];
+-    uint32_t unused;
+-    uint32_t eif_crc32;
+-} QEMU_PACKED EifHeader;
+-
+-/* members are ordered according to field order in .eif file */
+-typedef struct EifSectionHeader {
+-    /*
+-     * 0 = invalid, 1 = kernel, 2 = cmdline, 3 = ramdisk, 4 = signature,
+-     * 5 = metadata
+-     */
+-    uint16_t section_type;
+-    uint16_t flags;
+-    uint64_t section_size;
+-} QEMU_PACKED EifSectionHeader;
+-
+-enum EifSectionTypes {
+-    EIF_SECTION_INVALID = 0,
+-    EIF_SECTION_KERNEL = 1,
+-    EIF_SECTION_CMDLINE = 2,
+-    EIF_SECTION_RAMDISK = 3,
+-    EIF_SECTION_SIGNATURE = 4,
+-    EIF_SECTION_METADATA = 5,
+-    EIF_SECTION_MAX = 6,
+-};
+-
+ static const char *section_type_to_string(uint16_t type)
+ {
+     const char *str;
+diff --git a/hw/core/eif.h b/hw/core/eif.h
+index fed3cb5514..a3412377a9 100644
+--- a/hw/core/eif.h
++++ b/hw/core/eif.h
+@@ -11,6 +11,44 @@
+ #ifndef HW_CORE_EIF_H
+ #define HW_CORE_EIF_H
+ 
++#define MAX_SECTIONS 32
++
++/* members are ordered according to field order in .eif file */
++typedef struct EifHeader {
++    uint8_t  magic[4]; /* must be .eif in ascii i.e., [46, 101, 105, 102] */
++    uint16_t version;
++    uint16_t flags;
++    uint64_t default_memory;
++    uint64_t default_cpus;
++    uint16_t reserved;
++    uint16_t section_cnt;
++    uint64_t section_offsets[MAX_SECTIONS];
++    uint64_t section_sizes[MAX_SECTIONS];
++    uint32_t unused;
++    uint32_t eif_crc32;
++} QEMU_PACKED EifHeader;
++
++/* members are ordered according to field order in .eif file */
++typedef struct EifSectionHeader {
++    /*
++     * 0 = invalid, 1 = kernel, 2 = cmdline, 3 = ramdisk, 4 = signature,
++     * 5 = metadata
++     */
++    uint16_t section_type;
++    uint16_t flags;
++    uint64_t section_size;
++} QEMU_PACKED EifSectionHeader;
++
++enum EifSectionTypes {
++    EIF_SECTION_INVALID = 0,
++    EIF_SECTION_KERNEL = 1,
++    EIF_SECTION_CMDLINE = 2,
++    EIF_SECTION_RAMDISK = 3,
++    EIF_SECTION_SIGNATURE = 4,
++    EIF_SECTION_METADATA = 5,
++    EIF_SECTION_MAX = 6,
++};
++
+ bool read_eif_file(const char *eif_path, const char *machine_initrd,
+                    char **kernel_path, char **initrd_path,
+                    char **kernel_cmdline, uint8_t *image_sha384,
+-- 
+2.47.1
+
+
+
+
+Amazon Web Services Development Center Germany GmbH
+Tamara-Danz-Str. 13
+10243 Berlin
+Geschaeftsfuehrung: Christof Hellmis, Andreas Stieger
+Eingetragen am Amtsgericht Charlottenburg unter HRB 257764 B
+Sitz: Berlin
+Ust-ID: DE 365 538 597
 
 

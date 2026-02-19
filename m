@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 222BBE9A04C
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 04:02:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84845E9A04C
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 04:02:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vsvF6-0008Ob-Va; Wed, 18 Feb 2026 23:02:20 -0500
+	id 1vsvFJ-0008U1-OC; Wed, 18 Feb 2026 23:02:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vsvF5-0008ND-DS
- for qemu-arm@nongnu.org; Wed, 18 Feb 2026 23:02:19 -0500
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+ id 1vsvFA-0008QX-9t
+ for qemu-arm@nongnu.org; Wed, 18 Feb 2026 23:02:25 -0500
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vsvF0-0001DX-GN
- for qemu-arm@nongnu.org; Wed, 18 Feb 2026 23:02:19 -0500
-Received: by mail-pg1-x529.google.com with SMTP id
- 41be03b00d2f7-c6dd5b01e14so180357a12.0
- for <qemu-arm@nongnu.org>; Wed, 18 Feb 2026 20:02:14 -0800 (PST)
+ id 1vsvF7-0001GA-HB
+ for qemu-arm@nongnu.org; Wed, 18 Feb 2026 23:02:24 -0500
+Received: by mail-pl1-x634.google.com with SMTP id
+ d9443c01a7336-2a95de4b5cbso4076415ad.1
+ for <qemu-arm@nongnu.org>; Wed, 18 Feb 2026 20:02:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771473733; x=1772078533; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771473740; x=1772078540; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=UdK2rOS2bitRzrDxI30pyU/TEy+Znetuyj+EjMa6JSY=;
- b=tkCiZxEWMP/XI8dyFZC70iVT+RregtBn+YNDqgK5gcDhWNVqsE6CEsy47kj4PcvjlP
- DqEuhUH+HJbi4rLkIYdpz8tpsIdov3k3MFNjrMo2PLnGJoAB3TF3KlaZbjshFplZm+Ay
- WzRvxCqRl4JNC6W9TYz/Rq46fdDYeZc4CFCEitp2Nc/p7+buFBvRaRj2qdCPuZ1NXXAs
- c2ekCsHr4sW4e065dFUBkiom1MkRp0ld2MnYK64SERhJ+ZcSUr2CCvCHUIYHS02tzx4R
- v1soJNqNX3WPrXEfFRUwp5JteKH/LtxLI4A0BELEXhbOEZ05QcvVWOM61q212jt3gGzp
- N6eA==
+ bh=50nHav8cvlBJXDMa0lKAbHRy4laGsu0BLnPw8Pvj0b4=;
+ b=Z8dsStGh9ND5zYMuXgmorYcWynY41YyDwV8PsaJZSLXEF3B6MO2/GLStSKi1iCxz2e
+ 5mXAyySxEzGi4/I4nkQJjwCcgXPrzeXE8o1WTjS/JCqKFvTcr3ChIyDPm3MQEmIpSqUp
+ aTMDeenEHXEjsIoSYgu9893Cilxk2DaKrcBaiPch3wIoF3WRTxMtbcCluabxeEsw38VI
+ HC4mAg1NkqxhBN/UbO/ruxWxXEjN+p+Dj1ZzKNiZwG9CGPbGeHn373yLeKlG4CYc95TA
+ 8dtcioH7MBjFTXzTpGk4CTo/T4B7eVIDoe4CnmWjIZcG4MeOy3r0ZPVsPws7mIrW1FdM
+ /dIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771473733; x=1772078533;
+ d=1e100.net; s=20230601; t=1771473740; x=1772078540;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=UdK2rOS2bitRzrDxI30pyU/TEy+Znetuyj+EjMa6JSY=;
- b=qR+2jhoF/rx6M7W3mN+1BiYIrL0dnga468jSEDoO2KzSkzt2iQBRPJJpKG+TD+ZuqX
- 7FzEBNroRIkRiHSSqP0xJdwqjz7biSIjDPGH9AXfZ5DF57Yg2iOu/zzxGeWyjikIWylw
- eM5fGm02LEm9w4MR6/z4VbrqOLJy4NJs4fta55HJmKtbEgiWLhxNg5KWNMXVyDFsIIcF
- MkrQAKrZ6vPJcVlat5klEjM1XBAdxQzJpUUZ0pkKuMFaVP2wmyuR5GmumRFGgHTbq76q
- cOGdbQcArLFinpkylj3x6UsCwlM+7zZ/jrQ0dIrsuwbx0Wgbjn2dUnK3MYKsdo26QOFP
- hdUg==
+ bh=50nHav8cvlBJXDMa0lKAbHRy4laGsu0BLnPw8Pvj0b4=;
+ b=gsn2QYBmdSgR8VZcX0mo3vuoalNlnaqZn3yhgd53VqC97rQsth1wwdtE+xI3G71WjD
+ sHdzDcwVAxb0ZCMUGbejc/ZKTKwB6EPKdvUDR+1kA/1boflYN7O8ZP68Avf7Po+uGP9S
+ o69M0g9XN3/HFQ8l05om7kZrGoEUHBT0trgwLI2FvvmexqbrSxEScL9YSW3gB9EkNFJ9
+ UH8Bg4UCFmRnX38s54JF/sEarUGrzPq8kges5f2OcDzOvUf1O+tmTt91MUT1mV2ghhjU
+ KZg3jjqO44jI0viFGKMUaoPsZVh88aia5klWYIVbQc4sS7yoFmEZx8WB9ghGCW582oEm
+ xfmw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVN2tC8X82T8I5PN9T+MqzBcPPpJmlHld+Pfhjd/X2WUI4yZK3u9czghzs56Deo2vzCtybcqSppxQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwzZX/0lQ2gt+uhuHrOPcTMKsyVAueKlTp9iJ/lI38ReywrAfnT
- BH49vd6Ocs5VgQBwpJTWkSPnhXo8oXnE1LH4zoJgoxKnfStrytxw4FIst8xoT6nRkus=
-X-Gm-Gg: AZuq6aL7ID6DOcmPySIMOvtbOZ6I5jwkTMlujjvSf6f6snQW7yo4tJQprSjdmtRO84E
- UR2xBXlYjalsQ89W2u1AEcrNtS+/W39Sjt4yaWNJF2jN9swDTR37BmVT80T5b0NFwAVqJI1WlLF
- ukqvTl1/iB6x2+QM6bfqNi79z9YrQYlmYig/CVBieW01bXqxw48QIP8o6G8yetudOzCc46XvnId
- WNiu5NZa1B4wY3LOLW7hDKSBfmF5HpRyeGVtx2vNzNr9D+AuKhKZSE39kZs59zMfYRNyXT7rwoV
- cKs80FkJN0XvcBA5PXzJjOGgNddyvWowiFwc1/qYHl4yKEMSg+xlHWSqxPWpxZtreeneCN8kjQk
- fFU41C5+TJlMSMbu81ERHwMzY9Op0QnZvBvGIel4cVHK2kgVENPdXtxVd20KJH5QXr2IDubXDFw
- z4R+OSh1aZzE02+b1ZrKlRpBCQDbDqapwynorugfiU4WyNLBvEaLPcSsWRm4VyhnT/YFVFM4MCj
- qe0
-X-Received: by 2002:a17:903:3b84:b0:2a9:616c:1711 with SMTP id
- d9443c01a7336-2ad50f8b526mr36135435ad.42.1771473733004; 
- Wed, 18 Feb 2026 20:02:13 -0800 (PST)
+ AJvYcCXvHit9cnH2QCaNkt6gR4jfOI1GLE9olaS9RBgALZrGGvnmUuc4ne6mfETXIqpvtqrKJcFrV6D0SA==@nongnu.org
+X-Gm-Message-State: AOJu0YxfXzz+SQzEOARZiocKLydaLUvuKXa9721CbnJfM4PVb9Dyfqtq
+ Img/jJIQ5gHDj2cD+djeWx4QmCkM4OT/X6PNjbIGyynMhkbNl0KCq58HRUoV52GChWI=
+X-Gm-Gg: AZuq6aI+AZtqYx2FndeOUefl7Rs4F3MhOeA89FCBdXFpzD3q4jEdef1g3f7zwRBt6bZ
+ 6QAf0W29lZHdx0GWpOdGIeX5KpCLS3E0w7cq0ETO38p0tbr4jo4JMS4AJB5sbzC4vWTpDOFv6EB
+ U/m8jSYXckZoMXnIg6sB/aTlsIFFV4PpNQSACP0ZzfO9WdlWz4UTn0APtxJH0oVM7/sPQFHOixn
+ 0TBthwy4TPoeEUNu8qGgeR4mTsZx88tpGnHhokl9GBpL2sXyJvDlSFKzvYYZOSGDyi8umYxYKFy
+ sfzgPOH+I6dQ+O2I5DazKNcqbWCfBx/ooEOEoJ8bO+H6OdDAmz+9FZFbDC9xFl0nxmBZJfhMPrg
+ /toXj3ppV++L0zEI3ezQPXCb4XLvvqsBr6g54Dc9XvOIhz8CMX2NArZMO/VQmLF4KfB5uYNBuW6
+ uuHDagdDm5C0gXt39D/KHfcA8h0B34Y7GZVEEoj/bOCGqhjFKiQMtKL/wa3ChCYCV3KgZvdQWbN
+ fRM
+X-Received: by 2002:a17:903:907:b0:2ab:230d:2da9 with SMTP id
+ d9443c01a7336-2ab4d0819ecmr188568195ad.48.1771473739926; 
+ Wed, 18 Feb 2026 20:02:19 -0800 (PST)
 Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2ad1a73200asm147636225ad.36.2026.02.18.20.02.12
+ d9443c01a7336-2ad1a73200asm147636225ad.36.2026.02.18.20.02.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 18 Feb 2026 20:02:12 -0800 (PST)
+ Wed, 18 Feb 2026 20:02:19 -0800 (PST)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -76,16 +76,17 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>, anjo@rev.ng,
  Peter Maydell <peter.maydell@linaro.org>,
  Jim MacArthur <jim.macarthur@linaro.org>
-Subject: [PATCH v4 04/14] target/arm: extract helper-a64.h from helper.h
-Date: Wed, 18 Feb 2026 20:01:40 -0800
-Message-ID: <20260219040150.2098396-5-pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 11/14] target/arm/tcg/vec_helper.c: make compilation unit
+ common
+Date: Wed, 18 Feb 2026 20:01:47 -0800
+Message-ID: <20260219040150.2098396-12-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260219040150.2098396-1-pierrick.bouvier@linaro.org>
 References: <20260219040150.2098396-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x529.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,140 +109,575 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+We need to extract 64 bits helper in a new file (vec_helper64.c), and
+extract some macro definition also, since they will be used in both
+files.
+As well, DO_3OP_PAIR was defined twice, so rename the second variant
+to DO_3OP_PAIR_NO_STATUS to reflect what it does.
+
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- target/arm/helper-a64.h                            | 14 ++++++++++++++
- target/arm/helper.h                                |  1 -
- target/arm/tcg/{helper-a64.h => helper-a64-defs.h} |  0
- target/arm/tcg/helper-a64.c                        |  4 ++++
- target/arm/tcg/mte_helper.c                        |  1 +
- target/arm/tcg/pauth_helper.c                      |  1 +
- target/arm/tcg/sve_helper.c                        |  1 +
- target/arm/tcg/translate-a64.c                     |  1 +
- target/arm/tcg/vec_helper.c                        |  1 +
- 9 files changed, 23 insertions(+), 1 deletion(-)
- create mode 100644 target/arm/helper-a64.h
- rename target/arm/tcg/{helper-a64.h => helper-a64-defs.h} (100%)
+ target/arm/tcg/vec_internal.h |  49 ++++++++
+ target/arm/tcg/vec_helper.c   | 225 +++-------------------------------
+ target/arm/tcg/vec_helper64.c | 142 +++++++++++++++++++++
+ target/arm/tcg/meson.build    |   4 +-
+ 4 files changed, 212 insertions(+), 208 deletions(-)
+ create mode 100644 target/arm/tcg/vec_helper64.c
 
-diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
-new file mode 100644
-index 00000000000..cda7e039b72
---- /dev/null
-+++ b/target/arm/helper-a64.h
-@@ -0,0 +1,14 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+
-+#ifndef HELPER_A64_H
-+#define HELPER_A64_H
-+
-+#include "exec/helper-proto-common.h"
-+#include "exec/helper-gen-common.h"
-+
-+#define HELPER_H "tcg/helper-a64-defs.h"
-+#include "exec/helper-proto.h.inc"
-+#include "exec/helper-gen.h.inc"
-+#undef HELPER_H
-+
-+#endif /* HELPER_A64_H */
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index 44c7f3ed751..79f8de1e169 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -3,7 +3,6 @@
- #include "tcg/helper.h"
+diff --git a/target/arm/tcg/vec_internal.h b/target/arm/tcg/vec_internal.h
+index cf41b03dbcd..4edd2b4fc18 100644
+--- a/target/arm/tcg/vec_internal.h
++++ b/target/arm/tcg/vec_internal.h
+@@ -450,4 +450,53 @@ static inline void depositn(uint64_t *p, unsigned pos,
+     }
+ }
  
- #ifdef TARGET_AARCH64
--#include "tcg/helper-a64.h"
- #include "tcg/helper-sve.h"
- #include "tcg/helper-sme.h"
- #endif
-diff --git a/target/arm/tcg/helper-a64.h b/target/arm/tcg/helper-a64-defs.h
-similarity index 100%
-rename from target/arm/tcg/helper-a64.h
-rename to target/arm/tcg/helper-a64-defs.h
-diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
-index e4d2c2e3928..07ddfb895dd 100644
---- a/target/arm/tcg/helper-a64.c
-+++ b/target/arm/tcg/helper-a64.c
-@@ -22,6 +22,7 @@
- #include "cpu.h"
- #include "gdbstub/helpers.h"
- #include "exec/helper-proto.h"
-+#include "helper-a64.h"
- #include "qemu/host-utils.h"
- #include "qemu/log.h"
- #include "qemu/main-loop.h"
-@@ -43,6 +44,9 @@
- #endif
- #include "vec_internal.h"
- 
-+#define HELPER_H "tcg/helper-a64-defs.h"
-+#include "exec/helper-info.c.inc"
++#define DO_3OP(NAME, FUNC, TYPE) \
++void HELPER(NAME)(void *vd, void *vn, void *vm,                            \
++                  float_status * stat, uint32_t desc)                      \
++{                                                                          \
++    intptr_t i, oprsz = simd_oprsz(desc);                                  \
++    TYPE *d = vd, *n = vn, *m = vm;                                        \
++    for (i = 0; i < oprsz / sizeof(TYPE); i++) {                           \
++        d[i] = FUNC(n[i], m[i], stat);                                     \
++    }                                                                      \
++    clear_tail(d, oprsz, simd_maxsz(desc));                                \
++}
 +
- /* C2.4.7 Multiply and divide */
- /* special cases for 0 and LLONG_MIN are mandated by the standard */
- uint64_t HELPER(udiv64)(uint64_t num, uint64_t den)
-diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
-index 08b8e7176a6..01b7f099f4a 100644
---- a/target/arm/tcg/mte_helper.c
-+++ b/target/arm/tcg/mte_helper.c
-@@ -31,6 +31,7 @@
- #endif
- #include "accel/tcg/cpu-ldst.h"
- #include "accel/tcg/probe.h"
-+#include "helper-a64.h"
- #include "exec/helper-proto.h"
- #include "exec/tlb-flags.h"
- #include "accel/tcg/cpu-ops.h"
-diff --git a/target/arm/tcg/pauth_helper.c b/target/arm/tcg/pauth_helper.c
-index c591c3052c3..5a20117ae89 100644
---- a/target/arm/tcg/pauth_helper.c
-+++ b/target/arm/tcg/pauth_helper.c
-@@ -22,6 +22,7 @@
- #include "internals.h"
- #include "cpu-features.h"
- #include "accel/tcg/cpu-ldst.h"
-+#include "helper-a64.h"
- #include "exec/helper-proto.h"
- #include "tcg/tcg-gvec-desc.h"
- #include "qemu/xxhash.h"
-diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
-index c442fcb540d..0600eea47c7 100644
---- a/target/arm/tcg/sve_helper.c
-+++ b/target/arm/tcg/sve_helper.c
-@@ -24,6 +24,7 @@
- #include "exec/helper-proto.h"
- #include "exec/target_page.h"
- #include "exec/tlb-flags.h"
-+#include "helper-a64.h"
- #include "tcg/tcg-gvec-desc.h"
- #include "fpu/softfloat.h"
- #include "tcg/tcg.h"
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 7a8cd99e004..1a54337b6a8 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -18,6 +18,7 @@
-  */
- #include "qemu/osdep.h"
- #include "exec/target_page.h"
-+#include "helper-a64.h"
- #include "translate.h"
- #include "translate-a64.h"
- #include "qemu/log.h"
++#define DO_3OP_PAIR(NAME, FUNC, TYPE, H) \
++void HELPER(NAME)(void *vd, void *vn, void *vm,                            \
++                  float_status * stat, uint32_t desc)                      \
++{                                                                          \
++    ARMVectorReg scratch;                                                  \
++    intptr_t oprsz = simd_oprsz(desc);                                     \
++    intptr_t half = oprsz / sizeof(TYPE) / 2;                              \
++    TYPE *d = vd, *n = vn, *m = vm;                                        \
++    if (unlikely(d == m)) {                                                \
++        m = memcpy(&scratch, m, oprsz);                                    \
++    }                                                                      \
++    for (intptr_t i = 0; i < half; ++i) {                                  \
++        d[H(i)] = FUNC(n[H(i * 2)], n[H(i * 2 + 1)], stat);                \
++    }                                                                      \
++    for (intptr_t i = 0; i < half; ++i) {                                  \
++        d[H(i + half)] = FUNC(m[H(i * 2)], m[H(i * 2 + 1)], stat);         \
++    }                                                                      \
++    clear_tail(d, oprsz, simd_maxsz(desc));                                \
++}
++
++#define DO_FMUL_IDX(NAME, ADD, MUL, TYPE, H)                               \
++void HELPER(NAME)(void *vd, void *vn, void *vm,                            \
++                  float_status * stat, uint32_t desc)                      \
++{                                                                          \
++    intptr_t i, j, oprsz = simd_oprsz(desc);                               \
++    intptr_t segment = MIN(16, oprsz) / sizeof(TYPE);                      \
++    intptr_t idx = simd_data(desc);                                        \
++    TYPE *d = vd, *n = vn, *m = vm;                                        \
++    for (i = 0; i < oprsz / sizeof(TYPE); i += segment) {                  \
++        TYPE mm = m[H(i + idx)];                                           \
++        for (j = 0; j < segment; j++) {                                    \
++            d[i + j] = ADD(d[i + j], MUL(n[i + j], mm, stat), stat);       \
++        }                                                                  \
++    }                                                                      \
++    clear_tail(d, oprsz, simd_maxsz(desc));                                \
++}
++
+ #endif /* TARGET_ARM_VEC_INTERNAL_H */
 diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
-index 33a136b90a6..7451a283efa 100644
+index 1223b843bf1..91e98d28aea 100644
 --- a/target/arm/tcg/vec_helper.c
 +++ b/target/arm/tcg/vec_helper.c
-@@ -20,6 +20,7 @@
+@@ -20,9 +20,6 @@
  #include "qemu/osdep.h"
  #include "cpu.h"
- #include "exec/helper-proto.h"
-+#include "helper-a64.h"
+ #include "helper.h"
+-#include "helper-a64.h"
+-#include "helper-sme.h"
+-#include "helper-sve.h"
  #include "tcg/tcg-gvec-desc.h"
  #include "fpu/softfloat.h"
  #include "qemu/int128.h"
+@@ -1458,18 +1455,6 @@ static float32 float32_rsqrts_nf(float32 op1, float32 op2, float_status *stat)
+     return float32_div(op1, float32_two, stat);
+ }
+ 
+-#define DO_3OP(NAME, FUNC, TYPE) \
+-void HELPER(NAME)(void *vd, void *vn, void *vm,                            \
+-                  float_status *stat, uint32_t desc)                       \
+-{                                                                          \
+-    intptr_t i, oprsz = simd_oprsz(desc);                                  \
+-    TYPE *d = vd, *n = vn, *m = vm;                                        \
+-    for (i = 0; i < oprsz / sizeof(TYPE); i++) {                           \
+-        d[i] = FUNC(n[i], m[i], stat);                                     \
+-    }                                                                      \
+-    clear_tail(d, oprsz, simd_maxsz(desc));                                \
+-}
+-
+ DO_3OP(gvec_fadd_b16, bfloat16_add, float16)
+ DO_3OP(gvec_fadd_h, float16_add, float16)
+ DO_3OP(gvec_fadd_s, float32_add, float32)
+@@ -1541,49 +1526,6 @@ DO_3OP(gvec_recps_nf_s, float32_recps_nf, float32)
+ DO_3OP(gvec_rsqrts_nf_h, float16_rsqrts_nf, float16)
+ DO_3OP(gvec_rsqrts_nf_s, float32_rsqrts_nf, float32)
+ 
+-#ifdef TARGET_AARCH64
+-DO_3OP(gvec_fdiv_h, float16_div, float16)
+-DO_3OP(gvec_fdiv_s, float32_div, float32)
+-DO_3OP(gvec_fdiv_d, float64_div, float64)
+-
+-DO_3OP(gvec_fmulx_h, helper_advsimd_mulxh, float16)
+-DO_3OP(gvec_fmulx_s, helper_vfp_mulxs, float32)
+-DO_3OP(gvec_fmulx_d, helper_vfp_mulxd, float64)
+-
+-DO_3OP(gvec_recps_h, helper_recpsf_f16, float16)
+-DO_3OP(gvec_recps_s, helper_recpsf_f32, float32)
+-DO_3OP(gvec_recps_d, helper_recpsf_f64, float64)
+-
+-DO_3OP(gvec_rsqrts_h, helper_rsqrtsf_f16, float16)
+-DO_3OP(gvec_rsqrts_s, helper_rsqrtsf_f32, float32)
+-DO_3OP(gvec_rsqrts_d, helper_rsqrtsf_f64, float64)
+-
+-DO_3OP(gvec_ah_recps_h, helper_recpsf_ah_f16, float16)
+-DO_3OP(gvec_ah_recps_s, helper_recpsf_ah_f32, float32)
+-DO_3OP(gvec_ah_recps_d, helper_recpsf_ah_f64, float64)
+-
+-DO_3OP(gvec_ah_rsqrts_h, helper_rsqrtsf_ah_f16, float16)
+-DO_3OP(gvec_ah_rsqrts_s, helper_rsqrtsf_ah_f32, float32)
+-DO_3OP(gvec_ah_rsqrts_d, helper_rsqrtsf_ah_f64, float64)
+-
+-DO_3OP(gvec_ah_fmax_h, helper_vfp_ah_maxh, float16)
+-DO_3OP(gvec_ah_fmax_s, helper_vfp_ah_maxs, float32)
+-DO_3OP(gvec_ah_fmax_d, helper_vfp_ah_maxd, float64)
+-
+-DO_3OP(gvec_ah_fmin_h, helper_vfp_ah_minh, float16)
+-DO_3OP(gvec_ah_fmin_s, helper_vfp_ah_mins, float32)
+-DO_3OP(gvec_ah_fmin_d, helper_vfp_ah_mind, float64)
+-
+-DO_3OP(gvec_fmax_b16, bfloat16_max, bfloat16)
+-DO_3OP(gvec_fmin_b16, bfloat16_min, bfloat16)
+-DO_3OP(gvec_fmaxnum_b16, bfloat16_maxnum, bfloat16)
+-DO_3OP(gvec_fminnum_b16, bfloat16_minnum, bfloat16)
+-DO_3OP(gvec_ah_fmax_b16, helper_sme2_ah_fmax_b16, bfloat16)
+-DO_3OP(gvec_ah_fmin_b16, helper_sme2_ah_fmin_b16, bfloat16)
+-
+-#endif
+-#undef DO_3OP
+-
+ /* Non-fused multiply-add (unlike float16_muladd etc, which are fused) */
+ static float16 float16_muladd_nf(float16 dest, float16 op1, float16 op2,
+                                  float_status *stat)
+@@ -1769,23 +1711,6 @@ DO_MLA_IDX(gvec_mls_idx_d, uint64_t, -, H8)
+ 
+ #undef DO_MLA_IDX
+ 
+-#define DO_FMUL_IDX(NAME, ADD, MUL, TYPE, H)                               \
+-void HELPER(NAME)(void *vd, void *vn, void *vm,                            \
+-                  float_status *stat, uint32_t desc)                       \
+-{                                                                          \
+-    intptr_t i, j, oprsz = simd_oprsz(desc);                               \
+-    intptr_t segment = MIN(16, oprsz) / sizeof(TYPE);                      \
+-    intptr_t idx = simd_data(desc);                                        \
+-    TYPE *d = vd, *n = vn, *m = vm;                                        \
+-    for (i = 0; i < oprsz / sizeof(TYPE); i += segment) {                  \
+-        TYPE mm = m[H(i + idx)];                                           \
+-        for (j = 0; j < segment; j++) {                                    \
+-            d[i + j] = ADD(d[i + j], MUL(n[i + j], mm, stat), stat);       \
+-        }                                                                  \
+-    }                                                                      \
+-    clear_tail(d, oprsz, simd_maxsz(desc));                                \
+-}
+-
+ #define nop(N, M, S) (M)
+ 
+ DO_FMUL_IDX(gvec_fmul_idx_b16, nop, bfloat16_mul, float16, H2)
+@@ -1793,14 +1718,6 @@ DO_FMUL_IDX(gvec_fmul_idx_h, nop, float16_mul, float16, H2)
+ DO_FMUL_IDX(gvec_fmul_idx_s, nop, float32_mul, float32, H4)
+ DO_FMUL_IDX(gvec_fmul_idx_d, nop, float64_mul, float64, H8)
+ 
+-#ifdef TARGET_AARCH64
+-
+-DO_FMUL_IDX(gvec_fmulx_idx_h, nop, helper_advsimd_mulxh, float16, H2)
+-DO_FMUL_IDX(gvec_fmulx_idx_s, nop, helper_vfp_mulxs, float32, H4)
+-DO_FMUL_IDX(gvec_fmulx_idx_d, nop, helper_vfp_mulxd, float64, H8)
+-
+-#endif
+-
+ #undef nop
+ 
+ /*
+@@ -1812,8 +1729,6 @@ DO_FMUL_IDX(gvec_fmla_nf_idx_s, float32_add, float32_mul, float32, H4)
+ DO_FMUL_IDX(gvec_fmls_nf_idx_h, float16_sub, float16_mul, float16, H2)
+ DO_FMUL_IDX(gvec_fmls_nf_idx_s, float32_sub, float32_mul, float32, H4)
+ 
+-#undef DO_FMUL_IDX
+-
+ #define DO_FMLA_IDX(NAME, TYPE, H, NEGX, NEGF)                             \
+ void HELPER(NAME)(void *vd, void *vn, void *vm, void *va,                  \
+                   float_status *stat, uint32_t desc)                       \
+@@ -2530,31 +2445,6 @@ void HELPER(neon_pmull_h)(void *vd, void *vn, void *vm, uint32_t desc)
+     clear_tail(d, 16, simd_maxsz(desc));
+ }
+ 
+-#ifdef TARGET_AARCH64
+-void HELPER(sve2_pmull_h)(void *vd, void *vn, void *vm, uint32_t desc)
+-{
+-    int shift = simd_data(desc) * 8;
+-    intptr_t i, opr_sz = simd_oprsz(desc);
+-    uint64_t *d = vd, *n = vn, *m = vm;
+-
+-    for (i = 0; i < opr_sz / 8; ++i) {
+-        d[i] = clmul_8x4_even(n[i] >> shift, m[i] >> shift);
+-    }
+-}
+-
+-void HELPER(sve2_pmull_d)(void *vd, void *vn, void *vm, uint32_t desc)
+-{
+-    intptr_t sel = H4(simd_data(desc));
+-    intptr_t i, opr_sz = simd_oprsz(desc);
+-    uint32_t *n = vn, *m = vm;
+-    uint64_t *d = vd;
+-
+-    for (i = 0; i < opr_sz / 8; ++i) {
+-        d[i] = clmul_32(n[2 * i + sel], m[2 * i + sel]);
+-    }
+-}
+-#endif
+-
+ #define DO_CMP0(NAME, TYPE, OP)                         \
+ void HELPER(NAME)(void *vd, void *vn, uint32_t desc)    \
+ {                                                       \
+@@ -2628,26 +2518,6 @@ DO_ABA(gvec_uaba_d, uint64_t)
+ 
+ #undef DO_ABA
+ 
+-#define DO_3OP_PAIR(NAME, FUNC, TYPE, H) \
+-void HELPER(NAME)(void *vd, void *vn, void *vm,                            \
+-                  float_status *stat, uint32_t desc)                       \
+-{                                                                          \
+-    ARMVectorReg scratch;                                                  \
+-    intptr_t oprsz = simd_oprsz(desc);                                     \
+-    intptr_t half = oprsz / sizeof(TYPE) / 2;                              \
+-    TYPE *d = vd, *n = vn, *m = vm;                                        \
+-    if (unlikely(d == m)) {                                                \
+-        m = memcpy(&scratch, m, oprsz);                                    \
+-    }                                                                      \
+-    for (intptr_t i = 0; i < half; ++i) {                                  \
+-        d[H(i)] = FUNC(n[H(i * 2)], n[H(i * 2 + 1)], stat);                \
+-    }                                                                      \
+-    for (intptr_t i = 0; i < half; ++i) {                                  \
+-        d[H(i + half)] = FUNC(m[H(i * 2)], m[H(i * 2 + 1)], stat);         \
+-    }                                                                      \
+-    clear_tail(d, oprsz, simd_maxsz(desc));                                \
+-}
+-
+ DO_3OP_PAIR(gvec_faddp_h, float16_add, float16, H2)
+ DO_3OP_PAIR(gvec_faddp_s, float32_add, float32, H4)
+ DO_3OP_PAIR(gvec_faddp_d, float64_add, float64, )
+@@ -2668,19 +2538,7 @@ DO_3OP_PAIR(gvec_fminnump_h, float16_minnum, float16, H2)
+ DO_3OP_PAIR(gvec_fminnump_s, float32_minnum, float32, H4)
+ DO_3OP_PAIR(gvec_fminnump_d, float64_minnum, float64, )
+ 
+-#ifdef TARGET_AARCH64
+-DO_3OP_PAIR(gvec_ah_fmaxp_h, helper_vfp_ah_maxh, float16, H2)
+-DO_3OP_PAIR(gvec_ah_fmaxp_s, helper_vfp_ah_maxs, float32, H4)
+-DO_3OP_PAIR(gvec_ah_fmaxp_d, helper_vfp_ah_maxd, float64, )
+-
+-DO_3OP_PAIR(gvec_ah_fminp_h, helper_vfp_ah_minh, float16, H2)
+-DO_3OP_PAIR(gvec_ah_fminp_s, helper_vfp_ah_mins, float32, H4)
+-DO_3OP_PAIR(gvec_ah_fminp_d, helper_vfp_ah_mind, float64, )
+-#endif
+-
+-#undef DO_3OP_PAIR
+-
+-#define DO_3OP_PAIR(NAME, FUNC, TYPE, H) \
++#define DO_3OP_PAIR_NO_STATUS(NAME, FUNC, TYPE, H) \
+ void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)  \
+ {                                                               \
+     ARMVectorReg scratch;                                       \
+@@ -2700,29 +2558,29 @@ void HELPER(NAME)(void *vd, void *vn, void *vm, uint32_t desc)  \
+ }
+ 
+ #define ADD(A, B) (A + B)
+-DO_3OP_PAIR(gvec_addp_b, ADD, uint8_t, H1)
+-DO_3OP_PAIR(gvec_addp_h, ADD, uint16_t, H2)
+-DO_3OP_PAIR(gvec_addp_s, ADD, uint32_t, H4)
+-DO_3OP_PAIR(gvec_addp_d, ADD, uint64_t, )
++DO_3OP_PAIR_NO_STATUS(gvec_addp_b, ADD, uint8_t, H1)
++DO_3OP_PAIR_NO_STATUS(gvec_addp_h, ADD, uint16_t, H2)
++DO_3OP_PAIR_NO_STATUS(gvec_addp_s, ADD, uint32_t, H4)
++DO_3OP_PAIR_NO_STATUS(gvec_addp_d, ADD, uint64_t, /**/)
+ #undef  ADD
+ 
+-DO_3OP_PAIR(gvec_smaxp_b, MAX, int8_t, H1)
+-DO_3OP_PAIR(gvec_smaxp_h, MAX, int16_t, H2)
+-DO_3OP_PAIR(gvec_smaxp_s, MAX, int32_t, H4)
++DO_3OP_PAIR_NO_STATUS(gvec_smaxp_b, MAX, int8_t, H1)
++DO_3OP_PAIR_NO_STATUS(gvec_smaxp_h, MAX, int16_t, H2)
++DO_3OP_PAIR_NO_STATUS(gvec_smaxp_s, MAX, int32_t, H4)
+ 
+-DO_3OP_PAIR(gvec_umaxp_b, MAX, uint8_t, H1)
+-DO_3OP_PAIR(gvec_umaxp_h, MAX, uint16_t, H2)
+-DO_3OP_PAIR(gvec_umaxp_s, MAX, uint32_t, H4)
++DO_3OP_PAIR_NO_STATUS(gvec_umaxp_b, MAX, uint8_t, H1)
++DO_3OP_PAIR_NO_STATUS(gvec_umaxp_h, MAX, uint16_t, H2)
++DO_3OP_PAIR_NO_STATUS(gvec_umaxp_s, MAX, uint32_t, H4)
+ 
+-DO_3OP_PAIR(gvec_sminp_b, MIN, int8_t, H1)
+-DO_3OP_PAIR(gvec_sminp_h, MIN, int16_t, H2)
+-DO_3OP_PAIR(gvec_sminp_s, MIN, int32_t, H4)
++DO_3OP_PAIR_NO_STATUS(gvec_sminp_b, MIN, int8_t, H1)
++DO_3OP_PAIR_NO_STATUS(gvec_sminp_h, MIN, int16_t, H2)
++DO_3OP_PAIR_NO_STATUS(gvec_sminp_s, MIN, int32_t, H4)
+ 
+-DO_3OP_PAIR(gvec_uminp_b, MIN, uint8_t, H1)
+-DO_3OP_PAIR(gvec_uminp_h, MIN, uint16_t, H2)
+-DO_3OP_PAIR(gvec_uminp_s, MIN, uint32_t, H4)
++DO_3OP_PAIR_NO_STATUS(gvec_uminp_b, MIN, uint8_t, H1)
++DO_3OP_PAIR_NO_STATUS(gvec_uminp_h, MIN, uint16_t, H2)
++DO_3OP_PAIR_NO_STATUS(gvec_uminp_s, MIN, uint32_t, H4)
+ 
+-#undef DO_3OP_PAIR
++#undef DO_3OP_PAIR_NO_STATUS
+ 
+ #define DO_VCVT_FIXED(NAME, FUNC, TYPE)                                 \
+     void HELPER(NAME)(void *vd, void *vn, float_status *stat, uint32_t desc) \
+@@ -2797,53 +2655,6 @@ DO_VRINT_RMODE(gvec_vrint_rm_s, helper_rints, uint32_t)
+ 
+ #undef DO_VRINT_RMODE
+ 
+-#ifdef TARGET_AARCH64
+-void HELPER(simd_tblx)(void *vd, void *vm, CPUARMState *env, uint32_t desc)
+-{
+-    const uint8_t *indices = vm;
+-    size_t oprsz = simd_oprsz(desc);
+-    uint32_t rn = extract32(desc, SIMD_DATA_SHIFT, 5);
+-    bool is_tbx = extract32(desc, SIMD_DATA_SHIFT + 5, 1);
+-    uint32_t table_len = desc >> (SIMD_DATA_SHIFT + 6);
+-    union {
+-        uint8_t b[16];
+-        uint64_t d[2];
+-    } result;
+-
+-    /*
+-     * We must construct the final result in a temp, lest the output
+-     * overlaps the input table.  For TBL, begin with zero; for TBX,
+-     * begin with the original register contents.  Note that we always
+-     * copy 16 bytes here to avoid an extra branch; clearing the high
+-     * bits of the register for oprsz == 8 is handled below.
+-     */
+-    if (is_tbx) {
+-        memcpy(&result, vd, 16);
+-    } else {
+-        memset(&result, 0, 16);
+-    }
+-
+-    for (size_t i = 0; i < oprsz; ++i) {
+-        uint32_t index = indices[H1(i)];
+-
+-        if (index < table_len) {
+-            /*
+-             * Convert index (a byte offset into the virtual table
+-             * which is a series of 128-bit vectors concatenated)
+-             * into the correct register element, bearing in mind
+-             * that the table can wrap around from V31 to V0.
+-             */
+-            const uint8_t *table = (const uint8_t *)
+-                aa64_vfp_qreg(env, (rn + (index >> 4)) % 32);
+-            result.b[H1(i)] = table[H1(index % 16)];
+-        }
+-    }
+-
+-    memcpy(vd, &result, 16);
+-    clear_tail(vd, oprsz, simd_maxsz(desc));
+-}
+-#endif
+-
+ /*
+  * NxN -> N highpart multiply
+  *
+diff --git a/target/arm/tcg/vec_helper64.c b/target/arm/tcg/vec_helper64.c
+new file mode 100644
+index 00000000000..249a257177e
+--- /dev/null
++++ b/target/arm/tcg/vec_helper64.c
+@@ -0,0 +1,142 @@
++/*
++ * ARM AdvSIMD / SVE Vector Operations
++ *
++ * Copyright (c) 2026 Linaro
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "helper.h"
++#include "helper-a64.h"
++#include "helper-sme.h"
++#include "helper-sve.h"
++#include "tcg/tcg-gvec-desc.h"
++#include "fpu/softfloat.h"
++#include "qemu/int128.h"
++#include "crypto/clmul.h"
++#include "vec_internal.h"
++
++DO_3OP(gvec_fdiv_h, float16_div, float16)
++DO_3OP(gvec_fdiv_s, float32_div, float32)
++DO_3OP(gvec_fdiv_d, float64_div, float64)
++
++DO_3OP(gvec_fmulx_h, helper_advsimd_mulxh, float16)
++DO_3OP(gvec_fmulx_s, helper_vfp_mulxs, float32)
++DO_3OP(gvec_fmulx_d, helper_vfp_mulxd, float64)
++
++DO_3OP(gvec_recps_h, helper_recpsf_f16, float16)
++DO_3OP(gvec_recps_s, helper_recpsf_f32, float32)
++DO_3OP(gvec_recps_d, helper_recpsf_f64, float64)
++
++DO_3OP(gvec_rsqrts_h, helper_rsqrtsf_f16, float16)
++DO_3OP(gvec_rsqrts_s, helper_rsqrtsf_f32, float32)
++DO_3OP(gvec_rsqrts_d, helper_rsqrtsf_f64, float64)
++
++DO_3OP(gvec_ah_recps_h, helper_recpsf_ah_f16, float16)
++DO_3OP(gvec_ah_recps_s, helper_recpsf_ah_f32, float32)
++DO_3OP(gvec_ah_recps_d, helper_recpsf_ah_f64, float64)
++
++DO_3OP(gvec_ah_rsqrts_h, helper_rsqrtsf_ah_f16, float16)
++DO_3OP(gvec_ah_rsqrts_s, helper_rsqrtsf_ah_f32, float32)
++DO_3OP(gvec_ah_rsqrts_d, helper_rsqrtsf_ah_f64, float64)
++
++DO_3OP(gvec_ah_fmax_h, helper_vfp_ah_maxh, float16)
++DO_3OP(gvec_ah_fmax_s, helper_vfp_ah_maxs, float32)
++DO_3OP(gvec_ah_fmax_d, helper_vfp_ah_maxd, float64)
++
++DO_3OP(gvec_ah_fmin_h, helper_vfp_ah_minh, float16)
++DO_3OP(gvec_ah_fmin_s, helper_vfp_ah_mins, float32)
++DO_3OP(gvec_ah_fmin_d, helper_vfp_ah_mind, float64)
++
++DO_3OP(gvec_fmax_b16, bfloat16_max, bfloat16)
++DO_3OP(gvec_fmin_b16, bfloat16_min, bfloat16)
++DO_3OP(gvec_fmaxnum_b16, bfloat16_maxnum, bfloat16)
++DO_3OP(gvec_fminnum_b16, bfloat16_minnum, bfloat16)
++DO_3OP(gvec_ah_fmax_b16, helper_sme2_ah_fmax_b16, bfloat16)
++DO_3OP(gvec_ah_fmin_b16, helper_sme2_ah_fmin_b16, bfloat16)
++
++#define nop(N, M, S) (M)
++
++DO_FMUL_IDX(gvec_fmulx_idx_h, nop, helper_advsimd_mulxh, float16, H2)
++DO_FMUL_IDX(gvec_fmulx_idx_s, nop, helper_vfp_mulxs, float32, H4)
++DO_FMUL_IDX(gvec_fmulx_idx_d, nop, helper_vfp_mulxd, float64, H8)
++
++#undef nop
++
++void HELPER(sve2_pmull_h)(void *vd, void *vn, void *vm, uint32_t desc)
++{
++    int shift = simd_data(desc) * 8;
++    intptr_t i, opr_sz = simd_oprsz(desc);
++    uint64_t *d = vd, *n = vn, *m = vm;
++
++    for (i = 0; i < opr_sz / 8; ++i) {
++        d[i] = clmul_8x4_even(n[i] >> shift, m[i] >> shift);
++    }
++}
++
++void HELPER(sve2_pmull_d)(void *vd, void *vn, void *vm, uint32_t desc)
++{
++    intptr_t sel = H4(simd_data(desc));
++    intptr_t i, opr_sz = simd_oprsz(desc);
++    uint32_t *n = vn, *m = vm;
++    uint64_t *d = vd;
++
++    for (i = 0; i < opr_sz / 8; ++i) {
++        d[i] = clmul_32(n[2 * i + sel], m[2 * i + sel]);
++    }
++}
++
++DO_3OP_PAIR(gvec_ah_fmaxp_h, helper_vfp_ah_maxh, float16, H2)
++DO_3OP_PAIR(gvec_ah_fmaxp_s, helper_vfp_ah_maxs, float32, H4)
++DO_3OP_PAIR(gvec_ah_fmaxp_d, helper_vfp_ah_maxd, float64, /**/)
++
++DO_3OP_PAIR(gvec_ah_fminp_h, helper_vfp_ah_minh, float16, H2)
++DO_3OP_PAIR(gvec_ah_fminp_s, helper_vfp_ah_mins, float32, H4)
++DO_3OP_PAIR(gvec_ah_fminp_d, helper_vfp_ah_mind, float64, /**/)
++
++void HELPER(simd_tblx)(void *vd, void *vm, CPUARMState *env, uint32_t desc)
++{
++    const uint8_t *indices = vm;
++    size_t oprsz = simd_oprsz(desc);
++    uint32_t rn = extract32(desc, SIMD_DATA_SHIFT, 5);
++    bool is_tbx = extract32(desc, SIMD_DATA_SHIFT + 5, 1);
++    uint32_t table_len = desc >> (SIMD_DATA_SHIFT + 6);
++    union {
++        uint8_t b[16];
++        uint64_t d[2];
++    } result;
++
++    /*
++     * We must construct the final result in a temp, lest the output
++     * overlaps the input table.  For TBL, begin with zero; for TBX,
++     * begin with the original register contents.  Note that we always
++     * copy 16 bytes here to avoid an extra branch; clearing the high
++     * bits of the register for oprsz == 8 is handled below.
++     */
++    if (is_tbx) {
++        memcpy(&result, vd, 16);
++    } else {
++        memset(&result, 0, 16);
++    }
++
++    for (size_t i = 0; i < oprsz; ++i) {
++        uint32_t index = indices[H1(i)];
++
++        if (index < table_len) {
++            /*
++             * Convert index (a byte offset into the virtual table
++             * which is a series of 128-bit vectors concatenated)
++             * into the correct register element, bearing in mind
++             * that the table can wrap around from V31 to V0.
++             */
++            const uint8_t *table = (const uint8_t *)
++                aa64_vfp_qreg(env, (rn + (index >> 4)) % 32);
++            result.b[H1(i)] = table[H1(index % 16)];
++        }
++    }
++
++    memcpy(vd, &result, 16);
++    clear_tail(vd, oprsz, simd_maxsz(desc));
++}
+diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+index cabf65e6236..5f591560551 100644
+--- a/target/arm/tcg/meson.build
++++ b/target/arm/tcg/meson.build
+@@ -33,7 +33,6 @@ arm_ss.add(files(
+   'm_helper.c',
+   'mve_helper.c',
+   'op_helper.c',
+-  'vec_helper.c',
+ ))
+ 
+ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+@@ -47,6 +46,7 @@ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+   'pauth_helper.c',
+   'sme_helper.c',
+   'sve_helper.c',
++  'vec_helper64.c',
+ ))
+ 
+ arm_common_system_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('cpu-v7m.c'))
+@@ -67,6 +67,7 @@ arm_common_system_ss.add(files(
+   'psci.c',
+   'tlb_helper.c',
+   'tlb-insns.c',
++  'vec_helper.c',
+   'vfp_helper.c',
+ ))
+ arm_user_ss.add(files(
+@@ -74,5 +75,6 @@ arm_user_ss.add(files(
+   'hflags.c',
+   'neon_helper.c',
+   'tlb_helper.c',
++  'vec_helper.c',
+   'vfp_helper.c',
+ ))
 -- 
 2.47.3
 

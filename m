@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F157BE9A053
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 17:20:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3299CE9A048
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 17:20:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vt7fQ-0005Mg-AM; Thu, 19 Feb 2026 12:18:20 -0500
+	id 1vt7fQ-0005Ml-Bn; Thu, 19 Feb 2026 12:18:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vt7fN-0005L0-Ge
+ id 1vt7fN-0005L4-Jm
  for qemu-arm@nongnu.org; Thu, 19 Feb 2026 12:18:17 -0500
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vt7fK-0000Pv-Ek
+ id 1vt7fL-0000QH-TX
  for qemu-arm@nongnu.org; Thu, 19 Feb 2026 12:18:17 -0500
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-b8850aa5b56so225137566b.2
- for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 09:18:14 -0800 (PST)
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-b8f8f2106f1so174791866b.2
+ for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 09:18:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771521492; x=1772126292; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=gadO7bigcRDHgxevTilDA1AZWO5dSY59yjXY5cBcG9g=;
- b=dqebgeBIkKBnOw5Z7Suz5g2vi22QfU6GNWD1VRfnWcrsekI4m8d44r7xdmmq63ja1O
- U+kVXkHkPOQy/FBAQMDqymIRB9bUmcPQJsls0SWy2fLsJ6F2pTJ3FsoAB5glL3t/qeL7
- dusdOXhEx9wAG+rgFUpeC9olDF36qQ1t2MyULse7Qqp312dIa3KkX0BRjyz2woraXl1K
- dcX4stwFKbpHDQBuEJwvxsjzfVr8Hp9+obFK9/2TH1gq63FOB70Aj/ET/SC14vgWuu34
- 88zYEBrZYNvcOis7l14FlWa523VxnJ1kgdTpzlEWeoAaqv88fvfmA0DJALvkblb/+/xc
- Z2Kg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771521492; x=1772126292;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1771521494; x=1772126294; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=gadO7bigcRDHgxevTilDA1AZWO5dSY59yjXY5cBcG9g=;
- b=f4iYewE1EILqwX4eG4O3PVLqmGarD9psw00WCv87GTQ4TdGn6w9Dw6KbTeVwNiX8i4
- p6kom17TpXvlCB5R4tY2LfDQIR3tdL+lzgR0vFqYjIEChHmhUb8rlsHPsDdS6uxOT9NN
- XffF8MGVt1gFzYXQHFGcXq8J2/yO+Sdg6PsJgj/3mjxG+dQeISEHC+qMIHsaDgwo/4JC
- Q3QRLdcS05OdI5HXfHQhakHlaWKh/XFxpMRKnb6QJaOXJaHYN7VxgoZ34yNgZh5xQHi3
- 8GXJpkxdAenEYZ4gfTmQ7A3SC7Adb+yMwDAr/aB+pSn87uwSsa/fTvPn3x5k8uTJ2pX8
- 560w==
+ bh=tmInN0JteBeMKRB6GTa7UJFQ9ygY8v6TAwibYQDcB7c=;
+ b=gNdPaKEmVv1lmFM13V7qEEktc0Kj9TrTuGt/Z2N4p8CGjCPQ33/JVdyf+KVVT86/4g
+ P8gYPIyrBvH6JkkgrD78URmSEQJsVlH+b3BfDpwME35PlA/fI+eb2j+kdil945/Hp5/M
+ xp78io6n1X9HMNBad1bCWCiLYhh+RJLVPtU66CdpFesTt2hlHp82G/cv6e8vQ2SGA5kH
+ 9i0OY8jy3j5zZ3ZGzRUuxy9sZNrOAYUcNPjzxa4NWdZzshEW/jytIMTzu9Vaz/srq8CT
+ TfxwwS7BH9st1EHKwSAlErxkvn73QLWRcdjJQWJFc2O9inMvr4y+vvW1f5M+SdV9ioWs
+ H8VA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1771521494; x=1772126294;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=tmInN0JteBeMKRB6GTa7UJFQ9ygY8v6TAwibYQDcB7c=;
+ b=a4zOQF5NmC45vTR4bD1r9EabxdcpjgRKfBiKCqQiD2KxDD0cT+C5JqCfyV8otOtbJI
+ lAI2c9/401SWY1KV9iIrGgiz3Pf95VuUcmLi16EnYOnzJT9ScufmmUTx8ZId/1PbKtFH
+ UOWeTvjIMxxrbt5mv7g1uCnMvDqXJxHmBJoRU/OZpZPx84y03aviOg6NomNIBZjEvALT
+ lyOAZAYDFnOdM/xBnxK1lOGADMl+CvzK8yusbNpR2Cs6bKHzdDAdepIYJHlhZT6YeVca
+ FszGte+W1PADglfZpizOVvJwwwvT7Lkwa4dM5/EFg9zRIPSV/haDcLVP7BxeqO+eR76g
+ f7Ew==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUHEGQm+1hBachA2AoR2xKB6NDRtX6tqj/w4BjDEu+9AYEKmwXEK4iizs3KlkWFg5ig4xO8gVf23A==@nongnu.org
-X-Gm-Message-State: AOJu0Yzl+mMD1kfeKwyTxoKu4cFt55jummruUbGEbbUPG79+mYQ2ifHF
- U2+S5MENFINQoxos5ziyCH6O/N9v7eCQtpjvaaFYB1zE/Zr8sOmZ3KRFvm80uxqBsWw=
-X-Gm-Gg: AZuq6aJs5Rtg/LwnJ5UBP9GqpQaff5LbblygIUo+yhqKTQETYUAWE56Qm6sGlBFhAS3
- IcREEFLGKndR28OAwz6xyTf0OPx7KyG91duDDSSJMCx4GFszsgZ1jWdvGDz98N2RSk2bIhnzX1L
- VJxPMVvyi1ycY9VAAdSiC6DDNISaG/cY8LA0RRcO/G0jDYjUsOUfUdW0u2rz9qEbOErhyKld+gH
- zr2Au3h/7QxOs9bAYjFbP9jKR/xq9eDflUxJ6egNQbe8S9dwwbypg/bOySe0p6mwAdOU6p2Erah
- hLA61Eyj6s6ij1Ye+OsFTuoFmIpKS8NZs+mXMzCbcS01rMZXfqqz3IHxn+JANivUeyFiPJLaK1Y
- UdFgp9UhWmcV9OkkYKaBnBoYo3UEiP6xcNQslSaTgogKda/vMT4E1sMah7JMEyqRsqNtX1AKSJ8
- 3UWKO8R9Sk+F4jHoaHkQnAxwA=
-X-Received: by 2002:a17:907:7fa5:b0:b8e:fe3c:2264 with SMTP id
- a640c23a62f3a-b8face2498amr1270538066b.41.1771521492121; 
- Thu, 19 Feb 2026 09:18:12 -0800 (PST)
+ AJvYcCUliuHZeVkwqBJp1vtZhmXnbHtY9ciVWFMxiVsKeBR7GL7bWfkXahWaFnq++3ZEKKVDF+Yl01FUug==@nongnu.org
+X-Gm-Message-State: AOJu0Yz6XcCsXDl/WhYbbUoMa+qLvvcEJH+99tc16heVnDHp6WGqjVRC
+ 9DfjgTzZRLZFB4KbydcAyfdGAopNsXV7/OLMKBPJ95KMmzZqi3ev4P6zizXb5qHglEQ=
+X-Gm-Gg: AZuq6aKjlFddFtkHW/aFv8wAm1vxpuw4s3rZrE+8RIUUcilkbLN2zlhmLhW7S0F+G6c
+ YdTYIY1kW9EIzywl721yhcA3XALN2lvW+yQSUF7FOsAnU/0CZ6saAVjtRk0u/Lj1wGj4jL5Prqy
+ yxepLZ3/hGwl+PtiUE/J9g069r9+6vFWT5JtgoZPeUTJE8PIX1csz2ukS0d+J141Zynnkix91N6
+ xgvrLNCL25eMqUwtDog+Qwq6wK8JLYPHtvtzIc2vH298Zgp8cS0QwQRT5IrzTm4vPJ9G0cVXdqM
+ tENeqluQMLX+0PC1B+dtpgaQ/8IBKR+nAnLwelX66al7rj1nrmjM6EATHYwiEyD0r16qbtFHjjg
+ Sud17lBDQT6M/S2Wmz8o1KCtCrkzJdtrMWL2PeCuI8+sBlcr7LGt8yakGZa+oDYJYwHzdgtJ2lS
+ hzrG3O8aL+IDqW2eRgmuaPtdw=
+X-Received: by 2002:a17:907:728d:b0:b88:47b4:7626 with SMTP id
+ a640c23a62f3a-b8fc3b66536mr1139397566b.27.1771521494227; 
+ Thu, 19 Feb 2026 09:18:14 -0800 (PST)
 Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b8fc735e4cbsm599432366b.13.2026.02.19.09.18.11
+ a640c23a62f3a-b8fc7385f5dsm591973166b.20.2026.02.19.09.18.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Thu, 19 Feb 2026 09:18:11 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 898D05F818;
+ by draig.lan (Postfix) with ESMTP id DCF205F8BA;
  Thu, 19 Feb 2026 17:18:10 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -84,23 +85,24 @@ Cc: Yoshinori Sato <yoshinori.sato@nifty.com>, qemu-arm@nongnu.org,
  Zhao Liu <zhao1.liu@intel.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Yanan Wang <wangyanan55@huawei.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH v2 00/14] cpu_reset clean-ups for arm, alpha, mips,
- m68k and tricore
-Date: Thu, 19 Feb 2026 17:17:56 +0000
-Message-ID: <20260219171810.602667-1-alex.bennee@linaro.org>
+Subject: [RFC PATCH v2 04/14] hw/m68k: update nextcube to 3-phase reset
+Date: Thu, 19 Feb 2026 17:18:00 +0000
+Message-ID: <20260219171810.602667-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260219171810.602667-1-alex.bennee@linaro.org>
+References: <20260219171810.602667-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,70 +118,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We tend to apply cpu_reset inconsistently throughout our various
-models which leads to unintended ordering dependencies. This got in
-the way in my last plugins series:
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-  https://patchew.org/QEMU/20251219190849.238323-1-alex.bennee@linaro.org/
-
-where I needed to shuffle things around to ensure that gdb register
-creation was done after dependant peripherals had created their cpu
-interfaces.
-
-Regardless of that we do have a proper reset interface now and most
-architectures have moved to it. This series attempts to clean-up the
-remaining cases with proper qemu_register_reset() calls so reset is
-called when we intend to.
-
+---
 v2
+  - re-written, tags dropped.
+  - favour cpu_reset over resettable_reset(cs)
+---
+ hw/m68k/next-cube.c | 23 +++++++++++++++++------
+ 1 file changed, 17 insertions(+), 6 deletions(-)
 
-I re-span this to address the missing cpu_reset Akihiko found
-troubling the alpha replay test:
-
-  Message-Id: <20260217-alpha-v1-0-0dcc708c9db3@rsg.ci.i.u-tokyo.ac.jp>
-  Date: Tue, 17 Feb 2026 15:34:28 +0900
-  Subject: [PATCH 0/2] Reapply "rcu: Unify force quiescent state"
-  From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-
-I also dropped the use of qemu_register_reset in favour of the proper
-3-phase APIs.
-
-Alex.
-
-Alex Bennée (14):
-  target/m68k: clean-up includes in cpu.c
-  target/m68k: initialise pc/sp vector during reset
-  hw/m68k: transition virt machine to multi-phase reset
-  hw/m68k: update nextcube to 3-phase reset
-  hw/m68k: update mcf5208evb to 3-phase reset
-  hw/m68k: update an5206 to 3-phase reset
-  hw/mips: defer finalising gcr_base until reset time
-  hw/mips: drop cpu_reset in mips_cpu_realizefn
-  target/tricore: move cpu_reset from tricore_cpu_realizefn
-  target/arm: remove extraneous cpu_reset from realizefn
-  hw/alpha: remove unused includes
-  hw/alpha: add a reset function for the clipper machine
-  target/alpha: move cpu reset into a proper reset function
-  include/hw: expand cpu_reset function docs
-
- include/hw/core/cpu.h |  3 +++
- include/hw/mips/cps.h | 14 +++++++++++++-
- target/alpha/cpu.h    |  2 ++
- target/m68k/cpu.h     |  2 ++
- hw/alpha/dp264.c      | 12 ++++++++++--
- hw/m68k/an5206.c      | 23 ++++++++++++++++-------
- hw/m68k/mcf5208.c     | 26 ++++++++++++--------------
- hw/m68k/next-cube.c   | 23 +++++++++++++++++------
- hw/m68k/virt.c        | 34 ++++++++++------------------------
- hw/mips/cps.c         | 26 +++++++++++++++++---------
- hw/misc/mips_cmgcr.c  |  1 -
- target/alpha/cpu.c    | 10 ++++++----
- target/arm/cpu.c      |  1 -
- target/m68k/cpu.c     | 41 +++++++++++++++++++++++++++++++++--------
- target/mips/cpu.c     |  1 -
- target/tricore/cpu.c  |  9 ++++++++-
- 16 files changed, 149 insertions(+), 79 deletions(-)
-
+diff --git a/hw/m68k/next-cube.c b/hw/m68k/next-cube.c
+index 26177c7b867..b10129dd9d7 100644
+--- a/hw/m68k/next-cube.c
++++ b/hw/m68k/next-cube.c
+@@ -16,6 +16,7 @@
+ #include "exec/cpu-interrupt.h"
+ #include "system/system.h"
+ #include "system/qtest.h"
++#include "system/reset.h"
+ #include "hw/core/irq.h"
+ #include "hw/m68k/next-cube.h"
+ #include "hw/core/boards.h"
+@@ -1249,6 +1250,19 @@ static const TypeInfo next_pc_info = {
+     .class_init = next_pc_class_init,
+ };
+ 
++static void next_cube_reset(MachineState *ms, ResetType type)
++{
++    CPUState *cs = first_cpu;
++    M68kCPU *cpu = M68K_CPU(cs);
++
++    qemu_devices_reset(type);
++    cpu_reset(cs);
++
++    /* Initialize CPU registers.  */
++    cpu->env.vbr = 0;
++    cpu->env.sr  = 0x2700;
++}
++
+ static void next_cube_init(MachineState *machine)
+ {
+     NeXTState *m = NEXT_MACHINE(machine);
+@@ -1266,10 +1280,6 @@ static void next_cube_init(MachineState *machine)
+     }
+     env = &cpu->env;
+ 
+-    /* Initialize CPU registers.  */
+-    env->vbr = 0;
+-    env->sr  = 0x2700;
+-
+     /* Peripheral Controller */
+     pcdev = qdev_new(TYPE_NEXT_PC);
+     object_property_set_link(OBJECT(pcdev), "cpu", OBJECT(cpu), &error_abort);
+@@ -1335,8 +1345,8 @@ static void next_cube_init(MachineState *machine)
+         /* Initial PC is always at offset 4 in firmware binaries */
+         ptr = rom_ptr(0x01000004, 4);
+         g_assert(ptr != NULL);
+-        env->pc = ldl_be_p(ptr);
+-        if (env->pc >= 0x01020000) {
++        cpu->env.direct_kernel_boot_pc = ldl_be_p(ptr);
++        if (env->direct_kernel_boot_pc >= 0x01020000) {
+             error_report("'%s' does not seem to be a valid firmware image.",
+                          bios_name);
+             exit(1);
+@@ -1355,6 +1365,7 @@ static void next_machine_class_init(ObjectClass *oc, const void *data)
+ 
+     mc->desc = "NeXT Cube";
+     mc->init = next_cube_init;
++    mc->reset = next_cube_reset;
+     mc->block_default_type = IF_SCSI;
+     mc->default_ram_size = RAM_SIZE;
+     mc->default_ram_id = "next.ram";
 -- 
 2.47.3
 

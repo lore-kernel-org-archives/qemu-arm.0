@@ -4,96 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F7EEE9A03B
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 10:35:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCDC4E9A03B
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 10:38:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vt1ME-000720-Tr; Thu, 19 Feb 2026 05:34:07 -0500
+	id 1vt1QV-0002JN-UO; Thu, 19 Feb 2026 05:38:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1vt1Ln-0006zv-Dy
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 05:33:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1vt1Lj-0005z4-7c
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 05:33:36 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771497213;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=GRCVPpgeeHHMPPQFmT5zXeVEj5NtVQ0fYgZWek8b+0Q=;
- b=AWleGMUNBQQhQjeCe6nNJIIlsnaxn1ljGz8yc8I6wOgacM3gKnLKiOg37ts51p1PXgQkbM
- KbYxXDQ/PMQjShxkSRO4mXRtlHirTcP2h9KO8hBaIaGZD6DfFi4X8lDdjXTCvtK+QxAxwr
- aQ5ZAvpC8uRtIyTvG2PJ4g1V2L4QyPc=
-Received: from mail-oo1-f72.google.com (mail-oo1-f72.google.com
- [209.85.161.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-194-KsIRQidKPdm0684-9io7XQ-1; Thu, 19 Feb 2026 05:33:32 -0500
-X-MC-Unique: KsIRQidKPdm0684-9io7XQ-1
-X-Mimecast-MFC-AGG-ID: KsIRQidKPdm0684-9io7XQ_1771497211
-Received: by mail-oo1-f72.google.com with SMTP id
- 006d021491bc7-678f3fef828so11999203eaf.1
- for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 02:33:32 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vt1QQ-00028a-3b
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 05:38:26 -0500
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vt1QN-0006hH-4g
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 05:38:24 -0500
+Received: by mail-ej1-x634.google.com with SMTP id
+ a640c23a62f3a-b8f97c626aaso105268866b.2
+ for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 02:38:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1771497501; x=1772102301; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=chsomSTiq2DFQ8k7peJmKeu4OQisuVdcYciTd1yL4pM=;
+ b=yPpuc0jZ0AePyUfTCqtdHtL8eu3ZxYHFjQ8YCj3QGHfnAkW9SmhrD3GFDTXsj9okmw
+ LJQKKvatzTV59f3aad4xr7xE0nbKECq/4tAbqaVdBc8DFKdM8o7y4LYaUbLScJQIzpJt
+ WqvL9ET/k0eJWTzLOYKOBHe4Bwdz5IFJd9nZ8FqVTgvY5qm/g0rxTEFYafTEVKHdxdFu
+ i9FUzKeRyLJnDd4XXvuXVDlNIys50y8IsbyKZRzqrbKWy0AEX8EAIHO79oy3+k7jhT1W
+ reqibNGNVsuWcw8vph+Jlj9kzKy6Yd/LhF76IxOlhMC0WP5koMSDPbS6vvl0Eb5etueh
+ jX8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771497211; x=1772102011;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=GRCVPpgeeHHMPPQFmT5zXeVEj5NtVQ0fYgZWek8b+0Q=;
- b=e/PQsv7eS/UXEUTItLx4Hu45wQBqTw1JO7KXekZrod6EmtGTyW5u/bpTJ+GuXVObfK
- Ki4s2y+t1UR6f4BUgJQR3LL27FgPKrY/HxetSs2vpfkFdHsTIOc+g619JNWJzTKCw+af
- 2/K9vdzcJd0f0p04rT5McKxKJdG+jKO5ZCV8CsSZKGMhaDn7RSycr02ArLRK1VL53QfW
- bnS0b0ZZ+nDci+9iPcUNfwhgOyGCM8HZ+H2NchDbHeGh5MM6EHCMRXoQgBvP/1/bBFtD
- Wcntbe7QETATPxdcPCdcefAjv13B2fk5AkaCQSejZiLrz+p051u18pmwokPxUSd/w5yY
- WFMw==
+ d=1e100.net; s=20230601; t=1771497501; x=1772102301;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=chsomSTiq2DFQ8k7peJmKeu4OQisuVdcYciTd1yL4pM=;
+ b=V23XRQwg74yzxsspFseh+Yo0Z2HcsWLnjgBkcwmQoP3V+qarOkJcE5GojJ2cVeCKTD
+ P8D6tA74kRCRDYszYoGfDxxjphKsZh/uZUj0TlwUOyEPy8IjS/AXJmWHMMQ/M/1fmxnd
+ RHgptl/cg+6jMDpA0KwyvbKVFhQH0FFOlXu8gXzRo949YKWWQxqo0B6Ou/3VTw7hjpej
+ 8Z0ml9ORjCjHJejaZ1iVO+mzXqHLzcpS53d0kdhUJRr+HC8Ob4RvGKzaYxBM1K+tYMcc
+ 2vUauRvoG6uQn3+WfeKA+qdlhe1UGbrTOrKP1iD9BlfCpIsdoV/olSO6c7PyFtP0JjhK
+ ZUvg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWXrBcKJTVTxdWKx69yX9N10c9DJvx12vijIU1ilPbYy8OC7/YcF0iK6+dJtYxhTasDlZjvQ+VjjA==@nongnu.org
-X-Gm-Message-State: AOJu0YxIc1m2beKz68KGn4DloiBKLUe5lpgHFP0O3lXOGyayyjeSbbCD
- 33WYIyxJauNNoQ7irLysMnranAUAySJzYL9K9D7xmuajOJBFW7HN/omRT7Xm5+Xvbz7UaB+xl8Y
- mz8pWytZYmL6StHTBCke70IguTx7i0hquFqF5N6PXmVm1EELOMMixcCIOhCKm0Kws+hv1Vc3wXU
- nqgbXBKIG/H9iJAwVGUEPEtTYAzexY
-X-Gm-Gg: AZuq6aKPdOMr0vFYS6IsJWIEgIYzEyYs4lRPajC0TNWGDxBA57TGbcRdnDAn12Y0pAR
- WkKDhOQSu+C3F7YvmeIGhRPIc5r1GrfgtLXqIA6Krr3XkjotXyJqIVtuu3evY3rd92UjfildZGc
- MBT7kMDLsQhyyof3CTXGrKQUCbfqY3rjBH/ITkMfrFRcrP9dq3RHHsgEBi65aONCd1RHFUpEmH5
- wBN4XgU
-X-Received: by 2002:a05:6820:1795:b0:659:9a49:904d with SMTP id
- 006d021491bc7-679a71e01f9mr2829523eaf.24.1771497211415; 
- Thu, 19 Feb 2026 02:33:31 -0800 (PST)
-X-Received: by 2002:a05:6820:1795:b0:659:9a49:904d with SMTP id
- 006d021491bc7-679a71e01f9mr2829510eaf.24.1771497210947; Thu, 19 Feb 2026
- 02:33:30 -0800 (PST)
+ AJvYcCXbzVSvehE0/QaQPzdaX+l/8MbF0UH5xbCtaZ9yDHAY+Vrf/gQkjMy9RMSNjDTZGBLun1W3+IdiOw==@nongnu.org
+X-Gm-Message-State: AOJu0YzlCy0uBjwULsMcvYXfyDF0wsxXvkYjbFnGHQRUAiCAeJMIphK1
+ GBQRTUIeDTkh45UEzuHPB2YfGF0z6XPv21nwr9DFBWjhPYpsPBPsKCap/GTqoA12yck=
+X-Gm-Gg: AZuq6aIpeukLURnwU4WShg+hTfUKNOwbOI1X+mw3PcDrP3nndVi7fQ8t43RBkzPPoo9
+ IO6PBVvVEWk+6ki+BYZNAGxL6cIaVd3Kww6DBHILV0Z/+1p114HgmEKAWG0INKa58j320sKazbn
+ JskW/u8KrhLdZPaiKbmEfC32otY0ko3EIU8aUpBYovh8FE7IKKcghNQhj45t/ugh1QbGDeqFp9f
+ h5cUp5LFp0iTEpGYsuj5Ue0EPVAJr7PaBg8O4NntZ8L9ldUoB5mPml7Ugo9c1gBzIjhoQrI/Ebj
+ EV7mmP0jwIs7hFNnpu2h4R1tRW6KawPnlrI8vEtvvt2h9cn8QQjd9bch1FTtM1zEHNZssaFAC3s
+ LBLrmLYTccNCpnOlJd92qIMiyIpz96Y8StddGz1HCtHbJOQFI36IBctUSXT4L+wbu3kuaQpOYVi
+ 5FtdJYEWjTHusQNUctc+wNo1I=
+X-Received: by 2002:a17:906:eec9:b0:b83:95c8:15d0 with SMTP id
+ a640c23a62f3a-b904dea764bmr141004466b.52.1771497500874; 
+ Thu, 19 Feb 2026 02:38:20 -0800 (PST)
+Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-65bad19bfd3sm3860538a12.2.2026.02.19.02.38.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 19 Feb 2026 02:38:18 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 108FB5F805;
+ Thu, 19 Feb 2026 10:38:16 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org,  Brad Smith <brad@comstyle.com>,  Warner Losh
+ <imp@bsdimp.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,  Thomas
+ Huth <thuth@redhat.com>,  Kyle Evans <kevans@freebsd.org>,  Peter Maydell
+ <peter.maydell@linaro.org>,  qemu-arm@nongnu.org
+Subject: Re: [PATCH 6/6] tests/functional: add Arm VBSA uefi conformance test
+In-Reply-To: <82942191-d0a6-4393-846d-b04e3cb009ce@linaro.org> (Pierrick
+ Bouvier's message of "Fri, 13 Feb 2026 10:49:20 -0800")
+References: <20260213154859.1551283-1-alex.bennee@linaro.org>
+ <20260213154859.1551283-7-alex.bennee@linaro.org>
+ <82942191-d0a6-4393-846d-b04e3cb009ce@linaro.org>
+User-Agent: mu4e 1.14.0-pre1; emacs 30.1
+Date: Thu, 19 Feb 2026 10:38:15 +0000
+Message-ID: <87o6ll6mso.fsf@draig.linaro.org>
 MIME-Version: 1.0
-References: <20260211122759.125094-1-mbawa@redhat.com>
- <CAFEAcA_+eqfTy+7U9igTscue5SMURm3C9yUXvdFTon+ZgSJfAA@mail.gmail.com>
- <CAFEAcA_fR8gQc-f1qhcNb7tD0_EfqfNJEhS_tSg354Rhpb=fQw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_fR8gQc-f1qhcNb7tD0_EfqfNJEhS_tSg354Rhpb=fQw@mail.gmail.com>
-From: Mohammadfaiz Bawa <mbawa@redhat.com>
-Date: Thu, 19 Feb 2026 16:03:15 +0530
-X-Gm-Features: AaiRm51d3jCQRdJLBGchRk917SaOMN8Wes2GY1GN2FwGaEDp0LP5cI4DXPxS3f0
-Message-ID: <CAJg9KkzORMAeQUiEm6ue9k5yfhw3KTtJkS_Bk=U1roTMsk_CZg@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/virt: Add virtio-transports property
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org, 
- philmd@linaro.org, cohuck@redhat.com, eric.auger@redhat.com, 
- sebott@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: gQZEpIWFTN3P2JURbdb0YB5zdN_xBWlQVWmaz2f5uYQ_1771497211
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mbawa@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.043,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,83 +111,178 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Feb 19, 2026 at 3:43=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
-.org> wrote:
->
-> On Wed, 18 Feb 2026 at 19:01, Peter Maydell <peter.maydell@linaro.org> wr=
-ote:
-> >
-> > On Wed, 11 Feb 2026 at 12:28, Mohammadfaiz Bawa <mbawa@redhat.com> wrot=
-e:
-> > >
-> > > Windows ARM64 guests detect virtio-mmio devices declared in ACPI
-> > > tables even when no backend is attached. This causes "Unknown
-> > > devices" (ACPI\LNRO0005) to appear in Device Manager.
-> > >
-> > > Until Windows fixes that by supporting, adding a new machine
-> > > property 'virtio-transports' to control the number of
-> > > virtio-mmio transports instantiated. The default remains
-> > > NUM_VIRTIO_TRANSPORTS (32) for backward compatibility.
-> > > Setting it to 0 allows users to disable virtio-mmio entirely.
-> > >
-> > > Usage: -machine virt,virtio-transports=3D0
-> > >
-> > > Signed-off-by: Mohammadfaiz Bawa <mbawa@redhat.com>
-> >
-> > Applied to target-arm.next, thanks -- but please could you check
-> > up with the ACPI spec about whether it says anything about what
-> > to report for empty transports? If it says we should or if it's
-> > just vague we should probably match the x86 microvm behaviour
-> > of not showing empty transports, since they can never be
-> > hotplugged after startup. (This might need to be tied to
-> > a machine-version, not sure.) Maybe we should also not report
-> > them in the dtb?
->
-> Looking again at this patch, I had a couple of niggles, so
-> I've dropped this patch from target-arm.next for the moment.
->
-> (1) we need to document the new property in
->     docs/system/arm/virt.rst. Something like
+Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
 
-Right, sorry about missing that , I'll add the suggested documentation.
+> On 2/13/26 7:48 AM, Alex Benn=C3=A9e wrote:
+>> The VBSA test is a subset of the wider Arm architecture compliance
+>> suites (ACS) which validate machines meet particular minimum set of
+>> requirements. The VBSA is for virtual machines so it makes sense we
+>> should check the -M virt machine is compliant.
+>> Fortunately there are prebuilt binaries published via github so all
+>> we
+>> need to do is build an EFI partition and place things in the right
+>> place.
+>> There are some additional Linux based tests which are left for
+>> later.
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> ---
+>>   tests/functional/aarch64/meson.build       |  1 +
+>>   tests/functional/aarch64/test_virt_vbsa.py | 99 ++++++++++++++++++++++
+>>   2 files changed, 100 insertions(+)
+>>   create mode 100755 tests/functional/aarch64/test_virt_vbsa.py
+>> diff --git a/tests/functional/aarch64/meson.build
+>> b/tests/functional/aarch64/meson.build
+>> index 49eca120589..7ea8c22b048 100644
+>> --- a/tests/functional/aarch64/meson.build
+>> +++ b/tests/functional/aarch64/meson.build
+>> @@ -46,6 +46,7 @@ tests_aarch64_system_thorough =3D [
+>>     'tuxrun',
+>>     'virt',
+>>     'virt_gpu',
+>> +  'virt_vbsa',
+>>     'xen',
+>>     'xlnx_versal',
+>>   ]
+>> diff --git a/tests/functional/aarch64/test_virt_vbsa.py b/tests/function=
+al/aarch64/test_virt_vbsa.py
+>> new file mode 100755
+>> index 00000000000..53cabf9d6c5
+>> --- /dev/null
+>> +++ b/tests/functional/aarch64/test_virt_vbsa.py
+>> @@ -0,0 +1,99 @@
+>> +#!/usr/bin/env python3
+>> +#
+>> +# Functional test that runs the Arm VBSA conformance tests.
+>> +#
+>> +# Copyright (c) 2026 Linaro Ltd.
+>> +#
+>> +# Author:
+>> +#  Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> +#
+>> +# SPDX-License-Identifier: GPL-2.0-or-later
+>> +
+>> +import shutil
+>> +from subprocess import check_call, DEVNULL
+>> +
+>> +from qemu_test import QemuSystemTest, Asset
+>> +from qemu_test import wait_for_console_pattern, get_qemu_img, skipIfMis=
+singCommands
+>> +from qemu_test import exec_command_and_wait_for_pattern as ec_and_wait
+>> +
+>> +
+>> +@skipIfMissingCommands("mformat", "mcopy", "mmd")
+>> +class Aarch64VirtMachine(QemuSystemTest):
+>> +    KERNEL_COMMON_COMMAND_LINE =3D 'printk.time=3D0 '
+>> +    timeout =3D 360
+>> +
+>> +    def wait_for_console_pattern(self, success_message, vm=3DNone):
+>> +        wait_for_console_pattern(self, success_message,
+>> +                                 failure_message=3D'Kernel panic - not =
+syncing',
+>> +                                 vm=3Dvm)
+>> +
+>
+> May be worth adding a comment with README url:
+> https://github.com/ARM-software/sysarch-acs/blob/main/docs/vbsa/README.md
+>
+>> +    ASSET_VBSA_EFI =3D Asset('https://github.com/ARM-software/sysarch-a=
+cs/raw/refs/heads/main'
+>> +                           '/prebuilt_images/VBSA/v25.12_VBSA_0.7.0/Vbs=
+a.efi',
+>> +                           '80f37d2fb86d152d95dec4d05ff099c9e47ee8a8931=
+4268e08056b0e1359e1fa')
+>> +
+>> +    ASSET_BSA_SHELL =3D Asset('https://github.com/ARM-software/bsa-acs/=
+raw/refs/heads/main/'
+>> +                            'prebuilt_images/BSA_DT/v20.05_05_ALPHA/She=
+ll.efi',
+>> +                            '763e7b293fa9d1582153ea8fd0cf60e2a7a87d092d=
+35d342cf9b3b697f47b588')
+>> +
+>> +    def test_aarch64_vbsa_uefi_tests(self):
+>> +        """
+>> +        Launch the UEFI based VBSA test from an EFI file-system
+>> +        """
+>> +
+>> +        self.vm.set_console()
+>> +
+>> +        # virt machine wi
+>> +        self.set_machine('virt')
+>> +        self.vm.add_args('-M', 'virt,gic-version=3Dmax,virtualization=
+=3Don')
+>> +        self.vm.add_args('-cpu', 'max','-m', '1024')
+>> +
+>> +        # We will use the QEMU firmware blobs to boot
+>> +        code_path =3D self.build_file('pc-bios', 'edk2-aarch64-code.fd')
+>> +        vars_source =3D self.build_file('pc-bios', 'edk2-arm-vars.fd')
+>> +        vars_path =3D self.scratch_file('vars.fd')
+>> +        shutil.copy(vars_source, vars_path)
+>> +
+>> +        self.vm.add_args('-drive', f'if=3Dpflash,format=3Draw,readonly=
+=3Don,file=3D{code_path}')
+>> +        self.vm.add_args('-drive', f'if=3Dpflash,format=3Draw,file=3D{v=
+ars_path}')
+>> +
+>> +        # Build an EFI FAT32 file-system for the UEFI tests
+>> +        vbsa_efi =3D self.ASSET_VBSA_EFI.fetch()
+>> +        bsa_shell =3D self.ASSET_BSA_SHELL.fetch()
+>> +
+>> +        img_path =3D self.scratch_file('vbsa.img')
+>> +        qemu_img =3D get_qemu_img(self)
+>> +        check_call([qemu_img, 'create', '-f', 'raw', img_path, '64M'],
+>> +                   stdout=3DDEVNULL, stderr=3DDEVNULL)
+>> +
+>> +        check_call(['mformat', '-i', img_path, '-v', 'VBSA', '::'],
+>> +                   stdout=3DDEVNULL, stderr=3DDEVNULL)
+>> +
+>> +        check_call(['mmd', '-i', img_path, '::/EFI'],
+>> +                   stdout=3DDEVNULL, stderr=3DDEVNULL)
+>> +
+>> +        check_call(['mmd', '-i', img_path, '::/EFI/BOOT'],
+>> +                   stdout=3DDEVNULL, stderr=3DDEVNULL)
+>> +
+>> +        check_call(['mcopy', '-i', img_path, bsa_shell, '::/EFI/BOOT/BO=
+OTAA64.EFI'],
+>> +                   stdout=3DDEVNULL, stderr=3DDEVNULL)
+>> +
+>> +        check_call(['mcopy', '-i', img_path, vbsa_efi, '::/Vbsa.efi'],
+>> +                   stdout=3DDEVNULL, stderr=3DDEVNULL)
+>> +
+>> +        self.vm.add_args('-drive', f'file=3D{img_path},format=3Draw,if=
+=3Dnone,id=3Ddrive0')
+>> +        self.vm.add_args('-device', 'virtio-blk-pci,drive=3Ddrive0')
+>> +
+>> +        self.vm.launch()
+>> +
+>> +        # wait for EFI prompt
+>> +        self.wait_for_console_pattern('Shell>')
+>> +
+>> +        # Start the VBSA tests
+>> +        ec_and_wait(self, "FS0:Vbsa.efi", 'VBSA Architecture Compliance=
+ Suite')
+>> +
+>> +        # could we parse the summary somehow?
+>> +
+>> +        self.wait_for_console_pattern('VBSA tests complete. Reset the s=
+ystem.')
+>> +
+>
+> What happens in case there is an error, does the test app hangs, or
+> still exit with message under?
+
+The failures I had were generally hangs but ideally we would parse the
+the summary data and generate our response based on that. Unfortunately
+that is at odds with the current send/wait for pass/fail message
+infrastructure.
 
 >
-> --- a/docs/system/arm/virt.rst
-> +++ b/docs/system/arm/virt.rst
-> @@ -226,6 +226,11 @@ dtb-randomness
->  dtb-kaslr-seed
->    A deprecated synonym for dtb-randomness.
+> If it always exit with this message, whether we have an error or not,
+> then the test is not really checking anything.
 >
-> +virtio-transports
-> +  Set the number of virtio-mmio transports to create (between 0 and 32;
-> +  the default is 32).  Unused transports are harmless, but you can
-> +  use this property to avoid exposing them to the guest if you wish.
-> +
->  x-oem-id
->    Set string (up to 6 bytes) to override the default value of field
-> OEMID in ACPI
->    table header.
->
-> would do.
->
-> (2) I think we should call the property virtio-mmio-transports,
-> to make it clearer to the user that this is MMIO-specific and
-> nothing to do with the much more commonly used PCI virtio.
-> What do you think?
+>> +if __name__ =3D=3D '__main__':
+>> +    QemuSystemTest.main()
 
-Yes, virtio-mmio-transports was my initial pick for the property, but I dro=
-pped
-it thinking it was too long.But, I think the clarity here is needed.
-I'll rename it.
-
-Will send v2 with both changes shortly.
-
-Thanks,
-Faiz
-
->
-> thanks
-> -- PMM
->
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

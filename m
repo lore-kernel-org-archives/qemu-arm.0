@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19476E9A04A
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 14:42:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 484B0E9A04A
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 14:50:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vt577-0008T8-Br; Thu, 19 Feb 2026 09:34:45 -0500
+	id 1vt5MF-0003xz-4z; Thu, 19 Feb 2026 09:50:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vt575-0008Rk-Lm
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:34:43 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ id 1vt5Lo-0003jv-LQ
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:50:06 -0500
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vt573-0002ud-Is
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:34:43 -0500
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-4362507f0feso662995f8f.0
- for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 06:34:41 -0800 (PST)
+ id 1vt5Lc-000835-Gx
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:49:51 -0500
+Received: by mail-wr1-x442.google.com with SMTP id
+ ffacd0b85a97d-436e8758b91so812334f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 06:49:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1771511680; x=1772116480; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1771512583; x=1772117383; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=EInj+fhc6M2pb85jhJLuLr62nyN+XzT/wpGcmMowrRw=;
- b=EN2JNFGW8WWQam9yEepLvVWDalY2tGR7A1uzQNYo9kUbUUdg8Z4cte8/ryXNrR0uCo
- KN3qeyfX1UQCy7v3cvOqxAOQtHuJsGE+y+6VLi6RfGTIBPcc3jhsVm2WBM780MY900hM
- yYGL3ZJXvkTPsEghlbkuwANzmsOVF3xiHEgTSVlliiopg0BHABvpnnedEsN/bGcmi2yD
- +FJXmFJ/pLUsVkIgRU4iljgK4DW0vh2+zLlL0QIHne7NyR8ooKhwnO9+alp8xG4sAj5S
- jDO6tMcB72J9HEMZva/iSUjg8aRY3tWT0N+gXBXRF5raacl4f9ZKVvquDtLh5vfNsamC
- +SLA==
+ bh=7XwGSsZ5E+pHUCrk55JcghHWJX/O0i4AExLwj5l49n4=;
+ b=K/w290nKKKt1soKtvxdJyH+R6S/vaw/eVDjuDvTc7uPW+NnN1yzP8DK71HipO30dF2
+ O+npBL/5VYVv1lt+w6A6MlaxYCY37pTR0ATiYaDWwufS+7fgRVCH0ikOVZKn6PpJe2aK
+ wkX5RnyLIaDv+GmlM4c1YrFv8EKOA8y9bKP3+8QsQqO1SlbPZzQke5RnqNkZnfFeTkBo
+ dBhUHqwXa3zHKN1pWa7RrXoE2pevIMwSTcYENOMxfrW+A5CxElAdEDMmQsU0vQe2cf+i
+ rkWXTZK8jipGStR9y8Wv8PK7LMWGYbWEZssxlzHXAHVTmTd+tKBCxc8fd8VGof4Gnj+8
+ TYEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771511680; x=1772116480;
+ d=1e100.net; s=20230601; t=1771512583; x=1772117383;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=EInj+fhc6M2pb85jhJLuLr62nyN+XzT/wpGcmMowrRw=;
- b=EyxwupcB9W1PzLc8FksQr2Au328zgRgaWfMD2c3nxae49cl9gA2v2eC/8n7x2ONMz/
- PbUbb0O8dtSIRnj11fVYx3XfsS1mHmHW75rG+18NDsu1aP+y6ElJpbCnbEV5sFwPqbnG
- u/D359BHuS1BpD9d6gM7KfCI/tPg5vTIw4WwsdmV2Pew1cl4imUs59j/W52OqKwBPT2a
- UOo1QFyPnPj2fVUIqXtwzVTvjRVhWVEr3hfH60eelxp2ydruLHF1YLACYdDcYzP0eyPG
- 0wSyOhbLTo4JLuDTJLavV0FLkcV9X/0MeeUegPl+rVfvLigjd2MUlOs9Y6BAAgX3/yGe
- MtWw==
-X-Gm-Message-State: AOJu0YyRL2tY8YZmeQxv2LxgsuyHAS2zr8Iq3l6RYc1nbfq1Rf9v4jtm
- 800/iEyJPiQRkWjfr6zBQjjeAeg4clFIMZ4hX2JQ98KGuVhPNTd1pPMm
-X-Gm-Gg: AZuq6aKl7iEwhwx96uzHAQePQSywJ77I/HnYuW3baTVv1wYHy3/oRNIOcvwm0aGzuZu
- YEHpFLJ0DDFd3fFggUaDZMyShzUTSP46WGXcbahquWx6Q7+BBcz3LOl0eZKSYDhIlLNFj8jdsXW
- Y4y+idyiXVcpd8Q2+Fn80y8LW4d1LtReGdOBwTlEMRoRO/8OK8+0eId2xCOnF988MystgzI2uTa
- xwH5+0TITT3VsBaL5WELI4ZmDUS+/WfBwrteXT5s6jqv72w8z1P22fdV1MLIam6OLOqYZD9wihY
- mojLrp57X3mZO5lMkiAgYlqDKJ9IGiR52992wEfXW4PuRDX/OtUzOKE3N0k0gDs/W7WviRF55f4
- toZpbZWkYcRH6UrQP65JqtTiDiQ587Sn7B/UViGkJc4sApXxyOT3q9GTso9fNQ0s+amqh39oD0X
- 6EcMAIC0OJUsdpEBOOHcSubgD3cPpxEDQetJlXVjQEQqbLG59ThtK7CT82NZJownMvi6E1
-X-Received: by 2002:a05:6000:2dc9:b0:435:960c:5286 with SMTP id
- ffacd0b85a97d-43796b0539emr38003517f8f.58.1771511679534; 
- Thu, 19 Feb 2026 06:34:39 -0800 (PST)
+ bh=7XwGSsZ5E+pHUCrk55JcghHWJX/O0i4AExLwj5l49n4=;
+ b=sPlQ57CqHVhRBe2C/wFttvLTGedvBiG4l5v2S98MFJb9y9rv60oPKsq5AvZWqey4Yx
+ 28NzEYssVewGSc/VsaYzgHoN2AcgSRbIgSXLwM7HUDudB3am9gmFBLmYNGZYMnMCpM1A
+ eTUnaBT0RwZsHk/6F6LJgOIk6yGOhWLtgoJgFKc7YHn73MmBWGRslgWzoWGvV422tGYX
+ qEm3CHY+PFLC3TuOSc/NxEBtSkZGHlYlDZQGhXaP6G0OFVonJ2FLVNUgcn6MkfjMfPcT
+ LoFSL+SEXpJq9N/EIHUygDzA95OTrloDeOKL0VxQaRPCYcRuEWMxe4d/Pd5dfOrvTL9L
+ Zt8w==
+X-Gm-Message-State: AOJu0Yw70kusOKG0voB9n+cN1mVAle11WWn2JSn8Le3+HXTLQMyTt30D
+ aHrrAAjJGBIDTig85EV35DeOxTUP39ljaZ7yi85YcMdkNTVuGi/4PwHP
+X-Gm-Gg: AZuq6aKOikErqg9hRYqs3yMFVSvKjiMn+LhcCVp7cyTFwB84n2xxX2QpVpO4aax9Yc0
+ Ln8ua+dxmlGYPLJ/T2br96DpY0XSw10CE61l7OGgrOitriQsam9flj0L4msGgPAsXgli0iCElAD
+ 9LkK78efx9mK3UEZKetxz5FFNPMHbyT6fxEyhqmMxQC9h5L086si5qPly6YwDZAd6w+kznmYxY+
+ oO75EBSOouy5c/8mnAp2zzgwyXffKecLER5zHW4ERlRWeBu8gHoWuyrG24ouxbr9Z7tu4nWMtc2
+ AXmJxqjJ9tzCaE9P2Aa0Ks9Rut5P5dWwvWhypB0jYgvsiE7mBq38GP4jcha3ciudp1hEeJPOdCK
+ Ec0IPXnO5Wj8P+PcgA+/ERgrl8Q6K2EfwXIbsI+bUspKfqvmedtL1qmpccC2i1XyOjn+joedO7I
+ uB4E7WBkgbq86aSdRsnJrtDoZT+rY7ru9wABNUqQsXBTgGgQRj2gbL29LofvJpa2zPZGCJ
+X-Received: by 2002:a05:6000:178f:b0:435:92d3:d9b4 with SMTP id
+ ffacd0b85a97d-4379db6483dmr36012522f8f.26.1771512582570; 
+ Thu, 19 Feb 2026 06:49:42 -0800 (PST)
 Received: from thinkpad-t470s.. (93-143-129-182.adsl.net.t-com.hr.
  [93.143.129.182]) by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-43796abd259sm52022770f8f.24.2026.02.19.06.34.38
+ ffacd0b85a97d-43796ac8d82sm50163087f8f.31.2026.02.19.06.49.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Feb 2026 06:34:39 -0800 (PST)
+ Thu, 19 Feb 2026 06:49:42 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
@@ -71,26 +71,27 @@ Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu,
- Alistair Francis <alistair.francis@wdc.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Subject: [PATCH v2 02/33] system/device_tree: add few parsing and traversal
- helpers
-Date: Thu, 19 Feb 2026 15:33:01 +0100
-Message-ID: <20260219143332.3316679-3-ruslichenko.r@gmail.com>
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>
+Subject: [PATCH v2 21/33] hw/core/sysbus: implement FDT_GENERIC_MMAP_CLASS
+ interface
+Date: Thu, 19 Feb 2026 15:48:49 +0100
+Message-ID: <20260219144901.3317747-3-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260219143332.3316679-1-ruslichenko.r@gmail.com>
+In-Reply-To: <20260219144901.3317747-1-ruslichenko.r@gmail.com>
 References: <20260219143332.3316679-1-ruslichenko.r@gmail.com>
+ <20260219144901.3317747-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x442.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,303 +109,77 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-The patch adds few utility functions for parsing FDT nodes.
-The helpers are required for upcoming Hardware device tree
-feature.
+The patch implements FDTGenericMMap interface for sysbus
+device class. The implementation maps device's MMIO regions
+based on 'reg' property in the Device tree.
+
+This enables automatic memory mapping for the most QEMU
+peripherals without the need of device-specific FDT
+handling code.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- include/system/device_tree.h |  30 +++++
- system/device_tree.c         | 221 +++++++++++++++++++++++++++++++++++
- 2 files changed, 251 insertions(+)
+ hw/core/sysbus.c | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
-diff --git a/include/system/device_tree.h b/include/system/device_tree.h
-index 5667ff9538..9d6b570bdb 100644
---- a/include/system/device_tree.h
-+++ b/include/system/device_tree.h
-@@ -116,6 +116,11 @@ const void *qemu_fdt_getprop(void *fdt, const char *node_path,
- uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
-                                const char *property, int cell_id,
-                                Error **errp);
-+
-+const void *qemu_fdt_getprop_inherited(void *fdt, const char *node_path,
-+                             const char *property, int *lenp, Error **errp);
-+uint32_t qemu_fdt_getprop_cell_inherited(void *fdt, const char *node_path,
-+                               const char *property, int cell_id, Error **errp);
- uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
- uint32_t qemu_fdt_alloc_phandle(void *fdt);
- int qemu_fdt_nop_node(void *fdt, const char *node_path);
-@@ -191,6 +196,31 @@ int qemu_fdt_setprop_sized_cells_from_array(void *fdt,
-                                                 qdt_tmp);                 \
-     })
+diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+index 3adf2f2faf..78b7827708 100644
+--- a/hw/core/sysbus.c
++++ b/hw/core/sysbus.c
+@@ -23,6 +23,8 @@
+ #include "monitor/monitor.h"
+ #include "system/address-spaces.h"
  
-+typedef struct QEMUDevtreeProp {
-+    const char *name;
-+    int len;
-+    const void *value;
-+} QEMUDevtreeProp;
++#include "hw/core/fdt_generic_util.h"
 +
-+/* node queries */
-+
-+int qemu_devtree_get_num_children(void *fdt, const char *node_path);
-+int qemu_devtree_get_children(void *fdt, const char *node_path,
-+                                     int max_paths, char **returned_paths);
-+int qemu_devtree_num_props(void *fdt, const char *node_path);
-+QEMUDevtreeProp *qemu_devtree_get_props(void *fdt, const char *node_path);
-+
-+/* node getters */
-+
-+int qemu_devtree_get_node_by_phandle(void *fdt, char *node_path, int phandle);
-+int qemu_devtree_getparent(void *fdt, char *node_path,
-+                           const char *current);
-+
-+/* misc */
-+
-+int devtree_get_num_nodes(void *fdt);
-+
-+#define DT_PATH_LENGTH 1024
+ static void sysbus_dev_print(Monitor *mon, DeviceState *dev, int indent);
+ static char *sysbus_get_fw_dev_path(DeviceState *dev);
  
- /**
-  * qemu_fdt_randomize_seeds:
-diff --git a/system/device_tree.c b/system/device_tree.c
-index d2db7bd355..fc34c660db 100644
---- a/system/device_tree.c
-+++ b/system/device_tree.c
-@@ -464,6 +464,103 @@ uint32_t qemu_fdt_getprop_cell(void *fdt, const char *node_path,
-     return be32_to_cpu(p[cell_id]);
+@@ -291,11 +293,32 @@ static char *sysbus_get_fw_dev_path(DeviceState *dev)
+     return g_strdup(qdev_fw_name(dev));
  }
  
-+const void *qemu_fdt_getprop_inherited(void *fdt, const char *node_path,
-+                             const char *property, int *lenp, Error **errp)
++static bool sysbus_parse_reg(FDTGenericMMap *obj, FDTGenericRegPropInfo reg,
++                             Error **errp)
 +{
-+    const void *found_val = NULL;
-+    int found_len = 0;
-+    int curr_offset = 0;
-+    int temp_len;
-+    char **tokens;
-+    char **iter;
++    int i;
 +
-+    found_val = fdt_getprop(fdt, 0, property, &found_len);
-+
-+    tokens = g_strsplit(node_path + 1, "/", -1);
-+
-+    for (iter = tokens; *iter != NULL; iter++) {
-+        if (**iter == '\0') {
-+            continue;
++    for (i = 0; i < reg.n; ++i) {
++        MemoryRegion *mr_parent = (MemoryRegion *)
++            object_dynamic_cast(reg.parents[i], TYPE_MEMORY_REGION);
++        if (!mr_parent) {
++            /* evil */
++            mr_parent = get_system_memory();
 +        }
-+
-+        curr_offset = fdt_subnode_offset(fdt, curr_offset, *iter);
-+        if (curr_offset < 0) {
-+            error_setg(errp, "%s: Path '%s' not found",
-+                       __func__, *iter);
-+            g_strfreev(tokens);
-+            return NULL;
-+        }
-+
-+        const void *val = fdt_getprop(fdt, curr_offset, property, &temp_len);
-+        if (val) {
-+            found_val = val;
-+            found_len = temp_len;
-+        }
++        memory_region_add_subregion_overlap(mr_parent, reg.a[i],
++                                 sysbus_mmio_get_region(SYS_BUS_DEVICE(obj), i),
++                                 reg.p[i]);
 +    }
-+    g_strfreev(tokens);
-+
-+    if (!found_val) {
-+        error_setg(errp, "%s: Property '%s' not found",
-+                   __func__, property);
-+        return NULL;
-+    }
-+
-+    if (lenp) {
-+        *lenp = found_len;
-+    }
-+
-+    return found_val;
++    return false;
 +}
 +
-+uint32_t qemu_fdt_getprop_cell_inherited(void *fdt, const char *node_path,
-+                               const char *property, int cell_id, Error **errp)
-+{
-+    int len;
-+    const uint32_t *p;
-+
-+    p = qemu_fdt_getprop_inherited(fdt, node_path, property, &len, errp);
-+    if (!p) {
-+        return 0;
-+    }
-+    if (len < (cell_id + 1) * 4) {
-+        error_setg(errp,
-+                   "%s: %s/%s is too short, need %d bytes for cell ind %d",
-+                   __func__, node_path, property, (cell_id + 1) * 4, cell_id);
-+        return 0;
-+    }
-+    return be32_to_cpu(p[cell_id]);
-+}
-+
-+int qemu_devtree_getparent(void *fdt, char *node_path, const char *current)
-+{
-+    const char *sep;
-+    int len;
-+
-+    if (!current || !node_path) {
-+        return -FDT_ERR_NOTFOUND;
-+    }
-+
-+    if (current[0] == '/' && current[1] == 0) {
-+        return -FDT_ERR_NOTFOUND;
-+    }
-+
-+    sep = strrchr(current, '/');
-+    if (!sep) {
-+        return -FDT_ERR_BADPATH;
-+    }
-+
-+    if (sep == current) {
-+        len = 1;
-+    } else {
-+        len = sep - current;
-+    }
-+
-+    memcpy(node_path, current, len);
-+    node_path[len] = '\0';
-+
-+    return 0;
-+}
-+
- uint32_t qemu_fdt_get_phandle(void *fdt, const char *path)
+ static void sysbus_device_class_init(ObjectClass *klass, const void *data)
  {
-     uint32_t r;
-@@ -631,6 +728,130 @@ out:
-     return ret;
- }
- 
-+int qemu_devtree_num_props(void *fdt, const char *node_path)
-+{
-+    int offset = fdt_path_offset(fdt, node_path);
-+    int ret = 0;
+     DeviceClass *k = DEVICE_CLASS(klass);
++    FDTGenericMMapClass *fmc = FDT_GENERIC_MMAP_CLASS(klass);
+     k->realize = sysbus_device_realize;
+     k->bus_type = TYPE_SYSTEM_BUS;
++    fmc->parse_reg = sysbus_parse_reg;
+     /*
+      * device_add plugs devices into a suitable bus.  For "real" buses,
+      * that actually connects the device.  For sysbus, the connections
+@@ -354,6 +377,11 @@ static const TypeInfo sysbus_types[] = {
+         .abstract       = true,
+         .class_size     = sizeof(SysBusDeviceClass),
+         .class_init     = sysbus_device_class_init,
++        .interfaces = (InterfaceInfo[]) {
++        { TYPE_FDT_GENERIC_MMAP },
++        { },
++    },
 +
-+    for (offset = fdt_first_property_offset(fdt, offset);
-+            offset != -FDT_ERR_NOTFOUND;
-+            offset = fdt_next_property_offset(fdt, offset)) {
-+        ret++;
-+    }
-+    return ret;
-+}
-+
-+QEMUDevtreeProp *qemu_devtree_get_props(void *fdt, const char *node_path)
-+{
-+    QEMUDevtreeProp *ret = g_new0(QEMUDevtreeProp,
-+                                    qemu_devtree_num_props(fdt, node_path) + 1);
-+    int offset = fdt_path_offset(fdt, node_path);
-+    int i = 0;
-+
-+    for (offset = fdt_first_property_offset(fdt, offset);
-+            offset != -FDT_ERR_NOTFOUND;
-+            offset = fdt_next_property_offset(fdt, offset)) {
-+        const char *propname;
-+        const void *val = fdt_getprop_by_offset(fdt, offset, &propname,
-+                                                    &ret[i].len);
-+
-+        ret[i].name = propname;
-+        ret[i].value = val;
-+        i++;
-+    }
-+    return ret;
-+}
-+
-+int qemu_devtree_get_children(void *fdt, const char *node_path,
-+                                     int max_paths, char **returned_paths) {
-+    int count = 0;
-+    int subnode;
-+    const char *name;
-+    int offset = fdt_path_offset(fdt, node_path);
-+
-+    if (offset < 0) {
-+        return offset;
-+    }
-+
-+    bool is_root = (strcmp(node_path, "/") == 0);
-+
-+    fdt_for_each_subnode(subnode, fdt, offset) {
-+        if (count >= max_paths) {
-+            break;
-+        }
-+        name = fdt_get_name(fdt, subnode, NULL);
-+        if (returned_paths) {
-+            returned_paths[count] = g_strdup_printf("%s/%s",
-+                                                is_root ? "" : node_path, name);
-+        }
-+
-+        ++count;
-+    }
-+
-+    return count;
-+}
-+
-+int qemu_devtree_get_num_children(void *fdt, const char *node_path)
-+{
-+    int count = 0;
-+    int subnode;
-+    int offset = fdt_path_offset(fdt, node_path);
-+
-+    if (offset < 0) {
-+        return offset;
-+    }
-+
-+    fdt_for_each_subnode(subnode, fdt, offset) {
-+        ++count;
-+    }
-+
-+    return count;
-+}
-+
-+int qemu_devtree_get_node_by_phandle(void *fdt, char *node_path, int phandle)
-+{
-+    int offset = 0, cur_depth = 0;
-+    int path_lens[64] = { 0 };
-+
-+    for (offset = 0; offset >= 0; offset = fdt_next_node(fdt, offset,
-+                                                         &cur_depth)) {
-+        if (cur_depth > 64) {
-+            break;
-+        }
-+        const char *name = fdt_get_name(fdt, offset, NULL);
-+
-+        int parent_len = (cur_depth > 0) ? path_lens[cur_depth - 1] : 0;
-+        int len = snprintf(node_path + parent_len,
-+                             DT_PATH_LENGTH - parent_len,
-+                             "%s%s",
-+                             (parent_len > 1) ? "/" : "",
-+                             (cur_depth == 0) ? "/" : name);
-+
-+        path_lens[cur_depth] = parent_len + len;
-+
-+        if (fdt_get_phandle(fdt, offset) == phandle) {
-+            return 0;
-+        }
-+    }
-+
-+    return -FDT_ERR_NOTFOUND;
-+}
-+
-+int devtree_get_num_nodes(void *fdt)
-+{
-+    int num_nodes = 0;
-+    int depth = 0, offset = 0;
-+
-+    for (;;) {
-+        offset = fdt_next_node(fdt, offset, &depth);
-+        num_nodes++;
-+        if (offset <= 0 || depth <= 0) {
-+            break;
-+        }
-+    }
-+    return num_nodes;
-+}
-+
- void qmp_dumpdtb(const char *filename, Error **errp)
- {
-     ERRP_GUARD();
+     },
+     {
+         .name           = TYPE_DYNAMIC_SYS_BUS_DEVICE,
 -- 
 2.43.0
 

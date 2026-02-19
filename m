@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFC70E9A048
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 14:39:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C846E9A048
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 14:40:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vt57j-0000PQ-8o; Thu, 19 Feb 2026 09:35:23 -0500
+	id 1vt57A-0008W2-D4; Thu, 19 Feb 2026 09:34:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vt57c-0000Ms-KV
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:35:19 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ id 1vt578-0008Tl-77
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:34:46 -0500
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vt57M-00031t-UU
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:35:02 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-4362c635319so966906f8f.2
- for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 06:35:00 -0800 (PST)
+ id 1vt576-0002vy-0m
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:34:45 -0500
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-4376acce52eso651873f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 06:34:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1771511699; x=1772116499; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1771511682; x=1772116482; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kBtU3uaEPwuPpRBvsvyPYMG98mE7sqDUzmaB8W9wpLg=;
- b=IfoByRr/u5+unoFB/JOLfdTKk7IJmgkVx0Ag5eRE40zyk499SUVaRX8F21BccADkEi
- TT+mIc4MIVesQp5eU8h6ay2U8hzueZGYVzV4r0DQlg1VymQnbucWkGpT+JR9Ygj1SK/K
- 6liKALA5oELBCh+lLF9Jx7Spaj5xtKQTdeTlDssRV+y63hD84bKE37GW48kD6hy+63E8
- kjDGtgdi/9bjBJx2D1XVV9HNHyfBdyMsoL93cdjzGLSxAL7YWnX5N7pObTho+2ECxsJY
- Yv3vv5Duejgs7Sa6F+vpHmhkDq7jJhrQAYfysNvXLRaAI3xJciaL+VuKcePQ2zUE8suB
- UIuQ==
+ bh=MEJ+cQW0XDvgt8fKdFK82Ac1+oKK3ySwvUaxyxGmSvw=;
+ b=kecuM3vbUDbUxA2qAzdl4aKmtzLojYRKCVvsaZLzjLOwYKxxSkcyWgLhdrBJJ0kSrT
+ Yy+VRGIRJhpCFTl6DLkxFf2igrWhBBO1r2dMBTjU7LWvK9ojRgbXxLL9mpn18aMWEQ41
+ Vu9HBrN4x5+xuvmGgDGtp09YyEePMBEfPlPyA3OKbd8kXG4uoZTK3vchzW25fMcj3DtD
+ A2yjOsrYrWmGjxEDfsmzAIyeiuSutpLpXl82xKzN4xxrFT9/9MWtKc0gCv26Kitqub7O
+ /UpTqv99fvev9+ShIYXEZcm0Ns1yixjyb7Mrzs8U49wQkAKH7IxzxBZdt/MK9ZE+uFoq
+ d+vA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771511699; x=1772116499;
+ d=1e100.net; s=20230601; t=1771511682; x=1772116482;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=kBtU3uaEPwuPpRBvsvyPYMG98mE7sqDUzmaB8W9wpLg=;
- b=YTh2GOXm4QEzXlYvW8pA3cXXNtSjB03NITry6XAQNgqpgvv0wKJWhTQE3JgkcvYQRW
- igB0UT21493NqLUGUdXoYjTX6cewpQh946zv0o1rU39lhSt3J5+DecmnaVKS1QhBOqly
- IlDVHH+KV8Wv45uZIyAn1+XPV1FG6vUD/lY147vJI5awBAzozOZwkGWKWcBQ3nfeHX6h
- EZV69jDH8EMVMqzCB3uKy5dWz6fj23dN3QVIzLdA15RMZshekdqYCAToofj184Zm2uhI
- sSCb+Da0KTzI+AVb3ZisyzM5Tx0vkKh7uskveNyXE9/4i6Chj0yMEph9RanTzTJ77JtU
- Q/6Q==
-X-Gm-Message-State: AOJu0YzoQR12aBe7CWc4hh0SiGDyGw8P3BgjZscSbZoPRZQ007J96Ail
- T6bagDlLAo89tg8JM3hRd9uKmJ/r5reJQlB+TJLDrCOe+yObkwc2mpZR
-X-Gm-Gg: AZuq6aLpsp21swM0RhXAp0QcYgNd74HDFKDyqjAEPUPuI6zf9FnE0exhFTRFnJ3Am44
- 6TAiYuscqJEMMDAnVaX4bIZ9cWXpSohmMxjjTzRHH47s41LkrpXIN9Ml3DszMshxTCzqy9G5NSB
- 1qH5g8+j/r164s3pOMeCYljtnWT0u1kq2sOuTfIGcUY7BbZiVxtq8fwpRrfnSx4K4E4h3R1sLHF
- l+5mgfl3wnTQ/KEAFeSrkmD4+51kv8KB2etCoIlQm0X+eQ+R5T3M+sjwrDhJBb2SvIDZ5WJEcaJ
- j9KY3W+g56y97Zw52d7Gl94+NnZoPJP8/BeeIklH9UJjg2G2LX9bdkEdYIEw05gSHAQXWDZ2I9z
- HRFcN6Q93AVPZeDjirWNyvts0NdOX4s42xg34FL31fu/ARo79+uB3HROvStLYQz04gZZNxYoooi
- I7fMoclah22nOj/WiLgekLQnLskSpm+GjjB/ZWDXHN3/a0aSYT4uUb1U02wpX07NExTNgc
-X-Received: by 2002:a05:6000:2f86:b0:437:722d:5c6b with SMTP id
- ffacd0b85a97d-43958df34bbmr8901419f8f.9.1771511699392; 
- Thu, 19 Feb 2026 06:34:59 -0800 (PST)
+ bh=MEJ+cQW0XDvgt8fKdFK82Ac1+oKK3ySwvUaxyxGmSvw=;
+ b=OpSFd7PgnVXP2NwzoCJnoogX67/TlEtmAG1DAk7AhzqngdREroLOCBt5LOBwLSkbc0
+ 3Z4MNtKkfFpixuWH+4zTkY0BJhrnmschEgaCJTUug6tAPhfcVJGydl+FNaEGHJLy/gq1
+ gYGvAoLEOsRZsuVh1k9LLy94S11rz/OZVQQAEsNfq9tyS2iNjnRk7Y8K/LKZw60G0D9U
+ HeFVd7tN0tIHn5TkPPNWpbjTRbCRUDjqXpiuRE/ZPh9uMjGc4YRb7WvWwFH5NqyD/Evk
+ lH+Y1YdkGmuCQ539q5y3CFCqqqOVyCG3ZYN8BT7NrOgrLYYv7bY8KEgo55uzMSyQQDzD
+ M7jg==
+X-Gm-Message-State: AOJu0Yy0H5fVlH+JJ4xDLYdDXXvbAKJLZ4sNpg5YxtyRnyZgzP141HVu
+ ZRMgo6q+nIj/iwNkQQlfrwBF5MB9ZMM/PEmunYzMkL+DbmxikrlCL7Ty
+X-Gm-Gg: AZuq6aLlgMHcYsuFA+bD+KukdoqTLrml12TXzD7bS+dse6xCwpLPXgQ0QxAlCDub6no
+ oqg0Md/NWGt1Eo+WXh/qjLD5XgDD4pHOFOeRQv1LneFRFtAwylDmDGDtbBcsXD201kujzWKrXoI
+ v7mzJA1ZZbTaUC7b9q/kl1opVkfkqfCDZe/6ome3HJbOLg7j0OdFm+Fejslv2mXAikcOUcLQCWb
+ QiET/UL42dVNIrPVRwetQ2JcMN6rP7RYqW/FrUEuhppezblj1zF6W3cdsmD9xiLGDV0lX6Ib72p
+ r19wWbHFOaeY81VUtNditrdCNWBUkQEG5b7o2xbnHXqXj0Mff9Ad1Gk1a9kel0Vnc+OQx6E07Vm
+ Ig5vXLfHAi8HdmnGzM1Hz4dmkXRAYe92gyuoXPvEJxTG2Fhl21ilgGXXRj8r1QUdt/85+8VD4zg
+ zG+6eD67Hhbn3N4UIhP12qxZ4zzJq+lpVg/7x0ulXbpuZSJN8wjT2Cn4ZHauQ6eEgFxvgc
+X-Received: by 2002:a05:6000:4283:b0:435:e520:d1d7 with SMTP id
+ ffacd0b85a97d-43958e554a3mr9872115f8f.63.1771511682257; 
+ Thu, 19 Feb 2026 06:34:42 -0800 (PST)
 Received: from thinkpad-t470s.. (93-143-129-182.adsl.net.t-com.hr.
  [93.143.129.182]) by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-43796abd259sm52022770f8f.24.2026.02.19.06.34.58
+ ffacd0b85a97d-43796abd259sm52022770f8f.24.2026.02.19.06.34.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Feb 2026 06:34:58 -0800 (PST)
+ Thu, 19 Feb 2026 06:34:41 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
@@ -71,16 +71,16 @@ Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
-Subject: [PATCH v2 16/33] hw/core/fdt_generic_util: Connect device irqs
-Date: Thu, 19 Feb 2026 15:33:15 +0100
-Message-ID: <20260219143332.3316679-17-ruslichenko.r@gmail.com>
+Subject: [PATCH v2 04/33] hw/core: introduce generic FDT device model registry
+Date: Thu, 19 Feb 2026 15:33:03 +0100
+Message-ID: <20260219143332.3316679-5-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260219143332.3316679-1-ruslichenko.r@gmail.com>
 References: <20260219143332.3316679-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,244 +105,256 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-The patch implements IRQ wiring logic for fdt created
-devices.
+Introduce infrastructure to instantiate device models
+directly from the device tree.
 
-The wiring performed in two stages. As devices are
-created, their IRQs saved in the list.
-After all devices processed, fdt_init_all_irqs() goes
-through all IRQs and does actual wiring. For IRQs
-which have multiple source, shared IRQ handler
-allocated.
+This includes the registry of known device models with
+associated init functions and key API methods to
+operate it.
 
-For interrupt controllers with auto_parent callback
-implemented and their fdt node has 'interrupt and
-'interrupts-extended' properties empty,
-the auto_parent() will be called to connect them
-to their interrupt-parent, for example to CPUs.
+The MIT license of fdt_generic.c preserved as in original
+file from https://github.com/Xilinx/qemu.git repo.
+
+The license for fdt_generic.h derived from matching
+fdt_generic.c file.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/fdt_generic_util.c    | 154 ++++++++++++++++++++++++++++++++++
- include/hw/core/fdt_generic.h |  12 +++
- 2 files changed, 166 insertions(+)
+ hw/core/fdt_generic.c         | 139 ++++++++++++++++++++++++++++++++++
+ include/hw/core/fdt_generic.h |  78 +++++++++++++++++++
+ 2 files changed, 217 insertions(+)
+ create mode 100644 hw/core/fdt_generic.c
+ create mode 100644 include/hw/core/fdt_generic.h
 
-diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
-index 838ed9a85c..63390e2f17 100644
---- a/hw/core/fdt_generic_util.c
-+++ b/hw/core/fdt_generic_util.c
-@@ -75,6 +75,88 @@ static void fdt_get_irq_info_from_intc(FDTMachineInfo *fdti, qemu_irq *ret,
-                                        uint32_t *cells, uint32_t num_cells,
-                                        uint32_t max, Error **errp);
- 
-+typedef struct QEMUIRQSharedState {
-+    qemu_irq sink;
-+    int num;
-+    bool (*merge_fn)(bool *, int);
-+/* FIXME: remove artificial limit */
-+#define MAX_IRQ_SHARED_INPUTS 256
-+    bool inputs[MAX_IRQ_SHARED_INPUTS];
-+} QEMUIRQSharedState;
+diff --git a/hw/core/fdt_generic.c b/hw/core/fdt_generic.c
+new file mode 100644
+index 0000000000..d3ab8f9132
+--- /dev/null
++++ b/hw/core/fdt_generic.c
+@@ -0,0 +1,139 @@
++// SPDX-License-Identifier: MIT
++/*
++ * Tables of FDT device models and their init functions. Keyed by compatibility
++ * strings, device instance names.
++ *
++ * Copyright (c) 2010 PetaLogix Qld Pty Ltd.
++ * Copyright (c) 2010 Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>.
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
 +
-+static bool qemu_irq_shared_or_handler(bool *inputs, int n)
++#include "qemu/osdep.h"
++#include "hw/core/fdt_generic.h"
++#include "hw/core/qdev-properties.h"
++#include "qemu/log.h"
++
++#ifndef FDT_GENERIC_ERR_DEBUG
++#define FDT_GENERIC_ERR_DEBUG 0
++#endif
++#define DB_PRINT(lvl, ...) do { \
++    if (FDT_GENERIC_ERR_DEBUG > (lvl)) { \
++        qemu_log_mask(LOG_FDT, ": %s: ", __func__); \
++        qemu_log_mask(LOG_FDT, ## __VA_ARGS__); \
++    } \
++} while (0)
++
++#define FDT_GENERIC_MAX_PATTERN_LEN 1024
++
++typedef struct TableListNode {
++    struct TableListNode *next;
++    char key[FDT_GENERIC_MAX_PATTERN_LEN];
++    FDTInitFn fdt_init;
++    void *opaque;
++} TableListNode;
++
++/* add a node to the table specified by *head_p */
++
++static void add_to_table(
++        FDTInitFn fdt_init,
++        const char *key,
++        void *opaque,
++        TableListNode **head_p)
 +{
-+    int i;
-+
-+    assert(n < MAX_IRQ_SHARED_INPUTS);
-+
-+    for (i = 0; i < n; ++i) {
-+        if (inputs[i]) {
-+            return true;
-+        }
-+    }
-+    return false;
++    TableListNode *nn = malloc(sizeof(*nn));
++    nn->next = *head_p;
++    strcpy(nn->key, key);
++    nn->fdt_init = fdt_init;
++    nn->opaque = opaque;
++    *head_p = nn;
 +}
 +
-+static void qemu_irq_shared_handler(void *opaque, int n, int level)
-+{
-+    QEMUIRQSharedState *s = opaque;
++/* FIXME: add return codes that differentiate between not found and error */
 +
-+    assert(n < MAX_IRQ_SHARED_INPUTS);
-+    s->inputs[n] = level;
-+    qemu_set_irq(s->sink, s->merge_fn(s->inputs, s->num));
++/*
++ * search a table for a key string and call the fdt init function if found.
++ * Returns 0 if a match is found, 1 otherwise
++ */
++
++static int fdt_init_search_table(
++        char *node_path,
++        FDTMachineInfo *fdti,
++        const char *key, /* string to match */
++        TableListNode **head) /* head of the list to search */
++{
++    TableListNode *iter;
++
++    for (iter = *head; iter != NULL; iter = iter->next) {
++        if (!strcmp(key, iter->key)) {
++            if (iter->fdt_init) {
++                return iter->fdt_init(node_path, fdti, iter->opaque);
++            }
++            return 0;
++        }
++    }
++
++    return 1;
 +}
 +
-+static void fdt_init_all_irqs(FDTMachineInfo *fdti)
++TableListNode *compat_list_head;
++
++void add_to_compat_table(FDTInitFn fdt_init, const char *compat, void *opaque)
 +{
-+    while (fdti->irqs) {
-+        FDTIRQConnection *first = fdti->irqs;
-+        qemu_irq sink = first->irq;
-+        bool (*merge_fn)(bool *, int) = first->merge_fn;
-+        int num_sources = 0;
-+        FDTIRQConnection *irq;
-+
-+        for (irq = first; irq; irq = irq->next) {
-+            if (irq->irq == sink) { /* Same sink */
-+                num_sources++;
-+            }
-+        }
-+        if (num_sources > 1) {
-+            QEMUIRQSharedState *s = g_malloc0(sizeof *s);
-+            s->sink = sink;
-+            s->merge_fn = merge_fn;
-+            qemu_irq *sources = qemu_allocate_irqs(qemu_irq_shared_handler, s,
-+                                                   num_sources);
-+            for (irq = first; irq; irq = irq->next) {
-+                if (irq->irq == sink) {
-+                    char *shared_irq_name = g_strdup_printf("shared-irq-%p",
-+                                                            *sources);
-+
-+                    if (irq->merge_fn != merge_fn) {
-+                        fprintf(stderr, "ERROR: inconsistent IRQ merge fns\n");
-+                        exit(1);
-+                    }
-+
-+                    object_property_add_child(OBJECT(irq->dev), shared_irq_name,
-+                                              OBJECT(*sources));
-+                    g_free(shared_irq_name);
-+                    irq->irq = *(sources++);
-+                    s->num++;
-+                }
-+            }
-+        }
-+        DB_PRINT(0, "%s: connected to %s irq line %d (%s)\n",
-+                 first->sink_info ? first->sink_info : "",
-+                 object_get_canonical_path(OBJECT(first->dev)),
-+                 first->i, first->name ? first->name : "");
-+
-+        qdev_connect_gpio_out_named(DEVICE(first->dev), first->name, first->i,
-+                                    first->irq);
-+        fdti->irqs = first->next;
-+        g_free(first);
-+    }
++    add_to_table(fdt_init, compat, opaque, &compat_list_head);
 +}
 +
- FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq)
- {
-     char node_path[DT_PATH_LENGTH];
-@@ -90,6 +172,7 @@ FDTMachineInfo *fdt_generic_create_machine(void *fdt, qemu_irq *cpu_irq)
-         while (qemu_co_enter_next(fdti->cq, NULL)) {
-             ;
-         }
-+        fdt_init_all_irqs(fdti);
-         memory_region_transaction_commit();
-     } else {
-         fprintf(stderr, "FDT: ERROR: cannot get root node from device tree %s\n"
-@@ -958,6 +1041,75 @@ exit_reg_parse:
-     return;
- }
- 
-+static void fdt_parse_node_irq_prop(FDTMachineInfo *fdti, char *node_path,
-+                            Object *dev)
++int fdt_init_compat(char *node_path, FDTMachineInfo *fdti, const char *compat)
 +{
-+    int is_intc;
-+    int i, j;
++    return fdt_init_search_table(node_path, fdti, compat, &compat_list_head);
++}
 +
-+    if (!object_dynamic_cast(dev, TYPE_SYS_BUS_DEVICE)) {
-+        return;
-+    }
++TableListNode *inst_bind_list_head;
 +
-+    {
-+        int len;
-+        fdt_get_property(fdti->fdt, fdt_path_offset(fdti->fdt, node_path),
-+                                "interrupt-controller", &len);
-+        is_intc = len >= 0;
-+        DB_PRINT_NP(is_intc ? 0 : 1, "is interrupt controller: %c\n",
-+                    is_intc ? 'y' : 'n');
-+    }
-+    /* connect irq */
-+    j = 0;
-+    for (i = 0;; i++) {
-+        char irq_info[6 * 1024];
-+        char *irq_info_p = irq_info;
-+        bool map_mode;
-+        int len = -1;
-+        qemu_irq *irqs = fdt_get_irq_info(fdti, node_path, i, irq_info,
-+                                            &map_mode);
-+        /* INTCs inferr their top level, if no IRQ connection specified */
-+        fdt_get_property(fdti->fdt, fdt_path_offset(fdti->fdt, node_path),
-+                            "interrupts-extended", &len);
-+        if (!irqs && is_intc && i == 0 && len <= 0) {
-+            FDTGenericIntc *id = (FDTGenericIntc *)object_dynamic_cast(
-+                                    dev, TYPE_FDT_GENERIC_INTC);
-+            FDTGenericIntcClass *idc = FDT_GENERIC_INTC_GET_CLASS(id);
-+            if (id && idc->auto_parent) {
-+                Error *err = NULL;
-+                idc->auto_parent(id, &err);
-+            } else {
-+                irqs = fdti->irq_base;
-+            }
-+        }
-+        if (!irqs) {
-+            break;
-+        }
-+        while (*irqs) {
-+            FDTIRQConnection *irq = g_new0(FDTIRQConnection, 1);
-+            *irq = (FDTIRQConnection) {
-+                .dev = DEVICE(dev),
-+                .name = SYSBUS_DEVICE_GPIO_IRQ,
-+                .merge_fn = qemu_irq_shared_or_handler,
-+                .i = j,
-+                .irq = *irqs,
-+                .sink_info = g_strdup(irq_info_p),
-+                .next = fdti->irqs
-+            };
-+            if (!map_mode) {
-+                j++;
-+            } else {
-+                irq_info_p += strlen(irq_info_p) + 1;
-+            }
-+            fdti->irqs = irq;
-+            irqs++;
-+        }
-+        if (map_mode) {
-+            j++;
-+        }
++void add_to_inst_bind_table(FDTInitFn fdt_init, const char *name, void *opaque)
++{
++    add_to_table(fdt_init, name, opaque, &inst_bind_list_head);
++}
++
++int fdt_init_inst_bind(char *node_path, FDTMachineInfo *fdti,
++        const char *name)
++{
++    return fdt_init_search_table(node_path, fdti, name, &inst_bind_list_head);
++}
++
++static void dump_table(TableListNode *head)
++{
++    TableListNode *iter;
++
++    for (iter = head; iter != NULL; iter = iter->next) {
++        printf("key : %s, opaque data %p\n", head->key, head->opaque);
 +    }
 +}
 +
- static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
- {
-     Object *dev, *parent;
-@@ -1101,6 +1253,8 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
- 
-     fdt_parse_node_reg_prop(fdti, node_path, dev);
- 
-+    fdt_parse_node_irq_prop(fdti, node_path, dev);
++void dump_compat_table(void)
++{
++    printf("FDT COMPATIBILITY TABLE:\n");
++    dump_table(compat_list_head);
++}
 +
-     g_free(dev_type);
-     g_free(props);
- 
++void dump_inst_bind_table(void)
++{
++    printf("FDT INSTANCE BINDING TABLE:\n");
++    dump_table(inst_bind_list_head);
++}
 diff --git a/include/hw/core/fdt_generic.h b/include/hw/core/fdt_generic.h
-index 46b7dc084b..ad9e249156 100644
---- a/include/hw/core/fdt_generic.h
+new file mode 100644
+index 0000000000..614a234868
+--- /dev/null
 +++ b/include/hw/core/fdt_generic.h
-@@ -24,6 +24,16 @@ typedef struct FDTCPUCluster {
-     bool user;
- } FDTCPUCluster;
- 
-+typedef struct FDTIRQConnection {
-+    DeviceState *dev;
-+    const char *name;
-+    int i;
-+    bool (*merge_fn)(bool *, int);
-+    qemu_irq irq;
-+    char *sink_info; /* Debug only */
-+    void *next;
-+} FDTIRQConnection;
+@@ -0,0 +1,78 @@
++// SPDX-License-Identifier: MIT
++/*
++ * Tables of FDT device models and their init functions. Keyed by compatibility
++ * strings, device instance names.
++ */
 +
- typedef struct FDTMachineInfo {
-     /* the fdt blob */
-     void *fdt;
-@@ -33,6 +43,8 @@ typedef struct FDTMachineInfo {
-     FDTDevOpaque *dev_opaques;
-     /* recheck coroutine queue */
-     CoQueue *cq;
-+    /* list of all IRQ connections */
-+    FDTIRQConnection *irqs;
-     /* list of all CPU clusters */
-     FDTCPUCluster *clusters;
- } FDTMachineInfo;
++#ifndef FDT_GENERIC_H
++#define FDT_GENERIC_H
++
++#include "qemu/help-texts.h"
++#include "system/device_tree.h"
++
++typedef struct FDTMachineInfo FDTMachineInfo;
++
++typedef int (*FDTInitFn)(char *, FDTMachineInfo *, void *);
++
++/* associate a FDTInitFn with a FDT compatibility */
++
++void add_to_compat_table(FDTInitFn, const char *, void *);
++
++/*
++ * try and find a device model for a particular compatibility. If found,
++ * the FDTInitFn associated with the compat will be called and 0 will
++ * be returned. Returns non-zero on not found or error
++ */
++
++int fdt_init_compat(char *, FDTMachineInfo *, const char *);
++
++/* same as above, but associates with a FDT node name (rather than compat) */
++
++void add_to_inst_bind_table(FDTInitFn, const char *, void *);
++int fdt_init_inst_bind(char *, FDTMachineInfo *, const char *);
++
++void dump_compat_table(void);
++void dump_inst_bind_table(void);
++
++/*
++ * Called from FDTInitFn's to inform the framework that a dependency is
++ * unresolved and the calling context needs to wait for another device to
++ * instantiate first. The calling thread will suspend until a change in state
++ * in the argument fdt machine is detected.
++ */
++
++void fdt_init_yield(FDTMachineInfo *);
++
++/* set, check and get per device opaques. Keyed by fdt node_paths */
++
++void fdt_init_set_opaque(FDTMachineInfo *fdti, char *node_path, void *opaque);
++int fdt_init_has_opaque(FDTMachineInfo *fdti, char *node_path);
++void *fdt_init_get_opaque(FDTMachineInfo *fdti, char *node_path);
++
++/* statically register a FDTInitFn as being associate with a compatibility */
++
++#define fdt_register_compatibility_opaque(function, compat, n, opaque) \
++static void __attribute__((constructor)) \
++function ## n ## _register_imp(void) { \
++    add_to_compat_table(function, compat, opaque); \
++}
++
++#define fdt_register_compatibility_n(function, compat, n) \
++fdt_register_compatibility_opaque(function, compat, n, NULL)
++
++#define fdt_register_compatibility(function, compat) \
++fdt_register_compatibility_n(function, compat, 0)
++
++#define fdt_register_instance_opaque(function, inst, n, opaque) \
++static void __attribute__((constructor)) \
++function ## n ## _register_imp(void) { \
++    add_to_inst_bind_table(function, inst, opaque); \
++}
++
++#define fdt_register_instance_n(function, inst, n) \
++fdt_register_instance_opaque(function, inst, n, NULL)
++
++#define fdt_register_instance(function, inst) \
++fdt_register_instance_n(function, inst, 0)
++
++#endif /* FDT_GENERIC_H */
 -- 
 2.43.0
 

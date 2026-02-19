@@ -4,140 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4FCEE9A056
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 17:35:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AAF3E9A058
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 18:12:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vt7w6-0003FI-29; Thu, 19 Feb 2026 12:35:35 -0500
+	id 1vt8WD-0005sd-C1; Thu, 19 Feb 2026 13:12:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vt7vw-00039u-TQ
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 12:35:25 -0500
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vt7vu-0005EV-0o
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 12:35:24 -0500
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-2a79998d35aso7607155ad.0
- for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 09:35:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771522520; x=1772127320; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=tn46sG3IuWy3mbwecQATzlmonoodhTKVen3EFYxSLp4=;
- b=ZTpAGbpls3vTCHrWzBTFk4d/p2r0mJtFubFlm5WTEbWyw7N9QoAMJ9hEpK+5KetDxT
- aJdvoMSJFjJWwDQdgrDIx7ellzh8CSdTR7cygWBgq+WN/NIPim0RvAvncQbwtMT07BzN
- BDuBdlSEkR0PNE20K5KwSJieARZUbqk+XSU4BnAekyoDWPnePvb4vRrNjNM7HDFsa4Eb
- KbiVuaYMrZHQ6HZl91Zojw2n9NSE3xABKAsWtNkNNpxs0XqatRYcXucwoWUV8izFX6S+
- pCDM1cBdZBqBRjNiGRQZ2SrQPJO4/fpNxyIWz3z8KgXAC+stkzk8HWEt4jYfmKPYuFFj
- X1Ng==
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1vt8WB-0005s5-Of
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 13:12:52 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mbawa@redhat.com>) id 1vt8W9-0003GS-HG
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 13:12:51 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1771524768;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SFqHHdZ+40AqTiBEJKKrNPJWy5iXisoXEggwxCMUKeM=;
+ b=Y7RzCCP0ducZI9j8B5sPZpuiJJJtUeu5dZDO2HSy/heE6mTprEr3VtefctJNi73YO4jCdg
+ tkZEiIxK/I8JM9Lqn0IsTheuc0R0/86EQrEVfywm8sZf8ZUYmrj7RGLKAEYczxw5oP7G3r
+ hiLK8Z+SJunyFwwDgB75pOwhuEsoyQU=
+Received: from mail-oo1-f70.google.com (mail-oo1-f70.google.com
+ [209.85.161.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-661-TMgiDX_XOW-fIr8_MOftMQ-1; Thu, 19 Feb 2026 13:12:46 -0500
+X-MC-Unique: TMgiDX_XOW-fIr8_MOftMQ-1
+X-Mimecast-MFC-AGG-ID: TMgiDX_XOW-fIr8_MOftMQ_1771524765
+Received: by mail-oo1-f70.google.com with SMTP id
+ 006d021491bc7-67992287096so17930361eaf.2
+ for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 10:12:46 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771522520; x=1772127320;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=tn46sG3IuWy3mbwecQATzlmonoodhTKVen3EFYxSLp4=;
- b=nRjXAjlErXctWJVHFEL9XhX4f8+wn0ho5uJW1yvyPTpibXZhQExve6KnaXrVPwPCB7
- V1UqsOG4aCBjTQh4mwYSDlVbPJzb2svuKqWh1qq+Hbpli69wD3Azs03504bTBPXGpZxz
- 1AaehUo8jVaCUojKkfYwX4KGQLGkWaN0NrXdBEnQrv3AcYcQa/TTZFUpR+deSELS84p6
- +dHU5sxS1aQOqtIFA6RvrceS8meQ86NMttRyy6apy4uLzdRBTmBszHwRjGjQDPCn1Epf
- PaEODg9QlNtfDI5reSmpzxpt+eYGEYlmHid/71lYQP6w/As/wBtvklGCgwjzcLQ/MwDj
- 4g0A==
+ d=1e100.net; s=20230601; t=1771524765; x=1772129565;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=SFqHHdZ+40AqTiBEJKKrNPJWy5iXisoXEggwxCMUKeM=;
+ b=u9//z8/Aph8cHR17Zaf7gwmvLRxFQD3j6jRU+tHyFjAWUosgZWxMaL1ruD6TVBDG7W
+ 3UF/ztOmfgwW91iuVr4LpjGE/wC4lheTJTVSKfZMPoUffHU7VzKkL8+qNfkx5Jb46315
+ T9K7dB1yDNcIrS8aOi9dH4JdIBik+SNoy3c9QrWxigIl2R2CwVdZa8zMAg3svANIjo2h
+ Umc+JTHd3sPUUO79Gxhf+7sP1I6A7P/9qgiVDvymhqxUs5x+V/UKBryW5qfZP4eCSi2h
+ Wi6IU9XS04Xaw5DOg+/Ddz4/Pf8JMGlVF13ufli8FtVC/7n2HK3ia+RNSi3HxidG7d8G
+ Ut4g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW0r1ELJe+oizgP6EB/4mBCFufKPB4TSvTcGtf/ZRlt9jj41GgyKSpIht+yBSZcU7NQF/9/3VD43Q==@nongnu.org
-X-Gm-Message-State: AOJu0Yxl35fMDKFymJb7ytl+cbGVfS/htnciNMG0N/BVuBuY/P8uQgyv
- hVrTCvIH6MPizv8Ri9Vct3AHOidjoUFA+pEe7zxmoNLnOfEYAacbnJpAQsudPEbOejM=
-X-Gm-Gg: AZuq6aKhwL2tDPPAdRVupuTt54zW+miuugaIDcu/16ryrfxRqLUHPq3T1EnF9BevkkX
- Ca/KTfFnMJX2oVEzdZpdaBLU0MOCw3Rt/RJPsVO7tsFAvFcnsPOTQ01udyvaJBQALMmh4Em+C/3
- g3IvoWNt/OPXaVJaUjT8iQcQ/65c8i0NXcfso2GNEo8cX68i4TBmDp+P2EsL2WMf4gcQ0CzvJMq
- wWjJJaToYsguQJ1oUfo2sGkplAbELE2njUYVo2I80Wrh2Lh/BXEZ4IXCnWscw62P6kK09OiP9if
- yDAQyjwqaqCNWkzcQCAI296j1CVLx9DbDftzjXM6BKPWn4Yo5eHBEuNBTUpj1Le4gui7XJ2Ipl4
- /mEKzE+4Lm++YYlA3/e+TsTMZSfVd1W7c9XTNM1KVqcaDzSF1cSj2vDO1Qh62C58Ag9lbR+d1ji
- HS6VUAsuE3BZLNJtF1Hie7FpFFW+szQP5bAk2V+OI7PssNyN8LfvTcgoIPVsDfEo7BZ7k2
-X-Received: by 2002:a17:903:2b0b:b0:2aa:d288:7bf9 with SMTP id
- d9443c01a7336-2ad5b0e19b5mr33810215ad.31.1771522519629; 
- Thu, 19 Feb 2026 09:35:19 -0800 (PST)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2ad1aafc527sm159872025ad.89.2026.02.19.09.35.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Feb 2026 09:35:19 -0800 (PST)
-Message-ID: <1844834d-3b02-49b8-b0a1-28e34e71bca8@linaro.org>
-Date: Thu, 19 Feb 2026 09:35:17 -0800
+ AJvYcCXNCK2KIhlvIX8mgx7F0lFhSCtXJ+m01RIG5B4tVk7QcWpHUgwAEEwnZvUZ64fC0v4PHndho288Qg==@nongnu.org
+X-Gm-Message-State: AOJu0YzJYkA81jg75vy6czE64tvtcYXp4+qijtaqL7+2SEJAAt4K7Vju
+ Ju3HDAkLhIeBTS1jGzhCPzFZqkKijN/wwdIGa/KlnozA3ywTc7VuciEQVzfUh/FESmmOsBILZ9P
+ EZpfQlUD1FKgx4KHz49kjPAu1ZDma2ECAgMExFToEGdclD2JsegeUtu/w+f2AquyIZOOnsn97e4
+ 0+Yf8jmPQPO9dULVsYzSabCm7VR8v+
+X-Gm-Gg: AZuq6aIYskiR68srK2eONwrDlqXygtTN5NPqnvgigG2w0te5AwoQKi7T+RTecI9dcVG
+ Nkv0f4TVwUCrqJXDsF9yV8TebL2rFOcNU8G/0BhX/YUmCS3D2cFUFGAK8G06DHP/JoFCNK3KUe5
+ bygyFodqZMfMk8Yn6v5bTVFnK0vRssNVV/Ja3VRfBf9ZFVW4DzN2bNWrNqvZSsJMUWA9SMXrI/U
+ /Z/o0jMB8//w1n6ZVON4+Qf7JfAr2Bi+CH0tQ==
+X-Received: by 2002:a05:6820:1623:b0:662:fa38:ed4f with SMTP id
+ 006d021491bc7-67859a88085mr9561396eaf.23.1771524765493; 
+ Thu, 19 Feb 2026 10:12:45 -0800 (PST)
+X-Received: by 2002:a05:6820:1623:b0:662:fa38:ed4f with SMTP id
+ 006d021491bc7-67859a88085mr9561384eaf.23.1771524765082; Thu, 19 Feb 2026
+ 10:12:45 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v2 14/14] include/hw: expand cpu_reset function docs
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Yoshinori Sato <yoshinori.sato@nifty.com>, qemu-arm@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Thomas Huth <huth@tuxfamily.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Jim MacArthur <jim.macarthur@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- Bastian Koppelmann <kbastian@rumtueddeln.de>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Aleksandar Rikalo <arikalo@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Zhao Liu <zhao1.liu@intel.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Yanan Wang <wangyanan55@huawei.com>
-References: <20260219171810.602667-1-alex.bennee@linaro.org>
- <20260219171810.602667-15-alex.bennee@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
- xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
- eOiRCUY9l7IbtPYPHN5YVx+7W3vo6v89I7mL940oYAW8loPZRSMbyCiUeSoiN4gWPXetoNBg
- CJmXbVYQgL5e6rsXoMlwFWuGrBY3Ig8YhEqpuYDkRXj2idO11CiDBT/b8A2aGixnpWV/s+AD
- gUyEVjHU6Z8UervvuNKlRUNE0rUfc502Sa8Azdyda8a7MAyrbA/OI0UnSL1m+pXXCxOxCvtU
- qOlipoCOycBjpLlzjj1xxRci+ssiZeOhxdejILf5LO1gXf6pP+ROdW4ySp9L3dAWnNDcnj6U
- 2voYk7/RpRUTpecvkxnwiOoiIQ7BatjkssFy+0sZOYNbOmoqU/Gq+LeFqFYKDV8gNmAoxBvk
- L6EtXUNfTBjiMHyjA/HMMq27Ja3/Y73xlFpTVp7byQoTwF4p1uZOOXjFzqIyW25GvEekDRF8
- IpYd6/BomxHzvMZ2sQ/VXaMAEQEAAc0uUGllcnJpY2sgQm91dmllciA8cGllcnJpY2suYm91
- dmllckBsaW5hcm8ub3JnPsLBDgQTAQoAOBYhBGa5lOyhT38uWroIH3+QVA0KHNAPBQJivXYM
- AhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEH+QVA0KHNAPX58L/1DYzrEO4TU9ZhJE
- tKcw/+mCZrzHxPNlQtENJ5NULAJWVaJ/8kRQ3Et5hQYhYDKK+3I+0Tl/tYuUeKNV74dFE7mv
- PmikCXBGN5hv5povhinZ9T14S2xkMgym2T3DbkeaYFSmu8Z89jm/AQVt3ZDRjV6vrVfvVW0L
- F6wPJSOLIvKjOc8/+NXrKLrV/YTEi2R1ovIPXcK7NP6tvzAEgh76kW34AHtroC7GFQKu/aAn
- HnL7XrvNvByjpa636jIM9ij43LpLXjIQk3bwHeoHebkmgzFef+lZafzD+oSNNLoYkuWfoL2l
- CR1mifjh7eybmVx7hfhj3GCmRu9o1x59nct06E3ri8/eY52l/XaWGGuKz1bbCd3xa6NxuzDM
- UZU+b0PxHyg9tvASaVWKZ5SsQ5Lf9Gw6WKEhnyTR8Msnh8kMkE7+QWNDmjr0xqB+k/xMlVLE
- uI9Pmq/RApQkW0Q96lTa1Z/UKPm69BMVnUvHv6u3n0tRCDOHTUKHXp/9h5CH3xawms7AzQRi
- vXYMAQwAwXUyTS/Vgq3M9F+9r6XGwbak6D7sJB3ZSG/ZQe5ByCnH9ZSIFqjMnxr4GZUzgBAj
- FWMSVlseSninYe7MoH15T4QXi0gMmKsU40ckXLG/EW/mXRlLd8NOTZj8lULPwg/lQNAnc7GN
- I4uZoaXmYSc4eI7+gUWTqAHmESHYFjilweyuxcvXhIKez7EXnwaakHMAOzNHIdcGGs8NFh44
- oPh93uIr65EUDNxf0fDjnvu92ujf0rUKGxXJx9BrcYJzr7FliQvprlHaRKjahuwLYfZK6Ma6
- TCU40GsDxbGjR5w/UeOgjpb4SVU99Nol/W9C2aZ7e//2f9APVuzY8USAGWnu3eBJcJB+o9ck
- y2bSJ5gmGT96r88RtH/E1460QxF0GGWZcDzZ6SEKkvGSCYueUMzAAqJz9JSirc76E/JoHXYI
- /FWKgFcC4HRQpZ5ThvyAoj9nTIPI4DwqoaFOdulyYAxcbNmcGAFAsl0jJYJ5Mcm2qfQwNiiW
- YnqdwQzVfhwaAcPVABEBAAHCwPYEGAEKACAWIQRmuZTsoU9/Llq6CB9/kFQNChzQDwUCYr12
- DAIbDAAKCRB/kFQNChzQD/XaC/9MnvmPi8keFJggOg28v+r42P7UQtQ9D3LJMgj3OTzBN2as
- v20Ju09/rj+gx3u7XofHBUj6BsOLVCWjIX52hcEEg+Bzo3uPZ3apYtIgqfjrn/fPB0bCVIbi
- 0hAw6W7Ygt+T1Wuak/EV0KS/If309W4b/DiI+fkQpZhCiLUK7DrA97xA1OT1bJJYkC3y4seo
- 0VHOnZTpnOyZ+8Ejs6gcMiEboFHEEt9P+3mrlVJL/cHpGRtg0ZKJ4QC8UmCE3arzv7KCAc+2
- dRDWiCoRovqXGE2PdAW8788qH5DEXnwfzDhnCQ9Eot0Eyi41d4PWI8TWZFi9KzGXJO82O9gW
- 5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
- X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
- ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260219171810.602667-15-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x634.google.com
+References: <20260211122759.125094-1-mbawa@redhat.com>
+ <CAFEAcA_+eqfTy+7U9igTscue5SMURm3C9yUXvdFTon+ZgSJfAA@mail.gmail.com>
+In-Reply-To: <CAFEAcA_+eqfTy+7U9igTscue5SMURm3C9yUXvdFTon+ZgSJfAA@mail.gmail.com>
+From: Mohammadfaiz Bawa <mbawa@redhat.com>
+Date: Thu, 19 Feb 2026 23:42:29 +0530
+X-Gm-Features: AaiRm52G5dJSNFuqQIkAgCq8LBpmPNS1Cbs90FdPXda-2YLTX2bkbc_Yl0ex1Wg
+Message-ID: <CAJg9KkwkT0CnnxwrmR4w422OY7ECMyGZFyQLO-Uj92wfSM9E=g@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/virt: Add virtio-transports property
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org, 
+ philmd@linaro.org, cohuck@redhat.com, eric.auger@redhat.com, 
+ sebott@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: WuJU8Mhgj5QB58XoS13zMClrsXQLg2zedZLwsAf82Vw_1771524765
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mbawa@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.045,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -153,17 +108,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/19/26 9:18 AM, Alex Bennée wrote:
-> Add a hint to the developer that this should only be called from a
-> reset chain.
-> 
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Message-ID: <20260108143423.1378674-13-alex.bennee@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   include/hw/core/cpu.h | 3 +++
->   1 file changed, 3 insertions(+)
-> 
+On Thu, Feb 19, 2026 at 12:32=E2=80=AFAM Peter Maydell <peter.maydell@linar=
+o.org> wrote:
+>
+> On Wed, 11 Feb 2026 at 12:28, Mohammadfaiz Bawa <mbawa@redhat.com> wrote:
+> >
+> > Windows ARM64 guests detect virtio-mmio devices declared in ACPI
+> > tables even when no backend is attached. This causes "Unknown
+> > devices" (ACPI\LNRO0005) to appear in Device Manager.
+> >
+> > Until Windows fixes that by supporting, adding a new machine
+> > property 'virtio-transports' to control the number of
+> > virtio-mmio transports instantiated. The default remains
+> > NUM_VIRTIO_TRANSPORTS (32) for backward compatibility.
+> > Setting it to 0 allows users to disable virtio-mmio entirely.
+> >
+> > Usage: -machine virt,virtio-transports=3D0
+> >
+> > Signed-off-by: Mohammadfaiz Bawa <mbawa@redhat.com>
+>
+> Applied to target-arm.next, thanks -- but please could you check
+> up with the ACPI spec about whether it says anything about what
+> to report for empty transports? If it says we should or if it's
+> just vague we should probably match the x86 microvm behaviour
+> of not showing empty transports, since they can never be
+> hotplugged after startup. (This might need to be tied to
+> a machine-version, not sure.) Maybe we should also not report
+> them in the dtb?
+>
+> thanks
+> -- PMM
+>
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+[https://uefi.org/specs/ACPI/6.6/06_Device_Configuration.html#sta-device-st=
+atus]
+
+The ACPI 6.6 spec  (Section 6.3.7) doesn't explicitly forbid listing
+empty devices, but without a _STA method OSPM assumes they are
+present and functioning. A simple fix is to not list them at all,
+matching x86 microvm's approach and applying the same filtering to both
+ACPI and DTB.
+
+Tying this to the machine-version is a good idea as it may be required for
+backward compatibility.
+
+Thanks,
+Faiz
+
 

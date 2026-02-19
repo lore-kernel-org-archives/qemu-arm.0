@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0294CE9A048
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 17:20:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7597E9A048
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 17:20:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vt7fT-0005Pu-GZ; Thu, 19 Feb 2026 12:18:23 -0500
+	id 1vt7fT-0005Pb-4s; Thu, 19 Feb 2026 12:18:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vt7fP-0005M9-3C
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 12:18:19 -0500
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ id 1vt7fO-0005Lk-MI
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 12:18:18 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vt7fN-0000Qk-JC
+ id 1vt7fN-0000QU-2l
  for qemu-arm@nongnu.org; Thu, 19 Feb 2026 12:18:18 -0500
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-65bf302471dso1279584a12.1
- for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 09:18:17 -0800 (PST)
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-6580dbdb41eso1528088a12.0
+ for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 09:18:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771521496; x=1772126296; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771521495; x=1772126295; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=8Zd4Bit+n8F+fad2IoTdU9p0oAYOcGsBgNed8Vqbx5U=;
- b=gamCJvcRtaQTARmlCY7odq76JS3vR2S8B4PNyyLB/YbWT5vNMOIKCjuFBVXqRBevjO
- SmbteWI3u9qa/+x1TFE9JQxSK/R7iiBv8EnCRX8vQc7jlR5xJerPGcKdgmhJ024TwAIh
- A5YatbHxMWoQR7gAEX2RuC8pFdsuz7PHQdH1FEOutd4dL4zkXR4TGmntvptrGAxoG1yZ
- swj5pyO19o+5dBT+ZylCZrgzD7Nrh0e1xhzqa1qqtYs+F82y9aPc7dGia39Ej6KUeHCd
- oDFjv3GjUGn0g/0Q1BFUk9C6o3uen1ldtO8dd9ymjWvxbzW4TtqKJ3yLHAx/5yfgovg7
- FM/g==
+ bh=2GGmWkjWz4puRqxAAWgWsdZGg7jCqrUwwLlCs/EENBI=;
+ b=Mm3T/3uQaIKRTqZ8YcIZ5tMR8BWeZhvz8n29B86ta1/5/PBzlBnxpOzDdVDnEAhUrX
+ SiJGO6l8/y5JmmJ6rLX5z6/7p/w/bs+Y8hJ6FqkFPpBSOBzZfNBdH0laj/9mnrUakK5w
+ +T42Vbo+nRgBQwZCQSmdnckZoN/IV21sMETor9dbsanHGWcJE0TRRRxdVg7hY7XTlO4H
+ KOddffcQr55MDydsL+IliL6dvovntmj9kIU+l0uFzLwhfO13gnKX//rKjiQwihIrt1Nd
+ kPQgAezBqFI9hOc8rqcoSSa9Et8cLWzUWT4MpUU160BKy1GYYSxFZheKqisYQo3pfI2b
+ vSnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771521496; x=1772126296;
+ d=1e100.net; s=20230601; t=1771521495; x=1772126295;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=8Zd4Bit+n8F+fad2IoTdU9p0oAYOcGsBgNed8Vqbx5U=;
- b=qjVoLjssYCbdafH9Q+xMN4ufdNIo6SPftcYZBz33vNWItKZwBdRGQUFkrcXcNCZC08
- MxZBoMo2cs0UwhK1nJO7oXAWRHJG7YoXUQ9WecPA/xs4fv3hvyOK0jAOigW6IUgzt8C1
- jz54W3Cx5uFzmOD+Ym8YBzpPlI+weVlcKPcPcU3dkWX1VGH8mfrivi2mXzSNAHCKlKO0
- OJkMP2Ao0WZTi8x+5MkDSW5wNsXvVqEs+lEuJKlNcTCY8PWdOgG10U10VDBp5jZWbYdk
- SgCAPrEhpzH9jGdgdyGQCtioRsyXdqyfxKdqK4EYn8ntn1qd6l8xWa+ZtPjhzPqmjObi
- Ccsg==
+ bh=2GGmWkjWz4puRqxAAWgWsdZGg7jCqrUwwLlCs/EENBI=;
+ b=AKrUPEqkSrJ+UCrI/1PDQlFAG/i4cxtrb054c6Ip+DxkHs2iWL4vIjMtpoBObQRIt5
+ 4LmNpVtmS6H2RsVZ4fooY7fsAinihe5RpqTqlRF1RjkrZuM+UADU5SyG99FNpJ1MKIbt
+ hbZBAZt1G9qTrKfQqYmIz6qpnZSt/uKy5XUR0datk1HEVINw1JCXeIUEK8MkjSFuIg/p
+ BBGEn7OM1OOCJcJcLKFMo5VNtgCuT4j7EUzo561Ppm0o+ZFbYqCV+odV8PEBERN6HBH6
+ 6qyPdKKEAtzWjjyLqyhDguPrs8QV0m8sR36V5YKol3pZrGo4ypq0dj4PKA4FRvQzZSD0
+ XlNA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU83ma0ABvTtQjNfVoLlt9B7WOYZwpu4h4SlXzGCH+vR+Lmv1j5oah2dNjI1JG9FgvfNNy7YsLO3g==@nongnu.org
-X-Gm-Message-State: AOJu0YyXK310tXOQZFUFKslDLQoU9c/aZcakD8jVpHhYdgKeDQtXlQte
- pNXqifByWOOETLlRvg4vNatH0NPCZchBSKki/hV0a1jpevJAsEyDzsFcRSw1Uj/vK+U=
-X-Gm-Gg: AZuq6aIgrgplx/MDEUFJYGC/xDapmlslQEbY/ZaHBwehrdDzTnwGomtcsfQmEXmzKZj
- T9c3/pak5AQ7JmxJd7JDSYVIZE+Mr9QfcDHN7vtpcKKvLOTF+CAq0gXmRvVw66/oKY/VAblrwW+
- T+JyAA37rMdO7V2TDcx5HT8yoXu9k3eStfulCj4Ks9n+ECZxlJSxTyxqQWhXKahiAdJZOs5kyU4
- B/YSp27l+hu8yIcMJ2J+bkFDg3+NqxVA4ff9uglyz3TcdxTI7BBBBMtqqHLa2kUIokd1Kdtzdlx
- 7kOCfNWTIjJppv+JfoT0jx7Cq51OxiWNVRTid0ycXlXenrvNhu0NznfWYeidppre/BIrQXyC100
- GFZkaeIg41AlseEQH5IYLvNAMsVp5lEr53pREm3sqE2TUdiXja/lrPfaOwxPypoWF8zOusa4/vj
- Wbv4TFJ9R1nAp4ImVXSRnZYbw=
-X-Received: by 2002:a05:6402:2709:b0:658:177a:292 with SMTP id
- 4fb4d7f45d1cf-65bb118a752mr11484729a12.17.1771521495832; 
+ AJvYcCViteRz96BEN4YyckY6evKu/RW6SCwDDeT6IOcMY/0TRWlPuLS+WSznB2xQDc5pRyYLwtPpFyXzxA==@nongnu.org
+X-Gm-Message-State: AOJu0YyFEEf2kDbgnvTRTaHh9tSlyncGK4EJT9vAULWKq+XXRcgfXzNi
+ o6Obyt50kyazENHoXtszluQ3XXLpVDjWS4QvDM69VS94PbGVRcLrZchy/nRGbaETmNU=
+X-Gm-Gg: AZuq6aIY2C36J0N0BfxNk+UU8goKA7PnVuNuac2ecvJFhl6OWD0JIGYwVUw1fYNjNBt
+ MjxzeE9DoGyIJ9sdYnOiQAM9AYklszDICvaE4OvlVg33nwaeS9/OCxo2a13+WKZDIMrUfXzLEYR
+ XAkhys2KUUdZclRK839Cc45L6qSKllT01KwUON5lFEmqC+y1cpuvMTNS0IDLhGtSeDqQkLmle/1
+ o9m3/SYYoSjiMz4Ig6zOXtXdZ+It/kkLGW09MUysg5mYSxYf5CokO61N+rQavpI61q097cSSb8L
+ qRX5xoP9mpR0DG9dUtjIAY1XpTBiXxtXKYfMHn4d+LAw4pQptup4y8oMGiILZQwJK5J4WshFWk5
+ S2Qv4tX+1QHMP4Mu3mcjYLlD/Ghommv0+z+z1II9vUF95RQjhyHDkw2/vDYgR/+TwCzRpgcvw1k
+ XFTn1JfO7r3rtGQuJyTMzmIg0=
+X-Received: by 2002:a05:6402:5186:b0:659:5c63:e0e0 with SMTP id
+ 4fb4d7f45d1cf-65c76a24826mr3305965a12.24.1771521495125; 
  Thu, 19 Feb 2026 09:18:15 -0800 (PST)
 Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-65bad4fac3dsm4178438a12.32.2026.02.19.09.18.12
+ 4fb4d7f45d1cf-65bad29d4afsm3912153a12.10.2026.02.19.09.18.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Feb 2026 09:18:15 -0800 (PST)
+ Thu, 19 Feb 2026 09:18:11 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 14F7A5F8C1;
- Thu, 19 Feb 2026 17:18:11 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 9F1355F877;
+ Thu, 19 Feb 2026 17:18:10 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Yoshinori Sato <yoshinori.sato@nifty.com>, qemu-arm@nongnu.org,
@@ -85,24 +85,24 @@ Cc: Yoshinori Sato <yoshinori.sato@nifty.com>, qemu-arm@nongnu.org,
  Zhao Liu <zhao1.liu@intel.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Yanan Wang <wangyanan55@huawei.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH v2 06/14] hw/m68k: update an5206 to 3-phase reset
-Date: Thu, 19 Feb 2026 17:18:02 +0000
-Message-ID: <20260219171810.602667-7-alex.bennee@linaro.org>
+Subject: [RFC PATCH v2 01/14] target/m68k: clean-up includes in cpu.c
+Date: Thu, 19 Feb 2026 17:17:57 +0000
+Message-ID: <20260219171810.602667-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260219171810.602667-1-alex.bennee@linaro.org>
 References: <20260219171810.602667-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,78 +118,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-As the mbar/rambar0 values are currently fixed we can migrate the
-setting of them to the reset handler as well.
+We don't need translation-block.h as the TB flags are local and the
+only bits needed come from cpu-ops.h. The vmstate is a system only
+concerns so we can guard against including it for linux-user.
+
+Finally tidy up the order to keep things together with the local cpu.h
+kept at the end.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - re-written, dropped tags
-  - favour cpu_reset over resettable_reset(cs)
----
- hw/m68k/an5206.c | 23 ++++++++++++++++-------
- 1 file changed, 16 insertions(+), 7 deletions(-)
+ target/m68k/cpu.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/hw/m68k/an5206.c b/hw/m68k/an5206.c
-index f92a5d6a339..509980db566 100644
---- a/hw/m68k/an5206.c
-+++ b/hw/m68k/an5206.c
-@@ -15,11 +15,25 @@
- #include "elf.h"
- #include "qemu/error-report.h"
- #include "system/qtest.h"
-+#include "system/reset.h"
+diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
+index c721a23b966..d849a4a90fc 100644
+--- a/target/m68k/cpu.c
++++ b/target/m68k/cpu.c
+@@ -19,12 +19,15 @@
+  */
  
- #define KERNEL_LOAD_ADDR 0x10000
- #define AN5206_MBAR_ADDR 0x10000000
- #define AN5206_RAMBAR_ADDR 0x20000000
+ #include "qemu/osdep.h"
++#include "accel/tcg/cpu-ops.h"
++#include "fpu/softfloat.h"
+ #include "qapi/error.h"
+-#include "cpu.h"
++
++#ifndef CONFIG_USER_ONLY
+ #include "migration/vmstate.h"
+-#include "fpu/softfloat.h"
+-#include "exec/translation-block.h"
+-#include "accel/tcg/cpu-ops.h"
++#endif
++
++#include "cpu.h"
  
-+static void an5206_reset(MachineState *ms, ResetType type)
-+{
-+   CPUState *cs = first_cpu;
-+   M68kCPU *cpu = M68K_CPU(cs);
-+
-+   qemu_devices_reset(type);
-+   cpu_reset(cs);
-+
-+   cpu->env.vbr = 0;
-+   cpu->env.mbar = AN5206_MBAR_ADDR | 1;
-+   cpu->env.rambar0 = AN5206_RAMBAR_ADDR | 1;
-+}
-+
- static void mcf5206_init(M68kCPU *cpu, MemoryRegion *sysmem, uint32_t base)
+ static void m68k_cpu_set_pc(CPUState *cs, vaddr value)
  {
-     DeviceState *dev;
-@@ -49,12 +63,6 @@ static void an5206_init(MachineState *machine)
-     cpu = M68K_CPU(cpu_create(machine->cpu_type));
-     env = &cpu->env;
- 
--    /* Initialize CPU registers.  */
--    env->vbr = 0;
--    /* TODO: allow changing MBAR and RAMBAR.  */
--    env->mbar = AN5206_MBAR_ADDR | 1;
--    env->rambar0 = AN5206_RAMBAR_ADDR | 1;
--
-     /* DRAM at address zero */
-     memory_region_add_subregion(address_space_mem, 0, machine->ram);
- 
-@@ -90,13 +98,14 @@ static void an5206_init(MachineState *machine)
-         exit(1);
-     }
- 
--    env->pc = entry;
-+    env->direct_kernel_boot_pc = entry;
- }
- 
- static void an5206_machine_init(MachineClass *mc)
- {
-     mc->desc = "Arnewsh 5206";
-     mc->init = an5206_init;
-+    mc->reset = an5206_reset;
-     mc->default_cpu_type = M68K_CPU_TYPE_NAME("m5206");
-     mc->default_ram_id = "an5206.ram";
- }
 -- 
 2.47.3
 

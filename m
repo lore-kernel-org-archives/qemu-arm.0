@@ -4,126 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87F54E9A050
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 16:40:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B330E9A048
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 16:57:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vt746-00019w-37; Thu, 19 Feb 2026 11:39:46 -0500
+	id 1vt7LV-0006Z9-7V; Thu, 19 Feb 2026 11:57:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vt744-00019R-Or
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 11:39:44 -0500
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1vt7LT-0006Yi-J6
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 11:57:43 -0500
+Received: from mail-dy1-x1334.google.com ([2607:f8b0:4864:20::1334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vt741-0001EB-MT
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 11:39:43 -0500
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-823210d1d8eso669304b3a.1
- for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 08:39:40 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1vt7LR-0005CY-R2
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 11:57:43 -0500
+Received: by mail-dy1-x1334.google.com with SMTP id
+ 5a478bee46e88-2ba895adfeaso1178970eec.0
+ for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 08:57:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771519180; x=1772123980; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1771520260; x=1772125060; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=RZoB1oBYOGQngrzKIYH38IoVId5kzTyR78mCQhk+Iuk=;
- b=WoV3jTV6HgFERl+Ni/3XmBlK+jlUsZ+z3clDQly8vvppa2bQwGpOSsFIDk4FJv/Ehv
- 0mDDvBLbEAKPc2LJC12Uje6JR3p6n4BhkyoQIQSoQODkI2grEIznnYys767ixtmUAJQM
- pRtUnxijBDViFq6NW2DOPC2Ujl0F3k/A3jK+cWyDxaQJRl4Zk4KIHYSW01tp8yPjwsqK
- ipzug9SOIKDddMFH1pctc4HlDOSBCT7sL+uHGNIrqmq42rlo3uatRgueITtwOR+2Rc9C
- bswwplfV7OkqgPaQ2FvgrL9WEmgc7YMbiUbR9Z6t+lwtt//Sc5NcJmq5cfzDcXeCGkC3
- H4iw==
+ bh=mq2fcTDrdYvBzNTSdJ3zgJOmq2U7Z9/ZuNI8J6dmpdE=;
+ b=Un4cfjJeApGaUPfkkfbQM4Jkupew4XQh8lLQGOGbzFo5ql6yUdO+dGbzeFzT1iZ7kg
+ irpQzK/9/w2yLzgr7XeAPoM/05QUP/EL8mfFO8BiSCHnOB6OzN+1th7zzxudtc8TYpsz
+ ZE6kH20WtRiV5k9jlnS2PpMaPxdL3szGi3xZTDZQATWTTOfvbW1s9mQZnTuroeL/8x0m
+ ffPOM6zKKc8FU8GH4ZyAGXDSN/pRfTDN9kcvEnL2wlnE2OAbmMVD2MzZhLzYN7iCgG1T
+ 2yLvO8Y/vCMR86YCrBtFrRceKyizZWNYE7pXUj0DongC8XWA1ebsXiqQtGElKDIBai70
+ uaTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771519180; x=1772123980;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1771520260; x=1772125060;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=RZoB1oBYOGQngrzKIYH38IoVId5kzTyR78mCQhk+Iuk=;
- b=SKoewO24DftFgaogv3E9HlnUbvnCH/76yroRKE6AYtZ/+/lxIsjH3DH+CNxjSiUmcr
- jag3Tu8fU4y3b5hzZcITDNBcg5a3On3hLN1e0GsA4PfgNNJeNcEXGjhdgt0LZKp/gfhA
- 30+ePQbp+JI7Ba+NAt4uWBCg915UvNuZ4VOmxeX0ZCSeEFXi1FC4i5jLX87UJByGa2GN
- 6cOHdp5Hgc8Dh3uUZRu1nX3tBonO3Y6Bk89bVR6zPOhLfJAOypxuZTV11kfMcCoEsXes
- Oawv+Wk5RxaU5JDtZnKlW1rHgzbAFAmdUFZeAvnUiSNO3ZVPKahVMdUSD6Sv7piL/QEf
- 6rkA==
+ bh=mq2fcTDrdYvBzNTSdJ3zgJOmq2U7Z9/ZuNI8J6dmpdE=;
+ b=nolhUpLnQLWEELf5kwBLOmhgHo/TQu0iz8kam/G2qYWZZDt5ewh1IRs0KEApkLGCgZ
+ 4W8BNPwoV3h+PYiFfZOGsLsxH95JNsstEit7zF299bkyQc+lzbidw2Q75JIAlLs6YDaA
+ yiRR5kbOSZMsexM3BFCppTP/+Bb81Y8R/Hhl+zU2jU2FOwMifqyBy7BNdqjVxTo+DF2e
+ fhS9Qe3QJIjcKD3lCGzsl4RjvBeOVixkLguObQxHdm2ZUzWE9RDms4P/MPb1eCx+ArnK
+ hbNJBo9rPmFpJzI09x1O5njz0iNTRpgmkLFT4KSir22gXhGNfoPls0lENBt4sE++qJVX
+ t8Ag==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVK13DxvPnCHaTkpokaMme34End7YgizsM5tyJKkeRIuyiPw+3XSIju7yUfi7Re1N4EWrc9LACAlg==@nongnu.org
-X-Gm-Message-State: AOJu0YzO9gI9dIKHAj/JpPgDyxWo+R+P2lG/AALbasIwEuGJ7uTBIN8P
- cXpA009OctkLaYsb3VR321dpHbZTYboGeZapQlYstjY34DSUUnA74SY+dXRnbijMgviR0DP1Eki
- YQDkK
-X-Gm-Gg: AZuq6aJfHk5Fb6sZVDEF5wwBzNRWoOXhqQDDhQf2F8jJswgCOC0J/LLVP/x7CIaz8lU
- UgFHN2xLkUb7IEOdB+mHxqFKin+vELNwXWc+/VbOajevR91bFxl1kW+AWt3MkcMScrcBW2cHcDk
- vbDEfUv/vcI2bQaXShDfjeM2oTJJkXTmZ4dV/M0eVFa0HY5gf9oVuGjdupINK/blrw0lOFOf/+T
- 8krRaAfPhl71A0N6NHtWnYJKKNhDrH3dRhOIehNZFgPLtt/tSxsiVKfvlh87t8iFFT/VGx0Okc3
- qkjLVheqZH9xcQcfvxJAC+sLSIuhO2PkNt/oCW80tAhsIs6N+HAjmN7ud2R9KHc2VOOdhJZw4Gf
- CG1fTgJWtSXLQ6Kyuta+RKfZEfsj1KbljYAdl4bI02LDk/d1uUmD44PgRtQIL0OBxzOgMBbY/lk
- JfN2o1XVCcElwebjIS6mtw/G8Q/pecPD78IB8LXV3E83oZwTRtAF5zRlPqDQLfHeoA4z6z
-X-Received: by 2002:a05:6a00:2e0d:b0:81f:4f05:4fe6 with SMTP id
- d2e1a72fcca58-824d94d001amr15793574b3a.1.1771519179418; 
- Thu, 19 Feb 2026 08:39:39 -0800 (PST)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-824c6bb410csm19824324b3a.61.2026.02.19.08.39.38
+ AJvYcCWrNT9CL1Igw2ulFrSyCCz92BoTBVOssWUvpaBkRjbrQyJ+IRVWywSxLBrabJbfUx9bmtKjNxnz3A==@nongnu.org
+X-Gm-Message-State: AOJu0Yxk1JOWOW1bcL20taCCPX0ZKhqz4tH528QRFRB4msrjVHZLZG5d
+ EIE9cihtUpWHAp4umJK+NOMujo53Ua02b6jI+wS1K9llLWOxJZfrh9lnVgyyXzIBeEc=
+X-Gm-Gg: AZuq6aKqTZLdu9RXgYNv03L1EkhxtJaz8UiRgYsNbh4pw3L9d87i3MvhzYzuKgde/Xy
+ BQI3V6ZqKQsYIOJkRddw0PcTnlat5iSnUTDdJIiZL7q9ktJFwvHzgVX40fnEe9AqXuDWdmeCpFR
+ GFswKheYZgDz4H2pKyFkEozY+pXnYWiWRuOK0UW3yniJJzzzkE6a41noeSH09y/ZbTUXkZpKzrr
+ UsWF6DbEEJCUetRc2W2veR23ZsgYGjJUjnhhh8+63uuSw7tgOFcsiT5IDOXmML+FMKa/GTlrbpM
+ 1JrJjP6VfJj2viN+bgFafz9hWpOt6xezMTjFRB05XU352CTAbe6MNtOaPzqsc3udE7QPnJhQIL3
+ Fxpy7YVpwiQ2zk1wml3tLLlIpNi4VGW15iM6a4wiOLEp6nZQwV3gCeiQETfVOCp3iG8/aNWjQh0
+ oB+RGgk+Y4jOnCBwDbrxZfwjIZzf6XbmHWOQJmTubn3GVkU1vEDs/QYJKvbDaCtVrcAWpYky1e7
+ HY=
+X-Received: by 2002:a05:693c:300b:b0:2ae:533d:19ee with SMTP id
+ 5a478bee46e88-2bd5016fe56mr2808463eec.21.1771520260001; 
+ Thu, 19 Feb 2026 08:57:40 -0800 (PST)
+Received: from [192.168.0.103] (200-100-75-206.dial-up.telesp.net.br.
+ [200.100.75.206]) by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-12742cc9376sm25608991c88.16.2026.02.19.08.57.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Feb 2026 08:39:39 -0800 (PST)
-Message-ID: <5befbd0e-5f0f-41c4-99a7-1cf17bfe5454@linaro.org>
-Date: Thu, 19 Feb 2026 08:39:39 -0800
+ Thu, 19 Feb 2026 08:57:39 -0800 (PST)
+Message-ID: <e5194b15-0a7c-472f-b1a6-21427d98e2d8@linaro.org>
+Date: Thu, 19 Feb 2026 13:57:36 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 6/6] tests/functional: add Arm VBSA uefi conformance test
+Subject: Re: [PATCH] target/arm/ptw: Clean up unused ARMMMUIdx
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, richard.henderson@linaro.org, 
+ alex.bennee@linaro.org
+References: <20260219140228.407513-1-gustavo.romero@linaro.org>
+ <CAFEAcA_GdkVJbgGm2j8v15PM2ijKF2hYBAUKZ2_W=g6XasFvCA@mail.gmail.com>
+ <00bed3eb-579b-4153-9bc1-07347a5d0792@linaro.org>
+ <CAFEAcA-3BOhHZo_mD0Re5dpGpQ2=dydtSN5SxSKwywbVdhNarg@mail.gmail.com>
 Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Brad Smith <brad@comstyle.com>,
- Warner Losh <imp@bsdimp.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Kyle Evans <kevans@freebsd.org>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-References: <20260213154859.1551283-1-alex.bennee@linaro.org>
- <20260213154859.1551283-7-alex.bennee@linaro.org>
- <82942191-d0a6-4393-846d-b04e3cb009ce@linaro.org>
- <87o6ll6mso.fsf@draig.linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
- 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
- ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <87o6ll6mso.fsf@draig.linaro.org>
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <CAFEAcA-3BOhHZo_mD0Re5dpGpQ2=dydtSN5SxSKwywbVdhNarg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42f.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1334;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-dy1-x1334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -146,167 +109,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/19/26 2:38 AM, Alex Bennée wrote:
-> Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
+Hi Peter,
+
+On 2/19/26 13:13, Peter Maydell wrote:
+> On Thu, 19 Feb 2026 at 15:16, Gustavo Romero <gustavo.romero@linaro.org> wrote:
+>>
+>> Hi Peter!
+>>
+>> On 2/19/26 11:13, Peter Maydell wrote:
+>>> On Thu, 19 Feb 2026 at 14:02, Gustavo Romero <gustavo.romero@linaro.org> wrote:
+>>>>
+>>>> get_phys_addr_disabled() is called from only one function,
+>>>> get_phys_addr_nogpc(), and from two locations within it.
+>>>>
+>>>> The first call to get_phys_addr_disabled() occurs when mmu_idx is one of
+>>>> the following: ARMMMUIdx_Phys_S, ARMMMUIdx_Phys_NS, ARMMMUIdx_Phys_Root,
+>>>> or ARMMMUIdx_Phys_Realm. So, handling ARMMMUIdx_Stage2 or
+>>>> ARMMMUIdx_Stage2_S is not required in get_phys_addr_disabled() for this
+>>>> case.
+>>>>
+>>>> The second call to get_phys_addr_disabled(), with mmu_idx ==
+>>>> ARMMMUIdx_Stage2 (or ARMMMUIdx_Stage2_S), only would occur if
+>>>> regime_translation_disabled() returns
+>>>> true for these mmu indexes. However, mmu_idx == ARMMMUIdx_Stage2 (or
+>>>> ARMMMUIdx_Stage2_S) can only occur if get_phys_addr_twostage() was
+>>>> called, since it's the only place where ptw->in_mmu_idx is set to
+>>>> ARMMMUIdx_Stage2 (or ARMMMUIdx_Stage2_S) and that only happens if
+>>>> regime_translation_disabled() returns false.
+>>>
+>>> This is true, but only because we never call get_phys_addr_for_at()
+>>> with an mmu_idx argument of Stage2, right?
+>>
+>> Correct, and that's a case that will never exist too afaics.
 > 
->> On 2/13/26 7:48 AM, Alex Bennée wrote:
->>> The VBSA test is a subset of the wider Arm architecture compliance
->>> suites (ACS) which validate machines meet particular minimum set of
->>> requirements. The VBSA is for virtual machines so it makes sense we
->>> should check the -M virt machine is compliant.
->>> Fortunately there are prebuilt binaries published via github so all
->>> we
->>> need to do is build an EFI partition and place things in the right
->>> place.
->>> There are some additional Linux based tests which are left for
->>> later.
->>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
->>> ---
->>>    tests/functional/aarch64/meson.build       |  1 +
->>>    tests/functional/aarch64/test_virt_vbsa.py | 99 ++++++++++++++++++++++
->>>    2 files changed, 100 insertions(+)
->>>    create mode 100755 tests/functional/aarch64/test_virt_vbsa.py
->>> diff --git a/tests/functional/aarch64/meson.build
->>> b/tests/functional/aarch64/meson.build
->>> index 49eca120589..7ea8c22b048 100644
->>> --- a/tests/functional/aarch64/meson.build
->>> +++ b/tests/functional/aarch64/meson.build
->>> @@ -46,6 +46,7 @@ tests_aarch64_system_thorough = [
->>>      'tuxrun',
->>>      'virt',
->>>      'virt_gpu',
->>> +  'virt_vbsa',
->>>      'xen',
->>>      'xlnx_versal',
->>>    ]
->>> diff --git a/tests/functional/aarch64/test_virt_vbsa.py b/tests/functional/aarch64/test_virt_vbsa.py
->>> new file mode 100755
->>> index 00000000000..53cabf9d6c5
->>> --- /dev/null
->>> +++ b/tests/functional/aarch64/test_virt_vbsa.py
->>> @@ -0,0 +1,99 @@
->>> +#!/usr/bin/env python3
->>> +#
->>> +# Functional test that runs the Arm VBSA conformance tests.
->>> +#
->>> +# Copyright (c) 2026 Linaro Ltd.
->>> +#
->>> +# Author:
->>> +#  Alex Bennée <alex.bennee@linaro.org>
->>> +#
->>> +# SPDX-License-Identifier: GPL-2.0-or-later
->>> +
->>> +import shutil
->>> +from subprocess import check_call, DEVNULL
->>> +
->>> +from qemu_test import QemuSystemTest, Asset
->>> +from qemu_test import wait_for_console_pattern, get_qemu_img, skipIfMissingCommands
->>> +from qemu_test import exec_command_and_wait_for_pattern as ec_and_wait
->>> +
->>> +
->>> +@skipIfMissingCommands("mformat", "mcopy", "mmd")
->>> +class Aarch64VirtMachine(QemuSystemTest):
->>> +    KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
->>> +    timeout = 360
->>> +
->>> +    def wait_for_console_pattern(self, success_message, vm=None):
->>> +        wait_for_console_pattern(self, success_message,
->>> +                                 failure_message='Kernel panic - not syncing',
->>> +                                 vm=vm)
->>> +
->>
->> May be worth adding a comment with README url:
->> https://github.com/ARM-software/sysarch-acs/blob/main/docs/vbsa/README.md
->>
->>> +    ASSET_VBSA_EFI = Asset('https://github.com/ARM-software/sysarch-acs/raw/refs/heads/main'
->>> +                           '/prebuilt_images/VBSA/v25.12_VBSA_0.7.0/Vbsa.efi',
->>> +                           '80f37d2fb86d152d95dec4d05ff099c9e47ee8a89314268e08056b0e1359e1fa')
->>> +
->>> +    ASSET_BSA_SHELL = Asset('https://github.com/ARM-software/bsa-acs/raw/refs/heads/main/'
->>> +                            'prebuilt_images/BSA_DT/v20.05_05_ALPHA/Shell.efi',
->>> +                            '763e7b293fa9d1582153ea8fd0cf60e2a7a87d092d35d342cf9b3b697f47b588')
->>> +
->>> +    def test_aarch64_vbsa_uefi_tests(self):
->>> +        """
->>> +        Launch the UEFI based VBSA test from an EFI file-system
->>> +        """
->>> +
->>> +        self.vm.set_console()
->>> +
->>> +        # virt machine wi
->>> +        self.set_machine('virt')
->>> +        self.vm.add_args('-M', 'virt,gic-version=max,virtualization=on')
->>> +        self.vm.add_args('-cpu', 'max','-m', '1024')
->>> +
->>> +        # We will use the QEMU firmware blobs to boot
->>> +        code_path = self.build_file('pc-bios', 'edk2-aarch64-code.fd')
->>> +        vars_source = self.build_file('pc-bios', 'edk2-arm-vars.fd')
->>> +        vars_path = self.scratch_file('vars.fd')
->>> +        shutil.copy(vars_source, vars_path)
->>> +
->>> +        self.vm.add_args('-drive', f'if=pflash,format=raw,readonly=on,file={code_path}')
->>> +        self.vm.add_args('-drive', f'if=pflash,format=raw,file={vars_path}')
->>> +
->>> +        # Build an EFI FAT32 file-system for the UEFI tests
->>> +        vbsa_efi = self.ASSET_VBSA_EFI.fetch()
->>> +        bsa_shell = self.ASSET_BSA_SHELL.fetch()
->>> +
->>> +        img_path = self.scratch_file('vbsa.img')
->>> +        qemu_img = get_qemu_img(self)
->>> +        check_call([qemu_img, 'create', '-f', 'raw', img_path, '64M'],
->>> +                   stdout=DEVNULL, stderr=DEVNULL)
->>> +
->>> +        check_call(['mformat', '-i', img_path, '-v', 'VBSA', '::'],
->>> +                   stdout=DEVNULL, stderr=DEVNULL)
->>> +
->>> +        check_call(['mmd', '-i', img_path, '::/EFI'],
->>> +                   stdout=DEVNULL, stderr=DEVNULL)
->>> +
->>> +        check_call(['mmd', '-i', img_path, '::/EFI/BOOT'],
->>> +                   stdout=DEVNULL, stderr=DEVNULL)
->>> +
->>> +        check_call(['mcopy', '-i', img_path, bsa_shell, '::/EFI/BOOT/BOOTAA64.EFI'],
->>> +                   stdout=DEVNULL, stderr=DEVNULL)
->>> +
->>> +        check_call(['mcopy', '-i', img_path, vbsa_efi, '::/Vbsa.efi'],
->>> +                   stdout=DEVNULL, stderr=DEVNULL)
->>> +
->>> +        self.vm.add_args('-drive', f'file={img_path},format=raw,if=none,id=drive0')
->>> +        self.vm.add_args('-device', 'virtio-blk-pci,drive=drive0')
->>> +
->>> +        self.vm.launch()
->>> +
->>> +        # wait for EFI prompt
->>> +        self.wait_for_console_pattern('Shell>')
->>> +
->>> +        # Start the VBSA tests
->>> +        ec_and_wait(self, "FS0:Vbsa.efi", 'VBSA Architecture Compliance Suite')
->>> +
->>> +        # could we parse the summary somehow?
->>> +
->>> +        self.wait_for_console_pattern('VBSA tests complete. Reset the system.')
->>> +
->>
->> What happens in case there is an error, does the test app hangs, or
->> still exit with message under?
-> 
-> The failures I had were generally hangs but ideally we would parse the
-> the summary data and generate our response based on that. Unfortunately
-> that is at odds with the current send/wait for pass/fail message
-> infrastructure.
->
+> Well, it doesn't exist currently (because the architecture doesn't
+> define AT operations that do stage-2-only lookups). But two extra case
+> labels in one function seems like a fairly small price for "the
+> get_phys_addr_for_at() function will work correctly if you ask it to
+> do a stage-2 translation", if we ever need it in future (given that
+> it's a function ptw.c exposes to the rest of the code).
 
-I'm not sure you need something so complicated, all we needed is to 
-return an error if any test is failing,(assuming they all pass now?).
-I don't know the output format, but let's imagine a failure is reported 
-with "not ok ... details ...", all you need to modify is the final 
-wait_for_console_pattern:
+It doesn't exist currently and in my view it will probably never exist
+because Stage2 is not an independent translation regime. It only exists
+as an "extension" of a Stage1 translation. Also, Stage2 never translates
+VA->PA, but IPA->PA, and IPA is not a valid architectural address.
 
-wait_for_console_pattern(self, 'VBSA tests complete. Reset the system.',
-                          failure_message='not ok')
+These two extra cases, being unused, to me, complicates a further bit
+the reading of ptw.c. Moreover, the semantics looks misleading, being it
+from an AT command or from a real translation, because to fall into
+that case regime_translation_disabled() must return true for Stage2,
+i.e. Stage2 is disabled -- (hcr_el2 & (HCR_DC | HCR_VM)) == 0, but then
+we case for Stage2 anyways in get_phys_addr_disabled().
 
-So it will catch any failure without having to parse anything.
 
-Regards,
-Pierrick
+> Also, removing these lines means that if we ever do get here then
+> we'll drop into the definitely-wrong stage1 handling default case.
+
+Getting here with mmu_idx = ARMMMUIdx_Stage2{,S} looks, first of
+all, semantically wrong to me, as per my comment above.
+
+
+Cheers,
+Gustavo
 

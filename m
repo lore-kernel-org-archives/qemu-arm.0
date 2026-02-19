@@ -4,91 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCDC4E9A03B
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 10:38:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26588E9A03B
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 11:03:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vt1QV-0002JN-UO; Thu, 19 Feb 2026 05:38:35 -0500
+	id 1vt1no-0003zF-QB; Thu, 19 Feb 2026 06:02:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vt1QQ-00028a-3b
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 05:38:26 -0500
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vt1nm-0003yZ-KT
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 06:02:34 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vt1QN-0006hH-4g
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 05:38:24 -0500
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-b8f97c626aaso105268866b.2
- for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 02:38:22 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1vt1nk-0004di-H5
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 06:02:34 -0500
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-436263e31abso759690f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 03:02:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771497501; x=1772102301; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=chsomSTiq2DFQ8k7peJmKeu4OQisuVdcYciTd1yL4pM=;
- b=yPpuc0jZ0AePyUfTCqtdHtL8eu3ZxYHFjQ8YCj3QGHfnAkW9SmhrD3GFDTXsj9okmw
- LJQKKvatzTV59f3aad4xr7xE0nbKECq/4tAbqaVdBc8DFKdM8o7y4LYaUbLScJQIzpJt
- WqvL9ET/k0eJWTzLOYKOBHe4Bwdz5IFJd9nZ8FqVTgvY5qm/g0rxTEFYafTEVKHdxdFu
- i9FUzKeRyLJnDd4XXvuXVDlNIys50y8IsbyKZRzqrbKWy0AEX8EAIHO79oy3+k7jhT1W
- reqibNGNVsuWcw8vph+Jlj9kzKy6Yd/LhF76IxOlhMC0WP5koMSDPbS6vvl0Eb5etueh
- jX8A==
+ d=linaro.org; s=google; t=1771498950; x=1772103750; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=9Gy5U0HG/xNgrXivum+nhASnmAiunCrfWJbQ244sE4s=;
+ b=vLCaklMa4wlU0365OhAF7i8lmjMwfx9YUmrz7qlir08zbuK2q8+9Z0tecx/cF+c1wY
+ gAo18ySf/cCu4B7DohnoKwSh06ygyJbQHuqv0/fPI+Ky2P5n7DQ8ReXn6RevQGVr52oL
+ pMKHSzVTSrPq2AaOef92loMwNcD3LwUlyfA/fRejrsFF+bxTeodM1pFNfz26DIGOKQBb
+ VGjFZupkmwovRfuUecXPJ1BvRuHwA1lawwlfiDQXwZOCEy7qfsSTjYQ5/DFmu4akcLGc
+ Bu9hvQDcb49Z06/ngWifb2cmrOfLe3jzgpamNvdsv03HbCV0u8WU882w2sINFgGg0gKv
+ vD0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771497501; x=1772102301;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=chsomSTiq2DFQ8k7peJmKeu4OQisuVdcYciTd1yL4pM=;
- b=V23XRQwg74yzxsspFseh+Yo0Z2HcsWLnjgBkcwmQoP3V+qarOkJcE5GojJ2cVeCKTD
- P8D6tA74kRCRDYszYoGfDxxjphKsZh/uZUj0TlwUOyEPy8IjS/AXJmWHMMQ/M/1fmxnd
- RHgptl/cg+6jMDpA0KwyvbKVFhQH0FFOlXu8gXzRo949YKWWQxqo0B6Ou/3VTw7hjpej
- 8Z0ml9ORjCjHJejaZ1iVO+mzXqHLzcpS53d0kdhUJRr+HC8Ob4RvGKzaYxBM1K+tYMcc
- 2vUauRvoG6uQn3+WfeKA+qdlhe1UGbrTOrKP1iD9BlfCpIsdoV/olSO6c7PyFtP0JjhK
- ZUvg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXbzVSvehE0/QaQPzdaX+l/8MbF0UH5xbCtaZ9yDHAY+Vrf/gQkjMy9RMSNjDTZGBLun1W3+IdiOw==@nongnu.org
-X-Gm-Message-State: AOJu0YzlCy0uBjwULsMcvYXfyDF0wsxXvkYjbFnGHQRUAiCAeJMIphK1
- GBQRTUIeDTkh45UEzuHPB2YfGF0z6XPv21nwr9DFBWjhPYpsPBPsKCap/GTqoA12yck=
-X-Gm-Gg: AZuq6aIpeukLURnwU4WShg+hTfUKNOwbOI1X+mw3PcDrP3nndVi7fQ8t43RBkzPPoo9
- IO6PBVvVEWk+6ki+BYZNAGxL6cIaVd3Kww6DBHILV0Z/+1p114HgmEKAWG0INKa58j320sKazbn
- JskW/u8KrhLdZPaiKbmEfC32otY0ko3EIU8aUpBYovh8FE7IKKcghNQhj45t/ugh1QbGDeqFp9f
- h5cUp5LFp0iTEpGYsuj5Ue0EPVAJr7PaBg8O4NntZ8L9ldUoB5mPml7Ugo9c1gBzIjhoQrI/Ebj
- EV7mmP0jwIs7hFNnpu2h4R1tRW6KawPnlrI8vEtvvt2h9cn8QQjd9bch1FTtM1zEHNZssaFAC3s
- LBLrmLYTccNCpnOlJd92qIMiyIpz96Y8StddGz1HCtHbJOQFI36IBctUSXT4L+wbu3kuaQpOYVi
- 5FtdJYEWjTHusQNUctc+wNo1I=
-X-Received: by 2002:a17:906:eec9:b0:b83:95c8:15d0 with SMTP id
- a640c23a62f3a-b904dea764bmr141004466b.52.1771497500874; 
- Thu, 19 Feb 2026 02:38:20 -0800 (PST)
-Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-65bad19bfd3sm3860538a12.2.2026.02.19.02.38.16
+ d=1e100.net; s=20230601; t=1771498950; x=1772103750;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=9Gy5U0HG/xNgrXivum+nhASnmAiunCrfWJbQ244sE4s=;
+ b=jEC7Qn70aTa6ZoyzQvH2e8ANFURWKv9SogeQRmFsT/FTU5GLiYUjhuHVdE1gkRwT0C
+ cWrmSNYYOWHrncEubn+HyAMuaB4aO4wwNHT27yky33dR/qw9d2NpPmcRWxLIejumOl7r
+ 0WUYMTLwL8AjKacHFhwiNPNwqBgS8dqq3UxhHurz1CJz4vpFFqd9MT15obAtmY4L7NL/
+ /cT2498gB/aELktNTBTJdec5Hv9ND5wGIoKUyibnP6RGRyHwksmlY2l2D8dQFw1geN49
+ tOZ9wMmRCnuXMx4ma3/b1UTPKeb8wVIIdK3nbDjHKWulV4vh1s6VpqqKmzymvI8JwQiV
+ tLyw==
+X-Gm-Message-State: AOJu0YxuKwh+FFn5IjImw+CedEElhnAl8/sZMKEVlKK30HtTxyatIx9y
+ RBmXheTDMMjUtvhsaejCiIoZObK5ZmBgHYCFkFnn4DBfnQli7FTAfQbg5Ng3Zk5liROSRvYYRVj
+ PlZbB
+X-Gm-Gg: AZuq6aIx8PPSFwlejZCgXL1OSLN6HDdl8/ZpDxWvQzmUE0iSdLIyj2IKU/jhwH+SwCb
+ rnOWM+Bf8D8/jxk4G4amLSfWgGHEpIn6qT4LWXTab3hcT9/SAh49OQEDGswfWVaLohz9OIarrUM
+ dQjlfV+abDbhQ17XWEpb/LUM4qqXlVbr71z2WTVVtnP/Pc3owL3k5l6KocqymB2t23Kj6c5o01h
+ xR+Omo7XZNMVanSL0WrNQRAi30LARYpt7lEWswbasiGiYyg/M6DoXqGYPThZaSAR9qnjwpHV89n
+ WrHUJ7Fb5gIYJhqddE5aeaIu6vjxyTHxS9me7a+3DMlVB/Tp1oPaNRYDGCH2vG6PVlX/GK3KEPV
+ c1MfUC1ca178EGSyVsZwAPFrRhPMfJdC/OrXhwEcdDVfStkNcbSzahMqy/yrybRrMA3n11CjfSF
+ CAryY7zRORG9+nCG35x/3BYnVF7YdRUdhUCf56jK8QVDyfvw8y1Zoh/PdQcD3Ikl1n/Y6qoJN0n
+ FrG2PCDBhyJg1jclQ+F6gB0HEusGA8=
+X-Received: by 2002:a5d:5d11:0:b0:436:34c0:c9c8 with SMTP id
+ ffacd0b85a97d-43797941daamr33860376f8f.60.1771498950020; 
+ Thu, 19 Feb 2026 03:02:30 -0800 (PST)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43796abc21dsm50997201f8f.20.2026.02.19.03.02.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Feb 2026 02:38:18 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 108FB5F805;
- Thu, 19 Feb 2026 10:38:16 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-devel@nongnu.org,  Brad Smith <brad@comstyle.com>,  Warner Losh
- <imp@bsdimp.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,  Thomas
- Huth <thuth@redhat.com>,  Kyle Evans <kevans@freebsd.org>,  Peter Maydell
- <peter.maydell@linaro.org>,  qemu-arm@nongnu.org
-Subject: Re: [PATCH 6/6] tests/functional: add Arm VBSA uefi conformance test
-In-Reply-To: <82942191-d0a6-4393-846d-b04e3cb009ce@linaro.org> (Pierrick
- Bouvier's message of "Fri, 13 Feb 2026 10:49:20 -0800")
-References: <20260213154859.1551283-1-alex.bennee@linaro.org>
- <20260213154859.1551283-7-alex.bennee@linaro.org>
- <82942191-d0a6-4393-846d-b04e3cb009ce@linaro.org>
-User-Agent: mu4e 1.14.0-pre1; emacs 30.1
-Date: Thu, 19 Feb 2026 10:38:15 +0000
-Message-ID: <87o6ll6mso.fsf@draig.linaro.org>
+ Thu, 19 Feb 2026 03:02:29 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] hw/arm/virt: Update error message for bad gic-version option
+Date: Thu, 19 Feb 2026 11:02:28 +0000
+Message-ID: <20260219110228.3804482-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x634.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,178 +98,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
+As we added different valid gic-version option settings,
+we forgot to update the hint in the error message produced
+when the user specifies an invalid value:
 
-> On 2/13/26 7:48 AM, Alex Benn=C3=A9e wrote:
->> The VBSA test is a subset of the wider Arm architecture compliance
->> suites (ACS) which validate machines meet particular minimum set of
->> requirements. The VBSA is for virtual machines so it makes sense we
->> should check the -M virt machine is compliant.
->> Fortunately there are prebuilt binaries published via github so all
->> we
->> need to do is build an EFI partition and place things in the right
->> place.
->> There are some additional Linux based tests which are left for
->> later.
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->>   tests/functional/aarch64/meson.build       |  1 +
->>   tests/functional/aarch64/test_virt_vbsa.py | 99 ++++++++++++++++++++++
->>   2 files changed, 100 insertions(+)
->>   create mode 100755 tests/functional/aarch64/test_virt_vbsa.py
->> diff --git a/tests/functional/aarch64/meson.build
->> b/tests/functional/aarch64/meson.build
->> index 49eca120589..7ea8c22b048 100644
->> --- a/tests/functional/aarch64/meson.build
->> +++ b/tests/functional/aarch64/meson.build
->> @@ -46,6 +46,7 @@ tests_aarch64_system_thorough =3D [
->>     'tuxrun',
->>     'virt',
->>     'virt_gpu',
->> +  'virt_vbsa',
->>     'xen',
->>     'xlnx_versal',
->>   ]
->> diff --git a/tests/functional/aarch64/test_virt_vbsa.py b/tests/function=
-al/aarch64/test_virt_vbsa.py
->> new file mode 100755
->> index 00000000000..53cabf9d6c5
->> --- /dev/null
->> +++ b/tests/functional/aarch64/test_virt_vbsa.py
->> @@ -0,0 +1,99 @@
->> +#!/usr/bin/env python3
->> +#
->> +# Functional test that runs the Arm VBSA conformance tests.
->> +#
->> +# Copyright (c) 2026 Linaro Ltd.
->> +#
->> +# Author:
->> +#  Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> +#
->> +# SPDX-License-Identifier: GPL-2.0-or-later
->> +
->> +import shutil
->> +from subprocess import check_call, DEVNULL
->> +
->> +from qemu_test import QemuSystemTest, Asset
->> +from qemu_test import wait_for_console_pattern, get_qemu_img, skipIfMis=
-singCommands
->> +from qemu_test import exec_command_and_wait_for_pattern as ec_and_wait
->> +
->> +
->> +@skipIfMissingCommands("mformat", "mcopy", "mmd")
->> +class Aarch64VirtMachine(QemuSystemTest):
->> +    KERNEL_COMMON_COMMAND_LINE =3D 'printk.time=3D0 '
->> +    timeout =3D 360
->> +
->> +    def wait_for_console_pattern(self, success_message, vm=3DNone):
->> +        wait_for_console_pattern(self, success_message,
->> +                                 failure_message=3D'Kernel panic - not =
-syncing',
->> +                                 vm=3Dvm)
->> +
->
-> May be worth adding a comment with README url:
-> https://github.com/ARM-software/sysarch-acs/blob/main/docs/vbsa/README.md
->
->> +    ASSET_VBSA_EFI =3D Asset('https://github.com/ARM-software/sysarch-a=
-cs/raw/refs/heads/main'
->> +                           '/prebuilt_images/VBSA/v25.12_VBSA_0.7.0/Vbs=
-a.efi',
->> +                           '80f37d2fb86d152d95dec4d05ff099c9e47ee8a8931=
-4268e08056b0e1359e1fa')
->> +
->> +    ASSET_BSA_SHELL =3D Asset('https://github.com/ARM-software/bsa-acs/=
-raw/refs/heads/main/'
->> +                            'prebuilt_images/BSA_DT/v20.05_05_ALPHA/She=
-ll.efi',
->> +                            '763e7b293fa9d1582153ea8fd0cf60e2a7a87d092d=
-35d342cf9b3b697f47b588')
->> +
->> +    def test_aarch64_vbsa_uefi_tests(self):
->> +        """
->> +        Launch the UEFI based VBSA test from an EFI file-system
->> +        """
->> +
->> +        self.vm.set_console()
->> +
->> +        # virt machine wi
->> +        self.set_machine('virt')
->> +        self.vm.add_args('-M', 'virt,gic-version=3Dmax,virtualization=
-=3Don')
->> +        self.vm.add_args('-cpu', 'max','-m', '1024')
->> +
->> +        # We will use the QEMU firmware blobs to boot
->> +        code_path =3D self.build_file('pc-bios', 'edk2-aarch64-code.fd')
->> +        vars_source =3D self.build_file('pc-bios', 'edk2-arm-vars.fd')
->> +        vars_path =3D self.scratch_file('vars.fd')
->> +        shutil.copy(vars_source, vars_path)
->> +
->> +        self.vm.add_args('-drive', f'if=3Dpflash,format=3Draw,readonly=
-=3Don,file=3D{code_path}')
->> +        self.vm.add_args('-drive', f'if=3Dpflash,format=3Draw,file=3D{v=
-ars_path}')
->> +
->> +        # Build an EFI FAT32 file-system for the UEFI tests
->> +        vbsa_efi =3D self.ASSET_VBSA_EFI.fetch()
->> +        bsa_shell =3D self.ASSET_BSA_SHELL.fetch()
->> +
->> +        img_path =3D self.scratch_file('vbsa.img')
->> +        qemu_img =3D get_qemu_img(self)
->> +        check_call([qemu_img, 'create', '-f', 'raw', img_path, '64M'],
->> +                   stdout=3DDEVNULL, stderr=3DDEVNULL)
->> +
->> +        check_call(['mformat', '-i', img_path, '-v', 'VBSA', '::'],
->> +                   stdout=3DDEVNULL, stderr=3DDEVNULL)
->> +
->> +        check_call(['mmd', '-i', img_path, '::/EFI'],
->> +                   stdout=3DDEVNULL, stderr=3DDEVNULL)
->> +
->> +        check_call(['mmd', '-i', img_path, '::/EFI/BOOT'],
->> +                   stdout=3DDEVNULL, stderr=3DDEVNULL)
->> +
->> +        check_call(['mcopy', '-i', img_path, bsa_shell, '::/EFI/BOOT/BO=
-OTAA64.EFI'],
->> +                   stdout=3DDEVNULL, stderr=3DDEVNULL)
->> +
->> +        check_call(['mcopy', '-i', img_path, vbsa_efi, '::/Vbsa.efi'],
->> +                   stdout=3DDEVNULL, stderr=3DDEVNULL)
->> +
->> +        self.vm.add_args('-drive', f'file=3D{img_path},format=3Draw,if=
-=3Dnone,id=3Ddrive0')
->> +        self.vm.add_args('-device', 'virtio-blk-pci,drive=3Ddrive0')
->> +
->> +        self.vm.launch()
->> +
->> +        # wait for EFI prompt
->> +        self.wait_for_console_pattern('Shell>')
->> +
->> +        # Start the VBSA tests
->> +        ec_and_wait(self, "FS0:Vbsa.efi", 'VBSA Architecture Compliance=
- Suite')
->> +
->> +        # could we parse the summary somehow?
->> +
->> +        self.wait_for_console_pattern('VBSA tests complete. Reset the s=
-ystem.')
->> +
->
-> What happens in case there is an error, does the test app hangs, or
-> still exit with message under?
+$ qemu-system-aarch64 -M virt,help | grep gic-version
+  gic-version=<string>   - Set GIC version. Valid values are 2, 3, 4, host and max
+$ qemu-system-aarch64 -M virt,gic-version=bang
+qemu-system-aarch64: Invalid gic-version value
+Valid values are 3, 2, host, max.
 
-The failures I had were generally hangs but ideally we would parse the
-the summary data and generate our response based on that. Unfortunately
-that is at odds with the current send/wait for pass/fail message
-infrastructure.
+Update the error string to match the one we use in the help text
+for the option.
 
->
-> If it always exit with this message, whether we have an error or not,
-> then the test is not really checking anything.
->
->> +if __name__ =3D=3D '__main__':
->> +    QemuSystemTest.main()
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/virt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 50865e8115..8dc999712c 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2971,7 +2971,7 @@ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
+         vms->gic_version = VIRT_GIC_VERSION_MAX; /* Will probe later */
+     } else {
+         error_setg(errp, "Invalid gic-version value");
+-        error_append_hint(errp, "Valid values are 3, 2, host, max.\n");
++        error_append_hint(errp, "Valid values are 2, 3, 4, host, and max.\n");
+     }
+ }
+ 
+-- 
+2.43.0
+
 

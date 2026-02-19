@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AD4AE9A04A
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 14:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 897E5E9A04C
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 14:52:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vt5MK-00041q-HH; Thu, 19 Feb 2026 09:50:28 -0500
+	id 1vt5MM-00043n-LY; Thu, 19 Feb 2026 09:50:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vt5M4-0003mF-0b
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:50:19 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ id 1vt5M5-0003mM-QX
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:50:20 -0500
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vt5Lw-00086w-7h
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:50:07 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-4376c0bffc1so840436f8f.0
- for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 06:49:59 -0800 (PST)
+ id 1vt5Lx-00087Q-RH
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:50:11 -0500
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-4362507f396so1096864f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 06:50:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1771512599; x=1772117399; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1771512600; x=1772117400; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=iL3C1pS7IifBgrlCFYdscA+wkLZ194nZOqF5fMNffCY=;
- b=fJtEUs3RFT98gZhP+hCD3U7s+IMmcRtQAx70RUprMCjCxokltcDbpLJwwXblDkvL1L
- RVGQNJxqw2KOAx7yIIztbaGaGXJwHjGsIYCryBmLYSVioeMiYWJNeb3/q/iZAzcfyGug
- +vstlCPpKl+yZAE0V+g2wg1WsZuyK/AOA36I+6w6VpKKzAQVqcjnN268iQaGZgkJq2NY
- gOVQOwAfIa2zxnKq00d0D/0iFzwqQLpLjUNZBB+68WTQim6qvIL/s/ED6rsO8sgqpc+A
- tx99lSNlYwaa9trK5iZuNFVFqmUVd7df3OvGTCCRqBCdu86PHzZm7Pez5cqgP+HKIS7d
- HpvA==
+ bh=FCi0alFE7PJKdffvGQNHsCppNHZRJnPMHnqdrnJ7VHo=;
+ b=XEWr2Svd++iRrUytAadC9CdLc6jA1KcQuiydTqR4HAp1JNm1fO/VKHnI0jzsJJw/wB
+ MvN8kwH5w0qJjZhsXyKykfjFV0DHHm1M6kcZl6gxe6anz/a5tugp1fpxgIYm2JLPkTf/
+ pSBJtYI+64I/Rv+y71RzM3CT+e8LuROz4cuGf9bJ/2zOWsW/GxdmSf0LJpd9hpw6EaH9
+ TN0NatK1S5OEtGHRqPlaJ9YrapLwvXGW4eTBu9xxl5ieLxcx/mUmAfo1KuWPXsxtwUre
+ AuQfHayDnIMFjHh+uP01ZSSu4Kp0lS073GjK+AqCkXDoFWHdweQCYk7xho2qVfwAdgrr
+ l1hA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771512599; x=1772117399;
+ d=1e100.net; s=20230601; t=1771512600; x=1772117400;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=iL3C1pS7IifBgrlCFYdscA+wkLZ194nZOqF5fMNffCY=;
- b=c1nFYMiLxrrGRmaD2ymXLYV+GSx7tcpoqSu/05xHkZr9IiIVeNjSDDQHO9VqXvJcfD
- BDJhFWNweFDlCEXb7qwSappIg4NdVEoVRb4gABJDThTwqWFUB/qQFojby3PqsUzErdkr
- ja4D7R0vO9ZtPBvIXXpfpznAJJpBrCSzi9XPXz7RG5ZCM3qQtiM3KpyiVc+Ah2pIHpi1
- deyg4wchq4Xyo/5/+ioBe7tqSdyXY5xGz066eOVQV0ooWdL5J8E5DrEjJB5Zbv1ZXZ7l
- Z+nMwjzG5zO82QFXFay5hDHJAY0mC9XFeqNTjdSwqWvKNG9kbDm7ah3kN77SGwqmElBy
- 5HnA==
-X-Gm-Message-State: AOJu0Yyujn5nx+8OADX1RRCNF4L1cxjbbqX24wLofFYek6MOXLvPMI3/
- XwZ9rqN6FwSS73CkpZPTVtGKE0MUtUcp0cygTvT0tRIa8mfTZzNGjREB
-X-Gm-Gg: AZuq6aK4sunyqCelpnlhj5R22jRKfs0Tf3MzHa+denChpAEGiwTYmxiBQurXyFDOqO6
- eqs2E+KqjVJdSd88+Xd+f03NZOhlu/AEH2RPpram5alq5gbIepI6uPhz3so8jxOUc++tpzKLY+2
- kES0xk/luONuerSxlKL/NNGhSmBd3DExNYHr8lBFKXNUJ3vMpI/iXtuJJKHfTDlyngbtLBmay+Q
- SI0p3h43P2KtfGOuho8RNE7R3G063nfoG18mXob7PYVIl2NpVQgPM2dUjFtcmdPC7K+SIvSWMQS
- h0HePzAbWtIjgwA1s3DNXEQsSaDoz+Uh4y+o+QmVlTJo2hNonL77PQa1VFO2jmHQbc1hIXob8Mt
- MsPeU4RNWLv9TDCR83dMMKn3/ffr7RbdsUEUZCHsnACz1Riz65tj2Cl3GqO767LompE+82ZanR1
- Osmu8/bu8qjkyxelq9qChlAHH7DkElfqMwlfnoz+63oUF1eIwwBP90a1bXDwa15vSizQZQ
-X-Received: by 2002:a05:6000:2585:b0:432:8504:8d5b with SMTP id
- ffacd0b85a97d-4395fd5c21emr5062564f8f.50.1771512598429; 
- Thu, 19 Feb 2026 06:49:58 -0800 (PST)
+ bh=FCi0alFE7PJKdffvGQNHsCppNHZRJnPMHnqdrnJ7VHo=;
+ b=PvUCDqYUNDnFxA6yA7dmYlzlfGuXaWr8NmEE9ohHfq7gipsxtMUT4wk7SXlyCfFOWU
+ 2EmEo03st6VtNliEn7Wp7weF0RCFxch0QBCBl7IO7eGnPr61I9ijsYK2dWCH1oQBu8ul
+ 6JbrJwX+tOGIrTRFqo0wTM+hlff5+jSqCFe4MwS80NQixA1nZpvUdVIOOFFkTuXeaNju
+ D+Mt5dcDQQbsHj6dl+9yQIXE/1ZtntxtS7rSzQZnQ79BiHyu0ShQrxTlUztmN/WX+Oqg
+ 1AxOVbV5dIAzi64kKgTnMzyamSaEEtRnn8csMJeNuUvdGQXToH6xS7Nv5pHuR3weJJny
+ /4mQ==
+X-Gm-Message-State: AOJu0YwseJZaodlcfNyn2SqQinUK3/Set1DSy2v73jany0M1/zT883Ul
+ F9pbYsTf1ZAyv8CaRsWY0Tru/TGFtSLSDmBvWyaT8pUIT2lbXw2A5oq9
+X-Gm-Gg: AZuq6aJ0tx0+k4JRyUb8voFjVMstsjcDN2c+RH7mNkH3CgTf8xSZq2gbMmSKFOkSici
+ njVVZ0XFU3qci8+oR5KgHU14v0cduewC0/hkgnRHEf7Ut06N5ZaY9U1lOKeYYA8LMLDv5SenrYT
+ 5YbrVF1D0BHVw26vvoHaiU437E+b8JHlIPW4JQhx8SPW4rV+XXfuxUuY40lmmm26pEpY05HMJQu
+ FZsobD0CRB16fam9Mj+pQT78TCtfHKu+sfZ2mtWdfdymviLJK523ruvBhmVZqwnqOV61x4sKfa3
+ h2JalGCTBe5KZPmXoegn6YtCeB92OD1/EaqceSEW3h2EtLWiahg039LoylqWo/49nCgpuDkZAnT
+ DbjgOsMu/ru7JfjeTD/+5tCgwryBZpYz0ASGKvB08uz5LZ8sVrtlpRR5vdZGNfLCcBLeZAfob8O
+ gA7L6gGSz7n8LhZqY9Dfo3by/4EBwQup7nbnmUKw2vo2m3EOdVPwFdgMpG3Wkb93Mv3Ws1
+X-Received: by 2002:a05:6000:2c11:b0:435:f29d:8c41 with SMTP id
+ ffacd0b85a97d-43958e58511mr10191979f8f.62.1771512599975; 
+ Thu, 19 Feb 2026 06:49:59 -0800 (PST)
 Received: from thinkpad-t470s.. (93-143-129-182.adsl.net.t-com.hr.
  [93.143.129.182]) by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-43796ac8d82sm50163087f8f.31.2026.02.19.06.49.57
+ ffacd0b85a97d-43796ac8d82sm50163087f8f.31.2026.02.19.06.49.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Feb 2026 06:49:58 -0800 (PST)
+ Thu, 19 Feb 2026 06:49:59 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
@@ -71,17 +71,18 @@ Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
-Subject: [PATCH v2 32/33] hw/pci-host: add gsi-irqs property array
-Date: Thu, 19 Feb 2026 15:49:00 +0100
-Message-ID: <20260219144901.3317747-14-ruslichenko.r@gmail.com>
+Subject: [PATCH v2 33/33] tests/functional: Add functional tests for
+ arm-generic-fdt machine
+Date: Thu, 19 Feb 2026 15:49:01 +0100
+Message-ID: <20260219144901.3317747-15-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260219144901.3317747-1-ruslichenko.r@gmail.com>
 References: <20260219143332.3316679-1-ruslichenko.r@gmail.com>
  <20260219144901.3317747-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,56 +107,294 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Add a new gsi-irqs array property to the GPEX PCI host controller.
-This enables them to be configured on realize callback.
+This patch adds functional tests for the new `arm-generic-fdt` machine type.
+It introduces two new test suites:
 
-This is required to init GPEX PCI host from a static configuration,
-such as Hardware device tree.
+1. test_arm_generic_fdt.py: Validates the firmware boot chain (TF-A and
+   EDK2). It checks the console output for specific patterns indicating
+   successful execution of BL1, BL2, BL31, and UEFI stages.
+
+2. test_arm_generic_fdt_alpine.py: Validates a full OS boot by launching
+   an Alpine Linux ISO and waiting for the welcome message.
+
+To support these tests, two pre-compiled Device Tree Blob (DTB) files are
+added to `tests/data`.
+
+The tests reuse the existing firmware assets and Alpine ISO infrastructure
+from the sbsa-ref tests.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/pci-host/gpex.c         | 6 ++++++
- include/hw/pci-host/gpex.h | 3 +++
- 2 files changed, 9 insertions(+)
+ .../arm-generic-fdt/arm64-sbsa-guest.dtb      | Bin 0 -> 673 bytes
+ .../aarch64/arm-generic-fdt/arm64-sbsa-hw.dtb | Bin 0 -> 5414 bytes
+ tests/functional/aarch64/meson.build          |   2 +
+ .../aarch64/test_arm_generic_fdt.py           | 114 ++++++++++++++++++
+ .../aarch64/test_arm_generic_fdt_alpine.py    |  61 ++++++++++
+ 5 files changed, 177 insertions(+)
+ create mode 100644 tests/data/dtb/aarch64/arm-generic-fdt/arm64-sbsa-guest.dtb
+ create mode 100644 tests/data/dtb/aarch64/arm-generic-fdt/arm64-sbsa-hw.dtb
+ create mode 100755 tests/functional/aarch64/test_arm_generic_fdt.py
+ create mode 100755 tests/functional/aarch64/test_arm_generic_fdt_alpine.py
 
-diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
-index e66784ce51..6125b2c319 100644
---- a/hw/pci-host/gpex.c
-+++ b/hw/pci-host/gpex.c
-@@ -148,6 +148,10 @@ static void gpex_host_realize(DeviceState *dev, Error **errp)
-         s->irq[i].irq_num = -1;
-     }
- 
-+    for (i = 0; i < s->gsi_irq_num; i++) {
-+        gpex_set_irq_num(s, i, s->gsi_irqs[i]);
-+    }
+diff --git a/tests/data/dtb/aarch64/arm-generic-fdt/arm64-sbsa-guest.dtb b/tests/data/dtb/aarch64/arm-generic-fdt/arm64-sbsa-guest.dtb
+new file mode 100644
+index 0000000000000000000000000000000000000000..5f2a1e9b2826eec45ed97e6dd704649a05d0af4c
+GIT binary patch
+literal 673
+zcmZuuJx|0i40R8LjsXD+Gtw;#SBZ~>u>%r210zx{4c9=LRB?)cf5SiGkFYT#>@=y4
+za+VVN*)R69@_F#{1u**nfNSzg@@I68=^W8v>j8@IA^dX}3GI;IO)>k7PbPKlJ=>_$
+zyb&K#d~3ArUzfN-QF`@A85%4bhsws7-xk^i8PPE3l;S(a)gIquNmVr;U=mj7fSh1$
+zyjOg4GfyjW=Rr%HA-g`3DVKL)?Q9um?L}~%Gj9Dhl*jr#VOEm)4-;HZaGP+RU!7Be
+zjNkJnQ7<RRM$W~6ryQO;axS-XxIS{OwsW{|=CR*zg>1A{<%{yDoh@5!orix}@kH4L
+u>UUL2WembX)U{WL2};*?BIuP-;ME#J<CUlpq$3VU(_^6ifKEOu`m|p^QBCmx
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/data/dtb/aarch64/arm-generic-fdt/arm64-sbsa-hw.dtb b/tests/data/dtb/aarch64/arm-generic-fdt/arm64-sbsa-hw.dtb
+new file mode 100644
+index 0000000000000000000000000000000000000000..0f12655f9c4b4f12556dd0c55c3bc552ff3f8a5e
+GIT binary patch
+literal 5414
+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
+E4{LL%!~g&Q
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aarch64/meson.build
+index 49eca12058..3ec20f5bb2 100644
+--- a/tests/functional/aarch64/meson.build
++++ b/tests/functional/aarch64/meson.build
+@@ -41,6 +41,8 @@ tests_aarch64_system_thorough = [
+   'sbsaref',
+   'sbsaref_alpine',
+   'sbsaref_freebsd',
++  'arm_generic_fdt',
++  'arm_generic_fdt_alpine',
+   'smmu',
+   'tcg_plugins',
+   'tuxrun',
+diff --git a/tests/functional/aarch64/test_arm_generic_fdt.py b/tests/functional/aarch64/test_arm_generic_fdt.py
+new file mode 100755
+index 0000000000..7b0d81196e
+--- /dev/null
++++ b/tests/functional/aarch64/test_arm_generic_fdt.py
+@@ -0,0 +1,114 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a kernel and checks the console
++#
++# Based on test_arm_generic_fdt.py
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
-     pci->bus = pci_register_root_bus(dev, "pcie.0", gpex_set_irq,
-                                      gpex_swizzle_map_irq_fn,
-                                      s, &s->io_mmio, &s->io_ioport, 0,
-@@ -190,6 +194,8 @@ static const Property gpex_host_properties[] = {
-     DEFINE_PROP_SIZE(PCI_HOST_ABOVE_4G_MMIO_SIZE, GPEXHost,
-                      gpex_cfg.mmio64.size, 0),
-     DEFINE_PROP_UINT8("num-irqs", GPEXHost, num_irqs, PCI_NUM_PINS),
-+    DEFINE_PROP_ARRAY("gsi-irqs", GPEXHost, gsi_irq_num,
-+                      gsi_irqs, qdev_prop_uint32, uint32_t),
- };
- 
- static void gpex_host_class_init(ObjectClass *klass, const void *data)
-diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
-index 1da9c85bce..f8e9874756 100644
---- a/include/hw/pci-host/gpex.h
-+++ b/include/hw/pci-host/gpex.h
-@@ -64,6 +64,9 @@ struct GPEXHost {
-     GPEXIrq *irq;
-     uint8_t num_irqs;
- 
-+    uint32_t *gsi_irqs;
-+    uint32_t gsi_irq_num;
++from qemu_test import QemuSystemTest, Asset
++from qemu_test import wait_for_console_pattern
++from qemu_test import interrupt_interactive_console_until_pattern
 +
-     bool allow_unmapped_accesses;
- 
-     struct GPEXConfig gpex_cfg;
++from pathlib import Path
++
++def fetch_firmware(test):
++    """
++    Flash volumes generated using:
++
++    Toolchain from Debian:
++    aarch64-linux-gnu-gcc (Debian 12.2.0-14) 12.2.0
++
++    Used components:
++
++    - Trusted Firmware         v2.12.0
++    - Tianocore EDK2           edk2-stable202411
++    - Tianocore EDK2-platforms 4b3530d
++
++    """
++
++    # Secure BootRom (TF-A code)
++    fs0_path = test.uncompress(Aarch64ArmGenericFdtMachine.ASSET_FLASH0,
++                                format="xz")
++
++    # Non-secure rom (UEFI and EFI variables)
++    fs1_path = test.uncompress(Aarch64ArmGenericFdtMachine.ASSET_FLASH1,
++                                format="xz")
++
++    for path in [fs0_path, fs1_path]:
++        with open(path, "ab+") as fd:
++            fd.truncate(256 << 20)  # Expand volumes to 256MiB
++
++    test.vm.add_args(
++        "-blockdev", f"driver=file,filename={fs0_path},node-name=pflash0",
++        "-blockdev", f"driver=file,filename={fs1_path},node-name=pflash1",
++    )
++
++
++class Aarch64ArmGenericFdtMachine(QemuSystemTest):
++    """
++    As firmware runs at a higher privilege level than the hypervisor we
++    can only run these tests under TCG emulation.
++    """
++
++    timeout = 180
++
++    # SBSA_FLASH0.fd.xz
++    ASSET_FLASH0 = Asset(
++            'https://share.linaro.org/downloadFile?id=kyoMLGC9zXa4oA7',
++            '76eb89d42eebe324e4395329f47447cda9ac920aabcf99aca85424609c3384a5')
++
++    # SBSA_FLASH1.fd.xz
++    ASSET_FLASH1 = Asset(
++        'https://share.linaro.org/downloadFile?id=Dj1HRXnDnKtU6Nj',
++        'f850f243bd8dbd49c51e061e0f79f1697546938f454aeb59ab7d93e5f0d412fc')
++
++    current_dir = Path(__file__).resolve().parent
++
++    hw_dtb_path = current_dir.parent.parent/ "data" / "dtb" / "aarch64" / \
++                    "arm-generic-fdt" / "arm64-sbsa-hw.dtb"
++
++    dtb_path = current_dir.parent.parent/ "data" / "dtb" / "aarch64" / \
++                    "arm-generic-fdt" / "arm64-sbsa-guest.dtb"
++
++    def test_edk2_firmware(self):
++
++        self.set_machine('arm-generic-fdt')
++
++        fetch_firmware(self)
++
++        self.vm.add_args('-hw-dtb', str(self.hw_dtb_path))
++        self.vm.add_args('-dtb', str(self.dtb_path))
++
++        self.vm.add_args('-device', "bochs-display")
++        self.vm.add_args('-device', "bochs-display")
++
++        self.vm.add_args('-d', 'guest_errors,unimp')
++        self.vm.set_console()
++        self.vm.launch()
++
++        # TF-A boot sequence:
++        #
++        # https://github.com/ARM-software/arm-trusted-firmware/blob/v2.8.0/\
++        #     docs/design/trusted-board-boot.rst#trusted-board-boot-sequence
++        # https://trustedfirmware-a.readthedocs.io/en/v2.8/\
++        #     design/firmware-design.html#cold-boot
++
++        # AP Trusted ROM
++        wait_for_console_pattern(self, "Booting Trusted Firmware")
++        wait_for_console_pattern(self, "BL1: v2.12.0(release):")
++        wait_for_console_pattern(self, "BL1: Booting BL2")
++
++        # Trusted Boot Firmware
++        wait_for_console_pattern(self, "BL2: v2.12.0(release)")
++        wait_for_console_pattern(self, "Booting BL31")
++
++        # EL3 Runtime Software
++        wait_for_console_pattern(self, "BL31: v2.12.0(release)")
++
++        # Non-trusted Firmware
++        wait_for_console_pattern(self, "UEFI firmware (version 1.0")
++        interrupt_interactive_console_until_pattern(self, "QEMU SBSA-REF Machine")
++
++if __name__ == '__main__':
++    QemuSystemTest.main()
+diff --git a/tests/functional/aarch64/test_arm_generic_fdt_alpine.py b/tests/functional/aarch64/test_arm_generic_fdt_alpine.py
+new file mode 100755
+index 0000000000..10429d21a3
+--- /dev/null
++++ b/tests/functional/aarch64/test_arm_generic_fdt_alpine.py
+@@ -0,0 +1,61 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a kernel and checks the console
++#
++# Based on test_arm_generic_fdt_alpine.py
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import QemuSystemTest, Asset, skipSlowTest
++from qemu_test import wait_for_console_pattern
++from test_arm_generic_fdt import fetch_firmware
++
++from pathlib import Path
++
++class Aarch64ArmGenericFdtAlpine(QemuSystemTest):
++
++    ASSET_ALPINE_ISO = Asset(
++        ('https://dl-cdn.alpinelinux.org/'
++         'alpine/v3.17/releases/aarch64/alpine-standard-3.17.2-aarch64.iso'),
++        '5a36304ecf039292082d92b48152a9ec21009d3a62f459de623e19c4bd9dc027')
++
++    current_dir = Path(__file__).resolve().parent
++
++    hw_dtb_path = current_dir.parent.parent/ "data" / "dtb" / "aarch64" / \
++        "arm-generic-fdt" / "arm64-sbsa-hw.dtb"
++
++    dtb_path = current_dir.parent.parent/ "data" / "dtb" / "aarch64" / \
++        "arm-generic-fdt" / "arm64-sbsa-guest.dtb"
++
++
++    # This tests the whole boot chain from EFI to Userspace
++    # We only boot a whole OS for the current top level CPU and GIC
++    # Other test profiles should use more minimal boots
++    def boot_alpine_linux(self):
++        self.set_machine('arm-generic-fdt')
++
++        fetch_firmware(self)
++        iso_path = self.ASSET_ALPINE_ISO.fetch()
++
++        self.vm.set_console()
++        self.vm.add_args('-hw-dtb', str(self.hw_dtb_path))
++        self.vm.add_args('-dtb', str(self.dtb_path))
++        self.vm.add_args(
++            "-device", f"ide-cd,bus=ahci.0,unit=0,drive=cdrom0",
++        )
++        self.vm.add_args(
++            "-drive", f"file={iso_path},if=none,id=cdrom0",
++        )
++        self.vm.add_args('-device', "bochs-display")
++        self.vm.add_args('-netdev', "user,id=net0")
++        self.vm.add_args('-device', "e1000e,netdev=net0")
++
++        self.vm.launch()
++        wait_for_console_pattern(self, "Welcome to Alpine Linux 3.17")
++
++    def test_alpine_linux(self):
++        self.boot_alpine_linux()
++
++
++if __name__ == '__main__':
++    QemuSystemTest.main()
 -- 
 2.43.0
 

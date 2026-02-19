@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44855E9A03B
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 04:02:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 222BBE9A04C
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 04:02:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vsvF0-0008LP-Bo; Wed, 18 Feb 2026 23:02:14 -0500
+	id 1vsvF6-0008Ob-Va; Wed, 18 Feb 2026 23:02:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vsvEy-0008KP-E0
- for qemu-arm@nongnu.org; Wed, 18 Feb 2026 23:02:12 -0500
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ id 1vsvF5-0008ND-DS
+ for qemu-arm@nongnu.org; Wed, 18 Feb 2026 23:02:19 -0500
+Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vsvEw-0001Co-Iz
- for qemu-arm@nongnu.org; Wed, 18 Feb 2026 23:02:12 -0500
-Received: by mail-pl1-x632.google.com with SMTP id
- d9443c01a7336-2ad20007c73so2029405ad.2
- for <qemu-arm@nongnu.org>; Wed, 18 Feb 2026 20:02:09 -0800 (PST)
+ id 1vsvF0-0001DX-GN
+ for qemu-arm@nongnu.org; Wed, 18 Feb 2026 23:02:19 -0500
+Received: by mail-pg1-x529.google.com with SMTP id
+ 41be03b00d2f7-c6dd5b01e14so180357a12.0
+ for <qemu-arm@nongnu.org>; Wed, 18 Feb 2026 20:02:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771473729; x=1772078529; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=g+k/37VNyM44S8IKpnLIeLYphIGYrb6n3z+1yI/fqF0=;
- b=EbnrHnDwk059TaOP9tp8JOexZ2XpH5a71mv56lIowm3K/3Nm0YM5u85HO/eth/41jd
- VCZSaSnBsaPld8pWHYZAvgjxIdrUwRyRcSlUA1WQ1N7Ma/ONJDNKllECcVC4cnGC3nUd
- cGmnTxKyG+myszeRXniRB1VR/emWojXVO0pTGyFLKD8YCmxGjLdZ2ggZMnnv/tMaeMd7
- mG8QeqK5n0vagtGc4ByJTiYdj66C+gzfCUiyGFcCpjUd3et/GzKHGYfVd7om7So63/e+
- yOswwJ9l2nCvaoOMX+tKu3okRk6j7EHeoRiHQ6594K46Uu9IjidvP0r3124V6KqpsnmX
- lPkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771473729; x=1772078529;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1771473733; x=1772078533; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=g+k/37VNyM44S8IKpnLIeLYphIGYrb6n3z+1yI/fqF0=;
- b=fQFO4vuZJtBNcfHEyThDZTDKNPlRQVU7SEdh/ELLkdX1Wl45bAcE0dULECCuLKLShk
- VnAgAag3Is3LajjA+jTdiWR9Y3kpKTJ2WWj9Yjjrk/wcy54R6MZ01KrHAHJ+xC7Svqg9
- BaE9mJc8wLYPgbSZa8K3icrymi4HD3179Pp2Wr11NGW8HK23m6YM/QJ8IItN0kmrg7bl
- a1f3x/YeYCh9JVg+bGbGrNL3U7IzCyWqYj9m8DgzucvIDgXadUoGct6WcrGKA5h3RV6c
- 482W5b2PpBj1vc1NDVjjfon/+rsacjwrbhsJCiDcldkljWhVQTnR84W74EaFKZ5HMpAm
- lhtg==
+ bh=UdK2rOS2bitRzrDxI30pyU/TEy+Znetuyj+EjMa6JSY=;
+ b=tkCiZxEWMP/XI8dyFZC70iVT+RregtBn+YNDqgK5gcDhWNVqsE6CEsy47kj4PcvjlP
+ DqEuhUH+HJbi4rLkIYdpz8tpsIdov3k3MFNjrMo2PLnGJoAB3TF3KlaZbjshFplZm+Ay
+ WzRvxCqRl4JNC6W9TYz/Rq46fdDYeZc4CFCEitp2Nc/p7+buFBvRaRj2qdCPuZ1NXXAs
+ c2ekCsHr4sW4e065dFUBkiom1MkRp0ld2MnYK64SERhJ+ZcSUr2CCvCHUIYHS02tzx4R
+ v1soJNqNX3WPrXEfFRUwp5JteKH/LtxLI4A0BELEXhbOEZ05QcvVWOM61q212jt3gGzp
+ N6eA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1771473733; x=1772078533;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=UdK2rOS2bitRzrDxI30pyU/TEy+Znetuyj+EjMa6JSY=;
+ b=qR+2jhoF/rx6M7W3mN+1BiYIrL0dnga468jSEDoO2KzSkzt2iQBRPJJpKG+TD+ZuqX
+ 7FzEBNroRIkRiHSSqP0xJdwqjz7biSIjDPGH9AXfZ5DF57Yg2iOu/zzxGeWyjikIWylw
+ eM5fGm02LEm9w4MR6/z4VbrqOLJy4NJs4fta55HJmKtbEgiWLhxNg5KWNMXVyDFsIIcF
+ MkrQAKrZ6vPJcVlat5klEjM1XBAdxQzJpUUZ0pkKuMFaVP2wmyuR5GmumRFGgHTbq76q
+ cOGdbQcArLFinpkylj3x6UsCwlM+7zZ/jrQ0dIrsuwbx0Wgbjn2dUnK3MYKsdo26QOFP
+ hdUg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU1dyTZgDqlYroia9g0NOQnxkxfcYDsqULC2aHFhuMMEnXy3UPnXJBCnyEuzuQT3L+tygsgUf4Rhw==@nongnu.org
-X-Gm-Message-State: AOJu0YwkKnYLgb+DTjWIEnthZKLP4vQl1m/U3vZv0571xvSQF6OgbQvz
- 7XUveta1KlHMGa74Q6e5fuL1S0MIoqy4vR3ijRH1fOyVzlhbOVieqjyZaJWsgTmF80E=
-X-Gm-Gg: AZuq6aL+efAjSI4y3Q8kzKXLy8m9LQex4x66mL8XDE7WDzsifwd1PBqK4hNorZyiANf
- KC0BJ8UJaGy3HwDSKeSEpr4T5GzAPXZWYQ0WBMVtS3IcExq8HVuZfgpcP97Gla/DmwfMaH7pkv/
- SoR8MFm+B+OG9NplXt+szZiBqt0+T2Kin0Qwa9YM0fOqzYH7GwZmI9KxqgxaMuxng/f4VQLqOkI
- pvOMsL1K8qFfjDshinIYDJfLvT+DXJcFz+1HRqqtehaQjuF1RQlbonUiHwq1dNgUpGlj9Uz3Tsl
- lKSnokE17F03c2roogw9GI1aK0Lnd8oeLZ8LryWYyF93K1EJgLnngGv7eOkqZKfN13FM/eAbta6
- Vdu3iBoS0rNSN4aD1ZTiakfnIBsyin8vixa1ohYHfSdS1ooEGBKRuM8454kAuBNDQ8v1T85auE/
- Z7mmPuEZod+If9xDwsNj7jo/2tJd+FMIJLxtBCM7+uilTiBQCmsYF6H5i1O3rpUjY/RYaVxXSgq
- O+3uXvWR0KFp94=
-X-Received: by 2002:a17:903:2284:b0:2a9:2ab2:e50d with SMTP id
- d9443c01a7336-2ad17586af9mr127169705ad.51.1771473728472; 
- Wed, 18 Feb 2026 20:02:08 -0800 (PST)
+ AJvYcCVN2tC8X82T8I5PN9T+MqzBcPPpJmlHld+Pfhjd/X2WUI4yZK3u9czghzs56Deo2vzCtybcqSppxQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwzZX/0lQ2gt+uhuHrOPcTMKsyVAueKlTp9iJ/lI38ReywrAfnT
+ BH49vd6Ocs5VgQBwpJTWkSPnhXo8oXnE1LH4zoJgoxKnfStrytxw4FIst8xoT6nRkus=
+X-Gm-Gg: AZuq6aL7ID6DOcmPySIMOvtbOZ6I5jwkTMlujjvSf6f6snQW7yo4tJQprSjdmtRO84E
+ UR2xBXlYjalsQ89W2u1AEcrNtS+/W39Sjt4yaWNJF2jN9swDTR37BmVT80T5b0NFwAVqJI1WlLF
+ ukqvTl1/iB6x2+QM6bfqNi79z9YrQYlmYig/CVBieW01bXqxw48QIP8o6G8yetudOzCc46XvnId
+ WNiu5NZa1B4wY3LOLW7hDKSBfmF5HpRyeGVtx2vNzNr9D+AuKhKZSE39kZs59zMfYRNyXT7rwoV
+ cKs80FkJN0XvcBA5PXzJjOGgNddyvWowiFwc1/qYHl4yKEMSg+xlHWSqxPWpxZtreeneCN8kjQk
+ fFU41C5+TJlMSMbu81ERHwMzY9Op0QnZvBvGIel4cVHK2kgVENPdXtxVd20KJH5QXr2IDubXDFw
+ z4R+OSh1aZzE02+b1ZrKlRpBCQDbDqapwynorugfiU4WyNLBvEaLPcSsWRm4VyhnT/YFVFM4MCj
+ qe0
+X-Received: by 2002:a17:903:3b84:b0:2a9:616c:1711 with SMTP id
+ d9443c01a7336-2ad50f8b526mr36135435ad.42.1771473733004; 
+ Wed, 18 Feb 2026 20:02:13 -0800 (PST)
 Received: from pc.taild8403c.ts.net (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2ad1a73200asm147636225ad.36.2026.02.18.20.02.07
+ d9443c01a7336-2ad1a73200asm147636225ad.36.2026.02.18.20.02.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 18 Feb 2026 20:02:07 -0800 (PST)
+ Wed, 18 Feb 2026 20:02:12 -0800 (PST)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -75,22 +76,23 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>, anjo@rev.ng,
  Peter Maydell <peter.maydell@linaro.org>,
  Jim MacArthur <jim.macarthur@linaro.org>
-Subject: [PATCH v4 00/14] target/arm: single-binary
-Date: Wed, 18 Feb 2026 20:01:36 -0800
-Message-ID: <20260219040150.2098396-1-pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 04/14] target/arm: extract helper-a64.h from helper.h
+Date: Wed, 18 Feb 2026 20:01:40 -0800
+Message-ID: <20260219040150.2098396-5-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260219040150.2098396-1-pierrick.bouvier@linaro.org>
+References: <20260219040150.2098396-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x632.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x529.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,150 +108,140 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series continues cleaning target/arm, especially tcg folder.
-
-For now, it contains some cleanups in headers, and it splits helpers per
-category, thus removing several usage of TARGET_AARCH64.
-First version was simply splitting 32 vs 64-bit helpers, and Richard asked
-to split per sub category.
-
-v4
---
-
-- add two patches from Peter removing helper in non-tcg files
-  20260216160349.3079657-1-peter.maydell@linaro.org
-  This fixes build failure with kvm-only and xen-only builds on aarch64.
-  I didn't split helper and gen_helper headers. If that really matters, it can
-  be done in v5.
-
-v3
---
-
-- translate.h: missing vaddr replacement
-- move tcg_use_softmmu to tcg/tcg-internal.h to avoid duplicating compilation
-  units between system and user builds.
-- eradicate TARGET_INSN_START_EXTRA_WORDS by calling tcg_gen_insn_start with
-  additional 0 parameters if needed.
-
-v2
---
-
-- add missing kvm_enabled() in arm-qmp-cmds.c
-- didn't extract arm_wfi for tcg/psci.c. If that's a hard requirement, I can do
-  it in next version.
-- restricted scope of series to helper headers, so we can validate things one
-  step at a time. Series will keep on growing once all patches are reviewed.
-- translate.h: use vaddr where appropriate, as asked by Richard.
-
-Peter Maydell (2):
-  target/arm: Move TCG-specific code out of debug_helper.c
-  target/arm: Don't require helper prototypes in helper.c
-
-Pierrick Bouvier (12):
-  target/arm: extract helper-mve.h from helper.h
-  target/arm: extract helper-a64.h from helper.h
-  target/arm: extract helper-sve.h from helper.h
-  target/arm: extract helper-sme.h from helper.h
-  tcg: move tcg_use_softmmu to tcg/tcg-internal.h
-  target/arm: move exec/helper-* plumbery to helper.h
-  target/arm/tcg/psci.c: make compilation unit common
-  target/arm/tcg/cpu-v7m.c: make compilation unit common
-  target/arm/tcg/vec_helper.c: make compilation unit common
-  target/arm/tcg/translate.h: replace target_ulong with vaddr
-  target/arm/tcg/translate.h: replace target_long with int64_t
-  include/tcg/tcg-op.h: eradicate TARGET_INSN_START_EXTRA_WORDS
-
- include/tcg/tcg-op-common.h                   |   8 +
- include/tcg/tcg-op.h                          |  29 -
- include/tcg/tcg.h                             |   6 -
- target/alpha/cpu-param.h                      |   2 -
- target/arm/cpu-param.h                        |   7 -
- target/arm/helper-a64.h                       |  14 +
- target/arm/helper-mve.h                       |  14 +
- target/arm/helper-sme.h                       |  14 +
- target/arm/helper-sve.h                       |  14 +
- target/arm/helper.h                           |  17 +-
- .../tcg/{helper-a64.h => helper-a64-defs.h}   |   0
- target/arm/tcg/{helper.h => helper-defs.h}    |   0
- .../tcg/{helper-mve.h => helper-mve-defs.h}   |   0
- .../tcg/{helper-sme.h => helper-sme-defs.h}   |   0
- .../tcg/{helper-sve.h => helper-sve-defs.h}   |   0
- target/arm/tcg/translate-a32.h                |   2 +-
- target/arm/tcg/translate.h                    |  22 +-
- target/arm/tcg/vec_internal.h                 |  49 ++
- target/avr/cpu-param.h                        |   2 -
- target/hexagon/cpu-param.h                    |   2 -
- target/hppa/cpu-param.h                       |   2 -
- target/i386/cpu-param.h                       |   2 -
- target/loongarch/cpu-param.h                  |   2 -
- target/m68k/cpu-param.h                       |   2 -
- target/microblaze/cpu-param.h                 |   2 -
- target/mips/cpu-param.h                       |   2 -
- target/or1k/cpu-param.h                       |   2 -
- target/ppc/cpu-param.h                        |   2 -
- target/riscv/cpu-param.h                      |   7 -
- target/rx/cpu-param.h                         |   2 -
- target/s390x/cpu-param.h                      |   2 -
- target/sh4/cpu-param.h                        |   2 -
- target/sparc/cpu-param.h                      |   2 -
- target/tricore/cpu-param.h                    |   2 -
- target/xtensa/cpu-param.h                     |   2 -
- tcg/tcg-internal.h                            |   6 +
- target/alpha/translate.c                      |   4 +-
- target/arm/debug_helper.c                     | 769 -----------------
- target/arm/helper.c                           |   5 +-
- target/arm/tcg/arith_helper.c                 |   4 +-
- target/arm/tcg/crypto_helper.c                |   4 +-
- target/arm/tcg/debug.c                        | 780 ++++++++++++++++++
- target/arm/tcg/gengvec64.c                    |   3 +-
- target/arm/tcg/helper-a64.c                   |   6 +-
- target/arm/tcg/hflags.c                       |   4 +-
- target/arm/tcg/m_helper.c                     |   2 +-
- target/arm/tcg/mte_helper.c                   |   3 +-
- target/arm/tcg/mve_helper.c                   |   6 +-
- target/arm/tcg/neon_helper.c                  |   4 +-
- target/arm/tcg/op_helper.c                    |   2 +-
- target/arm/tcg/pauth_helper.c                 |   3 +-
- target/arm/tcg/psci.c                         |   4 +-
- target/arm/tcg/sme_helper.c                   |   5 +-
- target/arm/tcg/sve_helper.c                   |   6 +-
- target/arm/tcg/tlb_helper.c                   |   4 +-
- target/arm/tcg/translate-a64.c                |   3 +
- target/arm/tcg/translate-mve.c                |   1 +
- target/arm/tcg/translate-sme.c                |   3 +
- target/arm/tcg/translate-sve.c                |   3 +
- target/arm/tcg/translate.c                    |  28 +-
- target/arm/tcg/vec_helper.c                   | 224 +----
- target/arm/tcg/vec_helper64.c                 | 142 ++++
- target/arm/tcg/vfp_helper.c                   |   4 +-
- target/avr/translate.c                        |   2 +-
- target/hexagon/translate.c                    |   2 +-
- target/i386/tcg/translate.c                   |   2 +-
- target/loongarch/tcg/translate.c              |   2 +-
- target/m68k/translate.c                       |   2 +-
- target/microblaze/translate.c                 |   2 +-
- target/or1k/translate.c                       |   2 +-
- target/ppc/translate.c                        |   2 +-
- target/rx/translate.c                         |   2 +-
- target/sh4/translate.c                        |   4 +-
- target/sparc/translate.c                      |   2 +-
- target/tricore/translate.c                    |   2 +-
- target/xtensa/translate.c                     |   2 +-
- tcg/tcg.c                                     |   4 -
- target/arm/tcg/meson.build                    |  13 +-
- 78 files changed, 1165 insertions(+), 1149 deletions(-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ target/arm/helper-a64.h                            | 14 ++++++++++++++
+ target/arm/helper.h                                |  1 -
+ target/arm/tcg/{helper-a64.h => helper-a64-defs.h} |  0
+ target/arm/tcg/helper-a64.c                        |  4 ++++
+ target/arm/tcg/mte_helper.c                        |  1 +
+ target/arm/tcg/pauth_helper.c                      |  1 +
+ target/arm/tcg/sve_helper.c                        |  1 +
+ target/arm/tcg/translate-a64.c                     |  1 +
+ target/arm/tcg/vec_helper.c                        |  1 +
+ 9 files changed, 23 insertions(+), 1 deletion(-)
  create mode 100644 target/arm/helper-a64.h
- create mode 100644 target/arm/helper-mve.h
- create mode 100644 target/arm/helper-sme.h
- create mode 100644 target/arm/helper-sve.h
  rename target/arm/tcg/{helper-a64.h => helper-a64-defs.h} (100%)
- rename target/arm/tcg/{helper.h => helper-defs.h} (100%)
- rename target/arm/tcg/{helper-mve.h => helper-mve-defs.h} (100%)
- rename target/arm/tcg/{helper-sme.h => helper-sme-defs.h} (100%)
- rename target/arm/tcg/{helper-sve.h => helper-sve-defs.h} (100%)
- create mode 100644 target/arm/tcg/debug.c
- create mode 100644 target/arm/tcg/vec_helper64.c
 
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+new file mode 100644
+index 00000000000..cda7e039b72
+--- /dev/null
++++ b/target/arm/helper-a64.h
+@@ -0,0 +1,14 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++
++#ifndef HELPER_A64_H
++#define HELPER_A64_H
++
++#include "exec/helper-proto-common.h"
++#include "exec/helper-gen-common.h"
++
++#define HELPER_H "tcg/helper-a64-defs.h"
++#include "exec/helper-proto.h.inc"
++#include "exec/helper-gen.h.inc"
++#undef HELPER_H
++
++#endif /* HELPER_A64_H */
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 44c7f3ed751..79f8de1e169 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -3,7 +3,6 @@
+ #include "tcg/helper.h"
+ 
+ #ifdef TARGET_AARCH64
+-#include "tcg/helper-a64.h"
+ #include "tcg/helper-sve.h"
+ #include "tcg/helper-sme.h"
+ #endif
+diff --git a/target/arm/tcg/helper-a64.h b/target/arm/tcg/helper-a64-defs.h
+similarity index 100%
+rename from target/arm/tcg/helper-a64.h
+rename to target/arm/tcg/helper-a64-defs.h
+diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+index e4d2c2e3928..07ddfb895dd 100644
+--- a/target/arm/tcg/helper-a64.c
++++ b/target/arm/tcg/helper-a64.c
+@@ -22,6 +22,7 @@
+ #include "cpu.h"
+ #include "gdbstub/helpers.h"
+ #include "exec/helper-proto.h"
++#include "helper-a64.h"
+ #include "qemu/host-utils.h"
+ #include "qemu/log.h"
+ #include "qemu/main-loop.h"
+@@ -43,6 +44,9 @@
+ #endif
+ #include "vec_internal.h"
+ 
++#define HELPER_H "tcg/helper-a64-defs.h"
++#include "exec/helper-info.c.inc"
++
+ /* C2.4.7 Multiply and divide */
+ /* special cases for 0 and LLONG_MIN are mandated by the standard */
+ uint64_t HELPER(udiv64)(uint64_t num, uint64_t den)
+diff --git a/target/arm/tcg/mte_helper.c b/target/arm/tcg/mte_helper.c
+index 08b8e7176a6..01b7f099f4a 100644
+--- a/target/arm/tcg/mte_helper.c
++++ b/target/arm/tcg/mte_helper.c
+@@ -31,6 +31,7 @@
+ #endif
+ #include "accel/tcg/cpu-ldst.h"
+ #include "accel/tcg/probe.h"
++#include "helper-a64.h"
+ #include "exec/helper-proto.h"
+ #include "exec/tlb-flags.h"
+ #include "accel/tcg/cpu-ops.h"
+diff --git a/target/arm/tcg/pauth_helper.c b/target/arm/tcg/pauth_helper.c
+index c591c3052c3..5a20117ae89 100644
+--- a/target/arm/tcg/pauth_helper.c
++++ b/target/arm/tcg/pauth_helper.c
+@@ -22,6 +22,7 @@
+ #include "internals.h"
+ #include "cpu-features.h"
+ #include "accel/tcg/cpu-ldst.h"
++#include "helper-a64.h"
+ #include "exec/helper-proto.h"
+ #include "tcg/tcg-gvec-desc.h"
+ #include "qemu/xxhash.h"
+diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
+index c442fcb540d..0600eea47c7 100644
+--- a/target/arm/tcg/sve_helper.c
++++ b/target/arm/tcg/sve_helper.c
+@@ -24,6 +24,7 @@
+ #include "exec/helper-proto.h"
+ #include "exec/target_page.h"
+ #include "exec/tlb-flags.h"
++#include "helper-a64.h"
+ #include "tcg/tcg-gvec-desc.h"
+ #include "fpu/softfloat.h"
+ #include "tcg/tcg.h"
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 7a8cd99e004..1a54337b6a8 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -18,6 +18,7 @@
+  */
+ #include "qemu/osdep.h"
+ #include "exec/target_page.h"
++#include "helper-a64.h"
+ #include "translate.h"
+ #include "translate-a64.h"
+ #include "qemu/log.h"
+diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
+index 33a136b90a6..7451a283efa 100644
+--- a/target/arm/tcg/vec_helper.c
++++ b/target/arm/tcg/vec_helper.c
+@@ -20,6 +20,7 @@
+ #include "qemu/osdep.h"
+ #include "cpu.h"
+ #include "exec/helper-proto.h"
++#include "helper-a64.h"
+ #include "tcg/tcg-gvec-desc.h"
+ #include "fpu/softfloat.h"
+ #include "qemu/int128.h"
 -- 
 2.47.3
 

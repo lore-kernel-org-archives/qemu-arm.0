@@ -4,89 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A396CE9A04A
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 14:53:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17DD6E9A048
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 15:17:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vt5MM-00043I-6I; Thu, 19 Feb 2026 09:50:30 -0500
+	id 1vt5lu-0000eL-IL; Thu, 19 Feb 2026 10:16:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vt5MC-0003ux-Of
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:50:21 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1vt5lt-0000dK-2M
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 10:16:53 -0500
+Received: from mail-vs1-xe2f.google.com ([2607:f8b0:4864:20::e2f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vt5M6-00084l-EY
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:50:19 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-43622089851so1022719f8f.3
- for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 06:49:52 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1vt5lr-0000E6-4R
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 10:16:52 -0500
+Received: by mail-vs1-xe2f.google.com with SMTP id
+ ada2fe7eead31-5fdecf69a29so545550137.3
+ for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 07:16:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1771512591; x=1772117391; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rt/W6ouTfZVSR4Ud5vC1h7zS5UVtzxCsy8jnIZDfYtE=;
- b=h57Ib7o1aBgP3FI+Ql0YbfZM/i0VQYkourJnOKHpxIqzu/9MJkyFDLaYFDaNxxAWGo
- JRGVYn6ykDNJF+TLy666ZB52LSaRjrtdXQFYaKZax4WSThLr19/ldEuaTl/Yj3uLPUQT
- FK+JOKDE9GK6SyEq+apKSUIfAzB2x8OuL2GO6vSELh14/+ifv47dNvntJZBJvTvDtX2D
- 32Wy9x0h73hV5DSLfplSPTpz2CeGuddz8Om9f+a2Ab8efV4SPnlCBB1nrsL2hxQj8k/Q
- R/Q/l4cIaVwxMDOOEr7z1ufh9l81Pv+jAsKSeSm5l+P/dkriVyvUIxxdBvGp46IO6dNi
- pqSw==
+ d=linaro.org; s=google; t=1771514210; x=1772119010; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=OdxS+KAgzoWoqzWifAT2T6h5+gH+/G9qhe8dIL9Dfdo=;
+ b=tRod0K7aKJZcp8yZB1VLVgaDKg/BFE03yJBIcrtzRR2+Cq7ZiSulswfhP8unFRYUlC
+ Les0yWJyZ708VXJdLAI/VBoH2wlTnXRI9rVDx47yTm1v+pxXxTFtPAi826PtiY1D7RKI
+ Kcu1opReQ5X0ITr/2TsCajyImTenQVLTGgtlgVQuMw7DK3UV5O+i+qG9ChKFlmJRvwjZ
+ MhYI3XbZ7Zjh4cvG+2WEQnzYXfaY4FJTLK8jUe/I1OHNWHm65/xm45TIsuvdLv2CpM4m
+ z62jb3XdOB4PqXFrgF69jjuO2eO/VDGQEGv354zKK+PrUnrl8LX8WB9MDsSkqyfBRbkC
+ bbZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771512591; x=1772117391;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=rt/W6ouTfZVSR4Ud5vC1h7zS5UVtzxCsy8jnIZDfYtE=;
- b=A5P3eKWicAVisGCM5zujwex+oizhwmcoiEQqGTzUivkfuatoWEnINI5Iz3t75mZGp7
- fKx3lpTi+eaUG2I15AFusawG1+zhmwrq1c8aIBJUqVvCWS7lOYUocFDLYvrV7eCupWgx
- uDNKnTLPpaOsBfq/vf6rUsVQP4LLG0Tzt4c8kYrLIbp2p29Vd4jgmPRPXGHaFma2Wxqn
- d/TKmWF+9tJJO0oaC/Ogoj6EneAs77ex4FUaK9gXL07T1HXlmz5Pep5l7xOX+UxD3hjD
- 9Pv0ZhImW2L1DLzVwxhqlge35ds4/M3rK6c4Loj+CLXH+DZawQs57St5PrcH6nwv4oHo
- nzNw==
-X-Gm-Message-State: AOJu0YxgtEa/Snl3ARjdphX3p35nlpTK1ZvbzSiCrwEQFHtjNYVFZkG4
- QevZF5ZFh70f7gyWmfaYpSMTIx9008tslmSFXsweP/IDvunvvcQ4pVS6
-X-Gm-Gg: AZuq6aJ8EKMM8tq82Ld5OOEJTaA11wUTM8NFw/YSd/PAOEEg+nsDOedRs2Ruqou6+uK
- DDdw+zSv5pCHPpBBhwth6PpD1EtBU3wAAzx7sAjDmyiA+qxV7x7jiJ9MUbl+750UeSTmVRO4xCx
- BYOHDGpZbIXOtcULGPqDh7yQcdbKRwhrNQyn0ziq0RnTN3S1fG4IzkQeulyRLuxGtDFaPfqQzVh
- NJRin0SoQRU/nH0gsrCVigqbNglkSivfUq0L/BZS6D6JlWEupXPS24HhvtNcZ55kuyZ1Hw597Q4
- 3BCJGBYjhPuN/hl70K5SSdePSpbefjgw41ALPX8K8EpfVCKYVocm5g4OM6VFk441lga43KEnGXj
- KnI64LNMJheaWdaF+Yx/vO3KKTYCKh3EeFDeBFQ6pY42s/P4loCczmMN/K4GqFzOajvlFz7Q2JI
- RL7SgqQCxZZB2ZDIVpDifwnZ1F+OvxZUVPPUUdvE6oCsv72M50CWNNObNxBWkSS1rc+ldY
-X-Received: by 2002:a05:6000:288c:b0:435:95c9:6891 with SMTP id
- ffacd0b85a97d-43958e4f7f1mr11279014f8f.42.1771512591366; 
- Thu, 19 Feb 2026 06:49:51 -0800 (PST)
-Received: from thinkpad-t470s.. (93-143-129-182.adsl.net.t-com.hr.
- [93.143.129.182]) by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-43796ac8d82sm50163087f8f.31.2026.02.19.06.49.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Feb 2026 06:49:50 -0800 (PST)
-From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
- artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
- takahiro.nakata.wr@renesas.com,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
-Subject: [PATCH v2 27/33] hw/core/fdt_generic_util: initialize serial devices
-Date: Thu, 19 Feb 2026 15:48:55 +0100
-Message-ID: <20260219144901.3317747-9-ruslichenko.r@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260219144901.3317747-1-ruslichenko.r@gmail.com>
-References: <20260219143332.3316679-1-ruslichenko.r@gmail.com>
- <20260219144901.3317747-1-ruslichenko.r@gmail.com>
+ d=1e100.net; s=20230601; t=1771514210; x=1772119010;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=OdxS+KAgzoWoqzWifAT2T6h5+gH+/G9qhe8dIL9Dfdo=;
+ b=EIwDr4bgLcsp9ZrxmSH9uDa0hCTMme56Z1XXx1MeJvfu1rbb7XM4QVxPmBI/9uCkFK
+ WPHOLGBc/xrCKOEgRW0M7/YXWMp6qQ9TltZs74FqWe34ltRL3D/JL6UBtxLoS8oAIWal
+ KHSFlWgkKpwf4kGAF5knfYjJcjWKp19toH9vc5f4lLs4w9Y+MX8Qcd0jif9phfE6Yvlm
+ 02y2fe4C/gCE5rs7qt6sKPrxVIp6UW+xWmVAVLZGy5m72TJAM4ofMMkRPS+sOBn8iZ7P
+ jloT84AI8td86MxcvFHnwkjaJYopEUaX1vuQgthCB/JSjWNfTJwC997QPLQQG2MhuTp+
+ 3AYA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUhc1zDlUaxhU2H1yHb1PqS8NqxfUX2aUcMYFRvM0CXaeFp49JG5eHn3WAgTxR+B0UrwtI2xPFEHA==@nongnu.org
+X-Gm-Message-State: AOJu0YzIRSY4+KX02N3VDNt5FFlweOesIHz7M+atsG/Wu644rdjKlp/e
+ ek3mPaxDtlMnRWT5JjmRgPWABG8srfa16PGseRLtcULeoLVO/cCIA2kHMxRcjVQ+3m4=
+X-Gm-Gg: AZuq6aI/DktuMwTCOTLZXLQie1kD7VHuojd+bhw/SCyqf0UoIm2WvHgm10fdIw/PbZZ
+ lrhCNysn1ELxax8GG942UrVto6QPoaEbUWQRfU62BFyQeaIr8Tm9t62UeZFO883ebkK2Wpxh7M6
+ 6/FVy1PPF7fbfw7QoGKdT/S/Ut3iSsRuyDKfOO/QYzTm+TqMoMswwcFNyqc6A2nOZdZiPuw/U+U
+ ZWvJibGWEv7IM9C7q6J5lf+l5SjvyJO2tNvlWfDhKjA3AvllhZsOTwplt2xTEwXpEISeWFgafUp
+ 8dGMVYl1//ofpZ+ibsdrV7Nh4s6RsGJHYbvEQuEJPvVTCqtC1ezLtoBFIZQ9u436+2XQkzFTzzQ
+ 1hPcCAgyA4AAJzuF1/xFOPmOuk+S3dIeLU+fi/zHrCXU6t8VtQBDYbS128AKze+NofbimtxLSRV
+ srQFOWHcPAMfuEstRAqMaprVITsxSgWXvMvKzUPDSj/w0F4vCRtPK48wHTz3PNxJYtbthUDzWaM
+ 2Wxc048V+v4JQ==
+X-Received: by 2002:a05:6102:c87:b0:5fd:d831:2938 with SMTP id
+ ada2fe7eead31-5fe1add55f8mr8935051137.22.1771514209620; 
+ Thu, 19 Feb 2026 07:16:49 -0800 (PST)
+Received: from [192.168.0.103] (200-100-75-206.dial-up.telesp.net.br.
+ [200.100.75.206]) by smtp.gmail.com with ESMTPSA id
+ ada2fe7eead31-5fde8a845ddsm13306297137.10.2026.02.19.07.16.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 19 Feb 2026 07:16:49 -0800 (PST)
+Message-ID: <00bed3eb-579b-4153-9bc1-07347a5d0792@linaro.org>
+Date: Thu, 19 Feb 2026 12:16:44 -0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x42b.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm/ptw: Clean up unused ARMMMUIdx
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, richard.henderson@linaro.org, 
+ alex.bennee@linaro.org
+References: <20260219140228.407513-1-gustavo.romero@linaro.org>
+ <CAFEAcA_GdkVJbgGm2j8v15PM2ijKF2hYBAUKZ2_W=g6XasFvCA@mail.gmail.com>
+Content-Language: en-US
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <CAFEAcA_GdkVJbgGm2j8v15PM2ijKF2hYBAUKZ2_W=g6XasFvCA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e2f;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-vs1-xe2f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -104,55 +107,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+Hi Peter!
 
-The patch adds proper handling and registration
-for serial devices instantiated via FDT.
+On 2/19/26 11:13, Peter Maydell wrote:
+> On Thu, 19 Feb 2026 at 14:02, Gustavo Romero <gustavo.romero@linaro.org> wrote:
+>>
+>> get_phys_addr_disabled() is called from only one function,
+>> get_phys_addr_nogpc(), and from two locations within it.
+>>
+>> The first call to get_phys_addr_disabled() occurs when mmu_idx is one of
+>> the following: ARMMMUIdx_Phys_S, ARMMMUIdx_Phys_NS, ARMMMUIdx_Phys_Root,
+>> or ARMMMUIdx_Phys_Realm. So, handling ARMMMUIdx_Stage2 or
+>> ARMMMUIdx_Stage2_S is not required in get_phys_addr_disabled() for this
+>> case.
+>>
+>> The second call to get_phys_addr_disabled(), with mmu_idx ==
+>> ARMMMUIdx_Stage2 (or ARMMMUIdx_Stage2_S), only would occur if
+>> regime_translation_disabled() returns
+>> true for these mmu indexes. However, mmu_idx == ARMMMUIdx_Stage2 (or
+>> ARMMMUIdx_Stage2_S) can only occur if get_phys_addr_twostage() was
+>> called, since it's the only place where ptw->in_mmu_idx is set to
+>> ARMMMUIdx_Stage2 (or ARMMMUIdx_Stage2_S) and that only happens if
+>> regime_translation_disabled() returns false.
+> 
+> This is true, but only because we never call get_phys_addr_for_at()
+> with an mmu_idx argument of Stage2, right?
 
-The devices with 'chardev' properties are
-connected to serial backends, if corresponding dts
-property serial id number is set.
+Correct, and that's a case that will never exist too afaics.
 
-Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
----
- hw/core/fdt_generic_util.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
 
-diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
-index 3179248142..c58a9ccdc7 100644
---- a/hw/core/fdt_generic_util.c
-+++ b/hw/core/fdt_generic_util.c
-@@ -36,6 +36,7 @@
- #include "system/system.h"
- #include "system/reset.h"
- #include "qemu/cutils.h"
-+#include "chardev/char.h"
- #include "qemu/log.h"
- #include "qemu/config-file.h"
- #include "hw/core/boards.h"
-@@ -1216,6 +1217,7 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
-     props = qemu_devtree_get_props(fdti->fdt, node_path);
-     for (prop = props; prop->name; prop++) {
-         const char *propname = trim_vendor(prop->name);
-+        int len = prop->len;
-         ObjectProperty *p = NULL;
- 
-         p = object_property_find(OBJECT(dev), propname);
-@@ -1235,6 +1237,13 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
-             continue;
-         }
- 
-+        /* Special case for chardevs.  */
-+        if (!strcmp(propname, "chardev") && !strcmp(p->type, "str")) {
-+            qdev_prop_set_chr(DEVICE(dev), "chardev",
-+                              serial_hd(get_int_be(prop->value, len)));
-+            continue;
-+        }
-+
-         fdt_init_qdev_scalar_prop(OBJECT(dev), p, fdti, node_path, prop);
-     }
- 
--- 
-2.43.0
-
+Cheers,
+Gustavo
 

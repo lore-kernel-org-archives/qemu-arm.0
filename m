@@ -4,82 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA9ACE9A048
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 11:15:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09A8AE9A048
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 12:59:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vt20B-0003W8-Fw; Thu, 19 Feb 2026 06:15:23 -0500
+	id 1vt3cn-0004y1-FZ; Thu, 19 Feb 2026 07:59:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vt20A-0003Vi-5n
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 06:15:22 -0500
-Received: from p-west1-cluster3-host3-snip4-1.eps.apple.com ([57.103.66.64]
- helo=outbound.pv.icloud.com)
+ (Exim 4.90_1) (envelope-from <me@linux.beauty>)
+ id 1vt3cg-0004x5-9C; Thu, 19 Feb 2026 07:59:14 -0500
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vt208-0001tL-7L
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 06:15:21 -0500
-Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-1a-60-percent-11 (Postfix) with ESMTPS id
- CFB00180121D; Thu, 19 Feb 2026 11:15:15 +0000 (UTC)
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1771499716; x=1774091716;
- bh=KzNogFJPz7Agr86nKC+JPgnUuMll1pF42KoNePxyWtg=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=bJFUGhvf+H6gwd0ciWVpzu/hFJFDpsVbksxmUCsEsKNcAeDUfxP85QTDIYBvT+h7rW+rs2JVat0x7GbpvP8ICTmxEYe0txRPkFdCalZdTJIT5yfTQhIh0Hc5TLjZD2TSfPwALc7AIFsxpda66QuExAhcKRVx7kvqKT1ZNYd7Rvk4jIHKqe+WzIMq9nHzA4L1cMDPI8GQXiqDpMFStchB0mPr0utW3K/ysfK2XFjCjr4N+7DFCM6XPRlWI/8Nv2xr9ATsqnoCMNqGQZ0hDxaf0D5DczEVXcySRLEzRnKOOYnntdbKZJFRrc6wuA1rz+mHgjPHt+81eLZR+EhwlxWzvA==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.56.9.36])
- by p00-icloudmta-asmtp-us-west-1a-60-percent-11 (Postfix) with ESMTPSA id
- AC05C1800878; Thu, 19 Feb 2026 11:15:14 +0000 (UTC)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
-Subject: Re: [PATCH] hw/arm/virt: Update error message for bad gic-version
- option
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <20260219110228.3804482-1-peter.maydell@linaro.org>
-Date: Thu, 19 Feb 2026 12:15:02 +0100
-Cc: qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <me@linux.beauty>)
+ id 1vt3cd-0005IH-NS; Thu, 19 Feb 2026 07:59:14 -0500
+ARC-Seal: i=1; a=rsa-sha256; t=1771505919; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=U+UxkrG2TZyV+duaN3VQ4JmANVaaippkKGEbNDEhA/KvjGPI8h/PN8eFb4X77oyxbGtM6sqlr027hurU6cYM0cYJNq5fmprRG1qGqakQklWSgPXYs6msciRSIAWQsgINjf+OH0OsGs7fdZjqwT6CQTQf8sAbPs3E+gEp7EnkCpE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1771505919;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
+ bh=Jg3y1Afucb+wp2hjaqNW8gwSaMOV5vrAlBPY/1CHAGo=; 
+ b=JSGt+SVJC3tMUw1Fu7q75xrSdmfYZESOIYJ9Ww+1ODOEdSx71IS1LD5KakT1O/z9zkbewRG73SqrrCiYvZQqUU8CCioUzF0j3yAeaQiW7h8aTXhAw5vOeNFwDdKa00eUgguUxdoJOnB3ZU5yenzhVi2AfrTNDYRCv46bYC/0jkc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=linux.beauty;
+ spf=pass  smtp.mailfrom=me@linux.beauty;
+ dmarc=pass header.from=<me@linux.beauty>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1771505919; 
+ s=zmail; d=linux.beauty; i=me@linux.beauty;
+ h=Date:Date:From:From:To:To:Cc:Cc:Message-ID:In-Reply-To:References:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+ bh=Jg3y1Afucb+wp2hjaqNW8gwSaMOV5vrAlBPY/1CHAGo=;
+ b=BeBp0dBiU/3A7+pbqdbQNVEob9iRDXo4eCM28hyN0fu43JUQXyHf25IMcmPCf1Ms
+ EohoGQ587gf9gf6sMIbKMyVA7JblS4OvmN+C8BLY79eu6neSLbTWFDKXL2/14jkn2w6
+ AXfDy6XviJWpdA7cKM32UlKcmH2ZhXX6tqOV4+0I=
+Received: from mail.zoho.com by mx.zohomail.com
+ with SMTP id 1771505917623460.8287282936018;
+ Thu, 19 Feb 2026 04:58:37 -0800 (PST)
+Date: Thu, 19 Feb 2026 20:58:37 +0800
+From: Li Chen <me@linux.beauty>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: "Igor Mammedov" <imammedo@redhat.com>,
+ "Peter Maydell" <peter.maydell@linaro.org>,
+ "Shannon Zhao" <shannon.zhaosl@gmail.com>,
+ "Ani Sinha" <anisinha@redhat.com>, "Eduardo Habkost" <eduardo@habkost.net>,
+ "Marcel Apfelbaum" <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?=22Philippe_Mathieu-Daud=C3=A9=22?= <philmd@linaro.org>,
+ "Yanan Wang" <wangyanan55@huawei.com>,
+ "Zhao Liu" <zhao1.liu@intel.com>, "Song Gao" <gaosong@loongson.cn>,
+ "Jiaxun Yang" <jiaxun.yang@flygoat.com>,
+ "Sunil V L" <sunilvl@ventanamicro.com>,
+ "Palmer Dabbelt" <palmer@dabbelt.com>,
+ "Alistair Francis" <alistair.francis@wdc.com>,
+ "Weiwei Li" <liwei1518@gmail.com>, "qemu-arm" <qemu-arm@nongnu.org>,
+ "qemu-devel" <qemu-devel@nongnu.org>, "qemu-riscv" <qemu-riscv@nongnu.org>
+Message-ID: <19c75fb1e38.69887690841604.3016285282183736488@linux.beauty>
+In-Reply-To: <20260203112450-mutt-send-email-mst@kernel.org>
+References: <20251211102025.873506-1-me@linux.beauty>
+ <20251211080811-mutt-send-email-mst@kernel.org>
+ <19b104a617e.133b3feb891309.6986511857690603518@linux.beauty>
+ <20251218161253.7f13038f@imammedo>
+ <20260203112450-mutt-send-email-mst@kernel.org>
+Subject: Re: [PATCH v6] acpi/virt: suppress UART device & SPCR when guest
+ has no serial hardware
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <E736C533-340E-4E5E-80D0-4038E44114A6@unpredictable.fr>
-References: <20260219110228.3804482-1-peter.maydell@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.3864.400.21)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjE5MDEwMyBTYWx0ZWRfX7Thazpa9l3jc
- 9EwdjA6/pEkPF9U1aBxpfV5wgNT4AWM1hLBpE7tdgJY/9SkWermZpnDi6iDNcl0CsxzJAaZu6nN
- 3fquKSRpvZ6/O/Itvr4G6GliMothwL5yDiXJ2G3pnGe+a51xO/Mj0vxijULIUR5mh7ETUVzqxic
- 0mrPU4wyU/eYeI0GHWIuuOmCztwxAIpvs2Vmp8tjNbC8lMk5wQYQ6RWbMXJioCQh6oKsyOTl7F3
- SpiOAwD7t9ocW1SsgklEVF+WYJZnFz6RBTtWZ5dg7K3AQWIJh0pThj2Wggcc8wBujlhoR/ZiRmk
- htNq8GXJEh9qmD5EqVT91CFqh/WuvuOoEnezIelcnWzB94Y7JkDWi2GFgpNFO8=
-X-Proofpoint-ORIG-GUID: nLy9gw7fLi4pOSoiXEwDvum4FFc4zCI6
-X-Authority-Info-Out: v=2.4 cv=fd6gCkQF c=1 sm=1 tr=0 ts=6996f0c3
- cx=c_apl:c_apl_out:c_pps a=azHRBMxVc17uSn+fyuI/eg==:117
- a=azHRBMxVc17uSn+fyuI/eg==:17 a=kj9zAlcOel0A:10 a=HzLeVaNsDn8A:10
- a=VkNPw1HP01LnGYTKEx00:22 a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22
- a=KKAkSRfTAAAA:8 a=5Qp-V6bWqe7nvp7XcxIA:9 a=CjuIK1q_8ugA:10
- a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: nLy9gw7fLi4pOSoiXEwDvum4FFc4zCI6
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-02-19_03,2026-02-18_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 clxscore=1030
- adultscore=0 mlxlogscore=999 lowpriorityscore=0 phishscore=0 mlxscore=0
- spamscore=0 bulkscore=0 suspectscore=0 malwarescore=0 classifier=spam
- authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2602190103
-X-JNJ: AAAAAAABGUroYwwQvRlo62Ul8Tq8Oo4uIo3c6eVKpmrNgnw8YGp5dPjx5I+IL4spd1/yIWMrHIuW1YXVxt4wGn3msfGNvT7Lypbt2r2My/1YfggkqeKYqPtMD4iUequTWoZTnaDgGux9jNqjeGnExDzD2dk5w6+75qML3ZMFEMioSAGRQd5Z7LTzM4NGsngMMYf+YvjUqptzLUNIOKd71bAhMuvpjcUtTFNYWvcxOXPy0haGt4hf1A+O7iF3Zb1PnMpIGchlh1aGUfbEPj/E/b3bZ45UXqu295iasD62vcg6k8O3J4oED49WKRic4aAitJYhXk7FFgvupm5JfhpLTtN58jUS++LEjNsd8UzXWlbltDs1hmVLLwHCbNIrcQ7JXZuLF2N5TF22SPJgU9w0MpmvGnFui8+6Z1C656ibDmobVltieB6NqCOcsYoT8jWX8oXOWejGuIc8q97WoMQMoBkby5QNb8TlWO1tEg9O2+d5kpu9EihnRLtsv5KJefNmgXZUQH5KjHGTN13U7vVbuFnsro1ntquxFuToYNF/fqFwkH2Tk4gyCV8HOVmeVZt0THeASEQUt5GDdYR6ZdbAExF7f6iGk6i9UkNDlH4/yMnzURqnnFYLjSWhsriJEB8BRMoTPAm6
-Received-SPF: pass client-ip=57.103.66.64;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
+Importance: Medium
+User-Agent: Zoho Mail
+X-Mailer: Zoho Mail
+Received-SPF: pass client-ip=136.143.188.12; envelope-from=me@linux.beauty;
+ helo=sender4-op-o12.zoho.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,51 +97,142 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Michael,
 
+ ---- On Wed, 04 Feb 2026 00:27:06 +0800  Michael S. Tsirkin <mst@redhat.co=
+m> wrote ---=20
+ > On Thu, Dec 18, 2025 at 04:12:53PM +0100, Igor Mammedov wrote:
+ > > On Fri, 12 Dec 2025 10:01:08 +0800
+ > > Li Chen <me@linux.beauty> wrote:
+ > >=20
+ > > > Hi Michael,
+ > > >=20
+ > > >  ---- On Thu, 11 Dec 2025 21:10:18 +0800  Michael S. Tsirkin <mst@re=
+dhat.com> wrote ---=20
+ > > >  > On Thu, Dec 11, 2025 at 06:20:25PM +0800, Li Chen wrote: =20
+ > > >  > > From: Li Chen <chenl311@chinatelecom.cn>
+ > > >  > >=20
+ > > >  > > virt machines always instantiate a PL011/16550 UART at slot 0 a=
+nd describe
+ > > >  > > it in ACPI (DSDT and optional SPCR table). When the command lin=
+e disables
+ > > >  > > the serial backend (e.g. "-serial none"), the guest still sees =
+the UART as
+ > > >  > > a preferred console even though it is not usable.
+ > > >  > >=20
+ > > >  > > Teach the virt ACPI code to omit the UART device and SPCR when =
+there is no
+ > > >  > > serial backend attached. This matches the hardware that the gue=
+st can
+ > > >  > > actually use and avoids confusing firmware or OS code that reli=
+es on SPCR.
+ > > >  > >=20
+ > > >  > > The bios-tables-test qtests rely on an ACPI UART node and SPCR =
+entry for
+ > > >  > > UEFI-based virt machines. To keep those tests working we create=
+ a UART
+ > > >  > > with a "null" chardev backend instead. This preserves the ACPI =
+tables
+ > > >  > > while discarding the firmware's serial output so it does not co=
+rrupt the
+ > > >  > > TAP stdout stream.
+ > > >  > >=20
+ > > >  > > Suggested-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+ > > >  > > Signed-off-by: Li Chen <chenl311@chinatelecom.cn>
+ > > >  > > Reviewed-by: Sunil V L <sunilvl@ventanamicro.com> =20
+ > > >  >=20
+ > > >  > This bothers me:
+ > > >  > won't this mean number of serial devices changes silently?  So fo=
+r
+ > > >  > example, if you install a guest, see that 1st serial device is br=
+oken,
+ > > >  > configure it with 2nd one as a work around, now with your change =
+there
+ > > >  > is no second one so guest will be broken?
+ > > >  >=20
+ > > >  >=20
+ > > >  > I seems safer to have compat machinery around and avoid
+ > > >  > changing this for old machine types. =20
+ > > > =20
+ > > > Thanks for pointing this out, you=E2=80=99re right that changing the=
+ number of serial=20
+ > > > devices that the guest sees is risky for existing machine types.
+ > > >=20
+ > > > For v7 I=E2=80=99m planning to take a more conservative approach and=
+ only gate SPCR
+ > > > on the presence of a backend for the primary UART, while  keeping th=
+e ACPI
+ > > > UART devices in DSDT unchanged.=20
+ > > > Concretely:
+ > > > - virt ACPI DSDT will continue to unconditionally describe the UART(=
+s) as before,
+ > > >    so the guest-visible UART topology doesn=E2=80=99t change for exi=
+sting virt-* machines.
+ > > > - We only call spcr_setup() when there is a backend attached to UART=
+0 (e.g. serial_hd(0) !=3D NULL),
+ > > >   so SPCR doesn=E2=80=99t point at a completely unusable console whe=
+n the user passes -serial none.
+ > > >=20
+ > > > In particular, for a command line like -serial none -serial pty, thi=
+s means SPCR would not be present
+ > > > (rather than silently switching it to UART1/pty). My reasoning is th=
+at, for existing virt machines,
+ > > > SPCR is meant to describe =E2=80=9Cthe board=E2=80=99s primary conso=
+le (UART0)=E2=80=9D, not =E2=80=9Cthe first UART that happens
+ > > > to have a host backend=E2=80=9D, and changing that interpretation fe=
+els like it would need compat machinery
+ > > > and a new machine type.
+ > > >=20
+ > > > The qtests already force -serial null for the UEFI-based virt tests,=
+ so they will still exercise the SPCR path.
+ > > >=20
+ > > > Would this behaviour be acceptable for you, or would you prefer that=
+ I go further and also add a compat
+ > > > flag/new machine type where SPCR can follow =E2=80=9Cthe first UART =
+with a backend=E2=80=9D while old virt-* machines
+ > > > keep the current UART/SPCR semantics?
+ > >=20
+ > >=20
+ > > all described above looks complicated.
+ > > In ACPI tables we usually try to avoid compat settings, and do them on=
+ly if we have to.
+ > >=20
+ > > So question is how guest enumerates serial ports when
+ > >    '-nodefaults' is used _and_ there is a second serial port configure=
+d (is it even possible?)
+ > > check it with and without you patch please, to see what difference the=
+ patch makes.
+ > >=20
+ > > >=20
+ > > > Regards,
+ > > > Li=E2=80=8B
+ > > >=20
+ >=20
+ > Looks like this got stuck.  I think what Igor and me are saying is, do
+ > not rush to do compat, just test what happens and document. If guests
+ > survive fine, then it's fine.
+ >=20
+ >=20
 
-> On 19. Feb 2026, at 12:02, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->=20
-> As we added different valid gic-version option settings,
-> we forgot to update the hint in the error message produced
-> when the user specifies an invalid value:
->=20
-> $ qemu-system-aarch64 -M virt,help | grep gic-version
->  gic-version=3D<string>   - Set GIC version. Valid values are 2, 3, 4, =
-host and max
-> $ qemu-system-aarch64 -M virt,gic-version=3Dbang
-> qemu-system-aarch64: Invalid gic-version value
-> Valid values are 3, 2, host, max.
->=20
-> Update the error string to match the one we use in the help text
-> for the option.
->=20
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
-> hw/arm/virt.c | 2 +-
-> 1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 50865e8115..8dc999712c 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2971,7 +2971,7 @@ static void virt_set_gic_version(Object *obj, =
-const char *value, Error **errp)
->         vms->gic_version =3D VIRT_GIC_VERSION_MAX; /* Will probe later =
-*/
->     } else {
->         error_setg(errp, "Invalid gic-version value");
-> -        error_append_hint(errp, "Valid values are 3, 2, host, =
-max.\n");
-> +        error_append_hint(errp, "Valid values are 2, 3, 4, host, and =
-max.\n");
->     }
-> }
->=20
-> --=20
-> 2.43.0
->=20
->=20
+I tested Igor's -nodefaults + second -serial case on aarch64 virt with
+UEFI pflash (ACPI enabled), both with and without the v6 patch. Without
+the patch, "-nodefaults -serial none" still generates a DSDT that
+contains COM0 and an SPCR table. Adding a second backend is also possible:
+"-nodefaults -serial none -serial null" generates COM0+COM1 in DSDT and
+SPCR is present.
+
+With the v6 patch applied, both command lines end up with no COMx nodes
+in DSDT and no SPCR, because the DSDT UART nodes are gated on
+serial_hd(0). So the v6 approach does change the guest-visible UART
+enumeration/topology in this setup.
+
+For v7 I'm planning to keep the DSDT UART description unchanged and only
+suppress SPCR when UART0 has no backend (serial_hd(0) =3D=3D NULL), so we d=
+o
+not advertise an unusable SPCR console without changing hardware
+enumeration.
+
+Regards,
+Li=E2=80=8B
 
 

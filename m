@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5912E9A048
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 14:52:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0FF8E9A04A
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 14:52:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vt5MN-00044Y-9i; Thu, 19 Feb 2026 09:50:31 -0500
+	id 1vt5MP-00046c-6L; Thu, 19 Feb 2026 09:50:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vt5MC-0003up-N6
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:50:21 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ id 1vt5M8-0003mq-I6
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:50:19 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vt5M6-00083Z-EN
+ id 1vt5M6-000846-E8
  for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:50:16 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-4376c0bffc1so840195f8f.0
- for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 06:49:45 -0800 (PST)
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-4376acce52eso663736f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 06:49:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1771512584; x=1772117384; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1771512587; x=1772117387; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=zaQNJ8ctjloGg8ogNJ9hZj1p+S+3oUkMGg8iiDuQ6N8=;
- b=PI1DRAsc0ObYLdX2t28bDsUraDpNMbwfJKk/fFqsELI1koOeQSQawnajHsNSS29Ey/
- V5VBOW/+ZAFxDQzQimp+8BF9m9C/YYGCW09SXZ+1BcclPbMhrA3PJ64c9CZvJXpPBT+8
- kRPoboAPvK6OodKd7OiHmfnl6W2dSNFvzolHB3y2MigsQTcpF9hBfYgck0OOmB6tcsw6
- AEa/x/WHpNg/M5oIxCPY3VR+FxSpjkkTrLEX2tQG8zGULI/QOGLJY27+3e4sfZHGCbkE
- hlE5n0fR3NP3+Bn338r5XFFKprp1Ji5qiT5ll2ndSbiOuD1Xtz7/f2zxVnaJLuVV+ysP
- p9JQ==
+ bh=4XtZvlcq7y9dCibk7QnCziTNJJ4JB6d6R3IFkPvUGo4=;
+ b=WtKD0ekRZQLHMFlwR9KPvCHCcmfkXeGS4o1PmU8xf/lS4Ax6B+cDfTh7J7Z6wIbn5d
+ RXadJ9CwHfPM4wUUeOYw+Oh25FpginJjMzr8k7YFB/HRkZOnBWDOZ2j7fmUaRDLkWiHl
+ nTQEg21s2giuU0bSwySHd2z0jRE4Vng4Joo1awuNwBO0eqrSYAAfwMbCnO++cI57HZGk
+ g2HF64+WHq03bflfV2BrmtyEMhIZDyRQxk16SN+6loKwprz9geAsiaHB9MxCC4U5Xe7O
+ 43l60KmDh0eMl9Gmr5Jo+ss8SJ20svhUx5GwTisNNtShvgD6feNC/EQlclP7hDBJWLSk
+ mkNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771512584; x=1772117384;
+ d=1e100.net; s=20230601; t=1771512587; x=1772117387;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=zaQNJ8ctjloGg8ogNJ9hZj1p+S+3oUkMGg8iiDuQ6N8=;
- b=pYNZg18RVqbt9oGS9qc84/Y9Wn5Kyj4MAooAp31u8Qvr741VlibETSJQd+8efHfCV4
- S89SdcSx6fG4AW6tJnFWLuHgVMt9+gA2fORiC185CSP6dyqNnDglBKd05W+3bIRItMc5
- gMbblcs9WUdWit6wYkIPW+W2Fwkxby3cXZfPNao4zNA46yJ5giGG7EjoYXpd5izlXS31
- JpQiBFKkTcPUoQXW8xu4JnzmugJLHenzKgef4zgtg4XibThhG6AStbDTPA7gkT/9yZ0l
- JxM1wu/ODWr7Js5OFgBWVZwDpCZOrt/V30SEFEut4XMNJiXe/OnJIwKZS0/iyNtl26SO
- 1XPA==
-X-Gm-Message-State: AOJu0YwughOaABzV4bDwQX2jOBTLAf6ee3FhWgJifQQuh2lb7DF6Fqov
- xMucATWE77vZHWShn6bWh36Be7KV2i1OtlP6S0QMWYxjWgevwANioI1mrMdBvMI1
-X-Gm-Gg: AZuq6aJ7N0HXV8JUFH8aGSzCm6OcawWJKEL0i8Blosm02QP3VV3ZalxxOolZaKVdt95
- tRRO7Hln7T0sP0KHWTaYLQPhYcrNfv79ZuYpGlFS9m5WaVR+Y3Kn7W7V8kWl288Ef4543VO4H03
- RXOOjkH74iip3EUtnF13RJ/KEnd7HlIGuD1ritG3hvq8UwJkiNpOwaqrz7yJm7sjZ3okExRy8O/
- x2V5wjBe/gispH8IYLBgOmUKocy9voxmvtvEZHlyy516ZCdoIQ07BbEmtQhLylKASD4/rhV+ruy
- UFRzOcWAPdDab19NwI6b8p9fsBDs1rT41am5gRKp5Tw3XZKlSgzQqVEhycGA0iISxlzmo5zKVsT
- YCMMZMCSije9LvwCBtcN37+4jyu5iMxJQPP2jlzj1cvzxOSgr8Lz0uUFZt/xNda6xWI6tWAQ/CZ
- l+Hm1AHVEVAUdrylAHvf604cj+D/6dH2wuQ+IvZvBsmRQM1NRH+0/q8zRnUGJh/+Ua6mwt
-X-Received: by 2002:a05:6000:3101:b0:437:694d:fb6c with SMTP id
- ffacd0b85a97d-4395fd2ab83mr4252115f8f.9.1771512583932; 
- Thu, 19 Feb 2026 06:49:43 -0800 (PST)
+ bh=4XtZvlcq7y9dCibk7QnCziTNJJ4JB6d6R3IFkPvUGo4=;
+ b=qM1YhMNRtYD9mohUBj7MMle8O8QX7do4ijlThsBVgH7Ld8aT7Af7+okzAbAbyDYcXD
+ UzL7MhPd5fYEa7hnwk+4zNplV7SJhIaPlbW9NPCU6R0ag+I0HsCR3qHEW/xMSYgbPvwV
+ v7hRIO9CKsmZo7ffLlFELlDb4czSI+eJImGRwxEn6j5rv6lZcKjKD/qpCVfsSNVGpLem
+ f57FdnI29f6aU4V7sbNcPbXksC6smEn5DzsMxEG1jzAzcv7zP1PcxNY90uASMyxsSALo
+ uTpB674AIzd3aOdaqTiYXEIbmNf9397DiOAw5FvQGXKhxfL6fTtKhEbTQAigJrDQxEfg
+ 6v3w==
+X-Gm-Message-State: AOJu0Yx/Zbb6GBnWo7Pgcdo6ecy8LBKdGsywZSZ7CccHiNnBKPusRsnN
+ QVuw8IgGoLu/nLYOh8M+hY/5zkuWs+8d7dencVAX+o7A6TlGjR05yxwQ
+X-Gm-Gg: AZuq6aLXIyIczIPdhaX+wtP9Dbwd1PNF+kTtp3QCteD+HY1uJT+2tPQE+dmAfcwlbzn
+ Oy/fbhjuNtYZk2mTzRSJPaxAIBfRfNpwUT6sM/byjXU94yqDl9v3DlzvkleUE2Y2F8XILIYciwb
+ GpAKmjOOjXHAJbmpi0XEZYqM+RWAkLQ/ft+0rx6uCvzica8aZX6gqD4FUZpK5ehhngATgokQKn6
+ gg8f3Z8jC76ftd8mJA27GVhIW4D/sUt0YnWRtZ7Tg26vZHpbfOr2PHZGS3MdNPkSRCAPD805wHV
+ QRxdQHwoI2nzGM6yZypLW91dG1DzXkE9s55UR7mDr6ULB45dLFoln7wz9mIUeNDfG5hzgiSw8D3
+ YhIoA39fz8yLjnIOSz/UWVieV2HO5eJ6r6LaVgoC0VHg4lefZ/uY+Jj/nFSY1rnkY53NC5ZJ9+5
+ EN8IcPXOfTgQ4C9OiOQB8L1ePkFm22MnfH35xNSkj24VT/U2A+X7NtyJ5X9JKdb1OR3SaP
+X-Received: by 2002:a05:6000:22c5:b0:435:e47b:e746 with SMTP id
+ ffacd0b85a97d-43958e3beb0mr9871788f8f.36.1771512587046; 
+ Thu, 19 Feb 2026 06:49:47 -0800 (PST)
 Received: from thinkpad-t470s.. (93-143-129-182.adsl.net.t-com.hr.
  [93.143.129.182]) by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-43796ac8d82sm50163087f8f.31.2026.02.19.06.49.42
+ ffacd0b85a97d-43796ac8d82sm50163087f8f.31.2026.02.19.06.49.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Feb 2026 06:49:43 -0800 (PST)
+ Thu, 19 Feb 2026 06:49:46 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
-Subject: [PATCH v2 22/33] hw/intc/arm_gic: implement FDT_GENERIC_INTC and fdt
- support
-Date: Thu, 19 Feb 2026 15:48:50 +0100
-Message-ID: <20260219144901.3317747-4-ruslichenko.r@gmail.com>
+ Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>
+Subject: [PATCH v2 24/33] qom/object: export object_resolve_link()
+Date: Thu, 19 Feb 2026 15:48:52 +0100
+Message-ID: <20260219144901.3317747-6-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260219144901.3317747-1-ruslichenko.r@gmail.com>
 References: <20260219143332.3316679-1-ruslichenko.r@gmail.com>
  <20260219144901.3317747-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,173 +108,54 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-The patch implements TYPE_FDT_GENERIC_INTC interface, which
-enables GIC to be instantiated and wired via the device tree
-description.
+Export `object_resovle_link()` for use by other
+subsystems.
 
-The implemented interface method are following:
-1. 'get_irq': Parses device tree interrupt specifiers
-and return correct qemu_irq for devices which has IRQ's wired
-to GIC.
-2. 'auto_parent': Automatically connect the GIC's output signals
-to the CPU's found in current machine configuration.
+This allow callers to resolve object path and verify
+type contrains of a link property.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/intc/arm_gic.c        | 32 +++++++++++++++++++++++++
- hw/intc/arm_gic_common.c | 50 ++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 82 insertions(+)
+ include/qom/object.h | 12 ++++++++++++
+ qom/object.c         |  2 +-
+ 2 files changed, 13 insertions(+), 1 deletion(-)
 
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index 4d4b79e6f3..2be44d8e5b 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -24,12 +24,15 @@
- #include "gic_internal.h"
- #include "qapi/error.h"
- #include "hw/core/cpu.h"
-+#include "hw/core/boards.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "trace.h"
- #include "system/kvm.h"
- #include "system/qtest.h"
+diff --git a/include/qom/object.h b/include/qom/object.h
+index 26df6137b9..1573d41d4f 100644
+--- a/include/qom/object.h
++++ b/include/qom/object.h
+@@ -2034,6 +2034,18 @@ int object_child_foreach_recursive(Object *obj,
+  */
+ Object *object_property_add_new_container(Object *obj, const char *name);
  
-+#include "hw/core/fdt_generic_util.h"
++/*
++ * object_resolve_link:
++ *
++ * Lookup an object and ensure its type matches the link property type.  This
++ * is similar to object_resolve_path() except type verification against the
++ * link property is performed.
++ *
++ * Returns: The matched object or NULL on path lookup failures.
++ */
++Object *object_resolve_link(Object *obj, const char *name,
++    const char *path, Error **errp);
 +
- /* #define DEBUG_GIC */
- 
- #ifdef DEBUG_GIC
-@@ -2162,12 +2165,41 @@ static void arm_gic_realize(DeviceState *dev, Error **errp)
- 
- }
- 
-+static void arm_gic_fdt_auto_parent(FDTGenericIntc *obj, Error **errp)
-+{
-+    GICState *s = ARM_GIC(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    int num_cpus = current_machine->smp.cpus;
-+    CPUState *cs;
-+    int i = 0;
-+
-+    for (cs = first_cpu; cs; cs = CPU_NEXT(cs)) {
-+        if (i >= s->num_cpu) {
-+            break;
-+        }
-+
-+        sysbus_connect_irq(sbd, i,
-+                           qdev_get_gpio_in(DEVICE(cs), 0));
-+        sysbus_connect_irq(sbd, i + num_cpus,
-+                           qdev_get_gpio_in(DEVICE(cs), 1));
-+        sysbus_connect_irq(sbd, i + 2 * num_cpus,
-+                           qdev_get_gpio_in(DEVICE(cs), 2));
-+        sysbus_connect_irq(sbd, i + 3 * num_cpus,
-+                           qdev_get_gpio_in(DEVICE(cs), 3));
-+        i++;
-+    }
-+
-+    /* FIXME: Add some error checking */
-+}
-+
- static void arm_gic_class_init(ObjectClass *klass, const void *data)
+ /**
+  * object_property_help:
+  * @name: the name of the property
+diff --git a/qom/object.c b/qom/object.c
+index ff8ede8a32..7e16765cb4 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -1904,7 +1904,7 @@ static void object_get_link_property(Object *obj, Visitor *v,
+  *
+  * Returns: The matched object or NULL on path lookup failures.
+  */
+-static Object *object_resolve_link(Object *obj, const char *name,
++Object *object_resolve_link(Object *obj, const char *name,
+                                    const char *path, Error **errp)
  {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     ARMGICClass *agc = ARM_GIC_CLASS(klass);
-+    FDTGenericIntcClass *fgic = FDT_GENERIC_INTC_CLASS(klass);
- 
-     device_class_set_parent_realize(dc, arm_gic_realize, &agc->parent_realize);
-+    fgic->auto_parent = arm_gic_fdt_auto_parent;
- }
- 
- static const TypeInfo arm_gic_info = {
-diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
-index 304d89cf56..04787cff79 100644
---- a/hw/intc/arm_gic_common.c
-+++ b/hw/intc/arm_gic_common.c
-@@ -28,6 +28,8 @@
- #include "migration/vmstate.h"
- #include "system/kvm.h"
- 
-+#include "hw/core/fdt_generic_util.h"
-+
- static int gic_pre_save(void *opaque)
- {
-     GICState *s = (GICState *)opaque;
-@@ -348,6 +350,51 @@ static void arm_gic_common_linux_init(ARMLinuxBootIf *obj,
-     }
- }
- 
-+static int arm_gic_common_fdt_get_irq(FDTGenericIntc *obj, qemu_irq *irqs,
-+                                      uint32_t *cells, int ncells, int max,
-+                                      Error **errp)
-+{
-+    GICState *gs = ARM_GIC_COMMON(obj);
-+    int cpu = 0;
-+    uint32_t idx;
-+
-+    if (ncells != 3) {
-+        error_setg(errp, "ARM GIC requires 3 interrupt cells, %d cells given",
-+                   ncells);
-+        return 0;
-+    }
-+    idx = cells[1];
-+
-+    switch (cells[0]) {
-+    case 0:
-+        if (idx >= gs->num_irq) {
-+            error_setg(errp, "ARM GIC SPI has maximum index of %" PRId32 ", "
-+                       "index %" PRId32 " given", gs->num_irq - 1, idx);
-+            return 0;
-+        }
-+        (*irqs) = qdev_get_gpio_in(DEVICE(obj), cells[1]);
-+        return 1;
-+    case 1: /* PPI */
-+        if (idx >= 16) {
-+            error_setg(errp, "ARM GIC PPI has maximum index of 15, "
-+                       "index %" PRId32 " given", idx);
-+            return 0;
-+        }
-+        for (cpu = 0; cpu < max && cpu < gs->num_cpu; cpu++) {
-+            if (cells[2] & 1 << (cpu + 8)) {
-+                *irqs = qdev_get_gpio_in(DEVICE(obj),
-+                                         gs->num_irq - 16 + idx + cpu * 32);
-+            }
-+            irqs++;
-+        }
-+        return cpu;
-+    default:
-+        error_setg(errp, "Invalid cell 0 value in interrupt binding: %d",
-+                   cells[0]);
-+        return 0;
-+    }
-+}
-+
- static const Property arm_gic_common_properties[] = {
-     DEFINE_PROP_UINT32("num-cpu", GICState, num_cpu, 1),
-     DEFINE_PROP_UINT32("first-cpu-index", GICState, first_cpu_index, 0),
-@@ -368,12 +415,14 @@ static void arm_gic_common_class_init(ObjectClass *klass, const void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     ResettableClass *rc = RESETTABLE_CLASS(klass);
-     ARMLinuxBootIfClass *albifc = ARM_LINUX_BOOT_IF_CLASS(klass);
-+    FDTGenericIntcClass *fgic = FDT_GENERIC_INTC_CLASS(klass);
- 
-     rc->phases.hold = arm_gic_common_reset_hold;
-     dc->realize = arm_gic_common_realize;
-     device_class_set_props(dc, arm_gic_common_properties);
-     dc->vmsd = &vmstate_gic;
-     albifc->arm_linux_init = arm_gic_common_linux_init;
-+    fgic->get_irq = arm_gic_common_fdt_get_irq;
- }
- 
- static const TypeInfo arm_gic_common_type = {
-@@ -385,6 +434,7 @@ static const TypeInfo arm_gic_common_type = {
-     .abstract = true,
-     .interfaces = (const InterfaceInfo[]) {
-         { TYPE_ARM_LINUX_BOOT_IF },
-+        { TYPE_FDT_GENERIC_INTC },
-         { },
-     },
- };
+     const char *type;
 -- 
 2.43.0
 

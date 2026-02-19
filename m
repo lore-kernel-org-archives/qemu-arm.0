@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAE13E9A04A
-	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 14:38:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64EA5E9A04A
+	for <qemu-arm@archiver.kernel.org>; Thu, 19 Feb 2026 14:38:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vt577-0008Tg-Ms; Thu, 19 Feb 2026 09:34:45 -0500
+	id 1vt57d-0000Mz-8c; Thu, 19 Feb 2026 09:35:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vt576-0008SI-2p
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:34:44 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ id 1vt57N-0000FI-NX
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:35:02 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1vt574-0002v6-IM
- for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:34:43 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-4359a316d89so962552f8f.0
- for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 06:34:42 -0800 (PST)
+ id 1vt57L-00031h-Nz
+ for qemu-arm@nongnu.org; Thu, 19 Feb 2026 09:35:01 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-48069a48629so10383685e9.0
+ for <qemu-arm@nongnu.org>; Thu, 19 Feb 2026 06:34:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1771511681; x=1772116481; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1771511698; x=1772116498; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=sXP99FUoDu1z98GAyOTe9kejbBFJAL0eQ2bvmghE1tE=;
- b=b8vOlckaAx2scQQ+5J/PIWqdFQBimc6IUPjpw+Yzn8ewJK719EzCZTpwPAbWBnV2WK
- A/vATmNX9gl2ifqtJrKGPOi3SGxbNsJK6NFZDaZ6rNhwi1VShz+OZfvUJHeRxE7+oCSf
- YIrgj9SFyRES6+Tegd8phuZjM7XD+RFZ/c6qpxdi21iuFJDxKZHX/EOWWiFKubkAWh3e
- qRL9c9i6Pg6F5YPJ6iaHYUeH52N71+J+ZhfUuQUWA2WDNiXXrgos1zOB93Dk2/6usnLX
- JzX4AU5oEtCPxZY1F5I78LMFkghnHd9C9+/jnPRELzFOa2WfYSTe33qwMaWH4byTPHN/
- mr6g==
+ bh=+o4P+WixlSveqwPM81MzIq9MXznfscUez/G4LTT0AoQ=;
+ b=ITtawJ6EakbqgvR389Fy/opKQFppMlS4FoD1bM1FNB+cF3tA0U691HSfiOgq9dS1SD
+ TpnUvKysrEsKeISZTPpUGVfaIBpbvtxFP61IIHV98ZmdT2d1Xd2QjKkhzonE4vGCqGmu
+ XzCLJpL1BtDsslfctB06aoV0CYBHy7YOG1hM818gwnfBRcbMLzJ1OGoFnx7OLZlfAAOS
+ dZYkA4kJvMDv/TsSWpITHNIlsIWmlP3707Bq4fE3R1FK8SSX8nzbOJlVmjGlF7+0h0lD
+ ci2qCGw2uV0YIm7Tb/YpRgbg/JGIg5KARLX9LsxWD+N+zfJFj6Xkr1F3fn6ZM1jqGt/2
+ b68A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771511681; x=1772116481;
+ d=1e100.net; s=20230601; t=1771511698; x=1772116498;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=sXP99FUoDu1z98GAyOTe9kejbBFJAL0eQ2bvmghE1tE=;
- b=KP1PUEMuOR2ESoYoc4uupcCsAzr4coTXZLdmleofI/p6T3ys7nnDR5jlU+KtyfQpVv
- gxS4dp/rYp7/I6bopzdM5w0RkkJF3Vp/fJ8q5dBSvUkmAroF7yyiMqi7vbCJDp35ujgh
- CeaDIne8JxOCuXKRXcmDgSr23T/bUTtgkUzNEOG0rObgqu512sluJn6IVkgowmlK11+p
- KSbZ6DUgfUepLU5AtZVl21t7d9uN3X5QYE1owW+9HTvOHwKciIAe+TlZRiiKCPxb9+Ua
- RomudSSdt3G42tUOjCiogvr64uWKqkIwI4ogbWF+ik88humGeZkeUDSE23c2Kp5BW8F/
- /IFw==
-X-Gm-Message-State: AOJu0Yyhsu5ZNvySiMBKjMwPd2rNMDGhe/FW09qRMqSSllsA+Qk9g4b/
- KClsK46+4PicAB0d3Asw3cTpGvpWjzrmOxunxCydiqJnztsWmjxzILT/CjZQ31z1
-X-Gm-Gg: AZuq6aKoIhTGZrby7xn/GchP0EaEfGQECnrAxEo93YNWOpc1uwxYs08gErGkwD4HlRK
- /5Tac/OHHXumiuRmcbPoIbKEN1GGIP2esqt3YcGj4d4RUoM0pmUPNhegL/0sS/sfSgpgVJqpmom
- 1FeAuUSyayurKuKLEjE6K6b59a/SJZeJkTprgcww15CCI3+/qRHK26Dm6LkgO52IshKxixUuzGB
- LhXOH9y1xdWG+jmcb6rgViu0xx7yk0uWimANHTMidQCekCgmI0K8q0BMn1hn3wXm5qclM7ZwGrg
- T0+LeHUNmafqymobjIZ1p2CeD01Oc9Q1UllSNgsfli+QzQLl0bpCl5qmmwMS5pACPBgdJJbEByy
- /HjdJwxtBbeGuvZ9FSNFLvlgryUxei3QG5Q7Z0lO5t0JBqkZqYERjP2HdtCWgrDxoZucZnAK9PE
- 4uQk8u1vGvkiGh+2MKY/FtkGkuGLpRInJRn58tCtBYIQrfQpX2Q+QB1lW+r6UXG74+cCcy
-X-Received: by 2002:a05:6000:220c:b0:435:9f41:d43 with SMTP id
- ffacd0b85a97d-43958e00820mr10403338f8f.15.1771511680830; 
- Thu, 19 Feb 2026 06:34:40 -0800 (PST)
+ bh=+o4P+WixlSveqwPM81MzIq9MXznfscUez/G4LTT0AoQ=;
+ b=P2r1B4yRZI9bZ5yx4UhCCimnzazwZBn+2vyphL1nfbk7Af6RP91GtCoEhHDWpUpQWC
+ gWYo8T5iHFpCIa1eMkMLDMVyDXPuyVMokA7Gy8TsDjvsulQ2EblFnOrDIwKhFzrqqdp8
+ LVlpF0ThYLNJPkbdBPEM4esr1LKPJUOYmEQCt/5KPT2m1vI1N8W3sEAbkdPvUYgwbunn
+ DnADvIzXvX5Ju1beru7VWRpXD3YJWY0t/wMVxfibuBxdnn4tLJS8nUa2sMJXpUjCImEd
+ zk1FmQ+Huxp5TffU9HuaRTH3y4BOnjuyYPzP78D9J0PyZJMo3mvt9I2WMaMEQHVaS5Qp
+ TdTQ==
+X-Gm-Message-State: AOJu0YwatzUdK3iL7dPW3GM7j6SpEKRqLruCqxLu4aFwmONm12S4+H88
+ CwmtE2oiWaGxxa+gV3JOHOnGUP3duliw0omz3wh7cn7Mjdcuy6OZ3wNQ
+X-Gm-Gg: AZuq6aIbYyJ88Qar6DsxYgafTzkY0P9AjJJam1qSCOmNusOJ1KGz+MLFINMWkanFAwA
+ T4RIBysDE+4Mz2zZED1LqehN63rUGGCBksFoKMnJqjJWvwDdm8IC2rRlStiq9kGCBblITRQCWUR
+ CISFBF3GDslQbXCaE5wygJD8KZikwk/g3Kqov7c+2mlBqqfGnAcYmS8LHj06GX3nv3tn308isFF
+ S0x3ez74KJ1Dos/iFPHec82u3XI3gsMUSv2MDqYVQxUcehjYHZcsdCuMyJlqz31jLr10cP4pthE
+ Fa196uZrVQ1D3CozcEoE2jEyi7mYcJz1UTtJ/2jjyKkqFIgBpOKag9qIy1rOkDAbe3VcbKNq0ZL
+ SRkUpNqnxOa6xlxp2V6XU0eG/WbtMOvOsmKqt6mzX+aWj/QSjzxvVlJsVCR0bXLXZcTYmoMAtzA
+ QBr3M/6mqXPXqniOKW13Cdd99gtjR7s+GvJSccfPaa6maOpqKqUOL6pmYryUWck43m1wWw
+X-Received: by 2002:a05:600c:4745:b0:47e:e20e:bbbe with SMTP id
+ 5b1f17b1804b1-48373a4e7dfmr356698125e9.25.1771511697961; 
+ Thu, 19 Feb 2026 06:34:57 -0800 (PST)
 Received: from thinkpad-t470s.. (93-143-129-182.adsl.net.t-com.hr.
  [93.143.129.182]) by smtp.googlemail.com with ESMTPSA id
- ffacd0b85a97d-43796abd259sm52022770f8f.24.2026.02.19.06.34.39
+ ffacd0b85a97d-43796abd259sm52022770f8f.24.2026.02.19.06.34.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 19 Feb 2026 06:34:40 -0800 (PST)
+ Thu, 19 Feb 2026 06:34:57 -0800 (PST)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
@@ -71,16 +71,16 @@ Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
  Ruslan_Ruslichenko@epam.com, balaton@eik.bme.hu
-Subject: [PATCH v2 03/33] util/log: add log entry for fdt generic utils
-Date: Thu, 19 Feb 2026 15:33:02 +0100
-Message-ID: <20260219143332.3316679-4-ruslichenko.r@gmail.com>
+Subject: [PATCH v2 15/33] hw/core/fdt_generic_util: map device memory
+Date: Thu, 19 Feb 2026 15:33:14 +0100
+Message-ID: <20260219143332.3316679-16-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260219143332.3316679-1-ruslichenko.r@gmail.com>
 References: <20260219143332.3316679-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-wr1-x42c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,39 +105,169 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Introduce dedicated log mask for hardware device
-tree processing, to selectively enable diagnostic
-for FDT-based machine creation.
+Parse device mmio regions provided within 'reg' and
+'reg-extened' device tree properties.
+Call corresponding device interface class handlers to
+create memory regions.
 
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- include/qemu/log.h | 1 +
- util/log.c         | 1 +
- 2 files changed, 2 insertions(+)
+ hw/core/fdt_generic_util.c | 129 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 129 insertions(+)
 
-diff --git a/include/qemu/log.h b/include/qemu/log.h
-index 7effba4da4..984879fbd3 100644
---- a/include/qemu/log.h
-+++ b/include/qemu/log.h
-@@ -38,6 +38,7 @@ bool qemu_log_separate(void);
- #define CPU_LOG_TB_VPU     (1u << 21)
- #define LOG_TB_OP_PLUGIN   (1u << 22)
- #define LOG_INVALID_MEM    (1u << 23)
-+#define LOG_FDT            (1u << 24)
+diff --git a/hw/core/fdt_generic_util.c b/hw/core/fdt_generic_util.c
+index dcacc5033b..838ed9a85c 100644
+--- a/hw/core/fdt_generic_util.c
++++ b/hw/core/fdt_generic_util.c
+@@ -630,6 +630,22 @@ static inline uint64_t get_int_be(const void *p, int len)
+     }
+ }
  
- /* Lock/unlock output. */
++/* FIXME: use structs instead of parallel arrays */
++
++static const char *fdt_generic_reg_size_prop_names[] = {
++    "#address-cells",
++    "#size-cells",
++    "#bus-cells",
++    "#priority-cells",
++};
++
++static const int fdt_generic_reg_cells_defaults[] = {
++    1,
++    1,
++    0,
++    0,
++};
++
+ /*
+  * Error handler for device creation failure.
+  *
+@@ -831,6 +847,117 @@ static void fdt_init_qdev_array_prop(Object *obj,
+     DB_PRINT_NP(0, "set property %s propname to <list>\n", propname);
+ }
  
-diff --git a/util/log.c b/util/log.c
-index c44d66b5ce..c8310ddc58 100644
---- a/util/log.c
-+++ b/util/log.c
-@@ -523,6 +523,7 @@ const QEMULogItem qemu_log_items[] = {
-       "include VPU registers in the 'cpu' logging" },
-     { LOG_INVALID_MEM, "invalid_mem",
-       "log invalid memory accesses" },
-+    { LOG_FDT, "fdt", "log Device Tree info." },
-     { 0, NULL, NULL },
- };
++static void fdt_parse_node_reg_prop(FDTMachineInfo *fdti, char *node_path,
++                            Object *dev)
++{
++    FDTGenericRegPropInfo reg = {0};
++    Object *parent;
++    char parent_path[DT_PATH_LENGTH];
++    int cell_idx = 0;
++    bool extended = true;
++    Error *errp = NULL;
++    int i;
++
++    if (!object_dynamic_cast(dev, TYPE_SYS_BUS_DEVICE) &&
++        !object_dynamic_cast(dev, TYPE_FDT_GENERIC_MMAP))
++        return;
++
++    qemu_fdt_getprop_cell(fdti->fdt, node_path, "reg-extended", 0,
++                            &errp);
++    if (errp) {
++        error_free(errp);
++        errp = NULL;
++        extended = false;
++        qemu_devtree_getparent(fdti->fdt, parent_path, node_path);
++    }
++
++    parent = fdt_init_get_opaque(fdti, parent_path);
++
++    for (reg.n = 0;; reg.n++) {
++        char ph_parent[DT_PATH_LENGTH];
++        const char *pnp = parent_path;
++
++        reg.parents = g_renew(Object *, reg.parents, reg.n + 1);
++        reg.parents[reg.n] = parent;
++
++        if (extended) {
++            int p_ph = qemu_fdt_getprop_cell(fdti->fdt, node_path,
++                                                "reg-extended", cell_idx++,
++                                                &errp);
++            if (errp) {
++                error_free(errp);
++                errp = NULL;
++                goto exit_reg_parse;
++            }
++            if (qemu_devtree_get_node_by_phandle(fdti->fdt, ph_parent,
++                                                    p_ph)) {
++                goto exit_reg_parse;
++            }
++
++            while (!fdt_init_has_opaque(fdti, ph_parent) &&
++                   qemu_in_coroutine()) {
++                fdt_init_yield(fdti);
++            }
++
++            if (!fdt_init_has_opaque(fdti, ph_parent)) {
++                goto exit_reg_parse;
++            }
++
++            reg.parents[reg.n] = fdt_init_get_opaque(fdti, ph_parent);
++            pnp = ph_parent;
++        }
++
++        for (i = 0; i < FDT_GENERIC_REG_TUPLE_LENGTH; ++i) {
++            const char *size_prop_name = fdt_generic_reg_size_prop_names[i];
++            int nc = qemu_fdt_getprop_cell_inherited(fdti->fdt, node_path,
++                                            size_prop_name, 0, &errp);
++            uint64_t val = 0;
++
++            if (errp) {
++                int size_default = fdt_generic_reg_cells_defaults[i];
++
++                DB_PRINT_NP(0, "WARNING: no %s for %s container, assuming "
++                            "default of %d\n", size_prop_name, pnp,
++                            size_default);
++                nc = size_default;
++                error_free(errp);
++                errp = NULL;
++            }
++
++            reg.x[i] = g_renew(uint64_t, reg.x[i], reg.n + 1);
++            for (int j = 0; j < nc; ++j) {
++                val <<= 32;
++                val |= qemu_fdt_getprop_cell(fdti->fdt, node_path,
++                                            extended ? "reg-extended"
++                                                        : "reg",
++                                            cell_idx + j, &errp);
++               if (errp) {
++                    val = 0;
++                    break;
++               }
++            }
++            reg.x[i][reg.n] = val;
++            cell_idx += nc;
++            if (errp) {
++                goto exit_reg_parse;
++            }
++        }
++    }
++
++exit_reg_parse:
++    if (object_dynamic_cast(dev, TYPE_FDT_GENERIC_MMAP)) {
++        FDTGenericMMapClass *fmc = FDT_GENERIC_MMAP_GET_CLASS(dev);
++        if (fmc->parse_reg) {
++            while (fmc->parse_reg(FDT_GENERIC_MMAP(dev), reg,
++                                  &error_abort) && qemu_in_coroutine()) {
++                fdt_init_yield(fdti);
++            }
++        }
++    }
++
++    return;
++}
++
+ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
+ {
+     Object *dev, *parent;
+@@ -972,6 +1099,8 @@ static int fdt_init_qdev(char *node_path, FDTMachineInfo *fdti, char *compat)
+         }
+     }
+ 
++    fdt_parse_node_reg_prop(fdti, node_path, dev);
++
+     g_free(dev_type);
+     g_free(props);
  
 -- 
 2.43.0

@@ -4,90 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 157A5C56201
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Feb 2026 15:08:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EDD9C5AD2B
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Feb 2026 17:20:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vtS6a-0004gy-Hb; Fri, 20 Feb 2026 10:07:45 -0500
+	id 1vtUAW-00057O-5B; Fri, 20 Feb 2026 12:19:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=50468f4b5=graf@amazon.de>)
- id 1vtS6J-0004Ye-VM; Fri, 20 Feb 2026 10:07:29 -0500
-Received: from pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com
- ([52.34.181.151])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prvs=50468f4b5=graf@amazon.de>)
- id 1vtS6G-0004P9-Rm; Fri, 20 Feb 2026 10:07:27 -0500
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vtUAU-000572-WA
+ for qemu-arm@nongnu.org; Fri, 20 Feb 2026 12:19:55 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vtUAT-0004cU-IL
+ for qemu-arm@nongnu.org; Fri, 20 Feb 2026 12:19:54 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-65808bb859cso2922267a12.2
+ for <qemu-arm@nongnu.org>; Fri, 20 Feb 2026 09:19:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
- t=1771600044; x=1803136044;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=cjl2MgjXEErjFfKv+r56ubT5PuROvPF3mMZdX8Y44LU=;
- b=Aw+9ikLOHTJEsZ3BwvahgyHa+GULqZQzqjkjnuj8tmyHiBzc11VE0/0s
- SNijct+8lVAiJCcEopVqw7Jv76R/7/0mxVB3QRh+0Db5HvmckyMjEMaNT
- dfQVIkYr/Qyoo0Dop6lCQYgMVraItFxetGwhKH2x0Og81lfpyUlFy5tuk
- loXhtl4us/5wTl4/S9YDBKfYm1ZS1qjGShOwvlmuCjYhfZQJ9XQOKChq+
- QV9jHiW7PvgvoaT0Fmb7ItdiWSicgsflip3uzt5pM3RQYU1fip0BWTEH1
- MUi/Y+BaQER/f4PhGmuaGsut0n2csrYO7jKIcsLrkqBkuRd+ba/ywbtza g==;
-X-CSE-ConnectionGUID: aWwdUtHtTdG+2s7c2QjcaQ==
-X-CSE-MsgGUID: pzkamuDaTDaim8y4Ae+zRg==
-X-IronPort-AV: E=Sophos;i="6.21,302,1763424000"; d="scan'208";a="13432558"
-Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
- smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
- by internal-pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Feb 2026 15:07:17 +0000
-Received: from EX19MTAUWA002.ant.amazon.com [205.251.233.178:7790]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.45.60:2525]
- with esmtp (Farcaster)
- id 0dd3a033-595e-4278-b0b3-f6492765a07b; Fri, 20 Feb 2026 15:07:17 +0000 (UTC)
-X-Farcaster-Flow-ID: 0dd3a033-595e-4278-b0b3-f6492765a07b
-Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
- EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.35;
- Fri, 20 Feb 2026 15:07:16 +0000
-Received: from [0.0.0.0] (172.19.99.218) by EX19D020UWC004.ant.amazon.com
- (10.13.138.149) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.37; Fri, 20 Feb 2026
- 15:07:12 +0000
-Message-ID: <85e58c20-dfc5-4bc2-911e-ecdac3b922c4@amazon.com>
-Date: Fri, 20 Feb 2026 16:07:10 +0100
+ d=linaro.org; s=google; t=1771607992; x=1772212792; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=IRvKEquHoRhR9FTtoJbDGwgOdmk9XFImG/i1KpW6qVc=;
+ b=fY1Fo0wnLFC000kwePhPqPczt+tVCwcXgBrYfhni0LwWKJ80JGXehMPid8K8up5fCd
+ nBXwfs8D2vgqqddEK9umB2WnFzvc57QNz0157ozrb8fRoU17fs+AnOoRMTt7xiOMNIyL
+ 5X2oudyzTiX8Thvz8CyG87s2SNw3LjB7ZS+1txToMhxjRnNRpprp+QQwP31ub+t3EzXz
+ /NgnyroMY21AAoZYY4QWxVaY5dhNTL7bXOumK+BZ14p4ntGfl6oc4bsDH+LvtpuzmnEZ
+ XHI1KXV1fAG8QS5bctP2cQW3k8p+Ui8qTaSnBPf9ebMH1wIQG4H+r35iQBAULz1Ot0rb
+ /jJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1771607992; x=1772212792;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=IRvKEquHoRhR9FTtoJbDGwgOdmk9XFImG/i1KpW6qVc=;
+ b=YgLNhIbW4PaVOgjZgSkSbNslcks0GhY92rQqwRP0iDbskwtsmT+ARSyQrA7eS7VRoZ
+ E6r/6IqIZJPMBDNVx9X/Pofs63sHufZ970DNYsXWAEci8OTmRuYyhqHz5nGu1nVdk7m0
+ 1O57VWxwv7aD5Fmmm05mLXnBtFxbhsk9OhIXZtelJrybrx0Z8DU1v8n1kpNPC+JRIuY8
+ udyPolzS/cUB8cyavEzXNRmAk4sPtiKCDinyzL9F+rmgUzDC2gHbtxVhi3ISmY4dCNIp
+ o0nSX1Xy727En4CnNz5/xc/BADz++H6mD6m8Kl+mfxQd3ixXLsmrL4HHXikKFx+hZzcL
+ w/Wg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVWNybsH7e2aH67CP58qKQptF0feersUFJfIc2l9/Oc9ltdaZlqfobsD1I0bbx2NyijLH0beSrWwQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxHIQBrWM6TiKw7I/03JjKTKQ3Vwg5XQ7ChQBDmoENj+EVs8oo7
+ mg/Nfr9m3pRXQSPVM91tyWX+ncLmfsmSra+pZuNgCAHjrskrbb7gFafolEN7FEnG/zc=
+X-Gm-Gg: AZuq6aIp/VM4eI1pu1DhJj+D8vEoP0f91D4T1PkZodZK8fDS9vNQfEzOjdckXV9IlAu
+ enxpUWKMUfuROu0e8gEFiGNMaiVQdMps/D2RylYR5VXawp40AivD9IdiI5EhXgIRBu3dEKQq1hA
+ PoUtU7sVDbijAQJY3fdkF/69+RuYfJmeN3UMoRZPKJ4xA45m+INBuMsELDd3cmFc4ABrBkUYpjG
+ nmThRyhOmQksusGgEof8raXBv6iZ7me74yr6hPCd/AWuLD9bxSHs/XCl4LI3zz0vo1ozTldcHjr
+ x390NergJ4eDkhrBNZtWDkTd530txjxSVKSL7dryeV9v8o3pTU1D/V4V1txZbajftcMI7j+bP86
+ UwPo4yHtZq6U+hQwyK2DxSj1vcstHthZA7mrEPkvXO3AdPAhDseLKimIbAhU15UiKRf7Lw2s4z2
+ 1qjGLbZk5WzHHASoJ0FxeppHSrRL9f2s7yyA==
+X-Received: by 2002:a17:907:1c82:b0:b8e:9d66:f5fb with SMTP id
+ a640c23a62f3a-b9081740d0dmr16747466b.0.1771607991738; 
+ Fri, 20 Feb 2026 09:19:51 -0800 (PST)
+Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b8fc7385d99sm672175366b.17.2026.02.20.09.19.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 Feb 2026 09:19:51 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 18DA55F838;
+ Fri, 20 Feb 2026 17:19:50 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH] target/arm: set the correct TI bits for WFIT traps
+Date: Fri, 20 Feb 2026 17:19:45 +0000
+Message-ID: <20260220171945.1065102-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 07/10] hw/nitro: Add nitro machine
-To: "Michael S. Tsirkin" <mst@redhat.com>
-CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Peter Maydell
- <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- <alex.bennee@linaro.org>, <philmd@linaro.org>, <berrange@redhat.com>,
- <marcandre.lureau@redhat.com>, Cornelia Huck <cohuck@redhat.com>, "Dorjoy
- Chowdhury" <dorjoychy111@gmail.com>, Pierrick Bouvier
- <pierrick.bouvier@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, "Tyler
- Fanelli" <tfanelli@redhat.com>, <mknaust@amazon.com>,
- <nh-open-source@amazon.com>
-References: <20260218015151.4052-1-graf@amazon.com>
- <20260218015151.4052-8-graf@amazon.com>
- <20260220095806-mutt-send-email-mst@kernel.org>
-Content-Language: en-US
-From: Alexander Graf <graf@amazon.com>
-In-Reply-To: <20260220095806-mutt-send-email-mst@kernel.org>
-X-Originating-IP: [172.19.99.218]
-X-ClientProxiedBy: EX19D033UWC002.ant.amazon.com (10.13.139.196) To
- EX19D020UWC004.ant.amazon.com (10.13.138.149)
-Content-Type: text/plain; charset="utf-8"; format="flowed"
-Content-Transfer-Encoding: base64
-Received-SPF: pass client-ip=52.34.181.151;
- envelope-from=prvs=50468f4b5=graf@amazon.de;
- helo=pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
- UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,42 +103,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGV5IE1pY2hhZWwsCgpPbiAyMC4wMi4yNiAxNTo1OSwgTWljaGFlbCBTLiBUc2lya2luIHdyb3Rl
-Ogo+IE9uIFdlZCwgRmViIDE4LCAyMDI2IGF0IDAxOjUxOjQ3QU0gKzAwMDAsIEFsZXhhbmRlciBH
-cmFmIHdyb3RlOgo+PiBBZGQgYSBtYWNoaW5lIG1vZGVsIHRvIHNwYXduIGEgTml0cm8gRW5jbGF2
-ZS4gVW5saWtlIHRoZSBleGlzdGluZyAtTQo+PiBuaXRyby1lbmNsYXZlLCB0aGlzIG1hY2hpbmUg
-bW9kZWwgd29ya3MgZXhjbHVzaXZlbHkgd2l0aCB0aGUgLWFjY2VsCj4+IG5pdHJvIGFjY2VsZXJh
-dG9yIHRvIGRyaXZlIHJlYWwgTml0cm8gRW5jbGF2ZSBjcmVhdGlvbi4gSXQgc3VwcG9ydHMKPj4g
-bWVtb3J5IGFsbG9jYXRpb24sIG51bWJlciBvZiBDUFUgc2VsZWN0aW9uLCBib3RoIHg4Nl82NCBh
-cyB3ZWxsIGFzCj4+IGFhcmNoNjQsIGltcGxlbWVudHMgdGhlIEVuY2xhdmUgaGVhcnRiZWF0IGxv
-Z2ljIGFuZCBkZWJ1ZyBzZXJpYWwKPj4gY29uc29sZS4KPj4KPj4gVG8gdXNlIGl0LCBjcmVhdGUg
-YW4gRUlGIGZpbGUgYW5kIHJ1bgo+Pgo+PiAgICAkIHFlbXUtc3lzdGVtLXg4Nl82NCAtYWNjZWwg
-bml0cm8sZGVidWctbW9kZT1vbiAtTSBuaXRybyAtbm9ncmFwaGljIFwKPj4gICAgICAgICAgICAg
-ICAgICAgICAgICAgLWtlcm5lbCB0ZXN0LmVpZgo+Pgo+PiBvcgo+Pgo+PiAgICAkIHFlbXUtc3lz
-dGVtLWFhcmNoNjQgLWFjY2VsIG5pdHJvLGRlYnVnLW1vZGU9b24gLU0gbml0cm8gLW5vZ3JhcGhp
-YyBcCj4+ICAgICAgICAgICAgICAgICAgICAgICAgIC1rZXJuZWwgdGVzdC5laWYKPj4KPj4gU2ln
-bmVkLW9mZi1ieTogQWxleGFuZGVyIEdyYWYgPGdyYWZAYW1hem9uLmNvbT4KCgpbLi4uXQoKCj4+
-ICsKPj4gKyAgICAvKgo+PiArICAgICAqIEluIGRlYnVnIG1vZGUsIE5pdHJvIEVuY2xhdmVzIGV4
-cG9zZSB0aGUgZ3Vlc3QncyBzZXJpYWwgb3V0cHV0IHZpYQo+PiArICAgICAqIHZzb2NrLiBXaGVu
-IHRoZSBhY2NlbCBpcyBpbiBkZWJ1ZyBtb2RlLCB3aXJlIHRoZSB2c29jayBzZXJpYWwgdG8KPj4g
-KyAgICAgKiB0aGUgbWFjaGluZSdzIHNlcmlhbCBwb3J0IHNvIHRoYXQgLW5vZ3JhcGhpYyBhdXRv
-bWF0aWNhbGx5IHdvcmtzCj4+ICsgICAgICovCj4+ICsgICAgaWYgKG9iamVjdF9wcm9wZXJ0eV9n
-ZXRfYm9vbChPQkpFQ1QoY3VycmVudF9hY2NlbCgpKSwgImRlYnVnLW1vZGUiLCBOVUxMKSkgewo+
-PiArICAgICAgICBDaGFyZGV2ICpjaHIgPSBzZXJpYWxfaGQoMCk7Cj4+ICsKPj4gKyAgICAgICAg
-aWYgKGNocikgewo+PiArICAgICAgICAgICAgRGV2aWNlU3RhdGUgKmRldiA9IHFkZXZfbmV3KFRZ
-UEVfTklUUk9fU0VSSUFMX1ZTT0NLKTsKPj4gKwo+PiArICAgICAgICAgICAgcWRldl9wcm9wX3Nl
-dF9jaHIoZGV2LCAiY2hhcmRldiIsIGNocik7Cj4+ICsgICAgICAgICAgICBzeXNidXNfcmVhbGl6
-ZV9hbmRfdW5yZWYoU1lTX0JVU19ERVZJQ0UoZGV2KSwgJmVycm9yX2ZhdGFsKTsKPj4gKyAgICAg
-ICAgfQo+PiArICAgIH0KPgo+IFdvdWxkICByZXNwZWN0aW5nIC1ub2RlZmF1bHRzIGFuZCB0aGVu
-IG1heWJlIG5vdCB3aXJpbmcgdXAgYWxsIHRoZQo+IHZzb2NrIHRoaW5ncyBtYWtlIHNlbnNlPyBh
-bGxvd3MgdXNlcnMgdG8gc2V0IGl0IHVwIGFueSB3YXkKPiB0aGV5IHdhbnQgLi4uCgoKU28geW91
-IHdvdWxkIHNldCB1cCB0aGUgaW5kaXZpZHVhbCBzcGVjaWFsLXB1cnBvc2Ugbml0cm8gZGV2aWNl
-cyB2aWEgCi1kZXZpY2Ugb3IgaGFuZGxlIHRoZSByZXNwZWN0aXZlIHZpcnRpbyBzdHJlYW1zIGV4
-dGVybmFsbHkgaW5zdGVhZD8gVGhhdCAKZGVmaW5pdGVseSBtYWtlcyBhIGxvdCBvZiBzZW5zZSEg
-SGFwcHkgdG8gYWRkIGluIHYyLgoKCkFsZXgKCgoKCkFtYXpvbiBXZWIgU2VydmljZXMgRGV2ZWxv
-cG1lbnQgQ2VudGVyIEdlcm1hbnkgR21iSApUYW1hcmEtRGFuei1TdHIuIDEzCjEwMjQzIEJlcmxp
-bgpHZXNjaGFlZnRzZnVlaHJ1bmc6IENocmlzdG9mIEhlbGxtaXMsIEFuZHJlYXMgU3RpZWdlcgpF
-aW5nZXRyYWdlbiBhbSBBbXRzZ2VyaWNodCBDaGFybG90dGVuYnVyZyB1bnRlciBIUkIgMjU3NzY0
-IEIKU2l0ejogQmVybGluClVzdC1JRDogREUgMzY1IDUzOCA1OTcK
+The WFIT trap should be reported as 0b10.
+
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ target/arm/tcg/op_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+index 4d708635068..aa14f15eb62 100644
+--- a/target/arm/tcg/op_helper.c
++++ b/target/arm/tcg/op_helper.c
+@@ -448,7 +448,7 @@ void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
+ 
+     if (target_el) {
+         env->pc -= 4;
+-        raise_exception(env, excp, syn_wfx(1, 0xe, 0, false), target_el);
++        raise_exception(env, excp, syn_wfx(1, 0xe, 2, false), target_el);
+     }
+ 
+     if (uadd64_overflow(timeout, offset, &nexttick)) {
+-- 
+2.47.3
 
 

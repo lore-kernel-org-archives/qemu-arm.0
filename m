@@ -4,90 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EDD9C5AD2B
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Feb 2026 17:20:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85297C5AD4E
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Feb 2026 18:52:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vtUAW-00057O-5B; Fri, 20 Feb 2026 12:19:56 -0500
+	id 1vtVby-0007Zz-Tg; Fri, 20 Feb 2026 13:52:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vtUAU-000572-WA
- for qemu-arm@nongnu.org; Fri, 20 Feb 2026 12:19:55 -0500
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1vtVbx-0007Za-5m
+ for qemu-arm@nongnu.org; Fri, 20 Feb 2026 13:52:21 -0500
+Received: from mail-vk1-xa34.google.com ([2607:f8b0:4864:20::a34])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vtUAT-0004cU-IL
- for qemu-arm@nongnu.org; Fri, 20 Feb 2026 12:19:54 -0500
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-65808bb859cso2922267a12.2
- for <qemu-arm@nongnu.org>; Fri, 20 Feb 2026 09:19:53 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1vtVbv-0001ga-I9
+ for qemu-arm@nongnu.org; Fri, 20 Feb 2026 13:52:20 -0500
+Received: by mail-vk1-xa34.google.com with SMTP id
+ 71dfb90a1353d-5665171836cso2553711e0c.2
+ for <qemu-arm@nongnu.org>; Fri, 20 Feb 2026 10:52:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771607992; x=1772212792; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=IRvKEquHoRhR9FTtoJbDGwgOdmk9XFImG/i1KpW6qVc=;
- b=fY1Fo0wnLFC000kwePhPqPczt+tVCwcXgBrYfhni0LwWKJ80JGXehMPid8K8up5fCd
- nBXwfs8D2vgqqddEK9umB2WnFzvc57QNz0157ozrb8fRoU17fs+AnOoRMTt7xiOMNIyL
- 5X2oudyzTiX8Thvz8CyG87s2SNw3LjB7ZS+1txToMhxjRnNRpprp+QQwP31ub+t3EzXz
- /NgnyroMY21AAoZYY4QWxVaY5dhNTL7bXOumK+BZ14p4ntGfl6oc4bsDH+LvtpuzmnEZ
- XHI1KXV1fAG8QS5bctP2cQW3k8p+Ui8qTaSnBPf9ebMH1wIQG4H+r35iQBAULz1Ot0rb
- /jJA==
+ d=linaro.org; s=google; t=1771613538; x=1772218338; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=MfZaD0WBrjXyuFc0ZY6u+e6s5SbK+Mu7vMgh0LLtUDY=;
+ b=ye7AC4HKsWrrwYCh8cL8K/bo4HYoGHZ9EGoAMcIv/QUtcqNBPLNaYv2ankX+wIMkK2
+ 5KNOzThOM0KcwFuGmhEnpUVWjU+T3s3UdROUiNxT7SPqZvIv9yVE45yDu9nWfWFi7KlT
+ ZHjzMvK+tukqSbvbmaPm/xx90vyER164AedjgqahaOYQhQTNkEu2L2oB3P2CTQ6fQQ4A
+ 1mC15UrQ7r8+RlZijimi/y66HWepnGry701ekyc7xy6TdtDIn2ZmqD4q2Z9ZYlak/dVC
+ VgI6Vu3hpI8ur8sM4/aEwc10X0IYA//CQuce5c0sT22jiWSkhj2cvkqG7KmV/qyIJ0zV
+ Z3Iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771607992; x=1772212792;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=IRvKEquHoRhR9FTtoJbDGwgOdmk9XFImG/i1KpW6qVc=;
- b=YgLNhIbW4PaVOgjZgSkSbNslcks0GhY92rQqwRP0iDbskwtsmT+ARSyQrA7eS7VRoZ
- E6r/6IqIZJPMBDNVx9X/Pofs63sHufZ970DNYsXWAEci8OTmRuYyhqHz5nGu1nVdk7m0
- 1O57VWxwv7aD5Fmmm05mLXnBtFxbhsk9OhIXZtelJrybrx0Z8DU1v8n1kpNPC+JRIuY8
- udyPolzS/cUB8cyavEzXNRmAk4sPtiKCDinyzL9F+rmgUzDC2gHbtxVhi3ISmY4dCNIp
- o0nSX1Xy727En4CnNz5/xc/BADz++H6mD6m8Kl+mfxQd3ixXLsmrL4HHXikKFx+hZzcL
- w/Wg==
+ d=1e100.net; s=20230601; t=1771613538; x=1772218338;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=MfZaD0WBrjXyuFc0ZY6u+e6s5SbK+Mu7vMgh0LLtUDY=;
+ b=iwvuAIA7vfcVWmvQwXC3SPthdYnJN228QilNgrH75Hll30kf4DtXh3BvHzmARhj27R
+ SnO99XRcFyiYnYsMhl4L0DBTBslde8rY8ZYLT6EZOiFrfpuQZ8SJiau+n+T+aDqjUpKy
+ sl7GP9+mqRWxKqX702BkVDlpTt14FuIDpleUH8BB8RGrWzDttudN7YfxNQ3jf8RR+AYe
+ PwMVnwk7/p0TH6t07rAN0H48k8vCGXpq9NeW7qq/DQ7ZUSLDTgNuOlSlmfzyxUSA5diF
+ Zf+g1eumiDNXmZlmigArQdp3WsDYZv3/O5/8TlHy1UavykVHc7oNohgGfVtOBhUQfKMb
+ xIsg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVWNybsH7e2aH67CP58qKQptF0feersUFJfIc2l9/Oc9ltdaZlqfobsD1I0bbx2NyijLH0beSrWwQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxHIQBrWM6TiKw7I/03JjKTKQ3Vwg5XQ7ChQBDmoENj+EVs8oo7
- mg/Nfr9m3pRXQSPVM91tyWX+ncLmfsmSra+pZuNgCAHjrskrbb7gFafolEN7FEnG/zc=
-X-Gm-Gg: AZuq6aIp/VM4eI1pu1DhJj+D8vEoP0f91D4T1PkZodZK8fDS9vNQfEzOjdckXV9IlAu
- enxpUWKMUfuROu0e8gEFiGNMaiVQdMps/D2RylYR5VXawp40AivD9IdiI5EhXgIRBu3dEKQq1hA
- PoUtU7sVDbijAQJY3fdkF/69+RuYfJmeN3UMoRZPKJ4xA45m+INBuMsELDd3cmFc4ABrBkUYpjG
- nmThRyhOmQksusGgEof8raXBv6iZ7me74yr6hPCd/AWuLD9bxSHs/XCl4LI3zz0vo1ozTldcHjr
- x390NergJ4eDkhrBNZtWDkTd530txjxSVKSL7dryeV9v8o3pTU1D/V4V1txZbajftcMI7j+bP86
- UwPo4yHtZq6U+hQwyK2DxSj1vcstHthZA7mrEPkvXO3AdPAhDseLKimIbAhU15UiKRf7Lw2s4z2
- 1qjGLbZk5WzHHASoJ0FxeppHSrRL9f2s7yyA==
-X-Received: by 2002:a17:907:1c82:b0:b8e:9d66:f5fb with SMTP id
- a640c23a62f3a-b9081740d0dmr16747466b.0.1771607991738; 
- Fri, 20 Feb 2026 09:19:51 -0800 (PST)
-Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b8fc7385d99sm672175366b.17.2026.02.20.09.19.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Feb 2026 09:19:51 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 18DA55F838;
- Fri, 20 Feb 2026 17:19:50 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH] target/arm: set the correct TI bits for WFIT traps
-Date: Fri, 20 Feb 2026 17:19:45 +0000
-Message-ID: <20260220171945.1065102-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
+ AJvYcCVdALQ5Q1eN3TcZhmGohV5XUE9QnWYHkBfc7QB+CQm2yTCpK5c69mf6cVS1+QC/rjLsrmpDmtGHXA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy054APxn38sVHQA5mP/R89d7dHWzAPKVxCO0q4GE6NLu+wkgEz
+ saYhGkaCDDyV7smaI6tzLWSm+tiG7x8GsUlYo4lEngX0gqzjMI+H1dTdPR0fWM2wcdI=
+X-Gm-Gg: AZuq6aLUOqr7BmU9x27KQJzneu44AiJnpfXpcMevJo847yGAGsd5vnybIcXdkQxfr1X
+ yMWzXwkt4sIgk7Xb2/zq1sm8V6992/McKzzEzjF3+ZI9OwySa86yOBGV+B16+T9IxxtTbfBZFlD
+ b3Jh7MMqBuZOvYUpIZxDs9stc28xRWitKmG5gAN6kRZEbbbn9KENTgNIvDTTEzSWML8GXjWl/Ck
+ ADXHcr+/vEJ0EKbnrsprsMXenxGhoTcIwjVq3LelCrlxoIzjNcqKFe0nOIqnKVRFwdqTAWR2RVB
+ NWYxWFpycjLtRy8yA6TFRMJr/f9iIaKUv1K9mDiFzV4VBZ/ahKt/+NqJnL5wsHZiXF83C73jAVj
+ tMLg1RlGu5MZe++WIz/KIvHOZbExfDyPxjsaatDEWgtSNCFgUbAT6Z5Rm63xAhr2blouza2Mo77
+ MMvWDDWeYdlxfboxzHVoGirx4uVFI8/DhAZ09NJDdJ0rQ/D1O0q8rcSbTAjGn4gCyxdp1iF8ybQ
+ jo=
+X-Received: by 2002:a05:6122:929:b0:566:2fc9:6c89 with SMTP id
+ 71dfb90a1353d-568e4881907mr432987e0c.10.1771613537809; 
+ Fri, 20 Feb 2026 10:52:17 -0800 (PST)
+Received: from [192.168.0.103] (200-100-75-206.dial-up.telesp.net.br.
+ [200.100.75.206]) by smtp.gmail.com with ESMTPSA id
+ 71dfb90a1353d-568e57d42fbsm160239e0c.6.2026.02.20.10.52.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 20 Feb 2026 10:52:17 -0800 (PST)
+Message-ID: <d5839ed8-dc2c-4c90-95a5-d5442099911a@linaro.org>
+Date: Fri, 20 Feb 2026 15:52:13 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm: set the correct TI bits for WFIT traps
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+References: <20260220171945.1065102-1-alex.bennee@linaro.org>
+Content-Language: en-US
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <20260220171945.1065102-1-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a34;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-vk1-xa34.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,27 +107,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The WFIT trap should be reported as 0b10.
+Hi Alex,
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/tcg/op_helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 2/20/26 14:19, Alex Bennée wrote:
+> The WFIT trap should be reported as 0b10.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   target/arm/tcg/op_helper.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+> index 4d708635068..aa14f15eb62 100644
+> --- a/target/arm/tcg/op_helper.c
+> +++ b/target/arm/tcg/op_helper.c
+> @@ -448,7 +448,7 @@ void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
+>   
+>       if (target_el) {
+>           env->pc -= 4;
+> -        raise_exception(env, excp, syn_wfx(1, 0xe, 0, false), target_el);
+> +        raise_exception(env, excp, syn_wfx(1, 0xe, 2, false), target_el);
 
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index 4d708635068..aa14f15eb62 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -448,7 +448,7 @@ void HELPER(wfit)(CPUARMState *env, uint64_t timeout)
- 
-     if (target_el) {
-         env->pc -= 4;
--        raise_exception(env, excp, syn_wfx(1, 0xe, 0, false), target_el);
-+        raise_exception(env, excp, syn_wfx(1, 0xe, 2, false), target_el);
-     }
- 
-     if (uadd64_overflow(timeout, offset, &nexttick)) {
--- 
-2.47.3
+As per the AArch64.WFxTrap() Arm Arm pseudo code:
+
+Reviewed-by: Gustavo Romero <gustavo.romero@linaro.org>
+
+
+Cheers,
+Gustavo
+
+>       }
+>   
+>       if (uadd64_overflow(timeout, offset, &nexttick)) {
 
 

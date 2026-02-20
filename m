@@ -4,53 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C25A4C55ABE
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Feb 2026 13:54:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 531FEC55ABE
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Feb 2026 14:11:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vtQws-0002Ri-Hm; Fri, 20 Feb 2026 08:53:38 -0500
+	id 1vtREU-00018M-UT; Fri, 20 Feb 2026 09:11:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1vtQwr-0002R8-1M; Fri, 20 Feb 2026 08:53:37 -0500
+ id 1vtREP-000143-2Y; Fri, 20 Feb 2026 09:11:48 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1vtQwn-0004MP-3S; Fri, 20 Feb 2026 08:53:36 -0500
-Received: from mail.maildlp.com (unknown [172.18.224.83])
- by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fHWsp1P4CzJ467G;
- Fri, 20 Feb 2026 21:53:02 +0800 (CST)
+ id 1vtREK-0004HP-3D; Fri, 20 Feb 2026 09:11:44 -0500
+Received: from mail.maildlp.com (unknown [172.18.224.150])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTPS id 4fHXGr5F9CzJ46DS;
+ Fri, 20 Feb 2026 22:11:16 +0800 (CST)
 Received: from dubpeml500005.china.huawei.com (unknown [7.214.145.207])
- by mail.maildlp.com (Postfix) with ESMTPS id 429C440572;
- Fri, 20 Feb 2026 21:53:17 +0800 (CST)
-Received: from localhost (10.47.73.243) by dubpeml500005.china.huawei.com
- (7.214.145.207) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Fri, 20 Feb
- 2026 13:53:16 +0000
-Date: Fri, 20 Feb 2026 13:53:04 +0000
-To: "Michael S. Tsirkin" <mst@redhat.com>
-CC: <qemu-devel@nongnu.org>, <gustavo.romero@linaro.org>,
- <anisinha@redhat.com>, <armbru@redhat.com>, <berrange@redhat.com>,
+ by mail.maildlp.com (Postfix) with ESMTPS id D2D1940539;
+ Fri, 20 Feb 2026 22:11:31 +0800 (CST)
+Received: from a2303103017.china.huawei.com (10.47.73.243) by
+ dubpeml500005.china.huawei.com (7.214.145.207) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Fri, 20 Feb 2026 14:11:30 +0000
+To: <mst@redhat.com>, <qemu-devel@nongnu.org>
+CC: <anisinha@redhat.com>, <armbru@redhat.com>, <berrange@redhat.com>,
  <dapeng1.mi@linux.intel.com>, <eric.auger@redhat.com>,
- <farman@linux.ibm.com>, <imammedo@redhat.com>, <jiangkunkun@huawei.com>,
- <maobibo@loongson.cn>, <mtosatti@redhat.com>, <peter.maydell@linaro.org>,
- <philmd@linaro.org>, <qemu-arm@nongnu.org>, <richard.henderson@linaro.org>,
- <shannon.zhaosl@gmail.com>, <yangyicong@hisilicon.com>,
- <jonathan.cameron@huawei.com>, <linuxarm@huawei.com>, <zhao1.liu@intel.com>
-Subject: Re: [PATCH v17 6/8] hw/acpi: add cache hierarchy to pptt table
-Message-ID: <20260220135304.00005a64.alireza.sanaee@huawei.com>
-In-Reply-To: <20260220074005-mutt-send-email-mst@kernel.org>
-References: <20260106155828.643-1-alireza.sanaee@huawei.com>
- <20260106155828.643-7-alireza.sanaee@huawei.com>
- <20260220074005-mutt-send-email-mst@kernel.org>
-Organization: Huawei
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+ <farman@linux.ibm.com>, <gustavo.romero@linaro.org>, <imammedo@redhat.com>,
+ <jiangkunkun@huawei.com>, <jonathan.cameron@huawei.com>,
+ <linuxarm@huawei.com>, <maobibo@loongson.cn>, <mtosatti@redhat.com>,
+ <peter.maydell@linaro.org>, <philmd@linaro.org>, <qemu-arm@nongnu.org>,
+ <richard.henderson@linaro.org>, <shannon.zhaosl@gmail.com>,
+ <zhao1.liu@intel.com>
+Subject: [PATCH v18 0/8] Specifying cache topology on ARM
+Date: Fri, 20 Feb 2026 14:11:19 +0000
+Message-ID: <20260220141128.789-1-alireza.sanaee@huawei.com>
+X-Mailer: git-send-email 2.51.0.windows.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [10.47.73.243]
-X-ClientProxiedBy: lhrpeml100012.china.huawei.com (7.191.174.184) To
+X-ClientProxiedBy: lhrpeml100011.china.huawei.com (7.191.174.247) To
  dubpeml500005.china.huawei.com (7.214.145.207)
 Received-SPF: pass client-ip=185.176.79.56;
  envelope-from=alireza.sanaee@huawei.com; helo=frasgout.his.huawei.com
@@ -78,361 +73,182 @@ From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 20 Feb 2026 07:49:21 -0500
-"Michael S. Tsirkin" <mst@redhat.com> wrote:
+Specifying the cache layout in virtual machines is useful for applications and
+operating systems to fetch accurate information about the cache structure and
+make appropriate adjustments. Enforcing correct sharing information can lead to
+better optimizations. Patches that allow for an interface to express caches was
+landed in the prior cycles. This patchset uses the interface as a foundation.
+Thus, the device tree and ACPI/PPTT table, and device tree are populated based
+on user-provided information and CPU topology.
 
-Hi Michael,
+Example:
 
-Sending a new revision momentarily. I will have to do a rebase too.
++----------------+                         +----------------+
+|    Socket 0    |                         |    Socket 1    |
+|    (L3 Cache)  |                         |    (L3 Cache)  |
++--------+-------+                         +--------+-------+
+         |                                          |
++--------+--------+                        +--------+--------+
+|   Cluster 0     |                        |   Cluster 0     |
+|   (L2 Cache)    |                        |   (L2 Cache)    |
++--------+--------+                        +--------+--------+
+         |                                          |
++--------+--------+  +--------+--------+   +--------+--------+  +--------+----+
+|   Core 0         | |   Core 1        |   |   Core 0        |  |   Core 1    |
+|   (L1i, L1d)     | |   (L1i, L1d)    |   |   (L1i, L1d)    |  |   (L1i, L1d)|
++--------+--------+  +--------+--------+   +--------+--------+  +--------+----+
+         |                    |                     |                    |
++--------+              +--------+             +--------+           +--------+
+|Thread 0|              |Thread 1|             |Thread 1|           |Thread 0|
++--------+              +--------+             +--------+           +--------+
+|Thread 1|              |Thread 0|             |Thread 0|           |Thread 1|
++--------+              +--------+             +--------+           +--------+
 
-Thanks,
-Ali
 
-> On Tue, Jan 06, 2026 at 03:58:25PM +0000, Alireza Sanaee wrote:
-> > Add cache topology to PPTT table.
-> > 
-> > Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
-> > ---
-> >  hw/acpi/aml-build.c      | 200 +++++++++++++++++++++++++++++++++++++--
-> >  hw/arm/virt-acpi-build.c |   8 +-
-> >  include/hw/acpi/cpu.h    |  10 ++
-> >  3 files changed, 209 insertions(+), 9 deletions(-)
-> > 
-> > diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-> > index a711a9600e..580eceb24a 100644
-> > --- a/hw/acpi/aml-build.c
-> > +++ b/hw/acpi/aml-build.c
-> > @@ -31,6 +31,7 @@
-> >  #include "hw/pci/pci_bus.h"
-> >  #include "hw/pci/pci_bridge.h"
-> >  #include "qemu/cutils.h"
-> > +#include "hw/core/cpu.h"
-> >  
-> >  static GArray *build_alloc_array(void)
-> >  {
-> > @@ -2140,6 +2141,104 @@ void build_spcr(GArray *table_data, BIOSLinker *linker,
-> >      }
-> >      acpi_table_end(linker, &table);
-> >  }
-> > +
-> > +static void build_cache_nodes(GArray *tbl, CPUCoreCaches *cache,
-> > +                              uint32_t next_offset)
-> > +{
-> > +    int val;
-> > +
-> > +    /* Type 1 - cache */
-> > +    build_append_byte(tbl, 1);  
-> 
-> Standard format in acpi code is:
->     build_append_byte(tbl, 1); /* Type 1 - cache */
-> 
-> same below
-> 
-> > +    /* Length */
-> > +    build_append_byte(tbl, 24);  
-> 
-> would be nice to validate. you can compare tbl->len before and after.
-> 
-> 
-> > +    /* Reserved */
-> > +    build_append_int_noprefix(tbl, 0, 2);
-> > +    /* Flags */
-> > +    build_append_int_noprefix(tbl, 0x7f, 4);  
-> 
-> document which flags are set.
-> 
-> 
-> > +    /* Offset of next cache up */
-> > +    build_append_int_noprefix(tbl, next_offset, 4);
-> > +    build_append_int_noprefix(tbl, cache->size, 4);
-> > +    build_append_int_noprefix(tbl, cache->sets, 4);
-> > +    build_append_byte(tbl, cache->associativity);
-> > +    val = 0x3;  
-> 
-> document what this is
-> 
-> > +    switch (cache->type) {
-> > +    case INSTRUCTION_CACHE:
-> > +        val |= (1 << 2);  
-> 
-> document what this is.
-> 
-> > +        break;
-> > +    case DATA_CACHE:
-> > +        val |= (0 << 2); /* Data */
-> > +        break;
-> > +    case UNIFIED_CACHE:
-> > +        val |= (3 << 2); /* Unified */
-> > +        break;
-> > +    }
-> > +    build_append_byte(tbl, val);
-> > +    build_append_int_noprefix(tbl, cache->linesize, 2);
-> > +}
-> > +
-> > +/*
-> > + * builds caches from the top level (`level_high` parameter) to the bottom
-> > + * level (`level_low` parameter).  It searches for caches found in
-> > + * systems' registers, and fills up the table. Then it updates the
-> > + * `data_offset` and `instr_offset` parameters with the offset of the data
-> > + * and instruction caches of the lowest level, respectively.
-> > + */
-> > +static bool build_caches(GArray *table_data, uint32_t pptt_start,
-> > +                         int num_caches, CPUCoreCaches *caches,
-> > +                         uint8_t level_high, /* Inclusive */
-> > +                         uint8_t level_low,  /* Inclusive */
-> > +                         uint32_t *data_offset,
-> > +                         uint32_t *instr_offset)
-> > +{
-> > +    uint32_t next_level_offset_data = 0, next_level_offset_instruction = 0;
-> > +    uint32_t this_offset, next_offset = 0;
-> > +    int c, level;
-> > +    bool found_cache = false;
-> > +
-> > +    /* Walk caches from top to bottom */
-> > +    for (level = level_high; level >= level_low; level--) {
-> > +        for (c = 0; c < num_caches; c++) {
-> > +            if (caches[c].level != level) {
-> > +                continue;
-> > +            }
-> > +
-> > +            /* Assume only unified above l1 for now */
-> > +            this_offset = table_data->len - pptt_start;
-> > +            switch (caches[c].type) {
-> > +            case INSTRUCTION_CACHE:
-> > +                next_offset = next_level_offset_instruction;
-> > +                break;
-> > +            case DATA_CACHE:
-> > +                next_offset = next_level_offset_data;
-> > +                break;
-> > +            case UNIFIED_CACHE:
-> > +                /* Either is fine here */
-> > +                next_offset = next_level_offset_instruction;
-> > +                break;
-> > +            }
-> > +            build_cache_nodes(table_data, &caches[c], next_offset);
-> > +            switch (caches[c].type) {
-> > +            case INSTRUCTION_CACHE:
-> > +                next_level_offset_instruction = this_offset;
-> > +                break;
-> > +            case DATA_CACHE:
-> > +                next_level_offset_data = this_offset;
-> > +                break;
-> > +            case UNIFIED_CACHE:
-> > +                next_level_offset_instruction = this_offset;
-> > +                next_level_offset_data = this_offset;
-> > +                break;
-> > +            }
-> > +            *data_offset = next_level_offset_data;
-> > +            *instr_offset = next_level_offset_instruction;
-> > +
-> > +            found_cache = true;
-> > +        }
-> > +    }
-> > +
-> > +    return found_cache;
-> > +}
-> > +
-> >  /*
-> >   * ACPI spec, Revision 6.3
-> >   * 5.2.29 Processor Properties Topology Table (PPTT)
-> > @@ -2150,11 +2249,32 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-> >  {
-> >      MachineClass *mc = MACHINE_GET_CLASS(ms);
-> >      CPUArchIdList *cpus = ms->possible_cpus;
-> > -    int64_t socket_id = -1, cluster_id = -1, core_id = -1;
-> > -    uint32_t socket_offset = 0, cluster_offset = 0, core_offset = 0;
-> > +    uint32_t core_data_offset = 0;
-> > +    uint32_t core_instr_offset = 0;
-> > +    uint32_t cluster_instr_offset = 0;
-> > +    uint32_t cluster_data_offset = 0;
-> > +    uint32_t node_data_offset = 0;
-> > +    uint32_t node_instr_offset = 0;
-> > +    int top_node = 3;
-> > +    int top_cluster = 3;
-> > +    int top_core = 3;
-> > +    int bottom_node = 3;
-> > +    int bottom_cluster = 3;
-> > +    int bottom_core = 3;
-> > +    int64_t socket_id = -1;
-> > +    int64_t cluster_id = -1;
-> > +    int64_t core_id = -1;
-> > +    uint32_t socket_offset = 0;
-> > +    uint32_t cluster_offset = 0;
-> > +    uint32_t core_offset = 0;
-> >      uint32_t pptt_start = table_data->len;
-> >      uint32_t root_offset;
-> >      int n;
-> > +    uint32_t priv_rsrc[2];
-> > +    uint32_t num_priv = 0;
-> > +    bool cache_available;
-> > +    bool llevel;
-> > +
-> >      AcpiTable table = { .sig = "PPTT", .rev = 2,
-> >                          .oem_id = oem_id, .oem_table_id = oem_table_id };
-> >  
-> > @@ -2184,11 +2304,30 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-> >              socket_id = cpus->cpus[n].props.socket_id;
-> >              cluster_id = -1;
-> >              core_id = -1;
-> > +            bottom_node = top_node;
-> > +            num_priv = 0;
-> > +            cache_available = machine_defines_cache_at_topo_level(
-> > +                ms, CPU_TOPOLOGY_LEVEL_SOCKET);
-> > +            llevel = machine_find_lowest_level_cache_at_topo_level(
-> > +                ms, &bottom_node, CPU_TOPOLOGY_LEVEL_SOCKET);
-> > +            if (cache_available && llevel) {
-> > +                build_caches(table_data, pptt_start, num_caches, caches,
-> > +                             top_node, bottom_node, &node_data_offset,
-> > +                             &node_instr_offset);
-> > +                priv_rsrc[0] = node_instr_offset;
-> > +                priv_rsrc[1] = node_data_offset;
-> > +                if (node_instr_offset || node_data_offset) {
-> > +                    num_priv = node_instr_offset == node_data_offset ? 1 : 2;
-> > +                }
-> > +
-> > +                top_cluster = bottom_node - 1;
-> > +            }
-> > +
-> >              socket_offset = table_data->len - pptt_start;
-> >              build_processor_hierarchy_node(table_data,
-> >                  (1 << 0) | /* Physical package */
-> >                  (1 << 4), /* Identical Implementation */
-> > -                root_offset, socket_id, NULL, 0);
-> > +                root_offset, socket_id, priv_rsrc, num_priv);
-> >          }
-> >  
-> >          if (mc->smp_props.clusters_supported && mc->smp_props.has_clusters) {
-> > @@ -2196,21 +2335,68 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-> >                  assert(cpus->cpus[n].props.cluster_id > cluster_id);
-> >                  cluster_id = cpus->cpus[n].props.cluster_id;
-> >                  core_id = -1;
-> > +                bottom_cluster = top_cluster;
-> > +                num_priv = 0;
-> > +                cache_available = machine_defines_cache_at_topo_level(
-> > +                    ms, CPU_TOPOLOGY_LEVEL_CLUSTER);
-> > +                llevel = machine_find_lowest_level_cache_at_topo_level(
-> > +                    ms, &bottom_cluster, CPU_TOPOLOGY_LEVEL_CLUSTER);
-> > +
-> > +                if (cache_available && llevel) {
-> > +                    build_caches(table_data, pptt_start, num_caches, caches,
-> > +                                 top_cluster, bottom_cluster,
-> > +                                 &cluster_data_offset, &cluster_instr_offset);
-> > +                    priv_rsrc[0] = cluster_instr_offset;
-> > +                    priv_rsrc[1] = cluster_data_offset;
-> > +                    if (cluster_instr_offset || cluster_data_offset) {
-> > +                        num_priv =
-> > +                            cluster_instr_offset == cluster_data_offset ? 1 : 2;
-> > +                    }
-> > +                    top_core = bottom_cluster - 1;
-> > +                } else if (top_cluster == bottom_node - 1) {
-> > +                    /* socket cache but no cluster cache */
-> > +                    top_core = bottom_node - 1;
-> > +                }
-> > +
-> >                  cluster_offset = table_data->len - pptt_start;
-> >                  build_processor_hierarchy_node(table_data,
-> >                      (0 << 0) | /* Not a physical package */
-> >                      (1 << 4), /* Identical Implementation */
-> > -                    socket_offset, cluster_id, NULL, 0);
-> > +                    socket_offset, cluster_id, priv_rsrc, num_priv);
-> >              }
-> >          } else {
-> > +            if (machine_defines_cache_at_topo_level(
-> > +                    ms, CPU_TOPOLOGY_LEVEL_CLUSTER)) {
-> > +                error_setg(&error_fatal, "Not clusters found for the cache");
-> > +                return;
-> > +            }
-> > +
-> >              cluster_offset = socket_offset;
-> > +            top_core = bottom_node - 1; /* there is no cluster */
-> > +        }
-> > +
-> > +        if (cpus->cpus[n].props.core_id != core_id) {
-> > +            bottom_core = top_core;
-> > +            num_priv = 0;
-> > +            cache_available = machine_defines_cache_at_topo_level(
-> > +                ms, CPU_TOPOLOGY_LEVEL_CORE);
-> > +            llevel = machine_find_lowest_level_cache_at_topo_level(
-> > +                ms, &bottom_core, CPU_TOPOLOGY_LEVEL_CORE);
-> > +            if (cache_available && llevel) {
-> > +                build_caches(table_data, pptt_start, num_caches, caches,
-> > +                             top_core, bottom_core, &core_data_offset,
-> > +                             &core_instr_offset);
-> > +                priv_rsrc[0] = core_instr_offset;
-> > +                priv_rsrc[1] = core_data_offset;
-> > +                num_priv = core_instr_offset == core_data_offset ? 1 : 2;
-> > +            }
-> >          }
-> >  
-> >          if (ms->smp.threads == 1) {
-> >              build_processor_hierarchy_node(table_data,
-> >                  (1 << 1) | /* ACPI Processor ID valid */
-> > -                (1 << 3),  /* Node is a Leaf */
-> > -                cluster_offset, n, NULL, 0);
-> > +                (1 << 3), /* Node is a Leaf */
-> > +                cluster_offset, n, priv_rsrc, num_priv);
-> >          } else {
-> >              if (cpus->cpus[n].props.core_id != core_id) {
-> >                  assert(cpus->cpus[n].props.core_id > core_id);
-> > @@ -2219,7 +2405,7 @@ void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms,
-> >                  build_processor_hierarchy_node(table_data,
-> >                      (0 << 0) | /* Not a physical package */
-> >                      (1 << 4), /* Identical Implementation */
-> > -                    cluster_offset, core_id, NULL, 0);
-> > +                    cluster_offset, core_id, priv_rsrc, num_priv);
-> >              }
-> >  
-> >              build_processor_hierarchy_node(table_data,
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index 8e7bc029f3..f4cbb71c90 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -1144,6 +1144,10 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-> >      unsigned dsdt, xsdt;
-> >      GArray *tables_blob = tables->table_data;
-> >      MachineState *ms = MACHINE(vms);
-> > +    CPUCoreCaches caches[CPU_MAX_CACHES];
-> > +    unsigned int num_caches;
-> > +
-> > +    num_caches = virt_get_caches(vms, caches);
-> >  
-> >      table_offsets = g_array_new(false, true /* clear */,
-> >                                          sizeof(uint32_t));
-> > @@ -1165,8 +1169,8 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-> >  
-> >      if (!vmc->no_cpu_topology) {
-> >          acpi_add_table(table_offsets, tables_blob);
-> > -        build_pptt(tables_blob, tables->linker, ms,
-> > -                   vms->oem_id, vms->oem_table_id, 0, NULL);
-> > +        build_pptt(tables_blob, tables->linker, ms, vms->oem_id,
-> > +                   vms->oem_table_id, num_caches, caches);
-> >      }
-> >  
-> >      acpi_add_table(table_offsets, tables_blob);
-> > diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h
-> > index 557219d2c6..87950eb787 100644
-> > --- a/include/hw/acpi/cpu.h
-> > +++ b/include/hw/acpi/cpu.h
-> > @@ -70,6 +70,16 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
-> >  
-> >  void acpi_cpu_ospm_status(CPUHotplugState *cpu_st, ACPIOSTInfoList ***list);
-> >  
-> > +struct CPUPPTTCaches {
-> > +    enum CacheType type;
-> > +    uint32_t sets;
-> > +    uint32_t size;
-> > +    uint32_t level;
-> > +    uint16_t linesize;
-> > +    uint8_t attributes; /* write policy: 0x0 write back, 0x1 write through */
-> > +    uint8_t associativity;
-> > +};
-> > +
-> >  extern const VMStateDescription vmstate_cpu_hotplug;
-> >  #define VMSTATE_CPU_HOTPLUG(cpuhp, state) \
-> >      VMSTATE_STRUCT(cpuhp, state, 1, \
-> > -- 
-> > 2.43.0  
-> 
-> 
+The following command will represent the system relying on **ACPI PPTT tables**.
+
+./qemu-system-aarch64 \
+ -machine virt,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluster,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=force" \
+ -initrd rootfs.cpio.gz \
+ -bios ./edk2-aarch64-code.fd \
+ -nographic
+
+The following command will represent the system relying on **the device tree**.
+
+./qemu-system-aarch64 \
+ -machine virt,acpi=off,smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=cluster,smp-cache.3.cache=l3,smp-cache.3.topology=socket \
+ -cpu max \
+ -m 2048 \
+ -smp sockets=2,clusters=1,cores=2,threads=2 \
+ -kernel ./Image.gz \
+ -append "console=ttyAMA0 root=/dev/ram rdinit=/init acpi=off" \
+ -initrd rootfs.cpio.gz \
+ -nographic
+
+Failure cases:
+	1) There are scenarios where caches exist in systems' registers but left
+unspecified by users. In this case qemu returns failure.
+
+	2) SMT threads cannot share caches which is not very common. More
+discussions here [1].
+
+Currently only three levels of caches are supported to be specified from the
+command line. However, increasing the value does not require significant
+changes. Further, this patch assumes l2 and l3 unified caches and does not
+allow l(2/3)(i/d). The level terminology is thread/core/cluster/socket.
+Hierarchy assumed in this patch: Socket level = Cluster level + 1 = Core level
++ 2 = Thread level + 3;
+
+Possible future enhancements:
+  1) Separated data and instruction cache at L2 and L3.
+  2) Additional cache controls.  e.g. size of L3 may not want to just match the
+underlying system, because only some of the associated host CPUs may be bound
+to this VM.
+
+[1] https://lore.kernel.org/devicetree-spec/20250203120527.3534-1-alireza.sanaee@huawei.com/
+
+Change Log:
+  v17->v18:
+    * Rebased to 07f97d5da04a9f97e273de85c76f5017d8135a6e.
+    * Addressed Mst's comments regarding documenting build_cache_node function. Thanks for the review.
+    * v17: https://lore.kernel.org/all/20260106155828.643-1-alireza.sanaee@huawei.com/
+  v16->v17:
+    * Rebased to 0fc482b73d8e085d1375b4e17b0647fd2e6fe8f0.
+    * Addressed Gustavo's comments. Thanks for the review.
+    * v16: https://lore.kernel.org/all/20250827142152.206-1-alireza.sanaee@huawei.com/
+
+  v15->v16:
+    * Rebase to e771ba98de25c9f43959f79fc7099cf7fbba44cce.
+    * v15: https://lore.kernel.org/qemu-devel/20250812122829.204-1-alireza.sanaee@huawei.com/
+
+  v14->v15:
+   * Introduced a separate patch for loongarch64 build_pptt function.
+   * Made sure loongarch64 tests pass.
+   * Downgraded to V2 for ACPI PPTT. Removed PPTT IDs as was not necessary.
+   * Removed dependency as it's been merged in the recent cycle.
+     -- 20250604115233.1234-1-alireza.sanaee@huawei.com
+   * Fixed styling issues and removed irrelevant changes.
+   * Moved cache headers to core/cpu.h to be used in both acpi and virt.
+   * v14: https://lore.kernel.org/qemu-devel/20250707121908.155-1-alireza.sanaee@huawei.com/
+   # Thanks to Jonathan and Zhao for their comments.
+
+  v13->v14:
+   * Rebased on latest staging.
+   * Made some naming changes to machine-smp.c, addd docs added to the
+        same file.
+
+  v12->v13:
+   * Applied comments from Zhao.
+   * Introduced a new patch for machine specific cache topology functions.
+   * Base: bc98ffdc7577e55ab8373c579c28fe24d600c40f.
+
+  v11->v12:
+   * Patch #4 couldn't not merge properly as the main file diverged. Now it is fixed (hopefully).
+   * Loonarch build_pptt function updated.
+   * Rebased on 09be8a511a2e278b45729d7b065d30c68dd699d0.
+
+  v10->v11:
+   * Fix some coding style issues.
+   * Rename some variables.
+
+  v9->v10:
+   * PPTT rev down to 2.
+
+  v8->v9:
+   * rebase to 10
+   * Fixed a bug in device-tree generation related to a scenario when
+        caches are shared at core in higher levels than 1.
+  v7->v8:
+   * rebase: Merge tag 'pull-nbd-2024-08-26' of https://repo.or.cz/qemu/ericb into staging
+   * I mis-included a file in patch #4 and I removed it in this one.
+
+  v6->v7:
+   * Intel stuff got pulled up, so rebase.
+   * added some discussions on device tree.
+
+  v5->v6:
+   * Minor bug fix.
+   * rebase based on new Intel patchset.
+     - https://lore.kernel.org/qemu-devel/20250110145115.1574345-1-zhao1.liu@intel.com/
+
+  v4->v5:
+    * Added Reviewed-by tags.
+    * Applied some comments.
+
+  v3->v4:
+    * Device tree added.
+
+Alireza Sanaee (8):
+  target/arm/tcg: increase cache level for cpu=max
+  hw/core/machine: topology functions capabilities added
+  hw/arm/virt: add cache hierarchy to device tree
+  bios-tables-test: prepare to change ARM ACPI virt PPTT
+  acpi: Add parameters to pass cache descriptions to ACPI build_pptt()
+  hw/acpi: add cache hierarchy to pptt table
+  tests/qtest/bios-table-test: testing new ARM ACPI PPTT topology
+  Update the ACPI tables based on new aml-build.c
+
+ hw/acpi/aml-build.c                        | 201 +++++++++++-
+ hw/arm/virt-acpi-build.c                   |   8 +-
+ hw/arm/virt.c                              | 364 ++++++++++++++++++++-
+ hw/core/machine-smp.c                      |  52 +++
+ hw/loongarch/virt-acpi-build.c             |   4 +-
+ include/hw/acpi/aml-build.h                |   4 +-
+ include/hw/acpi/cpu.h                      |  10 +
+ include/hw/arm/virt.h                      |  17 +-
+ include/hw/core/boards.h                   |   5 +
+ include/hw/core/cpu.h                      |  12 +
+ target/arm/tcg/cpu64.c                     |  10 +
+ tests/data/acpi/aarch64/virt/PPTT.topology | Bin 356 -> 516 bytes
+ tests/qtest/bios-tables-test.c             |   4 +
+ 13 files changed, 676 insertions(+), 15 deletions(-)
+
+-- 
+2.43.0
 
 

@@ -4,108 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1519DC56201
-	for <qemu-arm@archiver.kernel.org>; Fri, 20 Feb 2026 15:00:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 157A5C56201
+	for <qemu-arm@archiver.kernel.org>; Fri, 20 Feb 2026 15:08:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vtRzA-0006gp-96; Fri, 20 Feb 2026 10:00:04 -0500
+	id 1vtS6a-0004gy-Hb; Fri, 20 Feb 2026 10:07:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vtRz9-0006gY-FT
- for qemu-arm@nongnu.org; Fri, 20 Feb 2026 10:00:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <prvs=50468f4b5=graf@amazon.de>)
+ id 1vtS6J-0004Ye-VM; Fri, 20 Feb 2026 10:07:29 -0500
+Received: from pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com
+ ([52.34.181.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vtRz4-00016x-F5
- for qemu-arm@nongnu.org; Fri, 20 Feb 2026 10:00:02 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771599596;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WaceR6dm230qbEqVcg1fKMJzATvx1ZMDXaNGSn7OPKk=;
- b=X6/kymWsjMfTzMLvE3BxJeEKX9+TWGAC+AbHtYEE9qLYgQCXQYo/ZpjVZEQxTCydyyJiRv
- GgGp3itUuLLeBN4OluQTIhVZvorKs0wa2RX461mU2CUuA15dK1HP/Xy1YSV2ToUkq7QpIW
- 5iMP5Jhlj/qkGW4+jafDEdzNMaZIp58=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-351-bNjKryIvNIGQRNS83dYTig-1; Fri, 20 Feb 2026 09:59:54 -0500
-X-MC-Unique: bNjKryIvNIGQRNS83dYTig-1
-X-Mimecast-MFC-AGG-ID: bNjKryIvNIGQRNS83dYTig_1771599593
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-4836e35292cso20414465e9.1
- for <qemu-arm@nongnu.org>; Fri, 20 Feb 2026 06:59:54 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771599593; x=1772204393;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=WaceR6dm230qbEqVcg1fKMJzATvx1ZMDXaNGSn7OPKk=;
- b=ROKot9YVoW948+aLFglduVy9Id2rbT+75c0tsXxKUvmZwAGw3YE4VoJlLeErZdN5SI
- Ev5yKw12Tx14IGKLkiDftgaCCeudbtVU2+Yh5bPh+HPHQ+JW+tSUgXjNynzRVF/Lny5Y
- dTS04+oWToGDT8BG6PUZTtxoCI+jkIXxrHxbzuGm4cL99ROZrJBdWQ+L5tHOU6iR4+RE
- k31geJcOCzUC4TtM84Cw2pHJVou3x4j4ErsWywnJJKkI2SGIXa85HU0SsROQNCA/dYAK
- JNQLGNJtvoAV/s/IIHhO4DeFURGteSwNyxYzIC7CqKtmp1yhLDzXuK6iXxWIQByDnCpp
- djtQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVCuIcyOdZB1jVOldP7GbQTAVxJquQefpGRhjbWFHEoCfV2H68Or1X7lfd0u+8xIwYN6/etTjaQrA==@nongnu.org
-X-Gm-Message-State: AOJu0Yxg0nt37uwz7JdQVt6tGHwYkwDIuleWuOhNYC0zx4PBdrqsQxGv
- zPDS4F2ubxuWF81+10x2yALvX30bDbkYAomQhen8Ybwdsvf5K4QUYnmJCBirgkWfwCUcPepRrdd
- 7C0/nG9TfM4b9Vt8YCdmL4DxlwvEOuWRUJDZrWoqe3ulCtXelXInFWg==
-X-Gm-Gg: AZuq6aLlMN91I9OZeHGqL/eeqVrXlv9iXi0B/SPR9AcuWJbCautTZkQgs9RdfLx/XH+
- jFOtLewGfnWhHLLCAYzBu5M7EIMRy0HVWsHp0h1l6haQ/lo6602dzIWd0161EK8WdD/WaIIdUlT
- NXh0xe2dEZorzU22hnrclaqNZee7UfzORfnrXBia4Kmjj/vWLM472QLMUGY+WRC4/ULvBs0wuSu
- h5wpEDGbsCh8AJd0S3JO8GVs6QgGGEajiVL46R3bshNpIu87ijj9GvWqdxoBg60D+yjs45QXYlK
- Tn0BQr4nS0GnRoRWZo7cCYCSXV5anqoOk4QIGVdxDuy7ZYYmTUMD+QA2Gh56PWSV/kW0aHNg0R8
- IV3/RFqeWnOdPXoNeU6QuxQ9huAwEYP5vkqPTNSspVAIxkA==
-X-Received: by 2002:a05:600c:a407:b0:477:7bca:8b2b with SMTP id
- 5b1f17b1804b1-483a5e18c61mr32742055e9.15.1771599593272; 
- Fri, 20 Feb 2026 06:59:53 -0800 (PST)
-X-Received: by 2002:a05:600c:a407:b0:477:7bca:8b2b with SMTP id
- 5b1f17b1804b1-483a5e18c61mr32741635e9.15.1771599592730; 
- Fri, 20 Feb 2026 06:59:52 -0800 (PST)
-Received: from redhat.com (IGLD-80-230-79-166.inter.net.il. [80.230.79.166])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483a31ff4d7sm78554685e9.15.2026.02.20.06.59.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Feb 2026 06:59:52 -0800 (PST)
-Date: Fri, 20 Feb 2026 09:59:48 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Alexander Graf <graf@amazon.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>, alex.bennee@linaro.org,
- philmd@linaro.org, berrange@redhat.com, marcandre.lureau@redhat.com,
- Cornelia Huck <cohuck@redhat.com>,
- Dorjoy Chowdhury <dorjoychy111@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Tyler Fanelli <tfanelli@redhat.com>, mknaust@amazon.com,
- nh-open-source@amazon.com
+ (Exim 4.90_1) (envelope-from <prvs=50468f4b5=graf@amazon.de>)
+ id 1vtS6G-0004P9-Rm; Fri, 20 Feb 2026 10:07:27 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.com; i=@amazon.com; q=dns/txt; s=amazoncorp2;
+ t=1771600044; x=1803136044;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=cjl2MgjXEErjFfKv+r56ubT5PuROvPF3mMZdX8Y44LU=;
+ b=Aw+9ikLOHTJEsZ3BwvahgyHa+GULqZQzqjkjnuj8tmyHiBzc11VE0/0s
+ SNijct+8lVAiJCcEopVqw7Jv76R/7/0mxVB3QRh+0Db5HvmckyMjEMaNT
+ dfQVIkYr/Qyoo0Dop6lCQYgMVraItFxetGwhKH2x0Og81lfpyUlFy5tuk
+ loXhtl4us/5wTl4/S9YDBKfYm1ZS1qjGShOwvlmuCjYhfZQJ9XQOKChq+
+ QV9jHiW7PvgvoaT0Fmb7ItdiWSicgsflip3uzt5pM3RQYU1fip0BWTEH1
+ MUi/Y+BaQER/f4PhGmuaGsut0n2csrYO7jKIcsLrkqBkuRd+ba/ywbtza g==;
+X-CSE-ConnectionGUID: aWwdUtHtTdG+2s7c2QjcaQ==
+X-CSE-MsgGUID: pzkamuDaTDaim8y4Ae+zRg==
+X-IronPort-AV: E=Sophos;i="6.21,302,1763424000"; d="scan'208";a="13432558"
+Received: from ip-10-5-6-203.us-west-2.compute.internal (HELO
+ smtpout.naws.us-west-2.prod.farcaster.email.amazon.dev) ([10.5.6.203])
+ by internal-pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Feb 2026 15:07:17 +0000
+Received: from EX19MTAUWA002.ant.amazon.com [205.251.233.178:7790]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.45.60:2525]
+ with esmtp (Farcaster)
+ id 0dd3a033-595e-4278-b0b3-f6492765a07b; Fri, 20 Feb 2026 15:07:17 +0000 (UTC)
+X-Farcaster-Flow-ID: 0dd3a033-595e-4278-b0b3-f6492765a07b
+Received: from EX19D020UWC004.ant.amazon.com (10.13.138.149) by
+ EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.35;
+ Fri, 20 Feb 2026 15:07:16 +0000
+Received: from [0.0.0.0] (172.19.99.218) by EX19D020UWC004.ant.amazon.com
+ (10.13.138.149) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.37; Fri, 20 Feb 2026
+ 15:07:12 +0000
+Message-ID: <85e58c20-dfc5-4bc2-911e-ecdac3b922c4@amazon.com>
+Date: Fri, 20 Feb 2026 16:07:10 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 07/10] hw/nitro: Add nitro machine
-Message-ID: <20260220095806-mutt-send-email-mst@kernel.org>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ <alex.bennee@linaro.org>, <philmd@linaro.org>, <berrange@redhat.com>,
+ <marcandre.lureau@redhat.com>, Cornelia Huck <cohuck@redhat.com>, "Dorjoy
+ Chowdhury" <dorjoychy111@gmail.com>, Pierrick Bouvier
+ <pierrick.bouvier@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>, "Tyler
+ Fanelli" <tfanelli@redhat.com>, <mknaust@amazon.com>,
+ <nh-open-source@amazon.com>
 References: <20260218015151.4052-1-graf@amazon.com>
  <20260218015151.4052-8-graf@amazon.com>
-MIME-Version: 1.0
-In-Reply-To: <20260218015151.4052-8-graf@amazon.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: tayy0sFyh--6dR9GWAVuj9g3QRFWJp3QNSGafzZ50-4_1771599593
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <20260220095806-mutt-send-email-mst@kernel.org>
+Content-Language: en-US
+From: Alexander Graf <graf@amazon.com>
+In-Reply-To: <20260220095806-mutt-send-email-mst@kernel.org>
+X-Originating-IP: [172.19.99.218]
+X-ClientProxiedBy: EX19D033UWC002.ant.amazon.com (10.13.139.196) To
+ EX19D020UWC004.ant.amazon.com (10.13.138.149)
+Content-Type: text/plain; charset="utf-8"; format="flowed"
+Content-Transfer-Encoding: base64
+Received-SPF: pass client-ip=52.34.181.151;
+ envelope-from=prvs=50468f4b5=graf@amazon.de;
+ helo=pdx-out-007.esa.us-west-2.outbound.mail-perimeter.amazon.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.049,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01,
+ UNPARSEABLE_RELAY=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,287 +103,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Feb 18, 2026 at 01:51:47AM +0000, Alexander Graf wrote:
-> Add a machine model to spawn a Nitro Enclave. Unlike the existing -M
-> nitro-enclave, this machine model works exclusively with the -accel
-> nitro accelerator to drive real Nitro Enclave creation. It supports
-> memory allocation, number of CPU selection, both x86_64 as well as
-> aarch64, implements the Enclave heartbeat logic and debug serial
-> console.
-> 
-> To use it, create an EIF file and run
-> 
->   $ qemu-system-x86_64 -accel nitro,debug-mode=on -M nitro -nographic \
->                        -kernel test.eif
-> 
-> or
-> 
->   $ qemu-system-aarch64 -accel nitro,debug-mode=on -M nitro -nographic \
->                        -kernel test.eif
-> 
-> Signed-off-by: Alexander Graf <graf@amazon.com>
-> ---
->  hw/nitro/Kconfig           |   7 ++
->  hw/nitro/machine.c         | 180 +++++++++++++++++++++++++++++++++++++
->  hw/nitro/meson.build       |   1 +
->  include/hw/nitro/machine.h |  20 +++++
->  4 files changed, 208 insertions(+)
->  create mode 100644 hw/nitro/machine.c
->  create mode 100644 include/hw/nitro/machine.h
-> 
-> diff --git a/hw/nitro/Kconfig b/hw/nitro/Kconfig
-> index 6fe050d35d..910068c23c 100644
-> --- a/hw/nitro/Kconfig
-> +++ b/hw/nitro/Kconfig
-> @@ -5,3 +5,10 @@ config NITRO_SERIAL_VSOCK
->  config NITRO_HEARTBEAT
->      bool
->      depends on NITRO
-> +
-> +config NITRO_MACHINE
-> +    bool
-> +    default y
-> +    depends on NITRO
-> +    select NITRO_HEARTBEAT
-> +    select NITRO_SERIAL_VSOCK
-> diff --git a/hw/nitro/machine.c b/hw/nitro/machine.c
-> new file mode 100644
-> index 0000000000..197adfbdb5
-> --- /dev/null
-> +++ b/hw/nitro/machine.c
-> @@ -0,0 +1,180 @@
-> +/*
-> + * Nitro Enclaves (accel) machine
-> + *
-> + * Copyright © 2026 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-> + *
-> + * Authors:
-> + *   Alexander Graf <graf@amazon.com>
-> + *
-> + * Nitro Enclaves machine model for -accel nitro. This machine behaves
-> + * like the nitro-enclave machine, but uses the real Nitro Enclaves
-> + * backend to launch the virtual machine. It requires use of the -accel
-> + * nitro.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/error-report.h"
-> +#include "qapi/error.h"
-> +#include "qom/object_interfaces.h"
-> +#include "chardev/char.h"
-> +#include "hw/core/boards.h"
-> +#include "hw/core/cpu.h"
-> +#include "hw/core/sysbus.h"
-> +#include "hw/core/qdev-properties-system.h"
-> +#include "hw/nitro/heartbeat.h"
-> +#include "hw/nitro/machine.h"
-> +#include "hw/nitro/serial-vsock.h"
-> +#include "system/address-spaces.h"
-> +#include "system/hostmem.h"
-> +#include "system/system.h"
-> +#include "system/nitro-accel.h"
-> +#include "qemu/accel.h"
-> +#include "hw/arm/machines-qom.h"
-> +
-> +#define EIF_LOAD_ADDR   (8 * 1024 * 1024)
-> +
-> +static void nitro_create_cpu(const char *cpu_type, int index)
-> +{
-> +    Object *obj = object_new(cpu_type);
-> +
-> +    /* x86 CPUs require an apic-id before realize */
-> +    if (object_property_find(obj, "apic-id")) {
-> +        object_property_set_int(obj, "apic-id", index, &error_fatal);
-> +    }
-> +
-> +    qdev_realize(DEVICE(obj), NULL, &error_fatal);
-> +}
-> +
-> +static void nitro_machine_init(MachineState *machine)
-> +{
-> +    const char *eif_path = machine->kernel_filename;
-> +    const char *cpu_type = machine->cpu_type;
-> +    g_autofree char *eif_data = NULL;
-> +    gsize eif_size;
-> +    int i;
-> +
-> +    if (!nitro_enabled()) {
-> +        error_report("The 'nitro' machine requires -accel nitro");
-> +        exit(1);
-> +    }
-> +
-> +    if (!cpu_type) {
-> +        ObjectClass *oc = cpu_class_by_name(target_cpu_type(), "host");
-> +
-> +        if (!oc) {
-> +            error_report("nitro: no 'host' CPU available");
-> +            exit(1);
-> +        }
-> +        cpu_type = object_class_get_name(oc);
-> +    }
-> +
-> +    if (!eif_path) {
-> +        error_report("nitro: -kernel <eif-file> is required");
-> +        exit(1);
-> +    }
-> +
-> +    /* Expose memory as normal QEMU RAM. Needs to be huge page backed. */
-> +    memory_region_add_subregion(get_system_memory(), 0, machine->ram);
-> +
-> +    /*
-> +     * Load EIF (-kernel) as raw blob at the EIF_LOAD_ADDR into guest RAM.
-> +     * The Nitro Hypervisor will extract its contents and bootstrap the
-> +     * Enclave from it.
-> +     */
-> +    if (!g_file_get_contents(eif_path, &eif_data, &eif_size, NULL)) {
-> +        error_report("nitro: failed to read EIF '%s'", eif_path);
-> +        exit(1);
-> +    }
-> +    address_space_write(&address_space_memory, EIF_LOAD_ADDR,
-> +                        MEMTXATTRS_UNSPECIFIED, eif_data, eif_size);
-> +
-> +    /* Nitro Enclaves require a heartbeat device. Provide one. */
-> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(qdev_new(TYPE_NITRO_HEARTBEAT)),
-> +                             &error_fatal);
-> +
-> +    /*
-> +     * In debug mode, Nitro Enclaves expose the guest's serial output via
-> +     * vsock. When the accel is in debug mode, wire the vsock serial to
-> +     * the machine's serial port so that -nographic automatically works
-> +     */
-> +    if (object_property_get_bool(OBJECT(current_accel()), "debug-mode", NULL)) {
-> +        Chardev *chr = serial_hd(0);
-> +
-> +        if (chr) {
-> +            DeviceState *dev = qdev_new(TYPE_NITRO_SERIAL_VSOCK);
-> +
-> +            qdev_prop_set_chr(dev, "chardev", chr);
-> +            sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-> +        }
-> +    }
-
-
-Would  respecting -nodefaults and then maybe not wiring up all the
-vsock things make sense? allows users to set it up any way
-they want ...
-
-> +
-> +    /*
-> +     * Spawn vCPUs. While the real Nitro Enclaves CPUs are owned by the
-> +     * underlying hypervisor, we still want to maintain a local view of
-> +     * them to trigger VM creation when vCPU 0 starts and to give us an
-> +     * object to interact with.
-> +     */
-> +    for (i = 0; i < machine->smp.cpus; i++) {
-> +        nitro_create_cpu(cpu_type, i);
-> +    }
-> +}
-> +
-> +static bool nitro_create_memfd_backend(MachineState *ms, const char *path,
-> +                                       Error **errp)
-> +{
-> +    MachineClass *mc = MACHINE_GET_CLASS(ms);
-> +    Object *root = object_get_objects_root();
-> +    Object *obj;
-> +    bool r = false;
-> +
-> +    obj = object_new(TYPE_MEMORY_BACKEND_MEMFD);
-> +
-> +    /* Nitro Enclaves require huge page backing */
-> +    if (!object_property_set_int(obj, "size", ms->ram_size, errp) ||
-> +        !object_property_set_bool(obj, "hugetlb", true, errp)) {
-> +        goto out;
-> +    }
-> +
-> +    object_property_add_child(root, mc->default_ram_id, obj);
-> +
-> +    if (!user_creatable_complete(USER_CREATABLE(obj), errp)) {
-> +        goto out;
-> +    }
-> +    r = object_property_set_link(OBJECT(ms), "memory-backend", obj, errp);
-> +
-> +out:
-> +    object_unref(obj);
-> +    return r;
-> +}
-> +
-> +static void nitro_machine_class_init(ObjectClass *oc, const void *data)
-> +{
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +
-> +    mc->desc = "Nitro Enclave";
-> +    mc->init = nitro_machine_init;
-> +    mc->create_default_memdev = nitro_create_memfd_backend;
-> +    mc->default_ram_id = "ram";
-> +    mc->max_cpus = 4096;
-> +}
-> +
-> +static const TypeInfo nitro_machine_info = {
-> +    .name = TYPE_NITRO_MACHINE,
-> +    .parent = TYPE_MACHINE,
-> +    .instance_size = sizeof(NitroMachineState),
-> +    .class_init = nitro_machine_class_init,
-> +    .interfaces = (const InterfaceInfo[]) {
-> +        /* x86_64 and aarch64 only */
-> +        { TYPE_TARGET_AARCH64_MACHINE },
-> +        { }
-> +    },
-> +};
-> +
-> +static void nitro_machine_register(void)
-> +{
-> +    type_register_static(&nitro_machine_info);
-> +}
-> +
-> +type_init(nitro_machine_register);
-> diff --git a/hw/nitro/meson.build b/hw/nitro/meson.build
-> index b921da2b97..813f5a9c87 100644
-> --- a/hw/nitro/meson.build
-> +++ b/hw/nitro/meson.build
-> @@ -1,2 +1,3 @@
->  system_ss.add(when: 'CONFIG_NITRO_SERIAL_VSOCK', if_true: files('serial-vsock.c'))
->  system_ss.add(when: 'CONFIG_NITRO_HEARTBEAT', if_true: files('heartbeat.c'))
-> +system_ss.add(when: 'CONFIG_NITRO_MACHINE', if_true: files('machine.c'))
-> diff --git a/include/hw/nitro/machine.h b/include/hw/nitro/machine.h
-> new file mode 100644
-> index 0000000000..d78ba7d6dc
-> --- /dev/null
-> +++ b/include/hw/nitro/machine.h
-> @@ -0,0 +1,20 @@
-> +/*
-> + * Nitro Enclaves (accel) machine
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#ifndef HW_NITRO_MACHINE_H
-> +#define HW_NITRO_MACHINE_H
-> +
-> +#include "hw/core/boards.h"
-> +#include "qom/object.h"
-> +
-> +#define TYPE_NITRO_MACHINE MACHINE_TYPE_NAME("nitro")
-> +OBJECT_DECLARE_SIMPLE_TYPE(NitroMachineState, NITRO_MACHINE)
-> +
-> +struct NitroMachineState {
-> +    MachineState parent;
-> +};
-> +
-> +#endif /* HW_NITRO_MACHINE_H */
-> -- 
-> 2.47.1
-> 
-> 
-> 
-> 
-> Amazon Web Services Development Center Germany GmbH
-> Tamara-Danz-Str. 13
-> 10243 Berlin
-> Geschaeftsfuehrung: Christof Hellmis, Andreas Stieger
-> Eingetragen am Amtsgericht Charlottenburg unter HRB 257764 B
-> Sitz: Berlin
-> Ust-ID: DE 365 538 597
+SGV5IE1pY2hhZWwsCgpPbiAyMC4wMi4yNiAxNTo1OSwgTWljaGFlbCBTLiBUc2lya2luIHdyb3Rl
+Ogo+IE9uIFdlZCwgRmViIDE4LCAyMDI2IGF0IDAxOjUxOjQ3QU0gKzAwMDAsIEFsZXhhbmRlciBH
+cmFmIHdyb3RlOgo+PiBBZGQgYSBtYWNoaW5lIG1vZGVsIHRvIHNwYXduIGEgTml0cm8gRW5jbGF2
+ZS4gVW5saWtlIHRoZSBleGlzdGluZyAtTQo+PiBuaXRyby1lbmNsYXZlLCB0aGlzIG1hY2hpbmUg
+bW9kZWwgd29ya3MgZXhjbHVzaXZlbHkgd2l0aCB0aGUgLWFjY2VsCj4+IG5pdHJvIGFjY2VsZXJh
+dG9yIHRvIGRyaXZlIHJlYWwgTml0cm8gRW5jbGF2ZSBjcmVhdGlvbi4gSXQgc3VwcG9ydHMKPj4g
+bWVtb3J5IGFsbG9jYXRpb24sIG51bWJlciBvZiBDUFUgc2VsZWN0aW9uLCBib3RoIHg4Nl82NCBh
+cyB3ZWxsIGFzCj4+IGFhcmNoNjQsIGltcGxlbWVudHMgdGhlIEVuY2xhdmUgaGVhcnRiZWF0IGxv
+Z2ljIGFuZCBkZWJ1ZyBzZXJpYWwKPj4gY29uc29sZS4KPj4KPj4gVG8gdXNlIGl0LCBjcmVhdGUg
+YW4gRUlGIGZpbGUgYW5kIHJ1bgo+Pgo+PiAgICAkIHFlbXUtc3lzdGVtLXg4Nl82NCAtYWNjZWwg
+bml0cm8sZGVidWctbW9kZT1vbiAtTSBuaXRybyAtbm9ncmFwaGljIFwKPj4gICAgICAgICAgICAg
+ICAgICAgICAgICAgLWtlcm5lbCB0ZXN0LmVpZgo+Pgo+PiBvcgo+Pgo+PiAgICAkIHFlbXUtc3lz
+dGVtLWFhcmNoNjQgLWFjY2VsIG5pdHJvLGRlYnVnLW1vZGU9b24gLU0gbml0cm8gLW5vZ3JhcGhp
+YyBcCj4+ICAgICAgICAgICAgICAgICAgICAgICAgIC1rZXJuZWwgdGVzdC5laWYKPj4KPj4gU2ln
+bmVkLW9mZi1ieTogQWxleGFuZGVyIEdyYWYgPGdyYWZAYW1hem9uLmNvbT4KCgpbLi4uXQoKCj4+
+ICsKPj4gKyAgICAvKgo+PiArICAgICAqIEluIGRlYnVnIG1vZGUsIE5pdHJvIEVuY2xhdmVzIGV4
+cG9zZSB0aGUgZ3Vlc3QncyBzZXJpYWwgb3V0cHV0IHZpYQo+PiArICAgICAqIHZzb2NrLiBXaGVu
+IHRoZSBhY2NlbCBpcyBpbiBkZWJ1ZyBtb2RlLCB3aXJlIHRoZSB2c29jayBzZXJpYWwgdG8KPj4g
+KyAgICAgKiB0aGUgbWFjaGluZSdzIHNlcmlhbCBwb3J0IHNvIHRoYXQgLW5vZ3JhcGhpYyBhdXRv
+bWF0aWNhbGx5IHdvcmtzCj4+ICsgICAgICovCj4+ICsgICAgaWYgKG9iamVjdF9wcm9wZXJ0eV9n
+ZXRfYm9vbChPQkpFQ1QoY3VycmVudF9hY2NlbCgpKSwgImRlYnVnLW1vZGUiLCBOVUxMKSkgewo+
+PiArICAgICAgICBDaGFyZGV2ICpjaHIgPSBzZXJpYWxfaGQoMCk7Cj4+ICsKPj4gKyAgICAgICAg
+aWYgKGNocikgewo+PiArICAgICAgICAgICAgRGV2aWNlU3RhdGUgKmRldiA9IHFkZXZfbmV3KFRZ
+UEVfTklUUk9fU0VSSUFMX1ZTT0NLKTsKPj4gKwo+PiArICAgICAgICAgICAgcWRldl9wcm9wX3Nl
+dF9jaHIoZGV2LCAiY2hhcmRldiIsIGNocik7Cj4+ICsgICAgICAgICAgICBzeXNidXNfcmVhbGl6
+ZV9hbmRfdW5yZWYoU1lTX0JVU19ERVZJQ0UoZGV2KSwgJmVycm9yX2ZhdGFsKTsKPj4gKyAgICAg
+ICAgfQo+PiArICAgIH0KPgo+IFdvdWxkICByZXNwZWN0aW5nIC1ub2RlZmF1bHRzIGFuZCB0aGVu
+IG1heWJlIG5vdCB3aXJpbmcgdXAgYWxsIHRoZQo+IHZzb2NrIHRoaW5ncyBtYWtlIHNlbnNlPyBh
+bGxvd3MgdXNlcnMgdG8gc2V0IGl0IHVwIGFueSB3YXkKPiB0aGV5IHdhbnQgLi4uCgoKU28geW91
+IHdvdWxkIHNldCB1cCB0aGUgaW5kaXZpZHVhbCBzcGVjaWFsLXB1cnBvc2Ugbml0cm8gZGV2aWNl
+cyB2aWEgCi1kZXZpY2Ugb3IgaGFuZGxlIHRoZSByZXNwZWN0aXZlIHZpcnRpbyBzdHJlYW1zIGV4
+dGVybmFsbHkgaW5zdGVhZD8gVGhhdCAKZGVmaW5pdGVseSBtYWtlcyBhIGxvdCBvZiBzZW5zZSEg
+SGFwcHkgdG8gYWRkIGluIHYyLgoKCkFsZXgKCgoKCkFtYXpvbiBXZWIgU2VydmljZXMgRGV2ZWxv
+cG1lbnQgQ2VudGVyIEdlcm1hbnkgR21iSApUYW1hcmEtRGFuei1TdHIuIDEzCjEwMjQzIEJlcmxp
+bgpHZXNjaGFlZnRzZnVlaHJ1bmc6IENocmlzdG9mIEhlbGxtaXMsIEFuZHJlYXMgU3RpZWdlcgpF
+aW5nZXRyYWdlbiBhbSBBbXRzZ2VyaWNodCBDaGFybG90dGVuYnVyZyB1bnRlciBIUkIgMjU3NzY0
+IEIKU2l0ejogQmVybGluClVzdC1JRDogREUgMzY1IDUzOCA1OTcK
 
 

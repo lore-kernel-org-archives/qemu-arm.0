@@ -4,26 +4,26 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6759C61DE1
-	for <qemu-arm@archiver.kernel.org>; Sat, 21 Feb 2026 10:19:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1462C61DE2
+	for <qemu-arm@archiver.kernel.org>; Sat, 21 Feb 2026 10:19:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vtk4l-0003Mi-Kl; Sat, 21 Feb 2026 05:19:03 -0500
+	id 1vtk4g-0003Fe-FV; Sat, 21 Feb 2026 05:18:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vtk4V-0002zR-66; Sat, 21 Feb 2026 05:18:48 -0500
-Received: from zg8tmty1ljiyny4xntqumjca.icoremail.net ([165.227.154.27])
+ id 1vtk4O-0002f4-2A; Sat, 21 Feb 2026 05:18:40 -0500
+Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vtk4T-0002n9-7G; Sat, 21 Feb 2026 05:18:46 -0500
+ id 1vtk4L-0002aj-Hh; Sat, 21 Feb 2026 05:18:39 -0500
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwAHXdCChplp0R9zAA--.3197S2;
- Sat, 21 Feb 2026 18:18:42 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwC3vJh6hplpzq9VBw--.4496S2;
+ Sat, 21 Feb 2026 18:18:34 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwDnP+1+hplpfU4cAA--.34781S3;
- Sat, 21 Feb 2026 18:18:38 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAfwDXLet4hplpfE4cAA--.34240S3;
+ Sat, 21 Feb 2026 18:18:32 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
 To: Eric Auger <eric.auger@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -35,30 +35,31 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>,
  Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [RFC v4 25/31] hw/arm/smmuv3: Implement SMMU_S_INIT register
-Date: Sat, 21 Feb 2026 18:18:36 +0800
-Message-Id: <20260221101836.2996599-1-tangtao1634@phytium.com.cn>
+Subject: [RFC v4 24/31] hw/arm/smmuv3: Determine register bank from MMIO offset
+Date: Sat, 21 Feb 2026 18:18:29 +0800
+Message-Id: <20260221101830.2996354-1-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
 References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwDnP+1+hplpfU4cAA--.34781S3
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQANBWmYzyUARwAAsV
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
+X-CM-TRANSID: AQAAfwDXLet4hplpfE4cAA--.34240S3
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQANBWmYzyUARQAAsX
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxXF1UCw47Cr17uw47Wr43trb_yoWrWr1fpr
- WDWr15Kw48A3WS9FnIkw4vyF15ua97Kry7CrZxGa4S9a4qyryqqF4DKrW7uFWDWr15Cay7
- G3ySgFsrur1UX3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoW3AryfCry5tr1rCr1UuF1Dtrb_yoWxJr1xpr
+ Z8XF1Sgrn8Ka1SqwsxJa1UC3W8Cwn7Kr1akrnxKryDu3yIywn7JayvyryfuryDury7Zrs8
+ trW5Gr47WrWqy3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
-Received-SPF: pass client-ip=165.227.154.27;
+Received-SPF: pass client-ip=162.243.164.118;
  envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmty1ljiyny4xntqumjca.icoremail.net
+ helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
 X-Spam_score_int: -25
 X-Spam_score: -2.6
 X-Spam_bar: --
 X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -76,105 +77,187 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Implement read/write handlers for the SMMU_S_INIT secure-only register.
+Modify the main MMIO handlers (smmu_write_mmio, smmu_read_mmio)
+to determine the security state of the target register based on its
+memory-mapped offset.
 
-Writing INV_ALL provides a mechanism for software to perform a global
-invalidation of ALL caches within the SMMU, including IOTLBs and
-configuration caches across all security states.
+By checking if the offset is within the secure register space (>=
+SMMU_SECURE_REG_START), the handlers can deduce the register's
+SEC_SID (reg_sec_sid). This SID is then passed down to the register
+access helper functions (smmu_writel, smmu_readl, etc.).
 
-The MMIO dispatcher decodes the target register bank from the high bits
-of the offset and then switches on the 4KB page-local offset
-(offset & 0xfff), since registers that share the same function across
-banks use the same relative layout. S_INIT is a secure-only register and
-its A_S_INIT constant is currently defined as an absolute secure-window
-offset (0x803c), so it has no NS twin to reuse as a shared low-12-bit
-macro. As a one-off special case, the handler matches it via
-(A_S_INIT & 0xfff) to fit the relative-offset decode.
+Inside these helpers, the switch statement now operates on a masked,
+relative offset:
 
-This feature is critical for secure hypervisors like Hafnium, which use
-it as a final step in their SMMU initialization sequence to ensure a
-clean cache state before enabling translations.
+    uint32_t reg_offset = offset & 0xfff;
+    switch (reg_offset) {
+        ...
+    }
+
+This design leverages a key feature of the SMMU specification: registers
+with the same function across different 3 security states
+(Non-secure, Secure, Realm) share the same relative offset. This avoids
+significant code duplication. The reg_sec_sid passed from the MMIO
+handler determines which security bank to operate on, while the masked
+offset identifies the specific register within that bank.
+
+It is important to distinguish between the security state of the
+register itself and the security state of the access. A
+higher-privilege security state is permitted to access registers
+belonging to a lower-privilege state, but the reverse is not allowed.
+This patch lays the groundwork for enforcing such rules.
+
+For future compatibility with Realm states, the logic in the
+else block corresponding to the secure offset check:
+
+    if (offset >= SMMU_SECURE_REG_START) {
+        reg_sec_sid = SMMU_SEC_SID_S;
+    } else {
+        /* Future Realm handling */
+    }
+
+will need to be expanded.
 
 Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 ---
- hw/arm/smmuv3.c     | 37 +++++++++++++++++++++++++++++++++++++
- hw/arm/trace-events |  1 +
- 2 files changed, 38 insertions(+)
+ hw/arm/smmuv3.c | 57 +++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 39 insertions(+), 18 deletions(-)
 
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index d81485a6a46..6fd664a000f 100644
+index 9c09ea0716e..d81485a6a46 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -373,6 +373,21 @@ static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
- 
+@@ -1781,12 +1781,13 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
  }
  
-+static void smmuv3_invalidate_all_caches(SMMUv3State *s)
-+{
-+    SMMUState *bs = &s->smmu_state;
-+    trace_smmuv3_invalidate_all_caches();
-+
-+    /* Clear all cached configs including STE and CD */
-+    if (bs->configs) {
-+        g_hash_table_remove_all(bs->configs);
+ static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
+-                               uint64_t data, MemTxAttrs attrs)
++                                uint64_t data, MemTxAttrs attrs,
++                                SMMUSecSID reg_sec_sid)
+ {
+-    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
+     SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
++    uint32_t reg_offset = offset & 0xfff;
+ 
+-    switch (offset) {
++    switch (reg_offset) {
+     case A_GERROR_IRQ_CFG0:
+         if (!smmu_gerror_irq_cfg_writable(s, reg_sec_sid)) {
+             /* SMMU_(*_)_IRQ_CTRL.GERROR_IRQEN == 1: IGNORED this write */
+@@ -1851,13 +1852,14 @@ static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
+ }
+ 
+ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+-                               uint64_t data, MemTxAttrs attrs)
++                               uint64_t data, MemTxAttrs attrs,
++                               SMMUSecSID reg_sec_sid)
+ {
+     Error *local_err = NULL;
+-    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
+     SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
++    uint32_t reg_offset = offset & 0xfff;
+ 
+-    switch (offset) {
++    switch (reg_offset) {
+     case A_CR0:
+         bank->cr[0] = data;
+         bank->cr0ack = data & ~SMMU_CR0_RESERVED;
+@@ -2094,16 +2096,25 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
+     SMMUState *sys = opaque;
+     SMMUv3State *s = ARM_SMMUV3(sys);
+     MemTxResult r;
++    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
+ 
+     /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
+     offset &= ~0x10000;
+ 
++    /*
++     * Realm and Non-secure share the same page-local offset layout; Secure uses
++     * the same layout but is mapped starting at 0x8000(SMMU_SECURE_REG_START)
++     */
++    if (offset >= SMMU_SECURE_REG_START) {
++        reg_sec_sid = SMMU_SEC_SID_S;
 +    }
 +
-+    /* Invalidate all SMMU IOTLB entries */
-+    smmu_inv_notifiers_all(&s->smmu_state);
-+    smmu_iotlb_inv_all(bs, SMMU_SEC_SID_NUM);
-+}
-+
- static SMMUTranslationStatus smmuv3_do_translate(SMMUv3State *s, hwaddr addr,
-                                                  SMMUTransCfg *cfg,
-                                                  SMMUEventInfo *event,
-@@ -2077,6 +2092,25 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
- 
-         bank->eventq_irq_cfg2 = data;
+     switch (size) {
+     case 8:
+-        r = smmu_writell(s, offset, data, attrs);
++        r = smmu_writell(s, offset, data, attrs, reg_sec_sid);
          break;
-+    /* S_INIT is Secure-only. So match it as a one-off via & 0xfff. */
-+    case (A_S_INIT & 0xfff):
-+        if (data & R_S_INIT_INV_ALL_MASK) {
-+            /*
-+             * If SMMU_ROOT_CR0.GPCEN == 0, a write of 1 to INV_ALL when any
-+             * SMMU_(*_)CR0.SMMUEN == 1, .... , is CONSTRAINED UNPREDICTABLE
-+             * according to (IHI 0070G.b) 6.3.62 SMMU_S_INIT, Page 465.
-+             */
-+            if (!smmuv3_smmu_disabled_stable(s, SMMU_SEC_SID_NS) ||
-+                !smmuv3_smmu_disabled_stable(s, SMMU_SEC_SID_S)) {
-+                /* CONSTRAINED UNPREDICTABLE behavior: Ignore this write */
-+                qemu_log_mask(LOG_GUEST_ERROR, "S_INIT write ignored: "
-+                              "(S_)CR0.SMMUEN or (S_)CR0ACK.SMMUEN is set\n");
-+                return MEMTX_OK;
-+            }
-+            smmuv3_invalidate_all_caches(s);
-+        }
-+        /* Synchronous emulation: invalidation completed instantly. */
-+        break;
+     case 4:
+-        r = smmu_writel(s, offset, data, attrs);
++        r = smmu_writel(s, offset, data, attrs, reg_sec_sid);
+         break;
      default:
-         qemu_log_mask(LOG_UNIMP,
-                       "%s Unexpected 32-bit access to 0x%"PRIx64" (WI)\n",
-@@ -2277,6 +2311,9 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
-     case A_EVENTQ_CONS:
-         *data = bank->eventq.cons;
-         return MEMTX_OK;
-+    case (A_S_INIT & 0xfff):
-+        *data = 0;
-+        return MEMTX_OK;
-     default:
-         *data = 0;
-         qemu_log_mask(LOG_UNIMP,
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 64f308a8d35..26f19f18cb7 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -64,6 +64,7 @@ smmuv3_cmdq_tlbi_s12_vmid(int vmid) "vmid=%d"
- smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
- smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
- smmuv3_inv_notifiers_iova(const char *name, int asid, int vmid, uint64_t iova, uint8_t tg, uint64_t num_pages, int stage) "iommu mr=%s asid=%d vmid=%d iova=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" stage=%d"
-+smmuv3_invalidate_all_caches(void) "Invalidate all SMMU caches and TLBs"
- smmu_reset_exit(void) ""
+         r = MEMTX_ERROR;
+@@ -2115,12 +2126,13 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
+ }
  
- #smmuv3-accel.c
+ static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
+-                               uint64_t *data, MemTxAttrs attrs)
++                               uint64_t *data, MemTxAttrs attrs,
++                               SMMUSecSID reg_sec_sid)
+ {
+-    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
+     SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
++    uint32_t reg_offset = offset & 0xfff;
+ 
+-    switch (offset) {
++    switch (reg_offset) {
+     case A_GERROR_IRQ_CFG0:
+         /* SMMU_(*_)GERROR_IRQ_CFG0 BOTH check SMMU_IDR0.MSI */
+         if (!smmu_msi_supported(s)) {
+@@ -2149,17 +2161,22 @@ static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
+ }
+ 
+ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
+-                              uint64_t *data, MemTxAttrs attrs)
++                              uint64_t *data, MemTxAttrs attrs,
++                              SMMUSecSID reg_sec_sid)
+ {
+-    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
+     SMMUv3RegBank *bank = smmuv3_bank(s, reg_sec_sid);
++    uint32_t reg_offset = offset & 0xfff;
+ 
+-    switch (offset) {
++    switch (reg_offset) {
+     case A_IDREGS ... A_IDREGS + 0x2f:
+-        *data = smmuv3_idreg(offset - A_IDREGS);
++        *data = smmuv3_idreg(reg_offset - A_IDREGS);
+         return MEMTX_OK;
+     case A_IDR0 ... A_IDR5:
+-        *data = bank->idr[(offset - A_IDR0) / 4];
++        if (reg_sec_sid == SMMU_SEC_SID_S) {
++            g_assert((reg_offset - A_IDR0) / 4 < 5);
++        }
++
++        *data = bank->idr[(reg_offset - A_IDR0) / 4];
+         return MEMTX_OK;
+     case A_IIDR:
+         *data = s->iidr;
+@@ -2275,16 +2292,20 @@ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
+     SMMUState *sys = opaque;
+     SMMUv3State *s = ARM_SMMUV3(sys);
+     MemTxResult r;
++    SMMUSecSID reg_sec_sid = SMMU_SEC_SID_NS;
+ 
+     /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
+     offset &= ~0x10000;
++    if (offset >= SMMU_SECURE_REG_START) {
++        reg_sec_sid = SMMU_SEC_SID_S;
++    }
+ 
+     switch (size) {
+     case 8:
+-        r = smmu_readll(s, offset, data, attrs);
++        r = smmu_readll(s, offset, data, attrs, reg_sec_sid);
+         break;
+     case 4:
+-        r = smmu_readl(s, offset, data, attrs);
++        r = smmu_readl(s, offset, data, attrs, reg_sec_sid);
+         break;
+     default:
+         r = MEMTX_ERROR;
 -- 
 2.34.1
 

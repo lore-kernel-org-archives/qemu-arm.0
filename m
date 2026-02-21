@@ -4,26 +4,26 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57423C61DE3
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A001C61DE1
 	for <qemu-arm@archiver.kernel.org>; Sat, 21 Feb 2026 10:18:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vtk3W-0008HV-CP; Sat, 21 Feb 2026 05:17:46 -0500
+	id 1vtk3E-0007f5-RO; Sat, 21 Feb 2026 05:17:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vtk3U-00083r-8J; Sat, 21 Feb 2026 05:17:44 -0500
+ id 1vtk3B-0007Uf-Rf; Sat, 21 Feb 2026 05:17:25 -0500
 Received: from zg8tmja5ljk3lje4ms43mwaa.icoremail.net ([209.97.181.73])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1vtk3S-0008V3-4S; Sat, 21 Feb 2026 05:17:43 -0500
+ id 1vtk39-00071R-Os; Sat, 21 Feb 2026 05:17:25 -0500
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwCXnJhDhplpMK9VBw--.3761S2;
- Sat, 21 Feb 2026 18:17:39 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwAnLZkvhplp0q5VBw--.3938S2;
+ Sat, 21 Feb 2026 18:17:19 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwB3zutAhplpck4cAA--.34569S3;
- Sat, 21 Feb 2026 18:17:36 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAfwDXL+0thplpb04cAA--.34326S3;
+ Sat, 21 Feb 2026 18:17:18 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
 To: Eric Auger <eric.auger@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -35,24 +35,23 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu.zevorn@gmail.com>,
  Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [RFC v4 19/31] hw/arm/smmuv3: Fix CFGI_CD handling when stage-1 is
- unsupported
-Date: Sat, 21 Feb 2026 18:17:33 +0800
-Message-Id: <20260221101733.2995020-1-tangtao1634@phytium.com.cn>
+Subject: [RFC v4 17/31] hw/arm/smmuv3: Pass sec_sid into cmdq consume path
+Date: Sat, 21 Feb 2026 18:17:14 +0800
+Message-Id: <20260221101714.2994490-1-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
 References: <20260221100250.2976287-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwB3zutAhplpck4cAA--.34569S3
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQANBWmYzyUAOwAAsp
+X-CM-TRANSID: AQAAfwDXL+0thplpb04cAA--.34326S3
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQANBWmYzyUANwAAsl
 Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvdXoWrZr17JF4xGF17Ar17KryxAFb_yoWDWrgEkF
- 1Fq3s5Wr12yF9xZF9rKF4Sya40kw4kAFyUWr4FqFW2qanrWayUWrs7JrWkXw1rXr13GFWS
- va9a9w13JrnxWjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8wcxFpf9Il3svdxBIdaVrnU
- Uv73VFW2AGmfu7jjvjm3AaLaJ3UjIYCTnIWjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRUUUUU
- UUUU=
+X-Coremail-Antispam: 1Uk129KBjvJXoWxtFW3uF15KF4UKFWkAFy8Grg_yoWxGF4Dpr
+ WDJwnI9r18Jan3ZF9Iv3y8ur13J34DtFyUtr1UW3WfA3ZrAr15Xrs09r1ru34DWryxAws3
+ uay3Wan8ZF12y37anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
 Received-SPF: pass client-ip=209.97.181.73;
  envelope-from=tangtao1634@phytium.com.cn;
  helo=zg8tmja5ljk3lje4ms43mwaa.icoremail.net
@@ -78,36 +77,176 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a STAGE1_SUPPORTED check in the CMD_CFGI_CD and CMD_CFGI_CD_ALL path
-and return CERROR_ILL when stage-1 translation is not implemented,
-matching the architecture requirement (IHI 0070G.b, page 176).
+Make smmuv3_cmdq_consume() security-state aware by passing sec_sid
+from smmu_writel() call sites (CR0/GERRORN/CMDQ_PROD paths), instead
+of hardcoding non-secure state. The related AddressSpace and MemTxAttrs
+are also obtained based on sec_sid.
 
-Fixes: 32cfd7f39e08 ("hw/arm/smmuv3: Cache/invalidate config data")
+Also move CMD_SSEC legality checking to a single early check before
+command dispatch: secure commands are rejected on non-secure queues
+(including future Realm queue) with CERROR_ILL. This removes duplicated
+per-command checks in CFGI handlers.
+
+Finally, extend cmdq trace output with sec_sid so command processing
+can be correlated with the correct security bank.
+
 Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 ---
- hw/arm/smmuv3.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ hw/arm/smmuv3.c     | 50 ++++++++++++++++++++++-----------------------
+ hw/arm/trace-events |  2 +-
+ 2 files changed, 26 insertions(+), 26 deletions(-)
 
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index fa09099a09a..d4c58c0c724 100644
+index e33a7babd1c..b2559e80f24 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -1461,6 +1461,15 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
-                 break;
-             }
+@@ -111,14 +111,14 @@ static void smmuv3_write_gerrorn(SMMUv3State *s, uint32_t new_gerrorn)
+     trace_smmuv3_write_gerrorn(toggled & pending, bank->gerrorn);
+ }
  
-+            /*
-+             * This command raises CERROR_ILL when stage 1 is not implemented
-+             * according to (IHI 0070G.b) Page 176.
-+             */
-+            if (!STAGE1_SUPPORTED(s)) {
+-static inline MemTxResult queue_read(SMMUQueue *q, Cmd *cmd)
++static inline MemTxResult queue_read(SMMUQueue *q, Cmd *cmd,
++                                     AddressSpace *as, MemTxAttrs attrs)
+ {
+     dma_addr_t addr = Q_CONS_ENTRY(q);
+     MemTxResult ret;
+     int i;
+ 
+-    ret = dma_memory_read(&address_space_memory, addr, cmd, sizeof(Cmd),
+-                          MEMTXATTRS_UNSPECIFIED);
++    ret = dma_memory_read(as, addr, cmd, sizeof(Cmd), attrs);
+     if (ret != MEMTX_OK) {
+         return ret;
+     }
+@@ -1346,14 +1346,17 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage,
+     }
+ }
+ 
+-static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
++static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
+ {
+     SMMUState *bs = ARM_SMMU(s);
+     SMMUCmdError cmd_error = SMMU_CERROR_NONE;
+-    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+     SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
+     SMMUQueue *q = &bank->cmdq;
+     SMMUCommandType type = 0;
++    MemTxAttrs attrs = smmu_get_txattrs(sec_sid);
++    AddressSpace *as = smmu_get_address_space(bs, sec_sid);
++    /* Secure AddressSpace must be available, assert if not. */
++    g_assert(as);
+ 
+     if (!smmuv3_cmdq_enabled(s, sec_sid)) {
+         return 0;
+@@ -1369,18 +1372,30 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
+         uint32_t pending = bank->gerror ^ bank->gerrorn;
+         Cmd cmd;
+ 
+-        trace_smmuv3_cmdq_consume(Q_PROD(q), Q_CONS(q),
++        trace_smmuv3_cmdq_consume(sec_sid, Q_PROD(q), Q_CONS(q),
+                                   Q_PROD_WRAP(q), Q_CONS_WRAP(q));
+ 
+         if (FIELD_EX32(pending, GERROR, CMDQ_ERR)) {
+             break;
+         }
+ 
+-        if (queue_read(q, &cmd) != MEMTX_OK) {
++        if (queue_read(q, &cmd, as, attrs) != MEMTX_OK) {
+             cmd_error = SMMU_CERROR_ABT;
+             break;
+         }
+ 
++        /*
++         * Secure Command on Non-secure Command queue, including Realm Command
++         * queue, is not allowed. CERROR_ILL will be raised according to
++         * (IHI 0070G.b) 4.1.6 Common command fields, Page 168.
++         */
++        if (CMD_SSEC(&cmd)) {
++            if (sec_sid != SMMU_SEC_SID_S) {
 +                cmd_error = SMMU_CERROR_ILL;
 +                break;
 +            }
++        }
 +
-             trace_smmuv3_cmdq_cfgi_cd(sid);
-             smmuv3_flush_config(sdev);
-             if (!smmuv3_accel_issue_inv_cmd(s, &cmd, sdev, errp)) {
+         type = CMD_TYPE(&cmd);
+ 
+         trace_smmuv3_cmdq_opcode(smmu_cmd_string(type));
+@@ -1400,11 +1415,6 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
+             uint32_t sid = CMD_SID(&cmd);
+             SMMUDevice *sdev = smmu_find_sdev(bs, sid);
+ 
+-            if (CMD_SSEC(&cmd)) {
+-                cmd_error = SMMU_CERROR_ILL;
+-                break;
+-            }
+-
+             if (!sdev) {
+                 break;
+             }
+@@ -1424,11 +1434,6 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
+             uint8_t range = CMD_STE_RANGE(&cmd);
+             SMMUSIDRange sid_range;
+ 
+-            if (CMD_SSEC(&cmd)) {
+-                cmd_error = SMMU_CERROR_ILL;
+-                break;
+-            }
+-
+             mask = (1ULL << (range + 1)) - 1;
+             sid_range.start = sid & ~mask;
+             sid_range.end = sid_range.start + mask;
+@@ -1447,11 +1452,6 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
+             uint32_t sid = CMD_SID(&cmd);
+             SMMUDevice *sdev = smmu_find_sdev(bs, sid);
+ 
+-            if (CMD_SSEC(&cmd)) {
+-                cmd_error = SMMU_CERROR_ILL;
+-                break;
+-            }
+-
+             if (!sdev) {
+                 break;
+             }
+@@ -1666,7 +1666,7 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+         bank->cr[0] = data;
+         bank->cr0ack = data & ~SMMU_CR0_RESERVED;
+         /* in case the command queue has been enabled */
+-        smmuv3_cmdq_consume(s, &local_err);
++        smmuv3_cmdq_consume(s, &local_err, reg_sec_sid);
+         break;
+     case A_CR1:
+         bank->cr[1] = data;
+@@ -1683,7 +1683,7 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+          * By acknowledging the CMDQ_ERR, SW may notify cmds can
+          * be processed again
+          */
+-        smmuv3_cmdq_consume(s, &local_err);
++        smmuv3_cmdq_consume(s, &local_err, reg_sec_sid);
+         break;
+     case A_GERROR_IRQ_CFG0: /* 64b */
+         bank->gerror_irq_cfg0 = deposit64(bank->gerror_irq_cfg0, 0, 32, data);
+@@ -1733,7 +1733,7 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+         break;
+     case A_CMDQ_PROD:
+         bank->cmdq.prod = data;
+-        smmuv3_cmdq_consume(s, &local_err);
++        smmuv3_cmdq_consume(s, &local_err, reg_sec_sid);
+         break;
+     case A_CMDQ_CONS:
+         bank->cmdq.cons = data;
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index 4e360b3c0d3..ca8485c96af 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -35,7 +35,7 @@ smmuv3_trigger_irq(int irq) "irq=%d"
+ smmuv3_write_gerror(uint32_t toggled, uint32_t gerror) "toggled=0x%x, new GERROR=0x%x"
+ smmuv3_write_gerrorn(uint32_t acked, uint32_t gerrorn) "acked=0x%x, new GERRORN=0x%x"
+ smmuv3_unhandled_cmd(uint32_t type) "Unhandled command type=%d"
+-smmuv3_cmdq_consume(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod=%d cons=%d prod.wrap=%d cons.wrap=%d"
++smmuv3_cmdq_consume(int sec_sid, uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "sec_sid=%d prod=%d cons=%d prod.wrap=%d cons.wrap=%d"
+ smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
+ smmuv3_cmdq_consume_out(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod:%d, cons:%d, prod_wrap:%d, cons_wrap:%d "
+ smmuv3_cmdq_consume_error(const char *cmd_name, uint8_t cmd_error) "Error on %s command execution: %d"
 -- 
 2.34.1
 

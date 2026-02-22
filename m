@@ -4,86 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C841FC624DB
-	for <qemu-arm@archiver.kernel.org>; Sun, 22 Feb 2026 18:06:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BE76C636B8
+	for <qemu-arm@archiver.kernel.org>; Sun, 22 Feb 2026 19:02:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuDnX-00005J-FH; Sun, 22 Feb 2026 13:03:15 -0500
+	id 1vuEij-0002Gw-13; Sun, 22 Feb 2026 14:02:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuDnS-0008Tk-Ql
- for qemu-arm@nongnu.org; Sun, 22 Feb 2026 13:03:11 -0500
-Received: from qs-2007e-snip4-3.eps.apple.com ([57.103.84.174]
- helo=outbound.qs.icloud.com)
+ id 1vuEig-0002GP-AZ
+ for qemu-arm@nongnu.org; Sun, 22 Feb 2026 14:02:18 -0500
+Received: from ci-2005j-snip4-6.eps.apple.com ([57.103.89.227]
+ helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuDnQ-0000SS-Iq
- for qemu-arm@nongnu.org; Sun, 22 Feb 2026 13:03:10 -0500
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-12 (Postfix) with ESMTPS id
- 05B501800515; Sun, 22 Feb 2026 18:03:05 +0000 (UTC)
+ id 1vuEid-0003I8-BJ
+ for qemu-arm@nongnu.org; Sun, 22 Feb 2026 14:02:17 -0500
+Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-central-1k-10-percent-2 (Postfix) with ESMTPS id
+ 49FD5180046A; Sun, 22 Feb 2026 19:02:11 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1771783388; x=1774375388;
- bh=Dk5eX2jOjF2PyRgCzPtgTVz6QNza9g8+ul+O0rRzATI=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=Myp6hZGl9sPpWEm246cti/+zzY+WPBlOClwk5jHSDFjvZ7+8PSsvB+qmFyuqegSSOwygNvrMgmTLGmoGrU0WXPrd0JaJBtX5n/hHssmsJCNjgyjL0ar0ZImWOZv58IU0ESvmwWYKgGUidqWcB/QUiHAQfh6EVQk16FiKmso79mIxnsir1so+e8rdryYvuO2Jae90HtsT21mvkW5LzB4fuED5wvUWdJlrZc5zEWjzEL8WDdFyIWHbG4sBEwXcIxYkD8jmFA5J8U5btIs69FcVM0cEEJ1BmlMTbmmPQVna0cMnLX1Gvv+I8zvCRJcYMuHwrC4FkQ/2vLcIEv7gsxl5Nw==
+ s=sig1; t=1771786933; x=1774378933;
+ bh=vkq7AUeT0bOLmeZxQTMHI6vh+t8CflnWAU9Jr979mJU=;
+ h=From:Message-Id:Content-Type:Mime-Version:Subject:Date:To:x-icloud-hme;
+ b=ZQzS8dUefRfnnN2DNL0+pAI1oEuzXaTRFzyBzICFaw/ZbivZSXLvgfrMM/DtFuVuBmq2vZ/QK0slQmneovtH7NZiCNxh4ZdY0FOkYlWtADVT5WnQnVdkCNwnceO1MkIm1mWTSOZ52q2TlT/c1EX3l9tHeVUqD27q3bSQpDQmv0Zbo4owwmbe/l6TjmCO/vbWl170lth/CK/JDghcRVw+YV1DRW2k+akYjNFGIzVRD0voqT3swIaGRVYwPbJrco3eQpFxxsdqdZqmtCl9lgwn0zXH0wLaAi8CCNdFGMZna3F5sKMOWPrIJ5A7unJVCL/Uu0hpau+q2bMWmeZxid96fw==
 mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-12 (Postfix) with ESMTPSA id
- 89D29180011A; Sun, 22 Feb 2026 18:03:03 +0000 (UTC)
+Received: from smtpclient.apple (unknown [17.57.156.36])
+ by p00-icloudmta-asmtp-us-central-1k-10-percent-2 (Postfix) with ESMTPSA id
+ 75E961800C4B; Sun, 22 Feb 2026 19:02:09 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
+Message-Id: <AF1C2C7D-79B7-49F8-9790-4326A208600F@unpredictable.fr>
+Content-Type: multipart/alternative;
+ boundary="Apple-Mail=_70D17415-EA91-4E99-A979-D08245E03933"
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.400.21\))
+Subject: Re: [PATCH v10 00/14] HVF: Add support for platform vGIC and nested
+ virtualisation
+Date: Sun, 22 Feb 2026 20:01:57 +0100
+In-Reply-To: <20260215112543.4817-1-mohamed@unpredictable.fr>
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Mads Ynddal <mads@ynddal.dk>, Roman Bolshakov <rbolshakov@ddn.com>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, Alexander Graf <agraf@csgraf.de>,
+ Paolo Bonzini <pbonzini@redhat.com>, Cameron Esfahani <dirty@apple.com>
 To: qemu-devel@nongnu.org
-Cc: Mohamed Mediouni <mohamed@unpredictable.fr>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Cameron Esfahani <dirty@apple.com>, qemu-arm@nongnu.org,
- Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, Roman Bolshakov <rbolshakov@ddn.com>,
- Phil Dennis-Jordan <phil@philjordan.eu>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Wei Liu <wei.liu@kernel.org>
-Subject: [PATCH v4 10/16] whpx: i386: switch over from winhvemulation to
- target/i386/emulate
-Date: Sun, 22 Feb 2026 19:02:34 +0100
-Message-ID: <20260222180241.14621-11-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.50.1
-In-Reply-To: <20260222180241.14621-1-mohamed@unpredictable.fr>
-References: <20260222180241.14621-1-mohamed@unpredictable.fr>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIyMDE3NCBTYWx0ZWRfX2KX30trLnHJg
- 3tU3AsYuJjUrhk7Er2t8BrCBSCBAZJGwdnRS6I3LJ5B36VmKEr4mm0uRl+Uwaxy4PMlEKhmX+xd
- 0MWdsVWCFHtZPSI4PpZHN+btmKZQ12obSGcxblDMGlCXUvgHBGUUn7s0B/goIQi13CGTWOwUvmI
- nWcBe1tihCDAdtxVr2qUr2s7NJZw4ZeAbpZEUKJN7lgqqIklAgRhSV+M2q9IdWaRgua1tKt4IMW
- b4wrw1zgOleM/E5o0/kmRX6d9W1x+uHByhjwTpfQ3v7c201sSPkFvqXdR1fWQEJyG/kIBFgnsy4
- 4yHIzhluCXX9tl9U1glmCoa/rGcGJT8+pO+tP8vecD4+iCfzP/67wxFMjTltas=
-X-Proofpoint-ORIG-GUID: B94xUE-mEAUZyzJmLDsyOSqG-jSHie0x
-X-Proofpoint-GUID: B94xUE-mEAUZyzJmLDsyOSqG-jSHie0x
-X-Authority-Info-Out: v=2.4 cv=EJELElZC c=1 sm=1 tr=0 ts=699b44db
- cx=c_apl:c_apl_out:c_pps a=bsP7O+dXZ5uKcj+dsLqiMw==:117
- a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
- a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=1q5U6jd5_WdO0fZ7RH8A:9
+References: <20260215112543.4817-1-mohamed@unpredictable.fr>
+X-Mailer: Apple Mail (2.3864.400.21)
+X-Proofpoint-GUID: KHEAQtshM_l6YfWTi7Dr8UYCzSo59kzv
+X-Proofpoint-ORIG-GUID: KHEAQtshM_l6YfWTi7Dr8UYCzSo59kzv
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIyMDE4NCBTYWx0ZWRfX2rvp19zLmPiJ
+ peEFTcIy9B3KfBEF6OH4UyOcat1lsVw52TBa9EZpMRNXC2HGQmDzG9CYHVUqlzP3swgg9K/IiFK
+ R4mOYZN5rw8GCLNqiCjjOWntJKwU9mvOfiSET9yK7WucwP97OQxmYtkLlmp5naXkZeC8kZioFoe
+ TDXRv/Fd/AZx/QztjSWoBjbmGpAX+FQAY8f1bHrPELVHEqiYR9RquNGzsVoU2G4kaPFVFhZCrWa
+ 3/zDD6oDks85Z6xBU8XSmlu50+E6E2XqJa0bBSnzEyvTUoNQrxvQL79QMEF8fII1ranIYPislCZ
+ Ga6LVn+tm7Xk4yI899djXvTVIEbbkwUZFZZsuS5oTl01+E8goTajYnI+mgYT/M=
+X-Authority-Info-Out: v=2.4 cv=KK5XzVFo c=1 sm=1 tr=0 ts=699b52b4
+ cx=c_apl:c_apl_out:c_pps a=2G65uMN5HjSv0sBfM2Yj2w==:117
+ a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=GaQpPoNlAAAA:8
+ a=NEAV23lmAAAA:8 a=4ap5Q1dKWWTZuao9jVgA:9 a=QEXdDO2ut3YA:10
+ a=DNcEyBE1SEeqdwRpoMYA:9 a=bICAp185kop9RbZp:21 a=_W_S_7VecoQA:10
+ a=xF5q_uoM5gZT5J3czcBi:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-22_04,2026-02-20_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- bulkscore=0 mlxlogscore=999 mlxscore=0 adultscore=0 lowpriorityscore=0
- suspectscore=0 phishscore=0 clxscore=1030 malwarescore=0 classifier=spam
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ phishscore=0 spamscore=0 clxscore=1030
+ suspectscore=0 lowpriorityscore=0
+ mlxlogscore=999 bulkscore=0 adultscore=0 mlxscore=0 classifier=spam
  authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
- definitions=main-2602220174
-X-JNJ: AAAAAAABD2UdlTRNeGVdH2faaIxp0QYeHpVshbqfqE4XnPcruf1JjI76fIx9mKtAzKznz1SCXAgZh/2GSMd+3XFegOkGZEyrkaE8zDOOmhabynTLepSYmjIfzKAeSlIGCL+LwoeMsU61kGcmsZwtvw/JsRq0T3xmtS+nLOzTSEVG0pqDds8rqBtjFOO+TpUjdz76v/lyzJVpfNKERbl3XuErIKDAjswWEcXTZaEOiQFlc/w+pdjO1zt1ttfZvTp1Zv+TTGJzYWpuWUZLQt3yO7+tdTtPG3ZXDKh0H1cgJYLwJgpEbPHTZscDxRF6jCWyy722i1ur03oPWxrWIfmTxvi/TP0OH1ETrmbf0BCozs2HhOFFUjvGlW/4YhJEYq+u5YrKO6lcC8MR85xC6q5GA74vaXDen0Py0omCo2Nie73UloPMw9F9Gi0ZLIeVd2l+MsU66EP1v7GL4rD0uTqPxy5WJ1o8olkm1Kb+CULyVF3xm6CxpPuDVgOdT4GZhN7vLK0/bGxSd4Ax4BjAQMbfUtsH6Hf2zlzGI3+E1Lak3+2jG8pN8GWPDLnxTxeQkBuXdkE56BoGk6z3/p+6vjvmisgqPXlQuBLpvdbQrh6F+95X3vEe7TuTJV4SmEs11ddZLVYpajQDBQfw1S990sJS41uXBQD11f6+erngXgdjlIt3NoFEbNJjIujFLnftlRnUpxzidI4SaHG3uAOQqivz8KTun1QX4kigYSMIRKG+cQuw1CNhWxxrp364EtWvwwxjylclsm3wUfpxxF7brZB+RsWlRq98hd5Kc73DP8JgBdoeNPoLtuQ=
-Received-SPF: pass client-ip=57.103.84.174;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+ definitions=main-2602220184
+X-JNJ: AAAAAAABxe7ybHEJKq9+R0cV97WbNWvo7H2SuqwGrn0DCWOAhkS50VB8yKXFyNb0g0jgWytIoZi/AMG6uBAuj+sIMX1Ih8w8Gyj2+Vz8nUoNJFqPS/EpJBE4ksUg7UKbdRHLQGUqnFcbJLU22TDaj6OakkZZiXaECoTmIqLEurx00iBMpKmWpyUOkd8+UA7TAouAaSnFfaQu0Gt3Ao7hZibMcbLUs/FS+ZWA0IQPkoYJJvnwgZqfTnjfrUQh4Wa9vKwJAAx5ZO0Oww2U0ZIIs5HztDzg6YFiWPRTLz6RCFB33epfQUJpspBKRvSJw2bD3BvTqCJHzuns/wRsDDvvS/5uzYLpTEeb79nDljxiuTVzZZIc+qr6AKzx0vYxBtmDoVRblBm7uOMoA2rm59ZmdAeI16bgpMK4ShnPptCLyPHdo/BPA/KCS5FgG5JOKZilcQFY+V3xFTPoiBt3CqcMCngMYORtKhg3cuY5LE3f1FOXNzU+lxSXTcaANbOf0njupBcgYD3TWsNiuhGUWZpyv+ySE9TK5JBK+iToUa0wl9+Ixmb2mz+t54Z6SmLhbKIrbbMQpqwDAzziQygLSKz+mEPK/zRC+SSSSTqunEktSXKIzBQZHQzwMOQrpeOhyovxgoKlhlCTpdG+h1YIcsawBPFFGJEXUeSis2tdfn1uR5PeN4O7anXUEqA8qsEkfgq8bR8Cu/+c1feqL1N8nc5Wtexq1B9mv8mNhcoT+NUv3GvnCM1mAl+f/Hgnino9FhrYZVY=
+Received-SPF: pass client-ip=57.103.89.227;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
 X-Spam_score_int: -4
 X-Spam_score: -0.5
 X-Spam_bar: /
 X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.798, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.79,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -101,366 +98,268 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Using the mshv backend as a base, move away from winhvemulation
-to using common QEMU code used by the HVF and mshv backends.
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- target/i386/whpx/whpx-all.c | 250 ++++++++++++++++--------------------
- 1 file changed, 114 insertions(+), 136 deletions(-)
+--Apple-Mail=_70D17415-EA91-4E99-A979-D08245E03933
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=utf-8
 
-diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
-index cdcaebbe16..eb6076d2f4 100644
---- a/target/i386/whpx/whpx-all.c
-+++ b/target/i386/whpx/whpx-all.c
-@@ -15,6 +15,7 @@
- #include "gdbstub/helpers.h"
- #include "qemu/accel.h"
- #include "accel/accel-ops.h"
-+#include "system/memory.h"
- #include "system/whpx.h"
- #include "system/cpus.h"
- #include "system/runstate.h"
-@@ -36,8 +37,12 @@
- #include "system/whpx-all.h"
- #include "system/whpx-common.h"
- 
-+#include "emulate/x86_decode.h"
-+#include "emulate/x86_emu.h"
-+#include "emulate/x86_flags.h"
-+#include "emulate/x86_mmu.h"
-+
- #include <winhvplatform.h>
--#include <winhvemulation.h>
- 
- #define HYPERV_APIC_BUS_FREQUENCY      (200000000ULL)
- 
-@@ -756,158 +761,138 @@ void whpx_get_registers(CPUState *cpu)
-     x86_update_hflags(env);
- }
- 
--static HRESULT CALLBACK whpx_emu_ioport_callback(
--    void *ctx,
--    WHV_EMULATOR_IO_ACCESS_INFO *IoAccess)
-+static int emulate_instruction(CPUState *cpu, const uint8_t *insn_bytes, size_t insn_len)
- {
--    MemTxAttrs attrs = { 0 };
--    address_space_rw(&address_space_io, IoAccess->Port, attrs,
--                     &IoAccess->Data, IoAccess->AccessSize,
--                     IoAccess->Direction);
--    return S_OK;
--}
-+    X86CPU *x86_cpu = X86_CPU(cpu);
-+    CPUX86State *env = &x86_cpu->env;
-+    struct x86_decode decode = { 0 };
-+    x86_insn_stream stream = { .bytes = insn_bytes, .len = insn_len };
- 
--static HRESULT CALLBACK whpx_emu_mmio_callback(
--    void *ctx,
--    WHV_EMULATOR_MEMORY_ACCESS_INFO *ma)
--{
--    CPUState *cs = (CPUState *)ctx;
--    AddressSpace *as = cpu_addressspace(cs, MEMTXATTRS_UNSPECIFIED);
-+    whpx_get_registers(cpu);
-+    decode_instruction_stream(env, &decode, &stream);
-+    exec_instruction(env, &decode);
-+    whpx_set_registers(cpu, WHPX_SET_RUNTIME_STATE);
- 
--    address_space_rw(as, ma->GpaAddress, MEMTXATTRS_UNSPECIFIED,
--                     ma->Data, ma->AccessSize, ma->Direction);
--    return S_OK;
-+    return 0;
- }
- 
--static HRESULT CALLBACK whpx_emu_getreg_callback(
--    void *ctx,
--    const WHV_REGISTER_NAME *RegisterNames,
--    UINT32 RegisterCount,
--    WHV_REGISTER_VALUE *RegisterValues)
-+static int whpx_handle_mmio(CPUState *cpu, WHV_RUN_VP_EXIT_CONTEXT *exit_ctx)
- {
--    HRESULT hr;
--    struct whpx_state *whpx = &whpx_global;
--    CPUState *cpu = (CPUState *)ctx;
-+    WHV_MEMORY_ACCESS_CONTEXT *ctx = &exit_ctx->MemoryAccess;
-+    int ret;
- 
--    hr = whp_dispatch.WHvGetVirtualProcessorRegisters(
--        whpx->partition, cpu->cpu_index,
--        RegisterNames, RegisterCount,
--        RegisterValues);
--    if (FAILED(hr)) {
--        error_report("WHPX: Failed to get virtual processor registers,"
--                     " hr=%08lx", hr);
-+    ret = emulate_instruction(cpu, ctx->InstructionBytes, ctx->InstructionByteCount);
-+    if (ret < 0) {
-+        error_report("failed to emulate mmio");
-+        return -1;
-     }
- 
--    return hr;
-+    return 0;
- }
- 
--static HRESULT CALLBACK whpx_emu_setreg_callback(
--    void *ctx,
--    const WHV_REGISTER_NAME *RegisterNames,
--    UINT32 RegisterCount,
--    const WHV_REGISTER_VALUE *RegisterValues)
-+static void handle_io(CPUState *env, uint16_t port, void *buffer,
-+                  int direction, int size, int count)
- {
--    HRESULT hr;
--    struct whpx_state *whpx = &whpx_global;
--    CPUState *cpu = (CPUState *)ctx;
-+    int i;
-+    uint8_t *ptr = buffer;
- 
--    hr = whp_dispatch.WHvSetVirtualProcessorRegisters(
--        whpx->partition, cpu->cpu_index,
--        RegisterNames, RegisterCount,
--        RegisterValues);
--    if (FAILED(hr)) {
--        error_report("WHPX: Failed to set virtual processor registers,"
--                     " hr=%08lx", hr);
-+    for (i = 0; i < count; i++) {
-+        address_space_rw(&address_space_io, port, MEMTXATTRS_UNSPECIFIED,
-+                         ptr, size,
-+                         direction);
-+        ptr += size;
-     }
--
--    /*
--     * The emulator just successfully wrote the register state. We clear the
--     * dirty state so we avoid the double write on resume of the VP.
--     */
--    cpu->vcpu_dirty = false;
--
--    return hr;
- }
- 
--static HRESULT CALLBACK whpx_emu_translate_callback(
--    void *ctx,
--    WHV_GUEST_VIRTUAL_ADDRESS Gva,
--    WHV_TRANSLATE_GVA_FLAGS TranslateFlags,
--    WHV_TRANSLATE_GVA_RESULT_CODE *TranslationResult,
--    WHV_GUEST_PHYSICAL_ADDRESS *Gpa)
-+static void whpx_bump_rip(CPUState *cpu, WHV_RUN_VP_EXIT_CONTEXT *exit_ctx)
- {
--    HRESULT hr;
--    struct whpx_state *whpx = &whpx_global;
--    CPUState *cpu = (CPUState *)ctx;
--    WHV_TRANSLATE_GVA_RESULT res;
--
--    hr = whp_dispatch.WHvTranslateGva(whpx->partition, cpu->cpu_index,
--                                      Gva, TranslateFlags, &res, Gpa);
--    if (FAILED(hr)) {
--        error_report("WHPX: Failed to translate GVA, hr=%08lx", hr);
--    } else {
--        *TranslationResult = res.ResultCode;
--    }
--
--    return hr;
-+    WHV_REGISTER_VALUE reg;
-+    whpx_get_reg(cpu, WHvX64RegisterRip, &reg);
-+    reg.Reg64 = exit_ctx->VpContext.Rip + exit_ctx->VpContext.InstructionLength;
-+    whpx_set_reg(cpu, WHvX64RegisterRip, reg);
- }
- 
--static const WHV_EMULATOR_CALLBACKS whpx_emu_callbacks = {
--    .Size = sizeof(WHV_EMULATOR_CALLBACKS),
--    .WHvEmulatorIoPortCallback = whpx_emu_ioport_callback,
--    .WHvEmulatorMemoryCallback = whpx_emu_mmio_callback,
--    .WHvEmulatorGetVirtualProcessorRegisters = whpx_emu_getreg_callback,
--    .WHvEmulatorSetVirtualProcessorRegisters = whpx_emu_setreg_callback,
--    .WHvEmulatorTranslateGvaPage = whpx_emu_translate_callback,
--};
--
--static int whpx_handle_mmio(CPUState *cpu, WHV_MEMORY_ACCESS_CONTEXT *ctx)
-+static int whpx_handle_portio(CPUState *cpu,
-+                              WHV_RUN_VP_EXIT_CONTEXT *exit_ctx)
- {
--    HRESULT hr;
--    AccelCPUState *vcpu = cpu->accel;
--    WHV_EMULATOR_STATUS emu_status;
--
--    hr = whp_dispatch.WHvEmulatorTryMmioEmulation(
--        vcpu->emulator, cpu,
--        &vcpu->exit_ctx.VpContext, ctx,
--        &emu_status);
--    if (FAILED(hr)) {
--        error_report("WHPX: Failed to parse MMIO access, hr=%08lx", hr);
--        return -1;
--    }
-+    WHV_X64_IO_PORT_ACCESS_CONTEXT *ctx = &exit_ctx->IoPortAccess;
-+    X86CPU *x86_cpu = X86_CPU(cpu);
-+    CPUX86State *env = &x86_cpu->env;
-+    int ret;
- 
--    if (!emu_status.EmulationSuccessful) {
--        error_report("WHPX: Failed to emulate MMIO access with"
--                     " EmulatorReturnStatus: %u", emu_status.AsUINT32);
-+    if (!ctx->AccessInfo.StringOp && !ctx->AccessInfo.IsWrite) {
-+        uint64_t val = 0;
-+        WHV_REGISTER_VALUE reg;
-+
-+        whpx_get_reg(cpu, WHvX64RegisterRax, &reg);
-+        handle_io(cpu, ctx->PortNumber, &val, 0, ctx->AccessInfo.AccessSize, 1);
-+        if (ctx->AccessInfo.AccessSize == 1) {
-+            reg.Reg8 = val;
-+        } else if (ctx->AccessInfo.AccessSize == 2) {
-+            reg.Reg16 = val;
-+        } else if (ctx->AccessInfo.AccessSize == 4) {
-+            reg.Reg64 = (uint32_t)val;
-+        } else {
-+            reg.Reg64 = (uint64_t)val;
-+        }
-+        whpx_bump_rip(cpu, exit_ctx);
-+        whpx_set_reg(cpu, WHvX64RegisterRax, reg);
-+        return 0;
-+    } else if (!ctx->AccessInfo.StringOp && ctx->AccessInfo.IsWrite) {
-+        RAX(env) = ctx->Rax;
-+        handle_io(cpu, ctx->PortNumber, &RAX(env), 1, ctx->AccessInfo.AccessSize, 1);
-+        whpx_bump_rip(cpu, exit_ctx);
-+        return 0;
-+    }
-+
-+    ret = emulate_instruction(cpu, ctx->InstructionBytes, exit_ctx->VpContext.InstructionLength);
-+    if (ret < 0) {
-+        error_report("failed to emulate I/O port access");
-         return -1;
-     }
- 
-     return 0;
- }
- 
--static int whpx_handle_portio(CPUState *cpu,
--                              WHV_X64_IO_PORT_ACCESS_CONTEXT *ctx)
-+static void write_mem(CPUState *cpu, void *data, target_ulong addr, int bytes)
- {
--    HRESULT hr;
--    AccelCPUState *vcpu = cpu->accel;
--    WHV_EMULATOR_STATUS emu_status;
-+    vmx_write_mem(cpu, addr, data, bytes);
-+}
- 
--    hr = whp_dispatch.WHvEmulatorTryIoEmulation(
--        vcpu->emulator, cpu,
--        &vcpu->exit_ctx.VpContext, ctx,
--        &emu_status);
--    if (FAILED(hr)) {
--        error_report("WHPX: Failed to parse PortIO access, hr=%08lx", hr);
--        return -1;
--    }
-+static void read_mem(CPUState *cpu, void *data, target_ulong addr, int bytes)
-+{
-+    vmx_read_mem(cpu, data, addr, bytes);
-+}
- 
--    if (!emu_status.EmulationSuccessful) {
--        error_report("WHPX: Failed to emulate PortIO access with"
--                     " EmulatorReturnStatus: %u", emu_status.AsUINT32);
--        return -1;
-+static void read_segment_descriptor(CPUState *cpu,
-+                                    struct x86_segment_descriptor *desc,
-+                                    enum X86Seg seg_idx)
-+{
-+    bool ret;
-+    X86CPU *x86_cpu = X86_CPU(cpu);
-+    CPUX86State *env = &x86_cpu->env;
-+    SegmentCache *seg = &env->segs[seg_idx];
-+    x86_segment_selector sel = { .sel = seg->selector & 0xFFFF };
-+
-+    ret = x86_read_segment_descriptor(cpu, desc, sel);
-+    if (ret == false) {
-+        error_report("failed to read segment descriptor");
-+        abort();
-     }
-+}
- 
--    return 0;
-+
-+static const struct x86_emul_ops whpx_x86_emul_ops = {
-+    .read_mem = read_mem,
-+    .write_mem = write_mem,
-+    .read_segment_descriptor = read_segment_descriptor,
-+    .handle_io = handle_io
-+};
-+
-+static void whpx_init_emu(void)
-+{
-+    init_decoder();
-+    init_emu(&whpx_x86_emul_ops);
- }
- 
- /*
-@@ -1279,8 +1264,9 @@ bool whpx_arch_supports_guest_debug(void)
- 
- void whpx_arch_destroy_vcpu(CPUState *cpu)
- {
--    AccelCPUState *vcpu = cpu->accel;
--    whp_dispatch.WHvEmulatorDestroyEmulator(vcpu->emulator);
-+    X86CPU *x86cpu = X86_CPU(cpu);
-+    CPUX86State *env = &x86cpu->env;
-+    g_free(env->emu_mmio_buf);
- }
- 
- /* Returns the address of the next instruction that is about to be executed. */
-@@ -1639,11 +1625,11 @@ int whpx_vcpu_run(CPUState *cpu)
- 
-         switch (vcpu->exit_ctx.ExitReason) {
-         case WHvRunVpExitReasonMemoryAccess:
--            ret = whpx_handle_mmio(cpu, &vcpu->exit_ctx.MemoryAccess);
-+            ret = whpx_handle_mmio(cpu, &vcpu->exit_ctx);
-             break;
- 
-         case WHvRunVpExitReasonX64IoPortAccess:
--            ret = whpx_handle_portio(cpu, &vcpu->exit_ctx.IoPortAccess);
-+            ret = whpx_handle_portio(cpu, &vcpu->exit_ctx);
-             break;
- 
-         case WHvRunVpExitReasonX64InterruptWindow:
-@@ -1990,22 +1976,11 @@ int whpx_init_vcpu(CPUState *cpu)
- 
-     vcpu = g_new0(AccelCPUState, 1);
- 
--    hr = whp_dispatch.WHvEmulatorCreateEmulator(
--        &whpx_emu_callbacks,
--        &vcpu->emulator);
--    if (FAILED(hr)) {
--        error_report("WHPX: Failed to setup instruction completion support,"
--                     " hr=%08lx", hr);
--        ret = -EINVAL;
--        goto error;
--    }
--
-     hr = whp_dispatch.WHvCreateVirtualProcessor(
-         whpx->partition, cpu->cpu_index, 0);
-     if (FAILED(hr)) {
-         error_report("WHPX: Failed to create a virtual processor,"
-                      " hr=%08lx", hr);
--        whp_dispatch.WHvEmulatorDestroyEmulator(vcpu->emulator);
-         ret = -EINVAL;
-         goto error;
-     }
-@@ -2067,6 +2042,8 @@ int whpx_init_vcpu(CPUState *cpu)
-     max_vcpu_index = max(max_vcpu_index, cpu->cpu_index);
-     qemu_add_vm_change_state_handler(whpx_cpu_update_state, env);
- 
-+    env->emu_mmio_buf = g_new(char, 4096);
-+
-     return 0;
- 
- error:
-@@ -2256,6 +2233,7 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-     }
- 
-     whpx_memory_init();
-+    whpx_init_emu();
- 
-     printf("Windows Hypervisor Platform accelerator is operational\n");
-     return 0;
--- 
-2.50.1 (Apple Git-155)
+Hello,
 
+Ping (for reviews)
+
+Am missing reviews on patches: 1, 2, 3, 4, 5, 6, 8, 9, 11, 13, 14
+
+(Series at =
+https://patchew.org/QEMU/20260215112543.4817-1-mohamed@unpredictable.fr/)
+
+
+
+> On 15. Feb 2026, at 12:25, Mohamed Mediouni <mohamed@unpredictable.fr> =
+wrote:
+>=20
+> Link to branch: https://github.com/mediouni-m/qemu =
+hvf-irqchip-and-nested
+> (tag for this submission: hvf-irqchip-and-nested-v10)
+>=20
+> This series adds supports for nested virtualisation when using HVF on =
+arm64 Macs.
+>=20
+> It has two parts:
+> - Apple vGICv3 support and necessary infrastructure changes for it
+> - Nested virtualisation support. Note that the nested virtualisation =
+implementation
+> shipping as of macOS 26.3 is nVHE only (but it _does_ use VNCR as =
+shipped).
+>=20
+> It's rebased on top of the WHPX arm64 series.
+>=20
+> Known issues:
+> - This series doesn't contain EL2 physical timer emulation, which is
+> needed if not leveraging the Apple vGIC.
+>=20
+> - when nested virt is enabled, no UI response within EDK2
+> and a permanent wait. Workaround: -boot menu=3Don,splash-time=3D0.
+>=20
+> Apple Feedback Assistant item: FB21649319
+>=20
+> When the VM is running at EL2 at the very moment the virtual timer =
+fires:
+> HV_EXIT_REASON_VTIMER_ACTIVATED doesn=E2=80=99t fire (when not using =
+the provided vGIC)
+> - using a GICv2 doesn=E2=80=99t require having transition notifiers =
+which Hypervisor.framework doesn=E2=80=99t have=E2=80=A6)
+>=20
+> and when using the provided vGIC, the interrupt never gets delivered =
+back to the guest
+>=20
+> Linux as a guest OS is fine with this=E2=80=A6 but the reference =
+ArmVirtQemu edk2 build always uses the virtual timer even when running =
+EFI at EL2, so it gets broken unless this patch is applied to edk2:
+>=20
+> diff of ArmVirtPkg/ArmVirt.dsc.inc:
+>=20
+> -  =
+ArmGenericTimerCounterLib|ArmPkg/Library/ArmGenericTimerVirtCounterLib/Arm=
+GenericTimerVirtCounterLib.inf
+> +  =
+ArmGenericTimerCounterLib|ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmG=
+enericTimerPhyCounterLib.inf^M
+>=20
+> Changelog:
+>=20
+> v1->v2:
+> Oops. I did a mistake when preparing my patches.
+>=20
+> - Add hvf_arm_el2_enable(_) call to virt_set_virt
+> - Fix nested virt support check to add HVF
+>=20
+> v2->v3:
+> - LORC_EL1 patch was merged separately, remove from this series.
+> - fix LPIs when kernel-irqchip disabled and using TCG
+> - remove spurious if case in vGIC supported version detection =
+(inapplicable now)
+> - Add hvf_enabled() check in combination with hvf kernel-irqchip =
+checks
+> - cleanly fail on attempt to use the platform vGIC together with ITS
+>=20
+> v3->v4:
+> - GIC state save improvements, including saving the opaque =
+Apple-specific state
+> - Saving HVF system register state when using the vGIC and/or EL2
+>=20
+> v5:
+> - oops, fixed up save/restore to be functional
+> - misc changes otherwise
+>=20
+> v6:
+> - Addressing review comments
+>=20
+> v7:
+> - Address review comments, adapt around Qemu changes and bugfixes.
+>=20
+> v8:
+> - Rebase, and misc fixes
+>=20
+> v9:
+> - Misc fixes from WHPX review comments
+> - Split enablement commit for EL2 into its own separate commit
+>=20
+> v10:
+>=20
+> - A bit of changes across the board
+> - move HVF irqchip save/restore into irqchip code
+> - block nested virt support when kernel-irqchip=3Doff with a GICv2 as
+> we don't implement an emulated physical timer yet.
+>=20
+> Mohamed Mediouni (14):
+>  Revert "target/arm/hvf: Sync CNTV_CTL_EL0 & CNTV_CVAL_EL0"
+>  hw/intc: Add hvf vGIC interrupt controller support
+>  hw/intc: arm_gicv3_hvf: save/restore Apple GIC state
+>  accel, hw/arm, include/system/hvf: infrastructure changes for HVF =
+vGIC
+>  target/arm: hvf: instantiate GIC early
+>  hw/arm, target/arm: nested virtualisation on HVF
+>  hvf: only call hvf_sync_vtimer() when running without the platform
+>    vGIC
+>  hvf: gate ARM_FEATURE_PMU register emulation behind not being at EL2
+>  hvf: arm: allow exposing minimal PMU when running with nested virt on
+>  target/arm: hvf: add asserts for code paths not leveraged when using
+>    the vGIC
+>  hvf: sync registers used at EL2
+>  target/arm: hvf: pass through CNTHCTL_EL2 and MDCCINT_EL1
+>  hvf: enable nested virtualisation support
+>  hvf: arm: warn instead of assert on a write_list_to_cpustate mismatch
+>=20
+> accel/hvf/hvf-all.c                |  51 ++
+> accel/stubs/hvf-stub.c             |   2 +
+> hw/arm/virt.c                      |  37 +-
+> hw/intc/arm_gicv3_common.c         |   4 +
+> hw/intc/arm_gicv3_hvf.c            | 818 +++++++++++++++++++++++++++++
+> hw/intc/arm_gicv3_hvf_stub.c       |  25 +
+> hw/intc/meson.build                |   2 +
+> include/hw/intc/arm_gicv3_common.h |   4 +
+> include/system/hvf.h               |   8 +
+> system/vl.c                        |   2 +
+> target/arm/hvf/hvf.c               | 154 ++++--
+> target/arm/hvf/sysreg.c.inc        |  35 ++
+> 12 files changed, 1103 insertions(+), 39 deletions(-)
+> create mode 100644 hw/intc/arm_gicv3_hvf.c
+> create mode 100644 hw/intc/arm_gicv3_hvf_stub.c
+>=20
+> --=20
+> 2.50.1 (Apple Git-155)
+>=20
+
+
+--Apple-Mail=_70D17415-EA91-4E99-A979-D08245E03933
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=utf-8
+
+<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
+content=3D"text/html; charset=3Dutf-8"></head><body =
+style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
+line-break: after-white-space;">Hello,<div><br></div><div>Ping (for =
+reviews)</div><div><br></div><div><div>Am missing reviews on patches: 1, =
+2, 3, 4, 5, 6, 8, 9, 11, 13, 14</div><div><br></div><div>(Series =
+at&nbsp;<a =
+href=3D"https://patchew.org/QEMU/20260215112543.4817-1-mohamed@unpredictab=
+le.fr/">https://patchew.org/QEMU/20260215112543.4817-1-mohamed@unpredictab=
+le.fr/</a>)</div><div><br></div><div><blockquote =
+type=3D"cite"></blockquote></div><div><br></div><div><blockquote =
+type=3D"cite"><div>On 15. Feb 2026, at 12:25, Mohamed Mediouni =
+&lt;mohamed@unpredictable.fr&gt; wrote:</div><br =
+class=3D"Apple-interchange-newline"><div><div>Link to branch: =
+https://github.com/mediouni-m/qemu hvf-irqchip-and-nested<br>(tag for =
+this submission: hvf-irqchip-and-nested-v10)<br><br>This series adds =
+supports for nested virtualisation when using HVF on arm64 =
+Macs.<br><br>It has two parts:<br>- Apple vGICv3 support and necessary =
+infrastructure changes for it<br>- Nested virtualisation support. Note =
+that the nested virtualisation implementation<br>shipping as of macOS =
+26.3 is nVHE only (but it _does_ use VNCR as shipped).<br><br>It's =
+rebased on top of the WHPX arm64 series.<br><br>Known issues:<br>- This =
+series doesn't contain EL2 physical timer emulation, which is<br>needed =
+if not leveraging the Apple vGIC.<br><br>- when nested virt is enabled, =
+no UI response within EDK2<br>and a permanent wait. Workaround: -boot =
+menu=3Don,splash-time=3D0.<br><br>Apple Feedback Assistant item: =
+FB21649319<br><br>When the VM is running at EL2 at the very moment the =
+virtual timer fires:<br>HV_EXIT_REASON_VTIMER_ACTIVATED doesn=E2=80=99t =
+fire (when not using the provided vGIC)<br>- using a GICv2 doesn=E2=80=99t=
+ require having transition notifiers which Hypervisor.framework =
+doesn=E2=80=99t have=E2=80=A6)<br><br>and when using the provided vGIC, =
+the interrupt never gets delivered back to the guest<br><br>Linux as a =
+guest OS is fine with this=E2=80=A6 but the reference ArmVirtQemu edk2 =
+build always uses the virtual timer even when running EFI at EL2, so it =
+gets broken unless this patch is applied to edk2:<br><br>diff of =
+ArmVirtPkg/ArmVirt.dsc.inc:<br><br>- =
+&nbsp;ArmGenericTimerCounterLib|ArmPkg/Library/ArmGenericTimerVirtCounterL=
+ib/ArmGenericTimerVirtCounterLib.inf<br>+ =
+&nbsp;ArmGenericTimerCounterLib|ArmPkg/Library/ArmGenericTimerPhyCounterLi=
+b/ArmGenericTimerPhyCounterLib.inf^M<br><br>Changelog:<br><br>v1-&gt;v2:<b=
+r>Oops. I did a mistake when preparing my patches.<br><br>- Add =
+hvf_arm_el2_enable(_) call to virt_set_virt<br>- Fix nested virt support =
+check to add HVF<br><br>v2-&gt;v3:<br>- LORC_EL1 patch was merged =
+separately, remove from this series.<br>- fix LPIs when kernel-irqchip =
+disabled and using TCG<br>- remove spurious if case in vGIC supported =
+version detection (inapplicable now)<br>- Add hvf_enabled() check in =
+combination with hvf kernel-irqchip checks<br>- cleanly fail on attempt =
+to use the platform vGIC together with ITS<br><br>v3-&gt;v4:<br>- GIC =
+state save improvements, including saving the opaque Apple-specific =
+state<br>- Saving HVF system register state when using the vGIC and/or =
+EL2<br><br>v5:<br>- oops, fixed up save/restore to be functional<br>- =
+misc changes otherwise<br><br>v6:<br>- Addressing review =
+comments<br><br>v7:<br>- Address review comments, adapt around Qemu =
+changes and bugfixes.<br><br>v8:<br>- Rebase, and misc =
+fixes<br><br>v9:<br>- Misc fixes from WHPX review comments<br>- Split =
+enablement commit for EL2 into its own separate =
+commit<br><br>v10:<br><br>- A bit of changes across the board<br>- move =
+HVF irqchip save/restore into irqchip code<br>- block nested virt =
+support when kernel-irqchip=3Doff with a GICv2 as<br>we don't implement =
+an emulated physical timer yet.<br><br>Mohamed Mediouni (14):<br> =
+&nbsp;Revert "target/arm/hvf: Sync CNTV_CTL_EL0 &amp; CNTV_CVAL_EL0"<br> =
+&nbsp;hw/intc: Add hvf vGIC interrupt controller support<br> =
+&nbsp;hw/intc: arm_gicv3_hvf: save/restore Apple GIC state<br> =
+&nbsp;accel, hw/arm, include/system/hvf: infrastructure changes for HVF =
+vGIC<br> &nbsp;target/arm: hvf: instantiate GIC early<br> &nbsp;hw/arm, =
+target/arm: nested virtualisation on HVF<br> &nbsp;hvf: only call =
+hvf_sync_vtimer() when running without the platform<br> =
+&nbsp;&nbsp;&nbsp;vGIC<br> &nbsp;hvf: gate ARM_FEATURE_PMU register =
+emulation behind not being at EL2<br> &nbsp;hvf: arm: allow exposing =
+minimal PMU when running with nested virt on<br> &nbsp;target/arm: hvf: =
+add asserts for code paths not leveraged when using<br> =
+&nbsp;&nbsp;&nbsp;the vGIC<br> &nbsp;hvf: sync registers used at EL2<br> =
+&nbsp;target/arm: hvf: pass through CNTHCTL_EL2 and MDCCINT_EL1<br> =
+&nbsp;hvf: enable nested virtualisation support<br> &nbsp;hvf: arm: warn =
+instead of assert on a write_list_to_cpustate mismatch<br><br> =
+accel/hvf/hvf-all.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;| &nbsp;51 ++<br> accel/stubs/hvf-stub.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;2 +<br> hw/arm/virt.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;37 +-<br> =
+hw/intc/arm_gicv3_common.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;4 +<br> =
+hw/intc/arm_gicv3_hvf.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 818 =
++++++++++++++++++++++++++++++<br> hw/intc/arm_gicv3_hvf_stub.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;25 +<br> hw/intc/meson.build =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;| &nbsp;&nbsp;2 +<br> include/hw/intc/arm_gicv3_common.h =
+| &nbsp;&nbsp;4 +<br> include/system/hvf.h =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;| &nbsp;&nbsp;8 +<br> system/vl.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| =
+&nbsp;&nbsp;2 +<br> target/arm/hvf/hvf.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;| 154 ++++--<br> target/arm/hvf/sysreg.c.inc =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;35 ++<br> 12 files =
+changed, 1103 insertions(+), 39 deletions(-)<br> create mode 100644 =
+hw/intc/arm_gicv3_hvf.c<br> create mode 100644 =
+hw/intc/arm_gicv3_hvf_stub.c<br><br>-- <br>2.50.1 (Apple =
+Git-155)<br><br></div></div></blockquote></div><br></div></body></html>=
+
+--Apple-Mail=_70D17415-EA91-4E99-A979-D08245E03933--
 

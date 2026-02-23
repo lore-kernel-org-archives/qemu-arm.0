@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 464B6E98E08
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 08:40:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F179E98E0B
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 08:40:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuRRx-0000CN-9C; Mon, 23 Feb 2026 03:37:53 -0500
+	id 1vuRTx-0002I6-9B; Mon, 23 Feb 2026 03:39:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuRRv-0000Bp-VB
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:37:52 -0500
-Received: from p-east2-cluster4-host2-snip4-1.eps.apple.com ([57.103.78.162]
+ id 1vuRSj-0000zp-Pt
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:44 -0500
+Received: from p-east2-cluster3-host11-snip4-2.eps.apple.com ([57.103.77.173]
  helo=outbound.st.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1vuRRt-0002BY-0d
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:37:50 -0500
+ id 1vuRSi-0002Kw-6m
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 03:38:41 -0500
 Received: from outbound.st.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-12 (Postfix) with ESMTPS id
- 4AC27180020E; Mon, 23 Feb 2026 08:37:44 +0000 (UTC)
+ 35A68180022E; Mon, 23 Feb 2026 08:38:39 +0000 (UTC)
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1771835868; x=1774427868;
- bh=eGBzMnvYi2plqRMYS3s+jPbPqZ3R3tScJhTlruf1lkA=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=WNmdZqvrA7DDIaW+cZlwptqG1RZvV2xBNUTWM2bIg7NWkswm/rz+cGqZFNU8Vti0/K860W/lR4SdXuWadwnR/GKMohkHUh3JrzQT+0efRhJt2JDa7ow4PpzxTyLLXmdHbnzEQhyLeLSILmkdoLVt/lSns1YWg4lf8e+sTdEiu/e5nFf+NvpZdkBjZBijVvAwnYHWed8lsVza7tzTpz89u6PewsN/m9CL7hi7Kp53DnXBc1xbZflmi416xDdtgRHph3Jnrn4IzjNSBEBMP/yHAaNryo1XrHhEVzOJnQTYGGeITv88j61TqK/ZJF0ddYFKV3KVaH209D9KyQyNutGDdg==
+ s=sig1; t=1771835919; x=1774427919;
+ bh=hfNR82VI32cF33QTS3FopfW+BPdUa6X/9gAEMrrkmf4=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=RbsBx57NhlF1VMDANvoW93uf1ad+M2QrowptYXf7fPz2wZo/XHjtEUNHx1KY5izyvbCNmhrqctBnb51f+d7ogIFHLD2IvwnqUZyXtoIZ0TBU5TZneVT6tQ1ySFGw4/h+6REFU5ktkOW1mgaOKFbU+Qx/CAu428/0fIq4jzuXVj0z7BJ37FD0SU+QUwqhtuRcWUI7qQqzOQ49yQWnSxmd5W7RU8xb/ojmCD6NPuvPlveBXlNWFdmYg5f5x5NQ2QeLrpVI5Fyce9lHukibaEi1qUR5cnVYzDHUEsRW485PLYRKT0aNWwM28cfY0gAAhBOvNTXTFuvuS8DQ6TVsrE5RsQ==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.42.251.67])
  by p00-icloudmta-asmtp-us-east-1a-60-percent-12 (Postfix) with ESMTPSA id
- 4411F1800173; Mon, 23 Feb 2026 08:37:41 +0000 (UTC)
+ E2C1F180020F; Mon, 23 Feb 2026 08:38:36 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Cameron Esfahani <dirty@apple.com>,
@@ -49,40 +49,37 @@ Cc: Cameron Esfahani <dirty@apple.com>,
  Pedro Barbuda <pbarbuda@microsoft.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v5 02/27] target/i386/hvf/x86_mmu: Fix compiler warning
-Date: Mon, 23 Feb 2026 09:37:08 +0100
-Message-ID: <20260223083734.48533-3-mohamed@unpredictable.fr>
+Subject: [PATCH v5 25/27] whpx: i386: inject exceptions
+Date: Mon, 23 Feb 2026 09:37:31 +0100
+Message-ID: <20260223083734.48533-26-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.50.1
 In-Reply-To: <20260223083734.48533-1-mohamed@unpredictable.fr>
 References: <20260223083734.48533-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA3NiBTYWx0ZWRfX6izIIEoSp/CE
- 0EI5E8ec5spsPrf4m/gey6gXw4bL/yTGLcsADkUmPUA7F6Mgb9HbQzN/Oa11e89ETOtC/MlqCPF
- B2gaE/mkvjDZUU2nPvpdU4RDss31Xu9DmT7T9CdsfHCdgLQAGKHp+ZLWokuWPDi82X7WzLvKqLZ
- I6TuwG/la016+dYs0yzaghBGFw1fh0WO0L6Y7sehpAjtgd2NhQbzBe73zo4iwpazgrt+rjlq5Eb
- /CrXGpErNJuyPij+GsDzGQnfPnHe0KsrQY8bwhkpDl8yXvrz9Jz5YiILqgqdU8JBvDhSxbYa5Zc
- aVOf4fjzKkwpWk2pq9UWyLPiSUyPh5VrdiEAaAG3kgE9dVauECJoZHPAxZmi48=
-X-Authority-Info-Out: v=2.4 cv=Lq2fC3dc c=1 sm=1 tr=0 ts=699c11da
+X-Authority-Info-Out: v=2.4 cv=Oa2VzxTY c=1 sm=1 tr=0 ts=699c120f
  cx=c_apl:c_apl_out:c_pps a=YrL12D//S6tul8v/L+6tKg==:117
- a=YrL12D//S6tul8v/L+6tKg==:17 a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10
- a=VkNPw1HP01LnGYTKEx00:22 a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22
- a=pGLkceISAAAA:8 a=KKAkSRfTAAAA:8 a=VwQbUJbxAAAA:8 a=VIwFDEqWtveBFbEZvHwA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: VJE0R0qLrOl7HCvPaBqG9EbgsSeLYacM
-X-Proofpoint-GUID: VJE0R0qLrOl7HCvPaBqG9EbgsSeLYacM
+ a=YrL12D//S6tul8v/L+6tKg==:17 a=HzLeVaNsDn8A:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=Mpw57Om8IfrbqaoTuvik:22 a=GgsMoib0sEa3-_RKJdDe:22 a=41a--giXCHF2Chj7mBYA:9
+X-Proofpoint-ORIG-GUID: 5coSjpzfVgGBt7uM4Odq5S6-EyRCpJg2
+X-Proofpoint-GUID: 5coSjpzfVgGBt7uM4Odq5S6-EyRCpJg2
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA3NiBTYWx0ZWRfXwXbCYBfcwm9o
+ TJZAIu7o3Tg1oh/5lwNzLwSLSim78zDlseUM7TZOtmRKKsO0YNbDEPCRW7jk0PEc0HNLvQDwXCe
+ NtzfKoLMTfSJfDyTyQlAt82J+HI9ZIz4bm0QdlyazMOrgZbyVj3Iqun2Y08sHaWzmzpqSuXveDi
+ kv4uGzaE1dq+UrTiRowD0zyDwNHPLrsDYv/olW8qVLOore5J0r/q0f2CpE74N1CYDUedRrZm18D
+ dp8DkDNvuAbeyrRXLswpaHVg1raNA3piPAKZEthi96Yf1+NUFplvxtAy1ndOiCtijKh+eqRp/xC
+ Wwj3UpNTioPt2XKH747+3D5bZkAD4cLjNNQ0hh1tv6iJaeq8STjq/a1sa5F2Vs=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-02-23_01,2026-02-20_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
- spamscore=0 mlxscore=0 phishscore=0 adultscore=0
- suspectscore=0 bulkscore=0
- clxscore=1030 lowpriorityscore=0 mlxlogscore=938 classifier=spam authscore=0
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
+ bulkscore=0 adultscore=0 phishscore=0
+ lowpriorityscore=0 clxscore=1030
+ mlxlogscore=994 spamscore=0 mlxscore=0 malwarescore=0 classifier=spam
+ authscore=0 adjust=0 reason=mlx scancount=1 engine=8.22.0-2601150000
  definitions=main-2602230076
-X-JNJ: AAAAAAAB9nhMTH2M4bLAGE37Al954JpEe++M/0ZMiJp6Any4Da94EU1065ck6oqgPpow0CTRv0WqlIqADm1H9XNvHbykYw8CU5EKt+A9rnqcjb50X2uyExZ3Rt476ujDwLJfJZdaXtp7iAwn/4TbreMLE9wmN2+wenECeWOp4aqOc26c/V6rxpxKoe29M2/Gqsh5VLd0a5cqvKup2vuYbcmUXutBHhkvB4aM4guUCqYX6mHjxvkpZiJxtFgRGgh1PNfzoced/KqEXiPpu1TfbHQZMPUg6PeLRR+yFs6KNpyfyYRmdVVHuNLOUhQ9aQPvO7JPP5VJMN/XTYvs6wSNlrmA+/RKrq/5UtRUEJ+nHShAwYu8cesRnJcXybMmEV1DkM/Ll3Zq/NsPUoKEY0xWatFMw7Lp9lMCJzUxclBwa3ZtnDsUnqJpad/wxOQIdDEV9Uz75gS9F5RvvYWeBBARBGABAp/B12+PfMbjSvWwSdsRhWjrCvEidfjFPsoBNJUi06YsBDOeohFCmZFiXsBNAl1epNPilgNDfWbvV9nf9+35geZDONp/keq5QOpjMMJvCmxDmAVL0J/roGLasT8Medn63jY2Fe2TiU7z6aaiLjBhQhCBOIe8Z3lRzanpd+WZmkaRuOV/Nut+BWrfPbB1B78GZ7WdJTb2KESp1gCBlTGO5SbJZX0+pQJiXK+b/xn7cdJWyulKm+KpPT5ROXmSH0K1O3d4MH8ibEntbNkRBSuB2lzXpRNf/9d2BURprNIUeHomYQL8wLWnFvAYcqEqQIJUKjKJywhM3lm0Ip2OEy1oDtw/QnD1RS480OgTwtO7M0mRbSOQU1AyCS3kLOMDSYzH
-Received-SPF: pass client-ip=57.103.78.162;
+X-JNJ: AAAAAAABIitEgpudpvkyAlF4bZqpvR56Ew6qniLQmuNGrzZb0cdBU4usMENdAit3Fk0YYY9rNXId7rkcbYESJO6U2lCsz7sbgQbpK3Ij7W4X8m4GFuREWJw/hLvDhgz6jJyjQXSwaOKYYOBuL/nizFr74w1x4J0BPhTgzaMLfpt7uH70E2IYjKPgw2TWvE1LaurlIBHOrPJdSZm5fWKYDaSR5iNjRICE+owJfwl2DXKSA2fOblmvN9F40H1wcVf6UIxE2xmz8CJU4p0C8MtiNJ7lHi6dlEuBmmjFs42kl0Dww+NI+IPp/ajvo9s5fhFOlv1OiTBnDBMrhF67gfPf3NcTaStTSpW+N2MeM9wGJD0hDC8UBUGzCBRe2Atjc4Xf1aC2Afulbk6bLNdjlc+mIxazK2fTxZXoJjksuzRKBwR5TS6S9fnup2OIm5dI1a83rMY6p8kq+cI50ACP0sDPv9G3CJtM0T7VEstbX3SA4SphspD6AQ+jUbUS5KI7ZBitVixW1LSlkTgqa4Q1mZRn2kx2pm4qh98LF4Dkc7LyDYf6fbvElfYDDyjzHfvbkh1YaT7Nk7J8aAhR8eX1/r0Uf6sXQITTjRl35vySvLKrfdI+zeOGtQWAVdTH8oCg06mVUje1j8OVdhj4wEUcOgPjGH6v1UMHYrw7ozf6VuzENWK7S0RbpjdTwT7HYxGZf1cHVkxX+dVdn15VNyzWM8ybfZjIR8TTGo6LtDl8a2TgFjmxPhFRuO/1l1iBS2TQCcKwVfhxEj+mkMmQe0Gmnr/kwuMkuc7IgjY=
+Received-SPF: pass client-ip=57.103.77.173;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -4
 X-Spam_score: -0.5
@@ -106,65 +103,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Bernhard Beschow <shentey@gmail.com>
-
-When reusing the code in WHPX, GCC emits the following warning when compiling
-for i386-softmmu under MSYS2:
-
-  In file included from ../src/target/i386/emulate/x86_mmu.c:20:
-  ../src/target/i386/emulate/x86_mmu.c: In function 'vmx_write_mem':
-  ../src/target/i386/emulate/x86_mmu.c:251:25: error: format '%llx' expects argument of type 'long long unsigned int', but argument 3 has type 'target_ulong' {aka 'unsigned int'} [-Werror=format=]
-    251 |             VM_PANIC_EX("%s: mmu_gva_to_gpa %llx failed\n", __func__, gva);
-        |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~            ~~~
-        |                                                                       |
-        |                                                                       target_ulong {aka unsigned int}
-  ../src/target/i386/emulate/panic.h:34:12: note: in definition of macro 'VM_PANIC_EX'
-     34 |     printf(__VA_ARGS__); \
-        |            ^~~~~~~~~~~
-  ../src/target/i386/emulate/x86_mmu.c:251:48: note: format string is defined here
-    251 |             VM_PANIC_EX("%s: mmu_gva_to_gpa %llx failed\n", __func__, gva);
-        |                                             ~~~^
-        |                                                |
-        |                                                long long unsigned int
-        |                                             %x
-
-Fix the warning by reusing the target-specific macro TARGET_FMT_lx which exists
-for this exact purpose.
-
-Fixes: c97d6d2cdf97 ("i386: hvf: add code base from Google's QEMU repository")
-cc: qemu-stable
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Wei Liu (Microsoft) <wei.liu@kernel.org>
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/i386/hvf/x86_mmu.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ target/i386/whpx/whpx-all.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/target/i386/hvf/x86_mmu.c b/target/i386/hvf/x86_mmu.c
-index afc5c17d5d..fe44d2edf4 100644
---- a/target/i386/hvf/x86_mmu.c
-+++ b/target/i386/hvf/x86_mmu.c
-@@ -244,7 +244,8 @@ void vmx_write_mem(CPUState *cpu, target_ulong gva, void *data, int bytes)
-         int copy = MIN(bytes, 0x1000 - (gva & 0xfff));
+diff --git a/target/i386/whpx/whpx-all.c b/target/i386/whpx/whpx-all.c
+index 561a48206c..0259782a82 100644
+--- a/target/i386/whpx/whpx-all.c
++++ b/target/i386/whpx/whpx-all.c
+@@ -1506,6 +1506,26 @@ static void whpx_vcpu_process_async_events(CPUState *cpu)
+     }
+ }
  
-         if (!mmu_gva_to_gpa(cpu, gva, &gpa)) {
--            VM_PANIC_EX("%s: mmu_gva_to_gpa %llx failed\n", __func__, gva);
-+            VM_PANIC_EX("%s: mmu_gva_to_gpa " TARGET_FMT_lx " failed\n",
-+                        __func__, gva);
-         } else {
-             address_space_write(&address_space_memory, gpa,
-                                 MEMTXATTRS_UNSPECIFIED, data, copy);
-@@ -265,7 +266,8 @@ void vmx_read_mem(CPUState *cpu, void *data, target_ulong gva, int bytes)
-         int copy = MIN(bytes, 0x1000 - (gva & 0xfff));
- 
-         if (!mmu_gva_to_gpa(cpu, gva, &gpa)) {
--            VM_PANIC_EX("%s: mmu_gva_to_gpa %llx failed\n", __func__, gva);
-+            VM_PANIC_EX("%s: mmu_gva_to_gpa " TARGET_FMT_lx " failed\n",
-+                        __func__, gva);
++static void whpx_inject_exceptions(CPUState* cpu)
++{
++    X86CPU *x86_cpu = X86_CPU(cpu);
++    CPUX86State *env = &x86_cpu->env;
++
++    if (env->exception_injected) {
++        env->exception_injected = 0;
++        WHV_REGISTER_VALUE reg = {};
++        reg.ExceptionEvent.EventPending = 1;
++        reg.ExceptionEvent.EventType = WHvX64PendingEventException;
++        reg.ExceptionEvent.DeliverErrorCode = 1;
++        reg.ExceptionEvent.Vector = env->exception_nr;
++        reg.ExceptionEvent.ErrorCode = env->error_code;
++        if (env->exception_nr == EXCP0E_PAGE) {
++            reg.ExceptionEvent.ExceptionParameter = env->cr[2];
++        }
++        whpx_set_reg(cpu, WHvRegisterPendingEvent, reg);
++    }
++}
++
+ int whpx_vcpu_run(CPUState *cpu)
+ {
+     HRESULT hr;
+@@ -1600,6 +1620,8 @@ int whpx_vcpu_run(CPUState *cpu)
+             whpx_vcpu_configure_single_stepping(cpu, true, NULL);
          }
-         address_space_read(&address_space_memory, gpa, MEMTXATTRS_UNSPECIFIED,
-                            data, copy);
+ 
++        whpx_inject_exceptions(cpu);
++
+         hr = whp_dispatch.WHvRunVirtualProcessor(
+             whpx->partition, cpu->cpu_index,
+             &vcpu->exit_ctx, sizeof(vcpu->exit_ctx));
 -- 
 2.50.1 (Apple Git-155)
 

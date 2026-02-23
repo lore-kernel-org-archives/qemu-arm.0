@@ -4,85 +4,215 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AD5EEA4FC1
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 13:53:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D502CEA4FC9
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 14:28:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuWMx-0001fa-WA; Mon, 23 Feb 2026 08:53:04 -0500
+	id 1vuWug-0008GZ-2B; Mon, 23 Feb 2026 09:27:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vuWLA-0006Fs-DW
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 08:51:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <lucas.kornicki@nutanix.com>)
+ id 1vuWI9-0008Te-NS; Mon, 23 Feb 2026 08:48:09 -0500
+Received: from mx0b-002c1b01.pphosted.com ([148.163.155.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1vuWL5-0007ac-9s
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 08:51:11 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1771854662;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=v/djo1cSnBgWLBAGa3V5cosB4hdsRmJsPf7agbTYpJ8=;
- b=R1B0GG6vui6jqwQo3CvEFWvncICmrTU8aWk8Bg4Qi7B3+9HJkWwC9qZgBbsRGGn1jdjPxX
- Iib2XNV/AdYg9Bc+Gnjv+HTLSwsW6W+FhGwhfzeDJnCugskVlqYhI37ITPEkVjppJl1TXo
- Nr3F9ot4xaoEEzxmKWXmvWZYHbUk8to=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-683-h73LWp88OXi93iMMESZRZQ-1; Mon,
- 23 Feb 2026 08:50:57 -0500
-X-MC-Unique: h73LWp88OXi93iMMESZRZQ-1
-X-Mimecast-MFC-AGG-ID: h73LWp88OXi93iMMESZRZQ_1771854655
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A3D8C18003F6; Mon, 23 Feb 2026 13:50:55 +0000 (UTC)
-Received: from localhost (unknown [10.45.242.25])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4600F1955F22; Mon, 23 Feb 2026 13:50:54 +0000 (UTC)
-From: marcandre.lureau@redhat.com
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Christian Schoenebeck <qemu_oss@crudebyte.com>,
- Thomas Huth <huth@tuxfamily.org>, Alexandre Ratchov <alex@caoua.org>,
- Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-arm@nongnu.org (open list:Xilinx ZynqMP and...)
-Subject: [PULL v3 73/85] audio: replace int endianness with bool big_endian in
- audsettings
-Date: Mon, 23 Feb 2026 14:47:14 +0100
-Message-ID: <20260223134731.2377432-74-marcandre.lureau@redhat.com>
-In-Reply-To: <20260223134731.2377432-1-marcandre.lureau@redhat.com>
-References: <20260223134731.2377432-1-marcandre.lureau@redhat.com>
+ (Exim 4.90_1) (envelope-from <lucas.kornicki@nutanix.com>)
+ id 1vuWI7-0006z1-1S; Mon, 23 Feb 2026 08:48:05 -0500
+Received: from pps.filterd (m0127843.ppops.net [127.0.0.1])
+ by mx0b-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 61NAsW221384749; Mon, 23 Feb 2026 05:47:46 -0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
+ cc:content-type:date:from:in-reply-to:message-id:mime-version
+ :references:subject:to; s=proofpoint20171006; bh=sFidcEgJt/JCxh7
+ KpHlfO0h5T2+j0q9DYmb0cms4ehM=; b=EJL9RxJenvpSdYfUuM5wxVBAPpDx2x/
+ 5NL3q0+ciWIZG2U+vrSMu7qZMxC4klqzCgUDBad7Yp0E3UftjHHq06sInR0mrbKT
+ 2WRQqameH9EDECNN9SxQFMFn66f6Ahlz+DuDwSHfj6owIs85cwv1hTTBASEdZMw2
+ mHEWsZ5x6RfqGY8huNQoNpBCFrPMclIQgik4r2mr+Z9OoyZP7Qwlxw0c7xQGjLgk
+ aM7oN8q16IoTOeEbBOgqagn4Djq2fUkISroMh8kl8Rd4DG8CYWterMLZMQFKijA8
+ M0OOL+TETBuopi94Y3ivVTJ7izlaHIDv8mdfVaWm5vWOTb4SDCLjPcg==
+Received: from co1pr03cu002.outbound.protection.outlook.com
+ (mail-westus2azon11020096.outbound.protection.outlook.com [52.101.46.96])
+ by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 4cfbpjknkv-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Mon, 23 Feb 2026 05:47:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=eMZc271oJp4J8dvJMH0Mvdq2jPbdEadrMdl5hKdT254ez6h6FuYoWlbdHEHahfemy/4qxUulIhff5WAcyioa4nSqAOy2Q9RBEqAuPuedDC/2pRCTOxQ1LP0gc5j7H8N/wMo7qWhd9ZGQA7AQixImFUnQ9/vDhtLu7fuGWJDElhhTJiHIe5YeKCsoAefI4O7pSYfXZLnIlOi5uew0CTvIaMeX4o5OOp2XDUH09g+nRQAkSyDpqpSq9snPrPI/grDY2kmioN5OZ57DvTLhsmWRQ4fZcKyUwqVrMzWJ2+tQmemjwMoG9JGss0idATV7zntdTj32bdnnLSE/Tp/AZmqewA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=sFidcEgJt/JCxh7KpHlfO0h5T2+j0q9DYmb0cms4ehM=;
+ b=t7CDqciHqwG/UqOWp9n8bt5LhP5ix33bv2rjxMRBIwcCxUXgq+2zT6MG+B7S5kPU5jE8niqNse3hV8lJOKt/7JAJZl32W2oiOwdje8L8tiHcfJNGkGdbyx5bYISt2vmeE1kbf4R7A9eaeTfz99N64fd2uq+7o8VyNcmZ/NHTb51hocpXcYtPNxyWH9xd9wDOwRGggcxdsIbVTaxPXHJRVHW9dxYH7+6fuXt1YIcb5oHY/gL7qvBeBBtAaWpZKj+MIxwZtomftuPqC55u8W7uoILpsK0BIR4GJEFSnNALrGXiRSdfVGK0Y83AfSKhrmFZih7BTbbxgSDU61RsaWia9g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
+ dkim=pass header.d=nutanix.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=sFidcEgJt/JCxh7KpHlfO0h5T2+j0q9DYmb0cms4ehM=;
+ b=eNumSAgD1VgDA91r938vpI56fSV1OvkWpHDp8MPeQz1YzaSIeVHEox8x7Jgt3zOvtx0rHQ/gdIQyxy5ZhjUukTJ0q37tFsC7Ot8ky761at4RgPCxHyqoOzYMrbG8tZuU57oKMgPs7I+kli1RFq4gvTDUWnqgSbzYv5ApvWZMvK+Zf3dGwEKcxX8W8t7ZUimniDY85oYYfO0iNfTl58ChkTfCEZ8x2aE8ImOTJdiucfDRTZSly65+0Dy670550aEcgrRwBxi0WVFanSFT/ZNkaGDdM7HhO1Gfzmbot7cvOMd20P7r7MQcDr49sW9VngqZ1FxRQxXqMjTm65VMWkdjRQ==
+Received: from DM5PR02MB3831.namprd02.prod.outlook.com (2603:10b6:4:b4::21) by
+ CO6PR02MB7635.namprd02.prod.outlook.com (2603:10b6:303:a7::16) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9632.16; Mon, 23 Feb 2026 13:47:44 +0000
+Received: from DM5PR02MB3831.namprd02.prod.outlook.com
+ ([fe80::b0ba:9ac1:4aed:805d]) by DM5PR02MB3831.namprd02.prod.outlook.com
+ ([fe80::b0ba:9ac1:4aed:805d%3]) with mapi id 15.20.9632.017; Mon, 23 Feb 2026
+ 13:47:44 +0000
+Content-Type: multipart/alternative;
+ boundary="------------Hk08N6MiYdTyfrdaaAH0TjB1"
+Message-ID: <84b3b9fc-d448-4da3-b76f-de72c4e775fd@nutanix.com>
+Date: Mon, 23 Feb 2026 14:47:39 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 2/2] target/arm/hvf: Sync CNTV_CTL_EL0 & CNTV_CVAL_EL0
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alexander Graf <agraf@csgraf.de>, Cameron Esfahani <dirty@apple.com>,
+ Mads Ynddal <mads@ynddal.dk>, Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+References: <20260118215945.46693-1-philmd@linaro.org>
+ <20260118215945.46693-3-philmd@linaro.org>
+Content-Language: en-US
+From: Lucas Kornicki <lucas.kornicki@nutanix.com>
+In-Reply-To: <20260118215945.46693-3-philmd@linaro.org>
+X-ClientProxiedBy: WA2P291CA0022.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:1e::24) To DM5PR02MB3831.namprd02.prod.outlook.com
+ (2603:10b6:4:b4::21)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: aMZGO0jgRYNq_QzAlamcq28cus0iR5cTlQTwY-SUwEM_1771854655
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM5PR02MB3831:EE_|CO6PR02MB7635:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4e1fcb80-5c8c-474b-f324-08de72e21ec3
+x-proofpoint-crosstenant: true
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|366016|376014|1800799024|8096899003|7053199007; 
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?WTgzZUU0USsrMVpMUVl5UmR2WkFObHR1U0Nza3dxdk5qRUV5TzB1bmxNRUdt?=
+ =?utf-8?B?Q2x1bVVDUWc1SS9yUDNCSU4vVHZ0YUFOR2FSMDF5RElxenBnNTVUOUtqM0oz?=
+ =?utf-8?B?UHg3RnhUcDF4R21zYm1QS1VsUnFvcjBvbmlWYzk5RlFrcGQ0UmFwUFRJS1Zq?=
+ =?utf-8?B?dmFpdWlveHVGUEtuRnJ3Q29BQmpGWUdIMGU1YkFKUjNBcTFCWU9HaXllbnhr?=
+ =?utf-8?B?V09HSkl6Mmt3azhFYlJXMWtGWGJSWDBGWGpHcnhOVUJ3Q3BmNGpESGxjaG5H?=
+ =?utf-8?B?aVJ4VndaYXkyN3NjNTJ6WS8zMW5QSFRUUUtSMmdLcXdzZkhMdTdubjhQd2pz?=
+ =?utf-8?B?QXVZYjZ1L3FCamMwZGhQQWllY0RQOGhaUGFla1JoS253OCszYUFyVU5uVzlU?=
+ =?utf-8?B?QVFSU1NIcXNFSm92eE9BU2k2ZDMxNHNJbjVqVDBXQUZ0cHYzOTJ6L0pLbGRr?=
+ =?utf-8?B?dFRUZVFUc2svTWxVTWVmUHZuRU5DT2xaeDIwamtuY2JTNmJjR3RZVWcrSm96?=
+ =?utf-8?B?My9raFpUdG1ES3JyUlFOWFIwelFscmhHVldzZEZIVFVtT3l0UFgxcWZ5UVYw?=
+ =?utf-8?B?c2s4bVgvZUJ1YWlQK1lpS29mUk83cm1rU1NvZi9TeTYvbkYzYnB6V2V2NDFH?=
+ =?utf-8?B?cHYwQkVJZjhjbldxU2xDOUhUUjFjeE5rNlMybWlibVRJY3h0VTZKSDFNcEF0?=
+ =?utf-8?B?OER3a0tDSGw3bDVmM0VzU0pmdFRlbXJGVVdKY2FDc0VHb0d3eVpsd1BkVEN3?=
+ =?utf-8?B?cDgwVkFPM0h2TlpDamhKSE5ybXlQY0pjNFZxWkxkb2EwS0F3M0RwSkI4THBO?=
+ =?utf-8?B?Y28zUDlyMVNGQmlVMFdLTTFyQnlWZ1YxYjZiWVBtTGwvLytmdkFLL3dzV0w1?=
+ =?utf-8?B?OEFkUnBEY0xyeVo0ejBIQnNEdFFVc0k1QnNITkxRRUZzTUloK1hSU0c2aVk5?=
+ =?utf-8?B?UVluQ0hydHlwUERVRjFmVDQwdFdYbDR5b0NIVVo5SVN6TS9RaUNTbVpZT1Rm?=
+ =?utf-8?B?eW8yVlpOWW1QQSsrTVdnSzZpS0x1dTBhM0Q0RWkrSnNaRFdhY0dBeHBRQ1Ar?=
+ =?utf-8?B?Z1IrZENPK2lGV04rVzZUaC9UcTJod2lIcWt0M3VJbm1rM0RYdzc4eFpzSWRi?=
+ =?utf-8?B?TGF0aWVrdTg2UVhIUWhqWitNZFlWYm9sYjFyTTA1WmNJK1RuNjBjbTVzb2Nt?=
+ =?utf-8?B?eFdHdGdFL1d2bG5WakxzeVVGTWJhcW95MnR0Rm8zL0xDcm9jR3RMOEpVdlkx?=
+ =?utf-8?B?ejgvYVVyVktudEpSVmk1emp1OGNrTEd6c0cyRTd3YW0yWC9oalk4bjV5cTF5?=
+ =?utf-8?B?bzBOa2VUMThKcmUvUGI2UzR3TzZ4eW5ZUFpaSXJNTFRXMUllY2ZKYjFZOURy?=
+ =?utf-8?B?MUhDWE95SktUcnNQeFNGQXRzS3ZoeGlkK282RmhKTEd3Y3VsdGFta2RoWDFx?=
+ =?utf-8?B?YVEvd2lVSStGU05MY3gwLy9IS2xMbFJFVDhNNURkaWovVHhXNjAwczY1Nkk0?=
+ =?utf-8?B?bkc3WkFrMmJiWUp5dkh6dy9lTkhrVkNaZlQ3bDh2VzZaa0FOcVZwSldEUDRj?=
+ =?utf-8?B?R0c1TWd3WkxZYUh2REVCRjkrQlpsdklDYi9uY05PYS9JUVRIYXJLT2FaQzgv?=
+ =?utf-8?B?VHZObTllNXNwMnhmbWVFMWYzU0ZpQTJwSkxVWkxPRFEvR1h0cjhuSEVtU281?=
+ =?utf-8?B?d09pNHcyK0JCWTA2ODdGRjhqSlV2M0hyWDFTTER0Vit3cVpnaElOampid1BV?=
+ =?utf-8?B?a1MrNjhjUkYwMzBhbGE3dDJ1Z29BejFxT09WdC93R3dkSGZscDk1RzE1TlUv?=
+ =?utf-8?B?aTQ1cHdjbEFOeE1nZzBRbkEvVFJUNHVaNnJGSU92UVNrdVZLL2JsdDB2UkZM?=
+ =?utf-8?B?TCtyaGk0UGEyVVY2UmxWQjhkd1lKa1pUWkM1d2xmSHZXTVpVRUt3YUx0dUdC?=
+ =?utf-8?B?Z1hrUU9YUU92Y2VBM2hxRlBFVEJWOWNDNysvWkcrRC9pZkZ1RXgvdkFJVVZJ?=
+ =?utf-8?B?RmtUd0pJSjdVOVpxdzVCbXdsMEw5dDFJbEdlU1h2ZCtKUHU2MHFnZjhRQ1FL?=
+ =?utf-8?B?TmlxK29MT2Nkd2RaRlMxeTN4TDhRYWkxWVRyTTBrd1FkM3IrekpvVmFXSjlr?=
+ =?utf-8?Q?wcF0=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM5PR02MB3831.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(376014)(1800799024)(8096899003)(7053199007); DIR:OUT;
+ SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?QzVVaWVrL25OMTd5ZTRTRTFCNUFKY05hSitscWEzQTlGd09WcktlaVNPeXRn?=
+ =?utf-8?B?ZWh2eWZrWTU2K0JDSWZlbnRNU1RJRFVQV3h0cGdxZGgwcTM1NkNINU5TNUg0?=
+ =?utf-8?B?OUoxTS9WT0M2U0NLZHZqNjNPbGVmRkpCT3IxNWgzb2pmV0dxTTErVTB6MXgw?=
+ =?utf-8?B?UXd4RENUdUFnMG1DUHVpZGp1UVZZS2NaV0czM0VVdWJYSjV3cGRqNVR5Wncy?=
+ =?utf-8?B?cldCL2tJY3ROUDdxVGl6TTdXcFJ1NGlYVndnZ3ZoRm1paWZXZ3JYaHVLSEN0?=
+ =?utf-8?B?ZUwraVBwN0tUcTlHWkVNY0xqc3pwbU9iRWxGbHI5ek1xdHJqYmp2UVU3R2NG?=
+ =?utf-8?B?VTN2dFFDU3BUdjlsWTZiUUMxUlJ5dlUyQ205dFMwK1R2MXNRNTd0cjFMdzRK?=
+ =?utf-8?B?d3ltWXJvZXlidFRHSVp5QXB3Q21jZW5QWjFhcWxZdjl1ZFZnQnE1VDZKYTZR?=
+ =?utf-8?B?YzZFeEVEdVdYN3plU1RSSlJKUVlqQXR6TmpreFEvckxqVm1GUENSa2k0dHMx?=
+ =?utf-8?B?M3lwRUlmWXVFczZRWEhPSjZQL04xdytYUDJqWTRuSEt3bzV1d3pndTZ4SFIv?=
+ =?utf-8?B?RjVKVy8veTg5YURjaEtEWnRzYkczTlZwRUwwUk9Ic3YxRldKZE1mRXpEcnNP?=
+ =?utf-8?B?Uk5qdnU4bmZZeGxvOHM4LzlSaWY5L2pZWTIzNkVFem9mZW1qejBDc01uclBD?=
+ =?utf-8?B?SDFtTjdyQmw0K0dCb2h4L2lLR3VCSEIyZ3Z5MG1LYTF5Mm02UWE3b2RPVWFT?=
+ =?utf-8?B?NEhCQnAzeW9EOUE2dlo5VEw5L0dsUVVVTnFjMGc1c3VwSXpZOUh0NHZGMTdW?=
+ =?utf-8?B?MUpKUVlvT3VMVjlTMCtZN0RBT0hhL0dsNTRIRVBwdU5iYis1eXdEMlBvYW83?=
+ =?utf-8?B?emE2K0U4RlJJdlFlbkp0WWo1a0tjVVl2UWVRditoc1F2Y3VrZ3hXQnRFL3hL?=
+ =?utf-8?B?TTBKKzVSa3dRSG93WlpkVklpbWpOLzdHaGs5NCs4Uk1ZL0p3WCsxdWx2SXpq?=
+ =?utf-8?B?YkpDYUlFZDVWL2RJQUZ6MlVaQ0xQN1pURFBiMkgwbk1TbDF2aG01ODJsalBU?=
+ =?utf-8?B?NFFrenRVU0VERjFTRVlWNW5QQk9NK3VJVmpPZ2ZIWFBYUS9GYzVxc1JTNEg2?=
+ =?utf-8?B?NEZndWMyOUl6RjBiK25FbnNHK2hCdlVUdG9wNTFZVG91dG90VVdPWWtvVlJZ?=
+ =?utf-8?B?ZTNnQWdpRzQwTVdtRjdxZmpDS2hZOHgzdEZRT1FjSEU3QzNJY3NKUWxjMkdU?=
+ =?utf-8?B?TzBVM00vMW42czNiNXMrVTVOZ3BLU2lCbmlZN3g1NFRVN1VtSkpaT2RZM2h2?=
+ =?utf-8?B?N0cwMEdkWlh6QzBZWjRaYmQzcWMxRXUwdUx2Z3h4SElaOHUzRU8wT01ZMXhh?=
+ =?utf-8?B?NjFCbmgyYitsaWZuNDBtSFRlcXlhemU2eWNpVmZvVHF2RzhiOFZhS0ZJRElD?=
+ =?utf-8?B?QVhMTUR5RjJKRkhDRG1RV1JDeEl4WVpDQ1NHL2pUNHJ6dTBJZWpEVWRXdHFh?=
+ =?utf-8?B?TC9GM3FrUVFtZHpac3MrU2twcWRzeTN0cXBUS3ZuMXVSVzNCNXdWd1pqL0R1?=
+ =?utf-8?B?YWlza1RyWFEzbnAvK1c1M0hLZ0c2SGNuZlNuU1FwdWdQa0E4MTlheThFQi9E?=
+ =?utf-8?B?ekNyTmIyYkF0c05RM2N1YVgzNnhKdXRxa0Z0dnZtME5jSmRqUUlSNzRnQWRG?=
+ =?utf-8?B?V3ZMaVVlTkx5UEZKOTVOTzVqcUQ3enFrQ3FVZmc5aVBkalowY084VXBaT0dR?=
+ =?utf-8?B?ZFhJNi81VzdFaUt3YWRTMHVkeDJaVDNkSXUwTS93UTRuS05DWHJ3TkNKUDM0?=
+ =?utf-8?B?Z0xPa05vQk4xd1VTM2pLMzJjcUxnMllMVVZWd2NPZUJHT0F6cCt3bTFwa0Rh?=
+ =?utf-8?B?Nlk0bnlZQ3VlNkxEQXp0OXFNQU1MNVkxU1R6NkpnN0ZDeUJYamo2VXlmdXAy?=
+ =?utf-8?B?M3BpVGZ6WGFtS0hnanlQbkthQWNYTGVVRVFPOXhvdUZuUEVYa3JPbG14cy9P?=
+ =?utf-8?B?M0dtbFpMMlJVM2JGcDhxb3RmKzVPQVAvdFRpbVViR0s0bkRGbUh6ZVJlbmxN?=
+ =?utf-8?B?ZEFIVTVHeExxQnVjcjdhaVJuNnNQL0ZUelVtK2s2M2V0cGRZT1I2Q1V5WGts?=
+ =?utf-8?B?aC9jRjZKM3pTQkQ2ZWs0R1JUWWZ3VmZUdi9MOVJuaWIzZmY1bUszakdFcEwr?=
+ =?utf-8?B?NEVzelBHbHF0RjB4V3EzVG82dWhrTktQZjV1T3dEQ3lEZDVpUElTdVl6ajdi?=
+ =?utf-8?B?dTJ5ZjR6NTU0anJ1c2hKSEJFUlNJMlh6dnQ1MVRFTDFrekRxbGF3QWpDZllh?=
+ =?utf-8?B?S0crVHY3SG1FUG9MdkhjSGZGOEJvbkpJTUZZQWlPc04xazRDYU5MaHdCMWVi?=
+ =?utf-8?Q?G87DKseuCNRfGQ6U=3D?=
+X-OriginatorOrg: nutanix.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4e1fcb80-5c8c-474b-f324-08de72e21ec3
+X-MS-Exchange-CrossTenant-AuthSource: DM5PR02MB3831.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Feb 2026 13:47:43.9491 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: bb047546-786f-4de1-bd75-24e5b6f79043
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 88122JjjqRzWGW0UQ3gxuto+NKsm4CbJLuHIX4D7d3mzUi+qKBpmfsLzTkpzTxkGJSFr8dydBcwhXOLGv3ncKMHFjlYBC0fFi7igyI8y+IY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR02MB7635
+X-Proofpoint-GUID: zuYXphvjfVEEoXHHKdFn0x9F_vna2A79
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDExOCBTYWx0ZWRfX74t4sj2rTOFU
+ KyHVzo4sa0vTbnum9CqAdyGPdYfOdHx6gGGGoXXCWFZ9xmcpyHUwigp/LEqCD/m774eQMw4TGx2
+ arbncy8j0hmBaN6mVOf6hwCStdTdw+yG9iQejkjt2pniNYQuciE+ajMqdIKkWMToydtGVrcYp7C
+ JSc/qVTxe3P91BR7WnpRZy/tWthyig2A2HgRdBT48xGwX34khYT+agcsLzh8HQGJPij/cX66nsR
+ hyyKDd3878RU1FJ0dECm6RNamhxw8v+YTuei+GPMoHF6k6ln4yfdC+OfI5rBcopLc6Y7Vq1dHji
+ nvwWMFswLxmm+9o8CdJdpm7JwCU7rxS1M8cFQglgNv/4+1gKMY++Kwsj4qFtiNyroz6WG2Bc+Dd
+ Jr5OjXlEt/M8tNCaWv4kfR4zmTxAQRQf7i95u30h1IMvO6fDDB+y81TrlxRoJd6SXHxgoO6a6PY
+ 9BB+VMnd/VU9+sxkopw==
+X-Proofpoint-ORIG-GUID: zuYXphvjfVEEoXHHKdFn0x9F_vna2A79
+X-Authority-Analysis: v=2.4 cv=Jf+xbEKV c=1 sm=1 tr=0 ts=699c5a82 cx=c_pps
+ a=Xk0cAt2nCKMrkR9Vo+L1ow==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+ a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
+ a=xqWC_Br6kY4A:10 a=HzLeVaNsDn8A:10 a=0kUYKlekyDsA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=dEe9Ve2bX-KnNSUMM2s9:22
+ a=KKAkSRfTAAAA:8 a=fFG202kn2beVBYtiD7cA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=vlzWJkapEg366JrjLlwA:9 a=J4wRDfBh26zhZtQk:21 a=_W_S_7VecoQA:10
+ a=lqcHg5cX4UMA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-02-23_03,2026-02-23_02,2025-10-01_01
+X-Proofpoint-Spam-Reason: safe
+Received-SPF: pass client-ip=148.163.155.12;
+ envelope-from=lucas.kornicki@nutanix.com; helo=mx0b-002c1b01.pphosted.com
+X-Spam_score_int: 4
+X-Spam_score: 0.4
 X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_BL_SPAMCOP_NET=1.347, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1.179, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.717,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 23 Feb 2026 09:27:52 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,873 +227,200 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Marc-André Lureau <marcandre.lureau@redhat.com>
+--------------Hk08N6MiYdTyfrdaaAH0TjB1
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 
-The endianness field used an int to represent a boolean concept, with
-0 meaning little-endian and 1 meaning big-endian. This required runtime
-validation to reject invalid values and made the code less readable.
+Hi. I've found this patch to break EDK2 UEFI on MacOS 15.7
+With it applied, the vm is usually stuck on display not initialized, but 
+sometimes it will init and hang on the tianocore logo.
+I've narrowed it down to
 
-Replace with a bool big_endian field that is self-documenting and
-type-safe. The compiler now enforces valid values, eliminating the
-need for the validation check in audio_validate_settings().
+b = hvf_sysreg_write_cp(cpu, "VTimer", SYSREG_CNTV_CVAL_EL0, val);
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Reviewed-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+in hvf_arch_get_registers.
+
+On a related note, I've noticed that when using accel=hvf on aarch64, 
+the cpu usage is maxing out all assigned cores even if the guest is 
+idle. It looks like it's constantly getting woken up from WFI. Could 
+this patch be part of the solution?
+
+On 1/18/26 22:59, Philippe Mathieu-Daudé wrote:
+> Keep CNTV_CTL_EL0 and CNTV_CVAL_EL0 synchronized with the
+> host hardware accelerator.
+>
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> ---
+>   target/arm/hvf/hvf.c | 25 +++++++++++++++++++++++++
+>   1 file changed, 25 insertions(+)
+>
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index fcb7fa3b30c..9ce720793d8 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -200,6 +200,9 @@ void hvf_arm_init_debug(void)
+>   #define SYSREG_PMCEID0_EL0    SYSREG(3, 3, 9, 12, 6)
+>   #define SYSREG_PMCEID1_EL0    SYSREG(3, 3, 9, 12, 7)
+>   #define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
+> +
+> +#define SYSREG_CNTV_CTL_EL0   SYSREG(3, 3, 14, 3, 1)
+> +#define SYSREG_CNTV_CVAL_EL0  SYSREG(3, 3, 14, 3, 2)
+>   #define SYSREG_PMCCFILTR_EL0  SYSREG(3, 3, 14, 15, 7)
+>   
+>   #define SYSREG_ICC_AP0R0_EL1     SYSREG(3, 0, 12, 8, 4)
+> @@ -502,6 +505,7 @@ int hvf_arch_get_registers(CPUState *cpu)
+>       uint64_t val;
+>       hv_simd_fp_uchar16_t fpval;
+>       int i, n;
+> +    bool b;
+>   
+>       for (i = 0; i < ARRAY_SIZE(hvf_reg_match); i++) {
+>           ret = hv_vcpu_get_reg(cpu->accel->fd, hvf_reg_match[i].reg, &val);
+> @@ -631,6 +635,16 @@ int hvf_arch_get_registers(CPUState *cpu)
+>   
+>       aarch64_restore_sp(env, arm_current_el(env));
+>   
+> +    ret = hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CVAL_EL0, &val);
+> +    assert_hvf_ok(ret);
+> +    b = hvf_sysreg_write_cp(cpu, "VTimer", SYSREG_CNTV_CVAL_EL0, val);
+> +    assert(b);
+> +
+> +    ret = hv_vcpu_get_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CTL_EL0, &val);
+> +    assert_hvf_ok(ret);
+> +    b = hvf_sysreg_write_cp(cpu, "VTimer", SYSREG_CNTV_CTL_EL0, val);
+> +    assert(b);
+> +
+>       return 0;
+>   }
+>   
+> @@ -642,6 +656,7 @@ int hvf_arch_put_registers(CPUState *cpu)
+>       uint64_t val;
+>       hv_simd_fp_uchar16_t fpval;
+>       int i, n;
+> +    bool b;
+>   
+>       for (i = 0; i < ARRAY_SIZE(hvf_reg_match); i++) {
+>           val = *(uint64_t *)((void *)env + hvf_reg_match[i].offset);
+> @@ -756,6 +771,16 @@ int hvf_arch_put_registers(CPUState *cpu)
+>       ret = hv_vcpu_set_vtimer_offset(cpu->accel->fd, hvf_state->vtimer_offset);
+>       assert_hvf_ok(ret);
+>   
+> +    b = hvf_sysreg_read_cp(cpu, "VTimer", SYSREG_CNTV_CVAL_EL0, &val);
+> +    assert(b);
+> +    ret = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CVAL_EL0, val);
+> +    assert_hvf_ok(ret);
+> +
+> +    b = hvf_sysreg_read_cp(cpu, "VTimer", SYSREG_CNTV_CTL_EL0, &val);
+> +    assert(b);
+> +    ret = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_CNTV_CTL_EL0, val);
+> +    assert_hvf_ok(ret);
+> +
+>       return 0;
+>   }
+>   
+--------------Hk08N6MiYdTyfrdaaAH0TjB1
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  </head>
+  <body>
+    <p>Hi. I've found this patch to break EDK2 UEFI on MacOS 15.7<br>
+      With it applied, the vm is usually stuck on display not
+      initialized, but sometimes it will init and hang on the tianocore
+      logo.<br>
+      I've narrowed it down to&nbsp;</p>
+    <pre wrap="" class="moz-quote-pre">b = hvf_sysreg_write_cp(cpu, &quot;VTimer&quot;, SYSREG_CNTV_CVAL_EL0, val);</pre>
+    <div class="moz-cite-prefix">in hvf_arch_get_registers.<br>
+      <br>
+      On a related note, I've noticed that when using accel=hvf on
+      aarch64, the cpu usage is maxing out all assigned cores even if
+      the guest is idle. It looks like it's constantly getting woken up
+      from WFI. Could this patch be part of the solution?<br>
+      <br>
+    </div>
+    <div class="moz-cite-prefix">On 1/18/26 22:59, Philippe
+      Mathieu-Daudé wrote:<span style="white-space: pre-wrap">
+</span><span style="white-space: pre-wrap">
+</span></div>
+    <blockquote type="cite" cite="mid:20260118215945.46693-3-philmd@linaro.org">
+      <pre wrap="" class="moz-quote-pre">Keep CNTV_CTL_EL0 and CNTV_CVAL_EL0 synchronized with the
+host hardware accelerator.
+
+Signed-off-by: Philippe Mathieu-Daudé <a class="moz-txt-link-rfc2396E" href="mailto:philmd@linaro.org">&lt;philmd@linaro.org&gt;</a>
 ---
- audio/dsound_template.h  |  2 +-
- include/qemu/audio.h     |  2 +-
- audio/alsaaudio.c        |  8 ++++----
- audio/audio-mixeng-be.c  | 21 ++++-----------------
- audio/jackaudio.c        |  4 ++--
- audio/ossaudio.c         | 22 +++++++++++-----------
- audio/paaudio.c          | 22 +++++++++++-----------
- audio/pwaudio.c          | 30 +++++++++++++++---------------
- audio/sdlaudio.c         | 26 +++++++++++++-------------
- audio/sndioaudio.c       |  2 +-
- audio/spiceaudio.c       |  4 ++--
- audio/wavaudio.c         |  2 +-
- audio/wavcapture.c       |  2 +-
- hw/audio/ac97.c          |  2 +-
- hw/audio/adlib.c         |  2 +-
- hw/audio/asc.c           |  2 +-
- hw/audio/cs4231a.c       |  6 +++---
- hw/audio/es1370.c        |  2 +-
- hw/audio/gus.c           |  2 +-
- hw/audio/lm4549.c        |  6 +++---
- hw/audio/sb16.c          |  8 ++++----
- hw/audio/via-ac97.c      |  2 +-
- hw/audio/virtio-snd.c    |  2 +-
- hw/audio/wm8750.c        |  4 ++--
- hw/display/xlnx_dp.c     |  2 +-
- hw/usb/dev-audio.c       |  2 +-
- tests/audio/test-audio.c |  2 +-
- ui/vnc.c                 |  2 +-
- 28 files changed, 90 insertions(+), 103 deletions(-)
+ target/arm/hvf/hvf.c | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-diff --git a/audio/dsound_template.h b/audio/dsound_template.h
-index af4019bcb34..f9761120875 100644
---- a/audio/dsound_template.h
-+++ b/audio/dsound_template.h
-@@ -244,7 +244,7 @@ static int dsound_init_out(HWVoiceOut *hw, struct audsettings *as)
-     }
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index fcb7fa3b30c..9ce720793d8 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -200,6 +200,9 @@ void hvf_arm_init_debug(void)
+ #define SYSREG_PMCEID0_EL0    SYSREG(3, 3, 9, 12, 6)
+ #define SYSREG_PMCEID1_EL0    SYSREG(3, 3, 9, 12, 7)
+ #define SYSREG_PMCCNTR_EL0    SYSREG(3, 3, 9, 13, 0)
++
++#define SYSREG_CNTV_CTL_EL0   SYSREG(3, 3, 14, 3, 1)
++#define SYSREG_CNTV_CVAL_EL0  SYSREG(3, 3, 14, 3, 2)
+ #define SYSREG_PMCCFILTR_EL0  SYSREG(3, 3, 14, 15, 7)
  
-     ds->first_time = true;
--    obt_as.endianness = 0;
-+    obt_as.big_endian = false;
-     audio_pcm_init_info (&hw->info, &obt_as);
+ #define SYSREG_ICC_AP0R0_EL1     SYSREG(3, 0, 12, 8, 4)
+@@ -502,6 +505,7 @@ int hvf_arch_get_registers(CPUState *cpu)
+     uint64_t val;
+     hv_simd_fp_uchar16_t fpval;
+     int i, n;
++    bool b;
  
-     if (bc.dwBufferBytes % hw->info.bytes_per_frame) {
-diff --git a/include/qemu/audio.h b/include/qemu/audio.h
-index 9e4566d60aa..cff8a334f36 100644
---- a/include/qemu/audio.h
-+++ b/include/qemu/audio.h
-@@ -38,7 +38,7 @@ typedef struct audsettings {
-     int freq;
-     int nchannels;
-     AudioFormat fmt;
--    int endianness;
-+    bool big_endian;
- } audsettings;
+     for (i = 0; i &lt; ARRAY_SIZE(hvf_reg_match); i++) {
+         ret = hv_vcpu_get_reg(cpu-&gt;accel-&gt;fd, hvf_reg_match[i].reg, &amp;val);
+@@ -631,6 +635,16 @@ int hvf_arch_get_registers(CPUState *cpu)
  
- typedef struct SWVoiceOut SWVoiceOut;
-diff --git a/audio/alsaaudio.c b/audio/alsaaudio.c
-index 889240ad0c7..e2290ea814a 100644
---- a/audio/alsaaudio.c
-+++ b/audio/alsaaudio.c
-@@ -666,7 +666,7 @@ static int alsa_init_out(HWVoiceOut *hw, struct audsettings *as)
-     struct audsettings obt_as;
-     Audiodev *dev = hw->s->dev;
+     aarch64_restore_sp(env, arm_current_el(env));
  
--    req.fmt = aud_to_alsafmt (as->fmt, as->endianness);
-+    req.fmt = aud_to_alsafmt (as->fmt, as->big_endian);
-     req.freq = as->freq;
-     req.nchannels = as->nchannels;
- 
-@@ -677,7 +677,7 @@ static int alsa_init_out(HWVoiceOut *hw, struct audsettings *as)
-     obt_as.freq = obt.freq;
-     obt_as.nchannels = obt.nchannels;
-     obt_as.fmt = obt.fmt;
--    obt_as.endianness = obt.endianness;
-+    obt_as.big_endian = obt.endianness;
- 
-     audio_pcm_init_info (&hw->info, &obt_as);
-     hw->samples = obt.samples;
-@@ -752,7 +752,7 @@ static int alsa_init_in(HWVoiceIn *hw, struct audsettings *as)
-     struct audsettings obt_as;
-     Audiodev *dev = hw->s->dev;
- 
--    req.fmt = aud_to_alsafmt (as->fmt, as->endianness);
-+    req.fmt = aud_to_alsafmt (as->fmt, as->big_endian);
-     req.freq = as->freq;
-     req.nchannels = as->nchannels;
- 
-@@ -763,7 +763,7 @@ static int alsa_init_in(HWVoiceIn *hw, struct audsettings *as)
-     obt_as.freq = obt.freq;
-     obt_as.nchannels = obt.nchannels;
-     obt_as.fmt = obt.fmt;
--    obt_as.endianness = obt.endianness;
-+    obt_as.big_endian = obt.endianness;
- 
-     audio_pcm_init_info (&hw->info, &obt_as);
-     hw->samples = obt.samples;
-diff --git a/audio/audio-mixeng-be.c b/audio/audio-mixeng-be.c
-index 931d5b206f2..d05202aabae 100644
---- a/audio/audio-mixeng-be.c
-+++ b/audio/audio-mixeng-be.c
-@@ -135,19 +135,7 @@ static void audio_print_settings (const struct audsettings *as)
-         break;
-     }
- 
--    AUD_log (NULL, " endianness=");
--    switch (as->endianness) {
--    case 0:
--        AUD_log (NULL, "little");
--        break;
--    case 1:
--        AUD_log (NULL, "big");
--        break;
--    default:
--        AUD_log (NULL, "invalid");
--        break;
--    }
--    AUD_log (NULL, "\n");
-+    AUD_log (NULL, " endianness=%s\n", as->big_endian ? "big" : "little");
++    ret = hv_vcpu_get_sys_reg(cpu-&gt;accel-&gt;fd, HV_SYS_REG_CNTV_CVAL_EL0, &amp;val);
++    assert_hvf_ok(ret);
++    b = hvf_sysreg_write_cp(cpu, &quot;VTimer&quot;, SYSREG_CNTV_CVAL_EL0, val);
++    assert(b);
++
++    ret = hv_vcpu_get_sys_reg(cpu-&gt;accel-&gt;fd, HV_SYS_REG_CNTV_CTL_EL0, &amp;val);
++    assert_hvf_ok(ret);
++    b = hvf_sysreg_write_cp(cpu, &quot;VTimer&quot;, SYSREG_CNTV_CTL_EL0, val);
++    assert(b);
++
+     return 0;
  }
  
- static int audio_validate_settings (const struct audsettings *as)
-@@ -155,7 +143,6 @@ static int audio_validate_settings (const struct audsettings *as)
-     int invalid;
+@@ -642,6 +656,7 @@ int hvf_arch_put_registers(CPUState *cpu)
+     uint64_t val;
+     hv_simd_fp_uchar16_t fpval;
+     int i, n;
++    bool b;
  
-     invalid = as->nchannels < 1;
--    invalid |= as->endianness != 0 && as->endianness != 1;
+     for (i = 0; i &lt; ARRAY_SIZE(hvf_reg_match); i++) {
+         val = *(uint64_t *)((void *)env + hvf_reg_match[i].offset);
+@@ -756,6 +771,16 @@ int hvf_arch_put_registers(CPUState *cpu)
+     ret = hv_vcpu_set_vtimer_offset(cpu-&gt;accel-&gt;fd, hvf_state-&gt;vtimer_offset);
+     assert_hvf_ok(ret);
  
-     switch (as->fmt) {
-     case AUDIO_FORMAT_S8:
-@@ -180,7 +167,7 @@ static int audio_pcm_info_eq (struct audio_pcm_info *info, const struct audsetti
-     return info->af == as->fmt
-         && info->freq == as->freq
-         && info->nchannels == as->nchannels
--        && info->swap_endianness == (as->endianness != HOST_BIG_ENDIAN);
-+        && info->swap_endianness == (as->big_endian != HOST_BIG_ENDIAN);
++    b = hvf_sysreg_read_cp(cpu, &quot;VTimer&quot;, SYSREG_CNTV_CVAL_EL0, &amp;val);
++    assert(b);
++    ret = hv_vcpu_set_sys_reg(cpu-&gt;accel-&gt;fd, HV_SYS_REG_CNTV_CVAL_EL0, val);
++    assert_hvf_ok(ret);
++
++    b = hvf_sysreg_read_cp(cpu, &quot;VTimer&quot;, SYSREG_CNTV_CTL_EL0, &amp;val);
++    assert(b);
++    ret = hv_vcpu_set_sys_reg(cpu-&gt;accel-&gt;fd, HV_SYS_REG_CNTV_CTL_EL0, val);
++    assert_hvf_ok(ret);
++
+     return 0;
  }
  
- void audio_pcm_init_info (struct audio_pcm_info *info, const struct audsettings *as)
-@@ -190,7 +177,7 @@ void audio_pcm_init_info (struct audio_pcm_info *info, const struct audsettings
-     info->nchannels = as->nchannels;
-     info->bytes_per_frame = as->nchannels * audio_format_bits(as->fmt) / 8;
-     info->bytes_per_second = info->freq * info->bytes_per_frame;
--    info->swap_endianness = (as->endianness != HOST_BIG_ENDIAN);
-+    info->swap_endianness = (as->big_endian != HOST_BIG_ENDIAN);
- }
- 
- void audio_pcm_info_clear_buf(struct audio_pcm_info *info, void *buf, int len)
-@@ -1797,7 +1784,7 @@ audsettings audiodev_to_audsettings(AudiodevPerDirectionOptions *pdo)
-         .freq = pdo->frequency,
-         .nchannels = pdo->channels,
-         .fmt = pdo->format,
--        .endianness = HOST_BIG_ENDIAN,
-+        .big_endian = HOST_BIG_ENDIAN,
-     };
- }
- 
-diff --git a/audio/jackaudio.c b/audio/jackaudio.c
-index a2f725a3232..d9ae8edc0e0 100644
---- a/audio/jackaudio.c
-+++ b/audio/jackaudio.c
-@@ -531,7 +531,7 @@ static int qjack_init_out(HWVoiceOut *hw, struct audsettings *as)
-         .freq       = jo->c.freq,
-         .nchannels  = jo->c.nchannels,
-         .fmt        = AUDIO_FORMAT_F32,
--        .endianness = 0
-+        .big_endian = false
-     };
-     audio_pcm_init_info(&hw->info, &os);
- 
-@@ -566,7 +566,7 @@ static int qjack_init_in(HWVoiceIn *hw, struct audsettings *as)
-         .freq       = ji->c.freq,
-         .nchannels  = ji->c.nchannels,
-         .fmt        = AUDIO_FORMAT_F32,
--        .endianness = 0
-+        .big_endian = false
-     };
-     audio_pcm_init_info(&hw->info, &is);
- 
-diff --git a/audio/ossaudio.c b/audio/ossaudio.c
-index 81f49f9a7e7..157979e84b4 100644
---- a/audio/ossaudio.c
-+++ b/audio/ossaudio.c
-@@ -160,36 +160,36 @@ static int aud_to_ossfmt(AudioFormat fmt, bool big_endian)
-     }
- }
- 
--static int oss_to_audfmt (int ossfmt, AudioFormat *fmt, int *endianness)
-+static int oss_to_audfmt (int ossfmt, AudioFormat *fmt, bool *big_endian)
- {
-     switch (ossfmt) {
-     case AFMT_S8:
--        *endianness = 0;
-+        *big_endian = false;
-         *fmt = AUDIO_FORMAT_S8;
-         break;
- 
-     case AFMT_U8:
--        *endianness = 0;
-+        *big_endian = false;
-         *fmt = AUDIO_FORMAT_U8;
-         break;
- 
-     case AFMT_S16_LE:
--        *endianness = 0;
-+        *big_endian = false;
-         *fmt = AUDIO_FORMAT_S16;
-         break;
- 
-     case AFMT_U16_LE:
--        *endianness = 0;
-+        *big_endian = false;
-         *fmt = AUDIO_FORMAT_U16;
-         break;
- 
-     case AFMT_S16_BE:
--        *endianness = 1;
-+        *big_endian = true;
-         *fmt = AUDIO_FORMAT_S16;
-         break;
- 
-     case AFMT_U16_BE:
--        *endianness = 1;
-+        *big_endian = true;
-         *fmt = AUDIO_FORMAT_U16;
-         break;
- 
-@@ -475,7 +475,7 @@ static int oss_init_out(HWVoiceOut *hw, struct audsettings *as)
- 
-     oss->fd = -1;
- 
--    req.fmt = aud_to_ossfmt (as->fmt, as->endianness);
-+    req.fmt = aud_to_ossfmt (as->fmt, as->big_endian);
-     req.freq = as->freq;
-     req.nchannels = as->nchannels;
- 
-@@ -483,7 +483,7 @@ static int oss_init_out(HWVoiceOut *hw, struct audsettings *as)
-         return -1;
-     }
- 
--    err = oss_to_audfmt(obt.fmt, &obt_as.fmt, &obt_as.endianness);
-+    err = oss_to_audfmt(obt.fmt, &obt_as.fmt, &obt_as.big_endian);
-     if (err) {
-         oss_anal_close (&fd);
-         return -1;
-@@ -601,14 +601,14 @@ static int oss_init_in(HWVoiceIn *hw, struct audsettings *as)
- 
-     oss->fd = -1;
- 
--    req.fmt = aud_to_ossfmt (as->fmt, as->endianness);
-+    req.fmt = aud_to_ossfmt (as->fmt, as->big_endian);
-     req.freq = as->freq;
-     req.nchannels = as->nchannels;
-     if (oss_open(1, &req, as, &obt, &fd, dev)) {
-         return -1;
-     }
- 
--    err = oss_to_audfmt(obt.fmt, &obt_as.fmt, &obt_as.endianness);
-+    err = oss_to_audfmt(obt.fmt, &obt_as.fmt, &obt_as.big_endian);
-     if (err) {
-         oss_anal_close (&fd);
-         return -1;
-diff --git a/audio/paaudio.c b/audio/paaudio.c
-index 1501b26386a..c9957105543 100644
---- a/audio/paaudio.c
-+++ b/audio/paaudio.c
-@@ -352,28 +352,28 @@ static pa_sample_format_t audfmt_to_pa(AudioFormat afmt, bool big_endian)
-     return format;
- }
- 
--static AudioFormat pa_to_audfmt (pa_sample_format_t fmt, int *endianness)
-+static AudioFormat pa_to_audfmt (pa_sample_format_t fmt, bool *big_endian)
- {
-     switch (fmt) {
-     case PA_SAMPLE_U8:
-         return AUDIO_FORMAT_U8;
-     case PA_SAMPLE_S16BE:
--        *endianness = 1;
-+        *big_endian = true;
-         return AUDIO_FORMAT_S16;
-     case PA_SAMPLE_S16LE:
--        *endianness = 0;
-+        *big_endian = false;
-         return AUDIO_FORMAT_S16;
-     case PA_SAMPLE_S32BE:
--        *endianness = 1;
-+        *big_endian = true;
-         return AUDIO_FORMAT_S32;
-     case PA_SAMPLE_S32LE:
--        *endianness = 0;
-+        *big_endian = false;
-         return AUDIO_FORMAT_S32;
-     case PA_SAMPLE_FLOAT32BE:
--        *endianness = 1;
-+        *big_endian = true;
-         return AUDIO_FORMAT_F32;
-     case PA_SAMPLE_FLOAT32LE:
--        *endianness = 0;
-+        *big_endian = false;
-         return AUDIO_FORMAT_F32;
-     default:
-         error_report("pulseaudio: Internal logic error: Bad pa_sample_format %d", fmt);
-@@ -531,7 +531,7 @@ static int qpa_init_out(HWVoiceOut *hw, struct audsettings *as)
-     PAConnection *c = apa->conn;
- 
-     pa->g = apa;
--    ss.format = audfmt_to_pa (as->fmt, as->endianness);
-+    ss.format = audfmt_to_pa (as->fmt, as->big_endian);
-     ss.channels = as->nchannels;
-     ss.rate = as->freq;
- 
-@@ -541,7 +541,7 @@ static int qpa_init_out(HWVoiceOut *hw, struct audsettings *as)
-     ba.maxlength = -1;
-     ba.prebuf = -1;
- 
--    obt_as.fmt = pa_to_audfmt (ss.format, &obt_as.endianness);
-+    obt_as.fmt = pa_to_audfmt (ss.format, &obt_as.big_endian);
- 
-     pa->stream = qpa_simple_new (
-         c,
-@@ -582,7 +582,7 @@ static int qpa_init_in(HWVoiceIn *hw, struct audsettings *as)
-     PAConnection *c = apa->conn;
- 
-     pa->g = apa;
--    ss.format = audfmt_to_pa (as->fmt, as->endianness);
-+    ss.format = audfmt_to_pa (as->fmt, as->big_endian);
-     ss.channels = as->nchannels;
-     ss.rate = as->freq;
- 
-@@ -592,7 +592,7 @@ static int qpa_init_in(HWVoiceIn *hw, struct audsettings *as)
-     ba.minreq = -1;
-     ba.prebuf = -1;
- 
--    obt_as.fmt = pa_to_audfmt (ss.format, &obt_as.endianness);
-+    obt_as.fmt = pa_to_audfmt (ss.format, &obt_as.big_endian);
- 
-     pa->stream = qpa_simple_new (
-         c,
-diff --git a/audio/pwaudio.c b/audio/pwaudio.c
-index 6a80e5a333e..b70bf0c1353 100644
---- a/audio/pwaudio.c
-+++ b/audio/pwaudio.c
-@@ -365,7 +365,7 @@ audfmt_to_pw(AudioFormat fmt, bool big_endian)
- }
- 
- static AudioFormat
--pw_to_audfmt(enum spa_audio_format fmt, int *endianness,
-+pw_to_audfmt(enum spa_audio_format fmt, bool *big_endian,
-              uint32_t *sample_size)
- {
-     switch (fmt) {
-@@ -377,43 +377,43 @@ pw_to_audfmt(enum spa_audio_format fmt, int *endianness,
-         return AUDIO_FORMAT_U8;
-     case SPA_AUDIO_FORMAT_S16_BE:
-         *sample_size = 2;
--        *endianness = 1;
-+        *big_endian = true;
-         return AUDIO_FORMAT_S16;
-     case SPA_AUDIO_FORMAT_S16_LE:
-         *sample_size = 2;
--        *endianness = 0;
-+        *big_endian = false;
-         return AUDIO_FORMAT_S16;
-     case SPA_AUDIO_FORMAT_U16_BE:
-         *sample_size = 2;
--        *endianness = 1;
-+        *big_endian = true;
-         return AUDIO_FORMAT_U16;
-     case SPA_AUDIO_FORMAT_U16_LE:
-         *sample_size = 2;
--        *endianness = 0;
-+        *big_endian = false;
-         return AUDIO_FORMAT_U16;
-     case SPA_AUDIO_FORMAT_S32_BE:
-         *sample_size = 4;
--        *endianness = 1;
-+        *big_endian = true;
-         return AUDIO_FORMAT_S32;
-     case SPA_AUDIO_FORMAT_S32_LE:
-         *sample_size = 4;
--        *endianness = 0;
-+        *big_endian = false;
-         return AUDIO_FORMAT_S32;
-     case SPA_AUDIO_FORMAT_U32_BE:
-         *sample_size = 4;
--        *endianness = 1;
-+        *big_endian = true;
-         return AUDIO_FORMAT_U32;
-     case SPA_AUDIO_FORMAT_U32_LE:
-         *sample_size = 4;
--        *endianness = 0;
-+        *big_endian = false;
-         return AUDIO_FORMAT_U32;
-     case SPA_AUDIO_FORMAT_F32_BE:
-         *sample_size = 4;
--        *endianness = 1;
-+        *big_endian = true;
-         return AUDIO_FORMAT_F32;
-     case SPA_AUDIO_FORMAT_F32_LE:
-         *sample_size = 4;
--        *endianness = 0;
-+        *big_endian = false;
-         return AUDIO_FORMAT_F32;
-     default:
-         *sample_size = 1;
-@@ -534,13 +534,13 @@ qpw_init_out(HWVoiceOut *hw, struct audsettings *as)
- 
-     pw_thread_loop_lock(c->thread_loop);
- 
--    v->info.format = audfmt_to_pw(as->fmt, as->endianness);
-+    v->info.format = audfmt_to_pw(as->fmt, as->big_endian);
-     v->info.channels = as->nchannels;
-     qpw_set_position(as->nchannels, v->info.position);
-     v->info.rate = as->freq;
- 
-     obt_as.fmt =
--        pw_to_audfmt(v->info.format, &obt_as.endianness, &v->frame_size);
-+        pw_to_audfmt(v->info.format, &obt_as.big_endian, &v->frame_size);
-     v->frame_size *= as->nchannels;
- 
-     v->req = (uint64_t)AUDIO_MIXENG_BACKEND(c)->dev->timer_period * v->info.rate
-@@ -581,13 +581,13 @@ qpw_init_in(HWVoiceIn *hw, struct audsettings *as)
- 
-     pw_thread_loop_lock(c->thread_loop);
- 
--    v->info.format = audfmt_to_pw(as->fmt, as->endianness);
-+    v->info.format = audfmt_to_pw(as->fmt, as->big_endian);
-     v->info.channels = as->nchannels;
-     qpw_set_position(as->nchannels, v->info.position);
-     v->info.rate = as->freq;
- 
-     obt_as.fmt =
--        pw_to_audfmt(v->info.format, &obt_as.endianness, &v->frame_size);
-+        pw_to_audfmt(v->info.format, &obt_as.big_endian, &v->frame_size);
-     v->frame_size *= as->nchannels;
- 
-     /* call the function that creates a new stream for recording */
-diff --git a/audio/sdlaudio.c b/audio/sdlaudio.c
-index 5f332678209..936a3ed076d 100644
---- a/audio/sdlaudio.c
-+++ b/audio/sdlaudio.c
-@@ -96,56 +96,56 @@ static int aud_to_sdlfmt (AudioFormat fmt)
-     }
- }
- 
--static int sdl_to_audfmt(int sdlfmt, AudioFormat *fmt, int *endianness)
-+static int sdl_to_audfmt(int sdlfmt, AudioFormat *fmt, bool *big_endian)
- {
-     switch (sdlfmt) {
-     case AUDIO_S8:
--        *endianness = 0;
-+        *big_endian = false;
-         *fmt = AUDIO_FORMAT_S8;
-         break;
- 
-     case AUDIO_U8:
--        *endianness = 0;
-+        *big_endian = false;
-         *fmt = AUDIO_FORMAT_U8;
-         break;
- 
-     case AUDIO_S16LSB:
--        *endianness = 0;
-+        *big_endian = false;
-         *fmt = AUDIO_FORMAT_S16;
-         break;
- 
-     case AUDIO_U16LSB:
--        *endianness = 0;
-+        *big_endian = false;
-         *fmt = AUDIO_FORMAT_U16;
-         break;
- 
-     case AUDIO_S16MSB:
--        *endianness = 1;
-+        *big_endian = true;
-         *fmt = AUDIO_FORMAT_S16;
-         break;
- 
-     case AUDIO_U16MSB:
--        *endianness = 1;
-+        *big_endian = true;
-         *fmt = AUDIO_FORMAT_U16;
-         break;
- 
-     case AUDIO_S32LSB:
--        *endianness = 0;
-+        *big_endian = false;
-         *fmt = AUDIO_FORMAT_S32;
-         break;
- 
-     case AUDIO_S32MSB:
--        *endianness = 1;
-+        *big_endian = true;
-         *fmt = AUDIO_FORMAT_S32;
-         break;
- 
-     case AUDIO_F32LSB:
--        *endianness = 0;
-+        *big_endian = false;
-         *fmt = AUDIO_FORMAT_F32;
-         break;
- 
-     case AUDIO_F32MSB:
--        *endianness = 1;
-+        *big_endian = true;
-         *fmt = AUDIO_FORMAT_F32;
-         break;
- 
-@@ -350,7 +350,7 @@ static int sdl_init_out(HWVoiceOut *hw, struct audsettings *as)
-         return -1;
-     }
- 
--    err = sdl_to_audfmt(obt.format, &obt_as.fmt, &obt_as.endianness);
-+    err = sdl_to_audfmt(obt.format, &obt_as.fmt, &obt_as.big_endian);
-     if (err) {
-         sdl_close_out(sdl);
-         return -1;
-@@ -406,7 +406,7 @@ static int sdl_init_in(HWVoiceIn *hw, audsettings *as)
-         return -1;
-     }
- 
--    err = sdl_to_audfmt(obt.format, &obt_as.fmt, &obt_as.endianness);
-+    err = sdl_to_audfmt(obt.format, &obt_as.fmt, &obt_as.big_endian);
-     if (err) {
-         sdl_close_in(sdl);
-         return -1;
-diff --git a/audio/sndioaudio.c b/audio/sndioaudio.c
-index 766eceeeefe..761f23f8273 100644
---- a/audio/sndioaudio.c
-+++ b/audio/sndioaudio.c
-@@ -387,7 +387,7 @@ static int sndio_init(SndioVoice *self,
-     }
- 
-     if (req.bits > 8) {
--        req.le = as->endianness ? 0 : 1;
-+        req.le = !as->big_endian;
-     }
- 
-     req.rate = as->freq;
-diff --git a/audio/spiceaudio.c b/audio/spiceaudio.c
-index 81b897e13e0..f903ef77e72 100644
---- a/audio/spiceaudio.c
-+++ b/audio/spiceaudio.c
-@@ -106,7 +106,7 @@ static int line_out_init(HWVoiceOut *hw, struct audsettings *as)
- #endif
-     settings.nchannels  = SPICE_INTERFACE_PLAYBACK_CHAN;
-     settings.fmt        = AUDIO_FORMAT_S16;
--    settings.endianness = HOST_BIG_ENDIAN;
-+    settings.big_endian = HOST_BIG_ENDIAN;
- 
-     audio_pcm_init_info (&hw->info, &settings);
-     hw->samples = LINE_OUT_SAMPLES;
-@@ -222,7 +222,7 @@ static int line_in_init(HWVoiceIn *hw, struct audsettings *as)
- #endif
-     settings.nchannels  = SPICE_INTERFACE_RECORD_CHAN;
-     settings.fmt        = AUDIO_FORMAT_S16;
--    settings.endianness = HOST_BIG_ENDIAN;
-+    settings.big_endian = HOST_BIG_ENDIAN;
- 
-     audio_pcm_init_info (&hw->info, &settings);
-     hw->samples = LINE_IN_SAMPLES;
-diff --git a/audio/wavaudio.c b/audio/wavaudio.c
-index eed1e501af0..55d12d6cdfd 100644
---- a/audio/wavaudio.c
-+++ b/audio/wavaudio.c
-@@ -111,7 +111,7 @@ static int wav_init_out(HWVoiceOut *hw, struct audsettings *as)
- 
-     hdr[34] = bits16 ? 0x10 : 0x08;
- 
--    wav_as.endianness = 0;
-+    wav_as.big_endian = false;
-     audio_pcm_init_info (&hw->info, &wav_as);
- 
-     hw->samples = 1024;
-diff --git a/audio/wavcapture.c b/audio/wavcapture.c
-index 69aa91e35f6..2dac9461710 100644
---- a/audio/wavcapture.c
-+++ b/audio/wavcapture.c
-@@ -137,7 +137,7 @@ int wav_start_capture(AudioBackend *state, CaptureState *s, const char *path,
-     as.freq = freq;
-     as.nchannels = 1 << stereo;
-     as.fmt = bits16 ? AUDIO_FORMAT_S16 : AUDIO_FORMAT_U8;
--    as.endianness = 0;
-+    as.big_endian = false;
- 
-     ops.notify = wav_notify;
-     ops.capture = wav_capture;
-diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
-index 5d442b7e067..fd74c249949 100644
---- a/hw/audio/ac97.c
-+++ b/hw/audio/ac97.c
-@@ -313,7 +313,7 @@ static void open_voice(AC97LinkState *s, int index, int freq)
-     as.freq = freq;
-     as.nchannels = 2;
-     as.fmt = AUDIO_FORMAT_S16;
--    as.endianness = 0;
-+    as.big_endian = false;
- 
-     if (freq > 0) {
-         s->invalid_freq[index] = 0;
-diff --git a/hw/audio/adlib.c b/hw/audio/adlib.c
-index ce17e21d5fd..52ee5cb6256 100644
---- a/hw/audio/adlib.c
-+++ b/hw/audio/adlib.c
-@@ -254,7 +254,7 @@ static void adlib_realizefn (DeviceState *dev, Error **errp)
-     as.freq = s->freq;
-     as.nchannels = SHIFT;
-     as.fmt = AUDIO_FORMAT_S16;
--    as.endianness = HOST_BIG_ENDIAN;
-+    as.big_endian = HOST_BIG_ENDIAN;
- 
-     s->voice = audio_be_open_out(
-         s->audio_be,
-diff --git a/hw/audio/asc.c b/hw/audio/asc.c
-index 35c7b5750d6..ea59bdde7b8 100644
---- a/hw/audio/asc.c
-+++ b/hw/audio/asc.c
-@@ -648,7 +648,7 @@ static void asc_realize(DeviceState *dev, Error **errp)
-     as.freq = ASC_FREQ;
-     as.nchannels = 2;
-     as.fmt = AUDIO_FORMAT_U8;
--    as.endianness = HOST_BIG_ENDIAN;
-+    as.big_endian = HOST_BIG_ENDIAN;
- 
-     s->voice = audio_be_open_out(s->audio_be, s->voice, "asc.out", s, asc_out_cb,
-                             &as);
-diff --git a/hw/audio/cs4231a.c b/hw/audio/cs4231a.c
-index e6cae9c988e..c589670e855 100644
---- a/hw/audio/cs4231a.c
-+++ b/hw/audio/cs4231a.c
-@@ -289,7 +289,7 @@ static void cs_reset_voices (CSState *s, uint32_t val)
-     }
- 
-     as.nchannels = (val & (1 << 4)) ? 2 : 1;
--    as.endianness = 0;
-+    as.big_endian = false;
-     s->tab = NULL;
- 
-     switch ((val >> 5) & ((s->dregs[MODE_And_ID] & MODE2) ? 7 : 3)) {
-@@ -305,12 +305,12 @@ static void cs_reset_voices (CSState *s, uint32_t val)
-         s->tab = ALawDecompressTable;
-     x_law:
-         as.fmt = AUDIO_FORMAT_S16;
--        as.endianness = HOST_BIG_ENDIAN;
-+        as.big_endian = HOST_BIG_ENDIAN;
-         s->shift = as.nchannels == 2;
-         break;
- 
-     case 6:
--        as.endianness = 1;
-+        as.big_endian = true;
-         /* fall through */
-     case 2:
-         as.fmt = AUDIO_FORMAT_S16;
-diff --git a/hw/audio/es1370.c b/hw/audio/es1370.c
-index e1658393c6a..ca7ad16df49 100644
---- a/hw/audio/es1370.c
-+++ b/hw/audio/es1370.c
-@@ -407,7 +407,7 @@ static void es1370_update_voices (ES1370State *s, uint32_t ctl, uint32_t sctl)
-                 as.freq = new_freq;
-                 as.nchannels = 1 << (new_fmt & 1);
-                 as.fmt = (new_fmt & 2) ? AUDIO_FORMAT_S16 : AUDIO_FORMAT_U8;
--                as.endianness = 0;
-+                as.big_endian = false;
- 
-                 if (i == ADC_CHANNEL) {
-                     s->adc_voice =
-diff --git a/hw/audio/gus.c b/hw/audio/gus.c
-index 5c2a34c09d2..196c4f72205 100644
---- a/hw/audio/gus.c
-+++ b/hw/audio/gus.c
-@@ -256,7 +256,7 @@ static void gus_realizefn (DeviceState *dev, Error **errp)
-     as.freq = s->freq;
-     as.nchannels = 2;
-     as.fmt = AUDIO_FORMAT_S16;
--    as.endianness = HOST_BIG_ENDIAN;
-+    as.big_endian = HOST_BIG_ENDIAN;
- 
-     s->voice = audio_be_open_out(
-         s->audio_be,
-diff --git a/hw/audio/lm4549.c b/hw/audio/lm4549.c
-index 14e15a844ba..a891e975106 100644
---- a/hw/audio/lm4549.c
-+++ b/hw/audio/lm4549.c
-@@ -202,7 +202,7 @@ void lm4549_write(lm4549_state *s,
-         as.freq = value;
-         as.nchannels = 2;
-         as.fmt = AUDIO_FORMAT_S16;
--        as.endianness = 0;
-+        as.big_endian = false;
- 
-         s->voice = audio_be_open_out(
-             s->audio_be,
-@@ -272,7 +272,7 @@ static int lm4549_post_load(void *opaque, int version_id)
-     as.freq = freq;
-     as.nchannels = 2;
-     as.fmt = AUDIO_FORMAT_S16;
--    as.endianness = 0;
-+    as.big_endian = false;
- 
-     s->voice = audio_be_open_out(
-         s->audio_be,
-@@ -312,7 +312,7 @@ void lm4549_init(lm4549_state *s, lm4549_callback data_req_cb, void* opaque,
-     as.freq = 48000;
-     as.nchannels = 2;
-     as.fmt = AUDIO_FORMAT_S16;
--    as.endianness = 0;
-+    as.big_endian = false;
- 
-     s->voice = audio_be_open_out(
-         s->audio_be,
-diff --git a/hw/audio/sb16.c b/hw/audio/sb16.c
-index c8fc7df8b44..1b5e452a29b 100644
---- a/hw/audio/sb16.c
-+++ b/hw/audio/sb16.c
-@@ -213,7 +213,7 @@ static void continue_dma8 (SB16State *s)
-         as.freq = s->freq;
-         as.nchannels = 1 << s->fmt_stereo;
-         as.fmt = s->fmt;
--        as.endianness = 0;
-+        as.big_endian = false;
- 
-         s->voice = audio_be_open_out(
-             s->audio_be,
-@@ -376,7 +376,7 @@ static void dma_cmd (SB16State *s, uint8_t cmd, uint8_t d0, int dma_len)
-         as.freq = s->freq;
-         as.nchannels = 1 << s->fmt_stereo;
-         as.fmt = s->fmt;
--        as.endianness = 0;
-+        as.big_endian = false;
- 
-         s->voice = audio_be_open_out(
-             s->audio_be,
-@@ -877,7 +877,7 @@ static void legacy_reset (SB16State *s)
-     as.freq = s->freq;
-     as.nchannels = 1;
-     as.fmt = AUDIO_FORMAT_U8;
--    as.endianness = 0;
-+    as.big_endian = false;
- 
-     s->voice = audio_be_open_out(
-         s->audio_be,
-@@ -1300,7 +1300,7 @@ static int sb16_post_load (void *opaque, int version_id)
-             as.freq = s->freq;
-             as.nchannels = 1 << s->fmt_stereo;
-             as.fmt = s->fmt;
--            as.endianness = 0;
-+            as.big_endian = false;
- 
-             s->voice = audio_be_open_out(
-                 s->audio_be,
-diff --git a/hw/audio/via-ac97.c b/hw/audio/via-ac97.c
-index 84d137b41a3..9d61283542a 100644
---- a/hw/audio/via-ac97.c
-+++ b/hw/audio/via-ac97.c
-@@ -237,7 +237,7 @@ static void open_voice_out(ViaAC97State *s)
-         .freq = CODEC_REG(s, AC97_PCM_Front_DAC_Rate),
-         .nchannels = s->aur.type & BIT(4) ? 2 : 1,
-         .fmt = s->aur.type & BIT(5) ? AUDIO_FORMAT_S16 : AUDIO_FORMAT_S8,
--        .endianness = 0,
-+        .big_endian = false,
-     };
-     s->vo = audio_be_open_out(s->audio_be, s->vo, "via-ac97.out", s, out_cb, &as);
- }
-diff --git a/hw/audio/virtio-snd.c b/hw/audio/virtio-snd.c
-index ca44fa372f2..b8376433f7d 100644
---- a/hw/audio/virtio-snd.c
-+++ b/hw/audio/virtio-snd.c
-@@ -389,7 +389,7 @@ static void virtio_snd_get_qemu_audsettings(audsettings *as,
-     as->nchannels = MIN(AUDIO_MAX_CHANNELS, params->channels);
-     as->fmt = virtio_snd_get_qemu_format(params->format);
-     as->freq = virtio_snd_get_qemu_freq(params->rate);
--    as->endianness = 0; /* Conforming to VIRTIO 1.0: always little endian. */
-+    as->big_endian = false; /* Conforming to VIRTIO 1.0: always little endian. */
- }
- 
- /*
-diff --git a/hw/audio/wm8750.c b/hw/audio/wm8750.c
-index 2a286515b14..e2507b0269a 100644
---- a/hw/audio/wm8750.c
-+++ b/hw/audio/wm8750.c
-@@ -202,7 +202,7 @@ static void wm8750_set_format(WM8750State *s)
-         return;
- 
-     /* Setup input */
--    in_fmt.endianness = 0;
-+    in_fmt.big_endian = false;
-     in_fmt.nchannels = 2;
-     in_fmt.freq = s->adc_hz;
-     in_fmt.fmt = AUDIO_FORMAT_S16;
-@@ -215,7 +215,7 @@ static void wm8750_set_format(WM8750State *s)
-                     CODEC ".input3", s, wm8750_audio_in_cb, &in_fmt);
- 
-     /* Setup output */
--    out_fmt.endianness = 0;
-+    out_fmt.big_endian = false;
-     out_fmt.nchannels = 2;
-     out_fmt.freq = s->dac_hz;
-     out_fmt.fmt = AUDIO_FORMAT_S16;
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index 9aa4709b411..7d037b46a35 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -1393,7 +1393,7 @@ static void xlnx_dp_realize(DeviceState *dev, Error **errp)
-     as.freq = 44100;
-     as.nchannels = 2;
-     as.fmt = AUDIO_FORMAT_S16;
--    as.endianness = 0;
-+    as.big_endian = false;
- 
-     s->amixer_output_stream = audio_be_open_out(s->audio_be,
-                                            s->amixer_output_stream,
-diff --git a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
-index 7b758718c12..e18e0a1dfd6 100644
---- a/hw/usb/dev-audio.c
-+++ b/hw/usb/dev-audio.c
-@@ -975,7 +975,7 @@ static void usb_audio_reinit(USBDevice *dev, unsigned channels)
-     s->out.as.freq       = USBAUDIO_SAMPLE_RATE;
-     s->out.as.nchannels  = s->out.channels;
-     s->out.as.fmt        = AUDIO_FORMAT_S16;
--    s->out.as.endianness = 0;
-+    s->out.as.big_endian = false;
-     streambuf_init(&s->out.buf, s->buffer, s->out.channels);
- 
-     s->out.voice = audio_be_open_out(s->audio_be, s->out.voice, TYPE_USB_AUDIO,
-diff --git a/tests/audio/test-audio.c b/tests/audio/test-audio.c
-index 90d96ae0575..b87a12eb55b 100644
---- a/tests/audio/test-audio.c
-+++ b/tests/audio/test-audio.c
-@@ -57,7 +57,7 @@ static const struct audsettings default_test_settings = {
-     .freq = SAMPLE_RATE,
-     .nchannels = CHANNELS,
-     .fmt = AUDIO_FORMAT_S16,
--    .endianness = 0,
-+    .big_endian = false,
- };
- 
- static void dummy_audio_callback(void *opaque, int avail)
-diff --git a/ui/vnc.c b/ui/vnc.c
-index d56fe2c180e..daf5b01d342 100644
---- a/ui/vnc.c
-+++ b/ui/vnc.c
-@@ -3372,7 +3372,7 @@ static void vnc_connect(VncDisplay *vd, QIOChannelSocket *sioc,
-     vs->as.freq = 44100;
-     vs->as.nchannels = 2;
-     vs->as.fmt = AUDIO_FORMAT_S16;
--    vs->as.endianness = 0;
-+    vs->as.big_endian = false;
- 
-     qemu_mutex_init(&vs->output_mutex);
-     vs->bh = qemu_bh_new(vnc_jobs_bh, vs);
--- 
-2.53.0
+</pre>
+    </blockquote>
+  </body>
+</html>
 
+--------------Hk08N6MiYdTyfrdaaAH0TjB1--
 

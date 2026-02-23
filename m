@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78D66EC110C
-	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:03:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DC69EC110C
+	for <qemu-arm@archiver.kernel.org>; Mon, 23 Feb 2026 17:03:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1vuZKh-0002QZ-TO; Mon, 23 Feb 2026 12:02:55 -0500
+	id 1vuZKj-0002SX-Ry; Mon, 23 Feb 2026 12:02:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKg-0002Oh-Gx
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:54 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ id 1vuZKe-0002Lq-TL
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:52 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vuZKe-0000GD-4N
- for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:54 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-480706554beso55475025e9.1
- for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:51 -0800 (PST)
+ id 1vuZKc-0000FH-7q
+ for qemu-arm@nongnu.org; Mon, 23 Feb 2026 12:02:52 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4836d4c26d3so40066535e9.2
+ for <qemu-arm@nongnu.org>; Mon, 23 Feb 2026 09:02:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1771866171; x=1772470971; darn=nongnu.org;
+ d=linaro.org; s=google; t=1771866169; x=1772470969; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=oJkPB1+usEO1iILLwjFfPn1z9uieHX7lfkftnDGLpWQ=;
- b=tvlAZCI+J5/x8pDYcd2sitm2WKc8II8CH+w8Htcze+T4RjiO8iTf2oghWVWFyBbxPw
- peoJq5GUHxp+RYcBNamcfrahBKwFfpscY8K7T45caAaXcewOJNVXlPkt8GSStxbdtFus
- 1CoJV0NrPWkCMT6yi1cBLyksO4upHyLRDpgZwCbS4viTf7Q0ZetmsvZIFeDIQjWVojNg
- t8lVcfpBP0VgSu2sMFFUd2IznSbeOZXljFHpz0IXbVOr9eYpCGZZhj88yebrdWH/vbJM
- CSv2P9xUrW+uWFR0oCFCkGDX+NSNIlgr4v2n0QiO0goGaxLeGbMNLJNZfsniYpKCpOOa
- mCEg==
+ :reply-to; bh=lwouxz/o/dkwKMhTRSd+FjgJjYJhHe7TZXKPF0VtHa8=;
+ b=dbiCcWdAGoU9hzeb1mbdj3vcRD4/gOIo0TCPJ7z3+ySyQpLpXVu3ByptpI/Ly6UbEs
+ 3FtvksYHeg9Yow+xnMDCQN+VVq94GF0spjteyyc3mPnyqQ6bAOC9KbcQctBzBT6gW5wE
+ 3VsVefRHY7kdrW1QNzNFWdiTMAsWx4zgLWyjS0jf/H+ODabp3mCTl2KPETXW4Lyy95yj
+ ad/fLLptLxDuEAt3iT2VeufAh0tDZyKhlW/HXHmvRp+xNc8aG3ycZPaKaGePmQpaVCDF
+ WxgbPNnihrPdb4B2I32ZzS/VsqEvNxYnF9km2bY4OreWVjy79Iy4gsK4Q2JpTeeLiN8z
+ vYEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1771866171; x=1772470971;
+ d=1e100.net; s=20230601; t=1771866169; x=1772470969;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to;
- bh=oJkPB1+usEO1iILLwjFfPn1z9uieHX7lfkftnDGLpWQ=;
- b=nKtVCiMfsEF6IkNJlHIf5FmrAoQ80yPNycxXuekaUpCUje4qRUeB9SyTsMDPwZpQCH
- I39O9ciMCv8S/D7eh4IlyGxAE9d15IT3EmdnxBljpKGG2+gBeGN8Q95OJ6Hs0fgSj4V1
- 8pRKhmKMSSLKsicJ5cT3IAKneI3qq1SYuc+maFLp5sqfAjLAIysQMEcN5eJMS2BMHHvX
- souf9m/rDTv6Qlg3m7AMPtRg66HkfNI+twkhHfeZ9GBiNEHgcohwHmrQw3NC8PRb+Gvb
- wOFgiz/5EuBxhDWOR8gMguY6TTwrVsRZEkc6/AYHEJnx7A0zsYj149tadFQ8gEW0H1Xx
- 6tHQ==
-X-Gm-Message-State: AOJu0YywE/x6t8gPggTzYFaYyx5xdPGh8Jyf2EggUNixUPHKsMguKUrp
- ctR90JwU00k6PubDt7VVpI+NO1Hk2jmu/nitRNABHsPw3yV0qOBVdwe7tv83GHIDwYPzN9SRvSy
- uiDN5
-X-Gm-Gg: AZuq6aKxyLiYr2au4x2cfVTPRQ/g7iemAelZ8oDKn1/SBZSzP6+FBPbQNE6CV62cAf8
- CGv0PZtldYxTZOnc7LEb4ICjAQSHx6G9xG5zLQBGN1Y0p7H0D2PC04XpkmPvQg45CdKfsqm/ctc
- /5bpIw3fuBw9utjLukp0SEh3vpsgVHteZssCEpR7xZNfJUdbKNFjW07zIFhsIGckKZgmKjKMxV7
- VV6B5dY/SMN/O6LrGH1khkNPsWs+e8MranOHcf6OtRVShcC+NnCQmwpFrWe9x29l5VJV6o49ZFs
- b8dPccTFxmqGVmnYBMj4ZEjwJRYnwy46NP4XoZd6KsofuxdsjM7Uw0QZSKld+NFlkcY0fxHMJkx
- hJ8Pyh1POtvfcgpPsP+9Tqdi9aL1zZ+AuQXRAQna8Aqi2S6aepg85cxFrRFvt5wetEFimWK8YTW
- XL84dVWUeRYhc1C1HVmoECf3BAkvWgaDSh5ZdksJ81PIyohD/IfCQn8MqcNukMEy5SyKzShxjcG
- UeLCC2QJeibX/Hr2nkeGIYvrF3STwynciA6Y2OMXg==
-X-Received: by 2002:a05:600c:8717:b0:483:612d:7a5c with SMTP id
- 5b1f17b1804b1-483a96375e3mr149074005e9.25.1771866170516; 
- Mon, 23 Feb 2026 09:02:50 -0800 (PST)
+ bh=lwouxz/o/dkwKMhTRSd+FjgJjYJhHe7TZXKPF0VtHa8=;
+ b=MzrLqydmYpF2jl5ewEFTfLsU2COiwtrkM4FsVvHbWHF2FpSlt/DtZR4QkA2tlZSsEZ
+ Bxcf4pb9csVf1oCbdQLY8cYSBqO1389iM4bxaG7Aleh/AvtZdwCJ0XZnI9exaN6sxKOi
+ Es64WfYiL5BZhQX5odNAJVDxJwPSZKf62r9RZquQECbZqDmcODTFelKCxBk1BqptL8FB
+ HC4sddMxJDT/SxXugbT60dc+giWi0AURSvD2zmWFocHw9fAtp6a8ydGSskcKb/QpJ7sk
+ uyOQ56s7s7vh80hl8kbq4DR2alkttM/xbfLicBb4LwrCh37Z+RqNqF3PfaRRZBnPN4bk
+ Gttw==
+X-Gm-Message-State: AOJu0Ywz9ZgzvCZaxgdpJD2u3KgJLqLR5lK58TYuMlf0Y1QaL/wmAhcs
+ OvfXvJ1DwxpmNq7+gWH1MdLhy4gkRHQlaCME/v0TnOp+Cl5AXR84efU8HF1FxzNB7DGaA7Rihl9
+ NwxV8
+X-Gm-Gg: AZuq6aJbNqclBl4cuDMUHD8ZH78j3jdCSM8rKwSY7qo52/7Geg/Z2272RLP1NmdutAO
+ 1K57ovpyVXOFG7ywt/cdY/TqLDgjBU12SWXHFgEQ9Vi29Pqo/QOHBCKcJcrC98GwN9vN0iDGWVz
+ ogxgVrt6BiyRzJvn0xxiv60Go9eO2aqIft4ZDY1DOSa8KlBcqAcfOITj3Yo3nc8LYe0bv8cm3+g
+ Q6519pCzn9rKLRcVS7xWT+rTUZNuasqi+oCmx9ecmBN9nmFsJpBv/3sDTM9yGI9QP8uKYZ5pNu1
+ qkX1JnCflxj1MNctwidD5TwOABFi7Km+jDYa5MjkXoA+iBAdPmjRKT1j5Ja8IPXhptst/43EVu/
+ oJ3Vx0kZ0IbgKD8TDiJUzVxGeyEM9DtiXkWki2ut9rjrrFL9KdYUBzWLOkAfzXJqlLvEyxZSwpJ
+ phJ5lfJS1OPivslPh/vjpUjdIceWOctNKAchDjPpAMGW3Hw1GJR0tMThiFH1mlfEZaGeDQaPu+B
+ kJUu3aUkf8Hf9yz5GcZkYbfFTnDvIzozzE0Yi0x3w==
+X-Received: by 2002:a05:600c:1e1d:b0:480:6999:27ec with SMTP id
+ 5b1f17b1804b1-483a95bebcdmr171897625e9.13.1771866168578; 
+ Mon, 23 Feb 2026 09:02:48 -0800 (PST)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.49
+ 5b1f17b1804b1-483a9b21ceasm200155625e9.0.2026.02.23.09.02.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Feb 2026 09:02:49 -0800 (PST)
+ Mon, 23 Feb 2026 09:02:47 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 32/65] hw/intc/arm_gicv5: Cache pending LPIs in a hash table
-Date: Mon, 23 Feb 2026 17:01:39 +0000
-Message-ID: <20260223170212.441276-33-peter.maydell@linaro.org>
+Subject: [PATCH 30/65] hw/intc/arm_gicv5: Implement IRS_PE_{CR0,SELR,STATUSR}
+Date: Mon, 23 Feb 2026 17:01:37 +0000
+Message-ID: <20260223170212.441276-31-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260223170212.441276-1-peter.maydell@linaro.org>
 References: <20260223170212.441276-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,209 +100,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The GICv5 stores information about LPIs in a guest-memory data
-structure.  Iterating through this to identify the highest priority
-pending interrupt would be expensive; to avoid this we will use a
-hash table which contains an entry for each pending LPI and which
-caches the L2 ISTE.  Typically only a few LPIs will be pending at any
-one time, so iterating through the hash table should be fast.
+The IRS_PE_CR0, IRS_PE_SELR, IRS_PE_STATUSR registers allow software
+to set and query per-CPU config.  Software writes the AFFID of a CPU
+to IRS_PE_SELR, and can then read and write the 1ofN config for that
+CPU to IRS_PE_CR0, and read the CPU's online status from
+IRS_PE_STATUSR.
 
-We can access an L2 ISTE whenever it is valid, and can freely cache
-the data for as long as the IST is valid.  We only need to ensure
-that we have written back the data at the point where
-IRS_IST_BASER.VALID is written to 0.
-
-We add an LPI to the cache when the pending bit is written to 1, and
-remove it when it is written to 0.  Handling of checking the cache,
-and of adding and removing entries, is handled within get_l2_iste()
-and put_l2_iste(), which all the operations that read and write ISTE
-words use.
+For QEMU, we do not implement 1-of-N interrupt routing, so IRS_PE_CR0
+can be RAZ/WI.  Our CPUs are always online and selecting a new one
+via SELR is instantaneous, so IRS_PE_STATUSR will return either
+ONLINE | V | IDLE if a valid AFFID was written to SELR, or just IDLE
+if an invalid AFFID was written.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv5.c         | 110 +++++++++++++++++++++++++++++++++++-
- include/hw/intc/arm_gicv5.h |   2 +
- 2 files changed, 111 insertions(+), 1 deletion(-)
+ hw/intc/arm_gicv5.c                | 39 ++++++++++++++++++++++++++++++
+ hw/intc/arm_gicv5_common.c         |  1 +
+ include/hw/intc/arm_gicv5_common.h |  1 +
+ 3 files changed, 41 insertions(+)
 
 diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index fa7692ca0e..30368998d3 100644
+index d0ba8fe669..0f32bdf357 100644
 --- a/hw/intc/arm_gicv5.c
 +++ b/hw/intc/arm_gicv5.c
-@@ -474,10 +474,21 @@ static bool write_l2_iste_mem(GICv5Common *cs, const GICv5ISTConfig *cfg,
-  * reads and writes to update the L2 ISTE. In a future commit we
-  * will add support for a cache of some of the ISTE data in a
-  * local hashtable; the APIs are designed with that in mind.
-+ * Not all these fields are always valid; they are private to
-+ * the implementation of get_l2_iste() and put_l2_iste().
-  */
- typedef struct L2_ISTE_Handle {
-+    /* Guest memory address of the L2 ISTE; valid only if !hashed */
-     hwaddr l2_iste_addr;
--    uint32_t l2_iste;
-+    union {
-+        /* Actual L2_ISTE word; valid only if !hashed */
-+        uint32_t l2_iste;
-+        /* Pointer to L2 ISTE word; valid only if hashed */
-+        uint32_t *l2_iste_p;
-+    };
-+    uint32_t id;
-+    /* True if this ISTE is currently in the cache */
-+    bool hashed;
- } L2_ISTE_Handle;
- 
- static uint32_t *get_l2_iste(GICv5Common *cs, const GICv5ISTConfig *cfg,
-@@ -498,6 +509,25 @@ static uint32_t *get_l2_iste(GICv5Common *cs, const GICv5ISTConfig *cfg,
-      * If the ISTE could not be read (typically because of a
-      * memory error), return NULL.
-      */
-+    uint32_t *hashvalue;
-+
-+    if (!cfg->valid) {
-+        /* Catch invalid config early, it has no lpi_cache */
-+        return NULL;
-+    }
-+
-+    hashvalue = g_hash_table_lookup(cfg->lpi_cache,
-+                                    GINT_TO_POINTER(id));
-+
-+    h->id = id;
-+
-+    if (hashvalue) {
-+        h->hashed = true;
-+        h->l2_iste_p = hashvalue;
-+        return hashvalue;
-+    }
-+
-+    h->hashed = false;
-     if (!get_l2_iste_addr(cs, cfg, id, &h->l2_iste_addr) ||
-         !read_l2_iste_mem(cs, cfg, h->l2_iste_addr, &h->l2_iste)) {
-         return NULL;
-@@ -513,6 +543,34 @@ static void put_l2_iste(GICv5Common *cs, const GICv5ISTConfig *cfg,
-      * Once this has been called the L2_ISTE_Handle @h and the
-      * pointer to the L2 ISTE word are no longer valid.
-      */
-+    if (h->hashed) {
-+        uint32_t l2_iste = *h->l2_iste_p;
-+        if (!FIELD_EX32(l2_iste, L2_ISTE, PENDING)) {
-+            /*
-+             * We just made this not pending: remove from hash table
-+             * and write back to memory.
-+             */
-+            hwaddr l2_iste_addr;
-+
-+            g_hash_table_remove(cfg->lpi_cache, GINT_TO_POINTER(h->id));
-+            if (get_l2_iste_addr(cs, cfg, h->id, &l2_iste_addr)) {
-+                write_l2_iste_mem(cs, cfg, l2_iste_addr, l2_iste);
-+                /* Writeback errors are ignored. */
-+            }
-+        }
-+        return;
-+    }
-+
-+    if (FIELD_EX32(h->l2_iste, L2_ISTE, PENDING)) {
-+        /*
-+         * We just made this pending: add it to the hash table, and
-+         * don't bother writing it back to memory.
-+         */
-+        uint32_t *hashvalue = g_new(uint32_t, 1);
-+        *hashvalue = h->l2_iste;
-+        g_hash_table_insert(cfg->lpi_cache, GINT_TO_POINTER(h->id), hashvalue);
-+        return;
-+    }
-     write_l2_iste_mem(cs, cfg, h->l2_iste_addr, h->l2_iste);
- }
- 
-@@ -857,6 +915,38 @@ txfail:
-                   "physical address 0x" HWADDR_FMT_plx "\n", intid, l1_addr);
- }
- 
-+/* Data we need to pass through to irs_clean_lpi_cache_entry() */
-+typedef struct CleanLPICacheUserData {
-+    GICv5Common *cs;
-+    GICv5ISTConfig *cfg;
-+} CleanLPICacheUserData;
-+
-+static gboolean irs_clean_lpi_cache_entry(gpointer key, gpointer value,
-+                                          gpointer user_data)
-+{
-+    /* Drop this entry from the LPI cache, writing it back to guest memory. */
-+    CleanLPICacheUserData *ud = user_data;
-+    hwaddr l2_iste_addr;
-+    uint64_t id = GPOINTER_TO_INT(key);
-+    uint32_t l2_iste = *(uint32_t *)value;
-+
-+    if (!get_l2_iste_addr(ud->cs, ud->cfg, id, &l2_iste_addr) ||
-+        !write_l2_iste_mem(ud->cs, ud->cfg, l2_iste_addr, l2_iste)) {
-+        /* We drop the cached entry regardless of writeback errors */
-+        return true;
-+    }
-+    return true;
-+}
-+
-+static void irs_clean_lpi_cache(GICv5Common *cs, GICv5ISTConfig *cfg)
-+{
-+    /* Write everything in the LPI cache out to guest memory */
-+    CleanLPICacheUserData ud;
-+    ud.cs = cs;
-+    ud.cfg = cfg;
-+
-+    g_hash_table_foreach_remove(cfg->lpi_cache, irs_clean_lpi_cache_entry, &ud);
-+}
- 
- static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
- {
-@@ -869,6 +959,7 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
-             /* Ignore 1->1 transition */
-             return;
-         }
-+        irs_clean_lpi_cache(cs, &s->phys_lpi_config[domain]);
-         cs->irs_ist_baser[domain] = FIELD_DP64(cs->irs_ist_baser[domain],
-                                                IRS_IST_BASER, VALID, valid);
-         s->phys_lpi_config[domain].valid = false;
-@@ -930,6 +1021,15 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
-         cfg->l2_idx_bits = l2_idx_bits;
-         cfg->structure = FIELD_EX64(cs->irs_ist_cfgr[domain],
-                                     IRS_IST_CFGR, STRUCTURE);
-+        if (!cfg->lpi_cache) {
-+            /*
-+             * Keys are GINT_TO_POINTER(intid), so we want the g_direct_hash
-+             * and g_direct_equal hash and equality functions. We don't
-+             * want to free the keys, but we do want to free the values
-+             * (which are pointer-to-uint32_t).
-+             */
-+            cfg->lpi_cache = g_hash_table_new_full(NULL, NULL, NULL, g_free);
-+        }
-         cfg->valid = true;
-         trace_gicv5_ist_valid(domain_name[domain], cfg->base, cfg->id_bits,
-                               cfg->l2_idx_bits, cfg->istsz, cfg->structure);
-@@ -1406,6 +1506,14 @@ static void gicv5_reset_hold(Object *obj, ResetType type)
-     /* IRS_IST_BASER and IRS_IST_CFGR reset to 0, clear cached info */
-     for (int i = 0; i < NUM_GICV5_DOMAINS; i++) {
-         s->phys_lpi_config[i].valid = false;
-+        /*
-+         * If we got reset (power-cycled) with data in the cache,
-+         * we don't write it out to guest memory; just return to
-+         * "empty cache".
-+         */
-+        if (s->phys_lpi_config[i].lpi_cache) {
-+            g_hash_table_remove_all(s->phys_lpi_config[i].lpi_cache);
-+        }
+@@ -930,6 +930,21 @@ static void spi_sample(GICv5SPIState *spi)
      }
  }
  
-diff --git a/include/hw/intc/arm_gicv5.h b/include/hw/intc/arm_gicv5.h
-index c631ecc3e8..fb13de0d01 100644
---- a/include/hw/intc/arm_gicv5.h
-+++ b/include/hw/intc/arm_gicv5.h
-@@ -25,6 +25,8 @@ typedef struct GICv5ISTConfig {
-     uint8_t istsz; /* L2 ISTE size in bytes */
-     bool structure; /* true if using 2-level table */
-     bool valid; /* true if this table is valid and usable */
-+    /* This caches IST information about pending LPIs */
-+    GHashTable *lpi_cache;
- } GICv5ISTConfig;
++static bool irs_pe_selr_valid(GICv5Common *cs, GICv5Domain domain)
++{
++    /*
++     * Return true if IRS_PE_SELR has a valid AFFID in it. We don't
++     * expect the guest to do this except perhaps once at startup,
++     * so do a simple linear scan through the cpu_iaffids array.
++     */
++    for (int i = 0; i < cs->num_cpu_iaffids; i++) {
++        if (cs->irs_pe_selr[domain] == cs->cpu_iaffids[i]) {
++            return true;
++        }
++    }
++    return false;
++}
++
+ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
+                          uint64_t *data, MemTxAttrs attrs)
+ {
+@@ -1051,6 +1066,24 @@ static bool config_readl(GICv5 *s, GICv5Domain domain, hwaddr offset,
+         /* Sync is a no-op for QEMU: we are always IDLE */
+         *data = R_IRS_SYNC_STATUSR_IDLE_MASK;
+         return true;
++    case A_IRS_PE_SELR:
++        *data = cs->irs_pe_selr[domain];
++        return true;
++    case A_IRS_PE_CR0:
++        /* We don't implement 1ofN, so this is RAZ/WI for us */
++        *data = 0;
++        return true;
++    case A_IRS_PE_STATUSR:
++        /*
++         * Our CPUs are always online, so we're really just reporting
++         * whether the guest wrote a valid AFFID to IRS_PE_SELR
++         */
++        v = R_IRS_PE_STATUSR_IDLE_MASK;
++        if (irs_pe_selr_valid(cs, domain)) {
++            v |= R_IRS_PE_STATUSR_V_MASK | R_IRS_PE_STATUSR_ONLINE_MASK;
++        }
++        *data = v;
++        return true;
+     }
  
- /*
+     return false;
+@@ -1139,6 +1172,12 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
+     case A_IRS_SYNCR:
+         /* Sync is a no-op for QEMU: ignore write */
+         return true;
++    case A_IRS_PE_SELR:
++        cs->irs_pe_selr[domain] = data;
++        return true;
++    case A_IRS_PE_CR0:
++        /* We don't implement 1ofN, so this is RAZ/WI for us */
++        return true;
+     }
+     return false;
+ }
+diff --git a/hw/intc/arm_gicv5_common.c b/hw/intc/arm_gicv5_common.c
+index b358691105..bcbe88cde7 100644
+--- a/hw/intc/arm_gicv5_common.c
++++ b/hw/intc/arm_gicv5_common.c
+@@ -68,6 +68,7 @@ static void gicv5_common_reset_hold(Object *obj, ResetType type)
+     memset(cs->irs_ist_cfgr, 0, sizeof(cs->irs_ist_cfgr));
+     memset(cs->irs_cr0, 0, sizeof(cs->irs_cr0));
+     memset(cs->irs_cr1, 0, sizeof(cs->irs_cr1));
++    memset(cs->irs_pe_selr, 0, sizeof(cs->irs_pe_selr));
+ 
+     if (cs->spi) {
+         GICv5Domain mp_domain;
+diff --git a/include/hw/intc/arm_gicv5_common.h b/include/hw/intc/arm_gicv5_common.h
+index 00b1dc2b45..5254e68fbb 100644
+--- a/include/hw/intc/arm_gicv5_common.h
++++ b/include/hw/intc/arm_gicv5_common.h
+@@ -87,6 +87,7 @@ struct GICv5Common {
+     uint32_t irs_spi_selr[NUM_GICV5_DOMAINS];
+     uint32_t irs_cr0[NUM_GICV5_DOMAINS];
+     uint32_t irs_cr1[NUM_GICV5_DOMAINS];
++    uint32_t irs_pe_selr[NUM_GICV5_DOMAINS];
+ 
+     /*
+      * Pointer to an array of state information for the SPIs.
 -- 
 2.43.0
 
